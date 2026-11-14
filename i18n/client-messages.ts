@@ -75,3 +75,41 @@ export function mergeMessages(
 
   return merged as AbstractIntlMessages;
 }
+
+/**
+ * The namespace a region's Client Components read its own copy under: `tripRegion.planner.options`
+ * is `tripRegions.<slug>.planner.options` of the region the page is about. A component names no
+ * region, the route picks one (`<RouteMessages region>`), and only that region's copy ships.
+ */
+export const REGION_MESSAGES_ALIAS = 'tripRegion';
+
+/** Where the region copy lives in the message files: `tripRegions.<slug>`. */
+export function regionMessagesPath(region: string): string {
+  return `tripRegions.${region}`;
+}
+
+/**
+ * Like {@link pickMessages}, with every `tripRegion…` namespace read from `region`'s own copy and
+ * kept under the alias, so `useTranslations('tripRegion.planner')` finds it.
+ */
+export function pickRouteMessages(
+  messages: AbstractIntlMessages,
+  namespaces: readonly string[],
+  region?: string
+): AbstractIntlMessages {
+  const isAlias = (ns: string) =>
+    ns === REGION_MESSAGES_ALIAS || ns.startsWith(`${REGION_MESSAGES_ALIAS}.`);
+  const picked = pickMessages(
+    messages,
+    namespaces.filter((ns) => !isAlias(ns))
+  ) as Record<string, unknown>;
+  const aliased = namespaces.filter(isAlias);
+  if (!region || aliased.length === 0) return picked as AbstractIntlMessages;
+  const own = pickMessages(
+    messages,
+    aliased.map((ns) => regionMessagesPath(region) + ns.slice(REGION_MESSAGES_ALIAS.length))
+  ) as Record<string, Record<string, unknown>>;
+  const copy = own.tripRegions?.[region];
+  if (copy) picked[REGION_MESSAGES_ALIAS] = copy;
+  return picked as AbstractIntlMessages;
+}

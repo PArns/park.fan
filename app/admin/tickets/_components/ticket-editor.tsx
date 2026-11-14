@@ -58,7 +58,7 @@ import {
   type TicketValidation,
 } from '@/lib/admin/tickets';
 import { useDebouncedValue } from '@/lib/hooks/use-debounced-value';
-import type { TripRegionGroup, TripRegionPark } from '@/lib/orlando/types';
+import type { TripRegionGroup, TripRegionPark } from '@/lib/trip-regions/types';
 import { AdminApiError, adminFetch, useInvalidateAdmin } from '../../_lib/api';
 import { formatAgo } from '../../_lib/format';
 import {

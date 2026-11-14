@@ -16,11 +16,12 @@ shows. The anatomy is a hub's ([a landing page has one anatomy](../rules/a-landi
 
 - The segment is the global best-time hub's (`BEST_TIME_SEGMENTS`, `lib/best-time/segments.ts`);
   "orlando" and the resort slugs are the same in every language. Links go through
-  `orlandoBestTimePath(locale, resort?)` (`lib/orlando/paths.ts`), and `localizedPath` respells
+  `tripRegionBestTimePath(region, locale, page?)` (`lib/trip-regions/paths.ts`), and `localizedPath` respells
   `/orlando/best-time-to-visit` written in a post.
-- The folder is `app/[locale]/orlando/best-time-to-visit/[[...resort]]`. It is static, so it wins
-  over the hub's `[[...date]]` catch-all. `next.config.ts` rewrites the five other segments onto it
-  and 308s a wrong-locale or unprefixed segment to the locale's own.
+- The folder is every region's, `app/[locale]/trip-regions/[region]/best-time-to-visit/[[...resort]]`;
+  the pages and their resorts are the region's `bestTime` in the registry. `next.config.ts`
+  rewrites each locale's segment onto it and 308s a wrong-locale or unprefixed segment to the
+  locale's own ([trip regions](trip-regions.md)).
 - `force-dynamic` behind an hour of `CDN-Cache-Control` (`pnpm test:edge-windows`): the title names
   the year Orlando's today decides, and the figures come from the Data Cache, an hour at most.
 - Listed in `/sitemap.xml` with hreflang and **no** `<lastmod>`: `computedAt` moves on all three
@@ -28,12 +29,12 @@ shows. The anatomy is a hub's ([a landing page has one anatomy](../rules/a-landi
 
 ## What the page reads
 
-- **The region** (`getOrlandoRegion`) for the parks: the headliner parks of the page's resorts
-  (`bestTimeParks`, `BEST_TIME_PAGE_GROUPS`).
-- **`/when`** (`getOrlandoWhen`) once, for those parks, `days=10`, `limit=3`, over the **title's
+- **The region** (`getTripRegion`) for the parks: the headliner parks of the page's resorts
+  (`bestTimeParks`, the region's `bestTime` pages).
+- **`/when`** (`getTripRegionWhen`) once, for those parks, `days=10`, `limit=3`, over the **title's
   year**: from today at the earliest, never past the year ahead the API accepts (`bestTimeRange`).
   The year is the coming one from September on (`bestTimeYear`). Its `months[]` feed chapter 02.
-- **`/school-breaks`** (`getOrlandoSchoolBreaks`), open and a day in the Data Cache, for DE, NL and
+- **`/school-breaks`** (`getTripRegionSchoolBreaks`), open and a day in the Data Cache, for DE, NL and
   GB over the same range. Its region codes are the ones `within` accepts and are never written
   into the code; a failed read drops chapter 04 and the European cells.
 
@@ -47,7 +48,7 @@ All of it is in the first HTML; nothing mounts on a click.
 - **Level 0**, in the head: the three windows as one sentence (the hero's tagline) and three cards
   with dates, the wait, the share below the year's average, one reason and a basis label when the
   window is last year's. The hero's one action, "Plan these dates", opens the hub's planner on the
-  first window (`orlandoPlannerHref`, plan mode).
+  first window (`plannerHrefOn`, plan mode).
 - **Level 1**: chapter 01's week strip and chapter 02's month rows.
 - **Level 2**: `<details>` under each card (all reasons, warnings, events) and each month (season
   dates, each European region's breaks, the climate period and nights).

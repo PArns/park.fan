@@ -234,12 +234,6 @@
       "label": "Wachttijden en drukte-kalenders van populaire parken",
       "waits": "Wachttijden",
       "calendar": "Drukte-kalender"
-    },
-    "orlando": {
-      "kicker": "Orlando",
-      "title": "Orlando: welk park op welke dag",
-      "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
-      "link": "Orlando drukte-kalender"
     }
   },
   "footer": {
@@ -397,33 +391,17 @@
     "nearby": "Bij jou in de buurt",
     "preferences": "Instellingen",
     "assistantOpen": "Vraag het Parky",
-    "assistantClose": "Parky sluiten",
-    "orlando": "Orlando drukte-kalender",
-    "orlandoHint": "Welk park op welke dag, en een planner voor je hele reis."
+    "assistantClose": "Parky sluiten"
   },
-  "orlando": {
-    "title": "Orlando drukte-kalender",
-    "monthTitle": "Orlando drukte-kalender {month}",
-    "metaTitle": "Orlando drukte-kalender & reisplanner",
-    "metaTitleMonth": "Orlando drukte-kalender {month}: Disney & Universal",
-    "metaTitleMonthShort": "Orlando drukte-kalender {month}",
-    "metaDescription": "Welk park in Orlando op welke dag, met Epic Universe. Het rustigst in de komende 30 dagen: {verdict}.",
-    "metaDescriptionPlain": "Welk park op welke dag in Walt Disney World, bij Universal met Epic Universe en in SeaWorld, en een planner die je parken op je reisdagen zet.",
-    "metaDescriptionMonth": "De rustigste dagen in Orlando in {month}: {verdict}. Elk park dag voor dag, met Epic Universe.",
-    "metaDescriptionMonthPlain": "Orlando in {month}, dag voor dag: waar je in Disney World, bij Universal met Epic Universe, in SeaWorld en op de dagtrips het kortst in de rij staat.",
-    "lead": "Met één hotelkamer in Orlando heb je acht themaparken en vier waterparken om de hoek.",
-    "leadMonth": "In welk park je op welke dag in {month} het kortst in de rij staat: Walt Disney World, Universal met Epic Universe, SeaWorld en de dagtrips.",
+  "tripHub": {
     "scroll": "Naar de kalender",
     "introLabel": "Zo lees je de kalender",
     "intro": "Elk vakje is één park op één dag. Het getal is de wachttijd die we bij de grote attracties van dat park op het drukste moment van de dag verwachten, en daarop vergelijk je de parken. Aan de kleur zie je hoe die dag zich verhoudt tot een gewone dag in hetzelfde park.",
-    "opening": "Zonder verkeer rijd je van EPCOT naar Universal Studios in 25 minuten, en vanuit een hotel in Lake Buena Vista ligt elk van de acht themaparken binnen een halfuur, bij Magic Kingdom met de veerboot of monorail erbij. Naar LEGOLAND in Winter Haven is het bijna een uur, naar Busch Gardens en Adventure Island in Tampa zo’n anderhalf uur. Met die drie, Discovery Cove en de vier waterparken zijn het er zestien, en voor geen ervan hoef je van hotel te wisselen. In de kalender hieronder staan ze alle zestien, dag voor dag.",
     "nextDays": "Komende 30 dagen",
     "dayTripsGroup": "Dagtrips",
     "lastYearBanner": "Onze voorspelling loopt tot {date}. De dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de vermelding “vorig jaar”.",
     "lastYearBannerNoDate": "Een deel van deze dagen ligt voorbij onze voorspelling. Ze tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de vermelding “vorig jaar”.",
-    "monthIndexLabel": "Orlando per maand",
     "glance": {
-      "title": "Kortste rijen op <time>{date}</time>, tijd in Orlando",
       "minutes": "ongeveer {minutes} min",
       "closesEarly": "sluit om {time} voor een avondevenement",
       "earlyElsewhere": "({park} sluit om {time} voor een avondevenement)",
@@ -443,7 +421,6 @@
       "lastYear": "Vorig jaar",
       "howTo": "Zo lees je dit",
       "minutesLong": "Het getal in een vakje is de wachttijd die we bij de grote attracties van het park verwachten, elk op zijn drukste moment van de dag, gemiddeld over die attracties. Het geldt niet voor elk uur: 's ochtends en 's avonds zijn de rijen korter.",
-      "colourLong": "De kleur vergelijkt een dag met een gewone dag in hetzelfde park. Daarom zijn een groen Magic Kingdom met 40 minuten en een groen EPCOT met 60 minuten allebei goede dagen, elk voor het eigen park. De ring markeert het park met de kortste rijen in het resort die dag. Een park dat eerder sluit voor dagbezoekers, verliest de ring aan een volle dag met een vergelijkbare wachttijd.",
       "horizonLong": "De voorspelling loopt 60 dagen vooruit. Daarna loopt onze vooruitblik tot {date}, met een grotere afwijking. Dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben.",
       "horizonLongNoDate": "De voorspelling loopt 60 dagen vooruit. Daarna loopt onze vooruitblik door met een grotere afwijking, en dagen daarna tonen dezelfde weekdag vorig jaar, zoals wij die gemeten hebben.",
       "statesLong": "Een gearceerd vakje is gesloten, zoals het park het heeft gepubliceerd. Een vakje met een stip toont de voorspelling of het cijfer van vorig jaar, maar het park heeft de openingstijden voor die dag nog niet gepubliceerd; die tellen dus niet mee. Een leeg vakje heeft geen cijfer. Een streepje betekent: open, maar zonder rijen die een voorspelling waard zijn, zoals in de meeste waterparken.",
@@ -456,7 +433,6 @@
       "unavailable": "De kalender kon niet worden geladen. Probeer het over een paar minuten opnieuw.",
       "sources": "Wachttijden en drukte: park.fan-voorspelling van {date}. Openingstijden zoals de parken ze publiceren. Reistijden zonder verkeer, kaartgegevens: {attribution}.",
       "dayPlanner": "Plan één parkdag in de dagplanner",
-      "caption": "De parken van Orlando van {from} tot {to}: wachttijd bij de grote attracties op het drukste moment, in minuten",
       "parkColumn": "Park",
       "filterLabel": "Getoonde parken",
       "filterAll": "Alle parken",
@@ -485,14 +461,10 @@
     "lanes": {
       "summaryLabel": "Evenementen",
       "nights": "{name}: {count, plural, =1 {# avond} other {# avonden}}",
-      "break": "Amerikaanse schoolvakantie: {name}, {dates}",
       "expected": "data verwacht",
-      "unnamedBreak": "Amerikaanse schoolvakantie",
-      "none": "Geen evenementen of Amerikaanse schoolvakanties in deze dagen.",
       "allDays": "elke dag"
     },
     "sheet": {
-      "kicker": "Orlando · één dag",
       "intro": "Per resort staat het beste park bovenaan: kortste rijen, vroege sluitingen meegeteld. Minuten: de grote attracties op het drukste moment.",
       "stayingAt": "Je verblijft in",
       "minutes": "{minutes} min",
@@ -501,15 +473,12 @@
       "closedFor": "Gesloten: {name}",
       "lastYear": "Gemeten dag van vorig jaar; de voorspelling reikt nog niet tot deze datum.",
       "outlook": "Vooruitblik: een grotere afwijking dan de voorspelling.",
-      "earlyEntry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
-      "earlyAdmission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels",
       "ticketedEvening": "{name} vanaf {time}: dagbezoekers vertrekken om {leave}",
       "eveningEvent": "Avondevenement",
       "shorterDay": "Kortere dag: dagbezoekers vertrekken om {leave}",
       "extendedEvening": "Extended Evening Hours tot {time} voor gasten van de deluxe hotels",
       "expected": "data verwacht",
       "travel": "Vanaf {area}: ongeveer {minutes} min met de auto, zonder verkeer",
-      "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min {via, select, ttc {met monorail of veerboot} other {met de pendelbus}}, samen {total} min, zonder verkeer",
       "bigRides": "De grote attracties",
       "ridesLoading": "De attracties worden geladen …",
       "ridesNone": "Geen cijfers per attractie voor deze dag.",
@@ -519,14 +488,7 @@
       "ahead": "Voor {park}, waar dagbezoekers om {time} vertrekken"
     },
     "when": {
-      "kicker": "Disney World en Universal",
-      "title": "Beste tijd om Orlando te bezoeken in {year}",
-      "titleNoYear": "Beste tijd om Orlando te bezoeken",
-      "hint": "De reizen van tien dagen met de kortste rijen in de zeven grote parken van Walt Disney World en Universal.",
-      "pageLink": "Beste tijd om Orlando te bezoeken in {year}",
-      "pageLinkNoYear": "Beste tijd om Orlando te bezoeken",
       "none": "De rustigste reizen van het jaar konden niet worden geladen.",
-      "sentence": "De rustigste reizen van {days} dagen voor Disney en Universal: {windows}.",
       "lastYearNote": "Data voorbij onze voorspelling zijn gepland met de gemeten drukte van vorig jaar.",
       "rank": "Nr. {rank}",
       "figure": "Grote attracties: ongeveer {minutes} min",
@@ -557,7 +519,6 @@
       "quietest_in_window": "de kortste rijen van deze periode",
       "weekday": "doordeweeks",
       "holiday_ends": "na de feestdagen",
-      "school_break": "in een Amerikaanse schoolvakantie",
       "closes_early": "dagbezoekers vertrekken om {time}",
       "extended_evening": "Extended Evening Hours",
       "early_entry": "Early Entry voor hotelgasten",
@@ -574,74 +535,11 @@
       "eventNights": "{name} ({count, plural, =1 {# avond} other {# avonden}})",
       "eventExpected": "{name} (data verwacht)"
     },
-    "method": {
-      "title": "Zo werkt de voorspelling",
-      "summary": "Elk getal hier komt uit de wachttijden die park.fan elke vijf minuten meet, een voorspelling op basis daarvan en de openingstijden van de parken. Open een vraag voor de details.",
-      "sources": {
-        "title": "Waar komen de getallen vandaan?",
-        "body": "park.fan slaat elke vijf minuten de getoonde wachttijd van elke attractie op. Onze voorspellingsmodellen leren van die metingen, de openingstijden, de schoolvakanties en het weer. Openingstijden, Early Entry en avondevenementen komen uit de kalenders van de parken. Seizoenen en feesten controleren we met de hand."
-      },
-      "minutes": {
-        "title": "Wat betekenen de minuten?",
-        "body": "Voor elk park voorspellen we de wachttijd bij de grote attracties, elk op haar drukste moment van de dag, en nemen we het gemiddelde. Op dat ene getal vergelijken we de parken. 's Ochtends en 's avonds zijn de rijen korter, dus het geldt niet voor elk uur."
-      },
-      "horizon": {
-        "title": "Hoe ver vooruit gaat het?",
-        "body": "De voorspelling loopt 60 dagen vooruit. Daarna loopt de vooruitblik tot {date}, met een grotere afwijking. Daarna toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met “vorig jaar” erbij.",
-        "bodyNoDate": "De voorspelling loopt 60 dagen vooruit. Daarna loopt de vooruitblik door met een grotere afwijking. Daarna toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met “vorig jaar” erbij."
-      },
-      "error": {
-        "title": "Hoe nauwkeurig is het?",
-        "body": "Hoe verder de dag weg is, hoe meer de voorspelling ernaast kan zitten. Zodra je een reis plant, staat bij het resultaat hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten. Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
-      },
-      "travel": {
-        "title": "Hoe worden de reistijden berekend?",
-        "body": "Elke reistijd geldt voor de auto zonder verkeer, tot de parkeerplaats. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center, en van daar ben je met de monorail of de veerboot nog ongeveer 15 minuten onderweg naar de ingang. Voor Volcano Bay parkeer je in de parkeergarages van Universal en neem je nog ongeveer 15 minuten de pendelbus. Kaartgegevens: {attribution}."
-      },
-      "links": "Het model erachter: <fancast>Fancast</fancast>. De rest: <howto>zo werkt park.fan</howto>."
-    },
-    "faq": {
-      "title": "Vragen over de drukte in Orlando",
-      "quietest": {
-        "q": "Wanneer is het de komende weken het rustigst in Orlando?",
-        "qMonth": "Wanneer is het in {month} het rustigst in Orlando?",
-        "resort": "In {resort} zijn de rijen het kortst op {days}.",
-        "day": "{date} in {park}, ongeveer {minutes} min",
-        "note": "De kalender hierboven toont elke dag, met het park met de kortste rijen in elk resort."
-      },
-      "party": {
-        "q": "Welk park kies je op een feestavond in Magic Kingdom?",
-        "a": "Op {count, plural, =1 {# avond} other {# avonden}} in deze periode sluit Magic Kingdom voor dagbezoekers om {time} voor {name}. De rijen zijn die dagen korter, ongeveer {on} min tegenover {off} min op de andere dagen, maar de dag is korter en dagbezoekers missen de avond. Kies voor een volle dag op die dagen EPCOT, Hollywood Studios of Animal Kingdom, of kom met een feestticket."
-      },
-      "epic": {
-        "q": "Is Epic Universe in het weekend drukker?",
-        "a": "{verdict, select, busier {Ja.} same {Nee.} other {Maar een beetje.}} In deze periode sta je op het drukste moment bij de grote attracties op zaterdag en zondag ongeveer {weekend} min in de rij, doordeweeks ongeveer {weekday} min."
-      },
-      "distance": {
-        "q": "Hoe ver ligt Universal van Walt Disney World?",
-        "a": "Van Universal Studios naar EPCOT rijd je zonder verkeer ongeveer {epcot} minuten, naar de parkeerplaats van Magic Kingdom ongeveer {magic}. Van daar ben je met de monorail of de veerboot nog ongeveer {transfer} minuten onderweg naar de ingang, samen {total} minuten. Kaartgegevens: {attribution}."
-      },
-      "early": {
-        "q": "Heb ik Early Entry nodig?",
-        "a": "Nee, maar op drukke dagen helpt het. Gasten van Disneys eigen hotels mogen {disney} minuten voor iedereen de Disney-themaparken in, gasten van de Universal-hotels {universal} minuten eerder in de themaparken van Universal. Kies je in de reisplanner zo’n hotel, dan telt de vroege opening mee."
-      },
-      "green": {
-        "q": "Waarom kan een park met langere rijen groen zijn?",
-        "a": "De kleur vergelijkt een dag met een gewone dag in hetzelfde park, niet met andere parken. EPCOT met 60 minuten kan voor EPCOT een rustige dag zijn en Magic Kingdom met 50 minuten een drukke. Om twee parken te vergelijken, lees je de minuten."
-      },
-      "lastYear": {
-        "q": "Wat betekent “vorig jaar” bij een dag?",
-        "a": "Onze voorspelling reikt nog niet tot die dag. Tot dan toont de dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben. Lees het als een teken van hoe druk die tijd van het jaar was, niet als voorspelling."
-      }
-    },
     "next": {
-      "title": "Meerdere dagen in Orlando?",
       "body": "Geef de planner je reisdagen en je parken, en hij zet elk park op de dag waarop de rijen er het kortst zijn.",
       "parkCalendar": "{park} drukte-kalender"
     },
     "dataset": {
-      "name": "Drukte-kalender van de pretparken in Orlando, {period}",
-      "description": "Per park en dag in Walt Disney World, Universal Orlando, SeaWorld en op de dagtrips: de verwachte wachttijd bij de grote attracties op het drukste moment, de drukte ten opzichte van een gewone dag in het park en de openingstijden, {period}.",
       "varWait": "Verwachte wachttijd bij de grote attracties",
       "varCrowd": "Drukte",
       "varHours": "Openingstijden"
@@ -2374,22 +2272,7 @@
       "guidesLead": "Onze gidsen voor deze parken:"
     }
   },
-  "orlandoBestTime": {
-    "title": {
-      "orlando": "Beste reistijd voor Orlando in {year}",
-      "disney-world": "Beste reistijd voor Disney World in {year}",
-      "universal-orlando": "Beste reistijd voor Universal Orlando in {year}"
-    },
-    "name": {
-      "orlando": "Beste reistijd voor Orlando",
-      "disney-world": "Beste reistijd voor Disney World",
-      "universal-orlando": "Beste reistijd voor Universal Orlando"
-    },
-    "resort": {
-      "orlando": "Disney en Universal",
-      "disney-world": "Walt Disney World",
-      "universal-orlando": "Universal Orlando"
-    },
+  "tripBestTime": {
     "switcher": "Beste reistijd per resort",
     "metaDescription": "De rustigste reizen van {days} dagen in {year}: {windows}. Daarna elke maand met wachttijden, evenementen, schoolvakanties en het gewone weer.",
     "metaDescriptionShort": "De rustigste reizen van {days} dagen in {year} bij {parks}: {windows}.",
@@ -2402,11 +2285,6 @@
       "events": "Evenementen: {list}",
       "cautions": "Goed om te weten",
       "flat": "Van {from} tot {to} springt geen week eruit: steeds ongeveer {minutes} min."
-    },
-    "intro": {
-      "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",
-      "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
-      "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
     },
     "strip": {
       "title": "Het jaar in één oogopslag",
@@ -2441,7 +2319,6 @@
       "wait": "Grote attracties ongeveer {minutes} min",
       "label": {
         "events": "Evenementen",
-        "usBreaks": "Amerikaanse schoolvakanties (Orlando)",
         "euBreaks": "Schoolvakanties in Europa",
         "weather": "Gewone weer",
         "hours": "Openingstijden"
@@ -2456,7 +2333,6 @@
         "unknown": "Nog niet gepubliceerd"
       },
       "partyNights": "{count, plural, =1 {1 feestavond} other {# feestavonden}} met vroege sluiting",
-      "hurricane": "Orkaanseizoen",
       "statesOf": "{count} van {total} Duitse deelstaten",
       "euUnknown": "nog niet bekend",
       "details": "Data en evenementen"
@@ -2466,8 +2342,7 @@
       "lead": "De drie rustigste en de drie drukste hele weken van {year}, met wat er die week te doen is.",
       "best": "Rustigste weken",
       "worst": "Drukste weken",
-      "week": "Week van {date}",
-      "noBreak": "Geen Amerikaanse schoolvakantie in Orlando."
+      "week": "Week van {date}"
     },
     "holidays": {
       "title": "Alleen in de schoolvakantie?",
@@ -2475,30 +2350,6 @@
       "note": "Alleen vakanties van {days} dagen of langer staan erbij, weekenden meegeteld.",
       "through": "De schoolkalenders lopen tot {date}, latere vakanties ontbreken nog.",
       "none": "Geen vakantie van {days} dagen of langer in {year}."
-    },
-    "faq": {
-      "title": "Vragen over de beste reistijd",
-      "quietQ": {
-        "orlando": "Wanneer is het in {year} het rustigst in Orlando?",
-        "disney-world": "Wanneer is het in {year} het rustigst in Disney World?",
-        "universal-orlando": "Wanneer is het in {year} het rustigst in Universal Orlando?"
-      },
-      "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste rijen: de grote attracties ongeveer {minutes} min op het drukste moment, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
-      "christmasQ": "Is het druk met kerst?",
-      "christmasA": "{busy, select, yes {Ja.} other {Nee.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
-      "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
-      "partyQ": "Wanneer zijn de feestavonden?",
-      "partyA": "{list}. Op die avonden sluit het park eerder voor dagbezoekers; daarom zet de reisplanner je volle parkdagen er niet op.",
-      "partyItem": "{name} ({park}): {dates}, {status}",
-      "hurricaneQ": "Hoe zit het met het orkaanseizoen?",
-      "hurricaneA": "Het loopt van 1 juni tot 30 november. Of er een storm in je reis valt, weet je pas een paar dagen van tevoren, als hij zich gevormd heeft en een naam heeft gekregen. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
-      "firstQ": {
-        "orlando": "Eerst Disney of eerst Universal?",
-        "disney-world": "Welk Disney-park eerst?",
-        "universal-orlando": "Welk Universal-park eerst?"
-      },
-      "firstA": "Dat hangt van de data af: de planner zet elk park op zijn rustigste dag van de reis. Voor de reis vanaf {date} is dat {order}.",
-      "firstItem": "{park} op {date}"
     },
     "dataset": {
       "name": "Wachttijden van de grote attracties per week en maand bij {parks}, {year}",
@@ -3234,7 +3085,7 @@
       "open": "Planner openen"
     }
   },
-  "orlandoPlanner": {
+  "tripPlanner": {
     "setup": {
       "dates": "Reisdata",
       "datesEmpty": "Kies aankomst en vertrek",
@@ -3248,7 +3099,6 @@
       "plan": "Plannen",
       "find": "Data zoeken",
       "done": "Klaar",
-      "start": "Orlando-reis plannen",
       "close": "Sluiten",
       "sheetHint": "Je keuze verandert het plan eronder."
     },
@@ -3302,7 +3152,6 @@
       "fewer": "{park}: een dag minder",
       "more": "{park}: een dag meer",
       "moreParks": "Meer parken",
-      "moreHint": "Waterparken, SeaWorld en dagtochten",
       "moreChosen": "{count, plural, =1 {1 gekozen} other {# gekozen}}",
       "drive": "Ongeveer {minutes} min. met de auto",
       "closed": "Gesloten op je data",
@@ -3313,38 +3162,12 @@
     },
     "options": {
       "hotel": "Waar je overnacht",
-      "hotelLabel": {
-        "disney": "Disney-hotel",
-        "disney_deluxe": "Disney-deluxehotel",
-        "universal": "Universal-hotel",
-        "universal_premier": "Universal Premier-hotel",
-        "offsite": "Ergens anders"
-      },
-      "hotelHint": {
-        "disney": "Early Entry in de Disney-parken, 30 minuten voor de opening",
-        "disney_deluxe": "Early Entry, en op sommige avonden Extended Evening Hours",
-        "universal": "Early Park Admission, een uur voor de opening",
-        "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure",
-        "offsite": "Geen vroege toegang"
-      },
-      "hotelShort": {
-        "disney": "Disney-hotel",
-        "disney_deluxe": "Disney-deluxehotel",
-        "universal": "Universal-hotel",
-        "universal_premier": "Universal Premier",
-        "offsite": "hotel elders"
-      },
       "area": "Hotelbuurt, voor de rijtijden",
       "areaNone": "Niet opgegeven",
       "areaNoneHint": "Het plan toont dan geen rijtijden.",
       "fromArea": "vanaf {area}",
-      "fireworks": "Wil je het vuurwerk in Magic Kingdom zien?",
       "fireworksWant": "Ja",
-      "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
       "fireworksAny": "Maakt niet uit",
-      "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
-      "fireworksWantShort": "vuurwerk in Magic Kingdom",
-      "blocks": "Disney-dagen en Universal-dagen bij elkaar houden",
       "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt.",
       "blocksOn": "resorts achter elkaar",
       "blocksOff": "resorts door elkaar",
@@ -3363,9 +3186,7 @@
       "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
       "hopOn": "parkhoppen",
       "evenings": "Avonden plannen",
-      "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor.",
       "eveningsOff": "geen avonden",
-      "blocksTickets": "Disney-dagen en Universal-dagen",
       "blocksAuto": "Alleen gemengd als het tijd scheelt",
       "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt.",
       "blocksAlways": "Altijd bij elkaar",
@@ -3411,8 +3232,10 @@
     "marker": {
       "closesAt": "sluit {time}",
       "closesEarly": "sluit vroeger",
-      "earlyEntry": "Early Entry",
-      "earlyPark": "Early Park Admission",
+      "early": {
+        "early_entry": "Early Entry",
+        "early_park_admission": "Early Park Admission"
+      },
       "rest": "Rustdag",
       "evening": "Extended Evening Hours",
       "last_year": "vorig jaar",
@@ -3451,12 +3274,7 @@
         "early_entry": "Early Entry voor jou vanaf {time}",
         "early_park_admission": "Early Park Admission voor jou vanaf {time}"
       },
-      "earlyOthers": {
-        "early_entry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
-        "early_park_admission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels"
-      },
       "eveningYours": "Extended Evening Hours voor jou tot {time}",
-      "eveningOthers": "Extended Evening Hours tot {time} voor gasten van de Disney-deluxehotels",
       "partyTicket": "{name}, met apart ticket",
       "party": "{name}",
       "shortDay": "Een kortere dag voor dagbezoekers",
@@ -3470,7 +3288,6 @@
         "walk": "Ongeveer {minutes} min. lopen vanaf {area}.",
         "bus": "Ongeveer {minutes} min. met de shuttle vanaf {area}."
       },
-      "transferTtc": "Daarna ongeveer {minutes} min. met de monorail of de veerboot vanaf het Transportation and Ticket Center.",
       "transfer": "Daarna ongeveer {minutes} min. van de parkeerplaats naar de ingang.",
       "between": {
         "drive": "Tussen de parken: ongeveer {minutes} min. met de auto.",
@@ -3493,7 +3310,6 @@
       "quietest_in_window": "De rustigste van je dagen voor {park}.",
       "runner_up_close": "Een andere dag van je reis zit minder dan 5 minuten hoger; deze past beter bij de rest van het plan.",
       "party_night": "Een feestavond.",
-      "express_included": "Express zit hier bij je hotel inbegrepen, dus de rijen tellen minder.",
       "extended_evening": "Je hotel heeft deze dag Extended Evening Hours.",
       "early_park_admission": "Je hotel heeft deze dag Early Park Admission.",
       "early_entry": "Je hotel heeft deze dag Early Entry.",
@@ -3515,7 +3331,6 @@
       "long_streak": "Meer parkdagen achter elkaar dan de rustdagregel toelaat; je parkkeuze liet geen ruimte voor een pauze."
     },
     "relaxed": {
-      "blocks_relaxed": "Disney-dagen en Universal-dagen konden op deze data niet helemaal bij elkaar blijven.",
       "streak_relaxed": "Je parken hebben meer dagen achter elkaar nodig dan de rustdagregel toelaat."
     },
     "unplaced": {
@@ -3554,7 +3369,6 @@
       "manual": "Kopieer de link met de hand:"
     },
     "ics": {
-      "calendarName": "Orlando-reis {range}",
       "wait": "Grote attracties ongeveer {minutes} min.",
       "link": "Plan: {url}"
     },
@@ -3570,16 +3384,13 @@
       "details": "Details",
       "plan": "Deze data plannen",
       "reason": {
-        "no_school_break": "Geen Amerikaanse schoolvakanties.",
         "after_holidays": "Meteen na de feestdagen.",
-        "before_spring_break": "Voor de drukte van de Amerikaanse voorjaarsvakantie.",
         "festival": "Op deze dagen loopt een festival.",
         "long_days": "Lange openingstijden.",
         "mild_weather": "Meestal mild weer."
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 feestavond} other {# feestavonden}}: dagbezoekers moeten dan vroeger weg.",
-        "school_break": "Amerikaanse schoolvakanties.",
         "water_park_closed": "Een gekozen waterpark is in deze tijd gesloten.",
         "hurricane_season": "Orkaanseizoen (juni tot november).",
         "hours_not_published": "Nog niet alle openingstijden zijn gepubliceerd.",
@@ -3634,27 +3445,6 @@
       "yes": "Ja, ik heb tickets",
       "nextDates": "Verder naar de reisdata",
       "yours": "Jouw tickets",
-      "combo": {
-        "title": "Disney and Universal Combo Ticket",
-        "hint": "Eén pakket, twee tickets: Disney 14 parkdagen binnen 18 dagen, Universal 14 dagen achter elkaar, allebei vanaf de dag die je hebt gekozen.",
-        "lite": "Bij aankomst van {from} tot {to} als Lite, zonder Volcano Bay."
-      },
-      "resort": {
-        "walt-disney-world": "Walt Disney World",
-        "universal-orlando": "Universal Orlando",
-        "seaworld-orlando": "SeaWorld, Aquatica, Busch Gardens",
-        "day-trips": "LEGOLAND Florida"
-      },
-      "resortShort": {
-        "walt-disney-world": "Disney",
-        "universal-orlando": "Universal",
-        "seaworld-orlando": "SeaWorld",
-        "day-trips": "LEGOLAND"
-      },
-      "hopperName": {
-        "disney": "Park Hopper",
-        "universal": "park-to-park"
-      },
       "add": "Ticket toevoegen",
       "addLabel": "Een {resort}-ticket toevoegen",
       "addAnother": "Nog een {resort}-ticket toevoegen",
@@ -3665,126 +3455,6 @@
       "changeLabel": "{name} wijzigen",
       "close": "Sluiten",
       "max": "Hoogstens {count} tickets.",
-      "mixNote": "Elk ticket houdt zijn eigen data. Waar beide geldig zijn, mengt het plan Disney- en Universal-dagen alleen als dat minstens 3 min per attractie scheelt.",
-      "market": {
-        "intl": "Verkocht buiten de VS"
-      },
-      "entry": {
-        "wdw-dated": {
-          "title": "Ticket met datum, 1 tot 10 dagen",
-          "hint": "Van Disneys Amerikaanse site, uit een Disney-hotelpakket of van de meeste verkopers. Met of zonder Park Hopper."
-        },
-        "wdw-uk-14": {
-          "title": "14-Day Magic Ticket",
-          "hint": "14 parkdagen binnen 18 dagen. Parkhoppen en waterparken inbegrepen."
-        },
-        "wdw-uk-7": {
-          "title": "7-Day Magic Ticket",
-          "hint": "7 parkdagen binnen 15 dagen. Parkhoppen en waterparken inbegrepen."
-        },
-        "wdw-4-park": {
-          "title": "4-Park Magic Ticket",
-          "hint": "Eén dag in elk themapark binnen 6 dagen, zonder hoppen. Eerste dag in de periode {range}."
-        },
-        "wdw-pass": {
-          "title": "Jaarabonnement",
-          "hint": "Incredi-Pass, Sorcerer, Pirate of Pixie Dust Pass."
-        },
-        "wdw-unsure": {
-          "title": "Weet ik niet precies",
-          "hint": "Zeg ons hoeveel dagen het heeft en of Park Hopper erbij zit."
-        },
-        "uor-dated": {
-          "title": "Ticket met datum, 1 tot 5 dagen",
-          "hint": "Van Universals Amerikaanse site of de meeste verkopers. Base of park-to-park, Epic Universe vanaf 3 dagen."
-        },
-        "uor-uk-14": {
-          "title": "Ticket voor 14 dagen",
-          "hint": "All Parks of Three Park Adventure Ticket: 14 dagen achter elkaar elke dag, park-to-park, Epic Universe inbegrepen."
-        },
-        "uor-epic": {
-          "title": "Met één dag Epic Universe",
-          "hint": "1-Day + 1-Day Epic Universe, of de aanbieding 2-Day Park-to-Park + 1 Day Epic Universe."
-        },
-        "uor-1-day": {
-          "title": "Dagticket voor Epic Universe of Volcano Bay",
-          "hint": "Eén park op één dag."
-        },
-        "uor-pass": {
-          "title": "Jaarabonnement",
-          "hint": "Seasonal, Power, Preferred of Premier. Epic Universe zit in geen enkel abonnement."
-        },
-        "uor-unsure": {
-          "title": "Weet ik niet precies",
-          "hint": "Zeg ons hoeveel dagen het heeft en of park-to-park erbij zit."
-        },
-        "sw-1-day": {
-          "title": "Dagticket",
-          "hint": "Eén bezoek aan SeaWorld Orlando of Busch Gardens Tampa Bay."
-        },
-        "sw-two-park": {
-          "title": "Two Park Ticket",
-          "hint": "SeaWorld en Aquatica, of SeaWorld en Busch Gardens, elk één bezoek binnen 14 dagen."
-        },
-        "sw-three-park": {
-          "title": "Three-Day, Three Park Ticket",
-          "hint": "3 bezoeken aan SeaWorld, Aquatica, Busch Gardens of Adventure Island binnen 14 dagen na het eerste."
-        },
-        "sw-four-parks": {
-          "title": "Four Parks Ticket",
-          "hint": "SeaWorld, Aquatica, Busch Gardens en Adventure Island, zo vaak je wilt, 14 dagen vanaf het eerste bezoek."
-        },
-        "sw-uk-3-visit": {
-          "title": "3-Visit Ticket + Eat Free",
-          "hint": "3 bezoeken aan SeaWorld, Aquatica of Busch Gardens binnen 14 dagen na het eerste."
-        },
-        "sw-uk-ultimate": {
-          "title": "Ultimate Ticket",
-          "hint": "SeaWorld, Aquatica en Busch Gardens, zo vaak je wilt, 14 dagen vanaf het eerste bezoek."
-        },
-        "sw-discovery-cove": {
-          "title": "Dag in Discovery Cove",
-          "hint": "Je gereserveerde dag in Discovery Cove, los of met 14 dagen SeaWorld en zusterparken eromheen."
-        },
-        "sw-fun-card": {
-          "title": "Fun Card",
-          "hint": "SeaWorld (met of zonder Aquatica) of Busch Gardens, zo vaak je wilt tot eind 2027, behalve op blokkadedagen."
-        },
-        "sw-pass": {
-          "title": "Jaarabonnement",
-          "hint": "SeaWorld Orlando, of de vier parken in Florida."
-        },
-        "lego-day": {
-          "title": "Ticket voor 1 of 2 dagen",
-          "hint": "LEGOLAND Florida."
-        },
-        "lego-7": {
-          "title": "7 Florida Attractions Ticket",
-          "hint": "Eén bezoek aan LEGOLAND binnen 14 dagen, onderdeel van Merlins ticket voor zeven attracties."
-        },
-        "lego-pass": {
-          "title": "Jaarabonnement",
-          "hint": "LEGOLAND Florida."
-        }
-      },
-      "variant": {
-        "uor-1-day-plus-epic": "1-Day + 1-Day Epic Universe",
-        "uor-2-day-p2p-plus-epic": "2-Day Park-to-Park + 1 Day Epic Universe",
-        "uor-epic-1-day": "Epic Universe",
-        "uor-volcano-bay-1-day": "Volcano Bay",
-        "seaworld-1-day": "SeaWorld Orlando",
-        "busch-gardens-1-day": "Busch Gardens Tampa Bay",
-        "discovery-cove": "Alleen Discovery Cove",
-        "discovery-cove-plus-2": "+ SeaWorld en Aquatica",
-        "discovery-cove-plus-3": "+ SeaWorld, Aquatica en Busch Gardens",
-        "seaworld-fun-card": "SeaWorld",
-        "seaworld-fun-card-aquatica": "SeaWorld en Aquatica",
-        "busch-gardens-fun-card": "Busch Gardens",
-        "seaworld-annual-pass": "SeaWorld Orlando",
-        "seaworld-annual-pass-florida": "Vier parken in Florida",
-        "legoland-1-day": "1 dag",
-        "legoland-2-day": "2 dagen"
-      },
       "fields": {
         "which": "Welke?",
         "days": "Parkdagen",
@@ -3795,11 +3465,8 @@
           "unsure": "Weet ik niet"
         },
         "hopperUnsure": "We plannen zonder {hopper} en zeggen wat het zou opleveren.",
-        "waterParks": "Waterparken inbegrepen (Water Park and Sports of Park Hopper Plus)",
-        "volcanoBay": "Volcano Bay inbegrepen",
         "start": "Eerste dag van het ticket",
         "startFirstUse": "Eerste bezoek",
-        "startReserved": "Je dag in Discovery Cove",
         "startOpen": "Nog niet vastgelegd",
         "startOpenHint": "Het plan kiest de beste eerste dag.",
         "startHint": "De datum uit je boeking.",
@@ -3874,14 +3541,8 @@
         "with": "Plan met {hopper} tonen",
         "without": "Plan zonder {hopper} tonen"
       },
-      "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
       "newTab": "(opent in een nieuw tabblad)",
       "adopt": "Als jouw tickets gebruiken",
-      "longStay": {
-        "line": "Buiten de VS zijn er tickets voor 14 dagen voor Disney en Universal, ook als Combo Ticket.",
-        "plan": "Daarmee plannen",
-        "detail": "De tickets voor 14 dagen in de winkels van de parken buiten de VS:"
-      },
       "owned": {
         "valid": "Geldig van {from} tot {to}",
         "startChosen": "Beste eerste dag voor dit plan: {start}. Geldig tot {end}.",
@@ -3906,11 +3567,6 @@
         "before": "{park} op {date} valt buiten dit ticket, dat op {edge} begint.",
         "leaveOut": "Dit bezoek weglaten",
         "changeTicket": "Ticket wijzigen"
-      },
-      "mixing": {
-        "used": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen: ongeveer {minutes} min minder per attractie dan apart.",
-        "forced": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen.",
-        "kept": "Disney-dagen en Universal-dagen blijven bij elkaar: mengen zou minder dan 3 min per attractie schelen."
       },
       "pass": {
         "blockouts": "Op welke dagen je abonnement niet geldt, weten we niet. Controleer je {count, plural, =1 {1 {resort}-dag} other {# {resort}-dagen}} voor vertrek.",
@@ -3952,6 +3608,420 @@
       "partner": {
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
+      }
+    }
+  },
+  "tripRegions": {
+    "orlando": {
+      "nav": {
+        "name": "Orlando",
+        "area": "Florida",
+        "calendar": "Orlando drukte-kalender",
+        "calendarHint": "Welk park op welke dag, en een planner voor je hele reis."
+      },
+      "hub": {
+        "title": "Orlando drukte-kalender",
+        "monthTitle": "Orlando drukte-kalender {month}",
+        "metaTitle": "Orlando drukte-kalender & reisplanner",
+        "metaTitleMonth": "Orlando drukte-kalender {month}: Disney & Universal",
+        "metaTitleMonthShort": "Orlando drukte-kalender {month}",
+        "metaDescription": "Welk park in Orlando op welke dag, met Epic Universe. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Welk park op welke dag in Walt Disney World, bij Universal met Epic Universe en in SeaWorld, en een planner die je parken op je reisdagen zet.",
+        "metaDescriptionMonth": "De rustigste dagen in Orlando in {month}: {verdict}. Elk park dag voor dag, met Epic Universe.",
+        "metaDescriptionMonthPlain": "Orlando in {month}, dag voor dag: waar je in Disney World, bij Universal met Epic Universe, in SeaWorld en op de dagtrips het kortst in de rij staat.",
+        "lead": "Met één hotelkamer in Orlando heb je acht themaparken en vier waterparken om de hoek.",
+        "leadMonth": "In welk park je op welke dag in {month} het kortst in de rij staat: Walt Disney World, Universal met Epic Universe, SeaWorld en de dagtrips.",
+        "opening": "Zonder verkeer rijd je van EPCOT naar Universal Studios in 25 minuten, en vanuit een hotel in Lake Buena Vista ligt elk van de acht themaparken binnen een halfuur, bij Magic Kingdom met de veerboot of monorail erbij. Naar LEGOLAND in Winter Haven is het bijna een uur, naar Busch Gardens en Adventure Island in Tampa zo’n anderhalf uur. Met die drie, Discovery Cove en de vier waterparken zijn het er zestien, en voor geen ervan hoef je van hotel te wisselen. In de kalender hieronder staan ze alle zestien, dag voor dag.",
+        "monthIndexLabel": "Orlando per maand",
+        "glance": {
+          "title": "Kortste rijen op <time>{date}</time>, tijd in Orlando"
+        },
+        "legend": {
+          "colourLong": "De kleur vergelijkt een dag met een gewone dag in hetzelfde park. Daarom zijn een groen Magic Kingdom met 40 minuten en een groen EPCOT met 60 minuten allebei goede dagen, elk voor het eigen park. De ring markeert het park met de kortste rijen in het resort die dag. Een park dat eerder sluit voor dagbezoekers, verliest de ring aan een volle dag met een vergelijkbare wachttijd."
+        },
+        "calendar": {
+          "caption": "De parken van Orlando van {from} tot {to}: wachttijd bij de grote attracties op het drukste moment, in minuten"
+        },
+        "lanes": {
+          "break": "Amerikaanse schoolvakantie: {name}, {dates}",
+          "unnamedBreak": "Amerikaanse schoolvakantie",
+          "none": "Geen evenementen of Amerikaanse schoolvakanties in deze dagen."
+        },
+        "sheet": {
+          "kicker": "Orlando · één dag",
+          "early": {
+            "early_entry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_park_admission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels"
+          },
+          "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min {via, select, ttc {met monorail of veerboot} other {met de pendelbus}}, samen {total} min, zonder verkeer"
+        },
+        "when": {
+          "kicker": "Disney World en Universal",
+          "title": "Beste tijd om Orlando te bezoeken in {year}",
+          "titleNoYear": "Beste tijd om Orlando te bezoeken",
+          "hint": "De reizen van tien dagen met de kortste rijen in de zeven grote parken van Walt Disney World en Universal.",
+          "pageLink": "Beste tijd om Orlando te bezoeken in {year}",
+          "pageLinkNoYear": "Beste tijd om Orlando te bezoeken",
+          "sentence": "De rustigste reizen van {days} dagen voor Disney en Universal: {windows}."
+        },
+        "reasons": {
+          "school_break": "in een Amerikaanse schoolvakantie"
+        },
+        "method": {
+          "title": "Zo werkt de voorspelling",
+          "summary": "Elk getal hier komt uit de wachttijden die park.fan elke vijf minuten meet, een voorspelling op basis daarvan en de openingstijden van de parken. Open een vraag voor de details.",
+          "sources": {
+            "title": "Waar komen de getallen vandaan?",
+            "body": "park.fan slaat elke vijf minuten de getoonde wachttijd van elke attractie op. Onze voorspellingsmodellen leren van die metingen, de openingstijden, de schoolvakanties en het weer. Openingstijden, Early Entry en avondevenementen komen uit de kalenders van de parken. Seizoenen en feesten controleren we met de hand."
+          },
+          "minutes": {
+            "title": "Wat betekenen de minuten?",
+            "body": "Voor elk park voorspellen we de wachttijd bij de grote attracties, elk op haar drukste moment van de dag, en nemen we het gemiddelde. Op dat ene getal vergelijken we de parken. 's Ochtends en 's avonds zijn de rijen korter, dus het geldt niet voor elk uur."
+          },
+          "horizon": {
+            "title": "Hoe ver vooruit gaat het?",
+            "body": "De voorspelling loopt 60 dagen vooruit. Daarna loopt de vooruitblik tot {date}, met een grotere afwijking. Daarna toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met “vorig jaar” erbij.",
+            "bodyNoDate": "De voorspelling loopt 60 dagen vooruit. Daarna loopt de vooruitblik door met een grotere afwijking. Daarna toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met “vorig jaar” erbij."
+          },
+          "error": {
+            "title": "Hoe nauwkeurig is het?",
+            "body": "Hoe verder de dag weg is, hoe meer de voorspelling ernaast kan zitten. Zodra je een reis plant, staat bij het resultaat hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten. Wachttijden zijn afgerond op vijf minuten, dus dagen binnen vijf minuten tellen hier als gelijk, en de beste dagen van een park zijn een groep, geen ranglijst."
+          },
+          "travel": {
+            "title": "Hoe worden de reistijden berekend?",
+            "body": "Elke reistijd geldt voor de auto zonder verkeer, tot de parkeerplaats. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center, en van daar ben je met de monorail of de veerboot nog ongeveer 15 minuten onderweg naar de ingang. Voor Volcano Bay parkeer je in de parkeergarages van Universal en neem je nog ongeveer 15 minuten de pendelbus. Kaartgegevens: {attribution}."
+          },
+          "links": "Het model erachter: <fancast>Fancast</fancast>. De rest: <howto>zo werkt park.fan</howto>."
+        },
+        "faq": {
+          "title": "Vragen over de drukte in Orlando",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in Orlando?",
+            "qMonth": "Wanneer is het in {month} het rustigst in Orlando?",
+            "resort": "In {resort} zijn de rijen het kortst op {days}.",
+            "day": "{date} in {park}, ongeveer {minutes} min",
+            "note": "De kalender hierboven toont elke dag, met het park met de kortste rijen in elk resort."
+          },
+          "party": {
+            "q": "Welk park kies je op een feestavond in Magic Kingdom?",
+            "a": "Op {count, plural, =1 {# avond} other {# avonden}} in deze periode sluit Magic Kingdom voor dagbezoekers om {time} voor {name}. De rijen zijn die dagen korter, ongeveer {on} min tegenover {off} min op de andere dagen, maar de dag is korter en dagbezoekers missen de avond. Kies voor een volle dag op die dagen EPCOT, Hollywood Studios of Animal Kingdom, of kom met een feestticket."
+          },
+          "epic": {
+            "q": "Is Epic Universe in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Maar een beetje.}} In deze periode sta je op het drukste moment bij de grote attracties op zaterdag en zondag ongeveer {weekend} min in de rij, doordeweeks ongeveer {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe ver ligt Universal van Walt Disney World?",
+            "a": "Van Universal Studios naar EPCOT rijd je zonder verkeer ongeveer {near} minuten, naar de parkeerplaats van Magic Kingdom ongeveer {far}. Van daar ben je met de monorail of de veerboot nog ongeveer {transfer} minuten onderweg naar de ingang, samen {total} minuten. Kaartgegevens: {attribution}."
+          },
+          "early": {
+            "q": "Heb ik Early Entry nodig?",
+            "a": "Nee, maar op drukke dagen helpt het. Gasten van Disneys eigen hotels mogen {first} minuten voor iedereen de Disney-themaparken in, gasten van de Universal-hotels {second} minuten eerder in de themaparken van Universal. Kies je in de reisplanner zo’n hotel, dan telt de vroege opening mee."
+          },
+          "green": {
+            "q": "Waarom kan een park met langere rijen groen zijn?",
+            "a": "De kleur vergelijkt een dag met een gewone dag in hetzelfde park, niet met andere parken. EPCOT met 60 minuten kan voor EPCOT een rustige dag zijn en Magic Kingdom met 50 minuten een drukke. Om twee parken te vergelijken, lees je de minuten."
+          },
+          "lastYear": {
+            "q": "Wat betekent “vorig jaar” bij een dag?",
+            "a": "Onze voorspelling reikt nog niet tot die dag. Tot dan toont de dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben. Lees het als een teken van hoe druk die tijd van het jaar was, niet als voorspelling."
+          }
+        },
+        "next": {
+          "title": "Meerdere dagen in Orlando?"
+        },
+        "dataset": {
+          "name": "Drukte-kalender van de pretparken in Orlando, {period}",
+          "description": "Per park en dag in Walt Disney World, Universal Orlando, SeaWorld en op de dagtrips: de verwachte wachttijd bij de grote attracties op het drukste moment, de drukte ten opzichte van een gewone dag in het park en de openingstijden, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Orlando in {year}",
+          "disney-world": "Beste reistijd voor Disney World in {year}",
+          "universal-orlando": "Beste reistijd voor Universal Orlando in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Orlando",
+          "disney-world": "Beste reistijd voor Disney World",
+          "universal-orlando": "Beste reistijd voor Universal Orlando"
+        },
+        "resort": {
+          "region": "Disney en Universal",
+          "disney-world": "Walt Disney World",
+          "universal-orlando": "Universal Orlando"
+        },
+        "intro": {
+          "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",
+          "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
+          "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Amerikaanse schoolvakanties (Orlando)"
+          },
+          "hurricane": "Orkaanseizoen"
+        },
+        "weeks": {
+          "noBreak": "Geen Amerikaanse schoolvakantie in Orlando."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in Orlando?",
+            "disney-world": "Wanneer is het in {year} het rustigst in Disney World?",
+            "universal-orlando": "Wanneer is het in {year} het rustigst in Universal Orlando?"
+          },
+          "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste rijen: de grote attracties ongeveer {minutes} min op het drukste moment, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met kerst?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} De kerstweek ({date}) zit op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op ongeveer {minutes} min bij de grote attracties, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de feestavonden?",
+          "partyA": "{list}. Op die avonden sluit het park eerder voor dagbezoekers; daarom zet de reisplanner je volle parkdagen er niet op.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "hurricaneQ": "Hoe zit het met het orkaanseizoen?",
+          "hurricaneA": "Het loopt van 1 juni tot 30 november. Of er een storm in je reis valt, weet je pas een paar dagen van tevoren, als hij zich gevormd heeft en een naam heeft gekregen. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
+          "firstQ": {
+            "region": "Eerst Disney of eerst Universal?",
+            "disney-world": "Welk Disney-park eerst?",
+            "universal-orlando": "Welk Universal-park eerst?"
+          },
+          "firstA": "Dat hangt van de data af: de planner zet elk park op zijn rustigste dag van de reis. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Orlando-reis plannen"
+        },
+        "parks": {
+          "moreHint": "Waterparken, SeaWorld en dagtochten"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel",
+            "disney_deluxe": "Disney-deluxehotel",
+            "universal": "Universal-hotel",
+            "universal_premier": "Universal Premier-hotel",
+            "offsite": "Ergens anders"
+          },
+          "hotelHint": {
+            "disney": "Early Entry in de Disney-parken, 30 minuten voor de opening",
+            "disney_deluxe": "Early Entry, en op sommige avonden Extended Evening Hours",
+            "universal": "Early Park Admission, een uur voor de opening",
+            "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure",
+            "offsite": "Geen vroege toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "disney_deluxe": "Disney-deluxehotel",
+            "universal": "Universal-hotel",
+            "universal_premier": "Universal Premier",
+            "offsite": "hotel elders"
+          },
+          "fireworks": "Wil je het vuurwerk in Magic Kingdom zien?",
+          "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
+          "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
+          "fireworksWantShort": "vuurwerk in Magic Kingdom",
+          "blocks": "Disney-dagen en Universal-dagen bij elkaar houden",
+          "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor.",
+          "blocksTickets": "Disney-dagen en Universal-dagen"
+        },
+        "details": {
+          "earlyOthers": {
+            "early_entry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_park_admission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels"
+          },
+          "eveningOthers": "Extended Evening Hours tot {time} voor gasten van de Disney-deluxehotels",
+          "transferTtc": "Daarna ongeveer {minutes} min. met de monorail of de veerboot vanaf het Transportation and Ticket Center."
+        },
+        "reason": {
+          "express_included": "Express zit hier bij je hotel inbegrepen, dus de rijen tellen minder."
+        },
+        "relaxed": {
+          "blocks_relaxed": "Disney-dagen en Universal-dagen konden op deze data niet helemaal bij elkaar blijven."
+        },
+        "ics": {
+          "calendarName": "Orlando-reis {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen Amerikaanse schoolvakanties.",
+            "before_spring_break": "Voor de drukte van de Amerikaanse voorjaarsvakantie."
+          },
+          "warning": {
+            "school_break": "Amerikaanse schoolvakanties."
+          }
+        },
+        "tickets": {
+          "combo": {
+            "title": "Disney and Universal Combo Ticket",
+            "hint": "Eén pakket, twee tickets: Disney 14 parkdagen binnen 18 dagen, Universal 14 dagen achter elkaar, allebei vanaf de dag die je hebt gekozen.",
+            "lite": "Bij aankomst van {from} tot {to} als Lite, zonder Volcano Bay."
+          },
+          "resort": {
+            "walt-disney-world": "Walt Disney World",
+            "universal-orlando": "Universal Orlando",
+            "seaworld-orlando": "SeaWorld, Aquatica, Busch Gardens",
+            "day-trips": "LEGOLAND Florida"
+          },
+          "resortShort": {
+            "walt-disney-world": "Disney",
+            "universal-orlando": "Universal",
+            "seaworld-orlando": "SeaWorld",
+            "day-trips": "LEGOLAND"
+          },
+          "hopperName": {
+            "disney": "Park Hopper",
+            "universal": "park-to-park"
+          },
+          "mixNote": "Elk ticket houdt zijn eigen data. Waar beide geldig zijn, mengt het plan Disney- en Universal-dagen alleen als dat minstens 3 min per attractie scheelt.",
+          "market": {
+            "intl": "Verkocht buiten de VS"
+          },
+          "entry": {
+            "wdw-dated": {
+              "title": "Ticket met datum, 1 tot 10 dagen",
+              "hint": "Van Disneys Amerikaanse site, uit een Disney-hotelpakket of van de meeste verkopers. Met of zonder Park Hopper."
+            },
+            "wdw-uk-14": {
+              "title": "14-Day Magic Ticket",
+              "hint": "14 parkdagen binnen 18 dagen. Parkhoppen en waterparken inbegrepen."
+            },
+            "wdw-uk-7": {
+              "title": "7-Day Magic Ticket",
+              "hint": "7 parkdagen binnen 15 dagen. Parkhoppen en waterparken inbegrepen."
+            },
+            "wdw-4-park": {
+              "title": "4-Park Magic Ticket",
+              "hint": "Eén dag in elk themapark binnen 6 dagen, zonder hoppen. Eerste dag in de periode {range}."
+            },
+            "wdw-pass": {
+              "title": "Jaarabonnement",
+              "hint": "Incredi-Pass, Sorcerer, Pirate of Pixie Dust Pass."
+            },
+            "wdw-unsure": {
+              "title": "Weet ik niet precies",
+              "hint": "Zeg ons hoeveel dagen het heeft en of Park Hopper erbij zit."
+            },
+            "uor-dated": {
+              "title": "Ticket met datum, 1 tot 5 dagen",
+              "hint": "Van Universals Amerikaanse site of de meeste verkopers. Base of park-to-park, Epic Universe vanaf 3 dagen."
+            },
+            "uor-uk-14": {
+              "title": "Ticket voor 14 dagen",
+              "hint": "All Parks of Three Park Adventure Ticket: 14 dagen achter elkaar elke dag, park-to-park, Epic Universe inbegrepen."
+            },
+            "uor-epic": {
+              "title": "Met één dag Epic Universe",
+              "hint": "1-Day + 1-Day Epic Universe, of de aanbieding 2-Day Park-to-Park + 1 Day Epic Universe."
+            },
+            "uor-1-day": {
+              "title": "Dagticket voor Epic Universe of Volcano Bay",
+              "hint": "Eén park op één dag."
+            },
+            "uor-pass": {
+              "title": "Jaarabonnement",
+              "hint": "Seasonal, Power, Preferred of Premier. Epic Universe zit in geen enkel abonnement."
+            },
+            "uor-unsure": {
+              "title": "Weet ik niet precies",
+              "hint": "Zeg ons hoeveel dagen het heeft en of park-to-park erbij zit."
+            },
+            "sw-1-day": {
+              "title": "Dagticket",
+              "hint": "Eén bezoek aan SeaWorld Orlando of Busch Gardens Tampa Bay."
+            },
+            "sw-two-park": {
+              "title": "Two Park Ticket",
+              "hint": "SeaWorld en Aquatica, of SeaWorld en Busch Gardens, elk één bezoek binnen 14 dagen."
+            },
+            "sw-three-park": {
+              "title": "Three-Day, Three Park Ticket",
+              "hint": "3 bezoeken aan SeaWorld, Aquatica, Busch Gardens of Adventure Island binnen 14 dagen na het eerste."
+            },
+            "sw-four-parks": {
+              "title": "Four Parks Ticket",
+              "hint": "SeaWorld, Aquatica, Busch Gardens en Adventure Island, zo vaak je wilt, 14 dagen vanaf het eerste bezoek."
+            },
+            "sw-uk-3-visit": {
+              "title": "3-Visit Ticket + Eat Free",
+              "hint": "3 bezoeken aan SeaWorld, Aquatica of Busch Gardens binnen 14 dagen na het eerste."
+            },
+            "sw-uk-ultimate": {
+              "title": "Ultimate Ticket",
+              "hint": "SeaWorld, Aquatica en Busch Gardens, zo vaak je wilt, 14 dagen vanaf het eerste bezoek."
+            },
+            "sw-discovery-cove": {
+              "title": "Dag in Discovery Cove",
+              "hint": "Je gereserveerde dag in Discovery Cove, los of met 14 dagen SeaWorld en zusterparken eromheen."
+            },
+            "sw-fun-card": {
+              "title": "Fun Card",
+              "hint": "SeaWorld (met of zonder Aquatica) of Busch Gardens, zo vaak je wilt tot eind 2027, behalve op blokkadedagen."
+            },
+            "sw-pass": {
+              "title": "Jaarabonnement",
+              "hint": "SeaWorld Orlando, of de vier parken in Florida."
+            },
+            "lego-day": {
+              "title": "Ticket voor 1 of 2 dagen",
+              "hint": "LEGOLAND Florida."
+            },
+            "lego-7": {
+              "title": "7 Florida Attractions Ticket",
+              "hint": "Eén bezoek aan LEGOLAND binnen 14 dagen, onderdeel van Merlins ticket voor zeven attracties."
+            },
+            "lego-pass": {
+              "title": "Jaarabonnement",
+              "hint": "LEGOLAND Florida."
+            }
+          },
+          "variant": {
+            "uor-1-day-plus-epic": "1-Day + 1-Day Epic Universe",
+            "uor-2-day-p2p-plus-epic": "2-Day Park-to-Park + 1 Day Epic Universe",
+            "uor-epic-1-day": "Epic Universe",
+            "uor-volcano-bay-1-day": "Volcano Bay",
+            "seaworld-1-day": "SeaWorld Orlando",
+            "busch-gardens-1-day": "Busch Gardens Tampa Bay",
+            "discovery-cove": "Alleen Discovery Cove",
+            "discovery-cove-plus-2": "+ SeaWorld en Aquatica",
+            "discovery-cove-plus-3": "+ SeaWorld, Aquatica en Busch Gardens",
+            "seaworld-fun-card": "SeaWorld",
+            "seaworld-fun-card-aquatica": "SeaWorld en Aquatica",
+            "busch-gardens-fun-card": "Busch Gardens",
+            "seaworld-annual-pass": "SeaWorld Orlando",
+            "seaworld-annual-pass-florida": "Vier parken in Florida",
+            "legoland-1-day": "1 dag",
+            "legoland-2-day": "2 dagen"
+          },
+          "fields": {
+            "waterParks": "Waterparken inbegrepen (Water Park and Sports of Park Hopper Plus)",
+            "volcanoBay": "Volcano Bay inbegrepen",
+            "startReserved": "Je dag in Discovery Cove"
+          },
+          "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
+          "longStay": {
+            "line": "Buiten de VS zijn er tickets voor 14 dagen voor Disney en Universal, ook als Combo Ticket.",
+            "plan": "Daarmee plannen",
+            "detail": "De tickets voor 14 dagen in de winkels van de parken buiten de VS:"
+          },
+          "mixing": {
+            "used": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen: ongeveer {minutes} min minder per attractie dan apart.",
+            "forced": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen.",
+            "kept": "Disney-dagen en Universal-dagen blijven bij elkaar: mengen zou minder dan 3 min per attractie schelen."
+          }
+        }
+      },
+      "landing": {
+        "kicker": "park.fan · Orlando",
+        "action": "Mijn reis naar Orlando plannen"
+      },
+      "homeStory": {
+        "kicker": "Orlando",
+        "title": "Orlando: welk park op welke dag",
+        "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
+        "link": "Orlando drukte-kalender"
       }
     }
   },
@@ -4047,10 +4117,6 @@
     "parky": {
       "kicker": "park.fan · Chatassistent",
       "action": "Vraag het Parky"
-    },
-    "orlando": {
-      "kicker": "park.fan · Orlando",
-      "action": "Mijn reis naar Orlando plannen"
     }
   },
   "compare": {

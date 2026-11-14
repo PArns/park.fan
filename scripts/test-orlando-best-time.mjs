@@ -1,5 +1,5 @@
 /**
- * Unit tests for Orlando's best-time pages (`lib/orlando/best-time.ts`): the title's year and the
+ * Unit tests for Orlando's best-time pages (`lib/trip-regions/best-time.ts`): the title's year and the
  * range both routes accept, the month rows, the school-break runs and the European cells, chapter
  * 03's weeks, the holiday week the FAQ reads and the window phrase of the first answer. The fixtures
  * are in `/when`'s and `/school-breaks`' shapes as the API serves them.
@@ -18,14 +18,18 @@ import {
   europeanBreaks,
   holidayWeek,
   monthRows,
+  noWhenAnswer,
   parseBestTimePage,
   partySeasons,
   planOrder,
   seasonsOn,
   tripLongBreaks,
   windowList,
-} from '@/lib/orlando/best-time.ts';
+} from '@/lib/trip-regions/best-time.ts';
+import { requireTripRegion } from '@/lib/trip-regions/registry.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
+
+const ORLANDO = requireTripRegion('orlando');
 
 let passed = 0;
 const test = (name, fn) => {
@@ -48,17 +52,31 @@ test('the range is the title year, from today and at most a year ahead', () => {
 });
 
 test('the segments name the Orlando page, a resort, or nothing', () => {
-  assert.equal(parseBestTimePage(undefined), 'orlando');
-  assert.equal(parseBestTimePage([]), 'orlando');
-  assert.equal(parseBestTimePage(['disney-world']), 'disney-world');
-  assert.equal(parseBestTimePage(['universal-orlando']), 'universal-orlando');
-  assert.equal(parseBestTimePage(['seaworld-orlando']), null);
-  assert.equal(parseBestTimePage(['disney-world', 'x']), null);
+  assert.equal(parseBestTimePage(ORLANDO, undefined), 'region');
+  assert.equal(parseBestTimePage(ORLANDO, []), 'region');
+  assert.equal(parseBestTimePage(ORLANDO, ['disney-world']), 'disney-world');
+  assert.equal(parseBestTimePage(ORLANDO, ['universal-orlando']), 'universal-orlando');
+  assert.equal(parseBestTimePage(ORLANDO, ['seaworld-orlando']), null);
+  assert.equal(parseBestTimePage(ORLANDO, ['disney-world', 'x']), null);
+});
+
+test('without an answer from /when the page has its months and no figure', () => {
+  const when = noWhenAnswer('orlando', bestTimeRange('2026-11-12'));
+  assert.deepEqual([when.windows, when.weeks, when.months], [[], [], []]);
+  assert.equal(when.meta.from, '2027-01-01');
+  const rows = monthRows(when, '2026-11-12');
+  assert.equal(rows.length, 12);
+  assert.ok(rows.every((row) => row.data === undefined && row.hours === null));
+});
+
+test('a region without best-time pages has none, not even its own', () => {
+  assert.equal(parseBestTimePage(requireTripRegion('paris'), undefined), null);
 });
 
 test("a page plans its resorts' headliner parks only", () => {
   const park = (slug, group, headliner = true) => ({ slug, group, headliner });
   const region = {
+    slug: 'orlando',
     parks: [
       park('magic-kingdom-park', 'walt-disney-world'),
       park('disneys-typhoon-lagoon-water-park', 'walt-disney-world', false),
@@ -66,7 +84,7 @@ test("a page plans its resorts' headliner parks only", () => {
       park('seaworld-orlando', 'seaworld-orlando'),
     ],
   };
-  assert.deepEqual(bestTimeParks(region, 'orlando'), [
+  assert.deepEqual(bestTimeParks(region, 'region'), [
     'magic-kingdom-park',
     'universal-epic-universe',
   ]);

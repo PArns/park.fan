@@ -1,13 +1,13 @@
 'use client';
 
 import { useMemo } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { useTripRegionLinks } from '@/lib/hooks/use-trip-region-links';
-import { findTripRegion, tripPlannerHref } from '@/lib/orlando/trip-links';
+import { findTripRegion, tripPlannerHref } from '@/lib/trip-regions/trip-links';
 import { plannerParkPath } from '@/lib/planner/park-url';
 import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 import type { PlannerGeo } from '@/lib/planner/types';
@@ -35,7 +35,8 @@ export function PlannerTripRegionLink({
   onNavigate,
   className,
 }: PlannerTripRegionLinkProps) {
-  const t = useTranslations('orlando.band');
+  const t = useTranslations('tripHub.band');
+  const locale = useLocale();
   const paths = useMemo(() => parks.map(plannerParkPath), [parks]);
   const { data: regions } = useTripRegionLinks(paths.length > 0);
   const found = regions ? findTripRegion(regions, paths) : null;
@@ -53,7 +54,9 @@ export function PlannerTripRegionLink({
       <CalendarDays aria-hidden className="text-primary size-3.5 shrink-0" />
       <span>{t('title', { region: found.region.name })}</span>
       <Link
-        href={tripPlannerHref(found.region, { parks: found.parks.map((park) => park.slug) })}
+        href={tripPlannerHref(found.region.slug, locale, {
+          parks: found.parks.map((park) => park.slug),
+        })}
         rel="nofollow"
         prefetch={false}
         onClick={(event) => {

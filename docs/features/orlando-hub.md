@@ -9,34 +9,35 @@ ways in or the data it reads. The trip planner in chapter 03 has its own page,
 
 ## URLs
 
-The route is `app/[locale]/orlando/[[...date]]/page.tsx`, `force-dynamic` behind its edge window
-(`next.config.ts`: the hub an hour, a month twelve hours). "orlando" is the city's name in every
-language, so it has no segment family in `lib/i18n/localized-path.ts` and no rewrite; every link is
-built by `orlandoPath` / `orlandoMonthHref` (`lib/orlando/paths.ts`).
+The route is every region's, `app/[locale]/trip-regions/[region]/[[...date]]/page.tsx`, reached by
+a rewrite from the region's segment ([trip regions](trip-regions.md#one-route-folder-rewritten-from-each-regions-segments)),
+`force-dynamic` behind its edge window (`next.config.ts`: the hub an hour, a month twelve hours).
+"orlando" is the city's name in every language, so Orlando's segment is the same in all six; every
+link is built by `tripRegionPath` / `tripRegionMonthHref` (`lib/trip-regions/paths.ts`).
 
 | Request                                | Answer                                                      |
 | -------------------------------------- | ----------------------------------------------------------- |
 | `/orlando`                             | the next 30 days from Orlando's today; canonical for itself |
 | the current month's URL                | 200, canonical pointing at the hub                          |
 | one of the next eleven months          | 200, canonical itself, in the sitemap                       |
-| a padded month (`/2027/03`)            | 308 to `/2027/3`, from `proxy.ts` (`orlandoRedirect`)       |
+| a padded month (`/2027/03`)            | 308 to `/2027/3`, from `proxy.ts` (`tripRegionRedirect`)    |
 | a month outside the twelve             | 308 to the hub, from `proxy.ts`                             |
 | anything else under `/orlando/<a>/<b>` | 404, except the best-time pages, which have their own route |
 | any query string (`?from=…#planner`)   | the same page, `noindex`, canonical without the query       |
 
-"Today" is Orlando's (`orlandoToday`, `currentOrlandoMonth`, America/New_York), never the server's.
+"Today" is Orlando's (`tripRegionToday`, `currentTripRegionMonth`, America/New_York), never the server's.
 The month rule matches digits only (`:year(\\d{4})/:month(\\d{1,2})`), so
 `/orlando/<best-time segment>/<resort>` keeps its own window; `pnpm test:edge-windows` and
-`pnpm test:orlando-hub` both assert it. The best-time pages' path is `orlandoBestTimePath(locale,
-resort?)`, the one function both branches link through.
+`pnpm test:orlando-hub` both assert it. The best-time pages' path is `tripRegionBestTimePath(region,
+locale, page?)`, the one function both branches link through.
 
 ## Data
 
-`lib/orlando/api.ts` reads the region (a day), `/calendar`, `/best-days` and `/when` (an hour) on
+`lib/trip-regions/api.ts` reads the region (a day), `/calendar`, `/best-days` and `/when` (an hour) on
 the server with the site's data key, through the Data Cache under `trip-region:orlando`. The browser
 asks the keyed routes through `app/api/trip-regions/[...path]/route.ts`, which answers this site's
-pages only and forwards each route's own query names (`lib/orlando/relay.ts`). The shapes are
-`lib/orlando/types.ts`; everything derived from them is `lib/orlando/hub-data.ts`.
+pages only and forwards each route's own query names (`lib/trip-regions/relay.ts`). The shapes are
+`lib/trip-regions/types.ts`; everything derived from them is `lib/trip-regions/hub-data.ts`.
 
 - **One figure per surface.** A square, a chip, the first answer and the day sheet all print
   `headlinerWait`, "the big rides' wait at their busiest". Parks are compared by it; the colour is
@@ -90,9 +91,9 @@ pick has closed it is about tomorrow (`glanceDay`). A resort with one park that 
    the best-time page's own query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of
    the trip's length), so both read one cached answer. The three quietest 10-day windows for the seven headliner parks from `/when`, as a sentence and three
    cards with "Plan these dates" (`?from=&to=#planner`, `rel="nofollow"`), and the link to
-   `orlandoBestTimePath(locale)`. The year strip, the weeks and their questions are the best-time
+   `tripRegionBestTimePath(region, locale)`. The year strip, the weeks and their questions are the best-time
    pages', so the two do not compete for one query.
-3. **03 Plan your trip**: `PlannerChapterSlot`, `id="planner"`, where `OrlandoPlanner` mounts. Empty
+3. **03 Plan your trip**: `PlannerChapterSlot`, `id="planner"`, where `TripRegionPlanner` mounts. Empty
    until the visitor gives dates.
 4. **04 Best days for each park** (`HubBestDays`): per park three quiet days as chips, "more" opens
    the reasons and the busiest days, and "<park> Crowd Calendar" links the park's calendar.
@@ -104,7 +105,7 @@ pick has closed it is about tomorrow (`glanceDay`). A resort with one park that 
 The intro carries the window in sentences per resort (`HubMonthSummary`): quietest dates with their
 park, the busiest, the events. It is what makes one month's HTML differ from the next.
 
-On the hub alone, the lead and the intro's first paragraph (`orlando.lead`, `orlando.opening`) are the
+On the hub alone, the lead and the intro's first paragraph (`tripRegions.orlando.hub.lead`, `.opening`) are the
 opening about Orlando itself. Each figure in them has a source: the park counts are the region
 route's `parks[]` (eight theme parks and four water parks in Orlando, Discovery Cove, three day
 trips), and the minutes are the API's travel matrix without traffic, the Magic Kingdom transfer from
@@ -131,10 +132,10 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
 
 - The More menu's wide tile and the phone sheet's link (`lib/navigation/more-menu.ts`,
   `components/layout/more-menu-panel.tsx`, `components/layout/header.tsx`).
-- `TripPlannerBand` (`components/orlando/trip-planner-band.tsx`), from every page about the
+- `TripPlannerBand` (`components/trip-regions/trip-planner-band.tsx`), from every page about the
   region's parks into the planner. Which parks: the region route's `parks[]`, reduced by
-  `tripRegionLinks` (`lib/orlando/trip-links.ts`, which takes the hub from `TRIP_REGIONS`, so a
-  region the API curates before its planner exists gets no links) and read by `getTripRegionLinks` with a 1.5 s
+  `tripRegionLinks` (`lib/trip-regions/trip-links.ts`, which keeps the live regions of the
+  registry, so a region the API curates before its hub exists gets no links) and read by `getTripRegionLinks` with a 1.5 s
   bound, so a slow read costs the band and never the page; no slug list here. Its variants:
 
   | Variant  | Where                                       | The link                                                                                 |
@@ -150,14 +151,14 @@ trips), and the minutes are the API's travel matrix without traffic, the Magic K
   own "Plan these dates" links are.
 
 - The footer's tools: „Reiseplaner" (en "Trip planner") beside „Tagesplaner" ("Day planner"), the
-  first region's `href` from `TRIP_REGIONS` (`lib/navigation/trip-regions.ts`), so the footer on
+  first live region's planner from the registry (`lib/trip-regions/registry.ts`), so the footer on
   every page spends no region read.
 - The search palette's first row and the top of `/search`, for a query that names the region or a
   resort ([site search](site-search.md#a-trip-regions-planner-comes-first)).
 - The day planner's plan list (its overview and the planner page), once the plan holds a day at a
   region park: one line per plan with those parks chosen
   ([trip planner](trip-planner/README.md#a-plan-in-a-trip-region-leads-to-the-trip-planner)).
-- `OrlandoHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
+- `TripRegionHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
   keeps a day at the edge.
 - Parky's `plan_vacation` links `/orlando?from=…&to=…&parks=…#planner`.
 

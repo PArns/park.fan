@@ -3,12 +3,12 @@ import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
-import { TRIP_REGION_CACHE_TAG } from '@/lib/orlando/api';
-import { tripRegionRelayTarget } from '@/lib/orlando/relay';
+import { tripRegionCacheTag } from '@/lib/trip-regions/api';
+import { tripRegionRelayTarget } from '@/lib/trip-regions/relay';
 import { isSlugPath } from '@/lib/utils/servable-route';
 
 /**
- * The Orlando hub's relay to `/v1/trip-regions/orlando{,/calendar,/best-days,/plan}`: the planner
+ * The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan}`: the planner
  * asks `/plan` on every change and the calendar asks other windows than the page rendered, and the
  * keyed routes need the site's data key, which never reaches a browser. The forecast branches
  * answer only this site's pages (docs/rules/a-forecast-leaves-only-with-a-key.md).
@@ -39,7 +39,7 @@ export async function GET(
         ? {
             next: {
               revalidate: target.forecast ? CACHE_TTL.tripRegionData : CACHE_TTL.tripRegion,
-              tags: [TRIP_REGION_CACHE_TAG],
+              tags: [tripRegionCacheTag(target.region)],
             },
           }
         : { cache: 'no-store' as const }),

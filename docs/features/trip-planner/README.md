@@ -74,7 +74,7 @@ region route through `/api/nav/trip-regions`), the list of its days ends on one 
 (`PlannerTripRegionLink`). One per plan, never per day: under the panel's overview and under the
 planner page's list, so the day view and its phone sheet stay as they are. The regions are asked
 for only once such a plan exists. On a phone the press closes the sheet, which would cover the hub.
-The words are the park band's (`orlando.band`, in the planner's lazy chunk). The day planner counts
+The words are the park band's (`tripHub.band`, in the planner's lazy chunk). The day planner counts
 no link out of itself, so the press is the site's `internal_link_clicked` with the block
 `trip_band`, and the arrival the trip planner's `trip_planner_started` with `source: link`.
 

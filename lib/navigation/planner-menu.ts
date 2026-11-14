@@ -1,32 +1,48 @@
 import 'server-only';
+import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
+import { regionMessagesPath } from '@/i18n/client-messages';
 import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getMediaImageBySrc, getParkRefBySlug } from '@/lib/media';
 import { menuPhoto, type MoreMenuPhoto } from '@/lib/navigation/more-menu';
-import { TRIP_REGIONS, tripRegionText } from '@/lib/navigation/trip-regions';
+import { getTripRegionNavFacts } from '@/lib/trip-regions/api';
+import { TRIP_PLANNER_ID, tripRegionPath } from '@/lib/trip-regions/paths';
+import { MAX_TRIP_DAYS } from '@/lib/trip-regions/plan-query';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { isEventPark } from '@/lib/parks/event-parks';
 import { rankedFirst, type ViewedPark } from '@/lib/parks/viewed-parks';
 import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 
 /**
- * What the header's planner band needs from the server: the trip-planner regions with their names
- * and photos, and the parks it offers to start the day planner on. Both come from modules of this
- * repo (the media catalog, the build's page-view snapshot), and the header is a Client Component,
- * so only the resolved fields cross. See docs/features/header-navigation.md.
+ * What the header's planner band needs from the server: the live trip regions with their names,
+ * photos and park counts, and the parks it offers to start the day planner on. The regions are the
+ * registry's (`LIVE_TRIP_REGIONS`) with their own words (`tripRegions.<slug>.nav`), the count is the
+ * API's, the rest modules of this repo (the media catalog, the build's page-view snapshot); the
+ * header is a Client Component, so only the resolved fields cross. See
+ * docs/features/header-navigation.md.
  */
 
 /** A trip-planner region as the band draws it. */
 export interface PlannerMenuRegion {
+  /** The registry's slug: React's key, the scene's, the tile's. */
   id: string;
   name: string;
+  /** Where it is, the tile's kicker: the state or the country. */
   area: string;
   /** The hub's trip planner, locale-relative. */
   href: string;
   /** The hub's crowd calendar, locale-relative. */
   calendarHref: string;
+  /** The hub's crowd calendar by its name, "Orlando Crowd Calendar", for the phone sheet. */
+  calendarLabel: string;
   /** The hub's photo; `null` where the catalog lost it. */
   photo: MoreMenuPhoto | null;
-  parkCount: number;
+  /**
+   * How many parks the trip planner places, from the API (`getTripRegionNavFacts`); `null`
+   * while it has not said, and the tile leaves the count out.
+   */
+  parkCount: number | null;
+  /** The longest trip it plans, in days: the API's list, else this site's own limit. */
   maxDays: number;
 }
 
@@ -76,7 +92,7 @@ export function pickPlannerParks(
 }
 
 /** A locale's parks: its counted ones, topped up from the homepage's `FEATURED_PARK_SLUGS`. */
-function plannerParks(locale: Locale): PlannerMenuPark[] {
+export function plannerParks(locale: Locale): PlannerMenuPark[] {
   const curated = (FEATURED_PARK_SLUGS[locale] ?? FEATURED_PARK_SLUGS.en ?? []).flatMap((slug) => {
     const ref = getParkRefBySlug(slug);
     return ref
@@ -94,30 +110,47 @@ function plannerParks(locale: Locale): PlannerMenuPark[] {
   return pickPlannerParks(viewedParksSeed(locale), curated);
 }
 
-const PLANNER_MENU = new Map<Locale, PlannerMenu>();
+const PLANNER_PARKS = new Map<Locale, PlannerMenuPark[]>();
 
 /**
- * The planner band for a locale, memoised per process like `getFeaturedParksMenu`: it reads only
- * modules of this repo, and the layout asks on every page. Callers share the object and must not
- * mutate it.
+ * The planner band for a locale. The parks and the regions' words and photos are modules of this
+ * repo, memoised per process like `getFeaturedParksMenu`, since the layout asks on every page; the
+ * park counts are the API's list of regions, a day in the Data Cache and bounded in time, so a
+ * slow API costs the band its count and nothing else.
  */
-export function getPlannerMenu(locale: Locale): PlannerMenu {
-  let menu = PLANNER_MENU.get(locale);
-  if (!menu) {
-    menu = {
-      regions: TRIP_REGIONS.map((region) => ({
-        id: region.id,
-        name: tripRegionText(region.name, locale),
-        area: tripRegionText(region.area, locale),
-        href: region.href,
-        calendarHref: region.calendarHref,
-        photo: menuPhoto(getMediaImageBySrc(region.photo)),
-        parkCount: region.parkCount,
-        maxDays: region.maxDays,
-      })),
-      parks: plannerParks(locale),
-    };
-    PLANNER_MENU.set(locale, menu);
+export async function getPlannerMenu(locale: Locale): Promise<PlannerMenu> {
+  let parks = PLANNER_PARKS.get(locale);
+  if (!parks) {
+    parks = plannerParks(locale);
+    PLANNER_PARKS.set(locale, parks);
   }
-  return menu;
+  const [facts, regions] = await Promise.all([
+    getTripRegionNavFacts(),
+    Promise.all(
+      LIVE_TRIP_REGIONS.map(async (region) => {
+        const t = await getTranslations({
+          locale,
+          namespace: `${regionMessagesPath(region.slug)}.nav`,
+        });
+        const calendarHref = tripRegionPath(region.slug, locale);
+        return {
+          id: region.slug,
+          name: t('name'),
+          area: t('area'),
+          href: `${calendarHref}#${TRIP_PLANNER_ID}`,
+          calendarHref,
+          calendarLabel: t('calendar'),
+          photo: menuPhoto(region.photo ? getMediaImageBySrc(region.photo) : null),
+        };
+      })
+    ),
+  ]);
+  return {
+    regions: regions.map((region) => ({
+      ...region,
+      parkCount: facts[region.id]?.parkCount ?? null,
+      maxDays: facts[region.id]?.maxTripDays ?? MAX_TRIP_DAYS,
+    })),
+    parks,
+  };
 }

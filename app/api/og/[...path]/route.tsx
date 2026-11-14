@@ -11,6 +11,8 @@ import { ParkAttraction, GeoStructure } from '@/lib/api/types';
 import { isValidLocale, type Locale } from '@/i18n/config';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
+import { regionMessagesPath } from '@/i18n/client-messages';
+import { LIVE_TRIP_REGIONS, liveTripRegion } from '@/lib/trip-regions/registry';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
 import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import { ogAsJpeg } from '@/lib/og/jpeg';
@@ -83,6 +85,26 @@ function determineOgPageType(path: string[], isGeneric: boolean): OgPageType {
   if (path.length === 4) return 'CITY';
   if (path.length >= 6 && path[5]) return 'ATTRACTION';
   return 'PARK';
+}
+
+/**
+ * The cards of the live trip regions, by the slug the pages ask with (`<locale>/orlando`,
+ * `<locale>/orlando/best-time-to-visit[/<resort>]`): the hub's title and each best-time page's
+ * name, the region's own words (`tripRegions.<slug>`).
+ */
+function tripRegionCards(): Record<string, { namespace: string; key: string }> {
+  return Object.fromEntries(
+    LIVE_TRIP_REGIONS.flatMap((region) => {
+      const own = regionMessagesPath(region.slug);
+      return [
+        [region.slug, { namespace: `${own}.hub`, key: 'title' }],
+        ...region.bestTime.map((page) => [
+          [region.slug, BEST_TIME_SEGMENTS.en, ...(page.segment ? [page.segment] : [])].join('/'),
+          { namespace: `${own}.bestTime`, key: `name.${page.id}` },
+        ]),
+      ];
+    })
+  );
 }
 
 export async function GET(
@@ -174,28 +196,19 @@ export async function GET(
       parky: { namespace: 'parkyPage', key: 'metaTitle' },
       'best-time-to-visit': { namespace: 'bestTime', key: 'title' },
       'trip-planner': { namespace: 'planner.page', key: 'title' },
-      orlando: { namespace: 'orlando', key: 'title' },
-      // Orlando's best-time pages (`<locale>/orlando/best-time-to-visit[/<resort>]`), keyed below by
-      // `orlandoBestTimeCard`, so they get their own headline rather than the hub's.
-      'orlando/best-time-to-visit': { namespace: 'orlandoBestTime', key: 'name.orlando' },
-      'orlando/best-time-to-visit/disney-world': {
-        namespace: 'orlandoBestTime',
-        key: 'name.disney-world',
-      },
-      'orlando/best-time-to-visit/universal-orlando': {
-        namespace: 'orlandoBestTime',
-        key: 'name.universal-orlando',
-      },
+      ...tripRegionCards(),
       contribute: { namespace: 'contribute.meta', key: 'title' },
       ...glossaryEntries,
     };
 
     const [localeParam, pathSecond] = path;
-    // An Orlando best-time page names its card by the whole path after the locale; every other
-    // generic page by its second segment.
-    const orlandoBestTimeCard =
-      path[1] === 'orlando' && path[2] === BEST_TIME_SEGMENTS.en ? path.slice(1).join('/') : null;
-    const secondSegment = orlandoBestTimeCard ?? pathSecond;
+    // A trip region's best-time page names its card by the whole path after the locale; every
+    // other generic page by its second segment.
+    const regionBestTimeCard =
+      liveTripRegion(path[1] ?? '') && path[2] === BEST_TIME_SEGMENTS.en
+        ? path.slice(1).join('/')
+        : null;
+    const secondSegment = regionBestTimeCard ?? pathSecond;
     const locale = isValidLocale(localeParam) ? localeParam : 'en';
     const isGeneric = secondSegment && Object.keys(genericPages).includes(secondSegment);
 

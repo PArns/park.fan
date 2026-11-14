@@ -8,7 +8,7 @@
 import { locales, type Locale } from '@/i18n/config';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import type { CrosstabResponse } from '@/lib/api/admin-site-analytics';
-import { hostProp, sellerProp } from '@/lib/orlando/plan-analytics';
+import { hostProp, sellerProp } from '@/lib/trip-regions/plan-analytics';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { CROSSTAB_REST } from './site-analytics';
 

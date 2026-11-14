@@ -188,22 +188,27 @@ The panel is only the look; the data and the click behaviour live in the modules
   `navigation.planner` is the day planner's name (the phone's calendar button, the edge tab, the
   parks band's call to action, the structured data). The day planner's URL keeps its segments
   (`PLANNER_SEGMENTS`, `/en/trip-planner` included).
-- **Trip planner by region.** `TRIP_REGIONS` (`lib/navigation/trip-regions.ts`, client-safe) is one
-  entry per region: id, name and area (one string, or one per locale), the hub's planner anchor
-  (`/orlando#planner`) and crowd calendar, the hub's photo, its park count (16, the region route's
-  park list, which `pnpm test:planner-menu` checks against the route's snapshot), its longest trip
-  (`MAX_TRIP_DAYS`) and its scene. A region is listed once its
-  planner exists, never as a teaser; the band, the phone sheet and `pnpm check:header-links` read
-  the list. `getPlannerMenu` (`lib/navigation/planner-menu.ts`, server-only) resolves it per locale,
-  memoised per process like `getFeaturedParksMenu`, and the layout hands it to the header. One
-  region is a large card (`RegionCard`) beside the day planner and the parks: the scene filling it,
-  and over a fade into the band the area, the name, one line, the two facts, „Reise planen"
-  (stretched over the card) and „Besucherkalender". From two on, the draft's four-region layout: a
-  row of tiles (`RegionTile`: scene, area, name, line, an arrow; the whole tile is the planner's
-  link) under „Reiseplaner" with the count, and the day planner and the parks side by side below.
-  No page shows that yet; `node scripts/shoot-planner-regions.mjs` renders the real panel with a
-  made-up second region (`scripts/fixtures/planner-menu/two-regions.tsx`) against a running site.
-  „Mehr" reads its Orlando photo from the same entry and keeps its own Orlando tile for now.
+- **Trip planner by region.** The band lists the registry's live regions (`LIVE_TRIP_REGIONS`,
+  `lib/trip-regions/registry.ts`, [trip regions](trip-regions.md)); a region is listed once its hub
+  goes live, never as a teaser, and the band, the phone sheet and `pnpm check:header-links` read the
+  same list. `getPlannerMenu` (`lib/navigation/planner-menu.ts`, server-only) resolves each per
+  locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's planner
+  anchor (`/orlando#planner`) and crowd calendar, the hub's photo, its park count from the API's
+  list of regions (else the region route's `parks[]`; without either the chip is left out) and its
+  longest trip from the same list (else `MAX_TRIP_DAYS`). The parks are memoised per process like
+  `getFeaturedParksMenu`; the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
+  day planner and the parks: the scene filling it, and over a fade into the band the area, the
+  name, one line, the two facts, „Reise planen" (stretched over the card) and „Besucherkalender".
+  From two on, the four-region design: a row of tiles (`RegionTile`: scene, area, name on up to
+  two balanced lines, an arrow; the whole tile is the planner's link) under „Reiseplaner" with the
+  count and, on the rule's right, the one line every region shares; two to a row up to a 1024 px
+  bar and one each up to four from there. Below it the day planner and the parks side by side, the
+  parks one column of four below a 1280 px bar and two columns of six from there. No page shows
+  that yet; `node scripts/shoot-planner-regions.mjs` renders the real panel and the sheet's rows
+  with two to four regions ([trip regions](trip-regions.md#the-planner-band-with-several-regions)).
+  „Mehr" draws a wide tile per live region from the same entries, and the phone sheet a crowd
+  calendar link per region and, from two regions on, a 44 px row per region with a cut of its
+  scene (`SheetRegionLink`).
 - **The region's picture** is `PlannerRegionArt`: the region's Parky scene, a `React.lazy` chunk
   fetched on the band's first opening (`useMenuBandOpen`), so neither the scene nor a photo it would
   cover is in any page's HTML; it fades in over the card's ground (`starting:opacity-0`). A region
@@ -311,14 +316,15 @@ duplicates the desktop nav; put nothing unique there. From the top:
   right under it „Planen", because planning is what most visitors come for, then each of the three
   hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and then its
   categories or chapters with the band's numbers, in the band's order. „Planen" follows the band's
-  order: the regions under „Reiseplaner", then under „Tagesplaner" the day planner's page („Tag
-  planen"), „Dein Plan: <park>, <day>" where this browser has a day planned from today on
-  (`SheetPlanRow`, a leaf, so a plan edit re-renders it alone; it closes the sheet and opens the
-  plan, as the band's „Meinen Plan öffnen" does), and the band's first four parks under „Einen Tag
-  planen im" with its quick start. Each group's caption (`SheetCaption`) is bold in the text colour,
-  so a caption reads as a heading and not as one more row. A disclosure row is the toggle, not a
-  link beside a chevron; after the hubs the Orlando crowd calendar keeps its own row, like the
-  „Mehr" tile;
+  order: the regions under „Reiseplaner" (one row per live region; from two regions on each row is
+  a `SheetRegionLink`, 44 px high with a 56 × 36 cut of the region's Parky scene), then under
+  „Tagesplaner" the day planner's page („Tag planen"), „Dein Plan: <park>, <day>" where this
+  browser has a day planned from today on (`SheetPlanRow`, a leaf, so a plan edit re-renders it
+  alone; it closes the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), and the
+  band's first four parks under „Einen Tag planen im" with its quick start. Each group's caption
+  (`SheetCaption`) is bold in the text colour, so a caption reads as a heading and not as one more
+  row. A disclosure row is the toggle, not a link beside a chevron; after the hubs each live
+  region's crowd calendar keeps its own row, like the „Mehr" tiles;
 - the footer row (`MoreMenuLinks variant="sheet"`), **outside** the scrolling list on the sheet's
   bottom edge with `pb-[max(0.25rem,env(safe-area-inset-bottom))]` (the `env()` half reads 0: the
   viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above the home

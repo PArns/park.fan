@@ -22,7 +22,7 @@ import { getGuideForCountry } from '@/lib/blog/country-guide';
 import type { Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
 import { RouteMessages } from '@/i18n/route-messages';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 
 interface CountryPageProps {
   params: Promise<{ locale: string; continent: string; country: string }>;

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { getMessages } from 'next-intl/server';
-import { pickMessages } from './client-messages';
+import { pickRouteMessages } from './client-messages';
 import { ROUTE_MESSAGE_NAMESPACES, type RouteMessageKey } from './route-namespaces.generated';
 import { RouteMessagesProvider } from './route-messages-provider';
 
@@ -11,6 +11,11 @@ interface RouteMessagesProps {
    * message set.
    */
   route: RouteMessageKey;
+  /**
+   * The trip region the page is about, whose own copy (`tripRegions.<slug>`) its Client
+   * Components read as `tripRegion…`; required where the route's namespaces name the alias.
+   */
+  region?: string;
   children: ReactNode;
 }
 
@@ -19,12 +24,12 @@ interface RouteMessagesProps {
  * `pnpm check:client-messages` fails when a route that needs a delta does not render it, and when
  * one that needs nothing still does.
  */
-export async function RouteMessages({ route, children }: RouteMessagesProps) {
+export async function RouteMessages({ route, region, children }: RouteMessagesProps) {
   const namespaces = ROUTE_MESSAGE_NAMESPACES[route];
 
   if (!namespaces || namespaces.length === 0) return <>{children}</>;
 
-  const messages = pickMessages(await getMessages(), namespaces);
+  const messages = pickRouteMessages(await getMessages(), namespaces, region);
 
   return (
     <RouteMessagesProvider messages={messages} namespaces={namespaces}>

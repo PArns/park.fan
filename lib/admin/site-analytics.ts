@@ -9,6 +9,7 @@ import type {
 import type { LinkBlock } from '@/lib/analytics/internal-link';
 import type { SeenSection } from '@/lib/analytics/section-seen';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
+import { tripRegionConfig, tripRegionTitle } from '@/lib/trip-regions/registry';
 import type {
   AnalyticsTotals,
   BreakdownDimension,
@@ -1059,7 +1060,6 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'shared-link': 'Geteilter Plan',
   'home-hero': '„Heute planen“ auf der Startseite',
   'kids-page': 'Seite „Mit Kindern“',
-  'orlando-hub': 'Orlando-Hub, „Diesen Tag planen“',
   'menu-plan': 'Planer-Menü im Header, „Meinen Plan öffnen“',
   'menu-park': 'Planer-Menü im Header, ein beliebter Park',
   assistant: 'Parky, der Chat-Assistent',
@@ -1148,6 +1148,10 @@ export function propValueLabel(prop: string, value: string): string {
   if (prop === 'dest') return pageTypeLabel(value);
   if (prop === 'section') return labelFrom(SECTION_LABEL, value);
   if (prop === 'menu') return labelFrom(NAV_MENU_LABEL, value);
+  if (prop === 'source' && value.endsWith('-hub')) {
+    const region = tripRegionConfig(value.slice(0, -'-hub'.length));
+    if (region) return `${tripRegionTitle(region.slug)}-Hub, „Diesen Tag planen“`;
+  }
   return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }
 

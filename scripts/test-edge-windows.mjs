@@ -20,6 +20,7 @@ import { PARK_CALENDAR_SEGMENTS } from '../lib/parks/calendar-segments.ts';
 import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_KIDS_SEGMENTS } from '../lib/parks/kids-segments.ts';
 import { BEST_TIME_SEGMENTS } from '../lib/best-time/segments.ts';
+import { LIVE_TRIP_REGIONS, tripRegionSegment } from '../lib/trip-regions/registry.ts';
 
 const PARK = 'parks/europe/germany/rust/europa-park';
 
@@ -61,27 +62,37 @@ const ROUTES = {
     url: (l) => `/${l}/${PARK}/${PARK_STATS_SEGMENTS[l]}`,
     rule: (source, l) => source.endsWith(`/:park/${PARK_STATS_SEGMENTS[l]}`),
   },
-  orlando: {
-    url: (l) => `/${l}/orlando`,
-    rule: (source) => source.endsWith('/orlando'),
-  },
-  'orlando/[year]/[month]': {
-    url: (l) => `/${l}/orlando/2026/12`,
-    rule: (source) => source.endsWith('/orlando/:year(\\d{4})/:month(\\d{1,2})'),
-  },
-  'orlando/best-time-to-visit': {
-    url: (l) => `/${l}/orlando/${BEST_TIME_SEGMENTS[l]}`,
-    rule: (source, l) => source.endsWith(`/orlando/${BEST_TIME_SEGMENTS[l]}`),
-  },
-  'orlando/best-time-to-visit/[resort]': {
-    url: (l) => `/${l}/orlando/${BEST_TIME_SEGMENTS[l]}/universal-orlando`,
-    rule: (source, l) => source.includes(`/orlando/${BEST_TIME_SEGMENTS[l]}/:resort`),
-  },
   'with-kids': {
     url: (l) => `/${l}/${PARK}/${PARK_KIDS_SEGMENTS[l]}`,
     rule: (source, l) => source.endsWith(`/:park/${PARK_KIDS_SEGMENTS[l]}`),
   },
 };
+
+// Every live trip region's hub, a month, its best-time page and a resort's, under its own segment.
+for (const region of LIVE_TRIP_REGIONS) {
+  const seg = (l) => tripRegionSegment(region, l);
+  const resort = region.bestTime.find((page) => page.segment)?.segment;
+  ROUTES[`${region.slug}`] = {
+    url: (l) => `/${l}/${seg(l)}`,
+    rule: (source, l) => source.endsWith(`/${seg(l)}`),
+  };
+  ROUTES[`${region.slug}/[year]/[month]`] = {
+    url: (l) => `/${l}/${seg(l)}/2026/12`,
+    rule: (source, l) => source.endsWith(`/${seg(l)}/:year(\\d{4})/:month(\\d{1,2})`),
+  };
+  if (region.bestTime.length > 0) {
+    ROUTES[`${region.slug}/best-time-to-visit`] = {
+      url: (l) => `/${l}/${seg(l)}/${BEST_TIME_SEGMENTS[l]}`,
+      rule: (source, l) => source.endsWith(`/${seg(l)}/${BEST_TIME_SEGMENTS[l]}`),
+    };
+  }
+  if (resort) {
+    ROUTES[`${region.slug}/best-time-to-visit/[resort]`] = {
+      url: (l) => `/${l}/${seg(l)}/${BEST_TIME_SEGMENTS[l]}/${resort}`,
+      rule: (source, l) => source.includes(`/${seg(l)}/${BEST_TIME_SEGMENTS[l]}/:resort`),
+    };
+  }
+}
 
 const rules = await nextConfig.headers();
 
@@ -120,14 +131,19 @@ for (const [route, { url, rule }] of Object.entries(ROUTES)) {
   console.log(`  ✓ ${route}: ${[...windows].join(' | ')} in all ${locales.length} locales`);
 }
 
-// The best-time pages under `/orlando/<segment>/<resort>` are two segments after `/orlando` too,
-// and must not take the month pages' window.
-for (const locale of locales) {
-  const path = `/${locale}/orlando/beste-reisezeit/disney-world`;
-  const { source } = headerFor(path, 'cdn-cache-control');
-  assert.ok(!source?.includes('/orlando/:year'), `${path} matched the Orlando month rule`);
-  passed++;
+// A region's best-time pages under `/<segment>/<best-time segment>/<resort>` are two segments
+// after the hub too, and must not take the month pages' window.
+for (const region of LIVE_TRIP_REGIONS) {
+  const resort = region.bestTime.find((page) => page.segment)?.segment;
+  if (!resort) continue;
+  for (const locale of locales) {
+    const seg = tripRegionSegment(region, locale);
+    const path = `/${locale}/${seg}/${BEST_TIME_SEGMENTS[locale]}/${resort}`;
+    const { source } = headerFor(path, 'cdn-cache-control');
+    assert.ok(!source?.includes(`/${seg}/:year`), `${path} matched the month rule`);
+    passed++;
+  }
+  console.log(`  ✓ a best-time path under ${region.slug}'s hub is not a month`);
 }
-console.log('  ✓ a best-time path under /orlando is not an Orlando month');
 
 console.log(`\n${passed} passed`);

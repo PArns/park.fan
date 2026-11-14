@@ -4,7 +4,7 @@ import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 're
 import { HubBannerPhoto } from '@/components/layout/hub-banner';
 import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
-import { TRIP_REGIONS } from '@/lib/navigation/trip-regions';
+import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
 /** What the lazily loaded art receives: the scene's box, and what to draw if it never arrives. */
@@ -20,7 +20,7 @@ interface ArtProps {
  */
 const SCENES: Partial<Record<string, LazyExoticComponent<ComponentType<ArtProps>>>> =
   Object.fromEntries(
-    TRIP_REGIONS.flatMap(({ id, scene: load }) =>
+    TRIP_REGIONS.flatMap(({ slug: id, scene: load }) =>
       load
         ? [
             [
@@ -80,5 +80,27 @@ export function PlannerRegionArt({
         <Scene className="h-full w-full" fallback={photoArt} />
       </span>
     </Suspense>
+  );
+}
+
+/**
+ * A region's scene cut to a 56 × 36 box, for its row in the phone sheet where several regions are
+ * listed. The sheet's content is mounted only while the sheet is open, so the chunk loads on its
+ * first opening and no page carries the markup; until then, and for a region without a scene, the
+ * box is the muted ground.
+ */
+export function RegionSceneCut({ regionId }: { regionId: string }) {
+  const Scene = SCENES[regionId];
+  return (
+    <span
+      aria-hidden="true"
+      className="bg-muted relative block h-9 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-black/10 dark:ring-white/10"
+    >
+      {Scene && (
+        <Suspense fallback={null}>
+          <Scene className="h-full w-full" fallback={null} />
+        </Suspense>
+      )}
+    </span>
   );
 }

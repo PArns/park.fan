@@ -20,7 +20,7 @@
  * WHERE THE EXPECTED LINKS COME FROM — NOT FROM THE PAGE
  *
  * The six hub paths per locale come from the segment modules the header itself links with, and the
- * trip-planner regions from `TRIP_REGIONS`, the list the planner band renders. The
+ * trip-planner regions from `LIVE_TRIP_REGIONS`, the list the planner band renders. The
  * continent and country slugs come from `/v1/discovery/continents`, the same source `getGeoMenu()`
  * reads, so the number follows the inventory instead of being a 28 typed in here. An empty or
  * unreachable API FAILS the check rather than passing it against an empty expectation: the header
@@ -52,7 +52,8 @@ import { locales } from '@/i18n/config';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
-import { TRIP_REGIONS } from '@/lib/navigation/trip-regions';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { TRIP_PLANNER_ID, tripRegionPath } from '@/lib/trip-regions/paths';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 
 const arg = (name, fallback) =>
@@ -187,7 +188,9 @@ for (const locale of locales) {
     `/${locale}/${GLOSSARY_SEGMENTS[locale]}`,
     `/${locale}/${HOWTO_SEGMENTS[locale]}`,
     `/${locale}/${PLANNER_SEGMENTS[locale]}`,
-    ...TRIP_REGIONS.map((region) => `/${locale}${region.href}`),
+    ...LIVE_TRIP_REGIONS.map(
+      (region) => `/${locale}${tripRegionPath(region.slug, locale)}#${TRIP_PLANNER_ID}`
+    ),
     ...geoPaths.map((path) => `/${locale}${path}`),
   ];
 

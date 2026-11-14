@@ -3,19 +3,26 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
-import { ORLANDO_SEGMENT } from '@/lib/orlando/paths';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 
 type SegmentFamily = Readonly<Record<string, string>>;
 
-/** First segments written in the reader's language: `/beste-reisezeit`, `/tagesplaner`, … */
+/** A trip region hub's segment per locale: `/kalifornien`, `/california`. */
+const TRIP_REGION_FAMILIES: readonly SegmentFamily[] = LIVE_TRIP_REGIONS.map((r) => r.segments);
+
+/**
+ * First segments written in the reader's language: `/beste-reisezeit`, `/tagesplaner`, a trip
+ * region's hub, …
+ */
 const TOP_LEVEL_FAMILIES: readonly SegmentFamily[] = [
   BEST_TIME_SEGMENTS,
   PLANNER_SEGMENTS,
   HOWTO_SEGMENTS,
   GLOSSARY_SEGMENTS,
+  ...TRIP_REGION_FAMILIES,
 ];
 
 /** A park's sub-page segment, the seventh of `/parks/<continent>/<country>/<city>/<park>/…`. */
@@ -58,8 +65,8 @@ export function localizedPath(path: string, locale: string): string {
     if (parts[1] === 'parks' && parts.length >= 7) {
       parts[6] = respell(parts[6], PARK_SUBPAGE_FAMILIES, locale);
     }
-    // Orlando's best-time pages, `/orlando/<best-time segment>[/<resort>]`.
-    if (parts[1] === ORLANDO_SEGMENT && parts.length >= 3) {
+    // A region's best-time pages, `/<region segment>/<best-time segment>[/<resort>]`.
+    if (TRIP_REGION_FAMILIES.some((f) => f[locale] === parts[1]) && parts.length >= 3) {
       parts[2] = respell(parts[2], [BEST_TIME_SEGMENTS], locale);
     }
   }

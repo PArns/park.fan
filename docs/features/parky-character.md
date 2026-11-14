@@ -79,7 +79,8 @@ planner band ([header navigation](header-navigation.md#the-planner-panel)).
   motion the picture stands finished. Both pictures are `aria-hidden` and take their colours from
   Tailwind classes with `dark:` twins.
 - **A new region gets its own picture** of him on holiday there, the same way, as its entry's
-  `scene` in `TRIP_REGIONS`.
+  `scene` in the registry (`components/layout/region-art/<slug>.tsx`,
+  [trip regions](trip-regions.md#the-planner-band-with-several-regions)).
 
 ## His voice
 

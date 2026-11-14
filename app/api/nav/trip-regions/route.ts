@@ -1,21 +1,24 @@
 import { NextResponse } from 'next/server';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
-import { getOrlandoRegion } from '@/lib/orlando/api';
-import { TRIP_REGION_CACHE_CONTROL } from '@/lib/orlando/relay';
-import { tripRegionLinks } from '@/lib/orlando/trip-links';
+import { getTripRegion } from '@/lib/trip-regions/api';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { TRIP_REGION_CACHE_CONTROL } from '@/lib/trip-regions/relay';
+import { tripRegionLinks } from '@/lib/trip-regions/trip-links';
 
 /**
- * The trip regions as the browser links into them (`TripRegionLinks`): their names for the search
- * palette's first row and their parks for the day planner's plan list: the region route's answer
- * without its travel matrix, hotel areas and tickets, which no link needs, read through the Data
- * Cache and kept as long as the relay keeps the region. A failed read is a 502 nobody caches, never
- * an empty list kept for a day.
+ * The live trip regions as the browser links into them (`TripRegionLinks`): their names for the
+ * search palette's first row and their parks for the day planner's plan list: each region route's
+ * answer without its travel matrix, hotel areas and tickets, which no link needs, read through the
+ * Data Cache and kept as long as the relay keeps a region. A failed read is a 502 nobody caches,
+ * never a shorter list kept for a day.
  */
 export async function GET() {
   try {
-    const links = tripRegionLinks(await getOrlandoRegion());
+    const regions = await Promise.all(
+      LIVE_TRIP_REGIONS.map(async (config) => tripRegionLinks(await getTripRegion(config.slug)))
+    );
     return NextResponse.json(
-      { regions: links ? [links] : [] },
+      { regions: regions.filter((links) => links !== null) },
       { headers: cdnCacheHeaders(TRIP_REGION_CACHE_CONTROL) }
     );
   } catch (error) {

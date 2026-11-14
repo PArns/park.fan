@@ -2,8 +2,10 @@
 
 Which park on which day of a trip of up to 21 days in one region, from the API's `/plan`, or which
 dates to travel at all, from `/when`. Orlando is its first region, as chapter 03 of the
-[Orlando hub](orlando-hub.md); Paris, Japan and Anaheim follow, and the files keep their `orlando`
-names until that work moves them. In German it is the Reiseplaner, in English the trip planner,
+[Orlando hub](orlando-hub.md); Southern California, Japan and Paris follow from the same code, each
+with its own entry in the registry ([trip regions](trip-regions.md)). The region's own rules (its
+hotels, its ticket step, the fireworks question, keeping Disney and Universal days together) are
+fields of that entry, and its own words are `tripRegions.<slug>.planner`. In German it is the Reiseplaner, in English the trip planner,
 though the English navigation still calls the one-park planner "Trip planner" as well; these docs
 call that one the day planner ([its docs](trip-planner/README.md)).
 
@@ -14,19 +16,19 @@ which ranked crowd levels in the browser; the search now runs in the API
 
 ## Where it lives
 
-| Piece                                                                   | File                                                                                                  |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| The component the hub mounts                                            | `components/orlando/planner/orlando-planner.tsx` (`OrlandoPlanner`)                                   |
-| The state and its URL form                                              | `lib/orlando/plan-query.ts` (`readPlanQuery`, `writePlanQuery`, `orlandoPlannerHref`)                 |
-| The `/plan` answer, trip arithmetic, edits, filing into the day planner | `lib/orlando/plan.ts`                                                                                 |
-| Tickets: the catalog, the step's drafts, what the answer's fields say   | `lib/orlando/plan-tickets.ts`, `components/orlando/planner/plan-tickets.tsx`, `plan-tickets-card.tsx` |
-| Codes to sentences, the saving, the last-year date                      | `lib/orlando/plan-copy.ts`                                                                            |
-| Week and Month geometry, short days, swap previews                      | `lib/orlando/plan-week.ts`                                                                            |
-| The When mode                                                           | `lib/orlando/plan-when.ts`, `components/orlando/planner/plan-find.tsx`, `plan-when-result.tsx`        |
-| The `.ics` file                                                         | `lib/orlando/plan-ics.ts`                                                                             |
-| Requests through the relay                                              | `lib/orlando/plan-fetch.ts`, hooks in `components/orlando/planner/use-trip-plan.ts`                   |
-| The chosen view                                                         | `lib/orlando/plan-view.ts` (`parkfan_orlando_view` in localStorage)                                   |
-| Park photos for the Week view                                           | `lib/orlando/plan-photos.ts` (server only, passed as `photos`)                                        |
+| Piece                                                                   | File                                                                                                            |
+| ----------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| The component the hub mounts                                            | `components/trip-regions/planner/trip-region-planner.tsx` (`TripRegionPlanner`)                                 |
+| The state and its URL form                                              | `lib/trip-regions/plan-query.ts` (`readPlanQuery`, `writePlanQuery`, `plannerHrefOn`)                           |
+| The `/plan` answer, trip arithmetic, edits, filing into the day planner | `lib/trip-regions/plan.ts`                                                                                      |
+| Tickets: the catalog, the step's drafts, what the answer's fields say   | `lib/trip-regions/plan-tickets.ts`, `components/trip-regions/planner/plan-tickets.tsx`, `plan-tickets-card.tsx` |
+| Codes to sentences, the saving, the last-year date                      | `lib/trip-regions/plan-copy.ts`                                                                                 |
+| Week and Month geometry, short days, swap previews                      | `lib/trip-regions/plan-week.ts`                                                                                 |
+| The When mode                                                           | `lib/trip-regions/plan-when.ts`, `components/trip-regions/planner/plan-find.tsx`, `plan-when-result.tsx`        |
+| The `.ics` file                                                         | `lib/trip-regions/plan-ics.ts`                                                                                  |
+| Requests through the relay                                              | `lib/trip-regions/plan-fetch.ts`, hooks in `components/trip-regions/planner/use-trip-plan.ts`                   |
+| The chosen view                                                         | `lib/trip-regions/plan-view.ts` (`parkfan_orlando_view` in localStorage)                                        |
+| Park photos for the Week view                                           | `lib/trip-regions/plan-photos.ts` (server only, passed as `photos`)                                             |
 
 `pnpm test:orlando-plan` covers every pure module.
 
@@ -40,7 +42,7 @@ plus `#planner`, and in the When mode `when=<from>_<to>&days=<n>[&within=<region
 `useSearchParams` sees it and the page does not remount; a query the planner did not write (Parky's
 `router.push`, the back button) re-plans the same way and, with `#planner`, scrolls to the chapter
 and moves the focus into it. "Copy link" copies the address. Every other page that links into the
-planner builds the href with `orlandoPlannerHref`, the one serializer.
+planner builds the href with `plannerHrefOn`, the one serializer.
 
 - **Defaults stay out of the URL:** `fireworks=any`, `split=auto`, `rest=auto`, `hop=0`,
   `arrival`/`departure=free`, and `blocks` until the visitor sets it (absent, the API keeps resorts
@@ -65,7 +67,7 @@ range with different spaces, which cost the planner its hydration once.
 ## From simple to detailed
 
 The owner's rule for the whole chapter: a visitor is never buried in numbers. The hub's hero action
-calls `orlandoPlannerUi.openStart()` (`lib/orlando/planner-ui.ts`): the walk's first sheet on a
+calls `tripPlannerUi.openStart()` (`lib/trip-regions/planner-ui.ts`): the walk's first sheet on a
 phone (Tickets while its question is open in this browser, else Dates), that panel scrolled to and
 focused at a desk.
 
@@ -110,7 +112,8 @@ night never makes a date look quiet (`dateFigure`).
   one wait on one sheet read as one of them wrong. Then Pin, Swap and "Plan this day".
 - **Level 3, the day planner.** "Plan this day" publishes the park (`plannerPagePark` and a
   `PlannerPageParkBeacon`), leaves the date in `plannerPageDay` and asks for the wizard with
-  `plannerUi.requestOpen('orlando-hub', 'page-park-wizard')`, as the homepage hero does.
+  ``plannerUi.requestOpen(`${region}-hub`, 'page-park-wizard')`` (`orlando-hub`), as the homepage
+  hero does.
 
 ## Evenings, tickets and the season
 
@@ -143,7 +146,7 @@ Without a catalog the step and the card are not drawn, plan first works as befor
 - **The question.** Two 48 px chips (`PlanChip`) under one shared line. "Not yet, just plan" answers
   in one press and moves on to Dates; "Next: dates"
   without an answer counts as the same. "Yes, I have tickets" opens the four resorts. The answer is
-  this browser's (`parkfan_orlando_tickets_asked`, `lib/orlando/ticket-answer.ts`); "Not yet" leaves
+  this browser's (`parkfan_orlando_tickets_asked`, `lib/trip-regions/ticket-answer.ts`); "Not yet" leaves
   no `tickets` in the URL, and tickets entered before it stay in the step until the page is left.
 - **The products.** Each resort lists the operators' tickets by name, with their rule in one line;
   every product whose catalog `markets` lack `us` is tagged "Sold outside the US". The tag reads
@@ -195,7 +198,7 @@ The planner's events go to our own statistic through `trackSiteEvent` and its ga
 ones through `trackTripEvent` (`useTripEvents()` in the planner's context), which adds `region`: the
 region's slug, `orlando` for now. Each one is in `SiteEventMap` and has its line in the admin's
 `EVENT_INFO`. The properties that take more than a
-literal are built in `lib/orlando/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`; the
+literal are built in `lib/trip-regions/plan-analytics.ts` and pinned by `pnpm test:orlando-plan`; the
 Orlando part of `pnpm check:planner` reads the key ones from the page (`window.__parkfanEventLog`).
 
 Every name is snake_case in the past tense, every value is one of a few, and nothing a visitor typed
