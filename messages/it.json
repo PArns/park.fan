@@ -4088,7 +4088,7 @@
           },
           "distance": {
             "q": "Quanto dista il Parc Astérix da Disneyland Paris?",
-            "a": "In auto sono circa {far} minuti senza traffico dal parcheggio Disney al Parc Astérix, più {transfer} minuti a piedi tra il parcheggio e gli ingressi Disney, {total} in tutto. Senza auto prendi il TGV da Marne-la-Vallée–Chessy all’aeroporto Charles de Gaulle e lì, a Roissypôle, la navetta del Parc Astérix. Gli ingressi del Parco Disneyland e di Disney Adventure World distano {near} minuti a piedi. Dati della mappa: {attribution}."
+            "a": "In auto sono circa {far} minuti senza traffico dal parcheggio Disney al Parc Astérix, più {transfer} minuti a piedi tra il parcheggio e gli ingressi Disney, {total} minuti in tutto. Senza auto prendi il TGV da Marne-la-Vallée–Chessy all’aeroporto Charles de Gaulle e lì, a Roissypôle, la navetta del Parc Astérix. Gli ingressi del Parco Disneyland e di Disney Adventure World distano {near} minuti a piedi. Dati della mappa: {attribution}."
           }
         },
         "next": {

@@ -4088,7 +4088,7 @@
           },
           "distance": {
             "q": "Wie weit ist der Parc Astérix von Disneyland Paris entfernt?",
-            "a": "Mit dem Auto sind es ohne Verkehr etwa {far} Minuten vom Disney-Parkplatz zum Parc Astérix, dazu {transfer} Minuten zu Fuß zwischen Parkplatz und Disney-Eingängen, zusammen {total}. Ohne Auto fährst du mit dem TGV von Marne-la-Vallée–Chessy zum Flughafen Charles de Gaulle und nimmst dort ab Roissypôle den Shuttle des Parc Astérix. Die Eingänge von Disneyland Park und Disney Adventure World liegen {near} Minuten zu Fuß auseinander. Kartendaten: {attribution}."
+            "a": "Mit dem Auto sind es ohne Verkehr etwa {far} Minuten vom Disney-Parkplatz zum Parc Astérix, dazu {transfer} Minuten zu Fuß zwischen Parkplatz und Disney-Eingängen, zusammen {total} Minuten. Ohne Auto fährst du mit dem TGV von Marne-la-Vallée–Chessy zum Flughafen Charles de Gaulle und nimmst dort ab Roissypôle den Shuttle des Parc Astérix. Die Eingänge von Disneyland Park und Disney Adventure World liegen {near} Minuten zu Fuß auseinander. Kartendaten: {attribution}."
           }
         },
         "next": {
@@ -4160,7 +4160,7 @@
             "offsite": "Anderes Hotel"
           },
           "hotelHint": {
-            "disney": "Extra Magic Time, meist eine Stunde vor der Öffnung in beiden Disney-Parks; auch im Davy Crockett Ranch",
+            "disney": "Extra Magic Time, meist eine Stunde vor der Öffnung in beiden Disney-Parks, Davy Crockett Ranch eingeschlossen",
             "parc_asterix": "Early Entry: einige Attraktionen 30 Minuten früher",
             "offsite": "Partnerhotels und Paris eingeschlossen, kein früherer Einlass"
           },

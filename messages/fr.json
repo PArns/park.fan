@@ -4079,7 +4079,7 @@
           "quietest": {
             "q": "Quand Disneyland Paris et le Parc Astérix sont-ils les plus calmes dans les semaines à venir ?",
             "qMonth": "Quand Disneyland Paris et le Parc Astérix sont-ils les plus calmes en {month} ?",
-            "resort": "{resort} : plus calme {days}, plus chargé {busy}.",
+            "resort": "{resort} : jours les plus calmes {days}, jours les plus chargés {busy}.",
             "day": "{date} ({park}, environ {minutes} min)"
           },
           "epic": {
@@ -4088,7 +4088,7 @@
           },
           "distance": {
             "q": "À quelle distance le Parc Astérix se trouve-t-il de Disneyland Paris ?",
-            "a": "En voiture, compte environ {far} minutes sans trafic du parking Disney au Parc Astérix, plus {transfer} minutes à pied entre le parking et les entrées Disney, soit {total} en tout. Sans voiture, prends le TGV de Marne-la-Vallée–Chessy jusqu’à l’aéroport Charles-de-Gaulle, puis la navette du Parc Astérix à Roissypôle. Les entrées du Parc Disneyland et de Disney Adventure World sont à {near} minutes à pied l’une de l’autre. Données cartographiques : {attribution}."
+            "a": "En voiture, compte environ {far} minutes sans trafic du parking Disney au Parc Astérix, plus {transfer} minutes à pied entre le parking et les entrées Disney, soit {total} minutes en tout. Sans voiture, prends le TGV de Marne-la-Vallée–Chessy jusqu’à l’aéroport Charles-de-Gaulle, puis la navette du Parc Astérix à Roissypôle. Les entrées du Parc Disneyland et de Disney Adventure World sont à {near} minutes à pied l’une de l’autre. Données cartographiques : {attribution}."
           }
         },
         "next": {
