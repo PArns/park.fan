@@ -92,7 +92,7 @@ export async function HubResorts({
                 data-card=""
                 className="border-border/60 bg-card flex w-full flex-col overflow-hidden rounded-2xl border shadow-sm"
               >
-                <div className="relative aspect-[16/9]">
+                <div className="relative aspect-[16/9] overflow-hidden">
                   {card.photo && (
                     <Image
                       src={card.photo.src}

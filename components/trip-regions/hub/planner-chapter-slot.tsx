@@ -10,7 +10,7 @@ import { getTripRegionTickets } from '@/lib/trip-regions/api';
 import { catchNonFatal } from '@/lib/api/client';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import type { TripRegion } from '@/lib/trip-regions/types';
-import { HubStateSwitch } from './hub-trip-state';
+import { HubPlannerOnly, HubStateSwitch } from './hub-trip-state';
 
 /** How long the chapter waits for the ticket catalog before it uses the region's copy. */
 const CATALOG_TIMEOUT_MS = 1500;
@@ -60,12 +60,14 @@ export async function PlannerChapterSlot({
         title={<HubStateSwitch landing={t('title')} plan={t('planTitle')} />}
       />
       {landing}
-      <TripRegionPlanner
-        region={tickets ? { ...region, tickets: leanTicketCatalog(tickets) } : region}
-        locale={locale}
-        defaultMonth={defaultMonth}
-        photos={tripPlannerPhotos(region)}
-      />
+      <HubPlannerOnly>
+        <TripRegionPlanner
+          region={tickets ? { ...region, tickets: leanTicketCatalog(tickets) } : region}
+          locale={locale}
+          defaultMonth={defaultMonth}
+          photos={tripPlannerPhotos(region)}
+        />
+      </HubPlannerOnly>
     </section>
   );
 }

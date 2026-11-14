@@ -17,7 +17,15 @@ import { hubTripOf, restorableTrip, type HubTripDates } from '@/lib/trip-regions
 import { rememberedTrip } from '@/lib/trip-regions/remembered-trip';
 import { cn } from '@/lib/utils';
 
-const HubTripContext = createContext<HubTripDates | null>(null);
+/** The hub's state: the trip it shows, and whether the planner has anything to show at all. */
+interface HubState {
+  trip: HubTripDates | null;
+  /** Dates or a search for them (`when=`): the planner's own view; else the landing page's. */
+  planner: boolean;
+}
+
+const LANDING: HubState = { trip: null, planner: false };
+const HubTripContext = createContext<HubState>(LANDING);
 
 /**
  * The hub's state for everything below it: the trip the planner shows, or null for the landing
@@ -38,7 +46,8 @@ export function HubTripProvider({
   children: ReactNode;
 }) {
   const mounted = useMounted();
-  const search = useSearchParams().toString();
+  const params = useSearchParams();
+  const search = params.toString();
   const restored = useRef(false);
   useEffect(() => {
     if (restored.current) return;
@@ -51,13 +60,27 @@ export function HubTripProvider({
   const trip = mounted ? hubTripOf(search) : null;
   const from = trip?.from;
   const to = trip?.to;
-  const value = useMemo(() => (from && to ? { from, to } : null), [from, to]);
+  const planner = mounted && (trip !== null || params.has('when'));
+  const value = useMemo<HubState>(
+    () =>
+      from && to ? { trip: { from, to }, planner } : planner ? { trip: null, planner } : LANDING,
+    [from, to, planner]
+  );
   return <HubTripContext.Provider value={value}>{children}</HubTripContext.Provider>;
 }
 
 /** The trip the hub shows (its dates), or null while it is the landing page. */
 export function useHubTrip(): HubTripDates | null {
-  return useContext(HubTripContext);
+  return useContext(HubTripContext).trip;
+}
+
+/**
+ * The planner's inline view (its result, a date search), shown only while it has one: on the
+ * landing page chapter 01 is the four steps, and the planner is the assistant's dialog, which
+ * renders outside this box. Hidden in the served HTML, which is the landing page.
+ */
+export function HubPlannerOnly({ children }: { children: ReactNode }) {
+  return <div hidden={!useContext(HubTripContext).planner}>{children}</div>;
 }
 
 /**
