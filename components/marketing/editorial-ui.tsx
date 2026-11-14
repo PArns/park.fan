@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { Card, CardContent } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
-import { objectPositionForSrc } from '@/lib/media/focus';
+import { bannerObjectPositions, objectPositionForSrc } from '@/lib/media/focus';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import { FaqAccordion } from '@/components/faq/faq-accordion';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -38,6 +38,24 @@ export const HERO_FLOW_INTO_PULL = '-mt-44 sm:mt-0';
  * on a phone (11rem = the `-mt-44` of `HERO_FLOW_INTO_PULL`), the usual corner from `sm` up.
  */
 export const HERO_CREDIT_POSITION = 'bottom-[calc(11rem+2px)] sm:bottom-1.5';
+
+/**
+ * `className` and `style` for the photo of a full-bleed head with text over it (`LandingHero`,
+ * `BlogPostBanner`): the sidecar's `bannerFocus` below `sm`, its `focus` from `sm` up
+ * (`bannerObjectPositions`). Both positions ride on the image as custom properties and the
+ * breakpoint picks one in CSS, so the first HTML frames it right on every screen and nothing moves
+ * after hydration.
+ */
+export function heroPhotoFraming(src: string): {
+  className: string;
+  style: React.CSSProperties;
+} {
+  const { narrow, wide } = bannerObjectPositions(src);
+  return {
+    className: '[object-position:var(--focus-wide)] max-sm:[object-position:var(--focus-narrow)]',
+    style: { '--focus-narrow': narrow, '--focus-wide': wide } as React.CSSProperties,
+  };
+}
 
 /** The one primary action a landing page names in its head (docs/product/landing-pages.md §4). */
 export interface LandingAction {
@@ -221,6 +239,7 @@ export function LandingHero(props: LandingHeroProps) {
   }
 
   const { imageSrc, imageAlt = '', scrollLabel, flowInto = false, short = false } = props;
+  const framing = imageSrc ? heroPhotoFraming(imageSrc) : null;
   return (
     <header
       data-landing-hero="hub"
@@ -233,7 +252,7 @@ export function LandingHero(props: LandingHeroProps) {
       {/* `sizes="100vw"` is right: this photo spans the viewport. The lever is the quality: it is
           the LCP element under two tints and a headline, and nothing in it is read for detail, so
           q60 saves bytes nobody can see. `60` must be in `images.qualities` (next.config.ts). */}
-      {imageSrc ? (
+      {imageSrc && framing ? (
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -241,8 +260,8 @@ export function LandingHero(props: LandingHeroProps) {
           priority
           quality={60}
           sizes="100vw"
-          className="object-cover motion-safe:scale-105"
-          style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
+          className={cn('object-cover motion-safe:scale-105', framing.className)}
+          style={framing.style}
         />
       ) : (
         <div

@@ -35,6 +35,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`focus.ts`](../../lib/media/focus.ts)
 
 - `objectPositionForSrc` _function_: CSS `object-position` for a public path — what the cards have to work with.
+- `bannerObjectPositions` _function_: The two `object-position`s of a full-bleed head with its headline, excerpt and byline over the photo: `narrow` below `sm`, where that text covers most of the picture, and `wide` from `sm` up, where it keeps to the left.
 - `versionedPath` _function_: Any media path with its content version attached — including a pre-cut crop.
 - `focusToObjectPosition` _function_: CSS `object-position` for a focal point, defaulting to centre.
 - `focusStyle` _function_: Style object for any element painting a media image with `object-fit: cover`.

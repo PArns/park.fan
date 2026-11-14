@@ -9,6 +9,7 @@
  * of these produces no error — just images that quietly stop being found.
  */
 
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 
 import {
@@ -16,6 +17,7 @@ import {
   collectionNodes,
   getCollection,
   getHeroImages,
+  getMediaImageBySrc,
   getParkBackground,
   getParkImages,
   getRideImage,
@@ -28,6 +30,7 @@ import {
   searchMedia,
 } from '../lib/media/index.ts';
 import { checkParkAssignment, distanceMeters, formatDistance } from '../lib/media/geo.ts';
+import { bannerObjectPositions, focusToObjectPosition } from '../lib/media/focus.ts';
 import { getCreditLine, needsAttribution } from '../lib/media/credit.ts';
 import { getPhotoAttribution } from '../lib/media/attribution.ts';
 import { resolveMediaImage } from '../lib/media/text.ts';
@@ -460,6 +463,71 @@ checkThat(
   checkThat(
     '…and is reported',
     round({ review: 'yes' }).issues.some((i) => i.startsWith('review:'))
+  );
+}
+
+// ─── bannerFocus ─────────────────────────────────────────────────────────────
+// The narrow full-bleed head's own point. Absent means "use focus", so centre has to
+// stay a point here where `focus` drops it, and the admin's save goes through the same
+// round trip, so a field the serializer forgets is a field every save deletes. It moves
+// a CSS position and cuts no crop, so the content version must not change with it.
+{
+  const round = (raw) => {
+    const { sidecar, text, issues } = normalizeSidecar(raw);
+    return { json: JSON.parse(serializeSidecar(sidecar, text)), sidecar, issues };
+  };
+  const point = { x: 0.3, y: 0.55 };
+
+  check(
+    'bannerFocus survives the round trip',
+    round({ bannerFocus: point }).json.bannerFocus,
+    point
+  );
+  check(
+    'bannerFocus keeps centre, which focus drops',
+    round({ focus: 'center', bannerFocus: 'center' }).sidecar,
+    { ...round({}).sidecar, bannerFocus: { x: 0.5, y: 0.5 } }
+  );
+  checkThat('an absent bannerFocus stays absent', !('bannerFocus' in round({}).json));
+  check(
+    'a bannerFocus out of range is dropped',
+    round({ bannerFocus: { x: 2, y: 0 } }).sidecar.bannerFocus,
+    null
+  );
+  checkThat(
+    '…and is reported under its own name',
+    round({ bannerFocus: { x: 2, y: 0 } }).issues.some((i) => i.startsWith('bannerFocus:'))
+  );
+
+  const scene = getMediaImageBySrc('/media/reiseplaner/parky-paris-tag.webp');
+  checkThat('the Paris scene carries a bannerFocus', Boolean(scene?.bannerFocus));
+  const sceneVersion = createHash('sha1')
+    .update(readFileSync(`public${scene.src}`))
+    .update(JSON.stringify(scene.focus))
+    .digest('hex')
+    .slice(0, 8);
+  check('bannerFocus is not part of the content version', scene.version, sceneVersion);
+  check(
+    'a head frames the scene at bannerFocus below sm and focus above',
+    bannerObjectPositions(`${scene.src}?v=${scene.version}`),
+    {
+      narrow: focusToObjectPosition(scene.bannerFocus),
+      wide: focusToObjectPosition(scene.focus),
+    }
+  );
+  const plain = MEDIA_IMAGES.find((i) => i.focus && !i.bannerFocus);
+  const plainPosition = focusToObjectPosition(plain.focus);
+  check('without bannerFocus both are focus', bannerObjectPositions(plain.src), {
+    narrow: plainPosition,
+    wide: plainPosition,
+  });
+  check(
+    'a crop of the scene is centred on both',
+    bannerObjectPositions('/media/reiseplaner/parky-paris-tag-16x9.jpg'),
+    {
+      narrow: '50% 50%',
+      wide: '50% 50%',
+    }
   );
 }
 

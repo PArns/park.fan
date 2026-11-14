@@ -13,7 +13,9 @@ role from a filename or folder.
 - **`focus` is one point per image** and drives both the CSS `object-position` on every card and
   background and the offset the build-time 16:9 / 4:3 / 1:1 crops are cut at. Image URLs carry
   `?v=<content hash>`, because moving a focal point rewrites a crop's bytes at an unchanged URL
-  (`images.localPatterns` in `next.config.ts` permits the query).
+  (`images.localPatterns` in `next.config.ts` permits the query). The one exception is a
+  full-bleed head with text over the photo below `sm`, which uses the sidecar's `bannerFocus` where
+  one is set (`heroPhotoFraming`); it moves no crop and is not in the version.
 - **A photo that is not ours records who took it, under what licence and where from**:
   `credit.author`, `credit.license`, `credit.source`, `credit.sourceUrl` in the sidecar, never a line
   of prose elsewhere. It is never a Creative Commons photo

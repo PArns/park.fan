@@ -65,6 +65,7 @@ interface SidecarPayload {
   order?: number | null;
   gps?: { lat: number; lon: number } | null;
   focus?: { x: number; y: number } | string | null;
+  bannerFocus?: { x: number; y: number } | string | null;
   /** Still needs a proper pass — written by `/admin/capture`, cleared in the browser. */
   review?: boolean;
 }
@@ -137,6 +138,9 @@ function buildSidecarFile(existingId: string | undefined, payload: SidecarPayloa
     // written back — only a manual override belongs on disk.
     gps: payload.gps ?? (current?.gps?.source === 'manual' ? current.gps : null),
     focus: payload.focus !== undefined ? payload.focus : current?.focus,
+    // The media browser has no control for it and leaves it out, so it is kept from the image;
+    // a field missing from this list is dropped from the sidecar on the next save.
+    bannerFocus: payload.bannerFocus !== undefined ? payload.bannerFocus : current?.bannerFocus,
     // `!== undefined`, like every other three-state field here: clearing the flag
     // IS the edit the review pass makes, and `?? current` would make it unclearable.
     review: payload.review !== undefined ? payload.review : current?.review,
