@@ -193,9 +193,9 @@ export interface PlanRegionKeys {
 
 /** The slugs, hotel areas, tickets and resorts a link may name, from the region the page rendered. */
 export function planRegionKeys(
-  region: Pick<TripRegion, 'slug' | 'parks' | 'hotelAreas' | 'groups' | 'tickets'>
+  region: Pick<TripRegion, 'slug' | 'parks' | 'hotelAreas' | 'groups' | 'tickets' | 'hotels'>
 ): PlanRegionKeys {
-  const hotels = tripRegionConfig(region.slug)?.hotels;
+  const hotels = region.hotels?.length ? region.hotels : tripRegionConfig(region.slug)?.hotels;
   return {
     parks: new Set(region.parks.map((p) => p.slug)),
     areas: new Set(region.hotelAreas.map((a) => a.key)),

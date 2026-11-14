@@ -192,6 +192,17 @@ function DayDetails({
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);
+  // The early slot by the region's name for it; one this client has no words for is left out.
+  const earlyLine = (early: { kind: string; opensAt: string }, yours: boolean) => {
+    const key = `details.${yours ? 'earlyYours' : 'earlyOthers'}.${early.kind}`;
+    const words = yours ? t : tRegion;
+    if (!words.has(key)) return null;
+    return (
+      <span className="text-muted-foreground block text-xs">
+        {words(key, { time: time(early.opensAt) })}
+      </span>
+    );
+  };
   const first = day.parks[0];
   const runner =
     isPark && day.kind === 'park' && first
@@ -223,15 +234,7 @@ function DayDetails({
           <Fact key={`hours-${visit.slug}`} icon={<Clock3 className="size-4" aria-hidden="true" />}>
             {prefix}
             {t('details.hours', { range: formatHoursRange(cell.opensAt, close, locale, timeZone) })}
-            {cell.early && (
-              <span className="text-muted-foreground block text-xs">
-                {earlyPerk(visit.perks ?? day.perks)
-                  ? t(`details.earlyYours.${cell.early.kind}`, { time: time(cell.early.opensAt) })
-                  : tRegion(`details.earlyOthers.${cell.early.kind}`, {
-                      time: time(cell.early.opensAt),
-                    })}
-              </span>
-            )}
+            {cell.early && earlyLine(cell.early, earlyPerk(visit.perks ?? day.perks) !== null)}
             {cell.evening?.kind === 'extended_evening' && (
               <span className="text-muted-foreground block text-xs">
                 {(visit.perks ?? day.perks ?? []).includes('extended_evening')

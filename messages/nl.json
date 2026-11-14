@@ -3232,8 +3232,10 @@
     "marker": {
       "closesAt": "sluit {time}",
       "closesEarly": "sluit vroeger",
-      "earlyEntry": "Early Entry",
-      "earlyPark": "Early Park Admission",
+      "early": {
+        "early_entry": "Early Entry",
+        "early_park_admission": "Early Park Admission"
+      },
       "rest": "Rustdag",
       "evening": "Extended Evening Hours",
       "last_year": "vorig jaar",
@@ -3647,8 +3649,10 @@
         },
         "sheet": {
           "kicker": "Orlando · één dag",
-          "earlyEntry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
-          "earlyAdmission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels",
+          "early": {
+            "early_entry": "Early Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_park_admission": "Early Park Admission vanaf {time} voor gasten van de Universal-hotels"
+          },
           "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min {via, select, ttc {met monorail of veerboot} other {met de pendelbus}}, samen {total} min, zonder verkeer"
         },
         "when": {

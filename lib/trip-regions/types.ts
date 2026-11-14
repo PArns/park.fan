@@ -43,10 +43,7 @@ export interface TripRegionPark {
  * for is shown as nothing, as the contract asks.
  */
 export type TripEarlyKind =
-  | 'early_entry'
-  | 'early_park_admission'
-  | 'happy_entry'
-  | 'extra_magic_time';
+  'early_entry' | 'early_park_admission' | 'happy_entry' | 'extra_magic_time';
 
 /** A hotel perk, as the plan's `perks` and `reasons` name it. */
 export type TripPerk = TripEarlyKind | 'extended_evening' | 'express_included';
@@ -184,7 +181,8 @@ export interface TicketLink {
   url: string;
   official?: boolean;
   sponsored: boolean;
-  markets?: Array<'us' | 'uk' | 'intl'>;
+  /** Codes of the region's `ticketMarkets`. */
+  markets?: string[];
   locales?: string[];
 }
 

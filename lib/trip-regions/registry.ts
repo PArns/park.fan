@@ -58,6 +58,11 @@ export interface TripTicketStep {
   resorts: readonly string[];
   entries: readonly TicketEntry[];
   /**
+   * The market code a ticket sold to anyone at the operator's carries (`us` in Orlando), for an
+   * API that does not send the region's `ticketMarkets` yet.
+   */
+  homeMarket: string;
+  /**
    * A resort's 14-day ticket sold abroad that is one product whatever the first day
    * (Disney's), the one "Not sure which" names for a 14-day ticket of that resort.
    */

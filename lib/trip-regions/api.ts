@@ -112,15 +112,25 @@ export async function getTripRegionLinks(): Promise<TripRegionLinks[]> {
 interface TripRegionListEntry {
   slug: string;
   parkCount?: number;
+  maxTripDays?: number;
   parks?: unknown[];
 }
 
+/** What the navigation says of a region beside its name: from the API, each when it answers. */
+export interface TripRegionNavFacts {
+  /** How many parks the trip planner places. */
+  parkCount?: number;
+  /** The longest trip it plans, in days. */
+  maxTripDays?: number;
+}
+
 /**
- * How many parks each live region's planner places, by slug: the API's list of regions
- * (`GET /v1/trip-regions`), else each region route's park list, both a day in the Data Cache. A
- * region neither answers for in time is missing, and the band leaves its count out.
+ * What the band says of each live region, by slug: the API's list of regions
+ * (`GET /v1/trip-regions`), else for the park count each region route's park list, both a day in
+ * the Data Cache. A fact neither answers in time is missing, and the band leaves it out or keeps
+ * its own.
  */
-export async function getTripRegionParkCounts(): Promise<Record<string, number>> {
+export async function getTripRegionNavFacts(): Promise<Record<string, TripRegionNavFacts>> {
   // Both at once, so a cold cache waits one bound, not two; the region reads are the ones every
   // hub and band already keep a day.
   const [list, regions] = await Promise.all([
@@ -138,13 +148,18 @@ export async function getTripRegionParkCounts(): Promise<Record<string, number>>
       )
     ),
   ]);
-  const counts: Record<string, number> = {};
-  for (const region of regions) if (region) counts[region.slug] = region.parks.length;
+  const facts: Record<string, TripRegionNavFacts> = {};
+  for (const region of regions) if (region) facts[region.slug] = { parkCount: region.parks.length };
   for (const entry of list ?? []) {
+    if (typeof entry.slug !== 'string') continue;
+    const own = (facts[entry.slug] ??= {});
     const count = entry.parkCount ?? entry.parks?.length;
-    if (typeof entry.slug === 'string' && typeof count === 'number') counts[entry.slug] = count;
+    if (typeof count === 'number') own.parkCount = count;
+    if (typeof entry.maxTripDays === 'number' && entry.maxTripDays > 0) {
+      own.maxTripDays = entry.maxTripDays;
+    }
   }
-  return counts;
+  return facts;
 }
 
 /**

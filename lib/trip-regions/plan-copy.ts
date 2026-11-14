@@ -55,9 +55,7 @@ export const PLAN_WARNING_ORDER = [
  * does not price. A chip without words in `tripPlanner.climate` is not drawn.
  */
 export type ClimateChip =
-  | 'extreme_heat'
-  | `${'hurricane' | 'typhoon'}_${'peak' | 'season'}`
-  | 'rainy_season';
+  'extreme_heat' | `${'hurricane' | 'typhoon'}_${'peak' | 'season'}` | 'rainy_season';
 
 /** The climate chips of a day's or a window's warnings, in order, the season folded into its peak. */
 export function climateChips(warnings: readonly string[]): ClimateChip[] {

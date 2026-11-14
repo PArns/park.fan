@@ -195,8 +195,8 @@ The panel is only the look; the data and the click behaviour live in the modules
   locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's planner
   anchor (`/orlando#planner`) and crowd calendar, the hub's photo, its park count from the API's
   list of regions (else the region route's `parks[]`; without either the chip is left out) and its
-  longest trip (`MAX_TRIP_DAYS`). The parks are memoised per process like `getFeaturedParksMenu`;
-  the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
+  longest trip from the same list (else `MAX_TRIP_DAYS`). The parks are memoised per process like
+  `getFeaturedParksMenu`; the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
   day planner and the parks: the scene filling it, and over a fade into the band the area, the
   name, one line, the two facts, „Reise planen" (stretched over the card) and „Besucherkalender".
   From two on, the four-region design: a row of tiles (`RegionTile`: scene, area, name on up to
@@ -314,13 +314,16 @@ duplicates the desktop nav; put nothing unique there. From the top:
 - the destinations through `SheetNavLink`, each with its glyph in the accent: Guides, News,
   Startseite (`House`), then `SheetDisclosure`s — Parks entdecken (`/parks` and the continents), and
   each of the three hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and
-  then its categories or chapters with the band's numbers, in the band's order — and „Planen",
-  whose first row is the day planner's page, then „Dein Plan: <park>, <day>" where this browser has
-  a day planned from today on (`SheetPlanRow`, a leaf, so a plan edit re-renders it alone; it closes
-  the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), the band's
-  first four parks under „Einen Tag planen im" with its quick start, and the regions under
-  „Reiseplaner" (`SheetCaption` for both). The disclosure row is the toggle, not a link beside a
-  chevron; after it each live region's crowd calendar keeps its own row, like the „Mehr" tiles;
+  then its categories or chapters with the band's numbers, in the band's order — and „Planen", in
+  the band's order: the regions under „Reiseplaner" (one row per live region; from two regions on
+  each row is a `SheetRegionLink`, 44 px high with a 56 × 36 cut of the region's Parky scene), then
+  under „Tagesplaner" the day planner's page („Tag planen"), „Dein Plan: <park>, <day>" where this
+  browser has a day planned from today on (`SheetPlanRow`, a leaf, so a plan edit re-renders it
+  alone; it closes the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), and the
+  band's first four parks under „Einen Tag planen im" with its quick start. Each group's caption
+  (`SheetCaption`) is bold in the text colour, so a caption reads as a heading and not as one more
+  row. The disclosure row is the toggle, not a link beside a chevron; after it each live region's
+  crowd calendar keeps its own row, like the „Mehr" tiles;
 - the footer row (`MoreMenuLinks variant="sheet"`), **outside** the scrolling list on the sheet's
   bottom edge with `pb-[max(0.25rem,env(safe-area-inset-bottom))]` (the `env()` half reads 0: the
   viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above the home

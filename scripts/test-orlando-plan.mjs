@@ -31,6 +31,7 @@ import {
   toggleLock,
   chooseHotel,
   effectiveHotel,
+  tripHotelKinds,
 } from '../lib/trip-regions/plan.ts';
 import {
   autoSplit,
@@ -91,6 +92,7 @@ import {
   adoptSuggestions,
   draftTicket,
   entryMarket,
+  ticketHomeMarket,
   hopperGains,
   hopperResorts,
   isEveryDayTicket,
@@ -320,6 +322,24 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'the area means its hotel',
     effectiveHotel({ hotel: null, area: 'universal' }, ORLANDO.hotels),
     'universal'
+  );
+  test(
+    'the API’s hotel kinds keep the registry’s areas, and a new one has none',
+    tripHotelKinds(
+      {
+        hotels: [
+          { key: 'disney', perks: ['early_entry'] },
+          { key: 'partner', perks: [] },
+        ],
+      },
+      ORLANDO.hotels
+    ),
+    [{ key: 'disney', area: 'disney' }, { key: 'partner' }]
+  );
+  test(
+    'without the API’s kinds the registry’s stand',
+    tripHotelKinds({}, ORLANDO.hotels),
+    ORLANDO.hotels
   );
   const a = {
     date: '2026-11-29',
@@ -1150,11 +1170,19 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the step’s tag reads “not us”: sold outside the US, or none',
     [
-      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG),
-      entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG),
-      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG),
+      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG, 'us'),
+      entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG, 'us'),
+      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG, 'us'),
     ],
     ['intl', 'intl', null]
+  );
+  test(
+    'the home market is the region’s, else the registry’s',
+    [
+      ticketHomeMarket({ ticketMarkets: { home: 'jp', codes: ['jp', 'intl'] } }, STEP),
+      ticketHomeMarket({}, STEP),
+    ],
+    ['jp', 'us']
   );
   test(
     'the lists keep only what the catalog has',

@@ -5,7 +5,7 @@ import { regionMessagesPath } from '@/i18n/client-messages';
 import { FEATURED_PARK_SLUGS } from '@/components/home/featured-parks-section';
 import { getMediaImageBySrc, getParkRefBySlug } from '@/lib/media';
 import { menuPhoto, type MoreMenuPhoto } from '@/lib/navigation/more-menu';
-import { getTripRegionParkCounts } from '@/lib/trip-regions/api';
+import { getTripRegionNavFacts } from '@/lib/trip-regions/api';
 import { TRIP_PLANNER_ID, tripRegionPath } from '@/lib/trip-regions/paths';
 import { MAX_TRIP_DAYS } from '@/lib/trip-regions/plan-query';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
@@ -38,11 +38,11 @@ export interface PlannerMenuRegion {
   /** The hub's photo; `null` where the catalog lost it. */
   photo: MoreMenuPhoto | null;
   /**
-   * How many parks the trip planner places, from the API (`getTripRegionParkCounts`); `null`
+   * How many parks the trip planner places, from the API (`getTripRegionNavFacts`); `null`
    * while it has not said, and the tile leaves the count out.
    */
   parkCount: number | null;
-  /** The longest trip it plans, in days. */
+  /** The longest trip it plans, in days: the API's list, else this site's own limit. */
   maxDays: number;
 }
 
@@ -124,8 +124,8 @@ export async function getPlannerMenu(locale: Locale): Promise<PlannerMenu> {
     parks = plannerParks(locale);
     PLANNER_PARKS.set(locale, parks);
   }
-  const [counts, regions] = await Promise.all([
-    getTripRegionParkCounts(),
+  const [facts, regions] = await Promise.all([
+    getTripRegionNavFacts(),
     Promise.all(
       LIVE_TRIP_REGIONS.map(async (region) => {
         const t = await getTranslations({
@@ -141,13 +141,16 @@ export async function getPlannerMenu(locale: Locale): Promise<PlannerMenu> {
           calendarHref,
           calendarLabel: t('calendar'),
           photo: menuPhoto(region.photo ? getMediaImageBySrc(region.photo) : null),
-          maxDays: MAX_TRIP_DAYS,
         };
       })
     ),
   ]);
   return {
-    regions: regions.map((region) => ({ ...region, parkCount: counts[region.id] ?? null })),
+    regions: regions.map((region) => ({
+      ...region,
+      parkCount: facts[region.id]?.parkCount ?? null,
+      maxDays: facts[region.id]?.maxTripDays ?? MAX_TRIP_DAYS,
+    })),
     parks,
   };
 }

@@ -70,10 +70,16 @@ browser asks through the relay, `/api/trip-regions/<slug>/…` (`tripRegionRelay
 the registry's slugs. Query keys and the planner's stored choices carry the region
 (`parkfan_<slug>_view`, `parkfan_<slug>_tickets_asked`, so Orlando's browsers keep theirs).
 
-The planner band's park count is the API's: `GET /v1/trip-regions` (the list of regions, a day in
-the Data Cache under `trip-regions`), else each region route's `parks[]`, read at once and bounded
-to 1.5 s, so a slow API costs the band its count chip and nothing else. A failed list read is not
-asked again for ten minutes in that process, since the Data Cache keeps only a 200.
+The planner band's park count and its longest trip are the API's: `GET /v1/trip-regions` (the
+list of regions, a day in the Data Cache under `trip-regions`; `parkCount`, `maxTripDays`), else
+each region route's `parks[]` for the count and `MAX_TRIP_DAYS` for the days
+(`getTripRegionNavFacts`). Both reads go at once, bounded to 1.5 s, so a slow API costs the band its
+count chip and nothing else. A failed list read is not asked again for ten minutes in that process,
+since the Data Cache keeps only a 200.
+
+A best-time page whose `/when` fails (a 401 from a revoked data key, a timeout) renders with
+`noWhenAnswer`, an answer without windows, weeks or months, and says it has no figures yet, as the
+hub does; it never answers 500.
 
 ## Messages
 
@@ -135,15 +141,25 @@ built on `HolidayParky`, and its entry's `scene` loads it.
    Run `pnpm test:unit`, and against a build `pnpm check:landing-pages`, `pnpm check:semantic-html`
    and `pnpm check:planner` with the region's URLs added to their lists.
 
-## What the API owes
+## What the API sends and how the site reads it
 
-- `GET /v1/trip-regions`: `{ regions: [{ slug, parkCount, … }] }`, open, for the band's count; the
-  band falls back to each region's `parks[]` until it exists.
-- Each region's routes as Orlando's, under its slug; a region the API does not curate yet answers
-  404, which leaves its band and links out.
-- Region-specific codes as codes: storm-season warnings and reasons, hotel kinds per region, the
-  bases (hotel areas) of a multi-city region, evening tickets. The words for a code are the
-  region's messages; a code without them falls back to the shared words.
+The contract is the API's `docs/frontend/trip-regions.md`. Every region-specific value arrives as a
+code; the words for a code are the region's messages, and a code without words draws nothing rather
+than a raw key, so the API can ship a region's codes before its words land here.
+
+| From the API                                            | Read by                                                                                                                                                                                                                                      |
+| ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| the list's `parkCount`, `maxTripDays`                   | the band's chips (`getTripRegionNavFacts`), with the fallbacks above                                                                                                                                                                         |
+| the region's `hotels: [{ key, perks }]`                 | the planner's hotel options (`tripHotelKinds`): the API's kinds in its order, each with the area the registry pairs it with; without them the registry's `hotels`. A region may have several areas or none                                   |
+| an early slot's code (`early.kind`, a hotel's `perks`)  | `tripPlanner.marker.early.<kind>`, `tripPlanner.details.earlyYours.<kind>`, `tripRegion.planner.details.earlyOthers.<kind>`, `tripRegion.hub.sheet.early.<kind>`: Orlando's two now, `happy_entry` and `extra_magic_time` with their regions |
+| `ticketMarkets.home`                                    | the "Sold outside the US" tag (`entryMarket` against `ticketHomeMarket`); the registry's `tickets.homeMarket` until the API sends it                                                                                                         |
+| `hurricane_*`, `typhoon_*`, `rainy_season` warnings     | the climate chips (`climateChips`, `tripPlanner.climate`, unknown codes filtered with `has`), `rankedLower`; a month's `hurricaneSeason`, `typhoonSeason`, `rainySeason` on the best-time pages, by the entry's `stormSeason`                |
+| a ticket's `entryFrom`, `validDays` (an evening ticket) | typed on `TicketProduct`; the API places an owned one on its days. The ticket step's entries for them come with the region that sells them                                                                                                   |
+| `school-breaks` by country                              | the holiday picker asks for DE, NL and GB (`WHEN_HOLIDAY_COUNTRIES`); ES and IT join once the API's data for them reaches half a year ahead, and the locale's own country is already first                                                   |
+| `bases`, `baseLegs` (a trip across several cities)      | typed, not shown: a region that needs them waits for the bases UI                                                                                                                                                                            |
+
+A region the API does not curate yet answers 404 on its routes, which leaves its band and links
+out.
 
 ## Checks
 
