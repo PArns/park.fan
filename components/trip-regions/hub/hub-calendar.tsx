@@ -18,6 +18,7 @@ import {
   formatDateRange,
   hoursUnpublished,
   dayGuestClose,
+  earlyCloseBehind,
   eventLanes,
   formatHubDate,
   HUB_FIRST_DAYS,
@@ -110,6 +111,9 @@ function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
   };
 }
 
+/** The history state key of an open day sheet, which Back closes. */
+const SHEET_ENTRY = 'hubDaySheet';
+
 /** The hub's calendar section: the props the server hands over. */
 export interface HubCalendarProps {
   region: TripRegion;
@@ -120,6 +124,8 @@ export interface HubCalendarProps {
   /** The region's today, for the "today" mark. */
   todayIso: string;
   locale: string;
+  /** How to read a square (`HubLegend`, server-rendered), between the filter and the days. */
+  legend?: React.ReactNode;
 }
 
 /**
@@ -130,7 +136,14 @@ export interface HubCalendarProps {
  * desktop shows the matrix or a phone asks for every day. Rows never change with the data, so the
  * reserved height is the rendered one. A tap on a day opens the day sheet.
  */
-export function HubCalendar({ region, initial, window, todayIso, locale }: HubCalendarProps) {
+export function HubCalendar({
+  region,
+  initial,
+  window,
+  todayIso,
+  locale,
+  legend,
+}: HubCalendarProps) {
   const t = useTranslations('tripHub.calendar');
   const isDesktop = useMediaQuery(DESKTOP_QUERY);
   const [expanded, setExpanded] = useState(false);
@@ -142,9 +155,25 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
   const [openDate, setOpenDate] = useState<string | null>(null);
   // The control that opened the sheet, so closing it puts focus back where the reader was.
   const opener = useRef<HTMLElement | null>(null);
+  // The open sheet holds a history entry of its own, so a phone's Back closes it and a second Back
+  // leaves the page, the way a visitor expects a sheet to behave. (`window` is a prop here.)
   const openDay = useCallback((date: string) => {
     opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setOpenDate(date);
+    if (!globalThis.history.state?.[SHEET_ENTRY]) {
+      globalThis.history.pushState({ ...globalThis.history.state, [SHEET_ENTRY]: true }, '');
+    }
+  }, []);
+  const closeDay = useCallback(() => {
+    setOpenDate(null);
+    if (globalThis.history.state?.[SHEET_ENTRY]) globalThis.history.back();
+  }, []);
+  useEffect(() => {
+    const onPop = () => {
+      if (!globalThis.history.state?.[SHEET_ENTRY]) setOpenDate(null);
+    };
+    globalThis.addEventListener('popstate', onPop);
+    return () => globalThis.removeEventListener('popstate', onPop);
   }, []);
   useEffect(() => clearTripPagePark, []);
 
@@ -171,7 +200,12 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
 
   return (
     <div className="space-y-4">
-      <div role="group" aria-label={t('filterLabel')} className="flex flex-wrap items-center gap-2">
+      {/* One row that scrolls sideways on a phone, so the days start higher up the screen. */}
+      <div
+        role="group"
+        aria-label={t('filterLabel')}
+        className="-mr-4 flex [scrollbar-width:none] items-center gap-2 overflow-x-auto pr-4 sm:mr-0 sm:flex-wrap sm:overflow-visible sm:pr-0"
+      >
         <FilterChip pressed={only === null} onClick={() => setOnly(null)}>
           {t('filterAll')}
         </FilterChip>
@@ -186,6 +220,8 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
         ))}
       </div>
 
+      {legend}
+
       {/* Phone: the days as a list, each resort's shortest line and how many other parks it has. */}
       <div className="lg:hidden">
         <DayList
@@ -193,6 +229,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
           groups={visibleGroups}
           todayIso={todayIso}
           locale={locale}
+          timezone={requireTripRegion(region.slug).timezone}
           onOpen={openDay}
         />
         {calendar.days.length > HUB_FIRST_DAYS || !complete ? (
@@ -247,7 +284,7 @@ export function HubCalendar({ region, initial, window, todayIso, locale }: HubCa
         calendar={calendar}
         locale={locale}
         todayIso={todayIso}
-        onClose={() => setOpenDate(null)}
+        onClose={closeDay}
       />
     </div>
   );
@@ -269,7 +306,7 @@ function FilterChip({
       aria-pressed={pressed}
       onClick={onClick}
       className={cn(
-        'focus-visible:ring-ring inline-flex min-h-11 items-center rounded-full border px-3.5 text-sm font-medium transition-colors focus-visible:ring-2 focus-visible:outline-none sm:min-h-9',
+        'focus-visible:ring-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3.5 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-none sm:min-h-9',
         pressed
           ? 'border-primary/50 bg-primary/15 text-foreground'
           : 'border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted/50'
@@ -334,12 +371,15 @@ function DayList({
   groups,
   todayIso,
   locale,
+  timezone,
   onOpen,
 }: {
   days: TripCalendarDay[];
   groups: RegionGroup[];
   todayIso: string;
   locale: string;
+  /** The region's zone, for the closing time of a park the pick beat. */
+  timezone: string;
   onOpen: (date: string) => void;
 }) {
   const t = useTranslations('tripHub.calendar');
@@ -375,7 +415,8 @@ function DayList({
                   const others = ranked.slice(1).filter((r) => isRankable(r.day)).length;
                   if (!top) return null;
                   const look = cellLook(top.day, false);
-                  const early = day.bestWhy?.[group.key] === 'closes_early_elsewhere';
+                  const early = earlyCloseBehind(day, group, top.park.slug);
+                  const earlyClose = early ? dayGuestClose(early.day) : undefined;
                   return (
                     <span key={group.key} className="flex items-start gap-2 text-sm">
                       {/* The park says which resort it is; its short name wraps rather than
@@ -386,9 +427,12 @@ function DayList({
                           : top.day?.status === 'CLOSED'
                             ? t('stateClosed')
                             : t('stateUnknown')}
-                        {early && (
+                        {early && earlyClose && (
                           <span className="text-muted-foreground block text-xs font-normal">
-                            {t('earlyElsewhere')}
+                            {t('earlyElsewhere', {
+                              park: shortParkName(early.park.name),
+                              time: formatClockTime(earlyClose, locale, timezone),
+                            })}
                           </span>
                         )}
                       </span>
@@ -495,12 +539,12 @@ function Matrix({
         className="w-max min-w-full border-separate border-spacing-1 text-sm"
       >
         <caption className="sr-only">
-          {first && last
+          {first && last && tRegion.has('caption')
             ? tRegion('caption', {
                 from: formatHubDate(first, locale),
                 to: formatHubDate(last, locale),
               })
-            : t('title')}
+            : t('listLabel')}
         </caption>
         <thead>
           <tr>
@@ -650,13 +694,16 @@ function EventLanes({
 }) {
   const t = useTranslations('tripHub.lanes');
   const tRegion = useTranslations('tripRegion.hub.lanes');
+  // A school-holiday lane says whose holidays they are in the region's own words; a region that
+  // has not written them gets no such lane rather than a key path.
+  const breaksNamed = tRegion.has('break') && tRegion.has('unnamedBreak');
   const lanes = useMemo(
     () =>
       eventLanes(
         calendar,
         region.parks.map((p) => p.slug)
-      ),
-    [calendar, region]
+      ).filter((lane) => lane.kind !== 'break' || breaksNamed),
+    [calendar, region, breaksNamed]
   );
   const nameOf = (lane: EventLane) =>
     lane.kind === 'break'
@@ -680,7 +727,9 @@ function EventLanes({
           })
         : nameOf(lane);
   if (lanes.length === 0) {
-    return <p className="text-muted-foreground text-sm">{tRegion('none')}</p>;
+    return tRegion.has('none') ? (
+      <p className="text-muted-foreground text-sm">{tRegion('none')}</p>
+    ) : null;
   }
   const first = calendar.days[0]?.date;
   const span = calendar.days.length;

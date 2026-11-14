@@ -67,11 +67,10 @@ export const JAPAN: TripRegionConfig = {
   hub: {
     // The media database has no photo of a Japanese park yet, so the hero is the compact one.
     heroPhotos: [],
-    // Tokyo DisneySea has the longest peak waits of the five, so its calendar is the next step.
-    nextStepPark: 'tokyo-disneysea',
     // Between the two Disney parks, where most trips start.
     defaultArea: 'maihama',
-    faq: { weekendPark: 'tokyo-disneysea' },
+    // Three questions a trip across cities raises, answered in the region's words.
+    faq: { weekendPark: 'tokyo-disneysea', questions: ['cities', 'luggage', 'happyEntry'] },
   },
   // The photos are ids the media database does not hold yet; they are named where each page wants
   // one, so adding the files is all the pages need.

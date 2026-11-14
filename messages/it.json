@@ -393,15 +393,13 @@
     "assistantOpen": "Scrivi a Parky"
   },
   "tripHub": {
-    "scroll": "Al calendario",
-    "introLabel": "Come leggere il calendario",
-    "intro": "Ogni casella è un parco in un giorno. Il numero è l’attesa che prevediamo alle grandi attrazioni di quel parco nell’ora di punta, ed è su questo che confronti i parchi. Dal colore capisci com’è quel giorno rispetto a un giorno normale dello stesso parco.",
+    "toCalendar": "Al calendario",
     "nextDays": "Prossimi 30 giorni",
     "dayTripsGroup": "Gite in giornata",
-    "lastYearBanner": "La nostra previsione arriva fino al {date}. I giorni successivi mostrano lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato, con la nota «anno scorso».",
-    "lastYearBannerNoDate": "Alcuni di questi giorni vanno oltre la nostra previsione. Mostrano lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato, con la nota «anno scorso».",
+    "lastYearBanner": "La previsione arriva fino al {date}. Poi ogni giorno mostra lo stesso giorno della settimana dell’anno scorso, segnato «anno scorso».",
+    "lastYearBannerNoDate": "Alcuni di questi giorni vanno oltre la previsione. Mostrano lo stesso giorno della settimana dell’anno scorso, segnato «anno scorso».",
     "glance": {
-      "minutes": "circa {minutes} min",
+      "minutes": "{minutes} min",
       "closesEarly": "chiude alle {time} per un evento serale",
       "earlyElsewhere": "({park} chiude alle {time} per un evento serale)",
       "none": "Non c’è ancora una previsione per il {date}.",
@@ -409,33 +407,29 @@
       "noneMonth": "Non c’è ancora una previsione per {month}.",
       "monthTitle": "I giorni più tranquilli di {month}",
       "monthTitleLastYear": "I giorni più tranquilli di {month} l’anno scorso",
-      "quietPark": "({park}, circa {minutes} min)"
+      "quietPark": "({park}, circa {minutes} min)",
+      "best": "Miglior parco per resort, <time>{date}</time>",
+      "quietestTo": "Il più tranquillo fino al {date}"
     },
     "legend": {
-      "minutes": "Minuti: le grandi attrazioni nell’ora di punta",
-      "ring": "Anello: code più corte del resort",
-      "early": "Angolo: chiude prima per i visitatori giornalieri",
-      "closed": "Chiuso",
-      "unknown": "Orari non ancora pubblicati",
-      "lastYear": "Anno scorso",
+      "minutes": "Attesa di picco alle grandi attrazioni, in minuti",
+      "ring": "miglior parco del resort",
+      "early": "chiude prima per i visitatori giornalieri",
+      "closed": "chiuso",
+      "lastYear": "Anno scorso: un giorno misurato, la previsione non arriva ancora fin lì",
       "howTo": "Come leggerlo",
-      "minutesLong": "Il numero in una casella è l’attesa che prevediamo alle grandi attrazioni del parco, ciascuna nella sua ora di punta, in media su queste attrazioni. Non vale per ogni ora: la mattina e la sera le code sono più corte.",
-      "horizonLong": "La previsione copre i prossimi 60 giorni. Poi la nostra tendenza arriva fino al {date}, con un margine d’errore più ampio. Oltre, un giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato.",
-      "horizonLongNoDate": "La previsione copre i prossimi 60 giorni. Poi la nostra tendenza continua con un margine d’errore più ampio, e oltre un giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato.",
-      "statesLong": "Una casella tratteggiata è chiusa, come l’ha pubblicato il parco. Una casella con un punto riporta la previsione o il dato dell’anno scorso, ma il parco non ha ancora pubblicato gli orari di quel giorno, quindi gli orari non contano. Una casella vuota non ha dati. Un trattino vuol dire aperto, ma senza code che valga la pena prevedere, come nella maggior parte dei parchi acquatici.",
-      "noHours": "Punto: orari non ancora pubblicati"
+      "noHours": "Punto o vuoto: orari non ancora noti",
+      "colour": "Colore: il giorno rispetto a un giorno normale di quel parco"
     },
     "calendar": {
       "kicker": "{from} – {to}",
-      "title": "Quale parco in quale giorno",
-      "hint": "Tocca un giorno per orari, eventi, tempi di viaggio e le grandi attrazioni.",
+      "title": "I prossimi {days} giorni",
       "unavailable": "Non è stato possibile caricare il calendario. Riprova tra qualche minuto.",
-      "sources": "Attese e affluenza: previsione park.fan del {date}. Orari come li pubblicano i parchi. Tempi di viaggio senza traffico, dati cartografici: {attribution}.",
-      "dayPlanner": "Pianifica una giornata al parco nel pianificatore",
+      "sources": "Previsione del {date}",
       "parkColumn": "Parco",
       "filterLabel": "Parchi mostrati",
       "filterAll": "Tutti i parchi",
-      "listLabel": "Code più corte, giorno per giorno",
+      "listLabel": "Miglior parco per resort, giorno per giorno",
       "more": "+{count} altri",
       "showAll": "Mostra tutti i giorni",
       "showWeek": "Mostra i primi 7 giorni",
@@ -449,13 +443,15 @@
       "cellClosed": "{park}, {date}: chiuso",
       "cellUnknown": "{park}, {date}: orari non ancora pubblicati",
       "cellOpen": "{park}, {date}: aperto, nessuna previsione",
-      "cellBest": "code più corte di {resort}",
+      "cellBest": "miglior parco di {resort}",
       "cellEarly": "chiude alle {time}",
       "stateClosed": "Chiuso per la stagione",
       "stateUnknown": "Orari non ancora pubblicati",
       "stateOpen": "Aperto, nessuna previsione",
       "cellNoHours": "orari non ancora pubblicati",
-      "earlyElsewhere": "davanti a un parco che chiude prima"
+      "earlyElsewhere": "{park} chiude alle {time}",
+      "titleMonth": "Giorno per giorno a {month}",
+      "sourcesTravel": "Tempi di viaggio: {attribution}"
     },
     "lanes": {
       "summaryLabel": "Eventi",
@@ -464,8 +460,8 @@
       "allDays": "ogni giorno"
     },
     "sheet": {
-      "intro": "In ogni resort prima il parco migliore: code più corte, chiusure anticipate comprese. Minuti: le grandi attrazioni nell’ora di punta.",
-      "stayingAt": "Alloggi a",
+      "intro": "In ogni resort prima il parco migliore; una chiusura anticipata conta.",
+      "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "aperto, nessuna previsione",
       "noHours": "Orari non ancora pubblicati",
@@ -477,77 +473,74 @@
       "shorterDay": "Giornata più corta: i visitatori giornalieri escono alle {leave}",
       "extendedEvening": "Extended Evening Hours fino alle {time} per gli ospiti degli hotel deluxe",
       "expected": "date previste",
-      "travel": "Da {area}: circa {minutes} min in auto, senza traffico",
+      "travel": "Da {area}: circa {minutes} min {mode, select, drive {in auto, senza traffico} walk {a piedi} train {in treno} rail {in treno} shinkansen {in shinkansen} metro {in metropolitana} bus {in autobus} highway_bus {in pullman} shuttle {con la navetta} monorail {in monorotaia} skyliner {con lo Skyliner} boat {in battello} other {}}",
       "bigRides": "Le grandi attrazioni",
       "ridesLoading": "Caricamento delle attrazioni …",
       "ridesNone": "Nessun dato per attrazione per questo giorno.",
       "ridesHint": "Ogni attrazione nella sua ora di punta.",
-      "planDay": "Pianifica questo giorno",
+      "planDay": "Apri nel pianificatore della giornata",
       "noHoursFigure": "Orari non ancora pubblicati. Il dato è la previsione; gli orari non contano.",
-      "ahead": "Davanti a {park}, dove i visitatori giornalieri escono alle {time}"
+      "ahead": "Viene prima di {park}, dove i visitatori giornalieri devono uscire alle {time}."
     },
     "when": {
       "none": "Non è stato possibile caricare i viaggi più tranquilli dell’anno.",
       "lastYearNote": "Le date oltre la nostra previsione sono pianificate sull’affluenza misurata l’anno scorso.",
       "rank": "N. {rank}",
-      "figure": "Grandi attrazioni: circa {minutes} min",
-      "average": "Nell’anno: circa {minutes} min",
+      "figure": "Attesa di picco: circa {minutes} min",
       "basisLastYear": "Affluenza misurata l’anno scorso",
       "basisMixed": "In parte affluenza misurata l’anno scorso",
-      "plan": "Pianifica queste date"
+      "plan": "Pianifica questo viaggio"
     },
     "planner": {
-      "kicker": "Le tue date",
-      "title": "Pianifica il tuo viaggio",
-      "hint": "Le tue date, i tuoi parchi: il pianificatore mette ogni parco nel giorno in cui le sue code sono più corte."
-    },
-    "bestDays": {
-      "title": "I giorni migliori per ogni parco",
-      "hint": "I giorni tranquilli di ogni parco, come gruppo. Entro cinque minuti, i giorni contano come uguali.",
-      "none": "Non ci sono ancora giorni migliori per queste date.",
-      "quiet": "I giorni più tranquilli",
-      "quietLastYear": "I giorni più tranquilli l’anno scorso",
-      "flat": "Nessun giorno spicca: da {min} a {max} min.",
-      "minutes": "circa {minutes} min",
-      "closes": "chiude alle {time}",
-      "more": "Perché questi giorni, e i più affollati",
-      "busy": "I più affollati: {days}",
-      "calendarLink": "Calendario affluenza {park}"
-    },
-    "reasons": {
-      "quietest_in_window": "le code più corte del periodo",
-      "weekday": "lun–ven",
-      "holiday_ends": "dopo le feste",
-      "closes_early": "i visitatori giornalieri escono alle {time}",
-      "extended_evening": "Extended Evening Hours",
-      "early_entry": "Early Entry per gli ospiti degli hotel",
-      "long_range": "tendenza, errore più ampio",
-      "estimate_last_year": "giornata misurata l’anno scorso"
-    },
-    "summary": {
-      "quietDay": "{date} ({park}, circa {minutes} min)",
-      "quiet": "ha le code più corte il {days}.",
-      "quietLastYear": "l’anno scorso aveva le code più corte il {days}.",
-      "busy": "I giorni più affollati sono il {days}, circa {minutes} min in media sui suoi parchi.",
-      "busyLastYear": "I più affollati l’anno scorso sono stati il {days}, circa {minutes} min in media sui suoi parchi.",
-      "eventsLabel": "Eventi:",
-      "eventNights": "{name} ({count, plural, =1 {# serata} other {# serate}})",
-      "eventExpected": "{name} (date previste)"
+      "title": "Pianifica il tuo viaggio"
     },
     "next": {
       "body": "Dai al pianificatore le tue date e i tuoi parchi, e metterà ogni parco nel giorno in cui le sue code sono più corte.",
       "parkCalendar": "Calendario affluenza {park}"
     },
     "dataset": {
-      "varWait": "Attesa prevista alle grandi attrazioni",
+      "varWait": "Attesa di picco alle grandi attrazioni",
       "varCrowd": "Affluenza",
       "varHours": "Orari di apertura"
     },
     "band": {
-      "title": "Più giorni a {region}?",
+      "title": "Pianificatore di viaggio {region}",
       "planPark": "Inserisci {park} nel tuo viaggio a {region}",
       "open": "Apri il pianificatore di viaggio"
-    }
+    },
+    "parksIndex": {
+      "link": "Calendario affluenza {park}",
+      "label": "Calendario affluenza per parco"
+    },
+    "faq": {
+      "links": "Il modello dietro: <fancast>Fancast</fancast>. Tutto il resto: <howto>come funziona park.fan</howto>.",
+      "title": "Domande frequenti",
+      "quietestOnly": "{resort}: giorni più tranquilli {days}.",
+      "peak": {
+        "q": "Che cos’è l’attesa di picco?",
+        "a": "L’attesa più lunga della giornata a ogni grande attrazione di un parco, in media su quelle attrazioni. È con questa che confronti i parchi. La mattina e la sera aspetti meno."
+      },
+      "green": {
+        "q": "Perché un parco con un’attesa di picco più lunga può essere verde?",
+        "a": "Il colore confronta un giorno con un giorno normale dello stesso parco. 60 minuti possono essere tranquilli per un parco e 50 affollati per un altro. Per confrontare due parchi, leggi i minuti."
+      },
+      "sources": {
+        "q": "Da dove vengono i numeri?",
+        "a": "park.fan registra ogni cinque minuti l’attesa indicata di ogni attrazione. La previsione impara da queste misure, dagli orari, dalle vacanze scolastiche e dal meteo; stagioni e feste le controlliamo a mano."
+      },
+      "horizon": {
+        "q": "Fin dove arriva la previsione, e cosa vuol dire «anno scorso»?",
+        "a": "60 giorni, poi fino al {date} una tendenza con un errore più ampio. Oltre, un giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato.",
+        "aNoDate": "60 giorni, poi una tendenza con un errore più ampio. Oltre, un giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato."
+      },
+      "accuracy": {
+        "q": "Quanto è precisa la previsione?",
+        "a": "Più il giorno è lontano, più l’errore è grande. Il pianificatore lo indica in minuti a ogni piano. I giorni a meno di cinque minuti di distanza contano come uguali."
+      }
+    },
+    "question": "Quale parco in quale giorno?",
+    "monthQuestion": "Quale parco in quale giorno a {month}?",
+    "plan": "Pianifica il viaggio"
   },
   "theme": {
     "light": "Chiaro",
@@ -3636,18 +3629,14 @@
         "metaDescriptionPlain": "Quale parco in quale giorno a Walt Disney World, da Universal con Epic Universe e a SeaWorld, e un pianificatore che mette i tuoi parchi nelle tue date.",
         "metaDescriptionMonth": "I giorni più tranquilli a Orlando a {month}: {verdict}. Ogni parco giorno per giorno, con Epic Universe.",
         "metaDescriptionMonthPlain": "Orlando a {month}, giorno per giorno: dove le code sono più corte a Disney World, da Universal con Epic Universe, a SeaWorld e nelle gite.",
-        "lead": "Con una sola camera d’albergo a Orlando hai otto parchi a tema e quattro parchi acquatici a due passi.",
-        "leadMonth": "Quale parco ha le code più corte in quale giorno di {month}: Walt Disney World, Universal con Epic Universe, SeaWorld e le gite in giornata.",
-        "opening": "Senza traffico, da EPCOT a Universal Studios ci vogliono 25 minuti d’auto, e da un hotel a Lake Buena Vista ognuno degli otto parchi a tema è a meno di mezz’ora, per il Magic Kingdom traghetto o monorotaia compresi. LEGOLAND, a Winter Haven, è a poco meno di un’ora, e Busch Gardens e Adventure Island, a Tampa, sono a circa un’ora e mezza. Con questi tre, Discovery Cove e i quattro parchi acquatici fanno sedici, e per nessuno devi cambiare albergo. Nel calendario qui sotto ci sono tutti e sedici, giorno per giorno.",
+        "lead": "Un calendario per tutti i 16 parchi intorno a Orlando e un pianificatore per i tuoi giorni di viaggio.",
+        "leadMonth": "Tutti i 16 parchi intorno a Orlando a {month}, giorno per giorno, e un pianificatore per i tuoi giorni di viaggio.",
         "monthIndexLabel": "Orlando mese per mese",
         "glance": {
-          "title": "Code più corte il <time>{date}</time>, ora di Orlando"
-        },
-        "legend": {
-          "colourLong": "Il colore confronta un giorno con un giorno normale dello stesso parco. Per questo un Magic Kingdom verde a 40 minuti e un EPCOT verde a 60 sono entrambi buoni giorni, ciascuno per il proprio parco. L’anello segna il parco con le code più corte del resort quel giorno. Un parco che chiude prima per i visitatori giornalieri può perdere l’anello a favore di una giornata intera con un’attesa simile."
+          "zone": "ora di Orlando"
         },
         "calendar": {
-          "caption": "I parchi di Orlando dal {from} al {to}: attesa alle grandi attrazioni nell’ora di punta, in minuti"
+          "caption": "I parchi di Orlando dal {from} al {to}: attesa di picco alle grandi attrazioni, in minuti"
         },
         "lanes": {
           "break": "Vacanze scolastiche USA: {name}, {dates}",
@@ -3666,80 +3655,41 @@
           "kicker": "Disney World e Universal",
           "title": "Periodo migliore per visitare Orlando nel {year}",
           "titleNoYear": "Periodo migliore per visitare Orlando",
-          "hint": "I viaggi di dieci giorni con le code più corte nei sette grandi parchi di Walt Disney World e Universal.",
           "pageLink": "Periodo migliore per visitare Orlando nel {year}",
-          "pageLinkNoYear": "Periodo migliore per visitare Orlando",
-          "sentence": "I viaggi di {days} giorni più tranquilli per Disney e Universal: {windows}."
-        },
-        "reasons": {
-          "school_break": "durante le vacanze scolastiche USA"
-        },
-        "method": {
-          "title": "Come nasce la previsione",
-          "summary": "Ogni numero qui viene dai tempi di attesa che park.fan misura ogni cinque minuti, da una previsione costruita su di essi e dagli orari pubblicati dai parchi. Apri una domanda per i dettagli.",
-          "sources": {
-            "title": "Da dove vengono i numeri?",
-            "body": "park.fan registra ogni cinque minuti l’attesa indicata di ogni attrazione. I nostri modelli di previsione imparano da queste misure, dagli orari, dalle vacanze scolastiche e dal meteo. Orari, Early Entry ed eventi serali vengono dai calendari dei parchi. Stagioni e feste le controlliamo a mano."
-          },
-          "minutes": {
-            "title": "Cosa vogliono dire i minuti?",
-            "body": "Per ogni parco prevediamo l’attesa alle sue grandi attrazioni, ciascuna nella sua ora di punta, e ne facciamo la media. È l’unico numero con cui confrontiamo i parchi. La mattina e la sera le code sono più corte, quindi non vale per ogni ora."
-          },
-          "horizon": {
-            "title": "Fin dove arriva?",
-            "body": "La previsione copre i prossimi 60 giorni. Poi la tendenza arriva fino al {date}, con un errore più ampio. Oltre, un giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato, con la nota «anno scorso».",
-            "bodyNoDate": "La previsione copre i prossimi 60 giorni. Poi la tendenza continua con un errore più ampio. Oltre, un giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato, con la nota «anno scorso»."
-          },
-          "error": {
-            "title": "Quanto è precisa?",
-            "body": "Più il giorno è lontano, più la previsione può sbagliare. Quando pianifichi un viaggio, accanto al risultato trovi di quanti minuti può sbagliare la previsione per un’attrazione in un giorno. Le attese sono arrotondate a cinque minuti, quindi qui i giorni entro cinque minuti contano come uguali, e i giorni migliori di un parco sono un gruppo, non una classifica."
-          },
-          "travel": {
-            "title": "Come si calcolano i tempi di viaggio?",
-            "body": "Ogni tempo di viaggio vale per l’auto senza traffico, fino al parcheggio. Il parcheggio del Magic Kingdom è il Transportation and Ticket Center, e da lì monorotaia o traghetto impiegano ancora circa 15 minuti fino all’ingresso. Per Volcano Bay parcheggi nei garage di Universal e prendi la navetta, circa 15 minuti in più. Dati cartografici: {attribution}."
-          },
-          "links": "Il modello dietro: <fancast>Fancast</fancast>. Tutto il resto: <howto>come funziona park.fan</howto>."
+          "pageLinkNoYear": "Periodo migliore per visitare Orlando"
         },
         "faq": {
           "title": "Domande sull’affluenza a Orlando",
           "quietest": {
             "q": "Quando c’è meno gente a Orlando nelle prossime settimane?",
             "qMonth": "Quando c’è meno gente a Orlando a {month}?",
-            "resort": "A {resort} le code più corte sono il {days}.",
-            "day": "{date} a {park}, circa {minutes} min",
-            "note": "Il calendario qui sopra mostra ogni giorno, con il parco dalle code più corte di ogni resort."
+            "resort": "{resort}: giorni più tranquilli {days}; più affollati {busy}.",
+            "day": "{date} ({park}, {minutes} min)",
+            "dayAlone": "{date} ({minutes} min)"
           },
           "party": {
             "q": "Quale parco scegliere in una sera di festa al Magic Kingdom?",
-            "a": "In {count, plural, =1 {# serata} other {# serate}} di questo periodo il Magic Kingdom chiude ai visitatori giornalieri alle {time} per {name}. In quei giorni le code sono più corte, circa {on} min contro {off} min negli altri giorni, ma la giornata è più corta e i visitatori giornalieri perdono la serata. Per una giornata intera scegli in quei giorni EPCOT, Hollywood Studios o Animal Kingdom, oppure vai con il biglietto della festa."
+            "a": "In {count, plural, =1 {# serata} other {# serate}} il Magic Kingdom chiude ai visitatori giornalieri alle {time} per {name}. {verdict, select, shorter {L’attesa di picco scende allora a circa {on} min ({off} min negli altri giorni), ma la giornata è più corta.} other {L’attesa di picco non è più corta (circa {on} min), la giornata sì.}} Per una giornata intera scegli EPCOT, Hollywood Studios o Animal Kingdom."
           },
           "epic": {
             "q": "Epic Universe è più affollato nel fine settimana?",
-            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo aspetti circa {weekend} min alle sue grandi attrazioni nell’ora di punta il sabato e la domenica, e circa {weekday} min dal lunedì al venerdì."
+            "a": "{verdict, select, busier {Sì.} same {No.} other {Solo un po’.}} In questo periodo l’attesa di picco è di circa {weekend} min il sabato e la domenica, e di circa {weekday} min dal lunedì al venerdì."
           },
           "distance": {
             "q": "Quanto dista Universal da Walt Disney World?",
-            "a": "Da Universal Studios a EPCOT sono circa {near} minuti in auto senza traffico, e circa {far} fino al parcheggio del Magic Kingdom. Da lì monorotaia o traghetto impiegano ancora circa {transfer} minuti fino all’ingresso, {total} minuti in tutto. Dati cartografici: {attribution}."
+            "a": "Senza traffico, da Universal Studios a EPCOT sono circa {near} minuti d’auto. Fino all’ingresso del Magic Kingdom sono {total}, di cui {transfer} in monorotaia o traghetto dal parcheggio. Da un hotel a Lake Buena Vista ognuno degli otto parchi a tema è a meno di mezz’ora, LEGOLAND a poco meno di un’ora, Busch Gardens a circa un’ora e mezza. Dati cartografici: {attribution}."
           },
           "early": {
             "q": "Mi serve l’Early Entry?",
-            "a": "No, ma aiuta nei giorni affollati. Gli ospiti degli hotel di Disney entrano nei parchi a tema Disney {first} minuti prima di tutti, quelli degli hotel Universal {second} minuti prima nei parchi a tema di Universal. Se scegli un hotel così nel pianificatore, l’apertura anticipata entra nel tuo piano."
-          },
-          "green": {
-            "q": "Perché un parco con code più lunghe può essere verde?",
-            "a": "Il colore confronta un giorno con un giorno normale dello stesso parco, non con gli altri parchi. EPCOT a 60 minuti può essere un giorno tranquillo per EPCOT, e il Magic Kingdom a 50 uno affollato per il Magic Kingdom. Per confrontare due parchi, leggi i minuti."
-          },
-          "lastYear": {
-            "q": "Cosa vuol dire «anno scorso» su un giorno?",
-            "a": "La nostra previsione non arriva ancora a quel giorno. Finché non ci arriva, il giorno mostra lo stesso giorno della settimana dell’anno scorso, come l’abbiamo misurato. Leggilo come un’indicazione dell’affluenza in quel periodo dell’anno, non come una previsione."
+            "a": "No, ma aiuta nei giorni affollati. Gli ospiti degli hotel Disney entrano {first} minuti prima nei parchi Disney, quelli degli hotel Universal {second} minuti prima nei parchi Universal. Se scegli un hotel così nel pianificatore, l’apertura anticipata conta."
           }
         },
         "next": {
-          "title": "Più giorni a Orlando?"
+          "title": "Pianificatore di viaggio per Orlando"
         },
         "dataset": {
           "name": "Calendario affluenza dei parchi di Orlando, {period}",
-          "description": "Per parco e giorno a Walt Disney World, Universal Orlando, SeaWorld e nelle gite in giornata: l’attesa prevista alle grandi attrazioni nell’ora di punta, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
+          "description": "Per parco e giorno a Walt Disney World, Universal Orlando, SeaWorld e nelle gite in giornata: l’attesa di picco prevista alle grandi attrazioni, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
         }
       },
       "bestTime": {
@@ -4020,15 +3970,15 @@
           }
         }
       },
-      "landing": {
-        "kicker": "park.fan · Orlando",
-        "action": "Pianifica il mio viaggio a Orlando"
-      },
       "homeStory": {
         "kicker": "Orlando",
         "title": "Orlando: quale parco in quale giorno",
         "lead": "Sedici parchi intorno a Orlando in un solo calendario: per ogni giorno vedi dove le code sono più corte a Disney World e da Universal, e il pianificatore mette i tuoi parchi nelle tue date.",
         "link": "Calendario affluenza Orlando"
+      },
+      "landing": {
+        "kicker": "park.fan · Orlando",
+        "action": "Pianifica il mio viaggio a Orlando"
       }
     },
     "southern-california": {

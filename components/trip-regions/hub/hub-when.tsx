@@ -3,22 +3,24 @@ import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
-import { getListFormat } from '@/lib/utils/intl-format';
 import { bestTimeYear } from '@/lib/trip-regions/best-time';
 import { formatWindow } from '@/lib/trip-regions/hub-data';
 import { TRIP_PLANNER_ID, tripRegionBestTimePath } from '@/lib/trip-regions/paths';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
+import { ownWords } from '@/lib/trip-regions/region-words';
 import type { TripWhen } from '@/lib/trip-regions/types';
 
 /** How many windows the teaser names. */
 const WINDOWS_SHOWN = 3;
 
 /**
- * The best-time chapter's body, the teaser of the region's best-time pages: the three quietest trip windows for
- * the headliner parks as one sentence and three cards, each with "Plan these dates", which opens
- * the planner on that window (`?from=&to=#planner`, the query Parky builds). A window past the
- * forecast is last year's measured crowds and says so. The year strip, the weeks and their
- * questions live on the best-time page this links to, so the two do not compete for one query.
+ * The best-time chapter's body, the teaser of the region's best-time pages: the three quietest
+ * trip windows for the headliner parks as three cards with their peak wait, each with "Plan this
+ * trip", which opens the planner on that window (`?from=&to=#planner`, the query Parky builds). One
+ * figure and no second baseline. A window past the forecast is last year's measured crowds and
+ * says so. The year strip, the weeks and their questions live on the best-time page this links to,
+ * so the two do not compete for one query. The page draws the chapter only for a region with
+ * best-time pages and its words for them.
  */
 export async function HubWhen({
   region,
@@ -36,12 +38,15 @@ export async function HubWhen({
   const tRegion = await getRegionTranslations(region, 'hub.when');
   const windows = (when?.windows ?? []).slice(0, WINDOWS_SHOWN);
   const year = when ? bestTimeYear(when.meta.from) : null;
-  const bestTimeLink = (
+  const pageLink = year
+    ? ownWords(tRegion, 'pageLink', { year })
+    : ownWords(tRegion, 'pageLinkNoYear');
+  const bestTimeLink = pageLink && (
     <Link
       href={tripRegionBestTimePath(region, locale)}
       className="text-primary-ink inline-flex min-h-11 items-center gap-1 font-semibold underline-offset-4 hover:underline sm:min-h-0"
     >
-      {year ? tRegion('pageLink', { year }) : tRegion('pageLinkNoYear')}
+      {pageLink}
       <ArrowRight aria-hidden className="size-4" />
     </Link>
   );
@@ -53,17 +58,8 @@ export async function HubWhen({
       </div>
     );
   }
-  const list = getListFormat(locale, { type: 'conjunction' });
-  const lastYear = windows.some((w) => w.basis !== 'forecast');
   return (
     <div className="space-y-5">
-      <p className="max-w-3xl text-lg leading-relaxed">
-        {tRegion('sentence', {
-          days: when.meta.days,
-          windows: list.format(windows.map((w) => formatWindow(w, locale))),
-        })}
-        {lastYear ? ` ${t('lastYearNote')}` : ''}
-      </p>
       <ol className="grid gap-4 sm:grid-cols-3">
         {windows.map((window) => (
           <li key={window.from} className="flex">
@@ -76,9 +72,6 @@ export async function HubWhen({
               </h3>
               <p className="text-sm tabular-nums">
                 {t('figure', { minutes: window.headlinerWait })}
-              </p>
-              <p className="text-muted-foreground text-sm tabular-nums">
-                {t('average', { minutes: window.rangeAverageWait })}
               </p>
               {window.basis !== 'forecast' && (
                 <p className="text-muted-foreground text-xs">
