@@ -50,6 +50,12 @@ export interface LandingAction {
 interface LandingHeroShared {
   kicker: string;
   title: string;
+  /**
+   * The visitor's question as the head's big line ("Welcher Park an welchem Tag?"). The `<h1>` then
+   * holds `title` as its small first line, in the kicker's place, so the term a search looks for
+   * stays in the heading; the kicker is not drawn.
+   */
+  question?: string;
   tagline?: React.ReactNode;
   /** Override the h1 classes; the default is the size of the kind (concept §3). */
   titleClassName?: string;
@@ -59,8 +65,9 @@ interface LandingHeroShared {
    */
   aside?: React.ReactNode;
   /**
-   * The page's answer in its first screen, between the tagline and the action: the Orlando hub's
-   * shortest lines. Block content, which the tagline's `<p>` cannot hold.
+   * The page's answer in its first screen, under the action: a trip region's best park per resort
+   * and its quietest days. Block content, which the tagline's `<p>` cannot hold. It comes after the
+   * action so nothing competes with the ways in.
    */
   answer?: React.ReactNode;
   /** Exactly one primary button, under the tagline. A link styled by `buttonLinkProps`. */
@@ -76,10 +83,20 @@ type LandingHeroProps =
   | (LandingHeroShared & {
       /** Hub: the full-bleed photo head. */
       variant?: 'hub';
-      imageSrc: string;
-      imageAlt: string;
+      /**
+       * Without a photo (a region whose media database has none yet) the head draws the brand
+       * gradient instead, as a card does: never a picture that does not load.
+       */
+      imageSrc?: string;
+      imageAlt?: string;
       stats?: Array<{ value: string; label: string }>;
-      scrollLabel: string;
+      /** The cue under the head; left out when the head's own buttons lead on (the trip hubs). */
+      scrollLabel?: string;
+      /**
+       * A head that ends after its content instead of filling most of the screen, for a hub whose
+       * tool starts right below it: the trip hubs, whose calendar should begin in the first screen.
+       */
+      short?: boolean;
       /**
        * Let the page's own content flow into the hero below `sm`: the headline moves to the top
        * and the page pulls its first section up over the lower half of the photo, instead of a
@@ -98,6 +115,7 @@ type LandingHeroProps =
       stats?: never;
       scrollLabel?: never;
       flowInto?: never;
+      short?: never;
     });
 
 /** H1 per kind, concept §3: hub 36 / 60 px, park audience and tool pages 30 / 36 px. */
@@ -114,31 +132,41 @@ const TITLE_CLASS = {
  * and clears it with `pt-32`; the compact head stays in flow below it.
  */
 export function LandingHero(props: LandingHeroProps) {
-  const { kicker, title, tagline, titleClassName, aside, answer, action, actionElement } = props;
+  const { kicker, title, question, tagline, titleClassName, aside, answer, action, actionElement } =
+    props;
   const variant = props.variant ?? 'hub';
   const compact = variant === 'compact';
+  const actionGap = compact ? 'mt-5' : props.short ? 'mt-6' : 'mt-8';
 
   const text = (
     <>
       <Reveal>
-        <HeadKicker>{kicker}</HeadKicker>
-        <h1 className={cn('text-foreground', titleClassName ?? TITLE_CLASS[variant])}>{title}</h1>
+        {!question && <HeadKicker>{kicker}</HeadKicker>}
+        <h1 className={cn('text-foreground', titleClassName ?? TITLE_CLASS[variant])}>
+          {question ? (
+            <>
+              <HeadKicker as="span">{title}</HeadKicker>
+              <span className="sr-only">: </span>
+              <span className="block">{question}</span>
+            </>
+          ) : (
+            title
+          )}
+        </h1>
         {tagline && (
           <p
             className={cn(
               'text-foreground/80 max-w-2xl leading-relaxed',
-              compact ? 'mt-3 text-base sm:text-lg' : 'mt-5 text-lg sm:text-2xl'
+              compact ? 'mt-3 text-base sm:text-lg' : 'mt-5 text-lg sm:text-2xl',
+              question && 'sm:max-w-3xl'
             )}
           >
             {tagline}
           </p>
         )}
-        {answer && <div className={compact ? 'mt-4' : 'mt-6'}>{answer}</div>}
-        {actionElement && (
-          <div className={compact ? 'mt-5' : answer ? 'mt-6' : 'mt-8'}>{actionElement}</div>
-        )}
+        {actionElement && <div className={actionGap}>{actionElement}</div>}
         {action && !actionElement && (
-          <div className={compact ? 'mt-5' : answer ? 'mt-6' : 'mt-8'}>
+          <div className={actionGap}>
             <Link
               href={action.href}
               prefetch={action.prefetch}
@@ -150,6 +178,7 @@ export function LandingHero(props: LandingHeroProps) {
             </Link>
           </div>
         )}
+        {answer && <div className="mt-4">{answer}</div>}
       </Reveal>
 
       {!compact && props.stats && props.stats.length > 0 && (
@@ -189,28 +218,36 @@ export function LandingHero(props: LandingHeroProps) {
     );
   }
 
-  const { imageSrc, imageAlt, scrollLabel, flowInto = false } = props;
+  const { imageSrc, imageAlt = '', scrollLabel, flowInto = false, short = false } = props;
   return (
     <header
       data-landing-hero="hub"
       className={cn(
-        'relative isolate -mt-12 flex min-h-[78vh] overflow-hidden',
+        'relative isolate -mt-12 flex overflow-hidden',
+        !short && 'min-h-[78vh]',
         flowInto ? 'items-start sm:items-end' : 'items-end'
       )}
     >
       {/* `sizes="100vw"` is right: this photo spans the viewport. The lever is the quality: it is
           the LCP element under two tints and a headline, and nothing in it is read for detail, so
           q60 saves bytes nobody can see. `60` must be in `images.qualities` (next.config.ts). */}
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        fill
-        priority
-        quality={60}
-        sizes="100vw"
-        className="object-cover motion-safe:scale-105"
-        style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
-      />
+      {imageSrc ? (
+        <Image
+          src={imageSrc}
+          alt={imageAlt}
+          fill
+          priority
+          quality={60}
+          sizes="100vw"
+          className="object-cover motion-safe:scale-105"
+          style={{ objectPosition: objectPositionForSrc(imageSrc, '50% 50%') }}
+        />
+      ) : (
+        <div
+          aria-hidden
+          className="from-primary/15 pointer-events-none absolute inset-0 bg-gradient-to-br via-transparent to-amber-500/10"
+        />
+      )}
       {/* Title and tagline sit directly on the photo. Readability comes from a theme-aware tint
           that fades into the page background, so light mode never gets a dark overlay. One set of
           stops for every hub. */}
@@ -233,7 +270,8 @@ export function LandingHero(props: LandingHeroProps) {
 
       <div
         className={cn(
-          'text-foreground relative container mx-auto px-4 pt-32 sm:pb-24',
+          'text-foreground relative container mx-auto px-4',
+          short ? 'pt-20 sm:pt-24 sm:pb-14' : 'pt-32 sm:pb-24',
           // 192px, and it has to stay larger than HERO_FLOW_INTO_PULL — see there.
           flowInto ? 'pb-48' : 'pb-16'
         )}
@@ -242,15 +280,22 @@ export function LandingHero(props: LandingHeroProps) {
       </div>
 
       {/* The cue points at content that is already on screen once it flows in. */}
-      {flowInto ? (
-        <div className="hidden sm:block">
+      {scrollLabel &&
+        (flowInto ? (
+          <div className="hidden sm:block">
+            <ScrollCue label={scrollLabel} />
+          </div>
+        ) : (
           <ScrollCue label={scrollLabel} />
-        </div>
-      ) : (
-        <ScrollCue label={scrollLabel} />
-      )}
+        ))}
       {/* Last, so the link comes after the page's own action in the tab order. */}
-      <PhotoCredit src={imageSrc} linked className={flowInto ? HERO_CREDIT_POSITION : undefined} />
+      {imageSrc && (
+        <PhotoCredit
+          src={imageSrc}
+          linked
+          className={flowInto ? HERO_CREDIT_POSITION : undefined}
+        />
+      )}
     </header>
   );
 }
