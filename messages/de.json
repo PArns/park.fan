@@ -3108,7 +3108,7 @@
       "gridLabel": "An- und Abreisetag",
       "wait": "kürzeste Wartezeit an den großen Bahnen etwa {minutes} Min.",
       "waitLastYear": "im letzten Jahr etwa {minutes} Min. an den großen Bahnen",
-      "legend": "Unter jedem Datum steht die kürzeste Wartezeit an den großen Bahnen, in Minuten, im Park mit den kürzesten Warteschlangen, und die Farbe sagt, wie voll dieser Park an dem Tag ist. Früh schließende Parks zählen nicht.",
+      "legend": "Unter jedem Datum steht die kürzeste Wartezeit an den großen Bahnen, in Minuten, im Park mit den kürzesten Warteschlangen, gefärbt danach, wie voll dieser Park an dem Tag ist. Früh schließende Parks zählen nicht.",
       "legendLastYear": "Kursive Zahlen sind gemessene Tage aus dem letzten Jahr.",
       "pickArrival": "Tippe auf deinen Anreisetag.",
       "pickDeparture": "Jetzt den Abreisetag.",
