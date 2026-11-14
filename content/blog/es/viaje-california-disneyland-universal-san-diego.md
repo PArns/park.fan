@@ -3,7 +3,7 @@ title: 'Disneyland, Universal y San Diego en un solo viaje'
 translationKey: southern-california-trip-guide
 date: '2026-11-14'
 author: patrick
-mode: published
+mode: draft
 featured: false
 excerpt: >-
   En el sur de California solo Disneyland y California Adventure están puerta con puerta. Hasta
@@ -53,7 +53,7 @@ seo:
 
 Ocho parques temáticos del sur de California caben en un mismo viaje: Disneyland y Disney California Adventure en Anaheim, Universal Studios Hollywood, Knott's Berry Farm en Buena Park, Six Flags Magic Mountain en Santa Clarita y, más al sur, SeaWorld San Diego, LEGOLAND California en Carlsbad y Sesame Place San Diego en Chula Vista. De Magic Mountain, en el extremo norte, a Sesame Place, en el extremo sur, pasas casi tres horas y media en el coche sin tráfico, más que en la mayoría de las colas del viaje.
 
-Los dos parques Disney comparten una explanada, y a los otros seis llegas en coche, en metro o en tren. De eso depende dónde duermes y qué parque se queda con qué día.
+Los dos parques Disney comparten una explanada, y a los otros seis llegas en coche, en metro o en tren. Por eso un día en SeaWorld empieza con casi dos horas de coche si duermes en Anaheim, y con apenas un cuarto de hora si duermes en el Gaslamp Quarter de San Diego.
 
 En el [calendario de afluencia de Disneyland California](/california) están los ocho parques día a día, y en el [planificador de viajes](/california#planner) los colocas en tus fechas.
 
@@ -65,23 +65,23 @@ Las entradas de [Disneyland](ref:/parks/north-america/united-states/anaheim/disn
 
 En coche aparcas en los aparcamientos Mickey & Friends o Pixar Pals, en Disneyland Drive, y un tranvía te lleva a la Esplanade. Desde el tercer aparcamiento, Toy Story, en la esquina de Katella Avenue con Harbor Boulevard, salen autobuses hasta la entrada. Del aparcamiento a la puerta calculamos unos 15 minutos, contando la espera del tranvía.
 
-Para cada día en cualquiera de los dos parques necesitas, además de la entrada, una reserva de parque, cada visitante a partir de tres años. Con Park Hopper puedes pasar al segundo parque después de entrar en el primero, desde el 9 de junio de 2026 a cualquier hora, mientras el segundo parque siga dejando entrar visitantes. La antigua norma que obligaba a esperar a las 11:00 ya no vale, aunque el Disney Parks Blog todavía la explique en su guía sobre cuántos días hacen falta.
+Para cada día en cualquiera de los dos parques necesitas, además de la entrada, una reserva de parque, cada visitante a partir de tres años. Con Park Hopper puedes pasar al segundo parque después de entrar en el primero, desde el 9 de junio de 2026 a cualquier hora, mientras el segundo parque siga dejando entrar visitantes. Hasta entonces había que esperar a las 11:00, y así lo sigue explicando el Disney Parks Blog en su guía sobre cuántos días hacen falta.
 
 ![La noria Pixar Pal-A-Round con la cara de Mickey junto a la vía roja del Incredicoaster, con Paradise Bay delante. | Pixar Pier en California Adventure. Por la noche, World of Color se representa en la bahía de delante. | wide](/media/disney-california-adventure-park/pixar-pier.jpg)
 
 Por la noche, Disneyland ofrece Fantasmic! y dos espectáculos de proyecciones, Tapestry of Happiness en la fachada de «it's a small world» y Shadows of Memory en Galaxy's Edge. En California Adventure, World of Color pasa a llamarse «World of Color – Season of Light» durante las fiestas. La [temporada navideña del Disneyland Resort](/news/disneyland-resort-holidays-2026) va del 13 de noviembre de 2026 al 6 de enero de 2027, y en esas fechas los fuegos artificiales «Believe… In Holiday Magic» empiezan a las 21:30.
 
-Dos fiestas con entrada propia acortan el día a todos los demás. En las 20 noches de Disneyland After Dark, los visitantes de día tuvieron que salir en 2026 cada vez a las 20:00, y en las 33 noches de la Oogie Boogie Bash en California Adventure, ya a las 18:00. Después, en el parque solo siguen de fiesta quienes tienen la entrada extra.
+Dos fiestas con entrada propia acortan algunas noches el día a todos los demás: Disneyland After Dark en Disneyland y, en torno a Halloween, la Oogie Boogie Bash en California Adventure.
 
 ### Universal Studios Hollywood
 
-[Universal Studios Hollywood](ref:universal-studios-hollywood) es un único parque en Universal City, al norte de Los Ángeles, y Universal no tiene allí hotel propio. Desde el aparcamiento llegas a la entrada atravesando Universal CityWalk, una calle con restaurantes y un cine, de acceso gratuito. El aparcamiento sí se paga.
+[Universal Studios Hollywood](ref:universal-studios-hollywood) es un único parque en Universal City, al norte de Los Ángeles, y Universal no tiene allí hotel propio. Entre el aparcamiento y la entrada está Universal CityWalk, con restaurantes y un cine, y para el propio CityWalk no necesitas entrada. El aparcamiento sí se paga.
 
-Sin coche, tomas la Metro B Line hasta Universal City/Studio City. Enfrente de la estación para un autobús lanzadera gratuito que te sube por la colina hasta el parque, y desde 2016 una pasarela peatonal cruza Lankershim Boulevard hasta la parada.
+Sin coche, tomas la Metro B Line hasta Universal City/Studio City. Enfrente de la estación para un autobús lanzadera gratuito que te sube por la colina hasta el parque, y una pasarela peatonal sobre Lankershim Boulevard lleva hasta la parada.
 
 Universal vende Super Nintendo World Early Access, la hora antes de que abra el parque, como entrada aparte. No incluye la entrada al parque, que compras además, así que la hora en el Reino Champiñón te cuesta dos entradas.
 
-Desde el 16 de septiembre de 2026 funciona en el Upper Lot [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), la primera montaña rusa de alta velocidad del parque al aire libre. Las Halloween Horror Nights se celebraron en 2026 durante 42 noches, del 3 de septiembre al 1 de noviembre, y esos días los visitantes de día tuvieron que salir a las 18:00. Del 21 de noviembre de 2026 al 3 de enero de 2027, las [fiestas en Universal Studios Hollywood](/news/universal-studios-hollywood-holidays-2026) se celebran todos los días con Grinchmas y los Merry Minions, todo incluido en la entrada normal.
+Desde el 16 de septiembre de 2026 funciona en el Upper Lot [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), la primera montaña rusa rápida del parque que no va dentro de un edificio. En otoño, las noches son de las Halloween Horror Nights, con entrada propia, en 2026 del 3 de septiembre al 1 de noviembre. Del 21 de noviembre de 2026 al 3 de enero de 2027, las [fiestas en Universal Studios Hollywood](/news/universal-studios-hollywood-holidays-2026) se celebran todos los días con Grinchmas y los Merry Minions, todo incluido en la entrada normal.
 
 ### Knott's Berry Farm
 
@@ -89,35 +89,35 @@ Desde el 16 de septiembre de 2026 funciona en el Upper Lot [Fast & Furious: Holl
 
 ![Vías turquesa en bucle contra un cielo azul junto a una torre de subida vertical, con palmeras y guirnaldas abajo. | Arriba, HangTime en Knott's Berry Farm retiene el tren cinco segundos antes de dejarlo caer.](/media/knotts-berry-farm/hangtime.jpg)
 
-Knott's Scary Farm es un evento nocturno con entrada propia. En 2026 se celebró durante 26 noches, del 17 de septiembre al 31 de octubre, y los visitantes de día tuvieron que salir a las 17:30 los jueves y viernes y a las 17:00 los sábados y domingos. Del 20 de noviembre de 2026 al 3 de enero de 2027, el parque se convierte en la [Knott's Merry Farm](/news/knotts-merry-farm-2026) y solo cierra el 25 de diciembre.
+Las noches de otoño, el parque se convierte en la Knott's Scary Farm, que necesita entrada propia, en 2026 del 17 de septiembre a Halloween. Del 20 de noviembre de 2026 al 3 de enero de 2027 es la [Knott's Merry Farm](/news/knotts-merry-farm-2026) y solo cierra el 25 de diciembre.
 
-Knott's abre sus eventos de 2027 con la PEANUTS Celebration, los fines de semana del 30 de enero al 21 de febrero y el Presidents' Day. El Boysenberry Festival celebra a diario, del 12 de marzo al 11 de abril, la baya con la que, según Knott's, empezó la granja, y Summer Nights tiene lugar en noches seleccionadas del 11 de junio al 29 de agosto.
+Después de la Merry Farm, Knott's sigue en 2027 con la PEANUTS Celebration, los fines de semana del 30 de enero al 21 de febrero y el Presidents' Day. El Boysenberry Festival celebra a diario, del 12 de marzo al 11 de abril, la baya con la que, según Knott's, empezó la granja, y Summer Nights tiene lugar en noches seleccionadas del 11 de junio al 29 de agosto.
 
 ### Six Flags Magic Mountain
 
-Desde Universal hay 38 minutos sin tráfico hacia el norte hasta [Six Flags Magic Mountain](ref:six-flags-magic-mountain) en Santa Clarita, y 82 desde el aparcamiento de Disneyland. Fuera de las vacaciones, el parque cierra los martes y miércoles, a veces también los jueves. En enero de 2027 permanece cerrado del 12 al 14, del 19 al 21 y del 26 al 28.
+Desde Universal hay 38 minutos sin tráfico hacia el norte hasta [Six Flags Magic Mountain](ref:six-flags-magic-mountain) en Santa Clarita, y 82 desde el aparcamiento de Disneyland. Fuera de las vacaciones, el parque cierra los martes y miércoles, a veces también los jueves, y en enero de 2027, a partir del día 12, durante tres semanas de martes a jueves.
 
-Magic Mountain es el parque más caluroso de la región. Según las normales climáticas de 2015 a 2024, la temperatura máxima media allí es de 34,4 °C en julio y de 34,6 °C en agosto, y la normal llega a 35 °C en 28 días al año. En Disneyland son 30,3 °C en agosto, en SeaWorld San Diego 26,1 °C. En el planificador de viajes, un día cuenta como caluroso cuando la previsión llega a 35 °C o la normal a 30,5 °C, y entonces Magic Mountain pasa preferiblemente a un día más fresco de tu viaje.
+Magic Mountain es el parque más caluroso de la región. Según las normales climáticas de 2015 a 2024, la temperatura máxima media allí es de 34,4 °C en julio y de 34,6 °C en agosto, y en 28 días al año la media a largo plazo llega a 35 °C o más. En Disneyland, la media de agosto es de 30,3 °C, en SeaWorld San Diego de 26,1 °C. En el planificador de viajes, un día cuenta como caluroso cuando se prevén 35 °C o la media a largo plazo llega a 30,5 °C, y entonces Magic Mountain tiende a pasar a un día más fresco de tu viaje.
 
-Six Flags [retiró X2 definitivamente el 29 de septiembre de 2026](/news/x2-six-flags-magic-mountain-cierra). Para 2027, el parque ha anunciado el [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), una nueva montaña rusa de Vekoma en la que los pasajeros van boca abajo, colgados bajo la vía. El parque aún no ha anunciado la fecha de apertura. [Holiday in the Park](/news/six-flags-magic-mountain-holiday-in-the-park-2026) se celebra en días seleccionados del 26 de noviembre de 2026 al 3 de enero de 2027, y los mayores de 65 años entran gratis hasta el 3 de enero de 2027 si se registran en línea y hacen su primera visita a más tardar el 31 de diciembre de 2026.
+Six Flags [retiró X2 definitivamente el 29 de septiembre de 2026](/news/x2-six-flags-magic-mountain-cierra). Para 2027, el parque ha anunciado el [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), una nueva montaña rusa de Vekoma en la que los pasajeros van boca abajo, colgados bajo la vía, por ahora sin fecha de apertura. [Holiday in the Park](/news/six-flags-magic-mountain-holiday-in-the-park-2026) se celebra en días seleccionados del 26 de noviembre de 2026 al 3 de enero de 2027, y los mayores de 65 años entran gratis hasta el 3 de enero de 2027 si se registran en línea y hacen su primera visita a más tardar el 31 de diciembre de 2026.
 
 ### SeaWorld, LEGOLAND y Sesame Place
 
-Los tres parques de la zona de San Diego están cerca unos de otros. De [SeaWorld San Diego](ref:seaworld-san-diego), en Mission Bay, hay sin tráfico 42 minutos hasta [LEGOLAND California](ref:legoland-california) en Carlsbad y 33 minutos hasta [Sesame Place San Diego](ref:sesame-place-san-diego) en Chula Vista, y entre LEGOLAND y Sesame Place, una hora.
+[SeaWorld San Diego](ref:seaworld-san-diego), en Mission Bay, está entre los otros dos parques de la zona de San Diego. Desde allí hay sin tráfico 42 minutos hacia el norte hasta [LEGOLAND California](ref:legoland-california) en Carlsbad y 33 minutos hacia el sur hasta [Sesame Place San Diego](ref:sesame-place-san-diego) en Chula Vista, y entre LEGOLAND y Sesame Place, una hora.
 
-LEGOLAND California cierra algunos días entre semana fuera de temporada, sobre todo los miércoles entre finales de octubre de 2026 y finales de enero de 2027. La entrada incluye el SEA LIFE Aquarium de al lado, y no necesitas reserva. El LEGOLAND California Hotel está en el parque. Durante la Christmas Bricktacular hay fuegos artificiales en 2026 el 5 y el 12 de diciembre y todas las noches del 19 al 31 de diciembre.
+LEGOLAND California cierra algunos días entre semana fuera de temporada, sobre todo los miércoles entre finales de octubre de 2026 y finales de enero de 2027. La entrada incluye el SEA LIFE Aquarium de al lado, y no necesitas reserva. Durante la Christmas Bricktacular hay fuegos artificiales en 2026 el 5 y el 12 de diciembre y todas las noches del 19 al 31 de diciembre.
 
-![El rótulo de LEGOLAND California con el logo rojo de LEGO y un sol de piezas amarillas, a contraluz. | Abrió en Carlsbad en 1999 y fue el primer LEGOLAND fuera de Europa.](/media/legoland-california/entrance-sign.jpg)
+![El rótulo de LEGOLAND California con el logo rojo de LEGO y un sol de piezas amarillas, a contraluz. | La entrada en Carlsbad. Hasta 1999, todos los LEGOLAND estaban en Europa.](/media/legoland-california/entrance-sign.jpg)
 
 Fuera del verano y de las semanas de vacaciones, Elmo solo trabaja los fines de semana. Del 8 de septiembre de 2026 a mediados de mayo de 2027, Sesame Place cierra de lunes a viernes, salvo en la semana de Acción de Gracias, del 21 de diciembre al 3 de enero, el Día de Martin Luther King, el fin de semana del Presidents' Day y del 26 de marzo al 4 de abril. Abre todos los días del 28 de mayo al 6 de septiembre de 2027.
 
-SeaWorld San Diego celebra a diario la [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) del 13 de noviembre de 2026 al 3 de enero de 2027, incluida en la entrada. Howl-O-Scream necesita entrada propia. En 2026 se celebró durante 23 noches, del 11 de septiembre al 31 de octubre, y los visitantes de día tenían esas noches hasta las 19:00, lo mismo que un fin de semana normal. Para 2027, SeaWorld indica noches seleccionadas del 10 de septiembre al 31 de octubre.
+SeaWorld San Diego celebra a diario la [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) del 13 de noviembre de 2026 al 3 de enero de 2027, incluida en la entrada. Howl-O-Scream, con entrada propia, se celebró en 2026 del 11 de septiembre al 31 de octubre, y para 2027 SeaWorld indica noches seleccionadas del 10 de septiembre al 31 de octubre.
 
-![Letras blancas que dicen SeaWorld San Diego sobre una marquesina amarilla, con el cielo gris. | El primer SeaWorld de todos abrió aquí, en Mission Bay, en 1964.](/media/seaworld-san-diego/sign.jpg)
+![Letras blancas que dicen SeaWorld San Diego sobre una marquesina amarilla, con el cielo gris. | Aquí, en Mission Bay, empezó SeaWorld en 1964.](/media/seaworld-san-diego/sign.jpg)
 
 ## Dónde alojarse
 
-Desde el 5 de enero de 2026, los huéspedes de los tres hoteles Disney ya no entran en los parques antes que nadie, porque ese día Disney puso fin al Early Entry. A cambio, cada visitante a partir de tres años recibe por estancia un acceso Lightning Lane Multi Pass para una atracción de cualquiera de los dos parques, que se usa en un día de la estancia. Rise of the Resistance y Radiator Springs Racers no entran, porque funcionan con Lightning Lane Single Pass.
+El 5 de enero de 2026 Disney puso fin al Early Entry, y desde entonces los huéspedes de los tres hoteles Disney ya no entran en los parques antes que nadie. A cambio, cada visitante a partir de tres años recibe por estancia un acceso Lightning Lane Multi Pass para una atracción de cualquiera de los dos parques, que se usa en un día de la estancia. Rise of the Resistance y Radiator Springs Racers no entran, porque funcionan con Lightning Lane Single Pass.
 
 | Zona                            | Hoteles                                               | Hasta los parques                                                                       |
 | ------------------------------- | ----------------------------------------------------- | --------------------------------------------------------------------------------------- |
@@ -131,7 +131,7 @@ Desde el 5 de enero de 2026, los huéspedes de los tres hoteles Disney ya no ent
 
 Disney también vende los hoteles Good Neighbor en paquetes con entradas.
 
-Lo largas que sean las excursiones depende de si duermes en Anaheim o en San Diego. Desde Harbor Boulevard en Anaheim hay sin tráfico 14 minutos hasta Knott's, 49 hasta Universal y 80 hasta Magic Mountain. A los tres parques de San Diego hay desde allí 79 minutos hasta LEGOLAND, 111 hasta SeaWorld y 129 hasta Sesame Place, siempre solo ida. Desde el Gaslamp Quarter de San Diego llegas a SeaWorld en 13 minutos, a Sesame Place en 23 y a LEGOLAND en 44.
+Desde Harbor Boulevard en Anaheim hay sin tráfico 14 minutos hasta Knott's, 49 hasta Universal y 80 hasta Magic Mountain. A los tres parques de San Diego hay desde allí 79 minutos hasta LEGOLAND, 111 hasta SeaWorld y 129 hasta Sesame Place, así que un día en Sesame Place supone más de cuatro horas en el coche. Desde el Gaslamp Quarter de San Diego llegas a SeaWorld en 13 minutos, a Sesame Place en 23 y a LEGOLAND en 44.
 
 En el planificador de viajes, los tiempos de trayecto se calculan desde una sola zona de hotel para todo el viaje. Si te mudas a San Diego para los parques del sur, planifica las dos partes por separado.
 
@@ -156,7 +156,7 @@ Datos de noviembre de 2026:
 | LEGOLAND California         | Sesame Place San Diego      | 60      |
 | Six Flags Magic Mountain    | Sesame Place San Diego      | 205     |
 
-Sin coche de alquiler llegas a Universal, Disneyland y LEGOLAND en tren y autobús. A Universal vas con la Metro B Line y la lanzadera. Desde Los Angeles Union Station, Metrolink y el Pacific Surfliner van a Anaheim, y desde la estación ARTIC una línea de ART llega a Disneyland. El Surfliner sigue hasta San Diego, y para el tramo de Santa Fe Depot a Anaheim Disney indica unas dos horas. El COASTER une Oceanside con el centro de San Diego, ocho estaciones en una hora aproximadamente, con 30 viajes de lunes a viernes y 20 los sábados y domingos. Desde la estación Carlsbad Poinsettia quedan unos dos kilómetros en línea recta hasta LEGOLAND, que haces en autobús o en taxi.
+Sin coche de alquiler llegas a Universal, Disneyland y LEGOLAND en tren y autobús. Desde Los Angeles Union Station, Metrolink y el Pacific Surfliner van a Anaheim, y desde la estación ARTIC una línea de ART llega a Disneyland. El Surfliner sigue hasta San Diego, y para el tramo de Santa Fe Depot a Anaheim Disney indica unas dos horas. El COASTER une Oceanside con el centro de San Diego, ocho estaciones en una hora aproximadamente, con 30 viajes de lunes a viernes y 20 los sábados y domingos. Desde la estación Carlsbad Poinsettia quedan unos dos kilómetros en línea recta hasta LEGOLAND, que haces en autobús o en taxi.
 
 ### Aeropuertos
 
@@ -164,19 +164,17 @@ Disney cita seis aeropuertos para el Disneyland Resort, del más cercano al más
 
 ## Entradas
 
-Para planificar, lo que cuenta es qué días vale cada entrada.
-
 ### Disneyland Resort
 
-La entrada de 1 día vale para una fecha, y su precio depende de la fecha. Las entradas de 2 a 5 días no tienen tramos de precio por fecha. Usas los días dentro de los 13 días siguientes a la primera visita, y el primer día cuenta como día uno. Los días no tienen que ser seguidos. Si empiezas el 17 de junio, tu quinto día tiene que ser el 29 de junio como muy tarde, así que en medio caben un día de playa y el viaje a San Diego. Las dos existen para un parque por día o con Park Hopper, y cada día necesita su reserva de parque. Lightning Lane Multi Pass se compra por día, además de la entrada.
+La entrada de 1 día vale para una fecha, y su precio depende de la fecha. Las entradas de 2 a 5 días no tienen tramos de precio por fecha. Usas los días dentro de los 13 días siguientes a la primera visita, contando el día de esa visita, y los días no tienen que ser seguidos. Si empiezas el 17 de junio, tu quinto día tiene que ser el 29 de junio como muy tarde, así que en medio caben un día de playa, Universal, Knott's y el viaje a San Diego. Las dos existen para un parque por día o con Park Hopper. Lightning Lane Multi Pass se compra por día, además de la entrada.
 
 ### Universal Studios Hollywood
 
-La entrada de 1 día vale solo para la fecha reservada, y no necesita reserva. Con la entrada de 2 días, la primera visita es en la fecha reservada y la segunda dentro de los siete días desde esa fecha. Si empiezas un lunes, el domingo siguiente es tu último día. La VIP Experience es un día guiado con entrada, Express ilimitado, almuerzo y aparcacoches.
+En Universal reservas el día para una fecha fija, sin reserva de parque aparte. Con la entrada de 2 días, la primera visita es en la fecha reservada y la segunda dentro de los siete días desde esa fecha. Si empiezas un lunes, el domingo siguiente es tu último día. La VIP Experience es un día guiado con entrada, Express ilimitado, almuerzo y aparcacoches.
 
 ### Knott's y Magic Mountain
 
-Los dos parques venden sus entradas a través de Six Flags, un Park Ticket para una fecha que eliges al comprar. Magic Mountain tiene además el Good Any Day Ticket, para una visita cualquier día de apertura hasta el 3 de enero de 2027. Knott's Scary Farm necesita entrada propia.
+Los dos parques venden sus entradas a través de Six Flags, un Park Ticket para una fecha que eliges al comprar. Magic Mountain tiene además el Good Any Day Ticket, para una visita cualquier día de apertura hasta el 3 de enero de 2027.
 
 ### SeaWorld y Sesame Place
 
@@ -184,7 +182,7 @@ La Single-Day Ticket de SeaWorld vale para la fecha impresa, la Any Day Ticket p
 
 ### LEGOLAND California
 
-La entrada de 1 día incluye el SEA LIFE Aquarium. LEGOLAND también vende entradas de varios días, y según sus condiciones el plazo para el segundo día figura en la entrada que compras. Mira ese plazo al comprar antes de fijar tus días en San Diego.
+Además de la entrada de 1 día, LEGOLAND vende entradas de varios días. Según sus condiciones, el plazo para el segundo día figura solo en la entrada que compras, así que tus días en San Diego los fijas después.
 
 ### Pases para varios parques
 
@@ -192,7 +190,7 @@ El Southern California CityPASS vale 14 días desde la primera visita, ese día 
 
 ## Pagar para saltarse la cola
 
-Casi todos los parques de la región venden una forma de pasar por delante de la cola normal, y casi cada uno la llama de otra manera. Universal Express incluye la entrada, y en Disney, SeaWorld y LEGOLAND la entrada se compra aparte.
+Casi todos los parques de la región venden una forma de pasar por delante de la cola normal, y Disney incluso dos. Universal Express incluye la entrada, y en Disney, SeaWorld y LEGOLAND la entrada se compra aparte.
 
 | Parque                             | Producto                   | Qué obtienes                                                                                                                      |
 | ---------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -203,7 +201,7 @@ Casi todos los parques de la región venden una forma de pasar por delante de la
 | SeaWorld San Diego                 | Quick Queue Unlimited      | todas las veces que quieras durante un día en Electric Eel, Manta, Shipwreck Rapids y Journey to Atlantis                         |
 | LEGOLAND California                | Fastrack                   | Bronze tres viajes, Silver seis, Gold ilimitado en 16 atracciones, Platinum además una vez cada atracción de LEGO Galaxy          |
 
-LEGOLAND vende Fastrack desde el 1 de febrero de 2026, y antes, hasta el 31 de enero, vendía Reserve & Ride. Pagar más compensa sobre todo en las atracciones con las colas más largas, en Disneyland en Rise of the Resistance y Space Mountain, en California Adventure en Radiator Springs Racers.
+En LEGOLAND, Fastrack sustituyó a Reserve & Ride el 1 de febrero de 2026. Las colas más largas están en Disneyland en Rise of the Resistance y Space Mountain, y en California Adventure en Radiator Springs Racers, y en dos de las tres solo Lightning Lane Single Pass te hace pasar antes.
 
 ```ride-waits-widget rides=/parks/north-america/united-states/anaheim/disneyland-park/star-wars-rise-of-the-resistance|Star Wars: Rise of the Resistance;/parks/north-america/united-states/anaheim/disneyland-park/space-mountain|Space Mountain;/parks/north-america/united-states/anaheim/disneyland-park/indiana-jones-adventure|Indiana Jones Adventure;disney-california-adventure-park/radiator-springs-racers|Radiator Springs Racers;universal-studios-hollywood/mario-kart-bowsers-challenge|Mario Kart: Bowser's Challenge columns=park,peak
 
@@ -222,13 +220,13 @@ El calendario de afluencia marca las vacaciones escolares del Los Angeles Unifie
 - Vacaciones de verano: del 5 de junio al 11 de agosto de 2027
 - Labor Day: del 3 al 6 de septiembre de 2027
 
-En nuestras mediciones desde finales de diciembre de 2025, las colas de Disneyland fueron las más largas de marzo a mayo, y las de California Adventure ya de enero a mayo. Fueron las más cortas en Disneyland en agosto y septiembre, y en California Adventure de julio a noviembre. Diciembre, por ahora, solo lo conocemos por los nueve últimos días de 2025, que cayeron en plenas vacaciones de invierno.
+En nuestras mediciones desde finales de diciembre de 2025, la [afluencia en Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park?calendar) fue la mayor de marzo a mayo, y en California Adventure ya de enero a mayo. Las colas fueron las más cortas en Disneyland en agosto y septiembre, y en California Adventure de julio a noviembre. Diciembre, por ahora, solo lo conocemos por los nueve últimos días de 2025, que cayeron en plenas vacaciones de invierno.
 
 ```stats-widget slug=/parks/north-america/united-states/anaheim/disneyland-park show=months
 
 ```
 
-En Universal Studios Hollywood ganó el verano. Julio fue el mes con más gente, enero, febrero y septiembre los más tranquilos, y el sábado fue el día con más gente de la semana. Julio cae en plenas vacaciones de verano de Los Ángeles. Cada día por separado está en el [calendario de afluencia de Universal Studios Hollywood](ref:universal-studios-hollywood?calendar).
+La mayor [afluencia en Universal Studios Hollywood](ref:universal-studios-hollywood?calendar) llegó en julio, en plenas vacaciones de verano de Los Ángeles, y la menor en enero, febrero y septiembre. El sábado fue allí el día con más gente de la semana.
 
 ```stats-widget slug=universal-studios-hollywood show=months
 
@@ -238,23 +236,23 @@ En Universal Studios Hollywood ganó el verano. Julio fue el mes con más gente,
 
 ```
 
-Los viajes de diez días con la espera punta más baja del próximo año están en la página [Cuándo ir a Disneyland y Universal Hollywood](/california/mejor-epoca-para-visitar). Para los días más allá de la previsión, esa página usa las esperas medidas el año pasado el mismo día de la semana.
+Los viajes de diez días con la espera punta más baja del próximo año están en la página [Cuándo ir a Disneyland y Universal Hollywood](/california/mejor-epoca-para-visitar). Para los días más lejanos de lo que alcanza la previsión, allí encuentras las esperas medidas el mismo día de la semana del año pasado.
 
-En las noches con entrada propia, los visitantes de día tuvieron que salir en 2026 a estas horas.
+En las noches de fiesta con entrada propia, los parques cierran antes para los visitantes de día.
 
 | Evento                  | Parque                      | Noches en 2026 | Los visitantes de día salen a las |
 | ----------------------- | --------------------------- | -------------- | --------------------------------- |
 | Disneyland After Dark   | Disneyland                  | 20             | 20:00                             |
 | Oogie Boogie Bash       | California Adventure        | 33             | 18:00                             |
 | Halloween Horror Nights | Universal Studios Hollywood | 42             | 18:00                             |
-| Knott's Scary Farm      | Knott's Berry Farm          | 26             | 17:00 o 17:30                     |
+| Knott's Scary Farm      | Knott's Berry Farm          | 26             | 17:30, sábados y domingos 17:00   |
 | Howl-O-Scream           | SeaWorld San Diego          | 23             | 19:00                             |
 
-Disney y Knott's aún no han anunciado las fechas de sus fiestas de 2027. En el planificador de viajes, un día con noche de fiesta cuenta como un día de parque más corto. Si pones «Espectáculos nocturnos» en «Quiero verlos», tus días de parque evitan esas noches por completo.
+Disney y Knott's aún no han anunciado las fechas de sus fiestas de 2027. Los fines de semana, Howl-O-Scream no costaba tiempo a los visitantes de día, porque en otoño de 2026 SeaWorld cerraba de todos modos a las 19:00 los sábados y domingos, y entre semana a las 17:00. En el planificador de viajes, un día con noche de fiesta cuenta como un día de parque más corto, y si pones «Espectáculos nocturnos» en «Quiero verlos», ningún día de parque cae en una noche de fiesta.
 
-El sur de California no tiene temporada de huracanes. La mayor parte de la lluvia cae en invierno: según las normales climáticas de Disneyland, unos 90 milímetros en enero, 71 en diciembre, 64 en febrero y 67 en marzo, y menos de diez cada mes de junio a octubre. El calor está sobre todo en el interior, en Magic Mountain y, algo menos, en Universal, donde agosto llega de media a 32,1 °C. Los parques de San Diego se quedan en verano en torno a 26 °C de máxima, y en agosto hace de media más fresco en SeaWorld que en junio en Disneyland.
+El sur de California no tiene temporada de huracanes. La mayor parte de la lluvia cae de diciembre a marzo, según las normales climáticas de Disneyland de 64 a 90 milímetros al mes, con el máximo en enero, y menos de diez cada mes de junio a octubre. Como Magic Mountain, Universal está en el interior, y allí agosto llega de media a 32,1 °C. Los parques de San Diego se quedan en verano en torno a 26 °C de máxima, y en agosto hace de media más fresco en SeaWorld que en junio en Disneyland.
 
-Entre Acción de Gracias y las vacaciones de invierno, del 30 de noviembre al 18 de diciembre de 2026, los colegios de Los Ángeles no tienen días libres, y la previsión de esas semanas está día a día en el [calendario de afluencia de Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park?calendar).
+Entre Acción de Gracias y las vacaciones de invierno, del 30 de noviembre al 18 de diciembre de 2026, los colegios de Los Ángeles no tienen días libres.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
@@ -264,17 +262,17 @@ Entre Acción de Gracias y las vacaciones de invierno, del 30 de noviembre al 18
 
 La cifra de cada casilla es la **espera punta**: la espera prevista en las grandes atracciones de un parque, cada una a su hora de más gente, en promedio. Por la mañana y por la noche esperas menos.
 
-El color compara el día con un día normal del mismo parque. Un Disneyland en verde es un día tranquilo para Disneyland, y si allí esperas de todos modos más que en Knott's, lo ves en los minutos.
+Para el color comparamos el día con un [día normal del mismo parque](/como-funciona-park-fan). Un Disneyland en verde es un día tranquilo para Disneyland, y si allí esperas de todos modos más que en Knott's, lo ves en los minutos.
 
-El anillo marca en el Disneyland Resort el parque con la espera punta más baja. Si uno de los dos cierra antes para los visitantes de día, por ejemplo una noche de Oogie Boogie Bash, y las cifras están cerca, el anillo va al parque que abre más tiempo. Cómo medimos y hasta dónde llega la previsión está en [Cómo funciona park.fan](/como-funciona-park-fan).
+El anillo marca en el Disneyland Resort el parque con la espera punta más baja. Si uno de los dos cierra antes para los visitantes de día, por ejemplo una noche de Oogie Boogie Bash, y las cifras están cerca, el anillo va al parque que abre más tiempo.
 
 ## Cómo repartir los días
 
-Los dos parques Disney necesitan la mayoría de los días, y con la entrada de 2 a 5 días no tienes que usarlos seguidos. Trece días desde la primera visita dejan sitio para Universal, Knott's y días de descanso en medio. Con Park Hopper cambias de parque el mismo día, por ejemplo para ver World of Color por la noche. Cuando California Adventure cierra antes para los visitantes de día una noche de Oogie Boogie Bash, el Park Hopper te lleva a Disneyland el resto de la noche.
+Para los dos parques Disney, Disney recomienda en el Disney Parks Blog tres días o más. Con Park Hopper, un día en Disneyland puede terminar con World of Color en California Adventure. Cuando California Adventure cierra antes para los visitantes de día una noche de Oogie Boogie Bash, con Park Hopper te pasas a Disneyland el resto de la noche.
 
 Universal Studios Hollywood es un día, o dos en la misma semana con la entrada de 2 días. Desde Universal, el parque más cercano es Magic Mountain, así que si duermes en Universal City, haz los dos en días seguidos. Los tres parques de San Diego reciben un día cada uno, y fuera del verano y de las semanas de vacaciones Sesame Place va en sábado o domingo. En invierno, LEGOLAND no cae en miércoles.
 
-El [planificador de viajes](/california#planner) te propone qué parque va en qué día, con las noches de fiesta, los días de cierre y el calor incluidos. Cada parque cae en el día de tu viaje con su espera punta más baja.
+En el [planificador de viajes](/california#planner) indicas tus fechas y tu zona de hotel, y cada parque cae en el día con su espera punta más baja, con las noches de fiesta, los días de cierre y el calor ya incluidos.
 
 ```cta-widget
 href: /california#planner

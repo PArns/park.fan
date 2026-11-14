@@ -3,7 +3,7 @@ title: 'Disneyland, Universal en San Diego in één reis'
 translationKey: southern-california-trip-guide
 date: '2026-11-14'
 author: patrick
-mode: published
+mode: draft
 featured: false
 excerpt: >-
   In Zuid-Californië liggen alleen Disneyland en California Adventure poort aan poort. Naar
@@ -53,7 +53,7 @@ seo:
 
 Acht pretparken in Zuid-Californië passen in één reis: Disneyland en Disney California Adventure in Anaheim, Universal Studios Hollywood, Knott's Berry Farm in Buena Park, Six Flags Magic Mountain in Santa Clarita en verder naar het zuiden SeaWorld San Diego, LEGOLAND California in Carlsbad en Sesame Place San Diego in Chula Vista. Van Magic Mountain helemaal in het noorden tot Sesame Place helemaal in het zuiden zit je zonder verkeer bijna drieënhalf uur in de auto, langer dus dan in de meeste wachtrijen van de reis.
 
-De twee Disney-parken delen een voorplein, naar de andere zes ga je met de auto, de metro of de trein. Daarvan hangt af waar je slaapt en welk park welke dag krijgt.
+De twee Disney-parken delen een voorplein, naar de andere zes ga je met de auto, de metro of de trein. Een dag in SeaWorld begint daardoor met bijna twee uur rijden als je in Anaheim slaapt, en met een krap kwartier als je in het Gaslamp Quarter van San Diego slaapt.
 
 In de [Disneyland Californië drukte-kalender](/californie) staan alle acht parken dag voor dag, en in de [reisplanner](/californie#planner) zet je ze op je reisdagen.
 
@@ -65,23 +65,23 @@ De ingangen van [Disneyland](ref:/parks/north-america/united-states/anaheim/disn
 
 Met de auto parkeer je in de parkeergarages Mickey & Friends of Pixar Pals aan Disneyland Drive, en een tram brengt je naar de Esplanade. Vanaf het derde parkeerterrein, Toy Story op de hoek van Katella Avenue en Harbor Boulevard, rijden bussen naar de ingang. Voor de weg van de garage naar de poort rekenen wij ongeveer 15 minuten, het wachten op de tram meegerekend.
 
-Voor elke dag in een van beide parken heb je naast het ticket een parkreservering nodig, elke gast vanaf drie jaar. Met Park Hopper mag je na binnenkomst in het eerste park naar het tweede, sinds 9 juni 2026 op elk tijdstip, zolang het tweede park nog gasten binnenlaat. De oude regel dat dat pas vanaf 11 uur mocht, geldt niet meer, ook al legt de Disney Parks Blog hem in zijn gids over het aantal dagen nog uit.
+Voor elke dag in een van beide parken heb je naast het ticket een parkreservering nodig, elke gast vanaf drie jaar. Met Park Hopper mag je na binnenkomst in het eerste park naar het tweede, sinds 9 juni 2026 op elk tijdstip, zolang het tweede park nog gasten binnenlaat. Daarvoor kon dat pas vanaf 11 uur, en zo legt de Disney Parks Blog het in zijn gids over het aantal dagen nog steeds uit.
 
 ![Het reuzenrad Pixar Pal-A-Round met Mickeys gezicht naast het rode spoor van de Incredicoaster, met Paradise Bay ervoor. | Pixar Pier in California Adventure. Op de baai ervoor speelt 's avonds World of Color. | wide](/media/disney-california-adventure-park/pixar-pier.jpg)
 
 's Avonds speelt in Disneyland Fantasmic! en zijn er twee projectieshows, Tapestry of Happiness op de gevel van “it's a small world” en Shadows of Memory in Galaxy's Edge. In California Adventure heet World of Color tijdens de feestdagen “World of Color – Season of Light”. Het [kerstseizoen in het Disneyland Resort](/news/disneyland-resort-holidays-2026) loopt van 13 november 2026 tot 6 januari 2027, en het vuurwerk “Believe… In Holiday Magic” begint in die periode om 21.30 uur.
 
-Twee feesten met een eigen ticket maken de dag voor iedereen korter. Op de 20 avonden van Disneyland After Dark moesten dagbezoekers in 2026 elke keer om 20 uur weg, op de 33 avonden van de Oogie Boogie Bash in California Adventure al om 18 uur. Daarna feesten in het park alleen nog de gasten met een extra ticket.
+Twee feesten met een eigen ticket maken op sommige avonden de dag voor iedereen korter: Disneyland After Dark in Disneyland en rond Halloween de Oogie Boogie Bash in California Adventure.
 
 ### Universal Studios Hollywood
 
-[Universal Studios Hollywood](ref:universal-studios-hollywood) is één park in Universal City, in het noorden van Los Angeles, en een eigen hotel heeft Universal daar niet. Vanuit de parkeergarage loop je door Universal CityWalk naar de ingang, een straat met restaurants en een bioscoop waar je gratis in kunt. Parkeren kost wel geld.
+[Universal Studios Hollywood](ref:universal-studios-hollywood) is één park in Universal City, in het noorden van Los Angeles, en een eigen hotel heeft Universal daar niet. Tussen de parkeergarage en de ingang ligt Universal CityWalk met restaurants en een bioscoop, en voor CityWalk zelf heb je geen ticket nodig. Parkeren kost wel geld.
 
-Zonder auto neem je de Metro B Line naar Universal City/Studio City. Aan de overkant van het station stopt een gratis shuttle die je de heuvel op naar het park brengt, en sinds 2016 loopt er een voetgangersbrug over Lankershim Boulevard naar de halte.
+Zonder auto neem je de Metro B Line naar Universal City/Studio City. Aan de overkant van het station stopt een gratis shuttle die je de heuvel op naar het park brengt, en een voetgangersbrug over Lankershim Boulevard leidt naar de halte.
 
 Universal verkoopt Super Nintendo World Early Access, het uur voordat het park opengaat, als apart ticket. De toegang tot het park zit er niet bij, die koop je erbij, en zo kost het uur in het Paddenstoelenrijk je twee tickets.
 
-Sinds 16 september 2026 rijdt in de Upper Lot [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), de eerste snelle achtbaan van het park in de open lucht. De Halloween Horror Nights liepen in 2026 op 42 avonden van 3 september tot 1 november, en op die dagen moesten dagbezoekers om 18 uur weg. Van 21 november 2026 tot 3 januari 2027 lopen elke dag de [Holidays in Universal Studios Hollywood](/news/universal-studios-hollywood-holidays-2026) met Grinchmas en de Merry Minions, alles bij de gewone toegang inbegrepen.
+Sinds 16 september 2026 staat in de Upper Lot [Fast & Furious: Hollywood Drift](/news/hollywood-drift-universal-studios-hollywood), de eerste snelle achtbaan van het park die niet in een hal rijdt. In de herfst zijn de avonden voor de Halloween Horror Nights met een eigen ticket, in 2026 van 3 september tot 1 november. Van 21 november 2026 tot 3 januari 2027 lopen elke dag de [Holidays in Universal Studios Hollywood](/news/universal-studios-hollywood-holidays-2026) met Grinchmas en de Merry Minions, alles bij de gewone toegang inbegrepen.
 
 ### Knott's Berry Farm
 
@@ -89,35 +89,35 @@ Sinds 16 september 2026 rijdt in de Upper Lot [Fast & Furious: Hollywood Drift](
 
 ![Turquoise achtbaanrails in lussen tegen een blauwe lucht naast een verticale lifttoren, onderaan palmen en lichtsnoeren. | HangTime in Knott's Berry Farm houdt de trein bovenaan vijf seconden vast voordat hij valt.](/media/knotts-berry-farm/hangtime.jpg)
 
-Knott's Scary Farm is een avondevenement met een eigen ticket. In 2026 liep het op 26 avonden van 17 september tot 31 oktober, en dagbezoekers moesten op donderdag en vrijdag om 17.30 uur weg, op zaterdag en zondag om 17 uur. Van 20 november 2026 tot 3 januari 2027 is het park de [Knott's Merry Farm](/news/knotts-merry-farm-2026) en dan alleen op 25 december dicht.
+Op herfstavonden wordt het park de Knott's Scary Farm, waarvoor je een eigen ticket nodig hebt, in 2026 van 17 september tot Halloween. Van 20 november 2026 tot 3 januari 2027 is het park de [Knott's Merry Farm](/news/knotts-merry-farm-2026) en dan alleen op 25 december dicht.
 
-Knott's begint zijn evenementen van 2027 met de PEANUTS Celebration, in de weekenden van 30 januari tot 21 februari en op Presidents' Day. Het Boysenberry Festival viert elke dag van 12 maart tot 11 april de bes waarmee de farm volgens Knott's zelf begon, en Summer Nights loopt op geselecteerde avonden van 11 juni tot 29 augustus.
+Na de Merry Farm gaat Knott's in 2027 verder met de PEANUTS Celebration, in de weekenden van 30 januari tot 21 februari en op Presidents' Day. Het Boysenberry Festival viert elke dag van 12 maart tot 11 april de bes waarmee de farm volgens Knott's zelf begon, en Summer Nights loopt op geselecteerde avonden van 11 juni tot 29 augustus.
 
 ### Six Flags Magic Mountain
 
-Vanaf Universal rijd je zonder verkeer 38 minuten naar het noorden tot [Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Santa Clarita, vanaf de parkeerplaats van Disneyland 82. Buiten de vakanties is het park op dinsdag en woensdag dicht, soms ook op donderdag. In januari 2027 blijft het dicht van 12 tot 14, van 19 tot 21 en van 26 tot 28 januari.
+Vanaf Universal rijd je zonder verkeer 38 minuten naar het noorden tot [Six Flags Magic Mountain](ref:six-flags-magic-mountain) in Santa Clarita, vanaf de parkeerplaats van Disneyland 82. Buiten de vakanties is het park op dinsdag en woensdag dicht, soms ook op donderdag, en in januari 2027 vanaf de 12e drie weken lang van dinsdag tot en met donderdag.
 
-Magic Mountain is het heetste park van de regio. Volgens de klimaatnormalen van 2015 tot 2024 ligt de gemiddelde dagelijkse maximumtemperatuur daar in juli op 34,4 °C en in augustus op 34,6 °C, en op 28 dagen per jaar haalt de normaalwaarde 35 °C. In Disneyland is het in augustus 30,3 °C, in SeaWorld San Diego 26,1 °C. In de reisplanner geldt een dag als heet wanneer de voorspelling 35 °C haalt of de normaalwaarde 30,5 °C, en Magic Mountain komt dan liever op een koelere dag van je reis.
+Magic Mountain is het heetste park van de regio. Volgens de klimaatnormalen van 2015 tot 2024 ligt de gemiddelde dagelijkse maximumtemperatuur daar in juli op 34,4 °C en in augustus op 34,6 °C, en op 28 dagen per jaar ligt het langjarige gemiddelde op 35 °C of meer. In Disneyland is het in augustus gemiddeld 30,3 °C, in SeaWorld San Diego 26,1 °C. In de reisplanner geldt een dag als heet wanneer er 35 °C voorspeld is of het langjarige gemiddelde 30,5 °C haalt, en Magic Mountain schuift dan eerder naar een koelere dag van je reis.
 
-Six Flags heeft [X2 op 29 september 2026 definitief buiten gebruik gesteld](/news/x2-six-flags-magic-mountain-gesloten). Voor 2027 is de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain) aangekondigd, een nieuwe achtbaan van Vekoma waarin de passagiers op hun buik onder de baan hangen. Een openingsdatum heeft het park nog niet bekendgemaakt. [Holiday in the Park](/news/six-flags-magic-mountain-holiday-in-the-park-2026) loopt op geselecteerde dagen van 26 november 2026 tot 3 januari 2027, en gasten vanaf 65 jaar mogen tot 3 januari 2027 gratis naar binnen als ze zich online registreren en uiterlijk op 31 december 2026 voor het eerst komen.
+Six Flags heeft [X2 op 29 september 2026 definitief buiten gebruik gesteld](/news/x2-six-flags-magic-mountain-gesloten). Voor 2027 is de [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain) aangekondigd, een nieuwe achtbaan van Vekoma waarin de passagiers op hun buik onder de baan hangen, tot nu toe zonder openingsdatum. [Holiday in the Park](/news/six-flags-magic-mountain-holiday-in-the-park-2026) loopt op geselecteerde dagen van 26 november 2026 tot 3 januari 2027, en gasten vanaf 65 jaar mogen tot 3 januari 2027 gratis naar binnen als ze zich online registreren en uiterlijk op 31 december 2026 voor het eerst komen.
 
 ### SeaWorld, LEGOLAND en Sesame Place
 
-De drie parken rond San Diego liggen dicht bij elkaar. Van [SeaWorld San Diego](ref:seaworld-san-diego) aan Mission Bay rijd je zonder verkeer 42 minuten naar [LEGOLAND California](ref:legoland-california) in Carlsbad en 33 minuten naar [Sesame Place San Diego](ref:sesame-place-san-diego) in Chula Vista, en tussen LEGOLAND en Sesame Place is het een uur.
+[SeaWorld San Diego](ref:seaworld-san-diego) aan Mission Bay ligt tussen de twee andere parken rond San Diego. Van daar rijd je zonder verkeer 42 minuten naar het noorden tot [LEGOLAND California](ref:legoland-california) in Carlsbad en 33 minuten naar het zuiden tot [Sesame Place San Diego](ref:sesame-place-san-diego) in Chula Vista, en tussen LEGOLAND en Sesame Place is het een uur.
 
-LEGOLAND California sluit buiten het seizoen op sommige weekdagen, tussen eind oktober 2026 en eind januari 2027 vooral op woensdag. Bij het ticket hoort de toegang tot het SEA LIFE Aquarium ernaast, en een reservering heb je niet nodig. Het LEGOLAND California Hotel staat bij het park. Tijdens de Christmas Bricktacular is er in 2026 vuurwerk op 5 en 12 december en elke avond van 19 tot 31 december.
+LEGOLAND California sluit buiten het seizoen op sommige weekdagen, tussen eind oktober 2026 en eind januari 2027 vooral op woensdag. Bij het ticket hoort de toegang tot het SEA LIFE Aquarium ernaast, en een reservering heb je niet nodig. Tijdens de Christmas Bricktacular is er in 2026 vuurwerk op 5 en 12 december en elke avond van 19 tot 31 december.
 
-![De letters LEGOLAND California met het rode LEGO-logo en een zon van gele stenen, in tegenlicht. | In 1999 in Carlsbad geopend, als eerste LEGOLAND buiten Europa.](/media/legoland-california/entrance-sign.jpg)
+![De letters LEGOLAND California met het rode LEGO-logo en een zon van gele stenen, in tegenlicht. | De ingang in Carlsbad. Tot 1999 lag elk LEGOLAND in Europa.](/media/legoland-california/entrance-sign.jpg)
 
 Buiten de zomer en de vakantieweken werkt Elmo alleen in het weekend. Van 8 september 2026 tot half mei 2027 is Sesame Place van maandag tot en met vrijdag dicht, behalve in de week van Thanksgiving, van 21 december tot 3 januari, op Martin Luther King Day, in het weekend rond Presidents' Day en van 26 maart tot 4 april. Elke dag open is het park van 28 mei tot 6 september 2027.
 
-SeaWorld San Diego viert van 13 november 2026 tot 3 januari 2027 elke dag de [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026), bij de gewone toegang inbegrepen. Voor Howl-O-Scream heb je een eigen ticket nodig. In 2026 liep het op 23 avonden van 11 september tot 31 oktober, en dagbezoekers hadden op die avonden tot 19 uur, net zo lang als op een gewoon weekend. Voor 2027 noemt SeaWorld geselecteerde avonden van 10 september tot 31 oktober.
+SeaWorld San Diego viert van 13 november 2026 tot 3 januari 2027 elke dag de [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026), bij de gewone toegang inbegrepen. Howl-O-Scream met een eigen ticket liep in 2026 van 11 september tot 31 oktober, en voor 2027 noemt SeaWorld geselecteerde avonden van 10 september tot 31 oktober.
 
-![Witte letters met SeaWorld San Diego op een geel afdak onder een grijze lucht. | De allereerste SeaWorld ging hier aan Mission Bay open, in 1964.](/media/seaworld-san-diego/sign.jpg)
+![Witte letters met SeaWorld San Diego op een geel afdak onder een grijze lucht. | Hier aan Mission Bay is SeaWorld in 1964 begonnen.](/media/seaworld-san-diego/sign.jpg)
 
 ## Waar je slaapt
 
-Sinds 5 januari 2026 komen de gasten van de drie Disney-hotels niet meer vóór alle anderen de parken in, want die dag heeft Disney Early Entry stopgezet. In plaats daarvan krijgt elke gast vanaf drie jaar per verblijf één keer Lightning Lane Multi Pass voor één attractie in een van beide parken, te gebruiken op één dag van het verblijf. Rise of the Resistance en Radiator Springs Racers horen daar niet bij, want die lopen via Lightning Lane Single Pass.
+Op 5 januari 2026 heeft Disney Early Entry stopgezet, en sindsdien komen de gasten van de drie Disney-hotels niet meer vóór alle anderen de parken in. In plaats daarvan krijgt elke gast vanaf drie jaar per verblijf één keer Lightning Lane Multi Pass voor één attractie in een van beide parken, te gebruiken op één dag van het verblijf. Rise of the Resistance en Radiator Springs Racers horen daar niet bij, want die lopen via Lightning Lane Single Pass.
 
 | Buurt                           | Hotels                                                | Naar de parken                                                                      |
 | ------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -131,7 +131,7 @@ Sinds 5 januari 2026 komen de gasten van de drie Disney-hotels niet meer vóór 
 
 Disney verkoopt de Good Neighbor-hotels ook in pakketten met tickets.
 
-Hoe lang de dagtrips worden, hangt ervan af of je in Anaheim of in San Diego slaapt. Vanaf Harbor Boulevard in Anaheim rijd je zonder verkeer 14 minuten naar Knott's, 49 naar Universal en 80 naar Magic Mountain. Naar de drie parken rond San Diego is het vandaar 79 minuten tot LEGOLAND, 111 tot SeaWorld en 129 tot Sesame Place, steeds enkele reis. Vanuit het Gaslamp Quarter in San Diego ben je in 13 minuten bij SeaWorld, in 23 bij Sesame Place en in 44 bij LEGOLAND.
+Vanaf Harbor Boulevard in Anaheim rijd je zonder verkeer 14 minuten naar Knott's, 49 naar Universal en 80 naar Magic Mountain. Naar de drie parken rond San Diego is het vandaar 79 minuten tot LEGOLAND, 111 tot SeaWorld en 129 tot Sesame Place, op een dag in Sesame Place dus meer dan vier uur in de auto. Vanuit het Gaslamp Quarter in San Diego ben je in 13 minuten bij SeaWorld, in 23 bij Sesame Place en in 44 bij LEGOLAND.
 
 In de reisplanner gelden de rijtijden voor de hele reis vanaf één hotelbuurt. Verhuis je voor de parken in het zuiden naar San Diego, plan de twee delen dan apart.
 
@@ -156,7 +156,7 @@ Stand van november 2026:
 | LEGOLAND California         | Sesame Place San Diego      | 60      |
 | Six Flags Magic Mountain    | Sesame Place San Diego      | 205     |
 
-Zonder huurauto bereik je Universal, Disneyland en LEGOLAND met trein en bus. Naar Universal ga je met de Metro B Line en de shuttle. Vanaf Los Angeles Union Station rijden Metrolink en de Pacific Surfliner naar Anaheim, en vanaf station ARTIC rijdt een ART-lijn naar Disneyland. De Surfliner rijdt door tot San Diego, en voor het stuk van Santa Fe Depot naar Anaheim noemt Disney ongeveer twee uur. De COASTER verbindt Oceanside met het centrum van San Diego, acht stations in ongeveer een uur, van maandag tot en met vrijdag met 30 ritten, op zaterdag en zondag met 20. Vanaf station Carlsbad Poinsettia is het hemelsbreed ongeveer twee kilometer naar LEGOLAND, die je met de bus of de taxi aflegt.
+Zonder huurauto bereik je Universal, Disneyland en LEGOLAND met trein en bus. Vanaf Los Angeles Union Station rijden Metrolink en de Pacific Surfliner naar Anaheim, en vanaf station ARTIC rijdt een ART-lijn naar Disneyland. De Surfliner rijdt door tot San Diego, en voor het stuk van Santa Fe Depot naar Anaheim noemt Disney ongeveer twee uur. De COASTER verbindt Oceanside met het centrum van San Diego, acht stations in ongeveer een uur, van maandag tot en met vrijdag met 30 ritten, op zaterdag en zondag met 20. Vanaf station Carlsbad Poinsettia is het hemelsbreed ongeveer twee kilometer naar LEGOLAND, die je met de bus of de taxi aflegt.
 
 ### Vliegvelden
 
@@ -164,19 +164,17 @@ Disney noemt zes vliegvelden voor het Disneyland Resort, op volgorde van afstand
 
 ## Tickets
 
-Voor de planning telt op welke dagen een ticket geldig is.
-
 ### Disneyland Resort
 
-Het 1-dagticket geldt op één datum, en de prijs hangt van de datum af. De tickets voor 2 tot 5 dagen hebben geen prijsniveaus per datum. Je gebruikt de dagen binnen 13 dagen na het eerste bezoek, waarbij de eerste dag als dag één telt, en de dagen hoeven niet achter elkaar te liggen. Begin je op 17 juni, dan moet je vijfde dag uiterlijk 29 juni zijn, en daartussen passen dus een stranddag en de rit naar San Diego. Beide tickets zijn er voor één park per dag of met Park Hopper, en voor elke dag heb je de parkreservering nodig. Lightning Lane Multi Pass koop je per dag bij het ticket.
+Het 1-dagticket geldt op één datum, en de prijs hangt van de datum af. De tickets voor 2 tot 5 dagen hebben geen prijsniveaus per datum. Je gebruikt de dagen binnen 13 dagen na het eerste bezoek, de dag van het eerste bezoek meegeteld, en de dagen hoeven niet achter elkaar te liggen. Begin je op 17 juni, dan moet je vijfde dag uiterlijk 29 juni zijn, en daartussen passen dus een stranddag, Universal, Knott's en de rit naar San Diego. Beide tickets zijn er voor één park per dag of met Park Hopper. Lightning Lane Multi Pass koop je per dag bij het ticket.
 
 ### Universal Studios Hollywood
 
-Het dagticket geldt alleen op de datum die je hebt geboekt, en een reservering heb je er niet voor nodig. Bij het 2-dagenticket is het eerste bezoek op de geboekte datum en het tweede binnen zeven dagen vanaf die datum. Begin je op een maandag, dan is de zondag erna je laatste dag. De VIP Experience is een begeleide dag met toegang, onbeperkt Express, lunch en valetparkeren.
+Bij Universal boek je de dag voor een vaste datum, en een reservering komt er niet bij. Bij het 2-dagenticket is het eerste bezoek op de geboekte datum en het tweede binnen zeven dagen vanaf die datum. Begin je op een maandag, dan is de zondag erna je laatste dag. De VIP Experience is een begeleide dag met toegang, onbeperkt Express, lunch en valetparkeren.
 
 ### Knott's en Magic Mountain
 
-Beide parken verkopen hun tickets via Six Flags, een Park Ticket voor een datum die je bij de aankoop kiest. Magic Mountain heeft daarnaast het Good Any Day Ticket voor één bezoek op een willekeurige openingsdag tot en met 3 januari 2027. Voor Knott's Scary Farm heb je een eigen ticket nodig.
+Beide parken verkopen hun tickets via Six Flags, een Park Ticket voor een datum die je bij de aankoop kiest. Magic Mountain heeft daarnaast het Good Any Day Ticket voor één bezoek op een willekeurige openingsdag tot en met 3 januari 2027.
 
 ### SeaWorld en Sesame Place
 
@@ -184,7 +182,7 @@ Het Single-Day Ticket van SeaWorld geldt op de datum die erop staat, het Any Day
 
 ### LEGOLAND California
 
-Het dagticket is inclusief het SEA LIFE Aquarium. LEGOLAND verkoopt ook meerdaagse tickets, en hoeveel tijd je voor de tweede dag hebt, staat volgens de voorwaarden van het park op het ticket dat je koopt. Kijk bij de aankoop naar die termijn voordat je je dagen in San Diego vastlegt.
+Naast het dagticket verkoopt LEGOLAND ook meerdaagse tickets. Hoeveel tijd je voor de tweede dag hebt, staat volgens de voorwaarden pas op het ticket dat je koopt, en je dagen in San Diego leg je daarom pas daarna vast.
 
 ### Passen voor meerdere parken
 
@@ -192,7 +190,7 @@ De Southern California CityPASS geldt 14 dagen vanaf het eerste bezoek, die dag 
 
 ## Tegen betaling langs de wachtrij
 
-Bijna elk park in de regio verkoopt een manier om langs de gewone wachtrij te komen, en bijna elk park noemt hem anders. Universal Express is inclusief toegang, bij Disney, SeaWorld en LEGOLAND koop je de toegang apart.
+Bijna elk park in de regio verkoopt een manier om langs de gewone wachtrij te komen, Disney zelfs twee. Universal Express is inclusief toegang, bij Disney, SeaWorld en LEGOLAND koop je de toegang apart.
 
 | Park                               | Product                    | Wat je krijgt                                                                                                                     |
 | ---------------------------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
@@ -203,7 +201,7 @@ Bijna elk park in de regio verkoopt een manier om langs de gewone wachtrij te ko
 | SeaWorld San Diego                 | Quick Queue Unlimited      | één dag zo vaak je wilt bij Electric Eel, Manta, Shipwreck Rapids en Journey to Atlantis                                          |
 | LEGOLAND California                | Fastrack                   | Bronze drie ritten, Silver zes, Gold onbeperkt bij 16 attracties, Platinum daarbij één keer de attracties van LEGO Galaxy         |
 
-Fastrack heeft LEGOLAND sinds 1 februari 2026, daarvoor verkocht het park tot 31 januari Reserve & Ride. Extra betalen levert het meest op bij de attracties met de langste wachtrijen, in Disneyland bij Rise of the Resistance en Space Mountain, in California Adventure bij Radiator Springs Racers.
+Fastrack heeft in LEGOLAND op 1 februari 2026 Reserve & Ride vervangen. De langste wachtrijen staan in Disneyland bij Rise of the Resistance en Space Mountain, in California Adventure bij Radiator Springs Racers, en bij twee van de drie kom je alleen met Lightning Lane Single Pass sneller aan de beurt.
 
 ```ride-waits-widget rides=/parks/north-america/united-states/anaheim/disneyland-park/star-wars-rise-of-the-resistance|Star Wars: Rise of the Resistance;/parks/north-america/united-states/anaheim/disneyland-park/space-mountain|Space Mountain;/parks/north-america/united-states/anaheim/disneyland-park/indiana-jones-adventure|Indiana Jones Adventure;disney-california-adventure-park/radiator-springs-racers|Radiator Springs Racers;universal-studios-hollywood/mario-kart-bowsers-challenge|Mario Kart: Bowser's Challenge columns=park,peak
 
@@ -222,13 +220,13 @@ In de drukte-kalender zijn de schoolvakanties van het Los Angeles Unified School
 - Zomervakantie: 5 juni tot en met 11 augustus 2027
 - Labor Day: 3 tot en met 6 september 2027
 
-In onze metingen sinds eind december 2025 stond je in Disneyland van maart tot mei het langst in de rij, in California Adventure al van januari tot mei. Het kortst waren de wachtrijen in Disneyland in augustus en september, in California Adventure van juli tot november. December kennen we tot nu toe alleen van de laatste negen dagen van 2025, en die vielen midden in de kerstvakantie.
+In onze metingen sinds eind december 2025 was de [drukte in Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park?calendar) van maart tot mei het grootst, in California Adventure al van januari tot mei. Het kortst waren de wachtrijen in Disneyland in augustus en september, in California Adventure van juli tot november. December kennen we tot nu toe alleen van de laatste negen dagen van 2025, en die vielen midden in de kerstvakantie.
 
 ```stats-widget slug=/parks/north-america/united-states/anaheim/disneyland-park show=months
 
 ```
 
-Bij Universal Studios Hollywood lag de zomer voorop. In juli was het het drukst, in januari, februari en september het rustigst, en zaterdag was de drukste dag van de week. Juli valt midden in de zomervakantie van Los Angeles. Elke dag apart vind je in de [drukte-kalender van Universal Studios Hollywood](ref:universal-studios-hollywood?calendar).
+De meeste [drukte bij Universal Studios Hollywood](ref:universal-studios-hollywood?calendar) was er in juli, midden in de zomervakantie van Los Angeles, de minste in januari, februari en september. Zaterdag was daar de drukste dag van de week.
 
 ```stats-widget slug=universal-studios-hollywood show=months
 
@@ -238,23 +236,23 @@ Bij Universal Studios Hollywood lag de zomer voorop. In juli was het het drukst,
 
 ```
 
-De reizen van tien dagen met de laagste piekwachttijd in het komende jaar staan op de pagina [Beste reistijd voor Disneyland en Universal Hollywood](/californie/beste-tijd-om-te-bezoeken). Voor dagen voorbij de voorspelling gebruikt die pagina de gemeten wachttijden van vorig jaar op dezelfde weekdag.
+De reizen van tien dagen met de laagste piekwachttijd in het komende jaar staan op de pagina [Beste reistijd voor Disneyland en Universal Hollywood](/californie/beste-tijd-om-te-bezoeken). Voor dagen verder weg dan de voorspelling reikt, vind je daar de gemeten wachttijden van dezelfde weekdag vorig jaar.
 
-Op de avonden met een eigen ticket moesten dagbezoekers in 2026 op deze tijden weg.
+Op feestavonden met een eigen ticket sluiten de parken eerder voor dagbezoekers.
 
-| Evenement               | Park                        | Avonden in 2026 | Dagbezoekers weg om |
-| ----------------------- | --------------------------- | --------------- | ------------------- |
-| Disneyland After Dark   | Disneyland                  | 20              | 20 uur              |
-| Oogie Boogie Bash       | California Adventure        | 33              | 18 uur              |
-| Halloween Horror Nights | Universal Studios Hollywood | 42              | 18 uur              |
-| Knott's Scary Farm      | Knott's Berry Farm          | 26              | 17 of 17.30 uur     |
-| Howl-O-Scream           | SeaWorld San Diego          | 23              | 19 uur              |
+| Evenement               | Park                        | Avonden in 2026 | Dagbezoekers weg om                  |
+| ----------------------- | --------------------------- | --------------- | ------------------------------------ |
+| Disneyland After Dark   | Disneyland                  | 20              | 20 uur                               |
+| Oogie Boogie Bash       | California Adventure        | 33              | 18 uur                               |
+| Halloween Horror Nights | Universal Studios Hollywood | 42              | 18 uur                               |
+| Knott's Scary Farm      | Knott's Berry Farm          | 26              | 17.30 uur, zaterdag en zondag 17 uur |
+| Howl-O-Scream           | SeaWorld San Diego          | 23              | 19 uur                               |
 
-Disney en Knott's hebben de data van hun feesten voor 2027 nog niet bekendgemaakt. In de reisplanner telt een dag met een feestavond als een kortere parkdag. Zet je “Avondshows” op “Wil ik zien”, dan mijden je parkdagen die avonden helemaal.
+Disney en Knott's hebben de data van hun feesten voor 2027 nog niet bekendgemaakt. In het weekend kostte Howl-O-Scream dagbezoekers geen tijd, want ook anders sloot SeaWorld in de herfst van 2026 op zaterdag en zondag om 19 uur, door de week al om 17 uur. In de reisplanner telt een dag met een feestavond als een kortere parkdag, en zet je “Avondshows” op “Wil ik zien”, dan valt geen parkdag meer op een feestavond.
 
-Een orkaanseizoen heeft Zuid-Californië niet. De meeste regen valt in de winter: volgens de klimaatnormalen voor Disneyland ongeveer 90 millimeter in januari, 71 in december, 64 in februari en 67 in maart, van juni tot oktober telkens minder dan tien. Heet wordt het vooral landinwaarts, in Magic Mountain en, iets minder, bij Universal, waar augustus gemiddeld 32,1 °C haalt. De parken rond San Diego blijven in de zomer rond de 26 °C overdag, en in augustus is het in SeaWorld gemiddeld koeler dan in juni in Disneyland.
+Een orkaanseizoen heeft Zuid-Californië niet. De meeste regen valt van december tot maart, volgens de klimaatnormalen voor Disneyland 64 tot 90 millimeter per maand, het meest in januari, van juni tot oktober telkens minder dan tien. Net als Magic Mountain ligt Universal landinwaarts, en daar haalt augustus gemiddeld 32,1 °C. De parken rond San Diego blijven in de zomer rond de 26 °C overdag, en in augustus is het in SeaWorld gemiddeld koeler dan in juni in Disneyland.
 
-Tussen Thanksgiving en de kerstvakantie, van 30 november tot en met 18 december 2026, hebben de scholen in Los Angeles geen vrije dagen, en de voorspelling voor die weken staat dag voor dag in de [drukte-kalender van Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park?calendar).
+Tussen Thanksgiving en de kerstvakantie, van 30 november tot en met 18 december 2026, hebben de scholen in Los Angeles geen vrije dagen.
 
 ```best-days-widget slug=/parks/north-america/united-states/anaheim/disneyland-park
 
@@ -264,17 +262,17 @@ Tussen Thanksgiving en de kerstvakantie, van 30 november tot en met 18 december 
 
 Het getal in elk vakje is de **piekwachttijd**: de voorspelde wachttijd bij de grote attracties van een park, elk op zijn drukste moment van de dag, gemiddeld. 's Ochtends en 's avonds sta je korter in de rij.
 
-De kleur meet de dag aan een gewone dag van hetzelfde park. Een groen Disneyland is een rustige Disneyland-dag, en of je daar toch langer in de rij staat dan bij Knott's, lees je af aan de minuten.
+Voor de kleur vergelijken we de dag met een [gewone dag in hetzelfde park](/hoe-park-fan-werkt). Een groen Disneyland is een rustige Disneyland-dag, en of je daar toch langer in de rij staat dan bij Knott's, lees je af aan de minuten.
 
-De ring markeert in het Disneyland Resort het park met de laagste piekwachttijd. Sluit een van de twee eerder voor dagbezoekers, bijvoorbeeld op een avond van de Oogie Boogie Bash, en liggen de getallen dicht bij elkaar, dan gaat de ring naar het park dat langer open is. Hoe we meten en hoe ver de voorspelling reikt, staat in [Hoe park.fan werkt](/hoe-park-fan-werkt).
+De ring markeert in het Disneyland Resort het park met de laagste piekwachttijd. Sluit een van de twee eerder voor dagbezoekers, bijvoorbeeld op een avond van de Oogie Boogie Bash, en liggen de getallen dicht bij elkaar, dan gaat de ring naar het park dat langer open is.
 
 ## Hoe je de dagen verdeelt
 
-De twee Disney-parken hebben de meeste dagen nodig, en met het ticket voor 2 tot 5 dagen hoef je ze niet achter elkaar te zetten. Dertien dagen vanaf het eerste bezoek laten ruimte voor Universal, Knott's en rustdagen daartussen. Met Park Hopper wissel je op dezelfde dag naar het andere park, bijvoorbeeld voor World of Color 's avonds. Sluit California Adventure op een avond van de Oogie Boogie Bash eerder voor dagbezoekers, dan ga je met Park Hopper voor de rest van de avond naar Disneyland.
+Voor de twee Disney-parken raadt Disney in de Parks Blog drie dagen of meer aan. De avond met World of Color in California Adventure plak je met Park Hopper aan een dag in Disneyland. Sluit California Adventure op een avond van de Oogie Boogie Bash eerder voor dagbezoekers, dan ga je met Park Hopper voor de rest van de avond naar Disneyland.
 
 Universal Studios Hollywood is één dag, met het 2-dagenticket twee binnen een week. Vanaf Universal ligt Magic Mountain het dichtst bij, dus slaap je in Universal City, neem die twee dan op opeenvolgende dagen. De drie parken rond San Diego krijgen elk een dag, en Sesame Place zet je buiten de zomer en de vakantieweken op een zaterdag of zondag. In de winter valt LEGOLAND daarbij niet op een woensdag.
 
-Welk park op welke dag valt, stelt de [reisplanner](/californie#planner) je voor, met feestavonden, sluitingsdagen en hitte meegerekend. Elk park komt op de dag van je reis met de laagste piekwachttijd.
+In de [reisplanner](/californie#planner) geef je je reisdagen en je hotelbuurt op, en elk park komt op de dag met zijn laagste piekwachttijd, met feestavonden, sluitingsdagen en hitte meegerekend.
 
 ```cta-widget
 href: /californie#planner
