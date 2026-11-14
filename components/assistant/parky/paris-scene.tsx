@@ -8,7 +8,8 @@ import {
   HolidayMitten,
   HolidayParky,
   HolidaySceneSvg,
-  motionOnce,
+  LOOPING,
+  sceneMotion,
 } from './holiday-parky';
 
 /**
@@ -19,11 +20,20 @@ import {
  * cup is on the table, the windows and the lamp are lit, and the tower, golden, sparkles while he
  * looks up at it in wonder. Built from the live Parky's pieces through `HolidayParky`, in the
  * 320 × 160 frame of the Orlando scene. Decoration: `aria-hidden`; the steam rises and the tower
- * sparkles once (`MOTION` below), and under reduced motion the tower stands lit with a few glints.
+ * sparkles as it is shown, and where it loops the tower glitters on like its hourly light show
+ * while the beacon at its top sweeps the sky (`MOTION` below). Under reduced motion the tower
+ * stands lit with a few glints.
  */
 
-/** The moves, each once: steam off the cup by day, the tower's sparkle in the evening. */
-const MOTION = motionOnce(`
+/**
+ * The moves. Each time it is shown the steam rises off the cup by day, and in the evening glints
+ * run up the tower and a few stay lit. Looping, the evening's tower glitters: sets of white
+ * lights flash on beats of their own, as its bulbs do for five minutes every hour after dark,
+ * and the beacon's two beams turn, each drawn as long as it reaches sideways from where we look,
+ * a quarter turn apart. By day the steam goes on rising, the clouds drift and the boat rocks.
+ */
+const MOTION = sceneMotion(
+  `
 .parky-paris-steam { stroke-dasharray: 1; animation: parky-paris-steam 2s ease-out both; }
 .parky-paris-glint { transform-box: fill-box; transform-origin: center;
   animation: parky-paris-glint 1.4s ease-in-out both; }
@@ -33,7 +43,31 @@ const MOTION = motionOnce(`
   35% { opacity: 1; transform: scale(1.25); } to { opacity: 0; transform: scale(.3); } }
 @keyframes parky-paris-glint-stays { from { opacity: 0; transform: scale(.2); }
   35% { opacity: 1; transform: scale(1.25); } }
-`);
+`,
+  `
+${LOOPING} .parky-paris-twinkle { animation: parky-paris-twinkle 1.6s linear infinite; }
+${LOOPING} .parky-paris-beam { transform-box: view-box; transform-origin: 0 0;
+  animation: parky-paris-beam 9s infinite; }
+${LOOPING} .parky-paris-beam--second { animation-delay: -2.25s; }
+${LOOPING} .parky-paris-wisp { animation: parky-paris-wisp 2.8s 2s infinite; }
+${LOOPING} .parky-paris-clouds { animation: parky-paris-clouds 14s ease-in-out infinite alternate; }
+${LOOPING} .parky-paris-boat { animation: parky-paris-boat 2.6s ease-in-out infinite alternate; }
+@keyframes parky-paris-twinkle { 0%, 16%, 100% { opacity: 0; } 5% { opacity: 1; } }
+@keyframes parky-paris-beam {
+  0% { opacity: 1; transform: scaleX(1); animation-timing-function: cubic-bezier(.12,0,.39,0); }
+  25% { transform: scaleX(0); animation-timing-function: cubic-bezier(.61,1,.88,1); }
+  50% { transform: scaleX(-1); animation-timing-function: cubic-bezier(.12,0,.39,0); }
+  75% { transform: scaleX(0); animation-timing-function: cubic-bezier(.61,1,.88,1); }
+  100% { opacity: 1; transform: scaleX(1); } }
+@keyframes parky-paris-wisp {
+  0% { opacity: 1; transform: translateY(0); animation-timing-function: ease-in; }
+  55% { opacity: 0; transform: translateY(-1.8px); animation-timing-function: step-end; }
+  60% { opacity: 0; transform: translateY(.8px); animation-timing-function: ease-out; }
+  100% { opacity: 1; transform: translateY(0); } }
+@keyframes parky-paris-clouds { to { transform: translateX(6px); } }
+@keyframes parky-paris-boat { from { transform: translateY(0); } to { transform: translateY(.5px); } }
+`
+);
 
 /** The tower's outline, ground to antenna, with its arch and the window under the second floor. */
 const TOWER =
@@ -61,6 +95,78 @@ const GLINTS = [
   { x: 164, y: 24, stay: false },
   { x: 164, y: 15, stay: true },
 ] as const;
+
+/** How wide the tower is either side of its axis at a height, from its outline, ground to spire. */
+const TOWER_AXIS = 164;
+const TOWER_WIDTHS = [
+  [98, 16.5],
+  [84.2, 9.6],
+  [68.6, 5.4],
+  [26.2, 2],
+  [21.6, 0.4],
+  [14, 0.2],
+] as const;
+function towerHalfWidth(y: number): number {
+  const below = TOWER_WIDTHS.findIndex(([at]) => at <= y);
+  if (below <= 0) return below === 0 ? TOWER_WIDTHS[0][1] : 0;
+  const [y0, w0] = TOWER_WIDTHS[below - 1];
+  const [y1, w1] = TOWER_WIDTHS[below];
+  return w1 + ((w0 - w1) * (y - y1)) / (y0 - y1);
+}
+
+/** A small four-pointed star round a point, as a path of its own: one light of the glitter. */
+function sparkle(x: number, y: number, r = 1.2): string {
+  const f = (n: number) => +n.toFixed(2);
+  const k = r * 0.29;
+  const corners = [
+    [0, -r],
+    [k, -k],
+    [r, 0],
+    [k, k],
+    [0, r],
+    [-k, k],
+    [-r, 0],
+    [-k, -k],
+  ];
+  return `M${corners.map(([dx, dy]) => `${f(x + dx)} ${f(y + dy)}`).join('L')}Z`;
+}
+
+/**
+ * The tower's glitter: forty lights scattered over its iron, more where it is wide, none in the
+ * arch under the first floor or the window under the second, dealt into eight sets, each set one
+ * path with its own beat and start. A set's lights lie all over the tower, so the sets flashing in
+ * turn read as lights flashing at random; one animation per set rather than per light keeps the
+ * work per frame small. A fixed sequence, not `Math.random`, so the server and the browser draw
+ * the same lights.
+ */
+const TWINKLES = (() => {
+  let seed = 7;
+  const next = () => {
+    seed = (seed * 16807) % 2147483647;
+    return seed / 2147483647;
+  };
+  const count = 40;
+  const sets = Array.from({ length: 8 }, () => {
+    const beat = 1.1 + next() * 1.2;
+    return { beat: +beat.toFixed(2), start: +(-next() * beat).toFixed(2), d: '' };
+  });
+  let placed = 0;
+  for (let i = 0; placed < count && i < count * 4; i++) {
+    const y = 16 + 81 * Math.sqrt((placed + next()) / count);
+    const reach = Math.max(0, towerHalfWidth(y) - 0.6);
+    const x = TOWER_AXIS + (2 * next() - 1) * reach;
+    const off = Math.abs(x - TOWER_AXIS);
+    const inArch = y > 88.6 && off < 9.4 * Math.sqrt((y - 88.6) / 9.4) + 0.8;
+    const inWindow = y > 75 && y < 82.4 && off < 5.6;
+    if (inArch || inWindow) continue;
+    sets[placed % sets.length].d += sparkle(x, y);
+    placed++;
+  }
+  return sets;
+})();
+
+/** One of the beacon's beams, from its lamp out to the right, rising a little and widening. */
+const BEAM = 'M0-.5 150-13V1L0 .5Z';
 
 /** The trees of the park at the tower's foot. */
 const TREES = [
@@ -150,16 +256,18 @@ function CupInHand({ ground }: { ground: string }) {
       <g transform="translate(43.4 37.4)">
         <CafeCup />
       </g>
-      <path
-        className="parky-paris-steam"
-        d="M42.6 30.6Q41.4 28.6 42.6 26.8T42.4 22.6M44.6 30.4Q45.8 28.4 44.6 26.6T44.8 23.4"
-        pathLength={1}
-        fill="none"
-        stroke="white"
-        strokeOpacity=".85"
-        strokeWidth=".7"
-        strokeLinecap="round"
-      />
+      <g className="parky-paris-wisp">
+        <path
+          className="parky-paris-steam"
+          d="M42.6 30.6Q41.4 28.6 42.6 26.8T42.4 22.6M44.6 30.4Q45.8 28.4 44.6 26.6T44.8 23.4"
+          pathLength={1}
+          fill="none"
+          stroke="white"
+          strokeOpacity=".85"
+          strokeWidth=".7"
+          strokeLinecap="round"
+        />
+      </g>
       <HolidayMitten ground={ground} x={42.6} y={39.2} />
     </g>
   );
@@ -321,16 +429,17 @@ function Parky({ ground, evening }: { ground: string; evening: boolean }) {
 }
 
 /** The Paris scene, filling its box from the right edge (`xMaxYMid slice`). */
-export function ParkyParisScene({ className }: TripRegionSceneProps) {
+export function ParkyParisScene({ className, loop }: TripRegionSceneProps) {
   const id = useId();
   const sky = `${id}sky`;
   const river = `${id}river`;
   const lattice = `${id}lattice`;
   const weave = `${id}weave`;
   const glow = `${id}glow`;
+  const beam = `${id}beam`;
   const ground = `${id}ground`;
   return (
-    <HolidaySceneSvg className={className} motion={MOTION}>
+    <HolidaySceneSvg className={className} motion={MOTION} loop={loop}>
       <defs>
         <linearGradient id={sky} x1="0" y1="0" x2="0" y2="100" gradientUnits="userSpaceOnUse">
           <stop
@@ -374,6 +483,10 @@ export function ParkyParisScene({ className }: TripRegionSceneProps) {
             className="fill-[oklch(0.56_0.16_25)] dark:fill-[oklch(0.3_0.08_20)]"
           />
         </pattern>
+        <linearGradient id={beam} x1="0" y1="0" x2="150" y2="0" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stopColor="oklch(0.97 0.05 90)" stopOpacity=".55" />
+          <stop offset="1" stopColor="oklch(0.97 0.05 90)" stopOpacity="0" />
+        </linearGradient>
         <radialGradient id={glow}>
           <stop offset="0" stopColor="oklch(0.88 0.14 80)" stopOpacity=".7" />
           <stop offset=".5" stopColor="oklch(0.82 0.14 70)" stopOpacity=".22" />
@@ -385,7 +498,7 @@ export function ParkyParisScene({ className }: TripRegionSceneProps) {
       <rect width="320" height="160" fill={`url(#${sky})`} />
 
       {/* Day: soft clouds. Evening: a crescent moon, a few stars. */}
-      <g className="dark:hidden" fill="white" opacity=".85">
+      <g className="parky-paris-clouds dark:hidden" fill="white" opacity=".85">
         <ellipse cx="66" cy="28" rx="15" ry="4.4" />
         <ellipse cx="74" cy="24.4" rx="8" ry="4.6" />
         <ellipse cx="59" cy="25.4" rx="6" ry="3.4" />
@@ -398,6 +511,16 @@ export function ParkyParisScene({ className }: TripRegionSceneProps) {
           <path d={STAR} transform="translate(60 14) scale(.6) translate(-17 -3)" />
           <path d={STAR} transform="translate(210 26) scale(.55) translate(-17 -3)" />
           <path d={STAR} transform="translate(26 34) scale(.5) translate(-17 -3)" />
+        </g>
+      </g>
+
+      {/* The beacon at the top, only while the scene loops. */}
+      <g className="hidden dark:inline" transform={`translate(${TOWER_AXIS} 15)`}>
+        <g className="parky-paris-beam" opacity="0">
+          <path d={BEAM} fill={`url(#${beam})`} />
+        </g>
+        <g className="parky-paris-beam parky-paris-beam--second" opacity="0">
+          <path d={BEAM} fill={`url(#${beam})`} />
         </g>
       </g>
 
@@ -438,6 +561,15 @@ export function ParkyParisScene({ className }: TripRegionSceneProps) {
               <path d={STAR} transform="translate(-17 -3)" />
             </g>
           </g>
+        ))}
+        {TWINKLES.map((set) => (
+          <path
+            key={set.d}
+            className="parky-paris-twinkle"
+            d={set.d}
+            opacity="0"
+            style={{ animationDuration: `${set.beat}s`, animationDelay: `${set.start}s` }}
+          />
         ))}
       </g>
 
@@ -505,7 +637,9 @@ export function ParkyParisScene({ className }: TripRegionSceneProps) {
         strokeLinecap="round"
         className="hidden dark:inline"
       />
-      <TourBoat />
+      <g className="parky-paris-boat">
+        <TourBoat />
+      </g>
       <path
         d="M-2 117H322V121H-2Z"
         className="fill-[oklch(0.86_0.03_75)] dark:fill-[oklch(0.36_0.04_305)]"

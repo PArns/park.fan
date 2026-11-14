@@ -141,7 +141,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `HolidayMitten` _component_: One of his hands: a round mitten in his own colours, as the umbrella's in `looks.tsx`.
 - `HolidayGround` _component_: His body's gradient, blue to green, under the id a scene gives it.
 - `HolidaySceneSvg` _component_: A scene's root, the region scenes' and `ParkyBreakScene`'s: the 320 × 160 frame, filling its box from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's text.
-- `motionOnce` _function_: A scene's stylesheet from its moves: they play once each time the band shows and only where the reader allows motion, since the band is glass and nothing may run on under a `backdrop-filter`.
+- `sceneMotion` _function_: A scene's stylesheet: `entrance`, the moves it plays each time it is shown, and `loop`, the rules under `LOOPING` that keep it moving for as long as it is shown where it is asked to loop.
+- `LOOPING` _const_: The selector every looping rule of a scene starts with: the root `HolidaySceneSvg` marks when it is asked to `loop`. A scene's `<style>` applies to the whole document, so the loop is keyed to its own root rather than to where it stands.
 - Types: `HolidayEyes`, `HolidayMouth`
 
 ### [`parky/japan-scene.tsx`](../../components/assistant/parky/japan-scene.tsx)

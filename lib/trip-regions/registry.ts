@@ -20,14 +20,19 @@ import { SOUTHERN_CALIFORNIA } from './regions/southern-california';
 
 /**
  * What a region's illustration receives. The scene is decoration: its root `<svg>` carries
- * `aria-hidden` and `focusable="false"`, any motion it has plays once and only under
- * `prefers-reduced-motion: no-preference` (the band is glass, and nothing may run on under a
- * `backdrop-filter`), it takes its colours from Tailwind classes with `dark:` twins so it follows
- * the theme, and its gradient ids are its own, since the band stays in the document beside every
- * other drawing on the page.
+ * `aria-hidden` and `focusable="false"`, its motion plays only under
+ * `prefers-reduced-motion: no-preference` and comes to rest on the finished picture, it takes its
+ * colours from Tailwind classes with `dark:` twins so it follows the theme, and its gradient ids
+ * are its own, since the band stays in the document beside every other drawing on the page.
  */
 export interface TripRegionSceneProps {
   className?: string;
+  /**
+   * Keep moving after the entrance, for as long as the scene is shown: the header's planner band
+   * asks for it, and the band is `display: none` whenever it is closed, which stops every
+   * animation in it. Everywhere else the scene plays its entrance and stands still.
+   */
+  loop?: boolean;
 }
 
 /** A region's illustration as a lazily loaded module, so its markup is in no page's HTML. */

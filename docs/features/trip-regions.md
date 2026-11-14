@@ -186,8 +186,8 @@ least height), fading into the ground to its
 left as `ParkBreakPanel`'s picture does. The box is the scene's reservation, so nothing moves when
 the scene arrives: `RegionSceneInView` fetches the scene's chunk after the page's `load`
 (`useAfterLoad`) and once the tile is within `LazyMount`'s margin of the screen, and fades it in.
-The scene keeps its own rules: day in the light theme, evening in the dark one, its moves once and
-none under reduced motion. Parky's bubble counts the tile's links as controls (`coversControl`
+The scene keeps its own rules: day in the light theme, evening in the dark one, its entrance once
+and none under reduced motion; it loops only in the header's planner band. Parky's bubble counts the tile's links as controls (`coversControl`
 reads `a[data-slot="button"]`, and the card's cover is the plan link), so it waits until the tile
 has left the corner.
 
