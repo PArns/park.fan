@@ -1,9 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react';
+import { useId, useMemo, useState, type ReactNode } from 'react';
 import { ArrowDownRight, ArrowUpRight, ExternalLink, Minus, Plus } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useWidth } from '@/lib/hooks/use-width';
 import { formatCount, formatShare, type TrafficDelta } from '@/lib/admin/site-analytics';
 import { formatPeriodAxis, formatPeriodLong } from '@/lib/admin/traffic-range';
 import { formatPlotted, type MetricUnit } from '@/lib/admin/traffic-series';
@@ -138,21 +139,6 @@ export function Sparkline({
       />
     </svg>
   );
-}
-
-/** The width of an element, kept current with a `ResizeObserver`, so SVG text is drawn at its size. */
-export function useWidth<T extends HTMLElement>(): [React.RefObject<T | null>, number] {
-  const ref = useRef<T>(null);
-  const [width, setWidth] = useState(0);
-  useEffect(() => {
-    const element = ref.current;
-    if (!element) return;
-    // The observer reports once when it starts watching, so no measuring is needed here.
-    const observer = new ResizeObserver(([entry]) => setWidth(Math.round(entry.contentRect.width)));
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
-  return [ref, width];
 }
 
 /**

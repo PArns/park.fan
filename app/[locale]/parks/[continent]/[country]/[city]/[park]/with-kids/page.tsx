@@ -46,6 +46,8 @@ import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 interface ParkKidsPageProps {
   params: Promise<{
@@ -271,6 +273,7 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
               city={city}
               parkSlug={parkSlug}
               parkPath={parkPath}
+              seasons={eventSeasonsNearToday(seasons, parkDayOf(new Date(), park.timezone))}
             />
           }
           tiles={

@@ -1419,6 +1419,8 @@
       "reasonWeather": "Niederschlag",
       "reasonHoliday": "Feiertage und Ferien",
       "reasonPrice": "Tagesticket",
+      "reasonSeason": "Saison",
+      "noSeason": "Reguläre Saison",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {keine} one {# Merkmal} other {# Merkmale}}",
       "unitSteps": "{value, plural, one {# Stufe} other {# Stufen}}",
@@ -3928,7 +3930,9 @@
         "hintNoEarly": "{hint}, ohne früheren Einlass",
         "area": "In welcher Gegend?",
         "areaLead": "Die Minuten auf den Karten sind die Wege zu deinen Parks.",
-        "areaOfHotel": "Dein Hotel liegt in der Gegend {area}, deshalb ist sie schon gewählt."
+        "areaOfHotel": "Dein Hotel liegt in der Gegend {area}, deshalb ist sie schon gewählt.",
+        "mapPark": "Park",
+        "mapArea": "Gegend"
       },
       "route": {
         "arrive": "Wo kommst du an?",

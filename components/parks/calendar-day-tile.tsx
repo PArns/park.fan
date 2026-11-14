@@ -14,6 +14,9 @@ import {
 } from '@/lib/utils/crowd-level-styles';
 import { SEASON_ICON_QUIET_CLASS, SeasonKindIcon } from './season-kind-icon';
 
+/** A season mark that should stand out: on the page's own surface, so it reads on any crowd tile. */
+const SEASON_CHIP_CLASS = 'bg-background/70 rounded-full px-1 py-px';
+
 /** One season kind a tile marks: its icon, quiet or on a chip, and the seasons it stands for. */
 export interface TileSeasonMark {
   kind: SeasonEventKind;
@@ -86,6 +89,7 @@ export function CalendarDayTile({
   const ink = level ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground';
   const isToday = !compact && !!date?.today;
 
+  // At full size from `lg` the season's name has a line of its own, which carries the icon instead.
   const marks = seasons.map((mark) => (
     <span
       key={mark.kind}
@@ -94,8 +98,10 @@ export function CalendarDayTile({
       title={mark.label}
       data-calendar-season={mark.kind}
       className={cn(
-        'inline-flex shrink-0 items-center',
-        !mark.quiet && 'bg-background/70 rounded-full px-1 py-px'
+        compact
+          ? 'inline-flex shrink-0 items-center'
+          : 'inline-flex shrink-0 items-center lg:hidden',
+        !mark.quiet && SEASON_CHIP_CLASS
       )}
     >
       <SeasonKindIcon
@@ -230,6 +236,31 @@ export function CalendarDayTile({
         {chips}
         <span className="truncate">{status}</span>
       </div>
+
+      {/* The season by name, where the week grid's tile has the height for a line between the
+          crowd level and the floor; the two-column list below `lg` and the compact tile keep the
+          icon alone. Quiet like the icon: a month of Wintertraum is a month of this line, in the
+          floor's grey. */}
+      {!compact && seasons.length > 0 && (
+        <div className="mt-1.5 hidden min-w-0 flex-col items-start gap-0.5 text-[10.5px] lg:flex">
+          {seasons.map((mark) => (
+            <span
+              key={mark.kind}
+              data-calendar-season-name={mark.kind}
+              className={cn(
+                'flex max-w-full min-w-0 items-center gap-1 font-medium',
+                mark.quiet ? 'text-muted-foreground' : cn('text-foreground', SEASON_CHIP_CLASS)
+              )}
+            >
+              <SeasonKindIcon
+                kind={mark.kind}
+                className={mark.quiet ? SEASON_ICON_QUIET_CLASS : undefined}
+              />
+              <span className="truncate">{mark.label}</span>
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Hours and weather sit on the cell's floor so a row lines them up. Below `lg` they share a
           line; stacked, they would cost a phone row a third of its height. */}

@@ -1419,6 +1419,8 @@
       "reasonWeather": "Précipitations",
       "reasonHoliday": "Jours fériés et vacances",
       "reasonPrice": "Billet à la journée",
+      "reasonSeason": "Saison",
+      "noSeason": "Saison normale",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {aucun} one {# critère} other {# critères}}",
       "unitSteps": "{value, plural, one {# niveau} other {# niveaux}}",
@@ -3928,7 +3930,9 @@
         "hintNoEarly": "{hint}, sans entrée anticipée",
         "area": "Dans quel quartier ?",
         "areaLead": "Les minutes sur les cartes sont les trajets vers tes parcs.",
-        "areaOfHotel": "Ton hôtel est dans le quartier {area}, il est donc déjà choisi."
+        "areaOfHotel": "Ton hôtel est dans le quartier {area}, il est donc déjà choisi.",
+        "mapPark": "Parc",
+        "mapArea": "Quartier"
       },
       "route": {
         "arrive": "Où arrives-tu ?",

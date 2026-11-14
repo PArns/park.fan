@@ -1419,6 +1419,8 @@
       "reasonWeather": "Precipitazioni",
       "reasonHoliday": "Festivi e vacanze",
       "reasonPrice": "Biglietto giornaliero",
+      "reasonSeason": "Stagione",
+      "noSeason": "Stagione normale",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {nessuno} one {# indicatore} other {# indicatori}}",
       "unitSteps": "{value, plural, one {# livello} other {# livelli}}",
@@ -3928,7 +3930,9 @@
         "hintNoEarly": "{hint}, senza ingresso anticipato",
         "area": "In quale zona?",
         "areaLead": "I minuti sulle schede sono i tragitti verso i tuoi parchi.",
-        "areaOfHotel": "Il tuo hotel è nella zona {area}, quindi è già scelta."
+        "areaOfHotel": "Il tuo hotel è nella zona {area}, quindi è già scelta.",
+        "mapPark": "Parco",
+        "mapArea": "Zona"
       },
       "route": {
         "arrive": "Dove arrivi?",

@@ -1419,6 +1419,8 @@
       "reasonWeather": "Rainfall",
       "reasonHoliday": "Holidays and school breaks",
       "reasonPrice": "Day ticket",
+      "reasonSeason": "Season",
+      "noSeason": "Regular season",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {none} one {# marker} other {# markers}}",
       "unitSteps": "{value, plural, one {# level} other {# levels}}",
@@ -3928,7 +3930,9 @@
         "hintNoEarly": "{hint}, no early entry",
         "area": "Which area?",
         "areaLead": "The minutes on the cards are the ways to your parks.",
-        "areaOfHotel": "Your hotel is in {area}, so that area is already chosen."
+        "areaOfHotel": "Your hotel is in {area}, so that area is already chosen.",
+        "mapPark": "Park",
+        "mapArea": "Area"
       },
       "route": {
         "arrive": "Where do you arrive?",

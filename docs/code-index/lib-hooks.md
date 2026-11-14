@@ -343,3 +343,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`use-weather-nowcast.ts`](../../lib/hooks/use-weather-nowcast.ts)
 
 - `useWeatherNowcast` _hook_: Live short-term weather nowcast for a park. - Server response is cached 15 min (max-age=900).
+
+### [`use-width.ts`](../../lib/hooks/use-width.ts)
+
+- `useWidth` _hook_: The width of an element, kept current with a `ResizeObserver`, so SVG text is drawn at its size: the admin's charts and the trip planner's area map. `0` until the first report.

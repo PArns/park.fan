@@ -15,6 +15,7 @@
  */
 
 import type { CalendarDay } from '@/lib/api/types';
+import type { SeasonOnDay } from '@/lib/parks/park-season-days';
 
 /** The calendar comparison state for one park. */
 export interface DayComparisonSelection {
@@ -26,6 +27,11 @@ export interface DayComparisonSelection {
   /** The picked days, in pick order, at most two. The first is the left column. */
   days: readonly CalendarDay[];
   /**
+   * The event seasons of each picked day, by date. Taken at the pick for the same reason as
+   * {@link days}: the page's `seasonDaysOfMonth` covers only the month on screen.
+   */
+  seasons: Readonly<Record<string, readonly SeasonOnDay[]>>;
+  /**
    * The pair whose comparison the reader already closed, as `date|date`, or `null`. Kept here
    * because the grid unmounts on a month change and a dismissal held there would reopen. Cleared
    * by every write that changes the picks.
@@ -33,11 +39,15 @@ export interface DayComparisonSelection {
   dismissed: string | null;
 }
 
+/** No seasons on any pick; one frozen object, so an empty selection keeps its identity. */
+const NO_SEASONS: DayComparisonSelection['seasons'] = Object.freeze({});
+
 /** The answer for a park with nothing going on; one frozen object, so identity is stable. */
 const IDLE: DayComparisonSelection = Object.freeze({
   parkSlug: '',
   active: false,
   days: Object.freeze([]) as readonly CalendarDay[],
+  seasons: NO_SEASONS,
   dismissed: null,
 });
 
@@ -69,32 +79,31 @@ export const dayComparisonStore = {
   /** Turn comparison mode on or off. Off drops the picks, so re-entering the mode does not light
    *  two cells for a comparison nobody is in the middle of. */
   setActive(parkSlug: string, active: boolean): void {
-    commit(active ? { parkSlug, active: true, days: [], dismissed: null } : IDLE);
+    commit(
+      active ? { parkSlug, active: true, days: [], seasons: NO_SEASONS, dismissed: null } : IDLE
+    );
   },
   /**
    * Pick a day, or take it back. A picked day is unpicked, a first or second is appended, and a
-   * third replaces the OLDER of the two, so swapping one day is one click.
+   * third replaces the OLDER of the two, so swapping one day is one click. `seasons` are the event
+   * seasons the grid marks on that day.
    */
-  toggle(parkSlug: string, day: CalendarDay): void {
-    const base =
+  toggle(parkSlug: string, day: CalendarDay, seasons: readonly SeasonOnDay[] = []): void {
+    const base: DayComparisonSelection =
       current.parkSlug === parkSlug && current.active
         ? current
-        : { parkSlug, active: true, days: [] as readonly CalendarDay[], dismissed: null };
-    if (base.days.some((d) => d.date === day.date)) {
-      commit({
-        parkSlug,
-        active: true,
-        days: base.days.filter((d) => d.date !== day.date),
-        dismissed: null,
-      });
-      return;
-    }
-    const kept = base.days.length >= 2 ? base.days.slice(1) : base.days;
-    commit({ parkSlug, active: true, days: [...kept, day], dismissed: null });
+        : { parkSlug, active: true, days: [], seasons: NO_SEASONS, dismissed: null };
+    const days = base.days.some((d) => d.date === day.date)
+      ? base.days.filter((d) => d.date !== day.date)
+      : [...(base.days.length >= 2 ? base.days.slice(1) : base.days), day];
+    // Rebuilt from the kept days, so a day that left the selection takes its seasons with it.
+    const kept: Record<string, readonly SeasonOnDay[]> = {};
+    for (const d of days) kept[d.date] = d === day ? seasons : (base.seasons[d.date] ?? []);
+    commit({ parkSlug, active: true, days, seasons: kept, dismissed: null });
   },
   /** Drop the picks and stay in comparison mode („Auswahl aufheben"). */
   clearDays(parkSlug: string): void {
-    commit({ parkSlug, active: true, days: [], dismissed: null });
+    commit({ parkSlug, active: true, days: [], seasons: NO_SEASONS, dismissed: null });
   },
   /**
    * Remember that this pair's comparison was closed, or forget it with `null`. A no-op for another

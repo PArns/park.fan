@@ -1419,6 +1419,8 @@
       "reasonWeather": "Neerslag",
       "reasonHoliday": "Feestdagen en vakanties",
       "reasonPrice": "Dagticket",
+      "reasonSeason": "Seizoen",
+      "noSeason": "Regulier seizoen",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {geen} one {# kenmerk} other {# kenmerken}}",
       "unitSteps": "{value, plural, one {# niveau} other {# niveaus}}",
@@ -3928,7 +3930,9 @@
         "hintNoEarly": "{hint}, zonder vroege toegang",
         "area": "In welke buurt?",
         "areaLead": "De minuten op de kaarten zijn de wegen naar je parken.",
-        "areaOfHotel": "Je hotel ligt in {area}, dus die buurt is al gekozen."
+        "areaOfHotel": "Je hotel ligt in {area}, dus die buurt is al gekozen.",
+        "mapPark": "Park",
+        "mapArea": "Buurt"
       },
       "route": {
         "arrive": "Waar kom je aan?",
