@@ -6,7 +6,7 @@ import type { CalendarDay } from '@/lib/api/types';
 import type { RideInWorks } from '@/lib/utils/works-period';
 import { seasonMarks, type SeasonOnDay } from '@/lib/parks/park-season-days';
 import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
-import { SeasonKindIcon } from './season-kind-icon';
+import { SEASON_ICON_QUIET_CLASS, SeasonKindIcon } from './season-kind-icon';
 import { useSeasonLabel } from './season-headline';
 import { Card } from '@/components/ui/card';
 import { useTranslations, useLocale } from 'next-intl';
@@ -297,7 +297,7 @@ function ParkCalendarDayComponent({
             >
               <SeasonKindIcon
                 kind={mark.kind}
-                className={mark.quiet ? 'text-current opacity-60 dark:text-current' : undefined}
+                className={mark.quiet ? SEASON_ICON_QUIET_CLASS : undefined}
               />
             </span>
           );

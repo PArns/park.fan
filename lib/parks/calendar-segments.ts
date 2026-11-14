@@ -223,6 +223,26 @@ export function shiftParkCalendarMonth(
   return { year: Math.floor(zero / 12), month: (zero % 12) + 1 };
 }
 
+/**
+ * Every month the calendar serves around `now`, oldest first: the month index's chips, and the
+ * window the page reads their seasons for. Shifted from `now`, so December → January wraps the
+ * year exactly as the route's own range check does.
+ */
+export function parkCalendarMonthsShown(
+  now: ParkCalendarMonth,
+  coverageTo?: string | null
+): ParkCalendarMonth[] {
+  const months: ParkCalendarMonth[] = [];
+  for (
+    let offset = -parkCalendarMonthsBack(now);
+    offset <= parkCalendarMonthsForward(now, coverageTo);
+    offset++
+  ) {
+    months.push(shiftParkCalendarMonth(now, offset));
+  }
+  return months;
+}
+
 /** Whether a month is inside the window the route serves, so prev/next links never point at a
  *  404. Pass `scheduleCoverage.to` as `coverageTo` wherever the park payload is in scope; without
  *  it the forward edge is the fixed span. */

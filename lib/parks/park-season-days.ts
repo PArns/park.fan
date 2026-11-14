@@ -78,11 +78,21 @@ export function eventSeasonsOn<T extends ParkSeason>(
 }
 
 /**
- * Whether the month's day statuses decide anything: only a season without single dates, which
+ * Whether a month's day statuses decide anything: only a season in it without single dates, which
  * skips the closed days, needs them. The calendar page waits for them only then.
  */
-export function seasonsNeedDayStatus(seasons: readonly ParkSeason[]): boolean {
-  return seasons.some((season) => isSeasonEvent(season) && !season.dates?.length);
+export function seasonsNeedDayStatus(
+  seasons: readonly ParkSeason[],
+  month: ParkCalendarMonth
+): boolean {
+  const { from, to } = parkCalendarMonthRange(month);
+  return seasons.some(
+    (season) =>
+      isSeasonEvent(season) &&
+      !season.dates?.length &&
+      season.startDate <= to &&
+      season.endDate >= from
+  );
 }
 
 /** One event season on one calendar day, as the tile, the legend and the day's dialog draw it. */
@@ -147,10 +157,14 @@ export function seasonDaysOfMonth(
   return days;
 }
 
+/** The seasons a month's days carry, each once, in the order they first appear. */
+export function seasonsInMonth(days: SeasonDays): SeasonOnDay[] {
+  return [...new Map(Object.values(days).flatMap((list) => list.map((s) => [s.id, s]))).values()];
+}
+
 /** The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys. */
 export function seasonKindsIn(days: SeasonDays): SeasonEventKind[] {
-  const shown = new Set(Object.values(days).flatMap((list) => list.map((season) => season.kind)));
-  return SEASON_EVENT_KINDS.filter((kind) => shown.has(kind));
+  return seasonMarks(seasonsInMonth(days)).map((mark) => mark.kind);
 }
 
 /**

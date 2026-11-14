@@ -6,6 +6,9 @@ import { TILE_GLASS } from '@/components/common/glass-card';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { DaySignalKey } from '@/components/parks/day-signal-key';
 import { OutlookMonthStrip } from '@/components/parks/outlook-month-strip';
+import { SeasonMonthMarks } from '@/components/parks/season-headline';
+import { seasonDaysOfMonth, seasonsInMonth, type SeasonOnDay } from '@/lib/parks/park-season-days';
+import type { ParkSeason } from '@/lib/api/types';
 import { Link } from '@/i18n/navigation';
 import { getParkYearlyPredictions } from '@/lib/api/parks';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
@@ -57,6 +60,12 @@ interface ParkYearlyOutlookSectionProps extends OutlookCalendar {
   /** Today in the PARK's timezone, `YYYY-MM-DD` — the frame starts at this month. */
   todayIso: string;
   locale: string;
+  /**
+   * The park's seasons from today a year ahead, the list its season card shows. Each row marks its
+   * month's by the grid's rule; past the published schedule no day is known closed, so a season
+   * without dates covers its range.
+   */
+  seasons?: readonly ParkSeason[];
   className?: string;
 }
 
@@ -95,10 +104,13 @@ function OutlookMonthRow({
   locale,
   recommendedLabel,
   calendarHref,
+  seasons,
   muted = false,
 }: {
   month: OutlookMonth;
   locale: string;
+  /** The month's seasons, each once (`seasonsInMonth`). */
+  seasons: readonly SeasonOnDay[];
   /** Pre-formatted „12/31 recommended", or `null` for a month with no rated day. */
   recommendedLabel: string | null;
   /** The month in the wait-time calendar, or `null` where the calendar does not serve it. */
@@ -109,16 +121,21 @@ function OutlookMonthRow({
 
   return (
     <li className="flex flex-col gap-2 px-4 py-3 sm:flex-row sm:items-center sm:gap-4">
-      {calendarHref ? (
-        <Link
-          href={calendarHref}
-          className="truncate text-sm font-medium underline-offset-4 hover:underline sm:w-36 sm:shrink-0"
-        >
-          {label}
-        </Link>
-      ) : (
-        <span className="truncate text-sm font-medium sm:w-36 sm:shrink-0">{label}</span>
-      )}
+      {/* The month's season icons sit on the label's line, so a row is as tall with them as
+          without; the column is wide enough for „September 2027" and three. */}
+      <div className="flex min-w-0 items-center gap-2 sm:w-48 sm:shrink-0">
+        {calendarHref ? (
+          <Link
+            href={calendarHref}
+            className="truncate text-sm font-medium underline-offset-4 hover:underline"
+          >
+            {label}
+          </Link>
+        ) : (
+          <span className="truncate text-sm font-medium">{label}</span>
+        )}
+        <SeasonMonthMarks seasons={seasons} />
+      </div>
 
       <OutlookMonthStrip
         monthKey={month.key}
@@ -178,12 +195,15 @@ export async function YearlyOutlookFrame({
   locale,
   muted = false,
   calendar,
+  seasons = [],
   className,
 }: {
   months: OutlookMonth[];
   locale: string;
   muted?: boolean;
   calendar?: OutlookCalendar;
+  /** The park's seasons over the twelve months; each row marks its own. */
+  seasons?: readonly ParkSeason[];
   className?: string;
 }) {
   const t = await getTranslations('parks.yearlyOutlook');
@@ -231,6 +251,7 @@ export async function YearlyOutlookFrame({
               locale={locale}
               muted={muted}
               calendarHref={calendarHref(month)}
+              seasons={seasonsInMonth(seasonDaysOfMonth(seasons, month))}
               recommendedLabel={
                 month.ratedDays > 0
                   ? t('recommendedDays', {
@@ -274,6 +295,7 @@ export async function ParkYearlyOutlookSection({
   coverageTo,
   todayIso,
   locale,
+  seasons,
   className,
 }: ParkYearlyOutlookSectionProps) {
   const forecast = await withSeedTimeout(
@@ -310,6 +332,7 @@ export async function ParkYearlyOutlookSection({
       months={months}
       locale={locale}
       calendar={{ continent, country, city, parkSlug, coverageTo }}
+      seasons={seasons}
       className={className}
     />
   );

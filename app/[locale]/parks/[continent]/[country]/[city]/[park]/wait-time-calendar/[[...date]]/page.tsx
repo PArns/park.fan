@@ -28,6 +28,7 @@ import {
   currentParkCalendarMonth,
   isParkCalendarMonthInRange,
   parkCalendarMonthRange,
+  parkCalendarMonthsShown,
   parkCalendarPath,
   parseParkCalendarMonth,
   parseParkCalendarMonthSpelling,
@@ -272,20 +273,18 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // upstream call.
   const summaryMonth = month ?? nowMonth;
   const monthSeedPromise = getCalendarMonthSeed(continent, country, city, parkSlug, summaryMonth);
-  // The seasons the grid marks: the month's own window, because the list above starts today and a
-  // past day's Halloween has ended by then.
-  const monthSeasonsPromise = getParkSeasons(
-    continent,
-    country,
-    city,
-    parkSlug,
-    parkCalendarMonthRange(summaryMonth)
-  );
+  // The seasons the grid and the month index mark, one request over every month the index shows:
+  // the list above starts today, and a past day's Halloween has ended by then.
+  const indexMonths = parkCalendarMonthsShown(nowMonth, coverageTo);
+  const indexSeasonsPromise = getParkSeasons(continent, country, city, parkSlug, {
+    from: parkCalendarMonthRange(indexMonths[0]).from,
+    to: parkCalendarMonthRange(indexMonths[indexMonths.length - 1]).to,
+  });
 
   const park = parkForClock;
-  const [seasons, monthSeasons, statsAvailable] = await Promise.all([
+  const [seasons, indexSeasons, statsAvailable] = await Promise.all([
     seasonsPromise,
-    monthSeasonsPromise,
+    indexSeasonsPromise,
     statsAvailablePromise,
   ]);
   if (!park) {
@@ -363,9 +362,9 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   // month's statuses come first, from the summary's own seed. Waited for only in a month with such
   // a season; a seed that times out leaves every day open.
   const seasonDays = seasonDaysOfMonth(
-    monthSeasons,
+    indexSeasons,
     shownMonth,
-    seasonsNeedDayStatus(monthSeasons) ? ((await monthSeedPromise)?.days ?? []) : []
+    seasonsNeedDayStatus(indexSeasons, shownMonth) ? ((await monthSeedPromise)?.days ?? []) : []
   );
 
   return (
@@ -409,6 +408,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
               coverageTo={coverageTo}
               todayIso={todayIso}
               locale={locale}
+              seasons={seasons}
             />
           </Suspense>
         }
@@ -580,6 +580,8 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
               parkSlug={parkSlug}
               currentMonth={nowMonth}
               activeMonth={month}
+              seasons={indexSeasons}
+              activeSeasonDays={seasonDays}
               coverageTo={coverageTo}
             />
           }
