@@ -27,8 +27,8 @@ import {
 
 /**
  * The moves. Each time it is shown the steam rises off the cup by day, and in the evening glints
- * run up the tower and a few stay lit. Looping, the evening's tower glitters: some thirty white
- * lights each flash on a beat of their own, as its bulbs do for five minutes every hour after dark,
+ * run up the tower and a few stay lit. Looping, the evening's tower glitters: sets of white
+ * lights flash on beats of their own, as its bulbs do for five minutes every hour after dark,
  * and the beacon's two beams turn, each drawn as long as it reaches sideways from where we look,
  * a quarter turn apart. By day the steam goes on rising, the clouds drift and the boat rocks.
  */
@@ -52,7 +52,7 @@ ${LOOPING} .parky-paris-beam--second { animation-delay: -2.25s; }
 ${LOOPING} .parky-paris-wisp { animation: parky-paris-wisp 2.8s 2s infinite; }
 ${LOOPING} .parky-paris-clouds { animation: parky-paris-clouds 14s ease-in-out infinite alternate; }
 ${LOOPING} .parky-paris-boat { animation: parky-paris-boat 2.6s ease-in-out infinite alternate; }
-@keyframes parky-paris-twinkle { 0%, 12%, 100% { opacity: 0; } 4% { opacity: 1; } }
+@keyframes parky-paris-twinkle { 0%, 16%, 100% { opacity: 0; } 5% { opacity: 1; } }
 @keyframes parky-paris-beam {
   0% { opacity: 1; transform: scaleX(1); animation-timing-function: cubic-bezier(.12,0,.39,0); }
   25% { transform: scaleX(0); animation-timing-function: cubic-bezier(.61,1,.88,1); }
@@ -114,10 +114,20 @@ function towerHalfWidth(y: number): number {
   return w1 + ((w0 - w1) * (y - y1)) / (y0 - y1);
 }
 
+/** A small four-pointed star round a point, as a path of its own: one light of the glitter. */
+function sparkle(x: number, y: number, r = 1.2): string {
+  const f = (n: number) => +n.toFixed(2);
+  const k = r * 0.29;
+  return `M${f(x)} ${f(y - r)}L${f(x + k)} ${f(y - k)} ${f(x + r)} ${f(y)} ${f(x + k)} ${f(y + k)} ${f(x)} ${f(y + r)} ${f(x - k)} ${f(y + k)} ${f(x - r)} ${f(y)} ${f(x - k)} ${f(y - k)}Z`;
+}
+
 /**
- * The tower's glitter: lights scattered over its iron, more where it is wide, none in the arch
- * under the first floor or the window under the second, each with its own beat and start. A fixed
- * sequence, not `Math.random`, so the server and the browser draw the same lights.
+ * The tower's glitter: forty lights scattered over its iron, more where it is wide, none in the
+ * arch under the first floor or the window under the second, dealt into eight sets, each set one
+ * path with its own beat and start. A set's lights lie all over the tower, so the sets flashing in
+ * turn read as lights flashing at random; one animation per set rather than per light keeps the
+ * work per frame small. A fixed sequence, not `Math.random`, so the server and the browser draw
+ * the same lights.
  */
 const TWINKLES = (() => {
   let seed = 7;
@@ -125,25 +135,24 @@ const TWINKLES = (() => {
     seed = (seed * 16807) % 2147483647;
     return seed / 2147483647;
   };
-  const lights: { x: number; y: number; beat: number; start: number }[] = [];
-  const count = 32;
-  for (let i = 0; lights.length < count && i < count * 4; i++) {
-    const y = 16 + 81 * Math.sqrt((lights.length + next()) / count);
+  const count = 40;
+  const sets = Array.from({ length: 8 }, () => {
+    const beat = 1.1 + next() * 1.2;
+    return { beat: +beat.toFixed(2), start: +(-next() * beat).toFixed(2), d: '' };
+  });
+  let placed = 0;
+  for (let i = 0; placed < count && i < count * 4; i++) {
+    const y = 16 + 81 * Math.sqrt((placed + next()) / count);
     const reach = Math.max(0, towerHalfWidth(y) - 0.6);
     const x = TOWER_AXIS + (2 * next() - 1) * reach;
     const off = Math.abs(x - TOWER_AXIS);
     const inArch = y > 88.6 && off < 9.4 * Math.sqrt((y - 88.6) / 9.4) + 0.8;
     const inWindow = y > 75 && y < 82.4 && off < 5.6;
     if (inArch || inWindow) continue;
-    const beat = 1.1 + next() * 1.4;
-    lights.push({
-      x: +x.toFixed(2),
-      y: +y.toFixed(2),
-      beat: +beat.toFixed(2),
-      start: +(-next() * beat).toFixed(2),
-    });
+    sets[placed % sets.length].d += sparkle(x, y);
+    placed++;
   }
-  return lights;
+  return sets;
 })();
 
 /** One of the beacon's beams, from its lamp out to the right, rising a little and widening. */
@@ -543,15 +552,13 @@ export function ParkyParisScene({ className, loop }: TripRegionSceneProps) {
             </g>
           </g>
         ))}
-        {TWINKLES.map((light) => (
-          <circle
-            key={`${light.x} ${light.y}`}
+        {TWINKLES.map((set) => (
+          <path
+            key={set.d}
             className="parky-paris-twinkle"
-            cx={light.x}
-            cy={light.y}
-            r=".6"
+            d={set.d}
             opacity="0"
-            style={{ animationDuration: `${light.beat}s`, animationDelay: `${light.start}s` }}
+            style={{ animationDuration: `${set.beat}s`, animationDelay: `${set.start}s` }}
           />
         ))}
       </g>

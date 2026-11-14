@@ -93,6 +93,27 @@ function onTrail(t: number) {
 }
 
 /**
+ * A plume round the trail as a shape, `wide` either side at the pad and `narrow` under the rocket:
+ * the exhaust spreads as it hangs in the air, so it is widest where it is oldest.
+ */
+function plume(wide: number, narrow: number): string {
+  const f = (n: number) => +n.toFixed(2);
+  const left: string[] = [];
+  const right: string[] = [];
+  for (let i = 0; i <= 24; i++) {
+    const t = i / 24;
+    const { x, y, heading } = onTrail(t);
+    const rad = (heading * Math.PI) / 180;
+    const half = narrow + (wide - narrow) * (1 - t);
+    left.push(`${f(x - Math.cos(rad) * half)} ${f(y - Math.sin(rad) * half)}`);
+    right.unshift(`${f(x + Math.cos(rad) * half)} ${f(y + Math.sin(rad) * half)}`);
+  }
+  return `M${left.join('L')}L${right.join('L')}Z`;
+}
+const PLUME = plume(4.2, 1.6);
+const PLUME_WIDE = plume(7.5, 2.2);
+
+/**
  * The climb as two keyframe lists on the same beats: the rocket's offset from where it stops, and
  * how much of the trail is drawn behind it, so the trail's tip stays under the flame. It lifts off
  * slowly, gathers speed and eases into its place.
@@ -177,15 +198,14 @@ ${LOOPING} .parky-orlando-flame { transform-box: fill-box; transform-origin: 50%
 ${LOOPING} .parky-orlando-glow { animation: parky-orlando-glow .8s ease-in-out infinite alternate; }
 ${LOOPING} .parky-orlando-plume { animation: parky-orlando-plume-in 1.4s ease-out ${CLIMB_SECONDS}s forwards; }
 ${LOOPING} .parky-orlando-billow { animation: parky-orlando-billow 3.4s ease-in-out infinite alternate; }
-${LOOPING} .parky-orlando-billow--wide { animation-name: parky-orlando-billow-wide; animation-duration: 4.6s; }
+${LOOPING} .parky-orlando-billow--wide { animation-duration: 4.6s; animation-delay: -2.3s; }
 ${LOOPING} .parky-orlando-puff { transform-box: fill-box; transform-origin: 50% 100%;
   animation: parky-orlando-puff 2.8s ease-in-out infinite alternate; }
 @keyframes parky-orlando-flicker { 0%, 100% { transform: scale(1, 1); } 20% { transform: scale(.88, 1.3); }
   45% { transform: scale(1.06, .86); } 70% { transform: scale(.94, 1.18); } }
 @keyframes parky-orlando-glow { from { opacity: .45; } to { opacity: 1; } }
 @keyframes parky-orlando-plume-in { from { opacity: 0; } to { opacity: 1; } }
-@keyframes parky-orlando-billow { from { opacity: .5; transform: translateX(-.4px); } to { opacity: 1; transform: translateX(.5px); } }
-@keyframes parky-orlando-billow-wide { from { opacity: 0; transform: translateX(0); } to { opacity: 1; transform: translateX(1.2px); } }
+@keyframes parky-orlando-billow { from { opacity: .35; } to { opacity: 1; } }
 @keyframes parky-orlando-puff { from { transform: scale(1); } to { transform: scale(1.08, 1.12); } }
 `
 );
@@ -281,10 +301,14 @@ function Palm({
 function Rocket() {
   return (
     <g>
-      <g className="parky-orlando-glow" opacity="0">
-        <circle cy="8" r="4.4" fill={gold} opacity=".35" />
-        <ellipse cy="7" rx="1.6" ry="2.6" fill="oklch(0.98 0.06 95)" opacity=".8" />
-      </g>
+      <ellipse
+        className="parky-orlando-glow"
+        cy="9"
+        rx="3.6"
+        ry="5.4"
+        fill="url(#parky-orlando-exhaust)"
+        opacity="0"
+      />
       <path className="parky-orlando-flame" d="M-1 4.6Q0 10.5 1 4.6Z" fill={gold} />
       <path d="M-1.7 1.8-3.6 5.4-1.7 4.6ZM1.7 1.8 3.6 5.4 1.7 4.6Z" fill={rail} />
       <rect
@@ -422,6 +446,11 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
             className="[stop-color:oklch(0.62_0.11_232)] dark:[stop-color:oklch(0.2_0.05_275)]"
           />
         </linearGradient>
+        <radialGradient id="parky-orlando-exhaust">
+          <stop offset="0" stopColor="oklch(0.98 0.08 95)" stopOpacity=".95" />
+          <stop offset=".45" stopColor="oklch(0.88 0.15 75)" stopOpacity=".5" />
+          <stop offset="1" stopColor="oklch(0.88 0.15 75)" stopOpacity="0" />
+        </radialGradient>
         <linearGradient id="parky-orlando-ground" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor={blue} />
           <stop offset="1" stopColor={green} />
@@ -456,16 +485,14 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
       {/* A launch from the coast: the trail curls up from the far shore, the rocket at its tip. The
           plume round it is drawn only while the scene loops. */}
       <g>
-        <g className="parky-orlando-plume" opacity="0" fill="none" strokeLinecap="round">
+        <g className="parky-orlando-plume" opacity="0">
           <path
-            d={TRAIL_PATH}
-            strokeWidth="5.5"
-            className="parky-orlando-billow stroke-white/30 dark:stroke-[oklch(0.9_0.08_70)]/25"
+            d={PLUME_WIDE}
+            className="parky-orlando-billow parky-orlando-billow--wide fill-white/20 dark:fill-[oklch(0.9_0.08_70)]/12"
           />
           <path
-            d={TRAIL_PATH}
-            strokeWidth="9"
-            className="parky-orlando-billow parky-orlando-billow--wide stroke-white/20 dark:stroke-[oklch(0.9_0.08_70)]/15"
+            d={PLUME}
+            className="parky-orlando-billow fill-white/30 dark:fill-[oklch(0.9_0.08_70)]/20"
           />
         </g>
         <path

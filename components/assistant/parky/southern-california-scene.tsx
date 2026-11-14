@@ -231,8 +231,9 @@ function Parky({ ground, eyes }: { ground: string; eyes: HolidayEyes }) {
 /**
  * The moves. Each time it is shown the gulls glide in, a wave runs up the sand, the sun sinks and
  * the pier lights up. The wave is the end of a round (run up the sand, draw back, come in again)
- * that looping plays on, a breaker rolling in on the same beat; the wheel turns once in 24 s, and
- * its cabins are circles, so they hang straight all the way round without turning back.
+ * that looping plays on, a breaker rolling in on the same beat, and the sun's glitter shifts on
+ * the water. The wheel turns once in 18 s; its cabins are circles, so they hang straight all the
+ * way round without turning back.
  */
 const MOTION = sceneMotion(
   `
@@ -253,7 +254,8 @@ const MOTION = sceneMotion(
 ${LOOPING} .parky-socal-wave { animation-iteration-count: infinite; }
 ${LOOPING} .parky-socal-breaker { animation: parky-socal-breaker 6s infinite; }
 ${LOOPING} .parky-socal-wheel { transform-origin: ${PIER_WHEEL.x}px ${PIER_WHEEL.y}px;
-  animation: parky-socal-turn 24s linear infinite; }
+  animation: parky-socal-turn 18s linear infinite; }
+${LOOPING} .parky-socal-glitter { animation: parky-socal-glitter 3.2s ease-in-out infinite alternate; }
 ${LOOPING} .parky-socal-soar { animation: parky-socal-soar 2.6s ease-in-out infinite alternate; }
 ${LOOPING} .parky-socal-soar--far { animation-duration: 3.3s; animation-delay: -1.2s; }
 @keyframes parky-socal-breaker {
@@ -263,6 +265,7 @@ ${LOOPING} .parky-socal-soar--far { animation-duration: 3.3s; animation-delay: -
   70% { opacity: .8; }
   100% { opacity: 1; transform: translate(0, 0); } }
 @keyframes parky-socal-turn { to { transform: rotate(360deg); } }
+@keyframes parky-socal-glitter { from { opacity: .55; transform: translateX(-1.5px); } to { opacity: 1; transform: translateX(1.5px); } }
 @keyframes parky-socal-soar { from { transform: translate(0, 0); } to { transform: translate(1px, -1.4px); } }
 `
 );
@@ -365,7 +368,7 @@ export function ParkySouthernCaliforniaScene({ className, loop }: TripRegionScen
         strokeOpacity=".7"
         strokeWidth=".9"
         strokeLinecap="round"
-        className="dark:hidden"
+        className="parky-socal-glitter dark:hidden"
       />
       <path
         d="M137 97h18M140 100h12M134 103h24M141 106h10M131 110h30M138 114h16M134 118h24"
@@ -373,7 +376,7 @@ export function ParkySouthernCaliforniaScene({ className, loop }: TripRegionScen
         strokeOpacity=".7"
         strokeWidth="1.1"
         strokeLinecap="round"
-        className="hidden dark:inline"
+        className="parky-socal-glitter hidden dark:inline"
       />
       <path
         d="M70 110.6q20-2 40 0t40 0 40-.4"

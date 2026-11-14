@@ -30,7 +30,7 @@ import {
  * The moves. Each time it is shown the train pulls in, petals drift into place and the lanterns
  * light one by one. Looping, every petal in the air falls on to the grass, swaying and turning,
  * and comes down again from above the tree, each on its own fall and sway; more petals than the
- * picture holds join them. The lanterns swing on their cords.
+ * picture holds join them. The lanterns swing on their cords, every other one a beat apart.
  */
 const MOTION = sceneMotion(
   `
@@ -46,13 +46,15 @@ const MOTION = sceneMotion(
 ${LOOPING} .parky-japan-drift { animation: parky-japan-drift 8s linear infinite; }
 ${LOOPING} .parky-japan-sway { transform-box: fill-box; transform-origin: center;
   animation: parky-japan-sway 1.8s ease-in-out infinite alternate; }
-${LOOPING} .parky-japan-swing { transform-box: view-box; transform-origin: 0 0;
+${LOOPING} .parky-japan-swing { transform-box: view-box; transform-origin: 0 8px;
   animation: parky-japan-swing 3s ease-in-out infinite alternate; }
+${LOOPING} .parky-japan-swing--odd { animation-duration: 3.4s; animation-delay: -1.7s; }
+${LOOPING} .parky-japan-swing--hand { transform-origin: 0 18.6px; animation-duration: 2.6s; }
 @keyframes parky-japan-drift { from { opacity: 0; transform: translate(var(--from)); }
   8%, 88% { opacity: 1; } to { opacity: 0; transform: translate(var(--to)); } }
 @keyframes parky-japan-sway { from { transform: translateX(-2.4px) rotate(-30deg); }
   to { transform: translateX(2.4px) rotate(30deg); } }
-@keyframes parky-japan-swing { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes parky-japan-swing { from { transform: skewX(-5deg); } to { transform: skewX(5deg); } }
 `
 );
 
@@ -212,53 +214,47 @@ function Lantern({
   delay?: number;
 }) {
   const lit = glow !== undefined;
-  const swing = 2.6 + (Math.round(x) % 7) * 0.15;
   return (
     <g transform={`translate(${x} ${y}) scale(${scale})`}>
-      <g
-        className="parky-japan-swing"
-        style={{ animationDuration: `${swing}s`, animationDelay: `${-(Math.round(x) % 5) * 0.4}s` }}
-      >
-        <path d="M0 0v2.2" stroke="oklch(0.25 0.03 30)" strokeWidth=".5" />
-        {lit && (
-          <circle
-            className="parky-japan-glow"
-            cy="7.4"
-            r="12"
-            fill={`url(#${glow})`}
-            style={{ animationDelay: `${delay}s` }}
-          />
-        )}
-        <rect x="-2.2" y="2" width="4.4" height="1.4" rx=".4" fill="oklch(0.25 0.03 30)" />
-        <ellipse
+      <path d="M0 0v2.2" stroke="oklch(0.25 0.03 30)" strokeWidth=".5" />
+      {lit && (
+        <circle
+          className="parky-japan-glow"
           cy="7.4"
-          rx="4.4"
-          ry="4.8"
-          fill={lit ? 'oklch(0.86 0.14 72)' : 'oklch(0.97 0.02 85)'}
+          r="12"
+          fill={`url(#${glow})`}
+          style={{ animationDelay: `${delay}s` }}
         />
-        {lit && (
-          <ellipse
-            className="parky-japan-glow"
-            cy="7.4"
-            rx="2.6"
-            ry="3.4"
-            fill="oklch(0.96 0.08 95)"
-            style={{ animationDelay: `${delay}s` }}
-          />
-        )}
-        <path
-          d="M-4.1 5.6h8.2M-4.4 7.4h8.8M-4.1 9.2h8.2"
-          stroke={lit ? 'oklch(0.66 0.16 45)' : 'oklch(0.62 0.18 25)'}
-          strokeWidth=".45"
-          strokeOpacity=".8"
+      )}
+      <rect x="-2.2" y="2" width="4.4" height="1.4" rx=".4" fill="oklch(0.25 0.03 30)" />
+      <ellipse
+        cy="7.4"
+        rx="4.4"
+        ry="4.8"
+        fill={lit ? 'oklch(0.86 0.14 72)' : 'oklch(0.97 0.02 85)'}
+      />
+      {lit && (
+        <ellipse
+          className="parky-japan-glow"
+          cy="7.4"
+          rx="2.6"
+          ry="3.4"
+          fill="oklch(0.96 0.08 95)"
+          style={{ animationDelay: `${delay}s` }}
         />
-        <path
-          d="M-3.6 4.4h7.2M-3.6 10.4h7.2"
-          stroke={lit ? 'oklch(0.6 0.18 35)' : 'oklch(0.6 0.19 25)'}
-          strokeWidth=".9"
-        />
-        <rect x="-2.2" y="11.4" width="4.4" height="1.4" rx=".4" fill="oklch(0.25 0.03 30)" />
-      </g>
+      )}
+      <path
+        d="M-4.1 5.6h8.2M-4.4 7.4h8.8M-4.1 9.2h8.2"
+        stroke={lit ? 'oklch(0.66 0.16 45)' : 'oklch(0.62 0.18 25)'}
+        strokeWidth=".45"
+        strokeOpacity=".8"
+      />
+      <path
+        d="M-3.6 4.4h7.2M-3.6 10.4h7.2"
+        stroke={lit ? 'oklch(0.6 0.18 35)' : 'oklch(0.6 0.19 25)'}
+        strokeWidth=".9"
+      />
+      <rect x="-2.2" y="11.4" width="4.4" height="1.4" rx=".4" fill="oklch(0.25 0.03 30)" />
     </g>
   );
 }
@@ -361,7 +357,9 @@ function HandLantern({ ground, glow }: { ground: string; glow: string }) {
         strokeWidth=".8"
         strokeLinecap="round"
       />
-      <Lantern x={47.4} y={18.6} scale={0.72} glow={glow} delay={1.4} />
+      <g className="parky-japan-swing parky-japan-swing--hand">
+        <Lantern x={47.4} y={18.6} scale={0.72} glow={glow} delay={1.4} />
+      </g>
       <HolidayMitten ground={ground} x={41.8} y={40.4} />
     </g>
   );
@@ -554,12 +552,29 @@ export function ParkyJapanScene({ className, loop }: TripRegionSceneProps) {
         <Flower key={`${x} ${y}`} x={x} y={y} s={1.3} />
       ))}
 
-      {/* Evening: the lanterns along their string, lighting one after another. */}
+      {/* Evening: the lanterns along their string, lighting one after another. Looping, every
+          other lantern swings with its neighbours a beat apart; a skew about the string's height
+          keeps each cord on the string while its lantern swings. */}
       <g className="hidden dark:inline">
         <path d={LANTERN_STRING} fill="none" stroke="oklch(0.2 0.03 300)" strokeWidth=".5" />
-        {LANTERNS.map((lantern, i) => (
-          <Lantern key={lantern.x} x={lantern.x} y={lantern.y} glow={glow} delay={0.3 + i * 0.22} />
-        ))}
+        {(['parky-japan-swing', 'parky-japan-swing parky-japan-swing--odd'] as const).map(
+          (swing, half) => (
+            <g key={swing} className={swing}>
+              {LANTERNS.map(
+                (lantern, i) =>
+                  i % 2 === half && (
+                    <Lantern
+                      key={lantern.x}
+                      x={lantern.x}
+                      y={lantern.y}
+                      glow={glow}
+                      delay={0.3 + i * 0.22}
+                    />
+                  )
+              )}
+            </g>
+          )
+        )}
       </g>
 
       <Furoshiki />
