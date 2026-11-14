@@ -3,7 +3,7 @@ title: 'Theme parks in Japan: planning a trip from Tokyo to Osaka'
 translationKey: japan-freizeitparks-reise
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   Tokyo Disneyland, DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan are in

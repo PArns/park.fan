@@ -34,6 +34,7 @@
  */
 import { existsSync } from 'node:fs';
 import { chromium } from 'playwright';
+import { TRIP_REGION_PAGES } from './lib/trip-region-pages.mjs';
 
 const args = process.argv.slice(2);
 const flag = (name, fallback) => {
@@ -51,16 +52,10 @@ const SETTLE_MS = Number(flag('settle', '1500'));
 const EP = '/de/parks/europe/germany/rust/europa-park';
 const PH = '/de/parks/europe/germany/bruehl/phantasialand';
 
-/** One URL per page type, German, plus the English homepage and post for a second locale. */
-/** An Orlando month page, next month in Orlando, so it is served whenever the check runs. */
-const ORLANDO_MONTH = (() => {
-  const [y, m] = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York' })
-    .format(new Date())
-    .split('-')
-    .map(Number);
-  return m === 12 ? `/de/orlando/${y + 1}/1` : `/de/orlando/${y}/${m + 1}`;
-})();
-
+/**
+ * One URL per page type, German, plus the English homepage and post for a second locale, and the
+ * pages of every live trip region (`TRIP_REGION_PAGES`).
+ */
 const PAGES = [
   '/de',
   '/en',
@@ -89,11 +84,8 @@ const PAGES = [
   '/de/glossar',
   '/de/glossar/rope-drop',
   '/de/beste-reisezeit',
-  '/de/orlando/beste-reisezeit',
-  '/de/orlando/beste-reisezeit/universal-orlando',
   '/de/tagesplaner',
-  '/de/orlando',
-  ORLANDO_MONTH,
+  ...TRIP_REGION_PAGES,
   '/de/so-funktioniert-park-fan',
   '/de/fancast',
   '/de/contribute',

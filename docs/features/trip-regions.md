@@ -1,8 +1,8 @@
 # Trip regions
 
 A trip region is a set of parks a visitor plans as one trip: a crowd calendar hub with its month
-pages, best-time pages and the trip planner. Orlando is the first; Southern California, Japan and
-Paris are in the registry and not live yet. Open this page before adding a region, changing a
+pages, best-time pages and the trip planner. Four are live: Orlando, Southern California, Japan and
+Paris. Open this page before adding a region, changing a
 region's URL or moving code between the shared part and a region's own. What one hub shows is
 [orlando-hub](orlando-hub.md), the planner [orlando-planner](orlando-planner.md), the best-time pages
 [orlando-best-time](orlando-best-time.md); those pages describe Orlando, and every other region gets
@@ -221,9 +221,13 @@ built on `HolidayParky`, and its entry's `scene` loads it.
 4. Draw its scene in `components/assistant/parky/<slug>-scene.tsx` and point `scene` at it.
 5. Add the zone's VTIMEZONE to `lib/trip-regions/plan-ics.ts` if it is a new one
    (`test:trip-regions` fails without it).
-6. Set `live: true`. The routes, rewrites, edge windows, sitemap, menus, band and OG cards follow.
-   Run `pnpm test:unit`, and against a build `pnpm check:landing-pages`, `pnpm check:semantic-html`
-   and `pnpm check:planner` with the region's URLs added to their lists.
+6. Set `live: true`. The routes, rewrites, edge windows, sitemap, menus, band and OG cards follow,
+   and so do IndexNow's static set and `llms.txt` (`tripRegionLandingPaths`, the region's
+   `nav.calendar`) and the pages `pnpm check:landing-pages` and `pnpm check:semantic-html` load
+   (`scripts/lib/trip-region-pages.mjs`: the hub and every best-time page in German and English,
+   next month in German). Add the slug to the live list in `pnpm test:trip-regions`, run
+   `pnpm test:unit`, and against a build the two checks and `pnpm check:planner`. Publish the
+   region's guide (`regionGuide`) in the same deploy or later, never before: it links the hub.
 
 ## What the API sends and how the site reads it
 

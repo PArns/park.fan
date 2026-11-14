@@ -128,7 +128,7 @@ test('the relay forwards each route its own query names and refuses anything els
   );
   assert.equal(tripRegionRelayTarget(['orlando'], q(''))?.forecast, false);
   assert.equal(tripRegionRelayTarget(['tokyo', 'plan'], q('')), null);
-  // A region the registry lists but has not made live: the admin's ticket page reads its parks.
+  // Every region the registry lists passes, live or not: the admin's ticket page reads its parks.
   assert.equal(tripRegionRelayTarget(['paris'], q(''))?.apiPath, '/v1/trip-regions/paris');
   assert.equal(tripRegionRelayTarget(['orlando', 'plan'], q('lock=a%2F..')), null);
   assert.equal(

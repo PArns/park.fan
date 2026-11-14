@@ -55,7 +55,7 @@ const ENTRIES: readonly TicketEntry[] = [
 /** Japan's entry in `TRIP_REGIONS`. */
 export const JAPAN: TripRegionConfig = {
   slug: 'japan',
-  live: false,
+  live: true,
   segments: { en: 'japan', de: 'japan', nl: 'japan', fr: 'japon', es: 'japon', it: 'giappone' },
   timezone: 'Asia/Tokyo',
   // Tokyo Disney Resort. The region spans several cities, and its trips several bases.

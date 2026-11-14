@@ -2522,7 +2522,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   });
   test(
     'a region without a live hub has no links',
-    [tripRegionLinks({ ...REGION, slug: 'paris' }), tripRegionLinks({ ...REGION, slug: 'x' })],
+    [tripRegionLinks({ ...REGION, slug: 'tokyo' }), tripRegionLinks({ ...REGION, slug: 'x' })],
     [null, null]
   );
   test(

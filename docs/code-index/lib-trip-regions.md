@@ -136,6 +136,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripRegionGuidePath` _function_: The region's guide to its planner, a blog post (`/blog/<slug>` in the locale), where the planner's options are explained at length; `null` where the region has none yet.
 - `tripRegionPath` _function_: The locale-relative path of a region's hub or one of its months (`/orlando`, `/orlando/2026/12`). The month is unpadded, so each month has one URL; the proxy 308s the padded spelling.
 - `tripRegionBestTimePath` _function_: The locale-relative path of a region's "best time to visit" pages: the region's own (`/orlando/beste-reisezeit`) or a resort's (`/orlando/best-time-to-visit/disney-world`).
+- `tripRegionLandingPaths` _function_: A region's hub and every best-time page of it in a locale, locale-relative: the pages that stand for the region in a search, without its months.
 - `tripRegionMonthHref` _function_: The address to link a month by: the hub for the current month, whose canonical it is, and the month's own URL for every other, so the site never mints a URL that only canonicals away.
 - `isSameMonth` _function_: Whether two months are the same month.
 - `currentTripRegionMonth` _function_: Today's month in the region, never the server's or the browser's: the hub, the window and the proxy agree on which month "this month" is across midnight elsewhere.

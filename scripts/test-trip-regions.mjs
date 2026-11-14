@@ -85,13 +85,13 @@ test('the regions the owner decided on, with the segments he gave', () => {
   assert.ok(locales.every((l) => tripRegionSegment(tripRegionConfig('paris'), l) === 'paris'));
 });
 
-test('Orlando alone is live until the next regions have their hubs', () => {
+test('Orlando, Southern California, Japan and Paris are live, in the order the band shows them', () => {
   assert.deepEqual(
     LIVE_TRIP_REGIONS.map((r) => r.slug),
-    ['orlando']
+    ['orlando', 'southern-california', 'japan', 'paris']
   );
-  assert.equal(liveTripRegion('paris'), undefined);
-  assert.equal(tripRegionConfig('paris')?.slug, 'paris');
+  assert.equal(liveTripRegion('paris'), tripRegionConfig('paris'));
+  assert.equal(liveTripRegion('tokyo'), undefined);
 });
 
 test('no segment is another route, nor another region', () => {
@@ -300,13 +300,17 @@ test('paths are spelled per locale, with the best-time segment after the region'
 
 test('a segment names its live region and the locales that spell it', () => {
   assert.deepEqual(tripRegionBySegment('orlando')?.locales.toSorted(), locales.toSorted());
-  assert.equal(tripRegionBySegment('kalifornien'), null);
+  assert.equal(tripRegionBySegment('kalifornien')?.region.slug, 'southern-california');
+  assert.deepEqual(tripRegionBySegment('kalifornien')?.locales, ['de']);
+  assert.deepEqual(tripRegionBySegment('japon')?.locales, ['fr', 'es']);
+  assert.equal(tripRegionBySegment('tokyo'), null);
 });
 
 test('the proxy redirects months of live regions only', () => {
   const now = { year: 2026, month: 11 };
   assert.equal(tripRegionRedirect('/de/orlando/2027/03', now), '/de/orlando/2027/3');
-  assert.equal(tripRegionRedirect('/de/kalifornien/2027/03', now), null);
+  assert.equal(tripRegionRedirect('/de/kalifornien/2027/03', now), '/de/kalifornien/2027/3');
+  assert.equal(tripRegionRedirect('/de/tokyo/2027/03', now), null);
 });
 
 // ── Messages, words, files ──────────────────────────────────────────────────

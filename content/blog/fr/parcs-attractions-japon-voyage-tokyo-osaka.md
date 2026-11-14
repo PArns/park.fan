@@ -3,7 +3,7 @@ title: 'Parcs d’attractions au Japon, de Tokyo à Osaka'
 translationKey: japan-freizeitparks-reise
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   Tokyo Disneyland, DisneySea, Fuji-Q Highland, LEGOLAND Japan et Universal Studios Japan se
