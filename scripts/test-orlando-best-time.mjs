@@ -18,6 +18,7 @@ import {
   europeanBreaks,
   holidayWeek,
   monthRows,
+  noWhenAnswer,
   parseBestTimePage,
   partySeasons,
   planOrder,
@@ -57,6 +58,15 @@ test('the segments name the Orlando page, a resort, or nothing', () => {
   assert.equal(parseBestTimePage(ORLANDO, ['universal-orlando']), 'universal-orlando');
   assert.equal(parseBestTimePage(ORLANDO, ['seaworld-orlando']), null);
   assert.equal(parseBestTimePage(ORLANDO, ['disney-world', 'x']), null);
+});
+
+test('without an answer from /when the page has its months and no figure', () => {
+  const when = noWhenAnswer('orlando', bestTimeRange('2026-11-12'));
+  assert.deepEqual([when.windows, when.weeks, when.months], [[], [], []]);
+  assert.equal(when.meta.from, '2027-01-01');
+  const rows = monthRows(when, '2026-11-12');
+  assert.equal(rows.length, 12);
+  assert.ok(rows.every((row) => row.data === undefined && row.hours === null));
 });
 
 test('a region without best-time pages has none, not even its own', () => {
