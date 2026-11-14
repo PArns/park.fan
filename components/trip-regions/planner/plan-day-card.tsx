@@ -24,6 +24,7 @@ import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
+import { PlanDayGlow } from './plan-day-glow';
 import { useBaseName } from './plan-place-words';
 import { MoveIcon, useMoveWords } from './plan-stay-band';
 
@@ -206,7 +207,7 @@ export function PlanDayCard({
         .join(', ')}
       data-plan-day-card={day.kind}
       className={cn(
-        'bg-card flex flex-col overflow-hidden rounded-2xl border shadow-xs',
+        'bg-card relative flex flex-col overflow-hidden rounded-2xl border shadow-xs',
         pinned || added ? 'border-primary/60 ring-primary/30 ring-1' : 'border-border/60'
       )}
     >
@@ -314,6 +315,7 @@ export function PlanDayCard({
       </button>
       {actions && <div className="border-border/60 border-t px-2 py-1">{actions}</div>}
       {hint && <div className="border-border/60 border-t px-3 py-2">{hint}</div>}
+      <PlanDayGlow date={day.date} />
     </article>
   );
 }

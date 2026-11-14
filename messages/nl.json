@@ -3571,6 +3571,7 @@
       "removed": "{park} hoort niet meer bij de reis.",
       "released": "Er staat geen dag meer vast. Het plan kiest de volgorde weer zelf.",
       "undone": "De laatste wijziging is teruggedraaid.",
+      "byParky": "{change, select, dates {Parky heeft de reisdata aangepast.} parks {Parky heeft de parken aangepast.} pin {Parky heeft een dag vastgezet.} swap {Parky heeft twee dagen gewisseld.} rest {Parky heeft de rustdagen aangepast.} tickets {Parky heeft je tickets ingevuld.} hotel {Parky heeft je hotel ingevuld.} pace {Parky heeft het tempo aangepast.} route {Parky heeft de route aangepast.} buffer {Parky heeft de tijd voor de hotelwissel ingesteld.} other {Parky heeft het plan aangepast.}}",
       "peakNow": "Piek op je dagen nu ongeveer {minutes} min.",
       "sheet": {
         "swap": "Met een andere dag ruilen",
@@ -4057,7 +4058,8 @@
       "chat": "In de chat",
       "ask": "Wat vind je van dit idee voor mijn plan: {idea}?",
       "applied": "In het plan: {idea}.",
-      "inPlan": "In het plan"
+      "inPlan": "In het plan",
+      "otherDay": "Andere dag"
     }
   },
   "tripRegions": {

@@ -3571,6 +3571,7 @@
       "removed": "{park} ya no forma parte del viaje.",
       "released": "Ningún día queda fijado. El plan vuelve a elegir el orden.",
       "undone": "El último cambio se ha deshecho.",
+      "byParky": "{change, select, dates {Parky ha cambiado las fechas del viaje.} parks {Parky ha cambiado los parques.} pin {Parky ha fijado un día.} swap {Parky ha intercambiado dos días.} rest {Parky ha cambiado los días de descanso.} tickets {Parky ha añadido tus entradas.} hotel {Parky ha añadido tu hotel.} pace {Parky ha cambiado el ritmo.} route {Parky ha cambiado la ruta.} buffer {Parky ha ajustado el tiempo para cambiar de hotel.} other {Parky ha cambiado el plan.}}",
       "peakNow": "Pico en tus días ahora unos {minutes} min.",
       "sheet": {
         "swap": "Cambiar por otro día",
@@ -4057,7 +4058,8 @@
       "chat": "En el chat",
       "ask": "¿Qué te parece esta idea para mi plan: {idea}?",
       "applied": "En el plan: {idea}.",
-      "inPlan": "Añadir al plan"
+      "inPlan": "Añadir al plan",
+      "otherDay": "Otro día"
     }
   },
   "tripRegions": {

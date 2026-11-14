@@ -42,6 +42,7 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanCodeKey, useStormKeys } from './plan-calendar-keys';
 import { PlanWeekdayHead } from './plan-month-grid';
+import { PlanDayGlow } from './plan-day-glow';
 import { useBaseName } from './plan-place-words';
 import { MoveIcon, PlanMonthStayBand, StayMarker } from './plan-stay-band';
 import {
@@ -263,6 +264,7 @@ export function PlanMonthView({
                     <span className="hidden lg:inline">{word}</span>
                   </span>
                   {stayFoot(cell.date, rowStart)}
+                  <PlanDayGlow date={cell.date} />
                 </button>
               </li>
             );
@@ -409,6 +411,7 @@ export function PlanMonthView({
                   </span>
                 )}
                 {stayFoot(cell.date, rowStart)}
+                <PlanDayGlow date={cell.date} />
               </button>
             </li>
           );

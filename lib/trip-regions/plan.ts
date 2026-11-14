@@ -18,6 +18,7 @@ import {
   type PlanSearchRange,
 } from './plan-query';
 import type { PlanIdea } from './plan-ideas';
+import type { TripChangeKind } from '@/lib/assistant/actions';
 import type { TripHotelKind } from './registry';
 import type {
   TicketLink,
@@ -722,7 +723,8 @@ export function removePark(
 /**
  * One edit of the plan made from the result, as its status band says it and `trip_undo` counts it:
  * a pin set or released, two days swapped, a park moved, a day made free, a park taken out, a park
- * put on a free day, every pin released, or one of Parky's ideas.
+ * put on a free day, every pin released, one of Parky's ideas, or a change Parky made in the chat
+ * (`change_trip`), by the kinds the API names for it.
  */
 export type PlanEditChange =
   | { kind: 'pin'; target: string; date: string; pinned: boolean }
@@ -732,10 +734,33 @@ export type PlanEditChange =
   | { kind: 'remove'; slug: string; days: number }
   | { kind: 'add'; slug: string; date: string }
   | { kind: 'release' }
-  | { kind: 'idea'; idea: PlanIdea };
+  | { kind: 'idea'; idea: PlanIdea }
+  | { kind: 'parky'; changes: readonly TripChangeKind[] };
 
 /** The kinds of {@link PlanEditChange}: `trip_undo`'s `what`. */
 export type PlanEditKind = PlanEditChange['kind'];
+
+/**
+ * The days an edit put something else on, which glow once on screen (`PlanDayGlow`): both days of
+ * a swap, the day a park left and the one it went to, a day made free, a park put on a free day,
+ * and the days an idea changes. A pin moves nothing, and a park taken out or a change from the chat
+ * names no day.
+ */
+export function editGlowDays(change: PlanEditChange | null): string[] {
+  switch (change?.kind) {
+    case 'swap':
+      return [change.firstDay, change.secondDay];
+    case 'move':
+      return [change.from, change.to];
+    case 'free':
+    case 'add':
+      return [change.date];
+    case 'idea':
+      return [change.idea.from, change.idea.to].filter((d): d is string => Boolean(d));
+    default:
+      return [];
+  }
+}
 
 /** The swap of two days as an edit: what was on `a` is now on `b`'s date, and the other way round. */
 export function swapChange(a: PlanDay, b: PlanDay): PlanEditChange | null {

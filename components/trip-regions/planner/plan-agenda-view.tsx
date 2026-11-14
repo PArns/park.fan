@@ -12,6 +12,7 @@ import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanDayCard } from './plan-day-card';
+import { PlanDayGlow } from './plan-day-glow';
 import { PlanMoveCard } from './plan-move-card';
 import { useBaseName } from './plan-place-words';
 import { PlanSpareRun } from './plan-spare-run';
@@ -153,7 +154,7 @@ function QuietDayRow({ day, onOpenDay }: { day: PlanDay; onOpenDay: (date: strin
         .join(', ')}
       data-plan-day={day.kind}
       className={cn(
-        'hover:bg-accent/40 flex min-h-11 w-full items-center gap-3 rounded-lg px-1 py-2 text-left text-sm transition-colors lg:col-span-2',
+        'hover:bg-accent/40 relative flex min-h-11 w-full items-center gap-3 rounded-lg px-1 py-2 text-left text-sm transition-colors lg:col-span-2',
         PLAN_FOCUS
       )}
     >
@@ -166,6 +167,7 @@ function QuietDayRow({ day, onOpenDay }: { day: PlanDay; onOpenDay: (date: strin
       </span>
       {pinned && <Lock className="text-primary-ink size-3.5 shrink-0" aria-hidden="true" />}
       <ChevronRight className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+      <PlanDayGlow date={day.date} />
     </button>
   );
 }

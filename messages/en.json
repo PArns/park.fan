@@ -3571,6 +3571,7 @@
       "removed": "{park} is no longer part of the trip.",
       "released": "No day is pinned any more. The plan picks the order again.",
       "undone": "The last change is undone.",
+      "byParky": "{change, select, dates {Parky changed the trip dates.} parks {Parky changed the parks.} pin {Parky pinned a day.} swap {Parky swapped two days.} rest {Parky changed the rest days.} tickets {Parky added your tickets.} hotel {Parky added your hotel.} pace {Parky changed the pace.} route {Parky changed the route.} buffer {Parky set the time for the hotel move.} other {Parky changed the plan.}}",
       "peakNow": "Peak wait on your days now about {minutes} min.",
       "sheet": {
         "swap": "Swap with another day",
@@ -4057,7 +4058,8 @@
       "chat": "In the chat",
       "ask": "What do you think of this idea for my plan: {idea}?",
       "applied": "In the plan: {idea}.",
-      "inPlan": "Add to the plan"
+      "inPlan": "Add to the plan",
+      "otherDay": "Another day"
     }
   },
   "tripRegions": {

@@ -669,6 +669,52 @@
   }
 }
 
+/*
+ * Trip planner: the day an edit just moved, or an idea just changed, glows once (`PlanDayGlow`).
+ * An inset ring, since the cards and columns it sits in clip what lies outside them. With motion it
+ * swells and fades; reduced motion gets the ring at once, held, then faded. At rest it is invisible,
+ * so the end of the animation needs no second render.
+ */
+.plan-day-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  background: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  box-shadow:
+    inset 0 0 0 2px var(--color-primary),
+    inset 0 0 18px color-mix(in oklab, var(--color-primary) 45%, transparent);
+  animation: plan-day-glow-hold 1.8s ease-out;
+}
+
+@keyframes plan-day-glow-hold {
+  0%,
+  55% {
+    opacity: 1;
+  }
+}
+
+@keyframes plan-day-glow-swell {
+  0% {
+    opacity: 0;
+    box-shadow:
+      inset 0 0 0 0 var(--color-primary),
+      inset 0 0 0 transparent;
+  }
+  20%,
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .plan-day-glow {
+    animation-name: plan-day-glow-swell;
+  }
+}
+
 /* Maintenance page: slowly drifting aurora blobs for a living gradient */
 @keyframes maintenance-drift-1 {
   0%,

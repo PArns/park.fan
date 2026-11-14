@@ -403,7 +403,7 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_day_swapped`, `trip_day_sent`, `trip_evening_link_clicked`, `trip_link_copied`  | none                                                                                                                                                                                                                               |
 | `trip_spare_filled`                                                                   | `from`: card (the Days view and a free day's sheet), week (the Week view's panel); idea and chat once Parky offers parks                                                                                                           |
 | `trip_day_moved`, `trip_day_freed`, `trip_park_removed`                               | none: a day put on a free day, a day made free, a park taken out, from a day's „More“                                                                                                                                              |
-| `trip_undo`                                                                           | `what`: pin, swap, move, free, remove, add, release, idea                                                                                                                                                                          |
+| `trip_undo`                                                                           | `what`: pin, swap, move, free, remove, add, release, idea, parky                                                                                                                                                                   |
 | `trip_idea_shown`                                                                     | `kind` (move, swap, add, travel_day, hopper, avoid_party), `place` (header, day, chat); once per idea and place                                                                                                                    |
 | `trip_idea_applied`                                                                   | `kind`, `place`                                                                                                                                                                                                                    |
 | `trip_idea_chat`                                                                      | `kind`                                                                                                                                                                                                                             |
@@ -464,7 +464,18 @@ are in `lib/trip-regions/plan.ts`: `toggleLock`, `swapLocks`, `moveVisit`, `free
   edit it says what changed in words ("Tokyo DisneySea is now on Wed, Jan 20."), that the pinned
   days stay, and the peak wait now, or what the pins cost against the plan without them (the same
   query minus `lock`, usually still cached). "Undo" while there is an edit to take back,
-  "Release all" while a day is pinned.
+  "Release all" while a day is pinned. A change Parky makes in the chat with `change_trip` while
+  the planner is on screen is one more edit (`tripPlannerBridge.applyChange`, `kind: 'parky'`):
+  the band says "Parky changed the trip dates." and its "Undo" takes it back like a press.
+- **The glow** (`plan-day-glow.tsx`): once the new plan is on screen, the days the edit put
+  something else on glow once in every view (`editGlowDays`: both days of a swap, the day a park
+  left and the one it went to, a day made free, a park put on a free day, the days an idea
+  changes), and the same days again after an Undo. With motion the ring swells and fades; reduced
+  motion gets the ring held, then faded.
+- **"Another day"** on Parky's idea card in the chat opens the swap mode for the idea's park,
+  on the idea's day where the park is there, else on its first
+  (`tripPlannerBridge.openSwap(region, park, from)`, which the result connects with
+  `connectPlannerSwap`).
 
 Owner's decision: **an earlier closing time always counts.** The API prices a day by the hours a
 day guest really gets; the planner shows it everywhere a day is: the Week block's end, the
