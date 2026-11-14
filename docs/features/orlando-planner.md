@@ -247,6 +247,12 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
   (`askParkyAboutIdea`, `assistant_question` with `kind: idea`) and draws the idea under his
   answer with "Add to the plan", then "In the plan: …" with Undo. The card's words are the
   planner's, made where it was pressed: the chat carries none of the planner's messages.
+- **Offered by Parky** (`show_card` kind `idea` in the API): `get_trip_plan` and `change_trip`
+  list up to three ideas for the trip on screen, and Parky may send one as a card
+  (`{ kind: 'idea', region, idea }`, read by `readIdeaCard` in `lib/assistant/actions.ts`). The
+  chat asks the planner on screen for the card's words (`tripPlannerBridge.ideaCard`, connected by
+  `useIdeaCardBridge` in the result; `useIdeaCard` builds the card for "In the chat" as well) and
+  draws the same `AssistantTripIdeaCard` under the answer. Without that planner there is no card.
 - **Applying** goes through the planner's bridge (`tripPlannerBridge.applyIdea`) from all three:
   the idea's query part set over the state (each parameter replaces its value whole,
   `applyIdea`), as an edit the status band names ("In the plan: …") and its Undo takes back.
