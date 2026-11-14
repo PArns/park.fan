@@ -787,6 +787,34 @@ export function Header({
                         </SheetSubLink>
                       ))}
                     </SheetDisclosure>
+                    {/* Right under the parks, because planning is what most visitors come for.
+                      The planner band's rows in the band's order: the regions' trip planners
+                      first, then the day planner with this browser's plan and the quick starts.
+                      Each group has its caption, so the day planner's link is not read as one of
+                      the regions. */}
+                    <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
+                      {plannerMenu.regions.length > 0 && (
+                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
+                      )}
+                      {plannerMenu.regions.map((region) => (
+                        <SheetSubLink key={region.id} href={region.href}>
+                          {region.name}
+                        </SheetSubLink>
+                      ))}
+                      <SheetCaption>{t('planner')}</SheetCaption>
+                      <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
+                      <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
+                      {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
+                      {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
+                        <SheetSubLink
+                          key={park.href}
+                          href={park.href}
+                          onClick={quickStartClick(park, 'menu-park')}
+                        >
+                          {park.name}
+                        </SheetSubLink>
+                      ))}
+                    </SheetDisclosure>
                     {/* The three hubs of the desktop "more" band, in its column order, each opening
                       onto its own page as the first row and then its categories or chapters.
                       Without the lists a hub is a plain link. */}
@@ -842,33 +870,6 @@ export function Header({
                         {t('howto')}
                       </SheetNavLink>
                     )}
-                    {/* The planner band's rows in the band's order: the regions' trip planners
-                      first, then the day planner with this browser's plan and the quick starts.
-                      Each group has its caption, so the day planner's link is not read as one of
-                      the regions. */}
-                    <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
-                      {plannerMenu.regions.length > 0 && (
-                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
-                      )}
-                      {plannerMenu.regions.map((region) => (
-                        <SheetSubLink key={region.id} href={region.href}>
-                          {region.name}
-                        </SheetSubLink>
-                      ))}
-                      <SheetCaption>{t('planner')}</SheetCaption>
-                      <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
-                      <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
-                      {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
-                      {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
-                        <SheetSubLink
-                          key={park.href}
-                          href={park.href}
-                          onClick={quickStartClick(park, 'menu-park')}
-                        >
-                          {park.name}
-                        </SheetSubLink>
-                      ))}
-                    </SheetDisclosure>
                     <SheetNavLink href={orlandoPath()} icon={CalendarDays}>
                       {t('orlando')}
                     </SheetNavLink>
