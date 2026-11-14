@@ -6,7 +6,12 @@
  * Run: `pnpm test:park-season-days`
  */
 import assert from 'node:assert/strict';
-import { seasonDaysOfMonth, seasonKindsIn, seasonMarks } from '../lib/parks/park-season-days.ts';
+import {
+  seasonDaysOfMonth,
+  seasonKindsIn,
+  seasonMarks,
+  seasonsNeedDayStatus,
+} from '../lib/parks/park-season-days.ts';
 
 let passed = 0;
 function test(name, fn) {
@@ -57,6 +62,39 @@ test('a range season marks every day of the month it overlaps, and only those', 
     OCTOBER
   );
   assert.deepEqual(Object.keys(days).sort(), ['2026-10-01', '2026-10-02']);
+});
+
+test('a season without dates skips the days the calendar shows closed; listed dates stand', () => {
+  const calendar = [
+    { date: '2026-10-05', status: 'CLOSED' },
+    { date: '2026-10-06', status: 'UNKNOWN' },
+    { date: '2026-10-07', status: 'OPERATING' },
+  ];
+  const range = season('scary', {
+    kind: 'halloween',
+    status: 'expected',
+    startDate: '2026-10-05',
+    endDate: '2026-10-07',
+  });
+  const listed = season('nocturne', {
+    kind: 'special_event',
+    startDate: '2026-10-05',
+    endDate: '2026-10-07',
+    dates: ['2026-10-05'],
+  });
+  const days = seasonDaysOfMonth([range, listed], OCTOBER, calendar);
+  assert.deepEqual(
+    Object.entries(days)
+      .sort()
+      .map(([date, list]) => [date, list.map((s) => s.id)]),
+    [
+      ['2026-10-05', ['nocturne']],
+      ['2026-10-06', ['scary']],
+      ['2026-10-07', ['scary']],
+    ]
+  );
+  assert.equal(seasonsNeedDayStatus([listed]), false);
+  assert.equal(seasonsNeedDayStatus([range, listed]), true);
 });
 
 test('a cancelled season and the kinds the grid already shows mark nothing', () => {

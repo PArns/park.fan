@@ -111,7 +111,11 @@ carries its kind's icon beside the status word, from `SEASON_KIND_ICON`
 fir tree, a winter season a snowflake, summer nights a moon, a special event sparkles. Only those
 five mark a day (`SEASON_EVENT_KINDS`): an `opening` is the open days themselves, a `closure` is
 closed days and a `maintenance` window is the works chip. A season with single `dates` marks only
-those, a cancelled one none. The page reads the shown month's seasons with the month as the window,
+those, a cancelled one none, and one without `dates` only the days the calendar does not show
+`CLOSED` (open or unknown): its range is its outer bounds, and an `expected` Halloween with no day
+list must not haunt a day the park is shut. For that the page waits for the month's statuses, the
+summary's own seed (`getCalendarMonthSeed`), but only in a month with such a season
+(`seasonsNeedDayStatus`). The page reads the shown month's seasons with the month as the window,
 since the park's own list starts today and a past day's season has ended by then, and computes
 `seasonDaysOfMonth` (`lib/parks/park-season-days.ts`) once on the server: the tiles, the day dialog
 and the legend read that one record, so the legend keys exactly the kinds the month shows, none in a

@@ -4,7 +4,9 @@ Ein Tag, an dem eine kuratierte Saison des Parks läuft, trägt neben dem Status
 Art: Halloween einen Geist, Weihnachten eine Tanne, eine Wintersaison eine Schneeflocke,
 Sommernächte einen Mond, eine Sonderveranstaltung Funken. `opening`, `closure` und `maintenance`
 markieren keinen Tag, denn das zeigen schon die offenen und geschlossenen Tage und der Wartungs-Chip.
-Eine Saison mit einzelnen `dates` steht nur an diesen Tagen, eine abgesagte an keinem. Läuft eine
+Eine Saison mit einzelnen `dates` steht nur an diesen Tagen, eine ohne nur an Tagen, die der
+Kalender nicht als geschlossen zeigt, eine abgesagte an keinem. Dafür wartet die Seite auf den
+Monats-Seed der Zusammenfassung, aber nur in einem Monat mit einer solchen Saison. Läuft eine
 Saison mehr als den halben Monat oder ist sie nur `expected`, steht das Symbol ohne Chip in der
 Farbe der Zeile, damit ein Monat Wintertraum die Andrangsfarben nicht überdeckt. Die Seite liest die
 Saisons des gezeigten Monats mit dem Monat als Fenster, weil die Liste des Parks erst heute beginnt,
