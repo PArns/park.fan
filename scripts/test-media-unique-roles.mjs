@@ -16,6 +16,12 @@ import {
   uniqueClaims,
 } from '../lib/admin/media-unique-roles.ts';
 
+// A park is its path in a claim (`lib/media/park-path.mjs`), so Paris and Anaheim, both
+// `disneyland-park`, never take a role from each other.
+const PHANTASIALAND = 'europe/germany/bruehl/phantasialand';
+const EFTELING = 'europe/netherlands/kaatsheuvel/efteling';
+const EUROPA_PARK = 'europe/germany/rust/europa-park';
+
 let passed = 0;
 let failed = 0;
 
@@ -54,12 +60,12 @@ check(
     alsoRides: ['winjas-force'],
     roles: ['ride-card'],
   }),
-  ['ride-card:phantasialand/winjas-fear', 'ride-card:phantasialand/winjas-force']
+  [`ride-card:${PHANTASIALAND}/winjas-fear`, `ride-card:${PHANTASIALAND}/winjas-force`]
 );
 check(
   'a park background claims its park',
   uniqueClaims({ park: 'efteling', ride: null, roles: ['park-background', 'hero'] }),
-  ['park-background:efteling']
+  [`park-background:${EFTELING}`]
 );
 check('hero is not unique', uniqueClaims({ park: 'efteling', ride: 'baron', roles: ['hero'] }), []);
 check(
@@ -69,7 +75,7 @@ check(
 );
 check(
   'another ride of the same park keeps its card',
-  rolesToYield(new Set(['ride-card:europa-park/voltron']), {
+  rolesToYield(new Set([`ride-card:${EUROPA_PARK}/voltron`]), {
     park: 'europa-park',
     ride: 'blue-fire',
     roles: ['ride-card'],
@@ -78,7 +84,7 @@ check(
 );
 check(
   'a card answering for the claimed ride through alsoRides gives it up',
-  rolesToYield(new Set(['ride-card:phantasialand/winjas-force']), {
+  rolesToYield(new Set([`ride-card:${PHANTASIALAND}/winjas-force`]), {
     park: 'phantasialand',
     ride: 'winjas-fear',
     alsoRides: ['winjas-force'],
@@ -123,7 +129,7 @@ console.log('\n🔎 Hand-over\n');
     claimants: [
       {
         id: 'europa-park/voltron-nevera-powered-by-rimac-461ea7',
-        claims: ['ride-card:europa-park/voltron-nevera-powered-by-rimac'],
+        claims: [`ride-card:${EUROPA_PARK}/voltron-nevera-powered-by-rimac`],
       },
     ],
     holders: new Map([

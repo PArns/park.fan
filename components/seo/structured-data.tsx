@@ -307,7 +307,7 @@ export function ParkStructuredData({
     url: url,
     ...(locale && { inLanguage: locale }),
     description: description || `Real-time wait times and crowd levels for ${parkName}.`,
-    image: buildStructuredImage(getParkImageSet(park.slug), ogImageUrl),
+    image: buildStructuredImage(getParkImageSet(park), ogImageUrl),
     address: {
       '@type': 'PostalAddress',
       // Street and postcode are curated; nothing upstream carries them.
@@ -339,7 +339,7 @@ export function ParkStructuredData({
     containsPlace:
       'attractions' in park && park.attractions
         ? park.attractions.map((attraction) => {
-            const attrImg = getAttractionBackgroundImage(park.slug, attraction.slug);
+            const attrImg = getAttractionBackgroundImage(park, attraction.slug);
             return {
               '@type': 'TouristAttraction' as const,
               // An id, so the ride is one entity on the page and the wait-time `Observation` below
@@ -556,7 +556,7 @@ export function AttractionStructuredData({
     ...(locale && { inLanguage: locale }),
     description:
       description || `${attractionName} at ${parkName} - Real-time wait times and status.`,
-    image: buildStructuredImage(getAttractionImageSet(park.slug, attraction.slug), ogImageUrl),
+    image: buildStructuredImage(getAttractionImageSet(park, attraction.slug), ogImageUrl),
     ...(latitude != null &&
       longitude != null && {
         geo: { '@type': 'GeoCoordinates', latitude, longitude },

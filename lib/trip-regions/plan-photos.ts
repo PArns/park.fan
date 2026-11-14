@@ -15,7 +15,8 @@ export function tripPlannerPhotos(
 ): Record<string, { src: string; position: string }> {
   const out: Record<string, { src: string; position: string }> = {};
   for (const park of region.parks) {
-    const image = getParkBackground(park.slug);
+    // By path: the California planner's `disneyland-park` is Anaheim's, not Paris'.
+    const image = getParkBackground({ slug: park.slug, url: park.path });
     if (image)
       out[park.slug] = { src: versionedSrc(image), position: focusToObjectPosition(image.focus) };
   }

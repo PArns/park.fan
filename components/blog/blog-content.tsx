@@ -450,22 +450,26 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
 
   // Background images and focal points for every referenced park and ride, so the hover preview
   // matches the cards elsewhere. The maps are keyed by the reference as written (a bare slug or
-  // the long `/parks/…` form), but the media database is keyed by the bare slug, so the slug comes
-  // off the resolved object, not the key.
+  // the long `/parks/…` form); the photo is looked up by the resolved park with its path, because
+  // a bare `disneyland-park` means Paris.
   const parkBackgroundMap = new Map<string, string | null>();
   const parkFocusMap = new Map<string, string>();
   for (const [ref, park] of parkMap) {
-    const slug = park?.slug ?? ref;
-    parkBackgroundMap.set(ref, getParkBackgroundImage(slug));
-    parkFocusMap.set(ref, getCardObjectPosition(slug));
+    const lookup = park ? { slug: park.slug, url: park.href } : ref;
+    parkBackgroundMap.set(ref, getParkBackgroundImage(lookup));
+    parkFocusMap.set(ref, getCardObjectPosition(lookup));
   }
   const attractionBackgroundMap = new Map<string, string | null>();
   const attractionFocusMap = new Map<string, string>();
   for (const [ref, { park, attraction }] of attractionMap) {
-    const parkSlug = attraction?.parkSlug ?? park?.slug ?? ref.split('/')[0];
+    const parkLookup = attraction
+      ? { slug: attraction.parkSlug, url: attraction.href }
+      : park
+        ? { slug: park.slug, url: park.href }
+        : ref.split('/')[0];
     const attractionSlug = attraction?.attractionSlug ?? ref.split('/').pop() ?? '';
-    attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkSlug, attractionSlug));
-    attractionFocusMap.set(ref, getCardObjectPosition(parkSlug, attractionSlug));
+    attractionBackgroundMap.set(ref, getAttractionBackgroundImage(parkLookup, attractionSlug));
+    attractionFocusMap.set(ref, getCardObjectPosition(parkLookup, attractionSlug));
   }
   // Cross-references to other posts, resolved once so the `a` renderer can
   // hand each link the post it points at.

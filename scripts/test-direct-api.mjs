@@ -157,11 +157,14 @@ test('the map stays small', () => JSON.stringify(map).length < 40_000, true);
 
 // --- 3. The two response transforms ----------------------------------------------------------
 
-const photographed = Object.keys(map.parks)[0];
+// A park with a photo, as a slug and as the geo path the map files it under.
+const [photographedSlug, photographed] = Object.entries(map.paths).find(([, path]) =>
+  Object.hasOwn(map.parks, path)
+);
 const nearby = withNearbyCardImages(map, {
   type: 'nearby_parks',
   userLocation: { latitude: 0, longitude: 0 },
-  data: { parks: [{ slug: photographed }, { slug: 'nowhere' }], count: 2 },
+  data: { parks: [{ slug: photographedSlug }, { slug: 'nowhere' }], count: 2 },
 });
 test(
   'nearby: a park with a photo gets it',
@@ -176,7 +179,7 @@ test(
 const inPark = withNearbyCardImages(map, {
   type: 'in_park',
   userLocation: { latitude: 0, longitude: 0 },
-  data: { park: { slug: photographed }, rides: [] },
+  data: { park: { slug: photographedSlug, url: `/v1/parks/${photographed}` }, rides: [] },
 });
 test(
   'nearby: the in-park park gets its photo',
@@ -187,7 +190,8 @@ test(
 const favorites = favoritesForCards(map, {
   parks: [
     {
-      slug: photographed,
+      slug: photographedSlug,
+      url: `/v1/parks/${photographed}`,
       liveWaitTimes: { available: true },
       analytics: { avgWaitTime: 20 },
       operatingAttractions: 4,
@@ -199,7 +203,7 @@ const favorites = favoritesForCards(map, {
       operatingAttractions: 0,
     },
   ],
-  attractions: [{ slug: 'x', park: { slug: photographed } }],
+  attractions: [{ slug: 'x', park: { slug: photographedSlug } }],
   shows: [],
   restaurants: [],
 });

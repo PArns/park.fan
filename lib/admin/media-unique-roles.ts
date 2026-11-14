@@ -5,6 +5,8 @@
  * request. The keys mirror `auditRoles` in the manifest generator. `pnpm test:media-unique-roles`.
  */
 
+import { MEDIA_PARK_PATH_BY_SLUG } from '@/lib/media/manifest-parks';
+import { imageParkKey } from '@/lib/media/park-path.mjs';
 import { normalizeSidecar, serializeSidecar } from '@/lib/media/sidecar.mjs';
 
 /** The roles only one image may hold per park (`park-background`) or per ride (`ride-card`). */
@@ -15,13 +17,16 @@ export type UniqueRole = (typeof UNIQUE_ROLES)[number];
 /** The fields a claim is made of — a sidecar, a manifest row, or a raw sidecar from a branch. */
 export interface RoleHolder {
   park?: string | null;
+  parkPath?: string | null;
   ride?: string | null;
   alsoRides?: readonly string[] | null;
   roles?: readonly string[] | null;
 }
 
 /**
- * Every uniqueness key an image claims, e.g. `ride-card:europa-park/voltron`.
+ * Every uniqueness key an image claims, e.g. `ride-card:europe/germany/rust/europa-park/voltron`.
+ * The park is its path, as the lookups file it (`lib/media/park-path.mjs`), so a background for
+ * Anaheim's `disneyland-park` never takes the role from Paris'.
  *
  * A ride card claims each ride it answers for, `alsoRides` included, because
  * `getRideImage` resolves those through the same `ride-card` preference. A role
@@ -29,13 +34,14 @@ export interface RoleHolder {
  */
 export function uniqueClaims(image: RoleHolder): string[] {
   const roles = image.roles ?? [];
+  const park = imageParkKey(image, MEDIA_PARK_PATH_BY_SLUG);
   const claims: string[] = [];
-  if (roles.includes('park-background') && image.park) {
-    claims.push(`park-background:${image.park}`);
+  if (roles.includes('park-background') && park) {
+    claims.push(`park-background:${park}`);
   }
-  if (roles.includes('ride-card') && image.park && image.ride) {
+  if (roles.includes('ride-card') && park && image.ride) {
     for (const slug of [image.ride, ...(image.alsoRides ?? [])]) {
-      claims.push(`ride-card:${image.park}/${slug}`);
+      claims.push(`ride-card:${park}/${slug}`);
     }
   }
   return claims;

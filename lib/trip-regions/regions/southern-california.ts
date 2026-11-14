@@ -69,15 +69,16 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   timezone: 'America/Los_Angeles',
   // Anaheim, where the most parks of the region are; San Diego and Valencia are a drive away.
   centre: { latitude: 33.81, longitude: -117.92 },
-  photo: '/media/disney-california-adventure-park/pixar-pier.jpg',
+  photo: '/media/disneyland-anaheim/sleeping-beauty-castle.jpg',
   scene: () =>
     import('../../../components/assistant/parky/southern-california-scene').then((m) => ({
       default: m.ParkySouthernCaliforniaScene,
     })),
   hub: {
-    // Pixar Pier at Disney California Adventure, then Universal. Disneyland Park itself has no
-    // photo: Paris has the same slug, and the media database finds a park's photo by slug alone.
+    // Sleeping Beauty Castle in Anaheim, then Pixar Pier at Disney California Adventure, then
+    // Universal.
     heroPhotos: [
+      '/media/disneyland-anaheim/sleeping-beauty-castle.jpg',
       '/media/disney-california-adventure-park/pixar-pier.jpg',
       '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
     ],
@@ -97,8 +98,8 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
       },
     },
   },
-  // One page until a photo of Disneyland in Anaheim is in the media database: a Disneyland page
-  // under a Universal coaster would show the wrong park.
+  // One page: a Disneyland page of its own needs its words under
+  // `tripRegions.southern-california.bestTime` in all six languages first.
   bestTime: [
     {
       id: 'region',
@@ -108,6 +109,17 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
     },
   ],
   parkNameSuffixes: ['San Diego', 'California'],
+  // The codes visitors use where the derived letters say little or mislead: Universal would read
+  // "SH", the two Disney parks "DI" and "DA", Magic Mountain "SF", Knott's "KB", and SeaWorld "SD"
+  // beside Sesame Place San Diego.
+  parkShortNames: {
+    'disneyland-park': 'DL',
+    'disney-california-adventure-park': 'DCA',
+    'universal-studios-hollywood': 'USH',
+    'knotts-berry-farm': 'KBF',
+    'six-flags-magic-mountain': 'SFMM',
+    'seaworld-san-diego': 'SW',
+  },
   resortWords: { 'disneyland-resort': 'Disneyland', 'universal-studios-hollywood': 'Universal' },
   hotels: [{ key: 'disney', area: 'disneyland_resort' }, { key: 'offsite' }],
   // Separately ticketed nights (Oogie Boogie Bash, After Dark, Halloween Horror Nights) send the
