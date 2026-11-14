@@ -31,13 +31,13 @@ import {
   type TripCanvas,
 } from '@/lib/trip-regions/plan-week';
 import type { TripPlan } from '@/lib/trip-regions/plan';
-import { dayStayBase, monthStayCells } from '@/lib/trip-regions/plan-stays';
+import { dayStayBase, monthStayCells, planStays } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanCodeKey } from './plan-calendar-keys';
 import { useBaseName } from './plan-place-words';
-import { MoveIcon, PlanMonthStayBand } from './plan-stay-band';
+import { MoveIcon, PlanMonthStayBand, StayMarker } from './plan-stay-band';
 import {
   PlanDayMarker,
   useDayMarkerText,
@@ -121,6 +121,7 @@ export function PlanMonthView({
   );
   const dayBy = useMemo(() => new Map(plan.days.map((d) => [d.date, d])), [plan.days]);
   const stayCells = useMemo(() => monthStayCells(plan), [plan]);
+  const stays = useMemo(() => planStays(plan), [plan]);
   const calendarBy = useMemo(
     () => new Map((calendar?.days ?? []).map((d) => [d.date, d])),
     [calendar?.days]
@@ -150,16 +151,19 @@ export function PlanMonthView({
     const park = parkBySlug.get(slug);
     return park ? parkLabel(park, config.parkShortNames, 'tight') : slug;
   };
-  // The band runs along the foot, out to the cell's edges, so a stay reads as one strip.
+  // The band runs along the foot, out to the cell's edges, so a stay reads as one strip; its tint
+  // sits on the page's ground, not on the crowd tile, so it has one colour in every cell.
   const stayFoot = (date: string, rowStart: boolean) => {
     const c = stayCells.get(date);
     return c ? (
-      <PlanMonthStayBand
-        stay={c.stay}
-        left={c.left}
-        first={c.first || rowStart}
-        className="-mx-1 mt-auto -mb-1 self-stretch lg:-mx-1.5 lg:-mb-1.5"
-      />
+      <span className="bg-background -mx-1 mt-auto -mb-1 flex self-stretch lg:-mx-1.5 lg:-mb-1.5">
+        <PlanMonthStayBand
+          stay={c.stay}
+          left={c.left}
+          first={c.first || rowStart}
+          className="flex-1"
+        />
+      </span>
     ) : null;
   };
 
@@ -388,7 +392,17 @@ export function PlanMonthView({
         })}
       </ol>
       {stayCells.size > 0 && (
-        <p className="text-muted-foreground mt-1 text-xs">{t('month.stayKey')}</p>
+        <div className="mt-1 flex flex-col gap-1 text-xs">
+          <ul className="flex flex-wrap gap-x-3 gap-y-1" data-plan-stay-key="">
+            {stays.map((stay) => (
+              <li key={stay.number} className="flex items-center gap-1">
+                <StayMarker number={stay.number} className="size-4 text-[10px]" />
+                {baseName(stay.base)}
+              </li>
+            ))}
+          </ul>
+          <p className="text-muted-foreground">{t('month.stayKey')}</p>
+        </div>
       )}
       <PlanCodeKey entries={codeKey} className="mt-2 lg:hidden" />
       <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} signalsLabel={false} className="mt-2" />
