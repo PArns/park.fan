@@ -214,9 +214,7 @@ function SheetPlanRow({ onOpen }: { onOpen: () => void }) {
 /** A group's name inside a `SheetDisclosure`, where its rows would not say on their own. */
 function SheetCaption({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-muted-foreground mt-1 text-[11px] font-semibold tracking-wide uppercase">
-      {children}
-    </p>
+    <p className="text-foreground mt-1 text-[11px] font-bold tracking-wide uppercase">{children}</p>
   );
 }
 
@@ -836,11 +834,21 @@ export function Header({
                         {t('howto')}
                       </SheetNavLink>
                     )}
-                    {/* The planner band's rows: the day planner's page first, as each hub's own page
-                      opens its disclosure, this browser's plan where there is one, the quick starts,
-                      then the regions' trip planners. */}
+                    {/* The planner band's rows in the band's order: the regions' trip planners
+                      first, then the day planner with this browser's plan and the quick starts.
+                      Each group has its caption, so the day planner's link is not read as one of
+                      the regions. */}
                     <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
-                      <SheetSubLink href={plannerPath}>{t('planner')}</SheetSubLink>
+                      {plannerMenu.regions.length > 0 && (
+                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
+                      )}
+                      {plannerMenu.regions.map((region) => (
+                        <SheetSubLink key={region.id} href={region.href}>
+                          {region.name}
+                        </SheetSubLink>
+                      ))}
+                      <SheetCaption>{t('planner')}</SheetCaption>
+                      <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
                       <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
                       {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
                       {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
@@ -850,14 +858,6 @@ export function Header({
                           onClick={quickStartClick(park, 'menu-park')}
                         >
                           {park.name}
-                        </SheetSubLink>
-                      ))}
-                      {plannerMenu.regions.length > 0 && (
-                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
-                      )}
-                      {plannerMenu.regions.map((region) => (
-                        <SheetSubLink key={region.id} href={region.href}>
-                          {region.name}
                         </SheetSubLink>
                       ))}
                     </SheetDisclosure>
