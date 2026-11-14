@@ -51,9 +51,7 @@ import { localeSwitchPath } from '@/lib/assistant/switch-locale';
 import { reopenAfterSwitch } from '@/lib/assistant/open';
 import {
   type AssistantAction,
-  type AssistantActionChip,
   type AssistantPlannerPark,
-  type AssistantReceipt,
   type TripChangeKind,
 } from '@/lib/assistant/actions';
 import { interviewStore, type AssistantInterview } from '@/lib/assistant/interview';
