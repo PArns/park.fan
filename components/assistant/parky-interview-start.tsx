@@ -4,14 +4,17 @@ import { useSyncExternalStore } from 'react';
 import { MessagesSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
 import { assistantGate } from '@/lib/assistant/config';
 import { openParky } from '@/lib/assistant/open';
 import { startInterview, type InterviewStart } from '@/lib/assistant/interview';
 
 /**
- * The planners' way into Parky's interview: a button that sets the interview on its first step and
- * opens the chat, which asks the first question once its session is ready. Drawn only where Parky
- * shows for this visitor (`assistantGate`), so it never opens a window that does not come.
+ * The planners' way into Parky's interview: Parky's face beside a line on what the chat does, and a
+ * button that sets the interview on its first step and opens the chat, which asks the first question
+ * once its session is ready. The face is the launcher's, calm, so the card reads as Parky's offer
+ * rather than one more form row. Drawn only where Parky shows for this visitor (`assistantGate`),
+ * so it never opens a window that does not come.
  */
 export function ParkyInterviewStart({
   label,
@@ -35,8 +38,11 @@ export function ParkyInterviewStart({
     // widest screen. Side by side from 36rem, where the longest label (Italian, French) still
     // leaves the line a column of its own; stacked below that, the button as wide as the card.
     <div data-parky-interview-start={start.kind} className={cn('@container', className)}>
-      <div className="border-primary/30 bg-primary/5 flex flex-col gap-2 rounded-xl border p-3 @xl:flex-row @xl:items-center @xl:gap-4">
-        <p className="text-muted-foreground text-xs text-pretty @xl:min-w-0 @xl:flex-1">{line}</p>
+      <div className="border-primary/30 bg-primary/5 flex flex-col gap-3 rounded-xl border p-3 @xl:flex-row @xl:items-center @xl:gap-4 @xl:p-4">
+        <div className="flex items-center gap-3 @xl:min-w-0 @xl:flex-1">
+          <ParkyLogo className="size-12 shrink-0 drop-shadow-sm @xl:size-14" idle calm />
+          <p className="text-foreground/85 text-sm text-pretty @xl:text-base">{line}</p>
+        </div>
         <Button
           type="button"
           onClick={() => {

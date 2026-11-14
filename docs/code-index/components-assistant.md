@@ -64,7 +64,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky-interview-start.tsx`](../../components/assistant/parky-interview-start.tsx)
 
-- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
+- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: Parky's face beside a line on what the chat does, and a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
 
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
