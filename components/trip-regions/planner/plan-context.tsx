@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext } from 'react';
 import type { TripPlanState } from '@/lib/trip-regions/plan';
 import type { TicketCatalog } from '@/lib/trip-regions/plan-tickets';
 import { trackTripEvent, type TrackTripEvent } from '@/lib/trip-regions/plan-analytics';
-import type { TripRegionConfig, TripTicketStep } from '@/lib/trip-regions/registry';
+import type { TripHotelKind, TripRegionConfig, TripTicketStep } from '@/lib/trip-regions/registry';
 import type {
   TripRegion,
   TripRegionGroup,
@@ -25,6 +25,8 @@ export interface PlanContextValue {
   config: TripRegionConfig;
   /** The region's ticket step, an empty one where it has none. */
   ticketStep: TripTicketStep;
+  /** The hotel kinds the options offer (`tripHotelKinds`), in the region's order. */
+  hotels: readonly TripHotelKind[];
   locale: string;
   /** The region's zone, which every date and time of the plan is in. */
   timeZone: string;
