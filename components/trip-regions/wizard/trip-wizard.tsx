@@ -211,9 +211,12 @@ export function TripWizard({
         onKeyDown={advanceOnEnter}
         onOpenAutoFocus={(event) => {
           // The first control, not the dialog: the date grid's focusable day on the first step.
+          // A step that already took the focus keeps it (the ticket's first day after „Change
+          // ticket“, `focusTicket`).
           event.preventDefault();
           requestAnimationFrame(() => {
             const body = bodyRef.current;
+            if (body?.contains(document.activeElement)) return;
             const target =
               body?.querySelector<HTMLElement>('[data-plan-date][tabindex="0"]') ??
               body?.querySelector<HTMLElement>(
