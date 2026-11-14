@@ -1,5 +1,6 @@
 import { tripRegionRelayUrl, type TripRelayRoute } from './paths';
 import type { TripPlan } from './plan';
+import type { PlanIdeasAnswer } from './plan-ideas';
 import { WHEN_HOLIDAY_COUNTRIES } from './plan-when';
 import type { TripCalendar, TripSchoolBreaks, TripWhen } from './types';
 
@@ -89,6 +90,20 @@ export function fetchTripPlan(
   signal?: AbortSignal
 ): Promise<TripPlan> {
   return relayGet<TripPlan>(region, 'plan', query, signal);
+}
+
+/** Parky's ideas' cache key: the plan's region and request query, apart from the plan's. */
+export function ideasQueryKey(region: string, query: Record<string, string>): readonly unknown[] {
+  return ['trip-plan-ideas', region, new URLSearchParams(query).toString()];
+}
+
+/** `GET …/plan/ideas` through the relay, with the plan's own query. */
+export function fetchTripPlanIdeas(
+  region: string,
+  query: Record<string, string>,
+  signal?: AbortSignal
+): Promise<PlanIdeasAnswer> {
+  return relayGet<PlanIdeasAnswer>(region, 'plan/ideas', query, signal);
 }
 
 /** `GET …/calendar` through the relay, for a window of at most 92 days. */

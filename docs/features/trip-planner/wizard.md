@@ -200,7 +200,14 @@ tickets entered there out of the plan.
 The finale („Dein Plan steht.“) shows the planned parks as `PlannerPolaroids`, the trip in one line
 (days, park days, cities), the peak wait against the trip's average in the result's words, the
 ribbon from the first day to the last, and short lines from the plan: the cities and their nights,
-the parks it had no day for, and that the day planner asks who comes along for each park day.
+the parks it had no day for, how many ideas Parky has for the plan („Parky hat 3 Ideen für deinen
+Plan“, `useShownIdeas`), and that the day planner asks who comes along for each park day.
+
+A step left with „Weiter“ answers its questions (`tripWizardAnswered` in `planner-ui.ts`, per tab
+and region); a skipped one does not. Parky's ideas read it: the API cannot tell a free arrival day
+the visitor chose from one nobody asked about, so an idea that would overrule an answer
+(`travel_day` after the travel days, `hopper` after hopping) is not shown
+([Parky's ideas](../orlando-planner.md#parkys-ideas)).
 
 ### What it counts
 

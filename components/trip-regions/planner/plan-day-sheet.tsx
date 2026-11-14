@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   ArrowLeftRight,
@@ -41,7 +41,7 @@ import {
   planTimeMinute,
   shownDayWait,
   spareSuggestions,
-  swapPreview,
+  swapTargets,
   type SpareSuggestion,
 } from '@/lib/trip-regions/plan-week';
 import {
@@ -57,7 +57,6 @@ import { ticketDayOf } from '@/lib/trip-regions/plan-tickets';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
 import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
 import { oneFullStop } from '@/lib/utils/metadata';
@@ -78,7 +77,7 @@ const BIG_RIDES = 5;
  * with the hotel's perks, why a short day is short and how many hours it loses, the day's events
  * with their status, the drive from the hotel area, the weather where a forecast reaches, the big
  * rides of that day (the day planner's own `/plan/day`, asked only when the sheet opens), and the
- * three things to do: pin, swap with another day, and "Plan this day", which opens the day planner
+ * three things to do: pin, swap with another day (the swap mode, `PlanSwapMode`), and "Plan this day", which opens the day planner
  * on that park and date (Level 3).
  */
 export function PlanDaySheet({
@@ -99,7 +98,8 @@ export function PlanDaySheet({
   /** „Dazu“ on a free day: the park its sheet suggests, on that date. */
   onFill: (suggestion: SpareSuggestion) => void;
   onToggleLock: (day: PlanDay) => void;
-  onSwap: (day: PlanDay, other: PlanDay) => void;
+  /** „Tauschen“: the swap mode on this day, which closes the sheet. */
+  onSwap: (day: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
   /** Where the focus goes back to when the sheet closes: the day the visitor pressed. */
   returnFocus?: () => void;
@@ -165,7 +165,7 @@ function DayDetails({
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onToggleLock: (day: PlanDay) => void;
-  onSwap: (day: PlanDay, other: PlanDay) => void;
+  onSwap: (day: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
   onFill: (suggestion: SpareSuggestion) => void;
 }) {
@@ -177,14 +177,9 @@ function DayDetails({
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
   const areaName = useAreaName();
-  const [swapOpen, setSwapOpen] = useState(false);
-  const swapId = useId();
 
   const isPark = day.kind === 'park' || day.kind === 'hop';
   const name = parkName;
-  // A swap changes two parks' days; the plan's figure is the mean over its visits, so the swap is
-  // said in that unit.
-  const perRide = (delta: number) => Math.round(delta / Math.max(1, plan.totals.visits));
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);
@@ -396,12 +391,7 @@ function DayDetails({
   );
   const lastYear = dayWarnings(day).includes('estimate_last_year');
 
-  const candidates = plan.days.filter(
-    (other) =>
-      other.date !== day.date &&
-      dayLockTarget(other) !== null &&
-      !(day.kind === 'rest' && other.kind === 'rest')
-  );
+  const candidates = swapTargets(plan, day);
 
   return (
     <div className="flex flex-col gap-4">
@@ -476,66 +466,11 @@ function DayDetails({
           <Button
             variant="outline"
             disabled={!canPin || candidates.length === 0}
-            aria-expanded={swapOpen}
-            aria-controls={swapId}
-            onClick={() => setSwapOpen((open) => !open)}
+            onClick={() => onSwap(day)}
           >
             <ArrowLeftRight aria-hidden="true" />
             {t('details.swap')}
           </Button>
-        </div>
-        <div id={swapId} hidden={!swapOpen}>
-          <p className="text-muted-foreground mb-1 text-xs">{t('swap.hint')}</p>
-          <ul className="divide-border/60 divide-y">
-            {candidates.map((other) => {
-              const preview = swapPreview(calendar, day, other, timeZone);
-              // What the swap does, not what the other day holds now: "rest day +1 min" read as if a
-              // rest day cost a minute.
-              const mine = day.parks[0]?.slug;
-              const theirs = other.parks[0]?.slug;
-              const what =
-                other.kind === 'rest' && mine
-                  ? t('swap.moveThere', { park: name(mine), date: short(day.date) })
-                  : day.kind === 'rest' && theirs
-                    ? t('swap.takeOver', { park: name(theirs), date: short(day.date) })
-                    : t('swap.trade', { park: name(theirs ?? '') });
-              const cost =
-                preview.kind === 'closed'
-                  ? t('swap.closed', { park: name(preview.slug) })
-                  : preview.kind === 'no_figure'
-                    ? t('swap.noFigure')
-                    : perRide(preview.delta) === 0
-                      ? t('swap.same')
-                      : preview.delta > 0
-                        ? t('swap.more', { minutes: perRide(preview.delta) })
-                        : t('swap.less', { minutes: -perRide(preview.delta) });
-              return (
-                <li key={other.date}>
-                  <button
-                    type="button"
-                    disabled={preview.kind === 'closed'}
-                    onClick={() => onSwap(day, other)}
-                    className={cn(
-                      'hover:bg-accent/50 flex min-h-11 w-full flex-wrap items-center gap-x-3 gap-y-0.5 rounded-md px-2 py-2 text-left text-sm transition-colors disabled:opacity-50',
-                      PLAN_FOCUS
-                    )}
-                  >
-                    <span className="w-24 shrink-0 tabular-nums">{short(other.date)}</span>
-                    <span className="min-w-0 flex-1">{what}</span>
-                    <span className="shrink-0 font-medium tabular-nums">{cost}</span>
-                    {preview.kind === 'minutes' && preview.short && (
-                      <span className="text-crowd-ink-high w-full pl-27 text-xs">
-                        {t('swap.short', {
-                          park: name(preview.short.slug),
-                          hours: preview.short.hours,
-                        })}
-                      </span>
-                    )}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
         </div>
         {isPark &&
           day.parks.map((visit) => (

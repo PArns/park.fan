@@ -3554,19 +3554,58 @@
       "undo": "Annulla",
       "release": "Sblocca tutti",
       "swapped": "Scambiato: {first} il {firstDay}, {second} il {secondDay}.",
-      "swappedCost": "Circa {current} invece di {best} min di attesa di picco."
+      "swappedCost": "Circa {current} invece di {best} min di attesa di picco.",
+      "pin": "Fissa",
+      "pinLabel": "Fissa {park} il {date}",
+      "swap": "Scambia",
+      "swapLabel": "Scambia {park} il {date}",
+      "more": "Altro",
+      "moreLabel": "Altro per {park} il {date}",
+      "pinnedNow": "{what} resta fissato il {date}.",
+      "unpinnedNow": "{what} il {date} non è più fissato; il piano può di nuovo spostare il giorno.",
+      "moved": "{park} ora è il {date}.",
+      "freed": "Il {date} ora è un giorno libero.",
+      "freedPark": "{count, plural, =0 {{park} allora non ha più giorni.} =1 {{park} allora ha un giorno, il {dates}.} other {{park} allora ha # giorni: {dates}.}}",
+      "removed": "{park} non fa più parte del viaggio.",
+      "released": "Nessun giorno è più fissato. Il piano sceglie di nuovo l’ordine.",
+      "undone": "L’ultima modifica è stata annullata.",
+      "peakNow": "Picco nei tuoi giorni ora circa {minutes} min.",
+      "sheet": {
+        "swap": "Scambia con un altro giorno",
+        "swapHint": "Ogni giorno mostra prima quanto costa lo scambio.",
+        "pinHint": "{park} resta il {date}, qualunque altra cosa cambi.",
+        "toSpare": "Sposta su un giorno libero",
+        "toSpareBetter": "Il {date}: circa {after} invece di {before} min.",
+        "toSpareSame": "Nessun giorno libero è più tranquillo; il {date} sarebbero circa {after} min.",
+        "toSpareNoFigure": "Il {date}; per quel giorno non c’è ancora un numero.",
+        "toSpareNone": "Il viaggio non ha un giorno libero per questo.",
+        "free": "Rendilo un giorno libero",
+        "freeHint": "Il {date} resta libero. Il nuovo piano mostra dove va {park}.",
+        "remove": "Togli {park} dal viaggio",
+        "removeHint": "{count, plural, =1 {Il suo giorno diventa libero.} =2 {Entrambi i giorni diventano liberi.} other {Tutti i # giorni diventano liberi.}}",
+        "removeLast": "L’unico parco del viaggio resta.",
+        "planHint": "Attrazioni, pause e spettacoli per questo giorno."
+      },
+      "swapMode": {
+        "title": "Scambia {park}",
+        "hint": "Scegli un giorno. Il numero è il picco di {park} quel giorno.",
+        "close": "Termina lo scambio",
+        "now": "ora",
+        "nowFree": "ora libero",
+        "nowRest": "ora giorno di riposo",
+        "nowPark": "ora {park}",
+        "figure": "<strong>{park} {minutes} min</strong> ({delta})",
+        "theirs": "{park} in cambio il {day}: {minutes} min ({delta})",
+        "spareMoves": "Il giorno libero passa a {day}.",
+        "restMoves": "Il giorno di riposo passa a {day}.",
+        "quietest": "il più tranquillo",
+        "closes": "chiude alle {time}",
+        "same": "già {park}"
+      }
     },
     "swap": {
-      "hint": "La cifra è quanto cambia l’attesa di picco media del piano; il resto del piano può spostarsi.",
       "closed": "{park} è chiuso quel giorno",
-      "noFigure": "nessuna cifra",
-      "same": "stessa attesa di picco",
-      "more": "+{minutes} min in media",
-      "less": "−{minutes} min in media",
-      "short": "{park} in un giorno corto, circa {hours, plural, =1 {un’ora} other {# ore}} in meno",
-      "moveThere": "{park} in questo giorno, il {date} diventa giorno di riposo",
-      "takeOver": "{park} il {date}, questo giorno diventa giorno di riposo",
-      "trade": "scambiare con {park}"
+      "noFigure": "nessuna cifra"
     },
     "keep": {
       "addAll": "Copia nel pianificatore della giornata",
@@ -3991,6 +4030,27 @@
         "stays": "Prima {first}, poi {rest}.",
         "dayPlanner": "Il pianificatore del giorno chiede per ogni giorno al parco chi viene e quanto sono alti i più piccoli."
       }
+    },
+    "ideas": {
+      "label": "Le idee di Parky",
+      "title": "Parky ha {count, plural, =1 {un’idea} other {# idee}} per il tuo piano",
+      "add": "{park} il {date}, giorno libero",
+      "move": "{park} il {to} invece del {from}",
+      "swap": "{park} il {to}, {with} il {from} in cambio",
+      "travel_day": "{end, select, arrival {Giorno di arrivo al parco} departure {Giorno di partenza al parco} other {Arrivo e partenza come giorni al parco}}: {park} il {to}",
+      "hopper": "{park} ci sta con {hopper}: il {to}",
+      "avoid_party": "{park} il {to} invece della serata evento del {from}",
+      "figure": "circa {after} min",
+      "figureMoved": "circa {after} invece di {before} min",
+      "apply": {
+        "add": "Aggiungi",
+        "swap": "Scambia",
+        "plan": "Pianifica così"
+      },
+      "chat": "Nella chat",
+      "ask": "Cosa ne pensi di questa idea per il mio piano: {idea}?",
+      "applied": "Nel piano: {idea}.",
+      "inPlan": "Aggiungi al piano"
     }
   },
   "tripRegions": {

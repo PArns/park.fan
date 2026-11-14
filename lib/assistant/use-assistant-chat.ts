@@ -1,5 +1,6 @@
 'use client';
 
+import type { AssistantTripIdea } from './trip-idea';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { API_ORIGIN } from '@/lib/api/client';
 import { readSse } from './sse';
@@ -72,6 +73,8 @@ export interface AssistantChatMessage {
   replies?: string[];
   /** Live cards Parky showed with the answer. */
   cards?: AssistantCard[];
+  /** The trip plan idea the visitor asked about, drawn under the answer with its button. */
+  tripIdea?: AssistantTripIdea;
   /** Reminders Parky asked for that wait for the visitor's press, or failed. */
   alerts?: AssistantAlertPrompt[];
   /** Writes that failed (a reminder Parky could not remove), as error chips. */
@@ -198,7 +201,9 @@ export function useAssistantChat(
       /** The position, only right after the visitor pressed „Standort teilen". */
       location?: { lat: number; lng: number },
       /** A reply chip's place among the chips, 1 the first. */
-      position?: number
+      position?: number,
+      /** The trip plan idea the question is about, drawn under the answer. */
+      tripIdea?: AssistantTripIdea
     ) => {
       const question = text.trim().slice(0, 1000);
       if (!question || phase !== 'idle' || !sessionToken) return;
@@ -223,7 +228,7 @@ export function useAssistantChat(
         messages: [
           ...current.messages,
           { id: localId(), role: 'user', text: question },
-          { id: localId(), role: 'assistant', text: '' },
+          { id: localId(), role: 'assistant', text: '', ...(tripIdea && { tripIdea }) },
         ],
       }));
       setPhase('waiting');

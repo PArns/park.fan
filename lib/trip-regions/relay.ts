@@ -6,35 +6,40 @@ import { tripRegionConfig } from './registry';
  * query parameter with a 400, so the relay forwards each route's own names and nothing else.
  */
 
+/** `/plan`'s query names. */
+const PLAN_QUERY: readonly string[] = [
+  'from',
+  'to',
+  'parks',
+  'hotel',
+  'area',
+  'arrival',
+  'departure',
+  'blocks',
+  'parties',
+  'fireworks',
+  'rest',
+  'hop',
+  'ticket',
+  'hopper',
+  'tickets',
+  'evenings',
+  'split',
+  'lock',
+  'bases',
+  'startBase',
+  'endBase',
+  'moveBuffer',
+];
+
 /** The query names each relayed route takes, exactly as the API spells them. */
 const RELAY_QUERY: Record<string, readonly string[]> = {
   '': [],
   calendar: ['from', 'to'],
   'best-days': ['from', 'to', 'limit'],
-  plan: [
-    'from',
-    'to',
-    'parks',
-    'hotel',
-    'area',
-    'arrival',
-    'departure',
-    'blocks',
-    'parties',
-    'fireworks',
-    'rest',
-    'hop',
-    'ticket',
-    'hopper',
-    'tickets',
-    'evenings',
-    'split',
-    'lock',
-    'bases',
-    'startBase',
-    'endBase',
-    'moveBuffer',
-  ],
+  plan: PLAN_QUERY,
+  // Parky's ideas take the plan's own query.
+  'plan/ideas': PLAN_QUERY,
   'school-breaks': ['from', 'to', 'countries'],
   when: [
     'from',
@@ -63,7 +68,6 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'moveBuffer',
   ],
 };
-
 /**
  * A value the relay passes on: dates, slugs with `:n`, pins with `@`, `max:3`, tickets with `.4.h?`.
  * Anything else is a 400 here, before a percent-decoded character can reach the upstream URL. A
@@ -85,7 +89,7 @@ export const TRIP_REGION_DATA_CACHE_CONTROL =
 /** One request the relay will make upstream. */
 export interface TripRegionRelayTarget {
   /** `''` for the region itself, else the keyed route. */
-  route: '' | 'calendar' | 'best-days' | 'plan' | 'when' | 'school-breaks';
+  route: '' | 'calendar' | 'best-days' | 'plan' | 'plan/ideas' | 'when' | 'school-breaks';
   /** The region's slug, which is also its Data Cache tag's. */
   region: string;
   /** The API path with its filtered query, `/v1/trip-regions/orlando/plan?from=…`. */
@@ -105,10 +109,10 @@ export function tripRegionRelayTarget(
   path: readonly string[],
   search: URLSearchParams
 ): TripRegionRelayTarget | null {
-  if (path.length < 1 || path.length > 2) return null;
+  if (path.length < 1 || path.length > 3) return null;
   const region = tripRegionConfig(path[0])?.slug;
   if (!region) return null;
-  const route = (path[1] ?? '') as TripRegionRelayTarget['route'];
+  const route = path.slice(1).join('/') as TripRegionRelayTarget['route'];
   const allowed = RELAY_QUERY[route];
   if (!allowed) return null;
 

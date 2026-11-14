@@ -29,6 +29,7 @@ import {
   type TripWizardStepKey,
 } from '@/lib/trip-regions/wizard-steps';
 import { skippedBucket } from '@/lib/trip-regions/plan-analytics';
+import { tripWizardAnswered } from '@/lib/trip-regions/planner-ui';
 import type { TripWizardStepName, TripWizardVia } from '@/lib/analytics/site-analytics';
 import { usePlanContext, useTripEvents } from '../planner/plan-context';
 import type { TicketStep } from '../planner/plan-tickets';
@@ -151,9 +152,10 @@ export function TripWizard({
     (to: number, via: TripWizardVia) => {
       setForward(via !== 'back' && to >= index);
       if (via === 'skip') setSkipped((n) => n + 1);
+      if (via === 'next' && step) tripWizardAnswered.mark(region.slug, step.questions);
       onMove({ screen: to >= steps.length ? 'finale' : steps[to].key, via });
     },
-    [index, onMove, steps]
+    [index, onMove, steps, step, region.slug]
   );
 
   const finish = useCallback(

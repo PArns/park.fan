@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { Check, CircleAlert, type LucideIcon } from 'lucide-react';
+import { Check, CircleAlert, Lightbulb, type LucideIcon } from 'lucide-react';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { parksLeftOut, planSavings } from '@/lib/trip-regions/plan-copy';
 import { shownTotals } from '@/lib/trip-regions/plan-week';
@@ -9,6 +9,7 @@ import { planStays } from '@/lib/trip-regions/plan-stays';
 import { tripDates } from '@/lib/trip-regions/plan';
 import { PlannerPolaroids, type PolaroidPhoto } from '@/components/planner/planner-polaroids';
 import { usePlanContext } from '../../planner/plan-context';
+import { useShownIdeas } from '../../planner/plan-ideas';
 import { useBaseName } from '../../planner/plan-place-words';
 import { useStatePlan, useTripCalendar } from '../../planner/use-trip-plan';
 import { PlanRibbon } from '../plan-ribbon';
@@ -18,7 +19,8 @@ import { PlanRibbon } from '../plan-ribbon';
  * one line (days, park days, cities), the peak wait against the trip's average in the result's own
  * words (`planSavings`), the plan as a ribbon from the first day to the last, and what the plan did
  * in short lines, each from the plan: the cities and their nights, the parks it had no day for, and
- * where the day planner takes over. "See the plan" is the footer's.
+ * where the day planner takes over, and how many ideas Parky has for it (`useShownIdeas`), which
+ * wait over the plan. "See the plan" is the footer's.
  */
 export function FinaleStep() {
   const t = useTranslations('tripPlanner');
@@ -26,6 +28,7 @@ export function FinaleStep() {
   const plan = useStatePlan();
   const calendar = useTripCalendar(state.from, state.to);
   const baseName = useBaseName();
+  const ideas = useShownIdeas();
   const data = plan.data;
   if (!data) return <PlanRibbon ends />;
 
@@ -56,6 +59,9 @@ export function FinaleStep() {
       }),
       icon: CircleAlert,
     });
+  }
+  if (ideas.length > 0) {
+    lines.push({ text: t('ideas.title', { count: ideas.length }), icon: Lightbulb });
   }
   lines.push({ text: t('wizard.finale.dayPlanner'), icon: Check });
 

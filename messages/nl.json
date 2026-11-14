@@ -3554,19 +3554,58 @@
       "undo": "Ongedaan maken",
       "release": "Alles losmaken",
       "swapped": "Geruild: {first} op {firstDay}, {second} op {secondDay}.",
-      "swappedCost": "Ongeveer {current} in plaats van {best} min. piekwachttijd."
+      "swappedCost": "Ongeveer {current} in plaats van {best} min. piekwachttijd.",
+      "pin": "Vastzetten",
+      "pinLabel": "{park} op {date} vastzetten",
+      "swap": "Ruilen",
+      "swapLabel": "{park} op {date} ruilen",
+      "more": "Meer",
+      "moreLabel": "Meer voor {park} op {date}",
+      "pinnedNow": "{what} staat vast op {date}.",
+      "unpinnedNow": "{what} op {date} staat niet meer vast; het plan mag de dag weer verschuiven.",
+      "moved": "{park} staat nu op {date}.",
+      "freed": "{date} is nu een vrije dag.",
+      "freedPark": "{count, plural, =0 {{park} heeft dan geen dag meer.} =1 {{park} heeft dan één dag, {dates}.} other {{park} heeft dan # dagen: {dates}.}}",
+      "removed": "{park} hoort niet meer bij de reis.",
+      "released": "Er staat geen dag meer vast. Het plan kiest de volgorde weer zelf.",
+      "undone": "De laatste wijziging is teruggedraaid.",
+      "peakNow": "Piek op je dagen nu ongeveer {minutes} min.",
+      "sheet": {
+        "swap": "Met een andere dag ruilen",
+        "swapHint": "Elke dag laat vooraf zien wat de ruil kost.",
+        "pinHint": "{park} blijft op {date}, wat je verder ook verandert.",
+        "toSpare": "Naar een vrije dag verplaatsen",
+        "toSpareBetter": "{date}: ongeveer {after} in plaats van {before} min.",
+        "toSpareSame": "Geen vrije dag is rustiger; op {date} zou het ongeveer {after} min zijn.",
+        "toSpareNoFigure": "{date}; voor die dag is er nog geen getal.",
+        "toSpareNone": "De reis heeft er geen vrije dag voor.",
+        "free": "Er een vrije dag van maken",
+        "freeHint": "{date} blijft vrij. Het nieuwe plan laat zien waar {park} dan komt.",
+        "remove": "{park} uit de reis halen",
+        "removeHint": "{count, plural, =1 {De dag wordt vrij.} =2 {Beide dagen worden vrij.} other {Alle # dagen worden vrij.}}",
+        "removeLast": "Het enige park van de reis blijft erin.",
+        "planHint": "Attracties, pauzes en shows voor deze dag."
+      },
+      "swapMode": {
+        "title": "{park} ruilen",
+        "hint": "Kies een dag. Het getal is de piek in {park} op die dag.",
+        "close": "Stoppen met ruilen",
+        "now": "nu",
+        "nowFree": "nu vrij",
+        "nowRest": "nu rustdag",
+        "nowPark": "nu {park}",
+        "figure": "<strong>{park} {minutes} min</strong> ({delta})",
+        "theirs": "{park} in ruil op {day}: {minutes} min ({delta})",
+        "spareMoves": "De vrije dag schuift naar {day}.",
+        "restMoves": "De rustdag schuift naar {day}.",
+        "quietest": "rustigst",
+        "closes": "sluit {time}",
+        "same": "al {park}"
+      }
     },
     "swap": {
-      "hint": "Het getal is hoe de gemiddelde piekwachttijd van je plan verandert; de rest van het plan kan meeschuiven.",
       "closed": "{park} is dan gesloten",
-      "noFigure": "geen cijfer",
-      "same": "zelfde piekwachttijd",
-      "more": "+{minutes} min. gemiddeld",
-      "less": "−{minutes} min. gemiddeld",
-      "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder",
-      "moveThere": "{park} op deze dag, {date} wordt een rustdag",
-      "takeOver": "{park} op {date}, deze dag wordt een rustdag",
-      "trade": "ruilen met {park}"
+      "noFigure": "geen cijfer"
     },
     "keep": {
       "addAll": "Naar de dagplanner",
@@ -3991,6 +4030,27 @@
         "stays": "Eerst {first}, dan {rest}.",
         "dayPlanner": "Wie er meegaat en hoe groot de kleinsten zijn, vraagt de dagplanner per parkdag."
       }
+    },
+    "ideas": {
+      "label": "Ideeën van Parky",
+      "title": "Parky heeft {count, plural, =1 {één idee} other {# ideeën}} voor je plan",
+      "add": "{park} op de vrije {date}",
+      "move": "{park} op {to} in plaats van {from}",
+      "swap": "{park} op {to}, {with} in ruil op {from}",
+      "travel_day": "{end, select, arrival {Aankomstdag als parkdag} departure {Vertrekdag als parkdag} other {Aankomst en vertrek als parkdagen}}: {park} op {to}",
+      "hopper": "{park} past erbij met {hopper}: op {to}",
+      "avoid_party": "{park} op {to} in plaats van de feestavond op {from}",
+      "figure": "ongeveer {after} min",
+      "figureMoved": "ongeveer {after} in plaats van {before} min",
+      "apply": {
+        "add": "Toevoegen",
+        "swap": "Ruilen",
+        "plan": "Zo plannen"
+      },
+      "chat": "In de chat",
+      "ask": "Wat vind je van dit idee voor mijn plan: {idea}?",
+      "applied": "In het plan: {idea}.",
+      "inPlan": "In het plan"
     }
   },
   "tripRegions": {

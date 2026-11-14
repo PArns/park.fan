@@ -37,6 +37,11 @@ import {
   tripHotelKinds,
   addParkOnDate,
   withSpareRuns,
+  moveVisit,
+  freeDay,
+  removePark,
+  swapChange,
+  addedByEdit,
 } from '../lib/trip-regions/plan.ts';
 import { findLeg } from '../lib/trip-regions/hub-data.ts';
 import {
@@ -78,6 +83,7 @@ import {
   shownWait,
   shownWaitOn,
   swapPreview,
+  swapTargets,
   tripCanvas,
   tripColumnGrid,
   tripDaySpans,
@@ -434,6 +440,72 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     { target: 'epcot', date: '2026-11-30' },
   ]);
   test('a lock toggles', toggleLock(toggleLock(trip, a), a).locks, []);
+  test(
+    'a park moved to another day is pinned there, its old pin and the day’s gone',
+    moveVisit(
+      {
+        ...trip,
+        locks: [
+          { target: 'epcot', date: '2026-11-29' },
+          { target: 'rest', date: '2026-11-30' },
+        ],
+      },
+      a,
+      '2026-11-30'
+    ).locks,
+    [{ target: 'epcot', date: '2026-11-30' }]
+  );
+  test('a move to the same day is none', moveVisit(trip, a, a.date), null);
+  test('a day off cannot be moved', moveVisit(trip, b, '2026-11-29'), null);
+  test('a park day made free pins a day off on it', freeDay(trip, a).locks, [
+    { target: 'rest', date: '2026-11-29' },
+  ]);
+  test('a day off is free already', freeDay(trip, b), null);
+  const c = { ...b, date: '2026-12-01' };
+  const away = { ...a, date: '2026-11-28', base: 'tokyo' };
+  test(
+    'a day off trades with a park day of its city, never with another day off',
+    swapTargets({ days: [away, a, b, c] }, b).map((d) => d.date),
+    ['2026-11-29']
+  );
+  const twoParks = setParkVisits(trip, 'epcot', 2, ORDER, HEAD);
+  test(
+    'a park taken out leaves the list, its pins with it',
+    removePark(
+      { ...twoParks, locks: [{ target: 'epcot', date: '2026-11-29' }] },
+      'epcot',
+      ORDER,
+      HEAD
+    ),
+    { ...twoParks, parks: twoParks.parks.filter((p) => p.slug !== 'epcot'), locks: [] }
+  );
+  test(
+    'the last park stays',
+    removePark({ ...trip, parks: [{ slug: 'epcot', visits: null }] }, 'epcot', ORDER, HEAD),
+    null
+  );
+  test('a swap as an edit says what went where', swapChange(a, b), {
+    kind: 'swap',
+    first: 'epcot',
+    firstDay: '2026-11-30',
+    second: 'rest',
+    secondDay: '2026-11-29',
+  });
+  test(
+    'a park put on a free day, or an idea that places one, reads „neu“',
+    [
+      addedByEdit({ kind: 'add', slug: 'epcot', date: '2026-11-30' }),
+      addedByEdit({
+        kind: 'idea',
+        idea: { kind: 'add', query: '', park: 'epcot', to: '2026-11-30', places: ['epcot'] },
+      }),
+      addedByEdit({
+        kind: 'idea',
+        idea: { kind: 'move', query: '', park: 'epcot', to: '2026-11-30' },
+      }),
+    ],
+    [{ slug: 'epcot', date: '2026-11-30' }, { slug: 'epcot', date: '2026-11-30' }, null]
+  );
   test(
     'a leg is found either way',
     findLeg([{ from: 'epcot', to: 'hotel:disney', minutes: 9 }], 'hotel:disney', 'epcot')?.minutes,
@@ -884,9 +956,17 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     warnings: [],
   };
   test(
-    'a trade off the party night: the minutes, no short day',
+    'a trade off the party night: the minutes, each park in its own figure, no short day',
     swapPreview(calendar, mk, ep, TZ),
-    { kind: 'minutes', delta: 20, short: null }
+    {
+      kind: 'minutes',
+      delta: 20,
+      short: null,
+      parks: [
+        { slug: 'magic-kingdom-park', from: '2026-11-29', to: '2026-11-30', here: 35, away: 45 },
+        { slug: 'epcot', from: '2026-11-30', to: '2026-11-29', here: 50, away: 60 },
+      ],
+    }
   );
   const mk30 = { ...mk, date: '2026-11-30' };
   test(
