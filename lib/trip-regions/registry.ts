@@ -176,6 +176,12 @@ export interface TripRegionConfig {
    * exist.
    */
   guide?: Readonly<Record<Locale, string>>;
+  /**
+   * The `translationKey` of the region's travel guide, the long post on hotels, transfers, tickets
+   * and the year. The hub's closing band links it in the locale's own translation while the post is
+   * served; a draft draws no link, so a guide can wait for its region's `live` without a 404.
+   */
+  regionGuide?: string;
 }
 
 /** Every trip region, live or coming, in the order the planner band and the admin list them. */

@@ -188,7 +188,10 @@ written into the copy; a change to the region or a new matrix is a reason to re-
   headliner park when `/best-days` fails, so a failed read never takes the links away) and,
   from the first answer, the picked parks' calendars; park pages and calendars → the planner (the
   band, `rel="nofollow"` since it carries a plan); every page → `/orlando#planner` (the footer);
-  month ↔ month; hub → the best-time pages (chapter 03 and the band). The day planner is linked from
+  month ↔ month; hub → the best-time pages (chapter 03 and the band); hub → the region's travel
+  guide, the band's last destination, found by the post's `translationKey` in the region's
+  `regionGuide` and drawn only while the post is served, so a draft waiting for its region's
+  `live` costs no 404; the guide links back to the hub in its intro. The day planner is linked from
   the footer and, client-side, from the day sheet.
 
 ## Analytics

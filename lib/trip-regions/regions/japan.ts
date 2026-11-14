@@ -111,6 +111,7 @@ export const JAPAN: TripRegionConfig = {
     { key: 'offsite' },
   ],
   stormSeason: 'typhoon',
+  regionGuide: 'japan-freizeitparks-reise',
   tickets: {
     resorts: [
       'tokyo-disney-resort',

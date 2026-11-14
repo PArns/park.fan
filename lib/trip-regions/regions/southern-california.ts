@@ -123,6 +123,7 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   // Separately ticketed nights (Oogie Boogie Bash, After Dark, Halloween Horror Nights) send the
   // day guests out before the evening shows.
   fireworks: true,
+  regionGuide: 'southern-california-trip-guide',
   tickets: {
     resorts: ['disneyland-resort', 'universal-studios-hollywood', 'day-trips'],
     entries: ENTRIES,

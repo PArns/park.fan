@@ -1,12 +1,15 @@
 import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
-import { CalendarDays, CalendarPlus, Sun } from 'lucide-react';
+import { BookOpen, CalendarDays, CalendarPlus, Sun } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import {
   HERO_FLOW_INTO_PULL,
   LandingHero,
   LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
+import type { Locale } from '@/i18n/config';
+import { resolveEntryForLocale } from '@/lib/blog/listing';
+import { postPath } from '@/lib/blog/paths';
 import { getMediaImageBySrc } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
@@ -95,7 +98,8 @@ export interface TripRegionHubPageProps {
  * planner and the calendar, with the answer under them: the best park per resort and the quietest
  * days ahead. Then 01 the calendar with its key, the month index and each park's calendar, 02 the
  * trip planner, 03 the best time to go (where the region has best-time pages), 04 the questions,
- * the method folded in, and the closing band. Each chapter opens with its heading and then the
+ * the method folded in, and the closing band, which ends on the region's travel guide while that
+ * post is served. Each chapter opens with its heading and then the
  * thing itself. A block without the region's words draws nothing. Every sentence and the first
  * week are in the served HTML.
  */
@@ -194,9 +198,11 @@ export async function TripRegionHubPage({
         ...(attribution ? [t('calendar.sourcesTravel', { attribution })] : []),
       ].join(' · ')
     : null;
-  const bandTitle =
-    ownWords(tRegion, 'next.title') ??
-    t('nextTitle', { region: ownWords(tNav, 'name') ?? region.name });
+  const regionName = ownWords(tNav, 'name') ?? region.name;
+  const bandTitle = ownWords(tRegion, 'next.title') ?? t('nextTitle', { region: regionName });
+  const guidePost = config.regionGuide
+    ? resolveEntryForLocale(config.regionGuide, locale as Locale)
+    : null;
 
   return (
     <>
@@ -324,6 +330,15 @@ export async function TripRegionHubPage({
             { href: planHref, label: t('plan'), icon: CalendarPlus },
             ...(whenTitle && bestTimeLabel
               ? [{ href: bestTimePath, label: bestTimeLabel, icon: Sun }]
+              : []),
+            ...(guidePost
+              ? [
+                  {
+                    href: postPath({ slug: guidePost.entry.slug, frontmatter: guidePost.entry.fm }),
+                    label: t('regionGuide', { region: regionName }),
+                    icon: BookOpen,
+                  },
+                ]
               : []),
           ] as Parameters<typeof LandingNextSteps>[0]['destinations']
         }

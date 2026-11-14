@@ -589,6 +589,7 @@
     },
     "question": "Which park on which day?",
     "nextTitle": "{region} trip planner",
+    "regionGuide": "{region} travel guide",
     "lastYearFrom": "From {date}: last year’s figures, each the same weekday as we measured it."
   },
   "theme": {

@@ -166,6 +166,7 @@ export const ORLANDO: TripRegionConfig = {
   ],
   stormSeason: 'hurricane',
   blockResorts: ['walt-disney-world', 'universal-orlando'],
+  regionGuide: 'orlando-guide',
   // Magic Kingdom's fireworks against its party nights.
   fireworks: true,
   guide: {

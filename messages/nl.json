@@ -589,6 +589,7 @@
     },
     "question": "Welk park op welke dag?",
     "nextTitle": "Reisplanner voor {region}",
+    "regionGuide": "Reisgids {region}",
     "lastYearFrom": "Vanaf {date}: cijfers van vorig jaar, telkens dezelfde weekdag zoals wij die gemeten hebben."
   },
   "theme": {

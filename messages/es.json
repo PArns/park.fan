@@ -589,6 +589,7 @@
     },
     "question": "¿Qué parque, qué día?",
     "nextTitle": "Planificador de viajes de {region}",
+    "regionGuide": "Guía de viaje de {region}",
     "lastYearFrom": "Desde el {date}: cifras del año pasado, siempre el mismo día de la semana tal como lo medimos."
   },
   "theme": {

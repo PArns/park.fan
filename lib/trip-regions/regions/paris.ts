@@ -65,6 +65,7 @@ export const PARIS: TripRegionConfig = {
     { key: 'parc_asterix', area: 'parc_asterix' },
     { key: 'offsite' },
   ],
+  regionGuide: 'paris-disneyland-asterix-reise',
   tickets: {
     resorts: ['disneyland-paris', 'parc-asterix'],
     entries: ENTRIES,
