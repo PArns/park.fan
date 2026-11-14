@@ -197,7 +197,12 @@ export function weekInWindow(
   return weekStart <= window.to && addDays(weekStart, 6) >= window.from;
 }
 
-/** The countries the picker asks the holiday data for: where most of park.fan's visitors live. */
+/**
+ * The countries the picker asks the holiday data for: where most of park.fan's visitors live.
+ * Spain and Italy are left out while the API's school data for them does not reach half a year
+ * ahead, which would offer a region whose next break reads as unknown; the picker already puts the
+ * locale's own country first for them.
+ */
 export const WHEN_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB'] as const;
 
 /** The country a locale's visitors most likely come from, offered first in the holiday picker. */
