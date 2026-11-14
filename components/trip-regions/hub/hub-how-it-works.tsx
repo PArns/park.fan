@@ -83,6 +83,7 @@ export async function HubHowItWorks({
             label={t('plan')}
             region={region}
             page={page}
+            source="landing"
             className="w-full @xl:w-auto @xl:shrink-0"
           />
         }

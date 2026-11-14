@@ -50,6 +50,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HubFaq` _component_: Chapter 04's questions, answered from the data the page shows.
 
+### [`hub/hub-final-cta.tsx`](../../components/trip-regions/hub/hub-final-cta.tsx)
+
+- `HubFinalCta` _component_: The landing page's last word before the questions' links and the closing band: the region's Parky picture, one line on the planner and „Reise planen“, which starts it like the head's button.
+
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
 - `HubGlance` _component_: The hub's first answer, under its two buttons: the best park of each group with a headliner on one day, by its date in the region's time and never as "today", because a cached copy outlives midnight there; then the quietest days of the …
@@ -57,8 +61,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-hero-action.tsx`](../../components/trip-regions/hub/hub-hero-action.tsx)
 
-- `HubHeroAction` _component_: The hub's one primary action ("Reise planen"): it asks the planner to open its first step (the walk's first sheet on a phone, the focused panel at a desk), so a reader starts the plan with one tap.
-- `HubCalendarAction` _component_: The head's second way in ("Zum Kalender"), the same size as the first and never its primary action: a link to chapter 01 that counts as `trip_hub_action`.
+- `HubPlanAction` _component_: A "plan your trip" button of the hub: a link to `#planner` that starts the planner (`startPlanner`, as `source`), so a modified click and a page without script still reach the chapter.
+- `HubCalendarAction` _component_: The head's second way in ("Zum Kalender"), the same size as the first and never its primary action: a link to the calendar chapter that counts as `trip_hub_action`.
+- `HubHeroActions` _component_: The head's two ways in and the line under them, by the hub's state. Landing page (and the served HTML): „Reise planen“, „Zum Kalender“ and what the planner asks.
+
+### [`hub/hub-how-it-works.tsx`](../../components/trip-regions/hub/hub-how-it-works.tsx)
+
+- `HubHowItWorks` _component_: Chapter 01 of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's line with „Reise planen“ and „Lieber im Chat“.
+- `HUB_STEPS` _const_: The planner's four steps as chapter 01 names them, in the order of `TripHub.howItWorks`.
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
@@ -68,9 +78,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HubMonthIndex` _component_: Every month the hub serves, as links, on the hub and on every month page, so each month is one hop from every other. Navigation, not a chapter: a labelled `<nav>` with no heading, as the park calendar's month index.
 
-### [`hub/hub-park-index.tsx`](../../components/trip-regions/hub/hub-park-index.tsx)
+### [`hub/hub-resorts.tsx`](../../components/trip-regions/hub/hub-resorts.tsx)
 
-- `HubParkIndex` _component_: Each park's own crowd calendar, as links under the month index: the next question after a day in the region is "and this park on other days?". Navigation, not a chapter: a labelled `<nav>` with the month index's label style.
+- `HubResorts` _component_: Chapter 03, the resorts: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo or the region's Parky picture, the region's two sentences, each park as a link to its …
+- `calendarParks` _function_: The parks whose crowd calendar the hub links: every park the window has quiet days for (a water park out of season has none), or, without `/best-days`, every headliner, so a failed read never takes the links away.
+
+### [`hub/hub-trip-state.tsx`](../../components/trip-regions/hub/hub-trip-state.tsx)
+
+- `HubTripProvider` _component_: The hub's state for everything below it: the trip the planner shows, or null for the landing page.
+- `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
+- `HubLandingOnly` _component_: What only the landing page shows (the four steps, the closing band): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
+- `HubPlanFold` _component_: A chapter's body that folds into one line while the hub shows a plan (the calendar, the resorts): open on the landing page, which is the served HTML, so every link and day stays in it.
+- `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
 
@@ -78,11 +97,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)
 
-- `PlannerChapterSlot` _component_: The "Plan your trip" chapter around the trip planner (`TripRegionPlanner`). The heading belongs to the page, so the planner draws none of its own; the anchor is the hero action's and Parky's (`#planner`).
+- `PlannerChapterSlot` _component_: Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Reise“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ and the plan.
 
 ### [`hub/trip-region-hub-page.tsx`](../../components/trip-regions/hub/trip-region-hub-page.tsx)
 
-- `TripRegionHubPage` _component_: A region's hub and its month pages, one anatomy (docs/product/landing-pages.md).
+- `TripRegionHubPage` _component_: A region's hub and its month pages, one anatomy (docs/product/landing-pages.md), a landing page around the trip planner.
 - Types: `TripRegionHubPageProps`
 
 ### [`planner/plan-agenda-view.tsx`](../../components/trip-regions/planner/plan-agenda-view.tsx)

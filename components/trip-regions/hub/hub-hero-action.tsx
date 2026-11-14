@@ -8,7 +8,8 @@ import { buttonLinkProps } from '@/components/ui/button';
 import { formatDateRange } from '@/lib/trip-regions/hub-data';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
-import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
+import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
+import { tripPlannerUi, type TripPlannerStartSource } from '@/lib/trip-regions/planner-ui';
 import { useHubTrip } from './hub-trip-state';
 
 /** Which page the hub's ways in sit on, for `trip_hub_action`. */
@@ -16,20 +17,29 @@ type HubPage = 'hub' | 'month';
 
 /**
  * Start the trip planner from the hub: the one place every "plan your trip" button of the page goes
- * through (the head, chapter 01, the closing band). It asks the planner to open its first step
- * through `tripPlannerUi.openStart()`, which the mounted planner answers, so the assistant opens
- * on its first step once it answers that signal. Counted as `trip_hub_action`.
+ * through. It asks the mounted planner to open the assistant on its first step
+ * (`tripPlannerUi.openStart`), with where the start came from: the head (`hero`), chapter 01 and
+ * the closing band (`landing`), or „Neue Reise planen“ (`restart`), which first clears the plan
+ * through the planner's own state (`tripPlannerBridge`), so the assistant starts with no answers.
+ * Counted as `trip_hub_action`; a modified click keeps the link's own way to `#planner`.
  */
-function startPlanner(event: MouseEvent<HTMLAnchorElement>, region: string, page: HubPage): void {
+function startPlanner(
+  event: MouseEvent<HTMLAnchorElement>,
+  region: string,
+  page: HubPage,
+  source: TripPlannerStartSource
+): void {
   trackTripEvent(region, 'trip_hub_action', { action: 'plan', page });
   if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
   event.preventDefault();
-  tripPlannerUi.openStart();
+  if (source === 'restart') tripPlannerBridge.apply(region, '');
+  tripPlannerUi.openStart(source);
 }
 
 /**
  * A "plan your trip" button of the hub: a link to `#planner` that starts the planner
- * (`startPlanner`), so a modified click and a page without script still reach the chapter.
+ * (`startPlanner`, as `source`), so a modified click and a page without script still reach the
+ * chapter.
  * `landingAction` marks the head's one primary action (`data-landing-action`); the same button in
  * chapter 01 and the closing band carries none.
  */
@@ -38,6 +48,7 @@ export function HubPlanAction({
   label,
   region,
   page,
+  source,
   landingAction = false,
   variant = 'default',
   className,
@@ -46,6 +57,7 @@ export function HubPlanAction({
   label: string;
   region: string;
   page: HubPage;
+  source: TripPlannerStartSource;
   landingAction?: boolean;
   variant?: 'default' | 'outline';
   className?: string;
@@ -54,7 +66,7 @@ export function HubPlanAction({
     <Link
       href={href}
       data-landing-action={landingAction ? '' : undefined}
-      onClick={(event) => startPlanner(event, region, page)}
+      onClick={(event) => startPlanner(event, region, page, source)}
       {...buttonLinkProps({ variant, size: 'lg', withIcon: true, className })}
     >
       <Sparkles aria-hidden />
@@ -138,6 +150,7 @@ export function HubHeroActions({
               label={t('newTrip')}
               region={region}
               page={page}
+              source="restart"
               variant="outline"
               className={button}
             />
@@ -149,6 +162,7 @@ export function HubHeroActions({
               label={planLabel}
               region={region}
               page={page}
+              source="hero"
               landingAction
               className={button}
             />

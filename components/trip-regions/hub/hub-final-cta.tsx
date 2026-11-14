@@ -39,6 +39,7 @@ export async function HubFinalCta({
             label={t('plan')}
             region={region}
             page={page}
+            source="landing"
             className="max-sm:w-full"
           />
         </div>
