@@ -867,11 +867,27 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_planner_started: {
     label: 'Reiseplaner gestartet',
-    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers, einen Link mit einem Plan oder (dates) die ersten gewählten Daten eines Seitenaufrufs ohne anderen Start; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers, „Reise planen“ der Landing (landing), „Neu starten“ (restart), einen Link mit einem Plan oder (dates) die ersten gewählten Daten eines Seitenaufrufs ohne anderen Start; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+  },
+  trip_wizard_step: {
+    label: 'Assistent: Schritt',
+    when: 'Ein Schritt des Reiseplaner-Assistenten erscheint, mit dem Weg dorthin: Weiter, Überspringen, Zurück, ein Tipp auf die Schrittleiste (jump) oder eine Antwort im Ergebnis (answers).',
+  },
+  trip_wizard_finished: {
+    label: 'Assistent: Plan gezeigt',
+    when: '„Plan jetzt zeigen“ vor dem letzten Schritt (early) oder „Plan ansehen“ im Finale; skipped zählt die übersprungenen Schritte.',
+  },
+  trip_wizard_closed: {
+    label: 'Assistent geschlossen',
+    when: 'Der Assistent wurde ohne Plan geschlossen (Escape, Schließen, Zurück im Browser), mit dem Schritt.',
+  },
+  trip_spare_choice: {
+    label: 'Freie Tage: Antwort',
+    when: 'Eine Antwort auf die Frage nach den Tagen ohne Park im Schritt Parks: weitere Parks, mehr Tage in den Parks, freie Tage oder kürzer reisen.',
   },
   trip_tickets_opened: {
     label: 'Ticket-Schritt geöffnet',
-    when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
+    when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), „Ja, schon gekauft“ im Assistenten (wizard), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
   },
   trip_edit_opened: {
     label: 'Änderung geöffnet',

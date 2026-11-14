@@ -57,7 +57,8 @@ import { PlannerMonthCalendar } from './planner-month-calendar';
 import { PlannerFitLevers } from './planner-fit-levers';
 import { PlannerFitList } from './planner-fit-list';
 import { PlannerOptimizeFailure } from './planner-optimize-failure';
-import { PlannerStepRail, STEP_MOTION } from './planner-step-rail';
+import { ENTER_BELONGS_TO, PlannerStepRail, STEP_MOTION } from './planner-step-rail';
+import { WizardToggle } from './wizard-toggle';
 
 /**
  * A park as the wizard holds it. Everything past `geo` is optional decoration from the search hit,
@@ -107,14 +108,6 @@ const LUNCH_MINUTES = 60;
  * the block back out of the optimizer's answer by it, so both halves must use the same string.
  */
 const LUNCH_ENTRY_ID = 'wizard-lunch';
-
-/**
- * The elements an Enter already belongs to, as a selector: fields, as in `PlannerDayColumn`'s
- * Delete guard, plus the controls the browser itself fires on Enter, or one press would run two
- * actions. `contenteditable="false"` does not own the key, so only the two truthy forms are listed.
- */
-const ENTER_BELONGS_TO =
-  'input, textarea, select, button, a[href], [role="button"], [contenteditable=""], [contenteditable="true"]';
 
 /**
  * Planning a day, one question at a time: which park, which day, who is coming, and which big
@@ -978,67 +971,6 @@ function WizardDayCard({
           {day.isSchoolVacation && <Badge variant="outline">{t('context.schoolVacation')}</Badge>}
         </div>
       )}
-    </div>
-  );
-}
-
-/**
- * One question with a yes/no answer, as a card the whole of which is the switch. A
- * `<button aria-pressed>` rather than a styled checkbox: the card holds the height chips, and a
- * label cannot wrap interactive children.
- */
-function WizardToggle({
-  icon: Icon,
-  label,
-  hint,
-  checked,
-  onChange,
-  children,
-}: {
-  icon: typeof Utensils;
-  label: string;
-  hint: string;
-  checked: boolean;
-  onChange: (next: boolean) => void;
-  /** Revealed under the card while it is on — the height chips. */
-  children?: React.ReactNode;
-}) {
-  return (
-    <div
-      className={cn(
-        'rounded-xl border transition-colors',
-        checked ? 'border-primary/45 bg-primary/5' : 'border-border/70 bg-card'
-      )}
-    >
-      <button
-        type="button"
-        onClick={() => onChange(!checked)}
-        aria-pressed={checked}
-        className="focus-visible:ring-ring flex w-full items-start gap-3 rounded-xl p-3 text-left focus-visible:ring-2 focus-visible:outline-none"
-      >
-        <span
-          className={cn(
-            'flex size-8 shrink-0 items-center justify-center rounded-lg transition-colors',
-            checked ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
-          )}
-        >
-          <Icon className="size-4" aria-hidden="true" />
-        </span>
-        <span className="min-w-0 flex-1">
-          <span className="block text-sm font-medium">{label}</span>
-          <span className="text-muted-foreground mt-0.5 block text-xs leading-relaxed">{hint}</span>
-        </span>
-        <span
-          className={cn(
-            'mt-0.5 flex size-5 shrink-0 items-center justify-center rounded-full border transition-colors',
-            checked ? 'bg-primary border-primary text-primary-foreground' : 'border-border'
-          )}
-          aria-hidden="true"
-        >
-          {checked && <Check className="size-3" />}
-        </span>
-      </button>
-      {children && <div className="px-3 pb-3 pl-14">{children}</div>}
     </div>
   );
 }

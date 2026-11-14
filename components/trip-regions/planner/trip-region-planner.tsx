@@ -1,18 +1,19 @@
 'use client';
 
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
+import { useTranslations } from 'next-intl';
+import { CalendarPlus } from 'lucide-react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { parkToday } from '@/lib/planner/park-time';
 import { DEFAULT_PLAN_STATE, tripHotelKinds, type TripPlanState } from '@/lib/trip-regions/plan';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
-import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
+import { tripPlannerUi, type TripPlannerStartSource } from '@/lib/trip-regions/planner-ui';
+import type { TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import { requireTripRegion, type TripTicketStep } from '@/lib/trip-regions/registry';
 import { shortParkName } from '@/lib/trip-regions/hub-data';
 import { ticketCatalog } from '@/lib/trip-regions/plan-tickets';
-import { trackDatesStart, trackTripEvent } from '@/lib/trip-regions/plan-analytics';
-import type { TripEditFrom, TripEditPanel } from '@/lib/analytics/site-analytics';
+import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import type { PlanEdit } from './plan-tickets-card';
-import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/trip-regions/types';
 import {
   PlanContextProvider,
@@ -21,12 +22,12 @@ import {
   type PlanContextValue,
   type PlanParkPhoto,
 } from './plan-context';
-import { PlanSetup, type PlanSheetStep } from './plan-setup';
-import { usePlanRouteSetup } from './plan-route';
 import { PlanResult } from './plan-result';
 import { useTicketStep } from './plan-tickets';
 import { usePlanState } from './use-plan-state';
 import { ParkyTripInterviewButton } from '@/components/assistant/parky-trip-interview-button';
+import { Button } from '@/components/ui/button';
+import { TripWizard, type TripWizardAt } from '../wizard/trip-wizard';
 
 /** What the hub hands the planner. */
 export interface TripRegionPlannerProps {
@@ -51,6 +52,8 @@ const NO_TICKET_STEP: TripTicketStep = {
   homeMarket: '',
 };
 const noUpdate = () => undefined;
+/** The result's own ticket panel stays shut: the assistant's Tickets step is where tickets go. */
+const noTicketsPanel = () => undefined;
 
 /**
  * The trip planner of a region's hub: which park on which day of a trip, from the API's `/plan`.
@@ -61,9 +64,9 @@ const noUpdate = () => undefined;
  *
  * Reading the query makes a prerendered page render this part in the browser, so it sits in a
  * Suspense boundary whose fallback is the same planner with nothing chosen and nothing to press:
- * the same boxes, so the swap after hydration moves nothing. Phone: Tickets, Dates, Parks and an
- * optional Fine-tune as sheets; desktop: the same panels inline. The result goes from the answer (Level 0)
- * to the views (Level 1) to a day's details (Level 2) to the day planner (Level 3);
+ * the same boxes, so the swap after hydration moves nothing. The questions are asked by the
+ * assistant (`TripWizard`), a dialog that "Reise planen" opens; the result goes from the answer
+ * (Level 0) to the views (Level 1) to a day's details (Level 2) to the day planner (Level 3);
  * docs/features/orlando-planner.md.
  */
 export function TripRegionPlanner({
@@ -180,170 +183,109 @@ const scrollTo = (target: HTMLElement | null) => {
   const smooth = !window.matchMedia(SMOOTH).matches;
   target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
 };
-const isWide = () => window.matchMedia(PLAN_WIDE_QUERY).matches;
 
 /**
- * The setup and the result, and what moves between them: the phone's sheets and the Back button
- * that closes one, the desk's disclosures, the ticket step the answer opens, and the hub hero's
- * signal.
+ * The way into the assistant, the assistant itself and the result: the hub's and the result's
+ * signals open it (`tripPlannerUi`), the phone's Back button closes it, and leaving it for the plan
+ * puts the answer at the top of the screen with the focus in it.
  */
 function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
-  const { live, region } = usePlanContext();
+  const t = useTranslations('tripPlanner');
+  const { live, state, region } = usePlanContext();
   const track = useTripEvents();
   const step = useTicketStep();
-  const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
-  const [ticketsOpen, setTicketsOpen] = useState(false);
-  const [fineTuneOpen, setFineTuneOpen] = useState(false);
-  const [routeOpen, setRouteOpen] = useState(false);
+  const [wizard, setWizard] = useState<TripWizardAt | null>(null);
   const resultRef = useRef<HTMLDivElement>(null);
-  const route = usePlanRouteSetup();
-  useSheetHistory(sheet, setSheet);
+  const toResult = useRef(false);
+  const close = useCallback(() => setWizard(null), []);
+  const screen = wizard?.screen;
+  const closedByVisitor = useCallback(() => {
+    if (screen) track('trip_wizard_closed', { step: screen });
+    close();
+  }, [close, screen, track]);
+  useSheetHistory(wizard !== null, closedByVisitor);
 
-  /** The walk: the Dates sheet on a phone, the dates panel at a desk. */
+  /** A start: the assistant on its first step. */
   const start = useCallback(
-    (source: 'hero' | 'button') => {
+    (source: 'hero' | 'button' | TripPlannerStartSource) => {
       track('trip_planner_started', { source });
-      if (!isWide()) {
-        setSheet('dates');
-        return;
-      }
-      const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
-      scrollTo(panel);
-      panel
-        ?.querySelector<HTMLElement>(
-          '[role=radio][aria-checked=true], [data-plan-date][tabindex="0"]'
-        )
-        ?.focus({ preventScroll: true });
+      setWizard({ screen: 'dates', via: 'start' });
     },
     [track]
   );
+  /** A way back in from the result: the assistant on that step. */
+  const reopen = useCallback(
+    (screenKey: TripWizardStepKey) => setWizard({ screen: screenKey, via: 'answers' }),
+    []
+  );
 
-  // The hub's hero asks through `tripPlannerUi`.
+  // The hub's hero and landing, and the result's answers, ask through `tripPlannerUi`.
   useEffect(() => {
     if (!live) return;
     const answer = () => {
-      if (tripPlannerUi.take()) start('hero');
+      const request = tripPlannerUi.take();
+      if (!request) return;
+      if (request.kind === 'start') start(request.source);
+      else reopen(request.step);
     };
     answer();
     return tripPlannerUi.subscribe(answer);
-  }, [live, start]);
+  }, [live, start, reopen]);
 
-  // The answer, at the top of the screen, with the focus in it: after "Show the plan" and after the
-  // departure date, which on a phone is the first thing to read after the sheet. An open sheet
-  // holds the focus until it is gone, so then the answer takes it once the sheet has closed.
-  const toResult = useRef(false);
   const focusResult = useCallback(() => {
     const target = resultRef.current;
     if (!target) return;
     scrollTo(target);
     target.focus({ preventScroll: true });
   }, []);
-  const showResult = useCallback(() => {
-    if (sheet !== null) {
-      toResult.current = true;
-      setSheet(null);
-      return;
-    }
-    requestAnimationFrame(focusResult);
-  }, [sheet, focusResult]);
-  const onSheetClosed = useCallback(() => {
-    if (!toResult.current) return false;
-    toResult.current = false;
-    requestAnimationFrame(focusResult);
-    return true;
-  }, [focusResult]);
+  /** Leave the assistant for the plan, which takes the focus once the dialog is gone. */
+  const showPlan = useCallback(() => {
+    toResult.current = true;
+    close();
+    requestAnimationFrame(() => requestAnimationFrame(focusResult));
+  }, [close, focusResult]);
 
-  // The desk picks its dates in the open panel without pressing any start, so the first dates of
-  // the page load are its start.
-  const onDatesPicked = useCallback(() => {
-    trackDatesStart(region.slug);
-    showResult();
-  }, [region.slug, showResult]);
-
-  /**
-   * The result's ways back into the setup: the dates, the parks, the route, the options, tickets,
-   * each counted with where it was pressed.
-   */
-  const edit = useMemo<PlanEdit>(() => {
-    const panel = (selector: string, open?: () => void) => () => {
-      open?.();
-      requestAnimationFrame(() => {
-        const target = document.querySelector<HTMLElement>(selector);
-        scrollTo(target);
-        target?.focus({ preventScroll: true });
-      });
-    };
-    const opened = (panel: TripEditPanel, from: TripEditFrom) =>
-      track('trip_edit_opened', { panel, from });
-    return {
+  /** The result's ways back into the plan's questions, each the assistant on its step. */
+  const edit = useMemo<PlanEdit>(
+    () => ({
       tickets: (from, index) => {
         step.open(from);
         if (index !== undefined) step.focusTicket(index);
-        if (!isWide()) setSheet('tickets');
-        else panel('[data-plan-tickets-panel]', () => setTicketsOpen(true))();
+        reopen('tickets');
       },
-      parks: (from) => {
-        opened('parks', from);
-        if (isWide()) panel('[data-plan-parks-panel]')();
-        else setSheet('parks');
-      },
-      options: (from) => {
-        opened('options', from);
-        if (isWide()) {
-          panel('[data-plan-disclosure="options"] > button', () => setFineTuneOpen(true))();
-        } else setSheet('options');
-      },
-      route: (from) => {
-        opened('route', from);
-        if (isWide()) {
-          panel('[data-plan-disclosure="route"] > button', () => setRouteOpen(true))();
-        } else setSheet('route');
-      },
-      dates: (from) => {
-        opened('dates', from);
-        if (isWide()) panel('[data-plan-dates-panel]')();
-        else setSheet('dates');
-      },
-    };
-  }, [step, track]);
-
-  /** A setup row or disclosure opened by the visitor: a change from the setup. */
-  const fromSetup = useCallback(
-    (panel: TripEditPanel) => track('trip_edit_opened', { panel, from: 'setup' }),
-    [track]
+      parks: () => reopen('parks'),
+      options: () => reopen('hotel'),
+      route: () => reopen('route'),
+      dates: () => reopen('dates'),
+    }),
+    [step, reopen]
   );
+
+  const dated = Boolean((state.from && state.to) || state.when);
 
   return (
     <>
       {live && <ParkyTripInterviewButton region={region.slug} />}
-      <PlanSetup
+      {!dated && (
+        <Button size="lg" className="self-start" disabled={!live} onClick={() => start('button')}>
+          <CalendarPlus aria-hidden="true" />
+          {t('setup.start')}
+        </Button>
+      )}
+      <TripWizard
+        at={wizard}
+        onMove={setWizard}
+        onClose={closedByVisitor}
+        onShowPlan={showPlan}
+        ticketStep={step}
         defaultMonth={defaultMonth}
-        sheet={sheet}
-        onSheet={setSheet}
-        onDone={showResult}
-        onSheetClosed={onSheetClosed}
-        onDatesPicked={onDatesPicked}
-        onSetupOpened={fromSetup}
-        step={step}
-        fineTuneOpen={fineTuneOpen}
-        onFineTuneOpen={(open) => {
-          if (open) fromSetup('options');
-          setFineTuneOpen(open);
-        }}
-        routeOpen={routeOpen}
-        onRouteOpen={(open) => {
-          if (open) fromSetup('route');
-          setRouteOpen(open);
-        }}
-        route={route}
-        onStart={() => start('button')}
       />
       <PlanResult
         ref={resultRef}
         edit={edit}
         step={step}
-        ticketsOpen={ticketsOpen}
-        onTicketsOpen={setTicketsOpen}
+        ticketsOpen={false}
+        onTicketsOpen={noTicketsPanel}
         defaultMonth={defaultMonth}
       />
     </>
@@ -351,17 +293,17 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
 }
 
 /**
- * The phone's Back button closes an open sheet instead of leaving the page: a sheet that opens adds
- * an entry to the history, and Back takes it away again. The plan's own address changes while the
- * sheet is open (`replaceState` on that entry), so the entry under it is given the latest address
- * once the sheet is gone, or Back would also undo every choice made in the sheet.
+ * The phone's Back button closes the assistant instead of leaving the page: opening it adds an
+ * entry to the history, and Back takes it away again (`onBack`). The plan's own address changes
+ * while it is open (`replaceState` on that entry), so the entry under it is given the latest address
+ * once it is gone, or Back would also undo every answer given in it.
  */
-function useSheetHistory(
-  sheet: PlanSheetStep | null,
-  setSheet: (sheet: PlanSheetStep | null) => void
-) {
+function useSheetHistory(open: boolean, onBack: () => void) {
   const pushed = useRef(false);
-  const open = sheet !== null;
+  const latestBack = useRef(onBack);
+  useEffect(() => {
+    latestBack.current = onBack;
+  }, [onBack]);
   useEffect(() => {
     if (open && !pushed.current) {
       pushed.current = true;
@@ -382,11 +324,11 @@ function useSheetHistory(
       if (!pushed.current) return;
       pushed.current = false;
       const latest = window.location.href;
-      setSheet(null);
-      // The entry Back landed on holds the address from before the sheet; the latest one wins.
+      latestBack.current();
+      // The entry Back landed on holds the address from before the assistant; the latest one wins.
       requestAnimationFrame(() => window.history.replaceState(null, '', latest));
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
-  }, [setSheet]);
+  }, []);
 }
