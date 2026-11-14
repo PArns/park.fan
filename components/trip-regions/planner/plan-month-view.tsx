@@ -31,10 +31,13 @@ import {
   type TripCanvas,
 } from '@/lib/trip-regions/plan-week';
 import type { TripPlan } from '@/lib/trip-regions/plan';
+import { dayStayBase, monthStayCells } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanCodeKey } from './plan-calendar-keys';
+import { useBaseName } from './plan-place-words';
+import { MoveIcon, PlanMonthStayBand } from './plan-stay-band';
 import {
   PlanDayMarker,
   useDayMarkerText,
@@ -90,7 +93,10 @@ function bandTicks(canvas: TripCanvas): number[] {
  * hours in the crowd colour, a party night hatched, the evening in a second park or at a venue. A
  * phone writes the hours under it, a wide screen the axis and one line: the evening or the ticket
  * day. A rest or travel day is a plain tile with its icon, the date's holidays the bar along the
- * top, and a key says what the codes stand for. A press opens the day.
+ * top, and a key says what the codes stand for. On a trip across cities each cell's foot is the
+ * stay band (`PlanMonthStayBand`, `monthStayCells`): the city slept in, named where its stay
+ * begins and at the start of each week row, in the stays' primary tints, never a crowd colour.
+ * A press opens the day.
  */
 export function PlanMonthView({
   plan,
@@ -108,11 +114,13 @@ export function PlanMonthView({
   const markerText = useDayMarkerText();
   const ticketLabel = useTicketDayLabel();
   const eveningName = useEveningName();
+  const baseName = useBaseName();
   const weeks = useMemo(
     () => tripMonthWeeks(plan.meta.from, plan.meta.to),
     [plan.meta.from, plan.meta.to]
   );
   const dayBy = useMemo(() => new Map(plan.days.map((d) => [d.date, d])), [plan.days]);
+  const stayCells = useMemo(() => monthStayCells(plan), [plan]);
   const calendarBy = useMemo(
     () => new Map((calendar?.days ?? []).map((d) => [d.date, d])),
     [calendar?.days]
@@ -142,6 +150,18 @@ export function PlanMonthView({
     const park = parkBySlug.get(slug);
     return park ? parkLabel(park, config.parkShortNames, 'tight') : slug;
   };
+  // The band runs along the foot, out to the cell's edges, so a stay reads as one strip.
+  const stayFoot = (date: string, rowStart: boolean) => {
+    const c = stayCells.get(date);
+    return c ? (
+      <PlanMonthStayBand
+        stay={c.stay}
+        left={c.left}
+        first={c.first || rowStart}
+        className="-mx-1 mt-auto -mb-1 self-stretch lg:-mx-1.5 lg:-mb-1.5"
+      />
+    ) : null;
+  };
 
   return (
     <div data-plan-view="month" className="flex flex-col gap-1">
@@ -154,7 +174,7 @@ export function PlanMonthView({
         ))}
       </div>
       <ol className="grid grid-cols-7 gap-1">
-        {weeks.flat().map((cell) => {
+        {weeks.flat().map((cell, index) => {
           const day = dayBy.get(cell.date);
           const dayNumber = Number(cell.date.slice(8));
           const label =
@@ -173,11 +193,15 @@ export function PlanMonthView({
           }
           const span = spanBy.get(cell.date);
           const isPark = day.kind === 'park' || day.kind === 'hop';
-          const full = formatParkDay(locale, cell.date, {
+          const date = formatParkDay(locale, cell.date, {
             weekday: 'long',
             day: 'numeric',
             month: 'long',
           });
+          const base = stayCells.size > 0 ? dayStayBase(day) : null;
+          const full = base ? `${date}, ${baseName(base)}` : date;
+          const rowStart = index % 7 === 0;
+          const toCity = day.move ? t('move.toCity', { city: baseName(day.move.to) }) : null;
           const signals = holidaySignals(calendarBy.get(cell.date) ?? null);
           const signalBar = signals.length > 0 && (
             <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
@@ -193,13 +217,19 @@ export function PlanMonthView({
                 : day.kind === 'arrival'
                   ? PlaneLanding
                   : PlaneTakeoff;
+            const icon =
+              day.kind === 'travel' && day.move ? (
+                <MoveIcon mode={day.move.mode} className="size-4 shrink-0" />
+              ) : (
+                <Icon className="size-4 shrink-0" aria-hidden="true" />
+              );
             const word = t(`day.${day.kind}`);
             return (
               <li key={cell.date} className="min-w-0">
                 <button
                   type="button"
                   onClick={() => onOpenDay(cell.date)}
-                  aria-label={`${full}: ${word}`}
+                  aria-label={`${full}: ${[word, toCity].filter(Boolean).join(', ')}`}
                   className={cn(
                     'bg-muted/25 border-border/60 relative flex h-full min-h-[4.5rem] w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-28 lg:p-1.5',
                     PLAN_FOCUS
@@ -210,9 +240,10 @@ export function PlanMonthView({
                     {label}
                   </span>
                   <span className="text-muted-foreground flex items-center gap-1 text-xs">
-                    <Icon className="size-4 shrink-0" aria-hidden="true" />
+                    {icon}
                     <span className="hidden lg:inline">{word}</span>
                   </span>
+                  {stayFoot(cell.date, rowStart)}
                 </button>
               </li>
             );
@@ -247,7 +278,7 @@ export function PlanMonthView({
               <button
                 type="button"
                 onClick={() => onOpenDay(cell.date)}
-                aria-label={`${full}: ${[what, spoken, evening ? t('evening.plus', { name: evening }) : null, ticketDay, marker].filter(Boolean).join(', ')}`}
+                aria-label={`${full}: ${[what, spoken, evening ? t('evening.plus', { name: evening }) : null, ticketDay, marker, toCity].filter(Boolean).join(', ')}`}
                 className={cn(
                   'relative flex h-full min-h-[4.5rem] w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-28 lg:gap-1.5 lg:p-1.5',
                   level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
@@ -350,11 +381,15 @@ export function PlanMonthView({
                     {line}
                   </span>
                 )}
+                {stayFoot(cell.date, rowStart)}
               </button>
             </li>
           );
         })}
       </ol>
+      {stayCells.size > 0 && (
+        <p className="text-muted-foreground mt-1 text-xs">{t('month.stayKey')}</p>
+      )}
       <PlanCodeKey entries={codeKey} className="mt-2 lg:hidden" />
       <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} signalsLabel={false} className="mt-2" />
       <ul className="text-muted-foreground mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs">
