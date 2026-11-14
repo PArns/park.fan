@@ -2,14 +2,14 @@
   "title": "Reiseplaner, Wochenansicht (es)",
   "tags": ["diagram"],
   "alt": {
-    "es": "La vista semanal del 5 al 11 de diciembre de 2026, un bloque por día de parque sobre un eje de horas, con «Día 1 de 4 en Disney» a «Día 4 de 4 en Disney» y «Día 1 de 3 en Universal» encima de las columnas."
+    "es": "La vista semanal del 5 al 11 de diciembre de 2026, un bloque por día de parque sobre un eje de horas, con «Día 1 de 3 en Universal» a «Día 3 de 3 en Universal», «Día 1 de 4 en Disney» y «Día 2 de 4 en Disney» encima de las columnas."
   },
   "caption": {
-    "es": "El sábado queda libre como día de llegada, que es lo predeterminado. Si aterrizas temprano, con «Parque el día de llegada» le añades un parque."
+    "es": "El sábado queda libre como día de llegada, que es lo predeterminado. Si aterrizas temprano, con «Parque el día de llegada», en «Más opciones», le añades un parque."
   },
   "credit": {
     "author": "park.fan",
     "license": "all-rights-reserved"
   },
-  "shotAt": "2026-11-13"
+  "shotAt": "2026-11-14"
 }
