@@ -45,6 +45,7 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
@@ -660,6 +661,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               parkSlug={parkSlug}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
               renderedAtMs={seedNowMs}
+              seasons={eventSeasonsNearToday(seasons, todayIso)}
             />
           }
           // Server-rendered, and handed down only so the „Mit Kindern“ block's slider can be the

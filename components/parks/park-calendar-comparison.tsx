@@ -4,6 +4,7 @@ import { useMemo } from 'react';
 import {
   Ban,
   CalendarClock,
+  CalendarRange,
   CalendarX2,
   Check,
   CloudRain,
@@ -18,6 +19,7 @@ import type { CalendarDay } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { PlanDayButtonLazy } from '@/components/planner/plan-day-button-lazy';
 import { usePlannerDayFacts } from '@/lib/planner/use-day-facts';
+import { seasonMarks, type SeasonOnDay } from '@/lib/parks/park-season-days';
 import {
   compareDays,
   type DayComparison,
@@ -31,6 +33,8 @@ import { getNumberFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { DialogHero } from '@/components/common/dialog-hero';
+import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
+import { useSeasonLabel } from '@/components/parks/season-headline';
 
 /** One icon per reason row, so the rows are scannable before they are read. */
 const REASON_ICON = {
@@ -42,11 +46,26 @@ const REASON_ICON = {
   price: Coins,
 } as const;
 
+/** A row's label, above its two cells: the season row and every reason row. */
+const ROW_LABEL_CLASS =
+  'text-muted-foreground flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase';
+
+/** One of a row's two cells, in the state that names no winner. */
+const CELL_CLASS = 'flex items-center gap-1 rounded-md border px-2.5 py-1.5 text-sm tabular-nums';
+
+/** A day the grid marks no season on; one array, so a missing entry is not a fresh one. */
+const NO_SEASONS: readonly SeasonOnDay[] = [];
+
 /** Props of the two-day comparison dialog. */
 export interface ParkCalendarComparisonProps {
   /** The first day picked. `null` closes the dialog — see `open`. */
   a: CalendarDay | null;
   b: CalendarDay | null;
+  /**
+   * The event seasons of the picked days, by date (`DayComparisonSelection.seasons`). They make the
+   * season row: a Wintertraum day and an ordinary one are not the same visit, whatever the crowd.
+   */
+  seasons?: Readonly<Record<string, readonly SeasonOnDay[]>>;
   parkTimezone: string;
   /** `YYYY-MM-DD` in the PARK's zone. Decides what counts as already past. */
   todayIso: string;
@@ -66,6 +85,7 @@ export interface ParkCalendarComparisonProps {
 export function ParkCalendarComparison({
   a,
   b,
+  seasons,
   parkTimezone,
   todayIso,
   open,
@@ -75,6 +95,7 @@ export function ParkCalendarComparison({
   const t = useTranslations('parks');
   const tCommon = useTranslations('common');
   const locale = useLocale();
+  const seasonLabel = useSeasonLabel();
 
   /**
    * The dates in the reader's word order. A `date-fns` pattern like `'EEEE, d. MMMM'` is German
@@ -113,6 +134,13 @@ export function ParkCalendarComparison({
   );
 
   if (!a || !b || !comparison) return null;
+
+  /**
+   * The season row stands where either day has an event season, and is never scored: a winter
+   * event is not a better or a worse day, only a different one. Two ordinary days have no row.
+   */
+  const seasonsOf = (day: CalendarDay) => seasons?.[day.date] ?? NO_SEASONS;
+  const showSeasonRow = seasonsOf(a).length > 0 || seasonsOf(b).length > 0;
 
   // `T12:00`, not `parseISO(day.date)`: a bare `YYYY-MM-DD` parses as UTC midnight, which is the
   // previous day west of Greenwich. Midday is far from either boundary.
@@ -257,6 +285,28 @@ export function ParkCalendarComparison({
   const sideLabel = (side: DayComparisonSide) =>
     side === 'tie' ? t('dayComparison.bothDays') : shortLabel(side === 'a' ? a : b);
 
+  /** A day's seasons as the season row prints them: the tile's icons and the names. */
+  const seasonCell = (day: CalendarDay) => {
+    const onDay = seasonsOf(day);
+    if (onDay.length === 0) {
+      return (
+        <span key={day.date} className={cn(CELL_CLASS, 'border-border/50 text-muted-foreground')}>
+          <span className="truncate">
+            {isClosedCalendarDay(day) ? tCommon('closed') : t('dayComparison.noSeason')}
+          </span>
+        </span>
+      );
+    }
+    return (
+      <span key={day.date} className={cn(CELL_CLASS, 'border-border/50 text-foreground')}>
+        {seasonMarks(onDay).map((mark) => (
+          <SeasonKindIcon key={mark.kind} kind={mark.kind} className="size-3.5" />
+        ))}
+        <span className="truncate">{onDay.map((s) => seasonLabel(s, true)).join(', ')}</span>
+      </span>
+    );
+  };
+
   const columnHead = (day: CalendarDay, side: 'a' | 'b') => {
     const wins = comparison.better === side && comparison.confidence !== 'tie';
     // The same three-way read as `park-calendar-day.tsx`: `status` and `crowdLevel` can disagree,
@@ -351,19 +401,29 @@ export function ParkCalendarComparison({
             </ul>
           )}
 
-          {comparison.reasons.length === 0 ? (
-            <p className="text-muted-foreground flex items-start gap-2 text-xs">
-              <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
-              {t('dayComparison.noReasons')}
-            </p>
-          ) : (
+          {(showSeasonRow || comparison.reasons.length > 0) && (
             <ul className="space-y-3">
+              {/* First, because it frames the rows under it: a season brings its own hours and
+                  rides, and the reader should know which kind of day each column is before
+                  weighing a difference in them. */}
+              {showSeasonRow && (
+                <li className="space-y-1.5">
+                  <span className={ROW_LABEL_CLASS}>
+                    <CalendarRange className="size-3.5 shrink-0" aria-hidden="true" />
+                    {t('dayComparison.reasonSeason')}
+                  </span>
+                  <div className="grid grid-cols-2 gap-2">
+                    {seasonCell(a)}
+                    {seasonCell(b)}
+                  </div>
+                </li>
+              )}
               {comparison.reasons.map((reason) => {
                 const Icon = REASON_ICON[reason.key];
                 return (
                   <li key={reason.key} className="space-y-1.5">
                     <div className="flex items-baseline justify-between gap-2">
-                      <span className="text-muted-foreground flex items-center gap-1.5 text-[11px] font-bold tracking-wider uppercase">
+                      <span className={ROW_LABEL_CLASS}>
                         <Icon className="size-3.5 shrink-0" aria-hidden="true" />
                         {t(`dayComparison.reason${capitalize(reason.key)}`)}
                       </span>
@@ -380,7 +440,7 @@ export function ParkCalendarComparison({
                         <span
                           key={side}
                           className={cn(
-                            'flex items-center gap-1 rounded-md border px-2.5 py-1.5 text-sm tabular-nums',
+                            CELL_CLASS,
                             rowDecides(reason) && reason.better === side
                               ? 'border-primary/40 bg-primary/5 text-foreground font-semibold'
                               : 'border-border/50 text-muted-foreground'
@@ -397,6 +457,15 @@ export function ParkCalendarComparison({
                 );
               })}
             </ul>
+          )}
+
+          {/* Said even under a season row: the season describes the days, it does not compare
+              them. */}
+          {comparison.reasons.length === 0 && (
+            <p className="text-muted-foreground flex items-start gap-2 text-xs">
+              <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
+              {t('dayComparison.noReasons')}
+            </p>
           )}
         </div>
 

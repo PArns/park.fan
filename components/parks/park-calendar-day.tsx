@@ -58,6 +58,9 @@ export interface ParkCalendarDayProps {
   seasons?: readonly SeasonOnDay[];
 }
 
+/** A season mark that should stand out: on the page's own surface, so it reads on any crowd tile. */
+const SEASON_CHIP_CLASS = 'bg-background/70 rounded-full px-1 py-px';
+
 /**
  * The four things a day can carry besides its crowd level, as a bar across the top edge. The bar
  * splits into one segment per signal, so a cell shows all of them at once and the border stays free
@@ -134,7 +137,11 @@ function ParkCalendarDayComponent({
   const worksHint = works
     ? `${tWorks('closedRidesTitle')}: ${works.map((ride) => ride.name).join(', ')}`
     : null;
-  const marks = seasons ? seasonMarks(seasons) : [];
+  // Named once here: the icon's label in the crowd row and the line below it say the same thing.
+  const marks = (seasons ? seasonMarks(seasons) : []).map((mark) => ({
+    ...mark,
+    names: mark.seasons.map((s) => seasonLabel(s, true)).join(', '),
+  }));
   const seasonHint = seasons?.length ? seasons.map((s) => seasonLabel(s, true)).join(', ') : null;
   const signals = daySignals(day, locale);
   const clickable = !!onSelect;
@@ -280,28 +287,26 @@ function ParkCalendarDayComponent({
         {/* The season's kind, beside the star: a chip on the page's own surface like the works one,
             or, for a season most of the month runs in or one only expected, the bare icon in the
             row's colour, so a month of Wintertraum does not drown the crowd colours. Named on
-            hover; the day's dialog says the rest. */}
-        {marks.map((mark) => {
-          const names = mark.seasons.map((s) => seasonLabel(s, true)).join(', ');
-          return (
-            <span
-              key={mark.kind}
-              role="img"
-              aria-label={names}
-              title={names}
-              data-calendar-season={mark.kind}
-              className={cn(
-                'inline-flex shrink-0 items-center',
-                !mark.quiet && 'bg-background/70 rounded-full px-1 py-px'
-              )}
-            >
-              <SeasonKindIcon
-                kind={mark.kind}
-                className={mark.quiet ? SEASON_ICON_QUIET_CLASS : undefined}
-              />
-            </span>
-          );
-        })}
+            hover; the day's dialog says the rest. From `lg` the name has a line of its own below,
+            which carries the icon instead. */}
+        {marks.map((mark) => (
+          <span
+            key={mark.kind}
+            role="img"
+            aria-label={mark.names}
+            title={mark.names}
+            data-calendar-season={mark.kind}
+            className={cn(
+              'inline-flex shrink-0 items-center lg:hidden',
+              !mark.quiet && SEASON_CHIP_CLASS
+            )}
+          >
+            <SeasonKindIcon
+              kind={mark.kind}
+              className={mark.quiet ? SEASON_ICON_QUIET_CLASS : undefined}
+            />
+          </span>
+        ))}
         {/* Beside the star and like it a hover: a tap opens the day, whose detail lists the same
             rides. A chip on the page's own surface, so it stands out on an orange „Hoch" tile as
             on a green one, with the count because a winter month can shut several rides at once. */}
@@ -332,6 +337,30 @@ function ParkCalendarDayComponent({
         )}
         <span className="truncate">{statusLabel}</span>
       </div>
+
+      {/* The season by name, where the week grid's tile has the height for a line between the
+          crowd level and the floor; the two-column list below `lg` keeps the icon alone. Quiet
+          like the icon: a month of Wintertraum is a month of this line, in the floor's grey. */}
+      {marks.length > 0 && (
+        <div className="mt-1.5 hidden min-w-0 flex-col items-start gap-0.5 text-[10.5px] lg:flex">
+          {marks.map((mark) => (
+            <span
+              key={mark.kind}
+              data-calendar-season-name={mark.kind}
+              className={cn(
+                'flex max-w-full min-w-0 items-center gap-1 font-medium',
+                mark.quiet ? 'text-muted-foreground' : cn('text-foreground', SEASON_CHIP_CLASS)
+              )}
+            >
+              <SeasonKindIcon
+                kind={mark.kind}
+                className={mark.quiet ? SEASON_ICON_QUIET_CLASS : undefined}
+              />
+              <span className="truncate">{mark.names}</span>
+            </span>
+          ))}
+        </div>
+      )}
 
       {/* Hours and weather sit on the cell's floor so a row lines them up. Below `lg` they share a
           line; stacked, they would cost a phone row a third of its height. */}

@@ -57,6 +57,8 @@ import { ParkStatsSection } from '@/components/parks/park-stats-section';
 import { ParkLiveLink } from '@/components/parks/park-live-link';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { CHAPTER_GAP_COMPACT } from '@/components/common/chapter-spacing';
 
 interface ParkStatsPageProps {
@@ -359,6 +361,7 @@ export default async function ParkStatsPage({ params }: ParkStatsPageProps) {
               city={city}
               parkSlug={parkSlug}
               parkPath={parkPath}
+              seasons={eventSeasonsNearToday(seasons, parkDayOf(new Date(), park.timezone))}
             />
           }
           tiles={

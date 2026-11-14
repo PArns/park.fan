@@ -1415,6 +1415,8 @@
       "reasonWeather": "Precipitazioni",
       "reasonHoliday": "Festivi e vacanze",
       "reasonPrice": "Biglietto giornaliero",
+      "reasonSeason": "Stagione",
+      "noSeason": "Stagione normale",
       "unitMm": "{value} mm",
       "unitFlags": "{value, plural, =0 {nessuno} one {# indicatore} other {# indicatori}}",
       "unitSteps": "{value, plural, one {# livello} other {# livelli}}",
