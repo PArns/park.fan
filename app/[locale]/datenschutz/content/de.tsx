@@ -115,10 +115,11 @@ export function DatenschutzDE() {
         <p>
           Im lokalen Speicher (Local Storage) Ihres Browsers legen wir Einstellungen ab, etwa das
           Farbschema, Ihren Tagesplan, die zuletzt im Reiseplaner geplante Reise je Region samt den
-          Angaben zu Ihrer Gruppe, die Sie Parky genannt haben, Ihre Benachrichtigungen, Ihre
-          Entscheidung zur Standortfreigabe und zur Statistik, dazu zwischengespeicherte Ergebnisse.
-          Diese Daten bleiben auf Ihrem Gerät. Was davon an unseren Server geht, steht in den
-          Abschnitten zu Tagesplaner, Parky und Push-Benachrichtigungen.
+          Angaben zu Ihrer Gruppe, die Sie Parky genannt haben, den Park Ihres letzten Chats mit
+          Parky, Ihre Benachrichtigungen, Ihre Entscheidung zur Standortfreigabe und zur Statistik,
+          dazu zwischengespeicherte Ergebnisse. Diese Daten bleiben auf Ihrem Gerät. Was davon an
+          unseren Server geht, steht in den Abschnitten zu Tagesplaner, Parky und
+          Push-Benachrichtigungen.
         </p>
         <p>
           Für diese Cookies und Einträge braucht es keine Einwilligung, weil sie für die von Ihnen
@@ -211,7 +212,7 @@ export function DatenschutzDE() {
           lit. f DSGVO). Zur Übermittlung in die USA gilt das oben zu Cloudflare Gesagte.
         </p>
 
-        <LegalH3 id="parky">Parky, der Chat-Assistent</LegalH3>
+        <LegalH3 id="parky">Parky, der KI-Chat</LegalH3>
         <p>
           Parky beantwortet in einem Chatfenster unten rechts Fragen zu Parks, Wartezeiten,
           Prognosen und unseren Beiträgen. Ob Parky in Ihrem Browser erscheint, entscheidet eine
@@ -230,12 +231,15 @@ export function DatenschutzDE() {
           (Reisedaten, Parks, Hotel, Tickets und festgelegte Tage, dazu was Sie Parky über Ihre
           Gruppe gesagt haben, etwa wie viele Sie sind und wie groß die Kinder), während eines
           Interviews mit Parky, bei welcher Frage es steht, welche Erinnerungen Sie gesetzt haben
-          und die Kennungen Ihrer Favoriten. Diese Angaben liegen sonst nur in Ihrem Browser; Parky
-          braucht sie, um Ihre Pläne, Ihre Erinnerungen und Favoriten zu lesen und auf Ihren Wunsch
-          zu ändern. Ihren Standort sendet er nur, wenn Sie ihn im Chat ausdrücklich teilen. Der
-          Server rundet ihn auf etwa einen Kilometer, nutzt ihn für die Antwort und speichert ihn
-          nicht. Fragen Sie ohne geteilten Standort nach Parks in der Nähe, schätzt der Server Ihre
-          ungefähre Lage aus Ihrer IP-Adresse.
+          und die Kennungen Ihrer Favoriten und der Fahrgeschäfte, die Sie als gefahren markiert
+          haben. Mit der ersten Frage eines Chats sendet er auch die Begrüßung, mit der Parky den
+          Chat eröffnet hat; sie kann einen geplanten Park und Tag nennen. Diese Angaben liegen
+          sonst nur in Ihrem Browser; Parky braucht sie, um Ihre Pläne, Ihre Erinnerungen, Favoriten
+          und gefahrenen Fahrgeschäfte zu lesen und auf Ihren Wunsch zu ändern. Ihren Standort
+          sendet er nur, wenn Sie ihn im Chat ausdrücklich teilen. Der Server rundet ihn auf etwa
+          einen Kilometer, nutzt ihn für die Antwort und speichert ihn nicht. Fragen Sie ohne
+          geteilten Standort nach Parks in der Nähe, schätzt der Server Ihre ungefähre Lage aus
+          Ihrer IP-Adresse.
         </p>
         <p>
           Für die Antwort übergibt unser Server Ihre Frage, die letzten Nachrichten des Chats, Ihre
@@ -268,15 +272,17 @@ export function DatenschutzDE() {
           Im Sitzungsspeicher (Session Storage) Ihres Browsers liegen für die Dauer der Sitzung eine
           Kopie des Chats, der Sitzungsschlüssel, ob Parky eingeschaltet ist, welche Sprüche er
           schon gesagt hat und, während eines Interviews, wie weit es ist. Mit dem Schließen des
-          Tabs ist das gelöscht.
+          Tabs ist das gelöscht. Im lokalen Speicher Ihres Browsers merkt sich Parky den Park, um
+          den es in Ihrem letzten Chat ging, mit Namen und Datum, damit er beim nächsten Besuch
+          daran anknüpfen kann. Dieser Eintrag bleibt in Ihrem Browser, bis Sie ihn löschen.
         </p>
         <p>
           Rechtsgrundlage für den Chat ist die Bereitstellung der von Ihnen gewünschten Funktion
           (Art. 6 Abs. 1 lit. b DSGVO), für die Speicherung der Chats, die Prüfsummen und Turnstile
-          unser berechtigtes Interesse an einem verlässlichen und vor Missbrauch geschützten
-          Assistenten (Art. 6 Abs. 1 lit. f DSGVO). Bitte schreiben Sie keine persönlichen Angaben
-          wie Namen, Anschriften oder Gesundheitsdaten in den Chat. Parkys Antworten erzeugt ein
-          Sprachmodell, sie können Fehler enthalten.
+          unser berechtigtes Interesse an einem verlässlichen und vor Missbrauch geschützten Chat
+          (Art. 6 Abs. 1 lit. f DSGVO). Bitte schreiben Sie keine persönlichen Angaben wie Namen,
+          Anschriften oder Gesundheitsdaten in den Chat. Parkys Antworten erzeugt ein Sprachmodell,
+          sie können Fehler enthalten.
         </p>
 
         <LegalH3>Kontakt per E-Mail oder Telefon</LegalH3>

@@ -921,18 +921,12 @@ export function ContentDE() {
         />
       </SectionShell>
 
-      <SectionShell
-        id="parky"
-        index="10"
-        kicker="Der Assistent"
-        title="Frag Parky"
-        icon={MessageCircle}
-      >
+      <SectionShell id="parky" index="10" kicker="KI-Chat" title="Frag Parky" icon={MessageCircle}>
         <ParkyShot locale="de">
           <P>
-            Parky ist der Chat-Assistent von park.fan und wohnt im runden Knopf unten rechts. Auf
-            der Startseite steht er auf einem breiten Bildschirm gleich unter der Überschrift und
-            hüpft erst beim Scrollen in seine Ecke.
+            Parky ist der KI-Buddy von park.fan und wohnt im runden Knopf unten rechts. Auf der
+            Startseite steht er auf einem breiten Bildschirm gleich unter der Überschrift und hüpft
+            erst beim Scrollen in seine Ecke.
           </P>
           <P>
             Frag ihn, wie lang die Warteschlangen gerade sind, was für heute oder die nächsten

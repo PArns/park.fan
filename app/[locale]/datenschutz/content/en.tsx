@@ -111,9 +111,10 @@ export function DatenschutzEN() {
         <p>
           In your browser's local storage we keep settings such as the color scheme, your day plan,
           the trip you last planned in the trip planner for each region together with what you told
-          Parky about your group, your notifications, your choices on location access and on
-          statistics, and cached results. This data stays on your device. The sections on the day
-          planner, on Parky and on push notifications say which parts of it go to our server.
+          Parky about your group, the park your last chat with Parky was about, your notifications,
+          your choices on location access and on statistics, and cached results. This data stays on
+          your device. The sections on the day planner, on Parky and on push notifications say which
+          parts of it go to our server.
         </p>
         <p>
           These cookies and entries need no consent, because they are strictly necessary for the
@@ -202,7 +203,7 @@ export function DatenschutzEN() {
           what is said about Cloudflare above applies.
         </p>
 
-        <LegalH3 id="parky">Parky, the chat assistant</LegalH3>
+        <LegalH3 id="parky">Parky, the AI chat</LegalH3>
         <p>
           Parky answers questions about parks, wait times, forecasts and our posts in a chat window
           at the bottom right. Whether Parky appears in your browser is decided by a random number
@@ -219,9 +220,11 @@ export function DatenschutzEN() {
           planner and the trip you last planned for each region (travel dates, parks, hotel, tickets
           and fixed days, plus what you told Parky about your group, such as how many of you there
           are and how tall the children are), during an interview with Parky which question it has
-          reached, the reminders you have set and the IDs of your favourites. These otherwise stay
-          in your browser; Parky needs them to read your plans, reminders and favourites and to
-          change them when you ask. It sends your location only if you share it in the chat
+          reached, the reminders you have set, and the IDs of your favourites and of the rides you
+          have marked as ridden. With the first question of a chat it also sends the greeting Parky
+          opened the chat with, which can name a planned park and day. These otherwise stay in your
+          browser; Parky needs them to read your plans, reminders, favourites and ridden rides and
+          to change them when you ask. It sends your location only if you share it in the chat
           yourself. The server rounds it to about one kilometre, uses it for the answer and does not
           store it. If you ask about nearby parks without sharing your location, the server
           estimates your rough position from your IP address.
@@ -238,7 +241,7 @@ export function DatenschutzEN() {
         </p>
         <p>
           Our API server stores the chat, that is your questions and Parky's answers together with
-          the lookups it made for them, and your rating of an answer. We do not store your plans
+          the lookups he made for them, and your rating of an answer. We do not store your plans
           themselves; the lookups hold only what Parky needs for them, such as travel dates and
           parks. This lets Parky refer back to earlier messages in the same conversation and lets us
           find wrong answers. No IP address is stored with it, only a checksum made from the
@@ -255,15 +258,18 @@ export function DatenschutzEN() {
         </p>
         <p>
           For the length of the session, your browser's session storage holds a copy of the chat,
-          the session key, whether Parky is switched on, which lines it has already said and, during
-          an interview, how far it has got. Closing the tab deletes them.
+          the session key, whether Parky is switched on, which lines he has already said and, during
+          an interview, how far it has got. Closing the tab deletes them. Your browser's local
+          storage keeps the park your last chat was about, with its name and the date, so that Parky
+          can pick up from there on your next visit. The entry stays in your browser until you
+          delete it.
         </p>
         <p>
           The legal basis for the chat is providing the feature you asked for (Art. 6(1)(b) GDPR);
           for storing chats, the checksums and Turnstile it is our legitimate interest in a reliable
-          assistant protected against misuse (Art. 6(1)(f) GDPR). Please do not write personal
-          details such as names, addresses or health information into the chat. Parky's answers are
-          produced by a language model and can contain mistakes.
+          chat protected against misuse (Art. 6(1)(f) GDPR). Please do not write personal details
+          such as names, addresses or health information into the chat. Parky's answers are produced
+          by a language model and can contain mistakes.
         </p>
 
         <LegalH3>Contact by email or phone</LegalH3>
