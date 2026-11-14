@@ -12,13 +12,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `getTripRegionTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getTripRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
 - `getTripRegionLinks` _function_: The live regions a page can link into, for the bands on park, calendar, city, country and post pages and `/search`.
-- `getTripRegionParkCounts` _function_: How many parks each live region's planner places, by slug: the API's list of regions (`GET /v1/trip-regions`), else each region route's park list, both a day in the Data Cache.
+- `getTripRegionNavFacts` _function_: What the band says of each live region, by slug: the API's list of regions (`GET /v1/trip-regions`), else for the park count each region route's park list, both a day in the Data Cache.
 - `getTripRegionWhen` _function_: The best trip windows of a length in a range, planned for the headliner parks unless `parks` says otherwise (`/when`).
 - `getTripRegionCalendar` _function_: Every park's days side by side, with the seasons that run on them; at most 92 days.
 - `getTripRegionBestDays` _function_: Each park's quiet and busy days in a window, as sets, and each resort's best dates.
 - `getTripRegionSchoolBreaks` _function_: The school-holiday regions the holiday data knows in `countries` (`DE,NL,GB`), each with its breaks in the range and the day its data ends. Open: the data key stays home.
 - `TRIP_REGIONS_CACHE_TAG` _const_: The Data Cache tag of the list of regions (`GET /v1/trip-regions`).
-- Types: `TripWindow`
+- Types: `TripWindow`, `TripRegionNavFacts`
 
 ### [`best-time.ts`](../../lib/trip-regions/best-time.ts)
 
@@ -27,6 +27,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeRange` _function_: The range `/when` and `/school-breaks` are asked for: the title's year, from today at the earliest and never past the year ahead both routes accept.
 - `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
 - `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
+- `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
 - `monthKey` _function_: `YYYY-MM` of a month.
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a tier among the months that have a figure, and its day guests' hours against the year's mean.
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
@@ -141,7 +142,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.
 - `lastYearReach` _function_: When the forecast should reach the trip's first `last_year` day: the horizon (today to `forecastUntil`) moves forward a day a day, so it reaches that day as many days before it as the horizon is long. Never before tomorrow.
 - `runnerUp` _function_: The runner-up of a park's visit on `date`: the best alternative day, with how many minutes more (or fewer) its headliners wait. `null` without one or without both figures.
-- `earlyPerk` _function_: The early slot a day's hotel gets, if any.
+- `earlyPerk` _function_: The early slot a day's hotel gets, if any, by the region's own name for it.
 - `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
 - `autoSplit` _function_: The parks the split gave a second (or third) day, for the answer's "we added a second day at Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else in `meta.split` is ignored.
 - `PLAN_REASON_ORDER` _const_: The reasons a park day can carry, most telling first: the one-line reason is the first present.
@@ -208,7 +209,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
 - `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
-- `entryMarket` _function_: Whether an entry's ticket is sold outside the US only, which its tag says ("Sold outside the US"). The catalog's `markets` lack `us` for those; no residency rule is claimed, since the sellers' pages state none.
+- `ticketHomeMarket` _function_: The market code of a ticket sold to anyone at the operator's: the region's `ticketMarkets.home`, else the registry's for an API that does not send it.
+- `entryMarket` _function_: Whether an entry's ticket is sold abroad only, which its tag says ("Sold outside the US").
 - `soldLengths` _function_: The lengths a product sells, or `null` for a pass or a product with only a window.
 - `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
 - `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.
@@ -301,6 +303,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `stepVisits` _function_: The next count of a park's stepper. With the split on, an untouched park reads "auto", which sits between one and two: minus pins it to one, plus to two. Minus from one removes the park (`0`). With the split off, "auto" is simply one.
 - `setParkVisits` _function_: Set one park's count: `0` removes it, `null` leaves it to the split. The first edit turns the untouched default (the headliners) into an explicit list, kept in the region's order.
 - `setSplit` _function_: Turn the split on or off. Off, a count left to the split becomes one, so the stepper keeps showing what will be planned.
+- `tripHotelKinds` _function_: The hotel kinds the planner offers: the API's `hotels` where it sends them, each with the area the registry pairs it with, else the registry's own. A region may have several hotel areas or none; a kind without an area moves no drive times.
 - `effectiveHotel` _function_: The hotel the API plans with: the chosen one, else the area's usual hotel (the region's first kind in that area), else off-site.
 - `chooseHotel` _function_: Choose a hotel. Where no area is set yet, the hotel's own area follows (the region's `hotels`), so drive times appear without a second question; an area the visitor chose stays.
 - `setTripDates` _function_: Set the trip's dates; pins outside them go.
@@ -391,4 +394,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripPerk`, `TripHotelArea`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEarlyKind`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
