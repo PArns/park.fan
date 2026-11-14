@@ -9,7 +9,7 @@
 
 /**
  * The places a park page marks, top to bottom, then the band no park page has: the closed list of
- * the event's `section`. The tile stands above the end of the rides or under the calendar's header.
+ * the event's `section`. The tile stands above „Heute im Park" or under the calendar's header.
  */
 const SEEN_SECTIONS = [
   'trip_tile',

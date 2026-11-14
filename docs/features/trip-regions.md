@@ -131,10 +131,22 @@ A view is `section_seen` with `trip_tile`, once when the tile's top comes on scr
 with the region and which link (`plan`, `calendar`), since both links lead to the hub's page and the
 first event counts them as one place ([analytics](../development/analytics.md)).
 
-| Where               | Where on the page                                                                                    | Why                                                                                                                                                                   |
-| ------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| park page           | under the ride list, after the closed rides and „Mit Kindern", before the park's guides (`main_end`) | the fold belongs to „Heute im Park": 82 % of park page views are phones, and the one-line band above it had fewer than 5 clicks in 30 days (October to November 2026) |
-| park crowd calendar | right under the header card, before „Beste Reisezeit"                                                | a reader of a crowd calendar is choosing days, which is the planner's job for a whole trip                                                                            |
+| Where               | Where on the page                                                 | Why                                                                                                                              |
+| ------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| park page           | right above „Heute im Park", under the title card (`phone="row"`) | the owner's call, so more readers pass it; measured for two weeks with `section_seen` and `trip_tile_clicked` from November 2026 |
+| park crowd calendar | right under the header card, before „Beste Reisezeit"             | a reader of a crowd calendar is choosing days, which is the planner's job for a whole trip                                       |
+
+On the park page a phone gets the compact row (`phone="row"`): the kicker, the heading, the plan
+pill and the hub's link beside a 96 px cut of the scene, 135 px tall against the banner's 436, and
+the line under the heading only from `sm`. With the banner, „Heute im Park" on Tokyo DisneySea would
+start at 934 px, below a 390 × 844 screen; with the row it starts at 651 (482 without the tile). On
+Magic Kingdom the title card and the Lightning Lane prices already fill the first screen, so
+„Heute im Park" moves from 918 to 1068 either way. At 1440 the tile adds its 240 px and 16 px of
+gap: Tokyo DisneySea 432 → 688, still on a 900 px screen, Magic Kingdom 794 → 1050, below it.
+Measured on a production build with network and CPU throttling, three loads each, the tile changes
+neither the LCP element (the `<h1>` on Magic Kingdom, the background photo on Tokyo DisneySea) nor
+its time beyond the noise, and adds no layout shift of its own (`pnpm measure:cls` lists nothing in
+it); the scene stays lazy in a box the first HTML reserves.
 
 It looks like the region card of the header band (`REGION_CARD`, `REGION_KICKER`, `REGION_PILL` in
 `components/trip-regions/region-card-classes.ts`, shared with `PlannerMenuPanel`). On a phone the
