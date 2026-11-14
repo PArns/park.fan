@@ -331,22 +331,27 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `hopperTicketResorts` _function_: The resorts the visitor's owned tickets cover with a hopper (`.h`, or a product that always hops), for the "Park hopping" option, which only these and plan first's hopper make count.
 - `ticketsCoverBothResorts` _function_: Whether owned tickets cover both of the region's `blockResorts` (Disney and Universal), so the two may mix inside the windows.
 - `hopperOn` _function_: Whether a plan-first resort is planned with its hopper: all are with `ticket=hopper`, else `hopper=` names it.
-- `toggleHopper` _function_: "Show the plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
+- `toggleHopper` _function_: "Plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
 - `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
 - `suggestionGroups` _function_: The suggestions grouped by resort, product and length, each group where its first ticket starts: six day tickets at Tokyo Disney Resort are one group of six.
 - `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.
-- `longStayTickets` _function_: "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
+- `longStayTickets` _function_: "Plan with these" in the long stay's alternative: the region's 14-day tickets (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
 - `hopperGains` _function_: What the hopper adds, from the fields the API sends: each evening at a second park and each day with two parks by date (more than two by count), the parks that fit only with it, and the minutes per ride. Empty when it adds nothing.
+- `hopperHighlights` _function_: `hopperGains` for one line: the evenings grouped by the second park, each with its dates, however many, first evening first; the rest as the gains list them. Empty when it adds nothing.
+- `ticketWindowDays` _function_: A ticket's window day by day, for the bar that shows which of its days the plan uses: every date from `from` to `to`, both included, at most `MAX_TRIP_DAYS` of them.
 - `needsConnectedHop` _function_: Whether a set of planned parks holds both of the region's `connectedParks` (Universal Studios and Islands of Adventure, with the Hogwarts Express between them), a ride only a hopper takes.
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
 - `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
 - `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
 - `visitorCountry` _function_: The visitor's country from the browser's languages: the region of the first one, upper case (`en-IE` → `IE`), `null` without one.
 - `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
+- `ticketLinksOf` _function_: A product's purchase links in the admin's order; without `links` (an older answer) the official `shopUrl` alone, under `officialSeller`.
+- `isVisitorStore` _function_: Whether a link goes to the seller's store for the visitor's own country.
 - `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: the store of the visitor's own country first, then those for their locale or market, the rest after, each group in the admin's order, which is the display order.
+- `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone.
 - `ticketStoreName` _function_: A country store as its link names it in the visitor's language: the country's short name and the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketLinkGroup`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 

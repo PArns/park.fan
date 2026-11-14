@@ -493,7 +493,7 @@ export function hopperOn(state: Pick<TripPlanState, 'ticket' | 'hopper'>, resort
 }
 
 /**
- * "Show the plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper`
+ * "Plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper`
  * (every resort) becomes the list of the others, so the press changes only this resort.
  */
 export function toggleHopper(
@@ -582,8 +582,9 @@ export function adoptSuggestions(
 }
 
 /**
- * "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the
- * resorts a long trip's suggestions name, without a first day, so the plan picks it.
+ * "Plan with these" in the long stay's alternative: the region's 14-day tickets (Disney's and
+ * Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan
+ * picks it.
  */
 export function longStayTickets(
   step: TripTicketStep,
@@ -646,6 +647,47 @@ export function hopperGains(verdict: PlanHopperVerdict | undefined): HopperGain[
   const perRide = Math.round(verdict.savedMinutesPerRide ?? 0);
   if (perRide >= 1) gains.push({ kind: 'minutes', minutes: perRide });
   return gains;
+}
+
+/** What the hopper adds as a ticket card says it in one line: evenings by the park they go to. */
+export type HopperHighlight =
+  | { kind: 'evenings'; park: string; dates: string[] }
+  | Exclude<HopperGain, { kind: 'evening' | 'evenings' }>;
+
+/**
+ * {@link hopperGains} for one line: the evenings grouped by the second park, each with its dates,
+ * however many, first evening first; the rest as the gains list them. Empty when it adds nothing.
+ */
+export function hopperHighlights(verdict: PlanHopperVerdict | undefined): HopperHighlight[] {
+  const evenings: Extract<HopperHighlight, { kind: 'evenings' }>[] = [];
+  for (const e of verdict?.eveningHopList ?? []) {
+    const park = e.parks[1];
+    if (!park) continue;
+    const same = evenings.find((x) => x.park === park);
+    if (same) same.dates.push(e.date);
+    else evenings.push({ kind: 'evenings', park, dates: [e.date] });
+  }
+  const rest = hopperGains(verdict).filter(
+    (gain): gain is Exclude<HopperGain, { kind: 'evening' | 'evenings' }> =>
+      gain.kind !== 'evening' && gain.kind !== 'evenings'
+  );
+  return [...evenings, ...rest];
+}
+
+/**
+ * A ticket's window day by day, for the bar that shows which of its days the plan uses: every date
+ * from `from` to `to`, both included, at most {@link MAX_TRIP_DAYS} of them.
+ */
+export function ticketWindowDays(
+  from: string,
+  to: string,
+  used: ReadonlySet<string>
+): Array<{ date: string; used: boolean }> {
+  const out: Array<{ date: string; used: boolean }> = [];
+  for (let date = from; date <= to && out.length < MAX_TRIP_DAYS; date = addDays(date, 1)) {
+    out.push({ date, used: used.has(date) });
+  }
+  return out;
 }
 
 /**
@@ -787,6 +829,35 @@ export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl
   return region === 'GB' || region === 'IE' ? 'uk' : 'intl';
 }
 
+/** Who reads the purchase links: the page's locale and what the browser's languages say. */
+export interface TicketLinkVisitor {
+  locale: string;
+  market: string | null;
+  country?: string | null;
+}
+
+/**
+ * A product's purchase links in the admin's order; without `links` (an older answer) the official
+ * `shopUrl` alone, under `officialSeller`.
+ */
+export function ticketLinksOf(
+  source: { links?: readonly TicketLink[]; shopUrl?: string },
+  officialSeller: string
+): TicketLink[] {
+  if (source.links?.length) return [...source.links];
+  return source.shopUrl
+    ? [{ seller: officialSeller, url: source.shopUrl, official: true, sponsored: false }]
+    : [];
+}
+
+/** Whether a link goes to the seller's store for the visitor's own country. */
+export function isVisitorStore(
+  link: Pick<TicketLink, 'store'>,
+  visitor: Pick<TicketLinkVisitor, 'country'>
+): boolean {
+  return Boolean(visitor.country && link.store?.country === visitor.country);
+}
+
 /**
  * A product's purchase links in the order a visitor sees them: the store of the visitor's own
  * country first, then those for their locale or market, the rest after, each group in the admin's
@@ -795,22 +866,52 @@ export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl
  */
 export function orderTicketLinks(
   source: { links?: readonly TicketLink[]; shopUrl?: string },
-  visitor: { locale: string; market: string | null; country?: string | null },
+  visitor: TicketLinkVisitor,
   officialSeller: string
 ): TicketLink[] {
-  const links: TicketLink[] = source.links?.length
-    ? [...source.links]
-    : source.shopUrl
-      ? [{ seller: officialSeller, url: source.shopUrl, official: true, sponsored: false }]
-      : [];
+  const links = ticketLinksOf(source, officialSeller);
   const tier = (link: TicketLink) => {
-    if (visitor.country && link.store?.country === visitor.country) return 0;
+    if (isVisitorStore(link, visitor)) return 0;
     const forVisitor =
       Boolean(link.locales?.includes(visitor.locale)) ||
       Boolean(visitor.market && link.markets?.includes(visitor.market));
     return forVisitor ? 1 : 2;
   };
   return [0, 1, 2].flatMap((rank) => links.filter((link) => tier(link) === rank));
+}
+
+/** Purchase links as a ticket card lists them: one seller's country stores together. */
+export interface TicketLinkGroup {
+  seller: string;
+  /** Two or more country stores of `seller`, named by their country alone. */
+  stores: boolean;
+  /** Each link with its place among the buttons as drawn, which the statistic counts. */
+  items: Array<{ link: TicketLink; index: number }>;
+}
+
+/**
+ * Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a
+ * `store`, the official one aside) under its name where it has two or more, the group where its
+ * first store stands; every other link alone. The visitor's own store stays first.
+ */
+export function ticketLinkGroups(links: readonly TicketLink[]): TicketLinkGroup[] {
+  const stores = new Map<string, number>();
+  for (const link of links) {
+    if (link.store && !link.official) stores.set(link.seller, (stores.get(link.seller) ?? 0) + 1);
+  }
+  const groups: TicketLinkGroup[] = [];
+  for (const link of links) {
+    const grouped =
+      link.store !== undefined && !link.official && (stores.get(link.seller) ?? 0) > 1;
+    const same = grouped ? groups.find((g) => g.stores && g.seller === link.seller) : undefined;
+    if (same) same.items.push({ link, index: 0 });
+    else groups.push({ seller: link.seller, stores: grouped, items: [{ link, index: 0 }] });
+  }
+  let index = 0;
+  for (const group of groups) {
+    for (const item of group.items) item.index = index++;
+  }
+  return groups;
 }
 
 /**
