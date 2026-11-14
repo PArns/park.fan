@@ -105,7 +105,7 @@ Each chapter opens with its heading and then the thing itself, no introduction.
    on a phone, side panel on a desktop); it holds a history entry of its own, so a phone's Back
    closes it. Under the calendar: the forecast's date and the travel times' credit, the month
    index (`HubMonthIndex`, a labelled `<nav>` with the park calendar's chips, all twelve months)
-   and each park's crowd calendar (`HubParkIndex`, a labelled `<nav>`, "<park> Besucherkalender").
+   and each park's crowd calendar (`HubParkIndex`, a labelled `<nav>`, „<park> Andrang-Kalender“).
 2. **02 Deine Reise planen**: `PlannerChapterSlot`, `id="planner"`, where `TripRegionPlanner`
    mounts. Empty until the visitor gives dates. The planner itself is
    [orlando-planner](orlando-planner.md)'s.
@@ -140,7 +140,7 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 
 ## SEO
 
-- Title and H1 carry each locale's term ("Orlando Crowd Calendar", „Orlando Besucherkalender“,
+- Title and H1 carry each locale's term ("Orlando Crowd Calendar", „Orlando Andrang-Kalender“,
   "Orlando drukte-kalender", "Calendrier d'affluence Orlando", "Calendario de afluencia de Orlando",
   "Calendario affluenza Orlando"): in the H1 as its first line, inside the element, with the
   question („Welcher Park an welchem Tag?“) as its second (`LandingHero question`). A month page asks

@@ -3735,7 +3735,7 @@
       "hub": {
         "title": "Orlando Crowd Calendar",
         "monthTitle": "Orlando Crowd Calendar {month}",
-        "metaTitle": "Orlando Crowd Calendar & Trip Planner",
+        "metaTitle": "Orlando Crowd Calendar {years} & Trip Planner",
         "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
         "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
         "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
@@ -4097,18 +4097,18 @@
       "nav": {
         "name": "Southern California",
         "area": "Los Angeles and San Diego",
-        "calendar": "Southern California Crowd Calendar",
+        "calendar": "Disneyland & Universal Hollywood Crowd Calendar",
         "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip."
       },
       "hub": {
-        "title": "Southern California Crowd Calendar",
-        "monthTitle": "Southern California Crowd Calendar {month}",
-        "metaTitle": "Southern California Crowd Calendar & Trip Planner",
-        "metaTitleMonth": "Disneyland California Crowd Calendar {month}",
-        "metaTitleMonthShort": "Southern California Crowd Calendar {month}",
-        "metaDescription": "All eight Southern California theme parks, day by day. Quietest in the next 30 days: {verdict}.",
+        "title": "Disneyland & Universal Hollywood Crowd Calendar",
+        "monthTitle": "Disneyland & Universal Hollywood Crowd Calendar, {month}",
+        "metaTitle": "Disneyland & Universal Hollywood Crowd Calendar {years}",
+        "metaTitleMonth": "Disneyland & Universal Crowd Calendar {month}",
+        "metaTitleMonthShort": "Disneyland Crowd Calendar {month}",
+        "metaDescription": "Quietest in the next 30 days: {verdict}. Plus Knott’s, Magic Mountain and the San Diego parks, day by day.",
         "metaDescriptionPlain": "Which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and the parks down to San Diego, plus a planner for your trip dates.",
-        "metaDescriptionMonth": "Quietest Southern California days in {month}: {verdict}. Every park, day by day.",
+        "metaDescriptionMonth": "Quietest days in {month}: {verdict}. All eight parks from Six Flags Magic Mountain to San Diego, day by day.",
         "metaDescriptionMonthPlain": "Southern California in {month}, day by day: which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and around San Diego.",
         "lead": "A calendar for all eight parks around Los Angeles and San Diego, and a planner for your trip days.",
         "leadMonth": "All eight parks around Los Angeles and San Diego in {month}, day by day, and a planner for your trip days.",
@@ -4127,10 +4127,10 @@
         },
         "when": {
           "kicker": "Disneyland and Universal",
-          "title": "Best time to visit Southern California in {year}",
-          "titleNoYear": "Best time to visit Southern California",
-          "pageLink": "Best time to visit Southern California in {year}",
-          "pageLinkNoYear": "Best time to visit Southern California"
+          "title": "Best time to visit Disneyland & Universal Hollywood in {year}",
+          "titleNoYear": "Best time to visit Disneyland & Universal Hollywood",
+          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}",
+          "pageLinkNoYear": "Best time to visit Disneyland & Universal Hollywood"
         },
         "reasons": {
           "school_break": "during Los Angeles school holidays"
@@ -4169,10 +4169,10 @@
       },
       "bestTime": {
         "title": {
-          "region": "Best time to visit Southern California in {year}"
+          "region": "Best time to visit Disneyland & Universal Hollywood in {year}"
         },
         "name": {
-          "region": "Best time to visit Southern California"
+          "region": "Best time to visit Disneyland & Universal Hollywood"
         },
         "resort": {
           "region": "Disneyland and Universal"
@@ -4366,17 +4366,17 @@
       "nav": {
         "name": "Japan",
         "area": "Tokyo to Osaka",
-        "calendar": "Japan Crowd Calendar",
+        "calendar": "Tokyo Disney & USJ Crowd Calendar",
         "calendarHint": "Five parks day by day, and a planner for a trip across several cities."
       },
       "hub": {
-        "title": "Japan Crowd Calendar",
-        "monthTitle": "Japan Crowd Calendar {month}",
-        "metaTitle": "Japan Crowd Calendar & Trip Planner",
-        "metaTitleMonth": "Japan Crowd Calendar {month}: Tokyo Disney & USJ",
-        "metaTitleMonthShort": "Japan Crowd Calendar {month}",
-        "metaDescription": "Which Japan park on which day, from Tokyo Disney to Universal Studios Japan. Quietest in the next 30 days: {verdict}.",
-        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan day by day, and a trip planner that fits cities, nights and parks to your dates.",
+        "title": "Tokyo Disney & USJ Crowd Calendar",
+        "monthTitle": "Tokyo Disney & USJ Crowd Calendar, {month}",
+        "metaTitle": "Tokyo Disney & USJ Crowd Calendar {years} & Trip Planner",
+        "metaTitleMonth": "Tokyo Disney & USJ Crowd Calendar {month}",
+        "metaTitleMonthShort": "USJ & Tokyo Disney, {month}",
+        "metaDescription": "Quietest in the next 30 days: {verdict}. Plus Fuji-Q and LEGOLAND Japan, all five parks day by day.",
+        "metaDescriptionPlain": "Peak waits at Tokyo Disneyland, DisneySea, Universal Studios Japan, Fuji-Q and LEGOLAND Japan day by day, and a planner that splits the nights.",
         "metaDescriptionMonth": "Quietest days at Japan's parks in {month}: {verdict}. All five parks day by day.",
         "metaDescriptionMonthPlain": "Japan in {month}, day by day: the peak wait at Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan.",
         "lead": "A calendar for five parks between Tokyo and Osaka, and a planner that puts your cities in order and splits the nights.",
@@ -4402,10 +4402,10 @@
         },
         "when": {
           "kicker": "Tokyo Disney and USJ",
-          "title": "Best time to visit Japan in {year}",
-          "titleNoYear": "Best time to visit Japan",
-          "pageLink": "Best time to visit Japan in {year}",
-          "pageLinkNoYear": "Best time to visit Japan"
+          "title": "Best time to visit Tokyo Disney and USJ in {year}",
+          "titleNoYear": "Best time to visit Tokyo Disney and USJ",
+          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}",
+          "pageLinkNoYear": "Best time to visit Tokyo Disney and USJ"
         },
         "reasons": {
           "school_break": "during Japanese school holidays"
@@ -4453,12 +4453,12 @@
       },
       "bestTime": {
         "title": {
-          "region": "Best time to visit Japan in {year}",
+          "region": "Best time to visit Tokyo Disney and USJ in {year}",
           "tokyo-disney": "Best time to visit Tokyo Disney in {year}",
           "universal-studios-japan": "Best time to visit Universal Studios Japan in {year}"
         },
         "name": {
-          "region": "Best time to visit Japan",
+          "region": "Best time to visit Tokyo Disney and USJ",
           "tokyo-disney": "Best time to visit Tokyo Disney",
           "universal-studios-japan": "Best time to visit Universal Studios Japan"
         },
@@ -4704,9 +4704,8 @@
       },
       "hub": {
         "title": "Disneyland Paris & Parc Astérix Crowd Calendar",
-        "monthTitle": "Crowd Calendar for {month}: Disneyland Paris & Parc Astérix",
-        "monthQuestion": "Which park on which day in {month}?",
-        "metaTitle": "Disneyland Paris & Parc Astérix Crowd Calendar & Planner",
+        "monthTitle": "Disneyland Paris & Parc Astérix Crowd Calendar, {month}",
+        "metaTitle": "Disneyland Paris & Parc Astérix Crowd Calendar {years}",
         "metaTitleMonth": "Disneyland Paris & Parc Astérix Crowd Calendar, {month}",
         "metaTitleMonthShort": "Disneyland Paris Crowd Calendar, {month}",
         "metaDescription": "Disneyland Paris and Parc Astérix day by day, with a trip planner. Quietest in the next 30 days: {verdict}.",

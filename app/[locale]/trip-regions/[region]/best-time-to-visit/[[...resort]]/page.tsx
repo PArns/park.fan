@@ -6,6 +6,7 @@ import { catchNonFatal } from '@/lib/api/client';
 import {
   buildOpenGraphMetadata,
   fitWithin,
+  oneFullStop,
   MAX_DESCRIPTION_LENGTH,
   MAX_TITLE_LENGTH,
 } from '@/lib/utils/metadata';
@@ -111,7 +112,8 @@ export async function generateMetadata({ params }: BestTimeRouteProps): Promise<
     MAX_DESCRIPTION_LENGTH,
     ...(windows.length
       ? [t('metaDescription', values), t('metaDescriptionShort', values)]
-      : [t('metaDescriptionPlain', values)])
+      : [t('metaDescriptionPlain', values)]
+    ).map(oneFullStop)
   );
   const pathIn = (l: string) => tripRegionBestTimePath(slug, l, page);
   const canonical = `${SITE_URL}/${locale}${pathIn(locale)}`;

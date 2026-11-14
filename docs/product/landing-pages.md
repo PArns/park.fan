@@ -55,7 +55,7 @@ that apply. The details (one `<h1>`, one primary action, `ChapterHeading`, no ba
 
 The H1 sizes are `TITLE_CLASS` in `editorial-ui.tsx`. A hub whose visitors arrive with one question
 asks it: `LandingHero question` makes the question the head's big line and keeps the page's search
-term inside the `<h1>` as its small first line, in the kicker's place („Orlando Besucherkalender“
+term inside the `<h1>` as its small first line, in the kicker's place („Orlando Andrang-Kalender“
 over „Welcher Park an welchem Tag?“). The trip hubs also pass `short`, so the head ends after its
 content and the calendar starts in the first screen, and leave out the scroll cue, since their
 second button („Zum Kalender“) leads there. A hub without a photo in the media database gets the

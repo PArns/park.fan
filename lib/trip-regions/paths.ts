@@ -110,6 +110,18 @@ export function tripRegionMonths(now: TripMonth): TripMonth[] {
   return Array.from({ length: TRIP_REGION_MONTH_COUNT }, (_, i) => shiftParkCalendarMonth(now, i));
 }
 
+/**
+ * The years a hub's months span, for its `<title>` (`{years}`): "2026–2027", or the one year from
+ * January. Read from the region's current month on every request, so the title rolls over without
+ * a deploy, in the park's time and not the server's.
+ */
+export function tripRegionYears(now: TripMonth): string {
+  const months = tripRegionMonths(now);
+  const first = months[0].year;
+  const last = months[months.length - 1].year;
+  return first === last ? String(first) : `${first}–${last}`;
+}
+
 /** Whether a month is one a hub serves: the current one or one of the eleven after it. */
 export function isTripRegionMonthInRange(month: TripMonth, now: TripMonth): boolean {
   const delta = parkCalendarMonthIndex(month) - parkCalendarMonthIndex(now);

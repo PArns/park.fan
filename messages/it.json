@@ -2267,7 +2267,7 @@
     "switcher": "Periodo migliore per resort",
     "metaDescription": "I viaggi di {days} giorni più tranquilli nel {year}: {windows}. Poi ogni mese con attese, eventi, vacanze scolastiche e meteo abituale.",
     "metaDescriptionShort": "I viaggi di {days} giorni più tranquilli nel {year} a {parks}: {windows}.",
-    "metaDescriptionPlain": "I viaggi di {days} giorni più tranquilli del {year} a {parks}, con le attese di ogni mese, gli eventi, le vacanze scolastiche e il meteo abituale.",
+    "metaDescriptionPlain": "I viaggi di {days} giorni più tranquilli del {year} a {parks}, con attese, eventi, vacanze scolastiche e meteo di ogni mese.",
     "answer": {
       "sentence": "Le code più corte in un viaggio di {days} giorni nel {year}: {windows}.",
       "below": "{percent}% sotto la media del {year}",
@@ -3735,8 +3735,8 @@
       "hub": {
         "title": "Calendario affluenza Orlando",
         "monthTitle": "Calendario affluenza Orlando {month}",
-        "metaTitle": "Calendario affluenza Orlando e pianificatore",
-        "metaTitleMonth": "Calendario affluenza Orlando {month}: Disney e Universal",
+        "metaTitle": "Calendario affluenza Orlando {years} e pianificatore",
+        "metaTitleMonth": "Affluenza a Orlando a {month}: Disney e Universal",
         "metaTitleMonthShort": "Calendario affluenza Orlando {month}",
         "metaDescription": "Quale parco di Orlando in quale giorno, con Epic Universe. I più tranquilli nei prossimi 30 giorni: {verdict}.",
         "metaDescriptionPlain": "Quale parco in quale giorno a Walt Disney World, da Universal con Epic Universe e a SeaWorld, e un pianificatore che mette i tuoi parchi nelle tue date.",
@@ -3766,10 +3766,10 @@
         },
         "when": {
           "kicker": "Disney World e Universal",
-          "title": "Periodo migliore per visitare Orlando nel {year}",
-          "titleNoYear": "Periodo migliore per visitare Orlando",
-          "pageLink": "Periodo migliore per visitare Orlando nel {year}",
-          "pageLinkNoYear": "Periodo migliore per visitare Orlando"
+          "title": "Periodo migliore per andare a Orlando nel {year}",
+          "titleNoYear": "Periodo migliore per andare a Orlando",
+          "pageLink": "Periodo migliore per andare a Orlando nel {year}",
+          "pageLinkNoYear": "Periodo migliore per andare a Orlando"
         },
         "faq": {
           "title": "Domande sull’affluenza a Orlando",
@@ -4097,15 +4097,15 @@
       "nav": {
         "name": "California del Sud",
         "area": "Los Angeles e San Diego",
-        "calendar": "Calendario affluenza California del Sud",
+        "calendar": "Calendario affluenza Disneyland California",
         "calendarHint": "Quale degli otto parchi ha meno gente in quale giorno, e un pianificatore per il tuo viaggio."
       },
       "hub": {
-        "title": "Calendario affluenza California del Sud",
-        "monthTitle": "Calendario affluenza California del Sud {month}",
-        "metaTitle": "Calendario affluenza California del Sud e pianificatore",
-        "metaTitleMonth": "Disneyland California: affluenza a {month}",
-        "metaTitleMonthShort": "Calendario affluenza California del Sud {month}",
+        "title": "Calendario affluenza Disneyland California",
+        "monthTitle": "Calendario affluenza Disneyland California, {month}",
+        "metaTitle": "Affluenza Disneyland California e Universal Hollywood",
+        "metaTitleMonth": "Affluenza a Disneyland California a {month}",
+        "metaTitleMonthShort": "Disneyland California, {month}",
         "metaDescription": "Gli otto parchi a tema della California del Sud, giorno per giorno. I più tranquilli nei prossimi 30 giorni: {verdict}.",
         "metaDescriptionPlain": "Quale parco ha meno gente e quando al Disneyland Resort, a Universal Studios Hollywood e nei parchi fino a San Diego, con un pianificatore per le tue date.",
         "metaDescriptionMonth": "I giorni più tranquilli nella California del Sud a {month}: {verdict}. Ogni parco, giorno per giorno.",
@@ -4127,10 +4127,10 @@
         },
         "when": {
           "kicker": "Disneyland e Universal",
-          "title": "Periodo migliore per visitare la California del Sud nel {year}",
-          "titleNoYear": "Periodo migliore per visitare la California del Sud",
-          "pageLink": "Periodo migliore per visitare la California del Sud nel {year}",
-          "pageLinkNoYear": "Periodo migliore per visitare la California del Sud"
+          "title": "Quando andare a Disneyland e Universal Hollywood nel {year}",
+          "titleNoYear": "Quando andare a Disneyland e Universal Hollywood",
+          "pageLink": "Quando andare a Disneyland e Universal Hollywood nel {year}",
+          "pageLinkNoYear": "Quando andare a Disneyland e Universal Hollywood"
         },
         "reasons": {
           "school_break": "durante le vacanze scolastiche di Los Angeles"
@@ -4169,10 +4169,10 @@
       },
       "bestTime": {
         "title": {
-          "region": "Periodo migliore per andare nella California del Sud nel {year}"
+          "region": "Quando andare a Disneyland e Universal Hollywood nel {year}"
         },
         "name": {
-          "region": "Periodo migliore per andare nella California del Sud"
+          "region": "Quando andare a Disneyland e Universal Hollywood"
         },
         "resort": {
           "region": "Disneyland e Universal"
@@ -4366,19 +4366,19 @@
       "nav": {
         "name": "Giappone",
         "area": "Da Tokyo a Osaka",
-        "calendar": "Calendario affluenza Giappone",
+        "calendar": "Calendario affluenza Tokyo Disney e USJ",
         "calendarHint": "Cinque parchi giorno per giorno, e un pianificatore per un viaggio tra più città."
       },
       "hub": {
-        "title": "Calendario affluenza Giappone",
-        "monthTitle": "Calendario affluenza Giappone {month}",
-        "metaTitle": "Calendario affluenza Giappone e pianificatore",
-        "metaTitleMonth": "Calendario affluenza Giappone {month}: Tokyo Disney e USJ",
-        "metaTitleMonthShort": "Calendario affluenza Giappone {month}",
-        "metaDescription": "Quale parco del Giappone in quale giorno, da Tokyo Disney a Universal Studios Japan. Il più tranquillo nei prossimi 30 giorni: {verdict}.",
-        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan giorno per giorno, e un pianificatore che distribuisce città, notti e parchi sulle tue date.",
+        "title": "Calendario affluenza Tokyo Disney e USJ",
+        "monthTitle": "Calendario affluenza Tokyo Disney e USJ, {month}",
+        "metaTitle": "Calendario affluenza Tokyo Disney e Universal Studios Japan",
+        "metaTitleMonth": "Affluenza Tokyo Disney e USJ a {month}",
+        "metaTitleMonthShort": "Tokyo Disney e USJ a {month}",
+        "metaDescription": "I più tranquilli nei prossimi 30 giorni: {verdict}. Inoltre Fuji-Q e LEGOLAND Japan, i cinque parchi giorno per giorno.",
+        "metaDescriptionPlain": "Attesa di picco a Tokyo Disneyland, DisneySea, Universal Studios Japan, Fuji-Q e LEGOLAND Japan giorno per giorno, e un pianificatore per città e notti.",
         "metaDescriptionMonth": "I giorni più tranquilli nei parchi del Giappone a {month}: {verdict}. Tutti e cinque i parchi giorno per giorno.",
-        "metaDescriptionMonthPlain": "Il Giappone a {month}, giorno per giorno: l’attesa di picco a Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan.",
+        "metaDescriptionMonthPlain": "Il Giappone a {month}, giorno per giorno: l’attesa di picco a Tokyo Disneyland, DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan.",
         "lead": "Un calendario per cinque parchi tra Tokyo e Osaka, e un pianificatore che mette in ordine le tue città e distribuisce le notti.",
         "leadMonth": "Tutti e cinque i parchi tra Tokyo e Osaka a {month}, giorno per giorno, e un pianificatore che mette in ordine le tue città e distribuisce le notti.",
         "monthIndexLabel": "Il Giappone mese per mese",
@@ -4402,10 +4402,10 @@
         },
         "when": {
           "kicker": "Tokyo Disney e USJ",
-          "title": "Periodo migliore per visitare il Giappone nel {year}",
-          "titleNoYear": "Periodo migliore per visitare il Giappone",
-          "pageLink": "Periodo migliore per visitare il Giappone nel {year}",
-          "pageLinkNoYear": "Periodo migliore per visitare il Giappone"
+          "title": "Quando andare a Tokyo Disney e Universal Japan nel {year}",
+          "titleNoYear": "Quando andare a Tokyo Disney e Universal Japan",
+          "pageLink": "Quando andare a Tokyo Disney e Universal Japan nel {year}",
+          "pageLinkNoYear": "Quando andare a Tokyo Disney e Universal Japan"
         },
         "reasons": {
           "school_break": "durante le vacanze scolastiche giapponesi"
@@ -4453,14 +4453,14 @@
       },
       "bestTime": {
         "title": {
-          "region": "Periodo migliore per andare in Giappone nel {year}",
-          "tokyo-disney": "Periodo migliore per andare a Tokyo Disney nel {year}",
-          "universal-studios-japan": "Periodo migliore per andare a Universal Studios Japan nel {year}"
+          "region": "Quando andare a Tokyo Disney e Universal Japan nel {year}",
+          "tokyo-disney": "Quando andare a Tokyo Disney nel {year}",
+          "universal-studios-japan": "Quando andare a Universal Studios Japan nel {year}"
         },
         "name": {
-          "region": "Periodo migliore per andare in Giappone",
-          "tokyo-disney": "Periodo migliore per andare a Tokyo Disney",
-          "universal-studios-japan": "Periodo migliore per andare a Universal Studios Japan"
+          "region": "Quando andare a Tokyo Disney e Universal Japan",
+          "tokyo-disney": "Quando andare a Tokyo Disney",
+          "universal-studios-japan": "Quando andare a Universal Studios Japan"
         },
         "resort": {
           "region": "Tokyo Disney e USJ",
@@ -4704,9 +4704,8 @@
       },
       "hub": {
         "title": "Calendario affluenza Disneyland Paris e Parc Astérix",
-        "monthTitle": "Disneyland Paris e Parc Astérix a {month}: calendario affluenza",
-        "monthQuestion": "Quale parco in quale giorno a {month}?",
-        "metaTitle": "Disneyland Paris e Parc Astérix: affluenza e pianificatore",
+        "monthTitle": "Calendario affluenza Disneyland Paris e Parc Astérix, {month}",
+        "metaTitle": "Calendario affluenza Disneyland Paris e Parc Astérix",
         "metaTitleMonth": "Affluenza Disneyland Paris e Parc Astérix, {month}",
         "metaTitleMonthShort": "Affluenza Disneyland Paris, {month}",
         "metaDescription": "Disneyland Paris e Parc Astérix giorno per giorno. I più tranquilli nei prossimi 30 giorni: {verdict}.",
@@ -4737,10 +4736,10 @@
         },
         "when": {
           "kicker": "Viaggi con tutti e tre i parchi",
-          "title": "Periodo migliore per Disneyland Paris e il Parc Astérix nel {year}",
-          "titleNoYear": "Periodo migliore per Disneyland Paris e il Parc Astérix",
-          "pageLink": "Periodo migliore per Disneyland Paris e il Parc Astérix nel {year}",
-          "pageLinkNoYear": "Periodo migliore per Disneyland Paris e il Parc Astérix"
+          "title": "Quando andare a Disneyland Paris e al Parc Astérix nel {year}",
+          "titleNoYear": "Quando andare a Disneyland Paris e al Parc Astérix",
+          "pageLink": "Quando andare a Disneyland Paris e al Parc Astérix nel {year}",
+          "pageLinkNoYear": "Quando andare a Disneyland Paris e al Parc Astérix"
         },
         "reasons": {
           "school_break": "vacanze scolastiche di Parigi"
@@ -4772,12 +4771,12 @@
       },
       "bestTime": {
         "title": {
-          "region": "Periodo migliore per Disneyland Paris e il Parc Astérix nel {year}",
-          "disneyland-paris": "Periodo migliore per Disneyland Paris nel {year}"
+          "region": "Quando andare a Disneyland Paris e al Parc Astérix nel {year}",
+          "disneyland-paris": "Quando andare a Disneyland Paris nel {year}"
         },
         "name": {
-          "region": "Periodo migliore per Disneyland Paris e il Parc Astérix",
-          "disneyland-paris": "Periodo migliore per Disneyland Paris"
+          "region": "Quando andare a Disneyland Paris e al Parc Astérix",
+          "disneyland-paris": "Quando andare a Disneyland Paris"
         },
         "resort": {
           "region": "Disneyland Paris e Parc Astérix",

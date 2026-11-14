@@ -8,7 +8,8 @@ import type { TripBestDays, TripRegion } from '@/lib/trip-regions/types';
  * Each park's own crowd calendar, as links under the month index: the next question after a day
  * in the region is "and this park on other days?". Navigation, not a chapter: a labelled `<nav>`
  * with the month index's label style. The anchor carries "<park> Crowd Calendar", the query that
- * page ranks for. A park the window has no quiet days for (a water park out of season) is left out.
+ * page ranks for. A park the window has no quiet days for (a water park out of season) is left out;
+ * without `/best-days` every headliner park is listed, so a failed read never takes the links away.
  */
 export async function HubParkIndex({
   region,
@@ -22,14 +23,16 @@ export async function HubParkIndex({
   className?: string;
 }) {
   const t = await getTranslations('tripHub.parksIndex');
-  const shown = new Set(
-    (bestDays?.parks ?? [])
-      .filter((p) => p.basis !== 'none' && (p.quiet.length > 0 || !!p.flat))
-      .map((p) => p.slug)
-  );
+  const shown = bestDays
+    ? new Set(
+        bestDays.parks
+          .filter((p) => p.basis !== 'none' && (p.quiet.length > 0 || !!p.flat))
+          .map((p) => p.slug)
+      )
+    : null;
   const parks = regionGroups(region)
     .flatMap((group) => group.parks)
-    .filter((park) => shown.has(park.slug));
+    .filter((park) => (shown ? shown.has(park.slug) : park.headliner));
   if (parks.length === 0) return null;
   return (
     <nav aria-label={t('label')} className={cn(className)}>

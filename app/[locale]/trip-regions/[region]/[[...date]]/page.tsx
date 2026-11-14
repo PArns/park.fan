@@ -9,6 +9,7 @@ import {
   fitWithin,
   MAX_DESCRIPTION_LENGTH,
   MAX_TITLE_LENGTH,
+  oneFullStop,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -42,6 +43,7 @@ import {
   parseTripRegionMonth,
   tripMonthRange,
   tripRegionPath,
+  tripRegionYears,
 } from '@/lib/trip-regions/paths';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { liveTripRegion, type TripRegionConfig } from '@/lib/trip-regions/registry';
@@ -125,21 +127,20 @@ export async function generateMetadata({
         t('metaTitleMonth', { month: monthLabel }),
         t('metaTitleMonthShort', { month: monthLabel })
       )
-    : t('metaTitle');
-  let description = fitWithin(
+    : t('metaTitle', { years: tripRegionYears(current) });
+  const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     ...(monthLabel
       ? [
           ...(found ? [t('metaDescriptionMonth', { month: monthLabel, verdict: found })] : []),
           t('metaDescriptionMonthPlain', { month: monthLabel }),
         ]
-      : [...(found ? [t('metaDescription', { verdict: found })] : []), t('metaDescriptionPlain')])
+      : [...(found ? [t('metaDescription', { verdict: found })] : []), t('metaDescriptionPlain')]
+    ).map(oneFullStop)
   );
   const pathIn = (l: string) => tripRegionPath(slug, l, canonicalMonth(month, current));
   const canonicalPath = pathIn(locale);
   const canonical = `${SITE_URL}/${locale}${canonicalPath}`;
-  // A German or Dutch date ends in a full stop ("16. Nov."), and so does the sentence around it.
-  description = description.replace(/\.\./g, '.');
   // A planner link (`?from=…#planner`) is somebody's trip: the page answers it, an index does not.
   const hasQuery = Object.keys(await searchParams).length > 0;
   return {

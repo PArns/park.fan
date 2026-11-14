@@ -200,7 +200,7 @@ The panel is only the look; the data and the click behaviour live in the modules
   longest trip from the same list (else `MAX_TRIP_DAYS`). The parks are memoised per process like
   `getFeaturedParksMenu`; the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
   day planner and the parks: the scene filling it, and over a fade into the band the area, the
-  name, one line, the two facts, „Reise planen" (stretched over the card) and „Besucherkalender".
+  name, one line, the two facts, „Reise planen" (stretched over the card) and „Andrang-Kalender".
   From two on, the four-region design: a row of tiles (`RegionTile`: scene, area, name on up to
   two balanced lines, an arrow; the whole tile is the planner's link) under „Reiseplaner" with the
   count and, on the rule's right, the one line every region shares; two to a row up to a 1024 px

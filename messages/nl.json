@@ -3735,8 +3735,8 @@
       "hub": {
         "title": "Orlando drukte-kalender",
         "monthTitle": "Orlando drukte-kalender {month}",
-        "metaTitle": "Orlando drukte-kalender & reisplanner",
-        "metaTitleMonth": "Orlando drukte-kalender {month}: Disney & Universal",
+        "metaTitle": "Orlando drukte-kalender {years} & reisplanner",
+        "metaTitleMonth": "Orlando in {month}: drukte bij Disney en Universal",
         "metaTitleMonthShort": "Orlando drukte-kalender {month}",
         "metaDescription": "Welk park in Orlando op welke dag, met Epic Universe. Het rustigst in de komende 30 dagen: {verdict}.",
         "metaDescriptionPlain": "Welk park op welke dag in Walt Disney World, bij Universal met Epic Universe en in SeaWorld, en een planner die je parken op je reisdagen zet.",
@@ -3766,10 +3766,10 @@
         },
         "when": {
           "kicker": "Disney World en Universal",
-          "title": "Beste tijd om Orlando te bezoeken in {year}",
-          "titleNoYear": "Beste tijd om Orlando te bezoeken",
-          "pageLink": "Beste tijd om Orlando te bezoeken in {year}",
-          "pageLinkNoYear": "Beste tijd om Orlando te bezoeken"
+          "title": "Beste reistijd voor Orlando in {year}",
+          "titleNoYear": "Beste reistijd voor Orlando",
+          "pageLink": "Beste reistijd voor Orlando in {year}",
+          "pageLinkNoYear": "Beste reistijd voor Orlando"
         },
         "faq": {
           "title": "Vragen over de drukte in Orlando",
@@ -4097,15 +4097,15 @@
       "nav": {
         "name": "Zuid-Californië",
         "area": "Los Angeles en San Diego",
-        "calendar": "Zuid-Californië drukte-kalender",
+        "calendar": "Disneyland Californië drukte-kalender",
         "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis."
       },
       "hub": {
-        "title": "Zuid-Californië drukte-kalender",
-        "monthTitle": "Zuid-Californië drukte-kalender {month}",
-        "metaTitle": "Zuid-Californië drukte-kalender & reisplanner",
-        "metaTitleMonth": "Disneyland Californië: drukte-kalender {month}",
-        "metaTitleMonthShort": "Zuid-Californië drukte-kalender {month}",
+        "title": "Disneyland Californië drukte-kalender",
+        "monthTitle": "Disneyland Californië drukte-kalender {month}",
+        "metaTitle": "Drukte-kalender Disneyland & Universal Hollywood {years}",
+        "metaTitleMonth": "Drukte in Disneyland Californië in {month}",
+        "metaTitleMonthShort": "Disneyland Californië in {month}",
         "metaDescription": "Alle acht pretparken in Zuid-Californië, dag voor dag. Het rustigst in de komende 30 dagen: {verdict}.",
         "metaDescriptionPlain": "Welk park wanneer het rustigst is in het Disneyland Resort, bij Universal Studios Hollywood en in de parken tot San Diego, plus een planner voor je reisdagen.",
         "metaDescriptionMonth": "De rustigste dagen in Zuid-Californië in {month}: {verdict}. Elk park dag voor dag.",
@@ -4127,10 +4127,10 @@
         },
         "when": {
           "kicker": "Disneyland en Universal",
-          "title": "Beste tijd om Zuid-Californië te bezoeken in {year}",
-          "titleNoYear": "Beste tijd om Zuid-Californië te bezoeken",
-          "pageLink": "Beste tijd om Zuid-Californië te bezoeken in {year}",
-          "pageLinkNoYear": "Beste tijd om Zuid-Californië te bezoeken"
+          "title": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
+          "titleNoYear": "Beste reistijd voor Disneyland en Universal Hollywood",
+          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
+          "pageLinkNoYear": "Beste reistijd voor Disneyland en Universal Hollywood"
         },
         "reasons": {
           "school_break": "in de schoolvakantie in Los Angeles"
@@ -4169,10 +4169,10 @@
       },
       "bestTime": {
         "title": {
-          "region": "Beste reistijd voor Zuid-Californië in {year}"
+          "region": "Beste reistijd voor Disneyland en Universal Hollywood {year}"
         },
         "name": {
-          "region": "Beste reistijd voor Zuid-Californië"
+          "region": "Beste reistijd voor Disneyland en Universal Hollywood"
         },
         "resort": {
           "region": "Disneyland en Universal"
@@ -4366,17 +4366,17 @@
       "nav": {
         "name": "Japan",
         "area": "Tokio tot Osaka",
-        "calendar": "Japan drukte-kalender",
+        "calendar": "Tokyo Disney & USJ drukte-kalender",
         "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden."
       },
       "hub": {
-        "title": "Japan drukte-kalender",
-        "monthTitle": "Japan drukte-kalender {month}",
-        "metaTitle": "Japan drukte-kalender & reisplanner",
-        "metaTitleMonth": "Japan drukte-kalender {month}: Tokyo Disney & USJ",
-        "metaTitleMonthShort": "Japan drukte-kalender {month}",
-        "metaDescription": "Welk park in Japan op welke dag, van Tokyo Disney tot Universal Studios Japan. Het rustigst in de komende 30 dagen: {verdict}.",
-        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt.",
+        "title": "Tokyo Disney & USJ drukte-kalender",
+        "monthTitle": "Tokyo Disney & USJ drukte-kalender {month}",
+        "metaTitle": "Drukte-kalender Tokyo Disney & Universal Studios Japan",
+        "metaTitleMonth": "Drukte in Tokyo Disney & USJ in {month}",
+        "metaTitleMonthShort": "Tokyo Disney & USJ in {month}",
+        "metaDescription": "Het rustigst in de komende 30 dagen: {verdict}. Plus Fuji-Q en LEGOLAND Japan, alle vijf parken dag voor dag.",
+        "metaDescriptionPlain": "Piekwachttijd in Tokyo Disneyland, DisneySea, Universal Studios Japan, Fuji-Q en LEGOLAND Japan dag voor dag, en een planner voor steden en nachten.",
         "metaDescriptionMonth": "De rustigste dagen in de parken van Japan in {month}: {verdict}. Alle vijf parken dag voor dag.",
         "metaDescriptionMonthPlain": "Japan in {month}, dag voor dag: de piekwachttijd in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan.",
         "lead": "Een kalender voor vijf parken tussen Tokio en Osaka, en een planner die je steden op volgorde zet en de nachten verdeelt.",
@@ -4402,10 +4402,10 @@
         },
         "when": {
           "kicker": "Tokyo Disney en USJ",
-          "title": "Beste tijd om Japan te bezoeken in {year}",
-          "titleNoYear": "Beste tijd om Japan te bezoeken",
-          "pageLink": "Beste tijd om Japan te bezoeken in {year}",
-          "pageLinkNoYear": "Beste tijd om Japan te bezoeken"
+          "title": "Beste reistijd voor Tokyo Disney en USJ in {year}",
+          "titleNoYear": "Beste reistijd voor Tokyo Disney en USJ",
+          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}",
+          "pageLinkNoYear": "Beste reistijd voor Tokyo Disney en USJ"
         },
         "reasons": {
           "school_break": "in de Japanse schoolvakantie"
@@ -4453,12 +4453,12 @@
       },
       "bestTime": {
         "title": {
-          "region": "Beste reistijd voor Japan in {year}",
+          "region": "Beste reistijd voor Tokyo Disney en USJ in {year}",
           "tokyo-disney": "Beste reistijd voor Tokyo Disney in {year}",
           "universal-studios-japan": "Beste reistijd voor Universal Studios Japan in {year}"
         },
         "name": {
-          "region": "Beste reistijd voor Japan",
+          "region": "Beste reistijd voor Tokyo Disney en USJ",
           "tokyo-disney": "Beste reistijd voor Tokyo Disney",
           "universal-studios-japan": "Beste reistijd voor Universal Studios Japan"
         },
@@ -4704,12 +4704,11 @@
       },
       "hub": {
         "title": "Drukte-kalender Disneyland Paris & Parc Astérix",
-        "monthTitle": "Drukte-kalender {month}: Disneyland Paris & Parc Astérix",
-        "monthQuestion": "Welk park op welke dag in {month}?",
+        "monthTitle": "Drukte-kalender Disneyland Paris & Parc Astérix, {month}",
         "metaTitle": "Disneyland Paris & Parc Astérix: drukte-kalender & planner",
-        "metaTitleMonth": "Drukte-kalender {month}: Disneyland Paris & Parc Astérix",
-        "metaTitleMonthShort": "Drukte-kalender Disneyland Paris {month}",
-        "metaDescription": "Disneyland Paris en Parc Astérix dag voor dag, met reisplanner. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaTitleMonth": "Drukte in Disneyland Paris en Parc Astérix in {month}",
+        "metaTitleMonthShort": "Disneyland Paris in {month}: drukte-kalender",
+        "metaDescription": "Disneyland Paris en Parc Astérix bij Parijs, dag voor dag, met reisplanner. Het rustigst in de komende 30 dagen: {verdict}.",
         "metaDescriptionPlain": "Piekwachttijd en drukte in Disneyland Park, Disney Adventure World en Parc Astérix, dag voor dag, plus een reisplanner voor parkdagen en hotels.",
         "metaDescriptionMonth": "De rustigste dagen in Disneyland Paris en Parc Astérix in {month}: {verdict}. Alle drie de parken dag voor dag.",
         "metaDescriptionMonthPlain": "Disneyland Paris en Parc Astérix in {month}, dag voor dag: piekwachttijd, drukte en openingstijden van alle drie de parken.",
