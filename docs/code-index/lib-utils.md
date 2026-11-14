@@ -322,7 +322,7 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 
 - `nothingFocused` _function_: Whether focus is on the page itself rather than on a control somebody moved to: `<body>`, `<html>` or nothing. A page-wide shortcut acts only then, see docs/rules/a-keyboard-shortcut-waits-for-an-unfocused-page.md.
 - `isPageTypedKey` _function_: Whether a keydown is a character typed at the page itself, which a type-to-search field may take: nothing focused, no modifier, one printable character, not Space (it scrolls the page) and not `SEARCH_SHORTCUT_KEY`, which opens the site …
-- `isSearchShortcut` _function_: Whether a keydown is `SEARCH_SHORTCUT_KEY` pressed at the page itself. Shift is allowed: on a German keyboard the slash is Shift + 7.
+- `isSearchShortcut` _function_: Whether a keydown is `SEARCH_SHORTCUT_KEY` for the site search. Shift is allowed: on a German keyboard the slash is Shift + 7.
 - `searchShortcutTarget` _function_: The marked field, while all of it shows between the sticky header and the screen's bottom edge: one half under the header or scrolled off reads as gone, so the shortcut opens the palette.
 - `SEARCH_SHORTCUT_KEY` _const_: The key that opens the site search from anywhere on a page (`SearchCommand`).
 - `SEARCH_SHORTCUT_TARGET_ATTR` _const_: Marks a search field that `SEARCH_SHORTCUT_KEY` focuses while it is on screen, rather than opening the palette over it: the homepage hero's.
@@ -397,7 +397,7 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 
 ### [`region-names.ts`](../../lib/utils/region-names.ts)
 
-- `getCountryName` _function_: Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code.
+- `getCountryName` _function_: Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code. `short` takes the short form where the language has one („UK", „USA").
 - `countryFlagEmoji` _function_: Flag emoji (regional-indicator letters) for a 2-letter ISO country code; '' if invalid.
 - `getRegionLabel` _function_: Localised label for a holiday-source region: German states and the mapped subdivisions keep their native name; anything else becomes its country name, so a raw code never leaks.
 - `countryCodeForSlug` _function_: ISO country code for a country URL slug, or null when the slug is not in the catalogue.

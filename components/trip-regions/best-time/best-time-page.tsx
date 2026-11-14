@@ -24,7 +24,7 @@ import { getMediaImage } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
 import { getListFormat } from '@/lib/utils/intl-format';
-import { formatParkDay } from '@/lib/utils/park-day';
+import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { formatHubDate, formatWindow, shortParkName } from '@/lib/trip-regions/hub-data';
 import { holidayRegionsFor, percentBelowAverage } from '@/lib/trip-regions/plan-when';
@@ -208,8 +208,9 @@ export async function BestTimePage(props: BestTimePageProps) {
         <div className="container mx-auto space-y-4 px-4">
           <Lead>{tOwn('intro.lead')}</Lead>
           <P>
+            {/* The date is the forecast's last day, the one before last year's figures begin. */}
             {turn
-              ? tOwn('intro.body', { date: formatParkDay(locale, addDayBefore(turn)) })
+              ? tOwn('intro.body', { date: formatParkDay(locale, addDays(turn, -1)) })
               : tOwn('intro.bodyForecast')}
           </P>
           <nav aria-label={t('switcher')}>
@@ -314,13 +315,6 @@ export async function BestTimePage(props: BestTimePageProps) {
       </div>
     </>
   );
-}
-
-/** The day before a `YYYY-MM-DD`: the forecast's last day when last year begins on `date`. */
-function addDayBefore(date: string): string {
-  const d = new Date(`${date}T12:00:00Z`);
-  d.setUTCDate(d.getUTCDate() - 1);
-  return d.toISOString().slice(0, 10);
 }
 
 /**

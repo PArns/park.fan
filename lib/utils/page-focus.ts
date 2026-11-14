@@ -22,13 +22,23 @@ export function isPageTypedKey(e: KeyboardEvent): boolean {
 }
 
 /**
- * Whether a keydown is {@link SEARCH_SHORTCUT_KEY} pressed at the page itself. Shift is allowed:
- * on a German keyboard the slash is Shift + 7.
+ * Whether a keydown is {@link SEARCH_SHORTCUT_KEY} for the site search. Shift is allowed: on a
+ * German keyboard the slash is Shift + 7. Unlike the other page-wide keys it also counts on a
+ * focused link, button, pill or grid cell, which none uses for `/` (after a click on a filter chip
+ * or a menu link the search otherwise needed a click); it still waits where `/` is text or the
+ * control's own key: a field, an editable element, a dialog, a menu, a listbox.
  */
 export function isSearchShortcut(e: KeyboardEvent): boolean {
   if (e.key !== SEARCH_SHORTCUT_KEY || e.metaKey || e.ctrlKey || e.altKey) return false;
-  return nothingFocused(document.activeElement);
+  const active = document.activeElement;
+  if (nothingFocused(active)) return true;
+  if (!(active instanceof HTMLElement) || active.isContentEditable) return false;
+  return !active.closest(SLASH_OWNERS);
 }
+
+/** Where `/` is typed text or belongs to the control around the focus. */
+const SLASH_OWNERS =
+  'input, textarea, select, [role="textbox"], [role="combobox"], [role="dialog"], [role="alertdialog"], [role="menu"], [role="listbox"]';
 
 /**
  * Marks a search field that {@link SEARCH_SHORTCUT_KEY} focuses while it is on screen, rather than

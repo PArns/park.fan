@@ -12,6 +12,7 @@ import {
   draftProduct,
   draftTicket,
   entryMarket,
+  marketLabel,
   ticketHomeMarket,
   isEveryDayTicket,
   setTickets,
@@ -25,17 +26,17 @@ import {
   windowLength,
   type TicketDraft,
   type TicketEntry,
+  type TicketMarketLabel,
   type TicketResort,
 } from '@/lib/trip-regions/plan-tickets';
 import { tripTicketAnswer } from '@/lib/trip-regions/ticket-answer';
 import type { TicketProduct } from '@/lib/trip-regions/types';
 import type { TripTicketsFrom } from '@/lib/analytics/site-analytics';
-import { Badge } from '@/components/ui/badge';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
 import { PlanMonthGrid } from './plan-month-grid';
 import { oneFullStop } from '@/lib/utils/metadata';
-import { productName, useHopperWord, useResortWord } from './plan-ticket-words';
+import { productName, TicketMarketTag, useHopperWord, useResortWord } from './plan-ticket-words';
 
 /** Whether the ticket question was answered, and how. */
 export type TicketAnswer = 'unasked' | 'yes' | 'no';
@@ -215,7 +216,7 @@ export function PlanTickets({
 }) {
   const t = useTranslations('tripPlanner.tickets');
   const tRegion = useTranslations('tripRegion.planner.tickets');
-  const { live, locale, today, tickets: catalog, config, ticketStep } = usePlanContext();
+  const { live, locale, region, today, tickets: catalog, config, ticketStep } = usePlanContext();
   const rootRef = useRef<HTMLDivElement>(null);
   const { drafts, focus, clearFocus } = step;
 
@@ -248,6 +249,12 @@ export function PlanTickets({
       ? { from: saleDay(liteSale.from), to: saleDay(liteSale.to) }
       : null;
   const combo = ticketStep.combo;
+  const comboMarket = ticketStep.fortnight
+    ? marketLabel(
+        catalog.get(ticketStep.fortnight.product)?.markets,
+        ticketHomeMarket(region, ticketStep)
+      )
+    : null;
   const hasCombo =
     combo !== undefined &&
     ticketStep.fortnight !== undefined &&
@@ -282,7 +289,7 @@ export function PlanTickets({
           <span className="flex min-w-0 flex-1 flex-col">
             <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
               {tRegion('combo.title')}
-              <MarketTag market="intl" />
+              {comboMarket && <TicketMarketTag market={comboMarket} />}
             </span>
             <span className="text-foreground/75 text-xs leading-snug">
               {tRegion('combo.hint')}
@@ -475,7 +482,7 @@ function EntryButton({
   chosen,
 }: {
   entry: TicketEntry;
-  market: 'intl' | null;
+  market: TicketMarketLabel | null;
   disabled: boolean;
   onClick: () => void;
   focusKey?: number;
@@ -500,21 +507,12 @@ function EntryButton({
       <span className="flex min-w-0 flex-1 flex-col gap-0.5">
         <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
           {tRegion(`entry.${entry.key}.title`)}
-          {market && <MarketTag market={market} />}
+          {market && <TicketMarketTag market={market} />}
         </span>
         <EntryHint entry={entry} id={hintId} />
       </span>
       <ChevronRight className="text-muted-foreground mt-0.5 size-4 shrink-0" aria-hidden="true" />
     </button>
-  );
-}
-
-function MarketTag({ market }: { market: 'intl' }) {
-  const tRegion = useTranslations('tripRegion.planner.tickets');
-  return (
-    <Badge variant="outline" className="border-primary/50 text-primary-ink font-medium">
-      {tRegion(`market.${market}`)}
-    </Badge>
   );
 }
 
@@ -589,6 +587,7 @@ function TicketFields({
       ? rollingFortnightAt(ticketStep, catalog, draft.start).length > 1
       : false;
   const hopperName = hopperWord(entry.resort);
+  const market = entryMarket(entry, catalog, ticketHomeMarket(region, ticketStep));
 
   return (
     <div className="flex flex-col gap-3">
@@ -599,9 +598,7 @@ function TicketFields({
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
             {tRegion(`entry.${entry.key}.title`)}
-            {entryMarket(entry, catalog, ticketHomeMarket(region, ticketStep)) && (
-              <MarketTag market="intl" />
-            )}
+            {market && <TicketMarketTag market={market} />}
           </span>
           <EntryHint entry={entry} />
         </span>

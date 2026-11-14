@@ -40,7 +40,7 @@ import { HistoryList } from '../../_ui/history-list';
 import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
-import { SeasonList } from '../_components/season-editor';
+import { SeasonList } from '../../seasons/_components/season-editor';
 import { LocationEditor } from '../_components/location-editor';
 import { PhotoCoverage } from '../_components/photo-coverage';
 import { AttractionFeaturesEditor } from '../_components/attraction-features-editor';
@@ -147,7 +147,7 @@ export default function ParkDetailPage({ params }: { params: Promise<{ id: strin
       {tab === 'features' && <AttractionFeaturesEditor park={data} />}
       {tab === 'seasons' && (
         <div id="seasons">
-          <SeasonList parkId={id} seasons={data.seasons} canEdit={canEdit} />
+          <SeasonList parkId={id} parkName={data.name} seasons={data.seasons} canEdit={canEdit} />
         </div>
       )}
       {tab === 'media' && (

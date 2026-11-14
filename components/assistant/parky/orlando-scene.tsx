@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils';
 import type { TripRegionSceneProps } from '@/lib/trip-regions/registry';
 import {
   BUBBLE,
@@ -18,6 +17,7 @@ import {
 import { LOOK_GAZE, ParkyShades } from './looks';
 import { ParkyMap } from './props';
 import { ParkyWheel } from './wheel';
+import { HolidaySceneSvg } from './holiday-parky';
 import { ParkyEyeWhite, ParkyPupil } from './eyes';
 
 /**
@@ -237,13 +237,7 @@ function Parky({ evening }: { evening: boolean }) {
 /** The Orlando scene, filling its box from the right edge (`xMaxYMid slice`). */
 export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
   return (
-    <svg
-      viewBox="0 0 320 160"
-      preserveAspectRatio="xMaxYMid slice"
-      className={cn('block', className)}
-      aria-hidden="true"
-      focusable="false"
-    >
+    <HolidaySceneSvg className={className}>
       <defs>
         <linearGradient id="parky-orlando-sky" x1="0" y1="0" x2="0" y2="1">
           <stop
@@ -415,6 +409,6 @@ export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
       <g className="hidden dark:inline" transform="translate(206 38) scale(2)">
         <Parky evening />
       </g>
-    </svg>
+    </HolidaySceneSvg>
   );
 }

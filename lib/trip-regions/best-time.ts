@@ -1,6 +1,7 @@
 import { getListFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { formatWindow } from './hub-data';
+import { monthKey, monthOfDate, tripMonthRange } from './paths';
 import { DEFAULT_FIND_DAYS, MAX_DAYS_AHEAD, type PlanSearchRange } from './plan-query';
 import { weekInWindow } from './plan-when';
 import { bestTimePageOf, tripRegionConfig, type TripRegionConfig } from './registry';
@@ -120,18 +121,6 @@ export function noWhenAnswer(region: string, range: PlanSearchRange): TripWhenWi
     seasons: [],
     months: [],
   };
-}
-
-/** `YYYY-MM` of a month. */
-export function monthKey({ year, month }: TripMonth): string {
-  return `${year}-${String(month).padStart(2, '0')}`;
-}
-
-/** The first and last day of a `YYYY-MM`. */
-function monthBounds(key: string): { from: string; to: string } {
-  const [year, month] = key.split('-').map(Number);
-  const last = new Date(Date.UTC(year, month, 0)).getUTCDate();
-  return { from: `${key}-01`, to: `${key}-${String(last).padStart(2, '0')}` };
 }
 
 /** Whether two inclusive date ranges share a day. */
@@ -264,7 +253,7 @@ export function europeanBreaks(
   key: string,
   countries: readonly string[]
 ): CountryBreaks[] {
-  const month = monthBounds(key);
+  const month = tripMonthRange(monthOfDate(key));
   return countries.flatMap((country) => {
     const own = regions.filter((r) => r.country === country);
     if (own.length === 0) return [];

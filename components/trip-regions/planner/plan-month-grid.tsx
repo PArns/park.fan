@@ -24,6 +24,21 @@ import {
 import { monthMatrix, monthOf, shiftMonth, weekdayLabels } from '@/lib/planner/month-grid';
 import { addDays } from '@/lib/utils/park-day';
 
+/** The weekday names over the planner's month grids, Monday first, in the grid's columns. */
+export function PlanWeekdayHead({ locale }: { locale: string }) {
+  const headers = useMemo(() => weekdayLabels(locale), [locale]);
+  return (
+    <div
+      className="text-muted-foreground grid grid-cols-7 gap-1 text-center text-[11px]"
+      aria-hidden="true"
+    >
+      {headers.map((header, index) => (
+        <span key={index}>{header}</span>
+      ))}
+    </div>
+  );
+}
+
 /** The pick under a date of {@link PlanMonthGrid}: the park's label in its crowd ink. */
 export interface PlanGridPick {
   /** The park's label in a phone cell and in a wide one (`parkLabel`). */
@@ -118,7 +133,6 @@ export function PlanMonthGrid({
   live: boolean;
 }) {
   const cells = useMemo(() => monthMatrix(month), [month]);
-  const headers = useMemo(() => weekdayLabels(locale), [locale]);
   const [focusDate, setFocusDate] = useState<string | null>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const days = new Map(cells.map((c) => [c.date, c.inMonth ? day(c.date) : null]));
@@ -175,14 +189,7 @@ export function PlanMonthGrid({
         </button>
       </div>
 
-      <div
-        className="text-muted-foreground grid grid-cols-7 gap-1 text-center text-[11px]"
-        aria-hidden="true"
-      >
-        {headers.map((header, index) => (
-          <span key={index}>{header}</span>
-        ))}
-      </div>
+      <PlanWeekdayHead locale={locale} />
 
       <div
         ref={gridRef}

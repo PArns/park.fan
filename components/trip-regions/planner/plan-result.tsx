@@ -103,6 +103,10 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 
 const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as const;
 
+/** The band over the answer that offers one change to the plan and the button that makes it. */
+const ACTION_BAND =
+  'border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3';
+
 /**
  * The planner's answer, below the setup. Empty, and saying so, until dates are chosen (or a search
  * is set); then the plan from simple to detailed: the answer in sentences (Level 0), the Agenda,
@@ -761,11 +765,7 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
     )
   );
   return (
-    <div
-      className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
-      role="status"
-      data-plan-stay-suggestion=""
-    >
+    <div className={ACTION_BAND} role="status" data-plan-stay-suggestion="">
       <p className="min-w-0 flex-1 text-sm">
         {oneFullStop(
           t('answer.staySuggestion', {
@@ -833,11 +833,7 @@ function EditBar({
   const short = (date: string) => formatParkDay(locale, date, { weekday: 'short' });
   if (swapped) {
     return (
-      <div
-        className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
-        role="status"
-        data-plan-swapped=""
-      >
+      <div className={ACTION_BAND} role="status" data-plan-swapped="">
         <p className="min-w-0 flex-1 text-sm">
           {t('swapped', {
             first: what(swapped.a),
@@ -855,10 +851,7 @@ function EditBar({
     );
   }
   return (
-    <div
-      className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
-      role="status"
-    >
+    <div className={ACTION_BAND} role="status">
       <p className="min-w-0 flex-1 text-sm">
         {cost === null
           ? t('pinned')

@@ -64,7 +64,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky-interview-start.tsx`](../../components/assistant/parky-interview-start.tsx)
 
-- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
+- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: Parky's face beside a line on what the chat does, and a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
 
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
@@ -81,6 +81,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky/drawing.ts`](../../components/assistant/parky/drawing.ts)
 
+- `cabinsOnRim` _function_: The centres of `count` cabins round a wheel's rim, the first at the top: the hat's, the dream wheel's and every scene's wheel are placed the same way.
+- `wheelSpokes` _function_: A wheel's spokes as one path: from each cabin of the first half across the hub to its opposite.
 - `ink` _const_: The ink of the pupils, the mouth and every outline drawn dark.
 - `blue` _const_: The brand's blue, where the bubble's gradient starts.
 - `green` _const_: The brand's green, where the bubble's gradient ends.
@@ -134,9 +136,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `HolidayParky` _component_: Parky in his 48-unit space, standing on the scene's ground: `behind` is drawn before him (a board he leans on), `wear` right over his body (a necklace, a scarf, a sprig), `hands` last (what he holds in front).
 - `HolidayMitten` _component_: One of his hands: a round mitten in his own colours, as the umbrella's in `looks.tsx`.
 - `HolidayGround` _component_: His body's gradient, blue to green, under the id a scene gives it.
-- `HolidaySceneSvg` _component_: A region scene's root: the 320 × 160 frame of `ParkyBreakScene` and the Orlando scene, filling its box from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's text.
+- `HolidaySceneSvg` _component_: A scene's root, the region scenes' and `ParkyBreakScene`'s: the 320 × 160 frame, filling its box from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's text.
 - `motionOnce` _function_: A scene's stylesheet from its moves: they play once each time the band shows and only where the reader allows motion, since the band is glass and nothing may run on under a `backdrop-filter`.
-- `cabinsOnRim` _function_: The centres of `count` cabins round a wheel's rim, the first at the top, as `CABINS` are.
 - Types: `HolidayEyes`, `HolidayMouth`
 
 ### [`parky/japan-scene.tsx`](../../components/assistant/parky/japan-scene.tsx)

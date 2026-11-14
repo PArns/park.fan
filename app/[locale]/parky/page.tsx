@@ -8,15 +8,11 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { cn } from '@/lib/utils';
 import { getParkBackground } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
@@ -66,22 +62,13 @@ export async function generateMetadata({ params }: ParkyPageProps): Promise<Meta
   return {
     title: t('metaTitle'),
     description: t('metaDescription'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('metaTitle'),
       description: t('metaDescription'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `${SITE_URL}/${locale}/parky`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: t('metaTitle') }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('metaTitle'),
-      description: t('metaDescription'),
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: `${SITE_URL}/${locale}/parky`,
       languages: {

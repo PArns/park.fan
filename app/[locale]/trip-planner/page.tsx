@@ -1,13 +1,9 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import {
-  generateAlternateLanguages,
-  locales,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import { getOgImageUrl } from '@/lib/utils/og-image';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PLANNER_SEGMENTS, PLANNER_START_ID, plannerPath } from '@/lib/planner/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
@@ -79,22 +75,13 @@ export async function generateMetadata({ params }: PlannerPageProps): Promise<Me
   return {
     title: t('metaTitle'),
     description: t('metaDescription'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('metaTitle'),
       description: t('metaDescription'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `${SITE_URL}${path(locale)}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: t('metaTitle') }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('metaTitle'),
-      description: t('metaDescription'),
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: `${SITE_URL}${path(locale)}`,
       languages: {

@@ -13,19 +13,26 @@ import {
 } from '@/components/ui/dialog';
 import {
   CLAUDE_CODE_ADD_COMMAND,
+  DEFAULT_ADMIN_SCOPE,
   MCP_SERVER_NAME,
   MCP_URL,
+  OWNER_SCOPE_WARNING,
+  SCOPE_CHOICES,
   TOKEN_EXPIRY_OPTIONS,
   apiTokenKey,
+  asAdminScope,
   claudeCodeAddCommandWithToken,
   createTokenBody,
+  describeScopeRole,
   describeTokenCreateError,
+  grantableScopes,
+  type AdminScope,
   type CreatedAdminApiToken,
 } from '@/lib/admin/mcp';
 import { TOTP_CODE_LENGTH } from '@/lib/admin/totp';
 import { AdminApiError, adminFetch, useInvalidateAdmin } from '../_lib/api';
 import { ApiTokenList } from '../_ui/api-token-list';
-import { Field, OtpInput, Select, TextInput, useFieldId } from '../_ui/controls';
+import { Field, OtpInput, Segmented, Select, TextInput, useFieldId } from '../_ui/controls';
 import { CodeBlock } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
 import { Notice, Panel, PanelBody, PanelHeader, SCROLLING_DIALOG, Tile } from '../_ui/primitives';
@@ -47,13 +54,18 @@ const EXPIRY_SELECT_OPTIONS = TOKEN_EXPIRY_OPTIONS.map((option) => ({
  */
 export function McpAccessPanel() {
   const [creating, setCreating] = useState(false);
+  const { identity } = useSession();
 
   return (
     <Panel>
       <PanelHeader
         icon={Plug}
         title="API-Zugriff / MCP"
-        hint="Claude liest den Admin mit deinem Konto, aber nur mit der Rolle Lesend, auch wenn dein Konto mehr darf."
+        hint={
+          grantableScopes(identity.role).length > 1
+            ? 'Claude liest den Admin mit deinem Konto, mit der Rolle Lesend. Ändern darf eine App nur, wenn du es beim Verbinden oder beim Token erlaubst.'
+            : 'Claude liest den Admin mit deinem Konto, mit der Rolle Lesend.'
+        }
         action={
           <Button size="sm" variant="outline" onClick={() => setCreating(true)}>
             <Plus className="h-4 w-4" /> Token erstellen
@@ -101,6 +113,8 @@ function CreateTokenDialog({ onClose }: { onClose: () => void }) {
   const { identity, refresh } = useSession();
   const [name, setName] = useState('');
   const [expiry, setExpiry] = useState(DEFAULT_EXPIRY);
+  const [scope, setScope] = useState<AdminScope>(DEFAULT_ADMIN_SCOPE);
+  const scopes = grantableScopes(identity.role);
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
   // The session says whether the account has a second factor; the API's `totp-required` corrects it.
@@ -137,6 +151,7 @@ function CreateTokenDialog({ onClose }: { onClose: () => void }) {
         body: createTokenBody({
           name,
           expiresInDays: expiry === NEVER ? null : Number(expiry),
+          scope,
           password,
           totpCode: askForCode ? code : '',
         }),
@@ -180,7 +195,8 @@ function CreateTokenDialog({ onClose }: { onClose: () => void }) {
             <DialogHeader>
               <DialogTitle>Token erstellt</DialogTitle>
               <DialogDescription>
-                {created.item.name ?? 'Das Token'} liest den Admin als {identity.email}, nur lesend.
+                {created.item.name ?? 'Das Token'} arbeitet im Admin als {identity.email}.{' '}
+                {describeScopeRole(asAdminScope(created.item.scope), identity.role)}.
               </DialogDescription>
             </DialogHeader>
 
@@ -210,8 +226,8 @@ function CreateTokenDialog({ onClose }: { onClose: () => void }) {
             <DialogHeader>
               <DialogTitle>Token erstellen</DialogTitle>
               <DialogDescription>
-                Ein Token liest den Admin mit deinem Konto, nur lesend. Für Claude reicht die
-                Anmeldung, ein Token brauchst du für Skripte und Rechner ohne Browser.
+                Ein Token arbeitet im Admin mit deinem Konto. Für Claude reicht die Anmeldung, ein
+                Token brauchst du für Skripte und Rechner ohne Browser.
               </DialogDescription>
             </DialogHeader>
 
@@ -225,6 +241,20 @@ function CreateTokenDialog({ onClose }: { onClose: () => void }) {
                 autoComplete="off"
               />
             </Field>
+            {scopes.length > 1 && (
+              <Field label="Rechte" hint={`${describeScopeRole(scope, identity.role)}.`}>
+                <div className="grid gap-2">
+                  <Segmented
+                    label="Rechte"
+                    value={scope}
+                    onChange={setScope}
+                    options={scopes.map((value) => ({ value, label: SCOPE_CHOICES[value] }))}
+                    className="w-fit"
+                  />
+                  {scope === 'admin:owner' && <Notice>{OWNER_SCOPE_WARNING}</Notice>}
+                </div>
+              </Field>
+            )}
             <Field label="Gültig" hint="Ein Token ohne Ablauf gilt, bis du es widerrufst.">
               <Select
                 value={expiry}

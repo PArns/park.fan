@@ -6,7 +6,6 @@ import { ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   effectiveParks,
-  findLeg,
   minimumVisits,
   parkDaysAvailable,
   setParkVisits,
@@ -14,6 +13,7 @@ import {
   tripDates,
   visitSteps,
 } from '@/lib/trip-regions/plan';
+import { findLeg, legMinutes } from '@/lib/trip-regions/hub-data';
 import type { TripCalendar, TripRegionPark } from '@/lib/trip-regions/types';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { usePlanContext } from './plan-context';
@@ -89,7 +89,7 @@ export function PlanParks() {
     const line = [
       leg
         ? t(t.has(`parks.way.${leg.mode}`) ? `parks.way.${leg.mode}` : 'parks.way.other', {
-            minutes: leg.minutes + (leg.transferMinutes ?? 0),
+            minutes: legMinutes(leg),
           })
         : null,
       status?.kind === 'closed'

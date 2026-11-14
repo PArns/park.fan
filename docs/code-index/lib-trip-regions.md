@@ -29,7 +29,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
 - `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
-- `monthKey` _function_: `YYYY-MM` of a month.
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
 - `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
@@ -88,12 +87,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
-- `formatHubDate` _function_: A plain date as the hub prints it, anchored at noon UTC so no zone moves it: `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu".
+- `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
-- `findLeg` _function_: The legs between two places, in either direction (`hotel:<key>` or a park slug).
+- `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
 - `meanWait` _function_: The mean of some waits, rounded to five like every wait the site prints; `null` for none.
 - `weekendAgainstWeekday` _function_: A park's figures on weekends against weekdays across the window, last-year days left out.
@@ -108,7 +107,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it.
 - `slimRegion` _function_: The region as the hub's client part needs it: the parks, groups and hotel areas, and only the legs from a hotel area to a park, which the day sheet's travel line reads.
-- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
+- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `formatParkDayRange` with short months.
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
 - `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
@@ -144,8 +143,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripRegionYears` _function_: The years a hub's months span, for its `<title>` (`{years}`): "2026–2027", or the one year from January.
 - `isTripRegionMonthInRange` _function_: Whether a month is one a hub serves: the current one or one of the eleven after it.
 - `parseTripRegionMonth` _function_: The month the `[[...date]]` segments ask for: `null` for the hub, `'invalid'` for segments that are not a month the hub serves (a 404, or a 308 the proxy has already answered), and `padded` for `/2026/09`, which the proxy 308s to `/2026/9`.
+- `monthKey` _function_: `YYYY-MM` of a month.
 - `tripMonthRange` _function_: The first and last day of a month, `YYYY-MM-DD`, for a `/calendar` or `/best-days` window.
-- `monthOfDate` _function_: The month a `YYYY-MM-DD` date falls in.
+- `monthOfDate` _function_: The month a `YYYY-MM-DD` date, or a `YYYY-MM` key, falls in.
 - `tripRegionRelayUrl` _function_: Where a page asks for one of a region's keyed routes: the same-origin relay (`app/api/trip-regions/[...path]/route.ts`), which adds the site's data key. The query names are the API's own.
 - `TRIP_PLANNER_ID` _const_: The anchor of the hub's planner chapter, which the hero's action and Parky's links open.
 - `TRIP_CALENDAR_ID` _const_: The anchor of chapter 01, the calendar, for the park bands and the homepage teaser.
@@ -272,7 +272,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
 - `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
 - `ticketHomeMarket` _function_: The market code of a ticket sold to anyone at the operator's: the region's `ticketMarkets.home`, else the registry's for an API that does not send it.
-- `entryMarket` _function_: Whether an entry's ticket is sold abroad only, which its tag says ("Sold outside the US").
+- `marketLabel` _function_: Where a ticket or a link is sold when the operators' own shops (`homeMarket`) do not sell it, for its label ("UK shop"); `null` otherwise.
+- `entryMarket` _function_: The label of an entry's ticket in the step: its first product's `marketLabel`.
+- `linkMarket` _function_: The label beside a purchase link: its own `markets`, and on the official link the product's, since the operator's shop for a UK ticket is its UK shop.
 - `soldLengths` _function_: The lengths a product sells, or `null` for a pass or a product with only a window.
 - `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
 - `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.
@@ -295,16 +297,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
 - `suggestionGroups` _function_: The suggestions grouped by resort, product and length, each group where its first ticket starts: six day tickets at Tokyo Disney Resort are one group of six.
 - `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.
-- `longStayTickets` _function_: "From the UK or Ireland? The 14-day tickets fit this trip": the region's 14-day tickets sold abroad (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
+- `longStayTickets` _function_: "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
 - `hopperGains` _function_: What the hopper adds, from the fields the API sends: each evening at a second park and each day with two parks by date (more than two by count), the parks that fit only with it, and the minutes per ride. Empty when it adds nothing.
 - `needsConnectedHop` _function_: Whether a set of planned parks holds both of the region's `connectedParks` (Universal Studios and Islands of Adventure, with the Hogwarts Express between them), a ride only a hopper takes.
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
 - `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
 - `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
+- `visitorCountry` _function_: The visitor's country from the browser's languages: the region of the first one, upper case (`en-IE` → `IE`), `null` without one.
 - `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
-- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: those for the visitor's locale or market first, the rest after, each group in the admin's order, which is the display order. The official link keeps its place.
+- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: the store of the visitor's own country first, then those for their locale or market, the rest after, each group in the admin's order, which is the display order.
+- `ticketStoreName` _function_: A country store as its link names it in the visitor's language: the country's short name and the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 
@@ -395,7 +399,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
 - `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography. It goes in by the name the trip planner calls it ("Islands of Adventure"), so the day planner's list of a trip's days reads as the plan did.
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
-- `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
 - Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
@@ -503,4 +506,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripForecastAccuracy`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketStore`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripForecastAccuracy`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

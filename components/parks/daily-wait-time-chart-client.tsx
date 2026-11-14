@@ -5,6 +5,7 @@ import { useMounted } from '@/lib/hooks/use-mounted';
 import { useRideDayCurve } from '@/lib/hooks/use-ride-day-curve';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { dailyChartWindow } from '@/lib/parks/daily-chart-window';
 import type {
   AttractionHistoryDay,
   HourlyForecastItem,
@@ -101,34 +102,11 @@ function buildChartData(
   let endTime = '19:00';
 
   if (todaySchedule) {
-    if (todaySchedule.openingTime) {
-      const date = new Date(todaySchedule.openingTime);
-      const h = getDateTimeFormat('en', {
-        hour: 'numeric',
-        hour12: false,
-        timeZone: timezone,
-      }).format(date);
-      const m = getDateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(date);
-      const roundedM = Math.floor(parseInt(m, 10) / 15) * 15;
-      startTime = `${h.padStart(2, '0')}:${roundedM.toString().padStart(2, '0')}`;
-    }
-    if (todaySchedule.closingTime) {
-      const date = new Date(todaySchedule.closingTime);
-      const h = getDateTimeFormat('en', {
-        hour: 'numeric',
-        hour12: false,
-        timeZone: timezone,
-      }).format(date);
-      const m = getDateTimeFormat('en', { minute: 'numeric', timeZone: timezone }).format(date);
-      const roundedM = Math.ceil(parseInt(m, 10) / 15) * 15;
-      let finalH = parseInt(h, 10);
-      let finalM = roundedM;
-      if (finalM === 60) {
-        finalH = (finalH + 1) % 24;
-        finalM = 0;
-      }
-      endTime = `${finalH.toString().padStart(2, '0')}:${finalM.toString().padStart(2, '0')}`;
-    }
+    ({ start: startTime, end: endTime } = dailyChartWindow(
+      todaySchedule.openingTime,
+      todaySchedule.closingTime,
+      timezone
+    ));
   } else {
     const allSlots = [...historyMap.keys(), ...forecastMap.keys()].sort();
     if (allSlots.length > 0) {

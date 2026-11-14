@@ -7,6 +7,8 @@ import { CROWD_LEVEL_ORDER, CROWD_SCALE_CLASS } from '@/lib/utils/crowd-level-st
 import { DAY_SIGNAL_CLASS, type DaySignal } from '@/lib/utils/day-signal-styles';
 import { DaySignalKey } from '@/components/parks/day-signal-key';
 import { WORKS_TONE_CLASS, WorksIcon } from '@/components/parks/works-period-list';
+import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
+import type { SeasonEventKind } from '@/lib/parks/park-season-days';
 
 /** Every signal a park's month grid can draw, in the cell's order. */
 const ALL_SIGNALS: readonly DaySignal[] = ['school', 'neighbor', 'holiday', 'bridge'];
@@ -19,12 +21,15 @@ const ALL_SIGNALS: readonly DaySignal[] = ['school', 'neighbor', 'holiday', 'bri
  * other park the grid never draws it; `signals` names the bar's segments a grid can draw, so the
  * trip planner's grids, which know no bridge days, key only theirs. `extraSignals` keys segments a
  * caller draws beyond the holidays, such as a region's storm season, after them in the same row.
+ * `seasonKinds` keys the season icons the shown month draws, and only those: a month without a
+ * season has no season key.
  */
 export function ParkCalendarLegend({
   showWorks = false,
   signals = ALL_SIGNALS,
   signalsLabel = true,
   extraSignals = [],
+  seasonKinds = [],
   className,
 }: {
   showWorks?: boolean;
@@ -33,6 +38,8 @@ export function ParkCalendarLegend({
   signalsLabel?: boolean;
   /** More segments of the bar, each its mark's class and its word. */
   extraSignals?: ReadonlyArray<{ key: string; className: string; label: string }>;
+  /** The season kinds the shown month's tiles carry (`seasonKindsIn`). */
+  seasonKinds?: readonly SeasonEventKind[];
   className?: string;
 }) {
   const tGroups = useTranslations('parks.calendarLegendGroups');
@@ -40,6 +47,7 @@ export function ParkCalendarLegend({
   const tCrowd = useTranslations('parks.crowdLevels');
   const tHolidays = useTranslations('parks.holidayContext');
   const tLegend = useTranslations('attractions.historyLegend');
+  const tKind = useTranslations('parks.seasons.kind');
 
   return (
     <div className={cn('flex flex-wrap items-center gap-x-5 gap-y-2', className)}>
@@ -109,6 +117,17 @@ export function ParkCalendarLegend({
               <span className="text-[11px]">{tWorks('closedRidesTitle')}</span>
             </span>
           )}
+        </div>
+      )}
+
+      {seasonKinds.length > 0 && (
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
+          {seasonKinds.map((kind) => (
+            <span key={kind} className="flex items-center gap-1.5 whitespace-nowrap">
+              <SeasonKindIcon kind={kind} />
+              <span className="text-[11px]">{tKind(kind)}</span>
+            </span>
+          ))}
         </div>
       )}
     </div>

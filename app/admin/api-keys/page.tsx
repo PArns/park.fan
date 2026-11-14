@@ -10,7 +10,6 @@ import {
   RotateCw,
   ShieldCheck,
   Trash2,
-  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
@@ -55,14 +54,14 @@ import {
 } from '@/lib/admin/api-keys';
 import { hasPassed } from '@/lib/admin/mcp';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
-import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import type { AdminParkListItem } from '../_lib/types';
+import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
+import { parkCatalogOptions, useParkCatalog } from '../_lib/use-park-catalog';
 import { formatAgo } from '../_lib/format';
 import { useSession } from '../_app/session';
 import { BarList, CATEGORICAL, SeriesChart, Sparkline } from '../_ui/charts';
 import { CodeBlock, SYSTEM_MONO } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
-import { Field, SearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
+import { Field, MultiSearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -140,33 +139,25 @@ function KeyList({ items }: { items: DataApiKey[] }) {
   const [editing, setEditing] = useState<DataApiKey | null>(null);
   const [viewing, setViewing] = useState<DataApiKey | null>(null);
   const [rotating, setRotating] = useState<DataApiKey | null>(null);
-  // Kept after the dialog closes, like `pending`.
+  // Kept after their dialogs close, like `pending`.
   const [ending, setEnding] = useState<DataApiKey | null>(null);
+  const [deleting, setDeleting] = useState<DataApiKey | null>(null);
   const [confirmingEnd, setConfirmingEnd] = useState(false);
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
   const now = useMinuteNow();
 
-  async function revoke(key: DataApiKey) {
+  async function act(
+    path: string,
+    method: 'DELETE' | 'POST',
+    toasts: { done: string; failed: string }
+  ) {
     try {
-      await adminFetch(dataApiKeyPath(key.id), { method: 'DELETE' });
+      await adminFetch(path, { method });
       invalidate(DATA_API_KEYS_QUERY_KEY);
-      toast.push({ title: 'Key widerrufen', tone: 'success' });
+      toast.push({ title: toasts.done, tone: 'success' });
     } catch (err) {
       toast.push({
-        title: 'Widerruf fehlgeschlagen',
-        description: err instanceof Error ? err.message : undefined,
-        tone: 'error',
-      });
-    }
-  }
-
-  async function endGrace(key: DataApiKey) {
-    try {
-      await adminFetch(dataApiKeyPath(key.id, 'previous'), { method: 'DELETE' });
-      invalidate(DATA_API_KEYS_QUERY_KEY);
-      toast.push({ title: 'Alter Key gesperrt', tone: 'success' });
-    } catch (err) {
-      toast.push({
-        title: 'Sperren fehlgeschlagen',
+        title: toasts.failed,
         description: err instanceof Error ? err.message : undefined,
         tone: 'error',
       });
@@ -202,6 +193,10 @@ function KeyList({ items }: { items: DataApiKey[] }) {
               setPending(key);
               setConfirming(true);
             }}
+            onDelete={() => {
+              setDeleting(key);
+              setConfirmingDelete(true);
+            }}
           />
         ))}
       </ul>
@@ -219,7 +214,13 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         }
         confirmLabel="Widerrufen"
         cancelLabel="Abbrechen"
-        onConfirm={() => pending && void revoke(pending)}
+        onConfirm={() =>
+          pending &&
+          void act(dataApiKeyPath(pending.id), 'DELETE', {
+            done: 'Key widerrufen',
+            failed: 'Widerruf fehlgeschlagen',
+          })
+        }
       />
 
       <ConfirmDialog
@@ -235,7 +236,31 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         }
         confirmLabel="Alten Key sperren"
         cancelLabel="Abbrechen"
-        onConfirm={() => ending && void endGrace(ending)}
+        onConfirm={() =>
+          ending &&
+          void act(dataApiKeyPath(ending.id, 'previous'), 'DELETE', {
+            done: 'Alter Key gesperrt',
+            failed: 'Sperren fehlgeschlagen',
+          })
+        }
+      />
+
+      <ConfirmDialog
+        open={confirmingDelete}
+        onOpenChange={setConfirmingDelete}
+        icon={Trash2}
+        tone="destructive"
+        title={`Key „${deleting?.name ?? ''}“ endgültig löschen?`}
+        description="Der widerrufene Key verschwindet aus der Liste, mit seiner Statistik; unter „Änderungen“ bleibt er verzeichnet. Das lässt sich nicht rückgängig machen."
+        confirmLabel="Löschen"
+        cancelLabel="Abbrechen"
+        onConfirm={() =>
+          deleting &&
+          void act(dataApiKeyPath(deleting.id, 'delete'), 'POST', {
+            done: 'Key gelöscht',
+            failed: 'Löschen fehlgeschlagen',
+          })
+        }
       />
 
       {editing && <EditKeyDialog apiKey={editing} onClose={() => setEditing(null)} />}
@@ -253,6 +278,7 @@ function KeyRow({
   onRotate,
   onEndGrace,
   onRevoke,
+  onDelete,
 }: {
   apiKey: DataApiKey;
   /** Null until the clock is known, so the server and the first render agree. */
@@ -262,6 +288,7 @@ function KeyRow({
   onRotate: () => void;
   onEndGrace: () => void;
   onRevoke: () => void;
+  onDelete: () => void;
 }) {
   const revoked = apiKey.revokedAt !== null;
   const expired = !revoked && now !== null && hasPassed(apiKey.expiresAt, now);
@@ -321,16 +348,14 @@ function KeyRow({
               <RotateCw className="h-3.5 w-3.5" />
             </button>
           )}
-          {!revoked && (
-            <button
-              type="button"
-              onClick={onRevoke}
-              aria-label={`${apiKey.name} widerrufen`}
-              className="text-muted-foreground hover:text-destructive rounded p-1.5 max-sm:p-3"
-            >
-              <Trash2 className="h-3.5 w-3.5" />
-            </button>
-          )}
+          <button
+            type="button"
+            onClick={revoked ? onDelete : onRevoke}
+            aria-label={`${apiKey.name} ${revoked ? 'löschen' : 'widerrufen'}`}
+            className="text-muted-foreground hover:text-destructive rounded p-1.5 max-sm:p-3"
+          >
+            <Trash2 className="h-3.5 w-3.5" />
+          </button>
         </div>
       </div>
       <div className={`text-muted-foreground mt-1 space-y-1 text-xs sm:pl-7 ${dimmed}`}>
@@ -762,23 +787,7 @@ function ParksField({
   value: string[];
   onChange: (ids: string[]) => void;
 }) {
-  // The query the parks page already holds, so opening the dialog there costs no request.
-  const parks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
-    adminKeys.parks({ params: 'limit=500' }),
-    '/api/admin/content/parks?limit=500',
-    { staleTime: 10 * 60_000 }
-  );
-  const all = parks.data?.parks ?? [];
-  const byId = new Map(all.map((park) => [park.id, park]));
-  const options = all
-    .filter((park) => !value.includes(park.id))
-    .map((park) => ({
-      value: park.id,
-      label: park.name,
-      hint: park.city ?? undefined,
-      keywords: [park.slug, park.city ?? '', park.country ?? ''],
-    }));
-
+  const parks = useParkCatalog();
   return (
     <Field
       label="Parks"
@@ -786,35 +795,16 @@ function ParksField({
       hint="Leer für alle Parks. Mit einer Auswahl öffnet der Key die Prognosen nur für diese Parks."
       error={parks.isError ? 'Die Parkliste ließ sich nicht laden.' : null}
     >
-      <div className="grid gap-2">
-        {value.length > 0 && (
-          <ul className="flex flex-wrap gap-1.5">
-            {value.map((id) => (
-              <li key={id}>
-                <button
-                  type="button"
-                  onClick={() => onChange(value.filter((other) => other !== id))}
-                  aria-label={`${byId.get(id)?.name ?? id} entfernen`}
-                  className="border-border bg-muted/60 hover:bg-muted inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs"
-                >
-                  {byId.get(id)?.name ?? id}
-                  <X className="h-3 w-3" aria-hidden />
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-        <SearchSelect
-          id={id}
-          value={null}
-          onValueChange={(id) => onChange([...value, id])}
-          options={options}
-          placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Park hinzufügen'}
-          searchPlaceholder="Park suchen…"
-          disabled={parks.isLoading || parks.isError}
-          fuzzy="park"
-        />
-      </div>
+      <MultiSearchSelect
+        id={id}
+        value={value}
+        onChange={onChange}
+        options={parkCatalogOptions(parks.data?.parks ?? [])}
+        placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Park hinzufügen'}
+        searchPlaceholder="Park suchen…"
+        disabled={parks.isLoading || parks.isError}
+        fuzzy="park"
+      />
     </Field>
   );
 }

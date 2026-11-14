@@ -104,6 +104,26 @@ and a headliner among them reads „Wartung" in the forecast list instead of a w
 such a ride out of the day's average, level and headliner list (PAR-1255), so that row appears only
 where it could not read the windows and served the day without them.
 
+**Seasons.** A day a park's curated season runs on (`/seasons`,
+[park seasons](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/park-seasons.md))
+carries its kind's icon beside the status word, from `SEASON_KIND_ICON`
+(`components/parks/season-kind-icon.tsx`), the one kind → icon map: Halloween a ghost, Christmas a
+fir tree, a winter season a snowflake, summer nights a moon, a special event sparkles. Only those
+five mark a day (`SEASON_EVENT_KINDS`): an `opening` is the open days themselves, a `closure` is
+closed days and a `maintenance` window is the works chip. A season with single `dates` marks only
+those, a cancelled one none, and one without `dates` only the days the calendar does not show
+`CLOSED` (open or unknown): its range is its outer bounds, and an `expected` Halloween with no day
+list must not haunt a day the park is shut. For that the page waits for the month's statuses, the
+summary's own seed (`getCalendarMonthSeed`), but only in a month with such a season
+(`seasonsNeedDayStatus`). The page reads the shown month's seasons with the month as the window,
+since the park's own list starts today and a past day's season has ended by then, and computes
+`seasonDaysOfMonth` (`lib/parks/park-season-days.ts`) once on the server: the tiles, the day dialog
+and the legend read that one record, so the legend keys exactly the kinds the month shows, none in a
+month without a season. A season over more than half the month (a winter season) or one only
+`expected` is drawn bare in the row's colour instead of on a chip, so a month of icons does not drown
+the crowd colours. The icon names its seasons on hover and in the tile's `aria-label`, with the
+status where it is not `confirmed`.
+
 ## The day dialog
 
 `ParkCalendarDayDetail`, a Radix dialog, so it works on touch where a tooltip does not. It opens on
@@ -117,8 +137,10 @@ It shows the schedule (open, closed, not yet published; estimated hours marked),
 the crowd level with the headliner forecast or, for a past day, the actual waits, local and
 neighbouring-country holidays (names through `translateHolidayName`), the weather, an hour-by-hour
 crowd chart for today and tomorrow only (`useCalendarDayHourly`, asked only while the dialog is
-open), the rides closed for works that day, and "plan this day" for an open day from today on,
-which opens the trip planner.
+open), the rides closed for works that day, the day's seasons by name (`SeasonHeadline`, the line
+the park's season card uses, with the status only where it is not `confirmed`, the separate ticket
+and the event's hours), and "plan this day" for an open day from today on, which opens the trip
+planner.
 
 **Comparing two days.** With the comparison switch on, two picks open `ParkCalendarComparison`. The
 picks live in `dayComparisonStore` (`lib/parks/day-comparison-store.ts`), a module store keyed by

@@ -42,6 +42,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkCalendarMonthIndex` _function_: Months since year 0, so a window can be checked without date arithmetic.
 - `parkCalendarMonthsBack` _function_: How many months back the calendar reaches today: the smaller of the span and the distance to `EARLIEST_CALENDAR_MONTH`. One source for the route's range check, the month index and the sitemap, so none of them links or serves past the edge.
 - `parkCalendarMonthsForward` _function_: How many months forward this park's calendar says anything.
+- `parkCalendarMonthRange` _function_: A month's first and last day, `YYYY-MM-DD`: the window the month's calendar, its seed and its seasons are read for.
 - `parseParkCalendarMonth` _function_: Parse the optional `[[...date]]` catch-all into a month. `null` month means the hub; `'invalid'` means segments that were there and wrong, a 404 rather than a silent fall back to the hub (which would put the same content on unbounded URLs).
 - `parseParkCalendarMonthSpelling` _function_: Whether two URL segments spell a month, not whether the route serves it: `/2026/13` is a typo and stays a 404, while an out-of-window real month 308s to the hub.
 - `shiftParkCalendarMonth` _function_: The month before/after, rolling the year over. Used for the crawlable prev/next links.
@@ -65,6 +66,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `closedRideSource` _function_: The first outside source the reason links, for a retirement that names no post of ours. Shown as the host name only: the rest of the reason is an editor's English note.
 - `closedRidesForSearch` _function_: The park's closed rides as its ride search takes them: name, slug, themed area and the month it closed as finished text, so the client tree formats nothing. `undefined` for a park without one, so the prop is simply absent from the payload.
 - Types: `ClosedRide`
+
+### [`daily-chart-window.ts`](../../lib/parks/daily-chart-window.ts)
+
+- `dailyChartWindow` _function_: The first and last 15-minute `HH:mm` slot of a day's chart from its opening and closing time.
 
 ### [`day-comparison-store.ts`](../../lib/parks/day-comparison-store.ts)
 
@@ -117,6 +122,18 @@ Which two days of a park's calendar are being compared, across a change of month
 - `UNIVERSAL` _const_: Universal: Hollywood, the four Orlando parks (Volcano Bay included) and the three in Asia.
 - `PARK_BRANDS` _const_: Every brand with a page, for the sitemap, the content-change crawl and the park page's link.
 - Types: `ParkBrand`, `BrandCountry`
+
+### [`park-season-days.ts`](../../lib/parks/park-season-days.ts)
+
+- `isSeasonEvent` _function_: Whether a season is one of the events a day marks and still on. A cancelled season marks no day: it is listed, struck through, on the park's season card and nowhere else.
+- `seasonRunsOn` _function_: Whether a season runs on a date: only on its `dates` where it lists them, else every day of its range (the API's `seasonCovers`) the calendar does not show `closed`.
+- `eventSeasonsOn` _function_: The event seasons running on a date the calendar shows `closed` or not, in the order given.
+- `seasonsNeedDayStatus` _function_: Whether the month's day statuses decide anything: only a season without single dates, which skips the closed days, needs them. The calendar page waits for them only then.
+- `seasonDaysOfMonth` _function_: The event seasons of one month, per day, a season without single dates only on the `calendarDays` not `CLOSED`.
+- `seasonKindsIn` _function_: The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys.
+- `seasonMarks` _function_: A day's seasons as the tile marks them: one icon per kind, in `SEASON_EVENT_KINDS` order, quiet only when every season of that kind is.
+- `SEASON_EVENT_KINDS` _const_: The season kinds a day marks: the events a visitor picks a day for.
+- Types: `SeasonEventKind`, `SeasonOnDay`, `SeasonDays`
 
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 

@@ -5,7 +5,8 @@ import { CornerUpRight, Loader2 } from 'lucide-react';
 import { useCan } from '../../_app/session';
 import { AdminApiError, adminFetch, adminKeys, adminRequest, useAdminQuery } from '../../_lib/api';
 import { isRedirectablePath, slugsFromPublicPath } from '../../_lib/public-path';
-import type { AdminAttractionListItem, AdminParkListItem } from '../../_lib/types';
+import type { AdminAttractionListItem } from '../../_lib/types';
+import { parkCatalogOptions, useParkCatalog } from '../../_lib/use-park-catalog';
 import { SearchSelect } from '../../_ui/controls';
 import { useToast } from '../../_ui/toast';
 
@@ -91,12 +92,7 @@ function RedirectPicker({
   const toast = useToast();
   const [busy, setBusy] = useState(false);
 
-  // Same key as the parks page, so the catalogue is asked for once.
-  const parks = useAdminQuery<{ parks: AdminParkListItem[] }>(
-    adminKeys.parks({ params: 'limit=500' }),
-    ride ? null : '/api/admin/content/parks?limit=500',
-    { staleTime: 10 * 60_000 }
-  );
+  const parks = useParkCatalog(!ride);
   const resolvePath = `/api/admin/content/resolve?${new URLSearchParams({
     parkSlug,
     ...(citySlug ? { citySlug } : {}),
@@ -155,12 +151,7 @@ function RedirectPicker({
   const failed = ride ? (resolved.error ?? rides.error) : parks.error;
   const options = ride
     ? (rides.data?.attractions ?? []).map((item) => ({ value: item.id, label: item.name }))
-    : (parks.data?.parks ?? []).map((item) => ({
-        value: item.id,
-        label: item.name,
-        hint: [item.city, item.country].filter(Boolean).join(', ') || undefined,
-        keywords: [item.city, item.country, item.slug].filter((k): k is string => Boolean(k)),
-      }));
+    : parkCatalogOptions(parks.data?.parks ?? []);
 
   return (
     <div className="flex basis-full items-center gap-2">

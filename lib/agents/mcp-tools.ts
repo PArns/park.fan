@@ -1,7 +1,8 @@
 import type { ForecastGrant } from './forecast-access';
 import 'server-only';
 import { search } from '@/lib/api/search';
-import { getParkByGeoPath, getParkByGeoPathForAgents } from '@/lib/api/parks';
+import { getParkByGeoPath, getParkByGeoPathForAgents, getParkSeasons } from '@/lib/api/parks';
+import { eventSeasonsOn } from '@/lib/parks/park-season-days';
 import { catchNonFatal } from '@/lib/api/client';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
@@ -178,13 +179,15 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const grant = context?.forecastGrant;
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
-    // The rides come from the park's cached structure, the entry the park page reads; a failed
-    // read costs the days their maintenance list, never the days.
-    const [snapshot, structure] = await Promise.all([
+    // The rides come from the park's cached structure, the entry the park page reads, and the
+    // seasons from the park page's own list, a year from today; a failed read costs the days
+    // their maintenance or season list, never the days.
+    const [snapshot, structure, seasons] = await Promise.all([
       grant?.via === 'key'
         ? getBestDaysForApiKey(...park.segments, grant.apiKey)
         : getBestDaysCalendar(...park.segments),
       catchNonFatal(getParkByGeoPath(...park.segments)),
+      getParkSeasons(...park.segments),
     ]);
     if ('refused' in snapshot) return { error: snapshot.message };
     const rides = structure?.attractions ?? [];
@@ -204,6 +207,14 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
         // A closed day lists none: nothing runs on it anyway.
         const inMaintenance =
           day.status === 'CLOSED' ? [] : ridesInWorksOn(rides, day.date).map((ride) => ride.name);
+        // What the calendar tile marks that day, and how settled where it is no promise yet.
+        const daySeasons = eventSeasonsOn(seasons, day.date, day.status === 'CLOSED').map(
+          (season) => ({
+            kind: season.kind,
+            name: season.name,
+            ...(season.status !== 'confirmed' && { status: season.status }),
+          })
+        );
         return {
           date: day.date,
           status: day.status,
@@ -214,9 +225,10 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
           isSchoolVacation: day.isSchoolVacation,
           isBridgeDay: day.isBridgeDay,
           ...(inMaintenance.length > 0 && { ridesInMaintenance: inMaintenance }),
+          ...(daySeasons.length > 0 && { seasons: daySeasons }),
         };
       }),
-      note: 'A crowd level compares this park with itself, never one park with another. A closed day is a fact about the season, not a quiet day. ridesInMaintenance names the rides a planned maintenance closure shuts that day.',
+      note: "A crowd level compares this park with itself, never one park with another. A closed day is a fact about the season, not a quiet day. ridesInMaintenance names the rides a planned maintenance closure shuts that day. seasons names the park's events running that day (Halloween, Christmas, a winter season, summer nights, a special event), with a status where the park has not confirmed the dates.",
     };
   },
 };

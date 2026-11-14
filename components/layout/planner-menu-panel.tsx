@@ -31,6 +31,7 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import { quickStartClick, type PlannerQuickStart } from '@/lib/planner/quick-start';
 import { waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatParkDay } from '@/lib/utils/park-day';
 import { cn } from '@/lib/utils';
 import type { PlannerMenuRegion } from '@/lib/navigation/planner-menu';
 
@@ -385,12 +386,7 @@ export function planSummary(state: PlannerState, now: number): PlanSummary | nul
 
 /** A planned day as `YYYY-MM-DD`, written short in the reader's language: „Sa., 21. Nov.". */
 export function formatPlanDay(date: string, locale: string): string {
-  return getDateTimeFormat(locale, {
-    weekday: 'short',
-    day: 'numeric',
-    month: 'short',
-    timeZone: 'UTC',
-  }).format(new Date(`${date}T12:00:00Z`));
+  return formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
 }
 
 /**

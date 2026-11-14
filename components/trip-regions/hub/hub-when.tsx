@@ -5,7 +5,8 @@ import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { bestTimeYear } from '@/lib/trip-regions/best-time';
 import { formatWindow } from '@/lib/trip-regions/hub-data';
-import { TRIP_PLANNER_ID, tripRegionBestTimePath } from '@/lib/trip-regions/paths';
+import { tripRegionBestTimePath } from '@/lib/trip-regions/paths';
+import { plannerHrefOn } from '@/lib/trip-regions/plan-query';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { ownWords } from '@/lib/trip-regions/region-words';
 import type { TripWhen } from '@/lib/trip-regions/types';
@@ -79,7 +80,7 @@ export async function HubWhen({
                 </p>
               )}
               <Link
-                href={`${pagePath}?from=${window.from}&to=${window.to}#${TRIP_PLANNER_ID}`}
+                href={plannerHrefOn(pagePath, { from: window.from, to: window.to })}
                 rel="nofollow"
                 prefetch={false}
                 {...buttonLinkProps({

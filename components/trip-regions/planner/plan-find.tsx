@@ -18,7 +18,7 @@ import {
   type WhenPeriodKey,
 } from '@/lib/trip-regions/plan-when';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS, PlanCheckRow, PlanChip, PlanStepper } from './plan-controls';
+import { PLAN_FIELD, PLAN_FOCUS, PlanCheckRow, PlanChip, PlanStepper } from './plan-controls';
 import { PlanDates } from './plan-dates';
 import { useSchoolBreaks } from './use-trip-plan';
 
@@ -154,10 +154,7 @@ export function PlanFind() {
                   if (from && state.when)
                     setRange({ from, to: from > state.when.to ? from : state.when.to });
                 }}
-                className={cn(
-                  'border-border bg-background h-11 rounded-md border px-2 text-sm',
-                  PLAN_FOCUS
-                )}
+                className={PLAN_FIELD}
               />
             </label>
             <label className="flex flex-col gap-1 text-xs">
@@ -171,10 +168,7 @@ export function PlanFind() {
                   const to = e.currentTarget.value;
                   if (to && state.when) setRange({ from: state.when.from, to });
                 }}
-                className={cn(
-                  'border-border bg-background h-11 rounded-md border px-2 text-sm',
-                  PLAN_FOCUS
-                )}
+                className={PLAN_FIELD}
               />
             </label>
           </div>
@@ -226,10 +220,7 @@ export function PlanFind() {
                   const country = countries.find((c) => c.country === e.currentTarget.value);
                   if (country) update((s) => ({ ...s, within: country.regions[0]?.code ?? null }));
                 }}
-                className={cn(
-                  'border-border bg-background h-11 rounded-md border px-2 text-sm',
-                  PLAN_FOCUS
-                )}
+                className={PLAN_FIELD}
               >
                 {countries.map((c) => (
                   <option key={c.country} value={c.country}>
@@ -247,10 +238,7 @@ export function PlanFind() {
                   const code = e.currentTarget.value;
                   update((s) => ({ ...s, within: code }));
                 }}
-                className={cn(
-                  'border-border bg-background h-11 rounded-md border px-2 text-sm',
-                  PLAN_FOCUS
-                )}
+                className={PLAN_FIELD}
               >
                 {countries
                   .find((c) => c.country === withinCountry)

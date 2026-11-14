@@ -2,9 +2,8 @@
 
 import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { CalendarCheck, Info, X } from 'lucide-react';
+import { CalendarCheck, Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { effectiveParks, planWindow, type TripPlanState } from '@/lib/trip-regions/plan';
@@ -19,10 +18,9 @@ import {
 import { lastYearFrom } from '@/lib/trip-regions/best-time';
 import type { TripWhen, TripWhenWindow } from '@/lib/trip-regions/types';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
+import { Sheet } from '@/components/ui/sheet';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
-import { PLAN_WIDE_QUERY } from './plan-setup';
+import { PlanSheetContent } from './plan-sheet';
 import { useSeasonName } from './use-day-facts';
 import { ClimateChips } from './plan-day-bits';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
@@ -296,123 +294,99 @@ function WindowSheet({
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
   const { locale, parkName } = usePlanContext();
-  const wide = useMediaQuery(PLAN_WIDE_QUERY);
   const seasonName = useSeasonName();
   const tSeasons = useTranslations('parks.seasons');
 
   return (
     <Sheet open={window !== null} onOpenChange={(o) => !o && onClose()}>
       {window && (
-        <SheetContent
-          side={wide ? 'right' : 'bottom'}
-          hideClose
-          onCloseAutoFocus={(event) => {
-            event.preventDefault();
-            returnFocus();
-          }}
-          className={cn('gap-0 p-0', wide ? 'w-full sm:max-w-md' : 'max-h-[90svh] rounded-t-2xl')}
-        >
-          <div className="border-border/60 flex items-start gap-2 border-b px-4 py-2">
-            <div className="flex min-w-0 flex-1 flex-col py-1.5">
-              <SheetDescription className="text-muted-foreground text-xs">
-                {t('when.rank', { rank: window.rank })}
-              </SheetDescription>
-              <SheetTitle className="text-base leading-snug">{label}</SheetTitle>
-            </div>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label={t('setup.close')}
-              className={cn(
-                'hover:bg-accent flex size-11 shrink-0 items-center justify-center rounded-md',
-                PLAN_FOCUS
-              )}
-            >
-              <X className="size-5" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-y-auto overscroll-contain px-4 py-4 text-sm">
-            <p>
-              <span className="text-lg font-semibold">
-                {t('when.wait', { minutes: window.headlinerWait })}
-              </span>
-              <span className="text-muted-foreground block text-xs">
-                {t('when.average', { minutes: window.rangeAverageWait })}
-              </span>
-            </p>
-            {windowReasons(window).length > 0 && (
-              <ul className="flex flex-col gap-1">
-                {windowReasons(window).map((r) => (
-                  <li key={r}>{regionOrShared(tRegion, t, `when.reason.${r}`)}</li>
-                ))}
-              </ul>
-            )}
-            {windowWarnings(window).length > 0 && (
-              <ul className="flex flex-col gap-1">
-                {windowWarnings(window).map((w) => (
-                  <li key={w} className="text-crowd-ink-high">
-                    {regionOrShared(tRegion, t, `when.warning.${w}`, {
-                      count: window.closesEarlyDays,
-                    })}
-                  </li>
-                ))}
-              </ul>
-            )}
-            {window.seasons.length > 0 && (
-              <ul className="flex flex-col gap-1">
-                {answer.seasons
-                  .filter((s) => window.seasons.includes(s.id))
-                  .map((s) => (
-                    <li key={s.id}>
-                      {seasonName(s)}
-                      {s.status !== 'confirmed' && (
-                        <span className="text-muted-foreground">
-                          {' '}
-                          · {tSeasons(`status.${s.status}`)}
-                        </span>
-                      )}
-                    </li>
-                  ))}
-              </ul>
-            )}
-            {window.plan && window.plan.days.length > 0 && (
-              <div>
-                <h3 className="mb-1 font-semibold">{t('when.sketch')}</h3>
-                <ol className="flex flex-col gap-0.5">
-                  {window.plan.days.map((day) => (
-                    <li key={day.date} className="flex gap-3">
-                      <span className="text-muted-foreground w-20 shrink-0 tabular-nums">
-                        {formatParkDay(locale, day.date, {
-                          weekday: 'short',
-                          day: 'numeric',
-                          month: 'short',
-                        })}
-                      </span>
-                      <span className="min-w-0 truncate">
-                        {day.parks.length > 0
-                          ? day.parks.map((s) => parkName(s)).join(' + ')
-                          : ['arrival', 'departure', 'rest'].includes(day.kind)
-                            ? t(`day.${day.kind as 'arrival' | 'departure' | 'rest'}`)
-                            : ''}
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
-            {window.basis !== 'forecast' && (
-              <p className="text-muted-foreground text-xs italic">
-                {t(`when.basis.${window.basis}`)}
-              </p>
-            )}
-          </div>
-          <div className="border-border/60 border-t px-4 py-3">
+        <PlanSheetContent
+          kicker={t('when.rank', { rank: window.rank })}
+          title={label}
+          onClose={onClose}
+          returnFocus={returnFocus}
+          bodyClassName="flex flex-col gap-4 text-sm"
+          footer={
             <Button className="w-full" onClick={() => onPlan(window)}>
               <CalendarCheck aria-hidden="true" />
               {t('when.plan')}
             </Button>
-          </div>
-        </SheetContent>
+          }
+        >
+          <p>
+            <span className="text-lg font-semibold">
+              {t('when.wait', { minutes: window.headlinerWait })}
+            </span>
+            <span className="text-muted-foreground block text-xs">
+              {t('when.average', { minutes: window.rangeAverageWait })}
+            </span>
+          </p>
+          {windowReasons(window).length > 0 && (
+            <ul className="flex flex-col gap-1">
+              {windowReasons(window).map((r) => (
+                <li key={r}>{regionOrShared(tRegion, t, `when.reason.${r}`)}</li>
+              ))}
+            </ul>
+          )}
+          {windowWarnings(window).length > 0 && (
+            <ul className="flex flex-col gap-1">
+              {windowWarnings(window).map((w) => (
+                <li key={w} className="text-crowd-ink-high">
+                  {regionOrShared(tRegion, t, `when.warning.${w}`, {
+                    count: window.closesEarlyDays,
+                  })}
+                </li>
+              ))}
+            </ul>
+          )}
+          {window.seasons.length > 0 && (
+            <ul className="flex flex-col gap-1">
+              {answer.seasons
+                .filter((s) => window.seasons.includes(s.id))
+                .map((s) => (
+                  <li key={s.id}>
+                    {seasonName(s)}
+                    {s.status !== 'confirmed' && (
+                      <span className="text-muted-foreground">
+                        {' '}
+                        · {tSeasons(`status.${s.status}`)}
+                      </span>
+                    )}
+                  </li>
+                ))}
+            </ul>
+          )}
+          {window.plan && window.plan.days.length > 0 && (
+            <div>
+              <h3 className="mb-1 font-semibold">{t('when.sketch')}</h3>
+              <ol className="flex flex-col gap-0.5">
+                {window.plan.days.map((day) => (
+                  <li key={day.date} className="flex gap-3">
+                    <span className="text-muted-foreground w-20 shrink-0 tabular-nums">
+                      {formatParkDay(locale, day.date, {
+                        weekday: 'short',
+                        day: 'numeric',
+                        month: 'short',
+                      })}
+                    </span>
+                    <span className="min-w-0 truncate">
+                      {day.parks.length > 0
+                        ? day.parks.map((s) => parkName(s)).join(' + ')
+                        : ['arrival', 'departure', 'rest'].includes(day.kind)
+                          ? t(`day.${day.kind as 'arrival' | 'departure' | 'rest'}`)
+                          : ''}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          )}
+          {window.basis !== 'forecast' && (
+            <p className="text-muted-foreground text-xs italic">
+              {t(`when.basis.${window.basis}`)}
+            </p>
+          )}
+        </PlanSheetContent>
       )}
     </Sheet>
   );

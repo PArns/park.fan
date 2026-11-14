@@ -59,7 +59,10 @@ export interface TripHotel {
   perks: TripPerk[];
 }
 
-/** The market codes a region's tickets and links name; `home` is sold to anyone at the operator's. */
+/**
+ * The market codes a region's tickets and links name, where each is sold; `home` is the operators'
+ * own shops.
+ */
 export interface TripTicketMarkets {
   home: string;
   codes: string[];
@@ -176,9 +179,21 @@ export interface TripVenue {
 export type TicketHopping = 'none' | 'optional' | 'included';
 
 /**
+ * The country store a purchase link leads to, for a seller with one store per country (Attraction
+ * Tickets' UK, Irish, Dutch, German and US stores), each with its own prices.
+ */
+export interface TicketStore {
+  /** ISO 3166-1 alpha-2, upper case: `GB`, `IE`. */
+  country: string;
+  /** ISO 4217, the currency the store sells in: `GBP`, `EUR`. */
+  currency: string;
+}
+
+/**
  * Where a ticket is bought: the operator's shop (`official`), or another seller. A `sponsored` link
- * is an affiliate or paid one, which the page labels as such; `markets` and `locales` say whom it
- * is for, absent for everyone.
+ * is an affiliate or paid one, which the page labels as such; `markets` and `locales` say where it
+ * sells and in which language, which orders and labels it; absent for everyone. `store` names the
+ * seller's country store, which the link is named by.
  */
 export interface TicketLink {
   /** The seller's own name, never translated. */
@@ -189,6 +204,7 @@ export interface TicketLink {
   /** Codes of the region's `ticketMarkets`. */
   markets?: string[];
   locales?: string[];
+  store?: TicketStore;
 }
 
 /**
@@ -203,8 +219,8 @@ export interface TicketProduct {
   /** The {@link TripRegionGroup} key of the operator that sells it. */
   resort: string;
   /**
-   * Codes of the region's `ticketMarkets`, whose `home` is sold to anyone (`us` in Orlando); in
-   * Orlando `intl` is sold by sellers abroad and `uk` to UK and Ireland residents only.
+   * Where it is sold, codes of the region's `ticketMarkets`: `home` the operators' own shops (`us`
+   * in Orlando), `uk` shops in the UK and Ireland, `intl` sellers elsewhere. A label, never a filter.
    */
   markets: string[];
   parks: string[];

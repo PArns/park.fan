@@ -18,7 +18,6 @@ import {
   writePlanQuery,
 } from '../lib/trip-regions/plan-query.ts';
 import {
-  findLeg,
   parkDaysAvailable,
   planProblem,
   planRequestQuery,
@@ -37,6 +36,7 @@ import {
   effectiveHotel,
   tripHotelKinds,
 } from '../lib/trip-regions/plan.ts';
+import { findLeg } from '../lib/trip-regions/hub-data.ts';
 import {
   autoSplit,
   climateChips,
@@ -130,6 +130,8 @@ import {
   adoptSuggestions,
   draftTicket,
   entryMarket,
+  linkMarket,
+  marketLabel,
   ticketHomeMarket,
   hopperGains,
   hopperResorts,
@@ -139,6 +141,8 @@ import {
   orderTicketLinks,
   ownedUse,
   ticketLinkAttributes,
+  ticketStoreName,
+  visitorCountry,
   visitorMarket,
   setTickets,
   ticketCatalog,
@@ -1807,13 +1811,27 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]
   );
   test(
-    'the step’s tag reads “not us”: sold outside the US, or none',
+    'the step’s tag says where a ticket is sold: a UK shop, or none for the operators’ own',
     [
       entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG, 'us'),
       entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG, 'us'),
       entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG, 'us'),
+      marketLabel(['intl'], 'us'),
+      marketLabel(['us', 'uk'], 'us'),
+      marketLabel(undefined, 'us'),
     ],
-    ['intl', 'intl', null]
+    ['uk', 'uk', null, 'intl', null, null]
+  );
+  test(
+    'a purchase link is tagged by its own market, the official one by its product’s',
+    [
+      linkMarket({ markets: ['uk'] }, ['us', 'intl'], 'us'),
+      linkMarket({ official: true }, ['uk'], 'us'),
+      linkMarket({ official: true }, ['us', 'uk'], 'us'),
+      linkMarket({}, ['uk'], 'us'),
+      linkMarket({ markets: ['uk'], store: { country: 'IE', currency: 'EUR' } }, ['uk'], 'us'),
+    ],
+    ['uk', 'uk', null, null, null]
   );
   test(
     'the home market is the region’s, else the registry’s',
@@ -2171,6 +2189,56 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       visitorMarket([]),
     ],
     ['uk', 'uk', 'us', 'intl', null, null]
+  );
+  const at = (country, currency, locale) => ({
+    seller: `AT ${country}`,
+    url: `https://www.attractiontickets.com/${country}`,
+    sponsored: false,
+    locales: [locale],
+    store: { country, currency },
+  });
+  const stores = [
+    at('GB', 'GBP', 'en'),
+    at('IE', 'EUR', 'en'),
+    at('NL', 'EUR', 'nl'),
+    at('DE', 'EUR', 'de'),
+    { seller: 'Walt Disney World', url: 'https://wdw.example/', official: true, sponsored: false },
+  ];
+  const storeOrder = (locale, languages) =>
+    orderTicketLinks(
+      { links: stores },
+      { locale, market: visitorMarket(languages), country: visitorCountry(languages) },
+      'Disney'
+    ).map((l) => l.seller);
+  test(
+    'every store is listed, the visitor’s own country first, then their language’s',
+    [
+      storeOrder('en', ['en-IE']),
+      storeOrder('en', ['en']),
+      storeOrder('de', ['de-AT']),
+      storeOrder('de', ['en-IE']),
+    ],
+    [
+      ['AT IE', 'AT GB', 'AT NL', 'AT DE', 'Walt Disney World'],
+      ['AT GB', 'AT IE', 'AT NL', 'AT DE', 'Walt Disney World'],
+      ['AT DE', 'AT GB', 'AT IE', 'AT NL', 'Walt Disney World'],
+      ['AT IE', 'AT DE', 'AT GB', 'AT NL', 'Walt Disney World'],
+    ]
+  );
+  test(
+    'a store is named by its country and currency in the visitor’s language',
+    [
+      ticketStoreName({ country: 'GB', currency: 'GBP' }, 'de'),
+      ticketStoreName({ country: 'IE', currency: 'EUR' }, 'de'),
+      ticketStoreName({ country: 'US', currency: 'USD' }, 'de'),
+      visitorCountry(['zh-Hant-TW']),
+    ],
+    [
+      { country: 'UK', currency: '£' },
+      { country: 'Irland', currency: '€' },
+      { country: 'USA', currency: '$' },
+      'TW',
+    ]
   );
   test(
     'a ticket link tells the seller it came from park.fan, and a sponsored one says it is',

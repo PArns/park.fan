@@ -1003,6 +1003,7 @@
       "kind": {
         "halloween": "Halloween",
         "christmas": "Navidad",
+        "winter": "Temporada de invierno",
         "summer_nights": "Noches de verano",
         "special_event": "Evento especial",
         "opening": "Apertura de temporada",
@@ -3474,7 +3475,10 @@
       "same": "misma espera punta",
       "more": "+{minutes} min de media",
       "less": "−{minutes} min de media",
-      "short": "{park} en un día corto, unas {hours, plural, =1 {una hora} other {# horas}} menos"
+      "short": "{park} en un día corto, unas {hours, plural, =1 {una hora} other {# horas}} menos",
+      "moveThere": "{park} este día, el {date} pasa a ser día de descanso",
+      "takeOver": "{park} el {date}, este día pasa a ser día de descanso",
+      "trade": "cambiar por {park}"
     },
     "keep": {
       "addAll": "Pasar al planificador del día",
@@ -3713,7 +3717,13 @@
       },
       "links": {
         "title": "Precios y entradas",
-        "official": "{seller} (tienda oficial)"
+        "official": "{seller} (tienda oficial)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "Los precios cambian según el país de la tienda. Compáralos todos antes de comprar."
+      },
+      "market": {
+        "uk": "Tienda británica",
+        "intl": "Tienda internacional"
       },
       "partner": {
         "label": "Enlace de afiliado",
@@ -4005,9 +4015,6 @@
             "universal": "park-to-park"
           },
           "mixNote": "Cada entrada conserva sus fechas. Donde valen las dos, el plan mezcla días de Disney y de Universal solo si así ahorras al menos 3 min por atracción.",
-          "market": {
-            "intl": "Se vende fuera de EE. UU."
-          },
           "entry": {
             "wdw-dated": {
               "title": "Entrada con fecha, de 1 a 10 días",
@@ -4131,9 +4138,9 @@
           },
           "hogwarts": "Para el Hogwarts Express entre Universal Studios e Islands of Adventure necesitas park-to-park.",
           "longStay": {
-            "line": "Fuera de EE. UU. hay entradas de 14 días para Disney y Universal, también como Combo Ticket.",
+            "line": "Las tiendas británicas venden entradas de 14 días para Disney y Universal, también como Combo Ticket.",
             "plan": "Planificar con ellas",
-            "detail": "Las entradas de 14 días en las tiendas de los parques fuera de EE. UU.:"
+            "detail": "Las entradas de 14 días en las tiendas británicas de los parques:"
           },
           "mixing": {
             "used": "Donde valen las dos entradas, el plan mezcla días de Disney y de Universal: unos {minutes} min menos por atracción que por separado.",
@@ -4324,9 +4331,6 @@
           },
           "hopperName": {
             "disney": "Park Hopper"
-          },
-          "market": {
-            "intl": "Se vende fuera de EE. UU."
           },
           "entry": {
             "dlr-multi-day": {
@@ -4673,9 +4677,6 @@
             "universal-studios-japan": "USJ",
             "fuji-q-highland": "Fuji-Q",
             "legoland-japan": "LEGOLAND"
-          },
-          "market": {
-            "intl": "Vendida fuera de Japón"
           },
           "entry": {
             "tdr-1-day": {

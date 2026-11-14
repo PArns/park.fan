@@ -17,12 +17,15 @@ import {
   describeRedirectHost,
   describeOriginMismatch,
   describeRequestAge,
+  describeScopeRole,
   describeScopes,
   describeTokenCreateError,
   displayClientName,
+  grantableScopes,
   hasPassed,
   passwordProofBody,
   safeRedirectTarget,
+  widestScope,
 } from '../lib/admin/mcp.ts';
 
 const headerRules = await nextConfig.headers();
@@ -215,8 +218,36 @@ const testCases = [
   },
   {
     name: 'a scope the page does not know is passed on, not dropped',
-    actual: () => JSON.stringify(describeScopes('admin:read admin:write')),
-    expected: '{"known":["Den Admin lesen"],"unknown":["admin:write"]}',
+    actual: () => JSON.stringify(describeScopes('admin:read admin:delete')),
+    expected: '{"known":["Den Admin lesen"],"unknown":["admin:delete"]}',
+  },
+  {
+    name: 'a viewer may grant reading only, an editor writing, an owner everything',
+    actual: () => ['viewer', 'author', 'editor', 'owner'].map((role) => grantableScopes(role)),
+    expected: [
+      ['admin:read'],
+      ['admin:read'],
+      ['admin:read', 'admin:write'],
+      ['admin:read', 'admin:write', 'admin:owner'],
+    ],
+  },
+  {
+    name: 'the widest known scope a request asks for counts, else reading',
+    actual: () => [widestScope('admin:read admin:write'), widestScope('openid')],
+    expected: ['admin:write', 'admin:read'],
+  },
+  {
+    name: 'the role line names the cap and, below the account, the account',
+    actual: () => [
+      describeScopeRole('admin:read', 'owner'),
+      describeScopeRole('admin:write', 'editor'),
+      describeScopeRole('admin:owner', 'owner'),
+    ],
+    expected: [
+      'Höchstens die Rolle Lesend, auch wenn dein Konto mehr darf (Inhaber)',
+      'Höchstens die Rolle Redaktion',
+      'Höchstens die Rolle Inhaber',
+    ],
   },
   {
     name: 'an empty scope describes nothing',
@@ -301,19 +332,44 @@ const testCases = [
   {
     name: 'the token body carries the password and, for a full code, the code',
     actual: () =>
-      createTokenBody({ name: ' Laptop ', expiresInDays: 90, password: 'pw', totpCode: '123456' }),
-    expected: { name: 'Laptop', expiresInDays: 90, password: 'pw', totpCode: '123456' },
+      createTokenBody({
+        name: ' Laptop ',
+        expiresInDays: 90,
+        scope: 'admin:write',
+        password: 'pw',
+        totpCode: '123456',
+      }),
+    expected: {
+      name: 'Laptop',
+      expiresInDays: 90,
+      scope: 'admin:write',
+      password: 'pw',
+      totpCode: '123456',
+    },
   },
   {
     name: 'an account without a second factor sends no code field',
-    actual: () => createTokenBody({ name: 'a', expiresInDays: null, password: 'pw', totpCode: '' }),
-    expected: { name: 'a', expiresInDays: null, password: 'pw' },
+    actual: () =>
+      createTokenBody({
+        name: 'a',
+        expiresInDays: null,
+        scope: 'admin:read',
+        password: 'pw',
+        totpCode: '',
+      }),
+    expected: { name: 'a', expiresInDays: null, scope: 'admin:read', password: 'pw' },
   },
   {
     name: 'half a code is not sent as one',
     actual: () =>
-      createTokenBody({ name: 'a', expiresInDays: 30, password: 'pw', totpCode: '1234' }),
-    expected: { name: 'a', expiresInDays: 30, password: 'pw' },
+      createTokenBody({
+        name: 'a',
+        expiresInDays: 30,
+        scope: 'admin:read',
+        password: 'pw',
+        totpCode: '1234',
+      }),
+    expected: { name: 'a', expiresInDays: 30, scope: 'admin:read', password: 'pw' },
   },
 
   // describeTokenCreateError

@@ -209,6 +209,25 @@ export function useAssistantActions(closeWindow: () => void) {
         return changed ? dayReceipt(park, date) : null;
       };
       /**
+       * A show's performance at `start` (`HH:MM`) on a park's day, as the planner's own show picker
+       * lists it; `undefined` where the day cannot be read or has no such performance.
+       */
+      const showLineAt = async (
+        park: AssistantPlannerPark,
+        date: string,
+        showSlug: string,
+        start: string
+      ) => {
+        const day = await queryClient
+          .fetchQuery(planDayQuery({ ...park.geo, parkSlug: park.slug, date }))
+          .catch(() => null);
+        return day
+          ? showLinesFor(day.shows, showDayHours(day.context.openHour, day.context.closeHour)).find(
+              (l) => l.slug === showSlug && formatGridTime(l.minute) === start
+            )
+          : undefined;
+      };
+      /**
        * Runs writes to one day and keeps the day before and after them for `planner_undo`; writes
        * that change nothing keep the earlier undo. Whether anything changed.
        */
@@ -353,15 +372,7 @@ export function useAssistantActions(closeWindow: () => void) {
             );
           }
           // A show keeps the performance's time: it moves to another performance that day.
-          const day = await queryClient
-            .fetchQuery(planDayQuery({ ...park.geo, parkSlug: park.slug, date }))
-            .catch(() => null);
-          const line = day
-            ? showLinesFor(
-                day.shows,
-                showDayHours(day.context.openHour, day.context.closeHour)
-              ).find((l) => l.slug === entry.showSlug && formatGridTime(l.minute) === start)
-            : undefined;
+          const line = await showLineAt(park, date, entry.showSlug, start);
           if (!line || line.minute === entry.startMinute) return null;
           withUndo(park, date, () => {
             plannerStore.update((state) => removeEntry(state, park.slug, date, entryId));
@@ -395,16 +406,7 @@ export function useAssistantActions(closeWindow: () => void) {
         }
         case 'planner_add_show': {
           const { park, date, showSlug, start } = action;
-          // The performance as the planner's own show picker lists it, or nothing.
-          const day = await queryClient
-            .fetchQuery(planDayQuery({ ...park.geo, parkSlug: park.slug, date }))
-            .catch(() => null);
-          const line = day
-            ? showLinesFor(
-                day.shows,
-                showDayHours(day.context.openHour, day.context.closeHour)
-              ).find((l) => l.slug === showSlug && formatGridTime(l.minute) === start)
-            : undefined;
+          const line = await showLineAt(park, date, showSlug, start);
           if (!line) return null;
           const planned = entriesFor(plannerStore.getSnapshot(), park.slug, date);
           if (planned.some((e) => e.showSlug === showSlug && e.startMinute === line.minute)) {

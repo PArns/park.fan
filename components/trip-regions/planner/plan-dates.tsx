@@ -135,6 +135,13 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
 
   const [pendingFrom, setPendingFrom] = useState<string | null>(null);
   const [month, setMonth] = useState<string | null>(null);
+  // Dates set from outside the grid (Parky, a shared link, undo) take the grid to their month; a
+  // range picked here records its own arrival first, so the grid stays where the departure was.
+  const [seenFrom, setSeenFrom] = useState(state.from);
+  if (state.from !== seenFrom) {
+    setSeenFrom(state.from);
+    if (state.from && month && monthOf(state.from) !== month) setMonth(null);
+  }
   const [shownDate] = useState(createShownDate);
   const [chosenMode, setMode] = useState<CalendarMode | null>(null);
   const windows = useMemo(() => ticketWindows(state.tickets, catalog), [state.tickets, catalog]);
@@ -267,6 +274,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
       return;
     }
     setPendingFrom(null);
+    setSeenFrom(pendingFrom);
     update((s) => setTripDates(s, pendingFrom, date));
   };
 

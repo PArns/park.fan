@@ -244,8 +244,9 @@ export async function HubFaq({
   };
 
   const distance = (): Item | null => {
-    const toNear = ask.distance && findLeg(region, ask.distance.from, ask.distance.near);
-    const toFar = ask.distance && findLeg(region, ask.distance.from, ask.distance.far);
+    const toNear =
+      ask.distance && findLeg(region.travel.legs, ask.distance.from, ask.distance.near);
+    const toFar = ask.distance && findLeg(region.travel.legs, ask.distance.from, ask.distance.far);
     if (!toNear || !toFar) return null;
     const q = ownWords(t, 'distance.q');
     const a = ownWords(t, 'distance.a', {

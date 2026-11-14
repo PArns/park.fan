@@ -160,6 +160,20 @@ export interface ParkCalendarMonth {
 }
 
 /**
+ * A month's first and last day, `YYYY-MM-DD`: the window the month's calendar, its seed and its
+ * seasons are read for. `Date.UTC(year, month, 0)` is the zeroth day of the next month, which gets
+ * February and a leap year right, and UTC keeps a midnight DST jump from dropping a day.
+ */
+export function parkCalendarMonthRange({ year, month }: ParkCalendarMonth): {
+  from: string;
+  to: string;
+} {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  return { from: `${year}-${pad(month)}-01`, to: `${year}-${pad(month)}-${pad(lastDay)}` };
+}
+
+/**
  * Parse the optional `[[...date]]` catch-all into a month. `null` month means the hub; `'invalid'`
  * means segments that were there and wrong, a 404 rather than a silent fall back to the hub (which
  * would put the same content on unbounded URLs). `padded` flags a `/2026/09` that should 308 to

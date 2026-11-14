@@ -14,17 +14,15 @@ import {
   PartyPopper,
   Sparkles,
   Ticket,
-  X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { formatClockTime, formatHoursRange } from '@/lib/utils/intl-format';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { Temp } from '@/components/common/unit-display';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
+import { Sheet } from '@/components/ui/sheet';
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import {
   climateChips,
@@ -62,7 +60,7 @@ import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
 import { oneFullStop } from '@/lib/utils/metadata';
 import { useHopperWord, useResortWord } from './plan-ticket-words';
-import { PLAN_WIDE_QUERY } from './plan-setup';
+import { PlanSheetContent } from './plan-sheet';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { useAreaName, useBaseName } from './plan-place-words';
 import { MOVE_INK, MoveIcon, useMoveWords } from './plan-stay-band';
@@ -102,59 +100,31 @@ export function PlanDaySheet({
 }) {
   const t = useTranslations('tripPlanner');
   const { locale } = usePlanContext();
-  const wide = useMediaQuery(PLAN_WIDE_QUERY);
   const parksOf = useDayParks();
 
   return (
     <Sheet open={day !== null} onOpenChange={(open) => !open && onClose()}>
       {day && (
-        <SheetContent
-          side={wide ? 'right' : 'bottom'}
-          hideClose
-          onCloseAutoFocus={(event) => {
-            if (!returnFocus) return;
-            event.preventDefault();
-            returnFocus();
-          }}
-          className={cn('gap-0 p-0', wide ? 'w-full sm:max-w-md' : 'max-h-[90svh] rounded-t-2xl')}
+        <PlanSheetContent
+          kicker={formatParkDay(locale, day.date, {
+            weekday: 'long',
+            day: 'numeric',
+            month: 'long',
+          })}
+          title={day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
+          onClose={onClose}
+          returnFocus={returnFocus}
         >
-          <div className="border-border/60 flex items-start gap-2 border-b px-4 py-2">
-            <div className="flex min-w-0 flex-1 flex-col py-1.5">
-              <SheetDescription className="text-muted-foreground text-xs">
-                {formatParkDay(locale, day.date, {
-                  weekday: 'long',
-                  day: 'numeric',
-                  month: 'long',
-                })}
-              </SheetDescription>
-              <SheetTitle className="text-base leading-snug">
-                {day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
-              </SheetTitle>
-            </div>
-            <button
-              type="button"
-              onClick={onClose}
-              aria-label={t('setup.close')}
-              className={cn(
-                'hover:bg-accent flex size-11 shrink-0 items-center justify-center rounded-md',
-                PLAN_FOCUS
-              )}
-            >
-              <X className="size-5" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4">
-            <DayDetails
-              key={day.date}
-              day={day}
-              plan={plan}
-              calendar={calendar}
-              onToggleLock={onToggleLock}
-              onSwap={onSwap}
-              onPlanDay={onPlanDay}
-            />
-          </div>
-        </SheetContent>
+          <DayDetails
+            key={day.date}
+            day={day}
+            plan={plan}
+            calendar={calendar}
+            onToggleLock={onToggleLock}
+            onSwap={onSwap}
+            onPlanDay={onPlanDay}
+          />
+        </PlanSheetContent>
       )}
     </Sheet>
   );
@@ -507,7 +477,16 @@ function DayDetails({
           <ul className="divide-border/60 divide-y">
             {candidates.map((other) => {
               const preview = swapPreview(calendar, day, other, timeZone);
-              const what = other.kind === 'rest' ? t('day.rest') : name(other.parks[0]?.slug ?? '');
+              // What the swap does, not what the other day holds now: "rest day +1 min" read as if a
+              // rest day cost a minute.
+              const mine = day.parks[0]?.slug;
+              const theirs = other.parks[0]?.slug;
+              const what =
+                other.kind === 'rest' && mine
+                  ? t('swap.moveThere', { park: name(mine), date: short(day.date) })
+                  : day.kind === 'rest' && theirs
+                    ? t('swap.takeOver', { park: name(theirs), date: short(day.date) })
+                    : t('swap.trade', { park: name(theirs ?? '') });
               const cost =
                 preview.kind === 'closed'
                   ? t('swap.closed', { park: name(preview.slug) })
@@ -530,7 +509,7 @@ function DayDetails({
                     )}
                   >
                     <span className="w-24 shrink-0 tabular-nums">{short(other.date)}</span>
-                    <span className="min-w-0 flex-1 truncate">{what}</span>
+                    <span className="min-w-0 flex-1">{what}</span>
                     <span className="shrink-0 font-medium tabular-nums">{cost}</span>
                     {preview.kind === 'minutes' && preview.short && (
                       <span className="text-crowd-ink-high w-full pl-27 text-xs">

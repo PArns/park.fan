@@ -12,6 +12,7 @@ import { Precip, Temp } from '@/components/common/unit-display';
 import { formatWindow } from '@/lib/trip-regions/hub-data';
 import {
   isTripRegionMonthInRange,
+  tripMonthRange,
   tripRegionMonthHref,
   tripRegionPath,
 } from '@/lib/trip-regions/paths';
@@ -82,10 +83,6 @@ export function climatePeriod(period: string): string {
 
 const day = (locale: string, date: string) =>
   formatParkDay(locale, date, { day: 'numeric', month: 'long' });
-
-/** A month's last day, as a date's day part. */
-const monthEnd = (month: TripMonth) =>
-  String(new Date(Date.UTC(month.year, month.month, 0)).getUTCDate());
 
 /** Level 0: the three windows as cards, each with its details and a link into the planner. */
 export async function WindowCards({
@@ -413,7 +410,8 @@ export async function MonthRows({
       <ol className="divide-border/70 divide-y border-y">
         {rows.map((row) => {
           const name = monthName.format(new Date(Date.UTC(row.month.year, row.month.month - 1, 1)));
-          const storm = stormCodeIn(`${row.key}-01`, `${row.key}-${monthEnd(row.month)}`, weather);
+          const { from, to } = tripMonthRange(row.month);
+          const storm = stormCodeIn(from, to, weather);
           const data = row.data;
           const linkable = isTripRegionMonthInRange(row.month, current);
           const heading = (

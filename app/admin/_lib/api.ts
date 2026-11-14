@@ -118,7 +118,8 @@ export const adminKeys = {
   parkAttractions: (id: string, params?: Record<string, unknown>) =>
     ['admin', 'park', id, 'attractions', params ?? {}] as const,
   attraction: (id: string) => ['admin', 'attraction', id] as const,
-  seasons: (params?: Record<string, unknown>) => ['admin', 'seasons', params ?? {}] as const,
+  seasons: (params?: Record<string, unknown>) =>
+    params ? (['admin', 'seasons', params] as const) : (['admin', 'seasons'] as const),
   history: (params?: Record<string, unknown>) => ['admin', 'history', params ?? {}] as const,
   users: ['admin', 'users'] as const,
   sessions: ['admin', 'sessions'] as const,

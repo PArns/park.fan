@@ -99,9 +99,37 @@ by hand: change the comment in the code and re-run the script. -->
 - `mergeSearchHits` _function_: Hits from the site's fuzzy search and from the admin's own lookup as one list, ranked the way the site ranks.
 - `withFuzzyMatches` _function_: `matched` plus the entries of `pool` the fuzzy search found (`ids`, in its order) and the plain match missed, so "phantsialand" still finds Phantasialand in a loaded list.
 
+### [`_lib/seasons.ts`](../../app/admin/_lib/seasons.ts)
+
+- `seasonFiltersFrom` _function_: The filters an address asks for. Without `year` the list opens on the current one, which is the question asked most („what is on file for Halloween this year“).
+- `seasonFilterQuery` _function_: The address query for a set of filters, the inverse of `seasonFiltersFrom`.
+- `seasonListPath` _function_: The proxy path of `GET seasons` for a set of filters.
+- `isRealDay` _function_: Whether a string is a `YYYY-MM-DD` day that exists: `2026-02-30` is not one.
+- `weekdayDates` _function_: Every day of a range of real days that falls on `weekday` (0 Sunday to 6 Saturday).
+- `datesOutsideRange` _function_: The picked days that lie outside the range, which the API refuses.
+- `uniqueDays` _function_: A sorted list of distinct days.
+- `parseSeasonDates` _function_: The days in a pasted text, as a park's calendar or a spreadsheet lists them: `2026-10-03` or `3.10.2026`, separated by spaces, commas, semicolons or lines. What is not a real day is returned as written, so the form can name it.
+- `formatSeasonRange` _function_: A range as a person would write it, or the raw values while it is not one yet: a cleared `<input type="date">` reports `''`.
+- `rangeDays` _function_: Every day of a range of real days, both ends included; none while it is not one.
+- `seasonDraft` _function_: The draft of a stored season, or of a new one starting on `today`.
+- `parseSeasonPrice` _function_: A price as typed, in either notation: the people using this admin type German, so `53,50` is the expected input. `'invalid'` rather than null for text that is neither empty nor a number, because the two must not save the same way.
+- `seasonBody` _function_: The whole body of `POST parks/:id/seasons`: every field, an empty optional one as null.
+- `seasonPatch` _function_: The `PATCH seasons/:id` body of an edit: the fields that changed, and null for one that was emptied, which the API clears. Left out, the API would keep the stored value.
+- `seasonProblems` _function_: The API's checks on a season, in German at the field each belongs to, so the form names a problem while it is typed instead of after a 400. Empty when the draft would save.
+- `toDateTimeInput` _function_: An ISO time as a `datetime-local` value in the browser's zone, or empty.
+- `fromDateTimeInput` _function_: A `datetime-local` value, read in the browser's zone, as ISO; empty stays empty.
+- `SEASON_LIMITS` _const_: The API's bounds on one season: characters for the texts, entries for `dates`.
+- `SEASON_KIND_LABELS` _const_: What each kind is called on screen, in the order the editor offers them.
+- `SEASON_STATUS_LABELS` _const_: What each status is called on screen; `announced` is the API's default.
+- `SEASON_KIND_OPTIONS` _const_: The kinds as select options.
+- `SEASON_STATUS_OPTIONS` _const_: The statuses as select options.
+- `SEASON_LIST_LIMIT` _const_: How many seasons one request asks for: the API's most.
+- Types: `SeasonFilters`, `SeasonDraft`, `SeasonField`, `SeasonWriteBody`
+
 ### [`_lib/types.ts`](../../app/admin/_lib/types.ts)
 
-- Types: `CuratedFieldType`, `CuratedField`, `CuratedFieldSpec`, `AuditEntry`, `AdminParkListItem`, `AdminParkDetail`, `AdminAttractionListItem`, `RideProfile`, `RideMeasurements`, `AdminAttractionDetail`, `ParkSeasonKind`, `ParkSeasonStatus`, `ParkSeason`, `CurationResponse`, `AdminSessionInfo`, `AdminOverview`
+- Types: `CuratedFieldType`, `CuratedField`, `CuratedFieldSpec`, `AuditEntry`, `AdminParkListItem`, `AdminParkDetail`, `AdminAttractionListItem`, `RideProfile`, `RideMeasurements`, `AdminAttractionDetail`, `ParkSeason`, `CurationResponse`, `AdminSessionInfo`, `AdminOverview`
+- Re-exports: `@/lib/api/types`
 
 ### [`_lib/upload-transport.ts`](../../app/admin/_lib/upload-transport.ts)
 
@@ -127,6 +155,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`_lib/use-local-preference.ts`](../../app/admin/_lib/use-local-preference.ts)
 
 - `useLocalPreference` _hook_: Returns a string preference kept in localStorage and its setter. The server and a failed read give `defaultValue`; a change in another admin tab updates this one too.
+
+### [`_lib/use-park-catalog.ts`](../../app/admin/_lib/use-park-catalog.ts)
+
+- `useParkCatalog` _hook_: Every park, under the key of the parks page's unfiltered list, so a park picker opened anywhere in the admin asks once and a page that already holds the list costs nothing. `enabled: false` reads the cache without asking.
+- `parkCatalogOptions` _function_: The parks as picker options: the name, town and country as a hint, and the slug to match on.
 
 ### [`_lib/works-periods.ts`](../../app/admin/_lib/works-periods.ts)
 
@@ -199,6 +232,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `Segmented` _component_: A row of toggle buttons with one pressed, the admin's switch between a few views of the same data: a window, a language, a metric. The label names the group for a screen reader.
 - `Select` _component_: A select on the installed popover with an explicit empty option, since choosing nothing is how an editor withdraws a correction on a curated enum.
 - `SearchSelect` _component_: A select whose list is filtered as you type, for lists too long to scroll (a hundred parks, a park's seventy rides). Matching ignores case and accents and also reads `keywords`; arrows, Enter and Escape work as in any combobox.
+- `MultiSearchSelect` _component_: Several values picked from a list too long for `ToggleChips` (a hundred parks, a park's seventy rides): each picked value is a chip that removes itself, and a `SearchSelect` adds the next.
 - `MonthPicker` _component_: The twelve months as a grid, because a season is a shape: April to October reads as a block, and an artefact like `[1,2,3,4,12]`, a recording window that began in December, shows at once.
 - `useFieldId` _hook_: A labelled input id, for the many places a Field wraps one control.
 - `FIELD_CLASS` _const_: The same look for a bare `<input>` or `<textarea>`, exported so no call site keeps its own copy. Padded rather than fixed-height, because the textareas carry their own `min-h-*`.
@@ -224,6 +258,10 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/curated-fields.tsx`](../../app/admin/_ui/curated-fields.tsx)
 
 - `CuratedFieldsPanel` _component_: The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast.
+
+### [`_ui/day-calendar.tsx`](../../app/admin/_ui/day-calendar.tsx)
+
+- `DayCalendar` _component_: Many days picked inside a range, every month of it at once: two or three months side by side as the space allows, small cells, a picked day a filled pill, the padding days of a month left blank so no day shows twice.
 
 ### [`_ui/entity-media.tsx`](../../app/admin/_ui/entity-media.tsx)
 
@@ -859,10 +897,6 @@ Route `/admin/parks/[id]` (page).
 
 - `PhotoCoverage` _component_: The rides in this park that have no picture, looked up in the media index in one request; the ride list is already on screen, so it costs no API call.
 
-### [`parks/_components/season-editor.tsx`](../../app/admin/parks/_components/season-editor.tsx)
-
-- `SeasonList` _component_: A park's seasons, newest first, with the dialog to add or edit one when `canEdit`.
-
 ### [`parks/page.tsx`](../../app/admin/parks/page.tsx)
 
 Route `/admin/parks` (page).
@@ -893,11 +927,17 @@ Route `/admin/retirement` (page).
 
 - `default (RetirementPage)` _component_
 
+### [`seasons/_components/season-editor.tsx`](../../app/admin/seasons/_components/season-editor.tsx)
+
+- `SeasonRow` _component_: One season as a list shows it: name, status, range, hours, price, rides and source, with the button that opens the form. `showPark` leads with the park's name and links to it, for the list across every park.
+- `SeasonList` _component_: A park's seasons, newest first, each opening the form; editors also get „Saison anlegen“.
+- `SeasonEditor` _component_: The form of one season, or of a new one: every field the API takes, its checks run while typing, and the API's own refusal shown above the buttons. A new season without `parkId` asks for its park first. Read-only below `editor`.
+
 ### [`seasons/page.tsx`](../../app/admin/seasons/page.tsx)
 
 Route `/admin/seasons` (page).
 
-- `default (SeasonsPage)` _component_
+- `default (SeasonsPage)` _component_: Every park's seasons in one place, filtered by year, kind, status, trip region, park and whether they run today, with the form to add, change or delete one. The filters are the address, so a reload or a shared link opens the same list.
 
 ### [`system/page.tsx`](../../app/admin/system/page.tsx)
 
@@ -1033,6 +1073,10 @@ Route `/admin/tickets` (page).
 
 - `TrafficView` _component_: `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from the site's own cookieless counter, worked like Umami's: pressing a value in any panel filters the whole page by it, and the filters are chips …
 
+### [`traffic/_components/trip-planner-view.tsx`](../../app/admin/traffic/_components/trip-planner-view.tsx)
+
+- `TripPlannerView` _component_: `/admin/traffic/trip-planner`: the multi-day trip planner and the region hubs, the counterpart of the Tagesplaner page.
+
 ### [`traffic/_components/unsupported-note.tsx`](../../app/admin/traffic/_components/unsupported-note.tsx)
 
 - `UnsupportedNote` _component_: What a report says when the filters leave it nothing to count (page views and events under a filter on how a visit began, events under a browser language): the reason in a sentence and the way out, instead of an error from a request the …
@@ -1146,6 +1190,13 @@ Route `/admin/traffic/search` (page).
 Route `/admin/traffic/seo` (page).
 
 - `default (SeoPage)` _component_: What search engines and AI assistants send and what Google reports: the queries and pages from the Search Console, the pages visits begin on, the ones gaining and losing, the addresses that 404 and the parks and rides no search visit …
+- `metadata` _const_
+
+### [`traffic/trip-planner/page.tsx`](../../app/admin/traffic/trip-planner/page.tsx)
+
+Route `/admin/traffic/trip-planner` (page).
+
+- `default (TripPlannerTrafficPage)` _component_: The admin's dashboard of the multi-day trip planner and the region hubs. The view reads the window and language from the address, under a `Suspense` boundary.
 - `metadata` _const_
 
 ### [`users/page.tsx`](../../app/admin/users/page.tsx)

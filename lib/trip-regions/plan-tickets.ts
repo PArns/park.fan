@@ -1,4 +1,6 @@
+import { getNumberFormat } from '@/lib/utils/intl-format';
 import { addDays } from '@/lib/utils/park-day';
+import { getCountryName } from '@/lib/utils/region-names';
 import {
   MAX_TICKETS,
   MAX_TRIP_DAYS,
@@ -15,7 +17,7 @@ import type {
   PlanTicketSuggestion,
 } from './plan';
 import type { TripTicketStep } from './registry';
-import type { TicketLink, TicketProduct, TripRegion } from './types';
+import type { TicketLink, TicketProduct, TicketStore, TripRegion } from './types';
 
 /**
  * Tickets in the trip planner: the region's catalog read for the step (which products a resort
@@ -118,18 +120,44 @@ export function ticketHomeMarket(
   return region.ticketMarkets?.home ?? step.homeMarket;
 }
 
+/** The shop a ticket or a purchase link is labelled with: a UK shop, or another one abroad. */
+export type TicketMarketLabel = 'uk' | 'intl';
+
 /**
- * Whether an entry's ticket is sold abroad only, which its tag says ("Sold outside the US"). The
- * catalog's `markets` lack the region's home market (`ticketHomeMarket`) for those; no residency
- * rule is claimed, since the sellers' pages state none.
+ * Where a ticket or a link is sold when the operators' own shops (`homeMarket`) do not sell it, for
+ * its label ("UK shop"); `null` otherwise. A label and never a filter: a visitor may buy from any
+ * shop, so every product and link stays on offer, and no residency rule is claimed, since the
+ * catalog has no field for one.
  */
+export function marketLabel(
+  markets: readonly string[] | undefined,
+  homeMarket: string
+): TicketMarketLabel | null {
+  if (!markets?.length || markets.includes(homeMarket)) return null;
+  return markets.includes('uk') ? 'uk' : 'intl';
+}
+
+/** The label of an entry's ticket in the step: its first product's {@link marketLabel}. */
 export function entryMarket(
   entry: TicketEntry,
   catalog: TicketCatalog,
   homeMarket: string
-): 'intl' | null {
-  const markets = catalog.get(entry.products[0])?.markets ?? [];
-  return markets.includes(homeMarket) ? null : 'intl';
+): TicketMarketLabel | null {
+  return marketLabel(catalog.get(entry.products[0])?.markets, homeMarket);
+}
+
+/**
+ * The label beside a purchase link: its own `markets`, and on the official link the product's,
+ * since the operator's shop for a UK ticket is its UK shop. A link to a country store has none:
+ * its name already says the country ({@link ticketStoreName}).
+ */
+export function linkMarket(
+  link: Pick<TicketLink, 'markets' | 'official' | 'store'>,
+  productMarkets: readonly string[] | undefined,
+  homeMarket: string
+): TicketMarketLabel | null {
+  if (link.store && !link.official) return null;
+  return marketLabel(link.markets ?? (link.official ? productMarkets : undefined), homeMarket);
 }
 
 // ── A product's rules ─────────────────────────────────────────────────────────
@@ -543,9 +571,8 @@ export function adoptSuggestions(
 }
 
 /**
- * "From the UK or Ireland? The 14-day tickets fit this trip": the region's 14-day tickets sold
- * abroad (Disney's and Universal's) for the resorts a long trip's suggestions name, without a
- * first day, so the plan picks it.
+ * "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the
+ * resorts a long trip's suggestions name, without a first day, so the plan picks it.
  */
 export function longStayTickets(
   step: TripTicketStep,
@@ -726,26 +753,38 @@ export function plannedVisits(days: readonly Pick<PlanDay, 'parks'>[], slug: str
 // ── Where to buy ──────────────────────────────────────────────────────────────
 
 /**
+ * The visitor's country from the browser's languages: the region of the first one, upper case
+ * (`en-IE` → `IE`), `null` without one.
+ */
+export function visitorCountry(languages: readonly string[]): string | null {
+  const region = languages[0]
+    ?.split('-')
+    .slice(1)
+    .find((part) => /^[a-z]{2}$/i.test(part));
+  return region ? region.toUpperCase() : null;
+}
+
+/**
  * The visitor's market from the browser's languages: `us` or `uk` where the first one names the
  * US, Great Britain or Ireland, `intl` for any other region, `null` without one. Only the order of
  * the purchase links follows it; nothing is hidden or claimed.
  */
 export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl' | null {
-  const region = languages[0]?.split('-')[1]?.toUpperCase();
+  const region = visitorCountry(languages);
   if (!region) return null;
   if (region === 'US') return 'us';
   return region === 'GB' || region === 'IE' ? 'uk' : 'intl';
 }
 
 /**
- * A product's purchase links in the order a visitor sees them: those for the visitor's locale or
- * market first, the rest after, each group in the admin's order, which is the display order. The
- * official link keeps its place. Without `links` (an older answer) the official `shopUrl` stands
- * alone.
+ * A product's purchase links in the order a visitor sees them: the store of the visitor's own
+ * country first, then those for their locale or market, the rest after, each group in the admin's
+ * order, which is the display order. The official link keeps its place. Without `links` (an older
+ * answer) the official `shopUrl` stands alone.
  */
 export function orderTicketLinks(
   source: { links?: readonly TicketLink[]; shopUrl?: string },
-  visitor: { locale: string; market: string | null },
+  visitor: { locale: string; market: string | null; country?: string | null },
   officialSeller: string
 ): TicketLink[] {
   const links: TicketLink[] = source.links?.length
@@ -753,10 +792,38 @@ export function orderTicketLinks(
     : source.shopUrl
       ? [{ seller: officialSeller, url: source.shopUrl, official: true, sponsored: false }]
       : [];
-  const forVisitor = (link: TicketLink) =>
-    Boolean(link.locales?.includes(visitor.locale)) ||
-    Boolean(visitor.market && link.markets?.includes(visitor.market));
-  return [...links.filter(forVisitor), ...links.filter((link) => !forVisitor(link))];
+  const tier = (link: TicketLink) => {
+    if (visitor.country && link.store?.country === visitor.country) return 0;
+    const forVisitor =
+      Boolean(link.locales?.includes(visitor.locale)) ||
+      Boolean(visitor.market && link.markets?.includes(visitor.market));
+    return forVisitor ? 1 : 2;
+  };
+  return [0, 1, 2].flatMap((rank) => links.filter((link) => tier(link) === rank));
+}
+
+/**
+ * A country store as its link names it in the visitor's language: the country's short name and
+ * the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
+ */
+export function ticketStoreName(
+  store: TicketStore,
+  locale: string
+): { country: string; currency: string } {
+  let currency = store.currency;
+  try {
+    currency =
+      getNumberFormat(locale, {
+        style: 'currency',
+        currency: store.currency,
+        currencyDisplay: 'narrowSymbol',
+      })
+        .formatToParts(0)
+        .find((part) => part.type === 'currency')?.value ?? store.currency;
+  } catch {
+    // An unknown currency code keeps its letters.
+  }
+  return { country: getCountryName(store.country, locale, 'short'), currency };
 }
 
 /**

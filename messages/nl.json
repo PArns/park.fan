@@ -1003,6 +1003,7 @@
       "kind": {
         "halloween": "Halloween",
         "christmas": "Kerstperiode",
+        "winter": "Winterseizoen",
         "summer_nights": "Zomeravonden",
         "special_event": "Speciaal evenement",
         "opening": "Seizoensopening",
@@ -3474,7 +3475,10 @@
       "same": "zelfde piekwachttijd",
       "more": "+{minutes} min. gemiddeld",
       "less": "−{minutes} min. gemiddeld",
-      "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder"
+      "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder",
+      "moveThere": "{park} op deze dag, {date} wordt een rustdag",
+      "takeOver": "{park} op {date}, deze dag wordt een rustdag",
+      "trade": "ruilen met {park}"
     },
     "keep": {
       "addAll": "Naar de dagplanner",
@@ -3713,7 +3717,13 @@
       },
       "links": {
         "title": "Prijzen en tickets",
-        "official": "{seller} (officiële winkel)"
+        "official": "{seller} (officiële winkel)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "De prijzen verschillen per land van de winkel. Vergelijk ze allemaal voordat je koopt."
+      },
+      "market": {
+        "uk": "Britse winkel",
+        "intl": "Internationale winkel"
       },
       "partner": {
         "label": "Partnerlink",
@@ -4005,9 +4015,6 @@
             "universal": "park-to-park"
           },
           "mixNote": "Elk ticket houdt zijn eigen data. Waar beide geldig zijn, mengt het plan Disney- en Universal-dagen alleen als dat minstens 3 min per attractie scheelt.",
-          "market": {
-            "intl": "Verkocht buiten de VS"
-          },
           "entry": {
             "wdw-dated": {
               "title": "Ticket met datum, 1 tot 10 dagen",
@@ -4131,9 +4138,9 @@
           },
           "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
           "longStay": {
-            "line": "Buiten de VS zijn er tickets voor 14 dagen voor Disney en Universal, ook als Combo Ticket.",
+            "line": "Britse winkels verkopen tickets voor 14 dagen voor Disney en Universal, ook als Combo Ticket.",
             "plan": "Daarmee plannen",
-            "detail": "De tickets voor 14 dagen in de winkels van de parken buiten de VS:"
+            "detail": "De tickets voor 14 dagen in de Britse winkels van de parken:"
           },
           "mixing": {
             "used": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen: ongeveer {minutes} min minder per attractie dan apart.",
@@ -4324,9 +4331,6 @@
           },
           "hopperName": {
             "disney": "Park Hopper"
-          },
-          "market": {
-            "intl": "Verkocht buiten de VS"
           },
           "entry": {
             "dlr-multi-day": {
@@ -4673,9 +4677,6 @@
             "universal-studios-japan": "USJ",
             "fuji-q-highland": "Fuji-Q",
             "legoland-japan": "LEGOLAND"
-          },
-          "market": {
-            "intl": "Buiten Japan verkocht"
           },
           "entry": {
             "tdr-1-day": {

@@ -10,6 +10,11 @@ modifier, one printable character, not Space and not `/`; `/` belongs to the sit
 if (!isPageTypedKey(e)) return;
 ```
 
+- **`/` is the one exception.** It opens the site search also while a link, button, pill or grid
+  cell has focus, since none of them uses it: after a click on a hub's filter chip or a header menu
+  link the shortcut did nothing until the visitor clicked the page. It still waits in a field, an
+  editable element, a dialog, a menu or a listbox, where `/` is text or the control's own key
+  (`isSearchShortcut`).
 - **Escape belongs to the thing that has focus.** A global Escape that clears a filter also clears
   it when the visitor closes a dialog above it, so `useAttractionFilter` clears the ride filter only
   when its own field or nothing is focused.

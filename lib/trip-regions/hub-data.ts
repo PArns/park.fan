@@ -1,6 +1,7 @@
-import { addDays } from '@/lib/utils/park-day';
+import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
+import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { shownWait, shownWaitOn } from './plan-week';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
@@ -280,26 +281,25 @@ export function isWeekend(date: string): boolean {
   return dow === 0 || dow === 6;
 }
 
+/** The fields each of {@link formatHubDate}'s styles prints. */
+const HUB_DATE_STYLES = {
+  short: { weekday: 'short', day: 'numeric', month: 'short' },
+  long: { weekday: 'long', day: 'numeric', month: 'long' },
+  day: { day: 'numeric' },
+  weekday: { weekday: 'short' },
+  dayMonth: { day: 'numeric', month: 'short' },
+} satisfies Record<string, Intl.DateTimeFormatOptions>;
+
 /**
- * A plain date as the hub prints it, anchored at noon UTC so no zone moves it: `short` "Thu 12
- * Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu".
+ * A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov",
+ * `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
  */
 export function formatHubDate(
   date: string,
   locale: string,
-  style: 'short' | 'long' | 'day' | 'weekday' | 'dayMonth' = 'short'
+  style: keyof typeof HUB_DATE_STYLES = 'short'
 ): string {
-  const options: Intl.DateTimeFormatOptions =
-    style === 'long'
-      ? { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' }
-      : style === 'day'
-        ? { day: 'numeric', timeZone: 'UTC' }
-        : style === 'weekday'
-          ? { weekday: 'short', timeZone: 'UTC' }
-          : style === 'dayMonth'
-            ? { day: 'numeric', month: 'short', timeZone: 'UTC' }
-            : { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' };
-  return getDateTimeFormat(locale, options).format(new Date(`${date}T12:00:00Z`));
+  return formatParkDay(locale, date, HUB_DATE_STYLES[style]);
 }
 
 /** A month's name with its year, "December 2026", in the reader's language. */
@@ -365,9 +365,6 @@ export interface EventLane {
   dates: string[];
 }
 
-/** Season kinds that are no event: a closure closes the day, an opening is the park's season. */
-const NOT_AN_EVENT = new Set(['closure', 'maintenance', 'opening']);
-
 /**
  * The lanes under the matrix: each curated season that runs on a day of the window (party nights,
  * festivals, Universal's holidays as `expected`), one lane per name even where several parks run
@@ -376,7 +373,7 @@ const NOT_AN_EVENT = new Set(['closure', 'maintenance', 'opening']);
 export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] = []): EventLane[] {
   const lanes = new Map<string, EventLane>();
   for (const season of calendar.seasons) {
-    if (NOT_AN_EVENT.has(season.kind) || season.status === 'cancelled') continue;
+    if (!isSeasonEvent(season)) continue;
     const listed = calendar.days
       .filter((d) => d.parks[season.parkSlug]?.seasons?.includes(season.id))
       .map((d) => d.date);
@@ -431,11 +428,16 @@ export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] 
   return [...seasons, ...breakLanes];
 }
 
-/** The legs between two places, in either direction (`hotel:<key>` or a park slug). */
-export function findLeg(region: TripRegion, a: string, b: string): TripLeg | undefined {
-  return region.travel.legs.find(
-    (leg) => (leg.from === a && leg.to === b) || (leg.from === b && leg.to === a)
-  );
+/**
+ * The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each
+ * pair once, both directions averaged, so either order finds it.
+ */
+export function findLeg<L extends { from: string; to: string }>(
+  legs: readonly L[],
+  a: string,
+  b: string
+): L | null {
+  return legs.find((l) => (l.from === a && l.to === b) || (l.from === b && l.to === a)) ?? null;
 }
 
 /** The door-to-door minutes of a drive: to the car park, then the curated rest of the way. */
@@ -660,12 +662,13 @@ export function slimRegion(region: TripRegion): TripRegion {
 
 /**
  * Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr –
- * 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
+ * 6 May"): `formatParkDayRange` with short months.
  */
 export function formatDateRange(from: string, to: string, locale: string): string {
-  const format = getDateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' });
-  const a = new Date(`${from}T12:00:00Z`);
-  const text = from === to ? format.format(a) : format.formatRange(a, new Date(`${to}T12:00:00Z`));
+  const text =
+    from === to
+      ? formatParkDay(locale, from, { day: 'numeric', month: 'short' })
+      : formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
   // Node's ICU puts thin spaces around the dash and a browser's plain ones; the server-rendered
   // text has to be the one the browser renders, or hydration fails.
   return text.replace(/[\u2009\u202f]/g, ' ');

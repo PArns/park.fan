@@ -29,6 +29,7 @@ import {
   mergeTicketProblems,
   moveItem,
   setOfficialTicketLink,
+  withTicketLinkStore,
   setTicketDays,
   setTicketWindow,
   strayTicketProblems,
@@ -426,7 +427,7 @@ export function TicketEditor({
               <Field
                 label="Märkte"
                 error={under('markets')}
-                hint="Wem das Ticket verkauft wird. Der Vorschlag ohne Tickets nimmt nur Produkte für die USA."
+                hint="Wo das Ticket verkauft wird. Die Website zeigt es als Hinweis („UK-Shop“), kein Filter: Der Vorschlag ohne Tickets nimmt jedes Produkt mit Vorschlagsrang."
               >
                 <ToggleChips
                   label="Märkte"
@@ -836,6 +837,7 @@ export function TicketEditor({
                             `links[${index}].url`,
                             `links[${index}].markets`,
                             `links[${index}].locales`,
+                            `links[${index}].store`,
                           ])
                         : under(`links[${index}].${field}`)
                     }
@@ -1233,7 +1235,7 @@ function LinkRow({
   clicks: number | null;
   clickState: TicketClickState;
   /** The problems of one field of the link, or with `null` of the link as a whole. */
-  error: (field: 'seller' | 'url' | 'markets' | 'locales' | null) => string | null;
+  error: (field: 'seller' | 'url' | 'markets' | 'locales' | 'store' | null) => string | null;
   onChange: (link: TicketLink) => void;
   onOfficial: () => void;
   onMove: (to: number) => void;
@@ -1305,7 +1307,11 @@ function LinkRow({
         </p>
       )}
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <Field label="Für Märkte" error={error('markets')} hint="Leer: für alle.">
+        <Field
+          label="Markt"
+          error={error('markets')}
+          hint="Wo der Händler verkauft, als Hinweis am Link. Leer: überall."
+        >
           <ToggleChips
             label={`Link ${index + 1}: Märkte`}
             options={MARKET_OPTIONS}
@@ -1322,6 +1328,36 @@ function LinkRow({
           />
         </Field>
       </div>
+      <Field
+        label="Länder-Shop"
+        error={error('store')}
+        hint="Land und Währung des Shops, etwa IE und EUR: Die Website nennt den Link „Attraction Tickets · Irland (€)“. Leer: Händler mit einem Shop."
+      >
+        <div className="flex gap-2">
+          <TextInput
+            aria-label={`Link ${index + 1}: Land des Shops`}
+            value={link.store?.country ?? ''}
+            maxLength={2}
+            autoComplete="off"
+            placeholder="GB"
+            className="w-20 uppercase"
+            onChange={(event) =>
+              onChange(withTicketLinkStore(link, { country: event.target.value }))
+            }
+          />
+          <TextInput
+            aria-label={`Link ${index + 1}: Währung des Shops`}
+            value={link.store?.currency ?? ''}
+            maxLength={3}
+            autoComplete="off"
+            placeholder="GBP"
+            className="w-24 uppercase"
+            onChange={(event) =>
+              onChange(withTicketLinkStore(link, { currency: event.target.value }))
+            }
+          />
+        </div>
+      </Field>
       {rest && <p className="text-destructive text-xs">{rest}</p>}
     </li>
   );

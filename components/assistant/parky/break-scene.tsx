@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils';
 import type { ParkyOutfit } from '@/lib/assistant/parky/look';
 import type { ParkBreakScene } from '@/lib/utils/park-break';
 import {
@@ -11,12 +10,15 @@ import {
   ZED,
   blue,
   blush,
+  cabinsOnRim,
   gold,
   green,
   ink,
+  wheelSpokes,
 } from './drawing';
 import { FLAKE, ParkyLookHat, ParkyLookWear, ParkySnowman, ice } from './looks';
 import { ParkyWheel } from './wheel';
+import { HolidaySceneSvg } from './holiday-parky';
 
 /** What Parky wears in each picture: the bobble hat in winter, the scarf until spring. */
 const OUTFIT: Record<ParkBreakScene, ParkyOutfit> = {
@@ -166,10 +168,7 @@ const TULIPS = [
 
 /** The Ferris wheel asleep behind the hills: its hub, its rim and its eight cabins. */
 const WHEEL = { x: 66, y: 76, r: 36 };
-const WHEEL_CABINS = Array.from({ length: 8 }, (_, i) => ({
-  x: +(WHEEL.x + WHEEL.r * Math.sin((i * Math.PI) / 4)).toFixed(1),
-  y: +(WHEEL.y - WHEEL.r * Math.cos((i * Math.PI) / 4)).toFixed(1),
-}));
+const WHEEL_CABINS = cabinsOnRim(WHEEL);
 
 /**
  * A wooden sled from the side, in the picture's units: the seat Parky sits on, three struts, the
@@ -355,13 +354,7 @@ export function ParkyBreakScene({
 }) {
   const winter = scene === 'winter';
   return (
-    <svg
-      viewBox="0 0 320 160"
-      preserveAspectRatio="xMaxYMid slice"
-      className={cn('block', className)}
-      aria-hidden="true"
-      focusable="false"
-    >
+    <HolidaySceneSvg className={className}>
       <defs>
         <linearGradient id="parky-break-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" className={SKY[scene][0]} />
@@ -405,12 +398,7 @@ export function ParkyBreakScene({
           strokeWidth="2.2"
         />
         <circle cx={WHEEL.x} cy={WHEEL.y} r={WHEEL.r} strokeWidth="1.8" />
-        <path
-          d={WHEEL_CABINS.slice(0, 4)
-            .map(({ x, y }) => `M${x} ${y}L${2 * WHEEL.x - x} ${2 * WHEEL.y - y}`)
-            .join('')}
-          strokeWidth=".9"
-        />
+        <path d={wheelSpokes(WHEEL, WHEEL_CABINS)} strokeWidth=".9" />
       </g>
       {WHEEL_CABINS.map(({ x, y }) => (
         <g key={`${x} ${y}`}>
@@ -489,6 +477,6 @@ export function ParkyBreakScene({
           />
         ))}
       </g>
-    </svg>
+    </HolidaySceneSvg>
   );
 }
