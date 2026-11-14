@@ -93,7 +93,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-calendar-keys.tsx`](../../components/trip-regions/planner/plan-calendar-keys.tsx)
 
 - `PlanCodeKey` _component_: What the park codes under the dates and in the Month view stand for, „MK Magic Kingdom · AK Animal Kingdom“, in the legend's own look. Only the codes the view shows (`parkCodeKey`), wrapped on a phone rather than folded away.
-- `PlanMonthEvents` _component_: The month's events under the date grid (`monthEvents`): party nights counted, festivals and school breaks with their dates in the month, New Year's Eve once.
+- `PlanMonthEvents` _component_: The month's events under the date grid (`monthEvents`): party nights counted, festivals, school breaks and holidays with their dates in the month, New Year's Eve once.
 
 ### [`planner/plan-context.tsx`](../../components/trip-regions/planner/plan-context.tsx)
 

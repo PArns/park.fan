@@ -57,7 +57,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `dateParties` _function_: The parks whose day guests leave early on a date for a separately ticketed evening, in the region's order: a ticketed evening the API also calls an early close.
 - `datePicks` _function_: Per resort with a choice that date (`resortHasChoice`) the API's pick (`best`, read through the hub's `shortestLines`), with why it won and the resort's party night.
 - `isNewYearsEve` _function_: New Year's Eve: the date alone says it, wherever the region is.
-- `monthEvents` _function_: The month's events for the list under the date grid: the hub's lanes (`eventLanes`) cut to the month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit.
+- `monthEvents` _function_: The month's events for the list under the date grid: the hub's season lanes (`eventLanes`) cut to the month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit, then the school breaks as runs (`breakRuns`, so an unnamed weekend …
 - Types: `DateParty`, `DatePick`, `MonthEvent`
 
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
