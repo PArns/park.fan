@@ -3,7 +3,7 @@ title: 'Disneyland, Universal en San Diego in één reis'
 translationKey: southern-california-trip-guide
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   In Zuid-Californië liggen alleen Disneyland en California Adventure poort aan poort. Naar

@@ -4,11 +4,11 @@ Every landing page is one of three kinds, and the kind decides the head. A fourt
 the concept page ([landing pages](../product/landing-pages.md)) first. The homepage is none of these
 and keeps its own hero.
 
-| Kind               | Pages                                                                                                  | Head                                                  |
-| ------------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------- |
-| Hub                | best time to visit, trip planner, how park.fan works, Fancast, Parky, blog, Orlando, Orlando best time | `LandingHero` (`data-landing-hero="hub"`)             |
-| Tool page          | contribute, news index, compare, glossary index, changelog                                             | `LandingHero variant="compact"` (`="compact"`)        |
-| Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them                         | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
+| Kind               | Pages                                                                                                                      | Head                                                  |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| Hub                | best time to visit, trip planner, how park.fan works, Fancast, Parky, blog, the trip region hubs and their best-time pages | `LandingHero` (`data-landing-hero="hub"`)             |
+| Tool page          | contribute, news index, compare, glossary index, changelog                                                                 | `LandingHero variant="compact"` (`="compact"`)        |
+| Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them                                             | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
 
 The sequence is head, intro, chapters, FAQ, next step, in that order. Hubs run all five; the other
 two kinds run the parts that apply, without reordering them. A trip hub's intro is the key at the
@@ -43,7 +43,8 @@ or `nested` (nearby), because each stands inside a stop whose heading already op
 above (except the English-only changelog) and the English URL of each hub in Chromium, waits for hydration and asserts each point, one
 line per page, exit 1 on any ✗. The kind of each URL is written in the script, not read off the page,
 so a page that lost its head fails instead of passing as another kind; a new landing page joins that
-table in the same pull request. The script's `OPEN` list (printed, not failed) is for an `<h2>`
+table in the same pull request. A live trip region's pages are read from the registry
+(`scripts/lib/trip-region-pages.mjs`), so a region joins the check when it goes live. The script's `OPEN` list (printed, not failed) is for an `<h2>`
 waiting on a design decision; it is empty, and nothing joins it to get a page green. It needs a
 running site: `pnpm build && pnpm start -p <port>`, then
 `pnpm check:landing-pages --base=http://localhost:<port>`.

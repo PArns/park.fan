@@ -83,6 +83,20 @@ export function tripRegionBestTimePath(
 }
 
 /**
+ * A region's hub and every best-time page of it in a locale, locale-relative: the pages that stand
+ * for the region in a search, without its months. IndexNow's static set and the landing-page checks
+ * read them, so a region that goes live joins both.
+ */
+export function tripRegionLandingPaths(region: string, locale: Locale | string): string[] {
+  return [
+    tripRegionPath(region, locale),
+    ...requireTripRegion(region).bestTime.map((page) =>
+      tripRegionBestTimePath(region, locale, page.id)
+    ),
+  ];
+}
+
+/**
  * The address to link a month by: the hub for the current month, whose canonical it is, and the
  * month's own URL for every other, so the site never mints a URL that only canonicals away.
  */

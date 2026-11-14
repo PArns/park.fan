@@ -57,7 +57,7 @@ const ENTRIES: readonly TicketEntry[] = [
 /** Southern California's entry in `TRIP_REGIONS`. */
 export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   slug: 'southern-california',
-  live: false,
+  live: true,
   segments: {
     en: 'california',
     de: 'kalifornien',

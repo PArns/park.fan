@@ -3,7 +3,7 @@ title: 'Disneyland Paris y Parc Astérix: dónde alojarse'
 translationKey: paris-disneyland-asterix-reise
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   Entre los hoteles de Disneyland Paris y los del Parc Astérix hay alrededor de una hora en coche, y

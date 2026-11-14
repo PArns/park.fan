@@ -3,7 +3,7 @@ title: 'Disneyland, Universal et San Diego en un seul voyage'
 translationKey: southern-california-trip-guide
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   En Californie du Sud, seuls Disneyland et California Adventure se font face, porte contre porte.

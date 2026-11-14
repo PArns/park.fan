@@ -3,7 +3,7 @@ title: 'Disneyland Paris et Parc Astérix : où dormir'
 translationKey: paris-disneyland-asterix-reise
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   Entre les hôtels de Disneyland Paris et ceux du Parc Astérix, il faut compter une heure de route,

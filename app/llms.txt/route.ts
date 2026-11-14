@@ -8,12 +8,16 @@ import { agentDocumentHeaders } from '@/lib/agents/http';
 import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { SITE_URL } from '@/i18n/config';
 import { blogFeedUrl } from '@/lib/blog/feed';
+import { tripRegionPath } from '@/lib/trip-regions/paths';
+import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 
 /**
  * `/llms.txt` (llmstxt.org): the one file to read when an agent has the hostname and nothing
  * else. English only, because it is read once, by something that then fetches the pages in its
  * user's language. The park links come from the geo structure, not a typed list, because park
- * slugs get renamed upstream and a file that exists to be followed cannot carry dead links.
+ * slugs get renamed upstream and a file that exists to be followed cannot carry dead links; the
+ * trip region hubs come from the live regions of the registry for the same reason.
  */
 export const dynamic = 'force-static';
 // Rebuilt with the rest of the site; the parks in it change on the order of years.
@@ -28,6 +32,12 @@ function line(label: string, url: string, note: string): string {
 export async function GET(): Promise<Response> {
   const geo = await getGeoStructure(CACHE_TTL.geoSitemap).catch(() => null);
   const featured = extractFeaturedParks(geo, 'en');
+  const tripRegions = await Promise.all(
+    LIVE_TRIP_REGIONS.map(async (region) => {
+      const t = await getRegionTranslations(region.slug, 'nav', 'en');
+      return line(t('calendar'), `${EN}${tripRegionPath(region.slug, 'en')}`, t('calendarHint'));
+    })
+  );
 
   const body = `# park.fan
 
@@ -59,6 +69,7 @@ ${[
     `${EN}/trip-planner`,
     'lay a day out against the forecast: rides on a timeline, transfers checked, no account'
   ),
+  ...tripRegions,
   line('Glossary', `${EN}/glossary`, 'ride types, track elements and the vocabulary of the site'),
   line('Blog', `${EN}/blog`, 'longer pieces, with the wait times in them kept live'),
   line('News', `${EN}/news`, 'short dated notes per park: events, new rides, sales'),

@@ -3,7 +3,7 @@ title: 'Disneyland, Universal und San Diego auf einer Reise'
 translationKey: southern-california-trip-guide
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   In Südkalifornien liegen nur Disneyland und California Adventure Tor an Tor. Bis SeaWorld San

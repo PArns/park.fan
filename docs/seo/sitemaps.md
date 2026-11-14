@@ -153,7 +153,8 @@ either: one pass is about 14 MB and takes 1.4 s warm, 5.4 s cold.
 ### IndexNow submits what moved
 
 `/api/cron/indexnow` (daily 06:00 UTC) submits the catalogue paths whose observed date is within
-`RECENT_DAYS` (2), plus the static high-value set and the blog surfaces. An unreadable or empty
+`RECENT_DAYS` (2), plus the static high-value set (home, how park.fan works, the glossary, each live
+trip region's hub and best-time pages) and the blog surfaces. An unreadable or empty
 snapshot submits everything, and Mondays are a full sweep, so a detector that stopped detecting
 cannot silence the route. `?dry=1` builds the list without submitting it.
 

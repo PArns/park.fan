@@ -852,18 +852,18 @@ check(
   null,
   'an undo names a region slug'
 );
-// Only a region the site has live: a coming one has no hub to open or undo in.
+// Only a region the site has live: any other has no hub to open or undo in.
 check(
   readAssistantAction({
     type: 'trip_set',
-    region: 'japan',
+    region: 'tokyo',
     query: 'from=2027-04-01&to=2027-04-10',
     change: ['route'],
   }),
   null,
   'a trip change for a region not live is refused'
 );
-check(readAssistantAction({ type: 'trip_undo', region: 'japan' }), null, 'and so is its undo');
+check(readAssistantAction({ type: 'trip_undo', region: 'tokyo' }), null, 'and so is its undo');
 check(
   readAssistantAction({
     type: 'trip_set',

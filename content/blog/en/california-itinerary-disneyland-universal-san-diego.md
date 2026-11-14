@@ -3,7 +3,7 @@ title: 'Disneyland, Universal and San Diego in one trip'
 translationKey: southern-california-trip-guide
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   In Southern California only Disneyland and California Adventure sit gate to gate. SeaWorld San

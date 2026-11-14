@@ -3,7 +3,7 @@ title: 'Disneyland Paris en Parc Astérix: waar je overnacht'
 translationKey: paris-disneyland-asterix-reise
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   Tussen de hotels van Disneyland Paris en die van Parc Astérix zit ongeveer een uur rijden, en

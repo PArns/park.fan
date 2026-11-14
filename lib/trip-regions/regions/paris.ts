@@ -23,7 +23,7 @@ const ENTRIES: readonly TicketEntry[] = [
 /** Paris' entry in `TRIP_REGIONS`. */
 export const PARIS: TripRegionConfig = {
   slug: 'paris',
-  live: false,
+  live: true,
   segments: { en: 'paris', de: 'paris', nl: 'paris', fr: 'paris', es: 'paris', it: 'paris' },
   timezone: 'Europe/Paris',
   // Between Disneyland Paris and Parc Astérix.

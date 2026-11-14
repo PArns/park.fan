@@ -3,7 +3,7 @@ title: 'Pretparken in Japan: één reis van Tokio tot Osaka'
 translationKey: japan-freizeitparks-reise
 date: '2026-11-14'
 author: patrick
-mode: draft
+mode: published
 featured: false
 excerpt: >-
   Tokyo Disneyland, DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan liggen in
