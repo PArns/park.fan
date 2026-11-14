@@ -171,9 +171,9 @@ export function seasonKindsIn(days: SeasonDays): SeasonEventKind[] {
  * A day's seasons as the tile marks them: one icon per kind, in `SEASON_EVENT_KINDS` order, quiet
  * only when every season of that kind is.
  */
-export function seasonMarks(
-  seasons: readonly SeasonOnDay[]
-): Array<{ kind: SeasonEventKind; quiet: boolean; seasons: SeasonOnDay[] }> {
+export function seasonMarks<S extends { kind: ParkSeasonKind; quiet: boolean } = SeasonOnDay>(
+  seasons: readonly S[]
+): Array<{ kind: SeasonEventKind; quiet: boolean; seasons: S[] }> {
   return SEASON_EVENT_KINDS.flatMap((kind) => {
     const ofKind = seasons.filter((season) => season.kind === kind);
     return ofKind.length > 0
