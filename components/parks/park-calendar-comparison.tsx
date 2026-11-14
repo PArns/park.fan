@@ -33,6 +33,7 @@ import { getNumberFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { DialogHero } from '@/components/common/dialog-hero';
+import { ParkTimeRange } from '@/components/common/park-time';
 import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
 import { useSeasonLabel } from '@/components/parks/season-headline';
 
@@ -285,13 +286,35 @@ export function ParkCalendarComparison({
   const sideLabel = (side: DayComparisonSide) =>
     side === 'tie' ? t('dayComparison.bothDays') : shortLabel(side === 'a' ? a : b);
 
+  /**
+   * The hours row's cell: the opening and closing time on the park's clock, the duration in
+   * brackets. The times are what differ between two seasons of one park (9–18 against 11–20 is
+   * nine hours both ways); the duration is what the row ticks. Below `sm` the duration wraps under
+   * the times rather than cutting them off.
+   */
+  const hoursCell = (day: CalendarDay, duration: string) =>
+    day.hours ? (
+      <span className="flex min-w-0 flex-wrap items-baseline gap-x-1">
+        <ParkTimeRange
+          openingTime={day.hours.openingTime}
+          closingTime={day.hours.closingTime}
+          parkTimezone={parkTimezone}
+          locale={locale}
+          className="whitespace-nowrap"
+        />
+        <span className="whitespace-nowrap">({duration})</span>
+      </span>
+    ) : (
+      <span className="truncate">{duration}</span>
+    );
+
   /** A day's seasons as the season row prints them: the tile's icons and the names. */
   const seasonCell = (day: CalendarDay) => {
     const onDay = seasonsOf(day);
     if (onDay.length === 0) {
       return (
         <span key={day.date} className={cn(CELL_CLASS, 'border-border/50 text-muted-foreground')}>
-          <span className="truncate">
+          <span className="min-w-0 break-words hyphens-auto">
             {isClosedCalendarDay(day) ? tCommon('closed') : t('dayComparison.noSeason')}
           </span>
         </span>
@@ -302,7 +325,11 @@ export function ParkCalendarComparison({
         {seasonMarks(onDay).map((mark) => (
           <SeasonKindIcon key={mark.kind} kind={mark.kind} className="size-3.5" />
         ))}
-        <span className="truncate">{onDay.map((s) => seasonLabel(s, true)).join(', ')}</span>
+        {/* Wrapped, not truncated: the name is the whole content of this cell, and at 320 px
+            „Wintertraum" lost its last letters. Hyphenated, so a long word breaks at a syllable. */}
+        <span className="min-w-0 break-words hyphens-auto">
+          {onDay.map((s) => seasonLabel(s, true)).join(', ')}
+        </span>
       </span>
     );
   };
@@ -449,7 +476,11 @@ export function ParkCalendarComparison({
                           {rowDecides(reason) && reason.better === side && (
                             <Check className="text-primary size-3.5 shrink-0" aria-hidden="true" />
                           )}
-                          <span className="truncate">{formatValue(reason, side)}</span>
+                          {reason.key === 'hours' ? (
+                            hoursCell(side === 'a' ? a : b, formatValue(reason, side))
+                          ) : (
+                            <span className="truncate">{formatValue(reason, side)}</span>
+                          )}
                         </span>
                       ))}
                     </div>

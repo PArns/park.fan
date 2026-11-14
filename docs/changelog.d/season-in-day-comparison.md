@@ -11,6 +11,12 @@ Schirm.
   (`ParkCalendarComparison`) zeigt als erste Zeile „Saison", mit Symbol und Namen wie auf der
   Kachel, „Reguläre Saison" für einen Tag ohne Event und „Geschlossen" für einen geschlossenen. Die
   Zeile wird nicht gewertet: Ein Wintertag ist ein anderer Tag, kein besserer oder schlechterer.
+- **Öffnungszeiten im Vergleich:** Die Zeile hieß „Öffnungsdauer" und zeigte an beiden Tagen nur
+  „9 Std.". Jetzt heißt sie „Öffnungszeiten" und zeigt die Uhrzeiten auf der Uhr des Parks
+  (`ParkTimeRange`), die Dauer in Klammern: „09:00 – 18:00 (9 Std.)" gegen „11:00 – 20:00 (9
+  Std.)". Unter `sm` rutscht die Dauer in die zweite Zeile. Gewertet wird weiter die Dauer. Ein
+  Saisonname bricht in seiner Zelle um und wird getrennt, statt abgeschnitten zu werden; bei 320 px
+  stand dort „Wintertrau…".
 - **Kalenderkachel:** Im Wochenraster ab `lg` steht der Name der Saison in einer eigenen Zeile unter
   der Andrangsstufe, mit dem Symbol davor, leise wie das Symbol (`ParkCalendarDay`). Die
   zweispaltige Liste darunter behält das Symbol allein; dort fehlt die Höhe für eine weitere Zeile.
