@@ -696,6 +696,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                         <SeasonalBadge
                           seasonMonths={attraction.seasonMonths}
                           isCurrentlyInSeason={attraction.isCurrentlyInSeason}
+                          boundSeason={attraction.boundSeason}
                         />
                       )}
                       {/* Beside the season badge and not instead of it — the two say different

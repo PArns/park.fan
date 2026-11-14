@@ -507,6 +507,7 @@ export function AttractionCard({
                 isCurrentlyInSeason={
                   'isCurrentlyInSeason' in attraction ? attraction.isCurrentlyInSeason : null
                 }
+                boundSeason={'boundSeason' in attraction ? attraction.boundSeason : undefined}
               />
             )}
             <AttractionMetaBadges

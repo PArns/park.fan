@@ -760,6 +760,7 @@
       "winterOnly": "Winter only",
       "summerOnly": "Summer only",
       "offSeason": "Off-season",
+      "onlyDuring": "Only during {season}",
       "winter": "Winter",
       "summer": "Summer"
     },
