@@ -167,7 +167,7 @@ test('the planner tile: both links are one place, and only the tile event tells 
   );
   const label = element('span', {}, plan);
   assert.deepEqual(internalLinkClickOf(label, ORIGIN), {
-    props: { block: 'trip_tile', dest: 'other', position: '1' },
+    props: { block: 'trip_tile', dest: 'trip_hub', position: '1' },
     entity: PARK.toLowerCase(),
   });
   assert.equal(internalLinkClickOf(calendar, ORIGIN).props.position, '1');

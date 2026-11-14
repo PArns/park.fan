@@ -144,7 +144,7 @@ export function PlanKeep({
             onClick={() => {
               // The day planner opens on the trip's first filed day, not on the last one it showed.
               plannerStore.update((s) => setActive(s, added.park, added.date));
-              plannerUi.requestOpen(`${region.slug}-hub`);
+              plannerUi.requestOpen(`${region.slug}-trip-first`);
             }}
             className="text-primary-ink min-h-11 font-medium underline-offset-4 hover:underline"
           >

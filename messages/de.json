@@ -3934,6 +3934,7 @@
           "hotelLabel": {
             "disney": "Disney-Hotel",
             "disney_deluxe": "Disney-Deluxe-Hotel",
+            "disney_springs": "Hotel an Disney Springs",
             "universal": "Universal-Hotel",
             "universal_premier": "Universal-Premier-Hotel",
             "offsite": "Woanders"
@@ -3941,6 +3942,7 @@
           "hotelHint": {
             "disney": "Early Entry in den Disney-Parks, 30 Minuten vor der Öffnung",
             "disney_deluxe": "Early Entry, dazu an manchen Abenden Extended Evening Hours",
+            "disney_springs": "Early Entry in den Disney-Parks, ohne Extended Evening Hours",
             "universal": "Early Park Admission, eine Stunde vor der Öffnung",
             "universal_premier": "Early Park Admission und Express in Universal Studios und Islands of Adventure",
             "offsite": "Kein früherer Einlass"
@@ -3948,6 +3950,7 @@
           "hotelShort": {
             "disney": "Disney-Hotel",
             "disney_deluxe": "Disney-Deluxe-Hotel",
+            "disney_springs": "Hotel an Disney Springs",
             "universal": "Universal-Hotel",
             "universal_premier": "Universal Premier",
             "offsite": "Hotel woanders"
@@ -4146,7 +4149,8 @@
           }
         },
         "area": {
-          "universal": "Universal-Hotels"
+          "universal": "Universal-Hotels",
+          "disney_springs": "Disney Springs Resort Area"
         }
       },
       "landing": {

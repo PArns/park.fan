@@ -372,6 +372,9 @@ export const PAGE_TYPE_LABEL: Record<string, string> = {
   search: 'Suchseite',
   planner: 'Tagesplaner',
   favorites: 'Favoriten',
+  trip_hub: 'Reiseregion, Hub',
+  trip_month: 'Reiseregion, Monat',
+  trip_best_time: 'Reiseregion, beste Reisezeit',
   not_found: '404, nicht gefunden',
   other: 'Sonstige',
 };
@@ -860,11 +863,47 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_planner_started: {
     label: 'Reiseplaner gestartet',
-    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers, einen Link mit einem Plan oder (dates) die ersten gewählten Daten eines Seitenaufrufs ohne anderen Start; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+  },
+  trip_tickets_opened: {
+    label: 'Ticket-Schritt geöffnet',
+    when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
+  },
+  trip_edit_opened: {
+    label: 'Änderung geöffnet',
+    when: 'Daten, Parks, Route oder Mehr Optionen geöffnet: von den Knöpfen unter dem Plan, aus dem Setup, bei nicht passenden Parks oder einem Ticketproblem.',
+  },
+  trip_option_changed: {
+    label: 'Option geändert',
+    when: 'Eine Option des Plans geändert, je Option ein Ereignis, vom Besucher oder von Parky; ein Wert nur bei kleinen festen Mengen (Puffer in Minuten, Ruhetage, an/aus, Hotelart).',
+  },
+  trip_left_out_fix: {
+    label: 'Nicht passende Parks gelöst',
+    when: 'Einer der drei Auswege, wenn Parks nicht in die Reise passen: Park an Reisetagen, Parks ändern, Tage länger; mit der Zahl der Parks.',
+  },
+  trip_find_toggled: {
+    label: 'Beste Reisezeit umgeschaltet',
+    when: '„Noch keine Daten? Beste Reisezeit finden“ und zurück zu den eigenen Daten.',
+  },
+  trip_find_period: {
+    label: 'Zeitraum der Suche gewählt',
+    when: 'Der Zeitraum der Suche nach den besten Reisedaten, und ob sie in Schulferien bleibt; nie welche Ferien.',
+  },
+  trip_calendar_mode: {
+    label: 'Kalender-Resort gewählt',
+    when: 'Der Schalter über dem Datumsraster (Insgesamt oder ein Resort), bei einer Änderung; from_default, wenn er die Voreinstellung verließ.',
+  },
+  trip_accuracy_opened: {
+    label: 'Genauigkeit geöffnet',
+    when: '„Wie genau ist das?“ unter dem Plan aufgeklappt.',
+  },
+  trip_stay_suggestion: {
+    label: 'Nächte-Vorschlag',
+    when: 'Der Vorschlag der API zu den Nächten je Stadt: shown, einmal je Vorschlag auf dem Schirm; applied mit „So planen“.',
   },
   trip_tickets_answered: {
-    label: 'Ticket-Schritt geöffnet',
-    when: '„Schon Tickets? Eintragen“ unter dem Plan, einmal je Browser („Ja“); „Noch nicht“ und übersprungen nur aus der Zeit, als die Tickets der erste Schritt waren.',
+    label: 'Ticket-Frage beantwortet (bis 2.21.0)',
+    when: 'Nicht mehr gesendet: die Frage vor dem Plan gab es bis 2.21.0. Danach zählt trip_tickets_opened.',
   },
   trip_ticket_added: {
     label: 'Ticket eingetragen',
@@ -1107,6 +1146,13 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
 };
 
 /** The planner's property values in German, keyed by property, then value. */
+/** The region sources of `planner_opened`: the hub's day sheet, the trip's day sheet, the first filed day. */
+const TRIP_OPEN_SOURCES: ReadonlyArray<readonly [string, string]> = [
+  ['-hub', 'Hub, „Diesen Tag planen“'],
+  ['-trip-day', 'Reiseplan, „Im Tagesplaner öffnen“'],
+  ['-trip-first', 'Reiseplan, „Ersten Tag öffnen“'],
+];
+
 const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
   step: { park: 'Park', date: 'Tag', setup: 'Wer kommt mit', headliners: 'Headliner' },
   kind: { ride: 'Fahrgeschäft', show: 'Show', block: 'Eigener Block' },
@@ -1190,9 +1236,10 @@ export function propValueLabel(prop: string, value: string): string {
   if (prop === 'dest') return pageTypeLabel(value);
   if (prop === 'section') return labelFrom(SECTION_LABEL, value);
   if (prop === 'menu') return labelFrom(NAV_MENU_LABEL, value);
-  if (prop === 'source' && value.endsWith('-hub')) {
-    const region = tripRegionConfig(value.slice(0, -'-hub'.length));
-    if (region) return `${tripRegionTitle(region.slug)}-Hub, „Diesen Tag planen“`;
+  for (const [suffix, words] of TRIP_OPEN_SOURCES) {
+    if (prop !== 'source' || !value.endsWith(suffix)) continue;
+    const region = tripRegionConfig(value.slice(0, -suffix.length));
+    if (region) return `${tripRegionTitle(region.slug)}, ${words}`;
   }
   return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }

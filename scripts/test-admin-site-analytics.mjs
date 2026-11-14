@@ -254,7 +254,7 @@ test('search events are the ones that start with search_', () => {
 });
 
 test('every closed list has a word for each value', () => {
-  assert.equal(Object.keys(PAGE_TYPE_LABEL).length, 17);
+  assert.equal(Object.keys(PAGE_TYPE_LABEL).length, 20);
   assert.equal(Object.keys(SURFACE_LABEL).length, 12);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 9);
   assert.equal(propValueLabel('result', 'trip_planner'), 'Reiseplaner');

@@ -32,7 +32,7 @@ import type { TripCalendarDay, TripRegionPark } from '@/lib/trip-regions/types';
 import { holidaySignals, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { sentenceCase } from '@/lib/utils/sentence-case';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanSegmented } from './plan-controls';
 import { PlanMonthGrid, type PlanGridPick } from './plan-month-grid';
@@ -120,6 +120,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
     tickets: catalog,
   } = usePlanContext();
   const tClimate = useTranslations('tripPlanner.climate');
+  const track = useTripEvents();
   const resortWord = useResortWord();
   const seasonName = useSeasonName();
   const stormKeys = useStormKeys();
@@ -324,7 +325,12 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           label={t('dates.modeLabel')}
           value={mode}
           disabled={!live}
-          onChange={setMode}
+          onChange={(next) => {
+            if (next !== mode) {
+              track('trip_calendar_mode', { mode: next, from_default: mode === fallbackMode });
+            }
+            setMode(next);
+          }}
           options={[
             { value: 'all', label: t('dates.modeAll') },
             ...resorts.map((r) => ({ value: r.key, label: resortWord(r.key) })),

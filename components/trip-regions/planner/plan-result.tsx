@@ -88,6 +88,7 @@ import { PlanTickets, type TicketStep } from './plan-tickets';
 import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
+  leftOutBucket,
   tripPlanFailedProps,
   tripPlanRequestProps,
   tripPlanShownProps,
@@ -138,7 +139,7 @@ export function PlanResult({
       ) : planProblem(state, headliners) === 'no_dates' ? (
         <div className="border-border/60 flex min-h-40 flex-col items-start justify-center gap-3 rounded-2xl border border-dashed p-5">
           <p className="text-sm">{t('result.empty')}</p>
-          <Button variant="outline" onClick={edit.dates} className="lg:hidden">
+          <Button variant="outline" onClick={() => edit.dates('answer')} className="lg:hidden">
             {t('result.chooseDates')}
           </Button>
           {/* A ticket bought for fixed days gives the trip its dates, so it may come first. */}
@@ -328,7 +329,7 @@ function PlanAnswerSection({
     plannerPagePark.set(page);
     setBeacon(page);
     plannerPageDay.set({ parkSlug: slug, date });
-    plannerUi.requestOpen(`${region.slug}-hub`, 'page-park-wizard');
+    plannerUi.requestOpen(`${region.slug}-trip-day`, 'page-park-wizard');
     track('trip_day_sent');
   };
 
@@ -531,17 +532,17 @@ function PlanAnswer({
       )}
 
       <div className="flex flex-wrap gap-2" data-plan-changes="">
-        <Button variant="outline" size="sm" onClick={edit.parks}>
+        <Button variant="outline" size="sm" onClick={() => edit.parks('answer')}>
           <MapPinned aria-hidden="true" />
           {t('result.editParks')}
         </Button>
         {bases && edit.route && (
-          <Button variant="outline" size="sm" onClick={edit.route}>
+          <Button variant="outline" size="sm" onClick={() => edit.route?.('answer')}>
             <Route aria-hidden="true" />
             {t('result.editRoute')}
           </Button>
         )}
-        <Button variant="outline" size="sm" onClick={edit.options}>
+        <Button variant="outline" size="sm" onClick={() => edit.options('answer')}>
           <SlidersHorizontal aria-hidden="true" />
           {t('setup.fineTune')}
         </Button>
@@ -563,6 +564,7 @@ function PlanAnswer({
  */
 function PeakLine({ plan }: { plan: TripPlan }) {
   const t = useTranslations('tripPlanner.answer');
+  const track = useTripEvents();
   const savings = planSavings(plan.totals);
   const id = useId();
   const [open, setOpen] = useState(false);
@@ -577,7 +579,10 @@ function PeakLine({ plan }: { plan: TripPlan }) {
           type="button"
           aria-expanded={open}
           aria-controls={id}
-          onClick={() => setOpen((v) => !v)}
+          onClick={() => {
+            if (!open) track('trip_accuracy_opened', { surface: 'plan' });
+            setOpen(!open);
+          }}
           className={cn(
             'text-primary-ink inline-flex min-h-11 items-center gap-1 rounded-md px-1 font-medium underline-offset-4 hover:underline lg:min-h-0',
             PLAN_FOCUS
@@ -606,7 +611,7 @@ function TicketsAsk({ edit }: { edit: PlanEdit }) {
       {t('later')}
       <button
         type="button"
-        onClick={() => edit.tickets()}
+        onClick={() => edit.tickets('ask')}
         className={cn(
           'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 font-medium transition-colors',
           PLAN_FOCUS
@@ -658,8 +663,11 @@ function DeskTickets({
 function LeftOut({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
   const t = useTranslations('tripPlanner');
   const { state, update, locale, parkName } = usePlanContext();
+  const track = useTripEvents();
   const left = parksLeftOut(plan);
   if (left.length === 0) return null;
+  const fixed = (fix: 'travel_days' | 'parks' | 'longer') =>
+    track('trip_left_out_fix', { fix, left_out: leftOutBucket(left.length) });
   const length = tripDates(state).length;
   const longer = Math.min(left.length, MAX_TRIP_DAYS - length);
   const travelFree = state.arrival === 'free' || (length > 1 && state.departure === 'free');
@@ -682,21 +690,32 @@ function LeftOut({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => update((s) => ({ ...s, arrival: 'park', departure: 'park' }))}
+            onClick={() => {
+              fixed('travel_days');
+              update((s) => ({ ...s, arrival: 'park', departure: 'park' }));
+            }}
           >
             {t('answer.travelDays')}
           </Button>
         )}
-        <Button variant="outline" size="sm" onClick={edit.parks}>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={() => {
+            fixed('parks');
+            edit.parks('left_out');
+          }}
+        >
           {t('result.editParks')}
         </Button>
         {longer > 0 && state.from && state.to && (
           <Button
             variant="outline"
             size="sm"
-            onClick={() =>
-              update((s) => (s.from && s.to ? setTripDates(s, s.from, addDays(s.to, longer)) : s))
-            }
+            onClick={() => {
+              fixed('longer');
+              update((s) => (s.from && s.to ? setTripDates(s, s.from, addDays(s.to, longer)) : s));
+            }}
           >
             {t('answer.longer', { count: longer })}
           </Button>
@@ -713,8 +732,13 @@ function LeftOut({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
 function StaySuggestion({ plan }: { plan: TripPlan }) {
   const t = useTranslations('tripPlanner');
   const { region, update, locale, parkName } = usePlanContext();
+  const track = useTripEvents();
   const baseName = useBaseName();
   const suggestion = plan.meta.staySuggestion;
+  const shown = suggestion && JSON.stringify(suggestion);
+  useEffect(() => {
+    if (shown) track('trip_stay_suggestion', { action: 'shown' });
+  }, [shown, track]);
   if (!suggestion) return null;
   const order = (region.bases ?? []).map((b) => b.key);
   const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
@@ -746,14 +770,15 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
       <Button
         variant="outline"
         size="sm"
-        onClick={() =>
+        onClick={() => {
+          track('trip_stay_suggestion', { action: 'applied' });
           update((s) =>
             Object.entries(suggestion.nights).reduce(
               (next, [base, count]) => setBaseNights(next, base, count, order),
               s
             )
-          )
-        }
+          );
+        }}
       >
         {t('answer.planThisWay')}
       </Button>
@@ -944,10 +969,10 @@ function TicketProblemBox({ problem, edit }: { problem: TicketProblem; edit: Pla
         )}
       </p>
       <div className="flex flex-wrap gap-2">
-        <Button variant="outline" onClick={edit.dates}>
+        <Button variant="outline" onClick={() => edit.dates('ticket_problem')}>
           {t('tickets.problem.changeDates')}
         </Button>
-        <Button variant="outline" onClick={() => edit.tickets(problem.index)}>
+        <Button variant="outline" onClick={() => edit.tickets('ticket_problem', problem.index)}>
           {t('tickets.problem.changeTicket')}
         </Button>
       </div>

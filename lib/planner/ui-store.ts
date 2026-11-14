@@ -25,7 +25,9 @@ type Listener = () => void;
  * - `home-hero`: "Heute planen" in the homepage hero (`HeroParkActions`).
  * - `kids-page`: a step of the height ladder on a park's "with kids" page (`KidsPlannerButton`).
  * - `<region>-hub` (`orlando-hub`): "Plan this day" for one park in a trip region hub's day sheet
- *   (`TripPlanDayButton`) or the trip planner's day sheet, named by the region's slug.
+ *   (`TripPlanDayButton`), named by the region's slug.
+ * - `<region>-trip-day`: "Open in the day planner" in the trip planner's day sheet.
+ * - `<region>-trip-first`: "Open the first day" after the trip's days went into the day planner.
  * - `menu-plan`: „Meinen Plan öffnen" in the header's planner band. Names no day, like `header`.
  * - `menu-park`: a popular park in the header's planner band or its phone-sheet disclosure
  *   (`quickStartClick`), which starts the wizard on that park.
@@ -44,6 +46,8 @@ export type PlannerOpenedSource =
   | 'home-hero'
   | 'kids-page'
   | `${string}-hub`
+  | `${string}-trip-day`
+  | `${string}-trip-first`
   | 'menu-plan'
   | 'menu-park'
   | 'assistant';
