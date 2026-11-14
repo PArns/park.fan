@@ -4374,11 +4374,11 @@
           },
           "luggage": {
             "q": "What do I do with my luggage when I change cities?",
-            "a": "Most travellers send their suitcases ahead to the next hotel with a luggage service (takkyubin). On the Shinkansen a bag of 161 to 250 cm in total needs a reserved seat with an oversized baggage area, and a bigger one can't board at all (JR Central). With your bags sent ahead, the trip planner allows 30 minutes for each change of hotel; if you carry them, it's closer to 60. You can choose 30, 60, 90 or 120 minutes."
+            "a": "The trip planner assumes you send your suitcases ahead to the next hotel with a luggage service (takkyubin). With Yamato Transport you hand them in at the hotel front desk without a reservation, and they arrive the next day at the earliest. On the Shinkansen a bag of 161 to 250 cm in total needs a reserved seat with an oversized baggage area, and a bigger one can't board at all (JR Central). With your bags sent ahead, the trip planner allows 30 minutes for each change of hotel; if you carry them, it's closer to 60. You can choose 30, 60, 90 or 120 minutes."
           },
           "happyEntry": {
             "q": "Does a Disney Hotel get me into the park early?",
-            "a": "Yes, with Happy Entry. Guests of the Disney Hotels get into Tokyo Disneyland 15 minutes before everybody else, and guests of Hotel MiraCosta and the Fantasy Springs Hotel into Tokyo DisneySea early too. It starts the morning after you check in, which is how the trip planner counts it, and some hotels have single days without it. Universal Studios Japan's official hotels have no early entry."
+            "a": "Yes, with Happy Entry. Guests of the Disney Hotels get into Tokyo Disneyland 15 minutes before everybody else, and guests of Hotel MiraCosta and the Fantasy Springs Hotel into Tokyo DisneySea early too. It starts the morning after you check in, which is how the trip planner counts it, and some hotels have single days without it."
           }
         },
         "next": {
@@ -4462,8 +4462,8 @@
           "hotelHint": {
             "disney": "Happy Entry at Tokyo Disneyland, 15 minutes early, not on the day you check in",
             "disney_deluxe": "Happy Entry at both Disney parks, not on the day you check in",
-            "universal": "A few minutes' walk to the gate, no early entry",
-            "park_hotel": "Highland Resort: early entry at Fuji-Q. LEGOLAND Japan Hotel: a walk to the gate",
+            "universal": "A few minutes' walk to the gate",
+            "park_hotel": "Highland Resort by Fuji-Q or LEGOLAND Japan Hotel by the gate; Fuji-Q sells early entry itself, as the One Day Pass with Priority Admission",
             "offsite": "No early entry"
           },
           "hotelShort": {
@@ -4778,7 +4778,8 @@
             "parc_asterix": "Parc Astérix hotel",
             "offsite": "hotel elsewhere"
           },
-          "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village."
+          "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village.",
+          "moveBufferHint": "With your suitcases in tow, 60 minutes is realistic."
         },
         "details": {
           "earlyOthers": {
@@ -4802,24 +4803,29 @@
             "party_nights": "{count, plural, =1 {1 separately ticketed evening} other {# separately ticketed evenings}}: day guests have to leave early."
           }
         },
-        "bases": {
-          "disneyland-paris": {
-            "name": "Disneyland Paris",
-            "note": "The Disney hotels on Lake Disney are a walk from the gates and get Extra Magic Time. The partner hotels in Val d'Europe and Val de France run a free shuttle."
-          },
-          "parc-asterix": {
-            "name": "Parc Astérix",
-            "note": "The park's hotels are a walk from the gate, and their guests get into some rides 30 minutes early."
-          },
-          "paris": {
-            "name": "Paris",
-            "note": "From Châtelet–Les Halles the RER A runs to Disneyland Paris, and the RER B to the Parc Astérix shuttle at the airport."
-          }
+        "base": {
+          "disneyland-paris": "Disneyland Paris",
+          "parc-asterix": "Parc Astérix",
+          "paris": "Central Paris"
         },
-        "gateways": {
-          "XED": "Marne-la-Vallée–Chessy station",
-          "CDG": "Paris Charles de Gaulle airport",
-          "ORY": "Paris Orly airport"
+        "stayNote": {
+          "disneyland-paris": "The Disney hotels on Lake Disney are a walk from the gates and get Extra Magic Time. The partner hotels in Val d'Europe and Val de France run a free shuttle.",
+          "parc-asterix": "The park's hotels are a walk from the gate, and their guests get into some rides 30 minutes early.",
+          "paris": "From Châtelet–Les Halles the RER A runs to Disneyland Paris, and the RER B to the Parc Astérix shuttle at the airport."
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Disney hotels by Lake Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne and Santa Fe",
+          "disney_davy_crockett": "Disney Davy Crockett Ranch",
+          "val_d_europe": "Val d'Europe",
+          "val_de_france": "Val de France, Magny-le-Hongre",
+          "paris_center": "Central Paris",
+          "parc_asterix": "Parc Astérix hotels"
         },
         "tickets": {
           "resort": {

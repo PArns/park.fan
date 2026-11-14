@@ -4374,11 +4374,11 @@
           },
           "luggage": {
             "q": "Was mache ich mit dem Gepäck, wenn ich die Stadt wechsle?",
-            "a": "Die meisten Reisenden schicken ihre Koffer mit einem Gepäckdienst (Takkyubin) zum nächsten Hotel voraus. Im Shinkansen braucht ein Gepäckstück mit 161 bis 250 cm Gesamtmaß einen reservierten Sitzplatz mit Fläche für großes Gepäck, größere dürfen gar nicht mit (JR Central). Mit vorausgeschicktem Gepäck plant der Reiseplaner 30 Minuten für jeden Hotelwechsel ein, trägst du es selbst, sind es eher 60. Wählen kannst du 30, 60, 90 oder 120 Minuten."
+            "a": "Der Reiseplaner geht davon aus, dass du deine Koffer mit einem Gepäckdienst (Takkyubin) zum nächsten Hotel vorausschickst. Bei Yamato Transport gibst du sie ohne Reservierung an der Hotelrezeption ab, und sie kommen frühestens am nächsten Tag an. Im Shinkansen braucht ein Gepäckstück mit 161 bis 250 cm Gesamtmaß einen reservierten Sitzplatz mit Fläche für großes Gepäck, größere dürfen gar nicht mit (JR Central). Mit vorausgeschicktem Gepäck plant der Reiseplaner 30 Minuten für jeden Hotelwechsel ein, trägst du es selbst, sind es eher 60. Wählen kannst du 30, 60, 90 oder 120 Minuten."
           },
           "happyEntry": {
             "q": "Komme ich mit einem Disney-Hotel früher in den Park?",
-            "a": "Ja, mit Happy Entry. Gäste der Disney-Hotels kommen 15 Minuten vor allen anderen ins Tokyo Disneyland, Gäste des Hotel MiraCosta und des Fantasy Springs Hotel auch früher ins Tokyo DisneySea. Es gilt ab dem Morgen nach dem Einchecken, so zählt es auch im Reiseplaner, und manche Hotels haben einzelne Tage ohne. Die offiziellen Hotels von Universal Studios Japan haben keinen früheren Einlass."
+            "a": "Ja, mit Happy Entry. Gäste der Disney-Hotels kommen 15 Minuten vor allen anderen ins Tokyo Disneyland, Gäste des Hotel MiraCosta und des Fantasy Springs Hotel auch früher ins Tokyo DisneySea. Es gilt ab dem Morgen nach dem Einchecken, so zählt es auch im Reiseplaner, und manche Hotels haben einzelne Tage ohne."
           }
         },
         "next": {
@@ -4462,8 +4462,8 @@
           "hotelHint": {
             "disney": "Happy Entry im Tokyo Disneyland, 15 Minuten früher, nicht am Anreisetag",
             "disney_deluxe": "Happy Entry in beiden Disney-Parks, nicht am Anreisetag",
-            "universal": "Wenige Minuten zu Fuß zum Eingang, kein früherer Einlass",
-            "park_hotel": "Highland Resort: früherer Einlass bei Fuji-Q. LEGOLAND Japan Hotel: zu Fuß zum Eingang",
+            "universal": "Wenige Minuten zu Fuß zum Eingang",
+            "park_hotel": "Highland Resort am Fuji-Q oder LEGOLAND Japan Hotel am Eingang; früheren Einlass verkauft Fuji-Q selbst, als One Day Pass mit Priority Admission",
             "offsite": "Kein früherer Einlass"
           },
           "hotelShort": {
@@ -4778,7 +4778,8 @@
             "parc_asterix": "Hotel am Parc Astérix",
             "offsite": "Hotel woanders"
           },
-          "eveningsHint": "Schließt ein Park früher, kommt für den Abend der andere Disney-Park oder Disney Village in den Plan."
+          "eveningsHint": "Schließt ein Park früher, kommt für den Abend der andere Disney-Park oder Disney Village in den Plan.",
+          "moveBufferHint": "Mit Koffern zum nächsten Hotel sind 60 Minuten realistisch."
         },
         "details": {
           "earlyOthers": {
@@ -4802,24 +4803,29 @@
             "party_nights": "{count, plural, =1 {1 Abend} other {# Abende}} mit eigenem Ticket: Tagesgäste müssen dann früher gehen."
           }
         },
-        "bases": {
-          "disneyland-paris": {
-            "name": "Disneyland Paris",
-            "note": "Die Disney-Hotels am Lake Disney liegen zu Fuß an den Parks und haben Extra Magic Time. Von den Partnerhotels in Val d'Europe und Val de France fährt ein kostenloser Shuttle."
-          },
-          "parc-asterix": {
-            "name": "Parc Astérix",
-            "note": "Die Hotels des Parks liegen zu Fuß am Eingang, und ihre Gäste kommen an einige Attraktionen 30 Minuten früher."
-          },
-          "paris": {
-            "name": "Paris",
-            "note": "Ab Châtelet–Les Halles fährt die RER A zu Disneyland Paris und die RER B zum Shuttle des Parc Astérix am Flughafen."
-          }
+        "base": {
+          "disneyland-paris": "Disneyland Paris",
+          "parc-asterix": "Parc Astérix",
+          "paris": "Paris Zentrum"
         },
-        "gateways": {
-          "XED": "Bahnhof Marne-la-Vallée–Chessy",
-          "CDG": "Flughafen Paris-Charles-de-Gaulle",
-          "ORY": "Flughafen Paris-Orly"
+        "stayNote": {
+          "disneyland-paris": "Die Disney-Hotels am Lake Disney liegen zu Fuß an den Parks und haben Extra Magic Time. Von den Partnerhotels in Val d'Europe und Val de France fährt ein kostenloser Shuttle.",
+          "parc-asterix": "Die Hotels des Parks liegen zu Fuß am Eingang, und ihre Gäste kommen an einige Attraktionen 30 Minuten früher.",
+          "paris": "Ab Châtelet–Les Halles fährt die RER A zu Disneyland Paris und die RER B zum Shuttle des Parc Astérix am Flughafen."
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Disney-Hotels am Lake Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne und Santa Fe",
+          "disney_davy_crockett": "Disney Davy Crockett Ranch",
+          "val_d_europe": "Val d'Europe",
+          "val_de_france": "Val de France, Magny-le-Hongre",
+          "paris_center": "Paris Zentrum",
+          "parc_asterix": "Hotels am Parc Astérix"
         },
         "tickets": {
           "resort": {

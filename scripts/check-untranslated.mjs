@@ -66,8 +66,9 @@ const ALLOWED = new Set([
   'tripRegions.orlando.planner.tickets.variant.uor-2-day-p2p-plus-epic',
   // The seller's product name (attractiontickets.com), never translated.
   'tripRegions.orlando.planner.tickets.combo.title',
-  // A district and the hotel in it, two proper names.
+  // Hotel areas named by place names alone, the same in every language.
   'tripRegions.japan.planner.area.kinjo_futo',
+  'tripRegions.paris.planner.area.val_de_france',
 ]);
 
 function flatten(value, prefix = '', out = new Map()) {
