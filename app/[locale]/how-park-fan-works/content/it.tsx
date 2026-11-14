@@ -935,15 +935,15 @@ export function ContentIT() {
       <SectionShell
         id="parky"
         index="10"
-        kicker="L’assistente"
+        kicker="Chat con IA"
         title="Chiedi a Parky"
         icon={MessageCircle}
       >
         <ParkyShot locale="it">
           <P>
-            Parky è l’assistente in chat di park.fan e abita nel pulsante rotondo in basso a destra.
-            In home page, su uno schermo largo, sta proprio sotto il titolo e salta nel suo angolo
-            solo quando scorri la pagina.
+            Parky è l’amico IA di park.fan e abita nel pulsante rotondo in basso a destra. In home
+            page, su uno schermo largo, sta proprio sotto il titolo e salta nel suo angolo solo
+            quando scorri la pagina.
           </P>
           <P>
             Chiedigli quanto sono lunghe adesso le file, cosa è previsto per oggi o per le prossime

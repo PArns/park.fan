@@ -1,5 +1,6 @@
 /** Where a scheduled line can come from, best first in {@link LINE_PRIORITY}. */
-export type LineSource = 'entrance' | 'live' | 'clock' | 'holiday' | 'fact' | 'park' | 'invitation';
+export type LineSource =
+  'yours' | 'entrance' | 'live' | 'clock' | 'holiday' | 'fact' | 'park' | 'invitation';
 
 /** What decides which sources may speak in one of the session's slots (`TEASER_SCHEDULE_MS`). */
 export interface LineSlot {
@@ -21,7 +22,7 @@ export interface LineSlot {
   parkNews: boolean;
   /**
    * `?parky=`, which forces a source to try it out: `fact`, `live`, `clock`, `show` for the live
-   * line about a show, or `egg` for the park line.
+   * line about a show, `egg` for the park line, or `yours` for the visitor's own plans.
    */
   forced: string | null;
 }
@@ -37,11 +38,13 @@ export function parkNewsKey(parkPath: string): string {
 
 /**
  * Every source in the order Parky prefers them, each with when it may speak. A line kind that
- * joins the bubble's schedule goes in here at its rank, and nowhere else. `live` comes before
- * `clock` when both have a line: what the queues say now is the more useful news, and the clock
- * gets the next slot.
+ * joins the bubble's schedule goes in here at its rank, and nowhere else. The visitor's own plans
+ * come first and only in the first slot (`yours.ts`): one personal line a visit, before the
+ * entrance's. `live` comes before `clock` when both have a line: what the queues say now is the
+ * more useful news.
  */
 const LINE_PRIORITY: readonly { source: LineSource; when: (s: LineSlot) => boolean }[] = [
+  { source: 'yours', when: (s) => s.slot === 0 || s.forced === 'yours' },
   { source: 'entrance', when: (s) => s.slot === 0 && s.arrival },
   {
     source: 'live',

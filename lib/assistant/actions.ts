@@ -8,6 +8,8 @@ import { safeAssistantHref } from './links';
 import type { FavoriteType } from '@/lib/utils/favorites';
 import { isUuid } from '@/lib/utils';
 import { MAX_BREAK_MINUTES } from './chat-end';
+import { readInterview, type AssistantInterview } from './interview';
+import { cleanParty, type TripParty } from '@/lib/trip-regions/remembered-trip';
 
 /** The park as the API names it for the planner. */
 export interface AssistantPlannerPark {
@@ -184,12 +186,14 @@ export type AssistantAction =
       mode: 'order' | 'headliners';
     }
   | { type: 'planner_remove'; park: AssistantPlannerPark; date: string; entryIds: string[] }
+  /** To a place in the day's order, or to a park-local `HH:MM`. */
   | {
       type: 'planner_move';
       park: AssistantPlannerPark;
       date: string;
       entryId: string;
-      toIndex: number;
+      toIndex?: number;
+      start?: string;
     }
   | {
       type: 'planner_update_block';
@@ -223,9 +227,33 @@ export type AssistantAction =
       done: boolean;
     }
   | { type: 'planner_clear_day'; park: AssistantPlannerPark; date: string }
-  | { type: 'planner_reserve_days'; park: AssistantPlannerPark; dates: string[] }
+  | {
+      type: 'planner_reserve_days';
+      park: AssistantPlannerPark;
+      dates: string[];
+      /** The party's smallest rider, for every day filed. */
+      prefs?: { riderHeightCm: number };
+    }
   /** A trip across parks, as the API's `plan_vacation` placed it; a hop day names two parks. */
-  | { type: 'planner_reserve_trip'; days: Array<{ park: AssistantPlannerPark; date: string }> }
+  | {
+      type: 'planner_reserve_trip';
+      days: Array<{ park: AssistantPlannerPark; date: string }>;
+      prefs?: { riderHeightCm: number };
+    }
+  /** The trip planner of `region` set to the hub's own query, through the planner's state. */
+  | { type: 'trip_set'; region: string; query: string; change: TripChangeKind[] }
+  /** Back to the trip before Parky's last change, unless the visitor changed it since. */
+  | { type: 'trip_undo'; region: string }
+  /** Replies the visitor can tap under the answer, each sent as their message. */
+  | { type: 'replies'; replies: string[] }
+  /** The interview's new state, or null once it is over; a trip's party goes with its trip. */
+  | {
+      type: 'interview_state';
+      interview: AssistantInterview | null;
+      outcome?: 'done' | 'left';
+      region?: string;
+      party?: TripParty;
+    }
   | { type: 'planner_undo'; park: AssistantPlannerPark; date: string }
   | { type: 'planner_share' }
   | {
@@ -263,6 +291,32 @@ export type AssistantAction =
   /** Parky passed the visitor's feedback on to the team. */
   | { type: 'feedback_sent' };
 
+/** What a change to a trip was, as the API names it: the receipt's words and the statistic's. */
+export const TRIP_CHANGE_KINDS = [
+  'dates',
+  'parks',
+  'pin',
+  'swap',
+  'rest',
+  'tickets',
+  'hotel',
+  'pace',
+] as const;
+/** One of {@link TRIP_CHANGE_KINDS}. */
+export type TripChangeKind = (typeof TRIP_CHANGE_KINDS)[number];
+
+/**
+ * A change an answer made to a planner, shown under it with an undo: a trip by its region, a day
+ * by its park and date. `state` is what the undo did.
+ */
+export type AssistantReceipt = (
+  | { planner: 'trip'; region: string; change: TripChangeKind }
+  | { planner: 'day'; park: AssistantPlannerPark; date: string }
+) & { id: string; state?: AssistantReceiptState };
+
+/** What a receipt's undo did: put back, found changed by the visitor since, or nothing left to undo. */
+export type AssistantReceiptState = 'undone' | 'stale' | 'gone';
+
 /** What an answer did, as a chip under it. */
 export type AssistantActionChip =
   | 'navigated'
@@ -274,7 +328,8 @@ export type AssistantActionChip =
   | 'alertRemoved'
   | 'favorite'
   | 'unfavorite'
-  | 'undoStale';
+  | 'undoStale'
+  | 'undone';
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -287,6 +342,40 @@ const MAX_PLAN_ENTRIES = 40;
 const MAX_RESERVED_DAYS = 14;
 /** The API's plan places at most this many park visits. */
 const MAX_RESERVED_TRIP_DAYS = 16;
+/** A trip query as the planner writes it, `.h?` included, at most what the API reads. */
+const TRIP_QUERY = /^[A-Za-z0-9=&:,@._%+?-]{0,1200}$/;
+const TRIP_CHANGES = new Set<string>(TRIP_CHANGE_KINDS);
+/** The API sends two to four replies of at most 40 characters. */
+const MAX_REPLIES = 4;
+const MAX_REPLY_CHARS = 40;
+
+/** The party's smallest rider as a reservation carries it; anything else is dropped. */
+function riderPrefs(value: unknown): { prefs?: { riderHeightCm: number } } {
+  const height = (value as { riderHeightCm?: unknown } | null)?.riderHeightCm;
+  return isWhole(height, MIN_RIDER_CM, MAX_RIDER_CM)
+    ? { prefs: { riderHeightCm: height as number } }
+    : {};
+}
+
+/**
+ * Replies as text a person can tap: one line each, no link, no Markdown, at most four, each once.
+ * The chat renders them as plain text in any case.
+ */
+export function readReplies(value: unknown): string[] | null {
+  if (!Array.isArray(value)) return null;
+  const seen = new Set<string>();
+  const replies: string[] = [];
+  for (const raw of value) {
+    if (typeof raw !== 'string') continue;
+    const reply = raw.replace(/\s+/g, ' ').trim();
+    const key = reply.toLowerCase();
+    if (!reply || reply.length > MAX_REPLY_CHARS || seen.has(key)) continue;
+    if (/https?:|www\.|[<>*_`[\]]/i.test(reply)) continue;
+    seen.add(key);
+    replies.push(reply);
+  }
+  return replies.length > 0 ? replies.slice(0, MAX_REPLIES) : null;
+}
 
 /** A zone the browser's `Intl` knows: the planner formats every time of the park in it. */
 function isTimeZone(value: unknown): boolean {
@@ -561,6 +650,33 @@ function readTrip(value: unknown): AssistantAction | null {
     : null;
 }
 
+/** A trip change: a known region's slug, the query in the planner's alphabet, its kinds. */
+function readTripSet(action: Record<string, unknown>): AssistantAction | null {
+  const { region, query } = action;
+  if (typeof region !== 'string' || !SLUG.test(region)) return null;
+  if (typeof query !== 'string' || !TRIP_QUERY.test(query)) return null;
+  const change = (Array.isArray(action.change) ? action.change : []).filter(
+    (kind): kind is TripChangeKind => typeof kind === 'string' && TRIP_CHANGES.has(kind)
+  );
+  return { type: 'trip_set', region, query, change: [...new Set(change)] };
+}
+
+/** The interview's state; a malformed one refuses the action, a bad party is dropped. */
+function readInterviewState(action: Record<string, unknown>): AssistantAction | null {
+  const interview = action.interview === null ? null : readInterview(action.interview);
+  if (action.interview !== null && !interview) return null;
+  const party = cleanParty(action.party);
+  const region =
+    typeof action.region === 'string' && SLUG.test(action.region) ? action.region : undefined;
+  return {
+    type: 'interview_state',
+    interview,
+    ...(interview === null &&
+      (action.outcome === 'done' || action.outcome === 'left') && { outcome: action.outcome }),
+    ...(party && region && { party, region }),
+  };
+}
+
 /** The entry ids that look like ids, at most a day's worth, one each; null where none is left. */
 function entryIds(value: unknown): string[] | null {
   if (!Array.isArray(value)) return null;
@@ -580,7 +696,12 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
       ? [...new Set(action.dates.filter((d) => typeof d === 'string' && DAY.test(d)))]
       : [];
     return dates.length > 0
-      ? { type: 'planner_reserve_days', park, dates: dates.slice(0, MAX_RESERVED_DAYS) }
+      ? {
+          type: 'planner_reserve_days',
+          park,
+          dates: dates.slice(0, MAX_RESERVED_DAYS),
+          ...riderPrefs(action.prefs),
+        }
       : null;
   }
   if (typeof date !== 'string' || !DAY.test(date)) return null;
@@ -596,17 +717,23 @@ function readPlannerEdit(action: Record<string, unknown>): AssistantAction | nul
         ? { type: 'planner_mark_done', ...day, entryIds: ids, done: action.done }
         : null;
     }
-    case 'planner_move':
-      return typeof action.entryId === 'string' &&
-        ENTRY_ID.test(action.entryId) &&
-        isWhole(action.toIndex, 0, MAX_PLAN_ENTRIES - 1)
-        ? {
-            type: 'planner_move',
-            ...day,
-            entryId: action.entryId,
-            toIndex: action.toIndex as number,
-          }
+    case 'planner_move': {
+      if (typeof action.entryId !== 'string' || !ENTRY_ID.test(action.entryId)) return null;
+      // A place in the order or a time, exactly one of them.
+      if (isWhole(action.toIndex, 0, MAX_PLAN_ENTRIES - 1) && action.start === undefined) {
+        return {
+          type: 'planner_move',
+          ...day,
+          entryId: action.entryId,
+          toIndex: action.toIndex as number,
+        };
+      }
+      return typeof action.start === 'string' &&
+        CLOCK.test(action.start) &&
+        action.toIndex === undefined
+        ? { type: 'planner_move', ...day, entryId: action.entryId, start: action.start }
         : null;
+    }
     case 'planner_update_block': {
       if (typeof action.entryId !== 'string' || !ENTRY_ID.test(action.entryId)) return null;
       const edit = {
@@ -766,8 +893,22 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
         : null;
     case 'planner_share':
       return { type: 'planner_share' };
-    case 'planner_reserve_trip':
-      return readTrip(action.days);
+    case 'planner_reserve_trip': {
+      const trip = readTrip(action.days);
+      return trip ? { ...trip, ...riderPrefs(action.prefs) } : null;
+    }
+    case 'trip_set':
+      return readTripSet(action as unknown as Record<string, unknown>);
+    case 'trip_undo':
+      return typeof action.region === 'string' && SLUG.test(action.region)
+        ? { type: 'trip_undo', region: action.region }
+        : null;
+    case 'replies': {
+      const replies = readReplies(action.replies);
+      return replies ? { type: 'replies', replies } : null;
+    }
+    case 'interview_state':
+      return readInterviewState(action as unknown as Record<string, unknown>);
     case 'planner_remove':
     case 'planner_move':
     case 'planner_update_block':

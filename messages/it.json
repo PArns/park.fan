@@ -198,9 +198,9 @@
     },
     "parky": {
       "kicker": "Parky",
-      "title": "Non trovi quello che cerchi? Chiedi a Parky",
+      "title": "Parky, il tuo amico per ogni domanda sui parchi",
       "lead": "Parky è un nerd dei parchi divertimento. Sa quanto stai aspettando adesso a Taron, quale sabato di giugno Europa-Park è più vuoto e cosa sia davvero l’airtime.",
-      "link": "Chiedi a Parky"
+      "link": "Scrivi a Parky"
     },
     "reading": {
       "title": "Notizie e guide dai parchi divertimento",
@@ -390,8 +390,7 @@
     "updatedOn": "Aggiornato il {date}",
     "nearby": "Vicino a te",
     "preferences": "Impostazioni",
-    "assistantOpen": "Chiedi a Parky",
-    "assistantClose": "Chiudi Parky"
+    "assistantOpen": "Scrivi a Parky"
   },
   "tripHub": {
     "scroll": "Al calendario",
@@ -3083,6 +3082,10 @@
       "adopt": "Aggiungi al mio pianificatore",
       "adopted": "Il piano ora è nel tuo pianificatore.",
       "open": "Apri pianificatore"
+    },
+    "parky": {
+      "button": "Pianifica con Parky la tua giornata perfetta al parco",
+      "line": "Qualche domanda in chat, e ogni risposta arriva subito in questa giornata."
     }
   },
   "tripPlanner": {
@@ -3609,6 +3612,10 @@
         "label": "Link di affiliazione",
         "note": "Se compri tramite questo link, park.fan riceve una commissione. Il prezzo per te non cambia."
       }
+    },
+    "parky": {
+      "button": "Pianifica con Parky il tuo viaggio perfetto",
+      "line": "Qualche domanda in chat, e ogni risposta arriva subito qui nel pianificatore."
     }
   },
   "tripRegions": {
@@ -4964,8 +4971,8 @@
       "kicker": "park.fan · Blog"
     },
     "parky": {
-      "kicker": "park.fan · Assistente in chat",
-      "action": "Chiedi a Parky"
+      "kicker": "park.fan · Chat con IA",
+      "action": "Scrivi a Parky"
     }
   },
   "compare": {
@@ -5005,15 +5012,15 @@
     "forecastCaption": "Previsione"
   },
   "assistant": {
-    "close": "Chiudi Parky",
+    "close": "Chiudi la chat",
     "title": "Parky",
-    "tabChat": "Domande",
+    "tabChat": "Chat",
     "tabFeedback": "Feedback",
-    "greeting1": "Ciao, sono Parky 🎡 Il tuo amico dei parchi con una leggera dipendenza dalle montagne russe. Chiedimi dei tempi di attesa, dei giorni più tranquilli, degli orari o cos’è davvero l’«airtime». Ti pianifico anche la giornata.",
+    "greeting1": "Ciao, sono Parky 🎡 Il tuo amico dei parchi con una leggera dipendenza dalle montagne russe. Chiedimi dei tempi di attesa, dei giorni più tranquilli, degli orari o cos’è davvero l’«airtime». E se ti va, pianifichiamo insieme la giornata.",
     "greeting2": "Dove si va adesso? 🎢 Sono Parky. Dimmi un parco e ti dico quanto si aspetta adesso e in quale giorno c’è meno gente.",
-    "greeting3": "Ciao, qui è Parky 🎡 Controllo per te dove le code sono corte adesso, quando un parco è più tranquillo e che tempo farà lì. Cosa vuoi sapere?",
+    "greeting3": "Ciao, qui Parky 🎡 So dove le code sono corte adesso, quando un parco è più tranquillo e se ti servirà l’ombrello. Dove andiamo?",
     "greeting4": "Ciao, sono Parky 🎡 Il mio cappello è una ruota panoramica e la mia passione sono i tempi di attesa. Chiedimi quando un parco è più tranquillo o quali attrazioni sono ferme adesso.",
-    "greeting5": "Ehi! Qui Parky 🎢 Chiedimi degli orari, del meteo nel parco o delle novità di park.fan. Se vuoi, ti pianifico tutta la giornata.",
+    "greeting5": "Ehilà, qui Parky 🎢 Chiedimi degli orari, del meteo al parco o delle novità di park.fan. E se ti va, organizziamo insieme tutta la giornata.",
     "suggestWaits": "Dove si aspetta poco in questo momento?",
     "suggestBestDay": "Quando c’è meno gente a Gardaland?",
     "suggestNews": "Che novità ci sono?",
@@ -5029,7 +5036,9 @@
     "suggestWeatherHere": "Che tempo fa qui oggi?",
     "suggestCoasterHere": "Quale montagna russa ha l’attesa più breve adesso?",
     "suggestHoursHere": "Fino a che ora è aperto il parco oggi?",
-    "placeholder": "Chiedi qualcosa a Parky …",
+    "suggestInterview": "Pianifica il mio viaggio con me, una domanda alla volta.",
+    "suggestInterviewHere": "Pianifica qui una giornata con me, una domanda alla volta.",
+    "placeholder": "Scrivi a Parky …",
     "send": "Invia",
     "newChat": "Nuova chat",
     "typing": "Parky sta scrivendo",
@@ -5042,10 +5051,10 @@
     "errorOff": "Parky è in pausa. Ripassa un po’ più tardi.",
     "errorUpstream": "Qualcosa è andato storto. Riprova, per favore.",
     "errorNetwork": "Nessuna connessione. Controlla la rete e riprova.",
-    "rateUp": "Utile",
-    "rateDown": "Non utile",
+    "rateUp": "Risposta giusta",
+    "rateDown": "Non ci siamo",
     "rated": "Grazie.",
-    "disclaimer": "Parky è un assistente IA. Le sue risposte possono contenere errori e sono fornite senza garanzia.",
+    "disclaimer": "Parky è un’IA e può sbagliare. Le sue risposte sono fornite senza garanzia.",
     "privacy": "Privacy",
     "feedbackIntro": "Manca qualcosa, qualcosa non va o c’è qualcosa che ti piace tanto? Scrivicelo, leggiamo tutto.",
     "feedbackLabel": "Il tuo feedback",
@@ -5078,6 +5087,7 @@
     "chipFavorite": "Aggiunto ai preferiti",
     "chipUnfavorite": "Tolto dai preferiti",
     "chipUndoStale": "Giornata cambiata nel frattempo, nulla annullato",
+    "chipUndone": "Annullato",
     "alertRide": "{name}: una notifica appena l’attesa scende sotto i {minutes} minuti.",
     "alertReopen": "{name}: una notifica appena torna in funzione.",
     "alertShow": "{name}: un promemoria prima dello spettacolo delle {time}.",
@@ -5092,14 +5102,14 @@
     "locationShared": "Ecco la mia posizione.",
     "cardWait": "{minutes} min",
     "lookupGlossary": "Parky cerca nel glossario …",
-    "teaser1": "Ciao, sono Parky – cliccami!",
-    "teaser2": "Cliccami e ti aiuto!",
+    "teaser1": "Ciao, sono Parky, il tuo amico dei parchi. Cliccami.",
+    "teaser2": "Cliccami e pianifichiamo insieme la tua giornata al parco.",
     "teaser3": "Dove si aspetta poco adesso? Chiedimi!",
     "teaser4": "Psst … conosco i giorni più tranquilli.",
-    "teaser5": "Voglia di airtime? Ti pianifico la giornata.",
+    "teaser5": "Voglia di airtime? Allora organizziamo la giornata.",
     "teaser6": "Attese, meteo, orari: chiedi a me!",
     "teaser7": "Quale attrazione ha la coda più corta adesso? Controllo io.",
-    "teaser8": "Ti pianifico la giornata al parco, attrazione per attrazione.",
+    "teaser8": "Pianifichiamo la tua giornata al parco, attrazione per attrazione.",
     "teaser9": "Domani il parco chiude più tardi? Chiedi pure a me.",
     "teaser10": "Quale parco facciamo oggi? So dove le code sono corte.",
     "teaser11": "Prima fila o ultima? I tempi d’attesa li ho comunque.",
@@ -5108,7 +5118,7 @@
     "teaserBored1": "Uaaah … chiedimi qualcosa!",
     "teaserBored2": "Mi annoio. Hai una domanda per me?",
     "teaserBored3": "Ho appena contato i raggi del mio cappello. Sono otto.",
-    "teaserBored4": "Hai già pianificato la prossima visita al parco? Ti aiuto io.",
+    "teaserBored4": "Hai già in mente la prossima visita al parco? Io ci sto.",
     "teaserWoke1": "Oh! Non stavo affatto dormendo!",
     "teaserWoke2": "Oh, eccoti di nuovo! Stavo solo riposando gli occhi.",
     "teaserWoke3": "Mi sono perso qualcosa? Sono di nuovo sveglissimo!",
@@ -5241,15 +5251,76 @@
     "cardHoliday": "Festività",
     "cardShowsLink": "Tutti gli spettacoli del parco",
     "cardRestaurantsLink": "Tutti i ristoranti del parco",
-    "cardPaidExpress": "Fila rapida a pagamento"
+    "cardPaidExpress": "Fila rapida a pagamento",
+    "repliesLabel": "Risposte suggerite",
+    "receipt": {
+      "trip": {
+        "dates": "Viaggio: nuove date",
+        "parks": "Viaggio: parchi modificati",
+        "pin": "Viaggio: giorno fissato",
+        "swap": "Viaggio: giorni scambiati",
+        "rest": "Viaggio: giorni di riposo modificati",
+        "tickets": "Viaggio: biglietti aggiunti",
+        "hotel": "Viaggio: hotel aggiunto",
+        "pace": "Viaggio: ritmo modificato"
+      },
+      "day": "Nel tuo planner: {park}, {date}",
+      "undo": "Annulla",
+      "show": "Guarda",
+      "undone": "Annullato",
+      "stale": "Cambiato nel frattempo, resta così",
+      "gone": "Non si può più annullare"
+    },
+    "interview": {
+      "titleTrip": "Pianifica il viaggio",
+      "titleDay": "Pianifica la giornata al parco",
+      "step": "Passo {n} di {total}: {name}",
+      "planStands": "Il tuo piano è pronto. Rifiniscilo se vuoi",
+      "end": "Interrompi",
+      "done": "Fatto",
+      "steps": {
+        "region": "Regione",
+        "dates": "Date",
+        "parks": "Parchi",
+        "day": "Parco e giorno",
+        "mustdo": "Attrazioni che vuoi"
+      },
+      "kickoffTrip": "Pianifica il mio viaggio con me, una domanda alla volta.",
+      "kickoffDay": "Pianifica la mia giornata al parco con me, una domanda alla volta."
+    },
+    "muteLines": "Nascondi i fumetti",
+    "subtitle": "Il tuo amico dei parchi",
+    "subtitleNext": "Prossima tappa: {park}, {date}",
+    "yoursToday": "Oggi {park}. Da dove cominciamo?",
+    "yoursTomorrow": "Domani {park}. Non vedo l’ora.",
+    "yoursSoon": "{park} tra {days} giorni. Li conto anch’io.",
+    "yoursTrip": "{count} giorni di parchi dal {date}. Vengo anch’io.",
+    "yoursAfter": "Com’è andata ieri al parco? Racconta.",
+    "yoursRidden": "{count} attrazioni spuntate. Niente male.",
+    "yoursAlert": "La campanella di {ride} è attiva. Ti avviso io.",
+    "yoursBack": "L’ultima volta: {park}. Riprendiamo da lì?",
+    "greetingToday": "Oggi {park} 🎢 Il tuo piano ce l’ho qui. Da dove cominciamo?",
+    "greetingSoon": "Ciao, {when} è giorno di parco: {park} 🎡 Il tuo piano ce l’ho sottomano. Vediamo quanta gente ci sarà?",
+    "greetingTrip": "Ciao, {count} giorni di parchi dal {date} 🎢 Ci sto anch’io. Cosa manca ancora?",
+    "greetingAfter": "Allora, com’è andata ieri al parco? 🎢 Quale attrazione ha vinto?",
+    "greetingBack": "Eccoti di nuovo 🎡 L’ultima volta: {park}. Riprendiamo da lì o cambiamo parco?",
+    "whenTomorrow": "domani",
+    "whenWeekday": "{weekday}",
+    "whenDate": "il {date}",
+    "suggestMyDay": "Quanta gente ci sarà nella mia giornata al parco?",
+    "suggestMyNext": "Cosa c’è adesso nel mio piano?",
+    "suggestMyWeather": "Che tempo farà nella mia giornata al parco?",
+    "suggestMyMissing": "Quali grandi attrazioni mi mancano?",
+    "suggestMyTrip": "Cosa manca al mio viaggio?",
+    "suggestMyBack": "Riprendiamo {park}"
   },
   "parkyPage": {
-    "metaTitle": "Parky, l’assistente in chat di park.fan",
-    "metaDescription": "Chiedi a Parky i tempi di attesa, le previsioni e il giorno più tranquillo per la visita. Cerca nei dati in tempo reale di park.fan e aggiunge le attrazioni direttamente al tuo piano della giornata.",
-    "title": "Parky, il tuo compagno per una giornata al parco",
-    "lead": "Chiedigli i tempi di attesa, le previsioni e il giorno più tranquillo. Parky cerca nei dati in tempo reale di park.fan e pianifica la giornata con te.",
-    "intro": "Parky abita in basso a destra su park.fan, nel fumetto rotondo con una ruota panoramica in testa. Toccalo e scrivigli come a un amico che conosce i parchi divertimento a memoria.",
-    "ask": "Chiedi a Parky adesso",
+    "metaTitle": "Parky: tempi di attesa e piano della giornata in una chat IA",
+    "metaDescription": "Parky conosce i tempi di attesa di adesso e i giorni più tranquilli, e organizza con te la giornata al parco. La chat IA di park.fan, gratis e senza account.",
+    "title": "Parky viene al parco con te",
+    "lead": "Conosce i tempi di attesa di adesso e i giorni più tranquilli, e organizza con te la tua giornata al parco.",
+    "intro": "Parky abita in basso a destra su park.fan, nel fumetto rotondo con una ruota panoramica in testa. Toccalo e scrivigli come a un amico che conosce i parchi divertimento a memoria. Quello che hai messo nel piano della giornata, lo conosce già.",
+    "ask": "Scrivi a Parky",
     "off": "Parky sta facendo una pausa. Ripassa più tardi.",
     "examplesLabel": "Per esempio",
     "chapters": {
@@ -5265,7 +5336,7 @@
         ]
       },
       "plan": {
-        "kicker": "Dà una mano",
+        "kicker": "Pianificare insieme",
         "title": "Parky pianifica la giornata con te",
         "body": "Di’ a Parky in quale parco vuoi andare, quando e cosa conta per te. Aggiunge le attrazioni al tuo piano della giornata e ti dice da dove cominciare. Poi sposti e condividi il piano come sempre.",
         "alt": "Parky ha aggiunto Silver Star, Blue Fire, Voltron Nevera e Wodan al piano della giornata a Europa-Park.",
@@ -5288,7 +5359,7 @@
       "data": {
         "kicker": "I tuoi dati",
         "title": "Cosa succede alle tue domande",
-        "body": "Parky risponde con il modello linguistico Claude di Anthropic. Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 7 giorni. Parky vede la tua posizione solo se la condividi nella chat.",
+        "body": "Parky risponde con il modello linguistico Claude di Anthropic. Il tuo browser invia a ogni domanda il piano della giornata e del viaggio, i promemoria, i preferiti e le attrazioni già fatte; per il resto restano da te. Salviamo le tue domande senza indirizzo IP e le cancelliamo dopo 7 giorni. Parky vede la tua posizione solo se la condividi in chat.",
         "link": "Tutto il resto è nell’informativa sulla privacy."
       }
     },
@@ -5327,7 +5398,11 @@
         },
         {
           "question": "Da dove prende Parky le sue risposte?",
-          "answer": "Dai dati in tempo reale di park.fan: tempi di attesa, orari, previsioni, meteo e i nostri articoli. Per ogni domanda ricontrolla invece di ricordarsi le cose."
+          "answer": "Dai dati in tempo reale di park.fan: tempi di attesa, orari, previsioni, meteo e i nostri articoli. Per ogni domanda ricontrolla, invece di fidarsi di numeri vecchi."
+        },
+        {
+          "question": "Parky si ricorda quello che gli racconto?",
+          "answer": "Dentro una chat sì, finché non chiudi la scheda. Conosce il piano della giornata e del viaggio, i preferiti e le attrazioni già fatte perché restano nel tuo browser e partono con ogni domanda. Il tuo browser ricorda anche il parco di cui parlava la tua ultima chat, così Parky può riprendere da lì alla tua prossima visita. Le chat precedenti non le conosce, e dal nostro server le cancelliamo dopo 7 giorni."
         },
         {
           "question": "Parky può sbagliare?",
@@ -5349,7 +5424,7 @@
     },
     "next": {
       "title": "E adesso?",
-      "ask": "Chiedi a Parky",
+      "ask": "Scrivi a Parky",
       "askDescription": "In basso a destra, proprio su questa pagina.",
       "planner": "Vai al pianificatore",
       "plannerDescription": "Pianifica da solo la tua giornata al parco, attrazione per attrazione.",
