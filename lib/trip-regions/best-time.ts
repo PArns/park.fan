@@ -107,6 +107,21 @@ export function bestTimeWhenQuery(
   };
 }
 
+/**
+ * The page's `/when` when the route did not answer (a revoked data key, the API down): no window,
+ * week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet")
+ * instead of failing, as every page does without a key.
+ */
+export function noWhenAnswer(region: string, range: PlanSearchRange): TripWhenWithMonths {
+  return {
+    meta: { region, from: range.from, to: range.to, days: BEST_TIME_TRIP_DAYS, computedAt: '' },
+    windows: [],
+    weeks: [],
+    seasons: [],
+    months: [],
+  };
+}
+
 /** `YYYY-MM` of a month. */
 export function monthKey({ year, month }: TripMonth): string {
   return `${year}-${String(month).padStart(2, '0')}`;

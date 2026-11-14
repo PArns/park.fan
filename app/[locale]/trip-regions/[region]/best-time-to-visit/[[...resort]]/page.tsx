@@ -38,6 +38,7 @@ import {
   bestTimeRange,
   bestTimeWhenQuery,
   bestTimeYear,
+  noWhenAnswer,
   parseBestTimePage,
   windowList,
   type BestTimePageId,
@@ -60,15 +61,19 @@ function resolve(region: string) {
   return { todayIso, year: bestTimeYear(todayIso), range: bestTimeRange(todayIso) };
 }
 
-/** The page's figures: the region for its parks, then `/when` for those parks. */
+/**
+ * The page's figures: the region for its parks, then `/when` for those parks. A `/when` that does
+ * not answer leaves the page without figures rather than failing it (`noWhenAnswer`).
+ */
 async function loadWhen(slug: string, page: BestTimePageId, range: { from: string; to: string }) {
   const region = await getTripRegion(slug);
   const parks = bestTimeParks(region, page);
-  const answer: Partial<TripWhenWithMonths> & TripWhen = await getTripRegionWhen(
-    slug,
-    bestTimeWhenQuery(region, page, range)
+  const answer: (Partial<TripWhenWithMonths> & TripWhen) | null = await catchNonFatal(
+    getTripRegionWhen(slug, bestTimeWhenQuery(region, page, range))
   );
-  const when: TripWhenWithMonths = { ...answer, months: answer.months ?? [] };
+  const when: TripWhenWithMonths = answer
+    ? { ...answer, months: answer.months ?? [] }
+    : noWhenAnswer(slug, range);
   return { region, parks, when };
 }
 
