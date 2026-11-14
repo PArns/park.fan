@@ -97,6 +97,56 @@ export function PlanRadioGroup<T extends string>({
 }
 
 /**
+ * A few short choices side by side, one pressed: the planner's segmented control, as the Dates
+ * step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
+ */
+export function PlanSegmented<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+  disabled = false,
+  className,
+}: {
+  /** What the group chooses, for a screen reader. */
+  label: string;
+  value: T;
+  options: ReadonlyArray<{ value: T; label: ReactNode }>;
+  onChange: (value: T) => void;
+  disabled?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      role="radiogroup"
+      aria-label={label}
+      className={cn('bg-muted/50 grid gap-1 rounded-xl p-1', className)}
+      style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
+    >
+      {options.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          role="radio"
+          aria-checked={value === option.value}
+          disabled={disabled}
+          onClick={() => onChange(option.value)}
+          className={cn(
+            'min-h-11 truncate rounded-lg px-2 text-sm font-medium transition disabled:opacity-50 lg:min-h-9',
+            value === option.value
+              ? 'bg-background shadow-sm'
+              : 'text-muted-foreground hover:text-foreground',
+            PLAN_FOCUS
+          )}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
  * − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a
  * screen reader hears the new count after a press.
  */

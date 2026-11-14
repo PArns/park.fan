@@ -3118,7 +3118,6 @@
       "departurePark": "Parco il giorno di partenza",
       "departureParkHint": "Con un volo serale.",
       "maxLength": "Un viaggio dura al massimo {days} giorni.",
-      "picksLegend": "Sotto ogni data, per ogni resort il parco con l’attesa di picco più breve.",
       "partyKey": "Serata di festa con biglietto a parte: i visitatori giornalieri escono prima",
       "nyeKey": "San Silvestro",
       "unpublishedKey": "Sottolineato a puntini: orari non ancora pubblicati",
@@ -3134,7 +3133,12 @@
       "until": "fino al {date}",
       "since": "dal {date}",
       "wholeMonth": "tutto il mese",
-      "expected": "date previste"
+      "expected": "date previste",
+      "modeLabel": "Parco migliore",
+      "modeAll": "Generale",
+      "picksLegendAll": "Sotto ogni data, il parco con l’attesa di picco più breve.",
+      "picksLegendResort": "Sotto ogni data, il parco {resort} con l’attesa di picco più breve.",
+      "overall": "Generale: {park}"
     },
     "find": {
       "modeLabel": "Come scegli le date",

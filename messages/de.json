@@ -3118,7 +3118,6 @@
       "departurePark": "Park am Abreisetag",
       "departureParkHint": "Bei einem Abendflug.",
       "maxLength": "Eine Reise darf bis zu {days} Tage lang sein.",
-      "picksLegend": "Unter jedem Datum steht je Resort der Park mit der kürzesten Spitzenwartezeit.",
       "partyKey": "Party-Abend mit eigenem Ticket: Tagesgäste gehen früher",
       "nyeKey": "Silvester",
       "unpublishedKey": "Gepunktet unterstrichen: Öffnungszeiten noch nicht veröffentlicht",
@@ -3134,7 +3133,12 @@
       "until": "bis {date}",
       "since": "ab {date}",
       "wholeMonth": "den ganzen Monat",
-      "expected": "Termine erwartet"
+      "expected": "Termine erwartet",
+      "modeLabel": "Bester Park",
+      "modeAll": "Insgesamt",
+      "picksLegendAll": "Unter jedem Datum steht der Park mit der kürzesten Spitzenwartezeit.",
+      "picksLegendResort": "Unter jedem Datum steht der Park von {resort} mit der kürzesten Spitzenwartezeit.",
+      "overall": "Insgesamt: {park}"
     },
     "find": {
       "modeLabel": "Wie du die Reisedaten wählst",

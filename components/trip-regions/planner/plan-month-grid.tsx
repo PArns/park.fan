@@ -19,7 +19,7 @@ import { DAY_SIGNAL_CLASS, type DaySignal } from '@/lib/utils/day-signal-styles'
 import { monthMatrix, monthOf, shiftMonth, weekdayLabels } from '@/lib/planner/month-grid';
 import { addDays } from '@/lib/utils/park-day';
 
-/** One resort's pick under a date of {@link PlanMonthGrid}: the park's code in its crowd ink. */
+/** The pick under a date of {@link PlanMonthGrid}: the park's label in its crowd ink. */
 export interface PlanGridPick {
   /** The park's label in a phone cell and in a wide one (`parkLabel`). */
   code: string;
@@ -30,8 +30,8 @@ export interface PlanGridPick {
   /** The park has not published its hours for the date: the code is underlined dotted. */
   unpublished: boolean;
   /**
-   * The resort's park whose day guests leave early for a party that night: a ticket on the row,
-   * with the park's wide label where the cell has room, and the party in words as its tooltip.
+   * The park whose day guests leave early for a party that night: a ticket on the row, with the
+   * park's wide label where the cell has room, and the party in words as its tooltip.
    */
   party: { wide: string; name: string } | null;
 }
@@ -56,7 +56,7 @@ export interface PlanGridDay {
   level?: ColoredCrowdLevel | null;
   /** The holidays and school breaks the date falls in, as the calendar's bar along the top. */
   signals?: readonly DaySignal[];
-  /** Per resort the park with the shortest lines, a row of the cell each. */
+  /** The park with the shortest lines under the date, a row each (the Dates step draws one). */
   picks?: readonly PlanGridPick[];
   /** New Year's Eve, marked beside the date. */
   nye?: boolean;
@@ -70,8 +70,8 @@ const NAV_BUTTON =
  * dates in the Dates step, one date for a ticket's first day. One tab stop for the grid, the arrows
  * move by day and week and turn the month at its edge, so the grid works the same in both places.
  * A date with a crowd level is the crowd calendar's tile (`ParkCalendarDay`): tinted, the day in
- * the level's ink, holidays as the bar along the top. `rich` makes room under the date for each
- * resort's pick, a code per row with a ticket where the resort has a party night. Arrival and
+ * the level's ink, holidays as the bar along the top. `rich` makes room under the date for its pick,
+ * a park label with a ticket where a party night sends the day guests home early. Arrival and
  * departure are a ring with their plane on its corner, so the rows stay free, and a light band
  * behind the tiles joins the dates between. `onShow` hears every date pointed at, focused or picked.
  */
@@ -187,7 +187,7 @@ export function PlanMonthGrid({
         // Six rows whatever the month, so the panel keeps its height from month to month.
         className={cn(
           'grid grid-cols-7 gap-1',
-          rich ? 'min-h-[22.25rem] lg:min-h-[25.25rem]' : 'min-h-[19.25rem]'
+          rich ? 'min-h-[19.25rem] lg:min-h-[22.25rem]' : 'min-h-[19.25rem]'
         )}
       >
         {cells.map((cell) => {
@@ -238,7 +238,7 @@ export function PlanMonthGrid({
                 className={cn(
                   'focus-visible:ring-ring relative flex w-full flex-col items-center overflow-hidden rounded-md text-sm tabular-nums transition focus-visible:ring-2 focus-visible:outline-none',
                   rich
-                    ? 'h-14 justify-start gap-0.5 pt-1.5 lg:h-16 lg:pt-2'
+                    ? 'h-12 justify-start gap-0.5 pt-1.5 lg:h-14 lg:pt-2'
                     : 'h-12 justify-center',
                   enabled ? 'bg-background hover:shadow-sm' : 'text-muted-foreground/40',
                   ring && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-1'

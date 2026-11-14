@@ -55,10 +55,13 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`date-facts.ts`](../../lib/trip-regions/date-facts.ts)
 
 - `dateParties` _function_: The parks whose day guests leave early on a date for a separately ticketed evening, in the region's order: a ticketed evening the API also calls an early close.
-- `datePicks` _function_: Per resort with a choice that date (`resortHasChoice`) the API's pick (`best`, read through the hub's `shortestLines`), with why it won and the resort's party night.
+- `datePicks` _function_: Per resort the API's pick that date (`best`, read through the hub's `shortestLines`), with why it won and the resort's party night. A resort without a pick (a last-year date, no figure) is left out rather than guessed.
+- `calendarResorts` _function_: The resorts the date grid's switch offers, in the region's order: those with a headliner park, the parks a trip is planned around (Orlando's Disney and Universal, not SeaWorld).
+- `defaultCalendarMode` _function_: The switch's first answer: the one resort the visitor's parks lie in, else the one their owned tickets lie in, else `all`. `parkSlugs` is `null` until the visitor chooses parks.
+- `modePick` _function_: The pick a date shows in `mode`: the chosen resort's, or of the picks of `resorts` the one with the shortest peak wait (`headlinerWait`, the figure parks are compared by), ties to the longer day for a day guest, then the region's order.
 - `isNewYearsEve` _function_: New Year's Eve: the date alone says it, wherever the region is.
 - `monthEvents` _function_: The month's events for the list under the date grid: the hub's season lanes (`eventLanes`) cut to the month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit, then the school breaks as runs (`breakRuns`, so an unnamed weekend …
-- Types: `DateParty`, `DatePick`, `MonthEvent`
+- Types: `DateParty`, `DatePick`, `CalendarMode`, `MonthEvent`
 
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
 

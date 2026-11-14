@@ -106,6 +106,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanRadioGroup` _component_: One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a 44 px row with an optional line under it.
+- `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
 - `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
 - `PlanChip` _component_: A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two answers. 44 px on a phone, 36 at a desk.
 - `PLAN_FOCUS` _const_: The planner's focus ring, one string for every control it draws.

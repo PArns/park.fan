@@ -3118,7 +3118,6 @@
       "departurePark": "Park on departure day",
       "departureParkHint": "For an evening flight.",
       "maxLength": "A trip can be up to {days} days long.",
-      "picksLegend": "Under each date, the park with the shortest peak wait in each resort.",
       "partyKey": "Party night with its own ticket: day guests leave early",
       "nyeKey": "New Year’s Eve",
       "unpublishedKey": "Dotted underline: hours not published yet",
@@ -3134,7 +3133,12 @@
       "until": "until {date}",
       "since": "from {date}",
       "wholeMonth": "all month",
-      "expected": "dates expected"
+      "expected": "dates expected",
+      "modeLabel": "Best park",
+      "modeAll": "Overall",
+      "picksLegendAll": "Under each date, the park with the shortest peak wait.",
+      "picksLegendResort": "Under each date, the {resort} park with the shortest peak wait.",
+      "overall": "Overall: {park}"
     },
     "find": {
       "modeLabel": "How you choose your dates",

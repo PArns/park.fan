@@ -4,7 +4,6 @@ import {
   eventLanes,
   hoursUnpublished,
   regionResorts,
-  resortHasChoice,
   shortestLines,
 } from './hub-data';
 import { partySeason } from './plan-week';
@@ -18,9 +17,10 @@ import type {
 } from './types';
 
 /**
- * What the planner's date grid says about a date beyond its tint: per resort the park with the
- * shortest lines, the party nights that send day guests home early, New Year's Eve, and the month's
- * events under the grid. Read off the calendar the API sends; pure, so the grid and the tests agree.
+ * What the planner's date grid says about a date beyond its tint: the park with the shortest lines,
+ * overall or in the resort the visitor picked, the party nights that send day guests home early, New
+ * Year's Eve, and the month's events under the grid. Read off the calendar the API sends; pure, so
+ * the grid and the tests agree.
  */
 
 /** A park whose day guests leave early for a separately ticketed evening. */
@@ -74,9 +74,9 @@ export function dateParties(
 }
 
 /**
- * Per resort with a choice that date ({@link resortHasChoice}) the API's pick (`best`, read through
- * the hub's `shortestLines`), with why it won and the resort's party night. A resort without a pick
- * (a last-year date, no figure) is left out rather than guessed.
+ * Per resort the API's pick that date (`best`, read through the hub's `shortestLines`), with why it
+ * won and the resort's party night. A resort without a pick (a last-year date, no figure) is left
+ * out rather than guessed.
  */
 export function datePicks(
   day: TripCalendarDay,
@@ -84,20 +84,79 @@ export function datePicks(
   calendar?: TripCalendar
 ): DatePick[] {
   const parties = dateParties(day, region, calendar);
-  const resorts = new Map(regionResorts(region).map((group) => [group.key, group]));
-  return shortestLines(day, region)
-    .filter((line) => {
-      const group = resorts.get(line.group.key);
-      return group !== undefined && resortHasChoice(day, group);
-    })
-    .map((line) => ({
-      group: { key: line.group.key, name: line.group.name },
-      park: line.park,
-      day: line.day,
-      hoursUnpublished: hoursUnpublished(line.day),
-      earlyElsewhere: line.earlyElsewhere ?? null,
-      party: parties.find((p) => p.park.group === line.group.key) ?? null,
-    }));
+  return shortestLines(day, region).map((line) => ({
+    group: { key: line.group.key, name: line.group.name },
+    park: line.park,
+    day: line.day,
+    hoursUnpublished: hoursUnpublished(line.day),
+    earlyElsewhere: line.earlyElsewhere ?? null,
+    party: parties.find((p) => p.park.group === line.group.key) ?? null,
+  }));
+}
+
+/**
+ * What the date grid shows under each date: the best park of all the switch's resorts (`all`), or
+ * the best park of one resort, by its group key.
+ */
+export type CalendarMode = 'all' | (string & {});
+
+/**
+ * The resorts the date grid's switch offers, in the region's order: those with a headliner park,
+ * the parks a trip is planned around (Orlando's Disney and Universal, not SeaWorld).
+ */
+export function calendarResorts(region: TripRegion): Array<{ key: string; name: string }> {
+  return regionResorts(region)
+    .filter((group) => group.parks.some((park) => park.headliner))
+    .map((group) => ({ key: group.key, name: group.name }));
+}
+
+/**
+ * The switch's first answer: the one resort the visitor's parks lie in, else the one their owned
+ * tickets lie in, else `all`. `parkSlugs` is `null` until the visitor chooses parks.
+ */
+export function defaultCalendarMode(
+  region: TripRegion,
+  parkSlugs: readonly string[] | null,
+  ticketResorts: readonly string[]
+): CalendarMode {
+  const offered = new Set(calendarResorts(region).map((r) => r.key));
+  const only = (keys: Iterable<string>) => {
+    const inside = [...new Set(keys)].filter((key) => offered.has(key));
+    return inside.length === 1 ? inside[0] : null;
+  };
+  const groupOf = new Map(region.parks.map((park) => [park.slug, park.group]));
+  const fromParks = parkSlugs?.length
+    ? only(parkSlugs.map((slug) => groupOf.get(slug) ?? ''))
+    : null;
+  return fromParks ?? only(ticketResorts) ?? 'all';
+}
+
+/** Minutes a day guest has on a park day, for the tie between equal waits; unknown counts as none. */
+function guestMinutes(day: TripParkDay): number {
+  const close = day.dayGuestCloseAt ?? day.closesAt;
+  return day.opensAt && close ? (Date.parse(close) - Date.parse(day.opensAt)) / 60_000 : 0;
+}
+
+/**
+ * The pick a date shows in `mode`: the chosen resort's, or of the picks of `resorts` the one with
+ * the shortest peak wait (`headlinerWait`, the figure parks are compared by), ties to the longer
+ * day for a day guest, then the region's order. `null` where the date has none.
+ */
+export function modePick(
+  picks: readonly DatePick[],
+  mode: CalendarMode,
+  resorts: readonly string[]
+): DatePick | null {
+  if (mode !== 'all') return picks.find((pick) => pick.group.key === mode) ?? null;
+  const candidates = picks.filter(
+    (pick) => resorts.includes(pick.group.key) && pick.day.headlinerWait != null
+  );
+  return (
+    [...candidates].sort(
+      (a, b) =>
+        a.day.headlinerWait! - b.day.headlinerWait! || guestMinutes(b.day) - guestMinutes(a.day)
+    )[0] ?? null
+  );
 }
 
 /** New Year's Eve: the date alone says it, wherever the region is. */

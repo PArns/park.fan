@@ -3118,7 +3118,6 @@
       "departurePark": "Park op de vertrekdag",
       "departureParkHint": "Bij een avondvlucht.",
       "maxLength": "Een reis duurt hoogstens {days} dagen.",
-      "picksLegend": "Onder elke datum staat per resort het park met de kortste piekwachttijd.",
       "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
       "nyeKey": "Oudejaarsavond",
       "unpublishedKey": "Gestippeld onderstreept: openingstijden nog niet gepubliceerd",
@@ -3134,7 +3133,12 @@
       "until": "tot {date}",
       "since": "vanaf {date}",
       "wholeMonth": "de hele maand",
-      "expected": "data verwacht"
+      "expected": "data verwacht",
+      "modeLabel": "Beste park",
+      "modeAll": "Totaal",
+      "picksLegendAll": "Onder elke datum staat het park met de kortste piekwachttijd.",
+      "picksLegendResort": "Onder elke datum staat het park van {resort} met de kortste piekwachttijd.",
+      "overall": "Totaal: {park}"
     },
     "find": {
       "modeLabel": "Hoe je je reisdata kiest",

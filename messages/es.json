@@ -3118,7 +3118,6 @@
       "departurePark": "Parque el día de salida",
       "departureParkHint": "Con un vuelo de noche.",
       "maxLength": "Un viaje dura como mucho {days} días.",
-      "picksLegend": "Bajo cada fecha, el parque con la espera punta más corta de cada resort.",
       "partyKey": "Noche de fiesta con entrada aparte: los visitantes de día salen antes",
       "nyeKey": "Nochevieja",
       "unpublishedKey": "Subrayado de puntos: horario aún no publicado",
@@ -3134,7 +3133,12 @@
       "until": "hasta el {date}",
       "since": "desde el {date}",
       "wholeMonth": "todo el mes",
-      "expected": "fechas previstas"
+      "expected": "fechas previstas",
+      "modeLabel": "Mejor parque",
+      "modeAll": "General",
+      "picksLegendAll": "Bajo cada fecha, el parque con la espera punta más corta.",
+      "picksLegendResort": "Bajo cada fecha, el parque de {resort} con la espera punta más corta.",
+      "overall": "General: {park}"
     },
     "find": {
       "modeLabel": "Cómo eliges tus fechas",

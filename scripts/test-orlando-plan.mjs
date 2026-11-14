@@ -69,9 +69,12 @@ import {
   weekPages,
 } from '../lib/trip-regions/plan-week.ts';
 import {
+  calendarResorts,
   dateParties,
   datePicks,
+  defaultCalendarMode,
   isNewYearsEve,
+  modePick,
   monthEvents,
 } from '../lib/trip-regions/date-facts.ts';
 import { formatGridHours } from '../lib/planner/park-time.ts';
@@ -840,13 +843,59 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   };
   const picks = datePicks(day, region, calendar);
   test(
-    'a pick per resort with a choice; SeaWorld has none',
+    'a pick per resort, SeaWorld included',
     picks.map((p) => [p.group.key, p.park.slug]),
     [
       ['wdw', 'disneys-animal-kingdom-theme-park'],
       ['uo', 'universal-studios-florida'],
+      ['sw', 'seaworld-orlando'],
     ]
   );
+  test(
+    'the switch offers the resorts with a headliner',
+    calendarResorts({
+      ...region,
+      parks: region.parks.map((p) => ({ ...p, headliner: p.group !== 'sw' })),
+    }).map((r) => r.key),
+    ['wdw', 'uo']
+  );
+  test(
+    'overall: the shortest peak wait of the switch’s resorts; a resort: its own pick',
+    [
+      modePick(picks, 'all', ['wdw', 'uo'])?.park.slug,
+      modePick(picks, 'wdw', ['wdw', 'uo'])?.park.slug,
+      modePick(picks, 'all', ['wdw'])?.park.slug,
+      modePick([], 'all', ['wdw', 'uo']),
+    ],
+    [
+      'universal-studios-florida',
+      'disneys-animal-kingdom-theme-park',
+      'disneys-animal-kingdom-theme-park',
+      null,
+    ]
+  );
+  {
+    const headlined = {
+      ...region,
+      parks: region.parks.map((p) => ({ ...p, headliner: p.group !== 'sw' })),
+    };
+    test(
+      'the switch starts on the one resort the parks, else the tickets, lie in',
+      [
+        defaultCalendarMode(headlined, null, []),
+        defaultCalendarMode(
+          headlined,
+          ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park'],
+          ['uo']
+        ),
+        defaultCalendarMode(headlined, ['magic-kingdom-park', 'universal-studios-florida'], ['uo']),
+        defaultCalendarMode(headlined, null, ['uo', 'uo']),
+        defaultCalendarMode(headlined, null, ['wdw', 'uo']),
+        defaultCalendarMode(headlined, ['seaworld-orlando'], []),
+      ],
+      ['all', 'wdw', 'uo', 'uo', 'all', 'all']
+    );
+  }
   test(
     'the pick names the quieter park that closes early, and its resort’s party',
     [picks[0].earlyElsewhere?.park.slug, picks[0].party?.season?.name, picks[0].party?.leaveAt],
@@ -855,7 +904,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'a pick without published hours says so',
     picks.map((p) => p.hoursUnpublished),
-    [false, true]
+    [false, true, false]
   );
   test(
     'an evening after a normal close is no party night',
