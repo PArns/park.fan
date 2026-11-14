@@ -1,5 +1,5 @@
 /**
- * Unit tests for the trip planner's pure modules (`lib/orlando/plan*.ts`): the URL form a
+ * Unit tests for the trip planner's pure modules (`lib/trip-regions/plan*.ts`): the URL form a
  * link from Parky, "Copy link" and the best-time pages share, the edits (steppers, pins, swaps),
  * which codes become which sentence, the savings line, the `.ics` file, the Week and Month views'
  * geometry, the When mode's ranges and request, and tickets: `tickets=` read and written, the
@@ -12,11 +12,11 @@
 import {
   DEFAULT_PLAN_STATE,
   normalizePlanState,
-  orlandoPlannerHref,
+  plannerHrefOn,
   planRegionKeys,
   readPlanQuery,
   writePlanQuery,
-} from '../lib/orlando/plan-query.ts';
+} from '../lib/trip-regions/plan-query.ts';
 import {
   findLeg,
   parkDaysAvailable,
@@ -31,7 +31,7 @@ import {
   toggleLock,
   chooseHotel,
   effectiveHotel,
-} from '../lib/orlando/plan.ts';
+} from '../lib/trip-regions/plan.ts';
 import {
   autoSplit,
   climateChips,
@@ -44,8 +44,13 @@ import {
   primaryReason,
   runnerUp,
   unplacedParks,
-} from '../lib/orlando/plan-copy.ts';
-import { buildTripIcs, icsEscape, icsFold, icsLocalDateTime } from '../lib/orlando/plan-ics.ts';
+} from '../lib/trip-regions/plan-copy.ts';
+import {
+  buildTripIcs,
+  icsEscape,
+  icsFold,
+  icsLocalDateTime,
+} from '../lib/trip-regions/plan-ics.ts';
 import {
   dateFigure,
   hoursLessThanUsual,
@@ -57,7 +62,7 @@ import {
   tripDaySpans,
   tripMonthWeeks,
   weekPages,
-} from '../lib/orlando/plan-week.ts';
+} from '../lib/trip-regions/plan-week.ts';
 import {
   holidayRegionsFor,
   percentBelowAverage,
@@ -68,16 +73,20 @@ import {
   whenPeriods,
   whenRequestQuery,
   windowReasons,
-} from '../lib/orlando/plan-when.ts';
+} from '../lib/trip-regions/plan-when.ts';
 import {
   findTripRegion,
   matchTripRegion,
   regionParksOf,
   tripPlannerHref,
-  tripRegionHubPath,
   tripRegionLinks,
-} from '../lib/orlando/trip-links.ts';
-import { PlanRequestError, fetchTripPlan, retryPlanRequest } from '../lib/orlando/plan-fetch.ts';
+} from '../lib/trip-regions/trip-links.ts';
+import { requireTripRegion } from '../lib/trip-regions/registry.ts';
+import {
+  PlanRequestError,
+  fetchTripPlan,
+  retryPlanRequest,
+} from '../lib/trip-regions/plan-fetch.ts';
 import {
   adoptSuggestions,
   draftTicket,
@@ -86,7 +95,7 @@ import {
   hopperResorts,
   isEveryDayTicket,
   longStayTickets,
-  needsHogwartsHop,
+  needsConnectedHop,
   orderTicketLinks,
   ownedUse,
   ticketLinkAttributes,
@@ -100,9 +109,9 @@ import {
   ticketWindow,
   toggleHopper,
   tripFromTickets,
-  universalUk14At,
-} from '../lib/orlando/plan-tickets.ts';
-import { readTickets, writeTicketItem } from '../lib/orlando/plan-query.ts';
+  rollingFortnightAt,
+} from '../lib/trip-regions/plan-tickets.ts';
+import { readTickets, writeTicketItem } from '../lib/trip-regions/plan-query.ts';
 import {
   hostProp,
   sellerProp,
@@ -114,8 +123,11 @@ import {
   tripPlanRequestProps,
   tripPlanShownProps,
   tripWhenShownProps,
-} from '../lib/orlando/plan-analytics.ts';
+} from '../lib/trip-regions/plan-analytics.ts';
 import { onSiteEvent } from '../lib/analytics/site-analytics.ts';
+
+const ORLANDO = requireTripRegion('orlando');
+const STEP = ORLANDO.tickets;
 
 const cases = [];
 const test = (name, actual, expected) => cases.push({ name, actual, expected });
@@ -237,8 +249,8 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     null
   );
   test(
-    'orlandoPlannerHref, plan mode',
-    orlandoPlannerHref({
+    'plannerHrefOn, plan mode',
+    plannerHrefOn('/orlando', {
       from: '2026-12-01',
       to: '2026-12-07',
       parks: ['epcot', { slug: 'magic-kingdom-park', visits: 2 }],
@@ -247,11 +259,12 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     '/orlando?from=2026-12-01&to=2026-12-07&parks=epcot,magic-kingdom-park:2&hotel=disney#planner'
   );
   test(
-    'orlandoPlannerHref, When mode on a month page',
-    orlandoPlannerHref(
-      { when: { from: '2027-03-01', to: '2027-05-31' }, days: 10, within: 'NL-north' },
-      '/orlando/2027/3'
-    ),
+    'plannerHrefOn, When mode on a month page',
+    plannerHrefOn('/orlando/2027/3', {
+      when: { from: '2027-03-01', to: '2027-05-31' },
+      days: 10,
+      within: 'NL-north',
+    }),
     '/orlando/2027/3?when=2027-03-01_2027-05-31&days=10&within=NL-north#planner'
   );
 }
@@ -300,10 +313,14 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test('no request without dates', planRequestQuery(DEFAULT_PLAN_STATE, HEAD), null);
   test(
     'a Disney hotel brings its area',
-    chooseHotel(DEFAULT_PLAN_STATE, 'disney', keys.areas).area,
+    chooseHotel(DEFAULT_PLAN_STATE, 'disney', keys.areas, ORLANDO.hotels).area,
     'disney'
   );
-  test('the area means its hotel', effectiveHotel({ hotel: null, area: 'universal' }), 'universal');
+  test(
+    'the area means its hotel',
+    effectiveHotel({ hotel: null, area: 'universal' }, ORLANDO.hotels),
+    'universal'
+  );
   const a = {
     date: '2026-11-29',
     kind: 'park',
@@ -463,10 +480,14 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   );
   test(
     'a park-local instant on Orlando’s clock',
-    icsLocalDateTime('2026-11-29T09:00:00-05:00'),
+    icsLocalDateTime('2026-11-29T09:00:00-05:00', 'America/New_York'),
     '20261129T090000'
   );
-  test('across the DST change', icsLocalDateTime('2027-03-15T09:00:00-04:00'), '20270315T090000');
+  test(
+    'across the DST change',
+    icsLocalDateTime('2027-03-15T09:00:00-04:00', 'America/New_York'),
+    '20270315T090000'
+  );
   const file = buildTripIcs(
     [
       {
@@ -479,7 +500,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       },
       { date: '2026-11-30', uid: 'b@park.fan', summary: 'Typhoon Lagoon', description: [] },
     ],
-    { now: Date.parse('2026-11-12T12:00:00Z'), calendarName: 'Orlando' }
+    { now: Date.parse('2026-11-12T12:00:00Z'), calendarName: 'Orlando', timeZone: ORLANDO.timezone }
   );
   test(
     'timed in America/New_York with its zone',
@@ -834,7 +855,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     });
   };
   try {
-    await fetchTripPlan({ from: '2026-11-28', to: 'x' });
+    await fetchTripPlan('orlando', { from: '2026-11-28', to: 'x' });
     test('a 400 throws', false, true);
   } catch (error) {
     test(
@@ -1067,8 +1088,8 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     );
   }
   test(
-    'orlandoPlannerHref carries tickets for Parky and the other pages',
-    orlandoPlannerHref({
+    'plannerHrefOn carries tickets for Parky and the other pages',
+    plannerHrefOn('/orlando', {
       from: '2027-02-06',
       to: '2027-02-20',
       tickets: [{ product: 'uor-date-based', days: 3, hopper: 'unsure', start: '2027-02-09' }],
@@ -1110,9 +1131,9 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the UK Universal ticket is the one on sale at its start, both in the overlap week',
     [
-      universalUk14At(CATALOG, '2027-02-07'),
-      universalUk14At(CATALOG, '2027-03-27'),
-      universalUk14At(CATALOG, '2027-05-01'),
+      rollingFortnightAt(STEP, CATALOG, '2027-02-07'),
+      rollingFortnightAt(STEP, CATALOG, '2027-03-27'),
+      rollingFortnightAt(STEP, CATALOG, '2027-05-01'),
     ],
     [
       ['uor-uk-three-park-adventure'],
@@ -1123,15 +1144,15 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the step’s tag reads “not us”: sold outside the US, or none',
     [
-      entryMarket(ticketEntries('walt-disney-world', CATALOG)[1], CATALOG),
-      entryMarket(ticketEntries('universal-orlando', CATALOG)[1], CATALOG),
-      entryMarket(ticketEntries('walt-disney-world', CATALOG)[0], CATALOG),
+      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG),
+      entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG),
+      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG),
     ],
     ['intl', 'intl', null]
   );
   test(
     'the lists keep only what the catalog has',
-    ticketEntries('walt-disney-world', CATALOG).map((e) => e.key),
+    ticketEntries(STEP, 'walt-disney-world', CATALOG).map((e) => e.key),
     ['wdw-dated', 'wdw-uk-14', 'wdw-pass', 'wdw-unsure']
   );
 
@@ -1150,22 +1171,25 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the UK Universal draft resolves by its start; Volcano Bay picks All Parks in the overlap',
     [
-      draftTicket(draft({}), CATALOG, null).ticket?.product,
-      draftTicket(draft({ start: '2027-03-27', addon: true }), CATALOG, null).ticket?.product,
-      draftTicket(draft({ start: '2028-01-05' }), CATALOG, null).issue?.kind,
+      draftTicket(STEP, draft({}), CATALOG, null).ticket?.product,
+      draftTicket(STEP, draft({ start: '2027-03-27', addon: true }), CATALOG, null).ticket?.product,
+      draftTicket(STEP, draft({ start: '2028-01-05' }), CATALOG, null).issue?.kind,
     ],
     ['uor-uk-three-park-adventure', 'uor-uk-all-parks', 'not_on_sale']
   );
   test(
     'a dated draft needs its days; an unanswered hopper plans as not sure',
     [
-      draftTicket(draft({ resort: 'walt-disney-world', entry: 'wdw-dated' }), CATALOG, null).ticket,
+      draftTicket(STEP, draft({ resort: 'walt-disney-world', entry: 'wdw-dated' }), CATALOG, null)
+        .ticket,
       draftTicket(
+        STEP,
         draft({ resort: 'walt-disney-world', entry: 'wdw-dated', days: 4 }),
         CATALOG,
         null
       ).ticket,
       draftTicket(
+        STEP,
         draft({ resort: 'walt-disney-world', entry: 'wdw-dated', days: 4, addon: true }),
         CATALOG,
         null
@@ -1181,16 +1205,18 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     '“Not sure which” plans the strictest product of its length',
     [
       draftTicket(
+        STEP,
         draft({ resort: 'walt-disney-world', entry: 'wdw-unsure', days: 5, hopper: 'no' }),
         CATALOG,
         null
       ).ticket,
       draftTicket(
+        STEP,
         draft({ resort: 'walt-disney-world', entry: 'wdw-unsure', days: 14 }),
         CATALOG,
         null
       ).ticket?.product,
-      draftTicket(draft({ entry: 'uor-unsure', days: 14 }), CATALOG, null).ticket?.product,
+      draftTicket(STEP, draft({ entry: 'uor-unsure', days: 14 }), CATALOG, null).ticket?.product,
     ],
     [
       { product: 'wdw-date-based', days: 5, hopper: 'no', start: '2027-02-07' },
@@ -1201,6 +1227,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'a written ticket opens as its entry in the step',
     ticketDraft(
+      STEP,
       { product: 'wdw-date-based-plus', days: 4, hopper: 'yes', start: null },
       7,
       CATALOG
@@ -1324,7 +1351,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   );
   test(
     'the long stay’s 14-day tickets come without a first day',
-    longStayTickets(suggestions, CATALOG, '2027-02-08'),
+    longStayTickets(STEP, suggestions, CATALOG, '2027-02-08'),
     [
       { product: 'wdw-uk-14-day-magic', days: null, hopper: 'no', start: null },
       { product: 'uor-uk-three-park-adventure', days: null, hopper: 'no', start: null },
@@ -1357,8 +1384,8 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the Hogwarts Express needs both Universal parks planned',
     [
-      needsHogwartsHop(['universal-studios-florida', 'universal-islands-of-adventure']),
-      needsHogwartsHop(['universal-studios-florida']),
+      needsConnectedHop(STEP, ['universal-studios-florida', 'universal-islands-of-adventure']),
+      needsConnectedHop(STEP, ['universal-studios-florida']),
     ],
     [true, false]
   );
@@ -1738,7 +1765,6 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test('a region reduced to its links: the hub, its names, its parks', links, {
     slug: 'orlando',
     name: 'Orlando',
-    hubPath: '/orlando',
     names: [
       'Orlando',
       'Walt Disney World',
@@ -1767,8 +1793,8 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ],
   });
   test(
-    'a region without a hub has no links',
-    [tripRegionHubPath('paris'), tripRegionLinks({ ...REGION, slug: 'paris' })],
+    'a region without a live hub has no links',
+    [tripRegionLinks({ ...REGION, slug: 'paris' }), tripRegionLinks({ ...REGION, slug: 'x' })],
     [null, null]
   );
   test(
@@ -1791,12 +1817,12 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the planner on a park, on a month of a park calendar, and bare',
     [
-      tripPlannerHref(links, { parks: ['magic-kingdom-park'] }),
-      tripPlannerHref(links, {
+      tripPlannerHref(links.slug, 'de', { parks: ['magic-kingdom-park'] }),
+      tripPlannerHref(links.slug, 'de', {
         parks: ['epcot'],
         when: monthSearchRange({ year: 2027, month: 3 }, '2026-11-13'),
       }),
-      tripPlannerHref(links),
+      tripPlannerHref(links.slug, 'de'),
     ],
     [
       '/orlando?parks=magic-kingdom-park#planner',

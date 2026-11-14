@@ -88,14 +88,6 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'share',
   ],
   '/news/page/[n]': ['nearby', 'parkCard'],
-  '/orlando/[[...date]]': [
-    'orlando.calendar',
-    'orlando.lanes',
-    'orlando.sheet',
-    'orlandoPlanner',
-    'parks.seasons',
-  ],
-  '/orlando/best-time-to-visit/[[...resort]]': [],
   '/parks': ['explore', 'nearby'],
   '/parks/[continent]': ['explore', 'nearby'],
   '/parks/[continent]/[country]': ['nearby', 'parkCard'],
@@ -172,8 +164,20 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/parks/universal': ['nearby', 'parkCard'],
   '/parky': [],
   '/search': [],
-  '/trip-planner': ['orlando.band', 'parks.weather', 'parks.worksPeriod', 'planner'],
+  '/trip-planner': ['parks.weather', 'parks.worksPeriod', 'planner', 'tripHub.band'],
   '/trip-planner/shared': ['planner'],
+  '/trip-regions/[region]/[[...date]]': [
+    'parks.seasons',
+    'tripHub.calendar',
+    'tripHub.lanes',
+    'tripHub.sheet',
+    'tripPlanner',
+    'tripRegion.hub.calendar',
+    'tripRegion.hub.lanes',
+    'tripRegion.hub.sheet',
+    'tripRegion.planner',
+  ],
+  '/trip-regions/[region]/best-time-to-visit/[[...resort]]': [],
   '/ui': [
     'attractions',
     'nearby',
@@ -199,7 +203,6 @@ export const LAZY_CHUNK_NAMESPACES = [
   'attractions.meta',
   'attractions.ropeDrop',
   'nearby',
-  'orlando.band',
   'parkBestDays.weekdays',
   'parkBestDays.weekend',
   'parkCard',
@@ -215,6 +218,7 @@ export const LAZY_CHUNK_NAMESPACES = [
   'pushAlerts.rideDialog',
   'pushAlerts.showBell',
   'pushAlerts.showDialog',
+  'tripHub.band',
 ] as const;
 
 export type RouteMessageKey = keyof typeof ROUTE_MESSAGE_NAMESPACES;

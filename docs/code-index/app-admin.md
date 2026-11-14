@@ -923,7 +923,7 @@ Route `/admin/system` (page).
 
 Route `/admin/tickets` (page).
 
-- `default (TicketsPage)` _component_: A region's ticket catalog for the trip planner, Orlando's for now: every product with the rules the plan computes with and where it is bought, kept here instead of in a deploy.
+- `default (TicketsPage)` _component_: A region's ticket catalog for the trip planner: every product with the rules the plan computes with and where it is bought, kept here instead of in a deploy.
 
 ### [`traffic/_components/block-event-button.tsx`](../../app/admin/traffic/_components/block-event-button.tsx)
 

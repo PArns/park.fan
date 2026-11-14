@@ -59,7 +59,7 @@ import {
 } from '@/components/parks/park-calendar-month-summary';
 import { ParkCalendarMonthIndex } from '@/components/parks/park-calendar-month-index';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 import { ParkYearlyOutlookSection } from '@/components/parks/park-yearly-outlook-section';
 import { ParkYearlyOutlookSkeleton } from '@/components/parks/park-yearly-outlook-skeleton';
 import { parkDayOf } from '@/lib/utils/park-day';

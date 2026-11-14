@@ -10,7 +10,7 @@ import { useHeroBrowseParks, type HeroBrowseParks } from '@/lib/hooks/use-hero-b
 import { usePostSearchIndex } from '@/lib/hooks/use-post-search-index';
 import { useTripRegionLinks } from '@/lib/hooks/use-trip-region-links';
 import { searchPostsBySection, type PostSearchSection } from '@/lib/navigation/post-search';
-import { matchTripRegion, type TripRegionLinks } from '@/lib/orlando/trip-links';
+import { matchTripRegion, type TripRegionLinks } from '@/lib/trip-regions/trip-links';
 import { rankByMatch } from '@/lib/utils/search-ranking';
 import { SEARCH_SETTLE_MS } from '@/lib/analytics/search-session';
 

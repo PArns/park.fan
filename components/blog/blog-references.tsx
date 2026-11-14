@@ -2,7 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { MapPin, Activity } from 'lucide-react';
 import { BlogParkCardLive } from '@/components/blog/blog-park-card-live';
 import { BlogAttractionCardLive } from '@/components/blog/blog-attraction-card-live';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 import {
   extractInlineRefs,
   resolveAttraction,

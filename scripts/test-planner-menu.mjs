@@ -1,11 +1,13 @@
 /**
- * Unit tests for the header's planner band: the trip-planner regions (`lib/navigation/trip-regions.ts`),
- * the band's data (`lib/navigation/planner-menu.ts`), the quick starts into the day planner
+ * Unit tests for the header's planner band: the live trip regions it lists (`LIVE_TRIP_REGIONS`,
+ * `lib/trip-regions/registry.ts`), the band's parks (`lib/navigation/planner-menu.ts`), the quick
+ * starts into the day planner
  * (`lib/planner/quick-start.ts`) and the plain-click rule they share with the park header's planner
  * link (`lib/utils/plain-click.ts`).
  *
- * The regions are a list a new region joins in one entry, and three readers take it on trust: the
- * band, the phone sheet and `pnpm check:header-links`. The parks are the locale's most opened,
+ * The regions are the registry's live ones, and three readers take them on trust: the band, the
+ * phone sheet and `pnpm check:header-links`; their words are each region's `tripRegions.<slug>.nav`
+ * and their park counts the API's (the layout reads them, so they are not tested here). The parks are the locale's most opened,
  * without an entry that had no published hours ahead when the build read the geo structure
  * (Traumatica once its Halloween run is over). A quick start is a link to a park's page whose plain
  * click also names the park to the planner and asks for its wizard; a modified click must stay the
@@ -19,11 +21,12 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { TRIP_REGIONS, tripRegion, tripRegionText } from '../lib/navigation/trip-regions.ts';
+import { LIVE_TRIP_REGIONS, tripRegionConfig } from '../lib/trip-regions/registry.ts';
+import { TRIP_PLANNER_ID, tripRegionPath } from '../lib/trip-regions/paths.ts';
 import {
   PLANNER_MENU_PARKS,
-  getPlannerMenu,
   pickPlannerParks,
+  plannerParks,
 } from '../lib/navigation/planner-menu.ts';
 import { EVENT_PARK_SLUGS } from '../lib/parks/event-parks.ts';
 import { MOST_READ_SEED } from '../lib/blog/most-read-seed.generated.ts';
@@ -48,54 +51,31 @@ const test = (name, actual, expected) => {
 };
 
 // ── The regions ──────────────────────────────────────────────────────────────
-test('at least one region', TRIP_REGIONS.length > 0, true);
-test('region ids are unique', new Set(TRIP_REGIONS.map((r) => r.id)).size, TRIP_REGIONS.length);
-for (const region of TRIP_REGIONS) {
-  // Locale-relative: the i18n `Link` adds the prefix, and check:header-links adds it too.
-  const relative = (href) => /^\/(?!(de|en|fr|it|nl|es)\/)/.test(href);
-  test(`${region.id}: the planner link is locale-relative`, relative(region.href), true);
-  test(`${region.id}: the calendar link is locale-relative`, relative(region.calendarHref), true);
+test('at least one live region', LIVE_TRIP_REGIONS.length > 0, true);
+for (const region of LIVE_TRIP_REGIONS) {
   test(
-    `${region.id}: the photo is in public/`,
-    existsSync(join(root, 'public', region.photo.replace(/^\//, ''))),
+    `${region.slug}: the photo is in public/`,
+    Boolean(region.photo) && existsSync(join(root, 'public', region.photo.replace(/^\//, ''))),
     true
   );
-  test(`${region.id}: found by id`, tripRegion(region.id) === region, true);
-  test(`${region.id}: its facts are counts`, region.parkCount > 0 && region.maxDays > 0, true);
+  test(`${region.slug}: a scene for its tile`, typeof region.scene, 'function');
+  test(`${region.slug}: found by slug`, tripRegionConfig(region.slug) === region, true);
 }
 test(
   'Orlando opens its hub on the planner chapter',
-  tripRegion('orlando')?.href,
+  `${tripRegionPath('orlando', 'de')}#${TRIP_PLANNER_ID}`,
   '/orlando#planner'
 );
-// The region route's park list, as the hub's tests snapshot it: the card's „16 Parks" is its length.
-const orlandoRegion = JSON.parse(
-  readFileSync(join(root, 'scripts/fixtures/orlando/region.json'), 'utf8')
-);
-test(
-  'Orlando counts the parks its region route lists',
-  tripRegion('orlando')?.parkCount,
-  orlandoRegion.parks.length
-);
-test('Orlando is Floride in French', tripRegionText(tripRegion('orlando').area, 'fr'), 'Floride');
-test('one name for every language', tripRegionText('Orlando', 'nl'), 'Orlando');
-const japan = { en: 'Japan', de: 'Japan', fr: 'Japon', it: 'Giappone', nl: 'Japan', es: 'Japón' };
-test('a per-locale name is the locale’s', tripRegionText(japan, 'it'), 'Giappone');
-test('an unknown locale reads English', tripRegionText(japan, 'pt'), 'Japan');
+const french = JSON.parse(readFileSync(join(root, 'messages/fr.json'), 'utf8'));
+test('Orlando is Floride in French', french.tripRegions.orlando.nav.area, 'Floride');
 
 // ── The band's parks ─────────────────────────────────────────────────────────
 for (const locale of locales) {
-  const { parks, regions } = getPlannerMenu(locale);
+  const parks = plannerParks(locale);
   const ended = new Set(
     (MOST_READ_SEED.parks?.[locale] ?? [])
       .filter((park) => park.hasHoursAhead === false)
       .map((park) => park.href)
-  );
-  test(`${locale}: one card per region`, regions.length, TRIP_REGIONS.length);
-  test(
-    `${locale}: the region's photo resolves`,
-    regions.every((r) => r.photo !== null),
-    true
   );
   test(`${locale}: at most ${PLANNER_MENU_PARKS} parks`, parks.length <= PLANNER_MENU_PARKS, true);
   test(`${locale}: some parks`, parks.length > 0, true);

@@ -469,8 +469,11 @@ within 15 minutes (`TICKET_PUBLISH_DELAY`). The pure half is `lib/admin/tickets.
   links, the suggestion rank, „Regeln unsicher“ for `confidence: low`, and the clicks of 30 days.
   Archive asks first, with a reason for the audit log (`POST …/archive`); an archived product stays
   in the list, dimmed, with a button that takes it back (`PATCH { active: true }`).
+- **The region** is a switch over every region of the registry, a coming one too, so its catalog
+  is filled before its pages go live; the choice is the address (`?region=southern-california`), the
+  first region without one ([trip regions](trip-regions.md)).
 - **The parks and resorts** come from the open region route through the site's relay
-  (`/api/trip-regions/orlando`), since the admin catalog names them by key only. The list waits
+  (`/api/trip-regions/<region>`), since the admin catalog names them by key only. The list waits
   for it as for the catalog, and the form cannot open without it.
 - **The form** has five parts: basics, rules, sale, links, sources and notes. The days are a fixed
   number, a range or unlimited; the window table has a row per length, and a new length starts at
@@ -500,7 +503,7 @@ within 15 minutes (`TICKET_PUBLISH_DELAY`). The pure half is `lib/admin/tickets.
   `SiteEventMap`), read as the event crosstab of the last 30 days, product against host, and
   against seller where two links of a product share a host (`useTicketClicks`, `ticketClicks`). A
   link is matched by its host and seller as the planner spells them (`hostProp`, `sellerProp` in
-  `lib/orlando/plan-analytics.ts`), so a seller with an apostrophe still finds its clicks. A figure
+  `lib/trip-regions/plan-analytics.ts`), so a seller with an apostrophe still finds its clicks. A figure
   leads to the event's page, opened on the same table. An event nobody has sent is 0; a read that
   failed, or a product the table folded into „Übrige“ (30 values per side), is a dash, never 0.
   The admin's analytics reads cannot filter an event by a property, so the figures depend on the

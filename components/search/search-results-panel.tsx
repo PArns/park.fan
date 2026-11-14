@@ -38,7 +38,7 @@ import type { GlossarySearchItem } from '@/lib/hooks/use-search-results';
 import type { SearchSession } from '@/lib/analytics/search-session';
 import type { SearchResultItem } from '@/lib/api/types';
 import type { PostSearchEntry } from '@/lib/navigation/blog-menu';
-import type { TripRegionLinks } from '@/lib/orlando/trip-links';
+import type { TripRegionLinks } from '@/lib/trip-regions/trip-links';
 
 interface SearchResultsPanelProps {
   query: string;

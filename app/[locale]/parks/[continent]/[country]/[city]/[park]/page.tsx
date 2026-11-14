@@ -42,7 +42,7 @@ import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
-import { TripPlannerBand } from '@/components/orlando/trip-planner-band';
+import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';

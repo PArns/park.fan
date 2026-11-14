@@ -234,12 +234,6 @@
       "label": "Wait times and crowd calendars of popular parks",
       "waits": "Wait times",
       "calendar": "Crowd calendar"
-    },
-    "orlando": {
-      "kicker": "Orlando",
-      "title": "Orlando: which park on which day",
-      "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
-      "link": "Orlando Crowd Calendar"
     }
   },
   "footer": {
@@ -397,33 +391,17 @@
     "nearby": "Near you",
     "preferences": "Settings",
     "assistantOpen": "Ask Parky",
-    "assistantClose": "Close Parky",
-    "orlando": "Orlando Crowd Calendar",
-    "orlandoHint": "Which park on which day, and a planner for your whole trip."
+    "assistantClose": "Close Parky"
   },
-  "orlando": {
-    "title": "Orlando Crowd Calendar",
-    "monthTitle": "Orlando Crowd Calendar {month}",
-    "metaTitle": "Orlando Crowd Calendar & Trip Planner",
-    "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
-    "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
-    "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
-    "metaDescriptionPlain": "Which park on which day at Walt Disney World, Universal with Epic Universe and SeaWorld, and a planner that puts your parks on your dates.",
-    "metaDescriptionMonth": "Quietest Orlando days in {month}: {verdict}. Every park day by day, Epic Universe included.",
-    "metaDescriptionMonthPlain": "Orlando in {month}, day by day: the shortest lines at Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
-    "lead": "With one hotel room in Orlando, you've got eight theme parks and four water parks on your doorstep.",
-    "leadMonth": "Which park has the shortest lines on which day of {month}, at Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
+  "tripHub": {
     "scroll": "To the calendar",
     "introLabel": "How to read the calendar",
     "intro": "Each square is one park on one day. The number is the wait we expect at that park's big rides at the busiest time of day, and it's what you compare parks by. The colour marks how that day compares with a typical day at the same park.",
-    "opening": "Without traffic, EPCOT to Universal Studios is a 25-minute drive, and from a hotel in Lake Buena Vista each of the eight theme parks is under half an hour away, Magic Kingdom's ferry or monorail included. LEGOLAND in Winter Haven is just under an hour, Busch Gardens and Adventure Island in Tampa about an hour and a half. Those three, Discovery Cove and the four water parks make sixteen, and you won't change hotels for any of them. The calendar below has all sixteen, day by day.",
     "nextDays": "Next 30 days",
     "dayTripsGroup": "Day trips",
     "lastYearBanner": "Our forecast reaches {date}. The days after it show the same weekday last year as we measured it, marked “last year”.",
     "lastYearBannerNoDate": "Some of these days are past our forecast. They show the same weekday last year as we measured it, marked “last year”.",
-    "monthIndexLabel": "Orlando by month",
     "glance": {
-      "title": "Shortest lines on <time>{date}</time>, Orlando time",
       "minutes": "about {minutes} min",
       "closesEarly": "closes at {time} for an evening event",
       "earlyElsewhere": "({park} closes at {time} for an evening event)",
@@ -443,7 +421,6 @@
       "lastYear": "Last year",
       "howTo": "How to read this",
       "minutesLong": "The number in a square is the wait we expect at that park's big rides, each at its busiest time of day, averaged over those rides. It isn't the wait at every hour: in the morning and the evening the lines are shorter.",
-      "colourLong": "The colour compares a day with the same park's typical day. That is why a green Magic Kingdom at 40 minutes and a green EPCOT at 60 are both good days, each for its own park. The ring marks the park with the shortest lines at each resort that day. A park that closes early for day guests can lose the ring to a full day with a similar wait.",
       "horizonLong": "The forecast covers the next 60 days. After that our outlook runs to {date}, with a wider error. Days past it show the same weekday last year, as we measured it.",
       "horizonLongNoDate": "The forecast covers the next 60 days. After that our outlook runs on with a wider error, and days past it show the same weekday last year, as we measured it.",
       "statesLong": "A hatched square is closed, as the park published it. A square with a dot carries the forecast or last year's figure, but the park has not published its hours for that day yet, so the hours are not counted. An empty square has no figure. A dash means the park is open but has no queues worth forecasting, as at most water parks.",
@@ -456,7 +433,6 @@
       "unavailable": "The calendar could not be loaded. Try again in a few minutes.",
       "sources": "Waits and levels: park.fan forecast of {date}. Hours as the parks publish them. Drive times without traffic, map data: {attribution}.",
       "dayPlanner": "Plan one park day in the day planner",
-      "caption": "Orlando's parks, {from} to {to}: the big rides' wait at their busiest, in minutes",
       "parkColumn": "Park",
       "filterLabel": "Parks shown",
       "filterAll": "All parks",
@@ -485,14 +461,10 @@
     "lanes": {
       "summaryLabel": "Events",
       "nights": "{name}: {count, plural, =1 {# night} other {# nights}}",
-      "break": "US school holidays: {name}, {dates}",
       "expected": "dates expected",
-      "unnamedBreak": "US school holidays",
-      "none": "No events or US school holidays in these days.",
       "allDays": "every day"
     },
     "sheet": {
-      "kicker": "Orlando · one day",
       "intro": "At each resort the best park comes first: shortest lines, early closings counted. Minutes: the big rides at their busiest.",
       "stayingAt": "Staying at",
       "minutes": "{minutes} min",
@@ -501,15 +473,12 @@
       "closedFor": "Closed: {name}",
       "lastYear": "Last year's measured day; the forecast does not reach this date yet.",
       "outlook": "Outlook: a wider error than the forecast.",
-      "earlyEntry": "Early Entry from {time} for Disney hotel guests",
-      "earlyAdmission": "Early Park Admission from {time} for Universal hotel guests",
       "ticketedEvening": "{name} from {time}: day guests leave at {leave}",
       "eveningEvent": "Evening event",
       "shorterDay": "Shorter day: day guests leave at {leave}",
       "extendedEvening": "Extended Evening Hours until {time} for deluxe hotel guests",
       "expected": "dates expected",
       "travel": "From {area}: about {minutes} min by car, without traffic",
-      "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min {via, select, ttc {by monorail or ferry} other {by shuttle}}, {total} min in all, without traffic",
       "bigRides": "The big rides",
       "ridesLoading": "Loading the rides …",
       "ridesNone": "No ride figures for this day.",
@@ -519,14 +488,7 @@
       "ahead": "Ahead of {park}, which closes at {time} for day guests"
     },
     "when": {
-      "kicker": "Disney World and Universal",
-      "title": "Best time to visit Orlando in {year}",
-      "titleNoYear": "Best time to visit Orlando",
-      "hint": "The 10-day trips with the shortest lines at the seven big parks of Walt Disney World and Universal.",
-      "pageLink": "Best time to visit Orlando in {year}",
-      "pageLinkNoYear": "Best time to visit Orlando",
       "none": "The quietest trips of the year could not be loaded.",
-      "sentence": "Quietest {days}-day trips for Disney and Universal: {windows}.",
       "lastYearNote": "Dates past our forecast are planned on last year's measured crowds.",
       "rank": "No. {rank}",
       "figure": "Big rides: about {minutes} min",
@@ -557,7 +519,6 @@
       "quietest_in_window": "the shortest lines of the period",
       "weekday": "weekday",
       "holiday_ends": "after the holidays",
-      "school_break": "during US school holidays",
       "closes_early": "day guests leave at {time}",
       "extended_evening": "Extended Evening Hours",
       "early_entry": "Early Entry for hotel guests",
@@ -574,74 +535,11 @@
       "eventNights": "{name} ({count, plural, =1 {# night} other {# nights}})",
       "eventExpected": "{name} (dates expected)"
     },
-    "method": {
-      "title": "How the forecast works",
-      "summary": "Every figure here comes from wait times park.fan measures every five minutes, a forecast built on them, and the hours the parks publish. Open a question for the details.",
-      "sources": {
-        "title": "Where do the numbers come from?",
-        "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars. We check seasons and parties by hand."
-      },
-      "minutes": {
-        "title": "What do the minutes mean?",
-        "body": "For each park we forecast the wait at its big rides, each at its busiest time of day, and average them. It is the one number we compare parks by. In the morning and the evening lines are shorter, so it is no promise for every hour."
-      },
-      "horizon": {
-        "title": "How far ahead does it reach?",
-        "body": "The forecast covers the next 60 days. After that the outlook runs to {date} with a wider error. Past it, a day shows the same weekday last year as we measured it, and says “last year”.",
-        "bodyNoDate": "The forecast covers the next 60 days. After that the outlook runs on with a wider error. Past it, a day shows the same weekday last year as we measured it, and says “last year”."
-      },
-      "error": {
-        "title": "How close does it get?",
-        "body": "The further ahead the day, the further off the forecast can be. Once you plan a trip, you'll find next to the result how many minutes the forecast for one ride on one day can be off. Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
-      },
-      "travel": {
-        "title": "How are the drive times calculated?",
-        "body": "Each drive time is by car without traffic, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center, and the monorail or the ferry takes about another 15 minutes to the gate. For Volcano Bay you park in Universal's garages and take the shuttle, about another 15 minutes. Map data: {attribution}."
-      },
-      "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>."
-    },
-    "faq": {
-      "title": "Questions about Orlando crowds",
-      "quietest": {
-        "q": "When is Orlando least crowded in the next few weeks?",
-        "resort": "At {resort} the shortest lines are on {days}.",
-        "day": "{date} at {park}, about {minutes} min",
-        "note": "The calendar above shows every day, with the park that has the shortest lines at each resort.",
-        "qMonth": "When is Orlando least crowded in {month}?"
-      },
-      "party": {
-        "q": "Which park should I visit on a Magic Kingdom party night?",
-        "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min compared with {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom on those days, or come with a party ticket."
-      },
-      "epic": {
-        "q": "Is Epic Universe busier on weekends?",
-        "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period you wait about {weekend} min at its big rides at their busiest on Saturdays and Sundays, and about {weekday} min on weekdays."
-      },
-      "distance": {
-        "q": "How far is Universal from Walt Disney World?",
-        "a": "Universal Studios to EPCOT is about {epcot} minutes by car without traffic, and to Magic Kingdom's car park about {magic}. From there the monorail or the ferry takes about {transfer} minutes to the gate, {total} minutes in all. Map data: {attribution}."
-      },
-      "early": {
-        "q": "Do I need Early Entry?",
-        "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {disney} minutes before everybody else, and guests of Universal's hotels {universal} minutes early at Universal's theme parks. If you choose such a hotel in the trip planner, the early opening counts in your plan."
-      },
-      "green": {
-        "q": "Why can a park with longer lines be green?",
-        "a": "The colour compares a day with the same park's typical day, not with other parks. EPCOT at 60 minutes can be a quiet day for EPCOT, and Magic Kingdom at 50 a busy one for Magic Kingdom. To compare two parks, read the minutes."
-      },
-      "lastYear": {
-        "q": "What does “last year” mean on a day?",
-        "a": "Our forecast does not reach that day yet. Until it does, the day shows the same weekday last year as we measured it. Read it as a sign of how busy that time of year was, not as a forecast."
-      }
-    },
     "next": {
-      "title": "Several days in Orlando?",
       "body": "Give the planner your dates and parks, and it puts each park on the day its lines are shortest.",
       "parkCalendar": "{park} Crowd Calendar"
     },
     "dataset": {
-      "name": "Orlando theme park crowd calendar, {period}",
-      "description": "Per park and day at Walt Disney World, Universal Orlando, SeaWorld and the day trips: the expected wait at the big rides at their busiest, the crowd level against the park's typical day, and the opening hours, {period}.",
       "varWait": "Expected wait at the big rides",
       "varCrowd": "Crowd level",
       "varHours": "Opening hours"
@@ -2374,22 +2272,7 @@
       "guidesLead": "Our visit guides to these parks:"
     }
   },
-  "orlandoBestTime": {
-    "title": {
-      "orlando": "Best time to visit Orlando in {year}",
-      "disney-world": "Best time to visit Disney World in {year}",
-      "universal-orlando": "Best time to visit Universal Orlando in {year}"
-    },
-    "name": {
-      "orlando": "Best time to visit Orlando",
-      "disney-world": "Best time to visit Disney World",
-      "universal-orlando": "Best time to visit Universal Orlando"
-    },
-    "resort": {
-      "orlando": "Disney and Universal",
-      "disney-world": "Walt Disney World",
-      "universal-orlando": "Universal Orlando"
-    },
+  "tripBestTime": {
     "switcher": "Best time by resort",
     "metaDescription": "Quietest {days}-day trips in {year}: {windows}. Then each month's big-ride waits, events, school breaks and usual weather.",
     "metaDescriptionShort": "Quietest {days}-day trips in {year} at {parks}: {windows}.",
@@ -2402,11 +2285,6 @@
       "events": "Events: {list}",
       "cautions": "Worth knowing",
       "flat": "No week stands out from {from} to {to}: about {minutes} min throughout."
-    },
-    "intro": {
-      "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
-      "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
-      "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
     },
     "strip": {
       "title": "The year at a glance",
@@ -2441,7 +2319,6 @@
       "wait": "Big rides about {minutes} min",
       "label": {
         "events": "Events",
-        "usBreaks": "US school holidays (Orlando)",
         "euBreaks": "European school holidays",
         "weather": "Usual weather",
         "hours": "Opening hours"
@@ -2456,7 +2333,6 @@
         "unknown": "Not published yet"
       },
       "partyNights": "{count, plural, =1 {1 party night} other {# party nights}} with an early close",
-      "hurricane": "Hurricane season",
       "statesOf": "{count} of {total} German states",
       "euUnknown": "not known yet",
       "details": "Dates and events"
@@ -2466,8 +2342,7 @@
       "lead": "The three quietest and the three busiest whole weeks of {year}, with what is on in each.",
       "best": "Quietest weeks",
       "worst": "Busiest weeks",
-      "week": "Week of {date}",
-      "noBreak": "No US school holidays in Orlando."
+      "week": "Week of {date}"
     },
     "holidays": {
       "title": "Travelling in school holidays?",
@@ -2475,30 +2350,6 @@
       "note": "Only breaks of {days} days or more are listed, weekends included.",
       "through": "The school calendars run to {date}. Later breaks aren't in yet.",
       "none": "No break of {days} days or more in {year}."
-    },
-    "faq": {
-      "title": "Questions about when to go",
-      "quietQ": {
-        "orlando": "When is Orlando least crowded in {year}?",
-        "disney-world": "When is Disney World least crowded in {year}?",
-        "universal-orlando": "When is Universal Orlando least crowded in {year}?"
-      },
-      "quietA": "The {days}-day trip from {date} has the shortest lines: the big rides about {minutes} min at their busiest, {percent}% below the {year} average. Next come {others}.",
-      "christmasQ": "Is Christmas busy?",
-      "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
-      "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
-      "partyQ": "When are the party nights?",
-      "partyA": "{list}. On those evenings the park closes early for day guests, which is why the trip planner keeps your full park days off them.",
-      "partyItem": "{name} ({park}): {dates}, {status}",
-      "hurricaneQ": "What about hurricane season?",
-      "hurricaneA": "It runs from 1 June to 30 November. Whether a storm hits your trip you'll only know a few days ahead, once it has formed and been named. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
-      "firstQ": {
-        "orlando": "Disney or Universal first?",
-        "disney-world": "Which Disney park should come first?",
-        "universal-orlando": "Which Universal park should come first?"
-      },
-      "firstA": "It depends on the dates: the planner puts each park on its quietest day of the trip. For the trip from {date} that is {order}.",
-      "firstItem": "{park} on {date}"
     },
     "dataset": {
       "name": "Big-ride waits per week and month at {parks}, {year}",
@@ -3234,7 +3085,7 @@
       "open": "Open planner"
     }
   },
-  "orlandoPlanner": {
+  "tripPlanner": {
     "setup": {
       "dates": "Dates",
       "datesEmpty": "Choose arrival and departure",
@@ -3248,7 +3099,6 @@
       "plan": "Plan",
       "find": "Find dates",
       "done": "Done",
-      "start": "Plan my Orlando trip",
       "close": "Close",
       "sheetHint": "Your choice changes the plan below."
     },
@@ -3302,7 +3152,6 @@
       "fewer": "{park}: one day fewer",
       "more": "{park}: one more day",
       "moreParks": "More parks",
-      "moreHint": "Water parks, SeaWorld and day trips",
       "moreChosen": "{count, plural, =1 {1 chosen} other {# chosen}}",
       "drive": "About {minutes} min by car",
       "closed": "Closed on your dates",
@@ -3313,38 +3162,12 @@
     },
     "options": {
       "hotel": "Where you sleep",
-      "hotelLabel": {
-        "disney": "Disney hotel",
-        "disney_deluxe": "Disney deluxe hotel",
-        "universal": "Universal hotel",
-        "universal_premier": "Universal Premier hotel",
-        "offsite": "Somewhere else"
-      },
-      "hotelHint": {
-        "disney": "Early Entry at the Disney parks, 30 minutes before opening",
-        "disney_deluxe": "Early Entry, plus Extended Evening Hours on some nights",
-        "universal": "Early Park Admission, an hour before opening",
-        "universal_premier": "Early Park Admission, and Express at Universal Studios and Islands of Adventure",
-        "offsite": "No early entry"
-      },
-      "hotelShort": {
-        "disney": "Disney hotel",
-        "disney_deluxe": "Disney deluxe hotel",
-        "universal": "Universal hotel",
-        "universal_premier": "Universal Premier",
-        "offsite": "hotel elsewhere"
-      },
       "area": "Hotel area, for drive times",
       "areaNone": "Not given",
       "areaNoneHint": "The plan then shows no drive times.",
       "fromArea": "from {area}",
-      "fireworks": "Do you want to see Magic Kingdom’s fireworks?",
       "fireworksWant": "Yes",
-      "fireworksWantHint": "Your Magic Kingdom days avoid party nights, when day guests have to leave early.",
       "fireworksAny": "Doesn’t matter",
-      "fireworksAnyHint": "A party night can be a Magic Kingdom day if its shorter lines make up for the shorter day.",
-      "fireworksWantShort": "Magic Kingdom fireworks",
-      "blocks": "Keep Disney days and Universal days together",
       "blocksHint": "Each resort’s days in one run, so you drive between the resorts less.",
       "blocksOn": "resorts together",
       "blocksOff": "resorts mixed",
@@ -3363,9 +3186,7 @@
       "hopHint": "Two parks of one resort on one day, when the trip has fewer days than park visits.",
       "hopOn": "park hopping",
       "evenings": "Plan evenings",
-      "eveningsHint": "Where a park closes early, the plan suggests a second park or Disney Springs and CityWalk for the evening.",
       "eveningsOff": "no evenings",
-      "blocksTickets": "Disney days and Universal days",
       "blocksAuto": "Mixed only where it saves time",
       "blocksAutoHint": "Inside your tickets’ dates, mixed where that saves at least 3 min a ride.",
       "blocksAlways": "Always together",
@@ -3451,12 +3272,7 @@
         "early_entry": "Early Entry for you from {time}",
         "early_park_admission": "Early Park Admission for you from {time}"
       },
-      "earlyOthers": {
-        "early_entry": "Early Entry from {time} for Disney hotel guests",
-        "early_park_admission": "Early Park Admission from {time} for Universal hotel guests"
-      },
       "eveningYours": "Extended Evening Hours for you until {time}",
-      "eveningOthers": "Extended Evening Hours until {time} for Disney deluxe hotel guests",
       "partyTicket": "{name}, separate ticket",
       "party": "{name}",
       "shortDay": "A shorter day for day guests",
@@ -3470,7 +3286,6 @@
         "walk": "About {minutes} min on foot from {area}.",
         "bus": "About {minutes} min by shuttle from {area}."
       },
-      "transferTtc": "Then about {minutes} min by monorail or ferry from the Transportation and Ticket Center.",
       "transfer": "Then about {minutes} min from the car park to the gate.",
       "between": {
         "drive": "Between the parks: about {minutes} min by car.",
@@ -3493,7 +3308,6 @@
       "quietest_in_window": "The quietest of your days for {park}.",
       "runner_up_close": "Another of your days is less than 5 minutes behind; this one fits the rest of the plan better.",
       "party_night": "A party night.",
-      "express_included": "Express is included with your hotel here, so the lines count for less.",
       "extended_evening": "Your hotel gets Extended Evening Hours on this day.",
       "early_park_admission": "Your hotel gets Early Park Admission on this day.",
       "early_entry": "Your hotel gets Early Entry on this day.",
@@ -3515,7 +3329,6 @@
       "long_streak": "More park days in a row than the rest rule allows; your choice of parks left no room for a break."
     },
     "relaxed": {
-      "blocks_relaxed": "Disney days and Universal days couldn’t all stay together on these dates.",
       "streak_relaxed": "Your parks need more days in a row than the rest rule allows."
     },
     "unplaced": {
@@ -3554,7 +3367,6 @@
       "manual": "Copy the link by hand:"
     },
     "ics": {
-      "calendarName": "Orlando trip {range}",
       "wait": "Big rides about {minutes} min",
       "link": "Plan: {url}"
     },
@@ -3570,16 +3382,13 @@
       "details": "Details",
       "plan": "Plan these dates",
       "reason": {
-        "no_school_break": "No US school holidays.",
         "after_holidays": "Right after the holidays.",
-        "before_spring_break": "Before the US spring break crowds.",
         "festival": "A festival runs on these days.",
         "long_days": "Long opening hours.",
         "mild_weather": "Usually mild weather."
       },
       "warning": {
         "party_nights": "{count, plural, =1 {1 party night} other {# party nights}}: day guests have to leave early then.",
-        "school_break": "US school holidays.",
         "water_park_closed": "A water park you chose is closed for its season.",
         "hurricane_season": "Hurricane season (June to November).",
         "hours_not_published": "Not all hours are published yet.",
@@ -3634,27 +3443,6 @@
       "yes": "Yes, I have tickets",
       "nextDates": "Next: dates",
       "yours": "Your tickets",
-      "combo": {
-        "title": "Disney and Universal Combo Ticket",
-        "hint": "One package, two tickets: Disney 14 park days within 18 days, Universal 14 days in a row, both from the day you chose.",
-        "lite": "For arrivals from {from} to {to} it is the Lite version, without Volcano Bay."
-      },
-      "resort": {
-        "walt-disney-world": "Walt Disney World",
-        "universal-orlando": "Universal Orlando",
-        "seaworld-orlando": "SeaWorld, Aquatica, Busch Gardens",
-        "day-trips": "LEGOLAND Florida"
-      },
-      "resortShort": {
-        "walt-disney-world": "Disney",
-        "universal-orlando": "Universal",
-        "seaworld-orlando": "SeaWorld",
-        "day-trips": "LEGOLAND"
-      },
-      "hopperName": {
-        "disney": "Park Hopper",
-        "universal": "park-to-park"
-      },
       "add": "Add ticket",
       "addLabel": "Add a {resort} ticket",
       "addAnother": "Add another {resort} ticket",
@@ -3665,126 +3453,6 @@
       "changeLabel": "Change the {name}",
       "close": "Close",
       "max": "{count} tickets at most.",
-      "mixNote": "Each ticket keeps its own dates. Where both are valid, the plan mixes Disney and Universal days only where that saves at least 3 min a ride.",
-      "market": {
-        "intl": "Sold outside the US"
-      },
-      "entry": {
-        "wdw-dated": {
-          "title": "Date-based ticket, 1 to 10 days",
-          "hint": "From Disney’s US site, a Disney hotel package or most sellers. With or without Park Hopper."
-        },
-        "wdw-uk-14": {
-          "title": "14-Day Magic Ticket",
-          "hint": "14 park days within 18 days. Park hopping and water parks included."
-        },
-        "wdw-uk-7": {
-          "title": "7-Day Magic Ticket",
-          "hint": "7 park days within 15 days. Park hopping and water parks included."
-        },
-        "wdw-4-park": {
-          "title": "4-Park Magic Ticket",
-          "hint": "One day in each theme park within 6 days, no hopping. First day in {range}."
-        },
-        "wdw-pass": {
-          "title": "Annual pass",
-          "hint": "Incredi-Pass, Sorcerer, Pirate or Pixie Dust Pass."
-        },
-        "wdw-unsure": {
-          "title": "Not sure which",
-          "hint": "Tell us how many days it has and whether it has Park Hopper."
-        },
-        "uor-dated": {
-          "title": "Date-based ticket, 1 to 5 days",
-          "hint": "From Universal’s US site or most sellers. Base or park-to-park, Epic Universe from 3 days."
-        },
-        "uor-uk-14": {
-          "title": "14-day ticket",
-          "hint": "All Parks or Three Park Adventure Ticket: every day for 14 days in a row, park-to-park, Epic Universe included."
-        },
-        "uor-epic": {
-          "title": "With one Epic Universe day",
-          "hint": "1-Day + 1-Day Epic Universe, or the 2-Day Park-to-Park + 1 Day Epic Universe offer."
-        },
-        "uor-1-day": {
-          "title": "1-day ticket for Epic Universe or Volcano Bay",
-          "hint": "One park on one day."
-        },
-        "uor-pass": {
-          "title": "Annual pass",
-          "hint": "Seasonal, Power, Preferred or Premier. Epic Universe is in none of them."
-        },
-        "uor-unsure": {
-          "title": "Not sure which",
-          "hint": "Tell us how many days it has and whether it has park-to-park."
-        },
-        "sw-1-day": {
-          "title": "Single-day ticket",
-          "hint": "One visit to SeaWorld Orlando or Busch Gardens Tampa Bay."
-        },
-        "sw-two-park": {
-          "title": "Two Park Ticket",
-          "hint": "SeaWorld and Aquatica, or SeaWorld and Busch Gardens, one visit each within 14 days."
-        },
-        "sw-three-park": {
-          "title": "Three-Day, Three Park Ticket",
-          "hint": "3 visits to SeaWorld, Aquatica, Busch Gardens or Adventure Island within 14 days of the first."
-        },
-        "sw-four-parks": {
-          "title": "Four Parks Ticket",
-          "hint": "SeaWorld, Aquatica, Busch Gardens and Adventure Island, as often as you like for 14 days from the first visit."
-        },
-        "sw-uk-3-visit": {
-          "title": "3-Visit Ticket + Eat Free",
-          "hint": "3 visits to SeaWorld, Aquatica or Busch Gardens within 14 days of the first."
-        },
-        "sw-uk-ultimate": {
-          "title": "Ultimate Ticket",
-          "hint": "SeaWorld, Aquatica and Busch Gardens, as often as you like for 14 days from the first visit."
-        },
-        "sw-discovery-cove": {
-          "title": "Discovery Cove day",
-          "hint": "Your reserved day at Discovery Cove, alone or with 14 days of SeaWorld and its sister parks around it."
-        },
-        "sw-fun-card": {
-          "title": "Fun Card",
-          "hint": "SeaWorld (with or without Aquatica) or Busch Gardens, as often as you like until the end of 2027, outside blockout days."
-        },
-        "sw-pass": {
-          "title": "Annual pass",
-          "hint": "SeaWorld Orlando, or the four Florida parks."
-        },
-        "lego-day": {
-          "title": "1-day or 2-day ticket",
-          "hint": "LEGOLAND Florida."
-        },
-        "lego-7": {
-          "title": "7 Florida Attractions Ticket",
-          "hint": "One LEGOLAND visit within 14 days, part of Merlin’s ticket for seven attractions."
-        },
-        "lego-pass": {
-          "title": "Annual pass",
-          "hint": "LEGOLAND Florida."
-        }
-      },
-      "variant": {
-        "uor-1-day-plus-epic": "1-Day + 1-Day Epic Universe",
-        "uor-2-day-p2p-plus-epic": "2-Day Park-to-Park + 1 Day Epic Universe",
-        "uor-epic-1-day": "Epic Universe",
-        "uor-volcano-bay-1-day": "Volcano Bay",
-        "seaworld-1-day": "SeaWorld Orlando",
-        "busch-gardens-1-day": "Busch Gardens Tampa Bay",
-        "discovery-cove": "Discovery Cove only",
-        "discovery-cove-plus-2": "+ SeaWorld and Aquatica",
-        "discovery-cove-plus-3": "+ SeaWorld, Aquatica and Busch Gardens",
-        "seaworld-fun-card": "SeaWorld",
-        "seaworld-fun-card-aquatica": "SeaWorld and Aquatica",
-        "busch-gardens-fun-card": "Busch Gardens",
-        "seaworld-annual-pass": "SeaWorld Orlando",
-        "seaworld-annual-pass-florida": "Four Florida parks",
-        "legoland-1-day": "1 day",
-        "legoland-2-day": "2 days"
-      },
       "fields": {
         "which": "Which one?",
         "days": "Park days",
@@ -3795,11 +3463,8 @@
           "unsure": "Not sure"
         },
         "hopperUnsure": "We plan without {hopper} and tell you what it would add.",
-        "waterParks": "Water parks included (Water Park and Sports or Park Hopper Plus)",
-        "volcanoBay": "Volcano Bay included",
         "start": "First day of the ticket",
         "startFirstUse": "First visit",
-        "startReserved": "Your Discovery Cove day",
         "startOpen": "Not fixed yet",
         "startOpenHint": "The plan picks the best first day.",
         "startHint": "The date on your booking.",
@@ -3874,14 +3539,8 @@
         "with": "Show the plan with {hopper}",
         "without": "Show the plan without {hopper}"
       },
-      "hogwarts": "You need park-to-park for the Hogwarts Express between Universal Studios and Islands of Adventure.",
       "newTab": "(opens in a new tab)",
       "adopt": "Use these as your tickets",
-      "longStay": {
-        "line": "Outside the US there are 14-day tickets for Disney and Universal, also as a Combo Ticket.",
-        "plan": "Plan with these",
-        "detail": "The 14-day tickets in the operators’ shops outside the US:"
-      },
       "owned": {
         "valid": "Valid {from} to {to}",
         "startChosen": "Best first day for this plan: {start}. Valid to {end}.",
@@ -3906,11 +3565,6 @@
         "before": "{park} on {date} lies outside this ticket, which starts {edge}.",
         "leaveOut": "Leave this visit out",
         "changeTicket": "Change ticket"
-      },
-      "mixing": {
-        "used": "Where both tickets are valid, the plan mixes Disney and Universal days: about {minutes} min less a ride than keeping them apart.",
-        "forced": "Where both tickets are valid, the plan mixes Disney and Universal days.",
-        "kept": "Disney days and Universal days stay together: mixing them would save less than 3 min a ride."
       },
       "pass": {
         "blockouts": "We don’t know which days your pass blocks out. Check your {count, plural, =1 {1 {resort} day} other {# {resort} days}} against it before you go.",
@@ -3952,6 +3606,418 @@
       "partner": {
         "label": "Partner link",
         "note": "If you buy through this link, park.fan earns a commission. The price stays the same for you."
+      }
+    }
+  },
+  "tripRegions": {
+    "orlando": {
+      "nav": {
+        "name": "Orlando",
+        "area": "Florida",
+        "calendar": "Orlando Crowd Calendar",
+        "calendarHint": "Which park on which day, and a planner for your whole trip."
+      },
+      "hub": {
+        "title": "Orlando Crowd Calendar",
+        "monthTitle": "Orlando Crowd Calendar {month}",
+        "metaTitle": "Orlando Crowd Calendar & Trip Planner",
+        "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
+        "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
+        "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
+        "metaDescriptionPlain": "Which park on which day at Walt Disney World, Universal with Epic Universe and SeaWorld, and a planner that puts your parks on your dates.",
+        "metaDescriptionMonth": "Quietest Orlando days in {month}: {verdict}. Every park day by day, Epic Universe included.",
+        "metaDescriptionMonthPlain": "Orlando in {month}, day by day: the shortest lines at Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
+        "lead": "With one hotel room in Orlando, you've got eight theme parks and four water parks on your doorstep.",
+        "leadMonth": "Which park has the shortest lines on which day of {month}, at Walt Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
+        "opening": "Without traffic, EPCOT to Universal Studios is a 25-minute drive, and from a hotel in Lake Buena Vista each of the eight theme parks is under half an hour away, Magic Kingdom's ferry or monorail included. LEGOLAND in Winter Haven is just under an hour, Busch Gardens and Adventure Island in Tampa about an hour and a half. Those three, Discovery Cove and the four water parks make sixteen, and you won't change hotels for any of them. The calendar below has all sixteen, day by day.",
+        "monthIndexLabel": "Orlando by month",
+        "glance": {
+          "title": "Shortest lines on <time>{date}</time>, Orlando time"
+        },
+        "legend": {
+          "colourLong": "The colour compares a day with the same park's typical day. That is why a green Magic Kingdom at 40 minutes and a green EPCOT at 60 are both good days, each for its own park. The ring marks the park with the shortest lines at each resort that day. A park that closes early for day guests can lose the ring to a full day with a similar wait."
+        },
+        "calendar": {
+          "caption": "Orlando's parks, {from} to {to}: the big rides' wait at their busiest, in minutes"
+        },
+        "lanes": {
+          "break": "US school holidays: {name}, {dates}",
+          "unnamedBreak": "US school holidays",
+          "none": "No events or US school holidays in these days."
+        },
+        "sheet": {
+          "kicker": "Orlando · one day",
+          "earlyEntry": "Early Entry from {time} for Disney hotel guests",
+          "earlyAdmission": "Early Park Admission from {time} for Universal hotel guests",
+          "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min {via, select, ttc {by monorail or ferry} other {by shuttle}}, {total} min in all, without traffic"
+        },
+        "when": {
+          "kicker": "Disney World and Universal",
+          "title": "Best time to visit Orlando in {year}",
+          "titleNoYear": "Best time to visit Orlando",
+          "hint": "The 10-day trips with the shortest lines at the seven big parks of Walt Disney World and Universal.",
+          "pageLink": "Best time to visit Orlando in {year}",
+          "pageLinkNoYear": "Best time to visit Orlando",
+          "sentence": "Quietest {days}-day trips for Disney and Universal: {windows}."
+        },
+        "reasons": {
+          "school_break": "during US school holidays"
+        },
+        "method": {
+          "title": "How the forecast works",
+          "summary": "Every figure here comes from wait times park.fan measures every five minutes, a forecast built on them, and the hours the parks publish. Open a question for the details.",
+          "sources": {
+            "title": "Where do the numbers come from?",
+            "body": "park.fan records the posted wait of every ride every five minutes. Our forecast models learn from those measurements, the parks' hours, school holidays and the weather. Opening hours, Early Entry and evening events come from the parks' own calendars. We check seasons and parties by hand."
+          },
+          "minutes": {
+            "title": "What do the minutes mean?",
+            "body": "For each park we forecast the wait at its big rides, each at its busiest time of day, and average them. It is the one number we compare parks by. In the morning and the evening lines are shorter, so it is no promise for every hour."
+          },
+          "horizon": {
+            "title": "How far ahead does it reach?",
+            "body": "The forecast covers the next 60 days. After that the outlook runs to {date} with a wider error. Past it, a day shows the same weekday last year as we measured it, and says “last year”.",
+            "bodyNoDate": "The forecast covers the next 60 days. After that the outlook runs on with a wider error. Past it, a day shows the same weekday last year as we measured it, and says “last year”."
+          },
+          "error": {
+            "title": "How close does it get?",
+            "body": "The further ahead the day, the further off the forecast can be. Once you plan a trip, you'll find next to the result how many minutes the forecast for one ride on one day can be off. Waits are rounded to five minutes, so days within five minutes count as equal here, and each park's best days are a set, not a ranking."
+          },
+          "travel": {
+            "title": "How are the drive times calculated?",
+            "body": "Each drive time is by car without traffic, to the car park. Magic Kingdom's car park is the Transportation and Ticket Center, and the monorail or the ferry takes about another 15 minutes to the gate. For Volcano Bay you park in Universal's garages and take the shuttle, about another 15 minutes. Map data: {attribution}."
+          },
+          "links": "The model behind it: <fancast>Fancast</fancast>. Everything else: <howto>how park.fan works</howto>."
+        },
+        "faq": {
+          "title": "Questions about Orlando crowds",
+          "quietest": {
+            "q": "When is Orlando least crowded in the next few weeks?",
+            "resort": "At {resort} the shortest lines are on {days}.",
+            "day": "{date} at {park}, about {minutes} min",
+            "note": "The calendar above shows every day, with the park that has the shortest lines at each resort.",
+            "qMonth": "When is Orlando least crowded in {month}?"
+          },
+          "party": {
+            "q": "Which park should I visit on a Magic Kingdom party night?",
+            "a": "On {count, plural, =1 {# night} other {# nights}} in this period Magic Kingdom closes to day guests at {time} for {name}. The lines on those days are shorter, about {on} min compared with {off} min on its other days, but the day is shorter and day guests miss the evening. For a full day pick EPCOT, Hollywood Studios or Animal Kingdom on those days, or come with a party ticket."
+          },
+          "epic": {
+            "q": "Is Epic Universe busier on weekends?",
+            "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period you wait about {weekend} min at its big rides at their busiest on Saturdays and Sundays, and about {weekday} min on weekdays."
+          },
+          "distance": {
+            "q": "How far is Universal from Walt Disney World?",
+            "a": "Universal Studios to EPCOT is about {near} minutes by car without traffic, and to Magic Kingdom's car park about {far}. From there the monorail or the ferry takes about {transfer} minutes to the gate, {total} minutes in all. Map data: {attribution}."
+          },
+          "early": {
+            "q": "Do I need Early Entry?",
+            "a": "No, but it helps on busy days. Guests of Disney's own hotels get into the Disney theme parks {first} minutes before everybody else, and guests of Universal's hotels {second} minutes early at Universal's theme parks. If you choose such a hotel in the trip planner, the early opening counts in your plan."
+          },
+          "green": {
+            "q": "Why can a park with longer lines be green?",
+            "a": "The colour compares a day with the same park's typical day, not with other parks. EPCOT at 60 minutes can be a quiet day for EPCOT, and Magic Kingdom at 50 a busy one for Magic Kingdom. To compare two parks, read the minutes."
+          },
+          "lastYear": {
+            "q": "What does “last year” mean on a day?",
+            "a": "Our forecast does not reach that day yet. Until it does, the day shows the same weekday last year as we measured it. Read it as a sign of how busy that time of year was, not as a forecast."
+          }
+        },
+        "next": {
+          "title": "Several days in Orlando?"
+        },
+        "dataset": {
+          "name": "Orlando theme park crowd calendar, {period}",
+          "description": "Per park and day at Walt Disney World, Universal Orlando, SeaWorld and the day trips: the expected wait at the big rides at their busiest, the crowd level against the park's typical day, and the opening hours, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Best time to visit Orlando in {year}",
+          "disney-world": "Best time to visit Disney World in {year}",
+          "universal-orlando": "Best time to visit Universal Orlando in {year}"
+        },
+        "name": {
+          "region": "Best time to visit Orlando",
+          "disney-world": "Best time to visit Disney World",
+          "universal-orlando": "Best time to visit Universal Orlando"
+        },
+        "resort": {
+          "region": "Disney and Universal",
+          "disney-world": "Walt Disney World",
+          "universal-orlando": "Universal Orlando"
+        },
+        "intro": {
+          "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "US school holidays (Orlando)"
+          },
+          "hurricane": "Hurricane season"
+        },
+        "weeks": {
+          "noBreak": "No US school holidays in Orlando."
+        },
+        "faq": {
+          "title": "Questions about when to go",
+          "quietQ": {
+            "region": "When is Orlando least crowded in {year}?",
+            "disney-world": "When is Disney World least crowded in {year}?",
+            "universal-orlando": "When is Universal Orlando least crowded in {year}?"
+          },
+          "quietA": "The {days}-day trip from {date} has the shortest lines: the big rides about {minutes} min at their busiest, {percent}% below the {year} average. Next come {others}.",
+          "christmasQ": "Is Christmas busy?",
+          "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at about {minutes} min at the big rides, against {average} min across {year}.",
+          "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at about {minutes} min at the big rides, against {average} min across {year}. Christmas week itself comes before that.",
+          "partyQ": "When are the party nights?",
+          "partyA": "{list}. On those evenings the park closes early for day guests, which is why the trip planner keeps your full park days off them.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "hurricaneQ": "What about hurricane season?",
+          "hurricaneA": "It runs from 1 June to 30 November. Whether a storm hits your trip you'll only know a few days ahead, once it has formed and been named. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
+          "firstQ": {
+            "region": "Disney or Universal first?",
+            "disney-world": "Which Disney park should come first?",
+            "universal-orlando": "Which Universal park should come first?"
+          },
+          "firstA": "It depends on the dates: the planner puts each park on its quietest day of the trip. For the trip from {date} that is {order}.",
+          "firstItem": "{park} on {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Plan my Orlando trip"
+        },
+        "parks": {
+          "moreHint": "Water parks, SeaWorld and day trips"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney hotel",
+            "disney_deluxe": "Disney deluxe hotel",
+            "universal": "Universal hotel",
+            "universal_premier": "Universal Premier hotel",
+            "offsite": "Somewhere else"
+          },
+          "hotelHint": {
+            "disney": "Early Entry at the Disney parks, 30 minutes before opening",
+            "disney_deluxe": "Early Entry, plus Extended Evening Hours on some nights",
+            "universal": "Early Park Admission, an hour before opening",
+            "universal_premier": "Early Park Admission, and Express at Universal Studios and Islands of Adventure",
+            "offsite": "No early entry"
+          },
+          "hotelShort": {
+            "disney": "Disney hotel",
+            "disney_deluxe": "Disney deluxe hotel",
+            "universal": "Universal hotel",
+            "universal_premier": "Universal Premier",
+            "offsite": "hotel elsewhere"
+          },
+          "fireworks": "Do you want to see Magic Kingdom’s fireworks?",
+          "fireworksWantHint": "Your Magic Kingdom days avoid party nights, when day guests have to leave early.",
+          "fireworksAnyHint": "A party night can be a Magic Kingdom day if its shorter lines make up for the shorter day.",
+          "fireworksWantShort": "Magic Kingdom fireworks",
+          "blocks": "Keep Disney days and Universal days together",
+          "eveningsHint": "Where a park closes early, the plan suggests a second park or Disney Springs and CityWalk for the evening.",
+          "blocksTickets": "Disney days and Universal days"
+        },
+        "details": {
+          "earlyOthers": {
+            "early_entry": "Early Entry from {time} for Disney hotel guests",
+            "early_park_admission": "Early Park Admission from {time} for Universal hotel guests"
+          },
+          "eveningOthers": "Extended Evening Hours until {time} for Disney deluxe hotel guests",
+          "transferTtc": "Then about {minutes} min by monorail or ferry from the Transportation and Ticket Center."
+        },
+        "reason": {
+          "express_included": "Express is included with your hotel here, so the lines count for less."
+        },
+        "relaxed": {
+          "blocks_relaxed": "Disney days and Universal days couldn’t all stay together on these dates."
+        },
+        "ics": {
+          "calendarName": "Orlando trip {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "No US school holidays.",
+            "before_spring_break": "Before the US spring break crowds."
+          },
+          "warning": {
+            "school_break": "US school holidays."
+          }
+        },
+        "tickets": {
+          "combo": {
+            "title": "Disney and Universal Combo Ticket",
+            "hint": "One package, two tickets: Disney 14 park days within 18 days, Universal 14 days in a row, both from the day you chose.",
+            "lite": "For arrivals from {from} to {to} it is the Lite version, without Volcano Bay."
+          },
+          "resort": {
+            "walt-disney-world": "Walt Disney World",
+            "universal-orlando": "Universal Orlando",
+            "seaworld-orlando": "SeaWorld, Aquatica, Busch Gardens",
+            "day-trips": "LEGOLAND Florida"
+          },
+          "resortShort": {
+            "walt-disney-world": "Disney",
+            "universal-orlando": "Universal",
+            "seaworld-orlando": "SeaWorld",
+            "day-trips": "LEGOLAND"
+          },
+          "hopperName": {
+            "disney": "Park Hopper",
+            "universal": "park-to-park"
+          },
+          "mixNote": "Each ticket keeps its own dates. Where both are valid, the plan mixes Disney and Universal days only where that saves at least 3 min a ride.",
+          "market": {
+            "intl": "Sold outside the US"
+          },
+          "entry": {
+            "wdw-dated": {
+              "title": "Date-based ticket, 1 to 10 days",
+              "hint": "From Disney’s US site, a Disney hotel package or most sellers. With or without Park Hopper."
+            },
+            "wdw-uk-14": {
+              "title": "14-Day Magic Ticket",
+              "hint": "14 park days within 18 days. Park hopping and water parks included."
+            },
+            "wdw-uk-7": {
+              "title": "7-Day Magic Ticket",
+              "hint": "7 park days within 15 days. Park hopping and water parks included."
+            },
+            "wdw-4-park": {
+              "title": "4-Park Magic Ticket",
+              "hint": "One day in each theme park within 6 days, no hopping. First day in {range}."
+            },
+            "wdw-pass": {
+              "title": "Annual pass",
+              "hint": "Incredi-Pass, Sorcerer, Pirate or Pixie Dust Pass."
+            },
+            "wdw-unsure": {
+              "title": "Not sure which",
+              "hint": "Tell us how many days it has and whether it has Park Hopper."
+            },
+            "uor-dated": {
+              "title": "Date-based ticket, 1 to 5 days",
+              "hint": "From Universal’s US site or most sellers. Base or park-to-park, Epic Universe from 3 days."
+            },
+            "uor-uk-14": {
+              "title": "14-day ticket",
+              "hint": "All Parks or Three Park Adventure Ticket: every day for 14 days in a row, park-to-park, Epic Universe included."
+            },
+            "uor-epic": {
+              "title": "With one Epic Universe day",
+              "hint": "1-Day + 1-Day Epic Universe, or the 2-Day Park-to-Park + 1 Day Epic Universe offer."
+            },
+            "uor-1-day": {
+              "title": "1-day ticket for Epic Universe or Volcano Bay",
+              "hint": "One park on one day."
+            },
+            "uor-pass": {
+              "title": "Annual pass",
+              "hint": "Seasonal, Power, Preferred or Premier. Epic Universe is in none of them."
+            },
+            "uor-unsure": {
+              "title": "Not sure which",
+              "hint": "Tell us how many days it has and whether it has park-to-park."
+            },
+            "sw-1-day": {
+              "title": "Single-day ticket",
+              "hint": "One visit to SeaWorld Orlando or Busch Gardens Tampa Bay."
+            },
+            "sw-two-park": {
+              "title": "Two Park Ticket",
+              "hint": "SeaWorld and Aquatica, or SeaWorld and Busch Gardens, one visit each within 14 days."
+            },
+            "sw-three-park": {
+              "title": "Three-Day, Three Park Ticket",
+              "hint": "3 visits to SeaWorld, Aquatica, Busch Gardens or Adventure Island within 14 days of the first."
+            },
+            "sw-four-parks": {
+              "title": "Four Parks Ticket",
+              "hint": "SeaWorld, Aquatica, Busch Gardens and Adventure Island, as often as you like for 14 days from the first visit."
+            },
+            "sw-uk-3-visit": {
+              "title": "3-Visit Ticket + Eat Free",
+              "hint": "3 visits to SeaWorld, Aquatica or Busch Gardens within 14 days of the first."
+            },
+            "sw-uk-ultimate": {
+              "title": "Ultimate Ticket",
+              "hint": "SeaWorld, Aquatica and Busch Gardens, as often as you like for 14 days from the first visit."
+            },
+            "sw-discovery-cove": {
+              "title": "Discovery Cove day",
+              "hint": "Your reserved day at Discovery Cove, alone or with 14 days of SeaWorld and its sister parks around it."
+            },
+            "sw-fun-card": {
+              "title": "Fun Card",
+              "hint": "SeaWorld (with or without Aquatica) or Busch Gardens, as often as you like until the end of 2027, outside blockout days."
+            },
+            "sw-pass": {
+              "title": "Annual pass",
+              "hint": "SeaWorld Orlando, or the four Florida parks."
+            },
+            "lego-day": {
+              "title": "1-day or 2-day ticket",
+              "hint": "LEGOLAND Florida."
+            },
+            "lego-7": {
+              "title": "7 Florida Attractions Ticket",
+              "hint": "One LEGOLAND visit within 14 days, part of Merlin’s ticket for seven attractions."
+            },
+            "lego-pass": {
+              "title": "Annual pass",
+              "hint": "LEGOLAND Florida."
+            }
+          },
+          "variant": {
+            "uor-1-day-plus-epic": "1-Day + 1-Day Epic Universe",
+            "uor-2-day-p2p-plus-epic": "2-Day Park-to-Park + 1 Day Epic Universe",
+            "uor-epic-1-day": "Epic Universe",
+            "uor-volcano-bay-1-day": "Volcano Bay",
+            "seaworld-1-day": "SeaWorld Orlando",
+            "busch-gardens-1-day": "Busch Gardens Tampa Bay",
+            "discovery-cove": "Discovery Cove only",
+            "discovery-cove-plus-2": "+ SeaWorld and Aquatica",
+            "discovery-cove-plus-3": "+ SeaWorld, Aquatica and Busch Gardens",
+            "seaworld-fun-card": "SeaWorld",
+            "seaworld-fun-card-aquatica": "SeaWorld and Aquatica",
+            "busch-gardens-fun-card": "Busch Gardens",
+            "seaworld-annual-pass": "SeaWorld Orlando",
+            "seaworld-annual-pass-florida": "Four Florida parks",
+            "legoland-1-day": "1 day",
+            "legoland-2-day": "2 days"
+          },
+          "fields": {
+            "waterParks": "Water parks included (Water Park and Sports or Park Hopper Plus)",
+            "volcanoBay": "Volcano Bay included",
+            "startReserved": "Your Discovery Cove day"
+          },
+          "hogwarts": "You need park-to-park for the Hogwarts Express between Universal Studios and Islands of Adventure.",
+          "longStay": {
+            "line": "Outside the US there are 14-day tickets for Disney and Universal, also as a Combo Ticket.",
+            "plan": "Plan with these",
+            "detail": "The 14-day tickets in the operators’ shops outside the US:"
+          },
+          "mixing": {
+            "used": "Where both tickets are valid, the plan mixes Disney and Universal days: about {minutes} min less a ride than keeping them apart.",
+            "forced": "Where both tickets are valid, the plan mixes Disney and Universal days.",
+            "kept": "Disney days and Universal days stay together: mixing them would save less than 3 min a ride."
+          }
+        }
+      },
+      "landing": {
+        "kicker": "park.fan · Orlando",
+        "action": "Plan my Orlando trip"
+      },
+      "homeStory": {
+        "kicker": "Orlando",
+        "title": "Orlando: which park on which day",
+        "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
+        "link": "Orlando Crowd Calendar"
       }
     }
   },
@@ -4047,10 +4113,6 @@
     "parky": {
       "kicker": "park.fan · Chat assistant",
       "action": "Ask Parky"
-    },
-    "orlando": {
-      "kicker": "park.fan · Orlando",
-      "action": "Plan my Orlando trip"
     }
   },
   "compare": {

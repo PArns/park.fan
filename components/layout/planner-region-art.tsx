@@ -4,7 +4,7 @@ import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 're
 import { HubBannerPhoto } from '@/components/layout/hub-banner';
 import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
-import { TRIP_REGIONS } from '@/lib/navigation/trip-regions';
+import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
 /** What the lazily loaded art receives: the scene's box, and what to draw if it never arrives. */
@@ -20,7 +20,7 @@ interface ArtProps {
  */
 const SCENES: Partial<Record<string, LazyExoticComponent<ComponentType<ArtProps>>>> =
   Object.fromEntries(
-    TRIP_REGIONS.flatMap(({ id, scene: load }) =>
+    TRIP_REGIONS.flatMap(({ slug: id, scene: load }) =>
       load
         ? [
             [

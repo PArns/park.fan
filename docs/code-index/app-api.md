@@ -353,7 +353,7 @@ Route `/api/nav/posts/[locale]` (route).
 
 Route `/api/nav/trip-regions` (route).
 
-- `GET` _function_: The trip regions as the browser links into them (`TripRegionLinks`): their names for the search palette's first row and their parks for the day planner's plan list: the region route's answer without its travel matrix, hotel areas and …
+- `GET` _function_: The live trip regions as the browser links into them (`TripRegionLinks`): their names for the search palette's first row and their parks for the day planner's plan list: each region route's answer without its travel matrix, hotel areas and …
 
 ### [`nearby/route.ts`](../../app/api/nearby/route.ts)
 
@@ -443,7 +443,7 @@ Route `/api/search` (route).
 
 Route `/api/trip-regions/[...path]` (route).
 
-- `GET` _function_: The Orlando hub's relay to `/v1/trip-regions/orlando{,/calendar,/best-days,/plan}`: the planner asks `/plan` on every change and the calendar asks other windows than the page rendered, and the keyed routes need the site's data key, which …
+- `GET` _function_: The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan}`: the planner asks `/plan` on every change and the calendar asks other windows than the page rendered, and the keyed routes need the site's data key, which never …
 
 ### [`trips/[id]/route.ts`](../../app/api/trips/%5Bid%5D/route.ts)
 
