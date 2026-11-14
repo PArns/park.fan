@@ -75,6 +75,11 @@ export function parkLocalIso(at: Date | number | string, timeZone: string): stri
   return `${date}T${time}`;
 }
 
+/** The days of a month (`month` 1–12), leap years included: day 0 of the next one is its last. */
+export function monthLength(year: number, month: number): number {
+  return new Date(Date.UTC(year, month, 0)).getUTCDate();
+}
+
 /** `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it. */
 export function addDays(isoDate: string, days: number): string {
   const d = new Date(`${isoDate}T12:00:00Z`);

@@ -1,5 +1,5 @@
 import type { Locale } from '@/i18n/config';
-import { parkWallClock } from '@/lib/utils/park-day';
+import { monthLength, parkWallClock } from '@/lib/utils/park-day';
 
 /**
  * Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it
@@ -86,7 +86,7 @@ export function parkCalendarDayFromHash(hash: string, monthKey: string): string 
   const year = Number(date.slice(0, 4));
   const month = Number(date.slice(5, 7));
   const day = Number(date.slice(8, 10));
-  return day >= 1 && day <= new Date(Date.UTC(year, month, 0)).getUTCDate() ? date : null;
+  return day >= 1 && day <= monthLength(year, month) ? date : null;
 }
 
 /**
@@ -161,15 +161,14 @@ export interface ParkCalendarMonth {
 
 /**
  * A month's first and last day, `YYYY-MM-DD`: the window the month's calendar, its seed and its
- * seasons are read for. `Date.UTC(year, month, 0)` is the zeroth day of the next month, which gets
- * February and a leap year right, and UTC keeps a midnight DST jump from dropping a day.
+ * seasons are read for (`monthLength`).
  */
 export function parkCalendarMonthRange({ year, month }: ParkCalendarMonth): {
   from: string;
   to: string;
 } {
   const pad = (n: number) => String(n).padStart(2, '0');
-  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
+  const lastDay = monthLength(year, month);
   return { from: `${year}-${pad(month)}-01`, to: `${year}-${pad(month)}-${pad(lastDay)}` };
 }
 

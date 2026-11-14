@@ -6,6 +6,7 @@
  */
 
 import { getDateTimeFormat, weekdayName } from '@/lib/utils/intl-format';
+import { monthLength } from '@/lib/utils/park-day';
 
 /** A month, as `YYYY-MM`. */
 export type PlannerMonth = string;
@@ -57,9 +58,7 @@ export function shiftMonth(month: PlannerMonth, delta: number): PlannerMonth {
 /** How many days the month has, leap years included. */
 export function daysInMonth(month: PlannerMonth): number {
   const parsed = parse(month);
-  if (!parsed) return 0;
-  // Day 0 of the NEXT month is the last day of this one.
-  return new Date(Date.UTC(parsed.year, parsed.month, 0, 12)).getUTCDate();
+  return parsed ? monthLength(parsed.year, parsed.month) : 0;
 }
 
 /** Monday = 0 … Sunday = 6, for the first of the month, from a noon-UTC instant. */

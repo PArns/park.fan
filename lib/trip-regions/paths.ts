@@ -13,6 +13,7 @@ import {
   type TripRegionConfig,
 } from './registry';
 import type { TripMonth } from './types';
+import { monthLength } from '@/lib/utils/park-day';
 
 /**
  * A trip region hub's URLs and its month window. Client-safe and free of server imports, because
@@ -168,7 +169,7 @@ export function monthKey({ year, month }: TripMonth): string {
 /** The first and last day of a month, `YYYY-MM-DD`, for a `/calendar` or `/best-days` window. */
 export function tripMonthRange(month: TripMonth): { from: string; to: string } {
   const key = monthKey(month);
-  const lastDay = new Date(Date.UTC(month.year, month.month, 0)).getUTCDate();
+  const lastDay = monthLength(month.year, month.month);
   return { from: `${key}-01`, to: `${key}-${lastDay}` };
 }
 
