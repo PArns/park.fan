@@ -93,7 +93,7 @@ Where an outbound link goes, the closed list of the event's `target`.
 
 ### [`section-seen.ts`](../../lib/analytics/section-seen.ts)
 
-The places a park page marks, top to bottom, then the band no park page has: the closed list of the event's `section`. The tile stands above the end of the rides or under the calendar's header.
+The places a park page marks, top to bottom, then the band no park page has: the closed list of the event's `section`. The tile stands above „Heute im Park" or under the calendar's header.
 
 - `isSeenSection` _function_: Whether a string read off the DOM is a place the event knows.
 - `BLOCK_SEEN_SECTIONS` _const_: The marks that stand only where their block is: they count the block's views, and say nothing about how far down a page was read.

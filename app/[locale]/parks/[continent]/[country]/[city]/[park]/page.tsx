@@ -613,6 +613,16 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           parks. */}
         <NoLiveWaitTimesNotice reason={noLiveWaitTimesReason(park)} scope="park" className="mb-8" />
 
+        {/* A trip region's park: its planner with this park chosen, above „Heute im Park" so most
+          readers pass it. On a phone it is the compact row, a third of the banner's height, so it
+          pushes „Heute im Park" down as little as it can. Inline, so whether it exists is settled
+          before the first byte; nothing for any other park. */}
+        <TripPlannerTile
+          park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+          phone="row"
+          className="mb-4"
+        />
+
         {/* The header card ("Heute im Park" + the entry tiles) and the tab body under it, all with
           auto-refresh. The card is inside this tree rather than in the shell because it and the
           tab panels are one `<Tabs>`; the calendar page builds the same card with link cells.
@@ -678,13 +688,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
                   articleDe={park.nameArticleDe}
                 />
               )}
-              {/* A trip region's park: its planner with this park chosen, where the reader is done
-                with today's park, and not above „Heute im Park", which the fold belongs to. Inline,
-                so whether it exists is settled before the first byte; nothing for any other park. */}
-              <TripPlannerTile
-                park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-                className="mt-8"
-              />
             </>
           }
         />
