@@ -106,7 +106,7 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
       calendarPark: 'disneyland-park',
     },
   ],
-  parkNameSuffixes: ['Hollywood', 'San Diego', 'California'],
+  parkNameSuffixes: ['San Diego', 'California'],
   resortWords: { 'disneyland-resort': 'Disneyland', 'universal-studios-hollywood': 'Universal' },
   hotels: [{ key: 'disney', area: 'disneyland_resort' }, { key: 'offsite' }],
   // Separately ticketed nights (Oogie Boogie Bash, After Dark, Halloween Horror Nights) send the
