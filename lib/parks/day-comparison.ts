@@ -1,5 +1,6 @@
 import type { CalendarDay } from '@/lib/api/types';
 import { rankOf } from '@/lib/parks/calendar-month-summary';
+import { isClosedCalendarDay } from '@/lib/utils/calendar-utils';
 import { CROWD_LEVEL_ORDER, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 
 /**
@@ -89,7 +90,7 @@ function waitWithinBucket(wait: number): number {
  * quiet.
  */
 function bucketOf(day: CalendarDay): number | null {
-  if (day.status === 'CLOSED' || day.crowdLevel === 'closed') return null;
+  if (isClosedCalendarDay(day)) return null;
   const index = CROWD_LEVEL_ORDER.indexOf(day.crowdLevel as ColoredCrowdLevel);
   return index >= 0 ? index : null;
 }
@@ -228,7 +229,7 @@ function reason(
  */
 function blockersFor(day: CalendarDay, todayIso: string): DayComparisonBlockerKey[] {
   const keys: DayComparisonBlockerKey[] = [];
-  const closed = day.status === 'CLOSED' || day.crowdLevel === 'closed';
+  const closed = isClosedCalendarDay(day);
   if (closed) keys.push('closed');
   if (day.date < todayIso) keys.push('past');
   // The crowd bucket is what the verdict ranks, so a day without one cannot win even when a wait

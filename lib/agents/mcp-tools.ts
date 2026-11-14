@@ -4,6 +4,7 @@ import { search } from '@/lib/api/search';
 import { getParkByGeoPath, getParkByGeoPathForAgents } from '@/lib/api/parks';
 import { catchNonFatal } from '@/lib/api/client';
 import { parkDayOf } from '@/lib/utils/park-day';
+import { forecastCrowdLevel } from '@/lib/utils/calendar-utils';
 import {
   nextWorksPeriod,
   ridesInWorksOn,
@@ -206,9 +207,9 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
         return {
           date: day.date,
           status: day.status,
-          // `crowdLevel` is overridden with the live reading on today only; `predictedCrowdLevel`
-          // is the forecast on every day including this one, which is what a date question wants.
-          crowdLevel: day.predictedCrowdLevel ?? day.crowdLevel,
+          // `crowdLevel` is overridden with the live reading on today only; the forecast is what a
+          // date question wants, on every day including this one.
+          crowdLevel: forecastCrowdLevel(day),
           isHoliday: day.isHoliday,
           isSchoolVacation: day.isSchoolVacation,
           isBridgeDay: day.isBridgeDay,
