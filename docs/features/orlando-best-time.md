@@ -78,7 +78,8 @@ All of it is in the first HTML; nothing mounts on a click.
    more, so a bridge day does not; Germany as "n of 16"), the climate normal of Magic Kingdom's
    spot, labelled as the usual, hours against the year's mean and party nights. A month in the storm
    season carries its chip (`DaySignalChip`, „Hurrikansaison“ or „Hochphase der Hurrikansaison“
-   where any day is in the peak). One line above the rows says from when the figures are last
+   where any day is in the peak), and a month in the peak never carries „Am ruhigsten“: its short
+   waits come with the storm, which the trips above rank lower. One line above the rows says from when the figures are last
    year's, instead of a label on each month. The month's name links its hub month where the hub
    serves it.
 3. **Die ruhigsten und die vollsten Wochen**: the three quietest and busiest whole weeks with the

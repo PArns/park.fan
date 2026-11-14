@@ -413,6 +413,7 @@ export async function MonthRows({
       <ol className="divide-border/70 divide-y border-y">
         {rows.map((row) => {
           const name = monthName.format(new Date(Date.UTC(row.month.year, row.month.month - 1, 1)));
+          const storm = stormCodeIn(`${row.key}-01`, `${row.key}-${monthEnd(row.month)}`, weather);
           const data = row.data;
           const linkable = isTripRegionMonthInRange(row.month, current);
           const heading = (
@@ -469,24 +470,19 @@ export async function MonthRows({
             >
               <div className="flex flex-wrap items-center gap-2 lg:flex-col lg:items-start">
                 {heading}
-                {row.mark && (
+                {/* A month in the storm peak is never called the quietest: its short waits come
+                    with the storm, and the trips above rank it lower for that. */}
+                {row.mark && !(row.mark === 'very_low' && storm?.endsWith('_peak')) && (
                   <span className="border-foreground/30 rounded-full border px-2.5 py-0.5 text-xs font-semibold">
                     {t(`tier.${row.mark}`)}
                   </span>
                 )}
-                {(() => {
-                  const code = stormCodeIn(
-                    `${row.key}-01`,
-                    `${row.key}-${monthEnd(row.month)}`,
-                    weather
-                  );
-                  return code ? (
-                    <DaySignalChip
-                      className={STORM_SIGNAL_CLASS[stormSignal(code)]}
-                      label={tClimate(code)}
-                    />
-                  ) : null;
-                })()}
+                {storm && (
+                  <DaySignalChip
+                    className={STORM_SIGNAL_CLASS[stormSignal(storm)]}
+                    label={tClimate(storm)}
+                  />
+                )}
                 {data.rainySeason && tOwn.has('rainySeason') && (
                   <span className="text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
                     {tOwn('rainySeason')}
