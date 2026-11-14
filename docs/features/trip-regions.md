@@ -129,8 +129,9 @@ built on `HolidayParky`, and its entry's `scene` loads it.
    `registry.ts`, and start with its segments, zone and centre.
 2. Fill in what the region has: `bestTime` (the region's page `region` first, then its resorts),
    `hub` (hero photos, next-step park, the FAQ's parks), `hotels`, `parkNameSuffixes`,
-   `resortWords`, `stormSeason`, `blockResorts`, `fireworks`, and a `tickets` step where it sells
-   tickets the step should ask for. A ticket catalog is the admin's (`/admin/tickets?region=`).
+   `parkShortNames` (where a park's derived two letters say little: Southern California's USH, DCA,
+   SFMM), `resortWords`, `stormSeason`, `blockResorts`, `fireworks`, and a `tickets` step where it
+   sells tickets the step should ask for. A ticket catalog is the admin's (`/admin/tickets?region=`).
 3. Write `tripRegions.<slug>` in all six message files, in the shape of `tripRegions.orlando`
    (`pnpm validate:translations` keeps the locales in step; `pnpm test:trip-regions` checks the
    keys a live region needs).
