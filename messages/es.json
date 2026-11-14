@@ -393,7 +393,6 @@
     "assistantOpen": "Escribir a Parky"
   },
   "tripHub": {
-    "toCalendar": "Al calendario",
     "nextDays": "Próximos 30 días",
     "dayTripsGroup": "Excursiones",
     "lastYearBanner": "La previsión llega hasta el {date}. Después, cada día muestra el mismo día de la semana del año pasado, marcado «año pasado».",
@@ -408,8 +407,8 @@
       "monthTitle": "Los días más tranquilos de {month}",
       "monthTitleLastYear": "Los días más tranquilos de {month} el año pasado",
       "quietPark": "({park}, unos {minutes} min)",
-      "best": "Mejor parque por resort, <time>{date}</time>",
-      "quietestTo": "Lo más tranquilo hasta el {date}"
+      "quietestTo": "Lo más tranquilo hasta el {date}",
+      "best": "Mejor parque por resort, <time>{date}</time>"
     },
     "legend": {
       "minutes": "Espera punta en las grandes atracciones, en minutos",
@@ -450,8 +449,8 @@
       "stateOpen": "Abierto, sin previsión",
       "cellNoHours": "horario aún sin publicar",
       "earlyElsewhere": "{park} cierra a las {time}",
-      "titleMonth": "Día a día en {month}",
-      "sourcesTravel": "Trayectos: {attribution}"
+      "sourcesTravel": "Trayectos: {attribution}",
+      "titleMonth": "Día a día en {month}"
     },
     "lanes": {
       "summaryLabel": "Eventos",
@@ -504,55 +503,64 @@
       "varHours": "Horarios"
     },
     "band": {
-      "title": "Planificador de viajes de {region}",
-      "planPark": "Añade {park} a tu viaje a {region}",
+      "title": "Varios días {inRegion}",
+      "planPark": "Añadir {park} al viaje",
       "open": "Abrir el planificador de viajes"
     },
-    "parksIndex": {
-      "link": "Calendario de afluencia de {park}",
-      "label": "Calendario de afluencia por parque"
+    "tile": {
+      "line": "Tú das las fechas y el planificador te dice cuál de los {count} parques tiene menos gente cada día."
     },
     "faq": {
-      "links": "El modelo que hay detrás: <fancast>Fancast</fancast>. Todo lo demás: <howto>cómo funciona park.fan</howto>.",
-      "title": "Preguntas frecuentes",
-      "quietestOnly": "{resort}: días más tranquilos {days}.",
-      "lastYearNote": "Para {month} todavía no hay previsión. Las cifras son los días que medimos en el mismo mes del año pasado.",
-      "events": {
-        "q": "¿Qué eventos hay en las próximas semanas?",
-        "qMonth": "¿Qué eventos hay en {month}?",
-        "a": "En las próximas semanas: {list}.",
-        "aMonth": "En {month}: {list}.",
-        "party": "{name} ({parks}, {count, plural, =1 {# noche} other {# noches}}, entrada aparte)",
-        "festival": "{name} ({parks}, {dates})",
-        "expected": "{name} ({parks}, fechas aún sin confirmar)",
-        "partyNote": "Una noche con entrada aparte, el parque cierra antes para los visitantes de día; en el calendario ese día lleva una esquina."
+      "parks": {
+        "a": "De media en {days} días: {list}.",
+        "q": "¿Qué parque tiene menos gente en las próximas semanas?",
+        "park": "{park} unos {minutes} min",
+        "qMonth": "¿Qué parque tiene menos gente en {month}?"
       },
-      "weekdays": {
-        "q": "¿Qué día de la semana hay menos gente en las próximas semanas?",
-        "qMonth": "¿Qué día de la semana hay menos gente en {month}?",
-        "a": "{quietCount, plural, =1 {El día más tranquilo es el {quiet}} other {Los días más tranquilos son {quiet}}}, con unos {low} min de espera punta, {busyCount, plural, =1 {y el más concurrido, el {busy}} other {y los más concurridos, {busy}}}, con unos {high} min. Es la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}.",
-        "flat": "Ningún día destaca: cada día la espera punta ronda los {minutes} min, en la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}.",
-        "busyOnly": "{busyCount, plural, =1 {El día con más gente es el {busy}} other {Los días con más gente son {busy}}}, con unos {high} min de espera punta; los demás días están por debajo, hasta unos {low} min. Es la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}.",
-        "quietOnly": "{quietCount, plural, =1 {El día con menos gente es el {quiet}} other {Los días con menos gente son {quiet}}}, con unos {low} min de espera punta; los demás días están por encima, hasta unos {high} min. Es la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}."
+      "accuracy": {
+        "planner": "Cuanto más lejos está el día, mayor es el error. Es la misma medida que «¿Qué precisión tiene?» en el planificador, que la indica en cada plan.",
+        "plannerNoFigure": "Cuanto más lejos está el día, mayor es el error; el planificador lo indica en minutos en cada plan, en «¿Qué precisión tiene?».",
+        "q": "¿Hasta dónde llega la previsión y cuánto acierta?",
+        "horizon": "La previsión llega a 60 días; después, hasta el {date}, sigue una tendencia con un error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
+        "figure": "En los últimos {days} días, nuestra previsión de la espera punta, hecha con {lead, plural, =1 {un día} =7 {una semana} other {# días}} de antelación, falló de media {minutes} min, medida en {parks} parques.",
+        "rounding": "Los días con menos de cinco minutos de diferencia cuentan como iguales.",
+        "horizonNoDate": "La previsión llega a 60 días; después sigue una tendencia con un error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado»."
       },
       "breaks": {
         "q": "¿Hay vacaciones escolares o festivos en las próximas semanas?",
         "qMonth": "¿Hay vacaciones escolares o festivos en {month}?",
+        "effectSame": "En vacaciones y festivos la espera punta de los parques grandes no es más larga que el resto de los días, unos {minutes} min.",
         "holiday": "Festivo: {name}, {dates}.",
-        "effect": "En vacaciones y festivos la espera punta de los parques grandes ronda los {on} min; el resto de los días, los {off} min.",
-        "effectSame": "En vacaciones y festivos la espera punta de los parques grandes no es más larga que el resto de los días, unos {minutes} min."
+        "effect": "En vacaciones y festivos la espera punta de los parques grandes ronda los {on} min; el resto de los días, los {off} min."
       },
-      "hours": {
-        "q": "¿Cuánto tiempo abren los parques en las próximas semanas?",
-        "qMonth": "¿Cuánto tiempo abren los parques en {month}?",
-        "a": "Los horarios más habituales de los parques grandes: {parks}.",
-        "park": "{park} {hours}",
-        "early": "Al menos un parque grande cierra antes de lo habitual para los visitantes de día en {count, plural, =1 {# día} other {# días}}; en el calendario ese día lleva una esquina."
+      "title": "Preguntas frecuentes",
+      "events": {
+        "party": "{name} ({parks}, {count, plural, =1 {# noche} other {# noches}}, entrada aparte)",
+        "partyNote": "Una noche con entrada aparte, el parque cierra antes para los visitantes de día; en el calendario ese día lleva una esquina.",
+        "q": "¿Qué eventos hay en las próximas semanas?",
+        "aMonth": "En {month}: {list}.",
+        "qMonth": "¿Qué eventos hay en {month}?",
+        "expected": "{name} ({parks}, fechas aún sin confirmar)",
+        "festival": "{name} ({parks}, {dates})",
+        "a": "En las próximas semanas: {list}."
       },
-      "peak": {
-        "q": "¿Qué es la espera punta?",
-        "a": "Para cada gran atracción de un parque tomamos la espera más larga del día y hacemos la media sobre esas atracciones, redondeada a cinco minutos. Con esa cifra comparas los parques en el calendario, en la respuesta de arriba y en el planificador. Vale para la hora de más gente: justo después de abrir y por la noche sueles esperar menos."
+      "closures": {
+        "qMonth": "¿Hay parques cerrados en {month}?",
+        "a": "Cerrados: {list}.",
+        "days": "{park} ({count, plural, =1 {# día} other {# días}})",
+        "q": "¿Hay parques cerrados en las próximas semanas?",
+        "run": "{park} ({dates})"
       },
+      "weekdays": {
+        "flat": "Ningún día destaca: cada día la espera punta ronda los {minutes} min, en la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}.",
+        "quietOnly": "{quietCount, plural, =1 {El día con menos gente es el {quiet}} other {Los días con menos gente son {quiet}}}, con unos {low} min de espera punta; los demás días están por encima, hasta unos {high} min. Es la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}.",
+        "q": "¿Qué día de la semana hay menos gente en las próximas semanas?",
+        "qMonth": "¿Qué día de la semana hay menos gente en {month}?",
+        "busyOnly": "{busyCount, plural, =1 {El día con más gente es el {busy}} other {Los días con más gente son {busy}}}, con unos {high} min de espera punta; los demás días están por debajo, hasta unos {low} min. Es la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}.",
+        "a": "{quietCount, plural, =1 {El día más tranquilo es el {quiet}} other {Los días más tranquilos son {quiet}}}, con unos {low} min de espera punta, {busyCount, plural, =1 {y el más concurrido, el {busy}} other {y los más concurridos, {busy}}}, con unos {high} min. Es la media de {days} días y {parks, plural, =1 {el parque grande} other {los # parques grandes}}."
+      },
+      "lastYearNote": "Para {month} todavía no hay previsión. Las cifras son los días que medimos en el mismo mes del año pasado.",
+      "quietestOnly": "{resort}: días más tranquilos {days}.",
       "green": {
         "q": "¿Por qué un parque con una espera punta más larga puede estar en verde?",
         "a": "El color compara un día con un día normal del mismo parque, no con otros parques. El día normal es el día de apertura mediano de los últimos dieciocho meses. 60 minutos pueden ser un día tranquilo para un parque grande y 50 uno lleno para uno más pequeño. Por eso comparas dos parques por los minutos, y un día con su parque por el color."
@@ -561,34 +569,30 @@
         "q": "¿De dónde salen las cifras?",
         "a": "park.fan guarda cada cinco minutos la espera anunciada de cada atracción. La previsión aprende de esas mediciones, junto con los horarios, las vacaciones escolares, los festivos y el tiempo. Los horarios, la entrada anticipada de los huéspedes de los hoteles y los eventos nocturnos vienen de los calendarios de los parques; las temporadas, las fiestas y los cierres los revisamos a mano."
       },
-      "accuracy": {
-        "q": "¿Hasta dónde llega la previsión y cuánto acierta?",
-        "horizon": "La previsión llega a 60 días; después, hasta el {date}, sigue una tendencia con un error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
-        "horizonNoDate": "La previsión llega a 60 días; después sigue una tendencia con un error mayor. Más allá, un día muestra el mismo día de la semana del año pasado, tal como lo medimos, con la nota «año pasado».",
-        "figure": "En los últimos {days} días, nuestra previsión de la espera punta, hecha con {lead, plural, =1 {un día} =7 {una semana} other {# días}} de antelación, falló de media {minutes} min, medida en {parks} parques.",
-        "planner": "Cuanto más lejos está el día, mayor es el error. Es la misma medida que «¿Qué precisión tiene?» en el planificador, que la indica en cada plan.",
-        "plannerNoFigure": "Cuanto más lejos está el día, mayor es el error; el planificador lo indica en minutos en cada plan, en «¿Qué precisión tiene?».",
-        "rounding": "Los días con menos de cinco minutos de diferencia cuentan como iguales."
+      "peak": {
+        "a": "Para cada gran atracción de un parque tomamos la espera más larga del día y hacemos la media sobre esas atracciones, redondeada a cinco minutos. Con esa cifra comparas los parques en el calendario, en la respuesta de arriba y en el planificador. Vale para la hora de más gente: justo después de abrir y por la noche sueles esperar menos.",
+        "q": "¿Qué es la espera punta?"
       },
-      "parks": {
-        "q": "¿Qué parque tiene menos gente en las próximas semanas?",
-        "qMonth": "¿Qué parque tiene menos gente en {month}?",
-        "a": "De media en {days} días: {list}.",
-        "park": "{park} unos {minutes} min"
-      },
-      "closures": {
-        "q": "¿Hay parques cerrados en las próximas semanas?",
-        "qMonth": "¿Hay parques cerrados en {month}?",
-        "a": "Cerrados: {list}.",
-        "run": "{park} ({dates})",
-        "days": "{park} ({count, plural, =1 {# día} other {# días}})"
+      "links": "El modelo que hay detrás: <fancast>Fancast</fancast>. Todo lo demás: <howto>cómo funciona park.fan</howto>.",
+      "hours": {
+        "q": "¿Cuánto tiempo abren los parques en las próximas semanas?",
+        "early": "Al menos un parque grande cierra antes de lo habitual para los visitantes de día en {count, plural, =1 {# día} other {# días}}; en el calendario ese día lleva una esquina.",
+        "park": "{park} {hours}",
+        "qMonth": "¿Cuánto tiempo abren los parques en {month}?",
+        "a": "Los horarios más habituales de los parques grandes: {parks}."
       }
     },
-    "question": "¿Qué parque, qué día?",
+    "toCalendar": "Al calendario",
     "plan": "Planificar mi viaje",
+    "parksIndex": {
+      "label": "Calendario de afluencia por parque",
+      "link": "Calendario de afluencia de {park}"
+    },
     "accuracy": {
       "line": "Nuestra previsión de la espera punta, con {lead, plural, =1 {un día} =7 {una semana} other {# días}} de antelación, <link>falló de media {minutes} min</link> en los últimos {days} días."
-    }
+    },
+    "question": "¿Qué parque, qué día?",
+    "nextTitle": "Planificador de viajes de {region}"
   },
   "theme": {
     "light": "Claro",
@@ -3174,7 +3178,9 @@
       "modeAll": "General",
       "picksLegendAll": "Bajo cada fecha, el parque con la espera punta más corta.",
       "picksLegendResort": "Bajo cada fecha, el parque de {resort} con la espera punta más corta.",
-      "overall": "General: {park}"
+      "overall": "General: {park}",
+      "stormPeak": "{season}: la búsqueda de la mejor época pone estos días más abajo, incluso con esperas cortas.",
+      "rainyNote": "{season}: días más húmedos, pero no parques más llenos."
     },
     "find": {
       "modeKnown": "Ya sé mis fechas",
@@ -3777,6 +3783,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "en Orlando",
         "area": "Florida",
         "calendar": "Calendario de afluencia de Orlando",
         "calendarHint": "Qué parque qué día, y un planificador para todo el viaje."
@@ -3794,9 +3801,6 @@
         "lead": "Un calendario para los 16 parques de Orlando y alrededores, y un planificador para tus días de viaje.",
         "leadMonth": "Los 16 parques de Orlando y alrededores en {month}, día a día, y un planificador para tus días de viaje.",
         "monthIndexLabel": "Orlando mes a mes",
-        "glance": {
-          "zone": "hora de Orlando"
-        },
         "calendar": {
           "caption": "Los parques de Orlando del {from} al {to}: espera punta en las grandes atracciones, en minutos"
         },
@@ -3852,6 +3856,9 @@
         "dataset": {
           "name": "Calendario de afluencia de los parques de Orlando, {period}",
           "description": "Por parque y día en Walt Disney World, Universal Orlando, SeaWorld y las excursiones: la espera punta prevista en las grandes atracciones, la afluencia frente a un día normal del parque y los horarios, {period}."
+        },
+        "glance": {
+          "zone": "hora de Orlando"
         }
       },
       "bestTime": {
@@ -3920,6 +3927,7 @@
           "hotelLabel": {
             "disney": "Hotel Disney",
             "disney_deluxe": "Hotel Disney Deluxe",
+            "disney_springs": "Hotel en Disney Springs",
             "universal": "Hotel Universal",
             "universal_premier": "Hotel Universal Premier",
             "offsite": "En otro sitio"
@@ -3927,6 +3935,7 @@
           "hotelHint": {
             "disney": "Early Entry en los parques Disney, 30 minutos antes de abrir",
             "disney_deluxe": "Early Entry y algunas noches Extended Evening Hours",
+            "disney_springs": "Early Entry en los parques Disney, sin Extended Evening Hours",
             "universal": "Early Park Admission, una hora antes de abrir",
             "universal_premier": "Early Park Admission y Express en Universal Studios e Islands of Adventure",
             "offsite": "Sin entrada anticipada"
@@ -3934,6 +3943,7 @@
           "hotelShort": {
             "disney": "Hotel Disney",
             "disney_deluxe": "Hotel Disney Deluxe",
+            "disney_springs": "hotel en Disney Springs",
             "universal": "Hotel Universal",
             "universal_premier": "Universal Premier",
             "offsite": "hotel en otro sitio"
@@ -4132,7 +4142,8 @@
           }
         },
         "area": {
-          "universal": "Hoteles de Universal"
+          "universal": "Hoteles de Universal",
+          "disney_springs": "Disney Springs Resort Area"
         }
       },
       "homeStory": {
@@ -4145,6 +4156,7 @@
     "southern-california": {
       "nav": {
         "name": "California del Sur",
+        "inRegion": "en California del Sur",
         "area": "Los Ángeles y San Diego",
         "calendar": "Calendario de afluencia de Disneyland California",
         "calendarHint": "Cuál de los ocho parques tiene menos gente cada día, y un planificador para tu viaje."
@@ -4415,6 +4427,7 @@
     "japan": {
       "nav": {
         "name": "Japón",
+        "inRegion": "en Japón",
         "area": "De Tokio a Osaka",
         "calendar": "Calendario de afluencia de Tokyo Disney y USJ",
         "calendarHint": "Cinco parques día a día, y un planificador para un viaje por varias ciudades."
@@ -4748,6 +4761,7 @@
     "paris": {
       "nav": {
         "name": "París",
+        "inRegion": "en París",
         "area": "Francia",
         "calendar": "Calendario de afluencia de Disneyland Paris y Parc Astérix",
         "calendarHint": "Qué parque de los tres qué día, y dónde dormir para cada uno."

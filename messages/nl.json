@@ -393,7 +393,6 @@
     "assistantOpen": "Chat met Parky"
   },
   "tripHub": {
-    "toCalendar": "Naar de kalender",
     "nextDays": "Komende 30 dagen",
     "dayTripsGroup": "Dagtrips",
     "lastYearBanner": "De voorspelling loopt tot {date}. Daarna toont elke dag dezelfde weekdag vorig jaar, gemarkeerd met “vorig jaar”.",
@@ -408,8 +407,8 @@
       "monthTitle": "De rustigste dagen in {month}",
       "monthTitleLastYear": "De rustigste dagen in {month} vorig jaar",
       "quietPark": "({park}, ongeveer {minutes} min)",
-      "best": "Beste park per resort, <time>{date}</time>",
-      "quietestTo": "Het rustigst tot {date}"
+      "quietestTo": "Het rustigst tot {date}",
+      "best": "Beste park per resort, <time>{date}</time>"
     },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
@@ -450,8 +449,8 @@
       "stateOpen": "Open, geen voorspelling",
       "cellNoHours": "openingstijden nog niet gepubliceerd",
       "earlyElsewhere": "{park} sluit om {time}",
-      "titleMonth": "Dag voor dag in {month}",
-      "sourcesTravel": "Reistijden: {attribution}"
+      "sourcesTravel": "Reistijden: {attribution}",
+      "titleMonth": "Dag voor dag in {month}"
     },
     "lanes": {
       "summaryLabel": "Evenementen",
@@ -504,55 +503,64 @@
       "varHours": "Openingstijden"
     },
     "band": {
-      "title": "Reisplanner voor {region}",
-      "planPark": "{park} in je reis naar {region} inplannen",
+      "title": "Meerdere dagen {inRegion}",
+      "planPark": "{park} inplannen",
       "open": "Reisplanner openen"
     },
-    "parksIndex": {
-      "link": "{park} drukte-kalender",
-      "label": "Drukte-kalender per park"
+    "tile": {
+      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is."
     },
     "faq": {
-      "links": "Het model erachter: <fancast>Fancast</fancast>. De rest: <howto>zo werkt park.fan</howto>.",
-      "title": "Veelgestelde vragen",
-      "quietestOnly": "{resort}: rustigste dagen {days}.",
-      "lastYearNote": "Voor {month} is er nog geen voorspelling. De getallen zijn de dagen die we in dezelfde maand vorig jaar hebben gemeten.",
-      "events": {
-        "q": "Welke evenementen zijn er de komende weken?",
-        "qMonth": "Welke evenementen zijn er in {month}?",
-        "a": "De komende weken: {list}.",
-        "aMonth": "In {month}: {list}.",
-        "party": "{name} ({parks}, {count, plural, =1 {# avond} other {# avonden}}, apart ticket)",
-        "festival": "{name} ({parks}, {dates})",
-        "expected": "{name} ({parks}, data nog niet bevestigd)",
-        "partyNote": "Op een avond met een apart ticket sluit het park eerder voor daggasten; in de kalender heeft zo’n dag een hoekje."
+      "parks": {
+        "a": "Gemiddeld over {days} dagen: {list}.",
+        "q": "Welk park is de komende weken het rustigst?",
+        "park": "{park} ongeveer {minutes} min",
+        "qMonth": "Welk park is in {month} het rustigst?"
       },
-      "weekdays": {
-        "q": "Welke weekdag is de komende weken het rustigst?",
-        "qMonth": "Welke weekdag is in {month} het rustigst?",
-        "a": "{quietCount, plural, =1 {{quiet} is de rustigste dag} other {{quiet} zijn de rustigste dagen}}, met ongeveer {low} min piekwachttijd, en {busy} de drukste, met ongeveer {high} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
-        "flat": "Geen weekdag springt eruit: op elke dag ligt de piekwachttijd rond {minutes} min, gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
-        "busyOnly": "{busy} {busyCount, plural, =1 {is de drukste dag} other {zijn de drukste dagen}}, met ongeveer {high} min piekwachttijd; de andere dagen liggen lager, tot ongeveer {low} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
-        "quietOnly": "{quiet} {quietCount, plural, =1 {is de rustigste dag} other {zijn de rustigste dagen}}, met ongeveer {low} min piekwachttijd; de andere dagen liggen hoger, tot ongeveer {high} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}."
+      "accuracy": {
+        "planner": "Hoe verder de dag weg is, hoe groter de afwijking. Het is dezelfde maat als bij “Hoe nauwkeurig is dit?” in de reisplanner, die hem bij elk plan noemt.",
+        "plannerNoFigure": "Hoe verder de dag weg is, hoe groter de afwijking; de reisplanner noemt die bij elk plan in minuten, onder “Hoe nauwkeurig is dit?”.",
+        "q": "Hoe ver reikt de voorspelling, en hoe nauwkeurig is die?",
+        "horizon": "De voorspelling reikt 60 dagen vooruit, daarna loopt tot {date} een vooruitblik met een grotere afwijking. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de aanduiding “vorig jaar”.",
+        "figure": "De afgelopen {days} dagen zat onze voorspelling van de piekwachttijd, {lead, plural, =1 {een dag} =7 {een week} other {# dagen}} vooruit gemaakt, gemiddeld {minutes} min ernaast, gemeten in {parks} parken.",
+        "rounding": "Dagen die minder dan vijf minuten verschillen, tellen als gelijk.",
+        "horizonNoDate": "De voorspelling reikt 60 dagen vooruit, daarna loopt een vooruitblik met een grotere afwijking. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de aanduiding “vorig jaar”."
       },
       "breaks": {
         "q": "Zijn er de komende weken schoolvakanties of feestdagen?",
         "qMonth": "Zijn er in {month} schoolvakanties of feestdagen?",
+        "effectSame": "Op vakantie- en feestdagen is de piekwachttijd van de grote parken niet langer dan op de andere dagen, ongeveer {minutes} min.",
         "holiday": "Feestdag: {name}, {dates}.",
-        "effect": "Op vakantie- en feestdagen ligt de piekwachttijd van de grote parken rond {on} min, op de andere dagen rond {off} min.",
-        "effectSame": "Op vakantie- en feestdagen is de piekwachttijd van de grote parken niet langer dan op de andere dagen, ongeveer {minutes} min."
+        "effect": "Op vakantie- en feestdagen ligt de piekwachttijd van de grote parken rond {on} min, op de andere dagen rond {off} min."
       },
-      "hours": {
-        "q": "Hoe lang zijn de parken de komende weken open?",
-        "qMonth": "Hoe lang zijn de parken in {month} open?",
-        "a": "De meest voorkomende openingstijden van de grote parken: {parks}.",
-        "park": "{park} {hours}",
-        "early": "Op {count, plural, =1 {# dag} other {# dagen}} sluit minstens één groot park eerder dan normaal voor daggasten; in de kalender heeft zo’n dag een hoekje."
+      "title": "Veelgestelde vragen",
+      "events": {
+        "party": "{name} ({parks}, {count, plural, =1 {# avond} other {# avonden}}, apart ticket)",
+        "partyNote": "Op een avond met een apart ticket sluit het park eerder voor daggasten; in de kalender heeft zo’n dag een hoekje.",
+        "q": "Welke evenementen zijn er de komende weken?",
+        "aMonth": "In {month}: {list}.",
+        "qMonth": "Welke evenementen zijn er in {month}?",
+        "expected": "{name} ({parks}, data nog niet bevestigd)",
+        "festival": "{name} ({parks}, {dates})",
+        "a": "De komende weken: {list}."
       },
-      "peak": {
-        "q": "Wat is de piekwachttijd?",
-        "a": "Voor elke grote attractie van een park nemen we de hoogste wachttijd van de dag en middelen die over die attracties, afgerond op vijf minuten. Op dat ene getal vergelijk je de parken in de kalender, in het antwoord bovenaan en in de reisplanner. Het geldt voor het drukste moment van de dag: vlak na opening en ’s avonds wacht je meestal korter."
+      "closures": {
+        "qMonth": "Zijn er in {month} parken gesloten?",
+        "a": "Gesloten: {list}.",
+        "days": "{park} ({count, plural, =1 {# dag} other {# dagen}})",
+        "q": "Zijn er de komende weken parken gesloten?",
+        "run": "{park} ({dates})"
       },
+      "weekdays": {
+        "flat": "Geen weekdag springt eruit: op elke dag ligt de piekwachttijd rond {minutes} min, gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
+        "quietOnly": "{quiet} {quietCount, plural, =1 {is de rustigste dag} other {zijn de rustigste dagen}}, met ongeveer {low} min piekwachttijd; de andere dagen liggen hoger, tot ongeveer {high} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
+        "q": "Welke weekdag is de komende weken het rustigst?",
+        "qMonth": "Welke weekdag is in {month} het rustigst?",
+        "busyOnly": "{busy} {busyCount, plural, =1 {is de drukste dag} other {zijn de drukste dagen}}, met ongeveer {high} min piekwachttijd; de andere dagen liggen lager, tot ongeveer {low} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}.",
+        "a": "{quietCount, plural, =1 {{quiet} is de rustigste dag} other {{quiet} zijn de rustigste dagen}}, met ongeveer {low} min piekwachttijd, en {busy} de drukste, met ongeveer {high} min. Gemiddeld over {days} dagen en {parks, plural, =1 {het grote park} other {de # grote parken}}."
+      },
+      "lastYearNote": "Voor {month} is er nog geen voorspelling. De getallen zijn de dagen die we in dezelfde maand vorig jaar hebben gemeten.",
+      "quietestOnly": "{resort}: rustigste dagen {days}.",
       "green": {
         "q": "Waarom kan een park met een langere piekwachttijd groen zijn?",
         "a": "De kleur vergelijkt een dag met een gewone dag in hetzelfde park, niet met andere parken. Gewoon is de middelste openingsdag van de afgelopen anderhalf jaar. 60 minuten kan voor een groot park een rustige dag zijn en 50 voor een kleiner park een drukke. Twee parken vergelijk je dus op de minuten, een dag met zijn eigen park op de kleur."
@@ -561,34 +569,30 @@
         "q": "Waar komen de getallen vandaan?",
         "a": "park.fan slaat elke vijf minuten de getoonde wachttijd van elke attractie op. Van die metingen leert de voorspelling, samen met de openingstijden, de schoolvakanties, de feestdagen en het weer. Openingstijden, vroege toegang voor hotelgasten en avondevenementen komen uit de kalenders van de parken; seizoenen, feesten en sluitingen controleren we met de hand."
       },
-      "accuracy": {
-        "q": "Hoe ver reikt de voorspelling, en hoe nauwkeurig is die?",
-        "horizon": "De voorspelling reikt 60 dagen vooruit, daarna loopt tot {date} een vooruitblik met een grotere afwijking. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de aanduiding “vorig jaar”.",
-        "horizonNoDate": "De voorspelling reikt 60 dagen vooruit, daarna loopt een vooruitblik met een grotere afwijking. Verder toont een dag dezelfde weekdag vorig jaar, zoals wij die gemeten hebben, met de aanduiding “vorig jaar”.",
-        "figure": "De afgelopen {days} dagen zat onze voorspelling van de piekwachttijd, {lead, plural, =1 {een dag} =7 {een week} other {# dagen}} vooruit gemaakt, gemiddeld {minutes} min ernaast, gemeten in {parks} parken.",
-        "planner": "Hoe verder de dag weg is, hoe groter de afwijking. Het is dezelfde maat als bij “Hoe nauwkeurig is dit?” in de reisplanner, die hem bij elk plan noemt.",
-        "plannerNoFigure": "Hoe verder de dag weg is, hoe groter de afwijking; de reisplanner noemt die bij elk plan in minuten, onder “Hoe nauwkeurig is dit?”.",
-        "rounding": "Dagen die minder dan vijf minuten verschillen, tellen als gelijk."
+      "peak": {
+        "a": "Voor elke grote attractie van een park nemen we de hoogste wachttijd van de dag en middelen die over die attracties, afgerond op vijf minuten. Op dat ene getal vergelijk je de parken in de kalender, in het antwoord bovenaan en in de reisplanner. Het geldt voor het drukste moment van de dag: vlak na opening en ’s avonds wacht je meestal korter.",
+        "q": "Wat is de piekwachttijd?"
       },
-      "parks": {
-        "q": "Welk park is de komende weken het rustigst?",
-        "qMonth": "Welk park is in {month} het rustigst?",
-        "a": "Gemiddeld over {days} dagen: {list}.",
-        "park": "{park} ongeveer {minutes} min"
-      },
-      "closures": {
-        "q": "Zijn er de komende weken parken gesloten?",
-        "qMonth": "Zijn er in {month} parken gesloten?",
-        "a": "Gesloten: {list}.",
-        "run": "{park} ({dates})",
-        "days": "{park} ({count, plural, =1 {# dag} other {# dagen}})"
+      "links": "Het model erachter: <fancast>Fancast</fancast>. De rest: <howto>zo werkt park.fan</howto>.",
+      "hours": {
+        "q": "Hoe lang zijn de parken de komende weken open?",
+        "early": "Op {count, plural, =1 {# dag} other {# dagen}} sluit minstens één groot park eerder dan normaal voor daggasten; in de kalender heeft zo’n dag een hoekje.",
+        "park": "{park} {hours}",
+        "qMonth": "Hoe lang zijn de parken in {month} open?",
+        "a": "De meest voorkomende openingstijden van de grote parken: {parks}."
       }
     },
-    "question": "Welk park op welke dag?",
+    "toCalendar": "Naar de kalender",
     "plan": "Reis plannen",
+    "parksIndex": {
+      "label": "Drukte-kalender per park",
+      "link": "{park} drukte-kalender"
+    },
     "accuracy": {
       "line": "Onze voorspelling van de piekwachttijd, {lead, plural, =1 {een dag} =7 {een week} other {# dagen}} vooruit, zat de afgelopen {days} dagen <link>gemiddeld {minutes} min ernaast</link>."
-    }
+    },
+    "question": "Welk park op welke dag?",
+    "nextTitle": "Reisplanner voor {region}"
   },
   "theme": {
     "light": "Licht",
@@ -3174,7 +3178,9 @@
       "modeAll": "Totaal",
       "picksLegendAll": "Onder elke datum staat het park met de kortste piekwachttijd.",
       "picksLegendResort": "Onder elke datum staat het park van {resort} met de kortste piekwachttijd.",
-      "overall": "Totaal: {park}"
+      "overall": "Totaal: {park}",
+      "stormPeak": "{season}: het zoeken naar de beste reistijd zet deze dagen lager, ook bij korte wachttijden.",
+      "rainyNote": "{season}: nattere dagen, maar daardoor niet drukkere parken."
     },
     "find": {
       "modeKnown": "Ik weet mijn data",
@@ -3777,6 +3783,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando drukte-kalender",
         "calendarHint": "Welk park op welke dag, en een planner voor je hele reis."
@@ -3794,9 +3801,6 @@
         "lead": "Een kalender voor alle 16 parken rond Orlando en een planner voor je reisdagen.",
         "leadMonth": "Alle 16 parken rond Orlando in {month}, dag voor dag, en een planner voor je reisdagen.",
         "monthIndexLabel": "Orlando per maand",
-        "glance": {
-          "zone": "tijd in Orlando"
-        },
         "calendar": {
           "caption": "De parken van Orlando van {from} tot {to}: piekwachttijd bij de grote attracties, in minuten"
         },
@@ -3852,6 +3856,9 @@
         "dataset": {
           "name": "Drukte-kalender van de pretparken in Orlando, {period}",
           "description": "Per park en dag in Walt Disney World, Universal Orlando, SeaWorld en op de dagtrips: de verwachte piekwachttijd bij de grote attracties, de drukte ten opzichte van een gewone dag in het park en de openingstijden, {period}."
+        },
+        "glance": {
+          "zone": "tijd in Orlando"
         }
       },
       "bestTime": {
@@ -3920,6 +3927,7 @@
           "hotelLabel": {
             "disney": "Disney-hotel",
             "disney_deluxe": "Disney-deluxehotel",
+            "disney_springs": "Disney Springs-hotel",
             "universal": "Universal-hotel",
             "universal_premier": "Universal Premier-hotel",
             "offsite": "Ergens anders"
@@ -3927,6 +3935,7 @@
           "hotelHint": {
             "disney": "Early Entry in de Disney-parken, 30 minuten voor de opening",
             "disney_deluxe": "Early Entry, en op sommige avonden Extended Evening Hours",
+            "disney_springs": "Early Entry in de Disney-parken, zonder Extended Evening Hours",
             "universal": "Early Park Admission, een uur voor de opening",
             "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure",
             "offsite": "Geen vroege toegang"
@@ -3934,6 +3943,7 @@
           "hotelShort": {
             "disney": "Disney-hotel",
             "disney_deluxe": "Disney-deluxehotel",
+            "disney_springs": "Disney Springs-hotel",
             "universal": "Universal-hotel",
             "universal_premier": "Universal Premier",
             "offsite": "hotel elders"
@@ -4132,7 +4142,8 @@
           }
         },
         "area": {
-          "universal": "Universal-hotels"
+          "universal": "Universal-hotels",
+          "disney_springs": "Disney Springs Resort Area"
         }
       },
       "homeStory": {
@@ -4145,6 +4156,7 @@
     "southern-california": {
       "nav": {
         "name": "Zuid-Californië",
+        "inRegion": "in Zuid-Californië",
         "area": "Los Angeles en San Diego",
         "calendar": "Disneyland Californië drukte-kalender",
         "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis."
@@ -4415,6 +4427,7 @@
     "japan": {
       "nav": {
         "name": "Japan",
+        "inRegion": "in Japan",
         "area": "Tokio tot Osaka",
         "calendar": "Tokyo Disney & USJ drukte-kalender",
         "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden."
@@ -4748,6 +4761,7 @@
     "paris": {
       "nav": {
         "name": "Parijs",
+        "inRegion": "in Parijs",
         "area": "Frankrijk",
         "calendar": "Drukte-kalender Disneyland Paris & Parc Astérix",
         "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht."

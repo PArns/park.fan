@@ -159,6 +159,7 @@ export const ORLANDO: TripRegionConfig = {
   hotels: [
     { key: 'disney', area: 'disney' },
     { key: 'disney_deluxe', area: 'disney' },
+    { key: 'disney_springs', area: 'disney_springs' },
     { key: 'universal', area: 'universal' },
     { key: 'universal_premier', area: 'universal' },
     { key: 'offsite' },

@@ -17,7 +17,7 @@ import {
   whenPeriods,
   type WhenPeriodKey,
 } from '@/lib/trip-regions/plan-when';
-import { usePlanContext } from './plan-context';
+import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanChip, PlanStepper } from './plan-controls';
 import { PlanDates } from './plan-dates';
 import { useSchoolBreaks } from './use-trip-plan';
@@ -38,12 +38,16 @@ export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
   const tSetup = useTranslations('tripPlanner.setup');
   const tTickets = useTranslations('tripPlanner.tickets');
   const { state, update, today, live } = usePlanContext();
+  const track = useTripEvents();
   const find = state.when !== null;
   // `/when` searches a ticket's start; a first day fixed at purchase leaves nothing to search.
   const fixed = state.tickets.some((ticket) => ticket.start !== null);
   const fixedId = useId();
-  const choose = (next: boolean) =>
-    today && update((s) => setFindMode(s, next, defaultSearchRange(today)));
+  const choose = (next: boolean) => {
+    if (!today) return;
+    track('trip_find_toggled', { to: next ? 'find' : 'known' });
+    update((s) => setFindMode(s, next, defaultSearchRange(today)));
+  };
   const switchLink = (
     <div className="flex flex-col gap-1">
       <button
@@ -83,6 +87,7 @@ export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
 export function PlanFind() {
   const t = useTranslations('tripPlanner.find');
   const { state, update, today, locale, live } = usePlanContext();
+  const track = useTripEvents();
   const regionsId = useId();
   const periods = useMemo(() => (today ? whenPeriods(today, state.days) : []), [today, state.days]);
   // A range of the visitor's own can coincide with a chip's; "Custom" stays chosen once pressed.
@@ -118,13 +123,20 @@ export function PlanFind() {
               onClick={() => {
                 setCustom(false);
                 setRange(period.range);
+                track('trip_find_period', {
+                  period: period.key,
+                  school_breaks: state.within !== null,
+                });
               }}
               label={t(`periods.${period.key}`, { year: period.year })}
             />
           ))}
           <PlanChip
             selected={chosen === 'custom'}
-            onClick={() => setCustom(true)}
+            onClick={() => {
+              setCustom(true);
+              track('trip_find_period', { period: 'custom', school_breaks: state.within !== null });
+            }}
             label={t('periods.custom')}
           />
         </div>
@@ -187,14 +199,17 @@ export function PlanFind() {
         <PlanCheckRow
           checked={state.within !== null}
           disabled={!live || (countries.length === 0 && state.within === null)}
-          onChange={(on) =>
+          onChange={(on) => {
+            // Whether the search keeps to school holidays, never which: a region says where the
+            // visitor lives.
+            track('trip_find_period', { period: chosen, school_breaks: on });
             update((s) => ({
               ...s,
               within: on
                 ? (countries.find((c) => c.country === withinCountry)?.regions[0]?.code ?? null)
                 : null,
-            }))
-          }
+            }));
+          }}
           label={t('holidays')}
           hint={
             countries.length === 0 && breaks.isError ? t('holidaysUnavailable') : t('holidaysHint')

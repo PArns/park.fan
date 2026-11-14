@@ -29,6 +29,7 @@ import {
 } from '@/lib/trip-regions/plan-tickets';
 import { tripTicketAnswer } from '@/lib/trip-regions/ticket-answer';
 import type { TicketProduct } from '@/lib/trip-regions/types';
+import type { TripTicketsFrom } from '@/lib/analytics/site-analytics';
 import { Badge } from '@/components/ui/badge';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
@@ -58,8 +59,11 @@ function focusSelector(focus: FocusTarget): string {
 export interface TicketStep {
   answer: TicketAnswer;
   drafts: TicketDraft[];
-  /** The visitor opened their tickets from the answer: counted once, and kept for this browser. */
-  answerYes: () => void;
+  /**
+   * The ticket step opened, from where: counted every time, `first` while this browser never
+   * opened it before.
+   */
+  open: (from: TripTicketsFrom) => void;
   add: (resort: TicketResort) => void;
   addCombo: () => void;
   change: (id: number, patch: Partial<TicketDraft>) => void;
@@ -117,9 +121,9 @@ export function useTicketStep(): TicketStep {
   return {
     answer,
     drafts,
-    answerYes: () => {
+    open: (from) => {
+      track('trip_tickets_opened', { from, first: answer !== 'yes' });
       if (answer === 'yes') return;
-      track('trip_tickets_answered', { answer: 'yes' });
       asked.set('yes');
       write(drafts);
     },

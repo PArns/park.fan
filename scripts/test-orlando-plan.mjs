@@ -81,6 +81,9 @@ import {
   isNewYearsEve,
   modePick,
   monthEvents,
+  stormCodeOn,
+  stormSignal,
+  weatherNotesOn,
 } from '../lib/trip-regions/date-facts.ts';
 import { formatGridHours } from '../lib/planner/park-time.ts';
 import {
@@ -96,7 +99,9 @@ import {
 } from '../lib/trip-regions/plan-when.ts';
 import {
   findTripRegion,
+  findTripRegions,
   matchTripRegion,
+  plannerLinkRel,
   regionParksOf,
   tripPlannerHref,
   tripRegionLinks,
@@ -153,6 +158,8 @@ import {
   tripPlanFailedProps,
   tripPlanRequestProps,
   tripPlanShownProps,
+  tripOptionChanges,
+  leftOutBucket,
   tripWhenShownProps,
 } from '../lib/trip-regions/plan-analytics.ts';
 import { onSiteEvent } from '../lib/analytics/site-analytics.ts';
@@ -370,6 +377,11 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'the area means its hotel',
     effectiveHotel({ hotel: null, area: 'universal' }, ORLANDO.hotels),
     'universal'
+  );
+  test(
+    'the Disney Springs Resort Area plans with its own hotels, not off-site',
+    effectiveHotel({ hotel: null, area: 'disney_springs' }, ORLANDO.hotels),
+    'disney_springs'
   );
   test(
     'the API’s hotel kinds keep the registry’s areas, and a new one has none',
@@ -994,6 +1006,82 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [isNewYearsEve('2026-12-31'), isNewYearsEve('2027-01-01')],
     [true, false]
   );
+  {
+    // The API's `weather` as the region sends it (docs/frontend/trip-regions.md).
+    const orlando = {
+      storm: {
+        kind: 'hurricane',
+        from: '06-01',
+        to: '11-30',
+        peak: { from: '08-15', to: '10-15' },
+      },
+    };
+    const japan = {
+      storm: { kind: 'typhoon', from: '06-01', to: '11-30', peak: { from: '09-01', to: '10-15' } },
+      notes: [{ kind: 'rainy_season', from: '06-06', to: '07-19' }],
+    };
+    const on = (weather, dates) => dates.map((date) => stormCodeOn(date, weather));
+    test(
+      'the storm season by the API’s dates, both ends in, the peak inside it',
+      on(orlando, [
+        '2027-05-31',
+        '2027-06-01',
+        '2027-08-14',
+        '2027-08-15',
+        '2027-09-10',
+        '2027-10-15',
+        '2027-10-16',
+        '2027-11-30',
+        '2027-12-01',
+      ]),
+      [
+        null,
+        'hurricane_season',
+        'hurricane_season',
+        'hurricane_peak',
+        'hurricane_peak',
+        'hurricane_peak',
+        'hurricane_season',
+        'hurricane_season',
+        null,
+      ]
+    );
+    test(
+      'Japan’s typhoons by their own peak; Paris and California have no storm season',
+      [
+        ...on(japan, ['2027-08-31', '2027-09-01']),
+        stormCodeOn('2027-09-10', { climatePark: 'disneyland-park' }),
+        stormCodeOn('2027-09-10', undefined),
+      ],
+      ['typhoon_season', 'typhoon_peak', null, null]
+    );
+    test(
+      'a season across New Year counts from its start to its end',
+      on({ storm: { kind: 'typhoon', from: '12-01', to: '02-28' } }, [
+        '2026-11-30',
+        '2026-12-24',
+        '2027-01-15',
+        '2027-03-01',
+      ]),
+      [null, 'typhoon_season', 'typhoon_season', null]
+    );
+    test(
+      'the peak is the solid segment, the rest of the season the dashed one',
+      ['hurricane_peak', 'hurricane_season', 'typhoon_peak', 'typhoon_season'].map(stormSignal),
+      ['stormPeak', 'storm', 'stormPeak', 'storm']
+    );
+    test(
+      'Japan’s rainy season is a note on its dates, Orlando has none',
+      [
+        weatherNotesOn('2027-06-05', japan),
+        weatherNotesOn('2027-06-06', japan),
+        weatherNotesOn('2027-07-19', japan),
+        weatherNotesOn('2027-07-20', japan),
+        weatherNotesOn('2027-06-20', orlando),
+      ],
+      [[], ['rainy_season'], ['rainy_season'], [], []]
+    );
+  }
 
   const month = {
     days: ['2026-12-30', '2026-12-31', '2027-01-01'].map((date) => ({
@@ -2141,19 +2229,74 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'a plan on screen names the rule it loosened that weighs most, and what it left out',
     [
-      tripPlanShownProps({ meta: {}, unplaced: [] }),
+      tripPlanShownProps({ meta: {}, unplaced: [], days: [] }),
       tripPlanShownProps({
         meta: { relaxed: ['streak_relaxed', 'ticket_window_relaxed', 'blocks_relaxed'] },
-        unplaced: [{ slug: 'epcot' }],
+        unplaced: [{ slug: 'epcot', reason: 'no_day_left' }],
+        days: [],
       }),
-      tripPlanShownProps({ meta: { relaxed: ['streak_relaxed'] }, unplaced: [] }),
+      tripPlanShownProps({
+        meta: { relaxed: ['streak_relaxed'], stays: [{}, {}] },
+        unplaced: [],
+        parksLeftOut: [],
+        days: [],
+      }),
     ],
     [
-      { mode: 'dates', outcome: 'ok', unplaced: 0 },
-      { mode: 'dates', outcome: 'relaxed', relaxed: 'ticket_window', unplaced: 1 },
-      { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0 },
+      { mode: 'dates', outcome: 'ok', unplaced: 0, left_out: 0 },
+      { mode: 'dates', outcome: 'relaxed', relaxed: 'ticket_window', unplaced: 1, left_out: 1 },
+      { mode: 'dates', outcome: 'relaxed', relaxed: 'streak', unplaced: 0, left_out: 0, stays: 2 },
     ]
   );
+  {
+    const base = { ...DEFAULT_PLAN_STATE, from: '2026-12-05', to: '2026-12-12' };
+    const HEADS = ['magic-kingdom-park', 'epcot'];
+    test(
+      'one option event per option changed, values from small sets only',
+      [
+        tripOptionChanges(base, { ...base, moveBuffer: 90, arrival: 'park', rest: 'max:3' }, HEADS),
+        tripOptionChanges(
+          base,
+          { ...base, parks: [{ slug: 'magic-kingdom-park', visits: null }] },
+          HEADS
+        ),
+        tripOptionChanges(
+          base,
+          {
+            ...base,
+            parks: [
+              { slug: 'magic-kingdom-park', visits: 2 },
+              { slug: 'epcot', visits: null },
+            ],
+          },
+          HEADS
+        ),
+        tripOptionChanges(
+          base,
+          { ...base, bases: [{ key: 'tokyo', nights: 4, area: null }], startBase: 'tokyo' },
+          HEADS
+        ),
+        tripOptionChanges(base, { ...base, from: '2027-01-01', locks: [], tickets: [] }, HEADS),
+      ],
+      [
+        [
+          { option: 'arrival', value: 'on' },
+          { option: 'rest', value: 'max' },
+          { option: 'move_buffer', value: '90' },
+        ],
+        [{ option: 'parks', value: 'removed' }],
+        [{ option: 'visits' }],
+        [{ option: 'cities' }, { option: 'start_base', value: 'set' }],
+        [],
+      ]
+    );
+    test('left-out parks in three buckets', [1, 2, 3, 7].map(leftOutBucket), [
+      '1',
+      '2',
+      '3+',
+      '3+',
+    ]);
+  }
   {
     const heard = [];
     const stop = onSiteEvent((name, props) => heard.push({ name, props }));
@@ -2290,6 +2433,42 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       findTripRegion([links], ['id-bg'])?.parks.map((p) => p.slug),
     ],
     [null, ['busch-gardens-tampa']]
+  );
+  const california = {
+    slug: 'southern-california',
+    name: 'Southern California',
+    names: ['Southern California'],
+    parks: [
+      {
+        id: 'id-kbf',
+        slug: 'knotts-berry-farm',
+        name: "Knott's Berry Farm",
+        path: '/parks/north-america/united-states/buena-park/knotts-berry-farm',
+      },
+    ],
+  };
+  test(
+    'a country with parks of two regions finds both, in the regions order',
+    findTripRegions([links, california], ['id-kbf', 'id-epcot', 'id-mk']).map(
+      ({ region, parks }) => [region.slug, parks.map((p) => p.slug)]
+    ),
+    [
+      ['orlando', ['magic-kingdom-park', 'epcot']],
+      ['southern-california', ['knotts-berry-farm']],
+    ]
+  );
+  test(
+    'one region per park page: the first that holds it',
+    findTripRegion([links, california], ['id-kbf'])?.region.slug,
+    'southern-california'
+  );
+  test(
+    'a planner link with a plan is nofollow, the bare chapter is not',
+    [
+      plannerLinkRel(tripPlannerHref(links.slug, 'de', { parks: ['epcot'] })),
+      plannerLinkRel(tripPlannerHref(links.slug, 'de')),
+    ],
+    ['nofollow', undefined]
   );
   test(
     'the planner on a park, on a month of a park calendar, and bare',

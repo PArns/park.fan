@@ -9,7 +9,9 @@ import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
 import { requireTripRegion, type TripTicketStep } from '@/lib/trip-regions/registry';
 import { shortParkName } from '@/lib/trip-regions/hub-data';
 import { ticketCatalog } from '@/lib/trip-regions/plan-tickets';
-import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
+import { trackDatesStart, trackTripEvent } from '@/lib/trip-regions/plan-analytics';
+import type { TripEditFrom, TripEditPanel } from '@/lib/analytics/site-analytics';
+import type { PlanEdit } from './plan-tickets-card';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import type { TripRegion } from '@/lib/trip-regions/types';
 import {
@@ -251,8 +253,18 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
     return true;
   }, [focusResult]);
 
-  /** The result's ways back into the setup: the dates, the parks, the route, the options, tickets. */
-  const edit = useMemo(() => {
+  // The desk picks its dates in the open panel without pressing any start, so the first dates of
+  // the page load are its start.
+  const onDatesPicked = useCallback(() => {
+    trackDatesStart(region.slug);
+    showResult();
+  }, [region.slug, showResult]);
+
+  /**
+   * The result's ways back into the setup: the dates, the parks, the route, the options, tickets,
+   * each counted with where it was pressed.
+   */
+  const edit = useMemo<PlanEdit>(() => {
     const panel = (selector: string, open?: () => void) => () => {
       open?.();
       requestAnimationFrame(() => {
@@ -261,25 +273,45 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         target?.focus({ preventScroll: true });
       });
     };
+    const opened = (panel: TripEditPanel, from: TripEditFrom) =>
+      track('trip_edit_opened', { panel, from });
     return {
-      tickets: (index?: number) => {
-        step.answerYes();
+      tickets: (from, index) => {
+        step.open(from);
         if (index !== undefined) step.focusTicket(index);
         if (!isWide()) setSheet('tickets');
         else panel('[data-plan-tickets-panel]', () => setTicketsOpen(true))();
       },
-      parks: () => (isWide() ? panel('[data-plan-parks-panel]')() : setSheet('parks')),
-      options: () =>
-        isWide()
-          ? panel('[data-plan-disclosure="options"] > button', () => setFineTuneOpen(true))()
-          : setSheet('options'),
-      route: () =>
-        isWide()
-          ? panel('[data-plan-disclosure="route"] > button', () => setRouteOpen(true))()
-          : setSheet('route'),
-      dates: () => (isWide() ? panel('[data-plan-dates-panel]')() : setSheet('dates')),
+      parks: (from) => {
+        opened('parks', from);
+        if (isWide()) panel('[data-plan-parks-panel]')();
+        else setSheet('parks');
+      },
+      options: (from) => {
+        opened('options', from);
+        if (isWide()) {
+          panel('[data-plan-disclosure="options"] > button', () => setFineTuneOpen(true))();
+        } else setSheet('options');
+      },
+      route: (from) => {
+        opened('route', from);
+        if (isWide()) {
+          panel('[data-plan-disclosure="route"] > button', () => setRouteOpen(true))();
+        } else setSheet('route');
+      },
+      dates: (from) => {
+        opened('dates', from);
+        if (isWide()) panel('[data-plan-dates-panel]')();
+        else setSheet('dates');
+      },
     };
-  }, [step]);
+  }, [step, track]);
+
+  /** A setup row or disclosure opened by the visitor: a change from the setup. */
+  const fromSetup = useCallback(
+    (panel: TripEditPanel) => track('trip_edit_opened', { panel, from: 'setup' }),
+    [track]
+  );
 
   return (
     <>
@@ -290,12 +322,19 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         onSheet={setSheet}
         onDone={showResult}
         onSheetClosed={onSheetClosed}
-        onDatesPicked={showResult}
+        onDatesPicked={onDatesPicked}
+        onSetupOpened={fromSetup}
         step={step}
         fineTuneOpen={fineTuneOpen}
-        onFineTuneOpen={setFineTuneOpen}
+        onFineTuneOpen={(open) => {
+          if (open) fromSetup('options');
+          setFineTuneOpen(open);
+        }}
         routeOpen={routeOpen}
-        onRouteOpen={setRouteOpen}
+        onRouteOpen={(open) => {
+          if (open) fromSetup('route');
+          setRouteOpen(open);
+        }}
         route={route}
         onStart={() => start('button')}
       />

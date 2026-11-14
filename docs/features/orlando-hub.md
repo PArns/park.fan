@@ -196,23 +196,24 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
 
 - The More menu's wide tile and the phone sheet's link (`lib/navigation/more-menu.ts`,
   `components/layout/more-menu-panel.tsx`, `components/layout/header.tsx`).
-- `TripPlannerBand` (`components/trip-regions/trip-planner-band.tsx`), from every page about the
+- `TripPlannerTile` and `TripPlannerBand` (`components/trip-regions/`), from every page about the
   region's parks into the planner. Which parks: the region route's `parks[]`, reduced by
   `tripRegionLinks` (`lib/trip-regions/trip-links.ts`, which keeps the live regions of the
   registry, so a region the API curates before its hub exists gets no links) and read by `getTripRegionLinks` with a 1.5 s
-  bound, so a slow read costs the band and never the page; no slug list here. Its variants:
+  bound, so a slow read costs the way in and never the page; no slug list here. Where each stands:
 
-  | Variant  | Where                                       | The link                                                                                 |
-  | -------- | ------------------------------------------- | ---------------------------------------------------------------------------------------- |
-  | `park`   | a region park's page and crowd calendar     | „Magic Kingdom in deine Orlando-Reise einplanen": `parks=<slug>`, on a month page `when` |
-  | `place`  | a city or country listing with region parks | „Reiseplaner öffnen": the bare chapter, the API's headliners                             |
-  | `post`   | the end of a post about region parks        | one park as `park`, several preselected under „Reiseplaner öffnen"                       |
-  | `search` | `/search` for a query that names the region | the bare chapter, as the palette's first row                                             |
+  | Way in             | Where                                       | The link                                                                                                                          |
+  | ------------------ | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+  | the tile           | a region park's page and crowd calendar     | „Magic Kingdom einplanen": `parks=<slug>`, on a month page `when` ([the tile](trip-regions.md#the-planner-tile-on-a-parks-pages)) |
+  | the band, `place`  | a city or country listing with region parks | „Reiseplaner öffnen": the bare chapter, the API's headliners; one band per region the listing holds                               |
+  | the band, `post`   | the end of a post about region parks        | one park as on the tile, several preselected under „Reiseplaner öffnen"; one band per region                                      |
+  | the band, `search` | `/search` for a query that names the region | the bare chapter, as the palette's first row                                                                                      |
 
-  A month page of a park calendar sends its month as the When mode's search (`monthSearchRange`:
-  from the park's today, at most a year ahead, nothing where the rest of the month is shorter than
-  the ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched, as the hub's
-  own "Plan these dates" links are.
+  Each also links the bare hub by its name (`nav.calendar`), a followed link. A month
+  page of a park calendar sends its month as the When mode's search (`monthSearchRange`: from the
+  park's today, at most a year ahead, nothing where the rest of the month is shorter than the
+  ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched
+  (`plannerLinkRel`), as the hub's own "Plan these dates" links are.
 
 - The footer's tools: „Reiseplaner" (en "Trip planner") beside „Tagesplaner" ("Day planner"), the
   first live region's planner from the registry (`lib/trip-regions/registry.ts`), so the footer on

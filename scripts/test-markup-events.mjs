@@ -1,7 +1,8 @@
 /**
  * Unit tests for what marked markup reports through `MarkupEventTracker`: which click on a link
  * inside a block marked with `linkBlockAttributes` becomes `internal_link_clicked` and with which
- * properties (`lib/analytics/internal-link.ts`), and which `toggle` of an FAQ row becomes
+ * properties (`lib/analytics/internal-link.ts`), which click on the planner tile becomes
+ * `trip_tile_clicked` (`lib/analytics/trip-tile.ts`), and which `toggle` of an FAQ row becomes
  * `faq_opened` (`lib/analytics/faq-open.ts`).
  *
  * Run: pnpm test:markup-events
@@ -14,6 +15,8 @@ globalThis.Element = Object;
 const { internalLinkClickOf, linkBlockAttributes, linkEntityAttributes } =
   await import('../lib/analytics/internal-link.ts');
 const { faqOpenedOf, faqPositionAttributes } = await import('../lib/analytics/faq-open.ts');
+const { tripTileAttributes, tripTileClickOf, tripTileLinkAttributes } =
+  await import('../lib/analytics/trip-tile.ts');
 
 const ORIGIN = 'https://park.fan';
 const PARK = '313CA334-C04F-4855-BFD9-C8BEB7A00D98';
@@ -149,6 +152,47 @@ test('an FAQ row that opens reports its place; a closing row and other details r
 test('a hub question reports its key beside its place, which moves with the data', () => {
   const row = { ...element('details', faqPositionAttributes(0, 'accuracy')), open: true };
   assert.deepEqual(faqOpenedOf(row), { position: 1, key: 'accuracy' });
+});
+
+test('the planner tile: both links are one place, and only the tile event tells them apart', () => {
+  const tile = element('aside', {
+    ...tripTileAttributes('orlando'),
+    ...linkBlockAttributes('trip_tile'),
+    ...linkEntityAttributes(PARK),
+  });
+  const plan = element(
+    'a',
+    { href: '/de/orlando?parks=magic-kingdom-park#planner', ...tripTileLinkAttributes('plan') },
+    tile
+  );
+  const calendar = element(
+    'a',
+    { href: '/de/orlando', ...tripTileLinkAttributes('calendar') },
+    tile
+  );
+  const label = element('span', {}, plan);
+  assert.deepEqual(internalLinkClickOf(label, ORIGIN), {
+    props: { block: 'trip_tile', dest: 'trip_hub', position: '1' },
+    entity: PARK.toLowerCase(),
+  });
+  assert.equal(internalLinkClickOf(calendar, ORIGIN).props.position, '1');
+  assert.deepEqual(tripTileClickOf(label), {
+    props: { region: 'orlando', link: 'plan' },
+    entity: PARK.toLowerCase(),
+  });
+  assert.deepEqual(tripTileClickOf(calendar).props, { region: 'orlando', link: 'calendar' });
+});
+
+test('nothing for a tile link outside a tile, an unknown link or a slug of another shape', () => {
+  const loose = element('a', { href: '/de/orlando', ...tripTileLinkAttributes('plan') });
+  assert.equal(tripTileClickOf(loose), null);
+  const tile = element('aside', tripTileAttributes('orlando'));
+  const odd = element('a', { href: '/de/orlando', 'data-trip-tile-link': 'parky' }, tile);
+  assert.equal(tripTileClickOf(odd), null);
+  const forged = element('aside', tripTileAttributes('Orlando <b>'));
+  const link = element('a', { href: '/de/orlando', ...tripTileLinkAttributes('plan') }, forged);
+  assert.equal(tripTileClickOf(link), null);
+  assert.equal(tripTileClickOf(null), null);
 });
 
 console.log(`\n${passed} cases passed.`);

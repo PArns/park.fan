@@ -193,7 +193,7 @@ export async function TripRegionHubPage({
     : null;
   const bandTitle =
     ownWords(tRegion, 'next.title') ??
-    t('band.title', { region: ownWords(tNav, 'name') ?? region.name });
+    t('nextTitle', { region: ownWords(tNav, 'name') ?? region.name });
 
   return (
     <>

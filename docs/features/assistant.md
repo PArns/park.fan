@@ -270,7 +270,9 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
   day planner's „Plane mit Parky deinen perfekten Parktag" (on an empty day),
   `parky-trip-interview-button.tsx` and `parky-day-interview-button.tsx` on one
   `ParkyInterviewStart`, in separate files so each route ships only its own planner's two strings,
-  drawn only where Parky shows for this visitor (`assistantGate`). A
+  drawn only where Parky shows for this visitor (`assistantGate`). The card lays itself out by its
+  own width (`@container`, side by side from `@xl`, 36rem), not the window's: the day planner's
+  panel is about 400 px wide on the widest screen, the trip planner's card wide on a tablet. A
   press sets the interview on its first step (`startInterview`) and opens the window
   (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the
   visitor's message once its session is ready (`takeInterviewKickoff`, `assistant_question` kind

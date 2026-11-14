@@ -393,7 +393,6 @@
     "assistantOpen": "Mit Parky schreiben"
   },
   "tripHub": {
-    "toCalendar": "Zum Kalender",
     "nextDays": "Nächste 30 Tage",
     "dayTripsGroup": "Tagesausflüge",
     "lastYearBanner": "Die Prognose reicht bis {date}. Danach zeigt jeder Tag denselben Wochentag im Vorjahr, mit „Vorjahr“ markiert.",
@@ -408,8 +407,8 @@
       "monthTitle": "Die ruhigsten Tage im {month}",
       "monthTitleLastYear": "Die ruhigsten Tage im {month} im Vorjahr",
       "quietPark": "({park}, etwa {minutes} Min.)",
-      "best": "Bester Park je Resort, <time>{date}</time>",
-      "quietestTo": "Am leersten bis {date}"
+      "quietestTo": "Am leersten bis {date}",
+      "best": "Bester Park je Resort, <time>{date}</time>"
     },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
@@ -450,8 +449,8 @@
       "stateOpen": "Geöffnet, keine Prognose",
       "cellNoHours": "Öffnungszeiten noch nicht veröffentlicht",
       "earlyElsewhere": "{park} schließt {time}",
-      "titleMonth": "Tag für Tag im {month}",
-      "sourcesTravel": "Fahrzeiten: {attribution}"
+      "sourcesTravel": "Fahrzeiten: {attribution}",
+      "titleMonth": "Tag für Tag im {month}"
     },
     "lanes": {
       "summaryLabel": "Events",
@@ -504,55 +503,64 @@
       "varHours": "Öffnungszeiten"
     },
     "band": {
-      "title": "Reiseplaner für {region}",
-      "planPark": "{park} in deine {region}-Reise einplanen",
+      "title": "Mehrere Tage {inRegion}",
+      "planPark": "{park} einplanen",
       "open": "Reiseplaner öffnen"
     },
-    "parksIndex": {
-      "link": "{park} Andrangskalender",
-      "label": "Andrang-Kalender je Park"
+    "tile": {
+      "line": "Du nennst deine Reisetage, der Planer sagt dir, welcher der {count} Parks an welchem Tag am leersten ist."
     },
     "faq": {
-      "links": "Das Modell dahinter: <fancast>Fancast</fancast>. Alles andere: <howto>So funktioniert park.fan</howto>.",
-      "title": "Häufige Fragen",
-      "quietestOnly": "{resort}: am leersten {days}.",
-      "lastYearNote": "Für {month} gibt es noch keine Prognose. Die Zahlen sind die Tage, die wir im selben Monat des Vorjahres gemessen haben.",
-      "events": {
-        "q": "Welche Events laufen in den nächsten Wochen?",
-        "qMonth": "Welche Events laufen im {month}?",
-        "a": "In den nächsten Wochen laufen {list}.",
-        "aMonth": "Im {month} laufen {list}.",
-        "party": "{name} ({parks}, {count, plural, =1 {# Abend} other {# Abende}}, eigenes Ticket)",
-        "festival": "{name} ({parks}, {dates})",
-        "expected": "{name} ({parks}, Termine noch nicht bestätigt)",
-        "partyNote": "An einem Abend mit eigenem Ticket schließt der Park für Tagesgäste früher; im Kalender hat so ein Tag eine Ecke."
+      "parks": {
+        "a": "Im Schnitt über {days} Tage: {list}.",
+        "q": "Welcher Park ist in den nächsten Wochen am leersten?",
+        "park": "{park} etwa {minutes} Min.",
+        "qMonth": "Welcher Park ist im {month} am leersten?"
       },
-      "weekdays": {
-        "q": "Welcher Wochentag ist in den nächsten Wochen am leersten?",
-        "qMonth": "Welcher Wochentag ist im {month} am leersten?",
-        "a": "{quietCount, plural, =1 {Am leersten ist der {quiet}} other {Am leersten sind {quiet}}} mit etwa {low} Min. Spitzenwartezeit, am vollsten {busyCount, plural, =1 {der {busy}} other {{busy}}} mit etwa {high} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
-        "flat": "Kein Wochentag sticht heraus: An jedem liegt die Spitzenwartezeit bei etwa {minutes} Min., gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
-        "busyOnly": "{busyCount, plural, =1 {Am vollsten ist der {busy}} other {Am vollsten sind {busy}}} mit etwa {high} Min. Spitzenwartezeit; die übrigen Tage liegen darunter, am niedrigsten bei etwa {low} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
-        "quietOnly": "{quietCount, plural, =1 {Am leersten ist der {quiet}} other {Am leersten sind {quiet}}} mit etwa {low} Min. Spitzenwartezeit; die übrigen Tage liegen darüber, am höchsten bei etwa {high} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}."
+      "accuracy": {
+        "planner": "Je weiter der Tag weg ist, desto größer der Fehler. Es ist dasselbe Maß wie unter „Wie genau ist das?“ im Reiseplaner, der es für jeden Plan nennt.",
+        "plannerNoFigure": "Je weiter der Tag weg ist, desto größer der Fehler; der Reiseplaner nennt ihn für jeden Plan in Minuten, unter „Wie genau ist das?“.",
+        "q": "Wie weit reicht die Prognose, und wie genau ist sie?",
+        "horizon": "Die Prognose reicht 60 Tage weit, danach läuft bis {date} eine Vorschau mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“.",
+        "figure": "In den letzten {days} Tagen lag unsere Prognose der Spitzenwartezeit, {lead, plural, =1 {einen Tag} =7 {eine Woche} other {# Tage}} im Voraus gemacht, im Schnitt {minutes} Min. daneben, gemessen in {parks} Parks.",
+        "rounding": "Tage, die weniger als fünf Minuten auseinanderliegen, zählen als gleich.",
+        "horizonNoDate": "Die Prognose reicht 60 Tage weit, danach läuft eine Vorschau mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“."
       },
       "breaks": {
         "q": "Gibt es in den nächsten Wochen Ferien oder Feiertage?",
         "qMonth": "Gibt es im {month} Ferien oder Feiertage?",
+        "effectSame": "An Ferien- und Feiertagen ist die Spitzenwartezeit der großen Parks nicht länger als an den übrigen Tagen, etwa {minutes} Min.",
         "holiday": "Feiertag: {name}, {dates}.",
-        "effect": "An Ferien- und Feiertagen liegt die Spitzenwartezeit der großen Parks bei etwa {on} Min., an den übrigen Tagen bei etwa {off} Min.",
-        "effectSame": "An Ferien- und Feiertagen ist die Spitzenwartezeit der großen Parks nicht länger als an den übrigen Tagen, etwa {minutes} Min."
+        "effect": "An Ferien- und Feiertagen liegt die Spitzenwartezeit der großen Parks bei etwa {on} Min., an den übrigen Tagen bei etwa {off} Min."
       },
-      "hours": {
-        "q": "Wie lange haben die Parks in den nächsten Wochen geöffnet?",
-        "qMonth": "Wie lange haben die Parks im {month} geöffnet?",
-        "a": "Die häufigsten Öffnungszeiten der großen Parks: {parks}.",
-        "park": "{park} {hours}",
-        "early": "An {count, plural, =1 {# Tag} other {# Tagen}} schließt mindestens ein großer Park für Tagesgäste früher als sonst; im Kalender hat so ein Tag eine Ecke."
+      "title": "Häufige Fragen",
+      "events": {
+        "party": "{name} ({parks}, {count, plural, =1 {# Abend} other {# Abende}}, eigenes Ticket)",
+        "partyNote": "An einem Abend mit eigenem Ticket schließt der Park für Tagesgäste früher; im Kalender hat so ein Tag eine Ecke.",
+        "q": "Welche Events laufen in den nächsten Wochen?",
+        "aMonth": "Im {month} laufen {list}.",
+        "qMonth": "Welche Events laufen im {month}?",
+        "expected": "{name} ({parks}, Termine noch nicht bestätigt)",
+        "festival": "{name} ({parks}, {dates})",
+        "a": "In den nächsten Wochen laufen {list}."
       },
-      "peak": {
-        "q": "Was ist die Spitzenwartezeit?",
-        "a": "Für jede große Bahn eines Parks nehmen wir die höchste Wartezeit des Tages und mitteln sie über diese Bahnen, gerundet auf fünf Minuten. An dieser einen Zahl vergleichst du die Parks im Kalender, in der Antwort oben und im Reiseplaner. Sie gilt für die vollste Zeit des Tages: Kurz nach der Öffnung und am Abend stehst du meist kürzer an."
+      "closures": {
+        "qMonth": "Haben Parks im {month} geschlossen?",
+        "a": "Geschlossen sind {list}.",
+        "days": "{park} (an {count, plural, =1 {# Tag} other {# Tagen}})",
+        "q": "Haben Parks in den nächsten Wochen geschlossen?",
+        "run": "{park} ({dates})"
       },
+      "weekdays": {
+        "flat": "Kein Wochentag sticht heraus: An jedem liegt die Spitzenwartezeit bei etwa {minutes} Min., gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
+        "quietOnly": "{quietCount, plural, =1 {Am leersten ist der {quiet}} other {Am leersten sind {quiet}}} mit etwa {low} Min. Spitzenwartezeit; die übrigen Tage liegen darüber, am höchsten bei etwa {high} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
+        "q": "Welcher Wochentag ist in den nächsten Wochen am leersten?",
+        "qMonth": "Welcher Wochentag ist im {month} am leersten?",
+        "busyOnly": "{busyCount, plural, =1 {Am vollsten ist der {busy}} other {Am vollsten sind {busy}}} mit etwa {high} Min. Spitzenwartezeit; die übrigen Tage liegen darunter, am niedrigsten bei etwa {low} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}.",
+        "a": "{quietCount, plural, =1 {Am leersten ist der {quiet}} other {Am leersten sind {quiet}}} mit etwa {low} Min. Spitzenwartezeit, am vollsten {busyCount, plural, =1 {der {busy}} other {{busy}}} mit etwa {high} Min. Gemittelt über {days} Tage und {parks, plural, =1 {den großen Park} other {die # großen Parks}}."
+      },
+      "lastYearNote": "Für {month} gibt es noch keine Prognose. Die Zahlen sind die Tage, die wir im selben Monat des Vorjahres gemessen haben.",
+      "quietestOnly": "{resort}: am leersten {days}.",
       "green": {
         "q": "Warum kann ein Park mit längerer Spitzenwartezeit grün sein?",
         "a": "Die Farbe vergleicht einen Tag mit einem normalen Tag desselben Parks, nicht mit anderen Parks. Normal ist der mittlere Öffnungstag der letzten anderthalb Jahre. 60 Minuten können für einen großen Park ein ruhiger Tag sein und 50 für einen kleineren ein voller. Zwei Parks vergleichst du deshalb an den Minuten, einen Tag mit seinem Park an der Farbe."
@@ -561,34 +569,30 @@
         "q": "Woher kommen die Zahlen?",
         "a": "park.fan speichert alle fünf Minuten die angezeigte Wartezeit jeder Attraktion. Aus diesen Messungen lernt die Prognose, zusammen mit den Öffnungszeiten, den Schulferien, den Feiertagen und dem Wetter. Öffnungszeiten, frühere Öffnungen für Hotelgäste und Abend-Events kommen aus den Kalendern der Parks; Saisons, Partys und Schließungen prüfen wir von Hand."
       },
-      "accuracy": {
-        "q": "Wie weit reicht die Prognose, und wie genau ist sie?",
-        "horizon": "Die Prognose reicht 60 Tage weit, danach läuft bis {date} eine Vorschau mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“.",
-        "horizonNoDate": "Die Prognose reicht 60 Tage weit, danach läuft eine Vorschau mit größerem Fehler. Dahinter zeigt ein Tag denselben Wochentag im Vorjahr, so wie wir ihn gemessen haben, mit dem Hinweis „Vorjahr“.",
-        "figure": "In den letzten {days} Tagen lag unsere Prognose der Spitzenwartezeit, {lead, plural, =1 {einen Tag} =7 {eine Woche} other {# Tage}} im Voraus gemacht, im Schnitt {minutes} Min. daneben, gemessen in {parks} Parks.",
-        "planner": "Je weiter der Tag weg ist, desto größer der Fehler. Es ist dasselbe Maß wie unter „Wie genau ist das?“ im Reiseplaner, der es für jeden Plan nennt.",
-        "plannerNoFigure": "Je weiter der Tag weg ist, desto größer der Fehler; der Reiseplaner nennt ihn für jeden Plan in Minuten, unter „Wie genau ist das?“.",
-        "rounding": "Tage, die weniger als fünf Minuten auseinanderliegen, zählen als gleich."
+      "peak": {
+        "a": "Für jede große Bahn eines Parks nehmen wir die höchste Wartezeit des Tages und mitteln sie über diese Bahnen, gerundet auf fünf Minuten. An dieser einen Zahl vergleichst du die Parks im Kalender, in der Antwort oben und im Reiseplaner. Sie gilt für die vollste Zeit des Tages: Kurz nach der Öffnung und am Abend stehst du meist kürzer an.",
+        "q": "Was ist die Spitzenwartezeit?"
       },
-      "parks": {
-        "q": "Welcher Park ist in den nächsten Wochen am leersten?",
-        "qMonth": "Welcher Park ist im {month} am leersten?",
-        "a": "Im Schnitt über {days} Tage: {list}.",
-        "park": "{park} etwa {minutes} Min."
-      },
-      "closures": {
-        "q": "Haben Parks in den nächsten Wochen geschlossen?",
-        "qMonth": "Haben Parks im {month} geschlossen?",
-        "a": "Geschlossen sind {list}.",
-        "run": "{park} ({dates})",
-        "days": "{park} (an {count, plural, =1 {# Tag} other {# Tagen}})"
+      "links": "Das Modell dahinter: <fancast>Fancast</fancast>. Alles andere: <howto>So funktioniert park.fan</howto>.",
+      "hours": {
+        "q": "Wie lange haben die Parks in den nächsten Wochen geöffnet?",
+        "early": "An {count, plural, =1 {# Tag} other {# Tagen}} schließt mindestens ein großer Park für Tagesgäste früher als sonst; im Kalender hat so ein Tag eine Ecke.",
+        "park": "{park} {hours}",
+        "qMonth": "Wie lange haben die Parks im {month} geöffnet?",
+        "a": "Die häufigsten Öffnungszeiten der großen Parks: {parks}."
       }
     },
-    "question": "Welcher Park an welchem Tag?",
+    "toCalendar": "Zum Kalender",
     "plan": "Reise planen",
+    "parksIndex": {
+      "label": "Andrang-Kalender je Park",
+      "link": "{park} Andrang-Kalender"
+    },
     "accuracy": {
       "line": "Unsere Prognose der Spitzenwartezeit, {lead, plural, =1 {einen Tag} =7 {eine Woche} other {# Tage}} im Voraus, lag in den letzten {days} Tagen <link>im Schnitt {minutes} Min. daneben</link>."
-    }
+    },
+    "question": "Welcher Park an welchem Tag?",
+    "nextTitle": "Reiseplaner für {region}"
   },
   "theme": {
     "light": "Hell",
@@ -3174,7 +3178,9 @@
       "modeAll": "Insgesamt",
       "picksLegendAll": "Unter jedem Datum steht der Park mit der kürzesten Spitzenwartezeit.",
       "picksLegendResort": "Unter jedem Datum steht der Park von {resort} mit der kürzesten Spitzenwartezeit.",
-      "overall": "Insgesamt: {park}"
+      "overall": "Insgesamt: {park}",
+      "stormPeak": "{season}: Die Suche nach der besten Reisezeit stuft diese Tage herunter, auch bei kurzen Wartezeiten.",
+      "rainyNote": "{season}: nassere Tage, aber deshalb keine volleren Parks."
     },
     "find": {
       "modeKnown": "Ich kenne meine Reisedaten",
@@ -3777,6 +3783,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando Andrang-Kalender",
         "calendarHint": "Welcher Park an welchem Tag, und ein Planer für die ganze Reise."
@@ -3794,9 +3801,6 @@
         "lead": "Ein Kalender für alle 16 Parks rund um Orlando und ein Planer für deine Reisetage.",
         "leadMonth": "Alle 16 Parks rund um Orlando im {month}, Tag für Tag, und ein Planer für deine Reisetage.",
         "monthIndexLabel": "Orlando nach Monaten",
-        "glance": {
-          "zone": "Ortszeit Orlando"
-        },
         "calendar": {
           "caption": "Orlandos Parks vom {from} bis {to}: Spitzenwartezeit der großen Bahnen, in Minuten"
         },
@@ -3852,6 +3856,9 @@
         "dataset": {
           "name": "Andrang-Kalender der Freizeitparks in Orlando, {period}",
           "description": "Je Park und Tag in Walt Disney World, Universal Orlando, SeaWorld und bei den Tagesausflügen: die erwartete Spitzenwartezeit der großen Bahnen, der Andrang im Vergleich zu einem normalen Tag des Parks und die Öffnungszeiten, {period}."
+        },
+        "glance": {
+          "zone": "Ortszeit Orlando"
         }
       },
       "bestTime": {
@@ -3920,6 +3927,7 @@
           "hotelLabel": {
             "disney": "Disney-Hotel",
             "disney_deluxe": "Disney-Deluxe-Hotel",
+            "disney_springs": "Hotel an Disney Springs",
             "universal": "Universal-Hotel",
             "universal_premier": "Universal-Premier-Hotel",
             "offsite": "Woanders"
@@ -3927,6 +3935,7 @@
           "hotelHint": {
             "disney": "Early Entry in den Disney-Parks, 30 Minuten vor der Öffnung",
             "disney_deluxe": "Early Entry, dazu an manchen Abenden Extended Evening Hours",
+            "disney_springs": "Early Entry in den Disney-Parks, ohne Extended Evening Hours",
             "universal": "Early Park Admission, eine Stunde vor der Öffnung",
             "universal_premier": "Early Park Admission und Express in Universal Studios und Islands of Adventure",
             "offsite": "Kein früherer Einlass"
@@ -3934,6 +3943,7 @@
           "hotelShort": {
             "disney": "Disney-Hotel",
             "disney_deluxe": "Disney-Deluxe-Hotel",
+            "disney_springs": "Hotel an Disney Springs",
             "universal": "Universal-Hotel",
             "universal_premier": "Universal Premier",
             "offsite": "Hotel woanders"
@@ -4132,7 +4142,8 @@
           }
         },
         "area": {
-          "universal": "Universal-Hotels"
+          "universal": "Universal-Hotels",
+          "disney_springs": "Disney Springs Resort Area"
         }
       },
       "homeStory": {
@@ -4145,6 +4156,7 @@
     "southern-california": {
       "nav": {
         "name": "Südkalifornien",
+        "inRegion": "in Südkalifornien",
         "area": "Los Angeles und San Diego",
         "calendar": "Disneyland Kalifornien Andrang-Kalender",
         "calendarHint": "Welcher der acht Parks an welchem Tag am leersten ist, und ein Planer für deine Reise."
@@ -4415,6 +4427,7 @@
     "japan": {
       "nav": {
         "name": "Japan",
+        "inRegion": "in Japan",
         "area": "Tokio bis Osaka",
         "calendar": "Tokyo Disney & USJ Andrang-Kalender",
         "calendarHint": "Fünf Parks Tag für Tag, und ein Planer für die Reise durch mehrere Städte."
@@ -4748,6 +4761,7 @@
     "paris": {
       "nav": {
         "name": "Paris",
+        "inRegion": "in Paris",
         "area": "Frankreich",
         "calendar": "Andrang-Kalender Disneyland Paris & Parc Astérix",
         "calendarHint": "Welcher der drei Parks an welchem Tag, und wo du dafür übernachtest."

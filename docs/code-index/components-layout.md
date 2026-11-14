@@ -142,6 +142,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner-region-art.tsx`](../../components/layout/planner-region-art.tsx)
 
 - `PlannerRegionArt` _component_: The picture of a region's card in the planner band: its Parky scene where `TRIP_REGIONS` gives it one, else the hub's photo.
+- `RegionSceneInView` _component_: A region's scene in a card on a page, the planner tile on a park's pages: fetched once the page has loaded and the card nears the screen (`LazyMount`), and kept from then on, so the chunk costs the first load nothing and a card below the …
 - `RegionSceneCut` _component_: A region's scene cut to a 56 × 36 box, for its row in the phone sheet where several regions are listed.
 
 ### [`scroll-lock-gutter.tsx`](../../components/layout/scroll-lock-gutter.tsx)

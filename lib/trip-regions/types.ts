@@ -85,7 +85,7 @@ export interface TripWeather {
 
 /** Where a visitor sleeps, for drive times and the perks a stay there usually means. */
 export interface TripHotelArea {
-  /** `disney`, `universal`, `international_drive`, `lake_buena_vista`, `kissimmee`. */
+  /** `disney`, `disney_springs`, `universal`, `international_drive`, `lake_buena_vista`, `kissimmee`. */
   key: string;
   name: string;
   latitude: number;
