@@ -21,6 +21,7 @@ import {
   MessageSquareHeart,
   MessagesSquare,
   PenLine,
+  Plane,
   Radar,
   Radio,
   Route,
@@ -281,6 +282,24 @@ const NAV_GROUPS: NavGroup[] = [
               'optimieren',
               'teilen',
               'funnel',
+            ],
+          },
+          {
+            href: '/admin/traffic/trip-planner',
+            label: 'Reiseplaner',
+            icon: Plane,
+            description:
+              'Regionen-Hubs, Anfragen, „Wann“-Suchen, Tickets und Hotels des Reiseplaners',
+            keywords: [
+              'reiseplaner',
+              'hub',
+              'region',
+              'reise',
+              'urlaub',
+              'wann',
+              'tickets',
+              'hotel',
+              ...TRIP_REGIONS.map((region) => region.slug),
             ],
           },
           {
