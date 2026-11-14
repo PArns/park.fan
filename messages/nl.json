@@ -2280,7 +2280,7 @@
     },
     "strip": {
       "title": "Het jaar in één oogopslag",
-      "lead": "Eén balk per week: hoe hoger, hoe langer de wachttijd van de grote attracties bij {parks}. De kleur vergelijkt de week met de rest van {year}.",
+      "lead": "Eén balk per week: hoe hoger, hoe langer de piekwachttijd bij {parks}.",
       "caption": "Wachttijd van de grote attracties per week in {year} bij {parks}",
       "table": "De weken als tabel",
       "colWeek": "Week vanaf",
@@ -2292,23 +2292,17 @@
         "mixed": "deels vorig jaar",
         "none": "geen cijfer"
       },
-      "minutes": "{minutes} min",
-      "quieter": "rustiger",
-      "busier": "drukker"
+      "minutes": "{minutes} min"
     },
     "months": {
       "title": "Maand voor maand",
-      "lead": "Elke maand van {year} met de wachttijd van de grote attracties, evenementen, schoolvakanties, het gewone weer en de openingstijden. De naam van de maand opent de kalender per dag.",
       "tier": {
         "very_low": "Rustigst",
-        "low": "Rustig",
-        "moderate": "Gemiddeld",
-        "high": "Druk",
         "very_high": "Drukst"
       },
       "noFigure": "Nog geen cijfer",
       "beyond": "Onze cijfers stoppen op {date}.",
-      "wait": "Grote attracties ongeveer {minutes} min",
+      "wait": "Piekwachttijd ongeveer {minutes} min",
       "label": {
         "events": "Evenementen",
         "euBreaks": "Schoolvakanties in Europa",
@@ -2330,11 +2324,11 @@
       "details": "Data en evenementen"
     },
     "weeks": {
-      "title": "Beste en slechtste weken",
-      "lead": "De drie rustigste en de drie drukste hele weken van {year}, met wat er die week te doen is.",
+      "title": "De rustigste en de drukste weken",
       "best": "Rustigste weken",
       "worst": "Drukste weken",
-      "week": "Week van {date}"
+      "week": "Week van {date}",
+      "stormNote": "De rustigste week, vanaf {date}, valt in het {kind, select, typhoon {tyfoonseizoen} other {orkaanseizoen}}; bij de reizen hierboven telt het stormrisico mee."
     },
     "holidays": {
       "title": "Alleen in de schoolvakantie?",
@@ -3709,7 +3703,7 @@
           "universal-orlando": "Universal Orlando"
         },
         "intro": {
-          "lead": "Elk cijfer hier is de wachttijd van de grote attracties op het drukste moment: de dagpiek van elke topattractie, gemiddeld over de parken van de reis.",
+          "lead": "Elk cijfer is de piekwachttijd, de hoogste wachttijd van de dag bij elke grote attractie, gemiddeld over de parken van de reis.",
           "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met ‘vorig jaar’.",
           "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
         },
@@ -3975,10 +3969,6 @@
         "title": "Orlando: welk park op welke dag",
         "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
         "link": "Orlando drukte-kalender"
-      },
-      "landing": {
-        "kicker": "park.fan · Orlando",
-        "action": "Mijn reis naar Orlando plannen"
       }
     },
     "southern-california": {

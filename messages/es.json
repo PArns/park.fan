@@ -2280,7 +2280,7 @@
     },
     "strip": {
       "title": "El año de un vistazo",
-      "lead": "Una barra por semana: cuanto más alta, más larga la espera de las grandes atracciones en {parks}. El color compara la semana con el resto de {year}.",
+      "lead": "Una barra por semana: cuanto más alta, más larga la espera punta en {parks}.",
       "caption": "Espera de las grandes atracciones por semana en {year} en {parks}",
       "table": "Las semanas en una tabla",
       "colWeek": "Semana desde",
@@ -2292,23 +2292,17 @@
         "mixed": "en parte año pasado",
         "none": "sin cifra"
       },
-      "minutes": "{minutes} min",
-      "quieter": "más tranquila",
-      "busier": "más llena"
+      "minutes": "{minutes} min"
     },
     "months": {
       "title": "Mes a mes",
-      "lead": "Cada mes de {year} con la espera de las grandes atracciones, eventos, vacaciones escolares, tiempo habitual y horarios. El nombre del mes abre su calendario día a día.",
       "tier": {
         "very_low": "El más tranquilo",
-        "low": "Tranquilo",
-        "moderate": "Medio",
-        "high": "Lleno",
         "very_high": "El más lleno"
       },
       "noFigure": "Aún sin cifra",
       "beyond": "Nuestras cifras terminan el {date}.",
-      "wait": "Grandes atracciones unos {minutes} min",
+      "wait": "Espera punta unos {minutes} min",
       "label": {
         "events": "Eventos",
         "euBreaks": "Vacaciones escolares en Europa",
@@ -2330,11 +2324,11 @@
       "details": "Fechas y eventos"
     },
     "weeks": {
-      "title": "Las mejores y las peores semanas",
-      "lead": "Las tres semanas completas más tranquilas y las tres más llenas de {year}, con lo que hay en cada una.",
+      "title": "Las semanas más tranquilas y las más llenas",
       "best": "Semanas más tranquilas",
       "worst": "Semanas más llenas",
-      "week": "Semana del {date}"
+      "week": "Semana del {date}",
+      "stormNote": "La semana más tranquila, desde el {date}, cae en la {kind, select, typhoon {temporada de tifones} other {temporada de huracanes}}; los viajes de arriba cuentan el riesgo de tormentas."
     },
     "holidays": {
       "title": "¿Solo en vacaciones escolares?",
@@ -3709,7 +3703,7 @@
           "universal-orlando": "Universal Orlando"
         },
         "intro": {
-          "lead": "Cada cifra es la espera de las grandes atracciones en su momento de más gente: el pico del día de cada atracción estrella, en media sobre los parques del viaje.",
+          "lead": "Cada cifra es la espera punta, la espera más larga del día en cada gran atracción, en media sobre los parques del viaje.",
           "body": "Valoramos un viaje como el planificador de viajes: cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. La previsión llega hasta el {date}. A partir de ahí la página muestra las mismas semanas del año pasado tal como las medimos, marcadas como «año pasado».",
           "bodyForecast": "Valoramos un viaje como el planificador de viajes: cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. Todas las cifras de esta página son nuestra previsión."
         },
@@ -3975,10 +3969,6 @@
         "title": "Orlando: qué parque qué día",
         "lead": "Dieciséis parques alrededor de Orlando en un solo calendario: para cada día ves dónde son más cortas las colas en Disney World y Universal, y el planificador pone tus parques en tus fechas.",
         "link": "Calendario de afluencia de Orlando"
-      },
-      "landing": {
-        "kicker": "park.fan · Orlando",
-        "action": "Planificar mi viaje a Orlando"
       }
     },
     "southern-california": {

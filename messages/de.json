@@ -2280,7 +2280,7 @@
     },
     "strip": {
       "title": "Das Jahr auf einen Blick",
-      "lead": "Ein Balken pro Woche: je höher, desto länger stehst du an den großen Bahnen bei {parks} an. Die Farbe vergleicht die Woche mit dem Rest von {year}.",
+      "lead": "Ein Balken pro Woche: je höher, desto länger die Spitzenwartezeit bei {parks}.",
       "caption": "Wartezeit der großen Bahnen pro Woche {year} bei {parks}",
       "table": "Die Wochen als Tabelle",
       "colWeek": "Woche ab",
@@ -2292,23 +2292,17 @@
         "mixed": "teils Vorjahr",
         "none": "keine Zahl"
       },
-      "minutes": "{minutes} Min.",
-      "quieter": "ruhiger",
-      "busier": "voller"
+      "minutes": "{minutes} Min."
     },
     "months": {
       "title": "Monat für Monat",
-      "lead": "Jeder Monat {year} mit Wartezeit der großen Bahnen, Events, Schulferien, üblichem Wetter und Öffnungszeiten. Der Monatsname öffnet seinen Kalender Tag für Tag.",
       "tier": {
         "very_low": "Am ruhigsten",
-        "low": "Ruhig",
-        "moderate": "Mittel",
-        "high": "Voll",
         "very_high": "Am vollsten"
       },
       "noFigure": "Noch keine Zahl",
       "beyond": "Unsere Zahlen enden am {date}.",
-      "wait": "Große Bahnen etwa {minutes} Min.",
+      "wait": "Spitzenwartezeit etwa {minutes} Min.",
       "label": {
         "events": "Events",
         "euBreaks": "Schulferien in Europa",
@@ -2330,11 +2324,11 @@
       "details": "Termine und Events"
     },
     "weeks": {
-      "title": "Die besten und schlechtesten Wochen",
-      "lead": "Die drei ruhigsten und die drei vollsten ganzen Wochen {year}, jeweils mit dem, was in der Woche läuft.",
+      "title": "Die ruhigsten und die vollsten Wochen",
       "best": "Ruhigste Wochen",
       "worst": "Vollste Wochen",
-      "week": "Woche ab {date}"
+      "week": "Woche ab {date}",
+      "stormNote": "Die ruhigste Woche ab {date} liegt in der {kind, select, typhoon {Taifunsaison} other {Hurrikansaison}}; bei den Reisen oben zählt das Sturmrisiko mit."
     },
     "holidays": {
       "title": "Nur in den Schulferien?",
@@ -3709,7 +3703,7 @@
           "universal-orlando": "Universal Orlando"
         },
         "intro": {
-          "lead": "Jede Zahl hier ist die Wartezeit der großen Bahnen zur vollsten Zeit: die Tagesspitze jedes Headliners, gemittelt über die Parks der Reise.",
+          "lead": "Jede Zahl ist die Spitzenwartezeit, der Tageshöchstwert jeder großen Bahn, gemittelt über die Parks der Reise.",
           "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
           "bodyForecast": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
         },
@@ -3975,10 +3969,6 @@
         "title": "Orlando: welcher Park an welchem Tag",
         "lead": "Sechzehn Parks rund um Orlando in einem Kalender: Für jeden Tag siehst du, wo du in Disney World und bei Universal am kürzesten anstehst, und der Planer legt deine Parks auf deine Reisetage.",
         "link": "Orlando Besucherkalender"
-      },
-      "landing": {
-        "kicker": "park.fan · Orlando",
-        "action": "Meine Orlando-Reise planen"
       }
     },
     "southern-california": {

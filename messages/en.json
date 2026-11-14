@@ -2280,7 +2280,7 @@
     },
     "strip": {
       "title": "The year at a glance",
-      "lead": "One bar per week: the taller, the longer the big rides' wait at {parks}. The colour compares the week with the rest of {year}.",
+      "lead": "One bar per week: the taller, the longer the peak wait at {parks}.",
       "caption": "Big rides' wait per week in {year} at {parks}",
       "table": "The weeks as a table",
       "colWeek": "Week from",
@@ -2292,23 +2292,17 @@
         "mixed": "partly last year",
         "none": "no figure"
       },
-      "minutes": "{minutes} min",
-      "quieter": "quieter",
-      "busier": "busier"
+      "minutes": "{minutes} min"
     },
     "months": {
       "title": "Month by month",
-      "lead": "Each month of {year} with its big-ride wait, events, school breaks, usual weather and opening hours. The month's name opens its calendar day by day.",
       "tier": {
         "very_low": "Quietest",
-        "low": "Quiet",
-        "moderate": "Average",
-        "high": "Busy",
         "very_high": "Busiest"
       },
       "noFigure": "No figure yet",
       "beyond": "Our figures end on {date}.",
-      "wait": "Big rides about {minutes} min",
+      "wait": "Peak wait about {minutes} min",
       "label": {
         "events": "Events",
         "euBreaks": "European school holidays",
@@ -2330,11 +2324,11 @@
       "details": "Dates and events"
     },
     "weeks": {
-      "title": "Best and worst weeks",
-      "lead": "The three quietest and the three busiest whole weeks of {year}, with what is on in each.",
+      "title": "Quietest and busiest weeks",
       "best": "Quietest weeks",
       "worst": "Busiest weeks",
-      "week": "Week of {date}"
+      "week": "Week of {date}",
+      "stormNote": "The quietest week, from {date}, falls in the {kind, select, typhoon {typhoon season} other {hurricane season}}, and the trips above count the storm risk."
     },
     "holidays": {
       "title": "Travelling in school holidays?",
@@ -3709,7 +3703,7 @@
           "universal-orlando": "Universal Orlando"
         },
         "intro": {
-          "lead": "Every figure here is the big rides' wait at their busiest: each headliner's peak of the day, averaged over the parks of the trip.",
+          "lead": "Every figure is the peak wait, each big ride’s highest wait of the day, averaged over the trip’s parks.",
           "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
           "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. Every figure on this page is our forecast."
         },
@@ -3975,10 +3969,6 @@
         "title": "Orlando: which park on which day",
         "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
         "link": "Orlando Crowd Calendar"
-      },
-      "landing": {
-        "kicker": "park.fan · Orlando",
-        "action": "Plan my Orlando trip"
       }
     },
     "southern-california": {

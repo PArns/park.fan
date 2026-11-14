@@ -30,6 +30,7 @@ import { holidayRegionsFor, percentBelowAverage } from '@/lib/trip-regions/plan-
 import { plannerHrefOn, type PlanSearchRange } from '@/lib/trip-regions/plan-query';
 import { tripRegionBestTimePath, tripRegionPath } from '@/lib/trip-regions/paths';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
+import { ownWords } from '@/lib/trip-regions/region-words';
 import { bestTimePageOf, requireTripRegion } from '@/lib/trip-regions/registry';
 import {
   BEST_TIME_TRIP_DAYS,
@@ -90,14 +91,14 @@ export async function BestTimePage(props: BestTimePageProps) {
   const { locale, page, year, range, todayIso, current, region, parks, when, windows } = props;
   const config = requireTripRegion(region.slug);
   const pageConfig = bestTimePageOf(config, page);
-  const [t, tOwn, tWhen, tHub, tHubOwn, tLanding, tLandingOwn, labels] = await Promise.all([
+  const [t, tOwn, tWhen, tHub, tHubOwn, tLanding, tNavOwn, labels] = await Promise.all([
     getTranslations({ locale, namespace: 'tripBestTime' }),
     getRegionTranslations(region.slug, 'bestTime', locale),
     getTranslations({ locale, namespace: 'tripPlanner.when' }),
     getTranslations({ locale, namespace: 'tripHub' }),
     getRegionTranslations(region.slug, 'hub', locale),
     getTranslations({ locale, namespace: 'landing' }),
-    getRegionTranslations(region.slug, 'landing', locale),
+    getRegionTranslations(region.slug, 'nav', locale),
     bestTimeLabels(locale),
   ]);
   const days = BEST_TIME_TRIP_DAYS;
@@ -116,7 +117,7 @@ export async function BestTimePage(props: BestTimePageProps) {
       }
     : {
         href: plannerHrefOn(hubPath, { parks }),
-        label: tLandingOwn('action'),
+        label: tHub('plan'),
         icon: CalendarPlus,
       };
   const turn = lastYearFrom(when);
@@ -156,7 +157,7 @@ export async function BestTimePage(props: BestTimePageProps) {
   return (
     <>
       <LandingHero
-        kicker={tLandingOwn('kicker')}
+        kicker={`park.fan · ${ownWords(tNavOwn, 'name') ?? region.name}`}
         title={tOwn(`title.${page}`, { year })}
         tagline={
           windows.length
@@ -171,8 +172,9 @@ export async function BestTimePage(props: BestTimePageProps) {
               }${lastYearShown ? ` ${tHub('when.lastYearNote')}` : ''}`
             : t('answer.none', { days, year })
         }
-        imageSrc={image ? versionedSrc(image) : `/media/${heroImage}.jpg`}
-        imageAlt={getMediaAlt(heroImage, locale) ?? ''}
+        // A page whose photo the media database does not hold yet gets the gradient head.
+        imageSrc={image ? versionedSrc(image) : undefined}
+        imageAlt={image ? (getMediaAlt(heroImage, locale) ?? '') : undefined}
         scrollLabel={tLanding('scroll')}
         action={action}
         flowInto
@@ -237,7 +239,6 @@ export async function BestTimePage(props: BestTimePageProps) {
         </SectionShell>
 
         <SectionShell id="months" index="02" title={t('months.title')} icon={CalendarDays}>
-          <P>{t('months.lead', { year })}</P>
           <MonthRows
             regionSlug={region.slug}
             rows={rows}
@@ -252,10 +253,10 @@ export async function BestTimePage(props: BestTimePageProps) {
         </SectionShell>
 
         <SectionShell id="weeks" index="03" title={t('weeks.title')} icon={Trophy}>
-          <P>{t('weeks.lead', { year })}</P>
           <BestWorstWeeks
             regionSlug={region.slug}
             when={when}
+            windows={windows}
             range={range}
             locale={locale}
             seasonLabel={labels.seasonLabel}

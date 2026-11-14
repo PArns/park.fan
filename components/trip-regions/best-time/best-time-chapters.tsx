@@ -4,7 +4,6 @@ import { Link } from '@/i18n/navigation';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { CROWD_BADGE_CLASS, CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -23,7 +22,6 @@ import { requireTripRegion } from '@/lib/trip-regions/registry';
 import {
   percentBelowAverage,
   weekInWindow,
-  weekTiers,
   windowReasons,
   windowWarnings,
 } from '@/lib/trip-regions/plan-when';
@@ -33,6 +31,8 @@ import {
   cleanBreakName,
   europeanBreaks,
   lastYearFrom,
+  monthBreakDays,
+  quietWeekInStorm,
   seasonsOn,
   tripLongBreaks,
   weekFacts,
@@ -207,7 +207,6 @@ export async function YearStrip({
   const t = await getTranslations({ locale, namespace: 'tripBestTime.strip' });
   const weeks = when.weeks;
   if (weeks.length === 0) return null;
-  const tiers = weekTiers(weeks);
   const max = Math.max(1, ...weeks.map((w) => w.headlinerWait ?? 0));
   const turn = lastYearFrom(when);
   const turnIndex = turn ? weeks.findIndex((w) => w.start >= turn) : -1;
@@ -231,12 +230,14 @@ export async function YearStrip({
           </span>
         )}
         <div className="flex h-32 items-end gap-px sm:gap-0.5">
-          {weeks.map((week, i) => (
+          {weeks.map((week) => (
             <div key={week.start} className="flex h-full min-w-0 flex-1 flex-col justify-end gap-1">
+              {/* One ink: the height is the figure. A crowd-level colour would say "against the
+                  park's normal day", which a week's rank in the year is not. */}
               <span
                 className={cn(
                   'w-full rounded-t-sm',
-                  tiers[i] ? CROWD_DOT_CLASS[tiers[i]] : 'bg-muted',
+                  week.headlinerWait != null ? 'bg-primary/45' : 'bg-muted',
                   week.basis !== 'forecast' && 'opacity-60'
                 )}
                 style={{ height: `${Math.max(4, ((week.headlinerWait ?? 0) / max) * 112)}px` }}
@@ -260,13 +261,6 @@ export async function YearStrip({
               {m.label}
             </span>
           ))}
-        </div>
-        <div className="text-muted-foreground mt-2 flex items-center gap-2 text-xs">
-          <span>{t('quieter')}</span>
-          {(['very_low', 'low', 'moderate', 'high', 'very_high'] as const).map((tier) => (
-            <span key={tier} className={cn('size-3 rounded-sm', CROWD_DOT_CLASS[tier])} />
-          ))}
-          <span>{t('busier')}</span>
         </div>
       </div>
       <details className="group">
@@ -396,7 +390,7 @@ export async function MonthRows({
           when.seasons.filter((s) => data.seasons.includes(s.id)),
           { from: `${row.key}-01`, to: `${row.key}-31` }
         );
-        const breaks = breakRuns(data.usSchoolBreakDays);
+        const breaks = breakRuns(monthBreakDays(data));
         const eu = europeanBreaks(regions, row.key, countries);
         const euText = europeanCell(eu, statesOf, t('euUnknown'));
         const climate = data.climate;
@@ -418,14 +412,9 @@ export async function MonthRows({
           >
             <div className="flex flex-wrap items-center gap-2 lg:flex-col lg:items-start">
               {heading}
-              {row.tier && (
-                <span
-                  className={cn(
-                    'rounded-full px-2.5 py-0.5 text-xs font-semibold',
-                    CROWD_BADGE_CLASS[row.tier]
-                  )}
-                >
-                  {t(`tier.${row.tier}`)}
+              {row.mark && (
+                <span className="border-foreground/30 rounded-full border px-2.5 py-0.5 text-xs font-semibold">
+                  {t(`tier.${row.mark}`)}
                 </span>
               )}
               {stormSeason && data[`${stormSeason}Season`] && tOwn.has(stormSeason) && (
@@ -552,6 +541,7 @@ export async function MonthRows({
 export async function BestWorstWeeks({
   regionSlug,
   when,
+  windows,
   range,
   locale,
   seasonLabel,
@@ -559,6 +549,8 @@ export async function BestWorstWeeks({
   /** The trip region's slug, for its own words and its hub's links. */
   regionSlug: string;
   when: TripWhenWithMonths;
+  /** The trips the page names, to say why the quietest week is none of them. */
+  windows: readonly TripWhenWindow[];
   range: PlanSearchRange;
   locale: string;
   seasonLabel: SeasonLabel;
@@ -592,19 +584,30 @@ export async function BestWorstWeeks({
                   </span>
                 )}
               </p>
-              <p className="text-muted-foreground text-sm">
-                {reasons.length ? [...new Set(reasons)].join(' · ') : tOwn('noBreak')}
-              </p>
+              {(reasons.length > 0 || tOwn.has('noBreak')) && (
+                <p className="text-muted-foreground text-sm">
+                  {reasons.length ? [...new Set(reasons)].join(' · ') : tOwn('noBreak')}
+                </p>
+              )}
             </li>
           );
         })}
       </ol>
     </Card>
   );
+  const stormSeason = requireTripRegion(regionSlug).stormSeason;
+  const storm = quietWeekInStorm(when, windows, range, stormSeason);
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {list(best, t('best'))}
-      {list(worst, t('worst'))}
+    <div className="space-y-4">
+      <div className="grid gap-4 md:grid-cols-2">
+        {list(best, t('best'))}
+        {list(worst, t('worst'))}
+      </div>
+      {storm && stormSeason && (
+        <p className="text-muted-foreground max-w-3xl text-sm">
+          {t('stormNote', { date: day(locale, storm.start), kind: stormSeason })}
+        </p>
+      )}
     </div>
   );
 }
