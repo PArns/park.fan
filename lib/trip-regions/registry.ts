@@ -3,8 +3,8 @@ import type { Locale } from '../../i18n/config';
 import type { TicketEntry } from './plan-tickets';
 import { JAPAN } from './regions/japan';
 import { ORLANDO } from './regions/orlando';
+import { PARIS } from './regions/paris';
 import { SOUTHERN_CALIFORNIA } from './regions/southern-california';
-import { PARIS } from './regions/upcoming';
 
 /**
  * The one list of trip regions: a region with a crowd calendar hub and a trip planner, and
