@@ -16,6 +16,7 @@ import {
   windowReasons,
   windowWarnings,
 } from '@/lib/trip-regions/plan-when';
+import { lastYearFrom } from '@/lib/trip-regions/best-time';
 import type { TripWhen, TripWhenWindow } from '@/lib/trip-regions/types';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
@@ -25,11 +26,13 @@ import { PLAN_WIDE_QUERY } from './plan-setup';
 import { useSeasonName } from './use-day-facts';
 import { ClimateChips } from './plan-day-bits';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
+import { sentenceCase } from '@/lib/utils/sentence-case';
 
 /**
  * The When mode's answer, simple first. Level 0: the three best windows as cards, each with its
- * dates, the big rides' wait, how far below the period's average it lies and one reason; a window
- * on last year's days says so. Level 1: the year strip, a bar per week in primary ink with the
+ * dates, the big rides' wait, how far below the period's average it lies and one reason; one line
+ * under the title says from which week the figures are last year's, since after the forecast's
+ * days nearly every week is. Level 1: the year strip, a bar per week in primary ink with the
  * windows marked (the period's own comparison, so no crowd tints), which a screen reader reads as a list of weeks and figures. Level 2: a window's
  * reasons, warnings, events and day-by-day sketch in a sheet. Level 3: "Plan these dates", which
  * sets the dates and leaves the search for the plan itself.
@@ -51,6 +54,7 @@ export function PlanWhenResult({
     setOpen(window);
   };
   const windows = answer.windows;
+  const turn = lastYearFrom(answer);
   const range = (from: string, to: string) =>
     formatParkDayRange(locale, from, to, {
       weekday: 'short',
@@ -92,6 +96,15 @@ export function PlanWhenResult({
     <div className="flex flex-col gap-6">
       <section className="flex flex-col gap-3" aria-label={t('bestTitle')}>
         <h3 className="text-lg font-semibold">{t('bestTitle')}</h3>
+        {turn && (
+          <p className="text-muted-foreground text-xs" data-plan-when-last-year="">
+            {turn <= answer.weeks[0].start
+              ? t('lastYearAll')
+              : t('lastYearFrom', {
+                  date: formatParkDay(locale, turn, { day: 'numeric', month: 'long' }),
+                })}
+          </p>
+        )}
         <ol className="grid gap-3 lg:grid-cols-3">
           {windows.map((window) => (
             <WindowCard
@@ -137,7 +150,10 @@ function WindowCard({
   const tClimate = useTranslations('tripPlanner.climate');
   const tAnswer = useTranslations('tripPlanner.answer');
   const { state, headliners, parkName, locale } = usePlanContext();
-  const lower = rankedLower(window).filter((code) => tClimate.has(code));
+  const ranked = rankedLower(window).filter((code) => tClimate.has(code));
+  // The storm's peak gets its own sentence with the reason; the other terms stay a short list.
+  const peak = ranked.find((code) => code.endsWith('_peak'));
+  const lower = ranked.filter((code) => code !== peak);
   const left = windowParksLeftOut(
     window.plan,
     effectiveParks(state, headliners).map((p) => p.slug)
@@ -170,21 +186,25 @@ function WindowCard({
           {regionOrShared(tRegion, t, `reason.${reason}`)}
         </span>
       )}
-      <ClimateChips codes={climateChips(window.warnings)} />
+      {/* The peak's sentence names the season, so its chip would say it twice. */}
+      <ClimateChips codes={climateChips(window.warnings).filter((code) => code !== peak)} />
+      {peak && (
+        <span className="text-muted-foreground text-xs" data-plan-window-storm-peak="">
+          {t('stormPeak', { season: sentenceCase(tClimate(peak)) })}
+        </span>
+      )}
       {lower.length > 0 && (
         <span className="text-muted-foreground text-xs">
           {t('rankedLower', { reasons: lower.map((c) => tClimate(c)).join(', ') })}
         </span>
       )}
-      {window.basis !== 'forecast' && (
-        <span className="text-muted-foreground text-xs italic">{t(`basis.${window.basis}`)}</span>
-      )}
-      <div className="mt-auto grid grid-cols-2 gap-2 pt-2">
-        <Button variant="outline" size="sm" onClick={onDetails}>
+      {/* German's plan label outgrows half a card; a row of its own beats text past the edge. */}
+      <div className="mt-auto flex flex-wrap gap-2 pt-2">
+        <Button variant="outline" size="sm" className="flex-auto" onClick={onDetails}>
           <Info aria-hidden="true" />
           {t('details')}
         </Button>
-        <Button size="sm" onClick={onPlan}>
+        <Button size="sm" className="flex-auto" onClick={onPlan}>
           <CalendarCheck aria-hidden="true" />
           {t('plan')}
         </Button>
@@ -229,8 +249,7 @@ function YearStrip({ answer }: { answer: TripWhen }) {
                 // the period, not with a park's normal day.
                 className={cn(
                   'w-full rounded-t-sm',
-                  week.headlinerWait == null ? 'bg-muted' : marked ? 'bg-primary' : 'bg-primary/35',
-                  week.basis === 'last_year' && 'opacity-60'
+                  week.headlinerWait == null ? 'bg-muted' : marked ? 'bg-primary' : 'bg-primary/35'
                 )}
                 style={{ height: `${Math.max(4, ((week.headlinerWait ?? 0) / max) * 96)}px` }}
                 title={text}

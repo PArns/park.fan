@@ -3114,8 +3114,9 @@
       "gridLabel": "Aankomst- en vertrekdag",
       "level": "Drukte: {level}",
       "levelLastYear": "Drukte vorig jaar: {level}",
+      "lastYearFrom": "Vanaf {date} tonen drukte en wachttijden vorig jaar, gemeten op dezelfde weekdag.",
+      "lastYearAll": "Drukte en wachttijden tonen deze maand vorig jaar, gemeten op dezelfde weekdag.",
       "legend": "Een datum zonder tip is gekleurd naar de gemiddelde drukte in de grote parken.",
-      "legendLastYear": "Datums met een gestippelde rand tonen de gemeten drukte van vorig jaar.",
       "pickArrival": "Tik op je aankomstdag.",
       "pickDeparture": "Nu je vertrekdag.",
       "dayCount": "{count, plural, =1 {1 dag} other {# dagen}}",
@@ -3263,7 +3264,8 @@
       "counts": "{parkDays, plural, =1 {1 parkdag} other {# parkdagen}}, {restDays, plural, =0 {geen rustdag} =1 {1 rustdag} other {# rustdagen}}",
       "averageDay": "Gemiddeld over je reisdagen is de piekwachttijd van deze parken {minutes} min.",
       "error": "Een voorspelling voor één attractie op één dag kan ongeveer {minutes} min. ernaast zitten.",
-      "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
+      "lastYear": "Vanaf {date} rekent het plan met de gemeten wachttijden van vorig jaar op dezelfde weekdag. Zo ver vooruit maakt de voorspelling nauwelijks verschil tussen de dagen.",
+      "lastYearAll": "Het plan rekent met de gemeten wachttijden van vorig jaar op dezelfde weekdag. Zo ver vooruit maakt de voorspelling nauwelijks verschil tussen de dagen.",
       "about": "ongeveer {minutes} min.",
       "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}.",
       "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”.",
@@ -3296,7 +3298,6 @@
       },
       "rest": "Rustdag",
       "evening": "Extended Evening Hours",
-      "last_year": "vorig jaar",
       "outside_ticket": "buiten je ticket",
       "pinned": "vast"
     },
@@ -3460,6 +3461,8 @@
       "none": "In deze periode past geen reis van {days} dagen. Kies een langere periode of een kortere reis.",
       "noneWithin": "Geen schoolvakantie van {region} in deze periode duurt lang genoeg voor {days} dagen.",
       "bestTitle": "De beste data voor je parken",
+      "lastYearFrom": "Vanaf de week van {date} zijn de cijfers de gemeten wachttijden van vorig jaar op dezelfde weekdag. Zo ver vooruit maakt de voorspelling nauwelijks verschil tussen de dagen.",
+      "lastYearAll": "Alle cijfers zijn de gemeten wachttijden van vorig jaar op dezelfde weekdag. Zo ver vooruit maakt de voorspelling nauwelijks verschil tussen de dagen.",
       "rank": "Voorstel {rank}",
       "wait": "Piekwachttijd ongeveer {minutes} min.",
       "below": "{percent}% onder het gemiddelde van de periode",
@@ -3476,8 +3479,7 @@
         "party_nights": "{count, plural, =1 {1 feestavond} other {# feestavonden}}: dagbezoekers moeten dan vroeger weg.",
         "water_park_closed": "Een gekozen waterpark is in deze tijd gesloten.",
         "hurricane_season": "Orkaanseizoen (juni tot november).",
-        "hours_not_published": "Nog niet alle openingstijden zijn gepubliceerd.",
-        "estimate_last_year": "Deels berekend met de drukte van vorig jaar."
+        "hours_not_published": "Nog niet alle openingstijden zijn gepubliceerd."
       },
       "basis": {
         "mixed": "Deels berekend met de drukte van vorig jaar",
@@ -3489,7 +3491,8 @@
       "stripWindow": "voorstel {rank}",
       "stripLegend": "Hoogte: de piekwachttijd van je parken die week. De streepjes eronder tonen je voorstellen.",
       "sketch": "Dag voor dag",
-      "rankedLower": "lager gerangschikt: {reasons}"
+      "rankedLower": "lager gerangschikt: {reasons}",
+      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden."
     },
     "evening": {
       "plus": "+ avond: {name}",

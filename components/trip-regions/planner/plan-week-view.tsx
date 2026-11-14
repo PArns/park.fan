@@ -29,6 +29,7 @@ import {
   tripCanvas,
   tripColumnGrid,
   planTimeMinute,
+  shownWaitOn,
   tripDaySpans,
   TRIP_FALLBACK_CANVAS,
   weekPages,
@@ -364,7 +365,12 @@ function WeekColumn({
 
         {span.blocks.map((block, index) => {
           const visit = day?.parks.find((p) => p.slug === block.slug);
-          const wait = span.kind === 'hop' ? visit?.headlinerWait : day?.headlinerWait;
+          const wait = shownWaitOn(
+            calendar,
+            block.slug,
+            span.date,
+            span.kind === 'hop' ? visit?.headlinerWait : day?.headlinerWait
+          );
           const level = span.kind === 'hop' ? visit?.crowdLevel : day?.crowdLevel;
           const tone = level && isColoredCrowdLevel(level) ? level : null;
           const photo = photos[block.slug];

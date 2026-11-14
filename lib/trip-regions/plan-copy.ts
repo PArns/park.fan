@@ -1,4 +1,3 @@
-import { addDays, daysBetween } from '@/lib/utils/park-day';
 import type { PlanDay, PlanMeta, PlanParkSummary, PlanTotals, TripPlan } from './plan';
 import type { TripEarlyKind, TripPerk, TripWhenWindow } from './types';
 
@@ -119,9 +118,10 @@ export function dayWarnings(day: Pick<PlanDay, 'warnings'>): PlanWarningCode[] {
  * The one marker a day may wear in the overview (Level 1): the fact that changes what the visitor
  * does that day, in this order. A day outside its ticket comes first (it can cost the entry at the
  * gate), then an early close (owner's decision: an earlier closing time always counts); a rest day
- * is a day off, an early slot is a reason to get up.
+ * is a day off, an early slot is a reason to get up. Last year's figures are no marker: after the
+ * forecast's days every day has them, and the answer says so once.
  */
-export type DayMarker = 'outside_ticket' | 'closes' | 'rest' | 'early' | 'evening' | 'last_year';
+export type DayMarker = 'outside_ticket' | 'closes' | 'rest' | 'early' | 'evening';
 
 /** Whether the day guests leave early that day: the API's flag, or one of its two codes. */
 export function closesEarly(day: Pick<PlanDay, 'closesEarly' | 'warnings' | 'reasons'>): boolean {
@@ -135,7 +135,7 @@ export function closesEarly(day: Pick<PlanDay, 'closesEarly' | 'warnings' | 'rea
 
 /** The one marker of a day in the overview, or `null`. */
 export function dayMarker(
-  day: Pick<PlanDay, 'kind' | 'warnings' | 'reasons' | 'perks' | 'basis' | 'closesEarly'>
+  day: Pick<PlanDay, 'kind' | 'warnings' | 'reasons' | 'perks' | 'closesEarly'>
 ): DayMarker | null {
   if (day.kind === 'rest') return 'rest';
   if (day.kind !== 'park' && day.kind !== 'hop') return null;
@@ -144,7 +144,6 @@ export function dayMarker(
   const perks = day.perks ?? [];
   if (earlyPerk(perks) !== null) return 'early';
   if (perks.includes('extended_evening')) return 'evening';
-  if (day.basis === 'last_year') return 'last_year';
   return null;
 }
 
@@ -271,24 +270,22 @@ export function planSavings(totals: PlanTotals): PlanSavings | null {
 }
 
 /**
- * When the forecast should reach the trip's first `last_year` day: the horizon (today to
- * `forecastUntil`) moves forward a day a day, so it reaches that day as many days before it as the
- * horizon is long. Never before tomorrow. `null` when no day of the plan is a last-year day or the
- * calendar has no horizon yet.
+ * From which date a run of days, in date order, reads last year's measured day: the first that does,
+ * and `all` when that is the first of them. After the forecast's days every day does, because the
+ * API ranks them on last year; a surface says it once with this, never per day. `null` when none
+ * does.
  */
-export function lastYearReach(
-  days: readonly Pick<PlanDay, 'date' | 'basis' | 'parks'>[],
-  forecastUntil: string | undefined,
-  today: string
-): { first: string; reach: string } | null {
-  const first = days.find(
-    (d) => d.basis === 'last_year' || d.parks.some((p) => p.basis === 'last_year')
-  )?.date;
-  if (!first || !forecastUntil) return null;
-  const horizon = Math.max(0, daysBetween(today, forecastUntil));
-  const reach = addDays(first, -horizon);
-  const tomorrow = addDays(today, 1);
-  return { first, reach: reach < tomorrow ? tomorrow : reach };
+export function lastYearStart<T extends { date: string }>(
+  days: readonly T[],
+  lastYear: (day: T) => boolean
+): { from: string; all: boolean } | null {
+  const first = days.find(lastYear);
+  return first ? { from: first.date, all: first === days[0] } : null;
+}
+
+/** Whether a plan day is figured on last year's measured day, the whole day or one of its parks. */
+export function planDayLastYear(day: Pick<PlanDay, 'basis' | 'parks'>): boolean {
+  return day.basis === 'last_year' || day.parks.some((p) => p.basis === 'last_year');
 }
 
 /**

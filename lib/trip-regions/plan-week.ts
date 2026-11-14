@@ -122,6 +122,40 @@ export function calendarCell(
 }
 
 /**
+ * The wait a park's day shows. Within the forecast's days the forecast as the park's own calendar
+ * shows it (`forecastWait`), so a day never reads two numbers on two pages; after them last year's
+ * measured day. What ranks the day stays `headlinerWait`, the forecast times its lead factor.
+ */
+export function shownWait(
+  day: Pick<TripParkDay, 'basis' | 'headlinerWait' | 'forecastWait'>
+): number | undefined {
+  return day.basis === 'forecast' ? (day.forecastWait ?? day.headlinerWait) : day.headlinerWait;
+}
+
+/**
+ * {@link shownWait} of a park on a plan's date, read off the trip's calendar; the plan's own figure
+ * where the calendar has none.
+ */
+export function shownWaitOn(
+  calendar: TripCalendar | undefined,
+  slug: string,
+  date: string,
+  planned: number | undefined
+): number | undefined {
+  const cell = calendarCell(calendar, slug, date);
+  return (cell && shownWait(cell)) ?? planned;
+}
+
+/** {@link shownWaitOn} for a plan day's own figure: a park day's park; a hop day has none. */
+export function shownDayWait(
+  day: Pick<PlanDay, 'date' | 'kind' | 'parks' | 'headlinerWait'>,
+  calendar: TripCalendar | undefined
+): number | undefined {
+  const park = day.kind === 'park' ? day.parks[0] : undefined;
+  return park ? shownWaitOn(calendar, park.slug, day.date, day.headlinerWait) : day.headlinerWait;
+}
+
+/**
  * Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar
  * does not carry gets no block: the honest answer is the day planner's, no axis rather than an
  * invented one.
