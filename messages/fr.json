@@ -3776,33 +3776,6 @@
       "next": "Suivant",
       "finish": "Terminé, voir le plan",
       "showPlan": "Voir le plan",
-      "steps": {
-        "dates": "Dates",
-        "parks": "Parcs",
-        "hotel": "Hôtel",
-        "route": "Itinéraire",
-        "hotels": "Hôtels",
-        "pace": "Rythme",
-        "evenings": "Soirées",
-        "tickets": "Billets"
-      },
-      "ask": {
-        "dates": "Quand es-tu {inRegion} ?",
-        "parks": "Quels parcs veux-tu voir ?",
-        "hotel": "Où dors-tu ?",
-        "route": "Où atterris-tu, et où vas-tu ensuite ?",
-        "hotels": "Dans quel quartier dors-tu ?",
-        "pace": "À quel point le voyage doit-il être chargé ?",
-        "evenings": "Et le soir ?",
-        "tickets": "As-tu déjà des billets ?",
-        "finale": "Ton plan est prêt."
-      },
-      "ribbon": {
-        "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
-        "free": "{count, plural, =1 {1 libre} other {# libres}}",
-        "peak": "pointe d’environ {minutes} min",
-        "show": "Voir le plan maintenant"
-      },
       "hotel": {
         "lead": "Avec un hôtel du resort, tu entres plus tôt dans les parcs.",
         "area": "Dans quel quartier ?",
@@ -3844,6 +3817,33 @@
         "hopLocked": "Ne compte qu’avec un billet {hopper}. L’étape suivante montre si cela vaut la peine pour ton plan.",
         "hopFits": "Avec {hopper}, {parks} {count, plural, =1 {trouve} other {trouvent}} encore sa place.",
         "hopEvening": "Avec {hopper}, la soirée du {date} ajoute {park}."
+      },
+      "steps": {
+        "dates": "Dates",
+        "parks": "Parcs",
+        "hotel": "Hôtel",
+        "route": "Itinéraire",
+        "hotels": "Hôtels",
+        "pace": "Rythme",
+        "evenings": "Soirées",
+        "tickets": "Billets"
+      },
+      "ask": {
+        "dates": "Quand es-tu {inRegion} ?",
+        "parks": "Quels parcs veux-tu voir ?",
+        "hotel": "Où dors-tu ?",
+        "route": "Où atterris-tu, et où vas-tu ensuite ?",
+        "hotels": "Dans quel quartier dors-tu ?",
+        "pace": "À quel point le voyage doit-il être chargé ?",
+        "evenings": "Et le soir ?",
+        "tickets": "As-tu déjà des billets ?",
+        "finale": "Ton plan est prêt."
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+        "free": "{count, plural, =1 {1 libre} other {# libres}}",
+        "peak": "pointe d’environ {minutes} min",
+        "show": "Voir le plan maintenant"
       }
     }
   },

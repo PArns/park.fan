@@ -273,7 +273,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/hotels-step.tsx`](../../components/trip-regions/wizard/steps/hotels-step.tsx)
 
-- `HotelsStep` _component_: Hotels per city, in a region that sleeps in several (Japan, Paris): for each city the trip stays in, its `stayNote` and its areas (`AreaPicker`), and the time a hotel change takes on top of the ride where the trip changes hotels.
+- `HotelsStep` _component_: Hotels per city, in a region that sleeps in several (Japan, Paris): for each city the trip stays in, its `stayNote` and its areas (`AreaPicker`), and the time a hotel change takes on top of the ride where the trip changes hotels; until the …
 
 ### [`wizard/steps/index.tsx`](../../components/trip-regions/wizard/steps/index.tsx)
 
@@ -289,7 +289,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/route-step.tsx`](../../components/trip-regions/wizard/steps/route-step.tsx)
 
-- `RouteStep` _component_: Route, in a region that sleeps in several cities (Japan, Paris): where the trip lands and where it leaves from as cards, the city first and its airports small, then the cities on a line with their nights.
+- `RouteStep` _component_: Route, in a region that sleeps in several cities (Japan, Paris): where the trip lands and where it leaves from as cards, the city first and its airports small, then the cities on a line with their nights (the stepper shows the number; a …
 
 ### [`wizard/steps/tickets-step.tsx`](../../components/trip-regions/wizard/steps/tickets-step.tsx)
 

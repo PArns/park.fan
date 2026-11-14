@@ -3776,33 +3776,6 @@
       "next": "Siguiente",
       "finish": "Listo, ver el plan",
       "showPlan": "Ver el plan",
-      "steps": {
-        "dates": "Fechas",
-        "parks": "Parques",
-        "hotel": "Hotel",
-        "route": "Ruta",
-        "hotels": "Hoteles",
-        "pace": "Ritmo",
-        "evenings": "Noches",
-        "tickets": "Entradas"
-      },
-      "ask": {
-        "dates": "¿Cuándo estás {inRegion}?",
-        "parks": "¿Qué parques quieres ver?",
-        "hotel": "¿Dónde duermes?",
-        "route": "¿Dónde aterrizas y adónde vas después?",
-        "hotels": "¿En qué zona duermes?",
-        "pace": "¿Cómo de llenos quieres los días?",
-        "evenings": "¿Y por la noche?",
-        "tickets": "¿Ya tienes entradas?",
-        "finale": "Tu plan está listo."
-      },
-      "ribbon": {
-        "parkDays": "{count, plural, =1 {1 día de parque} other {# días de parque}}",
-        "free": "{count, plural, =1 {1 libre} other {# libres}}",
-        "peak": "punta de unos {minutes} min",
-        "show": "Ver el plan ahora"
-      },
       "hotel": {
         "lead": "Con un hotel del resort entras antes en los parques.",
         "area": "¿En qué zona?",
@@ -3844,6 +3817,33 @@
         "hopLocked": "Solo cuenta con una entrada con {hopper}. En el paso siguiente ves si compensa para tu plan.",
         "hopFits": "Con {hopper}, {parks} todavía {count, plural, =1 {cabe} other {caben}}.",
         "hopEvening": "Con {hopper}, la noche del {date} suma {park}."
+      },
+      "steps": {
+        "dates": "Fechas",
+        "parks": "Parques",
+        "hotel": "Hotel",
+        "route": "Ruta",
+        "hotels": "Hoteles",
+        "pace": "Ritmo",
+        "evenings": "Noches",
+        "tickets": "Entradas"
+      },
+      "ask": {
+        "dates": "¿Cuándo estás {inRegion}?",
+        "parks": "¿Qué parques quieres ver?",
+        "hotel": "¿Dónde duermes?",
+        "route": "¿Dónde aterrizas y adónde vas después?",
+        "hotels": "¿En qué zona duermes?",
+        "pace": "¿Cómo de llenos quieres los días?",
+        "evenings": "¿Y por la noche?",
+        "tickets": "¿Ya tienes entradas?",
+        "finale": "Tu plan está listo."
+      },
+      "ribbon": {
+        "parkDays": "{count, plural, =1 {1 día de parque} other {# días de parque}}",
+        "free": "{count, plural, =1 {1 libre} other {# libres}}",
+        "peak": "punta de unos {minutes} min",
+        "show": "Ver el plan ahora"
       }
     }
   },
