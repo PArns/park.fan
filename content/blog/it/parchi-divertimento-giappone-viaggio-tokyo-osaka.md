@@ -3,7 +3,7 @@ title: 'Parchi a tema in Giappone, da Tokyo a Osaka'
 translationKey: japan-freizeitparks-reise
 date: '2026-11-14'
 author: patrick
-mode: published
+mode: draft
 featured: false
 excerpt: >-
   Tokyo Disneyland, DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan si trovano
@@ -49,19 +49,19 @@ seo:
 
 A Orlando sedici parchi stanno intorno a una sola camera d’albergo. In Giappone, i cinque parchi di cui park.fan misura le attese sono sparsi in quattro città: [Tokyo Disneyland](ref:tokyo-disneyland) e [Tokyo DisneySea](ref:tokyo-disneysea) a Maihama, alle porte di Tokyo, [Fuji-Q Highland](ref:fuji-q-highland) ai piedi del monte Fuji, [LEGOLAND Japan](ref:legoland-japan) a Nagoya e [Universal Studios Japan](ref:universal-studios-japan) a Osaka. Per vederli tutti e cinque dormi in almeno due città e in mezzo prendi lo Shinkansen.
 
-Secondo l’orario di JR Central, il Nozomi impiega da 147 a 150 minuti da Tokyo a Shin-Osaka. Un viaggio perde più tempo di così quando fa le città nell’ordine sbagliato, o quando cambia hotel proprio nel giorno in cui un parco sarebbe stato vuoto. Il [Calendario affluenza Tokyo Disney e USJ](/giappone) mette i cinque parchi uno accanto all’altro, giorno per giorno. Le attrazioni dei due grandi resort, il Premier Access e l’Express Pass li trovi nel dettaglio nelle nostre guide a [Tokyo Disney Resort](/blog/tokyo-disney-resort-tempi-di-attesa-consigli) e a [Universal Studios Japan](/blog/universal-studios-japan-tempi-di-attesa-consigli).
+Secondo l’orario di JR Central, il Nozomi impiega da 147 a 150 minuti da Tokyo a Shin-Osaka. Più tempo ti costa un ordine che salta avanti e indietro tra le città, o un cambio di hotel proprio nel giorno in cui il tuo parco sarebbe stato più vuoto. Il [Calendario affluenza Tokyo Disney e USJ](/giappone) mette i cinque parchi uno accanto all’altro, giorno per giorno. Per le attrazioni dei due grandi resort, il Premier Access e l’Express Pass ci sono guide a parte, una per [Tokyo Disney Resort](/blog/tokyo-disney-resort-tempi-di-attesa-consigli) e una per [Universal Studios Japan](/blog/universal-studios-japan-tempi-di-attesa-consigli).
 
 ## I parchi e le loro città
 
 ### Tokyo Disneyland e Tokyo DisneySea
 
-I due parchi Disney sono uno accanto all’altro a Maihama. L’indirizzo è Urayasu, nella prefettura di Chiba, non Tokyo, cosa che ti interessa solo se chiami un taxi. Dalla stazione di Tokyo la JR Keiyo Line arriva a Maihama in circa 15 minuti, e da lì sono circa cinque minuti a piedi fino all’ingresso di Tokyo Disneyland. Per tutto il tragitto da un hotel vicino alla stazione di Tokyo il pianificatore prevede 35 minuti, compresa la camminata fino ai binari della Keiyo Line.
+I due parchi Disney sono uno accanto all’altro a Maihama. L’indirizzo è Urayasu, nella prefettura di Chiba, non Tokyo, cosa che ti interessa solo se chiami un taxi. Dalla stazione di Tokyo la JR Keiyo Line arriva a Maihama in circa 15 minuti, e da lì sono circa cinque minuti a piedi fino all’ingresso di Tokyo Disneyland. Da un hotel vicino alla stazione di Tokyo conta comunque 35 minuti fino all’ingresso, perché si aggiunge la camminata fino ai binari della Keiyo Line dentro la stazione.
 
 Tra i parchi corre la Disney Resort Line, una monorotaia. Gira in un solo senso, su un anello di quattro stazioni: Resort Gateway accanto alla stazione di Maihama, Tokyo Disneyland, Bayside con i suoi hotel e Tokyo DisneySea. Con i tratti a piedi, da Tokyo Disneyland al cancello di DisneySea ci vuole così un quarto d’ora circa.
 
 ### Fuji-Q Highland
 
-Fuji-Q Highland è il parco delle montagne russe del viaggio. Si trova a Fujiyoshida, una stazione prima di Kawaguchiko, e nel pianificatore fa parte della tappa Fujikawaguchiko, sul lago Kawaguchi. L’ingresso è gratuito. Per salire sulle attrazioni ti serve un pass o dei biglietti singoli, e la casa dell’orrore Senritsu Meikyu, il FUJIYAMA Walk e il FUJIYAMA Slider vogliono in più ciascuno un proprio biglietto a orario. Un parco con ingresso gratuito è quindi gratis più o meno quanto un ristorante che non ti fa pagare la porta.
+Fuji-Q Highland è il parco delle montagne russe del viaggio. Si trova a Fujiyoshida, una stazione prima di Kawaguchiko. Nel pianificatore lo trovi sotto Fujikawaguchiko, la località sul lago Kawaguchi. L’ingresso è gratuito. Per salire sulle attrazioni ti serve un pass o dei biglietti singoli, e la casa dell’orrore Senritsu Meikyu, il FUJIYAMA Walk e il FUJIYAMA Slider vogliono in più ciascuno un proprio biglietto a orario. Un parco con ingresso gratuito è quindi gratis più o meno quanto un ristorante che non ti fa pagare la porta.
 
 Da Tokyo, Fuji-Q si fa bene in giornata. I pullman da Busta Shinjuku impiegano circa 100 minuti secondo l’orario di Fujikyu, e i primi due, alle 6:45 e alle 6:55, arrivano al parco alle 8:25, ben prima dell’apertura. L’ultimo pullman di ritorno parte alle 20:23 e arriva a Shinjuku alle 22:00. I posti sono prenotati, e la vendita apre un mese prima del viaggio.
 
@@ -71,51 +71,49 @@ In inverno il parco di solito apre solo dalle 10:00 alle 17:00 dal lunedì al ve
 
 LEGOLAND Japan si trova a Kinjo-futo, nel porto di Nagoya. Dalla stazione di Nagoya la Aonami Line arriva a Kinjo-futo in poco meno di mezz’ora, e con i tratti a piedi sono circa 40 minuti fino all’ingresso. Il parco non ha un parcheggio proprio e manda chi arriva in auto al parcheggio comunale di Kinjo Futo. A gennaio 2027 LEGOLAND Japan resta chiuso cinque giorni: il 13, il 14 e dal 19 al 21.
 
-Nagoya è sulla linea dello Shinkansen e, in Nozomi, è più vicina a Osaka che a Tokyo. Per questo LEGOLAND può entrare nel viaggio in due modi: come tappa a sé con una notte a Nagoya, oppure come gita in giornata da Osaka. Per la gita da Umeda, a Osaka, conta un’ora e tre quarti per tratta con Shinkansen e Aonami Line.
+Nagoya è sulla linea dello Shinkansen e, in Nozomi, è più vicina a Osaka che a Tokyo. Così LEGOLAND entra nel viaggio come tappa a sé, con una notte a Nagoya, oppure come gita in giornata da Osaka. Per la gita da Umeda, a Osaka, conta un’ora e tre quarti per tratta con Shinkansen e Aonami Line.
 
 ### Universal Studios Japan
 
-Universal Studios Japan, USJ per brevità, si trova nella parte occidentale di Osaka. Dalla stazione di Universal City, sulla JR Yumesaki Line, attraversi l’Universal CityWalk e in pochi minuti sei all’ingresso. Da Umeda ci vogliono circa 25 minuti, da Kyoto poco più di un’ora. Dormire a Kyoto vuol dire scambiare un’ora di treno ogni mattina con le serate a Kyoto, e io quello scambio lo farei.
+Universal Studios Japan, USJ per brevità, si trova nella parte occidentale di Osaka. Dalla stazione di Universal City, sulla JR Yumesaki Line, attraversi l’Universal CityWalk e in pochi minuti sei all’ingresso. Da Umeda ci vogliono circa 25 minuti, da Kyoto poco più di un’ora. Io dormirei comunque a Kyoto, perché le serate lì per me valgono un’ora di treno ogni mattina.
 
 ![L’arco d’ingresso color crema di Universal Studios Japan con uno stendardo di Mario, a destra un binario di montagne russe. | Qui ha aperto, a marzo 2021, il primo Super Nintendo World.](/media/universal-studios-japan/entrance-gate.jpg)
 
-Nei giorni affollati, per Super Nintendo World serve in più un biglietto con fascia oraria, l’Area Timed Entry Ticket. Alcuni Express Pass lo includono già all’acquisto, altrimenti lo prendi il giorno stesso nell’app del parco, finché ce ne sono. Nei giorni tranquilli entri anche senza. Quella fascia oraria conta nel programma quanto il biglietto del parco, perché Mario Kart e Mine Cart Madness si trovano in quell’area.
+Nei giorni affollati, per Super Nintendo World serve in più un biglietto con fascia oraria, l’Area Timed Entry Ticket. Alcuni Express Pass lo includono già all’acquisto, altrimenti lo prendi il giorno stesso nell’app del parco, finché ce ne sono. Nei giorni tranquilli entri anche senza. Mario Kart e Mine Cart Madness sono tutte e due in Super Nintendo World, quindi nei giorni affollati ci sali solo con questo biglietto.
 
 ## Quanti giorni servono per ogni parco
 
-Un biglietto di Tokyo Disney vale per un parco e per un giorno. Per questo a Tokyo Disneyland e a Tokyo DisneySea do un giorno intero ciascuno, e se ci sta un terzo giorno Disney, va a DisneySea, dove le code nelle nostre misurazioni sono più lunghe che nel parco accanto.
+Un biglietto di Tokyo Disney vale per un parco e per un giorno, quindi a Tokyo Disneyland e a Tokyo DisneySea do un giorno intero ciascuno, e se ci sta un terzo giorno Disney, va a DisneySea, dove le code nelle nostre misurazioni sono più lunghe che nel parco accanto.
 
-A USJ darei due giorni, se il viaggio lo permette. Dei cinque parchi, è quello dove arrivare presto rende di più secondo i nostri dati sul rope drop, e USJ vende proprio per questo il 2 Day e l’1.5 Day Studio Pass. Nel pianificatore USJ è quindi il primo parco a ricevere un secondo giorno, prima di DisneySea e di Disneyland.
+A USJ darei due giorni, se il viaggio lo permette. Dei cinque parchi, è quello dove arrivare presto rende di più secondo i nostri dati sul rope drop, e USJ vende proprio per questo il 2 Day e l’1.5 Day Studio Pass. Se ti resta un giorno libero, va a USJ, il successivo a DisneySea, e nello stesso ordine li distribuisce anche il pianificatore.
 
 Per Fuji-Q basta un giorno. LEGOLAND Japan è un giorno intero con bambini piccoli e più che altro mezza giornata per tutti gli altri, e in inverno chiude alle 17:00 da lunedì a venerdì. Su dieci giorni con tutti e cinque i parchi restano così poco più di quattro giorni per l’arrivo, la partenza, i cambi di hotel, Kyoto e Tokyo stessa.
 
 ## L’ordine delle città
 
-Da est a ovest le città si susseguono così: Tokyo, Fujikawaguchiko, Nagoya, Osaka. Un viaggio che va avanti e indietro perde ore in treno, quindi le tappe del [pianificatore](/giappone#planner) seguono sempre questa linea, in un senso o nell’altro.
+Da est a ovest le città si susseguono così: Tokyo, Fujikawaguchiko, Nagoya, Osaka. Se salti avanti e indietro tra le città, passi ore in più in treno, quindi le tappe del [pianificatore](/giappone#planner) seguono sempre questa linea, verso ovest o verso est.
 
 Il senso lo decidono i tuoi voli. Tokyo ha due grandi aeroporti, e secondo Tokyo Disney Resort da Haneda a Maihama ci vogliono circa 50 minuti con due cambi, da Narita circa 80 minuti con uno. All’altro capo della linea ci sono gli aeroporti di Kansai e di Itami, vicino a Osaka. Se atterri a Haneda o a Narita e riparti da Kansai, il viaggio va verso ovest, se arrivi a Osaka, verso est. Se riparti anche da Tokyo, il giorno della partenza torni da Osaka, e quel giorno non c’è parco.
 
-Il pianificatore distribuisce le notti in modo che ogni parco cada in un giorno con un’attesa di picco bassa. Se hai già prenotato un hotel in una città, ne fissi le notti e il resto si distribuisce intorno. Ogni cambio di hotel ha un costo nel piano, così il pianificatore non ti fa traslocare per qualche minuto di coda in meno. Per questo Fuji-Q Highland resta quasi sempre una gita da Tokyo. Una notte sul lago Kawaguchi entra nel piano quando si ripaga con attese più brevi, o quando scegli tu la località.
+Il pianificatore distribuisce le notti in modo che ogni parco cada in un giorno con un’attesa di picco bassa. Se hai già prenotato un hotel in una città, fissi quelle notti e il pianificatore distribuisce le altre intorno. Ti propone un cambio di hotel solo se ti fa risparmiare più di qualche minuto di coda. Con Fuji-Q Highland succede di rado, e il parco resta quasi sempre una gita da Tokyo. Una notte sul lago Kawaguchi entra nel piano quando si ripaga con attese più brevi, o quando scegli tu la località.
 
-Un giorno di cambio hotel va in uno di questi tre modi:
+Un giorno di cambio hotel puoi organizzarlo così:
 
-- Trasloco al mattino, parco al pomeriggio. Il treno parte alle 7:30, e nel parco di arrivo contano solo le ore che restano. Un Nozomi delle 7:30 da Tokyo arriva verso le 10:30 a Universal City.
+- Trasloco al mattino, parco al pomeriggio. Se lasci l’hotel a Tokyo alle 7:30, con la tappa al nuovo hotel sei a USJ verso le 11:30 e hai il resto della giornata per il parco.
 - Trasloco la sera, dopo il parco. La giornata è del parco della vecchia città, il viaggio comincia dopo la chiusura, e devi arrivare entro le 23:00.
 - Un giorno solo di viaggio. Da Fujikawaguchiko a Nagoya prendi il pullman per Mishima e poi il Kodama, circa tre ore e tre quarti da porta a porta. Accanto non ci sta nessun parco.
 
-Se ti sposti a Maihama al mattino, quel giorno Happy Entry non vale ancora.
-
 ## Valigie e cambi di hotel
 
-Il pianificatore dà per scontato che tu spedisca le valigie all’hotel successivo con un servizio bagagli, in giapponese takkyubin, e salga sul treno con uno zaino. Sulla linea Tokaido un bagaglio da 161 a 250 centimetri in totale, sommando lunghezza, larghezza e altezza, ha bisogno di un posto con spazio per bagagli grandi, da prenotare insieme al biglietto. Senza prenotazione JR Central fa pagare un supplemento, e quello che supera i 250 centimetri non sale proprio.
+Le valigie le spedisci all’hotel successivo con un servizio bagagli, in giapponese takkyubin, e sali sul treno solo con uno zaino. Da qui parte anche il pianificatore. Sulla linea Tokaido un bagaglio da 161 a 250 centimetri in totale, sommando lunghezza, larghezza e altezza, ha bisogno di un posto con spazio per bagagli grandi, da prenotare insieme al biglietto. Senza prenotazione JR Central fa pagare un supplemento, e quello che supera i 250 centimetri non sale proprio.
 
-Il servizio più noto è TA-Q-BIN di Yamato Transport. Non serve prenotare. Lasci la valigia alla reception del tuo hotel, a uno sportello in aeroporto o in stazione o in una filiale, e se il tuo hotel non accetta bagagli, la porti alla filiale più vicina. All’hotel di arrivo chiedi prima se accetta un bagaglio a tuo nome. La consegna è al più presto il giorno dopo, per le valigie lasciate entro le 18:00 circa. Il prezzo dipende da dimensioni e tratta, e la ritiri all’arrivo con un documento o con la ricevuta. Per un trasloco al mattino vuol dire che la valigia parte la sera prima e che per l’ultima notte prepari una borsa piccola, come per dormire da amici.
+Il servizio più noto è TA-Q-BIN di Yamato Transport. Non serve prenotare. Lasci la valigia alla reception del tuo hotel, a uno sportello in aeroporto o in stazione o in una filiale, e se il tuo hotel non accetta bagagli, la porti alla filiale più vicina. All’hotel di arrivo chiedi prima se accetta un bagaglio a tuo nome. La consegna è al più presto il giorno dopo, per le valigie lasciate entro le 18:00 circa. La ritiri all’arrivo con un documento o con la ricevuta. Per un trasloco al mattino vuol dire che la valigia parte la sera prima e che per l’ultima notte prepari una borsa piccola, come per dormire da amici.
 
-Senza valigia lasci la camera al mattino e vai al treno. Con la valigia c’è in più il passaggio all’hotel successivo prima del parco. Il pianificatore prevede 30 minuti per ogni cambio di hotel e parte dal presupposto che i bagagli siano andati avanti. Se le valigie le porti tu, io imposterei 60 minuti, e 90 o 120 con bambini piccoli. Il valore lo scegli nelle opzioni, e vale per ogni trasloco del viaggio.
+Se la valigia è già partita, lasci la camera e vai dritto al treno, altrimenti la porti prima all’hotel di arrivo e poi vai al parco. Il pianificatore prevede 30 minuti per ogni cambio di hotel. Se le valigie le porti tu, io imposterei 60 minuti, e 90 o 120 con bambini piccoli. Il valore lo scegli nelle opzioni, e vale per ogni trasloco del viaggio.
 
 ## Spostarsi tra le città
 
-Tra Tokyo, Nagoya e Osaka prendi il Tokaido Shinkansen. Secondo l’orario il Nozomi impiega da 96 a 99 minuti da Tokyo a Nagoya e da 48 a 51 minuti in più fino a Shin-Osaka. Il pianificatore ragiona con tempi da porta a porta, compresi il tragitto fino alla stazione e l’attesa del treno: due ore e mezza da Tokyo a Nagoya, un’ora e mezza da Nagoya a Osaka e tre ore e mezza da Tokyo a Osaka.
+Tra Tokyo, Nagoya e Osaka prendi il Tokaido Shinkansen. Secondo l’orario il Nozomi impiega da 96 a 99 minuti da Tokyo a Nagoya e da 48 a 51 minuti in più fino a Shin-Osaka. Da porta a porta, compresi il tragitto fino alla stazione e l’attesa del treno, sono due ore e mezza da Tokyo a Nagoya, un’ora e mezza da Nagoya a Osaka e tre ore e mezza da Tokyo a Osaka, e con questi tempi lavora anche il pianificatore.
 
 Oltre al pullman, a Fuji-Q arrivi con il Fuji Excursion, un treno espresso che parte da Shinjuku alle 7:30 e ferma alla stazione di Fujikyu-Highland alle 9:26. L’ingresso del parco è subito fuori dai tornelli. L’ultimo Fuji Excursion di ritorno parte da lì alle 17:44, quindi se resti fino alla chiusura prendi il pullman delle 20:23.
 
@@ -123,13 +121,13 @@ Per proseguire verso ovest da Fuji-Q non serve ripassare da Tokyo. I pullman arr
 
 Durante la Golden Week, Obon, la Silver Week e intorno a Capodanno tutti i posti del Nozomi sono prenotati, nel 2026-2027 dal 25 dicembre al 5 gennaio. Nell’inverno 2026-2027 si aggiungono i fine settimana lunghi dal 9 all’11 gennaio e dal 20 al 22 marzo. Senza prenotazione viaggi in piedi nel corridoio o sulla piattaforma tra le carrozze. Hikari e Kodama mantengono carrozze senza prenotazione anche in quei giorni.
 
-Il Japan Rail Pass copre meno di questo viaggio di quanto prometta il nome. Sul Nozomi ti fa salire solo con un biglietto in più, il NOZOMI MIZUHO Ticket, e i pullman per Fuji-Q non sono compresi. Il JR Group ha aumentato i prezzi del pass a ottobre 2023, e dal 1° ottobre 2026 i pass comprati da agenzie all’estero costano di nuovo di più. Online, direttamente da JR, per ora il prezzo resta uguale. Per un viaggio che va una volta da Tokyo a Osaka e raggiunge Fuji-Q in pullman, io confronterei i biglietti singoli con il pass prima di comprarlo.
+Con il Japan Rail Pass sul Nozomi sali solo con un biglietto in più, il NOZOMI MIZUHO Ticket, e i pullman per Fuji-Q li paghi a parte. Dopo un aumento a ottobre 2023, dal 1° ottobre 2026 il pass costa di nuovo di più nelle agenzie all’estero, mentre online da JR per ora il prezzo resta uguale. Se vai una volta da Tokyo a Osaka e in pullman a Fuji-Q, il pass conviene di rado, e io farei i conti con i biglietti singoli prima di comprarlo.
 
 ## Biglietti
 
 ### Tokyo Disney Resort
 
-Tokyo Disney Resort non vende biglietti per più giorni. Ogni giorno è un 1-Day Passport per un solo parco, e il parco e la data li scegli all’acquisto. Per entrare più tardi ci sono l’After 3 Passport, dalle 15:00 nel fine settimana e nei festivi, e l’After 5 Passport, dalle 17:00 dal lunedì al venerdì esclusi i festivi. Con nessuno dei due entri nel secondo parco.
+Tokyo Disney Resort non vende biglietti per più giorni. Il parco e la data li scegli quando compri il 1-Day Passport. Per entrare più tardi ci sono l’After 3 Passport, dalle 15:00 nel fine settimana e nei festivi, e l’After 5 Passport, dalle 17:00 dal lunedì al venerdì esclusi i festivi. Con nessuno dei due entri nel secondo parco. Per gli studenti delle medie, delle superiori e dell’università il resort vende nel 2027 il Campus Day Passport, valido per le visite dal 4 gennaio al 19 marzo.
 
 Ogni data va in vendita due mesi prima alle 14:00 ora del Giappone, e i giorni più richiesti finiscono esauriti. Le biglietterie all’ingresso sono chiuse, si vende online e nell’app. Se a mezzogiorno vuoi riposarti in hotel, avvisa un addetto all’uscita e rientri più tardi con lo stesso biglietto.
 
@@ -143,31 +141,31 @@ Fuji-Q vende il One Day Pass per tutte le attrazioni tranne quelle con biglietto
 
 ### LEGOLAND Japan
 
-LEGOLAND Japan vende il 1DAY Passport, a scelta insieme a SEA LIFE Nagoya, e in quel caso per tutti e due nello stesso giorno. Online prima della visita costa meno che alla cassa, dove a ogni biglietto si aggiunge una commissione. Se dormi al LEGOLAND Japan Hotel, ricevi il Combo 2 Day Pass per il giorno di arrivo e quello dopo, con uscite e rientri.
+LEGOLAND Japan vende il 1DAY Passport, a scelta insieme a SEA LIFE Nagoya, e in quel caso per tutti e due nello stesso giorno. Online prima della visita costa meno che alla cassa, dove a ogni biglietto si aggiunge una commissione. Se dormi al LEGOLAND Japan Hotel, a pochi minuti a piedi dall’ingresso, ricevi il Combo 2 Day Pass per il giorno di arrivo e quello dopo, con uscite e rientri.
 
 In tutti e quattro il prezzo dipende dalla data. Se hai già i biglietti, inseriscili nel pianificatore, e i parchi finiscono nei loro giorni.
 
 ## Pagare per saltare la coda
 
-A Tokyo Disneyland e DisneySea la corsia prioritaria a pagamento si chiama Disney Premier Access. La compri nell’app una volta entrato nel parco, per un’attrazione e un orario, e la successiva puoi prenotarla 60 minuti dopo l’acquisto o appena arriva l’orario prenotato. Nei giorni affollati finisce.
+A Tokyo Disneyland e DisneySea la corsia prioritaria a pagamento si chiama Disney Premier Access. La compri nell’app una volta entrato nel parco, per un’attrazione e un orario, e la successiva puoi prenotarla 60 minuti dopo l’acquisto o appena arriva l’orario prenotato. Nei giorni affollati compralo appena entrato, prima che finisca.
 
-USJ vende l’Universal Express Pass per una data, come pacchetto con una selezione fissa di attrazioni, alcune a orario fisso. Solo una parte dei pacchetti comprende la fascia oraria di Super Nintendo World, e nei giorni affollati vanno via presto.
+USJ vende l’Universal Express Pass per una data, come pacchetto con una selezione fissa di attrazioni, alcune a orario fisso. Solo una parte dei pacchetti comprende la fascia oraria di Super Nintendo World, e per un giorno affollato ne compri uno di quelli appena la data è fissata.
 
-A Fuji-Q le possibilità sono due. Il Fuji-Q Premium Pass è un One Day Pass con ingresso anticipato e un braccialetto con cui passi dall’ingresso prioritario di dodici attrazioni adrenaliniche tutte le volte che vuoi, fino a un’ora prima della chiusura. Comprende anche un biglietto a orario per Senritsu Meikyu, il FUJIYAMA Walk e il FUJIYAMA Slider. Da soli, il parco vende biglietti prioritari per un’attrazione a un orario fisso, online dalle 18:00 tre giorni prima.
+A Fuji-Q, il Fuji-Q Premium Pass è un One Day Pass con ingresso anticipato e un braccialetto con cui passi dall’ingresso prioritario di dodici attrazioni adrenaliniche tutte le volte che vuoi, fino a un’ora prima della chiusura. Comprende anche un biglietto a orario per Senritsu Meikyu, il FUJIYAMA Walk e il FUJIYAMA Slider. Da soli, il parco vende biglietti prioritari per un’attrazione a un orario fisso, online dalle 18:00 tre giorni prima.
 
 LEGOLAND Japan vende lo Skip Pass, in pacchetto da tre passaggi che un gruppo può dividersi o come braccialetto UNLIMITED per tutta la giornata. Tutti e due valgono per circa 25 attrazioni, solo in aggiunta al biglietto d’ingresso e in quantità limitata ogni giorno.
 
 ## Entrare prima con l’hotel o con il biglietto
 
-Con Happy Entry gli ospiti degli hotel Disney entrano a Tokyo Disneyland 15 minuti prima di tutti, da un ingresso riservato. A Tokyo DisneySea entrano prima solo gli ospiti dell’Hotel MiraCosta e del Fantasy Springs Hotel, e finché ci sono lavori all’ingresso sono da 5 a 15 minuti. Happy Entry comincia dalla mattina dopo il check-in, e alcuni hotel hanno giorni esclusi, il prossimo a Tokyo Disneyland è il 12 gennaio 2027. Il resort pubblica questi giorni sulla sua pagina dedicata a Happy Entry.
+Con Happy Entry gli ospiti degli hotel Disney entrano a Tokyo Disneyland 15 minuti prima di tutti, da un ingresso riservato. A Tokyo DisneySea entrano prima solo gli ospiti dell’Hotel MiraCosta e del Fantasy Springs Hotel, e finché ci sono lavori all’ingresso sono da 5 a 15 minuti. Happy Entry comincia dalla mattina dopo il check-in. Alcuni hotel hanno giorni esclusi, elencati dal resort sulla sua pagina dedicata a Happy Entry, e il prossimo a Tokyo Disneyland è il 12 gennaio 2027.
 
 ![Una fila di palazzi in stile italiano, ocra e rosa, lungo un bacino portuale con barche ormeggiate. | L’Hotel MiraCosta è costruito dentro questo fronte del porto, e alcune camere guardano direttamente sul parco.](/media/tokyo-disneysea/mediterranean-harbor.jpg)
 
 I sei Official Hotels alla stazione Bayside e i quattro Partner Hotels di Shin-Urayasu hanno navette per i parchi, ma niente Happy Entry. I sette hotel partner di USJ sono a pochi minuti a piedi dall’ingresso, e i loro ospiti possono comprare in hotel gli Studio Pass per il giorno del check-in e quello dopo.
 
-Accanto a Fuji-Q c’è l’Highland Resort Hotel & Spa, con un passaggio proprio verso il parco dal piano interrato. Secondo l’hotel, i suoi ospiti entrano prima, 15 minuti prima dell’apertura dal lunedì al venerdì e 30 minuti il sabato, la domenica e nei festivi, anche il giorno della partenza. In quel tempo sali sulle attrazioni solo con un One Day Pass o con i biglietti. Nel pianificatore contano i 15 minuti, ogni giorno.
+Accanto a Fuji-Q c’è l’Highland Resort Hotel & Spa, con un passaggio proprio verso il parco dal piano interrato. Secondo l’hotel, i suoi ospiti entrano prima, 15 minuti prima dell’apertura dal lunedì al venerdì e 30 minuti il sabato, la domenica e nei festivi, anche il giorno della partenza. In quel tempo sali sulle attrazioni solo con un One Day Pass o con i biglietti. Il pianificatore resta sui 15 minuti anche nel fine settimana e nei festivi, quindi il quarto d’ora in più di quei giorni è un regalo.
 
-Senza hotel, Fuji-Q vende l’ingresso anticipato da sé, come One Day Pass with Priority Admission, mezz’ora prima dell’apertura a novembre 2026. In quella mezz’ora girano solo le grandi montagne russe, e da dicembre 2026 al 5 febbraio 2027 il pass non è in vendita. Il LEGOLAND Japan Hotel è a pochi minuti a piedi dall’ingresso.
+Senza hotel, Fuji-Q vende l’ingresso anticipato da sé, come One Day Pass with Priority Admission, mezz’ora prima dell’apertura a novembre 2026. In quella mezz’ora girano solo le grandi montagne russe, e da dicembre 2026 al 5 febbraio 2027 il pass non è in vendita.
 
 ## Quando c’è tanta gente
 
@@ -189,9 +187,9 @@ Il numero nel calendario affluenza è l’attesa di picco, la media delle grandi
 
 ```
 
-A Tokyo Disneyland e DisneySea febbraio e marzo sono stati i mesi più affollati. Per il 2027 Tokyo Disney Resort vende in quelle settimane il Campus Day Passport, un biglietto per studenti delle medie, delle superiori e dell’università, valido per le visite dal 4 gennaio al 19 marzo. La Golden Week del 2026 è stata in entrambi i parchi meno affollata di metà febbraio e metà marzo. Tutti e due sono stati più tranquilli a settembre, e Tokyo Disneyland anche a giugno, luglio e ottobre.
+A Tokyo Disneyland e DisneySea febbraio e marzo sono stati i mesi più affollati. La Golden Week del 2026 è stata in entrambi i parchi meno affollata di metà febbraio e metà marzo. Tutti e due sono stati più tranquilli a settembre, in piena stagione dei tifoni, e Tokyo Disneyland anche a giugno, luglio e ottobre.
 
-Universal Studios Japan ha avuto un altro anno. Il più affollato è stato marzo, poi ottobre e l’inizio di novembre, le ultime settimane di Halloween Horror Nights, finito l’8 novembre 2026. Il mese più tranquillo è stato luglio. Fuji-Q Highland lo misuriamo solo da fine aprile 2026. Lì c’è stata tanta gente a maggio con la Golden Week, ad agosto e a settembre, e poca a giugno.
+A Universal Studios Japan il mese più affollato è stato marzo, poi ottobre e l’inizio di novembre, le ultime settimane di Halloween Horror Nights, finito l’8 novembre 2026. Il mese più tranquillo è stato luglio. Fuji-Q Highland lo misuriamo solo da fine aprile 2026. Lì c’è stata tanta gente a maggio con la Golden Week, ad agosto e a settembre, e poca a giugno.
 
 ### I giorni più tranquilli delle prossime settimane
 
@@ -221,17 +219,17 @@ Universal Cool Japan 2027 comincia il 2 dicembre 2026 con Sailor Moon, fino al 5
 
 ### Fuji-Q Highland e LEGOLAND Japan
 
-La notte di San Silvestro 2026 Fuji-Q resta aperto fino all’1:00, secondo il suo calendario. Dal 4 dicembre 2026 al 31 gennaio 2027 c’è una collaborazione per i 30 anni della serie di videogiochi Persona. La ruota panoramica è ferma dal 9 novembre al 31 gennaio per una ristrutturazione. Tentekomai resta chiusa fino a fine luglio 2027, dice il parco, per la costruzione di una nuova grande attrazione, e per l’estate 2027 Fuji-Q ha annunciato accanto a Eejanaika una montagna russa acquatica alta 44 metri, con tre lanci, in avanti e all’indietro.
+La notte di San Silvestro 2026 Fuji-Q resta aperto fino all’1:00, secondo il suo calendario. Dal 4 dicembre 2026 al 31 gennaio 2027 Fuji-Q festeggia i 30 anni della serie di videogiochi Persona. Su FUJIYAMA, Takabisha, Eejanaika e Tondemina senti allora voci registrate apposta di Morgana e Teddie, nel parco suona la musica della serie, e una parte dei pullman da Shinjuku e dei treni di Fujikyu viaggia con la livrea di Persona. La ruota panoramica è ferma dal 9 novembre al 31 gennaio per una ristrutturazione. Tentekomai resta chiusa fino a fine luglio 2027, dice il parco, per la costruzione di una nuova grande attrazione, e per l’estate 2027 Fuji-Q ha annunciato accanto a Eejanaika una montagna russa acquatica alta 44 metri, con tre lanci, in avanti e all’indietro.
 
 LEGOLAND Japan compie dieci anni il 1° aprile 2027. Lì Merry Christmas dura fino al 25 dicembre, e Kids’ Countdown & Happy New Year dal 31 dicembre al 12 gennaio.
 
 ## Stagione delle piogge, tifoni e caldo estivo
 
-La stagione delle piogge, lo tsuyu, comincia intorno al 6 o 7 giugno e finisce intorno al 19 luglio secondo le medie 1991-2020 dell’agenzia meteorologica giapponese JMA, quasi in contemporanea a Tokyo e a Osaka. Nel 2026 è durata dal 7 giugno al 20 luglio nella regione di Tokyo e dal 4 giugno all’8 luglio intorno a Osaka. Piove spesso, e i parchi restano aperti.
+La stagione delle piogge, lo tsuyu, comincia intorno al 6 o 7 giugno e finisce intorno al 19 luglio secondo le medie 1991-2020 dell’agenzia meteorologica giapponese JMA, quasi in contemporanea a Tokyo e a Osaka. Nel 2026 è durata dal 7 giugno al 20 luglio nella regione di Tokyo e dal 4 giugno all’8 luglio intorno a Osaka. I parchi aprono normalmente in quelle settimane, con o senza pioggia.
 
-La stagione dei tifoni va da giugno a novembre. Un tifone passa vicino più spesso a settembre, in media 1,2 volte nella regione di Tokyo e 1,1 volte intorno a Osaka, e meno ad agosto e a ottobre. Per questo il pianificatore mette un po’ più in basso i viaggi nella stagione dei tifoni, soprattutto da inizio settembre a metà ottobre.
+La stagione dei tifoni va da giugno a novembre. Un tifone passa vicino più spesso a settembre, in media 1,2 volte nella regione di Tokyo e 1,1 volte intorno a Osaka, e meno ad agosto e a ottobre.
 
-Ad agosto la temperatura massima media giornaliera è di 31,3 °C a Tokyo, di 33,7 °C a Osaka e a Kyoto e di 33,2 °C a Nagoya. Con 28,1 °C, Fuji-Q sul lago Kawaguchi è il parco fresco del viaggio, e ad agosto è un ottimo motivo per dormirci una notte.
+Ad agosto la temperatura massima media giornaliera è di 31,3 °C a Tokyo, di 33,7 °C a Osaka e a Kyoto e di 33,2 °C a Nagoya. Sul lago Kawaguchi, a Fuji-Q, la massima è di 28,1 °C, e ad agosto basterebbe questo per farmi prenotare lì una notte.
 
 ## Domande frequenti
 

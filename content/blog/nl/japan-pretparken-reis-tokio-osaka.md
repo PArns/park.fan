@@ -3,7 +3,7 @@ title: 'Pretparken in Japan: één reis van Tokio tot Osaka'
 translationKey: japan-freizeitparks-reise
 date: '2026-11-14'
 author: patrick
-mode: published
+mode: draft
 featured: false
 excerpt: >-
   Tokyo Disneyland, DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan liggen in
@@ -49,19 +49,19 @@ seo:
 
 In Orlando liggen zestien parken rond één hotelkamer. In Japan liggen de vijf parken waarvan park.fan daar de wachttijden meet in vier steden: [Tokyo Disneyland](ref:tokyo-disneyland) en [Tokyo DisneySea](ref:tokyo-disneysea) in Maihama aan de rand van Tokio, [Fuji-Q Highland](ref:fuji-q-highland) aan de voet van de Fuji, [LEGOLAND Japan](ref:legoland-japan) in Nagoya en [Universal Studios Japan](ref:universal-studios-japan) in Osaka. Wie ze alle vijf wil zien, slaapt in minstens twee steden en zit daartussen in de Shinkansen.
 
-Van Tokio naar Shin-Osaka doet de Nozomi er volgens de dienstregeling van JR Central 147 tot 150 minuten over. Meer tijd verliest een reis die de steden in de verkeerde volgorde doet, of die net op een lege parkdag van hotel wisselt. In de [Tokyo Disney & USJ drukte-kalender](/japan) staan alle vijf parken dag voor dag naast elkaar. De attracties van de twee grote resorts, Premier Access en de Express Pass behandelen onze gidsen over [Tokyo Disney Resort](/blog/tokyo-disney-resort-wachttijden-tips) en [Universal Studios Japan](/blog/universal-studios-japan-wachttijden-tips) uitgebreid.
+Van Tokio naar Shin-Osaka doet de Nozomi er volgens de dienstregeling van JR Central 147 tot 150 minuten over. Meer tijd kost je een volgorde die tussen de steden heen en weer springt, of een hotelwissel net op de dag dat je park het leegst was geweest. In de [Tokyo Disney & USJ drukte-kalender](/japan) staan alle vijf parken dag voor dag naast elkaar. Over de attracties van de twee grote resorts, Premier Access en de Express Pass zijn er aparte gidsen, een voor [Tokyo Disney Resort](/blog/tokyo-disney-resort-wachttijden-tips) en een voor [Universal Studios Japan](/blog/universal-studios-japan-wachttijden-tips).
 
 ## De parken en hun steden
 
 ### Tokyo Disneyland en Tokyo DisneySea
 
-De twee Disney-parken liggen naast elkaar in Maihama. Het adres is Urayasu in de prefectuur Chiba, niet Tokio, en dat is alleen van belang als je een taxi bestelt. Vanaf station Tokio rijdt de JR Keiyo Line in ongeveer 15 minuten naar Maihama, en van daar loop je in een minuut of vijf naar de ingang van Tokyo Disneyland. Voor de hele weg vanaf een hotel bij station Tokio plant de reisplanner 35 minuten in, met de wandeling naar de perrons van de Keiyo Line erbij.
+De twee Disney-parken liggen naast elkaar in Maihama. Het adres is Urayasu in de prefectuur Chiba, niet Tokio, en dat is alleen van belang als je een taxi bestelt. Vanaf station Tokio rijdt de JR Keiyo Line in ongeveer 15 minuten naar Maihama, en van daar loop je in een minuut of vijf naar de ingang van Tokyo Disneyland. Vanaf een hotel bij station Tokio reken je toch op 35 minuten tot de ingang, want de wandeling naar de perrons van de Keiyo Line in het station komt erbij.
 
 Tussen de parken rijdt de Disney Resort Line, een monorail. Hij rijdt maar in één richting rond, langs vier stations: Resort Gateway bij station Maihama, Tokyo Disneyland, Bayside met de hotels en Tokyo DisneySea. Met de stukjes lopen ben je zo van Tokyo Disneyland in ongeveer een kwartier bij de poort van DisneySea.
 
 ### Fuji-Q Highland
 
-Fuji-Q Highland is het achtbaanpark van de reis. Het ligt in Fujiyoshida, één station voor Kawaguchiko, en in de reisplanner hoort het bij de halte Fujikawaguchiko aan het Kawaguchiko-meer. De toegang is gratis. Rijden mag je pas met een pas of losse ritkaarten, en het spookhuis Senritsu Meikyu, de FUJIYAMA Walk en de FUJIYAMA Slider hebben daarbovenop elk een eigen tijdticket nodig. Een park zonder toegangsprijs is dus ongeveer zo gratis als een restaurant zonder entree.
+Fuji-Q Highland is het achtbaanpark van de reis. Het ligt in Fujiyoshida, één station voor Kawaguchiko. In de reisplanner kies je daarvoor de plaats Fujikawaguchiko aan het Kawaguchiko-meer. De toegang is gratis. Rijden mag je pas met een pas of losse ritkaarten, en het spookhuis Senritsu Meikyu, de FUJIYAMA Walk en de FUJIYAMA Slider hebben daarbovenop elk een eigen tijdticket nodig. Een park zonder toegangsprijs is dus ongeveer zo gratis als een restaurant zonder entree.
 
 Vanuit Tokio is Fuji-Q een goede dagtrip. De langeafstandsbussen vanaf Busta Shinjuku doen er volgens de dienstregeling van Fujikyu zo'n 100 minuten over, en de eerste twee, om 6.45 en 6.55 uur, zijn om 8.25 uur bij het park, ruim voor de opening. De laatste bus terug vertrekt om 20.23 uur en is om 22.00 uur in Shinjuku. De stoelen zijn gereserveerd, en de verkoop begint een maand voor de rit.
 
@@ -71,51 +71,49 @@ In de winter is het park van maandag tot en met vrijdag meestal alleen van 10.00
 
 LEGOLAND Japan staat in Kinjo-futo in de haven van Nagoya. Vanaf station Nagoya rijdt de Aonami Line in net geen half uur naar Kinjo-futo, en met het lopen ben je in zo'n 40 minuten bij de ingang. Een eigen parkeerterrein heeft het park niet, automobilisten stuurt het naar de gemeentelijke parkeerplaats Kinjo Futo. In januari 2027 is LEGOLAND Japan vijf dagen dicht: op de 13e en de 14e en van de 19e tot en met de 21e.
 
-Nagoya ligt aan de Shinkansen-lijn en is met de Nozomi dichter bij Osaka dan bij Tokio. Daarom past LEGOLAND op twee manieren in de reis: als eigen halte met een nacht in Nagoya, of als dagtrip vanuit Osaka. Voor die dagtrip vanuit Umeda in Osaka reken je met Shinkansen en Aonami Line op een uur en drie kwartier per richting.
+Nagoya ligt aan de Shinkansen-lijn en is met de Nozomi dichter bij Osaka dan bij Tokio. Zo past LEGOLAND in de reis als eigen halte met een nacht in Nagoya, of als dagtrip vanuit Osaka. Voor die dagtrip vanuit Umeda in Osaka reken je met Shinkansen en Aonami Line op een uur en drie kwartier per richting.
 
 ### Universal Studios Japan
 
-Universal Studios Japan, kortweg USJ, ligt in het westen van Osaka. Vanaf station Universal City aan de JR Yumesaki Line loop je in een paar minuten door de Universal CityWalk naar de ingang. Uit Umeda ben je er in ongeveer 25 minuten, uit Kyoto in ruim een uur. Slapen in Kyoto betekent dus elke ochtend een uur trein ruilen voor de avonden in Kyoto, en die ruil zou ik maken.
+Universal Studios Japan, kortweg USJ, ligt in het westen van Osaka. Vanaf station Universal City aan de JR Yumesaki Line loop je in een paar minuten door de Universal CityWalk naar de ingang. Uit Umeda ben je er in ongeveer 25 minuten, uit Kyoto in ruim een uur. Ik zou toch in Kyoto slapen, omdat de avonden daar me een uur trein per ochtend waard zijn.
 
 ![De crèmekleurige toegangsboog van Universal Studios Japan met een Mario-banner, rechts een achtbaanspoor. | Hier ging in maart 2021 de eerste Super Nintendo World open.](/media/universal-studios-japan/entrance-gate.jpg)
 
-Voor Super Nintendo World heb je op drukke dagen bovendien een ticket met tijdvak nodig, het Area Timed Entry Ticket. Bij sommige Express Passes zit het er bij aankoop al bij, anders haal je het op de dag zelf in de app van het park, zolang de voorraad strekt. Op rustige dagen kom je er ook zonder in. Dat tijdvak hoort net zo in je planning als het parkticket, want Mario Kart en Mine Cart Madness staan in dat gebied.
+Voor Super Nintendo World heb je op drukke dagen bovendien een ticket met tijdvak nodig, het Area Timed Entry Ticket. Bij sommige Express Passes zit het er bij aankoop al bij, anders haal je het op de dag zelf in de app van het park, zolang de voorraad strekt. Op rustige dagen kom je er ook zonder in. Mario Kart en Mine Cart Madness staan allebei in Super Nintendo World, dus op drukke dagen rijd je ze alleen met dit ticket.
 
 ## Hoeveel dagen elk park nodig heeft
 
 Een ticket van Tokyo Disney geldt voor één park op één dag. Voor Tokyo Disneyland en Tokyo DisneySea plan ik daarom elk een hele dag, en komt er een derde Disney-dag bij, dan gaat die naar DisneySea, waar de wachtrijen in onze metingen langer zijn dan ernaast.
 
-USJ zou ik twee dagen geven als de reis dat toelaat. Van de vijf parken levert een vroege start daar volgens onze rope-drop-cijfers het meeste op, en USJ verkoopt met de 2 Day en de 1.5 Day Studio Pass twee tickets precies voor dit geval. In de reisplanner krijgt USJ daarom als eerste park een tweede dag, voor DisneySea en Disneyland.
+USJ zou ik twee dagen geven als de reis dat toelaat. Van de vijf parken levert een vroege start daar volgens onze rope-drop-cijfers het meeste op, en USJ verkoopt met de 2 Day en de 1.5 Day Studio Pass twee tickets precies voor dit geval. Heb je één dag over, dan krijgt USJ die, de volgende gaat naar DisneySea, en in die volgorde verdeelt ook de reisplanner de dagen.
 
 Voor Fuji-Q is één dag genoeg. LEGOLAND Japan is met kleine kinderen een hele dag en voor alle anderen eerder een halve, en in de winter sluit het park van maandag tot en met vrijdag om 17.00 uur. Bij tien dagen met alle vijf parken blijven er zo ruim vier dagen over voor aankomst, vertrek, verhuizen, Kyoto en Tokio zelf.
 
 ## De volgorde van de steden
 
-Van oost naar west liggen de steden in deze volgorde: Tokio, Fujikawaguchiko, Nagoya, Osaka. Een reis die heen en weer springt, verliest uren in de trein, dus volgen de haltes in de [reisplanner](/japan#planner) altijd die lijn, de ene of de andere kant op.
+Van oost naar west liggen de steden in deze volgorde: Tokio, Fujikawaguchiko, Nagoya, Osaka. Spring je tussen de steden heen en weer, dan zit je uren langer in de trein, en dus liggen de haltes in de [reisplanner](/japan#planner) altijd op die lijn, naar het westen of naar het oosten.
 
 Welke kant, dat bepalen je vluchten. Tokio heeft twee grote luchthavens, en volgens Tokyo Disney Resort ben je vanaf Haneda in ongeveer 50 minuten in Maihama, met twee keer overstappen, en vanaf Narita in ongeveer 80 minuten met één keer overstappen. Aan de andere kant van de lijn liggen de luchthavens Kansai en Itami bij Osaka. Land je op Haneda of Narita en vlieg je vanaf Kansai terug, dan gaat de reis naar het westen, land je in Osaka, dan naar het oosten. Vlieg je ook vanaf Tokio terug, dan reis je op de vertrekdag terug uit Osaka, en op die dag is er geen park.
 
-De reisplanner verdeelt de nachten zo dat elk park op een dag met een lage piekwachttijd valt. Heb je in een stad al een hotel geboekt, dan leg je daar de nachten vast en verdeelt de rest zich daaromheen. Elke hotelwissel kost in het plan iets, zodat de reisplanner je niet laat verhuizen voor een paar minuten kortere wachtrijen. Daarom blijft Fuji-Q Highland meestal een dagtrip vanuit Tokio. Een nacht aan het Kawaguchiko-meer komt in het plan als die zich terugbetaalt in kortere wachttijden, of als je de plaats zelf kiest.
+De reisplanner verdeelt de nachten zo dat elk park op een dag met een lage piekwachttijd valt. Heb je in een stad al een hotel geboekt, dan leg je daar de nachten vast en verdeelt de planner de andere eromheen. Een verhuizing stelt hij alleen voor als die je meer dan een paar minuten wachten bespaart. Bij Fuji-Q Highland is dat zelden zo, dus blijft het park meestal een dagtrip vanuit Tokio. Een nacht aan het Kawaguchiko-meer komt in het plan als die zich terugbetaalt in kortere wachttijden, of als je de plaats zelf kiest.
 
-Een verhuisdag gaat op een van drie manieren:
+Een verhuisdag kun je zo indelen:
 
-- 's Ochtends verhuizen, 's middags naar het park. De trein vertrekt om 7.30 uur, en van het park op je bestemming tellen alleen de uren die dan nog over zijn. Een Nozomi van 7.30 uur uit Tokio is rond 10.30 uur in Universal City.
+- 's Ochtends verhuizen, 's middags naar het park. Vertrek je om 7.30 uur uit je hotel in Tokio, dan ben je met de tussenstop bij het nieuwe hotel rond half twaalf in USJ en heb je de rest van de dag voor het park.
 - 's Avonds verhuizen, na het park. De dag hoort bij het park van de oude stad, de rit begint na sluitingstijd, en je moet om 23.00 uur aankomen.
 - Een pure reisdag. Van Fujikawaguchiko naar Nagoya neem je de bus naar Mishima en daarna de Kodama, deur tot deur zo'n drie uur en drie kwartier. Daar past geen park naast.
 
-Verhuis je 's ochtends naar Maihama, dan geldt Happy Entry die dag nog niet.
-
 ## Koffers en hotelwissels
 
-De reisplanner gaat ervan uit dat je je koffers met een bagagedienst, in het Japans takkyubin, vooruitstuurt naar het volgende hotel en met een rugzak in de trein stapt. Op de Tokaido-lijn heeft een stuk bagage van 161 tot 250 centimeter in totaal, lengte, breedte en hoogte bij elkaar opgeteld, een stoel met ruimte voor grote bagage nodig, die je samen met je kaartje reserveert. Zonder reservering vraagt JR Central een toeslag, en wat groter is dan 250 centimeter, mag helemaal niet mee.
+Je koffers stuur je met een bagagedienst, in het Japans takkyubin, vooruit naar het volgende hotel, en je stapt alleen met een rugzak in de trein. Daar gaat ook de reisplanner van uit. Op de Tokaido-lijn heeft een stuk bagage van 161 tot 250 centimeter in totaal, lengte, breedte en hoogte bij elkaar opgeteld, een stoel met ruimte voor grote bagage nodig, die je samen met je kaartje reserveert. Zonder reservering vraagt JR Central een toeslag, en wat groter is dan 250 centimeter, mag helemaal niet mee.
 
-De bekendste dienst is TA-Q-BIN van Yamato Transport. Reserveren hoeft niet. Je geeft de koffer af bij de receptie van je hotel, aan een balie op het vliegveld of station of in een filiaal, en neemt je hotel geen bagage aan, dan breng je hem naar het dichtstbijzijnde filiaal. Bij het hotel op je bestemming vraag je vooraf of het bagage voor je aanneemt. Bezorgd wordt op zijn vroegst de volgende dag, voor koffers die rond 18.00 uur zijn afgegeven. De prijs hangt af van formaat en afstand, en ophalen doe je met je paspoort of het bonnetje. Bij een verhuizing in de ochtend betekent dat: de koffer gaat de avond ervoor weg, en voor de laatste nacht pak je een tasje in, alsof je bij vrienden logeert.
+De bekendste dienst is TA-Q-BIN van Yamato Transport. Reserveren hoeft niet. Je geeft de koffer af bij de receptie van je hotel, aan een balie op het vliegveld of station of in een filiaal, en neemt je hotel geen bagage aan, dan breng je hem naar het dichtstbijzijnde filiaal. Bij het hotel op je bestemming vraag je vooraf of het bagage voor je aanneemt. Bezorgd wordt op zijn vroegst de volgende dag, voor koffers die rond 18.00 uur zijn afgegeven. Ophalen doe je met je paspoort of het bonnetje. Bij een verhuizing in de ochtend betekent dat: de koffer gaat de avond ervoor weg, en voor de laatste nacht pak je een tasje in, alsof je bij vrienden logeert.
 
-Zonder koffer check je 's ochtends uit en loop je naar de trein. Met koffer komt de omweg naar het volgende hotel erbij, voordat je naar het park gaat. De reisplanner plant voor elke hotelwissel 30 minuten in en gaat daarbij uit van vooruitgestuurde bagage. Sjouw je je koffers zelf, dan zou ik 60 minuten instellen, met kleine kinderen 90 of 120. Die waarde kies je in de opties, en ze geldt voor elke verhuizing van de reis.
+Is je koffer vooruitgestuurd, dan loop je na het uitchecken meteen naar de trein, anders breng je hem eerst naar het hotel op je bestemming en ga je daarna naar het park. Voor elke hotelwissel plant de reisplanner 30 minuten in. Sjouw je je koffers zelf, dan zou ik 60 minuten instellen, met kleine kinderen 90 of 120. Die waarde kies je in de opties, en ze geldt voor elke verhuizing van de reis.
 
 ## Onderweg tussen de steden
 
-Tussen Tokio, Nagoya en Osaka neem je de Tokaido-Shinkansen. Volgens de dienstregeling doet de Nozomi 96 tot 99 minuten over Tokio–Nagoya en 48 tot 51 minuten over het stuk naar Shin-Osaka. De reisplanner werkt met tijden van deur tot deur, inclusief de weg naar het station en het wachten op de trein: tweeënhalf uur van Tokio naar Nagoya, anderhalf uur van Nagoya naar Osaka en drieënhalf uur van Tokio naar Osaka.
+Tussen Tokio, Nagoya en Osaka neem je de Tokaido-Shinkansen. Volgens de dienstregeling doet de Nozomi 96 tot 99 minuten over Tokio–Nagoya en 48 tot 51 minuten over het stuk naar Shin-Osaka. Van deur tot deur, met de weg naar het station en het wachten op de trein, is het tweeënhalf uur van Tokio naar Nagoya, anderhalf uur van Nagoya naar Osaka en drieënhalf uur van Tokio naar Osaka, en met die tijden werkt ook de reisplanner.
 
 Behalve met de bus kom je bij Fuji-Q met de Fuji Excursion, een sneltrein die om 7.30 uur uit Shinjuku vertrekt en om 9.26 uur stopt op station Fujikyu-Highland. De ingang van het park is direct achter de poortjes. De laatste Fuji Excursion terug vertrekt daar om 17.44 uur, dus wie tot sluitingstijd blijft, neemt de bus van 20.23 uur.
 
@@ -123,13 +121,13 @@ Vanaf Fuji-Q verder naar het westen hoef je niet terug via Tokio. Bussen rijden 
 
 Tijdens de Golden Week, Obon, de Silver Week en rond de jaarwisseling zijn alle stoelen in de Nozomi gereserveerd, in 2026–27 van 25 december tot 5 januari. In de winter van 2026–27 komen de lange weekenden van 9 tot 11 januari en van 20 tot 22 maart erbij. Zonder reservering sta je dan in het gangpad of op het balkon tussen de rijtuigen. Hikari en Kodama houden ook op die dagen rijtuigen zonder reservering.
 
-De Japan Rail Pass dekt op deze reis minder dan zijn naam belooft. In de Nozomi kom je er alleen mee met een extra kaartje, het NOZOMI MIZUHO Ticket, en de bussen naar Fuji-Q horen er niet bij. In oktober 2023 heeft de JR Group de prijzen van de pas verhoogd, en voor passen van reisbureaus in het buitenland geldt sinds 1 oktober 2026 nog een verhoging. Online bij JR zelf blijft de prijs voorlopig gelijk. Voor een reis die één keer van Tokio naar Osaka gaat en Fuji-Q met de bus bereikt, zou ik losse kaartjes met de pas vergelijken voordat ik hem koop.
+Met de Japan Rail Pass kom je alleen met een extra kaartje in de Nozomi, het NOZOMI MIZUHO Ticket, en de bussen naar Fuji-Q betaal je apart. Na een verhoging in oktober 2023 kost de pas sinds 1 oktober 2026 bij reisbureaus in het buitenland nog meer, online bij JR blijft de prijs voorlopig gelijk. Ga je één keer van Tokio naar Osaka en met de bus naar Fuji-Q, dan loont de pas zelden, en ik zou voor de aankoop de losse kaartjes ernaast leggen.
 
 ## Tickets
 
 ### Tokyo Disney Resort
 
-Tokyo Disney Resort verkoopt geen meerdaagse tickets. Elke dag is een 1-Day Passport voor één park, en park en datum kies je bij aankoop. Voor later binnenkomen is er de After 3 Passport, vanaf 15.00 uur in het weekend en op feestdagen, en de After 5 Passport, vanaf 17.00 uur van maandag tot en met vrijdag behalve op feestdagen. Ook daarmee kom je niet in het tweede park.
+Tokyo Disney Resort verkoopt geen meerdaagse tickets. Park en datum kies je bij de aankoop van de 1-Day Passport. Voor later binnenkomen is er de After 3 Passport, vanaf 15.00 uur in het weekend en op feestdagen, en de After 5 Passport, vanaf 17.00 uur van maandag tot en met vrijdag behalve op feestdagen. Ook daarmee kom je niet in het tweede park. Voor scholieren en studenten verkoopt het resort in 2027 de Campus Day Passport, geldig voor bezoeken van 4 januari tot en met 19 maart.
 
 Elke datum gaat twee maanden vooraf om 14.00 uur Japanse tijd in de verkoop, en populaire dagen raken uitverkocht. De kassa's bij de ingang zijn dicht, verkocht wordt online en in de app. Wil je 's middags even naar je hotel, zeg het dan bij de uitgang tegen een medewerker, dan kom je later met hetzelfde ticket weer binnen.
 
@@ -143,31 +141,31 @@ Fuji-Q verkoopt de One Day Pass voor alle attracties behalve die met een tijdtic
 
 ### LEGOLAND Japan
 
-LEGOLAND Japan verkoopt de 1DAY Passport, desgewenst samen met SEA LIFE Nagoya, en dan voor allebei op dezelfde dag. Online voor de bezoekdag is hij goedkoper dan aan de kassa, waar per ticket een toeslag bij komt. Wie in het LEGOLAND Japan Hotel slaapt, krijgt de Combo 2 Day Pass voor de aankomstdag en de dag erna, en mag het park tussendoor verlaten en weer in.
+LEGOLAND Japan verkoopt de 1DAY Passport, desgewenst samen met SEA LIFE Nagoya, en dan voor allebei op dezelfde dag. Online voor de bezoekdag is hij goedkoper dan aan de kassa, waar per ticket een toeslag bij komt. Wie in het LEGOLAND Japan Hotel slaapt, een paar minuten lopen van de ingang, krijgt de Combo 2 Day Pass voor de aankomstdag en de dag erna, en mag het park tussendoor verlaten en weer in.
 
 Bij alle vier hangt de prijs af van de datum. Heb je al tickets, vul ze dan in de reisplanner in, dan komen de parken op hun dagen.
 
 ## Betalen voor voorrang
 
-In Tokyo Disneyland en DisneySea heet de betaalde voorrang Disney Premier Access. Je koopt hem pas na binnenkomst in de app, voor één attractie en één tijdstip, en de volgende mag je 60 minuten na aankoop boeken of zodra het geboekte tijdstip is bereikt. Op drukke dagen is het aanbod op.
+In Tokyo Disneyland en DisneySea heet de betaalde voorrang Disney Premier Access. Je koopt hem pas na binnenkomst in de app, voor één attractie en één tijdstip, en de volgende mag je 60 minuten na aankoop boeken of zodra het geboekte tijdstip is bereikt. Op drukke dagen koop je hem het best meteen na binnenkomst, voordat het aanbod op is.
 
-USJ verkoopt de Universal Express Pass voor een datum, als pakket met een vaste selectie attracties, sommige op een vast tijdstip. Slechts een deel van de pakketten bevat het tijdvak voor Super Nintendo World, en op drukke dagen zijn de pakketten vroeg weg.
+USJ verkoopt de Universal Express Pass voor een datum, als pakket met een vaste selectie attracties, sommige op een vast tijdstip. Slechts een deel van de pakketten bevat het tijdvak voor Super Nintendo World, en voor een drukke dag koop je zo'n pakket zodra je datum vaststaat.
 
-Bij Fuji-Q heb je twee mogelijkheden. De Fuji-Q Premium Pass is een One Day Pass met eerdere toegang en een polsbandje waarmee je bij twaalf thrill-attracties tot een uur voor sluiting zo vaak als je wilt door de voorrangsingang gaat. Daarbij hoort ook telkens een tijdticket voor Senritsu Meikyu, de FUJIYAMA Walk en de FUJIYAMA Slider. Los verkoopt het park voorrangskaarten voor één attractie op een vast tijdstip, online vanaf 18.00 uur drie dagen van tevoren.
+De Fuji-Q Premium Pass is een One Day Pass met eerdere toegang en een polsbandje waarmee je bij twaalf thrill-attracties tot een uur voor sluiting zo vaak als je wilt door de voorrangsingang gaat. Daarbij hoort ook telkens een tijdticket voor Senritsu Meikyu, de FUJIYAMA Walk en de FUJIYAMA Slider. Los verkoopt het park voorrangskaarten voor één attractie op een vast tijdstip, online vanaf 18.00 uur drie dagen van tevoren.
 
 LEGOLAND Japan verkoopt de Skip Pass, als driepak voor drie ritten dat een groep kan delen, of als polsbandje UNLIMITED voor een hele dag. Beide gelden bij zo'n 25 attracties, alleen bovenop een toegangsticket en in beperkte aantallen per dag.
 
 ## Eerder naar binnen met hotel of ticket
 
-Gasten van de Disney-hotels komen met Happy Entry 15 minuten voor alle anderen Tokyo Disneyland in, via een eigen ingang. In Tokyo DisneySea komen alleen gasten van Hotel MiraCosta en het Fantasy Springs Hotel eerder binnen, en zolang er bij de ingang gebouwd wordt, is dat 5 tot 15 minuten. Happy Entry geldt vanaf de ochtend na het inchecken, en sommige hotels hebben geblokkeerde dagen, de volgende in Tokyo Disneyland is 12 januari 2027. De geblokkeerde dagen publiceert het resort op zijn pagina over Happy Entry.
+Gasten van de Disney-hotels komen met Happy Entry 15 minuten voor alle anderen Tokyo Disneyland in, via een eigen ingang. In Tokyo DisneySea komen alleen gasten van Hotel MiraCosta en het Fantasy Springs Hotel eerder binnen, en zolang er bij de ingang gebouwd wordt, is dat 5 tot 15 minuten. Happy Entry geldt vanaf de ochtend na het inchecken. Sommige hotels hebben geblokkeerde dagen, die het resort op zijn pagina over Happy Entry vermeldt, en de volgende in Tokyo Disneyland is 12 januari 2027.
 
 ![Een rij gebouwen in Italiaanse stijl, oker en roze, langs een havenbekken met boten aan de kade. | Hotel MiraCosta is in deze havenfront gebouwd, en sommige kamers kijken zo het park in.](/media/tokyo-disneysea/mediterranean-harbor.jpg)
 
 De zes Official Hotels bij station Bayside en de vier Partner Hotels in Shin-Urayasu hebben shuttles naar de parken, maar geen Happy Entry. De zeven partnerhotels van USJ liggen een paar minuten lopen van de ingang, en hun gasten kunnen in het hotel Studio Passes kopen voor de dag van het inchecken en de dag erna.
 
-Naast Fuji-Q staat het Highland Resort Hotel & Spa, met een eigen doorgang naar het park op de kelderverdieping. Volgens het hotel komen de gasten eerder binnen, van maandag tot en met vrijdag 15 minuten voor de opening en op zaterdag, zondag en feestdagen 30 minuten, ook op de dag van vertrek. Rijden kun je in die tijd alleen met een One Day Pass of ritkaarten. In de reisplanner tellen elke dag de 15 minuten.
+Naast Fuji-Q staat het Highland Resort Hotel & Spa, met een eigen doorgang naar het park op de kelderverdieping. Volgens het hotel komen de gasten eerder binnen, van maandag tot en met vrijdag 15 minuten voor de opening en op zaterdag, zondag en feestdagen 30 minuten, ook op de dag van vertrek. Rijden kun je in die tijd alleen met een One Day Pass of ritkaarten. In de reisplanner staan ook in het weekend en op feestdagen maar 15 minuten, het extra kwartier op die dagen krijg je er dus bovenop.
 
-Zonder hotel verkoopt Fuji-Q de eerdere toegang zelf, als One Day Pass met Priority Admission, in november 2026 een halfuur voor de opening. In dat halfuur rijden alleen de grote achtbanen, en van december 2026 tot 5 februari 2027 wordt de pas niet verkocht. Het LEGOLAND Japan Hotel ligt een paar minuten lopen van de ingang.
+Zonder hotel verkoopt Fuji-Q de eerdere toegang zelf, als One Day Pass met Priority Admission, in november 2026 een halfuur voor de opening. In dat halfuur rijden alleen de grote achtbanen, en van december 2026 tot 5 februari 2027 wordt de pas niet verkocht.
 
 ## Wanneer het druk wordt
 
@@ -189,9 +187,9 @@ Het getal in de drukte-kalender is de piekwachttijd, het gemiddelde van de grote
 
 ```
 
-In Tokyo Disneyland en DisneySea waren februari en maart de drukste maanden. Voor 2027 verkoopt Tokyo Disney Resort in die weken de Campus Day Passport, een ticket voor scholieren en studenten, geldig voor bezoeken van 4 januari tot en met 19 maart. De Golden Week van 2026 was in beide parken minder druk dan half februari en half maart. Het rustigst was het in beide in september, in Tokyo Disneyland ook in juni, juli en oktober.
+In Tokyo Disneyland en DisneySea waren februari en maart de drukste maanden. De Golden Week van 2026 was in beide parken minder druk dan half februari en half maart. Het rustigst was het in beide in september, midden in het tyfoonseizoen, en in Tokyo Disneyland ook in juni, juli en oktober.
 
-Universal Studios Japan had een ander jaar. Het drukst was het daar in maart, in oktober en begin november, de laatste weken van Halloween Horror Nights, dat in 2026 op 8 november eindigde. Juli was de rustigste maand. Fuji-Q Highland meten we pas sinds eind april 2026. Druk was het daar in mei met de Golden Week, in augustus en in september, rustig in juni.
+In Universal Studios Japan was het het drukst in maart, in oktober en begin november, de laatste weken van Halloween Horror Nights, dat in 2026 op 8 november eindigde. Juli was de rustigste maand. Fuji-Q Highland meten we pas sinds eind april 2026. Druk was het daar in mei met de Golden Week, in augustus en in september, rustig in juni.
 
 ### De rustigste dagen van de komende weken
 
@@ -221,17 +219,17 @@ Universal Cool Japan 2027 begint op 2 december 2026 met Sailor Moon, tot en met 
 
 ### Fuji-Q Highland en LEGOLAND Japan
 
-In de oudejaarsnacht van 2026 is Fuji-Q volgens zijn kalender tot 1.00 uur open. Van 4 december 2026 tot en met 31 januari 2027 loopt een samenwerking voor de 30e verjaardag van de gamereeks Persona. Het reuzenrad staat van 9 november tot en met 31 januari stil voor een renovatie. Tentekomai blijft volgens het park tot eind juli 2027 dicht voor de bouw van een nieuwe grote attractie, en voor de zomer van 2027 heeft Fuji-Q naast Eejanaika een splash-achtbaan aangekondigd: 44 meter hoog, met drie lanceringen, vooruit en achteruit.
+In de oudejaarsnacht van 2026 is Fuji-Q volgens zijn kalender tot 1.00 uur open. Van 4 december 2026 tot en met 31 januari 2027 viert Fuji-Q 30 jaar van de gamereeks Persona. In FUJIYAMA, Takabisha, Eejanaika en Tondemina hoor je dan speciaal opgenomen stemmen van Morgana en Teddie, in het park klinkt muziek uit de reeks, en een deel van de bussen uit Shinjuku en de treinen van Fujikyu rijdt in Persona-bestickering. Het reuzenrad staat van 9 november tot en met 31 januari stil voor een renovatie. Tentekomai blijft volgens het park tot eind juli 2027 dicht voor de bouw van een nieuwe grote attractie, en voor de zomer van 2027 heeft Fuji-Q naast Eejanaika een splash-achtbaan aangekondigd: 44 meter hoog, met drie lanceringen, vooruit en achteruit.
 
 LEGOLAND Japan wordt op 1 april 2027 tien jaar. Tot 25 december loopt daar Merry Christmas, van 31 december tot en met 12 januari Kids' Countdown & Happy New Year.
 
 ## Regentijd, tyfoons en zomerhitte
 
-De regentijd, tsuyu, begint volgens de gemiddelden van het Japanse weerinstituut JMA over 1991 tot 2020 rond 6 of 7 juni en eindigt rond 19 juli, in Tokio en Osaka bijna tegelijk. In 2026 duurde hij in de regio Tokio van 7 juni tot 20 juli en rond Osaka van 4 juni tot 8 juli. Het regent dan vaak, de parken blijven open.
+De regentijd, tsuyu, begint volgens de gemiddelden van het Japanse weerinstituut JMA over 1991 tot 2020 rond 6 of 7 juni en eindigt rond 19 juli, in Tokio en Osaka bijna tegelijk. In 2026 duurde hij in de regio Tokio van 7 juni tot 20 juli en rond Osaka van 4 juni tot 8 juli. De parken zijn in die weken gewoon open, ook als het regent.
 
-Het tyfoonseizoen loopt van juni tot november. Het vaakst komt een tyfoon in september in de buurt, in de regio Tokio gemiddeld 1,2 keer en rond Osaka 1,1 keer, in augustus en oktober minder vaak. Daarom zet de reisplanner reizen in het tyfoonseizoen iets lager, het sterkst van begin september tot half oktober.
+Het tyfoonseizoen loopt van juni tot november. Het vaakst komt een tyfoon in september in de buurt, in de regio Tokio gemiddeld 1,2 keer en rond Osaka 1,1 keer, in augustus en oktober minder vaak.
 
-In augustus ligt de gemiddelde dagmaximumtemperatuur in Tokio op 31,3 graden, in Osaka en Kyoto op 33,7 en in Nagoya op 33,2. Fuji-Q aan het Kawaguchiko-meer is met 28,1 graden het koele park van de reis, en dat is in augustus een echt argument voor een nacht daar.
+In augustus ligt de gemiddelde dagmaximumtemperatuur in Tokio op 31,3 graden, in Osaka en Kyoto op 33,7 en in Nagoya op 33,2. Aan het Kawaguchiko-meer bij Fuji-Q is het 28,1 graden, en in augustus zou ik alleen al daarom een nacht daar plannen.
 
 ## Veelgestelde vragen
 
