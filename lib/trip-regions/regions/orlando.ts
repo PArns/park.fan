@@ -127,10 +127,10 @@ export const ORLANDO: TripRegionConfig = {
       earlySlots: ['early_entry', 'early_park_admission'],
     },
     howItWorks: [
-      'reiseplaner/orlando-reisedaten-insgesamt',
-      'reiseplaner/tickets-vorschlag',
-      'reiseplaner/wochenansicht',
-      'reiseplaner/tickets-uk',
+      'reiseplaner/orlando-assistent-1',
+      'reiseplaner/orlando-assistent-2',
+      'reiseplaner/orlando-assistent-3',
+      'reiseplaner/orlando-assistent-4',
     ],
     resorts: [
       { group: 'walt-disney-world', photo: 'disney-animal-kingdom/kunst-des-wartens-cover' },

@@ -25,8 +25,7 @@ import { tripRegionPath } from '../lib/trip-regions/paths.ts';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public/media/reiseplaner');
-const arg = (name) =>
-  process.argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
+const arg = (name) => process.argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 const BASE = (arg('base') ?? 'http://localhost:3000').replace(/\/$/, '');
 const LOCALES = arg('locale')?.split(',') ?? ['de', 'en', 'nl', 'fr', 'es', 'it'];
 const SHOTS = (arg('shot') ?? '1,2,3,4').split(',').map(Number);

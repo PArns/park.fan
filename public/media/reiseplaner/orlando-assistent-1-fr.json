@@ -1,0 +1,16 @@
+{
+  "title": "Reiseplaner-Assistent, Orlando, Schritt 1 (fr)",
+  "tags": ["diagram"],
+  "alt": {
+    "fr": "L’assistant demande « Quand es-tu à Orlando ? » au-dessus du sélecteur Global, Disney et Universal, d’une rangée de mois et de mars 2027, où le séjour du 1er au 10 mars est marqué."
+  },
+  "caption": {
+    "fr": "Sous chaque date, le parc où l’attente de pointe sera la plus courte ce jour-là. Un mois de la rangée y mène directement."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": "top",
+  "shotAt": "2026-11-14"
+}

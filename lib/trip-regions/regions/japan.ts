@@ -76,10 +76,10 @@ export const JAPAN: TripRegionConfig = {
     // Three questions a trip across cities raises, answered in the region's words.
     faq: { weekendPark: 'tokyo-disneysea', questions: ['cities', 'luggage', 'happyEntry'] },
     howItWorks: [
-      'reiseplaner/orlando-reisedaten-insgesamt',
-      'reiseplaner/tickets-vorschlag',
-      'reiseplaner/japan-monatsansicht',
-      'reiseplaner/wochenansicht',
+      'reiseplaner/japan-assistent-1',
+      'reiseplaner/japan-assistent-2',
+      'reiseplaner/japan-assistent-3',
+      'reiseplaner/japan-assistent-4',
     ],
     resorts: [
       { group: 'tokyo-disney-resort', photo: 'tokyo-disneysea/mermaid-lagoon' },
