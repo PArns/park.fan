@@ -186,7 +186,8 @@ function WindowCard({
           {regionOrShared(tRegion, t, `reason.${reason}`)}
         </span>
       )}
-      <ClimateChips codes={climateChips(window.warnings)} />
+      {/* The peak's sentence names the season, so its chip would say it twice. */}
+      <ClimateChips codes={climateChips(window.warnings).filter((code) => code !== peak)} />
       {peak && (
         <span className="text-muted-foreground text-xs" data-plan-window-storm-peak="">
           {t('stormPeak', { season: sentenceCase(tClimate(peak)) })}
@@ -197,12 +198,13 @@ function WindowCard({
           {t('rankedLower', { reasons: lower.map((c) => tClimate(c)).join(', ') })}
         </span>
       )}
-      <div className="mt-auto grid grid-cols-2 gap-2 pt-2">
-        <Button variant="outline" size="sm" onClick={onDetails}>
+      {/* German's plan label outgrows half a card; a row of its own beats text past the edge. */}
+      <div className="mt-auto flex flex-wrap gap-2 pt-2">
+        <Button variant="outline" size="sm" className="flex-auto" onClick={onDetails}>
           <Info aria-hidden="true" />
           {t('details')}
         </Button>
-        <Button size="sm" onClick={onPlan}>
+        <Button size="sm" className="flex-auto" onClick={onPlan}>
           <CalendarCheck aria-hidden="true" />
           {t('plan')}
         </Button>
