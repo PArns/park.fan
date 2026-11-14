@@ -4023,6 +4023,253 @@
         "lead": "Dieciséis parques alrededor de Orlando en un solo calendario: para cada día ves dónde son más cortas las colas en Disney World y Universal, y el planificador pone tus parques en tus fechas.",
         "link": "Calendario de afluencia de Orlando"
       }
+    },
+    "paris": {
+      "nav": {
+        "name": "París",
+        "area": "Francia",
+        "calendar": "Calendario de afluencia de Disneyland Paris y Parc Astérix",
+        "calendarHint": "Qué parque de los tres qué día, y dónde dormir para cada uno."
+      },
+      "hub": {
+        "title": "Calendario de afluencia de Disneyland Paris y Parc Astérix",
+        "monthTitle": "Disneyland Paris y Parc Astérix en {month}: calendario de afluencia",
+        "monthQuestion": "¿Qué parque qué día en {month}?",
+        "metaTitle": "Disneyland Paris y Parc Astérix: afluencia y planificador",
+        "metaTitleMonth": "Afluencia en Disneyland Paris y Parc Astérix, {month}",
+        "metaTitleMonthShort": "Afluencia en Disneyland Paris, {month}",
+        "metaDescription": "Disneyland Paris y Parc Astérix día a día, con planificador de viaje. Lo más tranquilo en los próximos 30 días: {verdict}.",
+        "metaDescriptionPlain": "Espera máxima y afluencia en el Parque Disneyland, Disney Adventure World y Parc Astérix, día a día, con un planificador para los días de parque y los hoteles.",
+        "metaDescriptionMonth": "Los días más tranquilos de {month} en Disneyland Paris y Parc Astérix: {verdict}. Los tres parques día a día.",
+        "metaDescriptionMonthPlain": "Disneyland Paris y Parc Astérix en {month}, día a día: espera máxima, afluencia y horarios de los tres parques.",
+        "lead": "Un calendario para Disneyland Paris y Parc Astérix, dos resorts con sus propios hoteles, y un planificador que te dice dónde dormir.",
+        "leadMonth": "Disneyland Paris y Parc Astérix en {month}, día a día, y un planificador que te dice dónde dormir.",
+        "monthIndexLabel": "Calendario de afluencia por meses",
+        "glance": {
+          "zone": "hora de París"
+        },
+        "calendar": {
+          "caption": "Disneyland Paris y Parc Astérix del {from} al {to}: espera máxima en las grandes atracciones, en minutos"
+        },
+        "lanes": {
+          "break": "Vacaciones escolares de París (zona C): {name}, {dates}",
+          "unnamedBreak": "Vacaciones escolares de París (zona C)",
+          "none": "En estos días no hay eventos ni vacaciones escolares en París."
+        },
+        "sheet": {
+          "kicker": "París · un día",
+          "early": {
+            "extra_magic_time": "Extra Magic Time desde las {time} para los huéspedes de los hoteles Disney",
+            "early_entry": "Early Entry en algunas atracciones desde las {time} para los huéspedes de los hoteles del parque"
+          },
+          "travelTransfer": "Desde {area}: unos {minutes} min en coche hasta el aparcamiento y unos {transfer} min a pie hasta la entrada, {total} min en total, sin tráfico"
+        },
+        "when": {
+          "kicker": "Viajes con los tres parques",
+          "title": "Mejor época para ir a Disneyland Paris y Parc Astérix en {year}",
+          "titleNoYear": "Mejor época para ir a Disneyland Paris y Parc Astérix",
+          "pageLink": "Mejor época para ir a Disneyland Paris y Parc Astérix en {year}",
+          "pageLinkNoYear": "Mejor época para ir a Disneyland Paris y Parc Astérix"
+        },
+        "reasons": {
+          "school_break": "vacaciones escolares de París"
+        },
+        "faq": {
+          "title": "Preguntas sobre la afluencia",
+          "quietest": {
+            "q": "¿Cuándo hay menos gente en Disneyland Paris y Parc Astérix en las próximas semanas?",
+            "qMonth": "¿Cuándo hay menos gente en Disneyland Paris y Parc Astérix en {month}?",
+            "resort": "{resort}: menos gente {days}, más gente {busy}.",
+            "day": "{date} ({park}, unos {minutes} min)"
+          },
+          "epic": {
+            "q": "¿Hay más gente en el Parque Disneyland el fin de semana?",
+            "a": "{verdict, select, busier {Sí.} same {No.} other {Solo un poco.}} En este periodo, su espera máxima es de unos {weekend} min los sábados y domingos y de unos {weekday} min de lunes a viernes."
+          },
+          "distance": {
+            "q": "¿A qué distancia está Parc Astérix de Disneyland Paris?",
+            "a": "En coche son unos {far} minutos sin tráfico desde el aparcamiento de Disney hasta Parc Astérix, más {transfer} minutos a pie entre el aparcamiento y las entradas de Disney, {total} en total. Sin coche, toma el TGV de Marne-la-Vallée–Chessy al aeropuerto Charles de Gaulle y allí, en Roissypôle, el autobús lanzadera de Parc Astérix. Las entradas del Parque Disneyland y de Disney Adventure World están a {near} minutos a pie una de otra. Datos del mapa: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Planificador para Disneyland Paris y Parc Astérix"
+        },
+        "dataset": {
+          "name": "Calendario de afluencia de Disneyland Paris y Parc Astérix, {period}",
+          "description": "Por parque y día en el Parque Disneyland, Disney Adventure World y Parc Astérix: la espera máxima prevista en las grandes atracciones, la afluencia frente a un día normal en ese parque y los horarios, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Mejor época para ir a Disneyland Paris y Parc Astérix en {year}",
+          "disneyland-paris": "Mejor época para ir a Disneyland Paris en {year}"
+        },
+        "name": {
+          "region": "Mejor época para ir a Disneyland Paris y Parc Astérix",
+          "disneyland-paris": "Mejor época para ir a Disneyland Paris"
+        },
+        "resort": {
+          "region": "Disneyland Paris y Parc Astérix",
+          "disneyland-paris": "Disneyland Paris"
+        },
+        "intro": {
+          "lead": "Los minutos son la espera máxima, la espera más larga del día en cada gran atracción, en media sobre los parques del viaje.",
+          "body": "Planificamos cada viaje como el planificador: cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. Hasta el {date} usamos nuestra previsión, y para las semanas siguientes la afluencia que medimos el año pasado, con la etiqueta «año pasado».",
+          "bodyForecast": "Planificamos cada viaje como el planificador: cada parque en su mejor día, y un día en que los visitantes de día tienen que salir antes cuenta como un día peor. Todas las cifras son nuestra previsión."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Vacaciones escolares de París (zona C)"
+          }
+        },
+        "weeks": {
+          "noBreak": "Sin vacaciones escolares en París."
+        },
+        "faq": {
+          "title": "Preguntas sobre cuándo ir",
+          "quietQ": {
+            "region": "¿Cuándo hay menos gente en Disneyland Paris y Parc Astérix en {year}?",
+            "disneyland-paris": "¿Cuándo hay menos gente en Disneyland Paris en {year}?"
+          },
+          "quietA": "El viaje de {days} días más tranquilo empieza el {date}: una espera máxima de unos {minutes} min, un {percent} % por debajo de la media de {year}. Le siguen {others}.",
+          "christmasQ": "¿Hay mucha gente en Navidad?",
+          "christmasA": "{busy, select, yes {Sí.} other {No.}} En la semana de Navidad ({date}) la espera máxima ronda los {minutes} min, frente a {average} min de media en {year}.",
+          "newYearA": "{busy, select, yes {Sí, hasta donde llegan nuestras cifras.} other {No, hasta donde llegan nuestras cifras.}} Empiezan con la semana de Año Nuevo ({date}), con una espera máxima de unos {minutes} min, frente a {average} min de media en {year}. La semana de Navidad en sí queda antes.",
+          "partyQ": "¿Cuándo son las noches con entrada aparte?",
+          "partyA": "{list}. Esas noches los visitantes de día tienen que salir antes, así que el planificador no pone en ellas un día completo de parque.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "¿Primero Disneyland Paris o primero Parc Astérix?",
+            "disneyland-paris": "¿Qué parque Disney primero?"
+          },
+          "firstA": "Cada parque va a su día más tranquilo del viaje, y de ahí sale el orden. Para el viaje que empieza el {date}, eso da {order}.",
+          "firstItem": "{park} el {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Planificar el viaje"
+        },
+        "parks": {
+          "moreHint": "No hay más parques en esta región"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Hotel Disney",
+            "parc_asterix": "Hotel de Parc Astérix",
+            "offsite": "Otro hotel"
+          },
+          "hotelHint": {
+            "disney": "Extra Magic Time, normalmente una hora antes de la apertura en los dos parques Disney; Davy Crockett Ranch incluido",
+            "parc_asterix": "Early Entry: algunas atracciones 30 minutos antes",
+            "offsite": "Hoteles asociados y París incluidos; sin entrada anticipada"
+          },
+          "hotelShort": {
+            "disney": "hotel Disney",
+            "parc_asterix": "hotel de Parc Astérix",
+            "offsite": "hotel en otro sitio"
+          },
+          "eveningsHint": "Si un parque cierra antes, la noche pasa al otro parque Disney o a Disney Village."
+        },
+        "details": {
+          "earlyOthers": {
+            "extra_magic_time": "Extra Magic Time desde las {time} para los huéspedes de los hoteles Disney",
+            "early_entry": "Early Entry en algunas atracciones desde las {time} para los huéspedes de los hoteles del parque"
+          }
+        },
+        "reason": {
+          "party_night": "Una noche con entrada aparte."
+        },
+        "ics": {
+          "calendarName": "Viaje a París {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Sin vacaciones escolares en París.",
+            "before_spring_break": "Justo antes de las vacaciones escolares de París."
+          },
+          "warning": {
+            "school_break": "Vacaciones escolares en París.",
+            "party_nights": "{count, plural, =1 {1 noche} other {# noches}} con entrada aparte: los visitantes de día tienen que salir antes."
+          }
+        },
+        "bases": {
+          "disneyland-paris": {
+            "name": "Disneyland Paris",
+            "note": "Los hoteles Disney del lago Disney están a un paseo de las entradas y tienen Extra Magic Time. Los hoteles asociados de Val d'Europe y Val de France tienen un autobús lanzadera gratuito."
+          },
+          "parc-asterix": {
+            "name": "Parc Astérix",
+            "note": "Los hoteles del parque están a un paseo de la entrada, y sus huéspedes entran en algunas atracciones 30 minutos antes."
+          },
+          "paris": {
+            "name": "París",
+            "note": "Desde Châtelet–Les Halles, el RER A va a Disneyland Paris y el RER B al autobús lanzadera de Parc Astérix en el aeropuerto."
+          }
+        },
+        "gateways": {
+          "XED": "Estación de Marne-la-Vallée–Chessy",
+          "CDG": "Aeropuerto de París-Charles de Gaulle",
+          "ORY": "Aeropuerto de París-Orly"
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-paris": "Disneyland Paris",
+            "parc-asterix": "Parc Astérix"
+          },
+          "resortShort": {
+            "disneyland-paris": "Disney",
+            "parc-asterix": "Astérix"
+          },
+          "hopperName": {
+            "disney": "acceso a los dos parques"
+          },
+          "entry": {
+            "dlp-1-day": {
+              "title": "Entrada de 1 día, 1 o 2 parques",
+              "hint": "Válida en la fecha que elegiste al comprarla."
+            },
+            "dlp-multi-day": {
+              "title": "Entrada de 2, 3 o 4 días",
+              "hint": "Días seguidos desde la fecha reservada, los dos parques cada día."
+            },
+            "dlp-liberte": {
+              "title": "Entrada de 1 día sin fecha (Liberté)",
+              "hint": "Válida un año; el día de la visita se reserva antes. No vale el 31 de octubre ni el 31 de diciembre."
+            },
+            "dlp-pass": {
+              "title": "Pase anual (Disneyland Pass)",
+              "hint": "Bronze One, Bronze Max, Silver o Gold. Cada visita necesita reserva."
+            },
+            "asterix-1-day": {
+              "title": "Entrada de 1 día con fecha",
+              "hint": "Billet Futé o Liberté Flex. Las nocturnas de Peur sur le Parc necesitan su propia entrada."
+            },
+            "asterix-2-day": {
+              "title": "Entrada de 2 días",
+              "hint": "Dos días seguidos, solo a la venta en la taquilla del parque."
+            },
+            "asterix-noel": {
+              "title": "Billet Noël",
+              "hint": "Un día a elegir durante Noël Gaulois."
+            },
+            "asterix-pass": {
+              "title": "Pase de temporada (Pass Saison)",
+              "hint": "Découverte, Gaulois o Premium. Una visita al día, salvo en los días bloqueados del pase."
+            }
+          },
+          "variant": {
+            "dlp-pass-bronze-one": "Bronze One (un parque al día)",
+            "dlp-pass": "Bronze Max, Silver o Gold"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "París",
+        "title": "Disneyland Paris y Parc Astérix: qué parque qué día",
+        "lead": "Disneyland Paris tiene dos parques, Parc Astérix uno, y cada uno tiene sus hoteles. En el calendario tienes los tres día a día con su espera máxima, y en el planificador ves dónde dormir para cada parque.",
+        "link": "Calendario de afluencia de Disneyland Paris y Parc Astérix"
+      }
     }
   },
   "news": {

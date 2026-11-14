@@ -342,11 +342,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ORLANDO` _const_: Orlando's entry in `TRIP_REGIONS`.
 
+### [`regions/paris.ts`](../../lib/trip-regions/regions/paris.ts)
+
+- `PARIS` _const_: Paris' entry in `TRIP_REGIONS`.
+
 ### [`regions/upcoming.ts`](../../lib/trip-regions/regions/upcoming.ts)
 
 - `SOUTHERN_CALIFORNIA` _const_: Southern California: Disneyland Resort, Universal Studios Hollywood, Knott's, Six Flags Magic Mountain, SeaWorld San Diego, LEGOLAND California, Sesame Place San Diego.
 - `JAPAN` _const_: Japan: Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan, Universal Studios Japan.
-- `PARIS` _const_: Paris: Disneyland Park, Disney Adventure World, Parc Astérix.
 
 ### [`registry.ts`](../../lib/trip-regions/registry.ts)
 

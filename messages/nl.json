@@ -4023,6 +4023,253 @@
         "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
         "link": "Orlando drukte-kalender"
       }
+    },
+    "paris": {
+      "nav": {
+        "name": "Parijs",
+        "area": "Frankrijk",
+        "calendar": "Drukte-kalender Disneyland Paris & Parc Astérix",
+        "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht."
+      },
+      "hub": {
+        "title": "Drukte-kalender Disneyland Paris & Parc Astérix",
+        "monthTitle": "Drukte-kalender {month}: Disneyland Paris & Parc Astérix",
+        "monthQuestion": "Welk park op welke dag in {month}?",
+        "metaTitle": "Disneyland Paris & Parc Astérix: drukte-kalender & planner",
+        "metaTitleMonth": "Drukte-kalender {month}: Disneyland Paris & Parc Astérix",
+        "metaTitleMonthShort": "Drukte-kalender Disneyland Paris {month}",
+        "metaDescription": "Disneyland Paris en Parc Astérix dag voor dag, met reisplanner. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Piekwachttijd en drukte in Disneyland Park, Disney Adventure World en Parc Astérix, dag voor dag, plus een reisplanner voor parkdagen en hotels.",
+        "metaDescriptionMonth": "De rustigste dagen in Disneyland Paris en Parc Astérix in {month}: {verdict}. Alle drie de parken dag voor dag.",
+        "metaDescriptionMonthPlain": "Disneyland Paris en Parc Astérix in {month}, dag voor dag: piekwachttijd, drukte en openingstijden van alle drie de parken.",
+        "lead": "Een kalender voor Disneyland Paris en Parc Astérix, twee resorts met eigen hotels, en een planner die je zegt waar je overnacht.",
+        "leadMonth": "Disneyland Paris en Parc Astérix in {month}, dag voor dag, en een planner die je zegt waar je overnacht.",
+        "monthIndexLabel": "Drukte-kalender per maand",
+        "glance": {
+          "zone": "tijd in Parijs"
+        },
+        "calendar": {
+          "caption": "Disneyland Paris en Parc Astérix van {from} tot {to}: piekwachttijd bij de grote attracties, in minuten"
+        },
+        "lanes": {
+          "break": "Schoolvakantie Parijs (zone C): {name}, {dates}",
+          "unnamedBreak": "Schoolvakantie Parijs (zone C)",
+          "none": "Geen evenementen en geen schoolvakantie in Parijs in deze dagen."
+        },
+        "sheet": {
+          "kicker": "Parijs · één dag",
+          "early": {
+            "extra_magic_time": "Extra Magic Time vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Early Entry bij een paar attracties vanaf {time} voor gasten van de parkhotels"
+          },
+          "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min lopen naar de ingang, samen {total} min, zonder verkeer"
+        },
+        "when": {
+          "kicker": "Reizen met alle drie de parken",
+          "title": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
+          "titleNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix",
+          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
+          "pageLinkNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix"
+        },
+        "reasons": {
+          "school_break": "schoolvakantie Parijs"
+        },
+        "faq": {
+          "title": "Vragen over de drukte",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in Disneyland Paris en Parc Astérix?",
+            "qMonth": "Wanneer is het in {month} het rustigst in Disneyland Paris en Parc Astérix?",
+            "resort": "{resort}: het rustigst {days}, het drukst {busy}.",
+            "day": "{date} ({park}, ongeveer {minutes} min)"
+          },
+          "epic": {
+            "q": "Is Disneyland Park in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Een beetje.}} In deze periode is de piekwachttijd op zaterdag en zondag ongeveer {weekend} min, van maandag tot en met vrijdag ongeveer {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe ver ligt Parc Astérix van Disneyland Paris?",
+            "a": "Met de auto is het zonder verkeer ongeveer {far} minuten van de Disney-parkeerplaats naar Parc Astérix, plus {transfer} minuten lopen tussen de parkeerplaats en de Disney-ingangen, samen {total}. Zonder auto neem je de TGV van Marne-la-Vallée–Chessy naar luchthaven Charles de Gaulle en daar vanaf Roissypôle de shuttle van Parc Astérix. De ingangen van Disneyland Park en Disney Adventure World liggen {near} minuten lopen uit elkaar. Kaartgegevens: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Reisplanner voor Disneyland Paris & Parc Astérix"
+        },
+        "dataset": {
+          "name": "Drukte-kalender Disneyland Paris & Parc Astérix, {period}",
+          "description": "Per park en per dag in Disneyland Park, Disney Adventure World en Parc Astérix: de verwachte piekwachttijd bij de grote attracties, de drukte vergeleken met een normale dag in dat park en de openingstijden, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
+          "disneyland-paris": "Beste reistijd voor Disneyland Paris in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Disneyland Paris & Parc Astérix",
+          "disneyland-paris": "Beste reistijd voor Disneyland Paris"
+        },
+        "resort": {
+          "region": "Disneyland Paris en Parc Astérix",
+          "disneyland-paris": "Disneyland Paris"
+        },
+        "intro": {
+          "lead": "De minuten zijn de piekwachttijd, de hoogste wachttijd van de dag bij elke grote attractie, gemiddeld over de parken van de reis.",
+          "body": "We plannen elke reis zoals de reisplanner dat doet: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als slechtere dag. Tot {date} rekenen we met onze voorspelling, voor de weken daarna met de drukte die we vorig jaar gemeten hebben, gemarkeerd met “vorig jaar”.",
+          "bodyForecast": "We plannen elke reis zoals de reisplanner dat doet: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als slechtere dag. Alle getallen zijn onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Schoolvakantie Parijs (zone C)"
+          }
+        },
+        "weeks": {
+          "noBreak": "Geen schoolvakantie in Parijs."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in Disneyland Paris en Parc Astérix?",
+            "disneyland-paris": "Wanneer is het in {year} het rustigst in Disneyland Paris?"
+          },
+          "quietA": "Het rustigst is de reis van {days} dagen vanaf {date}: een piekwachttijd van ongeveer {minutes} min, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met Kerstmis?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} In de kerstweek ({date}) is de piekwachttijd ongeveer {minutes} min, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers reiken.} other {Nee, voor zover onze cijfers reiken.}} Ze beginnen met de week rond nieuwjaar ({date}), met een piekwachttijd van ongeveer {minutes} min, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de avonden met een eigen ticket?",
+          "partyA": "{list}. Op die avonden moeten dagbezoekers eerder weg, daarom legt de reisplanner er geen volledige parkdag op.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Eerst Disneyland Paris of eerst Parc Astérix?",
+            "disneyland-paris": "Welk Disney-park eerst?"
+          },
+          "firstA": "Elk park komt op zijn rustigste dag van de reis, en daaruit volgt de volgorde. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Reis plannen"
+        },
+        "parks": {
+          "moreHint": "Geen andere parken in deze regio"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel",
+            "parc_asterix": "Hotel van Parc Astérix",
+            "offsite": "Ander hotel"
+          },
+          "hotelHint": {
+            "disney": "Extra Magic Time, meestal een uur voor de opening in beide Disney-parken; ook in Davy Crockett Ranch",
+            "parc_asterix": "Early Entry: een paar attracties 30 minuten eerder",
+            "offsite": "Ook partnerhotels en Parijs; geen vroegere toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "parc_asterix": "hotel Parc Astérix",
+            "offsite": "hotel elders"
+          },
+          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village."
+        },
+        "details": {
+          "earlyOthers": {
+            "extra_magic_time": "Extra Magic Time vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Early Entry bij een paar attracties vanaf {time} voor gasten van de parkhotels"
+          }
+        },
+        "reason": {
+          "party_night": "Een avond met een eigen ticket."
+        },
+        "ics": {
+          "calendarName": "Reis naar Parijs {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen schoolvakantie in Parijs.",
+            "before_spring_break": "Vlak voor de schoolvakantie in Parijs."
+          },
+          "warning": {
+            "school_break": "Schoolvakantie in Parijs.",
+            "party_nights": "{count, plural, =1 {1 avond} other {# avonden}} met een eigen ticket: dagbezoekers moeten dan eerder weg."
+          }
+        },
+        "bases": {
+          "disneyland-paris": {
+            "name": "Disneyland Paris",
+            "note": "De Disney-hotels aan Lake Disney liggen op loopafstand van de parken en hebben Extra Magic Time. Vanaf de partnerhotels in Val d'Europe en Val de France rijdt een gratis shuttle."
+          },
+          "parc-asterix": {
+            "name": "Parc Astérix",
+            "note": "De hotels van het park liggen op loopafstand van de ingang, en hun gasten mogen bij een paar attracties 30 minuten eerder in."
+          },
+          "paris": {
+            "name": "Parijs",
+            "note": "Vanaf Châtelet–Les Halles rijdt de RER A naar Disneyland Paris en de RER B naar de shuttle van Parc Astérix op de luchthaven."
+          }
+        },
+        "gateways": {
+          "XED": "Station Marne-la-Vallée–Chessy",
+          "CDG": "Luchthaven Parijs-Charles de Gaulle",
+          "ORY": "Luchthaven Parijs-Orly"
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-paris": "Disneyland Paris",
+            "parc-asterix": "Parc Astérix"
+          },
+          "resortShort": {
+            "disneyland-paris": "Disney",
+            "parc-asterix": "Astérix"
+          },
+          "hopperName": {
+            "disney": "toegang tot beide parken"
+          },
+          "entry": {
+            "dlp-1-day": {
+              "title": "Dagticket, 1 of 2 parken",
+              "hint": "Geldig op de datum die je bij de aankoop hebt gekozen."
+            },
+            "dlp-multi-day": {
+              "title": "Ticket voor 2, 3 of 4 dagen",
+              "hint": "Opeenvolgende dagen vanaf de geboekte datum, elke dag beide parken."
+            },
+            "dlp-liberte": {
+              "title": "Dagticket zonder datum (Liberté)",
+              "hint": "Een jaar geldig; de bezoekdag reserveer je vooraf. Niet op 31 oktober en 31 december."
+            },
+            "dlp-pass": {
+              "title": "Jaarabonnement (Disneyland Pass)",
+              "hint": "Bronze One, Bronze Max, Silver of Gold. Voor elk bezoek reserveer je vooraf."
+            },
+            "asterix-1-day": {
+              "title": "Dagticket met datum",
+              "hint": "Billet Futé of Liberté Flex. Voor de nocturnes van Peur sur le Parc heb je een eigen ticket nodig."
+            },
+            "asterix-2-day": {
+              "title": "Ticket voor 2 dagen",
+              "hint": "Twee dagen achter elkaar, alleen te koop aan de kassa van het park."
+            },
+            "asterix-noel": {
+              "title": "Billet Noël",
+              "hint": "Eén dag naar keuze tijdens Noël Gaulois."
+            },
+            "asterix-pass": {
+              "title": "Seizoenspas (Pass Saison)",
+              "hint": "Découverte, Gaulois of Premium. Eén bezoek per dag, behalve op de blokkeerdagen van de pas."
+            }
+          },
+          "variant": {
+            "dlp-pass-bronze-one": "Bronze One (één park per dag)",
+            "dlp-pass": "Bronze Max, Silver of Gold"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Parijs",
+        "title": "Disneyland Paris en Parc Astérix: welk park op welke dag",
+        "lead": "Disneyland Paris heeft twee parken, Parc Astérix één, en beide resorts hebben eigen hotels. In de kalender staan alle drie dag voor dag met hun piekwachttijd, en in de reisplanner zie je waar je voor welk park het best overnacht.",
+        "link": "Drukte-kalender Disneyland Paris & Parc Astérix"
+      }
     }
   },
   "news": {

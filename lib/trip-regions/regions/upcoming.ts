@@ -57,23 +57,3 @@ export const JAPAN: TripRegionConfig = {
   resortWords: {},
   hotels: [{ key: 'offsite' }],
 };
-
-/** Paris: Disneyland Park, Disney Adventure World, Parc Astérix. */
-export const PARIS: TripRegionConfig = {
-  slug: 'paris',
-  live: false,
-  segments: { en: 'paris', de: 'paris', nl: 'paris', fr: 'paris', es: 'paris', it: 'paris' },
-  timezone: 'Europe/Paris',
-  // Between Disneyland Paris and Parc Astérix.
-  centre: { latitude: 49.0, longitude: 2.68 },
-  photo: '/media/disneyland-park/background.jpg',
-  scene: () =>
-    import('../../../components/assistant/parky/paris-scene').then((m) => ({
-      default: m.ParkyParisScene,
-    })),
-  hub: { heroPhotos: [], faq: {} },
-  bestTime: [],
-  parkNameSuffixes: [],
-  resortWords: {},
-  hotels: [{ key: 'offsite' }],
-};
