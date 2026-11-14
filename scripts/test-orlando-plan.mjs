@@ -374,6 +374,11 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'universal'
   );
   test(
+    'the Disney Springs Resort Area plans with its own hotels, not off-site',
+    effectiveHotel({ hotel: null, area: 'disney_springs' }, ORLANDO.hotels),
+    'disney_springs'
+  );
+  test(
     'the API’s hotel kinds keep the registry’s areas, and a new one has none',
     tripHotelKinds(
       {
