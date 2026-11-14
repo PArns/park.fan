@@ -241,7 +241,9 @@ export async function TripRegionHubPage({
                 role="note"
                 className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
               >
-                {t('lastYearFrom', { date: formatHubDate(lastYearDays[0].date, locale, 'dayMonth') })}
+                {t('lastYearFrom', {
+                  date: formatHubDate(lastYearDays[0].date, locale, 'dayMonth'),
+                })}
               </p>
             )}
             {calendar && week.length > 0 ? (

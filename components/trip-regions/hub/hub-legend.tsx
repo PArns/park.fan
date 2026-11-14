@@ -3,12 +3,7 @@ import { ChevronDown } from 'lucide-react';
 import { CROWD_TILE_CLASS, CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 import { cn } from '@/lib/utils';
-import {
-  EARLY_CLOSE_CORNER,
-  HUB_CELL,
-  HUB_CELL_BEST,
-  NO_HOURS_DOT,
-} from './hub-cell-styles';
+import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, NO_HOURS_DOT } from './hub-cell-styles';
 
 /** The size a key's small cell is drawn at. */
 const SWATCH = 'h-6 w-8 text-[11px]';

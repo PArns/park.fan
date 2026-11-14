@@ -127,7 +127,9 @@ export function shownWait(day: TripParkDay & { headlinerWait: number }): number;
 export function shownWait(day: TripParkDay | undefined): number | undefined;
 export function shownWait(day: TripParkDay | undefined): number | undefined {
   if (!day) return undefined;
-  return day.basis === 'forecast' && day.forecastWait != null ? day.forecastWait : day.headlinerWait;
+  return day.basis === 'forecast' && day.forecastWait != null
+    ? day.forecastWait
+    : day.headlinerWait;
 }
 
 /**
