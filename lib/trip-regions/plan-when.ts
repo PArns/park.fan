@@ -7,6 +7,7 @@ import {
   type TripPlanState,
   type PlanSearchRange,
 } from './plan';
+import type { ClimateChip } from './plan-copy';
 import { tripMonthRange } from './paths';
 import type { TripMonth, TripSchoolBreaks, TripWhenWeek, TripWhenWindow } from './types';
 
@@ -200,7 +201,14 @@ export function weekInWindow(
 export const WHEN_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB'] as const;
 
 /** The country a locale's visitors most likely come from, offered first in the holiday picker. */
-const LOCALE_COUNTRY: Record<string, string> = { de: 'DE', nl: 'NL', en: 'GB' };
+const LOCALE_COUNTRY: Record<string, string> = {
+  de: 'DE',
+  nl: 'NL',
+  en: 'GB',
+  fr: 'FR',
+  es: 'ES',
+  it: 'IT',
+};
 
 /** A country of the picker with its regions, in the holiday data's own codes and names. */
 export interface WhenHolidayCountry {
@@ -232,16 +240,21 @@ export function holidayRegionsFor(
 /**
  * Why a window ranks lower than its plain minutes say: the season terms `/when` added
  * (`penalties`, minutes per park day). "ranked lower: hurricane season" beside an unchanged figure.
- * The hurricane term is named for its peak where the window touches it.
+ * The storm term (Orlando's hurricanes, Japan's typhoons) is named for its peak where the window
+ * touches it.
  */
 export function rankedLower(
-  window: Pick<TripWhenWindow, 'warnings'> & { penalties?: { heat?: number; hurricane?: number } }
-): Array<'extreme_heat' | 'hurricane_peak' | 'hurricane_season'> {
+  window: Pick<TripWhenWindow, 'warnings'> & {
+    penalties?: { heat?: number; hurricane?: number; typhoon?: number };
+  }
+): Array<Exclude<ClimateChip, 'rainy_season'>> {
   const p = window.penalties;
   if (!p) return [];
-  const out: Array<'extreme_heat' | 'hurricane_peak' | 'hurricane_season'> = [];
-  if ((p.hurricane ?? 0) > 0) {
-    out.push(window.warnings.includes('hurricane_peak') ? 'hurricane_peak' : 'hurricane_season');
+  const out: Array<Exclude<ClimateChip, 'rainy_season'>> = [];
+  for (const storm of ['hurricane', 'typhoon'] as const) {
+    if ((p[storm] ?? 0) > 0) {
+      out.push(window.warnings.includes(`${storm}_peak`) ? `${storm}_peak` : `${storm}_season`);
+    }
   }
   if ((p.heat ?? 0) > 0) out.push('extreme_heat');
   return out;

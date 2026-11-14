@@ -428,9 +428,14 @@ export async function MonthRows({
                   {t(`tier.${row.tier}`)}
                 </span>
               )}
-              {stormSeason === 'hurricane' && data.hurricaneSeason && (
+              {stormSeason && data[`${stormSeason}Season`] && tOwn.has(stormSeason) && (
                 <span className="text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
-                  {tOwn('hurricane')}
+                  {tOwn(stormSeason)}
+                </span>
+              )}
+              {data.rainySeason && tOwn.has('rainySeason') && (
+                <span className="text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
+                  {tOwn('rainySeason')}
                 </span>
               )}
             </div>

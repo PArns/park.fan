@@ -1,6 +1,6 @@
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import type { PlanDay, PlanMeta, PlanParkSummary, PlanTotals, TripPlan } from './plan';
-import type { TripPerk } from './types';
+import type { TripEarlyKind, TripPerk } from './types';
 
 /**
  * Which sentence a plan's codes become. Pure: the codes are the API's (`docs/frontend/trip-regions.md`),
@@ -50,16 +50,24 @@ export const PLAN_WARNING_ORDER = [
 
 /**
  * The season's facts a day or a window can carry, said as short chips ("hot", "hurricane season",
- * "peak hurricane season"), never as sentences. The peak says the season already.
+ * "peak hurricane season"), never as sentences. The peak says the season already. The storm is the
+ * region's (Orlando's hurricanes, Japan's typhoons); Japan's rainy season is a fact the ranking
+ * does not price. A chip without words in `tripPlanner.climate` is not drawn.
  */
-export type ClimateChip = 'extreme_heat' | 'hurricane_peak' | 'hurricane_season';
+export type ClimateChip =
+  | 'extreme_heat'
+  | `${'hurricane' | 'typhoon'}_${'peak' | 'season'}`
+  | 'rainy_season';
 
 /** The climate chips of a day's or a window's warnings, in order, the season folded into its peak. */
 export function climateChips(warnings: readonly string[]): ClimateChip[] {
   const chips: ClimateChip[] = [];
   if (warnings.includes('extreme_heat')) chips.push('extreme_heat');
-  if (warnings.includes('hurricane_peak')) chips.push('hurricane_peak');
-  else if (warnings.includes('hurricane_season')) chips.push('hurricane_season');
+  for (const storm of ['hurricane', 'typhoon'] as const) {
+    if (warnings.includes(`${storm}_peak`)) chips.push(`${storm}_peak`);
+    else if (warnings.includes(`${storm}_season`)) chips.push(`${storm}_season`);
+  }
+  if (warnings.includes('rainy_season')) chips.push('rainy_season');
   return chips;
 }
 
@@ -234,12 +242,18 @@ export function runnerUp(
   return { date: alt.date, wait: alt.headlinerWait, delta: alt.headlinerWait - plannedWait };
 }
 
-/** The early slot a day's hotel gets, if any. */
-export function earlyPerk(perks: readonly TripPerk[] | undefined): TripPerk | null {
+/** The early slots in the order a day names them when a hotel has several. */
+const EARLY_PERKS: readonly TripEarlyKind[] = [
+  'early_park_admission',
+  'early_entry',
+  'happy_entry',
+  'extra_magic_time',
+];
+
+/** The early slot a day's hotel gets, if any, by the region's own name for it. */
+export function earlyPerk(perks: readonly TripPerk[] | undefined): TripEarlyKind | null {
   if (!perks) return null;
-  if (perks.includes('early_park_admission')) return 'early_park_admission';
-  if (perks.includes('early_entry')) return 'early_entry';
-  return null;
+  return EARLY_PERKS.find((kind) => perks.includes(kind)) ?? null;
 }
 
 /**

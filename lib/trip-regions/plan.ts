@@ -226,7 +226,7 @@ export interface PlanTotals {
   expectedError?: number;
   orderMatters?: boolean;
   /** What heat and the hurricane season added to the ranking, minutes per park day. */
-  penalties?: { heat?: number; hurricane?: number };
+  penalties?: { heat?: number; hurricane?: number; typhoon?: number };
   parkDays: number;
   restDays: number;
   visits: number;

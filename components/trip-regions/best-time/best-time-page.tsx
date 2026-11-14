@@ -334,7 +334,7 @@ function buildFaq({
   lastYearNote: string;
   /** The region's own best-time copy (`tripRegions.<slug>.bestTime`). */
   t: Awaited<ReturnType<typeof getRegionTranslations>>;
-  stormSeason: 'hurricane' | undefined;
+  stormSeason: 'hurricane' | 'typhoon' | undefined;
   parkName: (slug: string) => string;
   labels: Awaited<ReturnType<typeof bestTimeLabels>>;
 }): Array<{ question: string; answer: string }> {
@@ -397,11 +397,11 @@ function buildFaq({
   }
 
   const wettest = wettestMonths(when.months);
-  if (stormSeason === 'hurricane' && wettest.length) {
+  if (stormSeason && t.has(`faq.${stormSeason}Q`) && wettest.length) {
     const monthName = (key: string) => formatParkDay(locale, `${key}-01`, { month: 'long' });
     items.push({
-      question: t('faq.hurricaneQ'),
-      answer: t('faq.hurricaneA', {
+      question: t(`faq.${stormSeason}Q`),
+      answer: t(`faq.${stormSeason}A`, {
         months: list(wettest.map((m) => monthName(m.month))),
         rain: Math.round(wettest[0].climate!.precipitationMm),
         period: climatePeriod(wettest[0].climate!.period),

@@ -140,8 +140,12 @@ export interface TripRegionConfig {
    * hotel area a stay of that kind usually means, as the API reads it the other way round.
    */
   hotels: readonly TripHotelKind[];
-  /** The storm season the region's pages name (a FAQ, a month's note), or none. */
-  stormSeason?: 'hurricane';
+  /**
+   * The storm season the region's pages name (a FAQ, a month's note), or none: Orlando's
+   * hurricanes, Japan's typhoons. The words are the region's (`bestTime.months.<kind>`,
+   * `bestTime.faq.<kind>Q`).
+   */
+  stormSeason?: 'hurricane' | 'typhoon';
   /**
    * The two resorts whose days the planner keeps together (`blocks=`) and asks about: Disney and
    * Universal. Absent, a region has no such pair and the question is not asked.
