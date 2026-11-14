@@ -1,4 +1,5 @@
 import type { Locale } from '@/i18n/config';
+import { sentenceCase } from '@/lib/utils/sentence-case';
 
 /**
  * "im Phantasialand", "in der Efteling", "in Toverland": the park name in a sentence, with the
@@ -87,10 +88,6 @@ export function parkArgs(locale: Locale, name: string, article: ParkArticle) {
     // The same phrase at the start of a sentence: "Im Phantasialand gibt es …",
     // "In Cedar Point gibt es …". Capitalised here rather than by the string,
     // because which word comes first depends on the article.
-    inParkLeading: capitalise(parkPhrase(locale, 'in', name, article)),
+    inParkLeading: sentenceCase(parkPhrase(locale, 'in', name, article)),
   };
-}
-
-function capitalise(phrase: string): string {
-  return phrase.charAt(0).toUpperCase() + phrase.slice(1);
 }

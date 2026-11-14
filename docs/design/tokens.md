@@ -89,6 +89,21 @@ neighbouring pair is now at least 0.094 apart, and no text face of any tier lost
 The other five tiers did not change. `CROWD_SOLID_CLASS` reads the `--badge-crowd-*` tokens
 rather than a copy of their values, and the dark theme no longer repeats them.
 
+## Storm season
+
+`--signal-storm` (`bg-signal-storm`) marks a region's storm season, Orlando's hurricanes and
+Japan's typhoons, as one more segment of a calendar cell's signal bar beside the school-holiday and
+holiday segments: `STORM_SIGNAL_CLASS` in `lib/utils/day-signal-styles.ts` draws the season dashed
+(4 px on, 2 px off) and its peak solid, so the peak reads stronger without a second colour. The
+violet sits apart from every crowd tier, the holiday signals and the brand blue (0.22 from
+`--primary` in OKLab), because the crowd colour means the crowd level alone. A segment is a graphic,
+so it needs 3 : 1 against what it sits on:
+
+| `--signal-storm`              | on the page | on the weakest tile | value                  |
+| ----------------------------- | ----------- | ------------------- | ---------------------- |
+| light                         | 5.76        | 4.14                | `oklch(0.54 0.25 295)` |
+| dark (page, card, muted tile) | 7.49        | 5.72                | `oklch(0.72 0.17 295)` |
+
 ## Badges
 
 A badge is `Badge` (`components/ui/badge.tsx`) plus **one** class from `@layer utilities` that

@@ -544,9 +544,12 @@
       "varHours": "Orari di apertura"
     },
     "band": {
-      "title": "Più giorni a {region}?",
-      "planPark": "Inserisci {park} nel tuo viaggio a {region}",
+      "title": "Più giorni {inRegion}",
+      "planPark": "Aggiungi {park} al viaggio",
       "open": "Apri il pianificatore di viaggio"
+    },
+    "tile": {
+      "line": "Tu indichi le date, il pianificatore ti dice quale dei {count} parchi è il più tranquillo in ogni giorno."
     }
   },
   "theme": {
@@ -1890,7 +1893,7 @@
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Inizia a digitare: parchi, attrazioni, spettacoli e ristoranti",
     "trip": {
-      "title": "Pianificatore di viaggio per {region}",
+      "title": "Pianificatore di viaggio {inRegion}",
       "hint": "Quale parco in quale giorno del tuo viaggio"
     }
   },
@@ -3139,7 +3142,9 @@
       "modeAll": "Generale",
       "picksLegendAll": "Sotto ogni data, il parco con l’attesa di picco più breve.",
       "picksLegendResort": "Sotto ogni data, il parco {resort} con l’attesa di picco più breve.",
-      "overall": "Generale: {park}"
+      "overall": "Generale: {park}",
+      "stormPeak": "{season}: la ricerca del periodo migliore mette questi giorni più in basso, anche con attese brevi.",
+      "rainyNote": "{season}: giorni più umidi, ma non parchi più pieni."
     },
     "find": {
       "modeKnown": "Conosco le mie date",
@@ -3742,6 +3747,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "a Orlando",
         "area": "Florida",
         "calendar": "Calendario affluenza Orlando",
         "calendarHint": "Quale parco in quale giorno, e un pianificatore per tutto il viaggio."
@@ -4161,6 +4167,7 @@
     "southern-california": {
       "nav": {
         "name": "California del Sud",
+        "inRegion": "nella California del Sud",
         "area": "Los Angeles e San Diego",
         "calendar": "Calendario affluenza California del Sud",
         "calendarHint": "Quale degli otto parchi ha meno gente in quale giorno, e un pianificatore per il tuo viaggio."
@@ -4430,6 +4437,7 @@
     "japan": {
       "nav": {
         "name": "Giappone",
+        "inRegion": "in Giappone",
         "area": "Da Tokyo a Osaka",
         "calendar": "Calendario affluenza Giappone",
         "calendarHint": "Cinque parchi giorno per giorno, e un pianificatore per un viaggio tra più città."
@@ -4763,6 +4771,7 @@
     "paris": {
       "nav": {
         "name": "Parigi",
+        "inRegion": "a Parigi",
         "area": "Francia",
         "calendar": "Calendario affluenza Disneyland Paris e Parc Astérix",
         "calendarHint": "Quale dei tre parchi in quale giorno, e dove dormire per ognuno."

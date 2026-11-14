@@ -14,7 +14,11 @@ import {
   isColoredCrowdLevel,
   type ColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
-import { DAY_SIGNAL_CLASS, holidaySignals } from '@/lib/utils/day-signal-styles';
+import {
+  DAY_SIGNAL_CLASS,
+  holidaySignals,
+  STORM_SIGNAL_CLASS,
+} from '@/lib/utils/day-signal-styles';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { dayMarker } from '@/lib/trip-regions/plan-copy';
@@ -31,11 +35,12 @@ import {
   type TripCanvas,
 } from '@/lib/trip-regions/plan-week';
 import type { TripPlan } from '@/lib/trip-regions/plan';
+import { stormCodeOn, stormSignal } from '@/lib/trip-regions/date-facts';
 import { dayStayBase, monthStayCells, planStays } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
-import { PlanCodeKey } from './plan-calendar-keys';
+import { PlanCodeKey, useStormKeys } from './plan-calendar-keys';
 import { useBaseName } from './plan-place-words';
 import { MoveIcon, PlanMonthStayBand, StayMarker } from './plan-stay-band';
 import {
@@ -93,10 +98,10 @@ function bandTicks(canvas: TripCanvas): number[] {
  * hours in the crowd colour, a party night hatched, the evening in a second park or at a venue. A
  * phone writes the hours under it, a wide screen the axis and one line: the evening or the ticket
  * day. A rest or travel day is a plain tile with its icon, the date's holidays the bar along the
- * top, and a key says what the codes stand for. On a trip across cities each cell's foot is the
- * stay band (`PlanMonthStayBand`, `monthStayCells`): the city slept in, named where its stay
- * begins and at the start of each week row, in the stays' primary tints, never a crowd colour.
- * A press opens the day.
+ * top with the storm season (`stormCodeOn`: dashed, solid at its peak), and a key says what the
+ * codes stand for. On a trip across cities each cell's foot is the stay band (`PlanMonthStayBand`,
+ * `monthStayCells`): the city slept in, named where its stay begins and at the start of each week
+ * row, in the stays' primary tints, never a crowd colour. A press opens the day.
  */
 export function PlanMonthView({
   plan,
@@ -109,6 +114,8 @@ export function PlanMonthView({
 }) {
   const t = useTranslations('tripPlanner');
   const tCrowd = useTranslations('parks.crowdLevels');
+  const tClimate = useTranslations('tripPlanner.climate');
+  const stormKeys = useStormKeys();
   const { locale, timeZone, region, config, parkBySlug, parkName } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
@@ -120,6 +127,10 @@ export function PlanMonthView({
     [plan.meta.from, plan.meta.to]
   );
   const dayBy = useMemo(() => new Map(plan.days.map((d) => [d.date, d])), [plan.days]);
+  const storms = useMemo(
+    () => new Map(plan.days.map((d) => [d.date, stormCodeOn(d.date, region.weather)])),
+    [plan.days, region.weather]
+  );
   const stayCells = useMemo(() => monthStayCells(plan), [plan]);
   const stays = useMemo(() => planStays(plan), [plan]);
   const calendarBy = useMemo(
@@ -207,13 +218,21 @@ export function PlanMonthView({
           const rowStart = index % 7 === 0;
           const toCity = day.move ? t('move.toCity', { city: baseName(day.move.to) }) : null;
           const signals = holidaySignals(calendarBy.get(cell.date) ?? null);
-          const signalBar = signals.length > 0 && (
+          const storm = storms.get(cell.date) ?? null;
+          const signalBar = (signals.length > 0 || storm) && (
             <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
               {signals.map((signal) => (
                 <span key={signal} className={cn('h-full flex-1', DAY_SIGNAL_CLASS[signal])} />
               ))}
+              {storm && (
+                <span
+                  data-plan-storm={stormSignal(storm)}
+                  className={cn('h-full flex-1', STORM_SIGNAL_CLASS[stormSignal(storm)])}
+                />
+              )}
             </span>
           );
+          const stormWord = storm ? tClimate(storm) : null;
           if (!isPark) {
             const Icon =
               day.kind === 'rest'
@@ -233,7 +252,7 @@ export function PlanMonthView({
                 <button
                   type="button"
                   onClick={() => onOpenDay(cell.date)}
-                  aria-label={`${full}: ${[word, toCity].filter(Boolean).join(', ')}`}
+                  aria-label={`${full}: ${[word, toCity, stormWord].filter(Boolean).join(', ')}`}
                   className={cn(
                     'bg-muted/25 border-border/60 relative flex h-full min-h-[4.5rem] w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-28 lg:p-1.5',
                     PLAN_FOCUS
@@ -282,7 +301,7 @@ export function PlanMonthView({
               <button
                 type="button"
                 onClick={() => onOpenDay(cell.date)}
-                aria-label={`${full}: ${[what, spoken, evening ? t('evening.plus', { name: evening }) : null, ticketDay, marker, toCity].filter(Boolean).join(', ')}`}
+                aria-label={`${full}: ${[what, spoken, evening ? t('evening.plus', { name: evening }) : null, ticketDay, marker, toCity, stormWord].filter(Boolean).join(', ')}`}
                 className={cn(
                   'relative flex h-full min-h-[4.5rem] w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-28 lg:gap-1.5 lg:p-1.5',
                   level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
@@ -405,7 +424,12 @@ export function PlanMonthView({
         </div>
       )}
       <PlanCodeKey entries={codeKey} className="mt-2 lg:hidden" />
-      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} signalsLabel={false} className="mt-2" />
+      <ParkCalendarLegend
+        signals={TRIP_DAY_SIGNALS}
+        signalsLabel={false}
+        extraSignals={stormKeys([...storms.values()].filter((code) => code !== null))}
+        className="mt-2"
+      />
       <ul className="text-muted-foreground mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs">
         {(
           [

@@ -193,7 +193,11 @@ Built for a first-time visitor who wants to know which park on which day (PAR-13
   venue's official page.
 - **Heat and the hurricane season** are short chips ("hot", "hurricane season", "peak hurricane
   season") in the day's sheet and on the When mode's cards. A card whose ranking the season's terms
-  pushed down says "ranked lower: hurricane season" beside its unchanged minutes.
+  pushed down says "ranked lower: hurricane season" beside its unchanged minutes. The Dates grid
+  and the Month view mark the storm season as a violet segment of the signal bar (`--signal-storm`,
+  `STORM_SIGNAL_CLASS`), dashed and solid at the peak, from the region's `weather.storm`
+  (`stormCodeOn`); the legend names both, and the line under the grid says for a peak date that the
+  best-time search ranks it lower. Japan's rainy season is a line there, never a mark.
 - **School breaks** are named for whose they are: "No US school holidays", "US school holidays".
 
 ## Tickets

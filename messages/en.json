@@ -544,9 +544,12 @@
       "varHours": "Opening hours"
     },
     "band": {
-      "title": "Several days in {region}?",
-      "planPark": "Plan {park} into your {region} trip",
+      "title": "Several days {inRegion}",
+      "planPark": "Add {park} to your trip",
       "open": "Open the trip planner"
+    },
+    "tile": {
+      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day."
     }
   },
   "theme": {
@@ -3139,7 +3142,9 @@
       "modeAll": "Overall",
       "picksLegendAll": "Under each date, the park with the shortest peak wait.",
       "picksLegendResort": "Under each date, the {resort} park with the shortest peak wait.",
-      "overall": "Overall: {park}"
+      "overall": "Overall: {park}",
+      "stormPeak": "{season}: the best-time search ranks these days lower, even with short waits.",
+      "rainyNote": "{season}: wetter days, but the parks are no fuller for it."
     },
     "find": {
       "modeKnown": "I know my dates",
@@ -3742,6 +3747,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando Crowd Calendar",
         "calendarHint": "Which park on which day, and a planner for your whole trip."
@@ -4161,6 +4167,7 @@
     "southern-california": {
       "nav": {
         "name": "Southern California",
+        "inRegion": "in Southern California",
         "area": "Los Angeles and San Diego",
         "calendar": "Southern California Crowd Calendar",
         "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip."
@@ -4430,6 +4437,7 @@
     "japan": {
       "nav": {
         "name": "Japan",
+        "inRegion": "in Japan",
         "area": "Tokyo to Osaka",
         "calendar": "Japan Crowd Calendar",
         "calendarHint": "Five parks day by day, and a planner for a trip across several cities."
@@ -4763,6 +4771,7 @@
     "paris": {
       "nav": {
         "name": "Paris",
+        "inRegion": "in Paris",
         "area": "France",
         "calendar": "Disneyland Paris & Parc Astérix Crowd Calendar",
         "calendarHint": "Which of the three parks on which day, and where to stay for it."

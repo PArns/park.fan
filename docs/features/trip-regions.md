@@ -14,7 +14,7 @@ the same pages from the same code.
 | -------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, next step, FAQ parks), hotels, ticket step, storm season |
 | Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`, `landing`, `homeStory`                                                                                           |
-| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the planner band's tile, built on `HolidayParky` (`holiday-parky.tsx`)                                                                                   |
+| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the region's card in the header band and of its planner tile on a park's pages, built on `HolidayParky` (`holiday-parky.tsx`)                            |
 | API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                |
 
 Nothing outside `lib/trip-regions/registry.ts` and `lib/trip-regions/regions/` names a region. The
@@ -102,11 +102,52 @@ Orlando), `regionOrShared` takes the region's words if it has the key and the sh
 
 All from the registry: the header's planner band and its phone sheet (a crowd calendar link per
 region), the More menu (a wide tile per region), the footer's „Reiseplaner" (the first live
-region), the homepage stop (one per live region), `TripPlannerBand` (the region whose `parks[]`
-holds the page's park), the search palette and `/search` (`matchTripRegion` over every live
-region), the OG cards (`<locale>/<slug>`, `<locale>/<slug>/best-time-to-visit[/<resort>]`), the
-sitemap and the admin's ticket page. The trip events carry `region` (the slug), and „Plan this
-day" opens the day planner with the source `<slug>-hub` (`orlando-hub`, as before).
+region), the homepage stop (one per live region), `TripPlannerTile` on a park's page and crowd
+calendar and `TripPlannerBand` under a post, on a city or country listing and on `/search` (the
+regions whose `parks[]` hold the page's parks), the search palette and `/search`
+(`matchTripRegion` over every live region), the OG cards (`<locale>/<slug>`,
+`<locale>/<slug>/best-time-to-visit[/<resort>]`), the sitemap and the admin's ticket page. The trip
+events carry `region` (the slug), and „Plan this day" opens the day planner with the source
+`<slug>-hub` (`orlando-hub`, as before).
+
+Every way in names the region in the reader's language, from `tripRegions.<slug>.nav`
+(`getTripRegionWords`): `name`, `area`, `calendar` (the hub by its name) and `inRegion`, the name
+with its preposition („in Südkalifornien", „au Japon", „nella California del Sud"), which the
+shared strings use as `{inRegion}` because no shared preposition fits every region in French or
+Italian. The API's `name` is English and only a search matches it. The browser asks
+`/api/nav/trip-regions?locale=` and gets each region's `words` with its links.
+
+## The planner tile on a park's pages
+
+`TripPlannerTile` (`components/trip-regions/trip-planner-tile.tsx`) is the region's planner on the
+page of each of its parks and on that park's crowd calendar: the region's scene, „Reiseplaner",
+„Mehrere Tage in Orlando", one line with the region's park count, „Magic Kingdom einplanen" into
+the planner with the park chosen (on a calendar month page that month as the dates to search) and
+the hub by its name (`nav.calendar`, "Orlando Crowd Calendar") to the bare hub. The whole card is the plan link, which carries a state
+and so is `nofollow` (`plannerLinkRel`); the hub's link stands above that cover and is the followed
+one, with the hub's name as its anchor, so a region's strongest park pages pass the hub a link.
+A view is `section_seen` with `trip_tile`, once when the tile's top comes on screen; a click is
+`internal_link_clicked` with the block `trip_tile` and the park as entity, and `trip_tile_clicked`
+with the region and which link (`plan`, `calendar`), since both links lead to the hub's page and the
+first event counts them as one place ([analytics](../development/analytics.md)).
+
+| Where               | Where on the page                                                                                    | Why                                                                                                                                                                   |
+| ------------------- | ---------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| park page           | under the ride list, after the closed rides and „Mit Kindern", before the park's guides (`main_end`) | the fold belongs to „Heute im Park": 82 % of park page views are phones, and the one-line band above it had fewer than 5 clicks in 30 days (October to November 2026) |
+| park crowd calendar | right under the header card, before „Beste Reisezeit"                                                | a reader of a crowd calendar is choosing days, which is the planner's job for a whole trip                                                                            |
+
+It looks like the region card of the header band (`REGION_CARD`, `REGION_KICKER`, `REGION_PILL` in
+`components/trip-regions/region-card-classes.ts`, shared with `PlannerMenuPanel`). On a phone the
+scene is a 2 : 1 banner over the text that fades out at its foot; from `sm` it is the card's right
+side at the card's height (320 px wide, 416 px from `lg` and 480 px from `xl`, 2 : 1 at the card's
+least height), fading into the ground to its
+left as `ParkBreakPanel`'s picture does. The box is the scene's reservation, so nothing moves when
+the scene arrives: `RegionSceneInView` fetches the scene's chunk after the page's `load`
+(`useAfterLoad`) and once the tile is within `LazyMount`'s margin of the screen, and fades it in.
+The scene keeps its own rules: day in the light theme, evening in the dark one, its moves once and
+none under reduced motion. Parky's bubble counts the tile's links as controls (`coversControl`
+reads `a[data-slot="button"]`, and the card's cover is the plan link), so it waits until the tile
+has left the corner.
 
 ## The planner band with several regions
 
@@ -155,6 +196,7 @@ than a raw key, so the API can ship a region's codes before its words land here.
 | an early slot's code (`early.kind`, a hotel's `perks`)  | `tripPlanner.marker.early.<kind>`, `tripPlanner.details.earlyYours.<kind>`, `tripRegion.planner.details.earlyOthers.<kind>`, `tripRegion.hub.sheet.early.<kind>`: Orlando's two now, `happy_entry` and `extra_magic_time` with their regions |
 | `ticketMarkets.home`                                    | the "Sold outside the US" tag (`entryMarket` against `ticketHomeMarket`); the registry's `tickets.homeMarket` until the API sends it                                                                                                         |
 | `hurricane_*`, `typhoon_*`, `rainy_season` warnings     | the climate chips (`climateChips`, `tripPlanner.climate`, unknown codes filtered with `has`), `rankedLower`; a month's `hurricaneSeason`, `typhoonSeason`, `rainySeason` on the best-time pages, by the entry's `stormSeason`                |
+| `weather.storm`, `weather.notes` (`MM-DD` ranges)       | the planner's Dates grid and Month view: the storm season's signal segment (`stormCodeOn`, `STORM_SIGNAL_CLASS`), Japan's rainy season in the line under the grid (`weatherNotesOn`)                                                         |
 | a ticket's `entryFrom`, `validDays` (an evening ticket) | typed on `TicketProduct`; the API places an owned one on its days. The ticket step's entries for them come with the region that sells them                                                                                                   |
 | `school-breaks` by country                              | the holiday picker asks for DE, NL and GB (`WHEN_HOLIDAY_COUNTRIES`); ES and IT join once the API's data for them reaches half a year ahead, and the locale's own country is already first                                                   |
 | `bases`, `baseLegs` (a trip across several cities)      | typed, not shown: a region that needs them waits for the bases UI                                                                                                                                                                            |

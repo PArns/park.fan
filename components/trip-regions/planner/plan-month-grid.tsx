@@ -15,7 +15,12 @@ import {
   CROWD_TILE_CLASS,
   type ColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
-import { DAY_SIGNAL_CLASS, type DaySignal } from '@/lib/utils/day-signal-styles';
+import {
+  DAY_SIGNAL_CLASS,
+  STORM_SIGNAL_CLASS,
+  type DaySignal,
+  type StormSignal,
+} from '@/lib/utils/day-signal-styles';
 import { monthMatrix, monthOf, shiftMonth, weekdayLabels } from '@/lib/planner/month-grid';
 import { addDays } from '@/lib/utils/park-day';
 
@@ -56,6 +61,8 @@ export interface PlanGridDay {
   level?: ColoredCrowdLevel | null;
   /** The holidays and school breaks the date falls in, as the calendar's bar along the top. */
   signals?: readonly DaySignal[];
+  /** The region's storm season on the date, its last segment of that bar: dashed, solid at the peak. */
+  storm?: StormSignal | null;
   /** The park with the shortest lines under the date, a row each (the Dates step draws one). */
   picks?: readonly PlanGridPick[];
   /** New Year's Eve, marked beside the date. */
@@ -70,10 +77,10 @@ const NAV_BUTTON =
  * dates in the Dates step, one date for a ticket's first day. One tab stop for the grid, the arrows
  * move by day and week and turn the month at its edge, so the grid works the same in both places.
  * A date with a crowd level is the crowd calendar's tile (`ParkCalendarDay`): tinted, the day in
- * the level's ink, holidays as the bar along the top. `rich` makes room under the date for its pick,
- * a park label with a ticket where a party night sends the day guests home early. Arrival and
- * departure are a ring with their plane on its corner, so the rows stay free, and a light band
- * behind the tiles joins the dates between. `onShow` hears every date pointed at, focused or picked.
+ * the level's ink, holidays and the storm season as the bar along the top. `rich` makes room under
+ * the date for its pick, a park label with a ticket where a party night sends the day guests home
+ * early. Arrival and departure are a ring with their plane on its corner, so the rows stay free,
+ * and a light band behind the tiles joins the dates between. `onShow` hears every date pointed at, focused or picked.
  */
 export function PlanMonthGrid({
   month,
@@ -254,14 +261,20 @@ export function PlanMonthGrid({
                     )}
                   />
                 )}
-                {enabled && d?.signals && d.signals.length > 0 && (
+                {enabled && ((d?.signals?.length ?? 0) > 0 || d?.storm) && (
                   <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
-                    {d.signals.map((signal) => (
+                    {d?.signals?.map((signal) => (
                       <span
                         key={signal}
                         className={cn('h-full flex-1', DAY_SIGNAL_CLASS[signal])}
                       />
                     ))}
+                    {d?.storm && (
+                      <span
+                        data-plan-storm={d.storm}
+                        className={cn('h-full flex-1', STORM_SIGNAL_CLASS[d.storm])}
+                      />
+                    )}
                   </span>
                 )}
                 <span

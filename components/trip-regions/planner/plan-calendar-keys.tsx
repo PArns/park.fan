@@ -5,11 +5,33 @@ import { Sparkles, Ticket } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
-import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { sentenceCase } from '@/lib/utils/sentence-case';
 import { cleanBreakName } from '@/lib/trip-regions/best-time';
 import { formatDateRange } from '@/lib/trip-regions/hub-data';
-import type { MonthEvent } from '@/lib/trip-regions/date-facts';
+import { stormSignal, type MonthEvent, type StormCode } from '@/lib/trip-regions/date-facts';
 import type { ParkCodeEntry } from '@/lib/trip-regions/plan-week';
+
+/**
+ * The legend keys of the storm codes a calendar draws, the season before its peak, in the climate
+ * chips' words („Hurrikansaison“, „Hochphase der Hurrikansaison“), for `ParkCalendarLegend`'s
+ * `extraSignals`.
+ */
+export function useStormKeys(): (
+  codes: Iterable<StormCode>
+) => Array<{ key: string; className: string; label: string }> {
+  const t = useTranslations('tripPlanner.climate');
+  return (codes) =>
+    [...new Set(codes)]
+      .sort(
+        (a, b) => Number(stormSignal(a) === 'stormPeak') - Number(stormSignal(b) === 'stormPeak')
+      )
+      .map((code) => ({
+        key: code,
+        className: STORM_SIGNAL_CLASS[stormSignal(code)],
+        label: sentenceCase(t(code)),
+      }));
+}
 
 /** The small uppercase label every key under the planner's calendars starts with. */
 const KEY_LABEL =
