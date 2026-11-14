@@ -31,25 +31,24 @@ export function ParkyInterviewStart({
   );
   if (status !== 'on') return null;
   return (
-    <div
-      data-parky-interview-start={start.kind}
-      className={cn(
-        'border-primary/30 bg-primary/5 flex flex-col gap-2 rounded-xl border p-3 sm:flex-row sm:items-center sm:gap-4',
-        className
-      )}
-    >
-      <p className="text-muted-foreground text-xs sm:flex-1">{line}</p>
-      <Button
-        type="button"
-        onClick={() => {
-          startInterview(start);
-          openParky('interview');
-        }}
-        className="h-auto min-h-9 w-full whitespace-normal max-sm:h-auto max-sm:min-h-11 sm:w-auto"
-      >
-        <MessagesSquare aria-hidden="true" />
-        {label}
-      </Button>
+    // Laid out by its own width, not the window's: the day planner's side panel is narrow on the
+    // widest screen. Side by side from 36rem, where the longest label (Italian, French) still
+    // leaves the line a column of its own; stacked below that, the button as wide as the card.
+    <div data-parky-interview-start={start.kind} className={cn('@container', className)}>
+      <div className="border-primary/30 bg-primary/5 flex flex-col gap-2 rounded-xl border p-3 @xl:flex-row @xl:items-center @xl:gap-4">
+        <p className="text-muted-foreground text-xs text-pretty @xl:min-w-0 @xl:flex-1">{line}</p>
+        <Button
+          type="button"
+          onClick={() => {
+            startInterview(start);
+            openParky('interview');
+          }}
+          className="h-auto min-h-9 w-full text-balance whitespace-normal max-sm:min-h-11 @xl:w-auto @xl:max-w-[60%] @xl:shrink-0"
+        >
+          <MessagesSquare aria-hidden="true" />
+          {label}
+        </Button>
+      </div>
     </div>
   );
 }
