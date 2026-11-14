@@ -142,6 +142,7 @@ import {
   rollingFortnightAt,
 } from '../lib/trip-regions/plan-tickets.ts';
 import { readTickets, writeTicketItem } from '../lib/trip-regions/plan-query.ts';
+import { suggestionGroups } from '../lib/trip-regions/plan-tickets.ts';
 import {
   hostProp,
   sellerProp,
@@ -431,6 +432,18 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       timezone: 'America/New_York',
     },
   ];
+  test(
+    'reserve: a park is filed by the name the plan calls it',
+    reserveTripDays({ days: [{ ...a, parks: [{ slug: 'ioa', part: 'full' }] }] }, [
+      {
+        ...region[0],
+        slug: 'ioa',
+        name: 'Universal Islands of Adventure',
+        path: '/parks/north-america/united-states/orlando/universal-islands-of-adventure',
+      },
+    ]).map((d) => d.park.name),
+    ['Islands of Adventure']
+  );
   test('reserve: each park day with its geography', reserveTripDays({ days: [a, b] }, region), [
     {
       park: {
@@ -2513,6 +2526,37 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       ['12', 'nagoya', 'tokyo', true],
       ['13', 'osaka', 'nagoya', true],
       ['14', 'osaka', null, false],
+    ]
+  );
+}
+
+// ── Day tickets grouped per resort ──────────────────────────────────────────
+{
+  const s = (id, resort, start, product = 'one-day', extra = {}) => ({
+    id,
+    resort,
+    product,
+    days: 1,
+    start,
+    end: start,
+    parks: [],
+    ...extra,
+  });
+  test(
+    'six day tickets are one group per resort and product, each where its first day starts',
+    suggestionGroups([
+      s('a', 'tdr', '2026-12-11'),
+      s('b', 'usj', '2026-12-15'),
+      s('c', 'tdr', '2026-12-12'),
+      s('d', 'fujiq', '2026-12-13'),
+      s('e', 'usj', '2026-12-17'),
+      s('f', 'usj', '2026-12-16', 'two-day'),
+    ]).map((g) => [g.resort, g.product, g.items.map((i) => i.start.slice(8))]),
+    [
+      ['tdr', 'one-day', ['11', '12']],
+      ['fujiq', 'one-day', ['13']],
+      ['usj', 'one-day', ['15', '17']],
+      ['usj', 'two-day', ['16']],
     ]
   );
 }

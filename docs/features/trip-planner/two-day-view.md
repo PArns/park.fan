@@ -33,6 +33,11 @@ context band, the party chips, the showtime strip, the axis and the action row a
 docks into. What follows the **primary** column stays panel-level — the headliner band, the
 free-block row, the totals — because a plan has exactly one active day.
 
+The park chooser lists the plan's planned days, not its parks: every day in date order with its
+park ("Sun, Dec 6 · Islands of Adventure", `plannedDayRows`), so a trip filed from the trip
+planner reads as its days, then the parks that hold no planned day yet. A row picks its park and
+its date in one step (`onPickDay`).
+
 Per column, because shared they would be bugs:
 
 - **The selection.** Entry ids are unique only within one (park, date) — `makeId` counts collisions

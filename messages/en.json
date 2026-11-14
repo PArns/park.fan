@@ -3594,7 +3594,9 @@
         "window": "A {days}-day {resort} ticket can be used on any {days} of the {window} days from its first day.",
         "second": "{resort}, second ticket",
         "notCovered": "Your {name} doesn’t cover {parks}.",
-        "promotion": "The {name} fits these days too."
+        "promotion": "The {name} fits these days too.",
+        "group": "{resort}: {count} × {days, plural, =1 {1-day ticket} other {#-day ticket}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Worth adding: {hopper}",

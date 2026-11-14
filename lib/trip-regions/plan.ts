@@ -1,4 +1,5 @@
 import { parkGeoFromUrl } from '@/lib/planner/park-url';
+import { shortParkName } from './hub-data';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import {
@@ -670,10 +671,16 @@ export interface PlanReservePark {
   timezone: string;
 }
 
-/** The region park as the day planner stores it, or `null` where its path names no geography. */
+/**
+ * The region park as the day planner stores it, or `null` where its path names no geography. It
+ * goes in by the name the trip planner calls it ("Islands of Adventure"), so the day planner's
+ * list of a trip's days reads as the plan did.
+ */
 export function plannerParkOf(park: TripRegionPark): PlanReservePark | null {
   const geo = parkGeoFromUrl(park.path);
-  return geo ? { slug: park.slug, name: park.name, geo, timezone: park.timezone } : null;
+  return geo
+    ? { slug: park.slug, name: shortParkName(park.name), geo, timezone: park.timezone }
+    : null;
 }
 
 /**
