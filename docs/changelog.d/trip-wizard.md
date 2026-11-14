@@ -33,3 +33,33 @@ Schritte vor dir erreichbar machen (`reachable`), und `useRegionScene` lädt die
 Neue Ereignisse: `trip_wizard_step`, `trip_wizard_finished`, `trip_wizard_closed` und
 `trip_spare_choice`; `trip_planner_started` kennt `landing` und `restart`, `trip_tickets_opened`
 kennt `wizard` ([Assistent](../features/trip-planner/wizard.md#the-trip-planners-assistant)).
+
+#### Hotel, Route, Hotels, Tempo und Abende
+
+Die Schritte nach Daten und Parks waren bisher eine Liste aus Radio-Gruppen und Checkboxen unter
+„Mehr Optionen“ (`PlanOptions`) und vier native Auswahllisten in der Route (`plan-route.tsx`). Jetzt
+ist jede Antwort eine Karte, ein Chip oder ein Stepper (`components/trip-regions/wizard/steps/`):
+
+- **Hotel** (Orlando, Kalifornien): die Hotelarten als Kacheln, darunter die Gegenden als Karten
+  mit Early Entry und den Wegen zu den Parks der Reise aus `travel.legs`, über einer schematischen
+  Karte aus den Koordinaten der API, ohne Kacheln eines Kartendienstes.
+- **Route** (Japan, Paris): Ankunft und Abreise als Karten, Stadt vor Flughafen, „Noch offen“
+  gestrichelt; Charles de Gaulle heißt „Der Plan wählt das Hotel“. Die Städte stehen auf einer Linie
+  mit Foto, Nächte-Stepper und der Fahrt dazwischen („Shinkansen, 3:30 Std.“). Städte zum
+  Dazunehmen sind gestrichelte Knöpfe statt „Stadt wählen“.
+- **Hotels** pro Stadt: `stayNote`, Karte und Gegend-Karten (Maihama: Tokyo Disneyland 10 Min. zu
+  Fuß, Tokyo DisneySea 15 Min. Monorail, Happy Entry), Städte mit bis zu vier Gegenden als Chips,
+  die Zeit für den Hotelwechsel als Segment. Parky fragt „Wo schläfst du in Tokio und Osaka?“.
+- **Tempo**: drei Karten mit einer Woche als Muster, die eigene Grenze mit Stepper. Die Karte für
+  einen Park am Anreisetag nennt den Tag: „Die Reise beginnt in Osaka. Universal Studios hat am
+  Do., 14. Jan. bis 20:00 offen.“
+- **Abende**: Abendvorschläge mit den Orten der Resorts als Chips, das Feuerwerk als zwei Kacheln,
+  Resorts zusammenhalten, und Park-Hopping ohne Hopper als gesperrte Karte mit dem Urteil der API:
+  „Mit Park Hopper kommt am Fr., 11. Dez. abends EPCOT dazu.“ und „Plan mit Park Hopper zeigen“.
+
+`PlanOptions`, `PlanRoute`, `PlanRouteOptions` und `PlanRadioGroup` sind entfernt, mit den 22 Schlüsseln
+unter `tripPlanner.options` und `tripPlanner.route`, die niemand mehr liest, und `hotelShort` und
+`fireworksWantShort` der Regionen. Die
+reine Logik (Muster, Wege, Karte, Tatsache am Reisetag) steht in
+`lib/trip-regions/wizard-choices.ts` und läuft in `pnpm test:wizard-choices`. Ablauf und
+Barrierefreiheit: [Assistent](../features/trip-planner/wizard.md#the-trip-planners-option-steps).

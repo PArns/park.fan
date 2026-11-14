@@ -3236,41 +3236,27 @@
     "options": {
       "hotel": "Hôtel",
       "area": "Quartier de l’hôtel",
-      "areaNone": "Non précisé",
       "areaNoneHint": "Le plan n’indique alors pas de trajets.",
-      "fromArea": "depuis {area}",
       "fireworksWant": "Je veux le voir",
       "fireworksAny": "Peu importe",
       "blocksHint": "Les jours d’un même resort à la suite, pour moins rouler entre les resorts.",
-      "blocksOn": "resorts à la suite",
-      "blocksOff": "resorts mélangés",
       "rest": "Jours de repos",
       "restAutoLabel": "Automatique",
       "restAutoHint": "Au plus quatre jours de parc d’affilée ; les jours de repos tombent sur les jours les plus chargés.",
       "restMaxLabel": "Ma propre limite",
-      "restMax": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée",
       "restNoneLabel": "Pas de jour de repos",
-      "restAuto": "repos les jours chargés",
-      "restMaxShort": "au plus {n} jours de parc d’affilée",
-      "restNone": "pas de jour de repos",
       "restFewer": "Un jour de moins",
       "restMore": "Un jour de plus",
       "hop": "Park hopping",
       "hopHint": "Deux parcs d’un même resort dans la journée, quand le voyage compte moins de jours que de visites.",
-      "hopOn": "park hopping",
       "evenings": "Soirées",
-      "eveningsOff": "pas de soirées",
       "blocksAuto": "Mélangés seulement si cela fait gagner du temps",
       "blocksAutoHint": "Dans les dates de tes billets, mélangés là où cela fait gagner au moins 3 min par attraction.",
       "blocksAlways": "Toujours groupés",
       "blocksFree": "Mélangés partout où l’attente est plus courte",
-      "travelDays": "Jours de voyage",
-      "travelDaysOn": "parc les jours de voyage",
       "split": "Deuxièmes jours de parc",
       "splitHint": "Les parcs sur « 1–2 jours » ont un deuxième jour si le voyage le permet.",
-      "splitOff": "pas de deuxième jour",
       "guide": "Plus de détails dans le guide du planificateur",
-      "hotelBasesHint": "Avec un hôtel, le plan compte son entrée anticipée et le trajet vers les parcs.",
       "moveBuffer": "Changement d’hôtel",
       "moveBufferMinutes": "{minutes} min",
       "moveBufferHint": "Le temps de rendre la chambre, porter les bagages et t’enregistrer, en plus du trajet."
@@ -3760,11 +3746,6 @@
       }
     },
     "route": {
-      "arrive": "Arrivée",
-      "leave": "Départ",
-      "gatewayOpen": "Pas encore choisi",
-      "gatewayShared": "{airports} ou pas encore choisi",
-      "gatewayAt": "{city} · {airports}",
       "stays": "Villes et nuits",
       "nights": "{count, plural, =1 {1 nuit} other {# nuits}}",
       "fixed": "fixé",
@@ -3777,10 +3758,7 @@
       "fewer": "{city} : une nuit de moins",
       "more": "{city} : une nuit de plus",
       "add": "Ajouter une ville",
-      "addPick": "Choisir une ville",
-      "total": "{nights, plural, =1 {1 nuit} other {# nuits}} dans {cities, plural, =1 {1 ville} other {# villes}}, {moves, plural, =0 {aucun changement d’hôtel} =1 {1 changement d’hôtel} other {# changements d’hôtel}}",
-      "stayShort": "{city} {count, plural, =1 {1 nuit} other {# nuits}}",
-      "summaryOpen": "Le plan choisit les villes et les nuits"
+      "total": "{nights, plural, =1 {1 nuit} other {# nuits}} dans {cities, plural, =1 {1 ville} other {# villes}}, {moves, plural, =0 {aucun changement d’hôtel} =1 {1 changement d’hôtel} other {# changements d’hôtel}}"
     },
     "parky": {
       "button": "Prépare avec Parky ton voyage idéal",
@@ -3799,6 +3777,48 @@
       "next": "Suivant",
       "finish": "Terminé, voir le plan",
       "showPlan": "Voir le plan",
+      "hotel": {
+        "lead": "Avec un hôtel du resort, tu entres plus tôt dans les parcs.",
+        "area": "Dans quel quartier ?",
+        "areaLead": "Les minutes sur les cartes sont les trajets vers tes parcs.",
+        "areaOfHotel": "Ton hôtel est dans le quartier {area}, il est donc déjà choisi."
+      },
+      "route": {
+        "arrive": "Où arrives-tu ?",
+        "leave": "Et d’où repars-tu ?",
+        "open": "Pas encore choisi",
+        "openHint": "Le plan choisit",
+        "openShared": "Le plan choisit l’hôtel",
+        "oneCity": "Pour {nights, plural, =1 {une nuit} other {# nuits}}, le plan propose une seule ville.",
+        "otherCities": "Autres villes"
+      },
+      "hotels": {
+        "ask": "Où dors-tu à {cities} ?",
+        "in": "Où dors-tu à {city} ?",
+        "open": "Je ne sais pas encore",
+        "openHint": "Les trajets partent alors de {area}, sans entrée anticipée.",
+        "moveBuffer": "Temps pour changer d’hôtel",
+        "map": "Carte schématique : {count, plural, =1 {un quartier} other {# quartiers}}, numérotés comme la liste en dessous, et {parks}.",
+        "mapAreas": "Carte schématique : {count, plural, =1 {un quartier} other {# quartiers}}, numérotés comme la liste en dessous."
+      },
+      "pace": {
+        "maxHint": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée, puis un jour de repos.",
+        "noneHint": "Un parc chaque jour tant qu’il en reste.",
+        "streak": "Jours de parc d’affilée",
+        "patternKey": "Chaque motif est une semaine : en bleu un jour de parc, en clair un jour de repos.",
+        "more": "Autre chose ?",
+        "startsIn": "Le voyage commence à {city}.",
+        "endsIn": "Le voyage se termine à {city}.",
+        "openUntil": "{park} est ouvert jusqu’à {time} le {date}.",
+        "opensAt": "{park} ouvre à {time} le {date}.",
+        "arrivalHint": "Le plan peut alors placer un parc le jour d’arrivée.",
+        "departureHint": "Le plan peut alors placer un parc le jour du départ."
+      },
+      "evenings": {
+        "hopLocked": "Ne compte qu’avec un billet {hopper}. L’étape suivante montre si cela vaut la peine pour ton plan.",
+        "hopFits": "Avec {hopper}, {parks} {count, plural, =1 {trouve} other {trouvent}} encore sa place.",
+        "hopEvening": "Avec {hopper}, la soirée du {date} ajoute {park}."
+      },
       "steps": {
         "dates": "Dates",
         "parks": "Parcs",
@@ -4032,18 +4052,9 @@
             "universal_premier": "Early Park Admission, plus Express à Universal Studios et Islands of Adventure",
             "offsite": "Pas d’entrée anticipée"
           },
-          "hotelShort": {
-            "disney": "Hôtel Disney",
-            "disney_deluxe": "Hôtel Disney Deluxe",
-            "disney_springs": "hôtel à Disney Springs",
-            "universal": "Hôtel Universal",
-            "universal_premier": "Universal Premier",
-            "offsite": "hôtel ailleurs"
-          },
           "fireworks": "Feu d’artifice de Magic Kingdom",
           "fireworksWantHint": "Tes jours à Magic Kingdom évitent les soirées de fête, où les visiteurs à la journée doivent partir plus tôt.",
           "fireworksAnyHint": "Une soirée de fête peut devenir un jour à Magic Kingdom si les files plus courtes compensent la journée plus courte.",
-          "fireworksWantShort": "feu d’artifice de Magic Kingdom",
           "blocks": "Garder ensemble les jours Disney et les jours Universal",
           "eveningsHint": "Quand un parc ferme tôt, le plan propose pour la soirée un deuxième parc ou Disney Springs et CityWalk.",
           "blocksTickets": "Jours Disney et jours Universal"
@@ -4375,14 +4386,9 @@
           "hotelHint": {
             "disney": "Disneyland Hotel, Grand Californian ou Pixar Place : à pied jusqu’aux deux parcs, sans entrée anticipée"
           },
-          "hotelShort": {
-            "disney": "Hôtel Disney",
-            "offsite": "autre hôtel"
-          },
           "fireworks": "Spectacles du soir",
           "fireworksWantHint": "Tes journées de parc évitent les soirées de fête, où les visiteurs du jour doivent partir plus tôt.",
           "fireworksAnyHint": "Une soirée de fête peut devenir une journée de parc si l’attente de pointe plus basse compense la journée plus courte.",
-          "fireworksWantShort": "Spectacles du soir",
           "eveningsHint": "Quand un parc ferme plus tôt, le plan propose une soirée : l’autre parc Disney, Downtown Disney ou Universal CityWalk."
         },
         "relaxed": {
@@ -4675,13 +4681,6 @@
             "universal": "À quelques minutes à pied de l’entrée",
             "park_hotel": "Highland Resort près de Fuji-Q ou LEGOLAND Japan Hotel à l’entrée ; l’entrée anticipée, Fuji-Q la vend lui-même, avec le One Day Pass avec Priority Admission",
             "offsite": "Pas d’entrée anticipée"
-          },
-          "hotelShort": {
-            "disney": "hôtel Disney",
-            "disney_deluxe": "MiraCosta ou Fantasy Springs",
-            "universal": "hôtel USJ",
-            "park_hotel": "hôtel de parc",
-            "offsite": "hôtel ailleurs"
           },
           "eveningsHint": "Si un parc ferme plus tôt, le plan propose pour la soirée IKSPIARI près des parcs Disney ou Universal CityWalk Osaka.",
           "moveBufferHint": "Avec des bagages envoyés à l’avance (takkyubin), 30 minutes suffisent en général."
@@ -4980,11 +4979,6 @@
             "disney": "Extra Magic Time, en général une heure avant l’ouverture dans les deux parcs Disney, Davy Crockett Ranch compris",
             "parc_asterix": "Early Entry : certaines attractions 30 minutes plus tôt",
             "offsite": "Hôtels partenaires et Paris compris, sans accès anticipé"
-          },
-          "hotelShort": {
-            "disney": "hôtel Disney",
-            "parc_asterix": "hôtel du Parc Astérix",
-            "offsite": "hôtel ailleurs"
           },
           "eveningsHint": "Si un parc ferme plus tôt, la soirée passe à l’autre parc Disney ou à Disney Village.",
           "moveBufferHint": "Avec tes valises jusqu’à l’hôtel suivant, 60 minutes sont réalistes."

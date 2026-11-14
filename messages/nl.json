@@ -3236,41 +3236,27 @@
     "options": {
       "hotel": "Hotel",
       "area": "Hotelgebied",
-      "areaNone": "Niet opgegeven",
       "areaNoneHint": "Het plan toont dan geen rijtijden.",
-      "fromArea": "vanaf {area}",
       "fireworksWant": "Wil ik zien",
       "fireworksAny": "Maakt niet uit",
       "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt.",
-      "blocksOn": "resorts achter elkaar",
-      "blocksOff": "resorts door elkaar",
       "rest": "Rustdagen",
       "restAutoLabel": "Automatisch",
       "restAutoHint": "Hoogstens vier parkdagen achter elkaar; de rustdagen vallen op de drukste dagen.",
       "restMaxLabel": "Eigen grens",
-      "restMax": "Hoogstens {n, plural, =1 {1 parkdag} other {# parkdagen}} achter elkaar",
       "restNoneLabel": "Geen rustdagen",
-      "restAuto": "rustdagen op drukke dagen",
-      "restMaxShort": "hoogstens {n} parkdagen achter elkaar",
-      "restNone": "geen rustdagen",
       "restFewer": "Een dag minder",
       "restMore": "Een dag meer",
       "hop": "Parkhoppen",
       "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
-      "hopOn": "parkhoppen",
       "evenings": "Avonden",
-      "eveningsOff": "geen avonden",
       "blocksAuto": "Alleen gemengd als het tijd scheelt",
       "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt.",
       "blocksAlways": "Altijd bij elkaar",
       "blocksFree": "Gemengd waar de wachttijden korter zijn",
-      "travelDays": "Reisdagen",
-      "travelDaysOn": "park op reisdagen",
       "split": "Tweede parkdagen",
       "splitHint": "Parken met “1–2 dagen” krijgen een tweede dag als de reis ruimte heeft.",
-      "splitOff": "geen tweede dagen",
       "guide": "Meer in de gids bij de reisplanner",
-      "hotelBasesHint": "Met een hotel rekent het plan met de vroege toegang en de weg naar de parken.",
       "moveBuffer": "Hotelwissel",
       "moveBufferMinutes": "{minutes} min.",
       "moveBufferHint": "Tijd voor uitchecken, bagage en inchecken, bovenop de rit."
@@ -3760,11 +3746,6 @@
       }
     },
     "route": {
-      "arrive": "Aankomst",
-      "leave": "Vertrek",
-      "gatewayOpen": "Nog open",
-      "gatewayShared": "{airports} of nog open",
-      "gatewayAt": "{city} · {airports}",
       "stays": "Steden en nachten",
       "nights": "{count, plural, =1 {1 nacht} other {# nachten}}",
       "fixed": "vast",
@@ -3777,10 +3758,7 @@
       "fewer": "{city}: een nacht minder",
       "more": "{city}: een nacht meer",
       "add": "Stad toevoegen",
-      "addPick": "Kies een stad",
-      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
-      "stayShort": "{city} {count, plural, =1 {1 nacht} other {# nachten}}",
-      "summaryOpen": "Het plan kiest de steden en nachten"
+      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}"
     },
     "parky": {
       "button": "Plan met Parky je perfecte reis",
@@ -3799,6 +3777,48 @@
       "next": "Verder",
       "finish": "Klaar, plan bekijken",
       "showPlan": "Plan bekijken",
+      "hotel": {
+        "lead": "Met een hotel van het resort kom je eerder de parken in.",
+        "area": "In welke buurt?",
+        "areaLead": "De minuten op de kaarten zijn de wegen naar je parken.",
+        "areaOfHotel": "Je hotel ligt in {area}, dus die buurt is al gekozen."
+      },
+      "route": {
+        "arrive": "Waar kom je aan?",
+        "leave": "En vanwaar ga je terug?",
+        "open": "Nog open",
+        "openHint": "Het plan kiest",
+        "openShared": "Het plan kiest het hotel",
+        "oneCity": "Voor {nights, plural, =1 {één nacht} other {# nachten}} stelt het plan één stad voor.",
+        "otherCities": "Andere steden"
+      },
+      "hotels": {
+        "ask": "Waar slaap je in {cities}?",
+        "in": "Waar slaap je in {city}?",
+        "open": "Weet ik nog niet",
+        "openHint": "De wegen gelden dan vanaf {area}, zonder vroege toegang.",
+        "moveBuffer": "Tijd voor de hotelwissel",
+        "map": "Schematische kaart: {count, plural, =1 {één buurt} other {# buurten}}, genummerd zoals de lijst eronder, en {parks}.",
+        "mapAreas": "Schematische kaart: {count, plural, =1 {één buurt} other {# buurten}}, genummerd zoals de lijst eronder."
+      },
+      "pace": {
+        "maxHint": "Hoogstens {n, plural, =1 {1 parkdag} other {# parkdagen}} achter elkaar, dan een rustdag.",
+        "noneHint": "Elke dag een park, zolang er parken over zijn.",
+        "streak": "Parkdagen achter elkaar",
+        "patternKey": "Elk patroon is een week: blauw een parkdag, licht een rustdag.",
+        "more": "Verder nog iets?",
+        "startsIn": "De reis begint in {city}.",
+        "endsIn": "De reis eindigt in {city}.",
+        "openUntil": "{park} is op {date} open tot {time}.",
+        "opensAt": "{park} gaat op {date} om {time} open.",
+        "arrivalHint": "Het plan mag dan een park op de aankomstdag zetten.",
+        "departureHint": "Het plan mag dan een park op de vertrekdag zetten."
+      },
+      "evenings": {
+        "hopLocked": "Telt alleen met een ticket met {hopper}. In de volgende stap zie je of het loont voor je plan.",
+        "hopFits": "Met {hopper} {count, plural, =1 {past} other {passen}} {parks} er nog in.",
+        "hopEvening": "Met {hopper} komt op {date} ’s avonds {park} erbij."
+      },
       "steps": {
         "dates": "Data",
         "parks": "Parken",
@@ -4032,18 +4052,9 @@
             "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure",
             "offsite": "Geen vroege toegang"
           },
-          "hotelShort": {
-            "disney": "Disney-hotel",
-            "disney_deluxe": "Disney-deluxehotel",
-            "disney_springs": "Disney Springs-hotel",
-            "universal": "Universal-hotel",
-            "universal_premier": "Universal Premier",
-            "offsite": "hotel elders"
-          },
           "fireworks": "Vuurwerk in Magic Kingdom",
           "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
           "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
-          "fireworksWantShort": "vuurwerk in Magic Kingdom",
           "blocks": "Disney-dagen en Universal-dagen bij elkaar houden",
           "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor.",
           "blocksTickets": "Disney-dagen en Universal-dagen"
@@ -4375,14 +4386,9 @@
           "hotelHint": {
             "disney": "Disneyland Hotel, Grand Californian of Pixar Place: lopend naar beide parken, zonder vroege toegang"
           },
-          "hotelShort": {
-            "disney": "Disney-hotel",
-            "offsite": "Ander hotel"
-          },
           "fireworks": "Avondshows",
           "fireworksWantHint": "Je parkdagen mijden feestavonden, waarop dagbezoekers eerder weg moeten.",
           "fireworksAnyHint": "Een feestavond kan een parkdag worden als de lagere piekwachttijd de kortere dag goedmaakt.",
-          "fireworksWantShort": "Avondshows",
           "eveningsHint": "Sluit een park eerder, dan stelt het plan iets voor de avond voor: het andere Disney-park, Downtown Disney of Universal CityWalk."
         },
         "relaxed": {
@@ -4675,13 +4681,6 @@
             "universal": "Een paar minuten lopen naar de ingang",
             "park_hotel": "Highland Resort bij Fuji-Q of LEGOLAND Japan Hotel bij de ingang; eerder naar binnen verkoopt Fuji-Q zelf, als One Day Pass met Priority Admission",
             "offsite": "Geen vroege toegang"
-          },
-          "hotelShort": {
-            "disney": "Disney-hotel",
-            "disney_deluxe": "MiraCosta of Fantasy Springs",
-            "universal": "USJ-hotel",
-            "park_hotel": "parkhotel",
-            "offsite": "hotel elders"
           },
           "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor.",
           "moveBufferHint": "Met vooruitgestuurde bagage (takkyubin) is 30 minuten meestal genoeg."
@@ -4980,11 +4979,6 @@
             "disney": "Extra Magic Time, meestal een uur voor de opening in beide Disney-parken; ook in Davy Crockett Ranch",
             "parc_asterix": "Early Entry: een paar attracties 30 minuten eerder",
             "offsite": "Ook partnerhotels en Parijs; geen vroegere toegang"
-          },
-          "hotelShort": {
-            "disney": "Disney-hotel",
-            "parc_asterix": "hotel Parc Astérix",
-            "offsite": "hotel elders"
           },
           "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village.",
           "moveBufferHint": "Met je koffers naar het volgende hotel is 60 minuten realistisch."

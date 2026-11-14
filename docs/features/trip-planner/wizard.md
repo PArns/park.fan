@@ -209,3 +209,71 @@ the first screen of a start is `trip_planner_started`. `trip_wizard_finished` (`
 3+; `early` for „Plan jetzt zeigen“ before the last step), `trip_wizard_closed` (`step`) for an
 assistant closed without the plan, `trip_spare_choice` (`choice`). The inventory:
 [analytics](../../development/analytics.md#our-own-events).
+
+## The trip planner's option steps
+
+The trip planner's assistant (`TripWizard`) asks Hotel or Route and Hotels, Tempo and Evenings
+after the dates and the parks. Each is a body in `components/trip-regions/wizard/steps/`,
+registered in `WIZARD_STEP_BODIES`, and draws only the questions `tripWizardSteps` hands it. Every
+answer goes through `usePlanContext().update` with the planner's own helpers (`chooseHotel`,
+`setGateway`, `setBaseNights`, `setBaseArea`, `setMoveBuffer`, `setSplit`), so the address stays
+the state. The pure halves are in `lib/trip-regions/wizard-choices.ts`, pinned by
+`pnpm test:wizard-choices`.
+
+- **Hotel** (Orlando, California): the hotel kinds as tiles with the line each region already has
+  (`hotelLabel`, `hotelHint`), then the area (`AreaPicker`). A hotel picks its area where none is
+  set, and the area's lead says so.
+- **Route** (Japan, Paris): arrival and departure as cards, the city first and its gateways small
+  (`gatewayChoices`). A gateway several bases share (Charles de Gaulle) is the dashed card that
+  leaves the hotel to the plan; without one, the dashed card is "Not decided yet". The cities
+  stand on a line with their number (`StayMarker`), a park photo, "by the plan" or "fixed", and a
+  nights stepper; between two stays the ride and its notes (`baseLegs`). Cities to add are dashed
+  buttons. A trip of one or two nights sleeps in one city, so the others fold away.
+- **Hotels** (Japan, Paris): per city the trip stays in, its `stayNote` and `AreaPicker`; then the
+  hotel change's minutes as a segment, only where the plan changes hotels. Until the plan answers,
+  the cities are the ones nearest the trip's parks (`homeBases`). Parky names the cities.
+- **Tempo**: automatic, an own limit or no rest days, each card with a week drawn as a pattern
+  (`pacePattern`, park days solid). Then second days and a park on each travel day; a travel
+  day's card names the city the trip starts or ends in and the park that closes last on the
+  arrival or opens first on the departure (`travelDayFact`). The region's planner guide is linked
+  here, the one link that explains the options at length.
+- **Evenings**: the evening switch with the places of the trip's resorts as chips, the fireworks
+  as two tiles, keeping Disney and Universal days together (three cards once tickets of both
+  resorts are entered), and park hopping. Without a hopper, hopping is a locked dashed card. Where
+  the API's verdict on a suggested ticket finds a park or an evening only the hopper adds, the card
+  says it ("Mit Park Hopper kommt am Fr., 11. Dez. abends EPCOT dazu.") and offers the plan with
+  it (`toggleHopper`, as the ticket card does). Japan's single evening question is drawn in Tempo.
+
+### The area picker
+
+A city with more than `AREA_CHIPS_MAX` (4) areas gets a card per area and a schematic map; fewer
+get chips with the chosen area's ways under them. A card carries the area's number, its early
+slot (`hotelAreas[].perks`, the words of `tripPlanner.marker.early`) and its ways to the trip's
+parks from `travel.legs` (`areaWays`, door to door with `legMinutes`, nearest first). Past
+`MAX_AREA_WAYS` parks the ways are one line per resort with the nearest and farthest minutes, so
+Orlando's seven headliners read as two lines. Where a way is a drive, the OSRM credit stands under
+the cards.
+
+The map is an SVG from the API's coordinates, no tiles, so it asks nothing of the network and
+both themes come from the tokens. `schematicMap` projects flat, fits the box and nudges places
+apart until no two overlap (Maihama and the DisneySea hotels are a kilometre apart, Shinjuku
+twenty), so it is a schematic, not to scale. Parks join a city's map only within
+`MAP_PARK_MINUTES` of one of its areas: Fuji-Q stays off Tokyo's map, its card still names the
+bus.
+
+### Accessibility and the statistic
+
+- Each single choice is a `WizardOptionGroup` named by Parky's question or the heading above it;
+  the area chips are pressed buttons in a group named the same way.
+- The map is `role="img"` with a name that counts the areas and lists the parks; the cards under
+  it are what is operated, and their numbers are the circles'.
+- The Tempo patterns are pictures (`aria-hidden`); each card's sentence says the same. The route
+  stepper shows the number and is heard as "4 nights".
+- A way on an area card is heard as the planner's sentence for its mode ("About 10 min on foot").
+- The locked hopping card is text, not a control; only its button is one.
+- Answers count as `trip_option_changed` through the state's diff, as before; the hopper button
+  counts `trip_hopper_toggled` like the ticket card's.
+
+`PlanOptions` (the radio and checkbox list), `PlanRoute` with its selects, `PlanRouteOptions` and
+`PlanRadioGroup` are gone; their keys under `tripPlanner.options` and `tripPlanner.route` that
+nothing reads any more went with them.

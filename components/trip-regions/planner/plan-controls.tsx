@@ -71,56 +71,6 @@ export function PlanCheckRow({
 }
 
 /**
- * One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a
- * 44 px row with an optional line under it.
- */
-export function PlanRadioGroup<T extends string>({
-  legend,
-  hint,
-  value,
-  options,
-  onChange,
-  disabled = false,
-}: {
-  legend: ReactNode;
-  /** One short line under the question, for the whole group. */
-  hint?: ReactNode;
-  value: T | null;
-  options: ReadonlyArray<{ value: T; label: ReactNode; hint?: ReactNode }>;
-  onChange: (value: T) => void;
-  disabled?: boolean;
-}) {
-  const name = useId();
-  return (
-    <fieldset className="flex flex-col" disabled={disabled}>
-      <legend className="mb-1 px-2 text-sm font-semibold">{legend}</legend>
-      {hint && <p className="text-muted-foreground mb-1 px-2 text-xs leading-snug">{hint}</p>}
-      {options.map((option) => (
-        <label
-          key={option.value}
-          className="hover:bg-accent/60 flex min-h-11 cursor-pointer items-start gap-3 rounded-lg px-2 py-2.5 transition-colors"
-        >
-          <input
-            type="radio"
-            name={name}
-            value={option.value}
-            checked={value === option.value}
-            onChange={() => onChange(option.value)}
-            className={cn('accent-primary mt-0.5 size-4 shrink-0', PLAN_FOCUS)}
-          />
-          <span className="flex min-w-0 flex-col gap-0.5">
-            <span className="text-sm leading-5">{option.label}</span>
-            {option.hint && (
-              <span className="text-muted-foreground text-xs leading-snug">{option.hint}</span>
-            )}
-          </span>
-        </label>
-      ))}
-    </fieldset>
-  );
-}
-
-/**
  * A few short choices side by side, one pressed: the planner's segmented control, as the Dates
  * step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
  */

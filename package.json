@@ -192,6 +192,7 @@
     "test:scheduled-posts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-scheduled-posts.mjs",
     "test:hub-chapters": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-hub-chapters.mjs",
     "test:wizard-steps": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-wizard-steps.mjs",
+    "test:wizard-choices": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-wizard-choices.mjs",
     "test:chapter-panel-padding": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-chapter-panel-padding.mjs",
     "test:widget-park-ref": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-widget-park-ref.mjs",
     "audit:media": "node scripts/audit-media.mjs",
