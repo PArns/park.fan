@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 13. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 14. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -114,10 +114,11 @@ export function DatenschutzDE() {
         </LegalList>
         <p>
           Im lokalen Speicher (Local Storage) Ihres Browsers legen wir Einstellungen ab, etwa das
-          Farbschema, Ihren Tagesplan, Ihre Benachrichtigungen, Ihre Entscheidung zur
-          Standortfreigabe und zur Statistik, dazu zwischengespeicherte Ergebnisse. Diese Daten
-          bleiben auf Ihrem Gerät. Was davon an unseren Server geht, steht in den Abschnitten zu
-          Tagesplaner und Push-Benachrichtigungen.
+          Farbschema, Ihren Tagesplan, die zuletzt im Reiseplaner geplante Reise je Region samt den
+          Angaben zu Ihrer Gruppe, die Sie Parky genannt haben, Ihre Benachrichtigungen, Ihre
+          Entscheidung zur Standortfreigabe und zur Statistik, dazu zwischengespeicherte Ergebnisse.
+          Diese Daten bleiben auf Ihrem Gerät. Was davon an unseren Server geht, steht in den
+          Abschnitten zu Tagesplaner, Parky und Push-Benachrichtigungen.
         </p>
         <p>
           Für diese Cookies und Einträge braucht es keine Einwilligung, weil sie für die von Ihnen
@@ -224,17 +225,21 @@ export function DatenschutzDE() {
           Sitzungsschlüssel, der zwei Stunden gilt. Mit jeder Frage sendet er an api.park.fan Ihren
           Text, die Sprache, den Pfad der Seite, auf der Sie gerade sind, Ihre Zeitzone und die
           Kennung des Chats. Außerdem sendet er, was Sie im Tagesplaner geplant haben (Parks, Tage,
-          Einträge und Ihre Angaben zur Gruppe, etwa die Größe des kleinsten Mitfahrers), welche
-          Erinnerungen Sie gesetzt haben und die Kennungen Ihrer Favoriten. Diese Angaben liegen
-          sonst nur in Ihrem Browser; Parky braucht sie, um Ihren Plan, Ihre Erinnerungen und
-          Favoriten zu lesen und auf Ihren Wunsch zu ändern. Ihren Standort sendet er nur, wenn Sie
+          Einträge und Ihre Angaben zur Gruppe, etwa die Größe des kleinsten Mitfahrers), die Reise,
+          die Sie im Reiseplaner gerade vor sich haben, und die zuletzt geplante Reise je Region
+          (Reisedaten, Parks, Hotel, Tickets und festgelegte Tage, dazu was Sie Parky über Ihre
+          Gruppe gesagt haben, etwa wie viele Sie sind und wie groß die Kinder), während eines
+          Interviews mit Parky, bei welcher Frage es steht, welche Erinnerungen Sie gesetzt haben und
+          die Kennungen Ihrer Favoriten. Diese Angaben liegen sonst nur in Ihrem Browser; Parky
+          braucht sie, um Ihre Pläne, Ihre Erinnerungen und Favoriten zu lesen und auf Ihren Wunsch zu
+          ändern. Ihren Standort sendet er nur, wenn Sie
           ihn im Chat ausdrücklich teilen. Der Server rundet ihn auf etwa einen Kilometer, nutzt ihn
           für die Antwort und speichert ihn nicht. Fragen Sie ohne geteilten Standort nach Parks in
           der Nähe, schätzt der Server Ihre ungefähre Lage aus Ihrer IP-Adresse.
         </p>
         <p>
-          Für die Antwort übergibt unser Server Ihre Frage, die letzten Nachrichten des Chats, Ihren
-          Plan und Ihre Erinnerungen wie oben beschrieben und die dafür abgefragten Parkdaten an das
+          Für die Antwort übergibt unser Server Ihre Frage, die letzten Nachrichten des Chats, Ihre
+          Pläne und Ihre Erinnerungen wie oben beschrieben und die dafür abgefragten Parkdaten an das
           Sprachmodell Claude der Anthropic PBC, 548 Market Street, PMB 90375, San Francisco, CA
           94104, USA. Ihre IP-Adresse erhält Anthropic nicht. Anthropic verarbeitet die Daten in
           unserem Auftrag, um die Antwort zu erzeugen, und nutzt sie nach seinen Bedingungen für
@@ -244,7 +249,9 @@ export function DatenschutzDE() {
         </p>
         <p>
           Auf unserem API-Server speichern wir den Chat, also Ihre Fragen und Parkys Antworten samt
-          der Abfragen, die er dafür gestellt hat, und Ihre Bewertung einer Antwort. So kann Parky
+          der Abfragen, die er dafür gestellt hat, und Ihre Bewertung einer Antwort. Ihre Pläne selbst
+          speichern wir nicht; in den Abfragen steht nur, was Parky dafür braucht, etwa Reisedaten
+          und Parks. So kann Parky
           im selben Gespräch an Früheres anknüpfen, und wir finden falsche Antworten. Eine
           IP-Adresse steht dabei nicht, nur eine Prüfsumme aus der Adresse, dem Tag und einem
           geheimen Schlüssel. Sie zeigt allein, welche Chats eines Tages von derselben Adresse
@@ -260,8 +267,9 @@ export function DatenschutzDE() {
         </p>
         <p>
           Im Sitzungsspeicher (Session Storage) Ihres Browsers liegen für die Dauer der Sitzung eine
-          Kopie des Chats, der Sitzungsschlüssel, ob Parky eingeschaltet ist und welche Sprüche er
-          schon gesagt hat. Mit dem Schließen des Tabs ist das gelöscht.
+          Kopie des Chats, der Sitzungsschlüssel, ob Parky eingeschaltet ist, welche Sprüche er schon
+          gesagt hat und, während eines Interviews, wie weit es ist. Mit dem Schließen des Tabs ist
+          das gelöscht.
         </p>
         <p>
           Rechtsgrundlage für den Chat ist die Bereitstellung der von Ihnen gewünschten Funktion
@@ -317,8 +325,10 @@ export function DatenschutzDE() {
           Sie dort Tickets angegeben und welchen Ticket-Link Sie angeklickt haben (ohne Ihre
           Reisedaten), dass Sie einen Link zur Website oder zum Ticketshop eines Parks angeklickt
           oder eine Seite geteilt haben, ob Parky erschienen ist und ob Sie ihn oder einen seiner
-          Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag war oder getippt wurde und
-          wie die Antwort ausging, wie Sie auf die Frage nach Benachrichtigungen geantwortet haben
+          Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag, getippt oder ein
+          angetippter Antwortvorschlag war und wie die Antwort ausging, ob Sie Parkys Interview
+          begonnen und beendet haben, ob Parky einen Ihrer Pläne geändert hat (welche Art von
+          Änderung, nie ihr Inhalt), wie Sie auf die Frage nach Benachrichtigungen geantwortet haben
           oder dass eine Fehlerseite angezeigt wurde. Steht ein Beitrag, ein Park oder eine
           Attraktion fünf Sekunden im Vordergrund, zählt das als Lesen. Bei Beiträgen halten wir
           außerdem fest, ob Sie ein Viertel, die Hälfte, drei Viertel oder alles gelesen haben.

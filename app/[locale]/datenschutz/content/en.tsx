@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 13 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 14 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -110,9 +110,10 @@ export function DatenschutzEN() {
         </LegalList>
         <p>
           In your browser's local storage we keep settings such as the color scheme, your day plan,
-          your notifications, your choices on location access and on statistics, and cached results.
-          This data stays on your device. The sections on the day planner and on push notifications
-          say which parts of it go to our server.
+          the trip you last planned in the trip planner for each region together with what you told
+          Parky about your group, your notifications, your choices on location access and on
+          statistics, and cached results. This data stays on your device. The sections on the day
+          planner, on Parky and on push notifications say which parts of it go to our server.
         </p>
         <p>
           These cookies and entries need no consent, because they are strictly necessary for the
@@ -214,15 +215,19 @@ export function DatenschutzEN() {
           valid for two hours. With every question it sends api.park.fan your text, the language,
           the path of the page you are on, your time zone and the chat's ID. It also sends what you
           have planned in the day planner (parks, days, entries and what you entered about your
-          group, such as the height of its shortest rider), the reminders you have set and the IDs
-          of your favourites. These otherwise stay in your browser; Parky needs them to read your
-          plan, reminders and favourites and to change them when you ask. It sends your location
+          group, such as the height of its shortest rider), the trip you have open in the trip
+          planner and the trip you last planned for each region (travel dates, parks, hotel, tickets
+          and fixed days, plus what you told Parky about your group, such as how many of you there
+          are and how tall the children are), during an interview with Parky which question it has
+          reached, the reminders you have set and the IDs of your favourites. These otherwise stay in
+          your browser; Parky needs them to read your plans, reminders and favourites and to change
+          them when you ask. It sends your location
           only if you share it in the chat yourself. The server rounds it to about one kilometre,
           uses it for the answer and does not store it. If you ask about nearby parks without
           sharing your location, the server estimates your rough position from your IP address.
         </p>
         <p>
-          To answer, our server passes your question, the latest messages of the chat, your plan and
+          To answer, our server passes your question, the latest messages of the chat, your plans and
           reminders as described above, and the park data looked up for it to the language model
           Claude by Anthropic PBC, 548 Market Street, PMB 90375, San Francisco, CA 94104, USA.
           Anthropic does not receive your IP address. Anthropic processes the data on our behalf to
@@ -233,7 +238,9 @@ export function DatenschutzEN() {
         </p>
         <p>
           Our API server stores the chat, that is your questions and Parky's answers together with
-          the lookups it made for them, and your rating of an answer. This lets Parky refer back to
+          the lookups it made for them, and your rating of an answer. We do not store your plans
+          themselves; the lookups hold only what Parky needs for them, such as travel dates and
+          parks. This lets Parky refer back to
           earlier messages in the same conversation and lets us find wrong answers. No IP address is
           stored with it, only a checksum made from the address, the day and a secret key. It shows
           nothing but which chats of one day came from the same address and cannot be turned back
@@ -248,8 +255,8 @@ export function DatenschutzEN() {
         </p>
         <p>
           For the length of the session, your browser's session storage holds a copy of the chat,
-          the session key, whether Parky is switched on and which lines it has already said. Closing
-          the tab deletes them.
+          the session key, whether Parky is switched on, which lines it has already said and, during
+          an interview, how far it has got. Closing the tab deletes them.
         </p>
         <p>
           The legal basis for the chat is providing the feature you asked for (Art. 6(1)(b) GDPR);
@@ -299,7 +306,9 @@ export function DatenschutzEN() {
           you used in the trip planner, whether you entered tickets there and which ticket link you
           clicked (without your travel dates), that you clicked a link to a park's website or ticket
           shop or shared a page, whether Parky appeared and whether you clicked it or one of its
-          lines, whether a question to Parky was a suggestion or typed and how the answer ended, how
+          lines, whether a question to Parky was a suggestion, typed or a suggested reply you tapped
+          and how the answer ended, whether you started and ended Parky's interview, whether Parky
+          changed one of your plans (what kind of change, never its content), how
           you answered the question about notifications, or that an error page was shown. If a post,
           a park or an attraction is in the foreground for five seconds, that counts as a read. For
           posts we also note whether you read a quarter, half, three quarters or all of it. If an
