@@ -289,7 +289,7 @@ export function TripWizard({
           {!finale && dated && !searching && <PlanRibbon onShow={() => finish(true)} />}
           <div className="flex items-center gap-1 sm:gap-2">
             {index > 0 && (
-              <Button variant="ghost" onClick={() => go(index - 1, 'back')}>
+              <Button variant="outline" onClick={() => go(index - 1, 'back')}>
                 {t('back')}
               </Button>
             )}
@@ -298,7 +298,7 @@ export function TripWizard({
               <Button
                 variant="ghost"
                 // On the last step a phone has no room for all three, and Skip finishes as Done does.
-                className={cn('text-muted-foreground', index >= last && 'max-sm:hidden')}
+                className={cn(index >= last && 'max-sm:hidden')}
                 onClick={() => go(index + 1, 'skip')}
                 data-wizard-skip=""
               >

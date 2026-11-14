@@ -146,7 +146,9 @@ theme.
 
 - **Rail:** the step's labels („Daten, Parks, Route, Hotels, Tempo, Tickets“), walked steps as
   buttons, and once the dates are chosen every step.
-- **Footer:** the plan ribbon once the trip has dates, then Back, Skip and Next. The first step has
+- **Footer:** the plan ribbon once the trip has dates, then Back, Skip and Next: Back an `outline`
+  button, Skip a `ghost` in the text colour, Next the solid primary, so only Next is filled and both
+  others read at more than 15 : 1 in either theme. The first step has
   neither Back nor Skip, and Next waits for the departure; in the When mode it reads „Reisedaten
   suchen“ and leaves for the search's answer. The last step's Next is „Fertig, Plan ansehen“, which
   leads to the finale; a phone hides its Skip there, which would do the same and leaves the label
@@ -156,7 +158,9 @@ theme.
   focus in it.
 
 `PlanRibbon` (`plan-ribbon.tsx`) is the plan as one row: a field per day, a park day in its crowd
-colour with the park's code (`parkLabel`), a free day empty, a travel day dashed. The row is
+colour with the park's code (`parkLabel`), a travel day dashed, and a day without a park outlined
+in the muted ink with the Month view's mark (a sun for a free day, a bed for a rest day, the planes
+on the arrival and departure), seen on the dark ground and still quieter than a park day. The row is
 `aria-hidden`; the line under it („6 Parktage, 8 frei · Spitze etwa 78 Min.“, the peak from
 `planSavings` and `shownTotals` as the result's) is `aria-live` and changes once the API has
 answered, not on each press.
@@ -266,11 +270,20 @@ Orlando's seven headliners read as two lines. Where a way is a drive, the OSRM c
 the cards.
 
 The map is an SVG from the API's coordinates, no tiles, so it asks nothing of the network and
-both themes come from the tokens. `schematicMap` projects flat, fits the box and nudges places
-apart until no two overlap (Maihama and the DisneySea hotels are a kilometre apart, Shinjuku
-twenty), so it is a schematic, not to scale. Parks join a city's map only within
-`MAP_PARK_MINUTES` of one of its areas: Fuji-Q stays off Tokyo's map, its card still names the
-bus.
+both themes come from the tokens. `layoutSchematicMap` lays it out in pixels for the width the
+picker has (`useWidth`): a flat projection with true proportions (longitude by the cosine of the
+middle latitude), fitted to the bounding box of every area and park with 22 px at the edges. The
+map is as tall as that box asks at the full width, between 150 and 300 px, and only as wide as the
+places need at that height. Orlando runs north to south, so its map is about 270 px wide and stands
+beside the cards at a desk, where a wide box had kept its markers in the middle third; Tokyo runs
+west to east and takes the full width. Markers nearer than their radii are nudged apart (Maihama
+and the DisneySea hotels are a kilometre apart, Shinjuku twenty), so it is a schematic, not to
+scale. Each park code then takes the first of eight spots around its triangle that is inside the
+map and clear of every marker and every code placed before it, else the same a step further out
+with a line back; markers never move for a label. The chosen area is filled, larger and ringed,
+the others outlined in the muted ink, and a legend under the map says which mark is a park and
+which an area. Parks join a city's map only within `MAP_PARK_MINUTES` of one of its areas: Fuji-Q
+stays off Tokyo's map, its card still names the bus.
 
 ### Accessibility and the statistic
 

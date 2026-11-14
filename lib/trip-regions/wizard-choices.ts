@@ -162,94 +162,239 @@ export interface MapPlace {
   key: string;
   latitude: number;
   longitude: number;
+  /** Half the marker's size: the room around the point that nothing else may take. */
+  radius: number;
+  /** The size of the place's label, for a place that carries one beside its marker. */
+  label?: { width: number; height: number };
 }
 
-/** A place where the map draws it, in the box's own units, north up. */
+/** A place where the map draws it, in pixels from the map's top left corner, north up. */
 export interface MapPoint {
   key: string;
   x: number;
   y: number;
+  radius: number;
 }
-
-/** The box a schematic map is drawn in, the room kept at its edge, and the least gap between two places. */
-export interface MapBox {
-  width: number;
-  height: number;
-  pad: number;
-  gap: number;
-}
-
-/** Rounds of nudging before the map gives up on a gap; a city has at most a dozen places. */
-const SPREAD_ROUNDS = 60;
 
 /**
- * Places on a schematic map, no tiles: the coordinates projected flat (longitude by the cosine of
- * the middle latitude, north up), fitted into the box with `pad` at the edges and centred, then
- * nudged apart until no two are nearer than `gap`, so a cluster (Maihama and the DisneySea hotels a
- * kilometre apart beside Shinjuku twenty away) stays readable. Once nudged it is not to scale,
- * which is what schematic means here. The same places always land in the same spots.
+ * A label where the map draws it: the centre of its box, and whether it stands away from its marker
+ * and needs a line back to it.
  */
-export function schematicMap(places: readonly MapPlace[], box: MapBox): MapPoint[] {
-  if (places.length === 0) return [];
+export interface MapLabel {
+  key: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  leader: boolean;
+}
+
+/** The room a schematic map may take: the width it has, the heights it keeps to, the margin inside. */
+export interface MapFrame {
+  maxWidth: number;
+  minHeight: number;
+  maxHeight: number;
+  /** Kept free at every edge, so a marker and its label stay inside. */
+  pad: number;
+}
+
+/** A schematic map laid out: its own size, the markers and the labels. */
+export interface MapLayout {
+  width: number;
+  height: number;
+  points: MapPoint[];
+  labels: MapLabel[];
+}
+
+/** The least room between two markers, beyond their radii. */
+const MARKER_GAP = 4;
+
+/** The room between a marker and its label. */
+const LABEL_GAP = 3;
+
+/** How far a label may stand off before its candidates run out; it then gets a leader line. */
+const LEADER_STEP = 16;
+
+/** Rounds of nudging before the map gives up on a gap; a city has at most a dozen places. */
+const SPREAD_ROUNDS = 80;
+
+/** A map is never narrower than this, so a city laid out north to south still has room for labels. */
+const MIN_MAP_WIDTH = 180;
+
+/**
+ * A city's hotel areas and parks on a schematic map, no tiles, sized to the places themselves. The
+ * coordinates are projected flat with true proportions (longitude by the cosine of the middle
+ * latitude, north up) and fitted to the bounding box of every place with `pad` at the edges. The
+ * map is as tall as that box asks at the full width, within `minHeight` and `maxHeight`, and only as
+ * wide as the places need at that height, so a city that runs north to south (Orlando) is a narrow
+ * map rather than a wide box with a column of markers in the middle. Markers nearer than their radii
+ * are nudged apart, so it is a schematic, not to scale. Labels are then placed one by one: below,
+ * above, right, left and the four corners of the marker, then the same a step further out with a
+ * leader line, keeping the first spot that overlaps no marker and no label placed before it. Markers
+ * never move for a label. The same places always give the same map.
+ */
+export function layoutSchematicMap(places: readonly MapPlace[], frame: MapFrame): MapLayout {
+  if (places.length === 0) return { width: 0, height: 0, points: [], labels: [] };
   const lats = places.map((p) => p.latitude);
   const midLat = ((Math.min(...lats) + Math.max(...lats)) / 2) * (Math.PI / 180);
-  const flat = places.map((p) => ({
-    key: p.key,
-    x: p.longitude * Math.cos(midLat),
-    y: -p.latitude,
-  }));
+  const flat = places.map((p) => ({ x: p.longitude * Math.cos(midLat), y: -p.latitude }));
   const xs = flat.map((p) => p.x);
   const ys = flat.map((p) => p.y);
   const [minX, minY] = [Math.min(...xs), Math.min(...ys)];
   const spanX = Math.max(...xs) - minX;
   const spanY = Math.max(...ys) - minY;
-  const innerW = box.width - 2 * box.pad;
-  const innerH = box.height - 2 * box.pad;
+  const pad = frame.pad;
+  const fullInner = frame.maxWidth - 2 * pad;
+  const wanted =
+    spanX > 0
+      ? fullInner * (spanY / spanX) + 2 * pad
+      : spanY > 0
+        ? frame.maxHeight
+        : frame.minHeight;
+  const exactHeight = Math.min(frame.maxHeight, Math.max(frame.minHeight, wanted));
+  const height = Math.round(exactHeight);
+  const innerH = exactHeight - 2 * pad;
   const scale = Math.min(
-    spanX > 0 ? innerW / spanX : Infinity,
+    spanX > 0 ? fullInner / spanX : Infinity,
     spanY > 0 ? innerH / spanY : Infinity
   );
   const k = Number.isFinite(scale) ? scale : 0;
-  const offX = box.pad + (innerW - spanX * k) / 2;
-  const offY = box.pad + (innerH - spanY * k) / 2;
-  const points = flat.map((p) => ({
+  const width = Math.round(
+    Math.min(frame.maxWidth, Math.max(Math.min(frame.maxWidth, MIN_MAP_WIDTH), spanX * k + 2 * pad))
+  );
+  const offX = (width - spanX * k) / 2;
+  const offY = (height - spanY * k) / 2;
+  const points: MapPoint[] = places.map((p, i) => ({
     key: p.key,
-    x: offX + (p.x - minX) * k,
-    y: offY + (p.y - minY) * k,
+    x: offX + (flat[i].x - minX) * k,
+    y: offY + (flat[i].y - minY) * k,
+    radius: p.radius,
   }));
-  spread(points, box);
-  return points.map((p) => ({ key: p.key, x: round1(p.x), y: round1(p.y) }));
+  spread(points, width, height);
+  const rounded = points.map((p) => ({ ...p, x: round1(p.x), y: round1(p.y) }));
+  return { width, height, points: rounded, labels: placeLabels(places, rounded, width, height) };
 }
 
-/** Push every pair nearer than the gap apart, half each, and keep them inside the padded box. */
-function spread(points: MapPoint[], box: MapBox): void {
-  const clamp = (v: number, max: number) => Math.min(max - box.pad, Math.max(box.pad, v));
+/** Push every pair of markers nearer than their radii apart, half each, inside the map. */
+function spread(points: MapPoint[], width: number, height: number): void {
+  const clamp = (v: number, r: number, max: number) => Math.min(max - r - 1, Math.max(r + 1, v));
   for (let round = 0; round < SPREAD_ROUNDS; round += 1) {
     let moved = false;
     for (let i = 0; i < points.length; i += 1) {
       for (let j = i + 1; j < points.length; j += 1) {
         const a = points[i];
         const b = points[j];
+        const gap = a.radius + b.radius + MARKER_GAP;
         let dx = b.x - a.x;
         let dy = b.y - a.y;
         let d = Math.hypot(dx, dy);
-        if (d >= box.gap) continue;
+        if (d >= gap) continue;
         if (d < 1e-6) {
           // Two places on one spot part along a fixed angle per pair, so the result is stable.
           const angle = (i * 7 + j * 3) * 0.7;
           [dx, dy, d] = [Math.cos(angle), Math.sin(angle), 1];
         }
-        const push = (box.gap - d) / 2 + 0.01;
+        const push = (gap - d) / 2 + 0.01;
         const [ux, uy] = [dx / d, dy / d];
-        a.x = clamp(a.x - ux * push, box.width);
-        a.y = clamp(a.y - uy * push, box.height);
-        b.x = clamp(b.x + ux * push, box.width);
-        b.y = clamp(b.y + uy * push, box.height);
+        a.x = clamp(a.x - ux * push, a.radius, width);
+        a.y = clamp(a.y - uy * push, a.radius, height);
+        b.x = clamp(b.x + ux * push, b.radius, width);
+        b.y = clamp(b.y + uy * push, b.radius, height);
         moved = true;
       }
     }
     if (!moved) return;
   }
+}
+
+interface Box {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
+const overlap = (a: Box, b: Box): number =>
+  Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) *
+  Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+
+/** Where a label may stand around its marker, nearest first: below, above, right, left, corners. */
+function labelSpots(point: MapPoint, w: number, h: number, ring: number) {
+  const r = point.radius + LABEL_GAP + ring * LEADER_STEP;
+  const [dx, dy] = [r + w / 2, r + h / 2];
+  return [
+    [0, dy],
+    [0, -dy],
+    [dx, 0],
+    [-dx, 0],
+    [dx, dy],
+    [-dx, dy],
+    [dx, -dy],
+    [-dx, -dy],
+  ].map(([x, y]) => ({ x: point.x + x, y: point.y + y }));
+}
+
+/**
+ * Each label in the first of its spots that stays inside the map and clear of every marker and of
+ * the labels already placed; the nearer ring first, then one a step out with a leader line. Where
+ * no spot is clear, the one that covers least.
+ */
+function placeLabels(
+  places: readonly MapPlace[],
+  points: readonly MapPoint[],
+  width: number,
+  height: number
+): MapLabel[] {
+  const markers: Box[] = points.map((p) => ({
+    left: p.x - p.radius,
+    top: p.y - p.radius,
+    right: p.x + p.radius,
+    bottom: p.y + p.radius,
+  }));
+  const taken: Box[] = [];
+  const labels: MapLabel[] = [];
+  places.forEach((place, i) => {
+    if (!place.label) return;
+    const { width: w, height: h } = place.label;
+    let best: { x: number; y: number; ring: number; cost: number } | null = null;
+    for (const ring of [0, 1]) {
+      for (const spot of labelSpots(points[i], w, h, ring)) {
+        const box = {
+          left: spot.x - w / 2,
+          top: spot.y - h / 2,
+          right: spot.x + w / 2,
+          bottom: spot.y + h / 2,
+        };
+        const outside =
+          Math.max(0, -box.left) +
+          Math.max(0, box.right - width) +
+          Math.max(0, -box.top) +
+          Math.max(0, box.bottom - height);
+        const cost =
+          outside * 1000 +
+          [...markers, ...taken].reduce((sum, other) => sum + overlap(box, other), 0);
+        if (best === null || cost < best.cost) best = { ...spot, ring, cost };
+        if (cost === 0) break;
+      }
+      if (best && best.cost === 0) break;
+    }
+    if (!best) return;
+    taken.push({
+      left: best.x - w / 2,
+      top: best.y - h / 2,
+      right: best.x + w / 2,
+      bottom: best.y + h / 2,
+    });
+    labels.push({
+      key: place.key,
+      x: round1(best.x),
+      y: round1(best.y),
+      width: w,
+      height: h,
+      leader: best.ring > 0,
+    });
+  });
+  return labels;
 }
 
 const round1 = (v: number) => Math.round(v * 10) / 10;
