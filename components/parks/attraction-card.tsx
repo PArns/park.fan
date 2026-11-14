@@ -501,13 +501,15 @@ export function AttractionCard({
             {/* Beside the season badge, never instead of it: a ride can be out of season AND
                 behind hoardings, and the status badge above says `CLOSED` for both. */}
             <WorksPeriodBadge worksPeriods={worksPeriods} todayIso={todayIso} insideLink />
-            {'isSeasonal' in attraction && attraction.isSeasonal && (
+            {'isSeasonal' in attraction && (attraction.isSeasonal || attraction.pausedBySeason) && (
               <SeasonalBadge
                 seasonMonths={'seasonMonths' in attraction ? attraction.seasonMonths : null}
                 isCurrentlyInSeason={
                   'isCurrentlyInSeason' in attraction ? attraction.isCurrentlyInSeason : null
                 }
                 boundSeason={'boundSeason' in attraction ? attraction.boundSeason : undefined}
+                pausedBySeason={attraction.pausedBySeason}
+                todayIso={todayIso}
               />
             )}
             <AttractionMetaBadges

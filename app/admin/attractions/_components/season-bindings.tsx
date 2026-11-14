@@ -10,17 +10,32 @@ import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../
 import {
   SEASON_STATUS_LABELS,
   bindableSeasons,
-  namesRide,
+  seasonRideMode,
   seasonListPath,
   seasonRidePatch,
   seasonTitle,
 } from '../../_lib/seasons';
 import type { CuratedField, ParkSeason } from '../../_lib/types';
-import { Switch } from '../../_ui/controls';
+import type { SeasonRideMode } from '../../_lib/seasons';
+import { Segmented } from '../../_ui/controls';
 import { Chip, Notice } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
 import { SeasonEditor } from '../../seasons/_components/season-editor';
 import { SeasonSummary } from '../../seasons/_components/season-summary';
+
+/** The three ways a season can hold this ride, as the row's segmented control offers them. */
+const MODES: ReadonlyArray<{ value: SeasonRideMode; label: string; title: string }> = [
+  { value: 'none', label: '—', title: 'Nicht gebunden' },
+  { value: 'only', label: 'Nur während', title: 'Die Bahn gibt es nur in dieser Saison' },
+  { value: 'paused', label: 'Nicht während', title: 'Die Bahn schließt für diese Saison' },
+];
+
+/** The toast after a change, by what the ride is now. */
+const MODE_SAVED: Record<SeasonRideMode, string> = {
+  none: 'Bindung gelöst',
+  only: 'Läuft nur während der Saison',
+  paused: 'Pausiert während der Saison',
+};
 
 /**
  * Why a binding changes nothing, in the order of the API's resolver (`resolveCuratedFacts`): the
@@ -45,10 +60,11 @@ function curatedSeason(fields: readonly CuratedField[]) {
 
 /**
  * „An Saison gebunden“, under the „Saison“ fields of a ride: the running and coming seasons of its
- * park that can bind a ride (`bindableSeasons`), each with its icon, name, dates and status and a
- * switch that puts this ride into the season's `attractionIds` or takes it out. That is the list
- * the season form's ride picker edits, written through the same `PATCH seasons/:id`, so the two
- * cannot disagree. A season's name opens the shared season form.
+ * park that can bind a ride (`bindableSeasons`), each with its icon, name, dates and status and
+ * „—“, „Nur während“ or „Nicht während“: the ride in the season's `attractionIds`, in its
+ * `pausedAttractionIds` or in neither (`seasonRidePatch`). Those are the lists the season form's two
+ * ride pickers edit, written through the same `PATCH seasons/:id`, so the two cannot disagree. A
+ * season's name opens the shared season form.
  *
  * The ride's own curation outranks a binding (the API's `resolveCuratedFacts`): curated months or a
  * curated „Nein“ decide over every season, so a bound ride with either says so, with the button
@@ -86,7 +102,7 @@ export function SeasonBindings({
     path
   );
   const shown = bindableSeasons(seasons.data?.seasons ?? [], today);
-  const bound = shown.some((season) => namesRide(season, attractionId));
+  const bound = shown.some((season) => seasonRideMode(season, attractionId) !== 'none');
   const curated = curatedSeason(fields);
   const outranked = bound && (curated.months || curated.no);
 
@@ -99,20 +115,17 @@ export function SeasonBindings({
       adminKeys.history()
     );
 
-  async function toggle(season: ParkSeason, next: boolean) {
-    if (busy) return;
+  async function choose(season: ParkSeason, mode: SeasonRideMode) {
+    if (busy || mode === seasonRideMode(season, attractionId)) return;
     setBusy(season.id);
     setError(null);
     try {
       await adminFetch(`/api/admin/content/seasons/${season.id}`, {
         method: 'PATCH',
-        body: seasonRidePatch(season, attractionId, next),
+        body: seasonRidePatch(season, attractionId, mode),
       });
       refresh();
-      toast.push({
-        title: next ? 'An die Saison gebunden' : 'Bindung gelöst',
-        tone: 'success',
-      });
+      toast.push({ title: MODE_SAVED[mode], tone: 'success' });
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Speichern fehlgeschlagen');
     } finally {
@@ -156,9 +169,10 @@ export function SeasonBindings({
         </Link>
       </div>
       <p className="text-muted-foreground text-xs">
-        Eine Bahn, die es nur in einer Saison gibt (Eisbahn, Maze), gilt außerhalb ihrer Tage als
-        außer Saison, nicht als geschlossen. Eine Bahn, die das Event nur umgestaltet, gehört nicht
-        hierher.
+        „Nur während“: die Bahn gibt es nur in der Saison (Eisbahn, Maze), außerhalb ihrer Tage gilt
+        sie als außer Saison. „Nicht während“: die Bahn läuft das ganze Jahr und schließt für die
+        Saison (River Quest während Wintertraum). Eine Bahn, die das Event nur umgestaltet, gehört
+        zu keinem von beiden.
       </p>
 
       {outranked && (
@@ -203,14 +217,14 @@ export function SeasonBindings({
       ) : (
         <ul className="divide-border/40 divide-y">
           {shown.map((season) => {
-            const on = namesRide(season, attractionId);
             return (
               <li key={season.id} className="flex flex-wrap items-center gap-x-3 gap-y-1 py-2">
-                <Switch
-                  checked={on}
+                <Segmented
+                  label={`„${seasonTitle(season)}“ und diese Bahn`}
+                  options={MODES}
+                  value={seasonRideMode(season, attractionId)}
+                  onChange={(mode) => void choose(season, mode)}
                   disabled={!canEdit || busy !== null}
-                  onCheckedChange={(next) => void toggle(season, next)}
-                  label={<span className="sr-only">{`An „${seasonTitle(season)}“ binden`}</span>}
                 />
                 <button
                   type="button"

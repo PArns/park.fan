@@ -147,6 +147,9 @@ export function SeasonRow({
                 : `${season.attractionIds.length} Fahrgeschäfte`}
             </span>
           )}
+          {season.pausedAttractionIds && season.pausedAttractionIds.length > 0 && (
+            <span>{season.pausedAttractionIds.length} pausiert</span>
+          )}
           {season.confirmedAt && <span>geprüft {formatAgo(season.confirmedAt)}</span>}
         </p>
 
@@ -322,6 +325,7 @@ export function SeasonEditor({
     price: useFieldId('season-price'),
     currency: useFieldId('season-currency'),
     rides: useFieldId('season-rides'),
+    pausedRides: useFieldId('season-paused-rides'),
     url: useFieldId('season-url'),
     sourceUrl: useFieldId('season-source'),
     confirmedAt: useFieldId('season-confirmed'),
@@ -347,6 +351,26 @@ export function SeasonEditor({
     label: ride.name,
     hint: ride.retiredAt ? 'stillgelegt' : (ride.land ?? undefined),
   }));
+
+  /** The park's rides for one of the season's two ride lists: the form asks for both alike. */
+  const ridePicker = (id: string, list: 'attractionIds' | 'pausedAttractionIds') => (
+    <MultiSearchSelect
+      id={id}
+      value={draft[list]}
+      onChange={(value) => set(list, value)}
+      options={rideOptions}
+      placeholder={
+        !park
+          ? 'Erst den Park wählen'
+          : rides.isLoading
+            ? 'Fahrgeschäfte werden geladen…'
+            : 'Fahrgeschäft hinzufügen'
+      }
+      searchPlaceholder="Fahrgeschäft suchen…"
+      disabled={!park || rides.isLoading || rides.isError}
+      fuzzy="attraction"
+    />
+  );
 
   const problems = useMemo(() => seasonProblems(draft), [draft]);
   const body = useMemo(() => seasonBody(draft), [draft]);
@@ -457,7 +481,13 @@ export function SeasonEditor({
                     value={park}
                     onValueChange={(next) => {
                       // Rides belong to their park; a new park starts without any.
-                      if (next !== park) set('attractionIds', []);
+                      if (next !== park) {
+                        update((current) => ({
+                          ...current,
+                          attractionIds: [],
+                          pausedAttractionIds: [],
+                        }));
+                      }
                       setPark(next);
                     }}
                     options={parkCatalogOptions(parks.data?.parks ?? [])}
@@ -601,23 +631,18 @@ export function SeasonEditor({
                       : 'Leer, wenn es um den ganzen Park geht.'
                 }
               >
-                <MultiSearchSelect
-                  id={ids.rides}
-                  value={draft.attractionIds}
-                  onChange={(value) => set('attractionIds', value)}
-                  options={rideOptions}
-                  placeholder={
-                    !park
-                      ? 'Erst den Park wählen'
-                      : rides.isLoading
-                        ? 'Fahrgeschäfte werden geladen…'
-                        : 'Fahrgeschäft hinzufügen'
-                  }
-                  searchPlaceholder="Fahrgeschäft suchen…"
-                  disabled={!park || rides.isLoading || rides.isError}
-                  fuzzy="attraction"
-                />
+                {ridePicker(ids.rides, 'attractionIds')}
               </Field>
+              {isSeasonEvent({ kind: draft.kind, status: 'confirmed' }) && (
+                <Field
+                  label="Pausiert während der Saison"
+                  htmlFor={ids.pausedRides}
+                  error={problems.pausedAttractionIds}
+                  hint="Bahnen, die das ganze Jahr laufen und für diese Saison schließen (River Quest während Wintertraum). An ihren Tagen gelten sie als außer Saison, sonst laufen sie wie immer."
+                >
+                  {ridePicker(ids.pausedRides, 'pausedAttractionIds')}
+                </Field>
+              )}
             </Tile>
 
             <Tile title="Quellen">

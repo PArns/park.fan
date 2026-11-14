@@ -402,12 +402,15 @@ export function Segmented<T extends string | number | null>({
   value,
   onChange,
   className,
+  disabled = false,
 }: {
   label: string;
   options: readonly { value: T; label: string; title?: string }[];
   value: T;
   onChange: (value: T) => void;
   className?: string;
+  /** Shows the value without taking a press, for a reader without the right to change it. */
+  disabled?: boolean;
 }) {
   return (
     <div
@@ -421,9 +424,10 @@ export function Segmented<T extends string | number | null>({
           type="button"
           aria-pressed={value === option.value}
           title={option.title}
+          disabled={disabled}
           onClick={() => onChange(option.value)}
           className={cn(
-            'rounded-md px-2.5 py-1 text-xs font-medium tabular-nums transition-colors max-sm:min-h-9',
+            'rounded-md px-2.5 py-1 text-xs font-medium tabular-nums transition-colors disabled:cursor-default max-sm:min-h-9',
             value === option.value
               ? 'text-foreground bg-white/[0.1] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]'
               : 'text-muted-foreground hover:text-foreground'

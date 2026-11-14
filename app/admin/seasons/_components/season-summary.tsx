@@ -10,12 +10,15 @@ import type { ParkSeason } from '../../_lib/types';
  */
 export function SeasonSummary({
   season,
+  prefix,
   className,
 }: {
   season: Pick<ParkSeason, 'kind' | 'startDate' | 'endDate'> & {
     name?: string | null;
     dates?: string[] | null;
   };
+  /** Words before the season's name, „Pausiert während“. */
+  prefix?: string;
   className?: string;
 }) {
   return (
@@ -23,7 +26,9 @@ export function SeasonSummary({
       <SeasonKindIcon kind={season.kind} />
       <span className="truncate">
         {[
-          seasonTitle({ name: season.name ?? null, kind: season.kind }),
+          [prefix, seasonTitle({ name: season.name ?? null, kind: season.kind })]
+            .filter(Boolean)
+            .join(' '),
           formatSeasonRange(season.startDate, season.endDate),
           season.dates?.length ? `${season.dates.length} Termine` : null,
         ]

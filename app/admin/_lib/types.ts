@@ -135,6 +135,8 @@ export interface AdminAttractionListItem {
    * months, so `seasonMonths` is null whenever it is set. Absent when no season binds the ride.
    */
   boundSeason?: BoundSeason;
+  /** The park season the ride closes for, in the same shape; absent when none pauses it. */
+  pausedBySeason?: BoundSeason;
   retiredAt: string | null;
   /**
    * The ride's own fast-pass columns, raw rather than resolved.
@@ -218,6 +220,12 @@ export interface ParkSeason {
   opensAt: string | null;
   closesAt: string | null;
   attractionIds: string[] | null;
+  /**
+   * The rides that close for the season and run the rest of the year (Phantasialand's River Quest
+   * during Wintertraum). Never a ride of `attractionIds`. Optional until every API answering the
+   * admin sends it.
+   */
+  pausedAttractionIds?: string[] | null;
   url: string | null;
   sourceUrl: string | null;
   confirmedAt: string | null;

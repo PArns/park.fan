@@ -705,6 +705,12 @@ export interface ParkAttraction {
   /** The park season the ride runs in, when one binds it; absent on every other ride. */
   boundSeason?: BoundSeason;
   /**
+   * The park season the ride closes for and runs outside of: the one running today, else the next,
+   * else the last. Absent where none pauses it, or where its curated months or a curated „no“
+   * outrank the season. Only its days say the ride is paused today (`seasonRunsOn`).
+   */
+  pausedBySeason?: BoundSeason;
+  /**
    * The running outage, present only while the ride reads DOWN. Absent is not „running": it is also
    * every park whose sources cannot report outages and every ride in a works period. Never render a
    * „no outages" state.
@@ -874,9 +880,9 @@ export type ParkSeasonKind =
 export type ParkSeasonStatus = 'confirmed' | 'announced' | 'expected' | 'cancelled';
 
 /**
- * The park season a ride is bound to: the ride runs only on its days, so outside them
- * `isCurrentlyInSeason` is `false`. `name` and `dates` are absent when null; absent `dates` means
- * every day between the bounds.
+ * A park season as a ride carries it: as `boundSeason` the ride runs only on its days, so outside
+ * them `isCurrentlyInSeason` is `false`; as `pausedBySeason` it is the other way round. `name` and
+ * `dates` are absent when null; absent `dates` means every day between the bounds.
  */
 export type BoundSeason = Pick<ParkSeason, 'id' | 'kind' | 'status' | 'startDate' | 'endDate'> & {
   name?: string | null;
@@ -899,6 +905,8 @@ export interface ParkSeason {
   opensAt: string | null;
   closesAt: string | null;
   attractionIds: string[] | null;
+  /** The rides that close for the season and run the rest of the year; never one of `attractionIds`. */
+  pausedAttractionIds?: string[] | null;
   url: string | null;
   sourceUrl: string | null;
   /** When it was last checked against the park's own page. */
@@ -1060,6 +1068,12 @@ export interface AttractionResponse {
   isCurrentlyInSeason?: boolean | null;
   /** The park season the ride runs in, when one binds it; absent on every other ride. */
   boundSeason?: BoundSeason;
+  /**
+   * The park season the ride closes for and runs outside of: the one running today, else the next,
+   * else the last. Absent where none pauses it, or where its curated months or a curated „no“
+   * outrank the season. Only its days say the ride is paused today (`seasonRunsOn`).
+   */
+  pausedBySeason?: BoundSeason;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */

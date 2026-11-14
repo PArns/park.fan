@@ -763,6 +763,7 @@
       "summerOnly": "Alleen in de zomer",
       "offSeason": "Buiten seizoen",
       "onlyDuring": "Alleen tijdens {season}",
+      "pausedDuring": "Gepauzeerd tijdens {season}",
       "winter": "Winter",
       "summer": "Zomer"
     },

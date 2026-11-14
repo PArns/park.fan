@@ -387,6 +387,13 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
                       className="text-muted-foreground text-xs"
                     />
                   )}
+                  {attraction.pausedBySeason && (
+                    <SeasonSummary
+                      season={attraction.pausedBySeason}
+                      prefix="Pausiert während"
+                      className="text-muted-foreground text-xs"
+                    />
+                  )}
                 </div>
 
                 <div className="flex shrink-0 items-center gap-1.5">

@@ -1101,6 +1101,7 @@
       "summerOnly": "Nur im Sommer",
       "offSeason": "Außer Saison",
       "onlyDuring": "Nur während {season}",
+      "pausedDuring": "Pausiert während {season}",
       "winter": "Winter",
       "summer": "Sommer"
     },

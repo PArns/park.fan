@@ -42,7 +42,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkCalendarMonthIndex` _function_: Months since year 0, so a window can be checked without date arithmetic.
 - `parkCalendarMonthsBack` _function_: How many months back the calendar reaches today: the smaller of the span and the distance to `EARLIEST_CALENDAR_MONTH`. One source for the route's range check, the month index and the sitemap, so none of them links or serves past the edge.
 - `parkCalendarMonthsForward` _function_: How many months forward this park's calendar says anything.
-- `parkCalendarMonthRange` _function_: A month's first and last day, `YYYY-MM-DD`: the window the month's calendar, its seed and its seasons are read for.
+- `parkCalendarMonthRange` _function_: A month's first and last day, `YYYY-MM-DD`: the window the month's calendar, its seed and its seasons are read for (`monthLength`).
 - `parseParkCalendarMonth` _function_: Parse the optional `[[...date]]` catch-all into a month. `null` month means the hub; `'invalid'` means segments that were there and wrong, a 404 rather than a silent fall back to the hub (which would put the same content on unbounded URLs).
 - `parseParkCalendarMonthSpelling` _function_: Whether two URL segments spell a month, not whether the route serves it: `/2026/13` is a typo and stays a 404, while an out-of-window real month 308s to the hub.
 - `shiftParkCalendarMonth` _function_: The month before/after, rolling the year over. Used for the crawlable prev/next links.

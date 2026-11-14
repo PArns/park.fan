@@ -680,11 +680,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           of the season and works badges beside it. */}
                       <TransportSystemBadge attractionKind={attraction.attractionKind} />
                       <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
-                      {attraction.isSeasonal && (
+                      {(attraction.isSeasonal || attraction.pausedBySeason) && (
                         <SeasonalBadge
                           seasonMonths={attraction.seasonMonths}
                           isCurrentlyInSeason={attraction.isCurrentlyInSeason}
                           boundSeason={attraction.boundSeason}
+                          pausedBySeason={attraction.pausedBySeason}
+                          todayIso={todayIso}
                         />
                       )}
                       {/* Beside the season badge and not instead of it — the two say different

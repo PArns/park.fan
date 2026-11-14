@@ -170,7 +170,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `laterPageNumbers` _function_: The page numbers after the first of a listing of `total` posts, for `generateStaticParams`.
 - `splitPageSegments` _function_: Splits a catch-all route's segments into the listing's own segments and the page number, for the category route, where `/page/<n>` can only arrive as the last two segments of `[...path]`.
 - `pagedSegments` _function_: `segments` plus the `/page/<n>` tail for page `page`, the inverse of `splitPageSegments`.
-- `listingAlternates` _function_: The hreflang map of one listing page: every locale for which `pathFor` names a path, absolute, plus `x-default` on the English one.
 - `pageWindow` _function_: The page numbers a pagination row shows: every page up to seven, else the first, the last and the current page with its neighbours, `null` where a run of two or more is left out.
 - `pagedTitle` _function_: A listing's title on page `page`: page 1 keeps it, a later page adds its number.
 - `POSTS_PER_PAGE` _const_: Posts per listing page, on the blog and the news alike.

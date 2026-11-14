@@ -101,6 +101,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/seasons.ts`](../../app/admin/_lib/seasons.ts)
 
+- `seasonTitle` _function_: What a season is called on screen: its own name, else its kind's.
 - `seasonFiltersFrom` _function_: The filters an address asks for. Without `year` the list opens on the current one, which is the question asked most („what is on file for Halloween this year“).
 - `seasonFilterQuery` _function_: The address query for a set of filters, the inverse of `seasonFiltersFrom`.
 - `seasonListPath` _function_: The proxy path of `GET seasons` for a set of filters.
@@ -111,6 +112,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `parseSeasonDates` _function_: The days in a pasted text, as a park's calendar or a spreadsheet lists them: `2026-10-03` or `3.10.2026`, separated by spaces, commas, semicolons or lines. What is not a real day is returned as written, so the form can name it.
 - `formatSeasonRange` _function_: A range as a person would write it, or the raw values while it is not one yet: a cleared `<input type="date">` reports `''`.
 - `rangeDays` _function_: Every day of a range of real days, both ends included; none while it is not one.
+- `seasonRides` _function_: A season's ride list as a write sends it: null for none, which the API stores as no list. The season form's two ride pickers and the ride page's switch all write through here.
+- `seasonRideMode` _function_: How a season holds a ride (`SeasonRideMode`).
+- `seasonRidePatch` _function_: The `PATCH seasons/:id` body that sets how a season holds a ride: the ride in the list of `mode` and out of the other. Only a list that changes is sent, since the API replaces a list whole.
+- `ridesInBothLists` _function_: The rides one season names in both lists, which the API refuses.
+- `bindableSeasons` _function_: The seasons of a park a ride can be bound to on the ride's page: those that bind at all (the event kinds, not cancelled: `isSeasonEvent`, the API's `seasonBindsAttraction`) and are running or still to come on `today`, the first to start …
 - `seasonDraft` _function_: The draft of a stored season, or of a new one starting on `today`.
 - `parseSeasonPrice` _function_: A price as typed, in either notation: the people using this admin type German, so `53,50` is the expected input. `'invalid'` rather than null for text that is neither empty nor a number, because the two must not save the same way.
 - `seasonBody` _function_: The whole body of `POST parks/:id/seasons`: every field, an empty optional one as null.
@@ -124,7 +130,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `SEASON_KIND_OPTIONS` _const_: The kinds as select options.
 - `SEASON_STATUS_OPTIONS` _const_: The statuses as select options.
 - `SEASON_LIST_LIMIT` _const_: How many seasons one request asks for: the API's most.
-- Types: `SeasonFilters`, `SeasonDraft`, `SeasonField`, `SeasonWriteBody`
+- Types: `SeasonFilters`, `SeasonRideMode`, `SeasonDraft`, `SeasonField`, `SeasonWriteBody`
 
 ### [`_lib/types.ts`](../../app/admin/_lib/types.ts)
 
@@ -257,6 +263,7 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/curated-fields.tsx`](../../app/admin/_ui/curated-fields.tsx)
 
 - `CuratedFieldsPanel` _component_: The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast.
+- Types: `CuratedGroupExtras`
 
 ### [`_ui/day-calendar.tsx`](../../app/admin/_ui/day-calendar.tsx)
 
@@ -425,6 +432,10 @@ Route `/admin/attractions/[id]` (page).
 ### [`attractions/_components/ride-profile-editor.tsx`](../../app/admin/attractions/_components/ride-profile-editor.tsx)
 
 - `RideProfileEditor` _component_: Admin panel editing a ride's profile: layout elements in ride order (glossary term ids, repeats kept, never sorted), ride types, manufacturer, model, opening year, inversions and stats.
+
+### [`attractions/_components/season-bindings.tsx`](../../app/admin/attractions/_components/season-bindings.tsx)
+
+- `SeasonBindings` _component_: „An Saison gebunden“, under the „Saison“ fields of a ride: the running and coming seasons of its park that can bind a ride (`bindableSeasons`), each with its icon, name, dates and status and „—“, „Nur während“ or „Nicht während“: the ride …
 
 ### [`blog-editor/_components/author-create-modal.tsx`](../../app/admin/blog-editor/_components/author-create-modal.tsx)
 
@@ -931,6 +942,10 @@ Route `/admin/retirement` (page).
 - `SeasonRow` _component_: One season as a list shows it: name, status, range, hours, price, rides and source, with the button that opens the form. `showPark` leads with the park's name and links to it, for the list across every park.
 - `SeasonList` _component_: A park's seasons, newest first, each opening the form; editors also get „Saison anlegen“.
 - `SeasonEditor` _component_: The form of one season, or of a new one: every field the API takes, its checks run while typing, and the API's own refusal shown above the buttons. A new season without `parkId` asks for its park first. Read-only below `editor`.
+
+### [`seasons/_components/season-summary.tsx`](../../app/admin/seasons/_components/season-summary.tsx)
+
+- `SeasonSummary` _component_: A season in one line, wherever the admin names one beside something else: its kind's icon, its name and its dates („Wintertraum · 20. Nov. – 18. Jan. 2027 · 12 Termine“).
 
 ### [`seasons/page.tsx`](../../app/admin/seasons/page.tsx)
 
