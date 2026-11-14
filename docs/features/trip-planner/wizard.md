@@ -154,6 +154,10 @@ theme.
   leads to the finale; a phone hides its Skip there, which would do the same and leaves the label
   no room.
 - **Enter** runs the footer's primary control, with `ENTER_BELONGS_TO` as the guard.
+- **A new step opens at its top.** Next, Back, Skip, a jump from the rail and an answer chip all
+  scroll the dialog's body (not the page) back up before paint, instantly, then put the focus on
+  Parky's question with `preventScroll`, so a long step (Hotel with its map, Route, Tickets) never
+  hands the next one its scroll position.
 - **Leaving for the plan** closes the dialog and puts the answer at the top of the screen with the
   focus in it.
 
@@ -269,28 +273,34 @@ parks from `travel.legs` (`areaWays`, door to door with `legMinutes`, nearest fi
 Orlando's seven headliners read as two lines. Where a way is a drive, the OSRM credit stands under
 the cards.
 
-The map is an SVG from the API's coordinates, no tiles, so it asks nothing of the network and
-both themes come from the tokens. `layoutSchematicMap` lays it out in pixels for the width the
-picker has (`useWidth`): a flat projection with true proportions (longitude by the cosine of the
-middle latitude), fitted to the bounding box of every area and park with 22 px at the edges. The
-map is as tall as that box asks at the full width, between 150 and 300 px, and only as wide as the
-places need at that height. Orlando runs north to south, so its map is about 270 px wide and stands
-beside the cards at a desk, where a wide box had kept its markers in the middle third; Tokyo runs
-west to east and takes the full width. Markers nearer than their radii are nudged apart (Maihama
-and the DisneySea hotels are a kilometre apart, Shinjuku twenty), so it is a schematic, not to
-scale. Each park code then takes the first of eight spots around its triangle that is inside the
-map and clear of every marker and every code placed before it, else the same a step further out
-with a line back; markers never move for a label. The chosen area is filled, larger and ringed,
-the others outlined in the muted ink, and a legend under the map says which mark is a park and
-which an area. Parks join a city's map only within `MAP_PARK_MINUTES` of one of its areas: Fuji-Q
+The map is CARTO's tiles (`cartoTileUrl`, `rastertiles/voyager`, or `dark_all` in the dark
+theme), so the motorways, the rail lines, the water and the parks' grounds show where Disney,
+Universal and International Drive lie. `AreaMapTiles` (`area-map-tiles.tsx`) is loaded with
+`next/dynamic` and no server render, so only the Hotel and Hotels steps pay for Leaflet, and its box
+is reserved before it loads: `mapBoxSize` gives the size for the width the picker has (`useWidth`),
+as tall as the places' bounding box asks at the full width, between 150 and 420 px, and only as
+wide as they need at that height. Orlando runs north to south, so at a desk its map is about
+370 × 420 px beside the cards (zoom about 11.5, I-4 and the parks' grounds read); on a phone it
+takes the width. Tokyo runs west to east and takes the full width (zoom 12 at a desk). The view is
+fitted once to every area and park with 26 px at the edges and stays still: no dragging, no zoom,
+no animation, no keyboard stop. The markers are SVG on top, in the map's own pixels:
+`declutterMap` nudges markers nearer than their radii apart and gives each park code the first of
+eight spots around its triangle that is clear of every marker and code, else one a step out with a
+line back. The chosen area is filled, larger and ringed, and a click on a circle chooses its area as
+the card does. A legend under the map says which mark is a park and which an area, beside the
+tiles' credit. Parks join a city's map only within `MAP_PARK_MINUTES` of one of its areas: Fuji-Q
 stays off Tokyo's map, its card still names the bus.
+
+Without `NEXT_PUBLIC_CARTO_MAP_KEY`, CARTO's anonymous endpoint now answers every tile with an
+"API key required" picture, so a local run shows that instead of the map.
 
 ### Accessibility and the statistic
 
 - Each single choice is a `WizardOptionGroup` named by Parky's question or the heading above it;
   the area chips are pressed buttons in a group named the same way.
-- The map is `role="img"` with a name that counts the areas and lists the parks; the cards under
-  it are what is operated, and their numbers are the circles'.
+- The map is `role="img"` with a name that counts the areas and lists the parks; the cards beside
+  it are what is operated, and their numbers are the circles'. A click on a circle is a shortcut
+  for the pointer; the map has no keyboard stop and no motion.
 - The Tempo patterns are pictures (`aria-hidden`); each card's sentence says the same. The route
   stepper shows the number and is heard as "4 nights".
 - A way on an area card is heard as the planner's sentence for its mode ("About 10 min on foot").

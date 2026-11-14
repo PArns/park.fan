@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, type ReactNode } from 'react';
+import dynamic from 'next/dynamic';
 import { useTranslations } from 'next-intl';
 import { MapPin, Route, Sunrise } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -12,12 +13,10 @@ import { parkLabel } from '@/lib/trip-regions/plan-week';
 import {
   AREA_CHIPS_MAX,
   areaWays,
-  layoutSchematicMap,
+  mapBoxSize,
   mapParks,
   type AreaWay,
   type MapFrame,
-  type MapLayout,
-  type MapPlace,
 } from '@/lib/trip-regions/wizard-choices';
 import { useWidth } from '@/lib/hooks/use-width';
 import { Badge } from '@/components/ui/badge';
@@ -26,9 +25,17 @@ import { usePlanContext } from '../../planner/plan-context';
 import { PlanChip } from '../../planner/plan-controls';
 import { useAreaName } from '../../planner/plan-place-words';
 import { MoveIcon } from '../../planner/plan-stay-band';
+import type { AreaMapPlace } from './area-map-tiles';
 
-/** The heights the schematic map keeps to and the room at its edge, in pixels. */
-const MAP_FRAME: Omit<MapFrame, 'maxWidth'> = { minHeight: 150, maxHeight: 300, pad: 22 };
+// Leaflet touches `window` on import, and only the Hotel and Hotels steps draw a map, so its chunk
+// loads on the client when one of them opens; the box is reserved meanwhile.
+const AreaMapTiles = dynamic(() => import('./area-map-tiles').then((mod) => mod.AreaMapTiles), {
+  ssr: false,
+  loading: () => <div className="bg-muted/40 size-full" />,
+});
+
+/** The heights the area map keeps to and the room at its edge, in pixels. */
+const MAP_FRAME: Omit<MapFrame, 'maxWidth'> = { minHeight: 150, maxHeight: 420, pad: 22 };
 
 /** A hotel area's circle, and the chosen one's, which is larger; a park's mark; in pixels. */
 const MAP_AREA_RADIUS = 10;
@@ -137,8 +144,8 @@ export function AreaPicker({
 
 /**
  * The cards of a city with many areas under or beside its map. The map is laid out for the width
- * the picker has (`layoutSchematicMap`); one that needs much less than that stands beside the cards
- * at a desk, so the width is not spent on empty map.
+ * the picker has (`mapBoxSize`); one that needs much less than that stands beside the cards at a
+ * desk, so the width is not spent on empty map.
  */
 function AreaCards({
   areas,
@@ -161,42 +168,54 @@ function AreaCards({
   const { region, config, parkBySlug } = usePlanContext();
   const [ref, width] = useWidth<HTMLDivElement>();
   const onMap = useMemo(() => mapParks(region, areas, parks), [region, areas, parks]);
-  const layout = useMemo(() => {
-    if (width === 0) return null;
-    const places: MapPlace[] = [
-      ...areas.flatMap((key) => {
+  const places = useMemo(
+    (): AreaMapPlace[] => [
+      ...areas.flatMap((key, i): AreaMapPlace[] => {
         const area = region.hotelAreas.find((a) => a.key === key);
+        if (!area) return [];
         const radius = key === value ? MAP_CHOSEN_RADIUS : MAP_AREA_RADIUS;
-        return area
-          ? [{ key: `area:${key}`, latitude: area.latitude, longitude: area.longitude, radius }]
-          : [];
+        const { latitude, longitude } = area;
+        return [
+          { key: `area:${key}`, kind: 'area', latitude, longitude, radius, text: `${i + 1}` },
+        ];
       }),
-      ...onMap.flatMap((slug) => {
+      ...onMap.flatMap((slug): AreaMapPlace[] => {
         const park = parkBySlug.get(slug);
         if (!park) return [];
-        const label = mapLabelBox(parkLabel(park, config.parkShortNames, 'tight'));
+        const text = parkLabel(park, config.parkShortNames, 'tight');
+        const { latitude, longitude } = park;
         return [
           {
             key: `park:${slug}`,
-            latitude: park.latitude,
-            longitude: park.longitude,
+            kind: 'park',
+            latitude,
+            longitude,
             radius: MAP_PARK_RADIUS,
-            label,
+            text,
+            label: mapLabelBox(text),
           },
         ];
       }),
-    ];
-    // The map's border takes a pixel either side of the width the picker has.
-    return layoutSchematicMap(places, { ...MAP_FRAME, maxWidth: width - 2 });
-  }, [width, areas, onMap, value, region.hotelAreas, parkBySlug, config.parkShortNames]);
-  const side =
-    layout !== null && width >= MAP_SIDE_MIN_WIDTH && layout.width <= width * MAP_SIDE_SHARE;
+    ],
+    [areas, onMap, value, region.hotelAreas, parkBySlug, config.parkShortNames]
+  );
+  // The map's border takes a pixel either side of the width the picker has.
+  const box = width > 0 ? mapBoxSize(places, { ...MAP_FRAME, maxWidth: width - 2 }) : null;
+  const side = box !== null && width >= MAP_SIDE_MIN_WIDTH && box.width <= width * MAP_SIDE_SHARE;
 
   return (
     <div ref={ref} className="flex flex-col gap-2.5" data-wizard-areas="cards">
       <div className={cn('flex flex-col gap-2.5', side && 'flex-row items-start')}>
-        {layout ? (
-          <AreaMap layout={layout} areas={areas} parks={onMap} value={value} side={side} />
+        {box ? (
+          <AreaMap
+            box={box}
+            places={places}
+            areas={areas}
+            parks={onMap}
+            value={value}
+            onChoose={onChoose}
+            side={side}
+          />
         ) : (
           <div aria-hidden="true" style={{ height: MAP_FRAME.minHeight }} />
         )}
@@ -307,155 +326,66 @@ function AreaWayList({ area, parks }: { area: string; parks: readonly string[] }
 }
 
 /**
- * The areas of a city on a schematic map from the API's coordinates, no tiles, at the size
- * `layoutSchematicMap` gives it in pixels: a numbered circle per area, the chosen one filled, larger
- * and ringed, the others quiet, and a triangle with its code per park the city reaches, each code
- * placed clear of every marker with a line back where it stands off. A legend under it says which
- * mark is which. A picture with a name (`role="img"`); the cards are what is operated, their
- * numbers the circles'. Both themes come from the tokens, and nothing is requested.
+ * The areas of a city on CARTO's tiles in the box `mapBoxSize` reserved (`AreaMapTiles`, loaded on
+ * the client): a numbered circle per area, the chosen one filled, larger and ringed, and a
+ * triangle with its code per park the city reaches. A legend under it says which mark is which, and
+ * the tiles' credit stands beside it. A picture with a name (`role="img"`); the cards are what is
+ * operated, their numbers the circles', and a click on a circle does what its card does.
  */
 function AreaMap({
-  layout,
+  box,
+  places,
   areas,
   parks,
   value,
+  onChoose,
   side,
 }: {
-  layout: MapLayout;
+  box: { width: number; height: number };
+  places: readonly AreaMapPlace[];
   areas: readonly string[];
   parks: readonly string[];
   value: string | null;
+  onChoose: (area: string) => void;
   side: boolean;
 }) {
   const t = useTranslations('tripPlanner.wizard.hotels');
   const tHotel = useTranslations('tripPlanner.wizard.hotel');
-  const { config, parkBySlug, parkName, locale } = usePlanContext();
+  const { parkName, locale } = usePlanContext();
   const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
-  const pointOf = new Map(layout.points.map((p) => [p.key, p]));
-  const code = (slug: string) => {
-    const park = parkBySlug.get(slug);
-    return park ? parkLabel(park, config.parkShortNames, 'tight') : '';
-  };
-  // The chosen area last, so it is drawn over everything near it.
-  const order = [...layout.points].sort(
-    (a, b) => Number(a.key === `area:${value}`) - Number(b.key === `area:${value}`)
-  );
 
   return (
     <figure
       className={cn('flex shrink-0 flex-col gap-1.5', !side && 'self-center')}
+      style={{ width: box.width + 2 }}
       data-wizard-area-map=""
     >
-      <div className="bg-muted/40 border-border/60 overflow-hidden rounded-xl border">
-        <svg
-          role="img"
-          aria-label={
-            parks.length > 0
-              ? t('map', { count: areas.length, parks: list.format(parks.map(parkName)) })
-              : t('mapAreas', { count: areas.length })
-          }
-          width={layout.width}
-          height={layout.height}
-          viewBox={`0 0 ${layout.width} ${layout.height}`}
-          className="block"
-        >
-          {layout.labels.map((label) => {
-            const point = pointOf.get(label.key);
-            if (!label.leader || !point) return null;
-            const x = Math.min(
-              label.x + label.width / 2,
-              Math.max(label.x - label.width / 2, point.x)
-            );
-            const y = Math.min(
-              label.y + label.height / 2,
-              Math.max(label.y - label.height / 2, point.y)
-            );
-            return (
-              <line
-                key={`leader:${label.key}`}
-                x1={point.x}
-                y1={point.y}
-                x2={x}
-                y2={y}
-                className="stroke-muted-foreground/70"
-                strokeWidth="1"
-              />
-            );
-          })}
-          {order.map((point) => {
-            if (point.key.startsWith('park:')) {
-              const { x, y, radius: r } = point;
-              return (
-                <path
-                  key={point.key}
-                  d={`M ${x} ${y - r} L ${x + r} ${y + r * 0.75} L ${x - r} ${y + r * 0.75} Z`}
-                  className="fill-foreground/80"
-                />
-              );
-            }
-            const key = point.key.slice(5);
-            const chosen = key === value;
-            return (
-              <g key={point.key}>
-                {chosen && (
-                  <circle
-                    cx={point.x}
-                    cy={point.y}
-                    r={point.radius + 4}
-                    className="fill-primary/25"
-                  />
-                )}
-                <circle
-                  cx={point.x}
-                  cy={point.y}
-                  r={point.radius}
-                  strokeWidth="1.5"
-                  className={
-                    chosen
-                      ? 'fill-primary stroke-primary'
-                      : 'fill-background stroke-muted-foreground/70'
-                  }
-                />
-                <text
-                  x={point.x}
-                  y={point.y + (chosen ? 4.5 : 4)}
-                  textAnchor="middle"
-                  className={cn(
-                    'font-semibold tabular-nums',
-                    chosen
-                      ? 'fill-primary-foreground text-[13px]'
-                      : 'fill-muted-foreground text-[11px]'
-                  )}
-                >
-                  {areas.indexOf(key) + 1}
-                </text>
-              </g>
-            );
-          })}
-          {layout.labels.map((label) => (
-            <text
-              key={`label:${label.key}`}
-              x={label.x}
-              y={label.y + 4}
-              textAnchor="middle"
-              className="fill-foreground text-[11px] font-bold"
-            >
-              {code(label.key.slice(5))}
-            </text>
-          ))}
-        </svg>
-      </div>
-      <figcaption
-        aria-hidden="true"
-        className="text-muted-foreground flex items-center gap-4 px-1 text-xs"
+      <div
+        role="img"
+        aria-label={
+          parks.length > 0
+            ? t('map', { count: areas.length, parks: list.format(parks.map(parkName)) })
+            : t('mapAreas', { count: areas.length })
+        }
+        className="border-border/60 overflow-hidden rounded-xl border"
+        style={{ width: box.width + 2, height: box.height + 2 }}
       >
-        <span className="inline-flex items-center gap-1.5">
+        <AreaMapTiles
+          width={box.width}
+          height={box.height}
+          places={places}
+          value={value}
+          onChoose={onChoose}
+        />
+      </div>
+      <figcaption className="text-muted-foreground flex flex-wrap items-center gap-x-4 gap-y-1 px-1 text-xs">
+        <span aria-hidden="true" className="inline-flex items-center gap-1.5">
           <svg viewBox="0 0 12 12" className="size-3">
             <path d="M 6 1 L 11 10 L 1 10 Z" className="fill-foreground/80" />
           </svg>
           {tHotel('mapPark')}
         </span>
-        <span className="inline-flex items-center gap-1.5">
+        <span aria-hidden="true" className="inline-flex items-center gap-1.5">
           <svg viewBox="0 0 16 16" className="size-4">
             <circle
               cx="8"
@@ -474,6 +404,19 @@ function AreaMap({
             </text>
           </svg>
           {tHotel('mapArea')}
+        </span>
+        <span className="ml-auto text-[11px]">
+          ©{' '}
+          <a
+            href="https://www.openstreetmap.org/copyright"
+            className="underline-offset-2 hover:underline"
+          >
+            OpenStreetMap
+          </a>{' '}
+          contributors ©{' '}
+          <a href="https://carto.com/attributions" className="underline-offset-2 hover:underline">
+            CARTO
+          </a>
         </span>
       </figcaption>
     </figure>
