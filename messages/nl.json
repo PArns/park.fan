@@ -3900,7 +3900,8 @@
       "fewer": "{city}: een nacht minder",
       "more": "{city}: een nacht meer",
       "add": "Stad toevoegen",
-      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}"
+      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
+      "stayShort": "{city} {count, plural, =1 {1 nacht} other {# nachten}}"
     },
     "parky": {
       "button": "Plan met Parky je perfecte reis",

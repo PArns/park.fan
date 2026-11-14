@@ -3900,7 +3900,8 @@
       "fewer": "{city}: one night less",
       "more": "{city}: one night more",
       "add": "Add a city",
-      "total": "{nights, plural, =1 {1 night} other {# nights}} in {cities, plural, =1 {1 city} other {# cities}}, {moves, plural, =0 {no hotel change} =1 {1 hotel change} other {# hotel changes}}"
+      "total": "{nights, plural, =1 {1 night} other {# nights}} in {cities, plural, =1 {1 city} other {# cities}}, {moves, plural, =0 {no hotel change} =1 {1 hotel change} other {# hotel changes}}",
+      "stayShort": "{city} {count, plural, =1 {1 night} other {# nights}}"
     },
     "parky": {
       "button": "Plan your perfect trip with Parky",

@@ -3,6 +3,7 @@
 import {
   useCallback,
   useEffect,
+  useLayoutEffect,
   useId,
   useMemo,
   useRef,
@@ -135,14 +136,17 @@ export function TripWizard({
     track('trip_wizard_step', { step: at.screen, via: at.via });
   }, [at, track]);
 
-  // A new screen puts the focus on Parky's question, so a screen reader reads it first.
+  // A new screen starts at its top, however it was reached, and puts the focus on Parky's question
+  // so a screen reader reads it first. Before paint, so the old scroll position never shows; the
+  // jump is instant, which also suits reduced motion, and the focus does not scroll again.
   const shownScreen = useRef<string | null>(null);
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) {
       shownScreen.current = null;
       return;
     }
     if (shownScreen.current !== null && shownScreen.current !== screen) {
+      bodyRef.current?.scrollTo({ top: 0, behavior: 'instant' });
       askRef.current?.focus({ preventScroll: true });
     }
     shownScreen.current = screen;

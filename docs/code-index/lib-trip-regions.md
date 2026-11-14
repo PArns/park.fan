@@ -581,7 +581,8 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `areaWays` _function_: The ways from a hotel area to the trip's parks, from the region's `travel.legs` (`hotel:<area>`), nearest first. A park without a leg from the area is left out.
 - `mapParks` _function_: The parks a city's map shows: those of `parks` that one of its `areas` reaches within `MAP_PARK_MINUTES`. A day trip (Fuji-Q from Tokyo) stays off, so the map keeps the city's scale; its card still names the way.
 - `homeBases` _function_: The cities a trip will most likely sleep in before its plan has answered: for each of `parks` the base that reaches it soonest (`bases[].parks`), in the region's order.
-- `layoutSchematicMap` _function_: A city's hotel areas and parks on a schematic map, no tiles, sized to the places themselves.
+- `mapBoxSize` _function_: The box the area map is reserved and drawn in, from the places it shows: as tall as their bounding box asks at the full width (longitude by the cosine of the middle latitude, north up, `pad` at the edges), within `minHeight` and …
+- `declutterMap` _function_: The markers of the area map kept apart and their labels placed, in the pixels the map projected them to.
 - `travelDayFact` _function_: The fact the Tempo step puts on the card of a park on a travel day, from the calendar's day: on the arrival the park among `parks` open that day that closes last (a late landing still has an evening there), on the departure the one that …
 - `AUTO_REST_STREAK` _const_: The park days in a row the API's automatic rest rule allows, the number `tripPlanner.options.restAutoHint` says in words.
 - `DEFAULT_REST_STREAK` _const_: The streak the own limit starts on when the visitor picks it.
@@ -589,7 +590,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `AREA_CHIPS_MAX` _const_: A city with at most this many hotel areas offers them as chips; with more, each is a card with its ways and the city gets the schematic map (Tokyo's six, Orlando's five, Osaka's four as chips).
 - `MAX_AREA_WAYS` _const_: An area card lists one way per park up to this many; past it, one per resort.
 - `MAP_PARK_MINUTES` _const_: A park joins a city's map when one of its hotel areas reaches it in at most this many minutes.
-- Types: `HotelEarlyAccess`, `AreaWay`, `MapPlace`, `MapPoint`, `MapLabel`, `MapFrame`, `MapLayout`, `TravelDayFact`
+- Types: `HotelEarlyAccess`, `AreaWay`, `MapPlace`, `MapMarker`, `MapPoint`, `MapLabel`, `MapFrame`, `TravelDayFact`
 
 ### [`wizard-steps.ts`](../../lib/trip-regions/wizard-steps.ts)
 

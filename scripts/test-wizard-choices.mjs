@@ -14,7 +14,8 @@ import {
   mapParks,
   pacePattern,
   restStreak,
-  layoutSchematicMap,
+  declutterMap,
+  mapBoxSize,
   travelDayFact,
 } from '../lib/trip-regions/wizard-choices.ts';
 
@@ -221,24 +222,46 @@ function assertReadable(layout, name) {
   }
 }
 
+/**
+ * The places in pixels as the tiles would put them: fitted into the box with 24 px at the edges,
+ * longitude by the cosine of the latitude. Leaflet's own projection differs from this by far less
+ * than a marker at a city's scale.
+ */
+function project(places, width, height) {
+  const lats = places.map((p) => p.latitude);
+  const cos = Math.cos((((Math.min(...lats) + Math.max(...lats)) / 2) * Math.PI) / 180);
+  const xs = places.map((p) => p.longitude * cos);
+  const [minX, maxX, minY, maxY] = [
+    Math.min(...xs),
+    Math.max(...xs),
+    Math.min(...lats),
+    Math.max(...lats),
+  ];
+  const k = Math.min((width - 48) / (maxX - minX || 1), (height - 48) / (maxY - minY || 1));
+  const offX = (width - (maxX - minX) * k) / 2;
+  const offY = (height - (maxY - minY) * k) / 2;
+  return places.map((p, i) => ({
+    key: p.key,
+    x: offX + (xs[i] - minX) * k,
+    y: offY + (maxY - p.latitude) * k,
+    radius: p.radius,
+    ...(p.label && { label: p.label }),
+  }));
+}
+
 for (const width of [715, 343]) {
-  const layout = layoutSchematicMap(ORLANDO_MAP, frame(width));
-  assert.ok(
-    layout.height <= 300 && layout.height >= 150,
-    `Orlando at ${width}: height ${layout.height}`
-  );
-  assert.equal(layout.labels.length, 7, 'every park has its label');
-  assertReadable(layout, `Orlando at ${width}`);
-  const at = (key) => layout.points.find((p) => p.key === key);
+  const box = mapBoxSize(ORLANDO_MAP, frame(width));
+  assert.ok(box.height <= 300 && box.height >= 150, `Orlando at ${width}: height ${box.height}`);
+  const markers = project(ORLANDO_MAP, box.width, box.height);
+  const map = declutterMap(markers, box.width, box.height);
+  assert.equal(map.labels.length, 7, 'every park has its label');
+  assertReadable({ ...map, ...box }, `Orlando at ${width}`);
+  const at = (key) => map.points.find((p) => p.key === key);
   assert.ok(at('mk').x < at('universal').x, 'west stays west');
   assert.ok(at('universal').y < at('kissimmee').y, 'north stays up');
-  assert.deepEqual(
-    layoutSchematicMap(ORLANDO_MAP, frame(width)),
-    layout,
-    'the same map every time'
-  );
+  assert.deepEqual(declutterMap(markers, box.width, box.height), map, 'the same map every time');
 }
-const desk = layoutSchematicMap(ORLANDO_MAP, frame(715));
+const desk = mapBoxSize(ORLANDO_MAP, frame(715));
 assert.equal(desk.height, 300, 'a city that runs north to south takes the height it may');
 assert.ok(desk.width < 715 * 0.6, `and only the width it needs: ${desk.width}`);
 
@@ -254,18 +277,14 @@ const TOKYO_MAP = [
   park('tokyo-disneysea', 35.627, 139.888, 'DS'),
 ];
 for (const width of [715, 343]) {
-  const layout = layoutSchematicMap(TOKYO_MAP, frame(width));
-  assert.equal(layout.width, width, `Tokyo at ${width} fills the width`);
-  assert.ok(layout.height < 300, `Tokyo at ${width}: height ${layout.height}`);
-  assertReadable(layout, `Tokyo at ${width}`);
+  const box = mapBoxSize(TOKYO_MAP, frame(width));
+  assert.equal(box.width, width, `Tokyo at ${width} fills the width`);
+  assert.ok(box.height < 300, `Tokyo at ${width}: height ${box.height}`);
+  const map = declutterMap(project(TOKYO_MAP, box.width, box.height), box.width, box.height);
+  assertReadable({ ...map, ...box }, `Tokyo at ${width}`);
 }
 
-const single = layoutSchematicMap([area('only', 1, 2)], frame(400));
-assert.deepEqual(
-  [single.points[0].x, single.points[0].y],
-  [single.width / 2, single.height / 2],
-  'one place sits in the middle'
-);
+assert.deepEqual(mapBoxSize([], frame(400)), { width: 0, height: 0 }, 'no places, no map');
 
 // ── A travel day's fact ──────────────────────────────────────────────────────
 
