@@ -151,7 +151,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       JSON.stringify(closed)
     );
     check(
-      'Orlando · ohne Daten steht „Already have tickets?“ in der leeren Antwort',
+      'Orlando · ohne Daten steht „Already have tickets?“ einmal, auf der Landingpage',
       (await page.locator('[data-plan-tickets-ask]').count()) === 1
     );
     await context.close();
@@ -283,13 +283,13 @@ export async function checkOrlandoTickets({ browser, base, check }) {
   {
     const { context, page } = await open(PHONE);
     await ready(page, '/en/orlando#planner');
-    // The empty answer's „Add them“ is the one way to tickets before dates.
+    // The landing's „Add them“ is the one way to tickets before dates.
     const ask = page.locator('[data-plan-tickets-ask] button');
     const reachable = await ask.isVisible();
     check(
       'Orlando · ohne Daten ist „Add them“ zu sehen, die Tickets können vor den Daten kommen',
       reachable,
-      reachable ? '' : 'versteckt: ohne Daten blendet der Hub den Planer aus (HubPlannerOnly)'
+      reachable ? '' : 'versteckt: die Landingpage zeigt „Add them“ nicht'
     );
     if (reachable) {
       await ask.click();

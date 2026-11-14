@@ -228,8 +228,12 @@ the state. The pure halves are in `lib/trip-regions/wizard-choices.ts`, pinned b
 `pnpm test:wizard-choices`.
 
 - **Hotel** (Orlando, California): the hotel kinds as tiles with the line each region already has
-  (`hotelLabel`, `hotelHint`), then the area (`AreaPicker`). A hotel picks its area where none is
-  set, and the area's lead says so.
+  (`hotelLabel`, `hotelHint`), then the area (`AreaPicker`). Whether a hotel gets you in early comes
+  from the region's `hotels[].perks` alone (`hotelEarlyAccess`): the lead promises an earlier start
+  only where a hotel has an early slot ("A resort hotel gets you into the parks earlier.", else "Here
+  no hotel gets you into the parks earlier."), and a tile without one says "no early entry" after
+  its line. A region's `hotelHint` therefore never says whether a hotel gets in early. A hotel
+  picks its area where none is set, and the area's lead says so.
 - **Route** (Japan, Paris): arrival and departure as cards, the city first and its gateways small
   (`gatewayChoices`). A gateway several bases share (Charles de Gaulle) is the dashed card that
   leaves the hotel to the plan; without one, the dashed card is "Not decided yet". The cities
