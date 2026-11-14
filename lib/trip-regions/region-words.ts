@@ -20,3 +20,16 @@ export function regionOrShared(
 ): string {
   return own.has(key) ? own(key, values) : shared(key, values);
 }
+
+/**
+ * A region's own words for `key`, or `null` where its copy has not written them yet. A block that
+ * gets `null` draws nothing, never the key's path: a region's copy arrives one region at a time,
+ * and a hub goes live before every optional line is written.
+ */
+export function ownWords(
+  own: CodeWords,
+  key: string,
+  values?: Record<string, string | number | Date>
+): string | null {
+  return own.has(key) ? own(key, values) : null;
+}
