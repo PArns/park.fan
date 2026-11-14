@@ -636,12 +636,7 @@ export type TripTileLink = 'plan' | 'calendar';
 
 /** Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already". */
 export type TripTicketsFrom =
-  | 'ask'
-  | 'card'
-  | 'adopt'
-  | 'ticket_problem'
-  | 'outside_ticket'
-  | 'wizard';
+  'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket' | 'wizard';
 
 /** A screen of the trip planner's assistant, its finale included. */
 export type TripWizardStepName = TripWizardStepKey | 'finale';
