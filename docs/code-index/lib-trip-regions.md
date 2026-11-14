@@ -264,8 +264,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
 - `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
 - `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' waits on their new days less those on their old ones.
-- `datePick` _function_: The park day behind a date's figure: the lowest of the day's picks per resort (`best`, the API's shortest lines with early closings counted), so a party night that closes at 6 pm never makes a date look quiet.
-- `dateFigure` _function_: The figure under a date: the big-ride wait of `datePick`, `null` where there is none.
 - `dateLevel` _function_: A date's tint in the date grid: how busy the region's headliner parks are that day, the median of the crowd levels of those that are open and have one (the lower middle for an even count).
 - `TRIP_WEEK_PX_PER_MIN` _const_: The trip overview's scale: half the day planner's, on a phone and off it, so a whole park day fits a screen while a phone keeps the planner's larger step.
 - `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.

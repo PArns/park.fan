@@ -3106,10 +3106,10 @@
       "prevMonth": "Vorheriger Monat",
       "nextMonth": "Nächster Monat",
       "gridLabel": "An- und Abreisetag",
-      "wait": "kürzeste Wartezeit an den großen Bahnen etwa {minutes} Min.",
-      "waitLastYear": "im letzten Jahr etwa {minutes} Min. an den großen Bahnen",
-      "legend": "Unter jedem Datum steht die kürzeste Wartezeit an den großen Bahnen, in Minuten, im Park mit den kürzesten Warteschlangen; früh schließende Parks zählen dabei nicht. Gefärbt ist jedes Datum danach, wie voll die großen Parks an dem Tag im Mittel sind.",
-      "legendLastYear": "Kursive Zahlen sind gemessene Tage aus dem letzten Jahr.",
+      "level": "Andrang: {level}",
+      "levelLastYear": "Andrang im letzten Jahr: {level}",
+      "legend": "Jedes Datum ist danach gefärbt, wie voll die großen Parks an dem Tag im Mittel sind.",
+      "legendLastYear": "Gestrichelt umrandete Daten zeigen den gemessenen Andrang des letzten Jahres.",
       "pickArrival": "Tippe auf deinen Anreisetag.",
       "pickDeparture": "Jetzt den Abreisetag.",
       "dayCount": "{count, plural, =1 {1 Tag} other {# Tage}}",
@@ -3262,7 +3262,7 @@
       }
     },
     "month": {
-      "legend": "Jeder Parktag ist danach gefärbt, wie voll er für seinen Park ist, mit den zwei Buchstaben des Parks und der Wartezeit an den großen Bahnen in Minuten."
+      "legend": "Jeder Parktag ist danach gefärbt, wie voll er für seinen Park ist, mit den zwei Buchstaben des Parks."
     },
     "details": {
       "minutesCaption": "Die Wartezeit der großen Bahnen zur vollsten Zeit; danach vergleicht der Plan die Tage. Die Farbe vergleicht den Tag mit einem typischen Tag dieses Parks.",

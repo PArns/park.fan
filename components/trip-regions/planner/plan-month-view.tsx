@@ -23,7 +23,8 @@ import { PlanDayMarker, useDayMarkerText, useDayParks, useTicketDayLabel } from 
 /**
  * The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd
  * calendar (`ParkCalendarDay`, `ParkCalendarLegend`): a park day is a tile in its crowd tint with
- * the park's two letters and the minutes, a rest or travel day a plain tile with its icon, and the
+ * the park's two letters and, on a wide screen, the tier in words; a rest or travel day is a plain
+ * tile with its icon, and the
  * date's holidays the bar along the top. The one marker a day may wear is an icon; the park's full
  * name is in the cell's label. A press opens the day.
  */
@@ -38,7 +39,6 @@ export function PlanMonthView({
 }) {
   const t = useTranslations('tripPlanner');
   const tCrowd = useTranslations('parks.crowdLevels');
-  const tCommon = useTranslations('common');
   const { locale, parkBySlug } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
@@ -136,12 +136,6 @@ export function PlanMonthView({
                           .map((p) => parkInitials(parkBySlug.get(p.slug)?.name ?? p.slug))
                           .join(' + ')}
                       </span>
-                      {day.headlinerWait != null && (
-                        <span className="font-semibold whitespace-nowrap tabular-nums">
-                          {day.headlinerWait}
-                          <span className="hidden lg:inline"> {tCommon('min')}</span>
-                        </span>
-                      )}
                     </span>
                     {/* The tier in words, as a park's crowd calendar writes it; a phone's
                         seventh of the width leaves room for the tint alone. */}

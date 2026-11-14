@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo, useRef, useState, type KeyboardEvent } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import {
   CROWD_TEXT_CLASS,
@@ -17,12 +17,15 @@ export interface PlanGridDay {
   enabled: boolean;
   /** The accessible name: the written date and what it holds. */
   label: string;
-  /** A chosen end (filled), a date inside the chosen range (tinted), or neither. */
-  mark: 'edge' | 'range' | null;
-  /** The small figure under the date. */
-  figure?: string | null;
-  /** The figure is last year's, set apart in italics. */
-  italic?: boolean;
+  /**
+   * A trip's arrival or departure (a ring and its plane), a lone chosen date such as a ticket's
+   * first day (a ring), a date between arrival and departure, or none.
+   */
+  mark: 'start' | 'end' | 'edge' | 'range' | null;
+  /** Where the date sits in a chosen range: the light band behind the tiles runs from start to end. */
+  band?: 'start' | 'middle' | 'end';
+  /** The tint is last year's measured day, not a forecast: the tile's border is dashed. */
+  lastYear?: boolean;
   /** Up to three thin bars along the cell's foot: the tickets whose window holds the date. */
   bars?: ReadonlyArray<'primary' | 'muted'>;
   /** The date's crowd level, which tints the cell as a park's crowd calendar does. */
@@ -38,9 +41,9 @@ const NAV_BUTTON =
  * A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two
  * dates in the Dates step, one date for a ticket's first day. One tab stop for the grid, the arrows
  * move by day and week and turn the month at its edge, so the grid works the same in both places.
- * A date with a crowd level is the crowd calendar's tile (`ParkCalendarDay`): tinted, the day and
- * its figure in the level's ink, holidays as the bar along the top. A chosen end is a ring, so the
- * tint stays readable under it.
+ * A date with a crowd level is the crowd calendar's tile (`ParkCalendarDay`): tinted, the day in
+ * the level's ink, holidays as the bar along the top. Arrival and departure are a ring with their
+ * plane, so the tint stays readable, and a light band behind the tiles joins the dates between.
  */
 export function PlanMonthGrid({
   month,
@@ -152,63 +155,89 @@ export function PlanMonthGrid({
         {cells.map((cell) => {
           const d = days.get(cell.date);
           const enabled = live && Boolean(d?.enabled);
-          const edge = d?.mark === 'edge';
+          const ring = d?.mark === 'start' || d?.mark === 'end' || d?.mark === 'edge';
           const level = enabled ? (d?.level ?? null) : null;
-          const ink = level ? CROWD_TEXT_CLASS[level] : null;
+          const Plane =
+            d?.mark === 'start' ? PlaneLanding : d?.mark === 'end' ? PlaneTakeoff : null;
           return (
-            <button
-              key={cell.date}
-              type="button"
-              data-plan-date={cell.date}
-              disabled={!enabled}
-              tabIndex={cell.date === tabDate ? 0 : -1}
-              aria-label={d?.label ?? cell.date}
-              aria-pressed={d?.mark != null}
-              onClick={() => onPick(cell.date)}
-              onFocus={() => setFocusDate(cell.date)}
-              className={cn(
-                'focus-visible:ring-ring relative flex h-12 flex-col items-center justify-center overflow-hidden rounded-md border text-sm tabular-nums transition focus-visible:ring-2 focus-visible:outline-none',
-                !cell.inMonth && 'invisible',
-                !enabled && 'text-muted-foreground/40 border-transparent',
-                enabled && (level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60'),
-                enabled && !edge && 'hover:shadow-sm',
-                d?.mark === 'range' && 'ring-primary/60 ring-1 ring-inset',
-                edge && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-1'
-              )}
-            >
-              {enabled && d?.signals && d.signals.length > 0 && (
-                <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
-                  {d.signals.map((signal) => (
-                    <span key={signal} className={cn('h-full flex-1', DAY_SIGNAL_CLASS[signal])} />
-                  ))}
-                </span>
-              )}
-              <span className={cn('leading-4', (edge || level) && 'font-bold', ink)}>
-                {cell.day}
-              </span>
-              <span
-                className={cn(
-                  'h-3.5 text-[10px] leading-3.5',
-                  ink ? cn('font-semibold', ink) : 'text-muted-foreground',
-                  d?.italic && 'italic'
-                )}
-                aria-hidden="true"
-              >
-                {enabled && d?.figure != null ? d.figure : ''}
-              </span>
-              {d?.bars?.map((tone, row) => (
+            // The tiles are opaque so the range's band shows only around them, in the gaps, and
+            // never mixes with a crowd tint.
+            <div key={cell.date} className={cn('relative', !cell.inMonth && 'invisible')}>
+              {cell.inMonth && d?.band && (
                 <span
-                  key={row}
                   aria-hidden="true"
-                  data-plan-ticket-bar={row}
+                  data-plan-range={d.band}
                   className={cn(
-                    'absolute inset-x-1 h-[3px] rounded-full',
-                    tone === 'primary' ? 'bg-primary' : 'bg-foreground/55'
+                    'bg-primary/15 absolute -inset-y-0.5',
+                    d.band === 'start'
+                      ? '-right-0.5 left-1/2'
+                      : d.band === 'end'
+                        ? 'right-1/2 -left-0.5'
+                        : '-inset-x-0.5'
                   )}
-                  style={{ bottom: 1 + row * 4 }}
                 />
-              ))}
-            </button>
+              )}
+              <button
+                type="button"
+                data-plan-date={cell.date}
+                disabled={!enabled}
+                tabIndex={cell.date === tabDate ? 0 : -1}
+                aria-label={d?.label ?? cell.date}
+                aria-pressed={d?.mark != null}
+                onClick={() => onPick(cell.date)}
+                onFocus={() => setFocusDate(cell.date)}
+                className={cn(
+                  'focus-visible:ring-ring relative flex h-12 w-full flex-col items-center justify-center overflow-hidden rounded-md text-sm tabular-nums transition focus-visible:ring-2 focus-visible:outline-none',
+                  enabled ? 'bg-background hover:shadow-sm' : 'text-muted-foreground/40',
+                  ring && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-1'
+                )}
+              >
+                {enabled && (
+                  <span
+                    aria-hidden="true"
+                    className={cn(
+                      'absolute inset-0 rounded-md border',
+                      level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
+                      d?.lastYear && 'border-dashed'
+                    )}
+                  />
+                )}
+                {enabled && d?.signals && d.signals.length > 0 && (
+                  <span aria-hidden="true" className="absolute inset-x-0 top-0 flex h-[3px]">
+                    {d.signals.map((signal) => (
+                      <span
+                        key={signal}
+                        className={cn('h-full flex-1', DAY_SIGNAL_CLASS[signal])}
+                      />
+                    ))}
+                  </span>
+                )}
+                <span
+                  className={cn(
+                    'relative leading-4',
+                    (ring || level) && 'font-bold',
+                    level && CROWD_TEXT_CLASS[level]
+                  )}
+                >
+                  {cell.day}
+                </span>
+                <span className="relative flex h-3.5 items-center" aria-hidden="true">
+                  {enabled && Plane && <Plane className="text-primary size-3.5" />}
+                </span>
+                {d?.bars?.map((tone, row) => (
+                  <span
+                    key={row}
+                    aria-hidden="true"
+                    data-plan-ticket-bar={row}
+                    className={cn(
+                      'absolute inset-x-1 h-[3px] rounded-full',
+                      tone === 'primary' ? 'bg-primary' : 'bg-foreground/55'
+                    )}
+                    style={{ bottom: 1 + row * 4 }}
+                  />
+                ))}
+              </button>
+            </div>
           );
         })}
       </div>

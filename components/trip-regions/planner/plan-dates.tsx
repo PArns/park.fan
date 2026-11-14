@@ -8,7 +8,7 @@ import { getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/trip-regions/plan';
 import { ticketWindows } from '@/lib/trip-regions/plan-tickets';
-import { dateFigure, dateLevel, TRIP_DAY_SIGNALS } from '@/lib/trip-regions/plan-week';
+import { dateLevel, TRIP_DAY_SIGNALS } from '@/lib/trip-regions/plan-week';
 import { holidaySignals } from '@/lib/utils/day-signal-styles';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext } from './plan-context';
@@ -22,15 +22,15 @@ const BAR_ROWS = 3;
 
 /**
  * The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second
- * the departure, at most {@link MAX_TRIP_DAYS} days. Under each date the shortest big-ride wait of
- * that day, on a tile tinted by how busy the headliners are (`dateLevel`), as on a park's crowd
- * calendar, so dates can be compared before anything is planned; a last-year figure is set apart
- * and the legend says so. The
- * tickets' windows are thin bars along the dates, named in a key. Then whether the travel days hold
- * a park.
+ * the departure, at most {@link MAX_TRIP_DAYS} days. Each date is a crowd-calendar tile tinted by how
+ * busy the headliners are (`dateLevel`), so dates can be compared before anything is planned; a
+ * last-year tint has a dashed border and the legend says so. Arrival and departure carry their
+ * plane and a light band joins the days between. The tickets' windows are thin bars along the
+ * dates, named in a key. Then whether the travel days hold a park.
  */
 export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('tripPlanner');
+  const tCrowd = useTranslations('parks.crowdLevels');
   const { state, update, today, locale, headliners, live, tickets: catalog } = usePlanContext();
   const resortWord = useResortWord();
 
@@ -100,18 +100,28 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         onPick={choose}
         day={(date) => {
           const day = byDate.get(date);
-          const wait = dateFigure(day, headliners);
+          const level = dateLevel(day, headliners);
           const lastYear = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
-          const isEdge = date === start || date === end;
+          const isStart = date === start;
+          const isEnd = !isStart && date === end;
           const inRange = Boolean(start && end && date > start && date < end);
           const held = windows.filter((w) => date >= w.from && date <= w.to);
           const resorts = [...new Set(held.map((w) => resortWord(w.resort)))];
           return {
             enabled: selectable(date),
-            mark: isEdge ? 'edge' : inRange ? 'range' : null,
-            figure: wait !== null ? String(wait) : null,
-            italic: lastYear,
-            level: dateLevel(day, headliners),
+            mark: isStart ? 'start' : isEnd ? 'end' : inRange ? 'range' : null,
+            band:
+              start && end && start !== end
+                ? isStart
+                  ? 'start'
+                  : isEnd
+                    ? 'end'
+                    : inRange
+                      ? 'middle'
+                      : undefined
+                : undefined,
+            lastYear,
+            level,
             signals: holidaySignals(day ?? null),
             bars: windows
               .slice(0, BAR_ROWS)
@@ -121,8 +131,9 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
               .filter((b): b is 'primary' | 'muted' => b !== null),
             label: [
               today ? dayLabel.format(new Date(`${date}T12:00:00Z`)) : date,
-              wait !== null
-                ? t(lastYear ? 'dates.waitLastYear' : 'dates.wait', { minutes: wait })
+              isStart ? t('day.arrival') : isEnd ? t('day.departure') : null,
+              level
+                ? t(lastYear ? 'dates.levelLastYear' : 'dates.level', { level: tCrowd(level) })
                 : null,
               resorts.length > 0
                 ? t('tickets.dates.inTicket', {

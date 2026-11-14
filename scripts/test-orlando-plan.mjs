@@ -52,7 +52,6 @@ import {
   icsLocalDateTime,
 } from '../lib/trip-regions/plan-ics.ts';
 import {
-  dateFigure,
   dateLevel,
   hoursLessThanUsual,
   parkInitials,
@@ -702,25 +701,6 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       },
     },
   };
-  test(
-    'the date figure is the lower of the day’s picks, not a party night',
-    dateFigure(
-      {
-        ...d19,
-        best: {
-          'walt-disney-world': 'disneys-animal-kingdom-theme-park',
-          'universal-orlando': 'universal-islands-of-adventure',
-        },
-      },
-      []
-    ),
-    40
-  );
-  test(
-    'without picks, an early close does not count',
-    dateFigure(d19, ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park']),
-    45
-  );
   {
     const cell = (crowdLevel, status = 'OPERATING') => ({
       status,

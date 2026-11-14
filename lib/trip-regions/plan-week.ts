@@ -15,7 +15,6 @@ import type { DaySignal } from '@/lib/utils/day-signal-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk } from './plan-copy';
-import { closesEarly } from './hub-data';
 import type { PlanDay, PlanDayKind } from './plan';
 import type {
   TripCalendar,
@@ -444,42 +443,10 @@ export function swapPreview(
 export const TRIP_DAY_SIGNALS: readonly DaySignal[] = ['school', 'holiday'];
 
 /**
- * The park day behind a date's figure: the lowest of the day's picks per resort (`best`, the API's
- * shortest lines with early closings counted), so a party night that closes at 6 pm never makes a
- * date look quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner
- * that is open, has a figure and does not close early. `null` where none has one.
- */
-export function datePick(
-  day: TripCalendarDay | undefined,
-  headliners: readonly string[]
-): TripParkDay | null {
-  if (!day) return null;
-  const picks = Object.values(day.best ?? {});
-  const candidates = picks.length > 0 ? picks : headliners;
-  let best: TripParkDay | null = null;
-  for (const slug of candidates) {
-    const cell = day.parks[slug];
-    if (!cell || cell.status === 'CLOSED' || cell.headlinerWait == null) continue;
-    if (picks.length === 0 && closesEarly(cell)) continue;
-    if (best === null || cell.headlinerWait < best.headlinerWait!) best = cell;
-  }
-  return best;
-}
-
-/** The figure under a date: the big-ride wait of {@link datePick}, `null` where there is none. */
-export function dateFigure(
-  day: TripCalendarDay | undefined,
-  headliners: readonly string[]
-): number | null {
-  return datePick(day, headliners)?.headlinerWait ?? null;
-}
-
-/**
  * A date's tint in the date grid: how busy the region's headliner parks are that day, the median of
  * the crowd levels of those that are open and have one (the lower middle for an even count). Each
  * level compares a park with its own typical day, so the median reads as "a busy day in the region"
- * the way a park's crowd calendar does for one park; the figure under the date stays the shortest
- * line. `null` for a date with no level.
+ * the way a park's crowd calendar does for one park. `null` for a date with no level.
  */
 export function dateLevel(
   day: TripCalendarDay | undefined,

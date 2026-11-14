@@ -3106,10 +3106,10 @@
       "prevMonth": "Mese precedente",
       "nextMonth": "Mese successivo",
       "gridLabel": "Giorno di arrivo e di partenza",
-      "wait": "attesa più breve alle grandi attrazioni circa {minutes} min",
-      "waitLastYear": "l’anno scorso circa {minutes} min alle grandi attrazioni",
-      "legend": "Sotto ogni data: l’attesa più breve alle grandi attrazioni quel giorno, in minuti, nel parco con le code più corte; i parchi che chiudono prima non contano. Ogni data ha il colore di quanto sono affollati in media i grandi parchi quel giorno.",
-      "legendLastYear": "Le cifre in corsivo sono giorni misurati l’anno scorso.",
+      "level": "Affluenza: {level}",
+      "levelLastYear": "Affluenza l’anno scorso: {level}",
+      "legend": "Ogni data ha il colore di quanto sono affollati in media i grandi parchi quel giorno.",
+      "legendLastYear": "Le date con il bordo tratteggiato mostrano l’affluenza misurata l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
       "dayCount": "{count, plural, =1 {1 giorno} other {# giorni}}",
@@ -3262,7 +3262,7 @@
       }
     },
     "month": {
-      "legend": "Ogni giorno di parco ha il colore di quanto è affollato il suo parco, con le due lettere del parco e l’attesa alle grandi attrazioni in minuti."
+      "legend": "Ogni giorno di parco ha il colore di quanto è affollato il suo parco, con le due lettere del parco."
     },
     "details": {
       "minutesCaption": "L’attesa alle grandi attrazioni nel momento più affollato, la cifra con cui il piano confronta i giorni. Il colore confronta il giorno con un giorno tipico di questo parco.",

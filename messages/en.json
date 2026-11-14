@@ -3106,10 +3106,10 @@
       "prevMonth": "Previous month",
       "nextMonth": "Next month",
       "gridLabel": "Arrival and departure day",
-      "wait": "shortest big-ride wait about {minutes} min",
-      "waitLastYear": "last year about {minutes} min at the big rides",
-      "legend": "Under each date: the shortest wait at the big rides that day, in minutes, at the park with the shortest lines; parks that close early don’t count. Each date is coloured by how busy the big parks are that day on average.",
-      "legendLastYear": "Figures in italics are last year’s measured days.",
+      "level": "Crowds: {level}",
+      "levelLastYear": "Crowds last year: {level}",
+      "legend": "Each date is coloured by how busy the big parks are that day on average.",
+      "legendLastYear": "Dates with a dashed border show last year’s measured crowds.",
       "pickArrival": "Tap your arrival day.",
       "pickDeparture": "Now your departure day.",
       "dayCount": "{count, plural, =1 {1 day} other {# days}}",
@@ -3262,7 +3262,7 @@
       }
     },
     "month": {
-      "legend": "Each park day is coloured by how busy it is for its park, with the park’s two letters and the big rides’ wait in minutes."
+      "legend": "Each park day is coloured by how busy it is for its park, with the park’s two letters."
     },
     "details": {
       "minutesCaption": "The big rides’ wait at their busiest, the figure the plan compares days by. The colour compares the day with this park’s typical day.",

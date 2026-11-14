@@ -140,7 +140,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-month-view.tsx`](../../components/trip-regions/planner/plan-month-view.tsx)
 
-- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`): a park day is a tile in its crowd tint with the park's two letters and the minutes, a rest or …
+- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`): a park day is a tile in its crowd tint with the park's two letters and, on a wide screen, the …
 
 ### [`planner/plan-options.tsx`](../../components/trip-regions/planner/plan-options.tsx)
 
