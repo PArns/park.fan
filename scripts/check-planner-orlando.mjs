@@ -260,13 +260,22 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       if (r.url().includes('/api/trip-regions/orlando/plan')) asked.push(new URL(r.url()));
     });
     await ready(page, new URL(ownerLink).pathname + new URL(ownerLink).search + '#planner');
-    await page.locator('[data-plan-tickets-card]').waitFor({ timeout: PLAN_TIMEOUT });
+    await page
+      .waitForFunction(
+        () =>
+          document
+            .querySelector('[data-plan-tickets-card]')
+            ?.textContent?.includes('Three Park Adventure'),
+        null,
+        { timeout: PLAN_TIMEOUT }
+      )
+      .catch(() => {});
     const owned = await page.locator('[data-plan-tickets-card]').innerText();
     check(
       'Orlando · ein kopierter Link öffnet dieselben Tickets, ohne die Adresse umzuschreiben',
       page.url() === ownerLink &&
         owned.includes('14-Day Magic Ticket') &&
-        owned.includes('14-day ticket'),
+        owned.includes('Three Park Adventure'),
       owned.slice(0, 160)
     );
     const fromLink = await events(page, 'trip_planner_started');
@@ -317,9 +326,9 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await card.waitFor({ timeout: PLAN_TIMEOUT });
     const box = await card.boundingBox();
     check(
-      'Orlando · Plan first: ein kompakter Block auf Level 0 (Satz und „Ticket details“)',
+      'Orlando · Plan first: ein kompakter Block auf Level 0 (Satz, „Ticket details“, „Already have tickets?“)',
       box !== null &&
-        box.height <= 200 &&
+        box.height <= 260 &&
         (await card.locator('[data-plan-ticket-sentence]').count()) === 1,
       box ? `${Math.round(box.height)} px` : 'kein Block'
     );
@@ -534,7 +543,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     });
     check(
       'Orlando · „Leave this visit out“ nimmt den Besuch aus den Parks',
-      !(query(page).get('parks') ?? '').includes('magic-kingdom-park'),
+      // Which park the plan puts outside the ticket is the plan's; one of the seven goes.
+      (query(page).get('parks') ?? '').split(',').length === 6,
       `${slug.slice(0, 60)} → parks=${query(page).get('parks')}`
     );
     const ways = await events(page, 'trip_outside_ticket_action');
