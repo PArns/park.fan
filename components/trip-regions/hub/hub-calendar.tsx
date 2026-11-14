@@ -320,7 +320,7 @@ function useHubTile(calendar: TripCalendar, locale: string, timezone: string) {
         day?.status === 'OPERATING' && day.opensAt && close ? (
           <span className="truncate tabular-nums">
             {formatClockTime(day.opensAt, locale, timezone)}–
-            <span className={cn(early && 'text-foreground font-semibold')}>
+            <span className={early ? 'text-foreground font-semibold' : undefined}>
               {formatClockTime(close, locale, timezone)}
             </span>
           </span>
@@ -539,9 +539,9 @@ function holidayNames(day: TripCalendarDay, locale: string): string {
  * The phone's list: one card per day, the date a button that opens the day sheet over the whole
  * card. Per group its first park (`rankGroupParks`, the pick first) on its tile and how many more
  * parks it has; the ranking is the sheet's. Every day is in the served HTML; `data-week` shows a
- * week of them.
+ * week of them. Memoised, so the urgent render of a week press skips it.
  */
-function DayList({
+const DayList = memo(function DayList({
   days,
   storm,
   groups,
@@ -588,7 +588,7 @@ function DayList({
       </ol>
     </>
   );
-}
+});
 
 /** One day of the phone's list; its props do not change with the week, so paging skips it. */
 const DayItem = memo(function DayItem({
@@ -764,9 +764,9 @@ interface Slot {
  * resort's while one is chosen) and its holidays; a park whose whole window says one thing
  * (closed for the season, no hours yet) is one line instead of tiles. One tab stop for the grid:
  * the arrows move between the week's tiles, Enter opens the day (`role="grid"` with a roving
- * `tabIndex`).
+ * `tabIndex`). Memoised, so the urgent render of a week press skips it.
  */
-function Matrix({
+const Matrix = memo(function Matrix({
   region,
   days,
   storm,
@@ -928,7 +928,7 @@ function Matrix({
       </table>
     </div>
   );
-}
+});
 
 /**
  * The grid's head: each date, a button that opens the day, with the storm season under it; the
