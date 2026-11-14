@@ -348,7 +348,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-best-days-summary.tsx`](../../components/parks/park-best-days-summary.tsx)
 
-- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday cells tiered against the park's own other days, Monday to Friday and the weekend as two bands, and from `sm` up the quietest and busiest weekdays and months below them (beside …
+- `ParkBestDaysSummary` _component_: The park header's answer to „when is it quiet": seven weekday cells tiered against the park's own other days, Monday to Friday and the weekend as two bands, and from `sm` up the quietest and busiest weekdays and months beside them where …
 
 ### [`park-break-panel.tsx`](../../components/parks/park-break-panel.tsx)
 

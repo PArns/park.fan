@@ -1,15 +1,15 @@
 ---
-title: 'Orlando: met de reisplanner komt elk van je parken op zijn rustigste reisdag'
+title: 'Orlando plannen zonder om 18 uur uit Magic Kingdom te vliegen'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In de nieuwe reisplanner voor Orlando komt elk van je parken op de reisdag waarop het bij de grote
-  attracties het rustigst is. Een dag waarop Magic Kingdom om 18 uur sluit voor een feest, telt
-  daarbij als een korte dag. Heb je al tickets, dan blijft elke parkdag binnen hun geldigheid, en
-  anders krijg je een voorstel voor de tickets die passen.
+  Op 8 december is het weinig druk in Magic Kingdom, en toch is het de verkeerde dag: met een gewoon
+  ticket moet je om 18 uur het park uit, nog voor het vuurwerk. Met de nieuwe reisplanner voor
+  Orlando ga je er de dag ervoor heen, als het park tot 22 uur open is, en zo krijgt elk van je
+  parken de dag die de moeite waard is.
 tags:
   - park-fan
   - orlando
@@ -26,7 +26,8 @@ coverImage:
 seo:
   title: 'Reisplanner Orlando: welk park op welke dag?'
   description: >-
-    Elk van je parken in Orlando op de dag met de kortste rijen. Een dag waarop dagbezoekers om 18 uur weg moeten voor een feest, telt als korte dag.
+    Op 8 december is het weinig druk in Magic Kingdom, maar dagbezoekers moeten om 18 uur weg. De
+    reisplanner zoekt je parken in Orlando een betere dag.
   keywords:
     - reisplanner Orlando
     - welk park in Orlando op welke dag
@@ -37,9 +38,9 @@ seo:
     - loont de Park Hopper
 ---
 
-Op 8 december 2026 moet je [Magic Kingdom](ref:magic-kingdom-park) om 18 uur verlaten als je een gewoon dagticket hebt. Om 19 uur begint Mickey's Very Merry Christmas Party, en daarvoor heb je een apart ticket nodig. De dag ervoor is het park tot 22 uur open. Bij de grote attracties verwachten we op allebei de dagen ongeveer even veel drukte, en precies daarom is de 8e verraderlijk: in een gewone druktekalender ziet hij er net zo goed uit als de 7e, hij heeft alleen vier uur minder, en dat zijn de uren met het vuurwerk.
+De reden is Mickey's Very Merry Christmas Party. Die begint die avond om 19 uur in [Magic Kingdom](ref:magic-kingdom-park), en daarvoor heb je een apart ticket nodig. Op de maandag ervoor is er geen feest, en dan is het park voor iedereen open tot 22 uur.
 
-Voor zulke dagen staat er op [park.fan/orlando](/orlando) nu een reisplanner. Je zegt wanneer je in Orlando bent en welke parken je wilt zien. Bij tien dagen van 5 tot en met 14 december krijgt Magic Kingdom dan maandag de 7e, een van de vijf dagen zonder feest.
+Voor zulke dagen staat er op [park.fan/orlando](/orlando) nu een reisplanner. Je zegt wanneer je in Orlando bent en welke parken je wilt zien. Bij tien dagen van 5 tot en met 14 december 2026 krijgt Magic Kingdom dan maandag de 7e, een van de vijf dagen zonder feest.
 
 ## Alle parken van Orlando in één kalender
 

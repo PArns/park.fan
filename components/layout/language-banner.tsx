@@ -109,11 +109,12 @@ export function LanguageBanner({ currentLocale }: LanguageBannerProps) {
   }
 
   return (
-    // `top-12`, not `top-0`: this sits at `z-[60]` over the sticky header and does not scroll
-    // away, so at `top-0` it would cover the burger, search and logo. The number is the header's
-    // height (`h-12`); it moves with it.
+    // `top-12`: it hangs from the header's lower edge and does not scroll away. The number is the
+    // header's height (`h-12`); it moves with it. `z-[45]`: under the sticky header's `z-50`, so a
+    // band the header drops over it (Planen, Mehr) or a menu it portals covers the banner, and over
+    // the page and its toasts (`z-40`). The ladder is in `components/ui/tooltip.tsx`.
     <div
-      className="animate-in slide-in-from-top fixed top-12 right-0 left-0 z-[60] duration-300"
+      className="animate-in slide-in-from-top fixed top-12 right-0 left-0 z-[45] duration-300"
       // Read by the new-posts toast, which sits below this from `sm` instead of under it.
       data-language-banner
     >

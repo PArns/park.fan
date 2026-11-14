@@ -1,15 +1,15 @@
 ---
-title: 'Orlando: the trip planner gives each of your parks its quietest day of the trip'
+title: 'Plan your Orlando trip without getting kicked out of Magic Kingdom at 6 pm'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In the new trip planner for Orlando, each of your parks goes on the day of your trip when its big
-  rides are least busy. A day when Magic Kingdom closes at 6 pm for a party counts as a short day.
-  If you already hold tickets, every park day stays inside their dates, and if you don't, you get a
-  suggestion for which to buy.
+  On 8 December the crowds at Magic Kingdom are low, and it's still the wrong day to go: on an
+  ordinary ticket you're out at 6 pm, before the fireworks. With the new Orlando trip planner you go
+  the day before instead, when the park stays open until 10 pm, and every park on your list gets a
+  day like that.
 tags:
   - park-fan
   - orlando
@@ -26,8 +26,8 @@ coverImage:
 seo:
   title: 'Orlando trip planner: which park on which day?'
   description: >-
-    Each of your Orlando parks on the day with the shortest queues. A party day, when day guests
-    have to leave at 6 pm, counts as a short day.
+    Crowds at Magic Kingdom are low on 8 December, but day guests are out at 6 pm. The Orlando trip
+    planner finds each of your parks a better day.
   keywords:
     - Orlando trip planner
     - which Orlando park on which day
@@ -38,9 +38,9 @@ seo:
     - is the Park Hopper worth it
 ---
 
-On 8 December 2026 you'll have to leave [Magic Kingdom](ref:magic-kingdom-park) at 6 pm if you hold an ordinary day ticket. Mickey's Very Merry Christmas Party starts at 7 pm, and it needs a ticket of its own. The day before, the park stays open until 10 pm. We expect about the same crowds at the big rides on both days, which is what makes the 8th a trap: in an ordinary crowd calendar it looks as good as the 7th, it just has four hours fewer, and they're the ones with the fireworks.
+The reason is Mickey's Very Merry Christmas Party. It starts at 7 pm that evening at [Magic Kingdom](ref:magic-kingdom-park), and it needs a ticket of its own. On the Monday before there's no party, and the park stays open to everyone until 10 pm.
 
-For days like that, [park.fan/orlando](/orlando) now has a trip planner. You say when you're in Orlando and which parks you want to see. For ten days from 5 to 14 December, Magic Kingdom then gets Monday the 7th, one of the five days without a party.
+For days like that, [park.fan/orlando](/orlando) now has a trip planner. You say when you're in Orlando and which parks you want to see. For ten days from 5 to 14 December 2026, Magic Kingdom then gets Monday the 7th, one of the five days without a party.
 
 ## Every Orlando park in one calendar
 
