@@ -119,7 +119,8 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 
 - `holidaySignals` _function_: The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are not among them: only the calendar carries those.
 - `DAY_SIGNAL_CLASS` _const_: Segment colour per day signal, so the calendar cells, the day dialog and the legend agree.
-- Types: `DaySignal`
+- `STORM_SIGNAL_CLASS` _const_: The storm season's segment, in its own violet (`--signal-storm`): dashed for the season, solid for the peak, so the peak reads stronger without a second colour.
+- Types: `DaySignal`, `StormSignal`
 
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
 
@@ -480,6 +481,10 @@ Route guards for the `/[locale]/...` tree.
 ### [`season.ts`](../../lib/utils/season.ts)
 
 - `isInSeason` _function_: Whether a seasonal entity counts as running right now. `isCurrentlyInSeason` has three values: `false` is known closed, `null` is „seasonal, nothing else known" and must not hide the ride, and `undefined` is an older payload.
+
+### [`sentence-case.ts`](../../lib/utils/sentence-case.ts)
+
+- `sentenceCase` _function_: A phrase with a capital first letter, for a word that opens a sentence or stands alone as a label ("hurricane season" as a legend key). Every locale here is Latin script, so upper-casing the first character is the whole job.
 
 ### [`servable-route.ts`](../../lib/utils/servable-route.ts)
 
