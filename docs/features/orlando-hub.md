@@ -39,12 +39,15 @@ asks the keyed routes through `app/api/trip-regions/[...path]/route.ts`, which a
 pages only and forwards each route's own query names (`lib/trip-regions/relay.ts`). The shapes are
 `lib/trip-regions/types.ts`; everything derived from them is `lib/trip-regions/hub-data.ts`.
 
-- **One figure per surface, with one name.** A square, the first answer, a best-time card and the
-  day sheet all print `headlinerWait`, the Spitzenwartezeit (peak wait, piekwachttijd, attente de
-  pointe, espera punta, attesa di picco): each big ride's highest wait of the day, averaged over the
-  park's big rides. Parks are compared by it; the colour is the park's day against its own normal
-  day, the crowd level and nothing else, and the key says so in one line. One baseline per page:
-  the hub's cards have no "across the year" figure. There is no hourly curve on the hub.
+- **One figure per surface, with one name**, the Spitzenwartezeit (peak wait, piekwachttijd,
+  attente de pointe, espera punta, attesa di picco): each big ride's highest wait of the day,
+  averaged over the park's big rides. What a day prints is `shownWait`: within 60 days the park
+  calendar's own forecast (`forecastWait`), so the hub and the park page never show two numbers
+  for one day; past them `headlinerWait`, last year's measured day. Every ranking stays on the
+  API's `headlinerWait` (the forecast times its lead factor within 60 days, PAR-1319). A square,
+  the first answer, the day sheet and the questions all print `shownWait`; the colour is the park's
+  day against its own normal day, the crowd level and nothing else, and the key says so in one
+  line. There is no hourly curve on the hub.
 - **The pick is the API's.** `best` per resort is picked on an hours-weighted cost, so a park that
   closes early for day guests loses to a full day with a similar wait: Animal Kingdom at 45 min,
   open to 19:00, ranks above Magic Kingdom at 40 min on a party night. When `bestWhy` says
@@ -64,9 +67,15 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   hours-weighted pick, so a day most of its parks call quiet is never one of its busiest.
 - **School holidays are US ones, and say so.** Lanes, reasons and the best-time pages name "US
   school holidays"; break names go through `translateHolidayName(cleanBreakName(…))`.
-- **Three bases.** `forecast` plain, `long_range` labelled "outlook", `last_year` dashed and
-  labelled "last year", with a banner where a window has such days. A last-year day is never offered
-  as a pick.
+- **Past 60 days, last year, said once.** Every ranking reads last year's measured day past 60
+  days, so on a month that far out nearly every day is `last_year`. The squares look like the
+  rest; one line above the calendar says „Ab dem 13. Jan.: Werte aus dem Vorjahr …“ from the first
+  such day (`tripHub.lastYearFrom`), and the day sheet says it for its day. `long_range` (nothing
+  measured a year back) keeps its "outlook" label. A last-year day is never offered as a pick.
+- **The storm season** (Orlando's hurricanes, Japan's typhoons) is the events row's last lane, by
+  the planner's own `stormCodeOn` from the region's `weather.storm`: the signal violet
+  (`STORM_SIGNAL_CLASS`), dashed for the season, solid for its peak, in `tripPlanner.climate`'s
+  words. Never a crowd tint.
 
 ## Simple first, more on request
 

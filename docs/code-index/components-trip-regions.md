@@ -37,7 +37,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HUB_CELL` _const_: The square: a fixed box with the minutes centred, tabular so columns line up.
 - `HUB_CELL_BEST` _const_: The resort's shortest line that day: one ring inside the box, so the grid never shifts.
-- `HUB_CELL_LAST_YEAR` _const_: A day read off last year: the dashed edge the legend names "last year".
 - `EARLY_CLOSE_CORNER` _const_: The early-close mark: a small folded corner, top right, where a ticketed evening sends the day guests out early. A shape, not an icon, so the square still holds only its number.
 - `NO_HOURS_DOT` _const_: The mark of a figure that stands without published hours: a small dot, bottom left, so the number still reads and the legend and the day sheet say what it means.
 
