@@ -1,29 +1,46 @@
 'use client';
 
-import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import {
+  memo,
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type RefObject,
+} from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/calendar-day-tile';
+import { useSeasonLabel } from '@/components/parks/season-headline';
 import { cn } from '@/lib/utils';
-import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { CROWD_TEXT_CLASS, CROWD_TILE_CLASS } from '@/lib/utils/crowd-level-styles';
-import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
-import { STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
-import { formatClockTime } from '@/lib/utils/intl-format';
+import { useLocationHash } from '@/lib/hooks/use-location-hash';
+import { CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
+import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { formatClockTime, formatHoursRange } from '@/lib/utils/intl-format';
 import { addDays } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
+import { isSeasonEvent, seasonMarks } from '@/lib/parks/park-season-days';
 import { cleanBreakName } from '@/lib/trip-regions/best-time';
 import {
   closesEarly,
   dayBasis,
-  formatDateRange,
-  hoursUnpublished,
   dayGuestClose,
+  dayPick,
   earlyCloseBehind,
   eventLanes,
+  formatDateRange,
   formatHubDate,
-  HUB_FIRST_DAYS,
+  hoursUnpublished,
+  HUB_WEEK_DAYS,
+  hubWeekFragment,
+  hubWeekFromFragment,
+  hubWeeks,
   isRankable,
+  isWeekend,
+  quietestDay,
+  quietSeasons,
   rankGroupParks,
   regionGroups,
   resortHasChoice,
@@ -31,12 +48,13 @@ import {
   shortParkName,
   tintLevel,
   type EventLane,
+  type HubWeek,
   type RegionGroup,
 } from '@/lib/trip-regions/hub-data';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
-import { tripRegionRelayUrl } from '@/lib/trip-regions/paths';
+import { TRIP_CALENDAR_ID } from '@/lib/trip-regions/paths';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import type {
   TripCalendar,
@@ -44,118 +62,57 @@ import type {
   TripParkDay,
   TripRegion,
 } from '@/lib/trip-regions/types';
-import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, NO_HOURS_DOT } from './hub-cell-styles';
+import { EARLY_CLOSE_CORNER, HUB_CELL_BEST, HUB_WEEK_CELL, HUB_WEEK_ITEM } from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
-
-/** How long a window stays fresh in the browser: the API's hour. */
-const CALENDAR_STALE_MS = 60 * 60 * 1000;
-
-/** The breakpoint where the matrix replaces the day list, the site's `lg`. */
-const DESKTOP_QUERY = '(min-width: 1024px)';
-
-/** What a square shows and how it is drawn, for one park on one day. */
-interface CellLook {
-  text: string;
-  className: string;
-  hatch: boolean;
-  early: boolean;
-  /** A figure without published hours: the dot the legend names. */
-  noHours: boolean;
-}
-
-/**
- * The square for a park on a day: the minutes in the level's tint, hatching for closed, a muted
- * box for no figure, a dash for open without a forecast, and a small dot where the figure stands
- * without published hours. Last year's days look like the rest: past 60 days nearly every day is
- * one, so the page says it once above the calendar instead of marking each square. Nothing else:
- * hours, events and icons are the day sheet's.
- */
-function cellLook(day: TripParkDay | undefined, best: boolean): CellLook {
-  if (day?.status === 'CLOSED') {
-    return {
-      text: '',
-      className: 'bg-muted/10 border-border/40',
-      hatch: true,
-      early: false,
-      noHours: false,
-    };
-  }
-  if (!isRankable(day)) {
-    return day?.status === 'OPERATING'
-      ? {
-          text: '–',
-          className: 'bg-muted/40 border-border/60 text-muted-foreground',
-          hatch: false,
-          early: false,
-          noHours: false,
-        }
-      : {
-          text: '',
-          className: 'bg-muted/20 border-border/40',
-          hatch: false,
-          early: false,
-          noHours: false,
-        };
-  }
-  const level = tintLevel(day.crowdLevel);
-  return {
-    text: String(shownWait(day)!),
-    className: cn(
-      level ? cn(CROWD_TILE_CLASS[level], CROWD_TEXT_CLASS[level]) : 'bg-muted/40 border-border/60',
-      best && HUB_CELL_BEST
-    ),
-    hatch: false,
-    early: closesEarly(day),
-    noHours: hoursUnpublished(day),
-  };
-}
 
 /** The history state key of an open day sheet, which Back closes. */
 const SHEET_ENTRY = 'hubDaySheet';
 
+/** What a park's tile shows on a day; the ring and the star are the grid's. */
+type HubTile = Pick<
+  CalendarDayTileProps,
+  'level' | 'closed' | 'wait' | 'status' | 'seasons' | 'hours' | 'overlay'
+>;
+
+/** Each park's tiles, by its slug, one per day of the window. */
+type HubTiles = ReadonlyMap<string, readonly HubTile[]>;
+
+/** The days a park's star stands on, as `<slug>:<date>`. */
+type HubStars = ReadonlySet<string>;
+
 /** The hub's calendar section: the props the server hands over. */
 export interface HubCalendarProps {
   region: TripRegion;
-  /** The first days, server-rendered on every viewport: the first answer and the crawlers' copy. */
-  initial: TripCalendar;
-  /** The whole window the section shows once it has loaded: 30 days, or the month. */
-  window: { from: string; to: string };
+  /** The whole window, server-rendered: 30 days on the hub, the month on a month page. */
+  calendar: TripCalendar;
   /** The region's today, for the "today" mark. */
   todayIso: string;
   locale: string;
-  /** How to read a square (`HubLegend`, server-rendered), between the filter and the days. */
+  /** How to read a tile (`HubLegend`, server-rendered), between the filter and the days. */
   legend?: React.ReactNode;
 }
 
 /**
- * The calendar chapter's body: which park on which day, at the depth a visitor asks for. A phone gets a list
- * of days with each resort's shortest line and "+n more"; a desktop gets the matrix, parks by
- * resort down the side and the days across, with only the minutes in each square. Both are
- * server-rendered for the first seven days; the rest of the window loads through the relay once a
- * desktop shows the matrix or a phone asks for every day. Rows never change with the data, so the
- * reserved height is the rendered one. A tap on a day opens the day sheet.
+ * The calendar chapter's body: which park on which day, a week at a time. A desktop gets the parks
+ * by resort down the side and seven days across, each a compact tile of the crowd calendar
+ * (`CalendarDayTile`), with the day's best park and its holidays above the tiles; a phone gets the
+ * same seven days as a list, each resort's best park on its tile. Every day of the window is in
+ * the served HTML; the week buttons and the fragment (`#calendar-2026-11-21`) only change which
+ * seven a `data-week` shows, so paging asks nothing and moves nothing below the grid. A tap on a
+ * day opens the day sheet.
  */
-export function HubCalendar({
-  region,
-  initial,
-  window,
-  todayIso,
-  locale,
-  legend,
-}: HubCalendarProps) {
+export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubCalendarProps) {
   const t = useTranslations('tripHub.calendar');
-  const isDesktop = useMediaQuery(DESKTOP_QUERY);
-  const [expanded, setExpanded] = useState(false);
   const groups = useMemo(() => regionGroups(region), [region]);
   const [only, setOnly] = useState<string | null>(null);
-  // The filter is urgent; the grid it rebuilds is not (an interaction may not rebuild the grid in
-  // its own commit).
+  // The filter and the week are urgent; the grid they rebuild is not (an interaction may not
+  // rebuild the grid in its own commit).
   const deferredOnly = useDeferredValue(only);
   const [openDate, setOpenDate] = useState<string | null>(null);
   // The control that opened the sheet, so closing it puts focus back where the reader was.
   const opener = useRef<HTMLElement | null>(null);
   // The open sheet holds a history entry of its own, so a phone's Back closes it and a second Back
-  // leaves the page, the way a visitor expects a sheet to behave. (`window` is a prop here.)
+  // leaves the page, the way a visitor expects a sheet to behave.
   const openDay = useCallback((date: string) => {
     opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setOpenDate(date);
@@ -176,32 +133,73 @@ export function HubCalendar({
   }, []);
   useEffect(() => clearTripPagePark, []);
 
-  // A month page hands over its whole window; only the hub's first week needs the rest.
-  const complete = (initial.days[initial.days.length - 1]?.date ?? '') >= window.to;
-  const { data, isError, isFetching } = useQuery<TripCalendar>({
-    queryKey: ['trip-calendar', region.slug, window.from, window.to],
-    queryFn: async () => {
-      const response = await fetch(tripRegionRelayUrl(region.slug, 'calendar', window));
-      if (!response.ok) throw new Error(`Trip region calendar ${response.status}`);
-      return response.json();
-    },
-    enabled: !complete && (isDesktop || expanded),
-    staleTime: CALENDAR_STALE_MS,
-    retry: 1,
-  });
-  const calendar = data ?? initial;
+  const days = calendar.days;
+  const timezone = requireTripRegion(region.slug).timezone;
+  const weeks = useMemo(() => hubWeeks(days), [days]);
+  // The fragment is read as a store: the served HTML is the first week, and a shared link's week
+  // follows after hydration in the same box.
+  const fragmentWeek = hubWeekFromFragment(useLocationHash(), weeks);
+  const [chosen, setChosen] = useState<number | null>(null);
+  const week = Math.min(chosen ?? fragmentWeek ?? 0, Math.max(0, weeks.length - 1));
+  const shownWeek = useDeferredValue(week);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  // A shared link to a week lands on the calendar, not on the head; a reload keeps its own place.
+  useEffect(() => {
+    const [entry] = performance.getEntriesByType('navigation') as PerformanceNavigationTiming[];
+    if (entry?.type !== 'navigate') return;
+    if (hubWeekFromFragment(window.location.hash, weeks) === null) return;
+    document.getElementById(TRIP_CALENDAR_ID)?.scrollIntoView({ block: 'start' });
+  }, [weeks]);
+
+  /** Shows a week and names it in the address bar, so a reload or a shared link keeps it. */
+  const showWeek = (next: number): number => {
+    const to = Math.max(0, Math.min(weeks.length - 1, next));
+    if (to === week) return to;
+    setChosen(to);
+    const { pathname, search } = window.location;
+    // `null` state, so Next's patched `replaceState` carries its own entry over and moves the
+    // router's URL along (as the park calendar's day fragment does).
+    window.history.replaceState(
+      null,
+      '',
+      `${pathname}${search}${to === 0 ? '' : `#${hubWeekFragment(weeks[to])}`}`
+    );
+    return to;
+  };
+
+  const tileOf = useHubTile(calendar, locale, timezone);
+  const tiles = useMemo<HubTiles>(
+    () =>
+      new Map(region.parks.map((park) => [park.slug, days.map((d) => tileOf(d.parks[park.slug]))])),
+    [region.parks, days, tileOf]
+  );
+  const stars = useMemo<HubStars>(
+    () =>
+      new Set(
+        weeks.flatMap((w) =>
+          region.parks.flatMap((park) => {
+            const date = quietestDay(days.slice(w.start, w.start + w.length), park.slug);
+            return date ? [`${park.slug}:${date}`] : [];
+          })
+        )
+      ),
+    [weeks, region.parks, days]
+  );
+  const storm = useStormDays(days, region.weather);
   const visibleGroups = useMemo(
     () => (deferredOnly ? groups.filter((g) => g.key === deferredOnly) : groups),
     [groups, deferredOnly]
   );
-  const listDays = expanded ? calendar.days : calendar.days.slice(0, HUB_FIRST_DAYS);
+  const pickGroup = deferredOnly ? (groups.find((g) => g.key === deferredOnly) ?? null) : null;
   // A chip that changes the selection counts; pressing the one already chosen does not.
   const filter = (next: string | null) => {
     if (next === only) return;
     setOnly(next);
     trackTripEvent(region.slug, 'trip_hub_filter', { resort: next ?? 'all' });
   };
-  const sheetDay = calendar.days.find((d) => d.date === openDate) ?? null;
+  const sheetDay = days.find((d) => d.date === openDate) ?? null;
+  const nextWeek = weeks[week + 1];
 
   return (
     <div className="space-y-4">
@@ -227,60 +225,57 @@ export function HubCalendar({
 
       {legend}
 
-      {/* Phone: the days as a list, each resort's shortest line and how many other parks it has. */}
+      {weeks.length > 1 && (
+        <WeekNav weeks={weeks} week={week} locale={locale} onWeek={showWeek} navRef={navRef} />
+      )}
+
       <div className="lg:hidden">
         <DayList
-          days={listDays}
-          weather={region.weather}
+          days={days}
+          storm={storm}
           groups={visibleGroups}
+          tiles={tiles}
+          stars={stars}
+          week={shownWeek}
           todayIso={todayIso}
           locale={locale}
-          timezone={requireTripRegion(region.slug).timezone}
+          timezone={timezone}
           onOpen={openDay}
         />
-        {calendar.days.length > HUB_FIRST_DAYS || !complete ? (
-          <button
-            type="button"
-            onClick={() => setExpanded((v) => !v)}
-            className="border-border/60 hover:bg-muted/50 text-foreground mt-3 flex min-h-11 w-full items-center justify-center gap-1.5 rounded-lg border text-sm font-medium"
-            aria-expanded={expanded}
-          >
-            {expanded && (data || complete) ? t('showWeek') : t('showAll')}
-            <ChevronDown
-              aria-hidden
-              className={cn('size-4 transition-transform', expanded && 'rotate-180')}
-            />
-          </button>
-        ) : null}
-        {expanded && !data && !complete && (
-          <p className="text-muted-foreground mt-2 text-sm" role="status">
-            {isError ? t('failed') : t('loading')}
-          </p>
-        )}
       </div>
 
-      {/* Desktop: the matrix. */}
       <div className="hidden lg:block">
         <Matrix
-          region={region.slug}
-          weather={region.weather}
-          calendar={calendar}
+          region={region}
+          days={days}
+          storm={storm}
           groups={visibleGroups}
+          pickGroup={pickGroup}
+          tiles={tiles}
+          stars={stars}
+          weeks={weeks}
+          week={shownWeek}
           todayIso={todayIso}
           locale={locale}
+          timezone={timezone}
           onOpen={openDay}
         />
-        {isDesktop && isFetching && !data && (
-          <p className="text-muted-foreground mt-2 text-xs" role="status">
-            {t('loading')}
-          </p>
-        )}
-        {isDesktop && isError && !data && (
-          <p className="text-muted-foreground mt-2 text-xs" role="status">
-            {t('failed')}
-          </p>
-        )}
       </div>
+
+      {/* At the end of a long week, the next one, then back up to its first day. */}
+      {nextWeek && (
+        <button
+          type="button"
+          onClick={() => {
+            showWeek(week + 1);
+            navRef.current?.scrollIntoView({ block: 'start' });
+          }}
+          className="border-border/60 hover:bg-muted/50 text-foreground flex min-h-11 w-full items-center justify-center gap-1.5 rounded-lg border text-sm font-medium"
+        >
+          {t('weekNextDates', { dates: formatDateRange(nextWeek.from, nextWeek.to, locale) })}
+          <ChevronRight aria-hidden className="size-4" />
+        </button>
+      )}
 
       <EventLanes calendar={calendar} region={region} locale={locale} />
 
@@ -297,16 +292,165 @@ export function HubCalendar({
   );
 }
 
+/**
+ * A park's day as the crowd calendar's compact tile: the tint and the level in words where the day
+ * has a figure, the wait it prints (`shownWait`), the day guest's hours with an early close in bold
+ * under the folded corner, „Zeiten folgen" for a figure without published hours, and the season
+ * icons, quiet for a season most of the window runs in (`quietSeasons`).
+ */
+function useHubTile(calendar: TripCalendar, locale: string, timezone: string) {
+  const t = useTranslations('tripHub.calendar');
+  const tLevel = useTranslations('parks.crowdLevels');
+  const tCommon = useTranslations('common');
+  const seasonLabel = useSeasonLabel();
+  const seasons = useMemo(
+    () => new Map(calendar.seasons.map((season) => [season.id, season])),
+    [calendar.seasons]
+  );
+  const quiet = useMemo(() => quietSeasons(calendar), [calendar]);
+  return useCallback(
+    (day: TripParkDay | undefined): HubTile => {
+      if (day?.status === 'CLOSED') {
+        return { level: null, closed: true, wait: null, status: tCommon('closed') };
+      }
+      const level = isRankable(day) ? tintLevel(day.crowdLevel) : null;
+      const close = dayGuestClose(day);
+      const early = isRankable(day) && closesEarly(day);
+      const hours =
+        day?.status === 'OPERATING' && day.opensAt && close ? (
+          <span className="truncate tabular-nums">
+            {formatClockTime(day.opensAt, locale, timezone)}–
+            <span className={cn(early && 'text-foreground font-semibold')}>
+              {formatClockTime(close, locale, timezone)}
+            </span>
+          </span>
+        ) : !day || day.status === 'UNKNOWN' ? (
+          <span className="truncate">{t('hoursLater')}</span>
+        ) : null;
+      const marks = seasonMarks(
+        (day?.seasons ?? []).flatMap((id) => {
+          const season = seasons.get(id);
+          return season && isSeasonEvent(season)
+            ? [{ ...season, name: season.name ?? null, quiet: quiet.has(id) }]
+            : [];
+        })
+      ).map((mark) => ({
+        kind: mark.kind,
+        quiet: mark.quiet,
+        label: mark.seasons.map((s) => seasonLabel(s, true)).join(', '),
+      }));
+      return {
+        level,
+        closed: false,
+        wait: isRankable(day) ? shownWait(day)! : null,
+        // A figure without a level has no word: „Keine Prognose" beside a forecast would be wrong.
+        status: level ? tLevel(level) : isRankable(day) ? '' : tLevel('unknown'),
+        seasons: marks,
+        hours,
+        overlay: early ? <span aria-hidden className={EARLY_CLOSE_CORNER} /> : undefined,
+      };
+    },
+    [locale, timezone, t, tLevel, tCommon, seasonLabel, seasons, quiet]
+  );
+}
+
+/** The week shown: its dates between the two arrows, and from `sm` every week as a chip. */
+function WeekNav({
+  weeks,
+  week,
+  locale,
+  onWeek,
+  navRef,
+}: {
+  weeks: readonly HubWeek[];
+  week: number;
+  locale: string;
+  /** Shows a week, clamped to the window, and returns the one it showed. */
+  onWeek: (week: number) => number;
+  navRef: RefObject<HTMLDivElement | null>;
+}) {
+  const t = useTranslations('tripHub.calendar');
+  const current = weeks[week];
+  const last = weeks.length - 1;
+  // The arrow keys page from any of the controls, Home and End go to the ends; on a chip the
+  // focus follows the chip of the week shown.
+  const onKeyDown = (event: React.KeyboardEvent) => {
+    const keys: Record<string, number> = {
+      ArrowLeft: week - 1,
+      ArrowRight: week + 1,
+      Home: 0,
+      End: last,
+    };
+    if (!(event.key in keys)) return;
+    event.preventDefault();
+    const shown = onWeek(keys[event.key]);
+    if (event.target instanceof HTMLElement && event.target.dataset.hubWeekChip !== undefined) {
+      navRef.current?.querySelector<HTMLElement>(`[data-hub-week-chip="${shown}"]`)?.focus();
+    }
+  };
+  const arrow =
+    'border-border/60 hover:bg-muted/50 focus-visible:ring-ring inline-flex size-11 shrink-0 items-center justify-center rounded-full border transition-[opacity,background-color] focus-visible:ring-2 focus-visible:outline-none aria-disabled:cursor-default aria-disabled:opacity-40 aria-disabled:hover:bg-transparent sm:size-9';
+  return (
+    <div
+      ref={navRef}
+      role="group"
+      aria-label={t('weekNav')}
+      onKeyDown={onKeyDown}
+      className="flex scroll-mt-24 flex-wrap items-center gap-2"
+    >
+      <button
+        type="button"
+        data-hub-week-prev=""
+        aria-label={t('weekPrev')}
+        aria-disabled={week === 0}
+        onClick={() => onWeek(week - 1)}
+        className={arrow}
+      >
+        <ChevronLeft aria-hidden className="size-5" />
+      </button>
+      <p
+        aria-live="polite"
+        className="min-w-0 flex-1 text-center text-base font-semibold sm:min-w-56 sm:flex-none"
+      >
+        {formatDateRange(current.from, current.to, locale, { weekday: true })}
+      </p>
+      <button
+        type="button"
+        data-hub-week-next=""
+        aria-label={t('weekNext')}
+        aria-disabled={week === last}
+        onClick={() => onWeek(week + 1)}
+        className={arrow}
+      >
+        <ChevronRight aria-hidden className="size-5" />
+      </button>
+      <div className="hidden flex-wrap items-center gap-2 sm:ml-auto sm:flex">
+        {weeks.map((w, i) => (
+          <FilterChip
+            key={w.from}
+            pressed={i === week}
+            onClick={() => onWeek(i)}
+            data-hub-week-chip={i}
+          >
+            {formatDateRange(w.from, w.to, locale)}
+          </FilterChip>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /** A filter toggle, 44 px on a phone. */
 function FilterChip({
   pressed,
   onClick,
   children,
+  ...props
 }: {
   pressed: boolean;
   onClick: () => void;
   children: React.ReactNode;
-}) {
+} & Omit<React.ComponentProps<'button'>, 'onClick' | 'children'>) {
   return (
     <button
       type="button"
@@ -318,18 +462,28 @@ function FilterChip({
           ? 'border-primary/50 bg-primary/15 text-foreground'
           : 'border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted/50'
       )}
+      {...props}
     >
       {children}
     </button>
   );
 }
 
-/** The accessible name of a square: who, when, how long, how busy for that park, and the marks. */
+/**
+ * The accessible name of a tile: who, when, how long, how busy for that park, the hours and the
+ * marks.
+ */
 function useCellLabel(locale: string, timezone: string) {
   const t = useTranslations('tripHub.calendar');
   const tLevel = useTranslations('parks.crowdLevels');
   return useCallback(
-    (parkName: string, date: string, day: TripParkDay | undefined, bestAt: string | null) => {
+    (
+      parkName: string,
+      date: string,
+      day: TripParkDay | undefined,
+      bestAt: string | null,
+      quietest: boolean
+    ) => {
       const when = formatHubDate(date, locale);
       if (day?.status === 'CLOSED') return t('cellClosed', { park: parkName, date: when });
       if (!isRankable(day)) {
@@ -346,8 +500,12 @@ function useCellLabel(locale: string, timezone: string) {
           level: level ? tLevel(level) : tLevel('unknown'),
         }),
       ];
-      if (bestAt) parts.push(t('cellBest', { resort: bestAt }));
       const close = dayGuestClose(day);
+      if (day.status === 'OPERATING' && day.opensAt && close) {
+        parts.push(formatHoursRange(day.opensAt, close, locale, timezone));
+      }
+      if (bestAt) parts.push(t('cellBest', { resort: bestAt }));
+      if (quietest) parts.push(t('quietest'));
       if (closesEarly(day) && close) {
         parts.push(t('cellEarly', { time: formatClockTime(close, locale, timezone) }));
       }
@@ -368,23 +526,39 @@ function bestAtResort(day: TripCalendarDay, group: RegionGroup, slug: string): s
   return resortHasChoice(day, group) ? shortGroupName(group.name) : null;
 }
 
+/** A day's holidays and school breaks, each name once, in the reader's language. */
+function holidayNames(day: TripCalendarDay, locale: string): string {
+  return [
+    ...new Set((day.holidays ?? []).map((h) => translateHolidayName(cleanBreakName(h), locale))),
+  ]
+    .filter(Boolean)
+    .join(' · ');
+}
+
 /**
- * The phone's list: one row per day, a button that opens the day sheet. Per resort only its
- * shortest line and how many more parks it has; the ranking is the sheet's.
+ * The phone's list: one card per day, the date a button that opens the day sheet over the whole
+ * card. Per group its first park (`rankGroupParks`, the pick first) on its tile and how many more
+ * parks it has; the ranking is the sheet's. Every day is in the served HTML; `data-week` shows a
+ * week of them.
  */
 function DayList({
   days,
-  weather,
+  storm,
   groups,
+  tiles,
+  stars,
+  week,
   todayIso,
   locale,
   timezone,
   onOpen,
 }: {
-  days: TripCalendarDay[];
-  /** The region's weather, for the storm season under each date. */
-  weather: TripRegion['weather'];
+  days: readonly TripCalendarDay[];
+  storm: ReadonlyMap<string, StormCode> | null;
   groups: RegionGroup[];
+  tiles: HubTiles;
+  stars: HubStars;
+  week: number;
   todayIso: string;
   locale: string;
   /** The region's zone, for the closing time of a park the pick beat. */
@@ -392,103 +566,146 @@ function DayList({
   onOpen: (date: string) => void;
 }) {
   const t = useTranslations('tripHub.calendar');
-  const tClimate = useTranslations('tripPlanner.climate');
-  const storm = useStormDays(days, weather);
   return (
     <>
       {storm && <StormKey storm={storm} className="text-muted-foreground mb-2 text-xs" />}
-      <ol aria-label={t('listLabel')} className="space-y-2">
-        {days.map((day) => {
-          const basis = dayBasis(day);
-          const stormCode = storm?.get(day.date);
-          return (
-            <li key={day.date}>
-              <button
-                type="button"
-                onClick={() => onOpen(day.date)}
-                aria-haspopup="dialog"
-                className="border-border/60 bg-card/60 hover:bg-muted/40 focus-visible:ring-ring flex w-full items-start gap-3 rounded-xl border p-3 text-left focus-visible:ring-2 focus-visible:outline-none"
-              >
-                <span className="flex w-12 shrink-0 flex-col items-center">
-                  <span className="text-muted-foreground text-[11px] font-semibold uppercase">
-                    {day.date === todayIso
-                      ? t('today')
-                      : formatHubDate(day.date, locale, 'weekday')}
-                  </span>
-                  <time dateTime={day.date} className="text-xl font-bold tabular-nums">
-                    {formatHubDate(day.date, locale, 'day')}
-                  </time>
-                  {basis === 'long_range' && (
-                    <span className="text-muted-foreground text-[10px]">{t('outlook')}</span>
-                  )}
-                  {stormCode && (
-                    <>
-                      <span
-                        aria-hidden
-                        className={cn(
-                          'mt-1 h-1.5 w-8 rounded-full',
-                          STORM_SIGNAL_CLASS[stormSignal(stormCode)]
-                        )}
-                      />
-                      <span className="sr-only">{tClimate(stormCode)}</span>
-                    </>
-                  )}
-                </span>
-                <span className="min-w-0 flex-1 space-y-1.5">
-                  {groups.map((group) => {
-                    const ranked = rankGroupParks(day, group.parks, group.key);
-                    const top = ranked[0];
-                    const others = ranked.slice(1).filter((r) => isRankable(r.day)).length;
-                    if (!top) return null;
-                    const look = cellLook(top.day, false);
-                    const early = earlyCloseBehind(day, group, top.park.slug);
-                    const earlyClose = early ? dayGuestClose(early.day) : undefined;
-                    return (
-                      <span key={group.key} className="flex items-start gap-2 text-sm">
-                        {/* The park says which resort it is; its short name wraps rather than
-                          truncating. */}
-                        <span className="min-w-0 flex-1 font-medium break-words">
-                          {isRankable(top.day) || top.day?.status === 'OPERATING'
-                            ? shortParkName(top.park.name)
-                            : top.day?.status === 'CLOSED'
-                              ? t('stateClosed')
-                              : t('stateUnknown')}
-                          {early && earlyClose && (
-                            <span className="text-muted-foreground block text-xs font-normal">
-                              {t('earlyElsewhere', {
-                                park: shortParkName(early.park.name),
-                                time: formatClockTime(earlyClose, locale, timezone),
-                              })}
-                            </span>
-                          )}
-                        </span>
-                        {look.text && (
-                          <span
-                            className={cn(
-                              HUB_CELL,
-                              'relative h-7 w-10 shrink-0 text-sm',
-                              look.className
-                            )}
-                          >
-                            {look.text}
-                            {look.early && <span aria-hidden className={EARLY_CLOSE_CORNER} />}
-                            {look.noHours && <span aria-hidden className={NO_HOURS_DOT} />}
-                          </span>
-                        )}
-                        {/* The column stays when it is empty, so every chip stands in one line. */}
-                        <span className="text-muted-foreground w-14 shrink-0 pt-1 text-right text-xs">
-                          {others > 0 ? t('more', { count: others }) : null}
-                        </span>
-                      </span>
-                    );
-                  })}
-                </span>
-              </button>
-            </li>
-          );
-        })}
+      <ol aria-label={t('listLabel')} data-week={week} className="group/week space-y-2">
+        {days.map((day, index) => (
+          <DayItem
+            key={day.date}
+            day={day}
+            index={index}
+            stormCode={storm?.get(day.date)}
+            groups={groups}
+            tiles={tiles}
+            stars={stars}
+            todayIso={todayIso}
+            locale={locale}
+            timezone={timezone}
+            onOpen={onOpen}
+          />
+        ))}
       </ol>
     </>
+  );
+}
+
+/** One day of the phone's list; its props do not change with the week, so paging skips it. */
+const DayItem = memo(function DayItem({
+  day,
+  index,
+  stormCode,
+  groups,
+  tiles,
+  stars,
+  todayIso,
+  locale,
+  timezone,
+  onOpen,
+}: {
+  day: TripCalendarDay;
+  index: number;
+  stormCode: StormCode | undefined;
+  groups: RegionGroup[];
+  tiles: HubTiles;
+  stars: HubStars;
+  todayIso: string;
+  locale: string;
+  timezone: string;
+  onOpen: (date: string) => void;
+}) {
+  const t = useTranslations('tripHub.calendar');
+  const tClimate = useTranslations('tripPlanner.climate');
+  const basis = dayBasis(day);
+  const holidays = holidayNames(day, locale);
+  return (
+    <li className={HUB_WEEK_ITEM[Math.floor(index / HUB_WEEK_DAYS)]}>
+      <div className="border-border/60 bg-card/60 hover:bg-muted/40 relative flex items-start gap-3 rounded-xl border p-3">
+        {/* The date is the button; its layer spans the card, above the tiles, so a tap anywhere
+            opens the day. */}
+        <button
+          type="button"
+          onClick={() => onOpen(day.date)}
+          aria-haspopup="dialog"
+          aria-label={[
+            t('openDay', { date: formatHubDate(day.date, locale, 'long') }),
+            ...(stormCode ? [tClimate(stormCode)] : []),
+          ].join(', ')}
+          className="focus-visible:after:ring-ring flex w-12 shrink-0 flex-col items-center after:absolute after:inset-0 after:z-10 after:rounded-xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2"
+        >
+          <span className="text-muted-foreground text-[11px] font-semibold uppercase">
+            {day.date === todayIso ? t('today') : formatHubDate(day.date, locale, 'weekday')}
+          </span>
+          <time dateTime={day.date} className="text-xl font-bold tabular-nums">
+            {formatHubDate(day.date, locale, 'day')}
+          </time>
+          {basis === 'long_range' && (
+            <span className="text-muted-foreground text-[10px]">{t('outlook')}</span>
+          )}
+          {stormCode && (
+            <span
+              aria-hidden
+              className={cn(
+                'mt-1 h-1.5 w-8 rounded-full',
+                STORM_SIGNAL_CLASS[stormSignal(stormCode)]
+              )}
+            />
+          )}
+        </button>
+        <div className="min-w-0 flex-1 space-y-2">
+          {holidays && <HolidayLine day={day} names={holidays} />}
+          <div className="grid grid-cols-2 gap-x-2 gap-y-2.5">
+            {groups.map((group) => {
+              const ranked = rankGroupParks(day, group.parks, group.key);
+              const top = ranked[0];
+              if (!top) return null;
+              const others = ranked.slice(1).filter((r) => isRankable(r.day)).length;
+              const di = tiles.get(top.park.slug)?.[index];
+              const early = earlyCloseBehind(day, group, top.park.slug);
+              const earlyClose = early ? dayGuestClose(early.day) : undefined;
+              return (
+                <div key={group.key} className="min-w-0 space-y-1">
+                  <p className="truncate text-xs font-semibold">{shortParkName(top.park.name)}</p>
+                  {di && (
+                    <CalendarDayTile
+                      density="compact"
+                      {...di}
+                      best={stars.has(`${top.park.slug}:${day.date}`) ? t('quietest') : null}
+                    />
+                  )}
+                  {(others > 0 || (early && earlyClose)) && (
+                    <p className="text-muted-foreground text-[11px] leading-snug">
+                      {early && earlyClose
+                        ? t('earlyElsewhere', {
+                            park: shortParkName(early.park.name),
+                            time: formatClockTime(earlyClose, locale, timezone),
+                          })
+                        : t('more', { count: others })}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </li>
+  );
+});
+
+/** A day's holidays as one line: the signal colour of a public holiday or a school break, the names. */
+function HolidayLine({ day, names }: { day: TripCalendarDay; names: string }) {
+  return (
+    <span className="flex items-start gap-1.5 text-[11px] leading-tight">
+      <span
+        aria-hidden
+        className={cn(
+          'mt-[3px] size-1.5 shrink-0 rounded-full',
+          DAY_SIGNAL_CLASS[day.isHoliday ? 'holiday' : 'school']
+        )}
+      />
+      <span className="line-clamp-2">{names}</span>
+    </span>
   );
 }
 
@@ -496,7 +713,7 @@ function DayList({
  * The storm season by the planner's own rule (`stormCodeOn`), per day of the window, so the hub's
  * timeline and the date grid mark the same days; `null` when none of them is in it.
  */
-function useStormDays(days: TripCalendarDay[], weather: TripRegion['weather']) {
+function useStormDays(days: readonly TripCalendarDay[], weather: TripRegion['weather']) {
   return useMemo(() => {
     const marked = days.flatMap((d) => {
       const code = stormCodeOn(d.date, weather);
@@ -510,7 +727,13 @@ function useStormDays(days: TripCalendarDay[], weather: TripRegion['weather']) {
  * What the bar under the dates means, the season before its peak as the planner names them
  * (`tripPlanner.climate`), in the signal violet, never a crowd tint.
  */
-function StormKey({ storm, className }: { storm: Map<string, StormCode>; className?: string }) {
+function StormKey({
+  storm,
+  className,
+}: {
+  storm: ReadonlyMap<string, StormCode>;
+  className?: string;
+}) {
   const tClimate = useTranslations('tripPlanner.climate');
   const codes = [...new Set(storm.values())].sort((a) => (a.endsWith('_season') ? -1 : 1));
   return (
@@ -528,53 +751,89 @@ function StormKey({ storm, className }: { storm: Map<string, StormCode>; classNa
   );
 }
 
+/** One column of the grid: a day of the window, or a slot that fills the last week to seven. */
+interface Slot {
+  week: number;
+  /** The day's place in the window; `null` for a filler. */
+  index: number | null;
+}
+
 /**
- * The desktop matrix: a real `<table>` with a caption and `scope`d headers, parks by resort down
- * the side, the days across. One tab stop for the whole grid: the arrows move between squares,
- * Enter opens the day (`role="grid"` with a roving `tabIndex`).
+ * The desktop grid: a real `<table>` with a caption and `scope`d headers, parks by resort down the
+ * side and seven days across. Above the tiles each day's best park (`dayPick`: the region's, or the
+ * resort's while one is chosen) and its holidays; a park whose whole window says one thing
+ * (closed for the season, no hours yet) is one line instead of tiles. One tab stop for the grid:
+ * the arrows move between the week's tiles, Enter opens the day (`role="grid"` with a roving
+ * `tabIndex`).
  */
 function Matrix({
   region,
-  weather,
-  calendar,
+  days,
+  storm,
   groups,
+  pickGroup,
+  tiles,
+  stars,
+  weeks,
+  week,
   todayIso,
   locale,
+  timezone,
   onOpen,
 }: {
-  region: string;
-  /** The region's weather, for the storm season under the dates. */
-  weather: TripRegion['weather'];
-  calendar: TripCalendar;
+  region: TripRegion;
+  days: readonly TripCalendarDay[];
+  storm: ReadonlyMap<string, StormCode> | null;
   groups: RegionGroup[];
+  /** The group the filter shows, whose pick the column heads name; `null` for the region's. */
+  pickGroup: RegionGroup | null;
+  tiles: HubTiles;
+  stars: HubStars;
+  weeks: readonly HubWeek[];
+  week: number;
   todayIso: string;
   locale: string;
+  timezone: string;
   onOpen: (date: string) => void;
 }) {
   const t = useTranslations('tripHub.calendar');
   const tRegion = useTranslations('tripRegion.hub.calendar');
-  const label = useCellLabel(locale, requireTripRegion(region).timezone);
+  const label = useCellLabel(locale, timezone);
   const tableRef = useRef<HTMLTableElement>(null);
   const [focus, setFocus] = useState<{ r: number; c: number }>({ r: 0, c: 0 });
-  const days = calendar.days;
-  const storm = useStormDays(days, weather);
-  const tClimate = useTranslations('tripPlanner.climate');
-  const rows = useMemo(
-    () => groups.flatMap((g) => g.parks.map((park) => ({ group: g, park }))),
-    [groups]
+  const slots = useMemo<Slot[]>(
+    () =>
+      weeks.flatMap((w, wi) =>
+        Array.from({ length: HUB_WEEK_DAYS }, (_, k) => ({
+          week: wi,
+          index: k < w.length ? w.start + k : null,
+        }))
+      ),
+    [weeks]
   );
-  const first = days[0]?.date;
-  const last = days[days.length - 1]?.date;
+  const states = useMemo(
+    () => new Map(groups.flatMap((g) => g.parks.map((p) => [p.slug, parkState(days, p.slug)]))),
+    [groups, days]
+  );
+  const rows = useMemo(
+    () => groups.flatMap((g) => g.parks.filter((p) => !states.get(p.slug)).map((p) => p.slug)),
+    [groups, states]
+  );
+  const current = weeks[week] ?? { from: '', to: '', start: 0, length: 0 };
+  const lastCol = current.start + current.length - 1;
+  // The tab stop stays in the week shown: a week turned under it moves it to that week's first day.
+  const tab = {
+    r: Math.min(focus.r, rows.length - 1),
+    c: focus.c >= current.start && focus.c <= lastCol ? focus.c : current.start,
+  };
 
   const move = (r: number, c: number) => {
     const next = {
       r: Math.max(0, Math.min(rows.length - 1, r)),
-      c: Math.max(0, Math.min(days.length - 1, c)),
+      c: Math.max(current.start, Math.min(lastCol, c)),
     };
     setFocus(next);
-    tableRef.current
-      ?.querySelector<HTMLButtonElement>(`[data-cell="${next.r}:${next.c}"]`)
-      ?.focus();
+    tableRef.current?.querySelector<HTMLElement>(`[data-cell="${next.r}:${next.c}"]`)?.focus();
   };
   const onKeyDown = (event: React.KeyboardEvent) => {
     const keys: Record<string, [number, number]> = {
@@ -586,150 +845,82 @@ function Matrix({
     if (event.key in keys) {
       event.preventDefault();
       const [dr, dc] = keys[event.key];
-      move(focus.r + dr, focus.c + dc);
+      move(tab.r + dr, tab.c + dc);
     } else if (event.key === 'Home') {
       event.preventDefault();
-      move(focus.r, 0);
+      move(tab.r, current.start);
     } else if (event.key === 'End') {
       event.preventDefault();
-      move(focus.r, days.length - 1);
+      move(tab.r, lastCol);
     }
   };
 
-  // Each park's row number in the grid, across the resort groups, for the roving focus.
-  const rowOf = new Map(rows.map((row, i) => [row.park.slug, i]));
+  const rowOf = new Map(rows.map((slug, i) => [slug, i]));
   return (
-    <div className="border-border/60 bg-card/40 overflow-x-auto rounded-xl border">
+    <div className="border-border/60 bg-card/40 rounded-xl border">
       <table
         ref={tableRef}
         role="grid"
+        data-week={week}
         onKeyDown={onKeyDown}
-        className="w-max min-w-full border-separate border-spacing-1 text-sm"
+        className="group/week w-full table-fixed border-separate border-spacing-1 text-sm"
       >
         <caption className="sr-only">
-          {first && last && tRegion.has('caption')
+          {current.from && tRegion.has('caption')
             ? tRegion('caption', {
-                from: formatHubDate(first, locale),
-                to: formatHubDate(last, locale),
+                from: formatHubDate(current.from, locale),
+                to: formatHubDate(current.to, locale),
               })
             : t('listLabel')}
         </caption>
-        <thead>
-          <tr>
-            <th
-              scope="col"
-              className="bg-card sticky left-0 z-10 w-44 min-w-44 px-2 pb-1 text-left align-bottom text-[11px] font-medium"
-            >
-              <span className="sr-only">{t('parkColumn')}</span>
-              {storm && <StormKey storm={storm} className="text-muted-foreground" />}
-            </th>
-            {days.map((day) => {
-              const basis = dayBasis(day);
-              const stormCode = storm?.get(day.date);
-              const weekend = [0, 6].includes(new Date(`${day.date}T12:00:00Z`).getUTCDay());
-              return (
-                <th key={day.date} scope="col" className="w-11 min-w-11 p-0 align-bottom">
-                  <button
-                    type="button"
-                    tabIndex={-1}
-                    onClick={() => onOpen(day.date)}
-                    aria-label={[
-                      t('openDay', { date: formatHubDate(day.date, locale, 'long') }),
-                      ...(stormCode ? [tClimate(stormCode)] : []),
-                    ].join(', ')}
-                    className={cn(
-                      'hover:bg-muted/60 flex w-full flex-col items-center rounded-md py-1 text-[11px] leading-tight',
-                      weekend && 'bg-muted/40'
-                    )}
-                  >
-                    <span className="text-muted-foreground font-medium">
-                      {formatHubDate(day.date, locale, 'weekday')}
-                    </span>
-                    <time
-                      dateTime={day.date}
-                      className={cn(
-                        'text-sm font-bold tabular-nums',
-                        day.date === todayIso &&
-                          'bg-primary text-primary-foreground rounded-full px-1.5'
-                      )}
-                    >
-                      {formatHubDate(day.date, locale, 'day')}
-                    </time>
-                    <span className="text-muted-foreground h-3 text-[9px]">
-                      {basis === 'long_range' ? t('outlook') : ''}
-                    </span>
-                    {/* The storm season on the timeline itself, where a date is picked, not in a
-                        lane under the calendar; the empty bar keeps every date the same height. */}
-                    <span
-                      aria-hidden
-                      className={cn(
-                        'mt-0.5 h-1.5 w-[calc(100%+0.25rem)]',
-                        stormCode && STORM_SIGNAL_CLASS[stormSignal(stormCode)]
-                      )}
-                    />
-                  </button>
-                </th>
-              );
-            })}
-          </tr>
-        </thead>
+        <MatrixHead
+          region={region}
+          days={days}
+          storm={storm}
+          pickGroup={pickGroup}
+          slots={slots}
+          todayIso={todayIso}
+          locale={locale}
+          onOpen={onOpen}
+        />
         {groups.map((group) => (
           <tbody key={group.key}>
             <tr>
               <th
                 scope="rowgroup"
-                colSpan={days.length + 1}
-                className="text-muted-foreground bg-card sticky left-0 px-2 pt-3 pb-1 text-left text-[11px] font-semibold tracking-wider uppercase"
+                colSpan={HUB_WEEK_DAYS + 1}
+                className="text-muted-foreground px-2 pt-3 pb-1 text-left text-[11px] font-semibold tracking-wider uppercase"
               >
                 {group.name}
               </th>
             </tr>
             {group.parks.map((park) => {
+              const state = states.get(park.slug);
               const r = rowOf.get(park.slug) ?? 0;
-              const state = parkState(days, park.slug);
-              return (
-                <tr key={park.slug}>
-                  <th
-                    scope="row"
-                    className="bg-card sticky left-0 z-10 px-2 text-left align-middle font-medium"
-                  >
-                    <span className="block truncate text-sm">{shortParkName(park.name)}</span>
-                    {state && (
-                      <span className="text-muted-foreground block truncate text-[11px] font-normal">
-                        {t(state)}
-                      </span>
-                    )}
-                  </th>
-                  {days.map((day, c) => {
-                    const parkDay = day.parks[park.slug];
-                    const bestAt = bestAtResort(day, group, park.slug);
-                    const look = cellLook(parkDay, bestAt !== null);
-                    const focused = focus.r === r && focus.c === c;
-                    return (
-                      <td key={day.date} className="p-0" role="gridcell">
-                        <button
-                          type="button"
-                          data-cell={`${r}:${c}`}
-                          tabIndex={focused ? 0 : -1}
-                          onFocus={() => setFocus({ r, c })}
-                          onClick={() => onOpen(day.date)}
-                          aria-label={label(shortParkName(park.name), day.date, parkDay, bestAt)}
-                          aria-haspopup="dialog"
-                          style={look.hatch ? { backgroundImage: UNUSABLE_HATCH_IMAGE } : undefined}
-                          className={cn(
-                            HUB_CELL,
-                            'focus-visible:ring-primary relative h-9 w-11 text-sm focus-visible:ring-2 focus-visible:outline-none',
-                            look.className
-                          )}
-                        >
-                          {look.text}
-                          {look.early && <span aria-hidden className={EARLY_CLOSE_CORNER} />}
-                          {look.noHours && <span aria-hidden className={NO_HOURS_DOT} />}
-                        </button>
-                      </td>
-                    );
-                  })}
-                </tr>
+              return state ? (
+                <QuietRow
+                  key={park.slug}
+                  name={shortParkName(park.name)}
+                  state={t(state)}
+                  weeks={weeks}
+                />
+              ) : (
+                <ParkRow
+                  key={park.slug}
+                  slug={park.slug}
+                  name={shortParkName(park.name)}
+                  group={group}
+                  r={r}
+                  days={days}
+                  slots={slots}
+                  tiles={tiles}
+                  stars={stars}
+                  tabCol={tab.r === r ? tab.c : null}
+                  label={label}
+                  quietest={t('quietest')}
+                  onOpen={onOpen}
+                  onFocusCell={setFocus}
+                />
               );
             })}
           </tbody>
@@ -740,11 +931,265 @@ function Matrix({
 }
 
 /**
- * A park's state for the whole window, under its name, where every day says the same: closed for
- * the season, no hours yet, open without a forecast. `null` when its days differ.
+ * The grid's head: each date, a button that opens the day, with the storm season under it; the
+ * day's best park and its wait; its holidays. Its props do not change with the week, so paging
+ * skips it. The two rows under the dates are drawn when a day of the window fills them, so turning
+ * a week never adds a row.
+ */
+const MatrixHead = memo(function MatrixHead({
+  region,
+  days,
+  storm,
+  pickGroup,
+  slots,
+  todayIso,
+  locale,
+  onOpen,
+}: {
+  region: TripRegion;
+  days: readonly TripCalendarDay[];
+  storm: ReadonlyMap<string, StormCode> | null;
+  pickGroup: RegionGroup | null;
+  slots: readonly Slot[];
+  todayIso: string;
+  locale: string;
+  onOpen: (date: string) => void;
+}) {
+  const t = useTranslations('tripHub.calendar');
+  const tClimate = useTranslations('tripPlanner.climate');
+  const tCommon = useTranslations('common');
+  const picks = useMemo(
+    () => days.map((d) => dayPick(d, region, pickGroup)),
+    [days, region, pickGroup]
+  );
+  const holidays = useMemo(() => days.map((d) => holidayNames(d, locale)), [days, locale]);
+  const filler = (slot: Slot, i: number) => (
+    <td key={`pad-${i}`} aria-hidden className={HUB_WEEK_CELL[slot.week]} />
+  );
+  const rowLabel = 'text-muted-foreground px-2 text-left align-top text-[11px] font-medium';
+  return (
+    <thead>
+      <tr>
+        <th
+          scope="col"
+          className="w-40 px-2 pb-1 text-left align-bottom text-[11px] font-medium xl:w-44"
+        >
+          <span className="sr-only">{t('parkColumn')}</span>
+          {storm && <StormKey storm={storm} className="text-muted-foreground" />}
+        </th>
+        {slots.map((slot, i) => {
+          if (slot.index === null) return filler(slot, i);
+          const day = days[slot.index];
+          const stormCode = storm?.get(day.date);
+          return (
+            <th
+              key={day.date}
+              scope="col"
+              className={cn('p-0 align-bottom', HUB_WEEK_CELL[slot.week])}
+            >
+              <button
+                type="button"
+                tabIndex={-1}
+                onClick={() => onOpen(day.date)}
+                aria-label={[
+                  t('openDay', { date: formatHubDate(day.date, locale, 'long') }),
+                  ...(stormCode ? [tClimate(stormCode)] : []),
+                ].join(', ')}
+                className={cn(
+                  'hover:bg-muted/60 flex w-full flex-col items-center rounded-md py-1 text-[11px] leading-tight',
+                  isWeekend(day.date) && 'bg-muted/40'
+                )}
+              >
+                <span className="text-muted-foreground font-medium">
+                  {formatHubDate(day.date, locale, 'weekday')}
+                </span>
+                <time
+                  dateTime={day.date}
+                  className={cn(
+                    'text-sm font-bold tabular-nums',
+                    day.date === todayIso &&
+                      'bg-primary text-primary-foreground rounded-full px-1.5'
+                  )}
+                >
+                  {formatHubDate(day.date, locale, 'dayMonth')}
+                </time>
+                <span className="text-muted-foreground h-3 text-[9px]">
+                  {dayBasis(day) === 'long_range' ? t('outlook') : ''}
+                </span>
+                {/* The storm season on the timeline itself, where a date is picked, not in a
+                    lane under the calendar; the empty bar keeps every date the same height. */}
+                <span
+                  aria-hidden
+                  className={cn(
+                    'mt-0.5 h-1.5 w-[calc(100%+0.25rem)]',
+                    stormCode && STORM_SIGNAL_CLASS[stormSignal(stormCode)]
+                  )}
+                />
+              </button>
+            </th>
+          );
+        })}
+      </tr>
+      {picks.some(Boolean) && (
+        <tr>
+          <th scope="row" className={cn(rowLabel, 'pt-1')}>
+            {pickGroup
+              ? t('pickRowGroup', { group: shortGroupName(pickGroup.name) })
+              : t('pickRow')}
+          </th>
+          {slots.map((slot, i) => {
+            if (slot.index === null) return filler(slot, i);
+            const pick = picks[slot.index];
+            const level = pick ? tintLevel(pick.day.crowdLevel) : null;
+            return (
+              <td
+                key={days[slot.index].date}
+                className={cn('px-1 pt-1 align-top', HUB_WEEK_CELL[slot.week])}
+              >
+                {pick ? (
+                  <>
+                    <span className="block truncate text-xs font-semibold">
+                      {shortParkName(pick.park.name)}
+                    </span>
+                    <span
+                      className={cn(
+                        'block text-[11px] font-semibold tabular-nums',
+                        level ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground'
+                      )}
+                    >
+                      {shownWait(pick.day)} {tCommon('min')}
+                    </span>
+                  </>
+                ) : (
+                  <span className="text-muted-foreground text-xs">–</span>
+                )}
+              </td>
+            );
+          })}
+        </tr>
+      )}
+      {holidays.some(Boolean) && (
+        <tr>
+          <th scope="row" className={rowLabel}>
+            {t('holidayRow')}
+          </th>
+          {slots.map((slot, i) => {
+            if (slot.index === null) return filler(slot, i);
+            const day = days[slot.index];
+            return (
+              <td key={day.date} className={cn('h-8 px-1 align-top', HUB_WEEK_CELL[slot.week])}>
+                {holidays[slot.index] && <HolidayLine day={day} names={holidays[slot.index]} />}
+              </td>
+            );
+          })}
+        </tr>
+      )}
+    </thead>
+  );
+});
+
+/** A park's row of tiles; memoised on everything but the tab stop, so paging skips it. */
+const ParkRow = memo(function ParkRow({
+  slug,
+  name,
+  group,
+  r,
+  days,
+  slots,
+  tiles,
+  stars,
+  tabCol,
+  label,
+  quietest,
+  onOpen,
+  onFocusCell,
+}: {
+  slug: string;
+  name: string;
+  group: RegionGroup;
+  r: number;
+  days: readonly TripCalendarDay[];
+  slots: readonly Slot[];
+  tiles: HubTiles;
+  stars: HubStars;
+  /** The column holding the grid's tab stop, when it is in this row. */
+  tabCol: number | null;
+  label: ReturnType<typeof useCellLabel>;
+  /** The star's name. */
+  quietest: string;
+  onOpen: (date: string) => void;
+  onFocusCell: (cell: { r: number; c: number }) => void;
+}) {
+  const own = tiles.get(slug) ?? [];
+  return (
+    <tr>
+      <th scope="row" className="px-2 text-left align-middle font-medium">
+        <span className="block truncate text-sm">{name}</span>
+      </th>
+      {slots.map((slot, i) => {
+        if (slot.index === null) {
+          return <td key={`pad-${i}`} aria-hidden className={HUB_WEEK_CELL[slot.week]} />;
+        }
+        const c = slot.index;
+        const day = days[c];
+        const bestAt = bestAtResort(day, group, slug);
+        const star = stars.has(`${slug}:${day.date}`);
+        return (
+          <td key={day.date} role="gridcell" className={cn('p-0', HUB_WEEK_CELL[slot.week])}>
+            <CalendarDayTile
+              density="compact"
+              {...own[c]}
+              best={star ? quietest : null}
+              className={cn(bestAt && HUB_CELL_BEST)}
+              onSelect={() => onOpen(day.date)}
+              tabIndex={tabCol === c ? 0 : -1}
+              data-cell={`${r}:${c}`}
+              onFocus={() => onFocusCell({ r, c })}
+              aria-haspopup="dialog"
+              aria-label={label(name, day.date, day.parks[slug], bestAt, star)}
+            />
+          </td>
+        );
+      })}
+    </tr>
+  );
+});
+
+/**
+ * A park whose whole window says one thing (closed for the season, no hours yet, open without a
+ * forecast): one line across the week instead of seven tiles that repeat it.
+ */
+function QuietRow({
+  name,
+  state,
+  weeks,
+}: {
+  name: string;
+  state: string;
+  weeks: readonly HubWeek[];
+}) {
+  return (
+    <tr>
+      <th scope="row" className="px-2 text-left align-middle font-medium">
+        <span className="block truncate text-sm">{name}</span>
+      </th>
+      {weeks.map((w, i) => (
+        <td key={w.from} colSpan={HUB_WEEK_DAYS} className={cn('p-0', HUB_WEEK_CELL[i])}>
+          <span className="border-border/40 bg-muted/20 text-muted-foreground flex h-9 items-center rounded-lg border px-3 text-xs">
+            {state}
+          </span>
+        </td>
+      ))}
+    </tr>
+  );
+}
+
+/**
+ * A park's state for the whole window, where every day says the same: closed for the season, no
+ * hours yet, open without a forecast. `null` when its days differ.
  */
 function parkState(
-  days: TripCalendarDay[],
+  days: readonly TripCalendarDay[],
   slug: string
 ): 'stateClosed' | 'stateUnknown' | 'stateOpen' | null {
   if (days.length === 0) return null;

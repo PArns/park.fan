@@ -4,6 +4,7 @@ import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { shownWait, shownWaitOn } from './plan-week';
+import { TRIP_CALENDAR_ID } from './paths';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
 import type {
   TripBasis,
@@ -25,11 +26,54 @@ import type {
  * typical day (the API's trip-regions contract).
  */
 
-/** How many days the first answer covers: the server-rendered week. */
-export const HUB_FIRST_DAYS = 7;
-
 /** How far the hub's calendar reaches past today: the API's default window. */
 export const HUB_WINDOW_DAYS = 30;
+
+/** How many days a page of the hub's calendar shows. */
+export const HUB_WEEK_DAYS = 7;
+
+/** One page of the hub's calendar: seven days from its first, the last page what is left. */
+export interface HubWeek {
+  from: string;
+  to: string;
+  /** Where its days start in the window. */
+  start: number;
+  /** Seven, fewer on the last page. */
+  length: number;
+}
+
+/**
+ * The window in pages of seven days from its first day (the region's today on the hub), so the
+ * first page is the week ahead, „Sa., 14. – Fr., 20. Nov.", and not a calendar week half over.
+ */
+export function hubWeeks(days: readonly { date: string }[]): HubWeek[] {
+  const weeks: HubWeek[] = [];
+  for (let start = 0; start < days.length; start += HUB_WEEK_DAYS) {
+    const length = Math.min(HUB_WEEK_DAYS, days.length - start);
+    weeks.push({ from: days[start].date, to: days[start + length - 1].date, start, length });
+  }
+  return weeks;
+}
+
+/** The fragment that names a page by its first date, `calendar-2026-11-21`. */
+export function hubWeekFragment(week: Pick<HubWeek, 'from'>): string {
+  return `${TRIP_CALENDAR_ID}-${week.from}`;
+}
+
+/** A fragment naming a page, with or without its `#`. */
+const WEEK_FRAGMENT = new RegExp(`^#?${TRIP_CALENDAR_ID}-(\\d{4}-\\d{2}-\\d{2})$`);
+
+/**
+ * The page a fragment names: the one that holds its date, so a link shared a day later, when the
+ * pages start a day later, still shows that date. `null` for another fragment or a date outside
+ * the window.
+ */
+export function hubWeekFromFragment(hash: string, weeks: readonly HubWeek[]): number | null {
+  const date = WEEK_FRAGMENT.exec(hash)?.[1];
+  if (!date) return null;
+  const index = weeks.findIndex((week) => week.from <= date && date <= week.to);
+  return index === -1 ? null : index;
+}
 
 /** A group of the region with its parks, in the region's order. */
 export interface RegionGroup extends TripRegionGroup {
@@ -182,6 +226,54 @@ export function rankGroupParks(
 }
 
 /**
+ * A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie
+ * to the longer day for the day guest. None where fewer than two days have a figure, where two
+ * days tie on both, or where the star would sit on a higher printed figure (`shownWait`) than
+ * another day's; and never a last-year day, which is never offered as a pick.
+ */
+export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
+  const open = days.flatMap((d) => {
+    const park = d.parks[slug];
+    return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
+  });
+  if (open.length < 2) return null;
+  const [first, second] = [...open].sort(
+    (a, b) =>
+      a.park.headlinerWait - b.park.headlinerWait ||
+      dayGuestMinutes(b.park) - dayGuestMinutes(a.park)
+  );
+  if (
+    first.park.headlinerWait === second.park.headlinerWait &&
+    dayGuestMinutes(first.park) === dayGuestMinutes(second.park)
+  ) {
+    return null;
+  }
+  const shown = shownWait(first.park)!;
+  return open.every((o) => shownWait(o.park)! >= shown) ? first.date : null;
+}
+
+/**
+ * The park a day's column names above the tiles: with one group shown, that group's first park
+ * (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first
+ * answer names (`glanceLines`), by `headlinerWait`, a tie to the longer day. None on a last-year
+ * day, which is never offered as a pick, or where no park has a figure.
+ */
+export function dayPick(
+  day: TripCalendarDay,
+  region: TripRegion,
+  group?: RegionGroup | null
+): { park: TripRegionPark; day: TripParkDay & { headlinerWait: number } } | null {
+  if (dayBasis(day) === 'last_year') return null;
+  const top = group
+    ? rankGroupParks(day, group.parks, group.key)[0]
+    : rankGroupParks(
+        day,
+        glanceLines(day, region).map((line) => line.park)
+      )[0];
+  return top && isRankable(top.day) ? { park: top.park, day: top.day } : null;
+}
+
+/**
  * Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A
  * resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
  */
@@ -266,15 +358,6 @@ export function glanceDay(
   return over && tomorrow ? tomorrow : today;
 }
 
-/** The first `count` days of the calendar from `fromIso` on. */
-export function firstDays(
-  calendar: TripCalendar,
-  fromIso: string,
-  count = HUB_FIRST_DAYS
-): TripCalendarDay[] {
-  return calendar.days.filter((d) => d.date >= fromIso).slice(0, count);
-}
-
 /** `true` when a date is a weekend (Saturday or Sunday); the date is already the region's. */
 export function isWeekend(date: string): boolean {
   const dow = new Date(`${date}T12:00:00Z`).getUTCDay();
@@ -348,6 +431,25 @@ export function factDays(calendar: TripCalendar): FactDays {
   });
   if (forecast.length > 0) return { days: forecast, lastYear: false };
   return { days: calendar.days.filter((d) => dayBasis(d) === 'last_year'), lastYear: true };
+}
+
+/**
+ * The seasons a tile draws quietly, bare and faded: one that runs on more than half of the
+ * window's days, where an icon on every tile would drown the crowd colours, or one only
+ * `expected`. The park calendar's rule for its month (`seasonDaysOfMonth`), over the hub's window.
+ */
+export function quietSeasons(calendar: TripCalendar): Set<string> {
+  const runs = new Map<string, number>();
+  for (const day of calendar.days) {
+    for (const id of new Set(Object.values(day.parks).flatMap((p) => p.seasons ?? []))) {
+      runs.set(id, (runs.get(id) ?? 0) + 1);
+    }
+  }
+  return new Set(
+    calendar.seasons
+      .filter((s) => s.status === 'expected' || (runs.get(s.id) ?? 0) > calendar.days.length / 2)
+      .map((s) => s.id)
+  );
 }
 
 /** One lane under the matrix: a season or a run of school-break days. */
@@ -662,13 +764,22 @@ export function slimRegion(region: TripRegion): TripRegion {
 
 /**
  * Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr –
- * 6 May"): `formatParkDayRange` with short months.
+ * 6 May"): `formatParkDayRange` with short months; `weekday` names the two days too ("Sa., 14. –
+ * Fr., 20. Nov.").
  */
-export function formatDateRange(from: string, to: string, locale: string): string {
+export function formatDateRange(
+  from: string,
+  to: string,
+  locale: string,
+  { weekday = false }: { weekday?: boolean } = {}
+): string {
+  const options: Intl.DateTimeFormatOptions = weekday
+    ? { weekday: 'short', day: 'numeric', month: 'short' }
+    : { day: 'numeric', month: 'short' };
   const text =
     from === to
-      ? formatParkDay(locale, from, { day: 'numeric', month: 'short' })
-      : formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
+      ? formatParkDay(locale, from, options)
+      : formatParkDayRange(locale, from, to, options);
   // Node's ICU puts thin spaces around the dash and a browser's plain ones; the server-rendered
   // text has to be the one the browser renders, or hydration fails.
   return text.replace(/[\u2009\u202f]/g, ' ');
