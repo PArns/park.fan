@@ -346,6 +346,7 @@ export async function GET(
       if (!park) {
         return new Response('Park not found', { status: 404, ...NOT_CACHED });
       }
+      const parkLookup = { slug: parkSlug, url: `${continent}/${country}/${city}/${parkSlug}` };
 
       let attraction = null;
 
@@ -368,12 +369,12 @@ export async function GET(
 
         name = stripNewPrefix(attraction.name);
         backgroundImagePath =
-          getAttractionBackgroundImage(parkSlug, attractionSlug) ??
-          getParkBackgroundImage(parkSlug);
+          getAttractionBackgroundImage(parkLookup, attractionSlug) ??
+          getParkBackgroundImage(parkLookup);
       } else {
         // Park logic
         name = stripNewPrefix(park.name);
-        backgroundImagePath = getParkBackgroundImage(parkSlug);
+        backgroundImagePath = getParkBackgroundImage(parkLookup);
       }
       // No status, crowd level or wait time is read here any more — that live data is
       // what pinned these cards to a 5-minute cache, and a social platform re-shows a

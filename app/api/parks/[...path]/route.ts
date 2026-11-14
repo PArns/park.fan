@@ -125,11 +125,11 @@ export async function GET(
       });
 
       // Photos are resolved on the server: the attraction grid is a Client Component, and doing
-      // it there would put the media catalog in the bundle. `park: { slug }` is only the lookup
-      // key and is stripped again, since the merge would let a slug-only `park` replace the full
-      // one.
+      // it there would put the media catalog in the bundle. `park: { slug, url }` is only the
+      // lookup key and is stripped again, since the merge would let it replace the full `park`.
+      const lookup = { slug: park, url: `${continent}/${country}/${city}/${park}` };
       snapshot.attractions = enrichAttractionsWithImages(
-        snapshot.attractions.map((a) => ({ ...a, park: { slug: park } }))
+        snapshot.attractions.map((a) => ({ ...a, park: lookup }))
       ).map(({ park: _lookupKey, ...ride }) => ride);
 
       // A simulated park is one tester's state and never goes into the shared cache.
@@ -537,15 +537,16 @@ export async function GET(
 
       // Photos resolved here, not in the client: the planner is a Client Component in every
       // layout, and importing `@/lib/media` there would ship the media catalog to every visitor.
+      const lookup = { slug: park, url: `${continent}/${country}/${city}/${park}` };
       const withImages = enrichAttractionsWithImages(
-        data.rides.map((ride) => ({ ...ride, slug: ride.attractionSlug, park: { slug: park } }))
+        data.rides.map((ride) => ({ ...ride, slug: ride.attractionSlug, park: lookup }))
       );
       // The park's own photo for the panel, for the same reason; `null` where the media database
       // has none.
       const enriched = {
         ...data,
-        parkBackgroundImage: getParkBackgroundImage(park),
-        parkBackgroundPosition: getCardObjectPosition(park),
+        parkBackgroundImage: getParkBackgroundImage(lookup),
+        parkBackgroundPosition: getCardObjectPosition(lookup),
         rides: withImages.map(({ slug: _slug, park: _park, ...ride }) => ride),
         ...ridesInWorksField(data, parkData),
       };

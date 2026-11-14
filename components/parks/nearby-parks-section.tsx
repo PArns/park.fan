@@ -35,8 +35,8 @@ export async function NearbyParksSection({ parkId, lat, lng, className }: Nearby
     country: park.country ?? '',
     distance: park.distance,
     url: park.url ?? '',
-    backgroundImage: getParkBackgroundImage(park.slug),
-    backgroundPosition: getCardObjectPosition(park.slug),
+    backgroundImage: getParkBackgroundImage(park),
+    backgroundPosition: getCardObjectPosition(park),
   }));
 
   return (

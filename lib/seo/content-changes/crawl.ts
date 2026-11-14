@@ -54,7 +54,9 @@ function mediaVersions(images: MediaImage[]): string[] {
  * which belong to the ride pages.
  */
 function parkContext(parkSlug: string, geoPath: string): EntityContext {
-  const images = getParkImages(parkSlug).filter((image) => !image.ride);
+  const images = getParkImages({ slug: parkSlug, url: `${geoPath}/${parkSlug}` }).filter(
+    (image) => !image.ride
+  );
   return {
     mediaVersions: mediaVersions(images),
     postKeys: getPostsForPark(BACKLINK_LOCALE, parkSlug, { geoPath }).map((p) => p.translationKey),
@@ -63,7 +65,9 @@ function parkContext(parkSlug: string, geoPath: string): EntityContext {
 
 function attractionContext(parkSlug: string, rideSlug: string, geoPath: string): EntityContext {
   return {
-    mediaVersions: mediaVersions(getRideImages(parkSlug, rideSlug)),
+    mediaVersions: mediaVersions(
+      getRideImages({ slug: parkSlug, url: `${geoPath}/${parkSlug}` }, rideSlug)
+    ),
     postKeys: getPostsForRide(BACKLINK_LOCALE, parkSlug, rideSlug, { geoPath }).map(
       (p) => p.translationKey
     ),

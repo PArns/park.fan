@@ -125,7 +125,7 @@ function SearchResultCard({
   // The palette and the hero route a picked result through the same resolver.
   const href = searchResultHref(result, locale);
 
-  const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result.slug) : null;
+  const backgroundImage = result.type === 'park' ? getParkBackgroundImage(result) : null;
 
   const card = (
     <Card className="hover:border-primary/50 relative h-full overflow-hidden transition-all hover:shadow-md">

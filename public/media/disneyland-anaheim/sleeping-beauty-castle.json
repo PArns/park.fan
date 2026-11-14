@@ -1,0 +1,33 @@
+{
+  "title": "Sleeping Beauty Castle, Anaheim",
+  "park": "disneyland-park",
+  "parkPath": "north-america/united-states/anaheim/disneyland-park",
+  "roles": ["park-background"],
+  "tags": ["background", "crowd", "day", "outdoor", "overcast", "park", "photo", "theming"],
+  "alt": {
+    "de": "Das rosa-graue Dornröschenschloss mit blauen Dächern und Bannern, davor eine Menschenmenge auf dem Weg.",
+    "en": "The pink and grey Sleeping Beauty Castle with blue roofs and banners, a crowd on the path in front.",
+    "es": "El castillo de la Bella Durmiente, rosa y gris, con tejados azules y estandartes, y gente en el camino delante.",
+    "fr": "Le château de la Belle au bois dormant, rose et gris, aux toits bleus et bannières, la foule sur l’allée devant.",
+    "it": "Il castello della Bella Addormentata, rosa e grigio, con tetti blu e stendardi, e la folla sul viale davanti.",
+    "nl": "Het roze-grijze Doornroosjekasteel met blauwe daken en banieren, met een menigte op het pad ervoor."
+  },
+  "caption": {
+    "de": "Am 17. Juli 1955 eröffnet und damit das älteste aller Disney-Schlösser.",
+    "en": "Opened on 17 July 1955, the oldest of all the Disney castles.",
+    "es": "Abrió el 17 de julio de 1955 y es el más antiguo de todos los castillos Disney.",
+    "fr": "Ouvert le 17 juillet 1955, c’est le plus ancien de tous les châteaux Disney.",
+    "it": "Aperto il 17 luglio 1955, è il più antico di tutti i castelli Disney.",
+    "nl": "Het kasteel opende op 17 juli 1955 en is het oudste van alle Disney-kastelen."
+  },
+  "credit": {
+    "author": "Jazmin De Guzman",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-crowd-of-people-standing-in-front-of-a-castle-Ndo4vX3PLFA"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.6
+  }
+}

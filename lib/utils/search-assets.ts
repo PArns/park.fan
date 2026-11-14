@@ -14,13 +14,12 @@ export function enrichSearchResultsWithImages(data: SearchResult): SearchResult 
   return {
     ...data,
     results: data.results.map((item): SearchResultItem => {
-      const parkSlug = item.type === 'park' ? item.slug : item.parentPark?.slug;
-      if (!parkSlug) return item;
+      // With the park's url, which names its path: `disneyland-park` alone means Paris.
+      const park = item.type === 'park' ? item : item.parentPark;
+      if (!park?.slug) return item;
 
       const image =
-        item.type === 'attraction'
-          ? getRideImage(parkSlug, item.slug)
-          : getParkBackground(parkSlug);
+        item.type === 'attraction' ? getRideImage(park, item.slug) : getParkBackground(park);
       if (!image) return item;
 
       return {

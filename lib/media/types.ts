@@ -221,6 +221,14 @@ export interface ResolvedMediaImage extends MediaImage {
   creditLine: string | null;
 }
 
+/**
+ * A park as the media lookups take it: its slug, or its slug with anything that names its path in
+ * `url` (the API's `/v1/parks/…`, a page path, or the bare `continent/country/city/slug`). A
+ * `ParkBase` from the API is one as it stands. Only the path tells the two `disneyland-park`s
+ * apart; a bare slug finds the catalog's first park of that slug (`lib/media/park-path.mjs`).
+ */
+export type ParkLookup = string | { slug: string; url?: string | null };
+
 /** Park reference data, generated from the API catalog into `manifest-parks.ts`. */
 export interface MediaParkRef {
   slug: string;
