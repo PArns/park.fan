@@ -195,8 +195,8 @@ The panel is only the look; the data and the click behaviour live in the modules
   locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's planner
   anchor (`/orlando#planner`) and crowd calendar, the hub's photo, its park count from the API's
   list of regions (else the region route's `parks[]`; without either the chip is left out) and its
-  longest trip (`MAX_TRIP_DAYS`). The parks are memoised per process like `getFeaturedParksMenu`;
-  the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
+  longest trip from the same list (else `MAX_TRIP_DAYS`). The parks are memoised per process like
+  `getFeaturedParksMenu`; the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
   day planner and the parks: the scene filling it, and over a fade into the band the area, the
   name, one line, the two facts, „Reise planen" (stretched over the card) and „Besucherkalender".
   From two on, the four-region design: a row of tiles (`RegionTile`: scene, area, name on up to
