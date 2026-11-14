@@ -2,7 +2,7 @@
 
 import { useCallback, useDeferredValue, useMemo, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
-import { Sparkles, Ticket } from 'lucide-react';
+import { CloudRain, Sparkles, Ticket } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { monthLabel, monthMatrix, monthOf } from '@/lib/planner/month-grid';
 import { formatClockTime, getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
@@ -19,19 +19,24 @@ import {
   isNewYearsEve,
   modePick,
   monthEvents,
+  stormCodeOn,
+  stormSignal,
+  weatherNotesOn,
   type CalendarMode,
   type DateParty,
   type DatePick,
+  type StormCode,
 } from '@/lib/trip-regions/date-facts';
 import { dayGuestClose, shortGroupName } from '@/lib/trip-regions/hub-data';
 import type { TripCalendarDay, TripRegionPark } from '@/lib/trip-regions/types';
-import { holidaySignals } from '@/lib/utils/day-signal-styles';
+import { holidaySignals, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { sentenceCase } from '@/lib/utils/sentence-case';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
 import { PlanSegmented } from './plan-controls';
 import { PlanMonthGrid, type PlanGridPick } from './plan-month-grid';
-import { PlanCodeKey, PlanMonthEvents } from './plan-calendar-keys';
+import { PlanCodeKey, PlanMonthEvents, useStormKeys } from './plan-calendar-keys';
 import { useResortWord } from './plan-ticket-words';
 import { useSeasonName } from './use-day-facts';
 
@@ -44,6 +49,10 @@ interface DateFacts {
   picks: DatePick[];
   parties: DateParty[];
   nye: boolean;
+  /** The region's storm season on the date, its peak or the rest of it. */
+  storm: StormCode | null;
+  /** In Japan's rainy season, which the answers name but do not price. */
+  rainy: boolean;
 }
 
 /**
@@ -86,11 +95,13 @@ function createShownDate() {
  * and a mark on New Year's Eve; a date without picks is tinted by how busy the headliners are
  * (`dateLevel`). The switch starts on the one resort the visitor's parks or tickets lie in
  * (`defaultCalendarMode`) and lives in this component, not in the address.
- * Pointing at a date or pressing it explains its pick in a line under the grid; the codes, the
- * month's events and the colours are keyed below. A last-year tint has a dashed border. Arrival and
- * departure carry their plane and a light band joins the days between. The tickets' windows are
- * thin bars along the dates, named in a key. Whether the travel days hold a park is asked under
- * More options (`PlanOptions`), not here.
+ * The region's storm season is a violet segment of the bar along the top, dashed, and solid at its
+ * peak, which the best-time search ranks lower (`stormCodeOn`, from the API's `weather.storm`).
+ * Pointing at a date or pressing it explains its pick in a line under the grid, with the storm
+ * season and Japan's rainy season; the codes, the month's events and the colours are keyed below.
+ * A last-year tint has a dashed border. Arrival and departure carry their plane and a light band
+ * joins the days between. The tickets' windows are thin bars along the dates, named in a key.
+ * Whether the travel days hold a park is asked under More options (`PlanOptions`), not here.
  */
 export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('tripPlanner');
@@ -108,8 +119,10 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
     live,
     tickets: catalog,
   } = usePlanContext();
+  const tClimate = useTranslations('tripPlanner.climate');
   const resortWord = useResortWord();
   const seasonName = useSeasonName();
+  const stormKeys = useStormKeys();
 
   const [pendingFrom, setPendingFrom] = useState<string | null>(null);
   const [month, setMonth] = useState<string | null>(null);
@@ -139,6 +152,8 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         picks: datePicks(day, region, calendar.data),
         parties: dateParties(day, region, calendar.data),
         nye: isNewYearsEve(day.date),
+        storm: stormCodeOn(day.date, region.weather),
+        rainy: weatherNotesOn(day.date, region.weather).includes('rainy_season'),
       });
     }
     return out;
@@ -227,6 +242,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const anyNye = inMonth.some(({ fact }) => fact.nye);
   const anyUnpublished = inMonth.some(({ view }) => view.pick?.hoursUnpublished);
   const anyTint = inMonth.some(({ fact, view }) => !view.pick && dateLevel(fact.day, headliners));
+  const storms = inMonth.flatMap(({ fact }) => (fact.storm ? [fact.storm] : []));
 
   const start = pendingFrom ?? state.from;
   const end = pendingFrom ? null : state.to;
@@ -345,6 +361,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           const held = windows.filter((w) => date >= w.from && date <= w.to);
           const ticketResorts = [...new Set(held.map((w) => resortWord(w.resort)))];
           const party = view?.cellParty ?? null;
+          const storm = stormCodeOn(date, region.weather);
           const picks: PlanGridPick[] = pick
             ? [
                 {
@@ -378,6 +395,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
             lastYear,
             level,
             signals: holidaySignals(day ?? null),
+            storm: storm ? stormSignal(storm) : null,
             picks,
             nye: fact?.nye,
             bars: windows
@@ -390,6 +408,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
               today ? dayLabel.format(new Date(`${date}T12:00:00Z`)) : date,
               isStart ? t('day.arrival') : isEnd ? t('day.departure') : null,
               fact?.nye ? t('dates.nye') : null,
+              storm ? tClimate(storm) : null,
               level
                 ? t(lastYear ? 'dates.levelLastYear' : 'dates.level', { level: tCrowd(level) })
                 : null,
@@ -417,6 +436,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         dayLabel={(date) => dayLabel.format(new Date(`${date}T12:00:00Z`))}
         pickText={pickText}
         partyText={partyText}
+        weatherText={(code) => sentenceCase(tClimate(code))}
       />
 
       <PlanCodeKey entries={codeKey} />
@@ -447,7 +467,11 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
 
       {shown && <PlanMonthEvents events={events} month={shown} codeOf={codeOf} locale={locale} />}
 
-      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} signalsLabel={false} />
+      <ParkCalendarLegend
+        signals={TRIP_DAY_SIGNALS}
+        signalsLabel={false}
+        extraSignals={stormKeys(storms)}
+      />
 
       <ul className="text-muted-foreground flex flex-col gap-1 text-xs leading-snug">
         <li>
@@ -511,6 +535,7 @@ function PlanDateInfo({
   dayLabel,
   pickText,
   partyText,
+  weatherText,
 }: {
   shownDate: ReturnType<typeof createShownDate>;
   facts: ReadonlyMap<string, DateFacts>;
@@ -522,6 +547,8 @@ function PlanDateInfo({
   dayLabel: (date: string) => string;
   pickText: (pick: DatePick, overall?: boolean) => string;
   partyText: (party: DateParty) => string;
+  /** A storm code or the rainy season as a label, the climate chips' word. */
+  weatherText: (code: string) => string;
 }) {
   const t = useTranslations('tripPlanner.dates');
   const date = useSyncExternalStore(shownDate.subscribe, shownDate.get, () => null);
@@ -576,6 +603,31 @@ function PlanDateInfo({
                 <span>{partyText(party)}</span>
               </li>
             ))}
+            {fact.storm && (
+              <li className="flex gap-1.5" data-plan-date-storm={fact.storm}>
+                <span className="flex w-8 shrink-0 pt-1.5" aria-hidden="true">
+                  <span
+                    className={cn(
+                      'h-[3px] w-4 rounded-full',
+                      STORM_SIGNAL_CLASS[stormSignal(fact.storm)]
+                    )}
+                  />
+                </span>
+                <span>
+                  {stormSignal(fact.storm) === 'stormPeak'
+                    ? t('stormPeak', { season: weatherText(fact.storm) })
+                    : weatherText(fact.storm)}
+                </span>
+              </li>
+            )}
+            {fact.rainy && (
+              <li className="text-muted-foreground flex gap-1.5">
+                <span className="flex w-8 shrink-0" aria-hidden="true">
+                  <CloudRain className="mt-0.5 size-3" />
+                </span>
+                <span>{t('rainyNote', { season: weatherText('rainy_season') })}</span>
+              </li>
+            )}
           </ul>
         </>
       )}

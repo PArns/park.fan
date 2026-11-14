@@ -60,8 +60,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `defaultCalendarMode` _function_: The switch's first answer: the one resort the visitor's parks lie in, else the one their owned tickets lie in, else `all`. `parkSlugs` is `null` until the visitor chooses parks.
 - `modePick` _function_: The pick a date shows in `mode`: the chosen resort's, or of the picks of `resorts` the one with the shortest peak wait (`headlinerWait`, the figure parks are compared by), ties to the longer day for a day guest, then the region's order.
 - `isNewYearsEve` _function_: New Year's Eve: the date alone says it, wherever the region is.
+- `stormCodeOn` _function_: A date's place in the region's storm season (`weather.storm`, `MM-DD` from the API): its peak, the season, or `null` outside it and in a region without one.
+- `stormSignal` _function_: A storm code's segment in a calendar cell's signal bar: solid at the peak, dashed for the season.
+- `weatherNotesOn` _function_: The seasons a date lies in that the answers name but do not price (`weather.notes`): Japan's `rainy_season`.
 - `monthEvents` _function_: The month's events for the list under the date grid: the hub's season lanes (`eventLanes`) cut to the month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit, then the school breaks as runs (`breakRuns`, so an unnamed weekend …
-- Types: `DateParty`, `DatePick`, `CalendarMode`, `MonthEvent`
+- Types: `DateParty`, `DatePick`, `CalendarMode`, `StormCode`, `MonthEvent`
 
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
 

@@ -3142,7 +3142,9 @@
       "modeAll": "Overall",
       "picksLegendAll": "Under each date, the park with the shortest peak wait.",
       "picksLegendResort": "Under each date, the {resort} park with the shortest peak wait.",
-      "overall": "Overall: {park}"
+      "overall": "Overall: {park}",
+      "stormPeak": "{season}: the best-time search ranks these days lower, even with short waits.",
+      "rainyNote": "{season}: wetter days, but the parks are no fuller for it."
     },
     "find": {
       "modeKnown": "I know my dates",

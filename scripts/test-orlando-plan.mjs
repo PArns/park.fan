@@ -81,6 +81,9 @@ import {
   isNewYearsEve,
   modePick,
   monthEvents,
+  stormCodeOn,
+  stormSignal,
+  weatherNotesOn,
 } from '../lib/trip-regions/date-facts.ts';
 import { formatGridHours } from '../lib/planner/park-time.ts';
 import {
@@ -996,6 +999,82 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [isNewYearsEve('2026-12-31'), isNewYearsEve('2027-01-01')],
     [true, false]
   );
+  {
+    // The API's `weather` as the region sends it (docs/frontend/trip-regions.md).
+    const orlando = {
+      storm: {
+        kind: 'hurricane',
+        from: '06-01',
+        to: '11-30',
+        peak: { from: '08-15', to: '10-15' },
+      },
+    };
+    const japan = {
+      storm: { kind: 'typhoon', from: '06-01', to: '11-30', peak: { from: '09-01', to: '10-15' } },
+      notes: [{ kind: 'rainy_season', from: '06-06', to: '07-19' }],
+    };
+    const on = (weather, dates) => dates.map((date) => stormCodeOn(date, weather));
+    test(
+      'the storm season by the API’s dates, both ends in, the peak inside it',
+      on(orlando, [
+        '2027-05-31',
+        '2027-06-01',
+        '2027-08-14',
+        '2027-08-15',
+        '2027-09-10',
+        '2027-10-15',
+        '2027-10-16',
+        '2027-11-30',
+        '2027-12-01',
+      ]),
+      [
+        null,
+        'hurricane_season',
+        'hurricane_season',
+        'hurricane_peak',
+        'hurricane_peak',
+        'hurricane_peak',
+        'hurricane_season',
+        'hurricane_season',
+        null,
+      ]
+    );
+    test(
+      'Japan’s typhoons by their own peak; Paris and California have no storm season',
+      [
+        ...on(japan, ['2027-08-31', '2027-09-01']),
+        stormCodeOn('2027-09-10', { climatePark: 'disneyland-park' }),
+        stormCodeOn('2027-09-10', undefined),
+      ],
+      ['typhoon_season', 'typhoon_peak', null, null]
+    );
+    test(
+      'a season across New Year counts from its start to its end',
+      on({ storm: { kind: 'typhoon', from: '12-01', to: '02-28' } }, [
+        '2026-11-30',
+        '2026-12-24',
+        '2027-01-15',
+        '2027-03-01',
+      ]),
+      [null, 'typhoon_season', 'typhoon_season', null]
+    );
+    test(
+      'the peak is the solid segment, the rest of the season the dashed one',
+      ['hurricane_peak', 'hurricane_season', 'typhoon_peak', 'typhoon_season'].map(stormSignal),
+      ['stormPeak', 'storm', 'stormPeak', 'storm']
+    );
+    test(
+      'Japan’s rainy season is a note on its dates, Orlando has none',
+      [
+        weatherNotesOn('2027-06-05', japan),
+        weatherNotesOn('2027-06-06', japan),
+        weatherNotesOn('2027-07-19', japan),
+        weatherNotesOn('2027-07-20', japan),
+        weatherNotesOn('2027-06-20', orlando),
+      ],
+      [[], ['rainy_season'], ['rainy_season'], [], []]
+    );
+  }
 
   const month = {
     days: ['2026-12-30', '2026-12-31', '2027-01-01'].map((date) => ({

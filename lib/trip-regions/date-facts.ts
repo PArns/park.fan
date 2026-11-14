@@ -6,6 +6,7 @@ import {
   regionResorts,
   shortestLines,
 } from './hub-data';
+import type { StormSignal } from '@/lib/utils/day-signal-styles';
 import { partySeason } from './plan-week';
 import type {
   TripCalendar,
@@ -14,12 +15,13 @@ import type {
   TripRegion,
   TripRegionPark,
   TripSeason,
+  TripWeather,
 } from './types';
 
 /**
  * What the planner's date grid says about a date beyond its tint: the park with the shortest lines,
  * overall or in the resort the visitor picked, the party nights that send day guests home early, New
- * Year's Eve, and the month's events under the grid. Read off the calendar the API sends; pure, so
+ * Year's Eve, the storm season, and the month's events under the grid. Read off the calendar the API sends; pure, so
  * the grid and the tests agree.
  */
 
@@ -162,6 +164,42 @@ export function modePick(
 /** New Year's Eve: the date alone says it, wherever the region is. */
 export function isNewYearsEve(date: string): boolean {
   return date.slice(5) === '12-31';
+}
+
+/** A storm season's day as the API names it on a plan day: the season, or its peak. */
+export type StormCode = `${'hurricane' | 'typhoon'}_${'season' | 'peak'}`;
+
+/** Whether `MM-DD` lies in a range of the region's year, both ends in; a range may cross New Year. */
+function inMonthDayRange(monthDay: string, from: string, to: string): boolean {
+  return from <= to ? monthDay >= from && monthDay <= to : monthDay >= from || monthDay <= to;
+}
+
+/**
+ * A date's place in the region's storm season (`weather.storm`, `MM-DD` from the API): its peak,
+ * the season, or `null` outside it and in a region without one. The API's own rule for a plan day's
+ * `hurricane_*` and `typhoon_*` warnings, so the calendars mark what the plan warns of.
+ */
+export function stormCodeOn(date: string, weather: TripWeather | undefined): StormCode | null {
+  const storm = weather?.storm;
+  if (!storm) return null;
+  const monthDay = date.slice(5);
+  if (!inMonthDayRange(monthDay, storm.from, storm.to)) return null;
+  return storm.peak && inMonthDayRange(monthDay, storm.peak.from, storm.peak.to)
+    ? `${storm.kind}_peak`
+    : `${storm.kind}_season`;
+}
+
+/** A storm code's segment in a calendar cell's signal bar: solid at the peak, dashed for the season. */
+export function stormSignal(code: StormCode): StormSignal {
+  return code.endsWith('_peak') ? 'stormPeak' : 'storm';
+}
+
+/** The seasons a date lies in that the answers name but do not price (`weather.notes`): Japan's `rainy_season`. */
+export function weatherNotesOn(date: string, weather: TripWeather | undefined): string[] {
+  const monthDay = date.slice(5);
+  return (weather?.notes ?? [])
+    .filter((note) => inMonthDayRange(monthDay, note.from, note.to))
+    .map((note) => note.kind);
 }
 
 /** One row of the events under the date grid. */

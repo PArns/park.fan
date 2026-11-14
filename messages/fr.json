@@ -3142,7 +3142,9 @@
       "modeAll": "Global",
       "picksLegendAll": "Sous chaque date, le parc à l’attente de pointe la plus courte.",
       "picksLegendResort": "Sous chaque date, le parc {resort} à l’attente de pointe la plus courte.",
-      "overall": "Global : {park}"
+      "overall": "Global : {park}",
+      "stormPeak": "{season} : la recherche de la meilleure période classe ces jours plus bas, même avec des attentes courtes.",
+      "rainyNote": "{season} : des jours plus humides, mais pas des parcs plus remplis."
     },
     "find": {
       "modeKnown": "Je connais mes dates",

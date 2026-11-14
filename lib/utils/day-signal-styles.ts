@@ -13,6 +13,22 @@ export const DAY_SIGNAL_CLASS: Record<DaySignal, string> = {
 };
 
 /**
+ * A day in a region's storm season (Orlando's hurricanes, Japan's typhoons), one more segment of a
+ * calendar cell's signal bar: `storm` the season, `stormPeak` its peak, which the planner ranks
+ * lower.
+ */
+export type StormSignal = 'storm' | 'stormPeak';
+
+/**
+ * The storm season's segment, in its own violet (`--signal-storm`): dashed for the season, solid
+ * for the peak, so the peak reads stronger without a second colour.
+ */
+export const STORM_SIGNAL_CLASS: Record<StormSignal, string> = {
+  storm: 'bg-[repeating-linear-gradient(90deg,var(--signal-storm)_0_4px,transparent_4px_6px)]',
+  stormPeak: 'bg-signal-storm',
+};
+
+/**
  * The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are
  * not among them: only the calendar carries those.
  */

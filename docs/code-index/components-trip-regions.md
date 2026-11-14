@@ -95,6 +95,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanCodeKey` _component_: What the park codes under the dates and in the Month view stand for, „MK Magic Kingdom · AK Animal Kingdom“, in the legend's own look. Only the codes the view shows (`parkCodeKey`), wrapped on a phone rather than folded away.
 - `PlanMonthEvents` _component_: The month's events under the date grid (`monthEvents`): party nights counted, festivals, school breaks and holidays with their dates in the month, New Year's Eve once.
+- `useStormKeys` _hook_: The legend keys of the storm codes a calendar draws, the season before its peak, in the climate chips' words („Hurrikansaison“, „Hochphase der Hurrikansaison“), for `ParkCalendarLegend`'s `extraSignals`.
 
 ### [`planner/plan-context.tsx`](../../components/trip-regions/planner/plan-context.tsx)
 
