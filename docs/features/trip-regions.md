@@ -105,13 +105,17 @@ day" opens the day planner with the source `<slug>-hub` (`orlando-hub`, as befor
 ## The planner band with several regions
 
 One region is the large card beside the day planner (unchanged). From two on, the regions are a
-row of tiles over the day planner and the parks: two to a row up to a 1024 px bar, then one each up
-to four (`REGION_COLUMNS`), a tile taller the fewer share the row. A long name wraps rather than
-being cut. `node scripts/shoot-planner-regions.mjs` draws the real panel with two to four regions
-(`scripts/fixtures/planner-menu/regions.tsx`) at 390, 1024 and 1440 px, in both themes, and fails
-when a name runs past its tile. A coming region's tile shows the placeholder scene until its own
-is drawn: a file `components/layout/region-art/<slug>.tsx` exporting a component with
-`TripRegionSceneProps`, whose loader replaces `placeholderScene` in the region's entry.
+row of tiles over the day planner and the parks, after the four-region design: each tile its
+scene, area, name (up to two balanced lines, nothing cut) and arrow; the line every region shares
+stands once on the row's heading (`MenuSectionHeading aside`). Two tiles share a row up to a
+1024 px bar, then one each up to four (`REGION_COLUMNS`). Under the row the quick starts are one
+column of four below a 1280 px bar, so no park name is cut, and two columns of six from there. In
+the phone sheet each region is a 44 px row with a 56 × 36 cut of its scene, its name and its area
+(`SheetRegionLink`, `RegionSceneCut`), loaded when the sheet opens; one region stays a plain row.
+`node scripts/shoot-planner-regions.mjs` draws the real panel and the sheet's rows with two to four
+regions (`scripts/fixtures/planner-menu/regions.tsx`) at 390, 1024 and 1440 px, in both themes, and
+fails when a name runs past its tile. A region's scene is `components/assistant/parky/<slug>-scene.tsx`,
+built on `HolidayParky`, and its entry's `scene` loads it.
 
 ## Adding a region
 
@@ -124,7 +128,7 @@ is drawn: a file `components/layout/region-art/<slug>.tsx` exporting a component
 3. Write `tripRegions.<slug>` in all six message files, in the shape of `tripRegions.orlando`
    (`pnpm validate:translations` keeps the locales in step; `pnpm test:trip-regions` checks the
    keys a live region needs).
-4. Draw its scene in `components/layout/region-art/<slug>.tsx` and point `scene` at it.
+4. Draw its scene in `components/assistant/parky/<slug>-scene.tsx` and point `scene` at it.
 5. Add the zone's VTIMEZONE to `lib/trip-regions/plan-ics.ts` if it is a new one
    (`test:trip-regions` fails without it).
 6. Set `live: true`. The routes, rewrites, edge windows, sitemap, menus, band and OG cards follow.

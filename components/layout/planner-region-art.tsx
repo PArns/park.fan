@@ -82,3 +82,25 @@ export function PlannerRegionArt({
     </Suspense>
   );
 }
+
+/**
+ * A region's scene cut to a 56 × 36 box, for its row in the phone sheet where several regions are
+ * listed. The sheet's content is mounted only while the sheet is open, so the chunk loads on its
+ * first opening and no page carries the markup; until then, and for a region without a scene, the
+ * box is the muted ground.
+ */
+export function RegionSceneCut({ regionId }: { regionId: string }) {
+  const Scene = SCENES[regionId];
+  return (
+    <span
+      aria-hidden="true"
+      className="bg-muted relative block h-9 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-black/10 dark:ring-white/10"
+    >
+      {Scene && (
+        <Suspense fallback={null}>
+          <Scene className="h-full w-full" fallback={null} />
+        </Suspense>
+      )}
+    </span>
+  );
+}

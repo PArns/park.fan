@@ -1,15 +1,15 @@
 /**
  * The header's planner band with two to four regions, for `scripts/shoot-planner-regions.mjs`: the
- * real `PlannerMenuPanel` inside an open `MenuBand`, with Orlando and up to three of the coming
- * regions (their registry slugs, so each draws the scene its entry names: Orlando's Parky, the
- * placeholder for the rest until `components/layout/region-art/<slug>.tsx` exists). Only one region
- * is live, so the several-region layout has no page to be seen on; this is where it is looked at.
+ * real `PlannerMenuPanel` inside an open `MenuBand`, and under it the phone sheet's rows for the
+ * same regions (`SheetRegionLink`), with Orlando and up to three of the coming regions (their
+ * registry slugs, so each draws the scene its entry names). Only one region is live, so the several-region layout has no page to be seen on; this is where it is looked at.
  * The names and counts below are the fixture's, not copy. Never imported by the app.
  */
 import { createRoot } from 'react-dom/client';
 import { NextIntlClientProvider } from 'next-intl';
 import { MenuBand } from '@/components/layout/menu-band';
 import { PlannerMenuPanel } from '@/components/layout/planner-menu-panel';
+import { SheetRegionLink } from '@/components/layout/sheet-region-link';
 import { plannerQuickStarts } from '@/lib/planner/quick-start';
 import type { PlannerMenuPark, PlannerMenuRegion } from '@/lib/navigation/planner-menu';
 import de from '../../../messages/de.json';
@@ -96,6 +96,13 @@ const regions: PlannerMenuRegion[] = REGIONS.slice(0, count).map((region) => ({
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <NextIntlClientProvider locale={locale} messages={MESSAGES[locale]} timeZone="Europe/Berlin">
+    {/* The phone sheet's rows for the same regions, as the burger menu lists them; above the
+        header, since the band is absolute under it. */}
+    <div data-fixture-sheet="" className="flex max-w-sm flex-col gap-0.5 px-6 py-4">
+      {regions.map((region) => (
+        <SheetRegionLink key={region.id} region={region} />
+      ))}
+    </div>
     <header className="@container relative h-12 border-b">
       <MenuBand id="planner-fixture" open>
         <PlannerMenuPanel
