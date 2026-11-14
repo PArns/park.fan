@@ -7,6 +7,8 @@ import {
   calendarQueryKey,
   fetchTripCalendar,
   fetchTripPlan,
+  fetchTripPlanIdeas,
+  ideasQueryKey,
   fetchTripWhen,
   fetchSchoolBreaks,
   schoolBreaksQueryKey,
@@ -75,6 +77,26 @@ export function useStatePlan() {
   const { state, headliners, tickets: catalog } = usePlanContext();
   const blocked = ticketProblem(state, catalog) !== null;
   return useTripPlan(planRequestQuery(state, headliners, blocked));
+}
+
+/**
+ * Parky's ideas for the plan on screen, asked once that plan answers the query asked last, so
+ * they never hold up the plan and never describe the one before it. The API caches them an hour
+ * apart from the plan, as the planner does.
+ */
+export function usePlanIdeas() {
+  const { state, tickets: catalog, region } = usePlanContext();
+  const plan = useStatePlan();
+  const blocked = ticketProblem(state, catalog) !== null;
+  const shown = plan.current && !plan.waiting && plan.data !== undefined && !blocked;
+  const asked = shown ? plan.asked : null;
+  const query = asked === null ? {} : Object.fromEntries(new URLSearchParams(asked));
+  return useQuery({
+    queryKey: ideasQueryKey(region.slug, query),
+    queryFn: ({ signal }) => fetchTripPlanIdeas(region.slug, query, signal),
+    enabled: asked !== null,
+    ...PLAN_QUERY_OPTIONS,
+  });
 }
 
 /**

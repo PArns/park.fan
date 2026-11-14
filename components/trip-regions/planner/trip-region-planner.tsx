@@ -24,7 +24,7 @@ import {
 } from './plan-context';
 import { PlanResult } from './plan-result';
 import { useTicketStep } from './plan-tickets';
-import { usePlanState } from './use-plan-state';
+import { NO_EDITS, usePlanState } from './use-plan-state';
 import { ParkyTripInterviewButton } from '@/components/assistant/parky-trip-interview-button';
 import { Button } from '@/components/ui/button';
 import { TripWizard, type TripWizardAt } from '../wizard/trip-wizard';
@@ -53,6 +53,7 @@ const NO_TICKET_STEP: TripTicketStep = {
   homeMarket: '',
 };
 const noUpdate = () => undefined;
+const noUndo = () => false;
 
 /**
  * The trip planner of a region's hub: which park on which day of a trip, from the API's `/plan`.
@@ -84,6 +85,9 @@ export function TripRegionPlanner({
           photos={photos}
           state={DEFAULT_PLAN_STATE}
           update={noUpdate}
+          edit={noUpdate}
+          undo={noUndo}
+          edits={NO_EDITS}
           live={false}
         />
       }
@@ -111,8 +115,19 @@ function LivePlanner(props: TripRegionPlannerProps) {
     target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
     root.focus({ preventScroll: true });
   }, [slug]);
-  const { state, update } = usePlanState(props.region, onExternal);
-  return <PlannerFrame {...props} state={state} update={update} live rootRef={rootRef} />;
+  const { state, update, edit, undo, edits } = usePlanState(props.region, onExternal);
+  return (
+    <PlannerFrame
+      {...props}
+      state={state}
+      update={update}
+      edit={edit}
+      undo={undo}
+      edits={edits}
+      live
+      rootRef={rootRef}
+    />
+  );
 }
 
 function PlannerFrame({
@@ -122,14 +137,18 @@ function PlannerFrame({
   photos,
   state,
   update,
+  edit,
+  undo,
+  edits,
   live,
   rootRef,
-}: TripRegionPlannerProps & {
-  state: TripPlanState;
-  update: PlanContextValue['update'];
-  live: boolean;
-  rootRef?: RefObject<HTMLDivElement | null>;
-}) {
+}: TripRegionPlannerProps &
+  Pick<PlanContextValue, 'edit' | 'undo' | 'edits'> & {
+    state: TripPlanState;
+    update: PlanContextValue['update'];
+    live: boolean;
+    rootRef?: RefObject<HTMLDivElement | null>;
+  }) {
   const now = useBrowserNow(live);
   const today = now ? parkToday(region.timezone, now.getTime()) : null;
 
@@ -156,11 +175,14 @@ function PlannerFrame({
       tickets: ticketCatalog(region.tickets),
       state,
       update,
+      edit,
+      undo,
+      edits,
       today,
       photos: photos ?? NO_PHOTOS,
       live,
     };
-  }, [region, locale, state, update, today, photos, live]);
+  }, [region, locale, state, update, edit, undo, edits, today, photos, live]);
 
   return (
     <PlanContextProvider value={context}>

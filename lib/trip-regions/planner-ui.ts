@@ -1,6 +1,6 @@
 'use client';
 
-import type { TripWizardStepKey } from './wizard-steps';
+import type { TripWizardQuestion, TripWizardStepKey } from './wizard-steps';
 
 /**
  * Opening the trip planner's assistant, as a signal from outside the planner: the hub's hero and
@@ -50,5 +50,83 @@ export const tripPlannerUi = {
     const request = pending;
     pending = null;
     return request;
+  },
+};
+
+const ANSWERED_KEY = 'parkfan:trip-wizard-answered';
+const answeredListeners = new Set<Listener>();
+const NONE: ReadonlySet<TripWizardQuestion> = new Set();
+let answeredCache: { raw: string | null; value: Record<string, ReadonlySet<TripWizardQuestion>> } =
+  {
+    raw: null,
+    value: {},
+  };
+
+function answeredStorage(): Storage | null {
+  try {
+    return window.sessionStorage;
+  } catch {
+    return null;
+  }
+}
+
+function readAnswered(): Record<string, ReadonlySet<TripWizardQuestion>> {
+  let raw: string | null = null;
+  try {
+    raw = answeredStorage()?.getItem(ANSWERED_KEY) ?? null;
+  } catch {
+    // Without storage the answers count for as long as the page is open.
+  }
+  if (raw === answeredCache.raw) return answeredCache.value;
+  let value: Record<string, ReadonlySet<TripWizardQuestion>> = {};
+  try {
+    const parsed = raw ? (JSON.parse(raw) as Record<string, TripWizardQuestion[]>) : {};
+    value = Object.fromEntries(Object.entries(parsed).map(([k, v]) => [k, new Set(v)]));
+  } catch {
+    // A broken record is no answer.
+  }
+  answeredCache = { raw, value };
+  return value;
+}
+
+/**
+ * The questions the visitor answered in the assistant, per region, for this tab: a step left with
+ * "Next" answers its questions, a skipped one does not. What the API cannot know (a free arrival
+ * day left out of the query reads the same as one nobody asked about), so Parky's ideas
+ * (`shownIdeas`) leave an answered question alone.
+ */
+export const tripWizardAnswered = {
+  /** Mark questions answered in `region`. */
+  mark(region: string, questions: readonly TripWizardQuestion[]): void {
+    if (questions.length === 0) return;
+    const all = readAnswered();
+    const next = new Set([...(all[region] ?? []), ...questions]);
+    if (next.size === (all[region]?.size ?? 0)) return;
+    const record = Object.fromEntries(
+      Object.entries({ ...all, [region]: next }).map(([k, v]) => [k, [...v]])
+    );
+    const raw = JSON.stringify(record);
+    try {
+      answeredStorage()?.setItem(ANSWERED_KEY, raw);
+    } catch {
+      // Kept in memory below.
+    }
+    answeredCache = {
+      raw: answeredStorage() ? raw : answeredCache.raw,
+      value: { ...all, [region]: next },
+    };
+    for (const listener of answeredListeners) listener();
+  },
+  /** The answered questions of `region`; the same set until the next mark. */
+  get(region: string): ReadonlySet<TripWizardQuestion> {
+    return readAnswered()[region] ?? NONE;
+  },
+  /** Nothing is answered before the browser has read the tab's record. */
+  getServer(): ReadonlySet<TripWizardQuestion> {
+    return NONE;
+  },
+  subscribe(listener: Listener): () => void {
+    answeredListeners.add(listener);
+    return () => answeredListeners.delete(listener);
   },
 };

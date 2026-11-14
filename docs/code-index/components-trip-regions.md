@@ -140,6 +140,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanDates` _component_: The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second the departure, at most `MAX_TRIP_DAYS` days.
 
+### [`planner/plan-day-actions.tsx`](../../components/trip-regions/planner/plan-day-actions.tsx)
+
+- `PlanDayActions` _component_: The row under a park day's card: Festhalten (a toggle, pressed while the day is pinned), Tauschen (the swap mode) and Mehr (the day's other edits in a sheet). Each names the park and the date.
+- `DayActionsSheet` _component_: „Mehr“ for a park day, in the planner's sheet: pin it, swap it, put it on the quietest free day of its city (with the figure, or honestly „no free day is quieter“), make it a free day, take the park out of the trip, or open the day in the …
+- Types: `PlanDayEdits`
+
 ### [`planner/plan-day-bits.tsx`](../../components/trip-regions/planner/plan-day-bits.tsx)
 
 - `PlanDayMarker` _component_: The one marker a day wears in the overview: an icon with words, never colour alone. `compact` keeps the icon and moves the words into a tooltip, for the Month view's cells, whose own label carries them.
@@ -158,11 +164,23 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.
 
+### [`planner/plan-edit-status.tsx`](../../components/trip-regions/planner/plan-edit-status.tsx)
+
+- `PlanEditStatus` _component_: The band over the answer after an edit (`role="status"`, so it is read out): what changed, in words („Tokyo DisneySea liegt jetzt am Mi., 20.
+
 ### [`planner/plan-find.tsx`](../../components/trip-regions/planner/plan-find.tsx)
 
 - `PlanDatesStep` _component_: Step 1, the dates: the range calendar, and under it one quiet way to the other question, "No dates yet? Find the best time" (a period, a trip length, and if wanted only the school holidays of a region), with its way back.
 - `PlanFind` _component_: The When mode's inputs: the period chips (the next twelve months, next year and its seasons, or a range of the visitor's own), the trip length (3–21 days, 10 to start), and "only in our school holidays" with a region in the holiday data's …
 - `defaultSearchRange` _function_: The search the When mode opens on: the next twelve months.
+
+### [`planner/plan-ideas.tsx`](../../components/trip-regions/planner/plan-ideas.tsx)
+
+- `IdeasStrip` _component_: „Parky hat 3 Ideen für deinen Plan“ over the days: a card per idea, to swipe on a phone and in a grid at a desk. Nothing without ideas.
+- `IdeaCard` _component_: One idea over the plan: its line, its figure, the verb that applies it and „Im Chat“.
+- `DayHint` _component_: The idea about one day, under its card: Parky's face, the line and the button that applies it.
+- `useShownIdeas` _hook_: Parky's ideas for the plan on screen, as the planner shows them: the API's best single edits (`usePlanIdeas`) less those that would overrule an answer the visitor gave in the assistant (`shownIdeas`).
+- `useIdeaWords` _hook_: An idea in words: its line („DisneySea am Mo., 25. Jan. statt am Fr., 22. Jan.“) and its figure.
 
 ### [`planner/plan-keep.tsx`](../../components/trip-regions/planner/plan-keep.tsx)
 
@@ -221,6 +239,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `stayTint` _function_: A stay's band tint by its number on the route.
 - `MOVE_INK` _const_: A move's ink, the leg chip's: dashed primary border, faint primary ground.
 
+### [`planner/plan-swap-mode.tsx`](../../components/trip-regions/planner/plan-swap-mode.tsx)
+
+- `PlanSwapMode` _component_: „Tauschen“ on a day card: a band that says what is swapped and how to read the list, the day as it is, and every day of its city it can trade with.
+
 ### [`planner/plan-ticket-words.tsx`](../../components/trip-regions/planner/plan-ticket-words.tsx)
 
 - `TicketMarketTag` _component_: Where a ticket or a purchase link is sold, as a small tag beside it ("UK shop", `marketLabel`).
@@ -261,11 +283,14 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/use-plan-state.ts`](../../components/trip-regions/planner/use-plan-state.ts)
 
 - `usePlanState` _hook_: The planner's state, which is the address bar's query: no copy of it lives anywhere else, so a reload, "Copy link" and Parky's links open the same plan.
+- `NO_EDITS` _const_: No edit yet, or the history started afresh.
+- Types: `PlanEdits`
 
 ### [`planner/use-trip-plan.ts`](../../components/trip-regions/planner/use-trip-plan.ts)
 
 - `useTripPlan` _hook_: The plan for a request query, asked once the controls have been still for `PLAN_DEBOUNCE_MS`.
 - `useStatePlan` _hook_: The plan for the planner's own state, the one the answer shows: also read by the setup's Route, which lists the plan's stays. One request either way, the cache's.
+- `usePlanIdeas` _hook_: Parky's ideas for the plan on screen, asked once that plan answers the query asked last, so they never hold up the plan and never describe the one before it. The API caches them an hour apart from the plan, as the planner does.
 - `useUnpinnedPlan` _hook_: The plan without the visitor's pins, for the edit bar's "best order" figure: the same query minus `lock`, which is usually the plan the visitor started from and still in the cache.
 - `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.

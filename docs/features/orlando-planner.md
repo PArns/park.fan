@@ -174,17 +174,21 @@ A region with bases (Japan, Paris; the API's
 [bases](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#bases-a-trip-across-several-cities))
 sleeps in more than one place. The visitor gives the ends, the plan gives the middle.
 
-- **The Route** (`plan-route.tsx`), folded away under its summary like More options, a row of its
-  own on a phone: "Arrival" and "Departure" offer the gateways per base ("Tokyo · Haneda or
-  Narita") and "Not decided". A gateway several bases list (Charles de Gaulle) pins no base, so it
-  reads "Charles de Gaulle, or not decided" (`gatewayChoices`). Under them the plan's cities in
-  route order with their nights, "the plan's" until the visitor sets them with the parks' stepper
-  ("set"); 0 nights makes a city's parks day trips, "Add a city" names one the plan skips. The URL
-  carries `bases=tokyo:4@maihama,fujikawaguchiko:0`, `startBase`, `endBase` and `moveBuffer`;
-  `hotel` and `area` are not the region's there and are dropped from a link.
-- **More options** add the hotel area per city of the plan (its perks and the ways to the parks
-  count only with one) and the hotel change's buffer from `stayRules.moveBufferOptions`, the
-  region's `moveOverheadMinutes` chosen; Japan's line names the luggage service.
+- **Route** (`components/trip-regions/wizard/steps/route-step.tsx`), the assistant's step in
+  place of Hotel: where the trip lands and where it leaves from as cards, the city first and its
+  airports small ("Tokyo · Haneda or Narita"), and "Not decided". A gateway several bases share
+  (Charles de Gaulle) pins no base, so its card is the plan's choice (`gatewayChoices`). Under them
+  the cities on a line in route order with their nights: "the plan's" until the stepper sets them;
+  0 nights makes a city's parks day trips, "Add a city" (chips) names one the plan skips. A trip of
+  two nights or fewer sleeps in one city, and the step says so. The URL carries
+  `bases=tokyo:4@maihama,fujikawaguchiko:0`, `startBase`, `endBase` and `moveBuffer`; `hotel` and
+  `area` are not the region's there and are dropped from a link.
+- **Hotels** (`hotels-step.tsx`), the step after it: per city the trip stays in, its `stayNote`
+  and its areas as cards (`AreaPicker`, with the minutes to the trip's parks there and the perks,
+  which count only with an area chosen), and the hotel change's buffer from
+  `stayRules.moveBufferOptions` where the trip changes hotels, the region's `moveOverheadMinutes`
+  chosen; Japan's line names the luggage service. Until the plan answers, the cities are those
+  nearest the trip's parks (`homeBases`).
 - **The answer** says the cities and hotel changes beside the park days and the API's
   `staySuggestion` with "Plan it this way". The list has a section per stay (its number, city,
   nights, dates and the region's stay note) with the move between sections; a day is listed where
@@ -214,6 +218,32 @@ Built for a first-time visitor who wants to know which park on which day (PAR-13
    it on that step.
 5. **Tickets after the plan**, from the ticket card's "Already have tickets? Add them"; a shared
    link is never asked.
+
+## Parky's ideas
+
+The API's best single edits for the plan on screen (`GET …/plan/ideas`, the same query as
+`/plan`, at most three: move, swap, add, travel_day, hopper, avoid_party), asked once the plan
+answers the query asked last (`usePlanIdeas`), through the same relay. The API cannot tell an
+answered default from an unasked one (a free arrival day is left out of the query either way), so
+the planner drops a `travel_day` idea where the visitor answered the travel days in the assistant
+and a `hopper` idea where they answered hopping (`shownIdeas`; the answers are
+`tripWizardAnswered`, per tab: a step left with "Next" answers its questions, a skipped one does
+not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-ideas`.
+
+- **Over the plan** (`IdeasStrip` in `planner/plan-ideas.tsx`), between the stay suggestion and
+  last year's line: "Parky has 3 ideas for your plan", a card each with the idea in one line
+  ("Tokyo Disneyland on Thu, Jan 28 instead of Fri, Jan 22"), the park's own figure ("about 55
+  instead of 60 min"), the verb that applies it (Add, Swap, Plan it this way) and "In the chat".
+  To swipe on a phone, a grid at a desk.
+- **At the day** (`DayHint`), in the card's `hint` slot under the day the idea changes.
+- **In the chat** (`AssistantTripIdeaCard`): "In the chat" sends Parky a question about the idea
+  (`askParkyAboutIdea`, `assistant_question` with `kind: idea`) and draws the idea under his
+  answer with "Add to the plan", then "In the plan: …" with Undo. The card's words are the
+  planner's, made where it was pressed: the chat carries none of the planner's messages.
+- **Applying** goes through the planner's bridge (`tripPlannerBridge.applyIdea`) from all three:
+  the idea's query part set over the state (each parameter replaces its value whole,
+  `applyIdea`), as an edit the status band names ("In the plan: …") and its Undo takes back.
+- **The finale** says "Parky has N ideas for your plan" where it has any.
 
 ## Evenings, tickets and the season
 
@@ -364,6 +394,11 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_day_pinned`                                                                     | `pinned`                                                                                                                                                                                                                           |
 | `trip_day_swapped`, `trip_day_sent`, `trip_evening_link_clicked`, `trip_link_copied`  | none                                                                                                                                                                                                                               |
 | `trip_spare_filled`                                                                   | `from`: card (the Days view and a free day's sheet), week (the Week view's panel); idea and chat once Parky offers parks                                                                                                           |
+| `trip_day_moved`, `trip_day_freed`, `trip_park_removed`                               | none: a day put on a free day, a day made free, a park taken out, from a day's „More“                                                                                                                                              |
+| `trip_undo`                                                                           | `what`: pin, swap, move, free, remove, add, release, idea                                                                                                                                                                          |
+| `trip_idea_shown`                                                                     | `kind` (move, swap, add, travel_day, hopper, avoid_party), `place` (header, day, chat); once per idea and place                                                                                                                    |
+| `trip_idea_applied`                                                                   | `kind`, `place`                                                                                                                                                                                                                    |
+| `trip_idea_chat`                                                                      | `kind`                                                                                                                                                                                                                             |
 | `trip_days_saved`, `trip_ics_exported`                                                | `days`                                                                                                                                                                                                                             |
 | `trip_ticket_added`                                                                   | `entry`, `resort`, `via` (picker, combo)                                                                                                                                                                                           |
 | `trip_ticket_removed`                                                                 | `entry`, `resort`                                                                                                                                                                                                                  |
@@ -396,12 +431,32 @@ page breaks it down by seller, product and host.
 
 ## Editing a plan
 
+Every edit is made on the result and kept for its undo: `usePlanState` holds the whole state
+before each one (`edit`), so "Undo" takes back every edit in turn, not only its pins. A change of
+the answers in the assistant, or a link from outside, starts the history afresh. The pure helpers
+are in `lib/trip-regions/plan.ts`: `toggleLock`, `swapLocks`, `moveVisit`, `freeDay`,
+`removePark`, `addParkOnDate`, and `PlanEditChange` for what each one did.
+
+- **The day card's row** (`plan-day-actions.tsx`): **Pin** is a toggle (`aria-pressed`), **Swap**
+  opens the swap mode, **More** a sheet (`DayActionsSheet`). Each names the park and the date in
+  its label ("Pin Tokyo DisneySea on Tue, Jan 19").
 - **Pin** writes `slug@date` (or `rest@date`) to `lock=` and re-plans around it.
-- **Swap** lists the trip's other days, each priced before the press from the calendar: the two
-  parks' waits on their new days less those on their old ones. A park moved onto a short day is
-  named with the hours it loses. The press pins both days the other way round and re-plans.
-- **The edit bar** says what the pins cost per ride against the plan without them (the same query
-  minus `lock`, usually still cached), with Undo and "Release all".
+- **Swap** (`plan-swap-mode.tsx`) takes the views' place: a band ("Swap Tokyo DisneySea. Pick a
+  day. The figure is the peak wait at DisneySea on that day."), the day as it is, and every day of
+  its city it can trade with (`swapTargets`). Each target says what it holds now and the parks' own
+  figures on their new days, read off the calendar before the press (`swapPreview`'s `parks`):
+  "DisneySea 105 min (+5)", for a park day also "Tokyo Disneyland on Tue instead: 60 min (±0)",
+  for a free day "The free day moves to Tue." Never the plan's mean. The quietest is marked, a
+  short day carries its closing time, the same park and a closed day cannot be picked. The press
+  pins both days the other way round and re-plans. A day's sheet opens the same mode.
+- **More**: pin, swap, put the park on the quietest free day of its city ("Tue, Jan 20: about 90
+  instead of 100 min", or "No free day is quieter"), make the day free (`rest@date`), take the
+  park out of the trip ("Both days become free."), or open the day in the day planner.
+- **The status band** (`plan-edit-status.tsx`, `role="status"`) replaces the edit bar. After each
+  edit it says what changed in words ("Tokyo DisneySea is now on Wed, Jan 20."), that the pinned
+  days stay, and the peak wait now, or what the pins cost against the plan without them (the same
+  query minus `lock`, usually still cached). "Undo" while there is an edit to take back,
+  "Release all" while a day is pinned.
 
 Owner's decision: **an earlier closing time always counts.** The API prices a day by the hours a
 day guest really gets; the planner shows it everywhere a day is: the Week block's end, the
@@ -474,7 +529,8 @@ keeps the last plan on screen, dimmed, with a retry.
 
 `pnpm test:orlando-plan`; keyboard path, focus return to the pressed day after a sheet closes,
 44 px targets in every sheet and view on a phone, and no horizontal scroll at 320 and 390 px were
-checked with Playwright against the API's dev shim. The tickets run in `pnpm check:planner`
-(alone: `pnpm check:planner --orlando`, `scripts/check-planner-orlando.mjs`) against a production
+checked with Playwright against the API's dev shim. The assistant's walk, the tickets and a
+day's edits (pin, undo, the swap mode) run in `pnpm check:planner` (alone:
+`pnpm check:planner --orlando`, `scripts/check-planner-orlando.mjs`) against a production
 build pointed at the shim (`NEXT_PUBLIC_API_URL=http://localhost:3001`, the API's
 `pnpm trip-regions:dev`).

@@ -221,6 +221,8 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `planQueryKey` _function_: The plan's cache key: its region and request query, in the order the URL writes it.
 - `calendarQueryKey` _function_: A calendar window's cache key, shared by the date sheet and the result.
 - `fetchTripPlan` _function_: `GET …/plan` through the relay. Throws a `PlanRequestError`.
+- `ideasQueryKey` _function_: Parky's ideas' cache key: the plan's region and request query, apart from the plan's.
+- `fetchTripPlanIdeas` _function_: `GET …/plan/ideas` through the relay, with the plan's own query.
 - `fetchTripCalendar` _function_: `GET …/calendar` through the relay, for a window of at most 92 days.
 - `whenQueryKey` _function_: The When search's cache key: its region and request query.
 - `fetchTripWhen` _function_: `GET …/when` through the relay. Throws a `PlanRequestError`.
@@ -236,6 +238,21 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `icsLocalDateTime` _function_: `YYYYMMDDTHHMMSS` of an instant on the wall clock of `timeZone`.
 - `buildTripIcs` _function_: The calendar file for a trip, timed in the region's zone. `now` stamps every event (`DTSTAMP`); it is a parameter so the file is a function of its input. CRLF line ends, as the format requires.
 - Types: `TripIcsEvent`
+
+### [`plan-ideas.ts`](../../lib/trip-regions/plan-ideas.ts)
+
+- `shownIdeas` _function_: The ideas the visitor gets to see, best first: those of a known kind that overrule no answer they gave, at most `MAX_PLAN_IDEAS`.
+- `ideaKey` _function_: An idea's identity: what it sets. Two ideas that set the same make the same plan.
+- `withQueryPart` _function_: The query with a part applied: each parameter of `part` replaces its value whole.
+- `applyIdea` _function_: The planner's state with an idea applied, read back through the planner's own query reader.
+- `ideaDay` _function_: The day card an idea belongs under: the day it takes a park from, else the day it puts one on. `null` for an idea without a day.
+- `ideaOnDay` _function_: The idea that belongs under a day's card: the first that changes that day.
+- `ideaTravelEnd` _function_: Which end of the trip a travel-day idea makes a park day: one of them, or both.
+- `ideaVerb` _function_: Which verb applies an idea: Dazunehmen for a park it adds, Tauschen for a day it moves.
+- `ideaFigure` _function_: What an idea's card says it does in minutes, in the park's own figure: „etwa 55 statt 60 Min.“ for a park that moves, „etwa 50 Min.“ for one it adds, `null` without a figure after.
+- `PLAN_IDEA_KINDS` _const_: Every `PlanIdeaKind`; an idea of a kind this client does not know is not shown.
+- `MAX_PLAN_IDEAS` _const_: The API sends at most three; the planner never shows more.
+- Types: `PlanIdeaKind`, `PlanIdea`, `PlanIdeasAnswer`
 
 ### [`plan-photos.ts`](../../lib/trip-regions/plan-photos.ts)
 
@@ -359,6 +376,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
 - `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
 - `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' shown waits (`shownWait`) on their new days less those on their old ones, so the difference is the one the days on screen …
+- `swapTargets` _function_: The days `day` can trade with: every other day with something to pin (a park or a day off) in the same city, never two days off. The swap mode lists them, each with what the trade does.
 - `dateLevel` _function_: A date's tint in the date grid: how busy the region's headliner parks are that day, the median of the crowd levels of those that are open and have one (the lower middle for an even count).
 - `usableAlternatives` _function_: The alternatives of a park the plan could have used: on a day of the trip that may hold a park, in a city whose base reaches the park.
 - `dayRunnerUp` _function_: The runner-up of a park day among the days the plan could use (`usableAlternatives`), both days in the figure the screen shows (`shownWaitOn`), so the difference is one the reader can check: the day card's second sentence and the sheet's …
@@ -374,7 +392,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `TRIP_DAY_SIGNALS` _const_: The signals a trip region's calendar knows: its own school breaks and holidays. It carries no bridge days or neighbouring regions, so the planner's grids key only these two.
 - `SPARE_COLUMN_PX` _const_: A free day alone in the Week view: a narrow column, no hour grid.
 - `SPARE_RUN_SHARE` _const_: A run of free days in the Week view: one panel, as wide as one and a half park days.
-- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapPreview`, `SpareSuggestion`, `WeekColumn`
+- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapParkFigure`, `SwapPreview`, `SpareSuggestion`, `WeekColumn`
 
 ### [`plan-when.ts`](../../lib/trip-regions/plan-when.ts)
 
@@ -424,6 +442,11 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `toggleLock` _function_: Pin a day to what it holds now (a park or a rest day), or release its pin.
 - `dayLockTarget` _function_: What a pin of this day names: its park, `rest`, or nothing for a travel or hop day.
 - `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
+- `moveVisit` _function_: Put the park of `day` on `date` instead: pinned there, so the re-plan keeps it and moves only the rest. A pin on its old day goes with it, and one on `date` gives way. `null` for a day without a park, or the same date.
+- `freeDay` _function_: Make a park day free: `rest` pinned on it, so the re-plan finds the park another day if it has one to give, and leaves this one empty. `null` for a day without a park.
+- `removePark` _function_: Take a park out of the trip: out of `parks` (the untouched default becoming a list), its pins with it, so its days go back to the plan. `null` where it is the last park the trip has.
+- `swapChange` _function_: The swap of two days as an edit: what was on `a` is now on `b`'s date, and the other way round.
+- `addedByEdit` _function_: The park and day an edit just put into the plan, whose card reads „neu“: a park put on a free day, or an idea that places a park.
 - `isSpareDay` _function_: Whether a day is free: a rest day the API marks `spare`, which nobody asked for. A rest day the visitor's rest rule set or pinned stays a rest day.
 - `withSpareRuns` _function_: A list of days with each run of consecutive free days folded into one entry, in date order. The days are one stay's, so a run never crosses a hotel change.
 - `addParkOnDate` _function_: Put a park on a free day: the park joins `parks` with one visit more than the plan gives it now (`planned`, 0 for a park not chosen), and is pinned to `date`, so the re-plan keeps it there and moves only the rest.
@@ -431,17 +454,19 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanDayEntry`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
 
 - `connectPlannerBridge` _function_: Publish the planner's state and how to set it; returns the disconnect. Called on every change of the state, which also remembers the trip once it holds dates or a search.
 - `tripPlannerBridge` _const_: The planner on screen, and how Parky changes it.
+- Types: `PlannerEdits`
 
 ### [`planner-ui.ts`](../../lib/trip-regions/planner-ui.ts)
 
 - `tripPlannerUi` _const_: The trip planner's open signal.
+- `tripWizardAnswered` _const_: The questions the visitor answered in the assistant, per region, for this tab: a step left with "Next" answers its questions, a skipped one does not.
 - Types: `TripPlannerStartSource`, `TripPlannerRequest`
 
 ### [`redirects.ts`](../../lib/trip-regions/redirects.ts)

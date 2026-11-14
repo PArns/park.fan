@@ -16,6 +16,7 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk, runnerUp } from './plan-copy';
 import {
+  dayLockTarget,
   withSpareRuns,
   type PlanAlternative,
   type PlanDay,
@@ -584,6 +585,15 @@ export function hoursLessThanUsual(
   return less >= 1 ? less : null;
 }
 
+/** One park a trade moves: its shown wait on the day it leaves (`here`) and the day it gets. */
+export interface SwapParkFigure {
+  slug: string;
+  from: string;
+  to: string;
+  here: number;
+  away: number;
+}
+
 /** What a trade would do, read off the calendar before anything is asked. */
 export type SwapPreview =
   | {
@@ -591,6 +601,8 @@ export type SwapPreview =
       delta: number;
       /** A park the trade puts on a day its day guests get fewer hours than usual. */
       short: { slug: string; hours: number } | null;
+      /** Each park the trade moves, in its own figure on its old day and on its new one. */
+      parks: SwapParkFigure[];
     }
   | { kind: 'closed'; slug: string }
   | { kind: 'no_figure' };
@@ -613,6 +625,7 @@ export function swapPreview(
     day.kind === 'rest' ? 'rest' : day.kind === 'park' ? (day.parks[0]?.slug ?? null) : null;
   let delta = 0;
   let short: { slug: string; hours: number } | null = null;
+  const parks: SwapParkFigure[] = [];
   for (const [slug, from, to] of [
     [target(a), a.date, b.date],
     [target(b), b.date, a.date],
@@ -625,10 +638,29 @@ export function swapPreview(
     const away = there && shownWait(there);
     if (away == null || here == null) return { kind: 'no_figure' };
     delta += away - here;
+    parks.push({ slug, from, to, here, away });
     const less = hoursLessThanUsual(calendar, slug, to, timeZone);
     if (less !== null && (short === null || less > short.hours)) short = { slug, hours: less };
   }
-  return { kind: 'minutes', delta, short };
+  return { kind: 'minutes', delta, short, parks };
+}
+
+/**
+ * The days `day` can trade with: every other day with something to pin (a park or a day off) in
+ * the same city, never two days off. The swap mode lists them, each with what the trade does.
+ */
+export function swapTargets(plan: Pick<TripPlan, 'days'>, day: PlanDay): PlanDay[] {
+  const target = dayLockTarget(day);
+  if (!target) return [];
+  return plan.days.filter((other) => {
+    const theirs = dayLockTarget(other);
+    return (
+      other.date !== day.date &&
+      theirs !== null &&
+      !(target === 'rest' && theirs === 'rest') &&
+      (day.base ?? null) === (other.base ?? null)
+    );
+  });
 }
 
 /**

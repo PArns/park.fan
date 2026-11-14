@@ -3553,19 +3553,58 @@
       "undo": "Undo",
       "release": "Release all",
       "swapped": "Swapped: {first} on {firstDay}, {second} on {secondDay}.",
-      "swappedCost": "About {current} instead of {best} min peak wait."
+      "swappedCost": "About {current} instead of {best} min peak wait.",
+      "pin": "Pin",
+      "pinLabel": "Pin {park} on {date}",
+      "swap": "Swap",
+      "swapLabel": "Swap {park} on {date}",
+      "more": "More",
+      "moreLabel": "More for {park} on {date}",
+      "pinnedNow": "{what} stays pinned on {date}.",
+      "unpinnedNow": "{what} on {date} is released; the plan may move the day again.",
+      "moved": "{park} is now on {date}.",
+      "freed": "{date} is now a free day.",
+      "freedPark": "{count, plural, =0 {{park} then has no day left.} =1 {{park} then has one day, {dates}.} other {{park} then has # days: {dates}.}}",
+      "removed": "{park} is no longer part of the trip.",
+      "released": "No day is pinned any more. The plan picks the order again.",
+      "undone": "The last change is undone.",
+      "peakNow": "Peak wait on your days now about {minutes} min.",
+      "sheet": {
+        "swap": "Swap with another day",
+        "swapHint": "Each day shows what the swap costs before you pick it.",
+        "pinHint": "{park} stays on {date}, whatever else you change.",
+        "toSpare": "Move to a free day",
+        "toSpareBetter": "{date}: about {after} instead of {before} min.",
+        "toSpareSame": "No free day is quieter; {date} would be about {after} min.",
+        "toSpareNoFigure": "{date}; there is no figure for that day yet.",
+        "toSpareNone": "The trip has no free day for it.",
+        "free": "Make it a free day",
+        "freeHint": "{date} stays free. The new plan shows where {park} goes.",
+        "remove": "Take {park} out of the trip",
+        "removeHint": "{count, plural, =1 {Its day becomes free.} =2 {Both days become free.} other {All # days become free.}}",
+        "removeLast": "The trip’s only park stays in.",
+        "planHint": "Rides, breaks and shows for this day."
+      },
+      "swapMode": {
+        "title": "Swap {park}",
+        "hint": "Pick a day. The figure is the peak wait at {park} on that day.",
+        "close": "Stop swapping",
+        "now": "now",
+        "nowFree": "free now",
+        "nowRest": "rest day now",
+        "nowPark": "now {park}",
+        "figure": "<strong>{park} {minutes} min</strong> ({delta})",
+        "theirs": "{park} on {day} instead: {minutes} min ({delta})",
+        "spareMoves": "The free day moves to {day}.",
+        "restMoves": "The rest day moves to {day}.",
+        "quietest": "quietest",
+        "closes": "closes {time}",
+        "same": "already {park}"
+      }
     },
     "swap": {
-      "hint": "The figure is how your plan’s average peak wait changes; the rest of the plan may move too.",
       "closed": "{park} is closed then",
-      "noFigure": "no figure",
-      "same": "same peak wait",
-      "more": "+{minutes} min on average",
-      "less": "−{minutes} min on average",
-      "short": "{park} on a short day, about {hours, plural, =1 {one hour} other {# hours}} less",
-      "moveThere": "{park} on this day, {date} becomes a rest day",
-      "takeOver": "{park} on {date}, this day becomes a rest day",
-      "trade": "swap with {park}"
+      "noFigure": "no figure"
     },
     "keep": {
       "addAll": "Copy to the day planner",
@@ -3990,6 +4029,27 @@
         "stays": "First {first}, then {rest}.",
         "dayPlanner": "The day planner asks for each park day who comes along and how tall the smallest are."
       }
+    },
+    "ideas": {
+      "label": "Parky’s ideas",
+      "title": "Parky has {count, plural, =1 {one idea} other {# ideas}} for your plan",
+      "add": "{park} on the free {date}",
+      "move": "{park} on {to} instead of {from}",
+      "swap": "{park} on {to}, {with} on {from} instead",
+      "travel_day": "{end, select, arrival {Arrival day as a park day} departure {Departure day as a park day} other {Arrival and departure as park days}}: {park} on {to}",
+      "hopper": "{park} fits in with {hopper}: on {to}",
+      "avoid_party": "{park} on {to} instead of the party night on {from}",
+      "figure": "about {after} min",
+      "figureMoved": "about {after} instead of {before} min",
+      "apply": {
+        "add": "Add",
+        "swap": "Swap",
+        "plan": "Plan it this way"
+      },
+      "chat": "In the chat",
+      "ask": "What do you think of this idea for my plan: {idea}?",
+      "applied": "In the plan: {idea}.",
+      "inPlan": "Add to the plan"
     }
   },
   "tripRegions": {

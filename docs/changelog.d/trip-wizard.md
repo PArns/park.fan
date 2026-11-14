@@ -69,3 +69,46 @@ unter `tripPlanner.options` und `tripPlanner.route`, die niemand mehr liest, und
 reine Logik (Muster, Wege, Karte, Tatsache am Reisetag) steht in
 `lib/trip-regions/wizard-choices.ts` und läuft in `pnpm test:wizard-choices`. Ablauf und
 Barrierefreiheit: [Assistent](../features/trip-planner/wizard.md#the-trip-planners-option-steps).
+
+#### Den Plan am Tag bearbeiten, mit Rückgängig für jede Änderung
+
+Jede Tageskarte hat unten drei Knöpfe: „Festhalten“ (gedrückt, solange der Tag fest ist),
+„Tauschen“ und „Mehr“; jeder nennt Park und Datum in seinem Namen. „Tauschen“ öffnet einen
+Tauschmodus an der Stelle der Tage (`PlanSwapMode`): oben das Band „Tokyo DisneySea tauschen. Wähle
+einen Tag. Die Zahl ist die Spitze von Tokyo DisneySea dort.“, darunter jeder Tag derselben Stadt
+mit der Minute des Parks an jenem Tag, nie dem Schnitt des Plans: „Tokyo DisneySea 105 Min. (+5)“,
+bei einem Parktag dazu „Tokyo Disneyland dafür am Di.: 60 Min. (±0)“, bei einem freien Tag „Der
+freie Tag wandert auf Di.“. Der ruhigste Tag ist markiert, ein kurzer Tag trägt „schließt 18:30“,
+derselbe Park und ein geschlossener Tag sind gesperrt. Die Tauschliste im Tages-Sheet mit der
+Änderung im Schnitt entfällt; sein „Tauschen“ öffnet denselben Modus. „Mehr“ legt den Park auf den
+ruhigsten freien Tag seiner Stadt (mit der Zahl, oder „Kein freier Tag ist ruhiger“), macht den Tag
+frei, nimmt den Park aus der Reise („Beide Tage werden frei.“) oder öffnet den Tagesplaner
+(`DayActionsSheet`). Die Helfer `moveVisit`, `freeDay` und `removePark` stehen neben Pins und
+Tausch in `lib/trip-regions/plan.ts`.
+
+Das Statusband über dem Plan (`PlanEditStatus`, ersetzt die Edit-Leiste) sagt nach jeder Änderung,
+was passiert ist („Tokyo DisneySea liegt jetzt am Mi., 20. Jan.“), dass die festen Tage bleiben, und
+die Spitze jetzt oder was die Pins kosten. „Rückgängig“ nimmt jede Änderung zurück, nicht nur die
+Pins: `usePlanState` hält den ganzen Zustand vor jeder Änderung. Neue Ereignisse: `trip_day_moved`,
+`trip_day_freed`, `trip_park_removed` und `trip_undo` mit `what`.
+
+#### Parkys Ideen
+
+Die API rechnet die besten Einzeländerungen eines Plans (`GET /v1/trip-regions/:region/plan/ideas`,
+dieselbe Query wie `/plan`, höchstens drei). Der Planer fragt sie, sobald der Plan auf dem Schirm
+steht, über dasselbe Relay, und zeigt sie dreimal: als Karten „Parky hat 3 Ideen für deinen Plan“
+über den Tagen (`IdeasStrip`), als Zeile unter dem Tag, den eine Idee ändert (`DayHint`), und im
+Chat unter Parkys Antwort, wenn man „Im Chat“ drückt (`AssistantTripIdeaCard`). Jede Karte nennt die
+Idee in einer Zeile („Tokyo Disneyland am Do., 28. Jan. statt am Fr., 22. Jan.“), die Minute des
+Parks („etwa 55 statt 60 Min.“) und das passende Verb: Dazunehmen, Tauschen oder So planen. Ein Tipp
+übernimmt die Idee über die Planer-Brücke als Änderung mit Rückgängig. Eine Idee, die eine Antwort
+aus dem Assistenten bräche (Reisetage, Park-Hopping), zeigt der Planer nicht: Die API kann eine
+gewählte Voreinstellung nicht von einer ungefragten unterscheiden. Das Finale sagt „Parky hat N Ideen
+für deinen Plan“. Die reine Logik steht in `lib/trip-regions/plan-ideas.ts`
+(`pnpm test:plan-ideas`); neue Ereignisse `trip_idea_shown`, `trip_idea_applied` und
+`trip_idea_chat` ([Bearbeiten und Ideen](../features/orlando-planner.md#editing-a-plan)).
+
+`TripEditFrom` nennt nur noch, was gesendet wird (parks left out, ticket problem, ticket card);
+`trip_edit_opened` ist im Admin als „bis 2.21“ markiert. `pnpm check:planner --orlando` geht den
+Weg durch den Assistenten statt durch „More options“ und prüft Festhalten, Rückgängig und den
+Tauschmodus.

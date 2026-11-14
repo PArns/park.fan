@@ -178,7 +178,8 @@ export function monthOfDate(date: string): TripMonth {
 }
 
 /** The trip-region routes a browser may ask through this site's relay. */
-export type TripRelayRoute = 'calendar' | 'best-days' | 'plan' | 'when' | 'school-breaks';
+export type TripRelayRoute =
+  'calendar' | 'best-days' | 'plan' | 'plan/ideas' | 'when' | 'school-breaks';
 
 /**
  * Where a page asks for one of a region's keyed routes: the same-origin relay

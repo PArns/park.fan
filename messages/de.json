@@ -3553,19 +3553,58 @@
       "undo": "Rückgängig",
       "release": "Alle lösen",
       "swapped": "Getauscht: {first} am {firstDay}, {second} am {secondDay}.",
-      "swappedCost": "Etwa {current} statt {best} Min. Spitzenwartezeit."
+      "swappedCost": "Etwa {current} statt {best} Min. Spitzenwartezeit.",
+      "pin": "Festhalten",
+      "pinLabel": "{park} am {date} festhalten",
+      "swap": "Tauschen",
+      "swapLabel": "{park} am {date} tauschen",
+      "more": "Mehr",
+      "moreLabel": "Mehr zu {park} am {date}",
+      "pinnedNow": "{what} bleibt fest am {date}.",
+      "unpinnedNow": "{what} am {date} ist gelöst; der Plan darf den Tag wieder verschieben.",
+      "moved": "{park} liegt jetzt am {date}.",
+      "freed": "{date} ist jetzt ein freier Tag.",
+      "freedPark": "{count, plural, =0 {{park} hat dann keinen Tag mehr.} =1 {{park} hat dann einen Tag, am {dates}.} other {{park} hat dann # Tage: {dates}.}}",
+      "removed": "{park} ist nicht mehr in der Reise.",
+      "released": "Kein Tag ist mehr festgehalten. Der Plan wählt die Reihenfolge wieder selbst.",
+      "undone": "Die letzte Änderung ist zurückgenommen.",
+      "peakNow": "Spitze an deinen Tagen jetzt etwa {minutes} Min.",
+      "sheet": {
+        "swap": "Mit einem anderen Tag tauschen",
+        "swapHint": "Jeder Tag zeigt vorher, was der Tausch kostet.",
+        "pinHint": "{park} bleibt am {date}, egal was du sonst änderst.",
+        "toSpare": "Auf einen freien Tag legen",
+        "toSpareBetter": "Am {date} etwa {after} statt {before} Min.",
+        "toSpareSame": "Kein freier Tag ist ruhiger; am {date} wären es etwa {after} Min.",
+        "toSpareNoFigure": "Am {date}; für diesen Tag gibt es noch keine Zahl.",
+        "toSpareNone": "Die Reise hat keinen freien Tag dafür.",
+        "free": "Freien Tag daraus machen",
+        "freeHint": "{date} bleibt frei. Wo {park} dann liegt, zeigt der neue Plan.",
+        "remove": "{park} aus der Reise nehmen",
+        "removeHint": "{count, plural, =1 {Der Tag wird frei.} =2 {Beide Tage werden frei.} other {Alle # Tage werden frei.}}",
+        "removeLast": "Der einzige Park der Reise bleibt drin.",
+        "planHint": "Bahnen, Pausen und Shows für diesen Tag."
+      },
+      "swapMode": {
+        "title": "{park} tauschen",
+        "hint": "Wähle einen Tag. Die Zahl ist die Spitze von {park} dort.",
+        "close": "Tauschen beenden",
+        "now": "jetzt",
+        "nowFree": "jetzt frei",
+        "nowRest": "jetzt Ruhetag",
+        "nowPark": "jetzt {park}",
+        "figure": "<strong>{park} {minutes} Min.</strong> ({delta})",
+        "theirs": "{park} dafür am {day}: {minutes} Min. ({delta})",
+        "spareMoves": "Der freie Tag wandert auf {day}.",
+        "restMoves": "Der Ruhetag wandert auf {day}.",
+        "quietest": "am ruhigsten",
+        "closes": "schließt {time}",
+        "same": "schon {park}"
+      }
     },
     "swap": {
-      "hint": "Die Zahl ist die Änderung der Spitzenwartezeit deines Plans im Schnitt; der übrige Plan kann sich mit verschieben.",
       "closed": "{park} ist dann geschlossen",
-      "noFigure": "keine Zahl",
-      "same": "gleiche Spitzenwartezeit",
-      "more": "+{minutes} Min. im Schnitt",
-      "less": "−{minutes} Min. im Schnitt",
-      "short": "{park} an einem kurzen Tag, etwa {hours, plural, =1 {eine Stunde} other {# Stunden}} weniger",
-      "moveThere": "{park} auf diesen Tag, der {date} wird Ruhetag",
-      "takeOver": "{park} auf den {date}, dieser Tag wird Ruhetag",
-      "trade": "Tausch mit {park}"
+      "noFigure": "keine Zahl"
     },
     "keep": {
       "addAll": "In den Tagesplaner übernehmen",
@@ -3990,6 +4029,27 @@
         "stays": "Erst {first}, dann {rest}.",
         "dayPlanner": "Wer mitkommt und wie groß die Kleinsten sind, fragt der Tagesplaner für jeden Parktag."
       }
+    },
+    "ideas": {
+      "label": "Parkys Ideen",
+      "title": "Parky hat {count, plural, =1 {eine Idee} other {# Ideen}} für deinen Plan",
+      "add": "{park} am freien {date}",
+      "move": "{park} am {to} statt am {from}",
+      "swap": "{park} am {to}, {with} dafür am {from}",
+      "travel_day": "{end, select, arrival {Anreisetag als Parktag} departure {Abreisetag als Parktag} other {An- und Abreise als Parktage}}: {park} am {to}",
+      "hopper": "{park} passt mit {hopper} hinein: am {to}",
+      "avoid_party": "{park} am {to} statt in der Party-Nacht am {from}",
+      "figure": "etwa {after} Min.",
+      "figureMoved": "etwa {after} statt {before} Min.",
+      "apply": {
+        "add": "Dazunehmen",
+        "swap": "Tauschen",
+        "plan": "So planen"
+      },
+      "chat": "Im Chat",
+      "ask": "Was hältst du von dieser Idee für meinen Plan: {idea}?",
+      "applied": "Im Plan: {idea}.",
+      "inPlan": "In den Plan"
     }
   },
   "tripRegions": {

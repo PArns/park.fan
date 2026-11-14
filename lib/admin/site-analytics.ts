@@ -680,7 +680,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_opened: {
     label: 'Parky geöffnet',
-    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite oder neu nach einem Sprachwechsel durch Parky.',
+    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite, neu nach einem Sprachwechsel durch Parky, den Interview-Knopf eines Planers oder „Im Chat“ an einer Idee für den Reiseplan.',
   },
   assistant_line_shown: {
     label: 'Parky-Spruch angezeigt',
@@ -700,7 +700,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_question: {
     label: 'Frage an Parky',
-    when: 'Eine Frage wird abgeschickt; ob Vorschlag, getippt, Antwortvorschlag (mit Platz) oder Interview-Knopf, ob die erste des Chats, nie ihr Text.',
+    when: 'Eine Frage wird abgeschickt; ob Vorschlag, getippt, Antwortvorschlag (mit Platz), Interview-Knopf oder eine Idee für den Reiseplan, ob die erste des Chats, nie ihr Text.',
   },
   assistant_answer: {
     label: 'Antwort von Parky',
@@ -890,8 +890,8 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), „Ja, schon gekauft“ im Assistenten (wizard), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
   },
   trip_edit_opened: {
-    label: 'Änderung geöffnet',
-    when: 'Daten, Parks, Route oder Mehr Optionen geöffnet: von den Knöpfen unter dem Plan, aus dem Setup, bei nicht passenden Parks oder einem Ticketproblem.',
+    label: 'Änderung geöffnet (bis 2.21)',
+    when: 'Nicht mehr gesendet: Daten, Parks, Route oder Mehr Optionen aus dem Setup bis 2.21. Seit dem Assistenten zählt trip_wizard_step mit via answers.',
   },
   trip_option_changed: {
     label: 'Option geändert',
@@ -980,6 +980,34 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_day_pinned: { label: 'Reisetag festgesteckt', when: 'Ein Tag festgesteckt oder gelöst.' },
   trip_day_swapped: { label: 'Reisetage getauscht', when: 'Zwei Tage getauscht.' },
+  trip_day_moved: {
+    label: 'Parktag auf freien Tag gelegt',
+    when: '„Auf einen freien Tag legen“ unter „Mehr“ an einer Tageskarte.',
+  },
+  trip_day_freed: {
+    label: 'Parktag frei gemacht',
+    when: '„Freien Tag daraus machen“ unter „Mehr“ an einer Tageskarte.',
+  },
+  trip_park_removed: {
+    label: 'Park aus der Reise genommen',
+    when: '„… aus der Reise nehmen“ unter „Mehr“ an einer Tageskarte.',
+  },
+  trip_undo: {
+    label: 'Änderung zurückgenommen',
+    when: '„Rückgängig“ im Statusband über dem Plan oder an Parkys Karte im Chat; mit der Art der Änderung (Pin, Tausch, Verschieben, freier Tag, Park entfernt, Park dazu, alle gelöst, Idee).',
+  },
+  trip_idea_shown: {
+    label: 'Parkys Idee gezeigt',
+    when: 'Eine Idee von Parky auf dem Schirm, einmal je Idee und Ort: über dem Plan (header), unter ihrem Tag (day) oder im Chat; mit der Art der Idee.',
+  },
+  trip_idea_applied: {
+    label: 'Parkys Idee übernommen',
+    when: 'Der Knopf einer Idee (Dazunehmen, Tauschen, So planen); mit Art und Ort.',
+  },
+  trip_idea_chat: {
+    label: 'Parkys Idee im Chat',
+    when: '„Im Chat“ an einer Idee: Parkys Chat öffnet sich mit einer Frage zu ihr; mit der Art der Idee.',
+  },
   trip_spare_filled: {
     label: 'Freien Tag gefüllt',
     when: '„Dazu“ an einem freien Tag: ein Park auf diesen Tag gelegt; mit dem Ort (Karte, Woche, Idee, Chat).',
@@ -1245,6 +1273,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     page: 'Parkys Seite',
     hero: 'Parky auf der Startseite',
     language: 'Sprachwechsel durch Parky',
+    idea: 'Idee für den Reiseplan',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
   lever: {

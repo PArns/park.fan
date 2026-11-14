@@ -58,6 +58,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
 
+### [`assistant-trip-idea.tsx`](../../components/assistant/assistant-trip-idea.tsx)
+
+- `AssistantTripIdeaCard` _component_: The trip plan idea the visitor asked Parky about, under his answer: the idea in one line, what it does in minutes, and its button, which applies it to the planner on screen through the planner's bridge, as the strip over the plan does.
+
 ### [`parky-day-interview-button.tsx`](../../components/assistant/parky-day-interview-button.tsx)
 
 - `ParkyDayInterviewButton` _component_: The day planner's „Plane mit Parky deinen perfekten Parktag" (`planner.parky`), for its day.
