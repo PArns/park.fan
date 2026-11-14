@@ -411,10 +411,9 @@
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
       "ring": "bester Park im Resort",
+      "quietest": "ruhigster Tag der Woche in diesem Park",
       "early": "schließt früher für Tagesgäste",
-      "closed": "geschlossen",
       "howTo": "So liest du den Kalender",
-      "noHours": "Punkt oder leer: noch keine Öffnungszeiten",
       "colour": "Farbe: der Tag im Vergleich zu einem normalen Tag dieses Parks"
     },
     "calendar": {
@@ -427,10 +426,15 @@
       "filterAll": "Alle Parks",
       "listLabel": "Bester Park je Resort, Tag für Tag",
       "more": "+{count} weitere",
-      "showAll": "Alle Tage zeigen",
-      "showWeek": "Nur die ersten 7 Tage zeigen",
-      "loading": "Die übrigen Tage werden geladen …",
-      "failed": "Die übrigen Tage konnten nicht geladen werden.",
+      "weekNav": "Woche wählen",
+      "weekPrev": "Vorherige Woche",
+      "weekNext": "Nächste Woche",
+      "weekNextDates": "Nächste Woche: {dates}",
+      "pickRow": "Bester Park",
+      "pickRowGroup": "Bester Park: {group}",
+      "holidayRow": "Ferien & Feiertage",
+      "quietest": "ruhigster Tag dieser Woche",
+      "hoursLater": "Zeiten folgen",
       "openDay": "{date}: alle Parks zeigen",
       "today": "Heute",
       "outlook": "Vorschau",
@@ -1411,7 +1415,7 @@
       "difference": "Unterschied: {value}",
       "reasonCrowd": "Andrang",
       "reasonWait": "Wartezeit an den Headlinern",
-      "reasonHours": "Öffnungsdauer",
+      "reasonHours": "Öffnungszeiten",
       "reasonWeather": "Niederschlag",
       "reasonHoliday": "Feiertage und Ferien",
       "reasonPrice": "Tagesticket",
@@ -3756,33 +3760,36 @@
         "yours": "Deine Tickets",
         "toBuy": "Zu kaufen"
       },
-      "details": "Details zu den Tickets",
+      "howValid": "Wie das Ticket gilt",
+      "alternative": "Alternative",
       "suggest": {
-        "part": "{days, plural, =1 {1 Tag} other {# Tage}} {resort} ab {date}",
-        "partExtra": "{parkDays, plural, =1 {1 Tag} other {# Tage}} {resort} ab {date} mit einem Ticket für {days} Tage",
         "then": ", dann ",
-        "shape": "{name}, gültig von {from} bis {to}",
-        "dated": "Ticket für {days, plural, =1 {1 Tag} other {# Tage}}",
+        "dated": "{days, plural, =1 {Tagesticket} other {#-Tage-Ticket}}",
         "extraDays": "Ein Ticket für {parkDays} Tage würde vor deinem letzten {resort}-Tag enden, deshalb hat dieses {days} Tage.",
         "window": "Ein {resort}-Ticket für {days} Tage gilt an {days} beliebigen der {window} Tage ab dem ersten Tag.",
         "second": "{resort}, zweites Ticket",
         "notCovered": "Dein {name} deckt {parks} nicht ab.",
         "promotion": "Auch das {name} passt zu diesen Tagen.",
-        "group": "{resort}: {count} × {days, plural, =1 {Tagesticket} other {Ticket für # Tage}}, {dates}",
-        "groupSep": "; "
+        "group": "{resort}: {count} × {days, plural, =1 {Tagesticket} other {Ticket für # Tage}}",
+        "groupSep": "; ",
+        "count": "{count} × {name}",
+        "valid": "Gültig {range}",
+        "inWindow": "{used} von {window} Tagen",
+        "eachOnItsDay": "{count, plural, =1 {Gilt nur an seinem Datum.} other {Jedes gilt nur an seinem Datum.}}"
       },
       "hopper": {
-        "worth": "Empfohlen: {hopper}",
+        "worth": "{hopper} lohnt sich",
         "adds": "Mit {hopper}:",
-        "nothing": "An diesen Tagen bringt {hopper} nichts dazu.",
-        "evening": "ein Abend: {park}, {date}",
-        "evenings": "{count} Abende in einem zweiten Park",
+        "nothing": "{hopper} bringt hier nichts",
+        "eveningsAt": "{park} an {count, plural, =1 {einem Abend} other {# Abenden}}",
+        "eveningsOn": "{park} abends am {dates}",
+        "eveningMark": "abends mit {hopper}:",
         "hopDay": "{parks} an einem Tag, {date}",
         "hopDays": "{count} Tage mit zwei Parks",
         "fits": "{parks} {count, plural, =1 {passt} other {passen}} nur damit hinein",
         "minutes": "etwa {minutes} Min. weniger pro Fahrt",
-        "with": "Plan mit {hopper} zeigen",
-        "without": "Plan ohne {hopper} zeigen"
+        "with": "Mit {hopper} planen",
+        "without": "Ohne {hopper} planen"
       },
       "newTab": "(öffnet in einem neuen Tab)",
       "adopt": "Als deine Tickets übernehmen",
@@ -3848,6 +3855,7 @@
         "title": "Preise und Tickets",
         "official": "{seller} (offizieller Shop)",
         "store": "{seller} · {country} ({currency})",
+        "storeOnly": "{country} ({currency})",
         "compare": "Die Preise unterscheiden sich je nach Land des Shops. Vergleich sie alle, bevor du kaufst."
       },
       "market": {
@@ -3901,7 +3909,8 @@
       "fewer": "{city}: eine Nacht weniger",
       "more": "{city}: eine Nacht mehr",
       "add": "Stadt hinzufügen",
-      "total": "{nights, plural, =1 {1 Nacht} other {# Nächte}} in {cities, plural, =1 {1 Stadt} other {# Städten}}, {moves, plural, =0 {kein Hotelwechsel} =1 {1 Hotelwechsel} other {# Hotelwechsel}}"
+      "total": "{nights, plural, =1 {1 Nacht} other {# Nächte}} in {cities, plural, =1 {1 Stadt} other {# Städten}}, {moves, plural, =0 {kein Hotelwechsel} =1 {1 Hotelwechsel} other {# Hotelwechsel}}",
+      "stayShort": "{city} {count, plural, =1 {1 Nacht} other {# Nächte}}"
     },
     "parky": {
       "button": "Plane mit Parky deine perfekte Reise",
@@ -4419,9 +4428,9 @@
           },
           "hogwarts": "Für den Hogwarts Express zwischen Universal Studios und Islands of Adventure brauchst du Park-to-Park.",
           "longStay": {
-            "line": "UK-Shops verkaufen 14-Tage-Tickets für Disney und Universal, auch als Combo Ticket.",
-            "plan": "Damit planen",
-            "detail": "Die 14-Tage-Tickets in den UK-Shops der Betreiber:"
+            "title": "14-Tage-Tickets aus UK-Shops",
+            "line": "Je eins für Disney und Universal, auch zusammen als Combo Ticket.",
+            "plan": "Damit planen"
           },
           "mixing": {
             "used": "Wo beide Tickets gelten, mischt der Plan Disney- und Universal-Tage: etwa {minutes} Min. weniger pro Fahrt als getrennt.",

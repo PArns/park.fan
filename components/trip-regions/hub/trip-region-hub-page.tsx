@@ -16,7 +16,6 @@ import { versionedSrc } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import {
   dayBasis,
-  firstDays,
   formatHubDate,
   formatHubMonth,
   glanceDay,
@@ -108,7 +107,7 @@ export interface TripRegionHubPageProps {
  * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
  * address bar or remembered in this browser, chapter 01 is the plan, the head's buttons lead to it
  * and the calendar and the resorts fold into a line each. A block without the region's words draws
- * nothing. Every sentence and the first week are in the served HTML.
+ * nothing. Every sentence and every day of the window are in the served HTML.
  */
 export async function TripRegionHubPage({
   locale,
@@ -131,7 +130,7 @@ export async function TripRegionHubPage({
 
   const summaries = calendar ? resortMonthSummaries(region, calendar, bestDays) : [];
   const firstFrom = calendar?.days.find((d) => d.date >= todayIso)?.date ?? todayIso;
-  const week = calendar ? firstDays(calendar, firstFrom) : [];
+  const windowDays = calendar?.days.filter((d) => d.date >= firstFrom) ?? [];
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];
   const lastYear = !!calendar && lastYearDays.length > calendar.days.length / 2;
   const lastYearFrom = calendar
@@ -277,16 +276,12 @@ export async function TripRegionHubPage({
                   })}
                 </p>
               )}
-              {calendar && week.length > 0 ? (
+              {calendar && windowDays.length > 0 ? (
                 <HubCalendar
                   region={slimRegion(region)}
-                  // A month page serves its whole month, the table that URL exists for; the hub its
-                  // first week, the rest through the relay.
-                  initial={sliceCalendar(
-                    calendar,
-                    month ? calendar.days.filter((d) => d.date >= firstFrom) : week
-                  )}
-                  window={{ from: firstFrom, to: calendar.meta.to }}
+                  // The whole window from today, the hub's 30 days or the month: a week shows at a
+                  // time, and the others stay in the served HTML for a reader without script.
+                  calendar={sliceCalendar(calendar, windowDays)}
                   todayIso={todayIso}
                   locale={locale}
                   legend={<HubLegend />}

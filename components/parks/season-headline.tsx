@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import { Ticket } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Badge } from '@/components/ui/badge';
@@ -26,12 +27,16 @@ type SeasonWords = Pick<ParkSeason, 'kind' | 'name' | 'status'>;
  */
 export function useSeasonLabel(): (season: SeasonWords, withStatus?: boolean) => string {
   const t = useTranslations('parks.seasons');
-  return (season, withStatus = false) => {
-    const name = season.name?.trim() || t(`kind.${knownSeasonKind(season.kind)}`);
-    return withStatus && season.status !== 'confirmed'
-      ? `${name} (${t(`status.${season.status}`)})`
-      : name;
-  };
+  // One function per language, so a list that memoises its labels keeps them.
+  return useCallback(
+    (season, withStatus = false) => {
+      const name = season.name?.trim() || t(`kind.${knownSeasonKind(season.kind)}`);
+      return withStatus && season.status !== 'confirmed'
+        ? `${name} (${t(`status.${season.status}`)})`
+        : name;
+    },
+    [t]
+  );
 }
 
 /**

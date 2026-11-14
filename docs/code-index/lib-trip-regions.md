@@ -70,6 +70,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
 
+- `hubWeeks` _function_: The window in pages of seven days from its first day (the region's today on the hub), so the first page is the week ahead, „Sa., 14. – Fr., 20. Nov.", and not a calendar week half over.
+- `hubWeekFragment` _function_: The fragment that names a page by its first date, `calendar-2026-11-21`.
+- `hubWeekFromFragment` _function_: The page a fragment names: the one that holds its date, so a link shared a day later, when the pages start a day later, still shows that date. `null` for another fragment or a date outside the window.
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
 - `withGroupNames` _function_: The region with its day-trip group named in the reader's language: the API names it in English, while a resort's name is the operator's own and stays as it is.
 - `regionResorts` _function_: The resorts alone: the groups a day's shortest line is named for.
@@ -81,16 +84,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `isRankable` _function_: Whether a park can be ranked on a day: not closed, with a figure.
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
+- `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie to the longer day for the day guest.
+- `dayPick` _function_: The park a day's column names above the tiles: with one group shown, that group's first park (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first answer names (`glanceLines`), by `headlinerWait`, a tie …
 - `resortHasChoice` _function_: Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
-- `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
 - `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
+- `quietSeasons` _function_: The seasons a tile draws quietly, bare and faded: one that runs on more than half of the window's days, where an icon on every tile would drown the crowd colours, or one only `expected`.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
@@ -107,11 +112,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it.
 - `slimRegion` _function_: The region as the hub's client part needs it: the parks, groups and hotel areas, and only the legs from a hotel area to a park, which the day sheet's travel line reads.
-- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `formatParkDayRange` with short months.
+- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `formatParkDayRange` with short months; `weekday` names the two days too ("Sa., 14. – Fr., 20. Nov.").
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
-- `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
-- Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`
+- `HUB_WEEK_DAYS` _const_: How many days a page of the hub's calendar shows.
+- Types: `HubWeek`, `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`
 
 ### [`hub-facts.ts`](../../lib/trip-regions/hub-facts.ts)
 
@@ -331,22 +336,27 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `hopperTicketResorts` _function_: The resorts the visitor's owned tickets cover with a hopper (`.h`, or a product that always hops), for the "Park hopping" option, which only these and plan first's hopper make count.
 - `ticketsCoverBothResorts` _function_: Whether owned tickets cover both of the region's `blockResorts` (Disney and Universal), so the two may mix inside the windows.
 - `hopperOn` _function_: Whether a plan-first resort is planned with its hopper: all are with `ticket=hopper`, else `hopper=` names it.
-- `toggleHopper` _function_: "Show the plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
+- `toggleHopper` _function_: "Plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
 - `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
 - `suggestionGroups` _function_: The suggestions grouped by resort, product and length, each group where its first ticket starts: six day tickets at Tokyo Disney Resort are one group of six.
 - `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.
-- `longStayTickets` _function_: "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
+- `longStayTickets` _function_: "Plan with these" in the long stay's alternative: the region's 14-day tickets (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
 - `hopperGains` _function_: What the hopper adds, from the fields the API sends: each evening at a second park and each day with two parks by date (more than two by count), the parks that fit only with it, and the minutes per ride. Empty when it adds nothing.
+- `hopperHighlights` _function_: `hopperGains` for one line: the evenings grouped by the second park, each with its dates, however many, first evening first; the rest as the gains list them. Empty when it adds nothing.
+- `ticketWindowDays` _function_: A ticket's window day by day, for the bar that shows which of its days the plan uses: every date from `from` to `to`, both included, at most `MAX_TRIP_DAYS` of them.
 - `needsConnectedHop` _function_: Whether a set of planned parks holds both of the region's `connectedParks` (Universal Studios and Islands of Adventure, with the Hogwarts Express between them), a ride only a hopper takes.
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
 - `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
 - `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
 - `visitorCountry` _function_: The visitor's country from the browser's languages: the region of the first one, upper case (`en-IE` → `IE`), `null` without one.
 - `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
+- `ticketLinksOf` _function_: A product's purchase links in the admin's order; without `links` (an older answer) the official `shopUrl` alone, under `officialSeller`.
+- `isVisitorStore` _function_: Whether a link goes to the seller's store for the visitor's own country.
 - `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: the store of the visitor's own country first, then those for their locale or market, the rest after, each group in the admin's order, which is the display order.
+- `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone.
 - `ticketStoreName` _function_: A country store as its link names it in the visitor's language: the country's short name and the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketLinkGroup`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 
@@ -581,7 +591,8 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `areaWays` _function_: The ways from a hotel area to the trip's parks, from the region's `travel.legs` (`hotel:<area>`), nearest first. A park without a leg from the area is left out.
 - `mapParks` _function_: The parks a city's map shows: those of `parks` that one of its `areas` reaches within `MAP_PARK_MINUTES`. A day trip (Fuji-Q from Tokyo) stays off, so the map keeps the city's scale; its card still names the way.
 - `homeBases` _function_: The cities a trip will most likely sleep in before its plan has answered: for each of `parks` the base that reaches it soonest (`bases[].parks`), in the region's order.
-- `layoutSchematicMap` _function_: A city's hotel areas and parks on a schematic map, no tiles, sized to the places themselves.
+- `mapBoxSize` _function_: The box the area map is reserved and drawn in, from the places it shows: as tall as their bounding box asks at the full width (longitude by the cosine of the middle latitude, north up, `pad` at the edges), within `minHeight` and …
+- `declutterMap` _function_: The markers of the area map kept apart and their labels placed, in the pixels the map projected them to.
 - `travelDayFact` _function_: The fact the Tempo step puts on the card of a park on a travel day, from the calendar's day: on the arrival the park among `parks` open that day that closes last (a late landing still has an evening there), on the departure the one that …
 - `AUTO_REST_STREAK` _const_: The park days in a row the API's automatic rest rule allows, the number `tripPlanner.options.restAutoHint` says in words.
 - `DEFAULT_REST_STREAK` _const_: The streak the own limit starts on when the visitor picks it.
@@ -589,7 +600,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `AREA_CHIPS_MAX` _const_: A city with at most this many hotel areas offers them as chips; with more, each is a card with its ways and the city gets the schematic map (Tokyo's six, Orlando's five, Osaka's four as chips).
 - `MAX_AREA_WAYS` _const_: An area card lists one way per park up to this many; past it, one per resort.
 - `MAP_PARK_MINUTES` _const_: A park joins a city's map when one of its hotel areas reaches it in at most this many minutes.
-- Types: `HotelEarlyAccess`, `AreaWay`, `MapPlace`, `MapPoint`, `MapLabel`, `MapFrame`, `MapLayout`, `TravelDayFact`
+- Types: `HotelEarlyAccess`, `AreaWay`, `MapPlace`, `MapMarker`, `MapPoint`, `MapLabel`, `MapFrame`, `TravelDayFact`
 
 ### [`wizard-steps.ts`](../../lib/trip-regions/wizard-steps.ts)
 

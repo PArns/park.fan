@@ -411,10 +411,9 @@
     "legend": {
       "minutes": "Attesa di picco alle grandi attrazioni, in minuti",
       "ring": "miglior parco del resort",
+      "quietest": "giorno più tranquillo della settimana in quel parco",
       "early": "chiude prima per i visitatori giornalieri",
-      "closed": "chiuso",
       "howTo": "Come leggerlo",
-      "noHours": "Punto o vuoto: orari non ancora noti",
       "colour": "Colore: il giorno rispetto a un giorno normale di quel parco"
     },
     "calendar": {
@@ -427,10 +426,15 @@
       "filterAll": "Tutti i parchi",
       "listLabel": "Miglior parco per resort, giorno per giorno",
       "more": "+{count} altri",
-      "showAll": "Mostra tutti i giorni",
-      "showWeek": "Mostra i primi 7 giorni",
-      "loading": "Caricamento degli altri giorni …",
-      "failed": "Non è stato possibile caricare gli altri giorni.",
+      "weekNav": "Scegli la settimana",
+      "weekPrev": "Settimana precedente",
+      "weekNext": "Settimana successiva",
+      "weekNextDates": "Settimana successiva: {dates}",
+      "pickRow": "Parco migliore",
+      "pickRowGroup": "Parco migliore: {group}",
+      "holidayRow": "Vacanze e festività",
+      "quietest": "giorno più tranquillo della settimana",
+      "hoursLater": "Orari in arrivo",
       "openDay": "{date}: mostra tutti i parchi",
       "today": "Oggi",
       "outlook": "tendenza",
@@ -1411,7 +1415,7 @@
       "difference": "Differenza: {value}",
       "reasonCrowd": "Affluenza",
       "reasonWait": "Attesa alle attrazioni principali",
-      "reasonHours": "Durata di apertura",
+      "reasonHours": "Orari di apertura",
       "reasonWeather": "Precipitazioni",
       "reasonHoliday": "Festivi e vacanze",
       "reasonPrice": "Biglietto giornaliero",
@@ -3756,33 +3760,36 @@
         "yours": "I tuoi biglietti",
         "toBuy": "Da comprare"
       },
-      "details": "Dettagli dei biglietti",
+      "howValid": "Come funziona il biglietto",
+      "alternative": "Alternativa",
       "suggest": {
-        "part": "{days, plural, =1 {1 giorno} other {# giorni}} {resort} dal {date}",
-        "partExtra": "{parkDays, plural, =1 {1 giorno} other {# giorni}} {resort} dal {date} con un biglietto da {days} giorni",
         "then": ", poi ",
-        "shape": "{name}, valido dal {from} al {to}",
         "dated": "Biglietto da {days, plural, =1 {1 giorno} other {# giorni}}",
         "extraDays": "Un biglietto da {parkDays} giorni finirebbe prima del tuo ultimo giorno {resort}, perciò questo ne ha {days}.",
         "window": "Un biglietto {resort} da {days} giorni vale {days} giorni a scelta fra i {window} dal primo.",
         "second": "{resort}, secondo biglietto",
         "notCovered": "Il tuo {name} non copre {parks}.",
         "promotion": "Anche il {name} va bene per questi giorni.",
-        "group": "{resort}: {count} × {days, plural, =1 {biglietto di 1 giorno} other {biglietto di # giorni}}, {dates}",
-        "groupSep": "; "
+        "group": "{resort}: {count} × {days, plural, =1 {biglietto di 1 giorno} other {biglietto di # giorni}}",
+        "groupSep": "; ",
+        "count": "{count} × {name}",
+        "valid": "Valido {range}",
+        "inWindow": "{used} di {window} giorni",
+        "eachOnItsDay": "{count, plural, =1 {Vale solo nella sua data.} other {Ognuno vale solo nella sua data.}}"
       },
       "hopper": {
-        "worth": "Consigliato: {hopper}",
+        "worth": "{hopper} conviene",
         "adds": "Con {hopper}:",
-        "nothing": "Questi giorni non guadagnano nulla con {hopper}.",
-        "evening": "una serata a {park} il {date}",
-        "evenings": "{count} serate in un secondo parco",
+        "nothing": "{hopper} qui non aggiunge nulla",
+        "eveningsAt": "{count, plural, =1 {una serata} other {# serate}} a {park}",
+        "eveningsOn": "{count, plural, =1 {una serata} other {serate}} a {park} il {dates}",
+        "eveningMark": "la sera con {hopper}:",
         "hopDay": "{parks} nello stesso giorno, {date}",
         "hopDays": "{count} giorni con due parchi",
         "fits": "{parks} {count, plural, =1 {entra} other {entrano}} solo con esso",
         "minutes": "circa {minutes} min in meno per attrazione",
-        "with": "Mostra il piano con {hopper}",
-        "without": "Mostra il piano senza {hopper}"
+        "with": "Pianifica con {hopper}",
+        "without": "Pianifica senza {hopper}"
       },
       "newTab": "(si apre in una nuova scheda)",
       "adopt": "Usali come tuoi biglietti",
@@ -3848,6 +3855,7 @@
         "title": "Prezzi e biglietti",
         "official": "{seller} (negozio ufficiale)",
         "store": "{seller} · {country} ({currency})",
+        "storeOnly": "{country} ({currency})",
         "compare": "I prezzi cambiano in base al paese del negozio. Confrontali tutti prima di comprare."
       },
       "market": {
@@ -3901,7 +3909,8 @@
       "fewer": "{city}: una notte in meno",
       "more": "{city}: una notte in più",
       "add": "Aggiungi una città",
-      "total": "{nights, plural, =1 {1 notte} other {# notti}} in {cities, plural, =1 {1 città} other {# città}}, {moves, plural, =0 {nessun cambio d’hotel} =1 {1 cambio d’hotel} other {# cambi d’hotel}}"
+      "total": "{nights, plural, =1 {1 notte} other {# notti}} in {cities, plural, =1 {1 città} other {# città}}, {moves, plural, =0 {nessun cambio d’hotel} =1 {1 cambio d’hotel} other {# cambi d’hotel}}",
+      "stayShort": "{city} {count, plural, =1 {1 notte} other {# notti}}"
     },
     "parky": {
       "button": "Pianifica con Parky il tuo viaggio perfetto",
@@ -4419,9 +4428,9 @@
           },
           "hogwarts": "Per l’Hogwarts Express fra Universal Studios e Islands of Adventure serve il park-to-park.",
           "longStay": {
-            "line": "I negozi britannici vendono biglietti da 14 giorni per Disney e Universal, anche come Combo Ticket.",
-            "plan": "Pianifica con questi",
-            "detail": "I biglietti da 14 giorni nei negozi britannici dei parchi:"
+            "title": "Biglietti da 14 giorni dai negozi britannici",
+            "line": "Uno per Disney e uno per Universal, anche insieme come Combo Ticket.",
+            "plan": "Pianifica con questi"
           },
           "mixing": {
             "used": "Dove valgono entrambi i biglietti, il piano mescola giorni Disney e Universal: circa {minutes} min in meno per attrazione che tenendoli separati.",

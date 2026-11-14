@@ -45,10 +45,10 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   averaged over the park's big rides. What a day prints is `shownWait`: within 60 days the park
   calendar's own forecast (`forecastWait`), so the hub and the park page never show two numbers
   for one day; past them `headlinerWait`, last year's measured day. Every ranking stays on the
-  API's `headlinerWait` (the forecast times its lead factor within 60 days, PAR-1319). A square,
-  the first answer, the day sheet and the questions all print `shownWait`; the colour is the park's
-  day against its own normal day, the crowd level and nothing else, and the key says so in one
-  line. There is no hourly curve on the hub.
+  API's `headlinerWait` (the forecast times its lead factor within 60 days, PAR-1319). A tile,
+  the first answer, the day sheet and the questions all print `shownWait`; the colour and the word
+  under it are the park's day against its own normal day, the crowd level and nothing else, and the
+  key says so in one line. There is no hourly curve on the hub.
 - **The pick is the API's.** `best` per resort is picked on an hours-weighted cost, so a park that
   closes early for day guests loses to a full day with a similar wait: Animal Kingdom at 45 min,
   open to 19:00, ranks above Magic Kingdom at 40 min on a party night. When `bestWhy` says
@@ -57,26 +57,28 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   Kingdom, where day guests must leave at 6 pm" (`earlyCloseBehind`). The phone list's top chip and
   the day sheet's first row follow `best` too (`rankGroupParks`).
 - **An early close is never silent.** `closesEarly` (or a ticketed evening) draws the folded corner
-  on a square, puts "closes 6 pm" in its accessible name, and the best-days chips carry the close
-  time.
+  on a tile and its closing time in bold, puts "closes 6 pm" in its accessible name, and the
+  best-days chips carry the close time.
 - **A figure without published hours counts.** Past a park's published schedule a day is `UNKNOWN`
   but carries the forecast or last year's figure. It is ranked (`isRankable`: not closed, has a
-  figure), drawn with a small dot (`NO_HOURS_DOT`), and the sheet says "No hours published yet; the
-  figure is the forecast, hours are not counted". Only a closed day or one without a figure is
-  empty, so the month pages past Disney's and Universal's schedules keep their content.
+  figure), its tile says „Zeiten folgen" where the hours would stand, and the sheet says "No hours
+  published yet; the figure is the forecast, hours are not counted". Only a closed day or one
+  without a figure has no wait, so the month pages past Disney's and Universal's schedules keep
+  their content.
 - **A resort's busiest days** are the highest mean over its parks with a figure, never the
   hours-weighted pick, so a day most of its parks call quiet is never one of its busiest.
 - **School holidays are US ones, and say so.** Lanes, reasons and the best-time pages name "US
   school holidays"; break names go through `translateHolidayName(cleanBreakName(…))`.
 - **Past 60 days, last year, said once.** Every ranking reads last year's measured day past 60
-  days, so on a month that far out nearly every day is `last_year`. The squares look like the
+  days, so on a month that far out nearly every day is `last_year`. The tiles look like the
   rest; one line above the calendar says „Ab dem 13. Jan.: Werte aus dem Vorjahr …“ from the first
   such day (`tripHub.lastYearFrom`), and the day sheet says it for its day. `long_range` (nothing
-  measured a year back) keeps its "outlook" label. A last-year day is never offered as a pick.
+  measured a year back) keeps its "outlook" label. A last-year day is never offered as a pick: no
+  ring, no star, no best park above it.
 - **The storm season** (Orlando's hurricanes, Japan's typhoons) is on the timeline itself, where a
-  date is picked: a bar under each date of the matrix and under each date of the phone list, by the
-  planner's own `stormCodeOn` from the region's `weather.storm`, and its name in the matrix's first
-  column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
+  date is picked: a bar under each date of the week grid and under each date of the phone list, by
+  the planner's own `stormCodeOn` from the region's `weather.storm`, and its name in the grid's
+  first column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
   season, solid for its peak, in `tripPlanner.climate`'s words, and in the date's accessible name.
   Never a crowd tint, and no longer a lane under the calendar, where nobody looking for a date saw it.
 
@@ -86,7 +88,7 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 | ----- | --------------------------- | ------------------------------------------------------------------------------------------ |
 | 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks |
 | 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead      |
-| 1     | the overview                | the matrix or the day list, minutes only; three marks and the colour line; lanes closed    |
+| 1     | the overview                | a week: tiles with wait, level, hours, season icons; the ring, the star; lanes closed      |
 | 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides           |
 | 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date               |
 
@@ -140,27 +142,58 @@ Each chapter opens with its heading and then the thing itself.
    [orlando-planner](orlando-planner.md)'s; the screenshots are the media database's
    (`public/media/reiseplaner/`), with their alt texts and focus in the sidecars.
 2. **02 Die nächsten 30 Tage** (`HubCalendar`, client; on a month page „Tag für Tag im <month>“),
-   with one line under the title: where the plan gets its days from. The
-   key comes first (`HubLegend`, handed in as `legend`): the peak wait, the ring and the hatching,
-   and one line for the colour; under „So liest du den Kalender“ the early close, „Punkt oder leer:
-   noch keine Öffnungszeiten“ and last year. A phone gets the resort filter as one row that scrolls
-   sideways, then a list of days, per resort the top park and "+n more"; from `lg` a
-   `<table role="grid">` with a caption, `scope`d headers, one tab stop and arrow keys. On the hub
-   both are server-rendered for the first seven days and the rest of the window loads through the
-   relay; a month page server-renders its whole month. Rows never change with the data, so the box
-   is the rendered one. The resort filter is urgent, the grid follows through `useDeferredValue`.
-   The events sit under it as one closed `<details>` row. A tap opens `HubDaySheet` (bottom sheet
-   on a phone, side panel on a desktop); it holds a history entry of its own, so a phone's Back
-   closes it. Under the calendar: the forecast's date and the travel times' credit; on the hub the
-   accuracy line (`HubAccuracy`, PAR-1316): „Unsere Prognose der Spitzenwartezeit, eine Woche im
-   Voraus, lag in den letzten 30 Tagen im Schnitt 16 Min. daneben.“, the lead and the days from the
-   open `GET /v1/trip-regions/:region/accuracy`, the minutes rounded. The route starts that read
-   before the others, bounded to 1.5 s (`withSeedTimeout`), and the line awaits it in its own
-   `<Suspense>`, so a slow answer never holds the calendar; `forecastAccuracy: null` (too few
-   measured days) or a failed read draws nothing. Its link opens the accuracy question in chapter 05
-   (`FaqLink`, `TRIP_ACCURACY_ID`). Then the month index (`HubMonthIndex`, a labelled `<nav>` with
-   the park calendar's chips, all twelve months). With a plan the body folds into „Kalender für alle
-   16 Parks, Tag für Tag“ (`HubPlanFold`).
+   with one line under the title: where the plan gets its days from. The key comes first
+   (`HubLegend`, handed in as `legend`): the peak wait, the ring, the star and one line for the
+   colour; under „So liest du den Kalender“ the early close. Then a week at a time, because a wall
+   of thirty similar numbers decided nothing:
+   - **The week.** Seven days from the window's first (the region's today on the hub), so the first
+     week is the one ahead („Sa., 14. – Fr., 20. Nov.“); the last week holds what is left and keeps
+     the columns' width (`hubWeeks`). ‹ and › page, from `sm` a chip per week jumps; the arrow keys
+     page from any of them, Home and End go to the ends. A week past the first is named in the
+     fragment (`#calendar-2026-11-28`, `hubWeekFragment`), so a reload or a shared link shows it,
+     and a shared link lands on the chapter; the date finds its week even a day later, when the
+     weeks start a day later (`hubWeekFromFragment`). „Nächste Woche: 21.–27. Nov.“ under the grid
+     pages on and goes back up to the week's first day.
+   - **Every day is in the served HTML.** The hub hands the whole window to the client (no relay
+     request); each column and each list day carries its week's class (`HUB_WEEK_CELL`,
+     `HUB_WEEK_ITEM`) and one `data-week` shows seven, so a crawler and a reader without script
+     have all 30 days, paging changes one attribute, and the rows are memoised past it.
+   - **The tile is the crowd calendar's** (`CalendarDayTile`, `density="compact"`, the park
+     calendar's `ParkCalendarDay` draws the same component at full size): tinted by the park's
+     level, the wait (`shownWait`), the level in words (none for a figure without a level, never
+     „Keine Prognose“ beside a forecast), the day guest's hours with an early close in bold under
+     the folded corner, „Zeiten folgen“ without published hours, the season icons (quiet for a
+     season most of the window runs in, `quietSeasons`), „Geschlossen“. On it the ring (the
+     resort's pick, `bestAtResort`) and the star: the park's quietest day of the week
+     (`quietestDay`, lowest `headlinerWait`, a tie to the longer day; none on a tie, on a
+     last-year day, or where it would sit on a higher printed figure).
+   - **From `lg`** a `<table role="grid">` with a caption naming the week, `scope`d headers, one tab
+     stop and arrow keys within the week: parks by resort down the side, seven tiles across. Above
+     the tiles each date (a button to the day), the storm bar, „Bester Park“ (`dayPick`: the
+     shortest line among the picks the first answer names, by `headlinerWait`; with a resort chosen
+     that resort's pick) and „Ferien & Feiertage“ with the signal dot of a public holiday or a
+     school break; each of the two rows only where a day of the window fills it, so a week never
+     adds one. A park whose whole window says one thing (Saisonpause, no hours yet, open without a
+     forecast, `parkState`) is one line instead of seven tiles.
+   - **A phone** gets the same week as a list of days: the date a button over the whole card, the
+     day's holidays, and per group its first park (`rankGroupParks`, the pick first) on its tile,
+     two to a row, with „+n weitere“ or the park the pick beat because it closes early.
+
+   The resort filter and the week are urgent, the grid follows through `useDeferredValue`. The
+   events sit under it as one closed `<details>` row over the whole window. A tap opens
+   `HubDaySheet` (bottom sheet on a phone, side panel on a desktop); it holds a history entry of
+   its own, so a phone's Back closes it. Under the calendar: the forecast's date and the travel
+   times' credit; on the hub the accuracy line (`HubAccuracy`, PAR-1316): „Unsere Prognose der
+   Spitzenwartezeit, eine Woche im Voraus, lag in den letzten 30 Tagen im Schnitt 16 Min.
+   daneben.“, the lead and the days from the open `GET /v1/trip-regions/:region/accuracy`, the
+   minutes rounded. The route starts that read before the others, bounded to 1.5 s
+   (`withSeedTimeout`), and the line awaits it in its own `<Suspense>`, so a slow answer never holds
+   the calendar; `forecastAccuracy: null` (too few measured days) or a failed read draws nothing.
+   Its link opens the accuracy question in chapter 05 (`FaqLink`, `TRIP_ACCURACY_ID`). Then the
+   month index (`HubMonthIndex`, a labelled `<nav>` with the park calendar's chips, all twelve
+   months). With a plan the body folds into „Kalender für alle 16 Parks, Tag für Tag“
+   (`HubPlanFold`).
+
 3. **03 Die Resorts rund um Orlando** (`HubResorts`): one card per API group, in the order of the
    region's `hub.resorts` (a group it does not list follows): the photo (`hub.resorts[].photo`, else
    the region's Parky picture `hub.scene`) with the name over it, two sentences
@@ -295,6 +328,7 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
 ## Checks
 
 `pnpm test:orlando-hub` (window, redirects, relay allow-list, the pick and its clause, tomorrow
-after close, lanes, summaries, ranges), `pnpm test:edge-windows`, and against a running build
+after close, lanes, summaries, ranges, the calendar's weeks and fragment, the star, the column's
+best park, the quiet seasons), `pnpm test:edge-windows`, and against a running build
 `pnpm check:landing-pages` and `pnpm check:semantic-html`, which list `/de/orlando`, `/en/orlando`
 and next month's page.

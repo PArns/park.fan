@@ -411,10 +411,9 @@
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
       "ring": "beste park in het resort",
+      "quietest": "rustigste dag van de week in dat park",
       "early": "sluit eerder voor dagbezoekers",
-      "closed": "gesloten",
       "howTo": "Zo lees je dit",
-      "noHours": "Stip of leeg: nog geen openingstijden",
       "colour": "Kleur: de dag vergeleken met een gewone dag in dat park"
     },
     "calendar": {
@@ -427,10 +426,15 @@
       "filterAll": "Alle parken",
       "listLabel": "Beste park per resort, dag voor dag",
       "more": "+{count} meer",
-      "showAll": "Toon alle dagen",
-      "showWeek": "Toon de eerste 7 dagen",
-      "loading": "De andere dagen worden geladen …",
-      "failed": "De andere dagen konden niet worden geladen.",
+      "weekNav": "Kies een week",
+      "weekPrev": "Vorige week",
+      "weekNext": "Volgende week",
+      "weekNextDates": "Volgende week: {dates}",
+      "pickRow": "Beste park",
+      "pickRowGroup": "Beste park: {group}",
+      "holidayRow": "Vakanties & feestdagen",
+      "quietest": "rustigste dag van deze week",
+      "hoursLater": "Tijden volgen",
       "openDay": "{date}: toon alle parken",
       "today": "Vandaag",
       "outlook": "vooruitblik",
@@ -1411,7 +1415,7 @@
       "difference": "Verschil: {value}",
       "reasonCrowd": "Drukte",
       "reasonWait": "Wachttijd bij de topattracties",
-      "reasonHours": "Openingsduur",
+      "reasonHours": "Openingstijden",
       "reasonWeather": "Neerslag",
       "reasonHoliday": "Feestdagen en vakanties",
       "reasonPrice": "Dagticket",
@@ -3756,33 +3760,36 @@
         "yours": "Jouw tickets",
         "toBuy": "Te kopen"
       },
-      "details": "Details van de tickets",
+      "howValid": "Hoe het ticket werkt",
+      "alternative": "Alternatief",
       "suggest": {
-        "part": "{days, plural, =1 {1 dag} other {# dagen}} {resort} vanaf {date}",
-        "partExtra": "{parkDays, plural, =1 {1 dag} other {# dagen}} {resort} vanaf {date} met een ticket voor {days} dagen",
         "then": ", daarna ",
-        "shape": "{name}, geldig van {from} tot {to}",
         "dated": "Ticket voor {days, plural, =1 {1 dag} other {# dagen}}",
         "extraDays": "Een ticket voor {parkDays} dagen zou eindigen voor je laatste {resort}-dag, daarom heeft dit {days} dagen.",
         "window": "Een {resort}-ticket voor {days} dagen geldt op {days} willekeurige van de {window} dagen vanaf de eerste dag.",
         "second": "{resort}, tweede ticket",
         "notCovered": "Je {name} dekt {parks} niet.",
         "promotion": "Het {name} past ook bij deze dagen.",
-        "group": "{resort}: {count} × {days, plural, =1 {dagticket} other {ticket voor # dagen}}, {dates}",
-        "groupSep": "; "
+        "group": "{resort}: {count} × {days, plural, =1 {dagticket} other {ticket voor # dagen}}",
+        "groupSep": "; ",
+        "count": "{count} × {name}",
+        "valid": "Geldig {range}",
+        "inWindow": "{used} van {window} dagen",
+        "eachOnItsDay": "{count, plural, =1 {Geldt alleen op zijn eigen datum.} other {Elk ticket geldt alleen op zijn eigen datum.}}"
       },
       "hopper": {
-        "worth": "Aanbevolen: {hopper}",
+        "worth": "{hopper} loont",
         "adds": "Met {hopper}:",
-        "nothing": "Deze dagen winnen niets met {hopper}.",
-        "evening": "een avond in {park} op {date}",
-        "evenings": "{count} avonden in een tweede park",
+        "nothing": "{hopper} levert hier niets op",
+        "eveningsAt": "{count, plural, =1 {één avond} other {# avonden}} in {park}",
+        "eveningsOn": "{count, plural, =1 {een avond} other {avonden}} in {park} op {dates}",
+        "eveningMark": "’s avonds met {hopper}:",
         "hopDay": "{parks} op één dag, {date}",
         "hopDays": "{count} dagen met twee parken",
         "fits": "{parks} {count, plural, =1 {past} other {passen}} er alleen hiermee in",
         "minutes": "ongeveer {minutes} min minder per attractie",
-        "with": "Plan met {hopper} tonen",
-        "without": "Plan zonder {hopper} tonen"
+        "with": "Met {hopper} plannen",
+        "without": "Zonder {hopper} plannen"
       },
       "newTab": "(opent in een nieuw tabblad)",
       "adopt": "Als jouw tickets gebruiken",
@@ -3848,6 +3855,7 @@
         "title": "Prijzen en tickets",
         "official": "{seller} (officiële winkel)",
         "store": "{seller} · {country} ({currency})",
+        "storeOnly": "{country} ({currency})",
         "compare": "De prijzen verschillen per land van de winkel. Vergelijk ze allemaal voordat je koopt."
       },
       "market": {
@@ -3901,7 +3909,8 @@
       "fewer": "{city}: een nacht minder",
       "more": "{city}: een nacht meer",
       "add": "Stad toevoegen",
-      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}"
+      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
+      "stayShort": "{city} {count, plural, =1 {1 nacht} other {# nachten}}"
     },
     "parky": {
       "button": "Plan met Parky je perfecte reis",
@@ -4419,9 +4428,9 @@
           },
           "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
           "longStay": {
-            "line": "Britse winkels verkopen tickets voor 14 dagen voor Disney en Universal, ook als Combo Ticket.",
-            "plan": "Daarmee plannen",
-            "detail": "De tickets voor 14 dagen in de Britse winkels van de parken:"
+            "title": "Tickets voor 14 dagen uit Britse winkels",
+            "line": "Eén voor Disney en één voor Universal, ook samen als Combo Ticket.",
+            "plan": "Daarmee plannen"
           },
           "mixing": {
             "used": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen: ongeveer {minutes} min minder per attractie dan apart.",

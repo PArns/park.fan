@@ -152,14 +152,19 @@ import {
   marketLabel,
   ticketHomeMarket,
   hopperGains,
+  hopperHighlights,
   hopperResorts,
+  isVisitorStore,
   isEveryDayTicket,
   longStayTickets,
   needsConnectedHop,
   orderTicketLinks,
   ownedUse,
   ticketLinkAttributes,
+  ticketLinkGroups,
+  ticketLinksOf,
   ticketStoreName,
+  ticketWindowDays,
   visitorCountry,
   visitorMarket,
   setTickets,
@@ -2189,6 +2194,56 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]
   );
   test(
+    'the ticket card says the hopper’s evenings by park, each with its dates, the rest as gains',
+    [
+      hopperHighlights({
+        recommended: true,
+        eveningHopList: [
+          {
+            date: '2026-11-22',
+            parks: ['disneys-animal-kingdom-theme-park', 'magic-kingdom-park'],
+          },
+          { date: '2026-11-25', parks: ['epcot', 'disneys-hollywood-studios'] },
+          { date: '2026-11-26', parks: ['disneys-hollywood-studios', 'magic-kingdom-park'] },
+          { date: '2026-11-27', parks: ['epcot'] },
+        ],
+        fitsOnlyWithHopper: ['epcot'],
+        savedMinutesPerRide: 3.4,
+        why: ['evening_hops'],
+      }),
+      hopperHighlights({ recommended: false, why: ['no_gain'] }),
+      hopperHighlights(undefined),
+    ],
+    [
+      [
+        { kind: 'evenings', park: 'magic-kingdom-park', dates: ['2026-11-22', '2026-11-26'] },
+        { kind: 'evenings', park: 'disneys-hollywood-studios', dates: ['2026-11-25'] },
+        { kind: 'fits', parks: ['epcot'] },
+        { kind: 'minutes', minutes: 3 },
+      ],
+      [],
+      [],
+    ]
+  );
+  test(
+    'a ticket’s window bar has a day per date, both ends included, the used ones marked',
+    [
+      ticketWindowDays('2026-11-29', '2026-12-02', new Set(['2026-11-29', '2026-12-01'])),
+      ticketWindowDays('2026-11-16', '2026-11-16', new Set()).length,
+      ticketWindowDays('2027-01-01', '2027-03-01', new Set()).length,
+    ],
+    [
+      [
+        { date: '2026-11-29', used: true },
+        { date: '2026-11-30', used: false },
+        { date: '2026-12-01', used: true },
+        { date: '2026-12-02', used: false },
+      ],
+      1,
+      21,
+    ]
+  );
+  test(
     'the Hogwarts Express needs both Universal parks planned',
     [
       needsConnectedHop(STEP, ['universal-studios-florida', 'universal-islands-of-adventure']),
@@ -2339,6 +2394,54 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       ['AT GB', 'AT IE', 'AT NL', 'AT DE', 'Walt Disney World'],
       ['AT DE', 'AT GB', 'AT IE', 'AT NL', 'Walt Disney World'],
       ['AT IE', 'AT DE', 'AT GB', 'AT NL', 'Walt Disney World'],
+    ]
+  );
+  const groupsOf = (links) =>
+    ticketLinkGroups(links).map((g) => [
+      g.seller,
+      g.stores,
+      g.items.map((item) => `${item.index}:${item.link.store?.country ?? item.link.seller}`),
+    ]);
+  const attraction = (country) => ({ ...at(country, 'EUR', 'en'), seller: 'Attraction Tickets' });
+  const official = stores[4];
+  const partner = { seller: 'Partner Shop', url: 'https://partner.example/', sponsored: true };
+  test(
+    'a seller’s country stores are one group where its first store stands, numbered as drawn',
+    [
+      groupsOf([attraction('DE'), official, attraction('NL'), partner, attraction('US')]),
+      groupsOf([attraction('DE'), official]),
+      groupsOf([]),
+    ],
+    [
+      [
+        ['Attraction Tickets', true, ['0:DE', '1:NL', '2:US']],
+        ['Walt Disney World', false, ['3:Walt Disney World']],
+        ['Partner Shop', false, ['4:Partner Shop']],
+      ],
+      [
+        ['Attraction Tickets', false, ['0:DE']],
+        ['Walt Disney World', false, ['1:Walt Disney World']],
+      ],
+      [],
+    ]
+  );
+  test(
+    'the visitor’s own store is the one of their country; an older answer has only its shop',
+    [
+      isVisitorStore(attraction('DE'), { country: 'DE' }),
+      isVisitorStore(attraction('DE'), { country: null }),
+      isVisitorStore(official, { country: 'US' }),
+      ticketLinksOf({ shopUrl: 'https://wdw.example/' }, 'Disney'),
+      ticketLinksOf({}, 'Disney'),
+      ticketLinksOf({ links: stores, shopUrl: 'https://wdw.example/' }, 'Disney').length,
+    ],
+    [
+      true,
+      false,
+      false,
+      [{ seller: 'Disney', url: 'https://wdw.example/', official: true, sponsored: false }],
+      [],
+      5,
     ]
   );
   test(

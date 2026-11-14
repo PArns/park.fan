@@ -575,8 +575,8 @@ export interface SiteEventMap {
   }>;
   /** "Plan these dates" on a window the search found, by its rank. */
   trip_window_planned: TripEvent<{ rank: number }>;
-  /** "Ticket details" opened: in a sheet on a phone, in place at a desk. */
-  trip_ticket_details_opened: TripEvent<{ surface: 'sheet' | 'inline' }>;
+  /** "How the ticket works" opened on a suggested ticket, by its resort. */
+  trip_ticket_details_opened: TripEvent<{ resort: string }>;
   /** "Show the plan with Park Hopper" for one resort, and its way back. */
   trip_hopper_toggled: TripEvent<{ resort: string; on: boolean }>;
   /** "Use these as your tickets": the suggestions became owned tickets. */
