@@ -27,6 +27,10 @@ import {
   setFindMode,
   setParkVisits,
   stepVisits,
+  setBaseArea,
+  setBaseNights,
+  setMoveBuffer,
+  fixedNights,
   swapLocks,
   toggleLock,
   chooseHotel,
@@ -45,6 +49,7 @@ import {
   primaryReason,
   runnerUp,
   unplacedParks,
+  parksLeftOut,
 } from '../lib/trip-regions/plan-copy.ts';
 import {
   buildTripIcs,
@@ -53,9 +58,13 @@ import {
   icsLocalDateTime,
 } from '../lib/trip-regions/plan-ics.ts';
 import {
-  dateFigure,
+  dateLevel,
+  dayBandPieces,
   hoursLessThanUsual,
+  parkCode,
+  parkCodeKey,
   parkInitials,
+  parkLabel,
   parkMinuteOf,
   swapPreview,
   tripCanvas,
@@ -64,6 +73,16 @@ import {
   tripMonthWeeks,
   weekPages,
 } from '../lib/trip-regions/plan-week.ts';
+import {
+  calendarResorts,
+  dateParties,
+  datePicks,
+  defaultCalendarMode,
+  isNewYearsEve,
+  modePick,
+  monthEvents,
+} from '../lib/trip-regions/date-facts.ts';
+import { formatGridHours } from '../lib/planner/park-time.ts';
 import {
   holidayRegionsFor,
   percentBelowAverage,
@@ -82,7 +101,16 @@ import {
   tripPlannerHref,
   tripRegionLinks,
 } from '../lib/trip-regions/trip-links.ts';
-import { requireTripRegion } from '../lib/trip-regions/registry.ts';
+import { existsSync } from 'node:fs';
+import {
+  gatewayChoices,
+  monthStayCells,
+  stayBandRuns,
+  stayHalves,
+  staySections,
+} from '../lib/trip-regions/plan-stays.ts';
+import { requireTripRegion, TRIP_REGIONS } from '../lib/trip-regions/registry.ts';
+import { tripRegionGuidePath } from '../lib/trip-regions/paths.ts';
 import {
   PlanRequestError,
   fetchTripPlan,
@@ -274,15 +302,18 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
 // ── 2. Edits and trip arithmetic ────────────────────────────────────────────
 {
   test(
-    'auto sits between one and two',
+    '“1–2 days” sits between one and two, and the stepper never removes a park',
     [
       stepVisits(null, 1, 'auto'),
       stepVisits(null, -1, 'auto'),
       stepVisits(1, -1, 'auto'),
+      stepVisits(1, 1, 'auto'),
+      stepVisits(2, -1, 'auto'),
       stepVisits(3, 1, 'auto'),
       stepVisits(null, 1, 'fixed'),
+      stepVisits(2, -1, 'fixed'),
     ],
-    [2, 1, 0, 3, 2]
+    [2, 1, 1, null, null, 3, 2, 1]
   );
   const first = setParkVisits(
     DEFAULT_PLAN_STATE,
@@ -310,8 +341,24 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     parkDaysAvailable({ ...trip, locks: [{ target: 'epcot', date: '2026-11-28' }] }),
     3
   );
-  test('too many visits is caught before the API', planProblem(trip, HEAD), 'too_many_visits');
-  test('park hopping makes room', planProblem({ ...trip, hop: true }, HEAD), null);
+  test(
+    'more parks than days is planned: the API leaves out what does not fit',
+    planProblem(trip, HEAD),
+    null
+  );
+  const pinned = {
+    ...trip,
+    parks: [
+      { slug: 'magic-kingdom-park', visits: 2 },
+      { slug: 'epcot', visits: 2 },
+    ],
+  };
+  test(
+    'pinned repeat visits over the days are caught before the API',
+    planProblem(pinned, HEAD),
+    'too_many_visits'
+  );
+  test('park hopping makes room', planProblem({ ...pinned, hop: true }, HEAD), null);
   test('no request without dates', planRequestQuery(DEFAULT_PLAN_STATE, HEAD), null);
   test(
     'a Disney hotel brings its area',
@@ -475,15 +522,37 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     current: 43,
     delta: 2,
   });
+  const dayOf = (slug) => ({ date: '2027-01-24', kind: 'park', parks: [{ slug, part: 'full' }] });
   test(
-    'an unknown unplaced reason is dropped',
+    'an unknown unplaced reason is dropped, a lost repeat visit is its own sentence',
     unplacedParks({
       unplaced: [
         { slug: 'x', reason: 'odd' },
         { slug: 'y', reason: 'no_day_left' },
       ],
+      days: [dayOf('y')],
     }),
-    [{ slug: 'y', reason: 'no_day_left' }]
+    [{ slug: 'y', reason: 'no_second_day' }]
+  );
+  test(
+    'a park with no day at all is left out, not unplaced',
+    [
+      parksLeftOut({ unplaced: [{ slug: 'epcot', reason: 'no_day_left' }], days: [dayOf('y')] }),
+      unplacedParks({ unplaced: [{ slug: 'epcot', reason: 'no_day_left' }], days: [dayOf('y')] }),
+    ],
+    [['epcot'], []]
+  );
+  test(
+    'the API’s own list wins',
+    parksLeftOut({
+      parksLeftOut: [
+        { park: 'epcot', reason: 'no_day_left' },
+        { park: 'x', reason: 'no_open_day' },
+      ],
+      unplaced: [],
+      days: [],
+    }),
+    ['epcot']
   );
 }
 
@@ -721,26 +790,374 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       },
     },
   };
-  test(
-    'the date figure is the lower of the day’s picks, not a party night',
-    dateFigure(
+  {
+    const cell = (crowdLevel, status = 'OPERATING') => ({
+      status,
+      headlinerWait: 40,
+      crowdLevel,
+      basis: 'forecast',
+    });
+    const day = {
+      ...d19,
+      parks: {
+        a: cell('low'),
+        b: cell('high'),
+        c: cell('moderate'),
+        d: cell('very_high', 'CLOSED'),
+        e: cell('unknown'),
+      },
+    };
+    test(
+      'a date is tinted by the median level of its open headliners',
+      dateLevel(day, ['a', 'b', 'c', 'd', 'e']),
+      'moderate'
+    );
+    test('an even count takes the lower middle', dateLevel(day, ['a', 'b']), 'low');
+  }
+  test('a date without a level has no tint', dateLevel(undefined, []), null);
+  test('two letters per park', Object.keys(names).map(parkInitials), Object.values(names));
+}
+
+// ── 5b. The date grid's facts and the Month view's band ──────────────────────
+{
+  const park = (slug, name, group) => ({ slug, name, group, type: 'theme_park', headliner: true });
+  const region = {
+    slug: 'orlando',
+    groups: [
+      { key: 'wdw', name: 'Walt Disney World Resort', kind: 'resort' },
+      { key: 'uo', name: 'Universal Orlando Resort', kind: 'resort' },
+      { key: 'sw', name: 'SeaWorld Orlando', kind: 'resort' },
+    ],
+    parks: [
+      park('magic-kingdom-park', 'Magic Kingdom Park', 'wdw'),
+      park('disneys-animal-kingdom-theme-park', "Disney's Animal Kingdom Theme Park", 'wdw'),
+      park('universal-studios-florida', 'Universal Studios Florida', 'uo'),
+      park('universal-islands-of-adventure', 'Universal Islands of Adventure', 'uo'),
+      park('seaworld-orlando', 'SeaWorld Orlando', 'sw'),
+    ],
+  };
+  const open = (wait, level, extra = {}) => ({
+    status: 'OPERATING',
+    hoursPublished: true,
+    crowdLevel: level,
+    headlinerWait: wait,
+    basis: 'forecast',
+    opensAt: '2026-12-01T09:00:00-05:00',
+    closesAt: '2026-12-01T21:00:00-05:00',
+    ...extra,
+  });
+  const partyNight = {
+    closesAt: '2026-12-01T18:00:00-05:00',
+    closesEarly: true,
+    dayGuestCloseAt: '2026-12-01T18:00:00-05:00',
+    evening: {
+      kind: 'ticketed_event',
+      opensAt: '2026-12-01T19:00:00-05:00',
+      closesAt: '2026-12-02T00:00:00-05:00',
+    },
+    seasons: ['mvmcp'],
+  };
+  const day = {
+    date: '2026-12-01',
+    isHoliday: false,
+    isSchoolVacation: false,
+    best: {
+      wdw: 'disneys-animal-kingdom-theme-park',
+      uo: 'universal-studios-florida',
+      sw: 'seaworld-orlando',
+    },
+    bestWhy: { wdw: 'closes_early_elsewhere', uo: 'shortest_wait', sw: 'shortest_wait' },
+    parks: {
+      'magic-kingdom-park': open(40, 'low', partyNight),
+      'disneys-animal-kingdom-theme-park': open(45, 'low'),
+      'universal-studios-florida': open(30, 'low', {
+        status: 'UNKNOWN',
+        hoursPublished: false,
+        opensAt: undefined,
+        closesAt: undefined,
+      }),
+      'universal-islands-of-adventure': open(40, 'moderate'),
+      'seaworld-orlando': open(35, 'low'),
+    },
+  };
+  const calendar = {
+    days: [day],
+    seasons: [
       {
-        ...d19,
-        best: {
-          'walt-disney-world': 'disneys-animal-kingdom-theme-park',
-          'universal-orlando': 'universal-islands-of-adventure',
+        id: 'mvmcp',
+        parkSlug: 'magic-kingdom-park',
+        kind: 'christmas',
+        name: "Mickey's Very Merry Christmas Party",
+        startDate: '2026-11-08',
+        endDate: '2026-12-22',
+        dates: ['2026-12-01'],
+        status: 'confirmed',
+        separateTicket: true,
+      },
+    ],
+  };
+  const picks = datePicks(day, region, calendar);
+  test(
+    'a pick per resort, SeaWorld included',
+    picks.map((p) => [p.group.key, p.park.slug]),
+    [
+      ['wdw', 'disneys-animal-kingdom-theme-park'],
+      ['uo', 'universal-studios-florida'],
+      ['sw', 'seaworld-orlando'],
+    ]
+  );
+  test(
+    'the switch offers the resorts with a headliner',
+    calendarResorts({
+      ...region,
+      parks: region.parks.map((p) => ({ ...p, headliner: p.group !== 'sw' })),
+    }).map((r) => r.key),
+    ['wdw', 'uo']
+  );
+  test(
+    'overall: the shortest peak wait of the switch’s resorts; a resort: its own pick',
+    [
+      modePick(picks, 'all', ['wdw', 'uo'])?.park.slug,
+      modePick(picks, 'wdw', ['wdw', 'uo'])?.park.slug,
+      modePick(picks, 'all', ['wdw'])?.park.slug,
+      modePick([], 'all', ['wdw', 'uo']),
+    ],
+    [
+      'universal-studios-florida',
+      'disneys-animal-kingdom-theme-park',
+      'disneys-animal-kingdom-theme-park',
+      null,
+    ]
+  );
+  {
+    const headlined = {
+      ...region,
+      parks: region.parks.map((p) => ({ ...p, headliner: p.group !== 'sw' })),
+    };
+    test(
+      'the switch starts on the one resort the parks, else the tickets, lie in',
+      [
+        defaultCalendarMode(headlined, null, []),
+        defaultCalendarMode(
+          headlined,
+          ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park'],
+          ['uo']
+        ),
+        defaultCalendarMode(headlined, ['magic-kingdom-park', 'universal-studios-florida'], ['uo']),
+        defaultCalendarMode(headlined, null, ['uo', 'uo']),
+        defaultCalendarMode(headlined, null, ['wdw', 'uo']),
+        defaultCalendarMode(headlined, ['seaworld-orlando'], []),
+      ],
+      ['all', 'wdw', 'uo', 'uo', 'all', 'all']
+    );
+  }
+  test(
+    'the pick names the quieter park that closes early, and its resort’s party',
+    [picks[0].earlyElsewhere?.park.slug, picks[0].party?.season?.name, picks[0].party?.leaveAt],
+    ['magic-kingdom-park', "Mickey's Very Merry Christmas Party", '2026-12-01T18:00:00-05:00']
+  );
+  test(
+    'a pick without published hours says so',
+    picks.map((p) => p.hoursUnpublished),
+    [false, true, false]
+  );
+  test(
+    'an evening after a normal close is no party night',
+    dateParties(
+      {
+        ...day,
+        parks: {
+          'magic-kingdom-park': open(40, 'low', {
+            evening: { kind: 'ticketed_event', opensAt: 'x', closesAt: 'y' },
+          }),
         },
       },
-      []
+      region
     ),
-    40
+    []
   );
   test(
-    'without picks, an early close does not count',
-    dateFigure(d19, ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park']),
-    45
+    'New Year’s Eve is the date',
+    [isNewYearsEve('2026-12-31'), isNewYearsEve('2027-01-01')],
+    [true, false]
   );
-  test('two letters per park', Object.keys(names).map(parkInitials), Object.values(names));
+
+  const month = {
+    days: ['2026-12-30', '2026-12-31', '2027-01-01'].map((date) => ({
+      date,
+      isHoliday: false,
+      isSchoolVacation: date !== '2027-01-01',
+      holidays: date !== '2027-01-01' ? ['Winter break (Orange County Public Schools)'] : [],
+      parks: {
+        'magic-kingdom-park': {
+          ...open(40, 'low'),
+          seasons: date === '2026-12-31' ? ['nye-mk', 'hol'] : ['hol'],
+        },
+        'universal-studios-florida': {
+          ...open(40, 'low'),
+          seasons: date === '2026-12-31' ? ['nye-us'] : [],
+        },
+      },
+    })),
+    seasons: [
+      {
+        id: 'hol',
+        parkSlug: 'magic-kingdom-park',
+        kind: 'christmas',
+        name: 'Holidays',
+        startDate: '2026-11-13',
+        endDate: '2027-01-06',
+        status: 'confirmed',
+        separateTicket: false,
+      },
+      {
+        id: 'nye-mk',
+        parkSlug: 'magic-kingdom-park',
+        kind: 'special_event',
+        name: "New Year's Eve at Magic Kingdom",
+        startDate: '2026-12-31',
+        endDate: '2026-12-31',
+        status: 'confirmed',
+        separateTicket: false,
+      },
+      {
+        id: 'nye-us',
+        parkSlug: 'universal-studios-florida',
+        kind: 'special_event',
+        name: "New Year's Eve at Universal Orlando",
+        startDate: '2026-12-31',
+        endDate: '2026-12-31',
+        status: 'announced',
+        separateTicket: false,
+      },
+    ],
+  };
+  test(
+    'the month’s events: seasons cut to the month, the break as one run, every New Year’s Eve evening one row',
+    monthEvents(month, '2026-12', ['magic-kingdom-park', 'universal-studios-florida']).map((e) => [
+      e.kind,
+      e.name,
+      e.dates,
+      e.wholeMonth,
+    ]),
+    [
+      ['festival', 'Holidays', ['2026-12-30', '2026-12-31'], true],
+      ['break', 'Winter break', ['2026-12-30', '2026-12-31'], true],
+      ['nye', null, ['2026-12-31'], false],
+    ]
+  );
+  test(
+    'an unnamed weekend joins the break after it; a public holiday is its own row',
+    monthEvents(
+      {
+        days: [
+          ['2026-12-19', true, false, []],
+          ['2026-12-20', true, false, []],
+          ['2026-12-21', true, false, ['Winter break (Orange County Public Schools)']],
+          [
+            '2026-12-25',
+            true,
+            true,
+            ['Winter break (Orange County Public Schools)', 'Christmas Day'],
+          ],
+        ].map(([date, isSchoolVacation, isHoliday, holidays]) => ({
+          date,
+          isSchoolVacation,
+          isHoliday,
+          holidays,
+          parks: {},
+        })),
+        seasons: [],
+      },
+      '2026-12',
+      []
+    ).map((e) => [e.kind, e.name, e.dates[0], e.dates.at(-1)]),
+    [
+      ['break', 'Winter break', '2026-12-19', '2026-12-21'],
+      ['break', 'Winter break', '2026-12-25', '2026-12-25'],
+      ['holiday', 'Christmas Day', '2026-12-25', '2026-12-25'],
+    ]
+  );
+  test(
+    'a season at a park the visitor does not consider stays out',
+    monthEvents(month, '2026-12', ['universal-studios-florida']).map((e) => e.kind),
+    ['break', 'nye']
+  );
+
+  test(
+    'a curated code wins over the initials',
+    [parkCode({ name: 'Tokyo Disneyland', code: 'DL' }), parkCode({ name: 'Magic Kingdom Park' })],
+    ['DL', 'MK']
+  );
+  {
+    const short = { 'universal-studios-florida': 'Studios', 'universal-epic-universe': 'Epic' };
+    const label = (slug, name, room) => parkLabel({ slug, name }, short, room);
+    test(
+      'a short name where it fits: four letters in a phone cell, any in a wide one',
+      [
+        label('universal-epic-universe', 'Universal Epic Universe', 'tight'),
+        label('universal-studios-florida', 'Universal Studios Florida', 'tight'),
+        label('universal-studios-florida', 'Universal Studios Florida', 'wide'),
+        label('magic-kingdom-park', 'Magic Kingdom Park', 'wide'),
+      ],
+      ['Epic', 'US', 'Studios', 'MK']
+    );
+  }
+  test(
+    'the code key: the shown parks once, in the region’s order',
+    parkCodeKey(
+      region.parks,
+      ['universal-studios-florida', 'magic-kingdom-park', 'magic-kingdom-park'],
+      (p) => p.name
+    ),
+    [
+      { slug: 'magic-kingdom-park', code: 'MK', name: 'Magic Kingdom Park' },
+      { slug: 'universal-studios-florida', code: 'US', name: 'Universal Studios Florida' },
+    ]
+  );
+
+  const canvas = { startMin: 420, endMin: 1440 };
+  test(
+    'the band: early slot, park, the plan’s evening, in percent of the canvas',
+    dayBandPieces(
+      {
+        date: '2026-12-13',
+        kind: 'park',
+        blocks: [{ slug: 'ak', startMin: 480, endMin: 1080 }],
+        early: { startMin: 450, endMin: 480 },
+        evening: null,
+        hopAt: null,
+        night: { kind: 'hop', target: 'hs', startMin: 1097, endMin: 1260, travelMinutes: 17 },
+      },
+      canvas
+    ),
+    [
+      { kind: 'early', slug: null, left: 2.9, width: 2.9 },
+      { kind: 'park', slug: 'ak', left: 5.9, width: 58.8 },
+      { kind: 'hop', slug: 'hs', left: 66.4, width: 16 },
+    ]
+  );
+  test(
+    'a party evening is drawn where the plan has no evening of its own',
+    dayBandPieces(
+      {
+        date: '2026-12-01',
+        kind: 'park',
+        blocks: [{ slug: 'mk', startMin: 540, endMin: 1080 }],
+        early: null,
+        evening: { kind: 'ticketed_event', startMin: 1140, endMin: 1440 },
+        hopAt: null,
+        night: null,
+      },
+      canvas
+    ).map((p) => p.kind),
+    ['park', 'party']
+  );
+  test(
+    'hours for a phone cell, midnight as 24',
+    [formatGridHours(540, 1260), formatGridHours(510, 1440), formatGridHours(540, 1500)],
+    ['09–21', '08:30–24', '09–01']
+  );
 }
 
 // ── 6. The When mode ────────────────────────────────────────────────────────
@@ -1888,6 +2305,230 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'one word of a resort, a short query or another park finds nothing',
     ['universal', 'disney', 'walt', 'or', 'epcot', 'world', 'europa-park', ''].map(match),
     Array(8).fill(null)
+  );
+}
+
+// ── A trip across cities (bases) ────────────────────────────────────────────
+{
+  const BASES = new Map([
+    ['tokyo', new Set(['maihama', 'shinjuku'])],
+    ['fujikawaguchiko', new Set(['kawaguchiko'])],
+    ['nagoya', new Set(['nagoya_station'])],
+    ['osaka', new Set(['universal_city'])],
+  ]);
+  const jp = {
+    parks: new Set(['tokyo-disneyland']),
+    areas: new Set(['maihama']),
+    bases: BASES,
+    moveBuffers: new Set([30, 60, 90, 120]),
+  };
+  const read = (q, keys = jp) => readPlanQuery(new URLSearchParams(q), keys);
+  test(
+    'bases: nights, an area, a stay the plan sizes; kept in the region’s base order',
+    read('bases=osaka,tokyo:4@maihama,fujikawaguchiko:0').bases,
+    [
+      { key: 'tokyo', nights: 4, area: 'maihama' },
+      { key: 'fujikawaguchiko', nights: 0, area: null },
+      { key: 'osaka', nights: null, area: null },
+    ]
+  );
+  test(
+    'an unknown base goes, an area of another base or on a :0 base is dropped',
+    read('bases=kyoto:2,tokyo:4@universal_city,nagoya:0@nagoya_station').bases,
+    [
+      { key: 'tokyo', nights: 4, area: null },
+      { key: 'nagoya', nights: 0, area: null },
+    ]
+  );
+  test(
+    'in a region with bases hotel and area are not the region’s; the ends and the buffer are',
+    (({ hotel, area, startBase, endBase, moveBuffer }) => ({
+      hotel,
+      area,
+      startBase,
+      endBase,
+      moveBuffer,
+    }))(read('hotel=disney&area=maihama&startBase=tokyo&endBase=osaka&moveBuffer=90')),
+    { hotel: null, area: null, startBase: 'tokyo', endBase: 'osaka', moveBuffer: 90 }
+  );
+  test(
+    'a buffer the region does not offer, and an unknown end, are dropped',
+    (({ endBase, moveBuffer }) => ({ endBase, moveBuffer }))(read('endBase=kyoto&moveBuffer=45')),
+    { endBase: null, moveBuffer: null }
+  );
+  test(
+    'a region without bases drops them',
+    read('bases=tokyo:4&startBase=tokyo&moveBuffer=60', keys).bases.length +
+      (read('startBase=tokyo', keys).startBase === null ? 0 : 1),
+    0
+  );
+  const written = writePlanQuery({
+    ...DEFAULT_PLAN_STATE,
+    from: '2027-04-10',
+    to: '2027-04-19',
+    bases: [
+      { key: 'tokyo', nights: 4, area: 'maihama' },
+      { key: 'fujikawaguchiko', nights: 0, area: null },
+    ],
+    startBase: 'tokyo',
+    endBase: 'osaka',
+    moveBuffer: 60,
+  });
+  test(
+    'the URL writes the bases as the contract spells them',
+    written,
+    'from=2027-04-10&to=2027-04-19&bases=tokyo:4@maihama,fujikawaguchiko:0&startBase=tokyo&endBase=osaka&moveBuffer=60'
+  );
+  test('and reads back the same', writePlanQuery(read(written)), written);
+
+  const ORDER_JP = ['tokyo', 'fujikawaguchiko', 'nagoya', 'osaka'];
+  const trip = { ...DEFAULT_PLAN_STATE, from: '2027-04-10', to: '2027-04-19' };
+  const fixed = setBaseNights(setBaseNights(trip, 'osaka', 5, ORDER_JP), 'tokyo', 5, ORDER_JP);
+  test(
+    'fixed nights add up, in base order',
+    [fixed.bases.map((b) => b.key), fixedNights(fixed)],
+    [['tokyo', 'osaka'], 10]
+  );
+  test(
+    'more nights than the trip has are caught before the API',
+    planProblem(fixed, ['tokyo-disneyland']),
+    'too_many_nights'
+  );
+  test(
+    'leaving a base to the plan drops it, an area keeps it',
+    [
+      setBaseNights(fixed, 'tokyo', null, ORDER_JP).bases.map((b) => b.key),
+      setBaseNights(setBaseArea(fixed, 'tokyo', 'maihama', ORDER_JP), 'tokyo', null, ORDER_JP)
+        .bases[0],
+    ],
+    [['osaka'], { key: 'tokyo', nights: null, area: 'maihama' }]
+  );
+  test(
+    'a :0 base takes no area',
+    setBaseArea(setBaseNights(trip, 'nagoya', 0, ORDER_JP), 'nagoya', 'nagoya_station', ORDER_JP)
+      .bases,
+    [{ key: 'nagoya', nights: 0, area: null }]
+  );
+  test(
+    'the region’s own buffer is written as nothing',
+    [setMoveBuffer(trip, 30, 30).moveBuffer, setMoveBuffer(trip, 60, 30).moveBuffer],
+    [null, 60]
+  );
+
+  const gw = (code) => ({ code, name: code, kind: 'airport' });
+  test(
+    'a gateway pins a base only when one base lists it; a shared one pins nothing',
+    gatewayChoices([
+      {
+        key: 'disneyland-paris',
+        name: '',
+        hotelAreas: [],
+        parks: [],
+        gateways: [gw('XED'), gw('CDG')],
+      },
+      { key: 'parc-asterix', name: '', hotelAreas: [], parks: [], gateways: [gw('CDG')] },
+      { key: 'paris', name: '', hotelAreas: [], parks: [], gateways: [gw('CDG'), gw('ORY')] },
+    ]).map((c) => [c.base, c.gateways.map((g) => g.code)]),
+    [
+      ['disneyland-paris', ['XED']],
+      ['paris', ['ORY']],
+      [null, ['CDG']],
+    ]
+  );
+
+  const move = (from, to, when) => ({
+    from,
+    to,
+    when,
+    minutes: 150,
+    mode: 'shinkansen',
+    departAt: '',
+    arriveAt: '',
+  });
+  const d = (date, kind, base, extra = {}) => ({
+    date,
+    kind,
+    base,
+    parks: [],
+    reasons: [],
+    warnings: [],
+    ...extra,
+  });
+  const plan = {
+    meta: {
+      stays: [
+        { base: 'tokyo', from: '2027-04-10', to: '2027-04-12', nights: 2 },
+        { base: 'nagoya', from: '2027-04-12', to: '2027-04-13', nights: 1 },
+        { base: 'osaka', from: '2027-04-13', to: '2027-04-14', nights: 1 },
+      ],
+    },
+    days: [
+      d('2027-04-10', 'arrival', 'tokyo'),
+      d('2027-04-11', 'park', 'tokyo'),
+      d('2027-04-12', 'park', 'nagoya', { move: move('tokyo', 'nagoya', 'morning') }),
+      d('2027-04-13', 'park', 'osaka', { move: move('nagoya', 'osaka', 'evening') }),
+      d('2027-04-14', 'departure', 'osaka'),
+    ],
+  };
+  test(
+    'a day is listed where it is spent: a morning move in the city reached, an evening move in the city left',
+    staySections(plan).map((s) => [
+      s.stay?.base,
+      s.arrival?.date ?? null,
+      s.days.map((x) => x.date.slice(8)),
+    ]),
+    [
+      ['tokyo', null, ['10', '11']],
+      ['nagoya', '2027-04-12', ['12', '13']],
+      ['osaka', '2027-04-13', ['14']],
+    ]
+  );
+  test(
+    'one stay is one section without a stay',
+    staySections({ meta: { stays: [plan.meta.stays[0]] }, days: plan.days.slice(0, 2) }).map(
+      (s) => s.stay
+    ),
+    [null]
+  );
+  test(
+    'the band: a stay runs from the second half of its first day to the first half of its last',
+    stayBandRuns(stayHalves(plan.days)),
+    [
+      { base: 'tokyo', start: 1, end: 5 },
+      { base: 'nagoya', start: 5, end: 7 },
+      { base: 'osaka', start: 7, end: 9 },
+    ]
+  );
+  test(
+    'the Month view’s band: the night’s stay, the one the day starts in, and where a stay begins',
+    [...monthStayCells(plan)].map(([date, c]) => [
+      date.slice(8),
+      c.stay.base,
+      c.left?.base ?? null,
+      c.first,
+    ]),
+    [
+      ['10', 'tokyo', null, true],
+      ['11', 'tokyo', null, false],
+      ['12', 'nagoya', 'tokyo', true],
+      ['13', 'osaka', 'nagoya', true],
+      ['14', 'osaka', null, false],
+    ]
+  );
+}
+
+// ── The regions' planner guides ─────────────────────────────────────────────
+{
+  const missing = TRIP_REGIONS.flatMap((region) =>
+    Object.entries(region.guide ?? {})
+      .filter(([locale, slug]) => !existsSync(`content/blog/${locale}/${slug}.md`))
+      .map(([locale, slug]) => `${region.slug}:${locale}/${slug}`)
+  );
+  test('every planner guide a region names is a post in its locale', missing, []);
+  test(
+    'the guide is a blog path in the locale, the English one where a locale lacks its own',
+    [tripRegionGuidePath(ORLANDO, 'de'), tripRegionGuidePath({ guide: undefined }, 'de')],
+    ['/blog/reiseplaner-orlando', null]
   );
 }
 

@@ -1,19 +1,18 @@
 'use client';
 
-import { useMemo, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CalendarCheck, Info, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
-import { planWindow, type TripPlanState } from '@/lib/trip-regions/plan';
-import { climateChips } from '@/lib/trip-regions/plan-copy';
+import { getListFormat } from '@/lib/utils/intl-format';
+import { effectiveParks, planWindow, type TripPlanState } from '@/lib/trip-regions/plan';
+import { climateChips, windowParksLeftOut } from '@/lib/trip-regions/plan-copy';
 import {
   percentBelowAverage,
   rankedLower,
   weekInWindow,
-  weekTiers,
   windowReasons,
   windowWarnings,
 } from '@/lib/trip-regions/plan-when';
@@ -30,8 +29,8 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 /**
  * The When mode's answer, simple first. Level 0: the three best windows as cards, each with its
  * dates, the big rides' wait, how far below the period's average it lies and one reason; a window
- * on last year's days says so. Level 1: the year strip, a bar per week in crowd tints with the
- * windows marked, which a screen reader reads as a list of weeks and figures. Level 2: a window's
+ * on last year's days says so. Level 1: the year strip, a bar per week in primary ink with the
+ * windows marked (the period's own comparison, so no crowd tints), which a screen reader reads as a list of weeks and figures. Level 2: a window's
  * reasons, warnings, events and day-by-day sketch in a sheet. Level 3: "Plan these dates", which
  * sets the dates and leaves the search for the plan itself.
  */
@@ -136,7 +135,13 @@ function WindowCard({
   const below = percentBelowAverage(window);
   const reason = windowReasons(window)[0];
   const tClimate = useTranslations('tripPlanner.climate');
+  const tAnswer = useTranslations('tripPlanner.answer');
+  const { state, headliners, parkName, locale } = usePlanContext();
   const lower = rankedLower(window).filter((code) => tClimate.has(code));
+  const left = windowParksLeftOut(
+    window.plan,
+    effectiveParks(state, headliners).map((p) => p.slug)
+  );
   return (
     <li className="border-border/60 bg-muted/30 flex flex-col gap-2 rounded-2xl border p-4">
       <span className="text-muted-foreground text-xs font-semibold">
@@ -145,8 +150,19 @@ function WindowCard({
       <span className="text-base leading-snug font-semibold">{label}</span>
       <span className="text-sm">{t('wait', { minutes: window.headlinerWait })}</span>
       {below !== null && (
-        <span className="text-crowd-ink-low text-sm font-medium">
+        <span className="text-primary-ink text-sm font-medium">
           {t('below', { percent: below })}
+        </span>
+      )}
+      {left && (
+        <span className="text-crowd-ink-high text-sm" data-plan-window-left-out="">
+          {tAnswer('leftOut', {
+            parks: getListFormat(locale, { style: 'long', type: 'conjunction' }).format(
+              left.parks.map(parkName)
+            ),
+            count: left.parks.length,
+            days: left.days,
+          })}
         </span>
       )}
       {reason && (
@@ -185,15 +201,13 @@ function WindowCard({
 function YearStrip({ answer }: { answer: TripWhen }) {
   const t = useTranslations('tripPlanner.when');
   const { locale } = usePlanContext();
-  const tiers = useMemo(() => weekTiers(answer.weeks), [answer.weeks]);
   const max = Math.max(1, ...answer.weeks.map((w) => w.headlinerWait ?? 0));
   if (answer.weeks.length === 0) return null;
   return (
     <section className="flex flex-col gap-2" aria-label={t('stripTitle')}>
       <h3 className="text-base font-semibold">{t('stripTitle')}</h3>
       <ol className="flex h-28 items-end gap-px" data-plan-strip="">
-        {answer.weeks.map((week, i) => {
-          const tier = tiers[i];
+        {answer.weeks.map((week) => {
           const marked = answer.windows.find((w) => weekInWindow(week.start, w));
           const date = formatParkDay(locale, week.start, { day: 'numeric', month: 'short' });
           const text =
@@ -211,9 +225,11 @@ function YearStrip({ answer }: { answer: TripWhen }) {
               </span>
               <span
                 aria-hidden="true"
+                // Primary ink, never the crowd tints: a week here is compared with the rest of
+                // the period, not with a park's normal day.
                 className={cn(
                   'w-full rounded-t-sm',
-                  tier ? CROWD_DOT_CLASS[tier] : 'bg-muted',
+                  week.headlinerWait == null ? 'bg-muted' : marked ? 'bg-primary' : 'bg-primary/35',
                   week.basis === 'last_year' && 'opacity-60'
                 )}
                 style={{ height: `${Math.max(4, ((week.headlinerWait ?? 0) / max) * 96)}px` }}

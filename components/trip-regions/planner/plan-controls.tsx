@@ -56,12 +56,15 @@ export function PlanCheckRow({
  */
 export function PlanRadioGroup<T extends string>({
   legend,
+  hint,
   value,
   options,
   onChange,
   disabled = false,
 }: {
   legend: ReactNode;
+  /** One short line under the question, for the whole group. */
+  hint?: ReactNode;
   value: T | null;
   options: ReadonlyArray<{ value: T; label: ReactNode; hint?: ReactNode }>;
   onChange: (value: T) => void;
@@ -71,6 +74,7 @@ export function PlanRadioGroup<T extends string>({
   return (
     <fieldset className="flex flex-col" disabled={disabled}>
       <legend className="mb-1 px-2 text-sm font-semibold">{legend}</legend>
+      {hint && <p className="text-muted-foreground mb-1 px-2 text-xs leading-snug">{hint}</p>}
       {options.map((option) => (
         <label
           key={option.value}
@@ -97,6 +101,56 @@ export function PlanRadioGroup<T extends string>({
 }
 
 /**
+ * A few short choices side by side, one pressed: the planner's segmented control, as the Dates
+ * step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
+ */
+export function PlanSegmented<T extends string>({
+  label,
+  value,
+  options,
+  onChange,
+  disabled = false,
+  className,
+}: {
+  /** What the group chooses, for a screen reader. */
+  label: string;
+  value: T;
+  options: ReadonlyArray<{ value: T; label: ReactNode }>;
+  onChange: (value: T) => void;
+  disabled?: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      role="radiogroup"
+      aria-label={label}
+      className={cn('bg-muted/50 grid gap-1 rounded-xl p-1', className)}
+      style={{ gridTemplateColumns: `repeat(${options.length}, minmax(0, 1fr))` }}
+    >
+      {options.map((option) => (
+        <button
+          key={option.value}
+          type="button"
+          role="radio"
+          aria-checked={value === option.value}
+          disabled={disabled}
+          onClick={() => onChange(option.value)}
+          className={cn(
+            'min-h-11 truncate rounded-lg px-2 text-sm font-medium transition disabled:opacity-50 lg:min-h-9',
+            value === option.value
+              ? 'bg-background shadow-sm'
+              : 'text-muted-foreground hover:text-foreground',
+            PLAN_FOCUS
+          )}
+        >
+          {option.label}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/**
  * − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a
  * screen reader hears the new count after a press.
  */
@@ -109,6 +163,7 @@ export function PlanStepper({
   decrementLabel,
   incrementLabel,
   disabled = false,
+  valueClassName = 'w-11',
 }: {
   value: ReactNode;
   onDecrement: () => void;
@@ -118,6 +173,8 @@ export function PlanStepper({
   decrementLabel: string;
   incrementLabel: string;
   disabled?: boolean;
+  /** The value's width, so a column of steppers lines up: wider for "1–2 days". */
+  valueClassName?: string;
 }) {
   const button =
     'border-border/70 hover:bg-accent flex size-11 items-center justify-center rounded-full border transition-colors disabled:opacity-30 lg:size-8';
@@ -132,7 +189,10 @@ export function PlanStepper({
       >
         <Minus className="size-4" aria-hidden="true" />
       </button>
-      <output aria-live="polite" className="w-11 text-center text-sm font-semibold tabular-nums">
+      <output
+        aria-live="polite"
+        className={cn('text-center text-sm font-semibold tabular-nums', valueClassName)}
+      >
         {value}
       </output>
       <button

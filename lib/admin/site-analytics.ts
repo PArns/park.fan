@@ -859,8 +859,8 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
   },
   trip_tickets_answered: {
-    label: 'Ticket-Frage beantwortet',
-    when: '„Noch nicht“, „Ja“ oder übersprungen („Weiter zu den Reisedaten“ ohne Antwort).',
+    label: 'Ticket-Schritt geöffnet',
+    when: '„Schon Tickets? Eintragen“ unter dem Plan, einmal je Browser („Ja“); „Noch nicht“ und übersprungen nur aus der Zeit, als die Tickets der erste Schritt waren.',
   },
   trip_ticket_added: {
     label: 'Ticket eingetragen',

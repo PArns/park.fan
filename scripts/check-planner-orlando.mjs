@@ -78,33 +78,6 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       name
     );
   };
-  const asked = (page) =>
-    page.evaluate(() => {
-      try {
-        return localStorage.getItem('parkfan_orlando_tickets_asked');
-      } catch {
-        return null;
-      }
-    });
-  const rowValue = (page) =>
-    page
-      .locator('[data-setup-row="tickets"]')
-      .innerText()
-      .then((t) => t.split('\n').at(-1));
-  /**
-   * The row's line once it says `text`, or what it says after 5 s. The answer is read from this
-   * browser's storage after hydration, so the first frame still asks the question.
-   */
-  const rowSays = async (page, text) => {
-    await page
-      .waitForFunction(
-        (t) => document.querySelector('[data-setup-row="tickets"]')?.textContent?.endsWith(t),
-        text,
-        { timeout: 5000 }
-      )
-      .catch(() => {});
-    return rowValue(page);
-  };
   const startTrip = (page) =>
     page.getByRole('button', { name: 'Plan my Orlando trip' }).last().click();
   const sheetTitle = (page) =>
@@ -121,19 +94,22 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await cardScope.locator(`[data-plan-date="${date}"]`).click();
   };
 
-  // ── The step: skipped, "Not yet", and the walk it starts ──────────────────────
+  // ── The walk: dates first, tickets after the plan ───────────────────────────────
   {
     const { context, page } = await open(PHONE);
     await ready(page, '/en/orlando#planner');
     check(
-      'Orlando · Tickets ist die erste Zeile und fragt, solange nicht geantwortet wurde',
-      (await rowSays(page, 'Already have tickets?')) === 'Already have tickets?'
+      'Orlando · Tickets sind kein Schritt im Setup',
+      (await page.locator('[data-setup-row="tickets"]').count()) === 0
     );
     await startTrip(page);
-    await page.locator(`${SHEET} [data-plan-tickets]`).waitFor();
+    await page.waitForFunction(
+      (sel) => document.querySelector(sel)?.textContent?.startsWith('Dates'),
+      `${SHEET} [data-slot="sheet-title"]`
+    );
     check(
-      'Orlando · „Plan my Orlando trip“ öffnet zuerst Tickets',
-      (await sheetTitle(page)) === 'Tickets'
+      'Orlando · „Plan my Orlando trip“ öffnet die Reisedaten',
+      (await sheetTitle(page)) === 'Dates'
     );
     const started = await events(page, 'trip_planner_started');
     check(
@@ -141,56 +117,26 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       started.length === 1 && started[0].source === 'button' && started[0].region === 'orlando',
       JSON.stringify(started)
     );
-    await page.getByRole('button', { name: 'Next: dates' }).click();
-    await page.waitForFunction(
-      (sel) => document.querySelector(sel)?.textContent?.startsWith('Dates'),
-      `${SHEET} [data-slot="sheet-title"]`
-    );
-    const skipped = await events(page, 'trip_tickets_answered');
-    check(
-      'Orlando · Ereignis trip_tickets_answered: „Next: dates“ ohne Antwort ist skipped',
-      skipped.length === 1 && skipped[0].answer === 'skipped' && skipped[0].region === 'orlando',
-      JSON.stringify(skipped)
-    );
-    check(
-      'Orlando · „Next: dates“ ohne Antwort überspringt und merkt sich „Not yet“',
-      (await asked(page)) === 'no' && !query(page).has('tickets'),
-      `asked=${await asked(page)}`
-    );
     await page.keyboard.press('Escape');
-    await page.reload({ waitUntil: 'domcontentloaded' });
-    await ready(page, '/en/orlando#planner');
     check(
-      'Orlando · danach heißt die Zeile „No tickets entered“',
-      (await rowSays(page, 'No tickets entered')) === 'No tickets entered',
-      await rowValue(page)
+      'Orlando · ohne Daten steht „Already have tickets?“ in der leeren Antwort',
+      (await page.locator('[data-plan-tickets-ask]').count()) === 1
     );
-    await startTrip(page);
-    await page.waitForFunction(
-      (sel) => document.querySelector(sel)?.textContent?.startsWith('Dates'),
-      `${SHEET} [data-slot="sheet-title"]`
-    );
-    check('Orlando · und der Weg beginnt bei den Reisedaten', (await sheetTitle(page)) === 'Dates');
     await context.close();
   }
   {
     const { context, page } = await open(PHONE);
-    await ready(page, '/en/orlando#planner');
-    await startTrip(page);
-    await page.locator(`${SHEET} [data-ticket-answer="no"]`).click();
-    await page.waitForFunction(
-      (sel) => document.querySelector(sel)?.textContent?.startsWith('Dates'),
-      `${SHEET} [data-slot="sheet-title"]`
+    await ready(
+      page,
+      `/en/orlando?from=${addDays(orlandoToday(), 21)}&to=${addDays(orlandoToday(), 28)}#planner`
     );
+    await page
+      .locator('[data-plan-tickets-card] [data-plan-tickets-ask]')
+      .waitFor({ timeout: PLAN_TIMEOUT });
     check(
-      'Orlando · „Not yet, just plan“ antwortet und öffnet die Reisedaten mit einem Druck',
-      (await asked(page)) === 'no'
-    );
-    const answered = await events(page, 'trip_tickets_answered');
-    check(
-      'Orlando · Ereignis trip_tickets_answered: not_yet',
-      answered.length === 1 && answered[0].answer === 'not_yet' && answered[0].region === 'orlando',
-      JSON.stringify(answered)
+      'Orlando · ein geteilter Plan fragt nicht nach Tickets: die Karte trägt „Already have tickets?“',
+      (await page.locator(SHEET).count()) === 0 &&
+        (await page.locator('[data-plan-tickets-card] [data-plan-tickets-ask]').count()) === 1
     );
     await context.close();
   }
@@ -200,12 +146,12 @@ export async function checkOrlandoTickets({ browser, base, check }) {
   {
     const { context, page } = await open(PHONE);
     await ready(page, '/en/orlando#planner');
-    await startTrip(page);
-    const yes = page.locator(`${SHEET} [data-ticket-answer="yes"]`);
-    await yes.click();
+    await page.locator('[data-plan-tickets-ask] button').click();
+    await page.locator(`${SHEET} [data-plan-tickets]`).waitFor();
     check(
-      'Orlando · „Yes, I have tickets“ klappt die Resorts auf (aria-expanded)',
-      (await yes.getAttribute('aria-expanded')) === 'true'
+      'Orlando · „Add them“ öffnet die Tickets mit den Resorts, ohne Frage davor',
+      (await sheetTitle(page)) === 'Tickets' &&
+        (await page.locator(`${SHEET} [data-ticket-add]`).count()) >= 2
     );
     await page.locator(`${SHEET} [data-ticket-combo]`).click();
     const cards = page.locator(`${SHEET} [data-ticket-card]`);
@@ -261,7 +207,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       q.get('from') === '2027-02-07' && q.get('to') === '2027-02-24',
       `${q.get('from')} – ${q.get('to')}`
     );
-    await page.getByRole('button', { name: 'Next: dates' }).click();
+    await page.locator(SHEET).getByRole('button', { name: 'Done' }).click();
+    await page.locator('[data-setup-row="dates"]').click();
     await page.locator(`${SHEET} [data-plan-ticket-key]`).waitFor();
     const key = await page.locator(`${SHEET} [data-plan-ticket-key]`).innerText();
     const bars = await page
@@ -272,8 +219,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       key.includes('Disney ticket') && key.includes('Universal ticket') && bars === 2,
       `${key.replace(/\n/g, ' · ')}, ${bars} Balken am 10.`
     );
-    await page.getByRole('button', { name: 'Next: parks' }).click();
-    await page.locator(SHEET).getByRole('button', { name: 'Plan', exact: true }).click();
+    await page.locator(SHEET).getByRole('button', { name: 'Show the plan' }).click();
     const card = page.locator('[data-plan-tickets-card]');
     await card.waitFor({ timeout: PLAN_TIMEOUT });
     const uses = await card
@@ -314,13 +260,23 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       if (r.url().includes('/api/trip-regions/orlando/plan')) asked.push(new URL(r.url()));
     });
     await ready(page, new URL(ownerLink).pathname + new URL(ownerLink).search + '#planner');
-    await page.locator('[data-plan-tickets-card]').waitFor({ timeout: PLAN_TIMEOUT });
+    await page
+      .waitForFunction(
+        () =>
+          document
+            .querySelector('[data-plan-tickets-card]')
+            ?.textContent?.includes('Three Park Adventure'),
+        null,
+        { timeout: PLAN_TIMEOUT }
+      )
+      .catch(() => {});
+    const owned = await page.locator('[data-plan-tickets-card]').innerText();
     check(
       'Orlando · ein kopierter Link öffnet dieselben Tickets, ohne die Adresse umzuschreiben',
       page.url() === ownerLink &&
-        (await rowSays(page, 'Disney 14-Day Magic Ticket · Universal 14-day ticket')) ===
-          'Disney 14-Day Magic Ticket · Universal 14-day ticket',
-      await rowValue(page)
+        owned.includes('14-Day Magic Ticket') &&
+        owned.includes('Three Park Adventure'),
+      owned.slice(0, 160)
     );
     const fromLink = await events(page, 'trip_planner_started');
     check(
@@ -351,11 +307,9 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       sent ? sent.toString() : 'keine Anfrage'
     );
     check(
-      'Orlando · und die Tickets-Zeile liest das Ticket aus ihm',
-      (await page.locator('[data-plan-disclosure="tickets"] button').first().innerText()).includes(
-        'Disney 4 days'
-      ),
-      await page.locator('[data-plan-disclosure="tickets"] button').first().innerText()
+      'Orlando · und die Karte liest das Ticket aus ihm',
+      (await page.locator('[data-plan-tickets-card]').innerText()).includes('Disney'),
+      (await page.locator('[data-plan-tickets-card]').innerText()).slice(0, 120)
     );
     await context.close();
   }
@@ -372,9 +326,9 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await card.waitFor({ timeout: PLAN_TIMEOUT });
     const box = await card.boundingBox();
     check(
-      'Orlando · Plan first: ein kompakter Block auf Level 0 (Satz und „Ticket details“)',
+      'Orlando · Plan first: ein kompakter Block auf Level 0 (Satz, „Ticket details“, „Already have tickets?“)',
       box !== null &&
-        box.height <= 200 &&
+        box.height <= 260 &&
         (await card.locator('[data-plan-ticket-sentence]').count()) === 1,
       box ? `${Math.round(box.height)} px` : 'kein Block'
     );
@@ -589,7 +543,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     });
     check(
       'Orlando · „Leave this visit out“ nimmt den Besuch aus den Parks',
-      !(query(page).get('parks') ?? '').includes('magic-kingdom-park'),
+      // Which park the plan puts outside the ticket is the plan's; one of the seven goes.
+      (query(page).get('parks') ?? '').split(',').length === 6,
       `${slug.slice(0, 60)} → parks=${query(page).get('parks')}`
     );
     const ways = await events(page, 'trip_outside_ticket_action');

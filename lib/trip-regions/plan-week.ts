@@ -6,16 +6,22 @@ import {
   PX_PER_MIN_COARSE,
   type DayGrid,
 } from '@/lib/planner/day-grid';
+import {
+  CROWD_LEVEL_ORDER,
+  isColoredCrowdLevel,
+  type ColoredCrowdLevel,
+} from '@/lib/utils/crowd-level-styles';
+import type { DaySignal } from '@/lib/utils/day-signal-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk } from './plan-copy';
-import { closesEarly } from './hub-data';
 import type { PlanDay, PlanDayKind } from './plan';
 import type {
   TripCalendar,
   TripCalendarDay,
   TripEveningKind,
   TripParkDay,
+  TripRegionPark,
   TripSeason,
 } from './types';
 import { PARK_NAME_SUFFIXES } from './registry';
@@ -210,6 +216,9 @@ export interface TripCanvas {
   endMin: number;
 }
 
+/** A canvas for a trip whose calendar has no hours yet: a plain day, so rest days still have room. */
+export const TRIP_FALLBACK_CANVAS: TripCanvas = { startMin: 8 * 60, endMin: 22 * 60 };
+
 /**
  * The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded
  * by the planner's own {@link PRE_PAD_MIN} and {@link POST_PAD_MIN}. `null` when no day has hours.
@@ -254,6 +263,65 @@ export function tripColumnGrid(span: TripDaySpan, canvas: TripCanvas, pxPerMin: 
     gridEndMin: canvas.endMin,
     heightPx: (canvas.endMin - canvas.startMin) * pxPerMin,
   };
+}
+
+/** One piece of a Month view day band, placed in percent of the trip's shared canvas. */
+export interface DayBandPiece {
+  /**
+   * `early` the hotel's slot before opening, `park` a park's day-guest hours, `party` the ticketed
+   * evening that ends a day guest's day, `extended` the hotel's extra evening, `hop` the plan's
+   * evening in a second park, `venue` its evening at a venue.
+   */
+  kind: 'early' | 'park' | 'party' | 'extended' | 'hop' | 'venue';
+  /** The park of a `park` or `hop` piece. */
+  slug: string | null;
+  left: number;
+  width: number;
+}
+
+/**
+ * A day of the Week view (`tripDaySpans`) as the Month view's band: the same pieces on the same
+ * canvas ({@link tripCanvas}), in percent, so the two views cannot disagree on an hour. The plan's
+ * own evening wins over a ticketed one it overlaps, since it is what the visitor does.
+ */
+export function dayBandPieces(span: TripDaySpan, canvas: TripCanvas): DayBandPiece[] {
+  const length = canvas.endMin - canvas.startMin;
+  if (length <= 0) return [];
+  const at = (min: number) =>
+    (Math.min(Math.max(min, canvas.startMin), canvas.endMin) - canvas.startMin) / length;
+  const piece = (
+    kind: DayBandPiece['kind'],
+    slug: string | null,
+    startMin: number,
+    endMin: number
+  ): DayBandPiece => ({
+    kind,
+    slug,
+    left: Math.round(at(startMin) * 1000) / 10,
+    width: Math.round((at(endMin) - at(startMin)) * 1000) / 10,
+  });
+  const pieces: DayBandPiece[] = [];
+  if (span.early) pieces.push(piece('early', null, span.early.startMin, span.early.endMin));
+  for (const block of span.blocks)
+    pieces.push(piece('park', block.slug, block.startMin, block.endMin));
+  if (span.evening && !span.night) {
+    pieces.push(
+      piece(
+        span.evening.kind === 'ticketed_event' ? 'party' : 'extended',
+        null,
+        span.evening.startMin,
+        span.evening.endMin
+      )
+    );
+  }
+  if (span.night) {
+    pieces.push(
+      span.night.kind === 'hop'
+        ? piece('hop', span.night.target, span.night.startMin, span.night.endMin)
+        : piece('venue', null, span.night.startMin, span.night.endMin)
+    );
+  }
+  return pieces.filter((p) => p.width > 0);
 }
 
 /** The trip's dates in pages of `perPage`, from the first day: page by week, not by calendar week. */
@@ -325,6 +393,52 @@ export function parkInitials(name: string): string {
   if (word === word.toUpperCase()) return word.slice(0, 2);
   const owner = words.find((w) => OWNER_WORDS.has(w.toLowerCase()));
   return owner ? initials([owner, word]) : word.slice(0, 2).toUpperCase();
+}
+
+/**
+ * A park's code in every view that has room for two letters (the date grid, the Month view, their
+ * key): the region's curated `code` where the API sends one, else {@link parkInitials}. The key under
+ * a grid reads the same function, so a code and its explanation cannot disagree.
+ */
+export function parkCode(park: Pick<TripRegionPark, 'name' | 'code'>): string {
+  return park.code ?? parkInitials(park.name);
+}
+
+/**
+ * A park's label in a calendar cell: the region's short name (`parkShortNames`) where the cell has
+ * room for it, a `tight` cell taking one of at most four letters, else {@link parkCode}.
+ */
+export function parkLabel(
+  park: Pick<TripRegionPark, 'slug' | 'name' | 'code'>,
+  shortNames: Readonly<Record<string, string>> | undefined,
+  room: 'tight' | 'wide'
+): string {
+  const short = shortNames?.[park.slug];
+  return short && (room === 'wide' || short.length <= 4) ? short : parkCode(park);
+}
+
+/** One line of a code key: the code and the park it stands for. */
+export interface ParkCodeEntry {
+  slug: string;
+  code: string;
+  name: string;
+}
+
+/**
+ * The key to the codes a view shows: each park among `slugs` once, in the region's order, with the
+ * code the view draws (`codeOf`, {@link parkCode} by default) and its name as `nameOf` gives it.
+ * Parks the region does not list are left out.
+ */
+export function parkCodeKey(
+  parks: readonly TripRegionPark[],
+  slugs: Iterable<string>,
+  nameOf: (park: TripRegionPark) => string,
+  codeOf: (park: TripRegionPark) => string = parkCode
+): ParkCodeEntry[] {
+  const shown = new Set(slugs);
+  return parks
+    .filter((park) => shown.has(park.slug))
+    .map((park) => ({ slug: park.slug, code: codeOf(park), name: nameOf(park) }));
 }
 
 /**
@@ -432,24 +546,28 @@ export function swapPreview(
 }
 
 /**
- * The figure under a date: the lower of the day's picks per resort (`best`, the API's shortest
- * lines with early closings counted), so a party night that closes at 6 pm never makes a date look
- * quiet. Where the API names no pick (a last-year day, no hours yet), the lowest headliner that is
- * open, has a figure and does not close early. `null` where none has one.
+ * The signals a trip region's calendar knows: its own school breaks and holidays. It carries no
+ * bridge days or neighbouring regions, so the planner's grids key only these two.
  */
-export function dateFigure(
+export const TRIP_DAY_SIGNALS: readonly DaySignal[] = ['school', 'holiday'];
+
+/**
+ * A date's tint in the date grid: how busy the region's headliner parks are that day, the median of
+ * the crowd levels of those that are open and have one (the lower middle for an even count). Each
+ * level compares a park with its own typical day, so the median reads as "a busy day in the region"
+ * the way a park's crowd calendar does for one park. `null` for a date with no level.
+ */
+export function dateLevel(
   day: TripCalendarDay | undefined,
   headliners: readonly string[]
-): number | null {
+): ColoredCrowdLevel | null {
   if (!day) return null;
-  const picks = Object.values(day.best ?? {});
-  const candidates = picks.length > 0 ? picks : headliners;
-  let best: number | null = null;
-  for (const slug of candidates) {
-    const cell = day.parks[slug];
-    if (!cell || cell.status === 'CLOSED' || cell.headlinerWait == null) continue;
-    if (picks.length === 0 && closesEarly(cell)) continue;
-    if (best === null || cell.headlinerWait < best) best = cell.headlinerWait;
-  }
-  return best;
+  const ranks = headliners
+    .map((slug) => day.parks[slug])
+    .filter((cell) => cell && cell.status !== 'CLOSED')
+    .map((cell) => cell.crowdLevel)
+    .filter(isColoredCrowdLevel)
+    .map((level) => CROWD_LEVEL_ORDER.indexOf(level))
+    .sort((a, b) => a - b);
+  return ranks.length > 0 ? CROWD_LEVEL_ORDER[ranks[Math.floor((ranks.length - 1) / 2)]] : null;
 }

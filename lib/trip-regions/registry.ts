@@ -143,6 +143,11 @@ export interface TripRegionConfig {
   bestTime: readonly TripBestTimePage[];
   /** Place words a park's name ends in that a visitor drops: "SeaWorld Orlando" reads "SeaWorld". */
   parkNameSuffixes: readonly string[];
+  /**
+   * How visitors shorten a park where its two letters say too little („Epic“, „IoA“, „Studios“),
+   * by slug; `parkLabel` uses one where the cell has room for it.
+   */
+  parkShortNames?: Readonly<Record<string, string>>;
   /** A resort as a search snippet names it ("Disney"), by API group key; else its short name. */
   resortWords: Readonly<Record<string, string>>;
   /**
@@ -165,6 +170,12 @@ export interface TripRegionConfig {
   fireworks?: boolean;
   /** The ticket step; absent, the planner plans without asking for tickets. */
   tickets?: TripTicketStep;
+  /**
+   * The blog post that explains the region's planner, by its slug per locale: the planner's fields
+   * carry one short line each and link here for the rest. `pnpm test:orlando-plan` checks the posts
+   * exist.
+   */
+  guide?: Readonly<Record<Locale, string>>;
 }
 
 /** Every trip region, live or coming, in the order the planner band and the admin list them. */

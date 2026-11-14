@@ -66,6 +66,29 @@ sees them:
 (minutes → tier, one colour for a wait everywhere) live in the same file; score → level is
 `scoreToCrowdLevel` in `lib/utils/crowd-analysis.ts`. `unknown` is not a tier and has no colour.
 
+### Neighbouring tiers tell apart, at no cost in contrast
+
+`moderate` is at hue 130 (yellow-green), not at the 145 of the emerald band next to it: at 145,
+Niedrig and Normal were 0.060 apart in OKLab and read as one colour on a calendar tile. Every
+neighbouring pair is now at least 0.094 apart, and no text face of any tier lost contrast. Measured
+2026-11-14 with the tokens' own grounds (white and `oklch(0.145 0 0)`, the dark card
+`oklch(0.205 0 0)` under a 60 % badge); the value before the move in brackets:
+
+| OKLab distance      | very_low–low | low–moderate  | moderate–high | high–very_high | very_high–extreme |
+| ------------------- | ------------ | ------------- | ------------- | -------------- | ----------------- |
+| fills, light        | 0.096        | 0.107 (0.063) | 0.178 (0.224) | 0.104          | 0.113             |
+| ink, light          | 0.094        | 0.107 (0.060) | 0.178 (0.223) | 0.099          | 0.111             |
+| fills and ink, dark | 0.100        | 0.107 (0.060) | 0.168 (0.211) | 0.106          | 0.117             |
+| badges              | 0.115        | 0.108 (0.058) | 0.176 (0.222) | 0.104          | 0.113             |
+
+| Contrast of `moderate` | ink on page   | ink on tile   | legend chip   | badge       | soft chip   |
+| ---------------------- | ------------- | ------------- | ------------- | ----------- | ----------- |
+| light                  | 6.34 (6.00)   | 5.79 (5.47)   | 5.15 (5.08)   | 6.08 (5.76) | 5.03 (4.74) |
+| dark                   | 13.16 (12.95) | 11.96 (11.79) | 13.16 (12.95) | 9.82 (9.61) | 9.40 (9.29) |
+
+The other five tiers did not change. `CROWD_SOLID_CLASS` reads the `--badge-crowd-*` tokens
+rather than a copy of their values, and the dark theme no longer repeats them.
+
 ## Badges
 
 A badge is `Badge` (`components/ui/badge.tsx`) plus **one** class from `@layer utilities` that

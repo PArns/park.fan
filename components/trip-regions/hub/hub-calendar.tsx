@@ -25,6 +25,7 @@ import {
   isRankable,
   rankGroupParks,
   regionGroups,
+  resortHasChoice,
   shortGroupName,
   shortParkName,
   tintLevel,
@@ -358,8 +359,7 @@ function useCellLabel(locale: string, timezone: string) {
  */
 function bestAtResort(day: TripCalendarDay, group: RegionGroup, slug: string): string | null {
   if (group.kind !== 'resort' || day.best?.[group.key] !== slug) return null;
-  const choices = group.parks.filter((p) => isRankable(day.parks[p.slug])).length;
-  return choices > 1 ? shortGroupName(group.name) : null;
+  return resortHasChoice(day, group) ? shortGroupName(group.name) : null;
 }
 
 /**
