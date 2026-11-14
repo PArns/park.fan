@@ -1,6 +1,7 @@
 import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
+import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { shownWait, shownWaitOn } from './plan-week';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
@@ -364,9 +365,6 @@ export interface EventLane {
   dates: string[];
 }
 
-/** Season kinds that are no event: a closure closes the day, an opening is the park's season. */
-const NOT_AN_EVENT = new Set(['closure', 'maintenance', 'opening']);
-
 /**
  * The lanes under the matrix: each curated season that runs on a day of the window (party nights,
  * festivals, Universal's holidays as `expected`), one lane per name even where several parks run
@@ -375,7 +373,7 @@ const NOT_AN_EVENT = new Set(['closure', 'maintenance', 'opening']);
 export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] = []): EventLane[] {
   const lanes = new Map<string, EventLane>();
   for (const season of calendar.seasons) {
-    if (NOT_AN_EVENT.has(season.kind) || season.status === 'cancelled') continue;
+    if (!isSeasonEvent(season)) continue;
     const listed = calendar.days
       .filter((d) => d.parks[season.parkSlug]?.seasons?.includes(season.id))
       .map((d) => d.date);

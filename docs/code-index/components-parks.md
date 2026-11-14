@@ -735,6 +735,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `RopeDropHeadliners` _component_: „Worth arriving at park opening" strip on the park page, plus the evening picks. The API sends `ropeDropHeadliners` filtered and sorted by savings; the evening picks are derived from the attractions' ropeDrop data (see isEveningBetter).
 
+### [`season-headline.tsx`](../../components/parks/season-headline.tsx)
+
+- `SeasonHeadline` _component_: One season's line: its kind's icon, its name (struck through when cancelled), how settled it is and whether it needs its own ticket, with the price where one is known.
+- `useSeasonLabel` _hook_: Names a season: its own brand name, else its kind's label. `withStatus` adds how settled it is where that is not `confirmed`, for a label that stands without the status badge.
+- `SEASON_STATUS_TONE` _const_: The badge colour of each season status, from settled green to a struck-through grey.
+
+### [`season-kind-icon.tsx`](../../components/parks/season-kind-icon.tsx)
+
+- `SeasonKindIcon` _component_: A season kind's icon in its colour. With a `label` it is an image of that name; without one it is decoration beside a name the reader already has.
+- `knownSeasonKind` _function_: The kind a season is drawn and named as: its own, or `special_event` for a kind the API added after this build, which then reads as an event rather than as a missing translation.
+- `SEASON_KIND_ICON` _const_: The icon and colour of every season kind, in one place for every surface that draws a season. A maintenance window wears the works icon, since it is the same fact about a ride.
+
 ### [`seasonal-badge.tsx`](../../components/parks/seasonal-badge.tsx)
 
 - `SeasonalBadge` _component_: Badge for a seasonal ride or show: "Winter", "Summer" or "Seasonal" in season, and "Winter only", "Summer only" or "Off-season", dimmed, out of it.

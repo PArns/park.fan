@@ -48,7 +48,9 @@ import { upcomingHourlyPredictions } from '@/lib/utils/calendar-utils';
 import { useCalendarDayHourly } from '@/lib/hooks/use-calendar-day-hourly';
 import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import type { RideInWorks } from '@/lib/utils/works-period';
+import type { SeasonOnDay } from '@/lib/parks/park-season-days';
 import { WORKS_TONE_CLASS, WorksPeriodList, WorksIcon } from './works-period-list';
+import { SeasonHeadline } from './season-headline';
 
 // Intl, not a date-fns pattern: a pattern fixes one language's word order for all six.
 const TITLE_FORMAT: Intl.DateTimeFormatOptions = {
@@ -91,6 +93,8 @@ export interface ParkCalendarDayDetailProps {
   planner?: { parkSlug: string; parkName: string; geo: PlannerGeo };
   /** The rides a curated works window closes on this day (`ridesInWorksOn`). */
   worksRides?: readonly RideInWorks[];
+  /** The event seasons running on this day (`seasonDaysOfMonth`). */
+  seasons?: readonly SeasonOnDay[];
 }
 
 /**
@@ -105,12 +109,14 @@ export function ParkCalendarDayDetail({
   onNavigate,
   planner,
   worksRides,
+  seasons,
 }: ParkCalendarDayDetailProps) {
   // "Today" in the park's timezone, not the reader's: a visit cannot be planned for a day that is
   // already over where the park is.
   const todayInPark = parkDayOf(new Date(), parkTimezone);
   const t = useTranslations('parks');
   const tWorks = useTranslations('parks.worksPeriod');
+  const tSeasons = useTranslations('parks.seasons');
   const tCommon = useTranslations('common');
   const locale = useLocale();
 
@@ -421,6 +427,28 @@ export function ParkCalendarDayDetail({
                 {day.ticket.price.amount} {day.ticket.price.currency}
               </span>
             </div>
+          )}
+
+          {/* What the tile's season icon stands for, by name, before the crowd figures it explains:
+              how settled where it is short of confirmed, its own ticket and its hours. */}
+          {seasons && seasons.length > 0 && (
+            <section className="flex flex-col gap-2" data-calendar-day-seasons="">
+              <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
+                {tSeasons('title')}
+              </h3>
+              <ul className="flex flex-col gap-1.5">
+                {seasons.map((season) => (
+                  <li key={season.id} className="text-sm">
+                    <SeasonHeadline season={season} hideConfirmed />
+                    {season.opensAt && season.closesAt && (
+                      <p className="text-muted-foreground mt-0.5 pl-6 text-xs tabular-nums">
+                        {season.opensAt}–{season.closesAt}
+                      </p>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
 
           {/* The panel the grid's tile leads into, with the same tint and wait time the cell

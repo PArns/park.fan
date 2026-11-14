@@ -119,6 +119,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parks.rideOpensAt',
     'parks.rideStatus',
     'parks.seasonal',
+    'parks.seasons.kind',
     'parks.transportSystem',
     'parks.worksPeriod',
     'planner',

@@ -851,10 +851,14 @@ export interface ParkResponse extends ParkBase {
   liveWaitTimes?: LiveWaitTimes;
 }
 
-/** What a season is. Mirrors the API's `PARK_SEASON_KINDS`. */
+/**
+ * What a season is. Mirrors the API's `PARK_SEASON_KINDS`: `christmas` is a Christmas event or
+ * party, `winter` a winter season the park runs as one (Wintertraum, Winter Efteling).
+ */
 export type ParkSeasonKind =
   | 'halloween'
   | 'christmas'
+  | 'winter'
   | 'summer_nights'
   | 'special_event'
   | 'opening'
