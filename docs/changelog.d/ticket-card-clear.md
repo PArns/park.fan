@@ -26,3 +26,12 @@ Knöpfe heißen „Mit/Ohne Park Hopper planen“, und `ticket_link_clicked` zä
 Knöpfen, wie sie gezeichnet sind. `pnpm test:orlando-plan` prüft die neuen Helfer, `pnpm
 check:planner --orlando` die Karte auf dem Telefon: ein Ticket pro Resort mit Kauflinks, 44 px hoch
 und ohne Querscrollen ([Reiseplaner, Tickets](../features/orlando-planner.md#tickets)).
+
+Die drei Screenshots des Beitrags zum Orlando-Reiseplaner sind in allen sechs Sprachen neu
+aufgenommen (`scripts/capture-hub-steps.mjs --post`): `tickets-vorschlag` zeigt die Ticket-Karte
+unter dem Abreisetag bei 1000 px, wo das Ergebnis eine Spalte hat und die beiden Tickets
+nebeneinanderstehen, `tickets-uk` den Schritt „Tickets“ des Assistenten mit den beiden
+14-Tage-Tickets, `wochenansicht` die Woche mit „Tage“ statt „Liste“ bei 1536 px, wo
+„Universal-Tag 1 von 3“ in eine Zeile passt. Die Sätze, die „Mehr Optionen“, die Liste, die Zeile
+mit der Spitzenwartezeit und den Hinweis „Außerhalb der USA verkauft“ nannten, nennen jetzt die
+Schritte des Assistenten, die Ansicht „Tage“, die Karte und „UK-Shop“.

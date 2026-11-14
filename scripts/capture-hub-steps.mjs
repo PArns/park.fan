@@ -5,9 +5,9 @@
  * day cards and Parky's ideas over the plan (the swap mode where the API sends no ideas). Each
  * region walks one trip, so the four shots of a region show the same plan.
  *
- * Needs a running site whose API serves the trip-region routes and the plan's ideas, the API
- * repo's `pnpm trip-regions:dev` until they are deployed: build with `NEXT_PUBLIC_API_URL` on the
- * shim, `pnpm build && pnpm start -p 3506`, then
+ * Needs a running site whose API serves the trip-region routes and the plan's ideas, as
+ * api.park.fan does: `pnpm build && pnpm start -p 3506` (with `NODE_USE_ENV_PROXY=1` behind a
+ * proxy), then
  *
  *     node --experimental-strip-types --import ./scripts/register-path-alias.mjs \
  *       scripts/capture-hub-steps.mjs --base=http://localhost:3506
@@ -15,6 +15,9 @@
  * `--region=japan` and `--locale=de` take one region or language, `--shot=1,3` some of the shots.
  * Writes `public/media/reiseplaner/<image>-assistent-<n>-<locale>.webp`, two device pixels per px;
  * the sidecars beside them are written by hand.
+ *
+ * `--post` takes the screenshots of the Orlando trip-planner post instead (`POST_SHOTS`, the post's
+ * translationKey `orlando-trip-planner`), from the same build; `--shot=tickets-uk` takes one of them.
  */
 import { existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
@@ -28,6 +31,7 @@ const OUT = path.join(ROOT, 'public/media/reiseplaner');
 const arg = (name) => process.argv.find((a) => a.startsWith(`--${name}=`))?.slice(name.length + 3);
 const BASE = (arg('base') ?? 'http://localhost:3000').replace(/\/$/, '');
 const LOCALES = arg('locale')?.split(',') ?? ['de', 'en', 'nl', 'fr', 'es', 'it'];
+const POST = process.argv.includes('--post');
 const SHOTS = (arg('shot') ?? '1,2,3,4').split(',').map(Number);
 
 /**
@@ -78,17 +82,22 @@ async function save(page, clip, file) {
   console.log(`  ✓ ${path.relative(ROOT, file)}`);
 }
 
+/** Hide what floats over the page: Parky's button and the day planner's edge tab. */
+async function hideFixed(page) {
+  await page.evaluate(() => {
+    for (const el of document.querySelectorAll('body *')) {
+      if (getComputedStyle(el).position === 'fixed') el.style.visibility = 'hidden';
+    }
+  });
+}
+
 /**
  * A 4:3 cut of the plan's column (`frame`) starting `lead` of its height above `top`, scrolled so the cut
  * stands under the header. Parky's button and the day planner's edge tab are hidden first: they
  * float over the column's right edge.
  */
 async function planCut(page, frame, top, lead = 0) {
-  await page.evaluate(() => {
-    for (const el of document.querySelectorAll('body *')) {
-      if (getComputedStyle(el).position === 'fixed') el.style.visibility = 'hidden';
-    }
-  });
+  await hideFixed(page);
   const box = await top.boundingBox();
   const { x, width } = frame;
   const height = width * RATIO;
@@ -220,20 +229,170 @@ async function walk(browser, region, locale) {
   }
 }
 
+/**
+ * The Orlando trip-planner post's screenshots (`--post`), keyed by media id, each from the trip the
+ * post's text walks through: the ten days of 5 to 14 December 2026 with the big seven, and the UK
+ * family's Combo Ticket from 6 February 2027. `query` is the plan's `/orlando` query (the one the
+ * page writes after the clicks the post describes), `width` the window the shot is taken at.
+ */
+const POST_SHOTS = {
+  // „Noch keine Tickets“: the plan's ticket card under the days. Below `lg` the result is one
+  // column and the card is wide enough for its tickets side by side; from `lg` it is the 340 px
+  // column on the left.
+  'tickets-vorschlag': {
+    query: 'from=2026-12-05&to=2026-12-14',
+    width: 1000,
+    shoot: shootSuggestion,
+  },
+  // „Tickets, die du schon hast“: the assistant's Tickets step with both 14-day tickets in it.
+  'tickets-uk': {
+    query:
+      'from=2027-02-06&to=2027-02-23&tickets=wdw-uk-14-day-magic@2027-02-06,uor-uk-three-park-adventure@2027-02-06',
+    width: 1024,
+    shoot: shootTicketStep,
+  },
+  // „Disney-Tag 2 von 4“: the week with both suggestions taken and the hopper on Disney's, at a
+  // desk whose day column fits „Universal-Tag 1 von 3“ on one line.
+  wochenansicht: {
+    query:
+      'from=2026-12-05&to=2026-12-14&blocks=1&tickets=uor-date-based.3@2026-12-06,wdw-date-based.4.h@2026-12-10',
+    width: 1536,
+    view: 'week',
+    shoot: shootWeek,
+  },
+};
+const POST_IDS = arg('shot')?.split(',') ?? Object.keys(POST_SHOTS);
+/** The margin a post shot keeps around what it frames, in CSS px: the page's own gutter. */
+const GUTTER = 16;
+
+/** Every image in the window decoded, so a block's photo is not caught half drawn. */
+async function imagesLoaded(page) {
+  await page.waitForFunction(
+    () =>
+      [...document.images].every((img) => {
+        const box = img.getBoundingClientRect();
+        const shown = box.bottom > 0 && box.top < innerHeight && box.width > 0;
+        return !shown || (img.complete && img.naturalWidth > 0);
+      }),
+    null,
+    { timeout: 30_000 }
+  );
+  await page.waitForTimeout(800);
+}
+
+/**
+ * `from` to `to` of the plan's column, scrolled so the cut stands under the header, in a window
+ * tall enough for it, `lead` px above `from`, with nothing floating over it.
+ */
+async function columnCut(page, from, to, lead = GUTTER) {
+  await hideFixed(page);
+  const span = async () => {
+    const top = await from.boundingBox();
+    const bottom = await to.boundingBox();
+    const x = Math.min(top.x, bottom.x) - GUTTER;
+    const right = Math.max(top.x + top.width, bottom.x + bottom.width) + GUTTER;
+    const y = top.y - lead;
+    return { x, y, width: right - x, height: bottom.y + bottom.height + GUTTER - y };
+  };
+  const first = await span();
+  const { width } = page.viewportSize();
+  await page.setViewportSize({ width, height: Math.ceil(first.height) + BELOW_HEADER + GUTTER });
+  await page.waitForTimeout(300);
+  await page.evaluate((dy) => window.scrollBy(0, dy), (await span()).y - BELOW_HEADER);
+  await page.waitForTimeout(500);
+  return span();
+}
+
+/**
+ * The suggested tickets, from the departure under the last day to the card's foot; the lead stops
+ * short of the last day card's edge.
+ */
+async function shootSuggestion(page) {
+  const card = page.locator('[data-plan-tickets-card]').filter({ visible: true }).first();
+  await card.waitFor({ timeout: PLAN_TIMEOUT });
+  return columnCut(
+    page,
+    page.locator('[data-plan-view="agenda"] [data-plan-day]').last(),
+    card,
+    10
+  );
+}
+
+/** The assistant opened on its Tickets step from the answers over the plan, the step's body. */
+async function shootTicketStep(page) {
+  await page.locator('[data-plan-tickets-card]').filter({ visible: true }).first().waitFor();
+  // Tickets is the last of Orlando's answers.
+  await page.locator('[data-plan-answers] button').last().click();
+  const wizard = page.locator(WIZARD);
+  await wizard.locator('[data-plan-tickets] [data-ticket-window]').nth(1).waitFor();
+  await page.waitForTimeout(1500);
+  const stage = await wizard.boundingBox();
+  const answers = await wizard.locator('[data-wizard-tickets]').first().boundingBox();
+  const step = await wizard.locator('[data-plan-tickets]').boundingBox();
+  const y = answers.y - GUTTER;
+  // Inside the stage's border.
+  return { x: stage.x + 1, y, width: stage.width - 2, height: step.y + step.height + GUTTER - y };
+}
+
+/** The week view with its switch, the first page of the trip. */
+async function shootWeek(page) {
+  const week = page.locator('[data-plan-view="week"]');
+  await week.locator('[data-plan-ticket-day]').first().waitFor({ timeout: PLAN_TIMEOUT });
+  const views = week.locator('xpath=..');
+  return columnCut(page, views, views);
+}
+
+/** One of the post's shots in one language. */
+async function shootPost(browser, id, locale) {
+  const shot = POST_SHOTS[id];
+  const context = await browser.newContext({
+    viewport: { width: shot.width, height: 2000 },
+    deviceScaleFactor: 2,
+    colorScheme: 'light',
+    locale,
+    reducedMotion: 'reduce',
+  });
+  await context.addInitScript((view) => {
+    try {
+      localStorage.setItem('parkfan_orlando_view', view);
+      localStorage.setItem('theme', 'light');
+      sessionStorage.setItem('parkfan:assistant-muted', '1');
+    } catch {}
+  }, shot.view ?? 'agenda');
+  const page = await context.newPage();
+  try {
+    await page.goto(`${BASE}/${locale}${tripRegionPath('orlando', locale)}?${shot.query}#planner`, {
+      waitUntil: 'domcontentloaded',
+    });
+    await page.locator('[data-plan-head]').first().waitFor({ timeout: PLAN_TIMEOUT });
+    const clip = await shot.shoot(page);
+    await imagesLoaded(page);
+    await page.mouse.move(0, 0);
+    await save(page, clip, path.join(OUT, `${id}-${locale}.webp`));
+  } finally {
+    await context.close();
+  }
+}
+
 const PREINSTALLED = process.env.CHROMIUM_PATH ?? '/opt/pw-browsers/chromium';
 const browser = await chromium.launch(
   existsSync(PREINSTALLED) ? { executablePath: PREINSTALLED } : {}
 );
 let failed = 0;
-for (const region of REGIONS) {
-  for (const locale of LOCALES) {
-    console.log(`${region} · ${locale}`);
-    try {
-      await walk(browser, region, locale);
-    } catch (error) {
-      failed++;
-      console.error(`  ✗ ${region}/${locale}: ${error.message.split('\n')[0]}`);
-    }
+const jobs = POST
+  ? POST_IDS.flatMap((id) =>
+      LOCALES.map((locale) => [id, locale, () => shootPost(browser, id, locale)])
+    )
+  : REGIONS.flatMap((region) =>
+      LOCALES.map((locale) => [region, locale, () => walk(browser, region, locale)])
+    );
+for (const [what, locale, run] of jobs) {
+  console.log(`${what} · ${locale}`);
+  try {
+    await run();
+  } catch (error) {
+    failed++;
+    console.error(`  ✗ ${what}/${locale}: ${error.message.split('\n')[0]}`);
   }
 }
 await browser.close();
