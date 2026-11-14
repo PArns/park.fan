@@ -104,27 +104,59 @@ check(snap.days[0].prefs, { riderHeightCm: 120, avoidWet: true }, 'the day prefs
 check(
   snap.days[1].entries,
   [
-    { id: 'taron-1', kind: 'ride', name: 'taron', rideSlug: 'taron', start: '10:00' },
-    { id: 'block-1', kind: 'block', name: 'Mittag', start: '12:30', durationMinutes: 45 },
+    {
+      id: 'taron-1',
+      kind: 'ride',
+      name: 'taron',
+      rideSlug: 'taron',
+      start: '10:00',
+      startMinute: 600,
+    },
+    {
+      id: 'block-1',
+      kind: 'block',
+      name: 'Mittag',
+      start: '12:30',
+      startMinute: 750,
+      durationMinutes: 45,
+    },
     {
       id: 'show-fantissima-1',
       kind: 'show',
       name: 'Fantissima',
+      showSlug: 'fantissima',
       start: '01:30',
+      startMinute: 1530,
       durationMinutes: 30,
     },
   ],
-  'entries in plan order, with the start the planner prints (past midnight folded like the grid)'
+  'entries in plan order, with the start the planner prints and its own minute past midnight'
 );
 
 let many = EMPTY_PLANNER_STATE;
 for (let i = 0; i < 9; i++) many = ride(many, `2026-11-${String(10 + i)}`, 'taron', 600);
 for (let i = 0; i < 45; i++) many = ride(many, '2026-11-10', `r${i}`, 600 + i);
 const capped = assistantPlannerSnapshot(many, now);
-check(capped.days.length, SNAPSHOT_MAX_DAYS, 'at most six days');
+check(capped.days.length, SNAPSHOT_MAX_DAYS, 'at most eight days in full');
 check(capped.days[0].date, '2026-11-10', 'the nearest kept');
 check(capped.days[0].entries.length, SNAPSHOT_MAX_ENTRIES, 'at most forty entries a day');
 check(capped.active, undefined, 'no active day, no field');
+check(
+  capped.more,
+  [{ park: { slug: park.slug, name: park.name }, date: '2026-11-18', entries: 1 }],
+  'every other planned day by park and date'
+);
+const farActive = assistantPlannerSnapshot(
+  { ...many, activeParkSlug: park.slug, activeDate: '2026-11-18' },
+  now
+);
+check(
+  farActive.days.map((d) => d.date).includes('2026-11-18') &&
+    farActive.days.length === SNAPSHOT_MAX_DAYS &&
+    farActive.more.map((d) => d.date),
+  ['2026-11-17'],
+  'the day open in the planner always in full, the nearest after it'
+);
 check(
   assistantPlannerSnapshot(reserveDays(EMPTY_PLANNER_STATE, [{ park, date: '2026-11-20' }]), now)
     .days[0].entries,
@@ -668,5 +700,262 @@ const refusing = {
 };
 check(startBreak(refusing, 5, now), now + 5 * 60_000, 'blocked storage still gives the end');
 check(readBreakUntil(refusing, now), null, 'and reads as no break');
+
+// --- The trip planner: the bridge, the remembered trip, Parky's change and its undo ---
+const local = new Map();
+globalThis.window = {
+  localStorage: {
+    getItem: (k) => (local.has(k) ? local.get(k) : null),
+    setItem: (k, v) => local.set(k, String(v)),
+    removeItem: (k) => local.delete(k),
+  },
+  sessionStorage: (() => {
+    const tab = new Map();
+    return {
+      getItem: (k) => (tab.has(k) ? tab.get(k) : null),
+      setItem: (k, v) => tab.set(k, String(v)),
+      removeItem: (k) => tab.delete(k),
+    };
+  })(),
+};
+const { connectPlannerBridge, tripPlannerBridge } = await import(
+  '@/lib/trip-regions/planner-bridge.ts'
+);
+const { cleanParty, forgetTrip, holdsTrip, rememberParty, rememberTrip, rememberedTrip } =
+  await import('@/lib/trip-regions/remembered-trip.ts');
+const { assistantTripsSnapshot, rememberTripChange, sameTripQuery, takeTripUndo } = await import(
+  '@/lib/assistant/trip-context.ts'
+);
+const { readPlanQuery } = await import('@/lib/trip-regions/plan-query.ts');
+
+check(holdsTrip(''), false, 'an untouched planner holds no trip');
+check(holdsTrip('when=2027-06-01_2027-09-30&days=10'), true, 'a search is a trip worth keeping');
+check(
+  cleanParty({ size: 99, heightsCm: [105, 20, 'x', 132] }),
+  { heightsCm: [105, 132] },
+  'a party keeps a sensible count and heights only'
+);
+rememberTrip('orlando', '');
+check(rememberedTrip('orlando'), null, 'a bare hub visit keeps nothing');
+rememberTrip('orlando', 'from=2027-10-14&to=2027-10-21', 1);
+rememberParty('orlando', { size: 4, heightsCm: [105] }, 2);
+rememberTrip('orlando', '', 3);
+check(
+  rememberedTrip('orlando'),
+  {
+    region: 'orlando',
+    query: 'from=2027-10-14&to=2027-10-21',
+    party: { size: 4, heightsCm: [105] },
+    updatedAt: 2,
+  },
+  'the trip and the party kept together; an empty planner never erases them'
+);
+local.set('parkfan_trip_orlando', '{"query":"<script>","party":"x"}');
+check(rememberedTrip('orlando'), null, 'a hand-edited record costs only itself');
+rememberTrip('orlando', 'from=2027-10-14&to=2027-10-21', 4);
+rememberParty('orlando', { size: 4, heightsCm: [105] }, 5);
+
+let tripState = readPlanQuery(new URLSearchParams('from=2027-10-14&to=2027-10-21'));
+const writes = [];
+let disconnect = connectPlannerBridge(
+  'orlando',
+  tripState,
+  (recipe) => {
+    tripState = recipe(tripState);
+    writes.push(tripState);
+  },
+  undefined
+);
+check(
+  tripPlannerBridge.current(),
+  { region: 'orlando', query: 'from=2027-10-14&to=2027-10-21' },
+  'the planner on screen publishes its query'
+);
+check(
+  assistantTripsSnapshot(['orlando', 'japan']),
+  [
+    {
+      region: 'orlando',
+      query: 'from=2027-10-14&to=2027-10-21',
+      onScreen: true,
+      party: { size: 4, heightsCm: [105] },
+    },
+  ],
+  'the trip on screen, with the party kept for it, once'
+);
+check(tripPlannerBridge.apply('japan', 'from=2027-04-01&to=2027-04-10'), false, 'another region is not on screen');
+
+// Parky changes the trip on screen through the planner's own update.
+const before = tripPlannerBridge.current().query;
+rememberTripChange('orlando', before, 'from=2027-10-14&to=2027-10-21&lock=epcot@2027-10-15');
+check(
+  tripPlannerBridge.apply('orlando', 'from=2027-10-14&to=2027-10-21&lock=epcot@2027-10-15'),
+  true,
+  'the change goes through the planner on screen'
+);
+check(writes.at(-1).locks, [{ target: 'epcot', date: '2027-10-15' }], 'read back as the planner reads a link');
+disconnect();
+disconnect = connectPlannerBridge('orlando', tripState, (recipe) => (tripState = recipe(tripState)), undefined);
+check(
+  takeTripUndo('orlando'),
+  { query: 'from=2027-10-14&to=2027-10-21' },
+  "Parky's undo goes back while the trip is as he left it"
+);
+check(takeTripUndo('orlando'), 'none', 'and only once');
+rememberTripChange('orlando', 'from=2027-10-14&to=2027-10-21', tripPlannerBridge.current().query);
+disconnect();
+tripState = readPlanQuery(new URLSearchParams('from=2027-10-16&to=2027-10-23'));
+disconnect = connectPlannerBridge('orlando', tripState, () => undefined, undefined);
+check(takeTripUndo('orlando'), 'changed', "the visitor's own change since is never undone");
+disconnect();
+check(tripPlannerBridge.current(), null, 'a planner that leaves the page disconnects');
+check(sameTripQuery('to=2&from=1', 'from=1&to=2'), true, 'parameter order says nothing');
+forgetTrip('orlando');
+check(assistantTripsSnapshot(['orlando']), undefined, 'no trip, no field');
+
+// --- The new actions, each checked and rebuilt ---
+check(
+  readAssistantAction({
+    type: 'trip_set',
+    region: 'orlando',
+    query: 'from=2027-10-14&to=2027-10-21&tickets=wdw-date-based.4.h?',
+    change: ['dates', 'bogus', 'dates'],
+    extra: 'x',
+  }),
+  {
+    type: 'trip_set',
+    region: 'orlando',
+    query: 'from=2027-10-14&to=2027-10-21&tickets=wdw-date-based.4.h?',
+    change: ['dates'],
+  },
+  'a trip change: the query in the planner alphabet, known kinds once, nothing riding along'
+);
+check(
+  readAssistantAction({ type: 'trip_set', region: 'orlando', query: 'from=<x>' }),
+  null,
+  'a query outside the planner alphabet is refused'
+);
+check(
+  readAssistantAction({ type: 'trip_undo', region: 'Orlando!' }),
+  null,
+  'an undo names a region slug'
+);
+check(
+  readAssistantAction({
+    type: 'replies',
+    replies: ['Next summer', 'next summer', '**bold**', 'see https://x.y', 'a'.repeat(41), 'Find the best dates', 'More', 'Even more'],
+  }),
+  { type: 'replies', replies: ['Next summer', 'Find the best dates', 'More', 'Even more'] },
+  'replies: plain lines, each once, no link or Markdown, at most four'
+);
+check(readAssistantAction({ type: 'replies', replies: [] }), null, 'no reply, no chips');
+check(
+  readAssistantAction({
+    type: 'planner_move',
+    park,
+    date: '2026-11-07',
+    entryId: 'taron-1',
+    start: '14:00',
+  }),
+  { type: 'planner_move', park, date: '2026-11-07', entryId: 'taron-1', start: '14:00' },
+  'a move to a time'
+);
+check(
+  readAssistantAction({
+    type: 'planner_move',
+    park,
+    date: '2026-11-07',
+    entryId: 'taron-1',
+    toIndex: 0,
+    start: '14:00',
+  }),
+  null,
+  'never a place and a time at once'
+);
+check(
+  readAssistantAction({
+    type: 'planner_reserve_trip',
+    days: [{ park, date: '2026-11-07' }],
+    prefs: { riderHeightCm: 105, avoidWet: true },
+  }),
+  { type: 'planner_reserve_trip', days: [{ park, date: '2026-11-07' }], prefs: { riderHeightCm: 105 } },
+  "a filed trip carries the smallest rider's height, nothing else"
+);
+check(
+  readAssistantAction({
+    type: 'interview_state',
+    interview: {
+      kind: 'trip',
+      region: 'orlando',
+      step: 'refine',
+      answered: ['region', 'dates', 'parks', 'refine', 'nope'],
+      skipped: [],
+      mustDoRides: [{ park: 'epcot', rides: ['not-a-uuid'] }],
+      source: 'elsewhere',
+    },
+    party: { size: 4, heightsCm: [105] },
+    region: 'orlando',
+  }),
+  {
+    type: 'interview_state',
+    interview: {
+      kind: 'trip',
+      region: 'orlando',
+      step: 'refine',
+      answered: ['region', 'dates', 'parks'],
+      skipped: [],
+      mustDoRides: [{ park: 'epcot', rides: [] }],
+      source: 'chat',
+    },
+    party: { size: 4, heightsCm: [105] },
+    region: 'orlando',
+  },
+  "the interview's state rebuilt from what it may hold"
+);
+check(
+  readAssistantAction({ type: 'interview_state', interview: { kind: 'day', step: 'parks' } }),
+  null,
+  "a step of the other kind's interview refuses the state"
+);
+check(
+  readAssistantAction({ type: 'interview_state', interview: null, outcome: 'done' }),
+  { type: 'interview_state', interview: null, outcome: 'done' },
+  'an interview that is over'
+);
+
+// --- The interview's store and the planner button's first question ---
+const { interviewStore, startInterview, takeInterviewKickoff } = await import(
+  '@/lib/assistant/interview.ts'
+);
+startInterview({ kind: 'day', park: 'phantasialand', date: '2026-11-07' });
+check(
+  interviewStore.getSnapshot(),
+  {
+    kind: 'day',
+    park: 'phantasialand',
+    date: '2026-11-07',
+    step: 'day',
+    answered: [],
+    skipped: [],
+    mustDoRides: [],
+    source: 'planner',
+  },
+  'the button sets the interview on its first step'
+);
+check(interviewStore.getSnapshot(), interviewStore.getSnapshot(), 'one snapshot between writes');
+check(takeInterviewKickoff(), 'day', 'its first question waits for the window');
+check(takeInterviewKickoff(), null, 'once');
+interviewStore.set(null);
+check(interviewStore.getSnapshot(), null, 'ended');
+
+// --- A hub link as Parky writes it, in the reader's own segment ---
+const { regionHubPath } = await import('@/lib/assistant/links.ts');
+check(
+  regionHubPath('/trip-regions/orlando?from=2027-10-14#planner', 'de'),
+  '/orlando?from=2027-10-14#planner',
+  "the route folder becomes the region's segment"
+);
+check(regionHubPath('/trip-regions/atlantis', 'de'), '/trip-regions/atlantis', 'an unknown region stays');
+check(regionHubPath('/parks/europe', 'de'), '/parks/europe', 'any other path stays');
 
 console.log(`assistant context: ${passed} checks passed`);
