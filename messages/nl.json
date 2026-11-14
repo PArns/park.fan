@@ -4023,6 +4023,339 @@
         "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
         "link": "Orlando drukte-kalender"
       }
+    },
+    "japan": {
+      "nav": {
+        "name": "Japan",
+        "area": "Tokio tot Osaka",
+        "calendar": "Japan drukte-kalender",
+        "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden."
+      },
+      "hub": {
+        "title": "Japan drukte-kalender",
+        "monthTitle": "Japan drukte-kalender {month}",
+        "metaTitle": "Japan drukte-kalender & reisplanner",
+        "metaTitleMonth": "Japan drukte-kalender {month}: Tokyo Disney & USJ",
+        "metaTitleMonthShort": "Japan drukte-kalender {month}",
+        "metaDescription": "Welk park in Japan op welke dag, van Tokyo Disney tot Universal Studios Japan. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt.",
+        "metaDescriptionMonth": "De rustigste dagen in de parken van Japan in {month}: {verdict}. Alle vijf parken dag voor dag.",
+        "metaDescriptionMonthPlain": "Japan in {month}, dag voor dag: de piekwachttijd in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan.",
+        "lead": "Een kalender voor vijf parken tussen Tokio en Osaka, en een planner die je steden op volgorde zet en de nachten verdeelt.",
+        "leadMonth": "Alle vijf parken tussen Tokio en Osaka in {month}, dag voor dag, en een planner die je steden op volgorde zet en de nachten verdeelt.",
+        "monthIndexLabel": "Japan per maand",
+        "glance": {
+          "zone": "tijd in Japan"
+        },
+        "calendar": {
+          "caption": "De parken van Japan, {from} tot {to}: piekwachttijd bij de grote attracties, in minuten"
+        },
+        "lanes": {
+          "break": "Japanse schoolvakanties: {name}, {dates}",
+          "unnamedBreak": "Japanse schoolvakanties",
+          "none": "Geen evenementen in deze dagen."
+        },
+        "sheet": {
+          "kicker": "Japan · één dag",
+          "early": {
+            "happy_entry": "Happy Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Eerder naar binnen vanaf {time} voor hotelgasten"
+          }
+        },
+        "when": {
+          "kicker": "Tokyo Disney en USJ",
+          "title": "Beste tijd om Japan te bezoeken in {year}",
+          "titleNoYear": "Beste tijd om Japan te bezoeken",
+          "pageLink": "Beste tijd om Japan te bezoeken in {year}",
+          "pageLinkNoYear": "Beste tijd om Japan te bezoeken"
+        },
+        "reasons": {
+          "school_break": "in de Japanse schoolvakantie"
+        },
+        "faq": {
+          "title": "Vragen over de parken in Japan",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in de parken van Japan?",
+            "qMonth": "Wanneer is het in {month} het rustigst in de parken van Japan?",
+            "resort": "{resort}: het rustigst {days}; het drukst {busy}.",
+            "day": "{date} ({park}, {minutes} min)",
+            "dayAlone": "{date} ({minutes} min)"
+          },
+          "epic": {
+            "q": "Is Tokyo DisneySea in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Een beetje.}} In deze periode is de piekwachttijd op zaterdag en zondag ongeveer {weekend} min en van maandag tot en met vrijdag ongeveer {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe lang reis je tussen de steden?",
+            "a": "De tijden komen uit de dienstregelingen van JR Central en Fujikyu en gelden van deur tot deur, het wachten op trein of bus inbegrepen: {legs}.",
+            "leg": "van {from} naar {to} ongeveer {duration}",
+            "dayTrip": "{park} kan als dagtrip vanuit {base}, ongeveer {duration} per richting.",
+            "pair": "De {name} verbindt {from} en {to} in ongeveer {minutes} minuten."
+          },
+          "cities": {
+            "q": "In welke volgorde reis ik langs de steden?",
+            "a": "De steden liggen op één lijn: Tokio, Fujikawaguchiko, Nagoya, Osaka. Je verblijven volgen die lijn in één richting, die je vliegvelden bepalen: land je in Tokio en vlieg je terug vanuit Osaka, dan gaat de reis naar het westen; vlieg je terug vanaf waar je geland bent, dan reis je op de vertrekdag terug. De reisplanner verdeelt de nachten zo dat elk park op een rustige dag valt, en nachten die je al geboekt hebt, leg je zelf vast. Fuji-Q Highland blijft een dagtrip vanuit Tokio, tenzij een nacht bij het meer zich terugbetaalt in kortere wachttijden."
+          },
+          "luggage": {
+            "q": "Wat doe ik met mijn bagage als ik van stad wissel?",
+            "a": "De meeste reizigers sturen hun koffers met een bagagedienst (takkyubin) vooruit naar het volgende hotel. In de Shinkansen heeft een stuk bagage van 161 tot 250 cm in totaal een gereserveerde zitplaats met bagageruimte nodig, en groter mag helemaal niet mee (JR Central). Met vooruitgestuurde bagage trekt de reisplanner 30 minuten uit voor elke hotelwissel; draag je alles zelf, dan is het eerder 60. Je kunt kiezen uit 30, 60, 90 of 120 minuten."
+          },
+          "happyEntry": {
+            "q": "Kom ik met een Disney-hotel eerder het park in?",
+            "a": "Ja, met Happy Entry. Gasten van de Disney-hotels mogen 15 minuten voor iedereen Tokyo Disneyland in, gasten van Hotel MiraCosta en het Fantasy Springs Hotel ook eerder Tokyo DisneySea in. Het geldt vanaf de ochtend na het inchecken, en zo rekent de reisplanner het ook; sommige hotels hebben losse dagen zonder. De officiële hotels van Universal Studios Japan hebben geen eerdere toegang."
+          }
+        },
+        "next": {
+          "title": "Reisplanner voor Japan"
+        },
+        "dataset": {
+          "name": "Drukte-kalender van de pretparken in Japan, {period}",
+          "description": "Per park en dag in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan: de verwachte piekwachttijd, de drukte vergeleken met een gewone dag van het park en de openingstijden, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Japan in {year}",
+          "tokyo-disney": "Beste reistijd voor Tokyo Disney in {year}",
+          "universal-studios-japan": "Beste reistijd voor Universal Studios Japan in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Japan",
+          "tokyo-disney": "Beste reistijd voor Tokyo Disney",
+          "universal-studios-japan": "Beste reistijd voor Universal Studios Japan"
+        },
+        "resort": {
+          "region": "Tokyo Disney en USJ",
+          "tokyo-disney": "Tokyo Disney Resort",
+          "universal-studios-japan": "Universal Studios Japan"
+        },
+        "intro": {
+          "lead": "Elk cijfer hier is de piekwachttijd: de hoogste wachttijd van de dag bij elke grote attractie, gemiddeld over de parken van de reis.",
+          "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, de reizen tussen de steden meegerekend, en een dag waarop een park eerder sluit telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar, zoals wij ze gemeten hebben, met “vorig jaar” erbij.",
+          "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, de reizen tussen de steden meegerekend, en een dag waarop een park eerder sluit telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Feestdagen en vakanties in Japan"
+          },
+          "typhoon": "Tyfoonseizoen",
+          "rainySeason": "Regenseizoen"
+        },
+        "weeks": {
+          "noBreak": "Geen feestdag in Japan."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in de parken van Japan?",
+            "tokyo-disney": "Wanneer is het in {year} het rustigst in Tokyo Disney?",
+            "universal-studios-japan": "Wanneer is het in {year} het rustigst in Universal Studios Japan?"
+          },
+          "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste piekwachttijd: ongeveer {minutes} min, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met kerst?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} De kerstweek ({date}) zit op een piekwachttijd van ongeveer {minutes} min, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op een piekwachttijd van ongeveer {minutes} min, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de avonden met een eigen ticket?",
+          "partyA": "{list}. Voor elk van deze avonden heb je een apart ticket nodig.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "typhoonQ": "Hoe zit het met het tyfoonseizoen?",
+          "typhoonA": "Het loopt van juni tot november en is het sterkst van begin september tot half oktober. In september komt er gemiddeld iets meer dan één tyfoon in de buurt van Tokio en één in de buurt van Osaka (Japanse meteorologische dienst, gemiddelde 1991 tot 2020), daarom zet de reisplanner reizen in die weken wat lager. Daarvoor valt het regenseizoen, van ongeveer 6 juni tot 19 juli, met regen op de meeste dagen maar zonder sluitingen. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
+          "firstQ": {
+            "region": "Eerst Tokio of eerst Osaka?",
+            "tokyo-disney": "Welk Disney-park eerst?"
+          },
+          "firstA": "Dat hangt van je vluchten en de data af: de reisplanner neemt de steden in de volgorde die je vliegvelden bepalen en zet elk park op zijn rustigste dag van de reis. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Japan-reis plannen"
+        },
+        "parks": {
+          "moreHint": "Fuji-Q Highland en LEGOLAND Japan"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel in Maihama",
+            "disney_deluxe": "MiraCosta of Fantasy Springs",
+            "universal": "Officieel USJ-hotel",
+            "park_hotel": "Parkhotel bij Fuji-Q of LEGOLAND",
+            "offsite": "Ergens anders"
+          },
+          "hotelHint": {
+            "disney": "Happy Entry in Tokyo Disneyland, 15 minuten eerder, niet op de dag van inchecken",
+            "disney_deluxe": "Happy Entry in beide Disney-parken, niet op de dag van inchecken",
+            "universal": "Een paar minuten lopen naar de ingang, geen eerdere toegang",
+            "park_hotel": "Highland Resort: eerder naar binnen bij Fuji-Q. LEGOLAND Japan Hotel: lopend naar de ingang",
+            "offsite": "Geen vroege toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "disney_deluxe": "MiraCosta of Fantasy Springs",
+            "universal": "USJ-hotel",
+            "park_hotel": "parkhotel",
+            "offsite": "hotel elders"
+          },
+          "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor.",
+          "moveBufferHint": "Met vooruitgestuurde bagage (takkyubin) is 30 minuten meestal genoeg."
+        },
+        "details": {
+          "earlyOthers": {
+            "happy_entry": "Happy Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Eerder naar binnen vanaf {time} voor hotelgasten"
+          }
+        },
+        "reason": {
+          "happy_entry": "Je hotel heeft op deze dag Happy Entry.",
+          "early_entry": "Met je hotel kom je op deze dag eerder het park in."
+        },
+        "ics": {
+          "calendarName": "Japan-reis {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen Japanse schoolvakantie.",
+            "before_spring_break": "Voor de Japanse voorjaarsvakantie."
+          },
+          "warning": {
+            "school_break": "Japanse schoolvakantie."
+          }
+        },
+        "base": {
+          "tokyo": "Tokio",
+          "fujikawaguchiko": "Fujikawaguchiko",
+          "nagoya": "Nagoya",
+          "osaka": "Osaka"
+        },
+        "stayNote": {
+          "tokyo": "Maihama voor beide Disney-parken, Shinjuku voor de bussen naar Fuji-Q",
+          "fujikawaguchiko": "Kawaguchiko aan het meer, of het Highland Resort bij het park",
+          "nagoya": "Station Nagoya voor de Shinkansen, of het LEGOLAND Japan Hotel bij de ingang",
+          "osaka": "Universal City bij de ingang, Umeda of Namba in de stad; Kyoto ligt een uur verderop"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (Disney-hotels)",
+          "disneysea_hotels": "Hotels bij Tokyo DisneySea",
+          "bayside": "Maihama Bayside (Official Hotels)",
+          "shin_urayasu": "Shin-Urayasu (Partner Hotels)",
+          "tokyo_station": "Station Tokio",
+          "shinjuku": "Shinjuku",
+          "highland_resort": "Highland Resort Hotel & Spa",
+          "kawaguchiko": "Kawaguchiko",
+          "nagoya_station": "Station Nagoya",
+          "kinjo_futo": "Kinjo-futo (LEGOLAND Japan Hotel)",
+          "universal_city": "Universal City (officiële hotels)",
+          "umeda": "Umeda (station Osaka)",
+          "namba": "Namba",
+          "kyoto_station": "Station Kyoto"
+        },
+        "moveNote": {
+          "reserve_seat": "Zitplaats reserveren",
+          "forward_luggage": "Bagage vooruitsturen"
+        },
+        "tickets": {
+          "resort": {
+            "tokyo-disney-resort": "Tokyo Disney Resort",
+            "universal-studios-japan": "Universal Studios Japan",
+            "fuji-q-highland": "Fuji-Q Highland",
+            "legoland-japan": "LEGOLAND Japan"
+          },
+          "resortShort": {
+            "tokyo-disney-resort": "Tokyo Disney",
+            "universal-studios-japan": "USJ",
+            "fuji-q-highland": "Fuji-Q",
+            "legoland-japan": "LEGOLAND"
+          },
+          "market": {
+            "intl": "Buiten Japan verkocht"
+          },
+          "entry": {
+            "tdr-1-day": {
+              "title": "1-Day Passport",
+              "hint": "Eén park vanaf de opening; het park en de dag kies je bij de aankoop. Meerdaagse tickets bestaan niet."
+            },
+            "tdr-after-3": {
+              "title": "After 3 Passport",
+              "hint": "Vanaf 15.00 uur in het weekend en op feestdagen, één park."
+            },
+            "tdr-after-5": {
+              "title": "After 5 Passport",
+              "hint": "Vanaf 17.00 uur van maandag tot en met vrijdag, behalve op feestdagen, één park."
+            },
+            "usj-1-day": {
+              "title": "1-Day Studio Pass",
+              "hint": "Eén dag, gekocht voor een vaste datum."
+            },
+            "usj-2-day": {
+              "title": "2-Day Studio Pass",
+              "hint": "Twee hele dagen achter elkaar."
+            },
+            "usj-1-5-day": {
+              "title": "1.5-Day Studio Pass",
+              "hint": "De eerste dag vanaf 15.00 uur, de volgende vanaf de opening."
+            },
+            "usj-twilight": {
+              "title": "Twilight Pass",
+              "hint": "Vanaf 15.00 uur op de gekozen dag."
+            },
+            "fujiq-1-day": {
+              "title": "One Day Pass",
+              "hint": "De toegang is gratis; de pas geldt een dag voor alle attracties, op een paar met een eigen tijdticket na."
+            },
+            "fujiq-premium": {
+              "title": "Fuji-Q Premium Pass",
+              "hint": "Eerder naar binnen en voorrang bij 12 thrillrides, verkocht via CLUB Fuji-Q."
+            },
+            "fujiq-later": {
+              "title": "Afternoon of Sunset Night Pass",
+              "hint": "Alle attracties vanaf 13.00 uur, of vanaf 16.00 uur op dagen dat het park na 19.00 uur open is."
+            },
+            "fujiq-thomas": {
+              "title": "Thomas Land Pass",
+              "hint": "Alleen de 12 attracties in Thomas Land."
+            },
+            "fujiq-pass": {
+              "title": "Annual Passport",
+              "hint": "Alle attracties, 365 dagen vanaf de aankoop."
+            },
+            "lego-1-day": {
+              "title": "1DAY Passport",
+              "hint": "Eén dag, met of zonder SEA LIFE Nagoya op dezelfde dag."
+            },
+            "lego-hotel-2-day": {
+              "title": "Combo 2 Day Pass",
+              "hint": "Voor gasten van het LEGOLAND Japan Hotel: de aankomstdag en de dag erna, SEA LIFE inbegrepen."
+            },
+            "lego-pass": {
+              "title": "Annual Pass",
+              "hint": "Weekday, Standard of Premium; de toegangsdagen staan in de kalender van de pas."
+            }
+          },
+          "variant": {
+            "fujiq-one-day-pass": "Alleen de pas",
+            "fujiq-one-day-pass-priority-admission": "Met eerdere toegang",
+            "fujiq-one-day-pass-virtual-queue": "Met virtuele wachtrij",
+            "fujiq-afternoon-pass": "Afternoon Pass",
+            "fujiq-sunset-night-pass": "Sunset Night Pass",
+            "legoland-japan-1-day": "Alleen LEGOLAND",
+            "legoland-japan-combo-1-day": "Met SEA LIFE Nagoya"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Japan",
+        "title": "Japan: welk park op welke dag",
+        "lead": "Vijf parken van Tokio tot Osaka in één kalender, dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt.",
+        "link": "Japan drukte-kalender"
+      }
     }
   },
   "news": {
