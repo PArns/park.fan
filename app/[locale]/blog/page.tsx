@@ -12,6 +12,9 @@ interface BlogIndexPageProps {
 // Static: a later page is the path-based `/blog/page/[n]`, never `?page=N`, which would render
 // this page per request (`lib/blog/pagination.ts`).
 
+/** Once a day per locale, for the hero's Parky scene of the day (`blogHeroImage`). */
+export const revalidate = 86400;
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }

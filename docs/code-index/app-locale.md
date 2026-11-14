@@ -106,8 +106,9 @@ Route `/[locale]/blog/feed.xml` (route).
 Route `/[locale]/blog` (page).
 
 - `default (BlogIndexPage)` _component_
-- `generateStaticParams` _function_: Static: a later page is the path-based `/blog/page/[n]`, never `?page=N`, which would render this page per request (`lib/blog/pagination.ts`).
+- `generateStaticParams` _function_
 - `generateMetadata` _function_
+- `revalidate` _const_: Once a day per locale, for the hero's Parky scene of the day (`blogHeroImage`).
 
 ### [`blog/page/[n]/page.tsx`](../../app/%5Blocale%5D/blog/page/%5Bn%5D/page.tsx)
 
