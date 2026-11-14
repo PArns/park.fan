@@ -20,6 +20,8 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatRiderHeight } from '@/lib/utils/temperature';
+import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
+import type { BoundSeason } from '@/lib/api/types';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 import type { AdminAttractionListItem, AdminParkDetail } from '../../_lib/types';
 import { withFuzzyMatches } from '../../_lib/search-hits';
@@ -41,6 +43,7 @@ import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
 import { SeasonList } from '../../seasons/_components/season-editor';
+import { formatSeasonRange, seasonTitle } from '../../_lib/seasons';
 import { LocationEditor } from '../_components/location-editor';
 import { PhotoCoverage } from '../_components/photo-coverage';
 import { AttractionFeaturesEditor } from '../_components/attraction-features-editor';
@@ -276,6 +279,28 @@ function ParkPhotoCoverage({ parkId, parkSlug }: { parkId: string; parkSlug: str
   return <PhotoCoverage parkSlug={parkSlug} attractions={attractions.data.attractions} />;
 }
 
+/**
+ * The park season that binds a ride, under its facts: a bound ride has no months, so without this
+ * line the row would say „saisonal“ and nothing about when.
+ */
+function BoundSeasonLine({ season }: { season: BoundSeason }) {
+  const title = seasonTitle({ name: season.name ?? null, kind: season.kind });
+  return (
+    <p className="text-muted-foreground flex min-w-0 items-center gap-1 text-xs">
+      <SeasonKindIcon kind={season.kind} />
+      <span className="truncate">
+        {[
+          title,
+          formatSeasonRange(season.startDate, season.endDate),
+          season.dates?.length ? `${season.dates.length} Termine` : null,
+        ]
+          .filter(Boolean)
+          .join(' · ')}
+      </span>
+    </p>
+  );
+}
+
 function ParkAttractionsTab({ parkId }: { parkId: string }) {
   const [query, setQuery] = useState('');
   const [includeRetired, setIncludeRetired] = useState(false);
@@ -378,6 +403,7 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
                       .filter(Boolean)
                       .join(' · ') || '—'}
                   </p>
+                  {attraction.boundSeason && <BoundSeasonLine season={attraction.boundSeason} />}
                 </div>
 
                 <div className="flex shrink-0 items-center gap-1.5">

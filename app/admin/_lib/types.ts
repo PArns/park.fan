@@ -1,4 +1,4 @@
-import type { ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
+import type { BoundSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 
 /**
  * The shapes the admin API answers with, hand-written and narrow: they describe what the admin
@@ -130,6 +130,11 @@ export interface AdminAttractionListItem {
   isSeasonal: boolean;
   seasonMonths: number[] | null;
   seasonalityCurated: boolean;
+  /**
+   * The park season that binds the ride, in the public payload's shape: its days replace the
+   * months, so `seasonMonths` is null whenever it is set. Absent when no season binds the ride.
+   */
+  boundSeason?: BoundSeason;
   retiredAt: string | null;
   /**
    * The ride's own fast-pass columns, raw rather than resolved.

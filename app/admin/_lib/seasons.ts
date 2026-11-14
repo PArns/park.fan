@@ -26,6 +26,11 @@ export const SEASON_KIND_LABELS: Record<ParkSeasonKind, string> = {
   maintenance: 'Wartung',
 };
 
+/** What a season is called on screen: its own name, else its kind's. */
+export function seasonTitle(season: Pick<ParkSeason, 'name' | 'kind'>): string {
+  return season.name || SEASON_KIND_LABELS[season.kind] || season.kind;
+}
+
 /** What each status is called on screen; `announced` is the API's default. */
 export const SEASON_STATUS_LABELS: Record<ParkSeasonStatus, string> = {
   confirmed: 'bestätigt',

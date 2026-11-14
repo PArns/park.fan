@@ -29,7 +29,6 @@ import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import { formatAgo } from '../../_lib/format';
 import {
-  SEASON_KIND_LABELS,
   SEASON_KIND_OPTIONS,
   SEASON_LIMITS,
   SEASON_STATUS_LABELS,
@@ -44,6 +43,7 @@ import {
   seasonDraft,
   seasonPatch,
   seasonProblems,
+  seasonTitle,
   toDateTimeInput,
   uniqueDays,
   weekdayDates,
@@ -77,10 +77,6 @@ import { useToast } from '../../_ui/toast';
  * event like Fright Nights runs on weekends inside its range, not every day. The row, the park's
  * list and the form are shared by the park's „Saisons“ tab and `/admin/seasons`.
  */
-
-function seasonTitle(season: Pick<ParkSeason, 'name' | 'kind'>): string {
-  return season.name || SEASON_KIND_LABELS[season.kind] || season.kind;
-}
 
 /**
  * One season as a list shows it: name, status, range, hours, price, rides and source, with the
