@@ -248,7 +248,10 @@ export type PlanSavings = {
   kind: 'saving' | 'flat';
   planned: number;
   average: number;
-  /** Planned less than average, per ride; 0 or less never reads as a saving. */
+  /**
+   * `average` less `planned`, from the two rounded figures the line and "How accurate is this?"
+   * print, so the three always add up; 0 or less never reads as a saving.
+   */
   saved: number;
   expectedError: number | null;
 };
@@ -258,12 +261,15 @@ export function planSavings(totals: PlanTotals): PlanSavings | null {
   const planned = totals.headlinerWait;
   const average = totals.averageDayWait;
   if (planned == null || average == null) return null;
-  const saved = Math.max(0, Math.round(totals.savedMinutesPerRide ?? average - planned));
-  const flat = totals.orderMatters === false || saved === 0;
+  const shownPlanned = Math.round(planned);
+  const shownAverage = Math.round(average);
+  const saved = Math.max(0, shownAverage - shownPlanned);
+  // A difference that rounds to nothing is no saving, even where the two roundings part by one.
+  const flat = totals.orderMatters === false || saved === 0 || Math.round(average - planned) <= 0;
   return {
     kind: flat ? 'flat' : 'saving',
-    planned: Math.round(planned),
-    average: Math.round(average),
+    planned: shownPlanned,
+    average: shownAverage,
     saved,
     expectedError: totals.expectedError != null ? Math.round(totals.expectedError) : null,
   };

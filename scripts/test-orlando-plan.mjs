@@ -521,6 +521,18 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     { kind: 'saving', planned: 41, average: 47, saved: 6, expectedError: 8 }
   );
   test(
+    'the saving is the difference of the two printed figures',
+    planSavings({
+      headlinerWait: 44.4,
+      averageDayWait: 48.6,
+      savedMinutesPerRide: 4.2,
+      parkDays: 7,
+      restDays: 1,
+      visits: 7,
+    }),
+    { kind: 'saving', planned: 44, average: 49, saved: 5, expectedError: null }
+  );
+  test(
     'orderMatters false says the order barely matters',
     planSavings({
       headlinerWait: 45,
