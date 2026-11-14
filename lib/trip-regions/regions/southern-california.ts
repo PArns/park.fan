@@ -95,6 +95,21 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
         far: 'disneyland-park',
       },
     },
+    howItWorks: [
+      'reiseplaner/orlando-reisedaten-insgesamt',
+      'reiseplaner/tickets-vorschlag',
+      'reiseplaner/wochenansicht',
+      'reiseplaner/tickets-uk',
+    ],
+    resorts: [
+      { group: 'disneyland-resort', photo: 'disneyland-anaheim/sleeping-beauty-castle' },
+      {
+        group: 'universal-studios-hollywood',
+        photo: 'universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327',
+      },
+      { group: 'day-trips', photo: 'knotts-berry-farm/hangtime' },
+    ],
+    scene: 'reiseplaner/parky-kalifornien-tag',
   },
   // One page: a Disneyland page of its own needs its words under
   // `tripRegions.southern-california.bestTime` in all six languages first.
