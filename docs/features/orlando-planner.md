@@ -66,28 +66,43 @@ range with different spaces, which cost the planner its hydration once.
 
 ## From simple to detailed
 
-The owner's rule for the whole chapter: a visitor is never buried in numbers. The hub's hero action
-calls `tripPlannerUi.openStart()` (`lib/trip-regions/planner-ui.ts`): the walk's first sheet on a
-phone (Tickets while its question is open in this browser, else Dates), that panel scrolled to and
-focused at a desk.
+The owner's rule for the whole chapter: a visitor is never buried in numbers, and the flow goes
+from simple to advanced. The first screen asks only for what a plan cannot do without: the dates,
+and the parks, which start chosen (the region's headliners). Once the departure date is picked
+the plan is there, and everything else is a change to it. The hub's hero action calls
+`tripPlannerUi.openStart()` (`lib/trip-regions/planner-ui.ts`): the Dates sheet on a phone, the
+dates panel scrolled to and focused at a desk. The flow and why, step by step, is in
+[the flow](#the-flow-simple-first).
 
 The figure under each date in the picker is the lower of the day's picks per resort (`best`, early
 closings counted), else the lowest headliner that is open and does not close early, so a party
 night never makes a date look quiet (`dateFigure`).
 
-- **Setup.** Tickets, dates and parks are the steps. Hotel (Universal Premier includes Express at
-  Universal Studios and Islands of Adventure), hotel area, "Do you want to see Magic Kingdom's
-  fireworks?", resort blocks, rest days and park hopping sit under "Fine-tune", with the API's
-  defaults chosen and summed up in one line. On a phone the steps are one bottom sheet walked
-  Tickets → Dates → Parks → Plan (Tickets only while its question is open), each a `SetupRow`, with
-  Fine-tune a row of its own; at `lg` Tickets and Fine-tune are disclosures and dates and parks sit
-  inline. Both are in the markup and CSS picks one.
-- **Level 0, the answer.** The saving in minutes per ride ("Big rides on your days: about 41 min a
-  ride. The same parks on an average day of your trip: 47 min."), the forecast's error where the API
-  names it, or "the order barely matters" when `orderMatters` is false; no hours total. Then the
-  parks `split=auto` gave a second day (`meta.split`: "We added a second day at Magic Kingdom
-  Park"), the rules the plan had to loosen, the parks it could not place, and one line per day. On a phone this
-  is the first thing after "Plan".
+- **Setup.** Dates and parks are the steps; Tickets are not one (they come after the plan). On a
+  phone each is a `SetupRow` that opens a bottom sheet; the walk is the Dates sheet alone, which
+  closes once the departure date is picked and hands the focus to the answer (`usePickedDates` in
+  `plan-setup.tsx`, which counts only a pick made in the step, never a link). "No dates yet? Find
+  the best time" is a line under the calendar, not a switch beside it. At `lg` the dates and parks
+  are two panels side by side. A region with bases adds the Route ([trips across
+  cities](#trips-across-cities)). "More options" holds the hotel (Universal Premier includes
+  Express at Universal Studios and Islands of Adventure) and its area, a park on the travel days,
+  rest days, second park days (the split), evenings, park hopping, Magic Kingdom's fireworks and
+  resort blocks, each with the API's default chosen, one short line at most, a summary line under
+  the heading and a link to the region's guide (`guide` in the registry). Both are in the markup
+  and CSS picks one. The phone's Back button closes an open sheet (`useSheetHistory`), and the
+  address keeps what was chosen in it.
+- **Parks.** One checkbox per park. A chosen park has a stepper that reads "1–2 days" until the
+  visitor sets a number (`visitSteps`: 1 → 1–2 → 2 → 3); only the checkbox removes a park. The
+  line under the list says "7 parks, 8 free days: fits", or how many park days do not.
+- **Level 0, the answer.** The dates and what they hold, the parks the trip has no day for (one
+  sentence with three buttons: a park on the travel days, other parks, a longer trip), then the
+  days in the chosen view, and under them one line: the peak wait on the planned days against the
+  average of the trip's days ("Peak wait on your days about 41 min, 6 min less than the average of
+  your trip days."), or that the order barely matters; "How accurate is this?" holds the average
+  and the forecast's measured error. The figure is the peak wait everywhere (Spitzenwartezeit,
+  piekwachttijd, attente de pointe, espera punta, attesa di picco). Then the parks `split=auto`
+  gave a second day, the rules the plan had to loosen, "Change parks" and "More options", and the
+  tickets. On a phone this is the first thing after the dates.
 - **Level 1, the views,** behind Agenda | Week | Month. The choice is the browser's; before one,
   the Week at `lg` and the Agenda below. At most three facts per element: the park, its minutes and
   one marker (an early close first, then a rest day, the hotel's early slot, its evening).
@@ -101,7 +116,8 @@ night never makes a date look quiet (`dateFigure`).
     calm block. The scale is half the day planner's (`TRIP_WEEK_PX_PER_MIN`).
   - **Month:** the trip in its calendar weeks; a day holds the park's two letters in its crowd tint
     and the minutes, or a bed for a rest day.
-  - **Agenda:** one card per day at Level 1.
+  - **List** (the `agenda` view, the default on a phone): the days once, one row each with the
+    park, its minutes and one marker; a rest day says so once, and a pinned day carries a lock.
 - **Level 2, a day's sheet** (bottom sheet on a phone, right panel at a desk): the one-line reason,
   the runner-up day and what it costs, hours with the hotel's perks, why a short day is short and
   how many hours it loses against the park's usual day in the window, the day's events with their
@@ -114,6 +130,49 @@ night never makes a date look quiet (`dateFigure`).
   `PlannerPageParkBeacon`), leaves the date in `plannerPageDay` and asks for the wizard with
   ``plannerUi.requestOpen(`${region}-hub`, 'page-park-wizard')`` (`orlando-hub`), as the homepage
   hero does.
+
+## Trips across cities
+
+A region with bases (Japan, Paris; the API's
+[bases](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#bases-a-trip-across-several-cities))
+sleeps in more than one place. The visitor gives the ends, the plan gives the middle.
+
+- **The Route** (`plan-route.tsx`), folded away under its summary like More options, a row of its
+  own on a phone: "Arrival" and "Departure" offer the gateways per base ("Tokyo · Haneda or
+  Narita") and "Not decided". A gateway several bases list (Charles de Gaulle) pins no base, so it
+  reads "Charles de Gaulle, or not decided" (`gatewayChoices`). Under them the plan's cities in
+  route order with their nights, "the plan's" until the visitor sets them with the parks' stepper
+  ("set"); 0 nights makes a city's parks day trips, "Add a city" names one the plan skips. The URL
+  carries `bases=tokyo:4@maihama,fujikawaguchiko:0`, `startBase`, `endBase` and `moveBuffer`;
+  `hotel` and `area` are not the region's there and are dropped from a link.
+- **More options** add the hotel area per city of the plan (its perks and the ways to the parks
+  count only with one) and the hotel change's buffer from `stayRules.moveBufferOptions`, the
+  region's `moveOverheadMinutes` chosen; Japan's line names the luggage service.
+- **The answer** says the cities and hotel changes beside the park days and the API's
+  `staySuggestion` with "Plan it this way". The list has a section per stay (its number, city,
+  nights, dates and the region's stay note) with the move between sections; a day is listed where
+  it is spent (`staySections`). The Week view has the stay band over the columns
+  (`PlanStayBand`: two halves a day, two primary tints by the stay's number, never crowd colours),
+  the move on the hour axis, the park hours a morning move takes hatched, and a travel day as one
+  dashed block. The Month view's band is `PlanMonthStayBand` with `monthStayCells`, for the
+  calendar to place. The day's sheet has the move's route, typical times and stops, the buffer and
+  the leg's notes (`moveNote.<code>` of the region first).
+- **Names** come from the region's words (`base.<key>`, `gateway.<code>`, `area.<key>`,
+  `stayNote.<key>`), else the API's English ones (`plan-place-words.tsx`).
+
+## The flow, simple first
+
+Built for a first-time visitor who wants to know which park on which day (PAR-1309):
+
+1. **Dates.** The only question before a plan: the parks start chosen and are shown beside the
+   dates, not asked. "No dates yet? Find the best time" is one line under the calendar.
+2. **The plan at once.** The departure date closes the sheet, the answer scrolls into view and
+   takes the focus: four taps and one sheet on a phone instead of seven taps and three.
+3. **The answer:** what did not fit with its three ways out, the days once in the chosen view, one
+   line on the peak wait.
+4. **Changes on request** under it: Change parks, Change the route (across cities), More options.
+5. **Tickets after the plan**, from the ticket card's "Already have tickets? Add them"; a shared
+   link is never asked.
 
 ## Evenings, tickets and the season
 
@@ -133,7 +192,9 @@ night never makes a date look quiet (`dateFigure`).
 
 ## Tickets
 
-"Do you already have tickets?" is the first step, against the ticket catalog the admin keeps
+Tickets come after the plan: "Already have tickets? Add them" under the plan's tickets opens the
+ticket step, as a sheet on a phone and in place at a desk (`DeskTickets`). The step itself lists the
+resorts against the ticket catalog the admin keeps
 (`GET /v1/trip-regions/orlando/tickets`, read by `PlannerChapterSlot` through the Data Cache under
 the tag `trip-tickets:orlando`, which the API revalidates after every edit; five minutes otherwise,
 `CACHE_TTL.tripTickets`). While that route fails or is slower than 1.5 s, the region's own `tickets`
@@ -143,11 +204,9 @@ the API's
 Without a catalog the step and the card are not drawn, plan first works as before, and a link's
 `tickets` still plans: the plan route validates them.
 
-- **The question.** Two 48 px chips (`PlanChip`) under one shared line. "Not yet, just plan" answers
-  in one press and moves on to Dates; "Next: dates"
-  without an answer counts as the same. "Yes, I have tickets" opens the four resorts. The answer is
-  this browser's (`parkfan_orlando_tickets_asked`, `lib/trip-regions/ticket-answer.ts`); "Not yet" leaves
-  no `tickets` in the URL, and tickets entered before it stay in the step until the page is left.
+- **No question.** Opening the step is the answer (`trip_tickets_answered` with `yes`, once, kept
+  in `parkfan_<region>_tickets_asked`). Without tickets the plan suggests what to buy, and a link
+  someone shares is never asked about tickets.
 - **The products.** Each resort lists the operators' tickets by name, with their rule in one line;
   every product whose catalog `markets` lack `us` is tagged "Sold outside the US". The tag reads
   "not us" on purpose: the sellers' pages state no residency rule, so no tag claims one (the API's
@@ -212,7 +271,7 @@ The funnel, in the order a visitor meets it:
 | Event                   | Properties                                                                                                                                                        | Fires                                                                                                                   |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `trip_planner_started`  | `source`: hero, button, link                                                                                                                                      | the hub's hero, the planner's own button, or a link that carries a plan or a search (a shared one, Parky's)             |
-| `trip_tickets_answered` | `answer`: not_yet, yes, skipped                                                                                                                                   | the ticket question answered; `skipped` is "Next: dates" without an answer                                              |
+| `trip_tickets_answered` | `answer`: yes                                                                                                                                                     | the ticket step opened from the answer, once per browser                                                                |
 | `trip_plan_requested`   | `mode` (dates, when), `days` (1-4 … 15-21), `parks` (0: the headliners), `tickets`, `hopper` (none, some or all of the region's hopper resorts), `blocks`, `rest` | every distinct request once the controls are still, a pin or a swap included                                            |
 | `trip_plan_shown`       | `mode`, `outcome` (ok, relaxed, error), `relaxed`, `status`, `unplaced`, `windows`                                                                                | the answer to that request on screen, once; `relaxed` names the loosened rule that weighs most, `status` 0 is no answer |
 
@@ -255,7 +314,7 @@ day guest really gets; the planner shows it everywhere a day is: the Week block'
 
 ## The When mode
 
-Step 1 is a choice: "I know my dates" or "Find the best dates". Finding takes a period (the next
+"No dates yet? Find the best time" under the calendar switches to it, and "I know my dates" back. Finding takes a period (the next
 twelve months, next year, its spring, summer or autumn, or a range of one's own, each clipped to the
 year the API looks ahead), a trip length of 3–21 days (10 to start) and, if wanted, only the school
 holidays of a region. The regions are exactly those the holiday data has, read from the open route
@@ -263,11 +322,12 @@ holidays of a region. The regions are exactly those the holiday data has, read f
 first; nothing is hard-coded, and the picker says how far the stored holidays reach ("School holiday
 data runs to 3 Jul 2027"). Parks and Fine-tune stay as they are.
 
-- **Level 0:** the three best windows as cards: the dates, "Big rides about 38 min", how far below
-  the period's average, one reason, and "based on last year's crowds" where that is what it is.
-- **Level 1:** the year strip, a bar per week, its height the minutes and its tint where the week
-  falls among the period's weeks (a comparison inside the period, said in the legend, never the
-  crowd calendar's level), the windows marked under it. A screen reader reads it as a list of weeks.
+- **Level 0:** the three best windows as cards: the dates, "Peak wait about 38 min", how far below
+  the period's average, one reason, the parks the window has no day for, and "based on last
+  year's crowds" where that is what it is.
+- **Level 1:** the year strip, a bar per week, its height the minutes, in primary ink with the
+  windows' weeks full (a comparison inside the period, so never the crowd tints, which mean a
+  day against its park's normal day), the windows marked under it. A screen reader reads it as a list of weeks.
 - **Level 2:** a window's reasons, warnings (party nights with their count, school breaks, hurricane
   season, a water park closed), events and its day-by-day sketch.
 - **Level 3:** "Plan these dates" sets `from`/`to`, drops the search and shows the plan.
@@ -276,17 +336,20 @@ A window with no school-holiday period long enough says so and lists the region'
 
 ## Keeping a plan
 
-"Add all days to my planner" files every park day as a reserved day in one store write
+"Copy to the day planner" files every park day as a reserved day in one store write
 (`reserveDays`, the write Parky's `planner_reserve_trip` uses; a day that already holds a plan stays
-as it is). "Add to calendar (.ics)" builds the file in the browser: one event per park day, timed
+as it is), and "Open the first day" opens the day planner on the first of them
+(`setActive`). "Add to calendar (.ics)" builds the file in the browser: one event per park day, timed
 with `TZID=America/New_York` and a `VTIMEZONE` where the hours are known, all-day where not, with
 the minutes, the reason and the link. "Copy link" copies the address.
 
 ## Honest states
 
-Nothing is planned until dates are chosen; the empty chapter says so and is never a sample. A
-problem the API would answer with a 400 (more visits than days, a trip over 21 days) is caught
-before the request and said in a sentence with the way out. A trip past the forecast is planned on
+Nothing is planned until dates are chosen; the empty chapter says so and is never a sample. A trip
+too short for the chosen parks is planned with what fits, and the parks left out are named
+(`parksLeftOut`). A problem the API would answer with a 400 (repeat visits the visitor pinned that
+outnumber the days, a trip over 21 days, more fixed nights than the trip has) is caught before the
+request and said in a sentence with the way out. A trip past the forecast is planned on
 last year's measured days with a banner naming when the forecast should reach it. A failed request
 keeps the last plan on screen, dimmed, with a retry.
 
