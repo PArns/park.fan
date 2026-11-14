@@ -307,30 +307,51 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   the latest window's end, at most 21 days); the Dates grid draws each window as a bar with a key.
   "Find the best dates" is off while a first day is fixed. A ticket the dates miss holds the
   request back and says so, with "Change dates" and "Change ticket".
-- **Plan first** (no owned ticket for a resort): at Level 0 one sentence ("3 days Universal from
-  Tue, Feb 9, then 4 days Disney from Fri, Feb 12.") and "Ticket details", a sheet on a phone and in
-  place at a desk: per resort its ticket and window, what the hopper adds (by date, from the
-  verdict's lists; "Worth adding" only where the API recommends it), the Hogwarts Express line where
-  both Universal parks are planned, "Show the plan with Park Hopper" (`hopper=<resort>`), the shop
-  link and "Use these as your tickets" (written with `blocks=1`, so the days stay). The API
-  suggests from every market, so a long stay may get a UK 14-day ticket itself, its shop link tagged
-  "UK shop". On a trip of ten days or more, a line offers the 14-day tickets the UK shops sell
-  ("Plan with these"), to every visitor.
-- **Where to buy.** A suggestion's details and the 14-day alternatives list the product's `links`
-  in the admin's order: the store of the visitor's own country first (the region of the browser's
-  first language, `visitorCountry`), then those for their locale or market (`orderTicketLinks`);
-  the official shop keeps its place. Every link is shown to every visitor. A link to a seller's
-  country store (its `store`) is named by it, with the store's currency: "Attraction Tickets ·
-  UK (£)", "· Irland (€)" (`ticketStoreName`: the short country name and the currency symbol from
-  `Intl`, so a new store needs no string). Other links sold in a market other than the operators'
-  own (its `markets`, on the official link the product's) carry the same tag as the step, "UK shop"
-  (`linkMarket`). Under two or more links a muted line says that prices differ by the shop's
-  country and that it pays to compare them all (`tripPlanner.tickets.links.compare`). Every link opens in a
+- **Plan first** (no owned ticket for a resort): the card is the tickets, with no fold before
+  them, the same in the result and under the assistant's „Noch nicht“ (`PlanTicketsCard`). One
+  sentence on top ("Universal 5 days, then Disney 6 days."), then one ticket per resort
+  (`SuggestionTicket`; day tickets of one product are one ticket with their count, "4 × 1-Day
+  Passport", `suggestionGroups`), side by side where the card is wide enough (`@xl`):
+  - the resort and the product in plain words ("Universal Orlando · 5-day ticket");
+  - the park days on it as chips with their dates, a moon and the second park on a day the hopper
+    would give an evening (`eveningHopList`);
+  - its window as a bar, a segment a day, the days the plan uses filled (`ticketWindowDays`),
+    with "Valid Nov 16–22" and "5 of 7 days" under it; day tickets say "Each is valid on its date
+    only." instead;
+  - what the hopper adds in one line (`hopperHighlights`: evenings by park, then the parks that fit
+    only with it, the hop days and the minutes): "Park Hopper is worth it" in a tinted box only
+    where the API recommends it, "Park-to-Park adds nothing here" where it adds nothing, and
+    "Plan with Park Hopper" / "Plan without …" (`hopper=<resort>`) where it adds something or is on;
+  - "How the ticket works", a quiet fold with the window rule, why a ticket has more days than
+    park days (`extraDays`), the Hogwarts Express line where both Universal parks are planned and a
+    promotion that fits the same days (`trip_ticket_details_opened` with the resort);
+  - where to buy it, as the next point says.
+
+  Under the tickets, once, the line that prices differ by the shop's country, then "Use these as
+  your tickets" (written with `blocks=1`, so the days stay). The API suggests from every market, so
+  a long stay may get a UK 14-day ticket itself, its shop link tagged "UK shop". On a trip of ten
+  days or more, a dashed row marked "Alternative" offers the 14-day tickets the UK shops sell, one
+  each for Disney and Universal, with "Plan with these" and their shops behind a quiet fold, to
+  every visitor.
+
+- **Where to buy.** A suggestion and the 14-day alternatives list the product's `links` as compact
+  buttons in the admin's order: the store of the visitor's own country first and drawn in the
+  primary tint (the region of the browser's first language, `visitorCountry`, `isVisitorStore`),
+  then those for their locale or market (`orderTicketLinks`); the official shop keeps its place.
+  Every link is shown to every visitor. A seller with two or more country stores (their `store`)
+  gets one row under its name, a button per country with the store's currency: "Attraction
+  Tickets" with "Deutschland (€)", "UK (£)" (`ticketLinkGroups`, `ticketStoreName`: the short
+  country name and the currency symbol from `Intl`, so a new store needs no string); a single store
+  is named in full, "Attraction Tickets · UK (£)". Other links sold in a market other than the
+  operators' own (its `markets`, on the official link the product's) carry the same tag as the
+  step, "UK shop" (`linkMarket`). The card says once that prices differ by the shop's country and
+  that it pays to compare them all (`tripPlanner.tickets.links.compare`). Every link opens in a
   new tab with `referrerPolicy="origin"` and no `noreferrer`, so the seller sees `https://park.fan/`
   and never the trip's path (the site's own policy is `same-origin`); a sponsored link is
   `rel="sponsored nofollow noopener"` and carries a visible "Partner link" label that explains the
   commission on hover, focus or a tap (`ticketLinkAttributes`, `PartnerLabel`). The imprint and the
-  privacy page say the same.
+  privacy page say the same. `ticket_link_clicked` counts a link's place among the buttons as
+  drawn.
 - **Owned** ("Your tickets"): each ticket's window, the days the plan uses ("8 of 14 days", or
   "used on 5 of its 14 days" for an every-day ticket), why days stay unused, whether Disney and
   Universal days mix (`meta.mixing`), a day outside the window with "Leave this visit out" and
@@ -411,7 +432,7 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_ticket_added`                                                                   | `entry`, `resort`, `via` (picker, combo)                                                                                                                                                                                           |
 | `trip_ticket_removed`                                                                 | `entry`, `resort`                                                                                                                                                                                                                  |
 | `trip_ticket_start`                                                                   | `entry`, `resort`, `start` (set, open)                                                                                                                                                                                             |
-| `trip_ticket_details_opened`                                                          | `surface` (sheet, inline)                                                                                                                                                                                                          |
+| `trip_ticket_details_opened`                                                          | `resort`                                                                                                                                                                                                                           |
 | `trip_hopper_toggled`                                                                 | `resort`, `on`                                                                                                                                                                                                                     |
 | `trip_tickets_adopted`, `trip_long_stay_used`                                         | `count`                                                                                                                                                                                                                            |
 | `trip_outside_ticket_action`                                                          | `action` (leave_out, change_ticket)                                                                                                                                                                                                |
