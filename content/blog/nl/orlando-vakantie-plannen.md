@@ -68,15 +68,15 @@ seo:
 
 Rond Orlando staan 16 parken in onze drukte-kalender, en voor geen ervan hoef je van hotel te wisselen. Walt Disney World heeft vier themaparken en twee waterparken, Universal drie themaparken en een waterpark, en SeaWorld heeft naast zijn zeepark ook Aquatica en Discovery Cove. Drie andere liggen zo ver weg dat je er een dagtrip van maakt: LEGOLAND in Winter Haven, en Busch Gardens met het waterpark Adventure Island in Tampa.
 
-De parken kiezen is het makkelijke deel. De dagen zijn lastiger, want op 25 avonden in november en december 2026 zet Magic Kingdom zijn dagbezoekers drie tot vijf uur eerder dan normaal buiten, zodat de gasten van het kerstfeest het park voor zich alleen hebben. Een dag met korte rijen die zo vroeg ophoudt, is dan vaak de slechtere. In de [drukte-kalender van Orlando](/orlando) staat voor elke dag het beste park per resort, met die vroege sluiting meegerekend, en met de [reisplanner](/orlando#planner) zet je je parken op je reisdagen.
+De parken heb je snel gekozen, de dagen minder snel, want op 25 avonden in november en december 2026 zet Magic Kingdom zijn dagbezoekers drie tot vijf uur eerder dan normaal buiten, zodat de gasten van het kerstfeest het park voor zich alleen hebben. Een dag met korte rijen die zo vroeg ophoudt, is dan vaak de slechtere. In de [drukte-kalender van Orlando](/orlando) staat voor elke dag het beste park per resort, met die vroege sluiting meegerekend, en met de [reisplanner](/orlando#planner) zet je je parken op je reisdagen.
 
-De attracties met de langste rijen behandelen onze gidsen over [Magic Kingdom](/blog/magic-kingdom-wachttijden-tips) en [Universal Orlando](/blog/universal-orlando-wachttijden-tips) park voor park. Waar je slaapt, bepaalt of je Early Entry krijgt, hoe lang je rijdt en of je op sommige avonden twee uur langer in EPCOT mag blijven.
+De attracties met de langste rijen behandelen onze gidsen over [Magic Kingdom](/blog/magic-kingdom-wachttijden-tips) en [Universal Orlando](/blog/universal-orlando-wachttijden-tips) park voor park. In een deluxehotel van Disney blijf je tot in januari 2027 op maandag twee uur langer in EPCOT, en vanuit een hotel aan Hotel Plaza Boulevard kom je elke dag een half uur eerder in de vier Disney-parken.
 
 ## De parken rond Orlando en hun resorts
 
 ### Walt Disney World
 
-Walt Disney World ligt ten zuidwesten van de stad en heeft eigen bussen, boten, een monorail en een kabelbaan, de Skyliner. [Magic Kingdom](ref:magic-kingdom-park?calendar) opende op 1 oktober 1971, [EPCOT](ref:epcot?calendar) precies elf jaar later. [Hollywood Studios](ref:disneys-hollywood-studios?calendar) kwam er in 1989 bij, [Animal Kingdom](ref:disneys-animal-kingdom-theme-park?calendar) in 1998. Daarbij horen de waterparken [Typhoon Lagoon](ref:disneys-typhoon-lagoon-water-park) uit 1989 en [Blizzard Beach](ref:disneys-blizzard-beach-water-park) uit 1995. Typhoon Lagoon wordt tot 26 januari 2027 gerenoveerd en is tot die tijd dicht.
+Walt Disney World ligt ten zuidwesten van de stad en heeft eigen bussen, boten, een monorail en een kabelbaan, de Skyliner. Bij het resort horen de themaparken [Magic Kingdom](ref:magic-kingdom-park?calendar) (1 oktober 1971), [EPCOT](ref:epcot?calendar) (1 oktober 1982), [Hollywood Studios](ref:disneys-hollywood-studios?calendar) (1989) en [Animal Kingdom](ref:disneys-animal-kingdom-theme-park?calendar) (1998), en de waterparken [Typhoon Lagoon](ref:disneys-typhoon-lagoon-water-park) (1989) en [Blizzard Beach](ref:disneys-blizzard-beach-water-park) (1995). Typhoon Lagoon wordt tot 26 januari 2027 gerenoveerd en is tot die tijd dicht.
 
 ![Een volgepakt openluchttheater van achteren gezien, het publiek wacht in het donker. | Het theater van Fantasmic! in Hollywood Studios heeft zo’n 6.900 plaatsen, en ze zitten ruim voor de show al vol.](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -84,25 +84,25 @@ Walt Disney World ligt ten zuidwesten van de stad en heeft eigen bussen, boten, 
 
 [Universal Studios Florida](ref:universal-studios-florida?calendar) (1990) en [Islands of Adventure](ref:universal-islands-of-adventure?calendar) (1999) liggen poort aan poort. Daartussen ligt CityWalk met restaurants, bars en winkels, en de twee parken delen dezelfde parkeergarages. [Epic Universe](ref:universal-epic-universe?calendar), open sinds 22 mei 2025, ligt met de auto bijna zes kilometer verder naar het zuidoosten, met een eigen parkeergarage en een eigen hotel, het Helios Grand. Het waterpark [Volcano Bay](ref:universal-volcano-bay) opende in 2017 en heeft geen eigen parkeergarage. Sinds 26 oktober 2026 houdt het winterpauze, en volgens Universal gaat het uiterlijk op 1 april 2027 weer open.
 
-![Een trein van de VelociCoaster in een bocht, met de torens van Zweinstein erachter. | Twee themagebieden in één beeld in Islands of Adventure: Jurassic World en Zweinstein.](/media/universal-islands-of-adventure/welcome-cover.jpg)
+![Een trein van de VelociCoaster in een bocht, met de torens van Zweinstein erachter. | De VelociCoaster rijdt door Jurassic World, de torens erachter horen al bij Zweinstein, allebei in Islands of Adventure.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 ### SeaWorld Orlando
 
-[SeaWorld Orlando](ref:seaworld-orlando?calendar) opende op 15 december 1973 en ligt aan International Drive, tegenover het waterpark [Aquatica](ref:aquatica-orlando) uit 2008. Voor [Discovery Cove](ref:discovery-cove-orlando) boek je een vaste dag, en het aantal gasten is beperkt. Daarmee is Discovery Cove het enige park rond Orlando waarvoor je geen dag met korte rijen hoeft te zoeken. Alle drie zijn van United Parks & Resorts, net als Busch Gardens en Adventure Island in Tampa, en daarom gelden de combitickets van SeaWorld daar ook.
+Aan International Drive ligt sinds 15 december 1973 [SeaWorld Orlando](ref:seaworld-orlando?calendar), tegenover het waterpark [Aquatica](ref:aquatica-orlando) uit 2008. Voor [Discovery Cove](ref:discovery-cove-orlando) boek je een vaste dag, en het aantal gasten is beperkt. Daarmee is Discovery Cove het enige park rond Orlando waarvoor je geen dag met korte rijen hoeft te zoeken. Alle drie zijn van United Parks & Resorts, net als Busch Gardens en Adventure Island in Tampa, en daarom gelden de combitickets van SeaWorld daar ook.
 
 ### Dagtrips naar Winter Haven en Tampa
 
-[LEGOLAND Florida](ref:legoland-florida?calendar) opende op 15 oktober 2011 op het terrein van het vroegere Cypress Gardens in Winter Haven en is van Merlin Entertainments. Ernaast liggen het LEGOLAND Water Park, tot 12 februari 2027 in winterpauze, en het Peppa Pig Theme Park, waarvoor je een apart ticket nodig hebt. [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?calendar) bestaat sinds 31 maart 1959 en begon bij de brouwerij van Anheuser-Busch in Tampa. Het waterpark [Adventure Island](ref:adventure-island-tampa) ernaast begint zijn seizoen 2027 op 6 maart.
+Merlin Entertainments is eigenaar van [LEGOLAND Florida](ref:legoland-florida?calendar) in Winter Haven, dat op 15 oktober 2011 opende op het terrein van het vroegere Cypress Gardens. Ernaast liggen het LEGOLAND Water Park, tot 12 februari 2027 in winterpauze, en het Peppa Pig Theme Park, waarvoor je een apart ticket nodig hebt. [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?calendar) bestaat sinds 31 maart 1959 en begon bij de brouwerij van Anheuser-Busch in Tampa. Het waterpark [Adventure Island](ref:adventure-island-tampa) ernaast begint zijn seizoen 2027 op 6 maart.
 
 ## Wat de getallen in de drukte-kalender betekenen
 
-In de drukte-kalender heeft elk van de 16 parken voor elke dag een vakje, met een getal en een kleur. Bij de waterparken en Discovery Cove staat alleen of ze open zijn, omdat hun rijen geen voorspelling waard zijn.
+Elk van de 16 parken heeft in de drukte-kalender voor elke dag een vakje, met een getal en een kleur. Bij de waterparken en Discovery Cove staat alleen of ze open zijn, omdat hun rijen geen voorspelling waard zijn.
 
 ### De piekwachttijd
 
 Het getal in het vakje is de **piekwachttijd** van het park op die dag. Elke grote attractie telt mee met haar wachttijd op het drukste moment van de dag, en over alle grote attracties nemen we het gemiddelde. Op dat ene getal vergelijken we parken en dagen met elkaar.
 
-Het geldt niet voor elk uur. Sta je om negen uur bij de ingang, dan wacht je bij de meeste attracties korter, en zit je om negen uur nog aan het ontbijt, dan merk je het verschil bij je eerste rij. ’s Avonds wordt het in veel parken weer rustiger. In Magic Kingdom zijn de rijen bij de verschillende attracties op verschillende uren het langst, bij TRON pas tegen de avond.
+Het geldt niet voor elk uur. Sta je om negen uur bij de ingang, dan wacht je bij de meeste attracties korter, en zit je om negen uur nog aan het ontbijt, dan merk je het verschil bij je eerste rij. ’s Avonds worden de rijen in veel parken weer korter, bij TRON in Magic Kingdom juist dan pas echt lang. In Magic Kingdom heeft elke attractie haar langste rij sowieso op een ander uur.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=6
 
@@ -110,31 +110,31 @@ Het geldt niet voor elk uur. Sta je om negen uur bij de ingang, dan wacht je bij
 
 ### Wat de kleur betekent
 
-De kleur meet een dag af aan een gewone dag in hetzelfde park. Gewoon is de mediaan van alle openingsdagen die we in dat park hebben gemeten, uit hooguit de laatste anderhalf jaar.
+Voor de kleur vergelijken we de dag met een gewone dag in hetzelfde park. Gewoon is de mediaan van alle openingsdagen die we in dat park hebben gemeten, uit hooguit de laatste anderhalf jaar.
 
-Daarom kan een groen EPCOT een langere piekwachttijd hebben dan een rood Magic Kingdom. EPCOT is die dag rustiger dan normaal, Magic Kingdom drukker dan normaal, en toch sta je in EPCOT langer in de rij, omdat het daar op een gewone dag drukker is. Of je in EPCOT of in Magic Kingdom korter wacht, lees je dus af aan de minuten.
+Daarom kan een groen EPCOT een langere piekwachttijd hebben dan een rood Magic Kingdom. Groen betekent alleen dat EPCOT rustiger is dan op een gewone EPCOT-dag, en op zo’n dag is het drukker dan op een gewone dag in Magic Kingdom. Wil je weten waar je korter wacht, kijk dan naar de minuten.
 
 ### Waar de getallen vandaan komen en hoe ver ze reiken
 
-park.fan slaat elke vijf minuten de wachttijd op die elk park voor elk van zijn attracties opgeeft. Van die metingen leren onze voorspellingsmodellen, samen met de openingstijden, de schoolvakanties en het weer. Openingstijden, Early Entry en de avonden met een eigen ticket komen uit de kalenders van de parken. Seizoenen, festivals en feesten voeren we met de hand in en controleren we op de sites van de parken.
+park.fan slaat elke vijf minuten de wachttijd op die elk park voor elk van zijn attracties opgeeft. Van die metingen leren onze [voorspellingsmodellen](/hoe-park-fan-werkt), samen met de openingstijden, de schoolvakanties en het weer. Openingstijden, Early Entry en de avonden met een eigen ticket komen uit de kalenders van de parken. Seizoenen voeren we met de hand in, net als festivals en feesten, en we controleren ze op de sites van de parken.
 
-Voor de komende 60 dagen rekent ons model elke dag attractie voor attractie uit. Verder vooruit staat bij een dag dezelfde weekdag van vorig jaar, zoals we die hebben gemeten, met de vermelding “vorig jaar”, en ook de reisplanner en de pagina’s over de beste reistijd rekenen daar met vorig jaar. Onze voorspelling op lange termijn lag voor die dagen ver onder wat we op dezelfde dagen een jaar eerder hadden gemeten, en maakte tussen de dagen nauwelijks verschil. Een stip in het vakje betekent dat het park zijn openingstijden voor die dag nog niet heeft gepubliceerd. De piekwachttijd staat er dan al, een vroege sluiting voor een feest nog niet.
+Voor de komende 60 dagen rekent ons model elke dag attractie voor attractie uit. Verder vooruit staat bij een dag dezelfde weekdag van vorig jaar, zoals we die hebben gemeten, met de vermelding “vorig jaar”, en ook in de reisplanner en op de pagina’s over de beste reistijd staat voor die dagen vorig jaar. Onze voorspelling op lange termijn lag voor die dagen ver onder wat we op dezelfde dagen een jaar eerder hadden gemeten, en maakte tussen de dagen nauwelijks verschil. Een stip in het vakje betekent dat het park zijn openingstijden voor die dag nog niet heeft gepubliceerd. De piekwachttijd staat er dan al, een vroege sluiting voor een feest nog niet.
 
-Een dag later vergelijken we elke voorspelling met de gemeten wachttijd, en de gemiddelde afwijking in minuten staat openbaar bij [Fancast](/fancast), ons voorspellingsmodel. Hoe verder een dag weg is, hoe groter die wordt. In de reisplanner staat bij elk plan hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten.
+Een dag later vergelijken we elke voorspelling met de gemeten wachttijd, en de gemiddelde afwijking in minuten staat openbaar bij [Fancast](/fancast), ons voorspellingsmodel. Hoe verder een dag weg is, hoe groter die wordt. Bij elk plan in de reisplanner staat hoeveel minuten de voorspelling voor één attractie op één dag ernaast kan zitten.
 
-We ronden af op vijf minuten. Twee dagen die minder dan vijf minuten verschillen, gelden daarom als even goed, en de beste dagen van een park vormen een groep, geen ranglijst. Hoe we voor alle parken meten en voorspellen, staat in [Hoe park.fan werkt](/hoe-park-fan-werkt).
+We ronden af op vijf minuten. Twee dagen die minder dan vijf minuten verschillen, gelden daarom als even goed, welke van de twee ook bovenaan staat bij de beste dagen.
 
 ## Feestavonden, weekdagen en de ring in de kalender
 
-Binnen een resort liggen de parken een paar autominuten uit elkaar. Een Disney-dag verschuif je zonder moeite van dinsdag naar woensdag, en het loont om elk park op zijn beste dag van de reis te zetten. In de drukte-kalender krijgt per resort het park met de laagste piekwachttijd van die dag een ring, en een vroege sluiting telt daarbij tegen hem.
+Binnen een resort liggen de parken een paar autominuten uit elkaar. Een Disney-dag verschuif je zonder moeite van dinsdag naar woensdag, en het loont om elk park op zijn beste dag van de reis te zetten. Per resort krijgt het park met de laagste piekwachttijd van die dag een ring in de drukte-kalender, en een vroege sluiting telt daarbij tegen hem.
 
 ### Waarom een vroege sluiting meetelt
 
 Op de 25 avonden van Mickey's Very Merry Christmas Party moet iedereen zonder feestticket om 18 uur Magic Kingdom uit. Op dagen zonder feest sluit het park meestal tussen 21 en 23 uur. Hollywood Studios sluit op de 15 avonden van Disney Jollywood Nights om 19 uur in plaats van 21 uur. Voor beide feesten heb je een eigen ticket nodig.
 
-Elk uur minder in het park is ook een uur minder voor attracties. In de kalender en de reisplanner telt een dag daarom naar de uren die je als dagbezoeker hebt, en een feestdag weegt tot anderhalf keer zo zwaar als een volle dag met dezelfde piekwachttijd. Op de meeste feestavonden in november en december 2026 krijgt zo Animal Kingdom de ring, ook als Magic Kingdom die dag een iets kortere piekwachttijd heeft. Animal Kingdom sluit bijna elke dag om 18 uur, dus voor dat park is het een gewone dag.
+De uren die een feestavond je afneemt, mis je voor attracties, en daarom telt een dag in de kalender en de reisplanner naar de uren die je als dagbezoeker hebt. Een feestdag weegt daardoor tot anderhalf keer zo zwaar als een volle dag met dezelfde piekwachttijd. Op de meeste feestavonden in november en december 2026 krijgt zo Animal Kingdom de ring, ook als Magic Kingdom die dag een iets kortere piekwachttijd heeft. Animal Kingdom sluit bijna elke dag om 18 uur, dus voor dat park is het een gewone dag.
 
-Disney After Hours kost ook extra, maar begint pas na de gewone sluiting, van januari tot augustus 2027 op geselecteerde avonden in Magic Kingdom, EPCOT en Hollywood Studios. Dagbezoekers missen op die dagen geen uur.
+Disney After Hours kost ook extra, maar begint pas na de gewone sluiting, van januari tot augustus 2027 op geselecteerde avonden in Magic Kingdom, EPCOT en Hollywood Studios. Omdat geen dagbezoeker daarvoor eerder weg hoeft, telt zo’n avond in de kalender niet tegen het park.
 
 Bij Universal is de avond in de herfst kort. Op de avonden van Halloween Horror Nights moesten dagbezoekers in 2026 om 17 uur Universal Studios uit, op 49 avonden tussen 28 augustus en 1 november. Het halloweenfeest in Magic Kingdom liep in 2026 op 38 avonden van 7 augustus tot 31 oktober. Voor 2027 liggen beide reeksen nog niet vast, en tot de parken de avonden publiceren, staat er in de kalender geen vroege sluiting.
 
@@ -146,7 +146,7 @@ Magic Kingdom, EPCOT, Hollywood Studios en Epic Universe zijn op alle dagen van 
 
 ```
 
-Of een dag in Magic Kingdom druk wordt, hangt meer af van vakanties, feestdagen en de feestavonden dan van de weekdag. Van de vier Disney-parken heeft het de meeste avonden met een eigen ticket.
+In Magic Kingdom maken vakanties, feestdagen en de feestavonden een dag vol, de weekdag nauwelijks. Van de vier Disney-parken heeft het de meeste avonden met een eigen ticket.
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -170,31 +170,31 @@ SeaWorld ligt maar een paar minuten van de Universal-hotels en International Dri
 
 Slaap je in een van de Disney-hotels, dan kom je met **Early Entry** elke dag een half uur voor alle anderen in elk van de vier Disney-themaparken, ook op de dag van aankomst en vertrek. Disney biedt dat aan tot eind 2027. Hetzelfde geldt in 15 andere hotels, waaronder de Swan, de Dolphin en de Swan Reserve, het Four Seasons, het Waldorf Astoria en Shades of Green. Lightning Lane, waarmee je je bij Disney langs de rij koopt, boek je als hotelgast zeven dagen voor aankomst, alle anderen drie dagen voor de parkdag.
 
-In de Deluxe- en Deluxe Villa-hotels van Disney en in de Swan, de Dolphin, de Swan Reserve en Shades of Green komen daar op geselecteerde avonden de **Extended Evening Hours** bij, twee uur na de gewone sluiting en met een deel van de attracties. Tot eind december 2026 vallen ze op maandag in EPCOT en op woensdag in Animal Kingdom, in januari 2027 op maandag in EPCOT en op woensdag in Magic Kingdom. In de reisplanner kies je daarvoor “Disney-deluxehotel”.
+In de Deluxe- en Deluxe Villa-hotels van Disney en in de Swan, de Dolphin, de Swan Reserve en Shades of Green komen daar op geselecteerde avonden de **Extended Evening Hours** bij, twee uur na de gewone sluiting en met een deel van de attracties. Tot eind december 2026 vallen ze op maandag in EPCOT en op woensdag in Animal Kingdom, in januari 2027 op maandag in EPCOT en op woensdag in Magic Kingdom.
 
-Wat Early Entry oplevert, hangt van de dag af. Ik reken op één grote attractie extra, op een goede ochtend twee, en op een slechte ochtend één kop koffie extra. Belangrijker vind ik dat er vanaf elk Disney-hotel gratis bussen, boten, de monorail of de Skyliner naar de parken gaan, zodat ik geen auto nodig heb.
+Met Early Entry reken ik op een gewone ochtend op één grote attractie extra, op een goede op twee en op een slechte op één kop koffie extra. Belangrijker vind ik dat er vanaf elk Disney-hotel gratis bussen, boten, de monorail of de Skyliner naar de parken gaan, zodat ik geen auto nodig heb.
 
 ### In een hotel bij Disney Springs
 
-Aan Hotel Plaza Boulevard naast Disney Springs staan hotels die niet van Disney zijn, maar wel op Disney’s lijst voor Early Entry staan, onder meer het Hilton Orlando Lake Buena Vista, het Hilton Orlando Buena Vista Palace, het Drury Plaza Hotel, het DoubleTree Suites by Hilton, het Holiday Inn Orlando en de twee Wyndhams. Hun gasten komen elke dag een half uur eerder in de vier Disney-themaparken, maar de Extended Evening Hours krijgen ze niet.
+Aan Hotel Plaza Boulevard naast Disney Springs staan hotels die niet van Disney zijn, maar wel op Disney’s lijst voor Early Entry staan, onder meer het Hilton Orlando Lake Buena Vista, het Hilton Orlando Buena Vista Palace, het Drury Plaza Hotel, het DoubleTree Suites by Hilton, het Holiday Inn Orlando, het Renaissance Orlando Resort and Spa, vroeger het B Resort, en de twee Wyndhams. Hun gasten komen elke dag een half uur eerder in de vier Disney-themaparken, maar de Extended Evening Hours krijgen ze niet.
 
-Voor Disney en Universal in één reis is dat mijn eerste keus. Vandaar rijd je in 13 tot 20 minuten naar de parkeerplaatsen van de vier Disney-parken, in 20 naar Universal Studios en in 24 naar Epic Universe, en Early Entry zit erbij. In de reisplanner kies je daarvoor “Disney Springs-hotel”, en het plan rekent met de vroege toegang en de rijtijden vanaf Hotel Plaza Boulevard.
+Voor Disney en Universal in één reis is dat mijn eerste keus. Vandaar rijd je in 13 tot 20 minuten naar de parkeerplaatsen van de vier Disney-parken, in 20 naar Universal Studios en in 24 naar Epic Universe, en Early Entry zit erbij.
 
 ### In een Universal-hotel
 
-Universal heeft elf hotels. Tot de Signature Collection horen het Hard Rock Hotel, Loews Portofino Bay, Loews Royal Pacific, Loews Sapphire Falls en het Helios Grand bij Epic Universe, en daarnaast zijn er drie Prime Value-hotels en drie Value Inns. Alle gasten krijgen **Early Park Admission**: tot een uur voor de opening toegang tot een van de parken, voor een aantal attracties. Welke parken eerder opengaan, bepaalt Universal per dag, en in november en december 2026 zijn dat Islands of Adventure en Epic Universe.
+Van de elf hotels van Universal horen er vijf tot de Signature Collection: het Hard Rock Hotel, Loews Portofino Bay, Loews Royal Pacific, Loews Sapphire Falls en het Helios Grand bij Epic Universe. Daarnaast zijn er drie Prime Value-hotels en drie Value Inns. Alle gasten krijgen **Early Park Admission**: tot een uur voor de opening toegang tot een van de parken, voor een aantal attracties. Universal bepaalt per dag welke parken eerder opengaan, en in november en december 2026 zijn dat Islands of Adventure en Epic Universe.
 
-In drie hotels, Hard Rock, Portofino Bay en Royal Pacific, zit **Express Unlimited** bij de kamer. Daarmee ben je in Universal Studios en Islands of Adventure bij elke attractie met Express zo vaak je wilt sneller aan de beurt, maar in Epic Universe geldt het niet. In de reisplanner heten deze drie “Universal Premier-hotel”. Het Helios Grand heeft in plaats daarvan een eigen ingang naar Epic Universe. Naar de parken rijden gratis bussen of watertaxi’s, en vanaf sommige hotels loop je.
+In drie hotels, Hard Rock, Portofino Bay en Royal Pacific, zit **Express Unlimited** bij de kamer. Daarmee ben je in Universal Studios en Islands of Adventure bij elke attractie met Express zo vaak je wilt sneller aan de beurt, maar in Epic Universe geldt het niet. Het Helios Grand heeft in plaats daarvan een eigen ingang naar Epic Universe. Naar de parken rijden gratis bussen of watertaxi’s, en vanaf sommige hotels loop je.
 
 ### Hotels buiten de resorts
 
-De meeste hotels buiten de resorts liggen in drie buurten. Aan International Drive zit je tussen Universal en SeaWorld, in Lake Buena Vista rond Disney Springs, en in Kissimmee aan Highway US-192 ten oosten van de ingang van Walt Disney World. Vroege toegang krijg je daar niet, behalve in de hotels op Disney’s lijst.
+Buiten de resorts slaap je meestal aan International Drive tussen Universal en SeaWorld, in Lake Buena Vista rond Disney Springs of in Kissimmee aan Highway US-192, ten oosten van de ingang van Walt Disney World. Vroege toegang krijg je daar niet, behalve in de hotels op Disney’s lijst.
 
 Ligt het zwaartepunt bij Universal, dan zou ik aan International Drive of in een Universal-hotel slapen, want van allebei rijd je in minder dan tien minuten naar alle drie de Universal-parken. Kissimmee ligt dichter bij Hollywood Studios en Animal Kingdom dan elke andere buurt behalve de Disney-hotels zelf, maar het verst van Universal.
 
 ## Onderweg tussen de parken
 
-De rijtijden hebben we met OpenStreetMap berekend, met de auto zonder verkeer tot de parkeerplaats van het park. Voor de Disney-hotels begint de rit bij Caribbean Beach Resort, midden in het resort, voor Universal aan Universal Boulevard bij het Royal Pacific, aan International Drive bij ICON Park, in Lake Buena Vista aan Hotel Plaza Boulevard naast Disney Springs en in Kissimmee aan de US-192. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center aan de overkant van de Seven Seas Lagoon, en vandaar is het met de monorail of de veerboot nog zo’n 15 minuten, wachten meegerekend. Volcano Bay bereik je met de shuttle vanaf de parkeergarages van de Studios, ook in ongeveer 15 minuten. Files zitten in geen van deze getallen.
+De rijtijden hebben we met OpenStreetMap berekend, met de auto zonder verkeer tot de parkeerplaats van het park. Voor de Disney-hotels begint de rit bij Caribbean Beach Resort, midden in het resort, voor Universal aan Universal Boulevard bij het Royal Pacific, aan International Drive bij ICON Park, in Lake Buena Vista aan Hotel Plaza Boulevard naast Disney Springs en in Kissimmee aan de US-192. De parkeerplaats van Magic Kingdom is het Transportation and Ticket Center aan de overkant van de Seven Seas Lagoon, en vandaar is het met de monorail of de veerboot nog zo’n 15 minuten, wachten meegerekend. Volcano Bay bereik je met de shuttle vanaf de parkeergarages van de Studios, ook in ongeveer 15 minuten.
 
 **Rijtijd met de auto in minuten, zonder verkeer**
 
@@ -217,7 +217,7 @@ Orlando International Airport, kortweg MCO, ligt ten zuidoosten van de stad. Van
 
 ### Tussen de parken
 
-Binnen Walt Disney World heb je geen auto nodig. De bussen van Disney rijden tussen alle hotels en parken. De monorail verbindt het Transportation and Ticket Center met Magic Kingdom en met EPCOT, en met overstappen ben je van park tot park zo’n half uur onderweg. De Skyliner gaat vanaf Caribbean Beach Resort in ongeveer een kwartier naar de achteringang van EPCOT, de International Gateway, en in dezelfde tijd naar Hollywood Studios. Tussen EPCOT en Hollywood Studios vaart ook een boot, en lopen duurt zo’n 30 minuten.
+De bussen van Disney rijden tussen alle hotels en parken. De monorail verbindt het Transportation and Ticket Center met Magic Kingdom en met EPCOT, en met overstappen ben je van park tot park zo’n half uur onderweg. De Skyliner gaat vanaf Caribbean Beach Resort in ongeveer een kwartier naar de achteringang van EPCOT, de International Gateway, en in dezelfde tijd naar Hollywood Studios. Tussen EPCOT en Hollywood Studios vaart ook een boot, en lopen duurt zo’n 30 minuten.
 
 Bij Universal loop je van de Studios naar Islands of Adventure in ongeveer tien minuten door CityWalk. De andere verbinding is de Hogwarts Express van Diagon Alley naar Hogsmeade, en daarvoor heb je een park-to-park-ticket nodig. Naar Epic Universe rijden shuttlebussen van Universal, en met de auto is het vanaf de parkeergarages van de Studios elf minuten.
 
@@ -231,11 +231,11 @@ Bij Disney en Universal koop je tickets met een vaste datum. SeaWorld en LEGOLAN
 
 De tickets van Disney zijn er voor één tot tien dagen. De dag die je bij het kopen kiest, is de eerste dag, ook als je hem bij het zwembad doorbrengt, en dagen die je niet gebruikt, vervallen. De dagen verdelen zich over een periode die met de lengte meegroeit. Een ticket voor vier dagen gebruik je binnen zeven kalenderdagen, een voor zeven dagen binnen tien en een voor tien dagen binnen veertien. Een eendagsticket geldt voor één park.
 
-Met **Park Hopper** ga je op dezelfde dag naar een tweede park, op elk moment nadat je het eerste bent binnengegaan, en zo’n dag telt als één dag. Met de optie Water Park and Sports, samen met de hopper Park Hopper Plus genoemd, krijg je er zoveel bezoeken aan de waterparken en het minigolf bij als het ticket dagen heeft. Een parkreservering heb je met een ticket sinds 9 januari 2024 niet meer nodig. Voor aankomsten van 3 januari tot 22 mei 2027 is er ook het 4-Park Magic Ticket, één dag in elk van de vier parken binnen zes dagen, zonder hopper.
+Met **Park Hopper** ga je op dezelfde dag naar een tweede park, op elk moment nadat je het eerste bent binnengegaan, en daarvoor gebruik je maar één dag van je ticket. Een voorbeeld met tien dagen in december, met en zonder hopper, vind je in ons [stuk over de reisplanner](/blog/reisplanner-orlando). Met de optie Water Park and Sports, samen met de hopper Park Hopper Plus genoemd, krijg je er zoveel bezoeken aan de waterparken en het minigolf bij als het ticket dagen heeft. Een parkreservering heb je met een ticket sinds 9 januari 2024 niet meer nodig. Voor aankomsten van 3 januari tot 22 mei 2027 is er ook het 4-Park Magic Ticket, één dag in elk van de vier parken binnen zes dagen, zonder hopper.
 
 ### Universal Orlando
 
-De tickets van Universal zijn er voor één tot vijf dagen, en je gebruikt ze binnen een periode die begint op de gekozen datum: een ticket voor twee dagen binnen vier dagen, een voor drie dagen binnen vijf en een voor vijf dagen binnen zeven. Met de tickets vanaf drie dagen kom je in Epic Universe. Met één of twee dagen heb je daarvoor een apart Epic Universe-ticket nodig, of het pakket van één dag Studios of Islands of Adventure plus één dag Epic Universe. De prijzen van de tickets en van de Express Pass staan in onze [Universal-gids](/blog/universal-orlando-wachttijden-tips). Met **Park-to-Park** wissel je op dezelfde dag tussen de parken en rijd je met de Hogwarts Express.
+Bij Universal koop je één tot vijf dagen, en de periode begint op de gekozen datum: twee dagen binnen vier, drie binnen vijf en vijf binnen zeven. Met de tickets vanaf drie dagen kom je in Epic Universe. Met één of twee dagen heb je daarvoor een apart Epic Universe-ticket nodig, of het pakket van één dag Studios of Islands of Adventure plus één dag Epic Universe. De prijzen van de tickets en van de Express Pass vind je in onze [Universal-gids](/blog/universal-orlando-wachttijden-tips). Met **Park-to-Park** wissel je op dezelfde dag tussen de parken en rijd je met de Hogwarts Express.
 
 ### SeaWorld, Busch Gardens en LEGOLAND
 
@@ -243,9 +243,9 @@ Naast het dagticket verkoopt SeaWorld combitickets voor twee, drie of vier parke
 
 ### Tickets voor 14 dagen uit het Verenigd Koninkrijk
 
-Voor lange reizen zijn de tickets gemaakt die buiten de VS worden verkocht. Het 14-Day Magic Ticket van Disney is voor inwoners van het Verenigd Koninkrijk en Ierland. Het geldt op 14 parkdagen binnen 18 dagen, met Park Hopper, waterparken en minigolf, en een dag in een waterpark kost geen van de 14 parkdagen. De tickets voor 14 dagen van Universal verkopen ook verkopers in andere landen. Ze gelden op 14 dagen achter elkaar, elke dag, met Park-to-Park en Epic Universe. Voor aankomsten tot eind maart 2027 heet het ticket Three Park Adventure Ticket en geldt het zonder Volcano Bay, daarna is er weer het All Parks Ticket met het waterpark.
+Voor lange reizen zijn de tickets gemaakt die buiten de VS worden verkocht. Het 14-Day Magic Ticket van Disney is voor inwoners van het Verenigd Koninkrijk en Ierland. Het geldt op 14 parkdagen binnen 18 dagen, met Park Hopper, waterparken en minigolf, en een dag in een waterpark kost geen van de 14 parkdagen. De tickets voor 14 dagen van Universal zijn ook te koop bij verkooppunten in andere landen. Ze gelden op 14 dagen achter elkaar, elke dag, met Park-to-Park en Epic Universe. Voor aankomsten tot eind maart 2027 heet het ticket Three Park Adventure Ticket en geldt het zonder Volcano Bay, daarna is er weer het All Parks Ticket met het waterpark.
 
-Bij het ticket voor 14 dagen van Universal telt dus elke kalenderdag, bij dat van Disney alleen de dag waarop je naar een park gaat. Een voorbeeld met tien dagen in december, met en zonder hopper, staat in ons [stuk over de reisplanner](/blog/reisplanner-orlando).
+Een dag aan het zwembad kost je met het ticket van Universal een van de 14 dagen, met dat van Disney geen, zolang je binnen de 18 dagen blijft.
 
 ## Het jaar in Orlando
 
@@ -261,7 +261,7 @@ In Epic Universe waren januari en februari net zo druk als de week na Kerstmis, 
 
 ```
 
-De reizen van tien dagen met de laagste piekwachttijd in 2027 staan op de pagina’s over de [beste reistijd voor Orlando](/orlando/beste-tijd-om-te-bezoeken), apart ook voor [Disney World](/orlando/beste-tijd-om-te-bezoeken/disney-world) en [Universal Orlando](/orlando/beste-tijd-om-te-bezoeken/universal-orlando). Gerekend met de wachttijden van 2026 vallen ze half april, eind oktober tot begin november en half mei, terwijl februari en maart tot de drukste weken van het jaar horen.
+De reizen van tien dagen met de laagste piekwachttijd in 2027 staan op de pagina’s over de [beste reistijd voor Orlando](/orlando/beste-tijd-om-te-bezoeken), apart ook voor [Disney World](/orlando/beste-tijd-om-te-bezoeken/disney-world) en [Universal Orlando](/orlando/beste-tijd-om-te-bezoeken/universal-orlando). Gerekend met de wachttijden van 2026 vallen ze half april, eind oktober tot begin november en half mei.
 
 ### Het weer per maand
 
@@ -282,11 +282,11 @@ De reizen van tien dagen met de laagste piekwachttijd in 2027 staan op de pagina
 | november  | 24,8 °C | 16,7 °C | 66 mm  |
 | december  | 22,6 °C | 13,9 °C | 69 mm  |
 
-In de reisplanner en op de pagina’s over de beste reistijd telt een hete dag slechter: vanaf 35 graden in de weersverwachting, en verder vooruit vanaf een langjarig gemiddelde van 31,5 graden, en dat haalt Magic Kingdom van eind juni tot half juli.
+Een hete dag telt in de reisplanner en op de pagina’s over de beste reistijd slechter: vanaf 35 graden in de weersverwachting, en verder vooruit vanaf een langjarig gemiddelde van 31,5 graden, en dat haalt Magic Kingdom van eind juni tot half juli.
 
 ### Schoolvakanties en feestdagen 2026/27
 
-In de kalender staan de schoolvakanties van Orange County, dus van Orlando zelf, en de Amerikaanse feestdagen. Scholen in andere staten bepalen hun vakanties zelf.
+De kalender bevat de schoolvakanties van Orange County, dus van Orlando zelf, en de Amerikaanse feestdagen. Scholen in andere staten bepalen hun vakanties zelf.
 
 - Thanksgiving: 23 tot en met 27 november 2026, Thanksgiving zelf op de 26e
 - Wintervakantie: 21 december 2026 tot en met 1 januari 2027, ook vrij op 4 januari
@@ -301,37 +301,37 @@ In de kalender staan de schoolvakanties van Orange County, dus van Orlando zelf,
 
 ### Evenementen en feestavonden 2026/27
 
-| Periode                                 | Evenement                                          | Park                                    | Eigen ticket |
-| --------------------------------------- | -------------------------------------------------- | --------------------------------------- | ------------ |
-| 6 nov. 2026 tot 4 jan. 2027             | Christmas Celebration                              | SeaWorld Orlando                        | nee          |
-| 7 nov. 2026 tot 5 jan. 2027, 15 avonden | Disney Jollywood Nights                            | Hollywood Studios                       | ja           |
-| 8 nov. tot 22 dec. 2026, 25 avonden     | Mickey's Very Merry Christmas Party                | Magic Kingdom                           | ja           |
-| 13 nov. 2026 tot 6 jan. 2027            | Holidays at Walt Disney World                      | alle vier Disney-parken                 | nee          |
-| 13 nov. 2026 tot 4 jan. 2027            | Christmas Town                                     | Busch Gardens                           | nee          |
-| 14 nov. 2026 tot 3 jan. 2027            | Holidays at Universal                              | Studios, Islands, Epic Universe         | nee          |
-| 21 nov. 2026 tot 3 jan. 2027, 26 dagen  | Christmas Bricktacular                             | LEGOLAND                                | nee          |
-| 27 nov. tot 30 dec. 2026                | Festival of the Holidays, Candlelight Processional | EPCOT                                   | nee          |
-| 6 tot 10 jan. 2027                      | Walt Disney World Marathon Weekend                 | start bij EPCOT                         | startbewijs  |
-| 11 jan. tot 25 aug. 2027                | Disney After Hours                                 | Magic Kingdom, EPCOT, Hollywood Studios | ja           |
-| 15 jan. tot 1 maart 2027                | Festival of the Arts                               | EPCOT                                   | nee          |
-| 22 en 23 jan. 2027                      | Rock the Universe                                  | Universal Studios                       | ja           |
-| 29 jan. tot 16 mei 2027                 | Seven Seas Food Festival                           | SeaWorld Orlando                        | nee          |
-| 6 feb. tot 27 maart 2027                | Mardi Gras                                         | Universal Studios                       | nee          |
-| 25 feb. tot 1 maart 2027                | Disney Princess Half Marathon Weekend              | start bij EPCOT                         | startbewijs  |
-| 10 maart tot 31 mei 2027                | Flower & Garden Festival                           | EPCOT                                   | nee          |
-| 8 tot 11 apr. 2027                      | runDisney Springtime Surprise Weekend              | start bij EPCOT                         | startbewijs  |
-| aug. tot okt. 2027, data volgen         | Mickey's Not-So-Scary Halloween Party              | Magic Kingdom                           | ja           |
-| eind aug. tot okt. 2027, data volgen    | Halloween Horror Nights                            | Universal Studios                       | ja           |
-| eind aug. tot nov. 2027, data volgen    | Food & Wine Festival                               | EPCOT                                   | nee          |
-| sept. en okt. 2027                      | Howl-O-Scream                                      | SeaWorld Orlando, Busch Gardens         | ja           |
+| Periode                                 | Evenement                                                                    | Park                                    | Eigen ticket |
+| --------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------------- | ------------ |
+| 6 nov. 2026 tot 4 jan. 2027             | [Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026)   | SeaWorld Orlando                        | nee          |
+| 7 nov. 2026 tot 5 jan. 2027, 15 avonden | Disney Jollywood Nights                                                      | Hollywood Studios                       | ja           |
+| 8 nov. tot 22 dec. 2026, 25 avonden     | Mickey's Very Merry Christmas Party                                          | Magic Kingdom                           | ja           |
+| 13 nov. 2026 tot 6 jan. 2027            | [Holidays at Walt Disney World](/blog/kerst-nieuwjaar-orlando-parijs-2026)   | alle vier Disney-parken                 | nee          |
+| 13 nov. 2026 tot 4 jan. 2027            | [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026)              | Busch Gardens                           | nee          |
+| 14 nov. 2026 tot 3 jan. 2027            | [Holidays at Universal](/blog/kerst-nieuwjaar-orlando-parijs-2026)           | Studios, Islands, Epic Universe         | nee          |
+| 21 nov. 2026 tot 3 jan. 2027, 26 dagen  | [Christmas Bricktacular](/news/legoland-florida-christmas-bricktacular-2026) | LEGOLAND                                | nee          |
+| 27 nov. tot 30 dec. 2026                | Festival of the Holidays, Candlelight Processional                           | EPCOT                                   | nee          |
+| 6 tot 10 jan. 2027                      | Walt Disney World Marathon Weekend                                           | start bij EPCOT                         | startbewijs  |
+| 11 jan. tot 25 aug. 2027                | Disney After Hours                                                           | Magic Kingdom, EPCOT, Hollywood Studios | ja           |
+| 15 jan. tot 1 maart 2027                | Festival of the Arts                                                         | EPCOT                                   | nee          |
+| 22 en 23 jan. 2027                      | Rock the Universe                                                            | Universal Studios                       | ja           |
+| 29 jan. tot 16 mei 2027                 | Seven Seas Food Festival                                                     | SeaWorld Orlando                        | nee          |
+| 6 feb. tot 27 maart 2027                | Mardi Gras                                                                   | Universal Studios                       | nee          |
+| 25 feb. tot 1 maart 2027                | Disney Princess Half Marathon Weekend                                        | start bij EPCOT                         | startbewijs  |
+| 10 maart tot 31 mei 2027                | Flower & Garden Festival                                                     | EPCOT                                   | nee          |
+| 8 tot 11 apr. 2027                      | runDisney Springtime Surprise Weekend                                        | start bij EPCOT                         | startbewijs  |
+| aug. tot okt. 2027, data volgen         | Mickey's Not-So-Scary Halloween Party                                        | Magic Kingdom                           | ja           |
+| eind aug. tot okt. 2027, data volgen    | Halloween Horror Nights                                                      | Universal Studios                       | ja           |
+| eind aug. tot nov. 2027, data volgen    | Food & Wine Festival                                                         | EPCOT                                   | nee          |
+| sept. en okt. 2027                      | Howl-O-Scream                                                                | SeaWorld Orlando, Busch Gardens         | ja           |
 
 ### Januari tot april
 
-Na nieuwjaar lopen de parken leeg. Van januari tot april is het zacht, en in februari en maart regent het minder dan in elke andere maand. Druk werd het in 2026 toch, het meest in februari en maart. In die weken vallen Presidents' Day, de voorjaarsvakantie van Orange County, het Festival of the Arts in EPCOT en Mardi Gras in Universal Studios. In april was het in de Disney-parken iets rustiger dan in maart en in de Universal-parken ongeveer even druk, en half april valt een van de drie beste reizen op de pagina’s over de beste reistijd.
+Na nieuwjaar lopen de parken leeg. Van januari tot april is het zacht, en in februari en maart regent het minder dan in elke andere maand. Druk werd het in 2026 toch, het meest in februari en maart. In die weken vallen Presidents' Day, de voorjaarsvakantie van Orange County, het Festival of the Arts in EPCOT en Mardi Gras in Universal Studios. In april was het in de Disney-parken iets rustiger dan in maart en in de Universal-parken ongeveer even druk.
 
 ### Mei tot augustus
 
-Half mei, tussen de voorjaarsvakantie en Memorial Day op 31 mei, ligt de volgende goede periode voor de reis. Met de zomervakantie vanaf 27 mei komen de gezinnen, en de drukste weken van de zomer waren in 2026 eind mei en begin juni en de tweede helft van juli. Het is dan heet en nat, en de vier maanden van juni tot en met september zijn de natste van het jaar.
+Met de zomervakantie vanaf 27 mei komen de gezinnen, en de drukste weken van de zomer waren in 2026 eind mei en begin juni en de tweede helft van juli. Het is dan heet en nat, en de vier maanden van juni tot en met september zijn de natste van het jaar.
 
 Het orkaanseizoen begint op 1 juni. Volgens het National Hurricane Center ontstaat de eerste storm met een naam meestal half tot eind juni, de eerste orkaan begin tot half augustus. Met het nieuwe schooljaar in Orange County, in 2026 op 11 augustus, werden de parken weer leger. Vanaf augustus loopt het halloweenfeest in Magic Kingdom, en vanaf eind augustus Halloween Horror Nights.
 
@@ -339,17 +339,17 @@ Het orkaanseizoen begint op 1 juni. Volgens het National Hurricane Center ontsta
 
 De rustigste dagen van ons eerste jaar vielen eind augustus en begin september 2026, net voor het lange weekend rond Labor Day. De hele septembermaand bleven de zaterdagen drukker dan de doordeweekse dagen. Op 10 september ligt het hoogtepunt van het orkaanseizoen, en de meeste stormen ontstaan tussen half augustus en half oktober.
 
-Een reis die een dag tussen 15 augustus en 15 oktober raakt, zakt daarom op de pagina’s over de beste reistijd en bij het zoeken naar reisdata in de reisplanner naar achteren. Zo staat de rustigste week van ons eerste jaar in geen van de voorgestelde reizen. Plan je toch in die weken, dan staat in de reisplanner bij elke dag “piek van het orkaanseizoen”.
+Een reis die een dag tussen 15 augustus en 15 oktober raakt, zakt daarom op de pagina’s over de beste reistijd en bij het zoeken naar reisdata in de reisplanner naar achteren, en de rustigste week van ons eerste jaar staat in geen van de voorgestelde reizen. Plan je toch in die weken, dan staat in de reisplanner bij elke dag “piek van het orkaanseizoen”.
 
-De week rond 12 oktober 2026, toen de scholen in Orange County vrij hadden, was een van de drukste van de herfst. Eind oktober was het weer rustiger, en van eind oktober tot begin november loopt een van de drie beste reizen.
+De week rond 12 oktober 2026, toen de scholen in Orange County vrij hadden, was een van de drukste van de herfst. Eind oktober was het weer rustiger.
 
 ### November en december
 
-Het orkaanseizoen eindigt op 30 november. Met de week van Thanksgiving begint het kerstseizoen, en de weken rond Thanksgiving en tussen Kerstmis en nieuwjaar liggen in onze voorspelling boven de adventsweken daartussen. De kerstprogramma’s en oudejaarsavonden bij Disney en Universal staan in onze gids over [kerst en oud en nieuw in Orlando en Parijs](/blog/kerst-nieuwjaar-orlando-parijs-2026), het nieuws bij [SeaWorld](/news/seaworld-orlando-christmas-celebration-2026), in [Busch Gardens](/news/busch-gardens-tampa-christmas-town-2026) en in [LEGOLAND](/news/legoland-florida-christmas-bricktacular-2026) in eigen berichten.
+Het orkaanseizoen eindigt op 30 november. Met de week van Thanksgiving begint het kerstseizoen, en de weken rond Thanksgiving en tussen Kerstmis en nieuwjaar liggen in onze voorspelling boven de adventsweken daartussen.
 
 ## Met de reisplanner
 
-In de reisplanner op de Orlando-pagina geef je je reisdata en je parken op, en als je wilt ook je hotel, je hotelgebied en de tickets die je al hebt. Je krijgt een plan terug met elk park op zijn beste dag, met feestavonden, Early Entry en rijtijden meegerekend. Weet je je reisdata nog niet, dan zoek je daar de beste periodes van een bepaalde lengte, als je wilt alleen binnen je eigen schoolvakanties. Eén parkdag plan je attractie voor attractie in de [dagplanner](/dagplanner).
+Op de Orlando-pagina geef je in de reisplanner je reisdata en je parken op, en als je wilt ook je hotel (bijvoorbeeld “Disney-deluxehotel”, “Disney Springs-hotel” of “Universal Premier-hotel”), je hotelgebied en de tickets die je al hebt. Je krijgt een plan terug met elk park op zijn beste dag, met feestavonden, Early Entry en rijtijden meegerekend. Weet je je reisdata nog niet, dan zoek je daar de beste periodes van een bepaalde lengte, als je wilt alleen binnen je eigen schoolvakanties. Een losse parkdag plan je attractie voor attractie in de [dagplanner](/dagplanner).
 
 ```cta-widget
 href: /orlando#planner

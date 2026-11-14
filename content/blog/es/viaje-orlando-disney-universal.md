@@ -69,15 +69,15 @@ seo:
 
 Nuestro calendario de afluencia tiene 16 parques alrededor de Orlando, y para ninguno tienes que cambiar de hotel. Walt Disney World tiene cuatro parques temáticos y dos acuáticos, Universal tres parques temáticos y uno acuático, y SeaWorld tiene, además de su parque marino, Aquatica y Discovery Cove. Otros tres quedan tan lejos que para ellos planeas una excursión de un día: LEGOLAND en Winter Haven, y Busch Gardens con el parque acuático Adventure Island en Tampa.
 
-Elegir los parques es la parte fácil. Lo difícil son los días, porque 25 noches de noviembre y diciembre de 2026 Magic Kingdom invita a salir a quien va con entrada de día entre tres y cinco horas antes de lo normal, para que los invitados de la fiesta de Navidad tengan el parque para ellos solos. Un día de colas cortas que termina tan pronto suele ser entonces el peor. En el [calendario de afluencia de Orlando](/orlando) está marcado para cada día el mejor parque de cada resort, con el cierre anticipado ya contado, y con el [planificador de viajes](/orlando#planner) repartes tus parques entre tus días de viaje.
+Los parques se eligen rápido, los días no tanto, porque 25 noches de noviembre y diciembre de 2026 Magic Kingdom invita a salir a quien va con entrada de día entre tres y cinco horas antes de lo normal, para que los invitados de la fiesta de Navidad tengan el parque para ellos solos. Un día de colas cortas que termina tan pronto suele ser entonces el peor. En el [calendario de afluencia de Orlando](/orlando) está marcado para cada día el mejor parque de cada resort, con el cierre anticipado ya contado, y con el [planificador de viajes](/orlando#planner) repartes tus parques entre tus días de viaje.
 
-Nuestras guías de [Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos) y de [Universal Orlando](/blog/universal-orlando-tiempos-de-espera-consejos) repasan parque por parque las atracciones con las colas más largas. Dónde duermes decide si tienes Early Entry, cuánto conduces y si algunas noches puedes quedarte dos horas más en EPCOT.
+Nuestras guías de [Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos) y de [Universal Orlando](/blog/universal-orlando-tiempos-de-espera-consejos) repasan parque por parque las atracciones con las colas más largas. En un hotel Deluxe de Disney te quedas hasta enero de 2027 los lunes dos horas más en EPCOT, y desde un hotel de Hotel Plaza Boulevard entras cada día media hora antes en los cuatro parques Disney.
 
 ## Los parques de Orlando y sus resorts
 
 ### Walt Disney World
 
-Walt Disney World está al suroeste de la ciudad y tiene sus propios autobuses, barcos, un monorraíl y un teleférico, el Skyliner. [Magic Kingdom](ref:magic-kingdom-park?calendar) abrió el 1 de octubre de 1971, y [EPCOT](ref:epcot?calendar) justo once años después. Los [Hollywood Studios](ref:disneys-hollywood-studios?calendar) llegaron en 1989 y [Animal Kingdom](ref:disneys-animal-kingdom-theme-park?calendar) en 1998. Completan el resort los parques acuáticos [Typhoon Lagoon](ref:disneys-typhoon-lagoon-water-park), de 1989, y [Blizzard Beach](ref:disneys-blizzard-beach-water-park), de 1995. Typhoon Lagoon está en renovación y cerrado hasta el 26 de enero de 2027.
+Walt Disney World está al suroeste de la ciudad y tiene sus propios autobuses, barcos, un monorraíl y un teleférico, el Skyliner. El resort tiene los parques temáticos [Magic Kingdom](ref:magic-kingdom-park?calendar) (1 de octubre de 1971), [EPCOT](ref:epcot?calendar) (1 de octubre de 1982), [Hollywood Studios](ref:disneys-hollywood-studios?calendar) (1989) y [Animal Kingdom](ref:disneys-animal-kingdom-theme-park?calendar) (1998), y los parques acuáticos [Typhoon Lagoon](ref:disneys-typhoon-lagoon-water-park) (1989) y [Blizzard Beach](ref:disneys-blizzard-beach-water-park) (1995). Typhoon Lagoon está en renovación y cerrado hasta el 26 de enero de 2027.
 
 ![Un teatro al aire libre abarrotado visto desde atrás, con el público esperando a oscuras. | El teatro de Fantasmic! en Hollywood Studios tiene unas 6.900 plazas, y se llenan mucho antes del espectáculo.](/media/disney-hollywood-studios/fantasmic-crowd.jpg)
 
@@ -85,25 +85,25 @@ Walt Disney World está al suroeste de la ciudad y tiene sus propios autobuses, 
 
 [Universal Studios Florida](ref:universal-studios-florida?calendar) (1990) e [Islands of Adventure](ref:universal-islands-of-adventure?calendar) (1999) están puerta con puerta. Entre los dos queda CityWalk, con restaurantes, bares y tiendas, y los dos parques comparten los mismos aparcamientos. [Epic Universe](ref:universal-epic-universe?calendar), abierto desde el 22 de mayo de 2025, queda en coche a algo menos de seis kilómetros hacia el sureste, con su propio aparcamiento y su propio hotel, el Helios Grand. El parque acuático [Volcano Bay](ref:universal-volcano-bay) abrió en 2017 y no tiene aparcamiento propio. Desde el 26 de octubre de 2026 está en su pausa de invierno, y según Universal reabrirá como muy tarde el 1 de abril de 2027.
 
-![Un tren del VelociCoaster en una curva, con las torres de Hogwarts detrás. | Dos áreas temáticas en una imagen en Islands of Adventure: Jurassic World y Hogwarts.](/media/universal-islands-of-adventure/welcome-cover.jpg)
+![Un tren del VelociCoaster en una curva, con las torres de Hogwarts detrás. | El VelociCoaster recorre Jurassic World, y las torres de detrás ya son de Hogwarts, todo en Islands of Adventure.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 ### SeaWorld Orlando
 
-[SeaWorld Orlando](ref:seaworld-orlando?calendar) abrió el 15 de diciembre de 1973 y está en International Drive, frente al parque acuático [Aquatica](ref:aquatica-orlando), de 2008. En [Discovery Cove](ref:discovery-cove-orlando) reservas un día fijo, y el número de visitantes está limitado. Por eso Discovery Cove es el único parque de Orlando para el que no tienes que buscar un día de colas cortas. Los tres pertenecen a United Parks & Resorts, igual que Busch Gardens y Adventure Island en Tampa, y por eso las entradas multiparque de SeaWorld también valen allí.
+En International Drive está desde el 15 de diciembre de 1973 [SeaWorld Orlando](ref:seaworld-orlando?calendar), frente al parque acuático [Aquatica](ref:aquatica-orlando), de 2008. En [Discovery Cove](ref:discovery-cove-orlando) reservas un día fijo, y el número de visitantes está limitado. Por eso Discovery Cove es el único parque de Orlando para el que no tienes que buscar un día de colas cortas. Las entradas multiparque de SeaWorld valen también en Busch Gardens y Adventure Island, en Tampa, porque los cinco parques pertenecen a United Parks & Resorts.
 
 ### Excursiones a Winter Haven y Tampa
 
-[LEGOLAND Florida](ref:legoland-florida?calendar) abrió el 15 de octubre de 2011 en los terrenos del antiguo Cypress Gardens, en Winter Haven, y pertenece a Merlin Entertainments. Al lado están el LEGOLAND Water Park, en pausa de invierno hasta el 12 de febrero de 2027, y el Peppa Pig Theme Park, con entrada propia. [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?calendar) existe desde el 31 de marzo de 1959, cuando abrió junto a la cervecera de Anheuser-Busch en Tampa. El parque acuático [Adventure Island](ref:adventure-island-tampa), justo al lado, empieza su temporada 2027 el 6 de marzo.
+Merlin Entertainments es dueña de [LEGOLAND Florida](ref:legoland-florida?calendar), en Winter Haven, que abrió el 15 de octubre de 2011 en los terrenos del antiguo Cypress Gardens. Al lado están el LEGOLAND Water Park, en pausa de invierno hasta el 12 de febrero de 2027, y el Peppa Pig Theme Park, con entrada propia. [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?calendar) existe desde el 31 de marzo de 1959, cuando abrió junto a la cervecera de Anheuser-Busch en Tampa. El parque acuático [Adventure Island](ref:adventure-island-tampa), justo al lado, empieza su temporada 2027 el 6 de marzo.
 
 ## Qué significan los números del calendario de afluencia
 
-En el calendario de afluencia, cada uno de los 16 parques tiene una casilla para cada día, con un número y un color. En los parques acuáticos y en Discovery Cove solo pone si abren, porque sus colas no merecen una previsión.
+Cada uno de los 16 parques tiene en el calendario de afluencia una casilla para cada día, con un número y un color. En los parques acuáticos y en Discovery Cove solo pone si abren, porque sus colas no merecen una previsión.
 
 ### La espera punta
 
 El número de la casilla es la **espera punta** del parque ese día. Cada gran atracción del parque entra con su espera a la hora de más gente, y con todas las grandes atracciones sacamos la media. Ese único número es el que usamos para comparar parques y días.
 
-No vale para todas las horas. Si estás en la entrada a las nueve, esperas menos en la mayoría de las atracciones, y si a las nueve sigues desayunando, notarás la diferencia en tu primera cola. Por la tarde-noche, muchos parques vuelven a vaciarse. En Magic Kingdom, cada atracción tiene su cola más larga a una hora distinta, y TRON no la alcanza hasta el anochecer.
+No vale para todas las horas. Si estás en la entrada a las nueve, esperas menos en la mayoría de las atracciones, y si a las nueve sigues desayunando, notarás la diferencia en tu primera cola. Al anochecer, las colas vuelven a acortarse en muchos parques, mientras que la de TRON, en Magic Kingdom, solo entonces se hace larga de verdad. En Magic Kingdom, además, cada atracción tiene su cola más larga a una hora distinta.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=6
 
@@ -111,31 +111,31 @@ No vale para todas las horas. Si estás en la entrada a las nueve, esperas menos
 
 ### Qué significa el color
 
-El color compara un día con un día normal del mismo parque. Normal es la mediana de todos los días de apertura que hemos medido en ese parque, como mucho de los últimos dieciocho meses.
+Para el color comparamos el día con un día normal del mismo parque. Normal es la mediana de todos los días de apertura que hemos medido en ese parque, como mucho de los últimos dieciocho meses.
 
-Por eso un EPCOT verde puede tener una espera punta más larga que un Magic Kingdom rojo. EPCOT está ese día más vacío de lo normal y Magic Kingdom más lleno, y aun así esperas más en EPCOT, porque allí hay más gente en un día normal. Si quieres saber dónde esperas menos, en EPCOT o en Magic Kingdom, mira los minutos.
+Por eso un EPCOT verde puede tener una espera punta más larga que un Magic Kingdom rojo. Verde solo significa que EPCOT está más vacío que en un día normal de EPCOT, y un día normal de EPCOT tiene más gente que uno normal en Magic Kingdom. Para saber dónde esperas menos, mira los minutos.
 
 ### De dónde salen los números y hasta dónde llegan
 
-park.fan guarda cada cinco minutos la espera que cada parque indica para cada una de sus atracciones. De esas mediciones aprenden nuestros modelos de previsión, junto con los horarios, las vacaciones escolares y el tiempo. Los horarios, el Early Entry y las noches con entrada propia salen de los calendarios de los parques. Las temporadas, los festivales y las fiestas los metemos a mano y los comprobamos en las webs de los parques.
+park.fan guarda cada cinco minutos la espera que cada parque indica para cada una de sus atracciones. De esas mediciones aprenden nuestros [modelos de previsión](/como-funciona-park-fan), junto con los horarios, las vacaciones escolares y el tiempo. Los horarios, el Early Entry y las noches con entrada propia salen de los calendarios de los parques. Las temporadas las metemos a mano, igual que los festivales y las fiestas, y las comprobamos en las webs de los parques.
 
-Para los próximos 60 días, nuestro modelo calcula cada día atracción por atracción. Más adelante, cada día muestra el mismo día de la semana del año anterior, tal como lo medimos, con la etiqueta «año pasado», y el planificador de viajes y las páginas de la mejor época también trabajan ahí con el año pasado. Para esos días, nuestra previsión a largo plazo quedaba muy por debajo de lo que habíamos medido en las mismas fechas un año antes, y apenas distinguía un día de otro. Un punto en la casilla significa que el parque todavía no ha publicado su horario para ese día. La espera punta ya está, pero un cierre anticipado por una fiesta aún no.
+Para los próximos 60 días, nuestro modelo calcula cada día atracción por atracción. Más adelante, cada día muestra el mismo día de la semana del año anterior, tal como lo medimos, con la etiqueta «año pasado», y en el planificador de viajes y en las páginas de la mejor época también aparece el año pasado para esos días. Para esos días, nuestra previsión a largo plazo quedaba muy por debajo de lo que habíamos medido en las mismas fechas un año antes, y apenas distinguía un día de otro. Un punto en la casilla significa que el parque todavía no ha publicado su horario para ese día. La espera punta ya está, pero un cierre anticipado por una fiesta aún no.
 
-Al día siguiente comparamos cada previsión con la espera medida, y el error medio en minutos se publica en [Fancast](/fancast), nuestro modelo de previsión. Cuanto más lejos está un día, mayor es. En el planificador de viajes, cada plan dice por cuántos minutos puede fallar la previsión para una atracción en un día.
+Al día siguiente comparamos cada previsión con la espera medida, y el error medio en minutos se publica en [Fancast](/fancast), nuestro modelo de previsión. Cuanto más lejos está un día, mayor es. Junto a cada plan del planificador de viajes ves por cuántos minutos puede fallar la previsión para una atracción en un día.
 
-Redondeamos a cinco minutos. Dos días con menos de cinco minutos de diferencia cuentan por eso como igual de buenos, y los mejores días de un parque son un grupo, no una clasificación. Cómo medimos y hacemos previsiones para todos los parques se explica en [Cómo funciona park.fan](/como-funciona-park-fan).
+Redondeamos a cinco minutos. Dos días con menos de cinco minutos de diferencia cuentan por eso como igual de buenos, aparezca el que aparezca primero entre los mejores días.
 
 ## Noches de fiesta, días de la semana y el anillo del calendario
 
-Dentro de un resort, los parques están a pocos minutos en coche unos de otros. Un día de Disney lo pasas sin esfuerzo del martes al miércoles, y merece la pena poner cada parque en su mejor día del viaje. En el calendario de afluencia, en cada resort lleva un anillo el parque con la espera punta más baja de ese día, y un cierre anticipado cuenta en su contra.
+Dentro de un resort, los parques están a pocos minutos en coche unos de otros. Un día de Disney lo pasas sin esfuerzo del martes al miércoles, y merece la pena poner cada parque en su mejor día del viaje. En cada resort, el parque con la espera punta más baja de ese día lleva un anillo en el calendario de afluencia, y un cierre anticipado cuenta en su contra.
 
 ### Por qué cuenta un cierre anticipado
 
 Las 25 noches de Mickey's Very Merry Christmas Party, quien no tenga entrada para la fiesta tiene que salir de Magic Kingdom a las 18:00. Los días sin fiesta, el parque suele cerrar entre las 21:00 y las 23:00. Los Hollywood Studios cierran a las 19:00 en lugar de a las 21:00 las 15 noches de Disney Jollywood Nights. Las dos fiestas piden entrada propia.
 
-Cada hora menos en el parque es también una hora menos para atracciones. Por eso el calendario y el planificador valoran un día por las horas que tienes con entrada de día, y un día de fiesta pesa hasta una vez y media más que un día completo con la misma espera punta. Así, la mayoría de las noches de fiesta de noviembre y diciembre de 2026 el anillo es para Animal Kingdom, aunque Magic Kingdom tenga ese día una espera punta algo más corta. Animal Kingdom cierra casi todos los días a las 18:00, así que para ese parque es un día normal.
+Las horas que te quita una noche de fiesta te faltan para las atracciones, y por eso un día cuenta en el calendario y en el planificador por las horas que tienes con entrada de día. Un día de fiesta pesa por ello hasta una vez y media más que un día completo con la misma espera punta. Así, la mayoría de las noches de fiesta de noviembre y diciembre de 2026 el anillo es para Animal Kingdom, aunque Magic Kingdom tenga ese día una espera punta algo más corta. Animal Kingdom cierra casi todos los días a las 18:00, así que para ese parque es un día normal.
 
-Disney After Hours también se paga aparte, pero empieza después del cierre normal, en noches concretas de enero a agosto de 2027 en Magic Kingdom, EPCOT y Hollywood Studios. Quien va con entrada de día no pierde ninguna hora esos días.
+Disney After Hours también se paga aparte, pero empieza después del cierre normal, en noches concretas de enero a agosto de 2027 en Magic Kingdom, EPCOT y Hollywood Studios. Como nadie con entrada de día tiene que salir antes, esa noche no cuenta en contra del parque en el calendario.
 
 En Universal, lo que se queda corto en otoño es la noche. Las noches de Halloween Horror Nights, Universal Studios cerraba en 2026 a las 17:00 para quien iba con entrada de día, 49 noches entre el 28 de agosto y el 1 de noviembre. La fiesta de Halloween de Magic Kingdom se celebró en 2026 durante 38 noches, del 7 de agosto al 31 de octubre. Para 2027 no están fijadas todavía ninguna de las dos, y hasta que los parques publiquen las noches, el calendario no marca ningún cierre anticipado.
 
@@ -147,7 +147,7 @@ Magic Kingdom, EPCOT, Hollywood Studios y Epic Universe tienen una afluencia par
 
 ```
 
-Si un día en Magic Kingdom se llena lo deciden las vacaciones, los festivos y las noches de fiesta, más que el día de la semana. De los cuatro parques Disney, es el que tiene más noches con entrada propia.
+En Magic Kingdom, las vacaciones, los festivos y las noches de fiesta llenan un día mucho más que el día de la semana. De los cuatro parques Disney, es el que tiene más noches con entrada propia.
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -171,31 +171,31 @@ SeaWorld está a pocos minutos de los hoteles de Universal y de International Dr
 
 Si duermes en uno de los hoteles Disney, con el **Early Entry** entras cada día media hora antes que nadie en cualquiera de los cuatro parques temáticos de Disney, también el día de llegada y el de salida. Disney lo ofrece hasta finales de 2027. Lo mismo vale en otros 15 hoteles, entre ellos el Swan, el Dolphin y el Swan Reserve, el Four Seasons, el Waldorf Astoria y Shades of Green. Lightning Lane, con la que en Disney pagas por saltarte la cola, la reservas siete días antes de llegar si te alojas en uno de estos hoteles, y el resto, tres días antes del día de parque.
 
-En los hoteles Deluxe y Deluxe Villa de Disney, y en el Swan, el Dolphin, el Swan Reserve y Shades of Green, se suman algunas noches las **Extended Evening Hours**, dos horas después del cierre normal y con parte de las atracciones. Hasta finales de diciembre de 2026 caen los lunes en EPCOT y los miércoles en Animal Kingdom, y en enero de 2027 los lunes en EPCOT y los miércoles en Magic Kingdom. En el planificador, esa es la opción «Hotel Disney Deluxe».
+En los hoteles Deluxe y Deluxe Villa de Disney, y en el Swan, el Dolphin, el Swan Reserve y Shades of Green, se suman algunas noches las **Extended Evening Hours**, dos horas después del cierre normal y con parte de las atracciones. Hasta finales de diciembre de 2026 caen los lunes en EPCOT y los miércoles en Animal Kingdom, y en enero de 2027 los lunes en EPCOT y los miércoles en Magic Kingdom.
 
-Lo que da el Early Entry depende del día. Yo cuento con una gran atracción más, dos en una buena mañana, y en una mala, un café más. Más me importa que desde cada hotel Disney salgan gratis autobuses, barcos, el monorraíl o el Skyliner a los parques, y que no necesite coche.
+Con el Early Entry cuento con una gran atracción más en una mañana normal, dos en una buena y un café más en una mala. Más me importa que desde cada hotel Disney salgan gratis autobuses, barcos, el monorraíl o el Skyliner a los parques, y que no necesite coche.
 
 ### En un hotel de Disney Springs
 
-En Hotel Plaza Boulevard, junto a Disney Springs, hay hoteles que no son de Disney pero están en su lista del Early Entry, entre otros el Hilton Orlando Lake Buena Vista, el Hilton Orlando Buena Vista Palace, el Drury Plaza Hotel, el DoubleTree Suites by Hilton, el Holiday Inn Orlando y los dos Wyndham. Sus huéspedes entran cada día media hora antes en los cuatro parques temáticos de Disney, pero no tienen las Extended Evening Hours.
+En Hotel Plaza Boulevard, junto a Disney Springs, hay hoteles que no son de Disney pero están en su lista del Early Entry, entre otros el Hilton Orlando Lake Buena Vista, el Hilton Orlando Buena Vista Palace, el Drury Plaza Hotel, el DoubleTree Suites by Hilton, el Holiday Inn Orlando, el Renaissance Orlando Resort and Spa, el antiguo B Resort, y los dos Wyndham. Sus huéspedes entran cada día media hora antes en los cuatro parques temáticos de Disney, pero no tienen las Extended Evening Hours.
 
-Para Disney y Universal en un mismo viaje, es mi primera opción. Desde allí llegas en 13 a 20 minutos a los aparcamientos de los cuatro parques Disney, en 20 a Universal Studios y en 24 a Epic Universe, y el Early Entry va incluido. Al planificar, elige «Hotel en Disney Springs», y el plan cuenta con la entrada anticipada y los trayectos desde Hotel Plaza Boulevard.
+Para Disney y Universal en un mismo viaje, es mi primera opción. Desde allí llegas en 13 a 20 minutos a los aparcamientos de los cuatro parques Disney, en 20 a Universal Studios y en 24 a Epic Universe, y el Early Entry va incluido.
 
 ### En un hotel de Universal
 
-Universal tiene once hoteles. A la Signature Collection pertenecen el Hard Rock Hotel, el Loews Portofino Bay, el Loews Royal Pacific, el Loews Sapphire Falls y el Helios Grand de Epic Universe, y además hay tres hoteles Prime Value y tres Value Inns. Todos los huéspedes tienen **Early Park Admission**, es decir, entrada en uno de los parques hasta una hora antes de la apertura, para algunas atracciones. Qué parques abren antes lo decide Universal cada día, y en noviembre y diciembre de 2026 son Islands of Adventure y Epic Universe.
+De los once hoteles de Universal, cinco forman la Signature Collection: el Hard Rock Hotel, el Loews Portofino Bay, el Loews Royal Pacific, el Loews Sapphire Falls y el Helios Grand de Epic Universe. Además hay tres hoteles Prime Value y tres Value Inns. Todos los huéspedes tienen **Early Park Admission**, es decir, entrada en uno de los parques hasta una hora antes de la apertura, para algunas atracciones. Universal decide cada día qué parques abren antes, y en noviembre y diciembre de 2026 son Islands of Adventure y Epic Universe.
 
-En tres hoteles, el Hard Rock, el Portofino Bay y el Royal Pacific, el **Express Unlimited** va incluido en la habitación. Con él pasas más rápido en cada atracción con Express de Universal Studios e Islands of Adventure tantas veces como quieras, pero en Epic Universe no vale. El planificador llama a estos tres «Hotel Universal Premier». El Helios Grand tiene a cambio su propia entrada a Epic Universe. A los parques van autobuses o taxis acuáticos gratis, y desde algunos hoteles se va andando.
+En tres hoteles, el Hard Rock, el Portofino Bay y el Royal Pacific, el **Express Unlimited** va incluido en la habitación. Con él pasas más rápido en cada atracción con Express de Universal Studios e Islands of Adventure tantas veces como quieras, pero en Epic Universe no vale. El Helios Grand tiene a cambio su propia entrada a Epic Universe. A los parques van autobuses o taxis acuáticos gratis, y desde algunos hoteles se va andando.
 
 ### Hoteles fuera de los resorts
 
-La mayoría de los hoteles fuera de los resorts están en tres zonas. En International Drive te alojas entre Universal y SeaWorld, en Lake Buena Vista alrededor de Disney Springs, y en Kissimmee en la Highway US-192, al este de la entrada a Walt Disney World. Allí no hay entrada anticipada, salvo en los hoteles de la lista de Disney.
+Fuera de los resorts sueles alojarte en International Drive, entre Universal y SeaWorld, en Lake Buena Vista alrededor de Disney Springs o en Kissimmee, en la Highway US-192, al este de la entrada a Walt Disney World. Allí no hay entrada anticipada, salvo en los hoteles de la lista de Disney.
 
 Si lo tuyo es sobre todo Universal, yo me alojaría en International Drive o en un hotel de Universal, desde donde llegas en menos de diez minutos a los tres parques de Universal. Kissimmee está más cerca de Hollywood Studios y de Animal Kingdom que cualquier otra zona salvo los propios hoteles Disney, pero es la que queda más lejos de Universal.
 
 ## Moverse entre los parques
 
-Los trayectos los hemos calculado con OpenStreetMap, en coche y sin tráfico, hasta el aparcamiento del parque. Para los hoteles Disney el trayecto empieza en el Caribbean Beach Resort, en el centro del resort, para Universal en Universal Boulevard junto al Royal Pacific, en International Drive en ICON Park, en Lake Buena Vista en Hotel Plaza Boulevard junto a Disney Springs y en Kissimmee en la US-192. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center, al otro lado de la Seven Seas Lagoon, y desde allí son unos 15 minutos más en monorraíl o en ferri, con la espera incluida. A Volcano Bay llegas en lanzadera desde los aparcamientos de los Studios, también en unos 15 minutos. Ninguna de estas cifras tiene en cuenta los atascos.
+Los trayectos los hemos calculado con OpenStreetMap, en coche y sin tráfico, hasta el aparcamiento del parque. Para los hoteles Disney el trayecto empieza en el Caribbean Beach Resort, en el centro del resort, para Universal en Universal Boulevard junto al Royal Pacific, en International Drive en ICON Park, en Lake Buena Vista en Hotel Plaza Boulevard junto a Disney Springs y en Kissimmee en la US-192. El aparcamiento de Magic Kingdom es el Transportation and Ticket Center, al otro lado de la Seven Seas Lagoon, y desde allí son unos 15 minutos más en monorraíl o en ferri, con la espera incluida. A Volcano Bay llegas en lanzadera desde los aparcamientos de los Studios, también en unos 15 minutos.
 
 **Trayecto en coche en minutos, sin tráfico**
 
@@ -218,7 +218,7 @@ El Orlando International Airport, MCO para abreviar, está al sureste de la ciud
 
 ### Entre los parques
 
-Dentro de Walt Disney World no necesitas coche. Los autobuses de Disney van entre todos los hoteles y parques. El monorraíl une el Transportation and Ticket Center con Magic Kingdom y con EPCOT, y de parque a parque, con el transbordo, se tarda una media hora. El Skyliner va del Caribbean Beach Resort a la entrada trasera de EPCOT, el International Gateway, en un cuarto de hora más o menos, y lo mismo tarda hasta los Hollywood Studios. Entre EPCOT y los Hollywood Studios hay además un barco, y a pie son unos 30 minutos.
+Los autobuses de Disney van entre todos los hoteles y parques. El monorraíl une el Transportation and Ticket Center con Magic Kingdom y con EPCOT, y de parque a parque, con el transbordo, se tarda una media hora. El Skyliner va del Caribbean Beach Resort a la entrada trasera de EPCOT, el International Gateway, en un cuarto de hora más o menos, y lo mismo tarda hasta los Hollywood Studios. Entre EPCOT y los Hollywood Studios hay además un barco, y a pie son unos 30 minutos.
 
 En Universal vas andando de los Studios a Islands of Adventure en unos diez minutos, cruzando CityWalk. La otra conexión es el Hogwarts Express, del callejón Diagon a Hogsmeade, y para él necesitas una entrada Park-to-Park. A Epic Universe van las lanzaderas de Universal, y en coche son once minutos desde los aparcamientos de los Studios.
 
@@ -232,11 +232,11 @@ En Disney y en Universal compras entradas con fecha fija. SeaWorld y LEGOLAND ve
 
 Las entradas de Disney van de uno a diez días. El día que eliges al comprar es el primer día, aunque lo pases en la piscina, y los días que no uses se pierden. Los días se reparten en un plazo que crece con la duración. Una entrada de cuatro días la usas en siete días naturales, una de siete días en diez y una de diez días en catorce. Una entrada de un día vale para un parque.
 
-Con **Park Hopper** pasas a un segundo parque el mismo día, en cualquier momento después de haber entrado en el primero, y ese día cuenta como uno. Con la opción Water Park and Sports, que junto con el hopper se llama Park Hopper Plus, se suman tantas visitas a los parques acuáticos y al minigolf como días tenga la entrada. Desde el 9 de enero de 2024 ya no necesitas reservar parque con una entrada. Para llegadas del 3 de enero al 22 de mayo de 2027 hay además el 4-Park Magic Ticket, un día en cada uno de los cuatro parques en seis días, sin hopper.
+Con **Park Hopper** pasas a un segundo parque el mismo día, en cualquier momento después de haber entrado en el primero, y solo gastas un día de tu entrada. Encontrarás un ejemplo con diez días en diciembre, con y sin hopper, en nuestro [artículo sobre el planificador de viajes](/blog/planificador-de-viajes-orlando). Con la opción Water Park and Sports, que junto con el hopper se llama Park Hopper Plus, se suman tantas visitas a los parques acuáticos y al minigolf como días tenga la entrada. Desde el 9 de enero de 2024 ya no necesitas reservar parque con una entrada. Para llegadas del 3 de enero al 22 de mayo de 2027 hay además el 4-Park Magic Ticket, un día en cada uno de los cuatro parques en seis días, sin hopper.
 
 ### Universal Orlando
 
-Las entradas de Universal van de uno a cinco días, y las usas en un plazo que empieza en la fecha elegida: una entrada de dos días en cuatro días, una de tres días en cinco y una de cinco días en siete. Con las entradas de tres días o más entras en Epic Universe. Con uno o dos días necesitas para ello una entrada propia de Epic Universe, o el paquete de un día en los Studios o en Islands of Adventure y un día en Epic Universe. Los precios de las entradas y del Express Pass están en nuestra [guía de Universal](/blog/universal-orlando-tiempos-de-espera-consejos). Con **Park-to-Park** cambias de parque el mismo día y subes al Hogwarts Express.
+En Universal compras de uno a cinco días, y el plazo empieza en la fecha elegida: dos días en cuatro, tres en cinco y cinco en siete. Con las entradas de tres días o más entras en Epic Universe. Con uno o dos días necesitas para ello una entrada propia de Epic Universe, o el paquete de un día en los Studios o en Islands of Adventure y un día en Epic Universe. Encontrarás los precios de las entradas y del Express Pass en nuestra [guía de Universal](/blog/universal-orlando-tiempos-de-espera-consejos). Con **Park-to-Park** cambias de parque el mismo día y subes al Hogwarts Express.
 
 ### SeaWorld, Busch Gardens y LEGOLAND
 
@@ -246,7 +246,7 @@ Además de la entrada de un día, SeaWorld vende entradas combinadas para dos, t
 
 Para los viajes largos están pensadas las entradas que se venden fuera de Estados Unidos. La 14-Day Magic Ticket de Disney es para residentes del Reino Unido e Irlanda. Vale para 14 días de parque en 18 días, con Park Hopper, parques acuáticos y minigolf, y un día en un parque acuático no gasta ninguno de los 14 días de parque. Las entradas de 14 días de Universal también las venden distribuidores de otros países. Valen 14 días seguidos, todos los días, con Park-to-Park y Epic Universe. Para llegadas hasta finales de marzo de 2027 la entrada se llama Three Park Adventure Ticket y no incluye Volcano Bay, y después vuelve la All Parks Ticket con el parque acuático.
 
-Con la entrada de 14 días de Universal cuenta, por tanto, cada día del calendario, y con la de Disney solo los días en que entras en un parque. Un ejemplo con diez días en diciembre, con y sin hopper, está en nuestro [artículo sobre el planificador de viajes](/blog/planificador-de-viajes-orlando).
+Un día de piscina te cuesta uno de los 14 días con la entrada de Universal y ninguno con la de Disney, siempre que no te salgas de los 18 días.
 
 ## El año en Orlando
 
@@ -262,7 +262,7 @@ En Epic Universe, enero y febrero estuvieron tan llenos como la semana después 
 
 ```
 
-Los viajes de diez días con la espera punta más baja en 2027 están en las páginas de la [mejor época para visitar Orlando](/orlando/mejor-epoca-para-visitar), y por separado también para [Disney World](/orlando/mejor-epoca-para-visitar/disney-world) y [Universal Orlando](/orlando/mejor-epoca-para-visitar/universal-orlando). Calculados con las esperas de 2026, caen a mediados de abril, de finales de octubre a principios de noviembre y a mediados de mayo, mientras que febrero y marzo están entre las semanas con más gente del año.
+Los viajes de diez días con la espera punta más baja en 2027 están en las páginas de la [mejor época para visitar Orlando](/orlando/mejor-epoca-para-visitar), y por separado también para [Disney World](/orlando/mejor-epoca-para-visitar/disney-world) y [Universal Orlando](/orlando/mejor-epoca-para-visitar/universal-orlando). Calculados con las esperas de 2026, caen a mediados de abril, de finales de octubre a principios de noviembre y a mediados de mayo.
 
 ### El tiempo mes a mes
 
@@ -283,7 +283,7 @@ Los viajes de diez días con la espera punta más baja en 2027 están en las pá
 | noviembre  | 24,8 °C | 16,7 °C | 66 mm  |
 | diciembre  | 22,6 °C | 13,9 °C | 69 mm  |
 
-En el planificador de viajes y en las páginas de la mejor época, un día caluroso cuenta como peor: desde 35 grados en la previsión, y con más antelación desde una media de largo plazo de 31,5 grados, que Magic Kingdom alcanza de finales de junio a mediados de julio.
+Un día caluroso cuenta como peor en el planificador de viajes y en las páginas de la mejor época: desde 35 grados en la previsión, y con más antelación desde una media de largo plazo de 31,5 grados, que Magic Kingdom alcanza de finales de junio a mediados de julio.
 
 ### Vacaciones escolares y festivos 2026/27
 
@@ -302,37 +302,37 @@ En el calendario están las vacaciones escolares del condado de Orange, es decir
 
 ### Eventos y noches de fiesta 2026/27
 
-| Fechas                                           | Evento                                             | Parque                                  | Entrada propia |
-| ------------------------------------------------ | -------------------------------------------------- | --------------------------------------- | -------------- |
-| 6 nov. 2026 a 4 ene. 2027                        | Christmas Celebration                              | SeaWorld Orlando                        | no             |
-| 7 nov. 2026 a 5 ene. 2027, 15 noches             | Disney Jollywood Nights                            | Hollywood Studios                       | sí             |
-| 8 nov. a 22 dic. 2026, 25 noches                 | Mickey's Very Merry Christmas Party                | Magic Kingdom                           | sí             |
-| 13 nov. 2026 a 6 ene. 2027                       | Holidays at Walt Disney World                      | los cuatro parques Disney               | no             |
-| 13 nov. 2026 a 4 ene. 2027                       | Christmas Town                                     | Busch Gardens                           | no             |
-| 14 nov. 2026 a 3 ene. 2027                       | Holidays at Universal                              | Studios, Islands, Epic Universe         | no             |
-| 21 nov. 2026 a 3 ene. 2027, 26 días              | Christmas Bricktacular                             | LEGOLAND                                | no             |
-| 27 nov. a 30 dic. 2026                           | Festival of the Holidays, Candlelight Processional | EPCOT                                   | no             |
-| 6 a 10 ene. 2027                                 | Walt Disney World Marathon Weekend                 | salida en EPCOT                         | dorsal         |
-| 11 ene. a 25 ago. 2027                           | Disney After Hours                                 | Magic Kingdom, EPCOT, Hollywood Studios | sí             |
-| 15 ene. a 1 mar. 2027                            | Festival of the Arts                               | EPCOT                                   | no             |
-| 22 y 23 ene. 2027                                | Rock the Universe                                  | Universal Studios                       | sí             |
-| 29 ene. a 16 may. 2027                           | Seven Seas Food Festival                           | SeaWorld Orlando                        | no             |
-| 6 feb. a 27 mar. 2027                            | Mardi Gras                                         | Universal Studios                       | no             |
-| 25 feb. a 1 mar. 2027                            | Disney Princess Half Marathon Weekend              | salida en EPCOT                         | dorsal         |
-| 10 mar. a 31 may. 2027                           | Flower & Garden Festival                           | EPCOT                                   | no             |
-| 8 a 11 abr. 2027                                 | runDisney Springtime Surprise Weekend              | salida en EPCOT                         | dorsal         |
-| ago. a oct. 2027, fechas por anunciar            | Mickey's Not-So-Scary Halloween Party              | Magic Kingdom                           | sí             |
-| finales de ago. a oct. 2027, fechas por anunciar | Halloween Horror Nights                            | Universal Studios                       | sí             |
-| finales de ago. a nov. 2027, fechas por anunciar | Food & Wine Festival                               | EPCOT                                   | no             |
-| sept. y oct. 2027                                | Howl-O-Scream                                      | SeaWorld Orlando, Busch Gardens         | sí             |
+| Fechas                                           | Evento                                                                       | Parque                                  | Entrada propia |
+| ------------------------------------------------ | ---------------------------------------------------------------------------- | --------------------------------------- | -------------- |
+| 6 nov. 2026 a 4 ene. 2027                        | [Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026)   | SeaWorld Orlando                        | no             |
+| 7 nov. 2026 a 5 ene. 2027, 15 noches             | Disney Jollywood Nights                                                      | Hollywood Studios                       | sí             |
+| 8 nov. a 22 dic. 2026, 25 noches                 | Mickey's Very Merry Christmas Party                                          | Magic Kingdom                           | sí             |
+| 13 nov. 2026 a 6 ene. 2027                       | [Holidays at Walt Disney World](/blog/navidad-ano-nuevo-orlando-paris-2026)  | los cuatro parques Disney               | no             |
+| 13 nov. 2026 a 4 ene. 2027                       | [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026)              | Busch Gardens                           | no             |
+| 14 nov. 2026 a 3 ene. 2027                       | [Holidays at Universal](/blog/navidad-ano-nuevo-orlando-paris-2026)          | Studios, Islands, Epic Universe         | no             |
+| 21 nov. 2026 a 3 ene. 2027, 26 días              | [Christmas Bricktacular](/news/legoland-florida-christmas-bricktacular-2026) | LEGOLAND                                | no             |
+| 27 nov. a 30 dic. 2026                           | Festival of the Holidays, Candlelight Processional                           | EPCOT                                   | no             |
+| 6 a 10 ene. 2027                                 | Walt Disney World Marathon Weekend                                           | salida en EPCOT                         | dorsal         |
+| 11 ene. a 25 ago. 2027                           | Disney After Hours                                                           | Magic Kingdom, EPCOT, Hollywood Studios | sí             |
+| 15 ene. a 1 mar. 2027                            | Festival of the Arts                                                         | EPCOT                                   | no             |
+| 22 y 23 ene. 2027                                | Rock the Universe                                                            | Universal Studios                       | sí             |
+| 29 ene. a 16 may. 2027                           | Seven Seas Food Festival                                                     | SeaWorld Orlando                        | no             |
+| 6 feb. a 27 mar. 2027                            | Mardi Gras                                                                   | Universal Studios                       | no             |
+| 25 feb. a 1 mar. 2027                            | Disney Princess Half Marathon Weekend                                        | salida en EPCOT                         | dorsal         |
+| 10 mar. a 31 may. 2027                           | Flower & Garden Festival                                                     | EPCOT                                   | no             |
+| 8 a 11 abr. 2027                                 | runDisney Springtime Surprise Weekend                                        | salida en EPCOT                         | dorsal         |
+| ago. a oct. 2027, fechas por anunciar            | Mickey's Not-So-Scary Halloween Party                                        | Magic Kingdom                           | sí             |
+| finales de ago. a oct. 2027, fechas por anunciar | Halloween Horror Nights                                                      | Universal Studios                       | sí             |
+| finales de ago. a nov. 2027, fechas por anunciar | Food & Wine Festival                                                         | EPCOT                                   | no             |
+| sept. y oct. 2027                                | Howl-O-Scream                                                                | SeaWorld Orlando, Busch Gardens         | sí             |
 
 ### De enero a abril
 
-Después de Año Nuevo, los parques se vacían. De enero a abril el tiempo es suave, y en febrero y marzo llueve menos que en ningún otro momento del año. Aun así, en 2026 hubo mucha gente, sobre todo en febrero y marzo. En esas semanas caen Presidents' Day, las vacaciones de primavera del condado de Orange, el Festival of the Arts de EPCOT y el Mardi Gras de Universal Studios. En abril, los parques Disney estuvieron algo más vacíos que en marzo y los de Universal más o menos igual, y uno de los tres mejores viajes de las páginas de la mejor época cae a mediados de abril.
+Después de Año Nuevo, los parques se vacían. De enero a abril el tiempo es suave, y en febrero y marzo llueve menos que en ningún otro momento del año. Aun así, en 2026 hubo mucha gente, sobre todo en febrero y marzo. En esas semanas caen Presidents' Day, las vacaciones de primavera del condado de Orange, el Festival of the Arts de EPCOT y el Mardi Gras de Universal Studios. En abril, los parques Disney estuvieron algo más vacíos que en marzo y los de Universal más o menos igual.
 
 ### De mayo a agosto
 
-Mediados de mayo, entre las vacaciones de primavera y el Memorial Day del 31 de mayo, es el siguiente buen momento para el viaje. Con las vacaciones de verano, desde el 27 de mayo, llegan las familias, y las semanas con más gente del verano de 2026 fueron finales de mayo, principios de junio y la segunda quincena de julio. Hace entonces calor y humedad, y los cuatro meses de junio a septiembre son los más lluviosos del año.
+Con las vacaciones de verano, desde el 27 de mayo, llegan las familias, y las semanas con más gente del verano de 2026 fueron finales de mayo, principios de junio y la segunda quincena de julio. Hace entonces calor y humedad, y los cuatro meses de junio a septiembre son los más lluviosos del año.
 
 La temporada de huracanes empieza el 1 de junio. Según el National Hurricane Center, la primera tormenta con nombre suele formarse entre mediados y finales de junio, y el primer huracán entre principios y mediados de agosto. Con el nuevo curso escolar en el condado de Orange, el 11 de agosto en 2026, los parques volvieron a vaciarse. La fiesta de Halloween de Magic Kingdom empieza en agosto, y Halloween Horror Nights a finales de agosto.
 
@@ -340,17 +340,17 @@ La temporada de huracanes empieza el 1 de junio. Según el National Hurricane Ce
 
 Los días más tranquilos de nuestro primer año cayeron a finales de agosto y principios de septiembre de 2026, justo antes del puente de Labor Day. Durante todo septiembre, los sábados siguieron con más gente que los días entre semana. El 10 de septiembre es el punto álgido de la temporada de huracanes, y la mayoría de las tormentas se forman entre mediados de agosto y mediados de octubre.
 
-Por eso, un viaje que toque algún día entre el 15 de agosto y el 15 de octubre baja en la clasificación de las páginas de la mejor época y de la búsqueda de fechas del planificador de viajes. Así, la semana más tranquila de nuestro primer año no aparece en ninguno de los viajes propuestos. Si aun así planeas esas semanas, el planificador marca cada día con «pico de la temporada de huracanes».
+Por eso, un viaje que toque algún día entre el 15 de agosto y el 15 de octubre baja en la clasificación de las páginas de la mejor época y de la búsqueda de fechas del planificador de viajes, y la semana más tranquila de nuestro primer año no aparece en ninguno de los viajes propuestos. Si aun así planeas esas semanas, el planificador marca cada día con «pico de la temporada de huracanes».
 
-La semana del 12 de octubre de 2026, día sin clase en el condado de Orange, fue una de las más llenas del otoño. A finales de octubre volvió a haber menos gente, y de finales de octubre a principios de noviembre cae uno de los tres mejores viajes.
+La semana del 12 de octubre de 2026, día sin clase en el condado de Orange, fue una de las más llenas del otoño. A finales de octubre volvió a haber menos gente.
 
 ### Noviembre y diciembre
 
-La temporada de huracanes termina el 30 de noviembre. Con la semana de Thanksgiving empieza la temporada navideña, y en nuestra previsión las semanas de Thanksgiving y entre Navidad y Año Nuevo quedan por encima de las semanas de Adviento que hay en medio. Los programas de Navidad y las Nocheviejas de Disney y Universal están en nuestra guía de [Navidad y Nochevieja en Orlando y París](/blog/navidad-ano-nuevo-orlando-paris-2026), y las novedades de [SeaWorld](/news/seaworld-orlando-christmas-celebration-2026), [Busch Gardens](/news/busch-gardens-tampa-christmas-town-2026) y [LEGOLAND](/news/legoland-florida-christmas-bricktacular-2026), en noticias propias.
+La temporada de huracanes termina el 30 de noviembre. Con la semana de Thanksgiving empieza la temporada navideña, y en nuestra previsión las semanas de Thanksgiving y entre Navidad y Año Nuevo quedan por encima de las semanas de Adviento que hay en medio.
 
 ## Con el planificador de viajes
 
-En el planificador de viajes de la página de Orlando indicas las fechas de tu viaje y tus parques, y si quieres tu hotel, la zona de tu hotel y las entradas que ya tienes. Recibes un plan con cada parque en su mejor día, con noches de fiesta, Early Entry y trayectos incluidos. Si aún no sabes tus fechas, puedes buscar allí los mejores periodos de una duración concreta, si quieres solo dentro de tus vacaciones escolares. Un solo día de parque lo planificas atracción por atracción en el [planificador](/planificador).
+En la página de Orlando indicas en el planificador de viajes las fechas de tu viaje y tus parques, y si quieres tu hotel (por ejemplo «Hotel Disney Deluxe», «Hotel en Disney Springs» u «Hotel Universal Premier»), la zona de tu hotel y las entradas que ya tienes. Recibes un plan con cada parque en su mejor día, con noches de fiesta, Early Entry y trayectos incluidos. Si aún no sabes tus fechas, puedes buscar allí los mejores periodos de una duración concreta, si quieres solo dentro de tus vacaciones escolares. Un solo día de parque lo planificas atracción por atracción en el [planificador](/planificador).
 
 ```cta-widget
 href: /orlando#planner
