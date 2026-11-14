@@ -435,6 +435,66 @@ check(
   'card',
   'takes a list of parks'
 );
+{
+  const idea = {
+    kind: 'add',
+    query: 'arrival=park',
+    park: 'disneys-hollywood-studios',
+    to: '2026-12-06',
+    headlinerWait: { after: 50 },
+    totals: { before: 41, after: 43 },
+    savedMinutes: 0,
+    places: ['disneys-hollywood-studios'],
+    note: '<b>rides along</b>',
+  };
+  const read = readAssistantAction({
+    type: 'card',
+    card: { kind: 'idea', region: 'orlando', idea },
+  });
+  check(read?.type, 'card', 'takes an idea card for a live region');
+  check(
+    read?.card,
+    {
+      kind: 'idea',
+      region: 'orlando',
+      idea: {
+        kind: 'add',
+        query: 'arrival=park',
+        park: 'disneys-hollywood-studios',
+        to: '2026-12-06',
+        headlinerWait: { after: 50 },
+        totals: { before: 41, after: 43 },
+        savedMinutes: 0,
+        places: ['disneys-hollywood-studios'],
+      },
+    },
+    'rebuilds an idea field by field, so nothing else rides along'
+  );
+  check(
+    readAssistantAction({
+      type: 'card',
+      card: { kind: 'idea', region: 'orlando', idea: { ...idea, kind: 'teleport' } },
+    }),
+    null,
+    'refuses an idea of a kind this client does not know'
+  );
+  check(
+    readAssistantAction({
+      type: 'card',
+      card: { kind: 'idea', region: 'atlantis', idea },
+    }),
+    null,
+    'refuses an idea for a region that is not live'
+  );
+  check(
+    readAssistantAction({
+      type: 'card',
+      card: { kind: 'idea', region: 'orlando', idea: { ...idea, query: 'a b<script>' } },
+    }),
+    null,
+    "refuses an idea whose change is not in the planner's alphabet"
+  );
+}
 check(
   readAssistantAction({
     type: 'card',

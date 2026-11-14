@@ -1,4 +1,5 @@
 import type { TripChangeKind } from '@/lib/assistant/actions';
+import type { AssistantTripIdea } from '@/lib/assistant/trip-idea';
 import type { PlanEditChange } from './plan';
 import { applyIdea, type PlanIdea } from './plan-ideas';
 import {
@@ -19,7 +20,9 @@ import { rememberTrip } from './remembered-trip';
  * One of Parky's ideas is applied here too, from the strip over the plan, a day's card and the chat
  * alike: as an edit the planner's status band names and its Undo takes back. So is a change Parky
  * makes with `change_trip` while the planner is on screen, and the chat's idea card opens the
- * result's swap mode for its park here (`openSwap`, which the result connects).
+ * result's swap mode for its park here (`openSwap`, which the result connects). An idea Parky
+ * offers on his own gets its card's words from the planner here (`ideaCard`): the chat carries
+ * none of the planner's messages.
  */
 
 /** Who applied an idea: the visitor's press on the planner, or the chat's card. */
@@ -47,8 +50,12 @@ interface Connected {
 /** The result's swap mode: opens it for a park's day, false where the plan has none for it. */
 type OpenSwap = (park: string, from?: string) => boolean;
 
+/** An idea as the chat's card shows it, in the planner's words. */
+type IdeaCardOf = (idea: PlanIdea) => AssistantTripIdea;
+
 let connected: Connected | null = null;
 let swap: { region: string; open: OpenSwap } | null = null;
+let ideaCards: { region: string; of: IdeaCardOf } | null = null;
 const listeners = new Set<() => void>();
 const notify = () => listeners.forEach((listener) => listener());
 
@@ -84,6 +91,13 @@ export const tripPlannerBridge = {
    */
   openSwap(region: string, park: string, from?: string): boolean {
     return swap?.region === region && swap.open(park, from);
+  },
+  /**
+   * The chat's card for an idea Parky offers on his own, in the words of the planner of `region`
+   * (`AssistantTripIdeaCard`); null when that planner is not on screen.
+   */
+  ideaCard(region: string, idea: PlanIdea): AssistantTripIdea | null {
+    return ideaCards?.region === region ? ideaCards.of(idea) : null;
   },
   /**
    * Apply one of Parky's ideas to the planner of `region` as an edit: its query part set over the
@@ -151,5 +165,17 @@ export function connectPlannerSwap(region: string, open: OpenSwap): () => void {
   swap = own;
   return () => {
     if (swap === own) swap = null;
+  };
+}
+
+/**
+ * Connect the planner's words for the chat's idea cards for `region`, which
+ * `tripPlannerBridge.ideaCard` reads; returns the disconnect.
+ */
+export function connectIdeaCards(region: string, of: IdeaCardOf): () => void {
+  const own = { region, of };
+  ideaCards = own;
+  return () => {
+    if (ideaCards === own) ideaCards = null;
   };
 }

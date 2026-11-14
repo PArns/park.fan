@@ -76,7 +76,7 @@ import { PlanAgendaView, type PlanDaySlots } from './plan-agenda-view';
 import { DayActionsSheet, PlanDayActions } from './plan-day-actions';
 import { PlanEditStatus } from './plan-edit-status';
 import { PlanGlowProvider, usePlanGlow } from './plan-day-glow';
-import { DayHint, IdeasStrip, useShownIdeas } from './plan-ideas';
+import { DayHint, IdeasStrip, useIdeaCardBridge, useShownIdeas } from './plan-ideas';
 import { PlanSwapMode } from './plan-swap-mode';
 import { PlanDaySheet } from './plan-day-sheet';
 import { PlanKeep } from './plan-keep';
@@ -254,6 +254,8 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
   const [swapDate, setSwapDate] = useState<string | null>(null);
   const [moreDate, setMoreDate] = useState<string | null>(null);
   const ideas = useShownIdeas();
+  // The ideas Parky offers on his own get their card's words from this planner.
+  useIdeaCardBridge();
   const glow = usePlanGlow(edits, plan.waiting);
   // „Anderen Tag“ on the chat's idea card: the swap mode for its park, on the idea's day where the
   // park is there, else on its first. Focus comes back to the card when the mode closes.
