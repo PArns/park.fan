@@ -81,17 +81,6 @@ export function motionOnce(css: string): string {
   return `@media (prefers-reduced-motion: no-preference) {${css}}`;
 }
 
-/** The centres of `count` cabins round a wheel's rim, the first at the top, as `CABINS` are. */
-export function cabinsOnRim(
-  { x, y, r }: { x: number; y: number; r: number },
-  count = 8
-): { x: number; y: number }[] {
-  return Array.from({ length: count }, (_, i) => ({
-    x: +(x + r * Math.sin((i * 2 * Math.PI) / count)).toFixed(2),
-    y: +(y - r * Math.cos((i * 2 * Math.PI) / count)).toFixed(2),
-  }));
-}
-
 /** One of his hands: a round mitten in his own colours, as the umbrella's in `looks.tsx`. */
 export function HolidayMitten({ ground, x, y }: { ground: string; x: number; y: number }) {
   return <circle cx={x} cy={y} r="2.3" fill={`url(#${ground})`} />;
@@ -108,10 +97,10 @@ export function HolidayGround({ id }: { id: string }) {
 }
 
 /**
- * A region scene's root: the 320 × 160 frame of `ParkyBreakScene` and the Orlando scene, filling
- * its box from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the
- * card's text. Decoration: `aria-hidden` and out of the tab order. `motion` is the scene's own
- * stylesheet: the moves it plays once, written under `prefers-reduced-motion: no-preference` so
+ * A scene's root, the region scenes' and `ParkyBreakScene`'s: the 320 × 160 frame, filling its box
+ * from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's
+ * text. Decoration: `aria-hidden` and out of the tab order. `motion`, where a scene has one, is its
+ * own stylesheet: the moves it plays once, written under `prefers-reduced-motion: no-preference` so
  * without motion the picture stands finished.
  */
 export function HolidaySceneSvg({
@@ -120,7 +109,7 @@ export function HolidaySceneSvg({
   children,
 }: {
   className?: string;
-  motion: string;
+  motion?: string;
   children: ReactNode;
 }) {
   return (
@@ -131,7 +120,7 @@ export function HolidaySceneSvg({
       aria-hidden="true"
       focusable="false"
     >
-      <style>{motion}</style>
+      {motion && <style>{motion}</style>}
       {children}
     </svg>
   );

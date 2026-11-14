@@ -105,12 +105,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-controls.tsx`](../../components/trip-regions/planner/plan-controls.tsx)
 
+- `PlanSheetClose` _component_: The × in the head of one of the planner's sheets, a 44 px target.
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanRadioGroup` _component_: One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a 44 px row with an optional line under it.
 - `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
 - `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
 - `PlanChip` _component_: A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two answers. 44 px on a phone, 36 at a desk.
 - `PLAN_FOCUS` _const_: The planner's focus ring, one string for every control it draws.
+- `PLAN_FIELD` _const_: A select or date field in the planner's panels, 44 px tall like every target in them.
 
 ### [`planner/plan-dates.tsx`](../../components/trip-regions/planner/plan-dates.tsx)
 
@@ -142,6 +144,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-month-grid.tsx`](../../components/trip-regions/planner/plan-month-grid.tsx)
 
+- `PlanWeekdayHead` _component_: The weekday names over the planner's month grids, Monday first, in the grid's columns.
 - `PlanMonthGrid` _component_: A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two dates in the Dates step, one date for a ticket's first day.
 - Types: `PlanGridPick`, `PlanGridDay`
 
@@ -178,6 +181,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanSetup` _component_: Dates and Parks first, the only two things a plan needs, and the parks start chosen: the region's headliners.
 - `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
 - Types: `PlanSheetStep`, `PlanSetupRoute`
+
+### [`planner/plan-sheet.tsx`](../../components/trip-regions/planner/plan-sheet.tsx)
+
+- `PlanSheetContent` _component_: The sheet a press in the answer opens, a day's or a window's: from the right at a desk and from the bottom on a phone, a small line over the title, the planner's own ×, a body that scrolls and an optional foot.
 
 ### [`planner/plan-stay-band.tsx`](../../components/trip-regions/planner/plan-stay-band.tsx)
 

@@ -3,7 +3,17 @@
 import { useEffect, useRef } from 'react';
 import { cn } from '@/lib/utils';
 import { animateParky } from '@/lib/assistant/parky/motion';
-import { CABIN_COLOURS, STAR, blue, capBlue, gold, ink, rail } from './drawing';
+import {
+  CABIN_COLOURS,
+  STAR,
+  blue,
+  cabinsOnRim,
+  capBlue,
+  gold,
+  ink,
+  rail,
+  wheelSpokes,
+} from './drawing';
 
 /**
  * What Parky dreams of, in a cloud over his sleeping head: riding a coaster, cheering under
@@ -50,10 +60,7 @@ const RAYS = Array.from({ length: 8 }, (_, i) => {
 
 /** The dream Ferris wheel's hub and radius, and its eight cabins. */
 const DREAM_WHEEL = { x: -12.5, y: -14.5, r: 6.5 };
-const DREAM_CABINS = Array.from({ length: 8 }, (_, i) => ({
-  x: +(DREAM_WHEEL.x + DREAM_WHEEL.r * Math.sin((i * Math.PI) / 4)).toFixed(2),
-  y: +(DREAM_WHEEL.y - DREAM_WHEEL.r * Math.cos((i * Math.PI) / 4)).toFixed(2),
-}));
+const DREAM_CABINS = cabinsOnRim(DREAM_WHEEL);
 
 /** Where the drops of the dream flume's splash fly to. */
 const DREAM_DROPS = [
@@ -324,12 +331,7 @@ export function ParkyDreamCloud({ dream, ground }: { dream: ParkyDream; ground: 
                   strokeWidth=".6"
                 />
                 <path
-                  d={DREAM_CABINS.slice(0, 4)
-                    .map(
-                      ({ x, y }) =>
-                        `M${x} ${y}L${+(2 * DREAM_WHEEL.x - x).toFixed(2)} ${+(2 * DREAM_WHEEL.y - y).toFixed(2)}`
-                    )
-                    .join('')}
+                  d={wheelSpokes(DREAM_WHEEL, DREAM_CABINS)}
                   stroke="oklch(0.75 0.05 250)"
                   strokeOpacity=".6"
                   strokeWidth=".35"

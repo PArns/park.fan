@@ -1,6 +1,6 @@
 import { isPlannedDay, type PlannerState } from '@/lib/planner/types';
 import { daysBetween, todayInZone } from '@/lib/planner/park-time';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatParkDay } from '@/lib/utils/park-day';
 
 /**
  * What Parky knows about the visitor from this browser alone, the way a friend who was there when
@@ -155,26 +155,19 @@ export function opensChat(
   return moment.kind in YOURS_GREETINGS;
 }
 
-/** A planned date, from noon UTC so no zone moves it to another day. */
-function formatDate(date: string, locale: string, options: Intl.DateTimeFormatOptions): string {
-  return getDateTimeFormat(locale, { ...options, timeZone: 'UTC' }).format(
-    new Date(`${date}T12:00:00Z`)
-  );
-}
-
 /** `3. März`, `March 3`: a day of the month, for "from" and "on". */
 export function dayOfMonth(date: string, locale: string): string {
-  return formatDate(date, locale, { day: 'numeric', month: 'long' });
+  return formatParkDay(locale, date, { day: 'numeric', month: 'long' });
 }
 
 /** `Do., 19. Nov.`: the subtitle's short date. */
 export function shortDay(date: string, locale: string): string {
-  return formatDate(date, locale, { weekday: 'short', day: 'numeric', month: 'short' });
+  return formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
 }
 
 /** `Donnerstag`: the weekday of a planned date. */
 export function weekdayOf(date: string, locale: string): string {
-  return formatDate(date, locale, { weekday: 'long' });
+  return formatParkDay(locale, date, { weekday: 'long' });
 }
 
 /** Within a week a weekday says when; further out, the date does. */

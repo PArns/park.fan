@@ -81,14 +81,9 @@ export const EYES = [17, 31] as const;
  * right leg runs down the slope of the head, so the wheel stands in it rather than on top. Cabins
  * are circles, so they need no turning back to hang straight while the wheel spins.
  */
-export const CABINS = Array.from({ length: 8 }, (_, i) => ({
-  x: +(HUB.x + RIM * Math.sin((i * Math.PI) / 4)).toFixed(2),
-  y: +(HUB.y - RIM * Math.cos((i * Math.PI) / 4)).toFixed(2),
-}));
+export const CABINS = cabinsOnRim({ ...HUB, r: RIM });
 /** The wheel's spokes, from each cabin across the hub to the one opposite. */
-export const SPOKES = CABINS.slice(0, 4)
-  .map(({ x, y }) => `M${x} ${y}L${+(2 * HUB.x - x).toFixed(2)} ${+(2 * HUB.y - y).toFixed(2)}`)
-  .join('');
+export const SPOKES = wheelSpokes(HUB, CABINS);
 /** The wheel's A-frame; the legs end inside the head, which is drawn over them. */
 export const A_FRAME = `M${HUB.x} ${HUB.y}L25.5 13M${HUB.x} ${HUB.y}L41.5 20`;
 
@@ -140,3 +135,28 @@ export const NIGHT_STARS = [
 
 /** The rows of the checklist Parky ticks off for a day plan. */
 export const CHECKLIST_ROWS = [35, 39, 43];
+
+/**
+ * The centres of `count` cabins round a wheel's rim, the first at the top: the hat's, the dream
+ * wheel's and every scene's wheel are placed the same way.
+ */
+export function cabinsOnRim(
+  { x, y, r }: { x: number; y: number; r: number },
+  count = 8
+): { x: number; y: number }[] {
+  return Array.from({ length: count }, (_, i) => ({
+    x: +(x + r * Math.sin((i * 2 * Math.PI) / count)).toFixed(2),
+    y: +(y - r * Math.cos((i * 2 * Math.PI) / count)).toFixed(2),
+  }));
+}
+
+/** A wheel's spokes as one path: from each cabin of the first half across the hub to its opposite. */
+export function wheelSpokes(
+  hub: { x: number; y: number },
+  cabins: readonly { x: number; y: number }[]
+): string {
+  return cabins
+    .slice(0, cabins.length / 2)
+    .map(({ x, y }) => `M${x} ${y}L${+(2 * hub.x - x).toFixed(2)} ${+(2 * hub.y - y).toFixed(2)}`)
+    .join('');
+}

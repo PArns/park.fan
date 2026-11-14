@@ -1,12 +1,32 @@
 'use client';
 
 import { useId, type ReactNode } from 'react';
-import { Check, Minus, Plus } from 'lucide-react';
+import { Check, Minus, Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /** The planner's focus ring, one string for every control it draws. */
 export const PLAN_FOCUS =
   'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none';
+
+/** A select or date field in the planner's panels, 44 px tall like every target in them. */
+export const PLAN_FIELD = `border-border bg-background h-11 rounded-md border px-2 text-sm ${PLAN_FOCUS}`;
+
+/** The × in the head of one of the planner's sheets, a 44 px target. */
+export function PlanSheetClose({ label, onClick }: { label: string; onClick: () => void }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-label={label}
+      className={cn(
+        'hover:bg-accent flex size-11 shrink-0 items-center justify-center rounded-md',
+        PLAN_FOCUS
+      )}
+    >
+      <X className="size-5" aria-hidden="true" />
+    </button>
+  );
+}
 
 /**
  * A checkbox with its label and an optional line under it, the whole row the target: at least 44 px

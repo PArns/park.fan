@@ -10,7 +10,6 @@ import {
   Route,
   SlidersHorizontal,
   type LucideIcon,
-  X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
@@ -20,7 +19,7 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { usePlanContext } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
+import { PLAN_FOCUS, PlanSheetClose } from './plan-controls';
 import { PlanDatesStep } from './plan-find';
 import { PlanParks } from './plan-parks';
 import { PlanOptions, usePlanOptionsSummary } from './plan-options';
@@ -277,17 +276,7 @@ export function PlanSetup({
             <div className="border-border/60 flex items-center gap-2 border-b px-4 py-1.5">
               <SheetTitle className="min-w-0 flex-1 text-base">{step.title}</SheetTitle>
               <SheetDescription className="sr-only">{t('setup.sheetHint')}</SheetDescription>
-              <button
-                type="button"
-                onClick={() => onSheet(null)}
-                aria-label={t('setup.close')}
-                className={cn(
-                  'hover:bg-accent flex size-11 items-center justify-center rounded-md',
-                  PLAN_FOCUS
-                )}
-              >
-                <X className="size-5" aria-hidden="true" />
-              </button>
+              <PlanSheetClose label={t('setup.close')} onClick={() => onSheet(null)} />
             </div>
             <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4">
               {step.body}

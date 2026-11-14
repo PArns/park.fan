@@ -21,6 +21,25 @@ import { ticketProblem } from '@/lib/trip-regions/plan-tickets';
 /** The API keeps a plan and a calendar an hour; the planner treats them as fresh for a quarter. */
 const FRESH_MS = 15 * 60_000;
 
+/** How the planner caches a plan, a calendar window or a When answer, and when it asks again. */
+const PLAN_QUERY_OPTIONS = {
+  staleTime: FRESH_MS,
+  gcTime: 4 * FRESH_MS,
+  retry: retryPlanRequest,
+  refetchOnWindowFocus: false,
+};
+
+/**
+ * A request query as it settles: `search` follows the controls, `settled` is the same string once
+ * they have been still for {@link PLAN_DEBOUNCE_MS}, and `asked` is the settled query to send.
+ */
+function useSettledQuery(query: Record<string, string> | null) {
+  const search = query ? new URLSearchParams(query).toString() : null;
+  const settled = useDebouncedValue(search, PLAN_DEBOUNCE_MS);
+  const asked = settled === null ? null : Object.fromEntries(new URLSearchParams(settled));
+  return { search, settled, asked };
+}
+
 /**
  * The plan for a request query, asked once the controls have been still for
  * {@link PLAN_DEBOUNCE_MS}. The previous plan stays on screen while the next is asked
@@ -29,18 +48,13 @@ const FRESH_MS = 15 * 60_000;
  */
 export function useTripPlan(query: Record<string, string> | null) {
   const region = usePlanContext().region.slug;
-  const search = query ? new URLSearchParams(query).toString() : null;
-  const settled = useDebouncedValue(search, PLAN_DEBOUNCE_MS);
-  const asked = settled === null ? null : Object.fromEntries(new URLSearchParams(settled));
+  const { search, settled, asked } = useSettledQuery(query);
   const result = useQuery({
     queryKey: planQueryKey(region, asked ?? {}),
     queryFn: ({ signal }) => fetchTripPlan(region, asked ?? {}, signal),
     enabled: asked !== null,
     placeholderData: keepPreviousData,
-    staleTime: FRESH_MS,
-    gcTime: 4 * FRESH_MS,
-    retry: retryPlanRequest,
-    refetchOnWindowFocus: false,
+    ...PLAN_QUERY_OPTIONS,
   });
   return {
     ...result,
@@ -76,10 +90,7 @@ export function useUnpinnedPlan(query: Record<string, string> | null) {
     queryKey: planQueryKey(region, unpinned ?? {}),
     queryFn: ({ signal }) => fetchTripPlan(region, unpinned ?? {}, signal),
     enabled: unpinned !== null,
-    staleTime: FRESH_MS,
-    gcTime: 4 * FRESH_MS,
-    retry: retryPlanRequest,
-    refetchOnWindowFocus: false,
+    ...PLAN_QUERY_OPTIONS,
   });
 }
 
@@ -94,10 +105,7 @@ export function useTripCalendar(from: string | null, to: string | null) {
     queryFn: ({ signal }) => fetchTripCalendar(region, from as string, to as string, signal),
     enabled: Boolean(from && to),
     placeholderData: keepPreviousData,
-    staleTime: FRESH_MS,
-    gcTime: 4 * FRESH_MS,
-    retry: retryPlanRequest,
-    refetchOnWindowFocus: false,
+    ...PLAN_QUERY_OPTIONS,
   });
 }
 
@@ -107,18 +115,13 @@ export function useTripCalendar(from: string | null, to: string | null) {
  */
 export function useTripWhen(query: Record<string, string> | null) {
   const region = usePlanContext().region.slug;
-  const search = query ? new URLSearchParams(query).toString() : null;
-  const settled = useDebouncedValue(search, PLAN_DEBOUNCE_MS);
-  const asked = settled === null ? null : Object.fromEntries(new URLSearchParams(settled));
+  const { search, settled, asked } = useSettledQuery(query);
   const result = useQuery({
     queryKey: whenQueryKey(region, asked ?? {}),
     queryFn: ({ signal }) => fetchTripWhen(region, asked ?? {}, signal),
     enabled: asked !== null,
     placeholderData: keepPreviousData,
-    staleTime: FRESH_MS,
-    gcTime: 4 * FRESH_MS,
-    retry: retryPlanRequest,
-    refetchOnWindowFocus: false,
+    ...PLAN_QUERY_OPTIONS,
   });
   return {
     ...result,

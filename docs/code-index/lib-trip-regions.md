@@ -29,7 +29,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
 - `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
-- `monthKey` _function_: `YYYY-MM` of a month.
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
 - `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
@@ -88,12 +87,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
-- `formatHubDate` _function_: A plain date as the hub prints it, anchored at noon UTC so no zone moves it: `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu".
+- `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
-- `findLeg` _function_: The legs between two places, in either direction (`hotel:<key>` or a park slug).
+- `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
 - `meanWait` _function_: The mean of some waits, rounded to five like every wait the site prints; `null` for none.
 - `weekendAgainstWeekday` _function_: A park's figures on weekends against weekdays across the window, last-year days left out.
@@ -108,7 +107,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it.
 - `slimRegion` _function_: The region as the hub's client part needs it: the parks, groups and hotel areas, and only the legs from a hotel area to a park, which the day sheet's travel line reads.
-- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
+- `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `formatParkDayRange` with short months.
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
 - `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
@@ -144,8 +143,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripRegionYears` _function_: The years a hub's months span, for its `<title>` (`{years}`): "2026–2027", or the one year from January.
 - `isTripRegionMonthInRange` _function_: Whether a month is one a hub serves: the current one or one of the eleven after it.
 - `parseTripRegionMonth` _function_: The month the `[[...date]]` segments ask for: `null` for the hub, `'invalid'` for segments that are not a month the hub serves (a 404, or a 308 the proxy has already answered), and `padded` for `/2026/09`, which the proxy 308s to `/2026/9`.
+- `monthKey` _function_: `YYYY-MM` of a month.
 - `tripMonthRange` _function_: The first and last day of a month, `YYYY-MM-DD`, for a `/calendar` or `/best-days` window.
-- `monthOfDate` _function_: The month a `YYYY-MM-DD` date falls in.
+- `monthOfDate` _function_: The month a `YYYY-MM-DD` date, or a `YYYY-MM` key, falls in.
 - `tripRegionRelayUrl` _function_: Where a page asks for one of a region's keyed routes: the same-origin relay (`app/api/trip-regions/[...path]/route.ts`), which adds the site's data key. The query names are the API's own.
 - `TRIP_PLANNER_ID` _const_: The anchor of the hub's planner chapter, which the hero's action and Parky's links open.
 - `TRIP_CALENDAR_ID` _const_: The anchor of chapter 01, the calendar, for the park bands and the homepage teaser.
@@ -399,7 +399,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
 - `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography. It goes in by the name the trip planner calls it ("Islands of Adventure"), so the day planner's list of a trip's days reads as the plan did.
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
-- `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
 - Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`

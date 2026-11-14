@@ -160,14 +160,19 @@ export function parseTripRegionMonth(
   return spelled;
 }
 
-/** The first and last day of a month, `YYYY-MM-DD`, for a `/calendar` or `/best-days` window. */
-export function tripMonthRange({ year, month }: TripMonth): { from: string; to: string } {
-  const pad = (n: number) => String(n).padStart(2, '0');
-  const lastDay = new Date(Date.UTC(year, month, 0)).getUTCDate();
-  return { from: `${year}-${pad(month)}-01`, to: `${year}-${pad(month)}-${pad(lastDay)}` };
+/** `YYYY-MM` of a month. */
+export function monthKey({ year, month }: TripMonth): string {
+  return `${year}-${String(month).padStart(2, '0')}`;
 }
 
-/** The month a `YYYY-MM-DD` date falls in. */
+/** The first and last day of a month, `YYYY-MM-DD`, for a `/calendar` or `/best-days` window. */
+export function tripMonthRange(month: TripMonth): { from: string; to: string } {
+  const key = monthKey(month);
+  const lastDay = new Date(Date.UTC(month.year, month.month, 0)).getUTCDate();
+  return { from: `${key}-01`, to: `${key}-${lastDay}` };
+}
+
+/** The month a `YYYY-MM-DD` date, or a `YYYY-MM` key, falls in. */
 export function monthOfDate(date: string): TripMonth {
   return { year: Number(date.slice(0, 4)), month: Number(date.slice(5, 7)) };
 }

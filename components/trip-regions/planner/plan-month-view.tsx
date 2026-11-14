@@ -4,7 +4,6 @@ import { useMemo, type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
 import { BedDouble, Lock, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { weekdayLabels } from '@/lib/planner/month-grid';
 import { formatGridHours, formatGridTime } from '@/lib/planner/park-time';
 import { UNUSABLE_HATCH_IMAGE } from '@/lib/utils/hatch';
 import {
@@ -42,6 +41,7 @@ import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanCodeKey, useStormKeys } from './plan-calendar-keys';
+import { PlanWeekdayHead } from './plan-month-grid';
 import { useBaseName } from './plan-place-words';
 import { MoveIcon, PlanMonthStayBand, StayMarker } from './plan-stay-band';
 import {
@@ -145,7 +145,6 @@ export function PlanMonthView({
   const spanBy = useMemo(() => new Map(spans.map((s) => [s.date, s])), [spans]);
   const canvas = useMemo(() => tripCanvas(spans) ?? TRIP_FALLBACK_CANVAS, [spans]);
   const ticks = useMemo(() => bandTicks(canvas), [canvas]);
-  const headers = useMemo(() => weekdayLabels(locale), [locale]);
   const codeKey = useMemo(
     () =>
       parkCodeKey(
@@ -181,14 +180,7 @@ export function PlanMonthView({
 
   return (
     <div data-plan-view="month" className="flex flex-col gap-1">
-      <div
-        className="text-muted-foreground grid grid-cols-7 gap-1 text-center text-[11px]"
-        aria-hidden="true"
-      >
-        {headers.map((h, i) => (
-          <span key={i}>{h}</span>
-        ))}
-      </div>
+      <PlanWeekdayHead locale={locale} />
       <ol className="grid grid-cols-7 gap-1">
         {weeks.flat().map((cell, index) => {
           const day = dayBy.get(cell.date);

@@ -28,6 +28,7 @@ import {
 import { bestTimeYear } from '@/lib/trip-regions/best-time';
 import { lastYearStart } from '@/lib/trip-regions/plan-copy';
 import {
+  monthKey,
   TRIP_CALENDAR_ID,
   TRIP_PLANNER_ID,
   tripRegionBestTimePath,
@@ -291,9 +292,7 @@ export async function TripRegionHubPage({
             index="02"
             region={region}
             locale={locale}
-            defaultMonth={
-              month ? `${month.year}-${String(month.month).padStart(2, '0')}` : undefined
-            }
+            defaultMonth={month ? monthKey(month) : undefined}
           />
 
           {whenTitle && (

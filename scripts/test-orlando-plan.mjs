@@ -18,7 +18,6 @@ import {
   writePlanQuery,
 } from '../lib/trip-regions/plan-query.ts';
 import {
-  findLeg,
   parkDaysAvailable,
   planProblem,
   planRequestQuery,
@@ -37,6 +36,7 @@ import {
   effectiveHotel,
   tripHotelKinds,
 } from '../lib/trip-regions/plan.ts';
+import { findLeg } from '../lib/trip-regions/hub-data.ts';
 import {
   autoSplit,
   climateChips,

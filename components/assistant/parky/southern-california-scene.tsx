@@ -2,13 +2,12 @@
 
 import { useId } from 'react';
 import type { TripRegionSceneProps } from '@/lib/trip-regions/registry';
-import { STAR, gold, rail } from './drawing';
+import { STAR, cabinsOnRim, gold, rail, wheelSpokes } from './drawing';
 import {
   HolidayGround,
   HolidayMitten,
   HolidayParky,
   HolidaySceneSvg,
-  cabinsOnRim,
   motionOnce,
   type HolidayEyes,
 } from './holiday-parky';
@@ -382,13 +381,7 @@ export function ParkySouthernCaliforniaScene({ className }: TripRegionSceneProps
           className="stroke-[oklch(0.97_0.01_90)] dark:stroke-[oklch(0.24_0.05_300)]"
         />
         <path
-          d={cabinsOnRim(PIER_WHEEL)
-            .slice(0, 4)
-            .map(
-              ({ x, y }) =>
-                `M${x} ${y}L${+(2 * PIER_WHEEL.x - x).toFixed(2)} ${+(2 * PIER_WHEEL.y - y).toFixed(2)}`
-            )
-            .join('')}
+          d={wheelSpokes(PIER_WHEEL, cabinsOnRim(PIER_WHEEL))}
           strokeWidth=".45"
           className="stroke-[oklch(0.97_0.01_90)]/80 dark:stroke-[oklch(0.24_0.05_300)]"
         />

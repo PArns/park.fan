@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Sparkles, Ticket } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatParkDay } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { sentenceCase } from '@/lib/utils/sentence-case';
@@ -86,9 +86,7 @@ export function PlanMonthEvents({
 }) {
   const t = useTranslations('tripPlanner.dates');
   if (events.length === 0) return null;
-  const monthName = getDateTimeFormat(locale, { month: 'long', timeZone: 'UTC' }).format(
-    new Date(`${month}-15T12:00:00Z`)
-  );
+  const monthName = formatParkDay(locale, `${month}-15`, { month: 'long' });
   const day = (date: string) => formatDateRange(date, date, locale);
   const when = (event: MonthEvent) => {
     if (event.kind === 'party') return t('nights', { count: event.dates.length });
