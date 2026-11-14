@@ -31,7 +31,7 @@ export async function HubHowItWorks({
 }) {
   const t = await getTranslations('tripHub');
   return (
-    <HubLandingOnly className="mb-8 space-y-6">
+    <HubLandingOnly className="space-y-6">
       <ol className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-4 md:overflow-visible md:px-0 md:pb-0">
         {HUB_STEPS.map((step, i) => {
           const shot = hubShot(shots[i], locale);

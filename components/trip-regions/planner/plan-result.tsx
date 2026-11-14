@@ -60,6 +60,7 @@ import { PlanRequestError } from '@/lib/trip-regions/plan-fetch';
 import { whenRequestQuery } from '@/lib/trip-regions/plan-when';
 import { readTickets } from '@/lib/trip-regions/plan-query';
 import {
+  asksForTickets,
   hopperResorts,
   hopperTicketResorts,
   ticketProblem,
@@ -83,7 +84,7 @@ import { PlanResultHead } from './plan-result-head';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
-import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
+import { PlanTicketsCard, TicketsAsk, type PlanEdit } from './plan-tickets-card';
 import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
@@ -122,8 +123,7 @@ export function PlanResult({
   answers: ReactNode;
 }) {
   const t = useTranslations('tripPlanner');
-  const { state, headliners, ticketStep, tickets: catalog } = usePlanContext();
-  const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
+  const { state, headliners } = usePlanContext();
 
   return (
     <section
@@ -137,8 +137,6 @@ export function PlanResult({
       ) : planProblem(state, headliners) === 'no_dates' ? (
         <div className="border-border/60 flex min-h-40 flex-col items-start justify-center gap-3 rounded-2xl border border-dashed p-5">
           <p className="text-sm">{t('result.empty')}</p>
-          {/* A ticket bought for fixed days gives the trip its dates, so it may come first. */}
-          {ticketsAsked && <TicketsAsk edit={edit} />}
         </div>
       ) : (
         <PlanAnswerSection edit={edit} answers={answers} />
@@ -544,7 +542,7 @@ function PlanAnswer({
       })
     ),
   ];
-  const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
+  const ticketsAsked = asksForTickets(ticketStep, catalog);
 
   return (
     <div className="flex flex-col gap-5 lg:grid lg:grid-cols-[340px_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-8">
@@ -610,31 +608,15 @@ function PlanAnswer({
         <PlanTicketsCard
           plan={plan}
           edit={edit}
-          ask={ticketsAsked && state.tickets.length === 0 ? <TicketsAsk edit={edit} /> : null}
+          ask={
+            ticketsAsked && state.tickets.length === 0 ? (
+              <TicketsAsk onAsk={() => edit.tickets('ask')} />
+            ) : null
+          }
         />
         <PlanKeep plan={plan} calendar={calendar} />
       </div>
     </div>
-  );
-}
-
-/** "Already have tickets? Add them": the way to the ticket step once there is a plan. */
-function TicketsAsk({ edit }: { edit: PlanEdit }) {
-  const t = useTranslations('tripPlanner.tickets');
-  return (
-    <p className="flex flex-wrap items-center gap-x-2 text-sm" data-plan-tickets-ask="">
-      {t('later')}
-      <button
-        type="button"
-        onClick={() => edit.tickets('ask')}
-        className={cn(
-          'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 font-medium transition-colors',
-          PLAN_FOCUS
-        )}
-      >
-        {t('enter')}
-      </button>
-    </p>
   );
 }
 
