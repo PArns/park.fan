@@ -590,7 +590,46 @@
     "question": "Quale parco in quale giorno?",
     "nextTitle": "Pianificatore di viaggio {region}",
     "regionGuide": "Guida di viaggio {region}",
-    "lastYearFrom": "Dal {date}: valori dell’anno scorso, ogni volta lo stesso giorno della settimana, come l’abbiamo misurato."
+    "lastYearFrom": "Dal {date}: valori dell’anno scorso, ogni volta lo stesso giorno della settimana, come l’abbiamo misurato.",
+    "howItWorks": {
+      "title": "Come il pianificatore organizza il tuo viaggio",
+      "planTitle": "Il tuo viaggio",
+      "steps": {
+        "dates": {
+          "title": "Scegli le date",
+          "text": "Sotto ogni giorno c’è il parco con l’attesa di picco più breve. Appena scegli il giorno della partenza, il primo piano è pronto."
+        },
+        "questions": {
+          "title": "Qualche domanda, tutte facoltative",
+          "text": "Parchi, hotel, ritmo, serate, biglietti. Rispondi, oppure salti la domanda."
+        },
+        "plan": {
+          "title": "Il tuo piano, giorno per giorno",
+          "text": "Quale parco in quale giorno, perché quel giorno e quanto saranno lunghe più o meno le code."
+        },
+        "edit": {
+          "title": "Modificarlo, anche con Parky",
+          "text": "Scambia o blocca giorni, aggiungi parchi o chiedi a Parky in chat. Poi nel pianificatore della giornata o nel tuo calendario."
+        }
+      },
+      "parky": "Solo le date sono obbligatorie, e ogni domanda dopo puoi saltarla. Inizia dalle date.",
+      "chat": "Meglio in chat",
+      "calendarLead": "Da dove il piano prende i suoi giorni: l’attesa di picco di ogni parco in ogni giorno.",
+      "calendarFold": "Calendario di tutti i {count} parchi, giorno per giorno",
+      "hero": {
+        "note": "Solo le date sono obbligatorie; il primo piano è pronto appena le scegli.",
+        "toPlan": "Vai al tuo piano",
+        "newTrip": "Pianifica un altro viaggio",
+        "remembered": "Il tuo piano per {range} è salvato in questo browser."
+      }
+    },
+    "resorts": {
+      "title": "I resort"
+    },
+    "finalCta": {
+      "title": "Il tuo viaggio, pianificato giorno per giorno",
+      "text": "Scegli le date, poi rispondi a qualche domanda o saltala. Vedi il primo piano appena le date sono fissate."
+    }
   },
   "theme": {
     "light": "Chiaro",
@@ -3869,6 +3908,25 @@
         },
         "glance": {
           "zone": "ora di Orlando"
+        },
+        "resorts": {
+          "title": "I resort intorno a Orlando",
+          "walt-disney-world": {
+            "lead": "Quattro parchi a tema e due parchi acquatici. Gli ospiti degli hotel Disney entrano prima la mattina con l’Early Entry.",
+            "stay": "Da un hotel a Lake Buena Vista ogni parco a tema è a meno di mezz’ora."
+          },
+          "universal-orlando": {
+            "lead": "Tre parchi a tema e il parco acquatico Volcano Bay. Gli ospiti degli hotel Universal entrano prima con l’Early Park Admission.",
+            "stay": "Gli hotel Premier aggiungono l’Express a Universal Studios e Islands of Adventure."
+          },
+          "seaworld-orlando": {
+            "name": "SeaWorld Orlando",
+            "lead": "SeaWorld, il parco acquatico Aquatica e Discovery Cove, che apre solo su prenotazione. I biglietti per più parchi includono Busch Gardens e Adventure Island a Tampa."
+          },
+          "day-trips": {
+            "lead": "LEGOLAND Florida, Busch Gardens Tampa e il parco acquatico Adventure Island sono fuori Orlando.",
+            "stay": "Da Lake Buena Vista LEGOLAND è a poco meno di un’ora, Busch Gardens a circa un’ora e mezza."
+          }
         }
       },
       "bestTime": {
@@ -4233,6 +4291,21 @@
         },
         "glance": {
           "zone": "ora della California"
+        },
+        "resorts": {
+          "title": "I resort della California del Sud",
+          "disneyland-resort": {
+            "lead": "Disneyland Park e Disney California Adventure sono uno accanto all’altro ad Anaheim. Nelle sere dell’Oogie Boogie Bash California Adventure chiude prima per i visitatori di giornata.",
+            "stay": "Dagli hotel Disney e da Harbor Boulevard vai a piedi a entrambi i parchi."
+          },
+          "universal-studios-hollywood": {
+            "lead": "Universal Studios Hollywood è a Universal City, a Los Angeles, con biglietto e calendario propri.",
+            "stay": "Le zone hotel vicine sono Universal City e Hollywood."
+          },
+          "day-trips": {
+            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain e tre parchi a San Diego e dintorni: SeaWorld, LEGOLAND California e Sesame Place.",
+            "stay": "Per SeaWorld, LEGOLAND e Sesame Place ci sono zone hotel a San Diego e Carlsbad."
+          }
         }
       },
       "bestTime": {
@@ -4515,6 +4588,25 @@
         "dataset": {
           "name": "Calendario affluenza dei parchi del Giappone, {period}",
           "description": "Per parco e giorno a Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan e Universal Studios Japan: l’attesa di picco prevista, l’affluenza rispetto a un giorno normale del parco e gli orari, {period}."
+        },
+        "resorts": {
+          "title": "I resort e i parchi in Giappone",
+          "tokyo-disney-resort": {
+            "lead": "Tokyo Disneyland e Tokyo DisneySea sono uno accanto all’altro a Maihama. Gli ospiti degli hotel Disney entrano a Tokyo Disneyland 15 minuti prima con l’Happy Entry.",
+            "stay": "Maihama per entrambi i parchi Disney: a piedi a Tokyo Disneyland, in monorotaia a DisneySea."
+          },
+          "universal-studios-japan": {
+            "lead": "Universal Studios Japan è a Osaka, alla fine del percorso da Tokyo passando per Nagoya.",
+            "stay": "Universal City è all’ingresso, Umeda e Namba in città; Kyoto è a un’ora."
+          },
+          "fuji-q-highland": {
+            "lead": "Fuji-Q Highland è a Fujikawaguchiko. Il pullman da Shinjuku impiega poco meno di due ore.",
+            "stay": "Shinjuku per i pullman da Tokyo, Kawaguchiko sul lago o l’Highland Resort al parco."
+          },
+          "legoland-japan": {
+            "lead": "LEGOLAND Japan è a Nagoya, sul percorso tra Tokyo e Osaka.",
+            "stay": "Nagoya Station per lo Shinkansen, o il LEGOLAND Japan Hotel all’ingresso."
+          }
         }
       },
       "bestTime": {
@@ -4831,6 +4923,17 @@
         "dataset": {
           "name": "Calendario affluenza Disneyland Paris e Parc Astérix, {period}",
           "description": "Per parco e per giorno al Parco Disneyland, a Disney Adventure World e al Parc Astérix: l’attesa di picco prevista alle grandi attrazioni, l’affluenza rispetto a un giorno normale in quel parco e gli orari, {period}."
+        },
+        "resorts": {
+          "title": "I resort intorno a Parigi",
+          "disneyland-paris": {
+            "lead": "Disneyland Park e Disney Adventure World sono uno accanto all’altro, con gli ingressi a pochi minuti a piedi. Gli ospiti degli hotel Disney entrano prima con l’Extra Magic Time.",
+            "stay": "Gli hotel Disney sul Lake Disney sono a piedi dagli ingressi; dagli hotel partner di Val d’Europe e Val de France parte una navetta gratuita."
+          },
+          "parc-asterix": {
+            "lead": "Un parco a tema con hotel propri, a circa un’ora d’auto da Disneyland Paris. Senza auto, una navetta collega l’aeroporto Charles de Gaulle al parco.",
+            "stay": "I tre hotel del parco sono a piedi dall’ingresso, e il soggiorno include i biglietti e l’Early Entry per alcune attrazioni."
+          }
         }
       },
       "bestTime": {

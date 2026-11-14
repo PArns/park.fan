@@ -50,10 +50,13 @@ import { HubFaq } from './hub-faq';
 import { HubGlance, MonthGlance } from './hub-glance';
 import { HubLegend } from './hub-legend';
 import { HubMonthIndex } from './hub-month-index';
-import { HubParkIndex } from './hub-park-index';
 import { PlannerChapterSlot } from './planner-chapter-slot';
 import { HubWhen } from './hub-when';
-import { HubCalendarAction, HubHeroAction } from './hub-hero-action';
+import { HubHeroActions } from './hub-hero-action';
+import { HubFinalCta } from './hub-final-cta';
+import { HubHowItWorks } from './hub-how-it-works';
+import { HubResorts } from './hub-resorts';
+import { HubPlanFold, HubTripProvider } from './hub-trip-state';
 
 /**
  * The hero photo: the first of the region's `hub.heroPhotos` the media database still has, with
@@ -93,15 +96,18 @@ export interface TripRegionHubPageProps {
 }
 
 /**
- * A region's hub and its month pages, one anatomy (docs/product/landing-pages.md). The head asks
- * the visitor's question, says in one line what the page holds, and offers the two ways in, the
- * planner and the calendar, with the answer under them: the best park per resort and the quietest
- * days ahead. Then 01 the calendar with its key, the month index and each park's calendar, 02 the
- * trip planner, 03 the best time to go (where the region has best-time pages), 04 the questions,
- * the method folded in, and the closing band, which ends on the region's travel guide while that
- * post is served. Each chapter opens with its heading and then the
- * thing itself. A block without the region's words draws nothing. Every sentence and the first
- * week are in the served HTML.
+ * A region's hub and its month pages, one anatomy (docs/product/landing-pages.md), a landing page
+ * around the trip planner. The head asks the visitor's question, says in one line what the page
+ * holds, and offers the planner and the calendar, with the answer under them: the best park per
+ * resort and the quietest days ahead. Then 01 how the planner plans a trip (its four steps) and the
+ * planner, 02 the calendar with its key and the month index, 03 the resorts with each park's
+ * calendar, 04 the best time to go (where the region has best-time pages), 05 the questions, the
+ * closing call and the band, which ends on the region's travel guide while that post is served.
+ *
+ * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
+ * address bar or remembered in this browser, chapter 01 is the plan, the head's buttons lead to it
+ * and the calendar and the resorts fold into a line each. A block without the region's words draws
+ * nothing. Every sentence and the first week are in the served HTML.
  */
 export async function TripRegionHubPage({
   locale,
@@ -156,26 +162,17 @@ export async function TripRegionHubPage({
       locale={locale}
     />
   );
-  // The two ways in, the same size: plan a trip, or read the calendar. Only the first is the
-  // head's one primary action (`data-landing-action`).
   const page = month ? 'month' : 'hub';
   const actions = (
-    <div className="flex flex-col gap-3 sm:flex-row">
-      <HubHeroAction
-        href={planHref}
-        label={t('plan')}
-        region={region.slug}
-        page={page}
-        className="max-sm:w-full"
-      />
-      <HubCalendarAction
-        href={`${pagePath}#${TRIP_CALENDAR_ID}`}
-        label={t('toCalendar')}
-        region={region.slug}
-        page={page}
-        className="max-sm:w-full"
-      />
-    </div>
+    <HubHeroActions
+      planHref={planHref}
+      calendarHref={`${pagePath}#${TRIP_CALENDAR_ID}`}
+      planLabel={t('plan')}
+      calendarLabel={t('toCalendar')}
+      region={region.slug}
+      page={page}
+      locale={locale}
+    />
   );
 
   const whenYear = when ? bestTimeYear(when.meta.from) : null;
@@ -204,8 +201,27 @@ export async function TripRegionHubPage({
     ? resolveEntryForLocale(config.regionGuide, locale as Locale)
     : null;
 
+  const parkCount = region.parks.length;
+  const planner = (
+    <PlannerChapterSlot
+      index="01"
+      region={region}
+      locale={locale}
+      defaultMonth={month ? `${month.year}-${String(month.month).padStart(2, '0')}` : undefined}
+      landing={
+        <HubHowItWorks
+          region={region.slug}
+          shots={config.hub.howItWorks}
+          locale={locale}
+          planHref={planHref}
+          page={page}
+        />
+      }
+    />
+  );
+
   return (
-    <>
+    <HubTripProvider region={region.slug} todayIso={todayIso}>
       <LandingHero
         kicker={title}
         title={title}
@@ -227,9 +243,11 @@ export async function TripRegionHubPage({
         )}
       >
         <div className="space-y-16 sm:space-y-24">
+          {planner}
+
           <section id={TRIP_CALENDAR_ID} className="scroll-mt-24">
             <ChapterHeading
-              index="01"
+              index="02"
               icon={CalendarDays}
               kicker={
                 calendar
@@ -244,62 +262,65 @@ export async function TripRegionHubPage({
                   ? t('calendar.titleMonth', { month: monthLabel })
                   : t('calendar.title', { days: HUB_WINDOW_DAYS })
               }
+              hint={t('howItWorks.calendarLead')}
             />
-            {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
-            {lastYearFrom && (
-              <p
-                role="note"
-                className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
-              >
-                {t('lastYearFrom', { date: formatHubDate(lastYearFrom.from, locale, 'dayMonth') })}
-              </p>
-            )}
-            {calendar && week.length > 0 ? (
-              <HubCalendar
-                region={slimRegion(region)}
-                // A month page serves its whole month, the table that URL exists for; the hub its
-                // first week, the rest through the relay.
-                initial={sliceCalendar(
-                  calendar,
-                  month ? calendar.days.filter((d) => d.date >= firstFrom) : week
-                )}
-                window={{ from: firstFrom, to: calendar.meta.to }}
-                todayIso={todayIso}
+            <HubPlanFold summary={t('howItWorks.calendarFold', { count: parkCount })}>
+              {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
+              {lastYearFrom && (
+                <p
+                  role="note"
+                  className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
+                >
+                  {t('lastYearFrom', {
+                    date: formatHubDate(lastYearFrom.from, locale, 'dayMonth'),
+                  })}
+                </p>
+              )}
+              {calendar && week.length > 0 ? (
+                <HubCalendar
+                  region={slimRegion(region)}
+                  // A month page serves its whole month, the table that URL exists for; the hub its
+                  // first week, the rest through the relay.
+                  initial={sliceCalendar(
+                    calendar,
+                    month ? calendar.days.filter((d) => d.date >= firstFrom) : week
+                  )}
+                  window={{ from: firstFrom, to: calendar.meta.to }}
+                  todayIso={todayIso}
+                  locale={locale}
+                  legend={<HubLegend />}
+                />
+              ) : (
+                <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
+              )}
+              {sources && (
+                <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
+              )}
+              <Suspense fallback={null}>
+                <HubAccuracy region={region.slug} accuracy={accuracy} />
+              </Suspense>
+              <HubMonthIndex
+                region={region.slug}
+                current={current}
+                active={month}
                 locale={locale}
-                legend={<HubLegend />}
+                className="mt-8"
               />
-            ) : (
-              <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
-            )}
-            {sources && (
-              <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
-            )}
-            <Suspense fallback={null}>
-              <HubAccuracy region={region.slug} accuracy={accuracy} />
-            </Suspense>
-            <HubMonthIndex
-              region={region.slug}
-              current={current}
-              active={month}
-              locale={locale}
-              className="mt-8"
-            />
-            <HubParkIndex region={region} bestDays={bestDays} locale={locale} className="mt-6" />
+            </HubPlanFold>
           </section>
 
-          <PlannerChapterSlot
-            index="02"
+          <HubResorts
+            index="03"
             region={region}
+            hub={config.hub}
+            bestDays={bestDays}
             locale={locale}
-            defaultMonth={
-              month ? `${month.year}-${String(month.month).padStart(2, '0')}` : undefined
-            }
           />
 
           {whenTitle && (
             <section className="scroll-mt-24" id="best-time">
               <ChapterHeading
-                index="03"
+                index="04"
                 icon={Sun}
                 kicker={ownWords(tRegion, 'when.kicker') ?? undefined}
                 title={whenTitle}
@@ -311,7 +332,7 @@ export async function TripRegionHubPage({
           {/* The questions wait for the measured error, bounded; the page above never does. */}
           <Suspense fallback={null}>
             <HubFaq
-              index={whenTitle ? '04' : '03'}
+              index={whenTitle ? '05' : '04'}
               region={region}
               calendar={calendar}
               summaries={summaries}
@@ -320,6 +341,14 @@ export async function TripRegionHubPage({
               locale={locale}
             />
           </Suspense>
+
+          <HubFinalCta
+            region={region.slug}
+            scene={config.hub.scene}
+            locale={locale}
+            planHref={planHref}
+            page={page}
+          />
         </div>
       </div>
 
@@ -343,6 +372,6 @@ export async function TripRegionHubPage({
           ] as Parameters<typeof LandingNextSteps>[0]['destinations']
         }
       />
-    </>
+    </HubTripProvider>
   );
 }

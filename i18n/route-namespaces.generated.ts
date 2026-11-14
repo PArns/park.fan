@@ -173,6 +173,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parks.seasons',
     'parks.worksPeriod',
     'tripHub.calendar',
+    'tripHub.howItWorks.hero',
     'tripHub.lanes',
     'tripHub.sheet',
     'tripPlanner',

@@ -105,17 +105,22 @@ export function HubCalendarAction({
 export function HubHeroActions({
   planHref,
   calendarHref,
+  planLabel,
+  calendarLabel,
   region,
   page,
   locale,
 }: {
   planHref: string;
   calendarHref: string;
+  /** „Reise planen“ and „Zum Kalender“, from the server's messages. */
+  planLabel: string;
+  calendarLabel: string;
   region: string;
   page: HubPage;
   locale: string;
 }) {
-  const t = useTranslations('tripHub');
+  const t = useTranslations('tripHub.howItWorks.hero');
   const trip = useHubTrip();
   const button = 'max-sm:w-full';
   return (
@@ -130,11 +135,11 @@ export function HubHeroActions({
               {...buttonLinkProps({ size: 'lg', withIcon: true, className: button })}
             >
               <ArrowDown aria-hidden />
-              {t('howItWorks.toPlan')}
+              {t('toPlan')}
             </a>
             <HubPlanAction
               href={planHref}
-              label={t('howItWorks.newTrip')}
+              label={t('newTrip')}
               region={region}
               page={page}
               variant="outline"
@@ -145,7 +150,7 @@ export function HubHeroActions({
           <>
             <HubPlanAction
               href={planHref}
-              label={t('plan')}
+              label={planLabel}
               region={region}
               page={page}
               landingAction
@@ -153,7 +158,7 @@ export function HubHeroActions({
             />
             <HubCalendarAction
               href={calendarHref}
-              label={t('toCalendar')}
+              label={calendarLabel}
               region={region}
               page={page}
               className={button}
@@ -163,8 +168,8 @@ export function HubHeroActions({
       </div>
       <p className="text-muted-foreground text-sm">
         {trip
-          ? t('howItWorks.remembered', { range: formatDateRange(trip.from, trip.to, locale) })
-          : t('howItWorks.heroNote')}
+          ? t('remembered', { range: formatDateRange(trip.from, trip.to, locale) })
+          : t('note')}
       </p>
     </div>
   );

@@ -11,15 +11,12 @@ import { HubLandingOnly } from './hub-trip-state';
  */
 export async function HubFinalCta({
   region,
-  regionName,
   scene,
   locale,
   planHref,
   page,
 }: {
   region: string;
-  /** The region as the page's language names it („Kalifornien“). */
-  regionName: string;
   /** The region's Parky picture, a media id. */
   scene: string;
   locale: string;
@@ -36,7 +33,7 @@ export async function HubFinalCta({
       >
         <div className="space-y-3 p-6 sm:p-8">
           <h2 className="text-xl font-semibold text-balance sm:text-2xl">
-            {t('finalCta.title', { region: regionName })}
+            {t('finalCta.title')}
           </h2>
           <p className="text-muted-foreground leading-relaxed">{t('finalCta.text')}</p>
           <HubPlanAction
