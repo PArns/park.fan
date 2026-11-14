@@ -318,7 +318,7 @@ function WeekColumn({
               type="button"
               onClick={onOpen}
               data-plan-block={block.slug}
-              aria-label={`${weekday} ${date}: ${[name, ticketDay, minutes].filter(Boolean).join(', ')}`}
+              aria-label={`${weekday} ${date}: ${[name, ticketDay, wait != null ? t('peakWait', { minutes: wait }) : minutes].filter(Boolean).join(', ')}`}
               className={cn('absolute inset-x-0.5 rounded-md text-left', PLAN_FOCUS)}
               style={{ top, height: blockHeight }}
             >
