@@ -232,7 +232,8 @@ export type AssistantLineKind =
   | 'rough'
   | 'weather'
   | 'live'
-  | 'clock';
+  | 'clock'
+  | 'yours';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =

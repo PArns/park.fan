@@ -1115,6 +1115,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     weather: 'Wetter im Park',
     live: 'Wartezeiten im Park',
     clock: 'Parkuhr (Öffnung, Schluss)',
+    yours: 'Eigene Pläne (nächster Parktag, Reise, letzter Park)',
   },
   entrance: {
     scurry: 'Huschen',

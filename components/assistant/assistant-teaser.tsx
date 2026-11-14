@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { flushSync } from 'react-dom';
 import { useLocale, useTranslations } from 'next-intl';
 import { useQueryClient } from '@tanstack/react-query';
 import { X } from 'lucide-react';
@@ -46,6 +47,9 @@ import type { LiveParkSnapshot } from '@/lib/api/parks';
 import { deriveParkStatsFindings } from '@/lib/parks/park-stats-derive';
 import { parkyFacts } from '@/lib/assistant/parky/facts';
 import { lineSources, parkNewsKey, type LineSource } from '@/lib/assistant/parky/lines';
+import { YOURS_LINES, yoursValues } from '@/lib/assistant/parky/yours';
+import { yoursHere } from '@/lib/assistant/parky/yours-here';
+import { coversControl, plannerFlowOnScreen } from '@/lib/assistant/parky/bubble-room';
 import { reactionTo, type ParkyReaction } from '@/lib/assistant/parky/reactions';
 import { usePageLocked } from '@/lib/hooks/use-page-locked';
 import { useParkyWeather } from '@/lib/assistant/parky/use-parky-weather';
@@ -64,6 +68,19 @@ import { PARKY_FALL_MS } from '@/lib/assistant/use-scroll-fling';
 import type { ParkyFling } from '@/lib/assistant/fling-tracker';
 
 const VISIBLE_MS = 7_000;
+/**
+ * Where the bubble stands. The tail, 1rem above the bubble's foot, sits at Parky's mouth (y 33.5
+ * of 48): 17 px up a 56 px button on a phone, 19 px up a 64 px one from `sm`, both 1rem from the
+ * corner.
+ */
+const BUBBLE_PLACE = cn(
+  'fixed right-[4.75rem] bottom-[max(1rem,env(safe-area-inset-bottom))] max-w-[min(15rem,calc(100vw-6rem))] sm:right-[5.25rem] sm:bottom-[calc(max(1rem,env(safe-area-inset-bottom))+0.25rem)]',
+  PARKY_LAYER,
+  'planner-wide:right-[calc(var(--planner-inset,0px)+5.25rem)]'
+);
+/** White with black text in either theme, as a comic's speech bubble; the ✕ before the line. */
+const BUBBLE_BODY =
+  'relative flex items-start gap-1 rounded-2xl border border-black/10 bg-white py-2 pr-3 pl-1.5 text-sm text-neutral-900 shadow-xl';
 const TEASER_KEYS = [
   'teaser1',
   'teaser2',
@@ -218,9 +235,28 @@ export function AssistantTeaser({
   useEffect(() => {
     latest.current = { line, boredom, covered, entering, onAct };
   });
-  /** Whether a line would interrupt: another shows, Parky sleeps, a search or dialog is open. */
+  /**
+   * Whether a line would interrupt: another shows, Parky sleeps, a search or dialog is open, or the
+   * visitor is at work in a planner.
+   */
   const busy = () =>
-    latest.current.line !== null || latest.current.boredom === 'asleep' || latest.current.covered;
+    latest.current.line !== null ||
+    latest.current.boredom === 'asleep' ||
+    latest.current.covered ||
+    plannerFlowOnScreen();
+
+  // The bubble is laid out unseen first, where it would stand, so a line that would sit over one of
+  // the page's buttons is never shown.
+  const probe = useRef<HTMLDivElement>(null);
+  const [probeText, setProbeText] = useState('');
+  /** Shows a line unless the bubble would cover a control of the page; false when it would. */
+  const present = useCallback((next: Line): boolean => {
+    flushSync(() => setProbeText(next.text));
+    const box = probe.current?.getBoundingClientRect();
+    if (box && box.width > 0 && coversControl(box, probe.current)) return false;
+    setLine(next);
+    return true;
+  }, []);
 
   // Every line goes after a while, whoever said it; a new one starts the wait again.
   useEffect(() => {
@@ -288,6 +324,12 @@ export function AssistantTeaser({
     const forced = parkySwitch();
     // Each source's line, or `null` where it has none for this page.
     const sources: Record<LineSource, (path: string) => Promise<Line | null>> = {
+      // The visitor's own plans, read from this browser: the one personal line of a visit.
+      yours: async () => {
+        const moment = yoursHere()[0];
+        if (!moment) return null;
+        return { text: t(YOURS_LINES[moment.kind], yoursValues(moment, locale, t)), kind: 'yours' };
+      },
       entrance: async () => (arrival ? said([ENTRANCE_KEYS[arrival]], 'entrance') : null),
       // Once a park a session, level with the weather's line (`parkNewsKey`).
       live: async (path) => {
@@ -386,11 +428,10 @@ export function AssistantTeaser({
         const line = await pick();
         // Waiting for `/stats` may have let another line in, or Parky was opened meanwhile.
         if (!live || !line || teasersShown() >= TEASER_SCHEDULE_MS.length) return;
-        if (busy()) return next(RETRY_MS);
+        if (busy() || !present(line)) return next(RETRY_MS);
         shown += 1;
         setTeasersShown(shown);
         if (line.once) countAnswer(line.once);
-        setLine(line);
         const { act } = line;
         if (act) actTimer = setTimeout(() => latest.current.onAct(act), ACT_AFTER_MS);
         next(VISIBLE_MS + (TEASER_SCHEDULE_MS[shown] ?? 0));
@@ -403,7 +444,7 @@ export function AssistantTeaser({
       clearTimeout(timer);
       clearTimeout(actTimer);
     };
-  }, [t, tDays, locale, entering, arrival, parkOn, statsOf, headliners, liveOf, clockOf]);
+  }, [t, tDays, locale, entering, arrival, parkOn, statsOf, headliners, liveOf, clockOf, present]);
 
   useEffect(() => {
     const kind =
@@ -411,23 +452,22 @@ export function AssistantTeaser({
     if (!kind) return;
     const timer = setTimeout(() => {
       if (busy() || reactionsShown() >= REACTIONS_PER_SESSION) return;
-      countReaction();
-      setLine({ text: t(pickRandom(REACTION_KEYS[kind])), kind });
+      if (present({ text: t(pickRandom(REACTION_KEYS[kind])), kind })) countReaction();
     }, REACTION_DELAY_MS[kind]);
     // Somebody came back before the line was due: Parky is not bored any more.
     return () => clearTimeout(timer);
-  }, [boredom, t]);
+  }, [boredom, t, present]);
 
   useParkyWeather({
     entering,
     busy,
-    say: (text) => setLine({ text, kind: 'weather' }),
+    say: (text) => void present({ text, kind: 'weather' }),
     act: onAct,
   });
   useParkyLive({
     entering,
     busy,
-    say: (text) => setLine({ text, kind: 'live' }),
+    say: (text) => void present({ text, kind: 'live' }),
     act: onAct,
     headliners,
   });
@@ -439,12 +479,12 @@ export function AssistantTeaser({
       progress = konamiProgress(progress, event.key);
       if (progress < KONAMI_LENGTH) return;
       progress = 0;
-      setLine({ text: t('secretKonami'), kind: 'secret' });
+      present({ text: t('secretKonami'), kind: 'secret' });
       latest.current.onAct('ride');
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [t]);
+  }, [t, present]);
 
   // What the visitor does, as the page reports it: an act each time, a line once a session per
   // kind. It may take the place of a line on screen, since it answers what just happened. Into an
@@ -452,11 +492,13 @@ export function AssistantTeaser({
   const held = useRef<{ reaction: ParkyReaction; at: number } | null>(null);
   const answer = useCallback(
     (reaction: ParkyReaction) => {
-      if (linesMuted() || answeredWithLine(reaction.line)) return;
-      countAnswer(reaction.line);
-      setLine({ text: t(pickRandom(reaction.keys)), kind: reaction.line });
+      // In a planner the visitor is busy: the act plays, the line keeps out of the way.
+      if (linesMuted() || answeredWithLine(reaction.line) || plannerFlowOnScreen()) return;
+      if (present({ text: t(pickRandom(reaction.keys)), kind: reaction.line })) {
+        countAnswer(reaction.line);
+      }
     },
-    [t]
+    [t, present]
   );
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout>;
@@ -490,7 +532,7 @@ export function AssistantTeaser({
     const timer = setTimeout(() => {
       const now = Date.now();
       const last = flingLine.current;
-      if (linesMuted() || latest.current.covered) return;
+      if (linesMuted() || latest.current.covered || plannerFlowOnScreen()) return;
       if (last && now - last.at < FLING_LINE_GAP_MS) return;
       const kind =
         flings.current.length >= ROUGH_FLINGS
@@ -501,11 +543,10 @@ export function AssistantTeaser({
       if (!kind) return;
       if (kind === 'rough') flings.current = [];
       const key = pickRandom<string>(kind === 'rough' ? ROUGH_KEYS : HANG_KEYS, last?.key);
-      flingLine.current = { key, at: now };
-      setLine({ text: t(key), kind });
+      if (present({ text: t(key), kind })) flingLine.current = { key, at: now };
     }, FLING_LINE_AFTER_MS[fling]);
     return () => clearTimeout(timer);
-  }, [fling, t]);
+  }, [fling, t, present]);
   // A held answer is said once nothing is in its way, unless it has gone stale meanwhile.
   const blocked = covered || entering;
   useEffect(() => {
@@ -518,60 +559,70 @@ export function AssistantTeaser({
   }, [blocked, answer]);
 
   return (
-    <div
-      aria-live="polite"
-      // Hidden while it fades out: its buttons are no longer there to press or tab to.
-      inert={!line}
-      className={cn(
-        // The tail, 1rem above the bubble's foot, sits at Parky's mouth (y 33.5 of 48): 17 px up a
-        // 56 px button on a phone, 19 px up a 64 px one from `sm`, both 1rem from the corner.
-        'fixed right-[4.75rem] bottom-[max(1rem,env(safe-area-inset-bottom))] max-w-[min(15rem,calc(100vw-6rem))] sm:right-[5.25rem] sm:bottom-[calc(max(1rem,env(safe-area-inset-bottom))+0.25rem)]',
-        PARKY_LAYER,
-        'planner-wide:right-[calc(var(--planner-inset,0px)+5.25rem)]',
-        'origin-[100%_75%] transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none',
-        line
-          ? 'translate-x-0 scale-100 opacity-100'
-          : 'pointer-events-none translate-x-2 scale-95 opacity-0'
-      )}
-    >
-      {/* White with black text in either theme, as a comic's speech bubble; the ✕ before the line. */}
-      {said && (
-        <div
-          // Up with Parky when a fast scroll carries him, and back down with him.
-          data-fling={fling === 'down' ? fling : undefined}
-          style={{ '--parky-fall': `${PARKY_FALL_MS}ms` } as React.CSSProperties}
-          className="parky-hang relative flex items-start gap-1 rounded-2xl border border-black/10 bg-white py-2 pr-3 pl-1.5 text-sm text-neutral-900 shadow-xl"
-        >
-          <button
-            type="button"
-            onClick={() => {
-              trackSiteEvent('assistant_line_closed', { line: said.kind });
-              muteLines();
-              setLine(null);
-            }}
-            aria-label={t('close')}
-            className="-mt-0.5 shrink-0 rounded-full p-0.5 text-neutral-500 hover:text-neutral-900"
-          >
-            <X className="size-3.5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => {
-              trackSiteEvent('assistant_line_clicked', { line: said.kind });
-              setLine(null);
-              onOpen();
-            }}
-            className="text-left font-medium"
-          >
-            {said.text}
-          </button>
-          {/* The tail: a square on its corner, half under the bubble, pointing at Parky. */}
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute -right-1.5 bottom-2.5 size-3 rotate-45 border-t border-r border-black/10 bg-white"
-          />
+    <>
+      {/* The bubble's twin, never seen: where `present` measures a line before it is said. */}
+      <div
+        ref={probe}
+        aria-hidden="true"
+        className={cn(BUBBLE_PLACE, 'pointer-events-none invisible')}
+      >
+        <div className={BUBBLE_BODY}>
+          <span className="-mt-0.5 shrink-0 p-0.5">
+            <span className="block size-3.5" />
+          </span>
+          <span className="font-medium">{probeText}</span>
         </div>
-      )}
-    </div>
+      </div>
+      <div
+        aria-live="polite"
+        // Hidden while it fades out: its buttons are no longer there to press or tab to.
+        inert={!line}
+        className={cn(
+          BUBBLE_PLACE,
+          'origin-[100%_75%] transition-[opacity,transform] duration-300 ease-out motion-reduce:transition-none',
+          line
+            ? 'translate-x-0 scale-100 opacity-100'
+            : 'pointer-events-none translate-x-2 scale-95 opacity-0'
+        )}
+      >
+        {said && (
+          <div
+            // Up with Parky when a fast scroll carries him, and back down with him.
+            data-fling={fling === 'down' ? fling : undefined}
+            style={{ '--parky-fall': `${PARKY_FALL_MS}ms` } as React.CSSProperties}
+            className={cn('parky-hang', BUBBLE_BODY)}
+          >
+            <button
+              type="button"
+              onClick={() => {
+                trackSiteEvent('assistant_line_closed', { line: said.kind });
+                muteLines();
+                setLine(null);
+              }}
+              aria-label={t('muteLines')}
+              className="-mt-0.5 shrink-0 rounded-full p-0.5 text-neutral-500 hover:text-neutral-900"
+            >
+              <X className="size-3.5" />
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                trackSiteEvent('assistant_line_clicked', { line: said.kind });
+                setLine(null);
+                onOpen();
+              }}
+              className="text-left font-medium"
+            >
+              {said.text}
+            </button>
+            {/* The tail: a square on its corner, half under the bubble, pointing at Parky. */}
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-1.5 bottom-2.5 size-3 rotate-45 border-t border-r border-black/10 bg-white"
+            />
+          </div>
+        )}
+      </div>
+    </>
   );
 }

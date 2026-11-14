@@ -41,7 +41,10 @@ import {
   type AssistantLookup,
 } from '@/lib/assistant/use-assistant-chat';
 import { useAssistantSession } from '@/lib/assistant/use-assistant-session';
-import { drawOpener, sessionOpener } from '@/lib/assistant/opener';
+import { drawOpener, greetingKeyOf, sessionOpener, suggestionKeysOf } from '@/lib/assistant/opener';
+import { yoursValues } from '@/lib/assistant/parky/yours';
+import { yoursHere } from '@/lib/assistant/parky/yours-here';
+import { AssistantSubtitle } from './assistant-subtitle';
 import { parkPathOf } from '@/lib/assistant/parky/easter-eggs';
 import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
 import { ParkyLogo } from './parky/parky-logo';
@@ -180,12 +183,15 @@ export function AssistantPanel({
       onAct?.('nightcap');
     }, GOODBYE_MS);
   }, [onClose, onAct]);
-  const chat = useAssistantChat(locale, session, act, ended);
+  // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
+  // Where the visitor has plans in this browser, the greeting picks them up (`yours.ts`).
+  const [opener, setOpener] = useState(() => sessionOpener(yoursHere));
+  const openerValues = opener.yours ? yoursValues(opener.yours, locale, t) : undefined;
+  const greeting = t(greetingKeyOf(opener), openerValues);
+  const chat = useAssistantChat(locale, session, act, ended, greeting);
   const pushErrorMessage = usePushErrorMessage();
   const [tab, setTab] = useState<'chat' | 'feedback'>('chat');
   const [draft, setDraft] = useState('');
-  // One greeting and set of suggestions per chat, kept for the session; a new chat draws again.
-  const [opener, setOpener] = useState(sessionOpener);
   const input = useRef<HTMLTextAreaElement>(null);
   const scroller = useRef<HTMLDivElement>(null);
   const frame = useRef<HTMLDivElement>(null);
@@ -338,7 +344,7 @@ export function AssistantPanel({
     return () => jump?.cancel();
   }, [open]);
 
-  const suggestions = (parkPage ? opener.park : opener.site).map((key) => t(key));
+  const suggestions = suggestionKeysOf(opener, parkPage).map((key) => t(key, openerValues));
 
   return (
     // The window's place; the window fades in it, and Parky's face, beside it rather than in it,
@@ -380,13 +386,14 @@ export function AssistantPanel({
         <header className="border-border/60 from-primary/15 to-status-operating/10 relative flex touch-none items-center gap-3 rounded-t-2xl border-b bg-gradient-to-r py-1 pr-2 pl-[4.75rem] sm:py-2 sm:pr-3 sm:pl-24">
           <div className="min-w-0 flex-1">
             <h2 className="text-sm leading-tight font-semibold">{t('title')}</h2>
+            <AssistantSubtitle />
           </div>
           {tab === 'chat' && chat.messages.length > 0 && (
             <button
               type="button"
               onClick={() => {
                 chat.reset();
-                setOpener(drawOpener(opener));
+                setOpener(drawOpener(opener, yoursHere()));
               }}
               className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-full p-1.5"
               aria-label={t('newChat')}
@@ -452,7 +459,7 @@ export function AssistantPanel({
               aria-live="polite"
             >
               <div className="bg-muted/60 w-fit max-w-[92%] rounded-2xl rounded-tl-sm px-3 py-2">
-                {t(opener.greeting)}
+                {greeting}
               </div>
               {chat.messages.length === 0 && (
                 <div className="flex flex-wrap gap-2 pt-1">

@@ -17,6 +17,8 @@ import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { assistantPlannerSnapshot } from './planner-context';
+import { rememberLastPark } from './last-park';
+import { parkNameIn, parkPageOf } from './parky/easter-eggs';
 import {
   assistantAlertsSnapshot,
   type AssistantActionOutcome,
@@ -35,6 +37,9 @@ import {
   readBreakUntil,
   startBreak,
 } from './chat-end';
+
+/** The longest greeting the API takes as `opener`. */
+const OPENER_MAX = 300;
 
 /** A lookup Parky names while it runs, as the API's `status` event sends it. */
 export type AssistantLookup =
@@ -134,9 +139,15 @@ export function useAssistantChat(
   /** Carries out an action Parky asked for; returns the chip or card to show, once it is done. */
   onAction: (action: AssistantAction) => AssistantActionOutcome | Promise<AssistantActionOutcome>,
   /** Parky ended the chat, by his goodbye or the API's refusal; called once the answer is in. */
-  onEnded?: () => void
+  onEnded?: () => void,
+  /** The greeting the window shows, sent with a chat's first question so Parky knows his line. */
+  greeting?: string
 ) {
   const { token: sessionToken, drop: dropSession } = session;
+  const greetingRef = useRef(greeting);
+  useEffect(() => {
+    greetingRef.current = greeting;
+  });
   const [stored, setStored] = useState<Stored>(() =>
     typeof window === 'undefined' ? { conversationId: null, messages: [] } : load()
   );
@@ -213,6 +224,12 @@ export function useAssistantChat(
         result = error;
         patchLast((m) => ({ ...m, error }));
       };
+      // The chat is about this park now; a park card in the answer takes over.
+      const page = parkPageOf(window.location.pathname);
+      const pageName =
+        page && parkNameIn(document.querySelectorAll('script[type="application/ld+json"]'));
+      if (page && pageName) rememberLastPark(pageName, page.parkSlug);
+      const opener = stored.messages.length === 0 ? greetingRef.current?.trim() : undefined;
       try {
         const alerts = assistantAlertsSnapshot(
           await readPushState().catch(() => 'unavailable' as const),
@@ -241,6 +258,8 @@ export function useAssistantChat(
             // The trip on screen and each region's remembered one; the interview where one runs.
             trips: assistantTripsSnapshot(TRIP_REGIONS.map((region) => region.slug)),
             interview: interviewStore.getSnapshot() ?? undefined,
+            // The window's greeting, so an answer to it („ja“, „super!“) reads right.
+            ...(opener && { opener: opener.slice(0, OPENER_MAX) }),
           }),
         });
         if (response.status === 401) {
@@ -283,6 +302,13 @@ export function useAssistantChat(
           } else if (event === 'action') {
             const action = readAssistantAction((payload as unknown as { action: unknown }).action);
             if (action?.type === 'card') {
+              if (action.card.kind === 'park') {
+                const url = action.card.url;
+                const slug = url
+                  ? (parkPageOf(new URL(url, window.location.origin).pathname)?.parkSlug ?? null)
+                  : null;
+                rememberLastPark(action.card.name, slug);
+              }
               patchLast((m) => ({ ...m, cards: [...(m.cards ?? []), action.card] }));
             } else if (action?.type === 'request_location') {
               patchLast((m) => ({ ...m, asksLocation: true }));
@@ -330,7 +356,17 @@ export function useAssistantChat(
         }
       }
     },
-    [locale, phase, stored.conversationId, patchLast, sessionToken, dropSession, onAction, onEnded]
+    [
+      locale,
+      phase,
+      stored.conversationId,
+      stored.messages.length,
+      patchLast,
+      sessionToken,
+      dropSession,
+      onAction,
+      onEnded,
+    ]
   );
 
   const rate = useCallback(
