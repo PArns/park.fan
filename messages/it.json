@@ -3474,7 +3474,10 @@
       "same": "stessa attesa di picco",
       "more": "+{minutes} min in media",
       "less": "−{minutes} min in media",
-      "short": "{park} in un giorno corto, circa {hours, plural, =1 {un’ora} other {# ore}} in meno"
+      "short": "{park} in un giorno corto, circa {hours, plural, =1 {un’ora} other {# ore}} in meno",
+      "moveThere": "{park} in questo giorno, il {date} diventa giorno di riposo",
+      "takeOver": "{park} il {date}, questo giorno diventa giorno di riposo",
+      "trade": "scambiare con {park}"
     },
     "keep": {
       "addAll": "Copia nel pianificatore della giornata",

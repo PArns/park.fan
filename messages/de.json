@@ -3474,7 +3474,10 @@
       "same": "gleiche Spitzenwartezeit",
       "more": "+{minutes} Min. im Schnitt",
       "less": "−{minutes} Min. im Schnitt",
-      "short": "{park} an einem kurzen Tag, etwa {hours, plural, =1 {eine Stunde} other {# Stunden}} weniger"
+      "short": "{park} an einem kurzen Tag, etwa {hours, plural, =1 {eine Stunde} other {# Stunden}} weniger",
+      "moveThere": "{park} auf diesen Tag, der {date} wird Ruhetag",
+      "takeOver": "{park} auf den {date}, dieser Tag wird Ruhetag",
+      "trade": "Tausch mit {park}"
     },
     "keep": {
       "addAll": "In den Tagesplaner übernehmen",

@@ -6,6 +6,7 @@ import {
   BedDouble,
   ChevronLeft,
   ChevronRight,
+  Lock,
   PlaneLanding,
   PlaneTakeoff,
   Ticket,
@@ -234,15 +235,18 @@ function WeekColumn({
   onOpen: () => void;
 }) {
   const t = useTranslations('tripPlanner');
-  const { locale, parkName, photos, timeZone } = usePlanContext();
+  const { locale, parkName, photos, timeZone, state } = usePlanContext();
   const grid = tripColumnGrid(span, canvas, pxPerMin);
+  const pinned = state.locks.some((lock) => lock.date === span.date);
   const partyName = usePartyName(calendar, day);
   const eveningOf = useEveningName();
   const eveningName = day ? eveningOf(day) : null;
   const weekday = formatParkDay(locale, span.date, { weekday: 'short' });
   const date = formatParkDay(locale, span.date, { day: 'numeric', month: 'short' });
   // Across cities, each day's label names where it is spent; the band above says it only in ink.
-  const dayLabel = city ? `${weekday} ${date}, ${city}` : `${weekday} ${date}`;
+  const dayLabel = [`${weekday} ${date}`, city, pinned ? t('marker.pinned') : null]
+    .filter(Boolean)
+    .join(', ');
   const ticketLabel = useTicketDayLabel();
   const ticketDay = meta && day ? ticketLabel(day, meta, phone) : null;
 
@@ -294,7 +298,16 @@ function WeekColumn({
         )}
       >
         <span className="text-muted-foreground text-[11px] uppercase">{weekday}</span>
-        <span className="text-sm font-semibold tabular-nums">{date}</span>
+        <span className="inline-flex items-center gap-1 text-sm font-semibold tabular-nums">
+          {date}
+          {pinned && (
+            <Lock
+              className="text-primary-ink size-3 shrink-0"
+              aria-hidden="true"
+              data-plan-pinned=""
+            />
+          )}
+        </span>
         {meta && (
           <span
             className="text-foreground/75 mt-0.5 flex min-h-4 items-center gap-1 text-[11px] tabular-nums"
@@ -413,6 +426,9 @@ function WeekColumn({
                   />
                 </span>
                 <span className="relative line-clamp-3 text-xs leading-tight font-semibold break-words">
+                  {pinned && index === 0 && (
+                    <Lock className="mr-1 inline size-3 align-[-1px]" aria-hidden="true" />
+                  )}
                   {name}
                 </span>
                 <span className="relative text-xs tabular-nums">{minutes}</span>

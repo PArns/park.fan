@@ -3474,7 +3474,10 @@
       "same": "zelfde piekwachttijd",
       "more": "+{minutes} min. gemiddeld",
       "less": "−{minutes} min. gemiddeld",
-      "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder"
+      "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder",
+      "moveThere": "{park} op deze dag, {date} wordt een rustdag",
+      "takeOver": "{park} op {date}, deze dag wordt een rustdag",
+      "trade": "ruilen met {park}"
     },
     "keep": {
       "addAll": "Naar de dagplanner",

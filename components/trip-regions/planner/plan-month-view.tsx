@@ -2,7 +2,7 @@
 
 import { useMemo, type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
-import { BedDouble, PlaneLanding, PlaneTakeoff } from 'lucide-react';
+import { BedDouble, Lock, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { weekdayLabels } from '@/lib/planner/month-grid';
 import { formatGridHours, formatGridTime } from '@/lib/planner/park-time';
@@ -117,7 +117,7 @@ export function PlanMonthView({
   const tCrowd = useTranslations('parks.crowdLevels');
   const tClimate = useTranslations('tripPlanner.climate');
   const stormKeys = useStormKeys();
-  const { locale, timeZone, region, config, parkBySlug, parkName } = usePlanContext();
+  const { locale, timeZone, region, config, parkBySlug, parkName, state } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
   const ticketLabel = useTicketDayLabel();
@@ -298,12 +298,13 @@ export function PlanMonthView({
               ? `${formatGridTime(first.startMin)}–${formatGridTime(lastBlock.endMin, true)}`
               : t('week.noHours');
           const marker = dayMarker(day) === 'outside_ticket' ? markerText(day, calendar) : null;
+          const pinned = state.locks.some((lock) => lock.date === cell.date);
           return (
             <li key={cell.date} className="min-w-0">
               <button
                 type="button"
                 onClick={() => onOpenDay(cell.date)}
-                aria-label={`${full}: ${[what, spoken, evening ? t('evening.plus', { name: evening }) : null, ticketDay, marker, toCity, stormWord].filter(Boolean).join(', ')}`}
+                aria-label={`${full}: ${[what, spoken, evening ? t('evening.plus', { name: evening }) : null, ticketDay, marker, pinned ? t('marker.pinned') : null, toCity, stormWord].filter(Boolean).join(', ')}`}
                 className={cn(
                   'relative flex h-full min-h-[4.5rem] w-full flex-col items-start gap-1 overflow-hidden rounded-md border p-1 text-left transition hover:shadow-sm lg:min-h-28 lg:gap-1.5 lg:p-1.5',
                   level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
@@ -315,6 +316,13 @@ export function PlanMonthView({
                   <span className={cn('text-[13px] leading-none font-bold tabular-nums', ink)}>
                     {label}
                   </span>
+                  {pinned && (
+                    <Lock
+                      className={cn('size-3 shrink-0', ink)}
+                      aria-hidden="true"
+                      data-plan-pinned=""
+                    />
+                  )}
                   {level && (
                     <span
                       className={cn(

@@ -3474,7 +3474,10 @@
       "same": "same peak wait",
       "more": "+{minutes} min on average",
       "less": "−{minutes} min on average",
-      "short": "{park} on a short day, about {hours, plural, =1 {one hour} other {# hours}} less"
+      "short": "{park} on a short day, about {hours, plural, =1 {one hour} other {# hours}} less",
+      "moveThere": "{park} on this day, {date} becomes a rest day",
+      "takeOver": "{park} on {date}, this day becomes a rest day",
+      "trade": "swap with {park}"
     },
     "keep": {
       "addAll": "Copy to the day planner",

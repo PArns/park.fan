@@ -507,7 +507,16 @@ function DayDetails({
           <ul className="divide-border/60 divide-y">
             {candidates.map((other) => {
               const preview = swapPreview(calendar, day, other, timeZone);
-              const what = other.kind === 'rest' ? t('day.rest') : name(other.parks[0]?.slug ?? '');
+              // What the swap does, not what the other day holds now: "rest day +1 min" read as if a
+              // rest day cost a minute.
+              const mine = day.parks[0]?.slug;
+              const theirs = other.parks[0]?.slug;
+              const what =
+                other.kind === 'rest' && mine
+                  ? t('swap.moveThere', { park: name(mine), date: short(day.date) })
+                  : day.kind === 'rest' && theirs
+                    ? t('swap.takeOver', { park: name(theirs), date: short(day.date) })
+                    : t('swap.trade', { park: name(theirs ?? '') });
               const cost =
                 preview.kind === 'closed'
                   ? t('swap.closed', { park: name(preview.slug) })
@@ -530,7 +539,7 @@ function DayDetails({
                     )}
                   >
                     <span className="w-24 shrink-0 tabular-nums">{short(other.date)}</span>
-                    <span className="min-w-0 flex-1 truncate">{what}</span>
+                    <span className="min-w-0 flex-1">{what}</span>
                     <span className="shrink-0 font-medium tabular-nums">{cost}</span>
                     {preview.kind === 'minutes' && preview.short && (
                       <span className="text-crowd-ink-high w-full pl-27 text-xs">

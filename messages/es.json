@@ -3474,7 +3474,10 @@
       "same": "misma espera punta",
       "more": "+{minutes} min de media",
       "less": "−{minutes} min de media",
-      "short": "{park} en un día corto, unas {hours, plural, =1 {una hora} other {# horas}} menos"
+      "short": "{park} en un día corto, unas {hours, plural, =1 {una hora} other {# horas}} menos",
+      "moveThere": "{park} este día, el {date} pasa a ser día de descanso",
+      "takeOver": "{park} el {date}, este día pasa a ser día de descanso",
+      "trade": "cambiar por {park}"
     },
     "keep": {
       "addAll": "Pasar al planificador del día",

@@ -3474,7 +3474,10 @@
       "same": "même attente de pointe",
       "more": "+{minutes} min en moyenne",
       "less": "−{minutes} min en moyenne",
-      "short": "{park} un jour court, environ {hours, plural, =1 {une heure} other {# heures}} de moins"
+      "short": "{park} un jour court, environ {hours, plural, =1 {une heure} other {# heures}} de moins",
+      "moveThere": "{park} ce jour-là, le {date} devient un jour de repos",
+      "takeOver": "{park} le {date}, ce jour-là devient un jour de repos",
+      "trade": "échanger avec {park}"
     },
     "keep": {
       "addAll": "Copier dans le planificateur de journée",
