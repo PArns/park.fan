@@ -43,6 +43,16 @@ only the edge months that depend on this park's zone or `scheduleCoverage.to` re
 ([a redirect thrown from a render carries the layout as its body](../rules/a-redirect-thrown-from-a-render-carries-the-layout-as-its-body.md)).
 `pnpm test:calendar-month` pins the window, both proxy edges and the month summary.
 
+## Known limitation: crowd levels beyond day 60
+
+From day 61 the API's daily level comes from its long-range model, and it reads too low and too
+even: for February to April 2027 about 40 % below the same dates of 2026 in Orlando, with a fifth of
+the day-to-day spread, so whole months show as `low`. The trip planner stopped ranking on it in
+2.21.0 and reads the last-year measured day there instead (PAR-1319); this calendar still colours
+those days from the long-range level until the model clears the bar in the API's
+`docs/ml/long-range-forecasting.md` §9 (PAR-1320). Re-measure after 2026-11-24, when the model
+starts reading last year's slot for far days.
+
 ## What the page renders
 
 Top to bottom: the park's title header (the `<h1>` names the month), the park header card with
