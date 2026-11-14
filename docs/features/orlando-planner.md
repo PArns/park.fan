@@ -100,7 +100,8 @@ night never makes a date look quiet (`dateFigure`).
   for with their three ways out, the stay suggestion, last year's line once, then the days in the
   chosen view, the parks the split gave a second day and the notes, the tickets and Keep. At `lg`
   the answers, the peak card, the tickets and Keep are a sticky column of 340 px on the left and
-  the head and the days take the rest. The figure is the peak wait everywhere (Spitzenwartezeit,
+  the head and the days take the rest; Keep's three buttons stack there and stand in a row only
+  where their own box is 42rem wide (a container query), so a long label never spills. The figure is the peak wait everywhere (Spitzenwartezeit,
   piekwachttijd, attente de pointe, espera punta, attesa di picco). The edit bar sits above the
   answer.
 - **Level 1, the views,** behind Tage | Woche | Monat. The choice is the browser's; before one,
@@ -217,7 +218,10 @@ Built for a first-time visitor who wants to know which park on which day (PAR-13
 4. **Changes on request** over it: „Deine Antworten“, a chip per step of the assistant that opens
    it on that step.
 5. **Tickets after the plan**, from the ticket card's "Already have tickets? Add them"; a shared
-   link is never asked.
+   link is never asked. A visitor whose bought tickets set the dates finds the same line on the
+   hub's landing, under „Reise planen“: it starts the assistant on its Tickets step with the ticket
+   step open (`tripPlannerUi.openTickets`, `trip_planner_started` with `landing`), and the tickets'
+   first days give the trip its dates. Skipped there without dates, the assistant asks for them.
 
 ## Parky's ideas
 
@@ -234,7 +238,10 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
   last year's line: "Parky has 3 ideas for your plan", a card each with the idea in one line
   ("Tokyo Disneyland on Thu, Jan 28 instead of Fri, Jan 22"), the park's own figure ("about 55
   instead of 60 min"), the verb that applies it (Add, Swap, Plan it this way) and "In the chat".
-  To swipe on a phone, a grid at a desk.
+  To swipe on a phone, a grid at a desk. A travel-day idea names the travel day beside the park's
+  own day ("Departure day (Sun, May 9) as a park day: Disney Adventure World on Fri, May 7"): the
+  API's `to` is the park's day, and opening the travel day often moves another park onto it
+  (`ideaTravelDay`).
 - **At the day** (`DayHint`), in the card's `hint` slot under the day the idea changes.
 - **In the chat** (`AssistantTripIdeaCard`): "In the chat" sends Parky a question about the idea
   (`askParkyAboutIdea`, `assistant_question` with `kind: idea`) and draws the idea under his
@@ -268,7 +275,8 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
 ## Tickets
 
 Tickets come after the plan: "Already have tickets? Add them" under the plan's tickets opens the
-assistant's Tickets step. The step itself lists the
+assistant's Tickets step (`TicketsAsk`). Before any dates the same line stands on the hub's landing
+and starts the assistant there ([the flow](#the-flow-simple-first)). The step itself lists the
 resorts against the ticket catalog the admin keeps
 (`GET /v1/trip-regions/orlando/tickets`, read by `PlannerChapterSlot` through the Data Cache under
 the tag `trip-tickets:orlando`, which the API revalidates after every edit; five minutes otherwise,

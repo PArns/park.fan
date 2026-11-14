@@ -19,6 +19,9 @@ import { dayGuestClose, useDayParks } from './plan-day-bits';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { oneFullStop } from '@/lib/utils/metadata';
 
+/** A keep action's button: as tall as its label needs once that wraps. */
+const KEEP_BUTTON = 'h-auto min-h-9 whitespace-normal text-balance max-sm:h-auto max-sm:min-h-11';
+
 /**
  * Keeping the plan: every park day into the day planner as a reserved day in one write (the
  * store's `reserveDays`, which Parky's trip action uses too; a day that already holds a plan stays
@@ -112,17 +115,19 @@ export function PlanKeep({
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <div className="grid gap-2 sm:grid-cols-3">
-        <Button variant="outline" onClick={addAll}>
+    // Laid out by its own width: at a desk it sits in the result's 340 px column, where the three
+    // stack, and a long label (French, Italian) wraps inside its button instead of spilling.
+    <div className="@container flex flex-col gap-2">
+      <div className="grid gap-2 @2xl:grid-cols-3">
+        <Button variant="outline" onClick={addAll} className={KEEP_BUTTON}>
           <CalendarPlus aria-hidden="true" />
           {t('keep.addAll')}
         </Button>
-        <Button variant="outline" onClick={download}>
+        <Button variant="outline" onClick={download} className={KEEP_BUTTON}>
           <CalendarArrowDown aria-hidden="true" />
           {t('keep.ics')}
         </Button>
-        <Button variant="outline" onClick={() => void copy()}>
+        <Button variant="outline" onClick={() => void copy()} className={KEEP_BUTTON}>
           {link === 'copied' ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}
           <span aria-live="polite">{link === 'copied' ? t('keep.copied') : t('keep.copy')}</span>
         </Button>

@@ -1,12 +1,35 @@
 import { findLeg, legMinutes } from './hub-data';
-import type { TripBase, TripCalendarDay, TripLeg, TripRegion } from './types';
+import { earlyPerk } from './plan-copy';
+import type { TripBase, TripCalendarDay, TripHotel, TripLeg, TripRegion } from './types';
 
 /**
- * The pure halves of the assistant's option steps (Hotel, Route, Hotels, Tempo, Abende): the day
- * patterns of the Tempo cards, the ways from a hotel area to the trip's parks, the schematic map of
+ * The pure halves of the assistant's option steps (Hotel, Route, Hotels, Tempo, Abende): what the
+ * Hotel step says of getting in early, the day patterns of the Tempo cards, the ways from a hotel area to the trip's parks, the schematic map of
  * a city's hotel areas, and the fact a travel day's card names. `scripts/test-wizard-choices.mjs`
  * pins them. docs/features/trip-planner/wizard.md#the-trip-planners-option-steps.
  */
+
+/** What the Hotel step says of getting in early, from the region's perk data. */
+export interface HotelEarlyAccess {
+  /** The lead over the cards: a hotel that gets you in early (`early`), or none here (`none`). */
+  lead: 'early' | 'none';
+  /** The hotel kinds whose guests get an early slot; every other card says it has none. */
+  early: ReadonlySet<string>;
+}
+
+/**
+ * What the Hotel step says of getting in early, from the region's `hotels[].perks`: the lead
+ * promises an earlier start only where some hotel has an early slot, and a card without one says so
+ * itself, so the two read the same data and cannot disagree (Disneyland's hotels have none). `null`
+ * without the data, and the step then claims nothing either way.
+ */
+export function hotelEarlyAccess(
+  hotels: readonly Pick<TripHotel, 'key' | 'perks'>[] | undefined
+): HotelEarlyAccess | null {
+  if (!hotels?.length) return null;
+  const early = new Set(hotels.filter((h) => earlyPerk(h.perks) !== null).map((h) => h.key));
+  return { lead: early.size > 0 ? 'early' : 'none', early };
+}
 
 /**
  * The park days in a row the API's automatic rest rule allows, the number

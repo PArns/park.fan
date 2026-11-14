@@ -3919,6 +3919,9 @@
       "showPlan": "Ver el plan",
       "hotel": {
         "lead": "Con un hotel del resort entras antes en los parques.",
+        "leadNone": "Aquí ningún hotel te hace entrar antes en los parques. El hotel decide lo largos que son tus trayectos.",
+        "noEarly": "Sin entrada anticipada",
+        "hintNoEarly": "{hint}, sin entrada anticipada",
         "area": "¿En qué zona?",
         "areaLead": "Los minutos de las tarjetas son los trayectos a tus parques.",
         "areaOfHotel": "Tu hotel está en la zona {area}, así que ya está elegida."
@@ -4037,7 +4040,7 @@
       "add": "{park} el {date}, día libre",
       "move": "{park} el {to} en vez del {from}",
       "swap": "{park} el {to}, {with} el {from} a cambio",
-      "travel_day": "{end, select, arrival {Día de llegada en el parque} departure {Día de salida en el parque} other {Llegada y salida como días de parque}}: {park} el {to}",
+      "travel_day": "{end, select, arrival {Día de llegada ({day}) en el parque} departure {Día de salida ({day}) en el parque} other {Llegada y salida como días de parque}}: {park} el {to}",
       "hopper": "{park} cabe con {hopper}: el {to}",
       "avoid_party": "{park} el {to} en vez de la noche de fiesta del {from}",
       "figure": "unos {after} min",
@@ -4229,8 +4232,7 @@
             "disney_deluxe": "Early Entry y algunas noches Extended Evening Hours",
             "disney_springs": "Early Entry en los parques Disney, sin Extended Evening Hours",
             "universal": "Early Park Admission, una hora antes de abrir",
-            "universal_premier": "Early Park Admission y Express en Universal Studios e Islands of Adventure",
-            "offsite": "Sin entrada anticipada"
+            "universal_premier": "Early Park Admission y Express en Universal Studios e Islands of Adventure"
           },
           "fireworks": "Fuegos artificiales de Magic Kingdom",
           "fireworksWantHint": "Tus días en Magic Kingdom evitan las noches de fiesta, en las que los visitantes de día tienen que salir antes.",
@@ -4579,7 +4581,7 @@
             "offsite": "Otro hotel"
           },
           "hotelHint": {
-            "disney": "Disneyland Hotel, Grand Californian o Pixar Place: a pie a los dos parques, sin entrada anticipada"
+            "disney": "Disneyland Hotel, Grand Californian o Pixar Place: a pie a los dos parques"
           },
           "fireworks": "Espectáculos nocturnos",
           "fireworksWantHint": "Tus días de parque evitan las noches de fiesta, en las que los visitantes de día tienen que salir antes.",

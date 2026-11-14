@@ -47,6 +47,7 @@ import type {
   PlanTicketSuggestion,
 } from '@/lib/trip-regions/plan';
 import { tripTicketAnswer } from '@/lib/trip-regions/ticket-answer';
+import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
 import { Badge } from '@/components/ui/badge';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
@@ -947,5 +948,30 @@ function PartnerLabel() {
         {t('note')}
       </PopoverContent>
     </Popover>
+  );
+}
+
+/**
+ * "Already have tickets? Add them": the way to the assistant's Tickets step, under the plan's
+ * tickets (`onAsk`, the result's `edit.tickets`) and on the hub's landing without one, where it
+ * starts the assistant there (`tripPlannerUi.openTickets`): tickets bought for fixed days give the
+ * trip its dates.
+ */
+export function TicketsAsk({ onAsk }: { onAsk?: () => void }) {
+  const t = useTranslations('tripPlanner.tickets');
+  return (
+    <p className="flex flex-wrap items-center gap-x-2 text-sm" data-plan-tickets-ask="">
+      {t('later')}
+      <button
+        type="button"
+        onClick={onAsk ?? (() => tripPlannerUi.openTickets())}
+        className={cn(
+          'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 font-medium transition-colors',
+          PLAN_FOCUS
+        )}
+      >
+        {t('enter')}
+      </button>
+    </p>
   );
 }

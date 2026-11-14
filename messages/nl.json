@@ -3919,6 +3919,9 @@
       "showPlan": "Plan bekijken",
       "hotel": {
         "lead": "Met een hotel van het resort kom je eerder de parken in.",
+        "leadNone": "Hier kom je met geen enkel hotel eerder de parken in. Het hotel bepaalt hoe ver je moet.",
+        "noEarly": "Geen vroege toegang",
+        "hintNoEarly": "{hint}, zonder vroege toegang",
         "area": "In welke buurt?",
         "areaLead": "De minuten op de kaarten zijn de wegen naar je parken.",
         "areaOfHotel": "Je hotel ligt in {area}, dus die buurt is al gekozen."
@@ -4037,7 +4040,7 @@
       "add": "{park} op de vrije {date}",
       "move": "{park} op {to} in plaats van {from}",
       "swap": "{park} op {to}, {with} in ruil op {from}",
-      "travel_day": "{end, select, arrival {Aankomstdag als parkdag} departure {Vertrekdag als parkdag} other {Aankomst en vertrek als parkdagen}}: {park} op {to}",
+      "travel_day": "{end, select, arrival {Aankomstdag ({day}) als parkdag} departure {Vertrekdag ({day}) als parkdag} other {Aankomst en vertrek als parkdagen}}: {park} op {to}",
       "hopper": "{park} past erbij met {hopper}: op {to}",
       "avoid_party": "{park} op {to} in plaats van de feestavond op {from}",
       "figure": "ongeveer {after} min",
@@ -4229,8 +4232,7 @@
             "disney_deluxe": "Early Entry, en op sommige avonden Extended Evening Hours",
             "disney_springs": "Early Entry in de Disney-parken, zonder Extended Evening Hours",
             "universal": "Early Park Admission, een uur voor de opening",
-            "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure",
-            "offsite": "Geen vroege toegang"
+            "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure"
           },
           "fireworks": "Vuurwerk in Magic Kingdom",
           "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
@@ -4579,7 +4581,7 @@
             "offsite": "Ander hotel"
           },
           "hotelHint": {
-            "disney": "Disneyland Hotel, Grand Californian of Pixar Place: lopend naar beide parken, zonder vroege toegang"
+            "disney": "Disneyland Hotel, Grand Californian of Pixar Place: lopend naar beide parken"
           },
           "fireworks": "Avondshows",
           "fireworksWantHint": "Je parkdagen mijden feestavonden, waarop dagbezoekers eerder weg moeten.",

@@ -5,12 +5,14 @@ import { ChapterHeading } from '@/components/common/chapter-heading';
 import { TripRegionPlanner } from '@/components/trip-regions/planner/trip-region-planner';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import { tripPlannerPhotos } from '@/lib/trip-regions/plan-photos';
-import { leanTicketCatalog } from '@/lib/trip-regions/plan-tickets';
+import { asksForTickets, leanTicketCatalog, ticketCatalog } from '@/lib/trip-regions/plan-tickets';
+import { requireTripRegion } from '@/lib/trip-regions/registry';
+import { TicketsAsk } from '@/components/trip-regions/planner/plan-tickets-card';
 import { getTripRegionTickets } from '@/lib/trip-regions/api';
 import { catchNonFatal } from '@/lib/api/client';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import type { TripRegion } from '@/lib/trip-regions/types';
-import { HubPlannerOnly, HubStateSwitch } from './hub-trip-state';
+import { HubLandingOnly, HubPlannerOnly, HubStateSwitch } from './hub-trip-state';
 
 /** How long the chapter waits for the ticket catalog before it uses the region's copy. */
 const CATALOG_TIMEOUT_MS = 1500;
@@ -18,7 +20,9 @@ const CATALOG_TIMEOUT_MS = 1500;
 /**
  * Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
  * page „So plant der Reiseplaner deine Reise“ with `landing` (the four steps) above the planner, with
- * a plan „Deine Reise“ and the plan. The heading belongs to the page, so the planner draws none of
+ * a plan „Deine Reise“ and the plan. Under the landing's steps stands „Schon Tickets? Eintragen“,
+ * which starts the assistant on its Tickets step, since bought tickets may set the dates. The
+ * heading belongs to the page, so the planner draws none of
  * its own; the anchor is the hero action's and Parky's (`#planner`). The park photos are resolved here because the planner is a Client Component and
  * may not import the media database. The ticket catalog comes from its own route, which the admin's
  * edits revalidate by tag, else from the region's `tickets`, without the notes only the server reads.
@@ -59,7 +63,14 @@ export async function PlannerChapterSlot({
         icon={Route}
         title={<HubStateSwitch landing={t('title')} plan={t('planTitle')} />}
       />
-      {landing}
+      {landing && (
+        <HubLandingOnly className="mb-8 space-y-4">
+          {landing}
+          {asksForTickets(requireTripRegion(region.slug).tickets, ticketCatalog(tickets)) && (
+            <TicketsAsk />
+          )}
+        </HubLandingOnly>
+      )}
       <HubPlannerOnly>
         <TripRegionPlanner
           region={tickets ? { ...region, tickets: leanTicketCatalog(tickets) } : region}

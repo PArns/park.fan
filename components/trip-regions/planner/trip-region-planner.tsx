@@ -226,11 +226,14 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
   }, [close, screen, track]);
   useSheetHistory(wizard !== null, closedByVisitor);
 
-  /** A start: the assistant on its first step. */
+  /**
+   * A start: the assistant on its first step, or on Tickets for a visitor whose tickets give the
+   * trip its dates.
+   */
   const start = useCallback(
-    (source: 'hero' | 'button' | TripPlannerStartSource) => {
+    (source: 'hero' | 'button' | TripPlannerStartSource, screen: TripWizardStepKey = 'dates') => {
       track('trip_planner_started', { source });
-      setWizard({ screen: 'dates', via: 'start' });
+      setWizard({ screen, via: 'start' });
     },
     [track]
   );
@@ -241,17 +244,21 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
   );
 
   // The hub's hero and landing, and the result's answers, ask through `tripPlannerUi`.
+  const openTickets = step.open;
   useEffect(() => {
     if (!live) return;
     const answer = () => {
       const request = tripPlannerUi.take();
       if (!request) return;
       if (request.kind === 'start') start(request.source);
-      else reopen(request.step);
+      else if (request.kind === 'tickets') {
+        openTickets('ask');
+        start('landing', 'tickets');
+      } else reopen(request.step);
     };
     answer();
     return tripPlannerUi.subscribe(answer);
-  }, [live, start, reopen]);
+  }, [live, start, reopen, openTickets]);
 
   const focusResult = useCallback(() => {
     const target = resultRef.current;

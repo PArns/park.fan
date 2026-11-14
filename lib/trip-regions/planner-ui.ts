@@ -14,11 +14,14 @@ type Listener = () => void;
 export type TripPlannerStartSource = 'hero' | 'landing' | 'restart';
 
 /**
- * A request to open the assistant: on its first step with the start's source, or on one step from
- * the result's answers (`answers`), which is a way back in rather than a start.
+ * A request to open the assistant: on its first step with the start's source, on its Tickets step
+ * with the ticket step open (`tickets`, a start too), or on one step from the result's answers
+ * (`answers`), which is a way back in rather than a start.
  */
 export type TripPlannerRequest =
-  { kind: 'start'; source: TripPlannerStartSource } | { kind: 'step'; step: TripWizardStepKey };
+  | { kind: 'start'; source: TripPlannerStartSource }
+  | { kind: 'tickets' }
+  | { kind: 'step'; step: TripWizardStepKey };
 
 let pending: TripPlannerRequest | null = null;
 const listeners = new Set<Listener>();
@@ -36,6 +39,14 @@ export const tripPlannerUi = {
    */
   openStart(source: TripPlannerStartSource = 'hero'): void {
     ask({ kind: 'start', source });
+  },
+  /**
+   * Open the assistant on its Tickets step with the ticket step open, from the landing's "Already
+   * have tickets? Add them": tickets bought for fixed days give the trip its dates, so they may come
+   * before them.
+   */
+  openTickets(): void {
+    ask({ kind: 'tickets' });
   },
   /** Open the assistant on one step, from an answer in the result ("Hotel: Disney-Hotel"). */
   openStep(step: TripWizardStepKey): void {

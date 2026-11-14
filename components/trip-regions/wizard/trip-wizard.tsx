@@ -153,9 +153,11 @@ export function TripWizard({
       setForward(via !== 'back' && to >= index);
       if (via === 'skip') setSkipped((n) => n + 1);
       if (via === 'next' && step) tripWizardAnswered.mark(region.slug, step.questions);
-      onMove({ screen: to >= steps.length ? 'finale' : steps[to].key, via });
+      // Started on the tickets, a trip their first days left without dates still needs them.
+      const past = to >= steps.length;
+      onMove({ screen: past ? (dated ? 'finale' : steps[0].key) : steps[to].key, via });
     },
-    [index, onMove, steps, step, region.slug]
+    [index, onMove, steps, step, region.slug, dated]
   );
 
   const finish = useCallback(
@@ -211,9 +213,12 @@ export function TripWizard({
         onKeyDown={advanceOnEnter}
         onOpenAutoFocus={(event) => {
           // The first control, not the dialog: the date grid's focusable day on the first step.
+          // A step that already took the focus keeps it (the ticket's first day after „Change
+          // ticket“, `focusTicket`).
           event.preventDefault();
           requestAnimationFrame(() => {
             const body = bodyRef.current;
+            if (body?.contains(document.activeElement)) return;
             const target =
               body?.querySelector<HTMLElement>('[data-plan-date][tabindex="0"]') ??
               body?.querySelector<HTMLElement>(

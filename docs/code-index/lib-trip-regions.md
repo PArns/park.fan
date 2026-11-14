@@ -248,6 +248,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `ideaDay` _function_: The day card an idea belongs under: the day it takes a park from, else the day it puts one on. `null` for an idea without a day.
 - `ideaOnDay` _function_: The idea that belongs under a day's card: the first that changes that day.
 - `ideaTravelEnd` _function_: Which end of the trip a travel-day idea makes a park day: one of them, or both.
+- `ideaTravelDay` _function_: The day a travel-day idea makes a park day: the trip's first or last day; `null` where it makes both.
 - `ideaVerb` _function_: Which verb applies an idea: Dazunehmen for a park it adds, Tauschen for a day it moves.
 - `ideaFigure` _function_: What an idea's card says it does in minutes, in the park's own figure: „etwa 55 statt 60 Min.“ for a park that moves, „etwa 50 Min.“ for one it adds, `null` without a figure after.
 - `PLAN_IDEA_KINDS` _const_: Every `PlanIdeaKind`; an idea of a kind this client does not know is not shown.
@@ -304,6 +305,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 
 - `hopperResorts` _function_: The resorts whose catalog sells a hopper as an option: where plan first's `hopper=` can name one.
 - `ticketCatalog` _function_: The catalog keyed by id; empty without one.
+- `asksForTickets` _function_: Whether the planner asks for the visitor's own tickets: the region has a ticket step and the API sends its catalog. Without either, the plan only suggests what to buy.
 - `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
 - `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
@@ -573,6 +575,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 
 ### [`wizard-choices.ts`](../../lib/trip-regions/wizard-choices.ts)
 
+- `hotelEarlyAccess` _function_: What the Hotel step says of getting in early, from the region's `hotels[].perks`: the lead promises an earlier start only where some hotel has an early slot, and a card without one says so itself, so the two read the same data and cannot …
 - `pacePattern` _function_: A Tempo card's picture of a week: `true` a park day, `false` a rest day. `streak` park days in a row and then one rest day, over and over; `null` has no rest day at all.
 - `restStreak` _function_: The streak a `rest=` value holds: `max:3` is 3, `auto` and `none` are `null`.
 - `areaWays` _function_: The ways from a hotel area to the trip's parks, from the region's `travel.legs` (`hotel:<area>`), nearest first. A park without a leg from the area is left out.
@@ -586,7 +589,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `AREA_CHIPS_MAX` _const_: A city with at most this many hotel areas offers them as chips; with more, each is a card with its ways and the city gets the schematic map (Tokyo's six, Orlando's five, Osaka's four as chips).
 - `MAX_AREA_WAYS` _const_: An area card lists one way per park up to this many; past it, one per resort.
 - `MAP_PARK_MINUTES` _const_: A park joins a city's map when one of its hotel areas reaches it in at most this many minutes.
-- Types: `AreaWay`, `MapPlace`, `MapPoint`, `MapBox`, `TravelDayFact`
+- Types: `HotelEarlyAccess`, `AreaWay`, `MapPlace`, `MapPoint`, `MapBox`, `TravelDayFact`
 
 ### [`wizard-steps.ts`](../../lib/trip-regions/wizard-steps.ts)
 

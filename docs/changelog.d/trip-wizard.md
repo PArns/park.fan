@@ -31,7 +31,9 @@ der Ticketkarte des Plans und „Ja, schon gekauft“ mit dem Ticketschritt.
 Schrittliste, der ihn auf diesem Schritt öffnet (`WizardAnswers`, `tripPlannerUi.openStep`). Die
 Knöpfe „Parks ändern“, „Route ändern“ und „Mehr Optionen“ unter dem Plan entfallen, ebenso
 „Reisedaten wählen“ im leeren Ergebnis neben „Reise planen“ und das Ticket-Panel am Desktop: Tickets
-trägt man im Ticketschritt ein.
+trägt man im Ticketschritt ein. Wer seine Tickets schon hat, findet auf der Landingpage unter „Reise
+planen“ „Schon Tickets? Eintragen“: Es öffnet den Assistenten gleich auf dem Ticketschritt, und die
+ersten Tage der Tickets geben der Reise ihre Daten.
 
 Geteilte Bauteile: `WizardToggle` zieht aus dem Tagesplaner nach `components/planner/`, daneben
 die neue `WizardOptionCard` als die eine Optionskarte beider Assistenten, `PlannerStepRail` kann
@@ -48,7 +50,10 @@ ist jede Antwort eine Karte, ein Chip oder ein Stepper (`components/trip-regions
 
 - **Hotel** (Orlando, Kalifornien): die Hotelarten als Kacheln, darunter die Gegenden als Karten
   mit Early Entry und den Wegen zu den Parks der Reise aus `travel.legs`, über einer schematischen
-  Karte aus den Koordinaten der API, ohne Kacheln eines Kartendienstes.
+  Karte aus den Koordinaten der API, ohne Kacheln eines Kartendienstes. Ob ein Hotel früher in die
+  Parks lässt, sagen Einleitung und Kacheln aus den Vorteilen der API (`hotels[].perks`): In
+  Kalifornien, wo die Disneyland-Hotels keinen früheren Einlass haben, verspricht die Einleitung
+  keinen.
 - **Route** (Japan, Paris): Ankunft und Abreise als Karten, Stadt vor Flughafen, „Noch offen“
   gestrichelt; Charles de Gaulle heißt „Der Plan wählt das Hotel“. Die Städte stehen auf einer Linie
   mit Foto, Nächte-Stepper und der Fahrt dazwischen („Shinkansen, 3:30 Std.“). Städte zum
@@ -100,7 +105,9 @@ steht, über dasselbe Relay, und zeigt sie dreimal: als Karten „Parky hat 3 Id
 über den Tagen (`IdeasStrip`), als Zeile unter dem Tag, den eine Idee ändert (`DayHint`), und im
 Chat unter Parkys Antwort, wenn man „Im Chat“ drückt (`AssistantTripIdeaCard`). Jede Karte nennt die
 Idee in einer Zeile („Tokyo Disneyland am Do., 28. Jan. statt am Fr., 22. Jan.“), die Minute des
-Parks („etwa 55 statt 60 Min.“) und das passende Verb: Dazunehmen, Tauschen oder So planen. Ein Tipp
+Parks („etwa 55 statt 60 Min.“) und das passende Verb: Dazunehmen, Tauschen oder So planen. Eine
+Idee für einen Reisetag nennt den Reisetag neben dem Tag des Parks („Abreisetag (So., 9. Mai) als
+Parktag: Disney Adventure World am Fr., 7. Mai“), weil der freie Tag oft einen anderen Park bekommt. Ein Tipp
 übernimmt die Idee über die Planer-Brücke als Änderung mit Rückgängig. Eine Idee, die eine Antwort
 aus dem Assistenten bräche (Reisetage, Park-Hopping), zeigt der Planer nicht: Die API kann eine
 gewählte Voreinstellung nicht von einer ungefragten unterscheiden. Das Finale sagt „Parky hat N Ideen
