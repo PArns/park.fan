@@ -38,8 +38,10 @@ function TooltipTrigger({ ...props }: React.ComponentProps<typeof TooltipPrimiti
  * Stacking order of everything portalled to `<body>`, lowest first — this is
  * the one place it is written down:
  *
- * - `z-50`  sticky header
- * - `z-[60]` language banner
+ * - `z-40`  the page's toasts (new posts, location)
+ * - `z-[45]` language banner, under the header so the bands it drops cover it
+ * - `z-50`  sticky header with its bands, and the popovers and menus of the page
+ * - `z-[60]` the planner's edge tab
  * - `z-[70]` `SheetContent` / `DialogContent` and their overlays
  * - `z-[80]` popovers and menus opened from inside a sheet (call-site class)
  * - `z-[90]` tooltip — it is opened from anything above, so it sits on top

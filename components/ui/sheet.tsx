@@ -28,7 +28,8 @@ function SheetPortal({ ...props }: React.ComponentProps<typeof SheetPrimitive.Po
 }
 
 /**
- * `z-[70]` on both halves, matching `dialog.tsx`: a modal outranks the `z-[60]` language banner.
+ * `z-[70]` on both halves, matching `dialog.tsx`: a modal outranks the header, the language banner
+ * and the planner's `z-[60]` edge tab.
  */
 function SheetOverlay({
   className,

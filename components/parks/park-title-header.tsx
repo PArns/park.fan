@@ -235,11 +235,13 @@ export async function ParkTitleHeader({
               className="bg-primary text-primary-foreground hover:bg-primary/90 justify-center px-4 py-2 shadow-md max-sm:w-full"
             />
             {hasQuickLinks(park.info) && (
-              <div className="max-sm:hidden">
-                <ParkLinksFlyout label={tParks('info.more')} parkId={park.id}>
-                  <ParkOutboundLinks info={park.info} parkId={park.id} withMaps={false} />
-                </ParkLinksFlyout>
-              </div>
+              <ParkLinksFlyout
+                label={tParks('info.more')}
+                parkId={park.id}
+                className="max-sm:hidden"
+              >
+                <ParkOutboundLinks info={park.info} parkId={park.id} withMaps={false} />
+              </ParkLinksFlyout>
             )}
           </div>
         </div>

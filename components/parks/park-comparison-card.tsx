@@ -13,6 +13,12 @@ import type { ParkHistoricalStats } from '@/lib/api/types';
 interface ParkComparisonCardProps {
   parks: readonly ComparisonPark[];
   title: string;
+  /**
+   * The title's element. The card cannot see the outline it stands in: in a post or a hub's
+   * section it is a label over a table in someone else's chapter (`p`), on `/compare` the table
+   * is the page's result beside the picker's `<h2>`.
+   */
+  titleAs: 'p' | 'h2' | 'h3';
   labelPark: string;
   labelParkAverage: string;
   labelLongest: string;
@@ -54,6 +60,7 @@ const PARK_CELL = 'px-2 py-1.5 text-sm whitespace-nowrap';
 export function ParkComparisonCard({
   parks,
   title,
+  titleAs: Title,
   labelPark,
   labelParkAverage,
   labelLongest,
@@ -73,10 +80,10 @@ export function ParkComparisonCard({
 
   return (
     <GlassCard variant="medium" className="space-y-2 p-4">
-      <h3 className="flex items-center gap-2 text-sm font-semibold">
+      <Title className="flex items-center gap-2 text-sm font-semibold">
         <Scale className="text-primary h-4 w-4" aria-hidden="true" />
         {title}
-      </h3>
+      </Title>
       {/* Its own scroll container: the cells are `whitespace-nowrap`, so the table does not narrow
           on a phone, and a wide table scrolls inside itself, never the page. */}
       <div className="-mx-4 overflow-x-auto px-4">
