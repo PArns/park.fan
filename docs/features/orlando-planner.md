@@ -159,7 +159,8 @@ sleeps in more than one place. The visitor gives the ends, the plan gives the mi
   the move on the hour axis, the park hours a morning move takes hatched, and a travel day as one
   dashed block. The Month view ends each date's cell in the stay band (`PlanMonthStayBand` with
   `monthStayCells`): the city named where its stay begins and at the start of each week row, the
-  cell split with an arrow on a hotel change, and `tripPlanner.month.stayKey` under the grid. The
+  cell split with an arrow on a hotel change; under the grid the numbered stays with their cities
+  and `tripPlanner.month.stayKey`. The
   day's sheet has the move's route, typical times and stops, the buffer and
   the leg's notes (`moveNote.<code>` of the region first).
 - **Names** come from the region's words (`base.<key>`, `gateway.<code>`, `area.<key>`,
