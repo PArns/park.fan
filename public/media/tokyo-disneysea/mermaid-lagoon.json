@@ -1,0 +1,32 @@
+{
+  "title": "Mermaid Lagoon",
+  "park": "tokyo-disneysea",
+  "area": "Mermaid Lagoon",
+  "tags": ["day", "outdoor", "park", "photo", "theming"],
+  "alt": {
+    "de": "König Tritons Schloss in Türkis und Gold hinter Palmen und rosa Felsen, vorne Wasser.",
+    "en": "King Triton’s castle in turquoise and gold behind palms and pink rockwork, with water in the foreground.",
+    "es": "El castillo del rey Tritón, turquesa y dorado, tras palmeras y rocas rosadas, con agua en primer plano.",
+    "fr": "Le château du roi Triton, turquoise et doré, derrière des palmiers et des rochers roses, de l’eau au premier plan.",
+    "it": "Il castello di re Tritone, turchese e oro, dietro palme e rocce rosa, con l’acqua in primo piano.",
+    "nl": "Het kasteel van koning Triton in turquoise en goud achter palmen en roze rotsen, met water op de voorgrond."
+  },
+  "caption": {
+    "de": "Ein Großteil von Mermaid Lagoon liegt drinnen, in einer Halle unter dem Schloss. Gut zu wissen, wenn es regnet.",
+    "en": "Most of Mermaid Lagoon is indoors, in a hall under the castle, which helps on a rainy day.",
+    "es": "Casi todo Mermaid Lagoon está bajo techo, en una nave debajo del castillo, algo útil si llueve.",
+    "fr": "L’essentiel de Mermaid Lagoon se trouve à l’intérieur, dans une salle sous le château, pratique les jours de pluie.",
+    "it": "Gran parte di Mermaid Lagoon è al coperto, in una sala sotto il castello, comoda quando piove.",
+    "nl": "Het grootste deel van Mermaid Lagoon ligt binnen, in een hal onder het kasteel, handig als het regent."
+  },
+  "credit": {
+    "author": "Joshua Tsu",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-large-body-of-water-with-a-castle-in-the-background-h5y6XPHxsHo"
+  },
+  "focus": {
+    "x": 0.42,
+    "y": 0.58
+  }
+}
