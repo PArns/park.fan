@@ -412,10 +412,16 @@ such date, the finder from the strip's first such week (`lastYearFrom`).
 **Which number a day shows.** Within the forecast's days a day shows `forecastWait`, the forecast
 as the park's own calendar shows it, so a day never reads one number in the planner and another on
 the park page; after them it shows last year's measured day (`shownWait`, `shownWaitOn`,
-`shownDayWait` in `lib/trip-regions/plan-week.ts`). What ranks stays the API's `headlinerWait`, the
-forecast times its lead factor: the picks, the plan, the swap costs and the totals under the plan.
-The day sheet's runner-up reads both days in the shown figure, so the difference adds up. A
-failed request
+`shownDayWait` in `lib/trip-regions/plan-week.ts`). Every number derived from the days is in that
+figure too, so the screen adds up: the line under the plan and its average day (`shownTotals`, the
+visits' mean against the same parks' open days of the trip, as the API compares them), the edit
+bar's cost of the pins (both plans in the shown figure, or both in the API's, never one of each),
+a swap's difference and the day sheet's runner-up. What ranks stays the API's `headlinerWait`, the
+forecast times its lead factor: the picks, the plan, the order of the windows and whether the order
+of the days matters (`orderMatters`). Where the shown difference and the ranked cost point
+different ways, the screen shows the shown one and the order stays the API's. Savings the API
+works out against plans that are not on screen (the stay suggestion, mixing tickets) stay its
+own. A failed request
 keeps the last plan on screen, dimmed, with a retry.
 
 ## Checks

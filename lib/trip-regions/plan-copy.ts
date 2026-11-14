@@ -258,13 +258,13 @@ export function planSavings(totals: PlanTotals): PlanSavings | null {
   const planned = totals.headlinerWait;
   const average = totals.averageDayWait;
   if (planned == null || average == null) return null;
-  const saved = Math.max(0, totals.savedMinutesPerRide ?? average - planned);
+  const saved = Math.max(0, Math.round(totals.savedMinutesPerRide ?? average - planned));
   const flat = totals.orderMatters === false || saved === 0;
   return {
     kind: flat ? 'flat' : 'saving',
     planned: Math.round(planned),
     average: Math.round(average),
-    saved: Math.round(saved),
+    saved,
     expectedError: totals.expectedError != null ? Math.round(totals.expectedError) : null,
   };
 }

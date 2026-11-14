@@ -61,6 +61,7 @@ import {
   relaxedRules,
   unplacedParks,
 } from '@/lib/trip-regions/plan-copy';
+import { shownTotals } from '@/lib/trip-regions/plan-week';
 import { PlanRequestError } from '@/lib/trip-regions/plan-fetch';
 import { whenRequestQuery } from '@/lib/trip-regions/plan-when';
 import { planStays } from '@/lib/trip-regions/plan-stays';
@@ -352,6 +353,7 @@ function PlanAnswerSection({
         <EditBar
           plan={data}
           best={unpinned.data ?? null}
+          calendar={calendar.data}
           swapped={swapped}
           canUndo={history.length > 0}
           onUndo={() => {
@@ -517,7 +519,7 @@ function PlanAnswer({
 
       <PlanViews plan={plan} calendar={calendar} onOpenDay={onOpenDay} />
 
-      <PeakLine plan={plan} />
+      <PeakLine plan={plan} calendar={calendar} />
 
       {added.length > 0 && (
         <ul className="flex flex-col gap-1 text-sm">
@@ -567,10 +569,11 @@ function PlanAnswer({
  * the trip's days, or that the order barely matters. "How accurate is this?" holds the average
  * itself and the forecast's measured error.
  */
-function PeakLine({ plan }: { plan: TripPlan }) {
+function PeakLine({ plan, calendar }: { plan: TripPlan; calendar: TripCalendar | undefined }) {
   const t = useTranslations('tripPlanner.answer');
   const track = useTripEvents();
-  const savings = planSavings(plan.totals);
+  // In the figure the days show; whether the order matters stays the API's call.
+  const savings = planSavings({ ...plan.totals, ...shownTotals(plan, calendar) });
   const id = useId();
   const [open, setOpen] = useState(false);
   if (!savings) return null;
@@ -795,6 +798,7 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
 function EditBar({
   plan,
   best,
+  calendar,
   swapped,
   canUndo,
   onUndo,
@@ -802,6 +806,7 @@ function EditBar({
 }: {
   plan: TripPlan;
   best: TripPlan | null;
+  calendar: TripCalendar | undefined;
   /** The swap that was the last edit, said as one: what is on which day now. */
   swapped: { a: PlanDay; b: PlanDay } | null;
   canUndo: boolean;
@@ -811,7 +816,13 @@ function EditBar({
   const t = useTranslations('tripPlanner.edit');
   const tDay = useTranslations('tripPlanner.day');
   const { locale, parkName } = usePlanContext();
-  const cost = editCost(best?.totals ?? null, plan.totals);
+  // Both plans in the figure the days show, or both in the API's; never one of each.
+  const bestShown = best ? shownTotals(best, calendar) : null;
+  const currentShown = shownTotals(plan, calendar);
+  const cost =
+    bestShown && currentShown
+      ? editCost(bestShown, currentShown)
+      : editCost(best?.totals ?? null, plan.totals);
   const what = (d: PlanDay) =>
     d.kind === 'rest' ? tDay('rest') : parkName(d.parks[0]?.slug ?? '');
   const short = (date: string) => formatParkDay(locale, date, { weekday: 'short' });
