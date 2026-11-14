@@ -72,10 +72,12 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   rest; one line above the calendar says „Ab dem 13. Jan.: Werte aus dem Vorjahr …“ from the first
   such day (`tripHub.lastYearFrom`), and the day sheet says it for its day. `long_range` (nothing
   measured a year back) keeps its "outlook" label. A last-year day is never offered as a pick.
-- **The storm season** (Orlando's hurricanes, Japan's typhoons) is the events row's last lane, by
-  the planner's own `stormCodeOn` from the region's `weather.storm`: the signal violet
-  (`STORM_SIGNAL_CLASS`), dashed for the season, solid for its peak, in `tripPlanner.climate`'s
-  words. Never a crowd tint.
+- **The storm season** (Orlando's hurricanes, Japan's typhoons) is on the timeline itself, where a
+  date is picked: a bar under each date of the matrix and under each date of the phone list, by the
+  planner's own `stormCodeOn` from the region's `weather.storm`, and its name in the matrix's first
+  column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
+  season, solid for its peak, in `tripPlanner.climate`'s words, and in the date's accessible name.
+  Never a crowd tint, and no longer a lane under the calendar, where nobody looking for a date saw it.
 
 ## Simple first, more on request
 
