@@ -854,6 +854,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Fehlerseite gezeigt',
     when: 'Eine Fehlerseite wird angezeigt; ohne Text der Meldung.',
   },
+  trip_tile_clicked: {
+    label: 'Reiseplaner-Kachel geklickt',
+    when: 'Ein Link der Reiseplaner-Kachel auf der Seite eines Parks oder in seinem Kalender: in den Planer mit dem Park oder zum Kalender der Region (dem Hub); mit Region, Link und dem Park.',
+  },
   trip_planner_started: {
     label: 'Reiseplaner gestartet',
     when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers oder einen Link mit einem Plan; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
@@ -944,7 +948,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   section_seen: {
     label: 'Stelle der Parkseite erreicht',
-    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat.',
+    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat. Die Reiseplaner-Kachel und das Reiseplaner-Band zählen so, wie oft sie im Bild waren.',
   },
   nav_menu_opened: {
     label: 'Menü geöffnet',
@@ -1012,6 +1016,7 @@ const PROP_LABEL: Record<string, string> = {
   menu: 'Menü',
   entrance: 'Auftritt',
   line: 'Spruch',
+  link: 'Link',
   length: 'Länge der Eingabe',
 };
 
@@ -1028,6 +1033,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   guide_band: 'Guide-Band im Parkkopf',
   news_band: 'News-Band im Parkkopf',
   trip_band: 'Reiseplaner-Band',
+  trip_tile: 'Reiseplaner-Kachel',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',
@@ -1042,6 +1048,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
 
 /** The marked places of a park page, top to bottom, in German. */
 export const SECTION_LABEL: Record<SeenSection, string> = {
+  trip_tile: 'Reiseplaner-Kachel',
   main_end: 'Ende der Fahrgeschäfte bzw. des Kalenders',
   blog: 'Beiträge',
   nearby: 'Parks in deiner Nähe',
@@ -1049,6 +1056,7 @@ export const SECTION_LABEL: Record<SeenSection, string> = {
   outlook: 'Jahresausblick',
   faq: 'FAQ',
   end: 'Seitenende',
+  trip_band: 'Reiseplaner-Band',
 };
 
 /** The places in the order the page has them. */
@@ -1153,6 +1161,7 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
   },
   outcome: { ready: 'Plan', empty: 'Leer', missing: 'Nicht gefunden', failed: 'Fehler' },
   headliners: { true: 'Ja', false: 'Nein' },
+  link: { plan: 'In den Planer mit dem Park', calendar: 'Kalender der Region' },
 };
 
 /** The name of an event property in German; an unknown one stays as sent. */

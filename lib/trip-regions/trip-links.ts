@@ -32,7 +32,7 @@ export interface TripRegionWords {
   area: string;
   /** The region with its preposition: „in Südkalifornien", „au Japon", „nella California del Sud". */
   inRegion: string;
-  /** The hub by its name, „Orlando Besucherkalender": the anchor of a followed link to it. */
+  /** The hub by its name, "Orlando Crowd Calendar": the anchor of a followed link to it. */
   calendar: string;
 }
 

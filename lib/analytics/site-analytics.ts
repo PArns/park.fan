@@ -388,7 +388,10 @@ export interface SiteEventMap {
    * park's or ride's UUID as entity where a card names it.
    */
   internal_link_clicked: { block: LinkBlock; dest: SitePageType; position: SearchPosition };
-  /** A marked place on a park page came on screen, once per page view and place. */
+  /**
+   * A marked place on a park page came on screen, once per page view and place; the planner tile
+   * and the planner band count their views the same way.
+   */
   section_seen: { section: SeenSection };
   /** A header menu band or the phone menu opened, hover included; once per opening. */
   nav_menu_opened: { menu: NavMenuId };
@@ -396,6 +399,12 @@ export interface SiteEventMap {
   faq_opened: { position: number };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
+  /**
+   * A link of the planner tile on a park's pages followed, middle click included: the plan with the
+   * park chosen, or the region's crowd calendar. The park as entity. `internal_link_clicked` counts
+   * the same click under the block `trip_tile`, where both links are one place (one page).
+   */
+  trip_tile_clicked: TripEvent<{ link: TripTileLink }>;
   /** The trip planner started: the hub's hero, its own start button, or a link with a plan. */
   trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' }>;
   /** "Do you already have tickets?" answered; `skipped` is "Next: dates" without an answer. */
@@ -490,6 +499,9 @@ export interface SiteEventMap {
  * `trip_*` event carries the region, so one statistic can tell the regions apart.
  */
 type TripEvent<Props extends object = object> = { region: string } & Props;
+
+/** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
+export type TripTileLink = 'plan' | 'calendar';
 
 /** A trip's length as a bucket, arrival and departure included. */
 export type TripDaysBucket = '1-4' | '5-7' | '8-10' | '11-14' | '15-21';

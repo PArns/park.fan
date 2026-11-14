@@ -1,6 +1,8 @@
 import { getLocale, getTranslations } from 'next-intl/server';
 import { ArrowRight, CalendarDays } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { SectionMark } from '@/components/analytics/section-mark';
+import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 import { cn } from '@/lib/utils';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { getTripRegionLinks } from '@/lib/trip-regions/api';
@@ -69,7 +71,9 @@ function bandTargets(regions: TripRegionLinks[], props: TripPlannerBandProps): B
  * `nofollow` (`plannerLinkRel`), so the hub's name beside it is the followed link. Which parks
  * belong is the region route's park list (`getTripRegionLinks`), never a list here; a page
  * without one, or whose region read did not answer in time, renders nothing. A park's page and
- * crowd calendar have the tile instead (`TripPlannerTile`).
+ * crowd calendar have the tile instead (`TripPlannerTile`). A view counts once, when the bands' top
+ * comes on screen (`section_seen` with `trip_band`, by a tracker of its own, as these pages have
+ * none); a click is `internal_link_clicked` with the block `trip_band`.
  */
 export async function TripPlannerBand(props: TripPlannerBandProps) {
   const targets = bandTargets(await getTripRegionLinks(), props);
@@ -84,6 +88,7 @@ export async function TripPlannerBand(props: TripPlannerBandProps) {
 
   return (
     <div className={cn('flex flex-col gap-3', props.className)}>
+      <SectionMark section="trip_band" />
       {bands.map(({ region, parks, words }) => {
         const href = tripPlannerHref(region.slug, locale, {
           parks: parks.map((park) => park.slug),
@@ -123,6 +128,7 @@ export async function TripPlannerBand(props: TripPlannerBandProps) {
           </aside>
         );
       })}
+      <SectionSeenTracker />
     </div>
   );
 }

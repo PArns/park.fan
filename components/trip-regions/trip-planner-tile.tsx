@@ -3,13 +3,15 @@ import { ArrowRight, CalendarDays } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { buttonLinkProps } from '@/components/ui/button';
 import { RegionSceneInView } from '@/components/layout/planner-region-art';
+import { SectionMark } from '@/components/analytics/section-mark';
 import {
   REGION_CARD,
   REGION_KICKER,
   REGION_PILL,
 } from '@/components/trip-regions/region-card-classes';
 import { cn } from '@/lib/utils';
-import { linkBlockAttributes } from '@/lib/analytics/internal-link';
+import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
+import { tripTileAttributes, tripTileLinkAttributes } from '@/lib/analytics/trip-tile';
 import { getTripRegionLinks } from '@/lib/trip-regions/api';
 import { shortParkName } from '@/lib/trip-regions/hub-data';
 import { tripRegionPath } from '@/lib/trip-regions/paths';
@@ -41,7 +43,7 @@ const SCENE_BOX =
  * A trip region's planner on the pages of one of its parks: the region's Parky scene, "Mehrere
  * Tage in Orlando", what the planner does in one line, „Magic Kingdom einplanen" into the planner
  * with the park chosen (and on a calendar month that month as the dates to search), and the hub by
- * its name, „Orlando Besucherkalender", as a plain link. The card is the planner's link; the hub's
+ * its name (`nav.calendar`, "Orlando Crowd Calendar") as a plain link. The card is the planner's link; the hub's
  * stands above that cover.
  *
  * The plan link carries a state, one of endless URLs that canonical to the hub, so it is
@@ -49,8 +51,11 @@ const SCENE_BOX =
  * followed one, with the hub's name as its anchor, so a park page passes the hub a link. Which
  * parks belong is the region route's park list (`getTripRegionLinks`); a park of no live region,
  * or one whose region read did not answer in time, renders nothing, decided before the first byte.
- * The scene loads after the page, once the tile nears the screen (`RegionSceneInView`). Clicks
- * count as `trip_band`, the band's block, so the counts go on.
+ * The scene loads after the page, once the tile nears the screen (`RegionSceneInView`).
+ *
+ * Counted three ways: `section_seen` with `trip_tile` once per view when its top comes on screen
+ * (`ParkPageShell`'s tracker), `internal_link_clicked` with the block `trip_tile` and the park as
+ * entity, and `trip_tile_clicked` with the region and which link (`lib/analytics/trip-tile.ts`).
  */
 export async function TripPlannerTile({ park, month, today, className }: TripPlannerTileProps) {
   const found = findTripRegion(await getTripRegionLinks(), [park]);
@@ -72,57 +77,63 @@ export async function TripPlannerTile({ park, month, today, className }: TripPla
   const headingId = `trip-tile-${region.slug}`;
 
   return (
-    <aside
-      data-card=""
-      data-trip-tile={region.slug}
-      {...linkBlockAttributes('trip_band')}
-      aria-labelledby={headingId}
-      className={cn(
-        REGION_CARD,
-        'flex flex-col shadow-lg sm:min-h-44 sm:flex-row-reverse lg:min-h-52',
-        className
-      )}
-    >
-      <div aria-hidden="true" className={SCENE_BOX}>
-        <RegionSceneInView regionId={region.slug} />
-      </div>
-      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 px-4 pb-5 sm:py-6 sm:pr-2 sm:pl-6">
-        <p className={REGION_KICKER}>{tNav('tripPlanner')}</p>
-        <h2
-          id={headingId}
-          className="text-foreground text-2xl leading-tight font-bold tracking-tight text-balance sm:text-3xl"
-        >
-          {t('title', { inRegion: words.inRegion })}
-        </h2>
-        <p className="text-foreground/80 max-w-prose text-sm leading-relaxed text-pretty">
-          {tTile('line', { count: region.parks.length })}
-        </p>
-        <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2">
-          <Link
-            href={href}
-            rel={plannerLinkRel(href)}
-            prefetch={false}
-            {...buttonLinkProps({
-              withIcon: true,
-              className: cn(
-                REGION_PILL,
-                'h-auto min-h-11 px-4 py-2 whitespace-normal shadow-md after:absolute after:inset-0 sm:min-h-9'
-              ),
-            })}
-          >
-            {t('planPark', { park: shortParkName(parks[0].name) })}
-            <ArrowRight aria-hidden="true" />
-          </Link>
-          <Link
-            href={tripRegionPath(region.slug, locale)}
-            prefetch={false}
-            className="text-primary-ink relative z-10 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline sm:min-h-0"
-          >
-            <CalendarDays aria-hidden="true" className="size-4 shrink-0" />
-            {words.calendar}
-          </Link>
+    <>
+      <SectionMark section="trip_tile" />
+      <aside
+        data-card=""
+        {...tripTileAttributes(region.slug)}
+        {...linkBlockAttributes('trip_tile')}
+        {...linkEntityAttributes(parks[0].id)}
+        aria-labelledby={headingId}
+        className={cn(
+          REGION_CARD,
+          'flex flex-col shadow-lg sm:min-h-44 sm:flex-row-reverse lg:min-h-52',
+          className
+        )}
+      >
+        <div aria-hidden="true" className={SCENE_BOX}>
+          <RegionSceneInView regionId={region.slug} />
         </div>
-      </div>
-    </aside>
+        <div className="flex min-w-0 flex-1 flex-col justify-center gap-1.5 px-4 pb-5 sm:py-6 sm:pr-2 sm:pl-6">
+          <p className={REGION_KICKER}>{tNav('tripPlanner')}</p>
+          <h2
+            id={headingId}
+            className="text-foreground text-2xl leading-tight font-bold tracking-tight text-balance sm:text-3xl"
+          >
+            {t('title', { inRegion: words.inRegion })}
+          </h2>
+          <p className="text-foreground/80 max-w-prose text-sm leading-relaxed text-pretty">
+            {tTile('line', { count: region.parks.length })}
+          </p>
+          <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2">
+            <Link
+              href={href}
+              rel={plannerLinkRel(href)}
+              prefetch={false}
+              {...tripTileLinkAttributes('plan')}
+              {...buttonLinkProps({
+                withIcon: true,
+                className: cn(
+                  REGION_PILL,
+                  'h-auto min-h-11 px-4 py-2 whitespace-normal shadow-md after:absolute after:inset-0 sm:min-h-9'
+                ),
+              })}
+            >
+              {t('planPark', { park: shortParkName(parks[0].name) })}
+              <ArrowRight aria-hidden="true" />
+            </Link>
+            <Link
+              href={tripRegionPath(region.slug, locale)}
+              prefetch={false}
+              {...tripTileLinkAttributes('calendar')}
+              className="text-primary-ink relative z-10 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold underline-offset-4 hover:underline sm:min-h-0"
+            >
+              <CalendarDays aria-hidden="true" className="size-4 shrink-0" />
+              {words.calendar}
+            </Link>
+          </div>
+        </div>
+      </aside>
+    </>
   );
 }
