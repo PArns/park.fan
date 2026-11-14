@@ -1,10 +1,6 @@
 import { getTranslations } from 'next-intl/server';
-import {
-  locales,
-  generateAlternateLanguages,
-  localeToOpenGraphLocale,
-  SITE_URL,
-} from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildAlternates, buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
 import type { Metadata } from 'next';
@@ -30,36 +26,14 @@ export async function generateMetadata({ params }: ImpressumPageProps): Promise<
   return {
     title: t('title'),
     description: t('description'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: t('title'),
       description: t('description'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: `${SITE_URL}/${locale}/impressum`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [
-        {
-          url: ogImageUrl,
-          width: 1200,
-          height: 630,
-          alt: t('title'),
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: t('title'),
-      description: t('description'),
-      images: [ogImageUrl],
-    },
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/impressum`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/impressum`),
-        'x-default': `${SITE_URL}/en/impressum`,
-      },
-    },
+      ogImageUrl,
+    }),
+    alternates: buildAlternates(locale, () => '/impressum'),
     robots: {
       index: false,
       follow: true,

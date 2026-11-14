@@ -17,7 +17,8 @@ keys, helpers and the validation scripts: [translations](translations.md).
 | `es` | Español           | `es_ES`    |
 
 `i18n/config.ts` is the one list (`locales`, `defaultLocale`, `localeNames`,
-`localeToOpenGraphLocale`, `generateAlternateLanguages()` for hreflang); a new language needs an
+`localeToOpenGraphLocale`); a page's canonical and hreflang come from `buildAlternates()` in
+`lib/utils/metadata.ts`, its share card from `buildOpenGraphMetadata()`. A new language needs an
 entry there, in `localeNames` and a `messages/<locale>.json`. `i18n/routing.ts` sets
 `localePrefix: 'always'` and `alternateLinks: false` (hreflang comes from each page's
 `generateMetadata`, because next-intl's own `Link` headers give the glossary wrong alternates).

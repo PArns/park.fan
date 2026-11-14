@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
-import { SITE_URL, localeToOpenGraphLocale } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
@@ -48,21 +49,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: { absolute: TITLE },
     description: DESCRIPTION,
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale: 'en',
       title: TITLE,
       description: DESCRIPTION,
-      locale: localeToOpenGraphLocale.en,
       url: `${SITE_URL}${PAGE_PATH}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: HEADING }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: TITLE,
-      description: DESCRIPTION,
-      images: [ogImageUrl],
-    },
+      ogImageUrl,
+      imageAlt: HEADING,
+      alternateLocale: false,
+    }),
     // No `languages` map: the page exists in one language, and an hreflang set
     // listing five URLs that 404 is worse than none at all.
     alternates: {

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { Link } from '@/i18n/navigation';
 import { Search, TreePalm, Cog, Utensils, Music, MapPin, Clock, BookOpen } from 'lucide-react';
@@ -53,13 +53,7 @@ export async function generateMetadata({
       url: `${SITE_URL}/${locale}/search${q ? `?q=${encodeURIComponent(q)}` : ''}`,
       ogImageUrl: getOgImageUrl([locale, 'search']),
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/search`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/search`),
-        'x-default': `${SITE_URL}/en/search`,
-      },
-    },
+    alternates: buildAlternates(locale, () => '/search'),
   };
 }
 

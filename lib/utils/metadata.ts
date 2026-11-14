@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { locales, localeToOpenGraphLocale } from '@/i18n/config';
+import { locales, localeToOpenGraphLocale, SITE_URL, type Locale } from '@/i18n/config';
 
 /**
  * Google truncates the SERP title around 60 characters, and a keyword past that disappears behind
@@ -75,7 +75,11 @@ export function fitSentences(text: string, limit: number = MAX_DESCRIPTION_LENGT
   return `${clean.slice(0, limit - 1).replace(/[\s,;:–-]+\S*$/, '')}…`;
 }
 
-/** Builds the openGraph and twitter metadata that are the same on every page. */
+/**
+ * Builds the openGraph and twitter metadata that are the same on every page. `type` is the page's
+ * Open Graph type; a post adds its `article` facts. `alternateLocale` lists the other locales, left
+ * out (`false`) where the page does not exist in all of them.
+ */
 export function buildOpenGraphMetadata({
   locale,
   title,
@@ -83,6 +87,9 @@ export function buildOpenGraphMetadata({
   url,
   ogImageUrl,
   imageAlt,
+  type = 'website',
+  alternateLocale = true,
+  article,
 }: {
   locale: string;
   title: string;
@@ -91,6 +98,10 @@ export function buildOpenGraphMetadata({
   ogImageUrl: string;
   /** Defaults to the title. */
   imageAlt?: string;
+  type?: 'website' | 'article' | 'profile';
+  alternateLocale?: boolean;
+  /** A post's dates, section and tags, with `type: 'article'`. */
+  article?: { publishedTime?: string; modifiedTime?: string; section?: string; tags?: string[] };
 }): Pick<Metadata, 'openGraph' | 'twitter'> {
   const alt = imageAlt ?? title;
   return {
@@ -98,10 +109,13 @@ export function buildOpenGraphMetadata({
       title,
       description,
       locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
+      ...(alternateLocale && {
+        alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
+      }),
       url,
       siteName: 'park.fan',
-      type: 'website',
+      type,
+      ...article,
       images: [{ url: ogImageUrl, width: 1200, height: 630, alt }],
     },
     twitter: {
@@ -110,5 +124,39 @@ export function buildOpenGraphMetadata({
       description,
       images: [ogImageUrl],
     },
+  };
+}
+
+/**
+ * The hreflang set of a page: the absolute URL in every locale `pathFor` names a path for (the path
+ * after the locale, `''` for the locale's home), in the order of `locales`, then `x-default` on the
+ * English one. `pathFor` answers `null` where the page does not exist in a locale; without an
+ * English page there is no `x-default`.
+ */
+export function alternateLanguages(
+  pathFor: (locale: Locale) => string | null
+): Record<string, string> {
+  const languages: Record<string, string> = {};
+  for (const locale of locales) {
+    const path = pathFor(locale);
+    if (path !== null) languages[locale] = `${SITE_URL}/${locale}${path}`;
+  }
+  if (languages.en) languages['x-default'] = languages.en;
+  return languages;
+}
+
+/**
+ * `alternates` of a page that exists in every locale: its canonical in `locale` and the hreflang
+ * set ({@link alternateLanguages}), both from one `pathFor`, so the two cannot disagree. The same
+ * shape `app/sitemap.ts` writes; a page and the sitemap disagreeing about `x-default` is an
+ * hreflang conflict.
+ */
+export function buildAlternates(
+  locale: string,
+  pathFor: (locale: Locale) => string
+): { canonical: string; languages: Record<string, string> } {
+  return {
+    canonical: `${SITE_URL}/${locale}${pathFor(locale as Locale)}`,
+    languages: alternateLanguages(pathFor),
   };
 }

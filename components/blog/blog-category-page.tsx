@@ -3,7 +3,8 @@ import { notFound, permanentRedirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { FolderTree } from 'lucide-react';
 import { routing, type Locale } from '@/i18n/routing';
-import { localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata, alternateLanguages } from '@/lib/utils/metadata';
 import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import {
   categoryPathBreadcrumbs,
@@ -11,14 +12,7 @@ import {
   parseCategoryPath,
   resolveCategoryLabel,
 } from '@/lib/blog/categories';
-import {
-  hasPage,
-  listingAlternates,
-  paginate,
-  pagedPath,
-  pagedTitle,
-  splitPageSegments,
-} from '@/lib/blog/pagination';
+import { hasPage, paginate, pagedPath, pagedTitle, splitPageSegments } from '@/lib/blog/pagination';
 import { BlogCategoryPills, BlogPostStream } from '@/components/blog/blog-post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
 import { BlogSectionHeader } from '@/components/blog/blog-section-header';
@@ -55,19 +49,17 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
   return {
     title: { absolute: fullTitle },
     description,
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description,
-      locale: localeToOpenGraphLocale[locale as Locale],
       url: `${SITE_URL}/${locale}${href}`,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
-    },
-    twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
+      ogImageUrl,
+      alternateLocale: false,
+    }),
     alternates: {
       canonical: `${SITE_URL}/${locale}${href}`,
-      languages: listingAlternates((l) =>
+      languages: alternateLanguages((l) =>
         hasPage(filterPostsByCategory(listArticles(l), categorySegments).length, page) ? href : null
       ),
       // No per-category feed (a few categories over few posts would repeat one post at a second

@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import nextDynamic from 'next/dynamic';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import type { Metadata } from 'next';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { blogFeedAlternates } from '@/lib/blog/feed';
@@ -98,11 +98,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
       ogImageUrl,
     }),
     alternates: {
-      canonical: `${SITE_URL}/${locale}`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}`),
-        'x-default': `${SITE_URL}/en`,
-      },
+      ...buildAlternates(locale, () => ''),
       // The homepage is where a reader or a crawler looks for a site's feed first. Park and
       // glossary pages carry none: the spec wants a page's own main feed, and they have none.
       types: blogFeedAlternates(locale as Locale),

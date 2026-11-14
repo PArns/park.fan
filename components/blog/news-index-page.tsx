@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import { hasPublishedPosts, listNewsByDate, NEWS_CATEGORY } from '@/lib/blog/listing';
 import { resolveCategoryLabel } from '@/lib/blog/categories';
 import { NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
@@ -22,8 +22,13 @@ import { NewsListingStructuredData } from '@/components/seo/blog-structured-data
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
-import { hasPage, listingAlternates, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
+import {
+  fitWithin,
+  MAX_TITLE_LENGTH,
+  buildOpenGraphMetadata,
+  alternateLanguages,
+} from '@/lib/utils/metadata';
+import { hasPage, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 
 /**
  * The news overview's own metadata for page `page`: a title carrying the search phrase
@@ -46,20 +51,16 @@ export async function buildNewsIndexMetadata(locale: string, page: number): Prom
   return {
     title: { absolute: title },
     description,
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title,
       description,
-      locale: localeToOpenGraphLocale[locale as Locale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url,
-      siteName: 'park.fan',
-      type: 'website',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: title }],
-    },
-    twitter: { card: 'summary_large_image', title, description, images: [ogImageUrl] },
+      ogImageUrl,
+    }),
     alternates: {
       canonical: url,
-      languages: listingAlternates((l) => (hasPage(listNewsByDate(l).length, page) ? path : null)),
+      languages: alternateLanguages((l) => (hasPage(listNewsByDate(l).length, page) ? path : null)),
       types: blogFeedAlternates(locale as Locale),
     },
     robots: {

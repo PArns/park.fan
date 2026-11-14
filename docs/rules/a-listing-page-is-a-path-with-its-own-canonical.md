@@ -16,7 +16,7 @@ in `lib/blog/pagination.ts`, the page row is `ListingPagination`
 - **Its own canonical, `index, follow`.** Pointing page 2 at page 1 tells Google the posts there are
   not worth reaching. The title adds `blog.pagination.pageLabel` ("Seite 2") through `pagedTitle`.
 - **hreflang only where the page exists.** A tag's counts differ between locales, so
-  `listingAlternates` takes a `pathFor` that answers `null` where `hasPage` says no, and
+  `alternateLanguages` takes a `pathFor` that answers `null` where `hasPage` says no, and
   `buildTagAlternates(locale, slug, page)` asks the target tag's own count.
 - **Plain links**: previous, the numbers and next are `<a>` elements in the server HTML, `rel="prev"`
   and `rel="next"` on the arrows.

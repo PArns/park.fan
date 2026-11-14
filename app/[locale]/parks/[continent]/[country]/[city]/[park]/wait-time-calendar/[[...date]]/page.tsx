@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
 
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -47,6 +47,7 @@ import {
   fitWithin,
   MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
+  buildAlternates,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getServerToday } from '@/lib/utils/server-time';
@@ -186,18 +187,10 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   return {
     title,
     description,
-    alternates: {
-      canonical,
-      // Each locale gets its OWN segment (`/de/…/wartezeiten-kalender`, `/fr/…/calendrier-temps-attente`),
-      // not the canonical English folder — the localized URL is what the rewrite serves and what a
-      // reader sees. The month rides along unchanged: a month is a number in every language.
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${path(l, canonicalMonth)}`),
-        // Same shape every other route uses, and the same one `app/sitemap.ts` writes for these
-        // URLs — a page and the sitemap disagreeing about x-default is an hreflang conflict.
-        'x-default': `${SITE_URL}/en${path('en', canonicalMonth)}`,
-      },
-    },
+    // Each locale gets its OWN segment (`/de/…/wartezeiten-kalender`, `/fr/…/calendrier-temps-attente`),
+    // not the canonical English folder — the localized URL is what the rewrite serves and what a
+    // reader sees. The month rides along unchanged: a month is a number in every language.
+    alternates: buildAlternates(locale, (l) => path(l, canonicalMonth)),
     ...buildOpenGraphMetadata({
       title,
       description,

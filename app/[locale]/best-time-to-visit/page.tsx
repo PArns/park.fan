@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { locales, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildAlternates, buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { routing, type Locale } from '@/i18n/routing';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Metadata } from 'next';
@@ -152,29 +153,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title: { absolute: fullTitle },
     description: t('description'),
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description: t('description'),
-      locale: localeToOpenGraphLocale[locale as keyof typeof localeToOpenGraphLocale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url,
-      siteName: 'park.fan',
+      ogImageUrl,
       type: 'article',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: fullTitle }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: fullTitle,
-      description: t('description'),
-      images: [ogImageUrl],
-    },
-    alternates: {
-      canonical: url,
-      languages: {
-        ...Object.fromEntries(locales.map((l) => [l, urlFor(l)])),
-        'x-default': urlFor('en'),
-      },
-    },
+    }),
+    alternates: buildAlternates(locale, (l) => `/${BEST_TIME_SEGMENTS[l]}`),
     robots: {
       index: true,
       follow: true,

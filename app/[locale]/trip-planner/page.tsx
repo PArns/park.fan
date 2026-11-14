@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { RouteMessages } from '@/i18n/route-messages';
 import { PLANNER_SEGMENTS, PLANNER_START_ID, plannerPath } from '@/lib/planner/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
@@ -82,16 +82,9 @@ export async function generateMetadata({ params }: PlannerPageProps): Promise<Me
       url: `${SITE_URL}${path(locale)}`,
       ogImageUrl,
     }),
-    alternates: {
-      canonical: `${SITE_URL}${path(locale)}`,
-      languages: {
-        // The LOCALIZED segment per language, not this route's folder name:
-        // `/de/trip-planner` is a rewrite target and not a URL anybody should be
-        // pointed at.
-        ...generateAlternateLanguages((l) => path(l)),
-        'x-default': `${SITE_URL}${path('en')}`,
-      },
-    },
+    // The LOCALIZED segment per language, not this route's folder name: `/de/trip-planner` is a
+    // rewrite target and not a URL anybody should be pointed at.
+    alternates: buildAlternates(locale, (l) => `/${PLANNER_SEGMENTS[l]}`),
   };
 }
 

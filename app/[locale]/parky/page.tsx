@@ -8,11 +8,11 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import { routing, type Locale } from '@/i18n/routing';
 import { Link } from '@/i18n/navigation';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { cn } from '@/lib/utils';
 import { getParkBackground } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
@@ -69,13 +69,7 @@ export async function generateMetadata({ params }: ParkyPageProps): Promise<Meta
       url: `${SITE_URL}/${locale}/parky`,
       ogImageUrl,
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/parky`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/parky`),
-        'x-default': `${SITE_URL}/en/parky`,
-      },
-    },
+    alternates: buildAlternates(locale, () => '/parky'),
   };
 }
 
