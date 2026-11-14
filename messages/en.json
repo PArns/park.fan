@@ -3232,8 +3232,10 @@
     "marker": {
       "closesAt": "closes {time}",
       "closesEarly": "closes early",
-      "earlyEntry": "Early Entry",
-      "earlyPark": "Early Park Admission",
+      "early": {
+        "early_entry": "Early Entry",
+        "early_park_admission": "Early Park Admission"
+      },
       "rest": "Rest day",
       "evening": "Extended Evening Hours",
       "last_year": "last year",
@@ -3647,8 +3649,10 @@
         },
         "sheet": {
           "kicker": "Orlando · one day",
-          "earlyEntry": "Early Entry from {time} for Disney hotel guests",
-          "earlyAdmission": "Early Park Admission from {time} for Universal hotel guests",
+          "early": {
+            "early_entry": "Early Entry from {time} for Disney hotel guests",
+            "early_park_admission": "Early Park Admission from {time} for Universal hotel guests"
+          },
           "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min {via, select, ttc {by monorail or ferry} other {by shuttle}}, {total} min in all, without traffic"
         },
         "when": {

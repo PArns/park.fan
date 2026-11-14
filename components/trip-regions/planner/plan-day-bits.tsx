@@ -51,7 +51,9 @@ export function useDayMarkerText(): (
         : t('closesEarly');
     }
     if (marker === 'early') {
-      return t(earlyPerk(day.perks) === 'early_park_admission' ? 'earlyPark' : 'earlyEntry');
+      // An early slot this client has no name for yet (a new region's) draws no marker.
+      const key = `early.${earlyPerk(day.perks)}`;
+      return t.has(key) ? t(key) : null;
     }
     return t(marker);
   };
