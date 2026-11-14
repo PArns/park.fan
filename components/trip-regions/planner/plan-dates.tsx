@@ -46,11 +46,15 @@ interface DateFacts {
   nye: boolean;
 }
 
-/** A date as the switch's mode shows it: one pick, the other resorts' (overall only), the parties. */
+/**
+ * A date as the switch's mode shows it: one pick, the other resorts' picks (overall only), the
+ * parties of the resorts in view, and the one the cell marks: the party of the pick's own resort.
+ */
 interface DateView {
   pick: DatePick | null;
   others: DatePick[];
   parties: DateParty[];
+  cellParty: DateParty | null;
 }
 
 /**
@@ -158,13 +162,15 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
       gridMode === 'all' ? resortKeys.includes(group) : group === gridMode;
     for (const [date, fact] of facts) {
       const pick = modePick(fact.picks, gridMode, resortKeys);
+      const parties = fact.parties.filter((p) => inScope(p.park.group));
       out.set(date, {
         pick,
         others:
           gridMode === 'all'
             ? fact.picks.filter((p) => p !== pick && resortKeys.includes(p.group.key))
             : [],
-        parties: fact.parties.filter((p) => inScope(p.park.group)),
+        parties,
+        cellParty: parties.find((p) => p.park.group === pick?.group.key) ?? null,
       });
     }
     return out;
@@ -206,7 +212,8 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         [
           ...inMonth.flatMap(({ view }) => [
             view.pick?.park.slug ?? '',
-            ...view.parties.map((p) => p.park.slug),
+            view.cellParty?.park.slug ?? '',
+            ...view.others.map((p) => p.park.slug),
           ]),
           ...events.flatMap((e) => e.parkSlugs),
         ],
@@ -215,7 +222,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
       ),
     [region.parks, inMonth, events, parkName, tight]
   );
-  const anyParty = inMonth.some(({ view }) => view.pick && view.parties.length > 0);
+  const anyParty = inMonth.some(({ view }) => view.cellParty);
   const anyNye = inMonth.some(({ fact }) => fact.nye);
   const anyUnpublished = inMonth.some(({ view }) => view.pick?.hoursUnpublished);
   const anyTint = inMonth.some(({ fact, view }) => !view.pick && dateLevel(fact.day, headliners));
@@ -336,7 +343,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           const inRange = Boolean(start && end && date > start && date < end);
           const held = windows.filter((w) => date >= w.from && date <= w.to);
           const ticketResorts = [...new Set(held.map((w) => resortWord(w.resort)))];
-          const party = view?.parties[0] ?? null;
+          const party = view?.cellParty ?? null;
           const picks: PlanGridPick[] = pick
             ? [
                 {
