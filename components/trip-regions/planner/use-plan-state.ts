@@ -11,6 +11,7 @@ import {
   type TripPlanState,
 } from '@/lib/trip-regions/plan';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
+import { connectPlannerBridge } from '@/lib/trip-regions/planner-bridge';
 import type { TripRegion } from '@/lib/trip-regions/types';
 
 /**
@@ -61,6 +62,12 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
       planHref(window.location.pathname, next, TRIP_PLANNER_ID)
     );
   }, []);
+
+  // Parky reads the plan on screen and changes it through `update`, as a press would.
+  useEffect(
+    () => connectPlannerBridge(region.slug, state, update, keys),
+    [region.slug, state, update, keys]
+  );
 
   // Only a query the planner did not write is news; the first one counts, since a link opened it.
   const reported = useRef<string | null>(null);

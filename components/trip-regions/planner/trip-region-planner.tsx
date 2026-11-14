@@ -24,6 +24,7 @@ import { usePlanRouteSetup } from './plan-route';
 import { PlanResult } from './plan-result';
 import { useTicketStep } from './plan-tickets';
 import { usePlanState } from './use-plan-state';
+import { ParkyTripInterviewButton } from '@/components/assistant/parky-trip-interview-button';
 
 /** What the hub hands the planner. */
 export interface TripRegionPlannerProps {
@@ -185,7 +186,7 @@ const isWide = () => window.matchMedia(PLAN_WIDE_QUERY).matches;
  * signal.
  */
 function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
-  const { live } = usePlanContext();
+  const { live, region } = usePlanContext();
   const track = useTripEvents();
   const step = useTicketStep();
   const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
@@ -269,6 +270,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
 
   return (
     <>
+      {live && <ParkyTripInterviewButton region={region.slug} />}
       <PlanSetup
         defaultMonth={defaultMonth}
         sheet={sheet}

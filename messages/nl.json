@@ -198,9 +198,9 @@
     },
     "parky": {
       "kicker": "Parky",
-      "title": "Niet gevonden wat je zoekt? Vraag het Parky",
+      "title": "Parky, je maatje voor elke parkvraag",
       "lead": "Parky is een pretparknerd. Hij weet hoe lang je nu bij Taron in de rij staat, op welke zaterdag in juni Europa-Park het leegst is en wat airtime eigenlijk is.",
-      "link": "Vraag het Parky"
+      "link": "Chat met Parky"
     },
     "reading": {
       "title": "Pretparknieuws en gidsen",
@@ -390,8 +390,7 @@
     "updatedOn": "Bijgewerkt {date}",
     "nearby": "Bij jou in de buurt",
     "preferences": "Instellingen",
-    "assistantOpen": "Vraag het Parky",
-    "assistantClose": "Parky sluiten"
+    "assistantOpen": "Chat met Parky"
   },
   "tripHub": {
     "scroll": "Naar de kalender",
@@ -3083,6 +3082,10 @@
       "adopt": "Overnemen in mijn planner",
       "adopted": "Het plan staat nu in je planner.",
       "open": "Planner openen"
+    },
+    "parky": {
+      "button": "Plan met Parky je perfecte parkdag",
+      "line": "Een paar vragen in de chat, en elk antwoord komt meteen in deze dag."
     }
   },
   "tripPlanner": {
@@ -3702,6 +3705,10 @@
       "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
       "stayShort": "{city} {count, plural, =1 {1 nacht} other {# nachten}}",
       "summaryOpen": "Het plan kiest de steden en nachten"
+    },
+    "parky": {
+      "button": "Plan met Parky je perfecte reis",
+      "line": "Een paar vragen in de chat, en elk antwoord komt meteen hier in de planner."
     }
   },
   "tripRegions": {
@@ -5060,8 +5067,8 @@
       "kicker": "park.fan · Blog"
     },
     "parky": {
-      "kicker": "park.fan · Chatassistent",
-      "action": "Vraag het Parky"
+      "kicker": "park.fan · AI-chat",
+      "action": "Chat met Parky"
     }
   },
   "compare": {
@@ -5101,15 +5108,15 @@
     "forecastCaption": "Verwachting"
   },
   "assistant": {
-    "close": "Parky sluiten",
+    "close": "Chat sluiten",
     "title": "Parky",
-    "tabChat": "Vragen",
+    "tabChat": "Chat",
     "tabFeedback": "Feedback",
-    "greeting1": "Hoi, ik ben Parky 🎡 Je pretparkmaatje met een lichte achtbaanverslaving. Vraag me naar wachttijden, de rustigste dagen, openingstijden of wat „airtime“ eigenlijk is. Ik plan meteen je dag erbij.",
+    "greeting1": "Hoi, ik ben Parky 🎡 Je pretparkmaatje met een lichte achtbaanverslaving. Vraag me naar wachttijden, de rustigste dagen, openingstijden of wat “airtime” eigenlijk is. En als je wilt, plannen we samen je dag.",
     "greeting2": "Waar gaat het heen? 🎢 Ik ben Parky. Noem een park en ik vertel je hoe lang de wachttijden nu zijn en op welke dag het daar het rustigst is.",
-    "greeting3": "Hallo, hier is Parky 🎡 Ik kijk voor je waar de rijen nu kort zijn, wanneer een park het rustigst is en wat voor weer het daar wordt. Wat wil je weten?",
+    "greeting3": "Hallo, met Parky 🎡 Ik weet waar de rijen nu kort zijn, wanneer een park het rustigst is en of je een paraplu nodig hebt. Waar gaan we heen?",
     "greeting4": "Hoi, ik ben Parky 🎡 Mijn hoed is een reuzenrad en mijn hobby is wachttijden. Vraag me wanneer een park het rustigst is of welke attracties nu stilstaan.",
-    "greeting5": "Hoi! Parky hier 🎢 Vraag me naar openingstijden, het weer in het park of het nieuws van park.fan. Als je wilt, plan ik meteen je hele dag.",
+    "greeting5": "Moi, Parky hier 🎢 Vraag me naar openingstijden, het weer in het park of het nieuws van park.fan. En als je wilt, plannen we samen de hele dag.",
     "suggestWaits": "Waar zijn de wachttijden nu kort?",
     "suggestBestDay": "Wanneer is het het rustigst in de Efteling?",
     "suggestNews": "Wat is er nieuw?",
@@ -5125,7 +5132,9 @@
     "suggestWeatherHere": "Wat voor weer wordt het hier vandaag?",
     "suggestCoasterHere": "Welke achtbaan heeft nu de kortste wachttijd?",
     "suggestHoursHere": "Tot hoe laat is het park vandaag open?",
-    "placeholder": "Vraag Parky iets …",
+    "suggestInterview": "Plan mijn reis met me, vraag voor vraag.",
+    "suggestInterviewHere": "Plan hier een dag met me, vraag voor vraag.",
+    "placeholder": "Bericht aan Parky …",
     "send": "Versturen",
     "newChat": "Nieuwe chat",
     "typing": "Parky typt",
@@ -5138,10 +5147,10 @@
     "errorOff": "Parky heeft even pauze. Kom later nog eens terug.",
     "errorUpstream": "Er ging iets mis. Probeer het nog een keer.",
     "errorNetwork": "Geen verbinding. Controleer je netwerk en probeer het opnieuw.",
-    "rateUp": "Nuttig",
-    "rateDown": "Niet nuttig",
+    "rateUp": "Goed antwoord",
+    "rateDown": "Niet goed",
     "rated": "Bedankt.",
-    "disclaimer": "Parky is een AI-assistent. Zijn antwoorden kunnen fouten bevatten en worden zonder garantie gegeven.",
+    "disclaimer": "Parky is een AI en kan zich vergissen. Zijn antwoorden worden zonder garantie gegeven.",
     "privacy": "Privacy",
     "feedbackIntro": "Mis je iets, werkt iets niet of vind je iets echt goed? Laat het ons weten, we lezen alles.",
     "feedbackLabel": "Jouw feedback",
@@ -5174,6 +5183,7 @@
     "chipFavorite": "Bij je favorieten",
     "chipUnfavorite": "Uit je favorieten gehaald",
     "chipUndoStale": "Dag sindsdien gewijzigd, niets teruggezet",
+    "chipUndone": "Ongedaan gemaakt",
     "alertRide": "{name}: een melding zodra de wachttijd onder {minutes} minuten zakt.",
     "alertReopen": "{name}: een melding zodra hij weer draait.",
     "alertShow": "{name}: een herinnering voor de voorstelling van {time}.",
@@ -5188,14 +5198,14 @@
     "locationShared": "Hier is mijn locatie.",
     "cardWait": "{minutes} min",
     "lookupGlossary": "Parky zoekt het op in de woordenlijst …",
-    "teaser1": "Hoi, ik ben Parky – klik op mij!",
-    "teaser2": "Klik op mij en ik help je!",
+    "teaser1": "Hoi, ik ben Parky, je parkmaatje. Klik op mij.",
+    "teaser2": "Klik op mij, dan plannen we samen je parkdag.",
     "teaser3": "Waar is de rij nu kort? Vraag het mij!",
     "teaser4": "Psst … ik ken de rustigste dagen.",
-    "teaser5": "Zin in airtime? Ik plan je dag.",
+    "teaser5": "Zin in airtime? Dan plannen we de dag.",
     "teaser6": "Wachttijden, weer, openingstijden: vraag het mij!",
     "teaser7": "Welke attractie heeft nu de kortste rij? Ik kijk het na.",
-    "teaser8": "Ik plan je parkdag, attractie voor attractie.",
+    "teaser8": "We plannen je parkdag, attractie voor attractie.",
     "teaser9": "Is het park morgen langer open? Vraag het mij gewoon.",
     "teaser10": "Welk park wordt het vandaag? Ik weet waar de rijen kort zijn.",
     "teaser11": "Eerste rij of achterste? De wachttijden heb ik hoe dan ook.",
@@ -5204,7 +5214,7 @@
     "teaserBored1": "Gaaap … vraag me iets!",
     "teaserBored2": "Ik verveel me. Heb je een vraag voor me?",
     "teaserBored3": "Ik heb net de spaken van mijn hoed geteld. Het zijn er acht.",
-    "teaserBored4": "Je volgende parkbezoek al gepland? Ik help je erbij.",
+    "teaserBored4": "Je volgende parkbezoek al gepland? Ik doe mee.",
     "teaserWoke1": "Oei! Ik sliep helemaal niet!",
     "teaserWoke2": "O, je bent er weer! Ik liet mijn ogen even rusten.",
     "teaserWoke3": "Heb ik iets gemist? Ik ben weer klaarwakker!",
@@ -5337,15 +5347,76 @@
     "cardHoliday": "Feestdag",
     "cardShowsLink": "Alle shows in het park",
     "cardRestaurantsLink": "Alle restaurants in het park",
-    "cardPaidExpress": "Betaalde snelle wachtrij"
+    "cardPaidExpress": "Betaalde snelle wachtrij",
+    "repliesLabel": "Voorgestelde antwoorden",
+    "receipt": {
+      "trip": {
+        "dates": "Reisplanner: nieuwe reisdata",
+        "parks": "Reisplanner: parken aangepast",
+        "pin": "Reisplanner: dag vastgezet",
+        "swap": "Reisplanner: dagen gewisseld",
+        "rest": "Reisplanner: rustdagen aangepast",
+        "tickets": "Reisplanner: tickets ingevuld",
+        "hotel": "Reisplanner: hotel ingevuld",
+        "pace": "Reisplanner: tempo aangepast"
+      },
+      "day": "Dagplanner: {park}, {date}",
+      "undo": "Ongedaan maken",
+      "show": "Bekijken",
+      "undone": "Teruggezet",
+      "stale": "Sindsdien gewijzigd, blijft zo",
+      "gone": "Niet meer ongedaan te maken"
+    },
+    "interview": {
+      "titleTrip": "Reisinterview",
+      "titleDay": "Parkdaginterview",
+      "step": "Stap {n} van {total}: {name}",
+      "planStands": "Je plan staat. Verfijn het als je wilt",
+      "end": "Stoppen",
+      "done": "Klaar",
+      "steps": {
+        "region": "Regio",
+        "dates": "Reisdata",
+        "parks": "Parken",
+        "day": "Park en dag",
+        "mustdo": "Attracties die je wilt"
+      },
+      "kickoffTrip": "Plan mijn reis met me, vraag voor vraag.",
+      "kickoffDay": "Plan mijn parkdag met me, vraag voor vraag."
+    },
+    "muteLines": "Tekstballonnen verbergen",
+    "subtitle": "Je parkmaatje",
+    "subtitleNext": "Hierna: {park}, {date}",
+    "yoursToday": "Vandaag {park}. Waar beginnen we?",
+    "yoursTomorrow": "Morgen {park}. Ik heb er nu al zin in.",
+    "yoursSoon": "Nog {days} dagen, dan {park}. Ik tel mee.",
+    "yoursTrip": "{count} parkdagen vanaf {date}. Ik ga mee.",
+    "yoursAfter": "Hoe was je parkdag gisteren? Vertel eens.",
+    "yoursRidden": "{count} attracties afgevinkt. Netjes.",
+    "yoursAlert": "De bel voor {ride} staat aan. Ik laat het je weten.",
+    "yoursBack": "Vorige keer ging het over {park}. Gaan we daar verder?",
+    "greetingToday": "Vandaag {park} 🎢 Je planning heb ik bij me. Waar beginnen we?",
+    "greetingSoon": "Hé, {when} is het parkdag: {park} 🎡 Je planning heb ik bij de hand. Zullen we kijken hoe druk het wordt?",
+    "greetingTrip": "Hé, {count} parkdagen vanaf {date} 🎢 Daar ga ik graag mee. Wat ontbreekt er nog?",
+    "greetingAfter": "En, hoe was je parkdag gisteren? 🎢 Welke attractie won het?",
+    "greetingBack": "Daar ben je weer 🎡 Vorige keer ging het over {park}. Gaan we daar verder of ergens anders heen?",
+    "whenTomorrow": "morgen",
+    "whenWeekday": "{weekday}",
+    "whenDate": "{date}",
+    "suggestMyDay": "Hoe druk wordt mijn parkdag?",
+    "suggestMyNext": "Wat staat er hierna op mijn planning?",
+    "suggestMyWeather": "Wat voor weer wordt het op mijn parkdag?",
+    "suggestMyMissing": "Welke grote attracties heb ik nog niet gedaan?",
+    "suggestMyTrip": "Wat ontbreekt er nog aan mijn reis?",
+    "suggestMyBack": "Verder met {park}"
   },
   "parkyPage": {
-    "metaTitle": "Parky, de chatassistent van park.fan",
-    "metaDescription": "Vraag Parky naar wachttijden, voorspellingen en de rustigste bezoekdag. Hij zoekt het op in de live data van park.fan en zet attracties meteen in je dagplanning.",
-    "title": "Parky, je maatje voor een dag in het park",
-    "lead": "Vraag hem naar wachttijden, voorspellingen en de rustigste dag. Parky zoekt het op in de live data van park.fan en plant je dag mee.",
-    "intro": "Parky woont rechtsonder op park.fan, in de ronde tekstballon met een reuzenrad op zijn hoofd. Tik hem aan en schrijf hem zoals je een vriend schrijft die alles van pretparken weet.",
-    "ask": "Vraag het Parky nu",
+    "metaTitle": "Parky: wachttijden en dagplanning in een AI-chat",
+    "metaDescription": "Parky kent de wachttijden van nu en de rustigste dagen, en je parkdag plant hij samen met jou. De AI-chat van park.fan, gratis en zonder account.",
+    "title": "Parky gaat mee naar het park",
+    "lead": "Hij kent de wachttijden van nu en de rustigste dagen, en je parkdag plant hij samen met jou.",
+    "intro": "Parky woont rechtsonder op park.fan, in de ronde tekstballon met een reuzenrad op zijn hoofd. Tik hem aan en schrijf hem zoals je een vriend schrijft die alles van pretparken weet. Wat je in de dagplanner hebt gezet, kent hij dan al.",
+    "ask": "Chat met Parky",
     "off": "Parky houdt even pauze. Kom later nog eens terug.",
     "examplesLabel": "Bijvoorbeeld",
     "chapters": {
@@ -5361,7 +5432,7 @@
         ]
       },
       "plan": {
-        "kicker": "Helpt een handje",
+        "kicker": "Samen plannen",
         "title": "Parky plant je dag mee",
         "body": "Vertel Parky wanneer je naar welk park wilt en wat je belangrijk vindt. Hij zet de attracties in je dagplanning en zegt waar je het best begint. Daarna verschuif en deel je de planning zoals altijd.",
         "alt": "Parky heeft Silver Star, Blue Fire, Voltron Nevera en Wodan in de dagplanning voor Europa-Park gezet.",
@@ -5384,7 +5455,7 @@
       "data": {
         "kicker": "Je gegevens",
         "title": "Wat er met je vragen gebeurt",
-        "body": "Parky antwoordt met het taalmodel Claude van Anthropic. Je vragen bewaren we zonder IP-adres en we verwijderen ze na 7 dagen. Je locatie ziet Parky alleen als je die in de chat deelt.",
+        "body": "Parky antwoordt met het taalmodel Claude van Anthropic. Je dag- en reisplanning, herinneringen, favorieten en gereden attracties stuurt je browser met elke vraag mee; verder blijven ze bij jou. Je vragen bewaren we zonder IP-adres en we wissen ze na 7 dagen. Je locatie ziet Parky alleen als je die in de chat deelt.",
         "link": "De rest staat in de privacyverklaring."
       }
     },
@@ -5423,7 +5494,11 @@
         },
         {
           "question": "Waar haalt Parky zijn antwoorden vandaan?",
-          "answer": "Uit de live data van park.fan: wachttijden, openingstijden, voorspellingen, weer en onze artikelen. Voor elke vraag zoekt hij het opnieuw op in plaats van iets te onthouden."
+          "answer": "Uit de live data van park.fan: wachttijden, openingstijden, voorspellingen, weer en onze artikelen. Voor elke vraag zoekt hij het opnieuw op, in plaats van op oude cijfers te vertrouwen."
+        },
+        {
+          "question": "Onthoudt Parky wat ik hem vertel?",
+          "answer": "Binnen een chat wel, tot je het tabblad sluit. Je dag- en reisplanning, favorieten en gereden attracties kent hij, omdat ze in je browser staan en met elke vraag meegaan. Je browser onthoudt ook over welk park je laatste chat ging, zodat Parky daar bij je volgende bezoek verder kan. Eerdere chats kent hij niet, en op onze server wissen we ze na 7 dagen."
         },
         {
           "question": "Kan Parky zich vergissen?",
@@ -5439,13 +5514,13 @@
         },
         {
           "question": "Kan ik Parky stiller zetten?",
-          "answer": "Ja. Tik in een van zijn tekstballonnen op het ✕, dan zwijgt hij tot het einde van je bezoek. Staat „beweging beperken” aan in je systeem, dan blijven zijn animaties uit."
+          "answer": "Ja. Tik in een van zijn tekstballonnen op het ✕, dan zwijgt hij tot het einde van je bezoek. Staat “beweging beperken” aan in je systeem, dan blijven zijn animaties uit."
         }
       ]
     },
     "next": {
       "title": "En nu?",
-      "ask": "Vraag het Parky",
+      "ask": "Chat met Parky",
       "askDescription": "Rechtsonder, gewoon op deze pagina.",
       "planner": "Naar de dagplanner",
       "plannerDescription": "Plan je parkdag zelf, attractie voor attractie.",

@@ -933,15 +933,15 @@ export function ContentFR() {
       <SectionShell
         id="parky"
         index="10"
-        kicker="L’assistant"
+        kicker="Chat IA"
         title="Demandez à Parky"
         icon={MessageCircle}
       >
         <ParkyShot locale="fr">
           <P>
-            Parky est l’assistant de chat de park.fan et habite le bouton rond en bas à droite. Sur
-            la page d’accueil, sur un grand écran, il se tient juste sous le titre et ne saute dans
-            son coin qu’une fois que vous faites défiler la page.
+            Parky est le pote IA de park.fan et habite le bouton rond en bas à droite. Sur la page
+            d’accueil, sur un grand écran, il se tient juste sous le titre et ne saute dans son coin
+            qu’une fois que vous faites défiler la page.
           </P>
           <P>
             Demandez-lui combien de temps on attend en ce moment, ce qui est prévu pour aujourd’hui

@@ -42,7 +42,10 @@ plus `#planner`, and in the When mode `when=<from>_<to>&days=<n>[&within=<region
 `useSearchParams` sees it and the page does not remount; a query the planner did not write (Parky's
 `router.push`, the back button) re-plans the same way and, with `#planner`, scrolls to the chapter
 and moves the focus into it. "Copy link" copies the address. Every other page that links into the
-planner builds the href with `plannerHrefOn`, the one serializer.
+planner builds the href with `plannerHrefOn`, the one serializer. The mounted planner also publishes its state to
+Parky (`lib/trip-regions/planner-bridge.ts`), whose changes go through the same `update`, and keeps
+the last trip per region in this browser (`lib/trip-regions/remembered-trip.ts`); see
+[Parky → the trip planner](assistant.md#the-trip-planner).
 
 - **Defaults stay out of the URL:** `fireworks=any`, `split=auto`, `rest=auto`, `hop=0`,
   `arrival`/`departure=free`, and `blocks` until the visitor sets it (absent, the API keeps resorts

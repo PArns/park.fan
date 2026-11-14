@@ -926,13 +926,13 @@ export function ContentNL() {
       <SectionShell
         id="parky"
         index="10"
-        kicker="De assistent"
+        kicker="AI-chat"
         title="Vraag het Parky"
         icon={MessageCircle}
       >
         <ParkyShot locale="nl">
           <P>
-            Parky is de chatassistent van park.fan en woont in de ronde knop rechtsonder. Op de
+            Parky is het AI-maatje van park.fan en woont in de ronde knop rechtsonder. Op de
             startpagina staat hij op een breed scherm vlak onder de kop en springt hij pas naar zijn
             hoek als je scrolt.
           </P>

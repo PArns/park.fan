@@ -348,6 +348,11 @@ by hand: change the comment in the code and re-run the script. -->
 - Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
+### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
+
+- `connectPlannerBridge` _function_: Publish the planner's state and how to set it; returns the disconnect. Called on every change of the state, which also remembers the trip once it holds dates or a search.
+- `tripPlannerBridge` _const_: The planner on screen, and how Parky changes it.
+
 ### [`planner-ui.ts`](../../lib/trip-regions/planner-ui.ts)
 
 "Start the planner", as a signal from outside the planner: the hub's hero action asks, the mounted `TripRegionPlanner` answers.
@@ -403,6 +408,18 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_REGION_CACHE_CONTROL` _const_: The region the open route is cached a day for, the API's own window, and an hour for the keyed ones, which the API keeps an hour in Redis. Repeated in `next.config.ts`, where the two must agree.
 - `TRIP_REGION_DATA_CACHE_CONTROL` _const_: The keyed routes' window at the edge and in the browser: the API's hour.
 - Types: `TripRegionRelayTarget`
+
+### [`remembered-trip.ts`](../../lib/trip-regions/remembered-trip.ts)
+
+- `holdsTrip` _function_: Whether a query holds a trip worth keeping: dates, or a search for them.
+- `cleanParty` _function_: A party as kept: a sensible count and heights, nothing else.
+- `rememberedTrip` _function_: The remembered trip of one region, or null.
+- `rememberTrip` _function_: Keep the planner's query for a region, once it holds dates or a search; an untouched planner (a bare hub visit) never erases what was kept. The party stays.
+- `rememberParty` _function_: Keep the party Parky's interview asked about with the region's trip.
+- `forgetTrip` _function_: Drop a region's remembered trip: Parky's undo of the trip he started.
+- `rememberedTrips` _function_: Every region's remembered trip, newest first.
+- `REMEMBERED_QUERY_MAX` _const_: The API takes this much of a query; a 21-day trip with pins and tickets fits.
+- Types: `TripParty`, `RememberedTrip`
 
 ### [`routes.ts`](../../lib/trip-regions/routes.ts)
 

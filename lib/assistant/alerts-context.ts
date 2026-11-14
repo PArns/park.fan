@@ -1,7 +1,7 @@
 import { formatInTimeZone } from 'date-fns-tz';
 import type { RideAlertLocal, ShowFollowLocal } from '@/lib/push/push-follows-store';
 import type { PushWriteError, PushWriteResult } from '@/lib/push/push-follows';
-import type { AssistantAction, AssistantActionChip } from './actions';
+import type { AssistantAction, AssistantActionChip, AssistantReceipt } from './actions';
 
 /**
  * The reminders as Parky reads them with each question, from the bells' local mirror, and what a
@@ -105,9 +105,16 @@ export interface AssistantActionFailure {
   failed: PushWriteError;
 }
 
-/** What carrying out an action leaves under the answer: a chip, a reminder's card or a failure. */
+/**
+ * What carrying out an action leaves under the answer: a chip, a reminder's card, a failure, or
+ * the receipt of a change to a planner with its undo.
+ */
 export type AssistantActionOutcome =
-  AssistantActionChip | AssistantAlertPrompt | AssistantActionFailure | null;
+  | AssistantActionChip
+  | AssistantAlertPrompt
+  | AssistantActionFailure
+  | { receipt: AssistantReceipt }
+  | null;
 
 /**
  * The reminder an action asks for, in the ids the push endpoints take; null for a performance that

@@ -928,15 +928,15 @@ export function ContentES() {
       <SectionShell
         id="parky"
         index="10"
-        kicker="El asistente"
+        kicker="Chat con IA"
         title="Pregúntale a Parky"
         icon={MessageCircle}
       >
         <ParkyShot locale="es">
           <P>
-            Parky es el asistente de chat de park.fan y vive en el botón redondo de abajo a la
-            derecha. En la página de inicio, en una pantalla ancha, aparece justo debajo del titular
-            y no salta a su esquina hasta que haces scroll.
+            Parky es el colega con IA de park.fan y vive en el botón redondo de abajo a la derecha.
+            En la página de inicio, en una pantalla ancha, aparece justo debajo del titular y no
+            salta a su esquina hasta que haces scroll.
           </P>
           <P>
             Pregúntale cuánto duran ahora las colas, qué se prevé para hoy o para las próximas
