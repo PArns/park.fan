@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { Route } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -9,14 +10,16 @@ import { getTripRegionTickets } from '@/lib/trip-regions/api';
 import { catchNonFatal } from '@/lib/api/client';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import type { TripRegion } from '@/lib/trip-regions/types';
+import { HubPlannerOnly, HubStateSwitch } from './hub-trip-state';
 
 /** How long the chapter waits for the ticket catalog before it uses the region's copy. */
 const CATALOG_TIMEOUT_MS = 1500;
 
 /**
- * The "Plan your trip" chapter around the trip planner (`TripRegionPlanner`). The heading belongs to
- * the page, so the planner draws none of its own; the anchor is the hero action's and Parky's
- * (`#planner`). The park photos are resolved here because the planner is a Client Component and
+ * Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
+ * page „So plant der Reiseplaner deine Reise“ with `landing` (the four steps) above the planner, with
+ * a plan „Deine Reise“ and the plan. The heading belongs to the page, so the planner draws none of
+ * its own; the anchor is the hero action's and Parky's (`#planner`). The park photos are resolved here because the planner is a Client Component and
  * may not import the media database. The ticket catalog comes from its own route, which the admin's
  * edits revalidate by tag, else from the region's `tickets`, without the notes only the server reads.
  */
@@ -25,15 +28,18 @@ export async function PlannerChapterSlot({
   region,
   locale,
   defaultMonth,
+  landing,
 }: {
   /** The chapter's number on the page. */
   index: string;
+  /** What the chapter shows before the planner on the landing page (`HubHowItWorks`). */
+  landing?: ReactNode;
   region: TripRegion;
   locale: string;
   /** `YYYY-MM` on a month page, so the date sheet opens on that month. */
   defaultMonth?: string;
 }) {
-  const t = await getTranslations('tripHub.planner');
+  const t = await getTranslations('tripHub.howItWorks');
   const catalog = await withSeedTimeout(
     catchNonFatal(getTripRegionTickets(region.slug)),
     CATALOG_TIMEOUT_MS
@@ -48,13 +54,20 @@ export async function PlannerChapterSlot({
       data-locale={locale}
       data-default-month={defaultMonth}
     >
-      <ChapterHeading index={index} icon={Route} title={t('title')} />
-      <TripRegionPlanner
-        region={tickets ? { ...region, tickets: leanTicketCatalog(tickets) } : region}
-        locale={locale}
-        defaultMonth={defaultMonth}
-        photos={tripPlannerPhotos(region)}
+      <ChapterHeading
+        index={index}
+        icon={Route}
+        title={<HubStateSwitch landing={t('title')} plan={t('planTitle')} />}
       />
+      {landing}
+      <HubPlannerOnly>
+        <TripRegionPlanner
+          region={tickets ? { ...region, tickets: leanTicketCatalog(tickets) } : region}
+          locale={locale}
+          defaultMonth={defaultMonth}
+          photos={tripPlannerPhotos(region)}
+        />
+      </HubPlannerOnly>
     </section>
   );
 }

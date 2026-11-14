@@ -590,7 +590,46 @@
     "question": "Which park on which day?",
     "nextTitle": "{region} trip planner",
     "regionGuide": "{region} travel guide",
-    "lastYearFrom": "From {date}: last year’s figures, each the same weekday as we measured it."
+    "lastYearFrom": "From {date}: last year’s figures, each the same weekday as we measured it.",
+    "howItWorks": {
+      "title": "How the trip planner plans your trip",
+      "planTitle": "Your trip",
+      "steps": {
+        "dates": {
+          "title": "Pick your dates",
+          "text": "Under each day is the park with the shortest peak wait. Once you pick the day you leave, the first plan is there."
+        },
+        "questions": {
+          "title": "A few questions, all optional",
+          "text": "Parks, hotel, pace, evenings, tickets. Answer them, or skip any of them."
+        },
+        "plan": {
+          "title": "Your plan, day by day",
+          "text": "Which park on which day, why that day, and roughly how long the lines get."
+        },
+        "edit": {
+          "title": "Change it, with Parky too",
+          "text": "Swap or pin days, add parks, or ask Parky in the chat. Then take it to the day planner or your calendar."
+        }
+      },
+      "parky": "Only your dates are required, and you can skip every question after them. Start with the dates.",
+      "chat": "Rather in the chat",
+      "calendarLead": "Where the plan gets its days from: each park’s peak wait on each day.",
+      "calendarFold": "Calendar for all {count} parks, day by day",
+      "hero": {
+        "note": "Only your dates are required; the first plan is there as soon as you pick them.",
+        "toPlan": "Go to your plan",
+        "newTrip": "Plan a new trip",
+        "remembered": "Your plan for {range} is saved in this browser."
+      }
+    },
+    "resorts": {
+      "title": "The resorts"
+    },
+    "finalCta": {
+      "title": "Your trip, planned day by day",
+      "text": "Pick your dates, then answer a few questions or skip them. You see the first plan as soon as the dates are set."
+    }
   },
   "theme": {
     "light": "Light",
@@ -4034,6 +4073,25 @@
         },
         "glance": {
           "zone": "Orlando time"
+        },
+        "resorts": {
+          "title": "The resorts around Orlando",
+          "walt-disney-world": {
+            "lead": "Four theme parks and two water parks. Disney hotel guests get into the parks early in the morning with Early Entry.",
+            "stay": "From a hotel in Lake Buena Vista every theme park is under half an hour away."
+          },
+          "universal-orlando": {
+            "lead": "Three theme parks and the Volcano Bay water park. Universal hotel guests get into the parks early with Early Park Admission.",
+            "stay": "The Premier hotels add Express at Universal Studios and Islands of Adventure."
+          },
+          "seaworld-orlando": {
+            "name": "SeaWorld Orlando",
+            "lead": "SeaWorld, the Aquatica water park and Discovery Cove, which opens by reservation only. Multi-park tickets include Busch Gardens and Adventure Island in Tampa."
+          },
+          "day-trips": {
+            "lead": "LEGOLAND Florida, Busch Gardens Tampa and the Adventure Island water park lie outside Orlando.",
+            "stay": "From Lake Buena Vista, LEGOLAND is just under an hour away, Busch Gardens about an hour and a half."
+          }
         }
       },
       "bestTime": {
@@ -4389,6 +4447,21 @@
         },
         "glance": {
           "zone": "California time"
+        },
+        "resorts": {
+          "title": "The resorts in Southern California",
+          "disneyland-resort": {
+            "lead": "Disneyland Park and Disney California Adventure stand side by side in Anaheim. On Oogie Boogie Bash nights California Adventure closes early to day guests.",
+            "stay": "From the Disney hotels and Harbor Boulevard you walk to both parks."
+          },
+          "universal-studios-hollywood": {
+            "lead": "Universal Studios Hollywood is in Universal City in Los Angeles, with its own ticket and its own calendar.",
+            "stay": "The nearby hotel areas are Universal City and Hollywood."
+          },
+          "day-trips": {
+            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain and three parks in and around San Diego: SeaWorld, LEGOLAND California and Sesame Place.",
+            "stay": "For SeaWorld, LEGOLAND and Sesame Place there are hotel areas in San Diego and Carlsbad."
+          }
         }
       },
       "bestTime": {
@@ -4666,6 +4739,25 @@
         "dataset": {
           "name": "Japan theme park crowd calendar, {period}",
           "description": "Per park and day at Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan: the expected peak wait, the crowd level against the park's normal day, and the opening hours, {period}."
+        },
+        "resorts": {
+          "title": "The resorts and parks in Japan",
+          "tokyo-disney-resort": {
+            "lead": "Tokyo Disneyland and Tokyo DisneySea stand side by side in Maihama. Disney hotel guests get into Tokyo Disneyland 15 minutes early with Happy Entry.",
+            "stay": "Maihama for both Disney parks: a walk to Tokyo Disneyland, the monorail to DisneySea."
+          },
+          "universal-studios-japan": {
+            "lead": "Universal Studios Japan is in Osaka, at the end of the line from Tokyo through Nagoya.",
+            "stay": "Universal City is at the gate, Umeda and Namba are in town; Kyoto is an hour away."
+          },
+          "fuji-q-highland": {
+            "lead": "Fuji-Q Highland is in Fujikawaguchiko. The coach from Shinjuku takes just under two hours.",
+            "stay": "Shinjuku for the buses from Tokyo, Kawaguchiko by the lake, or the Highland Resort at the park."
+          },
+          "legoland-japan": {
+            "lead": "LEGOLAND Japan is in Nagoya, on the way between Tokyo and Osaka.",
+            "stay": "Nagoya Station for the Shinkansen, or the LEGOLAND Japan Hotel at the gate."
+          }
         }
       },
       "bestTime": {
@@ -4975,6 +5067,17 @@
         "dataset": {
           "name": "Disneyland Paris & Parc Astérix crowd calendar, {period}",
           "description": "Per park and day at Disneyland Park, Disney Adventure World and Parc Astérix: the expected peak wait at the big rides, the crowd level against a normal day at that park, and the opening hours, {period}."
+        },
+        "resorts": {
+          "title": "The resorts around Paris",
+          "disneyland-paris": {
+            "lead": "Disneyland Park and Disney Adventure World stand side by side, their gates a few minutes’ walk apart. Disney hotel guests get into the parks early with Extra Magic Time.",
+            "stay": "The Disney Hotels by Lake Disney are a walk from the gates; the partner hotels in Val d’Europe and Val de France run a free shuttle."
+          },
+          "parc-asterix": {
+            "lead": "A theme park with its own hotels, about an hour by car from Disneyland Paris. Without a car, a shuttle runs from Charles de Gaulle airport to the park.",
+            "stay": "The park’s three hotels are a walk from the gate, and a stay includes park tickets and Early Entry to some rides."
+          }
         }
       },
       "bestTime": {

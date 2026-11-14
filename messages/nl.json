@@ -590,7 +590,46 @@
     "question": "Welk park op welke dag?",
     "nextTitle": "Reisplanner voor {region}",
     "regionGuide": "Reisgids {region}",
-    "lastYearFrom": "Vanaf {date}: cijfers van vorig jaar, telkens dezelfde weekdag zoals wij die gemeten hebben."
+    "lastYearFrom": "Vanaf {date}: cijfers van vorig jaar, telkens dezelfde weekdag zoals wij die gemeten hebben.",
+    "howItWorks": {
+      "title": "Zo plant de reisplanner je reis",
+      "planTitle": "Je reis",
+      "steps": {
+        "dates": {
+          "title": "Kies je reisdata",
+          "text": "Onder elke dag staat het park met de kortste piekwachttijd. Zodra je de dag van vertrek kiest, staat het eerste plan er."
+        },
+        "questions": {
+          "title": "Een paar vragen, allemaal vrijwillig",
+          "text": "Parken, hotel, tempo, avonden, tickets. Beantwoord ze, of sla een vraag over."
+        },
+        "plan": {
+          "title": "Je plan, dag voor dag",
+          "text": "Welk park op welke dag, waarom die dag en hoe lang de rijen ongeveer worden."
+        },
+        "edit": {
+          "title": "Aanpassen, ook met Parky",
+          "text": "Dagen ruilen of vastzetten, parken toevoegen of Parky in de chat vragen. Daarna naar de dagplanner of je agenda."
+        }
+      },
+      "parky": "Alleen je reisdata zijn verplicht, elke vraag daarna kun je overslaan. Begin met de data.",
+      "chat": "Liever in de chat",
+      "calendarLead": "Waar het plan zijn dagen vandaan haalt: de piekwachttijd van elk park op elke dag.",
+      "calendarFold": "Kalender voor alle {count} parken, dag voor dag",
+      "hero": {
+        "note": "Alleen je reisdata zijn verplicht; het eerste plan staat er zodra je ze kiest.",
+        "toPlan": "Naar je plan",
+        "newTrip": "Nieuwe reis plannen",
+        "remembered": "Je plan voor {range} is in deze browser bewaard."
+      }
+    },
+    "resorts": {
+      "title": "De resorts"
+    },
+    "finalCta": {
+      "title": "Je reis, dag voor dag gepland",
+      "text": "Kies je reisdata en beantwoord een paar vragen of sla ze over. Het eerste plan zie je zodra de data vaststaan."
+    }
   },
   "theme": {
     "light": "Licht",
@@ -4034,6 +4073,25 @@
         },
         "glance": {
           "zone": "tijd in Orlando"
+        },
+        "resorts": {
+          "title": "De resorts rond Orlando",
+          "walt-disney-world": {
+            "lead": "Vier themaparken en twee waterparken. Gasten van de Disney-hotels komen met Early Entry ’s ochtends eerder de parken in.",
+            "stay": "Vanuit een hotel in Lake Buena Vista ligt elk themapark binnen een halfuur."
+          },
+          "universal-orlando": {
+            "lead": "Drie themaparken en waterpark Volcano Bay. Gasten van de Universal-hotels komen met Early Park Admission eerder de parken in.",
+            "stay": "De Premier-hotels geven daarbij Express voor Universal Studios en Islands of Adventure."
+          },
+          "seaworld-orlando": {
+            "name": "SeaWorld Orlando",
+            "lead": "SeaWorld, waterpark Aquatica en Discovery Cove, dat alleen met reservering opengaat. Tickets voor meerdere parken tellen ook Busch Gardens en Adventure Island in Tampa mee."
+          },
+          "day-trips": {
+            "lead": "LEGOLAND Florida, Busch Gardens Tampa en waterpark Adventure Island liggen buiten Orlando.",
+            "stay": "Vanuit Lake Buena Vista is LEGOLAND net onder een uur rijden, Busch Gardens ongeveer anderhalf uur."
+          }
         }
       },
       "bestTime": {
@@ -4389,6 +4447,21 @@
         },
         "glance": {
           "zone": "tijd in Californië"
+        },
+        "resorts": {
+          "title": "De resorts in Zuid-Californië",
+          "disneyland-resort": {
+            "lead": "Disneyland Park en Disney California Adventure liggen naast elkaar in Anaheim. Op avonden met Oogie Boogie Bash sluit California Adventure eerder voor daggasten.",
+            "stay": "Vanuit de Disney-hotels en Harbor Boulevard loop je naar beide parken."
+          },
+          "universal-studios-hollywood": {
+            "lead": "Universal Studios Hollywood ligt in Universal City in Los Angeles, met een eigen ticket en een eigen kalender.",
+            "stay": "Hotelgebieden in de buurt zijn Universal City en Hollywood."
+          },
+          "day-trips": {
+            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain en drie parken in en rond San Diego: SeaWorld, LEGOLAND California en Sesame Place.",
+            "stay": "Voor SeaWorld, LEGOLAND en Sesame Place zijn er hotelgebieden in San Diego en Carlsbad."
+          }
         }
       },
       "bestTime": {
@@ -4666,6 +4739,25 @@
         "dataset": {
           "name": "Drukte-kalender van de pretparken in Japan, {period}",
           "description": "Per park en dag in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan: de verwachte piekwachttijd, de drukte vergeleken met een gewone dag van het park en de openingstijden, {period}."
+        },
+        "resorts": {
+          "title": "De resorts en parken in Japan",
+          "tokyo-disney-resort": {
+            "lead": "Tokyo Disneyland en Tokyo DisneySea liggen naast elkaar in Maihama. Gasten van de Disney-hotels komen met Happy Entry 15 minuten eerder Tokyo Disneyland in.",
+            "stay": "Maihama voor beide Disney-parken: lopend naar Tokyo Disneyland, met de monorail naar DisneySea."
+          },
+          "universal-studios-japan": {
+            "lead": "Universal Studios Japan ligt in Osaka, aan het eind van de route vanaf Tokio via Nagoya.",
+            "stay": "Universal City ligt bij de ingang, Umeda en Namba in de stad; Kyoto ligt een uur verderop."
+          },
+          "fuji-q-highland": {
+            "lead": "Fuji-Q Highland ligt in Fujikawaguchiko. De bus vanaf Shinjuku doet er net geen twee uur over.",
+            "stay": "Shinjuku voor de bussen vanuit Tokio, Kawaguchiko aan het meer of het Highland Resort bij het park."
+          },
+          "legoland-japan": {
+            "lead": "LEGOLAND Japan ligt in Nagoya, op de route tussen Tokio en Osaka.",
+            "stay": "Nagoya Station voor de Shinkansen, of het LEGOLAND Japan Hotel bij de ingang."
+          }
         }
       },
       "bestTime": {
@@ -4975,6 +5067,17 @@
         "dataset": {
           "name": "Drukte-kalender Disneyland Paris & Parc Astérix, {period}",
           "description": "Per park en per dag in Disneyland Park, Disney Adventure World en Parc Astérix: de verwachte piekwachttijd bij de grote attracties, de drukte vergeleken met een normale dag in dat park en de openingstijden, {period}."
+        },
+        "resorts": {
+          "title": "De resorts rond Parijs",
+          "disneyland-paris": {
+            "lead": "Disneyland Park en Disney Adventure World liggen naast elkaar, de ingangen een paar minuten lopen uit elkaar. Gasten van de Disney-hotels komen met Extra Magic Time eerder de parken in.",
+            "stay": "De Disney-hotels aan Lake Disney liggen op loopafstand van de ingangen; vanaf de partnerhotels in Val d’Europe en Val de France rijdt een gratis shuttle."
+          },
+          "parc-asterix": {
+            "lead": "Een themapark met eigen hotels, ongeveer een uur rijden van Disneyland Paris. Zonder auto rijdt er een shuttle van luchthaven Charles de Gaulle naar het park.",
+            "stay": "De drie hotels van het park liggen op loopafstand van de ingang, en een verblijf bevat parktickets en Early Entry voor een paar attracties."
+          }
         }
       },
       "bestTime": {

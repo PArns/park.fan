@@ -919,7 +919,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_hub_action: {
     label: 'Weg im Hub-Kopf',
-    when: '„Reise planen“ oder „Zum Kalender“ im Kopf eines Hubs oder einer Monatsseite; mit der Seite.',
+    when: '„Reise planen“ oder „Zum Kalender“ im Kopf eines Hubs oder einer Monatsseite, „Reise planen“ auch in Kapitel 01 und im Schlussband; mit der Seite.',
   },
   trip_hub_filter: {
     label: 'Hub-Kalender gefiltert',

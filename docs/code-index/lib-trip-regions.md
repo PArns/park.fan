@@ -125,6 +125,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `stormCodeIn` _function_: The storm code a span of days carries, for a week of the best-time strip or a month of its table: the peak where any day is in it, else the season where any day is, by the planner's own `stormCodeOn`, so every calendar marks the same days.
 - Types: `WeekdayWait`, `WeekdayFacts`, `UsualHours`, `BreakFacts`, `ParkMean`, `ParkClosures`
 
+### [`hub-media.ts`](../../lib/trip-regions/hub-media.ts)
+
+- `hubPhoto` _function_: One media image by id for the hub (a resort's photo, the region's Parky picture), or null when the catalog no longer has it. SERVER ONLY: the catalog is too large for a Client Component.
+- `hubShot` _function_: A planner screenshot in the page's language: `<base>-<locale>`, else the English shot, else the German one (the shots are taken in German first). Framed from the top unless the sidecar names a focus.
+- Types: `HubPhoto`
+
+### [`hub-trip.ts`](../../lib/trip-regions/hub-trip.ts)
+
+Whether a region's hub shows a plan: the hub has two states (docs/features/orlando-hub.md#two-states), the landing page without a plan and "Your trip" with one.
+
+- `hubTripOf` _function_: The trip a planner query holds: both dates, as days, in order; else none.
+- `restorableTrip` _function_: The remembered query the hub puts back into the address bar, or null.
+- Types: `HubTripDates`
+
 ### [`local-choice.ts`](../../lib/trip-regions/local-choice.ts)
 
 - `localChoice` _function_: A `LocalChoice` under `key`, holding one of `values`.
@@ -225,7 +239,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`plan-photos.ts`](../../lib/trip-regions/plan-photos.ts)
 
-- `tripPlannerPhotos` _function_: The region parks' photos for the planner's Week view, one per park that has a park background in the media database.
+- `tripPlannerPhotos` _function_: The region parks' photos for the planner's Week view, one per park that has a photo in the media database: its park background, else the first photo filed under the park (a ride, a land), so a park without a curated background still gets …
 
 ### [`plan-query.ts`](../../lib/trip-regions/plan-query.ts)
 
@@ -472,7 +486,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_REGIONS` _const_: Every trip region, live or coming, in the order the planner band and the admin list them.
 - `LIVE_TRIP_REGIONS` _const_: The regions whose pages answer and whose links show.
 - `PARK_NAME_SUFFIXES` _const_: Every park-name suffix of every region, for `shortParkName`, which is called without one.
-- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripBestTimePage`, `TripTicketStep`, `TripHubFaq`, `TripHub`, `TripHotelKind`, `TripRegionConfig`
+- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripBestTimePage`, `TripTicketStep`, `TripHubFaq`, `TripHubShots`, `TripHubResort`, `TripHub`, `TripHotelKind`, `TripRegionConfig`
 
 ### [`relay.ts`](../../lib/trip-regions/relay.ts)
 
