@@ -91,6 +91,7 @@ import {
   adoptSuggestions,
   draftTicket,
   entryMarket,
+  ticketHomeMarket,
   hopperGains,
   hopperResorts,
   isEveryDayTicket,
@@ -1144,11 +1145,19 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'the step’s tag reads “not us”: sold outside the US, or none',
     [
-      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG),
-      entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG),
-      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG),
+      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG, 'us'),
+      entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG, 'us'),
+      entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG, 'us'),
     ],
     ['intl', 'intl', null]
+  );
+  test(
+    'the home market is the region’s, else the registry’s',
+    [
+      ticketHomeMarket({ ticketMarkets: { home: 'jp', codes: ['jp', 'intl'] } }, STEP),
+      ticketHomeMarket({}, STEP),
+    ],
+    ['jp', 'us']
   );
   test(
     'the lists keep only what the catalog has',

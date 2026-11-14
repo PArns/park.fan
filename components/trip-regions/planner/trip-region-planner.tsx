@@ -40,7 +40,12 @@ export interface TripRegionPlannerProps {
 
 const NO_PHOTOS: Readonly<Record<string, PlanParkPhoto>> = {};
 /** The ticket step of a region without one: no resorts, so the step is not drawn. */
-const NO_TICKET_STEP: TripTicketStep = { resorts: [], entries: [], hopperNames: {} };
+const NO_TICKET_STEP: TripTicketStep = {
+  resorts: [],
+  entries: [],
+  hopperNames: {},
+  homeMarket: '',
+};
 const noUpdate = () => undefined;
 
 /**
