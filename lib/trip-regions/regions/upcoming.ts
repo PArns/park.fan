@@ -39,25 +39,6 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   hotels: [{ key: 'offsite' }],
 };
 
-/** Japan: Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan, Universal Studios Japan. */
-export const JAPAN: TripRegionConfig = {
-  slug: 'japan',
-  live: false,
-  segments: { en: 'japan', de: 'japan', nl: 'japan', fr: 'japon', es: 'japon', it: 'giappone' },
-  timezone: 'Asia/Tokyo',
-  // Tokyo Disney Resort. The region spans several cities, and its trips several bases.
-  centre: { latitude: 35.63, longitude: 139.88 },
-  scene: () =>
-    import('../../../components/assistant/parky/japan-scene').then((m) => ({
-      default: m.ParkyJapanScene,
-    })),
-  hub: { heroPhotos: [], faq: {} },
-  bestTime: [],
-  parkNameSuffixes: [],
-  resortWords: {},
-  hotels: [{ key: 'offsite' }],
-};
-
 /** Paris: Disneyland Park, Disney Adventure World, Parc Astérix. */
 export const PARIS: TripRegionConfig = {
   slug: 'paris',
