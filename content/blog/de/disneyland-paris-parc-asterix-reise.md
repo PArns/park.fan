@@ -3,13 +3,14 @@ title: 'Disneyland Paris und Parc Astérix: wo du übernachtest'
 translationKey: paris-disneyland-asterix-reise
 date: '2026-11-14'
 author: patrick
-mode: published
+mode: draft
 featured: false
 excerpt: >-
   Zwischen den Hotels von Disneyland Paris und denen des Parc Astérix liegt etwa eine Stunde
   Autofahrt, ohne Auto geht es über den Flughafen Charles de Gaulle. Extra Magic Time bekommst du in
-  Disneys sieben eigenen Hotels, in keinem Partnerhotel. 2027 hat im Februar und im April jeweils
-  einen Monat lang irgendein Teil Frankreichs Ferien.
+  Disneys sieben eigenen Hotels, in keinem Partnerhotel. Den Andrang in Paris bestimmen die
+  französischen Schulferien, und 2027 hat im Februar und im April jeweils einen Monat lang
+  irgendein Teil Frankreichs frei.
 tags:
   - disneyland-paris
   - parc-asterix
@@ -45,21 +46,21 @@ seo:
 
 Für eine Parkreise nach Paris zählen drei Parks in zwei Resorts. Disneyland Paris in Marne-la-Vallée, östlich der Stadt, hat zwei Parks Tor an Tor: den [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park) und [Disney Adventure World](ref:disney-adventure-world), wie der frühere Walt Disney Studios Park seit dem 29. März 2026 heißt. Der [Parc Astérix](ref:/parks/europe/france/plailly/parc-asterix) liegt nördlich von Paris in Plailly, schon im Département Oise, mit eigener Ausfahrt an der A1. Beide Betreiber haben ihre eigenen Hotels, und von Hotel zu Hotel fährst du etwa eine Stunde.
 
-Eine Reise mit allen drei Parks stellt dich deshalb vor eine Wahl. Entweder ziehst du einmal um, oder du sitzt an einem Tag zwei Stunden im Auto. Für einen Tagesausflug finde ich den Parc Astérix zu groß. Im Sommer hat er bis 22 Uhr geöffnet, und wer abends um zehn noch auf Toutatis sitzt, will danach nicht eine Stunde über die A104 nach Marne-la-Vallée fahren. Wo in den drei Parks am längsten angestanden wird, erklären unsere Guides zum [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps) und zum [Parc Astérix](/blog/parc-asterix-wartezeiten-tipps).
+Mit allen drei Parks ziehst du deshalb entweder einmal um, oder du sitzt an einem Tag zwei Stunden im Auto. Für einen Tagesausflug finde ich den Parc Astérix zu groß. Im Sommer hat er bis 22 Uhr geöffnet, und wer abends um zehn noch auf Toutatis sitzt, will danach nicht eine Stunde über die A104 nach Marne-la-Vallée fahren.
 
 Im [Andrang-Kalender für Disneyland Paris und den Parc Astérix](/paris) stehen alle drei Parks Tag für Tag, mit Öffnungszeiten, den Schließtagen des Parc Astérix und der Spitzenwartezeit. So nennen wir den Mittelwert der großen Bahnen eines Parks, jede zu ihrer vollsten Tageszeit gemessen oder vorhergesagt.
 
 ## Wie du die Tage verteilst
 
-Für den Disneyland Park plane ich einen ganzen Tag. Disney Adventure World mit ihren vierzehn Attraktionen schaffst du an einem halben, obwohl du dort nach unseren Messungen in jedem Monat länger anstehst als nebenan. Der kleinere Park verteilt seine Gäste auf weniger als halb so viele Attraktionen. Mit dem Ticket „2 Parks“ fängst du deshalb morgens in Adventure World an und wechselst mittags hinüber. Peter Pan's Flight hebst du dir für den Abend auf, weil die Warteschlange dort erst in der letzten Stunde vor Parkschluss deutlich kürzer wird. Zwei Disney-Tage sind also entweder ein Tag pro Park oder zwei Tage, an denen du jeweils beide besuchst.
+Für den Disneyland Park plane ich einen ganzen Tag. Disney Adventure World mit ihren vierzehn Attraktionen schaffst du an einem halben, obwohl du dort nach unseren Messungen in jedem Monat länger anstehst als nebenan. Der kleinere Park verteilt seine Gäste auf weniger als halb so viele Attraktionen. Mit dem Ticket „2 Parks“ fängst du deshalb morgens in Adventure World an und wechselst mittags hinüber. Peter Pan's Flight hebst du dir für den Abend auf, weil die Warteschlange dort erst in der letzten Stunde vor Parkschluss deutlich kürzer wird. Mit einem Ticket für zwei Tage entscheidest du das erst morgens, denn es gilt an beiden Tagen in beiden Parks.
 
 ![Ein weißer Wasserturm mit Mickyohren und dem Logo von Disney Adventure World über Palmen und einer Studiohalle, in der Dämmerung. | Der Earffel Tower stand schon 2002 im Walt Disney Studios Park. Das Logo darauf hat Disney im März 2026 getauscht.](/media/disney-adventure-world/earffel-tower.jpg)
 
-Der Parc Astérix bekommt einen ganzen Tag, und zwar einen, an dem er für alle bis zum Abend offen hat. Den Umzug legst du auf den Abend nach dem letzten Disney-Tag oder auf den Morgen des Astérix-Tags. Dann sitzt du nur einmal im Auto, und mit Koffern sind für den Weg von Hotel zu Hotel 60 Minuten realistisch.
+Der Parc Astérix bekommt einen ganzen Tag, und im Oktober keinen der sechs, an denen er für Tagesgäste wegen Peur sur le Parc schon um 18 Uhr schließt. Den Umzug legst du auf den Abend nach dem letzten Disney-Tag oder auf den Morgen des Astérix-Tags. Dann sitzt du mit den Koffern nur einmal im Auto.
 
-Mit dem Auto aus Belgien oder den Niederlanden geht es noch einfacher. Auf dem Weg nach Marne-la-Vallée fährst du auf der A1 am Parc Astérix vorbei, bevor du auf die A104 abbiegst. Der Astérix-Tag passt dann auf die Hinfahrt oder auf die Rückfahrt, und der Umzug kostet dich keinen Umweg.
+Wer aus Belgien oder den Niederlanden mit dem Auto kommt, fährt auf der A1 ohnehin am Parc Astérix vorbei, bevor er auf die A104 nach Marne-la-Vallée abbiegt. Der Astérix-Tag passt dann auf die Hinfahrt oder auf die Rückfahrt, und der Umzug kostet dich keinen Umweg.
 
-Der [Reiseplaner](/paris#planner) schlägt dir vor, welcher Park auf welchen Tag fällt. Du gibst deine Reisedaten und deine Parks an, und jeder Park landet auf dem Tag deiner Reise mit der kürzesten Spitzenwartezeit. Ohne weitere Angabe schläfst du im Plan im Disney-Resort, und der Parc Astérix wird von dort ein Tagesausflug mit dem Auto. Wenn du wie ich lieber am Parc Astérix übernachtest, trägst du die Nacht dort selbst ein, ebenso Nächte in Paris. Der Hotelwechsel ist dann ein eigener Schritt, am Morgen vor einem Parktag im neuen Resort oder am Abend nach einem Parktag im alten, und nur wenn beides nicht passt, an einem Reisetag ohne Park.
+Der [Reiseplaner](/paris#planner) schlägt dir vor, welcher Park auf welchen Tag fällt. Du gibst deine Reisedaten und deine Parks an, und jeder Park landet auf dem Tag deiner Reise mit der kürzesten Spitzenwartezeit. Sind für einen Tag 30 Grad oder mehr vorhergesagt, gilt er dabei als schlechterer Tag, mit jedem Grad darüber ein Stück mehr. Ohne weitere Angabe schläfst du im Plan in einem Disney-Hotel, die Extra Magic Time eingerechnet, und der Parc Astérix wird von dort ein Tagesausflug mit dem Auto. Wenn du wie ich lieber am Parc Astérix übernachtest, trägst du die Nacht dort selbst ein, ebenso Nächte in Paris. Passt der Umzug weder auf den Abend nach dem letzten Parktag im alten Resort noch auf den Morgen des ersten im neuen, legt ihn der Plan auf einen Reisetag ohne Park.
 
 ## Wo du übernachtest
 
@@ -67,13 +68,13 @@ Der [Reiseplaner](/paris#planner) schlägt dir vor, welcher Park auf welchen Tag
 
 Disney betreibt sieben eigene Hotels. Vier davon liegen zu Fuß an den Parks: das Disneyland Hotel direkt über dem Eingang des Disneyland Park und am Lake Disney das Disney Hotel New York – The Art of Marvel, der Newport Bay Club und die Sequoia Lodge. Disney gibt für sie fünf bis 15 Minuten zu Fuß an. Das Disneyland Hotel hat 2024 nach einer Komplettrenovierung wieder aufgemacht, das Hotel New York heißt seit 2021 „The Art of Marvel“.
 
-Die Hotels Cheyenne und Santa Fe liegen weiter draußen, nach Disneys Angaben 20 Minuten zu Fuß von den Parks, und der kostenlose Shuttle der Disney-Hotels fährt sie an. Das Santa Fe ist mit 1.000 Zimmern nach dem Film _Cars_ gestaltet. Das Davy Crockett Ranch ist ein Feriendorf aus Holzhütten in 57 Hektar Wald. Von dort fährst du etwa eine Viertelstunde mit dem Auto, einen Shuttle gibt es nicht, und ohne Auto ist es deshalb die falsche Wahl. Gäste aller Disney-Hotels parken am Hotel kostenlos.
+Die Hotels Cheyenne und Santa Fe liegen weiter draußen, 20 Minuten zu Fuß von den Parks, und der kostenlose Shuttle der Disney-Hotels fährt sie an. Das Santa Fe ist mit 1.000 Zimmern nach dem Film _Cars_ gestaltet. Das Davy Crockett Ranch ist ein Feriendorf aus Holzhütten in 57 Hektar Wald. Von dort fährst du etwa eine Viertelstunde mit dem Auto, einen Shuttle gibt es nicht, und ohne Auto ist es deshalb die falsche Wahl. Gäste aller Disney-Hotels parken am Hotel kostenlos.
 
 ### In den Partnerhotels
 
 Partnerhotels sind Häuser, die Disney auf seiner Website mitverkauft, die Disney aber nicht gehören. Ihre Gäste bekommen keine Extra Magic Time. Sie stehen vor allem in zwei Orten:
 
-- **Val d'Europe** liegt eine Station der RER A vor Marne-la-Vallée–Chessy. Mit dem Warten auf den Zug sind es von dort etwa 15 Minuten bis zu den Parks. Im Gewerbegebiet von Val d'Europe hat im Oktober 2025 das Ki Space Hotel mit 274 Zimmern eröffnet, nach Disneys Angaben zehn Minuten mit dem kostenlosen Shuttle von Disneyland Paris.
+- **Val d'Europe** liegt eine Station der RER A vor Marne-la-Vallée–Chessy. Mit dem Warten auf den Zug sind es von dort etwa 15 Minuten bis zu den Parks. Im Gewerbegebiet von Val d'Europe hat im Oktober 2025 das Ki Space Hotel mit 274 Zimmern eröffnet, zehn Minuten mit dem kostenlosen Shuttle von Disneyland Paris.
 - **Val de France** in Magny-le-Hongre hat mehrere Hotels, unter ihnen das Explorers. Sie teilen sich einen kostenlosen Shuttle, der nach Angaben des Explorers etwa zehn Minuten bis zu den Parks braucht.
 
 ### In den Hotels des Parc Astérix
@@ -84,43 +85,43 @@ Für zwei Tage im Parc Astérix übernachtest du dort. Auch für einen einzigen 
 
 ### In Paris
 
-Wenn du auch Paris sehen willst, schläfst du in der Stadt, am praktischsten rund um Châtelet–Les Halles. Dort halten die RER A zu Disneyland Paris und die RER B zum Flughafen Charles de Gaulle, wo der Shuttle zum Parc Astérix abfährt. Für die RER A bis Marne-la-Vallée–Chessy nennt Disney 40 Minuten Fahrt. Mit dem Weg zum Bahnsteig und dem Warten auf den Zug rechne ich mit 50, und vom Bahnhof bis zu den Eingängen sind es nach Disneys Angaben zwei Minuten zu Fuß. Aus fünf Abfahrtsorten in der Innenstadt fährt außerdem der Disneyland Paris Express, ein Reisebus mit eigenem Ticket, morgens hin und abends zurück.
+Wenn du auch Paris sehen willst, schläfst du in der Stadt, am praktischsten rund um Châtelet–Les Halles. Dort halten die RER A zu Disneyland Paris und die RER B zum Flughafen Charles de Gaulle, wo der Shuttle zum Parc Astérix abfährt. Für die RER A bis Marne-la-Vallée–Chessy nennt Disney 40 Minuten Fahrt. Mit dem Weg zum Bahnsteig und dem Warten auf den Zug rechne ich mit 50, und vom Bahnhof bis zu den Eingängen sind es zwei Minuten zu Fuß. Aus fünf Abfahrtsorten in der Innenstadt fährt außerdem der Disneyland Paris Express, ein Reisebus mit eigenem Ticket, morgens hin und abends zurück.
 
-Zum Parc Astérix bist du mit RER B und Shuttle zusammen etwa eineinviertel Stunden unterwegs. Einen Bus direkt aus der Stadt gibt es auch: Paris City Vision fährt morgens beim Eiffelturm ab. Mit dem Auto sind es nach Angaben des Parks von der Porte de la Chapelle 35 Kilometer, ohne Stau etwa eine halbe Stunde, zur Rushhour deutlich mehr.
+Zum Parc Astérix bist du mit RER B und Shuttle zusammen etwa eineinviertel Stunden unterwegs. Einen Bus direkt aus der Stadt gibt es auch: Paris City Vision fährt morgens beim Eiffelturm ab. Mit dem Auto sind es von der Porte de la Chapelle 35 Kilometer, ohne Stau etwa eine halbe Stunde, zur Rushhour deutlich mehr.
 
 ## Extra Magic Time und Early Entry
 
 Extra Magic Time ist Disneys früher Einlass, nach Disneys Angaben meist eine Stunde vor der offiziellen Öffnung. Sie gilt für die Gäste aller sieben Disney-Hotels, das Davy Crockett Ranch eingeschlossen. Seit September 2026 setzt Disney sie an jedem Tag in beiden Parks an, von 8 bis 9 Uhr oder von 8:30 bis 9:30 Uhr, behält sich aber vor, Uhrzeit, Dauer und Park zu ändern.
 
-Extra Magic Time bekommen außerdem Gäste von Les Villages Nature Paris, die Unterkunft und Parkticket im Paket gebucht haben, und Inhaber des Disneyland Pass Gold. Mit einem Ticket allein kommst du nicht früher hinein, die Tagesgäste warten bis zur offiziellen Öffnung. Peter Pan's Flight hat deshalb schon zur offiziellen Öffnung eine lange Warteschlange. Im Reiseplaner zählt die Extra Magic Time mit, sobald du in einem Disney-Hotel übernachtest.
+Extra Magic Time bekommen außerdem Gäste von Les Villages Nature Paris, die Unterkunft und Parkticket im Paket gebucht haben, und Inhaber des Disneyland Pass Gold. Mit einem Ticket allein wartest du bis zur offiziellen Öffnung, und dann hat Peter Pan's Flight schon eine lange Warteschlange.
 
-Beim Parc Astérix heißt der frühe Einlass Early Entry. Gäste der Parkhotels kommen 30 Minuten vor der offiziellen Öffnung an einige Attraktionen, nach Angaben des Parks an Toutatis, OzIris, Cétautomatix, La Tour de Numérobis, Attention Menhir ! und Chez Gyrofolix. Das hängt vom Wetter ab. An den Tagen mit Nocturnes von Peur sur le Parc, an Sondertagen und bei den Weihnachtsfeiern für Firmen, den „arbres de Noël“, fällt der frühe Einlass aus.
+Mit Early Entry kommen Gäste der Parkhotels 30 Minuten vor der offiziellen Öffnung an Toutatis, OzIris, Cétautomatix, La Tour de Numérobis, Attention Menhir ! und Chez Gyrofolix. Das hängt vom Wetter ab. An den Tagen mit Nocturnes von Peur sur le Parc, an Sondertagen und bei den Weihnachtsfeiern für Firmen, den „arbres de Noël“, fällt der frühe Einlass aus.
 
 ## Premier Access und Filotomatix
 
-Bei Disney heißt der Weg an der Warteschlange vorbei Disney Premier Access, und es gibt ihn in zwei Varianten. Premier Access One gilt für eine Fahrt auf einer Bahn. Du kaufst ihn erst im Park in der App und bekommst das nächste freie Zeitfenster. Premier Access Ultimate gilt einmal für jede teilnehmende Bahn und lässt sich vorab buchen. Disney verlangt je nach Bahn, Datum und Nachfrage einen anderen Preis.
+An der Warteschlange vorbei kaufst du dich bei Disney mit Disney Premier Access, als One oder als Ultimate. Premier Access One gilt für eine Fahrt auf einer Bahn. Du kaufst ihn erst im Park in der App und bekommst das nächste freie Zeitfenster. Premier Access Ultimate gilt einmal für jede teilnehmende Bahn und lässt sich vorab buchen. Einen festen Preis hat keine der beiden Varianten, Disney setzt ihn je nach Bahn, Datum und Nachfrage.
 
-Im Parc Astérix heißt der Pass Filotomatix. Er gilt für eine Person und einen Tag und wird in der App des Parks eingelöst. Von den vier Stufen ist Bronze eine virtuelle Warteschlange, Argent halbiert die Wartezeit, und mit Or kommst du ohne Warten hinein. Alle drei gelten einmal pro Bahn und nur an einer Auswahl von Attraktionen, in der Toutatis fehlt. Toutatis gibt es nur mit Illimité, das an allen beteiligten Bahnen so oft gilt, wie du willst. Auch mit Filotomatix stehst du nach Angaben des Parks noch etwa zehn Minuten an, die Zahl der Pässe ist begrenzt, und zurückgeben kannst du keinen.
+Filotomatix, der Pass des Parc Astérix, gilt für eine Person und einen Tag und wird in der App des Parks eingelöst. Von den vier Stufen ist Bronze eine virtuelle Warteschlange, Argent halbiert die Wartezeit, und mit Or kommst du ohne Warten hinein. Alle drei gelten einmal pro Bahn und nur an einer Auswahl von Attraktionen, in der Toutatis fehlt. Toutatis gibt es nur mit Illimité, das an allen beteiligten Bahnen so oft gilt, wie du willst. Auch mit Filotomatix stehst du nach Angaben des Parks noch etwa zehn Minuten an, die Zahl der Pässe ist begrenzt, und zurückgeben kannst du keinen.
 
 ```glossary-widget slug=premier-access
 
 ```
 
-An einem Wochentag außerhalb der französischen Ferien würde ich mir beide sparen und mit der Reihenfolge aus unseren Park-Guides auskommen. In unserem [Vergleich der Fast Passes](/blog/fast-pass-freizeitpark-vergleich) stehen Premier Access und Filotomatix neben den Pässen der anderen großen Parks in Europa.
+An einem Wochentag außerhalb der französischen Ferien würde ich mir beide sparen und mit der Reihenfolge aus unseren Guides zum [Disneyland Paris](/blog/disneyland-paris-wartezeiten-tipps) und zum [Parc Astérix](/blog/parc-asterix-wartezeiten-tipps) auskommen. In unserem [Vergleich der Fast Passes](/blog/fast-pass-freizeitpark-vergleich) stehen Premier Access und Filotomatix neben den Pässen der anderen großen Parks in Europa.
 
 ## Abends: Nachtshows und Disney Village
 
-Beide Disney-Parks haben jeden Abend eine Nachtshow. Im Disneyland Park läuft Disney Tales of Magic am Schloss, mit Drohnen, Projektionen, Fontänen und Feuerwerk. In Disney Adventure World fliegen und schwimmen seit dem 29. März 2026 bei Disney Cascade of Lights mehr als 380 Drohnen über und auf dem neuen See. Für beide Shows verkauft Disney reservierte Plätze gegen Aufpreis, zuschauen kannst du auch ohne.
+Beide Disney-Parks haben jeden Abend eine Nachtshow. Im Disneyland Park läuft Disney Tales of Magic am Schloss, mit Drohnen, Projektionen, Fontänen und Feuerwerk. In Disney Adventure World bringt Disney Cascade of Lights seit dem 29. März 2026 mehr als 380 Drohnen über den neuen See und auf sein Wasser. Für beide Shows verkauft Disney reservierte Plätze gegen Aufpreis, zuschauen kannst du auch ohne.
 
-Zwischen Bahnhof, Parks und Lake Disney liegt Disney Village, eine Straße mit Restaurants, Bars, Läden und einem Kino, für die du kein Parkticket brauchst. Disney baut sie bis 2027 um und hält sie dabei offen. Schließt ein Park früher als der andere, kommt im Reiseplaner für den Abend der andere Disney-Park oder Disney Village in den Plan.
+Zwischen Bahnhof, Parks und Lake Disney liegt Disney Village, eine Straße mit Restaurants, Bars, Läden und einem Kino, für die du kein Parkticket brauchst. Disney baut sie bis 2027 um und hält sie dabei offen. Schließt ein Park früher als der andere, bleibt dir für den Abend der andere Disney-Park oder Disney Village (der Reiseplaner plant es genauso).
 
 ## Anreise
 
 ### Mit Zug und Bus
 
-Der Bahnhof Marne-la-Vallée–Chessy liegt vor den Eingängen beider Disney-Parks. Dort halten TGV und Ouigo, unter anderem aus Brüssel, Lille, Straßburg, Lyon und Marseille, dazu die RER A aus Paris. Ein ICE fährt nicht hin. Zwischen Brüssel und Chessy gibt es direkte Züge, die schnellsten brauchen nach Trainline 1 Stunde 52 Minuten. Amsterdam ist mit einem Umstieg ab knapp vier Stunden angebunden, Frankfurt ab 4 Stunden 38 Minuten, und im Schnitt dauern beide Strecken deutlich länger. Einen direkten Eurostar aus London gibt es nicht mehr. Du steigst in Lille Europe um, und die schnellste Verbindung dauert nach Eurostar 2 Stunden 59 Minuten.
+Der Bahnhof Marne-la-Vallée–Chessy liegt vor den Eingängen beider Disney-Parks. Dort halten TGV und Ouigo, unter anderem aus Brüssel, Lille, Straßburg, Lyon und Marseille, dazu die RER A aus Paris. Ein ICE fährt nicht hin. Zwischen Brüssel und Chessy gibt es direkte Züge, die schnellsten brauchen 1 Stunde 52 Minuten. Amsterdam ist mit einem Umstieg ab knapp vier Stunden angebunden, Frankfurt ab 4 Stunden 38 Minuten, und im Schnitt dauern beide Strecken deutlich länger. Einen direkten Eurostar aus London gibt es nicht mehr. Du steigst in Lille Europe um, und die schnellste Verbindung dauert 2 Stunden 59 Minuten.
 
-Der Parc Astérix hat keinen eigenen Bahnhof. Fernbusse aus Brüssel, Brügge und Lille halten aber am Park, und aus Paris fährst du mit RER B und Shuttle.
+Zum Parc Astérix, der keinen eigenen Bahnhof hat, fahren Fernbusse aus Brüssel, Brügge und Lille bis vor den Eingang, und aus Paris kommst du mit RER B und Shuttle.
 
 ### Mit dem Flugzeug
 
@@ -135,29 +136,29 @@ Orly liegt südlich von Paris und passt, wenn du in der Stadt schläfst. Seit Ju
 
 ### Mit dem Auto
 
-Zum Besucherparkplatz von Disneyland Paris führt die A4, Ausfahrt 14, die Autobahn aus Richtung Metz und Straßburg. Der Parkplatz hat nach Disney 11.200 Stellplätze unter einem Solardach und gilt für beide Parks. Bis zu den Eingängen gehst du etwa eine Viertelstunde, an Disney Village vorbei. Der Parc Astérix hat auf der A1 eine eigene Ausfahrt zwischen den Ausfahrten 7 und 8, der Parkplatz liegt direkt am Eingang. Von Brüssel sind es nach Angaben des Parks 257 Kilometer, etwa drei Stunden. Parken kostet in beiden Resorts extra.
+Zum Besucherparkplatz von Disneyland Paris führt die A4, Ausfahrt 14, die Autobahn aus Richtung Metz und Straßburg. Der Parkplatz hat 11.200 Stellplätze unter einem Solardach und gilt für beide Parks. Bis zu den Eingängen gehst du etwa eine Viertelstunde, an Disney Village vorbei. Der Parc Astérix hat auf der A1 eine eigene Ausfahrt zwischen den Ausfahrten 7 und 8, der Parkplatz liegt direkt am Eingang. Von Brüssel sind es 257 Kilometer, etwa drei Stunden. Parken kostet in beiden Resorts extra.
 
 ## Zwischen den beiden Resorts
 
 Mit dem Auto sind es vom Disney-Parkplatz zum Parc Astérix rund 63 Kilometer, ohne Verkehr etwa 55 Minuten über A4, A104 und A1. Rechne die Viertelstunde zu Fuß bis zum Disney-Parkplatz dazu, und zur Rushhour den Verkehr rund um Paris.
 
-Ohne Auto wird es eine kleine Expedition. Mit dem TGV fährst du von Marne-la-Vallée–Chessy zum Flughafen Charles de Gaulle, mit dem CDGVAL oder der RER B nach Roissypôle und von dort mit dem Shuttle des Parc Astérix. Wenn die Anschlüsse passen, sind das eineinviertel bis eineinhalb Stunden, mit Koffer etwas weniger lustig. Als Gast eines Parkhotels lässt du am Schalter in Roissypôle die Gültigkeit deines Shuttletickets für die Rückfahrt verlängern. Einen Bus direkt von Disneyland Paris zum Parc Astérix bietet keiner der beiden Betreiber an.
+Ohne Auto steigst du zweimal um. Mit dem TGV fährst du von Marne-la-Vallée–Chessy zum Flughafen Charles de Gaulle, mit dem CDGVAL oder der RER B nach Roissypôle und von dort mit dem Shuttle des Parc Astérix. Wenn die Anschlüsse passen, sind das eineinviertel bis eineinhalb Stunden, mit Koffer etwas weniger lustig. Als Gast eines Parkhotels lässt du am Schalter in Roissypôle die Gültigkeit deines Shuttletickets für die Rückfahrt verlängern. Einen Bus direkt von Disneyland Paris zum Parc Astérix bietet keiner der beiden Betreiber an.
 
 ## Tickets
 
-Ein gemeinsames Ticket für Disneyland Paris und den Parc Astérix verkauft keiner der beiden Betreiber, und bei beiden hängt der Preis vom Datum ab.
+Jeder der beiden Betreiber verkauft nur Tickets für die eigenen Parks, und bei beiden hängt der Preis vom Datum ab.
 
 ### Disneyland Paris
 
 Das Tagesticket mit Datum gilt nur am gewählten Tag, entweder für einen Park oder als „2 Parks“ für beide am selben Tag, die Parkreservierung inklusive. Für zwei, drei oder vier Tage gibt es Tickets, deren Tage aufeinander folgen, ab dem gebuchten Datum und an jedem Tag in beiden Parks. Tickets für mehr als vier Tage verkauft Disney nicht, für fünf Parktage brauchst du also zwei. Datierte Tickets lassen sich nach Disneys Angaben bis drei Tage vor dem Besuch stornieren, und wer das Datum ändern will, storniert und kauft neu.
 
-Das Billet Liberté hat kein Datum. Es gilt ein Jahr lang, und den Besuchstag reservierst du vorher im Buchungssystem von Disney, solange Plätze frei sind. Am 31. Oktober und am 31. Dezember gilt es nicht, und wer es bis zum 30. September 2026 gekauft hat, kommt damit auch am 14. Juli nicht hinein.
+Das Billet Liberté gilt ein Jahr lang ohne festes Datum, und den Besuchstag reservierst du vorher im Buchungssystem von Disney, solange Plätze frei sind. Am 31. Oktober und am 31. Dezember gilt es nicht, und wer es bis zum 30. September 2026 gekauft hat, kommt damit auch am 14. Juli nicht hinein.
 
-Die Jahreskarte heißt Disneyland Pass und hat seit dem 12. Februar 2026 vier Stufen. Bronze One gilt an 170 Tagen für einen Park pro Tag, Bronze Max an 210 und Silver an 300 Tagen für beide Parks, Gold an jedem Tag, mit Extra Magic Time. Jeder Besuch mit dem Pass braucht eine Reservierung, höchstens drei auf einmal, und Sonderabende und Events sind mit keiner Stufe dabei.
+Disneys Jahreskarte, der Disneyland Pass, hat seit dem 12. Februar 2026 vier Stufen. Bronze One gilt an 170 Tagen für einen Park pro Tag, Bronze Max an 210 und Silver an 300 Tagen für beide Parks, Gold an jedem Tag, mit Extra Magic Time. Jeder Besuch mit dem Pass braucht eine Reservierung, höchstens drei auf einmal, und Sonderabende und Events sind mit keiner Stufe dabei.
 
 ### Parc Astérix
 
-Für einen Tag mit festem Datum gibt es zwei Tickets. Das Billet Futé buchst du mindestens sieben Tage vorher, und es lässt sich weder ändern noch erstatten. Beim Liberté Flex kannst du das Datum bis eine Stunde vor Öffnung ändern. Ein Ticket für zwei Tage am Stück stand 2026 nur in der Preisliste der Kassen am Park. Das Billet Noël gilt an einem beliebigen Tag von Noël Gaulois. Den Pass Saison gibt es in den Stufen Découverte, Gaulois und Premium, mit einem Besuch pro Tag außer an den Sperrtagen der Stufe. Die Nocturnes von Peur sur le Parc im Oktober brauchen ein eigenes Ticket, das Tagesticket gilt dafür nicht.
+Für einen Tag mit festem Datum gibt es zwei Tickets. Das Billet Futé buchst du mindestens sieben Tage vorher, und es lässt sich weder ändern noch erstatten. Beim Liberté Flex kannst du das Datum bis eine Stunde vor Öffnung ändern. Ein Ticket für zwei Tage am Stück stand 2026 nur in der Preisliste der Kassen am Park. Das Billet Noël gilt an einem beliebigen Tag von Noël Gaulois. Den Pass Saison gibt es in den Stufen Découverte, Gaulois und Premium, mit einem Besuch pro Tag außer an den Sperrtagen der Stufe. Für die Nocturnes von Peur sur le Parc im Oktober brauchst du ein eigenes Ticket.
 
 ## Ferien, Feiertage und Schließtage
 
@@ -165,7 +166,7 @@ Für einen Tag mit festem Datum gibt es zwei Tickets. Das Billet Futé buchst du
 
 ```
 
-In Paris richtet sich der Andrang vor allem nach den französischen Schulferien, und die liegen anders als die Ferien in den Nachbarländern. Die ruhigsten Reisen des Jahres stehen auf den Seiten [Beste Reisezeit für Disneyland Paris & Parc Astérix](/paris/beste-reisezeit) und [Beste Reisezeit für Disneyland Paris](/paris/beste-reisezeit/disneyland-paris). Wochen, die weiter weg liegen, als unsere Prognose reicht, bewerten wir auf beiden Seiten und im Reiseplaner nach dem gemessenen Andrang derselben Wochen im Vorjahr. Einzelne Tage findest du im [Andrang-Kalender des Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?calendar) und im [Andrang-Kalender des Parc Astérix](ref:/parks/europe/france/plailly/parc-asterix?calendar).
+In Paris richtet sich der Andrang vor allem nach den französischen Schulferien, und die liegen anders als die Ferien in den Nachbarländern. Die ruhigsten Reisen des Jahres stehen auf den Seiten [Beste Reisezeit für Disneyland Paris & Parc Astérix](/paris/beste-reisezeit) und [Beste Reisezeit für Disneyland Paris](/paris/beste-reisezeit/disneyland-paris). Liegt deine Reise weiter weg, als unsere Prognose reicht, richten sich beide Seiten und der Reiseplaner danach, wie voll dieselben Wochen im Vorjahr waren. Einzelne Tage findest du im [Andrang-Kalender des Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?calendar) und im [Andrang-Kalender des Parc Astérix](ref:/parks/europe/france/plailly/parc-asterix?calendar).
 
 ### Französische Schulferien
 
@@ -188,11 +189,11 @@ Im Mai 2027 fallen der 1. und der 8. Mai auf einen Samstag, einen Brückentag gi
 
 ### Events bei Disney
 
-Für 2027 hat Disney noch keine Termine angekündigt. 2026 lief das Disney Halloween Festival vom 26. September bis zum 1. November, mit Abendprogramm am 31. Oktober bis 23 Uhr im normalen Ticket. Disney Enchanted Christmas läuft vom 7. November 2026 bis zum 6. Januar 2027, zum ersten Mal auch in World of Frozen.
+2026 lief das Disney Halloween Festival vom 26. September bis zum 1. November, mit Abendprogramm am 31. Oktober bis 23 Uhr im normalen Ticket. Disney Enchanted Christmas läuft vom 7. November 2026 bis zum 6. Januar 2027, zum ersten Mal auch in World of Frozen. Die Termine für 2027 hat Disney noch nicht angekündigt.
 
 ![Die bunten Holzhäuser von Arendelle an einem See, dahinter ein verschneiter Gipfel mit Eispalast. | Arendelle in World of Frozen. Bis zum 6. Januar steht am Eingang des Bereichs ein Weihnachtsbaum. | wide](/media/disney-adventure-world/world-of-frozen.jpg)
 
-Ein eigenes Silvesterticket verkauft Disney nicht. Das Programm am Abend des 31. Dezember ist im Eintritt enthalten, und jeder der beiden Parks feiert mit eigener Party. In Disney Adventure World endet sie mit Drohnen und Feuerwerk über World of Frozen, im Disneyland Park mit einem Feuerwerk über dem Schloss um Mitternacht. Mit einem Ticket für einen Park entscheidest du dich also beim Kauf, wo du ins neue Jahr kommst. Beide Parks haben am 31. Dezember von 9 bis 1 Uhr nachts geöffnet.
+Das Programm am Abend des 31. Dezember ist im Eintritt enthalten, ein eigenes Silvesterticket gibt es nicht, und jeder der beiden Parks feiert mit eigener Party. In Disney Adventure World endet sie mit Drohnen und Feuerwerk über World of Frozen, im Disneyland Park mit einem Feuerwerk über dem Schloss um Mitternacht. Mit einem Ticket für einen Park entscheidest du dich also beim Kauf, wo du ins neue Jahr kommst. Beide Parks haben am 31. Dezember von 9 bis 1 Uhr nachts geöffnet.
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park
 
@@ -200,11 +201,9 @@ Ein eigenes Silvesterticket verkauft Disney nicht. Das Programm am Abend des 31.
 
 ### Der Kalender des Parc Astérix
 
-Der Parc Astérix hat nicht das ganze Jahr geöffnet. Bis zum 18. Dezember ist er zu, dann läuft Noël Gaulois vom 19. Dezember bis zum 3. Januar, täglich von 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr. Die Wasserbahnen fahren in dieser Zeit nicht. Vom 4. Januar bis zum Saisonstart ist der Park wieder geschlossen.
+Für eine Reise mit allen drei Parks fallen die Wochen bis zum 18. Dezember und vom 4. Januar bis zum 26. März 2027 weg, weil der Parc Astérix dann zu hat. Dazwischen läuft Noël Gaulois vom 19. Dezember bis zum 3. Januar, täglich von 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr. Die Wasserbahnen fahren in dieser Zeit nicht.
 
 Die Saison 2027 beginnt am Samstag, dem 27. März. Nach dem Osterwochenende ist der Park vom 30. März bis zum 2. April noch einmal zu, dann hat er vom 3. April bis zum 1. September täglich geöffnet, vom 10. Juli bis zum 29. August bei „Un été Gaulois“ bis 22 Uhr. Im September und Oktober hat er an vielen Wochentagen zu, in den Herbstferien vom 23. bis zum 31. Oktober wieder täglich. Am 9., 16., 23., 29., 30. und 31. Oktober schließt er für Tagesgäste schon um 18 Uhr, weil abends die Nocturnes von Peur sur le Parc laufen. Für November und Dezember 2027 hat der Park noch keine Öffnungstage veröffentlicht.
-
-Für eine Reise mit allen drei Parks fallen deshalb die Wochen bis zum 18. Dezember weg und dann wieder die vom 4. Januar bis zum 26. März 2027.
 
 ### Was 2026 und 2027 geschlossen ist
 
@@ -215,13 +214,13 @@ Für eine Reise mit allen drei Parks fallen deshalb die Wochen bis zum 18. Dezem
 
 ### Hitze
 
-Im Juli liegt die mittlere Tageshöchsttemperatur an der Messstation Paris-Montsouris bei 25,7 Grad. An 5,5 Tagen im Juli erreicht sie 30 Grad oder mehr, im August an 5, gemittelt über die Jahre 1991 bis 2020. Der Rekord liegt bei 42,6 Grad am 25. Juli 2019. Am 10. Juli 2026 setzte Météo-France die ganze Île-de-France für den folgenden Tag ab 12 Uhr auf Rot, die höchste Warnstufe für Hitze. Im Reiseplaner zählt ein Tag, für den 30 Grad oder mehr vorhergesagt sind, als schlechterer Tag, und mit jedem Grad darüber ein Stück mehr.
+Im Juli liegt die mittlere Tageshöchsttemperatur an der Messstation Paris-Montsouris bei 25,7 Grad. An 5,5 Tagen im Juli erreicht sie 30 Grad oder mehr, im August an 5, gemittelt über die Jahre 1991 bis 2020. Auf eine Juliwoche kommt damit im Mittel gut ein solcher Tag, und ihren Rekord von 42,6 Grad hat die Station am 25. Juli 2019 gemessen. Am 10. Juli 2026 setzte Météo-France die ganze Île-de-France für den folgenden Tag ab 12 Uhr auf Rot, die höchste Warnstufe für Hitze.
 
 ## Geschichte der beiden Resorts
 
 Der Parc Astérix war zuerst da. Er öffnete am 30. April 1989 in Plailly, und am ersten Nachmittag kam an der Kasse schon niemand mehr hinein. Sein erstes Hotel, Les Trois Hiboux, folgte 1999, La Cité Suspendue 2018 und Les Quais de Lutèce 2020. Seit 2002 gehört der Park der Compagnie des Alpes, und 2025 kamen nach seinen Angaben 2,9 Millionen Besucher.
 
-Euro Disney öffnete am 12. April 1992 in Marne-la-Vallée, mit einem Park, mehreren Hotels und Disney Village. Den RER-Bahnhof vor dem Eingang gibt es seit dem 1. April 1992, den TGV-Bahnhof seit dem 26. Mai 1994. Der zweite Park kam am 16. März 2002 als Walt Disney Studios Park dazu und bekam seinen heutigen Namen an dem Tag, an dem World of Frozen öffnete. Seit 1992 zählt Disney mehr als 445 Millionen Besuche im Resort.
+Euro Disney öffnete am 12. April 1992 in Marne-la-Vallée, mit einem Park, mehreren Hotels und Disney Village. Den RER-Bahnhof vor dem Eingang gibt es seit dem 1. April 1992, den TGV-Bahnhof seit dem 26. Mai 1994. Der zweite Park kam am 16. März 2002 als Walt Disney Studios Park dazu und bekam seinen heutigen Namen an dem Tag, an dem World of Frozen öffnete. Zusammengerechnet über alle Jahre seit 1992 zählt Disney mehr als 445 Millionen Besuche im Resort.
 
 ## Häufige Fragen
 
