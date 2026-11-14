@@ -56,12 +56,15 @@ export function PlanCheckRow({
  */
 export function PlanRadioGroup<T extends string>({
   legend,
+  hint,
   value,
   options,
   onChange,
   disabled = false,
 }: {
   legend: ReactNode;
+  /** One short line under the question, for the whole group. */
+  hint?: ReactNode;
   value: T | null;
   options: ReadonlyArray<{ value: T; label: ReactNode; hint?: ReactNode }>;
   onChange: (value: T) => void;
@@ -71,6 +74,7 @@ export function PlanRadioGroup<T extends string>({
   return (
     <fieldset className="flex flex-col" disabled={disabled}>
       <legend className="mb-1 px-2 text-sm font-semibold">{legend}</legend>
+      {hint && <p className="text-muted-foreground mb-1 px-2 text-xs leading-snug">{hint}</p>}
       {options.map((option) => (
         <label
           key={option.value}

@@ -28,6 +28,7 @@ import {
   TRIP_WEEK_PX_PER_MIN_COARSE,
   tripCanvas,
   tripColumnGrid,
+  planTimeMinute,
   tripDaySpans,
   weekPages,
   WEEK_COLUMNS_PHONE,
@@ -36,6 +37,7 @@ import {
   type TripDaySpan,
 } from '@/lib/trip-regions/plan-week';
 import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
+import { dayStayBase, planStays } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { PlannerGridGround } from '@/components/planner/planner-grid-ground';
 import { PlannerBlockBar, PlannerBlockPhoto } from '@/components/planner/planner-block-ink';
@@ -43,6 +45,11 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { usePartyName } from './use-day-facts';
 import { useEveningName, useTicketDayLabel } from './plan-day-bits';
+import { MOVE_INK, MoveIcon, PlanStayBand, useMoveWords } from './plan-stay-band';
+import { useBaseName } from './plan-place-words';
+
+/** The gap between two day columns, which the stay band above them keeps to. */
+const COLUMN_GAP_PX = 4;
 
 /** A canvas for a trip whose calendar has no hours yet: a plain day, only so rest days have a column. */
 const FALLBACK_CANVAS: TripCanvas = { startMin: 8 * 60, endMin: 22 * 60 };
@@ -81,6 +88,12 @@ export function PlanWeekView({
   const current = Math.min(page, pages.length - 1);
   const shown = pages[current] ?? [];
   const dayBy = useMemo(() => new Map(plan.days.map((d) => [d.date, d])), [plan.days]);
+  const stays = useMemo(() => planStays(plan), [plan]);
+  const baseName = useBaseName();
+  const stayCity = (day: PlanDay | undefined) => {
+    const base = day ? dayStayBase(day) : null;
+    return stays.length > 1 && base ? baseName(base) : null;
+  };
 
   const height = (canvas.endMin - canvas.startMin) * pxPerMin;
   const hours: number[] = [];
@@ -130,6 +143,20 @@ export function PlanWeekView({
         </div>
       )}
 
+      {stays.length > 1 && (
+        <div className="flex">
+          <div className="w-10 shrink-0" />
+          <div className="min-w-0 flex-1">
+            <PlanStayBand
+              days={shown.flatMap((span) => dayBy.get(span.date) ?? [])}
+              stays={stays}
+              columns={perPage}
+              gapPx={COLUMN_GAP_PX}
+            />
+          </div>
+        </div>
+      )}
+
       <div
         className="flex touch-pan-y"
         onTouchStart={(e) => (touch.current = e.touches[0]?.clientX ?? null)}
@@ -158,8 +185,11 @@ export function PlanWeekView({
         </div>
 
         <ol
-          className="grid min-w-0 flex-1 gap-1"
-          style={{ gridTemplateColumns: `repeat(${perPage}, minmax(0, 1fr))` }}
+          className="grid min-w-0 flex-1"
+          style={{
+            gridTemplateColumns: `repeat(${perPage}, minmax(0, 1fr))`,
+            columnGap: COLUMN_GAP_PX,
+          }}
         >
           {shown.map((span) => (
             <WeekColumn
@@ -171,6 +201,7 @@ export function PlanWeekView({
               canvas={canvas}
               pxPerMin={pxPerMin}
               calendar={calendar}
+              city={stayCity(dayBy.get(span.date))}
               onOpen={() => onOpenDay(span.date)}
             />
           ))}
@@ -188,10 +219,13 @@ function WeekColumn({
   canvas,
   pxPerMin,
   calendar,
+  city,
   onOpen,
 }: {
   span: TripDaySpan;
   day: PlanDay | undefined;
+  /** The city the day is spent in, on a trip across cities. */
+  city: string | null;
   /** The plan's meta where it has owned tickets, whose day each column names. */
   meta: TripPlan['meta'] | null;
   phone: boolean;
@@ -201,27 +235,49 @@ function WeekColumn({
   onOpen: () => void;
 }) {
   const t = useTranslations('tripPlanner');
-  const { locale, parkName, photos } = usePlanContext();
+  const { locale, parkName, photos, timeZone } = usePlanContext();
   const grid = tripColumnGrid(span, canvas, pxPerMin);
   const partyName = usePartyName(calendar, day);
   const eveningOf = useEveningName();
   const eveningName = day ? eveningOf(day) : null;
   const weekday = formatParkDay(locale, span.date, { weekday: 'short' });
   const date = formatParkDay(locale, span.date, { day: 'numeric', month: 'short' });
+  // Across cities, each day's label names where it is spent; the band above says it only in ink.
+  const dayLabel = city ? `${weekday} ${date}, ${city}` : `${weekday} ${date}`;
   const ticketLabel = useTicketDayLabel();
   const ticketDay = meta && day ? ticketLabel(day, meta, phone) : null;
 
   const isPark = span.kind === 'park' || span.kind === 'hop';
-  const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel') => (
+  const move = day?.move ?? null;
+  const moveWords = useMoveWords();
+  const baseName = useBaseName();
+  const clamp = (minute: number) => Math.max(canvas.startMin, Math.min(canvas.endMin, minute));
+  const moveSpan = move
+    ? (() => {
+        const start = planTimeMinute(move.departAt, span.date, timeZone);
+        const end = planTimeMinute(move.arriveAt, span.date, timeZone);
+        return start !== null && end !== null && end > start
+          ? { startMin: clamp(start), endMin: clamp(end) }
+          : null;
+      })()
+    : null;
+  // After a morning move the park's hours until the guest gets in are open but lost.
+  const startAtMin =
+    move?.when === 'morning' && day?.startAt
+      ? planTimeMinute(day.startAt, span.date, timeZone)
+      : null;
+  const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel' | 'move') => (
     <button
       type="button"
       onClick={onOpen}
-      aria-label={`${weekday} ${date}: ${label}`}
+      aria-label={`${dayLabel}: ${label}`}
       className={cn(
         'absolute inset-x-0.5 flex flex-col items-center justify-center gap-1 rounded-md border px-1 text-center text-xs transition-colors',
         tone === 'rest'
           ? 'border-border/70 bg-muted/50 hover:bg-muted/70 top-1 bottom-1'
-          : 'border-border/40 bg-muted/20 hover:bg-muted/40 top-1 bottom-1 border-dashed',
+          : tone === 'move'
+            ? `${MOVE_INK} hover:bg-primary/15 top-1 bottom-1`
+            : 'border-border/40 bg-muted/20 hover:bg-muted/40 top-1 bottom-1 border-dashed',
         PLAN_FOCUS
       )}
     >
@@ -278,6 +334,13 @@ function WeekColumn({
             <PlaneTakeoff className="text-muted-foreground size-4" aria-hidden="true" />,
             'travel'
           )}
+        {span.kind === 'travel' &&
+          move &&
+          fullDay(
+            `${moveWords.mode(move.mode)} · ${moveWords.duration(move)} · ${t('move.toCity', { city: baseName(move.to) })}`,
+            <MoveIcon mode={move.mode} className="text-primary-ink size-4" />,
+            'move'
+          )}
 
         {isPark &&
           span.blocks.length === 0 &&
@@ -309,10 +372,14 @@ function WeekColumn({
           const photo = photos[block.slug];
           const name = parkName(block.slug);
           const minutes = wait != null ? t('week.minutes', { minutes: wait }) : t('week.noFigure');
-          const top = yFor(grid, block.startMin) + (index > 0 ? 2 : 0);
+          const start =
+            index === 0 && startAtMin !== null && startAtMin > block.startMin
+              ? Math.min(startAtMin, block.endMin)
+              : block.startMin;
+          const top = yFor(grid, start) + (index > 0 ? 2 : 0);
           const blockHeight = Math.max(
             0,
-            heightFor(grid, block.endMin - block.startMin) - (index > 0 ? 2 : 0)
+            heightFor(grid, block.endMin - start) - (index > 0 ? 2 : 0)
           );
           return (
             <button
@@ -320,7 +387,7 @@ function WeekColumn({
               type="button"
               onClick={onOpen}
               data-plan-block={block.slug}
-              aria-label={`${weekday} ${date}: ${[name, ticketDay, minutes].filter(Boolean).join(', ')}`}
+              aria-label={`${dayLabel}: ${[name, ticketDay, minutes].filter(Boolean).join(', ')}`}
               className={cn('absolute inset-x-0.5 rounded-md text-left', PLAN_FOCUS)}
               style={{ top, height: blockHeight }}
             >
@@ -350,6 +417,52 @@ function WeekColumn({
           );
         })}
 
+        {startAtMin !== null && span.blocks[0] && startAtMin > span.blocks[0].startMin && (
+          <div
+            data-plan-move-lost=""
+            title={t('move.lost')}
+            className="border-border/60 absolute inset-x-0.5 rounded-md border border-dashed"
+            style={{
+              top: yFor(grid, span.blocks[0].startMin),
+              height: heightFor(
+                grid,
+                Math.min(startAtMin, span.blocks[0].endMin) - span.blocks[0].startMin
+              ),
+              backgroundImage: UNUSABLE_HATCH_IMAGE,
+            }}
+          />
+        )}
+
+        {moveSpan && move && span.kind !== 'travel' && (
+          <button
+            type="button"
+            onClick={onOpen}
+            data-plan-move-block={move.when}
+            aria-label={moveWords.label(span, move)}
+            className={cn(
+              'bg-background absolute inset-x-0.5 z-10 overflow-hidden rounded-md text-left',
+              PLAN_FOCUS
+            )}
+            style={{
+              top: yFor(grid, moveSpan.startMin),
+              height: Math.max(18, heightFor(grid, moveSpan.endMin - moveSpan.startMin)),
+            }}
+          >
+            <span
+              className={cn(
+                'flex h-full flex-col gap-0.5 overflow-hidden rounded-md border px-1 py-0.5 text-[10px] leading-tight',
+                MOVE_INK
+              )}
+            >
+              <span className="text-primary-ink flex items-center gap-1 font-semibold">
+                <MoveIcon mode={move.mode} className="size-3 shrink-0" />
+                <span className="truncate">{moveWords.duration(move)}</span>
+              </span>
+              <span className="truncate">{t('move.toCity', { city: baseName(move.to) })}</span>
+            </span>
+          </button>
+        )}
+
         {span.hopAt !== null && day?.between && (
           <div
             className="pointer-events-none absolute inset-x-0 z-10 flex justify-center"
@@ -365,7 +478,9 @@ function WeekColumn({
                 TRANSFER_CHIP_CLASS.unknown
               )}
             >
-              {t(`week.leg.${day.between.mode}`, { minutes: day.between.minutes })}
+              {t.has(`week.leg.${day.between.mode}`)
+                ? t(`week.leg.${day.between.mode}`, { minutes: day.between.minutes })
+                : t('week.legOther', { minutes: day.between.minutes })}
             </span>
           </div>
         )}
@@ -378,7 +493,7 @@ function WeekColumn({
               type="button"
               onClick={onOpen}
               data-plan-night={span.night.kind}
-              aria-label={`${weekday} ${date}: ${t('evening.plus', { name: eveningName ?? '' })}`}
+              aria-label={`${dayLabel}: ${t('evening.plus', { name: eveningName ?? '' })}`}
               className={cn(
                 'absolute right-0.5 left-1/3 z-10 overflow-hidden rounded-md border px-1 py-0.5 text-left text-[10px] leading-tight transition-colors',
                 span.night.kind === 'hop'

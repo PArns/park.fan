@@ -15,6 +15,8 @@ import {
   retryPlanRequest,
   whenQueryKey,
 } from '@/lib/trip-regions/plan-fetch';
+import { planRequestQuery } from '@/lib/trip-regions/plan';
+import { ticketProblem } from '@/lib/trip-regions/plan-tickets';
 
 /** The API keeps a plan and a calendar an hour; the planner treats them as fresh for a quarter. */
 const FRESH_MS = 15 * 60_000;
@@ -49,6 +51,16 @@ export function useTripPlan(query: Record<string, string> | null) {
     /** The plan on screen answers the query asked last (and not a previous one, still shown). */
     current: search !== null && search === settled && !result.isPlaceholderData,
   };
+}
+
+/**
+ * The plan for the planner's own state, the one the answer shows: also read by the setup's Route,
+ * which lists the plan's stays. One request either way, the cache's.
+ */
+export function useStatePlan() {
+  const { state, headliners, tickets: catalog } = usePlanContext();
+  const blocked = ticketProblem(state, catalog) !== null;
+  return useTripPlan(planRequestQuery(state, headliners, blocked));
 }
 
 /**

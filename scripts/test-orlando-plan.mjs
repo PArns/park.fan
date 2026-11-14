@@ -27,6 +27,10 @@ import {
   setFindMode,
   setParkVisits,
   stepVisits,
+  setBaseArea,
+  setBaseNights,
+  setMoveBuffer,
+  fixedNights,
   swapLocks,
   toggleLock,
   chooseHotel,
@@ -84,6 +88,13 @@ import {
   tripRegionLinks,
 } from '../lib/trip-regions/trip-links.ts';
 import { existsSync } from 'node:fs';
+import {
+  gatewayChoices,
+  monthStayCells,
+  stayBandRuns,
+  stayHalves,
+  staySections,
+} from '../lib/trip-regions/plan-stays.ts';
 import { requireTripRegion, TRIP_REGIONS } from '../lib/trip-regions/registry.ts';
 import { tripRegionGuidePath } from '../lib/trip-regions/paths.ts';
 import {
@@ -1932,6 +1943,215 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'one word of a resort, a short query or another park finds nothing',
     ['universal', 'disney', 'walt', 'or', 'epcot', 'world', 'europa-park', ''].map(match),
     Array(8).fill(null)
+  );
+}
+
+// ── A trip across cities (bases) ────────────────────────────────────────────
+{
+  const BASES = new Map([
+    ['tokyo', new Set(['maihama', 'shinjuku'])],
+    ['fujikawaguchiko', new Set(['kawaguchiko'])],
+    ['nagoya', new Set(['nagoya_station'])],
+    ['osaka', new Set(['universal_city'])],
+  ]);
+  const jp = {
+    parks: new Set(['tokyo-disneyland']),
+    areas: new Set(['maihama']),
+    bases: BASES,
+    moveBuffers: new Set([30, 60, 90, 120]),
+  };
+  const read = (q, keys = jp) => readPlanQuery(new URLSearchParams(q), keys);
+  test(
+    'bases: nights, an area, a stay the plan sizes; kept in the region’s base order',
+    read('bases=osaka,tokyo:4@maihama,fujikawaguchiko:0').bases,
+    [
+      { key: 'tokyo', nights: 4, area: 'maihama' },
+      { key: 'fujikawaguchiko', nights: 0, area: null },
+      { key: 'osaka', nights: null, area: null },
+    ]
+  );
+  test(
+    'an unknown base goes, an area of another base or on a :0 base is dropped',
+    read('bases=kyoto:2,tokyo:4@universal_city,nagoya:0@nagoya_station').bases,
+    [
+      { key: 'tokyo', nights: 4, area: null },
+      { key: 'nagoya', nights: 0, area: null },
+    ]
+  );
+  test(
+    'in a region with bases hotel and area are not the region’s; the ends and the buffer are',
+    (({ hotel, area, startBase, endBase, moveBuffer }) => ({
+      hotel,
+      area,
+      startBase,
+      endBase,
+      moveBuffer,
+    }))(read('hotel=disney&area=maihama&startBase=tokyo&endBase=osaka&moveBuffer=90')),
+    { hotel: null, area: null, startBase: 'tokyo', endBase: 'osaka', moveBuffer: 90 }
+  );
+  test(
+    'a buffer the region does not offer, and an unknown end, are dropped',
+    (({ endBase, moveBuffer }) => ({ endBase, moveBuffer }))(read('endBase=kyoto&moveBuffer=45')),
+    { endBase: null, moveBuffer: null }
+  );
+  test(
+    'a region without bases drops them',
+    read('bases=tokyo:4&startBase=tokyo&moveBuffer=60', keys).bases.length +
+      (read('startBase=tokyo', keys).startBase === null ? 0 : 1),
+    0
+  );
+  const written = writePlanQuery({
+    ...DEFAULT_PLAN_STATE,
+    from: '2027-04-10',
+    to: '2027-04-19',
+    bases: [
+      { key: 'tokyo', nights: 4, area: 'maihama' },
+      { key: 'fujikawaguchiko', nights: 0, area: null },
+    ],
+    startBase: 'tokyo',
+    endBase: 'osaka',
+    moveBuffer: 60,
+  });
+  test(
+    'the URL writes the bases as the contract spells them',
+    written,
+    'from=2027-04-10&to=2027-04-19&bases=tokyo:4@maihama,fujikawaguchiko:0&startBase=tokyo&endBase=osaka&moveBuffer=60'
+  );
+  test('and reads back the same', writePlanQuery(read(written)), written);
+
+  const ORDER_JP = ['tokyo', 'fujikawaguchiko', 'nagoya', 'osaka'];
+  const trip = { ...DEFAULT_PLAN_STATE, from: '2027-04-10', to: '2027-04-19' };
+  const fixed = setBaseNights(setBaseNights(trip, 'osaka', 5, ORDER_JP), 'tokyo', 5, ORDER_JP);
+  test(
+    'fixed nights add up, in base order',
+    [fixed.bases.map((b) => b.key), fixedNights(fixed)],
+    [['tokyo', 'osaka'], 10]
+  );
+  test(
+    'more nights than the trip has are caught before the API',
+    planProblem(fixed, ['tokyo-disneyland']),
+    'too_many_nights'
+  );
+  test(
+    'leaving a base to the plan drops it, an area keeps it',
+    [
+      setBaseNights(fixed, 'tokyo', null, ORDER_JP).bases.map((b) => b.key),
+      setBaseNights(setBaseArea(fixed, 'tokyo', 'maihama', ORDER_JP), 'tokyo', null, ORDER_JP)
+        .bases[0],
+    ],
+    [['osaka'], { key: 'tokyo', nights: null, area: 'maihama' }]
+  );
+  test(
+    'a :0 base takes no area',
+    setBaseArea(setBaseNights(trip, 'nagoya', 0, ORDER_JP), 'nagoya', 'nagoya_station', ORDER_JP)
+      .bases,
+    [{ key: 'nagoya', nights: 0, area: null }]
+  );
+  test(
+    'the region’s own buffer is written as nothing',
+    [setMoveBuffer(trip, 30, 30).moveBuffer, setMoveBuffer(trip, 60, 30).moveBuffer],
+    [null, 60]
+  );
+
+  const gw = (code) => ({ code, name: code, kind: 'airport' });
+  test(
+    'a gateway pins a base only when one base lists it; a shared one pins nothing',
+    gatewayChoices([
+      {
+        key: 'disneyland-paris',
+        name: '',
+        hotelAreas: [],
+        parks: [],
+        gateways: [gw('XED'), gw('CDG')],
+      },
+      { key: 'parc-asterix', name: '', hotelAreas: [], parks: [], gateways: [gw('CDG')] },
+      { key: 'paris', name: '', hotelAreas: [], parks: [], gateways: [gw('CDG'), gw('ORY')] },
+    ]).map((c) => [c.base, c.gateways.map((g) => g.code)]),
+    [
+      ['disneyland-paris', ['XED']],
+      ['paris', ['ORY']],
+      [null, ['CDG']],
+    ]
+  );
+
+  const move = (from, to, when) => ({
+    from,
+    to,
+    when,
+    minutes: 150,
+    mode: 'shinkansen',
+    departAt: '',
+    arriveAt: '',
+  });
+  const d = (date, kind, base, extra = {}) => ({
+    date,
+    kind,
+    base,
+    parks: [],
+    reasons: [],
+    warnings: [],
+    ...extra,
+  });
+  const plan = {
+    meta: {
+      stays: [
+        { base: 'tokyo', from: '2027-04-10', to: '2027-04-12', nights: 2 },
+        { base: 'nagoya', from: '2027-04-12', to: '2027-04-13', nights: 1 },
+        { base: 'osaka', from: '2027-04-13', to: '2027-04-14', nights: 1 },
+      ],
+    },
+    days: [
+      d('2027-04-10', 'arrival', 'tokyo'),
+      d('2027-04-11', 'park', 'tokyo'),
+      d('2027-04-12', 'park', 'nagoya', { move: move('tokyo', 'nagoya', 'morning') }),
+      d('2027-04-13', 'park', 'osaka', { move: move('nagoya', 'osaka', 'evening') }),
+      d('2027-04-14', 'departure', 'osaka'),
+    ],
+  };
+  test(
+    'a day is listed where it is spent: a morning move in the city reached, an evening move in the city left',
+    staySections(plan).map((s) => [
+      s.stay?.base,
+      s.arrival?.date ?? null,
+      s.days.map((x) => x.date.slice(8)),
+    ]),
+    [
+      ['tokyo', null, ['10', '11']],
+      ['nagoya', '2027-04-12', ['12', '13']],
+      ['osaka', '2027-04-13', ['14']],
+    ]
+  );
+  test(
+    'one stay is one section without a stay',
+    staySections({ meta: { stays: [plan.meta.stays[0]] }, days: plan.days.slice(0, 2) }).map(
+      (s) => s.stay
+    ),
+    [null]
+  );
+  test(
+    'the band: a stay runs from the second half of its first day to the first half of its last',
+    stayBandRuns(stayHalves(plan.days)),
+    [
+      { base: 'tokyo', start: 1, end: 5 },
+      { base: 'nagoya', start: 5, end: 7 },
+      { base: 'osaka', start: 7, end: 9 },
+    ]
+  );
+  test(
+    'the Month view’s band: the night’s stay, the one the day starts in, and where a stay begins',
+    [...monthStayCells(plan)].map(([date, c]) => [
+      date.slice(8),
+      c.stay.base,
+      c.left?.base ?? null,
+      c.first,
+    ]),
+    [
+      ['10', 'tokyo', null, true],
+      ['11', 'tokyo', null, false],
+      ['12', 'nagoya', 'tokyo', true],
+      ['13', 'osaka', 'nagoya', true],
+      ['14', 'osaka', null, false],
+    ]
   );
 }
 

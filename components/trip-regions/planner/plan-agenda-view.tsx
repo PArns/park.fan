@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import { useTranslations } from 'next-intl';
 import { ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -7,16 +8,21 @@ import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-st
 import { formatParkDay } from '@/lib/utils/park-day';
 import { dayMarker } from '@/lib/trip-regions/plan-copy';
 import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
+import { staySections } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanDayMarker, useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
+import { MoveIcon, PlanMoveRow, PlanStayHeader, useMoveWords } from './plan-stay-band';
+import { useBaseName } from './plan-place-words';
 
 /**
  * The list view, the days once: one row per day with three facts at most, the park, its minutes and
  * one marker (an early close, the hotel's early slot, its evening), and a thin bar in the day's
  * crowd tint. A rest or travel day is its name alone. Everything else is one press away in the
- * day's sheet.
+ * day's sheet. A trip across cities is one section per stay, each opening on the move that reaches
+ * it, and a day is listed where it is spent: a morning move's park day in the city reached, an
+ * evening move's in the city left.
  */
 export function PlanAgendaView({
   plan,
@@ -27,10 +33,21 @@ export function PlanAgendaView({
   calendar: TripCalendar | undefined;
   onOpenDay: (date: string) => void;
 }) {
+  const sections = staySections(plan);
   return (
     <ol data-plan-view="agenda" className="flex flex-col lg:max-w-2xl">
-      {plan.days.map((day) => (
-        <PlanListRow key={day.date} day={day} calendar={calendar} onOpenDay={onOpenDay} />
+      {sections.map((section) => (
+        <Fragment key={section.stay?.base ?? 'trip'}>
+          {section.arrival && <PlanMoveRow day={section.arrival} onOpenDay={onOpenDay} />}
+          {section.stay && (
+            <li className="bg-background sticky top-12 z-[1]">
+              <PlanStayHeader stay={section.stay} />
+            </li>
+          )}
+          {section.days.map((day) => (
+            <PlanListRow key={day.date} day={day} calendar={calendar} onOpenDay={onOpenDay} />
+          ))}
+        </Fragment>
       ))}
     </ol>
   );
@@ -52,20 +69,33 @@ export function PlanListRow({
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
   const eveningOf = useEveningName();
+  const moveWords = useMoveWords();
+  const baseName = useBaseName();
   const isPark = day.kind === 'park' || day.kind === 'hop';
   const tone = day.crowdLevel && isColoredCrowdLevel(day.crowdLevel) ? day.crowdLevel : null;
-  const title = isPark ? parksOf(day) : t(`day.${day.kind}`);
+  const title = isPark
+    ? parksOf(day)
+    : day.kind === 'travel' && day.move
+      ? `${t('day.travel')} · ${t('move.toCity', { city: baseName(day.move.to) })}`
+      : t(`day.${day.kind}`);
+  // A park day with a move says when the park starts or when the move leaves, in place of its marker.
+  const moveLine =
+    isPark && day.move?.when === 'morning' && day.startAt
+      ? t('move.after', { time: moveWords.time(day.startAt) })
+      : isPark && day.move?.when === 'evening'
+        ? t('move.then', { city: baseName(day.move.to), time: moveWords.time(day.move.departAt) })
+        : null;
   const minutes =
     day.headlinerWait != null ? t('answer.about', { minutes: day.headlinerWait }) : null;
   // A rest day is said by its name; its marker would say it a second time.
-  const marker = day.kind === 'rest' ? null : markerText(day, calendar);
+  const marker = day.kind === 'rest' || moveLine ? null : markerText(day, calendar);
   const evening = eveningOf(day);
   const label = [
     formatParkDay(locale, day.date, { weekday: 'long', day: 'numeric', month: 'long' }),
     title,
     minutes,
     tone ? tLevel(tone) : null,
-    marker,
+    marker ?? moveLine,
     evening ? t('evening.plus', { name: evening }) : null,
   ]
     .filter(Boolean)
@@ -108,6 +138,15 @@ export function PlanListRow({
             calendar={calendar}
             className="hidden max-w-40 shrink-0 sm:inline-flex"
           />
+        )}
+        {moveLine && day.move && (
+          <span
+            aria-hidden="true"
+            className="text-primary-ink hidden max-w-48 shrink-0 items-center gap-1 text-xs sm:inline-flex"
+          >
+            <MoveIcon mode={day.move.mode} className="size-3.5 shrink-0" />
+            <span className="truncate">{moveLine}</span>
+          </span>
         )}
         {minutes && (
           <span

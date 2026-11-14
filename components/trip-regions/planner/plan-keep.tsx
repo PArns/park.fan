@@ -80,7 +80,8 @@ export function PlanKeep({
     const file = buildTripIcs(events, {
       now: Date.now(),
       timeZone: config.timezone,
-      calendarName: tRegion('ics.calendarName', {
+      calendarName: regionOrShared(tRegion, t, 'ics.calendarName', {
+        region: region.name,
         range: `${formatParkDay(locale, plan.meta.from, { day: 'numeric', month: 'short' })}–${formatParkDay(locale, plan.meta.to, { day: 'numeric', month: 'short', year: 'numeric' })}`,
       }),
     });

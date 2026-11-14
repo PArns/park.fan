@@ -164,13 +164,26 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-route.tsx`](../../components/trip-regions/planner/plan-route.tsx)
 
-- `usePlanRouteSetup` _hook_: The setup's Route in a region with bases (Japan, Paris): `null` everywhere else, where the planner is the one-city planner it always was.
+- `PlanRoute` _component_: The Route: where the trip lands and where it leaves from, then the cities in between with their nights.
+- `usePlanRouteSetup` _hook_: The setup's Route in a region with bases (Japan, Paris): the step, its summary line and its rows under More options. `null` everywhere else, where the planner sleeps in one place.
 
 ### [`planner/plan-setup.tsx`](../../components/trip-regions/planner/plan-setup.tsx)
 
 - `PlanSetup` _component_: Dates and Parks first, the only two things a plan needs, and the parks start chosen: the region's headliners.
 - `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
 - Types: `PlanSheetStep`, `PlanSetupRoute`
+
+### [`planner/plan-stay-band.tsx`](../../components/trip-regions/planner/plan-stay-band.tsx)
+
+- `StayMarker` _component_: A stay's numbered marker: its place on the route, so colour never carries the stay alone.
+- `MoveIcon` _component_: The icon of a move's mode: a bus, a car, on foot, else a train (the Shinkansen, a line).
+- `PlanStayHeader` _component_: The list view's header of a stay: its marker, its city, its nights and its dates, a hairline to the right.
+- `PlanMoveRow` _component_: The list view's row of a move: the leg's dashed rail where a day's date stands, the mode and its length as a chip, the route and the typical times. It opens the day it belongs to.
+- `PlanStayBand` _component_: The Week view's stay band, over the day headers and aligned to the columns: two halves a day, the first the city the day starts in, the second the city it ends in, so a stay runs from the second half of its arrival day to the first half of …
+- `PlanMonthStayBand` _component_: The Month view's stay band for one date's cell, built here for the Month view to place along the cell's foot: the city slept in, its marker and name where a stay begins (`first`), and on a move day the cell split, the city left on the …
+- `useMoveWords` _hook_: How a move reads: its mode, its length, its times, its route, and the label a reader hears.
+- `stayTint` _function_: A stay's band tint by its number on the route.
+- `MOVE_INK` _const_: A move's ink, the leg chip's: dashed primary border, faint primary ground.
 
 ### [`planner/plan-ticket-words.tsx`](../../components/trip-regions/planner/plan-ticket-words.tsx)
 
@@ -216,6 +229,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/use-trip-plan.ts`](../../components/trip-regions/planner/use-trip-plan.ts)
 
 - `useTripPlan` _hook_: The plan for a request query, asked once the controls have been still for `PLAN_DEBOUNCE_MS`.
+- `useStatePlan` _hook_: The plan for the planner's own state, the one the answer shows: also read by the setup's Route, which lists the plan's stays. One request either way, the cache's.
 - `useUnpinnedPlan` _hook_: The plan without the visitor's pins, for the edit bar's "best order" figure: the same query minus `lock`, which is usually the plan the visitor started from and still in the cache.
 - `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.

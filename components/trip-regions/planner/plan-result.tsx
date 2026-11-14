@@ -39,6 +39,7 @@ import {
   planProblem,
   planRequestQuery,
   plannerParkOf,
+  setBaseNights,
   setTripDates,
   swapLocks,
   toggleLock,
@@ -58,6 +59,7 @@ import {
 } from '@/lib/trip-regions/plan-copy';
 import { PlanRequestError } from '@/lib/trip-regions/plan-fetch';
 import { whenRequestQuery } from '@/lib/trip-regions/plan-when';
+import { planStays } from '@/lib/trip-regions/plan-stays';
 import { readTickets } from '@/lib/trip-regions/plan-query';
 import {
   hopperResorts,
@@ -77,9 +79,10 @@ import { PlanMonthView } from './plan-month-view';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
-import { useTripCalendar, useTripPlan, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
+import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
 import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
 import { PlanTickets, type TicketStep } from './plan-tickets';
+import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
   tripPlanFailedProps,
@@ -212,7 +215,7 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
   const query = planRequestQuery(state, headliners, missed !== null);
-  const plan = useTripPlan(query);
+  const plan = useStatePlan();
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
   usePlanEvents(
@@ -421,6 +424,7 @@ function PlanAnswer({
   ];
   const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
   const bases = (region.bases?.length ?? 0) > 0;
+  const stays = planStays(plan);
 
   return (
     <div className="flex flex-col gap-4">
@@ -434,10 +438,13 @@ function PlanAnswer({
         </h3>
         <p className="text-muted-foreground text-sm">
           {t('answer.counts', { parkDays: plan.totals.parkDays, restDays: plan.totals.restDays })}
+          {stays.length > 1 &&
+            ` · ${t('answer.moves', { cities: stays.length, moves: plan.totals.moves ?? stays.length - 1 })}`}
         </p>
       </div>
 
       <LeftOut plan={plan} edit={edit} />
+      <StaySuggestion plan={plan} />
 
       {reach && (
         <p
@@ -634,6 +641,59 @@ function LeftOut({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
           </Button>
         )}
       </div>
+    </div>
+  );
+}
+
+/**
+ * With nights the visitor fixed, the API's one-night change that saves most, in one sentence with
+ * "Plan it this way", which writes those nights.
+ */
+function StaySuggestion({ plan }: { plan: TripPlan }) {
+  const t = useTranslations('tripPlanner');
+  const { region, update, locale, parkName } = usePlanContext();
+  const baseName = useBaseName();
+  const suggestion = plan.meta.staySuggestion;
+  if (!suggestion) return null;
+  const order = (region.bases ?? []).map((b) => b.key);
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
+  const changes = list.format(
+    Object.entries(suggestion.nights).map(([base, count]) =>
+      t('route.stayShort', { city: baseName(base), count })
+    )
+  );
+  return (
+    <div
+      className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
+      role="status"
+      data-plan-stay-suggestion=""
+    >
+      <p className="min-w-0 flex-1 text-sm">
+        {t('answer.staySuggestion', {
+          changes,
+          minutes: Math.round(suggestion.savedMinutesPerRide),
+          park: parkName(suggestion.park),
+          date: formatParkDay(locale, suggestion.date, {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short',
+          }),
+        })}
+      </p>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() =>
+          update((s) =>
+            Object.entries(suggestion.nights).reduce(
+              (next, [base, count]) => setBaseNights(next, base, count, order),
+              s
+            )
+          )
+        }
+      >
+        {t('answer.planThisWay')}
+      </Button>
     </div>
   );
 }

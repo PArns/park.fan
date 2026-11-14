@@ -15,6 +15,7 @@ import {
   visitSteps,
 } from '@/lib/trip-regions/plan';
 import type { TripCalendar, TripRegionPark } from '@/lib/trip-regions/types';
+import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS, PlanStepper } from './plan-controls';
 import { useTripCalendar } from './use-trip-plan';
@@ -178,7 +179,7 @@ export function PlanParks() {
             <span className="text-muted-foreground text-xs">
               {moreChosen > 0
                 ? t('parks.moreChosen', { count: moreChosen })
-                : tRegion('parks.moreHint')}
+                : regionOrShared(tRegion, t, 'parks.moreHint')}
             </span>
           </span>
           <ChevronDown

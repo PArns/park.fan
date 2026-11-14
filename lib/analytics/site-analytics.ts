@@ -388,7 +388,7 @@ export interface SiteEventMap {
   trip_view_changed: TripEvent<{ view: 'agenda' | 'week' | 'month' }>;
   /** A day's sheet opened, from the answer's list or a view. */
   trip_day_opened: TripEvent<{
-    kind: 'arrival' | 'park' | 'hop' | 'rest' | 'departure';
+    kind: 'arrival' | 'park' | 'hop' | 'rest' | 'departure' | 'travel';
     view: 'list' | 'agenda' | 'week' | 'month';
   }>;
   /** A day pinned or released. */

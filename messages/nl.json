@@ -3156,7 +3156,8 @@
       "driveSource": "Rijtijden zonder verkeer, {source}",
       "days": "{count, plural, =1 {1 dag} other {# dagen}}",
       "budgetFits": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: past",
-      "budgetOver": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: {over, plural, =1 {1 parkdag past} other {# parkdagen passen}} er niet in"
+      "budgetOver": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: {over, plural, =1 {1 parkdag past} other {# parkdagen passen}} er niet in",
+      "moreHint": "Meer parken in de regio"
     },
     "options": {
       "hotel": "Hotel",
@@ -3194,7 +3195,11 @@
       "split": "Tweede parkdagen",
       "splitHint": "Parken met “1–2 dagen” krijgen een tweede dag als de reis ruimte heeft.",
       "splitOff": "geen tweede dagen",
-      "guide": "Meer in de gids bij de reisplanner"
+      "guide": "Meer in de gids bij de reisplanner",
+      "hotelBasesHint": "Met een hotel rekent het plan met de vroege toegang en de weg naar de parken.",
+      "moveBuffer": "Hotelwissel",
+      "moveBufferMinutes": "{minutes} min.",
+      "moveBufferHint": "Tijd voor uitchecken, bagage en inchecken, bovenop de rit."
     },
     "result": {
       "label": "Je plan",
@@ -3213,7 +3218,8 @@
       "no_parks": "Kies minstens één park.",
       "too_many_visits": "De vaste dagen van je parken hebben meer parkdagen nodig dan je reis heeft. Haal bij één park een dag weg of sta parkhoppen toe.",
       "over_max_visits": "Een plan bevat hoogstens {max} parkdagen.",
-      "no_park_day": "Je reis heeft geen dag vrij voor een park. Sta een park toe op de aankomst- of vertrekdag."
+      "no_park_day": "Je reis heeft geen dag vrij voor een park. Sta een park toe op de aankomst- of vertrekdag.",
+      "too_many_nights": "Je steden komen op {fixed} nachten, je reis heeft er {nights}."
     },
     "answer": {
       "counts": "{parkDays, plural, =1 {1 parkdag} other {# parkdagen}}, {restDays, plural, =0 {geen rustdag} =1 {1 rustdag} other {# rustdagen}}",
@@ -3228,14 +3234,18 @@
       "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}",
       "peakSaved": "Piekwachttijd op je dagen ongeveer {minutes} min., {saved} min. minder dan gemiddeld over je reisdagen.",
       "peakFlat": "Piekwachttijd op je dagen ongeveer {minutes} min. Je reisdagen zijn ongeveer even druk, de volgorde maakt weinig uit.",
-      "accuracy": "Hoe nauwkeurig is dit?"
+      "accuracy": "Hoe nauwkeurig is dit?",
+      "moves": "{cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
+      "staySuggestion": "{changes}: ongeveer {minutes} min. minder piekwachttijd, {park} dan op {date}.",
+      "planThisWay": "Zo plannen"
     },
     "day": {
       "arrival": "Aankomst",
       "departure": "Vertrek",
       "rest": "Rustdag",
       "park": "Parkdag",
-      "hop": "Twee parken"
+      "hop": "Twee parken",
+      "travel": "Reisdag"
     },
     "marker": {
       "closesAt": "sluit {time}",
@@ -3268,8 +3278,10 @@
       "leg": {
         "drive": "{minutes} min. auto",
         "walk": "{minutes} min. lopen",
-        "bus": "{minutes} min. shuttle"
-      }
+        "bus": "{minutes} min. shuttle",
+        "monorail": "{minutes} min. monorail"
+      },
+      "legOther": "{minutes} min."
     },
     "month": {
       "legend": "Twee letters per park, gekleurd naar hoe druk de dag voor dat park is; het getal is de wachttijd bij de grote attracties in minuten."
@@ -3294,7 +3306,12 @@
       "travel": {
         "drive": "Ongeveer {minutes} min. met de auto vanaf {area}, zonder verkeer.",
         "walk": "Ongeveer {minutes} min. lopen vanaf {area}.",
-        "bus": "Ongeveer {minutes} min. met de shuttle vanaf {area}."
+        "bus": "Ongeveer {minutes} min. met de shuttle vanaf {area}.",
+        "monorail": "Ongeveer {minutes} min. met de monorail vanaf {area}.",
+        "rail": "Ongeveer {minutes} min. met de trein vanaf {area}.",
+        "shinkansen": "Ongeveer {minutes} min. met de shinkansen vanaf {area}.",
+        "highway_bus": "Ongeveer {minutes} min. met de bus vanaf {area}.",
+        "other": "Ongeveer {minutes} min. vanaf {area}."
       },
       "transfer": "Daarna ongeveer {minutes} min. van de parkeerplaats naar de ingang.",
       "between": {
@@ -3379,7 +3396,8 @@
     },
     "ics": {
       "wait": "Grote attracties ongeveer {minutes} min.",
-      "link": "Plan: {url}"
+      "link": "Plan: {url}",
+      "calendarName": "Reis naar {region} {range}"
     },
     "when": {
       "loading": "De beste data worden gezocht …",
@@ -3605,6 +3623,56 @@
       },
       "later": "Al tickets?",
       "enter": "Invullen"
+    },
+    "move": {
+      "mode": {
+        "shinkansen": "Shinkansen",
+        "highway_bus": "Bus",
+        "rail": "Trein",
+        "train": "Trein",
+        "metro": "Metro",
+        "bus": "Bus",
+        "shuttle": "Shuttle",
+        "drive": "Auto",
+        "other": "Rit"
+      },
+      "toCity": "naar {city}",
+      "after": "vanaf {time}, na de hotelwissel",
+      "then": "daarna om {time} verder naar {city}",
+      "lost": "open, maar je bent onderweg",
+      "label": "{date}: {mode} van {from} naar {to}, {depart} tot {arrive}, {duration}",
+      "changes": "{count, plural, =1 {1 overstap} other {# overstappen}}",
+      "buffer": "Plus {minutes} min. voor de hotelwissel.",
+      "parkFrom": "In het park vanaf {time}.",
+      "typical": "Gangbare tijden. De dienstregeling staat bij de vervoerder.",
+      "note": {
+        "reserve_seat": "Reserveer een zitplaats.",
+        "forward_luggage": "Stuur je koffer de dag ervoor vooruit.",
+        "jr_pass": "Met de JR Pass."
+      }
+    },
+    "route": {
+      "arrive": "Aankomst",
+      "leave": "Vertrek",
+      "gatewayOpen": "Nog open",
+      "gatewayShared": "{airports} of nog open",
+      "gatewayAt": "{city} · {airports}",
+      "stays": "Steden en nachten",
+      "nights": "{count, plural, =1 {1 nacht} other {# nachten}}",
+      "fixed": "vast",
+      "byPlan": "van het plan",
+      "dayTrips": "Geen nacht: parken als dagtrip",
+      "notStayed": "Hier overnacht het plan niet.",
+      "noParks": "Geen park",
+      "release": "Aan het plan overlaten",
+      "remove": "Verwijderen",
+      "fewer": "{city}: een nacht minder",
+      "more": "{city}: een nacht meer",
+      "add": "Stad toevoegen",
+      "addPick": "Kies een stad",
+      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
+      "stayShort": "{city} {count, plural, =1 {1 nacht} other {# nachten}}",
+      "summaryOpen": "Het plan kiest de steden en nachten"
     }
   },
   "tripRegions": {
@@ -4021,6 +4089,52 @@
         "title": "Orlando: welk park op welke dag",
         "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
         "link": "Orlando drukte-kalender"
+      }
+    },
+    "japan": {
+      "planner": {
+        "options": {
+          "moveBufferHint": "Met de bagagedienst (takkyubin) reist je koffer vooruit, dan is 30 minuten genoeg."
+        },
+        "base": {
+          "tokyo": "Tokio"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (Disney-hotels)",
+          "disneysea_hotels": "Hotels bij Tokyo DisneySea",
+          "bayside": "Maihama Bayside (officiële hotels)",
+          "shin_urayasu": "Shin-Urayasu (partnerhotels)",
+          "tokyo_station": "Station Tokio",
+          "nagoya_station": "Station Nagoya",
+          "universal_city": "Universal City (officiële hotels)",
+          "umeda": "Umeda (station Osaka)",
+          "kyoto_station": "Station Kyoto"
+        }
+      }
+    },
+    "paris": {
+      "planner": {
+        "base": {
+          "paris": "Centrum van Parijs"
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Disney-hotels aan Lake Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne en Santa Fe",
+          "paris_center": "Centrum van Parijs",
+          "parc_asterix": "Hotels van Parc Astérix"
+        }
       }
     }
   },

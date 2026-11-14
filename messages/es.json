@@ -3156,7 +3156,8 @@
       "driveSource": "Tiempos de trayecto sin tráfico, {source}",
       "days": "{count, plural, =1 {1 día} other {# días}}",
       "budgetFits": "{parks, plural, =1 {1 parque} other {# parques}}, {days, plural, =1 {1 día libre} other {# días libres}}: cabe",
-      "budgetOver": "{parks, plural, =1 {1 parque} other {# parques}}, {days, plural, =1 {1 día libre} other {# días libres}}: no {over, plural, =1 {cabe 1 día de parque} other {caben # días de parque}}"
+      "budgetOver": "{parks, plural, =1 {1 parque} other {# parques}}, {days, plural, =1 {1 día libre} other {# días libres}}: no {over, plural, =1 {cabe 1 día de parque} other {caben # días de parque}}",
+      "moreHint": "Más parques de la región"
     },
     "options": {
       "hotel": "Hotel",
@@ -3194,7 +3195,11 @@
       "split": "Segundos días de parque",
       "splitHint": "Los parques con «1–2 días» tienen un segundo día si el viaje deja sitio.",
       "splitOff": "sin segundos días",
-      "guide": "Más en la guía del planificador"
+      "guide": "Más en la guía del planificador",
+      "hotelBasesHint": "Con un hotel, el plan cuenta su entrada anticipada y el camino a los parques.",
+      "moveBuffer": "Cambio de hotel",
+      "moveBufferMinutes": "{minutes} min",
+      "moveBufferHint": "Tiempo para dejar el hotel, el equipaje y registrarte, además del trayecto."
     },
     "result": {
       "label": "Tu plan",
@@ -3213,7 +3218,8 @@
       "no_parks": "Elige al menos un parque.",
       "too_many_visits": "Los días fijos de tus parques necesitan más días de parque de los que tiene tu viaje. Quita un día a un parque o permite el park hopping.",
       "over_max_visits": "Un plan tiene como mucho {max} días de parque.",
-      "no_park_day": "Tu viaje no tiene ningún día libre para un parque. Permite un parque el día de llegada o de salida."
+      "no_park_day": "Tu viaje no tiene ningún día libre para un parque. Permite un parque el día de llegada o de salida.",
+      "too_many_nights": "Tus ciudades suman {fixed} noches, tu viaje tiene {nights}."
     },
     "answer": {
       "counts": "{parkDays, plural, =1 {1 día de parque} other {# días de parque}}, {restDays, plural, =0 {ningún día de descanso} =1 {1 día de descanso} other {# días de descanso}}",
@@ -3228,14 +3234,18 @@
       "longer": "{count, plural, =1 {1 día más} other {# días más}}",
       "peakSaved": "Espera punta en tus días: unos {minutes} min, {saved} min menos que la media de tus días de viaje.",
       "peakFlat": "Espera punta en tus días: unos {minutes} min. Tus días de viaje están más o menos igual de llenos, el orden cambia poco.",
-      "accuracy": "¿Qué precisión tiene?"
+      "accuracy": "¿Qué precisión tiene?",
+      "moves": "{cities, plural, =1 {1 ciudad} other {# ciudades}}, {moves, plural, =0 {ningún cambio de hotel} =1 {1 cambio de hotel} other {# cambios de hotel}}",
+      "staySuggestion": "{changes}: unos {minutes} min menos de espera punta, con {park} el {date}.",
+      "planThisWay": "Planificar así"
     },
     "day": {
       "arrival": "Llegada",
       "departure": "Salida",
       "rest": "Día de descanso",
       "park": "Día de parque",
-      "hop": "Dos parques"
+      "hop": "Dos parques",
+      "travel": "Día de traslado"
     },
     "marker": {
       "closesAt": "cierra a las {time}",
@@ -3268,8 +3278,10 @@
       "leg": {
         "drive": "{minutes} min en coche",
         "walk": "{minutes} min a pie",
-        "bus": "{minutes} min en lanzadera"
-      }
+        "bus": "{minutes} min en lanzadera",
+        "monorail": "{minutes} min en monorraíl"
+      },
+      "legOther": "{minutes} min"
     },
     "month": {
       "legend": "Dos letras por parque, coloreadas según lo lleno que esté el día para ese parque; el número es la espera en las grandes atracciones en minutos."
@@ -3294,7 +3306,12 @@
       "travel": {
         "drive": "Unos {minutes} min en coche desde {area}, sin tráfico.",
         "walk": "Unos {minutes} min a pie desde {area}.",
-        "bus": "Unos {minutes} min en lanzadera desde {area}."
+        "bus": "Unos {minutes} min en lanzadera desde {area}.",
+        "monorail": "Unos {minutes} min en monorraíl desde {area}.",
+        "rail": "Unos {minutes} min en tren desde {area}.",
+        "shinkansen": "Unos {minutes} min en Shinkansen desde {area}.",
+        "highway_bus": "Unos {minutes} min en autobús desde {area}.",
+        "other": "Unos {minutes} min desde {area}."
       },
       "transfer": "Después unos {minutes} min del aparcamiento a la entrada.",
       "between": {
@@ -3379,7 +3396,8 @@
     },
     "ics": {
       "wait": "Grandes atracciones unos {minutes} min",
-      "link": "Plan: {url}"
+      "link": "Plan: {url}",
+      "calendarName": "Viaje a {region} {range}"
     },
     "when": {
       "loading": "Buscando las mejores fechas …",
@@ -3605,6 +3623,56 @@
       },
       "later": "¿Ya tienes entradas?",
       "enter": "Añadirlas"
+    },
+    "move": {
+      "mode": {
+        "shinkansen": "Shinkansen",
+        "highway_bus": "Autobús",
+        "rail": "Tren",
+        "train": "Tren",
+        "metro": "Metro",
+        "bus": "Autobús",
+        "shuttle": "Lanzadera",
+        "drive": "Coche",
+        "other": "Trayecto"
+      },
+      "toCity": "a {city}",
+      "after": "desde las {time}, tras el cambio de hotel",
+      "then": "después, a las {time}, hacia {city}",
+      "lost": "abierto, pero vas de camino",
+      "label": "{date}: {mode} de {from} a {to}, de {depart} a {arrive}, {duration}",
+      "changes": "{count, plural, =1 {1 transbordo} other {# transbordos}}",
+      "buffer": "Más {minutes} min para el cambio de hotel.",
+      "parkFrom": "En el parque desde las {time}.",
+      "typical": "Horarios habituales. El operador tiene el horario exacto.",
+      "note": {
+        "reserve_seat": "Reserva asiento.",
+        "forward_luggage": "Envía la maleta el día antes.",
+        "jr_pass": "Incluido en el JR Pass."
+      }
+    },
+    "route": {
+      "arrive": "Llegada",
+      "leave": "Salida",
+      "gatewayOpen": "Sin decidir",
+      "gatewayShared": "{airports} o sin decidir",
+      "gatewayAt": "{city} · {airports}",
+      "stays": "Ciudades y noches",
+      "nights": "{count, plural, =1 {1 noche} other {# noches}}",
+      "fixed": "fijo",
+      "byPlan": "del plan",
+      "dayTrips": "Ninguna noche: sus parques como excursión",
+      "notStayed": "El plan no duerme aquí.",
+      "noParks": "Sin parque",
+      "release": "Que lo elija el plan",
+      "remove": "Quitar",
+      "fewer": "{city}: una noche menos",
+      "more": "{city}: una noche más",
+      "add": "Añadir una ciudad",
+      "addPick": "Elige una ciudad",
+      "total": "{nights, plural, =1 {1 noche} other {# noches}} en {cities, plural, =1 {1 ciudad} other {# ciudades}}, {moves, plural, =0 {ningún cambio de hotel} =1 {1 cambio de hotel} other {# cambios de hotel}}",
+      "stayShort": "{city} {count, plural, =1 {1 noche} other {# noches}}",
+      "summaryOpen": "El plan elige ciudades y noches"
     }
   },
   "tripRegions": {
@@ -4021,6 +4089,52 @@
         "title": "Orlando: qué parque qué día",
         "lead": "Dieciséis parques alrededor de Orlando en un solo calendario: para cada día ves dónde son más cortas las colas en Disney World y Universal, y el planificador pone tus parques en tus fechas.",
         "link": "Calendario de afluencia de Orlando"
+      }
+    },
+    "japan": {
+      "planner": {
+        "options": {
+          "moveBufferHint": "Con el servicio de equipaje (takkyubin) la maleta viaja por delante y bastan 30 minutos."
+        },
+        "base": {
+          "tokyo": "Tokio"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (hoteles Disney)",
+          "disneysea_hotels": "Hoteles de Tokyo DisneySea",
+          "bayside": "Maihama Bayside (hoteles oficiales)",
+          "shin_urayasu": "Shin-Urayasu (hoteles asociados)",
+          "tokyo_station": "Estación de Tokio",
+          "nagoya_station": "Estación de Nagoya",
+          "universal_city": "Universal City (hoteles oficiales)",
+          "umeda": "Umeda (estación de Osaka)",
+          "kyoto_station": "Estación de Kioto"
+        }
+      }
+    },
+    "paris": {
+      "planner": {
+        "base": {
+          "paris": "Centro de París"
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Hoteles Disney junto al lago Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne y Santa Fe",
+          "paris_center": "Centro de París",
+          "parc_asterix": "Hoteles del Parc Astérix"
+        }
       }
     }
   },

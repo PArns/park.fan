@@ -12,6 +12,7 @@ import {
   type TripPlanState,
   type PlanHotel,
   type PlanLock,
+  type PlanBasePick,
   type PlanParkPick,
   type PlanSearchRange,
 } from './plan-query';
@@ -23,6 +24,7 @@ import type {
   TripPerk,
   TripRegion,
   TripRegionPark,
+  TripTransportMode,
 } from './types';
 
 export * from './plan-query';
@@ -37,8 +39,52 @@ export * from './plan-query';
 
 // ── The answer ────────────────────────────────────────────────────────────────
 
-/** What a trip day is: a travel day without a park, a park day, two parks, or a day off. */
-export type PlanDayKind = 'arrival' | 'park' | 'hop' | 'rest' | 'departure';
+/**
+ * What a trip day is: a travel day without a park, a park day, two parks, a day off, or in a region
+ * with bases a day whose job is the move to the next city (`travel`).
+ */
+export type PlanDayKind = 'arrival' | 'park' | 'hop' | 'rest' | 'departure' | 'travel';
+
+/**
+ * A move to the next base on a day: in the morning before the park, in the evening after it, or the
+ * whole day (`travel`). Its times are typical (the leg's minutes from the region's start of moves,
+ * or from the park's close), never a timetable; park-local ISO.
+ */
+export interface PlanMove {
+  from: string;
+  to: string;
+  minutes: number;
+  mode: 'drive' | TripTransportMode;
+  /** The line or the service, in English. */
+  name?: string;
+  when: 'morning' | 'evening' | 'day';
+  departAt: string;
+  arriveAt: string;
+  changes?: number;
+}
+
+/** One stay of the trip: a base for a run of nights, `from` the check-in, `to` the check-out day. */
+export interface PlanStay {
+  base: string;
+  from: string;
+  to: string;
+  nights: number;
+  /** The hotel area the visitor named. */
+  area?: string;
+  /** The plan picked the base or its nights. */
+  auto?: boolean;
+}
+
+/**
+ * With nights the visitor fixed, the one-night change that saves most: the new nights per base, what
+ * it saves per ride, and the visit that moves to a quieter day.
+ */
+export interface PlanStaySuggestion {
+  nights: Record<string, number>;
+  savedMinutesPerRide: number;
+  park: string;
+  date: string;
+}
 
 /** A leg as a plan day carries it: hotel area to the day's park, or between a hop day's parks. */
 export interface PlanTravel {
@@ -46,7 +92,7 @@ export interface PlanTravel {
   to: string;
   km?: number;
   minutes: number;
-  mode: 'drive' | 'walk' | 'bus';
+  mode: 'drive' | TripTransportMode;
   /** Where a drive ends short of the gate (`ttc`, `garage_shuttle`). */
   via?: string;
   /** The curated rest of the way from that car park to the gate. */
@@ -93,6 +139,12 @@ export interface PlanDay {
   ticketDay?: number;
   /** A water-park visit on the ticket's allowance: no ticket day used. */
   ticketAllowance?: boolean;
+  /** In a region with bases: where the night is spent; the departure day's is where it starts. */
+  base?: string;
+  /** The move to the next base that day. */
+  move?: PlanMove;
+  /** After a morning move: when the guest gets into the park, park-local ISO. */
+  startAt?: string;
   reasons: string[];
   warnings: string[];
 }
@@ -237,6 +289,9 @@ export interface PlanTotals {
   parkDays: number;
   restDays: number;
   visits: number;
+  /** In a region with bases: the hotel changes, and the days that are only the move. */
+  moves?: number;
+  travelDays?: number;
 }
 
 /** The frame of a plan; `relaxed` names the rules it had to loosen. */
@@ -267,6 +322,11 @@ export interface PlanMeta {
   mixing?: { used: boolean; savedMinutesPerRide?: number };
   /** The catalog version the plan was made with. */
   ticketCatalog?: string;
+  /** In a region with bases: the stays in route order. */
+  stays?: PlanStay[];
+  staySuggestion?: PlanStaySuggestion;
+  /** The minutes each hotel change was given: the visitor's `moveBuffer`, else the region's. */
+  moveBuffer?: number;
 }
 
 /** `GET /v1/trip-regions/:region/plan`: one entry per trip day, arrival and departure included. */
@@ -340,7 +400,13 @@ export function minimumVisits(picks: readonly PlanParkPick[]): number {
 
 /** Why the plan cannot be asked for yet; each code has a line in `tripPlanner.problem`. */
 export type PlanProblem =
-  'no_dates' | 'too_long' | 'no_parks' | 'too_many_visits' | 'over_max_visits' | 'no_park_day';
+  | 'no_dates'
+  | 'too_long'
+  | 'no_parks'
+  | 'too_many_visits'
+  | 'over_max_visits'
+  | 'no_park_day'
+  | 'too_many_nights';
 
 /**
  * The first reason the plan cannot be asked for, or `null`. These are the 400s the API would
@@ -361,7 +427,90 @@ export function planProblem(
   const visits = minimumVisits(picks);
   if (visits > MAX_PLAN_VISITS) return 'over_max_visits';
   if (pinnedRepeatVisits(picks) > days * (state.hop ? 2 : 1)) return 'too_many_visits';
+  if (fixedNights(state) > length - 1) return 'too_many_nights';
   return null;
+}
+
+/** The nights the visitor fixed across the bases (`bases=tokyo:4,nagoya:1` is five). */
+export function fixedNights(state: Pick<TripPlanState, 'bases'>): number {
+  return state.bases.reduce((sum, b) => sum + (b.nights ?? 0), 0);
+}
+
+/**
+ * Fix a base's nights, or leave them to the plan (`null`), keeping the base's area. A base with
+ * neither nights nor an area left leaves `bases`, unless `keep`: a city the visitor added stays a
+ * stay whose nights the plan picks.
+ */
+export function setBaseNights(
+  state: TripPlanState,
+  key: string,
+  nights: number | null,
+  order: readonly string[],
+  keep = false
+): TripPlanState {
+  const current = state.bases.find((b) => b.key === key);
+  const area = nights === 0 ? null : (current?.area ?? null);
+  return withBase(state, { key, nights, area }, order, keep);
+}
+
+/** Name a base's hotel area, or none (`null`). A base at `:0` has no stay to name one for. */
+export function setBaseArea(
+  state: TripPlanState,
+  key: string,
+  area: string | null,
+  order: readonly string[]
+): TripPlanState {
+  const current = state.bases.find((b) => b.key === key);
+  if (current?.nights === 0) return state;
+  return withBase(state, { key, nights: current?.nights ?? null, area }, order, false);
+}
+
+/** Add a base the plan does not stay in, its nights left to the plan. */
+export function addBase(
+  state: TripPlanState,
+  key: string,
+  order: readonly string[]
+): TripPlanState {
+  return withBase(state, { key, nights: null, area: null }, order, true);
+}
+
+/** Take a base out of `bases`: the plan decides again whether to stay there. */
+export function releaseBase(state: TripPlanState, key: string): TripPlanState {
+  return { ...state, bases: state.bases.filter((b) => b.key !== key) };
+}
+
+function withBase(
+  state: TripPlanState,
+  pick: PlanBasePick,
+  order: readonly string[],
+  keep: boolean
+): TripPlanState {
+  const rest = state.bases.filter((b) => b.key !== pick.key);
+  const empty = pick.nights === null && pick.area === null && !keep;
+  const bases = empty ? rest : [...rest, pick];
+  bases.sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
+  return { ...state, bases };
+}
+
+/**
+ * The trip's arrival or departure base, from the gateway the visitor picked; `null` for a gateway
+ * several bases share, or none: the plan picks.
+ */
+export function setGateway(
+  state: TripPlanState,
+  end: 'start' | 'end',
+  base: string | null
+): TripPlanState {
+  return end === 'start' ? { ...state, startBase: base } : { ...state, endBase: base };
+}
+
+/** The hotel change's buffer; the region's own default is written as nothing. */
+export function setMoveBuffer(
+  state: TripPlanState,
+  minutes: number,
+  regionDefault: number
+): TripPlanState {
+  return { ...state, moveBuffer: minutes === regionDefault ? null : minutes };
 }
 
 /**
