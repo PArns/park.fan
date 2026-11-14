@@ -25,10 +25,9 @@ parkLinks:
   - legoland-japan
   - universal-studios-japan
 coverImage:
-  src: /media/fuji-q-highland/mount-fuji-coasters.jpg
-  alt: 'De besneeuwde Fuji boven een wolkenband, ervoor de stalen heuvels van een achtbaan en een hoogspanningsmast.'
-  caption: 'Vanuit Fuji-Q Highland zie je op heldere dagen de Fuji, hier boven een wolkenband.'
-  credit: 'Hong Ki Tang / Unsplash'
+  src: /media/reiseplaner/parky-japan-tag.webp
+  alt: 'Parky met een spies hanami-dango onder een bloeiende kersenboom, met daarachter een hogesnelheidstrein op een viaduct voor de besneeuwde Fuji.'
+  credit: 'park.fan'
 seo:
   title: 'Japan-reis plannen met Tokyo Disney, USJ en Fuji-Q'
   description: >-
@@ -62,6 +61,8 @@ Tussen de parken rijdt de Disney Resort Line, een monorail. Hij rijdt maar in é
 ### Fuji-Q Highland
 
 Fuji-Q Highland is het achtbaanpark van de reis. Het ligt in Fujiyoshida, één station voor Kawaguchiko. In de reisplanner kies je daarvoor de plaats Fujikawaguchiko aan het Kawaguchiko-meer. De toegang is gratis. Rijden mag je pas met een pas of losse ritkaarten, en het spookhuis Senritsu Meikyu, de FUJIYAMA Walk en de FUJIYAMA Slider hebben daarbovenop elk een eigen tijdticket nodig. Een park zonder toegangsprijs is dus ongeveer zo gratis als een restaurant zonder entree.
+
+![De besneeuwde Fuji boven een wolkenband, ervoor de stalen heuvels van een achtbaan en een hoogspanningsmast. | Vanuit Fuji-Q Highland zie je op heldere dagen de Fuji, hier boven een wolkenband. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
 Vanuit Tokio is Fuji-Q een goede dagtrip. De langeafstandsbussen vanaf Busta Shinjuku doen er volgens de dienstregeling van Fujikyu zo'n 100 minuten over, en de eerste twee, om 6.45 en 6.55 uur, zijn om 8.25 uur bij het park, ruim voor de opening. De laatste bus terug vertrekt om 20.23 uur en is om 22.00 uur in Shinjuku. De stoelen zijn gereserveerd, en de verkoop begint een maand voor de rit.
 

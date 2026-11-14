@@ -24,10 +24,9 @@ parkLinks:
   - legoland-japan
   - universal-studios-japan
 coverImage:
-  src: /media/fuji-q-highland/mount-fuji-coasters.jpg
-  alt: 'Snow-capped Mount Fuji above a band of cloud, with the steel hills of a roller coaster and a power pylon in front.'
-  caption: 'From Fuji-Q Highland you can see Mount Fuji on a clear day, here above a band of cloud.'
-  credit: 'Hong Ki Tang / Unsplash'
+  src: /media/reiseplaner/parky-japan-tag.webp
+  alt: 'Parky with a skewer of hanami dango under a cherry tree in bloom, behind him a bullet train on a viaduct in front of snow-capped Mount Fuji.'
+  credit: 'park.fan'
 seo:
   title: 'Japan theme park itinerary: Tokyo Disney, USJ, Fuji-Q'
   description: >-
@@ -61,6 +60,8 @@ The Disney Resort Line, a monorail, links the parks. It runs one way round a loo
 ### Fuji-Q Highland
 
 Fuji-Q Highland is the coaster park of the trip. It's in Fujiyoshida, one station before Kawaguchiko. In the trip planner you'll find it under Fujikawaguchiko, the town on Lake Kawaguchi. Entry is free. To ride you need a pass or single ride tickets, and the haunted house Senritsu Meikyu, the FUJIYAMA Walk and the FUJIYAMA Slider each need a timed ticket of their own on top. Free entry here is about as free as a restaurant that doesn't charge for the door.
+
+![Snow-capped Mount Fuji above a band of cloud, with the steel hills of a roller coaster and a power pylon in front. | From Fuji-Q Highland you can see Mount Fuji on a clear day, here above a band of cloud. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
 From Tokyo, Fuji-Q works well as a day trip. The highway buses from Busta Shinjuku take about 100 minutes on Fujikyu's timetable, and the first two, at 6:45 and 6:55, reach the park at 8:25, well before it opens. The last bus back leaves at 20:23 and gets to Shinjuku at 22:00. Seats are reserved, and sales open a month before the trip.
 

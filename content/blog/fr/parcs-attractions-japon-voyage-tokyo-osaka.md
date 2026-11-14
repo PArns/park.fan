@@ -25,10 +25,9 @@ parkLinks:
   - legoland-japan
   - universal-studios-japan
 coverImage:
-  src: /media/fuji-q-highland/mount-fuji-coasters.jpg
-  alt: 'Le mont Fuji enneigé au-dessus d’une bande de nuages, devant lui les bosses d’acier d’un grand huit et un pylône.'
-  caption: 'Depuis Fuji-Q Highland, on voit le mont Fuji par temps clair, ici au-dessus d’une bande de nuages.'
-  credit: 'Hong Ki Tang / Unsplash'
+  src: /media/reiseplaner/parky-japan-tag.webp
+  alt: 'Parky avec une brochette de hanami dango sous un cerisier en fleurs, derrière lui un train à grande vitesse sur un viaduc devant le mont Fuji enneigé.'
+  credit: 'park.fan'
 seo:
   title: 'Voyage au Japon : Tokyo Disney, Universal Japan, Fuji-Q'
   description: >-
@@ -62,6 +61,8 @@ Entre les parcs circule le Disney Resort Line, un monorail. Il ne tourne que dan
 ### Fuji-Q Highland
 
 Fuji-Q Highland, c’est le parc des montagnes russes du voyage. Il se trouve à Fujiyoshida, une gare avant Kawaguchiko. Dans le planificateur, tu le trouves sous Fujikawaguchiko, la ville au bord du lac Kawaguchi. L’entrée est gratuite. Pour monter dans les attractions, il te faut un pass ou des tickets à l’unité, et la maison hantée Senritsu Meikyu, la FUJIYAMA Walk et la FUJIYAMA Slider demandent en plus chacune un billet horaire. Un parc à entrée gratuite, c’est donc à peu près aussi gratuit qu’un restaurant qui ne fait pas payer la porte.
+
+![Le mont Fuji enneigé au-dessus d’une bande de nuages, devant lui les bosses d’acier d’un grand huit et un pylône. | Depuis Fuji-Q Highland, on voit le mont Fuji par temps clair, ici au-dessus d’une bande de nuages. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
 Depuis Tokyo, Fuji-Q se fait très bien à la journée. Les cars depuis Busta Shinjuku mettent environ 100 minutes selon les horaires de Fujikyu, et les deux premiers, à 6 h 45 et 6 h 55, arrivent au parc à 8 h 25, bien avant l’ouverture. Le dernier car du retour part à 20 h 23 et arrive à Shinjuku à 22 h. Les places sont réservées, et la vente ouvre un mois avant le trajet.
 

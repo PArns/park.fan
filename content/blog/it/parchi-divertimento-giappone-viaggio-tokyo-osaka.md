@@ -25,10 +25,9 @@ parkLinks:
   - legoland-japan
   - universal-studios-japan
 coverImage:
-  src: /media/fuji-q-highland/mount-fuji-coasters.jpg
-  alt: 'Il monte Fuji innevato sopra una fascia di nuvole, davanti le gobbe d’acciaio di un ottovolante e un traliccio.'
-  caption: 'Da Fuji-Q Highland, nelle giornate limpide, si vede il monte Fuji, qui sopra una fascia di nuvole.'
-  credit: 'Hong Ki Tang / Unsplash'
+  src: /media/reiseplaner/parky-japan-tag.webp
+  alt: 'Parky con uno spiedino di hanami dango sotto un ciliegio in fiore, dietro un treno ad alta velocità su un viadotto davanti al Fuji innevato.'
+  credit: 'park.fan'
 seo:
   title: 'Viaggio in Giappone con Tokyo Disney, Universal e Fuji-Q'
   description: >-
@@ -62,6 +61,8 @@ Tra i parchi corre la Disney Resort Line, una monorotaia. Gira in un solo senso,
 ### Fuji-Q Highland
 
 Fuji-Q Highland è il parco delle montagne russe del viaggio. Si trova a Fujiyoshida, una stazione prima di Kawaguchiko. Nel pianificatore lo trovi sotto Fujikawaguchiko, la località sul lago Kawaguchi. L’ingresso è gratuito. Per salire sulle attrazioni ti serve un pass o dei biglietti singoli, e la casa dell’orrore Senritsu Meikyu, il FUJIYAMA Walk e il FUJIYAMA Slider vogliono in più ciascuno un proprio biglietto a orario. Un parco con ingresso gratuito è quindi gratis più o meno quanto un ristorante che non ti fa pagare la porta.
+
+![Il monte Fuji innevato sopra una fascia di nuvole, davanti le gobbe d’acciaio di un ottovolante e un traliccio. | Da Fuji-Q Highland, nelle giornate limpide, si vede il monte Fuji, qui sopra una fascia di nuvole. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
 Da Tokyo, Fuji-Q si fa bene in giornata. I pullman da Busta Shinjuku impiegano circa 100 minuti secondo l’orario di Fujikyu, e i primi due, alle 6:45 e alle 6:55, arrivano al parco alle 8:25, ben prima dell’apertura. L’ultimo pullman di ritorno parte alle 20:23 e arriva a Shinjuku alle 22:00. I posti sono prenotati, e la vendita apre un mese prima del viaggio.
 

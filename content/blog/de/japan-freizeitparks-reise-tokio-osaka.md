@@ -25,10 +25,9 @@ parkLinks:
   - legoland-japan
   - universal-studios-japan
 coverImage:
-  src: /media/fuji-q-highland/mount-fuji-coasters.jpg
-  alt: 'Der verschneite Fuji über einem Wolkenband, davor die Stahlhügel einer Achterbahn und ein Strommast.'
-  caption: 'Von Fuji-Q Highland aus siehst du an klaren Tagen den Fuji, hier über einem Wolkenband.'
-  credit: 'Hong Ki Tang / Unsplash'
+  src: /media/reiseplaner/parky-japan-tag.webp
+  alt: 'Parky mit einem Spieß Hanami-Dango unter einem blühenden Kirschbaum, dahinter ein Schnellzug auf einem Viadukt vor dem verschneiten Fuji.'
+  credit: 'park.fan'
 seo:
   title: 'Japan-Reise mit Tokyo Disney, USJ und Fuji-Q planen'
   description: >-
@@ -62,6 +61,8 @@ Zwischen den Parks fährt die Disney Resort Line, eine Einschienenbahn. Sie fäh
 ### Fuji-Q Highland
 
 Fuji-Q Highland ist der Achterbahnpark der Reise. Er liegt in Fujiyoshida, einen Halt vor dem Bahnhof Kawaguchiko. Im Reiseplaner wählst du dafür den Ort Fujikawaguchiko am Kawaguchiko-See. Der Eintritt ist frei. Fahren darfst du erst mit einem Pass oder einzelnen Fahrkarten, und das Gruselhaus Senritsu Meikyu, der FUJIYAMA Walk und die FUJIYAMA Slider brauchen zusätzlich ein eigenes Zeitticket. Ein Park ohne Eintritt ist also ungefähr so kostenlos wie ein Restaurant ohne Eintritt.
+
+![Der verschneite Fuji über einem Wolkenband, davor die Stahlhügel einer Achterbahn und ein Strommast. | Von Fuji-Q Highland aus siehst du an klaren Tagen den Fuji, hier über einem Wolkenband. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
 Von Tokio aus geht Fuji-Q gut als Tagesausflug. Die Fernbusse ab Busta Shinjuku brauchen nach dem Fahrplan von Fujikyu rund 100 Minuten, und die ersten beiden um 6:45 und 6:55 Uhr sind um 8:25 Uhr am Park, lange vor der Öffnung. Der letzte Bus zurück fährt um 20:23 Uhr und ist um 22 Uhr in Shinjuku. Die Sitze sind reserviert, der Verkauf beginnt einen Monat vor der Fahrt.
 

@@ -25,10 +25,9 @@ parkLinks:
   - legoland-japan
   - universal-studios-japan
 coverImage:
-  src: /media/fuji-q-highland/mount-fuji-coasters.jpg
-  alt: 'El monte Fuji nevado sobre una franja de nubes, con las colinas de acero de una montaña rusa y una torre eléctrica delante.'
-  caption: 'Desde Fuji-Q Highland se ve el monte Fuji los días despejados, aquí sobre una franja de nubes.'
-  credit: 'Hong Ki Tang / Unsplash'
+  src: /media/reiseplaner/parky-japan-tag.webp
+  alt: 'Parky con una brocheta de hanami dango bajo un cerezo en flor, detrás un tren bala sobre un viaducto ante el monte Fuji nevado.'
+  credit: 'park.fan'
 seo:
   title: 'Viaje a Japón con Tokyo Disney, Universal Japan y Fuji-Q'
   description: >-
@@ -62,6 +61,8 @@ Entre los parques circula la Disney Resort Line, un monorraíl. Solo va en un se
 ### Fuji-Q Highland
 
 Fuji-Q Highland es el parque de montañas rusas del viaje. Está en Fujiyoshida, una estación antes de Kawaguchiko. En el planificador lo encuentras en Fujikawaguchiko, el pueblo junto al lago Kawaguchi. La entrada es gratis. Para subir a las atracciones necesitas un pase o billetes sueltos, y la casa del terror Senritsu Meikyu, el FUJIYAMA Walk y el FUJIYAMA Slider piden además un billete con hora propio. Un parque con entrada gratis es, por tanto, más o menos tan gratis como un restaurante que no cobra por cruzar la puerta.
+
+![El monte Fuji nevado sobre una franja de nubes, con las colinas de acero de una montaña rusa y una torre eléctrica delante. | Desde Fuji-Q Highland se ve el monte Fuji los días despejados, aquí sobre una franja de nubes. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
 Desde Tokio, Fuji-Q encaja bien como excursión de un día. Los autobuses desde Busta Shinjuku tardan unos 100 minutos según el horario de Fujikyu, y los dos primeros, a las 6:45 y las 6:55, llegan al parque a las 8:25, mucho antes de la apertura. El último autobús de vuelta sale a las 20:23 y llega a Shinjuku a las 22:00. Los asientos son reservados, y la venta abre un mes antes del viaje.
 
