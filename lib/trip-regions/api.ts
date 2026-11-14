@@ -8,6 +8,7 @@ import { tripRegionLinks, type TripRegionLinks } from './trip-links';
 import type {
   TripBestDays,
   TripCalendar,
+  TripForecastAccuracy,
   TripRegion,
   TripTicketCatalog,
   TripWhen,
@@ -258,4 +259,28 @@ export async function getTripRegionSchoolBreaks(
     throw new Error(`Trip region /school-breaks ${response.status}: ${response.statusText}`);
   }
   return (await response.json()) as TripSchoolBreaks;
+}
+
+/**
+ * How far the region's forecast was off lately (`/accuracy`), open like `/school-breaks`, an hour
+ * in the Data Cache as the API asks the browser. `null` where the API has too few measured days to
+ * say, or answers with a figure that is not one; a failed read throws like every read here.
+ */
+export async function getTripRegionAccuracy(region: string): Promise<TripForecastAccuracy | null> {
+  const { 'X-API-Key': _dataKey, ...headers } = getServerApiHeaders();
+  void _dataKey;
+  const url = `${getApiBaseUrl()}/v1/trip-regions/${encodeURIComponent(region)}/accuracy`;
+  const response = await fetch(url, {
+    next: { revalidate: CACHE_TTL.tripRegionData, tags: [tripRegionCacheTag(region)] },
+    headers: { 'Content-Type': 'application/json', ...headers },
+  });
+  if (!response.ok) {
+    throw new Error(`Trip region /accuracy ${response.status}: ${response.statusText}`);
+  }
+  const answer = (await response.json()) as { forecastAccuracy?: TripForecastAccuracy | null };
+  const figure = answer.forecastAccuracy;
+  const counts = [figure?.days, figure?.leadDays, figure?.maeMinutes, figure?.parks];
+  return figure && counts.every((n) => typeof n === 'number' && Number.isFinite(n) && n > 0)
+    ? figure
+    : null;
 }

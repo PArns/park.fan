@@ -28,11 +28,16 @@ import {
   tripRegionRedirects,
   tripRegionRewrites,
 } from '../lib/trip-regions/routes.ts';
-import { tripRegionBestTimePath, tripRegionPath } from '../lib/trip-regions/paths.ts';
+import {
+  tripRegionBestTimePath,
+  tripRegionPath,
+  tripRegionYears,
+} from '../lib/trip-regions/paths.ts';
 import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
 import { regionOrShared } from '../lib/trip-regions/region-words.ts';
 import { buildTripIcs } from '../lib/trip-regions/plan-ics.ts';
-import { shortParkName } from '../lib/trip-regions/hub-data.ts';
+import { formatHubMonth, shortParkName } from '../lib/trip-regions/hub-data.ts';
+import { MAX_DESCRIPTION_LENGTH, MAX_TITLE_LENGTH } from '../lib/utils/metadata.ts';
 
 let passed = 0;
 const test = (name, fn) => {
@@ -124,7 +129,26 @@ test('a live region has its own words in every locale', () => {
       for (const key of ['name', 'area', 'calendar', 'calendarHint']) {
         assert.equal(typeof own.nav?.[key], 'string', `${locale} ${region.slug}.nav.${key}`);
       }
-      assert.equal(typeof own.hub?.title, 'string');
+      // The head, the metadata and the dataset have no fallback; every other block of the hub draws
+      // nothing without its words (docs/features/trip-regions.md#for-every-hub).
+      for (const key of [
+        'title',
+        'monthTitle',
+        'metaTitle',
+        'metaTitleMonth',
+        'metaTitleMonthShort',
+        'metaDescriptionPlain',
+        'metaDescriptionMonthPlain',
+      ]) {
+        assert.equal(typeof own.hub?.[key], 'string', `${locale} ${region.slug}.hub.${key}`);
+      }
+      for (const key of ['name', 'description']) {
+        assert.equal(
+          typeof own.hub?.dataset?.[key],
+          'string',
+          `${locale} ${region.slug}.hub.dataset.${key}`
+        );
+      }
       for (const page of region.bestTime) {
         assert.equal(typeof own.bestTime?.title?.[page.id], 'string', `${locale} ${page.id}`);
       }
@@ -133,6 +157,35 @@ test('a live region has its own words in every locale', () => {
       }
     }
   }
+});
+
+test("every region's titles and plain descriptions fit a search result, in every locale", () => {
+  // The longest month a hub can name and the widest year span its title can carry.
+  const years = tripRegionYears({ year: 2026, month: 11 });
+  for (const region of TRIP_REGIONS) {
+    for (const locale of locales) {
+      const hub = messages[locale].tripRegions?.[region.slug]?.hub;
+      if (!hub) continue;
+      const month = Array.from({ length: 12 }, (_, i) => formatHubMonth(2027, i + 1, locale)).sort(
+        (a, b) => b.length - a.length
+      )[0];
+      const fill = (text) => text.replaceAll('{years}', years).replaceAll('{month}', month);
+      const fits = (key, limit) => {
+        const text = fill(hub[key]);
+        assert.ok(text.length <= limit, `${locale} ${region.slug}.hub.${key}: ${text.length}`);
+      };
+      fits('metaTitle', MAX_TITLE_LENGTH);
+      fits('metaTitleMonthShort', MAX_TITLE_LENGTH);
+      fits('metaDescriptionPlain', MAX_DESCRIPTION_LENGTH);
+      fits('metaDescriptionMonthPlain', MAX_DESCRIPTION_LENGTH);
+    }
+  }
+});
+
+test('the title names the years the month index spans, one year from January', () => {
+  assert.equal(tripRegionYears({ year: 2026, month: 11 }), '2026–2027');
+  assert.equal(tripRegionYears({ year: 2027, month: 1 }), '2027');
+  assert.equal(tripRegionYears({ year: 2027, month: 2 }), '2027–2028');
 });
 
 test('a live region names its own page first among its best-time pages', () => {

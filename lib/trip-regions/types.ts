@@ -620,6 +620,23 @@ export interface TripWhen {
   seasons: TripSeason[];
 }
 
+/**
+ * How far the region's forecast of the peak wait was off, measured over the last `days` days for
+ * forecasts made `leadDays` ahead (`GET /v1/trip-regions/:region/accuracy`, open). The planner's
+ * „Wie genau ist das?“ uses the same measure.
+ */
+export interface TripForecastAccuracy {
+  days: number;
+  /** The measured days, region-local `YYYY-MM-DD`. */
+  from: string;
+  to: string;
+  leadDays: number;
+  /** The mean absolute error of the peak wait, minutes, unrounded. */
+  maeMinutes: number;
+  parks: number;
+  sampleDays: number;
+}
+
 /** A month of a hub, 1-based, the way the month URLs spell it (`/orlando/2026/12`). */
 export interface TripMonth {
   year: number;
@@ -658,8 +675,13 @@ export interface TripWhenMonth {
   headlinerWait?: number;
   basis: 'forecast' | 'mixed' | 'last_year' | 'none';
   climate?: TripMonthClimate;
-  /** The region's school-break days in the month (Orange County for Orlando), by name. */
-  usSchoolBreakDays: Array<{ date: string; name: string }>;
+  /**
+   * The region's school-break days in the month (Orange County for Orlando, Japan's own), by
+   * name. Every region gets it; read it through `monthBreakDays`.
+   */
+  localSchoolBreakDays?: Array<{ date: string; name: string }>;
+  /** The same days under their first name, sent in the US regions only. Deprecated. */
+  usSchoolBreakDays?: Array<{ date: string; name: string }>;
   /** Ids into {@link TripWhen.seasons}: the chosen parks' seasons that run in the month. */
   seasons: string[];
   /** Park days of the chosen parks that close early for day guests for a ticketed event. */

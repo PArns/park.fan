@@ -9,6 +9,10 @@ export interface FaqRow {
   answer: ReactNode;
   /** Optional leading glyph. Park and ride questions carry one; the editorial pages do not. */
   icon?: LucideIcon;
+  /** The row's anchor, for a link that opens this one question (`FaqLink`). */
+  id?: string;
+  /** The question's message key, which `faq_opened` reports where the list depends on the data. */
+  key?: string;
 }
 
 /**
@@ -35,7 +39,12 @@ export function FaqAccordion({
       {items.map((item, index) => {
         const Icon = item.icon;
         return (
-          <details key={index} className="group" {...faqPositionAttributes(index)}>
+          <details
+            key={index}
+            id={item.id}
+            className="group scroll-mt-24"
+            {...faqPositionAttributes(index, item.key)}
+          >
             <summary
               className={cn(
                 'hover:bg-muted/40 flex cursor-pointer list-none items-center justify-between gap-3 py-4 transition-colors',

@@ -17,6 +17,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `getTripRegionCalendar` _function_: Every park's days side by side, with the seasons that run on them; at most 92 days.
 - `getTripRegionBestDays` _function_: Each park's quiet and busy days in a window, as sets, and each resort's best dates.
 - `getTripRegionSchoolBreaks` _function_: The school-holiday regions the holiday data knows in `countries` (`DE,NL,GB`), each with its breaks in the range and the day its data ends. Open: the data key stays home.
+- `getTripRegionAccuracy` _function_: How far the region's forecast was off lately (`/accuracy`), open like `/school-breaks`, an hour in the Data Cache as the API asks the browser.
 - `TRIP_REGIONS_CACHE_TAG` _const_: The Data Cache tag of the list of regions (`GET /v1/trip-regions`).
 - Types: `TripWindow`, `TripRegionNavFacts`
 
@@ -29,7 +30,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
 - `monthKey` _function_: `YYYY-MM` of a month.
-- `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a tier among the months that have a figure, and its day guests' hours against the year's mean.
+- `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
 - `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
 - `europeanBreaks` _function_: Each country's regions with a real break in a month, in `countries`' order.
@@ -37,6 +38,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `isWholeWeek` _function_: Whether a week lies wholly inside a range, so its figure is a whole week's.
 - `bestAndWorstWeeks` _function_: The quietest and busiest whole weeks, `count` each, quietest and busiest first.
 - `seasonsOn` _function_: The seasons that run on a day range, one per name, cancelled and closures left out.
+- `monthBreakDays` _function_: A month's school-break days: `localSchoolBreakDays`, which every region gets, else the US regions' older `usSchoolBreakDays`, so the page reads either side of the API's rename.
+- `quietWeekInStorm` _function_: The year's quietest week where no trip above covers it and its month is in the region's storm season: the trips are ranked with the storm risk counted, so that week stays out of them, and the page says why.
 - `weekFacts` _function_: A week's school breaks (from the months' break days) and the seasons running in it.
 - `lastYearFrom` _function_: The week from which `/when` reads last year's measured days: the strip's first week that does, in part or whole. `forecastUntil` is no turn: the forecast runs on for months, but the API ranks every day after its first 60 on last year.
 - `holidayWeek` _function_: The week the page answers "Is Christmas busy?" with: Christmas week where the range holds it, else New Year's, else none.
@@ -50,7 +53,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `BEST_TIME_TRIP_DAYS` _const_: The trip length every page ranks, the planner's own default.
 - `BEST_TIME_WINDOWS` _const_: The windows the first answer names.
 - `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
-- Types: `BestTimePageId`, `MonthHours`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
+- Types: `BestTimePageId`, `MonthHours`, `MonthMark`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
 
 ### [`date-facts.ts`](../../lib/trip-regions/date-facts.ts)
 
@@ -71,6 +74,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
 - `withGroupNames` _function_: The region with its day-trip group named in the reader's language: the API names it in English, while a resort's name is the operator's own and stays as it is.
 - `regionResorts` _function_: The resorts alone: the groups a day's shortest line is named for.
+- `headlinerGroups` _function_: The groups with a headliner park: the ones the first answer names, a resort of one park (Universal Studios Hollywood, Universal Studios Japan) included, since its park is one a trip is planned around.
+- `summaryGroups` _function_: The groups a window is summed up for: every resort, and every group with a headliner park.
 - `shortParkName` _function_: The words a park's name carries that every visitor drops: the operator's prefix, "Park", "Theme Park", the place (a region's `parkNameSuffixes`).
 - `closesEarly` _function_: Whether a day closes early for the day guest: the API says so (`closesEarly`), or a separately ticketed evening follows, which sends the day guests out before it starts.
 - `dayGuestClose` _function_: When the day guests leave: the API's `dayGuestCloseAt`, else the day's own close.
@@ -79,12 +84,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
 - `resortHasChoice` _function_: Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
+- `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
 - `formatHubDate` _function_: A plain date as the hub prints it, anchored at noon UTC so no zone moves it: `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
+- `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
 - `findLeg` _function_: The legs between two places, in either direction (`hotel:<key>` or a park slug).
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
@@ -97,14 +104,27 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripRegionToday` _function_: A region's today, in its own zone, never the server's or the browser's.
 - `shortGroupName` _function_: A resort's name without "Resort": "Walt Disney World", "Universal Orlando".
 - `parkGeo` _function_: The geo segments of a region park's path (`/parks/<continent>/<country>/<city>/<slug>`).
-- `glanceLines` _function_: The shortest lines the first answer names: each resort where the pick beat another park that day.
+- `glanceLines` _function_: The best park per group the first answer names: every group with a headliner park, by the API's pick, or by its one park with a figure where it has nothing to choose between (Universal Studios Hollywood).
+- `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it.
 - `slimRegion` _function_: The region as the hub's client part needs it: the parks, groups and hotel areas, and only the legs from a hotel area to a park, which the day sheet's travel line reads.
 - `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
 - `formatWindow` _function_: A trip window's dates as one short range (`formatDateRange`).
 - `HUB_FIRST_DAYS` _const_: How many days the first answer covers: the server-rendered week.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
-- Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `EventLane`, `ResortMonthSummary`
+- Types: `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`
+
+### [`hub-facts.ts`](../../lib/trip-regions/hub-facts.ts)
+
+- `isoWeekday` _function_: The ISO weekday of a plain date.
+- `weekdayFacts` _function_: Each weekday's mean over the headliner parks, rounded to five like every wait the site prints, with the lowest and the highest. `null` with fewer than five weekdays of two days each.
+- `usualHours` _function_: Each headliner park's most common opening hours over the days with published hours, the day guests' close (a party night counts with its early close). A park without published hours is left out.
+- `breakFacts` _function_: The calendar's school breaks as runs (`breakRuns`, the best-time pages' rule) and its public holidays, with the headliner mean on those days against the other days. `null` with neither.
+- `parkMeans` _function_: Each headliner park's mean peak wait over the days it has a figure, quietest first: which park is quieter across the window or the month, beside the calendar's day-by-day picks. A park with fewer than three such days is left out.
+- `parkClosures` _function_: The parks that are closed on some days of the calendar, in the region's order, by their own `CLOSED` status: a day no source reports is `UNKNOWN` and never counts as closed.
+- `countWords` _function_: Words as a reader counts them: "Disney’s", "EPCOT-Festival" and "15." each one.
+- `stormCodeIn` _function_: The storm code a span of days carries, for a week of the best-time strip or a month of its table: the peak where any day is in it, else the season where any day is, by the planner's own `stormCodeOn`, so every calendar marks the same days.
+- Types: `WeekdayWait`, `WeekdayFacts`, `UsualHours`, `BreakFacts`, `ParkMean`, `ParkClosures`
 
 ### [`local-choice.ts`](../../lib/trip-regions/local-choice.ts)
 
@@ -120,6 +140,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `isSameMonth` _function_: Whether two months are the same month.
 - `currentTripRegionMonth` _function_: Today's month in the region, never the server's or the browser's: the hub, the window and the proxy agree on which month "this month" is across midnight elsewhere.
 - `tripRegionMonths` _function_: The months a hub serves, from the current one on.
+- `tripRegionYears` _function_: The years a hub's months span, for its `<title>` (`{years}`): "2026–2027", or the one year from January.
 - `isTripRegionMonthInRange` _function_: Whether a month is one a hub serves: the current one or one of the eleven after it.
 - `parseTripRegionMonth` _function_: The month the `[[...date]]` segments ask for: `null` for the hub, `'invalid'` for segments that are not a month the hub serves (a 404, or a 308 the proxy has already answered), and `padded` for `/2026/09`, which the proxy 308s to `/2026/9`.
 - `tripMonthRange` _function_: The first and last day of a month, `YYYY-MM-DD`, for a `/calendar` or `/best-days` window.
@@ -127,6 +148,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripRegionRelayUrl` _function_: Where a page asks for one of a region's keyed routes: the same-origin relay (`app/api/trip-regions/[...path]/route.ts`), which adds the site's data key. The query names are the API's own.
 - `TRIP_PLANNER_ID` _const_: The anchor of the hub's planner chapter, which the hero's action and Parky's links open.
 - `TRIP_CALENDAR_ID` _const_: The anchor of chapter 01, the calendar, for the park bands and the homepage teaser.
+- `TRIP_ACCURACY_ID` _const_: The anchor of the hub's question on how far and how well the forecast reaches.
 - `TRIP_REGION_MONTH_COUNT` _const_: How many months a hub serves: the current month (the hub itself) and the eleven after it, in the region's time. Past `forecastUntil` a month reads last year's measured days with a banner.
 - Types: `TripRelayRoute`
 
@@ -401,6 +423,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`region-words.ts`](../../lib/trip-regions/region-words.ts)
 
 - `regionOrShared` _function_: The region's words for `key` where it has them, else the shared ones.
+- `ownWords` _function_: A region's own words for `key`, or `null` where its copy has not written them yet.
 - Types: `CodeWords`
 
 ### [`regions/japan.ts`](../../lib/trip-regions/regions/japan.ts)
@@ -479,4 +502,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripForecastAccuracy`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

@@ -84,8 +84,8 @@ export interface TripTicketStep {
 
 /**
  * The hub's questions that need a park or a leg of the region's to be asked: each is asked where
- * the region names what it needs and the data answers it. The quietest days, the colour and
- * "last year" are every region's.
+ * the region names what it needs, the data answers it and the region has written its words. The
+ * quietest days and the five questions on the figure and the forecast are every region's.
  */
 export interface TripHubFaq {
   /** The park whose party nights close it early: "Which park on a <park> party night?" */
@@ -96,14 +96,17 @@ export interface TripHubFaq {
   distance?: { from: string; near: string; far: string };
   /** Whether the hotels' early slots are compared, the first kind against the second. */
   earlySlots?: readonly ['early_entry', 'early_park_admission'];
+  /**
+   * The region's own questions with a fixed answer, by key under `tripRegions.<slug>.hub.faq`
+   * (`{ q, a }`), asked after the data questions in this order: Japan's luggage between cities.
+   */
+  questions?: readonly string[];
 }
 
 /** What the hub shows of the region beside the API's answers. */
 export interface TripHub {
   /** The hero photos as media sources, the first the catalog still has wins. */
   heroPhotos: readonly string[];
-  /** The park whose crowd calendar the next steps name. */
-  nextStepPark?: string;
   /** The hotel area the day sheet's drive times start from before the reader picks one. */
   defaultArea?: string;
   faq: TripHubFaq;

@@ -1,55 +1,65 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
-import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
+import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import {
   closesEarly,
   dayGuestClose,
   formatHubDate,
   glanceLines,
-  parkGeo,
+  headlinerGroups,
+  parkCalendarHref,
   shortGroupName,
   shortParkName,
-  tintLevel,
   type ResortMonthSummary,
 } from '@/lib/trip-regions/hub-data';
+import { shownWait } from '@/lib/trip-regions/plan-week';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
+import { ownWords } from '@/lib/trip-regions/region-words';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
-import type { TripCalendarDay, TripRegion, TripRegionPark } from '@/lib/trip-regions/types';
+import type { TripCalendarDay, TripRegion } from '@/lib/trip-regions/types';
 
 /** The glass the answer stands on, over the hero photo, in both themes. */
 const GLANCE_BOX =
   'bg-background/70 border-border/60 max-w-2xl rounded-xl border p-3 backdrop-blur-md sm:p-4';
 
-/** A park's crowd calendar, the link a pick carries: the next question is "and on other days?". */
-function calendarHref(park: TripRegionPark, locale: string): string {
-  const geo = parkGeo(park);
-  return geo
-    ? parkCalendarPath(locale, geo.continent, geo.country, geo.city, park.slug)
-    : park.path;
-}
+/** One row of the answer: its label over the parks on a phone, beside them from `sm`. */
+const ROW = 'grid gap-x-4 gap-y-0.5 sm:grid-cols-[minmax(0,11rem)_1fr]';
 
 /**
- * The hub's first answer: on one day, in the region's time, each resort's shortest line with its
- * minutes and its level, and the early close where a ticketed evening follows. The day is named,
- * never "today", because a cached copy outlives midnight in the region. A resort with one park that has a
- * figure has nothing to choose between and is left out ({@link glanceLines}).
+ * The hub's first answer, under its two buttons: the best park of each group with a headliner on
+ * one day, by its date in the region's time and never as "today", because a cached copy outlives
+ * midnight there; then the quietest days of the window, a date said once where the resorts share
+ * it. Minutes only, no crowd badge: the badge compares a park with its own normal day, and beside
+ * "best park" it read as a contradiction.
  */
 export async function HubGlance({
   day,
   region,
+  summaries,
+  windowTo,
   locale,
 }: {
   day: TripCalendarDay | null;
   region: TripRegion;
+  summaries: ResortMonthSummary[];
+  /** The window's last day, for "quietest to …". */
+  windowTo: string;
   locale: string;
 }) {
   const t = await getTranslations('tripHub.glance');
   const tRegion = await getRegionTranslations(region.slug, 'hub.glance');
   const { timezone } = requireTripRegion(region.slug);
   const lines = day ? glanceLines(day, region) : [];
+  const zone = ownWords(tRegion, 'zone');
+  const named = new Set(headlinerGroups(region).map((g) => g.key));
+  const quiet = summaries
+    .filter((s) => named.has(s.group.key))
+    .map((s) => s.quiet.find((q) => q.basis !== 'last_year'))
+    .filter((q): q is NonNullable<typeof q> => !!q);
+  const dates = [...new Set(quiet.map((q) => q.date))].sort();
+
   if (!day || lines.length === 0) {
     return (
       <p className={cn(GLANCE_BOX, 'text-muted-foreground text-sm')}>
@@ -57,46 +67,81 @@ export async function HubGlance({
       </p>
     );
   }
+  const minutes = (value: number) => (
+    <span className="tabular-nums">{t('minutes', { minutes: value })}</span>
+  );
   return (
-    <div className={GLANCE_BOX} data-trip-glance="">
-      <p className="text-muted-foreground text-sm">
-        {tRegion.rich('title', {
-          date: formatHubDate(day.date, locale, 'long'),
-          time: (chunks) => <time dateTime={day.date}>{chunks}</time>,
-        })}
-      </p>
-      <ul className="mt-2 space-y-1.5">
-        {lines.map(({ group, park, day: parkDay, earlyElsewhere }) => (
-          <li key={group.key} className="flex flex-wrap items-center gap-x-2 gap-y-1 text-base">
-            <span className="text-muted-foreground">{shortGroupName(group.name)}:</span>
-            <Link
-              href={calendarHref(park, locale)}
-              prefetch={false}
-              className="text-foreground font-semibold underline-offset-4 hover:underline"
-            >
-              {shortParkName(park.name)}
-            </Link>
-            <span className="tabular-nums">{t('minutes', { minutes: parkDay.headlinerWait })}</span>
-            <CrowdLevelBadge level={tintLevel(parkDay.crowdLevel)} />
-            {closesEarly(parkDay) && dayGuestClose(parkDay) && (
-              <span className="text-muted-foreground text-sm">
-                {t('closesEarly', {
-                  time: formatClockTime(dayGuestClose(parkDay)!, locale, timezone),
-                })}
+    <dl
+      className={cn(GLANCE_BOX, 'space-y-2 text-base')}
+      data-trip-glance=""
+      {...linkBlockAttributes('trip_answer')}
+    >
+      <div className={ROW}>
+        <dt className="text-muted-foreground pt-0.5 text-sm">
+          {t.rich('best', {
+            date: formatHubDate(day.date, locale),
+            time: (chunks) => <time dateTime={day.date}>{chunks}</time>,
+          })}
+          {zone ? `, ${zone}` : ''}
+        </dt>
+        <dd className="flex flex-wrap gap-x-3 gap-y-0.5">
+          {lines.map(({ group, park, day: parkDay, earlyElsewhere }) => (
+            <span key={group.key}>
+              <Link
+                href={parkCalendarHref(park, locale)}
+                prefetch={false}
+                className="text-foreground font-semibold underline-offset-4 hover:underline"
+                aria-label={`${shortGroupName(group.name)}: ${shortParkName(park.name)}`}
+                {...linkEntityAttributes(park.id)}
+              >
+                {shortParkName(park.name)}
+              </Link>{' '}
+              {minutes(shownWait(parkDay)!)}
+              {closesEarly(parkDay) && dayGuestClose(parkDay) && (
+                <span className="text-muted-foreground text-sm">
+                  {' '}
+                  {t('closesEarly', {
+                    time: formatClockTime(dayGuestClose(parkDay)!, locale, timezone),
+                  })}
+                </span>
+              )}
+              {earlyElsewhere && dayGuestClose(earlyElsewhere.day) && (
+                <span className="text-muted-foreground text-sm">
+                  {' '}
+                  {t('earlyElsewhere', {
+                    park: shortParkName(earlyElsewhere.park.name),
+                    time: formatClockTime(dayGuestClose(earlyElsewhere.day)!, locale, timezone),
+                  })}
+                </span>
+              )}
+            </span>
+          ))}
+        </dd>
+      </div>
+      {dates.length > 0 && (
+        <div className={ROW}>
+          <dt className="text-muted-foreground pt-0.5 text-sm">
+            {t('quietestTo', { date: formatHubDate(windowTo, locale, 'dayMonth') })}
+          </dt>
+          <dd className="flex flex-wrap gap-x-3 gap-y-0.5">
+            {dates.map((date) => (
+              <span key={date}>
+                <time dateTime={date}>{formatHubDate(date, locale)}</time>
+                {quiet
+                  .filter((q) => q.date === date)
+                  .map((q, i) => (
+                    <span key={q.park.slug}>
+                      {i > 0 ? ' ·' : ''}{' '}
+                      <span className="font-semibold">{shortParkName(q.park.name)}</span>
+                      {q.wait !== null && <> {minutes(q.wait)}</>}
+                    </span>
+                  ))}
               </span>
-            )}
-            {earlyElsewhere && dayGuestClose(earlyElsewhere.day) && (
-              <span className="text-muted-foreground text-sm">
-                {t('earlyElsewhere', {
-                  park: shortParkName(earlyElsewhere.park.name),
-                  time: formatClockTime(dayGuestClose(earlyElsewhere.day)!, locale, timezone),
-                })}
-              </span>
-            )}
-          </li>
-        ))}
-      </ul>
-    </div>
+            ))}
+          </dd>
+        </div>
+      )}
+    </dl>
   );
 }
 

@@ -448,8 +448,11 @@ export interface SiteEventMap {
   section_seen: { section: SeenSection };
   /** A header menu band or the phone menu opened, hover included; once per opening. */
   nav_menu_opened: { menu: NavMenuId };
-  /** A question of an FAQ opened; `position` is its 1-based place in the list. */
-  faq_opened: { position: number };
+  /**
+   * A question of an FAQ opened; `position` is its 1-based place in the list, and `key`, where the
+   * list's questions depend on the data (a trip region's hub), the question's message key.
+   */
+  faq_opened: { position: number; key?: string };
   /** The „Mehr" flyout of a park's title card opened, with the park's outbound links. */
   park_links_opened: NoProps;
   /**
@@ -463,6 +466,10 @@ export interface SiteEventMap {
    * the first dates picked in a page load where nothing else started it, the desk's usual way in.
    */
   trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' | 'dates' }>;
+  /** One of the hub head's two ways in pressed: plan the trip, or go to the calendar. */
+  trip_hub_action: TripEvent<{ action: 'plan' | 'calendar'; page: 'hub' | 'month' }>;
+  /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
+  trip_hub_filter: TripEvent<{ resort: string }>;
   /**
    * The ticket question before PAR-1309: no longer sent, kept for the history it counted. Its
    * successor is `trip_tickets_opened`.
@@ -502,8 +509,8 @@ export interface SiteEventMap {
   trip_find_period: TripEvent<{ period: WhenPeriodKey; school_breaks: boolean }>;
   /** The date grid's resort switch, on a change; `from_default` when it left the default view. */
   trip_calendar_mode: TripEvent<{ mode: string; from_default: boolean }>;
-  /** "How accurate is this?" opened under the plan. */
-  trip_accuracy_opened: TripEvent<{ surface: 'plan' }>;
+  /** The forecast's accuracy opened: the plan's „Wie genau ist das?“ or the hub calendar's line. */
+  trip_accuracy_opened: TripEvent<{ surface: 'plan' | 'hub' }>;
   /**
    * The API's suggestion for the nights (`staySuggestion`): on screen, once per suggestion, and
    * taken with "Plan it this way".

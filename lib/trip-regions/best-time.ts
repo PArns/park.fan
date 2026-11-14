@@ -1,9 +1,8 @@
-import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { formatWindow } from './hub-data';
 import { DEFAULT_FIND_DAYS, MAX_DAYS_AHEAD, type PlanSearchRange } from './plan-query';
-import { weekTiers } from './plan-when';
+import { weekInWindow } from './plan-when';
 import { bestTimePageOf, tripRegionConfig, type TripRegionConfig } from './registry';
 import type {
   TripMonth,
@@ -13,6 +12,7 @@ import type {
   TripWhen,
   TripWhenMonth,
   TripWhenWeek,
+  TripWhenWindow,
   TripWhenWithMonths,
 } from './types';
 
@@ -142,14 +142,17 @@ function overlaps(a: { from: string; to: string }, b: { from: string; to: string
 /** The opening hours of a month against the year's: long, short, or the usual. */
 export type MonthHours = 'long' | 'short' | 'usual';
 
+/** A month the year's figures set apart: among the quietest, or among the busiest. */
+export type MonthMark = 'very_low' | 'very_high';
+
 /** One row of the month table. */
 export interface BestTimeMonthRow {
   month: TripMonth;
   key: string;
   /** `/when`'s month; absent past the range the API reaches. */
   data?: TripWhenMonth;
-  /** Where the month falls among the year's months, quietest to busiest. */
-  tier: ColoredCrowdLevel | null;
+  /** Among the year's quietest or busiest months, else `null`: the months between say nothing. */
+  mark: MonthMark | null;
   hours: MonthHours | null;
 }
 
@@ -157,9 +160,16 @@ export interface BestTimeMonthRow {
 const HOURS_SPREAD = 0.75;
 
 /**
+ * Figures this close count as the same, as on the hub: waits are rounded to five minutes, so a
+ * month one minute busier than another is not a different kind of month.
+ */
+const SAME_WAIT_MINUTES = 5;
+
+/**
  * The month table: every month of the title's year from the current one on, each with `/when`'s
- * figures where its range reaches, a tier among the months that have a figure, and its day guests'
- * hours against the year's mean.
+ * figures where its range reaches, a mark where it is among the quietest or the busiest months
+ * (within {@link SAME_WAIT_MINUTES} of the lowest or the highest figure), and its day guests' hours
+ * against the year's mean. Never a crowd-level tint: that means a day against a park's normal day.
  */
 export function monthRows(
   when: Pick<TripWhenWithMonths, 'months'>,
@@ -169,7 +179,18 @@ export function monthRows(
   const first = Number(todayIso.slice(0, 4)) === year ? Number(todayIso.slice(5, 7)) : 1;
   const months = Array.from({ length: 13 - first }, (_, i) => ({ year, month: first + i }));
   const data = months.map((m) => when.months.find((x) => x.month === monthKey(m)));
-  const tiers = weekTiers(data.map((d) => ({ headlinerWait: d?.headlinerWait })));
+  const figures = data.map((d) => d?.headlinerWait).filter((v): v is number => v != null);
+  const low = figures.length ? Math.min(...figures) : null;
+  const high = figures.length ? Math.max(...figures) : null;
+  const markOf = (wait: number | undefined): MonthMark | null => {
+    // A flat year (lowest and busiest within the band) has nothing to set apart.
+    if (wait == null || low == null || high == null || high - low <= SAME_WAIT_MINUTES) {
+      return null;
+    }
+    if (wait <= low + SAME_WAIT_MINUTES) return 'very_low';
+    if (wait >= high - SAME_WAIT_MINUTES) return 'very_high';
+    return null;
+  };
   const hours = data.map((d) => d?.dayGuestHours).filter((h): h is number => h != null);
   const meanHours = hours.length ? hours.reduce((a, b) => a + b, 0) / hours.length : null;
   return months.map((month, i) => {
@@ -178,7 +199,7 @@ export function monthRows(
       month,
       key: monthKey(month),
       data: data[i],
-      tier: tiers[i],
+      mark: markOf(data[i]?.headlinerWait),
       hours:
         h == null || meanHours == null
           ? null
@@ -326,6 +347,32 @@ export function seasonsOn(
   });
 }
 
+/**
+ * A month's school-break days: `localSchoolBreakDays`, which every region gets, else the US
+ * regions' older `usSchoolBreakDays`, so the page reads either side of the API's rename.
+ */
+export function monthBreakDays(month: TripWhenMonth): Array<{ date: string; name: string }> {
+  return month.localSchoolBreakDays ?? month.usSchoolBreakDays ?? [];
+}
+
+/**
+ * The year's quietest week where no trip above covers it and its month is in the region's storm
+ * season: the trips are ranked with the storm risk counted, so that week stays out of them, and
+ * the page says why. `null` where the quietest week is in a trip or outside the season.
+ */
+export function quietWeekInStorm(
+  when: Pick<TripWhenWithMonths, 'weeks' | 'months'>,
+  windows: ReadonlyArray<Pick<TripWhenWindow, 'from' | 'to'>>,
+  range: PlanSearchRange,
+  stormSeason: 'hurricane' | 'typhoon' | undefined
+): TripWhenWeek | null {
+  if (!stormSeason) return null;
+  const quietest = bestAndWorstWeeks(when.weeks, range, 1).best[0];
+  if (!quietest || windows.some((w) => weekInWindow(quietest.start, w))) return null;
+  const month = when.months.find((m) => m.month === quietest.start.slice(0, 7));
+  return month?.[`${stormSeason}Season`] ? quietest : null;
+}
+
 /** A week's school breaks (from the months' break days) and the seasons running in it. */
 export function weekFacts(
   week: Pick<TripWhenWeek, 'start'>,
@@ -333,7 +380,7 @@ export function weekFacts(
   seasons: readonly TripSeason[]
 ): WeekFacts {
   const range = { from: week.start, to: addDays(week.start, 6) };
-  const days = months.flatMap((m) => m.usSchoolBreakDays);
+  const days = months.flatMap(monthBreakDays);
   return {
     breaks: breakRuns(days).filter((run) => overlaps(run, range)),
     seasons: seasonsOn(seasons, range),

@@ -17,7 +17,9 @@ import {
   cleanBreakName,
   europeanBreaks,
   holidayWeek,
+  monthBreakDays,
   monthRows,
+  quietWeekInStorm,
   noWhenAnswer,
   parseBestTimePage,
   partySeasons,
@@ -117,13 +119,75 @@ test('the month rows run January to December, past the range without data', () =
   assert.equal(rows[0].key, '2027-01');
   assert.equal(rows[11].key, '2027-12');
   assert.equal(rows[11].data, undefined);
-  assert.equal(rows[11].tier, null);
-  assert.equal(rows[1].tier, 'very_low', 'the quietest months share the first tier');
-  assert.equal(rows[5].tier, 'very_high');
+  assert.equal(rows[11].mark, null);
+  assert.equal(rows[1].mark, 'very_low', 'the quietest months share the mark');
+  assert.equal(rows[0].mark, 'very_low', 'within five minutes of the quietest counts as quietest');
+  assert.equal(rows[5].mark, 'very_high');
+  assert.equal(rows[10].mark, null, 'a month between the two says nothing');
   assert.equal(rows[1].hours, 'long');
   assert.equal(rows[2].hours, 'short');
   assert.equal(rows[0].hours, 'usual');
   assert.equal(rows[10].hours, null, 'no published hours, no verdict');
+});
+
+test('a month one minute busier than another is not a different kind of month', () => {
+  const rows = monthRows(
+    {
+      months: [
+        month('2027-01', 35),
+        month('2027-06', 50),
+        month('2027-08', 43),
+        month('2027-10', 42),
+      ],
+    },
+    '2026-11-12'
+  );
+  assert.equal(rows[7].mark, null, 'August at 43 is no busiest month beside 50');
+  assert.equal(rows[9].mark, null);
+  const flat = monthRows({ months: [month('2027-01', 40), month('2027-02', 43)] }, '2026-11-12');
+  assert.ok(
+    flat.every((r) => r.mark === null),
+    'a flat year sets nothing apart'
+  );
+});
+
+test("a month's school breaks come from the field every region gets", () => {
+  const local = [{ date: '2027-03-15', name: 'Spring break' }];
+  assert.deepEqual(monthBreakDays({ ...month('2027-03', 34), localSchoolBreakDays: local }), local);
+  assert.deepEqual(
+    monthBreakDays({
+      ...month('2027-03', 34),
+      usSchoolBreakDays: local,
+      localSchoolBreakDays: undefined,
+    }),
+    local,
+    "the US regions' older field still reads"
+  );
+  assert.deepEqual(
+    monthBreakDays({ month: '2027-03', basis: 'none', seasons: [], partyNights: 0 }),
+    []
+  );
+});
+
+test('the quietest week is explained where the storm season keeps it out of the trips', () => {
+  const week = (start, wait) => ({ start, headlinerWait: wait, basis: 'last_year', dates: [] });
+  const when = {
+    weeks: [week('2027-02-15', 36), week('2027-08-30', 30), week('2027-09-06', 40)],
+    months: [
+      month('2027-02', 36),
+      month('2027-08', 43, { hurricaneSeason: true }),
+      month('2027-09', 38, { hurricaneSeason: true }),
+    ],
+  };
+  const range = { from: '2027-01-01', to: '2027-11-12' };
+  const trips = [{ from: '2027-02-16', to: '2027-02-25' }];
+  assert.equal(quietWeekInStorm(when, trips, range, 'hurricane')?.start, '2027-08-30');
+  assert.equal(quietWeekInStorm(when, trips, range, undefined), null, 'no storm season, no note');
+  assert.equal(
+    quietWeekInStorm(when, [{ from: '2027-08-30', to: '2027-09-08' }], range, 'hurricane'),
+    null,
+    'a quietest week inside a trip needs no note'
+  );
 });
 
 test('in the title year itself the rows start at the current month', () => {

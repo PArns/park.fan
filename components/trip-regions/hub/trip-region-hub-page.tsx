@@ -1,27 +1,15 @@
+import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
-import {
-  ArrowRight,
-  CalendarDays,
-  CalendarPlus,
-  CalendarRange,
-  Gauge,
-  HelpCircle,
-  Star,
-  Sun,
-} from 'lucide-react';
-import { Link } from '@/i18n/navigation';
-import type { Locale } from '@/i18n/config';
+import { CalendarDays, CalendarPlus, Sun } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import {
   HERO_FLOW_INTO_PULL,
   LandingHero,
   LandingNextSteps,
-  Lead,
 } from '@/components/marketing/editorial-ui';
 import { getMediaImageBySrc } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
-import { plannerPath } from '@/lib/planner/segments';
 import { cn } from '@/lib/utils';
 import {
   dayBasis,
@@ -29,12 +17,13 @@ import {
   formatHubDate,
   formatHubMonth,
   glanceDay,
+  HUB_WINDOW_DAYS,
   resortMonthSummaries,
   sliceCalendar,
   slimRegion,
-  shortParkName,
 } from '@/lib/trip-regions/hub-data';
 import { bestTimeYear } from '@/lib/trip-regions/best-time';
+import { lastYearStart } from '@/lib/trip-regions/plan-copy';
 import {
   TRIP_CALENDAR_ID,
   TRIP_PLANNER_ID,
@@ -42,29 +31,30 @@ import {
   tripRegionPath,
 } from '@/lib/trip-regions/paths';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
+import { ownWords } from '@/lib/trip-regions/region-words';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import type {
   TripMonth,
   TripBestDays,
   TripCalendar,
+  TripForecastAccuracy,
   TripRegion,
   TripWhen,
 } from '@/lib/trip-regions/types';
-import { HubBestDays, parkCalendarHref } from './hub-best-days';
+import { HubAccuracy } from './hub-accuracy';
 import { HubCalendar } from './hub-calendar';
 import { HubFaq } from './hub-faq';
 import { HubGlance, MonthGlance } from './hub-glance';
 import { HubLegend } from './hub-legend';
-import { HubMethod } from './hub-method';
 import { HubMonthIndex } from './hub-month-index';
-import { HubMonthSummary } from './hub-month-summary';
+import { HubParkIndex } from './hub-park-index';
 import { PlannerChapterSlot } from './planner-chapter-slot';
 import { HubWhen } from './hub-when';
-import { HubHeroAction } from './hub-hero-action';
+import { HubCalendarAction, HubHeroAction } from './hub-hero-action';
 
 /**
  * The hero photo: the first of the region's `hub.heroPhotos` the media database still has, with
- * its credit and alt from there.
+ * its credit and alt from there. Without one the head draws the brand gradient.
  */
 function heroPhoto(
   sources: readonly string[],
@@ -92,14 +82,22 @@ export interface TripRegionHubPageProps {
   /** The region's today and the render's clock, for the first answer. */
   todayIso: string;
   nowMs: number;
+  /**
+   * The forecast's measured error, a read the route started and bounded; the hub awaits it only
+   * inside `<Suspense>`. A month page passes `null`: the figure is the region's, not the month's.
+   */
+  accuracy: Promise<TripForecastAccuracy | null>;
 }
 
 /**
- * A region's hub and its month pages, one anatomy (docs/product/landing-pages.md): the hub head
- * with the first answer, the intro with the key, 01 which park on which day, 02 the trip planner,
- * 03 the best days per park, 04 how the forecast works, the questions and the next steps. Simple
- * first, more on request: the head answers, the matrix shows only minutes, the day sheet holds the
- * rest. Every sentence and the first week are in the served HTML.
+ * A region's hub and its month pages, one anatomy (docs/product/landing-pages.md). The head asks
+ * the visitor's question, says in one line what the page holds, and offers the two ways in, the
+ * planner and the calendar, with the answer under them: the best park per resort and the quietest
+ * days ahead. Then 01 the calendar with its key, the month index and each park's calendar, 02 the
+ * trip planner, 03 the best time to go (where the region has best-time pages), 04 the questions,
+ * the method folded in, and the closing band. Each chapter opens with its heading and then the
+ * thing itself. A block without the region's words draws nothing. Every sentence and the first
+ * week are in the served HTML.
  */
 export async function TripRegionHubPage({
   locale,
@@ -111,27 +109,33 @@ export async function TripRegionHubPage({
   when,
   todayIso,
   nowMs,
+  accuracy,
 }: TripRegionHubPageProps) {
   const t = await getTranslations('tripHub');
   const tRegion = await getRegionTranslations(region.slug, 'hub');
-  const tLanding = await getRegionTranslations(region.slug, 'landing');
-  const { hub } = requireTripRegion(region.slug);
+  const tNav = await getRegionTranslations(region.slug, 'nav');
+  const config = requireTripRegion(region.slug);
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;
-  const hero = heroPhoto(hub.heroPhotos, locale);
+  const hero = heroPhoto(config.hub.heroPhotos, locale);
 
   const summaries = calendar ? resortMonthSummaries(region, calendar, bestDays) : [];
   const firstFrom = calendar?.days.find((d) => d.date >= todayIso)?.date ?? todayIso;
   const week = calendar ? firstDays(calendar, firstFrom) : [];
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];
   const lastYear = !!calendar && lastYearDays.length > calendar.days.length / 2;
-  const forecastUntil = calendar?.meta.forecastUntil ?? bestDays?.meta.forecastUntil;
+  const lastYearFrom = calendar
+    ? lastYearStart(calendar.days, (d) => dayBasis(d) === 'last_year')
+    : null;
   const pagePath = tripRegionPath(region.slug, locale, month);
   const bestTimePath = tripRegionBestTimePath(region.slug, locale);
-  const action = {
-    href: `${pagePath}#${TRIP_PLANNER_ID}`,
-    label: tLanding('action'),
-    icon: CalendarPlus,
-  };
+  const planHref = `${pagePath}#${TRIP_PLANNER_ID}`;
+
+  const title = monthLabel ? tRegion('monthTitle', { month: monthLabel }) : tRegion('title');
+  // The month is in the H1's first line already; a second mention would read twice in the element.
+  const question = t('question');
+  const tagline = monthLabel
+    ? ownWords(tRegion, 'leadMonth', { month: monthLabel })
+    : ownWords(tRegion, 'lead');
   const answer = month ? (
     <MonthGlance
       summaries={summaries}
@@ -143,81 +147,80 @@ export async function TripRegionHubPage({
     <HubGlance
       day={calendar ? glanceDay(calendar, region, todayIso, nowMs) : null}
       region={region}
+      summaries={summaries}
+      windowTo={calendar?.meta.to ?? todayIso}
       locale={locale}
     />
   );
-  const heroAction = <HubHeroAction href={action.href} label={action.label} />;
-  const title = monthLabel ? tRegion('monthTitle', { month: monthLabel }) : tRegion('title');
-  const tagline = monthLabel ? tRegion('leadMonth', { month: monthLabel }) : tRegion('lead');
-  const nextStepPark = hub.nextStepPark && region.parks.find((p) => p.slug === hub.nextStepPark);
-  const periodLabel = monthLabel ?? t('nextDays');
+  // The two ways in, the same size: plan a trip, or read the calendar. Only the first is the
+  // head's one primary action (`data-landing-action`).
+  const page = month ? 'month' : 'hub';
+  const actions = (
+    <div className="flex flex-col gap-3 sm:flex-row">
+      <HubHeroAction
+        href={planHref}
+        label={t('plan')}
+        region={region.slug}
+        page={page}
+        className="max-sm:w-full"
+      />
+      <HubCalendarAction
+        href={`${pagePath}#${TRIP_CALENDAR_ID}`}
+        label={t('toCalendar')}
+        region={region.slug}
+        page={page}
+        className="max-sm:w-full"
+      />
+    </div>
+  );
+
   const whenYear = when ? bestTimeYear(when.meta.from) : null;
+  // The best-time chapter needs the region's pages and its words for them; without, it is left out.
+  const whenTitle =
+    config.bestTime.length > 0
+      ? whenYear
+        ? ownWords(tRegion, 'when.title', { year: whenYear })
+        : ownWords(tRegion, 'when.titleNoYear')
+      : null;
   const bestTimeLabel = whenYear
-    ? tRegion('when.pageLink', { year: whenYear })
-    : tRegion('when.pageLinkNoYear');
+    ? ownWords(tRegion, 'when.pageLink', { year: whenYear })
+    : ownWords(tRegion, 'when.pageLinkNoYear');
+  const attribution = region.travel.attribution?.trim();
+  const sources = calendar
+    ? [
+        t('calendar.sources', {
+          date: formatHubDate(calendar.meta.computedAt.slice(0, 10), locale),
+        }),
+        ...(attribution ? [t('calendar.sourcesTravel', { attribution })] : []),
+      ].join(' · ')
+    : null;
+  const bandTitle =
+    ownWords(tRegion, 'next.title') ??
+    t('nextTitle', { region: ownWords(tNav, 'name') ?? region.name });
 
   return (
     <>
-      {hero ? (
-        <LandingHero
-          kicker={tLanding('kicker')}
-          title={title}
-          tagline={tagline}
-          answer={answer}
-          actionElement={heroAction}
-          imageSrc={hero.src}
-          imageAlt={hero.alt}
-          scrollLabel={t('scroll')}
-          flowInto
-        />
-      ) : (
-        <LandingHero
-          variant="compact"
-          kicker={tLanding('kicker')}
-          title={title}
-          tagline={tagline}
-          answer={answer}
-          actionElement={heroAction}
-        />
-      )}
+      <LandingHero
+        kicker={title}
+        title={title}
+        question={question}
+        tagline={tagline ?? undefined}
+        answer={answer}
+        actionElement={actions}
+        imageSrc={hero?.src}
+        imageAlt={hero?.alt}
+        flowInto
+        short
+      />
 
       <div
         id="start"
         className={cn(
-          'relative container mx-auto px-4 pb-16 sm:pb-24',
-          hero ? cn('pt-0 sm:pt-12', HERO_FLOW_INTO_PULL) : 'pt-8 sm:pt-12'
+          'relative container mx-auto px-4 pt-0 pb-16 sm:pt-12 sm:pb-24',
+          HERO_FLOW_INTO_PULL
         )}
       >
         <div className="space-y-16 sm:space-y-24">
-          {/* Intro: what a square says, at one line, and the window in sentences. */}
-          <section aria-label={t('introLabel')} className="space-y-6">
-            {lastYearDays.length > 0 && (
-              <p
-                role="note"
-                className="border-border/60 bg-muted/40 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
-              >
-                {forecastUntil
-                  ? t('lastYearBanner', { date: formatHubDate(forecastUntil, locale, 'long') })
-                  : t('lastYearBannerNoDate')}
-              </p>
-            )}
-            {!month && (
-              // The hub's opening is about the region, not a month: a month page's own lead and
-              // summary say what differs, and twelve copies of one paragraph would not.
-              <div className="max-w-3xl">
-                <Lead>{tRegion('opening')}</Lead>
-              </div>
-            )}
-            <p className="text-muted-foreground max-w-3xl leading-relaxed">{t('intro')}</p>
-            <HubMonthSummary
-              summaries={summaries}
-              calendar={calendar}
-              region={region}
-              locale={locale}
-            />
-            <HubLegend region={region.slug} forecastUntil={forecastUntil} locale={locale} />
-          </section>
-
           <section id={TRIP_CALENDAR_ID} className="scroll-mt-24">
             <ChapterHeading
               index="01"
@@ -230,9 +233,21 @@ export async function TripRegionHubPage({
                     })
                   : undefined
               }
-              title={t('calendar.title')}
-              hint={t('calendar.hint')}
+              title={
+                monthLabel
+                  ? t('calendar.titleMonth', { month: monthLabel })
+                  : t('calendar.title', { days: HUB_WINDOW_DAYS })
+              }
             />
+            {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
+            {lastYearFrom && (
+              <p
+                role="note"
+                className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
+              >
+                {t('lastYearFrom', { date: formatHubDate(lastYearFrom.from, locale, 'dayMonth') })}
+              </p>
+            )}
             {calendar && week.length > 0 ? (
               <HubCalendar
                 region={slimRegion(region)}
@@ -245,18 +260,17 @@ export async function TripRegionHubPage({
                 window={{ from: firstFrom, to: calendar.meta.to }}
                 todayIso={todayIso}
                 locale={locale}
+                legend={<HubLegend />}
               />
             ) : (
               <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
             )}
-            {calendar && (
-              <p className="text-muted-foreground mt-4 text-xs leading-relaxed">
-                {t('calendar.sources', {
-                  date: formatHubDate(calendar.meta.computedAt.slice(0, 10), locale),
-                  attribution: region.travel.attribution,
-                })}
-              </p>
+            {sources && (
+              <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
             )}
+            <Suspense fallback={null}>
+              <HubAccuracy region={region.slug} accuracy={accuracy} />
+            </Suspense>
             <HubMonthIndex
               region={region.slug}
               current={current}
@@ -264,43 +278,11 @@ export async function TripRegionHubPage({
               locale={locale}
               className="mt-8"
             />
-            <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm">
-              <li>
-                <Link
-                  href={bestTimePath}
-                  className="text-primary-ink inline-flex min-h-11 items-center gap-1 font-medium underline-offset-4 hover:underline sm:min-h-0"
-                >
-                  {bestTimeLabel}
-                  <ArrowRight aria-hidden className="size-4" />
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href={plannerPath(locale as Locale)}
-                  className="text-primary-ink inline-flex min-h-11 items-center gap-1 font-medium underline-offset-4 hover:underline sm:min-h-0"
-                >
-                  {t('calendar.dayPlanner')}
-                  <ArrowRight aria-hidden className="size-4" />
-                </Link>
-              </li>
-            </ul>
-          </section>
-
-          <section className="scroll-mt-24" id="best-time">
-            <ChapterHeading
-              index="02"
-              icon={Sun}
-              kicker={tRegion('when.kicker')}
-              title={
-                whenYear ? tRegion('when.title', { year: whenYear }) : tRegion('when.titleNoYear')
-              }
-              hint={tRegion('when.hint')}
-            />
-            <HubWhen region={region.slug} when={when} pagePath={pagePath} locale={locale} />
+            <HubParkIndex region={region} bestDays={bestDays} locale={locale} className="mt-6" />
           </section>
 
           <PlannerChapterSlot
-            index="03"
+            index="02"
             region={region}
             locale={locale}
             defaultMonth={
@@ -308,56 +290,41 @@ export async function TripRegionHubPage({
             }
           />
 
-          <section className="scroll-mt-24" id="best-days">
-            <ChapterHeading
-              index="04"
-              icon={Star}
-              kicker={periodLabel}
-              title={t('bestDays.title')}
-              hint={t('bestDays.hint')}
-            />
-            <HubBestDays region={region} bestDays={bestDays} calendar={calendar} locale={locale} />
-          </section>
+          {whenTitle && (
+            <section className="scroll-mt-24" id="best-time">
+              <ChapterHeading
+                index="03"
+                icon={Sun}
+                kicker={ownWords(tRegion, 'when.kicker') ?? undefined}
+                title={whenTitle}
+              />
+              <HubWhen region={region.slug} when={when} pagePath={pagePath} locale={locale} />
+            </section>
+          )}
 
-          <section className="scroll-mt-24" id="method">
-            <ChapterHeading index="05" icon={Gauge} title={tRegion('method.title')} />
-            <HubMethod
-              region={region.slug}
-              forecastUntil={forecastUntil}
-              attribution={region.travel.attribution}
-              locale={locale}
-            />
-          </section>
-
-          <section className="scroll-mt-24" id="faq">
-            <ChapterHeading icon={HelpCircle} title={tRegion('faq.title')} />
+          {/* The questions wait for the measured error, bounded; the page above never does. */}
+          <Suspense fallback={null}>
             <HubFaq
+              index={whenTitle ? '04' : '03'}
               region={region}
               calendar={calendar}
               summaries={summaries}
               monthLabel={monthLabel}
+              accuracy={accuracy}
               locale={locale}
             />
-          </section>
+          </Suspense>
         </div>
       </div>
 
       <LandingNextSteps
-        title={tRegion('next.title')}
-        body={t('next.body')}
+        title={bandTitle}
         destinations={
           [
-            action,
-            ...(nextStepPark
-              ? [
-                  {
-                    href: parkCalendarHref(nextStepPark, locale),
-                    label: t('next.parkCalendar', { park: shortParkName(nextStepPark.name) }),
-                    icon: CalendarRange,
-                  },
-                ]
+            { href: planHref, label: t('plan'), icon: CalendarPlus },
+            ...(whenTitle && bestTimeLabel
+              ? [{ href: bestTimePath, label: bestTimeLabel, icon: Sun }]
               : []),
-            { href: bestTimePath, label: bestTimeLabel, icon: Sun },
           ] as Parameters<typeof LandingNextSteps>[0]['destinations']
         }
       />

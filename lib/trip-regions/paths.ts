@@ -41,6 +41,9 @@ export function tripRegionGuidePath(
 /** The anchor of chapter 01, the calendar, for the park bands and the homepage teaser. */
 export const TRIP_CALENDAR_ID = 'calendar';
 
+/** The anchor of the hub's question on how far and how well the forecast reaches. */
+export const TRIP_ACCURACY_ID = 'faq-accuracy';
+
 /**
  * How many months a hub serves: the current month (the hub itself) and the eleven after it, in the
  * region's time. Past `forecastUntil` a month reads last year's measured days with a banner.
@@ -108,6 +111,18 @@ export function currentTripRegionMonth(region: string): TripMonth {
 /** The months a hub serves, from the current one on. */
 export function tripRegionMonths(now: TripMonth): TripMonth[] {
   return Array.from({ length: TRIP_REGION_MONTH_COUNT }, (_, i) => shiftParkCalendarMonth(now, i));
+}
+
+/**
+ * The years a hub's months span, for its `<title>` (`{years}`): "2026–2027", or the one year from
+ * January. Read from the region's current month on every request, so the title rolls over without
+ * a deploy, in the park's time and not the server's.
+ */
+export function tripRegionYears(now: TripMonth): string {
+  const months = tripRegionMonths(now);
+  const first = months[0].year;
+  const last = months[months.length - 1].year;
+  return first === last ? String(first) : `${first}–${last}`;
 }
 
 /** Whether a month is one a hub serves: the current one or one of the eleven after it. */

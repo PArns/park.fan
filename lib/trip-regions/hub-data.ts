@@ -1,6 +1,8 @@
 import { addDays } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { shownWait, shownWaitOn } from './plan-week';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
 import type {
   TripBasis,
@@ -42,13 +44,16 @@ export function regionGroups(region: TripRegion): RegionGroup[] {
 
 /**
  * The region with its day-trip group named in the reader's language: the API names it in English,
- * while a resort's name is the operator's own and stays as it is.
+ * while a resort's name is the operator's own and stays as it is. A day trip that is one park keeps
+ * its own name, so a region with several (Fuji-Q Highland and LEGOLAND Japan) never shows two
+ * filters with the same word.
  */
 export function withGroupNames(region: TripRegion, dayTrips: string): TripRegion {
+  const parksIn = (key: string) => region.parks.filter((p) => p.group === key).length;
   return {
     ...region,
     groups: region.groups.map((group) =>
-      group.kind === 'day_trip' ? { ...group, name: dayTrips } : group
+      group.kind === 'day_trip' && parksIn(group.key) > 1 ? { ...group, name: dayTrips } : group
     ),
   };
 }
@@ -56,6 +61,22 @@ export function withGroupNames(region: TripRegion, dayTrips: string): TripRegion
 /** The resorts alone: the groups a day's shortest line is named for. */
 export function regionResorts(region: TripRegion): RegionGroup[] {
   return regionGroups(region).filter((group) => group.kind === 'resort');
+}
+
+/**
+ * The groups with a headliner park: the ones the first answer names, a resort of one park
+ * (Universal Studios Hollywood, Universal Studios Japan) included, since its park is one a trip is
+ * planned around.
+ */
+export function headlinerGroups(region: TripRegion): RegionGroup[] {
+  return regionGroups(region).filter((group) => group.parks.some((p) => p.headliner));
+}
+
+/** The groups a window is summed up for: every resort, and every group with a headliner park. */
+export function summaryGroups(region: TripRegion): RegionGroup[] {
+  return regionGroups(region).filter(
+    (group) => group.kind === 'resort' || group.parks.some((p) => p.headliner)
+  );
 }
 
 /** The place words a park's name may end in, longest first, from every region's registry entry. */
@@ -191,23 +212,36 @@ export function shortestLines(day: TripCalendarDay, region: TripRegion): Shortes
     const park = slug ? group.parks.find((p) => p.slug === slug) : undefined;
     const parkDay = slug ? day.parks[slug] : undefined;
     if (!park || !isRankable(parkDay)) continue;
-    const line: ShortestLine = { group, park, day: parkDay };
-    if (day.bestWhy?.[group.key] === 'closes_early_elsewhere') {
-      const other = group.parks
-        .map((p) => ({ park: p, day: day.parks[p.slug] }))
-        .filter(
-          (o) =>
-            o.park.slug !== park.slug &&
-            isRankable(o.day) &&
-            closesEarly(o.day) &&
-            o.day.headlinerWait! <= parkDay.headlinerWait
-        )
-        .sort((a, b) => a.day!.headlinerWait! - b.day!.headlinerWait!)[0];
-      if (other?.day) line.earlyElsewhere = { park: other.park, day: other.day };
-    }
-    lines.push(line);
+    const earlyElsewhere = earlyCloseBehind(day, group, park.slug);
+    lines.push({ group, park, day: parkDay, ...(earlyElsewhere && { earlyElsewhere }) });
   }
   return lines;
+}
+
+/**
+ * The park with the same or a shorter wait that a resort's pick beat because it closes early for
+ * day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list
+ * and the first answer name it with its closing time.
+ */
+export function earlyCloseBehind(
+  day: TripCalendarDay,
+  group: RegionGroup,
+  pick: string
+): { park: TripRegionPark; day: TripParkDay } | undefined {
+  if (day.bestWhy?.[group.key] !== 'closes_early_elsewhere') return undefined;
+  const picked = day.parks[pick];
+  if (!isRankable(picked)) return undefined;
+  const other = group.parks
+    .map((p) => ({ park: p, day: day.parks[p.slug] }))
+    .filter(
+      (o): o is { park: TripRegionPark; day: TripParkDay & { headlinerWait: number } } =>
+        o.park.slug !== pick &&
+        isRankable(o.day) &&
+        closesEarly(o.day) &&
+        o.day.headlinerWait <= picked.headlinerWait
+    )
+    .sort((a, b) => a.day.headlinerWait - b.day.headlinerWait)[0];
+  return other;
 }
 
 /**
@@ -294,6 +328,26 @@ export function dayBasis(day: TripCalendarDay): HubBasis {
     }
   }
   return best;
+}
+
+/** The days a fact is read from, and whether they are last year's measured days. */
+export interface FactDays {
+  days: TripCalendarDay[];
+  lastYear: boolean;
+}
+
+/**
+ * The forecast's days of a calendar; a month past day 60 reads last year's measured days instead,
+ * and says so. Never both at once: a mean over both would set an unscaled forecast beside a
+ * measured day.
+ */
+export function factDays(calendar: TripCalendar): FactDays {
+  const forecast = calendar.days.filter((d) => {
+    const basis = dayBasis(d);
+    return basis === 'forecast' || basis === 'long_range';
+  });
+  if (forecast.length > 0) return { days: forecast, lastYear: false };
+  return { days: calendar.days.filter((d) => dayBasis(d) === 'last_year'), lastYear: true };
 }
 
 /** One lane under the matrix: a season or a run of school-break days. */
@@ -402,10 +456,10 @@ export function weekendAgainstWeekday(
 ): { weekend: number; weekday: number } | null {
   const weekend: number[] = [];
   const weekday: number[] = [];
-  for (const day of calendar.days) {
+  for (const day of factDays(calendar).days) {
     const park = day.parks[slug];
-    if (!isRankable(park) || park.basis === 'last_year') continue;
-    (isWeekend(day.date) ? weekend : weekday).push(park.headlinerWait);
+    if (!isRankable(park)) continue;
+    (isWeekend(day.date) ? weekend : weekday).push(shownWait(park)!);
   }
   const a = meanWait(weekend);
   const b = meanWait(weekday);
@@ -425,14 +479,14 @@ export function ticketedEvenings(
   const on: number[] = [];
   const off: number[] = [];
   let closesAt: string | null = null;
-  for (const day of calendar.days) {
+  for (const day of factDays(calendar).days) {
     const park = day.parks[slug];
-    if (!isRankable(park) || park.basis === 'last_year') continue;
+    if (!isRankable(park)) continue;
     if (closesEarly(park)) {
-      on.push(park.headlinerWait);
+      on.push(shownWait(park)!);
       closesAt ??= dayGuestClose(park) ?? null;
     } else {
-      off.push(park.headlinerWait);
+      off.push(shownWait(park)!);
     }
   }
   return { count: on.length, closesAt, waitOnThem: meanWait(on), waitOtherwise: meanWait(off) };
@@ -450,8 +504,8 @@ export interface ResortMonthSummary {
 /**
  * Each resort's month: the best dates from `/best-days` (the API ranks them on the unrounded
  * figures), and from the calendar the two days with the highest mean over the resort's parks that
- * have a figure, so a day most of its parks call quiet is never one of its busiest. A resort with
- * no figure in the window is left out.
+ * have a figure, so a day most of its parks call quiet is never one of its busiest. A day trip with
+ * a headliner park counts as a resort here; a group with no figure in the window is left out.
  */
 export function resortMonthSummaries(
   region: TripRegion,
@@ -460,7 +514,10 @@ export function resortMonthSummaries(
 ): ResortMonthSummary[] {
   const basisOf = (date: string, slug: string): TripBasis =>
     calendar.days.find((d) => d.date === date)?.parks[slug]?.basis ?? 'none';
-  return regionResorts(region)
+  // The minutes a date prints are the calendar's, so the answer and the cell say one number.
+  const shownOn = (date: string, slug: string, ranked: number | undefined) =>
+    shownWaitOn(calendar, slug, date, ranked) ?? null;
+  return summaryGroups(region)
     .map((group) => {
       const quiet = (bestDays?.groups.find((g) => g.key === group.key)?.quiet ?? [])
         .map((entry) => {
@@ -469,14 +526,13 @@ export function resortMonthSummaries(
             ? {
                 date: entry.date,
                 park,
-                wait: entry.headlinerWait ?? null,
+                wait: shownOn(entry.date, entry.slug, entry.headlinerWait),
                 basis: basisOf(entry.date, entry.slug),
               }
             : null;
         })
         .filter((entry): entry is NonNullable<typeof entry> => entry !== null);
-      // A month past the forecast has no picks (`best` stays off last year's days), so it names
-      // each headliner park's quietest day of last year instead, as a record and labelled so.
+      // Where `/best-days` names no resort pick, each headliner park's own quietest day stands in.
       const recorded =
         quiet.length > 0 || !bestDays
           ? quiet
@@ -488,7 +544,7 @@ export function resortMonthSummaries(
                   .map((q) => ({
                     date: q.date,
                     park,
-                    wait: q.headlinerWait ?? null,
+                    wait: shownOn(q.date, park.slug, q.headlinerWait),
                     basis: q.basis,
                   }))
               )
@@ -500,7 +556,7 @@ export function resortMonthSummaries(
       const means = calendar.days
         .map((day) => {
           const ranked = group.parks.map((p) => day.parks[p.slug]).filter(isRankable);
-          const wait = meanWait(ranked.map((d) => d.headlinerWait));
+          const wait = meanWait(ranked.map((d) => shownWait(d)!));
           return wait === null
             ? null
             : {
@@ -549,14 +605,28 @@ export function parkGeo(
 }
 
 /**
- * The shortest lines the first answer names: each resort where the pick beat another park that
- * day. A resort with one park that has a figure (SeaWorld, beside two parks nobody queues at) has
- * nothing to choose between and stays out of the sentence.
+ * The best park per group the first answer names: every group with a headliner park, by the API's
+ * pick, or by its one park with a figure where it has nothing to choose between (Universal Studios
+ * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out.
  */
 export function glanceLines(day: TripCalendarDay, region: TripRegion): ShortestLine[] {
-  return shortestLines(day, region).filter(
-    (line) => line.group.parks.filter((p) => isRankable(day.parks[p.slug])).length > 1
-  );
+  const picks = new Map(shortestLines(day, region).map((line) => [line.group.key, line]));
+  return headlinerGroups(region).flatMap((group): ShortestLine[] => {
+    const pick = picks.get(group.key);
+    if (pick) return [pick];
+    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]));
+    const only = open.length === 1 ? open[0] : undefined;
+    const onlyDay = only ? day.parks[only.slug] : undefined;
+    return only && isRankable(onlyDay) ? [{ group, park: only, day: onlyDay }] : [];
+  });
+}
+
+/** A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for. */
+export function parkCalendarHref(park: TripRegionPark, locale: string): string {
+  const geo = parkGeo(park);
+  return geo
+    ? parkCalendarPath(locale, geo.continent, geo.country, geo.city, park.slug)
+    : park.path;
 }
 
 /** The calendar trimmed to a window of its days, with the seasons that run in it. */

@@ -4,11 +4,13 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { generateAlternateLanguages, isValidLocale, SITE_URL } from '@/i18n/config';
 import { RouteMessages } from '@/i18n/route-messages';
 import { catchNonFatal } from '@/lib/api/client';
+import { withSeedTimeout } from '@/lib/api/seed-timeout';
 import {
   buildOpenGraphMetadata,
   fitWithin,
   MAX_DESCRIPTION_LENGTH,
   MAX_TITLE_LENGTH,
+  oneFullStop,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -19,6 +21,7 @@ import {
 import { TripRegionHubPage } from '@/components/trip-regions/hub/trip-region-hub-page';
 import {
   getTripRegion,
+  getTripRegionAccuracy,
   getTripRegionBestDays,
   getTripRegionCalendar,
   getTripRegionWhen,
@@ -42,6 +45,7 @@ import {
   parseTripRegionMonth,
   tripMonthRange,
   tripRegionPath,
+  tripRegionYears,
 } from '@/lib/trip-regions/paths';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { liveTripRegion, type TripRegionConfig } from '@/lib/trip-regions/registry';
@@ -102,6 +106,12 @@ function verdict(
   return getListFormat(locale, { type: 'conjunction' }).format(parts);
 }
 
+/**
+ * How long the hub's accuracy line waits for its figure: an hour in the Data Cache, so only a cold
+ * cache waits at all, and then the line is left out.
+ */
+const ACCURACY_TIMEOUT_MS = 1500;
+
 export async function generateMetadata({
   params,
   searchParams,
@@ -125,21 +135,20 @@ export async function generateMetadata({
         t('metaTitleMonth', { month: monthLabel }),
         t('metaTitleMonthShort', { month: monthLabel })
       )
-    : t('metaTitle');
-  let description = fitWithin(
+    : t('metaTitle', { years: tripRegionYears(current) });
+  const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     ...(monthLabel
       ? [
           ...(found ? [t('metaDescriptionMonth', { month: monthLabel, verdict: found })] : []),
           t('metaDescriptionMonthPlain', { month: monthLabel }),
         ]
-      : [...(found ? [t('metaDescription', { verdict: found })] : []), t('metaDescriptionPlain')])
+      : [...(found ? [t('metaDescription', { verdict: found })] : []), t('metaDescriptionPlain')]
+    ).map(oneFullStop)
   );
   const pathIn = (l: string) => tripRegionPath(slug, l, canonicalMonth(month, current));
   const canonicalPath = pathIn(locale);
   const canonical = `${SITE_URL}/${locale}${canonicalPath}`;
-  // A German or Dutch date ends in a full stop ("16. Nov."), and so does the sentence around it.
-  description = description.replace(/\.\./g, '.');
   // A planner link (`?from=…#planner`) is somebody's trip: the page answers it, an index does not.
   const hasQuery = Object.keys(await searchParams).length > 0;
   return {
@@ -180,6 +189,10 @@ export default async function TripRegionRoute({ params }: TripRegionRouteProps) 
   if (!resolved) notFound();
   const { nowMs, todayIso, current, month, window } = resolved;
 
+  // Started first and read only inside the hub's `<Suspense>`: the calendar never waits for it.
+  const accuracy = month
+    ? Promise.resolve(null)
+    : withSeedTimeout(catchNonFatal(getTripRegionAccuracy(slug)), ACCURACY_TIMEOUT_MS);
   const [t, tRegion] = await Promise.all([
     getTranslations('tripHub'),
     getRegionTranslations(slug, 'hub'),
@@ -241,6 +254,7 @@ export default async function TripRegionRoute({ params }: TripRegionRouteProps) 
         when={when}
         todayIso={todayIso}
         nowMs={nowMs}
+        accuracy={accuracy}
       />
     </RouteMessages>
   );

@@ -393,15 +393,10 @@
     "assistantOpen": "Écrire à Parky"
   },
   "tripHub": {
-    "scroll": "Vers le calendrier",
-    "introLabel": "Comment lire le calendrier",
-    "intro": "Chaque case est un parc un jour donné. Le chiffre est l’attente que nous prévoyons aux grandes attractions de ce parc au moment le plus chargé de la journée, et c’est lui qui sert à comparer les parcs. La couleur indique comment ce jour se situe par rapport à un jour ordinaire du même parc.",
     "nextDays": "30 prochains jours",
     "dayTripsGroup": "Excursions",
-    "lastYearBanner": "Notre prévision va jusqu’au {date}. Les jours suivants montrent le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
-    "lastYearBannerNoDate": "Certains de ces jours dépassent notre prévision. Ils montrent le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
     "glance": {
-      "minutes": "environ {minutes} min",
+      "minutes": "{minutes} min",
       "closesEarly": "ferme à {time} pour une soirée spéciale",
       "earlyElsewhere": "({park} ferme à {time} pour une soirée spéciale)",
       "none": "Pas encore de prévision pour le {date}.",
@@ -409,33 +404,28 @@
       "noneMonth": "Pas encore de prévision pour {month}.",
       "monthTitle": "Les jours les plus calmes en {month}",
       "monthTitleLastYear": "Les jours les plus calmes en {month} l’an dernier",
-      "quietPark": "({park}, environ {minutes} min)"
+      "quietPark": "({park}, environ {minutes} min)",
+      "quietestTo": "Le plus calme jusqu’au {date}",
+      "best": "Meilleur parc par resort, <time>{date}</time>"
     },
     "legend": {
-      "minutes": "Minutes : les grandes attractions au plus chargé",
-      "ring": "Anneau : files les plus courtes du resort",
-      "early": "Coin : ferme plus tôt pour les visiteurs du jour",
-      "closed": "Fermé",
-      "unknown": "Pas encore d’horaires",
-      "lastYear": "L’an dernier",
+      "minutes": "Attente de pointe aux grandes attractions, en minutes",
+      "ring": "meilleur parc du resort",
+      "early": "ferme plus tôt pour les visiteurs du jour",
+      "closed": "fermé",
       "howTo": "Comment lire ceci",
-      "minutesLong": "Le chiffre d’une case est l’attente que nous prévoyons aux grandes attractions du parc, chacune au moment le plus chargé de sa journée, en moyenne sur ces attractions. Il ne vaut pas pour chaque heure : le matin et le soir, les files sont plus courtes.",
-      "horizonLong": "La prévision couvre les 60 prochains jours. Ensuite, notre tendance va jusqu’au {date}, avec une marge d’erreur plus large. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré.",
-      "horizonLongNoDate": "La prévision couvre les 60 prochains jours. Ensuite, notre tendance continue avec une marge d’erreur plus large, et au-delà un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré.",
-      "statesLong": "Une case hachurée est fermée, comme le parc l’a publié. Une case avec un point porte la prévision ou le chiffre de l’an dernier, mais le parc n’a pas encore publié ses horaires pour ce jour ; ils ne comptent donc pas. Une case vide n’a pas de chiffre. Un tiret signifie ouvert, mais sans files qui méritent une prévision, comme dans la plupart des parcs aquatiques.",
-      "noHours": "Point : horaires pas encore publiés"
+      "noHours": "Point ou vide : pas encore d’horaires",
+      "colour": "Couleur : le jour comparé à un jour ordinaire de ce parc"
     },
     "calendar": {
       "kicker": "{from} – {to}",
-      "title": "Quel parc quel jour",
-      "hint": "Touche un jour pour les horaires, les événements, les trajets et les grandes attractions.",
+      "title": "Les {days} prochains jours",
       "unavailable": "Le calendrier n’a pas pu être chargé. Réessaie dans quelques minutes.",
-      "sources": "Attentes et affluence : prévision park.fan du {date}. Horaires tels que les parcs les publient. Trajets sans trafic, données cartographiques : {attribution}.",
-      "dayPlanner": "Planifier une journée de parc dans le planificateur",
+      "sources": "Prévision du {date}",
       "parkColumn": "Parc",
       "filterLabel": "Parcs affichés",
       "filterAll": "Tous les parcs",
-      "listLabel": "Files les plus courtes, jour par jour",
+      "listLabel": "Meilleur parc par resort, jour par jour",
       "more": "+{count} autres",
       "showAll": "Afficher tous les jours",
       "showWeek": "Afficher les 7 premiers jours",
@@ -449,13 +439,15 @@
       "cellClosed": "{park}, {date} : fermé",
       "cellUnknown": "{park}, {date} : pas encore d’horaires",
       "cellOpen": "{park}, {date} : ouvert, pas de prévision",
-      "cellBest": "files les plus courtes de {resort}",
+      "cellBest": "meilleur parc de {resort}",
       "cellEarly": "ferme à {time}",
       "stateClosed": "Fermé pour la saison",
       "stateUnknown": "Pas encore d’horaires",
       "stateOpen": "Ouvert, pas de prévision",
       "cellNoHours": "horaires pas encore publiés",
-      "earlyElsewhere": "devant un parc qui ferme plus tôt"
+      "earlyElsewhere": "{park} ferme à {time}",
+      "sourcesTravel": "Trajets : {attribution}",
+      "titleMonth": "Jour par jour en {month}"
     },
     "lanes": {
       "summaryLabel": "Événements",
@@ -464,82 +456,46 @@
       "allDays": "tous les jours"
     },
     "sheet": {
-      "intro": "Dans chaque resort, le meilleur parc vient en premier : files les plus courtes, fermetures anticipées comptées. Minutes : les grandes attractions au plus chargé.",
-      "stayingAt": "Tu loges à",
+      "intro": "Dans chaque resort, le meilleur parc vient en tête ; une fermeture anticipée compte.",
+      "stayingAt": "Hôtel",
       "minutes": "{minutes} min",
       "noForecast": "ouvert, pas de prévision",
       "noHours": "Pas encore d’horaires",
       "closedFor": "Fermé : {name}",
-      "lastYear": "Journée mesurée l’an dernier ; la prévision n’atteint pas encore cette date.",
+      "lastYear": "Valeur de l’an dernier : le même jour de la semaine, tel que nous l’avons mesuré.",
       "outlook": "Tendance : une marge d’erreur plus large que la prévision.",
       "ticketedEvening": "{name} dès {time} : les visiteurs du jour partent à {leave}",
       "eveningEvent": "Soirée spéciale",
       "shorterDay": "Journée plus courte : les visiteurs du jour partent à {leave}",
       "extendedEvening": "Extended Evening Hours jusqu’à {time} pour les clients des hôtels deluxe",
       "expected": "dates attendues",
-      "travel": "Depuis {area} : environ {minutes} min en voiture, sans trafic",
+      "travel": "Depuis {area} : environ {minutes} min {mode, select, drive {en voiture, sans trafic} walk {à pied} train {en train} rail {en train} shinkansen {en shinkansen} metro {en métro} bus {en bus} highway_bus {en car} shuttle {en navette} monorail {en monorail} skyliner {en Skyliner} boat {en bateau} other {}}",
       "bigRides": "Les grandes attractions",
       "ridesLoading": "Chargement des attractions …",
       "ridesNone": "Pas de chiffres par attraction pour ce jour.",
       "ridesHint": "Chaque attraction au moment le plus chargé de sa journée.",
-      "planDay": "Planifier ce jour",
+      "planDay": "Ouvrir dans le planificateur de journée",
       "noHoursFigure": "Pas encore d’horaires. Le chiffre est la prévision ; les horaires ne comptent pas.",
-      "ahead": "Devant {park}, où les visiteurs du jour partent à {time}"
+      "ahead": "Passe devant {park}, où les visiteurs du jour doivent partir à {time}."
     },
     "when": {
       "none": "Les voyages les plus calmes de l’année n’ont pas pu être chargés.",
-      "lastYearNote": "Les dates au-delà de notre prévision sont planifiées sur l’affluence mesurée l’an dernier.",
+      "lastYearNote": "Les dates à plus de 60 jours sont classées sur les jours mesurés l’an dernier.",
       "rank": "N° {rank}",
-      "figure": "Grandes attractions : environ {minutes} min",
-      "average": "Sur l’année : environ {minutes} min",
+      "figure": "Attente de pointe : environ {minutes} min",
       "basisLastYear": "Affluence mesurée l’an dernier",
       "basisMixed": "En partie l’affluence mesurée l’an dernier",
-      "plan": "Planifier ces dates"
+      "plan": "Planifier ce voyage"
     },
     "planner": {
-      "kicker": "Tes dates",
-      "title": "Planifier ton voyage",
-      "hint": "Tes dates, tes parcs : le planificateur place chaque parc le jour où ses files sont les plus courtes."
-    },
-    "bestDays": {
-      "title": "Les meilleurs jours pour chaque parc",
-      "hint": "Les jours calmes de chaque parc, en groupe. À cinq minutes près, les jours se valent.",
-      "none": "Pas encore de meilleurs jours pour ces dates.",
-      "quiet": "Les jours les plus calmes",
-      "quietLastYear": "Les jours les plus calmes l’an dernier",
-      "flat": "Aucun jour ne se détache : {min} à {max} min.",
-      "minutes": "environ {minutes} min",
-      "closes": "ferme à {time}",
-      "more": "Pourquoi ces jours, et les plus chargés",
-      "busy": "Les plus chargés : {days}",
-      "calendarLink": "Calendrier d’affluence {park}"
-    },
-    "reasons": {
-      "quietest_in_window": "les files les plus courtes de la période",
-      "weekday": "en semaine",
-      "holiday_ends": "après les fêtes",
-      "closes_early": "les visiteurs du jour partent à {time}",
-      "extended_evening": "Extended Evening Hours",
-      "early_entry": "Early Entry pour les clients des hôtels",
-      "long_range": "tendance, erreur plus large",
-      "estimate_last_year": "journée mesurée l’an dernier"
-    },
-    "summary": {
-      "quietDay": "{date} ({park}, environ {minutes} min)",
-      "quiet": "a les files les plus courtes le {days}.",
-      "quietLastYear": "avait l’an dernier les files les plus courtes le {days}.",
-      "busy": "Les jours les plus chargés sont le {days}, environ {minutes} min en moyenne sur ses parcs.",
-      "busyLastYear": "Les plus chargés l’an dernier étaient le {days}, environ {minutes} min en moyenne sur ses parcs.",
-      "eventsLabel": "Événements :",
-      "eventNights": "{name} ({count, plural, =1 {# soirée} other {# soirées}})",
-      "eventExpected": "{name} (dates attendues)"
+      "title": "Planifier ton voyage"
     },
     "next": {
       "body": "Donne au planificateur tes dates et tes parcs, et il place chaque parc le jour où ses files sont les plus courtes.",
       "parkCalendar": "Calendrier d’affluence {park}"
     },
     "dataset": {
-      "varWait": "Attente prévue aux grandes attractions",
+      "varWait": "Attente de pointe aux grandes attractions",
       "varCrowd": "Affluence",
       "varHours": "Horaires d’ouverture"
     },
@@ -550,7 +506,90 @@
     },
     "tile": {
       "line": "Tu donnes tes dates, le planificateur te dit lequel des {count} parcs est le plus calme chaque jour."
-    }
+    },
+    "faq": {
+      "parks": {
+        "a": "En moyenne sur {days} jours : {list}.",
+        "q": "Quel parc est le plus calme dans les semaines à venir ?",
+        "park": "{park} environ {minutes} min",
+        "qMonth": "Quel parc est le plus calme en {month} ?"
+      },
+      "accuracy": {
+        "planner": "Plus le jour est lointain, plus l’erreur est grande. C’est la même mesure que « Quelle précision ? » dans le planificateur, qui l’indique pour chaque plan.",
+        "plannerNoFigure": "Plus le jour est lointain, plus l’erreur est grande ; le planificateur l’indique en minutes pour chaque plan, sous « Quelle précision ? ».",
+        "q": "Jusqu’où va la prévision, et quelle est sa précision ?",
+        "horizon": "La prévision va jusqu’à 60 jours. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, et le planificateur classe aussi ces jours sur l’an dernier : la prévision à long terme était nettement trop basse et presque plate pour eux, les jours mesurés de l’an dernier s’en approchent mieux.",
+        "figure": "Sur les {days} derniers jours, notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, s’est trompée de {minutes} min en moyenne, mesurée dans {parks} parcs.",
+        "rounding": "Des jours à moins de cinq minutes d’écart se valent."
+      },
+      "breaks": {
+        "q": "Y a-t-il des vacances scolaires ou des jours fériés dans les semaines à venir ?",
+        "qMonth": "Y a-t-il des vacances scolaires ou des jours fériés en {month} ?",
+        "effectSame": "Pendant les vacances et les jours fériés, l’attente de pointe des grands parcs n’est pas plus longue que les autres jours, environ {minutes} min.",
+        "holiday": "Jour férié : {name}, {dates}.",
+        "effect": "Pendant les vacances et les jours fériés, l’attente de pointe des grands parcs tourne autour de {on} min, les autres jours autour de {off} min."
+      },
+      "title": "Questions fréquentes",
+      "events": {
+        "party": "{name} ({parks}, {count, plural, =1 {# soirée} other {# soirées}}, billet à part)",
+        "partyNote": "Un soir à billet séparé, le parc ferme plus tôt pour les visiteurs à la journée ; dans le calendrier, ce jour porte un coin.",
+        "q": "Quels événements ont lieu dans les semaines à venir ?",
+        "aMonth": "En {month} : {list}.",
+        "qMonth": "Quels événements ont lieu en {month} ?",
+        "expected": "{name} ({parks}, dates pas encore confirmées)",
+        "festival": "{name} ({parks}, {dates})",
+        "a": "Dans les semaines à venir : {list}."
+      },
+      "closures": {
+        "qMonth": "Des parcs sont-ils fermés en {month} ?",
+        "a": "Fermés : {list}.",
+        "days": "{park} ({count, plural, =1 {# jour} other {# jours}})",
+        "q": "Des parcs sont-ils fermés dans les semaines à venir ?",
+        "run": "{park} ({dates})"
+      },
+      "weekdays": {
+        "flat": "Aucun jour ne se distingue : chaque jour, l’attente de pointe tourne autour de {minutes} min, en moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
+        "quietOnly": "{quietCount, plural, =1 {Le plus calme est le {quiet}} other {Les plus calmes sont le {quiet}}}, avec environ {low} min d’attente de pointe ; les autres jours sont au-dessus, jusqu’à environ {high} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
+        "q": "Quel jour de la semaine est le plus calme dans les semaines à venir ?",
+        "qMonth": "Quel jour de la semaine est le plus calme en {month} ?",
+        "busyOnly": "{busyCount, plural, =1 {Le plus chargé est le {busy}} other {Les plus chargés sont le {busy}}}, avec environ {high} min d’attente de pointe ; les autres jours sont en dessous, jusqu’à environ {low} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}.",
+        "a": "{quietCount, plural, =1 {Le plus calme est le {quiet}} other {Les plus calmes sont le {quiet}}}, avec environ {low} min d’attente de pointe, et le plus chargé le {busy}, avec environ {high} min. En moyenne sur {days} jours et {parks, plural, =1 {le grand parc} other {les # grands parcs}}."
+      },
+      "lastYearNote": "Pour {month}, nous comptons avec l’an dernier : les chiffres sont les jours mesurés le même mois un an plus tôt.",
+      "quietestOnly": "{resort} : jours les plus calmes {days}.",
+      "green": {
+        "q": "Pourquoi un parc à l’attente de pointe plus longue peut-il être vert ?",
+        "a": "La couleur compare un jour à un jour ordinaire du même parc, pas aux autres parcs. Le jour ordinaire est le jour d’ouverture médian des dix-huit derniers mois. 60 minutes peuvent être un jour calme pour un grand parc et 50 un jour chargé pour un plus petit. Compare donc deux parcs avec les minutes, et un jour avec son parc avec la couleur."
+      },
+      "sources": {
+        "q": "D’où viennent les chiffres ?",
+        "a": "park.fan enregistre toutes les cinq minutes l’attente affichée de chaque attraction. La prévision apprend de ces mesures, avec les horaires, les vacances scolaires, les jours fériés et la météo. Les horaires, l’accès anticipé des clients des hôtels et les soirées viennent des calendriers des parcs ; les saisons, les fêtes et les fermetures, nous les vérifions à la main."
+      },
+      "peak": {
+        "a": "Pour chaque grande attraction d’un parc, nous prenons la plus longue attente de la journée et en faisons la moyenne sur ces attractions, arrondie à cinq minutes. C’est sur ce chiffre que tu compares les parcs dans le calendrier, dans la réponse en haut et dans le planificateur. Il vaut pour le moment le plus chargé : juste après l’ouverture et le soir, l’attente est en général plus courte.",
+        "q": "Qu’est-ce que l’attente de pointe ?"
+      },
+      "links": "Le modèle derrière : <fancast>Fancast</fancast>. Tout le reste : <howto>comment fonctionne park.fan</howto>.",
+      "hours": {
+        "q": "Combien de temps les parcs sont-ils ouverts dans les semaines à venir ?",
+        "early": "Au moins un grand parc ferme plus tôt que d’habitude pour les visiteurs à la journée {count, plural, =1 {un jour} other {# jours}} sur la période ; dans le calendrier, ce jour porte un coin.",
+        "park": "{park} {hours}",
+        "qMonth": "Combien de temps les parcs sont-ils ouverts en {month} ?",
+        "a": "Les horaires les plus fréquents des grands parcs : {parks}."
+      }
+    },
+    "toCalendar": "Vers le calendrier",
+    "plan": "Planifier mon voyage",
+    "parksIndex": {
+      "label": "Calendrier d’affluence par parc",
+      "link": "Calendrier d’affluence {park}"
+    },
+    "accuracy": {
+      "line": "Notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, <link>s’est trompée de {minutes} min en moyenne</link> sur les {days} derniers jours."
+    },
+    "question": "Quel parc, quel jour ?",
+    "nextTitle": "Planificateur de voyage {region}",
+    "lastYearFrom": "À partir du {date} : valeurs de l’an dernier, chaque fois le même jour de la semaine, tel que nous l’avons mesuré."
   },
   "theme": {
     "light": "Clair",
@@ -2278,7 +2317,7 @@
     "switcher": "Meilleure période par resort",
     "metaDescription": "Les séjours de {days} jours les plus calmes en {year} : {windows}. Puis chaque mois avec attentes, événements, vacances scolaires et météo habituelle.",
     "metaDescriptionShort": "Les séjours de {days} jours les plus calmes en {year} à {parks} : {windows}.",
-    "metaDescriptionPlain": "Les séjours de {days} jours les plus calmes en {year} à {parks}, avec pour chaque mois les attentes, les événements, les vacances scolaires et la météo habituelle.",
+    "metaDescriptionPlain": "Les séjours de {days} jours les plus calmes en {year} à {parks}, puis les attentes, événements, vacances et météo de chaque mois.",
     "answer": {
       "sentence": "Les files les plus courtes pour un séjour de {days} jours en {year} : {windows}.",
       "below": "{percent} % sous la moyenne de {year}",
@@ -2290,7 +2329,7 @@
     },
     "strip": {
       "title": "L’année d’un coup d’œil",
-      "lead": "Une barre par semaine : plus elle est haute, plus l’attente des grandes attractions est longue à {parks}. La couleur compare la semaine au reste de {year}.",
+      "lead": "Une barre par semaine : plus elle est haute, plus l’attente de pointe est longue à {parks}.",
       "caption": "Attente des grandes attractions par semaine en {year} à {parks}",
       "table": "Les semaines en tableau",
       "colWeek": "Semaine du",
@@ -2302,23 +2341,17 @@
         "mixed": "en partie l’an dernier",
         "none": "pas de chiffre"
       },
-      "minutes": "{minutes} min",
-      "quieter": "plus calme",
-      "busier": "plus chargé"
+      "minutes": "{minutes} min"
     },
     "months": {
       "title": "Mois par mois",
-      "lead": "Chaque mois de {year} avec l’attente des grandes attractions, les événements, les vacances scolaires, la météo habituelle et les horaires. Le nom du mois ouvre son calendrier jour par jour.",
       "tier": {
         "very_low": "Le plus calme",
-        "low": "Calme",
-        "moderate": "Moyen",
-        "high": "Chargé",
         "very_high": "Le plus chargé"
       },
       "noFigure": "Pas encore de chiffre",
       "beyond": "Nos chiffres s’arrêtent au {date}.",
-      "wait": "Grandes attractions env. {minutes} min",
+      "wait": "Attente de pointe env. {minutes} min",
       "label": {
         "events": "Événements",
         "euBreaks": "Vacances scolaires en Europe",
@@ -2340,11 +2373,11 @@
       "details": "Dates et événements"
     },
     "weeks": {
-      "title": "Meilleures et pires semaines",
-      "lead": "Les trois semaines complètes les plus calmes et les trois plus chargées de {year}, avec ce qui s’y passe.",
+      "title": "Les semaines les plus calmes et les plus chargées",
       "best": "Semaines les plus calmes",
       "worst": "Semaines les plus chargées",
-      "week": "Semaine du {date}"
+      "week": "Semaine du {date}",
+      "stormNote": "La semaine la plus calme, à partir du {date}, tombe pendant la {kind, select, typhoon {saison des typhons} other {saison des ouragans}} ; les voyages ci-dessus comptent le risque de tempête."
     },
     "holidays": {
       "title": "Seulement pendant les vacances scolaires ?",
@@ -3758,25 +3791,18 @@
       "hub": {
         "title": "Calendrier d’affluence Orlando",
         "monthTitle": "Calendrier d’affluence Orlando {month}",
-        "metaTitle": "Calendrier d’affluence Orlando et planificateur",
-        "metaTitleMonth": "Calendrier d’affluence Orlando {month} : Disney et Universal",
+        "metaTitle": "Calendrier d’affluence Orlando {years} et planificateur",
+        "metaTitleMonth": "Affluence à Orlando en {month} : Disney et Universal",
         "metaTitleMonthShort": "Calendrier d’affluence Orlando {month}",
         "metaDescription": "Quel parc d’Orlando quel jour, Epic Universe compris. Le plus calme sur 30 jours : {verdict}.",
         "metaDescriptionPlain": "Quel parc quel jour à Walt Disney World, chez Universal avec Epic Universe et à SeaWorld, et un planificateur qui place tes parcs sur tes dates.",
         "metaDescriptionMonth": "Les jours les plus calmes à Orlando en {month} : {verdict}. Chaque parc jour par jour, Epic Universe compris.",
         "metaDescriptionMonthPlain": "Orlando en {month}, jour par jour : où les files sont les plus courtes à Disney World, chez Universal avec Epic Universe, à SeaWorld et en excursion.",
-        "lead": "Avec une seule chambre d’hôtel à Orlando, tu as huit parcs à thème et quatre parcs aquatiques à ta porte.",
-        "leadMonth": "Quel parc a les files les plus courtes quel jour de {month} : Walt Disney World, Universal avec Epic Universe, SeaWorld et les excursions.",
-        "opening": "Sans trafic, il faut 25 minutes de voiture d’EPCOT à Universal Studios, et depuis un hôtel de Lake Buena Vista, chacun des huit parcs à thème est à moins d’une demi-heure, ferry ou monorail compris pour Magic Kingdom. LEGOLAND, à Winter Haven, est à un peu moins d’une heure, et Busch Gardens et Adventure Island, à Tampa, sont à environ une heure et demie. Avec ces trois-là, Discovery Cove et les quatre parcs aquatiques, cela fait seize parcs, et aucun ne t’oblige à changer d’hôtel. Tous les seize figurent dans le calendrier ci-dessous, jour par jour.",
+        "lead": "Un calendrier pour les 16 parcs autour d’Orlando et un planificateur pour tes jours de voyage.",
+        "leadMonth": "Les 16 parcs autour d’Orlando en {month}, jour par jour, et un planificateur pour tes jours de voyage.",
         "monthIndexLabel": "Orlando mois par mois",
-        "glance": {
-          "title": "Files les plus courtes le <time>{date}</time>, heure d’Orlando"
-        },
-        "legend": {
-          "colourLong": "La couleur compare un jour à un jour ordinaire du même parc. C’est pourquoi un Magic Kingdom vert à 40 minutes et un EPCOT vert à 60 sont tous deux de bons jours, chacun pour son parc. L’anneau marque le parc aux files les plus courtes du resort ce jour-là. Un parc qui ferme plus tôt pour les visiteurs du jour peut perdre l’anneau au profit d’une journée complète à l’attente proche."
-        },
         "calendar": {
-          "caption": "Les parcs d’Orlando du {from} au {to} : attente aux grandes attractions au plus chargé, en minutes"
+          "caption": "Les parcs d’Orlando du {from} au {to} : attente de pointe aux grandes attractions, en minutes"
         },
         "lanes": {
           "break": "Vacances scolaires américaines : {name}, {dates}",
@@ -3793,82 +3819,46 @@
         },
         "when": {
           "kicker": "Disney World et Universal",
-          "title": "Meilleure période pour visiter Orlando en {year}",
-          "titleNoYear": "Meilleure période pour visiter Orlando",
-          "hint": "Les voyages de dix jours aux files les plus courtes dans les sept grands parcs de Walt Disney World et d’Universal.",
-          "pageLink": "Meilleure période pour visiter Orlando en {year}",
-          "pageLinkNoYear": "Meilleure période pour visiter Orlando",
-          "sentence": "Les voyages de {days} jours les plus calmes pour Disney et Universal : {windows}."
-        },
-        "reasons": {
-          "school_break": "pendant des vacances scolaires américaines"
-        },
-        "method": {
-          "title": "Comment se fait la prévision",
-          "summary": "Chaque chiffre ici vient des temps d’attente que park.fan mesure toutes les cinq minutes, d’une prévision fondée sur eux et des horaires publiés par les parcs. Ouvre une question pour les détails.",
-          "sources": {
-            "title": "D’où viennent les chiffres ?",
-            "body": "park.fan enregistre toutes les cinq minutes l’attente affichée de chaque attraction. Nos modèles de prévision apprennent de ces mesures, des horaires, des vacances scolaires et de la météo. Les horaires, l’Early Entry et les soirées spéciales viennent des calendriers des parcs. Nous vérifions les saisons et les fêtes à la main."
-          },
-          "minutes": {
-            "title": "Que veulent dire les minutes ?",
-            "body": "Pour chaque parc, nous prévoyons l’attente à ses grandes attractions, chacune au moment le plus chargé de sa journée, et nous en faisons la moyenne. C’est le seul chiffre qui sert à comparer les parcs. Le matin et le soir, les files sont plus courtes : il ne vaut donc pas pour chaque heure."
-          },
-          "horizon": {
-            "title": "Jusqu’où va-t-elle ?",
-            "body": "La prévision couvre les 60 prochains jours. Ensuite, la tendance va jusqu’au {date}, avec une erreur plus large. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier ».",
-            "bodyNoDate": "La prévision couvre les 60 prochains jours. Ensuite, la tendance continue avec une erreur plus large. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, avec la mention « l’an dernier »."
-          },
-          "error": {
-            "title": "Quelle est sa précision ?",
-            "body": "Plus le jour est lointain, plus la prévision peut se tromper. Dès que tu planifies un voyage, tu trouves à côté du résultat de combien de minutes la prévision pour une attraction un jour donné peut se tromper. Comme les attentes sont arrondies à cinq minutes, des jours à moins de cinq minutes d’écart se valent ici, et les meilleurs jours d’un parc forment un groupe, pas un classement."
-          },
-          "travel": {
-            "title": "Comment les trajets sont-ils calculés ?",
-            "body": "Chaque trajet s’entend en voiture sans trafic, jusqu’au parking. Le parking du Magic Kingdom est le Transportation and Ticket Center, d’où le monorail ou le ferry met encore environ 15 minutes jusqu’à l’entrée. Pour Volcano Bay, tu te gares dans les parkings couverts d’Universal et tu prends la navette, environ 15 minutes de plus. Données cartographiques : {attribution}."
-          },
-          "links": "Le modèle derrière : <fancast>Fancast</fancast>. Tout le reste : <howto>comment fonctionne park.fan</howto>."
+          "title": "Meilleure période pour aller à Orlando en {year}",
+          "titleNoYear": "Meilleure période pour aller à Orlando",
+          "pageLink": "Meilleure période pour aller à Orlando en {year}",
+          "pageLinkNoYear": "Meilleure période pour aller à Orlando"
         },
         "faq": {
           "title": "Questions sur l’affluence à Orlando",
           "quietest": {
             "q": "Quand Orlando est-il le plus calme dans les semaines à venir ?",
             "qMonth": "Quand Orlando est-il le plus calme en {month} ?",
-            "resort": "À {resort}, les files sont les plus courtes le {days}.",
-            "day": "{date} à {park}, environ {minutes} min",
-            "note": "Le calendrier plus haut montre chaque jour, avec le parc aux files les plus courtes de chaque resort."
+            "resort": "{resort} : jours les plus calmes {days} ; les plus chargés {busy}.",
+            "day": "{date} ({park}, {minutes} min)",
+            "dayAlone": "{date} ({minutes} min)"
           },
           "party": {
             "q": "Quel parc choisir un soir de fête au Magic Kingdom ?",
-            "a": "Pendant {count, plural, =1 {# soirée} other {# soirées}} de cette période, le Magic Kingdom ferme aux visiteurs du jour à {time} pour {name}. Ces jours-là, les files sont plus courtes, environ {on} min contre {off} min les autres jours, mais la journée est plus courte et les visiteurs du jour manquent la soirée. Pour une journée complète, choisis plutôt EPCOT, Hollywood Studios ou Animal Kingdom ces jours-là, ou viens avec un billet pour la fête."
+            "a": "Pendant {count, plural, =1 {# soirée} other {# soirées}}, le Magic Kingdom ferme aux visiteurs du jour à {time} pour {name}. {verdict, select, shorter {L’attente de pointe tombe alors à environ {on} min ({off} min sinon), mais la journée est plus courte.} other {L’attente de pointe n’est alors pas plus courte (environ {on} min), la journée si.}} Pour une journée complète, choisis EPCOT, Hollywood Studios ou Animal Kingdom."
           },
           "epic": {
             "q": "Epic Universe est-il plus chargé le week-end ?",
-            "a": "{verdict, select, busier {Oui.} same {Non.} other {Un peu seulement.}} Sur cette période, tu attends environ {weekend} min à ses grandes attractions au plus chargé le samedi et le dimanche, et environ {weekday} min en semaine."
+            "a": "{verdict, select, busier {Oui.} same {Non.} other {Un peu seulement.}} Sur cette période, l’attente de pointe est d’environ {weekend} min le samedi et le dimanche, et d’environ {weekday} min en semaine."
           },
           "distance": {
             "q": "À quelle distance Universal est-il de Walt Disney World ?",
-            "a": "D’Universal Studios à EPCOT, il faut environ {near} minutes en voiture sans trafic, et environ {far} jusqu’au parking du Magic Kingdom. De là, le monorail ou le ferry met encore environ {transfer} minutes jusqu’à l’entrée, soit {total} minutes en tout. Données cartographiques : {attribution}."
+            "a": "Sans trafic, il faut environ {near} minutes de voiture d’Universal Studios à EPCOT. Jusqu’à l’entrée du Magic Kingdom, c’est {total}, dont {transfer} en monorail ou en ferry depuis le parking. Depuis un hôtel de Lake Buena Vista, chacun des huit parcs à thème est à moins d’une demi-heure, LEGOLAND à un peu moins d’une heure, Busch Gardens à environ une heure et demie. Données cartographiques : {attribution}."
           },
           "early": {
             "q": "Ai-je besoin de l’Early Entry ?",
-            "a": "Non, mais il aide les jours chargés. Les clients des hôtels de Disney entrent dans les parcs à thème Disney {first} minutes avant tout le monde, et ceux des hôtels Universal {second} minutes plus tôt dans les parcs à thème d’Universal. Si tu choisis un tel hôtel dans le planificateur, l’ouverture anticipée compte dans ton plan."
-          },
-          "green": {
-            "q": "Pourquoi un parc aux files plus longues peut-il être vert ?",
-            "a": "La couleur compare un jour à un jour ordinaire du même parc, pas aux autres parcs. EPCOT à 60 minutes peut être un jour calme pour EPCOT, et le Magic Kingdom à 50 minutes un jour chargé pour le Magic Kingdom. Pour comparer deux parcs, lis les minutes."
-          },
-          "lastYear": {
-            "q": "Que veut dire « l’an dernier » sur un jour ?",
-            "a": "Notre prévision n’atteint pas encore ce jour. En attendant, il montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré. Lis-le comme une indication de l’affluence à cette période de l’année, pas comme une prévision."
+            "a": "Non, mais il aide les jours chargés. Les clients des hôtels Disney entrent {first} minutes plus tôt dans les parcs Disney, ceux des hôtels Universal {second} minutes plus tôt dans les parcs Universal. Si tu choisis un tel hôtel dans le planificateur, l’ouverture anticipée compte."
           }
         },
         "next": {
-          "title": "Plusieurs jours à Orlando ?"
+          "title": "Planificateur de voyage pour Orlando"
         },
         "dataset": {
           "name": "Calendrier d’affluence des parcs d’Orlando, {period}",
-          "description": "Par parc et par jour à Walt Disney World, Universal Orlando, SeaWorld et en excursion : l’attente prévue aux grandes attractions au plus chargé, l’affluence par rapport à un jour ordinaire du parc et les horaires, {period}."
+          "description": "Par parc et par jour à Walt Disney World, Universal Orlando, SeaWorld et en excursion : l’attente de pointe prévue aux grandes attractions, l’affluence par rapport à un jour ordinaire du parc et les horaires, {period}."
+        },
+        "glance": {
+          "zone": "heure d’Orlando"
         }
       },
       "bestTime": {
@@ -3888,15 +3878,14 @@
           "universal-orlando": "Universal Orlando"
         },
         "intro": {
-          "lead": "Chaque chiffre ici est l’attente des grandes attractions au moment le plus chargé : le pic du jour de chaque attraction phare, en moyenne sur les parcs du séjour.",
-          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date}. Au-delà, la page montre les mêmes semaines de l’an dernier telles que nous les avons mesurées, marquées « l’an dernier ».",
+          "lead": "Chaque chiffre est l’attente de pointe, la plus longue attente du jour à chaque grande attraction, en moyenne sur les parcs du séjour.",
+          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. Jusqu’au {date}, nous utilisons notre prévision, ensuite les mêmes semaines de l’an dernier telles que nous les avons mesurées ; la frise des semaines marque ce point « l’an dernier ».",
           "bodyForecast": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un jour moins bon. Chaque chiffre de cette page est notre prévision."
         },
         "months": {
           "label": {
             "usBreaks": "Vacances scolaires américaines (Orlando)"
-          },
-          "hurricane": "Saison des ouragans"
+          }
         },
         "weeks": {
           "noBreak": "Pas de vacances scolaires américaines à Orlando."
@@ -4156,10 +4145,6 @@
           "disney_springs": "Disney Springs Resort Area"
         }
       },
-      "landing": {
-        "kicker": "park.fan · Orlando",
-        "action": "Planifier mon voyage à Orlando"
-      },
       "homeStory": {
         "kicker": "Orlando",
         "title": "Orlando : quel parc quel jour",
@@ -4172,15 +4157,15 @@
         "name": "Californie du Sud",
         "inRegion": "en Californie du Sud",
         "area": "Los Angeles et San Diego",
-        "calendar": "Calendrier d’affluence Californie du Sud",
+        "calendar": "Calendrier d’affluence Disneyland Californie",
         "calendarHint": "Lequel des huit parcs est le plus calme quel jour, et un planificateur pour ton voyage."
       },
       "hub": {
-        "title": "Calendrier d’affluence Californie du Sud",
-        "monthTitle": "Calendrier d’affluence Californie du Sud {month}",
-        "metaTitle": "Calendrier d’affluence Californie du Sud et planificateur",
-        "metaTitleMonth": "Disneyland Californie : affluence en {month}",
-        "metaTitleMonthShort": "Calendrier d’affluence Californie du Sud {month}",
+        "title": "Calendrier d’affluence Disneyland Californie",
+        "monthTitle": "Calendrier d’affluence Disneyland Californie, {month}",
+        "metaTitle": "Affluence Disneyland Californie et Universal Hollywood",
+        "metaTitleMonth": "Affluence Disneyland Californie en {month}",
+        "metaTitleMonthShort": "Disneyland Californie en {month}",
         "metaDescription": "Les huit parcs à thème de Californie du Sud, jour par jour. Le plus calme sur les 30 prochains jours : {verdict}.",
         "metaDescriptionPlain": "Quel parc est le plus calme quel jour au Disneyland Resort, à Universal Studios Hollywood et jusqu’à San Diego, avec un planificateur pour tes dates.",
         "metaDescriptionMonth": "Les jours les plus calmes en Californie du Sud en {month} : {verdict}. Chaque parc, jour par jour.",
@@ -4202,10 +4187,10 @@
         },
         "when": {
           "kicker": "Disneyland et Universal",
-          "title": "Meilleure période pour visiter la Californie du Sud en {year}",
-          "titleNoYear": "Meilleure période pour visiter la Californie du Sud",
-          "pageLink": "Meilleure période pour visiter la Californie du Sud en {year}",
-          "pageLinkNoYear": "Meilleure période pour visiter la Californie du Sud"
+          "title": "Quand aller à Disneyland et Universal Hollywood en {year}",
+          "titleNoYear": "Quand aller à Disneyland et Universal Hollywood",
+          "pageLink": "Quand aller à Disneyland et Universal Hollywood en {year}",
+          "pageLinkNoYear": "Quand aller à Disneyland et Universal Hollywood"
         },
         "reasons": {
           "school_break": "pendant les vacances scolaires de Los Angeles"
@@ -4216,7 +4201,8 @@
             "q": "Quand la Californie du Sud est-elle la plus calme dans les semaines à venir ?",
             "qMonth": "Quand la Californie du Sud est-elle la plus calme en {month} ?",
             "resort": "{resort} a son attente de pointe la plus basse le {days}.",
-            "day": "{date} ({park}, environ {minutes} min)"
+            "day": "{date} ({park}, environ {minutes} min)",
+            "dayAlone": "{date} (environ {minutes} min)"
           },
           "party": {
             "q": "Quel parc un soir de fête à California Adventure ?",
@@ -4244,17 +4230,17 @@
       },
       "bestTime": {
         "title": {
-          "region": "Meilleure période pour aller en Californie du Sud en {year}"
+          "region": "Quand aller à Disneyland et Universal Hollywood en {year}"
         },
         "name": {
-          "region": "Meilleure période pour aller en Californie du Sud"
+          "region": "Quand aller à Disneyland et Universal Hollywood"
         },
         "resort": {
           "region": "Disneyland et Universal"
         },
         "intro": {
           "lead": "Chaque chiffre ici est l’attente de pointe : l’attente la plus haute de chaque grande attraction dans la journée, en moyenne sur Disneyland, California Adventure et Universal.",
-          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs du jour doivent partir plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date}. Au-delà, la page montre les mêmes semaines de l’an dernier telles que nous les avons mesurées, marquées « l’an dernier ».",
+          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs du jour doivent partir plus tôt compte comme un jour moins bon. Jusqu’au {date}, nous utilisons notre prévision, ensuite les mêmes semaines de l’an dernier telles que nous les avons mesurées ; la frise des semaines marque ce point « l’an dernier ».",
           "bodyForecast": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs du jour doivent partir plus tôt compte comme un jour moins bon. Tout vient de notre prévision."
         },
         "months": {
@@ -4442,17 +4428,17 @@
         "name": "Japon",
         "inRegion": "au Japon",
         "area": "De Tokyo à Osaka",
-        "calendar": "Calendrier d’affluence Japon",
+        "calendar": "Affluence Tokyo Disney et Universal Studios Japan",
         "calendarHint": "Cinq parcs jour par jour, et un planificateur pour un voyage entre plusieurs villes."
       },
       "hub": {
-        "title": "Calendrier d’affluence Japon",
-        "monthTitle": "Calendrier d’affluence Japon {month}",
-        "metaTitle": "Calendrier d’affluence Japon et planificateur",
-        "metaTitleMonth": "Calendrier d’affluence Japon {month} : Tokyo Disney et USJ",
-        "metaTitleMonthShort": "Calendrier d’affluence Japon {month}",
-        "metaDescription": "Quel parc au Japon quel jour, de Tokyo Disney à Universal Studios Japan. Le plus calme dans les 30 prochains jours : {verdict}.",
-        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan et Universal Studios Japan jour par jour, et un planificateur qui répartit villes, nuits et parcs sur tes dates.",
+        "title": "Affluence Tokyo Disney et Universal Studios Japan",
+        "monthTitle": "Affluence Tokyo Disney et Universal Studios Japan, {month}",
+        "metaTitle": "Affluence Tokyo Disney et Universal Studios Japan {years}",
+        "metaTitleMonth": "Affluence Tokyo Disney et Universal Japan en {month}",
+        "metaTitleMonthShort": "Affluence Tokyo Disney et USJ en {month}",
+        "metaDescription": "Le plus calme sur 30 jours : {verdict}. Les cinq parcs, de Tokyo à Osaka, jour par jour.",
+        "metaDescriptionPlain": "Attente de pointe à Tokyo Disneyland, DisneySea, Universal Studios Japan (Osaka), Fuji-Q et LEGOLAND Japan, jour par jour, et un planificateur.",
         "metaDescriptionMonth": "Les jours les plus calmes dans les parcs du Japon en {month} : {verdict}. Les cinq parcs jour par jour.",
         "metaDescriptionMonthPlain": "Le Japon en {month}, jour par jour : l’attente de pointe à Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan et Universal Studios Japan.",
         "lead": "Un calendrier pour cinq parcs entre Tokyo et Osaka, et un planificateur qui met tes villes dans l’ordre et répartit les nuits.",
@@ -4478,10 +4464,10 @@
         },
         "when": {
           "kicker": "Tokyo Disney et USJ",
-          "title": "Meilleure période pour visiter le Japon en {year}",
-          "titleNoYear": "Meilleure période pour visiter le Japon",
-          "pageLink": "Meilleure période pour visiter le Japon en {year}",
-          "pageLinkNoYear": "Meilleure période pour visiter le Japon"
+          "title": "Quand aller à Tokyo Disney et Universal Japan en {year}",
+          "titleNoYear": "Quand aller à Tokyo Disney et Universal Japan",
+          "pageLink": "Quand aller à Tokyo Disney et Universal Japan en {year}",
+          "pageLinkNoYear": "Quand aller à Tokyo Disney et Universal Japan"
         },
         "reasons": {
           "school_break": "pendant les vacances scolaires japonaises"
@@ -4529,14 +4515,14 @@
       },
       "bestTime": {
         "title": {
-          "region": "Meilleure période pour aller au Japon en {year}",
-          "tokyo-disney": "Meilleure période pour aller à Tokyo Disney en {year}",
-          "universal-studios-japan": "Meilleure période pour aller à Universal Studios Japan en {year}"
+          "region": "Quand aller à Tokyo Disney et Universal Japan en {year}",
+          "tokyo-disney": "Quand aller à Tokyo Disney en {year}",
+          "universal-studios-japan": "Quand aller à Universal Studios Japan en {year}"
         },
         "name": {
-          "region": "Meilleure période pour aller au Japon",
-          "tokyo-disney": "Meilleure période pour aller à Tokyo Disney",
-          "universal-studios-japan": "Meilleure période pour aller à Universal Studios Japan"
+          "region": "Quand aller à Tokyo Disney et Universal Japan",
+          "tokyo-disney": "Quand aller à Tokyo Disney",
+          "universal-studios-japan": "Quand aller à Universal Studios Japan"
         },
         "resort": {
           "region": "Tokyo Disney et USJ",
@@ -4545,14 +4531,13 @@
         },
         "intro": {
           "lead": "Chaque chiffre ici est l’attente de pointe : l’attente la plus longue du jour à chaque grande attraction, en moyenne sur les parcs du séjour.",
-          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, les trajets entre les villes compris, et un jour où un parc ferme plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date}. Ensuite, la page montre les mêmes semaines l’an dernier, telles que nous les avons mesurées, avec la mention « l’an dernier ».",
+          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, les trajets entre les villes compris, et un jour où un parc ferme plus tôt compte comme un jour moins bon. Jusqu’au {date}, nous utilisons notre prévision, ensuite les mêmes semaines de l’an dernier telles que nous les avons mesurées ; la frise des semaines marque ce point « l’an dernier ».",
           "bodyForecast": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, les trajets entre les villes compris, et un jour où un parc ferme plus tôt compte comme un jour moins bon. Chaque chiffre de cette page est notre prévision."
         },
         "months": {
           "label": {
             "usBreaks": "Jours fériés et vacances au Japon"
           },
-          "typhoon": "Saison des typhons",
           "rainySeason": "Saison des pluies"
         },
         "weeks": {
@@ -4781,8 +4766,7 @@
       },
       "hub": {
         "title": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
-        "monthTitle": "Disneyland Paris et Parc Astérix en {month} : calendrier d’affluence",
-        "monthQuestion": "Quel parc quel jour en {month} ?",
+        "monthTitle": "Calendrier d’affluence Disneyland Paris et Parc Astérix, {month}",
         "metaTitle": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
         "metaTitleMonth": "Affluence Disneyland Paris et Parc Astérix en {month}",
         "metaTitleMonthShort": "Affluence Disneyland Paris en {month}",
@@ -4814,10 +4798,10 @@
         },
         "when": {
           "kicker": "Séjours avec les trois parcs",
-          "title": "Meilleure période pour Disneyland Paris et le Parc Astérix en {year}",
-          "titleNoYear": "Meilleure période pour Disneyland Paris et le Parc Astérix",
-          "pageLink": "Meilleure période pour Disneyland Paris et le Parc Astérix en {year}",
-          "pageLinkNoYear": "Meilleure période pour Disneyland Paris et le Parc Astérix"
+          "title": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
+          "titleNoYear": "Quand aller à Disneyland Paris et au Parc Astérix",
+          "pageLink": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
+          "pageLinkNoYear": "Quand aller à Disneyland Paris et au Parc Astérix"
         },
         "reasons": {
           "school_break": "vacances scolaires zone C"
@@ -4828,7 +4812,8 @@
             "q": "Quand Disneyland Paris et le Parc Astérix sont-ils les plus calmes dans les semaines à venir ?",
             "qMonth": "Quand Disneyland Paris et le Parc Astérix sont-ils les plus calmes en {month} ?",
             "resort": "{resort} : jours les plus calmes {days}, jours les plus chargés {busy}.",
-            "day": "{date} ({park}, environ {minutes} min)"
+            "day": "{date} ({park}, environ {minutes} min)",
+            "dayAlone": "{date} (environ {minutes} min)"
           },
           "epic": {
             "q": "Le Parc Disneyland est-il plus chargé le week-end ?",
@@ -4849,12 +4834,12 @@
       },
       "bestTime": {
         "title": {
-          "region": "Meilleure période pour Disneyland Paris et le Parc Astérix en {year}",
-          "disneyland-paris": "Meilleure période pour Disneyland Paris en {year}"
+          "region": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
+          "disneyland-paris": "Quand aller à Disneyland Paris en {year}"
         },
         "name": {
-          "region": "Meilleure période pour Disneyland Paris et le Parc Astérix",
-          "disneyland-paris": "Meilleure période pour Disneyland Paris"
+          "region": "Quand aller à Disneyland Paris et au Parc Astérix",
+          "disneyland-paris": "Quand aller à Disneyland Paris"
         },
         "resort": {
           "region": "Disneyland Paris et Parc Astérix",
@@ -4862,7 +4847,7 @@
         },
         "intro": {
           "lead": "Les minutes sont l’attente de pointe, le maximum de la journée à chaque grande attraction, en moyenne sur les parcs du séjour.",
-          "body": "Nous planifions chaque séjour comme le planificateur : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un moins bon jour. Jusqu’au {date}, nous utilisons notre prévision, et pour les semaines suivantes l’affluence mesurée l’an dernier, avec la mention « l’an dernier ».",
+          "body": "Nous planifions chaque séjour comme le planificateur : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un moins bon jour. Jusqu’au {date}, nous utilisons notre prévision, ensuite les mêmes semaines de l’an dernier telles que nous les avons mesurées ; la frise des semaines marque ce point « l’an dernier ».",
           "bodyForecast": "Nous planifions chaque séjour comme le planificateur : chaque parc à son meilleur jour, et un jour où les visiteurs à la journée doivent partir plus tôt compte comme un moins bon jour. Tous les chiffres sont notre prévision."
         },
         "months": {

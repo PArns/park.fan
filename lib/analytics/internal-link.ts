@@ -20,6 +20,8 @@ const LINK_BLOCKS = [
   'news_band',
   'trip_band',
   'trip_tile',
+  'trip_answer',
+  'trip_parks',
   'nav',
   'related',
   'most_read',

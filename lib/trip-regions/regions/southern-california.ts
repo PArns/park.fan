@@ -82,8 +82,6 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
       '/media/disney-california-adventure-park/pixar-pier.jpg',
       '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
     ],
-    // "Disneyland crowd calendar" is the region's most searched calendar.
-    nextStepPark: 'disneyland-park',
     // No default area: the day sheet's line says "by car" for every leg, and the legs from the
     // Disneyland hotels and Harbor Boulevard to the two parks are walks.
     faq: {

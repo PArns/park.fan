@@ -4,9 +4,8 @@ import { Link } from '@/i18n/navigation';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { CROWD_BADGE_CLASS, CROWD_DOT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
-import { formatParkDay } from '@/lib/utils/park-day';
+import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { PHONE_HIT_AREA } from '@/lib/utils/touch-target';
 import { Precip, Temp } from '@/components/common/unit-display';
@@ -23,7 +22,6 @@ import { requireTripRegion } from '@/lib/trip-regions/registry';
 import {
   percentBelowAverage,
   weekInWindow,
-  weekTiers,
   windowReasons,
   windowWarnings,
 } from '@/lib/trip-regions/plan-when';
@@ -33,6 +31,8 @@ import {
   cleanBreakName,
   europeanBreaks,
   lastYearFrom,
+  monthBreakDays,
+  quietWeekInStorm,
   seasonsOn,
   tripLongBreaks,
   weekFacts,
@@ -43,10 +43,15 @@ import type {
   TripMonth,
   TripSchoolBreakRegion,
   TripSeason,
+  TripWeather,
   TripWhenWindow,
   TripWhenWithMonths,
 } from '@/lib/trip-regions/types';
 import type { PlanSearchRange } from '@/lib/trip-regions/plan-query';
+import { stormSignal } from '@/lib/trip-regions/date-facts';
+import { stormCodeIn } from '@/lib/trip-regions/hub-facts';
+import { STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { DaySignalChip, DaySignalKey } from '@/components/parks/day-signal-key';
 
 /**
  * The chapters of a region's best-time pages, server-rendered whole: Level 0 is the answer in the
@@ -77,6 +82,10 @@ export function climatePeriod(period: string): string {
 
 const day = (locale: string, date: string) =>
   formatParkDay(locale, date, { day: 'numeric', month: 'long' });
+
+/** A month's last day, as a date's day part. */
+const monthEnd = (month: TripMonth) =>
+  String(new Date(Date.UTC(month.year, month.month, 0)).getUTCDate());
 
 /** Level 0: the three windows as cards, each with its details and a link into the planner. */
 export async function WindowCards({
@@ -138,7 +147,9 @@ export async function WindowCards({
                   {regionOrShared(tWhenOwn, tWhen, `reason.${reason}`)}
                 </p>
               )}
-              {window.basis !== 'forecast' && (
+              {/* Last year's windows are said once, in the head; only a window across the turn
+                  says it here. */}
+              {window.basis === 'mixed' && (
                 <p className="text-muted-foreground text-xs">{tWhen(`basis.${window.basis}`)}</p>
               )}
               {(details.length > 1 || events.length > 0 || cautions.length > 0) && (
@@ -196,18 +207,25 @@ export async function WindowCards({
 export async function YearStrip({
   when,
   windows,
+  weather,
   caption,
   locale,
 }: {
   when: TripWhenWithMonths;
   windows: readonly TripWhenWindow[];
+  /** The region's weather (`weather.storm`): the storm season's weeks get the signal row. */
+  weather?: TripWeather;
   caption: string;
   locale: string;
 }) {
   const t = await getTranslations({ locale, namespace: 'tripBestTime.strip' });
+  const tClimate = await getTranslations({ locale, namespace: 'tripPlanner.climate' });
+  const stormOf = (start: string) => stormCodeIn(start, addDays(start, 6), weather);
+  const stormKinds = [
+    ...new Set(when.weeks.map((w) => stormOf(w.start)).filter((c) => c !== null)),
+  ];
   const weeks = when.weeks;
   if (weeks.length === 0) return null;
-  const tiers = weekTiers(weeks);
   const max = Math.max(1, ...weeks.map((w) => w.headlinerWait ?? 0));
   const turn = lastYearFrom(when);
   const turnIndex = turn ? weeks.findIndex((w) => w.start >= turn) : -1;
@@ -231,13 +249,14 @@ export async function YearStrip({
           </span>
         )}
         <div className="flex h-32 items-end gap-px sm:gap-0.5">
-          {weeks.map((week, i) => (
+          {weeks.map((week) => (
             <div key={week.start} className="flex h-full min-w-0 flex-1 flex-col justify-end gap-1">
+              {/* One ink: the height is the figure. A crowd-level colour would say "against the
+                  park's normal day", which a week's rank in the year is not. */}
               <span
                 className={cn(
                   'w-full rounded-t-sm',
-                  tiers[i] ? CROWD_DOT_CLASS[tiers[i]] : 'bg-muted',
-                  week.basis !== 'forecast' && 'opacity-60'
+                  week.headlinerWait != null ? 'bg-primary/45' : 'bg-muted'
                 )}
                 style={{ height: `${Math.max(4, ((week.headlinerWait ?? 0) / max) * 112)}px` }}
               />
@@ -247,6 +266,14 @@ export async function YearStrip({
                   windows.some((w) => weekInWindow(week.start, w)) ? 'bg-primary' : 'bg-transparent'
                 )}
               />
+              {stormKinds.length > 0 && (
+                <span
+                  className={cn(
+                    'h-[3px] w-full rounded-full',
+                    stormOf(week.start) && STORM_SIGNAL_CLASS[stormSignal(stormOf(week.start)!)]
+                  )}
+                />
+              )}
             </div>
           ))}
         </div>
@@ -261,14 +288,18 @@ export async function YearStrip({
             </span>
           ))}
         </div>
-        <div className="text-muted-foreground mt-2 flex items-center gap-2 text-xs">
-          <span>{t('quieter')}</span>
-          {(['very_low', 'low', 'moderate', 'high', 'very_high'] as const).map((tier) => (
-            <span key={tier} className={cn('size-3 rounded-sm', CROWD_DOT_CLASS[tier])} />
-          ))}
-          <span>{t('busier')}</span>
-        </div>
       </div>
+      {stormKinds.length > 0 && (
+        <div className="text-muted-foreground flex flex-wrap gap-x-4 gap-y-1">
+          {stormKinds.map((code) => (
+            <DaySignalKey
+              key={code}
+              className={STORM_SIGNAL_CLASS[stormSignal(code)]}
+              label={tClimate(code)}
+            />
+          ))}
+        </div>
+      )}
       <details className="group">
         <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center text-sm font-medium sm:min-h-0">
           {t('table')}
@@ -300,7 +331,12 @@ export async function YearStrip({
                       ? t('minutes', { minutes: week.headlinerWait })
                       : '–'}
                   </td>
-                  <td className="text-muted-foreground px-3 py-1.5">{t(`basis.${week.basis}`)}</td>
+                  <td className="text-muted-foreground px-3 py-1.5">
+                    {[
+                      t(`basis.${week.basis}`),
+                      ...(stormOf(week.start) ? [tClimate(stormOf(week.start)!)] : []),
+                    ].join(' · ')}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -328,9 +364,15 @@ function europeanCell(
     .join(' · ');
 }
 
+/** The one line that says from when a chapter's figures are last year's measured days. */
+function LastYearFrom({ text }: { text: string }) {
+  return <p className="text-muted-foreground mb-3 max-w-3xl text-sm">{text}</p>;
+}
+
 /** Chapter 02: a row per month, each with its facts and a fold with the dates. */
 export async function MonthRows({
   regionSlug,
+  weather,
   rows,
   when,
   regions,
@@ -342,6 +384,8 @@ export async function MonthRows({
 }: {
   /** The trip region's slug, for its own words and its hub's links. */
   regionSlug: string;
+  /** The region's weather: a month in its storm season says so, a month in the peak too. */
+  weather?: TripWeather;
   rows: readonly BestTimeMonthRow[];
   when: TripWhenWithMonths;
   regions: readonly TripSchoolBreakRegion[];
@@ -352,199 +396,201 @@ export async function MonthRows({
   seasonStatus: (s: TripSeason) => string;
 }) {
   const t = await getTranslations({ locale, namespace: 'tripBestTime.months' });
+  const tHub = await getTranslations({ locale, namespace: 'tripHub' });
+  const turn = lastYearFrom(when);
   const tOwn = await getRegionTranslations(regionSlug, 'bestTime.months', locale);
-  const tStrip = await getTranslations({ locale, namespace: 'tripBestTime.strip' });
-  const stormSeason = requireTripRegion(regionSlug).stormSeason;
+  const tClimate = await getTranslations({ locale, namespace: 'tripPlanner.climate' });
   const monthName = getDateTimeFormat(locale, { month: 'long', timeZone: 'UTC' });
   const statesOf = (count: number, total: number) => t('statesOf', { count, total });
   const hourFormat = getNumberFormat(locale, { maximumFractionDigits: 1 });
+  // Past the turn every month reads last year; said once above the list, not on each month.
+  const said = turn ? (
+    <LastYearFrom text={tHub('lastYearFrom', { date: day(locale, turn) })} />
+  ) : null;
   return (
-    <ol className="divide-border/70 divide-y border-y">
-      {rows.map((row) => {
-        const name = monthName.format(new Date(Date.UTC(row.month.year, row.month.month - 1, 1)));
-        const data = row.data;
-        const linkable = isTripRegionMonthInRange(row.month, current);
-        const heading = (
-          <h3 className="text-lg font-bold capitalize">
-            {linkable ? (
-              <Link
-                href={tripRegionMonthHref(regionSlug, locale, row.month, current)}
-                prefetch={false}
-                className={cn(
-                  'text-primary-ink underline-offset-4 hover:underline',
-                  PHONE_HIT_AREA
-                )}
-              >
-                {name}
-              </Link>
-            ) : (
-              name
-            )}
-          </h3>
-        );
-        if (!data) {
-          return (
-            <li key={row.key} className="grid gap-2 py-4 lg:grid-cols-[11rem_1fr]">
-              {heading}
-              <p className="text-muted-foreground text-sm">
-                {t('noFigure')}. {t('beyond', { date: day(locale, when.meta.to) })}
-              </p>
-            </li>
-          );
-        }
-        const seasons = seasonsOn(
-          when.seasons.filter((s) => data.seasons.includes(s.id)),
-          { from: `${row.key}-01`, to: `${row.key}-31` }
-        );
-        const breaks = breakRuns(data.usSchoolBreakDays);
-        const eu = europeanBreaks(regions, row.key, countries);
-        const euText = europeanCell(eu, statesOf, t('euUnknown'));
-        const climate = data.climate;
-        const hours = [
-          row.hours && data.dayGuestHours != null
-            ? t(`hours.${row.hours}`, { hours: hourFormat.format(data.dayGuestHours) })
-            : t('hours.unknown'),
-          ...(data.partyNights > 0 ? [t('partyNights', { count: data.partyNights })] : []),
-        ].join(' · ');
-        // A separately ticketed evening after a normal close (Disney After Hours) runs most of the
-        // year; the festivals and parties that set a month apart are named first.
-        const shownSeasons = [...seasons]
-          .sort((a, b) => Number(isAfterHours(a)) - Number(isAfterHours(b)))
-          .slice(0, 3);
-        return (
-          <li
-            key={row.key}
-            className="grid gap-x-6 gap-y-3 py-5 lg:grid-cols-[11rem_minmax(0,1fr)]"
-          >
-            <div className="flex flex-wrap items-center gap-2 lg:flex-col lg:items-start">
-              {heading}
-              {row.tier && (
-                <span
+    <>
+      {said}
+      <ol className="divide-border/70 divide-y border-y">
+        {rows.map((row) => {
+          const name = monthName.format(new Date(Date.UTC(row.month.year, row.month.month - 1, 1)));
+          const storm = stormCodeIn(`${row.key}-01`, `${row.key}-${monthEnd(row.month)}`, weather);
+          const data = row.data;
+          const linkable = isTripRegionMonthInRange(row.month, current);
+          const heading = (
+            <h3 className="text-lg font-bold capitalize">
+              {linkable ? (
+                <Link
+                  href={tripRegionMonthHref(regionSlug, locale, row.month, current)}
+                  prefetch={false}
                   className={cn(
-                    'rounded-full px-2.5 py-0.5 text-xs font-semibold',
-                    CROWD_BADGE_CLASS[row.tier]
+                    'text-primary-ink underline-offset-4 hover:underline',
+                    PHONE_HIT_AREA
                   )}
                 >
-                  {t(`tier.${row.tier}`)}
-                </span>
+                  {name}
+                </Link>
+              ) : (
+                name
               )}
-              {stormSeason && data[`${stormSeason}Season`] && tOwn.has(stormSeason) && (
-                <span className="text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
-                  {tOwn(stormSeason)}
-                </span>
-              )}
-              {data.rainySeason && tOwn.has('rainySeason') && (
-                <span className="text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
-                  {tOwn('rainySeason')}
-                </span>
-              )}
-            </div>
-            <div className="space-y-3">
-              <p className="font-semibold tabular-nums">
-                {data.headlinerWait != null
-                  ? t('wait', { minutes: data.headlinerWait })
-                  : t('noFigure')}
-                {data.basis !== 'forecast' && data.basis !== 'none' && (
-                  <span className="text-muted-foreground ms-2 text-sm font-normal">
-                    ({tStrip(`basis.${data.basis}`)})
+            </h3>
+          );
+          if (!data) {
+            return (
+              <li key={row.key} className="grid gap-2 py-4 lg:grid-cols-[11rem_1fr]">
+                {heading}
+                <p className="text-muted-foreground text-sm">
+                  {t('noFigure')}. {t('beyond', { date: day(locale, when.meta.to) })}
+                </p>
+              </li>
+            );
+          }
+          const seasons = seasonsOn(
+            when.seasons.filter((s) => data.seasons.includes(s.id)),
+            { from: `${row.key}-01`, to: `${row.key}-31` }
+          );
+          const breaks = breakRuns(monthBreakDays(data));
+          const eu = europeanBreaks(regions, row.key, countries);
+          const euText = europeanCell(eu, statesOf, t('euUnknown'));
+          const climate = data.climate;
+          const hours = [
+            row.hours && data.dayGuestHours != null
+              ? t(`hours.${row.hours}`, { hours: hourFormat.format(data.dayGuestHours) })
+              : t('hours.unknown'),
+            ...(data.partyNights > 0 ? [t('partyNights', { count: data.partyNights })] : []),
+          ].join(' · ');
+          // A separately ticketed evening after a normal close (Disney After Hours) runs most of the
+          // year; the festivals and parties that set a month apart are named first.
+          const shownSeasons = [...seasons]
+            .sort((a, b) => Number(isAfterHours(a)) - Number(isAfterHours(b)))
+            .slice(0, 3);
+          return (
+            <li
+              key={row.key}
+              className="grid gap-x-6 gap-y-3 py-5 lg:grid-cols-[11rem_minmax(0,1fr)]"
+            >
+              <div className="flex flex-wrap items-center gap-2 lg:flex-col lg:items-start">
+                {heading}
+                {/* A month in the storm peak is never called the quietest: its short waits come
+                    with the storm, and the trips above rank it lower for that. */}
+                {row.mark && !(row.mark === 'very_low' && storm?.endsWith('_peak')) && (
+                  <span className="border-foreground/30 rounded-full border px-2.5 py-0.5 text-xs font-semibold">
+                    {t(`tier.${row.mark}`)}
                   </span>
                 )}
-              </p>
-              {/* One line per month in the list; events, breaks, weather and hours open on request,
+                {storm && (
+                  <DaySignalChip
+                    className={STORM_SIGNAL_CLASS[stormSignal(storm)]}
+                    label={tClimate(storm)}
+                  />
+                )}
+                {data.rainySeason && tOwn.has('rainySeason') && (
+                  <span className="text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs">
+                    {tOwn('rainySeason')}
+                  </span>
+                )}
+              </div>
+              <div className="space-y-3">
+                <p className="font-semibold tabular-nums">
+                  {data.headlinerWait != null
+                    ? t('wait', { minutes: data.headlinerWait })
+                    : t('noFigure')}
+                </p>
+                {/* One line per month in the list; events, breaks, weather and hours open on request,
                   so twelve months do not stand as a wall of facts on a phone. */}
-              <details className="text-sm">
-                <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center font-medium sm:min-h-0">
-                  {t('details')}
-                </summary>
-                <dl className="mt-2 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-                  <div>
-                    <dt className="text-muted-foreground text-xs">{t('label.events')}</dt>
-                    <dd>
-                      {shownSeasons.length
-                        ? shownSeasons
-                            .map((s) => `${seasonLabel(s)} (${seasonStatus(s)})`)
-                            .join(' · ')
-                        : t('none')}
-                      {seasons.length > 3 ? ` · +${seasons.length - 3}` : ''}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-muted-foreground text-xs">{tOwn('label.usBreaks')}</dt>
-                    <dd>
-                      {breaks.length
-                        ? breaks
-                            .map(
-                              (b) =>
-                                `${translateHolidayName(b.name, locale)} ${formatWindow(b, locale)}`
-                            )
-                            .join(' · ')
-                        : t('none')}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-muted-foreground text-xs">{t('label.euBreaks')}</dt>
-                    <dd>{euText || t('none')}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-muted-foreground text-xs">{t('label.weather')}</dt>
-                    <dd>
-                      {climate
-                        ? t.rich('climate', {
-                            high: () => <Temp celsius={climate.tempMax} withUnit />,
-                            rain: () => <Precip mm={climate.precipitationMm} />,
-                          })
-                        : t('none')}
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="text-muted-foreground text-xs">{t('label.hours')}</dt>
-                    <dd>{hours}</dd>
-                  </div>
-                </dl>
-                <div className="text-muted-foreground mt-2 space-y-2">
-                  {seasons.length > 0 && (
-                    <ul className="list-disc space-y-1 ps-5">
-                      {seasons.map((s) => (
-                        <li key={s.id}>
-                          {seasonLabel(s)}:{' '}
-                          {formatWindow({ from: s.startDate, to: s.endDate }, locale)} (
-                          {seasonStatus(s)})
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {eu.some((c) => c.regions.length > 0) && (
-                    <ul className="list-disc space-y-1 ps-5">
-                      {eu.flatMap((c) =>
-                        c.regions.map((r) => (
-                          <li key={r.code}>
-                            {r.name}:{' '}
-                            {r.periods
+                <details className="text-sm">
+                  <summary className="text-primary-ink flex min-h-11 cursor-pointer items-center font-medium sm:min-h-0">
+                    {t('details')}
+                  </summary>
+                  <dl className="mt-2 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+                    <div>
+                      <dt className="text-muted-foreground text-xs">{t('label.events')}</dt>
+                      <dd>
+                        {shownSeasons.length
+                          ? shownSeasons
+                              .map((s) => `${seasonLabel(s)} (${seasonStatus(s)})`)
+                              .join(' · ')
+                          : t('none')}
+                        {seasons.length > 3 ? ` · +${seasons.length - 3}` : ''}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-muted-foreground text-xs">{tOwn('label.usBreaks')}</dt>
+                      <dd>
+                        {breaks.length
+                          ? breaks
                               .map(
-                                (p) =>
-                                  `${translateHolidayName(cleanBreakName(p.name), locale)} ${formatWindow(p, locale)}`
+                                (b) =>
+                                  `${translateHolidayName(b.name, locale)} ${formatWindow(b, locale)}`
                               )
-                              .join(', ')}
+                              .join(' · ')
+                          : t('none')}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-muted-foreground text-xs">{t('label.euBreaks')}</dt>
+                      <dd>{euText || t('none')}</dd>
+                    </div>
+                    <div>
+                      <dt className="text-muted-foreground text-xs">{t('label.weather')}</dt>
+                      <dd>
+                        {climate
+                          ? t.rich('climate', {
+                              high: () => <Temp celsius={climate.tempMax} withUnit />,
+                              rain: () => <Precip mm={climate.precipitationMm} />,
+                            })
+                          : t('none')}
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="text-muted-foreground text-xs">{t('label.hours')}</dt>
+                      <dd>{hours}</dd>
+                    </div>
+                  </dl>
+                  <div className="text-muted-foreground mt-2 space-y-2">
+                    {seasons.length > 0 && (
+                      <ul className="list-disc space-y-1 ps-5">
+                        {seasons.map((s) => (
+                          <li key={s.id}>
+                            {seasonLabel(s)}:{' '}
+                            {formatWindow({ from: s.startDate, to: s.endDate }, locale)} (
+                            {seasonStatus(s)})
                           </li>
-                        ))
-                      )}
-                    </ul>
-                  )}
-                  {climate && (
-                    <p>
-                      {t.rich('climateNote', {
-                        period: climate.period,
-                        low: () => <Temp celsius={climate.tempMin} withUnit />,
-                      })}
-                    </p>
-                  )}
-                </div>
-              </details>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
+                        ))}
+                      </ul>
+                    )}
+                    {eu.some((c) => c.regions.length > 0) && (
+                      <ul className="list-disc space-y-1 ps-5">
+                        {eu.flatMap((c) =>
+                          c.regions.map((r) => (
+                            <li key={r.code}>
+                              {r.name}:{' '}
+                              {r.periods
+                                .map(
+                                  (p) =>
+                                    `${translateHolidayName(cleanBreakName(p.name), locale)} ${formatWindow(p, locale)}`
+                                )
+                                .join(', ')}
+                            </li>
+                          ))
+                        )}
+                      </ul>
+                    )}
+                    {climate && (
+                      <p>
+                        {t.rich('climateNote', {
+                          period: climate.period,
+                          low: () => <Temp celsius={climate.tempMin} withUnit />,
+                        })}
+                      </p>
+                    )}
+                  </div>
+                </details>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </>
   );
 }
 
@@ -552,6 +598,7 @@ export async function MonthRows({
 export async function BestWorstWeeks({
   regionSlug,
   when,
+  windows,
   range,
   locale,
   seasonLabel,
@@ -559,14 +606,17 @@ export async function BestWorstWeeks({
   /** The trip region's slug, for its own words and its hub's links. */
   regionSlug: string;
   when: TripWhenWithMonths;
+  /** The trips the page names, to say why the quietest week is none of them. */
+  windows: readonly TripWhenWindow[];
   range: PlanSearchRange;
   locale: string;
   seasonLabel: SeasonLabel;
 }) {
-  const [t, tOwn, tStrip] = await Promise.all([
+  const [t, tOwn, tStrip, tHub] = await Promise.all([
     getTranslations({ locale, namespace: 'tripBestTime.weeks' }),
     getRegionTranslations(regionSlug, 'bestTime.weeks', locale),
     getTranslations({ locale, namespace: 'tripBestTime.strip' }),
+    getTranslations({ locale, namespace: 'tripHub' }),
   ]);
   const { best, worst } = bestAndWorstWeeks(when.weeks, range);
   const list = (weeks: typeof best, title: string) => (
@@ -586,25 +636,33 @@ export async function BestWorstWeeks({
                 <span className="ms-2 tabular-nums">
                   {tStrip('minutes', { minutes: week.headlinerWait! })}
                 </span>
-                {week.basis !== 'forecast' && (
-                  <span className="text-muted-foreground ms-2 text-sm font-normal">
-                    ({tStrip(`basis.${week.basis}`)})
-                  </span>
-                )}
               </p>
-              <p className="text-muted-foreground text-sm">
-                {reasons.length ? [...new Set(reasons)].join(' · ') : tOwn('noBreak')}
-              </p>
+              {(reasons.length > 0 || tOwn.has('noBreak')) && (
+                <p className="text-muted-foreground text-sm">
+                  {reasons.length ? [...new Set(reasons)].join(' · ') : tOwn('noBreak')}
+                </p>
+              )}
             </li>
           );
         })}
       </ol>
     </Card>
   );
+  const stormSeason = requireTripRegion(regionSlug).stormSeason;
+  const storm = quietWeekInStorm(when, windows, range, stormSeason);
+  const turn = lastYearFrom(when);
   return (
-    <div className="grid gap-4 md:grid-cols-2">
-      {list(best, t('best'))}
-      {list(worst, t('worst'))}
+    <div className="space-y-4">
+      {turn && <LastYearFrom text={tHub('lastYearFrom', { date: day(locale, turn) })} />}
+      <div className="grid gap-4 md:grid-cols-2">
+        {list(best, t('best'))}
+        {list(worst, t('worst'))}
+      </div>
+      {storm && stormSeason && (
+        <p className="text-muted-foreground max-w-3xl text-sm">
+          {t('stormNote', { date: day(locale, storm.start), kind: stormSeason })}
+        </p>
+      )}
     </div>
   );
 }

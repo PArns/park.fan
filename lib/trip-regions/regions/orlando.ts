@@ -118,8 +118,6 @@ export const ORLANDO: TripRegionConfig = {
       '/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg',
       '/media/universal-islands-of-adventure/welcome-cover.jpg',
     ],
-    // Epic Universe's crowd calendar is where we rank.
-    nextStepPark: 'universal-epic-universe',
     // The middle of Walt Disney World.
     defaultArea: 'disney',
     faq: {

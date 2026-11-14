@@ -897,13 +897,21 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Kalender-Resort gewählt',
     when: 'Der Schalter über dem Datumsraster (Insgesamt oder ein Resort), bei einer Änderung; from_default, wenn er die Voreinstellung verließ.',
   },
-  trip_accuracy_opened: {
-    label: 'Genauigkeit geöffnet',
-    when: '„Wie genau ist das?“ unter dem Plan aufgeklappt.',
-  },
   trip_stay_suggestion: {
     label: 'Nächte-Vorschlag',
     when: 'Der Vorschlag der API zu den Nächten je Stadt: shown, einmal je Vorschlag auf dem Schirm; applied mit „So planen“.',
+  },
+  trip_hub_action: {
+    label: 'Weg im Hub-Kopf',
+    when: '„Reise planen“ oder „Zum Kalender“ im Kopf eines Hubs oder einer Monatsseite; mit der Seite.',
+  },
+  trip_hub_filter: {
+    label: 'Hub-Kalender gefiltert',
+    when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',
+  },
+  trip_accuracy_opened: {
+    label: 'Genauigkeit geöffnet',
+    when: '„Wie genau ist das?“ im Plan oder die Genauigkeitszeile unter dem Hub-Kalender.',
   },
   trip_tickets_answered: {
     label: 'Ticket-Frage beantwortet (bis 2.21.0)',
@@ -999,7 +1007,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   faq_opened: {
     label: 'FAQ-Frage geöffnet',
-    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, nie mit ihrem Text.',
+    when: 'Eine Frage eines FAQ wird aufgeklappt; mit ihrem Platz in der Liste, im Hub einer Reiseregion auch mit dem Schlüssel der Frage („quietest“, „accuracy“), nie mit ihrem Text.',
   },
   park_links_opened: {
     label: 'Park-Links aufgeklappt',
@@ -1082,6 +1090,8 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   news_band: 'News-Band im Parkkopf',
   trip_band: 'Reiseplaner-Band',
   trip_tile: 'Reiseplaner-Kachel',
+  trip_answer: 'Antwort im Hub-Kopf',
+  trip_parks: 'Andrang-Kalender je Park im Hub',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',

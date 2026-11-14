@@ -10,6 +10,15 @@ export const MAX_TITLE_LENGTH = 60;
 export const MAX_DESCRIPTION_LENGTH = 160;
 
 /**
+ * A date that ends a sentence on its abbreviation („16. Nov.“, „7–16 sept.“) prints two full stops
+ * with the sentence's own; one stays. Run it on each candidate before {@link fitWithin}, so the
+ * length is the printed one.
+ */
+export function oneFullStop(text: string): string {
+  return text.replace(/\.\./g, '.');
+}
+
+/**
  * Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass
  * candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name
  * costs less than a clipped template.

@@ -48,13 +48,7 @@ export async function PlannerChapterSlot({
       data-locale={locale}
       data-default-month={defaultMonth}
     >
-      <ChapterHeading
-        index={index}
-        icon={Route}
-        kicker={t('kicker')}
-        title={t('title')}
-        hint={t('hint')}
-      />
+      <ChapterHeading index={index} icon={Route} title={t('title')} />
       <TripRegionPlanner
         region={tickets ? { ...region, tickets: leanTicketCatalog(tickets) } : region}
         locale={locale}

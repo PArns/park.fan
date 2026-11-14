@@ -28,6 +28,7 @@ import {
   shortParkName,
   tintLevel,
 } from '@/lib/trip-regions/hub-data';
+import { shownWait } from '@/lib/trip-regions/plan-week';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import { cleanBreakName } from '@/lib/trip-regions/best-time';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
@@ -95,9 +96,11 @@ export function HubDaySheet({
         {day && (
           <div className="flex min-h-0 flex-1 flex-col overflow-y-auto">
             <div className="border-border/60 border-b p-4 pr-14">
-              <p className="text-primary-ink text-xs font-semibold tracking-wider uppercase">
-                {tRegion('kicker')}
-              </p>
+              {tRegion.has('kicker') && (
+                <p className="text-primary-ink text-xs font-semibold tracking-wider uppercase">
+                  {tRegion('kicker')}
+                </p>
+              )}
               <SheetTitle className="mt-1 text-xl font-bold">
                 <time dateTime={day.date}>{formatHubDate(day.date, locale, 'long')}</time>
               </SheetTitle>
@@ -167,7 +170,9 @@ export function HubDaySheet({
                   </ol>
                 </section>
               ))}
-              <p className="text-muted-foreground text-xs">{region.travel.attribution}</p>
+              {region.travel.attribution && (
+                <p className="text-muted-foreground text-xs">{region.travel.attribution}</p>
+              )}
             </div>
           </div>
         )}
@@ -251,7 +256,7 @@ function SheetPark({
             {isRankable(parkDay) ? (
               <span className="flex items-center gap-2">
                 <span className="font-semibold tabular-nums">
-                  {t('minutes', { minutes: parkDay.headlinerWait })}
+                  {t('minutes', { minutes: shownWait(parkDay)! })}
                 </span>
                 <CrowdLevelBadge level={level} />
               </span>
@@ -306,7 +311,7 @@ function SheetPark({
               ))}
             {leg && parkDay?.status !== 'CLOSED' && (
               <li className="text-muted-foreground">
-                {leg.transferMinutes
+                {leg.transferMinutes && tRegion.has('travelTransfer')
                   ? tRegion('travelTransfer', {
                       area: areaName,
                       minutes: leg.minutes,
@@ -316,7 +321,13 @@ function SheetPark({
                       via: leg.via === 'ttc' ? 'ttc' : 'other',
                       total: legMinutes(leg),
                     })
-                  : t('travel', { area: areaName, minutes: leg.minutes })}
+                  : // The leg's own way there: a drive, a walk, a train; the select's words for an
+                    // unknown mode are empty, so the line ends after the minutes.
+                    t('travel', {
+                      area: areaName,
+                      minutes: legMinutes(leg),
+                      mode: leg.mode,
+                    }).trim()}
               </li>
             )}
           </ul>

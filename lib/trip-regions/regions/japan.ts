@@ -71,11 +71,10 @@ export const JAPAN: TripRegionConfig = {
       '/media/tokyo-disneysea/mermaid-lagoon.jpg',
       '/media/tokyo-disneyland/cinderella-castle-world-bazaar.jpg',
     ],
-    // Tokyo DisneySea has the longest peak waits of the five, so its calendar is the next step.
-    nextStepPark: 'tokyo-disneysea',
     // Between the two Disney parks, where most trips start.
     defaultArea: 'maihama',
-    faq: { weekendPark: 'tokyo-disneysea' },
+    // Three questions a trip across cities raises, answered in the region's words.
+    faq: { weekendPark: 'tokyo-disneysea', questions: ['cities', 'luggage', 'happyEntry'] },
   },
   bestTime: [
     {

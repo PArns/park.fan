@@ -12,9 +12,6 @@ export const HUB_CELL =
 /** The resort's shortest line that day: one ring inside the box, so the grid never shifts. */
 export const HUB_CELL_BEST = 'ring-foreground/70 ring-2 ring-inset';
 
-/** A day read off last year: the dashed edge the legend names "last year". */
-export const HUB_CELL_LAST_YEAR = 'border-dashed border-foreground/45';
-
 /**
  * The early-close mark: a small folded corner, top right, where a ticketed evening sends the day
  * guests out early. A shape, not an icon, so the square still holds only its number.

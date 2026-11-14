@@ -7,17 +7,28 @@
 /** The attribute carrying a question's 1-based place in its list. */
 export const FAQ_POSITION_ATTRIBUTE = 'data-faq-position';
 
-/** The attribute to spread onto the `<details>` of the question at 0-based `index`. */
-export function faqPositionAttributes(index: number): Record<string, string> {
-  return { [FAQ_POSITION_ATTRIBUTE]: String(index + 1) };
+/**
+ * The attribute carrying a question's message key, where a list's questions depend on the data and
+ * a place names a different question on another page or day (a trip region's hub).
+ */
+export const FAQ_KEY_ATTRIBUTE = 'data-faq-key';
+
+/** The attributes to spread onto the `<details>` of the question at 0-based `index`. */
+export function faqPositionAttributes(index: number, key?: string): Record<string, string> {
+  return {
+    [FAQ_POSITION_ATTRIBUTE]: String(index + 1),
+    ...(key ? { [FAQ_KEY_ATTRIBUTE]: key } : {}),
+  };
 }
 
 /**
- * The position a `toggle` on `target` reports: the question's place when an FAQ row opened, `null`
- * for a row that closed and for any other `<details>`.
+ * What a `toggle` on `target` reports: the question's place, and its key where it has one, when an
+ * FAQ row opened; `null` for a row that closed and for any other `<details>`.
  */
-export function faqOpenedPositionOf(target: EventTarget | null): number | null {
+export function faqOpenedOf(target: EventTarget | null): { position: number; key?: string } | null {
   if (!(target instanceof Element) || !(target as HTMLDetailsElement).open) return null;
   const position = Number(target.getAttribute(FAQ_POSITION_ATTRIBUTE));
-  return Number.isInteger(position) && position > 0 ? position : null;
+  if (!Number.isInteger(position) || position < 1) return null;
+  const key = target.getAttribute(FAQ_KEY_ATTRIBUTE);
+  return key ? { position, key } : { position };
 }

@@ -59,7 +59,7 @@ export const PARIS: TripRegionConfig = {
     },
   ],
   parkNameSuffixes: [],
-  resortWords: {},
+  resortWords: { 'disneyland-paris': 'Disney', 'parc-asterix': 'Astérix' },
   hotels: [
     { key: 'disney', area: 'disney_lake' },
     { key: 'parc_asterix', area: 'parc_asterix' },
