@@ -19,11 +19,25 @@ export interface AssistantPlannerEntry {
   kind: 'ride' | 'show' | 'block';
   name: string;
   rideSlug?: string;
+  /** A show's slug, so Parky can check a new time against its performances. */
+  showSlug?: string;
   /** Park-local `HH:MM`, the start the planner prints on the block. */
   start?: string;
+  /** The planner's own minute, past 1440 after midnight, which `start` cannot say. */
+  startMinute?: number;
   /** A free block's or a show's length; a ride's depends on the queue. */
   durationMinutes?: number;
   done?: boolean;
+}
+
+/** A planned day a question names by park and date only. */
+export interface AssistantPlannerIndexDay {
+  park: { slug: string; name: string };
+  date: string;
+  entries: number;
+  done?: number;
+  reserved?: true;
+  riderHeightCm?: number;
 }
 
 /** The `planner` field of a chat request. */
@@ -35,11 +49,15 @@ export interface AssistantPlannerSnapshot {
     prefs?: PlannerDayPrefs;
     entries: AssistantPlannerEntry[];
   }>;
+  /** Every other planned day from today on; Parky opens one to read it in full. */
+  more?: AssistantPlannerIndexDay[];
 }
 
-/** The nearest days a question carries, and the entries per day. */
-export const SNAPSHOT_MAX_DAYS = 6;
+/** The days a question carries in full (the active one and the nearest), and the entries per day. */
+export const SNAPSHOT_MAX_DAYS = 8;
 export const SNAPSHOT_MAX_ENTRIES = 40;
+/** The other planned days a question names by park and date, as many as the API reads. */
+export const SNAPSHOT_MAX_INDEX = 60;
 const MAX_NAME = 120;
 
 function entryOf(entry: PlannerDay['entries'][number]): AssistantPlannerEntry {
@@ -49,40 +67,67 @@ function entryOf(entry: PlannerDay['entries'][number]): AssistantPlannerEntry {
     kind,
     name: (entry.custom?.label ?? entry.attractionName ?? '').slice(0, MAX_NAME),
     ...(kind === 'ride' && entry.attractionSlug ? { rideSlug: entry.attractionSlug } : {}),
+    ...(kind === 'show' && entry.showSlug ? { showSlug: entry.showSlug } : {}),
     start: formatGridTime(entry.startMinute),
+    startMinute: entry.startMinute,
     ...(entry.custom ? { durationMinutes: entry.custom.durationMinutes } : {}),
     ...(entry.done ? { done: true } : {}),
   };
 }
 
 /**
- * The planned days from today on, each in its park's own date, nearest first; `undefined` when
- * there is none, so the request leaves the field out.
+ * Every planned day from today on, each in its park's own date, nearest first: the day open in the
+ * planner and the nearest in full, the rest by park and date; `undefined` when there is none, so
+ * the request leaves the field out.
  */
 export function assistantPlannerSnapshot(
   state: PlannerState,
   now: number = Date.now()
 ): AssistantPlannerSnapshot | undefined {
-  const days = Object.values(state.parks)
+  const planned = Object.values(state.parks)
     .flatMap((park) => {
       const today = todayInZone(park.timezone, now);
       return Object.values(park.days)
         .filter((day) => isPlannedDay(day) && day.date >= today)
         .map((day) => ({ park, day }));
     })
-    .sort((a, b) => a.day.date.localeCompare(b.day.date) || a.park.slug.localeCompare(b.park.slug))
-    .slice(0, SNAPSHOT_MAX_DAYS)
-    .map(({ park, day }) => ({
-      park: { slug: park.slug, name: park.name.slice(0, MAX_NAME) },
+    .sort((a, b) => a.day.date.localeCompare(b.day.date) || a.park.slug.localeCompare(b.park.slug));
+  if (planned.length === 0) return undefined;
+  const { activeParkSlug, activeDate } = state;
+  const isActive = ({ park, day }: (typeof planned)[number]) =>
+    park.slug === activeParkSlug && day.date === activeDate;
+  // The day open in the planner is the one "this day" means, wherever it falls.
+  const active = planned.find(isActive);
+  const full = [
+    ...(active ? [active] : []),
+    ...planned.filter((p) => !isActive(p)).slice(0, SNAPSHOT_MAX_DAYS - (active ? 1 : 0)),
+  ].sort((a, b) => a.day.date.localeCompare(b.day.date) || a.park.slug.localeCompare(b.park.slug));
+  const rest = planned.filter((p) => !full.includes(p)).slice(0, SNAPSHOT_MAX_INDEX);
+  const name = (park: (typeof planned)[number]['park']) => ({
+    slug: park.slug,
+    name: park.name.slice(0, MAX_NAME),
+  });
+  return {
+    ...(activeParkSlug && activeDate ? { active: { park: activeParkSlug, date: activeDate } } : {}),
+    days: full.map(({ park, day }) => ({
+      park: name(park),
       date: day.date,
       ...(day.prefs ? { prefs: { ...day.prefs } } : {}),
       entries: day.entries.slice(0, SNAPSHOT_MAX_ENTRIES).map(entryOf),
-    }));
-  if (days.length === 0) return undefined;
-  const { activeParkSlug, activeDate } = state;
-  return {
-    ...(activeParkSlug && activeDate ? { active: { park: activeParkSlug, date: activeDate } } : {}),
-    days,
+    })),
+    ...(rest.length > 0 && {
+      more: rest.map(({ park, day }) => {
+        const done = day.entries.filter((e) => e.done).length;
+        return {
+          park: name(park),
+          date: day.date,
+          entries: day.entries.length,
+          ...(done > 0 && { done }),
+          ...(day.reserved && { reserved: true as const }),
+          ...(day.prefs?.riderHeightCm && { riderHeightCm: day.prefs.riderHeightCm }),
+        };
+      }),
+    }),
   };
 }
 
