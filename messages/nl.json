@@ -3091,16 +3091,16 @@
       "datesEmpty": "Kies aankomst en vertrek",
       "parks": "Parken",
       "parksCount": "{count, plural, =1 {1 park} other {# parken}}",
-      "splitOn": "de planner verdeelt de dagen",
-      "visitCount": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
-      "fineTune": "Verfijnen",
+      "fineTune": "Meer opties",
       "findSummary": "De beste {days} dagen, {range}",
-      "nextParks": "Verder naar de parken",
-      "plan": "Plannen",
       "find": "Data zoeken",
       "done": "Klaar",
       "close": "Sluiten",
-      "sheetHint": "Je keuze verandert het plan eronder."
+      "sheetHint": "Je keuze verandert het plan eronder.",
+      "route": "Route",
+      "showPlan": "Plan tonen",
+      "start": "Reis plannen",
+      "findLink": "Nog geen data? Zoek de beste reistijd"
     },
     "dates": {
       "prevMonth": "Vorige maand",
@@ -3120,10 +3120,8 @@
       "maxLength": "Een reis duurt hoogstens {days} dagen."
     },
     "find": {
-      "modeLabel": "Hoe je je reisdata kiest",
       "modeKnown": "Ik weet mijn data",
-      "modeFind": "Beste data zoeken",
-      "period": "Wanneer zou je kunnen reizen?",
+      "period": "Periode",
       "periods": {
         "next12": "Komende 12 maanden",
         "year": "{year}",
@@ -3138,7 +3136,7 @@
       "lengthValue": "{days} dagen",
       "shorter": "Een dag korter",
       "longer": "Een dag langer",
-      "holidays": "Alleen in onze schoolvakanties",
+      "holidays": "Alleen in mijn schoolvakantie",
       "holidaysHint": "Alleen periodes die helemaal in de schoolvakantie van je regio vallen.",
       "country": "Land",
       "region": "Regio",
@@ -3146,9 +3144,7 @@
       "holidaysUnavailable": "De schoolvakantiegegevens konden niet worden geladen."
     },
     "parks": {
-      "split": "Verdeel mijn dagen",
-      "splitHint": "Parken met “auto” krijgen een tweede dag als de reis daar ruimte voor heeft.",
-      "auto": "auto",
+      "auto": "1–2 dagen",
       "fewer": "{park}: een dag minder",
       "more": "{park}: een dag meer",
       "moreParks": "Meer parken",
@@ -3158,15 +3154,17 @@
       "closedSeason": "Gesloten op je data ({season})",
       "noHours": "Voor je data nog geen openingstijden",
       "driveSource": "Rijtijden zonder verkeer, {source}",
-      "budget": "Minstens {visits, plural, =1 {1 parkdag} other {# parkdagen}}, {days, plural, =1 {1 dag} other {# dagen}} vrij voor parken"
+      "days": "{count, plural, =1 {1 dag} other {# dagen}}",
+      "budgetFits": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: past",
+      "budgetOver": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: {over, plural, =1 {1 parkdag past} other {# parkdagen passen}} er niet in"
     },
     "options": {
-      "hotel": "Waar je overnacht",
-      "area": "Hotelbuurt, voor de rijtijden",
+      "hotel": "Hotel",
+      "area": "Hotelgebied",
       "areaNone": "Niet opgegeven",
       "areaNoneHint": "Het plan toont dan geen rijtijden.",
       "fromArea": "vanaf {area}",
-      "fireworksWant": "Ja",
+      "fireworksWant": "Wil ik zien",
       "fireworksAny": "Maakt niet uit",
       "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt.",
       "blocksOn": "resorts achter elkaar",
@@ -3185,12 +3183,18 @@
       "hop": "Parkhoppen",
       "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
       "hopOn": "parkhoppen",
-      "evenings": "Avonden plannen",
+      "evenings": "Avonden",
       "eveningsOff": "geen avonden",
       "blocksAuto": "Alleen gemengd als het tijd scheelt",
       "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt.",
       "blocksAlways": "Altijd bij elkaar",
-      "blocksFree": "Gemengd waar de wachttijden korter zijn"
+      "blocksFree": "Gemengd waar de wachttijden korter zijn",
+      "travelDays": "Reisdagen",
+      "travelDaysOn": "park op reisdagen",
+      "split": "Tweede parkdagen",
+      "splitHint": "Parken met “1–2 dagen” krijgen een tweede dag als de reis ruimte heeft.",
+      "splitOff": "geen tweede dagen",
+      "guide": "Meer in de gids bij de reisplanner"
     },
     "result": {
       "label": "Je plan",
@@ -3200,7 +3204,8 @@
       "invalid": "Deze keuzes passen niet bij elkaar. Kijk de data en de dagen per park na.",
       "failed": "Het plan kon niet worden geladen.",
       "retry": "Opnieuw proberen",
-      "editParks": "Parken wijzigen"
+      "editParks": "Parken wijzigen",
+      "editRoute": "Route wijzigen"
     },
     "problem": {
       "no_dates": "Kies je reisdata.",
@@ -3212,19 +3217,18 @@
     },
     "answer": {
       "counts": "{parkDays, plural, =1 {1 parkdag} other {# parkdagen}}, {restDays, plural, =0 {geen rustdag} =1 {1 rustdag} other {# rustdagen}}",
-      "yourDays": "Grote attracties op je dagen: ongeveer {minutes} min. per rit.",
-      "averageDay": "Dezelfde parken op een gemiddelde dag van je reis: {minutes} min.",
-      "saved": "Ongeveer {minutes} min. minder per rit.",
+      "averageDay": "Gemiddeld over je reisdagen is de piekwachttijd van deze parken {minutes} min.",
       "error": "Een voorspelling voor één attractie op één dag kan ongeveer {minutes} min. ernaast zitten.",
-      "orderBarelyMatters": "Je dagen zijn ongeveer even druk, dus op deze data maakt de volgorde weinig uit.",
       "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
       "about": "ongeveer {minutes} min.",
-      "daysLabel": "Je dagen",
       "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}.",
       "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”.",
       "leftOut": "{parks} {count, plural, =1 {past} other {passen}} niet in {days, plural, =1 {1 parkdag} other {# parkdagen}}.",
       "travelDays": "Park op aankomst- en vertrekdag",
-      "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}"
+      "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}",
+      "peakSaved": "Piekwachttijd op je dagen ongeveer {minutes} min., {saved} min. minder dan gemiddeld over je reisdagen.",
+      "peakFlat": "Piekwachttijd op je dagen ongeveer {minutes} min. Je reisdagen zijn ongeveer even druk, de volgorde maakt weinig uit.",
+      "accuracy": "Hoe nauwkeurig is dit?"
     },
     "day": {
       "arrival": "Aankomst",
@@ -3443,12 +3447,7 @@
     },
     "tickets": {
       "title": "Tickets",
-      "question": "Heb je al tickets?",
-      "lead": "Zonder tickets stelt het plan per resort tickets voor.",
-      "sheetHint": "Zonder antwoord stelt het plan tickets voor om te kopen. Je eigen tickets kun je hier altijd invullen.",
-      "no": "Nog niet, gewoon plannen",
-      "yes": "Ja, ik heb tickets",
-      "nextDates": "Verder naar de reisdata",
+      "lead": "Het plan houdt zich dan aan hun dagen en parken.",
       "yours": "Jouw tickets",
       "add": "Ticket toevoegen",
       "addLabel": "Een {resort}-ticket toevoegen",
@@ -3489,16 +3488,6 @@
         "unsure": "We plannen met de kortste geldigheid die een ticket van deze lengte kan hebben.",
         "ukUniversal": "Met deze eerste dag is het het {name}."
       },
-      "row": {
-        "ask": "Heb je al tickets?",
-        "none": "Geen tickets ingevuld",
-        "noneHopper": "Geen tickets ingevuld · gepland met {hopper}",
-        "count": "{count} tickets: {resorts}",
-        "startOpen": "{ticket}, eerste dag open",
-        "after_trip": "{ticket} begint na je reis",
-        "before_trip": "{ticket} eindigt voor je reis",
-        "not_on_sale": "{ticket}: niet verkocht voor deze eerste dag"
-      },
       "named": {
         "dated": "{resort}-ticket voor {days} dagen",
         "datedShort": "{resort} {days} dagen",
@@ -3517,7 +3506,7 @@
         "suggested": "Tickets voor dit plan",
         "owned": "Jouw tickets",
         "both": "Tickets",
-        "yours": "Van jou",
+        "yours": "Jouw tickets",
         "toBuy": "Te kopen"
       },
       "details": "Details van de tickets",
@@ -3613,7 +3602,9 @@
       "partner": {
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
-      }
+      },
+      "later": "Al tickets?",
+      "enter": "Invullen"
     }
   },
   "tripRegions": {
@@ -3824,7 +3815,7 @@
             "universal_premier": "Universal Premier",
             "offsite": "hotel elders"
           },
-          "fireworks": "Wil je het vuurwerk in Magic Kingdom zien?",
+          "fireworks": "Vuurwerk in Magic Kingdom",
           "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
           "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
           "fireworksWantShort": "vuurwerk in Magic Kingdom",
@@ -4016,6 +4007,9 @@
             "forced": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen.",
             "kept": "Disney-dagen en Universal-dagen blijven bij elkaar: mengen zou minder dan 3 min per attractie schelen."
           }
+        },
+        "area": {
+          "universal": "Universal-hotels"
         }
       },
       "landing": {

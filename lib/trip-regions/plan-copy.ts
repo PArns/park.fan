@@ -170,21 +170,27 @@ export function parksLeftOut(plan: Pick<TripPlan, 'parksLeftOut' | 'unplaced' | 
   ];
 }
 
+/** A park the plan could not give every visit, with a reason this client can say. */
+export interface UnplacedPark {
+  slug: string;
+  reason: 'no_open_day' | 'no_second_day' | 'no_ticket_day' | 'no_base';
+}
+
 /**
  * A park the plan could not place, with a reason this client can say. A park {@link parksLeftOut}
  * names is said there; a park with a day that lost a repeat visit reads `no_second_day`.
  */
 export function unplacedParks(
   plan: Pick<TripPlan, 'unplaced' | 'parksLeftOut' | 'days'>
-): Array<{ slug: string; reason: 'no_open_day' | 'no_second_day' | 'no_ticket_day' | 'no_base' }> {
+): UnplacedPark[] {
   const left = new Set(parksLeftOut(plan));
   const planned = new Set(plan.days.flatMap((d) => d.parks.map((p) => p.slug)));
   const seen = new Set<string>();
-  return plan.unplaced.flatMap((u) => {
+  return plan.unplaced.flatMap((u): UnplacedPark[] => {
     if (left.has(u.slug) || seen.has(`${u.slug}:${u.reason}`)) return [];
     seen.add(`${u.slug}:${u.reason}`);
     if (u.reason === 'no_day_left') {
-      return planned.has(u.slug) ? [{ slug: u.slug, reason: 'no_second_day' as const }] : [];
+      return planned.has(u.slug) ? [{ slug: u.slug, reason: 'no_second_day' }] : [];
     }
     return u.reason === 'no_open_day' || u.reason === 'no_ticket_day' || u.reason === 'no_base'
       ? [{ slug: u.slug, reason: u.reason }]

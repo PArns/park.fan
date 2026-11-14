@@ -375,19 +375,25 @@ export function pinnedRepeatVisits(picks: readonly PlanParkPick[]): number {
 
 // ── Edits ────────────────────────────────────────────────────────────────────
 
+/** The counts a park's stepper walks, in order: with the split on, its "1–2 days" sits between one and two. */
+export function visitSteps(split: TripPlanState['split']): ReadonlyArray<number | null> {
+  const counts = Array.from({ length: MAX_VISITS_PER_PARK }, (_, i) => i + 1);
+  return split === 'auto' ? [1, null, ...counts.slice(1)] : counts;
+}
+
 /**
- * The next count of a park's stepper. With the split on, an untouched park reads "auto", which sits
- * between one and two: minus pins it to one, plus to two. Minus from one removes the park (`0`).
- * With the split off, "auto" is simply one.
+ * The next count of a park's stepper, one step along {@link visitSteps}. A count left to the split
+ * reads "1–2 days" with the split on and one without it. The stepper never removes a park: its
+ * checkbox does.
  */
 export function stepVisits(
   visits: number | null,
   delta: 1 | -1,
   split: TripPlanState['split']
 ): number | null {
-  const current = visits ?? (split === 'auto' ? null : 1);
-  if (current === null) return delta > 0 ? 2 : 1;
-  return Math.max(0, Math.min(MAX_VISITS_PER_PARK, current + delta));
+  const steps = visitSteps(split);
+  const at = Math.max(0, steps.indexOf(visits ?? (split === 'auto' ? null : 1)));
+  return steps[Math.max(0, Math.min(steps.length - 1, at + delta))];
 }
 
 /**

@@ -42,6 +42,9 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
     latest.current = state;
   }, [state]);
 
+  // Every query this planner wrote or wrote over: Back from a sheet lands on one of them for a
+  // frame before the latest is put back, and that is no link from outside.
+  const known = useRef(new Set<string>());
   const update = useCallback((recipe: (state: TripPlanState) => TripPlanState) => {
     const before = latest.current;
     const next = normalizePlanState(recipe(before));
@@ -49,7 +52,9 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
     latest.current = next;
     // In `URLSearchParams` spelling, which is what `useSearchParams` reports it back in.
     const written = new URLSearchParams(writePlanQuery(next)).toString();
-    setOwn({ base: new URLSearchParams(window.location.search).toString(), written, state: next });
+    const base = new URLSearchParams(window.location.search).toString();
+    known.current.add(written).add(base);
+    setOwn({ base, written, state: next });
     window.history.replaceState(
       null,
       '',
@@ -61,7 +66,7 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
   const reported = useRef<string | null>(null);
   const isOwn = own !== null && (search === own.written || search === own.base);
   useEffect(() => {
-    if (isOwn || reported.current === search) return;
+    if (isOwn || reported.current === search || known.current.has(search)) return;
     reported.current = search;
     onExternal?.();
   }, [search, isOwn, onExternal]);

@@ -35,9 +35,6 @@ import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
 import { PlanMonthGrid } from './plan-month-grid';
 import { oneStop, productName, useHopperWord, useResortWord } from './plan-ticket-words';
 
-/** The two answers: one line each, 48 px whatever is chosen, side by side where both fit. */
-const ANSWER_CHIP = 'h-12 w-full whitespace-nowrap lg:min-h-12';
-
 /** Whether the ticket question was answered, and how. */
 export type TicketAnswer = 'unasked' | 'yes' | 'no';
 
@@ -61,9 +58,8 @@ function focusSelector(focus: FocusTarget): string {
 export interface TicketStep {
   answer: TicketAnswer;
   drafts: TicketDraft[];
+  /** The visitor opened their tickets from the answer: counted once, and kept for this browser. */
   answerYes: () => void;
-  /** "Not yet"; `skipped` when the walk moved on without an answer. */
-  answerNo: (skipped?: boolean) => void;
   add: (resort: TicketResort) => void;
   addCombo: () => void;
   change: (id: number, patch: Partial<TicketDraft>) => void;
@@ -78,9 +74,8 @@ export interface TicketStep {
 
 /**
  * The ticket step's state. The URL holds only the complete tickets (`tickets=`); a ticket still
- * being filled in, and the tickets of a "Not yet" that may turn back into "Yes", live here until the
- * page is left. A `tickets` the planner did not write (a link, "Use these as your tickets", Parky)
- * replaces the drafts.
+ * being filled in lives here until the page is left. A `tickets` the planner did not write (a link,
+ * "Use these as your tickets", Parky) replaces the drafts.
  */
 export function useTicketStep(): TicketStep {
   const { region, state, update, tickets: catalog, ticketStep: step, today } = usePlanContext();
@@ -101,10 +96,8 @@ export function useTicketStep(): TicketStep {
   const answer: TicketAnswer = state.tickets.length > 0 ? 'yes' : (stored ?? 'unasked');
   const fallbackStart = state.from ?? today;
 
-  const write = (next: TicketDraft[], yes: boolean) => {
-    const tickets = yes
-      ? next.flatMap((d) => draftTicket(step, d, catalog, fallbackStart).ticket ?? [])
-      : [];
+  const write = (next: TicketDraft[]) => {
+    const tickets = next.flatMap((d) => draftTicket(step, d, catalog, fallbackStart).ticket ?? []);
     const key = tickets.map(writeTicketItem).join(',');
     setOwn({ key, drafts: next });
     if (key !== urlKey) update((s) => setTickets(s, tickets, catalog, today));
@@ -125,14 +118,10 @@ export function useTicketStep(): TicketStep {
     answer,
     drafts,
     answerYes: () => {
-      if (answer !== 'yes') track('trip_tickets_answered', { answer: 'yes' });
+      if (answer === 'yes') return;
+      track('trip_tickets_answered', { answer: 'yes' });
       asked.set('yes');
-      write(drafts, true);
-    },
-    answerNo: (skipped = false) => {
-      track('trip_tickets_answered', { answer: skipped ? 'skipped' : 'not_yet' });
-      asked.set('no');
-      write(drafts, false);
+      write(drafts);
     },
     add: (resort) => {
       if (drafts.length >= MAX_TICKETS) return;
@@ -156,7 +145,7 @@ export function useTicketStep(): TicketStep {
           via: 'combo',
         });
       }
-      write([...drafts, ...added], true);
+      write([...drafts, ...added]);
       setFocus({ draft: id, field: 'start' });
     },
     change: (id, patch) => {
@@ -176,8 +165,7 @@ export function useTicketStep(): TicketStep {
             : d === partner
               ? { ...d, start: patch.start ?? null }
               : d
-        ),
-        true
+        )
       );
     },
     remove: (id) => {
@@ -185,10 +173,7 @@ export function useTicketStep(): TicketStep {
       if (gone) {
         track('trip_ticket_removed', { entry: gone.entry ?? 'none', resort: gone.resort });
       }
-      write(
-        drafts.filter((d) => d.id !== id),
-        true
-      );
+      write(drafts.filter((d) => d.id !== id));
       if (gone) setFocus({ resort: gone.resort, field: 'add' });
     },
     focusTicket: (index) => {
@@ -208,18 +193,17 @@ export function useTicketStep(): TicketStep {
 }
 
 /**
- * "Do you already have tickets?": the step before Dates and Parks. "Not yet, just plan" answers in
- * one press (`onNotYet` moves on); "Yes, I have tickets" opens the four resorts, each with the
- * operator's products as a list, the fields where a product varies, and its window in dates.
+ * The visitor's own tickets, asked for once there is a plan ("Already have tickets?" in the
+ * answer): the region's resorts, each with the operator's products as a list, the fields where a
+ * product varies, and its window in dates; the region's package offer under them. Without any, the
+ * plan suggests what to buy.
  */
 export function PlanTickets({
   step,
-  onNotYet,
   defaultMonth,
   wide = false,
 }: {
   step: TicketStep;
-  onNotYet: () => void;
   defaultMonth?: string;
   /** The desk's panel: resorts two to a row. */
   wide?: boolean;
@@ -228,8 +212,7 @@ export function PlanTickets({
   const tRegion = useTranslations('tripRegion.planner.tickets');
   const { live, locale, today, tickets: catalog, config, ticketStep } = usePlanContext();
   const rootRef = useRef<HTMLDivElement>(null);
-  const listId = useId();
-  const { answer, drafts, focus, clearFocus } = step;
+  const { drafts, focus, clearFocus } = step;
 
   // The sheet and the panel both hold a step; the one on screen takes the focus.
   useEffect(() => {
@@ -268,73 +251,42 @@ export function PlanTickets({
     !combo.every((half) => drafts.some((d) => d.entry === half.entry));
 
   return (
-    <div ref={rootRef} className="flex flex-col gap-4" data-plan-tickets="">
-      <div className="flex flex-col gap-1">
-        <p className="text-base font-semibold">{t('question')}</p>
-        <p className="text-muted-foreground text-sm">{t('lead')}</p>
+    <div ref={rootRef} className="flex flex-col gap-3" data-plan-tickets="">
+      <p className="text-muted-foreground text-sm">{t('lead')}</p>
+      <div className={cn('grid gap-3', wide && 'lg:grid-cols-2 lg:items-start')}>
+        {ticketStep.resorts.map((resort) => (
+          <ResortTickets key={resort} resort={resort} step={step} defaultMonth={defaultMonth} />
+        ))}
       </div>
-      <div className="grid gap-2 sm:grid-cols-2">
-        <PlanChip
-          selected={answer === 'no'}
-          onClick={onNotYet}
-          disabled={!live}
-          label={t('no')}
-          check
-          className={ANSWER_CHIP}
-          data-ticket-answer="no"
-        />
-        <PlanChip
-          selected={answer === 'yes'}
-          onClick={step.answerYes}
-          disabled={!live}
-          label={t('yes')}
-          check
-          expanded={answer === 'yes'}
-          controls={listId}
-          className={ANSWER_CHIP}
-          data-ticket-answer="yes"
-        />
-      </div>
-
-      <div id={listId} hidden={answer !== 'yes'} className="flex flex-col gap-3">
-        {hasCombo && (
-          <button
-            type="button"
-            disabled={!live || drafts.length > MAX_TICKETS - 2}
-            onClick={step.addCombo}
-            data-ticket-combo=""
-            className={cn(
-              'border-primary/45 bg-primary/10 hover:bg-primary/15 flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 text-left transition-colors disabled:opacity-50',
-              PLAN_FOCUS
-            )}
-          >
-            <Ticket className="text-primary-ink size-5 shrink-0" aria-hidden="true" />
-            <span className="flex min-w-0 flex-1 flex-col">
-              <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
-                {tRegion('combo.title')}
-                <MarketTag market="intl" />
-              </span>
-              <span className="text-foreground/75 text-xs leading-snug">
-                {tRegion('combo.hint')}
-                {lite && ` ${oneStop(tRegion('combo.lite', lite))}`}
-              </span>
+      {drafts.length >= MAX_TICKETS && (
+        <p className="text-muted-foreground text-xs">{t('max', { count: MAX_TICKETS })}</p>
+      )}
+      {both && <p className="text-muted-foreground text-xs leading-snug">{tRegion('mixNote')}</p>}
+      {hasCombo && (
+        <button
+          type="button"
+          disabled={!live || drafts.length > MAX_TICKETS - 2}
+          onClick={step.addCombo}
+          data-ticket-combo=""
+          className={cn(
+            'border-primary/45 bg-primary/10 hover:bg-primary/15 flex min-h-14 items-center gap-3 rounded-xl border px-3 py-2 text-left transition-colors disabled:opacity-50',
+            PLAN_FOCUS
+          )}
+        >
+          <Ticket className="text-primary-ink size-5 shrink-0" aria-hidden="true" />
+          <span className="flex min-w-0 flex-1 flex-col">
+            <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
+              {tRegion('combo.title')}
+              <MarketTag market="intl" />
             </span>
-            <Plus className="text-primary-ink size-4 shrink-0" aria-hidden="true" />
-          </button>
-        )}
-        <p className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-          {t('yours')}
-        </p>
-        <div className={cn('grid gap-3', wide && 'lg:grid-cols-2 lg:items-start')}>
-          {ticketStep.resorts.map((resort) => (
-            <ResortTickets key={resort} resort={resort} step={step} defaultMonth={defaultMonth} />
-          ))}
-        </div>
-        {drafts.length >= MAX_TICKETS && (
-          <p className="text-muted-foreground text-xs">{t('max', { count: MAX_TICKETS })}</p>
-        )}
-        {both && <p className="text-muted-foreground text-xs leading-snug">{tRegion('mixNote')}</p>}
-      </div>
+            <span className="text-foreground/75 text-xs leading-snug">
+              {tRegion('combo.hint')}
+              {lite && ` ${oneStop(tRegion('combo.lite', lite))}`}
+            </span>
+          </span>
+          <Plus className="text-primary-ink size-4 shrink-0" aria-hidden="true" />
+        </button>
+      )}
     </div>
   );
 }

@@ -109,6 +109,7 @@ export function PlanStepper({
   decrementLabel,
   incrementLabel,
   disabled = false,
+  valueClassName = 'w-11',
 }: {
   value: ReactNode;
   onDecrement: () => void;
@@ -118,6 +119,8 @@ export function PlanStepper({
   decrementLabel: string;
   incrementLabel: string;
   disabled?: boolean;
+  /** The value's width, so a column of steppers lines up: wider for "1–2 days". */
+  valueClassName?: string;
 }) {
   const button =
     'border-border/70 hover:bg-accent flex size-11 items-center justify-center rounded-full border transition-colors disabled:opacity-30 lg:size-8';
@@ -132,7 +135,10 @@ export function PlanStepper({
       >
         <Minus className="size-4" aria-hidden="true" />
       </button>
-      <output aria-live="polite" className="w-11 text-center text-sm font-semibold tabular-nums">
+      <output
+        aria-live="polite"
+        className={cn('text-center text-sm font-semibold tabular-nums', valueClassName)}
+      >
         {value}
       </output>
       <button

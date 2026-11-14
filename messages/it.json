@@ -3091,16 +3091,16 @@
       "datesEmpty": "Scegli arrivo e partenza",
       "parks": "Parchi",
       "parksCount": "{count, plural, =1 {1 parco} other {# parchi}}",
-      "splitOn": "i giorni li distribuisce il pianificatore",
-      "visitCount": "{count, plural, =1 {1 giorno al parco} other {# giorni al parco}}",
-      "fineTune": "Regolazioni",
+      "fineTune": "Altre opzioni",
       "findSummary": "I {days} giorni migliori, {range}",
-      "nextParks": "Avanti: i parchi",
-      "plan": "Pianifica",
       "find": "Cerca le date",
       "done": "Fatto",
       "close": "Chiudi",
-      "sheetHint": "La tua scelta cambia il piano qui sotto."
+      "sheetHint": "La tua scelta cambia il piano qui sotto.",
+      "route": "Percorso",
+      "showPlan": "Mostra il piano",
+      "start": "Pianifica il viaggio",
+      "findLink": "Ancora senza date? Trova il periodo migliore"
     },
     "dates": {
       "prevMonth": "Mese precedente",
@@ -3120,10 +3120,8 @@
       "maxLength": "Un viaggio dura al massimo {days} giorni."
     },
     "find": {
-      "modeLabel": "Come scegli le date",
       "modeKnown": "Conosco le mie date",
-      "modeFind": "Trova le date migliori",
-      "period": "Quando potresti partire?",
+      "period": "Periodo",
       "periods": {
         "next12": "Prossimi 12 mesi",
         "year": "{year}",
@@ -3138,7 +3136,7 @@
       "lengthValue": "{days} giorni",
       "shorter": "Un giorno in meno",
       "longer": "Un giorno in più",
-      "holidays": "Solo durante le nostre vacanze scolastiche",
+      "holidays": "Solo nelle mie vacanze scolastiche",
       "holidaysHint": "Solo periodi che cadono interamente nelle vacanze scolastiche della tua regione.",
       "country": "Paese",
       "region": "Regione",
@@ -3146,9 +3144,7 @@
       "holidaysUnavailable": "Non è stato possibile caricare i dati sulle vacanze scolastiche."
     },
     "parks": {
-      "split": "Distribuisci i giorni per me",
-      "splitHint": "I parchi con «auto» ricevono un secondo giorno se il viaggio ne ha lo spazio.",
-      "auto": "auto",
+      "auto": "1–2 giorni",
       "fewer": "{park}: un giorno in meno",
       "more": "{park}: un giorno in più",
       "moreParks": "Altri parchi",
@@ -3158,15 +3154,17 @@
       "closedSeason": "Chiuso nelle tue date ({season})",
       "noHours": "Ancora nessun orario per le tue date",
       "driveSource": "Tempi di viaggio senza traffico, {source}",
-      "budget": "Almeno {visits, plural, =1 {1 giorno al parco} other {# giorni al parco}}, {days, plural, =1 {1 giorno libero} other {# giorni liberi}} per i parchi"
+      "days": "{count, plural, =1 {1 giorno} other {# giorni}}",
+      "budgetFits": "{parks, plural, =1 {1 parco} other {# parchi}}, {days, plural, =1 {1 giorno libero} other {# giorni liberi}}: ci sta",
+      "budgetOver": "{parks, plural, =1 {1 parco} other {# parchi}}, {days, plural, =1 {1 giorno libero} other {# giorni liberi}}: {over, plural, =1 {1 giorno di parco non entra} other {# giorni di parco non entrano}}"
     },
     "options": {
-      "hotel": "Dove dormi",
-      "area": "Zona dell’hotel, per i tempi di viaggio",
+      "hotel": "Hotel",
+      "area": "Zona dell’hotel",
       "areaNone": "Non indicata",
       "areaNoneHint": "Il piano non mostra tempi di viaggio.",
       "fromArea": "da {area}",
-      "fireworksWant": "Sì",
+      "fireworksWant": "Li voglio vedere",
       "fireworksAny": "Non importa",
       "blocksHint": "I giorni di ogni resort di seguito, così guidi meno tra un resort e l’altro.",
       "blocksOn": "resort di seguito",
@@ -3185,12 +3183,18 @@
       "hop": "Park hopping",
       "hopHint": "Due parchi dello stesso resort in un giorno, quando il viaggio ha meno giorni che visite.",
       "hopOn": "park hopping",
-      "evenings": "Pianifica le serate",
+      "evenings": "Serate",
       "eveningsOff": "niente serate",
       "blocksAuto": "Mescolati solo se fa risparmiare tempo",
       "blocksAutoHint": "Nelle date dei tuoi biglietti, mescolati dove fa risparmiare almeno 3 min per attrazione.",
       "blocksAlways": "Sempre insieme",
-      "blocksFree": "Mescolati dove le attese sono più brevi"
+      "blocksFree": "Mescolati dove le attese sono più brevi",
+      "travelDays": "Giorni di viaggio",
+      "travelDaysOn": "parco nei giorni di viaggio",
+      "split": "Secondi giorni di parco",
+      "splitHint": "I parchi con «1–2 giorni» hanno un secondo giorno se il viaggio lo permette.",
+      "splitOff": "niente secondi giorni",
+      "guide": "Di più nella guida al pianificatore"
     },
     "result": {
       "label": "Il tuo piano",
@@ -3200,7 +3204,8 @@
       "invalid": "Queste scelte non stanno insieme. Controlla le date e i giorni per parco.",
       "failed": "Non è stato possibile caricare il piano.",
       "retry": "Riprova",
-      "editParks": "Cambia parchi"
+      "editParks": "Cambia parchi",
+      "editRoute": "Cambia percorso"
     },
     "problem": {
       "no_dates": "Scegli le tue date.",
@@ -3212,19 +3217,18 @@
     },
     "answer": {
       "counts": "{parkDays, plural, =1 {1 giorno al parco} other {# giorni al parco}}, {restDays, plural, =0 {nessun giorno di riposo} =1 {1 giorno di riposo} other {# giorni di riposo}}",
-      "yourDays": "Grandi attrazioni nei tuoi giorni: circa {minutes} min per attrazione.",
-      "averageDay": "Gli stessi parchi in un giorno medio del tuo viaggio: {minutes} min.",
-      "saved": "Circa {minutes} min in meno per attrazione.",
+      "averageDay": "In media nei tuoi giorni di viaggio, l’attesa di picco di questi parchi è di {minutes} min.",
       "error": "Una previsione per un’attrazione in un giorno può sbagliare di circa {minutes} min.",
-      "orderBarelyMatters": "I tuoi giorni sono affollati più o meno allo stesso modo, quindi in queste date l’ordine conta poco.",
       "lastYear": "Pianifichiamo queste date con l’affluenza misurata l’anno scorso. La previsione le raggiungerà verso il {date}.",
       "about": "circa {minutes} min",
-      "daysLabel": "I tuoi giorni",
       "split": "{parks} {count, plural, =1 {ha} other {hanno}} {visits, plural, =2 {un secondo giorno} other {# giorni}}.",
       "hopNeedsHopper": "Il park hopping conta solo con un biglietto Park Hopper; sceglilo in «Regolazioni».",
       "leftOut": "{parks} non {count, plural, =1 {entra} other {entrano}} in {days, plural, =1 {1 giorno di parco} other {# giorni di parco}}.",
       "travelDays": "Parco nei giorni di arrivo e partenza",
-      "longer": "{count, plural, =1 {1 giorno in più} other {# giorni in più}}"
+      "longer": "{count, plural, =1 {1 giorno in più} other {# giorni in più}}",
+      "peakSaved": "Attesa di picco nei tuoi giorni: circa {minutes} min, {saved} min in meno rispetto alla media dei tuoi giorni di viaggio.",
+      "peakFlat": "Attesa di picco nei tuoi giorni: circa {minutes} min. I tuoi giorni di viaggio sono affollati più o meno allo stesso modo, l’ordine cambia poco.",
+      "accuracy": "Quanto è preciso?"
     },
     "day": {
       "arrival": "Arrivo",
@@ -3443,12 +3447,7 @@
     },
     "tickets": {
       "title": "Biglietti",
-      "question": "Hai già i biglietti?",
-      "lead": "Senza biglietti, il piano ne propone per ogni resort.",
-      "sheetHint": "Senza risposta il piano propone biglietti da comprare. Puoi inserire i tuoi qui in qualsiasi momento.",
-      "no": "Non ancora, pianifica e basta",
-      "yes": "Sì, ho i biglietti",
-      "nextDates": "Avanti: le date",
+      "lead": "Il piano segue poi i loro giorni e parchi.",
       "yours": "I tuoi biglietti",
       "add": "Aggiungi biglietto",
       "addLabel": "Aggiungi un biglietto {resort}",
@@ -3489,16 +3488,6 @@
         "unsure": "Pianifichiamo con la validità più breve che un biglietto di questa durata può avere.",
         "ukUniversal": "Con questo primo giorno è il {name}."
       },
-      "row": {
-        "ask": "Hai già i biglietti?",
-        "none": "Nessun biglietto inserito",
-        "noneHopper": "Nessun biglietto inserito · pianificato con {hopper}",
-        "count": "{count} biglietti: {resorts}",
-        "startOpen": "{ticket}, primo giorno aperto",
-        "after_trip": "{ticket} inizia dopo il tuo viaggio",
-        "before_trip": "{ticket} finisce prima del tuo viaggio",
-        "not_on_sale": "{ticket}: non venduto per questo primo giorno"
-      },
       "named": {
         "dated": "Biglietto {resort} da {days} giorni",
         "datedShort": "{resort} {days} giorni",
@@ -3517,7 +3506,7 @@
         "suggested": "Biglietti per questo piano",
         "owned": "I tuoi biglietti",
         "both": "Biglietti",
-        "yours": "Tuoi",
+        "yours": "I tuoi biglietti",
         "toBuy": "Da comprare"
       },
       "details": "Dettagli dei biglietti",
@@ -3613,7 +3602,9 @@
       "partner": {
         "label": "Link di affiliazione",
         "note": "Se compri tramite questo link, park.fan riceve una commissione. Il prezzo per te non cambia."
-      }
+      },
+      "later": "Hai già i biglietti?",
+      "enter": "Inseriscili"
     }
   },
   "tripRegions": {
@@ -3824,7 +3815,7 @@
             "universal_premier": "Universal Premier",
             "offsite": "hotel altrove"
           },
-          "fireworks": "Vuoi vedere i fuochi d’artificio di Magic Kingdom?",
+          "fireworks": "Fuochi d’artificio di Magic Kingdom",
           "fireworksWantHint": "I tuoi giorni a Magic Kingdom evitano le serate di festa, quando i visitatori giornalieri devono uscire prima.",
           "fireworksAnyHint": "Una serata di festa può diventare un giorno a Magic Kingdom se le code più corte compensano la giornata più corta.",
           "fireworksWantShort": "fuochi di Magic Kingdom",
@@ -4016,6 +4007,9 @@
             "forced": "Dove valgono entrambi i biglietti, il piano mescola giorni Disney e Universal.",
             "kept": "I giorni Disney e Universal restano insieme: mescolarli farebbe risparmiare meno di 3 min per attrazione."
           }
+        },
+        "area": {
+          "universal": "Hotel Universal"
         }
       },
       "landing": {

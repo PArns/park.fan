@@ -20,6 +20,7 @@ import {
   type PlanParkPhoto,
 } from './plan-context';
 import { PlanSetup, type PlanSheetStep } from './plan-setup';
+import { usePlanRouteSetup } from './plan-route';
 import { PlanResult } from './plan-result';
 import { useTicketStep } from './plan-tickets';
 import { usePlanState } from './use-plan-state';
@@ -176,44 +177,31 @@ const scrollTo = (target: HTMLElement | null) => {
   const smooth = !window.matchMedia(SMOOTH).matches;
   target.scrollIntoView({ block: 'start', behavior: smooth ? 'smooth' : 'auto' });
 };
+const isWide = () => window.matchMedia(PLAN_WIDE_QUERY).matches;
 
 /**
- * The setup and the result, and what moves between them: the phone's sheets and their walk, the
- * desk's two disclosures, the ticket step's drafts, and the hub hero's signal.
+ * The setup and the result, and what moves between them: the phone's sheets and the Back button
+ * that closes one, the desk's disclosures, the ticket step the answer opens, and the hub hero's
+ * signal.
  */
 function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
-  const { live, state, tickets: catalog } = usePlanContext();
+  const { live } = usePlanContext();
   const track = useTripEvents();
   const step = useTicketStep();
   const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
-  const [walk, setWalk] = useState(false);
-  const [ticketsChoice, setTicketsOpen] = useState<boolean | null>(null);
+  const [ticketsOpen, setTicketsOpen] = useState(false);
   const [fineTuneOpen, setFineTuneOpen] = useState(false);
+  const [routeOpen, setRouteOpen] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
-  // The question stands until answered; a desk shows its panel open until then.
-  const asks = catalog.size > 0 && step.answer === 'unasked' && state.tickets.length === 0;
-  const ticketsOpen = ticketsChoice ?? asks;
+  const route = usePlanRouteSetup();
+  useSheetHistory(sheet, setSheet);
 
-  const openSheet = useCallback((next: PlanSheetStep | null, inWalk = false) => {
-    setWalk(inWalk);
-    setSheet(next);
-  }, []);
-
-  /** The walk's first step: Tickets while the question is open, else Dates. */
+  /** The walk: the Dates sheet on a phone, the dates panel at a desk. */
   const start = useCallback(
     (source: 'hero' | 'button') => {
       track('trip_planner_started', { source });
-      if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-        openSheet(asks ? 'tickets' : 'dates', asks);
-        return;
-      }
-      if (asks) {
-        setTicketsOpen(true);
-        const panel = document.querySelector<HTMLElement>('[data-plan-disclosure="tickets"]');
-        scrollTo(panel);
-        panel
-          ?.querySelector<HTMLElement>('[data-ticket-answer="no"]')
-          ?.focus({ preventScroll: true });
+      if (!isWide()) {
+        setSheet('dates');
         return;
       }
       const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
@@ -224,7 +212,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         )
         ?.focus({ preventScroll: true });
     },
-    [asks, openSheet, track]
+    [track]
   );
 
   // The hub's hero asks through `tripPlannerUi`.
@@ -237,8 +225,8 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
     return tripPlannerUi.subscribe(answer);
   }, [live, start]);
 
-  // "Plan" on the last sheet: the answer, at the top of the screen, which on a phone is the first
-  // thing to read after the sheets.
+  // The answer, at the top of the screen, with the focus in it: after "Show the plan" and after the
+  // departure date, which on a phone is the first thing to read after the sheet.
   const showResult = useCallback(() => {
     setSheet(null);
     requestAnimationFrame(() => {
@@ -249,64 +237,101 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
     });
   }, []);
 
-  /** The result's ways back into the setup: a ticket, the parks, Fine-tune. */
-  const edit = useMemo(
-    () => ({
+  /** The result's ways back into the setup: the dates, the parks, the route, the options, tickets. */
+  const edit = useMemo(() => {
+    const panel = (selector: string, open?: () => void) => () => {
+      open?.();
+      requestAnimationFrame(() => {
+        const target = document.querySelector<HTMLElement>(selector);
+        scrollTo(target);
+        target?.focus({ preventScroll: true });
+      });
+    };
+    return {
       tickets: (index?: number) => {
+        step.answerYes();
         if (index !== undefined) step.focusTicket(index);
-        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-          openSheet('tickets');
-          return;
-        }
-        setTicketsOpen(true);
-        scrollTo(document.querySelector<HTMLElement>('[data-plan-disclosure="tickets"]'));
+        if (!isWide()) setSheet('tickets');
+        else panel('[data-plan-tickets-panel]', () => setTicketsOpen(true))();
       },
-      parks: () => {
-        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-          openSheet('parks');
-          return;
-        }
-        const panel = document.querySelector<HTMLElement>('[data-plan-parks-panel]');
-        scrollTo(panel);
-        panel?.focus({ preventScroll: true });
-      },
-      options: () => {
-        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-          openSheet('options');
-          return;
-        }
-        setFineTuneOpen(true);
-        scrollTo(document.querySelector<HTMLElement>('[data-plan-disclosure="options"]'));
-      },
-      dates: () => {
-        if (!window.matchMedia(PLAN_WIDE_QUERY).matches) {
-          openSheet('dates');
-          return;
-        }
-        const panel = document.querySelector<HTMLElement>('[data-plan-dates-panel]');
-        scrollTo(panel);
-        panel?.focus({ preventScroll: true });
-      },
-    }),
-    [step, openSheet]
-  );
+      parks: () => (isWide() ? panel('[data-plan-parks-panel]')() : setSheet('parks')),
+      options: () =>
+        isWide()
+          ? panel('[data-plan-disclosure="options"] > button', () => setFineTuneOpen(true))()
+          : setSheet('options'),
+      route: () =>
+        isWide()
+          ? panel('[data-plan-disclosure="route"] > button', () => setRouteOpen(true))()
+          : setSheet('route'),
+      dates: () => (isWide() ? panel('[data-plan-dates-panel]')() : setSheet('dates')),
+    };
+  }, [step]);
 
   return (
     <>
       <PlanSetup
         defaultMonth={defaultMonth}
         sheet={sheet}
-        onSheet={(next) => openSheet(next, next !== null && walk)}
-        walk={walk}
+        onSheet={setSheet}
         onDone={showResult}
+        onDatesPicked={showResult}
+        step={step}
+        fineTuneOpen={fineTuneOpen}
+        onFineTuneOpen={setFineTuneOpen}
+        routeOpen={routeOpen}
+        onRouteOpen={setRouteOpen}
+        route={route}
+        onStart={() => start('button')}
+      />
+      <PlanResult
+        ref={resultRef}
+        edit={edit}
         step={step}
         ticketsOpen={ticketsOpen}
         onTicketsOpen={setTicketsOpen}
-        fineTuneOpen={fineTuneOpen}
-        onFineTuneOpen={setFineTuneOpen}
-        onStart={() => start('button')}
+        defaultMonth={defaultMonth}
       />
-      <PlanResult ref={resultRef} edit={edit} />
     </>
   );
+}
+
+/**
+ * The phone's Back button closes an open sheet instead of leaving the page: a sheet that opens adds
+ * an entry to the history, and Back takes it away again. The plan's own address changes while the
+ * sheet is open (`replaceState` on that entry), so the entry under it is given the latest address
+ * once the sheet is gone, or Back would also undo every choice made in the sheet.
+ */
+function useSheetHistory(
+  sheet: PlanSheetStep | null,
+  setSheet: (sheet: PlanSheetStep | null) => void
+) {
+  const pushed = useRef(false);
+  const open = sheet !== null;
+  useEffect(() => {
+    if (open && !pushed.current) {
+      pushed.current = true;
+      window.history.pushState(null, '', window.location.href);
+    } else if (!open && pushed.current) {
+      pushed.current = false;
+      const latest = window.location.href;
+      const restore = () => {
+        window.removeEventListener('popstate', restore);
+        window.history.replaceState(null, '', latest);
+      };
+      window.addEventListener('popstate', restore);
+      window.history.back();
+    }
+  }, [open]);
+  useEffect(() => {
+    const onPop = () => {
+      if (!pushed.current) return;
+      pushed.current = false;
+      const latest = window.location.href;
+      setSheet(null);
+      // The entry Back landed on holds the address from before the sheet; the latest one wins.
+      requestAnimationFrame(() => window.history.replaceState(null, '', latest));
+    };
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, [setSheet]);
 }

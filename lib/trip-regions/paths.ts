@@ -6,7 +6,12 @@ import {
 } from '@/lib/parks/calendar-segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import type { Locale } from '@/i18n/config';
-import { bestTimePageOf, requireTripRegion, tripRegionSegment } from './registry';
+import {
+  bestTimePageOf,
+  requireTripRegion,
+  tripRegionSegment,
+  type TripRegionConfig,
+} from './registry';
 import type { TripMonth } from './types';
 
 /**
@@ -20,6 +25,18 @@ import type { TripMonth } from './types';
 
 /** The anchor of the hub's planner chapter, which the hero's action and Parky's links open. */
 export const TRIP_PLANNER_ID = 'planner';
+
+/**
+ * The region's guide to its planner, a blog post (`/blog/<slug>` in the locale), where the planner's
+ * options are explained at length; `null` where the region has none yet.
+ */
+export function tripRegionGuidePath(
+  region: Pick<TripRegionConfig, 'guide'>,
+  locale: string
+): string | null {
+  const slug = region.guide?.[locale as Locale] ?? region.guide?.en;
+  return slug ? `/blog/${slug}` : null;
+}
 
 /** The anchor of chapter 01, the calendar, for the park bands and the homepage teaser. */
 export const TRIP_CALENDAR_ID = 'calendar';

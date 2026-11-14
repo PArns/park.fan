@@ -83,7 +83,9 @@ import {
   tripPlannerHref,
   tripRegionLinks,
 } from '../lib/trip-regions/trip-links.ts';
-import { requireTripRegion } from '../lib/trip-regions/registry.ts';
+import { existsSync } from 'node:fs';
+import { requireTripRegion, TRIP_REGIONS } from '../lib/trip-regions/registry.ts';
+import { tripRegionGuidePath } from '../lib/trip-regions/paths.ts';
 import {
   PlanRequestError,
   fetchTripPlan,
@@ -275,15 +277,18 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
 // ── 2. Edits and trip arithmetic ────────────────────────────────────────────
 {
   test(
-    'auto sits between one and two',
+    '“1–2 days” sits between one and two, and the stepper never removes a park',
     [
       stepVisits(null, 1, 'auto'),
       stepVisits(null, -1, 'auto'),
       stepVisits(1, -1, 'auto'),
+      stepVisits(1, 1, 'auto'),
+      stepVisits(2, -1, 'auto'),
       stepVisits(3, 1, 'auto'),
       stepVisits(null, 1, 'fixed'),
+      stepVisits(2, -1, 'fixed'),
     ],
-    [2, 1, 0, 3, 2]
+    [2, 1, 1, null, null, 3, 2, 1]
   );
   const first = setParkVisits(
     DEFAULT_PLAN_STATE,
@@ -1927,6 +1932,21 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'one word of a resort, a short query or another park finds nothing',
     ['universal', 'disney', 'walt', 'or', 'epcot', 'world', 'europa-park', ''].map(match),
     Array(8).fill(null)
+  );
+}
+
+// ── The regions' planner guides ─────────────────────────────────────────────
+{
+  const missing = TRIP_REGIONS.flatMap((region) =>
+    Object.entries(region.guide ?? {})
+      .filter(([locale, slug]) => !existsSync(`content/blog/${locale}/${slug}.md`))
+      .map(([locale, slug]) => `${region.slug}:${locale}/${slug}`)
+  );
+  test('every planner guide a region names is a post in its locale', missing, []);
+  test(
+    'the guide is a blog path in the locale, the English one where a locale lacks its own',
+    [tripRegionGuidePath(ORLANDO, 'de'), tripRegionGuidePath({ guide: undefined }, 'de')],
+    ['/blog/reiseplaner-orlando', null]
   );
 }
 

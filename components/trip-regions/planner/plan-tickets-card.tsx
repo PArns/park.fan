@@ -60,6 +60,8 @@ export interface PlanEdit {
   /** The Tickets step, with the focus on the first day of `tickets=`'s item `index`. */
   tickets: (index?: number) => void;
   parks: () => void;
+  /** The Route of a region with bases. */
+  route?: () => void;
   options: () => void;
   dates: () => void;
 }

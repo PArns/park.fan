@@ -60,6 +60,7 @@ import { useSeasonName } from './use-day-facts';
 import { oneStop, useHopperWord, useResortWord } from './plan-ticket-words';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
+import { useAreaName } from './plan-place-words';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
 const BIG_RIDES = 5;
@@ -184,6 +185,7 @@ function DayDetails({
   const seasonName = useSeasonName();
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
+  const areaName = useAreaName();
   const [swapOpen, setSwapOpen] = useState(false);
   const swapId = useId();
 
@@ -317,7 +319,8 @@ function DayDetails({
     }
 
     if (day.travel) {
-      const area = region.hotelAreas.find((a) => `hotel:${a.key}` === day.travel?.from)?.name;
+      const from = day.travel.from.startsWith('hotel:') ? day.travel.from.slice(6) : null;
+      const area = from ? areaName(from) : null;
       facts.push(
         <Fact key="travel" icon={<Car className="size-4" aria-hidden="true" />}>
           {t(`details.travel.${day.travel.mode}`, {
