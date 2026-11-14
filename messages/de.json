@@ -3171,10 +3171,8 @@
       "datesEmpty": "An- und Abreise wählen",
       "parks": "Parks",
       "parksCount": "{count, plural, =1 {1 Park} other {# Parks}}",
-      "fineTune": "Mehr Optionen",
       "findSummary": "Die besten {days} Tage, {range}",
       "find": "Reisedaten suchen",
-      "done": "Fertig",
       "close": "Schließen",
       "sheetHint": "Deine Auswahl ändert den Plan darunter.",
       "route": "Route",
@@ -3302,14 +3300,16 @@
     },
     "result": {
       "label": "Dein Plan",
+      "answers": {
+        "title": "Deine Antworten",
+        "edit": "{step}: Antwort ändern"
+      },
       "empty": "Wähle An- und Abreise oder lass den Planer die besten Reisedaten finden. Der Plan erscheint dann hier.",
-      "chooseDates": "Reisedaten wählen",
       "loading": "Deine Tage werden geplant …",
       "invalid": "Diese Auswahl passt nicht zusammen. Prüfe die Reisedaten und die Tage pro Park.",
       "failed": "Der Plan konnte nicht geladen werden.",
       "retry": "Erneut versuchen",
       "editParks": "Parks ändern",
-      "editRoute": "Route ändern",
       "head": {
         "days": "{count, plural, =1 {1 Tag} other {# Tage}}",
         "parkDays": "{count, plural, =1 {1 Parktag} other {# Parktage}}",
@@ -3653,7 +3653,6 @@
     "tickets": {
       "title": "Tickets",
       "lead": "Mit deinen Tickets hält sich der Plan an ihre Tage und Parks.",
-      "yours": "Deine Tickets",
       "add": "Ticket hinzufügen",
       "addLabel": "{resort}-Ticket hinzufügen",
       "addAnother": "Noch ein {resort}-Ticket hinzufügen",

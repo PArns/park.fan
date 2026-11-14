@@ -3171,10 +3171,8 @@
       "datesEmpty": "Elige llegada y salida",
       "parks": "Parques",
       "parksCount": "{count, plural, =1 {1 parque} other {# parques}}",
-      "fineTune": "Más opciones",
       "findSummary": "Los mejores {days} días, {range}",
       "find": "Buscar fechas",
-      "done": "Listo",
       "close": "Cerrar",
       "sheetHint": "Tu elección cambia el plan de abajo.",
       "route": "Ruta",
@@ -3302,14 +3300,16 @@
     },
     "result": {
       "label": "Tu plan",
+      "answers": {
+        "title": "Tus respuestas",
+        "edit": "{step}: cambiar respuesta"
+      },
       "empty": "Elige la llegada y la salida, o deja que el planificador busque las mejores fechas. El plan aparecerá aquí.",
-      "chooseDates": "Elegir fechas",
       "loading": "Planificando tus días …",
       "invalid": "Estas opciones no encajan. Revisa las fechas y los días por parque.",
       "failed": "No se pudo cargar el plan.",
       "retry": "Volver a intentarlo",
       "editParks": "Cambiar parques",
-      "editRoute": "Cambiar la ruta",
       "head": {
         "days": "{count, plural, =1 {1 día} other {# días}}",
         "parkDays": "{count, plural, =1 {1 día de parque} other {# días de parque}}",
@@ -3653,7 +3653,6 @@
     "tickets": {
       "title": "Entradas",
       "lead": "Con tus entradas, el plan se ajusta a sus días y parques.",
-      "yours": "Tus entradas",
       "add": "Añadir entrada",
       "addLabel": "Añadir una entrada de {resort}",
       "addAnother": "Añadir otra entrada de {resort}",

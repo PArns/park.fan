@@ -3171,10 +3171,8 @@
       "datesEmpty": "Kies aankomst en vertrek",
       "parks": "Parken",
       "parksCount": "{count, plural, =1 {1 park} other {# parken}}",
-      "fineTune": "Meer opties",
       "findSummary": "De beste {days} dagen, {range}",
       "find": "Data zoeken",
-      "done": "Klaar",
       "close": "Sluiten",
       "sheetHint": "Je keuze verandert het plan eronder.",
       "route": "Route",
@@ -3302,14 +3300,16 @@
     },
     "result": {
       "label": "Je plan",
+      "answers": {
+        "title": "Je antwoorden",
+        "edit": "{step}: antwoord wijzigen"
+      },
       "empty": "Kies aankomst en vertrek, of laat de planner de beste data zoeken. Het plan verschijnt dan hier.",
-      "chooseDates": "Data kiezen",
       "loading": "Je dagen worden gepland …",
       "invalid": "Deze keuzes passen niet bij elkaar. Kijk de data en de dagen per park na.",
       "failed": "Het plan kon niet worden geladen.",
       "retry": "Opnieuw proberen",
       "editParks": "Parken wijzigen",
-      "editRoute": "Route wijzigen",
       "head": {
         "days": "{count, plural, =1 {1 dag} other {# dagen}}",
         "parkDays": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
@@ -3653,7 +3653,6 @@
     "tickets": {
       "title": "Tickets",
       "lead": "Met je tickets houdt het plan zich aan hun dagen en parken.",
-      "yours": "Jouw tickets",
       "add": "Ticket toevoegen",
       "addLabel": "Een {resort}-ticket toevoegen",
       "addAnother": "Nog een {resort}-ticket toevoegen",

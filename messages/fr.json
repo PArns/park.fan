@@ -3171,10 +3171,8 @@
       "datesEmpty": "Choisir l’arrivée et le départ",
       "parks": "Parcs",
       "parksCount": "{count, plural, =1 {1 parc} other {# parcs}}",
-      "fineTune": "Plus d’options",
       "findSummary": "Les {days} meilleurs jours, {range}",
       "find": "Chercher des dates",
-      "done": "Terminé",
       "close": "Fermer",
       "sheetHint": "Ton choix modifie le plan affiché dessous.",
       "route": "Itinéraire",
@@ -3302,14 +3300,16 @@
     },
     "result": {
       "label": "Ton plan",
+      "answers": {
+        "title": "Tes réponses",
+        "edit": "{step} : modifier la réponse"
+      },
       "empty": "Choisis l’arrivée et le départ, ou laisse le planificateur trouver les meilleures dates. Le plan s’affichera ici.",
-      "chooseDates": "Choisir les dates",
       "loading": "Planification de tes journées …",
       "invalid": "Ces choix ne vont pas ensemble. Vérifie les dates et le nombre de jours par parc.",
       "failed": "Le plan n’a pas pu être chargé.",
       "retry": "Réessayer",
       "editParks": "Changer les parcs",
-      "editRoute": "Changer l’itinéraire",
       "head": {
         "days": "{count, plural, =1 {1 jour} other {# jours}}",
         "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
@@ -3653,7 +3653,6 @@
     "tickets": {
       "title": "Billets",
       "lead": "Avec tes billets, le plan suit leurs jours et leurs parcs.",
-      "yours": "Tes billets",
       "add": "Ajouter un billet",
       "addLabel": "Ajouter un billet {resort}",
       "addAnother": "Ajouter un autre billet {resort}",

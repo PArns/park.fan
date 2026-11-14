@@ -5,8 +5,10 @@ Komponente für alle Regionen): das Parkfoto mit Datum, Andrangsstufe und „2. 
 darunter die Spitzenwartezeit, der Weg ab Hotel und zwei Sätze, warum dieser Tag. Der erste ist der
 wichtigste Grund der API, der zweite nennt den Zweitbesten in derselben Zahl wie die Karte
 (`dayRunnerUp`, das Tages-Sheet liest dieselbe Funktion): „Am So., 13. Dez. wären es etwa 5 Min.
-mehr.“ Chips zeigen Early Entry mit den Minuten, den Abend mit seiner Uhrzeit und Warnungen wie
-„5. Parktag am Stück“. Für Festhalten, Tauschen und Parkys Hinweise hat die Karte zwei Plätze
+mehr.“ Zweitbester ist nur ein Tag, den der Plan hätte nehmen können: kein freier An- oder
+Abreisetag und auf einer Reise durch mehrere Städte keiner in einer Stadt, die den Park nicht
+erreicht (`usableAlternatives`). Chips zeigen Early Entry mit den Minuten, den Abend mit seiner
+Uhrzeit und Warnungen wie „5. Parktag am Stück“. Für Festhalten, Tauschen und Parkys Hinweise hat die Karte zwei Plätze
 (`actions`, `hint`). Bisher stand der Grund erst im Tages-Sheet.
 
 Freie Tage (`days[].spare`, API 2.21.1) heißen „freier Tag“ und tragen eine Sonne; „Ruhetag“ mit

@@ -27,6 +27,12 @@ gewählte Parks aus dem Plan, sagt Parky welche, und der Schritt bietet Park am 
 nur diese Parks oder einen längeren Urlaub an. Die Tickets sind zwei Antwortkarten, „Noch nicht“ mit
 der Ticketkarte des Plans und „Ja, schon gekauft“ mit dem Ticketschritt.
 
+Über dem Plan steht „Deine Antworten“: ein Chip pro Schritt des Assistenten, aus seiner eigenen
+Schrittliste, der ihn auf diesem Schritt öffnet (`WizardAnswers`, `tripPlannerUi.openStep`). Die
+Knöpfe „Parks ändern“, „Route ändern“ und „Mehr Optionen“ unter dem Plan entfallen, ebenso
+„Reisedaten wählen“ im leeren Ergebnis neben „Reise planen“ und das Ticket-Panel am Desktop: Tickets
+trägt man im Ticketschritt ein.
+
 Geteilte Bauteile: `WizardToggle` zieht aus dem Tagesplaner nach `components/planner/`, daneben
 die neue `WizardOptionCard` als die eine Optionskarte beider Assistenten, `PlannerStepRail` kann
 Schritte vor dir erreichbar machen (`reachable`), und `useRegionScene` lädt die Szene einer Region.

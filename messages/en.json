@@ -3171,10 +3171,8 @@
       "datesEmpty": "Choose arrival and departure",
       "parks": "Parks",
       "parksCount": "{count, plural, =1 {1 park} other {# parks}}",
-      "fineTune": "More options",
       "findSummary": "Best {days} days, {range}",
       "find": "Find dates",
-      "done": "Done",
       "close": "Close",
       "sheetHint": "Your choice changes the plan below.",
       "route": "Route",
@@ -3302,14 +3300,16 @@
     },
     "result": {
       "label": "Your plan",
+      "answers": {
+        "title": "Your answers",
+        "edit": "{step}: change answer"
+      },
       "empty": "Choose your arrival and departure, or let the planner find the best dates. The plan appears here once you have.",
-      "chooseDates": "Choose dates",
       "loading": "Planning your days …",
       "invalid": "These choices don’t fit together. Check the dates and the days per park.",
       "failed": "The plan couldn’t be loaded.",
       "retry": "Try again",
       "editParks": "Change parks",
-      "editRoute": "Change the route",
       "head": {
         "days": "{count, plural, =1 {1 day} other {# days}}",
         "parkDays": "{count, plural, =1 {1 park day} other {# park days}}",
@@ -3653,7 +3653,6 @@
     "tickets": {
       "title": "Tickets",
       "lead": "With your tickets, the plan keeps to their days and parks.",
-      "yours": "Your tickets",
       "add": "Add ticket",
       "addLabel": "Add a {resort} ticket",
       "addAnother": "Add another {resort} ticket",

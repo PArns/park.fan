@@ -62,14 +62,11 @@ import {
 } from './plan-ticket-words';
 import { oneFullStop } from '@/lib/utils/metadata';
 
-/** The result's ways back into the setup, each told where it was pressed (for the statistic). */
+/** The result's ways back into the assistant's steps, each told where it was pressed (for the statistic). */
 export interface PlanEdit {
   /** The Tickets step, with the focus on the first day of `tickets=`'s item `index`. */
   tickets: (from: TripTicketsFrom, index?: number) => void;
   parks: (from: TripEditFrom) => void;
-  /** The Route of a region with bases. */
-  route?: (from: TripEditFrom) => void;
-  options: (from: TripEditFrom) => void;
   dates: (from: TripEditFrom) => void;
 }
 

@@ -199,28 +199,18 @@ export function useTicketStep(): TicketStep {
 }
 
 /**
- * The visitor's own tickets, asked for once there is a plan ("Already have tickets?" in the
- * answer): the region's resorts, each with the operator's products as a list, the fields where a
+ * The visitor's own tickets, as the assistant's Tickets step asks for them: the region's resorts, each with the operator's products as a list, the fields where a
  * product varies, and its window in dates; the region's package offer under them. Without any, the
  * plan suggests what to buy.
  */
-export function PlanTickets({
-  step,
-  defaultMonth,
-  wide = false,
-}: {
-  step: TicketStep;
-  defaultMonth?: string;
-  /** The desk's panel: resorts two to a row. */
-  wide?: boolean;
-}) {
+export function PlanTickets({ step, defaultMonth }: { step: TicketStep; defaultMonth?: string }) {
   const t = useTranslations('tripPlanner.tickets');
   const tRegion = useTranslations('tripRegion.planner.tickets');
   const { live, locale, region, today, tickets: catalog, config, ticketStep } = usePlanContext();
   const rootRef = useRef<HTMLDivElement>(null);
   const { drafts, focus, clearFocus } = step;
 
-  // The sheet and the panel both hold a step; the one on screen takes the focus.
+  // Only a step on screen takes the focus.
   useEffect(() => {
     if (!focus) return;
     const frame = requestAnimationFrame(() => {
@@ -265,7 +255,7 @@ export function PlanTickets({
   return (
     <div ref={rootRef} className="flex flex-col gap-3" data-plan-tickets="">
       <p className="text-muted-foreground text-sm">{t('lead')}</p>
-      <div className={cn('grid gap-3', wide && 'lg:grid-cols-2 lg:items-start')}>
+      <div className="grid gap-3">
         {ticketStep.resorts.map((resort) => (
           <ResortTickets key={resort} resort={resort} step={step} defaultMonth={defaultMonth} />
         ))}

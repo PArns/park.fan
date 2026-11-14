@@ -28,6 +28,7 @@ import { usePlanState } from './use-plan-state';
 import { ParkyTripInterviewButton } from '@/components/assistant/parky-trip-interview-button';
 import { Button } from '@/components/ui/button';
 import { TripWizard, type TripWizardAt } from '../wizard/trip-wizard';
+import { WizardAnswers } from '../wizard/wizard-answers';
 
 /** What the hub hands the planner. */
 export interface TripRegionPlannerProps {
@@ -52,8 +53,6 @@ const NO_TICKET_STEP: TripTicketStep = {
   homeMarket: '',
 };
 const noUpdate = () => undefined;
-/** The result's own ticket panel stays shut: the assistant's Tickets step is where tickets go. */
-const noTicketsPanel = () => undefined;
 
 /**
  * The trip planner of a region's hub: which park on which day of a trip, from the API's `/plan`.
@@ -254,8 +253,6 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         reopen('tickets');
       },
       parks: () => reopen('parks'),
-      options: () => reopen('hotel'),
-      route: () => reopen('route'),
       dates: () => reopen('dates'),
     }),
     [step, reopen]
@@ -281,14 +278,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         edit={edit}
         defaultMonth={defaultMonth}
       />
-      <PlanResult
-        ref={resultRef}
-        edit={edit}
-        step={step}
-        ticketsOpen={false}
-        onTicketsOpen={noTicketsPanel}
-        defaultMonth={defaultMonth}
-      />
+      <PlanResult ref={resultRef} edit={edit} answers={<WizardAnswers />} />
     </>
   );
 }

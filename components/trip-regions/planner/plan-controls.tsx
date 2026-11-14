@@ -181,6 +181,12 @@ export function PlanStepper({
   );
 }
 
+/** The planner's pill: 44 px on a phone and 36 at a desk, round, before the ink of its state. */
+export const PLAN_PILL = 'min-h-11 rounded-full border px-3.5 text-sm transition-colors lg:min-h-9';
+
+/** A pill that is not chosen: its quiet border and the hover. */
+export const PLAN_PILL_IDLE = 'border-border/70 hover:bg-accent/60';
+
 /**
  * A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When
  * mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two
@@ -218,10 +224,9 @@ export function PlanChip({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'min-h-11 rounded-full border px-3.5 text-sm transition-colors disabled:opacity-40 lg:min-h-9',
-        selected
-          ? 'border-primary bg-primary/15 text-foreground font-semibold'
-          : 'border-border/70 hover:bg-accent/60',
+        PLAN_PILL,
+        'disabled:opacity-40',
+        selected ? 'border-primary bg-primary/15 text-foreground font-semibold' : PLAN_PILL_IDLE,
         check && 'inline-flex items-center justify-center gap-1.5',
         PLAN_FOCUS,
         className

@@ -3,7 +3,6 @@
 import {
   useCallback,
   useEffect,
-  useId,
   useRef,
   useState,
   useSyncExternalStore,
@@ -12,17 +11,7 @@ import {
 } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import {
-  CalendarDays,
-  Info,
-  LayoutList,
-  MapPinned,
-  Route,
-  Rows3,
-  SlidersHorizontal,
-  Ticket,
-  Undo2,
-} from 'lucide-react';
+import { CalendarDays, Info, LayoutList, Rows3, Undo2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { plannerPagePark, type PlannerPagePark } from '@/lib/planner/page-park';
@@ -87,7 +76,6 @@ import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
 import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
-import { PlanTickets, type TicketStep } from './plan-tickets';
 import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
@@ -109,7 +97,7 @@ const ACTION_BAND =
   'border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3';
 
 /**
- * The planner's answer, below the setup. Empty, and saying so, until dates are chosen (or a search
+ * The planner's answer, below the way into the assistant. Empty, and saying so, until dates are chosen (or a search
  * is set); then the plan from simple to detailed: the answer in sentences (Level 0), the Agenda,
  * Week or Month view (Level 1), a day's sheet (Level 2) and the day planner (Level 3). The previous
  * plan stays on screen, dimmed, while a change is asked for. In the When mode it is the search's
@@ -118,24 +106,12 @@ const ACTION_BAND =
 export function PlanResult({
   ref,
   edit,
-  step,
-  ticketsOpen,
-  onTicketsOpen,
-  defaultMonth,
   answers,
 }: {
   ref?: Ref<HTMLDivElement>;
   edit: PlanEdit;
-  /**
-   * The visitor's answers with a way back into each step, at the top of the result (beside it at
-   * a desk). Given, it stands in for the answer's own „Parks ändern“ and „Mehr Optionen“.
-   */
-  answers?: ReactNode;
-  /** The ticket step, which the answer opens in place at a desk. */
-  step: TicketStep;
-  ticketsOpen: boolean;
-  onTicketsOpen: (open: boolean) => void;
-  defaultMonth?: string;
+  /** The visitor's answers with a way back into each step, at the top of the result (beside it at a desk). */
+  answers: ReactNode;
 }) {
   const t = useTranslations('tripPlanner');
   const { state, headliners, ticketStep, tickets: catalog } = usePlanContext();
@@ -153,35 +129,11 @@ export function PlanResult({
       ) : planProblem(state, headliners) === 'no_dates' ? (
         <div className="border-border/60 flex min-h-40 flex-col items-start justify-center gap-3 rounded-2xl border border-dashed p-5">
           <p className="text-sm">{t('result.empty')}</p>
-          <Button variant="outline" onClick={() => edit.dates('answer')} className="lg:hidden">
-            {t('result.chooseDates')}
-          </Button>
           {/* A ticket bought for fixed days gives the trip its dates, so it may come first. */}
           {ticketsAsked && <TicketsAsk edit={edit} />}
-          {ticketsOpen && (
-            <div className="self-stretch">
-              <DeskTickets
-                step={step}
-                defaultMonth={defaultMonth}
-                onClose={() => onTicketsOpen(false)}
-              />
-            </div>
-          )}
         </div>
       ) : (
-        <PlanAnswerSection
-          edit={edit}
-          answers={answers}
-          tickets={
-            ticketsOpen ? (
-              <DeskTickets
-                step={step}
-                defaultMonth={defaultMonth}
-                onClose={() => onTicketsOpen(false)}
-              />
-            ) : null
-          }
-        />
+        <PlanAnswerSection edit={edit} answers={answers} />
       )}
     </section>
   );
@@ -247,16 +199,7 @@ function Failure({ error, onRetry }: { error: unknown; onRetry: () => void }) {
   );
 }
 
-function PlanAnswerSection({
-  edit,
-  answers,
-  tickets,
-}: {
-  edit: PlanEdit;
-  answers: ReactNode;
-  /** The ticket step in place at a desk, under the tickets or under what holds the plan back. */
-  tickets: ReactNode;
-}) {
+function PlanAnswerSection({ edit, answers }: { edit: PlanEdit; answers: ReactNode }) {
   const t = useTranslations('tripPlanner');
   const {
     region,
@@ -347,14 +290,7 @@ function PlanAnswerSection({
       </div>
     );
   }
-  if (missed) {
-    return (
-      <>
-        <TicketProblemBox problem={missed} edit={edit} />
-        {tickets}
-      </>
-    );
-  }
+  if (missed) return <TicketProblemBox problem={missed} edit={edit} />;
   if (!plan.data) {
     return plan.isError ? (
       <Failure error={plan.error} onRetry={() => void plan.refetch()} />
@@ -423,7 +359,6 @@ function PlanAnswerSection({
         added={added}
         edit={edit}
         answers={answers}
-        tickets={tickets}
       />
 
       <PlanDaySheet
@@ -470,7 +405,6 @@ function PlanAnswer({
   added,
   edit,
   answers,
-  tickets,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
@@ -479,20 +413,10 @@ function PlanAnswer({
   added: { slug: string; date: string } | null;
   edit: PlanEdit;
   answers: ReactNode;
-  /** The ticket step in place at a desk. */
-  tickets: ReactNode;
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
-  const {
-    locale,
-    parkName,
-    parkBySlug,
-    state,
-    region,
-    tickets: catalog,
-    ticketStep,
-  } = usePlanContext();
+  const { locale, parkName, parkBySlug, state, tickets: catalog, ticketStep } = usePlanContext();
   const resortWord = useResortWord();
   const dropped = useDroppedTickets();
   const lastYear = lastYearStart(
@@ -534,7 +458,7 @@ function PlanAnswer({
       ? [
           catalog.size > 0
             ? t('tickets.hopNeedsHopper')
-            : t('answer.hopNeedsHopper', { options: t('setup.fineTune') }),
+            : t('answer.hopNeedsHopper', { options: t('wizard.steps.evenings') }),
         ]
       : []),
     ...relaxedRules(plan.meta).map((r) => regionOrShared(tRegion, t, `relaxed.${r}`)),
@@ -552,23 +476,12 @@ function PlanAnswer({
     ),
   ];
   const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
-  const bases = (region.bases?.length ?? 0) > 0;
 
   return (
-    <div
-      className={cn(
-        'flex flex-col gap-5 lg:grid lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start lg:gap-x-8',
-        answers ? 'lg:grid-rows-[auto_1fr]' : 'lg:grid-rows-[1fr]'
-      )}
-    >
-      {answers && <div className="lg:col-start-1 lg:row-start-1">{answers}</div>}
+    <div className="flex flex-col gap-5 lg:grid lg:grid-cols-[340px_minmax(0,1fr)] lg:grid-rows-[auto_1fr] lg:items-start lg:gap-x-8">
+      <div className="lg:col-start-1 lg:row-start-1">{answers}</div>
 
-      <div
-        className={cn(
-          'flex min-w-0 flex-col gap-5 lg:col-start-2 lg:row-start-1',
-          answers && 'lg:row-span-2'
-        )}
-      >
+      <div className="flex min-w-0 flex-col gap-5 lg:col-start-2 lg:row-span-2 lg:row-start-1">
         <PlanResultHead plan={plan} />
         <PlanPeakCard plan={plan} calendar={calendar} className="lg:hidden" />
         <LeftOut plan={plan} edit={edit} />
@@ -611,37 +524,13 @@ function PlanAnswer({
         )}
       </div>
 
-      <div
-        className={cn(
-          'flex min-w-0 flex-col gap-5 lg:sticky lg:top-16 lg:col-start-1',
-          answers ? 'lg:row-start-2' : 'lg:row-start-1'
-        )}
-      >
+      <div className="flex min-w-0 flex-col gap-5 lg:sticky lg:top-16 lg:col-start-1 lg:row-start-2">
         <PlanPeakCard plan={plan} calendar={calendar} className="hidden lg:flex" />
-        {!answers && (
-          <div className="flex flex-wrap gap-2" data-plan-changes="">
-            <Button variant="outline" size="sm" onClick={() => edit.parks('answer')}>
-              <MapPinned aria-hidden="true" />
-              {t('result.editParks')}
-            </Button>
-            {bases && edit.route && (
-              <Button variant="outline" size="sm" onClick={() => edit.route?.('answer')}>
-                <Route aria-hidden="true" />
-                {t('result.editRoute')}
-              </Button>
-            )}
-            <Button variant="outline" size="sm" onClick={() => edit.options('answer')}>
-              <SlidersHorizontal aria-hidden="true" />
-              {t('setup.fineTune')}
-            </Button>
-          </div>
-        )}
         <PlanTicketsCard
           plan={plan}
           edit={edit}
           ask={ticketsAsked && state.tickets.length === 0 ? <TicketsAsk edit={edit} /> : null}
         />
-        {tickets}
         <PlanKeep plan={plan} calendar={calendar} />
       </div>
     </div>
@@ -665,39 +554,6 @@ function TicketsAsk({ edit }: { edit: PlanEdit }) {
         {t('enter')}
       </button>
     </p>
-  );
-}
-
-/** The ticket step in place at a desk, opened from the answer; a phone gets it as a sheet. */
-function DeskTickets({
-  step,
-  defaultMonth,
-  onClose,
-}: {
-  step: TicketStep;
-  defaultMonth?: string;
-  onClose: () => void;
-}) {
-  const t = useTranslations('tripPlanner');
-  const id = useId();
-  return (
-    <section
-      aria-labelledby={id}
-      tabIndex={-1}
-      data-plan-tickets-panel=""
-      className="border-border/60 bg-muted/30 hidden scroll-mt-16 flex-col gap-4 rounded-2xl border p-4 outline-none lg:flex"
-    >
-      <div className="flex items-center gap-2">
-        <Ticket className="text-primary-ink size-4 shrink-0" aria-hidden="true" />
-        <h4 id={id} className="min-w-0 flex-1 text-base font-semibold">
-          {t('tickets.yours')}
-        </h4>
-        <Button variant="outline" size="sm" onClick={onClose}>
-          {t('setup.done')}
-        </Button>
-      </div>
-      <PlanTickets step={step} defaultMonth={defaultMonth} wide />
-    </section>
   );
 }
 

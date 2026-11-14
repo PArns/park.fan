@@ -91,8 +91,7 @@ night never makes a date look quiet (`dateFigure`).
 - **Parks** are cards in the assistant's second step, each a checkbox with a stepper that reads
   "1–2" until the visitor sets a number (`visitSteps`: 1 → 1–2 → 2 → 3).
 - **Level 0, the answer** (`plan-result.tsx`). On a phone, top to bottom: the visitor's answers
-  (the `answers` slot the assistant fills; until it does, „Parks ändern“, „Route ändern“ and „Mehr
-  Optionen“ stand in), the head (`PlanResultHead`: the dates, „17 Tage · 6 Parktage · 8 Tage frei ·
+  („Deine Antworten“, `WizardAnswers`: a chip per step of the assistant, from its own step list, that opens it on that step), the head (`PlanResultHead`: the dates, „17 Tage · 6 Parktage · 8 Tage frei ·
   2 Städte“, and across cities the route strip with each stay's number, city and nights and the
   mode of each move), the peak card (`PlanPeakCard`: the peak wait on the planned days large, how
   much less it is than the average of the trip's days or that the order barely matters, the two as
@@ -211,7 +210,8 @@ Built for a first-time visitor who wants to know which park on which day (PAR-13
    takes the focus: four taps and one sheet on a phone instead of seven taps and three.
 3. **The answer:** what did not fit with its three ways out, the days once in the chosen view, one
    line on the peak wait.
-4. **Changes on request** under it: Change parks, Change the route (across cities), More options.
+4. **Changes on request** over it: „Deine Antworten“, a chip per step of the assistant that opens
+   it on that step.
 5. **Tickets after the plan**, from the ticket card's "Already have tickets? Add them"; a shared
    link is never asked.
 
@@ -238,7 +238,7 @@ Built for a first-time visitor who wants to know which park on which day (PAR-13
 ## Tickets
 
 Tickets come after the plan: "Already have tickets? Add them" under the plan's tickets opens the
-ticket step, as a sheet on a phone and in place at a desk (`DeskTickets`). The step itself lists the
+assistant's Tickets step. The step itself lists the
 resorts against the ticket catalog the admin keeps
 (`GET /v1/trip-regions/orlando/tickets`, read by `PlannerChapterSlot` through the Data Cache under
 the tag `trip-tickets:orlando`, which the API revalidates after every edit; five minutes otherwise,
