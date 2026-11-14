@@ -3122,7 +3122,7 @@
       "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
       "nyeKey": "Oudejaarsavond",
       "unpublishedKey": "Gestippeld onderstreept: openingstijden nog niet gepubliceerd",
-      "infoHint": "Wijs een datum aan of tik erop, dan staat hier welk park die dag het beste is en waarom.",
+      "infoHint": "Wijs een datum aan of tik erop, dan zie je welk park die dag het beste is en waarom.",
       "ahead": "voor {park}, waar dagbezoekers om {time} vertrekken",
       "party": "{park}: {name} vanaf {time}, dagbezoekers vertrekken om {leave}",
       "partyUnnamed": "{park}: avondevenement vanaf {time}, dagbezoekers vertrekken om {leave}",

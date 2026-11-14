@@ -3122,7 +3122,7 @@
       "partyKey": "Serata di festa con biglietto a parte: i visitatori giornalieri escono prima",
       "nyeKey": "San Silvestro",
       "unpublishedKey": "Sottolineato a puntini: orari non ancora pubblicati",
-      "infoHint": "Indica una data o toccala: qui vedi quale parco conviene quel giorno, e perché.",
+      "infoHint": "Indica una data o toccala: vedi quale parco conviene quel giorno, e perché.",
       "ahead": "davanti a {park}, dove i visitatori giornalieri escono alle {time}",
       "party": "{park}: {name} dalle {time}, i visitatori giornalieri escono alle {leave}",
       "partyUnnamed": "{park}: evento serale dalle {time}, i visitatori giornalieri escono alle {leave}",

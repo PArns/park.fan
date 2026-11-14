@@ -52,6 +52,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
 - Types: `BestTimePageId`, `MonthHours`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
 
+### [`date-facts.ts`](../../lib/trip-regions/date-facts.ts)
+
+- `dateParties` _function_: The parks whose day guests leave early on a date for a separately ticketed evening, in the region's order: a ticketed evening the API also calls an early close.
+- `datePicks` _function_: Per resort with a choice that date (`resortHasChoice`) the API's pick (`best`, read through the hub's `shortestLines`), with why it won and the resort's party night.
+- `isNewYearsEve` _function_: New Year's Eve: the date alone says it, wherever the region is.
+- `monthEvents` _function_: The month's events for the list under the date grid: the hub's lanes (`eventLanes`) cut to the month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit.
+- Types: `DateParty`, `DatePick`, `MonthEvent`
+
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
 
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
@@ -63,6 +71,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `isRankable` _function_: Whether a park can be ranked on a day: not closed, with a figure.
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
+- `resortHasChoice` _function_: Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
@@ -257,9 +266,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripDaySpans` _function_: Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar does not carry gets no block: the honest answer is the day planner's, no axis rather than an invented one.
 - `tripCanvas` _function_: The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded by the planner's own `PRE_PAD_MIN` and `POST_PAD_MIN`. `null` when no day has hours.
 - `tripColumnGrid` _function_: A column's axis: the day planner's `DayGrid` for that day's hours, stretched onto the shared canvas. Real minutes, not the API's rounded hours, so there is no closing slack to hatch.
+- `dayBandPieces` _function_: A day of the Week view (`tripDaySpans`) as the Month view's band: the same pieces on the same canvas (`tripCanvas`), in percent, so the two views cannot disagree on an hour.
 - `weekPages` _function_: The trip's dates in pages of `perPage`, from the first day: page by week, not by calendar week.
 - `tripMonthWeeks` _function_: The Month view's rows: whole weeks, Monday first, from the week the trip starts in to the week it ends in, so the trip sits in its calendar and a two-month trip reads as one run of weeks.
 - `parkInitials` _function_: The two-letter mark of a park for the Month view's chips, from the words that name the park: Magic Kingdom MK, Hollywood Studios HS, Epic Universe EU, SeaWorld SW, EPCOT EP, and Universal Studios Florida US, where "Studios" alone would say …
+- `parkCode` _function_: A park's code in every view that has room for two letters (the date grid, the Month view, their key): the region's curated `code` where the API sends one, else `parkInitials`.
+- `parkCodeKey` _function_: The key to the codes a view shows: each park among `slugs` once, in the region's order, with its `parkCode` and its name as `nameOf` gives it. Parks the region does not list are left out.
 - `daySeasons` _function_: The curated seasons a park's day lists (its cell's `seasons`), cancelled ones and closures left out: what the day sheet names as the day's events.
 - `partySeason` _function_: The separately ticketed season behind a day's evening event, if the calendar names one.
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
@@ -270,8 +282,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.
 - `WEEK_COLUMNS_WIDE` _const_: Days per page of the Week view: a week on a wide screen, three on a phone.
 - `WEEK_COLUMNS_PHONE` _const_: `WEEK_COLUMNS_WIDE` on a phone.
+- `TRIP_FALLBACK_CANVAS` _const_: A canvas for a trip whose calendar has no hours yet: a plain day, so rest days still have room.
 - `TRIP_DAY_SIGNALS` _const_: The signals a trip region's calendar knows: its own school breaks and holidays. It carries no bridge days or neighbouring regions, so the planner's grids key only these two.
-- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `TripMonthCell`, `SwapPreview`
+- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapPreview`
 
 ### [`plan-when.ts`](../../lib/trip-regions/plan-when.ts)
 

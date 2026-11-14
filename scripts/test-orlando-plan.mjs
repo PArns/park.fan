@@ -928,7 +928,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ],
   };
   test(
-    'the month’s events: seasons cut to the month, every New Year’s Eve evening one row, breaks last',
+    'the month’s events: seasons cut to the month, the break as one run, every New Year’s Eve evening one row',
     monthEvents(month, '2026-12', ['magic-kingdom-park', 'universal-studios-florida']).map((e) => [
       e.kind,
       e.name,
@@ -937,8 +937,40 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]),
     [
       ['festival', 'Holidays', ['2026-12-30', '2026-12-31'], true],
-      ['break', 'Winter break (Orange County Public Schools)', ['2026-12-30', '2026-12-31'], true],
+      ['break', 'Winter break', ['2026-12-30', '2026-12-31'], true],
       ['nye', null, ['2026-12-31'], false],
+    ]
+  );
+  test(
+    'an unnamed weekend joins the break after it; a public holiday is its own row',
+    monthEvents(
+      {
+        days: [
+          ['2026-12-19', true, false, []],
+          ['2026-12-20', true, false, []],
+          ['2026-12-21', true, false, ['Winter break (Orange County Public Schools)']],
+          [
+            '2026-12-25',
+            true,
+            true,
+            ['Winter break (Orange County Public Schools)', 'Christmas Day'],
+          ],
+        ].map(([date, isSchoolVacation, isHoliday, holidays]) => ({
+          date,
+          isSchoolVacation,
+          isHoliday,
+          holidays,
+          parks: {},
+        })),
+        seasons: [],
+      },
+      '2026-12',
+      []
+    ).map((e) => [e.kind, e.name, e.dates[0], e.dates.at(-1)]),
+    [
+      ['break', 'Winter break', '2026-12-19', '2026-12-21'],
+      ['break', 'Winter break', '2026-12-25', '2026-12-25'],
+      ['holiday', 'Christmas Day', '2026-12-25', '2026-12-25'],
     ]
   );
   test(

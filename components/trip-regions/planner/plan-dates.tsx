@@ -65,9 +65,10 @@ function createShownDate() {
 
 /**
  * The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second
- * the departure, at most {@link MAX_TRIP_DAYS} days. Each date is a crowd-calendar tile tinted by how
- * busy the headliners are (`dateLevel`) and carries per resort the park with the shortest lines
- * (`datePicks`), with a ticket where the resort has a party night and a mark on New Year's Eve.
+ * the departure, at most {@link MAX_TRIP_DAYS} days. Each date carries per resort the park with the
+ * shortest lines (`datePicks`) in its crowd colour, with a ticket where the resort has a party night
+ * and a mark on New Year's Eve; a date without picks is tinted by how busy the headliners are
+ * (`dateLevel`).
  * Pointing at a date or pressing it explains its picks in a line under the grid; the codes, the
  * month's events and the colours are keyed below. A last-year tint has a dashed border. Arrival and
  * departure carry their plane and a light band joins the days between. The tickets' windows are
@@ -160,6 +161,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const anyParty = inMonth.some((f) => f.picks.some((p) => p.party));
   const anyNye = inMonth.some((f) => f.nye);
   const anyUnpublished = inMonth.some((f) => f.picks.some((p) => p.hoursUnpublished));
+  const anyTint = inMonth.some((f) => f.picks.length === 0 && dateLevel(f.day, headliners));
 
   const start = pendingFrom ?? state.from;
   const end = pendingFrom ? null : state.to;
@@ -243,7 +245,9 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
         day={(date) => {
           const fact = facts.get(date);
           const day = fact?.day;
-          const level = dateLevel(day, headliners);
+          // The picks carry the colours where there are any: a region tint behind them would be a
+          // second, flatter answer to the same question.
+          const level = fact?.picks.length ? null : dateLevel(day, headliners);
           const lastYear = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
           const isStart = date === start;
           const isEnd = !isStart && date === end;
@@ -358,10 +362,13 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           </li>
         )}
         {anyUnpublished && <li>{t('dates.unpublishedKey')}</li>}
-        <li>
-          {t('dates.legend')}
-          {anyLastYear ? ` ${t('dates.legendLastYear')}` : ''}
-        </li>
+        {(anyTint || anyLastYear) && (
+          <li>
+            {[anyTint ? t('dates.legend') : null, anyLastYear ? t('dates.legendLastYear') : null]
+              .filter(Boolean)
+              .join(' ')}
+          </li>
+        )}
       </ul>
 
       <p className="min-h-5 text-sm font-medium" aria-live="polite">

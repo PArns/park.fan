@@ -3122,7 +3122,7 @@
       "partyKey": "Party-Abend mit eigenem Ticket: Tagesgäste gehen früher",
       "nyeKey": "Silvester",
       "unpublishedKey": "Gepunktet unterstrichen: Öffnungszeiten noch nicht veröffentlicht",
-      "infoHint": "Zeig auf ein Datum oder tippe darauf, dann steht hier, welcher Park an dem Tag am besten ist und warum.",
+      "infoHint": "Zeig auf ein Datum oder tippe darauf, dann erfährst du, welcher Park an dem Tag am besten ist und warum.",
       "ahead": "vor {park}, wo Tagesgäste um {time} gehen",
       "party": "{park}: {name} ab {time}, Tagesgäste gehen um {leave}",
       "partyUnnamed": "{park}: Abend-Event ab {time}, Tagesgäste gehen um {leave}",

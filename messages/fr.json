@@ -3122,7 +3122,7 @@
       "partyKey": "Soirée de fête à billet séparé : les visiteurs du jour partent plus tôt",
       "nyeKey": "Saint-Sylvestre",
       "unpublishedKey": "Souligné en pointillé : horaires pas encore publiés",
-      "infoHint": "Pointe une date ou touche-la : tu vois ici quel parc vaut le mieux ce jour-là, et pourquoi.",
+      "infoHint": "Pointe une date ou touche-la : tu vois quel parc vaut le mieux ce jour-là, et pourquoi.",
       "ahead": "devant {park}, où les visiteurs du jour partent à {time}",
       "party": "{park} : {name} dès {time}, les visiteurs du jour partent à {leave}",
       "partyUnnamed": "{park} : soirée spéciale dès {time}, les visiteurs du jour partent à {leave}",

@@ -1,3 +1,4 @@
+import { breakRuns } from './best-time';
 import {
   dayGuestClose,
   eventLanes,
@@ -5,7 +6,6 @@ import {
   regionResorts,
   resortHasChoice,
   shortestLines,
-  type EventLane,
 } from './hub-data';
 import { partySeason } from './plan-week';
 import type {
@@ -109,13 +109,14 @@ export function isNewYearsEve(date: string): boolean {
 export interface MonthEvent {
   /**
    * `party` a separately ticketed evening (counted in nights), `festival` a season inside the
-   * day, `break` a school break, `nye` New Year's Eve, however many parks hold an evening for it.
+   * day, `break` a run of school-break days, `holiday` a public holiday, `nye` New Year's Eve,
+   * however many parks hold an evening for it.
    */
-  kind: 'party' | 'festival' | 'break' | 'nye';
+  kind: 'party' | 'festival' | 'break' | 'holiday' | 'nye';
   id: string;
   /** The season's or break's own name; `null` where the API sends none. */
   name: string | null;
-  /** The parks it runs at, in the region's order; none for a break or New Year's Eve. */
+  /** The parks it runs at, in the region's order; none for a break, a holiday or New Year's Eve. */
   parkSlugs: string[];
   /** Last year's pattern, not an announcement. */
   expected: boolean;
@@ -130,9 +131,10 @@ export interface MonthEvent {
 }
 
 /**
- * The month's events for the list under the date grid: the hub's lanes (`eventLanes`) cut to the
- * month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit. Every season held only on
- * 31 December becomes one New Year's Eve row; its date carries the grid's own mark.
+ * The month's events for the list under the date grid: the hub's season lanes (`eventLanes`) cut
+ * to the month (`YYYY-MM`) and to `parkSlugs`, the parks the visitor may visit, then the school
+ * breaks as runs (`breakRuns`, so an unnamed weekend joins its break) and the public holidays. Every
+ * season held only on 31 December becomes one New Year's Eve row; its date carries the grid's mark.
  */
 export function monthEvents(
   calendar: TripCalendar,
@@ -156,15 +158,22 @@ export function monthEvents(
     toEnd: false,
     wholeMonth: false,
   };
-  const toRow = (lane: EventLane, dates: string[], parks: string[]): MonthEvent => {
+  const row = (
+    kind: MonthEvent['kind'],
+    id: string,
+    name: string | null,
+    parks: string[],
+    dates: string[],
+    expected = false
+  ): MonthEvent => {
     const fromStart = dates[0] === first;
     const toEnd = dates[dates.length - 1] === last;
     return {
-      kind: lane.kind,
-      id: lane.id,
-      name: lane.name,
+      kind,
+      id,
+      name,
       parkSlugs: parks,
-      expected: lane.status === 'expected',
+      expected,
       dates,
       fromStart,
       toEnd,
@@ -172,19 +181,27 @@ export function monthEvents(
     };
   };
   for (const lane of eventLanes(calendar, parkSlugs)) {
+    if (lane.kind === 'break') continue;
     const dates = lane.dates.filter((date) => date.startsWith(month));
     if (dates.length === 0) continue;
-    if (lane.kind === 'break') {
-      rows.push(toRow(lane, dates, []));
-      continue;
-    }
     const parks = lane.parkSlugs.filter((slug) => wanted.has(slug));
     if (parks.length === 0) continue;
     if (lane.dates.every(isNewYearsEve)) {
       nye.dates = [...new Set([...nye.dates, ...dates])];
       continue;
     }
-    rows.push(toRow(lane, dates, parks));
+    rows.push(row(lane.kind, lane.id, lane.name, parks, dates, lane.status === 'expected'));
+  }
+  const days = calendar.days.filter((day) => day.date.startsWith(month));
+  const breaks = days
+    .filter((day) => day.isSchoolVacation)
+    .map((day) => ({ date: day.date, name: day.holidays?.[0] ?? '' }));
+  for (const run of breakRuns(breaks)) {
+    const dates = days.map((d) => d.date).filter((date) => date >= run.from && date <= run.to);
+    rows.push(row('break', `break:${run.from}`, run.name, [], dates));
+  }
+  for (const day of days.filter((d) => d.isHoliday)) {
+    rows.push(row('holiday', `holiday:${day.date}`, day.holidays?.at(-1) ?? null, [], [day.date]));
   }
   if (nye.dates.length > 0) rows.push(nye);
   return rows;

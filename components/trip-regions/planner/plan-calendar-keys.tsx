@@ -45,9 +45,9 @@ export function PlanCodeKey({
 }
 
 /**
- * The month's events under the date grid (`monthEvents`): party nights counted, festivals and
- * school breaks with their dates in the month, New Year's Eve once. Event names are the parks' own
- * brand names and stay as they are; a school break's is translated.
+ * The month's events under the date grid (`monthEvents`): party nights counted, festivals, school
+ * breaks and holidays with their dates in the month, New Year's Eve once. Event names are the parks'
+ * own brand names and stay as they are; a break's or a holiday's is translated.
  */
 export function PlanMonthEvents({
   events,
@@ -81,7 +81,7 @@ export function PlanMonthEvents({
   const name = (event: MonthEvent) =>
     event.kind === 'nye'
       ? t('nye')
-      : event.kind === 'break'
+      : event.kind === 'break' || event.kind === 'holiday'
         ? event.name
           ? translateHolidayName(cleanBreakName(event.name), locale)
           : ''
@@ -98,8 +98,13 @@ export function PlanMonthEvents({
                 <Ticket className="text-crowd-ink-high size-3" />
               ) : event.kind === 'nye' ? (
                 <Sparkles className="text-primary-ink size-3" />
-              ) : event.kind === 'break' ? (
-                <span className={cn('h-[3px] w-3 rounded-full', DAY_SIGNAL_CLASS.school)} />
+              ) : event.kind === 'break' || event.kind === 'holiday' ? (
+                <span
+                  className={cn(
+                    'h-[3px] w-3 rounded-full',
+                    DAY_SIGNAL_CLASS[event.kind === 'break' ? 'school' : 'holiday']
+                  )}
+                />
               ) : null}
             </span>
             <span className="min-w-0 flex-1">

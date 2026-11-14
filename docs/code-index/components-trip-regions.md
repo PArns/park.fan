@@ -90,6 +90,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanAgendaView` _component_: The Agenda view: one card per day, at Level 1, which is three facts at most: the park, its minutes and one marker (an early close, a rest day, the hotel's early slot). Everything else is one press away in the day's sheet.
 
+### [`planner/plan-calendar-keys.tsx`](../../components/trip-regions/planner/plan-calendar-keys.tsx)
+
+- `PlanCodeKey` _component_: What the park codes under the dates and in the Month view stand for, „MK Magic Kingdom · AK Animal Kingdom“, in the legend's own look. Only the codes the view shows (`parkCodeKey`), wrapped on a phone rather than folded away.
+- `PlanMonthEvents` _component_: The month's events under the date grid (`monthEvents`): party nights counted, festivals and school breaks with their dates in the month, New Year's Eve once.
+
 ### [`planner/plan-context.tsx`](../../components/trip-regions/planner/plan-context.tsx)
 
 - `usePlanContext` _hook_: The planner's shared values; only inside `TripRegionPlanner`.
@@ -136,11 +141,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-month-grid.tsx`](../../components/trip-regions/planner/plan-month-grid.tsx)
 
 - `PlanMonthGrid` _component_: A month of dates to pick from, a month at a time (`lib/planner/month-grid.ts`): the trip's two dates in the Dates step, one date for a ticket's first day.
-- Types: `PlanGridDay`
+- Types: `PlanGridPick`, `PlanGridDay`
 
 ### [`planner/plan-month-view.tsx`](../../components/trip-regions/planner/plan-month-view.tsx)
 
-- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`): a park day is a tile in its crowd tint with the park's two letters and, on a wide screen, the …
+- `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`).
 
 ### [`planner/plan-options.tsx`](../../components/trip-regions/planner/plan-options.tsx)
 
