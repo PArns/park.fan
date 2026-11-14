@@ -29,7 +29,7 @@ import { holidaySignals } from '@/lib/utils/day-signal-styles';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
-import { PlanCheckRow, PlanSegmented } from './plan-controls';
+import { PlanSegmented } from './plan-controls';
 import { PlanMonthGrid, type PlanGridPick } from './plan-month-grid';
 import { PlanCodeKey, PlanMonthEvents } from './plan-calendar-keys';
 import { useResortWord } from './plan-ticket-words';
@@ -89,7 +89,8 @@ function createShownDate() {
  * Pointing at a date or pressing it explains its pick in a line under the grid; the codes, the
  * month's events and the colours are keyed below. A last-year tint has a dashed border. Arrival and
  * departure carry their plane and a light band joins the days between. The tickets' windows are
- * thin bars along the dates, named in a key. Then whether the travel days hold a park.
+ * thin bars along the dates, named in a key. Whether the travel days hold a park is asked under
+ * More options (`PlanOptions`), not here.
  */
 export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('tripPlanner');
@@ -487,22 +488,6 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
               : t('dates.pickArrival')}
       </p>
 
-      <div className="flex flex-col">
-        <PlanCheckRow
-          checked={state.arrival === 'park'}
-          disabled={!live}
-          onChange={(on) => update((s) => ({ ...s, arrival: on ? 'park' : 'free' }))}
-          label={t('dates.arrivalPark')}
-          hint={t('dates.arrivalParkHint')}
-        />
-        <PlanCheckRow
-          checked={state.departure === 'park'}
-          disabled={!live}
-          onChange={(on) => update((s) => ({ ...s, departure: on ? 'park' : 'free' }))}
-          label={t('dates.departurePark')}
-          hint={t('dates.departureParkHint')}
-        />
-      </div>
       {pendingFrom && (
         <p className="text-muted-foreground text-xs">
           {t('dates.maxLength', { days: MAX_TRIP_DAYS })}
