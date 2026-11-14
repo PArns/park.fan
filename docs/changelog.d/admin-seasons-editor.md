@@ -4,9 +4,11 @@
 Status, Reiseregion, Park und „Läuft heute“, die Filter stehen in der Adresse, und „Neue Saison“
 legt eine Saison an, auch ohne vorher den Park zu öffnen. Eine Zeile öffnet dasselbe Formular wie
 der Tab „Saisons“ im Park (`SeasonEditor`, nach `app/admin/seasons/_components/` umgezogen): jetzt
-mit den betroffenen Fahrgeschäften, „Zuletzt an der Quelle geprüft“ und Uhrzeitfeldern. Die Termine
-kommen aus dem Kalender, aus ganzen Wochentagen des Zeitraums oder aus einer eingefügten Liste
-(`2026-10-03` oder `3.10.2026`). Das Formular prüft vor dem Speichern, was die API prüft
+mit den betroffenen Fahrgeschäften, „Zuletzt an der Quelle geprüft“ und Uhrzeitfeldern. Die Termine stehen als Raster aller Monate des Zeitraums, bis zu drei nebeneinander, ein gewählter
+Tag als ruhige Pille (`DayCalendar` in `app/admin/_ui/day-calendar.tsx`, auf den Monatsrastern des
+Planers); „Alle“, „Keine“, „Wochenenden“, „Fr–So“, ganze Wochentage, Umschalt-Klick und eine
+eingefügte Liste (`2026-10-03` oder `3.10.2026`) ersparen die Einzelklicks. Kind-Icons und
+Status-Farben sind die der Parkseite (`SeasonKindIcon`, `SEASON_STATUS_TONE`). Das Formular prüft vor dem Speichern, was die API prüft
 (`seasonProblems` in `app/admin/_lib/seasons.ts`), schickt beim Bearbeiten nur die geänderten Felder
 und `null` für geleerte (`seasonPatch`) und zeigt eine 400 der API über den Knöpfen. Wer nur lesen
 darf, sieht das Formular gesperrt. Die Art „Winter“ (`winter`) steht neben „Weihnachten“ zur Wahl.

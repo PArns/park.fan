@@ -109,9 +109,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `datesOutsideRange` _function_: The picked days that lie outside the range, which the API refuses.
 - `uniqueDays` _function_: A sorted list of distinct days.
 - `parseSeasonDates` _function_: The days in a pasted text, as a park's calendar or a spreadsheet lists them: `2026-10-03` or `3.10.2026`, separated by spaces, commas, semicolons or lines. What is not a real day is returned as written, so the form can name it.
-- `formatSeasonDates` _function_: Picked days as a person scans them, one month per group: „Okt. 3, 4, 10, 11 · Nov. 1“, with the year where the days span two.
 - `formatSeasonRange` _function_: A range as a person would write it, or the raw values while it is not one yet: a cleared `<input type="date">` reports `''`.
-- `rangeLength` _function_: Days in a range, both ends counted; 0 while it is not one.
+- `rangeDays` _function_: Every day of a range of real days, both ends included; none while it is not one.
 - `seasonDraft` _function_: The draft of a stored season, or of a new one starting on `today`.
 - `parseSeasonPrice` _function_: A price as typed, in either notation: the people using this admin type German, so `53,50` is the expected input. `'invalid'` rather than null for text that is neither empty nor a number, because the two must not save the same way.
 - `seasonBody` _function_: The whole body of `POST parks/:id/seasons`: every field, an empty optional one as null.
@@ -129,7 +128,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`_lib/types.ts`](../../app/admin/_lib/types.ts)
 
-- Types: `CuratedFieldType`, `CuratedField`, `CuratedFieldSpec`, `AuditEntry`, `AdminParkListItem`, `AdminParkDetail`, `AdminAttractionListItem`, `RideProfile`, `RideMeasurements`, `AdminAttractionDetail`, `ParkSeasonKind`, `ParkSeasonStatus`, `ParkSeason`, `CurationResponse`, `AdminSessionInfo`, `AdminOverview`
+- Types: `CuratedFieldType`, `CuratedField`, `CuratedFieldSpec`, `AuditEntry`, `AdminParkListItem`, `AdminParkDetail`, `AdminAttractionListItem`, `RideProfile`, `RideMeasurements`, `AdminAttractionDetail`, `ParkSeason`, `CurationResponse`, `AdminSessionInfo`, `AdminOverview`
+- Re-exports: `@/lib/api/types`
 
 ### [`_lib/upload-transport.ts`](../../app/admin/_lib/upload-transport.ts)
 
@@ -258,6 +258,10 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/curated-fields.tsx`](../../app/admin/_ui/curated-fields.tsx)
 
 - `CuratedFieldsPanel` _component_: The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast.
+
+### [`_ui/day-calendar.tsx`](../../app/admin/_ui/day-calendar.tsx)
+
+- `DayCalendar` _component_: Many days picked inside a range, every month of it at once: two or three months side by side as the space allows, small cells, a picked day a filled pill, the padding days of a month left blank so no day shows twice.
 
 ### [`_ui/entity-media.tsx`](../../app/admin/_ui/entity-media.tsx)
 
