@@ -3594,7 +3594,9 @@
         "window": "Un biglietto {resort} da {days} giorni vale {days} giorni a scelta fra i {window} dal primo.",
         "second": "{resort}, secondo biglietto",
         "notCovered": "Il tuo {name} non copre {parks}.",
-        "promotion": "Anche il {name} va bene per questi giorni."
+        "promotion": "Anche il {name} va bene per questi giorni.",
+        "group": "{resort}: {count} × {days, plural, =1 {biglietto di 1 giorno} other {biglietto di # giorni}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Consigliato: {hopper}",

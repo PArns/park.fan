@@ -478,6 +478,37 @@ export function suggestionsByStart(
   );
 }
 
+/** Suggestions of one resort and one product of one length, in the order of their first day. */
+export interface SuggestionGroup {
+  resort: string;
+  product: string;
+  days: number;
+  items: PlanTicketSuggestion[];
+}
+
+/**
+ * The suggestions grouped by resort, product and length, each group where its first ticket starts:
+ * six day tickets at Tokyo Disney Resort are one group of six. A suggestion that stretches its
+ * length past its park days (`extraDays`) stays a group of its own.
+ */
+export function suggestionGroups(suggestions: readonly PlanTicketSuggestion[]): SuggestionGroup[] {
+  const groups: SuggestionGroup[] = [];
+  for (const s of suggestionsByStart(suggestions)) {
+    const same = s.extraDays
+      ? undefined
+      : groups.find(
+          (g) =>
+            g.resort === s.resort &&
+            g.product === s.product &&
+            g.days === s.days &&
+            !g.items[0].extraDays
+        );
+    if (same) same.items.push(s);
+    else groups.push({ resort: s.resort, product: s.product, days: s.days, items: [s] });
+  }
+  return groups;
+}
+
 /**
  * "Use these as your tickets": the suggestions written as owned tickets, each with its start and,
  * where the plan was shown with it, the hopper. The resorts stay in blocks (`blocks=1`), so the

@@ -420,6 +420,7 @@ The link that hands a stored plan to somebody else, and how it is read back.
 - `isPlannedDay` _function_: A day the lists, the countdown, the share link and the sync show: it holds entries or was reserved.
 - `hasAnyPlan` _function_: True when there is anything at all worth opening the flyout for.
 - `plannedParks` _function_: The parks that hold a planned day, by name in the reader's language, each with those days in date order.
+- `plannedDayRows` _function_: The rows of a column's park chooser: every planned day of every park in date order, a trip's days one after the other ("Sun, Dec 6 · Islands of Adventure"), then the parks that hold no planned day yet, by name, without a date.
 - `entriesFor` _function_: Entries for one park and date, in plan order. Never `undefined`.
 - `countAll` _function_: Total across all parks — what the trigger badge shows.
 - `PLANNER_BLOCK_ICONS` _const_: The icons a free block may carry. A closed set, so a plan never stores a class name.

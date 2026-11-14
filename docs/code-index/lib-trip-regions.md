@@ -263,6 +263,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `hopperOn` _function_: Whether a plan-first resort is planned with its hopper: all are with `ticket=hopper`, else `hopper=` names it.
 - `toggleHopper` _function_: "Show the plan with Park Hopper" for one resort, and its way back. An older link's `ticket=hopper` (every resort) becomes the list of the others, so the press changes only this resort.
 - `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
+- `suggestionGroups` _function_: The suggestions grouped by resort, product and length, each group where its first ticket starts: six day tickets at Tokyo Disney Resort are one group of six.
 - `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.
 - `longStayTickets` _function_: "From the UK or Ireland? The 14-day tickets fit this trip": the region's 14-day tickets sold abroad (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
 - `hopperGains` _function_: What the hopper adds, from the fields the API sends: each evening at a second park and each day with two parks by date (more than two by count), the parks that fit only with it, and the minutes per ride. Empty when it adds nothing.
@@ -273,7 +274,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
 - `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: those for the visitor's locale or market first, the rest after, each group in the admin's order, which is the display order. The official link keeps its place.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 
@@ -358,7 +359,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `toggleLock` _function_: Pin a day to what it holds now (a park or a rest day), or release its pin.
 - `dayLockTarget` _function_: What a pin of this day names: its park, `rest`, or nothing for a travel or hop day.
 - `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
-- `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography.
+- `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography. It goes in by the name the trip planner calls it ("Islands of Adventure"), so the day planner's list of a trip's days reads as the plan did.
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.

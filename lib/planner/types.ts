@@ -188,6 +188,29 @@ export function plannedParks(
     .sort((a, b) => a.name.localeCompare(b.name, locale));
 }
 
+/**
+ * The rows of a column's park chooser: every planned day of every park in date order, a trip's
+ * days one after the other ("Sun, Dec 6 · Islands of Adventure"), then the parks that hold no
+ * planned day yet, by name, without a date.
+ */
+export function plannedDayRows(
+  parks: readonly PlannerPark[],
+  locale: string
+): Array<{ slug: string; name: string; date: string | null }> {
+  const days = parks
+    .flatMap((park) =>
+      Object.values(park.days)
+        .filter(isPlannedDay)
+        .map((day) => ({ slug: park.slug, name: park.name, date: day.date }))
+    )
+    .sort((a, b) => a.date.localeCompare(b.date) || a.name.localeCompare(b.name, locale));
+  const without = parks
+    .filter((park) => !days.some((d) => d.slug === park.slug))
+    .sort((a, b) => a.name.localeCompare(b.name, locale))
+    .map((park) => ({ slug: park.slug, name: park.name, date: null }));
+  return [...days, ...without];
+}
+
 /** Entries for one park and date, in plan order. Never `undefined`. */
 export function entriesFor(
   state: PlannerState,
