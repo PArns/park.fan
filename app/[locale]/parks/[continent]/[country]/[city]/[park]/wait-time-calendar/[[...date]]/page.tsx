@@ -16,7 +16,7 @@ import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integra
 import { hasParkStatsPage } from '@/lib/api/stats';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
-import { seasonDaysOfMonth } from '@/lib/parks/park-season-days';
+import { seasonDaysOfMonth, seasonsNeedDayStatus } from '@/lib/parks/park-season-days';
 import type { IntegratedCalendarResponse, ParkWithAttractions } from '@/lib/api/types';
 import {
   cityHasOwnPage,
@@ -359,6 +359,15 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
   const prevMonth = isParkCalendarMonthInRange(back, nowMonth, coverageTo) ? back : null;
   const nextMonth = isParkCalendarMonthInRange(forward, nowMonth, coverageTo) ? forward : null;
 
+  // A season without single dates marks only the days the calendar does not call closed, so the
+  // month's statuses come first, from the summary's own seed. Waited for only in a month with such
+  // a season; a seed that times out leaves every day open.
+  const seasonDays = seasonDaysOfMonth(
+    monthSeasons,
+    shownMonth,
+    seasonsNeedDayStatus(monthSeasons) ? ((await monthSeedPromise)?.days ?? []) : []
+  );
+
   return (
     <RouteMessages route="/parks/[continent]/[country]/[city]/[park]/wait-time-calendar/[[...date]]">
       {/* Tells the planner which park this route is about (`lib/planner/page-park.ts`): the
@@ -559,7 +568,7 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
           prevMonth={prevMonth}
           nextMonth={nextMonth}
           // Per day, so the grid and the legend read one computation and the client gets no list.
-          seasonDays={seasonDaysOfMonth(monthSeasons, shownMonth)}
+          seasonDays={seasonDays}
           className="mt-8"
           // Every month of the window, one hop from here. The stepper inside the card links two.
           monthIndex={

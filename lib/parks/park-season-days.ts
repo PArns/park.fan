@@ -1,4 +1,4 @@
-import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
+import type { CalendarDay, ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 
 /**
@@ -36,19 +36,34 @@ export function isSeasonEvent<T extends { kind: ParkSeasonKind; status: ParkSeas
 
 /**
  * Whether a season runs on a date: only on its `dates` where it lists them, else every day of its
- * range. The rule of the API's `seasonCovers`.
+ * range (the API's `seasonCovers`) the calendar does not show `closed`. A range is the season's
+ * outer bounds and says nothing about a day the park is shut; listed dates are the park's own word
+ * and stand. An unknown day counts as open, since nobody said it is closed.
  */
 export function seasonRunsOn(
   season: { startDate: string; endDate: string; dates?: readonly string[] | null },
-  date: string
+  date: string,
+  closed = false
 ): boolean {
   if (season.dates && season.dates.length > 0) return season.dates.includes(date);
-  return season.startDate <= date && date <= season.endDate;
+  return !closed && season.startDate <= date && date <= season.endDate;
 }
 
-/** The event seasons running on a date, in the order given. */
-export function eventSeasonsOn<T extends ParkSeason>(seasons: readonly T[], date: string): T[] {
-  return seasons.filter((season) => isSeasonEvent(season) && seasonRunsOn(season, date));
+/** The event seasons running on a date the calendar shows `closed` or not, in the order given. */
+export function eventSeasonsOn<T extends ParkSeason>(
+  seasons: readonly T[],
+  date: string,
+  closed = false
+): T[] {
+  return seasons.filter((season) => isSeasonEvent(season) && seasonRunsOn(season, date, closed));
+}
+
+/**
+ * Whether the month's day statuses decide anything: only a season without single dates, which
+ * skips the closed days, needs them. The calendar page waits for them only then.
+ */
+export function seasonsNeedDayStatus(seasons: readonly ParkSeason[]): boolean {
+  return seasons.some((season) => isSeasonEvent(season) && !season.dates?.length);
 }
 
 /** One event season on one calendar day, as the tile, the legend and the day's dialog draw it. */
@@ -75,12 +90,14 @@ export interface SeasonOnDay extends Pick<
 export type SeasonDays = Record<string, SeasonOnDay[]>;
 
 /**
- * The event seasons of one month, per day. The one computation the grid's tiles, the day dialog and
- * the legend all read, so the legend keys exactly the icons the month shows.
+ * The event seasons of one month, per day, a season without single dates only on the `calendarDays`
+ * not `CLOSED`. The one computation the grid's tiles, the day dialog and the legend all read, so the
+ * legend keys exactly the icons the month shows.
  */
 export function seasonDaysOfMonth(
   seasons: readonly ParkSeason[],
-  month: ParkCalendarMonth
+  month: ParkCalendarMonth,
+  calendarDays: ReadonlyArray<Pick<CalendarDay, 'date' | 'status'>> = []
 ): SeasonDays {
   const { from, to } = parkCalendarMonthRange(month);
   const monthDays = Number(to.slice(8));
@@ -88,10 +105,11 @@ export function seasonDaysOfMonth(
     { length: monthDays },
     (_, i) => `${from.slice(0, 8)}${String(i + 1).padStart(2, '0')}`
   );
+  const closed = new Set(calendarDays.filter((d) => d.status === 'CLOSED').map((d) => d.date));
   const days: SeasonDays = {};
   for (const season of seasons) {
     if (!isSeasonEvent(season)) continue;
-    const runs = dates.filter((date) => seasonRunsOn(season, date));
+    const runs = dates.filter((date) => seasonRunsOn(season, date, closed.has(date)));
     if (runs.length === 0) continue;
     const entry: SeasonOnDay = {
       id: season.id,

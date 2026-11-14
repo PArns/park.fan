@@ -208,11 +208,13 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
         const inMaintenance =
           day.status === 'CLOSED' ? [] : ridesInWorksOn(rides, day.date).map((ride) => ride.name);
         // What the calendar tile marks that day, and how settled where it is no promise yet.
-        const daySeasons = eventSeasonsOn(seasons, day.date).map((season) => ({
-          kind: season.kind,
-          name: season.name,
-          ...(season.status !== 'confirmed' && { status: season.status }),
-        }));
+        const daySeasons = eventSeasonsOn(seasons, day.date, day.status === 'CLOSED').map(
+          (season) => ({
+            kind: season.kind,
+            name: season.name,
+            ...(season.status !== 'confirmed' && { status: season.status }),
+          })
+        );
         return {
           date: day.date,
           status: day.status,

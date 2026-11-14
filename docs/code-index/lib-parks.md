@@ -122,9 +122,10 @@ Which two days of a park's calendar are being compared, across a change of month
 ### [`park-season-days.ts`](../../lib/parks/park-season-days.ts)
 
 - `isSeasonEvent` _function_: Whether a season is one of the events a day marks and still on. A cancelled season marks no day: it is listed, struck through, on the park's season card and nowhere else.
-- `seasonRunsOn` _function_: Whether a season runs on a date: only on its `dates` where it lists them, else every day of its range. The rule of the API's `seasonCovers`.
-- `eventSeasonsOn` _function_: The event seasons running on a date, in the order given.
-- `seasonDaysOfMonth` _function_: The event seasons of one month, per day. The one computation the grid's tiles, the day dialog and the legend all read, so the legend keys exactly the icons the month shows.
+- `seasonRunsOn` _function_: Whether a season runs on a date: only on its `dates` where it lists them, else every day of its range (the API's `seasonCovers`) the calendar does not show `closed`.
+- `eventSeasonsOn` _function_: The event seasons running on a date the calendar shows `closed` or not, in the order given.
+- `seasonsNeedDayStatus` _function_: Whether the month's day statuses decide anything: only a season without single dates, which skips the closed days, needs them. The calendar page waits for them only then.
+- `seasonDaysOfMonth` _function_: The event seasons of one month, per day, a season without single dates only on the `calendarDays` not `CLOSED`.
 - `seasonKindsIn` _function_: The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys.
 - `seasonMarks` _function_: A day's seasons as the tile marks them: one icon per kind, in `SEASON_EVENT_KINDS` order, quiet only when every season of that kind is.
 - `SEASON_EVENT_KINDS` _const_: The season kinds a day marks: the events a visitor picks a day for.
