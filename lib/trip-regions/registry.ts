@@ -106,7 +106,7 @@ export interface TripHubFaq {
 /**
  * The screenshots of the hub's "how it works" chapter, one per step in the order the chapter names
  * them (`HUB_STEPS`: dates, questions, plan, edit), each a media id without its locale suffix
- * (`reiseplaner/wochenansicht`): the page shows `-<locale>`, else `-en`, else `-de`. Data, so a
+ * (`reiseplaner/orlando-assistent-1`): the page shows `-<locale>`, else `-en`, else `-de`. Data, so a
  * retaken shot is a new file and one line here.
  */
 export type TripHubShots = readonly [string, string, string, string];

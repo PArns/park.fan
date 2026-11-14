@@ -44,10 +44,10 @@ export const PARIS: TripRegionConfig = {
       distance: { from: 'disneyland-park', near: 'disney-adventure-world', far: 'parc-asterix' },
     },
     howItWorks: [
-      'reiseplaner/orlando-reisedaten-insgesamt',
-      'reiseplaner/tickets-vorschlag',
-      'reiseplaner/wochenansicht',
-      'reiseplaner/tickets-uk',
+      'reiseplaner/paris-assistent-1',
+      'reiseplaner/paris-assistent-2',
+      'reiseplaner/paris-assistent-3',
+      'reiseplaner/paris-assistent-4',
     ],
     resorts: [
       { group: 'disneyland-paris', photo: 'disneyland-park/background' },

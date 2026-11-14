@@ -96,10 +96,10 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
       },
     },
     howItWorks: [
-      'reiseplaner/orlando-reisedaten-insgesamt',
-      'reiseplaner/tickets-vorschlag',
-      'reiseplaner/wochenansicht',
-      'reiseplaner/tickets-uk',
+      'reiseplaner/kalifornien-assistent-1',
+      'reiseplaner/kalifornien-assistent-2',
+      'reiseplaner/kalifornien-assistent-3',
+      'reiseplaner/kalifornien-assistent-4',
     ],
     resorts: [
       { group: 'disneyland-resort', photo: 'disneyland-anaheim/sleeping-beauty-castle' },

@@ -1,0 +1,19 @@
+{
+  "title": "Reiseplaner-Assistent, Japan, Schritt 1 (de)",
+  "tags": ["diagram"],
+  "alt": {
+    "de": "„Wann bist du in Japan?“ mit dem Schalter „Insgesamt · Tokyo Disney · USJ“, den Monaten und dem Januar 2027, in dem der 14. bis 30. Januar als Reise markiert ist."
+  },
+  "caption": {
+    "de": "Das Kürzel unter jedem Datum ist der Park mit der kürzesten Spitzenwartezeit. Anfang Januar ist das fast jeden Tag Tokyo Disneyland."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0
+  },
+  "shotAt": "2026-11-14"
+}

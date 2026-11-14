@@ -84,8 +84,17 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       name
     );
   };
-  const startTrip = (page) =>
-    page.locator('[data-trip-planner] > button', { hasText: 'Plan my trip' }).click();
+  /**
+   * „Plan my trip“ in the hub's head: the planner's own button is hidden while the hub shows
+   * chapter 01. Pressed before the head has hydrated it only follows its `#planner`, so again.
+   */
+  const startTrip = async (page) => {
+    const wizard = page.locator(WIZARD);
+    for (let i = 0; i < 4 && !(await wizard.count()); i++) {
+      await page.locator('a[data-landing-action]', { hasText: 'Plan my trip' }).first().click();
+      await wizard.waitFor({ timeout: 5000 }).catch(() => {});
+    }
+  };
   /** The assistant's „Step 2 of 6“, which its dialog is described by. */
   const wizardStep = (page) =>
     page.locator(`${WIZARD} [data-slot="dialog-description"]`).innerText();
@@ -130,7 +139,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     const started = await events(page, 'trip_planner_started');
     check(
       'Orlando · Ereignis trip_planner_started mit Region und Quelle des Starts',
-      started.length === 1 && started[0].source === 'button' && started[0].region === 'orlando',
+      started.length === 1 && started[0].source === 'hero' && started[0].region === 'orlando',
       JSON.stringify(started)
     );
     await page.keyboard.press('Escape');
@@ -186,6 +195,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await wizard.locator('[data-wizard-show-plan]').click();
     await page.locator('[data-plan-answers]').waitFor();
     await page.locator('[data-plan-day-card]').first().waitFor({ timeout: PLAN_TIMEOUT });
+    // The dialog leaves after its exit animation, which can outlast the first day card.
+    await wizard.waitFor({ state: 'detached', timeout: 5000 }).catch(() => {});
     const finished = await events(page, 'trip_wizard_finished');
     check(
       'Orlando · „Show the plan now“ schließt den Assistenten früh (early) und zeigt den Plan',
@@ -272,109 +283,120 @@ export async function checkOrlandoTickets({ browser, base, check }) {
   {
     const { context, page } = await open(PHONE);
     await ready(page, '/en/orlando#planner');
-    await page.locator('[data-plan-tickets-ask] button').click();
-    await page.locator(`${WIZARD} [data-plan-tickets]`).waitFor();
+    // The empty answer's „Add them“ is the one way to tickets before dates.
+    const ask = page.locator('[data-plan-tickets-ask] button');
+    const reachable = await ask.isVisible();
     check(
-      'Orlando · „Add them“ öffnet den Ticket-Schritt des Assistenten mit den Resorts',
-      (await page.locator(`${WIZARD} [data-ticket-add]`).count()) >= 2
+      'Orlando · ohne Daten ist „Add them“ zu sehen, die Tickets können vor den Daten kommen',
+      reachable,
+      reachable ? '' : 'versteckt: ohne Daten blendet der Hub den Planer aus (HubPlannerOnly)'
     );
-    await page.locator(`${WIZARD} [data-ticket-combo]`).click();
-    const cards = page.locator(`${WIZARD} [data-ticket-card]`);
-    check(
-      'Orlando · das Combo Ticket trägt beide Tickets mit einem Druck ein',
-      (await cards.count()) === 2 &&
-        (await cards.nth(0).innerText()).includes('14-Day Magic Ticket') &&
-        (await cards.nth(1).innerText()).includes('14-day ticket')
-    );
-    const sheet = page.locator(WIZARD);
-    await pickStart(sheet, 0, '2027-02-07');
-    const shared = await cards.nth(1).locator('[data-ticket-start]').innerText();
-    check(
-      'Orlando · beide Hälften des Combo Tickets beginnen am selben ersten Tag',
-      shared.includes('Sun, Feb 7, 2027'),
-      shared
-    );
-    const opened = await events(page, 'trip_tickets_opened');
-    const added = await events(page, 'trip_ticket_added');
-    const started2 = await events(page, 'trip_ticket_start');
-    check(
-      'Orlando · Ereignisse: Tickets geöffnet (ask, erstes Mal), zwei Tickets über das Combo, ein erster Tag',
-      opened.length === 1 &&
-        opened[0].from === 'ask' &&
-        opened[0].first === true &&
-        added.length === 2 &&
-        added.every((e) => e.via === 'combo' && e.region === 'orlando') &&
-        added.map((e) => e.resort).join() === 'walt-disney-world,universal-orlando' &&
-        started2.length === 1 &&
-        started2[0].start === 'set',
-      JSON.stringify({ opened, added, started2 })
-    );
-    const disney = await sheet.locator('[data-ticket-window]').nth(0).innerText();
-    const universal = await sheet.locator('[data-ticket-window]').nth(1).innerText();
-    check(
-      'Orlando · das Fenster steht in Daten: Disney „any 14 days in these 18“',
-      disney.includes('Valid Sun, Feb 7 to Wed, Feb 24: any 14 days in these 18.'),
-      disney
-    );
-    check(
-      'Orlando · Universal jeden Tag, per Startdatum das Three Park Adventure Ticket',
-      universal.includes('Valid every day from Sun, Feb 7 to Sat, Feb 20.') &&
-        universal.includes('Three Park Adventure'),
-      universal
-    );
-    const q = query(page);
-    check(
-      'Orlando · tickets= in der Adresse, wie der Vertrag es schreibt',
-      q.get('tickets') === 'wdw-uk-14-day-magic@2027-02-07,uor-uk-three-park-adventure@2027-02-07',
-      q.get('tickets') ?? 'fehlt'
-    );
-    check(
-      'Orlando · die Reisedaten kommen aus den Tickets (erster Tag bis Ende des längsten Fensters)',
-      q.get('from') === '2027-02-07' && q.get('to') === '2027-02-24',
-      `${q.get('from')} – ${q.get('to')}`
-    );
-    await page.getByRole('button', { name: 'Step 1, Dates' }).click();
-    await page.locator(`${WIZARD} [data-plan-ticket-key]`).waitFor();
-    const key = await page.locator(`${WIZARD} [data-plan-ticket-key]`).innerText();
-    const bars = await page
-      .locator(`${WIZARD} [data-plan-date="2027-02-10"] [data-plan-ticket-bar]`)
-      .count();
-    check(
-      'Orlando · die Fenster liegen als Balken unter den Daten, mit Legende',
-      key.includes('Disney ticket') && key.includes('Universal ticket') && bars === 2,
-      `${key.replace(/\n/g, ' · ')}, ${bars} Balken am 10.`
-    );
-    await page.locator(`${WIZARD} [data-wizard-show-plan]`).click();
-    await page.locator(WIZARD).waitFor({ state: 'detached' });
-    const card = page.locator('[data-plan-tickets-card]').last();
-    await card.waitFor({ timeout: PLAN_TIMEOUT });
-    const uses = await card
-      .locator('[data-plan-owned-use]')
-      .evaluateAll((els) =>
-        els.map((e) => `${e.getAttribute('data-plan-owned-use')}: ${e.textContent}`)
+    if (reachable) {
+      await ask.click();
+      await page.locator(`${WIZARD} [data-plan-tickets]`).waitFor();
+      check(
+        'Orlando · „Add them“ öffnet den Ticket-Schritt des Assistenten mit den Resorts',
+        (await page.locator(`${WIZARD} [data-ticket-add]`).count()) >= 2
       );
-    const requested = (await events(page, 'trip_plan_requested')).at(-1);
-    const shown = (await events(page, 'trip_plan_shown')).at(-1);
-    check(
-      'Orlando · Ereignisse trip_plan_requested und trip_plan_shown zum Plan mit eigenen Tickets',
-      requested?.region === 'orlando' &&
-        requested.mode === 'dates' &&
-        requested.days === '15-21' &&
-        requested.tickets === 'owned' &&
-        requested.parks === 0 &&
-        !('from' in requested) &&
-        shown?.mode === 'dates' &&
-        (shown.outcome === 'ok' || shown.outcome === 'relaxed'),
-      JSON.stringify({ requested, shown })
-    );
-    check(
-      'Orlando · „Your tickets“: Disney zählt Tage, Universal gilt jeden Tag',
-      (await card.getAttribute('data-plan-tickets-card')) === 'owned' &&
-        uses.some((u) => /^counted: \d+ of 14 days/.test(u)) &&
-        uses.some((u) => /^everyDay: used on \d+ of its 14 days/.test(u)),
-      uses.join(' | ')
-    );
-    ownerLink = page.url();
+      await page.locator(`${WIZARD} [data-ticket-combo]`).click();
+      const cards = page.locator(`${WIZARD} [data-ticket-card]`);
+      check(
+        'Orlando · das Combo Ticket trägt beide Tickets mit einem Druck ein',
+        (await cards.count()) === 2 &&
+          (await cards.nth(0).innerText()).includes('14-Day Magic Ticket') &&
+          (await cards.nth(1).innerText()).includes('14-day ticket')
+      );
+      const sheet = page.locator(WIZARD);
+      await pickStart(sheet, 0, '2027-02-07');
+      const shared = await cards.nth(1).locator('[data-ticket-start]').innerText();
+      check(
+        'Orlando · beide Hälften des Combo Tickets beginnen am selben ersten Tag',
+        shared.includes('Sun, Feb 7, 2027'),
+        shared
+      );
+      const opened = await events(page, 'trip_tickets_opened');
+      const added = await events(page, 'trip_ticket_added');
+      const started2 = await events(page, 'trip_ticket_start');
+      check(
+        'Orlando · Ereignisse: Tickets geöffnet (ask, erstes Mal), zwei Tickets über das Combo, ein erster Tag',
+        opened.length === 1 &&
+          opened[0].from === 'ask' &&
+          opened[0].first === true &&
+          added.length === 2 &&
+          added.every((e) => e.via === 'combo' && e.region === 'orlando') &&
+          added.map((e) => e.resort).join() === 'walt-disney-world,universal-orlando' &&
+          started2.length === 1 &&
+          started2[0].start === 'set',
+        JSON.stringify({ opened, added, started2 })
+      );
+      const disney = await sheet.locator('[data-ticket-window]').nth(0).innerText();
+      const universal = await sheet.locator('[data-ticket-window]').nth(1).innerText();
+      check(
+        'Orlando · das Fenster steht in Daten: Disney „any 14 days in these 18“',
+        disney.includes('Valid Sun, Feb 7 to Wed, Feb 24: any 14 days in these 18.'),
+        disney
+      );
+      check(
+        'Orlando · Universal jeden Tag, per Startdatum das Three Park Adventure Ticket',
+        universal.includes('Valid every day from Sun, Feb 7 to Sat, Feb 20.') &&
+          universal.includes('Three Park Adventure'),
+        universal
+      );
+      const q = query(page);
+      check(
+        'Orlando · tickets= in der Adresse, wie der Vertrag es schreibt',
+        q.get('tickets') ===
+          'wdw-uk-14-day-magic@2027-02-07,uor-uk-three-park-adventure@2027-02-07',
+        q.get('tickets') ?? 'fehlt'
+      );
+      check(
+        'Orlando · die Reisedaten kommen aus den Tickets (erster Tag bis Ende des längsten Fensters)',
+        q.get('from') === '2027-02-07' && q.get('to') === '2027-02-24',
+        `${q.get('from')} – ${q.get('to')}`
+      );
+      await page.getByRole('button', { name: 'Step 1, Dates' }).click();
+      await page.locator(`${WIZARD} [data-plan-ticket-key]`).waitFor();
+      const key = await page.locator(`${WIZARD} [data-plan-ticket-key]`).innerText();
+      const bars = await page
+        .locator(`${WIZARD} [data-plan-date="2027-02-10"] [data-plan-ticket-bar]`)
+        .count();
+      check(
+        'Orlando · die Fenster liegen als Balken unter den Daten, mit Legende',
+        key.includes('Disney ticket') && key.includes('Universal ticket') && bars === 2,
+        `${key.replace(/\n/g, ' · ')}, ${bars} Balken am 10.`
+      );
+      await page.locator(`${WIZARD} [data-wizard-show-plan]`).click();
+      await page.locator(WIZARD).waitFor({ state: 'detached' });
+      const card = page.locator('[data-plan-tickets-card]').last();
+      await card.waitFor({ timeout: PLAN_TIMEOUT });
+      const uses = await card
+        .locator('[data-plan-owned-use]')
+        .evaluateAll((els) =>
+          els.map((e) => `${e.getAttribute('data-plan-owned-use')}: ${e.textContent}`)
+        );
+      const requested = (await events(page, 'trip_plan_requested')).at(-1);
+      const shown = (await events(page, 'trip_plan_shown')).at(-1);
+      check(
+        'Orlando · Ereignisse trip_plan_requested und trip_plan_shown zum Plan mit eigenen Tickets',
+        requested?.region === 'orlando' &&
+          requested.mode === 'dates' &&
+          requested.days === '15-21' &&
+          requested.tickets === 'owned' &&
+          requested.parks === 0 &&
+          !('from' in requested) &&
+          shown?.mode === 'dates' &&
+          (shown.outcome === 'ok' || shown.outcome === 'relaxed'),
+        JSON.stringify({ requested, shown })
+      );
+      check(
+        'Orlando · „Your tickets“: Disney zählt Tage, Universal gilt jeden Tag',
+        (await card.getAttribute('data-plan-tickets-card')) === 'owned' &&
+          uses.some((u) => /^counted: \d+ of 14 days/.test(u)) &&
+          uses.some((u) => /^everyDay: used on \d+ of its 14 days/.test(u)),
+        uses.join(' | ')
+      );
+      ownerLink = page.url();
+    }
     await context.close();
   }
 
@@ -574,6 +596,15 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     );
     // The click opens the seller in a new tab; the count is what matters here.
     context.on('page', (opened) => opened.close().catch(() => {}));
+    // `orderTicketLinks` puts the visitor's own store first, so the stub's place is the list's.
+    const position = await sponsored.evaluate(
+      (el) =>
+        [
+          ...(el.closest('[data-plan-purchase-links]') ?? document).querySelectorAll(
+            '[data-ticket-link]'
+          ),
+        ].indexOf(el) + 1
+    );
     await sponsored.click();
     const counted = await page.evaluate(() =>
       (window.__parkfanEventLog ?? []).filter((e) => e.name === 'ticket_link_clicked')
@@ -584,7 +615,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         counted[0].props.kind === 'sponsored' &&
         counted[0].props.seller === 'Partner Shop' &&
         counted[0].props.host === 'partner.example' &&
-        counted[0].props.position === 1 &&
+        counted[0].props.position === position &&
         counted[0].props.surface === 'suggestion' &&
         counted[0].props.ticket_mode === 'plan_first',
       JSON.stringify(counted[0]?.props ?? 'kein Ereignis')
@@ -646,15 +677,17 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     check(
       'Orlando · ein Tag außerhalb seines Tickets warnt im Ticket mit zwei Auswegen',
       (await warning.getByRole('button').count()) === 2 &&
-        (await page.locator('[data-plan-marker="outside_ticket"]').count()) >= 1,
+        (await page
+          .locator('[data-plan-chip="outside_ticket"], [data-plan-marker="outside_ticket"]')
+          .count()) >= 1,
       await warning.innerText()
     );
     await warning.getByRole('button', { name: 'Change ticket' }).click();
-    await page.waitForFunction(
-      () => document.activeElement?.hasAttribute('data-ticket-start'),
-      null,
-      { timeout: 10_000 }
-    );
+    await page
+      .waitForFunction(() => document.activeElement?.hasAttribute('data-ticket-start'), null, {
+        timeout: 10_000,
+      })
+      .catch(() => {});
     check(
       'Orlando · „Change ticket“ öffnet das Ticket mit dem Fokus auf seinem ersten Tag',
       await page.evaluate(() => document.activeElement?.hasAttribute('data-ticket-start'))
