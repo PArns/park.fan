@@ -23,8 +23,9 @@ const BAR_ROWS = 3;
 /**
  * The trip's dates: a month at a time (`PlanMonthGrid`), the first press the arrival and the second
  * the departure, at most {@link MAX_TRIP_DAYS} days. Under each date the shortest big-ride wait of
- * that day in the crowd tint of the same park day, as on a park's crowd calendar, so dates can be
- * compared before anything is planned; a last-year figure is set apart and the legend says so. The
+ * that day, on a tile tinted by how busy the headliners are (`dateLevel`), as on a park's crowd
+ * calendar, so dates can be compared before anything is planned; a last-year figure is set apart
+ * and the legend says so. The
  * tickets' windows are thin bars along the dates, named in a key. Then whether the travel days hold
  * a park.
  */

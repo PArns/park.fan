@@ -6,7 +6,11 @@ import {
   PX_PER_MIN_COARSE,
   type DayGrid,
 } from '@/lib/planner/day-grid';
-import { isColoredCrowdLevel, type ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import {
+  CROWD_LEVEL_ORDER,
+  isColoredCrowdLevel,
+  type ColoredCrowdLevel,
+} from '@/lib/utils/crowd-level-styles';
 import type { DaySignal } from '@/lib/utils/day-signal-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
@@ -471,14 +475,23 @@ export function dateFigure(
 }
 
 /**
- * A date's tint in the date grid: the crowd level of the same park day as its figure, so number and
- * colour tell one story, as on a park's crowd calendar. `null` for a date without a figure or a
- * level.
+ * A date's tint in the date grid: how busy the region's headliner parks are that day, the median of
+ * the crowd levels of those that are open and have one (the lower middle for an even count). Each
+ * level compares a park with its own typical day, so the median reads as "a busy day in the region"
+ * the way a park's crowd calendar does for one park; the figure under the date stays the shortest
+ * line. `null` for a date with no level.
  */
 export function dateLevel(
   day: TripCalendarDay | undefined,
   headliners: readonly string[]
 ): ColoredCrowdLevel | null {
-  const level = datePick(day, headliners)?.crowdLevel;
-  return level && isColoredCrowdLevel(level) ? level : null;
+  if (!day) return null;
+  const ranks = headliners
+    .map((slug) => day.parks[slug])
+    .filter((cell) => cell && cell.status !== 'CLOSED')
+    .map((cell) => cell.crowdLevel)
+    .filter(isColoredCrowdLevel)
+    .map((level) => CROWD_LEVEL_ORDER.indexOf(level))
+    .sort((a, b) => a - b);
+  return ranks.length > 0 ? CROWD_LEVEL_ORDER[ranks[Math.floor((ranks.length - 1) / 2)]] : null;
 }

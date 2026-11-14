@@ -721,21 +721,31 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     dateFigure(d19, ['magic-kingdom-park', 'disneys-animal-kingdom-theme-park']),
     45
   );
-  test(
-    'a date takes the crowd level of the park day behind its figure',
-    dateLevel(
-      {
-        ...d19,
-        best: {
-          'walt-disney-world': 'disneys-animal-kingdom-theme-park',
-          'universal-orlando': 'universal-islands-of-adventure',
-        },
+  {
+    const cell = (crowdLevel, status = 'OPERATING') => ({
+      status,
+      headlinerWait: 40,
+      crowdLevel,
+      basis: 'forecast',
+    });
+    const day = {
+      ...d19,
+      parks: {
+        a: cell('low'),
+        b: cell('high'),
+        c: cell('moderate'),
+        d: cell('very_high', 'CLOSED'),
+        e: cell('unknown'),
       },
-      []
-    ),
-    'low'
-  );
-  test('a date without a figure has no tint', dateLevel(undefined, []), null);
+    };
+    test(
+      'a date is tinted by the median level of its open headliners',
+      dateLevel(day, ['a', 'b', 'c', 'd', 'e']),
+      'moderate'
+    );
+    test('an even count takes the lower middle', dateLevel(day, ['a', 'b']), 'low');
+  }
+  test('a date without a level has no tint', dateLevel(undefined, []), null);
   test('two letters per park', Object.keys(names).map(parkInitials), Object.values(names));
 }
 

@@ -3108,7 +3108,7 @@
       "gridLabel": "Día de llegada y de salida",
       "wait": "espera más corta en las grandes atracciones unos {minutes} min",
       "waitLastYear": "el año pasado unos {minutes} min en las grandes atracciones",
-      "legend": "Debajo de cada fecha: la espera más corta en las grandes atracciones ese día, en minutos, en el parque con las colas más cortas, en el color de lo lleno que está ese parque ese día. Los parques que cierran antes no cuentan.",
+      "legend": "Debajo de cada fecha: la espera más corta en las grandes atracciones ese día, en minutos, en el parque con las colas más cortas; los parques que cierran antes no cuentan. Cada fecha lleva el color de lo llenos que están de media los grandes parques ese día.",
       "legendLastYear": "Las cifras en cursiva son días medidos el año pasado.",
       "pickArrival": "Toca tu día de llegada.",
       "pickDeparture": "Ahora tu día de salida.",
