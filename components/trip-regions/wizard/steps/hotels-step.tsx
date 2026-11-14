@@ -8,6 +8,7 @@ import { effectiveParks, setBaseArea, setMoveBuffer } from '@/lib/trip-regions/p
 import { DEFAULT_MOVE_BUFFERS } from '@/lib/trip-regions/plan-query';
 import { planStays } from '@/lib/trip-regions/plan-stays';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
+import { homeBases } from '@/lib/trip-regions/wizard-choices';
 import type { TripBase } from '@/lib/trip-regions/types';
 import { usePlanContext } from '../../planner/plan-context';
 import { PlanSegmented } from '../../planner/plan-controls';
@@ -19,15 +20,21 @@ import { AreaPicker } from './area-picker';
 /**
  * Hotels per city, in a region that sleeps in several (Japan, Paris): for each city the trip stays
  * in, its `stayNote` and its areas (`AreaPicker`), and the time a hotel change takes on top of the
- * ride where the trip changes hotels. Parky names the cities ("Where are you staying in Tokyo and
+ * ride where the trip changes hotels; until the plan answers, the cities are those nearest the
+ * trip's parks (`homeBases`). Parky names the cities ("Where are you staying in Tokyo and
  * Osaka?"), unless the step is drawn inside the Route of a short trip.
  */
 export function HotelsStep({ questions, merged }: WizardStepProps) {
   const t = useTranslations('tripPlanner.wizard.hotels');
-  const { region, state, locale } = usePlanContext();
+  const { region, state, locale, headliners } = usePlanContext();
   const plan = useStatePlan().data;
   const baseName = useBaseName();
-  const stays = plan ? planStays(plan).map((s) => s.base) : [];
+  const stays = plan
+    ? planStays(plan).map((s) => s.base)
+    : homeBases(
+        region.bases ?? [],
+        effectiveParks(state, headliners).map((p) => p.slug)
+      );
   const cities = (region.bases ?? []).filter(
     (b) =>
       b.hotelAreas.length > 0 &&

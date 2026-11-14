@@ -9,6 +9,7 @@
 import assert from 'node:assert/strict';
 import {
   areaWays,
+  homeBases,
   mapParks,
   pacePattern,
   restStreak,
@@ -94,6 +95,25 @@ assert.deepEqual(
   ],
   'more than four parks: one line per resort'
 );
+
+// ── Cities before the plan answers ───────────────────────────────────────────
+
+const BASES = [
+  {
+    key: 'tokyo',
+    parks: [
+      { slug: 'tokyo-disneyland', minutes: 10 },
+      { slug: 'fuji-q-highland', minutes: 110 },
+    ],
+  },
+  { key: 'fujikawaguchiko', parks: [{ slug: 'fuji-q-highland', minutes: 15 }] },
+  { key: 'osaka', parks: [{ slug: 'universal-studios-japan', minutes: 5 }] },
+];
+assert.deepEqual(homeBases(BASES, ['universal-studios-japan', 'tokyo-disneyland']), [
+  'tokyo',
+  'osaka',
+]);
+assert.deepEqual(homeBases(BASES, ['fuji-q-highland']), ['fujikawaguchiko'], 'the nearest base');
 
 // ── The map ──────────────────────────────────────────────────────────────────
 

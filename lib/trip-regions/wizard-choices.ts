@@ -1,6 +1,6 @@
 import { legMinutes } from './hub-data';
 import { findLeg } from './plan';
-import type { TripCalendarDay, TripLeg, TripRegion } from './types';
+import type { TripBase, TripCalendarDay, TripLeg, TripRegion } from './types';
 
 /**
  * The pure halves of the assistant's option steps (Hotel, Route, Hotels, Tempo, Abende): the day
@@ -113,6 +113,26 @@ export function mapParks(
       return leg !== null && legMinutes(leg) <= MAP_PARK_MINUTES;
     })
   );
+}
+
+/**
+ * The cities a trip will most likely sleep in before its plan has answered: for each of `parks` the
+ * base that reaches it soonest (`bases[].parks`), in the region's order. The Hotels step asks about
+ * these while the plan loads or when it failed, instead of showing nothing.
+ */
+export function homeBases(bases: readonly TripBase[], parks: readonly string[]): string[] {
+  const homes = new Set<string>();
+  for (const slug of parks) {
+    let best: { key: string; minutes: number } | null = null;
+    for (const base of bases) {
+      const minutes = base.parks.find((p) => p.slug === slug)?.minutes;
+      if (minutes !== undefined && (best === null || minutes < best.minutes)) {
+        best = { key: base.key, minutes };
+      }
+    }
+    if (best) homes.add(best.key);
+  }
+  return bases.filter((b) => homes.has(b.key)).map((b) => b.key);
 }
 
 /** A place on a schematic map: a hotel area or a park, by the API's coordinates. */
