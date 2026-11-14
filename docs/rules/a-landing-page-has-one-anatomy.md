@@ -12,8 +12,8 @@ and keeps its own hero.
 
 The sequence is head, intro, chapters, FAQ, next step, in that order. Hubs run all five; the other
 two kinds run the parts that apply, without reordering them. A trip hub's intro is the key at the
-top of its first chapter: its visitors came for the calendar, and a paragraph before it was the
-text nobody read ([the Orlando hub](../features/orlando-hub.md)).
+top of its calendar chapter, 02 after the planner's four steps: its visitors came for the calendar,
+and a paragraph before it was the text nobody read ([the Orlando hub](../features/orlando-hub.md)).
 
 - **One `<h1>`**, the one in the head, counted in the rendered DOM after hydration.
 - **One primary action on a hub**, in the hero's action slot (`data-landing-action`). The blog index

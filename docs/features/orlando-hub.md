@@ -1,9 +1,10 @@
 # The Orlando hub
 
-`/<locale>/orlando` and its month pages `/<locale>/orlando/<yyyy>/<m>`: which of Orlando's sixteen
-parks has the shortest lines on which day, a planner for a whole trip, the best time of year and the
-questions about the figure. Open this page before changing the hub's route, its chapters, the day sheet, its
-ways in or the data it reads. The trip planner in chapter 03 has its own page,
+`/<locale>/orlando` and its month pages `/<locale>/orlando/<yyyy>/<m>`: a landing page around the
+trip planner, then which of Orlando's sixteen parks has the shortest lines on which day, the resorts,
+the best time of year and the questions about the figure. Every region's hub is built the same way
+from its registry entry. Open this page before changing the hub's route, its chapters, its two
+states, the day sheet, its ways in or the data it reads. The trip planner in chapter 01 has its own page,
 [orlando-planner](orlando-planner.md); the API contract is the API's
 `docs/frontend/trip-regions.md` (and `trip-regions-when.md` for `/when`).
 
@@ -81,13 +82,13 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 
 ## Simple first, more on request
 
-| Level | What                        | Where                                                                                   |
-| ----- | --------------------------- | --------------------------------------------------------------------------------------- |
-| 0     | what the page is for        | the head: the question, one line, „Reise planen“ and „Zum Kalender“                     |
-| 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead   |
-| 1     | the overview                | the matrix or the day list, minutes only; three marks and the colour line; lanes closed |
-| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides        |
-| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date            |
+| Level | What                        | Where                                                                                      |
+| ----- | --------------------------- | ------------------------------------------------------------------------------------------ |
+| 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks |
+| 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead      |
+| 1     | the overview                | the matrix or the day list, minutes only; three marks and the colour line; lanes closed    |
+| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides           |
+| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date               |
 
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
 welchem Tag?“ as its big one), the lead, the two buttons and the answer; the calendar's first day
@@ -99,11 +100,47 @@ Orlando, the day trips) stays out. No crowd badge: beside "best park" it read as
 Its second row is each of those groups' quietest day in the window, a date said once where they
 share it.
 
+## Two states
+
+The hub is a landing page until it has a plan (`HubTripProvider`,
+`components/trip-regions/hub/hub-trip-state.tsx`; the rules are pure in
+`lib/trip-regions/hub-trip.ts` and pinned in `pnpm test:orlando-hub`).
+
+| State        | When                                                                           | Head                                                                                           | Chapter 01                      | Calendar, resorts      |
+| ------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------- |
+| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                            | the four steps and Parky's line | open                   |
+| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt“ | „Deine Reise“ and the planner   | one line each, to open |
+
+- **The server always renders the landing page.** The plan exists only in the browser, so the
+  provider reads the query after hydration (`useMounted`); a crawler and a page without script get
+  the landing page with every link open. The swap happens in chapter 01 and below.
+- **A remembered plan comes back.** On a visit without any query, the trip this browser remembers
+  (`remembered-trip.ts`) goes back into the address bar, once, if it has not ended in the region's
+  today (`restorableTrip`); the planner reads it as a link from outside. A query of its own
+  (`?parks=` from a park's tile) keeps its intent and restores nothing.
+- **The planner's inline view shows only with something to show** (dates or a `when=` search,
+  `HubPlannerOnly`): the assistant is a dialog outside that box, and its empty state would repeat
+  the four steps.
+- **Every start goes through one place**, `startPlanner` in `hub-hero-action.tsx`:
+  `tripPlannerUi.openStart(source)` with `hero` (the head), `landing` (chapter 01, the closing
+  call) or `restart` („Neue Reise planen“, which first clears the plan through
+  `tripPlannerBridge.apply(region, '')`). Each counts as `trip_hub_action`.
+
 ## Chapters
 
-Each chapter opens with its heading and then the thing itself, no introduction.
+Each chapter opens with its heading and then the thing itself.
 
-1. **01 Die nächsten 30 Tage** (`HubCalendar`, client; on a month page „Tag für Tag im <month>“). The
+1. **01 So plant der Reiseplaner deine Reise** (`PlannerChapterSlot`, `id="planner"`, with a plan
+   „Deine Reise“). On the landing page `HubHowItWorks`: four steps (dates; a few questions, all
+   optional; the plan day by day; changing it, with Parky too), each a screenshot from the region's
+   `hub.howItWorks` in the page's language (`<base>-<locale>`, else `-en`, else `-de`,
+   `hubShot` in `lib/trip-regions/hub-media.ts`), an `<h3>` and a sentence; swiped sideways on a
+   phone, four columns from `md`. Under them Parky's line with „Reise planen“ and „Lieber im Chat“
+   (`ParkyInterviewStart` with its `action`; without Parky the button stays). The planner itself is
+   [orlando-planner](orlando-planner.md)'s; the screenshots are the media database's
+   (`public/media/reiseplaner/`), with their alt texts and focus in the sidecars.
+2. **02 Die nächsten 30 Tage** (`HubCalendar`, client; on a month page „Tag für Tag im <month>“),
+   with one line under the title: where the plan gets its days from. The
    key comes first (`HubLegend`, handed in as `legend`): the peak wait, the ring and the hatching,
    and one line for the colour; under „So liest du den Kalender“ the early close, „Punkt oder leer:
    noch keine Öffnungszeiten“ and last year. A phone gets the resort filter as one row that scrolls
@@ -120,14 +157,20 @@ Each chapter opens with its heading and then the thing itself, no introduction.
    open `GET /v1/trip-regions/:region/accuracy`, the minutes rounded. The route starts that read
    before the others, bounded to 1.5 s (`withSeedTimeout`), and the line awaits it in its own
    `<Suspense>`, so a slow answer never holds the calendar; `forecastAccuracy: null` (too few
-   measured days) or a failed read draws nothing. Its link opens the accuracy question in chapter 04
-   (`FaqLink`, `TRIP_ACCURACY_ID`). Then the month
-   index (`HubMonthIndex`, a labelled `<nav>` with the park calendar's chips, all twelve months)
-   and each park's crowd calendar (`HubParkIndex`, a labelled `<nav>`, „<park> Andrang-Kalender“).
-2. **02 Deine Reise planen**: `PlannerChapterSlot`, `id="planner"`, where `TripRegionPlanner`
-   mounts. Empty until the visitor gives dates. The planner itself is
-   [orlando-planner](orlando-planner.md)'s.
-3. **03 Beste Reisezeit für Orlando <year>** (`HubWhen`): a teaser of the best-time pages, drawn only
+   measured days) or a failed read draws nothing. Its link opens the accuracy question in chapter 05
+   (`FaqLink`, `TRIP_ACCURACY_ID`). Then the month index (`HubMonthIndex`, a labelled `<nav>` with
+   the park calendar's chips, all twelve months). With a plan the body folds into „Kalender für alle
+   16 Parks, Tag für Tag“ (`HubPlanFold`).
+3. **03 Die Resorts rund um Orlando** (`HubResorts`): one card per API group, in the order of the
+   region's `hub.resorts` (a group it does not list follows): the photo (`hub.resorts[].photo`, else
+   the region's Parky picture `hub.scene`) with the name over it, two sentences
+   (`tripRegions.<slug>.hub.resorts.<group>.lead`), each park as a link to its crowd calendar
+   („<park> Andrang-Kalender“, the links `HubParkIndex` used to carry: every park with quiet days in
+   the window, every headliner when `/best-days` fails) and one sentence on where to stay (`.stay`).
+   A card without its words keeps its name and links. Every sentence is a fact of the API (parks,
+   water parks, perks, hotel areas, `stayNote`, travel legs) or of the region's existing copy;
+   nothing is invented for a card. With a plan the chapter folds into the resorts' names.
+4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen`): a teaser of the best-time pages, drawn only
    for a region with best-time pages and its words for them. It sends the best-time page's own
    query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of the trip's length), so
    both read one cached answer. The three quietest 10-day windows for the seven headliner parks
@@ -135,7 +178,7 @@ Each chapter opens with its heading and then the thing itself, no introduction.
    (`?from=&to=#planner`, `rel="nofollow"`), and the link to
    `tripRegionBestTimePath(region, locale)`. The year strip, the weeks and their questions are the
    best-time pages', so the two do not compete for one query.
-4. **04 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), ten questions, the method folded
+5. **05 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), ten questions, the method folded
    in, every answer built from the page's data or the region's words: first up to six on the
    window, in this order of worth (the quietest and busiest days per resort, the events with their
    nights and dates, the party nights, Epic Universe on weekends, the drive between the resorts
@@ -149,7 +192,9 @@ Each chapter opens with its heading and then the thing itself, no introduction.
    none, no chapter and no `FAQPage`. The facts behind the shared questions are pure functions in
    `lib/trip-regions/hub-facts.ts` (`weekdayFacts`, `usualHours`, `breakFacts`, `parkMeans`,
    `parkClosures`, each reading the forecast's days or, past it, last year's).
-5. **`LandingNextSteps`** „Reiseplaner für Orlando“: plan the trip, the best-time page.
+6. **The closing call** (`HubFinalCta`, a card with its `<h2>`): the region's Parky picture, one
+   line and „Reise planen“. Landing page only.
+7. **`LandingNextSteps`** „Reiseplaner für Orlando“: plan the trip, the best-time page.
 
 A month page asks only about its month: its quietest and busiest days, its events, its party
 nights, its weekdays, its breaks and holidays, Epic Universe on its weekends and its usual hours,
@@ -183,14 +228,18 @@ written into the copy; a change to the region or a new matrix is a reason to re-
   events without offers, and an `expected` season is no announcement
   ([analysis](../seo/analysis.md#no-event-from-the-show-list)).
 - Everything below the answer that is "more" is a `<details>` or a hidden tab panel, so it is in the
-  served HTML. The hub and the month pages are in `app/sitemap.ts` with hreflang and no `lastmod`: each forecast
+  served HTML. The landing chapters are Server Components: the four steps with their screenshots as
+  `<img>` with alt text, the resorts with their links. The served HTML is always the landing page,
+  so no plan, a folded chapter or a hidden step reaches a crawler. The planner comes before the
+  calendar; the answer stays in the first screen. The hub and the month pages are in `app/sitemap.ts` with hreflang and no `lastmod`: each forecast
   warmup rebuilds every month at once, a stamp rather than an observed change
   ([a lastmod is observed](../rules/a-lastmod-is-observed-never-stamped.md)).
-- Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar", `HubParkIndex`; every
-  headliner park when `/best-days` fails, so a failed read never takes the links away) and,
+- Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar", in its resort's card
+  in chapter 03, `HubResorts`; every headliner park when `/best-days` fails, so a failed read never
+  takes the links away) and,
   from the first answer, the picked parks' calendars; park pages and calendars → the planner (the
   band, `rel="nofollow"` since it carries a plan); every page → `/orlando#planner` (the footer);
-  month ↔ month; hub → the best-time pages (chapter 03 and the band); hub → the region's travel
+  month ↔ month; hub → the best-time pages (chapter 04 and the band); hub → the region's travel
   guide, the band's last destination, found by the post's `translationKey` in the region's
   `regionGuide` and drawn only while the post is served, so a draft waiting for its region's
   `live` costs no 404; the guide links back to the hub in its intro. The day planner is linked from
@@ -199,9 +248,11 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 ## Analytics
 
 What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
-for the head's two ways in (`plan`, `calendar`, on the hub or a month), `internal_link_clicked`
-from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the park
-index), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
+for the head's two ways in (`plan`, `calendar`, on the hub or a month) and for the landing's
+„Reise planen“ in chapter 01 and the closing call (`plan`); `trip_planner_started` tells them apart by
+its `source` (`hero`, `landing`, `restart`), `internal_link_clicked`
+from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts'
+park links), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
 `trip_accuracy_opened {surface: hub}` for the accuracy line, and `faq_opened` with the question's
 message `key` beside its place, since the questions shown depend on the data. Page types for hub,
 month and best-time pages are the analytics core's (`sitePageTypeOf`).

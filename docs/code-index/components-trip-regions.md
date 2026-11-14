@@ -86,6 +86,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub/hub-trip-state.tsx`](../../components/trip-regions/hub/hub-trip-state.tsx)
 
 - `HubTripProvider` _component_: The hub's state for everything below it: the trip the planner shows, or null for the landing page.
+- `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 01 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps, the closing band): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
 - `HubPlanFold` _component_: A chapter's body that folds into one line while the hub shows a plan (the calendar, the resorts): open on the landing page, which is the served HTML, so every link and day stays in it.
