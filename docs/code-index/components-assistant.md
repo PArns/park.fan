@@ -100,6 +100,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkyEyeWhite` _component_: One of Parky's open eyes, the white of it, round its centre on the x axis (`EYES`). The live Parky and his pictures draw the same eye, so a picture of him never looks like somebody else.
 - `ParkyPupil` _component_: The pupil of the eye at `x` with its glint, `dx` and `dy` off the middle: where a picture points his gaze (`LOOK_GAZE`), while the live Parky moves the group round it instead.
 
+### [`parky/holiday-parky.tsx`](../../components/assistant/parky/holiday-parky.tsx)
+
+- `HolidayParky` _component_: Parky in his 48-unit space, standing on the scene's ground: `behind` is drawn before him (a board he leans on), `wear` right over his body (a necklace, a scarf, a sprig), `hands` last (what he holds in front).
+- `HolidayMitten` _component_: One of his hands: a round mitten in his own colours, as the umbrella's in `looks.tsx`.
+- `HolidayGround` _component_: His body's gradient, blue to green, under the id a scene gives it.
+- `HolidaySceneSvg` _component_: A region scene's root: the 320 × 160 frame of `ParkyBreakScene` and the Orlando scene, filling its box from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's text.
+- `motionOnce` _function_: A scene's stylesheet from its moves: they play once each time the band shows and only where the reader allows motion, since the band is glass and nothing may run on under a `backdrop-filter`.
+- `cabinsOnRim` _function_: The centres of `count` cabins round a wheel's rim, the first at the top, as `CABINS` are.
+- Types: `HolidayEyes`, `HolidayMouth`
+
+### [`parky/japan-scene.tsx`](../../components/assistant/parky/japan-scene.tsx)
+
+- `ParkyJapanScene` _component_: The Japan scene, filling its box from the right edge (`xMaxYMid slice`).
+
 ### [`parky/looks.tsx`](../../components/assistant/parky/looks.tsx)
 
 - `ParkyLookHat` _component_: The season's hat, drawn in the Ferris wheel's place and, like it, behind the head. `still` keeps the pompom from bobbing, for a drawing inside a glass panel, which no endless animation may run in.
@@ -117,6 +131,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkyOrlandoScene` _component_: The Orlando scene, filling its box from the right edge (`xMaxYMid slice`).
 
+### [`parky/paris-scene.tsx`](../../components/assistant/parky/paris-scene.tsx)
+
+- `ParkyParisScene` _component_: The Paris scene, filling its box from the right edge (`xMaxYMid slice`).
+
 ### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
 
 - `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
@@ -129,6 +147,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `ParkySpotlight` _component_: The stage a show puts behind Parky for `applause`: a spotlight cone from above with its pool of light at his feet, a red curtain's edge on either side and a few sparkles. Drawn behind the body, so he stands in the light.
 - `ParkyMap` _component_: A park map held low in front of Parky: three panels, the middle one with a lake and a dot where he is. In the `map` moment the side panels unfold and the dot pulses; `still` draws it unfolded and quiet, for a picture rather than an act.
 - `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
+
+### [`parky/southern-california-scene.tsx`](../../components/assistant/parky/southern-california-scene.tsx)
+
+- `ParkySouthernCaliforniaScene` _component_: The Southern California scene, filling its box from the right edge (`xMaxYMid slice`).
 
 ### [`parky/use-gaze.ts`](../../components/assistant/parky/use-gaze.ts)
 
