@@ -19,7 +19,11 @@ export interface HubPhoto {
  * the catalog no longer has it. SERVER ONLY: the catalog is too large for a Client Component.
  * Without a focus the frame keeps `fallbackPosition` (a screenshot's top, a photo's middle).
  */
-export function hubPhoto(id: string, locale: string, fallbackPosition = '50% 50%'): HubPhoto | null {
+export function hubPhoto(
+  id: string,
+  locale: string,
+  fallbackPosition = '50% 50%'
+): HubPhoto | null {
   const image = getMediaImage(id);
   if (!image) return null;
   return {

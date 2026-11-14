@@ -72,7 +72,13 @@ export function HubStateSwitch({ landing, plan }: { landing: ReactNode; plan: Re
  * What only the landing page shows (the four steps, the closing band): hidden while the hub shows
  * a plan, never unmounted, so the server's markup stays the same tree.
  */
-export function HubLandingOnly({ children, className }: { children: ReactNode; className?: string }) {
+export function HubLandingOnly({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   return (
     <div hidden={useHubTrip() !== null} className={className}>
       {children}

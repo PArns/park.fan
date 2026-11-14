@@ -36,7 +36,10 @@ export async function HubHowItWorks({
         {HUB_STEPS.map((step, i) => {
           const shot = hubShot(shots[i], locale);
           return (
-            <li key={step} className="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none">
+            <li
+              key={step}
+              className="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none"
+            >
               <figure className="space-y-3">
                 <div className="border-border/60 bg-muted/40 aspect-[4/3] overflow-hidden rounded-2xl border shadow-sm">
                   {shot && (

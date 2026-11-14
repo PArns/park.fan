@@ -37,6 +37,7 @@ import {
 import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
 import { flatStretch } from '../lib/trip-regions/best-time.ts';
 import { breakFacts, isoWeekday, usualHours, weekdayFacts } from '../lib/trip-regions/hub-facts.ts';
+import { hubTripOf, restorableTrip } from '../lib/trip-regions/hub-trip.ts';
 import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
 
 const fixture = (name) =>
@@ -411,6 +412,27 @@ test('school breaks run as named stretches, holidays by name, with the waits on 
     facts2?.holidays.map((h) => h.name),
     ['New Year’s Day']
   );
+});
+
+test('the hub shows a plan only for a query with both dates in order', () => {
+  assert.deepEqual(hubTripOf('from=2026-12-06&to=2026-12-13&hotel=disney'), {
+    from: '2026-12-06',
+    to: '2026-12-13',
+  });
+  assert.equal(hubTripOf('when=10&parks=epcot'), null);
+  assert.equal(hubTripOf('from=2026-12-06'), null);
+  assert.equal(hubTripOf('from=2026-12-13&to=2026-12-06'), null);
+  assert.equal(hubTripOf('from=6.12.2026&to=13.12.2026'), null);
+});
+
+test('a remembered trip comes back on a bare visit, before it has ended', () => {
+  const kept = 'from=2026-12-06&to=2026-12-13';
+  assert.equal(restorableTrip('', kept, '2026-11-14'), kept);
+  assert.equal(restorableTrip('', kept, '2026-12-13'), kept);
+  assert.equal(restorableTrip('', kept, '2026-12-14'), null);
+  assert.equal(restorableTrip('parks=epcot', kept, '2026-11-14'), null);
+  assert.equal(restorableTrip('', 'when=10', '2026-11-14'), null);
+  assert.equal(restorableTrip('', null, '2026-11-14'), null);
 });
 
 console.log(`\n${passed} passed`);

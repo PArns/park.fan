@@ -32,9 +32,7 @@ export async function HubFinalCta({
         className="border-border/60 bg-card grid overflow-hidden rounded-2xl border shadow-sm md:grid-cols-[1fr_minmax(0,24rem)] md:items-center"
       >
         <div className="space-y-3 p-6 sm:p-8">
-          <h2 className="text-xl font-semibold text-balance sm:text-2xl">
-            {t('finalCta.title')}
-          </h2>
+          <h2 className="text-xl font-semibold text-balance sm:text-2xl">{t('finalCta.title')}</h2>
           <p className="text-muted-foreground leading-relaxed">{t('finalCta.text')}</p>
           <HubPlanAction
             href={planHref}
@@ -51,7 +49,7 @@ export async function HubFinalCta({
             width={photo.width}
             height={photo.height}
             sizes="(max-width: 768px) 100vw, 384px"
-            className="max-md:order-first aspect-[2/1] size-full object-cover"
+            className="aspect-[2/1] size-full object-cover max-md:order-first"
             style={{ objectPosition: photo.position }}
           />
         )}

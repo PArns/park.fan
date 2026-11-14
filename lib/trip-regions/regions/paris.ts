@@ -49,7 +49,10 @@ export const PARIS: TripRegionConfig = {
       'reiseplaner/wochenansicht',
       'reiseplaner/tickets-uk',
     ],
-    resorts: [{ group: 'disneyland-paris', photo: 'disneyland-park/background' }, { group: 'parc-asterix' }],
+    resorts: [
+      { group: 'disneyland-paris', photo: 'disneyland-park/background' },
+      { group: 'parc-asterix' },
+    ],
     scene: 'reiseplaner/parky-paris-tag',
   },
   bestTime: [

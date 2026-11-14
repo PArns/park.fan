@@ -20,11 +20,7 @@ type HubPage = 'hub' | 'month';
  * through `tripPlannerUi.openStart()`, which the mounted planner answers, so the assistant opens
  * on its first step once it answers that signal. Counted as `trip_hub_action`.
  */
-function startPlanner(
-  event: MouseEvent<HTMLAnchorElement>,
-  region: string,
-  page: HubPage
-): void {
+function startPlanner(event: MouseEvent<HTMLAnchorElement>, region: string, page: HubPage): void {
   trackTripEvent(region, 'trip_hub_action', { action: 'plan', page });
   if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
   event.preventDefault();
@@ -167,9 +163,7 @@ export function HubHeroActions({
         )}
       </div>
       <p className="text-muted-foreground text-sm">
-        {trip
-          ? t('remembered', { range: formatDateRange(trip.from, trip.to, locale) })
-          : t('note')}
+        {trip ? t('remembered', { range: formatDateRange(trip.from, trip.to, locale) }) : t('note')}
       </p>
     </div>
   );
