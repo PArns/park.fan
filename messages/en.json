@@ -3919,6 +3919,9 @@
       "showPlan": "See the plan",
       "hotel": {
         "lead": "A resort hotel gets you into the parks earlier.",
+        "leadNone": "Here no hotel gets you into the parks earlier. The hotel decides how far you have to go.",
+        "noEarly": "No early entry",
+        "hintNoEarly": "{hint}, no early entry",
         "area": "Which area?",
         "areaLead": "The minutes on the cards are the ways to your parks.",
         "areaOfHotel": "Your hotel is in {area}, so that area is already chosen."
@@ -4229,8 +4232,7 @@
             "disney_deluxe": "Early Entry, plus Extended Evening Hours on some nights",
             "disney_springs": "Early Entry at the Disney parks, no Extended Evening Hours",
             "universal": "Early Park Admission, an hour before opening",
-            "universal_premier": "Early Park Admission, and Express at Universal Studios and Islands of Adventure",
-            "offsite": "No early entry"
+            "universal_premier": "Early Park Admission, and Express at Universal Studios and Islands of Adventure"
           },
           "fireworks": "Magic Kingdom fireworks",
           "fireworksWantHint": "Your Magic Kingdom days avoid party nights, when day guests have to leave early.",
@@ -4579,7 +4581,7 @@
             "offsite": "Other hotel"
           },
           "hotelHint": {
-            "disney": "Disneyland Hotel, Grand Californian or Pixar Place: a walk to both parks, no early entry"
+            "disney": "Disneyland Hotel, Grand Californian or Pixar Place: a walk to both parks"
           },
           "fireworks": "Night shows",
           "fireworksWantHint": "Your park days avoid party nights, when day guests have to leave early.",

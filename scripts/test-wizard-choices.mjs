@@ -1,6 +1,6 @@
 /**
  * The assistant's option steps draw what the region's data says (`lib/trip-regions/wizard-choices.ts`):
- * the Tempo cards' day patterns, an area card's ways to the trip's parks, which parks a city's map
+ * what the Hotel step says of getting in early, the Tempo cards' day patterns, an area card's ways to the trip's parks, which parks a city's map
  * shows, the map's places kept apart inside their box, and the fact on a travel day's card.
  *
  * Pure local data, no server, no network. Run: pnpm test:wizard-choices
@@ -10,6 +10,7 @@ import assert from 'node:assert/strict';
 import {
   areaWays,
   homeBases,
+  hotelEarlyAccess,
   mapParks,
   pacePattern,
   restStreak,
@@ -18,6 +19,34 @@ import {
 } from '../lib/trip-regions/wizard-choices.ts';
 
 const bits = (pattern) => pattern.map((park) => (park ? '#' : '.')).join('');
+
+// ── Hotel: the lead and the cards from the same perks ──────────────────────
+
+// Southern California as the API sends it: Disneyland's hotels have no early slot.
+const california = hotelEarlyAccess([
+  { key: 'disney', perks: [] },
+  { key: 'offsite', perks: [] },
+]);
+assert.equal(california?.lead, 'none', 'no hotel with an early slot: the lead promises none');
+assert.equal(california?.early.has('disney'), false, 'and the Disney card says it has none');
+const orlando = hotelEarlyAccess([
+  { key: 'disney', perks: ['early_entry'] },
+  { key: 'disney_deluxe', perks: ['early_entry', 'extended_evening'] },
+  { key: 'universal_premier', perks: ['early_park_admission', 'express_included'] },
+  { key: 'offsite', perks: [] },
+]);
+assert.equal(orlando?.lead, 'early', 'Orlando: a resort hotel gets you in early');
+assert.deepEqual(
+  [...(orlando?.early ?? [])],
+  ['disney', 'disney_deluxe', 'universal_premier'],
+  'every resort hotel with a slot, never off-site'
+);
+assert.equal(
+  hotelEarlyAccess([{ key: 'park_hotel', perks: ['express_included'] }])?.lead,
+  'none',
+  'Express is no early slot'
+);
+assert.equal(hotelEarlyAccess(undefined), null, 'without perk data the step claims nothing');
 
 // ── Tempo ────────────────────────────────────────────────────────────────────
 

@@ -4,6 +4,7 @@ import { useId } from 'react';
 import { useTranslations } from 'next-intl';
 import { BedDouble, Castle, Globe, House, type LucideIcon } from 'lucide-react';
 import { chooseHotel, effectiveHotel, effectiveParks } from '@/lib/trip-regions/plan';
+import { hotelEarlyAccess } from '@/lib/trip-regions/wizard-choices';
 import { WizardOptionCard, WizardOptionGroup } from '@/components/planner/wizard-option-card';
 import { usePlanContext } from '../../planner/plan-context';
 import { useAreaName } from '../../planner/plan-place-words';
@@ -21,8 +22,9 @@ function hotelIcon(key: string): LucideIcon {
 /**
  * Hotel, in a region that sleeps in one place (Orlando, California): the hotel kinds as cards with
  * the line each already has (`hotelHint`), then the area with its ways and the map (`AreaPicker`).
- * Choosing a hotel chooses its area where none is set yet (`chooseHotel`), and the area's lead says
- * so.
+ * Whether a hotel gets you in early, in the lead and on a card without an early slot, comes from the
+ * region's perk data (`hotelEarlyAccess`), never from the region's lines. Choosing a hotel chooses
+ * its area where none is set yet (`chooseHotel`), and the area's lead says so.
  */
 export function HotelStep({ questions, merged, askId }: WizardStepProps) {
   const t = useTranslations('tripPlanner.wizard.hotel');
@@ -35,12 +37,22 @@ export function HotelStep({ questions, merged, askId }: WizardStepProps) {
   const kinds = hotels.filter(({ key }) => tRegion.has(`hotelLabel.${key}`));
   const ofHotel = hotels.find((kind) => kind.key === hotel)?.area;
   const parks = effectiveParks(state, headliners).map((p) => p.slug);
+  const access = hotelEarlyAccess(region.hotels);
+  const hintOf = (key: string): string | undefined => {
+    const own = tRegion.has(`hotelHint.${key}`) ? tRegion(`hotelHint.${key}`) : undefined;
+    if (!access || access.early.has(key)) return own;
+    return own ? t('hintNoEarly', { hint: own }) : t('noEarly');
+  };
 
   return (
     <div className="flex flex-col gap-5" data-wizard-hotel="">
       {questions.includes('hotel') && (
         <div className="flex flex-col gap-3">
-          {!merged && <p className="text-muted-foreground text-sm">{t('lead')}</p>}
+          {!merged && access && (
+            <p className="text-muted-foreground text-sm">
+              {t(access.lead === 'early' ? 'lead' : 'leadNone')}
+            </p>
+          )}
           <WizardOptionGroup labelledBy={askId} className="grid-cols-2">
             {kinds.map(({ key }) => (
               <WizardOptionCard
@@ -50,7 +62,7 @@ export function HotelStep({ questions, merged, askId }: WizardStepProps) {
                 checked={hotel === key}
                 onSelect={() => update((s) => chooseHotel(s, key, areaKeys, hotels))}
                 title={tRegion(`hotelLabel.${key}`)}
-                hint={tRegion.has(`hotelHint.${key}`) ? tRegion(`hotelHint.${key}`) : undefined}
+                hint={hintOf(key)}
                 data-wizard-hotel-kind={key}
               />
             ))}

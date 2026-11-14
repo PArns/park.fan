@@ -3919,6 +3919,9 @@
       "showPlan": "Vedi il piano",
       "hotel": {
         "lead": "Con un hotel del resort entri prima nei parchi.",
+        "leadNone": "Qui nessun hotel ti fa entrare prima nei parchi. L’hotel decide quanto sono lunghi i tuoi tragitti.",
+        "noEarly": "Nessun ingresso anticipato",
+        "hintNoEarly": "{hint}, senza ingresso anticipato",
         "area": "In quale zona?",
         "areaLead": "I minuti sulle schede sono i tragitti verso i tuoi parchi.",
         "areaOfHotel": "Il tuo hotel è nella zona {area}, quindi è già scelta."
@@ -4229,8 +4232,7 @@
             "disney_deluxe": "Early Entry e alcune sere Extended Evening Hours",
             "disney_springs": "Early Entry nei parchi Disney, senza Extended Evening Hours",
             "universal": "Early Park Admission, un’ora prima dell’apertura",
-            "universal_premier": "Early Park Admission ed Express a Universal Studios e Islands of Adventure",
-            "offsite": "Nessun ingresso anticipato"
+            "universal_premier": "Early Park Admission ed Express a Universal Studios e Islands of Adventure"
           },
           "fireworks": "Fuochi d’artificio di Magic Kingdom",
           "fireworksWantHint": "I tuoi giorni a Magic Kingdom evitano le serate di festa, quando i visitatori giornalieri devono uscire prima.",
@@ -4579,7 +4581,7 @@
             "offsite": "Altro hotel"
           },
           "hotelHint": {
-            "disney": "Disneyland Hotel, Grand Californian o Pixar Place: a piedi fino ai due parchi, senza ingresso anticipato"
+            "disney": "Disneyland Hotel, Grand Californian o Pixar Place: a piedi fino ai due parchi"
           },
           "fireworks": "Spettacoli serali",
           "fireworksWantHint": "I tuoi giorni al parco evitano le serate di festa, quando i visitatori giornalieri devono uscire prima.",

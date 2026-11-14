@@ -3919,6 +3919,9 @@
       "showPlan": "Plan ansehen",
       "hotel": {
         "lead": "Mit einem Hotel der Resorts kommst du früher in die Parks.",
+        "leadNone": "Hier kommst du mit keinem Hotel früher in die Parks. Das Hotel entscheidet, wie weit deine Wege sind.",
+        "noEarly": "Kein früherer Einlass",
+        "hintNoEarly": "{hint}, ohne früheren Einlass",
         "area": "In welcher Gegend?",
         "areaLead": "Die Minuten auf den Karten sind die Wege zu deinen Parks.",
         "areaOfHotel": "Dein Hotel liegt in der Gegend {area}, deshalb ist sie schon gewählt."
@@ -4229,8 +4232,7 @@
             "disney_deluxe": "Early Entry, dazu an manchen Abenden Extended Evening Hours",
             "disney_springs": "Early Entry in den Disney-Parks, ohne Extended Evening Hours",
             "universal": "Early Park Admission, eine Stunde vor der Öffnung",
-            "universal_premier": "Early Park Admission und Express in Universal Studios und Islands of Adventure",
-            "offsite": "Kein früherer Einlass"
+            "universal_premier": "Early Park Admission und Express in Universal Studios und Islands of Adventure"
           },
           "fireworks": "Feuerwerk im Magic Kingdom",
           "fireworksWantHint": "Deine Tage im Magic Kingdom meiden Party-Abende, an denen Tagesgäste früher gehen müssen.",
@@ -4579,7 +4581,7 @@
             "offsite": "Anderes Hotel"
           },
           "hotelHint": {
-            "disney": "Disneyland Hotel, Grand Californian oder Pixar Place: zu Fuß zu beiden Parks, ohne früheren Einlass"
+            "disney": "Disneyland Hotel, Grand Californian oder Pixar Place: zu Fuß zu beiden Parks"
           },
           "fireworks": "Abendshows",
           "fireworksWantHint": "Deine Parktage meiden Party-Abende, an denen Tagesgäste früher gehen müssen.",
