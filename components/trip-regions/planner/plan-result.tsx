@@ -1,27 +1,52 @@
 'use client';
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore, type Ref } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type ReactNode,
+  type Ref,
+} from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { CalendarDays, LayoutList, Rows3, Undo2 } from 'lucide-react';
+import {
+  CalendarDays,
+  ChevronDown,
+  LayoutList,
+  MapPinned,
+  Route,
+  Rows3,
+  SlidersHorizontal,
+  Ticket,
+  Undo2,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { plannerPagePark, type PlannerPagePark } from '@/lib/planner/page-park';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { Button } from '@/components/ui/button';
 import {
   MAX_PLAN_VISITS,
   MAX_TRIP_DAYS,
+  fixedNights,
   lockOn,
+  parkDaysAvailable,
   planProblem,
   planRequestQuery,
   plannerParkOf,
+  setBaseNights,
+  setTripDates,
   swapLocks,
   toggleLock,
+  tripDates,
+  type PlanDay,
   type PlanLock,
   type TripPlan,
 } from '@/lib/trip-regions/plan';
@@ -30,12 +55,14 @@ import {
   editCost,
   ignoredLocks,
   lastYearReach,
+  parksLeftOut,
   planSavings,
   relaxedRules,
   unplacedParks,
 } from '@/lib/trip-regions/plan-copy';
 import { PlanRequestError } from '@/lib/trip-regions/plan-fetch';
 import { whenRequestQuery } from '@/lib/trip-regions/plan-when';
+import { planStays } from '@/lib/trip-regions/plan-stays';
 import { readTickets } from '@/lib/trip-regions/plan-query';
 import {
   hopperResorts,
@@ -50,14 +77,15 @@ import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanAgendaView } from './plan-agenda-view';
 import { PlanDaySheet } from './plan-day-sheet';
-import { PlanDayMarker, useDayParks, useEveningName } from './plan-day-bits';
 import { PlanKeep } from './plan-keep';
 import { PlanMonthView } from './plan-month-view';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
-import { useTripCalendar, useTripPlan, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
+import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
 import { PlanTicketsCard, type PlanEdit } from './plan-tickets-card';
+import { PlanTickets, type TicketStep } from './plan-tickets';
+import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
   tripPlanFailedProps,
@@ -78,9 +106,25 @@ const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as co
  * plan stays on screen, dimmed, while a change is asked for. In the When mode it is the search's
  * answer instead (`PlanWhenResult`).
  */
-export function PlanResult({ ref, edit }: { ref?: Ref<HTMLDivElement>; edit: PlanEdit }) {
+export function PlanResult({
+  ref,
+  edit,
+  step,
+  ticketsOpen,
+  onTicketsOpen,
+  defaultMonth,
+}: {
+  ref?: Ref<HTMLDivElement>;
+  edit: PlanEdit;
+  /** The ticket step, which the answer opens in place at a desk. */
+  step: TicketStep;
+  ticketsOpen: boolean;
+  onTicketsOpen: (open: boolean) => void;
+  defaultMonth?: string;
+}) {
   const t = useTranslations('tripPlanner');
-  const { state, headliners } = usePlanContext();
+  const { state, headliners, ticketStep, tickets: catalog } = usePlanContext();
+  const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
 
   return (
     <section
@@ -97,9 +141,31 @@ export function PlanResult({ ref, edit }: { ref?: Ref<HTMLDivElement>; edit: Pla
           <Button variant="outline" onClick={edit.dates} className="lg:hidden">
             {t('result.chooseDates')}
           </Button>
+          {/* A ticket bought for fixed days gives the trip its dates, so it may come first. */}
+          {ticketsAsked && <TicketsAsk edit={edit} />}
+          {ticketsOpen && (
+            <div className="self-stretch">
+              <DeskTickets
+                step={step}
+                defaultMonth={defaultMonth}
+                onClose={() => onTicketsOpen(false)}
+              />
+            </div>
+          )}
         </div>
       ) : (
-        <PlanAnswerSection edit={edit} />
+        <PlanAnswerSection
+          edit={edit}
+          tickets={
+            ticketsOpen ? (
+              <DeskTickets
+                step={step}
+                defaultMonth={defaultMonth}
+                onClose={() => onTicketsOpen(false)}
+              />
+            ) : null
+          }
+        />
       )}
     </section>
   );
@@ -165,14 +231,21 @@ function Failure({ error, onRetry }: { error: unknown; onRetry: () => void }) {
   );
 }
 
-function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
+function PlanAnswerSection({
+  edit,
+  tickets,
+}: {
+  edit: PlanEdit;
+  /** The ticket step in place at a desk, under the tickets or under what holds the plan back. */
+  tickets: ReactNode;
+}) {
   const t = useTranslations('tripPlanner');
   const { region, state, update, headliners, parkBySlug, tickets: catalog } = usePlanContext();
   const track = useTripEvents();
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
   const query = planRequestQuery(state, headliners, missed !== null);
-  const plan = useTripPlan(query);
+  const plan = useStatePlan();
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
   usePlanEvents(
@@ -199,6 +272,8 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
     [days, track]
   );
   const [history, setHistory] = useState<PlanLock[][]>([]);
+  // The last edit, when it was a swap: the edit bar says what moved where, not "pinned".
+  const [swapped, setSwapped] = useState<{ a: PlanDay; b: PlanDay } | null>(null);
   const [beacon, setBeacon] = useState<PlannerPagePark | null>(null);
 
   const withHistory = useCallback(
@@ -213,12 +288,24 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
     return (
       <div className="border-border/60 flex flex-col gap-2 rounded-2xl border p-5" role="status">
         <p className="text-sm">
-          {t(`problem.${problem}`, { days: MAX_TRIP_DAYS, max: MAX_PLAN_VISITS })}
+          {t(`problem.${problem}`, {
+            days: MAX_TRIP_DAYS,
+            max: MAX_PLAN_VISITS,
+            fixed: fixedNights(state),
+            nights: Math.max(0, tripDates(state).length - 1),
+          })}
         </p>
       </div>
     );
   }
-  if (missed) return <TicketProblemBox problem={missed} edit={edit} />;
+  if (missed) {
+    return (
+      <>
+        <TicketProblemBox problem={missed} edit={edit} />
+        {tickets}
+      </>
+    );
+  }
   if (!plan.data) {
     return plan.isError ? (
       <Failure error={plan.error} onRetry={() => void plan.refetch()} />
@@ -257,22 +344,26 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
       {plan.isError && <Failure error={plan.error} onRetry={() => void plan.refetch()} />}
 
       <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} edit={edit} />
+      {tickets}
 
       {state.locks.length > 0 && (
         <EditBar
           plan={data}
           best={unpinned.data ?? null}
+          swapped={swapped}
           canUndo={history.length > 0}
           onUndo={() => {
             const previous = history.at(-1);
             setHistory((h) => h.slice(0, -1));
+            setSwapped(null);
             if (previous) update((s) => ({ ...s, locks: previous }));
           }}
-          onRelease={() => withHistory((s) => ({ ...s, locks: [] }))}
+          onRelease={() => {
+            setSwapped(null);
+            withHistory((s) => ({ ...s, locks: [] }));
+          }}
         />
       )}
-
-      <PlanViews plan={data} calendar={calendar.data} onOpenDay={openDay} />
 
       <PlanKeep plan={data} calendar={calendar.data} />
 
@@ -283,11 +374,13 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
         onClose={() => setOpenDate(null)}
         onToggleLock={(d) => {
           track('trip_day_pinned', { pinned: lockOn(state, d.date) === null });
+          setSwapped(null);
           withHistory((s) => toggleLock(s, d));
         }}
         onSwap={(a, b) => {
           track('trip_day_swapped');
           setOpenDate(null);
+          setSwapped({ a, b });
           withHistory((s) => {
             const locks = swapLocks(s, a, b);
             return locks ? { ...s, locks } : s;
@@ -301,9 +394,11 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
 }
 
 /**
- * Level 0: the answer in sentences. The saving in minutes per ride against an average day of the
- * trip, with the forecast's own error where the API names it, or that the order barely matters;
- * what the plan had to give up; and one line per day, each opening the day.
+ * Level 0 and 1: the answer. The trip's dates and what they hold, the parks that did not fit, then
+ * the days themselves in the chosen view (the list, the Week or the Month), and under them one line:
+ * the peak wait on the planned days against the average of the trip's days, with how accurate that
+ * is one press away. Then what the plan had to give up, the three ways to change it, and the
+ * tickets: what to buy, or the visitor's own.
  */
 function PlanAnswer({
   plan,
@@ -318,12 +413,18 @@ function PlanAnswer({
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
-  const { locale, today, parkName, parkBySlug, state, tickets: catalog } = usePlanContext();
+  const {
+    locale,
+    today,
+    parkName,
+    parkBySlug,
+    state,
+    region,
+    tickets: catalog,
+    ticketStep,
+  } = usePlanContext();
   const resortWord = useResortWord();
   const dropped = useDroppedTickets();
-  const parksOf = useDayParks();
-  const eveningOf = useEveningName();
-  const savings = planSavings(plan.totals);
   const reach = today ? lastYearReach(plan.days, calendar?.meta.forecastUntil, today) : null;
   // One sentence per kind of split, the parks as a list: "EPCOT, Magic Kingdom and Epic Universe
   // get a second day." A split an owned ticket asked for says why.
@@ -373,6 +474,9 @@ function PlanAnswer({
       })
     ),
   ];
+  const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
+  const bases = (region.bases?.length ?? 0) > 0;
+  const stays = planStays(plan);
 
   return (
     <div className="flex flex-col gap-4">
@@ -386,29 +490,13 @@ function PlanAnswer({
         </h3>
         <p className="text-muted-foreground text-sm">
           {t('answer.counts', { parkDays: plan.totals.parkDays, restDays: plan.totals.restDays })}
+          {stays.length > 1 &&
+            ` · ${t('answer.moves', { cities: stays.length, moves: plan.totals.moves ?? stays.length - 1 })}`}
         </p>
       </div>
 
-      {savings && (
-        <div
-          className="border-border/60 bg-muted/30 flex flex-col gap-1 rounded-2xl border p-4"
-          data-plan-savings=""
-        >
-          <p className="text-base font-semibold">
-            {t('answer.yourDays', { minutes: savings.planned })}
-          </p>
-          <p className="text-sm">{t('answer.averageDay', { minutes: savings.average })}</p>
-          <p className="text-muted-foreground text-sm">
-            {savings.kind === 'flat'
-              ? t('answer.orderBarelyMatters')
-              : t('answer.saved', { minutes: savings.saved })}
-            {savings.expectedError !== null &&
-              ` ${t('answer.error', { minutes: savings.expectedError })}`}
-          </p>
-        </div>
-      )}
-
-      <PlanTicketsCard plan={plan} edit={edit} />
+      <LeftOut plan={plan} edit={edit} />
+      <StaySuggestion plan={plan} />
 
       {reach && (
         <p
@@ -420,6 +508,11 @@ function PlanAnswer({
           })}
         </p>
       )}
+
+      <PlanViews plan={plan} calendar={calendar} onOpenDay={onOpenDay} />
+
+      <PeakLine plan={plan} />
+
       {added.length > 0 && (
         <ul className="flex flex-col gap-1 text-sm">
           {added.map((line) => (
@@ -437,43 +530,231 @@ function PlanAnswer({
         </ul>
       )}
 
-      <ol className="flex flex-col lg:max-w-2xl" aria-label={t('answer.daysLabel')}>
-        {plan.days.map((day) => (
-          <li key={day.date}>
-            <button
-              type="button"
-              onClick={() => onOpenDay(day.date, 'list')}
-              className={cn(
-                'hover:bg-accent/40 flex min-h-11 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm transition-colors',
-                PLAN_FOCUS
-              )}
-            >
-              <span className="text-muted-foreground w-20 shrink-0 tabular-nums">
-                {formatParkDay(locale, day.date, { weekday: 'short', day: 'numeric' })}
-              </span>
-              <span className="min-w-0 flex-1 truncate">
-                {day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
-                {eveningOf(day) && (
-                  <span className="text-muted-foreground">
-                    {' '}
-                    {t('evening.plus', { name: eveningOf(day) ?? '' })}
-                  </span>
-                )}
-              </span>
-              {day.headlinerWait != null && (
-                <span className="text-muted-foreground shrink-0 tabular-nums">
-                  {t('answer.about', { minutes: day.headlinerWait })}
-                </span>
-              )}
-              <PlanDayMarker
-                day={day}
-                calendar={calendar}
-                className="hidden shrink-0 sm:inline-flex"
-              />
-            </button>
-          </li>
-        ))}
-      </ol>
+      <div className="flex flex-wrap gap-2" data-plan-changes="">
+        <Button variant="outline" size="sm" onClick={edit.parks}>
+          <MapPinned aria-hidden="true" />
+          {t('result.editParks')}
+        </Button>
+        {bases && edit.route && (
+          <Button variant="outline" size="sm" onClick={edit.route}>
+            <Route aria-hidden="true" />
+            {t('result.editRoute')}
+          </Button>
+        )}
+        <Button variant="outline" size="sm" onClick={edit.options}>
+          <SlidersHorizontal aria-hidden="true" />
+          {t('setup.fineTune')}
+        </Button>
+      </div>
+
+      <PlanTicketsCard
+        plan={plan}
+        edit={edit}
+        ask={ticketsAsked && state.tickets.length === 0 ? <TicketsAsk edit={edit} /> : null}
+      />
+    </div>
+  );
+}
+
+/**
+ * The one line under the days: the peak wait on them, and how much less it is than the average of
+ * the trip's days, or that the order barely matters. "How accurate is this?" holds the average
+ * itself and the forecast's measured error.
+ */
+function PeakLine({ plan }: { plan: TripPlan }) {
+  const t = useTranslations('tripPlanner.answer');
+  const savings = planSavings(plan.totals);
+  const id = useId();
+  const [open, setOpen] = useState(false);
+  if (!savings) return null;
+  return (
+    <div className="flex flex-col gap-1" data-plan-savings="">
+      <p className="text-sm">
+        {savings.kind === 'flat'
+          ? t('peakFlat', { minutes: savings.planned })
+          : t('peakSaved', { minutes: savings.planned, saved: savings.saved })}{' '}
+        <button
+          type="button"
+          aria-expanded={open}
+          aria-controls={id}
+          onClick={() => setOpen((v) => !v)}
+          className={cn(
+            'text-primary-ink inline-flex min-h-11 items-center gap-1 rounded-md px-1 font-medium underline-offset-4 hover:underline lg:min-h-0',
+            PLAN_FOCUS
+          )}
+        >
+          {t('accuracy')}
+          <ChevronDown
+            className={cn('size-3.5 transition-transform duration-200', open && 'rotate-180')}
+            aria-hidden="true"
+          />
+        </button>
+      </p>
+      <p id={id} hidden={!open} className="text-muted-foreground text-sm">
+        {t('averageDay', { minutes: savings.average })}
+        {savings.expectedError !== null && ` ${t('error', { minutes: savings.expectedError })}`}
+      </p>
+    </div>
+  );
+}
+
+/** "Already have tickets? Add them": the way to the ticket step once there is a plan. */
+function TicketsAsk({ edit }: { edit: PlanEdit }) {
+  const t = useTranslations('tripPlanner.tickets');
+  return (
+    <p className="flex flex-wrap items-center gap-x-2 text-sm" data-plan-tickets-ask="">
+      {t('later')}
+      <button
+        type="button"
+        onClick={() => edit.tickets()}
+        className={cn(
+          'text-primary-ink hover:bg-primary/10 -my-2 min-h-11 rounded-md px-2 font-medium transition-colors',
+          PLAN_FOCUS
+        )}
+      >
+        {t('enter')}
+      </button>
+    </p>
+  );
+}
+
+/** The ticket step in place at a desk, opened from the answer; a phone gets it as a sheet. */
+function DeskTickets({
+  step,
+  defaultMonth,
+  onClose,
+}: {
+  step: TicketStep;
+  defaultMonth?: string;
+  onClose: () => void;
+}) {
+  const t = useTranslations('tripPlanner');
+  const id = useId();
+  return (
+    <section
+      aria-labelledby={id}
+      tabIndex={-1}
+      data-plan-tickets-panel=""
+      className="border-border/60 bg-muted/30 hidden scroll-mt-16 flex-col gap-4 rounded-2xl border p-4 outline-none lg:flex"
+    >
+      <div className="flex items-center gap-2">
+        <Ticket className="text-primary-ink size-4 shrink-0" aria-hidden="true" />
+        <h4 id={id} className="min-w-0 flex-1 text-base font-semibold">
+          {t('tickets.yours')}
+        </h4>
+        <Button variant="outline" size="sm" onClick={onClose}>
+          {t('setup.done')}
+        </Button>
+      </div>
+      <PlanTickets step={step} defaultMonth={defaultMonth} wide />
+    </section>
+  );
+}
+
+/**
+ * The parks the trip had no day for, said in one sentence with the three ways to make room: a park
+ * on the travel days, other parks, a longer trip. The plan above it is the best of what fits.
+ */
+function LeftOut({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
+  const t = useTranslations('tripPlanner');
+  const { state, update, locale, parkName } = usePlanContext();
+  const left = parksLeftOut(plan);
+  if (left.length === 0) return null;
+  const length = tripDates(state).length;
+  const longer = Math.min(left.length, MAX_TRIP_DAYS - length);
+  const travelFree = state.arrival === 'free' || (length > 1 && state.departure === 'free');
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
+  return (
+    <div
+      className="border-crowd-high/40 flex flex-col items-start gap-3 rounded-2xl border p-4"
+      role="status"
+      data-plan-left-out=""
+    >
+      <p className="text-sm font-medium">
+        {t('answer.leftOut', {
+          parks: list.format(left.map(parkName)),
+          count: left.length,
+          days: parkDaysAvailable(state),
+        })}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {travelFree && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => update((s) => ({ ...s, arrival: 'park', departure: 'park' }))}
+          >
+            {t('answer.travelDays')}
+          </Button>
+        )}
+        <Button variant="outline" size="sm" onClick={edit.parks}>
+          {t('result.editParks')}
+        </Button>
+        {longer > 0 && state.from && state.to && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              update((s) => (s.from && s.to ? setTripDates(s, s.from, addDays(s.to, longer)) : s))
+            }
+          >
+            {t('answer.longer', { count: longer })}
+          </Button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+/**
+ * With nights the visitor fixed, the API's one-night change that saves most, in one sentence with
+ * "Plan it this way", which writes those nights.
+ */
+function StaySuggestion({ plan }: { plan: TripPlan }) {
+  const t = useTranslations('tripPlanner');
+  const { region, update, locale, parkName } = usePlanContext();
+  const baseName = useBaseName();
+  const suggestion = plan.meta.staySuggestion;
+  if (!suggestion) return null;
+  const order = (region.bases ?? []).map((b) => b.key);
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
+  const changes = list.format(
+    Object.entries(suggestion.nights).map(([base, count]) =>
+      t('route.stayShort', { city: baseName(base), count })
+    )
+  );
+  return (
+    <div
+      className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
+      role="status"
+      data-plan-stay-suggestion=""
+    >
+      <p className="min-w-0 flex-1 text-sm">
+        {t('answer.staySuggestion', {
+          changes,
+          minutes: Math.round(suggestion.savedMinutesPerRide),
+          park: parkName(suggestion.park),
+          date: formatParkDay(locale, suggestion.date, {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'short',
+          }),
+        })}
+      </p>
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={() =>
+          update((s) =>
+            Object.entries(suggestion.nights).reduce(
+              (next, [base, count]) => setBaseNights(next, base, count, order),
+              s
+            )
+          )
+        }
+      >
+        {t('answer.planThisWay')}
+      </Button>
     </div>
   );
 }
@@ -482,18 +763,49 @@ function PlanAnswer({
 function EditBar({
   plan,
   best,
+  swapped,
   canUndo,
   onUndo,
   onRelease,
 }: {
   plan: TripPlan;
   best: TripPlan | null;
+  /** The swap that was the last edit, said as one: what is on which day now. */
+  swapped: { a: PlanDay; b: PlanDay } | null;
   canUndo: boolean;
   onUndo: () => void;
   onRelease: () => void;
 }) {
   const t = useTranslations('tripPlanner.edit');
+  const tDay = useTranslations('tripPlanner.day');
+  const { locale, parkName } = usePlanContext();
   const cost = editCost(best?.totals ?? null, plan.totals);
+  const what = (d: PlanDay) =>
+    d.kind === 'rest' ? tDay('rest') : parkName(d.parks[0]?.slug ?? '');
+  const short = (date: string) => formatParkDay(locale, date, { weekday: 'short' });
+  if (swapped) {
+    return (
+      <div
+        className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
+        role="status"
+        data-plan-swapped=""
+      >
+        <p className="min-w-0 flex-1 text-sm">
+          {t('swapped', {
+            first: what(swapped.a),
+            firstDay: short(swapped.b.date),
+            second: what(swapped.b),
+            secondDay: short(swapped.a.date),
+          })}
+          {cost && ` ${t('swappedCost', { current: cost.current, best: cost.best })}`}
+        </p>
+        <Button variant="outline" size="sm" onClick={onUndo} disabled={!canUndo}>
+          <Undo2 aria-hidden="true" />
+          {t('undo')}
+        </Button>
+      </div>
+    );
+  }
   return (
     <div
       className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"

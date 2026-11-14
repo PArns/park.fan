@@ -27,7 +27,11 @@ export function useHopperWord(): (resort: string) => string {
   const tRegion = useTranslations('tripRegion.planner.tickets');
   const { ticketStep } = usePlanContext();
   const fallback = Object.values(ticketStep.hopperNames)[0];
-  return (resort) => tRegion(`hopperName.${ticketStep.hopperNames[resort] ?? fallback}`);
+  return (resort) => {
+    const key = `hopperName.${ticketStep.hopperNames[resort] ?? fallback}`;
+    // A region without a hopper of its own (no ticket step) says the resort's name.
+    return tRegion.has(key) ? tRegion(key) : resort;
+  };
 }
 
 /** The operator's product name without the versions in brackets the catalog lists. */

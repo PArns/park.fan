@@ -88,7 +88,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-agenda-view.tsx`](../../components/trip-regions/planner/plan-agenda-view.tsx)
 
-- `PlanAgendaView` _component_: The Agenda view: one card per day, at Level 1, which is three facts at most: the park, its minutes and one marker (an early close, a rest day, the hotel's early slot). Everything else is one press away in the day's sheet.
+- `PlanAgendaView` _component_: The list view, the days once: one row per day with three facts at most, the park, its minutes and one marker (an early close, the hotel's early slot, its evening), and a thin bar in the day's crowd tint.
+- `PlanListRow` _component_: One day of the list view.
 
 ### [`planner/plan-calendar-keys.tsx`](../../components/trip-regions/planner/plan-calendar-keys.tsx)
 
@@ -131,7 +132,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-find.tsx`](../../components/trip-regions/planner/plan-find.tsx)
 
-- `PlanDatesStep` _component_: Step 1, the dates, as a two-way choice: "I know my dates" (the range calendar) or "Find the best dates" (a period, a trip length, and if wanted only the school holidays of a region).
+- `PlanDatesStep` _component_: Step 1, the dates: the range calendar, and under it one quiet way to the other question, "No dates yet? Find the best time" (a period, a trip length, and if wanted only the school holidays of a region), with its way back.
 - `PlanFind` _component_: The When mode's inputs: the period chips (the next twelve months, next year and its seasons, or a range of the visitor's own), the trip length (3–21 days, 10 to start), and "only in our school holidays" with a region in the holiday data's …
 - `defaultSearchRange` _function_: The search the When mode opens on: the next twelve months.
 
@@ -150,27 +151,45 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-options.tsx`](../../components/trip-regions/planner/plan-options.tsx)
 
-- `PlanOptions` _component_: Fine-tune: everything the plan can be told beyond tickets, dates and parks, each with the default the API plans with already chosen, so nothing here is required.
-- `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "Fine-tune" says what the plan assumes without opening it.
+- `PlanOptions` _component_: More options: everything the plan can be told beyond dates and parks, each with the default the API plans with already chosen, so nothing here is required.
+- `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "More options" says what the plan assumes without opening it.
 
 ### [`planner/plan-parks.tsx`](../../components/trip-regions/planner/plan-parks.tsx)
 
-- `PlanParks` _component_: Which parks, and how many days each: the headliners by resort, each with a 0–3 stepper, and the water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel area and what their days hold.
+- `PlanParks` _component_: Which parks: one checkbox each, the headliners by resort and the water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel area and what their days hold.
+
+### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
+
+- `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
+- `useBaseName` _hook_: A base's name: "Tokio" in German.
+- `useGatewayName` _hook_: A gateway's short name: "Haneda", "Charles de Gaulle".
 
 ### [`planner/plan-result.tsx`](../../components/trip-regions/planner/plan-result.tsx)
 
 - `PlanResult` _component_: The planner's answer, below the setup. Empty, and saying so, until dates are chosen (or a search is set); then the plan from simple to detailed: the answer in sentences (Level 0), the Agenda, Week or Month view (Level 1), a day's sheet …
 
+### [`planner/plan-route.tsx`](../../components/trip-regions/planner/plan-route.tsx)
+
+- `PlanRoute` _component_: The Route: where the trip lands and where it leaves from, then the cities in between with their nights.
+- `usePlanRouteSetup` _hook_: The setup's Route in a region with bases (Japan, Paris): the step, its summary line and its rows under More options. `null` everywhere else, where the planner sleeps in one place.
+
 ### [`planner/plan-setup.tsx`](../../components/trip-regions/planner/plan-setup.tsx)
 
-- `PlanSetup` _component_: Tickets, Dates, Parks and Fine-tune. On a phone, summary rows that open one bottom sheet, walked Tickets → Dates → Parks → Plan (Tickets only while its question is open), with Fine-tune a row of its own nobody has to open.
+- `PlanSetup` _component_: Dates and Parks first, the only two things a plan needs, and the parks start chosen: the region's headliners.
 - `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
-- Types: `PlanSheetStep`
+- Types: `PlanSheetStep`, `PlanSetupRoute`
 
-### [`planner/plan-ticket-summary.tsx`](../../components/trip-regions/planner/plan-ticket-summary.tsx)
+### [`planner/plan-stay-band.tsx`](../../components/trip-regions/planner/plan-stay-band.tsx)
 
-- `useTicketSummary` _hook_: The Tickets row's line: "Already have tickets?" until answered, the tickets by name ("Disney 14-Day Magic Ticket · Universal 14-day ticket"), three or more counted by resort, the ticket the trip misses, or "No tickets entered" (with the …
-- Types: `TicketSummary`
+- `StayMarker` _component_: A stay's numbered marker: its place on the route, so colour never carries the stay alone.
+- `MoveIcon` _component_: The icon of a move's mode: a bus, a car, on foot, else a train (the Shinkansen, a line).
+- `PlanStayHeader` _component_: The list view's header of a stay: its marker, its city, its nights and its dates, a hairline to the right.
+- `PlanMoveRow` _component_: The list view's row of a move: the leg's dashed rail where a day's date stands, the mode and its length as a chip, the route and the typical times. It opens the day it belongs to.
+- `PlanStayBand` _component_: The Week view's stay band, over the day headers and aligned to the columns: two halves a day, the first the city the day starts in, the second the city it ends in, so a stay runs from the second half of its arrival day to the first half of …
+- `PlanMonthStayBand` _component_: The Month view's stay band for one date's cell, built here for the Month view to place along the cell's foot: the city slept in, its marker and name where a stay begins (`first`), and on a move day the cell split, the city left on the …
+- `useMoveWords` _hook_: How a move reads: its mode, its length, its times, its route, and the label a reader hears.
+- `stayTint` _function_: A stay's band tint by its number on the route.
+- `MOVE_INK` _const_: A move's ink, the leg chip's: dashed primary border, faint primary ground.
 
 ### [`planner/plan-ticket-words.tsx`](../../components/trip-regions/planner/plan-ticket-words.tsx)
 
@@ -187,8 +206,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-tickets.tsx`](../../components/trip-regions/planner/plan-tickets.tsx)
 
-- `PlanTickets` _component_: "Do you already have tickets?": the step before Dates and Parks.
-- `useTicketStep` _hook_: The ticket step's state. The URL holds only the complete tickets (`tickets=`); a ticket still being filled in, and the tickets of a "Not yet" that may turn back into "Yes", live here until the page is left.
+- `PlanTickets` _component_: The visitor's own tickets, asked for once there is a plan ("Already have tickets?" in the answer): the region's resorts, each with the operator's products as a list, the fields where a product varies, and its window in dates; the region's …
+- `useTicketStep` _hook_: The ticket step's state. The URL holds only the complete tickets (`tickets=`); a ticket still being filled in lives here until the page is left.
 - Types: `TicketAnswer`, `TicketStep`
 
 ### [`planner/plan-week-view.tsx`](../../components/trip-regions/planner/plan-week-view.tsx)
@@ -216,6 +235,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/use-trip-plan.ts`](../../components/trip-regions/planner/use-trip-plan.ts)
 
 - `useTripPlan` _hook_: The plan for a request query, asked once the controls have been still for `PLAN_DEBOUNCE_MS`.
+- `useStatePlan` _hook_: The plan for the planner's own state, the one the answer shows: also read by the setup's Route, which lists the plan's stays. One request either way, the cache's.
 - `useUnpinnedPlan` _hook_: The plan without the visitor's pins, for the edit bar's "best order" figure: the same query minus `lock`, which is usually the plan the visitor started from and still in the cache.
 - `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.

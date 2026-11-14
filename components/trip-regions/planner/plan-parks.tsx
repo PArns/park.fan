@@ -7,17 +7,17 @@ import { cn } from '@/lib/utils';
 import {
   effectiveParks,
   findLeg,
-  MAX_VISITS_PER_PARK,
   minimumVisits,
   parkDaysAvailable,
   setParkVisits,
-  setSplit,
   stepVisits,
   tripDates,
+  visitSteps,
 } from '@/lib/trip-regions/plan';
 import type { TripCalendar, TripRegionPark } from '@/lib/trip-regions/types';
+import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { usePlanContext } from './plan-context';
-import { PLAN_FOCUS, PlanCheckRow, PlanStepper } from './plan-controls';
+import { PLAN_FOCUS, PlanStepper } from './plan-controls';
 import { useTripCalendar } from './use-trip-plan';
 
 /**
@@ -43,10 +43,11 @@ function tripState(
 }
 
 /**
- * Which parks, and how many days each: the headliners by resort, each with a 0–3 stepper, and the
- * water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel
- * area and what their days hold. With "split my days for me" on (the default) a park nobody gave a
- * number reads "auto": the plan may give it a second day where the trip has room.
+ * Which parks: one checkbox each, the headliners by resort and the water parks, SeaWorld's parks and
+ * the day trips behind "More parks" with the drive from the hotel area and what their days hold. A
+ * chosen park has a stepper for its days: "1–2 days" until the visitor sets a number, which lets
+ * the plan give it a second day where the trip has room (the split, under More options). The line
+ * at the foot says whether the parks fit the trip's free days.
  */
 export function PlanParks() {
   const t = useTranslations('tripPlanner');
@@ -70,27 +71,27 @@ export function PlanParks() {
   const moreChosen = picks.filter((p) => !headliners.includes(p.slug)).length;
 
   const days = parkDaysAvailable(state);
-  const visits = minimumVisits(picks);
+  const over = Math.max(0, minimumVisits(picks) - days * (state.hop ? 2 : 1));
 
   const row = (park: TripRegionPark, extra: boolean) => {
     const pick = visitsOf(park.slug);
-    const count = pick ? (pick.visits ?? (state.split === 'auto' ? null : 1)) : 0;
-    const shown = count === null ? t('parks.auto') : count === 0 ? '0' : `${count}×`;
-    const set = (delta: 1 | -1) => {
-      const next = pick
-        ? stepVisits(pick.visits, delta, state.split)
-        : delta > 0
-          ? state.split === 'auto'
-            ? null
-            : 1
-          : 0;
-      update((s) => setParkVisits(s, park.slug, next, regionOrder, headliners));
-    };
+    const chosen = pick !== undefined;
+    const visits = pick?.visits ?? null;
+    const steps = visitSteps(state.split);
+    const at = steps.indexOf(visits ?? (state.split === 'auto' ? null : 1));
+    const shown =
+      visits === null && state.split === 'auto'
+        ? t('parks.auto')
+        : t('parks.days', { count: visits ?? 1 });
     const leg =
       extra && state.area ? findLeg(region.travel.legs, `hotel:${state.area}`, park.slug) : null;
     const status = extra ? tripState(calendar.data, park.slug, dates) : null;
     const line = [
-      leg ? t('parks.drive', { minutes: leg.minutes + (leg.transferMinutes ?? 0) }) : null,
+      leg
+        ? t(t.has(`parks.way.${leg.mode}`) ? `parks.way.${leg.mode}` : 'parks.way.other', {
+            minutes: leg.minutes + (leg.transferMinutes ?? 0),
+          })
+        : null,
       status?.kind === 'closed'
         ? status.season
           ? t('parks.closedSeason', { season: status.season })
@@ -99,42 +100,64 @@ export function PlanParks() {
           ? t('parks.noHours')
           : null,
     ].filter(Boolean);
+    const name = parkName(park.slug);
     return (
-      <li key={park.slug} className="flex min-h-14 items-center gap-3 py-1.5">
-        <span className="flex min-w-0 flex-1 flex-col">
-          <span
-            className={cn('text-sm leading-5 font-medium', count === 0 && 'text-muted-foreground')}
-          >
-            {parkName(park.slug)}
+      <li key={park.slug} className="flex min-h-14 items-center gap-2 py-1.5">
+        <label className="flex min-h-11 min-w-0 flex-1 cursor-pointer items-center gap-3">
+          <input
+            type="checkbox"
+            checked={chosen}
+            disabled={!live}
+            onChange={(event) => {
+              const on = event.currentTarget.checked;
+              update((s) => setParkVisits(s, park.slug, on ? null : 0, regionOrder, headliners));
+            }}
+            className={cn('accent-primary size-4 shrink-0', PLAN_FOCUS)}
+          />
+          <span className="flex min-w-0 flex-col">
+            <span
+              className={cn('text-sm leading-5 font-medium', !chosen && 'text-muted-foreground')}
+            >
+              {name}
+            </span>
+            {line.length > 0 && (
+              <span className="text-muted-foreground text-xs leading-snug">{line.join(' · ')}</span>
+            )}
           </span>
-          {line.length > 0 && (
-            <span className="text-muted-foreground text-xs leading-snug">{line.join(' · ')}</span>
-          )}
-        </span>
-        <PlanStepper
-          value={shown}
-          disabled={!live}
-          canDecrement={count !== 0}
-          canIncrement={count === null || count < MAX_VISITS_PER_PARK}
-          onDecrement={() => set(-1)}
-          onIncrement={() => set(1)}
-          decrementLabel={t('parks.fewer', { park: parkName(park.slug) })}
-          incrementLabel={t('parks.more', { park: parkName(park.slug) })}
-        />
+        </label>
+        {chosen && (
+          <PlanStepper
+            value={shown}
+            valueClassName="w-20"
+            disabled={!live}
+            canDecrement={at > 0}
+            canIncrement={at < steps.length - 1}
+            onDecrement={() =>
+              update((s) =>
+                setParkVisits(
+                  s,
+                  park.slug,
+                  stepVisits(visits, -1, s.split),
+                  regionOrder,
+                  headliners
+                )
+              )
+            }
+            onIncrement={() =>
+              update((s) =>
+                setParkVisits(s, park.slug, stepVisits(visits, 1, s.split), regionOrder, headliners)
+              )
+            }
+            decrementLabel={t('parks.fewer', { park: name })}
+            incrementLabel={t('parks.more', { park: name })}
+          />
+        )}
       </li>
     );
   };
 
   return (
     <div className="flex flex-col gap-3">
-      <PlanCheckRow
-        checked={state.split === 'auto'}
-        disabled={!live}
-        onChange={(on) => update((s) => setSplit(s, on ? 'auto' : 'fixed'))}
-        label={t('parks.split')}
-        hint={t('parks.splitHint')}
-      />
-
       {main.map(({ group, parks }) => (
         <section key={group.key} aria-label={group.name}>
           <h4 className="text-muted-foreground px-0.5 text-xs font-semibold tracking-wide uppercase">
@@ -144,56 +167,61 @@ export function PlanParks() {
         </section>
       ))}
 
-      <div className="border-border/60 rounded-xl border">
-        <button
-          type="button"
-          aria-expanded={moreOpen}
-          aria-controls={moreId}
-          onClick={() => setMoreOpen((open) => !open)}
-          className={cn(
-            'hover:bg-accent/60 flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2 text-left transition-colors',
-            PLAN_FOCUS
-          )}
-        >
-          <span className="flex min-w-0 flex-1 flex-col">
-            <span className="text-sm font-medium">{t('parks.moreParks')}</span>
-            <span className="text-muted-foreground text-xs">
-              {moreChosen > 0
-                ? t('parks.moreChosen', { count: moreChosen })
-                : tRegion('parks.moreHint')}
-            </span>
-          </span>
-          <ChevronDown
+      {more.length > 0 && (
+        <div className="border-border/60 rounded-xl border">
+          <button
+            type="button"
+            aria-expanded={moreOpen}
+            aria-controls={moreId}
+            onClick={() => setMoreOpen((open) => !open)}
             className={cn(
-              'size-4 shrink-0 transition-transform duration-200',
-              moreOpen && 'rotate-180'
+              'hover:bg-accent/60 flex min-h-11 w-full items-center gap-2 rounded-xl px-3 py-2 text-left transition-colors',
+              PLAN_FOCUS
             )}
-            aria-hidden="true"
-          />
-        </button>
-        <div id={moreId} hidden={!moreOpen} className="px-3 pb-2">
-          {more.map(({ group, parks }) => (
-            <section key={group.key} aria-label={group.name} className="pt-2">
-              <h4 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
-                {group.name}
-              </h4>
-              <ul className="divide-border/60 divide-y">{parks.map((p) => row(p, true))}</ul>
-            </section>
-          ))}
-          {state.area && (
-            <p className="text-muted-foreground pt-2 text-xs">
-              {t('parks.driveSource', { source: region.travel.attribution })}
-            </p>
-          )}
+          >
+            <span className="flex min-w-0 flex-1 flex-col">
+              <span className="text-sm font-medium">{t('parks.moreParks')}</span>
+              <span className="text-muted-foreground text-xs">
+                {moreChosen > 0
+                  ? t('parks.moreChosen', { count: moreChosen })
+                  : regionOrShared(tRegion, t, 'parks.moreHint')}
+              </span>
+            </span>
+            <ChevronDown
+              className={cn(
+                'size-4 shrink-0 transition-transform duration-200',
+                moreOpen && 'rotate-180'
+              )}
+              aria-hidden="true"
+            />
+          </button>
+          <div id={moreId} hidden={!moreOpen} className="px-3 pb-2">
+            {more.map(({ group, parks }) => (
+              <section key={group.key} aria-label={group.name} className="pt-2">
+                <h4 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+                  {group.name}
+                </h4>
+                <ul className="divide-border/60 divide-y">{parks.map((p) => row(p, true))}</ul>
+              </section>
+            ))}
+            {state.area && (
+              <p className="text-muted-foreground pt-2 text-xs">
+                {t('parks.driveSource', { source: region.travel.attribution })}
+              </p>
+            )}
+          </div>
         </div>
-      </div>
+      )}
 
       {dates.length > 0 && (
         <p
-          className={cn('text-sm', visits > days * (state.hop ? 2 : 1) && 'text-destructive')}
+          className={cn('text-sm', over > 0 && 'text-crowd-ink-high')}
           aria-live="polite"
+          data-plan-budget={over > 0 ? 'over' : 'fits'}
         >
-          {t('parks.budget', { visits, days })}
+          {over > 0
+            ? t('parks.budgetOver', { parks: picks.length, days, over })
+            : t('parks.budgetFits', { parks: picks.length, days })}
         </p>
       )}
     </div>

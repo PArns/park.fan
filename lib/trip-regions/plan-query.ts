@@ -49,6 +49,17 @@ export interface PlanTicket {
   start: string | null;
 }
 
+/**
+ * What the visitor fixed of one base (`bases=`, Japan and Paris): its nights (`0` no stay there, its
+ * parks as day trips; `null` a stay whose nights the plan picks) and its hotel area (`null`: none
+ * named, so no hotel perks and no drive times).
+ */
+export interface PlanBasePick {
+  key: string;
+  nights: number | null;
+  area: string | null;
+}
+
 /** A search range of the When mode, both ends included. */
 export interface PlanSearchRange {
   from: string;
@@ -93,6 +104,14 @@ export interface TripPlanState {
   evenings: boolean;
   split: 'auto' | 'fixed';
   locks: PlanLock[];
+  /** `bases=`: the stays the visitor fixed, in the region's base order. A region with bases only. */
+  bases: PlanBasePick[];
+  /** `startBase=`: the base of the gateway the trip lands at; `null`, the plan picks. */
+  startBase: string | null;
+  /** `endBase=`: the base of the gateway the trip leaves from. */
+  endBase: string | null;
+  /** `moveBuffer=`: minutes for a hotel change on top of the ride; `null`, the region's own. */
+  moveBuffer: number | null;
 }
 
 /** A trip runs at most three weeks, arrival and departure included. */
@@ -134,6 +153,10 @@ export const DEFAULT_PLAN_STATE: TripPlanState = {
   evenings: true,
   split: 'auto',
   locks: [],
+  bases: [],
+  startBase: null,
+  endBase: null,
+  moveBuffer: null,
 };
 
 /**
@@ -161,13 +184,20 @@ export const PLAN_QUERY_NAMES = [
   'evenings',
   'split',
   'lock',
+  'bases',
+  'startBase',
+  'endBase',
+  'moveBuffer',
 ] as const;
 
 const DATE = /^\d{4}-\d{2}-\d{2}$/;
 const SLUG = /^[a-z0-9-]+$/;
 const AREA = /^[a-z_]+$/;
-/** A school-holiday region as the holiday data spells it: `DE-NW`, `GB-ENG`, `NL-north`. */
-const WITHIN = /^[A-Z]{2}-[A-Za-z]{1,10}$/;
+/**
+ * A school-holiday region as the holiday data spells it: `DE-NW`, `GB-ENG`, `NL-north`, `FR-ZA`,
+ * and a Spanish province under its community, `ES-AN-AL`.
+ */
+const WITHIN = /^[A-Z]{2}(?:-[A-Za-z]{1,10}){1,2}$/;
 
 /** A real `YYYY-MM-DD` day, not `2026-02-31`. */
 export function isPlanDate(value: string | null | undefined): value is string {
@@ -189,14 +219,31 @@ export interface PlanRegionKeys {
    */
   tickets?: ReadonlyMap<string, TicketProduct>;
   resorts?: ReadonlySet<string>;
+  /**
+   * A region with bases: each base with its hotel areas, and the hotel-change buffers the plan
+   * takes. Then `hotel` and `area` are not the region's (the area goes with its base); without
+   * bases, `bases`, `startBase`, `endBase` and `moveBuffer` are not.
+   */
+  bases?: ReadonlyMap<string, ReadonlySet<string>>;
+  moveBuffers?: ReadonlySet<number>;
 }
 
 /** The slugs, hotel areas, tickets and resorts a link may name, from the region the page rendered. */
 export function planRegionKeys(
-  region: Pick<TripRegion, 'slug' | 'parks' | 'hotelAreas' | 'groups' | 'tickets' | 'hotels'>
+  region: Pick<
+    TripRegion,
+    'slug' | 'parks' | 'hotelAreas' | 'groups' | 'tickets' | 'hotels' | 'bases' | 'stayRules'
+  >
 ): PlanRegionKeys {
   const hotels = region.hotels?.length ? region.hotels : tripRegionConfig(region.slug)?.hotels;
+  const bases = region.bases?.length
+    ? {
+        bases: new Map(region.bases.map((b) => [b.key, new Set(b.hotelAreas)])),
+        moveBuffers: new Set(region.stayRules?.moveBufferOptions ?? DEFAULT_MOVE_BUFFERS),
+      }
+    : {};
   return {
+    ...bases,
     parks: new Set(region.parks.map((p) => p.slug)),
     areas: new Set(region.hotelAreas.map((a) => a.key)),
     ...(hotels && { hotels: new Set(hotels.map((hotel) => hotel.key)) }),
@@ -273,6 +320,43 @@ export function readTickets(
   return { tickets, dropped };
 }
 
+/** The hotel-change buffers the contract names, for a region answer that does not list its own. */
+export const DEFAULT_MOVE_BUFFERS: readonly number[] = [30, 60, 90, 120];
+
+/** One `bases=` item: `tokyo`, `tokyo:4`, `tokyo:4@maihama`, `tokyo@maihama`. */
+const BASE_ITEM = /^([a-z0-9-]+)(?::(\d{1,2}))?(?:@([a-z_]+))?$/;
+
+/**
+ * A link's `bases`, one item at a time: an unknown base or a second item for one goes, an area of
+ * another base or on a `:0` base is dropped from its item (the API answers either with a 400). Kept
+ * in the order the region lists its bases, which the URL writes.
+ */
+export function readBases(
+  value: string | null,
+  bases?: ReadonlyMap<string, ReadonlySet<string>>
+): PlanBasePick[] {
+  const picks: PlanBasePick[] = [];
+  for (const part of (value ?? '').split(',')) {
+    const match = BASE_ITEM.exec(part);
+    if (!match) continue;
+    const [, key, n, area] = match;
+    if (picks.some((p) => p.key === key)) continue;
+    const areas = bases?.get(key);
+    if (bases && !areas) continue;
+    const nights = n === undefined ? null : Math.min(Number(n), MAX_TRIP_DAYS - 1);
+    const kept = area && nights !== 0 && (!areas || areas.has(area)) ? area : null;
+    picks.push({ key, nights, area: kept });
+  }
+  if (!bases) return picks;
+  const order = [...bases.keys()];
+  return picks.sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
+}
+
+/** One base in its URL form: `tokyo:4@maihama`. */
+export function writeBaseItem(pick: PlanBasePick): string {
+  return `${pick.key}${pick.nights !== null ? `:${pick.nights}` : ''}${pick.area ? `@${pick.area}` : ''}`;
+}
+
 const flag = (value: string | null): boolean | null =>
   value === '1' || value === 'true' ? true : value === '0' || value === 'false' ? false : null;
 
@@ -289,7 +373,13 @@ export interface QueryReader {
  * `fireworks=any`.
  */
 export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): TripPlanState {
-  const state: TripPlanState = { ...DEFAULT_PLAN_STATE, hopper: [], tickets: [], locks: [] };
+  const state: TripPlanState = {
+    ...DEFAULT_PLAN_STATE,
+    hopper: [],
+    tickets: [],
+    locks: [],
+    bases: [],
+  };
 
   const from = query.get('from');
   const to = query.get('to');
@@ -329,12 +419,30 @@ export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): TripPl
     if (picks.length > 0) state.parks = picks;
   }
 
+  // A region with bases plans its hotel per stay; a region without has neither.
+  const withBases = !keys || keys.bases !== undefined;
+  const withHotel = !keys || keys.bases === undefined;
   const hotel = query.get('hotel');
-  if (hotel && (keys?.hotels ?? ANY_REGION_HOTELS).has(hotel)) {
+  if (withHotel && hotel && (keys?.hotels ?? ANY_REGION_HOTELS).has(hotel)) {
     state.hotel = hotel;
   }
   const area = query.get('area');
-  if (area && AREA.test(area) && (!keys || keys.areas.has(area))) state.area = area;
+  if (withHotel && area && AREA.test(area) && (!keys || keys.areas.has(area))) state.area = area;
+  if (withBases) {
+    state.bases = readBases(query.get('bases'), keys?.bases);
+    for (const end of ['startBase', 'endBase'] as const) {
+      const base = query.get(end);
+      if (base && SLUG.test(base) && (!keys?.bases || keys.bases.has(base))) state[end] = base;
+    }
+    const buffer = Number(query.get('moveBuffer'));
+    if (
+      Number.isInteger(buffer) &&
+      buffer > 0 &&
+      (keys?.moveBuffers ?? new Set(DEFAULT_MOVE_BUFFERS)).has(buffer)
+    ) {
+      state.moveBuffer = buffer;
+    }
+  }
 
   if (query.get('arrival') === 'park') state.arrival = 'park';
   if (query.get('departure') === 'park') state.departure = 'park';
@@ -430,6 +538,10 @@ export function planQueryEntries(state: TripPlanState): Array<[string, string]> 
   if (state.locks.length > 0 && !state.when) {
     out.push(['lock', state.locks.map((l) => `${l.target}@${l.date}`).join(',')]);
   }
+  if (state.bases.length > 0) out.push(['bases', state.bases.map(writeBaseItem).join(',')]);
+  if (state.startBase) out.push(['startBase', state.startBase]);
+  if (state.endBase) out.push(['endBase', state.endBase]);
+  if (state.moveBuffer !== null) out.push(['moveBuffer', String(state.moveBuffer)]);
   return out;
 }
 
@@ -488,6 +600,7 @@ export function plannerHrefOn(path: string, input: TripPlannerHrefInput = {}): s
     hopper: [...(input.hopper ?? [])],
     tickets: (input.tickets ?? []).slice(0, MAX_TICKETS).map((t) => ({ ...t })),
     locks: [...(input.locks ?? [])],
+    bases: (input.bases ?? []).map((b) => ({ ...b })),
   });
   return planHref(path, state, TRIP_PLANNER_ID);
 }

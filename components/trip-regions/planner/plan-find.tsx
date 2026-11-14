@@ -28,12 +28,14 @@ export function defaultSearchRange(today: string): PlanSearchRange {
 }
 
 /**
- * Step 1, the dates, as a two-way choice: "I know my dates" (the range calendar) or "Find the best
- * dates" (a period, a trip length, and if wanted only the school holidays of a region). The choice
- * is the `when` of the URL, so a link from Parky's `find_trip_dates` opens on the second.
+ * Step 1, the dates: the range calendar, and under it one quiet way to the other question, "No
+ * dates yet? Find the best time" (a period, a trip length, and if wanted only the school holidays
+ * of a region), with its way back. The choice is the `when` of the URL, so a link from Parky's
+ * `find_trip_dates` opens on the search.
  */
 export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
   const t = useTranslations('tripPlanner.find');
+  const tSetup = useTranslations('tripPlanner.setup');
   const tTickets = useTranslations('tripPlanner.tickets');
   const { state, update, today, live } = usePlanContext();
   const find = state.when !== null;
@@ -42,43 +44,33 @@ export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
   const fixedId = useId();
   const choose = (next: boolean) =>
     today && update((s) => setFindMode(s, next, defaultSearchRange(today)));
+  const switchLink = (
+    <div className="flex flex-col gap-1">
+      <button
+        type="button"
+        onClick={() => choose(!find)}
+        disabled={!live || !today || (!find && fixed)}
+        aria-describedby={!find && fixed ? fixedId : undefined}
+        data-plan-find-switch={find ? 'known' : 'find'}
+        className={cn(
+          'text-primary-ink min-h-11 self-start rounded-md px-1 text-left text-sm font-medium underline-offset-4 hover:underline disabled:opacity-50 disabled:hover:no-underline',
+          PLAN_FOCUS
+        )}
+      >
+        {find ? t('modeKnown') : tSetup('findLink')}
+      </button>
+      {fixed && !find && (
+        <p id={fixedId} className="text-muted-foreground text-xs">
+          {tTickets('find.fixed')}
+        </p>
+      )}
+    </div>
+  );
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1.5">
-        <div
-          role="radiogroup"
-          aria-label={t('modeLabel')}
-          className="bg-muted/50 grid grid-cols-2 gap-1 rounded-xl p-1"
-        >
-          {([false, true] as const).map((value) => (
-            <button
-              key={String(value)}
-              type="button"
-              role="radio"
-              aria-checked={find === value}
-              aria-describedby={value && fixed && !find ? fixedId : undefined}
-              disabled={!live || !today || (value && fixed && !find)}
-              onClick={() => choose(value)}
-              className={cn(
-                'min-h-11 rounded-lg px-2 text-sm font-medium transition disabled:opacity-50',
-                find === value
-                  ? 'bg-background shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground',
-                PLAN_FOCUS
-              )}
-            >
-              {value ? t('modeFind') : t('modeKnown')}
-            </button>
-          ))}
-        </div>
-        {fixed && !find && (
-          <p id={fixedId} className="text-muted-foreground text-xs">
-            {tTickets('find.fixed')}
-          </p>
-        )}
-      </div>
+    <div className="flex flex-col gap-3">
       {find ? <PlanFind /> : <PlanDates defaultMonth={defaultMonth} />}
+      {switchLink}
     </div>
   );
 }
@@ -254,7 +246,7 @@ export function PlanFind() {
                   ))}
               </select>
             </label>
-            {withinRegion && today && (
+            {withinRegion?.through && today && (
               <p className="text-muted-foreground col-span-2 text-xs">
                 {t('through', {
                   date: formatParkDay(locale, withinRegion.through, {
