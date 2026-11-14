@@ -192,6 +192,7 @@ function LauncherButton({
           : undefined
       }
       aria-expanded={open}
+      data-parky-launcher=""
       inert={dodging || away}
       // Drawn only while the window is closed: the window has its own ✕.
       aria-label={t('assistantOpen')}

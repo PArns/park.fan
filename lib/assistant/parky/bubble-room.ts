@@ -35,7 +35,8 @@ export function coversControl(box: DOMRect, own: Element | null): boolean {
   for (const x of [left, (left + right) / 2, right]) {
     for (const y of [top, (top + bottom) / 2, bottom]) {
       for (const element of document.elementsFromPoint(x, y)) {
-        if (own?.contains(element)) continue;
+        // Parky's own button sits beside the bubble, its tail pointing at him.
+        if (own?.contains(element) || element.closest('[data-parky-launcher]')) continue;
         if (element.closest(CONTROL)) return true;
       }
     }
