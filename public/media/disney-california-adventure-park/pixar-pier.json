@@ -1,0 +1,33 @@
+{
+  "title": "Pixar Pier",
+  "park": "disney-california-adventure-park",
+  "area": "Pixar Pier",
+  "roles": ["park-background"],
+  "tags": ["background", "coaster", "day", "flat-ride", "outdoor", "park", "photo", "sunny"],
+  "alt": {
+    "de": "Das Riesenrad Pixar Pal-A-Round mit Mickys Gesicht neben der roten Schiene des Incredicoaster, davor die Paradise Bay.",
+    "en": "The Pixar Pal-A-Round wheel with Mickey’s face beside the red track of the Incredicoaster, Paradise Bay in front.",
+    "es": "La noria Pixar Pal-A-Round con la cara de Mickey junto a la vía roja del Incredicoaster, con Paradise Bay delante.",
+    "fr": "La grande roue Pixar Pal-A-Round à l’effigie de Mickey, à côté des rails rouges de l’Incredicoaster, Paradise Bay devant.",
+    "it": "La ruota panoramica Pixar Pal-A-Round con il volto di Topolino accanto al binario rosso dell’Incredicoaster, davanti la Paradise Bay.",
+    "nl": "Het reuzenrad Pixar Pal-A-Round met Mickeys gezicht naast het rode spoor van de Incredicoaster, met Paradise Bay ervoor."
+  },
+  "caption": {
+    "de": "Die Punkte im Wasser sind die Fontänen von World of Color, der Abendshow auf dieser Bucht.",
+    "en": "The dots in the water are World of Color’s fountains, the night show on this bay.",
+    "es": "Los puntos en el agua son las fuentes de World of Color, el espectáculo nocturno de esta bahía.",
+    "fr": "Les points dans l’eau sont les jets de World of Color, le spectacle du soir sur cette baie.",
+    "it": "I puntini nell’acqua sono le fontane di World of Color, lo spettacolo serale sulla baia.",
+    "nl": "De stipjes in het water zijn de fonteinen van World of Color, de avondshow op deze baai."
+  },
+  "credit": {
+    "author": "Mauro Lima",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-large-ferris-wheel-sitting-next-to-a-lake-3JQ22qpgzlo"
+  },
+  "focus": {
+    "x": 0.58,
+    "y": 0.6
+  }
+}

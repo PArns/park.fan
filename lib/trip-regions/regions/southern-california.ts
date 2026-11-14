@@ -69,15 +69,16 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   timezone: 'America/Los_Angeles',
   // Anaheim, where the most parks of the region are; San Diego and Valencia are a drive away.
   centre: { latitude: 33.81, longitude: -117.92 },
-  photo: '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
+  photo: '/media/disney-california-adventure-park/pixar-pier.jpg',
   scene: () =>
     import('../../../components/assistant/parky/southern-california-scene').then((m) => ({
       default: m.ParkySouthernCaliforniaScene,
     })),
   hub: {
-    // The only photos of the region's parks the media database has are Universal's; a photo of
-    // Disneyland in Anaheim goes first once there is one.
+    // Pixar Pier at Disney California Adventure, then Universal. Disneyland Park itself has no
+    // photo: Paris has the same slug, and the media database finds a park's photo by slug alone.
     heroPhotos: [
+      '/media/disney-california-adventure-park/pixar-pier.jpg',
       '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
     ],
     // "Disneyland crowd calendar" is the region's most searched calendar.
