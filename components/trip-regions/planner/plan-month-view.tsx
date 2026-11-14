@@ -20,8 +20,8 @@ import { formatParkDay } from '@/lib/utils/park-day';
 import { dayMarker } from '@/lib/trip-regions/plan-copy';
 import {
   dayBandPieces,
-  parkCode,
   parkCodeKey,
+  parkLabel,
   TRIP_DAY_SIGNALS,
   TRIP_FALLBACK_CANVAS,
   tripCanvas,
@@ -103,7 +103,7 @@ export function PlanMonthView({
 }) {
   const t = useTranslations('tripPlanner');
   const tCrowd = useTranslations('parks.crowdLevels');
-  const { locale, timeZone, region, parkBySlug, parkName } = usePlanContext();
+  const { locale, timeZone, region, config, parkBySlug, parkName } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
   const ticketLabel = useTicketDayLabel();
@@ -130,16 +130,17 @@ export function PlanMonthView({
       parkCodeKey(
         region.parks,
         plan.days.flatMap((d) => d.parks.map((p) => p.slug)),
-        (park) => parkName(park.slug)
+        (park) => parkName(park.slug),
+        (park) => parkLabel(park, config.parkShortNames, 'tight')
       ),
-    [region.parks, plan.days, parkName]
+    [region.parks, plan.days, parkName, config.parkShortNames]
   );
   const kinds = new Set(
     spans.flatMap((span) => dayBandPieces(span, canvas).map((piece) => piece.kind))
   );
   const codeOf = (slug: string) => {
     const park = parkBySlug.get(slug);
-    return park ? parkCode(park) : slug;
+    return park ? parkLabel(park, config.parkShortNames, 'tight') : slug;
   };
 
   return (
@@ -235,7 +236,7 @@ export function PlanMonthView({
           const evening = eveningName(day);
           const ticketDay = ticketLabel(day, plan.meta);
           const line = evening ? t('evening.plus', { name: evening }) : ticketDay;
-          const what = `${parksOf(day)}${day.headlinerWait != null ? `, ${t('week.minutes', { minutes: day.headlinerWait })}` : ''}`;
+          const what = `${parksOf(day)}${day.headlinerWait != null ? `, ${t('peakWait', { minutes: day.headlinerWait })}` : ''}`;
           const spoken =
             first && lastBlock
               ? `${formatGridTime(first.startMin)}–${formatGridTime(lastBlock.endMin, true)}`
@@ -355,7 +356,7 @@ export function PlanMonthView({
         })}
       </ol>
       <PlanCodeKey entries={codeKey} className="mt-2 lg:hidden" />
-      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} className="mt-2" />
+      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} signalsLabel={false} className="mt-2" />
       <ul className="text-muted-foreground mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs">
         {(
           [
@@ -392,7 +393,7 @@ export function PlanMonthView({
           })}
         </li>
       </ul>
-      <p className="text-muted-foreground text-xs">{t('month.legend')}</p>
+      <p className="text-muted-foreground text-xs">{t('crowdColour')}</p>
     </div>
   );
 }

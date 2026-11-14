@@ -3108,7 +3108,7 @@
       "gridLabel": "An- und Abreisetag",
       "level": "Andrang: {level}",
       "levelLastYear": "Andrang im letzten Jahr: {level}",
-      "legend": "Jedes Datum ist danach gefärbt, wie voll die großen Parks an dem Tag im Mittel sind.",
+      "legend": "Ein Datum ohne Tipp ist nach dem mittleren Andrang der großen Parks gefärbt.",
       "legendLastYear": "Gestrichelt umrandete Daten zeigen den gemessenen Andrang des letzten Jahres.",
       "pickArrival": "Tippe auf deinen Anreisetag.",
       "pickDeparture": "Jetzt den Abreisetag.",
@@ -3118,12 +3118,12 @@
       "departurePark": "Park am Abreisetag",
       "departureParkHint": "Bei einem Abendflug.",
       "maxLength": "Eine Reise darf bis zu {days} Tage lang sein.",
-      "picksLegend": "Unter jedem Datum steht je Resort der Park mit den kürzesten Wartezeiten. Seine Farbe sagt, wie voll er für seine Verhältnisse ist.",
+      "picksLegend": "Unter jedem Datum steht je Resort der Park mit der kürzesten Spitzenwartezeit.",
       "partyKey": "Party-Abend mit eigenem Ticket: Tagesgäste gehen früher",
       "nyeKey": "Silvester",
       "unpublishedKey": "Gepunktet unterstrichen: Öffnungszeiten noch nicht veröffentlicht",
       "infoHint": "Zeig auf ein Datum oder tippe darauf, dann erfährst du, welcher Park an dem Tag am besten ist und warum.",
-      "ahead": "vor {park}, wo Tagesgäste um {time} gehen",
+      "ahead": "Vor {park} mit {minutes} Min.: Dort müssen Tagesgäste um {time} raus.",
       "party": "{park}: {name} ab {time}, Tagesgäste gehen um {leave}",
       "partyUnnamed": "{park}: Abend-Event ab {time}, Tagesgäste gehen um {leave}",
       "unpublished": "Öffnungszeiten noch nicht veröffentlicht",
@@ -3281,7 +3281,6 @@
       }
     },
     "month": {
-      "legend": "Jeder Parktag ist danach gefärbt, wie voll er für seinen Park ist, mit den zwei Buchstaben des Parks.",
       "bandPark": "Offen für Tagesgäste, gefärbt nach Andrang",
       "bandHop": "Abends ein zweiter Park",
       "bandVenue": "Abends außerhalb der Parks",
@@ -3631,7 +3630,9 @@
         "note": "Kaufst du über diesen Link, bekommt park.fan eine Provision. Der Preis ändert sich für dich nicht."
       }
     },
-    "codeKey": "Parks"
+    "codeKey": "Parks",
+    "crowdColour": "Farbe: wie voll der Park an dem Tag ist, verglichen mit einem normalen Tag dort.",
+    "peakWait": "Spitzenwartezeit etwa {minutes} Min."
   },
   "tripRegions": {
     "orlando": {

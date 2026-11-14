@@ -21,14 +21,19 @@ import { addDays } from '@/lib/utils/park-day';
 
 /** One resort's pick under a date of {@link PlanMonthGrid}: the park's code in its crowd ink. */
 export interface PlanGridPick {
-  /** The park's `parkCode`; its name is the code's tooltip and part of the date's label. */
+  /** The park's label in a phone cell and in a wide one (`parkLabel`). */
   code: string;
+  wide: string;
+  /** The park's name: the label's tooltip and part of the date's accessible name. */
   name: string;
   level: ColoredCrowdLevel | null;
   /** The park has not published its hours for the date: the code is underlined dotted. */
   unpublished: boolean;
-  /** The resort's park whose day guests leave early for a party that night: a ticket on the row. */
-  party: { code: string; name: string } | null;
+  /**
+   * The resort's park whose day guests leave early for a party that night: a ticket on the row,
+   * with the park's wide label where the cell has room, and the party in words as its tooltip.
+   */
+  party: { wide: string; name: string } | null;
 }
 
 /** How one date of {@link PlanMonthGrid} is drawn and named. */
@@ -286,7 +291,14 @@ export function PlanMonthGrid({
                             pick.unpublished && 'underline decoration-dotted underline-offset-2'
                           )}
                         >
-                          {pick.code}
+                          {pick.wide === pick.code ? (
+                            pick.code
+                          ) : (
+                            <>
+                              <span className="@min-[4.5rem]:hidden">{pick.code}</span>
+                              <span className="hidden @min-[4.5rem]:inline">{pick.wide}</span>
+                            </>
+                          )}
                         </span>
                         {pick.party && (
                           <span
@@ -295,7 +307,7 @@ export function PlanMonthGrid({
                           >
                             <Ticket className="size-2.5 shrink-0" />
                             <span className="hidden text-[10px] @min-[4.5rem]:inline">
-                              {pick.party.code}
+                              {pick.party.wide}
                             </span>
                           </span>
                         )}

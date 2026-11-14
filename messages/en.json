@@ -3108,7 +3108,7 @@
       "gridLabel": "Arrival and departure day",
       "level": "Crowds: {level}",
       "levelLastYear": "Crowds last year: {level}",
-      "legend": "Each date is coloured by how busy the big parks are that day on average.",
+      "legend": "A date without a tip is coloured by the big parks’ average crowd level.",
       "legendLastYear": "Dates with a dashed border show last year’s measured crowds.",
       "pickArrival": "Tap your arrival day.",
       "pickDeparture": "Now your departure day.",
@@ -3118,12 +3118,12 @@
       "departurePark": "Park on departure day",
       "departureParkHint": "For an evening flight.",
       "maxLength": "A trip can be up to {days} days long.",
-      "picksLegend": "Under each date, the park with the shortest lines in each resort. Its colour says how busy it is by its own standards.",
+      "picksLegend": "Under each date, the park with the shortest peak wait in each resort.",
       "partyKey": "Party night with its own ticket: day guests leave early",
       "nyeKey": "New Year’s Eve",
       "unpublishedKey": "Dotted underline: hours not published yet",
       "infoHint": "Point at a date or tap it to see which park is best that day, and why.",
-      "ahead": "ahead of {park}, where day guests leave at {time}",
+      "ahead": "Ahead of {park} at {minutes} min: day guests there have to leave at {time}.",
       "party": "{park}: {name} from {time}, day guests leave at {leave}",
       "partyUnnamed": "{park}: evening event from {time}, day guests leave at {leave}",
       "unpublished": "Hours not published yet",
@@ -3281,7 +3281,6 @@
       }
     },
     "month": {
-      "legend": "Each park day is coloured by how busy it is for its park, with the park’s two letters.",
       "bandPark": "Open to day guests, coloured by crowds",
       "bandHop": "A second park in the evening",
       "bandVenue": "Evening outside the parks",
@@ -3631,7 +3630,9 @@
         "note": "If you buy through this link, park.fan earns a commission. The price stays the same for you."
       }
     },
-    "codeKey": "Parks"
+    "codeKey": "Parks",
+    "crowdColour": "Colour: how busy the park is that day, compared with a normal day there.",
+    "peakWait": "peak wait about {minutes} min"
   },
   "tripRegions": {
     "orlando": {

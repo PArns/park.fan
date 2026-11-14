@@ -3108,7 +3108,7 @@
       "gridLabel": "Aankomst- en vertrekdag",
       "level": "Drukte: {level}",
       "levelLastYear": "Drukte vorig jaar: {level}",
-      "legend": "Elke datum is gekleurd naar hoe druk de grote parken die dag gemiddeld zijn.",
+      "legend": "Een datum zonder tip is gekleurd naar de gemiddelde drukte in de grote parken.",
       "legendLastYear": "Datums met een gestippelde rand tonen de gemeten drukte van vorig jaar.",
       "pickArrival": "Tik op je aankomstdag.",
       "pickDeparture": "Nu je vertrekdag.",
@@ -3118,12 +3118,12 @@
       "departurePark": "Park op de vertrekdag",
       "departureParkHint": "Bij een avondvlucht.",
       "maxLength": "Een reis duurt hoogstens {days} dagen.",
-      "picksLegend": "Onder elke datum staat per resort het park met de kortste wachtrijen. De kleur zegt hoe druk het is voor dat park.",
+      "picksLegend": "Onder elke datum staat per resort het park met de kortste piekwachttijd.",
       "partyKey": "Feestavond met eigen ticket: dagbezoekers vertrekken eerder",
       "nyeKey": "Oudejaarsavond",
       "unpublishedKey": "Gestippeld onderstreept: openingstijden nog niet gepubliceerd",
       "infoHint": "Wijs een datum aan of tik erop, dan zie je welk park die dag het beste is en waarom.",
-      "ahead": "voor {park}, waar dagbezoekers om {time} vertrekken",
+      "ahead": "Voor {park} met {minutes} min: daar moeten dagbezoekers om {time} vertrekken.",
       "party": "{park}: {name} vanaf {time}, dagbezoekers vertrekken om {leave}",
       "partyUnnamed": "{park}: avondevenement vanaf {time}, dagbezoekers vertrekken om {leave}",
       "unpublished": "Openingstijden nog niet gepubliceerd",
@@ -3281,7 +3281,6 @@
       }
     },
     "month": {
-      "legend": "Elke parkdag is gekleurd naar hoe druk hij voor dat park is, met de twee letters van het park.",
       "bandPark": "Open voor dagbezoekers, gekleurd naar drukte",
       "bandHop": "’s Avonds een tweede park",
       "bandVenue": "’s Avonds buiten de parken",
@@ -3631,7 +3630,9 @@
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
       }
     },
-    "codeKey": "Parken"
+    "codeKey": "Parken",
+    "crowdColour": "Kleur: hoe druk het park die dag is, vergeleken met een normale dag daar.",
+    "peakWait": "piekwachttijd ongeveer {minutes} min"
   },
   "tripRegions": {
     "orlando": {

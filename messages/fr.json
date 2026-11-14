@@ -3108,7 +3108,7 @@
       "gridLabel": "Jour d’arrivée et de départ",
       "level": "Affluence : {level}",
       "levelLastYear": "Affluence l’an dernier : {level}",
-      "legend": "La couleur de chaque date suit l’affluence moyenne des grands parcs ce jour-là.",
+      "legend": "Une date sans conseil suit l’affluence moyenne des grands parcs.",
       "legendLastYear": "Les dates au contour en pointillé montrent l’affluence mesurée l’an dernier.",
       "pickArrival": "Touche ton jour d’arrivée.",
       "pickDeparture": "Puis ton jour de départ.",
@@ -3118,12 +3118,12 @@
       "departurePark": "Parc le jour du départ",
       "departureParkHint": "Pour un vol le soir.",
       "maxLength": "Un voyage dure au plus {days} jours.",
-      "picksLegend": "Sous chaque date, le parc aux files les plus courtes de chaque resort. Sa couleur dit son affluence par rapport à ses jours habituels.",
+      "picksLegend": "Sous chaque date, le parc à l’attente de pointe la plus courte de chaque resort.",
       "partyKey": "Soirée de fête à billet séparé : les visiteurs du jour partent plus tôt",
       "nyeKey": "Saint-Sylvestre",
       "unpublishedKey": "Souligné en pointillé : horaires pas encore publiés",
       "infoHint": "Pointe une date ou touche-la : tu vois quel parc vaut le mieux ce jour-là, et pourquoi.",
-      "ahead": "devant {park}, où les visiteurs du jour partent à {time}",
+      "ahead": "Devant {park} à {minutes} min : là-bas, les visiteurs du jour doivent partir à {time}.",
       "party": "{park} : {name} dès {time}, les visiteurs du jour partent à {leave}",
       "partyUnnamed": "{park} : soirée spéciale dès {time}, les visiteurs du jour partent à {leave}",
       "unpublished": "Horaires pas encore publiés",
@@ -3281,7 +3281,6 @@
       }
     },
     "month": {
-      "legend": "Chaque jour de parc est coloré selon l’affluence de son parc, avec les deux lettres du parc.",
       "bandPark": "Ouvert aux visiteurs du jour, coloré selon l’affluence",
       "bandHop": "Un second parc le soir",
       "bandVenue": "Soirée hors des parcs",
@@ -3631,7 +3630,9 @@
         "note": "Si tu achètes par ce lien, park.fan touche une commission. Le prix ne change pas pour toi."
       }
     },
-    "codeKey": "Parcs"
+    "codeKey": "Parcs",
+    "crowdColour": "Couleur : l’affluence du parc ce jour-là, comparée à un jour normal chez lui.",
+    "peakWait": "attente de pointe d’environ {minutes} min"
   },
   "tripRegions": {
     "orlando": {

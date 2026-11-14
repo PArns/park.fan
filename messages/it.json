@@ -3108,7 +3108,7 @@
       "gridLabel": "Giorno di arrivo e di partenza",
       "level": "Affluenza: {level}",
       "levelLastYear": "Affluenza l’anno scorso: {level}",
-      "legend": "Ogni data ha il colore di quanto sono affollati in media i grandi parchi quel giorno.",
+      "legend": "Una data senza consiglio ha il colore dell’affluenza media dei grandi parchi.",
       "legendLastYear": "Le date con il bordo tratteggiato mostrano l’affluenza misurata l’anno scorso.",
       "pickArrival": "Tocca il giorno di arrivo.",
       "pickDeparture": "Ora il giorno di partenza.",
@@ -3118,12 +3118,12 @@
       "departurePark": "Parco il giorno di partenza",
       "departureParkHint": "Con un volo serale.",
       "maxLength": "Un viaggio dura al massimo {days} giorni.",
-      "picksLegend": "Sotto ogni data, per ogni resort il parco con le code più corte. Il colore dice quanto è affollato rispetto ai suoi giorni normali.",
+      "picksLegend": "Sotto ogni data, per ogni resort il parco con l’attesa di picco più breve.",
       "partyKey": "Serata di festa con biglietto a parte: i visitatori giornalieri escono prima",
       "nyeKey": "San Silvestro",
       "unpublishedKey": "Sottolineato a puntini: orari non ancora pubblicati",
       "infoHint": "Indica una data o toccala: vedi quale parco conviene quel giorno, e perché.",
-      "ahead": "davanti a {park}, dove i visitatori giornalieri escono alle {time}",
+      "ahead": "Davanti a {park}, con {minutes} min: lì i visitatori giornalieri devono uscire alle {time}.",
       "party": "{park}: {name} dalle {time}, i visitatori giornalieri escono alle {leave}",
       "partyUnnamed": "{park}: evento serale dalle {time}, i visitatori giornalieri escono alle {leave}",
       "unpublished": "Orari non ancora pubblicati",
@@ -3281,7 +3281,6 @@
       }
     },
     "month": {
-      "legend": "Ogni giorno di parco ha il colore di quanto è affollato il suo parco, con le due lettere del parco.",
       "bandPark": "Aperto ai visitatori giornalieri, colorato secondo l’affluenza",
       "bandHop": "La sera un secondo parco",
       "bandVenue": "La sera fuori dai parchi",
@@ -3631,7 +3630,9 @@
         "note": "Se compri tramite questo link, park.fan riceve una commissione. Il prezzo per te non cambia."
       }
     },
-    "codeKey": "Parchi"
+    "codeKey": "Parchi",
+    "crowdColour": "Colore: quanto è affollato il parco quel giorno, rispetto a un suo giorno normale.",
+    "peakWait": "attesa di picco di circa {minutes} min"
   },
   "tripRegions": {
     "orlando": {

@@ -22,10 +22,13 @@ const ALL_SIGNALS: readonly DaySignal[] = ['school', 'neighbor', 'holiday', 'bri
 export function ParkCalendarLegend({
   showWorks = false,
   signals = ALL_SIGNALS,
+  signalsLabel = true,
   className,
 }: {
   showWorks?: boolean;
   signals?: readonly DaySignal[];
+  /** Whether the signal keys open with their group's label; the coloured dashes say enough alone. */
+  signalsLabel?: boolean;
   className?: string;
 }) {
   const tGroups = useTranslations('parks.calendarLegendGroups');
@@ -73,9 +76,11 @@ export function ParkCalendarLegend({
 
       {(signals.length > 0 || showWorks) && (
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
-          <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
-            {tGroups('signals')}
-          </span>
+          {signalsLabel && (
+            <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
+              {tGroups('signals')}
+            </span>
+          )}
           {signals.map((signal) => (
             <DaySignalKey
               key={signal}

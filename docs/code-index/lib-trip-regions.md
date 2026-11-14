@@ -271,7 +271,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripMonthWeeks` _function_: The Month view's rows: whole weeks, Monday first, from the week the trip starts in to the week it ends in, so the trip sits in its calendar and a two-month trip reads as one run of weeks.
 - `parkInitials` _function_: The two-letter mark of a park for the Month view's chips, from the words that name the park: Magic Kingdom MK, Hollywood Studios HS, Epic Universe EU, SeaWorld SW, EPCOT EP, and Universal Studios Florida US, where "Studios" alone would say …
 - `parkCode` _function_: A park's code in every view that has room for two letters (the date grid, the Month view, their key): the region's curated `code` where the API sends one, else `parkInitials`.
-- `parkCodeKey` _function_: The key to the codes a view shows: each park among `slugs` once, in the region's order, with its `parkCode` and its name as `nameOf` gives it. Parks the region does not list are left out.
+- `parkLabel` _function_: A park's label in a calendar cell: the region's short name (`parkShortNames`) where the cell has room for it, a `tight` cell taking one of at most four letters, else `parkCode`.
+- `parkCodeKey` _function_: The key to the codes a view shows: each park among `slugs` once, in the region's order, with the code the view draws (`codeOf`, `parkCode` by default) and its name as `nameOf` gives it. Parks the region does not list are left out.
 - `daySeasons` _function_: The curated seasons a park's day lists (its cell's `seasons`), cancelled ones and closures left out: what the day sheet names as the day's events.
 - `partySeason` _function_: The separately ticketed season behind a day's evening event, if the calendar names one.
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.

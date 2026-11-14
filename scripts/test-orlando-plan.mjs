@@ -59,6 +59,7 @@ import {
   parkCode,
   parkCodeKey,
   parkInitials,
+  parkLabel,
   parkMinuteOf,
   swapPreview,
   tripCanvas,
@@ -984,6 +985,20 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [parkCode({ name: 'Tokyo Disneyland', code: 'DL' }), parkCode({ name: 'Magic Kingdom Park' })],
     ['DL', 'MK']
   );
+  {
+    const short = { 'universal-studios-florida': 'Studios', 'universal-epic-universe': 'Epic' };
+    const label = (slug, name, room) => parkLabel({ slug, name }, short, room);
+    test(
+      'a short name where it fits: four letters in a phone cell, any in a wide one',
+      [
+        label('universal-epic-universe', 'Universal Epic Universe', 'tight'),
+        label('universal-studios-florida', 'Universal Studios Florida', 'tight'),
+        label('universal-studios-florida', 'Universal Studios Florida', 'wide'),
+        label('magic-kingdom-park', 'Magic Kingdom Park', 'wide'),
+      ],
+      ['Epic', 'US', 'Studios', 'MK']
+    );
+  }
   test(
     'the code key: the shown parks once, in the region’s order',
     parkCodeKey(

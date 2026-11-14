@@ -404,6 +404,19 @@ export function parkCode(park: Pick<TripRegionPark, 'name' | 'code'>): string {
   return park.code ?? parkInitials(park.name);
 }
 
+/**
+ * A park's label in a calendar cell: the region's short name (`parkShortNames`) where the cell has
+ * room for it, a `tight` cell taking one of at most four letters, else {@link parkCode}.
+ */
+export function parkLabel(
+  park: Pick<TripRegionPark, 'slug' | 'name' | 'code'>,
+  shortNames: Readonly<Record<string, string>> | undefined,
+  room: 'tight' | 'wide'
+): string {
+  const short = shortNames?.[park.slug];
+  return short && (room === 'wide' || short.length <= 4) ? short : parkCode(park);
+}
+
 /** One line of a code key: the code and the park it stands for. */
 export interface ParkCodeEntry {
   slug: string;
@@ -412,18 +425,20 @@ export interface ParkCodeEntry {
 }
 
 /**
- * The key to the codes a view shows: each park among `slugs` once, in the region's order, with its
- * {@link parkCode} and its name as `nameOf` gives it. Parks the region does not list are left out.
+ * The key to the codes a view shows: each park among `slugs` once, in the region's order, with the
+ * code the view draws (`codeOf`, {@link parkCode} by default) and its name as `nameOf` gives it.
+ * Parks the region does not list are left out.
  */
 export function parkCodeKey(
   parks: readonly TripRegionPark[],
   slugs: Iterable<string>,
-  nameOf: (park: TripRegionPark) => string
+  nameOf: (park: TripRegionPark) => string,
+  codeOf: (park: TripRegionPark) => string = parkCode
 ): ParkCodeEntry[] {
   const shown = new Set(slugs);
   return parks
     .filter((park) => shown.has(park.slug))
-    .map((park) => ({ slug: park.slug, code: parkCode(park), name: nameOf(park) }));
+    .map((park) => ({ slug: park.slug, code: codeOf(park), name: nameOf(park) }));
 }
 
 /**

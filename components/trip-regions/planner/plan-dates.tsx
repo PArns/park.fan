@@ -10,7 +10,7 @@ import { CROWD_TEXT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-s
 import { addDays, formatParkDayRange } from '@/lib/utils/park-day';
 import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, setTripDates, tripDates } from '@/lib/trip-regions/plan';
 import { ticketWindows } from '@/lib/trip-regions/plan-tickets';
-import { dateLevel, parkCode, parkCodeKey, TRIP_DAY_SIGNALS } from '@/lib/trip-regions/plan-week';
+import { dateLevel, parkCodeKey, parkLabel, TRIP_DAY_SIGNALS } from '@/lib/trip-regions/plan-week';
 import {
   dateParties,
   datePicks,
@@ -20,7 +20,7 @@ import {
   type DatePick,
 } from '@/lib/trip-regions/date-facts';
 import { dayGuestClose, shortGroupName } from '@/lib/trip-regions/hub-data';
-import type { TripCalendarDay } from '@/lib/trip-regions/types';
+import type { TripCalendarDay, TripRegionPark } from '@/lib/trip-regions/types';
 import { holidaySignals } from '@/lib/utils/day-signal-styles';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext } from './plan-context';
@@ -84,6 +84,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
     locale,
     timeZone,
     region,
+    config,
     parkName,
     headliners,
     live,
@@ -125,12 +126,16 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   }, [calendar.data, region]);
 
   const parkBy = useMemo(() => new Map(region.parks.map((p) => [p.slug, p])), [region.parks]);
+  const tight = useCallback(
+    (park: TripRegionPark) => parkLabel(park, config.parkShortNames, 'tight'),
+    [config.parkShortNames]
+  );
   const codeOf = useCallback(
     (slug: string) => {
       const park = parkBy.get(slug);
-      return park ? parkCode(park) : slug;
+      return park ? tight(park) : slug;
     },
-    [parkBy]
+    [parkBy, tight]
   );
   const considered = useMemo(
     () => state.parks?.map((p) => p.slug) ?? [...headliners],
@@ -154,9 +159,10 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           ),
           ...events.flatMap((e) => e.parkSlugs),
         ],
-        (park) => parkName(park.slug)
+        (park) => parkName(park.slug),
+        tight
       ),
-    [region.parks, inMonth, events, parkName]
+    [region.parks, inMonth, events, parkName, tight]
   );
   const anyParty = inMonth.some((f) => f.picks.some((p) => p.party));
   const anyNye = inMonth.some((f) => f.nye);
@@ -201,13 +207,19 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
       const rivalLeaves = rival ? dayGuestClose(rival.day) : undefined;
       const parts = [
         `${shortGroupName(pick.group.name)}: ${parkName(pick.park.slug)}`,
+        pick.day.headlinerWait != null ? t('peakWait', { minutes: pick.day.headlinerWait }) : null,
         level ? t('dates.level', { level: tCrowd(level) }) : null,
         pick.hoursUnpublished ? t('dates.unpublished') : null,
-        rival && rivalLeaves
-          ? t('dates.ahead', { park: parkName(rival.park.slug), time: clock(rivalLeaves) })
-          : null,
       ];
-      return parts.filter(Boolean).join(', ');
+      const ahead =
+        rival && rivalLeaves && rival.day.headlinerWait != null
+          ? t('dates.ahead', {
+              park: parkName(rival.park.slug),
+              minutes: rival.day.headlinerWait,
+              time: clock(rivalLeaves),
+            })
+          : null;
+      return [parts.filter(Boolean).join(', '), ahead].filter(Boolean).join('. ');
     },
     [clock, parkName, t, tCrowd]
   );
@@ -255,12 +267,16 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           const held = windows.filter((w) => date >= w.from && date <= w.to);
           const resorts = [...new Set(held.map((w) => resortWord(w.resort)))];
           const picks: PlanGridPick[] = (fact?.picks ?? []).map((pick) => ({
-            code: parkCode(pick.park),
+            code: tight(pick.park),
+            wide: parkLabel(pick.park, config.parkShortNames, 'wide'),
             name: parkName(pick.park.slug),
             level: isColoredCrowdLevel(pick.day.crowdLevel) ? pick.day.crowdLevel : null,
             unpublished: pick.hoursUnpublished,
             party: pick.party
-              ? { code: parkCode(pick.party.park), name: partyText(pick.party) }
+              ? {
+                  wide: parkLabel(pick.party.park, config.parkShortNames, 'wide'),
+                  name: partyText(pick.party),
+                }
               : null,
           }));
           return {
@@ -312,6 +328,7 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
       <PlanDateInfo
         shownDate={shownDate}
         facts={facts}
+        labelOf={tight}
         dayLabel={(date) => dayLabel.format(new Date(`${date}T12:00:00Z`))}
         pickText={pickText}
         partyText={partyText}
@@ -345,10 +362,11 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
 
       {shown && <PlanMonthEvents events={events} month={shown} codeOf={codeOf} locale={locale} />}
 
-      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} />
+      <ParkCalendarLegend signals={TRIP_DAY_SIGNALS} signalsLabel={false} />
 
       <ul className="text-muted-foreground flex flex-col gap-1 text-xs leading-snug">
         <li>{t('dates.picksLegend')}</li>
+        <li>{t('crowdColour')}</li>
         {anyParty && (
           <li className="flex items-center gap-1.5">
             <Ticket className="text-crowd-ink-high size-3 shrink-0" aria-hidden="true" />
@@ -413,12 +431,15 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
 function PlanDateInfo({
   shownDate,
   facts,
+  labelOf,
   dayLabel,
   pickText,
   partyText,
 }: {
   shownDate: ReturnType<typeof createShownDate>;
   facts: ReadonlyMap<string, DateFacts>;
+  /** A park's label as the cells write it. */
+  labelOf: (park: TripRegionPark) => string;
   dayLabel: (date: string) => string;
   pickText: (pick: DatePick) => string;
   partyText: (party: DateParty) => string;
@@ -452,12 +473,12 @@ function PlanDateInfo({
                 <li key={pick.group.key} className="flex gap-1.5">
                   <span
                     className={cn(
-                      'w-5 shrink-0 font-bold tracking-wide',
+                      'w-8 shrink-0 font-bold tracking-wide',
                       level ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground'
                     )}
                     aria-hidden="true"
                   >
-                    {parkCode(pick.park)}
+                    {labelOf(pick.park)}
                   </span>
                   <span>{pickText(pick)}</span>
                 </li>
@@ -465,7 +486,7 @@ function PlanDateInfo({
             })}
             {fact.parties.map((party) => (
               <li key={party.park.slug} className="flex gap-1.5">
-                <span className="text-crowd-ink-high flex w-5 shrink-0" aria-hidden="true">
+                <span className="text-crowd-ink-high flex w-8 shrink-0" aria-hidden="true">
                   <Ticket className="mt-0.5 size-3" />
                 </span>
                 <span>{partyText(party)}</span>
