@@ -260,9 +260,10 @@ export function PlanMonthStayBand({
         className={cn('flex h-5 min-w-0 items-stretch overflow-hidden text-[10px]', className)}
         data-plan-month-stay={`${left.base}>${stay.base}`}
       >
-        <span className={cn('w-1/2', stayTint(left.number))} />
+        {/* A phone's cell is too narrow for the arrow and the marker in half of it. */}
+        <span className={cn('w-1/4 shrink-0 lg:w-1/2', stayTint(left.number))} />
         <span
-          className={cn('flex w-1/2 min-w-0 items-center gap-0.5 px-0.5', stayTint(stay.number))}
+          className={cn('flex min-w-0 flex-1 items-center gap-0.5 px-0.5', stayTint(stay.number))}
         >
           <ArrowRight className="text-primary-ink size-3 shrink-0" />
           <StayMarker number={stay.number} className="size-3.5 text-[9px]" />
