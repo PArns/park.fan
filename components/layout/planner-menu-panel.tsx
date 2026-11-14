@@ -9,6 +9,11 @@ import { Button, buttonLinkProps } from '@/components/ui/button';
 import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { PlannerRegionArt } from '@/components/layout/planner-region-art';
+import {
+  REGION_CARD,
+  REGION_KICKER,
+  REGION_PILL as PILL,
+} from '@/components/trip-regions/region-card-classes';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { usePlanDay } from '@/lib/hooks/use-plan-day';
 import { translateCountry } from '@/lib/i18n/helpers';
@@ -37,8 +42,6 @@ interface PlannerMenuPanelProps {
   parks: PlannerQuickStart[];
 }
 
-/** The band's buttons are the site's (`buttonVariants`), drawn as pills as in the draft. */
-const PILL = 'rounded-full font-semibold';
 /** The quiet pill over a picture: the outline button on a frosted ground. */
 const PILL_QUIET = `${PILL} border-border/60 bg-background/75 hover:border-primary backdrop-blur-sm dark:bg-background/75`;
 
@@ -237,7 +240,7 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
   const t = useTranslations('navigation');
   const facts = useRegionFacts(region);
   return (
-    <div className="group bg-muted relative isolate h-[21rem] overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10 dark:ring-white/10">
+    <div className={cn(REGION_CARD, 'h-[21rem] shadow-lg')}>
       <div className="absolute inset-0 -z-10">
         <PlannerRegionArt regionId={region.id} photo={region.photo} />
       </div>
@@ -246,10 +249,7 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
         className="from-background/95 via-background/70 absolute inset-y-0 left-0 -z-10 w-[64%] bg-gradient-to-r via-55% to-transparent"
       />
       <div className="ml-6 flex h-full w-[48%] flex-col justify-center gap-1.5">
-        {/* `primary-ink`, not `primary`: the brand blue misses AA as 11 px text on the light fade. */}
-        <span className="text-primary-ink text-[11px] font-semibold tracking-widest uppercase">
-          {region.area}
-        </span>
+        <span className={REGION_KICKER}>{region.area}</span>
         <span className="text-foreground text-4xl leading-none font-bold tracking-tight">
           {region.name}
         </span>
@@ -308,7 +308,8 @@ function RegionTile({ region, height }: { region: PlannerMenuRegion; height: str
       href={region.href as '/'}
       prefetch={false}
       className={cn(
-        'group bg-muted focus-visible:ring-ring relative isolate block overflow-hidden rounded-2xl ring-1 ring-black/10 focus-visible:ring-2 focus-visible:outline-none dark:ring-white/10',
+        REGION_CARD,
+        'focus-visible:ring-ring block focus-visible:ring-2 focus-visible:outline-none',
         height
       )}
     >
@@ -321,9 +322,7 @@ function RegionTile({ region, height }: { region: PlannerMenuRegion; height: str
       />
       <span className="absolute right-3 bottom-3 left-3.5 flex items-end justify-between gap-2">
         <span className="min-w-0">
-          <span className="text-primary-ink block text-[10px] font-semibold tracking-widest uppercase">
-            {region.area}
-          </span>
+          <span className={cn(REGION_KICKER, 'block text-[10px]')}>{region.area}</span>
           <span className="text-foreground block text-xl leading-[1.1] font-bold text-balance break-words hyphens-auto">
             {region.name}
           </span>

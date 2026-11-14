@@ -385,6 +385,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`region-messages.ts`](../../lib/trip-regions/region-messages.ts)
 
 - `getRegionTranslations` _function_: A region's own copy on the server: `tripRegions.<slug>.<part>` (the hub's intro and FAQ, the best-time pages' titles, the planner's hotel names).
+- `getTripRegionWords` _function_: What a link into a region calls it (`tripRegions.<slug>.nav`): its name, its area, the name with its preposition and the hub's name.
 
 ### [`region-words.ts`](../../lib/trip-regions/region-words.ts)
 
@@ -458,10 +459,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `tripRegionLinks` _function_: A region answer reduced to its links, or `null` for a region the registry does not list as live (one the API curates before its hub exists), whose links would lead nowhere.
 - `regionParksOf` _function_: The region's parks among `keys`, each a park's UUID or its locale-free path, in the region's order and each once.
+- `findTripRegions` _function_: Every region that holds one of `keys`, each with the parks it holds, in the regions' order: the United States page holds parks of Orlando and of Southern California.
 - `findTripRegion` _function_: The first region that holds one of `keys`, with the parks it holds, or `null`.
 - `tripPlannerHref` _function_: The locale-relative address of a region's planner on a state, for `Link` from `@/i18n/navigation`. Without a state it is the bare chapter (`/orlando#planner`).
+- `plannerLinkRel` _function_: The `rel` of a link into the planner: `nofollow` where it carries a plan, one of endless URLs that canonical to the hub, as the hub's own "Plan these dates" links are; the bare chapter is an ordinary link.
 - `matchTripRegion` _function_: The region a search query names, or `null`. A query names a region when one of its words is the region's name ("orlando", or "orl" while typing), or when two words or more run along a resort's name ("disney world", "universal orlando").
-- Types: `TripRegionLinkPark`, `TripRegionLinks`
+- Types: `TripRegionLinkPark`, `TripRegionWords`, `TripRegionLinks`, `TripRegionMatch`
 
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 

@@ -80,6 +80,9 @@ const PAGES = [
   EP,
   `${EP}/silver-star`,
   `${EP}/wartezeiten-kalender`,
+  // A trip region's park: the planner tile under the rides, and on its calendar under the header.
+  '/de/parks/north-america/united-states/orlando/magic-kingdom-park',
+  '/de/parks/north-america/united-states/orlando/magic-kingdom-park/wartezeiten-kalender',
   `${PH}/durchschnittliche-wartezeiten`,
   `${PH}/mit-kindern`,
   '/de/parks/north-america/united-states/santa-clarita/six-flags-magic-mountain/x2',

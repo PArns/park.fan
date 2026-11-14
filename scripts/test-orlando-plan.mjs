@@ -96,7 +96,9 @@ import {
 } from '../lib/trip-regions/plan-when.ts';
 import {
   findTripRegion,
+  findTripRegions,
   matchTripRegion,
+  plannerLinkRel,
   regionParksOf,
   tripPlannerHref,
   tripRegionLinks,
@@ -2290,6 +2292,42 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       findTripRegion([links], ['id-bg'])?.parks.map((p) => p.slug),
     ],
     [null, ['busch-gardens-tampa']]
+  );
+  const california = {
+    slug: 'southern-california',
+    name: 'Southern California',
+    names: ['Southern California'],
+    parks: [
+      {
+        id: 'id-kbf',
+        slug: 'knotts-berry-farm',
+        name: "Knott's Berry Farm",
+        path: '/parks/north-america/united-states/buena-park/knotts-berry-farm',
+      },
+    ],
+  };
+  test(
+    'a country with parks of two regions finds both, in the regions order',
+    findTripRegions([links, california], ['id-kbf', 'id-epcot', 'id-mk']).map(
+      ({ region, parks }) => [region.slug, parks.map((p) => p.slug)]
+    ),
+    [
+      ['orlando', ['magic-kingdom-park', 'epcot']],
+      ['southern-california', ['knotts-berry-farm']],
+    ]
+  );
+  test(
+    'one region per park page: the first that holds it',
+    findTripRegion([links, california], ['id-kbf'])?.region.slug,
+    'southern-california'
+  );
+  test(
+    'a planner link with a plan is nofollow, the bare chapter is not',
+    [
+      plannerLinkRel(tripPlannerHref(links.slug, 'de', { parks: ['epcot'] })),
+      plannerLinkRel(tripPlannerHref(links.slug, 'de')),
+    ],
+    ['nofollow', undefined]
   );
   test(
     'the planner on a park, on a month of a park calendar, and bare',

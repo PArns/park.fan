@@ -826,9 +826,12 @@ test('a way into the planner reads in German, and so does a day begun with it sh
 });
 
 test('the ways through the site read in German, a value this build does not know as sent', () => {
-  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 18);
+  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 19);
   assert.equal(propValueLabel('block', 'trip_band'), 'Reiseplaner-Band');
-  assert.equal(Object.keys(SECTION_LABEL).length, 7);
+  assert.equal(propValueLabel('block', 'trip_tile'), 'Reiseplaner-Kachel');
+  assert.equal(Object.keys(SECTION_LABEL).length, 9);
+  assert.equal(propValueLabel('section', 'trip_tile'), 'Reiseplaner-Kachel');
+  assert.equal(propValueLabel('link', 'calendar'), 'Kalender der Region');
   assert.equal(Object.keys(NAV_MENU_LABEL).length, 7);
   assert.equal(propValueLabel('block', 'parks'), 'Parks im Beitrag');
   assert.equal(propValueLabel('block', 'sidebar'), 'sidebar');
@@ -840,10 +843,12 @@ test('the ways through the site read in German, a value this build does not know
 });
 
 test('a park page lists its places top to bottom, and FAQ positions by number', () => {
-  const places = ['faq', 'nearby', 'end', 'main_end'].map((value) => ({ value }));
+  const places = ['faq', 'trip_band', 'nearby', 'end', 'main_end', 'trip_tile'].map((value) => ({
+    value,
+  }));
   assert.deepEqual(
     sortPropValues('section', places).map((entry) => entry.value),
-    ['main_end', 'nearby', 'faq', 'end']
+    ['trip_tile', 'main_end', 'nearby', 'faq', 'end', 'trip_band']
   );
   const questions = ['10', '2', '4', '1'].map((value) => ({ value }));
   assert.deepEqual(
@@ -892,6 +897,30 @@ test('reach divides each place by its page type views, every place listed, at mo
     { reached: 10, share: 0.05 },
     { reached: 50, share: 1 },
   ]);
+});
+
+test('the planner tile is a row of the reach table only once it was seen', () => {
+  const views = { items: [{ value: 'park', views: 100, visits: 80, share: 1 }] };
+  const quiet = sectionReach({ rows: ['main_end'], cols: ['park'], cells: [] }, views);
+  assert.equal(
+    quiet.rows.some((row) => row.section === 'trip_tile'),
+    false
+  );
+  const seen = sectionReach(
+    {
+      rows: ['main_end', 'trip_tile'],
+      cols: ['park'],
+      cells: [
+        { row: 'main_end', col: 'park', count: 12 },
+        { row: 'trip_tile', col: 'park', count: 9 },
+      ],
+    },
+    views
+  );
+  assert.deepEqual(seen.rows.at(-1), {
+    section: 'trip_tile',
+    cells: [{ reached: 9, share: 0.09 }],
+  });
 });
 
 test('an event property reads its values, and 0 or nothing where it was not sent', () => {

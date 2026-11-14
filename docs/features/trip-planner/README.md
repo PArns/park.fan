@@ -69,12 +69,14 @@ is what the lists, the countdown, the share link and the sync count; an empty da
 
 Once the plan holds a planned day at a park of a trip region (Orlando's sixteen, from the API's
 region route through `/api/nav/trip-regions`), the list of its days ends on one quiet line,
-„Mehrere Tage in Orlando? Reiseplaner öffnen", that opens the region's
+„Mehrere Tage in Orlando · Reiseplaner öffnen", that opens the region's
 [trip planner](../orlando-planner.md) with the plan's parks of that region chosen
 (`PlannerTripRegionLink`). One per plan, never per day: under the panel's overview and under the
 planner page's list, so the day view and its phone sheet stay as they are. The regions are asked
 for only once such a plan exists. On a phone the press closes the sheet, which would cover the hub.
-The words are the park band's (`tripHub.band`, in the planner's lazy chunk). The day planner counts
+The words are the band's (`tripHub.band`, in the planner's lazy chunk), and the region's name with
+its preposition is the links' `words` (`/api/nav/trip-regions?locale=`); without them the line
+waits. The day planner counts
 no link out of itself, so the press is the site's `internal_link_clicked` with the block
 `trip_band`, and the arrival the trip planner's `trip_planner_started` with `source: link`.
 

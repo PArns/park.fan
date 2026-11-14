@@ -544,9 +544,12 @@
       "varHours": "Öffnungszeiten"
     },
     "band": {
-      "title": "Mehrere Tage in {region}?",
-      "planPark": "{park} in deine {region}-Reise einplanen",
+      "title": "Mehrere Tage {inRegion}",
+      "planPark": "{park} einplanen",
       "open": "Reiseplaner öffnen"
+    },
+    "tile": {
+      "line": "Du nennst deine Reisetage, der Planer sagt dir, welcher der {count} Parks an welchem Tag am leersten ist."
     }
   },
   "theme": {
@@ -3742,6 +3745,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando Besucherkalender",
         "calendarHint": "Welcher Park an welchem Tag, und ein Planer für die ganze Reise."
@@ -4157,6 +4161,7 @@
     "southern-california": {
       "nav": {
         "name": "Südkalifornien",
+        "inRegion": "in Südkalifornien",
         "area": "Los Angeles und San Diego",
         "calendar": "Südkalifornien Besucherkalender",
         "calendarHint": "Welcher der acht Parks an welchem Tag am leersten ist, und ein Planer für deine Reise."
@@ -4426,6 +4431,7 @@
     "japan": {
       "nav": {
         "name": "Japan",
+        "inRegion": "in Japan",
         "area": "Tokio bis Osaka",
         "calendar": "Japan Besucherkalender",
         "calendarHint": "Fünf Parks Tag für Tag, und ein Planer für die Reise durch mehrere Städte."
@@ -4759,6 +4765,7 @@
     "paris": {
       "nav": {
         "name": "Paris",
+        "inRegion": "in Paris",
         "area": "Frankreich",
         "calendar": "Besucherkalender Disneyland Paris & Parc Astérix",
         "calendarHint": "Welcher der drei Parks an welchem Tag, und wo du dafür übernachtest."

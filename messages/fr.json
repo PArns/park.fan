@@ -544,9 +544,12 @@
       "varHours": "Horaires d’ouverture"
     },
     "band": {
-      "title": "Plusieurs jours à {region} ?",
-      "planPark": "Ajouter {park} à ton voyage à {region}",
+      "title": "Plusieurs jours {inRegion}",
+      "planPark": "Ajouter {park} au voyage",
       "open": "Ouvrir le planificateur de voyage"
+    },
+    "tile": {
+      "line": "Tu donnes tes dates, le planificateur te dit lequel des {count} parcs est le plus calme chaque jour."
     }
   },
   "theme": {
@@ -1890,7 +1893,7 @@
     "avgWaitShort": "Ø {minutes} min",
     "heroHint": "Tapez pour chercher des parcs, des attractions, des spectacles et des restaurants",
     "trip": {
-      "title": "Planificateur de voyage pour {region}",
+      "title": "Planificateur de voyage {inRegion}",
       "hint": "Quel parc quel jour de ton voyage"
     }
   },
@@ -3742,6 +3745,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "à Orlando",
         "area": "Floride",
         "calendar": "Calendrier d’affluence Orlando",
         "calendarHint": "Quel parc quel jour, et un planificateur pour tout le voyage."
@@ -4157,6 +4161,7 @@
     "southern-california": {
       "nav": {
         "name": "Californie du Sud",
+        "inRegion": "en Californie du Sud",
         "area": "Los Angeles et San Diego",
         "calendar": "Calendrier d’affluence Californie du Sud",
         "calendarHint": "Lequel des huit parcs est le plus calme quel jour, et un planificateur pour ton voyage."
@@ -4426,6 +4431,7 @@
     "japan": {
       "nav": {
         "name": "Japon",
+        "inRegion": "au Japon",
         "area": "De Tokyo à Osaka",
         "calendar": "Calendrier d’affluence Japon",
         "calendarHint": "Cinq parcs jour par jour, et un planificateur pour un voyage entre plusieurs villes."
@@ -4759,6 +4765,7 @@
     "paris": {
       "nav": {
         "name": "Paris",
+        "inRegion": "à Paris",
         "area": "France",
         "calendar": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
         "calendarHint": "Quel parc quel jour parmi les trois, et où dormir pour chacun."

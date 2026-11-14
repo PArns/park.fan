@@ -330,7 +330,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`use-trip-region-links.ts`](../../lib/hooks/use-trip-region-links.ts)
 
-- `useTripRegionLinks` _hook_: The trip regions' names and parks from `/api/nav/trip-regions`, once `enabled`: what the search palette matches a query against and the day planner checks its parks against.
+- `useTripRegionLinks` _hook_: The trip regions' names and parks from `/api/nav/trip-regions`, once `enabled`, each with its words in the reader's language: what the search palette matches a query against and the day planner checks its parks against.
 
 ### [`use-wait-in-tab-title.ts`](../../lib/hooks/use-wait-in-tab-title.ts)
 

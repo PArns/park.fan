@@ -544,9 +544,12 @@
       "varHours": "Horarios"
     },
     "band": {
-      "title": "¿Varios días en {region}?",
-      "planPark": "Añade {park} a tu viaje a {region}",
+      "title": "Varios días {inRegion}",
+      "planPark": "Añadir {park} al viaje",
       "open": "Abrir el planificador de viajes"
+    },
+    "tile": {
+      "line": "Tú das las fechas y el planificador te dice cuál de los {count} parques tiene menos gente cada día."
     }
   },
   "theme": {
@@ -3742,6 +3745,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "en Orlando",
         "area": "Florida",
         "calendar": "Calendario de afluencia de Orlando",
         "calendarHint": "Qué parque qué día, y un planificador para todo el viaje."
@@ -4157,6 +4161,7 @@
     "southern-california": {
       "nav": {
         "name": "California del Sur",
+        "inRegion": "en California del Sur",
         "area": "Los Ángeles y San Diego",
         "calendar": "Calendario de afluencia de California del Sur",
         "calendarHint": "Cuál de los ocho parques tiene menos gente cada día, y un planificador para tu viaje."
@@ -4426,6 +4431,7 @@
     "japan": {
       "nav": {
         "name": "Japón",
+        "inRegion": "en Japón",
         "area": "De Tokio a Osaka",
         "calendar": "Calendario de afluencia de Japón",
         "calendarHint": "Cinco parques día a día, y un planificador para un viaje por varias ciudades."
@@ -4759,6 +4765,7 @@
     "paris": {
       "nav": {
         "name": "París",
+        "inRegion": "en París",
         "area": "Francia",
         "calendar": "Calendario de afluencia de Disneyland Paris y Parc Astérix",
         "calendarHint": "Qué parque de los tres qué día, y dónde dormir para cada uno."

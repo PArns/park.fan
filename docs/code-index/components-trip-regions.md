@@ -241,9 +241,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.
 - `useSchoolBreaks` _hook_: The school-holiday regions the When mode's picker offers, read once when the picker is shown. The data changes a few times a year; the relay keeps it a day.
 
+### [`region-card-classes.ts`](../../components/trip-regions/region-card-classes.ts)
+
+- `REGION_CARD` _const_: The card: the muted ground the scene is drawn on, a hairline ring in either theme and the band's rounding. `isolate` keeps a picture's `-z-10` inside it.
+- `REGION_KICKER` _const_: The line over the card's name, where the region is or what the card is for. `primary-ink`, not `primary`: the brand blue misses AA as 11 px text on the light fade.
+- `REGION_PILL` _const_: The cards' buttons are the site's (`buttonVariants`), drawn as pills as in the draft.
+
 ### [`trip-planner-band.tsx`](../../components/trip-regions/trip-planner-band.tsx)
 
-- `TripPlannerBand` _component_: The way from a page about one of a trip region's parks into the region's planner: "Several days in Orlando? Plan Magic Kingdom into your Orlando trip".
+- `TripPlannerBand` _component_: The way from a page about a trip region's parks into the region's planner, one line per region: „Mehrere Tage in Orlando", „Magic Kingdom einplanen" or „Reiseplaner öffnen", and the hub by its name.
+
+### [`trip-planner-tile.tsx`](../../components/trip-regions/trip-planner-tile.tsx)
+
+- `TripPlannerTile` _component_: A trip region's planner on the pages of one of its parks: the region's Parky scene, "Mehrere Tage in Orlando", what the planner does in one line, „Magic Kingdom einplanen" into the planner with the park chosen (and on a calendar month that …
 
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
