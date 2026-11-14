@@ -12,6 +12,7 @@ import {
   draftProduct,
   draftTicket,
   entryMarket,
+  ticketHomeMarket,
   isEveryDayTicket,
   setTickets,
   soldLengths,
@@ -478,7 +479,8 @@ function EntryList({
   onPick: (entry: TicketEntry) => void;
 }) {
   const t = useTranslations('tripPlanner.tickets');
-  const { live, tickets: catalog } = usePlanContext();
+  const { live, region, tickets: catalog, ticketStep } = usePlanContext();
+  const homeMarket = ticketHomeMarket(region, ticketStep);
   const resortWord = useResortWord();
   const labelId = useId();
   return (
@@ -494,7 +496,7 @@ function EntryList({
           <li key={entry.key}>
             <EntryButton
               entry={entry}
-              market={entryMarket(entry, catalog)}
+              market={entryMarket(entry, catalog, homeMarket)}
               disabled={!live}
               onClick={() => onPick(entry)}
               focusKey={index === 0 ? draft.id : undefined}
@@ -594,7 +596,7 @@ function TicketFields({
 }) {
   const t = useTranslations('tripPlanner.tickets');
   const tRegion = useTranslations('tripRegion.planner.tickets');
-  const { live, locale, state, today, tickets: catalog, ticketStep } = usePlanContext();
+  const { live, locale, region, state, today, tickets: catalog, ticketStep } = usePlanContext();
   const hopperWord = useHopperWord();
   const fallbackStart = state.from ?? today;
   const set = (patch: Partial<TicketDraft>) => step.change(draft.id, patch);
@@ -640,7 +642,9 @@ function TicketFields({
         <span className="flex min-w-0 flex-1 flex-col gap-0.5">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm font-semibold">
             {tRegion(`entry.${entry.key}.title`)}
-            {entryMarket(entry, catalog) && <MarketTag market="intl" />}
+            {entryMarket(entry, catalog, ticketHomeMarket(region, ticketStep)) && (
+              <MarketTag market="intl" />
+            )}
           </span>
           <EntryHint entry={entry} />
         </span>

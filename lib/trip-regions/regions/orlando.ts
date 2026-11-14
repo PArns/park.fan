@@ -182,5 +182,6 @@ export const ORLANDO: TripRegionConfig = {
       parks: ['universal-studios-florida', 'universal-islands-of-adventure'],
     },
     hopperNames: { 'walt-disney-world': 'disney', 'universal-orlando': 'universal' },
+    homeMarket: 'us',
   },
 };

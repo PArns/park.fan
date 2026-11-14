@@ -15,7 +15,7 @@ import type {
   PlanTicketSuggestion,
 } from './plan';
 import type { TripTicketStep } from './registry';
-import type { TicketLink, TicketProduct } from './types';
+import type { TicketLink, TicketProduct, TripRegion } from './types';
 
 /**
  * Tickets in the trip planner: the region's catalog read for the step (which products a resort
@@ -108,13 +108,28 @@ export function entryOfProduct(step: TripTicketStep, product: string): TicketEnt
 }
 
 /**
- * Whether an entry's ticket is sold outside the US only, which its tag says ("Sold outside the US").
- * The catalog's `markets` lack `us` for those; no residency rule is claimed, since the sellers'
- * pages state none.
+ * The market code of a ticket sold to anyone at the operator's: the region's `ticketMarkets.home`,
+ * else the registry's for an API that does not send it.
  */
-export function entryMarket(entry: TicketEntry, catalog: TicketCatalog): 'intl' | null {
+export function ticketHomeMarket(
+  region: Pick<TripRegion, 'ticketMarkets'>,
+  step: Pick<TripTicketStep, 'homeMarket'>
+): string {
+  return region.ticketMarkets?.home ?? step.homeMarket;
+}
+
+/**
+ * Whether an entry's ticket is sold abroad only, which its tag says ("Sold outside the US"). The
+ * catalog's `markets` lack the region's home market (`ticketHomeMarket`) for those; no residency
+ * rule is claimed, since the sellers' pages state none.
+ */
+export function entryMarket(
+  entry: TicketEntry,
+  catalog: TicketCatalog,
+  homeMarket: string
+): 'intl' | null {
   const markets = catalog.get(entry.products[0])?.markets ?? [];
-  return markets.includes('us') ? null : 'intl';
+  return markets.includes(homeMarket) ? null : 'intl';
 }
 
 // ── A product's rules ─────────────────────────────────────────────────────────
@@ -699,7 +714,7 @@ export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl
  */
 export function orderTicketLinks(
   source: { links?: readonly TicketLink[]; shopUrl?: string },
-  visitor: { locale: string; market: 'us' | 'uk' | 'intl' | null },
+  visitor: { locale: string; market: string | null },
   officialSeller: string
 ): TicketLink[] {
   const links: TicketLink[] = source.links?.length
