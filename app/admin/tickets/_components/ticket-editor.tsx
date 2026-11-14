@@ -426,7 +426,7 @@ export function TicketEditor({
               <Field
                 label="Märkte"
                 error={under('markets')}
-                hint="Wem das Ticket verkauft wird. Der Vorschlag ohne Tickets nimmt nur Produkte für die USA."
+                hint="Wo das Ticket verkauft wird. Die Website zeigt es als Hinweis („UK-Shop“), kein Filter: Der Vorschlag ohne Tickets nimmt jedes Produkt mit Vorschlagsrang."
               >
                 <ToggleChips
                   label="Märkte"
@@ -1305,7 +1305,11 @@ function LinkRow({
         </p>
       )}
       <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <Field label="Für Märkte" error={error('markets')} hint="Leer: für alle.">
+        <Field
+          label="Markt"
+          error={error('markets')}
+          hint="Wo der Händler verkauft, als Hinweis am Link. Leer: überall."
+        >
           <ToggleChips
             label={`Link ${index + 1}: Märkte`}
             options={MARKET_OPTIONS}

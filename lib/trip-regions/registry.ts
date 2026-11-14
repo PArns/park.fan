@@ -60,8 +60,8 @@ export interface TripTicketStep {
   resorts: readonly string[];
   entries: readonly TicketEntry[];
   /**
-   * The market code a ticket sold to anyone at the operator's carries (`us` in Orlando), for an
-   * API that does not send the region's `ticketMarkets` yet.
+   * The market code of the operators' own shops (`us` in Orlando), for an API that does not send
+   * the region's `ticketMarkets` yet.
    */
   homeMarket: string;
   /**

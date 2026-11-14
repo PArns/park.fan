@@ -272,7 +272,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
 - `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
 - `ticketHomeMarket` _function_: The market code of a ticket sold to anyone at the operator's: the region's `ticketMarkets.home`, else the registry's for an API that does not send it.
-- `entryMarket` _function_: Whether an entry's ticket is sold abroad only, which its tag says ("Sold outside the US").
+- `marketLabel` _function_: Where a ticket or a link is sold when the operators' own shops (`homeMarket`) do not sell it, for its label ("UK shop"); `null` otherwise.
+- `entryMarket` _function_: The label of an entry's ticket in the step: its first product's `marketLabel`.
+- `linkMarket` _function_: The label beside a purchase link: its own `markets`, and on the official link the product's, since the operator's shop for a UK ticket is its UK shop.
 - `soldLengths` _function_: The lengths a product sells, or `null` for a pass or a product with only a window.
 - `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
 - `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.
@@ -295,7 +297,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `suggestionsByStart` _function_: The suggestions in the order of their first day, for the one sentence that names them.
 - `suggestionGroups` _function_: The suggestions grouped by resort, product and length, each group where its first ticket starts: six day tickets at Tokyo Disney Resort are one group of six.
 - `adoptSuggestions` _function_: "Use these as your tickets": the suggestions written as owned tickets, each with its start and, where the plan was shown with it, the hopper.
-- `longStayTickets` _function_: "From the UK or Ireland? The 14-day tickets fit this trip": the region's 14-day tickets sold abroad (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
+- `longStayTickets` _function_: "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the resorts a long trip's suggestions name, without a first day, so the plan picks it.
 - `hopperGains` _function_: What the hopper adds, from the fields the API sends: each evening at a second park and each day with two parks by date (more than two by count), the parks that fit only with it, and the minutes per ride. Empty when it adds nothing.
 - `needsConnectedHop` _function_: Whether a set of planned parks holds both of the region's `connectedParks` (Universal Studios and Islands of Adventure, with the Hogwarts Express between them), a ride only a hopper takes.
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
@@ -304,7 +306,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
 - `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: those for the visitor's locale or market first, the rest after, each group in the admin's order, which is the display order. The official link keeps its place.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `TicketDayInfo`, `OwnedUse`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 

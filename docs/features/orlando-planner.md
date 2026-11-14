@@ -219,10 +219,12 @@ Without a catalog the step and the card are not drawn, plan first works as befor
 - **No question.** Opening the step is the answer (`trip_tickets_answered` with `yes`, once, kept
   in `parkfan_<region>_tickets_asked`). Without tickets the plan suggests what to buy, and a link
   someone shares is never asked about tickets.
-- **The products.** Each resort lists the operators' tickets by name, with their rule in one line;
-  every product whose catalog `markets` lack `us` is tagged "Sold outside the US". The tag reads
-  "not us" on purpose: the sellers' pages state no residency rule, so no tag claims one (the API's
-  `markets` for the Magic Tickets list only `uk`, a follow-up there). Fields appear only where a
+- **The products.** Each resort lists every ticket of its operators by name, with their rule in
+  one line, whatever the market it is sold in: a visitor may buy a UK ticket as readily as a US
+  one. A product the operators' own shops (`ticketMarkets.home`, `us`) do not sell carries a tag
+  with where it is sold, "UK shop" or "International shop" (`marketLabel`,
+  `tripPlanner.tickets.market`). The tag is information, never a filter, and claims no residency
+  rule: the catalog has no field for one. Fields appear only where a
   product varies (days, the hopper as Yes / No / Not sure, water parks or Volcano Bay, the first
   day). Universal's two UK 14-day tickets are one entry that the first day resolves (`onSale`);
   "Not sure which" plans the strictest product of its length; the Disney and Universal Combo
@@ -239,11 +241,15 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   place at a desk: per resort its ticket and window, what the hopper adds (by date, from the
   verdict's lists; "Worth adding" only where the API recommends it), the Hogwarts Express line where
   both Universal parks are planned, "Show the plan with Park Hopper" (`hopper=<resort>`), the shop
-  link and "Use these as your tickets" (written with `blocks=1`, so the days stay). On a trip of ten
-  days or more, a line offers the 14-day tickets sold outside the US ("Plan with these").
+  link and "Use these as your tickets" (written with `blocks=1`, so the days stay). The API
+  suggests from every market, so a long stay may get a UK 14-day ticket itself, its shop link tagged
+  "UK shop". On a trip of ten days or more, a line offers the 14-day tickets the UK shops sell
+  ("Plan with these"), to every visitor.
 - **Where to buy.** A suggestion's details and the 14-day alternatives list the product's `links`
   in the admin's order, those for the visitor's locale or market (from the browser's first
-  language) first (`orderTicketLinks`); the official shop keeps its place. Every link opens in a
+  language) first (`orderTicketLinks`); the official shop keeps its place. Every link is shown to
+  every visitor; one sold in a market other than the operators' own (its `markets`, on the official
+  link the product's) carries the same tag as the step, "UK shop" (`linkMarket`). Every link opens in a
   new tab with `referrerPolicy="origin"` and no `noreferrer`, so the seller sees `https://park.fan/`
   and never the trip's path (the site's own policy is `same-origin`); a sponsored link is
   `rel="sponsored nofollow noopener"` and carries a visible "Partner link" label that explains the

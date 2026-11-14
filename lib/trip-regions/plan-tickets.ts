@@ -118,18 +118,42 @@ export function ticketHomeMarket(
   return region.ticketMarkets?.home ?? step.homeMarket;
 }
 
+/** The shop a ticket or a purchase link is labelled with: a UK shop, or another one abroad. */
+export type TicketMarketLabel = 'uk' | 'intl';
+
 /**
- * Whether an entry's ticket is sold abroad only, which its tag says ("Sold outside the US"). The
- * catalog's `markets` lack the region's home market (`ticketHomeMarket`) for those; no residency
- * rule is claimed, since the sellers' pages state none.
+ * Where a ticket or a link is sold when the operators' own shops (`homeMarket`) do not sell it, for
+ * its label ("UK shop"); `null` otherwise. A label and never a filter: a visitor may buy from any
+ * shop, so every product and link stays on offer, and no residency rule is claimed, since the
+ * catalog has no field for one.
  */
+export function marketLabel(
+  markets: readonly string[] | undefined,
+  homeMarket: string
+): TicketMarketLabel | null {
+  if (!markets?.length || markets.includes(homeMarket)) return null;
+  return markets.includes('uk') ? 'uk' : 'intl';
+}
+
+/** The label of an entry's ticket in the step: its first product's {@link marketLabel}. */
 export function entryMarket(
   entry: TicketEntry,
   catalog: TicketCatalog,
   homeMarket: string
-): 'intl' | null {
-  const markets = catalog.get(entry.products[0])?.markets ?? [];
-  return markets.includes(homeMarket) ? null : 'intl';
+): TicketMarketLabel | null {
+  return marketLabel(catalog.get(entry.products[0])?.markets, homeMarket);
+}
+
+/**
+ * The label beside a purchase link: its own `markets`, and on the official link the product's,
+ * since the operator's shop for a UK ticket is its UK shop.
+ */
+export function linkMarket(
+  link: Pick<TicketLink, 'markets' | 'official'>,
+  productMarkets: readonly string[] | undefined,
+  homeMarket: string
+): TicketMarketLabel | null {
+  return marketLabel(link.markets ?? (link.official ? productMarkets : undefined), homeMarket);
 }
 
 // ── A product's rules ─────────────────────────────────────────────────────────
@@ -543,9 +567,8 @@ export function adoptSuggestions(
 }
 
 /**
- * "From the UK or Ireland? The 14-day tickets fit this trip": the region's 14-day tickets sold
- * abroad (Disney's and Universal's) for the resorts a long trip's suggestions name, without a
- * first day, so the plan picks it.
+ * "UK shops sell 14-day tickets": the region's 14-day tickets (Disney's and Universal's) for the
+ * resorts a long trip's suggestions name, without a first day, so the plan picks it.
  */
 export function longStayTickets(
   step: TripTicketStep,

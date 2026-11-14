@@ -13,6 +13,7 @@ import {
   entryOfProduct,
   hopperGains,
   hopperOn,
+  linkMarket,
   longStayTickets,
   needsConnectedHop,
   orderTicketLinks,
@@ -22,6 +23,7 @@ import {
   setTickets,
   suggestionGroups,
   suggestionsByStart,
+  ticketHomeMarket,
   ticketLength,
   toggleHopper,
   windowLength,
@@ -50,7 +52,13 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/
 import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PLAN_WIDE_QUERY } from './plan-setup';
-import { productName, useHopperWord, useResortWord, useTicketName } from './plan-ticket-words';
+import {
+  productName,
+  TicketMarketTag,
+  useHopperWord,
+  useResortWord,
+  useTicketName,
+} from './plan-ticket-words';
 import { oneFullStop } from '@/lib/utils/metadata';
 
 /** The result's ways back into the setup, each told where it was pressed (for the statistic). */
@@ -819,7 +827,8 @@ function ShopLink({
 /**
  * Where to buy a ticket: the product's links in the visitor's order (`orderTicketLinks`), each in a
  * new tab with park.fan as its referrer (`ticketLinkAttributes`), the operator's own shop marked,
- * and a sponsored one with the "Partner link" label beside it, which says what that means.
+ * a shop abroad tagged with where it sells ("UK shop", `linkMarket`), and a sponsored one with the
+ * "Partner link" label beside it, which says what that means.
  */
 function PurchaseLinks({
   source,
@@ -837,8 +846,10 @@ function PurchaseLinks({
   title?: boolean;
 }) {
   const t = useTranslations('tripPlanner.tickets');
-  const { locale } = usePlanContext();
+  const { locale, region, tickets: catalog, ticketStep } = usePlanContext();
   const resortWord = useResortWord();
+  const productMarkets = catalog.get(product)?.markets;
+  const home = ticketHomeMarket(region, ticketStep);
   // A string, never `navigator.languages` itself: that is a new array on every read.
   const language = useSyncExternalStore(
     noSubscribe,
@@ -857,29 +868,35 @@ function PurchaseLinks({
     <div className="flex flex-col" data-plan-purchase-links="">
       {title && <p className="text-foreground/75 pt-1">{t('links.title')}</p>}
       <ul className="flex flex-col">
-        {links.map((link, index) => (
-          <li key={link.url} className="flex flex-wrap items-center gap-x-2">
-            <a
-              href={link.url}
-              {...ticketLinkAttributes(link)}
-              onClick={() => count(link, index)}
-              onAuxClick={(event) => event.button === 1 && count(link, index)}
-              data-ticket-link={link.sponsored ? 'sponsored' : link.official ? 'official' : 'plain'}
-              className={cn(
-                'text-primary-ink inline-flex min-h-11 items-center gap-1 py-2 font-medium underline-offset-4 hover:underline',
-                PLAN_FOCUS
-              )}
-            >
-              {link.official ? t('links.official', { seller: link.seller }) : link.seller}
-              <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
-              <span className="sr-only">
-                {link.sponsored ? `${t('partner.label')}. ` : ''}
-                {t('newTab')}
-              </span>
-            </a>
-            {link.sponsored && <PartnerLabel />}
-          </li>
-        ))}
+        {links.map((link, index) => {
+          const market = linkMarket(link, productMarkets, home);
+          return (
+            <li key={link.url} className="flex flex-wrap items-center gap-x-2">
+              <a
+                href={link.url}
+                {...ticketLinkAttributes(link)}
+                onClick={() => count(link, index)}
+                onAuxClick={(event) => event.button === 1 && count(link, index)}
+                data-ticket-link={
+                  link.sponsored ? 'sponsored' : link.official ? 'official' : 'plain'
+                }
+                className={cn(
+                  'text-primary-ink inline-flex min-h-11 items-center gap-1 py-2 font-medium underline-offset-4 hover:underline',
+                  PLAN_FOCUS
+                )}
+              >
+                {link.official ? t('links.official', { seller: link.seller }) : link.seller}
+                <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
+                <span className="sr-only">
+                  {link.sponsored ? `${t('partner.label')}. ` : ''}
+                  {t('newTab')}
+                </span>
+              </a>
+              {market && <TicketMarketTag market={market} />}
+              {link.sponsored && <PartnerLabel />}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

@@ -3718,6 +3718,10 @@
         "title": "Preise und Tickets",
         "official": "{seller} (offizieller Shop)"
       },
+      "market": {
+        "uk": "UK-Shop",
+        "intl": "Internationaler Shop"
+      },
       "partner": {
         "label": "Partnerlink",
         "note": "Kaufst du über diesen Link, bekommt park.fan eine Provision. Der Preis ändert sich für dich nicht."
@@ -4008,9 +4012,6 @@
             "universal": "Park-to-Park"
           },
           "mixNote": "Jedes Ticket behält seine eigenen Daten. Wo beide gelten, mischt der Plan Disney- und Universal-Tage nur, wenn das pro Fahrt mindestens 3 Min. spart.",
-          "market": {
-            "intl": "Außerhalb der USA verkauft"
-          },
           "entry": {
             "wdw-dated": {
               "title": "Datiertes Ticket, 1 bis 10 Tage",
@@ -4134,9 +4135,9 @@
           },
           "hogwarts": "Für den Hogwarts Express zwischen Universal Studios und Islands of Adventure brauchst du Park-to-Park.",
           "longStay": {
-            "line": "Außerhalb der USA gibt es 14-Tage-Tickets für Disney und Universal, auch als Combo Ticket.",
+            "line": "UK-Shops verkaufen 14-Tage-Tickets für Disney und Universal, auch als Combo Ticket.",
             "plan": "Damit planen",
-            "detail": "Die 14-Tage-Tickets in den Shops der Betreiber außerhalb der USA:"
+            "detail": "Die 14-Tage-Tickets in den UK-Shops der Betreiber:"
           },
           "mixing": {
             "used": "Wo beide Tickets gelten, mischt der Plan Disney- und Universal-Tage: etwa {minutes} Min. weniger pro Fahrt als getrennt.",
@@ -4327,9 +4328,6 @@
           },
           "hopperName": {
             "disney": "Park Hopper"
-          },
-          "market": {
-            "intl": "Außerhalb der USA verkauft"
           },
           "entry": {
             "dlr-multi-day": {
@@ -4676,9 +4674,6 @@
             "universal-studios-japan": "USJ",
             "fuji-q-highland": "Fuji-Q",
             "legoland-japan": "LEGOLAND"
-          },
-          "market": {
-            "intl": "Außerhalb Japans verkauft"
           },
           "entry": {
             "tdr-1-day": {

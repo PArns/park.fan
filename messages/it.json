@@ -3718,6 +3718,10 @@
         "title": "Prezzi e biglietti",
         "official": "{seller} (negozio ufficiale)"
       },
+      "market": {
+        "uk": "Negozio britannico",
+        "intl": "Negozio internazionale"
+      },
       "partner": {
         "label": "Link di affiliazione",
         "note": "Se compri tramite questo link, park.fan riceve una commissione. Il prezzo per te non cambia."
@@ -4008,9 +4012,6 @@
             "universal": "park-to-park"
           },
           "mixNote": "Ogni biglietto tiene le sue date. Dove valgono entrambi, il piano mescola giorni Disney e Universal solo se fa risparmiare almeno 3 min per attrazione.",
-          "market": {
-            "intl": "Venduto fuori dagli USA"
-          },
           "entry": {
             "wdw-dated": {
               "title": "Biglietto con data, da 1 a 10 giorni",
@@ -4134,9 +4135,9 @@
           },
           "hogwarts": "Per l’Hogwarts Express fra Universal Studios e Islands of Adventure serve il park-to-park.",
           "longStay": {
-            "line": "Fuori dagli USA ci sono biglietti da 14 giorni per Disney e Universal, anche come Combo Ticket.",
+            "line": "I negozi britannici vendono biglietti da 14 giorni per Disney e Universal, anche come Combo Ticket.",
             "plan": "Pianifica con questi",
-            "detail": "I biglietti da 14 giorni nei negozi dei parchi fuori dagli USA:"
+            "detail": "I biglietti da 14 giorni nei negozi britannici dei parchi:"
           },
           "mixing": {
             "used": "Dove valgono entrambi i biglietti, il piano mescola giorni Disney e Universal: circa {minutes} min in meno per attrazione che tenendoli separati.",
@@ -4327,9 +4328,6 @@
           },
           "hopperName": {
             "disney": "Park Hopper"
-          },
-          "market": {
-            "intl": "Venduto fuori dagli USA"
           },
           "entry": {
             "dlr-multi-day": {
@@ -4676,9 +4674,6 @@
             "universal-studios-japan": "USJ",
             "fuji-q-highland": "Fuji-Q",
             "legoland-japan": "LEGOLAND"
-          },
-          "market": {
-            "intl": "Venduto fuori dal Giappone"
           },
           "entry": {
             "tdr-1-day": {
