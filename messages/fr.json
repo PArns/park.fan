@@ -3924,7 +3924,9 @@
         "hintNoEarly": "{hint}, sans entrée anticipée",
         "area": "Dans quel quartier ?",
         "areaLead": "Les minutes sur les cartes sont les trajets vers tes parcs.",
-        "areaOfHotel": "Ton hôtel est dans le quartier {area}, il est donc déjà choisi."
+        "areaOfHotel": "Ton hôtel est dans le quartier {area}, il est donc déjà choisi.",
+        "mapPark": "Parc",
+        "mapArea": "Quartier"
       },
       "route": {
         "arrive": "Où arrives-tu ?",

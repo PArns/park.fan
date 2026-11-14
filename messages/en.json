@@ -3924,7 +3924,9 @@
         "hintNoEarly": "{hint}, no early entry",
         "area": "Which area?",
         "areaLead": "The minutes on the cards are the ways to your parks.",
-        "areaOfHotel": "Your hotel is in {area}, so that area is already chosen."
+        "areaOfHotel": "Your hotel is in {area}, so that area is already chosen.",
+        "mapPark": "Park",
+        "mapArea": "Area"
       },
       "route": {
         "arrive": "Where do you arrive?",

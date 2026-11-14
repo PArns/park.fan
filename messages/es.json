@@ -3924,7 +3924,9 @@
         "hintNoEarly": "{hint}, sin entrada anticipada",
         "area": "¿En qué zona?",
         "areaLead": "Los minutos de las tarjetas son los trayectos a tus parques.",
-        "areaOfHotel": "Tu hotel está en la zona {area}, así que ya está elegida."
+        "areaOfHotel": "Tu hotel está en la zona {area}, así que ya está elegida.",
+        "mapPark": "Parque",
+        "mapArea": "Zona"
       },
       "route": {
         "arrive": "¿Dónde llegas?",
