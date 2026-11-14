@@ -211,8 +211,8 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
         name={parkName}
         geo={{ continent, country, city }}
         timezone={park.timezone}
-        backgroundImage={getParkBackgroundImage(park.slug)}
-        backgroundPosition={getCardObjectPosition(park.slug)}
+        backgroundImage={getParkBackgroundImage(park)}
+        backgroundPosition={getCardObjectPosition(park)}
       />
       <ParkPageShell
         park={park}

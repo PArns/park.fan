@@ -50,6 +50,7 @@ import {
   MEDIA_IMAGE_EXTENSIONS,
   normalizeSidecar,
 } from '../lib/media/sidecar.mjs';
+import { imageParkKey } from '../lib/media/park-path.mjs';
 import { foldText, tokenize } from '../lib/media/tokenize.mjs';
 import { paintedSize } from '../lib/media/crop-box.mjs';
 
@@ -340,9 +341,9 @@ async function build() {
     return a.id.localeCompare(b.id);
   });
 
-  auditRoles(images);
   const catalog = await loadCatalog();
   const parkTables = writeParksManifest(images, catalog) ?? { byPath: {}, bySlug: {} };
+  auditRoles(images, parkTables.bySlug);
   await verifySlugs(images, catalog);
 
   // Flatten the searchable surface once, here, so runtime search never has to
@@ -627,29 +628,29 @@ async function verifySlugs(images, catalog) {
 /**
  * Roles are claims about uniqueness ("this is THE background for Europa-Park"),
  * so a second claimant is a data error the build should surface rather than
- * resolve by array order.
+ * resolve by array order. A park is its path, as the lookups file it, so Paris
+ * and Anaheim each hold one background under the one slug.
  */
-function auditRoles(images) {
+function auditRoles(images, pathBySlug) {
   const backgrounds = new Map();
   const rideCards = new Map();
 
   for (const img of images) {
+    const park = imageParkKey(img, pathBySlug);
     if (img.roles.includes('park-background')) {
-      if (!img.park) warn(`${img.id}: role park-background but no park set`);
-      else if (backgrounds.has(img.park)) {
-        warn(
-          `park ${img.park}: two park-background images (${backgrounds.get(img.park)}, ${img.id})`
-        );
-      } else backgrounds.set(img.park, img.id);
+      if (!park) warn(`${img.id}: role park-background but no park set`);
+      else if (backgrounds.has(park)) {
+        warn(`park ${park}: two park-background images (${backgrounds.get(park)}, ${img.id})`);
+      } else backgrounds.set(park, img.id);
     }
     if (img.roles.includes('ride-card')) {
-      if (!img.park || !img.ride) warn(`${img.id}: role ride-card needs both park and ride`);
+      if (!park || !img.ride) warn(`${img.id}: role ride-card needs both park and ride`);
       else {
         // One claim per ride the card answers for — `getRideImage` resolves alsoRides
         // through the same `ride-card` preference, so a second claimant there is the
         // same data error as a second claimant on the primary ride.
         for (const slug of [img.ride, ...img.alsoRides]) {
-          const key = `${img.park}/${slug}`;
+          const key = `${park}/${slug}`;
           if (rideCards.has(key))
             warn(`ride ${key}: two ride-card images (${rideCards.get(key)}, ${img.id})`);
           else rideCards.set(key, img.id);

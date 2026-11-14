@@ -94,8 +94,8 @@ function toFeaturedPark(park: Omit<ViewedPark, 'views'>): FeaturedPark {
     countryName: park.countryName,
     countryCode: park.countryCode,
     href: park.href,
-    backgroundImage: getParkBackgroundImage(park.slug),
-    backgroundPosition: getCardObjectPosition(park.slug),
+    backgroundImage: getParkBackgroundImage({ slug: park.slug, url: park.href }),
+    backgroundPosition: getCardObjectPosition({ slug: park.slug, url: park.href }),
   };
 }
 

@@ -142,7 +142,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 
 Unique roles move; they are never shared. `ride-card` and `park-background` name THE photo of a ride or a park, and `getRideImage` takes the first holder, so a second one would hide the photo just chosen.
 
-- `uniqueClaims` _function_: Every uniqueness key an image claims, e.g. `ride-card:europa-park/voltron`.
+- `uniqueClaims` _function_: Every uniqueness key an image claims, e.g. `ride-card:europe/germany/rust/europa-park/voltron`.
 - `rolesToYield` _function_: The roles `other` has to give up so that `claims` stay unique. A role is one flag per image, so a card that answers for two rides through `alsoRides` loses `ride-card` for both.
 - `idOfSidecarPath` _function_: `public/media/europa-park/voltron.json` → `europa-park/voltron`.
 - `handOverUniqueRoles` _function_: Takes every unique role the `claimants` claim from every other holder of it. `read` must answer with the file as it stands on the session branch: rebuilding it from the manifest would undo an earlier edit in the same session.

@@ -105,6 +105,7 @@ export async function GET(request: Request) {
 
   const park = await getParkByGeoPathFreshWithoutForecasts(continent, country, city, parkSlug);
   if (!park) return NextResponse.json({ error: 'Park not found' }, { status: 404 });
+  const parkLookup = { slug: parkSlug, url: `${continent}/${country}/${city}/${parkSlug}` };
 
   // Sequential rather than in parallel with the park: losing this costs one layer
   // of the ordering, not the answer, and a cold aggregate retries for seconds.
@@ -142,7 +143,7 @@ export async function GET(request: Request) {
       isCurrentlyInSeason: attraction.isCurrentlyInSeason ?? null,
       // `getRideImages`, not a folder listing: a photo in another collection, or one naming the
       // ride in `alsoRides`, answers for it too.
-      hasPhoto: inSession || getRideImages(parkSlug, attraction.slug).length > 0,
+      hasPhoto: inSession || getRideImages(parkLookup, attraction.slug).length > 0,
       inSession,
     };
   });
@@ -157,7 +158,7 @@ export async function GET(request: Request) {
         longitude: park.longitude ?? null,
         timezone: park.timezone ?? null,
         /** The park's own background photo — the gap the ride list cannot show. */
-        hasBackground: getParkImages(parkSlug).some((image) =>
+        hasBackground: getParkImages(parkLookup).some((image) =>
           image.roles.includes('park-background')
         ),
         /**
@@ -166,7 +167,7 @@ export async function GET(request: Request) {
          */
         takenNames: [
           ...new Set([
-            ...getParkImages(parkSlug)
+            ...getParkImages(parkLookup)
               .filter((image) => image.collection === parkSlug)
               .map((image) => image.id.split('/').pop() ?? '')
               .filter(Boolean),

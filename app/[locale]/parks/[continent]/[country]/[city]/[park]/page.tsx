@@ -478,8 +478,8 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
         name={stripNewPrefix(park.name)}
         geo={{ continent, country, city }}
         timezone={park.timezone}
-        backgroundImage={getParkBackgroundImage(park.slug)}
-        backgroundPosition={getCardObjectPosition(park.slug)}
+        backgroundImage={getParkBackgroundImage(park)}
+        backgroundPosition={getCardObjectPosition(park)}
       />
       <ParkPageShell
         park={park}
@@ -586,7 +586,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               ...parkArgs(locale as Locale, parkName, park.nameArticleDe),
               city: cityName,
             })}
-            windowPane={{ guide: headerGuide, photo: getParkBackgroundImage(parkSlug) }}
+            windowPane={{ guide: headerGuide, photo: getParkBackgroundImage(park) }}
             note={
               headerNews ? <ParkNewsBand locale={locale as Locale} news={headerNews} /> : undefined
             }

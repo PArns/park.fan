@@ -156,7 +156,7 @@ export async function ParkPageShell({
 }: ParkPageShellProps) {
   const tGeo = await getTranslations('geo');
   const parkName = stripNewPrefix(park.name);
-  const parkBgImage = getParkBackgroundImage(parkSlug);
+  const parkBgImage = getParkBackgroundImage(park);
   const parkPath = `/parks/${continent}/${country}/${city}/${parkSlug}`;
 
   /* Built once and placed in one of two slots — a second copy would be a second set of props to

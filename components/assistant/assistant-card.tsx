@@ -13,6 +13,7 @@ import type { AssistantCard } from '@/lib/assistant/actions';
 import { localizedPath } from '@/lib/i18n/localized-path';
 import type { CrowdLevel, ParkStatus } from '@/lib/api/types';
 import { loadCardImageMap, rideCardImageKey, type CardImageMap } from '@/lib/media/card-images';
+import { parkGeoPath } from '@/lib/media/park-path.mjs';
 import {
   calendarWeeks,
   parkClock,
@@ -56,12 +57,15 @@ import { GLOSSARY_CATEGORY_ICONS } from '@/components/glossary/glossary-category
 import type { GlossaryCategory } from '@/lib/glossary/types';
 import { usePostMetaLine } from '@/lib/hooks/use-post-meta-line';
 
-/** The park and ride slugs of a park.fan page path: `/parks/<c>/<c>/<c>/<park>[/<ride>]`. */
+/**
+ * The park's geo path and the ride slug of a park.fan page path, `/parks/<c>/<c>/<c>/<park>[/<ride>]`:
+ * the map files a park by its path, since two parks share the slug `disneyland-park`.
+ */
 function slugsOf(url: string | null): { park: string; ride?: string } | null {
-  const parts = url?.split('/').filter(Boolean) ?? [];
-  const at = parts.indexOf('parks');
-  const park = at >= 0 ? parts[at + 4] : undefined;
-  return park ? { park, ride: parts[at + 5] } : null;
+  const park = parkGeoPath(url);
+  if (!park || !url) return null;
+  const parts = url.split('/').filter(Boolean);
+  return { park, ride: parts[parts.indexOf('parks') + 5] };
 }
 
 /** The site's card-image map, the one park and ride cards use; null until it has loaded. */
