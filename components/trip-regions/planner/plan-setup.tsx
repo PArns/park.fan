@@ -61,6 +61,7 @@ export function PlanSetup({
   sheet,
   onSheet,
   onDone,
+  onSheetClosed,
   onDatesPicked,
   step: ticketStep,
   fineTuneOpen,
@@ -75,6 +76,8 @@ export function PlanSetup({
   onSheet: (step: PlanSheetStep | null) => void;
   /** "Show the plan": the sheet closes and the answer takes the focus. */
   onDone: () => void;
+  /** The sheet is gone; true when the planner moved the focus itself (to the answer). */
+  onSheetClosed: () => boolean;
   /** The visitor picked the trip's dates in the Dates step: the plan is there to see. */
   onDatesPicked: () => void;
   step: TicketStep;
@@ -262,6 +265,7 @@ export function PlanSetup({
               // "Show the plan" moves the focus to the result itself; a plain close goes back to
               // the row.
               event.preventDefault();
+              if (onSheetClosed()) return;
               if (document.activeElement === document.body) opener.current?.focus();
             }}
           >

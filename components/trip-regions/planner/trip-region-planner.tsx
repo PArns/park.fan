@@ -227,16 +227,29 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
   }, [live, start]);
 
   // The answer, at the top of the screen, with the focus in it: after "Show the plan" and after the
-  // departure date, which on a phone is the first thing to read after the sheet.
-  const showResult = useCallback(() => {
-    setSheet(null);
-    requestAnimationFrame(() => {
-      const target = resultRef.current;
-      if (!target) return;
-      scrollTo(target);
-      target.focus({ preventScroll: true });
-    });
+  // departure date, which on a phone is the first thing to read after the sheet. An open sheet
+  // holds the focus until it is gone, so then the answer takes it once the sheet has closed.
+  const toResult = useRef(false);
+  const focusResult = useCallback(() => {
+    const target = resultRef.current;
+    if (!target) return;
+    scrollTo(target);
+    target.focus({ preventScroll: true });
   }, []);
+  const showResult = useCallback(() => {
+    if (sheet !== null) {
+      toResult.current = true;
+      setSheet(null);
+      return;
+    }
+    requestAnimationFrame(focusResult);
+  }, [sheet, focusResult]);
+  const onSheetClosed = useCallback(() => {
+    if (!toResult.current) return false;
+    toResult.current = false;
+    requestAnimationFrame(focusResult);
+    return true;
+  }, [focusResult]);
 
   /** The result's ways back into the setup: the dates, the parks, the route, the options, tickets. */
   const edit = useMemo(() => {
@@ -276,6 +289,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         sheet={sheet}
         onSheet={setSheet}
         onDone={showResult}
+        onSheetClosed={onSheetClosed}
         onDatesPicked={showResult}
         step={step}
         fineTuneOpen={fineTuneOpen}
