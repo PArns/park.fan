@@ -4,6 +4,8 @@ import { lazy, Suspense, type ComponentType, type LazyExoticComponent } from 're
 import { HubBannerPhoto } from '@/components/layout/hub-banner';
 import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
+import { LazyMount } from '@/components/parks/lazy-mount';
+import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
@@ -71,15 +73,45 @@ export function PlannerRegionArt({
   if (!Scene) return photoArt;
   if (!armed) return null;
 
+  return <SceneFade Scene={Scene} fallback={photoArt} />;
+}
+
+/** A loaded scene filling its box, faded in over the card's ground rather than cut in. */
+function SceneFade({
+  Scene,
+  fallback,
+}: {
+  Scene: LazyExoticComponent<ComponentType<ArtProps>>;
+  fallback: React.ReactNode;
+}) {
   return (
     <Suspense fallback={null}>
       <span
         aria-hidden="true"
         className="absolute inset-0 transition-opacity duration-300 starting:opacity-0"
       >
-        <Scene className="h-full w-full" fallback={photoArt} />
+        <Scene className="h-full w-full" fallback={fallback} />
       </span>
     </Suspense>
+  );
+}
+
+/**
+ * A region's scene in a card on a page, the planner tile on a park's pages: fetched once the page
+ * has loaded and the card nears the screen (`LazyMount`), and kept from then on, so the chunk
+ * costs the first load nothing and a card below the fold costs a reader who never scrolls there
+ * nothing at all. It fills the box its parent reserves, which is what keeps it from shifting the
+ * page. Until it arrives, for a region without a scene and where the chunk fails, the box shows
+ * the card's ground.
+ */
+export function RegionSceneInView({ regionId }: { regionId: string }) {
+  const loaded = useAfterLoad();
+  const Scene = SCENES[regionId];
+  if (!Scene || !loaded) return null;
+  return (
+    <LazyMount className="absolute inset-0">
+      <SceneFade Scene={Scene} fallback={null} />
+    </LazyMount>
   );
 }
 

@@ -42,7 +42,7 @@ import { ParkBlogPostsSection } from '@/components/parks/blog-posts-sections';
 import { ParkFAQSection } from '@/components/faq/park-faq-section';
 import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
-import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
+import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
@@ -613,14 +613,6 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
           parks. */}
         <NoLiveWaitTimesNotice reason={noLiveWaitTimesReason(park)} scope="park" className="mb-8" />
 
-        {/* A trip region's park: the way into the region's planner with this park chosen; nothing
-          for any other park. Inline, so whether it exists is settled before the first byte. */}
-        <TripPlannerBand
-          variant="park"
-          park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
-          className="mb-4"
-        />
-
         {/* The header card ("Heute im Park" + the entry tiles) and the tab body under it, all with
           auto-refresh. The card is inside this tree rather than in the shell because it and the
           tab panels are one `<Tabs>`; the calendar page builds the same card with link cells.
@@ -686,6 +678,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
                   articleDe={park.nameArticleDe}
                 />
               )}
+              {/* A trip region's park: its planner with this park chosen, where the reader is done
+                with today's park, and not above „Heute im Park", which the fold belongs to. Inline,
+                so whether it exists is settled before the first byte; nothing for any other park. */}
+              <TripPlannerTile
+                park={`/parks/${continent}/${country}/${city}/${parkSlug}`}
+                className="mt-8"
+              />
             </>
           }
         />

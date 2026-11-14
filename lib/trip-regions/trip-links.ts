@@ -22,14 +22,34 @@ export interface TripRegionLinkPark {
   path: string;
 }
 
+/**
+ * What a link into a region calls it, in the reader's language: the region's own words
+ * (`tripRegions.<slug>.nav`), never the API's English `name`.
+ */
+export interface TripRegionWords {
+  name: string;
+  /** Where it is: the state or the country. */
+  area: string;
+  /** The region with its preposition: „in Südkalifornien", „au Japon", „nella California del Sud". */
+  inRegion: string;
+  /** The hub by its name, „Orlando Besucherkalender": the anchor of a followed link to it. */
+  calendar: string;
+}
+
 /** One trip region, reduced to what its links need. */
 export interface TripRegionLinks {
   /** The registry's slug, whose hub (`tripRegionPath`) holds the planner as chapter 03. */
   slug: string;
+  /** The API's name, in English: what a search matches; a link shows `words`. */
   name: string;
   /** The region's name and each resort's without "Resort": what a search matches it by. */
   names: string[];
   parks: TripRegionLinkPark[];
+  /**
+   * The region's words in one language, where `/api/nav/trip-regions` was asked for a locale; a
+   * server page reads them itself (`getTripRegionWords`).
+   */
+  words?: TripRegionWords;
 }
 
 /**
@@ -63,17 +83,33 @@ export function regionParksOf(
   return region.parks.filter((park) => wanted.has(park.id) || wanted.has(park.path));
 }
 
+/** A region and the parks of it that a page names. */
+export interface TripRegionMatch {
+  region: TripRegionLinks;
+  parks: TripRegionLinkPark[];
+}
+
+/**
+ * Every region that holds one of `keys`, each with the parks it holds, in the regions' order: the
+ * United States page holds parks of Orlando and of Southern California.
+ */
+export function findTripRegions(
+  regions: readonly TripRegionLinks[],
+  keys: Iterable<string>
+): TripRegionMatch[] {
+  const list = [...keys];
+  return regions.flatMap((region) => {
+    const parks = regionParksOf(region, list);
+    return parks.length > 0 ? [{ region, parks }] : [];
+  });
+}
+
 /** The first region that holds one of `keys`, with the parks it holds, or `null`. */
 export function findTripRegion(
   regions: readonly TripRegionLinks[],
   keys: Iterable<string>
-): { region: TripRegionLinks; parks: TripRegionLinkPark[] } | null {
-  const list = [...keys];
-  for (const region of regions) {
-    const parks = regionParksOf(region, list);
-    if (parks.length > 0) return { region, parks };
-  }
-  return null;
+): TripRegionMatch | null {
+  return findTripRegions(regions, keys)[0] ?? null;
 }
 
 /**
@@ -86,6 +122,15 @@ export function tripPlannerHref(
   input: TripPlannerHrefInput = {}
 ): string {
   return plannerHrefOn(tripRegionPath(region, locale), input);
+}
+
+/**
+ * The `rel` of a link into the planner: `nofollow` where it carries a plan, one of endless URLs
+ * that canonical to the hub, as the hub's own "Plan these dates" links are; the bare chapter is an
+ * ordinary link. A link with a plan is not prefetched either.
+ */
+export function plannerLinkRel(href: string): 'nofollow' | undefined {
+  return href.includes('?') ? 'nofollow' : undefined;
 }
 
 const words = (text: string): string[] =>

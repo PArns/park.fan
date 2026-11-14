@@ -544,9 +544,12 @@
       "varHours": "Openingstijden"
     },
     "band": {
-      "title": "Meerdere dagen in {region}?",
-      "planPark": "{park} in je reis naar {region} inplannen",
+      "title": "Meerdere dagen {inRegion}",
+      "planPark": "{park} inplannen",
       "open": "Reisplanner openen"
+    },
+    "tile": {
+      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is."
     }
   },
   "theme": {
@@ -3742,6 +3745,7 @@
     "orlando": {
       "nav": {
         "name": "Orlando",
+        "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando drukte-kalender",
         "calendarHint": "Welk park op welke dag, en een planner voor je hele reis."
@@ -4157,6 +4161,7 @@
     "southern-california": {
       "nav": {
         "name": "Zuid-Californië",
+        "inRegion": "in Zuid-Californië",
         "area": "Los Angeles en San Diego",
         "calendar": "Zuid-Californië drukte-kalender",
         "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis."
@@ -4426,6 +4431,7 @@
     "japan": {
       "nav": {
         "name": "Japan",
+        "inRegion": "in Japan",
         "area": "Tokio tot Osaka",
         "calendar": "Japan drukte-kalender",
         "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden."
@@ -4759,6 +4765,7 @@
     "paris": {
       "nav": {
         "name": "Parijs",
+        "inRegion": "in Parijs",
         "area": "Frankrijk",
         "calendar": "Drukte-kalender Disneyland Paris & Parc Astérix",
         "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht."
