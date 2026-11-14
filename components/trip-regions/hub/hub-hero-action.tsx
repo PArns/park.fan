@@ -5,6 +5,7 @@ import { Link } from '@/i18n/navigation';
 import { buttonLinkProps } from '@/components/ui/button';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
+import { isPlainPrimaryClick } from '@/lib/utils/plain-click';
 
 /** Which head the two ways in sit in, for `trip_hub_action`. */
 type HubPage = 'hub' | 'month';
@@ -34,7 +35,7 @@ export function HubHeroAction({
       data-landing-action=""
       onClick={(event) => {
         trackTripEvent(region, 'trip_hub_action', { action: 'plan', page });
-        if (event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return;
+        if (!isPlainPrimaryClick(event)) return;
         event.preventDefault();
         tripPlannerUi.openStart();
       }}

@@ -1,4 +1,4 @@
-import { addDays, formatParkDay } from '@/lib/utils/park-day';
+import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
@@ -664,12 +664,13 @@ export function slimRegion(region: TripRegion): TripRegion {
 
 /**
  * Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr –
- * 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
+ * 6 May"): `formatParkDayRange` with short months.
  */
 export function formatDateRange(from: string, to: string, locale: string): string {
-  const format = getDateTimeFormat(locale, { day: 'numeric', month: 'short', timeZone: 'UTC' });
-  const a = new Date(`${from}T12:00:00Z`);
-  const text = from === to ? format.format(a) : format.formatRange(a, new Date(`${to}T12:00:00Z`));
+  const text =
+    from === to
+      ? formatParkDay(locale, from, { day: 'numeric', month: 'short' })
+      : formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
   // Node's ICU puts thin spaces around the dash and a browser's plain ones; the server-rendered
   // text has to be the one the browser renders, or hydration fails.
   return text.replace(/[\u2009\u202f]/g, ' ');

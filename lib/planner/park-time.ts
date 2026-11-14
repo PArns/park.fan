@@ -1,5 +1,5 @@
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { daysBetween, parkDayOf } from '@/lib/utils/park-day';
+import { daysBetween, formatParkDay, parkDayOf } from '@/lib/utils/park-day';
 import { isPlannedDay, type PlannerState } from './types';
 
 /**
@@ -77,16 +77,12 @@ export function formatGridHours(startMinute: number, endMinute: number): string 
 }
 
 /**
- * `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language. Formatted
- * from noon UTC, which no offset can push across a date boundary. Shared, so the wizard and the fit
- * assistant cannot name different days.
+ * `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language, through
+ * `formatParkDay`, so no zone moves it. Shared, so the wizard and the fit assistant cannot name
+ * different days.
  */
 export function longDate(date: string, locale: string): string {
-  return getDateTimeFormat(locale, {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-  }).format(new Date(`${date}T12:00:00Z`));
+  return formatParkDay(locale, date, { weekday: 'long', day: 'numeric', month: 'long' });
 }
 
 export { addDays, daysBetween } from '@/lib/utils/park-day';

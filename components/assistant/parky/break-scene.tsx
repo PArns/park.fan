@@ -10,9 +10,11 @@ import {
   ZED,
   blue,
   blush,
+  cabinsOnRim,
   gold,
   green,
   ink,
+  wheelSpokes,
 } from './drawing';
 import { FLAKE, ParkyLookHat, ParkyLookWear, ParkySnowman, ice } from './looks';
 import { ParkyWheel } from './wheel';
@@ -166,10 +168,7 @@ const TULIPS = [
 
 /** The Ferris wheel asleep behind the hills: its hub, its rim and its eight cabins. */
 const WHEEL = { x: 66, y: 76, r: 36 };
-const WHEEL_CABINS = Array.from({ length: 8 }, (_, i) => ({
-  x: +(WHEEL.x + WHEEL.r * Math.sin((i * Math.PI) / 4)).toFixed(1),
-  y: +(WHEEL.y - WHEEL.r * Math.cos((i * Math.PI) / 4)).toFixed(1),
-}));
+const WHEEL_CABINS = cabinsOnRim(WHEEL);
 
 /**
  * A wooden sled from the side, in the picture's units: the seat Parky sits on, three struts, the
@@ -399,12 +398,7 @@ export function ParkyBreakScene({
           strokeWidth="2.2"
         />
         <circle cx={WHEEL.x} cy={WHEEL.y} r={WHEEL.r} strokeWidth="1.8" />
-        <path
-          d={WHEEL_CABINS.slice(0, 4)
-            .map(({ x, y }) => `M${x} ${y}L${2 * WHEEL.x - x} ${2 * WHEEL.y - y}`)
-            .join('')}
-          strokeWidth=".9"
-        />
+        <path d={wheelSpokes(WHEEL, WHEEL_CABINS)} strokeWidth=".9" />
       </g>
       {WHEEL_CABINS.map(({ x, y }) => (
         <g key={`${x} ${y}`}>

@@ -24,3 +24,18 @@ geschrieben stand, hat jetzt eine Stelle; an Bild und Verhalten ändert sich nic
   `HolidaySceneSvg`. `useAssistantActions` sucht eine Vorstellung an einer Stelle (`showLineAt`).
 
 36 Dateien, 485 Zeilen gelöscht, 403 geschrieben.
+
+#### Vier Kopien, die schon auseinandergelaufen waren
+
+Hier ändert die eine Stelle ein Detail, weil eine Kopie vom Original abgewichen war:
+
+- **Italienische Zeiträume** (`formatDateRange` in `hub-data.ts`, im Hub, im Planer und auf den
+  Best-Time-Seiten) schrieben „01–07 gen“; die Funktion läuft jetzt über `formatParkDayRange`, das
+  die Null schon entfernt: „1–7 gen“. Über ein Jahr verglichen ändern sich 316 von 732 italienischen
+  Zeiträumen, in den anderen fünf Sprachen keiner.
+- **„Reise planen“ im Kopf des Hubs** (`HubHeroAction`) fragt `isPlainPrimaryClick` wie jeder andere
+  Link, der den Planer öffnet: Ein Klick mit Alt gehört jetzt dem Browser.
+- **`longDate`** (`lib/planner/park-time.ts`) formatierte ohne `timeZone: 'UTC'` und hätte in UTC+13
+  und +14 den Folgetag genannt; es läuft jetzt über `formatParkDay`.
+- **Das Rad der Pausenszene** rundete seine Kabinen auf eine Stelle statt auf zwei; es nutzt jetzt
+  `cabinsOnRim` und `wheelSpokes`, die Kabinen rücken um höchstens 0,04 SVG-Einheiten.
