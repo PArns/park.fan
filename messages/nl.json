@@ -5404,7 +5404,9 @@
         "rest": "Reisplanner: rustdagen aangepast",
         "tickets": "Reisplanner: tickets ingevuld",
         "hotel": "Reisplanner: hotel ingevuld",
-        "pace": "Reisplanner: tempo aangepast"
+        "pace": "Reisplanner: tempo aangepast",
+        "route": "Reisplanner: route aangepast",
+        "buffer": "Reisplanner: tijd voor hotelwissels ingesteld"
       },
       "day": "Dagplanner: {park}, {date}",
       "undo": "Ongedaan maken",

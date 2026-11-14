@@ -54,7 +54,12 @@ import {
   type AssistantPlannerPark,
   type TripChangeKind,
 } from '@/lib/assistant/actions';
-import { interviewStore, type AssistantInterview } from '@/lib/assistant/interview';
+import {
+  interviewEnded,
+  interviewRegion,
+  interviewStore,
+  type AssistantInterview,
+} from '@/lib/assistant/interview';
 import {
   currentTripQuery,
   rememberTripChange,
@@ -96,21 +101,27 @@ function trackInterview(
   const kind = after?.kind ?? before?.kind;
   if (!kind) return;
   if (!before && after) {
-    trackSiteEvent('assistant_interview_started', { kind, source: after.source });
+    trackSiteEvent('assistant_interview_started', {
+      kind,
+      source: after.source,
+      region: interviewRegion(after),
+    });
   }
   if (after) {
     const known = new Set([...(before?.answered ?? []), ...(before?.skipped ?? [])]);
-    for (const step of [...after.answered, ...after.skipped]) {
-      if (!known.has(step) && step !== 'refine') {
-        trackSiteEvent('assistant_interview_step', { kind, step });
+    const region = interviewRegion(after);
+    for (const [list, outcome] of [
+      [after.answered, 'answered'],
+      [after.skipped, 'skipped'],
+    ] as const) {
+      for (const step of list) {
+        if (!known.has(step) && step !== 'refine') {
+          trackSiteEvent('assistant_interview_step', { kind, step, outcome, region });
+        }
       }
     }
   } else if (before) {
-    trackSiteEvent('assistant_interview_ended', {
-      kind,
-      outcome: outcome ?? 'left',
-      steps: before.answered.length,
-    });
+    trackSiteEvent('assistant_interview_ended', interviewEnded(before, outcome ?? 'left'));
   }
 }
 
@@ -455,7 +466,11 @@ export function useAssistantActions(closeWindow: () => void) {
           });
           if (outcome === 'none') return null;
           showDay(action.park, action.date);
-          trackSiteEvent('assistant_change_undone', { planner: 'day', outcome });
+          trackSiteEvent('assistant_change_undone', {
+            planner: 'day',
+            outcome,
+            via: action.via ?? 'chat',
+          });
           // The visitor changed the day since: it stays as they left it, and Parky can say so.
           return outcome === 'undone' ? 'planned' : 'undoStale';
         }
@@ -464,8 +479,11 @@ export function useAssistantActions(closeWindow: () => void) {
           if (sameTripQuery(before, action.query)) return null;
           rememberTripChange(action.region, before, action.query);
           setTrip(action.region, action.query);
-          const change: TripChangeKind = action.change[0] ?? 'dates';
-          trackSiteEvent('assistant_plan_changed', { planner: 'trip', change });
+          const kinds: TripChangeKind[] = action.change.length > 0 ? action.change : ['dates'];
+          for (const kind of kinds) {
+            trackSiteEvent('assistant_plan_changed', { planner: 'trip', change: kind });
+          }
+          const change = kinds[0];
           return {
             receipt: {
               id: `receipt-${++receiptIds}`,
@@ -481,6 +499,7 @@ export function useAssistantActions(closeWindow: () => void) {
           trackSiteEvent('assistant_change_undone', {
             planner: 'trip',
             outcome: undo === 'changed' ? 'changed' : 'undone',
+            via: action.via ?? 'chat',
           });
           if (undo === 'changed') return 'undoStale';
           setTrip(action.region, undo.query);

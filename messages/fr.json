@@ -5404,7 +5404,9 @@
         "rest": "Voyage : jours de repos modifiés",
         "tickets": "Voyage : billets ajoutés",
         "hotel": "Voyage : hôtel ajouté",
-        "pace": "Voyage : rythme modifié"
+        "pace": "Voyage : rythme modifié",
+        "route": "Voyage : itinéraire modifié",
+        "buffer": "Voyage : temps des changements d’hôtel réglé"
       },
       "day": "Dans ton planning : {park}, {date}",
       "undo": "Annuler",

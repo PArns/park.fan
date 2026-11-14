@@ -200,6 +200,19 @@ A hub link Parky writes is `/trip-regions/<slug>…` (the API does not know the 
 redirects it, and the widget resolves it from the registry first (`regionHubPath`,
 `lib/assistant/links.ts`), so a press lands on `/de/orlando` without the hop.
 
+**Live regions.** The registry's `live` flag (`lib/trip-regions/registry.ts`) is the one switch a
+region flips at go-live: it opens the hub's routes, and every question sends the same list as
+`liveRegions` (`LIVE_TRIP_REGIONS`), so Parky plans, changes and links those regions only and says a
+coming one opens later. The snapshot of trips takes live regions only, and the widget refuses a
+`trip_set`, a `trip_undo` or an interview region for a region not live (`readAssistantAction`), so
+nothing ever opens a hub that answers 404. The API's side is its `docs/frontend/assistant.md#live-regions`.
+
+**The route.** In a region with bases (Japan, Paris) Parky's `change_trip` sets the stays
+(`bases`), the city an airport serves (`startBase`, `endBase`), the hotel-change buffer and the
+plan's stay suggestion; the widget applies the query like any other, and the receipt says
+„Reiseplaner: Route geändert“ (kind `route`) or „Zeit für Hotelwechsel eingestellt“ (`buffer`).
+A date search arrives as `when=…&days=…`, which the planner opens in its finder.
+
 Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
 take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with
 `thresholdMinutes` 1 to 240, or `reopen`), `alert_show_set` the show's UUID and the performance
@@ -770,11 +783,17 @@ language switch, or `interview` from a planner's button), `assistant_line_shown`
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion, typed, a reply chip
-or the interview button, never the text), `assistant_replies_shown` (how many chips),
-`assistant_interview_started` (trip or day, from the planner or the chat),
-`assistant_interview_step` (each step answered or passed), `assistant_interview_ended` (done or
-left, with the steps answered), `assistant_plan_changed` (trip or day, the kind of change, never its
-content), `assistant_change_undone` (undone, or changed since), `assistant_answer` (result and number of lookups), `assistant_rated`,
+or the interview button, never the text; `first` for a chat's first, `position` for a chip, 1 the
+model's likeliest), `assistant_greeting` (once per chat, the greeting's kind: today, yesterday,
+tomorrow, soon, trip, back or plain), `assistant_replies_shown` (how many chips, and after what:
+`interview`, `plan_change` or `answer`), `assistant_interview_started` (trip or day, from the
+planner or the chat, its `region`, `none` for a park day or a region not settled yet),
+`assistant_interview_step` (each step with `outcome` answered or skipped, and the region),
+`assistant_interview_ended` (done or left, the steps answered, `plan` whether the core stood, the
+region; the helpers are `interviewRegion`, `interviewPlanStood`, `interviewEnded`),
+`assistant_plan_changed` (trip or day, one event per kind of change, the route and the buffer among
+them, never its content), `assistant_change_undone` (undone, or changed since; `via` the receipt's
+button or the chat), `assistant_answer` (result and number of lookups), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
 the planner opening as `planner_opened` with source `assistant`.

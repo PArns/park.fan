@@ -77,6 +77,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `interviewCore` _function_: The core steps of an interview of this kind, the ones before its plan.
 - `interviewRefinements` _function_: The refinements of an interview of this kind.
+- `interviewRegion` _function_: The interview's region as the statistic counts it: a trip's live region, `none` for a park day or a trip whose region is not settled yet. Live slugs only, a closed set: the API takes no other.
+- `interviewPlanStood` _function_: Whether the interview's plan stands: every core step answered or passed.
+- `interviewEnded` _function_: What `assistant_interview_ended` carries for an interview that ends now.
 - `readInterview` _function_: An interview read leniently, from the API's action or this tab's storage, rebuilt so nothing rides along; null for one that cannot be read.
 - `startInterview` _function_: The planner's button: the interview set on its first step, and its first question waiting for the chat window, which sends it once its session is ready (`takeInterviewKickoff`).
 - `takeInterviewKickoff` _function_: The kind of interview whose first question waits to be sent, once: reading it clears it.

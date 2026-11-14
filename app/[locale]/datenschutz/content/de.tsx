@@ -330,20 +330,23 @@ export function DatenschutzDE() {
           Sie dort Tickets angegeben und welchen Ticket-Link Sie angeklickt haben (ohne Ihre
           Reisedaten), dass Sie einen Link zur Website oder zum Ticketshop eines Parks angeklickt
           oder eine Seite geteilt haben, ob Parky erschienen ist und ob Sie ihn oder einen seiner
-          Sprüche angeklickt haben, ob eine Frage an Parky ein Vorschlag, getippt oder ein
-          angetippter Antwortvorschlag war und wie die Antwort ausging, ob Sie Parkys Interview
-          begonnen und beendet haben, ob Parky einen Ihrer Pläne geändert hat (welche Art von
-          Änderung, nie ihr Inhalt), wie Sie auf die Frage nach Benachrichtigungen geantwortet haben
-          oder dass eine Fehlerseite angezeigt wurde. Steht ein Beitrag, ein Park oder eine
-          Attraktion fünf Sekunden im Vordergrund, zählt das als Lesen. Bei Beiträgen halten wir
-          außerdem fest, ob Sie ein Viertel, die Hälfte, drei Viertel oder alles gelesen haben.
-          Gehört ein Ereignis zu einem Park, einer Attraktion, einer Show oder einem Restaurant,
-          steht deren Kennung dabei, bei einem Beitrag sein Name aus der Adresse. An unseren Zähler
-          sendet der Browser nicht, was Sie in ein Suchfeld tippen, Ihren Standort und Ihre
-          Eingaben. Ladezeiten messen wir hier nicht. Gemessen wird dagegen, wie lange eine Seite im
-          Vordergrund Ihres Browsers sichtbar war: Ihr Browser zählt die Sekunden und meldet sie,
-          wenn Sie zur nächsten Seite wechseln oder den Tab verlassen. Eine Uhrzeit sendet er dabei
-          nicht, und je Seitenaufruf zählen höchstens 30 Minuten.
+          Sprüche angeklickt haben, mit welcher Art von Begrüßung ein Chat begann (etwa zum nächsten
+          Parktag, nie Park oder Datum), ob eine Frage an Parky die erste des Chats, ein Vorschlag,
+          getippt oder ein angetippter Antwortvorschlag war (mit seinem Platz) und wie die Antwort
+          ausging, ob Sie Parkys Interview begonnen und beendet haben, in welcher Region und welche
+          Schritte Sie beantwortet oder übersprungen haben, ob Parky einen Ihrer Pläne geändert hat
+          (welche Arten von Änderung, nie ihr Inhalt) und ob Sie das zurückgenommen haben, wie Sie
+          auf die Frage nach Benachrichtigungen geantwortet haben oder dass eine Fehlerseite
+          angezeigt wurde. Steht ein Beitrag, ein Park oder eine Attraktion fünf Sekunden im
+          Vordergrund, zählt das als Lesen. Bei Beiträgen halten wir außerdem fest, ob Sie ein
+          Viertel, die Hälfte, drei Viertel oder alles gelesen haben. Gehört ein Ereignis zu einem
+          Park, einer Attraktion, einer Show oder einem Restaurant, steht deren Kennung dabei, bei
+          einem Beitrag sein Name aus der Adresse. An unseren Zähler sendet der Browser nicht, was
+          Sie in ein Suchfeld tippen, Ihren Standort und Ihre Eingaben. Ladezeiten messen wir hier
+          nicht. Gemessen wird dagegen, wie lange eine Seite im Vordergrund Ihres Browsers sichtbar
+          war: Ihr Browser zählt die Sekunden und meldet sie, wenn Sie zur nächsten Seite wechseln
+          oder den Tab verlassen. Eine Uhrzeit sendet er dabei nicht, und je Seitenaufruf zählen
+          höchstens 30 Minuten.
         </p>
         <p>
           Wie bei jeder Anfrage erhält der Server dabei Ihre IP-Adresse, die Angaben zu Browser und

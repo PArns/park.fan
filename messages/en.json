@@ -5404,7 +5404,9 @@
         "rest": "Trip planner: rest days changed",
         "tickets": "Trip planner: tickets added",
         "hotel": "Trip planner: hotel added",
-        "pace": "Trip planner: pace changed"
+        "pace": "Trip planner: pace changed",
+        "route": "Trip planner: route changed",
+        "buffer": "Trip planner: time for hotel moves set"
       },
       "day": "Day planner: {park}, {date}",
       "undo": "Undo",

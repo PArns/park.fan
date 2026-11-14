@@ -9,6 +9,7 @@ import {
   interviewCore,
   interviewStore,
   type AssistantInterview,
+  interviewEnded,
 } from '@/lib/assistant/interview';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
@@ -32,11 +33,10 @@ export function AssistantInterviewBar() {
 
   const end = (current: AssistantInterview) => {
     interviewStore.set(null);
-    trackSiteEvent('assistant_interview_ended', {
-      kind: current.kind,
-      outcome: refining ? 'done' : 'left',
-      steps: current.answered.length,
-    });
+    trackSiteEvent(
+      'assistant_interview_ended',
+      interviewEnded(current, refining ? 'done' : 'left')
+    );
   };
 
   return (
