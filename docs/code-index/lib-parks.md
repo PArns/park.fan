@@ -125,6 +125,7 @@ Which two days of a park's calendar are being compared, across a change of month
 
 ### [`park-season-days.ts`](../../lib/parks/park-season-days.ts)
 
+- `formatSeasonRange` _function_: A season's bounds as one localized range, „20. Nov. – 18. Jan. 2027": the year once when both ends share it, on both ends when they do not. Falls back to the raw dates when either does not parse.
 - `isSeasonEvent` _function_: Whether a season is one of the events a day marks and still on. A cancelled season marks no day: it is listed, struck through, on the park's season card and nowhere else.
 - `seasonRunsOn` _function_: Whether a season runs on a date: only on its `dates` where it lists them, else every day of its range (the API's `seasonCovers`) the calendar does not show `closed`.
 - `eventSeasonsOn` _function_: The event seasons running on a date the calendar shows `closed` or not, in the order given.

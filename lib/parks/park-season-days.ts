@@ -1,5 +1,6 @@
 import type { CalendarDay, ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * Which curated seasons a calendar day marks, and how. Pure, so the park calendar's grid, its
@@ -18,6 +19,24 @@ export const SEASON_EVENT_KINDS = [
   'summer_nights',
   'special_event',
 ] as const satisfies readonly ParkSeasonKind[];
+
+const SHORT_DATE: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
+const FULL_DATE: Intl.DateTimeFormatOptions = { ...SHORT_DATE, year: 'numeric' };
+
+/**
+ * A season's bounds as one localized range, „20. Nov. – 18. Jan. 2027": the year once when both ends
+ * share it, on both ends when they do not. Falls back to the raw dates when either does not parse.
+ */
+export function formatSeasonRange(locale: string, start: string, end: string): string {
+  const from = new Date(`${start}T12:00:00Z`);
+  const to = new Date(`${end}T12:00:00Z`);
+  if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) return `${start} – ${end}`;
+
+  const sameYear = from.getUTCFullYear() === to.getUTCFullYear();
+  const fromFormat = getDateTimeFormat(locale, sameYear ? SHORT_DATE : FULL_DATE);
+
+  return `${fromFormat.format(from)} – ${getDateTimeFormat(locale, FULL_DATE).format(to)}`;
+}
 
 /** A season kind a calendar day marks with its icon. */
 export type SeasonEventKind = (typeof SEASON_EVENT_KINDS)[number];
