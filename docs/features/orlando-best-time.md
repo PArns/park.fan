@@ -48,25 +48,35 @@ All of it is in the first HTML; nothing mounts on a click.
 - **Level 0**, in the head: the three windows as one sentence (the hero's tagline) and three cards
   with dates, the wait, the share below the year's average, one reason and a basis label when the
   window is last year's. The hero's one action, "Plan these dates", opens the hub's planner on the
-  first window (`plannerHrefOn`, plan mode).
+  first window (`plannerHrefOn`, plan mode); without a window it is the hub's „Reise planen“. The
+  kicker is „park.fan · <the region's name>“. The photo is the page's `photo` in the registry; an
+  id the media database does not hold yet gives the gradient head, not a picture that does not
+  load.
 - **Level 1**: chapter 01's week strip and chapter 02's month rows.
 - **Level 2**: `<details>` under each card (all reasons, warnings, events) and each month (season
   dates, each European region's breaks, the climate period and nights).
 
 ## The chapters
 
-1. **The year at a glance.** A bar per week, tinted by `weekTiers` (the planner's), windows marked
-   under it, a dashed line where last year's figures begin. The bars are `aria-hidden`; the same
+1. **The year at a glance.** A bar per week in one ink, its height the peak wait, windows marked
+   under it, a dashed line where last year's figures begin. No crowd-level tint: on this site a
+   crowd colour means a day against its park's normal day, and a week's rank in the year is not
+   that. The bars are `aria-hidden`; the same
    weeks are a `<table>` with a caption in a `<details>` below.
 2. **Month by month.** A row per month of the title's year from the current one on; a month past
-   the range says where the figures end. Per row: a verdict word (the month's tier among the year's
-   months), the wait, events with their status, Orange County's breaks (unnamed weekends join the
-   break they border, `breakRuns`), European breaks (a region counts with a break of five days or
+   the range says where the figures end. Per row: „Am ruhigsten“ or „Am vollsten“ on a neutral
+   chip where the month is within five minutes of the year's lowest or highest figure (nothing
+   between, nothing in a flat year: 43 min is not "busiest" beside 42), the peak wait, events with
+   their status, the region's own school breaks (Orange County's for Orlando; `localSchoolBreakDays`,
+   read by `monthBreakDays` with the US regions' older `usSchoolBreakDays` as its fallback; unnamed
+   weekends join the break they border, `breakRuns`), European breaks (a region counts with a break of five days or
    more, so a bridge day does not; Germany as "n of 16"), the climate normal of Magic Kingdom's
    spot, labelled as the usual, hours against the year's mean, party nights and hurricane season.
    The month's name links its hub month where the hub serves it.
-3. **Best and worst weeks**: the three quietest and busiest whole weeks with the breaks and
-   seasons in them.
+3. **Die ruhigsten und die vollsten Wochen**: the three quietest and busiest whole weeks with the
+   breaks and seasons in them. Where the quietest week is in none of the trips and its month is in
+   the region's storm season, a line says so (`quietWeekInStorm`): `/when` ranks the trips with the
+   storm risk counted, and late August's 30 minutes otherwise look like a mistake.
 4. **School holidays**: per country, each region's breaks long enough for the trip, each a link
    into the planner's When mode inside that break (`within`). The reader's country opens.
 

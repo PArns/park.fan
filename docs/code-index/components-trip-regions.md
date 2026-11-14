@@ -20,11 +20,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `BestTimePage` _component_: A region's best-time page body (`/orlando/<best-time segment>[/<resort>]`), a hub by the landing anatomy: head with the answer, intro, four chapters, FAQ, next steps.
 - Types: `BestTimePageProps`
 
-### [`hub/hub-best-days.tsx`](../../components/trip-regions/hub/hub-best-days.tsx)
-
-- `HubBestDays` _component_: The best-days chapter's body: per park its quiet days as three chips, from `/best-days`, which ranks them on the unrounded figure and weighs a short day by its hours, so the chips are a set and a short day never stands without its close …
-- `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
-
 ### [`hub/hub-calendar.tsx`](../../components/trip-regions/hub/hub-calendar.tsx)
 
 - `HubCalendar` _component_: The calendar chapter's body: which park on which day, at the depth a visitor asks for.
@@ -46,36 +41,32 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-faq.tsx`](../../components/trip-regions/hub/hub-faq.tsx)
 
-- `HubFaq` _component_: The hub's questions, answered from the same data the page shows: the quietest days of the window, and where the region names the park or the leg (`hub.faq` in its registry entry) a park on a party night, a park on weekends, the drive …
+- `HubFaq` _component_: The hub's questions, the method folded in.
 
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
-- `HubGlance` _component_: The hub's first answer: on one day, in the region's time, each resort's shortest line with its minutes and its level, and the early close where a ticketed evening follows.
+- `HubGlance` _component_: The hub's first answer, under its two buttons: the best park of each group with a headliner on one day, by its date in the region's time and never as "today", because a cached copy outlives midnight there; then the quietest days of the …
 - `MonthGlance` _component_: A month page's first answer: each resort's quietest dates that month, and the park with the shortest lines on the first of them. On a month past the forecast the dates are last year's, said so in the title and never offered as picks.
 
 ### [`hub/hub-hero-action.tsx`](../../components/trip-regions/hub/hub-hero-action.tsx)
 
-- `HubHeroAction` _component_: The hub's one primary action ("Plan my Orlando trip"): it asks the planner to open its first step (the walk's first sheet on a phone, the focused panel at a desk), so a reader starts the plan with one tap.
+- `HubHeroAction` _component_: The hub's one primary action ("Reise planen"): it asks the planner to open its first step (the walk's first sheet on a phone, the focused panel at a desk), so a reader starts the plan with one tap.
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
-- `HubLegend` _component_: How to read a square, at the two depths the hub promises: a one-line key that names every mark the matrix draws, and under "How to read this" the paragraphs on what the minutes and the colour mean and how far the forecast reaches.
-
-### [`hub/hub-method.tsx`](../../components/trip-regions/hub/hub-method.tsx)
-
-- `HubMethod` _component_: The method chapter's body: how the forecast works, as a short summary with each part under its own `<details>`, so the text is in the served HTML and a reader opens only what they ask about. Ends with Fancast and the guide.
+- `HubLegend` _component_: How to read the calendar, at the top of its chapter. In view: the number, the ring and the hatching, and one line that says what the colour means (a day against the park's own normal day, the crowd level and nothing else).
 
 ### [`hub/hub-month-index.tsx`](../../components/trip-regions/hub/hub-month-index.tsx)
 
 - `HubMonthIndex` _component_: Every month the hub serves, as links, on the hub and on every month page, so each month is one hop from every other. Navigation, not a chapter: a labelled `<nav>` with no heading, as the park calendar's month index.
 
-### [`hub/hub-month-summary.tsx`](../../components/trip-regions/hub/hub-month-summary.tsx)
+### [`hub/hub-park-index.tsx`](../../components/trip-regions/hub/hub-park-index.tsx)
 
-- `HubMonthSummary` _component_: The window in sentences, per resort: its quietest dates with the park that has the shortest lines, its busiest, and the events that run in it.
+- `HubParkIndex` _component_: Each park's own crowd calendar, as links under the month index: the next question after a day in the region is "and this park on other days?". Navigation, not a chapter: a labelled `<nav>` with the month index's label style.
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
 
-- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: the three quietest trip windows for the headliner parks as one sentence and three cards, each with "Plan these dates", which opens the planner on that window …
+- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: the three quietest trip windows for the headliner parks as three cards with their peak wait, each with "Plan this trip", which opens the planner on that window …
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)
 
@@ -83,7 +74,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/trip-region-hub-page.tsx`](../../components/trip-regions/hub/trip-region-hub-page.tsx)
 
-- `TripRegionHubPage` _component_: A region's hub and its month pages, one anatomy (docs/product/landing-pages.md): the hub head with the first answer, the intro with the key, 01 which park on which day, 02 the trip planner, 03 the best days per park, 04 how the forecast …
+- `TripRegionHubPage` _component_: A region's hub and its month pages, one anatomy (docs/product/landing-pages.md).
 - Types: `TripRegionHubPageProps`
 
 ### [`planner/plan-agenda-view.tsx`](../../components/trip-regions/planner/plan-agenda-view.tsx)

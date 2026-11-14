@@ -10,12 +10,12 @@ the same pages from the same code.
 
 ## A region is config, messages and a scene
 
-| Part     | Where                                                           | What                                                                                                                                                                          |
-| -------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, next step, FAQ parks), hotels, ticket step, storm season |
-| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`, `landing`, `homeStory`                                                                                           |
-| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the planner band's tile, built on `HolidayParky` (`holiday-parky.tsx`)                                                                                   |
-| API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                |
+| Part     | Where                                                           | What                                                                                                                                                                                   |
+| -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, the FAQ's parks and questions), hotels, ticket step, storm season |
+| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`, `homeStory`                                                                                                               |
+| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the planner band's tile, built on `HolidayParky` (`holiday-parky.tsx`)                                                                                            |
+| API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                         |
 
 Nothing outside `lib/trip-regions/registry.ts` and `lib/trip-regions/regions/` names a region. The
 rest of the code reads the registry: `LIVE_TRIP_REGIONS` for what a reader may see,
@@ -98,6 +98,33 @@ route-namespace walk sees the alias like any namespace, so `pnpm check:client-me
 Where an API code may be said a region's own way (`no_school_break` is "No US school holidays" in
 Orlando), `regionOrShared` takes the region's words if it has the key and the shared ones else.
 
+## For every hub
+
+The hub is one component for every region, so its contract is the same for each: which blocks it
+draws, which words each needs from `tripRegions.<slug>`, and what a block does without them. A block
+reads a region key through `ownWords` (`lib/trip-regions/region-words.ts`) and draws nothing where
+the region has not written it; a key path is never printed (on the server the request config also
+renders a missing `tripRegions.*` key as nothing).
+
+| Block        | Region keys (`tripRegions.<slug>.…`)                                                                                                                                                 | Shared words (`tripHub`)                                                                                                | Region config or data                                                        | Without the region's words                                                                                 |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Head         | `hub.title`, `hub.monthTitle` (the H1's search term), `hub.lead`, `hub.leadMonth`, `hub.glance.zone` („Ortszeit Orlando“), `hub.meta*`, `hub.dataset.*`                              | `question` (hub and months alike), `plan`, `toCalendar`, `glance.*`                                                     | `hub.heroPhotos` (none: the gradient head)                                   | title, meta and dataset are required (`pnpm test:trip-regions`); no lead, no line; no zone, the date alone |
+| 01 Calendar  | `hub.calendar.caption`, `hub.lanes.break`, `.unnamedBreak`, `.none`, `hub.monthIndexLabel`, `hub.sheet.kicker`, `hub.sheet.early.<kind>`, `hub.sheet.travelTransfer`                 | `calendar.*`, `legend.*`, `parksIndex.*`, `sheet.*` (`travel` by the leg's mode)                                        | `timezone`, the API's groups, parks and legs, `hub.defaultArea`              | no school-holiday lane, no early slot, the plain travel line; the caption falls back to the list's label   |
+| 02 Planner   | `planner.*` ([the planner](orlando-planner.md))                                                                                                                                      | `planner.title`                                                                                                         | hotels, tickets, fireworks, blocks, storm season                             | the planner's own rules                                                                                    |
+| 03 Best time | `hub.when.title`, `.titleNoYear`, `.pageLink`, `.pageLinkNoYear`, `.kicker`                                                                                                          | `when.*`                                                                                                                | `bestTime` pages, `/when`                                                    | no chapter (and no band button) without best-time pages or their title                                     |
+| 04 Questions | `hub.faq.title`, `hub.faq.quietest.{q,qMonth,resort,day,dayAlone}`, and per data question its `q` and `a` (`party`, `epic`, `distance`, `early`), per fixed question its `q` and `a` | `faq.*`: the title's fallback, `quietestOnly`, the five shared questions (the hub only, not its months), the links line | `hub.faq`: `partyPark`, `weekendPark`, `distance`, `earlySlots`, `questions` | a question without its data, its config or its words is left out; no question, no chapter and no `FAQPage` |
+| Band         | `hub.next.title`                                                                                                                                                                     | `band.title` with the region's `nav.name` as its fallback, `plan`                                                       | `bestTime` pages (the second button)                                         | the shared title                                                                                           |
+
+`resort` takes `{resort}`, `{days}` and `{busy}`; `day` takes `{date}`, `{park}` and `{minutes}`;
+`dayAlone` (`{date}`, `{minutes}`) is used where every date names one park whose name the resort's
+already says (Universal Studios Japan). A region that never wrote `busy` into `resort` simply does
+not show it.
+
+A trip across several cities (Japan, Paris) has no drive-between-resorts question until the bases
+UI exists: `baseLegs` are typed, not shown. A region without a party park or fireworks asks neither,
+and a region with a typhoon season instead of hurricanes says so on its best-time page
+(`stormSeason`).
+
 ## Ways in
 
 All from the registry: the header's planner band and its phone sheet (a crowd calendar link per
@@ -128,7 +155,7 @@ built on `HolidayParky`, and its entry's `scene` loads it.
 1. Write its entry in `lib/trip-regions/regions/<slug>.ts` with `live: false`, register it in
    `registry.ts`, and start with its segments, zone and centre.
 2. Fill in what the region has: `bestTime` (the region's page `region` first, then its resorts),
-   `hub` (hero photos, next-step park, the FAQ's parks), `hotels`, `parkNameSuffixes`,
+   `hub` (hero photos, the FAQ's parks and fixed questions), `hotels`, `parkNameSuffixes`,
    `resortWords`, `stormSeason`, `blockResorts`, `fireworks`, and a `tickets` step where it sells
    tickets the step should ask for. A ticket catalog is the admin's (`/admin/tickets?region=`).
 3. Write `tripRegions.<slug>` in all six message files, in the shape of `tripRegions.orlando`

@@ -29,7 +29,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
 - `monthKey` _function_: `YYYY-MM` of a month.
-- `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a tier among the months that have a figure, and its day guests' hours against the year's mean.
+- `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
 - `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
 - `europeanBreaks` _function_: Each country's regions with a real break in a month, in `countries`' order.
@@ -37,6 +37,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `isWholeWeek` _function_: Whether a week lies wholly inside a range, so its figure is a whole week's.
 - `bestAndWorstWeeks` _function_: The quietest and busiest whole weeks, `count` each, quietest and busiest first.
 - `seasonsOn` _function_: The seasons that run on a day range, one per name, cancelled and closures left out.
+- `monthBreakDays` _function_: A month's school-break days: `localSchoolBreakDays`, which every region gets, else the US regions' older `usSchoolBreakDays`, so the page reads either side of the API's rename.
+- `quietWeekInStorm` _function_: The year's quietest week where no trip above covers it and its month is in the region's storm season: the trips are ranked with the storm risk counted, so that week stays out of them, and the page says why.
 - `weekFacts` _function_: A week's school breaks (from the months' break days) and the seasons running in it.
 - `lastYearFrom` _function_: The first day `/when` reads last year's crowds: its `forecastUntil` + 1, else the strip's turn.
 - `holidayWeek` _function_: The week the page answers "Is Christmas busy?" with: Christmas week where the range holds it, else New Year's, else none.
@@ -50,13 +52,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `BEST_TIME_TRIP_DAYS` _const_: The trip length every page ranks, the planner's own default.
 - `BEST_TIME_WINDOWS` _const_: The windows the first answer names.
 - `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
-- Types: `BestTimePageId`, `MonthHours`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
+- Types: `BestTimePageId`, `MonthHours`, `MonthMark`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
 
 ### [`hub-data.ts`](../../lib/trip-regions/hub-data.ts)
 
 - `regionGroups` _function_: The region's groups with their parks: the three resorts, then the day trips.
 - `withGroupNames` _function_: The region with its day-trip group named in the reader's language: the API names it in English, while a resort's name is the operator's own and stays as it is.
 - `regionResorts` _function_: The resorts alone: the groups a day's shortest line is named for.
+- `headlinerGroups` _function_: The groups with a headliner park: the ones the first answer names, a resort of one park (Universal Studios Hollywood, Universal Studios Japan) included, since its park is one a trip is planned around.
+- `summaryGroups` _function_: The groups a window is summed up for: every resort, and every group with a headliner park.
 - `shortParkName` _function_: The words a park's name carries that every visitor drops: the operator's prefix, "Park", "Theme Park", the place (a region's `parkNameSuffixes`).
 - `closesEarly` _function_: Whether a day closes early for the day guest: the API says so (`closesEarly`), or a separately ticketed evening follows, which sends the day guests out before it starts.
 - `dayGuestClose` _function_: When the day guests leave: the API's `dayGuestCloseAt`, else the day's own close.
@@ -64,6 +68,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
+- `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `firstDays` _function_: The first `count` days of the calendar from `fromIso` on.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
@@ -82,7 +87,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `tripRegionToday` _function_: A region's today, in its own zone, never the server's or the browser's.
 - `shortGroupName` _function_: A resort's name without "Resort": "Walt Disney World", "Universal Orlando".
 - `parkGeo` _function_: The geo segments of a region park's path (`/parks/<continent>/<country>/<city>/<slug>`).
-- `glanceLines` _function_: The shortest lines the first answer names: each resort where the pick beat another park that day.
+- `glanceLines` _function_: The best park per group the first answer names: every group with a headliner park, by the API's pick, or by its one park with a figure where it has nothing to choose between (Universal Studios Hollywood).
+- `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it.
 - `slimRegion` _function_: The region as the hub's client part needs it: the parks, groups and hotel areas, and only the legs from a hotel area to a park, which the day sheet's travel line reads.
 - `formatDateRange` _function_: Two dates as one short range in the reader's language ("Jan 12 – 21", "12.–21. Jan.", "27 Apr – 6 May"): `Intl`'s own range format, which knows each locale's order and what to leave out.
@@ -341,6 +347,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`region-words.ts`](../../lib/trip-regions/region-words.ts)
 
 - `regionOrShared` _function_: The region's words for `key` where it has them, else the shared ones.
+- `ownWords` _function_: A region's own words for `key`, or `null` where its copy has not written them yet.
 - Types: `CodeWords`
 
 ### [`regions/japan.ts`](../../lib/trip-regions/regions/japan.ts)
