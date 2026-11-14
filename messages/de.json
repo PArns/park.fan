@@ -198,9 +198,9 @@
     },
     "parky": {
       "kicker": "Parky",
-      "title": "Nicht gefunden, was du suchst? Frag Parky",
+      "title": "Parky, dein Buddy für jede Parkfrage",
       "lead": "Parky ist ein Freizeitpark-Nerd. Er weiß, wie lang du gerade an Taron anstehst, an welchem Samstag im Juni der Europa-Park am leersten ist und was Airtime eigentlich ist.",
-      "link": "Parky fragen"
+      "link": "Mit Parky schreiben"
     },
     "reading": {
       "title": "Freizeitpark-News und Guides",
@@ -390,8 +390,7 @@
     "updatedOn": "Aktualisiert {date}",
     "nearby": "In deiner Nähe",
     "preferences": "Einstellungen",
-    "assistantOpen": "Parky fragen",
-    "assistantClose": "Parky schließen"
+    "assistantOpen": "Mit Parky schreiben"
   },
   "tripHub": {
     "scroll": "Zum Kalender",
@@ -3083,6 +3082,10 @@
       "adopt": "In meinen Planer übernehmen",
       "adopted": "Der Plan steht jetzt in deinem Planer.",
       "open": "Planer öffnen"
+    },
+    "parky": {
+      "button": "Plane mit Parky deinen perfekten Parktag",
+      "line": "Ein paar Fragen im Chat, und jede Antwort landet sofort in diesem Tag."
     }
   },
   "tripPlanner": {
@@ -3634,6 +3637,10 @@
         "note": "Kaufst du über diesen Link, bekommt park.fan eine Provision. Der Preis ändert sich für dich nicht."
       }
     },
+    "parky": {
+      "button": "Plane mit Parky deine perfekte Reise",
+      "line": "Ein paar Fragen im Chat, und jede Antwort landet sofort hier im Planer."
+    },
     "codeKey": "Parks",
     "crowdColour": "Farbe: wie voll der Park an dem Tag ist, verglichen mit einem normalen Tag dort.",
     "peakWait": "Spitzenwartezeit etwa {minutes} Min."
@@ -4050,6 +4057,855 @@
         "lead": "Sechzehn Parks rund um Orlando in einem Kalender: Für jeden Tag siehst du, wo du in Disney World und bei Universal am kürzesten anstehst, und der Planer legt deine Parks auf deine Reisetage.",
         "link": "Orlando Besucherkalender"
       }
+    },
+    "southern-california": {
+      "nav": {
+        "name": "Südkalifornien",
+        "area": "Los Angeles und San Diego",
+        "calendar": "Südkalifornien Besucherkalender",
+        "calendarHint": "Welcher der acht Parks an welchem Tag am leersten ist, und ein Planer für deine Reise."
+      },
+      "hub": {
+        "title": "Südkalifornien Besucherkalender",
+        "monthTitle": "Südkalifornien Besucherkalender {month}",
+        "metaTitle": "Südkalifornien Besucherkalender & Reiseplaner",
+        "metaTitleMonth": "Disneyland Kalifornien: Besucherkalender {month}",
+        "metaTitleMonthShort": "Südkalifornien Besucherkalender {month}",
+        "metaDescription": "Alle acht Freizeitparks in Südkalifornien, Tag für Tag. Am wenigsten los in den nächsten 30 Tagen: {verdict}.",
+        "metaDescriptionPlain": "Welcher Park wann am leersten ist, im Disneyland Resort, bei Universal Studios Hollywood und in den Parks bis San Diego, dazu ein Planer für deine Reisetage.",
+        "metaDescriptionMonth": "Die ruhigsten Tage im {month} in Südkalifornien: {verdict}. Dazu jeder Park Tag für Tag.",
+        "metaDescriptionMonthPlain": "Südkalifornien im {month}, Tag für Tag: welcher Park im Disneyland Resort, bei Universal Studios Hollywood und rund um San Diego wann am leersten ist.",
+        "lead": "Ein Kalender für alle acht Parks rund um Los Angeles und San Diego und ein Planer für deine Reisetage.",
+        "leadMonth": "Alle acht Parks rund um Los Angeles und San Diego im {month}, Tag für Tag, und ein Planer für deine Reisetage.",
+        "monthIndexLabel": "Südkalifornien nach Monaten",
+        "calendar": {
+          "caption": "Die Parks in Südkalifornien vom {from} bis {to}: Spitzenwartezeit in Minuten"
+        },
+        "lanes": {
+          "break": "Schulferien in Los Angeles: {name}, {dates}",
+          "unnamedBreak": "Schulferien in Los Angeles",
+          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Los Angeles."
+        },
+        "sheet": {
+          "kicker": "Südkalifornien · ein Tag",
+          "travelTransfer": "Ab {area}: etwa {minutes} Min. mit dem Auto bis zum Parkplatz, dann etwa {transfer} Min. mit der Tram, zusammen {total} Min., ohne Verkehr"
+        },
+        "when": {
+          "kicker": "Disneyland und Universal",
+          "title": "Beste Reisezeit für Südkalifornien {year}",
+          "titleNoYear": "Beste Reisezeit für Südkalifornien",
+          "pageLink": "Beste Reisezeit für Südkalifornien {year}",
+          "pageLinkNoYear": "Beste Reisezeit für Südkalifornien"
+        },
+        "reasons": {
+          "school_break": "in den Schulferien in Los Angeles"
+        },
+        "faq": {
+          "title": "Fragen zum Andrang in Südkalifornien",
+          "quietest": {
+            "q": "Wann ist in Südkalifornien in den nächsten Wochen am wenigsten los?",
+            "qMonth": "Wann ist in Südkalifornien im {month} am wenigsten los?",
+            "resort": "Die niedrigste Spitzenwartezeit hat {resort} am {days}.",
+            "day": "{date} ({park}, etwa {minutes} Min.)"
+          },
+          "party": {
+            "q": "Welcher Park passt an einem Party-Abend in California Adventure?",
+            "a": "An {count, plural, =1 {# Abend} other {# Abenden}} in diesem Zeitraum schließt California Adventure für Tagesgäste um {time}, weil abends {name} läuft. Die Spitzenwartezeit liegt an diesen Tagen bei etwa {on} Min., an den übrigen bei etwa {off} Min. Der Tag ist kürzer, und den Abend verpasst du. Für einen ganzen Tag nimm an diesen Tagen Disneyland oder komm mit einem Ticket für die Party."
+          },
+          "epic": {
+            "q": "Ist Disneyland am Wochenende voller?",
+            "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegt die Spitzenwartezeit in Disneyland samstags und sonntags bei etwa {weekend} Min., montags bis freitags bei etwa {weekday} Min."
+          },
+          "distance": {
+            "q": "Wie weit ist Universal von Disneyland entfernt?",
+            "a": "Von Universal Studios Hollywood bis zum Disneyland-Parkplatz Mickey & Friends in Anaheim fährst du ohne Verkehr etwa {far} Minuten. Von dort bringt dich die Tram in etwa {transfer} Minuten zu den Eingängen, zusammen sind es {total} Minuten. Von den Disney-Hotels und vom Harbor Boulevard gehst du zu Fuß zu beiden Disney-Parks. Six Flags Magic Mountain liegt etwa {near} Minuten von Universal entfernt. Kartendaten: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Reiseplaner für Südkalifornien"
+        },
+        "dataset": {
+          "name": "Besucherkalender der Freizeitparks in Südkalifornien, {period}",
+          "description": "Je Park und Tag im Disneyland Resort, bei Universal Studios Hollywood und in den Ausflugsparks: die erwartete Spitzenwartezeit, der Andrang im Vergleich zu einem normalen Tag des Parks und die Öffnungszeiten, {period}."
+        },
+        "glance": {
+          "zone": "Ortszeit Kalifornien"
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste Reisezeit für Südkalifornien {year}"
+        },
+        "name": {
+          "region": "Beste Reisezeit für Südkalifornien"
+        },
+        "resort": {
+          "region": "Disneyland und Universal"
+        },
+        "intro": {
+          "lead": "Jede Zahl hier ist die Spitzenwartezeit: der höchste Wert jeder großen Bahn am Tag, gemittelt über Disneyland, California Adventure und Universal.",
+          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach stehen hier dieselben Wochen im Vorjahr, so wie wir sie gemessen haben, mit dem Hinweis „Vorjahr“.",
+          "bodyForecast": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Alle Werte stammen aus unserer Prognose."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Schulferien in Los Angeles"
+          }
+        },
+        "weeks": {
+          "noBreak": "Keine Schulferien in Los Angeles."
+        },
+        "faq": {
+          "title": "Fragen zur besten Reisezeit",
+          "quietQ": {
+            "region": "Wann ist in Südkalifornien {year} am wenigsten los?"
+          },
+          "quietA": "Die niedrigste Spitzenwartezeit hat die {days}-Tage-Reise ab {date}: etwa {minutes} Min., {percent} % unter dem Schnitt von {year}. Danach folgen {others}.",
+          "christmasQ": "Ist an Weihnachten viel los?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nein.}} In der Weihnachtswoche ({date}) liegt die Spitzenwartezeit bei etwa {minutes} Min., im Schnitt von {year} bei {average} Min.",
+          "newYearA": "{busy, select, yes {Ja, soweit unsere Zahlen reichen.} other {Nein, soweit unsere Zahlen reichen.}} Sie beginnen mit der Woche um Neujahr ({date}), mit einer Spitzenwartezeit von etwa {minutes} Min., im Schnitt von {year} sind es {average} Min. Die Weihnachtswoche selbst liegt davor.",
+          "partyQ": "Wann sind die Party-Abende?",
+          "partyA": "{list}. An diesen Abenden müssen Tagesgäste früher gehen, deshalb zählt der Reiseplaner so einen Tag als kürzeren Parktag.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Erst Disneyland oder erst Universal?"
+          },
+          "firstA": "Jeder Park kommt auf den Tag deiner Reise mit seiner niedrigsten Spitzenwartezeit. Für die Reise ab {date} heißt das {order}.",
+          "firstItem": "{park} am {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Kalifornien-Reise planen"
+        },
+        "parks": {
+          "moreHint": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND und Sesame Place"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-Hotel",
+            "offsite": "Anderes Hotel"
+          },
+          "hotelHint": {
+            "disney": "Disneyland Hotel, Grand Californian oder Pixar Place: zu Fuß zu beiden Parks, ohne früheren Einlass"
+          },
+          "hotelShort": {
+            "disney": "Disney-Hotel",
+            "offsite": "Anderes Hotel"
+          },
+          "fireworks": "Abendshows",
+          "fireworksWantHint": "Deine Parktage meiden Party-Abende, an denen Tagesgäste früher gehen müssen.",
+          "fireworksAnyHint": "Ein Party-Abend kann ein Parktag werden, wenn die niedrigere Spitzenwartezeit den kürzeren Tag aufwiegt.",
+          "fireworksWantShort": "Abendshows",
+          "eveningsHint": "Schließt ein Park früher, steht im Plan ein Vorschlag für den Abend: der andere Disney-Park, Downtown Disney oder Universal CityWalk."
+        },
+        "relaxed": {
+          "blocks_relaxed": "Die Tage im Disneyland Resort ließen sich an diesen Daten nicht alle hintereinanderlegen."
+        },
+        "ics": {
+          "calendarName": "Kalifornien-Reise {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Keine Schulferien in Los Angeles.",
+            "before_spring_break": "Vor den Frühjahrsferien in Los Angeles."
+          },
+          "warning": {
+            "school_break": "Schulferien in Los Angeles."
+          }
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-resort": "Disneyland Resort",
+            "universal-studios-hollywood": "Universal Studios Hollywood",
+            "day-trips": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND und Sesame Place"
+          },
+          "resortShort": {
+            "disneyland-resort": "Disneyland",
+            "universal-studios-hollywood": "Universal",
+            "day-trips": "Ausflugspark"
+          },
+          "hopperName": {
+            "disney": "Park Hopper"
+          },
+          "market": {
+            "intl": "Außerhalb der USA verkauft"
+          },
+          "entry": {
+            "dlr-multi-day": {
+              "title": "2- bis 5-Tage-Ticket",
+              "hint": "Beliebige Parktage innerhalb der 13 Tage ab dem ersten Besuch."
+            },
+            "dlr-1-day": {
+              "title": "1-Tages-Ticket",
+              "hint": "Ein Tag in einem Park, mit Park Hopper in beiden."
+            },
+            "dlr-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Zwei Disneyland-Tage und zwei Besuche aus LEGOLAND, SeaWorld, San Diego Zoo und Safari Park, innerhalb von 14 Tagen ab dem ersten Besuch. Auch mit zwei Universal-Tagen."
+            },
+            "ush-1-day": {
+              "title": "Tagesticket",
+              "hint": "Gilt am Datum, das du gebucht hast."
+            },
+            "ush-2-day": {
+              "title": "2-Tage-Ticket",
+              "hint": "Erster Besuch am gebuchten Datum, der zweite innerhalb der 7 Tage ab diesem Datum."
+            },
+            "ush-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Zwei Universal-Tage und zwei Besuche aus LEGOLAND, SeaWorld, San Diego Zoo und Safari Park, innerhalb von 14 Tagen ab dem ersten Besuch."
+            },
+            "knotts": {
+              "title": "Knott’s Berry Farm",
+              "hint": "Tagesticket für ein festes Datum. Knott’s Scary Farm braucht ein eigenes Ticket."
+            },
+            "magic-mountain": {
+              "title": "Six Flags Magic Mountain",
+              "hint": "Ein Besuch, an einem festen Datum oder an einem beliebigen Öffnungstag."
+            },
+            "seaworld-1-day": {
+              "title": "SeaWorld San Diego, 1 Tag",
+              "hint": "Für ein festes Datum oder einen Tag innerhalb von 6 Monaten ab dem Kauf."
+            },
+            "seaworld-2-day": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "Der zweite Besuch innerhalb von 14 Tagen ab dem ersten."
+            },
+            "seaworld-2-day-intl": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "Der zweite Besuch innerhalb von 7 Tagen ab dem ersten."
+            },
+            "seaworld-sesame": {
+              "title": "SeaWorld und Sesame Place",
+              "hint": "Two-Park Ticket: je ein Besuch innerhalb von 6 Monaten ab dem Kauf."
+            },
+            "seaworld-fun-card": {
+              "title": "SeaWorld Fun Card 2027",
+              "hint": "So oft du willst bis Ende 2027, außer an Sperrtagen."
+            },
+            "sesame": {
+              "title": "Sesame Place San Diego",
+              "hint": "Für ein festes Datum oder einen Tag innerhalb von 6 Monaten ab dem Kauf."
+            },
+            "legoland": {
+              "title": "LEGOLAND California",
+              "hint": "Mit SEA LIFE Aquarium, ohne Reservierung."
+            },
+            "citypass-san-diego": {
+              "title": "San Diego CityPASS",
+              "hint": "SeaWorld, LEGOLAND oder beide, dazu drei Attraktionen in San Diego, an 9 Tagen am Stück ab dem ersten Besuch."
+            },
+            "gocity": {
+              "title": "Go City Los Angeles",
+              "hint": "Der All-Inclusive Pass gilt für Knott’s, der Pass Plus dazu für Universal und LEGOLAND, je ein Besuch innerhalb von 14 Tagen."
+            }
+          },
+          "variant": {
+            "citypass-socal-disneyland": "Mit Disneyland",
+            "citypass-socal-disneyland-universal": "Mit Disneyland und Universal",
+            "ush-1-day": "General Admission",
+            "ush-express": "Universal Express",
+            "ush-vip-experience": "VIP Experience",
+            "sfmm-1-day": "Festes Datum",
+            "sfmm-any-day": "Good Any Day",
+            "seaworld-sd-1-day": "Single-Day Ticket",
+            "seaworld-sd-any-day": "Any Day Ticket",
+            "sesame-sd-1-day": "Single-Day Ticket",
+            "sesame-sd-any-day": "Any-Day Ticket",
+            "legoland-ca-1-day": "1 Tag",
+            "legoland-ca-multi-day": "2 Tage",
+            "gocity-la-all-inclusive": "All-Inclusive Pass",
+            "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Südkalifornien",
+        "title": "Südkalifornien: welcher Park an welchem Tag",
+        "lead": "Disneyland, California Adventure, Universal Hollywood und fünf weitere Parks in einem Kalender: wann welcher am leersten ist, und ein Planer für deine Reisetage.",
+        "link": "Südkalifornien Besucherkalender"
+      }
+    },
+    "japan": {
+      "nav": {
+        "name": "Japan",
+        "area": "Tokio bis Osaka",
+        "calendar": "Japan Besucherkalender",
+        "calendarHint": "Fünf Parks Tag für Tag, und ein Planer für die Reise durch mehrere Städte."
+      },
+      "hub": {
+        "title": "Japan Besucherkalender",
+        "monthTitle": "Japan Besucherkalender {month}",
+        "metaTitle": "Japan Besucherkalender & Reiseplaner",
+        "metaTitleMonth": "Japan Besucherkalender {month}: Tokyo Disney & USJ",
+        "metaTitleMonthShort": "Japan Besucherkalender {month}",
+        "metaDescription": "Welcher Park in Japan an welchem Tag, von Tokyo Disney bis Universal Studios Japan. Am ruhigsten in den nächsten 30 Tagen: {verdict}.",
+        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan und Universal Studios Japan Tag für Tag, und ein Reiseplaner, der Städte, Nächte und Parks auf deine Reisetage verteilt.",
+        "metaDescriptionMonth": "Die ruhigsten Tage in Japans Parks im {month}: {verdict}. Alle fünf Parks Tag für Tag.",
+        "metaDescriptionMonthPlain": "Japan im {month}, Tag für Tag: die Spitzenwartezeit in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan und Universal Studios Japan.",
+        "lead": "Ein Kalender für fünf Parks zwischen Tokio und Osaka und ein Planer, der für deine Reise die Städte ordnet und die Nächte verteilt.",
+        "leadMonth": "Alle fünf Parks zwischen Tokio und Osaka im {month}, Tag für Tag, und ein Planer, der für deine Reise die Städte ordnet und die Nächte verteilt.",
+        "monthIndexLabel": "Japan nach Monaten",
+        "glance": {
+          "zone": "Ortszeit Japan"
+        },
+        "calendar": {
+          "caption": "Japans Parks vom {from} bis {to}: Spitzenwartezeit der großen Bahnen, in Minuten"
+        },
+        "lanes": {
+          "break": "Japanische Schulferien: {name}, {dates}",
+          "unnamedBreak": "Japanische Schulferien",
+          "none": "Keine Events in diesen Tagen."
+        },
+        "sheet": {
+          "kicker": "Japan · ein Tag",
+          "early": {
+            "happy_entry": "Happy Entry ab {time} für Gäste der Disney-Hotels",
+            "early_entry": "Früherer Einlass ab {time} für Hotelgäste"
+          }
+        },
+        "when": {
+          "kicker": "Tokyo Disney und USJ",
+          "title": "Beste Reisezeit für Japan {year}",
+          "titleNoYear": "Beste Reisezeit für Japan",
+          "pageLink": "Beste Reisezeit für Japan {year}",
+          "pageLinkNoYear": "Beste Reisezeit für Japan"
+        },
+        "reasons": {
+          "school_break": "in den japanischen Schulferien"
+        },
+        "faq": {
+          "title": "Fragen zu den Parks in Japan",
+          "quietest": {
+            "q": "Wann ist es in Japans Parks in den nächsten Wochen am leersten?",
+            "qMonth": "Wann ist es in Japans Parks im {month} am leersten?",
+            "resort": "{resort}: am leersten {days}; am vollsten {busy}.",
+            "day": "{date} ({park}, {minutes} Min.)",
+            "dayAlone": "{date} ({minutes} Min.)"
+          },
+          "epic": {
+            "q": "Ist Tokyo DisneySea am Wochenende voller?",
+            "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegt die Spitzenwartezeit samstags und sonntags bei etwa {weekend} Min., montags bis freitags bei etwa {weekday} Min."
+          },
+          "distance": {
+            "q": "Wie lange fährt man zwischen den Städten?",
+            "a": "Die Zeiten stammen aus den Fahrplänen von JR Central und Fujikyu und gelten von Tür zu Tür, das Warten auf Zug oder Bus eingerechnet: {legs}.",
+            "leg": "von {from} nach {to} etwa {duration}",
+            "dayTrip": "{park} geht als Tagesausflug ab {base}, etwa {duration} pro Richtung.",
+            "pair": "Die {name} verbindet {from} und {to} in etwa {minutes} Minuten."
+          },
+          "cities": {
+            "q": "In welcher Reihenfolge reise ich durch die Städte?",
+            "a": "Die Städte liegen an einer Linie: Tokio, Fujikawaguchiko, Nagoya, Osaka. Deine Stationen folgen ihr in einer Richtung, die deine Flughäfen vorgeben: Landest du in Tokio und fliegst ab Osaka, geht es nach Westen; fliegst du dort ab, wo du gelandet bist, fährst du am Abreisetag zurück. Die Nächte verteilt der Reiseplaner so, dass jeder Park auf einen ruhigen Tag fällt, und Nächte, die du schon gebucht hast, legst du selbst fest. Fuji-Q Highland bleibt ein Tagesausflug von Tokio, solange sich eine Nacht am See nicht in kürzeren Wartezeiten auszahlt."
+          },
+          "luggage": {
+            "q": "Was mache ich mit dem Gepäck, wenn ich die Stadt wechsle?",
+            "a": "Die meisten Reisenden schicken ihre Koffer mit einem Gepäckdienst (Takkyubin) zum nächsten Hotel voraus. Im Shinkansen braucht ein Gepäckstück mit 161 bis 250 cm Gesamtmaß einen reservierten Sitzplatz mit Fläche für großes Gepäck, größere dürfen gar nicht mit (JR Central). Mit vorausgeschicktem Gepäck plant der Reiseplaner 30 Minuten für jeden Hotelwechsel ein, trägst du es selbst, sind es eher 60. Wählen kannst du 30, 60, 90 oder 120 Minuten."
+          },
+          "happyEntry": {
+            "q": "Komme ich mit einem Disney-Hotel früher in den Park?",
+            "a": "Ja, mit Happy Entry. Gäste der Disney-Hotels kommen 15 Minuten vor allen anderen ins Tokyo Disneyland, Gäste des Hotel MiraCosta und des Fantasy Springs Hotel auch früher ins Tokyo DisneySea. Es gilt ab dem Morgen nach dem Einchecken, so zählt es auch im Reiseplaner, und manche Hotels haben einzelne Tage ohne. Die offiziellen Hotels von Universal Studios Japan haben keinen früheren Einlass."
+          }
+        },
+        "next": {
+          "title": "Reiseplaner für Japan"
+        },
+        "dataset": {
+          "name": "Besucherkalender der Freizeitparks in Japan, {period}",
+          "description": "Je Park und Tag in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan und Universal Studios Japan: die erwartete Spitzenwartezeit, der Andrang im Vergleich zu einem normalen Tag des Parks und die Öffnungszeiten, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste Reisezeit für Japan {year}",
+          "tokyo-disney": "Beste Reisezeit für Tokyo Disney {year}",
+          "universal-studios-japan": "Beste Reisezeit für Universal Studios Japan {year}"
+        },
+        "name": {
+          "region": "Beste Reisezeit für Japan",
+          "tokyo-disney": "Beste Reisezeit für Tokyo Disney",
+          "universal-studios-japan": "Beste Reisezeit für Universal Studios Japan"
+        },
+        "resort": {
+          "region": "Tokyo Disney und USJ",
+          "tokyo-disney": "Tokyo Disney Resort",
+          "universal-studios-japan": "Universal Studios Japan"
+        },
+        "intro": {
+          "lead": "Jede Zahl hier ist die Spitzenwartezeit: der Tageshöchstwert jeder großen Bahn, gemittelt über die Parks der Reise.",
+          "body": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, die Fahrten zwischen den Städten eingerechnet, und ein Tag, an dem ein Park früher schließt, zählt als schlechterer Tag. Die Prognose reicht bis {date}. Danach zeigt die Seite dieselben Wochen im Vorjahr, wie wir sie gemessen haben, markiert mit „Vorjahr“.",
+          "bodyForecast": "Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag, die Fahrten zwischen den Städten eingerechnet, und ein Tag, an dem ein Park früher schließt, zählt als schlechterer Tag. Jede Zahl auf dieser Seite ist unsere Prognose."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Feiertage und Ferien in Japan"
+          },
+          "typhoon": "Taifunsaison",
+          "rainySeason": "Regenzeit"
+        },
+        "weeks": {
+          "noBreak": "Kein Feiertag in Japan."
+        },
+        "faq": {
+          "title": "Fragen zur besten Reisezeit",
+          "quietQ": {
+            "region": "Wann ist in Japans Parks {year} am wenigsten los?",
+            "tokyo-disney": "Wann ist im Tokyo Disney Resort {year} am wenigsten los?",
+            "universal-studios-japan": "Wann ist in Universal Studios Japan {year} am wenigsten los?"
+          },
+          "quietA": "Die kürzeste Spitzenwartezeit hat die {days}-Tage-Reise ab {date}: etwa {minutes} Min., {percent} % unter dem Schnitt von {year}. Danach folgen {others}.",
+          "christmasQ": "Ist an Weihnachten viel los?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nein.}} Die Weihnachtswoche ({date}) liegt bei etwa {minutes} Min. Spitzenwartezeit, im Schnitt von {year} sind es {average} Min.",
+          "newYearA": "{busy, select, yes {Ja, soweit unsere Zahlen reichen.} other {Nein, soweit unsere Zahlen reichen.}} Sie beginnen mit der Woche um Neujahr ({date}) bei etwa {minutes} Min. Spitzenwartezeit, im Schnitt von {year} sind es {average} Min. Die Weihnachtswoche selbst liegt davor.",
+          "partyQ": "Wann sind die Abende mit eigenem Ticket?",
+          "partyA": "{list}. Für jeden dieser Abende brauchst du ein eigenes Ticket.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "typhoonQ": "Was ist mit der Taifunsaison?",
+          "typhoonA": "Sie läuft von Juni bis November, am stärksten von Anfang September bis Mitte Oktober. Im September kommt im Schnitt gut ein Taifun in die Nähe von Tokio und einer in die Nähe von Osaka (Japanischer Wetterdienst, Mittel 1991 bis 2020), deshalb stuft der Reiseplaner Reisen in diesen Wochen etwas zurück. Davor liegt die Regenzeit, etwa vom 6. Juni bis 19. Juli, mit Regen an den meisten Tagen, aber ohne Schließtage. In einem üblichen Jahr fällt der meiste Regen im {months}, etwa {rain} mm im Monat (der Schnitt von {period}).",
+          "firstQ": {
+            "region": "Erst Tokio oder erst Osaka?",
+            "tokyo-disney": "Welcher Disney-Park zuerst?"
+          },
+          "firstA": "Das hängt von deinen Flügen und den Tagen ab: Der Reiseplaner nimmt die Städte in der Reihenfolge deiner Flughäfen und legt jeden Park auf seinen ruhigsten Tag der Reise. Für die Reise ab {date} heißt das {order}.",
+          "firstItem": "{park} am {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Japan-Reise planen"
+        },
+        "parks": {
+          "moreHint": "Fuji-Q Highland und LEGOLAND Japan"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-Hotel in Maihama",
+            "disney_deluxe": "MiraCosta oder Fantasy Springs",
+            "universal": "Offizielles USJ-Hotel",
+            "park_hotel": "Parkhotel bei Fuji-Q oder LEGOLAND",
+            "offsite": "Woanders"
+          },
+          "hotelHint": {
+            "disney": "Happy Entry im Tokyo Disneyland, 15 Minuten früher, nicht am Anreisetag",
+            "disney_deluxe": "Happy Entry in beiden Disney-Parks, nicht am Anreisetag",
+            "universal": "Wenige Minuten zu Fuß zum Eingang, kein früherer Einlass",
+            "park_hotel": "Highland Resort: früherer Einlass bei Fuji-Q. LEGOLAND Japan Hotel: zu Fuß zum Eingang",
+            "offsite": "Kein früherer Einlass"
+          },
+          "hotelShort": {
+            "disney": "Disney-Hotel",
+            "disney_deluxe": "MiraCosta oder Fantasy Springs",
+            "universal": "USJ-Hotel",
+            "park_hotel": "Parkhotel",
+            "offsite": "Hotel woanders"
+          },
+          "eveningsHint": "Schließt ein Park früher, schlägt der Plan für den Abend IKSPIARI bei den Disney-Parks oder den Universal CityWalk Osaka vor.",
+          "moveBufferHint": "Mit vorausgeschicktem Gepäck (Takkyubin) reichen meist 30 Minuten."
+        },
+        "details": {
+          "earlyOthers": {
+            "happy_entry": "Happy Entry ab {time} für Gäste der Disney-Hotels",
+            "early_entry": "Früherer Einlass ab {time} für Hotelgäste"
+          }
+        },
+        "reason": {
+          "happy_entry": "Dein Hotel hat an diesem Tag Happy Entry.",
+          "early_entry": "Mit deinem Hotel kommst du an diesem Tag früher in den Park."
+        },
+        "ics": {
+          "calendarName": "Japan-Reise {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Keine japanischen Schulferien.",
+            "before_spring_break": "Vor den japanischen Frühjahrsferien."
+          },
+          "warning": {
+            "school_break": "Japanische Schulferien."
+          }
+        },
+        "base": {
+          "tokyo": "Tokio",
+          "fujikawaguchiko": "Fujikawaguchiko",
+          "nagoya": "Nagoya",
+          "osaka": "Osaka"
+        },
+        "stayNote": {
+          "tokyo": "Maihama für beide Disney-Parks, Shinjuku für die Busse nach Fuji-Q",
+          "fujikawaguchiko": "Kawaguchiko am See oder das Highland Resort am Park",
+          "nagoya": "Bahnhof Nagoya für den Shinkansen oder das LEGOLAND Japan Hotel am Eingang",
+          "osaka": "Universal City am Eingang, Umeda oder Namba in der Stadt; Kyoto liegt eine Stunde entfernt"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (Disney-Hotels)",
+          "disneysea_hotels": "Hotels am Tokyo DisneySea",
+          "bayside": "Maihama Bayside (Official Hotels)",
+          "shin_urayasu": "Shin-Urayasu (Partner Hotels)",
+          "tokyo_station": "Bahnhof Tokio",
+          "shinjuku": "Shinjuku",
+          "highland_resort": "Highland Resort Hotel & Spa",
+          "kawaguchiko": "Kawaguchiko",
+          "nagoya_station": "Bahnhof Nagoya",
+          "kinjo_futo": "Kinjo-futo (LEGOLAND Japan Hotel)",
+          "universal_city": "Universal City (offizielle Hotels)",
+          "umeda": "Umeda (Bahnhof Osaka)",
+          "namba": "Namba",
+          "kyoto_station": "Bahnhof Kyoto"
+        },
+        "moveNote": {
+          "reserve_seat": "Sitzplatz reservieren",
+          "forward_luggage": "Gepäck vorausschicken"
+        },
+        "tickets": {
+          "resort": {
+            "tokyo-disney-resort": "Tokyo Disney Resort",
+            "universal-studios-japan": "Universal Studios Japan",
+            "fuji-q-highland": "Fuji-Q Highland",
+            "legoland-japan": "LEGOLAND Japan"
+          },
+          "resortShort": {
+            "tokyo-disney-resort": "Tokyo Disney",
+            "universal-studios-japan": "USJ",
+            "fuji-q-highland": "Fuji-Q",
+            "legoland-japan": "LEGOLAND"
+          },
+          "market": {
+            "intl": "Außerhalb Japans verkauft"
+          },
+          "entry": {
+            "tdr-1-day": {
+              "title": "1-Day Passport",
+              "hint": "Ein Park ab Öffnung, Park und Tag legst du beim Kauf fest. Mehrtagestickets gibt es nicht."
+            },
+            "tdr-after-3": {
+              "title": "After 3 Passport",
+              "hint": "Ab 15 Uhr an Wochenenden und Feiertagen, ein Park."
+            },
+            "tdr-after-5": {
+              "title": "After 5 Passport",
+              "hint": "Ab 17 Uhr montags bis freitags außer an Feiertagen, ein Park."
+            },
+            "usj-1-day": {
+              "title": "1-Day Studio Pass",
+              "hint": "Ein Tag, für ein festes Datum gekauft."
+            },
+            "usj-2-day": {
+              "title": "2-Day Studio Pass",
+              "hint": "Zwei ganze Tage hintereinander."
+            },
+            "usj-1-5-day": {
+              "title": "1.5-Day Studio Pass",
+              "hint": "Am ersten Tag ab 15 Uhr, am nächsten ab Öffnung."
+            },
+            "usj-twilight": {
+              "title": "Twilight Pass",
+              "hint": "Ab 15 Uhr am gewählten Tag."
+            },
+            "fujiq-1-day": {
+              "title": "One Day Pass",
+              "hint": "Der Eintritt ist frei, der Pass gilt einen Tag für alle Fahrten außer wenigen mit eigenem Zeitticket."
+            },
+            "fujiq-premium": {
+              "title": "Fuji-Q Premium Pass",
+              "hint": "Früherer Einlass und Vorrang an 12 Thrill-Fahrten, verkauft über CLUB Fuji-Q."
+            },
+            "fujiq-later": {
+              "title": "Afternoon oder Sunset Night Pass",
+              "hint": "Alle Fahrten ab 13 Uhr, oder ab 16 Uhr an Tagen, an denen der Park bis nach 19 Uhr offen hat."
+            },
+            "fujiq-thomas": {
+              "title": "Thomas Land Pass",
+              "hint": "Nur die 12 Fahrten im Thomas Land."
+            },
+            "fujiq-pass": {
+              "title": "Annual Passport",
+              "hint": "Alle Fahrten an 365 Tagen ab dem Kauf."
+            },
+            "lego-1-day": {
+              "title": "1DAY Passport",
+              "hint": "Ein Tag, mit oder ohne SEA LIFE Nagoya am selben Tag."
+            },
+            "lego-hotel-2-day": {
+              "title": "Combo 2 Day Pass",
+              "hint": "Für Gäste des LEGOLAND Japan Hotel: Anreisetag und Folgetag, SEA LIFE inklusive."
+            },
+            "lego-pass": {
+              "title": "Annual Pass",
+              "hint": "Weekday, Standard oder Premium, die Einlasstage stehen im Kalender des Passes."
+            }
+          },
+          "variant": {
+            "fujiq-one-day-pass": "Ohne Zusatz",
+            "fujiq-one-day-pass-priority-admission": "Mit früherem Einlass",
+            "fujiq-one-day-pass-virtual-queue": "Mit virtueller Warteschlange",
+            "fujiq-afternoon-pass": "Afternoon Pass",
+            "fujiq-sunset-night-pass": "Sunset Night Pass",
+            "legoland-japan-1-day": "Nur LEGOLAND",
+            "legoland-japan-combo-1-day": "Mit SEA LIFE Nagoya"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Japan",
+        "title": "Japan: welcher Park an welchem Tag",
+        "lead": "Fünf Parks von Tokio bis Osaka in einem Kalender, Tag für Tag, und ein Reiseplaner, der Städte, Nächte und Parks auf deine Reisetage verteilt.",
+        "link": "Japan Besucherkalender"
+      }
+    },
+    "paris": {
+      "nav": {
+        "name": "Paris",
+        "area": "Frankreich",
+        "calendar": "Besucherkalender Disneyland Paris & Parc Astérix",
+        "calendarHint": "Welcher der drei Parks an welchem Tag, und wo du dafür übernachtest."
+      },
+      "hub": {
+        "title": "Besucherkalender Disneyland Paris & Parc Astérix",
+        "monthTitle": "Besucherkalender {month}: Disneyland Paris & Parc Astérix",
+        "monthQuestion": "Welcher Park an welchem Tag im {month}?",
+        "metaTitle": "Disneyland Paris & Parc Astérix: Besucherkalender & Planer",
+        "metaTitleMonth": "Besucherkalender {month}: Disneyland Paris & Parc Astérix",
+        "metaTitleMonthShort": "Besucherkalender Disneyland Paris {month}",
+        "metaDescription": "Disneyland Paris und der Parc Astérix Tag für Tag, mit Reiseplaner. Am leersten in den nächsten 30 Tagen: {verdict}.",
+        "metaDescriptionPlain": "Spitzenwartezeit und Andrang im Disneyland Park, in Disney Adventure World und im Parc Astérix, Tag für Tag, dazu ein Reiseplaner für Parktage und Hotels.",
+        "metaDescriptionMonth": "Die ruhigsten Tage im {month} in Disneyland Paris und im Parc Astérix: {verdict}. Alle drei Parks Tag für Tag.",
+        "metaDescriptionMonthPlain": "Disneyland Paris und der Parc Astérix im {month}, Tag für Tag: Spitzenwartezeit, Andrang und Öffnungszeiten aller drei Parks.",
+        "lead": "Ein Kalender für Disneyland Paris und den Parc Astérix, zwei Resorts mit eigenen Hotels, und ein Planer, der dir sagt, wo du übernachtest.",
+        "leadMonth": "Disneyland Paris und der Parc Astérix im {month}, Tag für Tag, und ein Planer, der dir sagt, wo du übernachtest.",
+        "monthIndexLabel": "Besucherkalender nach Monaten",
+        "glance": {
+          "zone": "Ortszeit Paris"
+        },
+        "calendar": {
+          "caption": "Disneyland Paris und Parc Astérix vom {from} bis {to}: Spitzenwartezeit der großen Bahnen, in Minuten"
+        },
+        "lanes": {
+          "break": "Schulferien in Paris (Zone C): {name}, {dates}",
+          "unnamedBreak": "Schulferien in Paris (Zone C)",
+          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Paris."
+        },
+        "sheet": {
+          "kicker": "Paris · ein Tag",
+          "early": {
+            "extra_magic_time": "Extra Magic Time ab {time} für Gäste der Disney-Hotels",
+            "early_entry": "Early Entry ab {time} an einigen Attraktionen, für Gäste der Hotels am Park"
+          },
+          "travelTransfer": "Ab {area}: etwa {minutes} Min. mit dem Auto zum Parkplatz, dann etwa {transfer} Min. zu Fuß zum Eingang, zusammen {total} Min., ohne Verkehr"
+        },
+        "when": {
+          "kicker": "Reisen mit allen drei Parks",
+          "title": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
+          "titleNoYear": "Beste Reisezeit für Disneyland Paris & Parc Astérix",
+          "pageLink": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
+          "pageLinkNoYear": "Beste Reisezeit für Disneyland Paris & Parc Astérix"
+        },
+        "reasons": {
+          "school_break": "Schulferien in Paris"
+        },
+        "faq": {
+          "title": "Fragen zum Andrang",
+          "quietest": {
+            "q": "Wann ist es in Disneyland Paris und im Parc Astérix in den nächsten Wochen am leersten?",
+            "qMonth": "Wann ist es in Disneyland Paris und im Parc Astérix im {month} am leersten?",
+            "resort": "{resort}: am leersten {days}, am vollsten {busy}.",
+            "day": "{date} ({park}, etwa {minutes} Min.)"
+          },
+          "epic": {
+            "q": "Ist der Disneyland Park am Wochenende voller?",
+            "a": "{verdict, select, busier {Ja.} same {Nein.} other {Nur wenig.}} In diesem Zeitraum liegt seine Spitzenwartezeit samstags und sonntags bei etwa {weekend} Min., montags bis freitags bei etwa {weekday} Min."
+          },
+          "distance": {
+            "q": "Wie weit ist der Parc Astérix von Disneyland Paris entfernt?",
+            "a": "Mit dem Auto sind es ohne Verkehr etwa {far} Minuten vom Disney-Parkplatz zum Parc Astérix, dazu {transfer} Minuten zu Fuß zwischen Parkplatz und Disney-Eingängen, zusammen {total} Minuten. Ohne Auto fährst du mit dem TGV von Marne-la-Vallée–Chessy zum Flughafen Charles de Gaulle und nimmst dort ab Roissypôle den Shuttle des Parc Astérix. Die Eingänge von Disneyland Park und Disney Adventure World liegen {near} Minuten zu Fuß auseinander. Kartendaten: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Reiseplaner für Disneyland Paris & Parc Astérix"
+        },
+        "dataset": {
+          "name": "Besucherkalender Disneyland Paris & Parc Astérix, {period}",
+          "description": "Je Park und Tag im Disneyland Park, in Disney Adventure World und im Parc Astérix: die erwartete Spitzenwartezeit der großen Bahnen, der Andrang im Vergleich zu einem normalen Tag des Parks und die Öffnungszeiten, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
+          "disneyland-paris": "Beste Reisezeit für Disneyland Paris {year}"
+        },
+        "name": {
+          "region": "Beste Reisezeit für Disneyland Paris & Parc Astérix",
+          "disneyland-paris": "Beste Reisezeit für Disneyland Paris"
+        },
+        "resort": {
+          "region": "Disneyland Paris und Parc Astérix",
+          "disneyland-paris": "Disneyland Paris"
+        },
+        "intro": {
+          "lead": "Die Minuten sind die Spitzenwartezeit, der Tageshöchstwert jeder großen Bahn, gemittelt über die Parks der Reise.",
+          "body": "Wir planen jede Reise wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Bis {date} rechnen wir mit unserer Prognose, für die Wochen danach mit dem gemessenen Andrang des Vorjahres, markiert mit „Vorjahr“.",
+          "bodyForecast": "Wir planen jede Reise wie der Reiseplaner: jeder Park an seinem besten Tag, und ein Tag, an dem Tagesgäste früher gehen müssen, zählt als schlechterer Tag. Alle Zahlen sind unsere Prognose."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Schulferien in Paris (Zone C)"
+          }
+        },
+        "weeks": {
+          "noBreak": "Keine Schulferien in Paris."
+        },
+        "faq": {
+          "title": "Fragen zur Reisezeit",
+          "quietQ": {
+            "region": "Wann ist in Disneyland Paris und im Parc Astérix {year} am wenigsten los?",
+            "disneyland-paris": "Wann ist in Disneyland Paris {year} am wenigsten los?"
+          },
+          "quietA": "Am leersten ist die {days}-Tage-Reise ab dem {date}: Spitzenwartezeit etwa {minutes} Min., {percent} % unter dem Schnitt von {year}. Danach folgen {others}.",
+          "christmasQ": "Ist an Weihnachten viel los?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nein.}} In der Weihnachtswoche ({date}) liegt die Spitzenwartezeit bei etwa {minutes} Min., im Schnitt von {year} bei {average} Min.",
+          "newYearA": "{busy, select, yes {Ja, soweit unsere Zahlen reichen.} other {Nein, soweit unsere Zahlen reichen.}} Sie beginnen mit der Woche um Neujahr ({date}) bei einer Spitzenwartezeit von etwa {minutes} Min., im Schnitt von {year} sind es {average} Min. Die Weihnachtswoche selbst liegt davor.",
+          "partyQ": "Wann sind die Abende mit eigenem Ticket?",
+          "partyA": "{list}. An diesen Abenden müssen Tagesgäste früher gehen, deshalb legt der Reiseplaner keinen vollen Parktag darauf.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Erst Disneyland Paris oder erst der Parc Astérix?",
+            "disneyland-paris": "Welcher Disney-Park zuerst?"
+          },
+          "firstA": "Jeder Park kommt auf seinen ruhigsten Tag der Reise, daraus ergibt sich die Reihenfolge. Für die Reise ab dem {date} heißt das {order}.",
+          "firstItem": "{park} am {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Reise planen"
+        },
+        "parks": {
+          "moreHint": "Keine weiteren Parks in dieser Region"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-Hotel",
+            "parc_asterix": "Hotel am Parc Astérix",
+            "offsite": "Anderes Hotel"
+          },
+          "hotelHint": {
+            "disney": "Extra Magic Time, meist eine Stunde vor der Öffnung in beiden Disney-Parks, Davy Crockett Ranch eingeschlossen",
+            "parc_asterix": "Early Entry: einige Attraktionen 30 Minuten früher",
+            "offsite": "Partnerhotels und Paris eingeschlossen, kein früherer Einlass"
+          },
+          "hotelShort": {
+            "disney": "Disney-Hotel",
+            "parc_asterix": "Hotel am Parc Astérix",
+            "offsite": "Hotel woanders"
+          },
+          "eveningsHint": "Schließt ein Park früher, kommt für den Abend der andere Disney-Park oder Disney Village in den Plan."
+        },
+        "details": {
+          "earlyOthers": {
+            "extra_magic_time": "Extra Magic Time ab {time} für Gäste der Disney-Hotels",
+            "early_entry": "Early Entry ab {time} an einigen Attraktionen, für Gäste der Hotels am Park"
+          }
+        },
+        "reason": {
+          "party_night": "Ein Abend mit eigenem Ticket."
+        },
+        "ics": {
+          "calendarName": "Paris-Reise {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Keine Schulferien in Paris.",
+            "before_spring_break": "Kurz bevor in Paris die Schulferien beginnen."
+          },
+          "warning": {
+            "school_break": "Schulferien in Paris.",
+            "party_nights": "{count, plural, =1 {1 Abend} other {# Abende}} mit eigenem Ticket: Tagesgäste müssen dann früher gehen."
+          }
+        },
+        "bases": {
+          "disneyland-paris": {
+            "name": "Disneyland Paris",
+            "note": "Die Disney-Hotels am Lake Disney liegen zu Fuß an den Parks und haben Extra Magic Time. Von den Partnerhotels in Val d'Europe und Val de France fährt ein kostenloser Shuttle."
+          },
+          "parc-asterix": {
+            "name": "Parc Astérix",
+            "note": "Die Hotels des Parks liegen zu Fuß am Eingang, und ihre Gäste kommen an einige Attraktionen 30 Minuten früher."
+          },
+          "paris": {
+            "name": "Paris",
+            "note": "Ab Châtelet–Les Halles fährt die RER A zu Disneyland Paris und die RER B zum Shuttle des Parc Astérix am Flughafen."
+          }
+        },
+        "gateways": {
+          "XED": "Bahnhof Marne-la-Vallée–Chessy",
+          "CDG": "Flughafen Paris-Charles-de-Gaulle",
+          "ORY": "Flughafen Paris-Orly"
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-paris": "Disneyland Paris",
+            "parc-asterix": "Parc Astérix"
+          },
+          "resortShort": {
+            "disneyland-paris": "Disney",
+            "parc-asterix": "Astérix"
+          },
+          "hopperName": {
+            "disney": "Park-Hopping"
+          },
+          "entry": {
+            "dlp-1-day": {
+              "title": "Tagesticket, 1 oder 2 Parks",
+              "hint": "Gilt an dem Datum, das du beim Kauf gewählt hast."
+            },
+            "dlp-multi-day": {
+              "title": "Ticket für 2, 3 oder 4 Tage",
+              "hint": "Aufeinanderfolgende Tage ab dem gebuchten Datum, jeden Tag beide Parks."
+            },
+            "dlp-liberte": {
+              "title": "Tagesticket ohne Datum (Liberté)",
+              "hint": "Ein Jahr gültig, den Besuchstag reservierst du vorher. Nicht am 31. Oktober und 31. Dezember."
+            },
+            "dlp-pass": {
+              "title": "Jahreskarte (Disneyland Pass)",
+              "hint": "Bronze One, Bronze Max, Silver oder Gold. Jeder Besuch braucht eine Reservierung."
+            },
+            "asterix-1-day": {
+              "title": "Tagesticket mit Datum",
+              "hint": "Billet Futé oder Liberté Flex. Die Nocturnes von Peur sur le Parc brauchen ein eigenes Ticket."
+            },
+            "asterix-2-day": {
+              "title": "Ticket für 2 Tage",
+              "hint": "Zwei Tage am Stück, nur an der Kasse am Park verkauft."
+            },
+            "asterix-noel": {
+              "title": "Billet Noël",
+              "hint": "Ein Tag nach Wahl während Noël Gaulois."
+            },
+            "asterix-pass": {
+              "title": "Pass Saison",
+              "hint": "Découverte, Gaulois oder Premium. Ein Besuch pro Tag, außer an den Sperrtagen des Passes."
+            }
+          },
+          "variant": {
+            "dlp-pass-bronze-one": "Bronze One (ein Park pro Tag)",
+            "dlp-pass": "Bronze Max, Silver oder Gold"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Paris",
+        "title": "Disneyland Paris und Parc Astérix: welcher Park an welchem Tag",
+        "lead": "Disneyland Paris hat zwei Parks, der Parc Astérix einen, und beide haben eigene Hotels. Im Kalender stehen alle drei Tag für Tag mit ihrer Spitzenwartezeit, und im Reiseplaner siehst du, wo du für welchen Park am besten übernachtest.",
+        "link": "Besucherkalender Disneyland Paris & Parc Astérix"
+      }
     }
   },
   "news": {
@@ -4142,8 +4998,8 @@
       "kicker": "park.fan · Blog"
     },
     "parky": {
-      "kicker": "park.fan · Chat-Assistent",
-      "action": "Parky fragen"
+      "kicker": "park.fan · KI-Chat",
+      "action": "Mit Parky schreiben"
     }
   },
   "compare": {
@@ -4183,15 +5039,15 @@
     "forecastCaption": "Prognose"
   },
   "assistant": {
-    "close": "Parky schließen",
+    "close": "Chat schließen",
     "title": "Parky",
-    "tabChat": "Fragen",
+    "tabChat": "Chat",
     "tabFeedback": "Feedback",
-    "greeting1": "Hi, ich bin Parky 🎡 Dein Freizeitpark-Kumpel mit leichtem Achterbahn-Tick. Frag mich nach Wartezeiten, den leersten Tagen, Öffnungszeiten oder was „Airtime“ eigentlich ist. Ich plane dir auch gleich den Tag.",
+    "greeting1": "Hi, ich bin Parky 🎡 Dein Freizeitpark-Buddy mit leichtem Achterbahn-Tick. Frag mich nach Wartezeiten, den leersten Tagen, Öffnungszeiten oder was „Airtime“ eigentlich ist. Und wenn du magst, planen wir zusammen deinen Tag.",
     "greeting2": "Na, wohin geht's als Nächstes? 🎢 Ich bin Parky. Sag mir einen Park, und ich sag dir, wie lang die Wartezeiten gerade sind und an welchem Tag dort am wenigsten los ist.",
-    "greeting3": "Hallo, hier ist Parky 🎡 Ich schau für dich nach, wo die Warteschlangen gerade kurz sind, wann ein Park am leersten ist und wie dort das Wetter wird. Was möchtest du wissen?",
+    "greeting3": "Hallo, hier ist Parky 🎡 Ich weiß, wo die Warteschlangen gerade kurz sind, wann ein Park am leersten ist und ob du einen Schirm brauchst. Wo soll’s hingehen?",
     "greeting4": "Hey, ich bin Parky 🎡 Mein Hut ist ein Riesenrad, mein Hobby sind Wartezeiten. Frag mich, wann ein Park am leersten ist oder welche Bahnen gerade stillstehen.",
-    "greeting5": "Moin! Parky hier 🎢 Frag mich nach Öffnungszeiten, dem Wetter im Park oder den News von park.fan. Wenn du magst, plane ich dir gleich den ganzen Tag.",
+    "greeting5": "Moin, Parky hier 🎢 Frag mich nach Öffnungszeiten, dem Wetter im Park oder den News von park.fan. Und wenn du magst, planen wir zusammen den ganzen Tag.",
     "suggestWaits": "Wo sind die Wartezeiten gerade kurz?",
     "suggestBestDay": "Wann ist es im Europa-Park am leersten?",
     "suggestNews": "Was gibt es Neues?",
@@ -4207,7 +5063,9 @@
     "suggestWeatherHere": "Wie wird hier heute das Wetter?",
     "suggestCoasterHere": "Welche Achterbahn hat gerade die kürzeste Wartezeit?",
     "suggestHoursHere": "Bis wann hat der Park heute offen?",
-    "placeholder": "Frag Parky etwas …",
+    "suggestInterview": "Plan mit mir meine Reise, Frage für Frage.",
+    "suggestInterviewHere": "Plan mit mir hier einen Tag, Frage für Frage.",
+    "placeholder": "Nachricht an Parky …",
     "send": "Senden",
     "newChat": "Neuer Chat",
     "typing": "Parky schreibt",
@@ -4220,10 +5078,10 @@
     "errorOff": "Parky macht gerade Pause. Schau später wieder vorbei.",
     "errorUpstream": "Da hat etwas nicht geklappt. Versuch es bitte noch einmal.",
     "errorNetwork": "Keine Verbindung. Prüf dein Netz und versuch es noch einmal.",
-    "rateUp": "Hilfreich",
-    "rateDown": "Nicht hilfreich",
+    "rateUp": "Gute Antwort",
+    "rateDown": "Daneben",
     "rated": "Danke dir.",
-    "disclaimer": "Parky ist ein KI-Assistent. Seine Antworten können Fehler enthalten und sind ohne Gewähr.",
+    "disclaimer": "Parky ist eine KI und kann sich irren. Seine Antworten sind ohne Gewähr.",
     "privacy": "Datenschutz",
     "feedbackIntro": "Etwas fehlt, hakt oder gefällt dir besonders? Schreib es uns, wir lesen alles.",
     "feedbackLabel": "Dein Feedback",
@@ -4256,6 +5114,7 @@
     "chipFavorite": "Bei den Favoriten",
     "chipUnfavorite": "Aus den Favoriten genommen",
     "chipUndoStale": "Tag seither geändert, nichts rückgängig gemacht",
+    "chipUndone": "Rückgängig gemacht",
     "alertRide": "{name}: Bescheid, sobald die Wartezeit unter {minutes} Minuten fällt.",
     "alertReopen": "{name}: Bescheid, sobald sie wieder fährt.",
     "alertShow": "{name}: Erinnerung vor der Vorstellung um {time}.",
@@ -4270,14 +5129,14 @@
     "locationShared": "Hier ist mein Standort.",
     "cardWait": "{minutes} Min.",
     "lookupGlossary": "Parky schlägt im Glossar nach …",
-    "teaser1": "Hey, ich bin Parky – klick mich an!",
-    "teaser2": "Klick mich, und ich helf dir!",
+    "teaser1": "Hey, ich bin Parky, dein Park-Buddy. Klick mich an.",
+    "teaser2": "Klick mich an, dann planen wir deinen Parktag zusammen.",
     "teaser3": "Wo ist die Warteschlange gerade kurz? Frag mich!",
     "teaser4": "Psst … ich kenne die leersten Tage.",
-    "teaser5": "Lust auf Airtime? Ich plan dir den Tag.",
+    "teaser5": "Lust auf Airtime? Dann planen wir den Tag.",
     "teaser6": "Wartezeiten, Wetter, Öffnungszeiten: Frag einfach mich!",
     "teaser7": "Welche Bahn hat gerade die kürzeste Warteschlange? Ich schau nach.",
-    "teaser8": "Ich plan dir den Parktag, Bahn für Bahn.",
+    "teaser8": "Wir planen deinen Parktag, Bahn für Bahn.",
     "teaser9": "Hat der Park morgen länger offen? Frag einfach mich.",
     "teaser10": "Welcher Park soll’s heute sein? Ich weiß, wo die Warteschlangen kurz sind.",
     "teaser11": "Erste Reihe oder letzte? Die Wartezeiten hab ich so oder so.",
@@ -4286,7 +5145,7 @@
     "teaserBored1": "Gääähn … frag mich doch was!",
     "teaserBored2": "Mir ist langweilig. Hast du eine Frage für mich?",
     "teaserBored3": "Ich hab grad die Speichen an meinem Hut gezählt. Es sind acht.",
-    "teaserBored4": "Schon den nächsten Parkbesuch geplant? Ich helf dir dabei.",
+    "teaserBored4": "Schon den nächsten Parkbesuch geplant? Ich wär dabei.",
     "teaserWoke1": "Huch! Ich hab gar nicht geschlafen!",
     "teaserWoke2": "Oh, du bist wieder da! Ich hab nur kurz die Augen ausgeruht.",
     "teaserWoke3": "Hab ich was verpasst? Ich bin wieder hellwach!",
@@ -4419,15 +5278,76 @@
     "cardHoliday": "Feiertag",
     "cardShowsLink": "Alle Shows im Park",
     "cardRestaurantsLink": "Alle Restaurants im Park",
-    "cardPaidExpress": "Express gegen Aufpreis"
+    "cardPaidExpress": "Express gegen Aufpreis",
+    "repliesLabel": "Antwortvorschläge",
+    "receipt": {
+      "trip": {
+        "dates": "Reiseplaner: neue Reisedaten",
+        "parks": "Reiseplaner: Parks geändert",
+        "pin": "Reiseplaner: Tag festgelegt",
+        "swap": "Reiseplaner: Tage getauscht",
+        "rest": "Reiseplaner: Ruhetage geändert",
+        "tickets": "Reiseplaner: Tickets eingetragen",
+        "hotel": "Reiseplaner: Hotel eingetragen",
+        "pace": "Reiseplaner: Tempo geändert"
+      },
+      "day": "Tagesplaner: {park}, {date}",
+      "undo": "Rückgängig",
+      "show": "Ansehen",
+      "undone": "Zurückgenommen",
+      "stale": "Seither geändert, bleibt so",
+      "gone": "Nicht mehr rückgängig zu machen"
+    },
+    "interview": {
+      "titleTrip": "Reise-Interview",
+      "titleDay": "Parktag-Interview",
+      "step": "Schritt {n} von {total}: {name}",
+      "planStands": "Dein Plan steht. Feinschliff nach Wunsch",
+      "end": "Beenden",
+      "done": "Fertig",
+      "steps": {
+        "region": "Region",
+        "dates": "Reisedaten",
+        "parks": "Parks",
+        "day": "Park und Tag",
+        "mustdo": "Wunschfahrten"
+      },
+      "kickoffTrip": "Plan meine Reise mit mir, Frage für Frage.",
+      "kickoffDay": "Plan meinen Parktag mit mir, Frage für Frage."
+    },
+    "muteLines": "Sprechblasen ausblenden",
+    "subtitle": "Dein Park-Buddy",
+    "subtitleNext": "Als Nächstes: {park}, {date}",
+    "yoursToday": "Heute {park}. Womit fangen wir an?",
+    "yoursTomorrow": "Morgen {park}. Ich bin jetzt schon aufgeregt.",
+    "yoursSoon": "Noch {days} Tage, dann {park}. Ich zähl mit.",
+    "yoursTrip": "{count} Parktage ab {date}. Da komm ich mit.",
+    "yoursAfter": "Wie war dein Parktag gestern? Erzähl mal.",
+    "yoursRidden": "{count} Bahnen abgehakt. Respekt.",
+    "yoursAlert": "Die Glocke für {ride} ist an. Ich sag Bescheid.",
+    "yoursBack": "Unser letztes Thema: {park}. Machen wir da weiter?",
+    "greetingToday": "Heute {park} 🎢 Deinen Plan hab ich dabei. Womit fangen wir an?",
+    "greetingSoon": "Hey, {when} ist Parktag: {park} 🎡 Deinen Plan hab ich dabei. Schauen wir, wie voll es wird?",
+    "greetingTrip": "Hey, {count} Parktage ab {date} 🎢 Da komm ich gern mit. Was fehlt noch?",
+    "greetingAfter": "Na, wie war dein Parktag gestern? 🎢 Erzähl, welche Bahn hat gewonnen?",
+    "greetingBack": "Da bist du ja wieder 🎡 Unser letztes Thema: {park}. Machen wir da weiter oder woanders?",
+    "whenTomorrow": "morgen",
+    "whenWeekday": "am {weekday}",
+    "whenDate": "am {date}",
+    "suggestMyDay": "Wie voll wird mein Parktag?",
+    "suggestMyNext": "Was steht als Nächstes an?",
+    "suggestMyWeather": "Wie wird das Wetter an meinem Parktag?",
+    "suggestMyMissing": "Welche großen Bahnen fehlen mir noch?",
+    "suggestMyTrip": "Was fehlt noch in meiner Reise?",
+    "suggestMyBack": "Weiter mit {park}"
   },
   "parkyPage": {
-    "metaTitle": "Parky, der Chat-Assistent von park.fan",
-    "metaDescription": "Frag Parky nach Wartezeiten, Prognosen und dem ruhigsten Besuchstag. Er schaut in den Live-Daten von park.fan nach und trägt Bahnen direkt in deinen Tagesplaner ein.",
-    "title": "Parky, dein Begleiter für den Parktag",
-    "lead": "Frag ihn nach Wartezeiten, Prognosen und dem ruhigsten Tag. Parky schaut in den Live-Daten von park.fan nach und plant deinen Tag mit.",
-    "intro": "Parky wohnt unten rechts auf park.fan, in der runden Sprechblase mit dem Riesenrad auf dem Kopf. Tipp ihn an, und du schreibst ihm wie einem Freund, der sich in Freizeitparks auskennt.",
-    "ask": "Parky jetzt fragen",
+    "metaTitle": "Parky: Wartezeiten und Tagesplan im KI-Chat",
+    "metaDescription": "Parky kennt die Wartezeiten von jetzt und die leersten Tage, und deinen Parktag plant er mit dir. Der KI-Chat von park.fan, kostenlos und ohne Konto.",
+    "title": "Parky kommt mit in den Park",
+    "lead": "Er kennt die Wartezeiten von jetzt und die leersten Tage, und deinen Parktag plant er mit dir zusammen.",
+    "intro": "Parky wohnt unten rechts auf park.fan, in der runden Sprechblase mit dem Riesenrad auf dem Kopf. Tipp ihn an und schreib ihm wie einem Freund, der sich in Freizeitparks auskennt. Was du im Tagesplaner angelegt hast, kennt er dann schon.",
+    "ask": "Mit Parky schreiben",
     "off": "Parky macht gerade Pause. Schau später noch mal vorbei.",
     "examplesLabel": "Zum Beispiel",
     "chapters": {
@@ -4443,7 +5363,7 @@
         ]
       },
       "plan": {
-        "kicker": "Packt mit an",
+        "kicker": "Zu zweit planen",
         "title": "Parky plant deinen Tag mit",
         "body": "Sag Parky, wann du in welchen Park willst und was dir wichtig ist. Er trägt die Bahnen in deinen Tagesplaner ein und sagt dir, womit du am besten anfängst. Danach verschiebst und teilst du den Plan wie gewohnt.",
         "alt": "Parky hat Silver Star, Blue Fire, Voltron Nevera und Wodan in den Tagesplaner für den Europa-Park eingetragen.",
@@ -4466,7 +5386,7 @@
       "data": {
         "kicker": "Deine Daten",
         "title": "Was mit deinen Fragen passiert",
-        "body": "Parky antwortet mit dem Sprachmodell Claude von Anthropic. Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 7 Tagen. Deinen Standort sieht Parky nur, wenn du ihn im Chat teilst.",
+        "body": "Parky antwortet mit dem Sprachmodell Claude von Anthropic. Deinen Tages- und Reiseplan, deine Erinnerungen, Favoriten und gefahrenen Bahnen schickt dein Browser mit jeder Frage mit; sonst liegen sie nur bei dir. Deine Fragen speichern wir ohne IP-Adresse und löschen sie nach 7 Tagen. Deinen Standort sieht Parky nur, wenn du ihn im Chat teilst.",
         "link": "Alles Weitere steht in der Datenschutzerklärung."
       }
     },
@@ -4505,7 +5425,11 @@
         },
         {
           "question": "Woher hat Parky seine Antworten?",
-          "answer": "Aus den Live-Daten von park.fan: Wartezeiten, Öffnungszeiten, Prognosen, Wetter und unsere Beiträge. Für jede Frage schaut er neu nach, statt sich etwas zu merken."
+          "answer": "Aus den Live-Daten von park.fan: Wartezeiten, Öffnungszeiten, Prognosen, Wetter und unsere Beiträge. Für jede Frage schaut er neu nach, statt sich auf alte Zahlen zu verlassen."
+        },
+        {
+          "question": "Merkt sich Parky, was ich ihm erzähle?",
+          "answer": "Innerhalb eines Chats ja, bis du den Tab schließt. Deinen Tages- und Reiseplan, deine Favoriten und gefahrenen Bahnen kennt er, weil sie in deinem Browser liegen und mit jeder Frage mitgehen. Dazu merkt sich dein Browser den Park, um den es zuletzt ging, damit Parky beim nächsten Besuch daran anknüpfen kann. Frühere Chats kennt er nicht, und auf unserem Server löschen wir sie nach 7 Tagen."
         },
         {
           "question": "Kann Parky sich irren?",
@@ -4527,7 +5451,7 @@
     },
     "next": {
       "title": "Wie geht’s weiter?",
-      "ask": "Parky fragen",
+      "ask": "Mit Parky schreiben",
       "askDescription": "Unten rechts, gleich auf dieser Seite.",
       "planner": "Zum Tagesplaner",
       "plannerDescription": "Plane deinen Parktag selbst, Bahn für Bahn.",

@@ -282,6 +282,7 @@ async function SearchBody({
   const t = await getTranslations('common');
   const tSearch = await getTranslations('searchPage');
   const tHeadings = await getTranslations('search.headings');
+  const tSearchLabels = await getTranslations('search');
 
   let results = null;
   let posts = null;
@@ -344,17 +345,22 @@ async function SearchBody({
               </div>
 
               {results.results.length > 0 ? (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                  {results.results.map((result, index) => (
-                    <SearchResultCard
-                      key={result.id}
-                      result={result}
-                      index={index}
-                      locale={locale}
-                      timezone={timezoneOf(result)}
-                    />
-                  ))}
-                </div>
+                // The cards' names are `<h3>`s, like the posts' below, so their grid needs the
+                // `<h2>` the post sections have; the count badges above already title it on screen.
+                <section>
+                  <h2 className="sr-only">{tSearchLabels('resultsLabel')}</h2>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    {results.results.map((result, index) => (
+                      <SearchResultCard
+                        key={result.id}
+                        result={result}
+                        index={index}
+                        locale={locale}
+                        timezone={timezoneOf(result)}
+                      />
+                    ))}
+                  </div>
+                </section>
               ) : (
                 !hasPosts && (
                   <div className="py-12 text-center">

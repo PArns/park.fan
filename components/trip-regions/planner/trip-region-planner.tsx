@@ -23,6 +23,7 @@ import { PlanSetup, type PlanSheetStep } from './plan-setup';
 import { PlanResult } from './plan-result';
 import { useTicketStep } from './plan-tickets';
 import { usePlanState } from './use-plan-state';
+import { ParkyTripInterviewButton } from '@/components/assistant/parky-trip-interview-button';
 
 /** What the hub hands the planner. */
 export interface TripRegionPlannerProps {
@@ -182,7 +183,7 @@ const scrollTo = (target: HTMLElement | null) => {
  * desk's two disclosures, the ticket step's drafts, and the hub hero's signal.
  */
 function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
-  const { live, state, tickets: catalog } = usePlanContext();
+  const { live, state, tickets: catalog, region } = usePlanContext();
   const track = useTripEvents();
   const step = useTicketStep();
   const [sheet, setSheet] = useState<PlanSheetStep | null>(null);
@@ -293,6 +294,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
 
   return (
     <>
+      {live && <ParkyTripInterviewButton region={region.slug} />}
       <PlanSetup
         defaultMonth={defaultMonth}
         sheet={sheet}

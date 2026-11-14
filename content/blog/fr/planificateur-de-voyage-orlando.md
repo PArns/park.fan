@@ -1,15 +1,15 @@
 ---
-title: 'Orlando : avec le planificateur de voyage, chacun de tes parcs tombe sur son jour le plus calme'
+title: 'Planifier Orlando sans te faire mettre dehors de Magic Kingdom à 18 h'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dans le nouveau planificateur de voyage pour Orlando, chacun de tes parcs tombe le jour du séjour
-  où ses grandes attractions sont le moins chargées. Un jour où Magic Kingdom ferme à 18 h pour une
-  soirée spéciale compte comme une journée courte. Si tu as déjà tes billets, chaque journée au parc
-  reste dans leurs dates de validité, sinon tu reçois une proposition de billets.
+  Le 8 décembre, il y a peu de monde à Magic Kingdom, et pourtant c’est le mauvais jour : avec un
+  billet normal, tu dois sortir à 18 h, avant le feu d’artifice. Avec le nouveau planificateur de
+  voyage pour Orlando, tu y vas plutôt la veille, quand le parc reste ouvert jusqu’à 22 h, et chacun
+  de tes parcs a ainsi le jour qui vaut le coup.
 tags:
   - park-fan
   - orlando
@@ -26,7 +26,8 @@ coverImage:
 seo:
   title: 'Planificateur de voyage Orlando : quel parc, quel jour ?'
   description: >-
-    Chacun de tes parcs d’Orlando le jour aux files les plus courtes. Un jour de soirée spéciale, où il faut partir à 18 h, compte comme journée courte.
+    Le 8 décembre, peu de monde à Magic Kingdom, mais avec un billet normal tu sors à 18 h. Le
+    planificateur trouve à tes parcs d’Orlando un meilleur jour.
   keywords:
     - planificateur de voyage Orlando
     - quel parc d’Orlando quel jour
@@ -37,9 +38,9 @@ seo:
     - le Park Hopper vaut-il le coup
 ---
 
-Le 8 décembre 2026, tu devras quitter [Magic Kingdom](ref:magic-kingdom-park) à 18 h si tu as un billet à la journée ordinaire. À 19 h commence Mickey's Very Merry Christmas Party, qui demande un billet à part. La veille, le parc reste ouvert jusqu’à 22 h. Aux grandes attractions, on attend à peu près autant de monde les deux jours, et c’est ce qui rend le 8 piégeux : dans un calendrier d’affluence ordinaire, il a l’air aussi bon que le 7, il lui manque juste quatre heures, celles du feu d’artifice.
+La faute à Mickey's Very Merry Christmas Party. Elle commence ce soir-là à 19 h à [Magic Kingdom](ref:magic-kingdom-park), et il faut un billet à part pour y entrer. Le lundi, la veille, il n’y a pas de soirée spéciale, et le parc reste ouvert à tout le monde jusqu’à 22 h.
 
-Pour ce genre de journée, [park.fan/orlando](/orlando) a maintenant un planificateur de voyage. Tu indiques quand tu es à Orlando et quels parcs tu veux voir. Pour dix jours du 5 au 14 décembre, Magic Kingdom reçoit alors le lundi 7, un des cinq jours sans soirée spéciale.
+Pour ce genre de journée, [park.fan/orlando](/orlando) a maintenant un planificateur de voyage. Tu indiques quand tu es à Orlando et quels parcs tu veux voir. Pour dix jours du 5 au 14 décembre 2026, Magic Kingdom reçoit alors le lundi 7, un des cinq jours sans soirée spéciale.
 
 ## Tous les parcs d’Orlando dans un seul calendrier
 

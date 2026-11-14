@@ -154,15 +154,57 @@ export type SharedPlanResult = 'ready' | 'empty' | 'missing' | 'failed';
 
 type NoProps = Record<string, never>;
 
-/** How a question reached Parky: a suggestion chip or typed. */
-export type AssistantQuestionKind = 'suggestion' | 'typed';
+/**
+ * How a question reached Parky: an opener suggestion, typed, a reply chip under his answer, or the
+ * planner's interview button.
+ */
+export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview';
+
+/** A trip or a park day, as Parky's interview and his changes name a planner. */
+export type AssistantPlannerKind = 'trip' | 'day';
+
+/** An interview step as the statistic counts it; `refine` is the offer once the plan stands. */
+export type AssistantInterviewStepName =
+  | 'region'
+  | 'dates'
+  | 'parks'
+  | 'party'
+  | 'tickets'
+  | 'hotel'
+  | 'pace'
+  | 'file'
+  | 'day'
+  | 'mustdo'
+  | 'heights'
+  | 'shows'
+  | 'arrival';
+
+/** What a change of Parky's did to a planner: a trip's kinds, then a day's. */
+export type AssistantPlanChange =
+  | 'dates'
+  | 'parks'
+  | 'pin'
+  | 'swap'
+  | 'rest'
+  | 'tickets'
+  | 'hotel'
+  | 'pace'
+  | 'file'
+  | 'add'
+  | 'move'
+  | 'remove'
+  | 'show'
+  | 'party'
+  | 'done'
+  | 'block'
+  | 'clear';
 
 /**
  * What made Parky's window open: the round button, a line in its bubble, Parky's own page, Parky in
  * the homepage hero, or Parky himself, reopening it on the page he just switched to another
  * language.
  */
-export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'language';
+export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'language' | 'interview';
 
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
@@ -190,7 +232,8 @@ export type AssistantLineKind =
   | 'rough'
   | 'weather'
   | 'live'
-  | 'clock';
+  | 'clock'
+  | 'yours';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
@@ -260,6 +303,22 @@ export interface SiteEventMap {
   assistant_feedback_sent: { email: boolean };
   /** The challenge in front of Parky failed in this browser. */
   assistant_challenge_failed: NoProps;
+  /** Reply chips were drawn under an answer; how many, never their text. */
+  assistant_replies_shown: { count: number };
+  /** Parky's interview began, from the planner's button or in the chat. */
+  assistant_interview_started: { kind: AssistantPlannerKind; source: 'planner' | 'chat' };
+  /** A step of the interview was answered or passed. */
+  assistant_interview_step: { kind: AssistantPlannerKind; step: AssistantInterviewStepName };
+  /** The interview ended: done, or left; with the steps answered. */
+  assistant_interview_ended: {
+    kind: AssistantPlannerKind;
+    outcome: 'done' | 'left';
+    steps: number;
+  };
+  /** A change of Parky's reached a planner; what kind of change, never what it holds. */
+  assistant_plan_changed: { planner: AssistantPlannerKind; change: AssistantPlanChange };
+  /** Parky's change was taken back, or found changed by the visitor since. */
+  assistant_change_undone: { planner: AssistantPlannerKind; outcome: 'undone' | 'changed' };
   /**
    * A park and date got their first block; `source` is the way into the opening it happened in,
    * `none` with the panel shut. The park's UUID as entity where a page named it.

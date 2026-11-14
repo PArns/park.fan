@@ -125,8 +125,8 @@ built on `HolidayParky`, and its entry's `scene` loads it.
 
 ## Adding a region
 
-1. Write its entry in `lib/trip-regions/regions/` with `live: false` (the coming ones are in
-   `upcoming.ts`): its segments, zone and centre are there already.
+1. Write its entry in `lib/trip-regions/regions/<slug>.ts` with `live: false`, register it in
+   `registry.ts`, and start with its segments, zone and centre.
 2. Fill in what the region has: `bestTime` (the region's page `region` first, then its resorts),
    `hub` (hero photos, next-step park, the FAQ's parks), `hotels`, `parkNameSuffixes`,
    `resortWords`, `stormSeason`, `blockResorts`, `fireworks`, and a `tickets` step where it sells

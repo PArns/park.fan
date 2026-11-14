@@ -98,6 +98,8 @@ export async function BlogParkComparisonWidget({
         parks={resolved}
         initialStats={initialStats}
         title={t('stats.comparisonTitle')}
+        // A label, as `BlogWidgetLabel` is: the widget stands in the lead as often as in a chapter.
+        titleAs="p"
         labelPark={t('stats.comparisonPark')}
         labelParkAverage={t('stats.parkAverage')}
         labelLongest={t('stats.longestQueue')}

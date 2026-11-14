@@ -173,7 +173,7 @@ export default async function ParkyPage({ params }: ParkyPageProps) {
       <WebApplicationStructuredData
         name={t('metaTitle')}
         description={t('metaDescription')}
-        path="/parky"
+        path={`/${locale}/parky`}
         locale={locale}
       />
       {hero ? (

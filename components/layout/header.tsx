@@ -341,15 +341,23 @@ export function Header({
   const latestNews = latestNewsFrom(newsMenu, { excerpt: true });
 
   /*
-   * A tap on a link to the page already showing changes no `pathname`, so that case closes the
-   * sheet here: a plain click on a link in the sheet's own DOM whose path is the current one. A
-   * locale switch keeps it open, and a modifier click still opens a tab.
+   * A plain tap on one of the sheet's own links closes it at once instead of waiting for the new
+   * `pathname`. A server-rendered page such as the Orlando hub takes seconds to arrive, and until
+   * then the open sheet covered the navigation progress bar, so the tap looked dead; a tap on the
+   * page already showing changes no `pathname` at all. A link into another locale keeps the sheet
+   * open, as the language switch does, and a modifier click still opens a tab.
    */
-  const closeOnSamePageTap = (event: React.MouseEvent<HTMLElement>) => {
+  const closeOnLinkTap = (event: React.MouseEvent<HTMLElement>) => {
     const link = (event.target as HTMLElement).closest('a');
     if (!link || !event.currentTarget.contains(link) || link.target === '_blank') return;
-    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey) return;
-    if (new URL(link.href).pathname === window.location.pathname) setMobileMenuOpen(false);
+    if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+      return;
+    }
+    const url = new URL(link.href);
+    if (url.origin !== window.location.origin) return;
+    const localeOf = (path: string) => path.split('/')[1];
+    if (localeOf(url.pathname) !== localeOf(window.location.pathname)) return;
+    setMobileMenuOpen(false);
   };
 
   useEffect(() => {
@@ -717,7 +725,7 @@ export function Header({
                   ref={sheetRef}
                   className="flex min-h-0 flex-1 flex-col"
                   aria-label={t('mobileNavigation')}
-                  onClick={closeOnSamePageTap}
+                  onClick={closeOnLinkTap}
                   {...linkBlockAttributes('menu_sheet')}
                 >
                   <div
@@ -782,6 +790,42 @@ export function Header({
                         </SheetSubLink>
                       ))}
                     </SheetDisclosure>
+                    {/* Right under the parks, because planning is what most visitors come for.
+                      The planner band's rows in the band's order: the regions' trip planners
+                      first, then the day planner with this browser's plan and the quick starts.
+                      Each group has its caption, so the day planner's link is not read as one of
+                      the regions. */}
+                    <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
+                      {plannerMenu.regions.length > 0 && (
+                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
+                      )}
+                      {plannerMenu.regions.length > 1 ? (
+                        <div className="-mt-1 flex flex-col gap-0.5">
+                          {plannerMenu.regions.map((region) => (
+                            <SheetRegionLink key={region.id} region={region} />
+                          ))}
+                        </div>
+                      ) : (
+                        plannerMenu.regions.map((region) => (
+                          <SheetSubLink key={region.id} href={region.href}>
+                            {region.name}
+                          </SheetSubLink>
+                        ))
+                      )}
+                      <SheetCaption>{t('planner')}</SheetCaption>
+                      <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
+                      <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
+                      {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
+                      {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
+                        <SheetSubLink
+                          key={park.href}
+                          href={park.href}
+                          onClick={quickStartClick(park, 'menu-park')}
+                        >
+                          {park.name}
+                        </SheetSubLink>
+                      ))}
+                    </SheetDisclosure>
                     {/* The three hubs of the desktop "more" band, in its column order, each opening
                       onto its own page as the first row and then its categories or chapters.
                       Without the lists a hub is a plain link. */}
@@ -837,41 +881,6 @@ export function Header({
                         {t('howto')}
                       </SheetNavLink>
                     )}
-                    {/* The planner band's rows in the band's order: the regions' trip planners
-                      first, then the day planner with this browser's plan and the quick starts.
-                      Each group has its caption, so the day planner's link is not read as one of
-                      the regions. */}
-                    <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
-                      {plannerMenu.regions.length > 0 && (
-                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
-                      )}
-                      {plannerMenu.regions.length > 1 ? (
-                        <div className="-mt-1 flex flex-col gap-0.5">
-                          {plannerMenu.regions.map((region) => (
-                            <SheetRegionLink key={region.id} region={region} />
-                          ))}
-                        </div>
-                      ) : (
-                        plannerMenu.regions.map((region) => (
-                          <SheetSubLink key={region.id} href={region.href}>
-                            {region.name}
-                          </SheetSubLink>
-                        ))
-                      )}
-                      <SheetCaption>{t('planner')}</SheetCaption>
-                      <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
-                      <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
-                      {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
-                      {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
-                        <SheetSubLink
-                          key={park.href}
-                          href={park.href}
-                          onClick={quickStartClick(park, 'menu-park')}
-                        >
-                          {park.name}
-                        </SheetSubLink>
-                      ))}
-                    </SheetDisclosure>
                     {plannerMenu.regions.map((region) => (
                       <SheetNavLink key={region.id} href={region.calendarHref} icon={CalendarDays}>
                         {region.calendarLabel}

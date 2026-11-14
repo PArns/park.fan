@@ -70,7 +70,7 @@ test('without an answer from /when the page has its months and no figure', () =>
 });
 
 test('a region without best-time pages has none, not even its own', () => {
-  assert.equal(parseBestTimePage(requireTripRegion('paris'), undefined), null);
+  assert.equal(parseBestTimePage({ ...requireTripRegion('paris'), bestTime: [] }, undefined), null);
 });
 
 test("a page plans its resorts' headliner parks only", () => {

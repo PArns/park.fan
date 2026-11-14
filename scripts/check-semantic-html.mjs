@@ -70,6 +70,8 @@ const PAGES = [
   '/de/blog/authors/patrick',
   '/de/blog/europa-park-oder-phantasialand',
   '/en/blog/europa-park-or-phantasialand',
+  // A widget in the lead, before the first `##`: the park comparison.
+  '/de/blog/magic-kingdom-wartezeiten-tipps',
   '/de/news',
   '/de/parks',
   '/de/parks/europe',
@@ -92,7 +94,10 @@ const PAGES = [
   '/de/so-funktioniert-park-fan',
   '/de/fancast',
   '/de/contribute',
-  '/de/compare',
+  // With two parks, so the comparison table is on the page and not only the picker.
+  '/de/compare?parks=europa-park,phantasialand',
+  // A query with parks and rides among its results, so the result cards render.
+  '/de/search?q=magic',
 ];
 
 /**

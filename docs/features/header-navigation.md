@@ -47,7 +47,9 @@ nearby-park pin, within 5 km of a park, takes 42 of it. The 47 px this page gave
 ## How a band opens and closes
 
 `useMenuTrigger` (`lib/hooks/use-menu-trigger.ts`) runs every trigger: hover opens, leaving closes
-after 180 ms, click toggles. The open state is **the path it was opened on**
+after 180 ms, click toggles. The first click on a band the hover opened keeps it open, since a
+mouse visitor who hovers and then clicks means "open" both times; the next click closes it. The
+open state is **the path it was opened on**
 (`openedOn === pathname`, with the locale-stripped `pathname` from `@/i18n/navigation`), so a
 navigation closes the band in the same render without a `setState` in an effect, and a locale switch
 does not close it mid-gesture. A plain click on a link to the page already showing closes it too
@@ -312,18 +314,19 @@ duplicates the desktop nav; put nothing unique there. From the top:
 - the favorites panel (`variant="sheet"`), before the destinations: a returning visitor's own parks
   are the shortest route out;
 - the destinations through `SheetNavLink`, each with its glyph in the accent: Guides, News,
-  Startseite (`House`), then `SheetDisclosure`s — Parks entdecken (`/parks` and the continents), and
-  each of the three hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and
-  then its categories or chapters with the band's numbers, in the band's order — and „Planen", in
-  the band's order: the regions under „Reiseplaner" (one row per live region; from two regions on
-  each row is a `SheetRegionLink`, 44 px high with a 56 × 36 cut of the region's Parky scene), then
-  under „Tagesplaner" the day planner's page („Tag planen"), „Dein Plan: <park>, <day>" where this
+  Startseite (`House`), then `SheetDisclosure`s — Parks entdecken (`/parks` and the continents),
+  right under it „Planen", because planning is what most visitors come for, then each of the three
+  hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and then its
+  categories or chapters with the band's numbers, in the band's order. „Planen" follows the band's
+  order: the regions under „Reiseplaner" (one row per live region; from two regions on each row is
+  a `SheetRegionLink`, 44 px high with a 56 × 36 cut of the region's Parky scene), then under
+  „Tagesplaner" the day planner's page („Tag planen"), „Dein Plan: <park>, <day>" where this
   browser has a day planned from today on (`SheetPlanRow`, a leaf, so a plan edit re-renders it
   alone; it closes the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), and the
   band's first four parks under „Einen Tag planen im" with its quick start. Each group's caption
   (`SheetCaption`) is bold in the text colour, so a caption reads as a heading and not as one more
-  row. The disclosure row is the toggle, not a link beside a chevron; after it each live region's
-  crowd calendar keeps its own row, like the „Mehr" tiles;
+  row. A disclosure row is the toggle, not a link beside a chevron; after the hubs each live
+  region's crowd calendar keeps its own row, like the „Mehr" tiles;
 - the footer row (`MoreMenuLinks variant="sheet"`), **outside** the scrolling list on the sheet's
   bottom edge with `pb-[max(0.25rem,env(safe-area-inset-bottom))]` (the `env()` half reads 0: the
   viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above the home
@@ -333,8 +336,10 @@ The sheet's `<nav>` (named by `navigation.mobileNavigation`) and `useSheetReveal
 footer, so the footer's links are in the landmark and slide in with the rows. **The list never
 scrolls sideways**: `overflow-y: auto` makes `overflow-x` auto too and a favorites row bleeds 8 px
 (`-mx-2`), so the list is `-mx-2 px-2 overflow-x-hidden` (verified at 320/360/390 px with three
-parks saved). A tap on a link to the page already showing closes the sheet (`closeOnSamePageTap`);
-a locale switch keeps it open and a modifier click opens a tab without closing it.
+parks saved). A plain tap on one of the sheet's links closes the sheet at once (`closeOnLinkTap`),
+not when the new `pathname` arrives: the Orlando hub renders per request and takes seconds, and the
+open sheet covered the navigation progress bar, so the tap looked dead. A link into another locale
+keeps it open, like the language switch, and a modifier click opens a tab without closing it.
 
 ## Related
 

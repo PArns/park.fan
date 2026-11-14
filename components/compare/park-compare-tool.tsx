@@ -111,7 +111,7 @@ export function ParkCompareTool({
         <p className="text-muted-foreground text-sm">{t('empty')}</p>
       ) : (
         <>
-          <ParkComparisonCard parks={parks} {...cardLabels} />
+          <ParkComparisonCard parks={parks} titleAs="h2" {...cardLabels} />
           <MissingStats parks={parks} />
           {parks.length === 1 && <p className="text-muted-foreground text-sm">{t('second')}</p>}
         </>
