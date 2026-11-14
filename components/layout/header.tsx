@@ -26,6 +26,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { BrandLockup } from '@/components/layout/brand-lockup';
+import { SheetRegionLink } from '@/components/layout/sheet-region-link';
 import { NavMenu, NavEntryLabel, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
@@ -857,11 +858,19 @@ export function Header({
                       {plannerMenu.regions.length > 0 && (
                         <SheetCaption>{t('tripPlanner')}</SheetCaption>
                       )}
-                      {plannerMenu.regions.map((region) => (
-                        <SheetSubLink key={region.id} href={region.href}>
-                          {region.name}
-                        </SheetSubLink>
-                      ))}
+                      {plannerMenu.regions.length > 1 ? (
+                        <div className="-mt-1 flex flex-col gap-0.5">
+                          {plannerMenu.regions.map((region) => (
+                            <SheetRegionLink key={region.id} region={region} />
+                          ))}
+                        </div>
+                      ) : (
+                        plannerMenu.regions.map((region) => (
+                          <SheetSubLink key={region.id} href={region.href}>
+                            {region.name}
+                          </SheetSubLink>
+                        ))
+                      )}
                     </SheetDisclosure>
                     {plannerMenu.regions.map((region) => (
                       <SheetNavLink key={region.id} href={region.calendarHref} icon={CalendarDays}>

@@ -199,14 +199,16 @@ The panel is only the look; the data and the click behaviour live in the modules
   the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
   day planner and the parks: the scene filling it, and over a fade into the band the area, the
   name, one line, the two facts, „Reise planen" (stretched over the card) and „Besucherkalender".
-  From two on, the draft's four-region layout: a row of tiles (`RegionTile`: scene, area, name,
-  line, an arrow; the whole tile is the planner's link) under „Reiseplaner" with the count, two to
-  a row up to a 1024 px bar and one each up to four from there, and the day planner and the parks
-  side by side below. A name wraps rather than being cut. No page shows that yet;
-  `node scripts/shoot-planner-regions.mjs` renders the real panel with two to four regions
-  (`scripts/fixtures/planner-menu/regions.tsx`) at 390, 1024 and 1440 px against a running site,
-  and fails when a name runs past its tile. „Mehr" draws a wide tile per live region from the same
-  entries, and the phone sheet a crowd calendar link per region.
+  From two on, the four-region design: a row of tiles (`RegionTile`: scene, area, name on up to
+  two balanced lines, an arrow; the whole tile is the planner's link) under „Reiseplaner" with the
+  count and, on the rule's right, the one line every region shares; two to a row up to a 1024 px
+  bar and one each up to four from there. Below it the day planner and the parks side by side, the
+  parks one column of four below a 1280 px bar and two columns of six from there. No page shows
+  that yet; `node scripts/shoot-planner-regions.mjs` renders the real panel and the sheet's rows
+  with two to four regions ([trip regions](trip-regions.md#the-planner-band-with-several-regions)).
+  „Mehr" draws a wide tile per live region from the same entries, and the phone sheet a crowd
+  calendar link per region and, from two regions on, a 44 px row per region with a cut of its
+  scene (`SheetRegionLink`).
 - **The region's picture** is `PlannerRegionArt`: the region's Parky scene, a `React.lazy` chunk
   fetched on the band's first opening (`useMenuBandOpen`), so neither the scene nor a photo it would
   cover is in any page's HTML; it fades in over the card's ground (`starting:opacity-0`). A region

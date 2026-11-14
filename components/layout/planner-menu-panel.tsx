@@ -87,18 +87,27 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
       <DayPlannerCard href={dayPlannerHref} />
     </div>
   );
-  const quickStarts = parks.length > 0 && (
-    <div data-menu-stagger className="min-w-0">
-      <MenuSectionHeading label={t('planDayIn')} />
-      <QuickStartList parks={parks} />
-    </div>
-  );
+  const quickStarts = (layout: QuickStartLayout) =>
+    parks.length > 0 && (
+      <div data-menu-stagger className="min-w-0">
+        <MenuSectionHeading label={t('planDayIn')} />
+        <QuickStartList parks={parks} layout={layout} />
+      </div>
+    );
 
   if (regions.length > 1) {
     return (
       <div className="flex flex-col gap-5">
         <section data-menu-stagger>
-          <MenuSectionHeading label={t('tripPlanner')} count={regions.length} />
+          <MenuSectionHeading
+            label={t('tripPlanner')}
+            count={regions.length}
+            aside={
+              <span className="text-muted-foreground min-w-0 truncate text-xs">
+                {t('tripPlannerHint')}
+              </span>
+            }
+          />
           <div className={cn('grid gap-3', REGION_COLUMNS[regions.length] ?? REGION_COLUMNS_MANY)}>
             {regions.map((region) => (
               <RegionTile
@@ -111,7 +120,7 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
         </section>
         <div className="grid grid-cols-1 gap-y-5 @min-[768px]:grid-cols-12 @min-[768px]:gap-x-8">
           <div className="min-w-0 @min-[768px]:col-span-7">{dayPlanner}</div>
-          <div className="min-w-0 @min-[768px]:col-span-5">{quickStarts}</div>
+          <div className="min-w-0 @min-[768px]:col-span-5">{quickStarts('narrow')}</div>
         </div>
       </div>
     );
@@ -132,21 +141,48 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
         )}
       >
         {dayPlanner}
-        {quickStarts}
+        {quickStarts('pairs')}
       </section>
     </div>
   );
 });
 
-/** The quick starts, two columns: each the park's page, a plain click starting the planner on it. */
-function QuickStartList({ parks }: { parks: PlannerQuickStart[] }) {
+/**
+ * How the quick starts sit: two columns of six (`pairs`, beside the one region's card), or under a
+ * row of regions one column of four below a 1280 px bar and two of six from there (`narrow`), so a
+ * name like „LEGOLAND Deutschland" is not cut in the narrower column.
+ */
+type QuickStartLayout = 'pairs' | 'narrow';
+
+/** The parks a one-column list shows; the rest wait for the two columns from a 1280 px bar. */
+const NARROW_QUICK_STARTS = 4;
+
+/** The quick starts: each the park's page, a plain click starting the planner on it. */
+function QuickStartList({
+  parks,
+  layout,
+}: {
+  parks: PlannerQuickStart[];
+  layout: QuickStartLayout;
+}) {
   const t = useTranslations('navigation');
   const tGeo = useTranslations('geo');
   const locale = useLocale();
+  const narrow = layout === 'narrow';
   return (
-    <ul aria-label={t('planDayInList')} className="grid grid-cols-2 gap-x-5 gap-y-0.5">
-      {parks.map((park) => (
-        <li key={park.href} className="min-w-0">
+    <ul
+      aria-label={t('planDayInList')}
+      className={
+        narrow
+          ? 'grid grid-cols-1 gap-x-5 gap-y-0.5 @min-[1280px]:grid-cols-2'
+          : 'grid grid-cols-2 gap-x-5 gap-y-0.5'
+      }
+    >
+      {parks.map((park, i) => (
+        <li
+          key={park.href}
+          className={cn('min-w-0', narrow && i >= NARROW_QUICK_STARTS && '@max-[1280px]:hidden')}
+        >
           <Link
             href={park.href as '/'}
             prefetch={false}
@@ -259,14 +295,14 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
 }
 
 /**
- * A region as one of several, from the draft's four-region layout: the scene above, and over a
- * fade at its foot where it is, its name, one line and an arrow. A long name wraps onto a second
- * line above its foot rather than being cut, hyphenated in the page's language ("Südkali-fornien"
- * where two tiles share a phone's row); only the one line is truncated. The whole tile is the trip planner's link; the crowd calendar is the
- * large card's and the hub's.
+ * A region as one of several, from the four-region design: the scene above, and over a fade at its
+ * foot where it is, its name and an arrow; the line every region shares („Welcher Park an welchem
+ * Tag") stands once on the row's heading. A long name takes two balanced lines rather than being
+ * cut: at a 1024 px bar a tile has 173 px beside the arrow, and "Southern California" needs 190.
+ * The fade covers half the tile, so a scene's props under the text stay texture. The whole tile is
+ * the trip planner's link; the crowd calendar is the large card's and the hub's.
  */
 function RegionTile({ region, height }: { region: PlannerMenuRegion; height: string }) {
-  const t = useTranslations('navigation');
   return (
     <Link
       href={region.href as '/'}
@@ -281,17 +317,16 @@ function RegionTile({ region, height }: { region: PlannerMenuRegion; height: str
       </span>
       <span
         aria-hidden="true"
-        className="from-background/90 via-background/40 absolute inset-x-0 bottom-0 -z-10 h-3/5 bg-gradient-to-t to-transparent"
+        className="from-background/95 via-background/70 absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t via-45% to-transparent"
       />
       <span className="absolute right-3 bottom-3 left-3.5 flex items-end justify-between gap-2">
         <span className="min-w-0">
           <span className="text-primary-ink block text-[10px] font-semibold tracking-widest uppercase">
             {region.area}
           </span>
-          <span className="text-foreground block text-xl leading-tight font-bold text-balance break-words hyphens-auto">
+          <span className="text-foreground block text-xl leading-[1.1] font-bold text-balance break-words hyphens-auto">
             {region.name}
           </span>
-          <span className="text-foreground/75 block truncate text-xs">{t('tripPlannerHint')}</span>
         </span>
         <span
           aria-hidden="true"
