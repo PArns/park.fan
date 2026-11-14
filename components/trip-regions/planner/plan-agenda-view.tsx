@@ -1,177 +1,171 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronRight, Lock } from 'lucide-react';
+import { BedDouble, ChevronRight, Lock, PlaneLanding, PlaneTakeoff } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { CROWD_DOT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay } from '@/lib/utils/park-day';
-import { dayMarker } from '@/lib/trip-regions/plan-copy';
-import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
-import { staySections } from '@/lib/trip-regions/plan-stays';
-import { shownDayWait } from '@/lib/trip-regions/plan-week';
+import { lockOn, withSpareRuns, type PlanDay, type TripPlan } from '@/lib/trip-regions/plan';
+import { movesBetweenStays, staySections } from '@/lib/trip-regions/plan-stays';
+import type { SpareSuggestion } from '@/lib/trip-regions/plan-week';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
-import { PlanDayMarker, useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
-import { MoveIcon, PlanMoveRow, PlanStayHeader, useMoveWords } from './plan-stay-band';
+import { PlanDayCard } from './plan-day-card';
+import { PlanMoveCard } from './plan-move-card';
 import { useBaseName } from './plan-place-words';
+import { PlanSpareRun } from './plan-spare-run';
+import { PlanStayHeader } from './plan-stay-band';
+
+/** What the Days view hands each park day's card: the editing controls and a line under it. */
+export interface PlanDaySlots {
+  /** The card's `actions` row for a park day; `null` leaves the row out. */
+  dayActions?: (day: PlanDay) => ReactNode;
+  /** The card's `hint` line for a park day; `null` leaves it out. */
+  dayHint?: (day: PlanDay) => ReactNode;
+}
 
 /**
- * The list view, the days once: one row per day with three facts at most, the park, its minutes and
- * one marker (an early close, the hotel's early slot, its evening), and a thin bar in the day's
- * crowd tint. A rest or travel day is its name alone. Everything else is one press away in the
- * day's sheet. A trip across cities is one section per stay, each opening on the move that reaches
- * it, and a day is listed where it is spent: a morning move's park day in the city reached, an
- * evening move's in the city left.
+ * The Days view: each park day as a `PlanDayCard`, each run of free days as one `PlanSpareRun`
+ * that offers parks to add, a day that is only a move as a `PlanMoveCard`, and the travel days and
+ * rest days the visitor's rule set as one quiet row each. A trip across cities is one section per
+ * stay, its head with the stay's nights stepper (`PlanStayHeader`), opened by the move that reaches
+ * it; a day is listed where it is spent (`staySections`). In a region without bases the cards stand
+ * two to a row at a desk.
  */
 export function PlanAgendaView({
   plan,
   calendar,
   onOpenDay,
+  onFill,
+  added,
+  dayActions,
+  dayHint,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onOpenDay: (date: string) => void;
-}) {
+  onFill: (suggestion: SpareSuggestion) => void;
+  /** The park and date the visitor just put on a free day, whose card reads „neu“. */
+  added: { slug: string; date: string } | null;
+} & PlanDaySlots) {
   const sections = staySections(plan);
+  const cities = movesBetweenStays(plan);
   return (
-    <ol data-plan-view="agenda" className="flex flex-col lg:max-w-2xl">
+    <div
+      data-plan-view="agenda"
+      className={cn('flex flex-col gap-3', cities ? 'lg:max-w-2xl' : 'lg:grid lg:grid-cols-2')}
+    >
       {sections.map((section) => (
         <Fragment key={section.stay?.base ?? 'trip'}>
-          {section.arrival && <PlanMoveRow day={section.arrival} onOpenDay={onOpenDay} />}
-          {section.stay && (
-            <li>
-              <PlanStayHeader stay={section.stay} />
-            </li>
+          {section.arrival?.kind === 'travel' && (
+            <div className="lg:col-span-2">
+              <PlanMoveCard
+                day={section.arrival}
+                buffer={plan.meta.moveBuffer}
+                onOpen={onOpenDay}
+              />
+            </div>
           )}
-          {section.days.map((day) => (
-            <PlanListRow key={day.date} day={day} calendar={calendar} onOpenDay={onOpenDay} />
-          ))}
+          {section.stay && (
+            <div className="lg:col-span-2">
+              <PlanStayHeader stay={section.stay} />
+            </div>
+          )}
+          {withSpareRuns(
+            section.days.filter((d) => d !== section.arrival || d.kind !== 'travel')
+          ).map((entry) =>
+            entry.type === 'spare' ? (
+              <div key={entry.days[0].date} className="lg:col-span-2">
+                <PlanSpareRun
+                  days={entry.days}
+                  plan={plan}
+                  calendar={calendar}
+                  onOpenDay={onOpenDay}
+                  onFill={onFill}
+                />
+              </div>
+            ) : entry.day.kind === 'park' || entry.day.kind === 'hop' ? (
+              <PlanDayCard
+                key={entry.day.date}
+                day={entry.day}
+                plan={plan}
+                calendar={calendar}
+                onOpen={onOpenDay}
+                added={
+                  added !== null &&
+                  added.date === entry.day.date &&
+                  entry.day.parks.some((p) => p.slug === added.slug)
+                }
+                actions={dayActions?.(entry.day)}
+                hint={dayHint?.(entry.day)}
+              />
+            ) : entry.day.kind === 'travel' ? (
+              <div key={entry.day.date} className="lg:col-span-2">
+                <PlanMoveCard day={entry.day} buffer={plan.meta.moveBuffer} onOpen={onOpenDay} />
+              </div>
+            ) : (
+              <QuietDayRow key={entry.day.date} day={entry.day} onOpenDay={onOpenDay} />
+            )
+          )}
         </Fragment>
       ))}
-    </ol>
+    </div>
   );
 }
 
-/** One day of the list view. */
-export function PlanListRow({
-  day,
-  calendar,
-  onOpenDay,
-}: {
-  day: PlanDay;
-  calendar: TripCalendar | undefined;
-  onOpenDay: (date: string) => void;
-}) {
-  const t = useTranslations('tripPlanner');
-  const tLevel = useTranslations('parks.crowdLevels');
-  const { locale, state } = usePlanContext();
-  const pinned = state.locks.some((l) => l.date === day.date);
-  const parksOf = useDayParks();
-  const markerText = useDayMarkerText();
-  const eveningOf = useEveningName();
-  const moveWords = useMoveWords();
-  const baseName = useBaseName();
-  const isPark = day.kind === 'park' || day.kind === 'hop';
-  const tone = day.crowdLevel && isColoredCrowdLevel(day.crowdLevel) ? day.crowdLevel : null;
-  const title = isPark
-    ? parksOf(day)
-    : day.kind === 'travel' && day.move
-      ? `${t('day.travel')} · ${t('move.toCity', { city: baseName(day.move.to) })}`
-      : t(`day.${day.kind}`);
-  // A park day with a move says when the park starts or when the move leaves, in place of its marker.
-  const moveLine =
-    isPark && day.move?.when === 'morning' && day.startAt
-      ? t('move.after', { time: moveWords.time(day.startAt) })
-      : isPark && day.move?.when === 'evening'
-        ? t('move.then', { city: baseName(day.move.to), time: moveWords.time(day.move.departAt) })
-        : null;
-  const wait = shownDayWait(day, calendar);
-  const minutes = wait != null ? t('answer.about', { minutes: wait }) : null;
-  // A rest day is said by its name; its marker would say it a second time.
-  const marker = day.kind === 'rest' || moveLine ? null : markerText(day, calendar);
-  const evening = eveningOf(day);
-  const label = [
-    formatParkDay(locale, day.date, { weekday: 'long', day: 'numeric', month: 'long' }),
-    title,
-    minutes,
-    tone ? tLevel(tone) : null,
-    marker ?? moveLine,
-    evening ? t('evening.plus', { name: evening }) : null,
-    pinned ? t('marker.pinned') : null,
-  ]
-    .filter(Boolean)
-    .join(', ');
+const QUIET_ICON = { arrival: PlaneLanding, departure: PlaneTakeoff, rest: BedDouble } as const;
 
+/**
+ * A day without a park and without a run of its own, as one row: the arrival, the departure, and a
+ * rest day the visitor's rule set or pinned, which keeps its bed. In a region with bases the
+ * arrival and departure name the city.
+ */
+function QuietDayRow({ day, onOpenDay }: { day: PlanDay; onOpenDay: (date: string) => void }) {
+  const t = useTranslations('tripPlanner');
+  const { locale, region, state } = usePlanContext();
+  const baseName = useBaseName();
+  const kind = day.kind === 'arrival' || day.kind === 'departure' ? day.kind : 'rest';
+  const Icon = QUIET_ICON[kind];
+  const city = (region.bases?.length ?? 0) > 0 && day.base ? baseName(day.base) : null;
+  const pinned = lockOn(state, day.date) !== null;
+  const what =
+    city && kind === 'arrival'
+      ? t('result.arrivalIn', { city })
+      : city && kind === 'departure'
+        ? t('result.departureFrom', { city })
+        : t(`day.${kind}`);
+  const date = formatParkDay(locale, day.date, {
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+  });
   return (
-    <li>
-      <button
-        type="button"
-        onClick={() => onOpenDay(day.date)}
-        aria-label={label}
-        data-plan-day={day.kind}
-        className={cn(
-          'hover:bg-accent/40 flex min-h-11 w-full items-center gap-2 rounded-md py-1 pr-2 text-left text-sm transition-colors',
-          PLAN_FOCUS
-        )}
-      >
-        <span
-          aria-hidden="true"
-          className={cn(
-            'h-7 w-1 shrink-0 rounded-full',
-            tone ? CROWD_DOT_CLASS[tone] : isPark ? 'bg-border' : 'bg-transparent'
-          )}
-        />
-        <span aria-hidden="true" className="text-muted-foreground w-16 shrink-0 tabular-nums">
-          {formatParkDay(locale, day.date, { weekday: 'short', day: 'numeric' })}
-        </span>
-        <span
-          aria-hidden="true"
-          className={cn('min-w-0 flex-1 truncate', !isPark && 'text-muted-foreground')}
-        >
-          {title}
-          {evening && (
-            <span className="text-muted-foreground"> {t('evening.plus', { name: evening })}</span>
-          )}
-        </span>
-        {marker && (
-          <PlanDayMarker
-            day={day}
-            calendar={calendar}
-            className="hidden max-w-40 shrink-0 sm:inline-flex"
-          />
-        )}
-        {moveLine && day.move && (
-          <span
-            aria-hidden="true"
-            className="text-primary-ink hidden max-w-48 shrink-0 items-center gap-1 text-xs sm:inline-flex"
-          >
-            <MoveIcon mode={day.move.mode} className="size-3.5 shrink-0" />
-            <span className="truncate">{moveLine}</span>
-          </span>
-        )}
-        {pinned && (
-          <Lock
-            className="text-primary-ink size-3.5 shrink-0"
-            aria-hidden="true"
-            data-plan-pinned=""
-          />
-        )}
-        {minutes && (
-          <span
-            aria-hidden="true"
-            className={cn(
-              'shrink-0 tabular-nums',
-              // A day the ticket does not cover leads with that, not with its wait.
-              dayMarker(day) === 'outside_ticket' ? 'text-muted-foreground' : 'font-medium'
-            )}
-          >
-            {minutes}
-          </span>
-        )}
-        <ChevronRight className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
-      </button>
-    </li>
+    <button
+      type="button"
+      onClick={() => onOpenDay(day.date)}
+      aria-label={[
+        formatParkDay(locale, day.date, { weekday: 'long', day: 'numeric', month: 'long' }),
+        what,
+        pinned ? t('marker.pinned') : null,
+      ]
+        .filter(Boolean)
+        .join(', ')}
+      data-plan-day={day.kind}
+      className={cn(
+        'hover:bg-accent/40 flex min-h-11 w-full items-center gap-3 rounded-lg px-1 py-2 text-left text-sm transition-colors lg:col-span-2',
+        PLAN_FOCUS
+      )}
+    >
+      <Icon className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+      <span aria-hidden="true" className="w-28 shrink-0 font-semibold tabular-nums">
+        {date}
+      </span>
+      <span aria-hidden="true" className="text-muted-foreground min-w-0 flex-1 truncate">
+        {what}
+      </span>
+      {pinned && <Lock className="text-primary-ink size-3.5 shrink-0" aria-hidden="true" />}
+      <ChevronRight className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+    </button>
   );
 }

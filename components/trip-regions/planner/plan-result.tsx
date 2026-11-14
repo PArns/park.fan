@@ -14,7 +14,7 @@ import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import {
   CalendarDays,
-  ChevronDown,
+  Info,
   LayoutList,
   MapPinned,
   Route,
@@ -28,14 +28,16 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { plannerPagePark, type PlannerPagePark } from '@/lib/planner/page-park';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { Button } from '@/components/ui/button';
 import {
   MAX_PLAN_VISITS,
   MAX_TRIP_DAYS,
+  addParkOnDate,
   fixedNights,
+  isSpareDay,
   lockOn,
   parkDaysAvailable,
   planProblem,
@@ -47,8 +49,8 @@ import {
   toggleLock,
   tripDates,
   type PlanDay,
-  type PlanLock,
   type TripPlan,
+  type TripPlanState,
 } from '@/lib/trip-regions/plan';
 import {
   autoSplit,
@@ -57,14 +59,12 @@ import {
   lastYearStart,
   planDayLastYear,
   parksLeftOut,
-  planSavings,
   relaxedRules,
   unplacedParks,
 } from '@/lib/trip-regions/plan-copy';
-import { shownTotals } from '@/lib/trip-regions/plan-week';
+import { shownTotals, type SpareSuggestion } from '@/lib/trip-regions/plan-week';
 import { PlanRequestError } from '@/lib/trip-regions/plan-fetch';
 import { whenRequestQuery } from '@/lib/trip-regions/plan-when';
-import { planStays } from '@/lib/trip-regions/plan-stays';
 import { readTickets } from '@/lib/trip-regions/plan-query';
 import {
   hopperResorts,
@@ -76,12 +76,13 @@ import {
 import { tripPlanView, PLAN_VIEWS, type PlanView } from '@/lib/trip-regions/plan-view';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
+import { PLAN_FOCUS, PLAN_WIDE_QUERY } from './plan-controls';
 import { PlanAgendaView } from './plan-agenda-view';
 import { PlanDaySheet } from './plan-day-sheet';
 import { PlanKeep } from './plan-keep';
 import { PlanMonthView } from './plan-month-view';
-import { PLAN_WIDE_QUERY } from './plan-setup';
+import { PlanPeakCard } from './plan-peak-card';
+import { PlanResultHead } from './plan-result-head';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
 import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
@@ -117,9 +118,15 @@ export function PlanResult({
   ticketsOpen,
   onTicketsOpen,
   defaultMonth,
+  answers,
 }: {
   ref?: Ref<HTMLDivElement>;
   edit: PlanEdit;
+  /**
+   * The visitor's answers with a way back into each step, at the top of the result (beside it at
+   * a desk). Given, it stands in for the answer's own „Parks ändern“ and „Mehr Optionen“.
+   */
+  answers?: ReactNode;
   /** The ticket step, which the answer opens in place at a desk. */
   step: TicketStep;
   ticketsOpen: boolean;
@@ -160,6 +167,7 @@ export function PlanResult({
       ) : (
         <PlanAnswerSection
           edit={edit}
+          answers={answers}
           tickets={
             ticketsOpen ? (
               <DeskTickets
@@ -237,14 +245,24 @@ function Failure({ error, onRetry }: { error: unknown; onRetry: () => void }) {
 
 function PlanAnswerSection({
   edit,
+  answers,
   tickets,
 }: {
   edit: PlanEdit;
+  answers: ReactNode;
   /** The ticket step in place at a desk, under the tickets or under what holds the plan back. */
   tickets: ReactNode;
 }) {
   const t = useTranslations('tripPlanner');
-  const { region, state, update, headliners, parkBySlug, tickets: catalog } = usePlanContext();
+  const {
+    region,
+    state,
+    update,
+    headliners,
+    regionOrder,
+    parkBySlug,
+    tickets: catalog,
+  } = usePlanContext();
   const track = useTripEvents();
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
@@ -275,17 +293,40 @@ function PlanAnswerSection({
     },
     [days, track]
   );
-  const [history, setHistory] = useState<PlanLock[][]>([]);
+  // What an edit can change: the pins, and with a park put on a free day the parks as well.
+  const [history, setHistory] = useState<Array<Pick<TripPlanState, 'locks' | 'parks'>>>([]);
   // The last edit, when it was a swap: the edit bar says what moved where, not "pinned".
   const [swapped, setSwapped] = useState<{ a: PlanDay; b: PlanDay } | null>(null);
+  // The last edit, when it put a park on a free day: its card reads „neu“, the bar says so.
+  const [added, setAdded] = useState<{ slug: string; date: string } | null>(null);
   const [beacon, setBeacon] = useState<PlannerPagePark | null>(null);
 
   const withHistory = useCallback(
     (recipe: Parameters<typeof update>[0]) => {
-      setHistory((h) => [...h, state.locks]);
+      setHistory((h) => [...h, { locks: state.locks, parks: state.parks }]);
       update(recipe);
     },
-    [state.locks, update]
+    [state.locks, state.parks, update]
+  );
+  const fill = useCallback(
+    (suggestion: SpareSuggestion, from: 'card' | 'week') => {
+      track('trip_spare_filled', { from });
+      setSwapped(null);
+      setOpenDate(null);
+      setAdded({ slug: suggestion.slug, date: suggestion.date });
+      withHistory(
+        (s) =>
+          addParkOnDate(
+            s,
+            suggestion.slug,
+            suggestion.date,
+            suggestion.planned,
+            regionOrder,
+            headliners
+          ) ?? s
+      );
+    },
+    [track, withHistory, regionOrder, headliners]
   );
 
   if (problem) {
@@ -347,44 +388,56 @@ function PlanAnswerSection({
       {beacon && <PlannerPageParkBeacon {...beacon} />}
       {plan.isError && <Failure error={plan.error} onRetry={() => void plan.refetch()} />}
 
-      <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} edit={edit} />
-      {tickets}
-
       {state.locks.length > 0 && (
         <EditBar
           plan={data}
           best={unpinned.data ?? null}
           calendar={calendar.data}
           swapped={swapped}
+          added={added}
           canUndo={history.length > 0}
           onUndo={() => {
             const previous = history.at(-1);
             setHistory((h) => h.slice(0, -1));
             setSwapped(null);
-            if (previous) update((s) => ({ ...s, locks: previous }));
+            setAdded(null);
+            if (previous) update((s) => ({ ...s, ...previous }));
           }}
           onRelease={() => {
             setSwapped(null);
+            setAdded(null);
             withHistory((s) => ({ ...s, locks: [] }));
           }}
         />
       )}
 
-      <PlanKeep plan={data} calendar={calendar.data} />
+      <PlanAnswer
+        plan={data}
+        calendar={calendar.data}
+        onOpenDay={openDay}
+        onFill={fill}
+        added={added}
+        edit={edit}
+        answers={answers}
+        tickets={tickets}
+      />
 
       <PlanDaySheet
         day={day}
         plan={data}
         calendar={calendar.data}
         onClose={() => setOpenDate(null)}
+        onFill={(s) => fill(s, 'card')}
         onToggleLock={(d) => {
           track('trip_day_pinned', { pinned: lockOn(state, d.date) === null });
           setSwapped(null);
+          setAdded(null);
           withHistory((s) => toggleLock(s, d));
         }}
         onSwap={(a, b) => {
           track('trip_day_swapped');
           setOpenDate(null);
+          setAdded(null);
           setSwapped({ a, b });
           withHistory((s) => {
             const locks = swapLocks(s, a, b);
@@ -399,22 +452,31 @@ function PlanAnswerSection({
 }
 
 /**
- * Level 0 and 1: the answer. The trip's dates and what they hold, the parks that did not fit, then
- * the days themselves in the chosen view (the list, the Week or the Month), and under them one line:
- * the peak wait on the planned days against the average of the trip's days, with how accurate that
- * is one press away. Then what the plan had to give up, the three ways to change it, and the
- * tickets: what to buy, or the visitor's own.
+ * Level 0 and 1: the answer. On a phone, top to bottom: the visitor's answers, the trip's head
+ * (`PlanResultHead`), the peak wait (`PlanPeakCard`), the parks that did not fit with their three
+ * ways out, the stay suggestion, last year's line, then the days in the chosen view, what the plan
+ * had to give up, the tickets and Keep. At a desk the answers, the peak wait, the tickets and Keep
+ * are a column of 340 px on the left, and the head and the days take the rest.
  */
 function PlanAnswer({
   plan,
   calendar,
   onOpenDay,
+  onFill,
+  added,
   edit,
+  answers,
+  tickets,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onOpenDay: (date: string, view: DayOpenedView) => void;
+  onFill: (suggestion: SpareSuggestion, from: 'card' | 'week') => void;
+  added: { slug: string; date: string } | null;
   edit: PlanEdit;
+  answers: ReactNode;
+  /** The ticket step in place at a desk. */
+  tickets: ReactNode;
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
@@ -447,7 +509,7 @@ function PlanAnswer({
     splitGroups.set(key, group);
   }
   const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
-  const added = [...splitGroups.values()].map((g) =>
+  const splitLines = [...splitGroups.values()].map((g) =>
     t(g.ticket ? 'tickets.split' : 'answer.split', {
       parks: list.format(g.parks),
       count: g.parks.length,
@@ -487,131 +549,97 @@ function PlanAnswer({
   ];
   const ticketsAsked = ticketStep.resorts.length > 0 && catalog.size > 0;
   const bases = (region.bases?.length ?? 0) > 0;
-  const stays = planStays(plan);
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1">
-        <h3 className="text-lg font-semibold">
-          {formatParkDayRange(locale, plan.meta.from, plan.meta.to, {
-            weekday: 'short',
-            day: 'numeric',
-            month: 'short',
-          })}
-        </h3>
-        <p className="text-muted-foreground text-sm">
-          {t('answer.counts', { parkDays: plan.totals.parkDays, restDays: plan.totals.restDays })}
-          {stays.length > 1 &&
-            ` · ${t('answer.moves', { cities: stays.length, moves: plan.totals.moves ?? stays.length - 1 })}`}
-        </p>
-      </div>
-
-      <LeftOut plan={plan} edit={edit} />
-      <StaySuggestion plan={plan} />
-
-      {lastYear && (
-        <p
-          className="border-border/60 rounded-xl border border-dashed px-4 py-3 text-sm"
-          role="note"
-        >
-          {lastYear.all
-            ? t('answer.lastYearAll')
-            : t('answer.lastYear', {
-                date: formatParkDay(locale, lastYear.from, { day: 'numeric', month: 'long' }),
-              })}
-        </p>
+    <div
+      className={cn(
+        'flex flex-col gap-5 lg:grid lg:grid-cols-[340px_minmax(0,1fr)] lg:items-start lg:gap-x-8',
+        answers ? 'lg:grid-rows-[auto_1fr]' : 'lg:grid-rows-[1fr]'
       )}
+    >
+      {answers && <div className="lg:col-start-1 lg:row-start-1">{answers}</div>}
 
-      <PlanViews plan={plan} calendar={calendar} onOpenDay={onOpenDay} />
-
-      <PeakLine plan={plan} calendar={calendar} />
-
-      {added.length > 0 && (
-        <ul className="flex flex-col gap-1 text-sm">
-          {added.map((line) => (
-            <li key={line}>{line}</li>
-          ))}
-        </ul>
-      )}
-      {notes.length > 0 && (
-        <ul className="flex flex-col gap-1 text-sm">
-          {notes.map((note) => (
-            <li key={note} className="text-crowd-ink-high">
-              {note}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      <div className="flex flex-wrap gap-2" data-plan-changes="">
-        <Button variant="outline" size="sm" onClick={() => edit.parks('answer')}>
-          <MapPinned aria-hidden="true" />
-          {t('result.editParks')}
-        </Button>
-        {bases && edit.route && (
-          <Button variant="outline" size="sm" onClick={() => edit.route?.('answer')}>
-            <Route aria-hidden="true" />
-            {t('result.editRoute')}
-          </Button>
+      <div
+        className={cn(
+          'flex min-w-0 flex-col gap-5 lg:col-start-2 lg:row-start-1',
+          answers && 'lg:row-span-2'
         )}
-        <Button variant="outline" size="sm" onClick={() => edit.options('answer')}>
-          <SlidersHorizontal aria-hidden="true" />
-          {t('setup.fineTune')}
-        </Button>
+      >
+        <PlanResultHead plan={plan} />
+        <PlanPeakCard plan={plan} calendar={calendar} className="lg:hidden" />
+        <LeftOut plan={plan} edit={edit} />
+        <StaySuggestion plan={plan} />
+
+        {lastYear && (
+          <p className="text-muted-foreground flex gap-2 text-sm" role="note">
+            <Info className="mt-0.5 size-4 shrink-0" aria-hidden="true" />
+            {lastYear.all
+              ? t('answer.lastYearAll')
+              : t('answer.lastYear', {
+                  date: formatParkDay(locale, lastYear.from, { day: 'numeric', month: 'long' }),
+                })}
+          </p>
+        )}
+
+        <PlanViews
+          plan={plan}
+          calendar={calendar}
+          onOpenDay={onOpenDay}
+          onFill={onFill}
+          added={added}
+        />
+
+        {splitLines.length > 0 && (
+          <ul className="flex flex-col gap-1 text-sm">
+            {splitLines.map((line) => (
+              <li key={line}>{line}</li>
+            ))}
+          </ul>
+        )}
+        {notes.length > 0 && (
+          <ul className="flex flex-col gap-1 text-sm">
+            {notes.map((note) => (
+              <li key={note} className="text-crowd-ink-high">
+                {note}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
-      <PlanTicketsCard
-        plan={plan}
-        edit={edit}
-        ask={ticketsAsked && state.tickets.length === 0 ? <TicketsAsk edit={edit} /> : null}
-      />
-    </div>
-  );
-}
-
-/**
- * The one line under the days: the peak wait on them, and how much less it is than the average of
- * the trip's days, or that the order barely matters. "How accurate is this?" holds the average
- * itself and the forecast's measured error.
- */
-function PeakLine({ plan, calendar }: { plan: TripPlan; calendar: TripCalendar | undefined }) {
-  const t = useTranslations('tripPlanner.answer');
-  const track = useTripEvents();
-  // In the figure the days show; whether the order matters stays the API's call.
-  const savings = planSavings({ ...plan.totals, ...shownTotals(plan, calendar) });
-  const id = useId();
-  const [open, setOpen] = useState(false);
-  if (!savings) return null;
-  return (
-    <div className="flex flex-col gap-1" data-plan-savings="">
-      <p className="text-sm">
-        {savings.kind === 'flat'
-          ? t('peakFlat', { minutes: savings.planned })
-          : t('peakSaved', { minutes: savings.planned, saved: savings.saved })}{' '}
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls={id}
-          onClick={() => {
-            if (!open) track('trip_accuracy_opened', { surface: 'plan' });
-            setOpen(!open);
-          }}
-          className={cn(
-            'text-primary-ink inline-flex min-h-11 items-center gap-1 rounded-md px-1 font-medium underline-offset-4 hover:underline lg:min-h-0',
-            PLAN_FOCUS
-          )}
-        >
-          {t('accuracy')}
-          <ChevronDown
-            className={cn('size-3.5 transition-transform duration-200', open && 'rotate-180')}
-            aria-hidden="true"
-          />
-        </button>
-      </p>
-      <p id={id} hidden={!open} className="text-muted-foreground text-sm">
-        {t('averageDay', { minutes: savings.average })}
-        {savings.expectedError !== null && ` ${t('error', { minutes: savings.expectedError })}`}
-      </p>
+      <div
+        className={cn(
+          'flex min-w-0 flex-col gap-5 lg:sticky lg:top-16 lg:col-start-1',
+          answers ? 'lg:row-start-2' : 'lg:row-start-1'
+        )}
+      >
+        <PlanPeakCard plan={plan} calendar={calendar} className="hidden lg:flex" />
+        {!answers && (
+          <div className="flex flex-wrap gap-2" data-plan-changes="">
+            <Button variant="outline" size="sm" onClick={() => edit.parks('answer')}>
+              <MapPinned aria-hidden="true" />
+              {t('result.editParks')}
+            </Button>
+            {bases && edit.route && (
+              <Button variant="outline" size="sm" onClick={() => edit.route?.('answer')}>
+                <Route aria-hidden="true" />
+                {t('result.editRoute')}
+              </Button>
+            )}
+            <Button variant="outline" size="sm" onClick={() => edit.options('answer')}>
+              <SlidersHorizontal aria-hidden="true" />
+              {t('setup.fineTune')}
+            </Button>
+          </div>
+        )}
+        <PlanTicketsCard
+          plan={plan}
+          edit={edit}
+          ask={ticketsAsked && state.tickets.length === 0 ? <TicketsAsk edit={edit} /> : null}
+        />
+        {tickets}
+        <PlanKeep plan={plan} calendar={calendar} />
+      </div>
     </div>
   );
 }
@@ -805,6 +833,7 @@ function EditBar({
   best,
   calendar,
   swapped,
+  added,
   canUndo,
   onUndo,
   onRelease,
@@ -814,12 +843,15 @@ function EditBar({
   calendar: TripCalendar | undefined;
   /** The swap that was the last edit, said as one: what is on which day now. */
   swapped: { a: PlanDay; b: PlanDay } | null;
+  /** The park the last edit put on a free day. */
+  added: { slug: string; date: string } | null;
   canUndo: boolean;
   onUndo: () => void;
   onRelease: () => void;
 }) {
   const t = useTranslations('tripPlanner.edit');
   const tDay = useTranslations('tripPlanner.day');
+  const tSpare = useTranslations('tripPlanner.spare');
   const { locale, parkName } = usePlanContext();
   // Both plans in the figure the days show, or both in the API's; never one of each.
   const bestShown = best ? shownTotals(best, calendar) : null;
@@ -829,8 +861,39 @@ function EditBar({
       ? editCost(bestShown, currentShown)
       : editCost(best?.totals ?? null, plan.totals);
   const what = (d: PlanDay) =>
-    d.kind === 'rest' ? tDay('rest') : parkName(d.parks[0]?.slug ?? '');
+    isSpareDay(d)
+      ? tSpare('day')
+      : d.kind === 'rest'
+        ? tDay('rest')
+        : parkName(d.parks[0]?.slug ?? '');
   const short = (date: string) => formatParkDay(locale, date, { weekday: 'short' });
+  if (added) {
+    return (
+      <div
+        className="border-primary/40 bg-primary/5 flex flex-wrap items-center gap-x-4 gap-y-2 rounded-2xl border px-4 py-3"
+        role="status"
+        data-plan-added=""
+      >
+        <p className="min-w-0 flex-1 text-sm">
+          {tSpare('added', {
+            park: parkName(added.slug),
+            date: formatParkDay(locale, added.date, {
+              weekday: 'short',
+              day: 'numeric',
+              month: 'short',
+            }),
+          })}
+          {cost &&
+            cost.delta !== 0 &&
+            ` ${t('swappedCost', { current: cost.current, best: cost.best })}`}
+        </p>
+        <Button variant="outline" size="sm" onClick={onUndo} disabled={!canUndo}>
+          <Undo2 aria-hidden="true" />
+          {t('undo')}
+        </Button>
+      </div>
+    );
+  }
   if (swapped) {
     return (
       <div
@@ -889,10 +952,14 @@ function PlanViews({
   plan,
   calendar,
   onOpenDay: openDay,
+  onFill,
+  added,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onOpenDay: (date: string, view: DayOpenedView) => void;
+  onFill: (suggestion: SpareSuggestion, from: 'card' | 'week') => void;
+  added: { slug: string; date: string } | null;
 }) {
   const t = useTranslations('tripPlanner.views');
   const track = useTripEvents();
@@ -939,10 +1006,23 @@ function PlanViews({
           );
         })}
       </div>
-      {view === 'week' && <PlanWeekView plan={plan} calendar={calendar} onOpenDay={onOpenDay} />}
+      {view === 'week' && (
+        <PlanWeekView
+          plan={plan}
+          calendar={calendar}
+          onOpenDay={onOpenDay}
+          onFill={(s) => onFill(s, 'week')}
+        />
+      )}
       {view === 'month' && <PlanMonthView plan={plan} calendar={calendar} onOpenDay={onOpenDay} />}
       {view === 'agenda' && (
-        <PlanAgendaView plan={plan} calendar={calendar} onOpenDay={onOpenDay} />
+        <PlanAgendaView
+          plan={plan}
+          calendar={calendar}
+          onOpenDay={onOpenDay}
+          onFill={(s) => onFill(s, 'card')}
+          added={added}
+        />
       )}
     </section>
   );

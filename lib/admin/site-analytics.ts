@@ -964,6 +964,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_day_pinned: { label: 'Reisetag festgesteckt', when: 'Ein Tag festgesteckt oder gelöst.' },
   trip_day_swapped: { label: 'Reisetage getauscht', when: 'Zwei Tage getauscht.' },
+  trip_spare_filled: {
+    label: 'Freien Tag gefüllt',
+    when: '„Dazu“ an einem freien Tag: ein Park auf diesen Tag gelegt; mit dem Ort (Karte, Woche, Idee, Chat).',
+  },
   trip_day_sent: {
     label: 'Tag an den Tagesplaner',
     when: '„Diesen Tag planen“ im Blatt eines Reisetags.',

@@ -2,7 +2,7 @@
 
 import { useMemo, type CSSProperties } from 'react';
 import { useTranslations } from 'next-intl';
-import { BedDouble, Lock, PlaneLanding, PlaneTakeoff } from 'lucide-react';
+import { BedDouble, Lock, PlaneLanding, PlaneTakeoff, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { weekdayLabels } from '@/lib/planner/month-grid';
 import { formatGridHours, formatGridTime } from '@/lib/planner/park-time';
@@ -35,7 +35,7 @@ import {
   type DayBandPiece,
   type TripCanvas,
 } from '@/lib/trip-regions/plan-week';
-import type { TripPlan } from '@/lib/trip-regions/plan';
+import { isSpareDay, type TripPlan } from '@/lib/trip-regions/plan';
 import { stormCodeOn, stormSignal } from '@/lib/trip-regions/date-facts';
 import { dayStayBase, monthStayCells, planStays } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
@@ -98,7 +98,8 @@ function bandTicks(canvas: TripCanvas): number[] {
  * the Week view's own spans (`tripDaySpans`, `dayBandPieces`): the hotel's early slot striped, the
  * hours in the crowd colour, a party night hatched, the evening in a second park or at a venue. A
  * phone writes the hours under it, a wide screen the axis and one line: the evening or the ticket
- * day. A rest or travel day is a plain tile with its icon, the date's holidays the bar along the
+ * day. A rest or travel day is a plain tile with its icon (a free day's is a sun, a rest day's a
+ * bed), the date's holidays the bar along the
  * top with the storm season (`stormCodeOn`: dashed, solid at its peak), and a key says what the
  * codes stand for. On a trip across cities each cell's foot is the stay band (`PlanMonthStayBand`,
  * `monthStayCells`): the city slept in, named where its stay begins and at the start of each week
@@ -235,8 +236,10 @@ export function PlanMonthView({
           );
           const stormWord = storm ? tClimate(storm) : null;
           if (!isPark) {
-            const Icon =
-              day.kind === 'rest'
+            const spare = isSpareDay(day);
+            const Icon = spare
+              ? Sun
+              : day.kind === 'rest'
                 ? BedDouble
                 : day.kind === 'arrival'
                   ? PlaneLanding
@@ -247,7 +250,7 @@ export function PlanMonthView({
               ) : (
                 <Icon className="size-4 shrink-0" aria-hidden="true" />
               );
-            const word = t(`day.${day.kind}`);
+            const word = spare ? t('spare.day') : t(`day.${day.kind}`);
             return (
               <li key={cell.date} className="min-w-0">
                 <button

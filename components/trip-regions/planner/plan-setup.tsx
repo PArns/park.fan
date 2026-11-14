@@ -20,7 +20,7 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { usePlanContext } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
+import { PLAN_FOCUS, PLAN_WIDE_QUERY } from './plan-controls';
 import { PlanDatesStep } from './plan-find';
 import { PlanParks } from './plan-parks';
 import { PlanOptions, usePlanOptionsSummary } from './plan-options';
@@ -33,8 +33,8 @@ import type { TripEditPanel } from '@/lib/analytics/site-analytics';
  */
 export type PlanSheetStep = 'dates' | 'parks' | 'route' | 'options' | 'tickets';
 
-/** `lg`, where the setup is drawn inline; below it the same panels are sheets. */
-export const PLAN_WIDE_QUERY = '(min-width: 64rem)';
+/** `PLAN_WIDE_QUERY` of `plan-controls.tsx`, which `trip-region-planner.tsx` reads from here. */
+export { PLAN_WIDE_QUERY };
 
 /** What a region with bases adds to the setup: the Route, and its rows under More options. */
 export interface PlanSetupRoute {
