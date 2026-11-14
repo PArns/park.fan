@@ -168,7 +168,7 @@ export function NewPostsToast({ labels, posts, onDone }: NewPostsToastProps) {
     return () => observer.disconnect();
   }, [isPhone]);
 
-  // From `sm` the language banner (`fixed top-12`, `z-[60]`) can own the strip under the header.
+  // From `sm` the language banner (`fixed top-12`, `z-[45]`) can own the strip under the header.
   // Sit below it while it is up. `offsetTop`/`offsetHeight`, not the client rect: the banner
   // slides in with a transform, and a rect measured mid-slide would be short.
   useEffect(() => {
