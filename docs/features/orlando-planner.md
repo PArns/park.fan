@@ -246,10 +246,15 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   "UK shop". On a trip of ten days or more, a line offers the 14-day tickets the UK shops sell
   ("Plan with these"), to every visitor.
 - **Where to buy.** A suggestion's details and the 14-day alternatives list the product's `links`
-  in the admin's order, those for the visitor's locale or market (from the browser's first
-  language) first (`orderTicketLinks`); the official shop keeps its place. Every link is shown to
-  every visitor; one sold in a market other than the operators' own (its `markets`, on the official
-  link the product's) carries the same tag as the step, "UK shop" (`linkMarket`). Every link opens in a
+  in the admin's order: the store of the visitor's own country first (the region of the browser's
+  first language, `visitorCountry`), then those for their locale or market (`orderTicketLinks`);
+  the official shop keeps its place. Every link is shown to every visitor. A link to a seller's
+  country store (its `store`) is named by it, with the store's currency: "Attraction Tickets ·
+  UK (£)", "· Irland (€)" (`ticketStoreName`: the short country name and the currency symbol from
+  `Intl`, so a new store needs no string). Other links sold in a market other than the operators'
+  own (its `markets`, on the official link the product's) carry the same tag as the step, "UK shop"
+  (`linkMarket`). Under two or more links a muted line says that prices differ by the shop's
+  country and that it pays to compare them all (`tripPlanner.tickets.links.compare`). Every link opens in a
   new tab with `referrerPolicy="origin"` and no `noreferrer`, so the seller sees `https://park.fan/`
   and never the trip's path (the site's own policy is `same-origin`); a sponsored link is
   `rel="sponsored nofollow noopener"` and carries a visible "Partner link" label that explains the

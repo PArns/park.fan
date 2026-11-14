@@ -502,7 +502,10 @@ within 15 minutes (`TICKET_PUBLISH_DELAY`). The pure half is `lib/admin/tickets.
   Exactly one is the operator's shop. „Partnerlink“ is `sponsored`: the site labels the link and
   links it `rel="sponsored"`. The links the catalog started with lead to the cheapest authorized
   seller and the official shop and are never partner links; the switch is for the ones added
-  later. Markets and languages limit a link; none means everyone.
+  later. Markets and languages limit a link; none means everyone. „Länder-Shop“ is the link's
+  `store`, country and currency (`IE`, `EUR`), for a seller with one store per country: the planner
+  names the link by it („Attraction Tickets · Irland (€)“), and the form keeps it on a save
+  (`withTicketLinkStore`, `cleanLink`).
 - **Clicks** are the planner's `ticket_link_clicked` event (`TICKET_LINK_EVENT`, typed against
   `SiteEventMap`), read as the event crosstab of the last 30 days, product against host, and
   against seller where two links of a product share a host (`useTicketClicks`, `ticketClicks`). A

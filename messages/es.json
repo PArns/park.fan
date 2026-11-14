@@ -3716,7 +3716,9 @@
       },
       "links": {
         "title": "Precios y entradas",
-        "official": "{seller} (tienda oficial)"
+        "official": "{seller} (tienda oficial)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "Los precios cambian según el país de la tienda. Compáralos todos antes de comprar."
       },
       "market": {
         "uk": "Tienda británica",

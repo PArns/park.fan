@@ -3716,7 +3716,9 @@
       },
       "links": {
         "title": "Prijzen en tickets",
-        "official": "{seller} (officiële winkel)"
+        "official": "{seller} (officiële winkel)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "De prijzen verschillen per land van de winkel. Vergelijk ze allemaal voordat je koopt."
       },
       "market": {
         "uk": "Britse winkel",

@@ -3716,7 +3716,9 @@
       },
       "links": {
         "title": "Prix et billets",
-        "official": "{seller} (boutique officielle)"
+        "official": "{seller} (boutique officielle)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "Les prix varient selon le pays de la boutique. Compare-les tous avant d’acheter."
       },
       "market": {
         "uk": "Boutique britannique",

@@ -10,6 +10,7 @@ import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import type { CrosstabResponse } from '@/lib/api/admin-site-analytics';
 import { hostProp, sellerProp } from '@/lib/trip-regions/plan-analytics';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import type { TicketStore } from '@/lib/trip-regions/types';
 import { CROSSTAB_REST } from './site-analytics';
 
 /**
@@ -103,6 +104,8 @@ export interface TicketLink {
   markets?: TicketMarket[];
   /** The site languages it is for; absent: every one. */
   locales?: string[];
+  /** The seller's country store and its currency, as the site names the link; absent: one shop. */
+  store?: TicketStore;
 }
 
 /** Start dates a product is sold for, both ends optional. */
@@ -471,6 +474,8 @@ function trimmed(value: string | undefined): string | undefined {
 }
 
 function cleanLink(link: TicketLink): TicketLink {
+  const country = link.store?.country.trim().toUpperCase() ?? '';
+  const currency = link.store?.currency.trim().toUpperCase() ?? '';
   return {
     seller: link.seller.trim(),
     url: link.url.trim(),
@@ -478,6 +483,7 @@ function cleanLink(link: TicketLink): TicketLink {
     sponsored: link.sponsored,
     ...(link.markets && link.markets.length > 0 && { markets: link.markets }),
     ...(link.locales && link.locales.length > 0 && { locales: link.locales }),
+    ...((country || currency) && { store: { country, currency } }),
   };
 }
 
@@ -736,6 +742,13 @@ export function ticketLinkProblems(links: readonly TicketLink[]): TicketProblem[
     if (url) problems.push({ path: `links[${index}].url`, message: url });
   });
   return problems;
+}
+
+/** A link with one part of its country store changed; it has no store once both parts are empty. */
+export function withTicketLinkStore(link: TicketLink, part: Partial<TicketStore>): TicketLink {
+  const { store: _store, ...rest } = link;
+  const store = { country: '', currency: '', ...link.store, ...part };
+  return store.country || store.currency ? { ...rest, store } : rest;
 }
 
 /** The links with the one at `index` as the operator's shop and no other. */

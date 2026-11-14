@@ -25,8 +25,10 @@ import {
   suggestionsByStart,
   ticketHomeMarket,
   ticketLength,
+  ticketStoreName,
   toggleHopper,
   windowLength,
+  visitorCountry,
   visitorMarket,
   type HopperGain,
 } from '@/lib/trip-regions/plan-tickets';
@@ -827,8 +829,10 @@ function ShopLink({
 /**
  * Where to buy a ticket: the product's links in the visitor's order (`orderTicketLinks`), each in a
  * new tab with park.fan as its referrer (`ticketLinkAttributes`), the operator's own shop marked,
- * a shop abroad tagged with where it sells ("UK shop", `linkMarket`), and a sponsored one with the
- * "Partner link" label beside it, which says what that means.
+ * a seller's country store named with its currency ("Attraction Tickets · UK (£)",
+ * `ticketStoreName`), a shop abroad tagged with where it sells ("UK shop", `linkMarket`), and a
+ * sponsored one with the "Partner link" label beside it, which says what that means. Under two or
+ * more links, a line says that prices differ by the shop's country.
  */
 function PurchaseLinks({
   source,
@@ -856,7 +860,12 @@ function PurchaseLinks({
     () => navigator.languages?.[0] ?? '',
     () => ''
   );
-  const visitor = { locale, market: visitorMarket(language ? [language] : []) };
+  const languages = language ? [language] : [];
+  const visitor = {
+    locale,
+    market: visitorMarket(languages),
+    country: visitorCountry(languages),
+  };
   const links = orderTicketLinks(source, visitor, resortWord(resort));
   const count = (link: TicketLink, index: number) =>
     trackSiteEvent(
@@ -885,7 +894,14 @@ function PurchaseLinks({
                   PLAN_FOCUS
                 )}
               >
-                {link.official ? t('links.official', { seller: link.seller }) : link.seller}
+                {link.official
+                  ? t('links.official', { seller: link.seller })
+                  : link.store
+                    ? t('links.store', {
+                        seller: link.seller,
+                        ...ticketStoreName(link.store, locale),
+                      })
+                    : link.seller}
                 <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
                 <span className="sr-only">
                   {link.sponsored ? `${t('partner.label')}. ` : ''}
@@ -898,6 +914,7 @@ function PurchaseLinks({
           );
         })}
       </ul>
+      {links.length > 1 && <p className="text-muted-foreground text-xs">{t('links.compare')}</p>}
     </div>
   );
 }

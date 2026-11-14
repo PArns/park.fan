@@ -3716,7 +3716,9 @@
       },
       "links": {
         "title": "Prezzi e biglietti",
-        "official": "{seller} (negozio ufficiale)"
+        "official": "{seller} (negozio ufficiale)",
+        "store": "{seller} · {country} ({currency})",
+        "compare": "I prezzi cambiano in base al paese del negozio. Confrontali tutti prima di comprare."
       },
       "market": {
         "uk": "Negozio britannico",

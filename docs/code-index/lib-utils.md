@@ -397,7 +397,7 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 
 ### [`region-names.ts`](../../lib/utils/region-names.ts)
 
-- `getCountryName` _function_: Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code.
+- `getCountryName` _function_: Localised country name for a 2-letter ISO code via `Intl.DisplayNames`, else the raw code. `short` takes the short form where the language has one („UK", „USA").
 - `countryFlagEmoji` _function_: Flag emoji (regional-indicator letters) for a 2-letter ISO country code; '' if invalid.
 - `getRegionLabel` _function_: Localised label for a holiday-source region: German states and the mapped subdivisions keep their native name; anything else becomes its country name, so a raw code never leaks.
 - `countryCodeForSlug` _function_: ISO country code for a country URL slug, or null when the slug is not in the catalogue.
