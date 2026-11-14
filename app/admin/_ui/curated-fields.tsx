@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useEffectEvent, useMemo, useState } from 'react';
+import { useEffect, useEffectEvent, useMemo, useState, type ReactNode } from 'react';
 import {
   ArrowLeftRight,
   Loader2,
@@ -554,6 +554,7 @@ function CuratedFieldsEditor({
   onSave,
   saving = false,
   saveError,
+  groupExtras,
 }: {
   fields: CuratedField[];
   form: CuratedFormState;
@@ -561,6 +562,7 @@ function CuratedFieldsEditor({
   onSave: (input: { fields: FieldValues; reason: string; sourceUrl: string }) => void;
   saving?: boolean;
   saveError?: string | null;
+  groupExtras?: CuratedGroupExtras;
 }) {
   const [reason, setReason] = useState('');
   const [sourceUrl, setSourceUrl] = useState('');
@@ -703,6 +705,7 @@ function CuratedFieldsEditor({
               />
             ))}
           </div>
+          {groupExtras?.[activeGroup[0]]}
         </section>
       )}
 
@@ -779,6 +782,12 @@ function CuratedFieldsEditor({
 
 type QueryPrefix = readonly unknown[];
 
+/**
+ * A section under a group's fields, by the group's label as the backend names it: what belongs to
+ * the group but is no curated column, like a ride's season bindings under „Saison“.
+ */
+export type CuratedGroupExtras = Readonly<Partial<Record<string, ReactNode>>>;
+
 /** The "Kuratierte Felder" panel of a park or a ride: the editor, its save, and the undo toast. */
 export function CuratedFieldsPanel({
   fields,
@@ -789,6 +798,7 @@ export function CuratedFieldsPanel({
   emptyHint,
   savedDescription,
   canEdit,
+  groupExtras,
 }: {
   fields: CuratedField[];
   endpoint: string;
@@ -799,6 +809,7 @@ export function CuratedFieldsPanel({
   emptyHint: string;
   savedDescription?: string;
   canEdit: boolean;
+  groupExtras?: CuratedGroupExtras;
 }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
@@ -883,6 +894,7 @@ export function CuratedFieldsPanel({
           saving={saving}
           saveError={error}
           onSave={save}
+          groupExtras={groupExtras}
         />
       </PanelBody>
     </Panel>

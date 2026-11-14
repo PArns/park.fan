@@ -3,6 +3,7 @@ import { de } from 'date-fns/locale';
 import { isHttpUrl } from '@/lib/admin/provenance';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
 import { addDays } from '@/lib/utils/park-day';
+import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from './types';
 
 /**
@@ -188,6 +189,44 @@ export function rangeDays(start: string, end: string): string[] {
   return days;
 }
 
+/* ------------------------------------------------------------------ the rides it binds */
+
+/**
+ * A season's `attractionIds` as a write sends them: null for none, which the API stores as no
+ * list. The season form's ride picker and the ride page's binding switch both write through here.
+ */
+export function seasonRides(ids: readonly string[]): string[] | null {
+  return ids.length > 0 ? [...ids] : null;
+}
+
+/** Whether a season names a ride. The API stores the ids in lower case and compares them so. */
+export function namesRide(season: Pick<ParkSeason, 'attractionIds'>, rideId: string): boolean {
+  const id = rideId.toLowerCase();
+  return (season.attractionIds ?? []).some((entry) => entry.toLowerCase() === id);
+}
+
+/** The `PATCH seasons/:id` body that puts a ride into a season's `attractionIds` or takes it out. */
+export function seasonRidePatch(
+  season: Pick<ParkSeason, 'attractionIds'>,
+  rideId: string,
+  bound: boolean
+): SeasonWriteBody {
+  const id = rideId.toLowerCase();
+  const others = (season.attractionIds ?? []).filter((entry) => entry.toLowerCase() !== id);
+  return { attractionIds: seasonRides(bound ? [...others, rideId] : others) };
+}
+
+/**
+ * The seasons of a park a ride can be bound to on the ride's page: those that bind at all (the
+ * event kinds, not cancelled: `isSeasonEvent`, the API's `seasonBindsAttraction`) and are running
+ * or still to come on `today`, the first to start first.
+ */
+export function bindableSeasons(seasons: readonly ParkSeason[], today: string): ParkSeason[] {
+  return seasons
+    .filter((season) => isSeasonEvent(season) && season.endDate >= today)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+}
+
 /* ------------------------------------------------------------------ the draft */
 
 /** One season as the form edits it: every field as typed, the texts as strings. */
@@ -274,7 +313,7 @@ export function seasonBody(draft: SeasonDraft): SeasonWriteBody {
     priceCurrency: price === null ? null : text(draft.priceCurrency.toUpperCase()),
     opensAt: text(draft.opensAt),
     closesAt: text(draft.closesAt),
-    attractionIds: draft.attractionIds.length > 0 ? draft.attractionIds : null,
+    attractionIds: seasonRides(draft.attractionIds),
     url: text(draft.url),
     sourceUrl: text(draft.sourceUrl),
     confirmedAt: text(draft.confirmedAt),

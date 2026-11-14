@@ -136,7 +136,9 @@ export function PlanMonthEvents({
                 </span>
               )}
               {name(event)}
-              {event.expected && <span className="text-muted-foreground"> · {tLanes('expected')}</span>}
+              {event.expected && (
+                <span className="text-muted-foreground"> · {tLanes('expected')}</span>
+              )}
             </span>
             <span className="text-muted-foreground shrink-0 tabular-nums">{when(event)}</span>
           </li>
