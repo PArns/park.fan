@@ -443,7 +443,7 @@ Route `/api/search` (route).
 
 Route `/api/trip-regions/[...path]` (route).
 
-- `GET` _function_: The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan}`: the planner asks `/plan` on every change and the calendar asks other windows than the page rendered, and the keyed routes need the site's data key, which never …
+- `GET` _function_: The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan,/plan/ideas}`: the planner asks `/plan` on every change and the calendar asks other windows than the page rendered, and the keyed routes need the site's data key, …
 
 ### [`trips/[id]/route.ts`](../../app/api/trips/%5Bid%5D/route.ts)
 

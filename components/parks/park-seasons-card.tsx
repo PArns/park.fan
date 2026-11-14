@@ -3,7 +3,7 @@ import { CalendarRange, ExternalLink } from 'lucide-react';
 import { GlassCard } from '@/components/common/glass-card';
 import { SeasonHeadline } from '@/components/parks/season-headline';
 import { cn } from '@/lib/utils';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { formatSeasonRange } from '@/lib/parks/park-season-days';
 import type { ParkSeason } from '@/lib/api/types';
 
 /**
@@ -13,20 +13,6 @@ import type { ParkSeason } from '@/lib/api/types';
  * `dates` list, the card counts the days it covers, so a run of weekends is not drawn as one solid
  * range.
  */
-
-const SHORT_DATE: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
-const FULL_DATE: Intl.DateTimeFormatOptions = { ...SHORT_DATE, year: 'numeric' };
-
-function formatRange(locale: string, start: string, end: string): string {
-  const from = new Date(`${start}T12:00:00Z`);
-  const to = new Date(`${end}T12:00:00Z`);
-  if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) return `${start} – ${end}`;
-
-  const sameYear = from.getUTCFullYear() === to.getUTCFullYear();
-  const fromFormat = getDateTimeFormat(locale, sameYear ? SHORT_DATE : FULL_DATE);
-
-  return `${fromFormat.format(from)} – ${getDateTimeFormat(locale, FULL_DATE).format(to)}`;
-}
 
 /**
  * Park page card listing the park's seasons and events (Halloween, Christmas …) with dates, status
@@ -62,7 +48,7 @@ export async function ParkSeasonsCard({
               <SeasonHeadline season={season} />
 
               <p className="text-muted-foreground mt-0.5 text-sm">
-                {formatRange(locale, season.startDate, season.endDate)}
+                {formatSeasonRange(locale, season.startDate, season.endDate)}
                 {season.dates && season.dates.length > 0 && (
                   <> · {t('selectedDays', { count: season.dates.length })}</>
                 )}

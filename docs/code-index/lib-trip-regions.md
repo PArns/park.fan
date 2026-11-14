@@ -125,6 +125,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `stormCodeIn` _function_: The storm code a span of days carries, for a week of the best-time strip or a month of its table: the peak where any day is in it, else the season where any day is, by the planner's own `stormCodeOn`, so every calendar marks the same days.
 - Types: `WeekdayWait`, `WeekdayFacts`, `UsualHours`, `BreakFacts`, `ParkMean`, `ParkClosures`
 
+### [`hub-media.ts`](../../lib/trip-regions/hub-media.ts)
+
+- `hubPhoto` _function_: One media image by id for the hub (a resort's photo, the region's Parky picture), or null when the catalog no longer has it. SERVER ONLY: the catalog is too large for a Client Component.
+- `hubShot` _function_: A planner screenshot in the page's language: `<base>-<locale>`, else the English shot, else the German one (the shots are taken in German first). Framed from the top unless the sidecar names a focus.
+- Types: `HubPhoto`
+
+### [`hub-trip.ts`](../../lib/trip-regions/hub-trip.ts)
+
+Whether a region's hub shows a plan: the hub has two states (docs/features/orlando-hub.md#two-states), the landing page without a plan and "Your trip" with one.
+
+- `hubTripOf` _function_: The trip a planner query holds: both dates, as days, in order; else none.
+- `restorableTrip` _function_: The remembered query the hub puts back into the address bar, or null.
+- Types: `HubTripDates`
+
 ### [`local-choice.ts`](../../lib/trip-regions/local-choice.ts)
 
 - `localChoice` _function_: A `LocalChoice` under `key`, holding one of `values`.
@@ -156,8 +170,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`plan-analytics.ts`](../../lib/trip-regions/plan-analytics.ts)
 
 - `trackTripEvent` _function_: Report a trip planner event for the region it plans, by its slug (`orlando`).
-- `trackDatesStart` _function_: The desk's way in: the first dates picked in a page load where nothing else started the planner (the hero, its button, a link) count as its start, `source: dates`.
 - `leftOutBucket` _function_: How many parks a plan left out, as `trip_left_out_fix` buckets it.
+- `skippedBucket` _function_: How many steps of the assistant were skipped, as `trip_wizard_finished` buckets it.
 - `tripOptionChanges` _function_: `trip_option_changed` for one change of the planner's state, one entry per option it touched, in the order the options are listed. Dates, pins, tickets and the hopper are not options: their own events count them.
 - `sellerProp` _function_: A seller's name as a property value: the characters the statistic keeps, at most 60.
 - `hostProp` _function_: A link's host without `www.`, or `unknown` for a url that is none.
@@ -190,11 +204,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `earlyPerk` _function_: The early slot a day's hotel gets, if any, by the region's own name for it.
 - `editCost` _function_: The edit bar's figure: what the visitor's pins cost against the best order the plan had before them, per ride, in whole minutes. `null` without both means; 0 reads as "no cost".
 - `autoSplit` _function_: The parks the split gave a second (or third) day, for the answer's "we added a second day at Magic Kingdom Park". Only entries the API marks `auto` with more than one visit; anything else in `meta.split` is ignored.
+- `dayWhy` _function_: `DayWhy` of a day, from its codes and its runner-up (`runnerUp`, in the shown figure).
+- `cardWarnings` _function_: A day card's warning chips: an early close and a day outside its ticket first (the overview's marker), then the warnings that change the day. Last year's figures, the long range and the move are said elsewhere once.
+- `parkStreakAt` _function_: How many park days in a row end on `date`, that day included: "5th park day in a row".
+- `tripCounts` _function_: The trip's head in figures: its days, its park days, the free days (`spare`) and the rest days the visitor's rule set apart from them. An API before 2.21.1 sends no `spare`: every rest day is then a rest day.
 - `PLAN_REASON_ORDER` _const_: The reasons a park day can carry, most telling first: the one-line reason is the first present.
 - `REST_REASON_ORDER` _const_: A rest day's reasons, most telling first.
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
 - `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
-- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`
+- `RUNNER_UP_CLOSE_MINUTES` _const_: Within this many minutes the runner-up day reads as just as full: the API's `runner_up_close`.
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
 
 ### [`plan-fetch.ts`](../../lib/trip-regions/plan-fetch.ts)
 
@@ -202,6 +221,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `planQueryKey` _function_: The plan's cache key: its region and request query, in the order the URL writes it.
 - `calendarQueryKey` _function_: A calendar window's cache key, shared by the date sheet and the result.
 - `fetchTripPlan` _function_: `GET …/plan` through the relay. Throws a `PlanRequestError`.
+- `ideasQueryKey` _function_: Parky's ideas' cache key: the plan's region and request query, apart from the plan's.
+- `fetchTripPlanIdeas` _function_: `GET …/plan/ideas` through the relay, with the plan's own query.
 - `fetchTripCalendar` _function_: `GET …/calendar` through the relay, for a window of at most 92 days.
 - `whenQueryKey` _function_: The When search's cache key: its region and request query.
 - `fetchTripWhen` _function_: `GET …/when` through the relay. Throws a `PlanRequestError`.
@@ -218,9 +239,25 @@ by hand: change the comment in the code and re-run the script. -->
 - `buildTripIcs` _function_: The calendar file for a trip, timed in the region's zone. `now` stamps every event (`DTSTAMP`); it is a parameter so the file is a function of its input. CRLF line ends, as the format requires.
 - Types: `TripIcsEvent`
 
+### [`plan-ideas.ts`](../../lib/trip-regions/plan-ideas.ts)
+
+- `shownIdeas` _function_: The ideas the visitor gets to see, best first: those of a known kind that overrule no answer they gave, at most `MAX_PLAN_IDEAS`.
+- `ideaKey` _function_: An idea's identity: what it sets. Two ideas that set the same make the same plan.
+- `withQueryPart` _function_: The query with a part applied: each parameter of `part` replaces its value whole.
+- `applyIdea` _function_: The planner's state with an idea applied, read back through the planner's own query reader.
+- `ideaDay` _function_: The day card an idea belongs under: the day it takes a park from, else the day it puts one on. `null` for an idea without a day.
+- `ideaOnDay` _function_: The idea that belongs under a day's card: the first that changes that day.
+- `ideaTravelEnd` _function_: Which end of the trip a travel-day idea makes a park day: one of them, or both.
+- `ideaTravelDay` _function_: The day a travel-day idea makes a park day: the trip's first or last day; `null` where it makes both.
+- `ideaVerb` _function_: Which verb applies an idea: Dazunehmen for a park it adds, Tauschen for a day it moves.
+- `ideaFigure` _function_: What an idea's card says it does in minutes, in the park's own figure: „etwa 55 statt 60 Min.“ for a park that moves, „etwa 50 Min.“ for one it adds, `null` without a figure after.
+- `PLAN_IDEA_KINDS` _const_: Every `PlanIdeaKind`; an idea of a kind this client does not know is not shown.
+- `MAX_PLAN_IDEAS` _const_: The API sends at most three; the planner never shows more.
+- Types: `PlanIdeaKind`, `PlanIdea`, `PlanIdeasAnswer`
+
 ### [`plan-photos.ts`](../../lib/trip-regions/plan-photos.ts)
 
-- `tripPlannerPhotos` _function_: The region parks' photos for the planner's Week view, one per park that has a park background in the media database.
+- `tripPlannerPhotos` _function_: The region parks' photos for the planner's Week view, one per park that has a photo in the media database: its park background, else the first photo filed under the park (a ride, a land), so a park without a curated background still gets …
 
 ### [`plan-query.ts`](../../lib/trip-regions/plan-query.ts)
 
@@ -268,6 +305,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `hopperResorts` _function_: The resorts whose catalog sells a hopper as an option: where plan first's `hopper=` can name one.
 - `ticketCatalog` _function_: The catalog keyed by id; empty without one.
+- `asksForTickets` _function_: Whether the planner asks for the visitor's own tickets: the region has a ticket step and the API sends its catalog. Without either, the plan only suggests what to buy.
 - `leanTicketCatalog` _function_: The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
 - `ticketEntries` _function_: A resort's product list, keeping only the products the catalog has; an entry with none left goes, so a product the API drops leaves the list without a dead button.
 - `entryOfProduct` _function_: The entry a written ticket belongs to: the first that lists its product and is no "not sure".
@@ -340,14 +378,23 @@ by hand: change the comment in the code and re-run the script. -->
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
 - `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
 - `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' shown waits (`shownWait`) on their new days less those on their old ones, so the difference is the one the days on screen …
+- `swapTargets` _function_: The days `day` can trade with: every other day with something to pin (a park or a day off) in the same city, never two days off. The swap mode lists them, each with what the trade does.
 - `dateLevel` _function_: A date's tint in the date grid: how busy the region's headliner parks are that day, the median of the crowd levels of those that are open and have one (the lower middle for an even count).
+- `usableAlternatives` _function_: The alternatives of a park the plan could have used: on a day of the trip that may hold a park, in a city whose base reaches the park.
+- `dayRunnerUp` _function_: The runner-up of a park day among the days the plan could use (`usableAlternatives`), both days in the figure the screen shows (`shownWaitOn`), so the difference is one the reader can check: the day card's second sentence and the sheet's …
+- `spareSuggestions` _function_: What a run of free days could take, at most `limit`: first the parks the visitor did not choose (`spareDayParks`, the API's, reached from the run's base and priced with the way there), on their cheapest day in the run; then one more day of …
+- `weekColumns` _function_: A page's days as the Week view's columns: free days lose the hour grid, a run of them is one panel.
+- `weekTemplate` _function_: The page's `grid-template-columns`: a park day one share, a free day `SPARE_COLUMN_PX`, a run `SPARE_RUN_SHARE` shares, and `empty` day shares after them, so a short last page keeps the columns of a full one.
+- `weekHalfTracks` _function_: The stay band's grid over the same page: two tracks a day (the halves the band runs on), the column gaps as tracks of their own, and where each half starts and ends as grid lines, so a stay runs exactly over its columns whatever their …
 - `TRIP_WEEK_PX_PER_MIN` _const_: The trip overview's scale: half the day planner's, on a phone and off it, so a whole park day fits a screen while a phone keeps the planner's larger step.
 - `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.
 - `WEEK_COLUMNS_WIDE` _const_: Days per page of the Week view: a week on a wide screen, three on a phone.
 - `WEEK_COLUMNS_PHONE` _const_: `WEEK_COLUMNS_WIDE` on a phone.
 - `TRIP_FALLBACK_CANVAS` _const_: A canvas for a trip whose calendar has no hours yet: a plain day, so rest days still have room.
 - `TRIP_DAY_SIGNALS` _const_: The signals a trip region's calendar knows: its own school breaks and holidays. It carries no bridge days or neighbouring regions, so the planner's grids key only these two.
-- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapPreview`
+- `SPARE_COLUMN_PX` _const_: A free day alone in the Week view: a narrow column, no hour grid.
+- `SPARE_RUN_SHARE` _const_: A run of free days in the Week view: one panel, as wide as one and a half park days.
+- Types: `TripBlockSpan`, `TripDaySpan`, `TripCanvas`, `DayBandPiece`, `TripMonthCell`, `ParkCodeEntry`, `SwapParkFigure`, `SwapPreview`, `SpareSuggestion`, `WeekColumn`
 
 ### [`plan-when.ts`](../../lib/trip-regions/plan-when.ts)
 
@@ -397,23 +444,32 @@ by hand: change the comment in the code and re-run the script. -->
 - `toggleLock` _function_: Pin a day to what it holds now (a park or a rest day), or release its pin.
 - `dayLockTarget` _function_: What a pin of this day names: its park, `rest`, or nothing for a travel or hop day.
 - `swapLocks` _function_: The pins after trading two days' contents: what was on `a` goes to `b` and the other way round, both pinned, so the re-plan keeps the trade and moves only the rest. Pins elsewhere stay.
+- `moveVisit` _function_: Put the park of `day` on `date` instead: pinned there, so the re-plan keeps it and moves only the rest. A pin on its old day goes with it, and one on `date` gives way. `null` for a day without a park, or the same date.
+- `freeDay` _function_: Make a park day free: `rest` pinned on it, so the re-plan finds the park another day if it has one to give, and leaves this one empty. `null` for a day without a park.
+- `removePark` _function_: Take a park out of the trip: out of `parks` (the untouched default becoming a list), its pins with it, so its days go back to the plan. `null` where it is the last park the trip has.
+- `swapChange` _function_: The swap of two days as an edit: what was on `a` is now on `b`'s date, and the other way round.
+- `addedByEdit` _function_: The park and day an edit just put into the plan, whose card reads „neu“: a park put on a free day, or an idea that places a park.
+- `isSpareDay` _function_: Whether a day is free: a rest day the API marks `spare`, which nobody asked for. A rest day the visitor's rest rule set or pinned stays a rest day.
+- `withSpareRuns` _function_: A list of days with each run of consecutive free days folded into one entry, in date order. The days are one stay's, so a run never crosses a hotel change.
+- `addParkOnDate` _function_: Put a park on a free day: the park joins `parks` with one visit more than the plan gives it now (`planned`, 0 for a park not chosen), and is pinned to `date`, so the re-plan keeps it there and moves only the rest.
 - `plannerParkOf` _function_: The region park as the day planner stores it, or `null` where its path names no geography. It goes in by the name the trip planner calls it ("Islands of Adventure"), so the day planner's list of a trip's days reads as the plan did.
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
 
 - `connectPlannerBridge` _function_: Publish the planner's state and how to set it; returns the disconnect. Called on every change of the state, which also remembers the trip once it holds dates or a search.
 - `tripPlannerBridge` _const_: The planner on screen, and how Parky changes it.
+- Types: `PlannerEdits`
 
 ### [`planner-ui.ts`](../../lib/trip-regions/planner-ui.ts)
 
-"Start the planner", as a signal from outside the planner: the hub's hero action asks, the mounted `TripRegionPlanner` answers.
-
 - `tripPlannerUi` _const_: The trip planner's open signal.
+- `tripWizardAnswered` _const_: The questions the visitor answered in the assistant, per region, for this tab: a step left with "Next" answers its questions, a skipped one does not.
+- Types: `TripPlannerStartSource`, `TripPlannerRequest`
 
 ### [`redirects.ts`](../../lib/trip-regions/redirects.ts)
 
@@ -458,7 +514,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_REGIONS` _const_: Every trip region, live or coming, in the order the planner band and the admin list them.
 - `LIVE_TRIP_REGIONS` _const_: The regions whose pages answer and whose links show.
 - `PARK_NAME_SUFFIXES` _const_: Every park-name suffix of every region, for `shortParkName`, which is called without one.
-- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripBestTimePage`, `TripTicketStep`, `TripHubFaq`, `TripHub`, `TripHotelKind`, `TripRegionConfig`
+- Types: `TripRegionSceneProps`, `TripRegionSceneLoader`, `TripBestTimePage`, `TripTicketStep`, `TripHubFaq`, `TripHubShots`, `TripHubResort`, `TripHub`, `TripHotelKind`, `TripRegionConfig`
 
 ### [`relay.ts`](../../lib/trip-regions/relay.ts)
 
@@ -489,6 +545,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_MONTH_WINDOW` _const_: Twelve hours fresh: a month page's forecast is rebuilt twice a day.
 - Types: `TripRegionRedirect`, `TripRegionRewrite`, `TripRegionWindow`
 
+### [`spare-days.ts`](../../lib/trip-regions/spare-days.ts)
+
+- `isFreeDay` _function_: A free day: one the API marks `spare`; from an API that does not mark them yet, every rest day the visitor did not pin.
+- `longestFreeRun` _function_: The longest run of free days in a row.
+- `spareQuestion` _function_: The question for a plan, or `null` where the trip does not need it: asked once the free days outnumber the park days, or more than `LONG_FREE_RUN` of them fall in a row.
+- `answerSpare` _function_: The state an answer leads to, from the state the question was asked for.
+- `LONG_FREE_RUN` _const_: More free days than this in a row are worth a question even where the park days outnumber them.
+- Types: `SpareChoice`, `SpareQuestion`
+
 ### [`ticket-answer.ts`](../../lib/trip-regions/ticket-answer.ts)
 
 - `tripTicketAnswer` _function_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself.
@@ -507,3 +572,33 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 
 - Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketStore`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripForecastAccuracy`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+
+### [`wizard-choices.ts`](../../lib/trip-regions/wizard-choices.ts)
+
+- `hotelEarlyAccess` _function_: What the Hotel step says of getting in early, from the region's `hotels[].perks`: the lead promises an earlier start only where some hotel has an early slot, and a card without one says so itself, so the two read the same data and cannot …
+- `pacePattern` _function_: A Tempo card's picture of a week: `true` a park day, `false` a rest day. `streak` park days in a row and then one rest day, over and over; `null` has no rest day at all.
+- `restStreak` _function_: The streak a `rest=` value holds: `max:3` is 3, `auto` and `none` are `null`.
+- `areaWays` _function_: The ways from a hotel area to the trip's parks, from the region's `travel.legs` (`hotel:<area>`), nearest first. A park without a leg from the area is left out.
+- `mapParks` _function_: The parks a city's map shows: those of `parks` that one of its `areas` reaches within `MAP_PARK_MINUTES`. A day trip (Fuji-Q from Tokyo) stays off, so the map keeps the city's scale; its card still names the way.
+- `homeBases` _function_: The cities a trip will most likely sleep in before its plan has answered: for each of `parks` the base that reaches it soonest (`bases[].parks`), in the region's order.
+- `schematicMap` _function_: Places on a schematic map, no tiles: the coordinates projected flat (longitude by the cosine of the middle latitude, north up), fitted into the box with `pad` at the edges and centred, then nudged apart until no two are nearer than `gap`, …
+- `travelDayFact` _function_: The fact the Tempo step puts on the card of a park on a travel day, from the calendar's day: on the arrival the park among `parks` open that day that closes last (a late landing still has an evening there), on the departure the one that …
+- `AUTO_REST_STREAK` _const_: The park days in a row the API's automatic rest rule allows, the number `tripPlanner.options.restAutoHint` says in words.
+- `DEFAULT_REST_STREAK` _const_: The streak the own limit starts on when the visitor picks it.
+- `PACE_PATTERN_DAYS` _const_: The days a Tempo card's pattern draws: one week of the trip.
+- `AREA_CHIPS_MAX` _const_: A city with at most this many hotel areas offers them as chips; with more, each is a card with its ways and the city gets the schematic map (Tokyo's six, Orlando's five, Osaka's four as chips).
+- `MAX_AREA_WAYS` _const_: An area card lists one way per park up to this many; past it, one per resort.
+- `MAP_PARK_MINUTES` _const_: A park joins a city's map when one of its hotel areas reaches it in at most this many minutes.
+- Types: `HotelEarlyAccess`, `AreaWay`, `MapPlace`, `MapPoint`, `MapBox`, `TravelDayFact`
+
+### [`wizard-steps.ts`](../../lib/trip-regions/wizard-steps.ts)
+
+- `wizardQuestions` _function_: The questions of every step for a region, before any merging, in the order of the steps.
+- `tripWizardSteps` _function_: The assistant's steps for a region: a step with one question goes into its neighbour, the option step before it, else the one after (Japan's evening question sits in Tempo, Paris' hotel for a weekend in the Route).
+- `tripWizardFacts` _function_: The facts of a region and a trip, as `tripWizardSteps` reads them: the API's region, the registry's entry, the ticket catalog and the trip's dates.
+- `stepQuestions` _function_: The questions of one step's body inside a drawn step: the host's own, or a merged step's.
+- `wizardStepIndex` _function_: Where a step sits in the list: its own index, the index of the step it went into, or where the region has no such step, the first step after it (`hotel` in Japan opens the Route). `-1` only past the last.
+- `TRIP_WIZARD_STEPS` _const_: A step of the assistant, in the order it is asked. The finale is no step: it follows the last.
+- `MIN_NIGHTS_FOR_A_MOVE` _const_: A hotel change needs a night on each side and a night to change on: with fewer the trip sleeps in one city, so the change's buffer is not asked.
+- `QUESTION_STEP` _const_: The step each question belongs to, wherever it is drawn.
+- Types: `TripWizardStepKey`, `TripWizardQuestion`, `TripWizardFacts`, `TripWizardStep`

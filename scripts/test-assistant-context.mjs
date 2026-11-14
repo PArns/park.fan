@@ -763,7 +763,8 @@ let disconnect = connectPlannerBridge(
     tripState = recipe(tripState);
     writes.push(tripState);
   },
-  undefined
+  undefined,
+  { edit: () => undefined, undo: () => false }
 );
 check(
   tripPlannerBridge.current(),
@@ -806,7 +807,8 @@ disconnect = connectPlannerBridge(
   'orlando',
   tripState,
   (recipe) => (tripState = recipe(tripState)),
-  undefined
+  undefined,
+  { edit: () => undefined, undo: () => false }
 );
 check(
   takeTripUndo('orlando'),
@@ -817,10 +819,64 @@ check(takeTripUndo('orlando'), 'none', 'and only once');
 rememberTripChange('orlando', 'from=2027-10-14&to=2027-10-21', tripPlannerBridge.current().query);
 disconnect();
 tripState = readPlanQuery(new URLSearchParams('from=2027-10-16&to=2027-10-23'));
-disconnect = connectPlannerBridge('orlando', tripState, () => undefined, undefined);
+disconnect = connectPlannerBridge('orlando', tripState, () => undefined, undefined, {
+  edit: () => undefined,
+  undo: () => false,
+});
 check(takeTripUndo('orlando'), 'changed', "the visitor's own change since is never undone");
 disconnect();
 check(tripPlannerBridge.current(), null, 'a planner that leaves the page disconnects');
+
+// One of Parky's ideas goes through the planner's own edit, which its status band can undo.
+const ideaEdits = [];
+let ideaUndos = 0;
+tripState = readPlanQuery(
+  new URLSearchParams('from=2027-10-14&to=2027-10-21&lock=epcot@2027-10-15')
+);
+disconnect = connectPlannerBridge('orlando', tripState, () => undefined, undefined, {
+  edit: (recipe, change, by) => {
+    tripState = recipe(tripState);
+    ideaEdits.push({ kind: change.kind, by });
+  },
+  undo: () => ++ideaUndos > 0,
+});
+const moveIdea = {
+  kind: 'move',
+  query: 'lock=epcot@2027-10-15,magic-kingdom-park@2027-10-17',
+  park: 'magic-kingdom-park',
+  from: '2027-10-16',
+  to: '2027-10-17',
+  headlinerWait: { before: 60, after: 50 },
+  totals: {},
+  savedMinutes: 10,
+};
+check(
+  tripPlannerBridge.applyIdea('japan', moveIdea, 'parky'),
+  false,
+  'an idea for another region waits'
+);
+check(
+  tripPlannerBridge.applyIdea('orlando', moveIdea, 'parky'),
+  true,
+  'an idea applies to the planner on screen'
+);
+check(
+  [tripState.locks, ideaEdits],
+  [
+    [
+      { target: 'epcot', date: '2027-10-15' },
+      { target: 'magic-kingdom-park', date: '2027-10-17' },
+    ],
+    [{ kind: 'idea', by: 'parky' }],
+  ],
+  "its lock replaces the planner's whole, as one edit of Parky's"
+);
+check(
+  [tripPlannerBridge.undo('orlando'), ideaUndos],
+  [true, 1],
+  "and the chat's Undo is the planner's"
+);
+disconnect();
 check(sameTripQuery('to=2&from=1', 'from=1&to=2'), true, 'parameter order says nothing');
 forgetTrip('orlando');
 check(assistantTripsSnapshot(['orlando']), undefined, 'no trip, no field');

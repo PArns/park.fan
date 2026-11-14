@@ -43,6 +43,17 @@ export const PARIS: TripRegionConfig = {
       // The walk between the Disney gates against the drive to Parc Astérix.
       distance: { from: 'disneyland-park', near: 'disney-adventure-world', far: 'parc-asterix' },
     },
+    howItWorks: [
+      'reiseplaner/paris-assistent-1',
+      'reiseplaner/paris-assistent-2',
+      'reiseplaner/paris-assistent-3',
+      'reiseplaner/paris-assistent-4',
+    ],
+    resorts: [
+      { group: 'disneyland-paris', photo: 'disneyland-park/background' },
+      { group: 'parc-asterix' },
+    ],
+    scene: 'reiseplaner/parky-paris-tag',
   },
   bestTime: [
     {

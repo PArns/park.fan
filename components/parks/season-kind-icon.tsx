@@ -27,6 +27,9 @@ export const SEASON_KIND_ICON: Record<ParkSeasonKind, { icon: LucideIcon; tone: 
   maintenance: { icon: WorksIcon, tone: WORKS_TONE_CLASS },
 };
 
+/** A quiet season icon: bare, in the colour of the text around it, faded. */
+export const SEASON_ICON_QUIET_CLASS = 'text-current opacity-60 dark:text-current';
+
 /**
  * The kind a season is drawn and named as: its own, or `special_event` for a kind the API added
  * after this build, which then reads as an event rather than as a missing translation.

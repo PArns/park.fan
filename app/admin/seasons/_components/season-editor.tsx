@@ -25,6 +25,7 @@ import {
 } from '@/components/ui/dialog';
 import { SEASON_STATUS_TONE } from '@/components/parks/season-headline';
 import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
+import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../../_lib/api';
 import { formatAgo } from '../../_lib/format';
 import {
@@ -596,7 +597,13 @@ export function SeasonEditor({
                 label="Betrifft"
                 htmlFor={ids.rides}
                 error={rides.isError ? 'Die Fahrgeschäfte ließen sich nicht laden.' : null}
-                hint="Leer, wenn es um den ganzen Park geht. Sonst die Bahnen dieses Parks, um die es geht: ein Wartungsfenster, eine umgestaltete Bahn."
+                hint={
+                  isSeasonEvent({ kind: draft.kind, status: 'confirmed' })
+                    ? 'Bahnen, die es nur in dieser Saison gibt (Eisbahn, Maze). Außerhalb ihrer Tage gelten sie als außer Saison, nicht als geschlossen. Eine Bahn, die das Event nur umgestaltet, gehört nicht hierher.'
+                    : draft.kind === 'maintenance'
+                      ? 'Die Bahnen, die in diesem Zeitraum stillstehen.'
+                      : 'Leer, wenn es um den ganzen Park geht.'
+                }
               >
                 <MultiSearchSelect
                   id={ids.rides}

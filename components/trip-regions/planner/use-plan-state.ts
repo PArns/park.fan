@@ -8,6 +8,7 @@ import {
   planRegionKeys,
   readPlanQuery,
   writePlanQuery,
+  type PlanEditChange,
   type TripPlanState,
 } from '@/lib/trip-regions/plan';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
@@ -25,6 +26,11 @@ import type { TripRegion } from '@/lib/trip-regions/types';
  * is held until the URL catches up, so the second press builds on the first. A query that is
  * neither the one written nor the one it replaced came from outside (Parky's `router.push`, the
  * back button), and `onExternal` is told, so the planner can scroll to itself.
+ *
+ * An edit made from the result (`edit`: a pin, a swap, a move, a park added or taken out, one of
+ * Parky's ideas) is kept with the whole state before it, so `undo` takes back every edit in turn,
+ * not only its pins. A change of the answers, or a query from outside, starts the history afresh:
+ * undoing past it would undo the answer too.
  */
 export function usePlanState(region: TripRegion, onExternal?: () => void) {
   const params = useSearchParams();
@@ -47,17 +53,35 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
   // Every query this planner wrote or wrote over: Back from a sheet lands on one of them for a
   // frame before the latest is put back, and that is no link from outside.
   const known = useRef(new Set<string>());
+  const history = useRef<Array<{ before: TripPlanState; change: PlanEditChange }>>([]);
+  const [edits, setEdits] = useState<PlanEdits>(NO_EDITS);
+  const record = useCallback(
+    (entries: Array<{ before: TripPlanState; change: PlanEditChange }>, edits: PlanEdits) => {
+      history.current = entries;
+      setEdits(edits);
+    },
+    []
+  );
   const slug = region.slug;
   const headliners = useMemo(
     () => region.parks.filter((p) => p.headliner).map((p) => p.slug),
     [region.parks]
   );
   const apply = useCallback(
-    (recipe: (state: TripPlanState) => TripPlanState, by: 'visitor' | 'parky') => {
+    (
+      recipe: (state: TripPlanState) => TripPlanState,
+      by: 'visitor' | 'parky',
+      change: PlanEditChange | 'clear' | 'undo'
+    ) => {
       const before = latest.current;
       const next = normalizePlanState(recipe(before));
       if (next === before) return;
       latest.current = next;
+      if (change === 'clear') {
+        record([], NO_EDITS);
+      } else if (change !== 'undo') {
+        record([...history.current, { before, change }], { change, undone: false, canUndo: true });
+      }
       for (const change of tripOptionChanges(before, next, headliners)) {
         trackTripEvent(slug, 'trip_option_changed', { ...change, by });
       }
@@ -72,22 +96,39 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
         planHref(window.location.pathname, next, TRIP_PLANNER_ID)
       );
     },
-    [slug, headliners]
+    [slug, headliners, record]
   );
   const update = useCallback(
-    (recipe: (state: TripPlanState) => TripPlanState) => apply(recipe, 'visitor'),
+    (recipe: (state: TripPlanState) => TripPlanState) => apply(recipe, 'visitor', 'clear'),
     [apply]
   );
   const updateByParky = useCallback(
-    (recipe: (state: TripPlanState) => TripPlanState) => apply(recipe, 'parky'),
+    (recipe: (state: TripPlanState) => TripPlanState) => apply(recipe, 'parky', 'clear'),
     [apply]
   );
+  const edit = useCallback(
+    (
+      recipe: (state: TripPlanState) => TripPlanState,
+      change: PlanEditChange,
+      by: 'visitor' | 'parky' = 'visitor'
+    ) => apply(recipe, by, change),
+    [apply]
+  );
+  const undo = useCallback(() => {
+    const entry = history.current.at(-1);
+    if (!entry) return false;
+    apply(() => entry.before, 'visitor', 'undo');
+    const rest = history.current.slice(0, -1);
+    record(rest, { change: entry.change, undone: true, canUndo: rest.length > 0 });
+    trackTripEvent(slug, 'trip_undo', { what: entry.change.kind });
+    return true;
+  }, [apply, record, slug]);
 
   // Parky reads the plan on screen and changes it through `update`, as a press would; his changes
   // are counted as his.
   useEffect(
-    () => connectPlannerBridge(region.slug, state, updateByParky, keys),
-    [region.slug, state, updateByParky, keys]
+    () => connectPlannerBridge(region.slug, state, updateByParky, keys, { edit, undo }),
+    [region.slug, state, updateByParky, keys, edit, undo]
   );
   // Only a query the planner did not write is news; the first one counts, since a link opened it.
   const reported = useRef<string | null>(null);
@@ -95,8 +136,23 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
   useEffect(() => {
     if (isOwn || reported.current === search || known.current.has(search)) return;
     reported.current = search;
+    record([], NO_EDITS);
     onExternal?.();
-  }, [search, isOwn, onExternal]);
+  }, [search, isOwn, onExternal, record]);
 
-  return { state, update, keys };
+  return { state, update, keys, edit, undo, edits };
 }
+
+/**
+ * What the result's status band says: the edit it is about (the last one made, or the one just
+ * undone), and whether there is one to undo.
+ */
+export interface PlanEdits {
+  change: PlanEditChange | null;
+  /** `change` was just taken back. */
+  undone: boolean;
+  canUndo: boolean;
+}
+
+/** No edit yet, or the history started afresh. */
+export const NO_EDITS: PlanEdits = { change: null, undone: false, canUndo: false };

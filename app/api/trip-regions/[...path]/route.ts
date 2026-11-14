@@ -8,14 +8,14 @@ import { tripRegionRelayTarget } from '@/lib/trip-regions/relay';
 import { isSlugPath } from '@/lib/utils/servable-route';
 
 /**
- * The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan}`: the planner
+ * The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan,/plan/ideas}`: the planner
  * asks `/plan` on every change and the calendar asks other windows than the page rendered, and the
  * keyed routes need the site's data key, which never reaches a browser. The forecast branches
  * answer only this site's pages (docs/rules/a-forecast-leaves-only-with-a-key.md).
  *
  * The calendar and best days go through the Data Cache under the region's tag, so the window the
- * page rendered and the one its matrix then asks for are one upstream call. A plan does not: its
- * query is the visitor's trip, and the API keeps each one an hour by its normalized query.
+ * page rendered and the one its matrix then asks for are one upstream call. A plan and its ideas do
+ * not: their query is the visitor's trip, and the API keeps each one an hour by its normalized query.
  */
 export async function GET(
   request: NextRequest,
@@ -32,7 +32,8 @@ export async function GET(
   }
   if (target.forecast && !isSameOriginRequest(request)) return foreignForecastRequest();
 
-  const cached = target.route !== 'plan' && target.route !== 'when';
+  const cached =
+    target.route !== 'plan' && target.route !== 'plan/ideas' && target.route !== 'when';
   try {
     const response = await fetch(`${getApiBaseUrl()}${target.apiPath}`, {
       ...(cached

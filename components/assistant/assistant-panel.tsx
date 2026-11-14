@@ -69,6 +69,8 @@ import { AssistantReplies } from './assistant-replies';
 import { AssistantReceipts, ASSISTANT_DONE_CHIP_CLASS } from './assistant-receipt';
 import { AssistantInterviewBar } from './assistant-interview-bar';
 import { interviewStore, takeInterviewKickoff } from '@/lib/assistant/interview';
+import { takeTripIdeaAsk } from '@/lib/assistant/trip-idea';
+import { AssistantTripIdeaCard } from './assistant-trip-idea';
 import type { ParkyReactionAct } from '@/lib/assistant/parky/reactions';
 
 const LOOKUP_KEY: Record<AssistantLookup, string> = {
@@ -215,8 +217,13 @@ export function AssistantPanel({
   useEffect(() => {
     if (!open || session.state !== 'ready' || phase !== 'idle') return;
     const kind = takeInterviewKickoff();
-    if (kind)
+    if (kind) {
       void send(t(kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'), 'interview');
+      return;
+    }
+    // „Im Chat“ on one of the trip planner's ideas: the question, with the idea under the answer.
+    const ask = takeTripIdeaAsk();
+    if (ask) void send(ask.question, 'idea', undefined, undefined, ask.card);
   }, [open, session.state, phase, send, t]);
 
   /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */
@@ -514,6 +521,7 @@ export function AssistantPanel({
                     {message.cards?.map((card, index) => (
                       <AssistantCardView key={`${card.kind}-${index}`} card={card} />
                     ))}
+                    {message.tripIdea && <AssistantTripIdeaCard card={message.tripIdea} />}
                     {message.chips && message.chips.length > 0 && (
                       <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1">
                         {message.chips.map((chip, index) => {

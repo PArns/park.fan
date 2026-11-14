@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, type ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import {
   ArrowLeftRight,
@@ -31,20 +31,22 @@ import {
   dayWarnings,
   earlyPerk,
   primaryReason,
-  runnerUp,
 } from '@/lib/trip-regions/plan-copy';
 import {
   calendarCell,
+  dayRunnerUp,
   daySeasons,
   hoursLessThanUsual,
   partySeason,
   planTimeMinute,
   shownDayWait,
-  shownWaitOn,
-  swapPreview,
+  spareSuggestions,
+  swapTargets,
+  type SpareSuggestion,
 } from '@/lib/trip-regions/plan-week';
 import {
   dayLockTarget,
+  isSpareDay,
   lockOn,
   type PlanDay,
   type PlanEvening,
@@ -55,7 +57,6 @@ import { ticketDayOf } from '@/lib/trip-regions/plan-tickets';
 import { formatGridTime } from '@/lib/planner/park-time';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS } from './plan-controls';
 import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
 import { oneFullStop } from '@/lib/utils/metadata';
@@ -63,8 +64,9 @@ import { useHopperWord, useResortWord } from './plan-ticket-words';
 import { PlanSheetContent } from './plan-sheet';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { useAreaName, useBaseName } from './plan-place-words';
-import { MOVE_INK, MoveIcon, useMoveWords } from './plan-stay-band';
+import { MOVE_INK, MoveIcon, useMoveNotes, useMoveWords } from './plan-stay-band';
 import { baseLeg } from '@/lib/trip-regions/plan-stays';
+import { PlanSpareSuggestions } from './plan-spare-run';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
 const BIG_RIDES = 5;
@@ -75,7 +77,7 @@ const BIG_RIDES = 5;
  * with the hotel's perks, why a short day is short and how many hours it loses, the day's events
  * with their status, the drive from the hotel area, the weather where a forecast reaches, the big
  * rides of that day (the day planner's own `/plan/day`, asked only when the sheet opens), and the
- * three things to do: pin, swap with another day, and "Plan this day", which opens the day planner
+ * three things to do: pin, swap with another day (the swap mode, `PlanSwapMode`), and "Plan this day", which opens the day planner
  * on that park and date (Level 3).
  */
 export function PlanDaySheet({
@@ -86,14 +88,18 @@ export function PlanDaySheet({
   onToggleLock,
   onSwap,
   onPlanDay,
+  onFill,
   returnFocus,
 }: {
   day: PlanDay | null;
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onClose: () => void;
+  /** „Dazu“ on a free day: the park its sheet suggests, on that date. */
+  onFill: (suggestion: SpareSuggestion) => void;
   onToggleLock: (day: PlanDay) => void;
-  onSwap: (day: PlanDay, other: PlanDay) => void;
+  /** „Tauschen“: the swap mode on this day, which closes the sheet. */
+  onSwap: (day: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
   /** Where the focus goes back to when the sheet closes: the day the visitor pressed. */
   returnFocus?: () => void;
@@ -111,7 +117,13 @@ export function PlanDaySheet({
             day: 'numeric',
             month: 'long',
           })}
-          title={day.kind === 'park' || day.kind === 'hop' ? parksOf(day) : t(`day.${day.kind}`)}
+          title={
+            day.kind === 'park' || day.kind === 'hop'
+              ? parksOf(day)
+              : isSpareDay(day)
+                ? t('spare.day')
+                : t(`day.${day.kind}`)
+          }
           onClose={onClose}
           returnFocus={returnFocus}
         >
@@ -123,6 +135,7 @@ export function PlanDaySheet({
             onToggleLock={onToggleLock}
             onSwap={onSwap}
             onPlanDay={onPlanDay}
+            onFill={onFill}
           />
         </PlanSheetContent>
       )}
@@ -146,13 +159,15 @@ function DayDetails({
   onToggleLock,
   onSwap,
   onPlanDay,
+  onFill,
 }: {
   day: PlanDay;
   plan: TripPlan;
   calendar: TripCalendar | undefined;
   onToggleLock: (day: PlanDay) => void;
-  onSwap: (day: PlanDay, other: PlanDay) => void;
+  onSwap: (day: PlanDay) => void;
   onPlanDay: (slug: string, date: string) => void;
+  onFill: (suggestion: SpareSuggestion) => void;
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
@@ -162,14 +177,9 @@ function DayDetails({
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
   const areaName = useAreaName();
-  const [swapOpen, setSwapOpen] = useState(false);
-  const swapId = useId();
 
   const isPark = day.kind === 'park' || day.kind === 'hop';
   const name = parkName;
-  // A swap changes two parks' days; the plan's figure is the mean over its visits, so the swap is
-  // said in that unit.
-  const perRide = (delta: number) => Math.round(delta / Math.max(1, plan.totals.visits));
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);
@@ -186,20 +196,7 @@ function DayDetails({
   };
   const first = day.parks[0];
   const wait = shownDayWait(day, calendar);
-  const summary = first ? plan.parks.find((p) => p.slug === first.slug) : undefined;
-  // Both days in the figure the sheet shows, so the difference is the one the reader can check.
-  const runner =
-    isPark && day.kind === 'park' && first && summary
-      ? runnerUp(
-          {
-            alternatives: summary.alternatives.map((alt) => ({
-              ...alt,
-              headlinerWait: shownWaitOn(calendar, first.slug, alt.date, alt.headlinerWait),
-            })),
-          },
-          wait
-        )
-      : null;
+  const runner = dayRunnerUp(day, plan, calendar, region.bases);
   // The runner-up line says the same as `runner_up_close`, with its numbers; one of the two.
   const reason = primaryReason(
     runner ? { ...day, reasons: day.reasons.filter((r) => r !== 'runner_up_close') } : day
@@ -394,12 +391,7 @@ function DayDetails({
   );
   const lastYear = dayWarnings(day).includes('estimate_last_year');
 
-  const candidates = plan.days.filter(
-    (other) =>
-      other.date !== day.date &&
-      dayLockTarget(other) !== null &&
-      !(day.kind === 'rest' && other.kind === 'rest')
-  );
+  const candidates = swapTargets(plan, day);
 
   return (
     <div className="flex flex-col gap-4">
@@ -416,6 +408,16 @@ function DayDetails({
             {t('details.minutesCaption')}
             {lastYear && ` ${t('warning.estimate_last_year')}`}
           </span>
+        </div>
+      )}
+
+      {isSpareDay(day) && (
+        <div className="flex flex-col gap-2" data-plan-spare-sheet="">
+          <PlanSpareSuggestions
+            days={[day]}
+            suggestions={spareSuggestions([day], plan, calendar, region.bases)}
+            onFill={onFill}
+          />
         </div>
       )}
 
@@ -464,66 +466,11 @@ function DayDetails({
           <Button
             variant="outline"
             disabled={!canPin || candidates.length === 0}
-            aria-expanded={swapOpen}
-            aria-controls={swapId}
-            onClick={() => setSwapOpen((open) => !open)}
+            onClick={() => onSwap(day)}
           >
             <ArrowLeftRight aria-hidden="true" />
             {t('details.swap')}
           </Button>
-        </div>
-        <div id={swapId} hidden={!swapOpen}>
-          <p className="text-muted-foreground mb-1 text-xs">{t('swap.hint')}</p>
-          <ul className="divide-border/60 divide-y">
-            {candidates.map((other) => {
-              const preview = swapPreview(calendar, day, other, timeZone);
-              // What the swap does, not what the other day holds now: "rest day +1 min" read as if a
-              // rest day cost a minute.
-              const mine = day.parks[0]?.slug;
-              const theirs = other.parks[0]?.slug;
-              const what =
-                other.kind === 'rest' && mine
-                  ? t('swap.moveThere', { park: name(mine), date: short(day.date) })
-                  : day.kind === 'rest' && theirs
-                    ? t('swap.takeOver', { park: name(theirs), date: short(day.date) })
-                    : t('swap.trade', { park: name(theirs ?? '') });
-              const cost =
-                preview.kind === 'closed'
-                  ? t('swap.closed', { park: name(preview.slug) })
-                  : preview.kind === 'no_figure'
-                    ? t('swap.noFigure')
-                    : perRide(preview.delta) === 0
-                      ? t('swap.same')
-                      : preview.delta > 0
-                        ? t('swap.more', { minutes: perRide(preview.delta) })
-                        : t('swap.less', { minutes: -perRide(preview.delta) });
-              return (
-                <li key={other.date}>
-                  <button
-                    type="button"
-                    disabled={preview.kind === 'closed'}
-                    onClick={() => onSwap(day, other)}
-                    className={cn(
-                      'hover:bg-accent/50 flex min-h-11 w-full flex-wrap items-center gap-x-3 gap-y-0.5 rounded-md px-2 py-2 text-left text-sm transition-colors disabled:opacity-50',
-                      PLAN_FOCUS
-                    )}
-                  >
-                    <span className="w-24 shrink-0 tabular-nums">{short(other.date)}</span>
-                    <span className="min-w-0 flex-1">{what}</span>
-                    <span className="shrink-0 font-medium tabular-nums">{cost}</span>
-                    {preview.kind === 'minutes' && preview.short && (
-                      <span className="text-crowd-ink-high w-full pl-27 text-xs">
-                        {t('swap.short', {
-                          park: name(preview.short.slug),
-                          hours: preview.short.hours,
-                        })}
-                      </span>
-                    )}
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
         </div>
         {isPark &&
           day.parks.map((visit) => (
@@ -561,14 +508,7 @@ function MoveSection({
   const forward = leg && leg.from === move.from;
   const fromStop = leg ? (forward ? leg.fromStop : leg.toStop) : undefined;
   const toStop = leg ? (forward ? leg.toStop : leg.fromStop) : undefined;
-  const tRegion = useTranslations('tripRegion.planner');
-  const note = (code: string) =>
-    tRegion.has(`moveNote.${code}`)
-      ? tRegion(`moveNote.${code}`)
-      : t.has(`note.${code}`)
-        ? t(`note.${code}`)
-        : null;
-  const notes = (leg?.notes ?? []).flatMap((n) => note(n) ?? []);
+  const notes = useMoveNotes()(move);
   return (
     <section
       className={cn('flex flex-col gap-2 rounded-xl border p-3', MOVE_INK)}

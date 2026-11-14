@@ -738,6 +738,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`season-headline.tsx`](../../components/parks/season-headline.tsx)
 
 - `SeasonHeadline` _component_: One season's line: its kind's icon, its name (struck through when cancelled), how settled it is and whether it needs its own ticket, with the price where one is known.
+- `SeasonMonthMarks` _component_: A month's seasons as a few small icons, one per kind (`seasonMarks`), named together for a screen reader and on hover.
 - `useSeasonLabel` _hook_: Names a season: its own brand name, else its kind's label. `withStatus` adds how settled it is where that is not `confirmed`, for a label that stands without the status badge.
 - `SEASON_STATUS_TONE` _const_: The badge colour of each season status, from settled green to a struck-through grey.
 
@@ -746,6 +747,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `SeasonKindIcon` _component_: A season kind's icon in its colour. With a `label` it is an image of that name; without one it is decoration beside a name the reader already has.
 - `knownSeasonKind` _function_: The kind a season is drawn and named as: its own, or `special_event` for a kind the API added after this build, which then reads as an event rather than as a missing translation.
 - `SEASON_KIND_ICON` _const_: The icon and colour of every season kind, in one place for every surface that draws a season. A maintenance window wears the works icon, since it is the same fact about a ride.
+- `SEASON_ICON_QUIET_CLASS` _const_: A quiet season icon: bare, in the colour of the text around it, faded.
 
 ### [`seasonal-badge.tsx`](../../components/parks/seasonal-badge.tsx)
 

@@ -126,6 +126,19 @@ export const ORLANDO: TripRegionConfig = {
       distance: { from: 'universal-studios-florida', near: 'epcot', far: 'magic-kingdom-park' },
       earlySlots: ['early_entry', 'early_park_admission'],
     },
+    howItWorks: [
+      'reiseplaner/orlando-assistent-1',
+      'reiseplaner/orlando-assistent-2',
+      'reiseplaner/orlando-assistent-3',
+      'reiseplaner/orlando-assistent-4',
+    ],
+    resorts: [
+      { group: 'walt-disney-world', photo: 'disney-animal-kingdom/kunst-des-wartens-cover' },
+      { group: 'universal-orlando', photo: 'universal-islands-of-adventure/welcome-cover' },
+      { group: 'seaworld-orlando' },
+      { group: 'day-trips' },
+    ],
+    scene: 'reiseplaner/parky-orlando-tag',
   },
   bestTime: [
     {

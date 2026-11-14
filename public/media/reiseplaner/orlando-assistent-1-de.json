@@ -1,0 +1,19 @@
+{
+  "title": "Reiseplaner-Assistent, Orlando, Schritt 1 (de)",
+  "tags": ["diagram"],
+  "alt": {
+    "de": "Der Assistent fragt „Wann bist du in Orlando?“, darunter der Schalter „Insgesamt · Disney · Universal“, eine Reihe Monate und der März 2027 mit dem 1. bis 10. März als Reise."
+  },
+  "caption": {
+    "de": "Unter jedem Datum steht der Park mit der kürzesten Spitzenwartezeit. Ein Monat in der Reihe springt direkt dorthin, ohne Blättern."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0
+  },
+  "shotAt": "2026-11-14"
+}

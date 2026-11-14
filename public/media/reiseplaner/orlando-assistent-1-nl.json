@@ -1,0 +1,19 @@
+{
+  "title": "Reiseplaner-Assistent, Orlando, Schritt 1 (nl)",
+  "tags": ["diagram"],
+  "alt": {
+    "nl": "De assistent vraagt “Wanneer ben je in Orlando?”, met daaronder de schakelaar Alles, Disney en Universal, een rij maanden en maart 2027, waarin 1 tot en met 10 maart als reis gemarkeerd staat."
+  },
+  "caption": {
+    "nl": "Onder elke datum staat het park met de kortste piekwachttijd van die dag. Wie een maand in de rij aantikt, springt er meteen heen."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0
+  },
+  "shotAt": "2026-11-14"
+}

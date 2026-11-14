@@ -2,6 +2,8 @@
 
 import { createContext, useCallback, useContext } from 'react';
 import type { TripPlanState } from '@/lib/trip-regions/plan';
+import type { PlannerEdits } from '@/lib/trip-regions/planner-bridge';
+import type { PlanEdits } from './use-plan-state';
 import type { TicketCatalog } from '@/lib/trip-regions/plan-tickets';
 import { trackTripEvent, type TrackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import type { TripHotelKind, TripRegionConfig, TripTicketStep } from '@/lib/trip-regions/registry';
@@ -45,6 +47,12 @@ export interface PlanContextValue {
   tickets: TicketCatalog;
   state: TripPlanState;
   update: (recipe: (state: TripPlanState) => TripPlanState) => void;
+  /** An edit from the result, kept for its undo (`usePlanState`). */
+  edit: PlannerEdits['edit'];
+  /** Take back the last edit. */
+  undo: PlannerEdits['undo'];
+  /** What the status band says about the edits. */
+  edits: PlanEdits;
   /** The region's today, `null` until the browser has read its clock. */
   today: string | null;
   photos: Readonly<Record<string, PlanParkPhoto>>;

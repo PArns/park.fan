@@ -46,6 +46,17 @@ export function ticketCatalog(products: readonly TicketProduct[] | undefined): T
 }
 
 /**
+ * Whether the planner asks for the visitor's own tickets: the region has a ticket step and the API
+ * sends its catalog. Without either, the plan only suggests what to buy.
+ */
+export function asksForTickets(
+  step: Pick<TripTicketStep, 'resorts'> | undefined,
+  catalog: Pick<TicketCatalog, 'size'>
+): boolean {
+  return (step?.resorts.length ?? 0) > 0 && catalog.size > 0;
+}
+
+/**
  * The catalog as the browser needs it: the operators' notes and the rules only the optimizer reads
  * (`hopSets`, `caps`, `confidence`) stay on the server, which keeps the planner's payload small.
  */

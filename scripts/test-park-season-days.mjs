@@ -10,6 +10,7 @@ import {
   seasonDaysOfMonth,
   seasonKindsIn,
   seasonMarks,
+  seasonsInMonth,
   seasonsNeedDayStatus,
 } from '../lib/parks/park-season-days.ts';
 
@@ -93,8 +94,9 @@ test('a season without dates skips the days the calendar shows closed; listed da
       ['2026-10-07', ['scary']],
     ]
   );
-  assert.equal(seasonsNeedDayStatus([listed]), false);
-  assert.equal(seasonsNeedDayStatus([range, listed]), true);
+  assert.equal(seasonsNeedDayStatus([listed], OCTOBER), false);
+  assert.equal(seasonsNeedDayStatus([range, listed], OCTOBER), true);
+  assert.equal(seasonsNeedDayStatus([range], { year: 2026, month: 11 }), false);
 });
 
 test('a cancelled season and the kinds the grid already shows mark nothing', () => {
@@ -142,6 +144,34 @@ test('the legend keys the kinds the month shows, in one order', () => {
     OCTOBER
   );
   assert.deepEqual(seasonKindsIn(days), ['winter', 'special_event']);
+});
+
+test('a month chip lists each of its seasons once, whatever days they run on', () => {
+  const days = seasonDaysOfMonth(
+    [
+      season('hhf', {
+        kind: 'halloween',
+        name: 'Halloween Horror Festival',
+        startDate: '2027-09-24',
+        endDate: '2027-11-01',
+        status: 'expected',
+        dates: ['2027-10-01', '2027-10-02', '2027-10-31'],
+      }),
+      season('gone', {
+        kind: 'christmas',
+        status: 'cancelled',
+        startDate: '2027-10-01',
+        endDate: '2027-10-31',
+      }),
+    ],
+    { year: 2027, month: 10 }
+  );
+  const listed = seasonsInMonth(days);
+  assert.deepEqual(
+    listed.map((s) => [s.id, s.quiet]),
+    [['hhf', true]]
+  );
+  assert.deepEqual(seasonsInMonth({}), []);
 });
 
 test('a tile marks each kind once, quiet only when every season of that kind is', () => {

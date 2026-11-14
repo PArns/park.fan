@@ -35,6 +35,13 @@ import {
   chooseHotel,
   effectiveHotel,
   tripHotelKinds,
+  addParkOnDate,
+  withSpareRuns,
+  moveVisit,
+  freeDay,
+  removePark,
+  swapChange,
+  addedByEdit,
 } from '../lib/trip-regions/plan.ts';
 import { findLeg } from '../lib/trip-regions/hub-data.ts';
 import {
@@ -51,6 +58,10 @@ import {
   runnerUp,
   unplacedParks,
   parksLeftOut,
+  cardWarnings,
+  dayWhy,
+  parkStreakAt,
+  tripCounts,
 } from '../lib/trip-regions/plan-copy.ts';
 import {
   buildTripIcs,
@@ -72,11 +83,17 @@ import {
   shownWait,
   shownWaitOn,
   swapPreview,
+  swapTargets,
   tripCanvas,
   tripColumnGrid,
   tripDaySpans,
   tripMonthWeeks,
   weekPages,
+  spareSuggestions,
+  usableAlternatives,
+  weekColumns,
+  weekHalfTracks,
+  weekTemplate,
 } from '../lib/trip-regions/plan-week.ts';
 import {
   calendarResorts,
@@ -423,6 +440,72 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     { target: 'epcot', date: '2026-11-30' },
   ]);
   test('a lock toggles', toggleLock(toggleLock(trip, a), a).locks, []);
+  test(
+    'a park moved to another day is pinned there, its old pin and the day’s gone',
+    moveVisit(
+      {
+        ...trip,
+        locks: [
+          { target: 'epcot', date: '2026-11-29' },
+          { target: 'rest', date: '2026-11-30' },
+        ],
+      },
+      a,
+      '2026-11-30'
+    ).locks,
+    [{ target: 'epcot', date: '2026-11-30' }]
+  );
+  test('a move to the same day is none', moveVisit(trip, a, a.date), null);
+  test('a day off cannot be moved', moveVisit(trip, b, '2026-11-29'), null);
+  test('a park day made free pins a day off on it', freeDay(trip, a).locks, [
+    { target: 'rest', date: '2026-11-29' },
+  ]);
+  test('a day off is free already', freeDay(trip, b), null);
+  const c = { ...b, date: '2026-12-01' };
+  const away = { ...a, date: '2026-11-28', base: 'tokyo' };
+  test(
+    'a day off trades with a park day of its city, never with another day off',
+    swapTargets({ days: [away, a, b, c] }, b).map((d) => d.date),
+    ['2026-11-29']
+  );
+  const twoParks = setParkVisits(trip, 'epcot', 2, ORDER, HEAD);
+  test(
+    'a park taken out leaves the list, its pins with it',
+    removePark(
+      { ...twoParks, locks: [{ target: 'epcot', date: '2026-11-29' }] },
+      'epcot',
+      ORDER,
+      HEAD
+    ),
+    { ...twoParks, parks: twoParks.parks.filter((p) => p.slug !== 'epcot'), locks: [] }
+  );
+  test(
+    'the last park stays',
+    removePark({ ...trip, parks: [{ slug: 'epcot', visits: null }] }, 'epcot', ORDER, HEAD),
+    null
+  );
+  test('a swap as an edit says what went where', swapChange(a, b), {
+    kind: 'swap',
+    first: 'epcot',
+    firstDay: '2026-11-30',
+    second: 'rest',
+    secondDay: '2026-11-29',
+  });
+  test(
+    'a park put on a free day, or an idea that places one, reads „neu“',
+    [
+      addedByEdit({ kind: 'add', slug: 'epcot', date: '2026-11-30' }),
+      addedByEdit({
+        kind: 'idea',
+        idea: { kind: 'add', query: '', park: 'epcot', to: '2026-11-30', places: ['epcot'] },
+      }),
+      addedByEdit({
+        kind: 'idea',
+        idea: { kind: 'move', query: '', park: 'epcot', to: '2026-11-30' },
+      }),
+    ],
+    [{ slug: 'epcot', date: '2026-11-30' }, { slug: 'epcot', date: '2026-11-30' }, null]
+  );
   test(
     'a leg is found either way',
     findLeg([{ from: 'epcot', to: 'hotel:disney', minutes: 9 }], 'hotel:disney', 'epcot')?.minutes,
@@ -873,9 +956,17 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     warnings: [],
   };
   test(
-    'a trade off the party night: the minutes, no short day',
+    'a trade off the party night: the minutes, each park in its own figure, no short day',
     swapPreview(calendar, mk, ep, TZ),
-    { kind: 'minutes', delta: 20, short: null }
+    {
+      kind: 'minutes',
+      delta: 20,
+      short: null,
+      parks: [
+        { slug: 'magic-kingdom-park', from: '2026-11-29', to: '2026-11-30', here: 35, away: 45 },
+        { slug: 'epcot', from: '2026-11-30', to: '2026-11-29', here: 50, away: 60 },
+      ],
+    }
   );
   const mk30 = { ...mk, date: '2026-11-30' };
   test(
@@ -2947,6 +3038,195 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'the guide is a blog path in the locale, the English one where a locale lacks its own',
     [tripRegionGuidePath(ORLANDO, 'de'), tripRegionGuidePath({ guide: undefined }, 'de')],
     ['/blog/reiseplaner-orlando', null]
+  );
+}
+
+// ── Free days, the day card's sentences, the Week view's columns ────────────
+{
+  const d = (date, kind, extra = {}) => ({
+    date,
+    kind,
+    parks: [],
+    reasons: [],
+    warnings: [],
+    ...extra,
+  });
+  const days = [
+    d('2027-01-19', 'park'),
+    d('2027-01-20', 'rest', { spare: true }),
+    d('2027-01-21', 'rest', { spare: true }),
+    d('2027-01-22', 'park'),
+    d('2027-01-23', 'rest'),
+    d('2027-01-24', 'rest', { spare: true }),
+  ];
+  test(
+    'consecutive free days fold into one entry; a rest day the rule set stays a day',
+    withSpareRuns(days).map((e) => (e.type === 'day' ? e.day.date : e.days.map((x) => x.date))),
+    ['2027-01-19', ['2027-01-20', '2027-01-21'], '2027-01-22', '2027-01-23', ['2027-01-24']]
+  );
+  const cols = weekColumns(days);
+  test(
+    'a free day alone is narrow, a run is one panel of one and a half days',
+    [cols.map((c) => c.width), weekTemplate(cols, 1)],
+    [
+      ['day', 'run', 'day', 'day', 'narrow'],
+      'minmax(0,1fr) minmax(0,1.5fr) minmax(0,1fr) minmax(0,1fr) 56px minmax(0,1fr)',
+    ]
+  );
+  const half = weekHalfTracks(weekColumns(days.slice(0, 3)), 4);
+  test(
+    'the stay band halves a run panel per day and keeps the gaps as tracks',
+    [half.template, half.starts, half.ends],
+    [
+      'minmax(0,0.5fr) minmax(0,0.5fr) 4px minmax(0,0.375fr) minmax(0,0.375fr) minmax(0,0.375fr) minmax(0,0.375fr)',
+      [1, 2, 4, 5, 6, 7],
+      [2, 3, 5, 6, 7, 8],
+    ]
+  );
+
+  const base = { ...DEFAULT_PLAN_STATE, from: '2027-01-14', to: '2027-01-30' };
+  const added = addParkOnDate(
+    base,
+    'fuji-q-highland',
+    '2027-01-25',
+    0,
+    [...HEAD, 'fuji-q-highland'],
+    HEAD
+  );
+  test(
+    'Add puts a park not chosen in the parks with one day and pins it to the date',
+    [added.parks.find((p) => p.slug === 'fuji-q-highland'), added.locks],
+    [{ slug: 'fuji-q-highland', visits: 1 }, [{ target: 'fuji-q-highland', date: '2027-01-25' }]]
+  );
+  test(
+    'one more day of a planned park counts its planned days, and stops at three',
+    [
+      addParkOnDate(base, 'epcot', '2027-01-25', 2, HEAD, HEAD).parks.find(
+        (p) => p.slug === 'epcot'
+      ).visits,
+      addParkOnDate(base, 'epcot', '2027-01-25', 3, HEAD, HEAD),
+    ],
+    [3, null]
+  );
+
+  test(
+    'a runner-up within 5 minutes and runner_up_close is one sentence, not the reason',
+    dayWhy({ kind: 'park', reasons: ['runner_up_close'] }, { date: '2027-01-24', delta: 0 }),
+    { reason: null, runner: { kind: 'close', date: '2027-01-24', delta: 0 } }
+  );
+  test(
+    'the quietest day keeps its reason and says the runner-up in minutes',
+    dayWhy({ kind: 'park', reasons: ['quietest_in_window'] }, { date: '2026-12-13', delta: 5 }),
+    { reason: 'quietest_in_window', runner: { kind: 'more', date: '2026-12-13', delta: 5 } }
+  );
+  test(
+    'a card wears an early close and the streak, not last year or the move',
+    cardWarnings({
+      kind: 'park',
+      reasons: [],
+      warnings: ['estimate_last_year', 'long_streak', 'move_day', 'party_night_short_hours'],
+    }),
+    ['closes', 'long_streak']
+  );
+  test(
+    'the streak counts the park days that end on the date',
+    parkStreakAt(
+      [d('a', 'arrival'), d('b', 'park'), d('c', 'hop'), d('e', 'park')].map((x, i) => ({
+        ...x,
+        date: `2026-12-0${i + 1}`,
+      })),
+      '2026-12-04'
+    ),
+    3
+  );
+  test(
+    'the head counts free days apart from the rule’s rest days, and every rest day without spare',
+    [
+      tripCounts({ days, totals: { parkDays: 2, restDays: 4, spareDays: 3 } }),
+      tripCounts({ days: [d('x', 'rest')], totals: { parkDays: 0, restDays: 1 } }),
+    ],
+    [
+      { days: 6, parkDays: 2, freeDays: 3, restDays: 1 },
+      { days: 1, parkDays: 0, freeDays: 0, restDays: 1 },
+    ]
+  );
+
+  const run = [
+    { date: '2027-01-24', base: 'tokyo' },
+    { date: '2027-01-25', base: 'tokyo' },
+  ];
+  const cell = (wait, status = 'OPERATING') => ({
+    status,
+    headlinerWait: wait,
+    basis: 'last_year',
+  });
+  const calendar = {
+    days: [
+      { date: '2027-01-24', parks: { 'tokyo-disneyland': cell(60), 'tokyo-disneysea': cell(130) } },
+      {
+        date: '2027-01-25',
+        parks: { 'tokyo-disneyland': cell(70), 'tokyo-disneysea': cell(120, 'CLOSED') },
+      },
+    ],
+  };
+  const plan = {
+    parks: [
+      { slug: 'tokyo-disneysea', dates: ['2027-01-19', '2027-01-29'], alternatives: [] },
+      { slug: 'tokyo-disneyland', dates: ['2027-01-22', '2027-01-26'], alternatives: [] },
+      { slug: 'universal-studios-japan', dates: ['2027-01-15', '2027-01-17'], alternatives: [] },
+    ],
+    spareDayParks: [
+      { park: 'fuji-q-highland', days: [{ date: '2027-01-25', headlinerWait: 50 }] },
+      { park: 'legoland-japan', days: [{ date: '2027-01-16', headlinerWait: 25 }] },
+    ],
+  };
+  const bases = [
+    { key: 'tokyo', parks: [{ slug: 'tokyo-disneyland' }, { slug: 'tokyo-disneysea' }] },
+    { key: 'osaka', parks: [{ slug: 'universal-studios-japan' }] },
+  ];
+  test(
+    'free days offer the API’s parks first, then a planned park the city reaches on its quietest open day',
+    spareSuggestions(run, plan, calendar, bases).map((x) => [x.slug, x.date, x.wait, x.planned]),
+    [
+      ['fuji-q-highland', '2027-01-25', 50, 0],
+      ['tokyo-disneyland', '2027-01-24', 60, 2],
+      ['tokyo-disneysea', '2027-01-24', 130, 2],
+    ]
+  );
+}
+
+{
+  const days = [
+    { date: '2027-01-14', kind: 'arrival', base: 'osaka' },
+    { date: '2027-01-15', kind: 'park', base: 'osaka' },
+    { date: '2027-01-16', kind: 'park', base: 'osaka' },
+    { date: '2027-01-17', kind: 'travel', base: 'tokyo' },
+    { date: '2027-01-18', kind: 'park', base: 'tokyo' },
+    { date: '2027-01-19', kind: 'rest', base: 'tokyo' },
+    { date: '2027-01-20', kind: 'departure', base: 'tokyo' },
+  ];
+  const bases = [
+    { key: 'tokyo', parks: [{ slug: 'tokyo-disneyland' }] },
+    { key: 'osaka', parks: [{ slug: 'universal-studios-japan' }] },
+  ];
+  const alternatives = [
+    '2027-01-14',
+    '2027-01-16',
+    '2027-01-17',
+    '2027-01-18',
+    '2027-01-19',
+    '2027-01-20',
+    '2027-01-30',
+  ].map((date) => ({ date, headlinerWait: 40 }));
+  test(
+    'a runner-up is a day the plan could use: in a city that reaches the park, never a travel day',
+    usableAlternatives(alternatives, 'tokyo-disneyland', days, bases).map((a) => a.date),
+    ['2027-01-18', '2027-01-19']
+  );
+  test(
+    'without bases only the travel days drop out',
+    usableAlternatives(alternatives, 'tokyo-disneyland', days, undefined).map((a) => a.date),
+    ['2027-01-16', '2027-01-18', '2027-01-19']
   );
 }
 

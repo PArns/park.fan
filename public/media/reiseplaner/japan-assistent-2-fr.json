@@ -1,0 +1,19 @@
+{
+  "title": "Reiseplaner-Assistent, Japan, Schritt 2 (fr)",
+  "tags": ["diagram"],
+  "alt": {
+    "fr": "Étape 3, l’itinéraire : « Où atterris-tu, et où vas-tu ensuite ? » avec Tokyo, Nagoya, Osaka et, cochée, l’option de laisser ouvert, en bas le plan avec six jours de parc et huit jours libres."
+  },
+  "caption": {
+    "fr": "L’aéroport d’arrivée fixe l’ordre des villes. Sans réponse, le plan choisit."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0
+  },
+  "shotAt": "2026-11-14"
+}

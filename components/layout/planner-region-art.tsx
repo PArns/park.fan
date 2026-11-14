@@ -47,6 +47,19 @@ const SCENES: Partial<Record<string, LazyExoticComponent<ComponentType<ArtProps>
     )
   );
 
+/** A region's lazily loaded Parky scene, as {@link useRegionScene} hands it out. */
+export type RegionScene = LazyExoticComponent<ComponentType<ArtProps>>;
+
+/**
+ * A region's Parky scene, or `null` where `TRIP_REGIONS` gives it none: the one loader for the
+ * planner band, the park tile, the phone sheet and the trip planner's assistant. The chunk is
+ * fetched when the component first renders, inside a `Suspense`; one that fails renders its
+ * `fallback`.
+ */
+export function useRegionScene(regionId: string): RegionScene | null {
+  return SCENES[regionId] ?? null;
+}
+
 /**
  * The picture of a region's card in the planner band: its Parky scene where `TRIP_REGIONS` gives
  * it one, else the hub's photo. The scene is fetched the first time the band opens and stays
@@ -62,6 +75,7 @@ export function PlannerRegionArt({
   photo: MoreMenuPhoto | null;
 }) {
   const armed = useMenuBandOpened();
+  const Scene = useRegionScene(regionId);
 
   const photoArt = (
     <>
@@ -69,21 +83,17 @@ export function PlannerRegionArt({
       <PhotoCredit src={photo?.src} className={TILE_CREDIT_POSITION} />
     </>
   );
-  const Scene = SCENES[regionId];
   if (!Scene) return photoArt;
   if (!armed) return null;
 
   return <SceneFade Scene={Scene} fallback={photoArt} />;
 }
 
-/** A loaded scene filling its box, faded in over the card's ground rather than cut in. */
-function SceneFade({
-  Scene,
-  fallback,
-}: {
-  Scene: LazyExoticComponent<ComponentType<ArtProps>>;
-  fallback: React.ReactNode;
-}) {
+/**
+ * A loaded scene filling its box, faded in over the card's ground rather than cut in; the scene
+ * comes from {@link useRegionScene}.
+ */
+export function SceneFade({ Scene, fallback }: { Scene: RegionScene; fallback: React.ReactNode }) {
   return (
     <Suspense fallback={null}>
       <span
@@ -106,7 +116,7 @@ function SceneFade({
  */
 export function RegionSceneInView({ regionId }: { regionId: string }) {
   const loaded = useAfterLoad();
-  const Scene = SCENES[regionId];
+  const Scene = useRegionScene(regionId);
   if (!Scene || !loaded) return null;
   return (
     <LazyMount className="absolute inset-0">
@@ -122,17 +132,13 @@ export function RegionSceneInView({ regionId }: { regionId: string }) {
  * box is the muted ground.
  */
 export function RegionSceneCut({ regionId }: { regionId: string }) {
-  const Scene = SCENES[regionId];
+  const Scene = useRegionScene(regionId);
   return (
     <span
       aria-hidden="true"
       className="bg-muted relative block h-9 w-14 shrink-0 overflow-hidden rounded-md ring-1 ring-black/10 dark:ring-white/10"
     >
-      {Scene && (
-        <Suspense fallback={null}>
-          <Scene className="h-full w-full" fallback={null} />
-        </Suspense>
-      )}
+      {Scene && <SceneFade Scene={Scene} fallback={null} />}
     </span>
   );
 }

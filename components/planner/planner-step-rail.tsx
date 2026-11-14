@@ -20,21 +20,37 @@ export const STEP_MOTION: Record<string, string> = {
 };
 
 /**
+ * The elements an Enter already belongs to, as a selector, in a stepped dialog whose Enter means
+ * Next: fields, as in `PlannerDayColumn`'s Delete guard, plus the controls the browser itself fires
+ * on Enter, or one press would run two actions. `contenteditable="false"` does not own the key, so only the two truthy forms are listed.
+ */
+export const ENTER_BELONGS_TO =
+  'input, textarea, select, button, a[href], [role="button"], [contenteditable=""], [contenteditable="true"]';
+
+/**
  * Where a stepped dialog is, in circles: one rail for the wizard and the fit assistant, so the
  * geometry is written once. Steps are `{ key, label }` pairs named by each caller. A walked step is
- * a button back to it; the one ahead is not, so no gate has to be re-derived.
+ * a button back to it; one ahead is a button only up to `reachable`, which a caller raises where
+ * every step after a required one is optional (the trip planner's assistant after the dates), so no
+ * gate has to be re-derived. `jumpLabel` names a step's button for a screen reader.
  */
 export function PlannerStepRail({
   steps,
   current,
   label,
   onJump,
+  reachable = current,
+  jumpLabel,
 }: {
   steps: readonly { key: string; label: string }[];
   current: number;
   /** What the rail as a whole is, for a screen reader. */
   label: string;
   onJump: (index: number) => void;
+  /** The last step a press may jump to; the current one by default, so only walked steps answer. */
+  reachable?: number;
+  /** A step's button as a screen reader names it: "Step 4, Hotels". */
+  jumpLabel?: (index: number, label: string) => string;
 }) {
   const count = steps.length;
 
@@ -67,17 +83,19 @@ export function PlannerStepRail({
         {steps.map((step, i) => {
           const done = i < current;
           const now = i === current;
+          const jumps = !now && i <= reachable;
 
           return (
             <li key={step.key} className="flex min-w-0 justify-center">
               <button
                 type="button"
                 onClick={() => onJump(i)}
-                disabled={!done}
+                disabled={!jumps}
                 aria-current={now ? 'step' : undefined}
+                aria-label={jumpLabel?.(i, step.label)}
                 className={cn(
                   'flex max-w-full min-w-0 flex-col items-center gap-1 rounded-lg px-1.5 py-0.5 transition-colors',
-                  done ? 'hover:bg-accent cursor-pointer' : 'cursor-default'
+                  jumps ? 'hover:bg-accent cursor-pointer' : 'cursor-default'
                 )}
               >
                 <span

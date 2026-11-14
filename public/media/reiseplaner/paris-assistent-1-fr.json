@@ -1,0 +1,19 @@
+{
+  "title": "Reiseplaner-Assistent, Paris, Schritt 1 (fr)",
+  "tags": ["diagram"],
+  "alt": {
+    "fr": "« Quand es-tu à Paris ? » avec le sélecteur Global, Disney et Astérix, les mois et mai 2027, où le séjour du jeudi 6 au dimanche 9 mai est marqué."
+  },
+  "caption": {
+    "fr": "Le pont de l’Ascension. Sous chaque date, le parc où il y aura le moins de monde."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0
+  },
+  "shotAt": "2026-11-14"
+}

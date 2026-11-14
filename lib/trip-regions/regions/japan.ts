@@ -75,6 +75,19 @@ export const JAPAN: TripRegionConfig = {
     defaultArea: 'maihama',
     // Three questions a trip across cities raises, answered in the region's words.
     faq: { weekendPark: 'tokyo-disneysea', questions: ['cities', 'luggage', 'happyEntry'] },
+    howItWorks: [
+      'reiseplaner/japan-assistent-1',
+      'reiseplaner/japan-assistent-2',
+      'reiseplaner/japan-assistent-3',
+      'reiseplaner/japan-assistent-4',
+    ],
+    resorts: [
+      { group: 'tokyo-disney-resort', photo: 'tokyo-disneysea/mermaid-lagoon' },
+      { group: 'universal-studios-japan', photo: 'universal-studios-japan/entrance-gate' },
+      { group: 'fuji-q-highland', photo: 'fuji-q-highland/mount-fuji-coasters' },
+      { group: 'legoland-japan' },
+    ],
+    scene: 'reiseplaner/parky-japan-tag',
   },
   bestTime: [
     {

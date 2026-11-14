@@ -702,6 +702,8 @@ export interface ParkAttraction {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** The park season the ride runs in, when one binds it; absent on every other ride. */
+  boundSeason?: BoundSeason;
   /**
    * The running outage, present only while the ride reads DOWN. Absent is not „running": it is also
    * every park whose sources cannot report outages and every ride in a works period. Never render a
@@ -870,6 +872,16 @@ export type ParkSeasonKind =
  * and has announced nothing" for anyone planning around it.
  */
 export type ParkSeasonStatus = 'confirmed' | 'announced' | 'expected' | 'cancelled';
+
+/**
+ * The park season a ride is bound to: the ride runs only on its days, so outside them
+ * `isCurrentlyInSeason` is `false`. `name` and `dates` are absent when null; absent `dates` means
+ * every day between the bounds.
+ */
+export type BoundSeason = Pick<ParkSeason, 'id' | 'kind' | 'status' | 'startDate' | 'endDate'> & {
+  name?: string | null;
+  dates?: string[] | null;
+};
 
 /** One named season or event, as the public endpoint serves it. */
 export interface ParkSeason {
@@ -1046,6 +1058,8 @@ export interface AttractionResponse {
   isSeasonal?: boolean;
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** The park season the ride runs in, when one binds it; absent on every other ride. */
+  boundSeason?: BoundSeason;
   /** Minimum rider height in cm. Null/absent = unrestricted or unknown. */
   minimumHeight?: number | null;
   /** Maximum rider height in cm (kiddie rides). */

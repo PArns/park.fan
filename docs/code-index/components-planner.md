@@ -213,6 +213,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlannerStepRail` _component_: Where a stepped dialog is, in circles: one rail for the wizard and the fit assistant, so the geometry is written once. Steps are `{ key, label }` pairs named by each caller.
 - `STEP_MOTION` _const_: Which way a stepped dialog's step slides in from, keyed by `String(forward)`: literal class strings, since Tailwind's scanner never sees a templated one.
+- `ENTER_BELONGS_TO` _const_: The elements an Enter already belongs to, as a selector, in a stepped dialog whose Enter means Next: fields, as in `PlannerDayColumn`'s Delete guard, plus the controls the browser itself fires on Enter, or one press would run two actions.
 
 ### [`planner-timeline.tsx`](../../components/planner/planner-timeline.tsx)
 
@@ -234,3 +235,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlannerWizard` _component_: Planning a day, one question at a time: which park, which day, who is coming, and which big rides. It ends on the park's own page with the panel open, because dragging a ride card into the day is the gesture the feature is built around.
 - Types: `WizardPark`
+
+### [`wizard-option-card.tsx`](../../components/planner/wizard-option-card.tsx)
+
+- `WizardOptionCard` _component_: One answer of several as a card: an icon or a photo, a title, a sentence and the check, the whole card the radio (`role="radio"`, its sentence as `aria-describedby`).
+- `WizardOptionGroup` _component_: A single choice of `WizardOptionCard`s: `role="radiogroup"` named by its question, and the arrow keys move the choice to the next card that is not disabled, as `PlanSegmented` does; Tab enters on the chosen card (the roving tabindex).
+- Types: `WizardOptionPhoto`
+
+### [`wizard-toggle.tsx`](../../components/planner/wizard-toggle.tsx)
+
+- `WizardCheck` _component_: The round check at an assistant card's edge, filled when the card is chosen; its room is kept either way, so choosing moves nothing.
+- `WizardToggle` _component_: One question with a yes/no answer, as a card the whole of which is the switch: the day planner's setup and the trip planner's assistant.
+- `WIZARD_CARD_FRAME` _const_: The ground of a chosen card and of one that is not, shared by the assistants' cards.
+- `WIZARD_CARD_ICON` _const_: The square an assistant card's icon sits in, chosen and not.

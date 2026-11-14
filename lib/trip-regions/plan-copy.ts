@@ -1,4 +1,11 @@
-import type { PlanDay, PlanMeta, PlanParkSummary, PlanTotals, TripPlan } from './plan';
+import {
+  isSpareDay,
+  type PlanDay,
+  type PlanMeta,
+  type PlanParkSummary,
+  type PlanTotals,
+  type TripPlan,
+} from './plan';
 import type { TripEarlyKind, TripPerk, TripWhenWindow } from './types';
 
 /**
@@ -355,4 +362,93 @@ export function autoSplit(
         ]
       : []
   );
+}
+
+/** Within this many minutes the runner-up day reads as just as full: the API's `runner_up_close`. */
+export const RUNNER_UP_CLOSE_MINUTES = 5;
+
+/**
+ * Why a park day of the day card is on its date, in at most two sentences: the API's most telling
+ * reason, then the runner-up day in the card's own figure. `close` where the runner-up is within
+ * {@link RUNNER_UP_CLOSE_MINUTES} and the API says the day was kept for the rest of the plan: that
+ * sentence then stands alone, since it is the reason.
+ */
+export interface DayWhy {
+  reason: PlanReasonCode | RestReasonCode | null;
+  runner: { kind: 'more' | 'same' | 'less' | 'close'; date: string; delta: number } | null;
+}
+
+/** {@link DayWhy} of a day, from its codes and its runner-up (`runnerUp`, in the shown figure). */
+export function dayWhy(
+  day: Pick<PlanDay, 'kind' | 'reasons'>,
+  runner: { date: string; delta: number } | null
+): DayWhy {
+  const close =
+    runner !== null &&
+    day.reasons.includes('runner_up_close') &&
+    Math.abs(runner.delta) <= RUNNER_UP_CLOSE_MINUTES;
+  if (close) {
+    const locked = day.reasons.includes('locked') ? 'locked' : null;
+    return { reason: locked, runner: { kind: 'close', date: runner.date, delta: runner.delta } };
+  }
+  const reason = primaryReason(
+    runner ? { ...day, reasons: day.reasons.filter((r) => r !== 'runner_up_close') } : day
+  );
+  if (!runner) return { reason, runner: null };
+  const kind = runner.delta > 0 ? 'more' : runner.delta < 0 ? 'less' : 'same';
+  return { reason, runner: { kind, date: runner.date, delta: Math.abs(runner.delta) } };
+}
+
+/** The warnings a day card wears as chips, in {@link PLAN_WARNING_ORDER}; the rest stay in the sheet. */
+const CARD_WARNINGS: ReadonlySet<PlanWarningCode> = new Set([
+  'hours_not_published',
+  'no_forecast',
+  'repeat_back_to_back',
+  'adjacent_repeat',
+  'long_streak',
+  'long_day_trip',
+]);
+
+/**
+ * A day card's warning chips: an early close and a day outside its ticket first (the overview's
+ * marker), then the warnings that change the day. Last year's figures, the long range and the move
+ * are said elsewhere once.
+ */
+export function cardWarnings(
+  day: Pick<PlanDay, 'kind' | 'warnings' | 'reasons' | 'perks' | 'closesEarly'>
+): Array<'outside_ticket' | 'closes' | PlanWarningCode> {
+  const marker = dayMarker(day);
+  const lead = marker === 'outside_ticket' || marker === 'closes' ? [marker] : [];
+  return [...lead, ...dayWarnings(day).filter((w) => CARD_WARNINGS.has(w))];
+}
+
+/** How many park days in a row end on `date`, that day included: "5th park day in a row". */
+export function parkStreakAt(
+  days: readonly Pick<PlanDay, 'date' | 'kind'>[],
+  date: string
+): number {
+  const at = days.findIndex((d) => d.date === date);
+  let n = 0;
+  for (let i = at; i >= 0 && (days[i].kind === 'park' || days[i].kind === 'hop'); i--) n++;
+  return n;
+}
+
+/**
+ * The trip's head in figures: its days, its park days, the free days (`spare`) and the rest days
+ * the visitor's rule set apart from them. An API before 2.21.1 sends no `spare`: every rest day is
+ * then a rest day.
+ */
+export function tripCounts(plan: Pick<TripPlan, 'days' | 'totals'>): {
+  days: number;
+  parkDays: number;
+  freeDays: number;
+  restDays: number;
+} {
+  const free = plan.totals.spareDays ?? plan.days.filter(isSpareDay).length;
+  return {
+    days: plan.days.length,
+    parkDays: plan.totals.parkDays,
+    freeDays: free,
+    restDays: Math.max(0, plan.totals.restDays - free),
+  };
 }

@@ -1,5 +1,6 @@
 import type { CalendarDay, ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import { getDateTimeFormat } from '@/lib/utils/intl-format';
 
 /**
  * Which curated seasons a calendar day marks, and how. Pure, so the park calendar's grid, its
@@ -18,6 +19,24 @@ export const SEASON_EVENT_KINDS = [
   'summer_nights',
   'special_event',
 ] as const satisfies readonly ParkSeasonKind[];
+
+const SHORT_DATE: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short', timeZone: 'UTC' };
+const FULL_DATE: Intl.DateTimeFormatOptions = { ...SHORT_DATE, year: 'numeric' };
+
+/**
+ * A season's bounds as one localized range, „20. Nov. – 18. Jan. 2027": the year once when both ends
+ * share it, on both ends when they do not. Falls back to the raw dates when either does not parse.
+ */
+export function formatSeasonRange(locale: string, start: string, end: string): string {
+  const from = new Date(`${start}T12:00:00Z`);
+  const to = new Date(`${end}T12:00:00Z`);
+  if (Number.isNaN(from.getTime()) || Number.isNaN(to.getTime())) return `${start} – ${end}`;
+
+  const sameYear = from.getUTCFullYear() === to.getUTCFullYear();
+  const fromFormat = getDateTimeFormat(locale, sameYear ? SHORT_DATE : FULL_DATE);
+
+  return `${fromFormat.format(from)} – ${getDateTimeFormat(locale, FULL_DATE).format(to)}`;
+}
 
 /** A season kind a calendar day marks with its icon. */
 export type SeasonEventKind = (typeof SEASON_EVENT_KINDS)[number];
@@ -59,11 +78,21 @@ export function eventSeasonsOn<T extends ParkSeason>(
 }
 
 /**
- * Whether the month's day statuses decide anything: only a season without single dates, which
+ * Whether a month's day statuses decide anything: only a season in it without single dates, which
  * skips the closed days, needs them. The calendar page waits for them only then.
  */
-export function seasonsNeedDayStatus(seasons: readonly ParkSeason[]): boolean {
-  return seasons.some((season) => isSeasonEvent(season) && !season.dates?.length);
+export function seasonsNeedDayStatus(
+  seasons: readonly ParkSeason[],
+  month: ParkCalendarMonth
+): boolean {
+  const { from, to } = parkCalendarMonthRange(month);
+  return seasons.some(
+    (season) =>
+      isSeasonEvent(season) &&
+      !season.dates?.length &&
+      season.startDate <= to &&
+      season.endDate >= from
+  );
 }
 
 /** One event season on one calendar day, as the tile, the legend and the day's dialog draw it. */
@@ -128,10 +157,14 @@ export function seasonDaysOfMonth(
   return days;
 }
 
+/** The seasons a month's days carry, each once, in the order they first appear. */
+export function seasonsInMonth(days: SeasonDays): SeasonOnDay[] {
+  return [...new Map(Object.values(days).flatMap((list) => list.map((s) => [s.id, s]))).values()];
+}
+
 /** The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys. */
 export function seasonKindsIn(days: SeasonDays): SeasonEventKind[] {
-  const shown = new Set(Object.values(days).flatMap((list) => list.map((season) => season.kind)));
-  return SEASON_EVENT_KINDS.filter((kind) => shown.has(kind));
+  return seasonMarks(seasonsInMonth(days)).map((mark) => mark.kind);
 }
 
 /**

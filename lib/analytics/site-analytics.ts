@@ -10,6 +10,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { WhenPeriodKey } from '@/lib/trip-regions/plan-when';
+import type { TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
@@ -164,7 +165,7 @@ type NoProps = Record<string, never>;
  * How a question reached Parky: an opener suggestion, typed, a reply chip under his answer, or the
  * planner's interview button.
  */
-export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview';
+export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview' | 'idea';
 
 /**
  * The greeting a chat opened with: one about the visitor's own plans (`YOURS_GREETINGS`), or one
@@ -219,7 +220,8 @@ export type AssistantPlanChange =
  * the homepage hero, or Parky himself, reopening it on the page he just switched to another
  * language.
  */
-export type AssistantOpenSource = 'button' | 'line' | 'page' | 'hero' | 'language' | 'interview';
+export type AssistantOpenSource =
+  'button' | 'line' | 'page' | 'hero' | 'language' | 'interview' | 'idea';
 
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
@@ -462,10 +464,27 @@ export interface SiteEventMap {
    */
   trip_tile_clicked: TripEvent<{ link: TripTileLink }>;
   /**
-   * The trip planner started: the hub's hero, its own start button, a link with a plan, or (`dates`)
-   * the first dates picked in a page load where nothing else started it, the desk's usual way in.
+   * The trip planner started: the hub's hero, its own start button, a link with a plan, the
+   * landing's "Reise planen" (`landing`), "Start again" (`restart`), or (`dates`) the first dates
+   * picked in a page load where nothing else started it.
    */
-  trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' | 'dates' }>;
+  trip_planner_started: TripEvent<{
+    source: 'hero' | 'button' | 'link' | 'dates' | 'landing' | 'restart';
+  }>;
+  /**
+   * A step of the trip planner's assistant on screen, and how the visitor got there: Next, Skip,
+   * Back, a press on the rail (`jump`), or an answer of the result that reopened it (`answers`).
+   */
+  trip_wizard_step: TripEvent<{ step: TripWizardStepName; via: TripWizardVia }>;
+  /**
+   * The assistant left for the plan: "Show the plan now" before the last step (`early`), or the
+   * finale's "See the plan"; `skipped` counts the steps skipped on the way.
+   */
+  trip_wizard_finished: TripEvent<{ skipped: '0' | '1' | '2' | '3+'; early: boolean }>;
+  /** The assistant closed without its plan shown (Escape, the close button, Back): where. */
+  trip_wizard_closed: TripEvent<{ step: TripWizardStepName }>;
+  /** An answer to "What should happen on the days without a park?" in the Parks step. */
+  trip_spare_choice: TripEvent<{ choice: 'more_parks' | 'more_days' | 'free' | 'shorter' }>;
   /** One of the hub head's two ways in pressed: plan the trip, or go to the calendar. */
   trip_hub_action: TripEvent<{ action: 'plan' | 'calendar'; page: 'hub' | 'month' }>;
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
@@ -481,10 +500,11 @@ export interface SiteEventMap {
    */
   trip_tickets_opened: TripEvent<{ from: TripTicketsFrom; first: boolean }>;
   /**
-   * A change opened from where the visitor stood: Dates, Parks, the Route or More options, from the
-   * answer's buttons, the setup's rows and disclosures, the parks left out or a ticket problem.
+   * A change opened from where the visitor stood: Dates, Parks, the Route or More options. No longer
+   * sent since the assistant (2.22.0): the result opens it on a step, `trip_wizard_step` with
+   * `via: answers`. Kept for the statistic's older rows, `from` with the setup's values of then.
    */
-  trip_edit_opened: TripEvent<{ panel: TripEditPanel; from: TripEditFrom }>;
+  trip_edit_opened: TripEvent<{ panel: TripEditPanel; from: TripEditFrom | 'answer' | 'setup' }>;
   /**
    * One option of the plan changed, by the visitor or by Parky (who also counts his own change as
    * `assistant_plan_changed`). `value` only where the set is small and closed: a buffer's minutes,
@@ -574,6 +594,22 @@ export interface SiteEventMap {
   trip_day_pinned: TripEvent<{ pinned: boolean }>;
   /** Two days swapped. */
   trip_day_swapped: TripEvent;
+  /** A park day put on a free day of its city („Auf einen freien Tag legen“). */
+  trip_day_moved: TripEvent;
+  /** A park day made a free day („Freien Tag daraus machen“). */
+  trip_day_freed: TripEvent;
+  /** A park taken out of the trip from its day card. */
+  trip_park_removed: TripEvent;
+  /** „Rückgängig“ in the result's status band or a chat card: which edit it took back. */
+  trip_undo: TripEvent<{ what: TripEditKind }>;
+  /** One of Parky's ideas on screen, once per idea and place. */
+  trip_idea_shown: TripEvent<{ kind: TripIdeaKind; place: TripIdeaPlace }>;
+  /** One of Parky's ideas applied with its button. */
+  trip_idea_applied: TripEvent<{ kind: TripIdeaKind; place: TripIdeaPlace }>;
+  /** „Im Chat“ on one of Parky's ideas: the chat opened about it. */
+  trip_idea_chat: TripEvent<{ kind: TripIdeaKind }>;
+  /** A park put on a free day with „Dazu“: from the Days view's card or the Week view's panel. */
+  trip_spare_filled: TripEvent<{ from: 'card' | 'week' | 'idea' | 'chat' }>;
   /** "Plan this day": a day handed to the day planner. */
   trip_day_sent: TripEvent;
   /** "Add all days to my planner", with how many park days went in. */
@@ -614,17 +650,33 @@ type TripEvent<Props extends object = object> = { region: string } & Props;
 /** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
 export type TripTileLink = 'plan' | 'calendar';
 
-/** Where the ticket step was opened from. */
-export type TripTicketsFrom = 'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket';
+/** Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already". */
+export type TripTicketsFrom =
+  'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket' | 'wizard';
+
+/** A screen of the trip planner's assistant, its finale included. */
+export type TripWizardStepName = TripWizardStepKey | 'finale';
+
+/** How the assistant reached a step. */
+export type TripWizardVia = 'next' | 'skip' | 'back' | 'jump' | 'answers';
 
 /** A panel of the planner's setup a change opens. */
 export type TripEditPanel = 'dates' | 'parks' | 'route' | 'options';
 
 /**
- * Where a change was opened from: the answer's buttons, the setup, the parks left out, a ticket
- * problem, or the ticket card (a ticket that covers none of the planned parks).
+ * Where the result opens the assistant on the Parks or Dates step besides the answers: the parks
+ * left out, a ticket problem, or the ticket card (a ticket that covers none of the planned parks).
  */
-export type TripEditFrom = 'answer' | 'setup' | 'left_out' | 'ticket_problem' | 'ticket_card';
+export type TripEditFrom = 'left_out' | 'ticket_problem' | 'ticket_card';
+
+/** An edit of the plan from the result, as `trip_undo` names it (`PlanEditChange`'s kinds). */
+export type TripEditKind = 'pin' | 'swap' | 'move' | 'free' | 'remove' | 'add' | 'release' | 'idea';
+
+/** What one of Parky's ideas changes: the API's `kind`. */
+export type TripIdeaKind = 'move' | 'swap' | 'add' | 'travel_day' | 'hopper' | 'avoid_party';
+
+/** Where one of Parky's ideas was shown: over the plan, under its day, or in the chat. */
+export type TripIdeaPlace = 'header' | 'day' | 'chat';
 
 /** An option of the plan `trip_option_changed` names: the query's own fields, grouped. */
 export type TripOption =

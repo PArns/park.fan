@@ -1,6 +1,6 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
+import { useSyncExternalStore, type ReactNode } from 'react';
 import { MessagesSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -14,17 +14,22 @@ import { startInterview, type InterviewStart } from '@/lib/assistant/interview';
  * button that sets the interview on its first step and opens the chat, which asks the first question
  * once its session is ready. The face is the launcher's, calm, so the card reads as Parky's offer
  * rather than one more form row. Drawn only where Parky shows for this visitor (`assistantGate`),
- * so it never opens a window that does not come.
+ * so it never opens a window that does not come. An `action` (the hub's „Reise planen“) stands
+ * before the chat's button, which then takes the outline look; with an action the card is drawn
+ * where Parky is off too, without the chat's button.
  */
 export function ParkyInterviewStart({
   label,
   line,
   start,
+  action,
   className,
 }: {
   label: string;
   line: string;
   start: InterviewStart;
+  /** The page's own way in beside the chat, drawn first. */
+  action?: ReactNode;
   className?: string;
 }) {
   const status = useSyncExternalStore(
@@ -32,7 +37,7 @@ export function ParkyInterviewStart({
     assistantGate.getStatus,
     assistantGate.getServerStatus
   );
-  if (status !== 'on') return null;
+  if (status !== 'on' && !action) return null;
   return (
     // Laid out by its own width, not the window's: the day planner's side panel is narrow on the
     // widest screen. Side by side from 36rem, where the longest label (Italian, French) still
@@ -43,17 +48,21 @@ export function ParkyInterviewStart({
           <ParkyLogo className="size-12 shrink-0 drop-shadow-sm @xl:size-14" idle calm />
           <p className="text-foreground/85 text-sm text-pretty @xl:text-base">{line}</p>
         </div>
-        <Button
-          type="button"
-          onClick={() => {
-            startInterview(start);
-            openParky('interview');
-          }}
-          className="h-auto min-h-9 w-full text-balance whitespace-normal max-sm:min-h-11 @xl:w-auto @xl:max-w-[60%] @xl:shrink-0"
-        >
-          <MessagesSquare aria-hidden="true" />
-          {label}
-        </Button>
+        {action}
+        {status === 'on' && (
+          <Button
+            type="button"
+            variant={action ? 'outline' : 'default'}
+            onClick={() => {
+              startInterview(start);
+              openParky('interview');
+            }}
+            className="h-auto min-h-9 w-full text-balance whitespace-normal max-sm:min-h-11 @xl:w-auto @xl:max-w-[60%] @xl:shrink-0"
+          >
+            <MessagesSquare aria-hidden="true" />
+            {label}
+          </Button>
+        )}
       </div>
     </div>
   );

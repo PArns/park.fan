@@ -1,7 +1,11 @@
 import { Snowflake, Sun, Leaf } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { SeasonKindIcon } from '@/components/parks/season-kind-icon';
+import { useSeasonLabel } from '@/components/parks/season-headline';
+import { formatSeasonRange } from '@/lib/parks/park-season-days';
 import { cn } from '@/lib/utils';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import type { BoundSeason } from '@/lib/api/types';
 
 /**
  * Returns `winter` when every season month lies in November to February, `summer` when every one
@@ -19,37 +23,51 @@ export function getSeasonLabel(months: number[] | null): 'winter' | 'summer' | n
 interface SeasonalBadgeProps {
   seasonMonths?: number[] | null;
   isCurrentlyInSeason?: boolean | null;
+  /** The park season the ride is bound to. Its name and days replace what the months would say. */
+  boundSeason?: BoundSeason;
   className?: string;
 }
 
 /**
  * Badge for a seasonal ride or show: "Winter", "Summer" or "Seasonal" in season, and "Winter only",
- * "Summer only" or "Off-season", dimmed, out of it.
+ * "Summer only" or "Off-season", dimmed, out of it. A ride bound to a park season names that season
+ * with its kind's icon instead, and out of it says „Nur während Wintertraum" with the season's dates.
  */
 export function SeasonalBadge({
   seasonMonths,
   isCurrentlyInSeason,
+  boundSeason,
   className,
 }: SeasonalBadgeProps) {
   const t = useTranslations('parks.seasonal');
-  const season = getSeasonLabel(seasonMonths ?? null);
+  const locale = useLocale();
+  const seasonLabel = useSeasonLabel();
+  const season = boundSeason ? null : getSeasonLabel(seasonMonths ?? null);
   const offSeason = isCurrentlyInSeason === false;
 
   const Icon = season === 'winter' ? Snowflake : season === 'summer' ? Sun : Leaf;
 
   // What the badge says depends on whether the ride is running. Out of season the season name alone
   // did not connect to the card's „Geschlossen", so it says both halves: „Nur im Winter".
-  const label = offSeason
-    ? season === 'winter'
-      ? t('winterOnly')
-      : season === 'summer'
-        ? t('summerOnly')
-        : t('offSeason')
-    : season === 'winter'
-      ? t('winter')
-      : season === 'summer'
-        ? t('summer')
-        : t('label');
+  const bound = boundSeason && { ...boundSeason, name: boundSeason.name ?? null };
+  const label = bound
+    ? offSeason
+      ? [
+          t('onlyDuring', { season: seasonLabel(bound, true) }),
+          formatSeasonRange(locale, bound.startDate, bound.endDate),
+        ].join(' · ')
+      : seasonLabel(bound)
+    : offSeason
+      ? season === 'winter'
+        ? t('winterOnly')
+        : season === 'summer'
+          ? t('summerOnly')
+          : t('offSeason')
+      : season === 'winter'
+        ? t('winter')
+        : season === 'summer'
+          ? t('summer')
+          : t('label');
 
   return (
     <Badge
@@ -68,7 +86,11 @@ export function SeasonalBadge({
         className
       )}
     >
-      <Icon className="h-3 w-3 text-inherit" />
+      {bound ? (
+        <SeasonKindIcon kind={bound.kind} className="h-3 w-3 text-inherit dark:text-inherit" />
+      ) : (
+        <Icon className="h-3 w-3 text-inherit" />
+      )}
       {label}
     </Badge>
   );

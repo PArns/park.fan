@@ -46,6 +46,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `parseParkCalendarMonth` _function_: Parse the optional `[[...date]]` catch-all into a month. `null` month means the hub; `'invalid'` means segments that were there and wrong, a 404 rather than a silent fall back to the hub (which would put the same content on unbounded URLs).
 - `parseParkCalendarMonthSpelling` _function_: Whether two URL segments spell a month, not whether the route serves it: `/2026/13` is a typo and stays a 404, while an out-of-window real month 308s to the hub.
 - `shiftParkCalendarMonth` _function_: The month before/after, rolling the year over. Used for the crawlable prev/next links.
+- `parkCalendarMonthsShown` _function_: Every month the calendar serves around `now`, oldest first: the month index's chips, and the window the page reads their seasons for. Shifted from `now`, so December → January wraps the year exactly as the route's own range check does.
 - `isParkCalendarMonthInRange` _function_: Whether a month is inside the window the route serves, so prev/next links never point at a 404. Pass `scheduleCoverage.to` as `coverageTo` wherever the park payload is in scope; without it the forward edge is the fixed span.
 - `currentParkCalendarMonth` _function_: Today's month in the park's timezone, never the server's or browser's, so the page and the grid agree on which month „this month" is across a month boundary. Uses the cached formatter, since `proxy.ts` calls it for every calendar month URL.
 - `PARK_CALENDAR_SEGMENTS` _const_: Locale → localized URL segment for a park's wait-time calendar, and the month URLs under it (`/parks/<geo>/<park>/wartezeiten-kalender/2026/9`). A park's „when should I go" gets its own crawlable URLs rather than a hash.
@@ -125,11 +126,13 @@ Which two days of a park's calendar are being compared, across a change of month
 
 ### [`park-season-days.ts`](../../lib/parks/park-season-days.ts)
 
+- `formatSeasonRange` _function_: A season's bounds as one localized range, „20. Nov. – 18. Jan. 2027": the year once when both ends share it, on both ends when they do not. Falls back to the raw dates when either does not parse.
 - `isSeasonEvent` _function_: Whether a season is one of the events a day marks and still on. A cancelled season marks no day: it is listed, struck through, on the park's season card and nowhere else.
 - `seasonRunsOn` _function_: Whether a season runs on a date: only on its `dates` where it lists them, else every day of its range (the API's `seasonCovers`) the calendar does not show `closed`.
 - `eventSeasonsOn` _function_: The event seasons running on a date the calendar shows `closed` or not, in the order given.
-- `seasonsNeedDayStatus` _function_: Whether the month's day statuses decide anything: only a season without single dates, which skips the closed days, needs them. The calendar page waits for them only then.
+- `seasonsNeedDayStatus` _function_: Whether a month's day statuses decide anything: only a season in it without single dates, which skips the closed days, needs them. The calendar page waits for them only then.
 - `seasonDaysOfMonth` _function_: The event seasons of one month, per day, a season without single dates only on the `calendarDays` not `CLOSED`.
+- `seasonsInMonth` _function_: The seasons a month's days carry, each once, in the order they first appear.
 - `seasonKindsIn` _function_: The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys.
 - `seasonMarks` _function_: A day's seasons as the tile marks them: one icon per kind, in `SEASON_EVENT_KINDS` order, quiet only when every season of that kind is.
 - `SEASON_EVENT_KINDS` _const_: The season kinds a day marks: the events a visitor picks a day for.

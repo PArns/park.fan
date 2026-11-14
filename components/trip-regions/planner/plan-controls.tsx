@@ -4,6 +4,9 @@ import { useId, type ReactNode } from 'react';
 import { Check, Minus, Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+/** `lg`, where the planner's panels are drawn inline and the result has its two columns; below it, sheets. */
+export const PLAN_WIDE_QUERY = '(min-width: 64rem)';
+
 /** The planner's focus ring, one string for every control it draws. */
 export const PLAN_FOCUS =
   'focus-visible:ring-ring focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-none';
@@ -67,56 +70,6 @@ export function PlanCheckRow({
         {hint && <span className="text-muted-foreground text-xs leading-snug">{hint}</span>}
       </span>
     </label>
-  );
-}
-
-/**
- * One choice of several, as radio rows: a `fieldset` with its question as the legend, each option a
- * 44 px row with an optional line under it.
- */
-export function PlanRadioGroup<T extends string>({
-  legend,
-  hint,
-  value,
-  options,
-  onChange,
-  disabled = false,
-}: {
-  legend: ReactNode;
-  /** One short line under the question, for the whole group. */
-  hint?: ReactNode;
-  value: T | null;
-  options: ReadonlyArray<{ value: T; label: ReactNode; hint?: ReactNode }>;
-  onChange: (value: T) => void;
-  disabled?: boolean;
-}) {
-  const name = useId();
-  return (
-    <fieldset className="flex flex-col" disabled={disabled}>
-      <legend className="mb-1 px-2 text-sm font-semibold">{legend}</legend>
-      {hint && <p className="text-muted-foreground mb-1 px-2 text-xs leading-snug">{hint}</p>}
-      {options.map((option) => (
-        <label
-          key={option.value}
-          className="hover:bg-accent/60 flex min-h-11 cursor-pointer items-start gap-3 rounded-lg px-2 py-2.5 transition-colors"
-        >
-          <input
-            type="radio"
-            name={name}
-            value={option.value}
-            checked={value === option.value}
-            onChange={() => onChange(option.value)}
-            className={cn('accent-primary mt-0.5 size-4 shrink-0', PLAN_FOCUS)}
-          />
-          <span className="flex min-w-0 flex-col gap-0.5">
-            <span className="text-sm leading-5">{option.label}</span>
-            {option.hint && (
-              <span className="text-muted-foreground text-xs leading-snug">{option.hint}</span>
-            )}
-          </span>
-        </label>
-      ))}
-    </fieldset>
   );
 }
 
@@ -228,6 +181,12 @@ export function PlanStepper({
   );
 }
 
+/** The planner's pill: 44 px on a phone and 36 at a desk, round, before the ink of its state. */
+export const PLAN_PILL = 'min-h-11 rounded-full border px-3.5 text-sm transition-colors lg:min-h-9';
+
+/** A pill that is not chosen: its quiet border and the hover. */
+export const PLAN_PILL_IDLE = 'border-border/70 hover:bg-accent/60';
+
 /**
  * A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When
  * mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two
@@ -265,10 +224,9 @@ export function PlanChip({
       onClick={onClick}
       disabled={disabled}
       className={cn(
-        'min-h-11 rounded-full border px-3.5 text-sm transition-colors disabled:opacity-40 lg:min-h-9',
-        selected
-          ? 'border-primary bg-primary/15 text-foreground font-semibold'
-          : 'border-border/70 hover:bg-accent/60',
+        PLAN_PILL,
+        'disabled:opacity-40',
+        selected ? 'border-primary bg-primary/15 text-foreground font-semibold' : PLAN_PILL_IDLE,
         check && 'inline-flex items-center justify-center gap-1.5',
         PLAN_FOCUS,
         className

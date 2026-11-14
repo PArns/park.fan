@@ -124,6 +124,17 @@ month without a season. A season over more than half the month (a winter season)
 the crowd colours. The icon names its seasons on hover and in the tile's `aria-label`, with the
 status where it is not `confirmed`.
 
+**Seasons beyond the grid.** The grid ends where the published schedule ends, so the month index
+and the yearly outlook mark the months further out. Each month chip in `ParkCalendarMonthIndex`
+carries its month's season icons, at most three and quiet (`SeasonMonthMarks`), and each outlook row
+carries them beside the month's name. Both read the grid's rule (`seasonDaysOfMonth`, then
+`seasonsInMonth`) and `SEASON_KIND_ICON`; the shown month's chip takes the grid's own record, which
+knows its closed days. Past the schedule no day is known closed, so a season without dates covers its
+range there, and an `expected` one is drawn quiet. The icons are one image named after the month's
+seasons, for a screen reader and on hover. The page asks for the seasons once over every month the
+index shows (`parkCalendarMonthsShown`), in place of the shown month alone; the outlook reads the
+season card's list, today to a year ahead, so neither adds a request per chip.
+
 ## The day dialog
 
 `ParkCalendarDayDetail`, a Radix dialog, so it works on touch where a tooltip does not. It opens on

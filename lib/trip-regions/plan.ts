@@ -17,6 +17,7 @@ import {
   type PlanParkPick,
   type PlanSearchRange,
 } from './plan-query';
+import type { PlanIdea } from './plan-ideas';
 import type { TripHotelKind } from './registry';
 import type {
   TicketLink,
@@ -148,6 +149,11 @@ export interface PlanDay {
   startAt?: string;
   reasons: string[];
   warnings: string[];
+  /**
+   * A rest day nobody asked for (API 2.21.1): not pinned, and a park on it would still keep the
+   * rest rule. `kind` stays `rest`; the planner calls it a free day, never a rest day.
+   */
+  spare?: boolean;
 }
 
 /** One day of a hopper comparison: the two parks of a hop day, or the day's park and the evening's. */
@@ -289,6 +295,8 @@ export interface PlanTotals {
   penalties?: { heat?: number; hurricane?: number; typhoon?: number };
   parkDays: number;
   restDays: number;
+  /** Of `restDays`, those with `spare`; absent from an API before 2.21.1. */
+  spareDays?: number;
   visits: number;
   /** In a region with bases: the hotel changes, and the days that are only the move. */
   moves?: number;
@@ -344,6 +352,18 @@ export interface TripPlan {
    */
   parksLeftOut?: Array<{ park: string; reason: string }>;
   ignoredLocks?: Array<{ lock: string; reason: string }>;
+  /**
+   * The region's parks the visitor did not choose that are open on a spare day and reachable from
+   * that day's base, in the region's order, each with its three cheapest spare days at most; absent
+   * when there is none, and from an API before 2.21.1.
+   */
+  spareDayParks?: PlanSpareDayPark[];
+}
+
+/** A park the trip's spare days could take, with its cheapest spare days (`spareDayParks`). */
+export interface PlanSpareDayPark {
+  park: string;
+  days: PlanAlternative[];
 }
 
 /**
@@ -659,6 +679,132 @@ export function swapLocks(state: TripPlanState, a: PlanDay, b: PlanDay): PlanLoc
   return [...rest, { target: ta, date: b.date }, { target: tb, date: a.date }].sort((x, y) =>
     x.date.localeCompare(y.date)
   );
+}
+
+/**
+ * Put the park of `day` on `date` instead: pinned there, so the re-plan keeps it and moves only the
+ * rest. A pin on its old day goes with it, and one on `date` gives way. `null` for a day without a
+ * park, or the same date.
+ */
+export function moveVisit(state: TripPlanState, day: PlanDay, date: string): TripPlanState | null {
+  const target = dayLockTarget(day);
+  if (!target || target === 'rest' || date === day.date) return null;
+  const locks = state.locks.filter((l) => l.date !== day.date && l.date !== date);
+  return normalizePlanState({ ...state, locks: [...locks, { target, date }] });
+}
+
+/**
+ * Make a park day free: `rest` pinned on it, so the re-plan finds the park another day if it has
+ * one to give, and leaves this one empty. `null` for a day without a park.
+ */
+export function freeDay(state: TripPlanState, day: PlanDay): TripPlanState | null {
+  const target = dayLockTarget(day);
+  if (!target || target === 'rest') return null;
+  const locks = state.locks.filter((l) => l.date !== day.date);
+  return normalizePlanState({ ...state, locks: [...locks, { target: 'rest', date: day.date }] });
+}
+
+/**
+ * Take a park out of the trip: out of `parks` (the untouched default becoming a list), its pins
+ * with it, so its days go back to the plan. `null` where it is the last park the trip has.
+ */
+export function removePark(
+  state: TripPlanState,
+  slug: string,
+  regionOrder: readonly string[],
+  headliners: readonly string[]
+): TripPlanState | null {
+  const picks = effectiveParks(state, headliners);
+  if (!picks.some((p) => p.slug === slug) || picks.length <= 1) return null;
+  return setParkVisits(state, slug, 0, regionOrder, headliners);
+}
+
+/**
+ * One edit of the plan made from the result, as its status band says it and `trip_undo` counts it:
+ * a pin set or released, two days swapped, a park moved, a day made free, a park taken out, a park
+ * put on a free day, every pin released, or one of Parky's ideas.
+ */
+export type PlanEditChange =
+  | { kind: 'pin'; target: string; date: string; pinned: boolean }
+  | { kind: 'swap'; first: string; firstDay: string; second: string; secondDay: string }
+  | { kind: 'move'; slug: string; from: string; to: string }
+  | { kind: 'free'; slug: string; date: string }
+  | { kind: 'remove'; slug: string; days: number }
+  | { kind: 'add'; slug: string; date: string }
+  | { kind: 'release' }
+  | { kind: 'idea'; idea: PlanIdea };
+
+/** The kinds of {@link PlanEditChange}: `trip_undo`'s `what`. */
+export type PlanEditKind = PlanEditChange['kind'];
+
+/** The swap of two days as an edit: what was on `a` is now on `b`'s date, and the other way round. */
+export function swapChange(a: PlanDay, b: PlanDay): PlanEditChange | null {
+  const first = dayLockTarget(a);
+  const second = dayLockTarget(b);
+  if (!first || !second) return null;
+  return { kind: 'swap', first, firstDay: b.date, second, secondDay: a.date };
+}
+
+/**
+ * The park and day an edit just put into the plan, whose card reads „neu“: a park put on a free day,
+ * or an idea that places a park.
+ */
+export function addedByEdit(change: PlanEditChange | null): { slug: string; date: string } | null {
+  if (change?.kind === 'add') return { slug: change.slug, date: change.date };
+  if (change?.kind === 'idea' && change.idea.places?.length && change.idea.park && change.idea.to)
+    return { slug: change.idea.park, date: change.idea.to };
+  return null;
+}
+
+// ── Free days ────────────────────────────────────────────────────────────────
+
+/**
+ * Whether a day is free: a rest day the API marks `spare`, which nobody asked for. A rest day the
+ * visitor's rest rule set or pinned stays a rest day.
+ */
+export function isSpareDay(day: Pick<PlanDay, 'kind' | 'spare'>): boolean {
+  return day.kind === 'rest' && day.spare === true;
+}
+
+/** One entry of the Days view: a day, or a run of consecutive free days as one card. */
+export type PlanDayEntry<D extends Pick<PlanDay, 'date' | 'kind' | 'spare'> = PlanDay> =
+  { type: 'day'; day: D } | { type: 'spare'; days: D[] };
+
+/**
+ * A list of days with each run of consecutive free days folded into one entry, in date order. The
+ * days are one stay's, so a run never crosses a hotel change.
+ */
+export function withSpareRuns<D extends Pick<PlanDay, 'date' | 'kind' | 'spare'>>(
+  days: readonly D[]
+): Array<PlanDayEntry<D>> {
+  const out: Array<PlanDayEntry<D>> = [];
+  for (const day of days) {
+    const last = out.at(-1);
+    if (!isSpareDay(day)) out.push({ type: 'day', day });
+    else if (last?.type === 'spare' && addDays(last.days.at(-1)!.date, 1) === day.date)
+      last.days.push(day);
+    else out.push({ type: 'spare', days: [day] });
+  }
+  return out;
+}
+
+/**
+ * Put a park on a free day: the park joins `parks` with one visit more than the plan gives it now
+ * (`planned`, 0 for a park not chosen), and is pinned to `date`, so the re-plan keeps it there and
+ * moves only the rest. `null` where the park already has its most visits.
+ */
+export function addParkOnDate(
+  state: TripPlanState,
+  slug: string,
+  date: string,
+  planned: number,
+  regionOrder: readonly string[],
+  headliners: readonly string[]
+): TripPlanState | null {
+  if (planned >= MAX_VISITS_PER_PARK) return null;
+  const withPark = setParkVisits(state, slug, planned + 1, regionOrder, headliners);
+  const locks = withPark.locks.filter((l) => l.date !== date);
+  return normalizePlanState({ ...withPark, locks: [...locks, { target: slug, date }] });
 }
 
 // ── Into the day planner ─────────────────────────────────────────────────────

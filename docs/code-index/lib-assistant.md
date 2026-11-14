@@ -374,6 +374,12 @@ What counts as a control the bubble must not cover.
 - `TRIPS_SNAPSHOT_MAX` _const_: The API reads one trip per region and at most this many.
 - Types: `AssistantTripSnapshot`, `TripUndo`
 
+### [`trip-idea.ts`](../../lib/assistant/trip-idea.ts)
+
+- `askParkyAboutIdea` _function_: „Im Chat“ on an idea: the question about it waits for the chat window, which sends it once its session is ready (`takeTripIdeaAsk`) with the idea's card under the answer, and the window opens.
+- `takeTripIdeaAsk` _function_: The question about an idea that waits for the window, once: reading it clears it.
+- Types: `AssistantTripIdea`
+
 ### [`use-assistant-chat.ts`](../../lib/assistant/use-assistant-chat.ts)
 
 - `useAssistantChat` _hook_: The chat with Parky: sends a question, reads the answer as it streams, and keeps the chat for the session so it survives a navigation. The history lives on the API; only its id is sent along.

@@ -103,6 +103,26 @@ export interface TripHubFaq {
   questions?: readonly string[];
 }
 
+/**
+ * The screenshots of the hub's "how it works" chapter, one per step in the order the chapter names
+ * them (`HUB_STEPS`: dates, questions, plan, edit), each a media id without its locale suffix
+ * (`reiseplaner/orlando-assistent-1`): the page shows `-<locale>`, else `-en`, else `-de`. Data, so a
+ * retaken shot is a new file and one line here.
+ */
+export type TripHubShots = readonly [string, string, string, string];
+
+/**
+ * One card of the hub's resorts chapter: an API group (`region.groups`) and its photo. The two
+ * sentences are the region's words (`tripRegions.<slug>.hub.resorts.<group>.lead` and `.stay`), the
+ * parks and their calendars the API's.
+ */
+export interface TripHubResort {
+  /** The API's group key. */
+  group: string;
+  /** The card's photo as a media id; absent, the region's {@link TripHub.scene} picture. */
+  photo?: string;
+}
+
 /** What the hub shows of the region beside the API's answers. */
 export interface TripHub {
   /** The hero photos as media sources, the first the catalog still has wins. */
@@ -110,6 +130,15 @@ export interface TripHub {
   /** The hotel area the day sheet's drive times start from before the reader picks one. */
   defaultArea?: string;
   faq: TripHubFaq;
+  /** The planner's four steps as screenshots, chapter 01 of the hub without a plan. */
+  howItWorks: TripHubShots;
+  /** The resorts chapter's cards, in the order they stand; a group not listed has no card. */
+  resorts: readonly TripHubResort[];
+  /**
+   * The region's Parky scene as a picture (a media id), for a resort card without a photo and the
+   * closing band: the drawn scene carries gradient ids, so it may stand on a page only once.
+   */
+  scene: string;
 }
 
 /** A kind of hotel the planner offers, and the hotel area such a stay is usually in. */

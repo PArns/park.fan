@@ -33,7 +33,16 @@ export function defaultSearchRange(today: string): PlanSearchRange {
  * of a region), with its way back. The choice is the `when` of the URL, so a link from Parky's
  * `find_trip_dates` opens on the search.
  */
-export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
+export function PlanDatesStep({
+  defaultMonth,
+  monthChips = false,
+  onPending,
+}: {
+  defaultMonth?: string;
+  /** The assistant's month chips over the grid (`PlanDates`). */
+  monthChips?: boolean;
+  onPending?: (pending: boolean) => void;
+}) {
   const t = useTranslations('tripPlanner.find');
   const tSetup = useTranslations('tripPlanner.setup');
   const tTickets = useTranslations('tripPlanner.tickets');
@@ -73,7 +82,11 @@ export function PlanDatesStep({ defaultMonth }: { defaultMonth?: string }) {
 
   return (
     <div className="flex flex-col gap-3">
-      {find ? <PlanFind /> : <PlanDates defaultMonth={defaultMonth} />}
+      {find ? (
+        <PlanFind />
+      ) : (
+        <PlanDates defaultMonth={defaultMonth} monthChips={monthChips} onPending={onPending} />
+      )}
       {switchLink}
     </div>
   );
