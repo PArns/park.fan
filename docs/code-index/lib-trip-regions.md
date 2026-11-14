@@ -338,14 +338,20 @@ by hand: change the comment in the code and re-run the script. -->
 - `regionOrShared` _function_: The region's words for `key` where it has them, else the shared ones.
 - Types: `CodeWords`
 
+### [`regions/japan.ts`](../../lib/trip-regions/regions/japan.ts)
+
+- `JAPAN` _const_: Japan's entry in `TRIP_REGIONS`.
+
 ### [`regions/orlando.ts`](../../lib/trip-regions/regions/orlando.ts)
 
 - `ORLANDO` _const_: Orlando's entry in `TRIP_REGIONS`.
 
+### [`regions/southern-california.ts`](../../lib/trip-regions/regions/southern-california.ts)
+
+- `SOUTHERN_CALIFORNIA` _const_: Southern California's entry in `TRIP_REGIONS`.
+
 ### [`regions/upcoming.ts`](../../lib/trip-regions/regions/upcoming.ts)
 
-- `SOUTHERN_CALIFORNIA` _const_: Southern California: Disneyland Resort, Universal Studios Hollywood, Knott's, Six Flags Magic Mountain, SeaWorld San Diego, LEGOLAND California, Sesame Place San Diego.
-- `JAPAN` _const_: Japan: Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan, Universal Studios Japan.
 - `PARIS` _const_: Paris: Disneyland Park, Disney Adventure World, Parc Astérix.
 
 ### [`registry.ts`](../../lib/trip-regions/registry.ts)

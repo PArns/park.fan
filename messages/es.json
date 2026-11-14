@@ -4292,6 +4292,339 @@
         "lead": "Disneyland, California Adventure, Universal Hollywood y otros cinco parques en un solo calendario: cuándo tiene menos gente cada uno, y un planificador para tus días de viaje.",
         "link": "Calendario de afluencia de California del Sur"
       }
+    },
+    "japan": {
+      "nav": {
+        "name": "Japón",
+        "area": "De Tokio a Osaka",
+        "calendar": "Calendario de afluencia de Japón",
+        "calendarHint": "Cinco parques día a día, y un planificador para un viaje por varias ciudades."
+      },
+      "hub": {
+        "title": "Calendario de afluencia de Japón",
+        "monthTitle": "Calendario de afluencia de Japón {month}",
+        "metaTitle": "Calendario de afluencia de Japón y planificador",
+        "metaTitleMonth": "Calendario de afluencia de Japón {month}: Tokyo Disney y USJ",
+        "metaTitleMonthShort": "Calendario de afluencia de Japón {month}",
+        "metaDescription": "Qué parque de Japón qué día, de Tokyo Disney a Universal Studios Japan. Lo más tranquilo en los próximos 30 días: {verdict}.",
+        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan y Universal Studios Japan día a día, y un planificador que reparte ciudades, noches y parques entre tus fechas.",
+        "metaDescriptionMonth": "Los días más tranquilos en los parques de Japón en {month}: {verdict}. Los cinco parques día a día.",
+        "metaDescriptionMonthPlain": "Japón en {month}, día a día: la espera máxima en Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan y Universal Studios Japan.",
+        "lead": "Un calendario para cinco parques entre Tokio y Osaka, y un planificador que ordena tus ciudades y reparte las noches.",
+        "leadMonth": "Los cinco parques entre Tokio y Osaka en {month}, día a día, y un planificador que ordena tus ciudades y reparte las noches.",
+        "monthIndexLabel": "Japón mes a mes",
+        "glance": {
+          "zone": "hora de Japón"
+        },
+        "calendar": {
+          "caption": "Los parques de Japón, del {from} al {to}: espera máxima en las grandes atracciones, en minutos"
+        },
+        "lanes": {
+          "break": "Vacaciones escolares japonesas: {name}, {dates}",
+          "unnamedBreak": "Vacaciones escolares japonesas",
+          "none": "No hay eventos en estos días."
+        },
+        "sheet": {
+          "kicker": "Japón · un día",
+          "early": {
+            "happy_entry": "Happy Entry desde las {time} para huéspedes de los hoteles Disney",
+            "early_entry": "Entrada anticipada desde las {time} para huéspedes del hotel"
+          }
+        },
+        "when": {
+          "kicker": "Tokyo Disney y USJ",
+          "title": "Mejor época para visitar Japón en {year}",
+          "titleNoYear": "Mejor época para visitar Japón",
+          "pageLink": "Mejor época para visitar Japón en {year}",
+          "pageLinkNoYear": "Mejor época para visitar Japón"
+        },
+        "reasons": {
+          "school_break": "en las vacaciones escolares japonesas"
+        },
+        "faq": {
+          "title": "Preguntas sobre los parques de Japón",
+          "quietest": {
+            "q": "¿Cuándo hay menos gente en los parques de Japón en las próximas semanas?",
+            "qMonth": "¿Cuándo hay menos gente en los parques de Japón en {month}?",
+            "resort": "{resort}: lo más tranquilo, {days}; lo más lleno, {busy}.",
+            "day": "{date} ({park}, {minutes} min)",
+            "dayAlone": "{date} ({minutes} min)"
+          },
+          "epic": {
+            "q": "¿Hay más gente en Tokyo DisneySea los fines de semana?",
+            "a": "{verdict, select, busier {Sí.} same {No.} other {Solo un poco.}} En este periodo la espera máxima ronda los {weekend} min los sábados y domingos, y los {weekday} min de lunes a viernes."
+          },
+          "distance": {
+            "q": "¿Cuánto se tarda entre las ciudades?",
+            "a": "Los tiempos salen de los horarios de JR Central y Fujikyu y cuentan de puerta a puerta, con la espera del tren o del autobús: {legs}.",
+            "leg": "de {from} a {to}, unos {duration}",
+            "dayTrip": "{park} se puede hacer como excursión de un día desde {base}, unos {duration} por trayecto.",
+            "pair": "La {name} une {from} y {to} en unos {minutes} minutos."
+          },
+          "cities": {
+            "q": "¿En qué orden recorro las ciudades?",
+            "a": "Las ciudades están en una misma línea: Tokio, Fujikawaguchiko, Nagoya, Osaka. Tus etapas la siguen en un solo sentido, el que marcan tus aeropuertos: si aterrizas en Tokio y vuelves desde Osaka, el viaje va hacia el oeste; si vuelves desde donde aterrizaste, haces el trayecto de vuelta el día de salida. El planificador reparte las noches para que cada parque caiga en un día tranquilo, y las noches que ya tienes reservadas las fijas tú. Fuji-Q Highland sigue siendo una excursión de un día desde Tokio, salvo que una noche junto al lago compense con esperas más cortas."
+          },
+          "luggage": {
+            "q": "¿Qué hago con el equipaje cuando cambio de ciudad?",
+            "a": "La mayoría de los viajeros envía las maletas al siguiente hotel con un servicio de equipaje (takkyubin). En el Shinkansen, un bulto de 161 a 250 cm en total necesita un asiento reservado con espacio para equipaje grande, y uno mayor no puede subir (JR Central). Con el equipaje enviado por delante, el planificador cuenta 30 minutos por cada cambio de hotel; si lo llevas tú, son más bien 60. Puedes elegir 30, 60, 90 o 120 minutos."
+          },
+          "happyEntry": {
+            "q": "¿Con un hotel Disney entro antes al parque?",
+            "a": "Sí, con Happy Entry. Los huéspedes de los hoteles Disney entran en Tokyo Disneyland 15 minutos antes que los demás, y los del Hotel MiraCosta y el Fantasy Springs Hotel también antes en Tokyo DisneySea. Vale desde la mañana siguiente a la llegada, y el planificador lo cuenta así; algunos hoteles tienen días sueltos sin él. Los hoteles oficiales de Universal Studios Japan no tienen entrada anticipada."
+          }
+        },
+        "next": {
+          "title": "Planificador de viaje a Japón"
+        },
+        "dataset": {
+          "name": "Calendario de afluencia de los parques de Japón, {period}",
+          "description": "Por parque y día en Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan y Universal Studios Japan: la espera máxima prevista, la afluencia frente a un día normal del parque y los horarios, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Mejor época para ir a Japón en {year}",
+          "tokyo-disney": "Mejor época para ir a Tokyo Disney en {year}",
+          "universal-studios-japan": "Mejor época para ir a Universal Studios Japan en {year}"
+        },
+        "name": {
+          "region": "Mejor época para ir a Japón",
+          "tokyo-disney": "Mejor época para ir a Tokyo Disney",
+          "universal-studios-japan": "Mejor época para ir a Universal Studios Japan"
+        },
+        "resort": {
+          "region": "Tokyo Disney y USJ",
+          "tokyo-disney": "Tokyo Disney Resort",
+          "universal-studios-japan": "Universal Studios Japan"
+        },
+        "intro": {
+          "lead": "Cada cifra es la espera máxima: la espera más larga del día en cada gran atracción, en media sobre los parques del viaje.",
+          "body": "Valoramos un viaje como el planificador de viajes: cada parque en su mejor día, los trayectos entre ciudades incluidos, y un día en que un parque cierra antes cuenta como un día peor. La previsión llega hasta el {date}. Después la página muestra las mismas semanas del año pasado, tal como las medimos, con la nota «año pasado».",
+          "bodyForecast": "Valoramos un viaje como el planificador de viajes: cada parque en su mejor día, los trayectos entre ciudades incluidos, y un día en que un parque cierra antes cuenta como un día peor. Todas las cifras de esta página son nuestra previsión."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Festivos y vacaciones en Japón"
+          },
+          "typhoon": "Temporada de tifones",
+          "rainySeason": "Temporada de lluvias"
+        },
+        "weeks": {
+          "noBreak": "Sin festivos en Japón."
+        },
+        "faq": {
+          "title": "Preguntas sobre cuándo ir",
+          "quietQ": {
+            "region": "¿Cuándo hay menos gente en los parques de Japón en {year}?",
+            "tokyo-disney": "¿Cuándo hay menos gente en Tokyo Disney en {year}?",
+            "universal-studios-japan": "¿Cuándo hay menos gente en Universal Studios Japan en {year}?"
+          },
+          "quietA": "El viaje de {days} días desde el {date} tiene la espera máxima más corta: unos {minutes} min, un {percent} % por debajo de la media de {year}. Le siguen {others}.",
+          "christmasQ": "¿Hay mucha gente en Navidad?",
+          "christmasA": "{busy, select, yes {Sí.} other {No.}} La semana de Navidad ({date}) ronda los {minutes} min de espera máxima, frente a {average} min de media en {year}.",
+          "newYearA": "{busy, select, yes {Sí, hasta donde llegan nuestras cifras.} other {No, hasta donde llegan nuestras cifras.}} Empiezan con la semana de Año Nuevo ({date}), con unos {minutes} min de espera máxima, frente a {average} min de media en {year}. La semana de Navidad cae antes.",
+          "partyQ": "¿Cuándo son las noches con entrada aparte?",
+          "partyA": "{list}. Cada una de estas noches pide su propia entrada.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "typhoonQ": "¿Y la temporada de tifones?",
+          "typhoonA": "Va de junio a noviembre y es más fuerte de principios de septiembre a mediados de octubre. En septiembre pasa de media algo más de un tifón cerca de Tokio y otro cerca de Osaka (Agencia Meteorológica de Japón, media de 1991 a 2020), así que el planificador coloca un poco más abajo los viajes de esas semanas. Antes llega la temporada de lluvias, más o menos del 6 de junio al 19 de julio, con lluvia casi todos los días pero sin cierres. En un año normal llueve más en {months}, unos {rain} mm al mes (la media de {period}).",
+          "firstQ": {
+            "region": "¿Primero Tokio o primero Osaka?",
+            "tokyo-disney": "¿Qué parque Disney primero?"
+          },
+          "firstA": "Depende de tus vuelos y de las fechas: el planificador toma las ciudades en el orden que marcan tus aeropuertos y pone cada parque en su día más tranquilo del viaje. Para el viaje desde el {date} queda así: {order}.",
+          "firstItem": "{park} el {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Planificar mi viaje a Japón"
+        },
+        "parks": {
+          "moreHint": "Fuji-Q Highland y LEGOLAND Japan"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Hotel Disney en Maihama",
+            "disney_deluxe": "MiraCosta o Fantasy Springs",
+            "universal": "Hotel oficial de USJ",
+            "park_hotel": "Hotel del parque en Fuji-Q o LEGOLAND",
+            "offsite": "En otro sitio"
+          },
+          "hotelHint": {
+            "disney": "Happy Entry en Tokyo Disneyland, 15 minutos antes, no el día de llegada",
+            "disney_deluxe": "Happy Entry en los dos parques Disney, no el día de llegada",
+            "universal": "A pocos minutos a pie de la entrada, sin entrada anticipada",
+            "park_hotel": "Highland Resort: entrada anticipada en Fuji-Q. LEGOLAND Japan Hotel: a pie hasta la entrada",
+            "offsite": "Sin entrada anticipada"
+          },
+          "hotelShort": {
+            "disney": "hotel Disney",
+            "disney_deluxe": "MiraCosta o Fantasy Springs",
+            "universal": "hotel de USJ",
+            "park_hotel": "hotel del parque",
+            "offsite": "hotel en otro sitio"
+          },
+          "eveningsHint": "Si un parque cierra antes, el plan propone para la noche IKSPIARI junto a los parques Disney o Universal CityWalk Osaka.",
+          "moveBufferHint": "Con el equipaje enviado por delante (takkyubin), suelen bastar 30 minutos."
+        },
+        "details": {
+          "earlyOthers": {
+            "happy_entry": "Happy Entry desde las {time} para huéspedes de los hoteles Disney",
+            "early_entry": "Entrada anticipada desde las {time} para huéspedes del hotel"
+          }
+        },
+        "reason": {
+          "happy_entry": "Tu hotel tiene Happy Entry este día.",
+          "early_entry": "Con tu hotel entras antes al parque este día."
+        },
+        "ics": {
+          "calendarName": "Viaje a Japón {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Sin vacaciones escolares japonesas.",
+            "before_spring_break": "Antes de las vacaciones de primavera japonesas."
+          },
+          "warning": {
+            "school_break": "Vacaciones escolares japonesas."
+          }
+        },
+        "base": {
+          "tokyo": "Tokio",
+          "fujikawaguchiko": "Fujikawaguchiko",
+          "nagoya": "Nagoya",
+          "osaka": "Osaka"
+        },
+        "stayNote": {
+          "tokyo": "Maihama para los dos parques Disney, Shinjuku para los autobuses a Fuji-Q",
+          "fujikawaguchiko": "Kawaguchiko junto al lago, o el Highland Resort en el parque",
+          "nagoya": "La estación de Nagoya para el Shinkansen, o el LEGOLAND Japan Hotel en la entrada",
+          "osaka": "Universal City en la entrada, Umeda o Namba en la ciudad; Kioto está a una hora"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (hoteles Disney)",
+          "disneysea_hotels": "Hoteles de Tokyo DisneySea",
+          "bayside": "Maihama Bayside (Official Hotels)",
+          "shin_urayasu": "Shin-Urayasu (Partner Hotels)",
+          "tokyo_station": "Estación de Tokio",
+          "shinjuku": "Shinjuku",
+          "highland_resort": "Highland Resort Hotel & Spa",
+          "kawaguchiko": "Kawaguchiko",
+          "nagoya_station": "Estación de Nagoya",
+          "kinjo_futo": "Kinjo-futo (LEGOLAND Japan Hotel)",
+          "universal_city": "Universal City (hoteles oficiales)",
+          "umeda": "Umeda (estación de Osaka)",
+          "namba": "Namba",
+          "kyoto_station": "Estación de Kioto"
+        },
+        "moveNote": {
+          "reserve_seat": "Reservar asiento",
+          "forward_luggage": "Enviar el equipaje por delante"
+        },
+        "tickets": {
+          "resort": {
+            "tokyo-disney-resort": "Tokyo Disney Resort",
+            "universal-studios-japan": "Universal Studios Japan",
+            "fuji-q-highland": "Fuji-Q Highland",
+            "legoland-japan": "LEGOLAND Japan"
+          },
+          "resortShort": {
+            "tokyo-disney-resort": "Tokyo Disney",
+            "universal-studios-japan": "USJ",
+            "fuji-q-highland": "Fuji-Q",
+            "legoland-japan": "LEGOLAND"
+          },
+          "market": {
+            "intl": "Vendida fuera de Japón"
+          },
+          "entry": {
+            "tdr-1-day": {
+              "title": "1-Day Passport",
+              "hint": "Un parque desde la apertura; el parque y la fecha se eligen al comprar. No hay entradas de varios días."
+            },
+            "tdr-after-3": {
+              "title": "After 3 Passport",
+              "hint": "Desde las 15:00 los fines de semana y festivos, un parque."
+            },
+            "tdr-after-5": {
+              "title": "After 5 Passport",
+              "hint": "Desde las 17:00 de lunes a viernes, salvo festivos, un parque."
+            },
+            "usj-1-day": {
+              "title": "1-Day Studio Pass",
+              "hint": "Un día, comprado para una fecha fija."
+            },
+            "usj-2-day": {
+              "title": "2-Day Studio Pass",
+              "hint": "Dos días completos seguidos."
+            },
+            "usj-1-5-day": {
+              "title": "1.5-Day Studio Pass",
+              "hint": "El primer día desde las 15:00, el siguiente desde la apertura."
+            },
+            "usj-twilight": {
+              "title": "Twilight Pass",
+              "hint": "Desde las 15:00 el día elegido."
+            },
+            "fujiq-1-day": {
+              "title": "One Day Pass",
+              "hint": "La entrada es gratis; el pase vale un día para todas las atracciones, salvo unas pocas con su propia entrada con hora."
+            },
+            "fujiq-premium": {
+              "title": "Fuji-Q Premium Pass",
+              "hint": "Entrada prioritaria y acceso prioritario a 12 atracciones fuertes, a la venta en CLUB Fuji-Q."
+            },
+            "fujiq-later": {
+              "title": "Afternoon o Sunset Night Pass",
+              "hint": "Todas las atracciones desde las 13:00, o desde las 16:00 los días que el parque sigue abierto después de las 19:00."
+            },
+            "fujiq-thomas": {
+              "title": "Thomas Land Pass",
+              "hint": "Solo las 12 atracciones de Thomas Land."
+            },
+            "fujiq-pass": {
+              "title": "Annual Passport",
+              "hint": "Todas las atracciones durante 365 días desde la compra."
+            },
+            "lego-1-day": {
+              "title": "1DAY Passport",
+              "hint": "Un día, con o sin SEA LIFE Nagoya el mismo día."
+            },
+            "lego-hotel-2-day": {
+              "title": "Combo 2 Day Pass",
+              "hint": "Para huéspedes del LEGOLAND Japan Hotel: el día de llegada y el siguiente, SEA LIFE incluido."
+            },
+            "lego-pass": {
+              "title": "Annual Pass",
+              "hint": "Weekday, Standard o Premium; los días de entrada están en el calendario del pase."
+            }
+          },
+          "variant": {
+            "fujiq-one-day-pass": "Solo el pase",
+            "fujiq-one-day-pass-priority-admission": "Con entrada prioritaria",
+            "fujiq-one-day-pass-virtual-queue": "Con cola virtual",
+            "fujiq-afternoon-pass": "Afternoon Pass",
+            "fujiq-sunset-night-pass": "Sunset Night Pass",
+            "legoland-japan-1-day": "Solo LEGOLAND",
+            "legoland-japan-combo-1-day": "Con SEA LIFE Nagoya"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Japón",
+        "title": "Japón: qué parque qué día",
+        "lead": "Cinco parques de Tokio a Osaka en un solo calendario, día a día, y un planificador que reparte ciudades, noches y parques entre tus fechas.",
+        "link": "Calendario de afluencia de Japón"
+      }
     }
   },
   "news": {
