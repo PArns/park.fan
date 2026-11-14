@@ -3824,6 +3824,48 @@
         "free": "{count} vrij",
         "peak": "piek ongeveer {minutes} min",
         "show": "Plan nu tonen"
+      },
+      "hotel": {
+        "lead": "Een hotel van het resort brengt je eerder de parken in, en het plan rekent daarmee.",
+        "area": "In welke buurt?",
+        "areaLead": "Vanaf hier rekent het plan de weg naar de parken.",
+        "areaOfHotel": "Je hotel ligt in {area}, dus die buurt is al gekozen."
+      },
+      "route": {
+        "arrive": "Waar kom je aan?",
+        "leave": "En vanwaar ga je terug?",
+        "open": "Nog open",
+        "openHint": "Het plan kiest",
+        "openShared": "Het plan kiest het hotel",
+        "oneCity": "Voor {nights, plural, =1 {één nacht} other {# nachten}} stelt het plan één stad voor.",
+        "otherCities": "Andere steden"
+      },
+      "hotels": {
+        "ask": "Waar slaap je in {cities}?",
+        "in": "Waar slaap je in {city}?",
+        "open": "Weet ik nog niet",
+        "openHint": "Het plan rekent de wegen vanaf {area}, zonder vroege toegang.",
+        "moveBuffer": "Tijd voor de hotelwissel",
+        "map": "Schematische kaart: {count, plural, =1 {één buurt} other {# buurten}}, genummerd zoals de lijst eronder, en {parks}.",
+        "mapAreas": "Schematische kaart: {count, plural, =1 {één buurt} other {# buurten}}, genummerd zoals de lijst eronder."
+      },
+      "pace": {
+        "maxHint": "Hoogstens {n, plural, =1 {1 parkdag} other {# parkdagen}} achter elkaar, dan een rustdag.",
+        "noneHint": "Elke dag een park, zolang er parken over zijn.",
+        "streak": "Parkdagen achter elkaar",
+        "patternKey": "Elk patroon is een week: blauw een parkdag, licht een rustdag.",
+        "more": "Verder nog iets?",
+        "startsIn": "De reis begint in {city}.",
+        "endsIn": "De reis eindigt in {city}.",
+        "openUntil": "{park} is op {date} open tot {time}.",
+        "opensAt": "{park} gaat op {date} om {time} open.",
+        "arrivalHint": "Het plan mag dan een park op de aankomstdag zetten.",
+        "departureHint": "Het plan mag dan een park op de vertrekdag zetten."
+      },
+      "evenings": {
+        "hopLocked": "Telt alleen met een ticket met {hopper}. In de volgende stap zie je of het loont voor je plan.",
+        "hopFits": "Met {hopper} {count, plural, =1 {past} other {passen}} {parks} er nog in.",
+        "hopEvening": "Met {hopper} komt op {date} ’s avonds {park} erbij."
       }
     }
   },

@@ -3824,6 +3824,48 @@
         "free": "{count} free",
         "peak": "peak about {minutes} min",
         "show": "Show the plan now"
+      },
+      "hotel": {
+        "lead": "A resort hotel gets you into the parks earlier, and the plan counts on it.",
+        "area": "Which area?",
+        "areaLead": "The plan measures the way to each park from here.",
+        "areaOfHotel": "Your hotel is in {area}, so that area is already chosen."
+      },
+      "route": {
+        "arrive": "Where do you arrive?",
+        "leave": "And where do you leave from?",
+        "open": "Not decided yet",
+        "openHint": "The plan picks",
+        "openShared": "The plan picks the hotel",
+        "oneCity": "For {nights, plural, =1 {one night} other {# nights}} the plan suggests one city.",
+        "otherCities": "Other cities"
+      },
+      "hotels": {
+        "ask": "Where are you staying in {cities}?",
+        "in": "Where are you staying in {city}?",
+        "open": "Don’t know yet",
+        "openHint": "The plan measures the ways from {area}, without early entry.",
+        "moveBuffer": "Time for a hotel change",
+        "map": "Schematic map: {count, plural, =1 {one area} other {# areas}}, numbered as in the list below, and {parks}.",
+        "mapAreas": "Schematic map: {count, plural, =1 {one area} other {# areas}}, numbered as in the list below."
+      },
+      "pace": {
+        "maxHint": "At most {n, plural, =1 {1 park day} other {# park days}} in a row, then a rest day.",
+        "noneHint": "A park every day while there are parks left.",
+        "streak": "Park days in a row",
+        "patternKey": "Each pattern is a week: blue is a park day, pale a rest day.",
+        "more": "Anything else?",
+        "startsIn": "The trip starts in {city}.",
+        "endsIn": "The trip ends in {city}.",
+        "openUntil": "{park} is open until {time} on {date}.",
+        "opensAt": "{park} opens at {time} on {date}.",
+        "arrivalHint": "The plan may then put a park on your arrival day.",
+        "departureHint": "The plan may then put a park on your departure day."
+      },
+      "evenings": {
+        "hopLocked": "Only counts with a ticket that has {hopper}. The next step shows whether it is worth it for your plan.",
+        "hopFits": "With {hopper}, {parks} still {count, plural, =1 {fits} other {fit}} in.",
+        "hopEvening": "With {hopper}, the evening of {date} adds {park}."
       }
     }
   },

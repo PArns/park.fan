@@ -170,7 +170,11 @@ export function schematicMap(places: readonly MapPlace[], box: MapBox): MapPoint
   const k = Number.isFinite(scale) ? scale : 0;
   const offX = box.pad + (innerW - spanX * k) / 2;
   const offY = box.pad + (innerH - spanY * k) / 2;
-  const points = flat.map((p) => ({ key: p.key, x: offX + (p.x - minX) * k, y: offY + (p.y - minY) * k }));
+  const points = flat.map((p) => ({
+    key: p.key,
+    x: offX + (p.x - minX) * k,
+    y: offY + (p.y - minY) * k,
+  }));
   spread(points, box);
   return points.map((p) => ({ key: p.key, x: round1(p.x), y: round1(p.y) }));
 }

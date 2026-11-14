@@ -3824,6 +3824,48 @@
         "free": "{count} frei",
         "peak": "Spitze etwa {minutes} Min.",
         "show": "Plan jetzt zeigen"
+      },
+      "hotel": {
+        "lead": "Ein Hotel der Resorts bringt dich früher in die Parks, und der Plan rechnet damit.",
+        "area": "In welcher Gegend?",
+        "areaLead": "Von hier rechnet der Plan die Wege zu den Parks.",
+        "areaOfHotel": "Dein Hotel liegt in der Gegend {area}, deshalb ist sie schon gewählt."
+      },
+      "route": {
+        "arrive": "Wo kommst du an?",
+        "leave": "Und von wo geht es zurück?",
+        "open": "Noch offen",
+        "openHint": "Der Plan wählt",
+        "openShared": "Der Plan wählt das Hotel",
+        "oneCity": "Für {nights, plural, =1 {eine Nacht} other {# Nächte}} schlägt der Plan eine Stadt vor.",
+        "otherCities": "Andere Städte"
+      },
+      "hotels": {
+        "ask": "Wo schläfst du in {cities}?",
+        "in": "Wo schläfst du in {city}?",
+        "open": "Weiß ich noch nicht",
+        "openHint": "Der Plan rechnet die Wege ab {area}, ohne früheren Einlass.",
+        "moveBuffer": "Zeit für den Hotelwechsel",
+        "map": "Schematische Karte: {count, plural, =1 {eine Gegend} other {# Gegenden}}, nummeriert wie die Liste darunter, und {parks}.",
+        "mapAreas": "Schematische Karte: {count, plural, =1 {eine Gegend} other {# Gegenden}}, nummeriert wie die Liste darunter."
+      },
+      "pace": {
+        "maxHint": "Höchstens {n, plural, =1 {1 Parktag} other {# Parktage}} am Stück, dann ein Ruhetag.",
+        "noneHint": "Jeden Tag ein Park, solange Parks übrig sind.",
+        "streak": "Parktage am Stück",
+        "patternKey": "Ein Muster ist eine Woche: blau ein Parktag, hell ein Ruhetag.",
+        "more": "Und sonst?",
+        "startsIn": "Die Reise beginnt in {city}.",
+        "endsIn": "Die Reise endet in {city}.",
+        "openUntil": "{park} hat am {date} bis {time} offen.",
+        "opensAt": "{park} öffnet am {date} um {time}.",
+        "arrivalHint": "Der Plan darf dann einen Park auf den Anreisetag legen.",
+        "departureHint": "Der Plan darf dann einen Park auf den Abreisetag legen."
+      },
+      "evenings": {
+        "hopLocked": "Zählt nur mit einem Ticket mit {hopper}. Im nächsten Schritt siehst du, ob es sich für deinen Plan lohnt.",
+        "hopFits": "Mit {hopper} {count, plural, =1 {passt} other {passen}} {parks} noch hinein.",
+        "hopEvening": "Mit {hopper} kommt am {date} abends {park} dazu."
       }
     }
   },
