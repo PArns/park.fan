@@ -147,7 +147,7 @@ Ohne Auto steigst du zweimal um. Mit dem TGV fährst du von Marne-la-Vallée–C
 
 ## Tickets
 
-Jeder der beiden Betreiber verkauft nur Tickets für die eigenen Parks, und bei beiden hängt der Preis vom Datum ab.
+Jeder der beiden Betreiber verkauft nur Tickets für die eigenen Parks.
 
 ### Disneyland Paris
 

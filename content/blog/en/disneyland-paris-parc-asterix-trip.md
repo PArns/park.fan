@@ -146,7 +146,7 @@ Without a car you change twice. You take the TGV from Marne-la-Vallée–Chessy 
 
 ## Tickets
 
-Each operator only sells tickets for its own parks, and at both the price depends on the date.
+Each operator only sells tickets for its own parks.
 
 ### Disneyland Paris
 

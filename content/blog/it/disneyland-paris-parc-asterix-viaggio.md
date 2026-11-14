@@ -147,7 +147,7 @@ Senza macchina cambi due volte. Prendi il TGV da Marne-la-Vallée–Chessy all�
 
 ## Biglietti
 
-Ogni gestore vende solo biglietti per i propri parchi, e per entrambi il prezzo dipende dalla data.
+Ogni gestore vende solo biglietti per i propri parchi.
 
 ### Disneyland Paris
 

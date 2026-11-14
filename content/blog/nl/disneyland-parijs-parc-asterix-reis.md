@@ -147,7 +147,7 @@ Zonder auto stap je twee keer over. Met de TGV rijd je van Marne-la-Vallée–Ch
 
 ## Tickets
 
-Elke uitbater verkoopt alleen tickets voor de eigen parken, en bij allebei hangt de prijs af van de datum.
+Elke uitbater verkoopt alleen tickets voor de eigen parken.
 
 ### Disneyland Paris
 

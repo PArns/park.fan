@@ -59,7 +59,7 @@ The Disney Resort Line, a monorail, links the parks. It runs one way round a loo
 
 ### Fuji-Q Highland
 
-Fuji-Q Highland is the coaster park of the trip. It's in Fujiyoshida, one station before Kawaguchiko. In the trip planner you'll find it under Fujikawaguchiko, the town on Lake Kawaguchi. Entry is free. To ride you need a pass or single ride tickets, and the haunted house Senritsu Meikyu, the FUJIYAMA Walk and the FUJIYAMA Slider each need a timed ticket of their own on top. Free entry here is about as free as a restaurant that doesn't charge for the door.
+Fuji-Q Highland is the coaster park of the trip. It's in Fujiyoshida, one station before Kawaguchiko. Its stop in the trip planner is Fujikawaguchiko, the town on Lake Kawaguchi. Entry is free. To ride you need a pass or single ride tickets, and the haunted house Senritsu Meikyu, the FUJIYAMA Walk and the FUJIYAMA Slider each need a timed ticket of their own on top. Free entry here is about as free as a restaurant that doesn't charge for the door.
 
 ![Snow-capped Mount Fuji above a band of cloud, with the steel hills of a roller coaster and a power pylon in front. | From Fuji-Q Highland you can see Mount Fuji on a clear day, here above a band of cloud. | wide](/media/fuji-q-highland/mount-fuji-coasters.jpg)
 
@@ -105,7 +105,7 @@ You can lay out a moving day like this:
 
 ## Luggage and changing hotels
 
-Send your suitcases ahead to the next hotel with a luggage service, takkyubin in Japanese, and board the train with just a backpack. The trip planner assumes you'll do that. On the Tokaido line, a bag of 161 to 250 centimetres in total, length, width and height added up, needs a seat with an oversized baggage area, which you reserve with your ticket. Without the reservation JR Central charges a fee, and anything over 250 centimetres can't come on board at all.
+Send your suitcases ahead to the next hotel with a luggage service, takkyubin in Japanese, and board the train with just a backpack. That's also what the trip planner assumes. On the Tokaido line, a bag of 161 to 250 centimetres in total, length, width and height added up, needs a seat with an oversized baggage area, which you reserve with your ticket. Without the reservation JR Central charges a fee, and anything over 250 centimetres can't come on board at all.
 
 The best-known service is Yamato Transport's TA-Q-BIN. You don't need a reservation. You hand the suitcase in at your hotel's front desk, at a counter at the airport or a station, or at one of their offices, and if your hotel doesn't take luggage, you take it to the nearest office. Check with the next hotel beforehand that it will accept a bag for you. The earliest delivery is the next day, for suitcases handed in by around 18:00. You collect the case at the other end with ID or the receipt. For a morning move, that means the suitcase goes the evening before and you pack a small bag for the last night, as if you were staying over at a friend's.
 

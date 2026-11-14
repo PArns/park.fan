@@ -146,7 +146,7 @@ Sin coche haces dos transbordos. Coges el TGV de Marne-la-Vallée–Chessy al ae
 
 ## Entradas
 
-Cada operador vende solo entradas para sus propios parques, y en los dos el precio depende de la fecha.
+Cada operador vende solo entradas para sus propios parques.
 
 ### Disneyland Paris
 

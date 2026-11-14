@@ -147,7 +147,7 @@ Sans voiture, tu changes deux fois. Tu prends le TGV de Marne-la-Vallée – Che
 
 ## Les billets
 
-Chaque exploitant ne vend que des billets pour ses propres parcs, et chez les deux, le prix dépend de la date.
+Chaque exploitant ne vend que des billets pour ses propres parcs.
 
 ### Disneyland Paris
 
