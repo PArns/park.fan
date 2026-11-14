@@ -12,8 +12,7 @@ import {
   type ColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
 import type { DaySignal } from '@/lib/utils/day-signal-styles';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { addDays, daysBetween } from '@/lib/utils/park-day';
+import { addDays, daysBetween, parkWallClock } from '@/lib/utils/park-day';
 import { earlyPerk, runnerUp } from './plan-copy';
 import {
   dayLockTarget,
@@ -65,18 +64,8 @@ export const WEEK_COLUMNS_PHONE = 3;
 export function parkMinuteOf(iso: string, date: string, timeZone: string): number | null {
   const at = new Date(iso);
   if (Number.isNaN(at.getTime())) return null;
-  const parts = getDateTimeFormat('en-CA', {
-    timeZone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(at);
-  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '00';
-  const localDate = `${get('year')}-${get('month')}-${get('day')}`;
-  return daysBetween(date, localDate) * 1440 + Number(get('hour')) * 60 + Number(get('minute'));
+  const clock = parkWallClock(at, timeZone);
+  return daysBetween(date, clock.date) * 1440 + clock.hour * 60 + clock.minute;
 }
 
 /** One park's stretch of a column, in minutes since the day's midnight. */

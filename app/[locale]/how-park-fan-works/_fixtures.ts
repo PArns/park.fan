@@ -6,6 +6,7 @@ import type {
   RopeDropInfo,
   TypicalWaits,
 } from '@/lib/api/types';
+import { parkWallClock } from '@/lib/utils/park-day';
 
 /**
  * Fixtures for the guide's example UI: every block renders the real production component, fed
@@ -27,28 +28,18 @@ export const DEMO_TIMEZONE = PARK_TZ;
  * to get this right across a DST boundary without a date library.
  */
 export function parkLocalInstant(nowMs: number, hour: number, minute: number): string {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: PARK_TZ,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hour12: false,
-  }).formatToParts(new Date(nowMs));
-  const field = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? 0);
+  const wall = parkWallClock(nowMs, PARK_TZ);
   const wallAsUtc = Date.UTC(
-    field('year'),
-    field('month') - 1,
-    field('day'),
-    field('hour'),
-    field('minute'),
-    field('second')
+    wall.year,
+    wall.month - 1,
+    wall.day,
+    wall.hour,
+    wall.minute,
+    wall.second
   );
   const offsetMs = wallAsUtc - Math.floor(nowMs / 1000) * 1000;
   return new Date(
-    Date.UTC(field('year'), field('month') - 1, field('day'), hour, minute) - offsetMs
+    Date.UTC(wall.year, wall.month - 1, wall.day, hour, minute) - offsetMs
   ).toISOString();
 }
 

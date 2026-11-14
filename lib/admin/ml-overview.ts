@@ -1,6 +1,7 @@
 import type { ChipTone } from '@/app/admin/_ui/primitives';
 import type { MlComponent, MlDecision, MlDecisionProgress } from '@/lib/api/admin-ml-overview';
-import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
+import { getNumberFormat } from '@/lib/utils/intl-format';
+import { parkWallClock } from '@/lib/utils/park-day';
 
 /**
  * The pure half of the ML overview (`app/admin/ml`): wording, colours, order and time formatting,
@@ -119,17 +120,8 @@ export function formatLastRun(value: string | null, timeZone = 'UTC'): string {
   if (day) return `Tag ${day[3]}.${day[2]}.`;
   const parsed = new Date(value);
   if (Number.isNaN(parsed.getTime())) return value;
-  const parts = getDateTimeFormat('de-DE', {
-    day: '2-digit',
-    month: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hourCycle: 'h23',
-    timeZone,
-  }).formatToParts(parsed);
-  const part = (type: Intl.DateTimeFormatPartTypes) =>
-    parts.find((entry) => entry.type === type)?.value ?? '';
-  return `${part('day')}.${part('month')}. ${part('hour')}:${part('minute')}`;
+  const { date, time } = parkWallClock(parsed, timeZone);
+  return `${date.slice(8, 10)}.${date.slice(5, 7)}. ${time}`;
 }
 
 const DRIFT_STATUSES: Record<string, { label: string; tone: ChipTone }> = {

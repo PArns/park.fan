@@ -1,4 +1,5 @@
-import { getDateTimeFormat, formatTime } from '@/lib/utils/intl-format';
+import { formatTime } from '@/lib/utils/intl-format';
+import { parkLocalIso } from '@/lib/utils/park-day';
 import type { WeatherNowcastStep } from '@/lib/api/types';
 
 /**
@@ -14,21 +15,6 @@ export const NOTABLE_GUST_KMH = 50;
  */
 export const LOW_VISIBILITY_M = 1000;
 
-/** Format an instant (ms) as a naive park-local ISO ("YYYY-MM-DDTHH:MM"). */
-function toLocalIso(ms: number, timezone: string): string {
-  return getDateTimeFormat('sv-SE', {
-    timeZone: timezone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })
-    .format(ms)
-    .replace(' ', 'T');
-}
-
 /**
  * The steps whose slot has not fully passed. Step times are naive park-local strings, so the
  * cutoff is compared in the park timezone, against `observedAt` (stable across SSR) as "now".
@@ -40,7 +26,7 @@ export function upcomingNowcastSteps(
 ): WeatherNowcastStep[] {
   const slotMs =
     steps.length >= 2 ? Date.parse(steps[1].time) - Date.parse(steps[0].time) : 15 * 60_000;
-  const cutoff = toLocalIso(Date.parse(observedAt) - slotMs, timezone);
+  const cutoff = parkLocalIso(Date.parse(observedAt) - slotMs, timezone);
   return steps.filter((s) => s.time.slice(0, 16) >= cutoff);
 }
 

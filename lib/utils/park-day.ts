@@ -11,6 +11,70 @@ export function parkDayOf(at: Date | number, timeZone: string | undefined): stri
   return getDateTimeFormat('en-CA', { timeZone }).format(at);
 }
 
+/** An instant as the clock on a park's wall shows it: the day and the time, as text and as numbers. */
+export interface ParkWallClock {
+  /** `YYYY-MM-DD`, the string {@link parkDayOf} answers. */
+  date: string;
+  /** `HH:MM` on the 24-hour clock, `00:00` at midnight. */
+  time: string;
+  year: number;
+  month: number;
+  day: number;
+  hour: number;
+  minute: number;
+  second: number;
+}
+
+const WALL_CLOCK: Intl.DateTimeFormatOptions = {
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hourCycle: 'h23',
+};
+
+/**
+ * An instant on the wall clock of `timeZone`, read once through the cached `en-CA` formatter:
+ * every place that needs a park's local day and time (the planner's now line, the Week view's
+ * blocks, the calendar file, the nowcast and the charts) takes its fields from here. `hourCycle:
+ * 'h23'`, not `hour12: false`, which yields `24` for midnight in some runtimes. An `undefined`
+ * zone is the runtime's own; an invalid instant or an unusable zone throws a `RangeError`.
+ */
+export function parkWallClock(
+  at: Date | number | string,
+  timeZone: string | undefined
+): ParkWallClock {
+  const parts = getDateTimeFormat('en-CA', { ...WALL_CLOCK, timeZone }).formatToParts(
+    typeof at === 'string' ? new Date(at) : at
+  );
+  const get = (type: Intl.DateTimeFormatPartTypes) =>
+    parts.find((p) => p.type === type)?.value ?? '00';
+  const [year, month, day, hour, minute, second] = (
+    ['year', 'month', 'day', 'hour', 'minute', 'second'] as const
+  ).map(get);
+  return {
+    date: `${year}-${month}-${day}`,
+    time: `${hour}:${minute}`,
+    year: Number(year),
+    month: Number(month),
+    day: Number(day),
+    hour: Number(hour),
+    minute: Number(minute),
+    second: Number(second),
+  };
+}
+
+/**
+ * An instant as a naive park-local ISO, `YYYY-MM-DDTHH:MM`: the shape of the API's weather step
+ * times, which the nowcast and the hourly chart compare against as strings.
+ */
+export function parkLocalIso(at: Date | number | string, timeZone: string): string {
+  const { date, time } = parkWallClock(at, timeZone);
+  return `${date}T${time}`;
+}
+
 /** `YYYY-MM-DD` plus `days`, calendar-safe: noon UTC on a plain date, so no zone or DST moves it. */
 export function addDays(isoDate: string, days: number): string {
   const d = new Date(`${isoDate}T12:00:00Z`);
