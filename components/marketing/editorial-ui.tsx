@@ -178,7 +178,9 @@ export function LandingHero(props: LandingHeroProps) {
             </Link>
           </div>
         )}
-        {answer && <div className="mt-4">{answer}</div>}
+        {/* On a phone the photo's credit sits right under the content (HERO_CREDIT_POSITION), and
+            the answer box is as wide as the screen, so the margin keeps the two apart. */}
+        {answer && <div className="mt-4 max-sm:mb-4">{answer}</div>}
       </Reveal>
 
       {!compact && props.stats && props.stats.length > 0 && (
