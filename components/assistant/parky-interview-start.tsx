@@ -34,18 +34,18 @@ export function ParkyInterviewStart({
     <div
       data-parky-interview-start={start.kind}
       className={cn(
-        'border-primary/30 bg-primary/5 flex flex-col gap-2 rounded-xl border p-3',
+        'border-primary/30 bg-primary/5 flex flex-col gap-2 rounded-xl border p-3 sm:flex-row sm:items-center sm:gap-4',
         className
       )}
     >
-      <p className="text-muted-foreground text-xs">{line}</p>
+      <p className="text-muted-foreground text-xs sm:flex-1">{line}</p>
       <Button
         type="button"
         onClick={() => {
           startInterview(start);
           openParky('interview');
         }}
-        className="h-auto min-h-9 w-full whitespace-normal max-sm:h-auto max-sm:min-h-11"
+        className="h-auto min-h-9 w-full whitespace-normal max-sm:h-auto max-sm:min-h-11 sm:w-auto"
       >
         <MessagesSquare aria-hidden="true" />
         {label}
