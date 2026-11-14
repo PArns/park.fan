@@ -154,6 +154,10 @@ theme.
   leads to the finale; a phone hides its Skip there, which would do the same and leaves the label
   no room.
 - **Enter** runs the footer's primary control, with `ENTER_BELONGS_TO` as the guard.
+- **A new step opens at its top.** Next, Back, Skip, a jump from the rail and an answer chip all
+  scroll the dialog's body (not the page) back up before paint, instantly, then put the focus on
+  Parky's question with `preventScroll`, so a long step (Hotel with its map, Route, Tickets) never
+  hands the next one its scroll position.
 - **Leaving for the plan** closes the dialog and puts the answer at the top of the screen with the
   focus in it.
 
