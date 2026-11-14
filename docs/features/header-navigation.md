@@ -47,7 +47,9 @@ nearby-park pin, within 5 km of a park, takes 42 of it. The 47 px this page gave
 ## How a band opens and closes
 
 `useMenuTrigger` (`lib/hooks/use-menu-trigger.ts`) runs every trigger: hover opens, leaving closes
-after 180 ms, click toggles. The open state is **the path it was opened on**
+after 180 ms, click toggles. The first click on a band the hover opened keeps it open, since a
+mouse visitor who hovers and then clicks means "open" both times; the next click closes it. The
+open state is **the path it was opened on**
 (`openedOn === pathname`, with the locale-stripped `pathname` from `@/i18n/navigation`), so a
 navigation closes the band in the same render without a `setState` in an effect, and a locale switch
 does not close it mid-gesture. A plain click on a link to the page already showing closes it too

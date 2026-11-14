@@ -4119,6 +4119,855 @@
         "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
         "link": "Orlando drukte-kalender"
       }
+    },
+    "southern-california": {
+      "nav": {
+        "name": "Zuid-Californië",
+        "area": "Los Angeles en San Diego",
+        "calendar": "Zuid-Californië drukte-kalender",
+        "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis."
+      },
+      "hub": {
+        "title": "Zuid-Californië drukte-kalender",
+        "monthTitle": "Zuid-Californië drukte-kalender {month}",
+        "metaTitle": "Zuid-Californië drukte-kalender & reisplanner",
+        "metaTitleMonth": "Disneyland Californië: drukte-kalender {month}",
+        "metaTitleMonthShort": "Zuid-Californië drukte-kalender {month}",
+        "metaDescription": "Alle acht pretparken in Zuid-Californië, dag voor dag. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Welk park wanneer het rustigst is in het Disneyland Resort, bij Universal Studios Hollywood en in de parken tot San Diego, plus een planner voor je reisdagen.",
+        "metaDescriptionMonth": "De rustigste dagen in Zuid-Californië in {month}: {verdict}. Elk park dag voor dag.",
+        "metaDescriptionMonthPlain": "Zuid-Californië in {month}, dag voor dag: welk park in het Disneyland Resort, bij Universal Studios Hollywood en rond San Diego wanneer het rustigst is.",
+        "lead": "Een kalender voor alle acht parken rond Los Angeles en San Diego, en een planner voor je reisdagen.",
+        "leadMonth": "Alle acht parken rond Los Angeles en San Diego in {month}, dag voor dag, en een planner voor je reisdagen.",
+        "monthIndexLabel": "Zuid-Californië per maand",
+        "calendar": {
+          "caption": "De parken in Zuid-Californië van {from} tot {to}: piekwachttijd in minuten"
+        },
+        "lanes": {
+          "break": "Schoolvakantie in Los Angeles: {name}, {dates}",
+          "unnamedBreak": "Schoolvakantie in Los Angeles",
+          "none": "Deze dagen zijn er geen evenementen en geen schoolvakanties in Los Angeles."
+        },
+        "sheet": {
+          "kicker": "Zuid-Californië · één dag",
+          "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min met de tram, samen {total} min, zonder verkeer"
+        },
+        "when": {
+          "kicker": "Disneyland en Universal",
+          "title": "Beste tijd om Zuid-Californië te bezoeken in {year}",
+          "titleNoYear": "Beste tijd om Zuid-Californië te bezoeken",
+          "pageLink": "Beste tijd om Zuid-Californië te bezoeken in {year}",
+          "pageLinkNoYear": "Beste tijd om Zuid-Californië te bezoeken"
+        },
+        "reasons": {
+          "school_break": "in de schoolvakantie in Los Angeles"
+        },
+        "faq": {
+          "title": "Vragen over de drukte in Zuid-Californië",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in Zuid-Californië?",
+            "qMonth": "Wanneer is het in {month} het rustigst in Zuid-Californië?",
+            "resort": "{resort} heeft de laagste piekwachttijd op {days}.",
+            "day": "{date} ({park}, ongeveer {minutes} min)"
+          },
+          "party": {
+            "q": "Welk park op een feestavond in California Adventure?",
+            "a": "Op {count, plural, =1 {# avond} other {# avonden}} in deze periode sluit California Adventure voor dagbezoekers om {time} voor {name}. De piekwachttijd ligt die dagen rond {on} min, tegenover {off} min op de andere dagen. De dag is korter en de avond mis je. Kies voor een volle dag op die dagen Disneyland, of kom met een feestticket."
+          },
+          "epic": {
+            "q": "Is het in Disneyland in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Maar een beetje.}} In deze periode ligt de piekwachttijd in Disneyland op zaterdag en zondag rond {weekend} min, van maandag tot vrijdag rond {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe ver ligt Universal van Disneyland?",
+            "a": "Van Universal Studios Hollywood naar de Disneyland-parkeerplaats Mickey & Friends in Anaheim rijd je zonder verkeer ongeveer {far} minuten. Van daar brengt de tram je in ongeveer {transfer} minuten naar de ingangen, samen {total} minuten. Vanaf de Disney-hotels en Harbor Boulevard loop je naar beide Disney-parken. Six Flags Magic Mountain ligt ongeveer {near} minuten van Universal. Kaartgegevens: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Reisplanner voor Zuid-Californië"
+        },
+        "dataset": {
+          "name": "Drukte-kalender van de pretparken in Zuid-Californië, {period}",
+          "description": "Per park en dag in het Disneyland Resort, bij Universal Studios Hollywood en in de parken voor een dagtrip: de verwachte piekwachttijd, de drukte vergeleken met een gewone dag in het park en de openingstijden, {period}."
+        },
+        "glance": {
+          "zone": "tijd in Californië"
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Zuid-Californië in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Zuid-Californië"
+        },
+        "resort": {
+          "region": "Disneyland en Universal"
+        },
+        "intro": {
+          "lead": "Elk getal hier is de piekwachttijd: de hoogste wachttijd van elke grote attractie op een dag, gemiddeld over Disneyland, California Adventure en Universal.",
+          "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna staan hier dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met “vorig jaar”.",
+          "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als een slechtere dag. Alle waarden komen uit onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Schoolvakantie in Los Angeles"
+          }
+        },
+        "weeks": {
+          "noBreak": "Geen schoolvakantie in Los Angeles."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in Zuid-Californië?"
+          },
+          "quietA": "De reis van {days} dagen vanaf {date} heeft de laagste piekwachttijd: ongeveer {minutes} min, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met Kerstmis?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} In de kerstweek ({date}) ligt de piekwachttijd rond {minutes} min, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}), met een piekwachttijd rond {minutes} min, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de feestavonden?",
+          "partyA": "{list}. Op die avonden moeten dagbezoekers eerder weg, daarom telt de reisplanner zo’n dag als een kortere parkdag.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Eerst Disneyland of eerst Universal?"
+          },
+          "firstA": "Elk park komt op de dag van je reis met zijn laagste piekwachttijd. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Reis naar Californië plannen"
+        },
+        "parks": {
+          "moreHint": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND en Sesame Place"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel",
+            "offsite": "Ander hotel"
+          },
+          "hotelHint": {
+            "disney": "Disneyland Hotel, Grand Californian of Pixar Place: lopend naar beide parken, zonder vroege toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "offsite": "Ander hotel"
+          },
+          "fireworks": "Avondshows",
+          "fireworksWantHint": "Je parkdagen mijden feestavonden, waarop dagbezoekers eerder weg moeten.",
+          "fireworksAnyHint": "Een feestavond kan een parkdag worden als de lagere piekwachttijd de kortere dag goedmaakt.",
+          "fireworksWantShort": "Avondshows",
+          "eveningsHint": "Sluit een park eerder, dan stelt het plan iets voor de avond voor: het andere Disney-park, Downtown Disney of Universal CityWalk."
+        },
+        "relaxed": {
+          "blocks_relaxed": "De dagen in het Disneyland Resort konden op deze data niet allemaal achter elkaar."
+        },
+        "ics": {
+          "calendarName": "Reis naar Californië {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen schoolvakantie in Los Angeles.",
+            "before_spring_break": "Voor de voorjaarsvakantie in Los Angeles."
+          },
+          "warning": {
+            "school_break": "Schoolvakantie in Los Angeles."
+          }
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-resort": "Disneyland Resort",
+            "universal-studios-hollywood": "Universal Studios Hollywood",
+            "day-trips": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND en Sesame Place"
+          },
+          "resortShort": {
+            "disneyland-resort": "Disneyland",
+            "universal-studios-hollywood": "Universal",
+            "day-trips": "uitstap"
+          },
+          "hopperName": {
+            "disney": "Park Hopper"
+          },
+          "market": {
+            "intl": "Verkocht buiten de VS"
+          },
+          "entry": {
+            "dlr-multi-day": {
+              "title": "Ticket voor 2 tot 5 dagen",
+              "hint": "Willekeurige parkdagen binnen de 13 dagen vanaf het eerste bezoek."
+            },
+            "dlr-1-day": {
+              "title": "Ticket voor 1 dag",
+              "hint": "Eén dag in één park, met Park Hopper in allebei."
+            },
+            "dlr-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Twee Disneyland-dagen en twee bezoeken uit LEGOLAND, SeaWorld, San Diego Zoo en Safari Park, binnen 14 dagen na het eerste bezoek. Ook met twee Universal-dagen."
+            },
+            "ush-1-day": {
+              "title": "Dagticket",
+              "hint": "Geldig op de datum die je geboekt hebt."
+            },
+            "ush-2-day": {
+              "title": "Ticket voor 2 dagen",
+              "hint": "Eerste bezoek op de geboekte datum, het tweede binnen de 7 dagen vanaf die datum."
+            },
+            "ush-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Twee Universal-dagen en twee bezoeken uit LEGOLAND, SeaWorld, San Diego Zoo en Safari Park, binnen 14 dagen na het eerste bezoek."
+            },
+            "knotts": {
+              "title": "Knott’s Berry Farm",
+              "hint": "Dagticket voor een vaste datum. Knott’s Scary Farm heeft een eigen ticket nodig."
+            },
+            "magic-mountain": {
+              "title": "Six Flags Magic Mountain",
+              "hint": "Eén bezoek, op een vaste datum of op een willekeurige openingsdag."
+            },
+            "seaworld-1-day": {
+              "title": "SeaWorld San Diego, 1 dag",
+              "hint": "Voor een vaste datum, of een dag binnen 6 maanden na aankoop."
+            },
+            "seaworld-2-day": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "Het tweede bezoek binnen 14 dagen na het eerste."
+            },
+            "seaworld-2-day-intl": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "Het tweede bezoek binnen 7 dagen na het eerste."
+            },
+            "seaworld-sesame": {
+              "title": "SeaWorld en Sesame Place",
+              "hint": "Two-Park Ticket: één bezoek aan elk park binnen 6 maanden na aankoop."
+            },
+            "seaworld-fun-card": {
+              "title": "SeaWorld Fun Card 2027",
+              "hint": "Zo vaak je wilt tot eind 2027, behalve op de uitgesloten dagen."
+            },
+            "sesame": {
+              "title": "Sesame Place San Diego",
+              "hint": "Voor een vaste datum, of een dag binnen 6 maanden na aankoop."
+            },
+            "legoland": {
+              "title": "LEGOLAND California",
+              "hint": "Met SEA LIFE Aquarium, zonder reservering."
+            },
+            "citypass-san-diego": {
+              "title": "San Diego CityPASS",
+              "hint": "SeaWorld, LEGOLAND of allebei, plus drie attracties in San Diego, 9 dagen achter elkaar vanaf het eerste bezoek."
+            },
+            "gocity": {
+              "title": "Go City Los Angeles",
+              "hint": "De All-Inclusive Pass geldt voor Knott’s, de Pass Plus ook voor Universal en LEGOLAND, één bezoek per park binnen 14 dagen."
+            }
+          },
+          "variant": {
+            "citypass-socal-disneyland": "Met Disneyland",
+            "citypass-socal-disneyland-universal": "Met Disneyland en Universal",
+            "ush-1-day": "General Admission",
+            "ush-express": "Universal Express",
+            "ush-vip-experience": "VIP Experience",
+            "sfmm-1-day": "Vaste datum",
+            "sfmm-any-day": "Good Any Day",
+            "seaworld-sd-1-day": "Single-Day Ticket",
+            "seaworld-sd-any-day": "Any Day Ticket",
+            "sesame-sd-1-day": "Single-Day Ticket",
+            "sesame-sd-any-day": "Any-Day Ticket",
+            "legoland-ca-1-day": "1 dag",
+            "legoland-ca-multi-day": "2 dagen",
+            "gocity-la-all-inclusive": "All-Inclusive Pass",
+            "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Zuid-Californië",
+        "title": "Zuid-Californië: welk park op welke dag",
+        "lead": "Disneyland, California Adventure, Universal Hollywood en vijf andere parken in één kalender: wanneer welk park het rustigst is, en een planner voor je reisdagen.",
+        "link": "Zuid-Californië drukte-kalender"
+      }
+    },
+    "japan": {
+      "nav": {
+        "name": "Japan",
+        "area": "Tokio tot Osaka",
+        "calendar": "Japan drukte-kalender",
+        "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden."
+      },
+      "hub": {
+        "title": "Japan drukte-kalender",
+        "monthTitle": "Japan drukte-kalender {month}",
+        "metaTitle": "Japan drukte-kalender & reisplanner",
+        "metaTitleMonth": "Japan drukte-kalender {month}: Tokyo Disney & USJ",
+        "metaTitleMonthShort": "Japan drukte-kalender {month}",
+        "metaDescription": "Welk park in Japan op welke dag, van Tokyo Disney tot Universal Studios Japan. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt.",
+        "metaDescriptionMonth": "De rustigste dagen in de parken van Japan in {month}: {verdict}. Alle vijf parken dag voor dag.",
+        "metaDescriptionMonthPlain": "Japan in {month}, dag voor dag: de piekwachttijd in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan.",
+        "lead": "Een kalender voor vijf parken tussen Tokio en Osaka, en een planner die je steden op volgorde zet en de nachten verdeelt.",
+        "leadMonth": "Alle vijf parken tussen Tokio en Osaka in {month}, dag voor dag, en een planner die je steden op volgorde zet en de nachten verdeelt.",
+        "monthIndexLabel": "Japan per maand",
+        "glance": {
+          "zone": "tijd in Japan"
+        },
+        "calendar": {
+          "caption": "De parken van Japan, {from} tot {to}: piekwachttijd bij de grote attracties, in minuten"
+        },
+        "lanes": {
+          "break": "Japanse schoolvakanties: {name}, {dates}",
+          "unnamedBreak": "Japanse schoolvakanties",
+          "none": "Geen evenementen in deze dagen."
+        },
+        "sheet": {
+          "kicker": "Japan · één dag",
+          "early": {
+            "happy_entry": "Happy Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Eerder naar binnen vanaf {time} voor hotelgasten"
+          }
+        },
+        "when": {
+          "kicker": "Tokyo Disney en USJ",
+          "title": "Beste tijd om Japan te bezoeken in {year}",
+          "titleNoYear": "Beste tijd om Japan te bezoeken",
+          "pageLink": "Beste tijd om Japan te bezoeken in {year}",
+          "pageLinkNoYear": "Beste tijd om Japan te bezoeken"
+        },
+        "reasons": {
+          "school_break": "in de Japanse schoolvakantie"
+        },
+        "faq": {
+          "title": "Vragen over de parken in Japan",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in de parken van Japan?",
+            "qMonth": "Wanneer is het in {month} het rustigst in de parken van Japan?",
+            "resort": "{resort}: het rustigst {days}; het drukst {busy}.",
+            "day": "{date} ({park}, {minutes} min)",
+            "dayAlone": "{date} ({minutes} min)"
+          },
+          "epic": {
+            "q": "Is Tokyo DisneySea in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Een beetje.}} In deze periode is de piekwachttijd op zaterdag en zondag ongeveer {weekend} min en van maandag tot en met vrijdag ongeveer {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe lang reis je tussen de steden?",
+            "a": "De tijden komen uit de dienstregelingen van JR Central en Fujikyu en gelden van deur tot deur, het wachten op trein of bus inbegrepen: {legs}.",
+            "leg": "van {from} naar {to} ongeveer {duration}",
+            "dayTrip": "{park} kan als dagtrip vanuit {base}, ongeveer {duration} per richting.",
+            "pair": "De {name} verbindt {from} en {to} in ongeveer {minutes} minuten."
+          },
+          "cities": {
+            "q": "In welke volgorde reis ik langs de steden?",
+            "a": "De steden liggen op één lijn: Tokio, Fujikawaguchiko, Nagoya, Osaka. Je verblijven volgen die lijn in één richting, die je vliegvelden bepalen: land je in Tokio en vlieg je terug vanuit Osaka, dan gaat de reis naar het westen; vlieg je terug vanaf waar je geland bent, dan reis je op de vertrekdag terug. De reisplanner verdeelt de nachten zo dat elk park op een rustige dag valt, en nachten die je al geboekt hebt, leg je zelf vast. Fuji-Q Highland blijft een dagtrip vanuit Tokio, tenzij een nacht bij het meer zich terugbetaalt in kortere wachttijden."
+          },
+          "luggage": {
+            "q": "Wat doe ik met mijn bagage als ik van stad wissel?",
+            "a": "De meeste reizigers sturen hun koffers met een bagagedienst (takkyubin) vooruit naar het volgende hotel. In de Shinkansen heeft een stuk bagage van 161 tot 250 cm in totaal een gereserveerde zitplaats met bagageruimte nodig, en groter mag helemaal niet mee (JR Central). Met vooruitgestuurde bagage trekt de reisplanner 30 minuten uit voor elke hotelwissel; draag je alles zelf, dan is het eerder 60. Je kunt kiezen uit 30, 60, 90 of 120 minuten."
+          },
+          "happyEntry": {
+            "q": "Kom ik met een Disney-hotel eerder het park in?",
+            "a": "Ja, met Happy Entry. Gasten van de Disney-hotels mogen 15 minuten voor iedereen Tokyo Disneyland in, gasten van Hotel MiraCosta en het Fantasy Springs Hotel ook eerder Tokyo DisneySea in. Het geldt vanaf de ochtend na het inchecken, en zo rekent de reisplanner het ook; sommige hotels hebben losse dagen zonder. De officiële hotels van Universal Studios Japan hebben geen eerdere toegang."
+          }
+        },
+        "next": {
+          "title": "Reisplanner voor Japan"
+        },
+        "dataset": {
+          "name": "Drukte-kalender van de pretparken in Japan, {period}",
+          "description": "Per park en dag in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan: de verwachte piekwachttijd, de drukte vergeleken met een gewone dag van het park en de openingstijden, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Japan in {year}",
+          "tokyo-disney": "Beste reistijd voor Tokyo Disney in {year}",
+          "universal-studios-japan": "Beste reistijd voor Universal Studios Japan in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Japan",
+          "tokyo-disney": "Beste reistijd voor Tokyo Disney",
+          "universal-studios-japan": "Beste reistijd voor Universal Studios Japan"
+        },
+        "resort": {
+          "region": "Tokyo Disney en USJ",
+          "tokyo-disney": "Tokyo Disney Resort",
+          "universal-studios-japan": "Universal Studios Japan"
+        },
+        "intro": {
+          "lead": "Elk cijfer hier is de piekwachttijd: de hoogste wachttijd van de dag bij elke grote attractie, gemiddeld over de parken van de reis.",
+          "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, de reizen tussen de steden meegerekend, en een dag waarop een park eerder sluit telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna toont de pagina dezelfde weken vorig jaar, zoals wij ze gemeten hebben, met “vorig jaar” erbij.",
+          "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, de reizen tussen de steden meegerekend, en een dag waarop een park eerder sluit telt als een slechtere dag. Elk cijfer op deze pagina is onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Feestdagen en vakanties in Japan"
+          },
+          "typhoon": "Tyfoonseizoen",
+          "rainySeason": "Regenseizoen"
+        },
+        "weeks": {
+          "noBreak": "Geen feestdag in Japan."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in de parken van Japan?",
+            "tokyo-disney": "Wanneer is het in {year} het rustigst in Tokyo Disney?",
+            "universal-studios-japan": "Wanneer is het in {year} het rustigst in Universal Studios Japan?"
+          },
+          "quietA": "De reis van {days} dagen vanaf {date} heeft de kortste piekwachttijd: ongeveer {minutes} min, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met kerst?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} De kerstweek ({date}) zit op een piekwachttijd van ongeveer {minutes} min, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}) op een piekwachttijd van ongeveer {minutes} min, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de avonden met een eigen ticket?",
+          "partyA": "{list}. Voor elk van deze avonden heb je een apart ticket nodig.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "typhoonQ": "Hoe zit het met het tyfoonseizoen?",
+          "typhoonA": "Het loopt van juni tot november en is het sterkst van begin september tot half oktober. In september komt er gemiddeld iets meer dan één tyfoon in de buurt van Tokio en één in de buurt van Osaka (Japanse meteorologische dienst, gemiddelde 1991 tot 2020), daarom zet de reisplanner reizen in die weken wat lager. Daarvoor valt het regenseizoen, van ongeveer 6 juni tot 19 juli, met regen op de meeste dagen maar zonder sluitingen. In een gewoon jaar valt de meeste regen in {months}, ongeveer {rain} mm per maand (het gemiddelde van {period}).",
+          "firstQ": {
+            "region": "Eerst Tokio of eerst Osaka?",
+            "tokyo-disney": "Welk Disney-park eerst?"
+          },
+          "firstA": "Dat hangt van je vluchten en de data af: de reisplanner neemt de steden in de volgorde die je vliegvelden bepalen en zet elk park op zijn rustigste dag van de reis. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Japan-reis plannen"
+        },
+        "parks": {
+          "moreHint": "Fuji-Q Highland en LEGOLAND Japan"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel in Maihama",
+            "disney_deluxe": "MiraCosta of Fantasy Springs",
+            "universal": "Officieel USJ-hotel",
+            "park_hotel": "Parkhotel bij Fuji-Q of LEGOLAND",
+            "offsite": "Ergens anders"
+          },
+          "hotelHint": {
+            "disney": "Happy Entry in Tokyo Disneyland, 15 minuten eerder, niet op de dag van inchecken",
+            "disney_deluxe": "Happy Entry in beide Disney-parken, niet op de dag van inchecken",
+            "universal": "Een paar minuten lopen naar de ingang, geen eerdere toegang",
+            "park_hotel": "Highland Resort: eerder naar binnen bij Fuji-Q. LEGOLAND Japan Hotel: lopend naar de ingang",
+            "offsite": "Geen vroege toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "disney_deluxe": "MiraCosta of Fantasy Springs",
+            "universal": "USJ-hotel",
+            "park_hotel": "parkhotel",
+            "offsite": "hotel elders"
+          },
+          "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor.",
+          "moveBufferHint": "Met vooruitgestuurde bagage (takkyubin) is 30 minuten meestal genoeg."
+        },
+        "details": {
+          "earlyOthers": {
+            "happy_entry": "Happy Entry vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Eerder naar binnen vanaf {time} voor hotelgasten"
+          }
+        },
+        "reason": {
+          "happy_entry": "Je hotel heeft op deze dag Happy Entry.",
+          "early_entry": "Met je hotel kom je op deze dag eerder het park in."
+        },
+        "ics": {
+          "calendarName": "Japan-reis {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen Japanse schoolvakantie.",
+            "before_spring_break": "Voor de Japanse voorjaarsvakantie."
+          },
+          "warning": {
+            "school_break": "Japanse schoolvakantie."
+          }
+        },
+        "base": {
+          "tokyo": "Tokio",
+          "fujikawaguchiko": "Fujikawaguchiko",
+          "nagoya": "Nagoya",
+          "osaka": "Osaka"
+        },
+        "stayNote": {
+          "tokyo": "Maihama voor beide Disney-parken, Shinjuku voor de bussen naar Fuji-Q",
+          "fujikawaguchiko": "Kawaguchiko aan het meer, of het Highland Resort bij het park",
+          "nagoya": "Station Nagoya voor de Shinkansen, of het LEGOLAND Japan Hotel bij de ingang",
+          "osaka": "Universal City bij de ingang, Umeda of Namba in de stad; Kyoto ligt een uur verderop"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (Disney-hotels)",
+          "disneysea_hotels": "Hotels bij Tokyo DisneySea",
+          "bayside": "Maihama Bayside (Official Hotels)",
+          "shin_urayasu": "Shin-Urayasu (Partner Hotels)",
+          "tokyo_station": "Station Tokio",
+          "shinjuku": "Shinjuku",
+          "highland_resort": "Highland Resort Hotel & Spa",
+          "kawaguchiko": "Kawaguchiko",
+          "nagoya_station": "Station Nagoya",
+          "kinjo_futo": "Kinjo-futo (LEGOLAND Japan Hotel)",
+          "universal_city": "Universal City (officiële hotels)",
+          "umeda": "Umeda (station Osaka)",
+          "namba": "Namba",
+          "kyoto_station": "Station Kyoto"
+        },
+        "moveNote": {
+          "reserve_seat": "Zitplaats reserveren",
+          "forward_luggage": "Bagage vooruitsturen"
+        },
+        "tickets": {
+          "resort": {
+            "tokyo-disney-resort": "Tokyo Disney Resort",
+            "universal-studios-japan": "Universal Studios Japan",
+            "fuji-q-highland": "Fuji-Q Highland",
+            "legoland-japan": "LEGOLAND Japan"
+          },
+          "resortShort": {
+            "tokyo-disney-resort": "Tokyo Disney",
+            "universal-studios-japan": "USJ",
+            "fuji-q-highland": "Fuji-Q",
+            "legoland-japan": "LEGOLAND"
+          },
+          "market": {
+            "intl": "Buiten Japan verkocht"
+          },
+          "entry": {
+            "tdr-1-day": {
+              "title": "1-Day Passport",
+              "hint": "Eén park vanaf de opening; het park en de dag kies je bij de aankoop. Meerdaagse tickets bestaan niet."
+            },
+            "tdr-after-3": {
+              "title": "After 3 Passport",
+              "hint": "Vanaf 15.00 uur in het weekend en op feestdagen, één park."
+            },
+            "tdr-after-5": {
+              "title": "After 5 Passport",
+              "hint": "Vanaf 17.00 uur van maandag tot en met vrijdag, behalve op feestdagen, één park."
+            },
+            "usj-1-day": {
+              "title": "1-Day Studio Pass",
+              "hint": "Eén dag, gekocht voor een vaste datum."
+            },
+            "usj-2-day": {
+              "title": "2-Day Studio Pass",
+              "hint": "Twee hele dagen achter elkaar."
+            },
+            "usj-1-5-day": {
+              "title": "1.5-Day Studio Pass",
+              "hint": "De eerste dag vanaf 15.00 uur, de volgende vanaf de opening."
+            },
+            "usj-twilight": {
+              "title": "Twilight Pass",
+              "hint": "Vanaf 15.00 uur op de gekozen dag."
+            },
+            "fujiq-1-day": {
+              "title": "One Day Pass",
+              "hint": "De toegang is gratis; de pas geldt een dag voor alle attracties, op een paar met een eigen tijdticket na."
+            },
+            "fujiq-premium": {
+              "title": "Fuji-Q Premium Pass",
+              "hint": "Eerder naar binnen en voorrang bij 12 thrillrides, verkocht via CLUB Fuji-Q."
+            },
+            "fujiq-later": {
+              "title": "Afternoon of Sunset Night Pass",
+              "hint": "Alle attracties vanaf 13.00 uur, of vanaf 16.00 uur op dagen dat het park na 19.00 uur open is."
+            },
+            "fujiq-thomas": {
+              "title": "Thomas Land Pass",
+              "hint": "Alleen de 12 attracties in Thomas Land."
+            },
+            "fujiq-pass": {
+              "title": "Annual Passport",
+              "hint": "Alle attracties, 365 dagen vanaf de aankoop."
+            },
+            "lego-1-day": {
+              "title": "1DAY Passport",
+              "hint": "Eén dag, met of zonder SEA LIFE Nagoya op dezelfde dag."
+            },
+            "lego-hotel-2-day": {
+              "title": "Combo 2 Day Pass",
+              "hint": "Voor gasten van het LEGOLAND Japan Hotel: de aankomstdag en de dag erna, SEA LIFE inbegrepen."
+            },
+            "lego-pass": {
+              "title": "Annual Pass",
+              "hint": "Weekday, Standard of Premium; de toegangsdagen staan in de kalender van de pas."
+            }
+          },
+          "variant": {
+            "fujiq-one-day-pass": "Alleen de pas",
+            "fujiq-one-day-pass-priority-admission": "Met eerdere toegang",
+            "fujiq-one-day-pass-virtual-queue": "Met virtuele wachtrij",
+            "fujiq-afternoon-pass": "Afternoon Pass",
+            "fujiq-sunset-night-pass": "Sunset Night Pass",
+            "legoland-japan-1-day": "Alleen LEGOLAND",
+            "legoland-japan-combo-1-day": "Met SEA LIFE Nagoya"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Japan",
+        "title": "Japan: welk park op welke dag",
+        "lead": "Vijf parken van Tokio tot Osaka in één kalender, dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt.",
+        "link": "Japan drukte-kalender"
+      }
+    },
+    "paris": {
+      "nav": {
+        "name": "Parijs",
+        "area": "Frankrijk",
+        "calendar": "Drukte-kalender Disneyland Paris & Parc Astérix",
+        "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht."
+      },
+      "hub": {
+        "title": "Drukte-kalender Disneyland Paris & Parc Astérix",
+        "monthTitle": "Drukte-kalender {month}: Disneyland Paris & Parc Astérix",
+        "monthQuestion": "Welk park op welke dag in {month}?",
+        "metaTitle": "Disneyland Paris & Parc Astérix: drukte-kalender & planner",
+        "metaTitleMonth": "Drukte-kalender {month}: Disneyland Paris & Parc Astérix",
+        "metaTitleMonthShort": "Drukte-kalender Disneyland Paris {month}",
+        "metaDescription": "Disneyland Paris en Parc Astérix dag voor dag, met reisplanner. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Piekwachttijd en drukte in Disneyland Park, Disney Adventure World en Parc Astérix, dag voor dag, plus een reisplanner voor parkdagen en hotels.",
+        "metaDescriptionMonth": "De rustigste dagen in Disneyland Paris en Parc Astérix in {month}: {verdict}. Alle drie de parken dag voor dag.",
+        "metaDescriptionMonthPlain": "Disneyland Paris en Parc Astérix in {month}, dag voor dag: piekwachttijd, drukte en openingstijden van alle drie de parken.",
+        "lead": "Een kalender voor Disneyland Paris en Parc Astérix, twee resorts met eigen hotels, en een planner die je zegt waar je overnacht.",
+        "leadMonth": "Disneyland Paris en Parc Astérix in {month}, dag voor dag, en een planner die je zegt waar je overnacht.",
+        "monthIndexLabel": "Drukte-kalender per maand",
+        "glance": {
+          "zone": "tijd in Parijs"
+        },
+        "calendar": {
+          "caption": "Disneyland Paris en Parc Astérix van {from} tot {to}: piekwachttijd bij de grote attracties, in minuten"
+        },
+        "lanes": {
+          "break": "Schoolvakantie Parijs (zone C): {name}, {dates}",
+          "unnamedBreak": "Schoolvakantie Parijs (zone C)",
+          "none": "Geen evenementen en geen schoolvakantie in Parijs in deze dagen."
+        },
+        "sheet": {
+          "kicker": "Parijs · één dag",
+          "early": {
+            "extra_magic_time": "Extra Magic Time vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Early Entry bij een paar attracties vanaf {time} voor gasten van de parkhotels"
+          },
+          "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min lopen naar de ingang, samen {total} min, zonder verkeer"
+        },
+        "when": {
+          "kicker": "Reizen met alle drie de parken",
+          "title": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
+          "titleNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix",
+          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
+          "pageLinkNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix"
+        },
+        "reasons": {
+          "school_break": "schoolvakantie Parijs"
+        },
+        "faq": {
+          "title": "Vragen over de drukte",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in Disneyland Paris en Parc Astérix?",
+            "qMonth": "Wanneer is het in {month} het rustigst in Disneyland Paris en Parc Astérix?",
+            "resort": "{resort}: het rustigst {days}, het drukst {busy}.",
+            "day": "{date} ({park}, ongeveer {minutes} min)"
+          },
+          "epic": {
+            "q": "Is Disneyland Park in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Een beetje.}} In deze periode is de piekwachttijd op zaterdag en zondag ongeveer {weekend} min, van maandag tot en met vrijdag ongeveer {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe ver ligt Parc Astérix van Disneyland Paris?",
+            "a": "Met de auto is het zonder verkeer ongeveer {far} minuten van de Disney-parkeerplaats naar Parc Astérix, plus {transfer} minuten lopen tussen de parkeerplaats en de Disney-ingangen, samen {total} minuten. Zonder auto neem je de TGV van Marne-la-Vallée–Chessy naar luchthaven Charles de Gaulle en daar vanaf Roissypôle de shuttle van Parc Astérix. De ingangen van Disneyland Park en Disney Adventure World liggen {near} minuten lopen uit elkaar. Kaartgegevens: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Reisplanner voor Disneyland Paris & Parc Astérix"
+        },
+        "dataset": {
+          "name": "Drukte-kalender Disneyland Paris & Parc Astérix, {period}",
+          "description": "Per park en per dag in Disneyland Park, Disney Adventure World en Parc Astérix: de verwachte piekwachttijd bij de grote attracties, de drukte vergeleken met een normale dag in dat park en de openingstijden, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
+          "disneyland-paris": "Beste reistijd voor Disneyland Paris in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Disneyland Paris & Parc Astérix",
+          "disneyland-paris": "Beste reistijd voor Disneyland Paris"
+        },
+        "resort": {
+          "region": "Disneyland Paris en Parc Astérix",
+          "disneyland-paris": "Disneyland Paris"
+        },
+        "intro": {
+          "lead": "De minuten zijn de piekwachttijd, de hoogste wachttijd van de dag bij elke grote attractie, gemiddeld over de parken van de reis.",
+          "body": "We plannen elke reis zoals de reisplanner dat doet: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als slechtere dag. Tot {date} rekenen we met onze voorspelling, voor de weken daarna met de drukte die we vorig jaar gemeten hebben, gemarkeerd met “vorig jaar”.",
+          "bodyForecast": "We plannen elke reis zoals de reisplanner dat doet: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als slechtere dag. Alle getallen zijn onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Schoolvakantie Parijs (zone C)"
+          }
+        },
+        "weeks": {
+          "noBreak": "Geen schoolvakantie in Parijs."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in Disneyland Paris en Parc Astérix?",
+            "disneyland-paris": "Wanneer is het in {year} het rustigst in Disneyland Paris?"
+          },
+          "quietA": "Het rustigst is de reis van {days} dagen vanaf {date}: een piekwachttijd van ongeveer {minutes} min, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met Kerstmis?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} In de kerstweek ({date}) is de piekwachttijd ongeveer {minutes} min, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers reiken.} other {Nee, voor zover onze cijfers reiken.}} Ze beginnen met de week rond nieuwjaar ({date}), met een piekwachttijd van ongeveer {minutes} min, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de avonden met een eigen ticket?",
+          "partyA": "{list}. Op die avonden moeten dagbezoekers eerder weg, daarom legt de reisplanner er geen volledige parkdag op.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Eerst Disneyland Paris of eerst Parc Astérix?",
+            "disneyland-paris": "Welk Disney-park eerst?"
+          },
+          "firstA": "Elk park komt op zijn rustigste dag van de reis, en daaruit volgt de volgorde. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Reis plannen"
+        },
+        "parks": {
+          "moreHint": "Geen andere parken in deze regio"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel",
+            "parc_asterix": "Hotel van Parc Astérix",
+            "offsite": "Ander hotel"
+          },
+          "hotelHint": {
+            "disney": "Extra Magic Time, meestal een uur voor de opening in beide Disney-parken; ook in Davy Crockett Ranch",
+            "parc_asterix": "Early Entry: een paar attracties 30 minuten eerder",
+            "offsite": "Ook partnerhotels en Parijs; geen vroegere toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "parc_asterix": "hotel Parc Astérix",
+            "offsite": "hotel elders"
+          },
+          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village."
+        },
+        "details": {
+          "earlyOthers": {
+            "extra_magic_time": "Extra Magic Time vanaf {time} voor gasten van de Disney-hotels",
+            "early_entry": "Early Entry bij een paar attracties vanaf {time} voor gasten van de parkhotels"
+          }
+        },
+        "reason": {
+          "party_night": "Een avond met een eigen ticket."
+        },
+        "ics": {
+          "calendarName": "Reis naar Parijs {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen schoolvakantie in Parijs.",
+            "before_spring_break": "Vlak voor de schoolvakantie in Parijs."
+          },
+          "warning": {
+            "school_break": "Schoolvakantie in Parijs.",
+            "party_nights": "{count, plural, =1 {1 avond} other {# avonden}} met een eigen ticket: dagbezoekers moeten dan eerder weg."
+          }
+        },
+        "bases": {
+          "disneyland-paris": {
+            "name": "Disneyland Paris",
+            "note": "De Disney-hotels aan Lake Disney liggen op loopafstand van de parken en hebben Extra Magic Time. Vanaf de partnerhotels in Val d'Europe en Val de France rijdt een gratis shuttle."
+          },
+          "parc-asterix": {
+            "name": "Parc Astérix",
+            "note": "De hotels van het park liggen op loopafstand van de ingang, en hun gasten mogen bij een paar attracties 30 minuten eerder in."
+          },
+          "paris": {
+            "name": "Parijs",
+            "note": "Vanaf Châtelet–Les Halles rijdt de RER A naar Disneyland Paris en de RER B naar de shuttle van Parc Astérix op de luchthaven."
+          }
+        },
+        "gateways": {
+          "XED": "Station Marne-la-Vallée–Chessy",
+          "CDG": "Luchthaven Parijs-Charles de Gaulle",
+          "ORY": "Luchthaven Parijs-Orly"
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-paris": "Disneyland Paris",
+            "parc-asterix": "Parc Astérix"
+          },
+          "resortShort": {
+            "disneyland-paris": "Disney",
+            "parc-asterix": "Astérix"
+          },
+          "hopperName": {
+            "disney": "toegang tot beide parken"
+          },
+          "entry": {
+            "dlp-1-day": {
+              "title": "Dagticket, 1 of 2 parken",
+              "hint": "Geldig op de datum die je bij de aankoop hebt gekozen."
+            },
+            "dlp-multi-day": {
+              "title": "Ticket voor 2, 3 of 4 dagen",
+              "hint": "Opeenvolgende dagen vanaf de geboekte datum, elke dag beide parken."
+            },
+            "dlp-liberte": {
+              "title": "Dagticket zonder datum (Liberté)",
+              "hint": "Een jaar geldig; de bezoekdag reserveer je vooraf. Niet op 31 oktober en 31 december."
+            },
+            "dlp-pass": {
+              "title": "Jaarabonnement (Disneyland Pass)",
+              "hint": "Bronze One, Bronze Max, Silver of Gold. Voor elk bezoek reserveer je vooraf."
+            },
+            "asterix-1-day": {
+              "title": "Dagticket met datum",
+              "hint": "Billet Futé of Liberté Flex. Voor de nocturnes van Peur sur le Parc heb je een eigen ticket nodig."
+            },
+            "asterix-2-day": {
+              "title": "Ticket voor 2 dagen",
+              "hint": "Twee dagen achter elkaar, alleen te koop aan de kassa van het park."
+            },
+            "asterix-noel": {
+              "title": "Billet Noël",
+              "hint": "Eén dag naar keuze tijdens Noël Gaulois."
+            },
+            "asterix-pass": {
+              "title": "Seizoenspas (Pass Saison)",
+              "hint": "Découverte, Gaulois of Premium. Eén bezoek per dag, behalve op de blokkeerdagen van de pas."
+            }
+          },
+          "variant": {
+            "dlp-pass-bronze-one": "Bronze One (één park per dag)",
+            "dlp-pass": "Bronze Max, Silver of Gold"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Parijs",
+        "title": "Disneyland Paris en Parc Astérix: welk park op welke dag",
+        "lead": "Disneyland Paris heeft twee parken, Parc Astérix één, en beide resorts hebben eigen hotels. In de kalender staan alle drie dag voor dag met hun piekwachttijd, en in de reisplanner zie je waar je voor welk park het best overnacht.",
+        "link": "Drukte-kalender Disneyland Paris & Parc Astérix"
+      }
     }
   },
   "news": {

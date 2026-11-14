@@ -4119,6 +4119,855 @@
         "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
         "link": "Orlando Crowd Calendar"
       }
+    },
+    "southern-california": {
+      "nav": {
+        "name": "Southern California",
+        "area": "Los Angeles and San Diego",
+        "calendar": "Southern California Crowd Calendar",
+        "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip."
+      },
+      "hub": {
+        "title": "Southern California Crowd Calendar",
+        "monthTitle": "Southern California Crowd Calendar {month}",
+        "metaTitle": "Southern California Crowd Calendar & Trip Planner",
+        "metaTitleMonth": "Disneyland California Crowd Calendar {month}",
+        "metaTitleMonthShort": "Southern California Crowd Calendar {month}",
+        "metaDescription": "All eight Southern California theme parks, day by day. Quietest in the next 30 days: {verdict}.",
+        "metaDescriptionPlain": "Which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and the parks down to San Diego, plus a planner for your trip dates.",
+        "metaDescriptionMonth": "Quietest Southern California days in {month}: {verdict}. Every park, day by day.",
+        "metaDescriptionMonthPlain": "Southern California in {month}, day by day: which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and around San Diego.",
+        "lead": "A calendar for all eight parks around Los Angeles and San Diego, and a planner for your trip days.",
+        "leadMonth": "All eight parks around Los Angeles and San Diego in {month}, day by day, and a planner for your trip days.",
+        "monthIndexLabel": "Southern California by month",
+        "calendar": {
+          "caption": "Southern California’s parks, {from} to {to}: peak wait in minutes"
+        },
+        "lanes": {
+          "break": "Los Angeles school holidays: {name}, {dates}",
+          "unnamedBreak": "Los Angeles school holidays",
+          "none": "No events or Los Angeles school holidays in these days."
+        },
+        "sheet": {
+          "kicker": "Southern California · one day",
+          "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min by tram, {total} min in all, without traffic"
+        },
+        "when": {
+          "kicker": "Disneyland and Universal",
+          "title": "Best time to visit Southern California in {year}",
+          "titleNoYear": "Best time to visit Southern California",
+          "pageLink": "Best time to visit Southern California in {year}",
+          "pageLinkNoYear": "Best time to visit Southern California"
+        },
+        "reasons": {
+          "school_break": "during Los Angeles school holidays"
+        },
+        "faq": {
+          "title": "Questions about Southern California crowds",
+          "quietest": {
+            "q": "When is Southern California least crowded in the next few weeks?",
+            "qMonth": "When is Southern California least crowded in {month}?",
+            "resort": "{resort} has its lowest peak wait on {days}.",
+            "day": "{date} ({park}, about {minutes} min)"
+          },
+          "party": {
+            "q": "Which park on a California Adventure party night?",
+            "a": "On {count, plural, =1 {# night} other {# nights}} in this period California Adventure closes to day guests at {time} for {name}. The peak wait on those days is about {on} min, against {off} min on its other days. The day is shorter, and you miss the evening. For a full day, go to Disneyland on those dates, or come with a party ticket."
+          },
+          "epic": {
+            "q": "Is Disneyland busier on weekends?",
+            "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period Disneyland’s peak wait is about {weekend} min on Saturdays and Sundays and about {weekday} min Monday to Friday."
+          },
+          "distance": {
+            "q": "How far is Universal from Disneyland?",
+            "a": "From Universal Studios Hollywood to Disneyland’s Mickey & Friends car park in Anaheim is about {far} minutes by car without traffic. The tram from there to the gates takes about {transfer} minutes, {total} minutes in all. From the Disney hotels and Harbor Boulevard you walk to both Disney parks. Six Flags Magic Mountain is about {near} minutes from Universal. Map data: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Southern California trip planner"
+        },
+        "dataset": {
+          "name": "Southern California theme park crowd calendar, {period}",
+          "description": "Per park and day at the Disneyland Resort, Universal Studios Hollywood and the day-trip parks: the expected peak wait, the crowd level against the park’s normal day, and the opening hours, {period}."
+        },
+        "glance": {
+          "zone": "California time"
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Best time to visit Southern California in {year}"
+        },
+        "name": {
+          "region": "Best time to visit Southern California"
+        },
+        "resort": {
+          "region": "Disneyland and Universal"
+        },
+        "intro": {
+          "lead": "Every figure here is the peak wait: each big ride’s highest wait of the day, averaged over Disneyland, California Adventure and Universal.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. All of it comes from our forecast."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Los Angeles school holidays"
+          }
+        },
+        "weeks": {
+          "noBreak": "No Los Angeles school holidays."
+        },
+        "faq": {
+          "title": "Questions about when to go",
+          "quietQ": {
+            "region": "When is Southern California least crowded in {year}?"
+          },
+          "quietA": "The {days}-day trip from {date} has the lowest peak wait: about {minutes} min, {percent}% below the {year} average. Next come {others}.",
+          "christmasQ": "Is Christmas busy?",
+          "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at a peak wait of about {minutes} min, against {average} min across {year}.",
+          "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at a peak wait of about {minutes} min, against {average} min across {year}. Christmas week itself comes before that.",
+          "partyQ": "When are the party nights?",
+          "partyA": "{list}. On those evenings day guests have to leave early, so the trip planner counts such a day as a shorter park day.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Disneyland or Universal first?"
+          },
+          "firstA": "Each park goes on the day of your trip with its lowest peak wait. For the trip from {date} that’s {order}.",
+          "firstItem": "{park} on {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Plan my California trip"
+        },
+        "parks": {
+          "moreHint": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND and Sesame Place"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney hotel",
+            "offsite": "Other hotel"
+          },
+          "hotelHint": {
+            "disney": "Disneyland Hotel, Grand Californian or Pixar Place: a walk to both parks, no early entry"
+          },
+          "hotelShort": {
+            "disney": "Disney hotel",
+            "offsite": "other hotel"
+          },
+          "fireworks": "Night shows",
+          "fireworksWantHint": "Your park days avoid party nights, when day guests have to leave early.",
+          "fireworksAnyHint": "A party night can be a park day if its lower peak wait makes up for the shorter day.",
+          "fireworksWantShort": "Night shows",
+          "eveningsHint": "Where a park closes early, the plan suggests an evening: the other Disney park, Downtown Disney or Universal CityWalk."
+        },
+        "relaxed": {
+          "blocks_relaxed": "The Disneyland Resort days couldn’t all go back to back on these dates."
+        },
+        "ics": {
+          "calendarName": "California trip {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "No Los Angeles school holidays.",
+            "before_spring_break": "Before the Los Angeles spring break."
+          },
+          "warning": {
+            "school_break": "Los Angeles school holidays."
+          }
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-resort": "Disneyland Resort",
+            "universal-studios-hollywood": "Universal Studios Hollywood",
+            "day-trips": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND and Sesame Place"
+          },
+          "resortShort": {
+            "disneyland-resort": "Disneyland",
+            "universal-studios-hollywood": "Universal",
+            "day-trips": "side trip"
+          },
+          "hopperName": {
+            "disney": "Park Hopper"
+          },
+          "market": {
+            "intl": "Sold outside the US"
+          },
+          "entry": {
+            "dlr-multi-day": {
+              "title": "2- to 5-day ticket",
+              "hint": "Any park days within the 13 days from the first visit."
+            },
+            "dlr-1-day": {
+              "title": "1-day ticket",
+              "hint": "One day in one park, or in both with Park Hopper."
+            },
+            "dlr-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Two Disneyland days and two visits from LEGOLAND, SeaWorld, San Diego Zoo and Safari Park, within 14 days of the first visit. Also sold with two Universal days."
+            },
+            "ush-1-day": {
+              "title": "1-day ticket",
+              "hint": "Valid on the date you booked."
+            },
+            "ush-2-day": {
+              "title": "2-day ticket",
+              "hint": "First visit on the date you booked, the second within the 7 days from that date."
+            },
+            "ush-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Two Universal days and two visits from LEGOLAND, SeaWorld, San Diego Zoo and Safari Park, within 14 days of the first visit."
+            },
+            "knotts": {
+              "title": "Knott’s Berry Farm",
+              "hint": "A ticket for one date. Knott’s Scary Farm needs a ticket of its own."
+            },
+            "magic-mountain": {
+              "title": "Six Flags Magic Mountain",
+              "hint": "One visit, on a date you pick or on any day the park is open."
+            },
+            "seaworld-1-day": {
+              "title": "SeaWorld San Diego, 1 day",
+              "hint": "For one date, or any day within 6 months of buying."
+            },
+            "seaworld-2-day": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "The second visit within 14 days of the first."
+            },
+            "seaworld-2-day-intl": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "The second visit within 7 days of the first."
+            },
+            "seaworld-sesame": {
+              "title": "SeaWorld and Sesame Place",
+              "hint": "Two-Park Ticket: one visit to each within 6 months of buying."
+            },
+            "seaworld-fun-card": {
+              "title": "SeaWorld Fun Card 2027",
+              "hint": "As often as you like until the end of 2027, outside blockout days."
+            },
+            "sesame": {
+              "title": "Sesame Place San Diego",
+              "hint": "For one date, or any day within 6 months of buying."
+            },
+            "legoland": {
+              "title": "LEGOLAND California",
+              "hint": "SEA LIFE Aquarium included, no reservation needed."
+            },
+            "citypass-san-diego": {
+              "title": "San Diego CityPASS",
+              "hint": "SeaWorld, LEGOLAND or both, plus three San Diego attractions, over 9 days in a row from the first visit."
+            },
+            "gocity": {
+              "title": "Go City Los Angeles",
+              "hint": "The All-Inclusive Pass covers Knott’s, the Pass Plus adds Universal and LEGOLAND, one visit each within 14 days."
+            }
+          },
+          "variant": {
+            "citypass-socal-disneyland": "With Disneyland",
+            "citypass-socal-disneyland-universal": "With Disneyland and Universal",
+            "ush-1-day": "General Admission",
+            "ush-express": "Universal Express",
+            "ush-vip-experience": "VIP Experience",
+            "sfmm-1-day": "Dated ticket",
+            "sfmm-any-day": "Good Any Day",
+            "seaworld-sd-1-day": "Single-Day Ticket",
+            "seaworld-sd-any-day": "Any Day Ticket",
+            "sesame-sd-1-day": "Single-Day Ticket",
+            "sesame-sd-any-day": "Any-Day Ticket",
+            "legoland-ca-1-day": "1 day",
+            "legoland-ca-multi-day": "2 days",
+            "gocity-la-all-inclusive": "All-Inclusive Pass",
+            "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Southern California",
+        "title": "Southern California: which park on which day",
+        "lead": "Disneyland, California Adventure, Universal Hollywood and five more parks in one calendar: which one is quietest when, and a planner for your trip dates.",
+        "link": "Southern California Crowd Calendar"
+      }
+    },
+    "japan": {
+      "nav": {
+        "name": "Japan",
+        "area": "Tokyo to Osaka",
+        "calendar": "Japan Crowd Calendar",
+        "calendarHint": "Five parks day by day, and a planner for a trip across several cities."
+      },
+      "hub": {
+        "title": "Japan Crowd Calendar",
+        "monthTitle": "Japan Crowd Calendar {month}",
+        "metaTitle": "Japan Crowd Calendar & Trip Planner",
+        "metaTitleMonth": "Japan Crowd Calendar {month}: Tokyo Disney & USJ",
+        "metaTitleMonthShort": "Japan Crowd Calendar {month}",
+        "metaDescription": "Which Japan park on which day, from Tokyo Disney to Universal Studios Japan. Quietest in the next 30 days: {verdict}.",
+        "metaDescriptionPlain": "Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan day by day, and a trip planner that fits cities, nights and parks to your dates.",
+        "metaDescriptionMonth": "Quietest days at Japan's parks in {month}: {verdict}. All five parks day by day.",
+        "metaDescriptionMonthPlain": "Japan in {month}, day by day: the peak wait at Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan.",
+        "lead": "A calendar for five parks between Tokyo and Osaka, and a planner that puts your cities in order and splits the nights.",
+        "leadMonth": "All five parks between Tokyo and Osaka in {month}, day by day, and a planner that puts your cities in order and splits the nights.",
+        "monthIndexLabel": "Japan by month",
+        "glance": {
+          "zone": "Japan time"
+        },
+        "calendar": {
+          "caption": "Japan's parks, {from} to {to}: peak wait at the big rides, in minutes"
+        },
+        "lanes": {
+          "break": "Japanese school holidays: {name}, {dates}",
+          "unnamedBreak": "Japanese school holidays",
+          "none": "No events in these days."
+        },
+        "sheet": {
+          "kicker": "Japan · one day",
+          "early": {
+            "happy_entry": "Happy Entry from {time} for Disney Hotel guests",
+            "early_entry": "Early entry from {time} for hotel guests"
+          }
+        },
+        "when": {
+          "kicker": "Tokyo Disney and USJ",
+          "title": "Best time to visit Japan in {year}",
+          "titleNoYear": "Best time to visit Japan",
+          "pageLink": "Best time to visit Japan in {year}",
+          "pageLinkNoYear": "Best time to visit Japan"
+        },
+        "reasons": {
+          "school_break": "during Japanese school holidays"
+        },
+        "faq": {
+          "title": "Questions about Japan's parks",
+          "quietest": {
+            "q": "When are Japan's parks least crowded in the next few weeks?",
+            "qMonth": "When are Japan's parks least crowded in {month}?",
+            "resort": "{resort}: quietest {days}; busiest {busy}.",
+            "day": "{date} ({park}, {minutes} min)",
+            "dayAlone": "{date} ({minutes} min)"
+          },
+          "epic": {
+            "q": "Is Tokyo DisneySea busier at weekends?",
+            "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period the peak wait is about {weekend} min on Saturdays and Sundays and about {weekday} min from Monday to Friday."
+          },
+          "distance": {
+            "q": "How long does it take between the cities?",
+            "a": "The times come from JR Central's and Fujikyu's timetables and run door to door, with the wait for the train or bus: {legs}.",
+            "leg": "{from} to {to} about {duration}",
+            "dayTrip": "{park} works as a day trip from {base}, about {duration} each way.",
+            "pair": "The {name} links {from} and {to} in about {minutes} minutes."
+          },
+          "cities": {
+            "q": "In which order do I travel through the cities?",
+            "a": "The cities lie on one line: Tokyo, Fujikawaguchiko, Nagoya, Osaka. Your stays follow it in one direction, set by your airports: land in Tokyo and fly home from Osaka, and you travel west; fly home from where you landed, and you travel back on the day you leave. The trip planner splits the nights so that every park falls on a quiet day, and you fix the nights you've already booked yourself. Fuji-Q Highland stays a day trip from Tokyo unless a night by the lake pays off in shorter waits."
+          },
+          "luggage": {
+            "q": "What do I do with my luggage when I change cities?",
+            "a": "Most travellers send their suitcases ahead to the next hotel with a luggage service (takkyubin). On the Shinkansen a bag of 161 to 250 cm in total needs a reserved seat with an oversized baggage area, and a bigger one can't board at all (JR Central). With your bags sent ahead, the trip planner allows 30 minutes for each change of hotel; if you carry them, it's closer to 60. You can choose 30, 60, 90 or 120 minutes."
+          },
+          "happyEntry": {
+            "q": "Does a Disney Hotel get me into the park early?",
+            "a": "Yes, with Happy Entry. Guests of the Disney Hotels get into Tokyo Disneyland 15 minutes before everybody else, and guests of Hotel MiraCosta and the Fantasy Springs Hotel into Tokyo DisneySea early too. It starts the morning after you check in, which is how the trip planner counts it, and some hotels have single days without it. Universal Studios Japan's official hotels have no early entry."
+          }
+        },
+        "next": {
+          "title": "Trip planner for Japan"
+        },
+        "dataset": {
+          "name": "Japan theme park crowd calendar, {period}",
+          "description": "Per park and day at Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan: the expected peak wait, the crowd level against the park's normal day, and the opening hours, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Best time to visit Japan in {year}",
+          "tokyo-disney": "Best time to visit Tokyo Disney in {year}",
+          "universal-studios-japan": "Best time to visit Universal Studios Japan in {year}"
+        },
+        "name": {
+          "region": "Best time to visit Japan",
+          "tokyo-disney": "Best time to visit Tokyo Disney",
+          "universal-studios-japan": "Best time to visit Universal Studios Japan"
+        },
+        "resort": {
+          "region": "Tokyo Disney and USJ",
+          "tokyo-disney": "Tokyo Disney Resort",
+          "universal-studios-japan": "Universal Studios Japan"
+        },
+        "intro": {
+          "lead": "Every figure here is the peak wait: each big ride's highest wait of the day, averaged over the trip's parks.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, the moves between cities counted, and a day on which a park closes early counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, the moves between cities counted, and a day on which a park closes early counts as a worse one. Every figure on this page is our forecast."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Holidays in Japan"
+          },
+          "typhoon": "Typhoon season",
+          "rainySeason": "Rainy season"
+        },
+        "weeks": {
+          "noBreak": "No public holiday in Japan."
+        },
+        "faq": {
+          "title": "Questions about when to go",
+          "quietQ": {
+            "region": "When are Japan's parks least crowded in {year}?",
+            "tokyo-disney": "When is Tokyo Disney least crowded in {year}?",
+            "universal-studios-japan": "When is Universal Studios Japan least crowded in {year}?"
+          },
+          "quietA": "The {days}-day trip from {date} has the shortest peak wait: about {minutes} min, {percent}% below the {year} average. Next come {others}.",
+          "christmasQ": "Is Christmas busy?",
+          "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at a peak wait of about {minutes} min, against {average} min across {year}.",
+          "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at a peak wait of about {minutes} min, against {average} min across {year}. Christmas week itself comes before that.",
+          "partyQ": "When are the separately ticketed evenings?",
+          "partyA": "{list}. Each of these evenings needs a ticket of its own.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "typhoonQ": "What about typhoon season?",
+          "typhoonA": "It runs from June to November and is strongest from early September to mid-October. In September a little over one typhoon on average comes near Tokyo, and one near Osaka (Japan Meteorological Agency, 1991 to 2020 average), so the trip planner ranks trips in those weeks a little lower. Before it comes the rainy season, from about 6 June to 19 July, with rain on most days but no closures. In a usual year the most rain falls in {months}, about {rain} mm a month (the average for {period}).",
+          "firstQ": {
+            "region": "Tokyo or Osaka first?",
+            "tokyo-disney": "Which Disney park first?"
+          },
+          "firstA": "It depends on your flights and the dates: the trip planner takes the cities in the order your airports set and puts each park on its quietest day of the trip. For the trip from {date} that is {order}.",
+          "firstItem": "{park} on {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Plan my Japan trip"
+        },
+        "parks": {
+          "moreHint": "Fuji-Q Highland and LEGOLAND Japan"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney Hotel in Maihama",
+            "disney_deluxe": "MiraCosta or Fantasy Springs",
+            "universal": "Official USJ hotel",
+            "park_hotel": "Park hotel at Fuji-Q or LEGOLAND",
+            "offsite": "Somewhere else"
+          },
+          "hotelHint": {
+            "disney": "Happy Entry at Tokyo Disneyland, 15 minutes early, not on the day you check in",
+            "disney_deluxe": "Happy Entry at both Disney parks, not on the day you check in",
+            "universal": "A few minutes' walk to the gate, no early entry",
+            "park_hotel": "Highland Resort: early entry at Fuji-Q. LEGOLAND Japan Hotel: a walk to the gate",
+            "offsite": "No early entry"
+          },
+          "hotelShort": {
+            "disney": "Disney Hotel",
+            "disney_deluxe": "MiraCosta or Fantasy Springs",
+            "universal": "USJ hotel",
+            "park_hotel": "park hotel",
+            "offsite": "hotel elsewhere"
+          },
+          "eveningsHint": "Where a park closes early, the plan suggests IKSPIARI by the Disney parks or Universal CityWalk Osaka for the evening.",
+          "moveBufferHint": "With your bags sent ahead (takkyubin), 30 minutes is usually enough."
+        },
+        "details": {
+          "earlyOthers": {
+            "happy_entry": "Happy Entry from {time} for Disney Hotel guests",
+            "early_entry": "Early entry from {time} for hotel guests"
+          }
+        },
+        "reason": {
+          "happy_entry": "Your hotel gets Happy Entry on this day.",
+          "early_entry": "Your hotel gets you into the park early on this day."
+        },
+        "ics": {
+          "calendarName": "Japan trip {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "No Japanese school holidays.",
+            "before_spring_break": "Before the Japanese spring holidays."
+          },
+          "warning": {
+            "school_break": "Japanese school holidays."
+          }
+        },
+        "base": {
+          "tokyo": "Tokyo",
+          "fujikawaguchiko": "Fujikawaguchiko",
+          "nagoya": "Nagoya",
+          "osaka": "Osaka"
+        },
+        "stayNote": {
+          "tokyo": "Maihama for both Disney parks, Shinjuku for the buses to Fuji-Q",
+          "fujikawaguchiko": "Kawaguchiko by the lake, or the Highland Resort at the park",
+          "nagoya": "Nagoya Station for the Shinkansen, or the LEGOLAND Japan Hotel at the gate",
+          "osaka": "Universal City at the gate, Umeda or Namba in town; Kyoto is an hour away"
+        },
+        "gateway": {
+          "HND": "Haneda",
+          "NRT": "Narita",
+          "NGO": "Chubu Centrair",
+          "KIX": "Kansai",
+          "ITM": "Itami"
+        },
+        "area": {
+          "maihama": "Maihama (Disney Hotels)",
+          "disneysea_hotels": "Tokyo DisneySea hotels",
+          "bayside": "Maihama Bayside (Official Hotels)",
+          "shin_urayasu": "Shin-Urayasu (Partner Hotels)",
+          "tokyo_station": "Tokyo Station",
+          "shinjuku": "Shinjuku",
+          "highland_resort": "Highland Resort Hotel & Spa",
+          "kawaguchiko": "Kawaguchiko",
+          "nagoya_station": "Nagoya Station",
+          "kinjo_futo": "Kinjo-futo (LEGOLAND Japan Hotel)",
+          "universal_city": "Universal City (official hotels)",
+          "umeda": "Umeda (Osaka Station)",
+          "namba": "Namba",
+          "kyoto_station": "Kyoto Station"
+        },
+        "moveNote": {
+          "reserve_seat": "Reserve a seat",
+          "forward_luggage": "Send your bags ahead"
+        },
+        "tickets": {
+          "resort": {
+            "tokyo-disney-resort": "Tokyo Disney Resort",
+            "universal-studios-japan": "Universal Studios Japan",
+            "fuji-q-highland": "Fuji-Q Highland",
+            "legoland-japan": "LEGOLAND Japan"
+          },
+          "resortShort": {
+            "tokyo-disney-resort": "Tokyo Disney",
+            "universal-studios-japan": "USJ",
+            "fuji-q-highland": "Fuji-Q",
+            "legoland-japan": "LEGOLAND"
+          },
+          "market": {
+            "intl": "Sold outside Japan"
+          },
+          "entry": {
+            "tdr-1-day": {
+              "title": "1-Day Passport",
+              "hint": "One park from opening; you fix the park and the date when you buy. There's no multi-day ticket."
+            },
+            "tdr-after-3": {
+              "title": "After 3 Passport",
+              "hint": "From 15:00 on weekends and public holidays, one park."
+            },
+            "tdr-after-5": {
+              "title": "After 5 Passport",
+              "hint": "From 17:00 Monday to Friday, except public holidays, one park."
+            },
+            "usj-1-day": {
+              "title": "1-Day Studio Pass",
+              "hint": "One day, bought for a set date."
+            },
+            "usj-2-day": {
+              "title": "2-Day Studio Pass",
+              "hint": "Two full days in a row."
+            },
+            "usj-1-5-day": {
+              "title": "1.5-Day Studio Pass",
+              "hint": "The first day from 15:00, the next from opening."
+            },
+            "usj-twilight": {
+              "title": "Twilight Pass",
+              "hint": "From 15:00 on the day you chose."
+            },
+            "fujiq-1-day": {
+              "title": "One Day Pass",
+              "hint": "Entry is free; the pass covers every ride for a day, apart from a few with a timed ticket of their own."
+            },
+            "fujiq-premium": {
+              "title": "Fuji-Q Premium Pass",
+              "hint": "Priority admission and priority boarding on 12 thrill rides, sold through CLUB Fuji-Q."
+            },
+            "fujiq-later": {
+              "title": "Afternoon or Sunset Night Pass",
+              "hint": "Every ride from 13:00, or from 16:00 on days the park stays open past 19:00."
+            },
+            "fujiq-thomas": {
+              "title": "Thomas Land Pass",
+              "hint": "The 12 Thomas Land rides only."
+            },
+            "fujiq-pass": {
+              "title": "Annual Passport",
+              "hint": "Every ride for 365 days from the day you buy it."
+            },
+            "lego-1-day": {
+              "title": "1DAY Passport",
+              "hint": "One day, with or without SEA LIFE Nagoya on the same day."
+            },
+            "lego-hotel-2-day": {
+              "title": "Combo 2 Day Pass",
+              "hint": "For LEGOLAND Japan Hotel guests: the day you arrive and the next, SEA LIFE included."
+            },
+            "lego-pass": {
+              "title": "Annual Pass",
+              "hint": "Weekday, Standard or Premium; the admission days are on the pass calendar."
+            }
+          },
+          "variant": {
+            "fujiq-one-day-pass": "Pass only",
+            "fujiq-one-day-pass-priority-admission": "With priority admission",
+            "fujiq-one-day-pass-virtual-queue": "With virtual queue",
+            "fujiq-afternoon-pass": "Afternoon Pass",
+            "fujiq-sunset-night-pass": "Sunset Night Pass",
+            "legoland-japan-1-day": "LEGOLAND only",
+            "legoland-japan-combo-1-day": "With SEA LIFE Nagoya"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Japan",
+        "title": "Japan: which park on which day",
+        "lead": "Five parks from Tokyo to Osaka in one calendar, day by day, and a trip planner that fits the cities, the nights and the parks to your dates.",
+        "link": "Japan Crowd Calendar"
+      }
+    },
+    "paris": {
+      "nav": {
+        "name": "Paris",
+        "area": "France",
+        "calendar": "Disneyland Paris & Parc Astérix Crowd Calendar",
+        "calendarHint": "Which of the three parks on which day, and where to stay for it."
+      },
+      "hub": {
+        "title": "Disneyland Paris & Parc Astérix Crowd Calendar",
+        "monthTitle": "Crowd Calendar for {month}: Disneyland Paris & Parc Astérix",
+        "monthQuestion": "Which park on which day in {month}?",
+        "metaTitle": "Disneyland Paris & Parc Astérix Crowd Calendar & Planner",
+        "metaTitleMonth": "Disneyland Paris & Parc Astérix Crowd Calendar, {month}",
+        "metaTitleMonthShort": "Disneyland Paris Crowd Calendar, {month}",
+        "metaDescription": "Disneyland Paris and Parc Astérix day by day, with a trip planner. Quietest in the next 30 days: {verdict}.",
+        "metaDescriptionPlain": "Peak wait and crowd level at Disneyland Park, Disney Adventure World and Parc Astérix, day by day, plus a trip planner for park days and hotels.",
+        "metaDescriptionMonth": "The quietest days at Disneyland Paris and Parc Astérix in {month}: {verdict}. All three parks, day by day.",
+        "metaDescriptionMonthPlain": "Disneyland Paris and Parc Astérix in {month}, day by day: peak wait, crowd level and opening hours at all three parks.",
+        "lead": "A calendar for Disneyland Paris and Parc Astérix, two resorts with their own hotels, and a planner that tells you where to stay.",
+        "leadMonth": "Disneyland Paris and Parc Astérix in {month}, day by day, and a planner that tells you where to stay.",
+        "monthIndexLabel": "Crowd calendar by month",
+        "glance": {
+          "zone": "Paris time"
+        },
+        "calendar": {
+          "caption": "Disneyland Paris and Parc Astérix from {from} to {to}: peak wait at the big rides, in minutes"
+        },
+        "lanes": {
+          "break": "Paris school holidays (zone C): {name}, {dates}",
+          "unnamedBreak": "Paris school holidays (zone C)",
+          "none": "No events and no Paris school holidays in these days."
+        },
+        "sheet": {
+          "kicker": "Paris · one day",
+          "early": {
+            "extra_magic_time": "Extra Magic Time from {time} for Disney hotel guests",
+            "early_entry": "Early Entry to some rides from {time} for the park's hotel guests"
+          },
+          "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min on foot to the gate, {total} min in all, without traffic"
+        },
+        "when": {
+          "kicker": "Trips with all three parks",
+          "title": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
+          "titleNoYear": "Best time to visit Disneyland Paris & Parc Astérix",
+          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
+          "pageLinkNoYear": "Best time to visit Disneyland Paris & Parc Astérix"
+        },
+        "reasons": {
+          "school_break": "Paris school holidays"
+        },
+        "faq": {
+          "title": "Questions about crowds",
+          "quietest": {
+            "q": "When are Disneyland Paris and Parc Astérix quietest in the next few weeks?",
+            "qMonth": "When are Disneyland Paris and Parc Astérix quietest in {month}?",
+            "resort": "{resort}: quietest {days}, busiest {busy}.",
+            "day": "{date} ({park}, about {minutes} min)"
+          },
+          "epic": {
+            "q": "Is Disneyland Park busier at weekends?",
+            "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period its peak wait is about {weekend} min on Saturdays and Sundays and about {weekday} min Monday to Friday."
+          },
+          "distance": {
+            "q": "How far is Parc Astérix from Disneyland Paris?",
+            "a": "By car it's about {far} minutes without traffic from the Disney car park to Parc Astérix, plus {transfer} minutes on foot between the car park and the Disney gates, {total} minutes in all. Without a car, take the TGV from Marne-la-Vallée–Chessy to Charles de Gaulle airport and the Parc Astérix shuttle from Roissypôle there. The gates of Disneyland Park and Disney Adventure World are {near} minutes' walk apart. Map data: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Trip planner for Disneyland Paris & Parc Astérix"
+        },
+        "dataset": {
+          "name": "Disneyland Paris & Parc Astérix crowd calendar, {period}",
+          "description": "Per park and day at Disneyland Park, Disney Adventure World and Parc Astérix: the expected peak wait at the big rides, the crowd level against a normal day at that park, and the opening hours, {period}."
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
+          "disneyland-paris": "Best time to visit Disneyland Paris in {year}"
+        },
+        "name": {
+          "region": "Best time to visit Disneyland Paris & Parc Astérix",
+          "disneyland-paris": "Best time to visit Disneyland Paris"
+        },
+        "resort": {
+          "region": "Disneyland Paris and Parc Astérix",
+          "disneyland-paris": "Disneyland Paris"
+        },
+        "intro": {
+          "lead": "The minutes are the peak wait, each big ride's highest wait of the day, averaged over the trip's parks.",
+          "body": "We plan each trip the way the trip planner does: every park on its best day, and a day when day guests have to leave early counts as a worse day. Up to {date} we use our forecast, and for the weeks after it the crowds we measured last year, marked “last year”.",
+          "bodyForecast": "We plan each trip the way the trip planner does: every park on its best day, and a day when day guests have to leave early counts as a worse day. Every figure is our forecast."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Paris school holidays (zone C)"
+          }
+        },
+        "weeks": {
+          "noBreak": "No Paris school holidays."
+        },
+        "faq": {
+          "title": "Questions about when to go",
+          "quietQ": {
+            "region": "When are Disneyland Paris and Parc Astérix quietest in {year}?",
+            "disneyland-paris": "When is Disneyland Paris quietest in {year}?"
+          },
+          "quietA": "The quietest {days}-day trip starts on {date}: a peak wait of about {minutes} min, {percent}% below the {year} average. After it come {others}.",
+          "christmasQ": "Is it busy at Christmas?",
+          "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) has a peak wait of about {minutes} min, against {average} min on average in {year}.",
+          "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at a peak wait of about {minutes} min, against {average} min on average in {year}. Christmas week itself comes before it.",
+          "partyQ": "When are the separately ticketed evenings?",
+          "partyA": "{list}. On these evenings day guests have to leave early, so the trip planner puts no full park day on them.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Disneyland Paris first, or Parc Astérix?",
+            "disneyland-paris": "Which Disney park first?"
+          },
+          "firstA": "Each park goes on its quietest day of the trip, and the order follows from that. For the trip starting on {date}, that's {order}.",
+          "firstItem": "{park} on {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Plan the trip"
+        },
+        "parks": {
+          "moreHint": "No other parks in this region"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney hotel",
+            "parc_asterix": "Parc Astérix hotel",
+            "offsite": "Another hotel"
+          },
+          "hotelHint": {
+            "disney": "Extra Magic Time, usually an hour before opening at both Disney parks; Davy Crockett Ranch included",
+            "parc_asterix": "Early Entry: some rides 30 minutes early",
+            "offsite": "Partner hotels and central Paris included; no early entry"
+          },
+          "hotelShort": {
+            "disney": "Disney hotel",
+            "parc_asterix": "Parc Astérix hotel",
+            "offsite": "hotel elsewhere"
+          },
+          "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village."
+        },
+        "details": {
+          "earlyOthers": {
+            "extra_magic_time": "Extra Magic Time from {time} for Disney hotel guests",
+            "early_entry": "Early Entry to some rides from {time} for the park's hotel guests"
+          }
+        },
+        "reason": {
+          "party_night": "A separately ticketed evening."
+        },
+        "ics": {
+          "calendarName": "Paris trip {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "No Paris school holidays.",
+            "before_spring_break": "Just before the Paris school holidays."
+          },
+          "warning": {
+            "school_break": "Paris school holidays.",
+            "party_nights": "{count, plural, =1 {1 separately ticketed evening} other {# separately ticketed evenings}}: day guests have to leave early."
+          }
+        },
+        "bases": {
+          "disneyland-paris": {
+            "name": "Disneyland Paris",
+            "note": "The Disney hotels on Lake Disney are a walk from the gates and get Extra Magic Time. The partner hotels in Val d'Europe and Val de France run a free shuttle."
+          },
+          "parc-asterix": {
+            "name": "Parc Astérix",
+            "note": "The park's hotels are a walk from the gate, and their guests get into some rides 30 minutes early."
+          },
+          "paris": {
+            "name": "Paris",
+            "note": "From Châtelet–Les Halles the RER A runs to Disneyland Paris, and the RER B to the Parc Astérix shuttle at the airport."
+          }
+        },
+        "gateways": {
+          "XED": "Marne-la-Vallée–Chessy station",
+          "CDG": "Paris Charles de Gaulle airport",
+          "ORY": "Paris Orly airport"
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-paris": "Disneyland Paris",
+            "parc-asterix": "Parc Astérix"
+          },
+          "resortShort": {
+            "disneyland-paris": "Disney",
+            "parc-asterix": "Astérix"
+          },
+          "hopperName": {
+            "disney": "park hopping"
+          },
+          "entry": {
+            "dlp-1-day": {
+              "title": "1-day ticket, 1 or 2 parks",
+              "hint": "Valid on the date you chose when you bought it."
+            },
+            "dlp-multi-day": {
+              "title": "2-, 3- or 4-day ticket",
+              "hint": "Consecutive days from the date you booked, both parks every day."
+            },
+            "dlp-liberte": {
+              "title": "Undated 1-day ticket (Liberté)",
+              "hint": "Valid for a year; you book the visit date in advance. Not valid on 31 October or 31 December."
+            },
+            "dlp-pass": {
+              "title": "Annual pass (Disneyland Pass)",
+              "hint": "Bronze One, Bronze Max, Silver or Gold. Every visit needs a reservation."
+            },
+            "asterix-1-day": {
+              "title": "Dated 1-day ticket",
+              "hint": "Billet Futé or Liberté Flex. The Peur sur le Parc nocturnes need a ticket of their own."
+            },
+            "asterix-2-day": {
+              "title": "2-day ticket",
+              "hint": "Two days in a row, sold only at the park's ticket office."
+            },
+            "asterix-noel": {
+              "title": "Billet Noël",
+              "hint": "Any one day during Noël Gaulois."
+            },
+            "asterix-pass": {
+              "title": "Season pass (Pass Saison)",
+              "hint": "Découverte, Gaulois or Premium. One visit a day, except on the pass's restricted days."
+            }
+          },
+          "variant": {
+            "dlp-pass-bronze-one": "Bronze One (one park a day)",
+            "dlp-pass": "Bronze Max, Silver or Gold"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Paris",
+        "title": "Disneyland Paris and Parc Astérix: which park on which day",
+        "lead": "Disneyland Paris has two parks, Parc Astérix one, and each resort has its own hotels. The calendar has all three day by day with their peak wait, and the trip planner shows where to stay for which park.",
+        "link": "Disneyland Paris & Parc Astérix Crowd Calendar"
+      }
     }
   },
   "news": {
