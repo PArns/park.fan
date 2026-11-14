@@ -44,7 +44,7 @@ interface RouteRow {
 /**
  * Route, in a region that sleeps in several cities (Japan, Paris): where the trip lands and where it
  * leaves from as cards, the city first and its airports small, then the cities on a line with their
- * nights. The ends are the visitor's, the middle is the plan's: a city's nights read as the plan
+ * nights (the stepper shows the number; a screen reader hears "4 nights"). The ends are the visitor's, the middle is the plan's: a city's nights read as the plan
  * picked them until the stepper sets them. A gateway several bases share (Charles de Gaulle) pins
  * no base, so its card is the plan's choice. A trip of two nights or fewer sleeps in one city: the
  * step says so and folds the other cities away.
@@ -176,13 +176,13 @@ function RouteLine() {
                   </span>
                 )}
                 <span className="flex min-w-0 flex-1 flex-col">
-                  <span className="flex flex-wrap items-baseline gap-x-2 text-sm font-semibold">
+                  <span className="flex items-baseline gap-x-2 text-sm font-semibold">
                     {name}
-                    <span className="text-muted-foreground text-xs font-normal">
+                    <span className="text-muted-foreground text-xs font-normal whitespace-nowrap">
                       {row.fixed !== null ? tRoute('fixed') : tRoute('byPlan')}
                     </span>
                   </span>
-                  <span className="text-muted-foreground text-xs leading-snug">
+                  <span className="text-muted-foreground truncate text-xs leading-snug">
                     {row.fixed === 0
                       ? tRoute('dayTrips')
                       : row.parks.length > 0
@@ -211,8 +211,17 @@ function RouteLine() {
                   )}
                 </span>
                 <PlanStepper
-                  value={shown === null ? '–' : tRoute('nights', { count: shown })}
-                  valueClassName="w-20"
+                  value={
+                    shown === null ? (
+                      '–'
+                    ) : (
+                      <>
+                        <span aria-hidden="true">{shown}</span>
+                        <span className="sr-only">{tRoute('nights', { count: shown })}</span>
+                      </>
+                    )
+                  }
+                  valueClassName="w-8"
                   canDecrement={current > 0}
                   canIncrement={current < nights}
                   onDecrement={() =>

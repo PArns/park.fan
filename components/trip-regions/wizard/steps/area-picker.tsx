@@ -104,7 +104,7 @@ export function AreaPicker({
   return (
     <div className="flex flex-col gap-2.5" data-wizard-areas="cards">
       <AreaMap areas={known} parks={mapParks(region, known, parks)} value={value} />
-      <WizardOptionGroup labelledBy={labelledBy}>
+      <WizardOptionGroup labelledBy={labelledBy} className="sm:grid-cols-2">
         {known.map((key, i) => (
           <WizardOptionCard
             key={key}
@@ -252,7 +252,7 @@ function AreaMap({
           : t('mapAreas', { count: areas.length })
       }
       viewBox={`0 0 ${MAP_BOX.width} ${MAP_BOX.height}`}
-      className="bg-muted/40 border-border/60 aspect-[2/1] w-full rounded-xl border"
+      className="bg-muted/40 border-border/60 aspect-[2/1] max-h-56 w-full rounded-xl border"
       data-wizard-area-map=""
     >
       <clipPath id={clipId}>
