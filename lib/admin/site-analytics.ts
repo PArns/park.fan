@@ -7,7 +7,7 @@ import type {
   SiteEventName,
 } from '@/lib/analytics/site-analytics';
 import type { LinkBlock } from '@/lib/analytics/internal-link';
-import type { SeenSection } from '@/lib/analytics/section-seen';
+import { BLOCK_SEEN_SECTIONS, type SeenSection } from '@/lib/analytics/section-seen';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
 import { tripRegionConfig, tripRegionTitle } from '@/lib/trip-regions/registry';
 import type {
@@ -1062,6 +1062,14 @@ export const SECTION_LABEL: Record<SeenSection, string> = {
 /** The places in the order the page has them. */
 export const SEEN_SECTION_ORDER = Object.keys(SECTION_LABEL) as SeenSection[];
 
+/**
+ * The places that say how far down a park page was read, every one listed in the reach table; a
+ * block's own mark (the planner tile) is a row there only once it was seen.
+ */
+const DEPTH_SECTION_ORDER = SEEN_SECTION_ORDER.filter(
+  (section) => !BLOCK_SEEN_SECTIONS.includes(section)
+);
+
 /** The header's menus in German. */
 export const NAV_MENU_LABEL: Record<NavMenuId, string> = {
   guides: 'Guides',
@@ -1563,7 +1571,7 @@ export function sectionReach(
   return {
     pageTypes,
     views,
-    rows: orderKeys(SEEN_SECTION_ORDER, seen, true).map((section) => ({
+    rows: orderKeys(DEPTH_SECTION_ORDER, seen, true).map((section) => ({
       section,
       cells: pageTypes.map((type, index) => {
         const reached = lookup(section, type);

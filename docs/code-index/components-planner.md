@@ -224,7 +224,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner-trip-region-link.tsx`](../../components/planner/planner-trip-region-link.tsx)
 
-- `PlannerTripRegionLink` _component_: One quiet line under a plan that holds a day at a trip region's park: "Several days in Orlando? Open the trip planner", with the plan's parks of that region chosen.
+- `PlannerTripRegionLink` _component_: One quiet line under a plan that holds a day at a trip region's park: "Several days in Orlando · Open the trip planner", with the plan's parks of that region chosen.
 
 ### [`planner-weather-rail.tsx`](../../components/planner/planner-weather-rail.tsx)
 

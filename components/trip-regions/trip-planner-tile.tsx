@@ -32,12 +32,13 @@ interface TripPlannerTileProps {
 
 /**
  * The scene's box: on a phone a 2 : 1 banner over the text that fades out at its foot; from `sm`
- * the card's right side at the card's height, 2 : 1 from `lg`, fading into the ground to its left
- * as `ParkBreakPanel`'s picture does. The box is the scene's reservation, so the lazy scene moves
- * nothing when it arrives.
+ * the card's right side at the card's height, 2 : 1 from `lg` (with the card's `min-h`), fading
+ * into the ground to its left as `ParkBreakPanel`'s picture does, and larger from `xl`, where the
+ * card is wide enough to leave the text a column of its own. The box is the scene's reservation, so
+ * the lazy scene moves nothing when it arrives.
  */
 const SCENE_BOX =
-  'relative aspect-[2/1] w-full shrink-0 [mask-image:linear-gradient(to_bottom,black_72%,transparent)] sm:aspect-auto sm:w-80 sm:[mask-image:linear-gradient(to_right,transparent,black_38%)] lg:w-[26rem]';
+  'relative aspect-[2/1] w-full shrink-0 [mask-image:linear-gradient(to_bottom,black_72%,transparent)] sm:aspect-auto sm:w-80 sm:[mask-image:linear-gradient(to_right,transparent,black_38%)] lg:w-[26rem] xl:w-[30rem]';
 
 /**
  * A trip region's planner on the pages of one of its parks: the region's Parky scene, "Mehrere
@@ -87,7 +88,7 @@ export async function TripPlannerTile({ park, month, today, className }: TripPla
         aria-labelledby={headingId}
         className={cn(
           REGION_CARD,
-          'flex flex-col shadow-lg sm:min-h-44 sm:flex-row-reverse lg:min-h-52',
+          'flex flex-col shadow-lg sm:min-h-44 sm:flex-row-reverse lg:min-h-52 xl:min-h-60',
           className
         )}
       >

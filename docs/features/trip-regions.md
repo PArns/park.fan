@@ -139,7 +139,8 @@ first event counts them as one place ([analytics](../development/analytics.md)).
 It looks like the region card of the header band (`REGION_CARD`, `REGION_KICKER`, `REGION_PILL` in
 `components/trip-regions/region-card-classes.ts`, shared with `PlannerMenuPanel`). On a phone the
 scene is a 2 : 1 banner over the text that fades out at its foot; from `sm` it is the card's right
-side at the card's height (320 px wide, 416 px and 2 : 1 from `lg`), fading into the ground to its
+side at the card's height (320 px wide, 416 px from `lg` and 480 px from `xl`, 2 : 1 at the card's
+least height), fading into the ground to its
 left as `ParkBreakPanel`'s picture does. The box is the scene's reservation, so nothing moves when
 the scene arrives: `RegionSceneInView` fetches the scene's chunk after the page's `load`
 (`useAfterLoad`) and once the tile is within `LazyMount`'s margin of the screen, and fades it in.

@@ -26,6 +26,12 @@ const SEEN_SECTIONS = [
 /** One of {@link SEEN_SECTIONS}. */
 export type SeenSection = (typeof SEEN_SECTIONS)[number];
 
+/**
+ * The marks that stand only where their block is: they count the block's views, and say nothing
+ * about how far down a page was read.
+ */
+export const BLOCK_SEEN_SECTIONS: readonly SeenSection[] = ['trip_tile', 'trip_band'];
+
 /** The attribute that makes an element a mark and names its place. */
 export const SECTION_SEEN_ATTRIBUTE = 'data-section-seen';
 
