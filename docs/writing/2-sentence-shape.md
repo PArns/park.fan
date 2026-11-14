@@ -52,7 +52,10 @@ creëert`). It almost always carries an evaluation the sentence before it could 
 is why it reads as a sales pitch even in a definition. In September 2026 the English posts carried
 1 in 95,000 words, the English glossary 39 in 38,000. Budget: one per 1,000 words, counted in six
 languages. End the sentence, or give the effect its own sentence with a subject:
-`Der Zug hängt dabei zwei Sekunden kopfüber.`
+`Der Zug hängt dabei zwei Sekunden kopfüber.` English hangs the same tail on with `which`
+(`…, which makes Discovery Cove the one park around Orlando where …`, `…, which means we started in
+the busiest week of the year`), and a verdict rides on it in both languages
+(`…, was im August ein echtes Argument für eine Nacht dort ist`); the budget counts those too.
 
 ## 2.4 Nominal style
 
@@ -189,7 +192,9 @@ Write what is there and where: `Im Kalender sind die ruhigsten Tage grün.`,
 (`Am Eingang stehen 70 Minuten`, §3.3), and so is a legend, one of our tables or widgets, or a UI
 element that marks something on screen (`Der blaue Kegel zeigt, wohin du schaust`). Data and time
 do it too: `Die Daten belegen das nicht`, `ein anderes Jahr verteilt das anders`. Say who cannot
-prove it (`Belegen kann ich das mit diesen Zahlen nicht`) and what another year may bring.
+prove it (`Belegen kann ich das mit diesen Zahlen nicht`) and what another year may bring. A colour
+measures nothing either: `Die Farbe misst einen Tag an einem gewöhnlichen Tag desselben Parks`
+stood in two guides of November 2026, where `Für die Farbe vergleichen wir den Tag mit …` says it.
 
 The travel-guide version is **false agency**: `Der Park lädt zum Verweilen ein`,
 `Die Bahn sorgt für Nervenkitzel`, `delivers thrills`. Say what a visitor does or gets.
@@ -200,7 +205,11 @@ The travel-guide version is **false agency**: `Der Park lädt zum Verweilen ein`
 27 times on the planner page. A feature written as a character that knows, asks and refuses turns
 an explanation into a portrait of the software. Say what the reader sees or does:
 `Ein Block rastet auf fünf Minuten ein`, `Du gibst an, wie groß die kleinste Person ist`.
-`check:prose` warns above 6 per 1,000 words (the planner page read 8.8).
+`check:prose` warns above 6 per 1,000 words (the planner page read 8.8). The count takes the
+compounds (`Der Reiseplaner zählt einen Tag als heiß`, `The trip planner treats a day as hot`),
+the plan it makes and our best-time pages. A guide sits under that rate and can still start ten
+sentences at the tool or end chapter after chapter on it; `product-opener-series` and
+`product-close-series` (§2.20) count those.
 
 **A document does no sums.** `Eines davon rechnet durch, was passiert, wenn der Ententeich
 verschwindet` turned a report that examines the effects of filling in a pond into a cliffhanger.
@@ -211,7 +220,10 @@ of _calculates what happens if_ (`works out what happens`, `rekent uit wat er`,
 `calcule ce qui se passe`, `calcula qué pasa`, `calcola cosa succede`) are an error; a guide, page,
 calendar, widget, report or the planner as the subject of `rechnen`, `calculate` or `work out` is a
 warning. A forecast model computing a forecast is arithmetic and stays
-(`Das Modell rechnet diesen Tag stundengenau`), and so does a person.
+(`Das Modell rechnet diesen Tag stundengenau`), and so does a person. The plan and our pages count
+as well: `der Plan rechnet mit dem frühen Einlass`, `die Seiten zur besten Reisezeit rechnen dort
+mit dem Vorjahr`, `the best-time pages work with last year`, `Our post on the trip planner works
+through ten days in December`.
 
 ## 2.14 Saying what it does not do
 
@@ -247,8 +259,14 @@ Variants:
   that counts caveats, notes or remarks, ordinals included; `Drei Dinge noch:` in front of a list
   is left to the review pass.
 - **The expectation teaser**: `und keine davon ist die, die man erwartet`,
-  `than you might think`, `plus long qu'on ne le pense`. Whether it surprises is the reader's
-  call, and in the Alton Towers guide it was also untrue. Warned on in six languages.
+  `than you might think`, `plus long qu'on ne le pense`, `weniger, als sein Name verspricht`.
+  Whether it surprises is the reader's call, and in the Alton Towers guide it was also untrue.
+  Warned on in six languages.
+- **The easy part**: `Die Parks auszusuchen ist der leichte Teil.` announces a hard part and
+  leaves it to the next sentence. Warned on in six languages. Its relatives judge a whole stretch
+  in one short line (`Mit dem Auto aus Belgien geht es noch einfacher.`, `Ohne Auto wird es eine
+kleine Expedition.`, `Universal Studios Japan hatte ein anderes Jahr.`); two of them in a post
+  are `teaser-phrase-series` (§2.20).
 
 Cut the teaser and start with the fact; if the fact is unremarkable without the announcement, the
 announcement was covering for it. `check:prose` flags the common forms in German and English. The
@@ -285,7 +303,8 @@ honesty family (§3.3). The other two, plus a pair of adverbs:
 - **Salience flags**: telling the reader something matters instead of showing why. `This
 matters.`, `Das ist wichtig, weil …`, `a fact worth internalising`, `deserves a moment`.
 - **Stock metaphors**: `load-bearing`, `earns its keep`, `earns its place`, `der Knackpunkt`,
-  `die Falle ist`, `verdient sich seinen Platz`, `tragende Rolle`.
+  `die Falle ist`, `verdient sich seinen Platz`, `tragende Rolle`, and the phrase that hides who
+  acts: `the rest falls into place around them`, `takes care of itself`, `ergibt sich von selbst`.
 - **Adverbs** fine alone and a tic in bulk: `quietly`, `genuinely`, `still`, `wirklich`
   (counted as `filler-adverb-pileup`, §2.20).
 
@@ -335,6 +354,7 @@ The same test settles SEO, because the reader's words are the search words: nobo
 `check:prose` counts the schema words (`führt … als` among them) per post in six languages and
 warns above four per 1,000 words (the rain guide read 18 in German), warns on `gleicher Art`,
 `derselben Gruppe`, `of the same kind`, `van hetzelfde soort` and on a sentence about our method
-(`berücksichtigen wir`, `we take into account`), and fails on `kürzer besetzt` and on `X von X` in
+(`berücksichtigen wir`, `we take into account`, `bewerten wir … nach dem gemessenen Andrang`), and
+fails on `kürzer besetzt` and on `X von X` in
 six languages. The genitive chain, the circular definition, the calque and the needless gap are for
 the review pass. §3.3 rule 23 is the next step: the query's rows read out, not only its words.

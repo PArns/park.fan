@@ -1,7 +1,10 @@
 /**
  * The patterns the critic found in the guides of 2026-10-13 (1 to 20 in the twelve open ones, 22 to
- * 38 in the 27 older ones) and in the thank-you post of 2026-10-19 (40 to 47), the date-line regex
- * and the sentence splitter they share with `scripts/check-prose.mjs` (docs/writing/2-20-check-patterns.md §2.20).
+ * 38 in the 27 older ones), in the thank-you post of 2026-10-19 (40 to 47) and in the four
+ * multi-park guides of 2026-11-14 (115 to 123), the date-line regex and the sentence splitter they
+ * share with `scripts/check-prose.mjs` (docs/writing/2-20-check-patterns.md §2.20). The wordlists
+ * that script reads on every surface (`WATCH`, `TAILS`, `PRODUCT_SUBJECT`) live here too, so their
+ * cases run in `pnpm test:prose-rules`.
  *
  * Every pattern below is a **warning** except the date-opens-a-line rule, which has been an error
  * since 2026-10-11. Published posts must not turn `main` red, and each of these is a shape a
@@ -213,6 +216,235 @@ export function werktagSentences(text, locale) {
   return sentences.filter((s) => !rule.span.test(s) && !DAY_LIST.test(s));
 }
 
+/* ------------------------------------------------------------------ the wordlists every surface gets */
+
+export const SIGN_RULE = 'the sign at the entrance (§3.3)';
+/** Warnings: a budget, a signal, or a candidate a person has to look at. */
+/**
+ * The passages of `text` that one WATCH entry flags. `exempt` marks the look-alikes the entry
+ * leaves alone, such as a show's name that contains a word of the list.
+ */
+export const watchHits = (text, { re, exempt }) =>
+  (exempt ? text.replace(exempt, ' ') : text).match(re);
+export const WATCH = [
+  {
+    what: SIGN_RULE,
+    re: /\b((?:das|ein|dem|den|am|vom|beim) schild|the sign|het bord|wachttijdbord|le panneau|el cartel|il cartello)\b/gi,
+  },
+  {
+    what: 'summary formula (§1.5)',
+    re: /\b(zusammenfassend|abschließend l[äa]sst|insgesamt l[äa]sst|in conclusion|in summary|key takeaways)\b/gi,
+  },
+  {
+    what: 'editorial commentary (§1.4)',
+    re: /\b(es ist wichtig zu (beachten|betonen|erw[äa]hnen)|es ist entscheidend|worth noting|it'?s important to note)\b/gi,
+  },
+  {
+    what: 'empty opener (§1.7)',
+    re: /\b(in der heutigen (zeit|welt)|im digitalen zeitalter|mehr denn je|seit jeher|in today'?s|in the (ever-)?evolving)\b/gi,
+  },
+  {
+    what: 'pseudo-wisdom (§1.7)',
+    // `am Ende des Tages` is also the evening in a theme park: only the sentence-opening idiom.
+    re: /\b(der schl[üu]ssel liegt|die zahlen sprechen f[üu]r sich|die tendenz ist steigend|the key is)\b|(?<=^|[.!?]\s+)(?:am ende des tages|at the end of the day),/gim,
+  },
+  {
+    what: 'vague authority (§1.2)',
+    re: /\b(studien zeigen|experten (sind sich einig|gehen davon aus)|branchenberichte|experts (agree|argue)|studies (show|suggest)|research suggests)\b/gi,
+  },
+  {
+    what: 'business verb (§1.7)',
+    re: /\b(revolutionier\w*|transformier\w*|ganzheitlich\w*|nahtlos\w*|ma[ßs]geschneidert\w*|leverage|unlock|empower|streamline|seamless|cutting-edge|elevate)\b/gi,
+  },
+  {
+    what: 'AI vocabulary (§3)',
+    re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora|multifaceted|groundbreaking|game-?chang\w*|transformative|unprecedented|aforementioned|spearhead\w*|encompass\w*|endeavou?rs?|synerg\w*|in essence|rest assured|it goes without saying|thought leader\w*)\b/gi,
+    // `Tapestry of Happiness` is a Disneyland show, and the German text names it too: a capitalised
+    // `Tapestry of` before a capital is a title, not the `rich tapestry` this list is after.
+    exempt: /\bTapestry(?= of \p{Lu})/gu,
+  },
+  {
+    what: 'stock phrase (§3)',
+    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b/gi,
+  },
+  {
+    what: 'mechanical opener (§2.7)',
+    re: /(?<=^|[.!?]\s+)(?:(?:moreover|furthermore|additionally|interestingly|notably|importantly|indeed|certainly|absolutely),|(?:darüber hinaus|des weiteren|interessanterweise|bemerkenswerterweise|letztendlich)\b)/gim,
+  },
+  {
+    what: 'credential opener (§1.4)',
+    re: /(?<=^|[.!?]\s+)(?:als (?:langj[äa]hrige[rs]?|erfahrene[rs]?|leidenschaftliche[rs]?|begeisterte[rs]?) |as an? (?:long-?time|seasoned|passionate|lifelong|avid) )/gim,
+  },
+  {
+    what: 'question set-up (§2.12)',
+    re: /(?<=^|[.!?]\s+)(?:das ergebnis|die antwort|der grund|der haken|the result|the answer|the reason|the catch)\?/gim,
+  },
+  {
+    what: 'teaser (§2.16)',
+    re: /(?<=^|[.!?]\s+)(?:(?:dann|jetzt|hier|da) (?:wird|wurde)(?:'s| es)? (?:\p{L}+ )?(?:kurios|spannend|interessant|lustig|absurd|verrückt)|und dann (?:das|der|die) \p{L}+ste\b|interessanter (?:ist|wird)|spannend(?:er)? wird|das beste(?: daran)?:|(?:here|this) is where (?:it|things) gets?|(?:then|now) (?:it|things) gets?(?: \p{L}+)? (?:weird|interesting|strange|tricky)|the best part[:?]|here'?s the (?:kicker|twist|catch)|and then the \p{L}+est\b)|(?<!\p{L})(?:ist der (?:leichte|leichtere|einfache|einfachere) teil|is the easy part|is het makkelijke deel|(?:est|c['’]est) la partie facile|es la parte fácil|è la parte facile)(?!\p{L})/gimu,
+  },
+  {
+    what: 'appended verdict (§2.17)',
+    re: /\b(?:und )?(?:genau )?das ist (?:genau )?(?:die aussage|der punkt|der trick|kein zufall|(?:vermutlich |wohl )?absicht)\b|\bthat'?s (?:exactly |precisely )?(?:the point|no accident|(?:probably )?deliberate|by design)\b|\bthat is (?:exactly |precisely )?the point\b/gi,
+  },
+  {
+    what: 'no X, no Y, just Z (§2.17)',
+    re: /\bkein\w* [^,.]{1,30}, kein\w* [^,.]{1,30}, (?:nur|einfach|dafür)\b|\bno [^,.]{1,30}, no [^,.]{1,30}, (?:just|only|simply)\b/gi,
+  },
+  {
+    // `zeigt der Kalender`, `die Daten sagen`, `Was die Warteschlangen gerade anzeigen`: a queue,
+    // a number or a calendar as the one who speaks (§2.13).
+    what: 'things that talk (§2.13)',
+    re: /(?<!\p{L})(?:(?:der|die|das|den|dem|unsere?|diese[rs]?|jede[rs]?)\s+(?:\p{L}+\s+)?(?:warteschlangen?|schlangen?|zahl(?:en)?|daten|wartezeit(?:en)?|kurven?|tageskurve|(?:crowd-)?kalender|tabellen?|prognosen?|messwerte?|statistik(?:en)?|anzeigen?|karten?|diagramm|grafik|farben?|balken|median|spitze|liste|skala)\s+(?:dir\s+|dazu\s+|dann\s+|hier\s+|auch\s+|nur\s+|gerade\s+(?:jetzt\s+)?|jetzt\s+|schon\s+)?(?:zeigt|zeigen|sagt|sagen|verrät|verraten|erzählt|erzählen|weiß|wissen|kennt|kennen|lügt|lügen|spricht|sprechen|antwortet|verspricht|verschweigt|verschweigen|behauptet|erwartet|erwarten|anzeigen|zeigt an|zeigen an)|(?:die|eine) farbe misst|the colou?r measures|(?:zeigt|sagt|verrät|erzählt|weiß|kennt)\s+(?:dir\s+|dann\s+|hier\s+|auch\s+)?(?:der|die|das)\s+(?:\p{L}+\s+)?(?:warteschlange|schlange|zahl|kalender|tabelle|kurve|karte|prognose|statistik|anzeige|liste|parkseite)|the (?:queue|line|numbers?|data|calendar|chart|curve|table|forecast|median|figures?|sign|display) (?:(?:already|also|then|now) )?(?:tells?|says|knows?|reveals?|lies|speaks|shows you|tells you))(?!\p{L})/giu,
+  },
+  {
+    // The same in the four derived languages; every hit there was found by reading until 2026-09-30.
+    what: 'things that talk, nl/fr/es/it (§2.13)',
+    re: /(?<!\p{L})(?:(?:de|het) (?:\p{L}+ )?(?:data|cijfers|tabel|kalender|kolom|curve|kaart|voorspelling|mediaan|wachtrij)\s+(?:zegt|zeggen|vertelt|vertellen|laat zien|laten zien|verraadt|verraden|weet|weten|kent|kennen|belooft|liegt)|(?:les données|les chiffres|le tableau|le calendrier|la courbe|la carte|la prévision|la médiane|la file)\s+(?:(?:te|vous|nous|le|la)\s+)*(?:dit|disent|montre|montrent|révèle|révèlent|sait|savent|annonce|promet|ment)|(?:los datos|las cifras|la tabla|el calendario|la curva|el mapa|la previsión|la mediana|la cola|la fila)\s+(?:(?:te|os|nos|lo|la)\s+)*(?:dice|dicen|muestra|muestran|revela|revelan|sabe|saben|anuncia|promete|miente|enseña)|(?:i dati|i numeri|la tabella|il calendario|la curva|la mappa|la previsione|la mediana|la coda|la fila)\s+(?:(?:ti|vi|ci|lo|la)\s+)*(?:dice|dicono|mostra|mostrano|rivela|rivelano|sa|sanno|annuncia|promette|mente|racconta)|de kleur meet|la couleur mesure|el color mide|il colore misura)(?!\p{L})/giu,
+  },
+  {
+    // `Der Europa-Park-Guide rechnet das nach`, `rekent de widget hierboven uit`: a page, a guide,
+    // a report or a calendar doing the sums (§2.13). Say who did them (`habe ich nachgerechnet`)
+    // or where the result is. A model computing a forecast is arithmetic and is not on the list.
+    what: 'things that calculate (§2.13)',
+    re: /(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer|übersicht)\s+(?:oben\s+|unten\s+|hierüber\s+|darunter\s+)?(?:rechnet|rechnen)\b|\b(?:rechnet|rechnen)\s+(?:der|die|das|unser\p{L}*)\s+(?:\p{L}+\s+)?(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer)\b|\b(?:eine[rs]?|eins) davon rechnet\b|\b(?:der|dem) plan\s+rechnet\b|\bdie seiten zur besten reisezeit\s+rechnen\b|\bthe plan counts\b|\b(?:the )?best-time pages\s+work with\b|(?:report|study|guide|article|post|page|widget|calendar|table|planner)s?\s+(?:works out|works through|calculates|crunches|adds up|does the maths?)\b|(?:rapport|onderzoek|studie|gids|artikel|pagina|widget|kalender|tabel|planner)\s+(?:rekent|rekenen)\b|\brekent\s+(?:de|het|onze)\s+(?:\p{L}+\s+)?(?:gids|widget|kalender|planner|dagplanner|pagina|tabel)\b|(?:rapport|étude|guide|article|page|widget|calendrier|tableau|planificateur)s?\s+calcule\b|(?:informe|estudio|guía|artículo|página|widget|calendario|tabla|planificador)\s+calcula\b|(?:rapporto|studio|guida|articolo|pagina|widget|calendario|tabella|pianificatore)\s+calcola\b/giu,
+  },
+  {
+    // `Die Daten belegen das nicht`, `ein anderes Jahr verteilt das anders` (§2.13): data and a
+    // year as the actor. They stood in the rain guide in six languages until 2026-10-06.
+    what: 'data or a year as the actor (§2.13)',
+    re: /(?<!\p{L})(?:die daten (?:belegen|beweisen)|ein anderes jahr verteilt|the data (?:doesn['’]t|don['’]t|does not|do not) (?:prove|show)|another year (?:will )?spreads?|de data (?:bewijzen|tonen)|een ander jaar verdeelt|les données ne le (?:prouvent|montrent)|une autre année répartira|los datos no lo (?:demuestran|prueban)|otro año lo repartiría|i dati non lo (?:provano|dimostrano)|un altro anno distribuirebbe)(?!\p{L})/giu,
+  },
+  {
+    // `Offen bleibt, welche Bahnen …, und das sind zuerst die im Gebäude.` (§2.12): the question
+    // set-up folded into one sentence. A question that stays open (`Reste à savoir si la question
+    // est recevable.`) has no answer clause and is not a hit.
+    what: 'a question answered in the same sentence (§2.12)',
+    re: /(?<!\p{L})(?:(?:offen bleibt|bleibt die frage),? (?:welche|wie|was|ob|wann|wo)[^.!?]{0,120}, und (?:das|die|der|es) |what['’]s left (?:open )?is (?:which|how|what|whether)[^.!?]{0,120}, and |open blijft,? (?:welke|hoe|wat|of)[^.!?]{0,120}, en |reste à savoir (?:quel\p{L}*|si|comment)[^.!?]{0,120}, et |queda por saber (?:qué|cuál\p{L}*|cómo|si)[^.!?]{0,120}, y |resta da capire (?:quali|quale|come|se)[^.!?]{0,120}, e )/giu,
+  },
+  {
+    // `und füllen die Lücke nicht mit Annahmen`, `Die Lücke liegt in unserer Datenbank und hat mit
+    // den Parks nichts zu tun` (§2.14): an integrity pledge nobody asked for, about a gap the
+    // reader did not need to hear about.
+    what: 'a pledge about a gap (§2.14)',
+    re: /(?<!\p{L})(?:(?:füllen|füllt) [^.!?]{0,20}lücke nicht|nicht mit annahmen|hat mit den parks nichts zu tun|(?:don['’]t|do not|won['’]t|will not) fill (?:the|that|this) gap|vullen het gat niet|niet met aannames|ne comblons pas|avec des suppositions|no rellenamos|con suposiciones|non (?:lo )?riempiamo|con supposizioni)(?!\p{L})/giu,
+  },
+  {
+    // `so steht es in unserem Guide zum Park` (§1.2): our own post as the evidence for a claim.
+    // Link the guide where a reader wants more; the claim names the park or the operator.
+    what: 'our own guide as the source (§1.2)',
+    re: /(?<!\p{L})(?:so steht es in unserem|steht im guide, dass|laut unserem guide|as our guide (?:to [^.,]{1,40} )?says|our guide says|according to our guide|zo staat het in onze gids|volgens onze gids|c['’]est écrit dans notre guide|selon notre guide|así consta en nuestra guía|según nuestra guía|così c['’]è scritto nella nostra guida|secondo la nostra guida)(?!\p{L})/giu,
+  },
+  {
+    // `trockene Tage gleicher Art`, `derselben Gruppe` (§2.19): a comparison against a bucket the
+    // reader was never shown. Say what is compared. `the same group` is left out: in the Walibi and
+    // Parc Astérix posts it is the company. `kürzer als an vergleichbaren trockenen Tagen` since
+    // PAR-988, after a comparative only: the planner's `sucht vergleichbare Tage` says which.
+    what: 'an unnamed comparison (§2.19)',
+    re: /(?<!\p{L})(?:gleicher art|derselben gruppe|(?:days|ones) of the same kind|van (?:het|de)zelfde soort|als (?:an |bei |in )?vergleichbare[nm]? (?:\p{L}+ )?tag(?:e|en)|than (?:on |at |in )?comparable (?:\p{L}+ )?days|dan (?:op |bij )?vergelijkbare (?:\p{L}+ )?dagen|que (?:les |des |lors des )?jours (?:\p{L}+ )?comparables|que (?:los |las )?(?:de |en )?(?:los )?días (?:\p{L}+ )?comparables|(?:che|rispetto a)i? (?:nei |ai )?giorni (?:\p{L}+ )?comparabili)(?!\p{L})/giu,
+  },
+  {
+    // `Für den Europa-Park berücksichtigen wir … auch die Schulferien im Elsass` (§2.19): our
+    // method told where the park's fact belongs. Say which holidays count, not how we count.
+    // Since the guides of 2026-11-14 also rating by a measure (`bewerten wir … nach dem gemessenen
+    // Andrang`); `Eine Reise bewerten wir wie der Reiseplaner:` explains the rating and stays.
+    what: 'our method instead of the park (§2.19)',
+    re: /(?<!\p{L})(?:berücksichtigen wir|rechnen wir (?:[\p{L}-]+ ){0,6}?mit ein|zählen wir (?:[\p{L}-]+ ){0,6}?mit(?!\p{L})|we (?:also )?take into account|we count (?:[\p{L}-]+ ){0,6}?as|tenemos en cuenta|(?:nous )?prenons en compte|teniamo conto|houden we (?:ook )?rekening|(?:bewerten|gewichten) wir (?:[\p{L}-]+ ){0,8}?nach|we (?:rate|score|weight) (?:[\p{L}-]+ ){0,8}?(?:by|according to)|(?:beoordelen|wegen) we (?:[\p{L}'’-]+ ){0,8}?(?:op|naar)|nous (?:les |la |le )?(?:évaluons|pondérons) (?:[\p{L}'’-]+ ){0,8}?(?:selon|d['’]après)|(?:las|los|la|lo) (?:valoramos|ponderamos),? (?:[\p{L}'’-]+,? ){0,8}?(?:por|según)|(?:le|li|la|lo) (?:valutiamo|pesiamo) (?:[\p{L}'’-]+ ){0,8}?in base a)(?!\p{L})/giu,
+  },
+  {
+    // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
+    what: 'authenticity claim (§3.3)',
+    re: /(?<!\p{L})(?:echte[nrms]? (?:wartezeiten|wartezeit|daten|messungen|messwerte|werte|warteschlangendaten|zahlen|ablesungen)|real (?:wait[- ]time |queue )?(?:data|wait times|numbers)|echte wachttijd\p{L}*|données réelles|datos reales|dati reali)(?!\p{L})/giu,
+  },
+  {
+    // The register the model this site is written with falls into (Arize, September 2026).
+    what: 'Claude register (§2.18)',
+    re: /(?<!\p{L})(?:this matters|that matters|here['’]s the (?:part|thing) that|the honest answer|load-bearing|earns? (?:its|their) (?:keep|place)|deserves a moment|worth internali[sz]ing|das ist wichtig, weil|der knackpunkt|die falle ist|verdient sich seinen platz|tragende[nr]? (?:rolle|teil)|falls? into place|takes care of itself|sorts itself out|ergibt sich (?:dann )?von selbst|valt (?:dan )?(?:vanzelf )?op zijn plaats|se met en place tout seul|encaja solo|va a posto da sé)(?!\p{L})/giu,
+  },
+  {
+    // `und keine davon ist die, die man erwartet`, `größer, als die Preise vermuten lassen`
+    // (§2.16): the surprise announced before the fact. Both stood in the Alton Towers guide of
+    // 2026-10-11. Say the fact; the reader decides whether it surprises them.
+    what: 'expectation teaser (§2.16)',
+    // `más dura de lo que parece` is how Spanish says "harder than it looks" and stays out.
+    re: /(?<!\p{L})(?:als man (?:es )?(?:erwartet|erwarten würde|denkt|glaubt)|als (?:die|der|das) \p{L}+ vermuten l(?:ä|a)ss\p{L}*|die man (?:nicht )?erwartet|than (?:you|one)(?:['’]d| would| might| may)? (?:expect|think|imagine)|than (?:the|its|their) \p{L}+ suggests?|als (?:sein|ihr) name (?:verspricht|vermuten lässt)|dan (?:de|zijn|haar) naam doet vermoeden|que (?:son|leur) nom ne le laisse (?:croire|penser|supposer)|de lo que (?:promete|sugiere) su nombre|di quanto (?:prometta|suggerisca) il (?:suo )?nome|(?:the|not the) ones? you['’]d expect|dan je (?:zou )?(?:verwachten|verwacht|denkt)|qu['’]on ne (?:le )?(?:pense|croit|imagine)|que ne le laissent (?:penser|supposer)|de lo que (?:crees|piensas|esperas|cabría esperar)|di quanto (?:si pensi|pensi|ci si aspetti|immagini))(?!\p{L})/giu,
+  },
+  {
+    what: 'colon set-up (§2.16)',
+    re: /(?<=^|[.!?]\s+)(?:das beste|kurz gesagt|der clou|die gute nachricht|die schlechte nachricht|pro-?tipp|profi-?tipp|spoiler|das problem|der knackpunkt|die falle|bottom line|pro tip|here['’]s why|plot twist|the good news|the bad news|the trap)\s*:/gim,
+  },
+  {
+    // A gap in the record with nobody named as its owner (§1.9).
+    what: 'disclaimer that names nobody (§1.9)',
+    re: /\b(?:nicht (?:öffentlich|allgemein) (?:dokumentiert|bekannt|verfügbar)|basierend auf (?:den )?verfügbaren (?:informationen|daten)|(?:obwohl|da) (?:spezifische|genaue) (?:details|angaben) (?:begrenzt|rar)|stand meines (?:letzten )?(?:updates|wissens)|not (?:widely|publicly) (?:documented|disclosed|available)|based on (?:the )?available information|(?:while|although) (?:specific )?details (?:are|remain) (?:limited|scarce)|as of my (?:last|latest) (?:update|knowledge))\b/gi,
+  },
+  {
+    what: 'send-off (§1.6)',
+    re: /\b(?:man darf gespannt sein|es bleibt spannend|die zukunft (?:sieht|wird) rosig|the future looks bright|exciting times ahead|a step in the right direction|watch this space|stay tuned)\b/gi,
+  },
+  {
+    what: 'notability claim (§1.1)',
+    re: /(?<!\p{L})(?:vielfach ausgezeichnet\p{L}*|preisgekrönt\p{L}*|in zahlreichen medien|international renommiert\p{L}*|award-winning|consistently ranked|widely recogni[sz]ed|critically acclaimed)(?!\p{L})/giu,
+  },
+  {
+    what: 'stacked qualifier (§1.7)',
+    re: /\b(?:could potentially|might possibly|may potentially|might arguably|kann (?:unter umständen )?möglicherweise|könnte (?:eventuell|möglicherweise|unter umständen))\b/gi,
+  },
+  {
+    // `Von rasanten Achterbahnen bis hin zu gemütlichen Familienfahrten`, `Egal, ob du …`.
+    what: 'range or whether opener (§3)',
+    re: /(?<!\p{L})(?:von [^.!?]{3,60} bis hin zu[rm]?|(?<=^|[.!?]\s+)(?:egal,? ob|ob du nun|of je nu|que (?:vous soyez|tu sois)|ya seas?|tanto si|che tu sia|sia che))(?!\p{L})/gimu,
+  },
+  {
+    // A park or a ride doing a person's verb (§2.13).
+    what: 'false agency (§2.13)',
+    re: /(?<!\p{L})(?:(?:lädt|laden) (?:\p{L}+ ){0,4}ein(?=[ ,.])|sorgt für (?:nervenkitzel|spaß|adrenalin|gänsehaut|stimmung|abwechslung|begeisterung)|(?:invites|promises) (?:you|visitors|guests|riders)|delivers (?:thrills|fun))(?!\p{L})/giu,
+  },
+  {
+    what: 'AI vocabulary, nl/fr/es/it (§3)',
+    re: /(?<!\p{L})(?:het is belangrijk om op te merken|in een snel veranderende wereld|naadloze?|baanbrekend\p{L}*|il convient de souligner|dans un monde où|à l['’]ère du numérique|tirer parti de|es importante destacar|vale la pena (?:señalar|destacar)|en última instancia|profundizar en|embarcarse en|è importante sottolineare|vale la pena (?:ricordare|sottolineare)|una testimonianza di|epocale)(?!\p{L})/giu,
+  },
+  {
+    what: 'vague sentiment (§1.2)',
+    re: /\b(?:enthusiasten|fans|kenner|puristen) (?:lieben|schätzen|bevorzugen|betrachten|feiern|halten|mögen|schwärmen)\b|\b(?:gilt|gelten) (?:als|unter)\b|\b(?:enthusiasts|fans|riders|purists) (?:love|prize|consider|regard|praise|celebrate|prefer|rave|adore)\b|\bis (?:widely|often|generally|commonly) (?:regarded|considered|seen|described)\b|\bwidely (?:regarded|considered|seen)\b|(?<!\p{L})(?:(?:liefhebbers|kenners) (?:waarderen|houden van|beschouwen|zweren bij)|(?:geldt|gelden) als|wordt (?:vaak |algemeen )?(?:beschouwd|gezien) als|les (?:passionnés|amateurs|puristes) (?:apprécient|adorent|considèrent|préfèrent)|(?:est|sont) (?:souvent |généralement |largement )?considérée?s? comme|los (?:aficionados|entusiastas|puristas) (?:aprecian|adoran|consideran|valoran|prefieren)|(?:es|son) (?:a menudo |generalmente )?considerad[oa]s?|gli (?:appassionati|puristi) (?:apprezzano|amano|considerano|preferiscono)|(?:è|sono) (?:spesso |generalmente )?considerat[oaie])(?!\p{L})/giu,
+  },
+  {
+    what: 'ad copy (§3)',
+    re: /(?<!\p{L})(?:alleinstellungsmerkmal\p{L}*|unique selling (?:point|proposition)s?|atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere|geheimtipp\p{L}*|kronjuwel|wow-effekt|tauch(?:e|t) (?:\p{L}+ )?ein|lass dich verzaubern|kommt jede[rs]? auf (?:seine|ihre) kosten|für jeden (?:geschmack )?etwas|liegt in der luft|erfüllt die luft|bustling|gleaming|towering|shimmering|palpable|look no further|bucket[- ]list|once[- ]in[- ]a[- ]lifetime|step into a world|voor ieder wat wils|verborgen parel|laat je betoveren|kloppend hart|il y en a pour tous les goûts|laissez-vous (?:emporter|séduire|transporter)|à ne pas manquer|immanquable|hay para todos los gustos|joya (?:escondida|oculta)|de visita obligada|déjate (?:llevar|sorprender)|ce n['’]è per tutti i gusti|gemma nascosta|lasciati (?:conquistare|trasportare)|tappa obbligata|mozzafiato)(?!\p{L})/giu,
+  },
+];
+
+/*
+ * The tail a model hangs on a finished sentence to say what the fact *does* (§2.3): `…, making
+ * it the tallest`, `…, was den Nervenkitzel steigert`, `…, ce qui rend`, `…, lo que convierte`.
+ * One is a sentence; one per paragraph is the template the English glossary was written from.
+ * The English `which` tail counts too (`…, which makes Discovery Cove the one park`, `…, which
+ * means we started in the busiest week`), and in both languages the verdict hung on with it
+ * (`…, was im August ein echtes Argument für eine Nacht dort ist`).
+ */
+export const TAILS = {
+  en: /,\s(?:thus\s)?(?:making|creating|giving|adding|offering|allowing|providing|ensuring|highlighting|reflecting|showcasing|underscoring|emphasi[sz]ing|contributing to|resulting in|delivering|producing|enhancing|lending|which (?:makes|means)|which\s[^,.;]{0,40}?\bis an? (?:real |good |strong )?(?:argument|reason))\b/gi,
+  de: /,\s(?:was|wodurch|womit)\s[^,.;]{0,80}?\b(?:macht|erzeugt|verleiht|steigert|schafft|ermöglicht|verstärkt|bietet|sorgt|beiträgt|unterstreicht|verschafft|argument)\b/gi,
+  // `, waardoor de trein een U-bocht maakt` is Dutch for "so": only the pitching verbs count there.
+  nl: /,\s(?:(?:wat|waarmee)\s[^,.;]{0,80}?\b(?:maakt|zorgt|geeft|biedt|creëert|versterkt|oplevert)|waardoor\s[^,.;]{0,80}?\b(?:creëert|versterkt|oplevert|zorgt voor))\b/gi,
+  // `, lo que cuenta` opening a sentence is a relative clause, not a tail: only the pitching verbs.
+  fr: /,\s(?:ce qui (?:rend|donne|crée|permet|offre|fait|garantit|renforce|en dit)|créant|offrant|donnant|rendant|(?:leur |lui |vous )?permettant|ajoutant|produisant|générant|procurant)(?!\p{L})/giu,
+  es: /,\s(?:lo que (?:hace|convierte|permite|crea|da|ofrece|genera|aporta|garantiza)|lo cual|creando|ofreciendo|dando|haciendo|permitiendo|añadiendo|convirtiendo)\b/gi,
+  it: /,\s(?:(?:il che|cosa che) (?:rende|dà|crea|permette|offre|fa|garantisce)|creando|offrendo|dando|rendendo|permettendo|aggiungendo)\b/gi,
+};
+
+/**
+ * Our own features as the subject of a verb: `der Planer kennt`, `the planner says` (§2.13). Until
+ * 2026-09-30 every `dem Kompass` and `the compass` counted, which in a post about the compass
+ * pushed writers into swapping the noun for `park.fan's compass` without changing who acts. The
+ * compounds count since the guides of 2026-11-14 (`Der Reiseplaner zählt einen Tag als heiß`,
+ * `The trip planner treats a day as hot`), and so does the plan it makes (`der Plan rechnet mit
+ * dem frühen Einlass`) and our best-time pages in the plural (`die Seiten zur besten Reisezeit
+ * rechnen dort mit dem Vorjahr`).
+ */
+export const PRODUCT_SUBJECT =
+  /\b(?:(?:der|the) (?:reiseplaner|tagesplaner|planer|kompass|assistent|plan|trip planner|day planner|planner|compass|assistant) (?:weiß|knows|(?!(?:ist|is|in|im|auf|on|of|von|zu|to|mit|with|als|as|und|and|oder|or|nicht|not|bis|its|seine?|for|für|was|war)\b)\p{Ll}+[ts])|(?:die seiten zur besten reisezeit|the best-time pages) (?:\p{L}+ ){0,4}?(?:rechnen|zählen|nennen|zeigen|work|count|show|list|give))\b/giu;
+
 /* ------------------------------------------------------------------ the rules */
 
 /** Sentence-level wordlists. German and English first; a language that is missing is not covered. */
@@ -223,12 +455,16 @@ const RETRIEVAL = {
 
 const HANDOFF = {
   de: [
-    /^(?:Den|Die|Das|Welche[nrs]?)\s[^.]{3,90}?\s(?:nennt|nennen|zeigt|zeigen|beschreibt|beschreiben|erklärt|erklären|behandelt|behandeln|vergleicht|liefert|verrät|führt|listet)\s+(?:der|die|das|unser\w*|dieser|diese)\s(?:Park|Betreiber|Parkseite|Webseite|Seite|Guide|Beitrag|Artikel|Ratgeber|Überblick|Übersicht|Kalender|Ticketshop|Buchungsablauf|App|Rezeption|Kasse|Hotline)\b/iu,
+    /^(?:Den|Die|Das|Welche[nrs]?)\s[^.]{3,90}?\s(?:nennt|nennen|zeigt|zeigen|beschreibt|beschreiben|erklärt|erklären|behandelt|behandeln|vergleicht|liefert|verrät|führt|listet|stellt|stellen|veröffentlicht|veröffentlichen)\s+(?:der|die|das|unser\w*|dieser|diese)\s(?:Park|Betreiber|Resort|Parkseite|Webseite|Seite|Guides?|Beitrag|Beiträge|Artikel|Ratgeber|Überblick|Übersicht|Kalender|Ticketshop|Buchungsablauf|App|Rezeption|Kasse|Hotline)\b/iu,
     /^(?:Der|Die|Das|Unser\w*|Dieser|Diese)\s+[\p{L}-]*(?:Überblick|Guide|Beitrag|Artikel|Ratgeber|Übersicht|Vergleich|Ranking|Rangliste|Kalender)\s[^.]{0,30}?\b(?:vergleicht|zeigt|nennt|beschreibt|erklärt|behandelt|zählt|führt|listet|rechnet|stellt)/iu,
   ],
   en: [
-    /\b(?:is|are) (?:described|covered|explained|listed|compared|discussed) in (?:the|our|this) \w+/i,
+    /\b(?:is|are) (?:described|covered|explained|listed|compared|discussed|set out) in (?:(?:the|our|this) \w+|How park\.fan works)/i,
     /^The [\w -]{0,30}?(?:guide|overview|post|article|calendar|comparison|ranking)\b[^.]{0,30}?\b(?:compares|covers|lists|shows|explains|describes|discusses)\b/i,
+    // Since the guides of 2026-11-14: `Our guides to … go through …`, `The resort publishes the
+    // blackout dates on its Happy Entry page.`
+    /^(?:The|Our) [\w -]{0,30}?(?:guides?|posts?)\b[^.]{0,120}?\b(?:go(?:es)?|walks?|works?) through\b/i,
+    /^The (?:park|resort|operator) (?:publishes|lists|posts) [^.]{0,60}\bon (?:its|their) (?:[\w-]+ ){0,3}(?:page|website|site|app)\b/i,
   ],
 };
 
@@ -252,8 +488,10 @@ const ATTRIBUTION_OPENER = {
 };
 
 const TRAVEL_IMPERATIVE = {
-  de: /^Prüfe\b.*(?:vor der (?:Fahrt|Anreise|Reise|Abfahrt)|bevor du (?:fährst|losfährst|anreist|losgehst|buchst|aufbrichst)|vor deiner (?:Anreise|Fahrt|Reise)|vor dem (?:Besuch|Ausflug))/,
-  en: /^Check\b.*(?:before you (?:travel|go|visit|leave|set off|head out|drive|book)|before your (?:trip|visit|journey|drive)|ahead of (?:your|the) (?:trip|visit))/i,
+  // Since the guides of 2026-11-14 also `Sieh dir die Frist beim Kauf an, bevor du die Tage …
+  // festlegst.` and `… before you fix your San Diego days.`
+  de: /^(?:Prüfe|Sieh dir|Schau dir)\b.*(?:vor der (?:Fahrt|Anreise|Reise|Abfahrt)|bevor du (?:\S+ ){0,6}?(?:fährst|losfährst|anreist|losgehst|buchst|aufbrichst|festlegst|planst|kaufst)|vor deiner (?:Anreise|Fahrt|Reise)|vor dem (?:Besuch|Ausflug))/,
+  en: /^Check\b.*(?:before you (?:travel|go|visit|leave|set off|head out|drive|book|fix|plan|pick|lock in|commit)|before your (?:trip|visit|journey|drive)|ahead of (?:your|the) (?:trip|visit))/i,
 };
 
 /** Shared words that prove nothing: auxiliaries, particles and the like. */
@@ -425,7 +663,11 @@ const BAD_WHEN = {
 const CLAUSE_END = String.raw`(?:\s[^.!?]{0,60})?[.!]?$`;
 const APPENDED_REASON = {
   de: new RegExp(String.raw`,\s+und das ist (?:genau |eben )?der Grund${CLAUSE_END}`, 'iu'),
-  en: new RegExp(String.raw`,\s+which is (?:exactly |precisely )?the reason${CLAUSE_END}`, 'iu'),
+  // `, which is why SeaWorld's multi-park tickets work there too`: the reason as an afterthought.
+  en: new RegExp(
+    String.raw`,\s+which is (?:(?:exactly |precisely )?the reason|why)${CLAUSE_END}`,
+    'iu'
+  ),
   nl: new RegExp(String.raw`,\s+en dat is (?:precies )?de reden${CLAUSE_END}`, 'iu'),
   fr: new RegExp(
     String.raw`,\s+et c['’]est (?:exactement |précisément )?la raison${CLAUSE_END}`,
@@ -1374,7 +1616,8 @@ const CONTRAST_CONNECTOR = {
  * `not all` is a share, and `not X and not Y` a list.
  */
 const NOT_X_END = {
-  de: /,\s+(?:und\s+)?nicht\s+(?!(?:alle|nur|mehr|immer|ganz|so|unbedingt)(?!\p{L}))(?:(?!nicht\s)[\p{L}\d'’-]+(?:,(?=\s+(?:was|wie|wo|der|die|das)\s))?\s+){0,6}[\p{L}\d'’-]+[.!]$/u,
+  // Since the guides of 2026-11-14 also `, kein X.`: `…, eine Gruppe, keine Rangliste.`
+  de: /,\s+(?:(?:und\s+)?nicht\s+(?!(?:alle|nur|mehr|immer|ganz|so|unbedingt)(?!\p{L}))(?:(?!nicht\s)[\p{L}\d'’-]+(?:,(?=\s+(?:was|wie|wo|der|die|das)\s))?\s+){0,6}|kein(?:e[nrs]?)?\s+(?:[\p{L}'’-]+\s+){0,2})[\p{L}\d'’-]+[.!]$/u,
   en: /,\s+not\s+(?!(?:all|even|just|only|always|quite|really|much|yet|so)(?!\p{L}))(?:(?!not\s)[\p{L}\d'’-]+\s+){0,6}[\p{L}\d'’-]+[.!]$/u,
 };
 const NOT_X_TIME = new RegExp(
@@ -1500,6 +1743,292 @@ const PLACE_STANDS = {
   ),
 };
 
+/* ---- 115 to 123 and the extensions, from the critics of the four multi-park guides of 2026-11-14 ---- */
+
+/** A post about park.fan itself (`category: park-fan`), where our tools are the topic. */
+const isAboutUs = (raw) =>
+  /^category:\s*['"]?park-fan\b/m.test(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '');
+/** The post without its FAQ, which is read one answer at a time. */
+const beforeFaq = (bs) => bs.slice(0, faq(bs).start);
+
+/** Our own tools by the names the posts give them. */
+const PRODUCT_NAME = {
+  de: String.raw`(?:[\p{L}.]+-)?(?:Reiseplaner|Tagesplaner|Planer|Andrang-Kalender|Crowd-Kalender|Wartezeiten-Kalender)`,
+  en: String.raw`(?:trip planner|day planner|planner|crowd calendar)`,
+  nl: String.raw`(?:reisplanner|dagplanner|planner|drukte-kalender|druktekalender)`,
+  fr: String.raw`(?:planificateur(?: de (?:voyage|journée))?|calendrier d['’]affluence)`,
+  es: String.raw`(?:planificador(?: de viajes| del día)?|calendario de afluencia)`,
+  it: String.raw`(?:pianificatore(?: di viaggio| della giornata)?|calendario (?:dell['’])?affluenza)`,
+};
+const PRODUCT_MENTION = Object.fromEntries(
+  Object.entries(PRODUCT_NAME).map(([l, n]) => [l, new RegExp(`(?<!\\p{L})${n}(?!\\p{L})`, 'iu')])
+);
+/** `auch`, `too`, `the same way`: the tool does what the reader does, and follows them. */
+const TOOL_ALSO =
+  /(?<!\p{L})(?:auch|ebenso|genauso|too|also|as well|the same way|in the same order|ook|net zo|aussi|de même|también|igual|anche|allo stesso modo)(?!\p{L})/iu;
+/** `Im Reiseplaner …`, `The trip planner allows …`: the sentence starts at the tool. */
+const PRODUCT_OPENER = {
+  de: new RegExp(
+    `^(?:Im|Mit dem|Der|Dem|Den|Beim|Vom|Unser|Unserem|Unseren)\\s+(?:${PRODUCT_NAME.de}|Kalender)(?!\\p{L})`,
+    'u'
+  ),
+  en: new RegExp(
+    `^(?:In |With |On |For )?(?:the|our) (?:[\\p{L}.]+ )?(?:${PRODUCT_NAME.en}|calendar)(?!\\p{L})`,
+    'iu'
+  ),
+  nl: new RegExp(
+    `^(?:In |Met |Op )?(?:de|onze) (?:[\\p{L}.]+-)?(?:${PRODUCT_NAME.nl}|kalender)(?!\\p{L})`,
+    'iu'
+  ),
+  fr: new RegExp(
+    `^(?:Dans |Avec |Sur )?(?:le|notre) (?:${PRODUCT_NAME.fr}|calendrier)(?!\\p{L})`,
+    'iu'
+  ),
+  es: new RegExp(`^(?:En |Con )?(?:el|nuestro) (?:${PRODUCT_NAME.es}|calendario)(?!\\p{L})`, 'iu'),
+  it: new RegExp(
+    `^(?:Nel nostro|Il nostro|Nel|Con il|Il|Sul|Col)\\s+(?:${PRODUCT_NAME.it}|calendario)(?!\\p{L})`,
+    'iu'
+  ),
+};
+
+/** `So …`, `That's why …`, `Deshalb …`: the consequence announced at the start of a sentence. */
+const CAUSAL_OPENER = {
+  de: /^(?:Deshalb|Darum|Deswegen|Daher)(?!\p{L})/u,
+  en: /^(?:So(?=[\s,])(?!\s+(?:far|much|many|long|-called|called)(?!\p{L}))|That['’]s why|That is why|This is why|Which is why)(?!\p{L})/u,
+  nl: /^(?:Daarom|Dus)(?!\p{L})/u,
+  fr: /^(?:C['’]est pourquoi|C['’]est pour (?:ça|cela) que|Donc|Du coup)(?!\p{L})/u,
+  es: /^(?:Por eso|Por (?:lo|ello) tanto|Así que)(?!\p{L})/u,
+  it: /^(?:Per questo|Quindi|Perciò|Ecco perché)(?!\p{L})/u,
+};
+/** Causal openers per 1,000 words of running text, on top of the count of four. */
+const CAUSAL_PER_1K = 1;
+
+/** The words that make a sentence a negation. */
+const NEGATION_WORD = {
+  de: /(?<!\p{L})(?:nicht|kein\p{L}*|nie|niemals|nirgends|weder)(?!\p{L})/u,
+  en: /(?<!\p{L})(?:not|no|never|neither|none|nothing|\p{L}+n['’]t)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:niet|geen|nooit|noch|nergens)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:pas|aucun\p{L}*|jamais|ni|nulle part)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:no|ningún|ninguna|ninguno|nunca|ni)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:non|nessun\p{L}*|mai|né)(?!\p{L})/iu,
+};
+
+/*
+ * A spec attributed instead of stated (§1.2): `nach Disneys Angaben`, `nach Angaben des Parks`,
+ * `nach Trainline`, `by Disney's count`, `the park gives 257 kilometres`. `laut` and `according
+ * to` are left out: they are how every guide names a source once, and with them the existing
+ * guides read as dense as the one the critic flagged. A sentence with a superlative or a plan is
+ * a claim, which needs its source (§1.2), and does not count.
+ */
+const SOURCE_NAME = String.raw`\p{Lu}[\p{L}'’-]*(?:\s\p{Lu}[\p{L}'’-]*){0,2}`;
+const SPEC_ATTRIBUTION = {
+  de: new RegExp(
+    String.raw`(?<!\p{L})(?:nach (?:${SOURCE_NAME}s |eigenen |offiziellen )?Angaben(?: (?:des|der|von) (?:${SOURCE_NAME}|\p{L}+))?|nach ${SOURCE_NAME}(?= (?:sind|hat|haben|liegt|liegen|kostet|dauert|fährt|braucht|\d))|(?:nennt|gibt) ${SOURCE_NAME} (?:[^.,]{0,30}\s)?\d)`,
+    'gu'
+  ),
+  en: new RegExp(
+    String.raw`(?<!\p{L})(?:[Bb]y (?:${SOURCE_NAME}['’]s?|the park['’]s|the operator['’]s|its own|their own) (?:count|figures?|reckoning|numbers)|(?:${SOURCE_NAME}|the park|the operator) (?:gives|puts (?:it|them) at|quotes) (?:[^.,]{0,30}\s)?\d)`,
+    'gu'
+  ),
+};
+const CLAIM_WORD =
+  /(?<!\p{L})(?:\p{L}{3,}ste[nmrs]?|erste[nmrs]?|einzige[nmrs]?|\p{L}{3,}est|first|only|soll(?:en)?|geplant|wird|werden|will|plans?|planned|announced|angekündigt)(?!\p{L})/iu;
+const MIN_SPEC_ATTRIBUTIONS = 6;
+const SPEC_ATTRIBUTIONS_PER_1K = 2;
+
+/** `Der Preis hängt von Größe und Strecke ab`, `the price depends on the date`: a price with no figure. */
+const PRICE_DEPENDS = {
+  de: /(?<!\p{L})(?:(?:der |die )?Preis\p{L}* (?:\p{L}+ ){0,2}?(?:hängt|hängen|richtet sich|richten sich|variier\p{L}*|schwank\p{L}*)|je nach [^.]{0,60}?(?:einen )?anderen Preis|kostet je nach|(?:hängt|hängen) (?:der |die )?Preis\p{L}*)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:prices? (?:\p{L}+ ){0,2}?(?:depends?|varies|vary|changes?|follows?) (?:on|by|with)|(?:a )?different price depending on|priced (?:by|according to) (?:the )?(?:date|day|demand))(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:prijs (?:\p{L}+ ){0,2}?(?:hangt af van|varieert|verschilt|wisselt)|afhankelijk van [^.]{0,60}?een andere prijs)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:prix (?:\p{L}+ ){0,2}?(?:dépend|varie|change)|un prix différent selon)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:precio (?:\p{L}+ ){0,2}?(?:depende|varía|cambia)|un precio distinto según)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:prezzo (?:\p{L}+ ){0,2}?(?:dipende|varia|cambia)|un prezzo diverso a seconda)(?!\p{L})/iu,
+};
+const MONEY_OR_FIGURE = /\d|[€£$¥]/u;
+
+/** The travel-blog line that judges before the fact arrives (§2.16). */
+const TEASER_PHRASE = {
+  de: /(?<!\p{L})(?:geht es (?:sogar |noch )?(?:einfacher|leichter)|wird (?:es|das) (?:zu )?eine (?:kleine )?Expedition|vor eine Wahl|hatte ein anderes Jahr|erzählt eine andere Geschichte)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:makes it (?:even )?easier|turns into (?:a|quite a|something of a) (?:small |little )?expedition|leaves you (?:with )?a choice|had a different year|tells a different story)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:is het (?:nog )?makkelijker|wordt het (?:een )?(?:kleine )?expeditie|voor een keuze|had een ander jaar|vertelt een ander verhaal)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:c['’]est (?:encore )?plus simple|devient une (?:petite )?expédition|un choix à faire|a connu une autre année|raconte une autre histoire)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:es (?:aún|todavía) más fácil|se convierte en una (?:pequeña )?expedición|ante una elección|tuvo otro año|cuenta otra historia)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:è (?:ancora )?più (?:facile|semplice)|diventa una (?:piccola )?spedizione|davanti a una scelta|ha avuto un altro anno|racconta un['’]altra storia)(?!\p{L})/iu,
+};
+
+/*
+ * German word order in English (§6): the object first, then the subject and a verb that has
+ * nothing left to take (`Seasons, festivals and parties we enter by hand`, `A single park day you
+ * plan ride by ride`), and the indirect question in front (`Whether you'll queue less …, you read
+ * from the minutes`). A sentence that opens on a time or a place (`Every morning you …`) is no
+ * object, and a contact clause (`The median we measure is …`) has its verb later.
+ */
+const OBJECT_FIRST_EN =
+  /^(?!(?:In|On|At|For|From|With|Without|By|After|Before|During|Then|Now|So|If|When|Once|Today|Tomorrow|Here|There|This|That|These|Those|Next|Last|Every|Each|Some|Most|Many|All|Both|Any|Also|Still|Even|Only|Just|Sometimes|Often|Usually|Later|Earlier|Inside|Outside|Overall|Where|Whether|What|How|Which|Why|Who|You|We|I)\b)[A-Z][\p{L}'’-]*(?:,?\s(?:and\s)?(?!(?:is|are|was|were|has|have|had|if|when|because|that|which|who)\b)[\p{L}'’-]+){1,6}\s(?:we|you|I)\s(?:enter|plan|read|book|buy|pick|find|see|check|choose)\s(?!(?:the|a|an|your|our|it|them|this|that|these|those|one|its|their|my|his|her)\b)(?![^.]*\b(?:is|are|was|were|goes|gets|has|have|costs|lasts|runs)\b)/u;
+const QUESTION_FIRST_EN =
+  /(?:^|,\s+and\s+|^And\s+)(?:whether|which|what|how|where)\b[^,.?!]{3,120},\s+(?:you|we)\s+(?:read|see|tell|find|learn|check|work out)\b/iu;
+
+/** A year and a first or an oldest: the founding superlative a caption reaches for. */
+const FOUNDING = {
+  de: /(?<!\p{L})(?:erste[nmrs]?|älteste[nmrs]?)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:first|oldest)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:eerste|oudste)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:premi(?:er|ère)s?|plus ancien(?:ne)?s?)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:primer[oa]?s?|más antigu[oa]s?)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:prim[oaie]|più antic[oaih]e?)(?!\p{L})/iu,
+};
+/** The captions of a post: the frontmatter's `caption:` and the second part of `![alt | caption](…)`. */
+const captionsOf = (raw) => [
+  ...[
+    ...(raw.match(/^---\n([\s\S]*?)\n---\n/)?.[1] ?? '').matchAll(
+      /^\s*caption:\s*['"]?(.+?)['"]?\s*$/gm
+    ),
+  ].map((m) => m[1]),
+  ...[...raw.matchAll(/!\[[^\]|]*\|\s*([^\]|]+?)\s*(?:\|\s*\w+\s*)?\]\(/g)].map((m) => m[1]),
+];
+
+/** An indirect question as the subject of a verb of deciding, depending or pointing (§2.20 #5). */
+const QUESTION_DECIDES = {
+  de: /^(?:Wo|Ob|Was|Wie|Wann|Welche[rsmn]?|Wie ?viel\p{L}*|Wie lange?|Warum|Wieso)\s[^,.?!]{3,120},\s+(?:entscheide[tn]|entscheidet sich|hängt|hängen|bestimm(?:t|en)|legt|legen|liest|lest|schlägt|schlagen|beschreibt|beschreiben|erklärt|erklären|regelt|regeln|richtet sich|ergibt sich|machen|macht)(?!\p{L})/u,
+  en: /^(?:Where|Whether|What|Which|How(?! (?:about|come))|Why)\b[^.?!,]{3,120}?\s(?:decides?|decided|depends|depend|determines?|is decided|comes down to|hinges on|is set out in|is explained in|is described in)(?!\p{L})/u,
+  nl: /^(?:Waar|Of|Wat|Hoe|Wanneer|Welke)\s[^,.?!]{3,120},\s+(?:bepaalt|bepalen|beslist|hangt|hangen|lees je|legt|leggen|beschrijft|verklaart)(?!\p{L})/u,
+  fr: /^(?:Où|Ce qui|Ce que|Comment|Combien|Quand|Quel(?:le)?s?)\s[^,.?!]{3,120}\s(?:décide|décident|dépend|dépendent|détermine|déterminent|se lit)(?!\p{L})/u,
+  es: /^(?:Dónde|Si|Lo que|Cómo|Cuándo|Cuánt[oa]s?|Qué|Cuál(?:es)?)\s[^,.?!]{3,120}\s(?:decide|deciden|depende|dependen|determina|determinan)(?!\p{L})/u,
+  it: /^(?:Dove|Se|Ciò che|Quello che|Come|Quando|Quant[oaie]|Quale|Quali)\s[^,.?!]{3,120}\s(?:decide|decidono|dipende|dipendono|determina|determinano)(?!\p{L})/u,
+};
+
+/**
+ * A count and the kind of thing counted: `auf zwei Arten`, `one of three ways`, `in drei Gegenden`.
+ * After an article (`les deux formules`, `the two versions`) it points back and counts nothing.
+ */
+const COUNT_NUMBER = {
+  de: '(?:zwei|drei|vier|fünf|sechs|sieben|acht|neun|zehn|elf|zwölf|eine[nmr]? von (?:zwei|drei|vier|fünf))',
+  en: '(?:two|three|four|five|six(?!\\s+Flags)|seven|eight|nine|ten|eleven|twelve|one of (?:two|three|four|five))',
+  nl: '(?:twee|drie|vier|vijf|zes|zeven|acht|negen|tien|elf|twaalf|een van (?:de )?(?:twee|drie|vier))',
+  fr: "(?:deux|trois|quatre|cinq|six(?!\\s+Flags)|sept|huit|neuf|dix|onze|douze|(?:l|d)['’]une des (?:deux|trois|quatre))",
+  es: '(?:dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|una de (?:las )?(?:dos|tres|cuatro))',
+  it: '(?:due|tre|quattro|cinque|sei|sette|otto|nove|dieci|undici|dodici|uno dei|una delle)',
+};
+const COUNT_KIND_NOUN = {
+  de: '(?:Arten|Wege|Wegen|Möglichkeiten|Optionen|Varianten|Gegenden|Sorten|Kategorien|Versionen)',
+  en: '(?:ways|options|choices|versions|variants|kinds|areas|routes|flavou?rs)',
+  nl: '(?:manieren|opties|mogelijkheden|varianten|soorten|versies|routes)',
+  fr: '(?:façons|manières|options|possibilités|variantes|formules|versions|sortes)',
+  es: '(?:formas|maneras|opciones|posibilidades|variantes|modalidades|versiones)',
+  it: '(?:modi|opzioni|possibilità|varianti|formule|versioni)',
+};
+/**
+ * The alternatives among them, which may stand a few words before the colon (`auf zwei Arten in
+ * die Reise: als …`); `five areas: Marerijk, Reizenrijk, …` names a park's map and stays.
+ */
+const COUNT_WAY_NOUN = {
+  de: '(?:Arten|Wege|Wegen|Möglichkeiten|Optionen|Varianten)',
+  en: '(?:ways|options|choices|versions|variants)',
+  nl: '(?:manieren|opties|mogelijkheden|varianten)',
+  fr: '(?:façons|manières|options|possibilités|variantes|formules)',
+  es: '(?:formas|maneras|opciones|posibilidades|variantes|modalidades)',
+  it: '(?:modi|opzioni|possibilità|varianti|formule)',
+};
+const COUNT_KIND = Object.fromEntries(
+  Object.keys(COUNT_NUMBER).map((l) => [
+    l,
+    new RegExp(
+      `(?<!\\p{L})(?<!(?:die|den|der|the|both|de|les|los|las|le|i|gli)\\s)${COUNT_NUMBER[l]}\\s+(?:\\p{L}+\\s+)?${COUNT_KIND_NOUN[l]}(?!\\p{L})`,
+      'iu'
+    ),
+  ])
+);
+const COUNT_KIND_END = Object.fromEntries(
+  Object.keys(COUNT_KIND_NOUN).map((l) => [
+    l,
+    new RegExp(`${COUNT_KIND_NOUN[l]}[.:]$|${COUNT_WAY_NOUN[l]}[^.:!?]{0,40}:`, 'iu'),
+  ])
+);
+
+/** A link among the first four words of a sentence or followed by six words at most. */
+const linkAtEdge = (s) => {
+  const words = s
+    .replace(/\]\([^)]*\)/g, ']')
+    .trim()
+    .split(/\s+/);
+  const first = words.findIndex((w) => w.includes('['));
+  const last = words.findLastIndex((w) => w.includes(']'));
+  return first >= 0 && (first < 4 || words.length - 1 - last <= 6);
+};
+/** A pointer that ends a paragraph: the verb of where-to-find, in each locale. */
+const POINTER_CLOSE = {
+  de: /(?<!\p{L})(?:steht|stehen|findest du|findet man|siehst du|zeigt|zeigen|beschreibt|beschreiben|erklärt|erklären|vergleicht|liest du|planst du|lässt sich|lassen sich)(?!\p{L})/u,
+  en: /(?<!\p{L})(?:is in|are in|is on|are on|you['’]ll find|you can (?:see|find|compare|check)|shows?|lists?|describes?|explains?|is set out in|go(?:es)? through|works? through|you plan)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:staat|staan|vind je|zie je|toont|beschrijft|legt uit|vergelijkt|plan je)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:se trouve|se trouvent|trouveras|tu trouves|tu vois|montre|décrit|explique|compare|tu planifies)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:está|están|encontrarás|encuentras|ves|muestra|describe|explica|compara|planificas)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:si trova|si trovano|trovi|vedi|mostra|descrive|spiega|confronta|pianifichi)(?!\p{L})/iu,
+};
+
+/** `ausverkauft`, `sells out`, `en nombre limité`: what a paragraph ends on when it runs out (§2.20 #57). */
+const SOLD_OUT = {
+  de: /(?<!\p{L})(?:ausverkauft|vergriffen|(?:ist|sind) (?:\p{L}+ ){0,3}?(?:verkauft|weg)|Kontingent|begrenzte[rn]? (?:Menge|Zahl|Anzahl)|solange (?:der )?Vorrat|früh weg|schnell weg)(?!\p{L})/iu,
+  en: /(?<!\p{L})(?:sells? out|sold out|go(?:es)? (?:early|fast|quickly)|gone (?:early|by|fast)|while (?:they|stocks?|supplies) last|limited (?:numbers|quantities|number)|(?:they|it|tickets?|passes|slots|places|seats) (?:are|is) gone)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:uitverkocht|beperkt aantal|zolang de voorraad strekt|snel weg|vroeg weg|(?:is|zijn) (?:dan |vaak |snel |al )?op(?=[.!]?$))(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:épuisée?s?|partent vite|en nombre limité|dans la limite des (?:places|stocks))(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:se agotan?|agota[n]?|agotad[oa]s?|vuelan|en número limitado|hasta agotar)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:esaurit[oiea]|vanno a ruba|in numero limitato|fino a esaurimento)(?!\p{L})/iu,
+};
+
+/** `X zählt als ein X`, `a day like that counts as one day` (§2.20 #11): the tautology. */
+const COUNTS_AS_ITSELF = {
+  de: /(?<!\p{L})(\p{L}{3,})\s+(?:zählt|zählen|gilt|gelten)\s+(?:dann\s+|also\s+|nur\s+)?als\s+(?:ein\p{L}*\s+)?\1(?!\p{L})(?!\s+(?:bis|unter|ab|wenn|solange|von|des|der|mit|\d))/iu,
+  en: /(?<!\p{L})(\p{L}{3,})(?:\s+like (?:that|this))?\s+(?:counts?|counted|is counted|are counted)\s+as\s+(?:one\s+|a\s+|an\s+)?\1(?!\p{L})(?!\s+(?:until|up to|under|from|if|as long as|of|with|\d))/iu,
+  nl: /(?<!\p{L})(\p{L}{3,})\s+(?:telt|tellen|geldt|gelden)\s+(?:dan\s+)?als\s+(?:een\s+|één\s+)?\1(?!\p{L})(?!\s+(?:tot|onder|vanaf|als|van|met|\d))/iu,
+  fr: /(?<!\p{L})(?:(\p{L}{3,})\s+(?:compte|comptent|est compté\p{L}*)\s+(?:alors\s+)?comme\s+(?:un\s+|une\s+)?\1(?!\p{L})(?!\s+(?:jusqu|sous|dès|si|de|d['’]|du|des|avec|\d))|(?:jour|journée)\s+(?:\p{L}+\s+){0,2}?compte comme (?:un|une)(?:\s+seule?)?(?=[.,;]|$))/iu,
+  es: /(?<!\p{L})(?:(\p{L}{3,})\s+(?:cuenta|cuentan|se cuenta)\s+como\s+(?:un\s+|una\s+)?\1(?!\p{L})(?!\s+(?:hasta|desde|si|de|del|con|\d))|día\s+(?:\p{L}+\s+){0,2}?cuenta como (?:uno|una?)(?:\s+solo)?(?=[.,;]|$))/iu,
+  it: /(?<!\p{L})(?:(\p{L}{3,})\s+(?:conta|contano|vale|valgono|è contat\p{L})\s+come\s+(?:un\s+|una\s+|uno\s+)?\1(?!\p{L})(?!\s+(?:fino|sotto|da|se|di|del|della|con|\d))|(?:giorno|giornata)\s+(?:\p{L}+\s+){0,2}?(?:conta|vale) come (?:uno|una?)(?:\s+sola?)?(?=[.,;]|$))/iu,
+};
+
+/** `Jede Stunde weniger im Park ist auch eine Stunde weniger für Fahrten.` (§2.20 #23) */
+const MIRRORED_LESS = {
+  de: /(?<!\p{L})Jede[rs]?\s+(\p{L}+)\s+weniger(?!\p{L})[^.]*(?<!\p{L})auch\s+eine?[rns]?\s+\1\s+weniger(?!\p{L})/iu,
+  en: /(?<!\p{L})Every\s+(\p{L}+)\s+less(?!\p{L})[^.]*(?<!\p{L})also\s+an?\s+\1\s+less(?!\p{L})/iu,
+  nl: /(?<!\p{L})Elke?\s+(\p{L}+)\s+minder(?!\p{L})[^.]*(?<!\p{L})ook\s+(?:een|één)\s+\1\s+minder(?!\p{L})/iu,
+  fr: /(?<!\p{L})Chaque\s+(\p{L}+)\s+de moins(?!\p{L})[^.]*(?<!\p{L})aussi\s+une?\s+\1\s+de moins(?!\p{L})/iu,
+  es: /(?<!\p{L})Cada\s+(\p{L}+)\s+(?:de\s+)?menos(?!\p{L})[^.]*(?<!\p{L})también\s+una?\s+\1\s+(?:de\s+)?menos(?!\p{L})/iu,
+  it: /(?<!\p{L})Ogni\s+(\p{L}+)\s+in meno(?!\p{L})[^.]*(?<!\p{L})anche\s+(?:un['’]\s*|una?\s+|uno\s+)\1\s+in meno(?!\p{L})/iu,
+};
+
+/*
+ * A vague word for a set whose members the same sentence then lists (§2.20 #16): `an einige
+ * Attraktionen, nach Angaben des Parks an Toutatis, OzIris, Cétautomatix …`. Three names or more
+ * after it, and no `darunter`, `etwa`, `such as` between, which would make the list a sample.
+ */
+const PLACEHOLDER = {
+  de: /(?<!\p{L})(?:einige[nrs]?|ausgewählte[nrs]?|mehrere[n]?|bestimmte[n]?|manche[n]?)\s+(?:\p{L}+\s+)?(?:Attraktionen|Bahnen|Fahrgeschäfte|Achterbahnen|Shows|Restaurants|Hotels|Parks)(?!\p{L})/u,
+  en: /(?<!\p{L})(?:some|selected|several|certain|a few|a number of)\s+(?:\p{L}+\s+)?(?:attractions|rides|coasters|shows|restaurants|hotels|parks)(?!\p{L})/iu,
+  nl: /(?<!\p{L})(?:enkele|sommige|bepaalde|geselecteerde|een aantal)\s+(?:\p{L}+\s+)?(?:attracties|achtbanen|shows|restaurants|hotels|parken)(?!\p{L})/iu,
+  fr: /(?<!\p{L})(?:certaine?s|quelques|plusieurs)\s+(?:\p{L}+\s+)?(?:attractions|manèges|montagnes russes|spectacles|restaurants|hôtels|parcs)(?!\p{L})/iu,
+  es: /(?<!\p{L})(?:algun[oa]s|ciert[oa]s|vari[oa]s|determinad[oa]s|seleccionad[oa]s)\s+(?:\p{L}+\s+)?(?:atracciones|montañas rusas|espectáculos|restaurantes|hoteles|parques)(?!\p{L})/iu,
+  it: /(?<!\p{L})(?:alcun[ie]|cert[ie]|divers[ie]|selezionat[ie]|determinat[ie])\s+(?:\p{L}+\s+)?(?:attrazioni|giostre|montagne russe|spettacoli|ristoranti|hotel|parchi)(?!\p{L})/iu,
+};
+const SAMPLE_WORD =
+  /(?<!\p{L})(?:darunter|etwa|wie|zum Beispiel|unter anderem|including|such as|among them|like|for example|e\.g|waaronder|zoals|bijvoorbeeld|dont|comme|notamment|par exemple|como|incluid[oa]s?|entre (?:ellas|ellos)|por ejemplo|tra cui|come|per esempio|ad esempio)(?!\p{L})/iu;
+const NAME_LIST = /\p{Lu}[^,.:;]{0,40},\s+\p{Lu}[^,.:;]{0,40},\s+\p{Lu}/u;
+
+/** `Beim Parc Astérix heißt der Pass Filotomatix.`, `At Disney … is called …` (§2.20 #76). */
+const NAMING_OPENER = {
+  de: /^(?:Im|Bei|Beim|In|Am)\s+(?:der\s+|dem\s+)?\p{Lu}[^,.]{0,40}?\s+(?:heißt|heißen)\s/u,
+  en: /^(?:(?:At|In|For)\s+(?:the\s+)?\p{Lu}[^,.]{0,40}?\s+(?:[^,.]{0,60}\s)?(?:is|are) called\s|\p{Lu}[^,.]{0,40}?\s+calls? (?:its|their)\s)/u,
+  nl: /^(?:In|Bij|Op)\s+(?:het\s+|de\s+)?\p{Lu}[^,.]{0,40}?\s+(?:heet|heten)\s/u,
+  fr: /^(?:À|Au|Aux|Chez|Dans)\s+(?:l['’]|le\s+|la\s+)?\p{Lu}[^,.]{0,40}?,?\s+[^,.]{0,60}?s['’]appellen?t?\s/u,
+  es: /^(?:En|Para)\s+(?:el\s+|la\s+)?\p{Lu}[^,.]{0,40}?,?\s+[^,.]{0,60}?se llaman?\s/u,
+  it: /^(?:A|Al|All['’]|Allo|Nel|Nell['’]|In|Da)\s*\p{Lu}[^,.]{0,40}?,?\s+[^,.]{0,60}?si chiamano?\s/u,
+};
+
+/** A full date: the day as well as the month and the year (§2.20 #59). */
+const FULL_DATE = new RegExp(DATE_DAY.source, 'iu');
+/** A paragraph that opens on the link to a park's page: `ref:` with no ride after a slash. */
+const PARK_LINK_OPENER =
+  /^(?:(?:Der|Das|Die|The|Het|De|Le|La|L['’]|El|Il|Lo)\s+)?\[[^\]]+\]\(ref:(?:\/parks\/[^)\s]*|[^/)\s]+)\)/u;
+
 /**
  * One entry per pattern. `run(ctx)` returns the matching passages, `min` is how many a post may
  * carry before the warning fires. `ctx` is `{ bs, locale, fields, raw }`: the blocks of the post,
@@ -1580,15 +2109,19 @@ export const SLOP_RULES = [
   {
     id: 'indirect-question-subject',
     section: '§2.20 #5',
-    locales: ['de', 'en'],
-    min: 2,
+    // Since the guides of 2026-11-14 also a verb of deciding, depending or pointing after the
+    // question (`Wo du schläfst, entscheidet über …`, `What Early Entry is worth depends on the
+    // day.`), three per post and in every locale. Any other verb is ordinary German.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
     run({ bs, locale }) {
       // Since PAR-990 also `Welche Wochentage …, haben wir in [Guide] ausgewertet.`
-      return paragraphs(bs).flatMap((b) =>
-        splitSentences(b.text).filter(
-          (s) => INDIRECT_QUESTION[locale].test(s) || INDIRECT_WE[locale].test(s)
-        )
-      );
+      const sentences = paragraphs(bs).flatMap((b) => splitSentences(b.text));
+      const pointers = INDIRECT_QUESTION[locale]
+        ? sentences.filter((s) => INDIRECT_QUESTION[locale].test(s) || INDIRECT_WE[locale].test(s))
+        : [];
+      const all = sentences.filter((s) => pointers.includes(s) || QUESTION_DECIDES[locale].test(s));
+      return pointers.length >= 2 || all.length >= 3 ? all : [];
     },
   },
   {
@@ -1665,14 +2198,18 @@ export const SLOP_RULES = [
   {
     id: 'tautological-because',
     section: '§2.20 #11',
-    locales: ['de', 'en'],
+    // Since the guides of 2026-11-14 also a thing that counts as itself (`so ein Tag zählt als ein
+    // Tag`, `with the first day counted as day one`), in every locale; the `weil` half is German
+    // and English.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
     run({ bs, locale }) {
-      const split = locale === 'de' ? /,?\sweil\s/ : /,?\sbecause\s/i;
+      const split = { de: /,?\sweil\s/, en: /,?\sbecause\s/i }[locale];
       return paragraphs(bs)
         .flatMap((b) => splitSentences(b.text))
         .filter((s) => {
-          const [main, because] = s.split(split);
+          if (COUNTS_AS_ITSELF[locale].test(s)) return true;
+          const [main, because] = split ? s.split(split) : [s];
           if (!because) return false;
           const left = new Set(finiteVerbs(main, locale));
           return finiteVerbs(because, locale).some((w) => left.has(w));
@@ -1694,18 +2231,31 @@ export const SLOP_RULES = [
   {
     id: 'count-announcement-opener',
     section: '§2.20 #13',
-    locales: ['de', 'en'],
+    // Since the guides of 2026-11-14 also a count of the kinds of a thing anywhere in a paragraph,
+    // before a colon or as the last words (`Ein Umzugstag läuft auf eine von drei Arten ab:`, `…,
+    // und es gibt ihn in zwei Varianten.`), in every locale; the short opener is German and English.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 2,
     run({ bs, locale }) {
-      return paragraphs(bs)
-        .map((b) => firstSentence(b.text))
-        .filter(
+      const openers = COUNT_WORD[locale]
+        ? paragraphs(bs)
+            .map((b) => firstSentence(b.text))
+            .filter(
+              (s) =>
+                wordCount(s) <= 7 &&
+                // A quoted title (`aus Grimms „Die sechs Diener“`) is a name, not a count.
+                COUNT_WORD[locale].test(s.replace(/[„“"«][^„“"«»”]*[“"»”]/gu, '')) &&
+                !MEASURE_WORD.test(s) &&
+                !CLOCK_TIME.test(s)
+            )
+        : [];
+      const kinds = paragraphs(beforeFaq(bs)).flatMap((b) =>
+        splitSentences(b.text).filter(
           (s) =>
-            wordCount(s) <= 7 &&
-            COUNT_WORD[locale].test(s) &&
-            !MEASURE_WORD.test(s) &&
-            !CLOCK_TIME.test(s)
-        );
+            COUNT_KIND[locale].test(s) && (/:$/.test(s) || COUNT_KIND_END[locale].test(s.trim()))
+        )
+      );
+      return [...new Set([...openers, ...kinds])];
     },
   },
   {
@@ -1743,9 +2293,18 @@ export const SLOP_RULES = [
   {
     id: 'range-before-enumeration',
     section: '§2.20 #16',
+    // Since the guides of 2026-11-14 also the vague word for a set that the same sentence then
+    // lists (`einige Attraktionen, … an Toutatis, OzIris, Cétautomatix …`).
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
     run({ bs, locale }) {
+      const placeholders = paragraphs(bs).flatMap((b) =>
+        [...b.text.matchAll(new RegExp(PLACEHOLDER[locale].source, 'giu'))].flatMap((m) => {
+          const after = b.text.slice(m.index + m[0].length).split(/(?<=[.?])\s/)[0];
+          const list = after.match(NAME_LIST);
+          return list && !SAMPLE_WORD.test(after.slice(0, list.index)) ? [`${m[0]}${after}`] : [];
+        })
+      );
       const text = bs.map((b) => b.text).join('\n');
       const token = (n) => n.replace(/[.,]+$/, '');
       const hits = [];
@@ -1755,7 +2314,7 @@ export const SLOP_RULES = [
         if (token(m[1]) !== token(m[2]) && numbers.has(token(m[1])) && numbers.has(token(m[2])))
           hits.push(m[0]);
       }
-      return hits;
+      return [...hits, ...placeholders];
     },
   },
   {
@@ -1827,12 +2386,18 @@ export const SLOP_RULES = [
   {
     id: 'mirrored-good-bad',
     section: '§2.20 #23',
-    locales: ['de', 'en'],
+    // Since the guides of 2026-11-14 also the maxim that mirrors itself in one sentence (`Jede
+    // Stunde weniger im Park ist auch eine Stunde weniger für Fahrten.`), in every locale.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     caption: true,
     min: 1,
     run({ bs, locale }) {
       return paragraphs(bs)
-        .filter((b) => GOOD_WHEN[locale].test(b.text) && BAD_WHEN[locale].test(b.text))
+        .filter(
+          (b) =>
+            (GOOD_WHEN[locale]?.test(b.text) && BAD_WHEN[locale]?.test(b.text)) ||
+            MIRRORED_LESS[locale].test(b.text)
+        )
         .map((b) => b.text);
     },
   },
@@ -1903,9 +2468,28 @@ export const SLOP_RULES = [
       const pairClose = paragraphs(bs)
         .map((b) => lastRaw(b))
         .filter((s) => TWO_PAGES.test(s) && (POINTER_VERB.test(s) || PAGE_WORD.test(s)));
+      // Since the guides of 2026-11-14 any page of the site, three paragraphs: `Jeden Tag einzeln
+      // findest du im [Andrang-Kalender …](ref:…?calendar).`, `… beschreibt [So funktioniert
+      // park.fan](/so-funktioniert-park-fan).` A sentence with a figure of its own or 26 words
+      // carries a fact beside the link, and a line ending in a colon introduces a widget. The link
+      // sits at the edge, among the first four words or the last six: a pointer is built
+      // around it, while `In de ranglijst voor [Phantasialand](ref:…) is de belangrijkste kolom
+      // …` only names the park.
+      const ownClose = paragraphs(beforeFaq(bs))
+        .map((b) => splitSentences(b.raw.replace(/!\[[^\]]*\]\([^)]*\)/g, ' ')).at(-1) ?? '')
+        .filter(
+          (s) =>
+            ANY_SITE_LINK.test(s) &&
+            POINTER_CLOSE[locale].test(s) &&
+            linkAtEdge(s) &&
+            !/\d/.test(s.replace(/\[[^\]]*\]\([^)]*\)/g, '')) &&
+            wordCount(s) <= 25 &&
+            !/:$/.test(s.trim())
+        );
       return [
         // Three since PAR-990, four before.
         ...(series.length >= 3 ? series.map((b) => lastRaw(b)) : []),
+        ...(ownClose.length >= 3 ? ownClose : []),
         ...(pairClose.length >= 2 ? pairClose : []),
         ...(own.length >= 2 ? own : []),
         ...pointers.map((b) => b.text),
@@ -2586,7 +3170,7 @@ export const SLOP_RULES = [
     // last-words refrain does not.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
-    run({ bs, locale }) {
+    run({ bs, locale, fields }) {
       const finals = paragraphs(bs)
         .map((b) => lastSentence(b.text))
         .filter((s) => !/[?:]$/.test(s));
@@ -2610,8 +3194,20 @@ export const SLOP_RULES = [
           .split(' ')
           .some((w) => w.length >= 5);
       for (const s of finals) if (counts(s)) count.set(tail(s), (count.get(tail(s)) ?? 0) + 1);
+      // Since the guides of 2026-11-14 also three ends on what sells out (`An vollen Tagen ist das
+      // Kontingent irgendwann verkauft.`, `On busy days it sells out.`), in the last clause and
+      // with no figure there (`war am 8. Oktober ausverkauft` is news), unless the post is about
+      // the sell-out, which its title then says.
+      const title = fields.find(([n]) => n === 'title')?.[1] ?? '';
+      const soldOut = SOLD_OUT[locale].test(title)
+        ? []
+        : finals.filter((s) => {
+            const clause = s.split(/,\s+/).at(-1);
+            return SOLD_OUT[locale].test(clause) && !/\d/.test(clause) && !SOURCES_LINE.test(s);
+          });
       return [
         ...(negations.length >= 3 ? negations : []),
+        ...(soldOut.length >= 3 ? soldOut : []),
         ...finals.filter((s) => counts(s) && count.get(tail(s)) >= 3),
       ];
     },
@@ -2653,9 +3249,26 @@ export const SLOP_RULES = [
         const s = b?.kind === 'para' ? firstSentence(b.text) : '';
         return PARK_IN_TOWN.test(s) && OPENED[locale].test(s) && YEAR.test(s) ? s : null;
       };
-      return bs.flatMap((b, i) =>
-        opens(b) && opens(bs[i + 1]) ? [`${opens(b)} ${opens(bs[i + 1])}`] : []
-      );
+      // Since the guides of 2026-11-14 also two sections in a row whose first paragraphs open on a
+      // park's link and give the day of its opening, with no town needed (`[SeaWorld
+      // Orlando](ref:…) hat am 15. Dezember 1973 eröffnet …` / `Das [LEGOLAND Florida](ref:…) hat am
+      // 15. Oktober 2011 … eröffnet …`). A ride's section opening on its date is a spec.
+      const dated = (b) => {
+        const s = b?.kind === 'para' ? firstSentence(b.text) : '';
+        return PARK_LINK_OPENER.test(b?.raw ?? '') &&
+          OPENED[locale].test(s) &&
+          FULL_DATE.test(s) &&
+          YEAR.test(s)
+          ? s
+          : null;
+      };
+      const starts = bs.flatMap((b, i) => (b.kind === 'heading' ? [dated(bs[i + 1])] : []));
+      return [
+        ...bs.flatMap((b, i) =>
+          opens(b) && opens(bs[i + 1]) ? [`${opens(b)} ${opens(bs[i + 1])}`] : []
+        ),
+        ...starts.flatMap((s, i) => (s && starts[i + 1] ? [`${s} ${starts[i + 1]}`] : [])),
+      ];
     },
   },
   {
@@ -3005,7 +3618,7 @@ export const SLOP_RULES = [
     // `in Walibi Holland` share a frame. No wordlist, so every locale.
     locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
     min: 1,
-    run({ bs }) {
+    run({ bs, locale }) {
       const skeleton = (s) => {
         const out = [];
         (s.match(/[\p{L}\d][\p{L}\d'’.,&-]*/gu) ?? []).forEach((w, i) => {
@@ -3023,14 +3636,22 @@ export const SLOP_RULES = [
         return out.slice(0, 6);
       };
       const count = new Map();
-      const opens = paragraphs(bs.slice(0, faq(bs).start))
-        .map((b) => firstSentence(b.text))
+      // A figure inside a compound is part of a word (`The 1-day ticket`), not a spec.
+      const firsts = paragraphs(beforeFaq(bs)).map((b) => firstSentence(b.text));
+      const opens = firsts
+        .map((s) => s.replace(/(?<![\d.,])\d+(?=-\p{L})/gu, 'n'))
         .filter((s) => !/\d/.test(s))
         .map((s) => [s, skeleton(s)]);
       for (const [, k] of opens)
         if (k.length === 6 && !k.includes('#') && k.filter((w) => w !== 'X').length >= 4)
           count.set(k.join(' '), (count.get(k.join(' ')) ?? 0) + 1);
-      return opens.filter(([, k]) => count.get(k.join(' ')) >= 3).map(([s]) => s);
+      // Since the guides of 2026-11-14 also the naming frame, whatever the noun: `Beim Parc Astérix
+      // heißt der frühe Einlass …`, `Bei Disney heißt der Weg …`, `Im Parc Astérix heißt der Pass …`.
+      const named = firsts.filter((s) => NAMING_OPENER[locale].test(s));
+      return [
+        ...opens.filter(([, k]) => count.get(k.join(' ')) >= 3).map(([s]) => s),
+        ...(named.length >= 3 ? named : []),
+      ];
     },
   },
   {
@@ -3662,7 +4283,8 @@ export const SLOP_RULES = [
       return running(bs).flatMap((b) =>
         splitSentences(b.text).filter((s) => {
           const m = s.match(NOT_X_END[locale]);
-          return m && !NOT_X_TIME.test(m[0]);
+          // `300 Meter Strecke, zwei Züge, keine Mindestgröße.` ends a spec list, not a contrast.
+          return m && !NOT_X_TIME.test(m[0]) && !(/^,\s+kein/u.test(m[0]) && /\d/.test(s));
         })
       );
     },
@@ -3709,7 +4331,26 @@ export const SLOP_RULES = [
               : []
           );
       });
-      return finals.length >= 2 ? [...finals, ...openers] : openers;
+      // Since the guides of 2026-11-14 also the pair across a paragraph break or a heading:
+      // `Neither operator runs a coach …` closing a chapter and `Neither operator sells …` opening
+      // the next, or the same negated four words on both sides of a heading (`… bietet keiner der
+      // beiden Betreiber an.` / `… verkauft keiner der beiden Betreiber …`).
+      const seq = bs.filter((b) => b.kind === 'para' || b.kind === 'heading');
+      const across = seq.flatMap((b, i) => {
+        if (b.kind !== 'para') return [];
+        let j = i + 1;
+        while (seq[j]?.kind === 'heading') j++;
+        if (seq[j]?.kind !== 'para') return [];
+        const last = lastSentence(b.text);
+        const first = firstSentence(seq[j].text);
+        if (NEITHER_OPENER[locale].test(last) && NEITHER_OPENER[locale].test(first))
+          return [last, first];
+        if (j === i + 1) return [];
+        const negated = [...ngrams(tokens(last), 4)].filter((g) => NEGATION_WORD[locale].test(g));
+        const after = ngrams(tokens(first), 4);
+        return negated.some((g) => after.has(g)) ? [last, first] : [];
+      });
+      return [...(finals.length >= 2 ? finals : []), ...openers, ...across];
     },
   },
   {
@@ -3784,6 +4425,160 @@ export const SLOP_RULES = [
           (s) => WITHHELD_AS_SAID[locale].test(s) && !FIRST_PERSON[locale].test(s)
         )
       );
+    },
+  },
+  {
+    id: 'product-opener-series',
+    section: '§2.20 #115',
+    // `Im Reiseplaner wählst du dafür …`, `The trip planner assumes …`, `Im Andrang-Kalender …`:
+    // ten sentences of the Orlando guide started at our own tool and read like its manual (§2.13).
+    // Five per post; a post about park.fan, where the tool is the topic, is left out.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 5,
+    run({ bs, locale, raw }) {
+      if (isAboutUs(raw)) return [];
+      return paragraphs(beforeFaq(bs)).flatMap((b) =>
+        splitSentences(b.text).filter((s) => PRODUCT_OPENER[locale].test(s))
+      );
+    },
+  },
+  {
+    id: 'product-close-series',
+    section: '§2.20 #116',
+    // `Im Reiseplaner zählt die Extra Magic Time mit, …`, `Schließt ein Park früher, kommt im
+    // Reiseplaner für den Abend …`: chapter after chapter ends on what our tool does instead of
+    // what the reader can do. The tool opens the sentence or its main clause; an aside that says
+    // the tool does the same (`(der Reiseplaner plant es genauso)`, `verteilt auch der
+    // Reiseplaner`) follows the reader and stays. Three paragraphs; a post about park.fan is left out.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 3,
+    run({ bs, locale, raw }) {
+      if (isAboutUs(raw)) return [];
+      return paragraphs(beforeFaq(bs))
+        .map((b) => lastSentence(b.text))
+        .filter((s) => {
+          const t = s.replace(/\([^)]*\)/g, ' ');
+          if (!PRODUCT_MENTION[locale].test(t) || TOOL_ALSO.test(t)) return false;
+          const lead = (clause) => clause.split(/\s+/).slice(0, 6).join(' ');
+          return t
+            .split(/,\s+/)
+            .slice(0, 2)
+            .some((clause) => PRODUCT_MENTION[locale].test(lead(clause)));
+        });
+    },
+  },
+  {
+    id: 'causal-opener-series',
+    section: '§2.20 #117',
+    // `So the calendar …`, `So with Universal's …`, `That's why Fuji-Q Highland …`, `Deshalb …`:
+    // the consequence announced at the start of sentence after sentence. Four per post and one
+    // per 1,000 words; at three, seven English posts fired on advice like `So start there`.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 4,
+    run({ bs, locale }) {
+      const list = paragraphs(beforeFaq(bs)).flatMap((b) => splitSentences(b.text));
+      const hits = list.filter((s) => CAUSAL_OPENER[locale].test(s));
+      const words = list.reduce((n, s) => n + wordCount(s), 0);
+      return (hits.length / words) * 1000 >= CAUSAL_PER_1K ? hits : [];
+    },
+  },
+  {
+    id: 'negation-opener-series',
+    section: '§2.20 #118',
+    // `Der Parc Astérix hat keinen eigenen Bahnhof.`, `… hat nicht das ganze Jahr geöffnet.`,
+    // `Für 2027 hat Disney noch keine Termine angekündigt.`: paragraph after paragraph opens on
+    // what is not (§2.14, §2.19). A first sentence of ten words at most, five per post, the FAQ and
+    // a bare yes or no left out.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 5,
+    run({ bs, locale }) {
+      return paragraphs(beforeFaq(bs))
+        .map((b) => firstSentence(b.text))
+        .filter(
+          (s) => wordCount(s) <= 10 && !YES_NO.test(s.trim()) && NEGATION_WORD[locale].test(s)
+        );
+    },
+  },
+  {
+    id: 'attribution-density',
+    section: '§2.20 #119',
+    // `nach Disneys Angaben` five times, `nach Angaben des Parks` four, `nach Trainline`: a spec
+    // is stated, not attributed (§1.2). Six formulas and two per 1,000 words, counted in sentences
+    // without a superlative or a plan; a news post is held to §5.0 instead. The four other
+    // languages say `selon`, `según`, `secondo`, `volgens` for the plain `laut` as well, so a count
+    // there cannot tell the formula from the one source a guide names, and they stay with the critic.
+    locales: ['de', 'en'],
+    min: MIN_SPEC_ATTRIBUTIONS,
+    run({ bs, locale, raw }) {
+      if (isNews(raw)) return [];
+      const list = paragraphs(beforeFaq(bs)).flatMap((b) => splitSentences(b.text));
+      const words = list.reduce((n, s) => n + wordCount(s), 0);
+      const hits = list
+        .filter((s) => !CLAIM_WORD.test(s))
+        .flatMap((s) => s.match(SPEC_ATTRIBUTION[locale]) ?? []);
+      return (hits.length / words) * 1000 >= SPEC_ATTRIBUTIONS_PER_1K ? hits : [];
+    },
+  },
+  {
+    id: 'price-without-figure',
+    section: '§2.20 #120',
+    // `Der Preis hängt von Größe und Strecke ab.`, `At all four, the price depends on the date.`:
+    // a price that varies, with no figure in the sentence or the next (§3.3 rule 19). Two per post.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) => {
+        const list = splitSentences(b.text);
+        return list.filter(
+          (s, i) =>
+            PRICE_DEPENDS[locale].test(s) &&
+            !MONEY_OR_FIGURE.test(s) &&
+            !MONEY_OR_FIGURE.test(list[i + 1] ?? '')
+        );
+      });
+    },
+  },
+  {
+    id: 'teaser-phrase-series',
+    section: '§2.20 #121',
+    // `Mit dem Auto aus Belgien geht es noch einfacher.`, `Ohne Auto wird es eine kleine
+    // Expedition.`, `Universal Studios Japan hatte ein anderes Jahr.`: a short line that judges
+    // before the fact arrives (§2.16). Twelve words at most and no figure, two per post.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 2,
+    run({ bs, locale }) {
+      return paragraphs(bs).flatMap((b) =>
+        splitSentences(b.text).filter(
+          (s) => wordCount(s) <= 12 && !/\d/.test(s) && TEASER_PHRASE[locale].test(s)
+        )
+      );
+    },
+  },
+  {
+    id: 'object-first-calque',
+    section: '§2.20 #122',
+    // `Seasons, festivals and parties we enter by hand …`, `A single park day you plan ride by
+    // ride …`, `Whether you'll queue less …, you read from the minutes.`: German word order
+    // carried into English (§6). Two per post. English only: the other languages may front the
+    // object.
+    locales: ['en'],
+    min: 2,
+    run({ bs }) {
+      return running(bs).flatMap((b) =>
+        splitSentences(b.text).filter((s) => OBJECT_FIRST_EN.test(s) || QUESTION_FIRST_EN.test(s))
+      );
+    },
+  },
+  {
+    id: 'caption-founding-series',
+    section: '§2.20 #123',
+    // `am 17. Juli 1955 eröffnet und damit das älteste …`, `als erstes LEGOLAND außerhalb
+    // Europas`, `Die erste SeaWorld überhaupt öffnete 1964`: caption after caption built from a
+    // year and a first (§5.2). Three captions of a post.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 3,
+    run({ raw, locale }) {
+      return captionsOf(raw).filter((c) => YEAR.test(c) && FOUNDING[locale].test(c));
     },
   },
 ];

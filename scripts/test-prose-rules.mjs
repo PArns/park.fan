@@ -8,12 +8,16 @@
 import assert from 'node:assert/strict';
 import {
   DATE_LINE_START,
+  PRODUCT_SUBJECT,
   SLOP_RULES,
+  TAILS,
+  WATCH,
   blocks,
   captionFindings,
   oldSpellings,
   slopFindings,
   splitSentences,
+  watchHits,
   werktagSentences,
 } from './prose-slop-patterns.mjs';
 
@@ -2687,6 +2691,856 @@ no(
 );
 no('withheld-as-said', 'Wir haben dir noch nicht gesagt, wann der Park öffnet.');
 no('withheld-as-said', 'The police haven’t released any figures yet.', 'en');
+
+/* ---- the critics of the four multi-park guides of 2026-11-14 ---- */
+
+const watch = (what, text) => {
+  const entry = WATCH.find((e) => e.what === what);
+  assert.ok(entry, `no WATCH entry named ${what}`);
+  return watchHits(text, entry) ?? [];
+};
+const flags = (what, text) => {
+  cases++;
+  assert.ok(watch(what, text).length > 0, `${what} should flag:\n${text}`);
+};
+const passes = (what, text) => {
+  cases++;
+  assert.deepEqual(watch(what, text), [], `${what} should leave alone:\n${text}`);
+};
+
+// AI vocabulary: a show's title is not the "rich tapestry"
+passes('AI vocabulary (§3)', 'Abends laufen Fantasmic! und Tapestry of Happiness auf der Fassade.');
+passes('AI vocabulary (§3)', 'In the evening Disneyland has Tapestry of Happiness on the facade.');
+flags('AI vocabulary (§3)', 'The park weaves a rich tapestry of rides and shows.');
+flags('AI vocabulary (§3)', 'A Tapestry of rides awaits you.');
+
+// teaser (§2.16): the easy-part frame
+flags('teaser (§2.16)', 'Die Parks auszusuchen ist der leichte Teil.');
+flags('teaser (§2.16)', 'Picking the parks is the easy part.');
+flags('teaser (§2.16)', 'Elegir los parques es la parte fácil.');
+flags('teaser (§2.16)', 'Choisir les parcs, c’est la partie facile.');
+passes('teaser (§2.16)', 'Der leichte Teil der Strecke liegt hinter der zweiten Kurve.');
+
+// expectation teaser (§2.16): what the name promises
+flags(
+  'expectation teaser (§2.16)',
+  'Der Japan Rail Pass deckt auf dieser Reise weniger ab, als sein Name verspricht.'
+);
+flags(
+  'expectation teaser (§2.16)',
+  'The Japan Rail Pass covers less of this trip than its name suggests.'
+);
+flags(
+  'expectation teaser (§2.16)',
+  'El Japan Rail Pass cubre menos de este viaje de lo que promete su nombre.'
+);
+passes(
+  'expectation teaser (§2.16)',
+  'Der Name verspricht eine Fahrt durch Japan, und die gibt es.'
+);
+
+// things that talk (§2.13): a colour that measures
+flags(
+  'things that talk (§2.13)',
+  'Die Farbe misst einen Tag an einem gewöhnlichen Tag desselben Parks.'
+);
+flags(
+  'things that talk (§2.13)',
+  'The colour measures a day against an ordinary day at the same park.'
+);
+flags('things that talk, nl/fr/es/it (§2.13)', 'La couleur mesure une journée.');
+passes(
+  'things that talk (§2.13)',
+  'Für die Farbe vergleichen wir den Tag mit einem gewöhnlichen Tag.'
+);
+
+// things that calculate (§2.13): the plan and the best-time pages
+flags(
+  'things that calculate (§2.13)',
+  'Mit Early Entry rechnet der Plan nicht, der Plan rechnet mit dem frühen Einlass.'
+);
+flags(
+  'things that calculate (§2.13)',
+  'und auch der Reiseplaner und die Seiten zur besten Reisezeit rechnen dort mit dem Vorjahr'
+);
+flags(
+  'things that calculate (§2.13)',
+  'and the trip planner and the best-time pages work with last year there too'
+);
+flags(
+  'things that calculate (§2.13)',
+  'Our post on the trip planner works through ten days in December.'
+);
+passes('things that calculate (§2.13)', 'Wir rechnen mit dem Plan des Parks, der Plan ist fertig.');
+
+// our method instead of the park (§2.19): rating by a measure
+flags(
+  'our method instead of the park (§2.19)',
+  'Wochen, die weiter weg liegen, bewerten wir auf beiden Seiten und im Reiseplaner nach dem gemessenen Andrang derselben Wochen im Vorjahr.'
+);
+flags(
+  'our method instead of the park (§2.19)',
+  'Weken die verder weg liggen, beoordelen we op beide pagina’s op de gemeten drukte.'
+);
+flags(
+  'our method instead of the park (§2.19)',
+  'Las semanas que quedan más allá las valoramos, en las dos páginas, por la afluencia medida.'
+);
+passes(
+  'our method instead of the park (§2.19)',
+  'Eine Reise bewerten wir wie der Reiseplaner: jeder Park an seinem besten Tag.'
+);
+passes(
+  'our method instead of the park (§2.19)',
+  'Nous expliquons comment nous évaluons le rope drop.'
+);
+
+// Claude register (§2.18): the stock phrase with nobody acting
+flags(
+  'Claude register (§2.18)',
+  'If you’ve already booked a hotel in one city, you fix its nights and the rest falls into place around them.'
+);
+passes('Claude register (§2.18)', 'The planner spreads the other nights around them.');
+
+// participial tail (§2.3): the which tail and the verdict hung on with it
+cases += 5;
+assert.equal(
+  ', which makes Discovery Cove the one park around Orlando where you don’t hunt for a day'.match(
+    TAILS.en
+  ).length,
+  1
+);
+assert.equal(
+  '…, which means we started in the busiest week of the year.'.match(TAILS.en).length,
+  1
+);
+assert.equal(
+  'Fuji-Q is the cool park of the trip, which in August is a real argument for a night there.'.match(
+    TAILS.en
+  ).length,
+  1
+);
+assert.equal(
+  'Fuji-Q ist der kühle Park der Reise, was im August ein echtes Argument für eine Nacht dort ist.'.match(
+    TAILS.de
+  ).length,
+  1
+);
+assert.equal('The ride, which opened in 2016, runs until six.'.match(TAILS.en), null);
+
+// the product as protagonist (§2.13): compounds, the plan and the best-time pages
+cases += 5;
+assert.equal(
+  'Der Reiseplaner zählt einen Tag als heiß, wenn die Vorhersage 35 °C erreicht.'.match(
+    PRODUCT_SUBJECT
+  ).length,
+  1
+);
+assert.equal(
+  'The trip planner treats a day as hot when the forecast reaches 35 °C.'.match(PRODUCT_SUBJECT)
+    .length,
+  1
+);
+assert.equal('und der Plan rechnet mit dem frühen Einlass'.match(PRODUCT_SUBJECT).length, 1);
+assert.equal(
+  'die Seiten zur besten Reisezeit rechnen dort mit dem Vorjahr'.match(PRODUCT_SUBJECT).length,
+  1
+);
+assert.equal(
+  'The plan was approved in 2019, and the planner is free.'.match(PRODUCT_SUBJECT),
+  null
+);
+
+// 4 handoff-object-first: `stellen … vor`, `veröffentlicht`, `Our guides … go through`
+yes(
+  'handoff-object-first',
+  lines(
+    'Die Parks liegen in vier Städten. Die Bahnen der beiden großen Resorts, Premier Access und den Express Pass stellen unsere Guides zu Tokyo Disney Resort und Universal Studios Japan im Einzelnen vor.',
+    'Einzelne Hotels haben gesperrte Tage. Die gesperrten Tage veröffentlicht das Resort auf seiner Seite zu Happy Entry.'
+  )
+);
+yes(
+  'handoff-object-first',
+  lines(
+    'The parks are in four cities. Our guides to [Tokyo Disney Resort](/blog/a) and [Universal Studios Japan](/blog/b) go through the rides of the two big resorts in detail.',
+    'Some hotels have blackout dates. The resort publishes the blackout dates on its Happy Entry page.'
+  ),
+  'en'
+);
+no(
+  'handoff-object-first',
+  lines(
+    'Some hotels have blackout dates. The resort publishes the blackout dates in January.',
+    'Our guides went through two rounds of review.'
+  ),
+  'en'
+);
+
+// 5 indirect-question-subject: a verb of deciding, three per post
+const wSubjects = [
+  'Wo du schläfst, entscheidet über Early Entry, über die Fahrzeiten und darüber, ob du länger bleiben darfst.',
+  'Was Early Entry bringt, hängt vom Tag ab.',
+  'Ob ein Tag im Magic Kingdom voll wird, entscheiden Ferien, Feiertage und die Partyabende, weniger der Wochentag.',
+];
+yes('indirect-question-subject', lines(...wSubjects));
+yes(
+  'indirect-question-subject',
+  lines(
+    'Where you sleep decides whether you get Early Entry, how long you drive, and whether you can stay longer.',
+    'What Early Entry is worth depends on the day.',
+    'Whether a day at Magic Kingdom gets busy depends on school holidays, public holidays and party nights.'
+  ),
+  'en'
+);
+yes(
+  'indirect-question-subject',
+  lines(
+    'Dónde duermes decide si tienes Early Entry.',
+    'Lo que da el Early Entry depende del día.',
+    'Qué parques abren antes lo decide Universal cada día.'
+  ),
+  'es'
+);
+yes(
+  'indirect-question-subject',
+  lines(
+    'Dove dormi decide se hai l’Early Entry.',
+    'Quanto rende l’Early Entry dipende dal giorno.',
+    'Quali parchi aprono prima lo decide Universal giorno per giorno.'
+  ),
+  'it'
+);
+no('indirect-question-subject', lines(...wSubjects.slice(0, 2)));
+no(
+  'indirect-question-subject',
+  lines(
+    'Ob Disney den Aufschlag mit Absicht einbaut, sagt der Konzern nicht.',
+    'Wie viele Szenen es gibt, hat er nicht bekannt gegeben.',
+    'Wann der Verkauf beginnt, steht noch nicht fest.'
+  )
+);
+
+// 10 travel-imperative-close: `Sieh dir`, `before you fix`
+yes(
+  'travel-imperative-close',
+  lines(
+    'Die Frist steht erst auf dem Ticket. Sieh dir die Frist beim Kauf an, bevor du die Tage in San Diego festlegst.',
+    'Die Zeiten ändern sich. Prüfe sie, bevor du losfährst.'
+  )
+);
+yes(
+  'travel-imperative-close',
+  lines(
+    'The window is on the ticket. Check that window at checkout before you fix your San Diego days.',
+    'Times change. Check them before you travel.'
+  ),
+  'en'
+);
+
+// 11 tautological-because: a thing that counts as itself
+yes(
+  'tautological-because',
+  'Mit Park Hopper wechselst du am selben Tag in einen zweiten Park, und so ein Tag zählt als ein Tag.'
+);
+yes(
+  'tautological-because',
+  'You use the days within 13 days of the first visit, with the first day counted as day one.',
+  'en'
+);
+yes(
+  'tautological-because',
+  'Met Park Hopper wissel je van park, en zo’n dag telt als één dag.',
+  'nl'
+);
+yes('tautological-because', 'Con Park Hopper cambias de parque, y ese día cuenta como uno.', 'es');
+yes(
+  'tautological-because',
+  'Con Park Hopper cambi parco, e una giornata così conta come una.',
+  'it'
+);
+no('tautological-because', 'Ein Tag gilt als Regentag ab zwei Millimetern Niederschlag.');
+no(
+  'tautological-because',
+  'Un jour compte comme jour de pluie à partir de 2 millimètres de précipitations.',
+  'fr'
+);
+no('tautological-because', 'Children count as children until the age of nine.', 'en');
+
+// 13 count-announcement-opener: the kinds of a thing, before a colon or as the last words
+yes(
+  'count-announcement-opener',
+  lines(
+    'Deshalb kommt LEGOLAND auf zwei Arten in die Reise: als eigene Station oder als Tagesausflug.',
+    'Ein Umzugstag läuft auf eine von drei Arten ab:'
+  )
+);
+yes(
+  'count-announcement-opener',
+  lines(
+    'Bei Fuji-Q gibt es zwei Wege.',
+    'Bei Disney heißt der Weg Premier Access, und es gibt ihn in zwei Varianten.'
+  )
+);
+yes(
+  'count-announcement-opener',
+  lines(
+    'That gives LEGOLAND two ways into a trip: as a stop of its own or as a day trip.',
+    'A moving day goes one of three ways:'
+  ),
+  'en'
+);
+yes(
+  'count-announcement-opener',
+  lines('Europa-Park vend le ResortPass en deux formules :', 'Il existe trois variantes.'),
+  'fr'
+);
+no(
+  'count-announcement-opener',
+  lines(
+    'Europa-Park vend le ResortPass en deux formules :',
+    'Un ParkingPass coûte 39 € de plus pour les deux formules.'
+  ),
+  'fr'
+);
+no(
+  'count-announcement-opener',
+  lines(
+    'Disney sells four tiers of the Disneyland Pass.',
+    'The three lower tiers include one ride per attraction.'
+  ),
+  'en'
+);
+
+no(
+  'count-announcement-opener',
+  lines(
+    'Langnek stammt aus Grimms „Die sechs Diener“.',
+    'Vier Möglichkeiten direkt am Park: das Grand Hotel, das Wonder Hotel und Bosrijk.'
+  )
+);
+no(
+  'count-announcement-opener',
+  lines(
+    'The park splits into five areas: Marerijk, Reizenrijk, Anderrijk, Ruigrijk, Fantasierijk.',
+    'The park map splits it into nine areas: The Lost Kingdom, Dino-Stone Park and more.'
+  ),
+  'en'
+);
+
+// 16 range-before-enumeration: the vague word, then the names
+yes(
+  'range-before-enumeration',
+  'Gäste der Parkhotels kommen 30 Minuten vor der offiziellen Öffnung an einige Attraktionen, nach Angaben des Parks an Toutatis, OzIris, Cétautomatix, La Tour de Numérobis, Attention Menhir ! und Chez Gyrofolix.'
+);
+yes(
+  'range-before-enumeration',
+  'Guests at the park’s hotels get into some attractions 30 minutes before official opening: Toutatis, OzIris, Cétautomatix, La Tour de Numérobis, Attention Menhir ! and Chez Gyrofolix, according to the park.',
+  'en'
+);
+yes(
+  'range-before-enumeration',
+  'Los huéspedes entran 30 minutos antes en algunas atracciones: Toutatis, La Tour de Numérobis, Cétautomatix y OzIris.',
+  'es'
+);
+no(
+  'range-before-enumeration',
+  'Alcune attrazioni chiudono già alle 17, per esempio Monorail, Tea Cups, Music Express e Red Baron.',
+  'it'
+);
+no(
+  'range-before-enumeration',
+  'Pendant l’événement de Noël, plusieurs manèges tournent, dont Oscar’s Wacky Taxi, Flyin’ Fish et Big Bird’s Tour Bus.',
+  'fr'
+);
+
+// 23 mirrored-good-bad: the maxim that mirrors itself
+yes('mirrored-good-bad', 'Jede Stunde weniger im Park ist auch eine Stunde weniger für Fahrten.');
+yes('mirrored-good-bad', 'Every hour less in the park is also an hour less for rides.', 'en');
+yes('mirrored-good-bad', 'Elk uur minder in het park is ook een uur minder voor attracties.', 'nl');
+yes(
+  'mirrored-good-bad',
+  'Cada hora menos en el parque es también una hora menos para atracciones.',
+  'es'
+);
+yes(
+  'mirrored-good-bad',
+  'Ogni ora in meno nel parco è anche un’ora in meno per le attrazioni.',
+  'it'
+);
+no('mirrored-good-bad', 'Jede Stunde weniger Wartezeit ist eine Stunde mehr für Fahrten.');
+
+// 24 appended-reason: `, which is why`
+yes(
+  'appended-reason',
+  lines(
+    'All five parks belong to United Parks, which is why SeaWorld’s multi-park tickets work there too.',
+    'The park is small, which is why it closes at six.'
+  ),
+  'en'
+);
+no('appended-reason', 'That is why the park closes at six. Which is why nobody stays.', 'en');
+
+// 26 link-sentence-close: a pointer to any page of the site, three paragraphs
+const ownPointers = [
+  'Am vollsten war es im Juli. Jeden Tag einzeln findest du im [Andrang-Kalender von Universal Studios Hollywood](ref:universal-studios-hollywood?calendar).',
+  'Wir messen alle fünf Minuten. Wie wir messen und wie weit die Prognose reicht, beschreibt [So funktioniert park.fan](/so-funktioniert-park-fan).',
+  'Für einen ganzen Tag reicht das. Einen einzelnen Parktag planst du Bahn für Bahn im [Tagesplaner](/tagesplaner).',
+];
+yes('link-sentence-close', lines(...ownPointers));
+no('link-sentence-close', lines(...ownPointers.slice(0, 2)));
+no(
+  'link-sentence-close',
+  lines(
+    'In de ranglijst voor [Phantasialand](ref:phantasialand) is de belangrijkste kolom die met de meetdagen, want daaraan zie je hoeveel gewicht een regel draagt.',
+    'Wir erfassen die Wartezeiten seit dem 26. Dezember 2025, und die aktuellen stehen alle fünf Minuten neu auf der [Parkseite](ref:europa-park).',
+    'Im [Andrangskalender](ref:walibi-holland?calendar) steht für jeden Tag:'
+  )
+);
+
+// 57 closing-refrain: what sells out
+yes(
+  'closing-refrain',
+  lines(
+    'Den Pass gibt es nur am Tag selbst. An vollen Tagen ist das Kontingent irgendwann verkauft.',
+    'Nur ein Teil der Pakete enthält das Zeitfenster, und an vollen Tagen sind die Pakete früh weg.',
+    'Beide gelten an rund 25 Bahnen, nur zusätzlich zum Eintritt und nur in begrenzter Menge pro Tag.'
+  )
+);
+yes(
+  'closing-refrain',
+  lines(
+    'You buy it in the app. On busy days it sells out.',
+    'Only some packages include the timed entry, and on busy days they go early.',
+    'Both work on about 25 rides, only on top of an admission ticket, and in limited numbers each day.'
+  ),
+  'en'
+);
+no(
+  'closing-refrain',
+  lines(
+    'Slasher Royale ist ab 18 Jahren und war am 8. Oktober ausverkauft.',
+    'Der Park rät, bei den Theatern mit begrenzter Zahl an Plätzen früh da zu sein, und die leeren Vorstellungen zu wählen.',
+    'Kopfhörer gibt es gegen Pfand, in zwei Größen und in begrenzter Zahl.'
+  )
+);
+no(
+  'closing-refrain',
+  lines(
+    'El jueves anterior ya se había agotado.',
+    'El sábado se agotó también.',
+    'Y el domingo se agotan las últimas.'
+  ),
+  'es',
+  [['title', 'Movie Park agota las entradas del 30 y 31 de octubre']]
+);
+
+// 59 mirrored-park-intro: two sections opening on a park's link and its opening day
+yes(
+  'mirrored-park-intro',
+  lines(
+    '### SeaWorld Orlando',
+    '[SeaWorld Orlando](ref:seaworld-orlando?calendar) hat am 15. Dezember 1973 eröffnet und liegt am International Drive.',
+    '### Tagesausflüge nach Winter Haven',
+    'Das [LEGOLAND Florida](ref:legoland-florida?calendar) hat am 15. Oktober 2011 auf dem Gelände des früheren Cypress Gardens eröffnet.'
+  )
+);
+no(
+  'mirrored-park-intro',
+  lines(
+    '### Toutatis',
+    'Toutatis opened on 8 April 2023.',
+    '### OzIris',
+    'OzIris opened on 7 April 2012 along with the Égypte area.'
+  ),
+  'en'
+);
+
+// 76 opener-skeleton-series: the naming frame, whatever the noun
+yes(
+  'opener-skeleton-series',
+  lines(
+    'Beim Parc Astérix heißt der frühe Einlass Early Entry.',
+    'Bei Disney heißt der Weg an der Warteschlange vorbei Disney Premier Access, und es gibt ihn in zwei Varianten.',
+    'Im Parc Astérix heißt der Pass Filotomatix.'
+  )
+);
+yes(
+  'opener-skeleton-series',
+  lines(
+    'Parc Astérix calls its version Early Entry.',
+    'At Disney the paid way past the queue is called Disney Premier Access.',
+    'At Parc Astérix the pass is called Filotomatix.'
+  ),
+  'en'
+);
+no(
+  'opener-skeleton-series',
+  lines(
+    'Im Europa-Park heißt der Wechsel Baby-Switch.',
+    'Im Heide Park heißt der Wechsel Baby-Switch-Pass.',
+    'Der Kinderbereich heißt „Attractions for Little Gauls“.'
+  )
+);
+yes(
+  'opener-skeleton-series',
+  lines(
+    'The 1-day ticket is good only on the date you booked.',
+    'The 2-day ticket is good only on the dates you booked.',
+    'The 3-day ticket is good only on the days you booked.'
+  ),
+  'en'
+);
+
+// 110 not-x-close: `, kein X.`
+yes(
+  'not-x-close',
+  lines(
+    'Zwei Tage, die weniger als fünf Minuten auseinanderliegen, gelten als gleich gut, und die besten Tage eines Parks sind eine Gruppe, keine Rangliste.',
+    'Wir zählen Minuten, nicht Kostüme.'
+  )
+);
+no(
+  'not-x-close',
+  lines(
+    'Le Petit Train du Cirque ist ein Familienzug: 300 Meter Strecke, zwei Züge, keine Mindestgröße.',
+    'Kondaa ist 50 Meter hoch, 113 km/h schnell, kein einziges Überkopfelement.'
+  )
+);
+
+// 112 neither-nor-refrain: the pair across a heading
+yes(
+  'neither-nor-refrain',
+  lines(
+    'Einen Bus direkt von Disneyland Paris zum Parc Astérix bietet keiner der beiden Betreiber an.',
+    '## Tickets',
+    'Ein gemeinsames Ticket für beide Resorts verkauft keiner der beiden Betreiber.'
+  )
+);
+yes(
+  'neither-nor-refrain',
+  lines(
+    'Neither operator runs a coach straight from Disneyland Paris to Parc Astérix.',
+    '## Tickets',
+    'Neither operator sells a ticket that covers both resorts.'
+  ),
+  'en'
+);
+no(
+  'neither-nor-refrain',
+  lines(
+    'Einen Bus direkt zum Parc Astérix gibt es nicht.',
+    '## Tickets',
+    'Ein gemeinsames Ticket verkauft keiner der beiden Betreiber.'
+  )
+);
+
+// 115 product-opener-series: five sentences that start at our tool
+const toolOpeners = [
+  'Im Reiseplaner wählst du dafür „Disney-Deluxe-Hotel“.',
+  'Im Andrang-Kalender hat jeder der 16 Parks für jeden Tag ein Kästchen.',
+  'Im Reiseplaner steht bei jedem Plan, um wie viele Minuten die Prognose danebenliegen kann.',
+  'Der Reiseplaner geht davon aus, dass du deine Koffer vorausschickst.',
+  'Im Kalender stehen die Schulferien von Orange County.',
+];
+yes('product-opener-series', lines(...toolOpeners));
+yes(
+  'product-opener-series',
+  lines(
+    'The trip planner allows 35 minutes for the whole way from a hotel at Tokyo Station.',
+    'The trip planner assumes you send your suitcases ahead.',
+    'The trip planner works with door-to-door times.',
+    'The trip planner counts the 15 minutes on every day.',
+    'In the trip planner, that’s the “Disney deluxe hotel” option.'
+  ),
+  'en'
+);
+yes(
+  'product-opener-series',
+  lines(
+    'Dans le planificateur de voyage, un jour compte comme chaud quand 35 °C sont prévus.',
+    'Dans le planificateur de voyage, les temps de trajet partent d’un seul hôtel.',
+    'Dans le planificateur de voyage, une soirée compte comme une journée plus courte.',
+    'Le planificateur de voyage place Magic Mountain sur un jour plus frais.',
+    'Dans le calendrier, chaque parc a sa couleur.'
+  ),
+  'fr'
+);
+no('product-opener-series', lines(...toolOpeners.slice(0, 4)));
+no('product-opener-series', `---\ncategory: park-fan\n---\n\n${lines(...toolOpeners)}`);
+
+// 116 product-close-series: three paragraphs that end on our tool
+const toolCloses = [
+  'Gäste der Disney-Hotels kommen früher hinein. Im Reiseplaner zählt die Extra Magic Time mit, sobald du in einem Disney-Hotel übernachtest.',
+  'Die Parks schließen zu verschiedenen Zeiten. Schließt ein Park früher als der andere, kommt im Reiseplaner für den Abend der andere Disney-Park in den Plan.',
+  'Im Juli hat es im Mittel 26 Grad. Im Reiseplaner zählt ein Tag, für den 30 Grad oder mehr vorhergesagt sind, als schlechterer Tag.',
+];
+yes('product-close-series', lines(...toolCloses));
+yes(
+  'product-close-series',
+  lines(
+    'Hotel guests get in early. The trip planner counts Extra Magic Time as soon as you stay at a Disney hotel.',
+    'The parks close at different times. If one park closes earlier than the other, the trip planner fills the evening with the other Disney park.',
+    'July is warm in Paris. In the trip planner a day forecast at 30 °C or more counts as a worse day.'
+  ),
+  'en'
+);
+no('product-close-series', lines(...toolCloses.slice(0, 2)));
+no(
+  'product-close-series',
+  lines(
+    'Die Parks schließen verschieden. Schließt ein Park früher, gehst du für den Abend in den anderen hinüber (der Reiseplaner plant es genauso).',
+    'Bleibt dir ein freier Tag, bekommt ihn USJ, den nächsten DisneySea, und in dieser Reihenfolge verteilt auch der Reiseplaner die Tage.',
+    'Die Koffer schickst du voraus. Davon geht auch der Reiseplaner aus.'
+  )
+);
+no(
+  'product-close-series',
+  lines(
+    'Im Reiseplaner zählt die Extra Magic Time mit. Gäste der Disney-Hotels kommen früher hinein.',
+    'Im Reiseplaner kommt der andere Park in den Plan. Die Parks schließen zu verschiedenen Zeiten.',
+    'Im Reiseplaner zählt ein heißer Tag schlechter. Im Juli hat es im Mittel 26 Grad.'
+  )
+);
+
+// 117 causal-opener-series: four per post and one per 1,000 words
+const soOpeners = [
+  'So the calendar and the trip planner count by the hours you get as a day guest.',
+  'So with Universal’s 14-day ticket every calendar day counts.',
+  'So we’ve measured each month exactly once.',
+  'That’s why a green EPCOT can have a longer peak wait than a red Magic Kingdom.',
+];
+yes('causal-opener-series', lines(...soOpeners), 'en');
+yes(
+  'causal-opener-series',
+  lines(
+    'Deshalb kommt LEGOLAND auf zwei Arten in die Reise.',
+    'Deshalb kann ein grünes EPCOT eine längere Spitzenwartezeit haben.',
+    'Darum bleibt Fuji-Q meist ein Tagesausflug.',
+    'Deswegen stuft der Reiseplaner die Taifunsaison zurück.'
+  )
+);
+no('causal-opener-series', lines(...soOpeners.slice(0, 3)), 'en');
+no(
+  'causal-opener-series',
+  lines(
+    'So far the park has kept quiet.',
+    'So many rides close.',
+    'So-called fast lanes cost extra.',
+    'So much for the plan.'
+  ),
+  'en'
+);
+no('causal-opener-series', lines(...soOpeners, 'word '.repeat(4200).trim()), 'en');
+
+// 118 negation-opener-series: five paragraphs that open on what is not
+const noOpeners = [
+  'Der Parc Astérix hat keinen eigenen Bahnhof. Der nächste liegt in Survilliers.',
+  'Der Parc Astérix hat nicht das ganze Jahr geöffnet. Bis zum 18. Dezember ist er zu.',
+  'Für 2027 hat Disney noch keine Termine angekündigt. Die von 2026 helfen.',
+  'Ein eigenes Silvesterticket verkauft Disney nicht. Es gilt das Tagesticket.',
+  'Das Billet Liberté hat kein Datum. Du nutzt es an einem Tag deiner Wahl.',
+];
+yes('negation-opener-series', lines(...noOpeners));
+yes(
+  'negation-opener-series',
+  lines(
+    'Parc Astérix has no station of its own. The nearest is Survilliers.',
+    'Parc Astérix isn’t open all year. It closes until 18 December.',
+    'Disney hasn’t announced any 2027 dates yet. The 2026 ones help.',
+    'Disney doesn’t sell a separate New Year’s Eve ticket. The day ticket covers it.',
+    'The Billet Liberté has no date. You use it on any day.'
+  ),
+  'en'
+);
+no('negation-opener-series', lines(...noOpeners.slice(0, 4)));
+no(
+  'negation-opener-series',
+  lines('## Häufige Fragen', '### Gibt es einen Bahnhof?', 'Nein.', ...noOpeners.slice(0, 4))
+);
+
+// 119 attribution-density: specs attributed, six and two per 1,000 words
+const specAttributions = [
+  'Der Parkplatz hat nach Disney 11.200 Stellplätze unter einem Solardach und gilt für beide Parks.',
+  'Von Brüssel sind es nach Angaben des Parks 257 Kilometer, etwa drei Stunden.',
+  'Die Hotels Cheyenne und Santa Fe liegen nach Disneys Angaben 20 Minuten zu Fuß von den Parks.',
+  'Die Fahrt mit dem RER dauert nach Trainline 40 Minuten.',
+  'Der Eurostar braucht nach Eurostar 2 Stunden und 16 Minuten von London.',
+  'Das Hotel hat nach Angaben des Parks 300 Zimmer.',
+];
+yes('attribution-density', lines(...specAttributions));
+yes(
+  'attribution-density',
+  lines(
+    'By Disney’s figures the car park has 11,200 spaces under a solar canopy.',
+    'From Brussels the park gives 257 kilometres, about three hours.',
+    'The Cheyenne is 20 minutes on foot from the parks by Disney’s count.',
+    'Disney puts them at 5 to 15 minutes on foot.',
+    'For the RER, Trainline gives 40 minutes from Châtelet.',
+    'The hotel has 300 rooms by its own count.'
+  ),
+  'en'
+);
+no('attribution-density', lines(...specAttributions.slice(0, 5)));
+no(
+  'attribution-density',
+  lines(
+    ...specAttributions.map((s) =>
+      s.replace(/nach (?:Disneys Angaben|Angaben des Parks|Disney|Trainline|Eurostar)/, 'laut Park')
+    )
+  )
+);
+no(
+  'attribution-density',
+  lines(
+    'Die Bahn ist nach Angaben des Parks der höchste Wing Coaster Europas.',
+    'Nach Angaben von Six Flags ist Kraze die erste Family Hive in Nordamerika.',
+    'Geplant ist sie nach Angaben des Parks vom 25. März an.',
+    'Nach Angaben des Parks wird die Bahn 2027 eröffnet.',
+    'Das Hotel soll nach Angaben des Parks 300 Zimmer haben.',
+    'Nach Angaben des Parks ist es die längste Bahn im Land.'
+  )
+);
+
+// 120 price-without-figure: two per post
+yes(
+  'price-without-figure',
+  lines(
+    'Der Preis hängt von Größe und Strecke ab, abholen kannst du den Koffer mit Ausweis oder Beleg.',
+    'Bei allen vier hängt der Preis vom Datum ab.'
+  )
+);
+yes(
+  'price-without-figure',
+  lines(
+    'The price depends on size and distance, and you collect the case with ID or the receipt.',
+    'At all four, the price depends on the date.'
+  ),
+  'en'
+);
+yes(
+  'price-without-figure',
+  lines(
+    'El precio depende del tamaño y de la distancia.',
+    'En los cuatro, el precio depende de la fecha.'
+  ),
+  'es'
+);
+no(
+  'price-without-figure',
+  lines(
+    'Der Preis hängt vom Datum ab. Ein Tag kostet 59 bis 79 €.',
+    'Der Preis richtet sich nach der Nachfrage, im Oktober zwischen 89 und 129 €.'
+  )
+);
+
+// 121 teaser-phrase-series: two short lines that judge before the fact
+yes(
+  'teaser-phrase-series',
+  lines(
+    'Mit dem Auto aus Belgien oder den Niederlanden geht es noch einfacher.',
+    'Ohne Auto wird es eine kleine Expedition.'
+  )
+);
+yes(
+  'teaser-phrase-series',
+  lines(
+    'Driving from Belgium or the Netherlands makes it even easier.',
+    'Without a car it turns into a small expedition.'
+  ),
+  'en'
+);
+yes(
+  'teaser-phrase-series',
+  lines(
+    'Met de auto uit België of Nederland is het nog makkelijker.',
+    'Zonder auto wordt het een kleine expeditie.'
+  ),
+  'nl'
+);
+yes(
+  'teaser-phrase-series',
+  lines(
+    'Sans voiture, ça devient une petite expédition.',
+    'Avec les trois parcs, il y a donc un choix à faire.'
+  ),
+  'fr'
+);
+yes(
+  'teaser-phrase-series',
+  lines('En coche desde Bélgica es aún más fácil.', 'Universal Studios Japan tuvo otro año.'),
+  'es'
+);
+yes(
+  'teaser-phrase-series',
+  lines(
+    'Senza macchina diventa una piccola spedizione.',
+    'Universal Studios Japan ha avuto un altro anno.'
+  ),
+  'it'
+);
+no('teaser-phrase-series', 'Ohne Auto wird es eine kleine Expedition.');
+no(
+  'teaser-phrase-series',
+  lines(
+    'Mit der App des Parks geht es noch einfacher, wenn du die 2 Tickets vorher scannst und gleich durch die Sperre gehst.',
+    'Ohne Auto wird es eine kleine Expedition.'
+  )
+);
+
+// 122 object-first-calque: German word order in English
+yes(
+  'object-first-calque',
+  lines(
+    'Seasons, festivals and parties we enter by hand and check against the parks’ pages.',
+    'A single park day you plan ride by ride in the day planner.',
+    'Whether you’ll queue less at EPCOT or at Magic Kingdom, you read from the minutes.'
+  ),
+  'en'
+);
+yes(
+  'object-first-calque',
+  lines(
+    'A green Disneyland is quiet, and whether you’ll still queue longer there than at Knott’s, you read from the minutes.',
+    'A single park day you plan ride by ride in the day planner.'
+  ),
+  'en'
+);
+no(
+  'object-first-calque',
+  lines(
+    'The median we measure is therefore close to what everybody gets.',
+    'Every morning you plan your day in the app.',
+    'Whether you drive or fly, you pay the same.',
+    'The date you choose when you buy is day one.'
+  ),
+  'en'
+);
+
+// 123 caption-founding-series: three captions of a year and a first
+const foundingCaptions = [
+  "---\ntitle: 'x'\nimage:\n  caption: 'Das Dornröschenschloss in Disneyland, am 17. Juli 1955 eröffnet und damit das älteste aller Disney-Schlösser.'\n---\n",
+  '![Ein Schriftzug. | 1999 in Carlsbad eröffnet, als erstes LEGOLAND außerhalb Europas.](/media/a.jpg)',
+  '![Ein Vordach. | Die erste SeaWorld überhaupt öffnete 1964 hier an der Mission Bay.](/media/b.jpg)',
+];
+yes('caption-founding-series', foundingCaptions.join('\n\n'));
+yes(
+  'caption-founding-series',
+  [
+    "---\ntitle: 'x'\nimage:\n  caption: 'Sleeping Beauty Castle at Disneyland, opened on July 17, 1955, the oldest of all the Disney castles.'\n---\n",
+    '![A sign. | Opened in Carlsbad in 1999, the first LEGOLAND outside Europe.](/media/a.jpg)',
+    '![A canopy. | The first SeaWorld of all opened here on Mission Bay in 1964.](/media/b.jpg)',
+  ].join('\n\n'),
+  'en'
+);
+no('caption-founding-series', foundingCaptions.slice(0, 2).join('\n\n'));
+no(
+  'caption-founding-series',
+  [
+    foundingCaptions[0],
+    '![Ein Schriftzug. | Der Eingang in Carlsbad, seit 1999.](/media/a.jpg)',
+    '![Ein Vordach. | Das Vordach an der Mission Bay, 1964 gebaut.](/media/b.jpg)',
+  ].join('\n\n')
+);
 
 // old-orthography: an error on every surface, German only
 cases += 4;
