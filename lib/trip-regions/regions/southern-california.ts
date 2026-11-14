@@ -108,6 +108,17 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
     },
   ],
   parkNameSuffixes: ['San Diego', 'California'],
+  // The codes visitors use where the derived letters say little or mislead: Universal would read
+  // "SH", the two Disney parks "DI" and "DA", Magic Mountain "SF", Knott's "KB", and SeaWorld "SD"
+  // beside Sesame Place San Diego.
+  parkShortNames: {
+    'disneyland-park': 'DL',
+    'disney-california-adventure-park': 'DCA',
+    'universal-studios-hollywood': 'USH',
+    'knotts-berry-farm': 'KBF',
+    'six-flags-magic-mountain': 'SFMM',
+    'seaworld-san-diego': 'SW',
+  },
   resortWords: { 'disneyland-resort': 'Disneyland', 'universal-studios-hollywood': 'Universal' },
   hotels: [{ key: 'disney', area: 'disneyland_resort' }, { key: 'offsite' }],
   // Separately ticketed nights (Oogie Boogie Bash, After Dark, Halloween Horror Nights) send the

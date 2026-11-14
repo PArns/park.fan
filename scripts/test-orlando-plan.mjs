@@ -1103,6 +1103,25 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       ['Epic', 'US', 'Studios', 'MK']
     );
   }
+  {
+    const socal = [
+      ['disneyland-park', 'Disneyland Park'],
+      ['disney-california-adventure-park', 'Disney California Adventure Park'],
+      ['universal-studios-hollywood', 'Universal Studios Hollywood'],
+      ['knotts-berry-farm', "Knott's Berry Farm"],
+      ['six-flags-magic-mountain', 'Six Flags Magic Mountain'],
+      ['seaworld-san-diego', 'SeaWorld San Diego'],
+      ['legoland-california', 'LEGOLAND California'],
+      ['sesame-place-san-diego', 'Sesame Place San Diego'],
+    ].map(([slug, name]) =>
+      parkLabel({ slug, name }, requireTripRegion('southern-california').parkShortNames, 'tight')
+    );
+    test(
+      'Southern California’s parks read as visitors shorten them, each code its own',
+      [socal, new Set(socal).size],
+      [['DL', 'DCA', 'USH', 'KBF', 'SFMM', 'SW', 'LE', 'SP'], 8]
+    );
+  }
   test(
     'the code key: the shown parks once, in the region’s order',
     parkCodeKey(
