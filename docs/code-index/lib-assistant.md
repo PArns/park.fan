@@ -7,8 +7,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`actions.ts`](../../lib/assistant/actions.ts)
 
+- `readReplies` _function_: Replies as text a person can tap: one line each, no link, no Markdown, at most four, each once. The chat renders them as plain text in any case.
 - `readAssistantAction` _function_: The action as the widget will carry it out, or null. Checked again here although the API built it: the stream is model-driven, and a page change or a planner write is the user's state.
-- Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `AssistantActionChip`
+- `TRIP_CHANGE_KINDS` _const_: What a change to a trip was, as the API names it: the receipt's words and the statistic's.
+- Types: `AssistantPlannerPark`, `AssistantCard`, `AssistantAction`, `TripChangeKind`, `AssistantReceipt`, `AssistantReceiptState`, `AssistantActionChip`
 
 ### [`alert-writes.ts`](../../lib/assistant/alert-writes.ts)
 
@@ -71,10 +73,26 @@ by hand: change the comment in the code and re-run the script. -->
 - `SETTLE_MS` _const_: Once the page has moved slower than that for this long, he lets go: long enough to hold on through the gaps between a wheel's bursts or a finger's swipes, so he does not bounce about.
 - Types: `ParkyFling`, `FlingHand`, `FlingHandAt`, `FlingState`
 
+### [`interview.ts`](../../lib/assistant/interview.ts)
+
+- `interviewCore` _function_: The core steps of an interview of this kind, the ones before its plan.
+- `interviewRefinements` _function_: The refinements of an interview of this kind.
+- `readInterview` _function_: An interview read leniently, from the API's action or this tab's storage, rebuilt so nothing rides along; null for one that cannot be read.
+- `startInterview` _function_: The planner's button: the interview set on its first step, and its first question waiting for the chat window, which sends it once its session is ready (`takeInterviewKickoff`).
+- `takeInterviewKickoff` _function_: The kind of interview whose first question waits to be sent, once: reading it clears it.
+- `TRIP_INTERVIEW_CORE` _const_: The interview goes from simple to detailed: a short core, then the plan, then refinements Parky offers as replies (`refine`). The order is a guide; a step answered early counts at once.
+- `TRIP_INTERVIEW_REFINE` _const_: A trip's refinements, offered once its plan stands.
+- `DAY_INTERVIEW_CORE` _const_: A park day's core: the park and the date, the must-dos.
+- `DAY_INTERVIEW_REFINE` _const_: A park day's refinements, offered once the day is planned.
+- `INTERVIEW_REFINE` _const_: The phase after the core: the plan stands, the refinements are on offer.
+- `interviewStore` _const_: The interview's store: what runs, set or ended by the API's action and by the bar's button.
+- Types: `InterviewStep`, `InterviewKind`, `AssistantInterview`, `InterviewStart`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
 - `safeAssistantHref` _function_: The link an answer may carry, or null to show it as text: only park.fan pages, absolute or as a path.
+- `regionHubPath` _function_: A hub link as Parky writes it, `/trip-regions/<slug>…` (the API does not know the segments), as the region's own segment in `locale` (`/kalifornien…`), so a press lands without the site's redirect.
 
 ### [`open.ts`](../../lib/assistant/open.ts)
 
@@ -260,12 +278,13 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 ### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
 
-- `assistantPlannerSnapshot` _function_: The planned days from today on, each in its park's own date, nearest first; `undefined` when there is none, so the request leaves the field out.
+- `assistantPlannerSnapshot` _function_: Every planned day from today on, each in its park's own date, nearest first: the day open in the planner and the nearest in full, the rest by park and date; `undefined` when there is none, so the request leaves the field out.
 - `rememberParkyChange` _function_: Keep a change Parky just made to a day: the plan before it and the plan after it.
 - `undoParkyChange` _function_: The plan with that day put back as it was before Parky's last change, its entries through `restoreDay`, its preferences and reservation as they were; only while the day is still what Parky left, so the visitor's own edits are never undone.
-- `SNAPSHOT_MAX_DAYS` _const_: The nearest days a question carries, and the entries per day.
+- `SNAPSHOT_MAX_DAYS` _const_: The days a question carries in full (the active one and the nearest), and the entries per day.
 - `SNAPSHOT_MAX_ENTRIES` _const_
-- Types: `AssistantPlannerEntry`, `AssistantPlannerSnapshot`, `ParkyUndoOutcome`
+- `SNAPSHOT_MAX_INDEX` _const_: The other planned days a question names by park and date, as many as the API reads.
+- Types: `AssistantPlannerEntry`, `AssistantPlannerIndexDay`, `AssistantPlannerSnapshot`, `ParkyUndoOutcome`
 
 ### [`post-text.ts`](../../lib/assistant/post-text.ts)
 
@@ -297,6 +316,16 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `countAnswer` _function_: Records the line Parky said in answer to a kind of action.
 - `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
 - `REACTIONS_PER_SESSION` _const_: Lines Parky says when it gets bored or is woken up, at most this many a session.
+
+### [`trip-context.ts`](../../lib/assistant/trip-context.ts)
+
+- `assistantTripsSnapshot` _function_: The trips a question carries: the planner on screen first, then the trips this browser remembers for the regions in `regions`; `undefined` without any, so the request leaves the field out.
+- `currentTripQuery` _function_: The trip's query right now: the planner on screen, else the one remembered.
+- `sameTripQuery` _function_: Parameter order and spelling aside, two queries that say the same.
+- `rememberTripChange` _function_: Keep a change Parky just sent for a region, with the trip before it.
+- `takeTripUndo` _function_: The trip before Parky's last change, while the trip is still what he left; `changed` once the visitor has changed it since, so their own edits are never undone. Consumes the change.
+- `TRIPS_SNAPSHOT_MAX` _const_: The API reads one trip per region and at most this many.
+- Types: `AssistantTripSnapshot`, `TripUndo`
 
 ### [`use-assistant-chat.ts`](../../lib/assistant/use-assistant-chat.ts)
 

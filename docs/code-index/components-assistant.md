@@ -21,6 +21,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantFeedbackForm` _component_: Feedback about the site, sent with the page it was written on and, when one is open, the chat, so the admin can read both together. The e-mail is only for those who want an answer.
 
+### [`assistant-interview-bar.tsx`](../../components/assistant/assistant-interview-bar.tsx)
+
+- `AssistantInterviewBar` _component_: Parky's interview while it runs, over the chat: which interview, where it stands (a dot per core step, then "your plan stands" once the refinements are on offer) and a button to stop.
+
 ### [`assistant-launcher.tsx`](../../components/assistant/assistant-launcher.tsx)
 
 - `AssistantLauncher` _component_: Parky, bottom right: only the round icon until it is pressed, then a small chat window above it.
@@ -37,14 +41,35 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantPanel` _component_: The window Parky opens in: the chat and, on its second tab, the feedback form. Mounted once the launcher was first pressed and kept, so a closed and reopened chat is where it was.
 
+### [`assistant-receipt.tsx`](../../components/assistant/assistant-receipt.tsx)
+
+- `AssistantReceipts` _component_: A change Parky made to a planner, under the answer that made it: what changed, and an undo that goes through Parky's own undo, so it puts the plan back only while it is still as he left it.
+- `ASSISTANT_DONE_CHIP_CLASS` _const_: What an answer did, as a small green pill under it: its chips and its receipts.
+
+### [`assistant-replies.tsx`](../../components/assistant/assistant-replies.tsx)
+
+- `AssistantReplies` _component_: Replies the visitor can tap under Parky's newest answer, as the model wrote them (`suggest_replies`). Each is a button that sends its text as the visitor's message; they sit on the visitor's side of the chat, where the reply will appear.
+
 ### [`assistant-teaser.tsx`](../../components/assistant/assistant-teaser.tsx)
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.
+
+### [`parky-day-interview-button.tsx`](../../components/assistant/parky-day-interview-button.tsx)
+
+- `ParkyDayInterviewButton` _component_: The day planner's „Plane mit Parky deinen perfekten Parktag" (`planner.parky`), for its day.
+
+### [`parky-interview-start.tsx`](../../components/assistant/parky-interview-start.tsx)
+
+- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
 
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
 - `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
 - `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
+
+### [`parky-trip-interview-button.tsx`](../../components/assistant/parky-trip-interview-button.tsx)
+
+- `ParkyTripInterviewButton` _component_: The trip planner's „Plane mit Parky deine perfekte Reise", in its own words (`tripPlanner.parky`).
 
 ### [`parky/break-scene.tsx`](../../components/assistant/parky/break-scene.tsx)
 

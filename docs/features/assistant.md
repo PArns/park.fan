@@ -267,8 +267,10 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
 `docs/frontend/assistant.md#the-interview` holds the steps and the tool.
 
 - **Ways in:** the trip planner's „Plane mit Parky deine perfekte Reise" (above the setup) and the
-  day planner's „Plane mit Parky deinen perfekten Parktag" (on an empty day), both
-  `parky-interview-button.tsx`, drawn only where Parky shows for this visitor (`assistantGate`). A
+  day planner's „Plane mit Parky deinen perfekten Parktag" (on an empty day),
+  `parky-trip-interview-button.tsx` and `parky-day-interview-button.tsx` on one
+  `ParkyInterviewStart`, in separate files so each route ships only its own planner's two strings,
+  drawn only where Parky shows for this visitor (`assistantGate`). A
   press sets the interview on its first step (`startInterview`) and opens the window
   (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the
   visitor's message once its session is ready (`takeInterviewKickoff`, `assistant_question` kind

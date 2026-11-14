@@ -1,7 +1,6 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
-import { useTranslations } from 'next-intl';
 import { MessagesSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -14,7 +13,7 @@ import { startInterview, type InterviewStart } from '@/lib/assistant/interview';
  * opens the chat, which asks the first question once its session is ready. Drawn only where Parky
  * shows for this visitor (`assistantGate`), so it never opens a window that does not come.
  */
-function ParkyInterviewStart({
+export function ParkyInterviewStart({
   label,
   line,
   start,
@@ -52,45 +51,5 @@ function ParkyInterviewStart({
         {label}
       </Button>
     </div>
-  );
-}
-
-/** The trip planner's „Plane mit Parky deine perfekte Reise", in its own words (`tripPlanner.parky`). */
-export function ParkyTripInterviewButton({
-  region,
-  className,
-}: {
-  region: string;
-  className?: string;
-}) {
-  const t = useTranslations('tripPlanner.parky');
-  return (
-    <ParkyInterviewStart
-      label={t('button')}
-      line={t('line')}
-      start={{ kind: 'trip', region }}
-      className={className}
-    />
-  );
-}
-
-/** The day planner's „Plane mit Parky deinen perfekten Parktag" (`planner.parky`), for its day. */
-export function ParkyDayInterviewButton({
-  park,
-  date,
-  className,
-}: {
-  park?: string;
-  date?: string;
-  className?: string;
-}) {
-  const t = useTranslations('planner.parky');
-  return (
-    <ParkyInterviewStart
-      label={t('button')}
-      line={t('line')}
-      start={{ kind: 'day', ...(park && { park }), ...(date && { date }) }}
-      className={className}
-    />
   );
 }

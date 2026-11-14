@@ -41,7 +41,7 @@ import { showDayHours, showLinesFor } from '@/lib/planner/shows';
 import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { cn } from '@/lib/utils';
-import { ParkyDayInterviewButton } from '@/components/assistant/parky-interview-button';
+import { ParkyDayInterviewButton } from '@/components/assistant/parky-day-interview-button';
 
 /**
  * What a press has to land outside for it to count as "show me this park": controls, form fields

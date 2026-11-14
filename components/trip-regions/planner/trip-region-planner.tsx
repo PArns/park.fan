@@ -23,7 +23,7 @@ import { PlanSetup, type PlanSheetStep } from './plan-setup';
 import { PlanResult } from './plan-result';
 import { useTicketStep } from './plan-tickets';
 import { usePlanState } from './use-plan-state';
-import { ParkyTripInterviewButton } from '@/components/assistant/parky-interview-button';
+import { ParkyTripInterviewButton } from '@/components/assistant/parky-trip-interview-button';
 
 /** What the hub hands the planner. */
 export interface TripRegionPlannerProps {
