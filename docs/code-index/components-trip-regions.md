@@ -319,6 +319,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
 
+### [`wizard/steps/area-map-tiles.tsx`](../../components/trip-regions/wizard/steps/area-map-tiles.tsx)
+
+- `AreaMapTiles` _component_: The hotel areas and parks of a city on CARTO's tiles (`cartoTileUrl`), light or dark with the site's theme, the view fitted once to every place with `FIT_PADDING`: at that zoom the motorways (I-4 through Orlando, the rail lines across …
+- Types: `AreaMapPlace`
+
 ### [`wizard/steps/area-picker.tsx`](../../components/trip-regions/wizard/steps/area-picker.tsx)
 
 - `AreaPicker` _component_: Where to sleep, as the Hotel and Hotels steps ask it: a card per hotel area with its number, the early slot its hotels get (`hotelAreas[].perks`) and the ways to the trip's parks (`travel.legs`, `areaWays`), under a schematic map whose …
