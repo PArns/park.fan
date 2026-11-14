@@ -3199,13 +3199,14 @@
       "loading": "Je dagen worden gepland …",
       "invalid": "Deze keuzes passen niet bij elkaar. Kijk de data en de dagen per park na.",
       "failed": "Het plan kon niet worden geladen.",
-      "retry": "Opnieuw proberen"
+      "retry": "Opnieuw proberen",
+      "editParks": "Parken wijzigen"
     },
     "problem": {
       "no_dates": "Kies je reisdata.",
       "too_long": "Een reis duurt hoogstens {days} dagen. Kies een korter verblijf.",
       "no_parks": "Kies minstens één park.",
-      "too_many_visits": "Meer parkdagen dan dagen voor parken. Haal bij een park een dag weg, sta parkhoppen toe of laat een reisdag een park bevatten.",
+      "too_many_visits": "De vaste dagen van je parken hebben meer parkdagen nodig dan je reis heeft. Haal bij één park een dag weg of sta parkhoppen toe.",
       "over_max_visits": "Een plan bevat hoogstens {max} parkdagen.",
       "no_park_day": "Je reis heeft geen dag vrij voor een park. Sta een park toe op de aankomst- of vertrekdag."
     },
@@ -3220,7 +3221,10 @@
       "about": "ongeveer {minutes} min.",
       "daysLabel": "Je dagen",
       "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}.",
-      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”."
+      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”.",
+      "leftOut": "{parks} {count, plural, =1 {past} other {passen}} niet in {days, plural, =1 {1 parkdag} other {# parkdagen}}.",
+      "travelDays": "Park op aankomst- en vertrekdag",
+      "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}"
     },
     "day": {
       "arrival": "Aankomst",
@@ -3335,7 +3339,8 @@
     },
     "unplaced": {
       "no_open_day": "{park} is gesloten op je data en staat niet in het plan.",
-      "no_day_left": "Voor {park} bleef geen dag over."
+      "no_second_day": "Voor een tweede dag in {park} bleef geen ruimte over.",
+      "no_base": "Geen stad waar je kunt overnachten, bereikt {park}."
     },
     "ignoredLock": {
       "outside_trip": "{what} op {date}: die dag hoort niet bij je reis.",

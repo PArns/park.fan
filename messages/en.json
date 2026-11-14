@@ -3199,13 +3199,14 @@
       "loading": "Planning your days …",
       "invalid": "These choices don’t fit together. Check the dates and the days per park.",
       "failed": "The plan couldn’t be loaded.",
-      "retry": "Try again"
+      "retry": "Try again",
+      "editParks": "Change parks"
     },
     "problem": {
       "no_dates": "Choose your dates.",
       "too_long": "A trip can be up to {days} days long. Choose a shorter stay.",
       "no_parks": "Choose at least one park.",
-      "too_many_visits": "More park days than days for parks. Take a day off one park, allow park hopping, or let a travel day hold a park.",
+      "too_many_visits": "The days you gave your parks need more park days than your trip has. Take a day off one park, or allow park hopping.",
       "over_max_visits": "A plan holds at most {max} park days.",
       "no_park_day": "Your trip has no day free for a park. Allow a park on the arrival or departure day."
     },
@@ -3220,7 +3221,10 @@
       "about": "about {minutes} min",
       "daysLabel": "Your days",
       "split": "{count, plural, =1 {{parks} gets} other {{parks} get}} {visits, plural, =2 {a second day} other {# days}}.",
-      "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “Fine-tune”."
+      "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “Fine-tune”.",
+      "leftOut": "{parks} {count, plural, =1 {doesn’t} other {don’t}} fit into {days, plural, =1 {1 park day} other {# park days}}.",
+      "travelDays": "Use arrival and departure days",
+      "longer": "{count, plural, =1 {1 more day} other {# more days}}"
     },
     "day": {
       "arrival": "Arrival",
@@ -3335,7 +3339,8 @@
     },
     "unplaced": {
       "no_open_day": "{park} is closed on your dates and isn’t in the plan.",
-      "no_day_left": "No day was left for {park}."
+      "no_second_day": "No day was left for a second visit to {park}.",
+      "no_base": "No city you can stay in reaches {park}."
     },
     "ignoredLock": {
       "outside_trip": "{what} on {date}: that day isn’t part of your trip.",

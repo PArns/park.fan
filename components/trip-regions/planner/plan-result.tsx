@@ -9,7 +9,7 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { plannerPagePark, type PlannerPagePark } from '@/lib/planner/page-park';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
 import { PlannerPageParkBeacon } from '@/components/planner/planner-page-park-beacon';
 import { Button } from '@/components/ui/button';
@@ -17,11 +17,14 @@ import {
   MAX_PLAN_VISITS,
   MAX_TRIP_DAYS,
   lockOn,
+  parkDaysAvailable,
   planProblem,
   planRequestQuery,
   plannerParkOf,
+  setTripDates,
   swapLocks,
   toggleLock,
+  tripDates,
   type PlanLock,
   type TripPlan,
 } from '@/lib/trip-regions/plan';
@@ -30,6 +33,7 @@ import {
   editCost,
   ignoredLocks,
   lastYearReach,
+  parksLeftOut,
   planSavings,
   relaxedRules,
   unplacedParks,
@@ -256,6 +260,8 @@ function PlanAnswerSection({ edit }: { edit: PlanEdit }) {
       {beacon && <PlannerPageParkBeacon {...beacon} />}
       {plan.isError && <Failure error={plan.error} onRetry={() => void plan.refetch()} />}
 
+      <LeftOut plan={data} edit={edit} />
+
       <PlanAnswer plan={data} calendar={calendar.data} onOpenDay={openDay} edit={edit} />
 
       {state.locks.length > 0 && (
@@ -474,6 +480,61 @@ function PlanAnswer({
           </li>
         ))}
       </ol>
+    </div>
+  );
+}
+
+/**
+ * The parks the trip had no day for, said in one sentence with the three ways to make room: a park
+ * on the travel days, other parks, a longer trip. The plan above it is the best of what fits.
+ */
+function LeftOut({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
+  const t = useTranslations('tripPlanner');
+  const { state, update, locale, parkName } = usePlanContext();
+  const left = parksLeftOut(plan);
+  if (left.length === 0) return null;
+  const length = tripDates(state).length;
+  const longer = Math.min(left.length, MAX_TRIP_DAYS - length);
+  const travelFree = state.arrival === 'free' || (length > 1 && state.departure === 'free');
+  const list = getListFormat(locale, { style: 'long', type: 'conjunction' });
+  return (
+    <div
+      className="border-crowd-high/40 flex flex-col items-start gap-3 rounded-2xl border p-4"
+      role="status"
+      data-plan-left-out=""
+    >
+      <p className="text-sm font-medium">
+        {t('answer.leftOut', {
+          parks: list.format(left.map(parkName)),
+          count: left.length,
+          days: parkDaysAvailable(state),
+        })}
+      </p>
+      <div className="flex flex-wrap gap-2">
+        {travelFree && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => update((s) => ({ ...s, arrival: 'park', departure: 'park' }))}
+          >
+            {t('answer.travelDays')}
+          </Button>
+        )}
+        <Button variant="outline" size="sm" onClick={edit.parks}>
+          {t('result.editParks')}
+        </Button>
+        {longer > 0 && state.from && state.to && (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() =>
+              update((s) => (s.from && s.to ? setTripDates(s, s.from, addDays(s.to, longer)) : s))
+            }
+          >
+            {t('answer.longer', { count: longer })}
+          </Button>
+        )}
+      </div>
     </div>
   );
 }

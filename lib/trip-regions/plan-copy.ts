@@ -151,15 +151,45 @@ export function relaxedRules(
   return known(['blocks_relaxed', 'streak_relaxed'] as const, meta.relaxed ?? []);
 }
 
-/** A park the plan could not place, with a reason this client can say. */
+/**
+ * The chosen parks that got no day at all because the trip has too few park days, in the region's
+ * order: the API's `parksLeftOut` where it sends it, else the parks `unplaced` names with no visit
+ * on any day. The answer names them in one sentence with the ways to make room.
+ */
+export function parksLeftOut(plan: Pick<TripPlan, 'parksLeftOut' | 'unplaced' | 'days'>): string[] {
+  if (plan.parksLeftOut) {
+    return plan.parksLeftOut.filter((p) => p.reason === 'no_day_left').map((p) => p.park);
+  }
+  const planned = new Set(plan.days.flatMap((d) => d.parks.map((p) => p.slug)));
+  return [
+    ...new Set(
+      plan.unplaced
+        .filter((u) => u.reason === 'no_day_left' && !planned.has(u.slug))
+        .map((u) => u.slug)
+    ),
+  ];
+}
+
+/**
+ * A park the plan could not place, with a reason this client can say. A park {@link parksLeftOut}
+ * names is said there; a park with a day that lost a repeat visit reads `no_second_day`.
+ */
 export function unplacedParks(
-  plan: Pick<TripPlan, 'unplaced'>
-): Array<{ slug: string; reason: 'no_open_day' | 'no_day_left' | 'no_ticket_day' }> {
-  return plan.unplaced.flatMap((u) =>
-    u.reason === 'no_open_day' || u.reason === 'no_day_left' || u.reason === 'no_ticket_day'
+  plan: Pick<TripPlan, 'unplaced' | 'parksLeftOut' | 'days'>
+): Array<{ slug: string; reason: 'no_open_day' | 'no_second_day' | 'no_ticket_day' | 'no_base' }> {
+  const left = new Set(parksLeftOut(plan));
+  const planned = new Set(plan.days.flatMap((d) => d.parks.map((p) => p.slug)));
+  const seen = new Set<string>();
+  return plan.unplaced.flatMap((u) => {
+    if (left.has(u.slug) || seen.has(`${u.slug}:${u.reason}`)) return [];
+    seen.add(`${u.slug}:${u.reason}`);
+    if (u.reason === 'no_day_left') {
+      return planned.has(u.slug) ? [{ slug: u.slug, reason: 'no_second_day' as const }] : [];
+    }
+    return u.reason === 'no_open_day' || u.reason === 'no_ticket_day' || u.reason === 'no_base'
       ? [{ slug: u.slug, reason: u.reason }]
-      : []
-  );
+      : [];
+  });
 }
 
 /** Pins the plan could not keep, with a reason this client can say. */

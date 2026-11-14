@@ -3199,13 +3199,14 @@
       "loading": "Deine Tage werden geplant …",
       "invalid": "Diese Auswahl passt nicht zusammen. Prüfe die Reisedaten und die Tage pro Park.",
       "failed": "Der Plan konnte nicht geladen werden.",
-      "retry": "Erneut versuchen"
+      "retry": "Erneut versuchen",
+      "editParks": "Parks ändern"
     },
     "problem": {
       "no_dates": "Wähle deine Reisedaten.",
       "too_long": "Eine Reise darf bis zu {days} Tage lang sein. Wähle einen kürzeren Aufenthalt.",
       "no_parks": "Wähle mindestens einen Park.",
-      "too_many_visits": "Mehr Parktage als Tage für Parks. Nimm einem Park einen Tag weg, erlaube Park-Hopping oder plane den An- oder Abreisetag mit ein.",
+      "too_many_visits": "Die festen Tage deiner Parks brauchen mehr Parktage, als deine Reise hat. Nimm einem Park einen Tag weg oder erlaube Park-Hopping.",
       "over_max_visits": "Ein Plan fasst höchstens {max} Parktage.",
       "no_park_day": "Deine Reise hat keinen Tag frei für einen Park. Erlaube einen Park am An- oder Abreisetag."
     },
@@ -3220,7 +3221,10 @@
       "about": "etwa {minutes} Min.",
       "daysLabel": "Deine Tage",
       "split": "{parks} {count, plural, =1 {bekommt} other {bekommen}} {visits, plural, =2 {einen zweiten Tag} other {# Tage}}.",
-      "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket; wähle es unter „Feinabstimmung“."
+      "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket; wähle es unter „Feinabstimmung“.",
+      "leftOut": "{parks} {count, plural, =1 {passt} other {passen}} nicht in {days, plural, =1 {1 Parktag} other {# Parktage}}.",
+      "travelDays": "Park am An- und Abreisetag",
+      "longer": "{count, plural, =1 {1 Tag länger} other {# Tage länger}}"
     },
     "day": {
       "arrival": "Anreise",
@@ -3335,7 +3339,8 @@
     },
     "unplaced": {
       "no_open_day": "{park} ist an deinen Tagen geschlossen und steht nicht im Plan.",
-      "no_day_left": "Für {park} blieb kein Tag übrig."
+      "no_second_day": "Für einen zweiten Tag in {park} blieb kein Platz.",
+      "no_base": "Keine Stadt, in der du übernachten kannst, erreicht {park}."
     },
     "ignoredLock": {
       "outside_trip": "{what} am {date}: Der Tag gehört nicht zu deiner Reise.",

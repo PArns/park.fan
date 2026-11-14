@@ -45,6 +45,7 @@ import {
   primaryReason,
   runnerUp,
   unplacedParks,
+  parksLeftOut,
 } from '../lib/trip-regions/plan-copy.ts';
 import {
   buildTripIcs,
@@ -310,8 +311,24 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     parkDaysAvailable({ ...trip, locks: [{ target: 'epcot', date: '2026-11-28' }] }),
     3
   );
-  test('too many visits is caught before the API', planProblem(trip, HEAD), 'too_many_visits');
-  test('park hopping makes room', planProblem({ ...trip, hop: true }, HEAD), null);
+  test(
+    'more parks than days is planned: the API leaves out what does not fit',
+    planProblem(trip, HEAD),
+    null
+  );
+  const pinned = {
+    ...trip,
+    parks: [
+      { slug: 'magic-kingdom-park', visits: 2 },
+      { slug: 'epcot', visits: 2 },
+    ],
+  };
+  test(
+    'pinned repeat visits over the days are caught before the API',
+    planProblem(pinned, HEAD),
+    'too_many_visits'
+  );
+  test('park hopping makes room', planProblem({ ...pinned, hop: true }, HEAD), null);
   test('no request without dates', planRequestQuery(DEFAULT_PLAN_STATE, HEAD), null);
   test(
     'a Disney hotel brings its area',
@@ -475,15 +492,37 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     current: 43,
     delta: 2,
   });
+  const dayOf = (slug) => ({ date: '2027-01-24', kind: 'park', parks: [{ slug, part: 'full' }] });
   test(
-    'an unknown unplaced reason is dropped',
+    'an unknown unplaced reason is dropped, a lost repeat visit is its own sentence',
     unplacedParks({
       unplaced: [
         { slug: 'x', reason: 'odd' },
         { slug: 'y', reason: 'no_day_left' },
       ],
+      days: [dayOf('y')],
     }),
-    [{ slug: 'y', reason: 'no_day_left' }]
+    [{ slug: 'y', reason: 'no_second_day' }]
+  );
+  test(
+    'a park with no day at all is left out, not unplaced',
+    [
+      parksLeftOut({ unplaced: [{ slug: 'epcot', reason: 'no_day_left' }], days: [dayOf('y')] }),
+      unplacedParks({ unplaced: [{ slug: 'epcot', reason: 'no_day_left' }], days: [dayOf('y')] }),
+    ],
+    [['epcot'], []]
+  );
+  test(
+    'the API’s own list wins',
+    parksLeftOut({
+      parksLeftOut: [
+        { park: 'epcot', reason: 'no_day_left' },
+        { park: 'x', reason: 'no_open_day' },
+      ],
+      unplaced: [],
+      days: [],
+    }),
+    ['epcot']
   );
 }
 

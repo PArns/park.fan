@@ -276,6 +276,12 @@ export interface TripPlan {
   parks: PlanParkSummary[];
   totals: PlanTotals;
   unplaced: Array<{ slug: string; reason: string }>;
+  /**
+   * The chosen parks the plan found no day for at all, in the region's park order: a trip too short
+   * for the choice is planned with what fits and says what it left out, never refused. A dropped
+   * second visit stays in `unplaced`. Absent from an API that does not send it yet.
+   */
+  parksLeftOut?: Array<{ park: string; reason: string }>;
   ignoredLocks?: Array<{ lock: string; reason: string }>;
 }
 
@@ -354,8 +360,17 @@ export function planProblem(
   if (days === 0) return 'no_park_day';
   const visits = minimumVisits(picks);
   if (visits > MAX_PLAN_VISITS) return 'over_max_visits';
-  if (visits > days * (state.hop ? 2 : 1)) return 'too_many_visits';
+  if (pinnedRepeatVisits(picks) > days * (state.hop ? 2 : 1)) return 'too_many_visits';
   return null;
+}
+
+/**
+ * The visits the choice pins beyond the first: a park written with two or three days. Only these
+ * can make a trip too short for the API; a park without a count, or with one, is left out of the
+ * plan when no day is left (`parksLeftOut`) instead.
+ */
+export function pinnedRepeatVisits(picks: readonly PlanParkPick[]): number {
+  return picks.reduce((sum, p) => sum + (p.visits !== null && p.visits > 1 ? p.visits : 0), 0);
 }
 
 // ── Edits ────────────────────────────────────────────────────────────────────
