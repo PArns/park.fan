@@ -10,6 +10,7 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { WhenPeriodKey } from '@/lib/trip-regions/plan-when';
+import type { TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
@@ -462,10 +463,27 @@ export interface SiteEventMap {
    */
   trip_tile_clicked: TripEvent<{ link: TripTileLink }>;
   /**
-   * The trip planner started: the hub's hero, its own start button, a link with a plan, or (`dates`)
-   * the first dates picked in a page load where nothing else started it, the desk's usual way in.
+   * The trip planner started: the hub's hero, its own start button, a link with a plan, the
+   * landing's "Reise planen" (`landing`), "Start again" (`restart`), or (`dates`) the first dates
+   * picked in a page load where nothing else started it.
    */
-  trip_planner_started: TripEvent<{ source: 'hero' | 'button' | 'link' | 'dates' }>;
+  trip_planner_started: TripEvent<{
+    source: 'hero' | 'button' | 'link' | 'dates' | 'landing' | 'restart';
+  }>;
+  /**
+   * A step of the trip planner's assistant on screen, and how the visitor got there: Next, Skip,
+   * Back, a press on the rail (`jump`), or an answer of the result that reopened it (`answers`).
+   */
+  trip_wizard_step: TripEvent<{ step: TripWizardStepName; via: TripWizardVia }>;
+  /**
+   * The assistant left for the plan: "Show the plan now" before the last step (`early`), or the
+   * finale's "See the plan"; `skipped` counts the steps skipped on the way.
+   */
+  trip_wizard_finished: TripEvent<{ skipped: '0' | '1' | '2' | '3+'; early: boolean }>;
+  /** The assistant closed without its plan shown (Escape, the close button, Back): where. */
+  trip_wizard_closed: TripEvent<{ step: TripWizardStepName }>;
+  /** An answer to "What should happen on the days without a park?" in the Parks step. */
+  trip_spare_choice: TripEvent<{ choice: 'more_parks' | 'more_days' | 'free' | 'shorter' }>;
   /** One of the hub head's two ways in pressed: plan the trip, or go to the calendar. */
   trip_hub_action: TripEvent<{ action: 'plan' | 'calendar'; page: 'hub' | 'month' }>;
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
@@ -614,8 +632,20 @@ type TripEvent<Props extends object = object> = { region: string } & Props;
 /** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
 export type TripTileLink = 'plan' | 'calendar';
 
-/** Where the ticket step was opened from. */
-export type TripTicketsFrom = 'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket';
+/** Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already". */
+export type TripTicketsFrom =
+  | 'ask'
+  | 'card'
+  | 'adopt'
+  | 'ticket_problem'
+  | 'outside_ticket'
+  | 'wizard';
+
+/** A screen of the trip planner's assistant, its finale included. */
+export type TripWizardStepName = TripWizardStepKey | 'finale';
+
+/** How the assistant reached a step. */
+export type TripWizardVia = 'next' | 'skip' | 'back' | 'jump' | 'answers';
 
 /** A panel of the planner's setup a change opens. */
 export type TripEditPanel = 'dates' | 'parks' | 'route' | 'options';

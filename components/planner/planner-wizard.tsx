@@ -57,7 +57,7 @@ import { PlannerMonthCalendar } from './planner-month-calendar';
 import { PlannerFitLevers } from './planner-fit-levers';
 import { PlannerFitList } from './planner-fit-list';
 import { PlannerOptimizeFailure } from './planner-optimize-failure';
-import { PlannerStepRail, STEP_MOTION } from './planner-step-rail';
+import { ENTER_BELONGS_TO, PlannerStepRail, STEP_MOTION } from './planner-step-rail';
 import { WizardToggle } from './wizard-toggle';
 
 /**
@@ -108,14 +108,6 @@ const LUNCH_MINUTES = 60;
  * the block back out of the optimizer's answer by it, so both halves must use the same string.
  */
 const LUNCH_ENTRY_ID = 'wizard-lunch';
-
-/**
- * The elements an Enter already belongs to, as a selector: fields, as in `PlannerDayColumn`'s
- * Delete guard, plus the controls the browser itself fires on Enter, or one press would run two
- * actions. `contenteditable="false"` does not own the key, so only the two truthy forms are listed.
- */
-const ENTER_BELONGS_TO =
-  'input, textarea, select, button, a[href], [role="button"], [contenteditable=""], [contenteditable="true"]';
 
 /**
  * Planning a day, one question at a time: which park, which day, who is coming, and which big

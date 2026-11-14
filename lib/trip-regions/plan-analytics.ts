@@ -66,6 +66,11 @@ export function leftOutBucket(count: number): '1' | '2' | '3+' {
   return count <= 1 ? '1' : count === 2 ? '2' : '3+';
 }
 
+/** How many steps of the assistant were skipped, as `trip_wizard_finished` buckets it. */
+export function skippedBucket(count: number): '0' | '1' | '2' | '3+' {
+  return count <= 0 ? '0' : count === 1 ? '1' : count === 2 ? '2' : '3+';
+}
+
 /** A flag as `trip_option_changed` says it. */
 const onOff = (on: boolean) => (on ? 'on' : 'off');
 

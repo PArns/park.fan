@@ -20,6 +20,14 @@ export const STEP_MOTION: Record<string, string> = {
 };
 
 /**
+ * The elements an Enter already belongs to, as a selector, in a stepped dialog whose Enter means
+ * Next: fields, as in `PlannerDayColumn`'s Delete guard, plus the controls the browser itself fires
+ * on Enter, or one press would run two actions. `contenteditable="false"` does not own the key, so only the two truthy forms are listed.
+ */
+export const ENTER_BELONGS_TO =
+  'input, textarea, select, button, a[href], [role="button"], [contenteditable=""], [contenteditable="true"]';
+
+/**
  * Where a stepped dialog is, in circles: one rail for the wizard and the fit assistant, so the
  * geometry is written once. Steps are `{ key, label }` pairs named by each caller. A walked step is
  * a button back to it; one ahead is a button only up to `reachable`, which a caller raises where
