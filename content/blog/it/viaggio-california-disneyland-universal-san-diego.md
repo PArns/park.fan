@@ -27,10 +27,9 @@ parkLinks:
   - /parks/north-america/united-states/carlsbad/legoland-california
   - /parks/north-america/united-states/chula-vista/sesame-place-san-diego
 coverImage:
-  src: /media/disneyland-anaheim/sleeping-beauty-castle.jpg
-  alt: 'Il castello della Bella Addormentata, rosa e grigio, con tetti blu e stendardi, e la folla sul viale davanti.'
-  caption: 'Il castello della Bella Addormentata a Disneyland, aperto il 17 luglio 1955 e il più antico di tutti i castelli Disney.'
-  credit: '© Jazmin De Guzman (Unsplash License)'
+  src: /media/reiseplaner/parky-kalifornien-tag.webp
+  alt: 'Parky con una collana di conchiglie e una tavola da surf su una spiaggia del Pacifico, dietro palme, una torretta del bagnino e un pontile con una piccola ruota panoramica.'
+  credit: 'park.fan'
 seo:
   title: 'Viaggio in California: Disneyland, Universal e San Diego'
   description: >-
@@ -62,6 +61,8 @@ Nel [calendario affluenza Disneyland California](/california) ci sono tutti gli 
 ### Disneyland e California Adventure
 
 Gli ingressi di [Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park) e di [Disney California Adventure](ref:disney-california-adventure-park) si fronteggiano sul piazzale, l’Esplanade. Tra l’Esplanade e il Disneyland Hotel corre Downtown Disney, una via di negozi e ristoranti per cui non serve il biglietto. Secondo Disney, Downtown Disney è aperto tutti i giorni dalle 7 all’una di notte, il giovedì fino alle 23, e alcuni negozi e ristoranti chiudono prima.
+
+![Il castello della Bella Addormentata, rosa e grigio, con tetti blu e stendardi, e la folla sul viale davanti. | Aperto il 17 luglio 1955, è il più antico di tutti i castelli Disney. | wide](/media/disneyland-anaheim/sleeping-beauty-castle.jpg)
 
 In auto parcheggi nelle strutture Mickey & Friends o Pixar Pals su Disneyland Drive, e un tram ti porta all’Esplanade. Dal terzo parcheggio, Toy Story, all’angolo tra Katella Avenue e Harbor Boulevard, partono autobus per l’ingresso. Dal parcheggio al cancello calcoliamo circa 15 minuti, attesa del tram compresa.
 

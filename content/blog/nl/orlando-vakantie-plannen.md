@@ -24,10 +24,9 @@ tags:
   - wachttijden
   - tips
 coverImage:
-  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: 'De Tree of Life in Animal Kingdom met in de stam gesneden dieren, met bezoekers op het pad ervoor.'
-  caption: 'In die stam zitten 325 gesneden dieren.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-tag.webp
+  alt: 'Parky met zonnebril en een reiskaart op het strand van een meer, met daarachter een flamingo, een koffer, een achtbaan met looping en een opstijgende raket.'
+  credit: 'park.fan'
 parkLinks:
   - magic-kingdom-park
   - epcot
@@ -71,6 +70,8 @@ Rond Orlando staan 16 parken in onze drukte-kalender, en voor geen ervan hoef je
 De parken heb je snel gekozen, de dagen minder snel, want op 25 avonden in november en december 2026 zet Magic Kingdom zijn dagbezoekers drie tot vijf uur eerder dan normaal buiten, zodat de gasten van het kerstfeest het park voor zich alleen hebben. Een dag met korte rijen die zo vroeg ophoudt, is dan vaak de slechtere. In de [drukte-kalender van Orlando](/orlando) staat voor elke dag het beste park per resort, met die vroege sluiting meegerekend, en met de [reisplanner](/orlando#planner) zet je je parken op je reisdagen.
 
 De attracties met de langste rijen behandelen onze gidsen over [Magic Kingdom](/blog/magic-kingdom-wachttijden-tips) en [Universal Orlando](/blog/universal-orlando-wachttijden-tips) park voor park. In een deluxehotel van Disney blijf je tot in januari 2027 op maandag twee uur langer in EPCOT, en vanuit een hotel aan Hotel Plaza Boulevard kom je elke dag een half uur eerder in de vier Disney-parken.
+
+![De Tree of Life met in de stam gesneden dieren, met de menigte op het pad ervoor. | In die stam zitten 325 gesneden dieren.](/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg)
 
 ## De parken rond Orlando en hun resorts
 

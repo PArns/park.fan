@@ -27,10 +27,9 @@ parkLinks:
   - /parks/north-america/united-states/carlsbad/legoland-california
   - /parks/north-america/united-states/chula-vista/sesame-place-san-diego
 coverImage:
-  src: /media/disneyland-anaheim/sleeping-beauty-castle.jpg
-  alt: 'The pink and grey Sleeping Beauty Castle with blue roofs and banners, a crowd on the path in front.'
-  caption: 'Sleeping Beauty Castle at Disneyland, opened on July 17, 1955, the oldest of all the Disney castles.'
-  credit: '© Jazmin De Guzman (Unsplash License)'
+  src: /media/reiseplaner/parky-kalifornien-tag.webp
+  alt: 'Parky with a shell necklace and a surfboard on a Pacific beach, behind him palms, a lifeguard tower and a pier with a small Ferris wheel.'
+  credit: 'park.fan'
 seo:
   title: 'SoCal theme park itinerary: Disneyland, Universal, San Diego'
   description: >-
@@ -62,6 +61,8 @@ The [Disneyland & Universal Hollywood crowd calendar](/california) has all eight
 ### Disneyland and California Adventure
 
 The gates of [Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park) and [Disney California Adventure](ref:disney-california-adventure-park) face each other across the entrance plaza, the Esplanade. Downtown Disney, a street of shops and restaurants that needs no ticket, runs from the Esplanade to the Disneyland Hotel. Disney gives Downtown Disney's hours as 7 a.m. to 1 a.m. daily, to 11 p.m. on Thursdays, with some shops and restaurants closing earlier.
+
+![The pink and grey Sleeping Beauty Castle with blue roofs and banners, a crowd on the path in front. | Opened on 17 July 1955, the oldest of all the Disney castles. | wide](/media/disneyland-anaheim/sleeping-beauty-castle.jpg)
 
 If you drive, you park in the Mickey & Friends or Pixar Pals structures off Disneyland Drive, and a tram takes you to the Esplanade. From the third lot, Toy Story at Katella Avenue and Harbor Boulevard, buses run to the gates. We allow about 15 minutes from the structure to the gate, waiting for the tram included.
 

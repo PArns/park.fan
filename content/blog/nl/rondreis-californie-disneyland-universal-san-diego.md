@@ -27,10 +27,9 @@ parkLinks:
   - /parks/north-america/united-states/carlsbad/legoland-california
   - /parks/north-america/united-states/chula-vista/sesame-place-san-diego
 coverImage:
-  src: /media/disneyland-anaheim/sleeping-beauty-castle.jpg
-  alt: 'Het roze-grijze Doornroosjekasteel met blauwe daken en banieren, met een menigte op het pad ervoor.'
-  caption: 'Het Doornroosjekasteel in Disneyland, geopend op 17 juli 1955 en daarmee het oudste van alle Disney-kastelen.'
-  credit: '© Jazmin De Guzman (Unsplash License)'
+  src: /media/reiseplaner/parky-kalifornien-tag.webp
+  alt: 'Parky met een schelpenketting en een surfplank op een strand aan de Stille Oceaan, met daarachter palmen, een strandwachtpost en een pier met een klein reuzenrad.'
+  credit: 'park.fan'
 seo:
   title: 'Rondreis Californië: Disneyland, Universal, San Diego'
   description: >-
@@ -62,6 +61,8 @@ In de [Disneyland Californië drukte-kalender](/californie) staan alle acht park
 ### Disneyland en California Adventure
 
 De ingangen van [Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park) en [Disney California Adventure](ref:disney-california-adventure-park) liggen tegenover elkaar aan het voorplein, de Esplanade. Tussen de Esplanade en het Disneyland Hotel loopt Downtown Disney, een straat met winkels en restaurants waarvoor je geen ticket nodig hebt. Volgens Disney is Downtown Disney elke dag open van 7 tot 1 uur 's nachts, op donderdag tot 23 uur, en sommige winkels en restaurants sluiten eerder.
+
+![Het roze-grijze Doornroosjekasteel met blauwe daken en banieren, met een menigte op het pad ervoor. | Het kasteel opende op 17 juli 1955 en is het oudste van alle Disney-kastelen. | wide](/media/disneyland-anaheim/sleeping-beauty-castle.jpg)
 
 Met de auto parkeer je in de parkeergarages Mickey & Friends of Pixar Pals aan Disneyland Drive, en een tram brengt je naar de Esplanade. Vanaf het derde parkeerterrein, Toy Story op de hoek van Katella Avenue en Harbor Boulevard, rijden bussen naar de ingang. Voor de weg van de garage naar de poort rekenen wij ongeveer 15 minuten, het wachten op de tram meegerekend.
 

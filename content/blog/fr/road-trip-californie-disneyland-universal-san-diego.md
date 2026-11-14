@@ -27,10 +27,9 @@ parkLinks:
   - /parks/north-america/united-states/carlsbad/legoland-california
   - /parks/north-america/united-states/chula-vista/sesame-place-san-diego
 coverImage:
-  src: /media/disneyland-anaheim/sleeping-beauty-castle.jpg
-  alt: 'Le château de la Belle au bois dormant, rose et gris, aux toits bleus et bannières, la foule sur l’allée devant.'
-  caption: 'Le château de la Belle au bois dormant à Disneyland, ouvert le 17 juillet 1955, le plus ancien de tous les châteaux Disney.'
-  credit: '© Jazmin De Guzman (Unsplash License)'
+  src: /media/reiseplaner/parky-kalifornien-tag.webp
+  alt: 'Parky avec un collier de coquillages et une planche de surf sur une plage du Pacifique, derrière lui des palmiers, une tour de sauveteurs et une jetée avec une petite grande roue.'
+  credit: 'park.fan'
 seo:
   title: 'Road trip en Californie : Disneyland, Universal, San Diego'
   description: >-
@@ -62,6 +61,8 @@ Le [calendrier d’affluence Disneyland Californie](/californie) affiche les hui
 ### Disneyland et California Adventure
 
 Les entrées de [Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park) et de [Disney California Adventure](ref:disney-california-adventure-park) se font face, de part et d’autre de l’Esplanade, le parvis d’entrée. Entre l’Esplanade et le Disneyland Hotel s’étend Downtown Disney, une rue de boutiques et de restaurants où l’on entre sans billet. Selon Disney, Downtown Disney est ouvert tous les jours de 7 h à 1 h du matin, le jeudi jusqu’à 23 h, et certaines boutiques et certains restaurants ferment plus tôt.
+
+![Le château de la Belle au bois dormant, rose et gris, aux toits bleus et bannières, la foule sur l’allée devant. | Ouvert le 17 juillet 1955, c’est le plus ancien de tous les châteaux Disney. | wide](/media/disneyland-anaheim/sleeping-beauty-castle.jpg)
 
 En voiture, tu te gares dans les parkings Mickey & Friends ou Pixar Pals, sur Disneyland Drive, et un tram t’emmène à l’Esplanade. Depuis le troisième parking, Toy Story, au croisement de Katella Avenue et de Harbor Boulevard, des bus vont jusqu’à l’entrée. Du parking à la porte, nous comptons environ 15 minutes, attente du tram comprise.
 

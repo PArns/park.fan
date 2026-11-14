@@ -19,10 +19,9 @@ tags:
   - school-holidays
 category: guides
 coverImage:
-  src: /media/disneyland-paris/disneyland-hotel.jpg
-  alt: 'The pink Victorian front of the Disneyland Hotel with a clock in its central tower, fountains and a Mickey flower bed in front.'
-  caption: 'Stay at the Disneyland Hotel and your walk into Disneyland Park in the morning goes right under your own room.'
-  credit: 'Aurora Song / Unsplash'
+  src: /media/reiseplaner/parky-paris-tag.webp
+  alt: 'Parky in a silk scarf with a café crème on a café terrace by the Seine, behind him a tour boat, zinc-roofed buildings and the Eiffel Tower.'
+  credit: 'park.fan'
 seo:
   title: 'Disneyland Paris and Parc Astérix: hotels and transfers'
   description: >-
@@ -66,6 +65,8 @@ The [trip planner](/paris#planner) suggests which park goes on which day. You en
 ### Disney's hotels
 
 Disney runs seven hotels of its own. Four are within walking distance of the parks: the Disneyland Hotel, right above the entrance to Disneyland Park, and on Lake Disney the Disney Hotel New York – The Art of Marvel, the Newport Bay Club and the Sequoia Lodge. Disney puts them at 5 to 15 minutes' walk. The Disneyland Hotel reopened in 2024 after a complete renovation, and the Hotel New York has been "The Art of Marvel" since 2021.
+
+![The pink Victorian front of the Disneyland Hotel with a clock in its central tower, fountains and a Mickey flower bed in front. | The hotel stands above the entrance gates of Disneyland Park. | wide](/media/disneyland-paris/disneyland-hotel.jpg)
 
 The Cheyenne and the Santa Fe are further out, 20 minutes on foot from the parks, and the free Disney Hotels shuttle stops at both. The Santa Fe has 1,000 rooms themed on the film _Cars_. Davy Crockett Ranch is a village of wooden cabins in 57 hectares of forest. It's about 15 minutes from the parks by car, with no shuttle, so without a car it's the wrong pick. Guests at every Disney hotel park at their hotel for free.
 

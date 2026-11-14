@@ -24,10 +24,9 @@ tags:
   - wait-times
   - tips
 coverImage:
-  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: 'The Tree of Life at Animal Kingdom with animals carved into its trunk, visitors on the path in front.'
-  caption: 'There are 325 carved animals in that trunk.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-tag.webp
+  alt: 'Parky in sunglasses with a travel map on the shore of a lake, behind him a flamingo, a suitcase, a looping coaster and a rocket taking off.'
+  credit: 'park.fan'
 parkLinks:
   - magic-kingdom-park
   - epcot
@@ -71,6 +70,8 @@ Our crowd calendar has 16 parks around Orlando, and you don't have to change hot
 The parks are quick to pick and the days less so, because on 25 evenings in November and December 2026 Magic Kingdom shows its day guests the door three to five hours earlier than usual, so the Christmas party guests can have the park to themselves. A day with short queues that ends that early is often the worse day. In the [Orlando crowd calendar](/orlando) the best park at each resort is marked for every day, with the early close counted in, and with the [trip planner](/orlando#planner) you put your parks on your trip days.
 
 Our guides to [Magic Kingdom](/blog/magic-kingdom-wait-times-tips) and [Universal Orlando](/blog/universal-orlando-wait-times-tips) go through the rides with the longest queues park by park. At a Disney deluxe hotel you can stay at EPCOT two hours longer on Monday evenings into January 2027, and from a hotel on Hotel Plaza Boulevard you get into the four Disney parks half an hour early every day.
+
+![The Tree of Life with animals carved into its trunk, the crowd on the path in front. | There are 325 carved animals in that trunk.](/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg)
 
 ## The parks around Orlando and their resorts
 

@@ -19,10 +19,9 @@ tags:
   - vacaciones-escolares
 category: guides
 coverImage:
-  src: /media/disneyland-paris/disneyland-hotel.jpg
-  alt: 'La fachada victoriana rosa del Disneyland Hotel con un reloj en la torre central, fuentes y un parterre de Mickey delante.'
-  caption: 'Quien duerme en el Disneyland Hotel entra por la mañana en Disneyland Park pasando por debajo de su propia habitación.'
-  credit: 'Aurora Song / Unsplash'
+  src: /media/reiseplaner/parky-paris-tag.webp
+  alt: 'Parky con un pañuelo de seda y un café crème en una terraza junto al Sena, detrás un barco turístico, edificios con tejados de zinc y la torre Eiffel.'
+  credit: 'park.fan'
 seo:
   title: 'Disneyland Paris y Parc Astérix: hoteles y cómo llegar'
   description: >-
@@ -66,6 +65,8 @@ Qué parque va en qué día te lo propone el [planificador de viaje](/paris#plan
 ### En los hoteles Disney
 
 Disney tiene siete hoteles propios. Cuatro están a pie de los parques: el Disneyland Hotel, justo encima de la entrada de Disneyland Park, y junto al Lake Disney el Disney Hotel New York – The Art of Marvel, el Newport Bay Club y el Sequoia Lodge. Disney calcula de 5 a 15 minutos andando. El Disneyland Hotel reabrió en 2024 tras una renovación completa, y el Hotel New York se llama «The Art of Marvel» desde 2021.
+
+![La fachada victoriana rosa del Disneyland Hotel con un reloj en la torre central, fuentes y un parterre de Mickey delante. | El hotel está sobre las puertas de entrada de Disneyland Park. | wide](/media/disneyland-paris/disneyland-hotel.jpg)
 
 El Cheyenne y el Santa Fe quedan más lejos, a 20 minutos a pie de los parques, y la lanzadera gratuita de los hoteles Disney para en los dos. El Santa Fe tiene 1.000 habitaciones con la temática de la película _Cars_. El Davy Crockett Ranch es un pueblo de cabañas de madera en 57 hectáreas de bosque. Desde allí hay un cuarto de hora en coche hasta los parques y no hay lanzadera, así que sin coche es la elección equivocada. Los huéspedes de todos los hoteles Disney aparcan gratis en su hotel.
 

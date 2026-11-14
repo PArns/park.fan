@@ -25,10 +25,9 @@ tags:
   - tempi-di-attesa
   - consigli
 coverImage:
-  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: 'Il Tree of Life di Animal Kingdom con animali intagliati nel tronco e visitatori sul viale davanti.'
-  caption: 'In quel tronco ci sono 325 animali intagliati.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-tag.webp
+  alt: 'Parky con gli occhiali da sole e una mappa di viaggio sulla riva di un lago, dietro un fenicottero, una valigia, un ottovolante con il giro della morte e un razzo al decollo.'
+  credit: 'park.fan'
 parkLinks:
   - magic-kingdom-park
   - epcot
@@ -72,6 +71,8 @@ Nel nostro calendario dell’affluenza ci sono 16 parchi intorno a Orlando, e pe
 I parchi si scelgono in fretta, i giorni meno, perché in 25 serate di novembre e dicembre 2026 Magic Kingdom accompagna alla porta chi ha il biglietto giornaliero da tre a cinque ore prima del solito, così gli ospiti della festa di Natale hanno il parco tutto per sé. Una giornata con code brevi che finisce così presto è spesso la peggiore. Nel [calendario dell’affluenza di Orlando](/orlando) è segnato per ogni giorno il parco migliore di ogni resort, con la chiusura anticipata già messa in conto, e con il [pianificatore di viaggio](/orlando#planner) distribuisci i tuoi parchi sui giorni del viaggio.
 
 Le attrazioni con le code più lunghe sono nelle nostre guide a [Magic Kingdom](/blog/magic-kingdom-tempi-di-attesa-consigli) e a [Universal Orlando](/blog/universal-orlando-tempi-di-attesa-consigli), parco per parco. In un hotel Deluxe di Disney resti fino a gennaio 2027 il lunedì due ore in più a EPCOT, e da un hotel di Hotel Plaza Boulevard entri ogni giorno mezz’ora prima nei quattro parchi Disney.
+
+![Il Tree of Life con animali intagliati nel tronco e la folla sul viale davanti. | In quel tronco ci sono 325 animali intagliati.](/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg)
 
 ## I parchi intorno a Orlando e i loro resort
 

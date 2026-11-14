@@ -27,10 +27,9 @@ parkLinks:
   - /parks/north-america/united-states/carlsbad/legoland-california
   - /parks/north-america/united-states/chula-vista/sesame-place-san-diego
 coverImage:
-  src: /media/disneyland-anaheim/sleeping-beauty-castle.jpg
-  alt: 'El castillo de la Bella Durmiente, rosa y gris, con tejados azules y estandartes, y gente en el camino delante.'
-  caption: 'El castillo de la Bella Durmiente en Disneyland, abierto el 17 de julio de 1955 y el más antiguo de todos los castillos Disney.'
-  credit: '© Jazmin De Guzman (Unsplash License)'
+  src: /media/reiseplaner/parky-kalifornien-tag.webp
+  alt: 'Parky con un collar de conchas y una tabla de surf en una playa del Pacífico, detrás palmeras, una torre de socorrista y un muelle con una pequeña noria.'
+  credit: 'park.fan'
 seo:
   title: 'Viaje a California: Disneyland, Universal y San Diego'
   description: >-
@@ -62,6 +61,8 @@ En el [calendario de afluencia de Disneyland California](/california) están los
 ### Disneyland y California Adventure
 
 Las entradas de [Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park) y [Disney California Adventure](ref:disney-california-adventure-park) están una frente a otra en la explanada de acceso, la Esplanade. Entre la Esplanade y el Disneyland Hotel se extiende Downtown Disney, una calle de tiendas y restaurantes en la que no necesitas entrada. Según Disney, Downtown Disney abre todos los días de 7:00 a 1:00 de la madrugada, los jueves hasta las 23:00, y algunas tiendas y restaurantes cierran antes.
+
+![El castillo de la Bella Durmiente, rosa y gris, con tejados azules y estandartes, y gente en el camino delante. | Abrió el 17 de julio de 1955 y es el más antiguo de todos los castillos Disney. | wide](/media/disneyland-anaheim/sleeping-beauty-castle.jpg)
 
 En coche aparcas en los aparcamientos Mickey & Friends o Pixar Pals, en Disneyland Drive, y un tranvía te lleva a la Esplanade. Desde el tercer aparcamiento, Toy Story, en la esquina de Katella Avenue con Harbor Boulevard, salen autobuses hasta la entrada. Del aparcamiento a la puerta calculamos unos 15 minutos, contando la espera del tranvía.
 

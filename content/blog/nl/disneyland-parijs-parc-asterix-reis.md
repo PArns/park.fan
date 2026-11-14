@@ -20,10 +20,9 @@ tags:
   - schoolvakanties
 category: guides
 coverImage:
-  src: /media/disneyland-paris/disneyland-hotel.jpg
-  alt: 'De roze Victoriaanse gevel van het Disneyland Hotel met een klok in de middentoren, met fonteinen en een Mickey-bloembed ervoor.'
-  caption: 'Wie in het Disneyland Hotel slaapt, loopt ’s ochtends onder zijn eigen kamer door Disneyland Park in.'
-  credit: 'Aurora Song / Unsplash'
+  src: /media/reiseplaner/parky-paris-tag.webp
+  alt: 'Parky met een zijden sjaal en een café crème op een terras aan de Seine, met daarachter een rondvaartboot, huizen met zinken daken en de Eiffeltoren.'
+  credit: 'park.fan'
 seo:
   title: 'Disneyland Parijs en Parc Astérix: hotels en vervoer'
   description: >-
@@ -67,6 +66,8 @@ Welk park op welke dag valt, stelt de [reisplanner](/paris#planner) voor. Je vul
 ### In de Disney-hotels
 
 Disney heeft zeven eigen hotels. Vier liggen op loopafstand van de parken: het Disneyland Hotel, pal boven de ingang van Disneyland Park, en aan Lake Disney het Disney Hotel New York – The Art of Marvel, de Newport Bay Club en de Sequoia Lodge. Disney rekent vijf tot vijftien minuten lopen. Het Disneyland Hotel ging in 2024 na een volledige renovatie weer open, en het Hotel New York heet sinds 2021 “The Art of Marvel”.
+
+![De roze Victoriaanse gevel van het Disneyland Hotel met een klok in de middentoren, met fonteinen en een Mickey-bloembed ervoor. | Het hotel staat boven de toegangspoorten van Disneyland Park. | wide](/media/disneyland-paris/disneyland-hotel.jpg)
 
 Hotel Cheyenne en Hotel Santa Fe liggen verder weg, twintig minuten lopen van de parken, en de gratis shuttle van de Disney-hotels stopt bij allebei. Het Santa Fe heeft 1.000 kamers in het thema van de film _Cars_. Davy Crockett Ranch is een vakantiedorp van houten hutten in 57 hectare bos. Je rijdt er ongeveer een kwartier naar de parken, er is geen shuttle, en zonder auto is het dus de verkeerde keuze. Gasten van alle Disney-hotels parkeren gratis bij hun hotel.
 

@@ -20,10 +20,9 @@ tags:
   - achter-de-schermen
 category: park-fan
 coverImage:
-  src: /media/universal-islands-of-adventure/welcome-cover.jpg
-  alt: 'Een trein van VelociCoaster neemt een bocht, met daarachter de torens van Hogwarts.'
-  caption: 'VelociCoaster in Islands of Adventure. Naar Universal Studios ernaast loop je ongeveer tien minuten.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-abend.webp
+  alt: 'Parky met zijn zonnebril omhoog bij het meer in de schemering, kijkend naar vuurwerk boven de achtbaan aan de overkant, met de flamingo, de koffer en de reiskaart naast hem.'
+  credit: 'park.fan'
 seo:
   title: 'Reisplanner Orlando: welk park op welke dag?'
   description: >-
@@ -98,6 +97,8 @@ Voor dagen waarop een park nog geen openingstijden heeft gepubliceerd, heeft het
 Vul je er geen in, dan staat onder het plan een voorstel welke tickets je nodig hebt. Voor de tien decemberdagen met de grote zeven luidt het: 3 dagen Universal vanaf zondag 6 december, daarna 4 dagen Disney vanaf donderdag de 10e.
 
 Een Disney-ticket voor vier dagen geldt op vier willekeurige van de zeven dagen vanaf de eerste, een Universal-ticket voor drie dagen op drie van de vijf. Onder “Details van de tickets” zie je ook wat een hopper op welke datum zou opleveren. “Aanbevolen” verschijnt alleen waar hij een avond in een tweede park mogelijk maakt, een park überhaupt in je reis krijgt of dezelfde drie minuten per rit scheelt. In december is het één enkele avond. Op de 13e sluit Animal Kingdom om 18 uur, en met een Park Hopper rijd je daarna nog naar Hollywood Studios. Ik zou hem voor die avond nemen, 18 uur is me in Orlando te vroeg om de dag af te sluiten. Voor de drie Universal-dagen levert park-to-park geen minuut op, alleen de rit in de Hogwarts Express.
+
+![Een trein van de VelociCoaster in een bocht, met de torens van Zweinstein erachter. | Twee themagebieden in één beeld: Jurassic World en Zweinstein.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 De meerprijs moet je wel zelf opzoeken, want prijzen toont de planner niet. Bij elk ticket staan in plaats daarvan links naar waar je het koopt: de goedkoopste erkende verkoper die we vonden, Attraction Tickets en de winkel van het park, met de pagina’s in jouw taal voorop. Is een van die links een partnerlink, dan is hij als zodanig gemarkeerd, en koop je via die link, dan krijgt park.fan een commissie zonder dat jouw prijs verandert. Omdat de reis tien dagen duurt, komt er nog een regel bij over de tickets voor 14 dagen buiten de VS, ook als Combo.
 
