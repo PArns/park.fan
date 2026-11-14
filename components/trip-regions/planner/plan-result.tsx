@@ -730,16 +730,18 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
       data-plan-stay-suggestion=""
     >
       <p className="min-w-0 flex-1 text-sm">
-        {t('answer.staySuggestion', {
-          changes,
-          minutes: Math.round(suggestion.savedMinutesPerRide),
-          park: parkName(suggestion.park),
-          date: formatParkDay(locale, suggestion.date, {
-            weekday: 'short',
-            day: 'numeric',
-            month: 'short',
-          }),
-        })}
+        {oneStop(
+          t('answer.staySuggestion', {
+            changes,
+            minutes: Math.round(suggestion.savedMinutesPerRide),
+            park: parkName(suggestion.park),
+            date: formatParkDay(locale, suggestion.date, {
+              weekday: 'short',
+              day: 'numeric',
+              month: 'short',
+            }),
+          })
+        )}
       </p>
       <Button
         variant="outline"

@@ -70,6 +70,8 @@ interface PlannerDayColumnProps {
   open: boolean;
   onPickPark: (parkSlug: string) => void;
   onPickDate: (date: string) => void;
+  /** A planned day from the park chooser: its park and date in one step. */
+  onPickDay: (parkSlug: string, date: string) => void;
   onNewPark: () => void;
   /** Absent on the primary column: the plan's active day cannot be closed away. */
   onClose?: () => void;
@@ -123,6 +125,7 @@ export function PlannerDayColumn({
   open,
   onPickPark,
   onPickDate,
+  onPickDay,
   onNewPark,
   onClose,
   unplannedPagePark = null,
@@ -441,6 +444,7 @@ export function PlannerDayColumn({
             date={date}
             onPickPark={onPickPark}
             onPickDate={onPickDate}
+            onPickDay={onPickDay}
             onNewPark={onNewPark}
             onClose={onClose}
             plannedDates={plannedDates}

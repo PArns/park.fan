@@ -17,6 +17,7 @@ import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { dayGuestClose, useDayParks } from './plan-day-bits';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
+import { oneStop } from './plan-ticket-words';
 
 /**
  * Keeping the plan: every park day into the day planner as a reserved day in one write (the
@@ -127,15 +128,17 @@ export function PlanKeep({
       </div>
       {added !== null && (
         <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm" aria-live="polite">
-          {t('keep.added', {
-            count: added.count,
-            park: parkName(added.park),
-            date: formatParkDay(locale, added.date, {
-              weekday: 'short',
-              day: 'numeric',
-              month: 'short',
-            }),
-          })}
+          {oneStop(
+            t('keep.added', {
+              count: added.count,
+              park: parkName(added.park),
+              date: formatParkDay(locale, added.date, {
+                weekday: 'short',
+                day: 'numeric',
+                month: 'short',
+              }),
+            })
+          )}
           <button
             type="button"
             onClick={() => {

@@ -3592,7 +3592,9 @@
         "window": "Een {resort}-ticket voor {days} dagen geldt op {days} willekeurige van de {window} dagen vanaf de eerste dag.",
         "second": "{resort}, tweede ticket",
         "notCovered": "Je {name} dekt {parks} niet.",
-        "promotion": "Het {name} past ook bij deze dagen."
+        "promotion": "Het {name} past ook bij deze dagen.",
+        "group": "{resort}: {count} × {days, plural, =1 {dagticket} other {ticket voor # dagen}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Aanbevolen: {hopper}",

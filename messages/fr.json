@@ -3592,7 +3592,9 @@
         "window": "Un billet {resort} {days} jours s’utilise {days} jours au choix parmi les {window} jours qui suivent le premier.",
         "second": "{resort}, deuxième billet",
         "notCovered": "Ton {name} ne couvre pas {parks}.",
-        "promotion": "Le {name} convient aussi à ces jours."
+        "promotion": "Le {name} convient aussi à ces jours.",
+        "group": "{resort} : {count} × {days, plural, =1 {billet 1 jour} other {billet # jours}}, {dates}",
+        "groupSep": " ; "
       },
       "hopper": {
         "worth": "Recommandé : {hopper}",

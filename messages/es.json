@@ -3592,7 +3592,9 @@
         "window": "Una entrada de {resort} de {days} días vale {days} días cualesquiera de los {window} desde el primero.",
         "second": "{resort}, segunda entrada",
         "notCovered": "Tu {name} no cubre {parks}.",
-        "promotion": "La {name} también encaja en estos días."
+        "promotion": "La {name} también encaja en estos días.",
+        "group": "{resort}: {count} × {days, plural, =1 {entrada de 1 día} other {entrada de # días}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Recomendado: {hopper}",

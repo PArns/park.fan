@@ -3592,7 +3592,9 @@
         "window": "Ein {resort}-Ticket für {days} Tage gilt an {days} beliebigen der {window} Tage ab dem ersten Tag.",
         "second": "{resort}, zweites Ticket",
         "notCovered": "Dein {name} deckt {parks} nicht ab.",
-        "promotion": "Auch das {name} passt zu diesen Tagen."
+        "promotion": "Auch das {name} passt zu diesen Tagen.",
+        "group": "{resort}: {count} × {days, plural, =1 {Tagesticket} other {Ticket für # Tage}}, {dates}",
+        "groupSep": "; "
       },
       "hopper": {
         "worth": "Empfohlen: {hopper}",

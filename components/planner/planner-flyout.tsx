@@ -863,6 +863,7 @@ export function PlannerFlyout({
                   date={activeDate}
                   onPickPark={(slug) => setActive(slug, activeDate)}
                   onPickDate={(date) => setActive(activeParkSlug, date)}
+                  onPickDay={(slug, date) => setActive(slug, date)}
                   onNewPark={() => {
                     setWizardPark(pagePark ? { ...pagePark } : null);
                     setWizardDate(null);
@@ -1054,6 +1055,7 @@ export function PlannerFlyout({
                     className="row-span-3 grid grid-rows-subgrid"
                     onPickPark={(slug) => setActive(slug, activeDate)}
                     onPickDate={(date) => setActive(activeParkSlug, date)}
+                    onPickDay={(slug, date) => setActive(slug, date)}
                     onNewPark={() => {
                       setWizardPark(pagePark ? { ...pagePark } : null);
                       setWizardDate(null);
@@ -1087,6 +1089,7 @@ export function PlannerFlyout({
                         plannerSecondColumn.open({ parkSlug: slug, date: secondColumn.date })
                       }
                       onPickDate={(date) => plannerSecondColumn.setDate(date)}
+                      onPickDay={(slug, date) => plannerSecondColumn.open({ parkSlug: slug, date })}
                       onNewPark={() => {
                         setWizardPark(null);
                         setWizardDate(null);
