@@ -1,6 +1,6 @@
 'use client';
 
-import { useId } from 'react';
+import { useId, type CSSProperties } from 'react';
 import type { TripRegionSceneProps } from '@/lib/trip-regions/registry';
 import { STAR, blue, gold } from './drawing';
 import {
@@ -8,7 +8,8 @@ import {
   HolidayMitten,
   HolidayParky,
   HolidaySceneSvg,
-  motionOnce,
+  LOOPING,
+  sceneMotion,
   type HolidayEyes,
 } from './holiday-parky';
 
@@ -21,11 +22,18 @@ import {
  * are lit, and he holds a little lantern of his own and looks up. Built from the live Parky's
  * pieces through `HolidayParky`, in the 320 × 160 frame of the Orlando scene. The train is no
  * particular series and wears park.fan's blue. Decoration: `aria-hidden`; the train arrives, the
- * petals fall and the lanterns light once (`MOTION` below), not at all under reduced motion.
+ * petals fall and the lanterns light as it is shown, and where it loops the petals go on drifting
+ * down from the tree and the lanterns sway (`MOTION` below); not at all under reduced motion.
  */
 
-/** The moves, each once: the train pulls in, petals drift down, the lanterns light one by one. */
-const MOTION = motionOnce(`
+/**
+ * The moves. Each time it is shown the train pulls in, petals drift into place and the lanterns
+ * light one by one. Looping, every petal in the air falls on to the grass, swaying and turning,
+ * and comes down again from above the tree, each on its own fall and sway; more petals than the
+ * picture holds join them. The lanterns swing on their cords, every other one a beat apart.
+ */
+const MOTION = sceneMotion(
+  `
 .parky-japan-train { animation: parky-japan-arrive 2.4s cubic-bezier(.16,.84,.3,1) both; }
 .parky-japan-petal { transform-box: fill-box; transform-origin: center;
   animation: parky-japan-fall 2.6s cubic-bezier(.3,.6,.4,1) both; }
@@ -33,7 +41,22 @@ const MOTION = motionOnce(`
 @keyframes parky-japan-arrive { from { transform: translateX(-110px); } }
 @keyframes parky-japan-fall { from { opacity: 0; transform: translate(-10px, -18px) rotate(-120deg); } 30% { opacity: 1; } }
 @keyframes parky-japan-glow { from { opacity: 0; } }
-`);
+`,
+  `
+${LOOPING} .parky-japan-drift { animation: parky-japan-drift 8s linear infinite; }
+${LOOPING} .parky-japan-sway { transform-box: fill-box; transform-origin: center;
+  animation: parky-japan-sway 1.8s ease-in-out infinite alternate; }
+${LOOPING} .parky-japan-swing { transform-box: view-box; transform-origin: 0 8px;
+  animation: parky-japan-swing 3s ease-in-out infinite alternate; }
+${LOOPING} .parky-japan-swing--odd { animation-duration: 3.4s; animation-delay: -1.7s; }
+${LOOPING} .parky-japan-swing--hand { transform-origin: 0 18.6px; animation-duration: 2.6s; }
+@keyframes parky-japan-drift { from { opacity: 0; transform: translate(var(--from)); }
+  8%, 88% { opacity: 1; } to { opacity: 0; transform: translate(var(--to)); } }
+@keyframes parky-japan-sway { from { transform: translateX(-2.4px) rotate(-30deg); }
+  to { transform: translateX(2.4px) rotate(30deg); } }
+@keyframes parky-japan-swing { from { transform: skewX(-5deg); } to { transform: skewX(5deg); } }
+`
+);
 
 /** Mount Fuji: the long concave slopes and the notched summit. */
 const FUJI =
@@ -99,18 +122,63 @@ const FLOWERS = [
   [312, 8],
   [230, 1],
 ] as const;
-/** Petals in the air and on the grass. */
-const PETALS = [
-  { x: 192, y: 40, turn: 20 },
-  { x: 178, y: 66, turn: -30 },
-  { x: 204, y: 86, turn: 60 },
-  { x: 230, y: 20, turn: -10 },
-  { x: 166, y: 30, turn: 40 },
-  { x: 300, y: 104, turn: 15 },
+/**
+ * Petals in the air and on the grass: where each lies in the still picture, how it is turned, and
+ * how many seconds its fall takes where the scene loops (a petal without one lies on the grass).
+ * The `loose` ones are only there while it loops.
+ */
+const PETALS: readonly {
+  x: number;
+  y: number;
+  turn: number;
+  fall?: number;
+  loose?: boolean;
+}[] = [
+  { x: 192, y: 40, turn: 20, fall: 7.6 },
+  { x: 178, y: 66, turn: -30, fall: 8.8 },
+  { x: 204, y: 86, turn: 60, fall: 7.2 },
+  { x: 230, y: 20, turn: -10, fall: 9.4 },
+  { x: 166, y: 30, turn: 40, fall: 8.2 },
+  { x: 300, y: 104, turn: 15, fall: 9 },
   { x: 196, y: 118, turn: -50 },
-  { x: 144, y: 74, turn: 80 },
-] as const;
+  { x: 144, y: 74, turn: 80, fall: 7.8 },
+  { x: 252, y: 34, turn: -40, fall: 8.6, loose: true },
+  { x: 214, y: 58, turn: 70, fall: 9.8, loose: true },
+  { x: 128, y: 44, turn: 10, fall: 8, loose: true },
+  { x: 272, y: 80, turn: -60, fall: 7.4, loose: true },
+  { x: 156, y: 96, turn: 30, fall: 9.2, loose: true },
+];
 const PETAL = 'M0-1.1C1.2-1.6 2.4-.4 1.8.6 1.2 1.4-.6 1.4-1.6.6-2.2.1-1.4-.8 0-1.1Z';
+
+/**
+ * Where a fall starts, above the frame, and where it ends, on the grass; and how far the wind
+ * carries a petal to the left for every unit it falls.
+ */
+const FALL_FROM = -6;
+const FALL_TO = 128;
+const WIND = 0.32;
+
+/**
+ * A falling petal's line as inline style: from above the frame to the grass, carried left by the
+ * wind, and started part of the way down, so where the loop begins it is where the still picture
+ * has it.
+ */
+function petalFall(petal: { y: number; fall: number }): CSSProperties {
+  const f = (n: number) => +n.toFixed(2);
+  const done = (petal.y - FALL_FROM) / (FALL_TO - FALL_FROM);
+  return {
+    '--from': `${f(WIND * (petal.y - FALL_FROM))}px, ${f(FALL_FROM - petal.y)}px`,
+    '--to': `${f(-WIND * (FALL_TO - petal.y))}px, ${f(FALL_TO - petal.y)}px`,
+    animationDuration: `${petal.fall}s`,
+    animationDelay: `${f(-done * petal.fall)}s`,
+  } as CSSProperties;
+}
+
+/** A petal's sway as inline style: its own beat, started at its middle, where it hangs straight. */
+function petalSway(i: number): CSSProperties {
+  const beat = 1.5 + (i % 4) * 0.3;
+  return { animationDuration: `${beat}s`, animationDelay: `${-beat / 2}s` };
+}
 
 /** A sakura flower: five round petals round a darker heart, `s` units across from the centre. */
 function Flower({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
@@ -292,7 +360,9 @@ function HandLantern({ ground, glow }: { ground: string; glow: string }) {
         strokeWidth=".8"
         strokeLinecap="round"
       />
-      <Lantern x={47.4} y={18.6} scale={0.72} glow={glow} delay={1.4} />
+      <g className="parky-japan-swing parky-japan-swing--hand">
+        <Lantern x={47.4} y={18.6} scale={0.72} glow={glow} delay={1.4} />
+      </g>
       <HolidayMitten ground={ground} x={41.8} y={40.4} />
     </g>
   );
@@ -334,7 +404,7 @@ function Parky({ ground, glow }: { ground: string; glow?: string }) {
 }
 
 /** The Japan scene, filling its box from the right edge (`xMaxYMid slice`). */
-export function ParkyJapanScene({ className }: TripRegionSceneProps) {
+export function ParkyJapanScene({ className, loop }: TripRegionSceneProps) {
   const id = useId();
   const sky = `${id}sky`;
   const fuji = `${id}fuji`;
@@ -342,7 +412,7 @@ export function ParkyJapanScene({ className }: TripRegionSceneProps) {
   const glow = `${id}glow`;
   const moonlight = `${id}moonlight`;
   return (
-    <HolidaySceneSvg className={className} motion={MOTION}>
+    <HolidaySceneSvg className={className} motion={MOTION} loop={loop}>
       <defs>
         <linearGradient id={sky} x1="0" y1="0" x2="0" y2="106" gradientUnits="userSpaceOnUse">
           <stop
@@ -485,12 +555,29 @@ export function ParkyJapanScene({ className }: TripRegionSceneProps) {
         <Flower key={`${x} ${y}`} x={x} y={y} s={1.3} />
       ))}
 
-      {/* Evening: the lanterns along their string, lighting one after another. */}
+      {/* Evening: the lanterns along their string, lighting one after another. Looping, every
+          other lantern swings with its neighbours a beat apart; a skew about the string's height
+          keeps each cord on the string while its lantern swings. */}
       <g className="hidden dark:inline">
         <path d={LANTERN_STRING} fill="none" stroke="oklch(0.2 0.03 300)" strokeWidth=".5" />
-        {LANTERNS.map((lantern, i) => (
-          <Lantern key={lantern.x} x={lantern.x} y={lantern.y} glow={glow} delay={0.3 + i * 0.22} />
-        ))}
+        {(['parky-japan-swing', 'parky-japan-swing parky-japan-swing--odd'] as const).map(
+          (swing, half) => (
+            <g key={swing} className={swing}>
+              {LANTERNS.map(
+                (lantern, i) =>
+                  i % 2 === half && (
+                    <Lantern
+                      key={lantern.x}
+                      x={lantern.x}
+                      y={lantern.y}
+                      glow={glow}
+                      delay={0.3 + i * 0.22}
+                    />
+                  )
+              )}
+            </g>
+          )
+        )}
       </g>
 
       <Furoshiki />
@@ -508,18 +595,34 @@ export function ParkyJapanScene({ className }: TripRegionSceneProps) {
       </g>
 
       <g className="fill-[oklch(0.88_0.08_355)] dark:fill-[oklch(0.72_0.09_355)]">
-        {PETALS.map((petal, i) => (
-          <g
-            key={`${petal.x} ${petal.y}`}
-            transform={`translate(${petal.x} ${petal.y}) rotate(${petal.turn}) scale(1.4)`}
-          >
-            <path
-              className="parky-japan-petal"
-              d={PETAL}
-              style={{ animationDelay: `${i * 0.2}s` }}
-            />
-          </g>
-        ))}
+        {PETALS.map((petal, i) => {
+          const turned = (
+            <g transform={`rotate(${petal.turn}) scale(1.4)`}>
+              <path
+                className={petal.loose ? undefined : 'parky-japan-petal'}
+                d={PETAL}
+                style={petal.loose ? undefined : { animationDelay: `${i * 0.2}s` }}
+              />
+            </g>
+          );
+          return (
+            <g key={`${petal.x} ${petal.y}`} transform={`translate(${petal.x} ${petal.y})`}>
+              {petal.fall ? (
+                <g
+                  className="parky-japan-drift"
+                  opacity={petal.loose ? 0 : undefined}
+                  style={petalFall({ y: petal.y, fall: petal.fall })}
+                >
+                  <g className="parky-japan-sway" style={petalSway(i)}>
+                    {turned}
+                  </g>
+                </g>
+              ) : (
+                turned
+              )}
+            </g>
+          );
+        })}
       </g>
     </HolidaySceneSvg>
   );

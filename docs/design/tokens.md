@@ -138,8 +138,8 @@ and `.glass-card` (the pill breadcrumb in `breadcrumb-nav.tsx`).
 
 Two constraints hold for every glass surface: a transform or `backdrop-filter` on an ancestor makes
 it a backdrop root and flattens the blur (see [cards](cards-and-heroes.md#pointer-depth) and the
-[header](header.md#two-states-one-navigation)), and no endless animation runs inside one
-([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)).
+[header](header.md#two-states-one-navigation)), and no endless animation runs inside one but the
+planner band's region scenes ([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)).
 
 ## Utility classes
 
