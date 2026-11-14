@@ -38,11 +38,16 @@ import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import {
   DATE_LINE_START,
+  PRODUCT_SUBJECT,
+  SIGN_RULE,
+  TAILS,
+  WATCH,
   captionFindings,
   isNews,
   oldSpellings,
   slopFindings,
   splitSentences,
+  watchHits,
   werktagSentences,
 } from './prose-slop-patterns.mjs';
 
@@ -852,207 +857,6 @@ const ANSWER_TO =
 /** `„…"`: a German opening quote closed by the straight ASCII one (§4.5). */
 const GERMAN_STRAIGHT_CLOSE = /„[^“”"„\n]{1,200}"/g;
 
-const SIGN_RULE = 'the sign at the entrance (§3.3)';
-/** Warnings: a budget, a signal, or a candidate a person has to look at. */
-const WATCH = [
-  {
-    what: SIGN_RULE,
-    re: /\b((?:das|ein|dem|den|am|vom|beim) schild|the sign|het bord|wachttijdbord|le panneau|el cartel|il cartello)\b/gi,
-  },
-  {
-    what: 'summary formula (§1.5)',
-    re: /\b(zusammenfassend|abschließend l[äa]sst|insgesamt l[äa]sst|in conclusion|in summary|key takeaways)\b/gi,
-  },
-  {
-    what: 'editorial commentary (§1.4)',
-    re: /\b(es ist wichtig zu (beachten|betonen|erw[äa]hnen)|es ist entscheidend|worth noting|it'?s important to note)\b/gi,
-  },
-  {
-    what: 'empty opener (§1.7)',
-    re: /\b(in der heutigen (zeit|welt)|im digitalen zeitalter|mehr denn je|seit jeher|in today'?s|in the (ever-)?evolving)\b/gi,
-  },
-  {
-    what: 'pseudo-wisdom (§1.7)',
-    // `am Ende des Tages` is also the evening in a theme park: only the sentence-opening idiom.
-    re: /\b(der schl[üu]ssel liegt|die zahlen sprechen f[üu]r sich|die tendenz ist steigend|the key is)\b|(?<=^|[.!?]\s+)(?:am ende des tages|at the end of the day),/gim,
-  },
-  {
-    what: 'vague authority (§1.2)',
-    re: /\b(studien zeigen|experten (sind sich einig|gehen davon aus)|branchenberichte|experts (agree|argue)|studies (show|suggest)|research suggests)\b/gi,
-  },
-  {
-    what: 'business verb (§1.7)',
-    re: /\b(revolutionier\w*|transformier\w*|ganzheitlich\w*|nahtlos\w*|ma[ßs]geschneidert\w*|leverage|unlock|empower|streamline|seamless|cutting-edge|elevate)\b/gi,
-  },
-  {
-    what: 'AI vocabulary (§3)',
-    re: /\b(delve|tapestry|underscore[sd]?|showcasing|boasts|vibrant|nestled|pivotal|meticulous\w*|robust|myriad|plethora|multifaceted|groundbreaking|game-?chang\w*|transformative|unprecedented|aforementioned|spearhead\w*|encompass\w*|endeavou?rs?|synerg\w*|in essence|rest assured|it goes without saying|thought leader\w*)\b/gi,
-  },
-  {
-    what: 'stock phrase (§3)',
-    re: /\b(when it comes to|comes into play|without further ado|in a nutshell|buckle up|to the next level|bridge the gap|move the needle|at its core|in the realm of|here'?s the (thing|deal)|whether you'?re an? \w+ or|hier kommt\b[^.!?]{0,30}\bins spiel|ohne umschweife|schnall dich an|das n[äa]chste level|was viele nicht wissen)\b/gi,
-  },
-  {
-    what: 'mechanical opener (§2.7)',
-    re: /(?<=^|[.!?]\s+)(?:(?:moreover|furthermore|additionally|interestingly|notably|importantly|indeed|certainly|absolutely),|(?:darüber hinaus|des weiteren|interessanterweise|bemerkenswerterweise|letztendlich)\b)/gim,
-  },
-  {
-    what: 'credential opener (§1.4)',
-    re: /(?<=^|[.!?]\s+)(?:als (?:langj[äa]hrige[rs]?|erfahrene[rs]?|leidenschaftliche[rs]?|begeisterte[rs]?) |as an? (?:long-?time|seasoned|passionate|lifelong|avid) )/gim,
-  },
-  {
-    what: 'question set-up (§2.12)',
-    re: /(?<=^|[.!?]\s+)(?:das ergebnis|die antwort|der grund|der haken|the result|the answer|the reason|the catch)\?/gim,
-  },
-  {
-    what: 'teaser (§2.16)',
-    re: /(?<=^|[.!?]\s+)(?:(?:dann|jetzt|hier|da) (?:wird|wurde)(?:'s| es)? (?:\p{L}+ )?(?:kurios|spannend|interessant|lustig|absurd|verrückt)|und dann (?:das|der|die) \p{L}+ste\b|interessanter (?:ist|wird)|spannend(?:er)? wird|das beste(?: daran)?:|(?:here|this) is where (?:it|things) gets?|(?:then|now) (?:it|things) gets?(?: \p{L}+)? (?:weird|interesting|strange|tricky)|the best part[:?]|here'?s the (?:kicker|twist|catch)|and then the \p{L}+est\b)/gimu,
-  },
-  {
-    what: 'appended verdict (§2.17)',
-    re: /\b(?:und )?(?:genau )?das ist (?:genau )?(?:die aussage|der punkt|der trick|kein zufall|(?:vermutlich |wohl )?absicht)\b|\bthat'?s (?:exactly |precisely )?(?:the point|no accident|(?:probably )?deliberate|by design)\b|\bthat is (?:exactly |precisely )?the point\b/gi,
-  },
-  {
-    what: 'no X, no Y, just Z (§2.17)',
-    re: /\bkein\w* [^,.]{1,30}, kein\w* [^,.]{1,30}, (?:nur|einfach|dafür)\b|\bno [^,.]{1,30}, no [^,.]{1,30}, (?:just|only|simply)\b/gi,
-  },
-  {
-    // `zeigt der Kalender`, `die Daten sagen`, `Was die Warteschlangen gerade anzeigen`: a queue,
-    // a number or a calendar as the one who speaks (§2.13).
-    what: 'things that talk (§2.13)',
-    re: /(?<!\p{L})(?:(?:der|die|das|den|dem|unsere?|diese[rs]?|jede[rs]?)\s+(?:\p{L}+\s+)?(?:warteschlangen?|schlangen?|zahl(?:en)?|daten|wartezeit(?:en)?|kurven?|tageskurve|(?:crowd-)?kalender|tabellen?|prognosen?|messwerte?|statistik(?:en)?|anzeigen?|karten?|diagramm|grafik|farben?|balken|median|spitze|liste|skala)\s+(?:dir\s+|dazu\s+|dann\s+|hier\s+|auch\s+|nur\s+|gerade\s+(?:jetzt\s+)?|jetzt\s+|schon\s+)?(?:zeigt|zeigen|sagt|sagen|verrät|verraten|erzählt|erzählen|weiß|wissen|kennt|kennen|lügt|lügen|spricht|sprechen|antwortet|verspricht|verschweigt|verschweigen|behauptet|erwartet|erwarten|anzeigen|zeigt an|zeigen an)|(?:zeigt|sagt|verrät|erzählt|weiß|kennt)\s+(?:dir\s+|dann\s+|hier\s+|auch\s+)?(?:der|die|das)\s+(?:\p{L}+\s+)?(?:warteschlange|schlange|zahl|kalender|tabelle|kurve|karte|prognose|statistik|anzeige|liste|parkseite)|the (?:queue|line|numbers?|data|calendar|chart|curve|table|forecast|median|figures?|sign|display) (?:(?:already|also|then|now) )?(?:tells?|says|knows?|reveals?|lies|speaks|shows you|tells you))(?!\p{L})/giu,
-  },
-  {
-    // The same in the four derived languages; every hit there was found by reading until 2026-09-30.
-    what: 'things that talk, nl/fr/es/it (§2.13)',
-    re: /(?<!\p{L})(?:(?:de|het) (?:\p{L}+ )?(?:data|cijfers|tabel|kalender|kolom|curve|kaart|voorspelling|mediaan|wachtrij)\s+(?:zegt|zeggen|vertelt|vertellen|laat zien|laten zien|verraadt|verraden|weet|weten|kent|kennen|belooft|liegt)|(?:les données|les chiffres|le tableau|le calendrier|la courbe|la carte|la prévision|la médiane|la file)\s+(?:(?:te|vous|nous|le|la)\s+)*(?:dit|disent|montre|montrent|révèle|révèlent|sait|savent|annonce|promet|ment)|(?:los datos|las cifras|la tabla|el calendario|la curva|el mapa|la previsión|la mediana|la cola|la fila)\s+(?:(?:te|os|nos|lo|la)\s+)*(?:dice|dicen|muestra|muestran|revela|revelan|sabe|saben|anuncia|promete|miente|enseña)|(?:i dati|i numeri|la tabella|il calendario|la curva|la mappa|la previsione|la mediana|la coda|la fila)\s+(?:(?:ti|vi|ci|lo|la)\s+)*(?:dice|dicono|mostra|mostrano|rivela|rivelano|sa|sanno|annuncia|promette|mente|racconta))(?!\p{L})/giu,
-  },
-  {
-    // `Der Europa-Park-Guide rechnet das nach`, `rekent de widget hierboven uit`: a page, a guide,
-    // a report or a calendar doing the sums (§2.13). Say who did them (`habe ich nachgerechnet`)
-    // or where the result is. A model computing a forecast is arithmetic and is not on the list.
-    what: 'things that calculate (§2.13)',
-    re: /(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer|übersicht)\s+(?:oben\s+|unten\s+|hierüber\s+|darunter\s+)?(?:rechnet|rechnen)\b|\b(?:rechnet|rechnen)\s+(?:der|die|das|unser\p{L}*)\s+(?:\p{L}+\s+)?(?:gutachten|studie|bericht|guide|artikel|beitrag|seite|widget|kalender|tabelle|tagesplaner|planer)\b|\b(?:eine[rs]?|eins) davon rechnet\b|(?:report|study|guide|article|post|page|widget|calendar|table|planner)s?\s+(?:works out|calculates|crunches|adds up|does the maths?)\b|(?:rapport|onderzoek|studie|gids|artikel|pagina|widget|kalender|tabel|planner)\s+(?:rekent|rekenen)\b|\brekent\s+(?:de|het|onze)\s+(?:\p{L}+\s+)?(?:gids|widget|kalender|planner|dagplanner|pagina|tabel)\b|(?:rapport|étude|guide|article|page|widget|calendrier|tableau|planificateur)s?\s+calcule\b|(?:informe|estudio|guía|artículo|página|widget|calendario|tabla|planificador)\s+calcula\b|(?:rapporto|studio|guida|articolo|pagina|widget|calendario|tabella|pianificatore)\s+calcola\b/giu,
-  },
-  {
-    // `Die Daten belegen das nicht`, `ein anderes Jahr verteilt das anders` (§2.13): data and a
-    // year as the actor. They stood in the rain guide in six languages until 2026-10-06.
-    what: 'data or a year as the actor (§2.13)',
-    re: /(?<!\p{L})(?:die daten (?:belegen|beweisen)|ein anderes jahr verteilt|the data (?:doesn['’]t|don['’]t|does not|do not) (?:prove|show)|another year (?:will )?spreads?|de data (?:bewijzen|tonen)|een ander jaar verdeelt|les données ne le (?:prouvent|montrent)|une autre année répartira|los datos no lo (?:demuestran|prueban)|otro año lo repartiría|i dati non lo (?:provano|dimostrano)|un altro anno distribuirebbe)(?!\p{L})/giu,
-  },
-  {
-    // `Offen bleibt, welche Bahnen …, und das sind zuerst die im Gebäude.` (§2.12): the question
-    // set-up folded into one sentence. A question that stays open (`Reste à savoir si la question
-    // est recevable.`) has no answer clause and is not a hit.
-    what: 'a question answered in the same sentence (§2.12)',
-    re: /(?<!\p{L})(?:(?:offen bleibt|bleibt die frage),? (?:welche|wie|was|ob|wann|wo)[^.!?]{0,120}, und (?:das|die|der|es) |what['’]s left (?:open )?is (?:which|how|what|whether)[^.!?]{0,120}, and |open blijft,? (?:welke|hoe|wat|of)[^.!?]{0,120}, en |reste à savoir (?:quel\p{L}*|si|comment)[^.!?]{0,120}, et |queda por saber (?:qué|cuál\p{L}*|cómo|si)[^.!?]{0,120}, y |resta da capire (?:quali|quale|come|se)[^.!?]{0,120}, e )/giu,
-  },
-  {
-    // `und füllen die Lücke nicht mit Annahmen`, `Die Lücke liegt in unserer Datenbank und hat mit
-    // den Parks nichts zu tun` (§2.14): an integrity pledge nobody asked for, about a gap the
-    // reader did not need to hear about.
-    what: 'a pledge about a gap (§2.14)',
-    re: /(?<!\p{L})(?:(?:füllen|füllt) [^.!?]{0,20}lücke nicht|nicht mit annahmen|hat mit den parks nichts zu tun|(?:don['’]t|do not|won['’]t|will not) fill (?:the|that|this) gap|vullen het gat niet|niet met aannames|ne comblons pas|avec des suppositions|no rellenamos|con suposiciones|non (?:lo )?riempiamo|con supposizioni)(?!\p{L})/giu,
-  },
-  {
-    // `so steht es in unserem Guide zum Park` (§1.2): our own post as the evidence for a claim.
-    // Link the guide where a reader wants more; the claim names the park or the operator.
-    what: 'our own guide as the source (§1.2)',
-    re: /(?<!\p{L})(?:so steht es in unserem|steht im guide, dass|laut unserem guide|as our guide (?:to [^.,]{1,40} )?says|our guide says|according to our guide|zo staat het in onze gids|volgens onze gids|c['’]est écrit dans notre guide|selon notre guide|así consta en nuestra guía|según nuestra guía|così c['’]è scritto nella nostra guida|secondo la nostra guida)(?!\p{L})/giu,
-  },
-  {
-    // `trockene Tage gleicher Art`, `derselben Gruppe` (§2.19): a comparison against a bucket the
-    // reader was never shown. Say what is compared. `the same group` is left out: in the Walibi and
-    // Parc Astérix posts it is the company. `kürzer als an vergleichbaren trockenen Tagen` since
-    // PAR-988, after a comparative only: the planner's `sucht vergleichbare Tage` says which.
-    what: 'an unnamed comparison (§2.19)',
-    re: /(?<!\p{L})(?:gleicher art|derselben gruppe|(?:days|ones) of the same kind|van (?:het|de)zelfde soort|als (?:an |bei |in )?vergleichbare[nm]? (?:\p{L}+ )?tag(?:e|en)|than (?:on |at |in )?comparable (?:\p{L}+ )?days|dan (?:op |bij )?vergelijkbare (?:\p{L}+ )?dagen|que (?:les |des |lors des )?jours (?:\p{L}+ )?comparables|que (?:los |las )?(?:de |en )?(?:los )?días (?:\p{L}+ )?comparables|(?:che|rispetto a)i? (?:nei |ai )?giorni (?:\p{L}+ )?comparabili)(?!\p{L})/giu,
-  },
-  {
-    // `Für den Europa-Park berücksichtigen wir … auch die Schulferien im Elsass` (§2.19): our
-    // method told where the park's fact belongs. Say which holidays count, not how we count.
-    what: 'our method instead of the park (§2.19)',
-    re: /(?<!\p{L})(?:berücksichtigen wir|rechnen wir (?:[\p{L}-]+ ){0,6}?mit ein|zählen wir (?:[\p{L}-]+ ){0,6}?mit(?!\p{L})|we (?:also )?take into account|we count (?:[\p{L}-]+ ){0,6}?as|tenemos en cuenta|(?:nous )?prenons en compte|teniamo conto|houden we (?:ook )?rekening)(?!\p{L})/giu,
-  },
-  {
-    // `echte Wartezeiten`, `real wait-time data`: authenticity announced instead of shown (§3.3).
-    what: 'authenticity claim (§3.3)',
-    re: /(?<!\p{L})(?:echte[nrms]? (?:wartezeiten|wartezeit|daten|messungen|messwerte|werte|warteschlangendaten|zahlen|ablesungen)|real (?:wait[- ]time |queue )?(?:data|wait times|numbers)|echte wachttijd\p{L}*|données réelles|datos reales|dati reali)(?!\p{L})/giu,
-  },
-  {
-    // The register the model this site is written with falls into (Arize, September 2026).
-    what: 'Claude register (§2.18)',
-    re: /(?<!\p{L})(?:this matters|that matters|here['’]s the (?:part|thing) that|the honest answer|load-bearing|earns? (?:its|their) (?:keep|place)|deserves a moment|worth internali[sz]ing|das ist wichtig, weil|der knackpunkt|die falle ist|verdient sich seinen platz|tragende[nr]? (?:rolle|teil))(?!\p{L})/giu,
-  },
-  {
-    // `und keine davon ist die, die man erwartet`, `größer, als die Preise vermuten lassen`
-    // (§2.16): the surprise announced before the fact. Both stood in the Alton Towers guide of
-    // 2026-10-11. Say the fact; the reader decides whether it surprises them.
-    what: 'expectation teaser (§2.16)',
-    // `más dura de lo que parece` is how Spanish says "harder than it looks" and stays out.
-    re: /(?<!\p{L})(?:als man (?:es )?(?:erwartet|erwarten würde|denkt|glaubt)|als (?:die|der|das) \p{L}+ vermuten l(?:ä|a)ss\p{L}*|die man (?:nicht )?erwartet|than (?:you|one)(?:['’]d| would| might| may)? (?:expect|think|imagine)|than the \p{L}+ suggests?|(?:the|not the) ones? you['’]d expect|dan je (?:zou )?(?:verwachten|verwacht|denkt)|qu['’]on ne (?:le )?(?:pense|croit|imagine)|que ne le laissent (?:penser|supposer)|de lo que (?:crees|piensas|esperas|cabría esperar)|di quanto (?:si pensi|pensi|ci si aspetti|immagini))(?!\p{L})/giu,
-  },
-  {
-    what: 'colon set-up (§2.16)',
-    re: /(?<=^|[.!?]\s+)(?:das beste|kurz gesagt|der clou|die gute nachricht|die schlechte nachricht|pro-?tipp|profi-?tipp|spoiler|das problem|der knackpunkt|die falle|bottom line|pro tip|here['’]s why|plot twist|the good news|the bad news|the trap)\s*:/gim,
-  },
-  {
-    // A gap in the record with nobody named as its owner (§1.9).
-    what: 'disclaimer that names nobody (§1.9)',
-    re: /\b(?:nicht (?:öffentlich|allgemein) (?:dokumentiert|bekannt|verfügbar)|basierend auf (?:den )?verfügbaren (?:informationen|daten)|(?:obwohl|da) (?:spezifische|genaue) (?:details|angaben) (?:begrenzt|rar)|stand meines (?:letzten )?(?:updates|wissens)|not (?:widely|publicly) (?:documented|disclosed|available)|based on (?:the )?available information|(?:while|although) (?:specific )?details (?:are|remain) (?:limited|scarce)|as of my (?:last|latest) (?:update|knowledge))\b/gi,
-  },
-  {
-    what: 'send-off (§1.6)',
-    re: /\b(?:man darf gespannt sein|es bleibt spannend|die zukunft (?:sieht|wird) rosig|the future looks bright|exciting times ahead|a step in the right direction|watch this space|stay tuned)\b/gi,
-  },
-  {
-    what: 'notability claim (§1.1)',
-    re: /(?<!\p{L})(?:vielfach ausgezeichnet\p{L}*|preisgekrönt\p{L}*|in zahlreichen medien|international renommiert\p{L}*|award-winning|consistently ranked|widely recogni[sz]ed|critically acclaimed)(?!\p{L})/giu,
-  },
-  {
-    what: 'stacked qualifier (§1.7)',
-    re: /\b(?:could potentially|might possibly|may potentially|might arguably|kann (?:unter umständen )?möglicherweise|könnte (?:eventuell|möglicherweise|unter umständen))\b/gi,
-  },
-  {
-    // `Von rasanten Achterbahnen bis hin zu gemütlichen Familienfahrten`, `Egal, ob du …`.
-    what: 'range or whether opener (§3)',
-    re: /(?<!\p{L})(?:von [^.!?]{3,60} bis hin zu[rm]?|(?<=^|[.!?]\s+)(?:egal,? ob|ob du nun|of je nu|que (?:vous soyez|tu sois)|ya seas?|tanto si|che tu sia|sia che))(?!\p{L})/gimu,
-  },
-  {
-    // A park or a ride doing a person's verb (§2.13).
-    what: 'false agency (§2.13)',
-    re: /(?<!\p{L})(?:(?:lädt|laden) (?:\p{L}+ ){0,4}ein(?=[ ,.])|sorgt für (?:nervenkitzel|spaß|adrenalin|gänsehaut|stimmung|abwechslung|begeisterung)|(?:invites|promises) (?:you|visitors|guests|riders)|delivers (?:thrills|fun))(?!\p{L})/giu,
-  },
-  {
-    what: 'AI vocabulary, nl/fr/es/it (§3)',
-    re: /(?<!\p{L})(?:het is belangrijk om op te merken|in een snel veranderende wereld|naadloze?|baanbrekend\p{L}*|il convient de souligner|dans un monde où|à l['’]ère du numérique|tirer parti de|es importante destacar|vale la pena (?:señalar|destacar)|en última instancia|profundizar en|embarcarse en|è importante sottolineare|vale la pena (?:ricordare|sottolineare)|una testimonianza di|epocale)(?!\p{L})/giu,
-  },
-  {
-    what: 'vague sentiment (§1.2)',
-    re: /\b(?:enthusiasten|fans|kenner|puristen) (?:lieben|schätzen|bevorzugen|betrachten|feiern|halten|mögen|schwärmen)\b|\b(?:gilt|gelten) (?:als|unter)\b|\b(?:enthusiasts|fans|riders|purists) (?:love|prize|consider|regard|praise|celebrate|prefer|rave|adore)\b|\bis (?:widely|often|generally|commonly) (?:regarded|considered|seen|described)\b|\bwidely (?:regarded|considered|seen)\b|(?<!\p{L})(?:(?:liefhebbers|kenners) (?:waarderen|houden van|beschouwen|zweren bij)|(?:geldt|gelden) als|wordt (?:vaak |algemeen )?(?:beschouwd|gezien) als|les (?:passionnés|amateurs|puristes) (?:apprécient|adorent|considèrent|préfèrent)|(?:est|sont) (?:souvent |généralement |largement )?considérée?s? comme|los (?:aficionados|entusiastas|puristas) (?:aprecian|adoran|consideran|valoran|prefieren)|(?:es|son) (?:a menudo |generalmente )?considerad[oa]s?|gli (?:appassionati|puristi) (?:apprezzano|amano|considerano|preferiscono)|(?:è|sono) (?:spesso |generalmente )?considerat[oaie])(?!\p{L})/giu,
-  },
-  {
-    what: 'ad copy (§3)',
-    re: /(?<!\p{L})(?:alleinstellungsmerkmal\p{L}*|unique selling (?:point|proposition)s?|atemberaubend\p{L}*|beeindruckend\p{L}*|unvergesslich\p{L}*|einzigartig\p{L}*|faszinierend\p{L}*|spektakulär\p{L}*|legendär\p{L}*|ikonisch\p{L}*|nervenkitzel pur|adrenalin pur|pures adrenalin|für die ganze familie|für groß und klein|ein echtes highlight|ein absolutes muss|im herzen von|herzstück|aushängeschild|thrill-?seekers?|adrenaline junkies?|something for everyone|fun for the whole family|hidden gem|must-(?:see|visit|do)|unforgettable|breathtaking|iconic|legendary|world-class|jaw-dropping|heart-pounding|white-knuckle|exhilarating|visceral|hallmark|centerpiece|centrepiece|showpiece|in the heart of|rich history|onvergetelijk\p{L}*|een echte aanrader|voor jong en oud|voor het hele gezin|adembenemend\p{L}*|in het hart van|sensatiezoekers?|incontournables?|inoubliables?|à couper le souffle|pour toute la famille|petits et grands|au cœur de|plongez|n[’']hésitez pas|imprescindibles?|inolvidables?|no te pierdas|sumérgete|para toda la familia|grandes y pequeños|en el corazón de|toda una experiencia|imperdibil\p{L}*|indimenticabil\p{L}*|immergiti|per tutta la famiglia|grandi e piccini|nel cuore di|da non perdere|geheimtipp\p{L}*|kronjuwel|wow-effekt|tauch(?:e|t) (?:\p{L}+ )?ein|lass dich verzaubern|kommt jede[rs]? auf (?:seine|ihre) kosten|für jeden (?:geschmack )?etwas|liegt in der luft|erfüllt die luft|bustling|gleaming|towering|shimmering|palpable|look no further|bucket[- ]list|once[- ]in[- ]a[- ]lifetime|step into a world|voor ieder wat wils|verborgen parel|laat je betoveren|kloppend hart|il y en a pour tous les goûts|laissez-vous (?:emporter|séduire|transporter)|à ne pas manquer|immanquable|hay para todos los gustos|joya (?:escondida|oculta)|de visita obligada|déjate (?:llevar|sorprender)|ce n['’]è per tutti i gusti|gemma nascosta|lasciati (?:conquistare|trasportare)|tappa obbligata|mozzafiato)(?!\p{L})/giu,
-  },
-];
-
-/*
- * The tail a model hangs on a finished sentence to say what the fact *does* (§2.3): `…, making
- * it the tallest`, `…, was den Nervenkitzel steigert`, `…, ce qui rend`, `…, lo que convierte`.
- * One is a sentence; one per paragraph is the template the English glossary was written from.
- */
-const TAILS = {
-  en: /,\s(?:thus\s)?(?:making|creating|giving|adding|offering|allowing|providing|ensuring|highlighting|reflecting|showcasing|underscoring|emphasi[sz]ing|contributing to|resulting in|delivering|producing|enhancing|lending)\b/gi,
-  de: /,\s(?:was|wodurch|womit)\s[^,.;]{0,80}?\b(?:macht|erzeugt|verleiht|steigert|schafft|ermöglicht|verstärkt|bietet|sorgt|beiträgt|unterstreicht|verschafft)\b/gi,
-  // `, waardoor de trein een U-bocht maakt` is Dutch for "so": only the pitching verbs count there.
-  nl: /,\s(?:(?:wat|waarmee)\s[^,.;]{0,80}?\b(?:maakt|zorgt|geeft|biedt|creëert|versterkt|oplevert)|waardoor\s[^,.;]{0,80}?\b(?:creëert|versterkt|oplevert|zorgt voor))\b/gi,
-  // `, lo que cuenta` opening a sentence is a relative clause, not a tail: only the pitching verbs.
-  fr: /,\s(?:ce qui (?:rend|donne|crée|permet|offre|fait|garantit|renforce|en dit)|créant|offrant|donnant|rendant|(?:leur |lui |vous )?permettant|ajoutant|produisant|générant|procurant)(?!\p{L})/giu,
-  es: /,\s(?:lo que (?:hace|convierte|permite|crea|da|ofrece|genera|aporta|garantiza)|lo cual|creando|ofreciendo|dando|haciendo|permitiendo|añadiendo|convirtiendo)\b/gi,
-  it: /,\s(?:(?:il che|cosa che) (?:rende|dà|crea|permette|offre|fa|garantisce)|creando|offrendo|dando|rendendo|permettendo|aggiungendo)\b/gi,
-};
-
 const EN_FULL =
   /\b(?:do not|does not|did not|is not|are not|was not|were not|has not|have not|it is|that is|there is|you are|cannot|will not|you will|we are|they are)\b/gi;
 const EN_CONTRACTED =
@@ -1125,13 +929,6 @@ function colonPivots(body) {
 const PARALLELISM =
   /\bsondern\b|\bnot (?:just|only|merely)\b[^.!?]{0,60}\bbut\b|\b(?:it|this|that)(?:['’]s not| isn['’]t| is not) [^.!?]{1,40}[,;—–] (?:it['’]s|it is|but)\b|\bniet alleen\b|\bnon seulement\b|\bce n['’]est pas [^.!?]{1,40}, c['’]est\b|\bno solo\b[^.!?]{0,60}\bsino\b|\bnon solo\b[^.!?]{0,60}\bma\b|\bnon è [^.!?]{1,40}, è\b/gi;
 
-/**
- * Our own features as the subject of a verb: `der Planer kennt`, `the planner says` (§2.13). Until
- * 2026-09-30 every `dem Kompass` and `the compass` counted, which in a post about the compass
- * pushed writers into swapping the noun for `park.fan's compass` without changing who acts.
- */
-const PRODUCT_SUBJECT =
-  /\b(?:der|the) (?:planer|tagesplaner|kompass|assistent|planner|compass|assistant) (?:weiß|knows|(?!(?:ist|is|in|im|auf|on|of|von|zu|to|mit|with|als|as|und|and|oder|or|nicht|not|bis|its|seine?)\b)\p{Ll}+[ts])\b/giu;
 const NEGATION = {
   de: /\b(nicht|nichts|kein\w*|nie|niemals)\b/gi,
   en: /\b(not|no|never|nothing|none|isn'?t|doesn'?t|don'?t|won'?t|can'?t)\b/gi,
@@ -1620,10 +1417,10 @@ function scan(file, raw, { subject, skip = [] } = {}) {
     const line = `${HONESTY_LABEL}: ${[...new Set(honesty)].slice(0, 5).join(', ')}`;
     (subject === 'us' ? fail : warn)(file, line);
   }
-  for (const { what, re } of WATCH) {
-    if (skip.includes(what)) continue;
-    const hits = text.match(re);
-    if (hits) warn(file, `${what}: ${[...new Set(hits)].slice(0, 5).join(', ')}`);
+  for (const entry of WATCH) {
+    if (skip.includes(entry.what)) continue;
+    const hits = watchHits(text, entry);
+    if (hits) warn(file, `${entry.what}: ${[...new Set(hits)].slice(0, 5).join(', ')}`);
   }
 }
 
@@ -2088,9 +1885,9 @@ function scanTerms(file, terms, locale) {
   for (const [id, text] of terms) {
     const honesty = text.match(HONESTY);
     if (honesty) fail(file, `${id}: ${HONESTY_LABEL}: ${[...new Set(honesty)].join(', ')}`);
-    for (const { what, re } of WATCH) {
-      const hits = text.match(re);
-      if (hits) note(what, id, hits);
+    for (const entry of WATCH) {
+      const hits = watchHits(text, entry);
+      if (hits) note(entry.what, id, hits);
     }
     const tails = text.match(TAILS[locale]);
     if (tails) note('participial tail (§2.3)', id, tails);

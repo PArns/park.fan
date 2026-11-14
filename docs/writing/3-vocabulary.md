@@ -59,7 +59,8 @@ Bedeutung`, `steht als Zeugnis`, `Wendepunkt`, `Schlüsselmoment`, `tief verwurz
 - **Core AI vocabulary**: `additionally` (sentence-initial), `align with`, `boasts`, `bolstered`,
   `crucial`, `deep dive`, `delve`, `emphasizing`, `enduring`, `enhance`, `fostering`, `garner`,
   `highlight` (verb), `interplay`, `intricate`, `key` (adjective), `landscape` (abstract),
-  `meticulous`, `pivotal`, `robust`, `showcase`, `tapestry`, `testament`, `underscore`,
+  `meticulous`, `pivotal`, `robust`, `showcase`, `tapestry` (not in a title: Disneyland's show
+  `Tapestry of Happiness` is a name), `testament`, `underscore`,
   `valuable`, `vibrant`, `multifaceted`, `transformative`, `unprecedented`, `aforementioned`,
   `spearhead`, `encompass`, `endeavor`, `synergy`, `in essence`, `thought leader`
 - **Puffery**: `nestled`, `in the heart of`, `breathtaking`, `must-see`, `rich history`,
