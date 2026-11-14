@@ -697,7 +697,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_question: {
     label: 'Frage an Parky',
-    when: 'Eine Frage wird abgeschickt; ob Vorschlag, getippt, Antwortvorschlag oder Interview-Knopf, nie ihr Text.',
+    when: 'Eine Frage wird abgeschickt; ob Vorschlag, getippt, Antwortvorschlag (mit Platz) oder Interview-Knopf, ob die erste des Chats, nie ihr Text.',
   },
   assistant_answer: {
     label: 'Antwort von Parky',
@@ -717,27 +717,31 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_replies_shown: {
     label: 'Parky-Antwortvorschläge',
-    when: 'Unter einer Antwort stehen antippbare Vorschläge; mit ihrer Zahl, nie ihr Text.',
+    when: 'Unter einer Antwort stehen antippbare Vorschläge; mit ihrer Zahl, nie ihr Text, und wonach: einer Interviewfrage, einer Planänderung oder einer anderen Antwort.',
+  },
+  assistant_greeting: {
+    label: 'Parky-Begrüßung',
+    when: 'Ein neuer Chat zeigt seine Begrüßung: eine zu den eigenen Plänen (heute, gestern, morgen, bald, eine Reise, der letzte Park) oder eine allgemeine; nie Park oder Datum.',
   },
   assistant_interview_started: {
     label: 'Parky-Interview begonnen',
-    when: 'Parky fragt eine Reise oder einen Parktag Schritt für Schritt ab; mit der Art und ob der Knopf im Planer oder der Chat es begann.',
+    when: 'Parky fragt eine Reise oder einen Parktag Schritt für Schritt ab; mit der Art, der Region („none“ beim Parktag) und ob der Knopf im Planer oder der Chat es begann.',
   },
   assistant_interview_step: {
     label: 'Parky-Interview: Schritt',
-    when: 'Ein Schritt des Interviews ist beantwortet oder übersprungen; mit Art und Schritt.',
+    when: 'Ein Schritt des Interviews ist beantwortet oder übersprungen; mit Art, Schritt, Ergebnis und Region.',
   },
   assistant_interview_ended: {
     label: 'Parky-Interview beendet',
-    when: 'Das Interview ist fertig oder wurde verlassen; mit der Zahl der beantworteten Schritte.',
+    when: 'Das Interview ist fertig oder wurde verlassen; mit der Zahl der beantworteten Schritte, ob der Plan stand, und der Region.',
   },
   assistant_plan_changed: {
     label: 'Parky ändert einen Plan',
-    when: 'Eine Änderung von Parky kommt im Reise- oder Tagesplaner an; mit der Art der Änderung, nie ihrem Inhalt.',
+    when: 'Eine Änderung von Parky kommt im Reise- oder Tagesplaner an; ein Ereignis je Art der Änderung (Daten und Parks zählen beide), nie ihr Inhalt.',
   },
   assistant_change_undone: {
     label: 'Parky-Änderung zurückgenommen',
-    when: 'Parkys letzte Änderung wird rückgängig gemacht, oder der Plan wurde seither geändert und bleibt.',
+    when: 'Parkys letzte Änderung wird rückgängig gemacht, oder der Plan wurde seither geändert und bleibt; über den Knopf unter der Antwort oder im Chat.',
   },
   planner_opened: {
     label: 'Planer geöffnet',
@@ -1006,6 +1010,11 @@ const PROP_LABEL: Record<string, string> = {
   mode: 'Weg',
   lever: 'Hebel',
   outcome: 'Ergebnis',
+  first: 'Erste Frage des Chats',
+  context: 'Wonach',
+  via: 'Über',
+  plan: 'Plan stand',
+  region: 'Region',
   block: 'Block',
   dest: 'Führt zu',
   section: 'Stelle',
@@ -1086,7 +1095,7 @@ const PLANNER_OPENED_SOURCE_LABEL: Record<PlannerOpenedSource | 'none', string> 
   'kids-page': 'Seite „Mit Kindern“',
   'menu-plan': 'Planer-Menü im Header, „Meinen Plan öffnen“',
   'menu-park': 'Planer-Menü im Header, ein beliebter Park',
-  assistant: 'Parky, der Chat-Assistent',
+  assistant: 'Parky, der KI-Chat',
   none: 'Planer zu',
 };
 

@@ -5391,7 +5391,9 @@
         "rest": "Viaje: días de descanso cambiados",
         "tickets": "Viaje: entradas añadidas",
         "hotel": "Viaje: hotel añadido",
-        "pace": "Viaje: ritmo cambiado"
+        "pace": "Viaje: ritmo cambiado",
+        "route": "Viaje: ruta cambiada",
+        "buffer": "Viaje: tiempo para cambiar de hotel ajustado"
       },
       "day": "En tu planificador: {park}, {date}",
       "undo": "Deshacer",

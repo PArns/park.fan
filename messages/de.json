@@ -5391,7 +5391,9 @@
         "rest": "Reiseplaner: Ruhetage geändert",
         "tickets": "Reiseplaner: Tickets eingetragen",
         "hotel": "Reiseplaner: Hotel eingetragen",
-        "pace": "Reiseplaner: Tempo geändert"
+        "pace": "Reiseplaner: Tempo geändert",
+        "route": "Reiseplaner: Route geändert",
+        "buffer": "Reiseplaner: Zeit für Hotelwechsel eingestellt"
       },
       "day": "Tagesplaner: {park}, {date}",
       "undo": "Rückgängig",

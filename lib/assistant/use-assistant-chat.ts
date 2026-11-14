@@ -13,7 +13,7 @@ import {
 } from './actions';
 import { assistantTripsSnapshot } from './trip-context';
 import { interviewStore } from './interview';
-import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { assistantPlannerSnapshot } from './planner-context';
@@ -37,6 +37,9 @@ import {
   readBreakUntil,
   startBreak,
 } from './chat-end';
+
+/** The trip regions live on the site, sent with every question. */
+const LIVE_REGION_SLUGS = LIVE_TRIP_REGIONS.map((region) => region.slug);
 
 /** The longest greeting the API takes as `opener`. */
 const OPENER_MAX = 300;
@@ -193,12 +196,20 @@ export function useAssistantChat(
       text: string,
       kind: AssistantQuestionKind = 'typed',
       /** The position, only right after the visitor pressed „Standort teilen". */
-      location?: { lat: number; lng: number }
+      location?: { lat: number; lng: number },
+      /** A reply chip's place among the chips, 1 the first. */
+      position?: number
     ) => {
       const question = text.trim().slice(0, 1000);
       if (!question || phase !== 'idle' || !sessionToken) return;
       if (readBreakUntil(breakStorage()) !== null) return;
-      trackSiteEvent('assistant_question', { kind });
+      trackSiteEvent('assistant_question', {
+        kind,
+        first: stored.messages.length === 0,
+        ...(position !== undefined && { position }),
+      });
+      /** Whether this answer changed a plan, so chips after it count as a change's. */
+      let changedPlan = false;
       let lookups = 0;
       let result: NonNullable<AssistantChatMessage['error']> | 'answered' = 'answered';
       let switchTo: AssistantAction | null = null;
@@ -256,7 +267,10 @@ export function useAssistantChat(
             // "What haven't I ridden yet" is answered from the marks this browser keeps.
             ridden: assistantRiddenSnapshot(getRiddenSnapshot()),
             // The trip on screen and each region's remembered one; the interview where one runs.
-            trips: assistantTripsSnapshot(TRIP_REGIONS.map((region) => region.slug)),
+            trips: assistantTripsSnapshot(LIVE_REGION_SLUGS),
+            // The registry's live flag, the one switch that opens a region's hub: Parky plans,
+            // changes and links these regions only.
+            liveRegions: LIVE_REGION_SLUGS,
             interview: interviewStore.getSnapshot() ?? undefined,
             // The window's greeting, so an answer to it („ja“, „super!“) reads right.
             ...(opener && { opener: opener.slice(0, OPENER_MAX) }),
@@ -315,7 +329,14 @@ export function useAssistantChat(
             } else if (action?.type === 'chat_end') {
               endChat(action.cooldownMinutes);
             } else if (action?.type === 'replies') {
-              trackSiteEvent('assistant_replies_shown', { count: action.replies.length });
+              trackSiteEvent('assistant_replies_shown', {
+                count: action.replies.length,
+                context: interviewStore.getSnapshot()
+                  ? 'interview'
+                  : changedPlan
+                    ? 'plan_change'
+                    : 'answer',
+              });
               patchLast((m) => ({ ...m, replies: action.replies }));
             } else if (action?.type === 'switch_locale') {
               switchTo = action;
@@ -325,6 +346,7 @@ export function useAssistantChat(
               if (typeof outcome === 'string') {
                 patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), outcome] }));
               } else if (outcome && 'receipt' in outcome) {
+                changedPlan = true;
                 patchLast((m) => ({ ...m, receipts: [...(m.receipts ?? []), outcome.receipt] }));
               } else if (outcome && 'failed' in outcome) {
                 patchLast((m) => ({ ...m, failures: [...(m.failures ?? []), outcome.failed] }));

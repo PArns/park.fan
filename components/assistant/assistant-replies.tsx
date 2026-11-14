@@ -18,7 +18,8 @@ export function AssistantReplies({
   replies: readonly string[];
   /** While Parky answers, a press would be lost. */
   disabled: boolean;
-  onPick: (reply: string) => void;
+  /** The reply, and its place among the chips, 1 the first. */
+  onPick: (reply: string, position: number) => void;
 }) {
   const t = useTranslations('assistant');
   return (
@@ -28,14 +29,14 @@ export function AssistantReplies({
       data-assistant-replies=""
       className="flex flex-wrap justify-end gap-2"
     >
-      {replies.map((reply) => (
+      {replies.map((reply, index) => (
         <Button
           key={reply}
           type="button"
           variant="outline"
           size="sm"
           disabled={disabled}
-          onClick={() => onPick(reply)}
+          onClick={() => onPick(reply, index + 1)}
           className={cn(
             'border-primary/40 text-primary hover:bg-primary/10 hover:text-primary h-auto min-h-8 rounded-full whitespace-normal',
             'max-sm:h-auto max-sm:min-h-11'

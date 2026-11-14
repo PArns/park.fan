@@ -311,17 +311,20 @@ export function DatenschutzEN() {
           you set a wait-time alert or a show reminder, how you opened the day planner, which steps
           you used in the trip planner, whether you entered tickets there and which ticket link you
           clicked (without your travel dates), that you clicked a link to a park's website or ticket
-          shop or shared a page, whether Parky appeared and whether you clicked it or one of its
-          lines, whether a question to Parky was a suggestion, typed or a suggested reply you tapped
-          and how the answer ended, whether you started and ended Parky's interview, whether Parky
-          changed one of your plans (what kind of change, never its content), how you answered the
-          question about notifications, or that an error page was shown. If a post, a park or an
-          attraction is in the foreground for five seconds, that counts as a read. For posts we also
-          note whether you read a quarter, half, three quarters or all of it. If an event belongs to
-          a park, an attraction, a show or a restaurant, its ID is included, and for a post its name
-          from the address. What you type into a search field, your location and your input are not
-          sent to our counter. We do not measure loading times here. We do measure how long a page
-          was visible in the foreground of your browser: your browser counts the seconds and reports
+          shop or shared a page, whether Parky appeared and whether you clicked him or one of his
+          lines, what kind of greeting a chat opened with (such as one about your next park day,
+          never the park or the date), whether a question to Parky was the chat's first, a
+          suggestion, typed or a suggested reply you tapped (with its place) and how the answer
+          ended, whether you started and ended Parky's interview, in which region and which steps
+          you answered or skipped, whether Parky changed one of your plans (what kinds of change,
+          never their content) and whether you took that back, how you answered the question about
+          notifications, or that an error page was shown. If a post, a park or an attraction is in
+          the foreground for five seconds, that counts as a read. For posts we also note whether you
+          read a quarter, half, three quarters or all of it. If an event belongs to a park, an
+          attraction, a show or a restaurant, its ID is included, and for a post its name from the
+          address. What you type into a search field, your location and your input are not sent to
+          our counter. We do not measure loading times here. We do measure how long a page was
+          visible in the foreground of your browser: your browser counts the seconds and reports
           them when you move to the next page or leave the tab. It sends no time of day with them,
           and at most 30 minutes count for one page view.
         </p>
