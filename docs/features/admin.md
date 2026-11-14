@@ -344,8 +344,8 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
 The keys that unlock park.fan's forecasts on api.park.fan for one consumer each
 ([a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md)).
 Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key.create`,
-`api-key.update`, `api-key.revoke`, `api-key.rotate` and `api-key.previous.revoke`), because a key
-decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`, paths from `dataApiKeyPath`.
+`api-key.update`, `api-key.revoke`, `api-key.rotate`, `api-key.previous.revoke` and
+`api-key.delete`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`, paths from `dataApiKeyPath`.
 
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
   for a holder with a written agreement), prefix, contact, created, last used, when it was
@@ -359,7 +359,11 @@ decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`, paths from `
   `PATCH`, from the next request on) and its revoke button behind a `ConfirmDialog`, which warns
   that revoking the `internal` key takes the forecasts off the site. A revoked or expired key stays
   listed with its text dimmed; an expired one keeps its edit button, because a new date brings it
-  back. On a phone the buttons sit on the name's line and the details take the card's width.
+  back. A revoked row has a delete button where the revoke button was („… löschen“), behind a
+  `ConfirmDialog`: `POST …/delete` removes the key and its statistics for good, and the row goes with
+  the next load of the list. The API refuses an active key with 409, so a key is always revoked
+  before it can be deleted; its audit rows stay under „Änderungen“. On a phone the buttons sit on
+  the name's line and the details take the card's width.
 - **Parks** are added one at a time through `SearchSelect` with the park search, from the query
   the parks page already holds (`/api/admin/content/parks?limit=500`); a chosen park is a chip
   that removes itself. No park means every park.

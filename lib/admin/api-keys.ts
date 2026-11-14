@@ -192,10 +192,10 @@ export function formatKeyExpiry(expiresAt: string | null, nowMs: number): string
 export const DATA_API_KEYS_PATH = '/api/admin/api-keys';
 
 /**
- * The path of one key, or of its rotation (`rotate`) or the secret its last rotation kept
- * (`previous`).
+ * The path of one key, or of its rotation (`rotate`), the secret its last rotation kept
+ * (`previous`) or the deletion of a revoked key (`delete`).
  */
-export function dataApiKeyPath(id: string, part?: 'rotate' | 'previous'): string {
+export function dataApiKeyPath(id: string, part?: 'rotate' | 'previous' | 'delete'): string {
   const path = `${DATA_API_KEYS_PATH}/${encodeURIComponent(id)}`;
   return part ? `${path}/${part}` : path;
 }

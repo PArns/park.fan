@@ -18,7 +18,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `keyExpiryFrom` _function_: The end date a choice stands for, as the API takes it: a lifetime counted from `nowMs`, the end of the chosen day in Berlin, or null for never.
 - `keyExpiryDay` _function_: The Berlin day an end date falls on, `YYYY-MM-DD`, as a date field takes it.
 - `formatKeyExpiry` _function_: „gültig bis 30.06.2027“, „abgelaufen am 31.01.2026“, or „unbefristet“.
-- `dataApiKeyPath` _function_: The path of one key, or of its rotation (`rotate`) or the secret its last rotation kept (`previous`).
+- `dataApiKeyPath` _function_: The path of one key, or of its rotation (`rotate`), the secret its last rotation kept (`previous`) or the deletion of a revoked key (`delete`).
 - `describeRotationGrace` _function_: What a rotation with this grace period does to the old key, in one sentence.
 - `previousKeyValidUntil` _function_: Until when the secret a key's last rotation replaced still works, seen from `nowMs`: the end of its grace period, or the key's own end date when that comes first, as the API decides it.
 - `formatKeyMoment` _function_: „14.11.2026, 10:00“: a moment as the admin reads it, in Berlin.
