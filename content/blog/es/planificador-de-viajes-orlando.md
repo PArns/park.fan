@@ -1,15 +1,15 @@
 ---
-title: 'Orlando: con el planificador de viajes, cada uno de tus parques cae en su día más tranquilo'
+title: 'Planificar Orlando sin que te echen de Magic Kingdom a las 18:00'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En el nuevo planificador de viajes para Orlando, cada uno de tus parques cae en el día del viaje en
-  que sus grandes atracciones tienen menos gente. Un día en que Magic Kingdom cierra a las 18:00 por
-  una fiesta cuenta como un día corto. Si ya tienes entradas, cada día de parque queda dentro de su
-  validez, y si no, recibes una propuesta de cuáles comprar.
+  El 8 de diciembre hay poca gente en Magic Kingdom, y aun así es el día equivocado: con una entrada
+  normal tienes que salir a las 18:00, antes de los fuegos artificiales. Con el nuevo planificador
+  de viajes para Orlando vas el día anterior, cuando el parque abre hasta las 22:00, y así cada uno
+  de tus parques tiene el día que merece la pena.
 tags:
   - park-fan
   - orlando
@@ -26,7 +26,8 @@ coverImage:
 seo:
   title: 'Planificador de viajes a Orlando: ¿qué parque qué día?'
   description: >-
-    Cada uno de tus parques de Orlando en su día de colas más cortas. Un día con noche de fiesta, en que hay que salir a las 18:00, cuenta como día corto.
+    El 8 de diciembre hay poca gente en Magic Kingdom, pero con entrada de día sales a las 18:00. El
+    planificador busca a cada parque de Orlando un día mejor.
   keywords:
     - planificador de viajes Orlando
     - qué parque de Orlando qué día
@@ -37,9 +38,9 @@ seo:
     - merece la pena el Park Hopper
 ---
 
-El 8 de diciembre de 2026 tendrás que salir de [Magic Kingdom](ref:magic-kingdom-park) a las 18:00 si tienes una entrada de día normal. A las 19:00 empieza Mickey's Very Merry Christmas Party, que pide una entrada aparte. El día anterior, el parque abre hasta las 22:00. En las grandes atracciones esperamos más o menos la misma gente los dos días, y por eso el 8 es traicionero: en un calendario de afluencia corriente parece tan bueno como el 7, solo que le faltan cuatro horas, y son las del espectáculo de fuegos artificiales.
+La culpa es de Mickey's Very Merry Christmas Party. Esa noche empieza a las 19:00 en [Magic Kingdom](ref:magic-kingdom-park) y pide una entrada aparte. El lunes anterior no hay fiesta, y el parque abre para todos hasta las 22:00.
 
-Para días así, [park.fan/orlando](/orlando) tiene ahora un planificador de viajes. Le dices cuándo estás en Orlando y qué parques quieres ver. Con diez días del 5 al 14 de diciembre, a Magic Kingdom le toca entonces el lunes 7, uno de los cinco días sin fiesta.
+Para días así, [park.fan/orlando](/orlando) tiene ahora un planificador de viajes. Le dices cuándo estás en Orlando y qué parques quieres ver. Con diez días del 5 al 14 de diciembre de 2026, a Magic Kingdom le toca entonces el lunes 7, uno de los cinco días sin fiesta.
 
 ## Todos los parques de Orlando en un calendario
 

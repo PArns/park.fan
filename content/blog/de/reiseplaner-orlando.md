@@ -1,15 +1,15 @@
 ---
-title: 'Orlando: Mit dem Reiseplaner kommt jeder deiner Parks an seinen ruhigsten Reisetag'
+title: 'Orlando planen, ohne um 18 Uhr aus dem Magic Kingdom zu fliegen'
 translationKey: orlando-trip-planner
 date: '2026-11-13'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im neuen Reiseplaner für Orlando kommt jeder deiner Parks an den Reisetag, an dem an seinen
-  großen Bahnen am wenigsten los ist. Ein Tag, an dem das Magic Kingdom um 18 Uhr für eine Party
-  schließt, zählt dabei als kurzer Tag. Hast du schon Tickets, bleibt jeder Parktag in ihrer
-  Gültigkeit, und sonst bekommst du passende vorgeschlagen.
+  Am 8. Dezember ist im Magic Kingdom wenig los, und trotzdem ist es der falsche Tag: Mit normalem
+  Ticket musst du um 18 Uhr raus, noch vor dem Feuerwerk. Mit dem neuen Reiseplaner für Orlando
+  gehst du stattdessen am Tag davor hin, wenn der Park bis 22 Uhr offen hat, und jeder deiner Parks
+  bekommt so den Tag, der sich lohnt.
 tags:
   - park-fan
   - orlando
@@ -26,8 +26,8 @@ coverImage:
 seo:
   title: 'Orlando-Reiseplaner: Welcher Park an welchem Tag?'
   description: >-
-    Jeder deiner Orlando-Parks am Tag mit den kürzesten Warteschlangen. Ein Partytag, an dem
-    Tagesgäste um 18 Uhr gehen müssen, zählt als kurzer Tag.
+    Am 8. Dezember ist im Magic Kingdom wenig los, doch Tagesgäste müssen um 18 Uhr raus. Der
+    Reiseplaner sucht jedem deiner Orlando-Parks einen besseren Tag.
   keywords:
     - Orlando Reiseplaner
     - Orlando welcher Park an welchem Tag
@@ -38,9 +38,9 @@ seo:
     - Park Hopper lohnt sich
 ---
 
-Am 8. Dezember 2026 musst du das [Magic Kingdom](ref:magic-kingdom-park) um 18 Uhr verlassen, wenn du ein normales Tagesticket hast. Um 19 Uhr beginnt Mickey's Very Merry Christmas Party, und für die brauchst du ein eigenes Ticket. Am Tag davor hat der Park bis 22 Uhr offen. An den großen Bahnen erwarten wir an beiden Tagen ungefähr gleich viel Andrang, und deshalb ist der 8. tückisch: In einem gewöhnlichen Besucherkalender sieht er so gut aus wie der 7., nur fehlen ihm vier Stunden, und zwar die mit dem Feuerwerk.
+Der Grund ist Mickey's Very Merry Christmas Party. Sie beginnt an diesem Abend um 19 Uhr im [Magic Kingdom](ref:magic-kingdom-park), und für sie brauchst du ein eigenes Ticket. Am Montag davor ist keine Party, dann hat der Park für alle bis 22 Uhr offen.
 
-Für solche Tage gibt es auf [park.fan/orlando](/orlando) jetzt einen Reiseplaner. Du sagst, wann du in Orlando bist und welche Parks du sehen willst. Bei zehn Tagen vom 5. bis zum 14. Dezember bekommt das Magic Kingdom dann den Montag, den 7., einen der fünf Tage ohne Party.
+Für solche Tage gibt es auf [park.fan/orlando](/orlando) jetzt einen Reiseplaner. Du sagst, wann du in Orlando bist und welche Parks du sehen willst. Bei zehn Tagen vom 5. bis zum 14. Dezember 2026 bekommt das Magic Kingdom dann den Montag, den 7., einen der fünf Tage ohne Party.
 
 ## Alle Parks von Orlando in einem Kalender
 
