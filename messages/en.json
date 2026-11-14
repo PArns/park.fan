@@ -3235,41 +3235,27 @@
     "options": {
       "hotel": "Hotel",
       "area": "Hotel area",
-      "areaNone": "Not given",
       "areaNoneHint": "The plan then shows no drive times.",
-      "fromArea": "from {area}",
       "fireworksWant": "I want to see them",
       "fireworksAny": "Doesn’t matter",
       "blocksHint": "Each resort’s days in one run, so you drive between the resorts less.",
-      "blocksOn": "resorts together",
-      "blocksOff": "resorts mixed",
       "rest": "Rest days",
       "restAutoLabel": "Automatic",
       "restAutoHint": "At most four park days in a row; the rest days fall on the busiest days.",
       "restMaxLabel": "My own limit",
-      "restMax": "At most {n, plural, =1 {1 park day} other {# park days}} in a row",
       "restNoneLabel": "No rest days",
-      "restAuto": "rest days on busy days",
-      "restMaxShort": "at most {n} park days in a row",
-      "restNone": "no rest days",
       "restFewer": "One day fewer",
       "restMore": "One day more",
       "hop": "Park hopping",
       "hopHint": "Two parks of one resort on one day, when the trip has fewer days than park visits.",
-      "hopOn": "park hopping",
       "evenings": "Evenings",
-      "eveningsOff": "no evenings",
       "blocksAuto": "Mixed only where it saves time",
       "blocksAutoHint": "Inside your tickets’ dates, mixed where that saves at least 3 min a ride.",
       "blocksAlways": "Always together",
       "blocksFree": "Mixed wherever the lines are shorter",
-      "travelDays": "Travel days",
-      "travelDaysOn": "parks on travel days",
       "split": "Second park days",
       "splitHint": "Parks set to “1–2 days” get a second day where the trip has room.",
-      "splitOff": "no second days",
       "guide": "More in the trip planner guide",
-      "hotelBasesHint": "With a hotel, the plan counts its early entry and the way to the parks.",
       "moveBuffer": "Hotel change",
       "moveBufferMinutes": "{minutes} min",
       "moveBufferHint": "Time to check out, carry your bags and check in, on top of the ride."
@@ -3759,11 +3745,6 @@
       }
     },
     "route": {
-      "arrive": "Arrival",
-      "leave": "Departure",
-      "gatewayOpen": "Not decided",
-      "gatewayShared": "{airports}, or not decided",
-      "gatewayAt": "{city} · {airports}",
       "stays": "Cities and nights",
       "nights": "{count, plural, =1 {1 night} other {# nights}}",
       "fixed": "set",
@@ -3776,10 +3757,7 @@
       "fewer": "{city}: one night less",
       "more": "{city}: one night more",
       "add": "Add a city",
-      "addPick": "Choose a city",
-      "total": "{nights, plural, =1 {1 night} other {# nights}} in {cities, plural, =1 {1 city} other {# cities}}, {moves, plural, =0 {no hotel change} =1 {1 hotel change} other {# hotel changes}}",
-      "stayShort": "{city} {count, plural, =1 {1 night} other {# nights}}",
-      "summaryOpen": "The plan picks the cities and nights"
+      "total": "{nights, plural, =1 {1 night} other {# nights}} in {cities, plural, =1 {1 city} other {# cities}}, {moves, plural, =0 {no hotel change} =1 {1 hotel change} other {# hotel changes}}"
     },
     "parky": {
       "button": "Plan your perfect trip with Parky",
@@ -3826,9 +3804,9 @@
         "show": "Show the plan now"
       },
       "hotel": {
-        "lead": "A resort hotel gets you into the parks earlier, and the plan counts on it.",
+        "lead": "A resort hotel gets you into the parks earlier.",
         "area": "Which area?",
-        "areaLead": "The plan measures the way to each park from here.",
+        "areaLead": "The minutes on the cards are the ways to your parks.",
         "areaOfHotel": "Your hotel is in {area}, so that area is already chosen."
       },
       "route": {
@@ -3844,7 +3822,7 @@
         "ask": "Where are you staying in {cities}?",
         "in": "Where are you staying in {city}?",
         "open": "Don’t know yet",
-        "openHint": "The plan measures the ways from {area}, without early entry.",
+        "openHint": "The ways then start from {area}, without early entry.",
         "moveBuffer": "Time for a hotel change",
         "map": "Schematic map: {count, plural, =1 {one area} other {# areas}}, numbered as in the list below, and {parks}.",
         "mapAreas": "Schematic map: {count, plural, =1 {one area} other {# areas}}, numbered as in the list below."
@@ -4029,18 +4007,9 @@
             "universal_premier": "Early Park Admission, and Express at Universal Studios and Islands of Adventure",
             "offsite": "No early entry"
           },
-          "hotelShort": {
-            "disney": "Disney hotel",
-            "disney_deluxe": "Disney deluxe hotel",
-            "disney_springs": "Disney Springs hotel",
-            "universal": "Universal hotel",
-            "universal_premier": "Universal Premier",
-            "offsite": "hotel elsewhere"
-          },
           "fireworks": "Magic Kingdom fireworks",
           "fireworksWantHint": "Your Magic Kingdom days avoid party nights, when day guests have to leave early.",
           "fireworksAnyHint": "A party night can be a Magic Kingdom day if its shorter lines make up for the shorter day.",
-          "fireworksWantShort": "Magic Kingdom fireworks",
           "blocks": "Keep Disney days and Universal days together",
           "eveningsHint": "Where a park closes early, the plan suggests a second park or Disney Springs and CityWalk for the evening.",
           "blocksTickets": "Disney days and Universal days"
@@ -4372,14 +4341,9 @@
           "hotelHint": {
             "disney": "Disneyland Hotel, Grand Californian or Pixar Place: a walk to both parks, no early entry"
           },
-          "hotelShort": {
-            "disney": "Disney hotel",
-            "offsite": "other hotel"
-          },
           "fireworks": "Night shows",
           "fireworksWantHint": "Your park days avoid party nights, when day guests have to leave early.",
           "fireworksAnyHint": "A party night can be a park day if its lower peak wait makes up for the shorter day.",
-          "fireworksWantShort": "Night shows",
           "eveningsHint": "Where a park closes early, the plan suggests an evening: the other Disney park, Downtown Disney or Universal CityWalk."
         },
         "relaxed": {
@@ -4672,13 +4636,6 @@
             "universal": "A few minutes' walk to the gate",
             "park_hotel": "Highland Resort by Fuji-Q or LEGOLAND Japan Hotel by the gate; Fuji-Q sells early entry itself, as the One Day Pass with Priority Admission",
             "offsite": "No early entry"
-          },
-          "hotelShort": {
-            "disney": "Disney Hotel",
-            "disney_deluxe": "MiraCosta or Fantasy Springs",
-            "universal": "USJ hotel",
-            "park_hotel": "park hotel",
-            "offsite": "hotel elsewhere"
           },
           "eveningsHint": "Where a park closes early, the plan suggests IKSPIARI by the Disney parks or Universal CityWalk Osaka for the evening.",
           "moveBufferHint": "With your bags sent ahead (takkyubin), 30 minutes is usually enough."
@@ -4977,11 +4934,6 @@
             "disney": "Extra Magic Time, usually an hour before opening at both Disney parks; Davy Crockett Ranch included",
             "parc_asterix": "Early Entry: some rides 30 minutes early",
             "offsite": "Partner hotels and central Paris included; no early entry"
-          },
-          "hotelShort": {
-            "disney": "Disney hotel",
-            "parc_asterix": "Parc Astérix hotel",
-            "offsite": "hotel elsewhere"
           },
           "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village.",
           "moveBufferHint": "With your suitcases in tow, 60 minutes is realistic."

@@ -2,11 +2,13 @@
 
 import { useId } from 'react';
 import { useTranslations } from 'next-intl';
-import { Info, PlaneLanding, PlaneTakeoff, Sparkles } from 'lucide-react';
+import { BookOpen, Info, PlaneLanding, PlaneTakeoff, Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Link } from '@/i18n/navigation';
 import { formatClockTime } from '@/lib/utils/intl-format';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { effectiveParks, MAX_REST_STREAK, setSplit, type PlanRest } from '@/lib/trip-regions/plan';
+import { tripRegionGuidePath } from '@/lib/trip-regions/paths';
 import { planStays } from '@/lib/trip-regions/plan-stays';
 import {
   AUTO_REST_STREAK,
@@ -18,7 +20,7 @@ import {
 import { WizardOptionCard, WizardOptionGroup } from '@/components/planner/wizard-option-card';
 import { WizardToggle } from '@/components/planner/wizard-toggle';
 import { usePlanContext } from '../../planner/plan-context';
-import { PlanStepper } from '../../planner/plan-controls';
+import { PLAN_FOCUS, PlanStepper } from '../../planner/plan-controls';
 import { useBaseName } from '../../planner/plan-place-words';
 import { useStatePlan, useTripCalendar } from '../../planner/use-trip-plan';
 import type { WizardStepProps } from '../wizard-step';
@@ -27,13 +29,15 @@ import type { WizardStepProps } from '../wizard-step';
  * Tempo: how full the trip is, as three cards with a week drawn as a pattern (`pacePattern`), park
  * days solid and rest days pale, the own limit's pattern following its stepper; then the switches
  * for second days and a park on the travel days, whose cards name a fact of that day from the
- * calendar (`travelDayFact`).
+ * calendar (`travelDayFact`). The region's planner guide is linked under the cards, the one place that
+ * explains the options at length.
  */
 export function PaceStep({ questions, askId }: WizardStepProps) {
   const t = useTranslations('tripPlanner.wizard.pace');
   const tOptions = useTranslations('tripPlanner.options');
-  const { state, update } = usePlanContext();
+  const { state, update, config, locale } = usePlanContext();
   const moreId = useId();
+  const guide = tripRegionGuidePath(config, locale);
   const streak = restStreak(state.rest);
   const mode = streak !== null ? 'max' : state.rest === 'none' ? 'none' : 'auto';
   const setRest = (rest: PlanRest) => update((s) => ({ ...s, rest }));
@@ -88,6 +92,18 @@ export function PaceStep({ questions, askId }: WizardStepProps) {
             <Info className="mt-0.5 size-3.5 shrink-0" aria-hidden="true" />
             {t('patternKey')}
           </p>
+          {guide && (
+            <Link
+              href={guide}
+              className={cn(
+                'text-primary-ink inline-flex min-h-11 items-center gap-2 self-start rounded-md text-sm font-medium underline-offset-4 hover:underline lg:min-h-8',
+                PLAN_FOCUS
+              )}
+            >
+              <BookOpen className="size-4 shrink-0" aria-hidden="true" />
+              {tOptions('guide')}
+            </Link>
+          )}
         </div>
       )}
 
