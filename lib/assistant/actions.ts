@@ -312,7 +312,10 @@ export type TripChangeKind = (typeof TRIP_CHANGE_KINDS)[number];
 export type AssistantReceipt = (
   | { planner: 'trip'; region: string; change: TripChangeKind }
   | { planner: 'day'; park: AssistantPlannerPark; date: string }
-) & { id: string; state?: 'undone' | 'stale' };
+) & { id: string; state?: AssistantReceiptState };
+
+/** What a receipt's undo did: put back, found changed by the visitor since, or nothing left to undo. */
+export type AssistantReceiptState = 'undone' | 'stale' | 'gone';
 
 /** What an answer did, as a chip under it. */
 export type AssistantActionChip =
@@ -325,7 +328,8 @@ export type AssistantActionChip =
   | 'alertRemoved'
   | 'favorite'
   | 'unfavorite'
-  | 'undoStale';
+  | 'undoStale'
+  | 'undone';
 
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DAY = /^\d{4}-\d{2}-\d{2}$/;

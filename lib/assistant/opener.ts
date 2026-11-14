@@ -25,6 +25,7 @@ export const SUGGESTION_KEYS = {
     'suggestWeather',
     'suggestPlan',
     'suggestRide',
+    'suggestInterview',
   ],
   park: [
     'suggestWaitsHere',
@@ -34,6 +35,7 @@ export const SUGGESTION_KEYS = {
     'suggestWeatherHere',
     'suggestCoasterHere',
     'suggestHoursHere',
+    'suggestInterviewHere',
   ],
 } as const;
 

@@ -3083,6 +3083,10 @@
       "adopt": "Add to my planner",
       "adopted": "The plan is now in your planner.",
       "open": "Open planner"
+    },
+    "parky": {
+      "button": "Plan your perfect park day with Parky",
+      "line": "A few questions in the chat, and each answer goes straight into this day."
     }
   },
   "tripPlanner": {
@@ -3609,6 +3613,10 @@
         "label": "Partner link",
         "note": "If you buy through this link, park.fan earns a commission. The price stays the same for you."
       }
+    },
+    "parky": {
+      "button": "Plan your perfect trip with Parky",
+      "line": "A few questions in the chat, and each answer goes straight into this planner."
     }
   },
   "tripRegions": {
@@ -4180,6 +4188,8 @@
     "suggestWeatherHere": "What is the weather like here today?",
     "suggestCoasterHere": "Which coaster has the shortest wait right now?",
     "suggestHoursHere": "When does the park close today?",
+    "suggestInterview": "Plan my trip with me, one question at a time.",
+    "suggestInterviewHere": "Plan a day here with me, one question at a time.",
     "placeholder": "Ask Parky something …",
     "send": "Send",
     "newChat": "New chat",
@@ -4229,6 +4239,7 @@
     "chipFavorite": "Added to favorites",
     "chipUnfavorite": "Removed from favorites",
     "chipUndoStale": "Day changed since, nothing undone",
+    "chipUndone": "Undone",
     "alertRide": "{name}: a push once the wait drops under {minutes} minutes.",
     "alertReopen": "{name}: a push once it runs again.",
     "alertShow": "{name}: a reminder before the {time} performance.",
@@ -4392,7 +4403,43 @@
     "cardHoliday": "Holiday",
     "cardShowsLink": "All shows in the park",
     "cardRestaurantsLink": "All restaurants in the park",
-    "cardPaidExpress": "Paid express queue"
+    "cardPaidExpress": "Paid express queue",
+    "repliesLabel": "Suggested replies",
+    "receipt": {
+      "trip": {
+        "dates": "Trip planner: new dates",
+        "parks": "Trip planner: parks changed",
+        "pin": "Trip planner: day pinned",
+        "swap": "Trip planner: days swapped",
+        "rest": "Trip planner: rest days changed",
+        "tickets": "Trip planner: tickets added",
+        "hotel": "Trip planner: hotel added",
+        "pace": "Trip planner: pace changed"
+      },
+      "day": "Day planner: {park}, {date}",
+      "undo": "Undo",
+      "show": "Show",
+      "undone": "Undone",
+      "stale": "Changed since, left as it is",
+      "gone": "Can no longer be undone"
+    },
+    "interview": {
+      "titleTrip": "Trip interview",
+      "titleDay": "Park day interview",
+      "step": "Step {n} of {total}: {name}",
+      "planStands": "Your plan stands. Fine-tune it if you like",
+      "end": "End",
+      "done": "Done",
+      "steps": {
+        "region": "Region",
+        "dates": "Dates",
+        "parks": "Parks",
+        "day": "Park and day",
+        "mustdo": "Must-dos"
+      },
+      "kickoffTrip": "Plan my trip with me, one question at a time.",
+      "kickoffDay": "Plan my park day with me, one question at a time."
+    }
   },
   "parkyPage": {
     "metaTitle": "Parky, the park.fan chat assistant",

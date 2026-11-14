@@ -8,7 +8,12 @@ import {
   type AssistantAction,
   type AssistantActionChip,
   type AssistantCard,
+  type AssistantReceipt,
+  type AssistantReceiptState,
 } from './actions';
+import { assistantTripsSnapshot } from './trip-context';
+import { interviewStore } from './interview';
+import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { assistantPlannerSnapshot } from './planner-context';
@@ -53,6 +58,10 @@ export interface AssistantChatMessage {
   rating?: 1 | -1;
   /** What the answer did on the page, shown as chips under it. */
   chips?: AssistantActionChip[];
+  /** Changes the answer made to a planner, each with its undo. */
+  receipts?: AssistantReceipt[];
+  /** Replies the visitor can tap, drawn under the newest answer only. */
+  replies?: string[];
   /** Live cards Parky showed with the answer. */
   cards?: AssistantCard[];
   /** Reminders Parky asked for that wait for the visitor's press, or failed. */
@@ -229,6 +238,9 @@ export function useAssistantChat(
             favorites: assistantFavoritesSnapshot(getFavoritesFromCookies()),
             // "What haven't I ridden yet" is answered from the marks this browser keeps.
             ridden: assistantRiddenSnapshot(getRiddenSnapshot()),
+            // The trip on screen and each region's remembered one; the interview where one runs.
+            trips: assistantTripsSnapshot(TRIP_REGIONS.map((region) => region.slug)),
+            interview: interviewStore.getSnapshot() ?? undefined,
           }),
         });
         if (response.status === 401) {
@@ -276,6 +288,9 @@ export function useAssistantChat(
               patchLast((m) => ({ ...m, asksLocation: true }));
             } else if (action?.type === 'chat_end') {
               endChat(action.cooldownMinutes);
+            } else if (action?.type === 'replies') {
+              trackSiteEvent('assistant_replies_shown', { count: action.replies.length });
+              patchLast((m) => ({ ...m, replies: action.replies }));
             } else if (action?.type === 'switch_locale') {
               switchTo = action;
               patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), 'language'] }));
@@ -283,6 +298,8 @@ export function useAssistantChat(
               const outcome = await onAction(action);
               if (typeof outcome === 'string') {
                 patchLast((m) => ({ ...m, chips: [...(m.chips ?? []), outcome] }));
+              } else if (outcome && 'receipt' in outcome) {
+                patchLast((m) => ({ ...m, receipts: [...(m.receipts ?? []), outcome.receipt] }));
               } else if (outcome && 'failed' in outcome) {
                 patchLast((m) => ({ ...m, failures: [...(m.failures ?? []), outcome.failed] }));
               } else if (outcome) {
@@ -366,6 +383,20 @@ export function useAssistantChat(
     []
   );
 
+  /** A receipt after its undo: put back, or found changed by the visitor since. */
+  const settleReceipt = useCallback(
+    (messageId: string, receiptId: string, state: AssistantReceiptState) =>
+      setStored((current) => ({
+        ...current,
+        messages: current.messages.map((m) =>
+          m.id === messageId
+            ? { ...m, receipts: m.receipts?.map((r) => (r.id === receiptId ? { ...r, state } : r)) }
+            : m
+        ),
+      })),
+    []
+  );
+
   const reset = useCallback(() => {
     abort.current?.abort();
     setStored({ conversationId: null, messages: [] });
@@ -380,6 +411,7 @@ export function useAssistantChat(
     send,
     shareLocation,
     settleAlert,
+    settleReceipt,
     rate,
     reset,
   };

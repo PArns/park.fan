@@ -41,6 +41,7 @@ import { showDayHours, showLinesFor } from '@/lib/planner/shows';
 import { plannerShowsVisible } from '@/lib/planner/shows-visible';
 import { PLANNER_RIDE_MIME, parseRideDrag } from '@/lib/planner/ride-drag';
 import { cn } from '@/lib/utils';
+import { ParkyDayInterviewButton } from '@/components/assistant/parky-interview-button';
 
 /**
  * What a press has to land outside for it to count as "show me this park": controls, form fields
@@ -630,6 +631,7 @@ export function PlannerDayColumn({
                       </button>
                     )
                   )}
+                  <ParkyDayInterviewButton park={park?.slug} date={date ?? undefined} className="mt-3" />
                 </div>
                 <PlannerHelpSteps layout="list" />
               </div>

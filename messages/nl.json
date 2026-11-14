@@ -3083,6 +3083,10 @@
       "adopt": "Overnemen in mijn planner",
       "adopted": "Het plan staat nu in je planner.",
       "open": "Planner openen"
+    },
+    "parky": {
+      "button": "Plan met Parky je perfecte parkdag",
+      "line": "Een paar vragen in de chat, en elk antwoord komt meteen in deze dag."
     }
   },
   "tripPlanner": {
@@ -3609,6 +3613,10 @@
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
       }
+    },
+    "parky": {
+      "button": "Plan met Parky je perfecte reis",
+      "line": "Een paar vragen in de chat, en elk antwoord komt meteen hier in de planner."
     }
   },
   "tripRegions": {
@@ -4180,6 +4188,8 @@
     "suggestWeatherHere": "Wat voor weer wordt het hier vandaag?",
     "suggestCoasterHere": "Welke achtbaan heeft nu de kortste wachttijd?",
     "suggestHoursHere": "Tot hoe laat is het park vandaag open?",
+    "suggestInterview": "Plan mijn reis met me, vraag voor vraag.",
+    "suggestInterviewHere": "Plan hier een dag met me, vraag voor vraag.",
     "placeholder": "Vraag Parky iets …",
     "send": "Versturen",
     "newChat": "Nieuwe chat",
@@ -4229,6 +4239,7 @@
     "chipFavorite": "Bij je favorieten",
     "chipUnfavorite": "Uit je favorieten gehaald",
     "chipUndoStale": "Dag sindsdien gewijzigd, niets teruggezet",
+    "chipUndone": "Ongedaan gemaakt",
     "alertRide": "{name}: een melding zodra de wachttijd onder {minutes} minuten zakt.",
     "alertReopen": "{name}: een melding zodra hij weer draait.",
     "alertShow": "{name}: een herinnering voor de voorstelling van {time}.",
@@ -4392,7 +4403,43 @@
     "cardHoliday": "Feestdag",
     "cardShowsLink": "Alle shows in het park",
     "cardRestaurantsLink": "Alle restaurants in het park",
-    "cardPaidExpress": "Betaalde snelle wachtrij"
+    "cardPaidExpress": "Betaalde snelle wachtrij",
+    "repliesLabel": "Voorgestelde antwoorden",
+    "receipt": {
+      "trip": {
+        "dates": "Reisplanner: nieuwe reisdata",
+        "parks": "Reisplanner: parken aangepast",
+        "pin": "Reisplanner: dag vastgezet",
+        "swap": "Reisplanner: dagen gewisseld",
+        "rest": "Reisplanner: rustdagen aangepast",
+        "tickets": "Reisplanner: tickets ingevuld",
+        "hotel": "Reisplanner: hotel ingevuld",
+        "pace": "Reisplanner: tempo aangepast"
+      },
+      "day": "Dagplanner: {park}, {date}",
+      "undo": "Ongedaan maken",
+      "show": "Bekijken",
+      "undone": "Teruggezet",
+      "stale": "Sindsdien gewijzigd, blijft zo",
+      "gone": "Niet meer ongedaan te maken"
+    },
+    "interview": {
+      "titleTrip": "Reisinterview",
+      "titleDay": "Parkdaginterview",
+      "step": "Stap {n} van {total}: {name}",
+      "planStands": "Je plan staat. Verfijn het als je wilt",
+      "end": "Stoppen",
+      "done": "Klaar",
+      "steps": {
+        "region": "Regio",
+        "dates": "Reisdata",
+        "parks": "Parken",
+        "day": "Park en dag",
+        "mustdo": "Must-do's"
+      },
+      "kickoffTrip": "Plan mijn reis met me, vraag voor vraag.",
+      "kickoffDay": "Plan mijn parkdag met me, vraag voor vraag."
+    }
   },
   "parkyPage": {
     "metaTitle": "Parky, de chatassistent van park.fan",

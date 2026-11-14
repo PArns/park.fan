@@ -697,7 +697,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_question: {
     label: 'Frage an Parky',
-    when: 'Eine Frage wird abgeschickt; ob Vorschlag oder getippt, nie ihr Text.',
+    when: 'Eine Frage wird abgeschickt; ob Vorschlag, getippt, Antwortvorschlag oder Interview-Knopf, nie ihr Text.',
   },
   assistant_answer: {
     label: 'Antwort von Parky',
@@ -714,6 +714,30 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   assistant_challenge_failed: {
     label: 'Parky-Check gescheitert',
     when: 'Der Turnstile-Check vor Parky ist in diesem Browser fehlgeschlagen.',
+  },
+  assistant_replies_shown: {
+    label: 'Parky-Antwortvorschläge',
+    when: 'Unter einer Antwort stehen antippbare Vorschläge; mit ihrer Zahl, nie ihr Text.',
+  },
+  assistant_interview_started: {
+    label: 'Parky-Interview begonnen',
+    when: 'Parky fragt eine Reise oder einen Parktag Schritt für Schritt ab; mit der Art und ob der Knopf im Planer oder der Chat es begann.',
+  },
+  assistant_interview_step: {
+    label: 'Parky-Interview: Schritt',
+    when: 'Ein Schritt des Interviews ist beantwortet oder übersprungen; mit Art und Schritt.',
+  },
+  assistant_interview_ended: {
+    label: 'Parky-Interview beendet',
+    when: 'Das Interview ist fertig oder wurde verlassen; mit der Zahl der beantworteten Schritte.',
+  },
+  assistant_plan_changed: {
+    label: 'Parky ändert einen Plan',
+    when: 'Eine Änderung von Parky kommt im Reise- oder Tagesplaner an; mit der Art der Änderung, nie ihrem Inhalt.',
+  },
+  assistant_change_undone: {
+    label: 'Parky-Änderung zurückgenommen',
+    when: 'Parkys letzte Änderung wird rückgängig gemacht, oder der Plan wurde seither geändert und bleibt.',
   },
   planner_opened: {
     label: 'Planer geöffnet',

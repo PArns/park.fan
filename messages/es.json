@@ -3083,6 +3083,10 @@
       "adopt": "Pasar a mi planificador",
       "adopted": "El plan ya está en tu planificador.",
       "open": "Abrir planificador"
+    },
+    "parky": {
+      "button": "Planea con Parky tu día perfecto en el parque",
+      "line": "Unas preguntas en el chat, y cada respuesta llega al momento a este día."
     }
   },
   "tripPlanner": {
@@ -3609,6 +3613,10 @@
         "label": "Enlace de afiliado",
         "note": "Si compras con este enlace, park.fan recibe una comisión. El precio no cambia para ti."
       }
+    },
+    "parky": {
+      "button": "Planea con Parky tu viaje perfecto",
+      "line": "Unas preguntas en el chat, y cada respuesta llega al momento aquí, al planificador."
     }
   },
   "tripRegions": {
@@ -4180,6 +4188,8 @@
     "suggestWeatherHere": "¿Qué tiempo hace hoy aquí?",
     "suggestCoasterHere": "¿Qué montaña rusa tiene ahora la espera más corta?",
     "suggestHoursHere": "¿Hasta qué hora abre hoy el parque?",
+    "suggestInterview": "Planea mi viaje conmigo, pregunta a pregunta.",
+    "suggestInterviewHere": "Planea un día aquí conmigo, pregunta a pregunta.",
     "placeholder": "Pregúntale algo a Parky …",
     "send": "Enviar",
     "newChat": "Nuevo chat",
@@ -4229,6 +4239,7 @@
     "chipFavorite": "Añadido a favoritos",
     "chipUnfavorite": "Quitado de favoritos",
     "chipUndoStale": "El día cambió desde entonces, no se deshizo nada",
+    "chipUndone": "Deshecho",
     "alertRide": "{name}: un aviso en cuanto la espera baje de {minutes} minutos.",
     "alertReopen": "{name}: un aviso en cuanto vuelva a funcionar.",
     "alertShow": "{name}: un aviso antes de la función de las {time}.",
@@ -4392,7 +4403,43 @@
     "cardHoliday": "Día festivo",
     "cardShowsLink": "Todos los espectáculos del parque",
     "cardRestaurantsLink": "Todos los restaurantes del parque",
-    "cardPaidExpress": "Fila rápida de pago"
+    "cardPaidExpress": "Fila rápida de pago",
+    "repliesLabel": "Respuestas sugeridas",
+    "receipt": {
+      "trip": {
+        "dates": "Viaje: fechas nuevas",
+        "parks": "Viaje: parques cambiados",
+        "pin": "Viaje: día fijado",
+        "swap": "Viaje: días intercambiados",
+        "rest": "Viaje: días de descanso cambiados",
+        "tickets": "Viaje: entradas añadidas",
+        "hotel": "Viaje: hotel añadido",
+        "pace": "Viaje: ritmo cambiado"
+      },
+      "day": "En tu planificador: {park}, {date}",
+      "undo": "Deshacer",
+      "show": "Ver",
+      "undone": "Deshecho",
+      "stale": "Cambiado desde entonces, se queda así",
+      "gone": "Ya no se puede deshacer"
+    },
+    "interview": {
+      "titleTrip": "Planear tu viaje",
+      "titleDay": "Planear tu día en el parque",
+      "step": "Paso {n} de {total}: {name}",
+      "planStands": "Tu plan está listo. Afínalo si quieres",
+      "end": "Terminar",
+      "done": "Listo",
+      "steps": {
+        "region": "Región",
+        "dates": "Fechas",
+        "parks": "Parques",
+        "day": "Parque y día",
+        "mustdo": "Imprescindibles"
+      },
+      "kickoffTrip": "Planea mi viaje conmigo, pregunta a pregunta.",
+      "kickoffDay": "Planea mi día en el parque conmigo, pregunta a pregunta."
+    }
   },
   "parkyPage": {
     "metaTitle": "Parky, el asistente de chat de park.fan",

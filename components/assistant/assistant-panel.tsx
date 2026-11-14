@@ -1,6 +1,14 @@
 'use client';
 
-import { useCallback, useEffect, useLayoutEffect, useRef, useState, type FormEvent } from 'react';
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useSyncExternalStore,
+  type FormEvent,
+} from 'react';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { useSheetViewport } from '@/lib/hooks/use-sheet-viewport';
 import { useLocale, useTranslations } from 'next-intl';
@@ -22,6 +30,7 @@ import {
   Sparkles,
   ThumbsDown,
   ThumbsUp,
+  Undo2,
   X,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -46,7 +55,11 @@ import { AssistantAlertAsk } from './assistant-alert-ask';
 import { usePushErrorMessage } from '@/components/push/use-push-error-message';
 import { AssistantCardView } from './assistant-card';
 import { useAssistantActions } from './use-assistant-actions';
-import type { AssistantActionChip } from '@/lib/assistant/actions';
+import type { AssistantActionChip, AssistantReceipt } from '@/lib/assistant/actions';
+import { AssistantReplies } from './assistant-replies';
+import { AssistantReceipts, ASSISTANT_DONE_CHIP_CLASS } from './assistant-receipt';
+import { AssistantInterviewBar } from './assistant-interview-bar';
+import { interviewStore, takeInterviewKickoff } from '@/lib/assistant/interview';
 import type { ParkyReactionAct } from '@/lib/assistant/parky/reactions';
 
 const LOOKUP_KEY: Record<AssistantLookup, string> = {
@@ -86,6 +99,7 @@ const CHIP: Record<AssistantActionChip, { key: string; icon: typeof ExternalLink
   favorite: { key: 'chipFavorite', icon: Heart },
   unfavorite: { key: 'chipUnfavorite', icon: HeartOff },
   undoStale: { key: 'chipUndoStale', icon: CalendarX2 },
+  undone: { key: 'chipUndone', icon: Undo2 },
 };
 
 /** Three bouncing dots: Parky is thinking or looking something up. */
@@ -178,6 +192,33 @@ export function AssistantPanel({
   const phone = useMediaQuery(ASSISTANT_PHONE_QUERY);
   const face = useRef<HTMLDivElement>(null);
   const parkPage = parkPathOf(usePathname()) !== null;
+  const interview = useSyncExternalStore(
+    interviewStore.subscribe,
+    interviewStore.getSnapshot,
+    interviewStore.getServerSnapshot
+  );
+
+  // The planner's interview button: its first question goes out once the window can send it.
+  const { send, phase } = chat;
+  useEffect(() => {
+    if (!open || session.state !== 'ready' || phase !== 'idle') return;
+    const kind = takeInterviewKickoff();
+    if (kind) void send(t(kind === 'trip' ? 'interview.kickoffTrip' : 'interview.kickoffDay'), 'interview');
+  }, [open, session.state, phase, send, t]);
+
+  /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */
+  const undo = async (messageId: string, receipt: AssistantReceipt) => {
+    const outcome = await act(
+      receipt.planner === 'trip'
+        ? { type: 'trip_undo', region: receipt.region }
+        : { type: 'planner_undo', park: receipt.park, date: receipt.date }
+    );
+    chat.settleReceipt(
+      messageId,
+      receipt.id,
+      outcome === 'undoStale' ? 'stale' : outcome ? 'undone' : 'gone'
+    );
+  };
 
   /**
    * One `assistant_opened` per closed to open edge and one `assistant_closed` with the questions
@@ -386,6 +427,8 @@ export function AssistantPanel({
           ))}
         </div>
 
+        {session.state === 'ready' && tab === 'chat' && <AssistantInterviewBar />}
+
         {session.state !== 'ready' ? (
           <AssistantChallenge
             state={session.state}
@@ -454,16 +497,21 @@ export function AssistantPanel({
                         {message.chips.map((chip, index) => {
                           const { key, icon: Icon } = CHIP[chip];
                           return (
-                            <span
-                              key={`${chip}-${index}`}
-                              className="bg-status-operating/15 text-status-operating inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium"
-                            >
+                            <span key={`${chip}-${index}`} className={ASSISTANT_DONE_CHIP_CLASS}>
                               <Icon className="size-3" />
                               {t(key)}
                             </span>
                           );
                         })}
                       </div>
+                    )}
+                    {message.receipts && message.receipts.length > 0 && (
+                      <AssistantReceipts
+                        receipts={message.receipts}
+                        onUndo={(receipt) => void undo(message.id, receipt)}
+                        // In an interview on a phone the window stays; this is the look behind it.
+                        onShow={interview && phone ? onClose : undefined}
+                      />
                     )}
                     {message.failures && message.failures.length > 0 && (
                       <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1" role="alert">
@@ -491,6 +539,15 @@ export function AssistantPanel({
                           chat.shareLocation(message.id, t('locationShared'), position)
                         }
                       />
+                    )}
+                    {message === last && message.replies && message.replies.length > 0 && (
+                      <div className="mt-2">
+                        <AssistantReplies
+                          replies={message.replies}
+                          disabled={chat.phase !== 'idle'}
+                          onPick={(reply) => void chat.send(reply, 'chip')}
+                        />
+                      </div>
                     )}
                     {message.messageId && (
                       <div className="text-muted-foreground mt-1 flex items-center gap-1 pl-1 text-xs">
