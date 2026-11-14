@@ -16,7 +16,14 @@ import {
   type PlanSearchRange,
 } from './plan-query';
 import type { TripHotelKind } from './registry';
-import type { TicketLink, TripBasis, TripCrowdLevel, TripPerk, TripRegionPark } from './types';
+import type {
+  TicketLink,
+  TripBasis,
+  TripCrowdLevel,
+  TripPerk,
+  TripRegion,
+  TripRegionPark,
+} from './types';
 
 export * from './plan-query';
 
@@ -396,6 +403,22 @@ export function setParkVisits(
 export function setSplit(state: TripPlanState, split: TripPlanState['split']): TripPlanState {
   if (split === state.split) return state;
   return { ...state, split };
+}
+
+/**
+ * The hotel kinds the planner offers: the API's `hotels` where it sends them, each with the area
+ * the registry pairs it with, else the registry's own. A region may have several hotel areas or
+ * none; a kind without an area moves no drive times.
+ */
+export function tripHotelKinds(
+  region: Pick<TripRegion, 'hotels'>,
+  registry: readonly TripHotelKind[]
+): readonly TripHotelKind[] {
+  if (!region.hotels?.length) return registry;
+  return region.hotels.map(({ key }) => {
+    const area = registry.find((kind) => kind.key === key)?.area;
+    return area ? { key, area } : { key };
+  });
 }
 
 /**

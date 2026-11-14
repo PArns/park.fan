@@ -26,12 +26,13 @@ const DEFAULT_STREAK = 3;
 export function usePlanOptionsSummary(state: TripPlanState): string {
   const t = useTranslations('tripPlanner.options');
   const tRegion = useTranslations('tripRegion.planner.options');
-  const { region, config, tickets: catalog } = usePlanContext();
+  const { region, config, hotels, tickets: catalog } = usePlanContext();
   const area = region.hotelAreas.find((a) => a.key === state.area);
+  const hotelShort = `hotelShort.${effectiveHotel(state, hotels)}`;
   const mixable = ticketsCoverBothResorts(config.blockResorts, state.tickets, catalog);
   const streak = restStreak(state.rest);
   return [
-    tRegion(`hotelShort.${effectiveHotel(state, config.hotels)}`),
+    tRegion.has(hotelShort) ? tRegion(hotelShort) : null,
     area ? t('fromArea', { area: area.name }) : null,
     !config.blockResorts
       ? null
@@ -63,7 +64,16 @@ export function usePlanOptionsSummary(state: TripPlanState): string {
 export function PlanOptions({ className }: { className?: string }) {
   const t = useTranslations('tripPlanner.options');
   const tRegion = useTranslations('tripRegion.planner.options');
-  const { region, config, state, update, areaKeys, live, tickets: catalog } = usePlanContext();
+  const {
+    region,
+    config,
+    hotels,
+    state,
+    update,
+    areaKeys,
+    live,
+    tickets: catalog,
+  } = usePlanContext();
   const streak = restStreak(state.rest);
   const hopper =
     state.ticket === 'hopper' ||
@@ -77,14 +87,17 @@ export function PlanOptions({ className }: { className?: string }) {
     <div className={cn('flex flex-col gap-5', className)}>
       <PlanRadioGroup<PlanHotel>
         legend={t('hotel')}
-        value={effectiveHotel(state, config.hotels)}
+        value={effectiveHotel(state, hotels)}
         disabled={!live}
-        onChange={(hotel) => update((s) => chooseHotel(s, hotel, areaKeys, config.hotels))}
-        options={config.hotels.map(({ key }) => ({
-          value: key,
-          label: tRegion(`hotelLabel.${key}`),
-          hint: tRegion(`hotelHint.${key}`),
-        }))}
+        onChange={(hotel) => update((s) => chooseHotel(s, hotel, areaKeys, hotels))}
+        // A kind this client has no words for yet (a new region's) is not offered.
+        options={hotels
+          .filter(({ key }) => tRegion.has(`hotelLabel.${key}`))
+          .map(({ key }) => ({
+            value: key,
+            label: tRegion(`hotelLabel.${key}`),
+            ...(tRegion.has(`hotelHint.${key}`) && { hint: tRegion(`hotelHint.${key}`) }),
+          }))}
       />
 
       <PlanRadioGroup<string>

@@ -31,6 +31,7 @@ import {
   toggleLock,
   chooseHotel,
   effectiveHotel,
+  tripHotelKinds,
 } from '../lib/trip-regions/plan.ts';
 import {
   autoSplit,
@@ -321,6 +322,24 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'the area means its hotel',
     effectiveHotel({ hotel: null, area: 'universal' }, ORLANDO.hotels),
     'universal'
+  );
+  test(
+    'the API’s hotel kinds keep the registry’s areas, and a new one has none',
+    tripHotelKinds(
+      {
+        hotels: [
+          { key: 'disney', perks: ['early_entry'] },
+          { key: 'partner', perks: [] },
+        ],
+      },
+      ORLANDO.hotels
+    ),
+    [{ key: 'disney', area: 'disney' }, { key: 'partner' }]
+  );
+  test(
+    'without the API’s kinds the registry’s stand',
+    tripHotelKinds({}, ORLANDO.hotels),
+    ORLANDO.hotels
   );
   const a = {
     date: '2026-11-29',

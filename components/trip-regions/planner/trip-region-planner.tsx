@@ -3,7 +3,7 @@
 import { Suspense, useCallback, useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { parkToday } from '@/lib/planner/park-time';
-import { DEFAULT_PLAN_STATE, type TripPlanState } from '@/lib/trip-regions/plan';
+import { DEFAULT_PLAN_STATE, tripHotelKinds, type TripPlanState } from '@/lib/trip-regions/plan';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
 import { requireTripRegion, type TripTicketStep } from '@/lib/trip-regions/registry';
@@ -134,6 +134,7 @@ function PlannerFrame({
       region,
       config,
       ticketStep: config.tickets ?? NO_TICKET_STEP,
+      hotels: tripHotelKinds(region, config.hotels),
       locale,
       timeZone: region.timezone,
       parkBySlug,
