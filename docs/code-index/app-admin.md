@@ -1073,6 +1073,10 @@ Route `/admin/tickets` (page).
 
 - `TrafficView` _component_: `/admin/traffic`: who visited, what they read, where they came from and what they pressed, from the site's own cookieless counter, worked like Umami's: pressing a value in any panel filters the whole page by it, and the filters are chips …
 
+### [`traffic/_components/trip-planner-view.tsx`](../../app/admin/traffic/_components/trip-planner-view.tsx)
+
+- `TripPlannerView` _component_: `/admin/traffic/trip-planner`: the multi-day trip planner and the region hubs, the counterpart of the Tagesplaner page.
+
 ### [`traffic/_components/unsupported-note.tsx`](../../app/admin/traffic/_components/unsupported-note.tsx)
 
 - `UnsupportedNote` _component_: What a report says when the filters leave it nothing to count (page views and events under a filter on how a visit began, events under a browser language): the reason in a sentence and the way out, instead of an error from a request the …
@@ -1186,6 +1190,13 @@ Route `/admin/traffic/search` (page).
 Route `/admin/traffic/seo` (page).
 
 - `default (SeoPage)` _component_: What search engines and AI assistants send and what Google reports: the queries and pages from the Search Console, the pages visits begin on, the ones gaining and losing, the addresses that 404 and the parks and rides no search visit …
+- `metadata` _const_
+
+### [`traffic/trip-planner/page.tsx`](../../app/admin/traffic/trip-planner/page.tsx)
+
+Route `/admin/traffic/trip-planner` (page).
+
+- `default (TripPlannerTrafficPage)` _component_: The admin's dashboard of the multi-day trip planner and the region hubs. The view reads the window and language from the address, under a `Suspense` boundary.
 - `metadata` _const_
 
 ### [`users/page.tsx`](../../app/admin/users/page.tsx)

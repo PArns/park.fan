@@ -87,13 +87,13 @@ inset's margin and border); a page that fills the viewport subtracts it, as the 
 | Kuratieren   | Parks, Datenqualität, Duplikate, Stilllegungen, Änderungen                          |
 | Reiseplaner  | Saisons, Tickets                                                                    |
 | Inhalte      | Blog, Medien, Vor Ort, Einsendungen                                                 |
-| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Beliebtheit), Parky (3 pages)         |
+| Publikum     | Traffic (Live, SEO, Suche, Wege, Tagesplaner, Reiseplaner, Beliebtheit), Parky (3)  |
 | Betrieb      | System, Queues, ML-Zentrale (Modellvergleich), Parks live, Wartung                  |
 | Konto (foot) | Mein Konto, Konten, API-Keys: in the account menu at the sidebar's foot, and in `/` |
 
 Datenqualität sits with the editors because its cards ask curation questions (season or gone?).
 Saisons and Tickets are what the trip planner plans with, so they have a group of their own; the
-Tagesplaner under Traffic is the day planner's statistic, not an editor, and stays there.
+Tagesplaner and Reiseplaner under Traffic are the planners' statistics, not editors, and stay there.
 `NavGroup.placement` puts a group on top without a heading (`top`) or behind the account button
 (`footer`). A group folds under its heading, per group in localStorage; a folded group still shows
 the entry of the current page. The rail (collapsed sidebar) shows icons only.
