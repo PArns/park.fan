@@ -3753,33 +3753,36 @@
         "yours": "Your tickets",
         "toBuy": "To buy"
       },
-      "details": "Ticket details",
+      "howValid": "How the ticket works",
+      "alternative": "Alternative",
       "suggest": {
-        "part": "{days, plural, =1 {1 day} other {# days}} {resort} from {date}",
-        "partExtra": "{parkDays, plural, =1 {1 day} other {# days}} {resort} from {date} on a {days}-day ticket",
         "then": ", then ",
-        "shape": "{name}, valid {from} to {to}",
         "dated": "{days}-day ticket",
         "extraDays": "A {parkDays}-day ticket would end before your last {resort} day, so this one has {days} days.",
         "window": "A {days}-day {resort} ticket can be used on any {days} of the {window} days from its first day.",
         "second": "{resort}, second ticket",
         "notCovered": "Your {name} doesn’t cover {parks}.",
         "promotion": "The {name} fits these days too.",
-        "group": "{resort}: {count} × {days, plural, =1 {1-day ticket} other {#-day ticket}}, {dates}",
-        "groupSep": "; "
+        "group": "{resort}: {count} × {days, plural, =1 {1-day ticket} other {#-day ticket}}",
+        "groupSep": "; ",
+        "count": "{count} × {name}",
+        "valid": "Valid {range}",
+        "inWindow": "{used} of {window} days",
+        "eachOnItsDay": "{count, plural, =1 {Valid on its date only.} other {Each is valid on its date only.}}"
       },
       "hopper": {
-        "worth": "Worth adding: {hopper}",
+        "worth": "{hopper} is worth it",
         "adds": "With {hopper}:",
-        "nothing": "These days gain nothing from {hopper}.",
-        "evening": "an evening at {park} on {date}",
-        "evenings": "{count} evenings at a second park",
+        "nothing": "{hopper} adds nothing here",
+        "eveningsAt": "{count, plural, =1 {an evening} other {# evenings}} at {park}",
+        "eveningsOn": "{count, plural, =1 {an evening} other {evenings}} at {park} on {dates}",
+        "eveningMark": "in the evening with {hopper}:",
         "hopDay": "{parks} on one day, {date}",
         "hopDays": "{count} days with two parks",
         "fits": "{parks} {count, plural, =1 {fits} other {fit}} in only with it",
         "minutes": "about {minutes} min less a ride",
-        "with": "Show the plan with {hopper}",
-        "without": "Show the plan without {hopper}"
+        "with": "Plan with {hopper}",
+        "without": "Plan without {hopper}"
       },
       "newTab": "(opens in a new tab)",
       "adopt": "Use these as your tickets",
@@ -3845,6 +3848,7 @@
         "title": "Prices and tickets",
         "official": "{seller} (official shop)",
         "store": "{seller} · {country} ({currency})",
+        "storeOnly": "{country} ({currency})",
         "compare": "Prices differ with the shop’s country. Compare them all before you buy."
       },
       "market": {
@@ -4413,9 +4417,9 @@
           },
           "hogwarts": "You need park-to-park for the Hogwarts Express between Universal Studios and Islands of Adventure.",
           "longStay": {
-            "line": "UK shops sell 14-day tickets for Disney and Universal, also as a Combo Ticket.",
-            "plan": "Plan with these",
-            "detail": "The 14-day tickets in the operators’ UK shops:"
+            "title": "14-day tickets from UK shops",
+            "line": "One each for Disney and Universal, also together as a Combo Ticket.",
+            "plan": "Plan with these"
           },
           "mixing": {
             "used": "Where both tickets are valid, the plan mixes Disney and Universal days: about {minutes} min less a ride than keeping them apart.",

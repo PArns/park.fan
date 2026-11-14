@@ -955,12 +955,12 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: '„Diese Daten planen“ auf einem gefundenen Zeitraum; mit seinem Rang.',
   },
   trip_ticket_details_opened: {
-    label: 'Ticket-Details geöffnet',
-    when: 'Die Details zu den vorgeschlagenen Tickets; als Sheet oder an Ort und Stelle.',
+    label: 'Ticket-Regeln geöffnet',
+    when: '„Wie das Ticket gilt“ bei einem vorgeschlagenen Ticket; mit dem Resort.',
   },
   trip_hopper_toggled: {
     label: 'Plan mit Park Hopper',
-    when: '„Plan mit Park Hopper zeigen“ für ein Resort, oder zurück.',
+    when: '„Mit Park Hopper planen“ für ein Resort, oder zurück.',
   },
   trip_tickets_adopted: {
     label: 'Vorschläge übernommen',

@@ -253,7 +253,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-tickets-card.tsx`](../../components/trip-regions/planner/plan-tickets-card.tsx)
 
-- `PlanTicketsCard` _component_: The tickets at Level 0, after the saving and before the day lines. Plan first, a compact block: the one sentence that names the tickets to buy and "Ticket details", which open in a sheet on a phone and in place at a desk.
+- `PlanTicketsCard` _component_: The tickets at Level 0, after the saving and before the day lines, and under the assistant's "Not yet".
 - `TicketsAsk` _component_: "Already have tickets? Add them": the way to the assistant's Tickets step, under the plan's tickets (`onAsk`, the result's `edit.tickets`) and on the hub's landing without one, where it starts the assistant there …
 - Types: `PlanEdit`
 
