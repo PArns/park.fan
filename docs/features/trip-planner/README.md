@@ -8,7 +8,7 @@ model and how the frontend reads `/plan/day`; each subject has its own page belo
 
 | Page                                        | Covers                                                                            |
 | ------------------------------------------- | --------------------------------------------------------------------------------- |
-| [Wizard](wizard.md)                         | The four-step way in, its frame, the day card, the „<Park> jetzt planen" CTA      |
+| [Wizard](wizard.md)                         | The four-step way in, its frame, the day card, the trip planner's assistant       |
 | [Panel](panel.md)                           | Ways in (edge tab, header button), the past-day question, page inset, photo layer |
 | [Two-day view](two-day-view.md)             | Two day columns side by side in a wide panel                                      |
 | [Day grid](day-grid.md)                     | Axis vs canvas, opening and closing edges, early entry, lanes, block photos       |

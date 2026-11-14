@@ -3817,13 +3817,57 @@
         "pace": "Quanto pieno deve essere il viaggio?",
         "evenings": "E la sera?",
         "tickets": "Hai già i biglietti?",
-        "finale": "Il tuo piano è pronto."
+        "finale": "Il tuo piano è pronto.",
+        "departure": "E quando prendi il volo di ritorno?"
       },
       "ribbon": {
         "parkDays": "{count, plural, =1 {1 giorno al parco} other {# giorni al parco}}",
         "free": "{count, plural, =1 {1 libero} other {# liberi}}",
         "peak": "picco di circa {minutes} min",
         "show": "Vedi il piano ora"
+      },
+      "dates": {
+        "months": "Mese"
+      },
+      "parks": {
+        "lead": "I parchi principali sono già scelti. Tocca una foto per aggiungere un parco o toglierlo.",
+        "daysLabel": "Giorni",
+        "moreCount": "{count, plural, =1 {1 parco} other {# parchi}}",
+        "wayFrom": "{way} da {city}",
+        "conflict": {
+          "travelDays": "Il viaggio ha allora {count, plural, =1 {1 giorno al parco} other {# giorni al parco}}.",
+          "only": "Solo {parks}",
+          "onlyHint": "{parks} {count, plural, =1 {esce} other {escono}} dal piano.",
+          "longer": "Il viaggio finisce allora il {date}."
+        }
+      },
+      "spare": {
+        "title": "{count, plural, =1 {1 giorno senza parco} other {# giorni senza parco}}",
+        "need": "{parks, plural, =1 {Il tuo parco occupa} other {I tuoi # parchi occupano}} {parkDays} dei {days} giorni.",
+        "planned": "{count, plural, =1 {Un altro è già previsto} other {Altri # sono già previsti}}.",
+        "ask": "Cosa fare negli altri {free}?",
+        "moreParks": "Aggiungere altri parchi",
+        "moreParksHint": "{parks} {count, plural, =1 {si aggiunge} other {si aggiungono}} al viaggio.",
+        "moreDays": "Più tempo nei tuoi parchi",
+        "moreDaysHint": "Un giorno in più a {parks}.",
+        "free": "Giorni liberi distribuiti nel viaggio",
+        "freeHint": "Il piano li mette tra i giorni al parco, per la città o per riposare.",
+        "shorter": "Un viaggio più corto",
+        "shorterHint": "Per {parks, plural, =1 {1 parco} other {# parchi}} bastano {days} giorni.",
+        "parkDays": "+{count, plural, =1 {1 giorno al parco} other {# giorni al parco}}",
+        "days": "{count} giorni"
+      },
+      "tickets": {
+        "notYet": "Non ancora",
+        "notYetHint": "Il piano ti dice quali ti servono.",
+        "owned": "Sì, già comprati",
+        "ownedHint": "Inseriscili, e il piano segue le loro date."
+      },
+      "finale": {
+        "days": "{count, plural, =1 {1 giorno} other {# giorni}}",
+        "cities": "{count, plural, =1 {1 città} other {# città}}",
+        "stays": "Prima {first}, poi {rest}.",
+        "dayPlanner": "Il pianificatore del giorno chiede per ogni giorno al parco chi viene e quanto sono alti i più piccoli."
       }
     }
   },

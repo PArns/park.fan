@@ -19,7 +19,7 @@ import { useStatePlan, useTripCalendar } from '../planner/use-trip-plan';
  * did. The row is a picture (`aria-hidden`); the line beside it is what a screen reader hears, and
  * it changes only once the API has answered, not on every press. "Show the plan now" (`onShow`)
  * leaves the assistant for the result; the finale passes `ends` for the first and last date under
- * the row instead.
+ * the row instead of the line, which its own heading says.
  */
 export function PlanRibbon({
   onShow,
@@ -55,40 +55,42 @@ export function PlanRibbon({
           <span>{day(state.to)}</span>
         </p>
       )}
-      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
-        <p className="min-w-0 text-sm" aria-live="polite">
-          {data && plan.current ? (
-            <>
-              <span className="font-semibold">
-                {t('parkDays', { count: data.totals.parkDays })}
-                {data.totals.restDays > 0 && `, ${t('free', { count: data.totals.restDays })}`}
-              </span>
-              {savings && (
-                <span className="text-muted-foreground">
-                  {' · '}
-                  {t('peak', { minutes: savings.planned })}
+      {!ends && (
+        <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+          <p className="min-w-0 text-sm" aria-live="polite">
+            {data && plan.current ? (
+              <>
+                <span className="font-semibold">
+                  {t('parkDays', { count: data.totals.parkDays })}
+                  {data.totals.restDays > 0 && `, ${t('free', { count: data.totals.restDays })}`}
                 </span>
-              )}
-            </>
-          ) : (
-            <span className="text-muted-foreground">{tResult('loading')}</span>
-          )}
-        </p>
-        {onShow && (
-          <button
-            type="button"
-            onClick={onShow}
-            data-wizard-show-plan=""
-            className={cn(
-              'text-primary-ink -mr-1 inline-flex min-h-11 items-center gap-0.5 rounded-md px-1 text-sm font-medium underline-offset-4 hover:underline lg:min-h-8',
-              PLAN_FOCUS
+                {savings && (
+                  <span className="text-muted-foreground">
+                    {' · '}
+                    {t('peak', { minutes: savings.planned })}
+                  </span>
+                )}
+              </>
+            ) : (
+              <span className="text-muted-foreground">{tResult('loading')}</span>
             )}
-          >
-            {t('show')}
-            <ChevronRight className="size-4" aria-hidden="true" />
-          </button>
-        )}
-      </div>
+          </p>
+          {onShow && (
+            <button
+              type="button"
+              onClick={onShow}
+              data-wizard-show-plan=""
+              className={cn(
+                'text-primary-ink -mr-1 inline-flex min-h-11 items-center gap-0.5 rounded-md px-1 text-sm font-medium underline-offset-4 hover:underline lg:min-h-8',
+                PLAN_FOCUS
+              )}
+            >
+              {t('show')}
+              <ChevronRight className="size-4" aria-hidden="true" />
+            </button>
+          )}
+        </div>
+      )}
     </div>
   );
 }

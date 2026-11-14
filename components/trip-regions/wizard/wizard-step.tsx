@@ -3,6 +3,7 @@
 import { createContext, useContext, useLayoutEffect, type ComponentType } from 'react';
 import type { TripWizardQuestion, TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import type { TicketStep } from '../planner/plan-tickets';
+import type { PlanEdit } from '../planner/plan-tickets-card';
 
 /**
  * What the assistant's frame hands every step body. A body draws only the questions it is given
@@ -50,6 +51,8 @@ export interface WizardFrameValue {
   defaultMonth?: string;
   /** Close the assistant and show the plan, as "Show the plan now" does. */
   showPlan: () => void;
+  /** The planner's ways into a step, which the ticket card inside a step calls as the result does. */
+  edit: PlanEdit;
 }
 
 /** Provides {@link WizardFrameValue} to the step bodies. */

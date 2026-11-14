@@ -18,8 +18,7 @@ export type TripPlannerStartSource = 'hero' | 'landing' | 'restart';
  * the result's answers (`answers`), which is a way back in rather than a start.
  */
 export type TripPlannerRequest =
-  | { kind: 'start'; source: TripPlannerStartSource }
-  | { kind: 'step'; step: TripWizardStepKey };
+  { kind: 'start'; source: TripPlannerStartSource } | { kind: 'step'; step: TripWizardStepKey };
 
 let pending: TripPlannerRequest | null = null;
 const listeners = new Set<Listener>();

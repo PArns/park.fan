@@ -489,6 +489,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `TRIP_MONTH_WINDOW` _const_: Twelve hours fresh: a month page's forecast is rebuilt twice a day.
 - Types: `TripRegionRedirect`, `TripRegionRewrite`, `TripRegionWindow`
 
+### [`spare-days.ts`](../../lib/trip-regions/spare-days.ts)
+
+- `isFreeDay` _function_: A free day: one the API marks `spare`; from an API that does not mark them yet, every rest day the visitor did not pin.
+- `longestFreeRun` _function_: The longest run of free days in a row.
+- `spareQuestion` _function_: The question for a plan, or `null` where the trip does not need it: asked once the free days outnumber the park days, or more than `LONG_FREE_RUN` of them fall in a row.
+- `answerSpare` _function_: The state an answer leads to, from the state the question was asked for.
+- `LONG_FREE_RUN` _const_: More free days than this in a row are worth a question even where the park days outnumber them.
+- Types: `SpareChoice`, `SpareQuestion`
+
 ### [`ticket-answer.ts`](../../lib/trip-regions/ticket-answer.ts)
 
 - `tripTicketAnswer` _function_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself.

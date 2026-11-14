@@ -154,10 +154,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanOptions` _component_: More options: everything the plan can be told beyond dates and parks, each with the default the API plans with already chosen, so nothing here is required.
 - `usePlanOptionsSummary` _hook_: The options' one-line summary ("Disney hotel · resorts together · rest days on busy days"), the defaults included, so the line under "More options" says what the plan assumes without opening it.
 
-### [`planner/plan-parks.tsx`](../../components/trip-regions/planner/plan-parks.tsx)
-
-- `PlanParks` _component_: Which parks: one checkbox each, the headliners by resort and the water parks, SeaWorld's parks and the day trips behind "More parks" with the drive from the hotel area and what their days hold.
-
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
 - `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
@@ -175,9 +171,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-setup.tsx`](../../components/trip-regions/planner/plan-setup.tsx)
 
-- `PlanSetup` _component_: Dates and Parks first, the only two things a plan needs, and the parks start chosen: the region's headliners.
-- `PLAN_WIDE_QUERY` _const_: `lg`, where the setup is drawn inline; below it the same panels are sheets.
-- Types: `PlanSheetStep`, `PlanSetupRoute`
+- `PLAN_WIDE_QUERY` _const_: `lg`, where the planner's result draws its panels inline; below it the same panels are sheets. The questions themselves are the assistant's (`TripWizard`) at every width.
+- Types: `PlanSetupRoute`
 
 ### [`planner/plan-stay-band.tsx`](../../components/trip-regions/planner/plan-stay-band.tsx)
 
@@ -265,11 +260,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/dates-step.tsx`](../../components/trip-regions/wizard/steps/dates-step.tsx)
 
-- `DatesStep` _component_: Step 1, the dates: the planner's date grid, the one answer the plan needs.
+- `DatesStep` _component_: Step 1, the dates, the one answer the plan needs: the planner's date grid with month chips over it, and "No dates yet? Find the best time" under it.
 
 ### [`wizard/steps/finale-step.tsx`](../../components/trip-regions/wizard/steps/finale-step.tsx)
 
-- `FinaleStep` _component_: The finale after the last step: the plan as a ribbon from the first day to the last.
+- `FinaleStep` _component_: The finale after the last step, "Your plan is ready": the planned parks as polaroids, the trip in one line (days, park days, cities), the peak wait against the trip's average in the result's own words (`planSavings`), the plan as a ribbon …
 
 ### [`wizard/steps/index.tsx`](../../components/trip-regions/wizard/steps/index.tsx)
 
@@ -277,11 +272,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/parks-step.tsx`](../../components/trip-regions/wizard/steps/parks-step.tsx)
 
-- `ParksStep` _component_: Step 2, the parks: which parks, and how many days each.
+- `ParksStep` _component_: Step 2, the parks: a card per park with its photo, by resort, the headliners chosen to start with.
+
+### [`wizard/steps/spare-days-question.tsx`](../../components/trip-regions/wizard/steps/spare-days-question.tsx)
+
+- `SpareDaysQuestion` _component_: "8 days without a park": asked in the Parks step once a trip has more free days than park days, or more than three in a row (`spareQuestion`), with four answers, each with its effect on the right: more parks (the API's `spareDayParks`), …
 
 ### [`wizard/steps/tickets-step.tsx`](../../components/trip-regions/wizard/steps/tickets-step.tsx)
 
-- `TicketsStep` _component_: The last step, the tickets: the planner's ticket step.
+- `TicketsStep` _component_: The last step, "Do you have tickets yet?": two big answers.
 
 ### [`wizard/trip-wizard.tsx`](../../components/trip-regions/wizard/trip-wizard.tsx)
 

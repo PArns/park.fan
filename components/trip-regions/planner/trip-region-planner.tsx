@@ -278,6 +278,7 @@ function PlannerBody({ defaultMonth }: { defaultMonth?: string }) {
         onClose={closedByVisitor}
         onShowPlan={showPlan}
         ticketStep={step}
+        edit={edit}
         defaultMonth={defaultMonth}
       />
       <PlanResult

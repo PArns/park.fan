@@ -32,6 +32,7 @@ import { skippedBucket } from '@/lib/trip-regions/plan-analytics';
 import type { TripWizardStepName, TripWizardVia } from '@/lib/analytics/site-analytics';
 import { usePlanContext, useTripEvents } from '../planner/plan-context';
 import type { TicketStep } from '../planner/plan-tickets';
+import type { PlanEdit } from '../planner/plan-tickets-card';
 import { WIZARD_STEP_BODIES } from './steps';
 import { FinaleStep } from './steps/finale-step';
 import { PlanRibbon } from './plan-ribbon';
@@ -80,6 +81,7 @@ export function TripWizard({
   onClose,
   onShowPlan,
   ticketStep,
+  edit,
   defaultMonth,
 }: {
   at: TripWizardAt | null;
@@ -89,6 +91,7 @@ export function TripWizard({
   /** Leave for the plan: `early` from "Show the plan now", else from the finale or a date search. */
   onShowPlan: () => void;
   ticketStep: TicketStep;
+  edit: PlanEdit;
   defaultMonth?: string;
 }) {
   const t = useTranslations('tripPlanner.wizard');
@@ -189,8 +192,8 @@ export function TripWizard({
     (finale ? t('ask.finale') : t(`ask.${step?.key ?? 'dates'}`, { inRegion: tNav('inRegion') }));
 
   const frame = useMemo<WizardFrameValue>(
-    () => ({ ticketStep, defaultMonth, showPlan: () => finish(true) }),
-    [ticketStep, defaultMonth, finish]
+    () => ({ ticketStep, defaultMonth, showPlan: () => finish(true), edit }),
+    [ticketStep, defaultMonth, finish, edit]
   );
 
   const bodyOf = (key: TripWizardStepKey, merged: boolean) => {
@@ -287,7 +290,8 @@ export function TripWizard({
             {!finale && index > 0 && (
               <Button
                 variant="ghost"
-                className="text-muted-foreground"
+                // On the last step a phone has no room for all three, and Skip finishes as Done does.
+                className={cn('text-muted-foreground', index >= last && 'max-sm:hidden')}
                 onClick={() => go(index + 1, 'skip')}
                 data-wizard-skip=""
               >

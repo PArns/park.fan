@@ -69,6 +69,8 @@ export interface TripWizardFacts {
   blocks: boolean;
   /** A resort of the region sells a hopper, so park hopping can count. */
   hopper: boolean;
+  /** The region asks for tickets and the API sends their catalog. */
+  tickets: boolean;
 }
 
 /** A step as the assistant draws it. */
@@ -140,7 +142,7 @@ export function wizardQuestions(
         ['hop', facts.hopper],
       ]),
     },
-    { key: 'tickets', questions: ['tickets'] },
+    { key: 'tickets', questions: facts.tickets ? ['tickets'] : [] },
   ];
   return all.filter((step) => step.questions.length > 0);
 }
@@ -204,6 +206,8 @@ export function tripWizardFacts(
     blocks: (config.blockResorts?.length ?? 0) > 0,
     // Without a catalog the hopper cannot be planned with, so the question would change nothing.
     hopper: hopperResorts.length > 0 && (catalog === undefined || catalog.size > 0),
+    tickets:
+      (config.tickets?.resorts.length ?? 0) > 0 && (catalog === undefined || catalog.size > 0),
   };
 }
 

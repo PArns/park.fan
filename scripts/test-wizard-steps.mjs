@@ -16,6 +16,8 @@ import {
   tripWizardSteps,
   wizardStepIndex,
 } from '../lib/trip-regions/wizard-steps.ts';
+import { answerSpare, longestFreeRun, spareQuestion } from '../lib/trip-regions/spare-days.ts';
+import { DEFAULT_PLAN_STATE } from '../lib/trip-regions/plan.ts';
 
 const keys = (steps) => steps.map((s) => s.key);
 const config = (slug) => {
@@ -102,5 +104,58 @@ const noCatalog = tripWizardSteps(
   tripWizardFacts(ORLANDO, config('orlando'), noDates, daysBetween, { size: 0 })
 );
 assert.deepEqual(noCatalog[4].questions, ['evenings', 'fireworks', 'blocks']);
+assert.ok(!keys(noCatalog).includes('tickets'), 'no catalog, no ticket question');
+
+// Days without a park: Japan, 14–30 January, three parks twice each (the API's answer for it).
+const kinds = 'A P R P T P P R R R R R P R R P D'.split(' ');
+const KIND = { A: 'arrival', P: 'park', R: 'rest', T: 'travel', D: 'departure' };
+const japanPlan = {
+  days: kinds.map((k, i) => ({
+    date: `2027-01-${String(14 + i).padStart(2, '0')}`,
+    kind: KIND[k],
+    parks: k === 'P' ? [{ slug: 'x', part: 'full' }] : [],
+    reasons: [],
+    warnings: [],
+  })),
+  parks: [
+    { slug: 'tokyo-disneyland', dates: ['a', 'b'], alternatives: [] },
+    { slug: 'tokyo-disneysea', dates: ['a', 'b'], alternatives: [] },
+    { slug: 'universal-studios-japan', dates: ['a', 'b'], alternatives: [] },
+  ],
+  totals: { parkDays: 6, restDays: 8, visits: 6 },
+};
+const order = [
+  'tokyo-disneyland',
+  'tokyo-disneysea',
+  'fuji-q-highland',
+  'legoland-japan',
+  'universal-studios-japan',
+];
+assert.equal(longestFreeRun(japanPlan.days), 5);
+const question = spareQuestion(japanPlan, order);
+assert.ok(question, 'eight free days against six park days are asked about');
+assert.equal(question.free, 8);
+assert.equal(question.others, 3, 'arrival, the travel day and departure');
+assert.equal(question.shorter, 9);
+assert.deepEqual(question.moreParks, ['fuji-q-highland', 'legoland-japan']);
+assert.equal(question.moreDays.length, 3);
+// The API's own candidates win where it sends them.
+assert.deepEqual(
+  spareQuestion({ ...japanPlan, spareDayParks: [{ park: 'fuji-q-highland', days: [] }] }, order)
+    .moreParks,
+  ['fuji-q-highland']
+);
+// A free day the API marks is the only kind counted once it marks them.
+const marked = japanPlan.days.map((d) => ({ ...d, spare: false }));
+assert.equal(spareQuestion({ ...japanPlan, days: marked }, order), null);
+// A week with one free day is not asked about.
+const week = { ...japanPlan, days: japanPlan.days.slice(0, 5), totals: { parkDays: 2 } };
+assert.equal(spareQuestion(week, order), null);
+const state = { ...DEFAULT_PLAN_STATE, from: '2027-01-14', to: '2027-01-30' };
+const shorter = answerSpare(state, 'shorter', question, japanPlan, order, []);
+assert.equal(shorter.to, '2027-01-22');
+assert.equal(answerSpare(state, 'free', question, japanPlan, order, []), state);
+const more = answerSpare(state, 'more_days', question, japanPlan, order, []);
+assert.ok(more.parks?.every((p) => p.visits === 3));
 
 console.log('wizard steps: ok');

@@ -1,10 +1,17 @@
 'use client';
 
-import { useCallback, useDeferredValue, useMemo, useState, useSyncExternalStore } from 'react';
+import {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useState,
+  useSyncExternalStore,
+} from 'react';
 import { useTranslations } from 'next-intl';
 import { CloudRain, Sparkles, Ticket } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { monthLabel, monthMatrix, monthOf } from '@/lib/planner/month-grid';
+import { monthLabel, monthMatrix, monthOf, shiftMonth } from '@/lib/planner/month-grid';
 import { formatClockTime, getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import { CROWD_TEXT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { addDays, formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
@@ -41,7 +48,7 @@ import { sentenceCase } from '@/lib/utils/sentence-case';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
-import { PlanSegmented } from './plan-controls';
+import { PlanChip, PlanSegmented } from './plan-controls';
 import { PlanMonthGrid, type PlanGridPick } from './plan-month-grid';
 import { PlanCodeKey, PlanMonthEvents, useStormKeys } from './plan-calendar-keys';
 import { useResortWord } from './plan-ticket-words';
@@ -109,9 +116,20 @@ function createShownDate() {
  * From which date the figures are last year's is said once under the grid, never per tile: after
  * the forecast's days nearly every tile is. Arrival and departure carry their plane and a light band
  * joins the days between. The tickets' windows are thin bars along the dates, named in a key.
- * Whether the travel days hold a park is asked under More options (`PlanOptions`), not here.
+ * Whether the travel days hold a park is asked in the assistant's Tempo step, not here. The
+ * assistant adds a row of month chips over the grid (`monthChips`), so a trip three months out is
+ * one press away, and hears when the arrival is picked and the departure is next (`onPending`).
  */
-export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
+export function PlanDates({
+  defaultMonth,
+  monthChips = false,
+  onPending,
+}: {
+  defaultMonth?: string;
+  monthChips?: boolean;
+  /** The arrival is picked and the grid waits for the departure (`true`), or not. */
+  onPending?: (pending: boolean) => void;
+}) {
   const t = useTranslations('tripPlanner');
   const tCrowd = useTranslations('parks.crowdLevels');
   const {
@@ -134,6 +152,8 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
   const stormKeys = useStormKeys();
 
   const [pendingFrom, setPendingFrom] = useState<string | null>(null);
+  const pending = pendingFrom !== null;
+  useEffect(() => onPending?.(pending), [onPending, pending]);
   const [month, setMonth] = useState<string | null>(null);
   // Dates set from outside the grid (Parky, a shared link, undo) take the grid to their month; a
   // range picked here records its own arrival first, so the grid stays where the departure was.
@@ -358,6 +378,17 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           ]}
         />
       )}
+      {monthChips && today && last && (
+        <MonthChips
+          first={monthOf(today)}
+          last={monthOf(last)}
+          shown={shown}
+          locale={locale}
+          label={t('wizard.dates.months')}
+          disabled={!live}
+          onMonth={setMonth}
+        />
+      )}
       <PlanMonthGrid
         month={shown}
         onMonth={setMonth}
@@ -552,6 +583,56 @@ export function PlanDates({ defaultMonth }: { defaultMonth?: string }) {
           {t('dates.maxLength', { days: MAX_TRIP_DAYS })}
         </p>
       )}
+    </div>
+  );
+}
+
+/**
+ * The months a trip can start in, one chip each, the one on show pressed: a press takes the grid
+ * there. A row that scrolls sideways on a phone; a new year's first chip carries its year.
+ */
+function MonthChips({
+  first,
+  last,
+  shown,
+  locale,
+  label,
+  disabled,
+  onMonth,
+}: {
+  first: string;
+  last: string;
+  shown: string;
+  locale: string;
+  label: string;
+  disabled: boolean;
+  onMonth: (month: string) => void;
+}) {
+  const months: string[] = [];
+  for (let m = first; m <= last; m = shiftMonth(m, 1)) months.push(m);
+  const short = getDateTimeFormat(locale, { month: 'short' });
+  const withYear = getDateTimeFormat(locale, { month: 'short', year: 'numeric' });
+  return (
+    <div
+      role="group"
+      aria-label={label}
+      className="-mx-1 flex [scrollbar-width:thin] gap-1.5 overflow-x-auto px-1 pb-1"
+      data-plan-month-chips=""
+    >
+      {months.map((month, i) => {
+        const at = Date.parse(`${month}-01T12:00:00Z`);
+        const newYear = i > 0 && month.endsWith('-01');
+        return (
+          <PlanChip
+            key={month}
+            selected={month === shown}
+            disabled={disabled}
+            onClick={() => onMonth(month)}
+            label={(newYear ? withYear : short).format(at)}
+            className="shrink-0"
+          />
+        );
+      })}
     </div>
   );
 }
