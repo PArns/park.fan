@@ -88,6 +88,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `interviewStore` _const_: The interview's store: what runs, set or ended by the API's action and by the bar's button.
 - Types: `InterviewStep`, `InterviewKind`, `AssistantInterview`, `InterviewStart`
 
+### [`last-park.ts`](../../lib/assistant/last-park.ts)
+
+The park the visitor's last chat with Parky was about, so on a later visit he can pick up there („Unser letztes Thema: Toverland").
+
+- `readLastPark` _function_: A stored record read leniently: anything odd is no record.
+- `rememberLastPark` _function_: Keep the park a chat is about; the newest wins.
+- `lastParkBack` _function_: The last chat's park when this is a later visit and that chat was within `LAST_PARK_WITHIN_MS`; null otherwise, and on the visit it was remembered in.
+- `LAST_PARK_WITHIN_MS` _const_: Older than this, the last chat is no longer worth bringing up.
+- Types: `LastPark`
+
 ### [`links.ts`](../../lib/assistant/links.ts)
 
 - `directionsHref` _function_: The one link off the site an answer may carry: Google Maps directions to coordinates, exactly in the form the API's `get_directions` writes it. Opened in a new tab; never used for navigation.
@@ -103,12 +113,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`opener.ts`](../../lib/assistant/opener.ts)
 
-- `drawOpener` _function_: Draws the opener of a new chat, never the greeting of `previous`, and keeps it for the session.
-- `sessionOpener` _function_: This session's opener: the one already shown, so a reload keeps the chat as it was.
+- `drawOpener` _function_: Draws the opener of a new chat, never the greeting of `previous`, and keeps it for the session. The first of `moments` that can open a chat replaces the greeting; the rest stay as drawn.
+- `sessionOpener` _function_: This session's opener: the one already shown, so a reload keeps the chat as it was; `moments` is asked only when a new one is drawn.
+- `greetingKeyOf` _function_: The greeting's key: the moment's where the chat opens with one, else the drawn one.
+- `suggestionKeysOf` _function_: The suggestions under the greeting, as keys of the `assistant` namespace: a personal greeting's own questions first, then the drawn ones for the page, `SUGGESTIONS_SHOWN` in all.
 - `GREETING_KEYS` _const_: The greetings a chat with Parky starts with, as keys of the `assistant` namespace.
 - `SUGGESTION_KEYS` _const_: The questions offered under the greeting, as keys of the `assistant` namespace: `site` anywhere, `park` on a park's page, where "here" is that park. Each is one Parky can look up.
 - `SUGGESTIONS_SHOWN` _const_: How many suggestions a new chat offers.
-- Types: `AssistantOpener`
+- Types: `OpenerMoment`, `AssistantOpener`
 
 ### [`parky-dock.ts`](../../lib/assistant/parky-dock.ts)
 
@@ -152,6 +164,13 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `LATE_SLEEPY_FACTOR` _const_: Late in the visitor's evening (from 22:00 until 05:00 by the browser's clock) Parky gets sleepy sooner: both quiet times are this share of the day's.
 - `parkyBoredom` _const_: One boredom for the whole page, for `useSyncExternalStore`: the first subscriber starts the listeners, the last one stops them. Without motion (`prefers-reduced-motion`) Parky has no idle life and the snapshot is `null`, as on the server.
 - Types: `ParkyBoredom`
+
+### [`parky/bubble-room.ts`](../../lib/assistant/parky/bubble-room.ts)
+
+What counts as a control the bubble must not cover.
+
+- `plannerFlowOnScreen` _function_: A planner flow is under way: the day planner's panel is open (`data-planner-open`, set by `PlannerLauncher`), or part of the trip planner (`data-trip-planner`) is on screen.
+- `coversControl` _function_: Whether a bubble at `box` would sit over a control of the page: nine points across it and its margin, each with everything stacked under it. `own` is the bubble's own markup, left out.
 
 ### [`parky/clock.ts`](../../lib/assistant/parky/clock.ts)
 
@@ -276,6 +295,31 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 - `useParkyWeather` _hook_: Parky and the weather at the park whose page this is: once a park per session, after the page has settled and never over another line, he plays a fitting act and says a `weather` line.
 
+### [`parky/yours-here.ts`](../../lib/assistant/parky/yours-here.ts)
+
+- `yoursHere` _function_: What this browser keeps about the visitor, read for `yoursMoments`: the day planner, the rides ticked off, the alerts' names, and the last chat's park on a later visit. Browser only.
+
+### [`parky/yours.ts`](../../lib/assistant/parky/yours.ts)
+
+- `yoursMoments` _function_: Every moment that holds now, in `YOURS_ORDER`.
+- `nextUp` _function_: The nearest planned day from today on, for the window's subtitle; null without one.
+- `opensChat` _function_: Whether a moment can open a chat.
+- `dayOfMonth` _function_: `3. März`, `March 3`: a day of the month, for "from" and "on".
+- `shortDay` _function_: `Do., 19. Nov.`: the subtitle's short date.
+- `weekdayOf` _function_: `Donnerstag`: the weekday of a planned date.
+- `whenOf` _function_: How a greeting names when a planned day is: tomorrow, a weekday, or a date.
+- `yoursValues` _function_: The values a moment's line or greeting fills in, dates in the reader's language.
+- `YOURS_SOON_DAYS` _const_: A planned day this far off or nearer is close enough to count down to.
+- `YOURS_TRIP_DAYS` _const_: This many planned days within `YOURS_TRIP_WINDOW_DAYS` make a trip.
+- `YOURS_TRIP_WINDOW_DAYS` _const_
+- `RIDDEN_MILESTONES` _const_: The ridden counts Parky congratulates on, on the day the count stands there.
+- `YOURS_ORDER` _const_: The order Parky picks in, best first: the nearest day beats the trip, the trip the rest.
+- `YOURS_GREETINGS` _const_: The greeting each moment opens a chat with; the others leave the greeting to chance.
+- `YOURS_CHIPS` _const_: The chips a personal greeting puts first, whole questions about the visitor's own plans, so they read right to the model whatever the greeting said.
+- `YOURS_LINES` _const_: The bubble line of each moment, as keys of the `assistant` namespace.
+- `WEEKDAY_WITHIN_DAYS` _const_: Within a week a weekday says when; further out, the date does.
+- Types: `YoursMoment`, `YoursKind`, `YoursInput`, `YoursGreetingKind`
+
 ### [`planner-context.ts`](../../lib/assistant/planner-context.ts)
 
 - `assistantPlannerSnapshot` _function_: Every planned day from today on, each in its park's own date, nearest first: the day open in the planner and the nearest in full, the rest by park and date; `undefined` when there is none, so the request leaves the field out.
@@ -307,15 +351,15 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 - `teasersShown` _function_: How many teaser lines this session has shown; "all of them" where storage is blocked.
 - `setTeasersShown` _function_: Records the lines shown; `stopTeasers` ends them for the session (opened, or closed by hand).
-- `reactionsShown` _function_: How many bored or woken lines this session has shown; "all of them" where storage is blocked.
-- `countReaction` _function_: Records one more bored or woken line.
-- `stopTeasers` _function_: No more invitations or reactions this session: Parky was opened, or a line was closed.
+- `reactionsShown` _function_: Whether the visit's unasked line is spent: 1 once it is, 0 before; spent where storage is blocked.
+- `countReaction` _function_: A bored, woken, weather or live line was said: it spent the visit's unasked line.
+- `stopTeasers` _function_: No more unasked lines this session: Parky was opened, or a line was closed.
 - `muteLines` _function_: A line closed by hand: Parky stops talking for the session, its easter eggs included, which opening Parky leaves alone.
 - `linesMuted` _function_: Whether a line was closed by hand this session; `true` where storage is blocked.
 - `answeredWithLine` _function_: Whether Parky already answered this kind of action with a line this session (the planner opened, a favourite, …); `true` where storage is blocked. Its act plays every time regardless.
 - `countAnswer` _function_: Records the line Parky said in answer to a kind of action.
-- `TEASER_SCHEDULE_MS` _const_: Two lines a session at most: one after a short look around, one a good while later.
-- `REACTIONS_PER_SESSION` _const_: Lines Parky says when it gets bored or is woken up, at most this many a session.
+- `TEASER_SCHEDULE_MS` _const_: One line a visit that nobody asked for, after a short look around: the bubble covers part of the page, so once is enough. The entrance's, the weather's, the live waits' and a bored or woken line spend the same one (`countReaction`).
+- `REACTIONS_PER_SESSION` _const_: Lines Parky says unasked besides the scheduled one: they share its one a visit.
 
 ### [`trip-context.ts`](../../lib/assistant/trip-context.ts)
 

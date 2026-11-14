@@ -50,6 +50,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AssistantReplies` _component_: Replies the visitor can tap under Parky's newest answer, as the model wrote them (`suggest_replies`). Each is a button that sends its text as the visitor's message; they sit on the visitor's side of the chat, where the reply will appear.
 
+### [`assistant-subtitle.tsx`](../../components/assistant/assistant-subtitle.tsx)
+
+- `AssistantSubtitle` _component_: The line under Parky's name in the window, where a messenger shows a status: the visitor's next planned day („Als Nächstes: Efteling, Do., 19. Nov.“), else who he is to them („Dein Park-Buddy“).
+
 ### [`assistant-teaser.tsx`](../../components/assistant/assistant-teaser.tsx)
 
 - `AssistantTeaser` _component_: A short line beside the closed Parky button ("Hey, ich bin Parky – klick mich an!"), at most twice a session and never once Parky was opened or a line was closed. A press on the line opens Parky.

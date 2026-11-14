@@ -569,7 +569,7 @@ spins in the air, drops from above and lands in a puff of dust, rolls in and wob
 peeks in from the edge at a tilt before hopping in, or pops up out of nothing in a burst of
 sparkles. After a client navigation (the button stays), a closed window or under reduced motion
 it only fades in. Only the session's first line is an entrance's own; later loads arrive without
-one.
+one, and only when the visitor's own plans have no line for it.
 `ENTRANCE_MS` holds each length, which the stylesheet reads as `--parky-enter`; the launcher waits
 that long before Parky has landed and speaks, by a timer, because `animationend` never reached
 React's handler on the home page.
@@ -583,24 +583,47 @@ drawn from eight on any page (`SUGGESTION_KEYS.site`) and seven about "here" on 
 window shows the chat as it was; "new chat" draws again, never with the same greeting twice in a
 row.
 
+Where this browser holds the visitor's plans, the chat opens with them instead (`yours.ts` below):
+a planned day today (`greetingToday`), yesterday (`greetingAfter`), in the next 14 days
+(`greetingSoon`, „Hey, am Donnerstag ist Parktag: Efteling 🎡 Deinen Plan hab ich dabei.“), three
+or more within 30 days (`greetingTrip`), or, on a later visit within 30 days, the park the last
+chat was about (`greetingBack`). Its own questions come first (`YOURS_CHIPS`, `suggestMy*`, whole
+questions about „mein Parktag“, so they read right without the greeting) and the drawn ones fill
+up to three. The greeting the window shows goes with the chat's first question as `opener`, so
+Parky reads „ja“ or „super!“ as the answer to it.
+
+Under Parky's name the window shows a status line (`AssistantSubtitle`): the next planned day
+(`subtitleNext`, „Als Nächstes: Efteling, Do., 19. Nov.“), else who he is („Dein Park-Buddy“).
+How he talks about himself everywhere is [Buddy, not assistant](parky-character.md#buddy-not-assistant).
+
 `AssistantTeaser` draws a speech bubble beside the closed button, its tail on Parky's mouth: the
 bubble's right edge and bottom are reckoned from the button's size (56 px, 64 px from `sm`) and
 its corner offset. These lines go in it, from the `assistant` namespace:
 
-- **The session's two slots**: 8 s after the button shows and again 90 s after that
-  (`TEASER_SCHEDULE_MS`), two lines a session at most. Which line fills a slot is one list,
+- **The visit's one line**: 8 s after the button shows (`TEASER_SCHEDULE_MS`), one line a
+  session that nobody asked for. The bubble covers part of the page, so once is enough: a bored or
+  woken line, the weather's and the live waits' spend the same one (`countReaction`). Which line
+  fills the slot is one list,
   `lineSources` in `lib/assistant/parky/lines.ts`, best first; the first source with a line for
   the page speaks, so a park whose statistics are too thin for a fact falls through to the next:
 
-  | Source       | When                                                                  | Lines                                                                                           |
-  | ------------ | --------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-  | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                 |
-  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`, `liveShow1`–`3`        |
-  | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                       |
-  | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                        |
-  | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3` |
-  | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`     |
-  | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                            |
+  | Source       | When                                                                  | Lines                                                                                                           |
+  | ------------ | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+  | `yours`      | first slot, the visitor's own plans in this browser (`?parky=yours`)  | `yoursToday`, `yoursAfter`, `yoursTomorrow`, `yoursSoon`, `yoursTrip`, `yoursRidden`, `yoursBack`, `yoursAlert` |
+  | `entrance`   | first slot, after an entrance, a beat after landing                   | `entranceScurry`, `entranceDrop`, `entranceRoll`, `entrancePeek`, `entrancePop`                                 |
+  | `live`       | a park's page, once a park a session, level with the weather          | `liveWalkOn1`–`3`, `liveQueue1`–`3`, `liveFull1`–`3`, `liveClosed1`–`3`, `liveShow1`–`3`                        |
+  | `clock`      | a park's page, once a park a session, in the clock's windows          | `clockRopeDrop1`–`3`, `clockClosing1`–`3`                                                                       |
+  | `holiday`    | first slot, on one of Parky's holidays                                | `holidayHalloween`, `holidayChristmas`, `holidayNewYear`                                                        |
+  | `fact`       | last slot, on a park's page or the homepage (`?parky=fact`: any slot) | `factLongest1`–`3`, `factGap1`–`2`, `factQuietest1`–`3`, `factBusiest1`–`3`, `factAverage1`–`3`                 |
+  | `park`       | a park's page, on `PARK_EGG_CHANCE` (40 %) or `?parky=egg`            | `parkLine1`–`6`, `parkQueue1`–`3`, `parkRopeDrop1`–`2`, `parkClosing1`–`2`, `parkFood1`–`2`                     |
+  | `invitation` | always                                                                | `teaser1`–`teaser13`                                                                                            |
+
+  `yours` reads what the browser keeps (`yoursMoments`, `lib/assistant/parky/yours.ts`), best
+  first: a planned day today, yesterday, tomorrow, in 2 to 14 days, three or more planned days
+  within 30 days, a count of rides ticked off that stands on 10, 25, 50 or 100, the last chat's park
+  on a later visit within 30 days (`lib/assistant/last-park.ts`, `parkfan_parky_last_park` in local
+  storage), a ride alert. Each planned day is measured against its park's own today. German lines
+  name the park without an article, as the planner keeps none.
 
   A new kind of scheduled line goes into that list at its rank. One that falls due over another
   line, while Parky sleeps or while a search is open tries again 5 s later. `?parky=live`,
@@ -659,8 +682,8 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   CDN-cached `/stats` request when the slot falls due. The fact list is open for hand-written facts
   from the API, merged in as further `{ key, values }`. Parky reads (`read`) after a fact.
 - **Reactions**, read from the same `parkyBoredom`: a bored line (`teaserBored1`–`4`) after the
-  first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky. At most
-  `REACTIONS_PER_SESSION` (3).
+  first yawn, a woken line (`teaserWoke1`–`3`) once somebody wakes Parky, while the visit's one
+  unasked line is still unspent (`REACTIONS_PER_SESSION`, 1).
 - **Easter eggs** (`lib/assistant/parky/easter-eggs.ts`): on Halloween, at Christmas and at New Year
   the first invitation is the day's own line (`holidayHalloween`, `holidayChristmas`,
   `holidayNewYear`, by the browser's calendar). On a park's own page, when its slot draws it, Parky
@@ -677,7 +700,7 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   another line, Parky plays the weather's act (`WEATHER_ACT`) and says a `weather` line
   (`weatherRain1`–`3`, `weatherStorm1`–`2`, `weatherSnow1`–`3`, `weatherCold1`–`3`,
   `weatherWindy1`–`2`, `weatherFog1`–`2`, `weatherHot1`–`3`, with `{park}` and `{temp}` in the
-  visitor's unit). It counts against `REACTIONS_PER_SESSION` and stays away once lines are muted.
+  visitor's unit). It spends the visit's one unasked line and stays away once lines are muted.
   With a fine pointer, the pointer resting on Parky's nose (between and just under the eyes) makes
   it squint at it, both pupils turned in; circling it fast, two turns inside 1.5 s, makes it dizzy
   (`useGaze`, `components/assistant/parky/use-gaze.ts`, the `dizzy` act through its own cue).
@@ -703,8 +726,16 @@ Every line stays 7 s, or until a search or a modal dialog opens (`usePageLocked`
 `data-scroll-locked` on `<body>`): the bubble would cover the palette's list, the field's results
 or the dialog's buttons (on a phone, the planner wizard's Back and Next). An answer that falls due then
 waits and is said once they close, unless that takes longer than 15 s. Opening Parky ends the invitations and reactions for the session
-(`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ ends every line,
-easter eggs included (`muteLines`).
+(`stopTeasers`, `lib/assistant/teaser-store.ts`); closing a line by its ✕ („Sprechblasen
+ausblenden“) ends every line, easter eggs included (`muteLines`).
+
+The bubble also keeps out of the visitor's way (`lib/assistant/parky/bubble-room.ts`). While a
+planner is at work, the day planner's panel open (`data-planner-open`) or the trip planner on
+screen (`data-trip-planner`), the visit's line waits and an answer to what the visitor did plays
+its act without its line. And it never stands over a control: each line is first laid out in an
+unseen twin of the bubble, and if any of nine points across it, 8 px around included, lies over a
+button, a tab, a field or a link styled as a button (`coversControl`), the line is not said; the
+scheduled one tries again 5 s later.
 
 ## Parky's page
 

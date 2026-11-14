@@ -27,3 +27,30 @@ planen sichtbar neu ([Parky](../features/assistant.md#the-trip-planner)).
 - **Datenschutz:** die Parky-Absätze nennen Reiseplaner, gemerkte Reise, Interview und die neuen
   Ereignisse (`assistant_replies_shown`, `assistant_interview_*`, `assistant_plan_changed`,
   `assistant_change_undone`).
+
+#### Parky als Buddy statt Assistent
+
+Parky heißt überall, wo er beschrieben wird, so, wie er im Chat schon klang: dein Park-Buddy, im
+Englischen „he“ statt „it“, und er plant mit dir statt für dich
+([Buddy, not assistant](../features/parky-character.md#buddy-not-assistant)).
+
+- **Wortlaut in sechs Sprachen:** Launcher und jeder „Parky fragen“-Knopf heißen „Mit Parky
+  schreiben“, der Reiter „Chat“, der Platzhalter „Nachricht an Parky …“. Der Hinweis unter dem
+  Eingabefeld sagt „Parky ist eine KI und kann sich irren. Seine Antworten sind ohne Gewähr.“ Die
+  Parky-Seite: H1 „Parky kommt mit in den Park“, SEO-Titel „Parky: Wartezeiten und Tagesplan im
+  KI-Chat“, Kicker „KI-Chat“, eine FAQ dazu, was er sich merkt. Das ✕ einer Sprechblase heißt
+  „Sprechblasen ausblenden“, weil es alle ausblendet.
+- **Was der Browser weiß, sagt er nebenbei:** eine neue Quelle `yours`
+  (`lib/assistant/parky/yours.ts`) liest geplante Tage, eine Reise, abgehakte Bahnen, einen Alarm
+  und den Park des letzten Chats; sie nimmt die erste und einzige ungefragte Zeile eines Besuchs
+  („Noch 5 Tage, dann Efteling. Ich zähl mit.“). Der Chat beginnt mit dem nächsten geplanten Tag und
+  passenden Fragen, und die Begrüßung geht mit der ersten Frage als `opener` an die API. Unter dem
+  Namen steht „Als Nächstes: Efteling, Do., 19. Nov.“.
+- **Letzter Park:** `parkfan_parky_last_park` im lokalen Speicher, Name und Zeit des Parks, um den
+  es im letzten Chat ging; ein späterer Besuch innerhalb von 30 Tagen greift ihn auf.
+- **Eine Sprechblase je Besuch:** statt zwei geplanter Zeilen und bis zu drei Reaktionen sagt Parky
+  ungefragt nur noch eine Zeile pro Sitzung. Sie wartet, solange der Tagesplaner offen oder der
+  Reiseplaner zu sehen ist, und erscheint nie über einem Knopf: ein unsichtbarer Zwilling der Blase
+  misst vorher, ob neun Punkte über einem Bedienelement liegen (`bubble-room.ts`).
+- **Datenschutz:** die gefahrenen Bahnen, die jede Frage schon trug, stehen jetzt in der Erklärung,
+  dazu die Begrüßung und der letzte Park; der Abschnitt heißt „Parky, der KI-Chat“.
