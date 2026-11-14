@@ -1,7 +1,7 @@
 'use client';
 
 import { useId } from 'react';
-import type { TripRegionSceneProps } from '@/lib/navigation/trip-regions';
+import type { TripRegionSceneProps } from '@/lib/trip-regions/registry';
 import { MOON, STAR, gold } from './drawing';
 import {
   HolidayGround,

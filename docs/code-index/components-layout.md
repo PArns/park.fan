@@ -143,10 +143,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlannerRegionArt` _component_: The picture of a region's card in the planner band: its Parky scene where `TRIP_REGIONS` gives it one, else the hub's photo.
 
-### [`region-art/placeholder.tsx`](../../components/layout/region-art/placeholder.tsx)
-
-- `RegionArtPlaceholder` _component_: The planner band's picture of a region whose Parky scene is not drawn yet: sky, hills and a shore in the 320 × 160 frame every scene shares, in both themes, so a tile has its height and its fade before the drawing arrives.
-
 ### [`scroll-lock-gutter.tsx`](../../components/layout/scroll-lock-gutter.tsx)
 
 - `ScrollLockGutter` _component_: Copies react-remove-scroll's lock from `<body>` up to `<html>`, where the scrollbar gutter is.

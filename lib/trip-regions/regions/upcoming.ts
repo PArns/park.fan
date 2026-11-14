@@ -1,4 +1,4 @@
-import type { TripRegionConfig, TripRegionSceneLoader } from '../registry';
+import type { TripRegionConfig } from '../registry';
 
 /**
  * The regions the owner decided on next, not live yet: their URL segments, zones and middles, so
@@ -6,17 +6,8 @@ import type { TripRegionConfig, TripRegionSceneLoader } from '../registry';
  * Until a region goes live its pages are 404s, it is in no sitemap, menu or search, and the relay
  * serves it to the admin's ticket page alone. Going live takes its messages under
  * `tripRegions.<slug>` in six languages, its best-time pages, its hotels and ticket step where it
- * has them, its own scene and `live: true`. See docs/features/trip-regions.md#adding-a-region.
+ * has them, and `live: true`; its Parky scene is drawn. See docs/features/trip-regions.md#adding-a-region.
  */
-
-/**
- * The stand-in scene of a region whose own is not drawn yet. Each region's drawing goes in
- * `components/layout/region-art/<slug>.tsx` and replaces this loader in its entry.
- */
-const placeholderScene: TripRegionSceneLoader = () =>
-  import('../../../components/layout/region-art/placeholder').then((m) => ({
-    default: m.RegionArtPlaceholder,
-  }));
 
 /**
  * Southern California: Disneyland Resort, Universal Studios Hollywood, Knott's, Six Flags Magic
@@ -37,7 +28,10 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   // Anaheim, where the most parks of the region are; San Diego and Valencia are a drive away.
   centre: { latitude: 33.81, longitude: -117.92 },
   photo: '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
-  scene: placeholderScene,
+  scene: () =>
+    import('../../../components/assistant/parky/southern-california-scene').then((m) => ({
+      default: m.ParkySouthernCaliforniaScene,
+    })),
   hub: { heroPhotos: [], faq: {} },
   bestTime: [],
   parkNameSuffixes: [],
@@ -53,7 +47,10 @@ export const JAPAN: TripRegionConfig = {
   timezone: 'Asia/Tokyo',
   // Tokyo Disney Resort. The region spans several cities, and its trips several bases.
   centre: { latitude: 35.63, longitude: 139.88 },
-  scene: placeholderScene,
+  scene: () =>
+    import('../../../components/assistant/parky/japan-scene').then((m) => ({
+      default: m.ParkyJapanScene,
+    })),
   hub: { heroPhotos: [], faq: {} },
   bestTime: [],
   parkNameSuffixes: [],
@@ -70,7 +67,10 @@ export const PARIS: TripRegionConfig = {
   // Between Disneyland Paris and Parc Astérix.
   centre: { latitude: 49.0, longitude: 2.68 },
   photo: '/media/disneyland-park/background.jpg',
-  scene: placeholderScene,
+  scene: () =>
+    import('../../../components/assistant/parky/paris-scene').then((m) => ({
+      default: m.ParkyParisScene,
+    })),
   hub: { heroPhotos: [], faq: {} },
   bestTime: [],
   parkNameSuffixes: [],

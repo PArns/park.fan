@@ -135,7 +135,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `dayWarnings` _function_: A day's warnings this client can say, in order, the two spellings of a back-to-back repeat folded into one.
 - `closesEarly` _function_: Whether the day guests leave early that day: the API's flag, or one of its two codes.
 - `dayMarker` _function_: The one marker of a day in the overview, or `null`.
-- `relaxedRules` _function_: Rules the plan loosened, as `orlandoPlanner.relaxed.*` keys; unknown ones are dropped.
+- `relaxedRules` _function_: Rules the plan loosened, as `tripPlanner.relaxed.*` (or the region's own) keys; unknown ones are dropped.
 - `unplacedParks` _function_: A park the plan could not place, with a reason this client can say.
 - `ignoredLocks` _function_: Pins the plan could not keep, with a reason this client can say.
 - `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.

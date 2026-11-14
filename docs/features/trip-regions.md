@@ -14,7 +14,7 @@ the same pages from the same code.
 | -------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, next step, FAQ parks), hotels, ticket step, storm season |
 | Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`, `landing`, `homeStory`                                                                                           |
-| Scene    | `components/layout/region-art/<slug>.tsx`                       | the Parky picture of the planner band's tile; Orlando's is `components/assistant/parky/orlando-scene.tsx`, the coming regions show `region-art/placeholder.tsx`               |
+| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the planner band's tile, built on `HolidayParky` (`holiday-parky.tsx`)                                                                                   |
 | API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                |
 
 Nothing outside `lib/trip-regions/registry.ts` and `lib/trip-regions/regions/` names a region. The
