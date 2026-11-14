@@ -296,6 +296,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `calendarCell` _function_: The calendar cell of a park on a date, if the calendar has it.
 - `shownWait` _function_: The wait a park's day shows. Within the forecast's days the forecast as the park's own calendar shows it (`forecastWait`), so a day never reads two numbers on two pages; after them last year's measured day.
 - `shownWaitOn` _function_: `shownWait` of a park on a plan's date, read off the trip's calendar; the plan's own figure where the calendar has none.
+- `shownTotals` _function_: The plan's totals in the shown figure, so the line under the plan adds up with the days above it: the visits' mean, and for the same visits the mean over every open day of the trip of that park, as the API compares them.
 - `shownDayWait` _function_: `shownWaitOn` for a plan day's own figure: a park day's park; a hop day has none.
 - `tripDaySpans` _function_: Each trip day's pieces, read off the plan and the calendar. A park day whose hours the calendar does not carry gets no block: the honest answer is the day planner's, no axis rather than an invented one.
 - `tripCanvas` _function_: The shared canvas, from the earliest piece of any day to the latest, on whole hours and padded by the planner's own `PRE_PAD_MIN` and `POST_PAD_MIN`. `null` when no day has hours.
@@ -311,7 +312,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `partySeason` _function_: The separately ticketed season behind a day's evening event, if the calendar names one.
 - `dayGuestHours` _function_: Hours a day guest has on a park's day, from the calendar's open to its day-guest close.
 - `hoursLessThanUsual` _function_: How many hours shorter a park's day is for a day guest than the park's usual day in the calendar window (its median), rounded to whole hours: the figure "about 4 hours less than a usual day here" says.
-- `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' waits on their new days less those on their old ones.
+- `swapPreview` _function_: The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day off): the two parks' shown waits (`shownWait`) on their new days less those on their old ones, so the difference is the one the days on screen …
 - `dateLevel` _function_: A date's tint in the date grid: how busy the region's headliner parks are that day, the median of the crowd levels of those that are open and have one (the lower middle for an even count).
 - `TRIP_WEEK_PX_PER_MIN` _const_: The trip overview's scale: half the day planner's, on a phone and off it, so a whole park day fits a screen while a phone keeps the planner's larger step.
 - `TRIP_WEEK_PX_PER_MIN_COARSE` _const_: `TRIP_WEEK_PX_PER_MIN` on a phone.

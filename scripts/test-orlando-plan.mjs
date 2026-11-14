@@ -68,6 +68,7 @@ import {
   parkLabel,
   parkMinuteOf,
   shownDayWait,
+  shownTotals,
   shownWait,
   shownWaitOn,
   swapPreview,
@@ -584,6 +585,49 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       'a day the calendar does not hold keeps the plan’s figure',
       shownWaitOn(calendar, 'epcot', '2026-12-03', 50),
       50
+    );
+    const cellOf = (forecastWait) => ({
+      status: 'OPERATING',
+      basis: 'forecast',
+      headlinerWait: forecastWait + 5,
+      forecastWait,
+    });
+    const trip = {
+      days: [
+        { date: '2026-12-01', parks: { epcot: cellOf(50) } },
+        { date: '2026-12-02', parks: { epcot: cellOf(40) } },
+        { date: '2026-12-03', parks: { epcot: { status: 'CLOSED', basis: 'none' } } },
+      ],
+    };
+    const planned = {
+      days: [
+        { date: '2026-12-01', kind: 'arrival', parks: [] },
+        { date: '2026-12-02', kind: 'park', parks: [{ slug: 'epcot' }], headlinerWait: 45 },
+        { date: '2026-12-03', kind: 'departure', parks: [] },
+      ],
+    };
+    test('the line under the plan adds up with the days it shows', shownTotals(planned, trip), {
+      headlinerWait: 40,
+      averageDayWait: 45,
+      savedMinutesPerRide: 5,
+    });
+    test(
+      'a calendar of other dates gives no shown totals',
+      shownTotals({ days: [{ ...planned.days[1], date: '2027-01-02' }] }, trip),
+      null
+    );
+    test(
+      'the shown saving rounds to nothing, the line says the order barely matters',
+      planSavings({
+        headlinerWait: 40.2,
+        averageDayWait: 40.6,
+        savedMinutesPerRide: 0.4,
+        orderMatters: true,
+        parkDays: 1,
+        restDays: 0,
+        visits: 1,
+      }).kind,
+      'flat'
     );
   }
   test(

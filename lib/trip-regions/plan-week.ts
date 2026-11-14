@@ -15,7 +15,7 @@ import type { DaySignal } from '@/lib/utils/day-signal-styles';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { earlyPerk } from './plan-copy';
-import type { PlanDay, PlanDayKind } from './plan';
+import type { PlanDay, PlanDayKind, PlanTotals, TripPlan } from './plan';
 import type {
   TripCalendar,
   TripCalendarDay,
@@ -144,6 +144,45 @@ export function shownWaitOn(
 ): number | undefined {
   const cell = calendarCell(calendar, slug, date);
   return (cell && shownWait(cell)) ?? planned;
+}
+
+/**
+ * The plan's totals in the shown figure, so the line under the plan adds up with the days above it:
+ * the visits' mean, and for the same visits the mean over every open day of the trip of that park,
+ * as the API compares them. What ranks the plan stays the API's totals. `null` where the calendar
+ * does not cover the plan's days (it is still on its way, or holds another trip's), or a visit has
+ * no figure.
+ */
+export function shownTotals(
+  plan: Pick<TripPlan, 'days'>,
+  calendar: TripCalendar | undefined
+): Pick<PlanTotals, 'headlinerWait' | 'averageDayWait' | 'savedMinutesPerRide'> | null {
+  if (!calendar) return null;
+  const dates = new Set(calendar.days.map((d) => d.date));
+  if (!plan.days.every((d) => dates.has(d.date))) return null;
+  const mean = (values: readonly number[]) => values.reduce((a, b) => a + b, 0) / values.length;
+  const planned: number[] = [];
+  const average: number[] = [];
+  for (const day of plan.days) {
+    if (day.kind !== 'park' && day.kind !== 'hop') continue;
+    for (const visit of day.parks) {
+      const own =
+        day.kind === 'park' ? (visit.headlinerWait ?? day.headlinerWait) : visit.headlinerWait;
+      const wait = shownWaitOn(calendar, visit.slug, day.date, own);
+      const open = calendar.days.flatMap((d) => {
+        const cell = d.parks[visit.slug];
+        const figure = cell && cell.status !== 'CLOSED' ? shownWait(cell) : undefined;
+        return figure == null ? [] : [figure];
+      });
+      if (wait == null || open.length === 0) return null;
+      planned.push(wait);
+      average.push(mean(open));
+    }
+  }
+  if (planned.length === 0) return null;
+  const headlinerWait = mean(planned);
+  const averageDayWait = mean(average);
+  return { headlinerWait, averageDayWait, savedMinutesPerRide: averageDayWait - headlinerWait };
 }
 
 /** {@link shownWaitOn} for a plan day's own figure: a park day's park; a hop day has none. */
@@ -548,7 +587,8 @@ export type SwapPreview =
 
 /**
  * The change in big-ride minutes if the park of day `a` traded places with day `b`'s park (or day
- * off): the two parks' waits on their new days less those on their old ones. A cell difference,
+ * off): the two parks' shown waits ({@link shownWait}) on their new days less those on their old
+ * ones, so the difference is the one the days on screen give. A cell difference,
  * as the critic asked for: the re-plan after the press may move other days too, and the edit bar
  * then shows what the whole plan costs. A park moved onto a short day (a party night, an early
  * close) is named with the hours it loses, because the minutes alone hide that cost.
@@ -570,9 +610,11 @@ export function swapPreview(
     if (!slug || slug === 'rest') continue;
     const there = calendarCell(calendar, slug, to);
     if (there?.status === 'CLOSED') return { kind: 'closed', slug };
-    const here = calendarCell(calendar, slug, from)?.headlinerWait;
-    if (there?.headlinerWait == null || here == null) return { kind: 'no_figure' };
-    delta += there.headlinerWait - here;
+    const hereCell = calendarCell(calendar, slug, from);
+    const here = hereCell && shownWait(hereCell);
+    const away = there && shownWait(there);
+    if (away == null || here == null) return { kind: 'no_figure' };
+    delta += away - here;
     const less = hoursLessThanUsual(calendar, slug, to, timeZone);
     if (less !== null && (short === null || less > short.hours)) short = { slug, hours: less };
   }
