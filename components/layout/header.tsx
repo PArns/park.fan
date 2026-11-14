@@ -29,7 +29,7 @@ import { BrandLockup } from '@/components/layout/brand-lockup';
 import { NavMenu, NavEntryLabel, headerNavInk } from '@/components/layout/nav-menu';
 import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
-import { ORLANDO_SEGMENT, orlandoPath } from '@/lib/orlando/paths';
+import { LIVE_TRIP_REGIONS, tripRegionSegment } from '@/lib/trip-regions/registry';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
 import {
   PlannerMenuPanel,
@@ -291,11 +291,13 @@ export function Header({
   // The hub uses localized slugs (usePathname is locale-stripped but keeps the
   // localized segment), so match against all of them.
   const isBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => pathname === '/' + s);
-  // Orlando's best-time pages open on the same hero, under the hub's own `orlando` segment.
-  const isOrlandoBestTime = Object.values(BEST_TIME_SEGMENTS).some((s) => {
-    const base = `/${ORLANDO_SEGMENT}/${s}`;
-    return pathname === base || pathname.startsWith(`${base}/`);
-  });
+  // A trip region's best-time pages open on the same hero, under the region's own segment.
+  const isRegionBestTime = LIVE_TRIP_REGIONS.some((region) =>
+    Object.values(BEST_TIME_SEGMENTS).some((s) => {
+      const base = `/${tripRegionSegment(region, locale)}/${s}`;
+      return pathname === base || pathname.startsWith(`${base}/`);
+    })
+  );
   // Same for the guide, which also opens on a full-bleed hero.
   const isHowto = Object.values(HOWTO_SEGMENTS).some((s) => pathname === '/' + s);
   // The blog index (not its sub-pages) opens with the same full-bleed hero.
@@ -316,7 +318,7 @@ export function Header({
     isHomePage ||
     isFancast ||
     isBestTime ||
-    isOrlandoBestTime ||
+    isRegionBestTime ||
     isHowto ||
     isBlogIndex ||
     isBlogPost;
@@ -861,9 +863,11 @@ export function Header({
                         </SheetSubLink>
                       ))}
                     </SheetDisclosure>
-                    <SheetNavLink href={orlandoPath()} icon={CalendarDays}>
-                      {t('orlando')}
-                    </SheetNavLink>
+                    {plannerMenu.regions.map((region) => (
+                      <SheetNavLink key={region.id} href={region.calendarHref} icon={CalendarDays}>
+                        {region.calendarLabel}
+                      </SheetNavLink>
+                    ))}
                   </div>
                   {/* The same row as the foot of the "Mehr" panel, from one definition, smaller
                     because these are places visitors come across rather than look for. "Meine

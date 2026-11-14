@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
-import { orlandoBestTimePath } from '@/lib/orlando/paths';
+import { tripRegionBestTimePath } from '@/lib/trip-regions/paths';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { PopularParksGrid } from '@/components/home/featured-parks-slot';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
@@ -284,11 +284,15 @@ export function ContentEN() {
         <P>A few popular parks to jump straight in:</P>
         <PopularParksGrid />
         <P>
-          Going to Orlando? <A href={orlandoBestTimePath('en')}>Best time to visit Orlando</A> ranks
-          the trips with the shortest lines across the year for Disney and Universal together, and
-          month by month. The same for one resort:{' '}
-          <A href={orlandoBestTimePath('en', 'disney-world')}>Walt Disney World</A>,{' '}
-          <A href={orlandoBestTimePath('en', 'universal-orlando')}>Universal Orlando</A>.
+          Going to Orlando?{' '}
+          <A href={tripRegionBestTimePath('orlando', 'en')}>Best time to visit Orlando</A> ranks the
+          trips with the shortest lines across the year for Disney and Universal together, and month
+          by month. The same for one resort:{' '}
+          <A href={tripRegionBestTimePath('orlando', 'en', 'disney-world')}>Walt Disney World</A>,{' '}
+          <A href={tripRegionBestTimePath('orlando', 'en', 'universal-orlando')}>
+            Universal Orlando
+          </A>
+          .
         </P>
       </SectionShell>
 

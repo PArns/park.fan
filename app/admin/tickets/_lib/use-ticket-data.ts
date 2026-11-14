@@ -10,7 +10,7 @@ import {
   type AdminTicketProduct,
   type TicketClickTable,
 } from '@/lib/admin/tickets';
-import type { TripRegion } from '@/lib/orlando/types';
+import type { TripRegion } from '@/lib/trip-regions/types';
 import { AdminApiError, adminFetch, useAdminQuery } from '../../_lib/api';
 import { analyticsPath } from '../../traffic/_lib/use-traffic';
 

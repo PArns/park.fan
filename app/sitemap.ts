@@ -19,13 +19,13 @@ import { categoryPath, NEWS_INDEX_PATH, postPath } from '@/lib/blog/paths';
 import { brandParksByCountry, PARK_BRANDS } from '@/lib/parks/park-brands';
 import type { GlossaryTerm } from '@/lib/glossary/types';
 import {
-  currentOrlandoMonth,
+  currentTripRegionMonth,
   isSameMonth,
-  orlandoBestTimePath,
-  orlandoMonths,
-  orlandoPath,
-} from '@/lib/orlando/paths';
-import { ORLANDO_BEST_TIME_RESORTS } from '@/lib/orlando/best-time';
+  tripRegionBestTimePath,
+  tripRegionMonths,
+  tripRegionPath,
+} from '@/lib/trip-regions/paths';
+import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 
 const BASE_URL = SITE_URL;
 
@@ -145,27 +145,29 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     });
   }
 
-  // The Orlando hub and its eleven month pages; the current month's URL canonicals to the hub and
-  // is not listed. No `<lastmod>`: the figures are rebuilt for every month at once by each forecast
-  // warmup, which is a stamp, not an observed change (docs/rules/a-lastmod-is-observed-never-stamped.md).
-  const orlandoNow = currentOrlandoMonth();
-  for (const month of orlandoMonths(orlandoNow)) {
-    const path = orlandoPath(isSameMonth(month, orlandoNow) ? null : month);
-    const alternates = buildAlternates(() => path);
-    for (const locale of locales) {
-      routes.push({ url: `${BASE_URL}/${locale}${path}`, alternates });
+  for (const region of LIVE_TRIP_REGIONS) {
+    // Each live region's hub and its eleven month pages; the current month's URL canonicals to the
+    // hub and is not listed. No `<lastmod>`: the figures are rebuilt for every month at once by each
+    // forecast warmup, which is a stamp, not an observed change
+    // (docs/rules/a-lastmod-is-observed-never-stamped.md).
+    const now = currentTripRegionMonth(region.slug);
+    for (const month of tripRegionMonths(now)) {
+      const pathIn = (l: string) =>
+        tripRegionPath(region.slug, l, isSameMonth(month, now) ? null : month);
+      const alternates = buildAlternates(pathIn);
+      for (const locale of locales) {
+        routes.push({ url: `${BASE_URL}/${locale}${pathIn(locale)}`, alternates });
+      }
     }
-  }
 
-  // Orlando's best-time pages, undated: their figures are recomputed for all three at once, and
-  // one stamp across a class is what gets `<lastmod>` discounted (docs/seo/sitemaps.md).
-  for (const resort of [undefined, ...ORLANDO_BEST_TIME_RESORTS]) {
-    const alternates = buildAlternates((l) => orlandoBestTimePath(l, resort));
-    for (const locale of locales) {
-      routes.push({
-        url: `${BASE_URL}/${locale}${orlandoBestTimePath(locale, resort)}`,
-        alternates,
-      });
+    // Its best-time pages, undated: their figures are recomputed for all of them at once, and one
+    // stamp across a class is what gets `<lastmod>` discounted (docs/seo/sitemaps.md).
+    for (const page of region.bestTime) {
+      const pathIn = (l: string) => tripRegionBestTimePath(region.slug, l, page.id);
+      const alternates = buildAlternates(pathIn);
+      for (const locale of locales) {
+        routes.push({ url: `${BASE_URL}/${locale}${pathIn(locale)}`, alternates });
+      }
     }
   }
 

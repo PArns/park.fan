@@ -1,5 +1,5 @@
 /**
- * Unit tests for the Orlando hub's pure logic (`lib/orlando/*`): the month window and its proxy
+ * Unit tests for the Orlando hub's pure logic (`lib/trip-regions/*`): the month window and its proxy
  * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
  * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries and
  * the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
@@ -23,19 +23,19 @@ import {
   shortParkName,
   slimRegion,
   withGroupNames,
-} from '../lib/orlando/hub-data.ts';
+} from '../lib/trip-regions/hub-data.ts';
 import {
-  isOrlandoMonthInRange,
-  orlandoBestTimePath,
-  orlandoMonthHref,
-  orlandoMonths,
-  orlandoPath,
-  orlandoRelayUrl,
-  parseOrlandoMonth,
-} from '../lib/orlando/paths.ts';
-import { orlandoRedirect } from '../lib/orlando/redirects.ts';
-import { flatStretch } from '../lib/orlando/best-time.ts';
-import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/orlando/relay.ts';
+  isTripRegionMonthInRange,
+  parseTripRegionMonth,
+  tripRegionBestTimePath,
+  tripRegionMonthHref,
+  tripRegionMonths,
+  tripRegionPath,
+  tripRegionRelayUrl,
+} from '../lib/trip-regions/paths.ts';
+import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
+import { flatStretch } from '../lib/trip-regions/best-time.ts';
+import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
@@ -53,44 +53,47 @@ function test(name, fn) {
 const NOV = { year: 2026, month: 11 };
 
 test('the hub serves twelve months from the current one', () => {
-  const months = orlandoMonths(NOV);
+  const months = tripRegionMonths(NOV);
   assert.equal(months.length, 12);
   assert.deepEqual(months[0], NOV);
   assert.deepEqual(months[11], { year: 2027, month: 10 });
-  assert.equal(isOrlandoMonthInRange({ year: 2027, month: 11 }, NOV), false);
-  assert.equal(isOrlandoMonthInRange({ year: 2026, month: 10 }, NOV), false);
+  assert.equal(isTripRegionMonthInRange({ year: 2027, month: 11 }, NOV), false);
+  assert.equal(isTripRegionMonthInRange({ year: 2026, month: 10 }, NOV), false);
 });
 
 test('the current month links as the hub, every other month as itself', () => {
-  assert.equal(orlandoMonthHref(NOV, NOV), '/orlando');
-  assert.equal(orlandoMonthHref({ year: 2026, month: 12 }, NOV), '/orlando/2026/12');
-  assert.equal(orlandoPath(), '/orlando');
+  assert.equal(tripRegionMonthHref('orlando', 'de', NOV, NOV), '/orlando');
+  assert.equal(
+    tripRegionMonthHref('orlando', 'de', { year: 2026, month: 12 }, NOV),
+    '/orlando/2026/12'
+  );
+  assert.equal(tripRegionPath('orlando', 'de'), '/orlando');
 });
 
 test('month segments parse, and a padded or foreign one does not serve', () => {
-  assert.deepEqual(parseOrlandoMonth(undefined, NOV), { month: null, padded: false });
-  assert.deepEqual(parseOrlandoMonth(['2027', '3'], NOV), {
+  assert.deepEqual(parseTripRegionMonth(undefined, NOV), { month: null, padded: false });
+  assert.deepEqual(parseTripRegionMonth(['2027', '3'], NOV), {
     month: { year: 2027, month: 3 },
     padded: false,
   });
-  assert.equal(parseOrlandoMonth(['2027', '03'], NOV).padded, true);
-  assert.equal(parseOrlandoMonth(['2028', '3'], NOV), 'invalid');
-  assert.equal(parseOrlandoMonth(['beste-reisezeit', 'disney-world'], NOV), 'invalid');
+  assert.equal(parseTripRegionMonth(['2027', '03'], NOV).padded, true);
+  assert.equal(parseTripRegionMonth(['2028', '3'], NOV), 'invalid');
+  assert.equal(parseTripRegionMonth(['beste-reisezeit', 'disney-world'], NOV), 'invalid');
 });
 
 test('the proxy sends a padded month on, and a month out of range to the hub', () => {
-  assert.equal(orlandoRedirect('/de/orlando/2027/03', NOV), '/de/orlando/2027/3');
-  assert.equal(orlandoRedirect('/de/orlando/2028/3', NOV), '/de/orlando');
-  assert.equal(orlandoRedirect('/de/orlando/2027/3', NOV), null);
-  assert.equal(orlandoRedirect('/xx/orlando/2027/03', NOV), null);
+  assert.equal(tripRegionRedirect('/de/orlando/2027/03', NOV), '/de/orlando/2027/3');
+  assert.equal(tripRegionRedirect('/de/orlando/2028/3', NOV), '/de/orlando');
+  assert.equal(tripRegionRedirect('/de/orlando/2027/3', NOV), null);
+  assert.equal(tripRegionRedirect('/xx/orlando/2027/03', NOV), null);
 });
 
 test('a best-time path under /orlando is never treated as a month', () => {
-  assert.equal(orlandoRedirect('/de/orlando/beste-reisezeit/disney-world', NOV), null);
-  assert.equal(orlandoRedirect('/en/orlando/best-time-to-visit/universal-orlando', NOV), null);
-  assert.equal(orlandoBestTimePath('de'), '/orlando/beste-reisezeit');
+  assert.equal(tripRegionRedirect('/de/orlando/beste-reisezeit/disney-world', NOV), null);
+  assert.equal(tripRegionRedirect('/en/orlando/best-time-to-visit/universal-orlando', NOV), null);
+  assert.equal(tripRegionBestTimePath('orlando', 'de'), '/orlando/beste-reisezeit');
   assert.equal(
-    orlandoBestTimePath('en', 'disney-world'),
+    tripRegionBestTimePath('orlando', 'en', 'disney-world'),
     '/orlando/best-time-to-visit/disney-world'
   );
 });
@@ -123,9 +126,11 @@ test('the relay forwards each route its own query names and refuses anything els
   );
   assert.equal(tripRegionRelayTarget(['orlando'], q(''))?.forecast, false);
   assert.equal(tripRegionRelayTarget(['tokyo', 'plan'], q('')), null);
+  // A region the registry lists but has not made live: the admin's ticket page reads its parks.
+  assert.equal(tripRegionRelayTarget(['paris'], q(''))?.apiPath, '/v1/trip-regions/paris');
   assert.equal(tripRegionRelayTarget(['orlando', 'plan'], q('lock=a%2F..')), null);
   assert.equal(
-    orlandoRelayUrl('calendar', { from: '2026-12-01', to: undefined }),
+    tripRegionRelayUrl('orlando', 'calendar', { from: '2026-12-01', to: undefined }),
     '/api/trip-regions/orlando/calendar?from=2026-12-01'
   );
 });

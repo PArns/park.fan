@@ -1,7 +1,7 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import type { TripRegionLinks } from '@/lib/orlando/trip-links';
+import type { TripRegionLinks } from '@/lib/trip-regions/trip-links';
 
 /**
  * The trip regions' names and parks from `/api/nav/trip-regions`, once `enabled`: what the search

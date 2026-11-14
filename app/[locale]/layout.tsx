@@ -172,9 +172,9 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   // hub, and a photo for each. No I/O either — terms, chapters and the media catalog are modules
   // in this repo; the await is only `getTranslations` reaching for the category labels.
   const moreMenu = await getMoreMenu(locale as Locale);
-  // The planner menu's trip-planner regions, with their photos; its popular parks are
-  // `featuredParks`. Modules of this repo only, memoised per process.
-  const plannerMenu = getPlannerMenu(locale as Locale);
+  // The planner menu's trip-planner regions, with their photos and the API's park counts; its
+  // popular parks are `featuredParks`.
+  const plannerMenu = await getPlannerMenu(locale as Locale);
   // The targets of the main navigation, in this list's own order, plus the continent hubs the
   // parks menu opens onto. Kept to twelve at most: this is a hint about the primary navigation,
   // and the country links are already in the rendered <nav>.

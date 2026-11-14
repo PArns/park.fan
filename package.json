@@ -92,6 +92,7 @@
     "test:planner-assignment": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-assign.mjs",
     "test:orlando-plan": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-orlando-plan.mjs",
     "test:orlando-best-time": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-orlando-best-time.mjs",
+    "test:trip-regions": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-trip-regions.mjs",
     "test:planner-optimize": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-optimize.mjs",
     "test:quietest-day": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-quietest-day.mjs",
     "test:planner-fit": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-planner-fit.mjs",

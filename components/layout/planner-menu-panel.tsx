@@ -42,14 +42,27 @@ const PILL = 'rounded-full font-semibold';
 /** The quiet pill over a picture: the outline button on a frosted ground. */
 const PILL_QUIET = `${PILL} border-border/60 bg-background/75 hover:border-primary backdrop-blur-sm dark:bg-background/75`;
 
-/** Columns of the region row from two regions on: one each up to four, then rows of four. */
-const REGION_COLUMNS: Record<number, string> = { 2: 'grid-cols-2', 3: 'grid-cols-3' };
+/**
+ * Columns of the region row from two regions on: one each up to four, then rows of four, on the
+ * header's own width (`@container`). The band opens from a 1024 px bar; narrower, as the fixture
+ * draws it (`scripts/shoot-planner-regions.mjs`), the row keeps two to a line rather than squeeze
+ * three or four names into a third of a phone.
+ */
+const REGION_COLUMNS: Record<number, string> = {
+  2: 'grid-cols-2',
+  3: 'grid-cols-2 @min-[1024px]:grid-cols-3',
+};
+const REGION_COLUMNS_MANY = 'grid-cols-2 @min-[1024px]:grid-cols-4';
 
 /**
  * A tile's height by how many share the row: a wider tile gets taller, so the scene (2 : 1, cut
  * to fill) keeps Parky's wheel and the shore in view, as the four-region draft's tiles do.
  */
-const TILE_HEIGHT: Record<number, string> = { 2: 'h-60', 3: 'h-52' };
+const TILE_HEIGHT: Record<number, string> = {
+  2: 'h-44 @min-[768px]:h-60',
+  3: 'h-44 @min-[1024px]:h-52',
+};
+const TILE_HEIGHT_MANY = 'h-44';
 
 /**
  * The planner band: the trip planner per region, the day planner, and the locale's popular parks
@@ -57,7 +70,7 @@ const TILE_HEIGHT: Record<number, string> = { 2: 'h-60', 3: 'h-52' };
  * parks; from two on, the regions are a row of smaller cards over the other two, as in the draft's
  * four-region layout. Everything here is in every page's HTML (`hidden`, NavMenu rule 1); a
  * region's scene, the drawn day and the plan's own day render from the first opening. The data and
- * the click behaviour live elsewhere (`lib/navigation/trip-regions.ts`,
+ * the click behaviour live elsewhere (`lib/trip-regions/registry.ts`,
  * `lib/navigation/planner-menu.ts`, `lib/planner/quick-start.ts`). Memoised for the same reason as
  * `ParksMenuPanel`. See docs/features/header-navigation.md.
  */
@@ -86,19 +99,19 @@ export const PlannerMenuPanel = memo(function PlannerMenuPanel({
       <div className="flex flex-col gap-5">
         <section data-menu-stagger>
           <MenuSectionHeading label={t('tripPlanner')} count={regions.length} />
-          <div className={cn('grid gap-3', REGION_COLUMNS[regions.length] ?? 'grid-cols-4')}>
+          <div className={cn('grid gap-3', REGION_COLUMNS[regions.length] ?? REGION_COLUMNS_MANY)}>
             {regions.map((region) => (
               <RegionTile
                 key={region.id}
                 region={region}
-                height={TILE_HEIGHT[regions.length] ?? 'h-44'}
+                height={TILE_HEIGHT[regions.length] ?? TILE_HEIGHT_MANY}
               />
             ))}
           </div>
         </section>
-        <div className="grid grid-cols-12 gap-x-8">
-          <div className="col-span-7 min-w-0">{dayPlanner}</div>
-          <div className="col-span-5 min-w-0">{quickStarts}</div>
+        <div className="grid grid-cols-1 gap-y-5 @min-[768px]:grid-cols-12 @min-[768px]:gap-x-8">
+          <div className="min-w-0 @min-[768px]:col-span-7">{dayPlanner}</div>
+          <div className="min-w-0 @min-[768px]:col-span-5">{quickStarts}</div>
         </div>
       </div>
     );
@@ -166,10 +179,16 @@ function QuickStartList({ parks }: { parks: PlannerQuickStart[] }) {
   );
 }
 
-/** A region's two facts, the chips under its name. */
+/**
+ * A region's facts, the chips under its name: how many parks it plans, where the API has said, and
+ * the longest trip.
+ */
 function useRegionFacts(region: PlannerMenuRegion): string[] {
   const t = useTranslations('navigation');
-  return [t('tripParks', { count: region.parkCount }), t('tripMaxDays', { days: region.maxDays })];
+  return [
+    ...(region.parkCount !== null ? [t('tripParks', { count: region.parkCount })] : []),
+    t('tripMaxDays', { days: region.maxDays }),
+  ];
 }
 
 /**
@@ -241,8 +260,10 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
 
 /**
  * A region as one of several, from the draft's four-region layout: the scene above, and over a
- * fade at its foot where it is, its name, one line and an arrow. The whole tile is the trip
- * planner's link; the crowd calendar is the large card's and the hub's.
+ * fade at its foot where it is, its name, one line and an arrow. A long name wraps onto a second
+ * line above its foot rather than being cut, hyphenated in the page's language ("Südkali-fornien"
+ * where two tiles share a phone's row); only the one line is truncated. The whole tile is the trip planner's link; the crowd calendar is the
+ * large card's and the hub's.
  */
 function RegionTile({ region, height }: { region: PlannerMenuRegion; height: string }) {
   const t = useTranslations('navigation');
@@ -267,7 +288,7 @@ function RegionTile({ region, height }: { region: PlannerMenuRegion; height: str
           <span className="text-primary-ink block text-[10px] font-semibold tracking-widest uppercase">
             {region.area}
           </span>
-          <span className="text-foreground block text-xl leading-tight font-bold">
+          <span className="text-foreground block text-xl leading-tight font-bold text-balance break-words hyphens-auto">
             {region.name}
           </span>
           <span className="text-foreground/75 block truncate text-xs">{t('tripPlannerHint')}</span>

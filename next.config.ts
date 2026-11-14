@@ -5,6 +5,12 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
 import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 import { HOWTO_CANONICAL_SEGMENT, HOWTO_SEGMENTS } from './lib/howto/segments';
+import { LIVE_TRIP_REGIONS } from './lib/trip-regions/registry';
+import {
+  tripRegionHeaders,
+  tripRegionRedirects,
+  tripRegionRewrites,
+} from './lib/trip-regions/routes';
 
 const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
@@ -551,38 +557,7 @@ const nextConfig: NextConfig = {
       });
     }
 
-    // Orlando's best-time pages: `/orlando/<best-time segment>[/<resort>]`, the same localized
-    // segment as the hub above under the Orlando hub's own `orlando`. A wrong-locale segment goes
-    // to the locale's own; the resort slugs are the same in every language.
-    for (const [locale, correct] of Object.entries(bestTimeSegments)) {
-      for (const wrong of bestTimeAll) {
-        if (wrong === correct) continue;
-        rules.push(
-          {
-            source: `/${locale}/orlando/${wrong}`,
-            destination: `/${locale}/orlando/${correct}`,
-            permanent: true,
-          },
-          {
-            source: `/${locale}/orlando/${wrong}/:resort(disney-world|universal-orlando)`,
-            destination: `/${locale}/orlando/${correct}/:resort`,
-            permanent: true,
-          }
-        );
-      }
-      rules.push(
-        {
-          source: `/orlando/${correct}`,
-          destination: `/${locale}/orlando/${correct}`,
-          permanent: true,
-        },
-        {
-          source: `/orlando/${correct}/:resort(disney-world|universal-orlando)`,
-          destination: `/${locale}/orlando/${correct}/:resort`,
-          permanent: true,
-        }
-      );
-    }
+    rules.push(...tripRegionRedirects(LIVE_TRIP_REGIONS));
 
     // "How park.fan works" guide: localized segment canonicalization (mirrors the
     // best-time hub above). The page shipped for a year on `/howto` in all six
@@ -740,21 +715,7 @@ const nextConfig: NextConfig = {
       });
     }
 
-    // Orlando's best-time pages: the same localized segments under `/orlando`, served by
-    // app/[locale]/orlando/best-time-to-visit/[[...resort]]. A static folder, so it wins over the
-    // hub's `[[...date]]` catch-all.
-    for (const [locale, segment] of Object.entries(bestTimeSegments)) {
-      rules.push(
-        {
-          source: `/${locale}/orlando/${segment}`,
-          destination: `/${locale}/orlando/best-time-to-visit`,
-        },
-        {
-          source: `/${locale}/orlando/${segment}/:resort(disney-world|universal-orlando)`,
-          destination: `/${locale}/orlando/best-time-to-visit/:resort`,
-        }
-      );
-    }
+    rules.push(...tripRegionRewrites(LIVE_TRIP_REGIONS));
 
     // "How park.fan works" guide: serve localized segments via the canonical
     // route folder (app/[locale]/how-park-fan-works). EN needs no rewrite.
@@ -1018,8 +979,8 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
       },
       {
-        // The Orlando hub's relay: the region a day, its keyed routes the API's hour. The
-        // handler's own values (`lib/orlando/relay.ts`), kept identical.
+        // The trip regions' relay: a region a day, its keyed routes the API's hour. The
+        // handler's own values (`lib/trip-regions/relay.ts`), kept identical.
         source: '/api/trip-regions/:region',
         headers: sharedCache('public, max-age=3600, s-maxage=86400, stale-while-revalidate=86400'),
       },
@@ -1259,32 +1220,10 @@ const nextConfig: NextConfig = {
         source: `/:locale/${segment}`,
         headers: edgeCache(CONTENT_WINDOW),
       })),
-      {
-        // The Orlando hub. An hour, like the park calendar's hub: it names Orlando's today in its
-        // first answer, and its figures come from the Data Cache at most an hour old.
-        source: `/:locale(${locales.join('|')})/orlando`,
-        headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=3600'),
-      },
-      {
-        // An Orlando month page. Twelve hours: it renders its month's figures on the server, and the
-        // forecast behind them is rebuilt twice a day. The year and month are digits, so the
-        // best-time pages under `/orlando/<segment>/<resort>` keep their own rule.
-        source: `/:locale(${locales.join('|')})/orlando/:year(\\d{4})/:month(\\d{1,2})`,
-        headers: edgeCache('public, s-maxage=43200, stale-while-revalidate=3600'),
-      },
-      ...bestTimeHeaderSegments.flatMap((segment) => [
-        {
-          // Orlando's best-time pages. An hour, like the hub: the title names the year Orlando's
-          // today decides, and the figures come from the Data Cache, an hour old at most. Listed
-          // after the month rule so this, the more specific source, decides.
-          source: `/:locale(${locales.join('|')})/orlando/${segment}`,
-          headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=3600'),
-        },
-        {
-          source: `/:locale(${locales.join('|')})/orlando/${segment}/:resort(disney-world|universal-orlando)`,
-          headers: edgeCache('public, s-maxage=3600, stale-while-revalidate=3600'),
-        },
-      ]),
+      ...tripRegionHeaders(LIVE_TRIP_REGIONS, locales).map((rule) => ({
+        source: rule.source,
+        headers: edgeCache(rule.window),
+      })),
       {
         // Legal pages. A day fresh — they change once a year, and when they do, being an hour
         // late is not the risk; being a week late is.

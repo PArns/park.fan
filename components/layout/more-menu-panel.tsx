@@ -15,8 +15,12 @@ import { Link } from '@/i18n/navigation';
 import { HubBanner } from '@/components/layout/hub-banner';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { PhotoCredit, TILE_CREDIT_POSITION } from '@/components/media/photo-credit';
-import type { MoreMenu, MoreMenuChapter, MoreMenuPhoto } from '@/lib/navigation/more-menu';
-import { orlandoPath } from '@/lib/orlando/paths';
+import type {
+  MoreMenu,
+  MoreMenuChapter,
+  MoreMenuPhoto,
+  MoreMenuRegion,
+} from '@/lib/navigation/more-menu';
 
 /**
  * The "more" band: the reading material that has no place of its own in the bar. Named "more"
@@ -84,7 +88,9 @@ export const MoreMenuPanel = memo(function MoreMenuPanel({
   // as on the homepage's `BlogChapter`, `Compass` as in the bar and the phone sheet.
   return (
     <div className="flex flex-col gap-5">
-      <OrlandoTile photo={menu?.orlando.photo ?? null} />
+      {menu?.regions.map((region) => (
+        <RegionTile key={region.slug} region={region} />
+      ))}
       <div className="grid grid-cols-3 gap-x-8 gap-y-5">
         {/* The dictionary: its categories, each an anchor on the overview rather than a filtered
             view, because the overview's filter is client state with no URL of its own. The label
@@ -194,15 +200,16 @@ function FancastCard({ photo }: { photo: MoreMenuPhoto | null }) {
 }
 
 /**
- * The Orlando hub, one wide tile over the three columns: a destination rather than a topic, so it
- * does not take a column of its own. A strip of the Tree of Life with the name and one line on it,
- * all of it the hub's link.
+ * A trip region's hub, one wide tile over the three columns: a destination rather than a topic, so
+ * it does not take a column of its own. A strip of the region's photo (Orlando's Tree of Life) with
+ * the hub's name and one line on it, all of it the hub's link; the words are resolved on the
+ * server (`getMoreMenu`), since they are the region's own.
  */
-function OrlandoTile({ photo }: { photo: MoreMenuPhoto | null }) {
-  const t = useTranslations('navigation');
+function RegionTile({ region }: { region: MoreMenuRegion }) {
+  const { photo } = region;
   return (
     <Link
-      href={orlandoPath()}
+      href={region.href as '/'}
       prefetch={false}
       data-menu-stagger
       className="group focus-visible:ring-ring relative block h-16 overflow-hidden rounded-xl bg-neutral-800 focus-visible:ring-2 focus-visible:outline-none"
@@ -224,8 +231,8 @@ function OrlandoTile({ photo }: { photo: MoreMenuPhoto | null }) {
       <PhotoCredit src={photo?.src} className={TILE_CREDIT_POSITION} />
       <span className="absolute inset-y-0 left-4 flex items-center gap-3 pr-24 text-white">
         <CalendarDays className="size-4 shrink-0" aria-hidden="true" />
-        <span className="text-[15px] font-semibold">{t('orlando')}</span>
-        <span className="hidden truncate text-xs text-white/85 sm:inline">{t('orlandoHint')}</span>
+        <span className="text-[15px] font-semibold">{region.name}</span>
+        <span className="hidden truncate text-xs text-white/85 sm:inline">{region.hint}</span>
         <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
       </span>
     </Link>

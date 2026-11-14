@@ -34,6 +34,7 @@ import {
   type LucideIcon,
 } from 'lucide-react';
 import { roleAtLeast, type AdminRole } from '@/lib/admin/roles';
+import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 
 /**
  * The admin's map of itself, read by the sidebar, the command palette and the breadcrumb.
@@ -107,8 +108,17 @@ const NAV_GROUPS: NavGroup[] = [
         href: '/admin/tickets',
         label: 'Tickets',
         icon: Ticket,
-        description: 'Ticketkatalog des Reiseplaners: Produkte, Regeln, Links',
-        keywords: ['orlando', 'planer', 'katalog', 'disney', 'universal', 'partnerlink', 'shop'],
+        description: 'Ticketkatalog des Reiseplaners je Region: Produkte, Regeln, Links',
+        keywords: [
+          ...TRIP_REGIONS.map((region) => region.slug),
+          'region',
+          'planer',
+          'katalog',
+          'disney',
+          'universal',
+          'partnerlink',
+          'shop',
+        ],
       },
       {
         href: '/admin/data-quality',

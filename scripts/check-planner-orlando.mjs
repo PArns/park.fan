@@ -59,8 +59,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await page.goto(`${base}${path}`, { waitUntil: 'domcontentloaded' });
     await page.waitForFunction(
       () =>
-        document.querySelectorAll('[data-orlando-planner]').length === 1 &&
-        !document.querySelector('[data-orlando-planner] [data-setup-row]:disabled'),
+        document.querySelectorAll('[data-trip-planner]').length === 1 &&
+        !document.querySelector('[data-trip-planner] [data-setup-row]:disabled'),
       null,
       { timeout: 60_000 }
     );
