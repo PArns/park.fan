@@ -8,7 +8,8 @@ import {
   HolidayMitten,
   HolidayParky,
   HolidaySceneSvg,
-  motionOnce,
+  LOOPING,
+  sceneMotion,
   type HolidayEyes,
 } from './holiday-parky';
 
@@ -19,20 +20,9 @@ import {
  * he squints into the sun with a grin; at dusk in the dark one the sun is half in the sea, the pier
  * lights come on and he watches it go down. Built from the live Parky's pieces through
  * `HolidayParky`, in the 320 × 160 frame of the Orlando scene. Decoration: `aria-hidden`; the gulls,
- * the wave and the setting sun move once (`MOTION` below), not at all under reduced motion.
+ * the wave and the setting sun move as it is shown, and where it loops the wheel turns, the waves
+ * keep rolling in and the gulls ride the wind (`MOTION` below); not at all under reduced motion.
  */
-
-/** The moves, each once: the gulls glide in, the wave runs up the sand, the sun sinks, the pier lights up. */
-const MOTION = motionOnce(`
-.parky-socal-gull { animation: parky-socal-glide 2.4s cubic-bezier(.2,.7,.3,1) both; }
-.parky-socal-wave { animation: parky-socal-wave 1.8s cubic-bezier(.3,.6,.3,1) both; }
-.parky-socal-sun { animation: parky-socal-sink 2.8s cubic-bezier(.3,.5,.3,1) both; }
-.parky-socal-light { animation: parky-socal-light .5s ease-out both; }
-@keyframes parky-socal-glide { from { opacity: 0; transform: translate(-16px, 4px); } }
-@keyframes parky-socal-wave { from { opacity: .2; transform: translateY(-5px); } }
-@keyframes parky-socal-sink { from { transform: translateY(-10px); } }
-@keyframes parky-socal-light { from { opacity: 0; } }
-`);
 
 /** A fan palm's frond tips as offsets from the crown, before scaling: short, stiff and all round. */
 const FAN_TIPS = [
@@ -116,8 +106,9 @@ const PIER_DECK = 'M-2 86.6H88v1.8H-2Z';
 const PIER_PILES =
   'M4 88.4v8M14 88.4v8M24 88.4v8M34 88.4v8M44 88.4v8M54 88.4v8M64 88.4v8M74 88.4v8M86 88.4v8';
 const PIER_RAIL = 'M-2 84.2H88M6 84.2v2.4M42 84.2v2.4M58 84.2v2.4M86 84.2v2.4';
-/** The pier's Ferris wheel, a small echo of Parky's own: its hub and its rim. */
+/** The pier's Ferris wheel, a small echo of Parky's own: its hub and its rim, and its cabins. */
 const PIER_WHEEL = { x: 72, y: 71, r: 10 };
+const PIER_CABINS = cabinsOnRim(PIER_WHEEL);
 /** The lamps along the pier, lit at dusk one after another from the shore out. */
 const PIER_LAMPS = [6, 24, 42, 58, 86] as const;
 
@@ -237,14 +228,53 @@ function Parky({ ground, eyes }: { ground: string; eyes: HolidayEyes }) {
   );
 }
 
+/**
+ * The moves. Each time it is shown the gulls glide in, a wave runs up the sand, the sun sinks and
+ * the pier lights up. The wave is the end of a round (run up the sand, draw back, come in again)
+ * that looping plays on, a breaker rolling in on the same beat; the wheel turns once in 24 s, and
+ * its cabins are circles, so they hang straight all the way round without turning back.
+ */
+const MOTION = sceneMotion(
+  `
+.parky-socal-gull { animation: parky-socal-glide 2.4s cubic-bezier(.2,.7,.3,1) both; }
+.parky-socal-wave { animation: parky-socal-wave 6s -4.2s both; }
+.parky-socal-sun { animation: parky-socal-sink 2.8s cubic-bezier(.3,.5,.3,1) both; }
+.parky-socal-light { animation: parky-socal-light .5s ease-out both; }
+@keyframes parky-socal-glide { from { opacity: 0; transform: translate(-16px, 4px); } }
+@keyframes parky-socal-wave {
+  0% { opacity: 1; transform: translateY(0); animation-timing-function: cubic-bezier(.3,.6,.4,1); }
+  30% { opacity: .9; transform: translateY(2.4px); animation-timing-function: ease-in-out; }
+  70% { opacity: .2; transform: translateY(-5px); animation-timing-function: cubic-bezier(.3,.6,.3,1); }
+  100% { opacity: 1; transform: translateY(0); } }
+@keyframes parky-socal-sink { from { transform: translateY(-10px); } }
+@keyframes parky-socal-light { from { opacity: 0; } }
+`,
+  `
+${LOOPING} .parky-socal-wave { animation-iteration-count: infinite; }
+${LOOPING} .parky-socal-breaker { animation: parky-socal-breaker 6s infinite; }
+${LOOPING} .parky-socal-wheel { transform-origin: ${PIER_WHEEL.x}px ${PIER_WHEEL.y}px;
+  animation: parky-socal-turn 24s linear infinite; }
+${LOOPING} .parky-socal-soar { animation: parky-socal-soar 2.6s ease-in-out infinite alternate; }
+${LOOPING} .parky-socal-soar--far { animation-duration: 3.3s; animation-delay: -1.2s; }
+@keyframes parky-socal-breaker {
+  0% { opacity: 1; transform: translate(0, 0); animation-timing-function: ease-in; }
+  25% { opacity: 0; transform: translate(3px, 5px); animation-timing-function: step-end; }
+  45% { opacity: 0; transform: translate(-3px, -4px); animation-timing-function: ease-out; }
+  70% { opacity: .8; }
+  100% { opacity: 1; transform: translate(0, 0); } }
+@keyframes parky-socal-turn { to { transform: rotate(360deg); } }
+@keyframes parky-socal-soar { from { transform: translate(0, 0); } to { transform: translate(1px, -1.4px); } }
+`
+);
+
 /** The Southern California scene, filling its box from the right edge (`xMaxYMid slice`). */
-export function ParkySouthernCaliforniaScene({ className }: TripRegionSceneProps) {
+export function ParkySouthernCaliforniaScene({ className, loop }: TripRegionSceneProps) {
   const id = useId();
   const sky = `${id}sky`;
   const sea = `${id}sea`;
   const ground = `${id}ground`;
   return (
-    <HolidaySceneSvg className={className} motion={MOTION}>
+    <HolidaySceneSvg className={className} motion={MOTION} loop={loop}>
       <defs>
         <linearGradient id={sky} x1="0" y1="0" x2="0" y2="94" gradientUnits="userSpaceOnUse">
           <stop
@@ -306,10 +336,14 @@ export function ParkySouthernCaliforniaScene({ className }: TripRegionSceneProps
         className="stroke-[oklch(0.42_0.03_250)] dark:stroke-[oklch(0.2_0.05_300)]"
       >
         <g transform="translate(112 34) scale(1.3)">
-          <path className="parky-socal-gull" d={GULL} />
+          <g className="parky-socal-soar">
+            <path className="parky-socal-gull" d={GULL} />
+          </g>
         </g>
         <g transform="translate(128 25)">
-          <path className="parky-socal-gull" d={GULL} style={{ animationDelay: '.3s' }} />
+          <g className="parky-socal-soar parky-socal-soar--far">
+            <path className="parky-socal-gull" d={GULL} style={{ animationDelay: '.3s' }} />
+          </g>
         </g>
       </g>
 
@@ -346,7 +380,7 @@ export function ParkySouthernCaliforniaScene({ className }: TripRegionSceneProps
         fill="none"
         strokeWidth="1"
         strokeLinecap="round"
-        className="stroke-white/70 dark:stroke-[oklch(0.86_0.06_40)]/50"
+        className="parky-socal-breaker stroke-white/70 dark:stroke-[oklch(0.86_0.06_40)]/50"
       />
 
       {/* The pier, with its wheel at the end. */}
@@ -372,32 +406,34 @@ export function ParkySouthernCaliforniaScene({ className }: TripRegionSceneProps
           className="fill-[oklch(0.94_0.03_80)] dark:fill-[oklch(0.25_0.05_300)]"
         />
         <path d={PIER_HUT_ROOF} fill={rail} className="dark:fill-[oklch(0.25_0.05_300)]" />
-        <circle
-          cx={PIER_WHEEL.x}
-          cy={PIER_WHEEL.y}
-          r={PIER_WHEEL.r}
-          fill="none"
-          strokeWidth="1"
-          className="stroke-[oklch(0.97_0.01_90)] dark:stroke-[oklch(0.24_0.05_300)]"
-        />
-        <path
-          d={wheelSpokes(PIER_WHEEL, cabinsOnRim(PIER_WHEEL))}
-          strokeWidth=".45"
-          className="stroke-[oklch(0.97_0.01_90)]/80 dark:stroke-[oklch(0.24_0.05_300)]"
-        />
-        {cabinsOnRim(PIER_WHEEL).map((cabin, i) => (
+        <g className="parky-socal-wheel">
           <circle
-            key={`${cabin.x} ${cabin.y}`}
-            cx={cabin.x}
-            cy={cabin.y}
-            r="1.3"
-            className={
-              i % 2
-                ? 'fill-[oklch(0.72_0.17_355)] dark:fill-[oklch(0.78_0.15_355)]'
-                : 'fill-[oklch(0.86_0.15_90)] dark:fill-[oklch(0.9_0.13_90)]'
-            }
+            cx={PIER_WHEEL.x}
+            cy={PIER_WHEEL.y}
+            r={PIER_WHEEL.r}
+            fill="none"
+            strokeWidth="1"
+            className="stroke-[oklch(0.97_0.01_90)] dark:stroke-[oklch(0.24_0.05_300)]"
           />
-        ))}
+          <path
+            d={wheelSpokes(PIER_WHEEL, PIER_CABINS)}
+            strokeWidth=".45"
+            className="stroke-[oklch(0.97_0.01_90)]/80 dark:stroke-[oklch(0.24_0.05_300)]"
+          />
+          {PIER_CABINS.map((cabin, i) => (
+            <circle
+              key={`${cabin.x} ${cabin.y}`}
+              cx={cabin.x}
+              cy={cabin.y}
+              r="1.3"
+              className={
+                i % 2
+                  ? 'fill-[oklch(0.72_0.17_355)] dark:fill-[oklch(0.78_0.15_355)]'
+                  : 'fill-[oklch(0.86_0.15_90)] dark:fill-[oklch(0.9_0.13_90)]'
+              }
+            />
+          ))}
+        </g>
         <g className="hidden dark:inline" fill={gold}>
           {PIER_LAMPS.map((x, i) => (
             <g key={x}>

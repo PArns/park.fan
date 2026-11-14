@@ -73,12 +73,20 @@ export function HolidayParky({
 }
 
 /**
- * A scene's stylesheet from its moves: they play once each time the band shows and only where the
- * reader allows motion, since the band is glass and nothing may run on under a `backdrop-filter`.
- * Without motion every piece keeps its own resting state, so the picture stands finished.
+ * The selector every looping rule of a scene starts with: the root `HolidaySceneSvg` marks when it
+ * is asked to `loop`. A scene's `<style>` applies to the whole document, so the loop is keyed to
+ * its own root rather than to where it stands.
  */
-export function motionOnce(css: string): string {
-  return `@media (prefers-reduced-motion: no-preference) {${css}}`;
+export const LOOPING = '[data-scene-loop]';
+
+/**
+ * A scene's stylesheet: `entrance`, the moves it plays each time it is shown, and `loop`, the
+ * rules under {@link LOOPING} that keep it moving for as long as it is shown where it is asked to
+ * loop. Both only where the reader allows motion: without it every piece keeps its resting state,
+ * so the picture stands finished.
+ */
+export function sceneMotion(entrance: string, loop: string): string {
+  return `@media (prefers-reduced-motion: no-preference) {${entrance}${loop}}`;
 }
 
 /** One of his hands: a round mitten in his own colours, as the umbrella's in `looks.tsx`. */
@@ -100,16 +108,17 @@ export function HolidayGround({ id }: { id: string }) {
  * A scene's root, the region scenes' and `ParkyBreakScene`'s: the 320 × 160 frame, filling its box
  * from the right edge (`xMaxYMid slice`), where Parky stands, and leaving the left to the card's
  * text. Decoration: `aria-hidden` and out of the tab order. `motion`, where a scene has one, is its
- * own stylesheet: the moves it plays once, written under `prefers-reduced-motion: no-preference` so
- * without motion the picture stands finished.
+ * own stylesheet ({@link sceneMotion}); `loop` marks the root for its looping half.
  */
 export function HolidaySceneSvg({
   className,
   motion,
+  loop,
   children,
 }: {
   className?: string;
   motion?: string;
+  loop?: boolean;
   children: ReactNode;
 }) {
   return (
@@ -119,6 +128,7 @@ export function HolidaySceneSvg({
       className={cn('block', className)}
       aria-hidden="true"
       focusable="false"
+      data-scene-loop={loop ? '' : undefined}
     >
       {motion && <style>{motion}</style>}
       {children}

@@ -9,9 +9,13 @@ import { useAfterLoad } from '@/lib/hooks/use-after-load';
 import { TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import type { MoreMenuPhoto } from '@/lib/navigation/more-menu';
 
-/** What the lazily loaded art receives: the scene's box, and what to draw if it never arrives. */
+/**
+ * What the lazily loaded art receives: the scene's box, whether it loops (`TripRegionSceneProps`),
+ * and what to draw if it never arrives.
+ */
 interface ArtProps {
   className?: string;
+  loop?: boolean;
   fallback: React.ReactNode;
 }
 
@@ -30,8 +34,8 @@ const SCENES: Partial<Record<string, LazyExoticComponent<ComponentType<ArtProps>
               lazy(() =>
                 load().then(
                   ({ default: Scene }) => ({
-                    default: function RegionScene({ className }: ArtProps) {
-                      return <Scene className={className} />;
+                    default: function RegionScene({ className, loop }: ArtProps) {
+                      return <Scene className={className} loop={loop} />;
                     },
                   }),
                   () => ({
@@ -66,6 +70,8 @@ export function useRegionScene(regionId: string): RegionScene | null {
  * mounted after, so no page carries its markup, or a photo it would cover, in the HTML; a crawler
  * loses nothing, since it is decoration (`aria-hidden` by the scene's own contract). It fades in
  * over the card's ground rather than cutting, and a chunk that fails to load leaves the photo.
+ * Here alone the scene loops: it plays its entrance each time the band opens and moves on while the
+ * band shows, and the band's `hidden` stops it on every close.
  */
 export function PlannerRegionArt({
   regionId,
@@ -86,21 +92,29 @@ export function PlannerRegionArt({
   if (!Scene) return photoArt;
   if (!armed) return null;
 
-  return <SceneFade Scene={Scene} fallback={photoArt} />;
+  return <SceneFade Scene={Scene} fallback={photoArt} loop />;
 }
 
 /**
  * A loaded scene filling its box, faded in over the card's ground rather than cut in; the scene
- * comes from {@link useRegionScene}.
+ * comes from {@link useRegionScene}, and `loop` is the scene's own (`TripRegionSceneProps`).
  */
-export function SceneFade({ Scene, fallback }: { Scene: RegionScene; fallback: React.ReactNode }) {
+export function SceneFade({
+  Scene,
+  fallback,
+  loop,
+}: {
+  Scene: RegionScene;
+  fallback: React.ReactNode;
+  loop?: boolean;
+}) {
   return (
     <Suspense fallback={null}>
       <span
         aria-hidden="true"
         className="absolute inset-0 transition-opacity duration-300 starting:opacity-0"
       >
-        <Scene className="h-full w-full" fallback={fallback} />
+        <Scene className="h-full w-full" fallback={fallback} loop={loop} />
       </span>
     </Suspense>
   );

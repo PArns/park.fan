@@ -17,7 +17,7 @@ import {
 import { LOOK_GAZE, ParkyShades } from './looks';
 import { ParkyMap } from './props';
 import { ParkyWheel } from './wheel';
-import { HolidaySceneSvg } from './holiday-parky';
+import { HolidaySceneSvg, LOOPING, sceneMotion } from './holiday-parky';
 import { ParkyEyeWhite, ParkyPupil } from './eyes';
 
 /**
@@ -26,17 +26,169 @@ import { ParkyEyeWhite, ParkyPupil } from './eyes';
  * By day in the light theme, sunglasses on; in the evening in the dark one, the glasses pushed up
  * and his eyes on the fireworks. Built from the live Parky's pieces (`drawing.ts`, the wheel, the
  * shades and the fireworks' burst of `looks.tsx`, the map of `props.tsx`), in the 320 × 160 frame
- * of `ParkyBreakScene`. Decoration: `aria-hidden`, and the launch and the bursts play once
- * (`.parky-orlando-*` in `app/parky.css`), not at all under reduced motion.
+ * of `ParkyBreakScene`. Decoration: `aria-hidden`. The rocket lifts off and climbs to its place,
+ * drawing its trail, and the evening's bursts open (`MOTION` below); where the scene loops, the
+ * bursts go on opening one after another and the rocket's flame and plume keep burning, while the
+ * rocket itself stays where it stopped. Under reduced motion the picture stands finished.
  */
 
-/** Where the evening's bursts open: centre, colour, size and when, over the lake's left half. */
+/**
+ * Where the evening's bursts open: centre, colour, size, when the first opens and how long one
+ * round of opening, standing and fading takes. Rounds of different lengths drift apart, so the
+ * order of the bursts keeps changing.
+ */
 const BURSTS = [
-  { x: 46, y: 34, colour: 'oklch(0.72 0.17 355)', scale: 3.4, delay: 0 },
-  { x: 92, y: 18, colour: gold, scale: 3.8, delay: 0.35 },
-  { x: 134, y: 44, colour: 'oklch(0.7 0.15 200)', scale: 3, delay: 0.7 },
-  { x: 18, y: 64, colour: green, scale: 2.2, delay: 1.05 },
+  { x: 46, y: 34, colour: 'oklch(0.72 0.17 355)', scale: 3.4, delay: 0, period: 4.2 },
+  { x: 92, y: 18, colour: gold, scale: 3.8, delay: 0.35, period: 5 },
+  { x: 134, y: 44, colour: 'oklch(0.7 0.15 200)', scale: 3, delay: 0.7, period: 4.6 },
+  { x: 18, y: 64, colour: green, scale: 2.2, delay: 1.05, period: 5.4 },
 ];
+
+/** Where in a burst's round it starts to open; what comes before is its standing, fading and dark. */
+const BURST_OPENS = 0.62;
+
+/**
+ * A burst's timing as inline style: its round's length, and a start that puts it in the dark part
+ * of the round so it opens after its own delay. Played once the round ends open; looped, it goes
+ * on.
+ */
+function burstTiming({ delay, period }: { delay: number; period: number }) {
+  return {
+    animationDuration: `${period}s`,
+    animationDelay: `${(delay - BURST_OPENS * period).toFixed(2)}s`,
+  };
+}
+
+/** The launch's trail, a cubic from the pad on the far shore up to where the rocket stops. */
+const TRAIL = [
+  [168, 95],
+  [170, 72],
+  [172, 50],
+  [186, 22],
+] as const;
+const TRAIL_PATH = `M${TRAIL[0].join(' ')}C${TRAIL.slice(1)
+  .map((point) => point.join(' '))
+  .join(' ')}`;
+
+/** Where the rocket stops: just past the trail's end, leaning with it. */
+const ROCKET_AT = { x: 186.6, y: 20.6, lean: 24 };
+
+/** How long the climb takes, and how far below the pad it starts, out of sight behind the shore. */
+const CLIMB_SECONDS = 2.2;
+const CLIMB_FROM = -14;
+
+/** A point on the trail, and its heading in degrees clockwise from straight up, at `t` in 0…1. */
+function onTrail(t: number) {
+  const u = 1 - t;
+  const weights = [u * u * u, 3 * u * u * t, 3 * u * t * t, t * t * t];
+  const slopes = [-3 * u * u, 3 * u * u - 6 * u * t, 6 * u * t - 3 * t * t, 3 * t * t];
+  const sum = (w: number[], axis: 0 | 1) => w.reduce((acc, k, i) => acc + k * TRAIL[i][axis], 0);
+  const dx = sum(slopes, 0);
+  const dy = sum(slopes, 1);
+  return {
+    x: sum(weights, 0),
+    y: sum(weights, 1),
+    heading: (Math.atan2(dx, -dy) * 180) / Math.PI,
+  };
+}
+
+/**
+ * The climb as two keyframe lists on the same beats: the rocket's offset from where it stops, and
+ * how much of the trail is drawn behind it, so the trail's tip stays under the flame. It lifts off
+ * slowly, gathers speed and eases into its place.
+ */
+const CLIMB_KEYFRAMES = (() => {
+  const steps = 200;
+  const table = [{ t: 0, at: 0 }];
+  let previous = onTrail(0);
+  for (let i = 1; i <= steps; i++) {
+    const point = onTrail(i / steps);
+    table.push({
+      t: i / steps,
+      at: table[i - 1].at + Math.hypot(point.x - previous.x, point.y - previous.y),
+    });
+    previous = point;
+  }
+  const length = table[steps].at;
+  const end = onTrail(1);
+  const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
+  const f = (n: number) => +n.toFixed(2);
+
+  const rocket: string[] = [];
+  const trail: string[] = [];
+  const beats = 16;
+  for (let i = 0; i <= beats; i++) {
+    const distance = CLIMB_FROM + (length - CLIMB_FROM) * ease(i / beats);
+    const along = Math.max(0, distance);
+    const row = table.find((entry) => entry.at >= along) ?? table[steps];
+    const point = onTrail(row.t);
+    const back = Math.min(0, distance);
+    const turn = point.heading - end.heading;
+    const rad = (turn * Math.PI) / 180;
+    const ox = ROCKET_AT.x - end.x;
+    const oy = ROCKET_AT.y - end.y;
+    const heading = (onTrail(0).heading * Math.PI) / 180;
+    const x = point.x + back * Math.sin(heading) + ox * Math.cos(rad) - oy * Math.sin(rad);
+    const y = point.y - back * Math.cos(heading) + ox * Math.sin(rad) + oy * Math.cos(rad);
+    const beat = `${f((i / beats) * 100)}%`;
+    rocket.push(
+      `${beat} { transform: translate(${f(x)}px, ${f(y)}px) rotate(${f(turn)}deg) translate(${-ROCKET_AT.x}px, ${-ROCKET_AT.y}px); }`
+    );
+    trail.push(`${beat} { stroke-dashoffset: ${f(1 - along / length)}; }`);
+  }
+  return {
+    rocket: `@keyframes parky-orlando-climb { ${rocket.join(' ')} }`,
+    trail: `@keyframes parky-orlando-draw { ${trail.join(' ')} }`,
+  };
+})();
+
+/**
+ * The moves. Each time it is shown the rocket climbs with its trail and the puffs of the launch
+ * swell; each burst opens after its delay, a round of its own that ends open. Looping, the rounds
+ * go on, each burst standing, fading as its sparks fall and opening again, its glint on the lake
+ * with it; the flame flickers and glows, and a soft plume round the trail drifts and breathes. The
+ * plume waits for the trail to be drawn, so it never shows ahead of the rocket.
+ */
+const MOTION = sceneMotion(
+  `
+.parky-orlando-climb { animation: parky-orlando-climb ${CLIMB_SECONDS}s linear both; }
+.parky-orlando-trail { stroke-dasharray: 1; animation: parky-orlando-draw ${CLIMB_SECONDS}s linear both; }
+.parky-orlando-puffs { transform-box: fill-box; transform-origin: 50% 100%;
+  animation: parky-orlando-swell 1.4s ease-out both; }
+.parky-orlando-burst { transform-box: fill-box; transform-origin: center;
+  animation: parky-orlando-burst 4s linear both; }
+.parky-orlando-echo { animation: parky-orlando-echo 4s linear both; }
+${CLIMB_KEYFRAMES.rocket}
+${CLIMB_KEYFRAMES.trail}
+@keyframes parky-orlando-swell { from { opacity: 0; transform: scale(.3); } 30% { opacity: 1; } }
+@keyframes parky-orlando-burst {
+  0%, 20% { opacity: 1; transform: translateY(0) scale(1); animation-timing-function: ease-in; }
+  46% { opacity: 0; transform: translateY(.7px) scale(1.2); animation-timing-function: step-end; }
+  ${BURST_OPENS * 100}% { opacity: 0; transform: translateY(0) scale(.25); animation-timing-function: cubic-bezier(.2,.7,.3,1); }
+  72% { opacity: 1; }
+  80%, 100% { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes parky-orlando-echo {
+  0%, 20% { opacity: 1; } 46%, ${BURST_OPENS * 100}% { opacity: 0; } 72%, 100% { opacity: 1; } }
+`,
+  `
+${LOOPING} .parky-orlando-burst, ${LOOPING} .parky-orlando-echo { animation-iteration-count: infinite; }
+${LOOPING} .parky-orlando-flame { transform-box: fill-box; transform-origin: 50% 0;
+  animation: parky-orlando-flicker .5s linear infinite; }
+${LOOPING} .parky-orlando-glow { animation: parky-orlando-glow .8s ease-in-out infinite alternate; }
+${LOOPING} .parky-orlando-plume { animation: parky-orlando-plume-in 1.4s ease-out ${CLIMB_SECONDS}s forwards; }
+${LOOPING} .parky-orlando-billow { animation: parky-orlando-billow 3.4s ease-in-out infinite alternate; }
+${LOOPING} .parky-orlando-billow--wide { animation-name: parky-orlando-billow-wide; animation-duration: 4.6s; }
+${LOOPING} .parky-orlando-puff { transform-box: fill-box; transform-origin: 50% 100%;
+  animation: parky-orlando-puff 2.8s ease-in-out infinite alternate; }
+@keyframes parky-orlando-flicker { 0%, 100% { transform: scale(1, 1); } 20% { transform: scale(.88, 1.3); }
+  45% { transform: scale(1.06, .86); } 70% { transform: scale(.94, 1.18); } }
+@keyframes parky-orlando-glow { from { opacity: .45; } to { opacity: 1; } }
+@keyframes parky-orlando-plume-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes parky-orlando-billow { from { opacity: .5; transform: translateX(-.4px); } to { opacity: 1; transform: translateX(.5px); } }
+@keyframes parky-orlando-billow-wide { from { opacity: 0; transform: translateX(0); } to { opacity: 1; transform: translateX(1.2px); } }
+@keyframes parky-orlando-puff { from { transform: scale(1); } to { transform: scale(1.08, 1.12); } }
+`
+);
 
 /** The coaster on the far shore: lift hill, drop, a loop, the run-out; its supports; its lights. */
 const COASTER =
@@ -122,11 +274,18 @@ function Palm({
   );
 }
 
-/** A rocket, nose up at the origin: white body, red nose and fins, a gold flame. */
+/**
+ * A rocket, nose up at the origin: white body, red nose and fins, a gold flame. The glow under the
+ * flame shows only while the scene loops.
+ */
 function Rocket() {
   return (
     <g>
-      <path d="M-1 4.6Q0 10.5 1 4.6Z" fill={gold} />
+      <g className="parky-orlando-glow" opacity="0">
+        <circle cy="8" r="4.4" fill={gold} opacity=".35" />
+        <ellipse cy="7" rx="1.6" ry="2.6" fill="oklch(0.98 0.06 95)" opacity=".8" />
+      </g>
+      <path className="parky-orlando-flame" d="M-1 4.6Q0 10.5 1 4.6Z" fill={gold} />
       <path d="M-1.7 1.8-3.6 5.4-1.7 4.6ZM1.7 1.8 3.6 5.4 1.7 4.6Z" fill={rail} />
       <rect
         x="-1.7"
@@ -235,9 +394,9 @@ function Parky({ evening }: { evening: boolean }) {
 }
 
 /** The Orlando scene, filling its box from the right edge (`xMaxYMid slice`). */
-export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
+export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
   return (
-    <HolidaySceneSvg className={className}>
+    <HolidaySceneSvg className={className} motion={MOTION} loop={loop}>
       <defs>
         <linearGradient id="parky-orlando-sky" x1="0" y1="0" x2="0" y2="1">
           <stop
@@ -294,10 +453,23 @@ export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
         </g>
       </g>
 
-      {/* A launch from the coast: the trail curls up from the far shore, the rocket at its tip. */}
+      {/* A launch from the coast: the trail curls up from the far shore, the rocket at its tip. The
+          plume round it is drawn only while the scene loops. */}
       <g>
+        <g className="parky-orlando-plume" opacity="0" fill="none" strokeLinecap="round">
+          <path
+            d={TRAIL_PATH}
+            strokeWidth="5.5"
+            className="parky-orlando-billow stroke-white/30 dark:stroke-[oklch(0.9_0.08_70)]/25"
+          />
+          <path
+            d={TRAIL_PATH}
+            strokeWidth="9"
+            className="parky-orlando-billow parky-orlando-billow--wide stroke-white/20 dark:stroke-[oklch(0.9_0.08_70)]/15"
+          />
+        </g>
         <path
-          d="M168 95C170 72 172 50 186 22"
+          d={TRAIL_PATH}
           fill="none"
           strokeLinecap="round"
           strokeWidth="2.6"
@@ -305,12 +477,20 @@ export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
           className="parky-orlando-trail stroke-white/85 dark:stroke-[oklch(0.9_0.08_70)]"
         />
         <g className="fill-white dark:fill-[oklch(0.82_0.04_300)]" opacity=".9">
-          <circle cx="166" cy="93" r="4.2" />
-          <circle cx="171" cy="91" r="3.4" />
-          <circle cx="162" cy="92" r="3" />
+          <g className="parky-orlando-puffs">
+            <g className="parky-orlando-puff">
+              <circle cx="166" cy="93" r="4.2" />
+              <circle cx="171" cy="91" r="3.4" />
+              <circle cx="162" cy="92" r="3" />
+            </g>
+          </g>
         </g>
-        <g transform="translate(186.6 20.6) rotate(24) scale(1.25)">
-          <g className="parky-orlando-rocket">
+        {/* The climb moves the group round the rocket, so its own placement stays a plain
+            attribute the animation cannot replace. */}
+        <g className="parky-orlando-climb">
+          <g
+            transform={`translate(${ROCKET_AT.x} ${ROCKET_AT.y}) rotate(${ROCKET_AT.lean}) scale(1.25)`}
+          >
             <Rocket />
           </g>
         </g>
@@ -322,7 +502,7 @@ export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
           <g key={burst.x} transform={`translate(${burst.x} ${burst.y}) scale(${burst.scale})`}>
             <g
               className="parky-orlando-burst"
-              style={{ animationDelay: `${burst.delay}s` }}
+              style={burstTiming(burst)}
               stroke={burst.colour}
               strokeWidth=".55"
             >
@@ -374,6 +554,8 @@ export function ParkyOrlandoScene({ className }: TripRegionSceneProps) {
         {BURSTS.map((burst) => (
           <path
             key={burst.x}
+            className="parky-orlando-echo"
+            style={burstTiming(burst)}
             d={`M${burst.x - 2} ${101 + (burst.y % 5)}h4M${burst.x - 4} ${106 + (burst.y % 3)}h3M${burst.x + 2} 108h2`}
             stroke={burst.colour}
           />
