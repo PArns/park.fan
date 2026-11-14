@@ -2,9 +2,7 @@
 
 import { useMemo, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
-import { DayPicker } from 'react-day-picker';
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
+import { format } from 'date-fns';
 import {
   CalendarDays,
   CalendarRange,
@@ -40,11 +38,11 @@ import {
   SEASON_STATUS_LABELS,
   SEASON_STATUS_OPTIONS,
   datesOutsideRange,
-  formatSeasonDates,
   formatSeasonRange,
   fromDateTimeInput,
   isRealDay,
   parseSeasonDates,
+  rangeDays,
   seasonBody,
   seasonDraft,
   seasonPatch,
@@ -73,6 +71,7 @@ import {
   UrlInput,
   useFieldId,
 } from '../../_ui/controls';
+import { DayCalendar } from '../../_ui/day-calendar';
 import { Chip, EmptyState, SCROLLING_DIALOG, Tile, type ChipTone } from '../../_ui/primitives';
 import { useToast } from '../../_ui/toast';
 
@@ -307,6 +306,14 @@ const WEEKDAYS = [
   { value: '0', label: 'So' },
 ];
 
+/** The buttons that replace the picked days at once; weekdays are `getUTCDay()` numbers. */
+const QUICK_PICKS: ReadonlyArray<{ label: string; all?: boolean; weekdays?: number[] }> = [
+  { label: 'Alle', all: true },
+  { label: 'Keine' },
+  { label: 'Wochenenden', weekdays: [6, 0] },
+  { label: 'Fr–So', weekdays: [5, 6, 0] },
+];
+
 /**
  * The form of one season, or of a new one: every field the API takes, its checks run while typing,
  * and the API's own refusal shown above the buttons. A new season without `parkId` asks for its
@@ -446,7 +453,7 @@ export function SeasonEditor({
     <Dialog open onOpenChange={(open) => !open && !busy && onClose()}>
       <DialogContent
         // The scroll padding is the sticky footer's height, so a focused field is scrolled above it.
-        className={`${SCROLLING_DIALOG} scroll-pb-40 gap-0 p-0 sm:max-w-2xl sm:scroll-pb-28`}
+        className={`${SCROLLING_DIALOG} scroll-pb-40 gap-0 p-0 sm:max-w-3xl sm:scroll-pb-28`}
         onInteractOutside={(event) => keep && event.preventDefault()}
         onEscapeKeyDown={(event) => keep && event.preventDefault()}
       >
@@ -799,8 +806,6 @@ function SeasonDays({
   const pasteId = useFieldId('season-dates-paste');
   const picked = dates ?? [];
   const range = isRealDay(start) && isRealDay(end) && start <= end;
-  const rangeStart = range ? parseISO(start) : undefined;
-  const rangeEnd = range ? parseISO(end) : undefined;
   const outside = range ? datesOutsideRange(picked, start, end) : [];
 
   const pickedSet = new Set(picked);
@@ -852,20 +857,8 @@ function SeasonDays({
               : `${picked.length} ${picked.length === 1 ? 'Termin' : 'Termine'} von höchstens ${SEASON_LIMITS.dates}`
           }
           error={error}
-          aside={
-            !readOnly && picked.length > 0 ? (
-              <Button type="button" variant="ghost" size="sm" onClick={() => onChange([])}>
-                Alle entfernen
-              </Button>
-            ) : null
-          }
         >
           <div className="space-y-3">
-            {picked.length > 0 && (
-              <p className="text-muted-foreground text-xs leading-relaxed">
-                {formatSeasonDates(picked)}
-              </p>
-            )}
             {outside.length > 0 && !readOnly && (
               <Button
                 type="button"
@@ -876,40 +869,58 @@ function SeasonDays({
                 Termine außerhalb des Zeitraums entfernen
               </Button>
             )}
+            {range && !readOnly && (
+              <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+                <div role="group" aria-label="Auswahl ersetzen" className="flex flex-wrap gap-1.5">
+                  {QUICK_PICKS.map((quick) => (
+                    <button
+                      key={quick.label}
+                      type="button"
+                      onClick={() =>
+                        onChange(
+                          quick.weekdays
+                            ? uniqueDays(
+                                quick.weekdays.flatMap((weekday) =>
+                                  weekdayDates(start, end, weekday)
+                                )
+                              )
+                            : quick.all
+                              ? rangeDays(start, end)
+                              : []
+                        )
+                      }
+                      className="text-muted-foreground hover:text-foreground min-h-9 rounded-lg border border-white/[0.09] px-2.5 text-xs font-medium transition-colors sm:min-h-7"
+                    >
+                      {quick.label}
+                    </button>
+                  ))}
+                </div>
+                <ToggleChips
+                  label="Ganze Wochentage dazu oder weg"
+                  options={WEEKDAYS}
+                  value={fullWeekdays}
+                  onChange={toggleWeekdays}
+                />
+              </div>
+            )}
+            {range && (
+              <DayCalendar
+                start={start}
+                end={end}
+                value={picked}
+                onChange={onChange}
+                label="Termine"
+                disabled={readOnly}
+              />
+            )}
+            {range && !readOnly && (
+              <p className="text-muted-foreground text-xs">
+                Ein Klick wählt einen Tag, Umschalt-Klick alle Tage seit dem letzten Klick, der
+                Monatsname den ganzen Monat.
+              </p>
+            )}
             {!readOnly && (
               <>
-                <div className="space-y-1.5">
-                  <p className="text-muted-foreground text-xs">Ganze Wochentage im Zeitraum</p>
-                  <ToggleChips
-                    label="Ganze Wochentage im Zeitraum"
-                    options={WEEKDAYS}
-                    value={fullWeekdays}
-                    onChange={toggleWeekdays}
-                    disabled={!range}
-                  />
-                </div>
-                <div className="admin-daypicker overflow-x-auto">
-                  <DayPicker
-                    // A new start month moves the calendar there.
-                    key={start.slice(0, 7)}
-                    mode="multiple"
-                    locale={de}
-                    weekStartsOn={1}
-                    showOutsideDays
-                    numberOfMonths={range && start.slice(0, 7) === end.slice(0, 7) ? 1 : 2}
-                    defaultMonth={rangeStart}
-                    startMonth={rangeStart}
-                    endMonth={rangeEnd}
-                    selected={picked.filter(isRealDay).map((day) => parseISO(day))}
-                    onSelect={(days) =>
-                      onChange(uniqueDays((days ?? []).map((day) => format(day, 'yyyy-MM-dd'))))
-                    }
-                    disabled={[
-                      ...(rangeStart ? [{ before: rangeStart }] : []),
-                      ...(rangeEnd ? [{ after: rangeEnd }] : []),
-                    ]}
-                  />
-                </div>
                 <div className="space-y-1.5">
                   <label htmlFor={pasteId} className="text-muted-foreground text-xs">
                     Liste einfügen, etwa aus dem Kalender des Parks: 2026-10-03 oder 3.10.2026, mit
