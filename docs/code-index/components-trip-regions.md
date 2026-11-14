@@ -193,6 +193,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-ticket-words.tsx`](../../components/trip-regions/planner/plan-ticket-words.tsx)
 
+- `TicketMarketTag` _component_: Where a ticket or a purchase link is sold, as a small tag beside it ("UK shop", `marketLabel`).
 - `useResortWord` _hook_: A resort as copy names it in a sentence: "Disney", "Universal", "SeaWorld", "LEGOLAND". The ticket step's resorts have a word of the region's own (`tickets.resortShort`); any other group is called by the API's name.
 - `useHopperWord` _hook_: A resort's hopper by its operator's name: Disney's Park Hopper, Universal's park-to-park (the ticket step's `hopperNames`; a resort without one takes the first).
 - `useTicketName` _hook_: A ticket by what is on it: "Disney 4-day ticket with Park Hopper" for a date-based ticket, the operator's name for the rest. `short` drops the word "ticket" for the Tickets row: "Disney 4 days + Park Hopper".

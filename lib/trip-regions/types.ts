@@ -59,7 +59,10 @@ export interface TripHotel {
   perks: TripPerk[];
 }
 
-/** The market codes a region's tickets and links name; `home` is sold to anyone at the operator's. */
+/**
+ * The market codes a region's tickets and links name, where each is sold; `home` is the operators'
+ * own shops.
+ */
 export interface TripTicketMarkets {
   home: string;
   codes: string[];
@@ -177,8 +180,8 @@ export type TicketHopping = 'none' | 'optional' | 'included';
 
 /**
  * Where a ticket is bought: the operator's shop (`official`), or another seller. A `sponsored` link
- * is an affiliate or paid one, which the page labels as such; `markets` and `locales` say whom it
- * is for, absent for everyone.
+ * is an affiliate or paid one, which the page labels as such; `markets` and `locales` say where it
+ * sells and in which language, which orders and labels it; absent for everyone.
  */
 export interface TicketLink {
   /** The seller's own name, never translated. */
@@ -203,8 +206,8 @@ export interface TicketProduct {
   /** The {@link TripRegionGroup} key of the operator that sells it. */
   resort: string;
   /**
-   * Codes of the region's `ticketMarkets`, whose `home` is sold to anyone (`us` in Orlando); in
-   * Orlando `intl` is sold by sellers abroad and `uk` to UK and Ireland residents only.
+   * Where it is sold, codes of the region's `ticketMarkets`: `home` the operators' own shops (`us`
+   * in Orlando), `uk` shops in the UK and Ireland, `intl` sellers elsewhere. A label, never a filter.
    */
   markets: string[];
   parks: string[];

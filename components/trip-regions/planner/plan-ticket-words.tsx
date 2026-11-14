@@ -1,8 +1,14 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { entryOfProduct, soldLengths, type TicketCatalog } from '@/lib/trip-regions/plan-tickets';
+import {
+  entryOfProduct,
+  soldLengths,
+  type TicketCatalog,
+  type TicketMarketLabel,
+} from '@/lib/trip-regions/plan-tickets';
 import type { PlanTicket } from '@/lib/trip-regions/plan-query';
+import { Badge } from '@/components/ui/badge';
 import { usePlanContext } from './plan-context';
 
 /**
@@ -75,4 +81,14 @@ export function useTicketName(): (
       hopper: hopperWord(resort),
     });
   };
+}
+
+/** Where a ticket or a purchase link is sold, as a small tag beside it ("UK shop", `marketLabel`). */
+export function TicketMarketTag({ market }: { market: TicketMarketLabel }) {
+  const t = useTranslations('tripPlanner.tickets');
+  return (
+    <Badge variant="outline" className="border-primary/50 text-primary-ink font-medium">
+      {t(`market.${market}`)}
+    </Badge>
+  );
 }

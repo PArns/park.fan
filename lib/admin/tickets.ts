@@ -12,7 +12,10 @@ import { hostProp, sellerProp } from '@/lib/trip-regions/plan-analytics';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { CROSSTAB_REST } from './site-analytics';
 
-/** Who a product or a link is sold to: `us` anyone, `uk` UK and Ireland residents, `intl` sellers abroad. */
+/**
+ * Where a product or a link is sold: `us` the operators' own shops, `uk` shops in the UK and
+ * Ireland, `intl` sellers elsewhere. The planner shows it as a label and filters nothing by it.
+ */
 export type TicketMarket = 'us' | 'uk' | 'intl';
 
 /** The markets in the order the form lists them. */
@@ -20,8 +23,8 @@ export const TICKET_MARKETS: readonly TicketMarket[] = ['us', 'uk', 'intl'];
 
 /** What each market is called in the admin. */
 export const TICKET_MARKET_LABELS: Record<TicketMarket, string> = {
-  us: 'US, für alle',
-  uk: 'nur UK und Irland',
+  us: 'US-Shops',
+  uk: 'UK-Shops',
   intl: 'Händler im Ausland',
 };
 

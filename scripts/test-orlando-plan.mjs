@@ -130,6 +130,8 @@ import {
   adoptSuggestions,
   draftTicket,
   entryMarket,
+  linkMarket,
+  marketLabel,
   ticketHomeMarket,
   hopperGains,
   hopperResorts,
@@ -1807,13 +1809,26 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]
   );
   test(
-    'the step’s tag reads “not us”: sold outside the US, or none',
+    'the step’s tag says where a ticket is sold: a UK shop, or none for the operators’ own',
     [
       entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[1], CATALOG, 'us'),
       entryMarket(ticketEntries(STEP, 'universal-orlando', CATALOG)[1], CATALOG, 'us'),
       entryMarket(ticketEntries(STEP, 'walt-disney-world', CATALOG)[0], CATALOG, 'us'),
+      marketLabel(['intl'], 'us'),
+      marketLabel(['us', 'uk'], 'us'),
+      marketLabel(undefined, 'us'),
     ],
-    ['intl', 'intl', null]
+    ['uk', 'uk', null, 'intl', null, null]
+  );
+  test(
+    'a purchase link is tagged by its own market, the official one by its product’s',
+    [
+      linkMarket({ markets: ['uk'] }, ['us', 'intl'], 'us'),
+      linkMarket({ official: true }, ['uk'], 'us'),
+      linkMarket({ official: true }, ['us', 'uk'], 'us'),
+      linkMarket({}, ['uk'], 'us'),
+    ],
+    ['uk', 'uk', null, null]
   );
   test(
     'the home market is the region’s, else the registry’s',
