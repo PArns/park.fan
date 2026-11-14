@@ -3302,7 +3302,7 @@
       "lastYearAll": "Het plan rekent met de gemeten wachttijden van vorig jaar op dezelfde weekdag. Zo ver vooruit maakt de voorspelling nauwelijks verschil tussen de dagen.",
       "about": "ongeveer {minutes} min.",
       "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}.",
-      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”.",
+      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “{options}”.",
       "leftOut": "{parks} {count, plural, =1 {past} other {passen}} niet in {days, plural, =1 {1 parkdag} other {# parkdagen}}.",
       "travelDays": "Park op aankomst- en vertrekdag",
       "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}",

@@ -76,11 +76,3 @@ export function useTicketName(): (
     });
   };
 }
-
-/**
- * A sentence whose last word is a short date, with the stop it ends on once: German and French
- * abbreviate the month with a period ("20. Feb."), and the message's own stop would double it.
- */
-export function oneStop(text: string): string {
-  return text.replace(/\.\./g, '.');
-}

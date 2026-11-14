@@ -3302,7 +3302,7 @@
       "lastYearAll": "The plan uses last year’s measured waits on the same weekday. That far ahead, the forecast barely tells one day from another.",
       "about": "about {minutes} min",
       "split": "{count, plural, =1 {{parks} gets} other {{parks} get}} {visits, plural, =2 {a second day} other {# days}}.",
-      "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “Fine-tune”.",
+      "hopNeedsHopper": "Park hopping only counts with a Park Hopper ticket; choose it under “{options}”.",
       "leftOut": "{parks} {count, plural, =1 {doesn’t} other {don’t}} fit into {days, plural, =1 {1 park day} other {# park days}}.",
       "travelDays": "Use arrival and departure days",
       "longer": "{count, plural, =1 {1 more day} other {# more days}}",

@@ -97,7 +97,8 @@ import {
   tripWhenShownProps,
   type TripEventProps,
 } from '@/lib/trip-regions/plan-analytics';
-import { oneStop, useResortWord, useTicketName } from './plan-ticket-words';
+import { oneFullStop } from '@/lib/utils/metadata';
+import { useResortWord, useTicketName } from './plan-ticket-words';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 
 const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as const;
@@ -464,7 +465,11 @@ function PlanAnswer({
   const notes = [
     ...(dropped > 0 ? [t('tickets.linkDropped', { count: dropped })] : []),
     ...(hopWithoutHopper
-      ? [t(catalog.size > 0 ? 'tickets.hopNeedsHopper' : 'answer.hopNeedsHopper')]
+      ? [
+          catalog.size > 0
+            ? t('tickets.hopNeedsHopper')
+            : t('answer.hopNeedsHopper', { options: t('setup.fineTune') }),
+        ]
       : []),
     ...relaxedRules(plan.meta).map((r) => regionOrShared(tRegion, t, `relaxed.${r}`)),
     ...unplacedParks(plan).map((u) =>
@@ -762,7 +767,7 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
       data-plan-stay-suggestion=""
     >
       <p className="min-w-0 flex-1 text-sm">
-        {oneStop(
+        {oneFullStop(
           t('answer.staySuggestion', {
             changes,
             minutes: Math.round(suggestion.savedMinutesPerRide),
@@ -974,7 +979,7 @@ function TicketProblemBox({ problem, edit }: { problem: TicketProblem; edit: Pla
       data-plan-ticket-problem={problem.kind}
     >
       <p className="text-sm">
-        {oneStop(
+        {oneFullStop(
           t(`tickets.problem.${problem.kind}`, {
             ticket: ticket ? name(ticket) : problem.product,
             start: ticket?.start ? day(ticket.start) : '',

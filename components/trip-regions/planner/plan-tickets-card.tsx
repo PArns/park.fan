@@ -50,13 +50,8 @@ import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/
 import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PLAN_WIDE_QUERY } from './plan-setup';
-import {
-  oneStop,
-  productName,
-  useHopperWord,
-  useResortWord,
-  useTicketName,
-} from './plan-ticket-words';
+import { productName, useHopperWord, useResortWord, useTicketName } from './plan-ticket-words';
+import { oneFullStop } from '@/lib/utils/metadata';
 
 /** The result's ways back into the setup, each told where it was pressed (for the statistic). */
 export interface PlanEdit {
@@ -260,7 +255,7 @@ function OwnedRow({
             {use.kind === 'pass' || !ticket.start
               ? t('owned.noLimit')
               : ticket.startChosen
-                ? oneStop(
+                ? oneFullStop(
                     t('owned.startChosen', { start: day(ticket.start), end: day(ticket.end ?? '') })
                   )
                 : t('owned.valid', { from: day(ticket.start), to: day(ticket.end ?? '') })}
@@ -307,7 +302,7 @@ function OwnedRow({
         return (
           <Warning key={d.date} data-plan-outside={d.date}>
             <p>
-              {oneStop(
+              {oneFullStop(
                 t(before ? 'outside.before' : 'outside.after', {
                   park: parkName(slug),
                   date: day(d.date),
@@ -444,7 +439,7 @@ function SuggestedTickets({
               })
             : t('suggest.part', { days: s.days, resort: resortWord(s.resort), date: day(s.start) })
         );
-  const sentence = oneStop(
+  const sentence = oneFullStop(
     `${parts.join(groups.length < suggested.length ? t('suggest.groupSep') : t('suggest.then'))}.`
   );
   const details = <SuggestionDetails plan={plan} suggested={suggested} edit={edit} />;

@@ -3302,7 +3302,7 @@
       "lastYearAll": "Le plan utilise les attentes mesurées l’an dernier le même jour de la semaine. Aussi loin, la prévision ne distingue presque pas les jours.",
       "about": "environ {minutes} min",
       "split": "{parks} {count, plural, =1 {a} other {ont}} droit à {visits, plural, =2 {un deuxième jour} other {# jours}}.",
-      "hopNeedsHopper": "Le park hopping ne compte qu’avec un billet Park Hopper ; choisis-le dans « Réglages ».",
+      "hopNeedsHopper": "Le park hopping ne compte qu’avec un billet Park Hopper ; choisis-le dans « {options} ».",
       "leftOut": "{parks} {count, plural, =1 {ne tient} other {ne tiennent}} pas dans {days, plural, =1 {1 jour de parc} other {# jours de parc}}.",
       "travelDays": "Parc le jour d’arrivée et de départ",
       "longer": "{count, plural, =1 {1 jour de plus} other {# jours de plus}}",

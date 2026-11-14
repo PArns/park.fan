@@ -19,6 +19,7 @@ import {
   type LandingDestination,
 } from '@/components/marketing/editorial-ui';
 import { cn } from '@/lib/utils';
+import { oneFullStop } from '@/lib/utils/metadata';
 import { getMediaImage } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
@@ -165,15 +166,17 @@ export async function BestTimePage(props: BestTimePageProps) {
         title={tOwn(`title.${page}`, { year })}
         tagline={
           windows.length
-            ? `${t('answer.sentence', { days, year, windows: windowList(windows, locale) })}${
-                flat
-                  ? ` ${t('answer.flat', {
-                      from: formatHubDate(flat.from, locale, 'dayMonth'),
-                      to: formatHubDate(flat.to, locale, 'dayMonth'),
-                      minutes: flat.minutes,
-                    })}`
-                  : ''
-              }${lastYearShown ? ` ${tHub('when.lastYearNote')}` : ''}`
+            ? oneFullStop(
+                `${t('answer.sentence', { days, year, windows: windowList(windows, locale) })}${
+                  flat
+                    ? ` ${t('answer.flat', {
+                        from: formatHubDate(flat.from, locale, 'dayMonth'),
+                        to: formatHubDate(flat.to, locale, 'dayMonth'),
+                        minutes: flat.minutes,
+                      })}`
+                    : ''
+                }${lastYearShown ? ` ${tHub('when.lastYearNote')}` : ''}`
+              )
             : t('answer.none', { days, year })
         }
         // A page whose photo the media database does not hold yet gets the gradient head.

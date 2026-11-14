@@ -60,7 +60,8 @@ import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { ClimateChips, dayGuestClose, useDayParks } from './plan-day-bits';
 import { useSeasonName } from './use-day-facts';
-import { oneStop, useHopperWord, useResortWord } from './plan-ticket-words';
+import { oneFullStop } from '@/lib/utils/metadata';
+import { useHopperWord, useResortWord } from './plan-ticket-words';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { useAreaName, useBaseName } from './plan-place-words';
@@ -398,7 +399,7 @@ function DayDetails({
     if (ticketFacts.length > 0) {
       facts.push(
         <Fact key="ticket" icon={<Ticket className="size-4" aria-hidden="true" />}>
-          <span data-plan-sheet-ticket="">{oneStop(ticketFacts.join(' '))}</span>
+          <span data-plan-sheet-ticket="">{oneFullStop(ticketFacts.join(' '))}</span>
         </Fact>
       );
     }

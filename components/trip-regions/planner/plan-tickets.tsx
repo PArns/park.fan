@@ -34,7 +34,8 @@ import { Badge } from '@/components/ui/badge';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS, PlanCheckRow, PlanChip } from './plan-controls';
 import { PlanMonthGrid } from './plan-month-grid';
-import { oneStop, productName, useHopperWord, useResortWord } from './plan-ticket-words';
+import { oneFullStop } from '@/lib/utils/metadata';
+import { productName, useHopperWord, useResortWord } from './plan-ticket-words';
 
 /** Whether the ticket question was answered, and how. */
 export type TicketAnswer = 'unasked' | 'yes' | 'no';
@@ -285,7 +286,7 @@ export function PlanTickets({
             </span>
             <span className="text-foreground/75 text-xs leading-snug">
               {tRegion('combo.hint')}
-              {lite && ` ${oneStop(tRegion('combo.lite', lite))}`}
+              {lite && ` ${oneFullStop(tRegion('combo.lite', lite))}`}
             </span>
           </span>
           <Plus className="text-primary-ink size-4 shrink-0" aria-hidden="true" />
@@ -707,7 +708,7 @@ function TicketFields({
 
       {issue?.kind === 'not_on_sale' && (
         <p className="text-crowd-ink-high text-sm" role="status">
-          {oneStop(
+          {oneFullStop(
             t('fields.notOnSale', {
               name: productName(catalog, issue.product),
               ranges: saleRanges(catalog.get(issue.product), locale, t),
@@ -934,7 +935,7 @@ function WindowLine({
   return (
     <p className="flex gap-2 text-sm" aria-live="polite" data-ticket-window={draft.id}>
       <Check className="text-crowd-ink-low mt-0.5 size-4 shrink-0" aria-hidden="true" />
-      <span>{oneStop(lines.join(' '))}</span>
+      <span>{oneFullStop(lines.join(' '))}</span>
     </p>
   );
 }

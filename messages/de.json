@@ -3302,7 +3302,7 @@
       "lastYearAll": "Der Plan rechnet mit den gemessenen Wartezeiten des letzten Jahres am gleichen Wochentag. So weit voraus unterscheidet die Prognose die Tage kaum.",
       "about": "etwa {minutes} Min.",
       "split": "{parks} {count, plural, =1 {bekommt} other {bekommen}} {visits, plural, =2 {einen zweiten Tag} other {# Tage}}.",
-      "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket; wähle es unter „Feinabstimmung“.",
+      "hopNeedsHopper": "Park-Hopping zählt nur mit einem Park-Hopper-Ticket. Wähle es unter „{options}“.",
       "leftOut": "{parks} {count, plural, =1 {passt} other {passen}} nicht in {days, plural, =1 {1 Parktag} other {# Parktage}}.",
       "travelDays": "Park am An- und Abreisetag",
       "longer": "{count, plural, =1 {1 Tag länger} other {# Tage länger}}",
