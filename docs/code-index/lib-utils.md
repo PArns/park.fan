@@ -257,6 +257,7 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 
 ### [`metadata.ts`](../../lib/utils/metadata.ts)
 
+- `oneFullStop` _function_: A date that ends a sentence on its abbreviation („16. Nov.“, „7–16 sept.“) prints two full stops with the sentence's own; one stays. Run it on each candidate before `fitWithin`, so the length is the printed one.
 - `fitWithin` _function_: Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name costs less than a clipped template.
 - `fitSentences` _function_: A description of at most `limit` characters cut from running text: as many whole sentences as fit, else the first sentence cut at a word boundary with an ellipsis, so a snippet never ends mid-clause.
 - `buildOpenGraphMetadata` _function_: Builds the openGraph and twitter metadata that are the same on every page.

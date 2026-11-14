@@ -103,7 +103,14 @@ Each chapter opens with its heading and then the thing itself, no introduction.
    is the rendered one. The resort filter is urgent, the grid follows through `useDeferredValue`.
    The events sit under it as one closed `<details>` row. A tap opens `HubDaySheet` (bottom sheet
    on a phone, side panel on a desktop); it holds a history entry of its own, so a phone's Back
-   closes it. Under the calendar: the forecast's date and the travel times' credit, the month
+   closes it. Under the calendar: the forecast's date and the travel times' credit; on the hub the
+   accuracy line (`HubAccuracy`, PAR-1316): „Unsere Prognose der Spitzenwartezeit, eine Woche im
+   Voraus, lag in den letzten 30 Tagen im Schnitt 16 Min. daneben.“, the lead and the days from the
+   open `GET /v1/trip-regions/:region/accuracy`, the minutes rounded. The route starts that read
+   before the others, bounded to 1.5 s (`withSeedTimeout`), and the line awaits it in its own
+   `<Suspense>`, so a slow answer never holds the calendar; `forecastAccuracy: null` (too few
+   measured days) or a failed read draws nothing. Its link opens the accuracy question in chapter 04
+   (`FaqLink`, `TRIP_ACCURACY_ID`). Then the month
    index (`HubMonthIndex`, a labelled `<nav>` with the park calendar's chips, all twelve months)
    and each park's crowd calendar (`HubParkIndex`, a labelled `<nav>`, „<park> Andrang-Kalender“).
 2. **02 Deine Reise planen**: `PlannerChapterSlot`, `id="planner"`, where `TripRegionPlanner`
@@ -117,20 +124,29 @@ Each chapter opens with its heading and then the thing itself, no introduction.
    (`?from=&to=#planner`, `rel="nofollow"`), and the link to
    `tripRegionBestTimePath(region, locale)`. The year strip, the weeks and their questions are the
    best-time pages', so the two do not compete for one query.
-4. **04 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), the method folded in: first the
-   region's questions answered from the data (the quietest and busiest days per resort, the party
-   nights, Epic Universe on weekends, the drive between the resorts with the hotel distances, the
-   early slots), then the region's fixed questions (`hub.faq.questions`), then, on the hub only,
-   the five every region shares (`tripHub.faq`: what the peak wait is, why a longer one can be
-   green, where the figures come from, how far the forecast reaches, how close it gets), and the
-   links to Fancast and how park.fan works. A question whose data or words are missing is left out.
+4. **04 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), ten questions, the method folded
+   in, every answer built from the page's data or the region's words: first up to six on the
+   window, in this order of worth (the quietest and busiest days per resort, the events with their
+   nights and dates, the party nights, Epic Universe on weekends, the drive between the resorts
+   with the hotel distances, the early slots, the region's fixed questions in `hub.faq.questions`,
+   then the weekdays, each park's mean, the breaks and holidays with their effect, the usual hours),
+   then four on the figure (`tripHub.faq`: what the peak wait is, why a longer one can be green,
+   where the figures come from, how far and how well the forecast reaches, with the measured error
+   when the API has it and the note that it is the planner's „Wie genau ist das?“). The list stays
+   within 800 words (`HUB_WORDS_MAX`); a question that would pass it is left out. Then the links to
+   Fancast and how park.fan works. A question whose data or words are missing is left out; with
+   none, no chapter and no `FAQPage`. The facts behind the shared questions are pure functions in
+   `lib/trip-regions/hub-facts.ts` (`weekdayFacts`, `usualHours`, `breakFacts`, `parkMeans`,
+   `parkClosures`, each reading the forecast's days or, past it, last year's).
 5. **`LandingNextSteps`** „Reiseplaner für Orlando“: plan the trip, the best-time page.
 
-On a month page the quietest-days answer is the month's own quiet and busy days, and with the events
-lane and the answer box under the head it is what makes one month's HTML differ from the next. The
-five shared questions stay on the hub: on twelve month pages the same answers made December and
-January share 43.8 % of their body text (five-word shingles, collapsed answers in, scripts out);
-without them 38.4 %, against 40.7 % before the hub was cut down.
+A month page asks only about its month: its quietest and busiest days, its events, its party
+nights, its weekdays, its breaks and holidays, Epic Universe on its weekends and its usual hours,
+within 500 words (`MONTH_WORDS_MAX`); where that stays under 250 (a month with no events and no
+breaks), each park's mean and the closed days follow. A month past the forecast says once, in its
+first answer, that its figures are last year's measured days. The four questions on the figure
+stay on the hub, so twelve month pages never repeat one block of answers. With the events lane and
+the answer box under the head, that is what makes one month's HTML differ from the next.
 
 The hub's lead says what the page holds („Ein Kalender für alle 16 Parks rund um Orlando und ein
 Planer für deine Reisetage.“). The hotel distances in the drive-time answer
@@ -145,8 +161,12 @@ written into the copy; a change to the region or a new matrix is a reason to re-
   "Calendario affluenza Orlando"): in the H1 as its first line, inside the element, with the
   question („Welcher Park an welchem Tag?“) as its second (`LandingHero question`). A month page asks
   the same question; its month is in the first line, and a second mention read twice in the H1
-  („… Dezember 2026: Welcher Park an welchem Tag im Dezember 2026?“). The description
-  carries the verdict, each resort's quietest date.
+  („… Dezember 2026: Welcher Park an welchem Tag im Dezember 2026?“). The hub's `<title>` carries
+  the years its month index spans (`{years}`, `tripRegionYears`: „Orlando Andrang-Kalender
+  2026–2027 & Reiseplaner“, one year from January), read per request in park time; a month's
+  title names its month, in German with „Andrang“ („Orlando im Dezember 2026: Andrang bei Disney &
+  Universal“), the word German searches use. German calls the calendar „Andrang-Kalender“
+  everywhere. The description carries the verdict, each resort's quietest date.
 - Structured data: `BreadcrumbList`, a `Dataset` for the window (`ParkDatasetStructuredData` with
   Orlando's centre), `FAQPage` only from `FaqList`. No `Event` for festivals: they are third-party
   events without offers, and an `expected` season is no announcement
@@ -155,11 +175,22 @@ written into the copy; a change to the region or a new matrix is a reason to re-
   served HTML. The hub and the month pages are in `app/sitemap.ts` with hreflang and no `lastmod`: each forecast
   warmup rebuilds every month at once, a stamp rather than an observed change
   ([a lastmod is observed](../rules/a-lastmod-is-observed-never-stamped.md)).
-- Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar", `HubParkIndex`) and,
+- Internal links: hub → each park's crowd calendar ("<park> Crowd Calendar", `HubParkIndex`; every
+  headliner park when `/best-days` fails, so a failed read never takes the links away) and,
   from the first answer, the picked parks' calendars; park pages and calendars → the planner (the
   band, `rel="nofollow"` since it carries a plan); every page → `/orlando#planner` (the footer);
   month ↔ month; hub → the best-time pages (chapter 03 and the band). The day planner is linked from
   the footer and, client-side, from the day sheet.
+
+## Analytics
+
+What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
+for the head's two ways in (`plan`, `calendar`, on the hub or a month), `internal_link_clicked`
+from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the park
+index), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
+`trip_accuracy_opened {surface: hub}` for the accuracy line, and `faq_opened` with the question's
+message `key` beside its place, since the questions shown depend on the data. Page types for hub,
+month and best-time pages are the analytics core's (`sitePageTypeOf`).
 
 ## Ways in
 

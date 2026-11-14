@@ -20,6 +20,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `BestTimePage` _component_: A region's best-time page body (`/orlando/<best-time segment>[/<resort>]`), a hub by the landing anatomy: head with the answer, intro, four chapters, FAQ, next steps.
 - Types: `BestTimePageProps`
 
+### [`hub/hub-accuracy-link.tsx`](../../components/trip-regions/hub/hub-accuracy-link.tsx)
+
+- `HubAccuracyLink` _component_: The accuracy line's link to its question in chapter 04, counted as `trip_accuracy_opened`.
+
+### [`hub/hub-accuracy.tsx`](../../components/trip-regions/hub/hub-accuracy.tsx)
+
+- `HubAccuracy` _component_: One line under the calendar: how far the forecast of the peak wait was off lately, for forecasts made a few days ahead, linked to the question that explains the figure.
+
 ### [`hub/hub-calendar.tsx`](../../components/trip-regions/hub/hub-calendar.tsx)
 
 - `HubCalendar` _component_: The calendar chapter's body: which park on which day, at the depth a visitor asks for.
@@ -41,7 +49,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-faq.tsx`](../../components/trip-regions/hub/hub-faq.tsx)
 
-- `HubFaq` _component_: The hub's questions, the method folded in.
+- `HubFaq` _component_: Chapter 04's questions, answered from the data the page shows.
 
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
@@ -51,6 +59,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub/hub-hero-action.tsx`](../../components/trip-regions/hub/hub-hero-action.tsx)
 
 - `HubHeroAction` _component_: The hub's one primary action ("Reise planen"): it asks the planner to open its first step (the walk's first sheet on a phone, the focused panel at a desk), so a reader starts the plan with one tap.
+- `HubCalendarAction` _component_: The head's second way in ("Zum Kalender"), the same size as the first and never its primary action: a link to chapter 01 that counts as `trip_hub_action`.
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 

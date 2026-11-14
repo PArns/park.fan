@@ -152,6 +152,9 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `outbound_link_clicked`      | a click, middle click included, on a park's website, ticket, map or social link                                                                                     | `target` (park_website, tickets, maps, other)                                                                                                                                    | the park              |
 | `ticket_link_clicked`        | a purchase link in the trip planner followed, middle click included ([trip planner](../features/orlando-planner.md#analytics)); no `region`, the product implies it | `product`, `seller`, `host`, `kind` (official, sponsored, plain), `position`, `locale_match`, `surface` (suggestion, long_stay, owned), `ticket_mode` (plan_first, owned, mixed) |                       |
 | `trip_planner_started`       | the trip planner starts ([trip planner](../features/orlando-planner.md#analytics)); every `trip_*` event carries `region`                                           | `region`, `source` (hero, button, link)                                                                                                                                          |                       |
+| `trip_hub_action`            | one of the hub head's two ways in pressed, modified clicks included                                                                                                 | `region`, `action` (plan, calendar), `page` (hub, month)                                                                                                                         |                       |
+| `trip_hub_filter`            | a resort chip over the hub calendar changes the selection                                                                                                           | `region`, `resort` (the group key, or all)                                                                                                                                       |                       |
+| `trip_accuracy_opened`       | the forecast's accuracy opened: the plan's „Wie genau ist das?“ or the hub's line under the calendar                                                                | `region`, `surface` (plan, hub)                                                                                                                                                  |                       |
 | `trip_tickets_answered`      | the planner's ticket question answered                                                                                                                              | `region`, `answer` (yes; not_yet and skipped before the tickets moved after the plan)                                                                                            |                       |
 | `trip_ticket_added`          | a ticket chosen in the planner's step                                                                                                                               | `region`, `entry`, `resort`, `via` (picker, combo)                                                                                                                               |                       |
 | `trip_ticket_removed`        | a ticket taken out of the step                                                                                                                                      | `region`, `entry`, `resort`                                                                                                                                                      |                       |
@@ -184,7 +187,7 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `internal_link_clicked`      | a click, middle click included, on a link to another page of the site inside a marked block                                                                         | `block`, `dest` (the page type it leads to), `position`                                                                                                                          | a card's park or ride |
 | `section_seen`               | a marked place of a park page comes on screen, once per page view and place                                                                                         | `section` (main_end, blog, nearby, stats, outlook, faq, end)                                                                                                                     |                       |
 | `nav_menu_opened`            | a header band opens (hover after 90 ms included) or the phone sheet does, once per opening                                                                          | `menu` (guides, news, parks, more, planner, favorites, sheet)                                                                                                                    |                       |
-| `faq_opened`                 | a question of an FAQ (`FaqAccordion`) opens                                                                                                                         | `position` (1-based)                                                                                                                                                             |                       |
+| `faq_opened`                 | a question of an FAQ (`FaqAccordion`) opens                                                                                                                         | `position` (1-based); `key` on a trip region hub, the question's message key                                                                                                     |                       |
 | `park_links_opened`          | the „Mehr" flyout of a park's title card opens; what is clicked inside is the outbound tracking                                                                     | none                                                                                                                                                                             | the park              |
 
 ### The pageview's extras
@@ -288,7 +291,9 @@ all from server-rendered markup and the same listeners as the outbound links:
   `outbound_link_clicked` or nothing. The blocks: the post's `body`, `tags`, `parks`, `rides`, `nav`,
   `related`, `most_read`; the park page's `rides`, `posts` (the ride page's posts too), and its title card's `guide_band` (the guide's window) and `news_band` (the news rail); `trip_band`, the way
   into a trip region's planner from a park, a calendar, a city or country listing, a post, `/search` and
-  the day planner's plan list; `nearby`, `favorites`, `featured`; the chrome's `header`, `menu_sheet`,
+  the day planner's plan list; the hub's `trip_answer` (the first answer's park calendars) and
+  `trip_parks` (its index of park calendars), each link with the park as entity; `nearby`,
+  `favorites`, `featured`; the chrome's `header`, `menu_sheet`,
   `footer`, `breadcrumbs`. Together
   with the page type every hit carries, it is a one-step map of where readers go from where.
 - **`section_seen`.** `ParkPageShell` draws a zero-height `SectionMark` where each chapter begins,
@@ -298,8 +303,12 @@ all from server-rendered markup and the same listeners as the outbound links:
 - **`nav_menu_opened`.** `useMenuTrigger(menu)` sends it on every opening of a band, so a hover
   that opens one counts; what is clicked inside is `internal_link_clicked` with `header` or
   `menu_sheet`.
-- **`faq_opened`.** `FaqAccordion`'s rows carry `faqPositionAttributes(index)`; `toggle` does not
-  bubble, so the listener catches it on its way down. The question's text is never sent.
+- **`faq_opened`.** `FaqAccordion`'s rows carry `faqPositionAttributes(index, key)`; `toggle` does
+  not bubble, so the listener catches it on its way down. The question's text is never sent. A trip
+  region hub's questions depend on the data, so a place names another question on another page or
+  day; its rows carry their message key as well (`quietest`, `events`, `party`, `epic`, `distance`,
+  `early`, `weekdays`, `parks`, `breaks`, `hours`, `closures`, `peak`, `green`, `sources`,
+  `accuracy`, and a region's own `hub.faq.questions` keys).
 
 `pnpm test:markup-events`. The admin page is Wege (`/admin/traffic/paths`).
 

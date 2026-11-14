@@ -13,9 +13,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`faq-open.ts`](../../lib/analytics/faq-open.ts)
 
-- `faqPositionAttributes` _function_: The attribute to spread onto the `<details>` of the question at 0-based `index`.
-- `faqOpenedPositionOf` _function_: The position a `toggle` on `target` reports: the question's place when an FAQ row opened, `null` for a row that closed and for any other `<details>`.
+- `faqPositionAttributes` _function_: The attributes to spread onto the `<details>` of the question at 0-based `index`.
+- `faqOpenedOf` _function_: What a `toggle` on `target` reports: the question's place, and its key where it has one, when an FAQ row opened; `null` for a row that closed and for any other `<details>`.
 - `FAQ_POSITION_ATTRIBUTE` _const_: The attribute carrying a question's 1-based place in its list.
+- `FAQ_KEY_ATTRIBUTE` _const_: The attribute carrying a question's message key, where a list's questions depend on the data and a place names a different question on another page or day (a trip region's hub).
 
 ### [`foreground-timer.ts`](../../lib/analytics/foreground-timer.ts)
 
