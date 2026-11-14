@@ -132,6 +132,9 @@ const CLIMB_KEYFRAMES = (() => {
   }
   const length = table[steps].at;
   const end = onTrail(1);
+  const lift = (onTrail(0).heading * Math.PI) / 180;
+  const ox = ROCKET_AT.x - end.x;
+  const oy = ROCKET_AT.y - end.y;
   const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2);
   const f = (n: number) => +n.toFixed(2);
 
@@ -146,11 +149,8 @@ const CLIMB_KEYFRAMES = (() => {
     const back = Math.min(0, distance);
     const turn = point.heading - end.heading;
     const rad = (turn * Math.PI) / 180;
-    const ox = ROCKET_AT.x - end.x;
-    const oy = ROCKET_AT.y - end.y;
-    const heading = (onTrail(0).heading * Math.PI) / 180;
-    const x = point.x + back * Math.sin(heading) + ox * Math.cos(rad) - oy * Math.sin(rad);
-    const y = point.y - back * Math.cos(heading) + ox * Math.sin(rad) + oy * Math.cos(rad);
+    const x = point.x + back * Math.sin(lift) + ox * Math.cos(rad) - oy * Math.sin(rad);
+    const y = point.y - back * Math.cos(lift) + ox * Math.sin(rad) + oy * Math.cos(rad);
     const beat = `${f((i / beats) * 100)}%`;
     rocket.push(
       `${beat} { transform: translate(${f(x)}px, ${f(y)}px) rotate(${f(turn)}deg) translate(${-ROCKET_AT.x}px, ${-ROCKET_AT.y}px); }`

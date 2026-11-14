@@ -150,7 +150,10 @@ const PETALS: readonly {
 ];
 const PETAL = 'M0-1.1C1.2-1.6 2.4-.4 1.8.6 1.2 1.4-.6 1.4-1.6.6-2.2.1-1.4-.8 0-1.1Z';
 
-/** Where a fall starts, above the frame, and ends, on the grass; how far the wind carries a petal left per unit it falls. */
+/**
+ * Where a fall starts, above the frame, and where it ends, on the grass; and how far the wind
+ * carries a petal to the left for every unit it falls.
+ */
 const FALL_FROM = -6;
 const FALL_TO = 128;
 const WIND = 0.32;

@@ -118,7 +118,17 @@ function towerHalfWidth(y: number): number {
 function sparkle(x: number, y: number, r = 1.2): string {
   const f = (n: number) => +n.toFixed(2);
   const k = r * 0.29;
-  return `M${f(x)} ${f(y - r)}L${f(x + k)} ${f(y - k)} ${f(x + r)} ${f(y)} ${f(x + k)} ${f(y + k)} ${f(x)} ${f(y + r)} ${f(x - k)} ${f(y + k)} ${f(x - r)} ${f(y)} ${f(x - k)} ${f(y - k)}Z`;
+  const corners = [
+    [0, -r],
+    [k, -k],
+    [r, 0],
+    [k, k],
+    [0, r],
+    [-k, k],
+    [-r, 0],
+    [-k, -k],
+  ];
+  return `M${corners.map(([dx, dy]) => `${f(x + dx)} ${f(y + dy)}`).join('L')}Z`;
 }
 
 /**
