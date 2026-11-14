@@ -54,7 +54,10 @@ import {
 } from '../lib/trip-regions/plan-ics.ts';
 import {
   dateLevel,
+  dayBandPieces,
   hoursLessThanUsual,
+  parkCode,
+  parkCodeKey,
   parkInitials,
   parkMinuteOf,
   swapPreview,
@@ -64,6 +67,13 @@ import {
   tripMonthWeeks,
   weekPages,
 } from '../lib/trip-regions/plan-week.ts';
+import {
+  dateParties,
+  datePicks,
+  isNewYearsEve,
+  monthEvents,
+} from '../lib/trip-regions/date-facts.ts';
+import { formatGridHours } from '../lib/planner/park-time.ts';
 import {
   holidayRegionsFor,
   percentBelowAverage,
@@ -747,6 +757,256 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   }
   test('a date without a level has no tint', dateLevel(undefined, []), null);
   test('two letters per park', Object.keys(names).map(parkInitials), Object.values(names));
+}
+
+// ── 5b. The date grid's facts and the Month view's band ──────────────────────
+{
+  const park = (slug, name, group) => ({ slug, name, group, type: 'theme_park', headliner: true });
+  const region = {
+    slug: 'orlando',
+    groups: [
+      { key: 'wdw', name: 'Walt Disney World Resort', kind: 'resort' },
+      { key: 'uo', name: 'Universal Orlando Resort', kind: 'resort' },
+      { key: 'sw', name: 'SeaWorld Orlando', kind: 'resort' },
+    ],
+    parks: [
+      park('magic-kingdom-park', 'Magic Kingdom Park', 'wdw'),
+      park('disneys-animal-kingdom-theme-park', "Disney's Animal Kingdom Theme Park", 'wdw'),
+      park('universal-studios-florida', 'Universal Studios Florida', 'uo'),
+      park('universal-islands-of-adventure', 'Universal Islands of Adventure', 'uo'),
+      park('seaworld-orlando', 'SeaWorld Orlando', 'sw'),
+    ],
+  };
+  const open = (wait, level, extra = {}) => ({
+    status: 'OPERATING',
+    hoursPublished: true,
+    crowdLevel: level,
+    headlinerWait: wait,
+    basis: 'forecast',
+    opensAt: '2026-12-01T09:00:00-05:00',
+    closesAt: '2026-12-01T21:00:00-05:00',
+    ...extra,
+  });
+  const partyNight = {
+    closesAt: '2026-12-01T18:00:00-05:00',
+    closesEarly: true,
+    dayGuestCloseAt: '2026-12-01T18:00:00-05:00',
+    evening: {
+      kind: 'ticketed_event',
+      opensAt: '2026-12-01T19:00:00-05:00',
+      closesAt: '2026-12-02T00:00:00-05:00',
+    },
+    seasons: ['mvmcp'],
+  };
+  const day = {
+    date: '2026-12-01',
+    isHoliday: false,
+    isSchoolVacation: false,
+    best: {
+      wdw: 'disneys-animal-kingdom-theme-park',
+      uo: 'universal-studios-florida',
+      sw: 'seaworld-orlando',
+    },
+    bestWhy: { wdw: 'closes_early_elsewhere', uo: 'shortest_wait', sw: 'shortest_wait' },
+    parks: {
+      'magic-kingdom-park': open(40, 'low', partyNight),
+      'disneys-animal-kingdom-theme-park': open(45, 'low'),
+      'universal-studios-florida': open(30, 'low', {
+        status: 'UNKNOWN',
+        hoursPublished: false,
+        opensAt: undefined,
+        closesAt: undefined,
+      }),
+      'universal-islands-of-adventure': open(40, 'moderate'),
+      'seaworld-orlando': open(35, 'low'),
+    },
+  };
+  const calendar = {
+    days: [day],
+    seasons: [
+      {
+        id: 'mvmcp',
+        parkSlug: 'magic-kingdom-park',
+        kind: 'christmas',
+        name: "Mickey's Very Merry Christmas Party",
+        startDate: '2026-11-08',
+        endDate: '2026-12-22',
+        dates: ['2026-12-01'],
+        status: 'confirmed',
+        separateTicket: true,
+      },
+    ],
+  };
+  const picks = datePicks(day, region, calendar);
+  test(
+    'a pick per resort with a choice; SeaWorld has none',
+    picks.map((p) => [p.group.key, p.park.slug]),
+    [
+      ['wdw', 'disneys-animal-kingdom-theme-park'],
+      ['uo', 'universal-studios-florida'],
+    ]
+  );
+  test(
+    'the pick names the quieter park that closes early, and its resort’s party',
+    [picks[0].earlyElsewhere?.park.slug, picks[0].party?.season?.name, picks[0].party?.leaveAt],
+    ['magic-kingdom-park', "Mickey's Very Merry Christmas Party", '2026-12-01T18:00:00-05:00']
+  );
+  test(
+    'a pick without published hours says so',
+    picks.map((p) => p.hoursUnpublished),
+    [false, true]
+  );
+  test(
+    'an evening after a normal close is no party night',
+    dateParties(
+      {
+        ...day,
+        parks: {
+          'magic-kingdom-park': open(40, 'low', {
+            evening: { kind: 'ticketed_event', opensAt: 'x', closesAt: 'y' },
+          }),
+        },
+      },
+      region
+    ),
+    []
+  );
+  test(
+    'New Year’s Eve is the date',
+    [isNewYearsEve('2026-12-31'), isNewYearsEve('2027-01-01')],
+    [true, false]
+  );
+
+  const month = {
+    days: ['2026-12-30', '2026-12-31', '2027-01-01'].map((date) => ({
+      date,
+      isHoliday: false,
+      isSchoolVacation: date !== '2027-01-01',
+      holidays: date !== '2027-01-01' ? ['Winter break (Orange County Public Schools)'] : [],
+      parks: {
+        'magic-kingdom-park': {
+          ...open(40, 'low'),
+          seasons: date === '2026-12-31' ? ['nye-mk', 'hol'] : ['hol'],
+        },
+        'universal-studios-florida': {
+          ...open(40, 'low'),
+          seasons: date === '2026-12-31' ? ['nye-us'] : [],
+        },
+      },
+    })),
+    seasons: [
+      {
+        id: 'hol',
+        parkSlug: 'magic-kingdom-park',
+        kind: 'christmas',
+        name: 'Holidays',
+        startDate: '2026-11-13',
+        endDate: '2027-01-06',
+        status: 'confirmed',
+        separateTicket: false,
+      },
+      {
+        id: 'nye-mk',
+        parkSlug: 'magic-kingdom-park',
+        kind: 'special_event',
+        name: "New Year's Eve at Magic Kingdom",
+        startDate: '2026-12-31',
+        endDate: '2026-12-31',
+        status: 'confirmed',
+        separateTicket: false,
+      },
+      {
+        id: 'nye-us',
+        parkSlug: 'universal-studios-florida',
+        kind: 'special_event',
+        name: "New Year's Eve at Universal Orlando",
+        startDate: '2026-12-31',
+        endDate: '2026-12-31',
+        status: 'announced',
+        separateTicket: false,
+      },
+    ],
+  };
+  test(
+    'the month’s events: seasons cut to the month, every New Year’s Eve evening one row, breaks last',
+    monthEvents(month, '2026-12', ['magic-kingdom-park', 'universal-studios-florida']).map((e) => [
+      e.kind,
+      e.name,
+      e.dates,
+      e.wholeMonth,
+    ]),
+    [
+      ['festival', 'Holidays', ['2026-12-30', '2026-12-31'], true],
+      ['break', 'Winter break (Orange County Public Schools)', ['2026-12-30', '2026-12-31'], true],
+      ['nye', null, ['2026-12-31'], false],
+    ]
+  );
+  test(
+    'a season at a park the visitor does not consider stays out',
+    monthEvents(month, '2026-12', ['universal-studios-florida']).map((e) => e.kind),
+    ['break', 'nye']
+  );
+
+  test(
+    'a curated code wins over the initials',
+    [parkCode({ name: 'Tokyo Disneyland', code: 'DL' }), parkCode({ name: 'Magic Kingdom Park' })],
+    ['DL', 'MK']
+  );
+  test(
+    'the code key: the shown parks once, in the region’s order',
+    parkCodeKey(
+      region.parks,
+      ['universal-studios-florida', 'magic-kingdom-park', 'magic-kingdom-park'],
+      (p) => p.name
+    ),
+    [
+      { slug: 'magic-kingdom-park', code: 'MK', name: 'Magic Kingdom Park' },
+      { slug: 'universal-studios-florida', code: 'US', name: 'Universal Studios Florida' },
+    ]
+  );
+
+  const canvas = { startMin: 420, endMin: 1440 };
+  test(
+    'the band: early slot, park, the plan’s evening, in percent of the canvas',
+    dayBandPieces(
+      {
+        date: '2026-12-13',
+        kind: 'park',
+        blocks: [{ slug: 'ak', startMin: 480, endMin: 1080 }],
+        early: { startMin: 450, endMin: 480 },
+        evening: null,
+        hopAt: null,
+        night: { kind: 'hop', target: 'hs', startMin: 1097, endMin: 1260, travelMinutes: 17 },
+      },
+      canvas
+    ),
+    [
+      { kind: 'early', slug: null, left: 2.9, width: 2.9 },
+      { kind: 'park', slug: 'ak', left: 5.9, width: 58.8 },
+      { kind: 'hop', slug: 'hs', left: 66.4, width: 16 },
+    ]
+  );
+  test(
+    'a party evening is drawn where the plan has no evening of its own',
+    dayBandPieces(
+      {
+        date: '2026-12-01',
+        kind: 'park',
+        blocks: [{ slug: 'mk', startMin: 540, endMin: 1080 }],
+        early: null,
+        evening: { kind: 'ticketed_event', startMin: 1140, endMin: 1440 },
+        hopAt: null,
+        night: null,
+      },
+      canvas
+    ).map((p) => p.kind),
+    ['park', 'party']
+  );
+  test(
+    'hours for a phone cell, midnight as 24',
+    [formatGridHours(540, 1260), formatGridHours(510, 1440), formatGridHours(540, 1500)],
+    ['09–21', '08:30–24', '09–01']
+  );
 }
 
 // ── 6. The When mode ────────────────────────────────────────────────────────

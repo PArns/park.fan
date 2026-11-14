@@ -21,6 +21,7 @@ import type {
   TripCalendarDay,
   TripEveningKind,
   TripParkDay,
+  TripRegionPark,
   TripSeason,
 } from './types';
 import { PARK_NAME_SUFFIXES } from './registry';
@@ -261,6 +262,65 @@ export function tripColumnGrid(span: TripDaySpan, canvas: TripCanvas, pxPerMin: 
   };
 }
 
+/** One piece of a Month view day band, placed in percent of the trip's shared canvas. */
+export interface DayBandPiece {
+  /**
+   * `early` the hotel's slot before opening, `park` a park's day-guest hours, `party` the ticketed
+   * evening that ends a day guest's day, `extended` the hotel's extra evening, `hop` the plan's
+   * evening in a second park, `venue` its evening at a venue.
+   */
+  kind: 'early' | 'park' | 'party' | 'extended' | 'hop' | 'venue';
+  /** The park of a `park` or `hop` piece. */
+  slug: string | null;
+  left: number;
+  width: number;
+}
+
+/**
+ * A day of the Week view (`tripDaySpans`) as the Month view's band: the same pieces on the same
+ * canvas ({@link tripCanvas}), in percent, so the two views cannot disagree on an hour. The plan's
+ * own evening wins over a ticketed one it overlaps, since it is what the visitor does.
+ */
+export function dayBandPieces(span: TripDaySpan, canvas: TripCanvas): DayBandPiece[] {
+  const length = canvas.endMin - canvas.startMin;
+  if (length <= 0) return [];
+  const at = (min: number) =>
+    (Math.min(Math.max(min, canvas.startMin), canvas.endMin) - canvas.startMin) / length;
+  const piece = (
+    kind: DayBandPiece['kind'],
+    slug: string | null,
+    startMin: number,
+    endMin: number
+  ): DayBandPiece => ({
+    kind,
+    slug,
+    left: Math.round(at(startMin) * 1000) / 10,
+    width: Math.round((at(endMin) - at(startMin)) * 1000) / 10,
+  });
+  const pieces: DayBandPiece[] = [];
+  if (span.early) pieces.push(piece('early', null, span.early.startMin, span.early.endMin));
+  for (const block of span.blocks)
+    pieces.push(piece('park', block.slug, block.startMin, block.endMin));
+  if (span.evening && !span.night) {
+    pieces.push(
+      piece(
+        span.evening.kind === 'ticketed_event' ? 'party' : 'extended',
+        null,
+        span.evening.startMin,
+        span.evening.endMin
+      )
+    );
+  }
+  if (span.night) {
+    pieces.push(
+      span.night.kind === 'hop'
+        ? piece('hop', span.night.target, span.night.startMin, span.night.endMin)
+        : piece('venue', null, span.night.startMin, span.night.endMin)
+    );
+  }
+  return pieces.filter((p) => p.width > 0);
+}
+
 /** The trip's dates in pages of `perPage`, from the first day: page by week, not by calendar week. */
 export function weekPages<T>(items: readonly T[], perPage: number): T[][] {
   const pages: T[][] = [];
@@ -330,6 +390,37 @@ export function parkInitials(name: string): string {
   if (word === word.toUpperCase()) return word.slice(0, 2);
   const owner = words.find((w) => OWNER_WORDS.has(w.toLowerCase()));
   return owner ? initials([owner, word]) : word.slice(0, 2).toUpperCase();
+}
+
+/**
+ * A park's code in every view that has room for two letters (the date grid, the Month view, their
+ * key): the region's curated `code` where the API sends one, else {@link parkInitials}. The key under
+ * a grid reads the same function, so a code and its explanation cannot disagree.
+ */
+export function parkCode(park: Pick<TripRegionPark, 'name' | 'code'>): string {
+  return park.code ?? parkInitials(park.name);
+}
+
+/** One line of a code key: the code and the park it stands for. */
+export interface ParkCodeEntry {
+  slug: string;
+  code: string;
+  name: string;
+}
+
+/**
+ * The key to the codes a view shows: each park among `slugs` once, in the region's order, with its
+ * {@link parkCode} and its name as `nameOf` gives it. Parks the region does not list are left out.
+ */
+export function parkCodeKey(
+  parks: readonly TripRegionPark[],
+  slugs: Iterable<string>,
+  nameOf: (park: TripRegionPark) => string
+): ParkCodeEntry[] {
+  const shown = new Set(slugs);
+  return parks
+    .filter((park) => shown.has(park.slug))
+    .map((park) => ({ slug: park.slug, code: parkCode(park), name: nameOf(park) }));
 }
 
 /**

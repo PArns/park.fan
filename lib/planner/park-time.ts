@@ -62,6 +62,20 @@ export function formatGridTime(minute: number): string {
 }
 
 /**
+ * A day's hours as short as a phone cell needs, on the same 24-hour clock as {@link formatGridTime}:
+ * `09–21`, `08:30–18`, with midnight as `24` rather than `00`. Two digits, so it does not read as a
+ * range of dates.
+ */
+export function formatGridHours(startMinute: number, endMinute: number): string {
+  const short = (minute: number, end: boolean) => {
+    if (end && Math.round(minute) % 1440 === 0) return '24';
+    const time = formatGridTime(minute);
+    return time.endsWith(':00') ? time.slice(0, 2) : time;
+  };
+  return `${short(startMinute, false)}–${short(endMinute, true)}`;
+}
+
+/**
  * `Donnerstag, 17. September`: the day a plan is filed under, in the reader's language. Formatted
  * from noon UTC, which no offset can push across a date boundary. Shared, so the wizard and the fit
  * assistant cannot name different days.
