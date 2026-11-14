@@ -9,36 +9,6 @@ import type { TripRegionConfig } from '../registry';
  * has them, and `live: true`; its Parky scene is drawn. See docs/features/trip-regions.md#adding-a-region.
  */
 
-/**
- * Southern California: Disneyland Resort, Universal Studios Hollywood, Knott's, Six Flags Magic
- * Mountain, SeaWorld San Diego, LEGOLAND California, Sesame Place San Diego.
- */
-export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
-  slug: 'southern-california',
-  live: false,
-  segments: {
-    en: 'california',
-    de: 'kalifornien',
-    nl: 'californie',
-    fr: 'californie',
-    es: 'california',
-    it: 'california',
-  },
-  timezone: 'America/Los_Angeles',
-  // Anaheim, where the most parks of the region are; San Diego and Valencia are a drive away.
-  centre: { latitude: 33.81, longitude: -117.92 },
-  photo: '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
-  scene: () =>
-    import('../../../components/assistant/parky/southern-california-scene').then((m) => ({
-      default: m.ParkySouthernCaliforniaScene,
-    })),
-  hub: { heroPhotos: [], faq: {} },
-  bestTime: [],
-  parkNameSuffixes: [],
-  resortWords: {},
-  hotels: [{ key: 'offsite' }],
-};
-
 /** Japan: Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan, Universal Studios Japan. */
 export const JAPAN: TripRegionConfig = {
   slug: 'japan',

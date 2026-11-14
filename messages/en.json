@@ -4023,6 +4023,275 @@
         "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
         "link": "Orlando Crowd Calendar"
       }
+    },
+    "southern-california": {
+      "nav": {
+        "name": "Southern California",
+        "area": "Los Angeles and San Diego",
+        "calendar": "Southern California Crowd Calendar",
+        "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip."
+      },
+      "hub": {
+        "title": "Southern California Crowd Calendar",
+        "monthTitle": "Southern California Crowd Calendar {month}",
+        "metaTitle": "Southern California Crowd Calendar & Trip Planner",
+        "metaTitleMonth": "Disneyland California Crowd Calendar {month}",
+        "metaTitleMonthShort": "Southern California Crowd Calendar {month}",
+        "metaDescription": "All eight Southern California theme parks, day by day. Quietest in the next 30 days: {verdict}.",
+        "metaDescriptionPlain": "Which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and the parks down to San Diego, plus a planner for your trip dates.",
+        "metaDescriptionMonth": "Quietest Southern California days in {month}: {verdict}. Every park, day by day.",
+        "metaDescriptionMonthPlain": "Southern California in {month}, day by day: which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and around San Diego.",
+        "lead": "A calendar for all eight parks around Los Angeles and San Diego, and a planner for your trip days.",
+        "leadMonth": "All eight parks around Los Angeles and San Diego in {month}, day by day, and a planner for your trip days.",
+        "monthIndexLabel": "Southern California by month",
+        "calendar": {
+          "caption": "Southern California’s parks, {from} to {to}: peak wait in minutes"
+        },
+        "lanes": {
+          "break": "Los Angeles school holidays: {name}, {dates}",
+          "unnamedBreak": "Los Angeles school holidays",
+          "none": "No events or Los Angeles school holidays in these days."
+        },
+        "sheet": {
+          "kicker": "Southern California · one day",
+          "travelTransfer": "From {area}: about {minutes} min by car to the car park, then about {transfer} min by tram, {total} min in all, without traffic"
+        },
+        "when": {
+          "kicker": "Disneyland and Universal",
+          "title": "Best time to visit Southern California in {year}",
+          "titleNoYear": "Best time to visit Southern California",
+          "pageLink": "Best time to visit Southern California in {year}",
+          "pageLinkNoYear": "Best time to visit Southern California"
+        },
+        "reasons": {
+          "school_break": "during Los Angeles school holidays"
+        },
+        "faq": {
+          "title": "Questions about Southern California crowds",
+          "quietest": {
+            "q": "When is Southern California least crowded in the next few weeks?",
+            "qMonth": "When is Southern California least crowded in {month}?",
+            "resort": "{resort} has its lowest peak wait on {days}.",
+            "day": "{date} ({park}, about {minutes} min)"
+          },
+          "party": {
+            "q": "Which park on a California Adventure party night?",
+            "a": "On {count, plural, =1 {# night} other {# nights}} in this period California Adventure closes to day guests at {time} for {name}. The peak wait on those days is about {on} min, against {off} min on its other days. The day is shorter, and you miss the evening. For a full day, go to Disneyland on those dates, or come with a party ticket."
+          },
+          "epic": {
+            "q": "Is Disneyland busier on weekends?",
+            "a": "{verdict, select, busier {Yes.} same {No.} other {Only a little.}} In this period Disneyland’s peak wait is about {weekend} min on Saturdays and Sundays and about {weekday} min Monday to Friday."
+          },
+          "distance": {
+            "q": "How far is Universal from Disneyland?",
+            "a": "From Universal Studios Hollywood to Disneyland’s Mickey & Friends car park in Anaheim is about {far} minutes by car without traffic. The tram from there to the gates takes about {transfer} minutes, {total} minutes in all. From the Disney hotels and Harbor Boulevard you walk to both Disney parks. Six Flags Magic Mountain is about {near} minutes from Universal. Map data: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Southern California trip planner"
+        },
+        "dataset": {
+          "name": "Southern California theme park crowd calendar, {period}",
+          "description": "Per park and day at the Disneyland Resort, Universal Studios Hollywood and the day-trip parks: the expected peak wait, the crowd level against the park’s normal day, and the opening hours, {period}."
+        },
+        "glance": {
+          "zone": "California time"
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Best time to visit Southern California in {year}"
+        },
+        "name": {
+          "region": "Best time to visit Southern California"
+        },
+        "resort": {
+          "region": "Disneyland and Universal"
+        },
+        "intro": {
+          "lead": "Every figure here is the peak wait: each big ride’s highest wait of the day, averaged over Disneyland, California Adventure and Universal.",
+          "body": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. The forecast runs to {date}. After that the page shows the same weeks last year as we measured them, marked “last year”.",
+          "bodyForecast": "We score a trip the way the trip planner does: each park on its best day, and a day that closes early for day guests counts as a worse one. All of it comes from our forecast."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Los Angeles school holidays"
+          }
+        },
+        "weeks": {
+          "noBreak": "No Los Angeles school holidays."
+        },
+        "faq": {
+          "title": "Questions about when to go",
+          "quietQ": {
+            "region": "When is Southern California least crowded in {year}?"
+          },
+          "quietA": "The {days}-day trip from {date} has the lowest peak wait: about {minutes} min, {percent}% below the {year} average. Next come {others}.",
+          "christmasQ": "Is Christmas busy?",
+          "christmasA": "{busy, select, yes {Yes.} other {No.}} Christmas week ({date}) runs at a peak wait of about {minutes} min, against {average} min across {year}.",
+          "newYearA": "{busy, select, yes {Yes, as far as our figures go.} other {No, as far as our figures go.}} They start with the week around New Year ({date}) at a peak wait of about {minutes} min, against {average} min across {year}. Christmas week itself comes before that.",
+          "partyQ": "When are the party nights?",
+          "partyA": "{list}. On those evenings day guests have to leave early, so the trip planner counts such a day as a shorter park day.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Disneyland or Universal first?"
+          },
+          "firstA": "Each park goes on the day of your trip with its lowest peak wait. For the trip from {date} that’s {order}.",
+          "firstItem": "{park} on {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Plan my California trip"
+        },
+        "parks": {
+          "moreHint": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND and Sesame Place"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney hotel",
+            "offsite": "Other hotel"
+          },
+          "hotelHint": {
+            "disney": "Disneyland Hotel, Grand Californian or Pixar Place: a walk to both parks, no early entry"
+          },
+          "hotelShort": {
+            "disney": "Disney hotel",
+            "offsite": "other hotel"
+          },
+          "fireworks": "Night shows",
+          "fireworksWantHint": "Your park days avoid party nights, when day guests have to leave early.",
+          "fireworksAnyHint": "A party night can be a park day if its lower peak wait makes up for the shorter day.",
+          "fireworksWantShort": "Night shows",
+          "eveningsHint": "Where a park closes early, the plan suggests an evening: the other Disney park, Downtown Disney or Universal CityWalk."
+        },
+        "relaxed": {
+          "blocks_relaxed": "The Disneyland Resort days couldn’t all go back to back on these dates."
+        },
+        "ics": {
+          "calendarName": "California trip {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "No Los Angeles school holidays.",
+            "before_spring_break": "Before the Los Angeles spring break."
+          },
+          "warning": {
+            "school_break": "Los Angeles school holidays."
+          }
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-resort": "Disneyland Resort",
+            "universal-studios-hollywood": "Universal Studios Hollywood",
+            "day-trips": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND and Sesame Place"
+          },
+          "resortShort": {
+            "disneyland-resort": "Disneyland",
+            "universal-studios-hollywood": "Universal",
+            "day-trips": "side trip"
+          },
+          "hopperName": {
+            "disney": "Park Hopper"
+          },
+          "market": {
+            "intl": "Sold outside the US"
+          },
+          "entry": {
+            "dlr-multi-day": {
+              "title": "2- to 5-day ticket",
+              "hint": "Any park days within the 13 days from the first visit."
+            },
+            "dlr-1-day": {
+              "title": "1-day ticket",
+              "hint": "One day in one park, or in both with Park Hopper."
+            },
+            "dlr-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Two Disneyland days and two visits from LEGOLAND, SeaWorld, San Diego Zoo and Safari Park, within 14 days of the first visit. Also sold with two Universal days."
+            },
+            "ush-1-day": {
+              "title": "1-day ticket",
+              "hint": "Valid on the date you booked."
+            },
+            "ush-2-day": {
+              "title": "2-day ticket",
+              "hint": "First visit on the date you booked, the second within the 7 days from that date."
+            },
+            "ush-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Two Universal days and two visits from LEGOLAND, SeaWorld, San Diego Zoo and Safari Park, within 14 days of the first visit."
+            },
+            "knotts": {
+              "title": "Knott’s Berry Farm",
+              "hint": "A ticket for one date. Knott’s Scary Farm needs a ticket of its own."
+            },
+            "magic-mountain": {
+              "title": "Six Flags Magic Mountain",
+              "hint": "One visit, on a date you pick or on any day the park is open."
+            },
+            "seaworld-1-day": {
+              "title": "SeaWorld San Diego, 1 day",
+              "hint": "For one date, or any day within 6 months of buying."
+            },
+            "seaworld-2-day": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "The second visit within 14 days of the first."
+            },
+            "seaworld-2-day-intl": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "The second visit within 7 days of the first."
+            },
+            "seaworld-sesame": {
+              "title": "SeaWorld and Sesame Place",
+              "hint": "Two-Park Ticket: one visit to each within 6 months of buying."
+            },
+            "seaworld-fun-card": {
+              "title": "SeaWorld Fun Card 2027",
+              "hint": "As often as you like until the end of 2027, outside blockout days."
+            },
+            "sesame": {
+              "title": "Sesame Place San Diego",
+              "hint": "For one date, or any day within 6 months of buying."
+            },
+            "legoland": {
+              "title": "LEGOLAND California",
+              "hint": "SEA LIFE Aquarium included, no reservation needed."
+            },
+            "citypass-san-diego": {
+              "title": "San Diego CityPASS",
+              "hint": "SeaWorld, LEGOLAND or both, plus three San Diego attractions, over 9 days in a row from the first visit."
+            },
+            "gocity": {
+              "title": "Go City Los Angeles",
+              "hint": "The All-Inclusive Pass covers Knott’s, the Pass Plus adds Universal and LEGOLAND, one visit each within 14 days."
+            }
+          },
+          "variant": {
+            "citypass-socal-disneyland": "With Disneyland",
+            "citypass-socal-disneyland-universal": "With Disneyland and Universal",
+            "ush-1-day": "General Admission",
+            "ush-express": "Universal Express",
+            "ush-vip-experience": "VIP Experience",
+            "sfmm-1-day": "Dated ticket",
+            "sfmm-any-day": "Good Any Day",
+            "seaworld-sd-1-day": "Single-Day Ticket",
+            "seaworld-sd-any-day": "Any Day Ticket",
+            "sesame-sd-1-day": "Single-Day Ticket",
+            "sesame-sd-any-day": "Any-Day Ticket",
+            "legoland-ca-1-day": "1 day",
+            "legoland-ca-multi-day": "2 days",
+            "gocity-la-all-inclusive": "All-Inclusive Pass",
+            "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Southern California",
+        "title": "Southern California: which park on which day",
+        "lead": "Disneyland, California Adventure, Universal Hollywood and five more parks in one calendar: which one is quietest when, and a planner for your trip dates.",
+        "link": "Southern California Crowd Calendar"
+      }
     }
   },
   "news": {

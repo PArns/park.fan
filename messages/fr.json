@@ -4023,6 +4023,275 @@
         "lead": "Seize parcs autour d’Orlando dans un seul calendrier : pour chaque jour, tu vois où les files sont les plus courtes à Disney World et chez Universal, et le planificateur place tes parcs sur tes dates.",
         "link": "Calendrier d’affluence Orlando"
       }
+    },
+    "southern-california": {
+      "nav": {
+        "name": "Californie du Sud",
+        "area": "Los Angeles et San Diego",
+        "calendar": "Calendrier d’affluence Californie du Sud",
+        "calendarHint": "Lequel des huit parcs est le plus calme quel jour, et un planificateur pour ton voyage."
+      },
+      "hub": {
+        "title": "Calendrier d’affluence Californie du Sud",
+        "monthTitle": "Calendrier d’affluence Californie du Sud {month}",
+        "metaTitle": "Calendrier d’affluence Californie du Sud et planificateur",
+        "metaTitleMonth": "Disneyland Californie : affluence en {month}",
+        "metaTitleMonthShort": "Calendrier d’affluence Californie du Sud {month}",
+        "metaDescription": "Les huit parcs à thème de Californie du Sud, jour par jour. Le plus calme sur les 30 prochains jours : {verdict}.",
+        "metaDescriptionPlain": "Quel parc est le plus calme quel jour au Disneyland Resort, à Universal Studios Hollywood et jusqu’à San Diego, avec un planificateur pour tes dates.",
+        "metaDescriptionMonth": "Les jours les plus calmes en Californie du Sud en {month} : {verdict}. Chaque parc, jour par jour.",
+        "metaDescriptionMonthPlain": "La Californie du Sud en {month}, jour par jour : le parc le plus calme au Disneyland Resort, à Universal Studios Hollywood et autour de San Diego.",
+        "lead": "Un calendrier pour les huit parcs autour de Los Angeles et San Diego, et un planificateur pour tes jours de voyage.",
+        "leadMonth": "Les huit parcs autour de Los Angeles et San Diego en {month}, jour par jour, et un planificateur pour tes jours de voyage.",
+        "monthIndexLabel": "La Californie du Sud mois par mois",
+        "calendar": {
+          "caption": "Les parcs de Californie du Sud du {from} au {to} : attente de pointe en minutes"
+        },
+        "lanes": {
+          "break": "Vacances scolaires de Los Angeles : {name}, {dates}",
+          "unnamedBreak": "Vacances scolaires de Los Angeles",
+          "none": "Ni événement ni vacances scolaires de Los Angeles ces jours-là."
+        },
+        "sheet": {
+          "kicker": "Californie du Sud · une journée",
+          "travelTransfer": "Depuis {area} : environ {minutes} min en voiture jusqu’au parking, puis environ {transfer} min en tram, {total} min en tout, sans trafic"
+        },
+        "when": {
+          "kicker": "Disneyland et Universal",
+          "title": "Meilleure période pour visiter la Californie du Sud en {year}",
+          "titleNoYear": "Meilleure période pour visiter la Californie du Sud",
+          "pageLink": "Meilleure période pour visiter la Californie du Sud en {year}",
+          "pageLinkNoYear": "Meilleure période pour visiter la Californie du Sud"
+        },
+        "reasons": {
+          "school_break": "pendant les vacances scolaires de Los Angeles"
+        },
+        "faq": {
+          "title": "Questions sur l’affluence en Californie du Sud",
+          "quietest": {
+            "q": "Quand la Californie du Sud est-elle la plus calme dans les semaines à venir ?",
+            "qMonth": "Quand la Californie du Sud est-elle la plus calme en {month} ?",
+            "resort": "{resort} a son attente de pointe la plus basse le {days}.",
+            "day": "{date} ({park}, environ {minutes} min)"
+          },
+          "party": {
+            "q": "Quel parc un soir de fête à California Adventure ?",
+            "a": "Pendant {count, plural, =1 {# soirée} other {# soirées}} de cette période, California Adventure ferme aux visiteurs du jour à {time} pour {name}. Ces jours-là, l’attente de pointe tourne autour de {on} min, contre {off} min les autres jours. La journée est plus courte et tu manques la soirée. Pour une journée complète, choisis Disneyland ces jours-là, ou viens avec un billet pour la fête."
+          },
+          "epic": {
+            "q": "Disneyland est-il plus fréquenté le week-end ?",
+            "a": "{verdict, select, busier {Oui.} same {Non.} other {Un peu seulement.}} Sur cette période, l’attente de pointe à Disneyland tourne autour de {weekend} min le samedi et le dimanche, et de {weekday} min du lundi au vendredi."
+          },
+          "distance": {
+            "q": "À quelle distance Universal se trouve-t-il de Disneyland ?",
+            "a": "D’Universal Studios Hollywood au parking Mickey & Friends de Disneyland, à Anaheim, il faut environ {far} minutes en voiture sans trafic. Le tram met ensuite environ {transfer} minutes jusqu’aux entrées, {total} minutes en tout. Depuis les hôtels Disney et Harbor Boulevard, tu vas à pied aux deux parcs Disney. Six Flags Magic Mountain est à environ {near} minutes d’Universal. Données cartographiques : {attribution}."
+          }
+        },
+        "next": {
+          "title": "Planificateur de voyage en Californie du Sud"
+        },
+        "dataset": {
+          "name": "Calendrier d’affluence des parcs de Californie du Sud, {period}",
+          "description": "Par parc et par jour au Disneyland Resort, à Universal Studios Hollywood et dans les parcs d’excursion : l’attente de pointe prévue, l’affluence par rapport à un jour ordinaire du parc et les horaires, {period}."
+        },
+        "glance": {
+          "zone": "heure de Californie"
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Meilleure période pour aller en Californie du Sud en {year}"
+        },
+        "name": {
+          "region": "Meilleure période pour aller en Californie du Sud"
+        },
+        "resort": {
+          "region": "Disneyland et Universal"
+        },
+        "intro": {
+          "lead": "Chaque chiffre ici est l’attente de pointe : l’attente la plus haute de chaque grande attraction dans la journée, en moyenne sur Disneyland, California Adventure et Universal.",
+          "body": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs du jour doivent partir plus tôt compte comme un jour moins bon. La prévision va jusqu’au {date}. Au-delà, la page montre les mêmes semaines de l’an dernier telles que nous les avons mesurées, marquées « l’an dernier ».",
+          "bodyForecast": "Nous évaluons un séjour comme le planificateur de voyage : chaque parc à son meilleur jour, et un jour où les visiteurs du jour doivent partir plus tôt compte comme un jour moins bon. Tout vient de notre prévision."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Vacances scolaires de Los Angeles"
+          }
+        },
+        "weeks": {
+          "noBreak": "Pas de vacances scolaires à Los Angeles."
+        },
+        "faq": {
+          "title": "Questions sur la meilleure période",
+          "quietQ": {
+            "region": "Quand la Californie du Sud est-elle la moins fréquentée en {year} ?"
+          },
+          "quietA": "Le séjour de {days} jours à partir du {date} a l’attente de pointe la plus basse : environ {minutes} min, {percent} % sous la moyenne de {year}. Viennent ensuite {others}.",
+          "christmasQ": "Y a-t-il beaucoup de monde à Noël ?",
+          "christmasA": "{busy, select, yes {Oui.} other {Non.}} La semaine de Noël ({date}) tourne autour de {minutes} min d’attente de pointe, contre {average} min en moyenne sur {year}.",
+          "newYearA": "{busy, select, yes {Oui, aussi loin que vont nos chiffres.} other {Non, aussi loin que vont nos chiffres.}} Ils commencent avec la semaine du Nouvel An ({date}), autour de {minutes} min d’attente de pointe, contre {average} min en moyenne sur {year}. La semaine de Noël elle-même tombe avant.",
+          "partyQ": "Quand ont lieu les soirées de fête ?",
+          "partyA": "{list}. Ces soirs-là, les visiteurs du jour doivent partir plus tôt, donc le planificateur compte une telle journée comme une journée de parc plus courte.",
+          "partyItem": "{name} ({park}) : {dates}, {status}",
+          "firstQ": {
+            "region": "D’abord Disneyland ou d’abord Universal ?"
+          },
+          "firstA": "Chaque parc va sur le jour de ton voyage où son attente de pointe est la plus basse. Pour le séjour à partir du {date}, cela donne {order}.",
+          "firstItem": "{park} le {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Planifier mon voyage en Californie"
+        },
+        "parks": {
+          "moreHint": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND et Sesame Place"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Hôtel Disney",
+            "offsite": "Autre hôtel"
+          },
+          "hotelHint": {
+            "disney": "Disneyland Hotel, Grand Californian ou Pixar Place : à pied jusqu’aux deux parcs, sans entrée anticipée"
+          },
+          "hotelShort": {
+            "disney": "Hôtel Disney",
+            "offsite": "autre hôtel"
+          },
+          "fireworks": "Spectacles du soir",
+          "fireworksWantHint": "Tes journées de parc évitent les soirées de fête, où les visiteurs du jour doivent partir plus tôt.",
+          "fireworksAnyHint": "Une soirée de fête peut devenir une journée de parc si l’attente de pointe plus basse compense la journée plus courte.",
+          "fireworksWantShort": "Spectacles du soir",
+          "eveningsHint": "Quand un parc ferme plus tôt, le plan propose une soirée : l’autre parc Disney, Downtown Disney ou Universal CityWalk."
+        },
+        "relaxed": {
+          "blocks_relaxed": "Les jours au Disneyland Resort n’ont pas pu tous se suivre à ces dates."
+        },
+        "ics": {
+          "calendarName": "Voyage en Californie {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Pas de vacances scolaires à Los Angeles.",
+            "before_spring_break": "Avant les vacances de printemps à Los Angeles."
+          },
+          "warning": {
+            "school_break": "Vacances scolaires à Los Angeles."
+          }
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-resort": "Disneyland Resort",
+            "universal-studios-hollywood": "Universal Studios Hollywood",
+            "day-trips": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND et Sesame Place"
+          },
+          "resortShort": {
+            "disneyland-resort": "Disneyland",
+            "universal-studios-hollywood": "Universal",
+            "day-trips": "excursion"
+          },
+          "hopperName": {
+            "disney": "Park Hopper"
+          },
+          "market": {
+            "intl": "Vendu hors des États-Unis"
+          },
+          "entry": {
+            "dlr-multi-day": {
+              "title": "Billet 2 à 5 jours",
+              "hint": "Des jours de parc au choix dans les 13 jours à partir de la première visite."
+            },
+            "dlr-1-day": {
+              "title": "Billet 1 jour",
+              "hint": "Une journée dans un parc, ou dans les deux avec Park Hopper."
+            },
+            "dlr-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Deux jours à Disneyland et deux entrées parmi LEGOLAND, SeaWorld, San Diego Zoo et Safari Park, dans les 14 jours qui suivent la première visite. Existe aussi avec deux jours à Universal."
+            },
+            "ush-1-day": {
+              "title": "Billet 1 jour",
+              "hint": "Valable à la date réservée."
+            },
+            "ush-2-day": {
+              "title": "Billet 2 jours",
+              "hint": "Première visite à la date réservée, la seconde dans les 7 jours à partir de cette date."
+            },
+            "ush-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Deux jours à Universal et deux entrées parmi LEGOLAND, SeaWorld, San Diego Zoo et Safari Park, dans les 14 jours qui suivent la première visite."
+            },
+            "knotts": {
+              "title": "Knott’s Berry Farm",
+              "hint": "Billet daté pour une journée. Knott’s Scary Farm demande son propre billet."
+            },
+            "magic-mountain": {
+              "title": "Six Flags Magic Mountain",
+              "hint": "Une visite, à une date choisie ou n’importe quel jour d’ouverture."
+            },
+            "seaworld-1-day": {
+              "title": "SeaWorld San Diego, 1 jour",
+              "hint": "Pour une date, ou un jour dans les 6 mois qui suivent l’achat."
+            },
+            "seaworld-2-day": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "La seconde visite dans les 14 jours qui suivent la première."
+            },
+            "seaworld-2-day-intl": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "La seconde visite dans les 7 jours qui suivent la première."
+            },
+            "seaworld-sesame": {
+              "title": "SeaWorld et Sesame Place",
+              "hint": "Two-Park Ticket : une visite dans chaque parc, dans les 6 mois qui suivent l’achat."
+            },
+            "seaworld-fun-card": {
+              "title": "SeaWorld Fun Card 2027",
+              "hint": "Autant de fois que tu veux jusqu’à fin 2027, sauf les jours exclus."
+            },
+            "sesame": {
+              "title": "Sesame Place San Diego",
+              "hint": "Pour une date, ou un jour dans les 6 mois qui suivent l’achat."
+            },
+            "legoland": {
+              "title": "LEGOLAND California",
+              "hint": "Avec SEA LIFE Aquarium, sans réservation."
+            },
+            "citypass-san-diego": {
+              "title": "San Diego CityPASS",
+              "hint": "SeaWorld, LEGOLAND ou les deux, plus trois attractions de San Diego, sur 9 jours d’affilée à partir de la première visite."
+            },
+            "gocity": {
+              "title": "Go City Los Angeles",
+              "hint": "L’All-Inclusive Pass couvre Knott’s, le Pass Plus ajoute Universal et LEGOLAND, une visite chacun dans les 14 jours."
+            }
+          },
+          "variant": {
+            "citypass-socal-disneyland": "Avec Disneyland",
+            "citypass-socal-disneyland-universal": "Avec Disneyland et Universal",
+            "ush-1-day": "General Admission",
+            "ush-express": "Universal Express",
+            "ush-vip-experience": "VIP Experience",
+            "sfmm-1-day": "Billet daté",
+            "sfmm-any-day": "Good Any Day",
+            "seaworld-sd-1-day": "Single-Day Ticket",
+            "seaworld-sd-any-day": "Any Day Ticket",
+            "sesame-sd-1-day": "Single-Day Ticket",
+            "sesame-sd-any-day": "Any-Day Ticket",
+            "legoland-ca-1-day": "1 jour",
+            "legoland-ca-multi-day": "2 jours",
+            "gocity-la-all-inclusive": "All-Inclusive Pass",
+            "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Californie du Sud",
+        "title": "Californie du Sud : quel parc quel jour",
+        "lead": "Disneyland, California Adventure, Universal Hollywood et cinq autres parcs dans un seul calendrier : quand chacun est le plus calme, et un planificateur pour tes dates de voyage.",
+        "link": "Calendrier d’affluence Californie du Sud"
+      }
     }
   },
   "news": {

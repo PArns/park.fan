@@ -4023,6 +4023,275 @@
         "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
         "link": "Orlando drukte-kalender"
       }
+    },
+    "southern-california": {
+      "nav": {
+        "name": "Zuid-Californië",
+        "area": "Los Angeles en San Diego",
+        "calendar": "Zuid-Californië drukte-kalender",
+        "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis."
+      },
+      "hub": {
+        "title": "Zuid-Californië drukte-kalender",
+        "monthTitle": "Zuid-Californië drukte-kalender {month}",
+        "metaTitle": "Zuid-Californië drukte-kalender & reisplanner",
+        "metaTitleMonth": "Disneyland Californië: drukte-kalender {month}",
+        "metaTitleMonthShort": "Zuid-Californië drukte-kalender {month}",
+        "metaDescription": "Alle acht pretparken in Zuid-Californië, dag voor dag. Het rustigst in de komende 30 dagen: {verdict}.",
+        "metaDescriptionPlain": "Welk park wanneer het rustigst is in het Disneyland Resort, bij Universal Studios Hollywood en in de parken tot San Diego, plus een planner voor je reisdagen.",
+        "metaDescriptionMonth": "De rustigste dagen in Zuid-Californië in {month}: {verdict}. Elk park dag voor dag.",
+        "metaDescriptionMonthPlain": "Zuid-Californië in {month}, dag voor dag: welk park in het Disneyland Resort, bij Universal Studios Hollywood en rond San Diego wanneer het rustigst is.",
+        "lead": "Een kalender voor alle acht parken rond Los Angeles en San Diego, en een planner voor je reisdagen.",
+        "leadMonth": "Alle acht parken rond Los Angeles en San Diego in {month}, dag voor dag, en een planner voor je reisdagen.",
+        "monthIndexLabel": "Zuid-Californië per maand",
+        "calendar": {
+          "caption": "De parken in Zuid-Californië van {from} tot {to}: piekwachttijd in minuten"
+        },
+        "lanes": {
+          "break": "Schoolvakantie in Los Angeles: {name}, {dates}",
+          "unnamedBreak": "Schoolvakantie in Los Angeles",
+          "none": "Deze dagen zijn er geen evenementen en geen schoolvakanties in Los Angeles."
+        },
+        "sheet": {
+          "kicker": "Zuid-Californië · één dag",
+          "travelTransfer": "Vanaf {area}: ongeveer {minutes} min met de auto naar de parkeerplaats, dan ongeveer {transfer} min met de tram, samen {total} min, zonder verkeer"
+        },
+        "when": {
+          "kicker": "Disneyland en Universal",
+          "title": "Beste tijd om Zuid-Californië te bezoeken in {year}",
+          "titleNoYear": "Beste tijd om Zuid-Californië te bezoeken",
+          "pageLink": "Beste tijd om Zuid-Californië te bezoeken in {year}",
+          "pageLinkNoYear": "Beste tijd om Zuid-Californië te bezoeken"
+        },
+        "reasons": {
+          "school_break": "in de schoolvakantie in Los Angeles"
+        },
+        "faq": {
+          "title": "Vragen over de drukte in Zuid-Californië",
+          "quietest": {
+            "q": "Wanneer is het de komende weken het rustigst in Zuid-Californië?",
+            "qMonth": "Wanneer is het in {month} het rustigst in Zuid-Californië?",
+            "resort": "{resort} heeft de laagste piekwachttijd op {days}.",
+            "day": "{date} ({park}, ongeveer {minutes} min)"
+          },
+          "party": {
+            "q": "Welk park op een feestavond in California Adventure?",
+            "a": "Op {count, plural, =1 {# avond} other {# avonden}} in deze periode sluit California Adventure voor dagbezoekers om {time} voor {name}. De piekwachttijd ligt die dagen rond {on} min, tegenover {off} min op de andere dagen. De dag is korter en de avond mis je. Kies voor een volle dag op die dagen Disneyland, of kom met een feestticket."
+          },
+          "epic": {
+            "q": "Is het in Disneyland in het weekend drukker?",
+            "a": "{verdict, select, busier {Ja.} same {Nee.} other {Maar een beetje.}} In deze periode ligt de piekwachttijd in Disneyland op zaterdag en zondag rond {weekend} min, van maandag tot vrijdag rond {weekday} min."
+          },
+          "distance": {
+            "q": "Hoe ver ligt Universal van Disneyland?",
+            "a": "Van Universal Studios Hollywood naar de Disneyland-parkeerplaats Mickey & Friends in Anaheim rijd je zonder verkeer ongeveer {far} minuten. Van daar brengt de tram je in ongeveer {transfer} minuten naar de ingangen, samen {total} minuten. Vanaf de Disney-hotels en Harbor Boulevard loop je naar beide Disney-parken. Six Flags Magic Mountain ligt ongeveer {near} minuten van Universal. Kaartgegevens: {attribution}."
+          }
+        },
+        "next": {
+          "title": "Reisplanner voor Zuid-Californië"
+        },
+        "dataset": {
+          "name": "Drukte-kalender van de pretparken in Zuid-Californië, {period}",
+          "description": "Per park en dag in het Disneyland Resort, bij Universal Studios Hollywood en in de parken voor een dagtrip: de verwachte piekwachttijd, de drukte vergeleken met een gewone dag in het park en de openingstijden, {period}."
+        },
+        "glance": {
+          "zone": "tijd in Californië"
+        }
+      },
+      "bestTime": {
+        "title": {
+          "region": "Beste reistijd voor Zuid-Californië in {year}"
+        },
+        "name": {
+          "region": "Beste reistijd voor Zuid-Californië"
+        },
+        "resort": {
+          "region": "Disneyland en Universal"
+        },
+        "intro": {
+          "lead": "Elk getal hier is de piekwachttijd: de hoogste wachttijd van elke grote attractie op een dag, gemiddeld over Disneyland, California Adventure en Universal.",
+          "body": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als een slechtere dag. De voorspelling loopt tot {date}. Daarna staan hier dezelfde weken vorig jaar zoals wij ze gemeten hebben, gemarkeerd met “vorig jaar”.",
+          "bodyForecast": "Een reis beoordelen we zoals de reisplanner: elk park op zijn beste dag, en een dag waarop dagbezoekers eerder weg moeten, telt als een slechtere dag. Alle waarden komen uit onze voorspelling."
+        },
+        "months": {
+          "label": {
+            "usBreaks": "Schoolvakantie in Los Angeles"
+          }
+        },
+        "weeks": {
+          "noBreak": "Geen schoolvakantie in Los Angeles."
+        },
+        "faq": {
+          "title": "Vragen over de beste reistijd",
+          "quietQ": {
+            "region": "Wanneer is het in {year} het rustigst in Zuid-Californië?"
+          },
+          "quietA": "De reis van {days} dagen vanaf {date} heeft de laagste piekwachttijd: ongeveer {minutes} min, {percent}% onder het gemiddelde van {year}. Daarna volgen {others}.",
+          "christmasQ": "Is het druk met Kerstmis?",
+          "christmasA": "{busy, select, yes {Ja.} other {Nee.}} In de kerstweek ({date}) ligt de piekwachttijd rond {minutes} min, tegen gemiddeld {average} min in {year}.",
+          "newYearA": "{busy, select, yes {Ja, voor zover onze cijfers gaan.} other {Nee, voor zover onze cijfers gaan.}} Ze beginnen met de week rond Nieuwjaar ({date}), met een piekwachttijd rond {minutes} min, tegen gemiddeld {average} min in {year}. De kerstweek zelf valt daarvoor.",
+          "partyQ": "Wanneer zijn de feestavonden?",
+          "partyA": "{list}. Op die avonden moeten dagbezoekers eerder weg, daarom telt de reisplanner zo’n dag als een kortere parkdag.",
+          "partyItem": "{name} ({park}): {dates}, {status}",
+          "firstQ": {
+            "region": "Eerst Disneyland of eerst Universal?"
+          },
+          "firstA": "Elk park komt op de dag van je reis met zijn laagste piekwachttijd. Voor de reis vanaf {date} is dat {order}.",
+          "firstItem": "{park} op {date}"
+        }
+      },
+      "planner": {
+        "setup": {
+          "start": "Reis naar Californië plannen"
+        },
+        "parks": {
+          "moreHint": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND en Sesame Place"
+        },
+        "options": {
+          "hotelLabel": {
+            "disney": "Disney-hotel",
+            "offsite": "Ander hotel"
+          },
+          "hotelHint": {
+            "disney": "Disneyland Hotel, Grand Californian of Pixar Place: lopend naar beide parken, zonder vroege toegang"
+          },
+          "hotelShort": {
+            "disney": "Disney-hotel",
+            "offsite": "Ander hotel"
+          },
+          "fireworks": "Avondshows",
+          "fireworksWantHint": "Je parkdagen mijden feestavonden, waarop dagbezoekers eerder weg moeten.",
+          "fireworksAnyHint": "Een feestavond kan een parkdag worden als de lagere piekwachttijd de kortere dag goedmaakt.",
+          "fireworksWantShort": "Avondshows",
+          "eveningsHint": "Sluit een park eerder, dan stelt het plan iets voor de avond voor: het andere Disney-park, Downtown Disney of Universal CityWalk."
+        },
+        "relaxed": {
+          "blocks_relaxed": "De dagen in het Disneyland Resort konden op deze data niet allemaal achter elkaar."
+        },
+        "ics": {
+          "calendarName": "Reis naar Californië {range}"
+        },
+        "when": {
+          "reason": {
+            "no_school_break": "Geen schoolvakantie in Los Angeles.",
+            "before_spring_break": "Voor de voorjaarsvakantie in Los Angeles."
+          },
+          "warning": {
+            "school_break": "Schoolvakantie in Los Angeles."
+          }
+        },
+        "tickets": {
+          "resort": {
+            "disneyland-resort": "Disneyland Resort",
+            "universal-studios-hollywood": "Universal Studios Hollywood",
+            "day-trips": "Knott’s, Magic Mountain, SeaWorld, LEGOLAND en Sesame Place"
+          },
+          "resortShort": {
+            "disneyland-resort": "Disneyland",
+            "universal-studios-hollywood": "Universal",
+            "day-trips": "uitstap"
+          },
+          "hopperName": {
+            "disney": "Park Hopper"
+          },
+          "market": {
+            "intl": "Verkocht buiten de VS"
+          },
+          "entry": {
+            "dlr-multi-day": {
+              "title": "Ticket voor 2 tot 5 dagen",
+              "hint": "Willekeurige parkdagen binnen de 13 dagen vanaf het eerste bezoek."
+            },
+            "dlr-1-day": {
+              "title": "Ticket voor 1 dag",
+              "hint": "Eén dag in één park, met Park Hopper in allebei."
+            },
+            "dlr-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Twee Disneyland-dagen en twee bezoeken uit LEGOLAND, SeaWorld, San Diego Zoo en Safari Park, binnen 14 dagen na het eerste bezoek. Ook met twee Universal-dagen."
+            },
+            "ush-1-day": {
+              "title": "Dagticket",
+              "hint": "Geldig op de datum die je geboekt hebt."
+            },
+            "ush-2-day": {
+              "title": "Ticket voor 2 dagen",
+              "hint": "Eerste bezoek op de geboekte datum, het tweede binnen de 7 dagen vanaf die datum."
+            },
+            "ush-citypass": {
+              "title": "Southern California CityPASS",
+              "hint": "Twee Universal-dagen en twee bezoeken uit LEGOLAND, SeaWorld, San Diego Zoo en Safari Park, binnen 14 dagen na het eerste bezoek."
+            },
+            "knotts": {
+              "title": "Knott’s Berry Farm",
+              "hint": "Dagticket voor een vaste datum. Knott’s Scary Farm heeft een eigen ticket nodig."
+            },
+            "magic-mountain": {
+              "title": "Six Flags Magic Mountain",
+              "hint": "Eén bezoek, op een vaste datum of op een willekeurige openingsdag."
+            },
+            "seaworld-1-day": {
+              "title": "SeaWorld San Diego, 1 dag",
+              "hint": "Voor een vaste datum, of een dag binnen 6 maanden na aankoop."
+            },
+            "seaworld-2-day": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "Het tweede bezoek binnen 14 dagen na het eerste."
+            },
+            "seaworld-2-day-intl": {
+              "title": "SeaWorld Two-Day Ticket",
+              "hint": "Het tweede bezoek binnen 7 dagen na het eerste."
+            },
+            "seaworld-sesame": {
+              "title": "SeaWorld en Sesame Place",
+              "hint": "Two-Park Ticket: één bezoek aan elk park binnen 6 maanden na aankoop."
+            },
+            "seaworld-fun-card": {
+              "title": "SeaWorld Fun Card 2027",
+              "hint": "Zo vaak je wilt tot eind 2027, behalve op de uitgesloten dagen."
+            },
+            "sesame": {
+              "title": "Sesame Place San Diego",
+              "hint": "Voor een vaste datum, of een dag binnen 6 maanden na aankoop."
+            },
+            "legoland": {
+              "title": "LEGOLAND California",
+              "hint": "Met SEA LIFE Aquarium, zonder reservering."
+            },
+            "citypass-san-diego": {
+              "title": "San Diego CityPASS",
+              "hint": "SeaWorld, LEGOLAND of allebei, plus drie attracties in San Diego, 9 dagen achter elkaar vanaf het eerste bezoek."
+            },
+            "gocity": {
+              "title": "Go City Los Angeles",
+              "hint": "De All-Inclusive Pass geldt voor Knott’s, de Pass Plus ook voor Universal en LEGOLAND, één bezoek per park binnen 14 dagen."
+            }
+          },
+          "variant": {
+            "citypass-socal-disneyland": "Met Disneyland",
+            "citypass-socal-disneyland-universal": "Met Disneyland en Universal",
+            "ush-1-day": "General Admission",
+            "ush-express": "Universal Express",
+            "ush-vip-experience": "VIP Experience",
+            "sfmm-1-day": "Vaste datum",
+            "sfmm-any-day": "Good Any Day",
+            "seaworld-sd-1-day": "Single-Day Ticket",
+            "seaworld-sd-any-day": "Any Day Ticket",
+            "sesame-sd-1-day": "Single-Day Ticket",
+            "sesame-sd-any-day": "Any-Day Ticket",
+            "legoland-ca-1-day": "1 dag",
+            "legoland-ca-multi-day": "2 dagen",
+            "gocity-la-all-inclusive": "All-Inclusive Pass",
+            "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
+          }
+        }
+      },
+      "homeStory": {
+        "kicker": "Zuid-Californië",
+        "title": "Zuid-Californië: welk park op welke dag",
+        "lead": "Disneyland, California Adventure, Universal Hollywood en vijf andere parken in één kalender: wanneer welk park het rustigst is, en een planner voor je reisdagen.",
+        "link": "Zuid-Californië drukte-kalender"
+      }
     }
   },
   "news": {
