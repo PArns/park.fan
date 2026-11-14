@@ -3094,16 +3094,16 @@
       "datesEmpty": "Kies aankomst en vertrek",
       "parks": "Parken",
       "parksCount": "{count, plural, =1 {1 park} other {# parken}}",
-      "splitOn": "de planner verdeelt de dagen",
-      "visitCount": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
-      "fineTune": "Verfijnen",
+      "fineTune": "Meer opties",
       "findSummary": "De beste {days} dagen, {range}",
-      "nextParks": "Verder naar de parken",
-      "plan": "Plannen",
       "find": "Data zoeken",
       "done": "Klaar",
       "close": "Sluiten",
-      "sheetHint": "Je keuze verandert het plan eronder."
+      "sheetHint": "Je keuze verandert het plan eronder.",
+      "route": "Route",
+      "showPlan": "Plan tonen",
+      "start": "Reis plannen",
+      "findLink": "Nog geen data? Zoek de beste reistijd"
     },
     "dates": {
       "prevMonth": "Vorige maand",
@@ -3144,10 +3144,8 @@
       "overall": "Totaal: {park}"
     },
     "find": {
-      "modeLabel": "Hoe je je reisdata kiest",
       "modeKnown": "Ik weet mijn data",
-      "modeFind": "Beste data zoeken",
-      "period": "Wanneer zou je kunnen reizen?",
+      "period": "Periode",
       "periods": {
         "next12": "Komende 12 maanden",
         "year": "{year}",
@@ -3162,7 +3160,7 @@
       "lengthValue": "{days} dagen",
       "shorter": "Een dag korter",
       "longer": "Een dag langer",
-      "holidays": "Alleen in onze schoolvakanties",
+      "holidays": "Alleen in mijn schoolvakantie",
       "holidaysHint": "Alleen periodes die helemaal in de schoolvakantie van je regio vallen.",
       "country": "Land",
       "region": "Regio",
@@ -3170,27 +3168,39 @@
       "holidaysUnavailable": "De schoolvakantiegegevens konden niet worden geladen."
     },
     "parks": {
-      "split": "Verdeel mijn dagen",
-      "splitHint": "Parken met “auto” krijgen een tweede dag als de reis daar ruimte voor heeft.",
-      "auto": "auto",
+      "auto": "1–2 dagen",
       "fewer": "{park}: een dag minder",
       "more": "{park}: een dag meer",
       "moreParks": "Meer parken",
       "moreChosen": "{count, plural, =1 {1 gekozen} other {# gekozen}}",
-      "drive": "Ongeveer {minutes} min. met de auto",
       "closed": "Gesloten op je data",
       "closedSeason": "Gesloten op je data ({season})",
       "noHours": "Voor je data nog geen openingstijden",
       "driveSource": "Rijtijden zonder verkeer, {source}",
-      "budget": "Minstens {visits, plural, =1 {1 parkdag} other {# parkdagen}}, {days, plural, =1 {1 dag} other {# dagen}} vrij voor parken"
+      "days": "{count, plural, =1 {1 dag} other {# dagen}}",
+      "budgetFits": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: past",
+      "budgetOver": "{parks, plural, =1 {1 park} other {# parken}}, {days, plural, =1 {1 vrije dag} other {# vrije dagen}}: {over, plural, =1 {1 parkdag past} other {# parkdagen passen}} er niet in",
+      "moreHint": "Meer parken in de regio",
+      "way": {
+        "drive": "Ongeveer {minutes} min. met de auto",
+        "walk": "Ongeveer {minutes} min. lopen",
+        "bus": "Ongeveer {minutes} min. met de shuttle",
+        "shuttle": "Ongeveer {minutes} min. met de shuttle",
+        "monorail": "Ongeveer {minutes} min. met de monorail",
+        "rail": "Ongeveer {minutes} min. met de trein",
+        "train": "Ongeveer {minutes} min. met de trein",
+        "shinkansen": "Ongeveer {minutes} min. met de shinkansen",
+        "highway_bus": "Ongeveer {minutes} min. met de bus",
+        "other": "Ongeveer {minutes} min. reizen"
+      }
     },
     "options": {
-      "hotel": "Waar je overnacht",
-      "area": "Hotelbuurt, voor de rijtijden",
+      "hotel": "Hotel",
+      "area": "Hotelgebied",
       "areaNone": "Niet opgegeven",
       "areaNoneHint": "Het plan toont dan geen rijtijden.",
       "fromArea": "vanaf {area}",
-      "fireworksWant": "Ja",
+      "fireworksWant": "Wil ik zien",
       "fireworksAny": "Maakt niet uit",
       "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt.",
       "blocksOn": "resorts achter elkaar",
@@ -3209,12 +3219,22 @@
       "hop": "Parkhoppen",
       "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
       "hopOn": "parkhoppen",
-      "evenings": "Avonden plannen",
+      "evenings": "Avonden",
       "eveningsOff": "geen avonden",
       "blocksAuto": "Alleen gemengd als het tijd scheelt",
       "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt.",
       "blocksAlways": "Altijd bij elkaar",
-      "blocksFree": "Gemengd waar de wachttijden korter zijn"
+      "blocksFree": "Gemengd waar de wachttijden korter zijn",
+      "travelDays": "Reisdagen",
+      "travelDaysOn": "park op reisdagen",
+      "split": "Tweede parkdagen",
+      "splitHint": "Parken met “1–2 dagen” krijgen een tweede dag als de reis ruimte heeft.",
+      "splitOff": "geen tweede dagen",
+      "guide": "Meer in de gids bij de reisplanner",
+      "hotelBasesHint": "Met een hotel rekent het plan met de vroege toegang en de weg naar de parken.",
+      "moveBuffer": "Hotelwissel",
+      "moveBufferMinutes": "{minutes} min.",
+      "moveBufferHint": "Tijd voor uitchecken, bagage en inchecken, bovenop de rit."
     },
     "result": {
       "label": "Je plan",
@@ -3223,47 +3243,59 @@
       "loading": "Je dagen worden gepland …",
       "invalid": "Deze keuzes passen niet bij elkaar. Kijk de data en de dagen per park na.",
       "failed": "Het plan kon niet worden geladen.",
-      "retry": "Opnieuw proberen"
+      "retry": "Opnieuw proberen",
+      "editParks": "Parken wijzigen",
+      "editRoute": "Route wijzigen"
     },
     "problem": {
       "no_dates": "Kies je reisdata.",
       "too_long": "Een reis duurt hoogstens {days} dagen. Kies een korter verblijf.",
       "no_parks": "Kies minstens één park.",
-      "too_many_visits": "Meer parkdagen dan dagen voor parken. Haal bij een park een dag weg, sta parkhoppen toe of laat een reisdag een park bevatten.",
+      "too_many_visits": "De vaste dagen van je parken hebben meer parkdagen nodig dan je reis heeft. Haal bij één park een dag weg of sta parkhoppen toe.",
       "over_max_visits": "Een plan bevat hoogstens {max} parkdagen.",
-      "no_park_day": "Je reis heeft geen dag vrij voor een park. Sta een park toe op de aankomst- of vertrekdag."
+      "no_park_day": "Je reis heeft geen dag vrij voor een park. Sta een park toe op de aankomst- of vertrekdag.",
+      "too_many_nights": "Je steden komen op {fixed} nachten, je reis heeft er {nights}."
     },
     "answer": {
       "counts": "{parkDays, plural, =1 {1 parkdag} other {# parkdagen}}, {restDays, plural, =0 {geen rustdag} =1 {1 rustdag} other {# rustdagen}}",
-      "yourDays": "Grote attracties op je dagen: ongeveer {minutes} min. per rit.",
-      "averageDay": "Dezelfde parken op een gemiddelde dag van je reis: {minutes} min.",
-      "saved": "Ongeveer {minutes} min. minder per rit.",
+      "averageDay": "Gemiddeld over je reisdagen is de piekwachttijd van deze parken {minutes} min.",
       "error": "Een voorspelling voor één attractie op één dag kan ongeveer {minutes} min. ernaast zitten.",
-      "orderBarelyMatters": "Je dagen zijn ongeveer even druk, dus op deze data maakt de volgorde weinig uit.",
       "lastYear": "Deze data plannen we met de gemeten drukte van vorig jaar. De voorspelling bereikt ze rond {date}.",
       "about": "ongeveer {minutes} min.",
-      "daysLabel": "Je dagen",
       "split": "{parks} {count, plural, =1 {krijgt} other {krijgen}} {visits, plural, =2 {een tweede dag} other {# dagen}}.",
-      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”."
+      "hopNeedsHopper": "Parkhoppen telt alleen met een Park Hopper-ticket; kies het onder “Verfijnen”.",
+      "leftOut": "{parks} {count, plural, =1 {past} other {passen}} niet in {days, plural, =1 {1 parkdag} other {# parkdagen}}.",
+      "travelDays": "Park op aankomst- en vertrekdag",
+      "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}",
+      "peakSaved": "Piekwachttijd op je dagen ongeveer {minutes} min., {saved} min. minder dan gemiddeld over je reisdagen.",
+      "peakFlat": "Piekwachttijd op je dagen ongeveer {minutes} min. Je reisdagen zijn ongeveer even druk, de volgorde maakt weinig uit.",
+      "accuracy": "Hoe nauwkeurig is dit?",
+      "moves": "{cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
+      "staySuggestion": "{changes}: ongeveer {minutes} min. minder piekwachttijd, {park} dan op {date}.",
+      "planThisWay": "Zo plannen"
     },
     "day": {
       "arrival": "Aankomst",
       "departure": "Vertrek",
       "rest": "Rustdag",
       "park": "Parkdag",
-      "hop": "Twee parken"
+      "hop": "Twee parken",
+      "travel": "Reisdag"
     },
     "marker": {
       "closesAt": "sluit {time}",
       "closesEarly": "sluit vroeger",
       "early": {
         "early_entry": "Early Entry",
-        "early_park_admission": "Early Park Admission"
+        "early_park_admission": "Early Park Admission",
+        "happy_entry": "Happy Entry",
+        "extra_magic_time": "Extra Magic Time"
       },
       "rest": "Rustdag",
       "evening": "Extended Evening Hours",
       "last_year": "vorig jaar",
-      "outside_ticket": "buiten je ticket"
+      "outside_ticket": "buiten je ticket",
+      "pinned": "vast"
     },
     "views": {
       "label": "Weergave",
@@ -3284,22 +3316,27 @@
       "leg": {
         "drive": "{minutes} min. auto",
         "walk": "{minutes} min. lopen",
-        "bus": "{minutes} min. shuttle"
-      }
+        "bus": "{minutes} min. shuttle",
+        "monorail": "{minutes} min. monorail"
+      },
+      "legOther": "{minutes} min."
     },
     "month": {
+      "stayKey": "De band onder elke datum is de stad waar je slaapt; een pijl markeert een hotelwissel.",
       "bandPark": "Open voor dagbezoekers, gekleurd naar drukte",
       "bandHop": "’s Avonds een tweede park",
       "bandVenue": "’s Avonds buiten de parken",
       "bandAxis": "Balk van {from} tot {to} uur"
     },
     "details": {
-      "minutesCaption": "De wachttijd bij de grote attracties op het drukste moment; daarmee vergelijkt het plan de dagen. De kleur vergelijkt de dag met een gewone dag in dit park.",
+      "minutesCaption": "De piekwachttijd: de wachttijd bij de grote attracties op het drukste moment, waarmee het plan de dagen vergelijkt. De kleur vergelijkt de dag met een gewone dag in dit park.",
       "hours": "Open {range}",
       "noHours": "Voor deze dag zijn nog geen openingstijden gepubliceerd.",
       "earlyYours": {
         "early_entry": "Early Entry voor jou vanaf {time}",
-        "early_park_admission": "Early Park Admission voor jou vanaf {time}"
+        "early_park_admission": "Early Park Admission voor jou vanaf {time}",
+        "happy_entry": "Happy Entry voor jou vanaf {time}",
+        "extra_magic_time": "Extra Magic Time voor jou vanaf {time}"
       },
       "eveningYours": "Extended Evening Hours voor jou tot {time}",
       "partyTicket": "{name}, met apart ticket",
@@ -3313,7 +3350,14 @@
       "travel": {
         "drive": "Ongeveer {minutes} min. met de auto vanaf {area}, zonder verkeer.",
         "walk": "Ongeveer {minutes} min. lopen vanaf {area}.",
-        "bus": "Ongeveer {minutes} min. met de shuttle vanaf {area}."
+        "bus": "Ongeveer {minutes} min. met de shuttle vanaf {area}.",
+        "monorail": "Ongeveer {minutes} min. met de monorail vanaf {area}.",
+        "rail": "Ongeveer {minutes} min. met de trein vanaf {area}.",
+        "shinkansen": "Ongeveer {minutes} min. met de shinkansen vanaf {area}.",
+        "highway_bus": "Ongeveer {minutes} min. met de bus vanaf {area}.",
+        "other": "Ongeveer {minutes} min. vanaf {area}.",
+        "shuttle": "Ongeveer {minutes} min. met de shuttle vanaf {area}.",
+        "train": "Ongeveer {minutes} min. met de trein vanaf {area}."
       },
       "transfer": "Daarna ongeveer {minutes} min. van de parkeerplaats naar de ingang.",
       "between": {
@@ -3324,8 +3368,8 @@
       "pin": "Dag vastzetten",
       "unpin": "Losmaken",
       "swap": "Ruilen",
-      "planDay": "Deze dag plannen",
-      "planPark": "{park} plannen",
+      "planDay": "Openen in de dagplanner",
+      "planPark": "{park} openen in de dagplanner",
       "loading": "De dag wordt geladen …",
       "rain": "{mm} mm regen",
       "noWeather": "Voor deze datum is er nog geen weersverwachting; die reikt ongeveer twee weken vooruit.",
@@ -3344,7 +3388,9 @@
       "water_park_weather": "Warm en droog, een dag voor een waterpark.",
       "weekday": "Een doordeweekse dag.",
       "busiest_day_spared": "De drukste dag van je reis, dus de vrije dag.",
-      "rest_after_streak": "Een pauze na een paar parkdagen achter elkaar."
+      "rest_after_streak": "Een pauze na een paar parkdagen achter elkaar.",
+      "happy_entry": "Je hotel heeft die dag Happy Entry.",
+      "extra_magic_time": "Je hotel heeft die dag Extra Magic Time."
     },
     "warning": {
       "party_night_short_hours": "Feestavond: dagbezoekers moeten vroeger weg.",
@@ -3355,49 +3401,56 @@
       "long_range": "Een vooruitblik zo ver vooruit; die wordt preciezer naarmate de dag dichterbij komt.",
       "repeat_back_to_back": "Je tweede dag hier volgt meteen, omdat geen andere volgorde paste.",
       "adjacent_repeat": "Je tweede dag hier volgt meteen, omdat geen andere volgorde paste.",
-      "long_streak": "Meer parkdagen achter elkaar dan de rustdagregel toelaat; je parkkeuze liet geen ruimte voor een pauze."
+      "long_streak": "Meer parkdagen achter elkaar dan de rustdagregel toelaat; je parkkeuze liet geen ruimte voor een pauze.",
+      "move_day": "Die ochtend wissel je van hotel, dus het park begint later.",
+      "long_day_trip": "Een lange dagtrip: heen en terug kost tijd in het park."
     },
     "relaxed": {
       "streak_relaxed": "Je parken hebben meer dagen achter elkaar nodig dan de rustdagregel toelaat."
     },
     "unplaced": {
       "no_open_day": "{park} is gesloten op je data en staat niet in het plan.",
-      "no_day_left": "Voor {park} bleef geen dag over."
+      "no_second_day": "Voor een tweede dag in {park} bleef geen ruimte over.",
+      "no_base": "Geen stad waar je kunt overnachten, bereikt {park}."
     },
     "ignoredLock": {
       "outside_trip": "{what} op {date}: die dag hoort niet bij je reis.",
       "closed": "{what} op {date}: het park is die dag gesloten.",
       "day_taken": "{what} op {date}: die dag staat al vast.",
-      "no_visit_left": "{what} op {date}: meer vastgezette dagen dan dagen voor dit park."
+      "no_visit_left": "{what} op {date}: meer vastgezette dagen dan dagen voor dit park.",
+      "base_unreachable": "{what} op {date}: geen stad van je reis bereikt het park die dag."
     },
     "edit": {
       "pinned": "Je vastgezette dagen blijven waar ze zijn.",
-      "cost": "Je vastgezette dagen kosten ongeveer {delta} min. per rit: {current} min. tegen {best} in de beste volgorde.",
+      "cost": "Je vaste dagen kosten ongeveer {delta} min. piekwachttijd: {current} in plaats van {best} min.",
       "noCost": "Je vastgezette dagen kosten niets: het plan is even snel als de beste volgorde.",
       "undo": "Ongedaan maken",
-      "release": "Alles losmaken"
+      "release": "Alles losmaken",
+      "swapped": "Geruild: {first} op {firstDay}, {second} op {secondDay}.",
+      "swappedCost": "Ongeveer {current} in plaats van {best} min. piekwachttijd."
     },
     "swap": {
-      "hint": "Ruil deze dag met een andere. Het cijfer is de verandering in de wachttijd bij de grote attracties van beide parken; de rest van het plan kan meeschuiven.",
+      "hint": "Het getal is hoe de gemiddelde piekwachttijd van je plan verandert; de rest van het plan kan meeschuiven.",
       "closed": "{park} is dan gesloten",
       "noFigure": "geen cijfer",
-      "same": "even lang wachten",
-      "more": "+{minutes} min.",
-      "less": "−{minutes} min.",
+      "same": "zelfde piekwachttijd",
+      "more": "+{minutes} min. gemiddeld",
+      "less": "−{minutes} min. gemiddeld",
       "short": "{park} op een korte dag, ongeveer {hours, plural, =1 {een uur} other {# uur}} minder"
     },
     "keep": {
-      "addAll": "Alle dagen in mijn planner",
+      "addAll": "Naar de dagplanner",
       "ics": "In de agenda (.ics)",
       "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
-      "added": "{count, plural, =1 {1 dag staat} other {# dagen staan}} nu in je planner.",
-      "openPlanner": "Planner openen",
+      "added": "{count, plural, =1 {1 parkdag staat} other {# parkdagen staan}} in de dagplanner, eerst {park} op {date}.",
+      "openPlanner": "Eerste dag openen",
       "manual": "Kopieer de link met de hand:"
     },
     "ics": {
-      "wait": "Grote attracties ongeveer {minutes} min.",
-      "link": "Plan: {url}"
+      "wait": "Piekwachttijd ongeveer {minutes} min.",
+      "link": "Plan: {url}",
+      "calendarName": "Reis naar {region} {range}"
     },
     "when": {
       "loading": "De beste data worden gezocht …",
@@ -3405,11 +3458,11 @@
       "noneWithin": "Geen schoolvakantie van {region} in deze periode duurt lang genoeg voor {days} dagen.",
       "bestTitle": "De beste data voor je parken",
       "rank": "Voorstel {rank}",
-      "wait": "Grote attracties ongeveer {minutes} min.",
+      "wait": "Piekwachttijd ongeveer {minutes} min.",
       "below": "{percent}% onder het gemiddelde van de periode",
       "average": "Gemiddelde over de periode: {minutes} min.",
       "details": "Details",
-      "plan": "Deze data plannen",
+      "plan": "Reis met deze data plannen",
       "reason": {
         "after_holidays": "Meteen na de feestdagen.",
         "festival": "Op deze dagen loopt een festival.",
@@ -3431,7 +3484,7 @@
       "stripWeek": "Week van {date}: ongeveer {minutes} min.",
       "stripWeekNone": "Week van {date}: geen cijfer",
       "stripWindow": "voorstel {rank}",
-      "stripLegend": "Hoogte: de wachttijd bij de grote attracties van je parken die week. Kleur: hoe de week zich verhoudt tot de rest van de periode. De streepjes eronder tonen je voorstellen.",
+      "stripLegend": "Hoogte: de piekwachttijd van je parken die week. De streepjes eronder tonen je voorstellen.",
       "sketch": "Dag voor dag",
       "rankedLower": "lager gerangschikt: {reasons}"
     },
@@ -3461,16 +3514,14 @@
     "climate": {
       "extreme_heat": "heet",
       "hurricane_season": "orkaanseizoen",
-      "hurricane_peak": "piek van het orkaanseizoen"
+      "hurricane_peak": "piek van het orkaanseizoen",
+      "typhoon_season": "tyfoonseizoen",
+      "typhoon_peak": "piek van het tyfoonseizoen",
+      "rainy_season": "regenseizoen"
     },
     "tickets": {
       "title": "Tickets",
-      "question": "Heb je al tickets?",
-      "lead": "Zonder tickets stelt het plan per resort tickets voor.",
-      "sheetHint": "Zonder antwoord stelt het plan tickets voor om te kopen. Je eigen tickets kun je hier altijd invullen.",
-      "no": "Nog niet, gewoon plannen",
-      "yes": "Ja, ik heb tickets",
-      "nextDates": "Verder naar de reisdata",
+      "lead": "Met je tickets houdt het plan zich aan hun dagen en parken.",
       "yours": "Jouw tickets",
       "add": "Ticket toevoegen",
       "addLabel": "Een {resort}-ticket toevoegen",
@@ -3511,19 +3562,9 @@
         "unsure": "We plannen met de kortste geldigheid die een ticket van deze lengte kan hebben.",
         "ukUniversal": "Met deze eerste dag is het het {name}."
       },
-      "row": {
-        "ask": "Heb je al tickets?",
-        "none": "Geen tickets ingevuld",
-        "noneHopper": "Geen tickets ingevuld · gepland met {hopper}",
-        "count": "{count} tickets: {resorts}",
-        "startOpen": "{ticket}, eerste dag open",
-        "after_trip": "{ticket} begint na je reis",
-        "before_trip": "{ticket} eindigt voor je reis",
-        "not_on_sale": "{ticket}: niet verkocht voor deze eerste dag"
-      },
       "named": {
-        "dated": "{resort}-ticket voor {days} dagen",
-        "datedShort": "{resort} {days} dagen",
+        "dated": "{resort}-ticket voor {days, plural, =1 {1 dag} other {# dagen}}",
+        "datedShort": "{resort} {days, plural, =1 {1 dag} other {# dagen}}",
         "short": "{resort} {name}",
         "withHopper": "{name} met {hopper}",
         "withHopperShort": "{name} + {hopper}"
@@ -3539,7 +3580,7 @@
         "suggested": "Tickets voor dit plan",
         "owned": "Jouw tickets",
         "both": "Tickets",
-        "yours": "Van jou",
+        "yours": "Jouw tickets",
         "toBuy": "Te kopen"
       },
       "details": "Details van de tickets",
@@ -3548,7 +3589,7 @@
         "partExtra": "{parkDays, plural, =1 {1 dag} other {# dagen}} {resort} vanaf {date} met een ticket voor {days} dagen",
         "then": ", daarna ",
         "shape": "{name}, geldig van {from} tot {to}",
-        "dated": "Ticket voor {days} dagen",
+        "dated": "Ticket voor {days, plural, =1 {1 dag} other {# dagen}}",
         "extraDays": "Een ticket voor {parkDays} dagen zou eindigen voor je laatste {resort}-dag, daarom heeft dit {days} dagen.",
         "window": "Een {resort}-ticket voor {days} dagen geldt op {days} willekeurige van de {window} dagen vanaf de eerste dag.",
         "second": "{resort}, tweede ticket",
@@ -3583,11 +3624,11 @@
       },
       "unused": {
         "parks_fewer_than_days": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: je parken hebben er minder nodig.",
-        "rest_days_kept": "Op dit ticket {count, plural, =1 {zou nog 1 parkdag passen} other {zouden nog # parkdagen passen}}. Het plan houdt in plaats daarvan rustdagen.",
-        "restLink": "Rustdagen wijzigen",
         "window_outside_trip": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: een deel van de geldigheid valt buiten je reis.",
         "no_open_day": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt: op de overige dagen zijn de parken dicht.",
-        "other": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt."
+        "other": "{count, plural, =1 {1 dag blijft} other {# dagen blijven}} ongebruikt.",
+        "restDays": "Je ticket geldt ook op {count, plural, =1 {de rustdag} other {je rustdagen}}, {dates}.",
+        "makeParkDay": "{count, plural, =1 {Maak er een parkdag van} other {Maak er parkdagen van}}"
       },
       "outside": {
         "after": "{park} op {date} valt buiten dit ticket, dat op {edge} eindigt.",
@@ -3635,7 +3676,59 @@
       "partner": {
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
+      },
+      "later": "Al tickets?",
+      "enter": "Invullen"
+    },
+    "move": {
+      "mode": {
+        "shinkansen": "Shinkansen",
+        "highway_bus": "Bus",
+        "rail": "Trein",
+        "train": "Trein",
+        "metro": "Metro",
+        "bus": "Bus",
+        "shuttle": "Shuttle",
+        "drive": "Auto",
+        "other": "Rit"
+      },
+      "toCity": "naar {city}",
+      "after": "vanaf {time}, na de hotelwissel",
+      "then": "daarna om {time} verder naar {city}",
+      "lost": "open, maar je bent onderweg",
+      "label": "{date}: {mode} van {from} naar {to}, {depart} tot {arrive}, {duration}",
+      "changes": "{count, plural, =1 {1 overstap} other {# overstappen}}",
+      "buffer": "Plus {minutes} min. voor de hotelwissel.",
+      "parkFrom": "In het park vanaf {time}.",
+      "typical": "Gangbare tijden. De dienstregeling staat bij de vervoerder.",
+      "note": {
+        "reserve_seat": "Reserveer een zitplaats.",
+        "forward_luggage": "Stuur je koffer de dag ervoor vooruit.",
+        "jr_pass": "Met de JR Pass."
       }
+    },
+    "route": {
+      "arrive": "Aankomst",
+      "leave": "Vertrek",
+      "gatewayOpen": "Nog open",
+      "gatewayShared": "{airports} of nog open",
+      "gatewayAt": "{city} · {airports}",
+      "stays": "Steden en nachten",
+      "nights": "{count, plural, =1 {1 nacht} other {# nachten}}",
+      "fixed": "vast",
+      "byPlan": "van het plan",
+      "dayTrips": "Geen nacht: parken als dagtrip",
+      "notStayed": "Hier overnacht het plan niet.",
+      "noParks": "Geen park",
+      "release": "Aan het plan overlaten",
+      "remove": "Verwijderen",
+      "fewer": "{city}: een nacht minder",
+      "more": "{city}: een nacht meer",
+      "add": "Stad toevoegen",
+      "addPick": "Kies een stad",
+      "total": "{nights, plural, =1 {1 nacht} other {# nachten}} in {cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
+      "stayShort": "{city} {count, plural, =1 {1 nacht} other {# nachten}}",
+      "summaryOpen": "Het plan kiest de steden en nachten"
     },
     "parky": {
       "button": "Plan met Parky je perfecte reis",
@@ -3853,7 +3946,7 @@
             "universal_premier": "Universal Premier",
             "offsite": "hotel elders"
           },
-          "fireworks": "Wil je het vuurwerk in Magic Kingdom zien?",
+          "fireworks": "Vuurwerk in Magic Kingdom",
           "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
           "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
           "fireworksWantShort": "vuurwerk in Magic Kingdom",
@@ -4045,6 +4138,9 @@
             "forced": "Waar beide tickets geldig zijn, mengt het plan Disney- en Universal-dagen.",
             "kept": "Disney-dagen en Universal-dagen blijven bij elkaar: mengen zou minder dan 3 min per attractie schelen."
           }
+        },
+        "area": {
+          "universal": "Universal-hotels"
         }
       },
       "landing": {
@@ -4401,11 +4497,11 @@
           },
           "luggage": {
             "q": "Wat doe ik met mijn bagage als ik van stad wissel?",
-            "a": "De meeste reizigers sturen hun koffers met een bagagedienst (takkyubin) vooruit naar het volgende hotel. In de Shinkansen heeft een stuk bagage van 161 tot 250 cm in totaal een gereserveerde zitplaats met bagageruimte nodig, en groter mag helemaal niet mee (JR Central). Met vooruitgestuurde bagage trekt de reisplanner 30 minuten uit voor elke hotelwissel; draag je alles zelf, dan is het eerder 60. Je kunt kiezen uit 30, 60, 90 of 120 minuten."
+            "a": "De reisplanner gaat ervan uit dat je je koffers met een bagagedienst (takkyubin) vooruitstuurt naar het volgende hotel. Bij Yamato Transport geef je ze zonder reservering af bij de receptie van je hotel, en ze komen op zijn vroegst de volgende dag aan. In de Shinkansen heeft een stuk bagage van 161 tot 250 cm in totaal een gereserveerde zitplaats met bagageruimte nodig, en groter mag helemaal niet mee (JR Central). Met vooruitgestuurde bagage trekt de reisplanner 30 minuten uit voor elke hotelwissel; draag je alles zelf, dan is het eerder 60. Je kunt kiezen uit 30, 60, 90 of 120 minuten."
           },
           "happyEntry": {
             "q": "Kom ik met een Disney-hotel eerder het park in?",
-            "a": "Ja, met Happy Entry. Gasten van de Disney-hotels mogen 15 minuten voor iedereen Tokyo Disneyland in, gasten van Hotel MiraCosta en het Fantasy Springs Hotel ook eerder Tokyo DisneySea in. Het geldt vanaf de ochtend na het inchecken, en zo rekent de reisplanner het ook; sommige hotels hebben losse dagen zonder. De officiële hotels van Universal Studios Japan hebben geen eerdere toegang."
+            "a": "Ja, met Happy Entry. Gasten van de Disney-hotels mogen 15 minuten voor iedereen Tokyo Disneyland in, gasten van Hotel MiraCosta en het Fantasy Springs Hotel ook eerder Tokyo DisneySea in. Het geldt vanaf de ochtend na het inchecken, en zo rekent de reisplanner het ook; sommige hotels hebben losse dagen zonder."
           }
         },
         "next": {
@@ -4489,8 +4585,8 @@
           "hotelHint": {
             "disney": "Happy Entry in Tokyo Disneyland, 15 minuten eerder, niet op de dag van inchecken",
             "disney_deluxe": "Happy Entry in beide Disney-parken, niet op de dag van inchecken",
-            "universal": "Een paar minuten lopen naar de ingang, geen eerdere toegang",
-            "park_hotel": "Highland Resort: eerder naar binnen bij Fuji-Q. LEGOLAND Japan Hotel: lopend naar de ingang",
+            "universal": "Een paar minuten lopen naar de ingang",
+            "park_hotel": "Highland Resort bij Fuji-Q of LEGOLAND Japan Hotel bij de ingang; eerder naar binnen verkoopt Fuji-Q zelf, als One Day Pass met Priority Admission",
             "offsite": "Geen vroege toegang"
           },
           "hotelShort": {
@@ -4805,7 +4901,8 @@
             "parc_asterix": "hotel Parc Astérix",
             "offsite": "hotel elders"
           },
-          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village."
+          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village.",
+          "moveBufferHint": "Met je koffers naar het volgende hotel is 60 minuten realistisch."
         },
         "details": {
           "earlyOthers": {
@@ -4829,24 +4926,29 @@
             "party_nights": "{count, plural, =1 {1 avond} other {# avonden}} met een eigen ticket: dagbezoekers moeten dan eerder weg."
           }
         },
-        "bases": {
-          "disneyland-paris": {
-            "name": "Disneyland Paris",
-            "note": "De Disney-hotels aan Lake Disney liggen op loopafstand van de parken en hebben Extra Magic Time. Vanaf de partnerhotels in Val d'Europe en Val de France rijdt een gratis shuttle."
-          },
-          "parc-asterix": {
-            "name": "Parc Astérix",
-            "note": "De hotels van het park liggen op loopafstand van de ingang, en hun gasten mogen bij een paar attracties 30 minuten eerder in."
-          },
-          "paris": {
-            "name": "Parijs",
-            "note": "Vanaf Châtelet–Les Halles rijdt de RER A naar Disneyland Paris en de RER B naar de shuttle van Parc Astérix op de luchthaven."
-          }
+        "base": {
+          "disneyland-paris": "Disneyland Paris",
+          "parc-asterix": "Parc Astérix",
+          "paris": "Centrum van Parijs"
         },
-        "gateways": {
-          "XED": "Station Marne-la-Vallée–Chessy",
-          "CDG": "Luchthaven Parijs-Charles de Gaulle",
-          "ORY": "Luchthaven Parijs-Orly"
+        "stayNote": {
+          "disneyland-paris": "De Disney-hotels aan Lake Disney liggen op loopafstand van de parken en hebben Extra Magic Time. Vanaf de partnerhotels in Val d'Europe en Val de France rijdt een gratis shuttle.",
+          "parc-asterix": "De hotels van het park liggen op loopafstand van de ingang, en hun gasten mogen bij een paar attracties 30 minuten eerder in.",
+          "paris": "Vanaf Châtelet–Les Halles rijdt de RER A naar Disneyland Paris en de RER B naar de shuttle van Parc Astérix op de luchthaven."
+        },
+        "gateway": {
+          "XED": "Marne-la-Vallée–Chessy",
+          "CDG": "Charles de Gaulle",
+          "ORY": "Orly"
+        },
+        "area": {
+          "disney_lake": "Disney-hotels aan Lake Disney",
+          "disney_cheyenne_santa_fe": "Disney Hotel Cheyenne en Santa Fe",
+          "disney_davy_crockett": "Disney Davy Crockett Ranch",
+          "val_d_europe": "Val d'Europe",
+          "val_de_france": "Val de France, Magny-le-Hongre",
+          "paris_center": "Centrum van Parijs",
+          "parc_asterix": "Hotels bij Parc Astérix"
         },
         "tickets": {
           "resort": {

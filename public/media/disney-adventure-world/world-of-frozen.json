@@ -1,0 +1,33 @@
+{
+  "title": "World of Frozen",
+  "park": "disney-adventure-world",
+  "area": "World of Frozen",
+  "roles": ["park-background"],
+  "tags": ["background", "day", "outdoor", "overcast", "park", "photo", "theming"],
+  "alt": {
+    "de": "Die bunten Holzhäuser von Arendelle an einem See, dahinter ein verschneiter Gipfel mit Eispalast.",
+    "en": "Arendelle’s painted wooden houses along a lake, a snowy peak with an ice palace rising behind them.",
+    "es": "Las casas de madera pintadas de Arendelle junto a un lago, con un pico nevado y un palacio de hielo detrás.",
+    "fr": "Les maisons en bois colorées d’Arendelle au bord d’un lac, derrière elles un sommet enneigé et un palais de glace.",
+    "it": "Le case di legno colorate di Arendelle sul lago, alle spalle una vetta innevata con il palazzo di ghiaccio.",
+    "nl": "De bonte houten huizen van Arendelle aan een meer, met daarachter een besneeuwde top met ijspaleis."
+  },
+  "caption": {
+    "de": "World of Frozen öffnete im März 2025, am selben Tag wurden die Walt Disney Studios zu Disney Adventure World.",
+    "en": "World of Frozen opened in March 2025, the day Walt Disney Studios became Disney Adventure World.",
+    "es": "World of Frozen abrió en marzo de 2025, el mismo día en que Walt Disney Studios pasó a llamarse Disney Adventure World.",
+    "fr": "World of Frozen a ouvert en mars 2025, le jour où les Walt Disney Studios sont devenus Disney Adventure World.",
+    "it": "World of Frozen ha aperto a marzo 2025, il giorno in cui i Walt Disney Studios sono diventati Disney Adventure World.",
+    "nl": "World of Frozen ging in maart 2025 open, op de dag dat Walt Disney Studios Disney Adventure World werd."
+  },
+  "credit": {
+    "author": "Pascal Bernardon",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/colorful-village-by-a-lake-with-a-snow-capped-mountain-backdrop-sccYJt42IrI"
+  },
+  "focus": {
+    "x": 0.6,
+    "y": 0.5
+  }
+}

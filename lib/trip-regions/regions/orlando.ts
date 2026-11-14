@@ -169,6 +169,14 @@ export const ORLANDO: TripRegionConfig = {
   blockResorts: ['walt-disney-world', 'universal-orlando'],
   // Magic Kingdom's fireworks against its party nights.
   fireworks: true,
+  guide: {
+    en: 'orlando-trip-planner',
+    de: 'reiseplaner-orlando',
+    nl: 'reisplanner-orlando',
+    fr: 'planificateur-de-voyage-orlando',
+    es: 'planificador-de-viajes-orlando',
+    it: 'pianificatore-di-viaggio-orlando',
+  },
   tickets: {
     resorts: ['walt-disney-world', 'universal-orlando', 'seaworld-orlando', 'day-trips'],
     entries: ENTRIES,

@@ -258,7 +258,7 @@ export function europeanBreaks(
         country,
         total: own.length,
         regions: onBreak,
-        unknown: own.every((r) => r.through < month.from),
+        unknown: own.every((r) => r.through !== undefined && r.through < month.from),
       },
     ];
   });

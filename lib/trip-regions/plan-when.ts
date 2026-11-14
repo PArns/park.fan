@@ -198,12 +198,11 @@ export function weekInWindow(
 }
 
 /**
- * The countries the picker asks the holiday data for: where most of park.fan's visitors live.
- * Spain and Italy are left out while the API's school data for them does not reach half a year
- * ahead, which would offer a region whose next break reads as unknown; the picker already puts the
- * locale's own country first for them.
+ * The countries the picker asks the holiday data for: where park.fan's visitors live, one per
+ * locale. The data names how far each region's breaks reach (`through`) where it knows; a region
+ * without it is offered and says nothing about its reach.
  */
-export const WHEN_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB'] as const;
+export const WHEN_HOLIDAY_COUNTRIES = ['DE', 'NL', 'GB', 'FR', 'ES', 'IT'] as const;
 
 /** The country a locale's visitors most likely come from, offered first in the holiday picker. */
 const LOCALE_COUNTRY: Record<string, string> = {
@@ -218,7 +217,7 @@ const LOCALE_COUNTRY: Record<string, string> = {
 /** A country of the picker with its regions, in the holiday data's own codes and names. */
 export interface WhenHolidayCountry {
   country: string;
-  regions: Array<{ code: string; name: string; through: string }>;
+  regions: Array<{ code: string; name: string; through: string | null }>;
 }
 
 /**
@@ -233,7 +232,7 @@ export function holidayRegionsFor(
   const byCountry = new Map<string, WhenHolidayCountry>();
   for (const r of answer?.regions ?? []) {
     const entry = byCountry.get(r.country) ?? { country: r.country, regions: [] };
-    entry.regions.push({ code: r.code, name: r.name, through: r.through });
+    entry.regions.push({ code: r.code, name: r.name, through: r.through ?? null });
     byCountry.set(r.country, entry);
   }
   const first = LOCALE_COUNTRY[locale];

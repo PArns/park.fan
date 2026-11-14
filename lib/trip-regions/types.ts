@@ -250,6 +250,72 @@ export interface TripTicketCatalog {
   tickets: TicketProduct[];
 }
 
+/** Where a trip arrives or leaves: an airport, or a station a long-distance train reaches. */
+export interface TripGateway {
+  /** `HND`, `KIX`, `CDG`, `XED`. */
+  code: string;
+  name: string;
+  kind: 'airport' | 'station';
+  /** To the base's main area, where the API names it. */
+  minutes?: number;
+}
+
+/** A park a day from a base reaches: door to door, one way, curated. */
+export interface TripBasePark {
+  slug: string;
+  minutes: number;
+  mode: 'drive' | TripTransportMode;
+}
+
+/**
+ * A city a trip sleeps in (Japan, Paris). Each hotel area belongs to one base; `order` is its place
+ * on the route line, absent in a region whose bases lie on none (Paris).
+ */
+export interface TripBase {
+  key: string;
+  name: string;
+  order?: number;
+  hotelAreas: string[];
+  defaultArea?: string;
+  gateways?: TripGateway[];
+  /** Where to sleep in the base, one curated English line. */
+  stayNote?: string;
+  parks: TripBasePark[];
+}
+
+/** What a move between two bases asks of the traveller: the JR Pass, a seat, the luggage sent ahead. */
+export type TripBaseLegNote = 'jr_pass' | 'reserve_seat' | 'forward_luggage';
+
+/** The move between two bases, both ways: door to door between their main areas, the wait included. */
+export interface TripBaseLeg {
+  from: string;
+  to: string;
+  minutes: number;
+  mode: 'drive' | TripTransportMode;
+  /** The line or the service, in English ("Tokaido Shinkansen Nozomi"). */
+  name?: string;
+  /** Whether a park fits the day of this move. */
+  parkDay: boolean;
+  fromStop?: string;
+  toStop?: string;
+  changes?: number;
+  notes?: TripBaseLegNote[];
+}
+
+/** How the region prices days across cities, and the hotel-change buffers a visitor may pick. */
+export interface TripStayRules {
+  dayTripFreeMinutes: number;
+  /** The buffer a hotel change gets without `moveBuffer=`: 30 in Japan (luggage sent ahead), 60 elsewhere. */
+  moveOverheadMinutes: number;
+  parkDayMaxLegMinutes: number;
+  moveCost: number;
+  /** `HH:MM`, park-local. */
+  moveStartsAt: string;
+  lastArrivalAt: string;
+  /** The `moveBuffer=` values the plan takes. */
+  moveBufferOptions?: number[];
+}
+
 /** `GET /v1/trip-regions/:region`: open, a day at the edge. */
 export interface TripRegion {
   slug: string;
@@ -270,11 +336,13 @@ export interface TripRegion {
   /** Its storm season, the seasons it names and its climate park; absent from an older API. */
   weather?: TripWeather;
   /**
-   * The cities a trip stays in, Japan only, with the legs between them. The planner does not read
-   * them yet; their shape is the API's `docs/frontend/trip-regions.md#bases-a-trip-across-several-cities`.
+   * The cities a trip stays in (Japan, Paris), the moves between them and how both are priced;
+   * absent in a region a trip sleeps in one place. The API's
+   * `docs/frontend/trip-regions.md#bases-a-trip-across-several-cities`.
    */
-  bases?: unknown[];
-  baseLegs?: unknown[];
+  bases?: TripBase[];
+  baseLegs?: TripBaseLeg[];
+  stayRules?: TripStayRules;
 }
 
 /** A park's status on a day. `UNKNOWN` past its published hours, never `CLOSED`. */
@@ -505,7 +573,11 @@ export interface TripWhenWindow {
   seasons: string[];
   /** Park days of the plan that close early for day guests. */
   closesEarlyDays: number;
-  plan?: { days: Array<{ date: string; kind: string; parks: string[] }> };
+  plan?: {
+    days: Array<{ date: string; kind: string; parks: string[] }>;
+    /** The chosen parks this window has no day for; present only when it leaves one out. */
+    parksLeftOut?: Array<{ park: string; reason: string }>;
+  };
 }
 
 /** One ISO week of the year strip: the chosen parks' mean best-park cost. */
@@ -602,8 +674,11 @@ export interface TripSchoolBreakRegion {
   name: string;
   /** ISO 3166 alpha-2. */
   country: string;
-  /** The last day the stored school calendar covers: a later break is unknown, not absent. */
-  through: string;
+  /**
+   * The last day the stored school calendar covers: a later break is unknown, not absent. Absent
+   * where the data does not say (Spain's provinces).
+   */
+  through?: string;
   /** Each break with the weekends around it. */
   periods: Array<{ from: string; to: string; name: string }>;
 }

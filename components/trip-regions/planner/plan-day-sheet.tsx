@@ -47,6 +47,7 @@ import {
   lockOn,
   type PlanDay,
   type PlanEvening,
+  type PlanMove,
   type TripPlan,
 } from '@/lib/trip-regions/plan';
 import { planTimeMinute } from '@/lib/trip-regions/plan-week';
@@ -60,6 +61,9 @@ import { useSeasonName } from './use-day-facts';
 import { oneStop, useHopperWord, useResortWord } from './plan-ticket-words';
 import { PLAN_WIDE_QUERY } from './plan-setup';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
+import { useAreaName, useBaseName } from './plan-place-words';
+import { MOVE_INK, MoveIcon, useMoveWords } from './plan-stay-band';
+import { baseLeg } from '@/lib/trip-regions/plan-stays';
 
 /** How many of a park's headliners the sheet names: the five a day is usually judged by. */
 const BIG_RIDES = 5;
@@ -184,11 +188,15 @@ function DayDetails({
   const seasonName = useSeasonName();
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
+  const areaName = useAreaName();
   const [swapOpen, setSwapOpen] = useState(false);
   const swapId = useId();
 
   const isPark = day.kind === 'park' || day.kind === 'hop';
   const name = parkName;
+  // A swap changes two parks' days; the plan's figure is the mean over its visits, so the swap is
+  // said in that unit.
+  const perRide = (delta: number) => Math.round(delta / Math.max(1, plan.totals.visits));
   const short = (date: string) =>
     formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
   const time = (iso: string) => formatClockTime(iso, locale, timeZone);
@@ -317,13 +325,16 @@ function DayDetails({
     }
 
     if (day.travel) {
-      const area = region.hotelAreas.find((a) => `hotel:${a.key}` === day.travel?.from)?.name;
+      const from = day.travel.from.startsWith('hotel:') ? day.travel.from.slice(6) : null;
+      const area = from ? areaName(from) : null;
       facts.push(
         <Fact key="travel" icon={<Car className="size-4" aria-hidden="true" />}>
-          {t(`details.travel.${day.travel.mode}`, {
-            minutes: day.travel.minutes,
-            area: area ?? '',
-          })}
+          {t(
+            t.has(`details.travel.${day.travel.mode}`)
+              ? `details.travel.${day.travel.mode}`
+              : 'details.travel.other',
+            { minutes: day.travel.minutes, area: area ?? '' }
+          )}
           {day.travel.transferMinutes != null && (
             <span className="block">
               {day.travel.via === 'ttc'
@@ -449,6 +460,8 @@ function DayDetails({
 
       {facts.length > 0 && <ul className="flex flex-col gap-3">{facts}</ul>}
 
+      {day.move && <MoveSection day={day} move={day.move} buffer={plan.meta.moveBuffer} />}
+
       {day.evening && <EveningSection evening={day.evening} date={day.date} />}
 
       {isPark && first && <DayRides slug={first.slug} date={day.date} />}
@@ -486,11 +499,11 @@ function DayDetails({
                   ? t('swap.closed', { park: name(preview.slug) })
                   : preview.kind === 'no_figure'
                     ? t('swap.noFigure')
-                    : preview.delta === 0
+                    : perRide(preview.delta) === 0
                       ? t('swap.same')
                       : preview.delta > 0
-                        ? t('swap.more', { minutes: preview.delta })
-                        : t('swap.less', { minutes: -preview.delta });
+                        ? t('swap.more', { minutes: perRide(preview.delta) })
+                        : t('swap.less', { minutes: -perRide(preview.delta) });
               return (
                 <li key={other.date}>
                   <button
@@ -530,6 +543,69 @@ function DayDetails({
           ))}
       </div>
     </div>
+  );
+}
+
+/**
+ * A day's hotel change: the route, the ride with its typical times and stops, the buffer the plan
+ * gave it, when the park starts after a morning move, what the leg asks of the traveller (a seat,
+ * the luggage sent ahead), and that the times are typical, never a timetable.
+ */
+function MoveSection({
+  day,
+  move,
+  buffer,
+}: {
+  day: PlanDay;
+  move: PlanMove;
+  buffer: number | undefined;
+}) {
+  const t = useTranslations('tripPlanner.move');
+  const { region } = usePlanContext();
+  const words = useMoveWords();
+  const baseName = useBaseName();
+  const leg = baseLeg(region.baseLegs, move.from, move.to);
+  const forward = leg && leg.from === move.from;
+  const fromStop = leg ? (forward ? leg.fromStop : leg.toStop) : undefined;
+  const toStop = leg ? (forward ? leg.toStop : leg.fromStop) : undefined;
+  const tRegion = useTranslations('tripRegion.planner');
+  const note = (code: string) =>
+    tRegion.has(`moveNote.${code}`)
+      ? tRegion(`moveNote.${code}`)
+      : t.has(`note.${code}`)
+        ? t(`note.${code}`)
+        : null;
+  const notes = (leg?.notes ?? []).flatMap((n) => note(n) ?? []);
+  return (
+    <section
+      className={cn('flex flex-col gap-2 rounded-xl border p-3', MOVE_INK)}
+      data-plan-move-sheet=""
+    >
+      <h3 className="flex items-center gap-2 text-sm font-semibold">
+        <MoveIcon mode={move.mode} className="text-primary-ink size-4" />
+        {words.route(move)}
+      </h3>
+      <p className="text-sm">
+        {words.mode(move.mode)} · {words.duration(move)}
+        {move.changes ? ` · ${t('changes', { count: move.changes })}` : ''}
+      </p>
+      <p className="text-sm tabular-nums">
+        {[fromStop ?? baseName(move.from), words.time(move.departAt)].join(' ')} →{' '}
+        {[toStop ?? baseName(move.to), words.time(move.arriveAt)].join(' ')}
+      </p>
+      {buffer != null && <p className="text-sm">{t('buffer', { minutes: buffer })}</p>}
+      {move.when === 'morning' && day.startAt && (
+        <p className="text-sm">{t('parkFrom', { time: words.time(day.startAt) })}</p>
+      )}
+      {notes.length > 0 && (
+        <ul className="flex list-disc flex-col gap-0.5 pl-5 text-sm">
+          {notes.map((n) => (
+            <li key={n}>{n}</li>
+          ))}
+        </ul>
+      )}
+      <p className="text-muted-foreground text-xs">{t('typical')}</p>
+    </section>
   );
 }
 

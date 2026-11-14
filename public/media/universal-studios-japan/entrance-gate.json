@@ -1,0 +1,32 @@
+{
+  "title": "Universal Studios Japan entrance",
+  "park": "universal-studios-japan",
+  "roles": ["park-background"],
+  "tags": ["coaster", "day", "entrance", "outdoor", "photo", "signage", "sunny"],
+  "alt": {
+    "de": "Der cremefarbene Eingangsbogen von Universal Studios Japan mit einem Mario-Banner, rechts eine Achterbahnschiene.",
+    "en": "The cream entrance arch of Universal Studios Japan with a Mario banner, a coaster track to the right.",
+    "es": "El arco de entrada color crema de Universal Studios Japan con un cartel de Mario y una vía de montaña rusa a la derecha.",
+    "fr": "L’arche d’entrée crème d’Universal Studios Japan avec une bannière Mario, des rails de montagnes russes à droite.",
+    "it": "L’arco d’ingresso color crema di Universal Studios Japan con uno stendardo di Mario, a destra un binario di montagne russe.",
+    "nl": "De crèmekleurige toegangsboog van Universal Studios Japan met een Mario-banner, rechts een achtbaanspoor."
+  },
+  "caption": {
+    "de": "2021 eröffnete hier die erste Super Nintendo World überhaupt, daher hängt Mario am Tor.",
+    "en": "Universal Studios Japan opened the first Super Nintendo World in 2021, hence Mario on the gate.",
+    "es": "Aquí abrió en 2021 el primer Super Nintendo World del mundo, y por eso Mario cuelga en la entrada.",
+    "fr": "Le parc a ouvert la toute première Super Nintendo World en 2021, d’où Mario sur l’arche.",
+    "it": "Nel 2021 qui ha aperto il primo Super Nintendo World in assoluto, ecco perché c’è Mario sull’arco.",
+    "nl": "In 2021 opende hier de allereerste Super Nintendo World, vandaar Mario aan de poort."
+  },
+  "credit": {
+    "author": "Joshua Tsu",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/a-large-clock-tower-with-a-roller-coaster-in-front-of-it-_vNxTViufkg"
+  },
+  "focus": {
+    "x": 0.44,
+    "y": 0.62
+  }
+}

@@ -30,6 +30,10 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'evenings',
     'split',
     'lock',
+    'bases',
+    'startBase',
+    'endBase',
+    'moveBuffer',
   ],
   'school-breaks': ['from', 'to', 'countries'],
   when: [
@@ -53,6 +57,10 @@ const RELAY_QUERY: Record<string, readonly string[]> = {
     'within',
     'limit',
     'gap',
+    'bases',
+    'startBase',
+    'endBase',
+    'moveBuffer',
   ],
 };
 

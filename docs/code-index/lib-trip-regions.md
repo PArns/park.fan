@@ -110,6 +110,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`paths.ts`](../../lib/trip-regions/paths.ts)
 
+- `tripRegionGuidePath` _function_: The region's guide to its planner, a blog post (`/blog/<slug>` in the locale), where the planner's options are explained at length; `null` where the region has none yet.
 - `tripRegionPath` _function_: The locale-relative path of a region's hub or one of its months (`/orlando`, `/orlando/2026/12`). The month is unpadded, so each month has one URL; the proxy 308s the padded spelling.
 - `tripRegionBestTimePath` _function_: The locale-relative path of a region's "best time to visit" pages: the region's own (`/orlando/beste-reisezeit`) or a resort's (`/orlando/best-time-to-visit/disney-world`).
 - `tripRegionMonthHref` _function_: The address to link a month by: the hub for the current month, whose canonical it is, and the month's own URL for every other, so the site never mints a URL that only canonicals away.
@@ -149,7 +150,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `closesEarly` _function_: Whether the day guests leave early that day: the API's flag, or one of its two codes.
 - `dayMarker` _function_: The one marker of a day in the overview, or `null`.
 - `relaxedRules` _function_: Rules the plan loosened, as `tripPlanner.relaxed.*` (or the region's own) keys; unknown ones are dropped.
-- `unplacedParks` _function_: A park the plan could not place, with a reason this client can say.
+- `parksLeftOut` _function_: The chosen parks that got no day at all because the trip has too few park days, in the region's order: the API's `parksLeftOut` where it sends it, else the parks `unplaced` names with no visit on any day.
+- `windowParksLeftOut` _function_: The chosen parks a found window has no day for, and its park days, for the same sentence the plan says: the API's `parksLeftOut` where it sends it, else the chosen parks its day-by-day sketch does not name.
+- `unplacedParks` _function_: A park the plan could not place, with a reason this client can say. A park `parksLeftOut` names is said there; a park with a day that lost a repeat visit reads `no_second_day`.
 - `ignoredLocks` _function_: Pins the plan could not keep, with a reason this client can say.
 - `planSavings` _function_: The savings sentence's figures, or `null` where the totals carry none.
 - `lastYearReach` _function_: When the forecast should reach the trip's first `last_year` day: the horizon (today to `forecastUntil`) moves forward a day a day, so it reaches that day as many days before it as the horizon is long. Never before tomorrow.
@@ -161,7 +164,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `REST_REASON_ORDER` _const_: A rest day's reasons, most telling first.
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
 - `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
-- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `PlanSavings`
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`
 
 ### [`plan-fetch.ts`](../../lib/trip-regions/plan-fetch.ts)
 
@@ -196,6 +199,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `readTicketItem` _function_: One `tickets=` item, or `null` where it cannot be read.
 - `writeTicketItem` _function_: One ticket in its URL form, the flags in the contract's order.
 - `readTickets` _function_: A link's `tickets` read leniently, one item at a time, at most `MAX_TICKETS`; `dropped` counts the items that could not be read, so the planner can say one was left out.
+- `readBases` _function_: A link's `bases`, one item at a time: an unknown base or a second item for one goes, an area of another base or on a `:0` base is dropped from its item (the API answers either with a 400).
+- `writeBaseItem` _function_: One base in its URL form: `tokyo:4@maihama`.
 - `readPlanQuery` _function_: The state a URL describes. Lenient by design: a link from Parky, an old copy or a hand edit opens what can be read and drops the rest, one parameter at a time, so a single bad value never costs the visitor the whole plan.
 - `normalizePlanState` _function_: The state with what cannot hold dropped: a pin outside the trip, on a park not chosen (the API answers either with a 400), or the second pin of a day. Called after every change, so the URL and the request never carry one.
 - `planQueryEntries` _function_: The state as `/plan` query pairs, in `PLAN_QUERY_NAMES` order, with each value that is the API's default left out so a link stays short.
@@ -212,7 +217,22 @@ by hand: change the comment in the code and re-run the script. -->
 - `MAX_TICKETS` _const_: A plan takes at most this many owned tickets.
 - `DEFAULT_PLAN_STATE` _const_: The state before the visitor has chosen anything: the API's defaults, no dates.
 - `PLAN_QUERY_NAMES` _const_: The query names in the order a URL is written in, the `/plan` route's own. `parties` is not one of them: it is read from older links (see `readPlanQuery`) and never written.
-- Types: `PlanHotel`, `PlanRest`, `PlanLock`, `PlanParkPick`, `PlanTicketHopper`, `PlanTicket`, `PlanSearchRange`, `TripPlanState`, `PlanRegionKeys`, `QueryReader`, `TripPlannerHrefInput`
+- `DEFAULT_MOVE_BUFFERS` _const_: The hotel-change buffers the contract names, for a region answer that does not list its own.
+- Types: `PlanHotel`, `PlanRest`, `PlanLock`, `PlanParkPick`, `PlanTicketHopper`, `PlanTicket`, `PlanBasePick`, `PlanSearchRange`, `TripPlanState`, `PlanRegionKeys`, `QueryReader`, `TripPlannerHrefInput`
+
+### [`plan-stays.ts`](../../lib/trip-regions/plan-stays.ts)
+
+- `planStays` _function_: The plan's stays in route order, numbered; empty in a region without bases.
+- `movesBetweenStays` _function_: Whether the plan sleeps in more than one place, the one case the stays are drawn at all.
+- `dayStayBase` _function_: The stay a day is listed under: where it is spent.
+- `staySections` _function_: The trip's days in sections, one per stay in route order, each opening on the move that reaches it. A region without bases, or a plan with one stay, is one section without a stay.
+- `stayHalves` _function_: Each day's two halves for the Week view's stay band: the first belongs to the city the day starts in, the second to the city it ends in, so a stay runs from the second half of its arrival day to the first half of its departure day.
+- `stayBandRuns` _function_: The band's runs: consecutive halves of one city merged, gaps (before arrival, after departure) left out.
+- `gatewayChoices` _function_: The Route step's choices: per base the gateways only it lists, in the region's base order, and last the gateways several bases share, which pin nothing (the contract: a gateway pins a base only when exactly one base lists it).
+- `baseLeg` _function_: The leg between two bases, either way round.
+- `moveMinutes` _function_: A move's minutes from leaving to arriving, park-local ISO times, else the leg's own figure.
+- `monthStayCells` _function_: Each date's stay for the Month view's band, by date; empty when the plan sleeps in one place, which draws no band.
+- Types: `PlanStayRun`, `PlanStaySection`, `StayHalf`, `StayBandRun`, `GatewayChoice`, `MonthStayCell`
 
 ### [`plan-tickets.ts`](../../lib/trip-regions/plan-tickets.ts)
 
@@ -307,7 +327,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
 - `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first.
-- `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where most of park.fan's visitors live.
+- `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where park.fan's visitors live, one per locale.
 - Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenHolidayCountry`
 
 ### [`plan.ts`](../../lib/trip-regions/plan.ts)
@@ -318,7 +338,16 @@ by hand: change the comment in the code and re-run the script. -->
 - `effectiveParks` _function_: The parks the plan is asked for: the visitor's picks, or the headliners while untouched.
 - `minimumVisits` _function_: The fewest visits the choice asks for: a count that is left to the split counts as one.
 - `planProblem` _function_: The first reason the plan cannot be asked for, or `null`. These are the 400s the API would answer, caught before the request so each gets a sentence and a way out instead of an error.
-- `stepVisits` _function_: The next count of a park's stepper. With the split on, an untouched park reads "auto", which sits between one and two: minus pins it to one, plus to two. Minus from one removes the park (`0`). With the split off, "auto" is simply one.
+- `fixedNights` _function_: The nights the visitor fixed across the bases (`bases=tokyo:4,nagoya:1` is five).
+- `setBaseNights` _function_: Fix a base's nights, or leave them to the plan (`null`), keeping the base's area. A base with neither nights nor an area left leaves `bases`, unless `keep`: a city the visitor added stays a stay whose nights the plan picks.
+- `setBaseArea` _function_: Name a base's hotel area, or none (`null`). A base at `:0` has no stay to name one for.
+- `addBase` _function_: Add a base the plan does not stay in, its nights left to the plan.
+- `releaseBase` _function_: Take a base out of `bases`: the plan decides again whether to stay there.
+- `setGateway` _function_: The trip's arrival or departure base, from the gateway the visitor picked; `null` for a gateway several bases share, or none: the plan picks.
+- `setMoveBuffer` _function_: The hotel change's buffer; the region's own default is written as nothing.
+- `pinnedRepeatVisits` _function_: The visits the choice pins beyond the first: a park written with two or three days. Only these can make a trip too short for the API; a park without a count, or with one, is left out of the plan when no day is left (`parksLeftOut`) instead.
+- `visitSteps` _function_: The counts a park's stepper walks, in order: with the split on, its "1–2 days" sits between one and two.
+- `stepVisits` _function_: The next count of a park's stepper, one step along `visitSteps`. A count left to the split reads "1–2 days" with the split on and one without it. The stepper never removes a park: its checkbox does.
 - `setParkVisits` _function_: Set one park's count: `0` removes it, `null` leaves it to the split. The first edit turns the untouched default (the headliners) into an explicit list, kept in the region's order.
 - `setSplit` _function_: Turn the split on or off. Off, a count left to the split becomes one, so the stepper keeps showing what will be planned.
 - `tripHotelKinds` _function_: The hotel kinds the planner offers: the API's `hotels` where it sends them, each with the area the registry pairs it with, else the registry's own. A region may have several hotel areas or none; a kind without an area moves no drive times.
@@ -334,7 +363,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanProblem`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
@@ -435,4 +464,4 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`types.ts`](../../lib/trip-regions/types.ts)
 
-- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
+- Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`

@@ -56,12 +56,15 @@ export function PlanCheckRow({
  */
 export function PlanRadioGroup<T extends string>({
   legend,
+  hint,
   value,
   options,
   onChange,
   disabled = false,
 }: {
   legend: ReactNode;
+  /** One short line under the question, for the whole group. */
+  hint?: ReactNode;
   value: T | null;
   options: ReadonlyArray<{ value: T; label: ReactNode; hint?: ReactNode }>;
   onChange: (value: T) => void;
@@ -71,6 +74,7 @@ export function PlanRadioGroup<T extends string>({
   return (
     <fieldset className="flex flex-col" disabled={disabled}>
       <legend className="mb-1 px-2 text-sm font-semibold">{legend}</legend>
+      {hint && <p className="text-muted-foreground mb-1 px-2 text-xs leading-snug">{hint}</p>}
       {options.map((option) => (
         <label
           key={option.value}
@@ -159,6 +163,7 @@ export function PlanStepper({
   decrementLabel,
   incrementLabel,
   disabled = false,
+  valueClassName = 'w-11',
 }: {
   value: ReactNode;
   onDecrement: () => void;
@@ -168,6 +173,8 @@ export function PlanStepper({
   decrementLabel: string;
   incrementLabel: string;
   disabled?: boolean;
+  /** The value's width, so a column of steppers lines up: wider for "1–2 days". */
+  valueClassName?: string;
 }) {
   const button =
     'border-border/70 hover:bg-accent flex size-11 items-center justify-center rounded-full border transition-colors disabled:opacity-30 lg:size-8';
@@ -182,7 +189,10 @@ export function PlanStepper({
       >
         <Minus className="size-4" aria-hidden="true" />
       </button>
-      <output aria-live="polite" className="w-11 text-center text-sm font-semibold tabular-nums">
+      <output
+        aria-live="polite"
+        className={cn('text-center text-sm font-semibold tabular-nums', valueClassName)}
+      >
         {value}
       </output>
       <button

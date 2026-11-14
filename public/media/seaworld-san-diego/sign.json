@@ -1,0 +1,32 @@
+{
+  "title": "SeaWorld San Diego",
+  "park": "seaworld-san-diego",
+  "roles": ["park-background"],
+  "tags": ["day", "outdoor", "overcast", "photo", "signage"],
+  "alt": {
+    "de": "Weiße Buchstaben mit dem Schriftzug SeaWorld San Diego auf einem gelben Vordach, grauer Himmel.",
+    "en": "White letters reading SeaWorld San Diego on a yellow canopy under a grey sky.",
+    "es": "Letras blancas que dicen SeaWorld San Diego sobre una marquesina amarilla, con el cielo gris.",
+    "fr": "Des lettres blanches qui forment SeaWorld San Diego sur un auvent jaune, sous un ciel gris.",
+    "it": "Lettere bianche con la scritta SeaWorld San Diego su una pensilina gialla, sotto un cielo grigio.",
+    "nl": "Witte letters met SeaWorld San Diego op een geel afdak onder een grijze lucht."
+  },
+  "caption": {
+    "de": "Die erste SeaWorld überhaupt öffnete 1964 hier an der Mission Bay.",
+    "en": "The first SeaWorld of all opened here on Mission Bay in 1964.",
+    "es": "El primer SeaWorld de todos abrió aquí, en Mission Bay, en 1964.",
+    "fr": "Le tout premier SeaWorld a ouvert ici, au bord de Mission Bay, en 1964.",
+    "it": "Il primo SeaWorld in assoluto ha aperto qui, sulla Mission Bay, nel 1964.",
+    "nl": "De allereerste SeaWorld ging hier aan Mission Bay open, in 1964."
+  },
+  "credit": {
+    "author": "David Trinks",
+    "license": "unsplash",
+    "source": "unsplash",
+    "sourceUrl": "https://unsplash.com/photos/seaworld-san-diego-sign-against-a-cloudy-sky-QKa_MvJKU54"
+  },
+  "focus": {
+    "x": 0.5,
+    "y": 0.75
+  }
+}
