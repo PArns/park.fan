@@ -19,10 +19,9 @@ tags:
   - behind-the-scenes
 category: park-fan
 coverImage:
-  src: /media/universal-islands-of-adventure/welcome-cover.jpg
-  alt: 'A VelociCoaster train takes a curve, with the towers of Hogwarts behind it.'
-  caption: 'VelociCoaster at Islands of Adventure. Universal Studios next door is about a ten-minute walk away.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-abend.webp
+  alt: 'Parky with his sunglasses pushed up by the lake at dusk, watching fireworks over the coaster on the far shore, the flamingo, the suitcase and the travel map beside him.'
+  credit: 'park.fan'
 seo:
   title: 'Orlando trip planner: which park on which day?'
   description: >-
@@ -97,6 +96,8 @@ On days when a park hasn't published its opening hours yet, the plan has no hour
 If you don't add any, the plan comes with a suggestion of which tickets you need. For the ten December days with the big seven, it reads: 3 days Universal from Sunday 6 December, then 4 days Disney from Thursday the 10th.
 
 A four-day Disney ticket is good on any four of the seven days from its first, a three-day Universal ticket on any three of five. Under "Ticket details" you also see what a hopper would add, and on which date. "Worth adding" only appears where it opens up an evening in a second park, fits in a park that otherwise wouldn't fit, or saves the same three minutes a ride. In December it's a single evening. On the 13th, Animal Kingdom closes at 6 pm, and with a Park Hopper you can head over to Hollywood Studios afterwards. I'd take it for that evening: 6 pm in Orlando is too early for me to call it a day. For the three Universal days, park-to-park doesn't save a minute, it only gets you onto the Hogwarts Express.
+
+![A VelociCoaster train in a turn, the towers of Hogwarts behind it. | Two lands in one frame: Jurassic World and Hogwarts.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 You'll have to look up the extra cost yourself, though, because the planner shows no prices. Instead, each ticket comes with links to where you buy it: the cheapest authorised seller we found, Attraction Tickets and the park's own shop, with the pages in your language first. If one of them is a partner link, it's marked as one, and if you buy through it, park.fan earns a commission and your price stays the same. Because the trip is ten days long, there's also a line about the 14-day tickets sold outside the US, including the Combo.
 

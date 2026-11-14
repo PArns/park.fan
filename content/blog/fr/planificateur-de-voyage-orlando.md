@@ -20,10 +20,9 @@ tags:
   - coulisses
 category: park-fan
 coverImage:
-  src: /media/universal-islands-of-adventure/welcome-cover.jpg
-  alt: 'Un train de VelociCoaster prend un virage, avec les tours de Poudlard derrière.'
-  caption: 'VelociCoaster à Islands of Adventure. Universal Studios, juste à côté, est à une dizaine de minutes à pied.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-abend.webp
+  alt: 'Parky, les lunettes de soleil relevées, au bord du lac au crépuscule, regarde un feu d’artifice au-dessus des montagnes russes sur l’autre rive, à côté de lui le flamant rose, la valise et la carte.'
+  credit: 'park.fan'
 seo:
   title: 'Planificateur de voyage Orlando : quel parc, quel jour ?'
   description: >-
@@ -98,6 +97,8 @@ Pour les jours où un parc n’a pas encore publié ses horaires, le plan n’a 
 Si tu n’en ajoutes pas, une proposition des billets dont tu as besoin s’affiche sous le plan. Pour les dix jours de décembre avec les sept grands parcs, elle donne : 3 jours Universal à partir du dimanche 6 décembre, puis 4 jours Disney à partir du jeudi 10.
 
 Un billet Disney de quatre jours vaut pour quatre jours au choix parmi les sept à partir du premier, un billet Universal de trois jours pour trois jours sur cinq. Sous « Détails des billets », tu vois aussi ce qu’un hopper apporterait, et à quelle date. « Recommandé » n’apparaît que là où il rend possible une soirée dans un deuxième parc, fait tenir un parc qui sinon n’entrerait pas, ou fait gagner les mêmes trois minutes par attraction. En décembre, c’est une seule soirée. Le 13, Animal Kingdom ferme à 18 h, et avec un Park Hopper tu files ensuite aux Hollywood Studios. Moi, je le prendrais pour cette soirée : 18 h à Orlando, c’est trop tôt pour rentrer. Pour les trois jours Universal, le park-to-park ne fait pas gagner une minute, il donne seulement accès au Hogwarts Express.
+
+![Un train du VelociCoaster dans un virage, les tours de Poudlard derrière. | Deux univers dans un seul cadre : Jurassic World et Poudlard.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 Le supplément, tu devras par contre le chercher toi-même, parce que le planificateur n’affiche aucun prix. À la place, chaque billet est accompagné de liens vers les endroits où l’acheter : le revendeur agréé le moins cher qu’on ait trouvé, Attraction Tickets et la boutique du parc, avec les pages dans ta langue en premier. Si l’un d’eux est un lien partenaire, il est signalé comme tel, et si tu achètes par ce lien, park.fan touche une commission sans que ton prix change. Comme le séjour dure dix jours, une ligne sur les billets de 14 jours vendus hors des États-Unis s’ajoute, y compris le Combo.
 

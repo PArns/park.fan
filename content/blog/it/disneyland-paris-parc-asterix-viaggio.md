@@ -20,10 +20,9 @@ tags:
   - vacanze-scolastiche
 category: guides
 coverImage:
-  src: /media/disneyland-paris/disneyland-hotel.jpg
-  alt: 'La facciata vittoriana rosa del Disneyland Hotel con un orologio nella torre centrale, fontane e un’aiuola di Topolino davanti.'
-  caption: 'Chi dorme al Disneyland Hotel la mattina entra a Disneyland Park passando sotto la propria camera.'
-  credit: 'Aurora Song / Unsplash'
+  src: /media/reiseplaner/parky-paris-tag.webp
+  alt: 'Parky con un foulard di seta e un café crème sulla terrazza di un caffè lungo la Senna, dietro un battello turistico, case con i tetti di zinco e la Torre Eiffel.'
+  credit: 'park.fan'
 seo:
   title: 'Disneyland Paris e Parc Astérix: hotel e spostamenti'
   description: >-
@@ -67,6 +66,8 @@ Quale parco va in quale giorno te lo propone il [pianificatore di viaggio](/pari
 ### Negli hotel Disney
 
 Disney gestisce sette hotel propri. Quattro sono a piedi dai parchi: il Disneyland Hotel, proprio sopra l’ingresso di Disneyland Park, e sul Lake Disney il Disney Hotel New York – The Art of Marvel, il Newport Bay Club e il Sequoia Lodge. Disney indica da 5 a 15 minuti a piedi. Il Disneyland Hotel ha riaperto nel 2024 dopo una ristrutturazione completa, e l’Hotel New York si chiama «The Art of Marvel» dal 2021.
+
+![La facciata vittoriana rosa del Disneyland Hotel con un orologio nella torre centrale, fontane e un’aiuola di Topolino davanti. | L’hotel sorge sopra i cancelli d’ingresso di Disneyland Park. | wide](/media/disneyland-paris/disneyland-hotel.jpg)
 
 Il Cheyenne e il Santa Fe sono più lontani, a 20 minuti a piedi dai parchi, e la navetta gratuita degli hotel Disney si ferma da entrambi. Il Santa Fe ha 1.000 camere a tema _Cars_. Il Davy Crockett Ranch è un villaggio di casette di legno in 57 ettari di bosco. Da lì ai parchi c’è un quarto d’ora di macchina e nessuna navetta, quindi senza auto è la scelta sbagliata. Gli ospiti di tutti gli hotel Disney parcheggiano gratis al proprio hotel.
 

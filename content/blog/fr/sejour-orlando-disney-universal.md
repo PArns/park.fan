@@ -25,10 +25,9 @@ tags:
   - temps-d-attente
   - conseils
 coverImage:
-  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: 'Le Tree of Life d’Animal Kingdom et ses animaux sculptés dans le tronc, des visiteurs sur l’allée devant.'
-  caption: 'Ce tronc compte 325 animaux sculptés.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-tag.webp
+  alt: 'Parky en lunettes de soleil avec une carte de voyage au bord d’un lac, derrière lui un flamant rose, une valise, des montagnes russes avec un looping et une fusée qui décolle.'
+  credit: 'park.fan'
 parkLinks:
   - magic-kingdom-park
   - epcot
@@ -72,6 +71,8 @@ Notre calendrier d’affluence compte 16 parcs autour d’Orlando, et aucun ne t
 Les parcs se choisissent vite, les jours moins, car 25 soirs de novembre et décembre 2026, Magic Kingdom met ses visiteurs à la journée dehors trois à cinq heures plus tôt que d’habitude, pour laisser le parc aux invités de la fête de Noël. Une journée aux files courtes qui s’arrête si tôt est alors souvent la moins bonne. Le [calendrier d’affluence d’Orlando](/orlando) indique pour chaque jour le meilleur parc de chaque resort, fermeture anticipée comprise, et le [planificateur de voyage](/orlando#planner) place tes parcs sur tes jours de voyage.
 
 Nos guides de [Magic Kingdom](/blog/magic-kingdom-temps-d-attente-conseils) et d’[Universal Orlando](/blog/universal-orlando-temps-d-attente-conseils) passent en revue, parc par parc, les attractions aux files les plus longues. Dans un hôtel Deluxe de Disney, tu restes jusqu’en janvier 2027 deux heures de plus à EPCOT le lundi soir, et depuis un hôtel de Hotel Plaza Boulevard, tu entres chaque jour une demi-heure plus tôt dans les quatre parcs Disney.
+
+![Le Tree of Life et ses animaux sculptés dans le tronc, la foule sur l’allée devant. | Ce tronc compte 325 animaux sculptés.](/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg)
 
 ## Les parcs autour d’Orlando et leurs resorts
 

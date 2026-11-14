@@ -24,10 +24,9 @@ tags:
   - wartezeiten
   - tipps
 coverImage:
-  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: 'Der Tree of Life im Animal Kingdom mit in den Stamm geschnitzten Tieren, davor Besucher auf dem Weg.'
-  caption: 'Im Stamm stecken 325 geschnitzte Tiere.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-tag.webp
+  alt: 'Parky mit Sonnenbrille und Reisekarte am Strand eines Sees, dahinter ein Flamingo, ein Koffer, eine Achterbahn mit Looping und eine startende Rakete.'
+  credit: 'park.fan'
 parkLinks:
   - magic-kingdom-park
   - epcot
@@ -71,6 +70,8 @@ Rund um Orlando stehen 16 Parks in unserem Andrang-Kalender, und für keinen dav
 Die Parks sind schnell ausgesucht, die Tage weniger, denn an 25 Abenden im November und Dezember 2026 bittet das Magic Kingdom seine Tagesgäste drei bis fünf Stunden früher als sonst hinaus, damit die Gäste der Weihnachtsparty den Park für sich haben. Ein Tag mit kurzen Warteschlangen, der so früh endet, ist dann oft der schlechtere. Im [Andrang-Kalender für Orlando](/orlando) ist für jeden Tag der beste Park pro Resort markiert, mit dem frühen Schluss eingerechnet, und mit dem [Reiseplaner](/orlando#planner) legst du deine Parks auf deine Reisetage.
 
 Die Bahnen mit den längsten Warteschlangen stellen unsere Guides zum [Magic Kingdom](/blog/magic-kingdom-wartezeiten-tipps) und zu [Universal Orlando](/blog/universal-orlando-wartezeiten-tipps) Park für Park vor. Wohnst du in einem Deluxe-Hotel von Disney, bleibst du bis in den Januar 2027 montags zwei Stunden länger in EPCOT, und aus einem Hotel an der Hotel Plaza Boulevard kommst du jeden Tag eine halbe Stunde früher in die vier Disney-Parks.
+
+![Der Tree of Life mit in den Stamm geschnitzten Tieren, davor die Menge auf dem Weg. | Im Stamm stecken 325 geschnitzte Tiere.](/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg)
 
 ## Die Parks rund um Orlando und ihre Resorts
 

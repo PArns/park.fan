@@ -27,10 +27,9 @@ parkLinks:
   - /parks/north-america/united-states/carlsbad/legoland-california
   - /parks/north-america/united-states/chula-vista/sesame-place-san-diego
 coverImage:
-  src: /media/disneyland-anaheim/sleeping-beauty-castle.jpg
-  alt: 'Das rosa-graue Dornröschenschloss mit blauen Dächern und Bannern, davor eine Menschenmenge auf dem Weg.'
-  caption: 'Das Dornröschenschloss in Disneyland, am 17. Juli 1955 eröffnet und damit das älteste aller Disney-Schlösser.'
-  credit: '© Jazmin De Guzman (Unsplash License)'
+  src: /media/reiseplaner/parky-kalifornien-tag.webp
+  alt: 'Parky mit Muschelkette und Surfbrett am Strand des Pazifiks, dahinter Palmen, ein Rettungsschwimmerturm und ein Pier mit kleinem Riesenrad.'
+  credit: 'park.fan'
 seo:
   title: 'Kalifornien-Rundreise: Disneyland, Universal, San Diego'
   description: >-
@@ -62,6 +61,8 @@ Im [Andrang-Kalender für Disneyland und Universal Hollywood](/kalifornien) steh
 ### Disneyland und California Adventure
 
 Die Eingänge von [Disneyland](ref:/parks/north-america/united-states/anaheim/disneyland-park) und [Disney California Adventure](ref:disney-california-adventure-park) liegen sich am Vorplatz, der Esplanade, direkt gegenüber. Zwischen der Esplanade und dem Disneyland Hotel verläuft Downtown Disney, eine Straße mit Läden und Restaurants, für die du kein Ticket brauchst. Downtown Disney hat nach Disney täglich von 7 bis 1 Uhr nachts geöffnet, donnerstags bis 23 Uhr, und einzelne Läden und Restaurants schließen früher.
+
+![Das rosa-graue Dornröschenschloss mit blauen Dächern und Bannern, davor eine Menschenmenge auf dem Weg. | Am 17. Juli 1955 eröffnet und damit das älteste aller Disney-Schlösser. | wide](/media/disneyland-anaheim/sleeping-beauty-castle.jpg)
 
 Mit dem Auto parkst du in den Parkhäusern Mickey & Friends oder Pixar Pals an der Disneyland Drive, und eine Tram fährt dich zur Esplanade. Vom dritten Parkplatz, Toy Story an der Ecke Katella Avenue und Harbor Boulevard, fahren Busse zum Eingang. Für den Weg vom Parkhaus zum Tor rechnen wir mit etwa 15 Minuten, das Warten auf die Tram eingerechnet.
 

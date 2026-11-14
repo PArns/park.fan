@@ -20,10 +20,9 @@ tags:
   - entre-bastidores
 category: park-fan
 coverImage:
-  src: /media/universal-islands-of-adventure/welcome-cover.jpg
-  alt: 'Un tren de VelociCoaster toma una curva, con las torres de Hogwarts detrás.'
-  caption: 'VelociCoaster en Islands of Adventure. Universal Studios, al lado, queda a unos diez minutos a pie.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-abend.webp
+  alt: 'Parky con las gafas de sol subidas junto al lago al anochecer, mirando los fuegos artificiales sobre la montaña rusa de la otra orilla, con el flamenco, la maleta y el mapa al lado.'
+  credit: 'park.fan'
 seo:
   title: 'Planificador de viajes a Orlando: ¿qué parque qué día?'
   description: >-
@@ -98,6 +97,8 @@ Para los días en que un parque todavía no ha publicado su horario, el plan no 
 Si no añades ninguna, debajo del plan aparece una propuesta de las entradas que necesitas. Para los diez días de diciembre con los siete grandes, dice: 3 días de Universal desde el domingo 6 de diciembre, luego 4 días de Disney desde el jueves 10.
 
 Una entrada de Disney de cuatro días vale para cuatro días cualesquiera de los siete a partir del primero, una de Universal de tres días para tres de cinco. En «Detalles de las entradas» ves también lo que aportaría un hopper y en qué fecha. «Recomendado» solo sale donde hace posible una noche en un segundo parque, mete en el viaje un parque que si no no cabría o ahorra los mismos tres minutos por atracción. En diciembre es una sola noche. El día 13, Animal Kingdom cierra a las 18:00, y con Park Hopper te vas después a Hollywood Studios. Yo lo cogería para esa noche: en Orlando, las seis de la tarde me parecen demasiado pronto para dar el día por terminado. Para los tres días de Universal, el park-to-park no ahorra ni un minuto, solo te da el viaje en el Hogwarts Express.
+
+![Un tren del VelociCoaster en una curva, con las torres de Hogwarts detrás. | Dos áreas temáticas en una imagen: Jurassic World y Hogwarts.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 El suplemento, eso sí, tienes que mirarlo tú, porque el planificador no muestra precios. En su lugar, cada entrada lleva enlaces a donde se compra: el vendedor autorizado más barato que encontramos, Attraction Tickets y la tienda del parque, con las páginas en tu idioma primero. Si alguno es un enlace de afiliado, va marcado como tal, y si compras a través de él, park.fan se lleva una comisión sin que cambie tu precio. Como el viaje dura diez días, se añade una línea sobre las entradas de 14 días que se venden fuera de Estados Unidos, también como Combo.
 

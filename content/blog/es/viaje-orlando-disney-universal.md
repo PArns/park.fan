@@ -25,10 +25,9 @@ tags:
   - tiempos-de-espera
   - consejos
 coverImage:
-  src: /media/disney-animal-kingdom/kunst-des-wartens-cover.jpg
-  alt: 'El Tree of Life de Animal Kingdom con animales tallados en el tronco y visitantes en el paseo.'
-  caption: 'En ese tronco hay 325 animales tallados.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-tag.webp
+  alt: 'Parky con gafas de sol y un mapa de viaje a la orilla de un lago, detrás un flamenco, una maleta, una montaña rusa con looping y un cohete despegando.'
+  credit: 'park.fan'
 parkLinks:
   - magic-kingdom-park
   - epcot
@@ -72,6 +71,8 @@ Nuestro calendario de afluencia tiene 16 parques alrededor de Orlando, y para ni
 Los parques se eligen rápido, los días no tanto, porque 25 noches de noviembre y diciembre de 2026 Magic Kingdom invita a salir a quien va con entrada de día entre tres y cinco horas antes de lo normal, para que los invitados de la fiesta de Navidad tengan el parque para ellos solos. Un día de colas cortas que termina tan pronto suele ser entonces el peor. En el [calendario de afluencia de Orlando](/orlando) está marcado para cada día el mejor parque de cada resort, con el cierre anticipado ya contado, y con el [planificador de viajes](/orlando#planner) repartes tus parques entre tus días de viaje.
 
 Nuestras guías de [Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos) y de [Universal Orlando](/blog/universal-orlando-tiempos-de-espera-consejos) repasan parque por parque las atracciones con las colas más largas. En un hotel Deluxe de Disney te quedas hasta enero de 2027 los lunes dos horas más en EPCOT, y desde un hotel de Hotel Plaza Boulevard entras cada día media hora antes en los cuatro parques Disney.
+
+![El Tree of Life con animales tallados en el tronco y la multitud en el paseo. | En ese tronco hay 325 animales tallados.](/media/disney-animal-kingdom/kunst-des-wartens-cover.jpg)
 
 ## Los parques de Orlando y sus resorts
 

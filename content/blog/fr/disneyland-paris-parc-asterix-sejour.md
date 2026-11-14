@@ -20,10 +20,9 @@ tags:
   - vacances-scolaires
 category: guides
 coverImage:
-  src: /media/disneyland-paris/disneyland-hotel.jpg
-  alt: 'La façade victorienne rose du Disneyland Hotel, une horloge dans la tour centrale, des jets d’eau et un massif Mickey devant.'
-  caption: 'Quand on dort au Disneyland Hotel, on entre le matin au Parc Disneyland en passant sous sa propre chambre.'
-  credit: 'Aurora Song / Unsplash'
+  src: /media/reiseplaner/parky-paris-tag.webp
+  alt: 'Parky, un foulard de soie au cou et un café crème à la main, en terrasse au bord de la Seine, derrière lui un bateau-mouche, des toits en zinc et la tour Eiffel.'
+  credit: 'park.fan'
 seo:
   title: 'Disneyland Paris et Parc Astérix : hôtels et trajets'
   description: >-
@@ -67,6 +66,8 @@ Quel parc tombe quel jour, c’est le [planificateur de séjour](/paris#planner)
 ### Dans les hôtels Disney
 
 Disney exploite sept hôtels. Quatre sont à pied des parcs : le Disneyland Hotel, juste au-dessus de l’entrée du Parc Disneyland, et autour du Lake Disney le Disney Hotel New York – The Art of Marvel, le Disney Newport Bay Club et le Disney Sequoia Lodge. Disney annonce 5 à 15 minutes de marche. Le Disneyland Hotel a rouvert en 2024 après une rénovation complète, et l’Hotel New York s’appelle « The Art of Marvel » depuis 2021.
+
+![La façade victorienne rose du Disneyland Hotel, une horloge dans la tour centrale, des jets d’eau et un massif Mickey devant. | L’hôtel est construit au-dessus des portes d’entrée du Parc Disneyland. | wide](/media/disneyland-paris/disneyland-hotel.jpg)
 
 Le Disney Hotel Cheyenne et le Disney Hotel Santa Fe sont plus loin, à 20 minutes à pied des parcs, et la navette gratuite des hôtels Disney les dessert. Le Santa Fe compte 1 000 chambres sur le thème de _Cars_. Le Disney Davy Crockett Ranch est un village de cabanes en bois sur 57 hectares de forêt. Il est à un quart d’heure des parcs en voiture et aucune navette ne le dessert, donc sans voiture, mieux vaut choisir un autre hôtel. Les clients de tous les hôtels Disney se garent gratuitement à leur hôtel.
 

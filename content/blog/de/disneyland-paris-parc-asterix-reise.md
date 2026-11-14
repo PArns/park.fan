@@ -20,10 +20,9 @@ tags:
   - schulferien
 category: guides
 coverImage:
-  src: /media/disneyland-paris/disneyland-hotel.jpg
-  alt: 'Die rosa viktorianische Fassade des Disneyland Hotel mit einer Uhr im Mittelturm, davor Fontänen und ein Micky-Blumenbeet.'
-  caption: 'Wer im Disneyland Hotel schläft, geht morgens unter dem eigenen Haus hindurch in den Disneyland Park.'
-  credit: 'Aurora Song / Unsplash'
+  src: /media/reiseplaner/parky-paris-tag.webp
+  alt: 'Parky mit Seidentuch und einem Café crème auf einer Caféterrasse an der Seine, dahinter ein Ausflugsboot, Häuser mit Zinkdächern und der Eiffelturm.'
+  credit: 'park.fan'
 seo:
   title: 'Disneyland Paris und Parc Astérix: Hotels und Anfahrt'
   description: >-
@@ -67,6 +66,8 @@ Der [Reiseplaner](/paris#planner) schlägt dir vor, welcher Park auf welchen Tag
 ### In den Disney-Hotels
 
 Disney betreibt sieben eigene Hotels. Vier davon liegen zu Fuß an den Parks: das Disneyland Hotel direkt über dem Eingang des Disneyland Park und am Lake Disney das Disney Hotel New York – The Art of Marvel, der Newport Bay Club und die Sequoia Lodge. Disney gibt für sie fünf bis 15 Minuten zu Fuß an. Das Disneyland Hotel hat 2024 nach einer Komplettrenovierung wieder aufgemacht, das Hotel New York heißt seit 2021 „The Art of Marvel“.
+
+![Die rosa viktorianische Fassade des Disneyland Hotel mit einer Uhr im Mittelturm, davor Fontänen und ein Micky-Blumenbeet. | Das Hotel steht über den Eingangstoren des Disneyland Park. | wide](/media/disneyland-paris/disneyland-hotel.jpg)
 
 Die Hotels Cheyenne und Santa Fe liegen weiter draußen, 20 Minuten zu Fuß von den Parks, und der kostenlose Shuttle der Disney-Hotels fährt sie an. Das Santa Fe ist mit 1.000 Zimmern nach dem Film _Cars_ gestaltet. Das Davy Crockett Ranch ist ein Feriendorf aus Holzhütten in 57 Hektar Wald. Von dort fährst du etwa eine Viertelstunde mit dem Auto, einen Shuttle gibt es nicht, und ohne Auto ist es deshalb die falsche Wahl. Gäste aller Disney-Hotels parken am Hotel kostenlos.
 

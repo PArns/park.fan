@@ -20,10 +20,9 @@ tags:
   - hinter-den-kulissen
 category: park-fan
 coverImage:
-  src: /media/universal-islands-of-adventure/welcome-cover.jpg
-  alt: 'Ein Zug des VelociCoaster fährt durch eine Kurve, dahinter die Türme von Hogwarts.'
-  caption: 'VelociCoaster in Islands of Adventure. Nach Universal Studios nebenan sind es zu Fuß etwa zehn Minuten.'
-  credit: 'Patrick Arns'
+  src: /media/reiseplaner/parky-orlando-abend.webp
+  alt: 'Parky mit hochgeschobener Sonnenbrille am See in der Dämmerung, er schaut zum Feuerwerk über der Achterbahn am anderen Ufer, neben ihm der Flamingo, der Koffer und die Reisekarte.'
+  credit: 'park.fan'
 seo:
   title: 'Orlando-Reiseplaner: Welcher Park an welchem Tag?'
   description: >-
@@ -98,6 +97,8 @@ Für Tage, an denen ein Park noch keine Öffnungszeiten veröffentlicht hat, gib
 Trägst du keine ein, steht unter dem Plan ein Vorschlag, welche Tickets du brauchst. Für die zehn Dezembertage mit den sieben großen Parks lautet er: 3 Tage Universal ab Sonntag, dem 6. Dezember, dann 4 Tage Disney ab Donnerstag, dem 10.
 
 Ein Disney-Ticket für vier Tage gilt an vier beliebigen der sieben Tage ab dem ersten, eins von Universal für drei Tage an drei von fünf. Unter „Details zu den Tickets“ siehst du auch, was ein Hopper an welchem Datum bringen würde. „Empfohlen“ heißt es nur, wo er einen Abend in einem zweiten Park möglich macht, einen Park überhaupt erst in die Reise bringt oder pro Fahrt dieselben drei Minuten spart. Im Dezember ist es ein einziger Abend. Am 13. schließt das Animal Kingdom um 18 Uhr, und mit Park Hopper fährst du danach noch in die Hollywood Studios. Ich würde ihn für diesen Abend nehmen, mir ist 18 Uhr in Orlando zu früh für Feierabend. Für die drei Universal-Tage bringt Park-to-Park keine Minute, nur die Fahrt im Hogwarts Express.
+
+![Ein Zug des VelociCoaster fährt durch eine Kurve, dahinter die Türme von Hogwarts. | Zwei Themenwelten in einem Bild: Jurassic World und Hogwarts.](/media/universal-islands-of-adventure/welcome-cover.jpg)
 
 Den Aufpreis musst du allerdings selbst nachsehen, denn Preise zeigt der Planer keine. Zu jedem Ticket gibt es stattdessen Links dorthin, wo du es kaufst: zum günstigsten autorisierten Händler, den wir gefunden haben, zu Attraction Tickets und zum Shop des Parks, die Seiten in deiner Sprache zuerst. Ist einer davon ein Partnerlink, ist er als solcher markiert, und kaufst du darüber, bekommt park.fan eine Provision, ohne dass sich dein Preis ändert. Weil die Reise zehn Tage hat, kommt eine Zeile zu den 14-Tage-Tickets außerhalb der USA dazu, auch als Combo.
 
