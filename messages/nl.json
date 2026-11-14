@@ -3139,7 +3139,9 @@
       "modeAll": "Totaal",
       "picksLegendAll": "Onder elke datum staat het park met de kortste piekwachttijd.",
       "picksLegendResort": "Onder elke datum staat het park van {resort} met de kortste piekwachttijd.",
-      "overall": "Totaal: {park}"
+      "overall": "Totaal: {park}",
+      "stormPeak": "{season}: het zoeken naar de beste reistijd zet deze dagen lager, ook bij korte wachttijden.",
+      "rainyNote": "{season}: nattere dagen, maar daardoor niet drukkere parken."
     },
     "find": {
       "modeKnown": "Ik weet mijn data",

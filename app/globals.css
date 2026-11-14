@@ -215,6 +215,7 @@
   --color-crowd-ink-high: var(--crowd-ink-high);
   --color-crowd-ink-very-high: var(--crowd-ink-very-high);
   --color-crowd-ink-extreme: var(--crowd-ink-extreme);
+  --color-signal-storm: var(--signal-storm);
   --color-element-launch: var(--element-launch);
   --color-element-airtime: var(--element-airtime);
   --color-element-inversion: var(--element-inversion);
@@ -729,6 +730,11 @@
   --element-turn: oklch(0.6 0.13 195);
   --element-brake: oklch(0.55 0.02 240);
 
+  /* A region's storm season in a calendar's signal bar (`STORM_SIGNAL_CLASS`): a violet no crowd
+     tier, holiday signal or the brand blue uses, at 3:1 or more on every tile
+     (docs/design/tokens.md#storm-season). */
+  --signal-storm: oklch(0.54 0.25 295);
+
   /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white and small text in it misses AA; 0.53
      is 4.74:1 and visually the same green. */
   --status-operating: oklch(0.53 0.21 142.136);
@@ -820,6 +826,8 @@
   --element-inversion: oklch(0.74 0.17 315);
   --element-turn: oklch(0.78 0.12 195);
   --element-brake: oklch(0.7 0.02 240);
+
+  --signal-storm: oklch(0.72 0.17 295);
 
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);

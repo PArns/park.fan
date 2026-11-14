@@ -3139,7 +3139,9 @@
       "modeAll": "General",
       "picksLegendAll": "Bajo cada fecha, el parque con la espera punta más corta.",
       "picksLegendResort": "Bajo cada fecha, el parque de {resort} con la espera punta más corta.",
-      "overall": "General: {park}"
+      "overall": "General: {park}",
+      "stormPeak": "{season}: la búsqueda de la mejor época pone estos días más abajo, incluso con esperas cortas.",
+      "rainyNote": "{season}: días más húmedos, pero no parques más llenos."
     },
     "find": {
       "modeKnown": "Ya sé mis fechas",

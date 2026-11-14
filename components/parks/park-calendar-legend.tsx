@@ -17,18 +17,22 @@ const ALL_SIGNALS: readonly DaySignal[] = ['school', 'neighbor', 'holiday', 'bri
  * their gaps. All six tiers are named even when a month shows four, so any colour the API sends can
  * be looked up. The works icon is keyed only for a park that has a curated window, since on every
  * other park the grid never draws it; `signals` names the bar's segments a grid can draw, so the
- * trip planner's grids, which know no bridge days, key only theirs.
+ * trip planner's grids, which know no bridge days, key only theirs. `extraSignals` keys segments a
+ * caller draws beyond the holidays, such as a region's storm season, after them in the same row.
  */
 export function ParkCalendarLegend({
   showWorks = false,
   signals = ALL_SIGNALS,
   signalsLabel = true,
+  extraSignals = [],
   className,
 }: {
   showWorks?: boolean;
   signals?: readonly DaySignal[];
   /** Whether the signal keys open with their group's label; the coloured dashes say enough alone. */
   signalsLabel?: boolean;
+  /** More segments of the bar, each its mark's class and its word. */
+  extraSignals?: ReadonlyArray<{ key: string; className: string; label: string }>;
   className?: string;
 }) {
   const tGroups = useTranslations('parks.calendarLegendGroups');
@@ -74,7 +78,7 @@ export function ParkCalendarLegend({
         </div>
       </div>
 
-      {(signals.length > 0 || showWorks) && (
+      {(signals.length > 0 || extraSignals.length > 0 || showWorks) && (
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
           {signalsLabel && (
             <span className="text-muted-foreground text-[10px] font-medium tracking-widest uppercase">
@@ -95,6 +99,9 @@ export function ParkCalendarLegend({
                       : tLegend('bridgeDay')
               }
             />
+          ))}
+          {extraSignals.map((signal) => (
+            <DaySignalKey key={signal.key} className={signal.className} label={signal.label} />
           ))}
           {showWorks && (
             <span className="flex items-center gap-1.5 whitespace-nowrap">

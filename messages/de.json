@@ -3139,7 +3139,9 @@
       "modeAll": "Insgesamt",
       "picksLegendAll": "Unter jedem Datum steht der Park mit der kürzesten Spitzenwartezeit.",
       "picksLegendResort": "Unter jedem Datum steht der Park von {resort} mit der kürzesten Spitzenwartezeit.",
-      "overall": "Insgesamt: {park}"
+      "overall": "Insgesamt: {park}",
+      "stormPeak": "{season}: Die Suche nach der besten Reisezeit stuft diese Tage herunter, auch bei kurzen Wartezeiten.",
+      "rainyNote": "{season}: nassere Tage, aber deshalb keine volleren Parks."
     },
     "find": {
       "modeKnown": "Ich kenne meine Reisedaten",
