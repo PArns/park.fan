@@ -110,6 +110,11 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `apiTokenKey` _function_: The cache key prefix of the token list, per account (`self` for the signed-in one).
 - `apiTokensPath` _function_: The token list's path; `userId` asks for another account's, which only an owner may.
 - `consentRequestPath` _function_: The OAuth request in the address bar as a proxy path, or null when it holds nothing the proxy would carry (empty or longer than any id the API issues).
+- `grantableScopes` _function_: The scopes an account may hand out, narrowest first: those whose cap its role reaches. A viewer or author has only `admin:read`, an editor adds `admin:write`, an owner `admin:owner`; the API narrows anything wider the same way.
+- `cappedScope` _function_: The widest scope up to `scope` that `role` may hand out, as the API narrows it: an editor asked for `admin:owner` gives `admin:write`, a viewer gives `admin:read`.
+- `asAdminScope` _function_: A scope as the API stored it, read as `admin:read` when it is none this admin knows.
+- `widestScope` _function_: The widest scope a request's space-separated `scope` names, or `admin:read`.
+- `describeScopeRole` _function_: The role an app acts with under a scope, in words: „Höchstens die Rolle Lesend, auch wenn dein Konto mehr darf (Inhaber)“. The lesser of the scope's cap and the account's role.
 - `describeScopes` _function_: Splits a space-separated OAuth `scope` into the ones the page can describe and the ones it cannot. An unknown scope is shown raw instead of dropped, so a scope the API adds before this page learns it is never approved unseen.
 - `displayClientName` _function_: The app name as the consent page prints it: control characters, zero-width characters and bidirectional overrides removed (a name that reorders the text around it can pass for another), whitespace collapsed, cut at 60 characters.
 - `describeRedirectHost` _function_: What a redirect host tells the person reading it: whether it is the computer they are sitting at (Claude Code listens on a loopback port) and whether a label is written in Punycode (`xn--`), the form in which look-alike domains are …
@@ -121,7 +126,13 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `MCP_SERVER_NAME` _const_: The name Claude Code registers the server under, so `/mcp` lists it by a name that says whose it is.
 - `CLAUDE_CODE_ADD_COMMAND` _const_: The one line that adds the server to Claude Code; the sign-in runs through `/mcp` afterwards.
 - `TOKEN_EXPIRY_OPTIONS` _const_: The lifetimes the create dialog offers; `null` is a token that never expires.
-- Types: `OAuthConsentRequest`, `RequestOrigin`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`
+- `ADMIN_SCOPE_CAPS` _const_: The scopes with their role cap, narrowest first.
+- `DEFAULT_ADMIN_SCOPE` _const_: What a grant or a token gets unless the person chooses more.
+- `SCOPE_LABELS` _const_: What each scope the API knows lets an app do, in the words the consent page uses.
+- `SCOPE_CHOICES` _const_: The choice between the scopes, as the consent page and the token dialog offer it.
+- `SCOPE_CHANGES` _const_: What a scope lets an app change, the line under the role on the consent page.
+- `OWNER_SCOPE_WARNING` _const_: The warning beside the owner's choice: what it adds to the editor's rights.
+- Types: `OAuthConsentRequest`, `RequestOrigin`, `OAuthDecision`, `AdminApiToken`, `CreatedAdminApiToken`, `AdminScope`
 
 ### [`media-references.ts`](../../lib/admin/media-references.ts)
 
@@ -223,6 +234,7 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 
 ### [`provenance.ts`](../../lib/admin/provenance.ts)
 
+- `isHttpUrl` _function_: Whether a text is an absolute `http:` or `https:` address, the API's check on a source link.
 - `provenanceBody` _function_: The optional provenance of an admin write, ready for the request body: empty fields are left out, and a value the backend would answer with a 400 is reported before the request instead.
 - `REASON_MAX_LENGTH` _const_: The backend takes `reason` up to 2,000 characters and `sourceUrl` as an http(s) URL.
 

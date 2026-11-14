@@ -11,30 +11,39 @@ import {
 } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { Ban, Eye, Loader2, ShieldCheck, TimerOff, TriangleAlert } from 'lucide-react';
+import { Ban, Eye, Loader2, Pencil, ShieldCheck, TimerOff, TriangleAlert } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
+  DEFAULT_ADMIN_SCOPE,
+  OWNER_SCOPE_WARNING,
+  SCOPE_CHANGES,
+  SCOPE_CHOICES,
+  SCOPE_LABELS,
+  cappedScope,
   consentRequestPath,
   describeOriginMismatch,
   describeRedirectHost,
   describeRequestAge,
+  describeScopeRole,
   describeScopes,
   describeTokenCreateError,
   displayClientName,
+  grantableScopes,
   hasPassed,
   passwordProofBody,
   safeRedirectTarget,
+  widestScope,
+  type AdminScope,
   type OAuthConsentRequest,
   type OAuthDecision,
 } from '@/lib/admin/mcp';
 import { TOTP_CODE_LENGTH } from '@/lib/admin/totp';
-import { ROLE_LABELS } from '@/lib/admin/roles';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { AdminApiError, adminFetch, useAdminQuery } from '../../_lib/api';
 import { formatDisplayName } from '../../_lib/format';
 import { cn } from '@/lib/utils';
 import { SYSTEM_MONO } from '../../_ui/code-block';
-import { Field, OtpInput, TextInput, useFieldId } from '../../_ui/controls';
+import { Field, OtpInput, Segmented, TextInput, useFieldId } from '../../_ui/controls';
 import { Chip, EmptyState, LoadingState, Notice, Panel, PanelBody } from '../../_ui/primitives';
 import { useSession } from '../../_app/session';
 
@@ -143,6 +152,8 @@ function Consent() {
   // The session says whether the account has a second factor; the API's `totp-required` corrects it.
   const [needsCode, setNeedsCode] = useState(false);
   const [field, setField] = useState<'password' | 'code' | null>(null);
+  // Null until the person picks: the page then offers what the app asked for, capped by the role.
+  const [chosenScope, setScope] = useState<AdminScope | null>(null);
   const passwordField = useRef<HTMLInputElement>(null);
   const ids = { password: useFieldId('consent-password'), code: useFieldId('consent-code') };
   // A second click can arrive before the first one's re-render disables the buttons.
@@ -209,7 +220,10 @@ function Consent() {
 
   const clientName = displayClientName(request.clientName);
   const host = describeRedirectHost(request.redirectHost);
-  const scopes = describeScopes(request.scope);
+  const unknownScopes = describeScopes(request.scope).unknown;
+  const choices = grantableScopes(identity.role);
+  const asked = widestScope(request.scope);
+  const scope = chosenScope ?? cappedScope(asked, identity.role);
   const minutesLeft =
     now === null ? null : Math.max(1, Math.ceil((Date.parse(request.expiresAt) - now) / 60_000));
   // The clock ticks once a minute and may have been read before the request arrived.
@@ -231,7 +245,12 @@ function Consent() {
       const result = await adminFetch<OAuthDecision>(`${path}/${decision}`, {
         method: 'POST',
         ...(decision === 'approve'
-          ? { body: passwordProofBody({ password, totpCode: askForCode ? code : '' }) }
+          ? {
+              body: {
+                ...passwordProofBody({ password, totpCode: askForCode ? code : '' }),
+                scope,
+              },
+            }
           : {}),
       });
       granted = decision === 'approve';
@@ -284,7 +303,11 @@ function Consent() {
   return (
     <ConsentCard>
       <header className="space-y-1">
-        <h1 className="text-xl leading-tight font-bold">Darf diese App den Admin lesen?</h1>
+        <h1 className="text-xl leading-tight font-bold">
+          {scope === DEFAULT_ADMIN_SCOPE
+            ? 'Darf diese App den Admin lesen?'
+            : 'Darf diese App den Admin lesen und ändern?'}
+        </h1>
         <p className="text-muted-foreground text-sm">
           <span className="text-foreground font-semibold">{clientName}</span> bittet um Zugriff. Der
           Name stammt von der App selbst und ist nicht geprüft.
@@ -327,42 +350,59 @@ function Consent() {
         <h2 id="consent-gets" className="text-xs font-semibold">
           Was die App bekommt
         </h2>
+        {choices.length > 1 && (
+          <div className="space-y-1.5">
+            <Segmented
+              label="Rechte der App"
+              value={scope}
+              onChange={setScope}
+              options={choices.map((value) => ({ value, label: SCOPE_CHOICES[value] }))}
+              className="w-fit"
+            />
+            {asked !== DEFAULT_ADMIN_SCOPE && (
+              <p className="text-muted-foreground text-xs">
+                {choices.includes(asked)
+                  ? `Die App bittet um „${SCOPE_CHOICES[asked]}“. Du kannst ihr weniger geben.`
+                  : `Die App bittet um „${SCOPE_CHOICES[asked]}“, dein Konto gibt höchstens „${SCOPE_CHOICES[choices[choices.length - 1]]}“.`}
+              </p>
+            )}
+          </div>
+        )}
         <ul className="space-y-2 text-sm">
-          {scopes.known.map((label) => (
-            <li key={label} className="flex items-start gap-2.5">
-              <Eye className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
-              <span>
-                {label} als {formatDisplayName(identity.displayName)} ({identity.email})
-              </span>
-            </li>
-          ))}
           <li className="flex items-start gap-2.5">
-            <ShieldCheck className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+            <Eye className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
             <span>
-              Höchstens die Rolle {ROLE_LABELS.viewer}
-              {identity.role !== 'viewer' &&
-                `, auch wenn dein Konto mehr darf (${ROLE_LABELS[identity.role]})`}
+              {SCOPE_LABELS[scope]} als {formatDisplayName(identity.displayName)} ({identity.email})
             </span>
           </li>
-          {scopes.unknown.length === 0 ? (
+          <li className="flex items-start gap-2.5">
+            <ShieldCheck className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+            <span>{describeScopeRole(scope, identity.role)}</span>
+          </li>
+          {unknownScopes.length === 0 ? (
             <li className="flex items-start gap-2.5">
-              <Ban className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+              {scope === DEFAULT_ADMIN_SCOPE ? (
+                <Ban className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+              ) : (
+                <Pencil className="text-muted-foreground mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+              )}
               <span>
-                Ändern kann die App nichts. Du kannst sie jederzeit unter „Mein Konto“ trennen.
+                {SCOPE_CHANGES[scope]} Du kannst sie jederzeit unter „Mein Konto“ trennen.
               </span>
             </li>
           ) : (
-            scopes.unknown.map((scope) => (
-              <li key={scope} className="flex items-start gap-2.5 text-amber-300">
+            unknownScopes.map((unknown) => (
+              <li key={unknown} className="flex items-start gap-2.5 text-amber-300">
                 <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
                 <span>
                   Weitere Berechtigung, die diese Seite nicht beschreiben kann:{' '}
-                  <code className={SYSTEM_MONO}>{scope}</code>
+                  <code className={SYSTEM_MONO}>{unknown}</code>
                 </span>
               </li>
             ))
           )}
         </ul>
+        {scope === 'admin:owner' && <Notice>{OWNER_SCOPE_WARNING}</Notice>}
       </section>
 
       {age?.stale && (

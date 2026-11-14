@@ -1,4 +1,5 @@
 import { API_ORIGIN } from '@/lib/api/client';
+import { ROLE_LABELS, roleAtLeast, type AdminRole } from './roles';
 import { breakdownValueLabel, countryName } from './site-analytics';
 import { TOTP_CODE_LENGTH } from './totp';
 
@@ -106,17 +107,20 @@ export function createTokenBody(input: {
   name: string;
   /** The lifetime in days, `null` for none. */
   expiresInDays: number | null;
+  scope: AdminScope;
   password: string;
   totpCode: string;
 }): {
   name: string;
   expiresInDays: number | null;
+  scope: AdminScope;
   password: string;
   totpCode?: string;
 } {
   return {
     name: input.name.trim(),
     expiresInDays: input.expiresInDays,
+    scope: input.scope,
     ...passwordProofBody(input),
   };
 }
@@ -216,10 +220,94 @@ export function consentRequestPath(requestId: string | null): string | null {
   return `/api/admin/oauth/requests/${encodeURIComponent(id)}`;
 }
 
-/** What each scope the API knows lets an app do, in the words the consent page uses. */
-const SCOPE_LABELS: Record<string, string> = {
-  'admin:read': 'Den Admin lesen',
+/**
+ * A scope a grant or a personal token carries. Each caps the role it acts with, the lesser of it
+ * and the account's own: the API's `ADMIN_TOKEN_SCOPES`.
+ */
+export type AdminScope = 'admin:read' | 'admin:write' | 'admin:owner';
+
+/** The scopes with their role cap, narrowest first. */
+export const ADMIN_SCOPE_CAPS: Readonly<Record<AdminScope, AdminRole>> = {
+  'admin:read': 'viewer',
+  'admin:write': 'editor',
+  'admin:owner': 'owner',
 };
+
+const ADMIN_SCOPES = Object.keys(ADMIN_SCOPE_CAPS) as AdminScope[];
+
+/** What a grant or a token gets unless the person chooses more. */
+export const DEFAULT_ADMIN_SCOPE: AdminScope = 'admin:read';
+
+/**
+ * The scopes an account may hand out, narrowest first: those whose cap its role reaches. A viewer
+ * or author has only `admin:read`, an editor adds `admin:write`, an owner `admin:owner`; the API
+ * narrows anything wider the same way.
+ */
+export function grantableScopes(role: AdminRole): AdminScope[] {
+  return ADMIN_SCOPES.filter((scope) => roleAtLeast(role, ADMIN_SCOPE_CAPS[scope]));
+}
+
+/**
+ * The widest scope up to `scope` that `role` may hand out, as the API narrows it: an editor asked
+ * for `admin:owner` gives `admin:write`, a viewer gives `admin:read`.
+ */
+export function cappedScope(scope: AdminScope, role: AdminRole): AdminScope {
+  const limit = ADMIN_SCOPES.indexOf(scope);
+  return (
+    [...grantableScopes(role)].reverse().find((name) => ADMIN_SCOPES.indexOf(name) <= limit) ??
+    DEFAULT_ADMIN_SCOPE
+  );
+}
+
+/** A scope as the API stored it, read as `admin:read` when it is none this admin knows. */
+export function asAdminScope(scope: string): AdminScope {
+  return ADMIN_SCOPES.includes(scope as AdminScope) ? (scope as AdminScope) : DEFAULT_ADMIN_SCOPE;
+}
+
+/** The widest scope a request's space-separated `scope` names, or `admin:read`. */
+export function widestScope(scope: string): AdminScope {
+  const asked = scope.split(/\s+/);
+  return [...ADMIN_SCOPES].reverse().find((name) => asked.includes(name)) ?? DEFAULT_ADMIN_SCOPE;
+}
+
+/** What each scope the API knows lets an app do, in the words the consent page uses. */
+export const SCOPE_LABELS: Readonly<Record<string, string>> = {
+  'admin:read': 'Den Admin lesen',
+  'admin:write': 'Den Admin lesen und ändern',
+  'admin:owner': 'Den ganzen Admin lesen und ändern',
+};
+
+/** The choice between the scopes, as the consent page and the token dialog offer it. */
+export const SCOPE_CHOICES: Readonly<Record<AdminScope, string>> = {
+  'admin:read': 'Nur lesen',
+  'admin:write': 'Schreiben erlauben',
+  'admin:owner': 'Inhaber-Rechte',
+};
+
+/** What a scope lets an app change, the line under the role on the consent page. */
+export const SCOPE_CHANGES: Readonly<Record<AdminScope, string>> = {
+  'admin:read': 'Ändern kann die App nichts.',
+  'admin:write':
+    'Ändern kann die App, was die Redaktion im Admin ändert, etwa Saisons, Tickets, kuratierte Felder, Weiterleitungen, Jobs und Feedback. Jede Änderung steht unter „Änderungen“ auf deinem Namen.',
+  'admin:owner':
+    'Ändern kann die App alles, was du als Inhaber im Admin darfst. Jede Änderung steht unter „Änderungen“ auf deinem Namen.',
+};
+
+/** The warning beside the owner's choice: what it adds to the editor's rights. */
+export const OWNER_SCOPE_WARNING =
+  'Mit Inhaber-Rechten kann die App auch Fahrgeschäfte und Parks zusammenführen, Fahrgeschäfte stilllegen und API-Keys anlegen oder sperren. Erlaube das nur einer App, der du so viel zutraust wie dir selbst.';
+
+/**
+ * The role an app acts with under a scope, in words: „Höchstens die Rolle Lesend, auch wenn dein
+ * Konto mehr darf (Inhaber)“. The lesser of the scope's cap and the account's role.
+ */
+export function describeScopeRole(scope: AdminScope, role: AdminRole): string {
+  const cap = ADMIN_SCOPE_CAPS[scope];
+  const acted = roleAtLeast(role, cap) ? cap : role;
+  return roleAtLeast(acted, role)
+    ? `Höchstens die Rolle ${ROLE_LABELS[acted]}`
+    : `Höchstens die Rolle ${ROLE_LABELS[acted]}, auch wenn dein Konto mehr darf (${ROLE_LABELS[role]})`;
+}
 
 /**
  * Splits a space-separated OAuth `scope` into the ones the page can describe and the ones it

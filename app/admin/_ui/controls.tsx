@@ -1,7 +1,7 @@
 'use client';
 
 import { useId, useState, type ComponentProps, type ReactNode } from 'react';
-import { ArrowDown, ArrowUp, Check, ChevronDown, ExternalLink } from 'lucide-react';
+import { ArrowDown, ArrowUp, Check, ChevronDown, ExternalLink, X } from 'lucide-react';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import {
   Command,
@@ -645,6 +645,65 @@ export function SearchSelect({
         </Command>
       </PopoverContent>
     </Popover>
+  );
+}
+
+/**
+ * Several values picked from a list too long for `ToggleChips` (a hundred parks, a park's seventy
+ * rides): each picked value is a chip that removes itself, and a `SearchSelect` adds the next. A
+ * picked value the list does not hold is shown as it is stored, so it is seen rather than dropped.
+ */
+export function MultiSearchSelect({
+  id,
+  value,
+  onChange,
+  options,
+  placeholder,
+  searchPlaceholder,
+  disabled,
+  fuzzy,
+}: {
+  id?: string;
+  value: readonly string[];
+  onChange: (value: string[]) => void;
+  options: SelectOption[];
+  placeholder: string;
+  searchPlaceholder?: string;
+  disabled?: boolean;
+  fuzzy?: 'park' | 'attraction';
+}) {
+  const labels = new Map(options.map((option) => [option.value, option.label]));
+  return (
+    <div className="grid gap-2">
+      {value.length > 0 && (
+        <ul className="flex flex-wrap gap-1.5">
+          {value.map((picked) => (
+            <li key={picked}>
+              <button
+                type="button"
+                disabled={disabled}
+                onClick={() => onChange(value.filter((other) => other !== picked))}
+                aria-label={`${labels.get(picked) ?? picked} entfernen`}
+                className="border-border bg-muted/60 hover:bg-muted inline-flex min-h-9 items-center gap-1 rounded-full border px-2.5 text-xs disabled:opacity-50 sm:min-h-7"
+              >
+                {labels.get(picked) ?? picked}
+                <X className="h-3 w-3" aria-hidden />
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+      <SearchSelect
+        id={id}
+        value={null}
+        onValueChange={(next) => onChange([...value, next])}
+        options={options.filter((option) => !value.includes(option.value))}
+        placeholder={placeholder}
+        searchPlaceholder={searchPlaceholder}
+        disabled={disabled}
+        fuzzy={fuzzy}
+      />
+    </div>
   );
 }
 

@@ -10,7 +10,6 @@ import {
   RotateCw,
   ShieldCheck,
   Trash2,
-  X,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
@@ -55,14 +54,14 @@ import {
 } from '@/lib/admin/api-keys';
 import { hasPassed } from '@/lib/admin/mcp';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
-import { adminFetch, adminKeys, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import type { AdminParkListItem } from '../_lib/types';
+import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
+import { parkCatalogOptions, useParkCatalog } from '../_lib/use-park-catalog';
 import { formatAgo } from '../_lib/format';
 import { useSession } from '../_app/session';
 import { BarList, CATEGORICAL, SeriesChart, Sparkline } from '../_ui/charts';
 import { CodeBlock, SYSTEM_MONO } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
-import { Field, SearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
+import { Field, MultiSearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -788,23 +787,7 @@ function ParksField({
   value: string[];
   onChange: (ids: string[]) => void;
 }) {
-  // The query the parks page already holds, so opening the dialog there costs no request.
-  const parks = useAdminQuery<{ total: number; parks: AdminParkListItem[] }>(
-    adminKeys.parks({ params: 'limit=500' }),
-    '/api/admin/content/parks?limit=500',
-    { staleTime: 10 * 60_000 }
-  );
-  const all = parks.data?.parks ?? [];
-  const byId = new Map(all.map((park) => [park.id, park]));
-  const options = all
-    .filter((park) => !value.includes(park.id))
-    .map((park) => ({
-      value: park.id,
-      label: park.name,
-      hint: park.city ?? undefined,
-      keywords: [park.slug, park.city ?? '', park.country ?? ''],
-    }));
-
+  const parks = useParkCatalog();
   return (
     <Field
       label="Parks"
@@ -812,35 +795,16 @@ function ParksField({
       hint="Leer für alle Parks. Mit einer Auswahl öffnet der Key die Prognosen nur für diese Parks."
       error={parks.isError ? 'Die Parkliste ließ sich nicht laden.' : null}
     >
-      <div className="grid gap-2">
-        {value.length > 0 && (
-          <ul className="flex flex-wrap gap-1.5">
-            {value.map((id) => (
-              <li key={id}>
-                <button
-                  type="button"
-                  onClick={() => onChange(value.filter((other) => other !== id))}
-                  aria-label={`${byId.get(id)?.name ?? id} entfernen`}
-                  className="border-border bg-muted/60 hover:bg-muted inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs"
-                >
-                  {byId.get(id)?.name ?? id}
-                  <X className="h-3 w-3" aria-hidden />
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
-        <SearchSelect
-          id={id}
-          value={null}
-          onValueChange={(id) => onChange([...value, id])}
-          options={options}
-          placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Park hinzufügen'}
-          searchPlaceholder="Park suchen…"
-          disabled={parks.isLoading || parks.isError}
-          fuzzy="park"
-        />
-      </div>
+      <MultiSearchSelect
+        id={id}
+        value={value}
+        onChange={onChange}
+        options={parkCatalogOptions(parks.data?.parks ?? [])}
+        placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Park hinzufügen'}
+        searchPlaceholder="Park suchen…"
+        disabled={parks.isLoading || parks.isError}
+        fuzzy="park"
+      />
     </Field>
   );
 }

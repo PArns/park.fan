@@ -1,108 +1,154 @@
 'use client';
 
 import { useMemo, useState } from 'react';
-import Link from 'next/link';
-import { format, parseISO } from 'date-fns';
-import { de } from 'date-fns/locale';
-import { CalendarDays, CalendarRange, Ticket, TriangleAlert } from 'lucide-react';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { CalendarRange, Plus, X } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { TRIP_REGIONS, tripRegionTitle } from '@/lib/trip-regions/registry';
 import { adminKeys, useAdminQuery } from '../_lib/api';
-import type { ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '../_lib/types';
-import { Chip, EmptyState, ErrorState, SkeletonRows, Toolbar } from '../_ui/primitives';
-import { Select } from '../_ui/controls';
+import {
+  SEASON_KIND_LABELS,
+  SEASON_KIND_OPTIONS,
+  SEASON_STATUS_OPTIONS,
+  seasonFilterQuery,
+  seasonFiltersFrom,
+  seasonListPath,
+  type SeasonFilters,
+} from '../_lib/seasons';
+import type { ParkSeason, ParkSeasonKind } from '../_lib/types';
+import { parkCatalogOptions, useParkCatalog } from '../_lib/use-park-catalog';
+import { useCan } from '../_app/session';
+import { SearchSelect, Select, Switch } from '../_ui/controls';
+import { AdminPage, EmptyState, ErrorState, SkeletonRows, Toolbar } from '../_ui/primitives';
+import { SeasonEditor, SeasonRow } from './_components/season-editor';
+
+const REGION_OPTIONS = TRIP_REGIONS.map((region) => ({
+  value: region.slug,
+  label: tripRegionTitle(region.slug),
+}));
 
 /**
- * Every park's seasons in one place: what is on file for an event, and, the useful half, which
- * parks have nothing recorded.
+ * Every park's seasons in one place, filtered by year, kind, status, trip region, park and whether
+ * they run today, with the form to add, change or delete one. The filters are the address, so a
+ * reload or a shared link opens the same list.
  */
-
-const KIND_LABELS: Record<ParkSeasonKind, string> = {
-  halloween: 'Halloween',
-  christmas: 'Weihnachten',
-  summer_nights: 'Sommernächte',
-  special_event: 'Sonderevent',
-  opening: 'Saison',
-  closure: 'Schließzeit',
-  maintenance: 'Wartung',
-};
-
-const STATUS_LABELS: Record<ParkSeasonStatus, string> = {
-  confirmed: 'bestätigt',
-  announced: 'angekündigt',
-  expected: 'erwartet',
-  cancelled: 'abgesagt',
-};
-
 export default function SeasonsPage() {
+  const params = useSearchParams();
+  const router = useRouter();
+  const pathname = usePathname();
+  const canEdit = useCan('editor');
   const currentYear = new Date().getFullYear();
-  const [year, setYear] = useState<string | null>(String(currentYear));
-  const [kind, setKind] = useState<string | null>(null);
-  const [status, setStatus] = useState<string | null>(null);
-
-  const params = useMemo(() => {
-    const search = new URLSearchParams({ limit: '400' });
-    if (year) search.set('year', year);
-    if (kind) search.set('kind', kind);
-    if (status) search.set('status', status);
-    return search.toString();
-  }, [year, kind, status]);
-
-  const seasons = useAdminQuery<{ seasons: ParkSeason[]; total: number }>(
-    adminKeys.seasons({ params }),
-    `/api/admin/content/seasons?${params}`
+  const filters = useMemo(
+    () => seasonFiltersFrom(new URLSearchParams(params.toString()), currentYear),
+    [params, currentYear]
   );
+  const setFilter = <K extends keyof SeasonFilters>(key: K, value: SeasonFilters[K]) => {
+    const query = seasonFilterQuery({ ...filters, [key]: value }, currentYear);
+    router.replace(query ? `${pathname}?${query}` : pathname, { scroll: false });
+  };
+  const [editing, setEditing] = useState<ParkSeason | 'new' | null>(null);
+
+  const path = seasonListPath(filters);
+  const seasons = useAdminQuery<{ seasons: ParkSeason[]; total: number }>(
+    adminKeys.seasons({ path }),
+    path
+  );
+  const parks = useParkCatalog();
+  const parkName = (id: string | null) =>
+    parks.data?.parks.find((park) => park.id === id)?.name ?? undefined;
 
   const grouped = useMemo(() => {
     const byKind = new Map<string, ParkSeason[]>();
     for (const season of seasons.data?.seasons ?? []) {
-      const list = byKind.get(season.kind) ?? [];
-      list.push(season);
-      byKind.set(season.kind, list);
+      byKind.set(season.kind, [...(byKind.get(season.kind) ?? []), season]);
     }
-    return [...byKind.entries()].sort((a, b) => b[1].length - a[1].length);
+    return [...byKind.entries()]
+      .map(([kind, list]) => [kind, list.sort((a, b) => a.startDate.localeCompare(b.startDate))])
+      .sort((a, b) => b[1].length - a[1].length) as Array<[string, ParkSeason[]]>;
   }, [seasons.data]);
 
-  const years = useMemo(
-    () =>
-      Array.from({ length: 5 }, (_, index) => {
-        const value = String(currentYear - 1 + index);
-        return { value, label: value };
-      }),
-    [currentYear]
-  );
+  const years = useMemo(() => {
+    const values = Array.from({ length: 5 }, (_, index) => String(currentYear - 1 + index));
+    if (filters.year && !values.includes(filters.year)) values.unshift(filters.year);
+    return values.map((value) => ({ value, label: value }));
+  }, [currentYear, filters.year]);
+
+  const shown = seasons.data?.seasons.length ?? 0;
+  const total = seasons.data?.total ?? 0;
 
   return (
     <div>
       <Toolbar>
         <Select
-          value={year}
-          onValueChange={setYear}
+          value={filters.year}
+          onValueChange={(value) => setFilter('year', value)}
           options={years}
           placeholder="Alle Jahre"
           emptyLabel="Alle Jahre"
-          className="h-8 w-32 text-xs"
+          className="h-8 w-28 text-xs"
         />
         <Select
-          value={kind}
-          onValueChange={setKind}
-          options={Object.entries(KIND_LABELS).map(([value, label]) => ({ value, label }))}
+          value={filters.kind}
+          onValueChange={(value) => setFilter('kind', value)}
+          options={SEASON_KIND_OPTIONS}
           placeholder="Alle Arten"
           emptyLabel="Alle Arten"
-          className="h-8 w-40 text-xs"
+          className="h-8 w-36 text-xs"
         />
         <Select
-          value={status}
-          onValueChange={setStatus}
-          options={Object.entries(STATUS_LABELS).map(([value, label]) => ({ value, label }))}
+          value={filters.status}
+          onValueChange={(value) => setFilter('status', value)}
+          options={SEASON_STATUS_OPTIONS}
           placeholder="Alle Status"
           emptyLabel="Alle Status"
-          className="h-8 w-40 text-xs"
+          className="h-8 w-36 text-xs"
+        />
+        <Select
+          value={filters.region}
+          onValueChange={(value) => setFilter('region', value)}
+          options={REGION_OPTIONS}
+          placeholder="Alle Regionen"
+          emptyLabel="Alle Regionen"
+          className="h-8 w-44 text-xs"
+        />
+        <div className="flex items-center gap-1">
+          <SearchSelect
+            value={filters.parkId}
+            onValueChange={(value) => setFilter('parkId', value)}
+            options={parkCatalogOptions(parks.data?.parks ?? [])}
+            placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Alle Parks'}
+            searchPlaceholder="Park suchen…"
+            disabled={parks.isLoading || parks.isError}
+            fuzzy="park"
+            className="h-8 w-48 text-xs"
+          />
+          {filters.parkId && (
+            <button
+              type="button"
+              onClick={() => setFilter('parkId', null)}
+              aria-label="Parkfilter entfernen"
+              className="text-muted-foreground hover:text-foreground rounded p-1.5 max-sm:p-3"
+            >
+              <X className="h-3.5 w-3.5" aria-hidden />
+            </button>
+          )}
+        </div>
+        <Switch
+          checked={filters.current}
+          onCheckedChange={(next) => setFilter('current', next)}
+          label={<span className="text-xs">Läuft heute</span>}
         />
         <span className="text-muted-foreground ml-auto text-xs tabular-nums">
-          {seasons.data ? `${seasons.data.total} Einträge` : '…'}
+          {seasons.data ? `${total} ${total === 1 ? 'Eintrag' : 'Einträge'}` : '…'}
         </span>
+        {canEdit && (
+          <Button size="sm" variant="outline" onClick={() => setEditing('new')}>
+            <Plus className="h-4 w-4" /> Neue Saison
+          </Button>
+        )}
       </Toolbar>
 
-      <div className="mx-auto max-w-5xl space-y-6 p-4">
+      <AdminPage>
         {seasons.isError ? (
           <ErrorState message={seasons.error.message} onRetry={() => void seasons.refetch()} />
         ) : seasons.isLoading ? (
@@ -111,70 +157,49 @@ export default function SeasonsPage() {
           <EmptyState
             icon={CalendarRange}
             title="Für diesen Filter ist nichts hinterlegt"
-            description="Saisons entstehen nicht von selbst — sie werden im jeweiligen Park eingetragen."
+            description="Saisons entstehen nicht von selbst: jemand trägt sie hier oder im Park unter „Saisons“ ein."
           />
         ) : (
-          grouped.map(([kindKey, list]) => (
-            <section key={kindKey}>
-              <h2 className="text-muted-foreground mb-2 text-xs font-medium">
-                {KIND_LABELS[kindKey as ParkSeasonKind] ?? kindKey} · {list.length}
-              </h2>
-              <ul className="divide-border/40 border-border/60 bg-card/40 divide-y rounded-xl border">
-                {list
-                  .sort((a, b) => a.startDate.localeCompare(b.startDate))
-                  .map((season) => (
-                    <li key={season.id}>
-                      <Link
-                        href={`/admin/parks/${season.parkId}?tab=seasons`}
-                        className="hover:bg-muted/25 flex flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5"
-                      >
-                        <span className="min-w-0 flex-1 truncate text-sm font-medium">
-                          {season.park?.name ?? 'Unbekannter Park'}
-                        </span>
-                        <span className="text-muted-foreground truncate text-xs">
-                          {season.name ?? ''}
-                        </span>
-                        <span className="text-muted-foreground shrink-0 text-xs tabular-nums">
-                          {format(parseISO(season.startDate), 'd. MMM', { locale: de })} –{' '}
-                          {format(parseISO(season.endDate), 'd. MMM', { locale: de })}
-                        </span>
-                        <div className="flex shrink-0 items-center gap-1">
-                          {season.dates && season.dates.length > 0 && (
-                            <Chip>
-                              <CalendarDays className="h-3 w-3" />
-                              {season.dates.length}
-                            </Chip>
-                          )}
-                          {season.separateTicket && (
-                            <Chip>
-                              <Ticket className="h-3 w-3" />
-                            </Chip>
-                          )}
-                          <Chip
-                            tone={
-                              season.status === 'confirmed'
-                                ? 'success'
-                                : season.status === 'cancelled'
-                                  ? 'danger'
-                                  : 'muted'
-                            }
-                          >
-                            {STATUS_LABELS[season.status]}
-                          </Chip>
-                          {!season.sourceUrl && season.status !== 'expected' && (
-                            <span title="Ohne Quelle">
-                              <TriangleAlert className="h-3.5 w-3.5 text-amber-400" />
-                            </span>
-                          )}
-                        </div>
-                      </Link>
-                    </li>
+          <>
+            {grouped.map(([kind, list]) => (
+              <section key={kind} aria-labelledby={`season-kind-${kind}`}>
+                <h2
+                  id={`season-kind-${kind}`}
+                  className="text-muted-foreground mb-2 text-xs font-medium"
+                >
+                  {SEASON_KIND_LABELS[kind as ParkSeasonKind] ?? kind} · {list.length}
+                </h2>
+                <ul className="space-y-2">
+                  {list.map((season) => (
+                    <SeasonRow
+                      key={season.id}
+                      season={season}
+                      showPark
+                      canEdit={canEdit}
+                      onOpen={() => setEditing(season)}
+                    />
                   ))}
-              </ul>
-            </section>
-          ))
+                </ul>
+              </section>
+            ))}
+            {total > shown && (
+              <p className="text-muted-foreground text-xs">
+                Die ersten {shown} von {total}. Ein Filter zeigt den Rest.
+              </p>
+            )}
+          </>
         )}
-      </div>
+      </AdminPage>
+
+      {editing && (
+        <SeasonEditor
+          season={editing === 'new' ? null : editing}
+          parkId={editing === 'new' ? filters.parkId : editing.parkId}
+          parkName={editing === 'new' ? parkName(filters.parkId) : editing.park?.name}
+          canEdit={canEdit}
+          onClose={() => setEditing(null)}
+        />
+      )}
     </div>
   );
 }
