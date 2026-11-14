@@ -123,7 +123,8 @@ export async function TripRegionHubPage({
   const planHref = `${pagePath}#${TRIP_PLANNER_ID}`;
 
   const title = monthLabel ? tRegion('monthTitle', { month: monthLabel }) : tRegion('title');
-  const question = monthLabel ? t('monthQuestion', { month: monthLabel }) : t('question');
+  // The month is in the H1's first line already; a second mention would read twice in the element.
+  const question = t('question');
   const tagline = monthLabel
     ? ownWords(tRegion, 'leadMonth', { month: monthLabel })
     : ownWords(tRegion, 'lead');

@@ -539,7 +539,6 @@
       }
     },
     "question": "Quale parco in quale giorno?",
-    "monthQuestion": "Quale parco in quale giorno a {month}?",
     "plan": "Pianifica il viaggio"
   },
   "theme": {

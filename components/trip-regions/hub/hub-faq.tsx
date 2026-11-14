@@ -29,9 +29,9 @@ const PARTY_GAIN_MIN = 5;
  * page shows: the quietest and busiest days of the window per resort, and where the region names
  * the park or the leg (`hub.faq` in its registry entry) a park on a party night, a park on
  * weekends, the drive between the resorts and the hotels' early slots; then the region's questions
- * with a fixed answer (`hub.faq.questions`); then the five every region shares: what the peak wait
- * is, why a longer one can be green, where the figures come from, how far the forecast reaches and
- * how close it gets. A question whose data or words are missing is left out, never answered in
+ * with a fixed answer (`hub.faq.questions`); then, on the hub and not its month pages, the five
+ * every region shares: what the peak wait is, why a longer one can be green, where the figures come
+ * from, how far the forecast reaches and how close it gets. A question whose data or words are missing is left out, never answered in
  * general and never shown as a key. `FaqList` renders them as `<details>` and emits the `FAQPage`
  * from the same array.
  */
@@ -167,15 +167,19 @@ export async function HubFaq({
 
   for (const key of ask.questions ?? []) add(ownWords(t, `${key}.q`), ownWords(t, `${key}.a`));
 
-  const horizon = forecastUntil ? formatHubDate(forecastUntil, locale, 'long') : null;
-  add(shared('peak.q'), shared('peak.a'));
-  add(shared('green.q'), shared('green.a'));
-  add(shared('sources.q'), shared('sources.a'));
-  add(
-    shared('horizon.q'),
-    horizon ? shared('horizon.a', { date: horizon }) : shared('horizon.aNoDate')
-  );
-  add(shared('accuracy.q'), shared('accuracy.a'));
+  // The same five answers on every month page would make the months read alike; the key in
+  // chapter 01 names the figure and the colour there, and the links line leads to the method.
+  if (!monthLabel) {
+    const horizon = forecastUntil ? formatHubDate(forecastUntil, locale, 'long') : null;
+    add(shared('peak.q'), shared('peak.a'));
+    add(shared('green.q'), shared('green.a'));
+    add(shared('sources.q'), shared('sources.a'));
+    add(
+      shared('horizon.q'),
+      horizon ? shared('horizon.a', { date: horizon }) : shared('horizon.aNoDate')
+    );
+    add(shared('accuracy.q'), shared('accuracy.a'));
+  }
 
   return <FaqList items={items} />;
 }
