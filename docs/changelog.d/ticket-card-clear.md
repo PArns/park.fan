@@ -35,3 +35,11 @@ nebeneinanderstehen, `tickets-uk` den Schritt „Tickets“ des Assistenten mit 
 „Universal-Tag 1 von 3“ in eine Zeile passt. Die Sätze, die „Mehr Optionen“, die Liste, die Zeile
 mit der Spitzenwartezeit und den Hinweis „Außerhalb der USA verkauft“ nannten, nennen jetzt die
 Schritte des Assistenten, die Ansicht „Tage“, die Karte und „UK-Shop“.
+
+Der Kalender-Screenshot desselben Beitrags (`orlando-kalender`) zeigt jetzt das Kapitel 02 mit
+der Woche vom 14. bis 20. November, den Wochen zum Blättern, der Zeile „Bester Park“ und den
+kompakten Kacheln. Er ist wie vorher 1024 px breit, aber 1584 px hoch statt etwa 1200, weil alle 16
+Parks im Bild stehen. Der Beitrag nennt die fünf Kapitel des Hubs in ihrer neuen Reihenfolge, und
+Parks in der Saisonpause sind dort eine Zeile statt schraffierter Kästchen. Die Screenshots
+`japan-monatsansicht`, `orlando-reisedaten` und `orlando-hub-erster-bildschirm` sind gelöscht, weil
+kein Beitrag, keine Seite und kein Skript sie verwendet hat.

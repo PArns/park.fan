@@ -16,15 +16,16 @@
  * Writes `public/media/reiseplaner/<image>-assistent-<n>-<locale>.webp`, two device pixels per px;
  * the sidecars beside them are written by hand.
  *
- * `--post` takes the screenshots of the Orlando trip-planner post instead (`POST_SHOTS`, the post's
- * translationKey `orlando-trip-planner`), from the same build; `--shot=tickets-uk` takes one of them.
+ * `--post` takes the screenshots of the Orlando trip-planner post instead (`POST_SHOTS`, the
+ * post's translationKey `orlando-trip-planner`), from the same build; `--shot=tickets-uk` takes one
+ * of them.
  */
 import { existsSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright';
 import sharp from 'sharp';
-import { tripRegionPath } from '../lib/trip-regions/paths.ts';
+import { TRIP_CALENDAR_ID, tripRegionPath } from '../lib/trip-regions/paths.ts';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(ROOT, 'public/media/reiseplaner');
@@ -229,11 +230,16 @@ async function walk(browser, region, locale) {
   }
 }
 
+/** The hub calendar's desk grid, drawn from `lg`. */
+const CALENDAR_GRID = `section#${TRIP_CALENDAR_ID} table[role="grid"]`;
+
 /**
  * The Orlando trip-planner post's screenshots (`--post`), keyed by media id, each from the trip the
- * post's text walks through: the ten days of 5 to 14 December 2026 with the big seven, and the UK
- * family's Combo Ticket from 6 February 2027. `query` is the plan's `/orlando` query (the one the
- * page writes after the clicks the post describes), `width` the window the shot is taken at.
+ * post's text walks through: the ten days of 5 to 14 December 2026 with the big seven, the UK
+ * family's Combo Ticket from 6 February 2027, and the hub's calendar as it stands on the day.
+ * `query` is the plan's `/orlando` query (the one the page writes after the clicks the post
+ * describes), `width` the window the shot is taken at, `anchor` the chapter it opens on (the
+ * planner's by default) and `ready` what it waits for.
  */
 const POST_SHOTS = {
   // „Noch keine Tickets“: the plan's ticket card under the days. Below `lg` the result is one
@@ -253,6 +259,15 @@ const POST_SHOTS = {
   },
   // „Disney-Tag 2 von 4“: the week with both suggestions taken and the hopper on Disney's, at a
   // desk whose day column fits „Universal-Tag 1 von 3“ on one line.
+  // „Alle Parks von Orlando in einem Kalender“: chapter 02 of the hub without a plan, the first
+  // week from today with the week chips, the „Bester Park“ row and every park's tiles. At `lg` the
+  // grid's seven columns fit without scrolling sideways.
+  'orlando-kalender': {
+    anchor: TRIP_CALENDAR_ID,
+    ready: CALENDAR_GRID,
+    width: 1024,
+    shoot: shootCalendar,
+  },
   wochenansicht: {
     query:
       'from=2026-12-05&to=2026-12-14&blocks=1&tickets=uor-date-based.3@2026-12-06,wdw-date-based.4.h@2026-12-10',
@@ -334,6 +349,12 @@ async function shootTicketStep(page) {
   return { x: stage.x + 1, y, width: stage.width - 2, height: step.y + step.height + GUTTER - y };
 }
 
+/** The hub's calendar chapter, from its heading to the foot of the desk grid. */
+async function shootCalendar(page) {
+  const chapter = page.locator(`section#${TRIP_CALENDAR_ID}`);
+  return columnCut(page, chapter, page.locator(CALENDAR_GRID));
+}
+
 /** The week view with its switch, the first page of the trip. */
 async function shootWeek(page) {
   const week = page.locator('[data-plan-view="week"]');
@@ -361,12 +382,19 @@ async function shootPost(browser, id, locale) {
   }, shot.view ?? 'agenda');
   const page = await context.newPage();
   try {
-    await page.goto(`${BASE}/${locale}${tripRegionPath('orlando', locale)}?${shot.query}#planner`, {
+    const query = shot.query ? `?${shot.query}` : '';
+    const anchor = shot.anchor ?? 'planner';
+    await page.goto(`${BASE}/${locale}${tripRegionPath('orlando', locale)}${query}#${anchor}`, {
       waitUntil: 'domcontentloaded',
     });
-    await page.locator('[data-plan-head]').first().waitFor({ timeout: PLAN_TIMEOUT });
+    await page
+      .locator(shot.ready ?? '[data-plan-head]')
+      .first()
+      .waitFor({ timeout: PLAN_TIMEOUT });
     const clip = await shot.shoot(page);
     await imagesLoaded(page);
+    // Parky's button can mount after the cut was set.
+    await hideFixed(page);
     await page.mouse.move(0, 0);
     await save(page, clip, path.join(OUT, `${id}-${locale}.webp`));
   } finally {
