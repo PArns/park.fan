@@ -392,7 +392,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/wizard-guide-band.tsx`](../../components/trip-regions/wizard/wizard-guide-band.tsx)
 
-- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width; on the left the line over the question (region, dates or step) and …
+- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width, and stopping short of the close button, which stands on the card's …
 
 ### [`wizard/wizard-step.tsx`](../../components/trip-regions/wizard/wizard-step.tsx)
 

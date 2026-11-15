@@ -9,8 +9,9 @@ import { PLAN_FOCUS } from '../planner/plan-controls';
 
 /**
  * The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading
- * into the card's ground on its left, so Parky is never cropped at any width; on the left the line
- * over the question (region, dates or step) and Parky's question in a speech bubble whose tail
+ * into the card's ground on its left, so Parky is never cropped at any width, and stopping short of
+ * the close button, which stands on the card's ground rather than on Parky's hat. On the left the
+ * line over the question (region, dates or step) and Parky's question in a speech bubble whose tail
  * points at him. The bubble is the dialog's title and takes the focus when the step changes, so a
  * screen reader reads the question. `evening` draws the scene's night version in either theme.
  * docs/features/trip-planner/wizard.md#the-band.
@@ -43,14 +44,14 @@ export function WizardGuideBand({
         <span
           aria-hidden="true"
           className={cn(
-            'absolute inset-y-0 right-0 aspect-[2/1] mask-l-from-65% mask-l-to-100%',
+            'absolute inset-y-0 right-14 aspect-[2/1] mask-r-from-90% mask-l-from-65% mask-l-to-100% sm:right-12',
             evening && 'dark'
           )}
         >
           <SceneFade Scene={Scene} fallback={null} />
         </span>
       )}
-      <div className="relative flex h-full max-w-[68%] flex-col justify-center gap-1.5 pl-4 sm:max-w-[62%] sm:pl-6">
+      <div className="relative flex h-full max-w-[62%] flex-col justify-center gap-1.5 pl-4 sm:pl-6">
         <p className="text-muted-foreground truncate text-[11px] font-semibold tracking-wide uppercase">
           {kicker}
         </p>

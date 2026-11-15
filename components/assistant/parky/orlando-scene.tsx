@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import type { TripRegionSceneProps } from '@/lib/trip-regions/registry';
 import {
   BUBBLE,
@@ -39,7 +40,7 @@ import { ParkyEyeWhite, ParkyPupil } from './eyes';
  */
 const BURSTS = [
   { x: 46, y: 34, colour: 'oklch(0.72 0.17 355)', scale: 3.4, delay: 0, period: 4.2 },
-  { x: 92, y: 18, colour: gold, scale: 3.8, delay: 0.35, period: 5 },
+  { x: 92, y: 22, colour: gold, scale: 3.8, delay: 0.35, period: 5 },
   { x: 134, y: 44, colour: 'oklch(0.7 0.15 200)', scale: 3, delay: 0.7, period: 4.6 },
   { x: 18, y: 64, colour: green, scale: 2.2, delay: 1.05, period: 5.4 },
 ];
@@ -298,7 +299,7 @@ function Palm({
  * A rocket, nose up at the origin: white body, red nose and fins, a gold flame. The glow under the
  * flame shows only while the scene loops.
  */
-function Rocket() {
+function Rocket({ exhaust }: { exhaust: string }) {
   return (
     <g>
       <ellipse
@@ -306,7 +307,7 @@ function Rocket() {
         cy="9"
         rx="3.6"
         ry="5.4"
-        fill="url(#parky-orlando-exhaust)"
+        fill={`url(#${exhaust})`}
         opacity="0"
       />
       <path className="parky-orlando-flame" d="M-1 4.6Q0 10.5 1 4.6Z" fill={gold} />
@@ -387,12 +388,12 @@ function Suitcase() {
  * the shades are on and the grin open; in the evening the shades sit on his head and his eyes go
  * up to the fireworks, where `LOOK_GAZE.fireworks` points the live Parky's.
  */
-function Parky({ evening }: { evening: boolean }) {
+function Parky({ evening, ground }: { evening: boolean; ground: string }) {
   const gaze = LOOK_GAZE.fireworks ?? { x: 0, y: 0 };
   return (
     <>
       <ParkyWheel />
-      <path d={BUBBLE} fill="url(#parky-orlando-ground)" />
+      <path d={BUBBLE} fill={`url(#${ground})`} />
       {evening ? (
         <>
           {EYES.map((x) => (
@@ -419,10 +420,17 @@ function Parky({ evening }: { evening: boolean }) {
 
 /** The Orlando scene, filling its box from the right edge (`xMaxYMid slice`). */
 export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
+  // Ids per copy: the Plan menu keeps a closed band's scene mounted under `hidden`, and a gradient
+  // another copy finds there first paints nothing.
+  const id = useId();
+  const sky = `${id}sky`;
+  const lake = `${id}lake`;
+  const exhaust = `${id}exhaust`;
+  const ground = `${id}ground`;
   return (
     <HolidaySceneSvg className={className} motion={MOTION} loop={loop}>
       <defs>
-        <linearGradient id="parky-orlando-sky" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={sky} x1="0" y1="0" x2="0" y2="1">
           <stop
             offset="0"
             className="[stop-color:oklch(0.74_0.1_232)] dark:[stop-color:oklch(0.24_0.08_285)]"
@@ -436,7 +444,7 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
             className="[stop-color:oklch(0.94_0.06_80)] dark:[stop-color:oklch(0.7_0.14_50)]"
           />
         </linearGradient>
-        <linearGradient id="parky-orlando-lake" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={lake} x1="0" y1="0" x2="0" y2="1">
           <stop
             offset="0"
             className="[stop-color:oklch(0.74_0.1_220)] dark:[stop-color:oklch(0.36_0.09_310)]"
@@ -446,18 +454,18 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
             className="[stop-color:oklch(0.62_0.11_232)] dark:[stop-color:oklch(0.2_0.05_275)]"
           />
         </linearGradient>
-        <radialGradient id="parky-orlando-exhaust">
+        <radialGradient id={exhaust}>
           <stop offset="0" stopColor="oklch(0.98 0.08 95)" stopOpacity=".95" />
           <stop offset=".45" stopColor="oklch(0.88 0.15 75)" stopOpacity=".5" />
           <stop offset="1" stopColor="oklch(0.88 0.15 75)" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="parky-orlando-ground" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={ground} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor={blue} />
           <stop offset="1" stopColor={green} />
         </linearGradient>
       </defs>
 
-      <rect width="320" height="160" fill="url(#parky-orlando-sky)" />
+      <rect width="320" height="160" fill={`url(#${sky})`} />
 
       {/* Day: the sun and a cloud. Evening: the sun going down behind the far shore, the moon and
           three stars. */}
@@ -518,7 +526,7 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
           <g
             transform={`translate(${ROCKET_AT.x} ${ROCKET_AT.y}) rotate(${ROCKET_AT.lean}) scale(1.25)`}
           >
-            <Rocket />
+            <Rocket exhaust={exhaust} />
           </g>
         </g>
       </g>
@@ -567,7 +575,7 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
       <Palm foot={[150, 94]} crown={[148, 79]} scale={0.45} depth="far" />
 
       {/* The lake, the sun's or the fireworks' light on it. */}
-      <rect y="95.5" width="320" height="40" fill="url(#parky-orlando-lake)" />
+      <rect y="95.5" width="320" height="40" fill={`url(#${lake})`} />
       <path
         d="M140 102h10M146 106h16M152 110h7M40 108h12M88 104h9M210 104h12M100 114h10"
         stroke="white"
@@ -613,10 +621,10 @@ export function ParkyOrlandoScene({ className, loop }: TripRegionSceneProps) {
       </g>
 
       <g className="dark:hidden" transform="translate(206 38) scale(2)">
-        <Parky evening={false} />
+        <Parky evening={false} ground={ground} />
       </g>
       <g className="hidden dark:inline" transform="translate(206 38) scale(2)">
-        <Parky evening />
+        <Parky evening ground={ground} />
       </g>
     </HolidaySceneSvg>
   );
