@@ -21,6 +21,7 @@ import { useCan } from '../../_app/session';
 import { RideProfileEditor } from '../_components/ride-profile-editor';
 import { AttractionStatus } from '../_components/attraction-status';
 import { SeasonBindings } from '../_components/season-bindings';
+import { ParkSeasonsProvider } from '../../_ui/park-seasons-context';
 import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 
@@ -153,33 +154,35 @@ export default function AttractionDetailPage({ params }: { params: Promise<{ id:
       </div>
 
       {tab === 'fields' && (
-        <CuratedFieldsPanel
-          fields={data.fields}
-          endpoint={`/api/admin/content/attractions/${data.id}`}
-          draftScope={`attraction:${data.id}`}
-          invalidateKeys={[
-            adminKeys.attraction(data.id),
-            data.park ? adminKeys.park(data.park.id) : ['admin'],
-            ['admin', 'history'],
-          ]}
-          undoInvalidateKeys={[adminKeys.attraction(data.id), ['admin', 'history']]}
-          emptyHint="Nichts korrigiert. Alles kommt so vom Sync."
-          canEdit={canEdit}
-          groupExtras={
-            data.park
-              ? {
-                  Saison: (
-                    <SeasonBindings
-                      attractionId={data.id}
-                      park={data.park}
-                      fields={data.fields}
-                      canEdit={canEdit}
-                    />
-                  ),
-                }
-              : undefined
-          }
-        />
+        <ParkSeasonsProvider parkId={data.park?.id}>
+          <CuratedFieldsPanel
+            fields={data.fields}
+            endpoint={`/api/admin/content/attractions/${data.id}`}
+            draftScope={`attraction:${data.id}`}
+            invalidateKeys={[
+              adminKeys.attraction(data.id),
+              data.park ? adminKeys.park(data.park.id) : ['admin'],
+              ['admin', 'history'],
+            ]}
+            undoInvalidateKeys={[adminKeys.attraction(data.id), ['admin', 'history']]}
+            emptyHint="Nichts korrigiert. Alles kommt so vom Sync."
+            canEdit={canEdit}
+            groupExtras={
+              data.park
+                ? {
+                    Saison: (
+                      <SeasonBindings
+                        attractionId={data.id}
+                        park={data.park}
+                        fields={data.fields}
+                        canEdit={canEdit}
+                      />
+                    ),
+                  }
+                : undefined
+            }
+          />
+        </ParkSeasonsProvider>
       )}
       {tab === 'profile' && (
         <RideProfileEditor

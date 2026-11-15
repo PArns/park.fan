@@ -94,6 +94,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `performanceRows` _function_: The value of a `performances` field as rows; anything else reads as no schedules.
 - `performanceSchedulesForSave` _function_: The rows as a save sends them: in the stored order, each with its times cleaned.
 - `performanceSchedulesError` _function_: The API's checks on a schedule list, run before the save so the editor sees the problem at the row. Returns the first problem as a German sentence, or null when the list may be saved.
+- `seasonOfRow` _function_: The season whose first and last day a row's span is, or null: what the row's season picker shows.
 - Types: `PerformanceScheduleRow`
 
 ### [`_lib/public-path.ts`](../../app/admin/_lib/public-path.ts)
@@ -309,6 +310,11 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/open-in-editor.tsx`](../../app/admin/_ui/open-in-editor.tsx)
 
 - `OpenInEditor` _component_: Resolves a park slug (and optional ride and city slug) to admin ids and renders chip links to the park and ride editors. Renders nothing while resolving, when the slug is unknown or ambiguous.
+
+### [`_ui/park-seasons-context.tsx`](../../app/admin/_ui/park-seasons-context.tsx)
+
+- `ParkSeasonsProvider` _component_: The running and coming seasons of the park a curated form belongs to, for a field that is edited per season (the performance schedules). The query is the one `SeasonBindings` reads, by the same key, so the ride page asks the API once.
+- `useParkSeasons` _hook_: The seasons `ParkSeasonsProvider` loaded, or none outside one (a park's own form).
 
 ### [`_ui/primitives.tsx`](../../app/admin/_ui/primitives.tsx)
 

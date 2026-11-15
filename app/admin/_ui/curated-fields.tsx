@@ -28,8 +28,11 @@ import {
   performanceRows,
   performanceSchedulesError,
   performanceSchedulesForSave,
+  seasonOfRow,
   type PerformanceScheduleRow,
 } from '../_lib/performance-schedules';
+import { seasonTitle } from '../_lib/seasons';
+import { useParkSeasons } from './park-seasons-context';
 
 /** ⌘S on a Mac, Strg+S everywhere else. Read once, in the browser. */
 function saveShortcutLabel(): string {
@@ -466,9 +469,10 @@ function PeriodsEditor({
 }
 
 /**
- * The rows of a `performances` field: „ab" and „bis" per schedule, and its start times in one
- * input, comma-separated. The input is split at its commas as typed, so a trailing comma survives
- * the next render; the save trims and sorts.
+ * The rows of a `performances` field: a season of the park, or „ab" and „bis", per schedule, and
+ * its start times in one input, comma-separated. Picking a season writes its first and last day
+ * into the row, and a row whose days are a season's shows that season. The input is split at its
+ * commas as typed, so a trailing comma survives the next render; the save trims and sorts.
  */
 function PerformancesEditor({
   id,
@@ -485,6 +489,12 @@ function PerformancesEditor({
   onChange: (value: unknown) => void;
   disabled: boolean;
 }) {
+  const seasons = useParkSeasons();
+  const seasonOptions = seasons.map((season) => ({
+    value: season.id,
+    // The days stand in the two fields beside it, so the year tells two Wintertraums apart.
+    label: `${seasonTitle(season)} ${season.startDate.slice(0, 4)}`,
+  }));
   const update = (index: number, patch: Partial<PerformanceScheduleRow>) =>
     onChange(value.map((row, i) => (i === index ? { ...row, ...patch } : row)));
   const remove = (index: number) => {
@@ -501,6 +511,25 @@ function PerformancesEditor({
         const name = `${label} ${index + 1}`;
         return (
           <div key={index} className="flex flex-wrap items-center gap-2">
+            {seasonOptions.length > 0 && (
+              <Select
+                disabled={disabled}
+                value={seasonOfRow(row, seasons)}
+                onValueChange={(seasonId) => {
+                  const season = seasons.find((entry) => entry.id === seasonId);
+                  update(
+                    index,
+                    season
+                      ? { from: season.startDate, to: season.endDate }
+                      : { from: null, to: null }
+                  );
+                }}
+                options={seasonOptions}
+                placeholder="Saison wählen …"
+                emptyLabel="— eigene Daten —"
+                className="w-64"
+              />
+            )}
             <label className="text-muted-foreground flex items-center gap-1.5 text-xs">
               ab
               <TextInput
@@ -525,12 +554,11 @@ function PerformancesEditor({
             </label>
             <label className="text-muted-foreground flex min-w-60 flex-1 items-center gap-1.5 text-xs">
               um
-              <TextInput
+              <TimesInput
                 disabled={disabled}
-                aria-label={`${name}: Startzeiten`}
-                placeholder="13:00, 14:00, 15:00"
-                value={row.times.join(',')}
-                onChange={(event) => update(index, { times: event.target.value.split(',') })}
+                label={`${name}: Startzeiten`}
+                times={row.times}
+                onTimes={(times) => update(index, { times })}
               />
             </label>
             <button
@@ -557,6 +585,46 @@ function PerformancesEditor({
         Zeitraum hinzufügen
       </Button>
     </div>
+  );
+}
+
+/** A list of start times without its blanks and spaces, for comparing two of them. */
+function cleanedKey(times: readonly string[]): string {
+  return times
+    .map((time) => time.trim())
+    .filter(Boolean)
+    .join(',');
+}
+
+/**
+ * A schedule's start times as one comma-separated input. The text is the input's own, so „13:00, "
+ * keeps its comma and space while the row holds the times split from it; a list set from outside
+ * (an undo, a reset, the saved answer) replaces the text when it says something else.
+ */
+function TimesInput({
+  times,
+  onTimes,
+  label,
+  disabled,
+}: {
+  times: readonly string[];
+  onTimes: (times: string[]) => void;
+  label: string;
+  disabled: boolean;
+}) {
+  const [text, setText] = useState(() => times.join(', '));
+  if (cleanedKey(text.split(',')) !== cleanedKey(times)) setText(times.join(', '));
+  return (
+    <TextInput
+      disabled={disabled}
+      aria-label={label}
+      placeholder="13:00, 14:00, 15:00"
+      value={text}
+      onChange={(event) => {
+        setText(event.target.value);
+        onTimes(event.target.value.split(','));
+      }}
+    />
   );
 }
 

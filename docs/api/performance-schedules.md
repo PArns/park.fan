@@ -49,7 +49,8 @@ there reads as its live status says. The planner and Parky do not read the field
 
 ## Curation
 
-Admin, group „Vorstellungen": rows of „ab", „bis" and the start times in one comma-separated input
+Admin, group „Vorstellungen": rows of a season of the park or „ab" and „bis", and the start times
+in one comma-separated input
 ([admin](../features/admin.md)). Or the MCP `curate_attraction` tool with
 `curatedPerformanceSchedules: [{ from, to, times }]`.
 

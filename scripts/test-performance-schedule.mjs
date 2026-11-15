@@ -16,6 +16,7 @@ import {
 import {
   performanceSchedulesError,
   performanceSchedulesForSave,
+  seasonOfRow,
 } from '../app/admin/_lib/performance-schedules.ts';
 
 let passed = 0;
@@ -123,6 +124,16 @@ test('a save sends the schedules in the stored order with clean times', () => {
     performanceSchedulesForSave([{ ...winter, times: ['14:00', ' 13:00', '', '14:00'] }, summer]),
     [summer, { ...winter, times: ['13:00', '14:00'] }]
   );
+});
+
+test("a row whose days are a season's shows that season in its picker", () => {
+  const seasons = [
+    { id: 'halloween', startDate: '2026-09-25', endDate: '2026-11-01' },
+    { id: 'wintertraum', startDate: '2026-11-14', endDate: '2027-01-24' },
+  ];
+  assert.equal(seasonOfRow(winter, seasons), 'wintertraum');
+  assert.equal(seasonOfRow({ from: '2026-11-14', to: '2027-01-25' }, seasons), null);
+  assert.equal(seasonOfRow({ from: null, to: null }, seasons), null);
 });
 
 console.log(`\n${passed} passed`);

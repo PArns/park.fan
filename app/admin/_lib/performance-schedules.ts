@@ -1,4 +1,5 @@
 import { firstOverlap, sortWorksPeriods, type DayWindowRow } from './works-periods';
+import type { ParkSeason } from './types';
 
 /** One schedule as the `performances` field carries it: park-local days, `HH:MM` start times. */
 export interface PerformanceScheduleRow extends DayWindowRow {
@@ -52,4 +53,14 @@ export function performanceSchedulesError(
   return firstOverlap(rows)
     ? 'Zeiträume überschneiden sich. Ein Zeitraum ohne Daten gilt an jedem Tag und steht allein.'
     : null;
+}
+
+/** The season whose first and last day a row's span is, or null: what the row's season picker shows. */
+export function seasonOfRow(
+  row: DayWindowRow,
+  seasons: readonly Pick<ParkSeason, 'id' | 'startDate' | 'endDate'>[]
+): string | null {
+  return (
+    seasons.find((season) => season.startDate === row.from && season.endDate === row.to)?.id ?? null
+  );
 }
