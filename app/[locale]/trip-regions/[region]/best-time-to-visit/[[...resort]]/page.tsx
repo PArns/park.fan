@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, isValidLocale, SITE_URL, type Locale } from '@/i18n/config';
+import { isValidLocale, SITE_URL, type Locale } from '@/i18n/config';
 import { catchNonFatal } from '@/lib/api/client';
 import {
   buildOpenGraphMetadata,
@@ -9,6 +9,7 @@ import {
   oneFullStop,
   MAX_DESCRIPTION_LENGTH,
   MAX_TITLE_LENGTH,
+  buildAlternates,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
@@ -120,13 +121,7 @@ export async function generateMetadata({ params }: BestTimeRouteProps): Promise<
   return {
     title,
     description,
-    alternates: {
-      canonical,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${pathIn(l)}`),
-        'x-default': `${SITE_URL}/en${pathIn('en')}`,
-      },
-    },
+    alternates: buildAlternates(locale, pathIn),
     ...buildOpenGraphMetadata({
       title,
       description,

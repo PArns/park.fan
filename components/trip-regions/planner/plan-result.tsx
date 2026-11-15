@@ -68,13 +68,15 @@ import {
   type TicketProblem,
 } from '@/lib/trip-regions/plan-tickets';
 import { tripPlanView, PLAN_VIEWS, type PlanView } from '@/lib/trip-regions/plan-view';
+import { connectPlannerSwap } from '@/lib/trip-regions/planner-bridge';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { PLAN_FOCUS, PLAN_WIDE_QUERY } from './plan-controls';
 import { PlanAgendaView, type PlanDaySlots } from './plan-agenda-view';
 import { DayActionsSheet, PlanDayActions } from './plan-day-actions';
 import { PlanEditStatus } from './plan-edit-status';
-import { DayHint, IdeasStrip, useShownIdeas } from './plan-ideas';
+import { PlanGlowProvider, usePlanGlow } from './plan-day-glow';
+import { DayHint, IdeasStrip, useIdeaCardBridge, useShownIdeas } from './plan-ideas';
 import { PlanSwapMode } from './plan-swap-mode';
 import { PlanDaySheet } from './plan-day-sheet';
 import { PlanKeep } from './plan-keep';
@@ -252,6 +254,28 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
   const [swapDate, setSwapDate] = useState<string | null>(null);
   const [moreDate, setMoreDate] = useState<string | null>(null);
   const ideas = useShownIdeas();
+  // The ideas Parky offers on his own get their card's words from this planner.
+  useIdeaCardBridge();
+  const glow = usePlanGlow(edits, plan.waiting);
+  // „Anderen Tag“ on the chat's idea card: the swap mode for its park, on the idea's day where the
+  // park is there, else on its first. Focus comes back to the card when the mode closes.
+  useEffect(
+    () =>
+      connectPlannerSwap(region.slug, (park, from) => {
+        const parkDays = (days ?? []).filter(
+          (d) => (d.kind === 'park' || d.kind === 'hop') && d.parks.some((p) => p.slug === park)
+        );
+        const day = parkDays.find((d) => d.date === from) ?? parkDays[0];
+        if (!day) return false;
+        opener.current =
+          document.activeElement instanceof HTMLElement ? document.activeElement : null;
+        setOpenDate(null);
+        setMoreDate(null);
+        setSwapDate(day.date);
+        return true;
+      }),
+    [region.slug, days]
+  );
 
   const fill = useCallback(
     (suggestion: SpareSuggestion, from: 'card' | 'week') => {
@@ -396,26 +420,28 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
 
       <PlanEditStatus plan={data} best={unpinned.data ?? null} calendar={calendar.data} />
 
-      <PlanAnswer
-        plan={data}
-        calendar={calendar.data}
-        onOpenDay={openDay}
-        onFill={fill}
-        added={added}
-        edit={editSteps}
-        answers={answers}
-        ideas={ideas}
-        slots={slots}
-        swap={
-          swapping
-            ? {
-                day: swapping,
-                onPick: (other) => pickSwap(swapping, other),
-                onClose: endSwap,
-              }
-            : null
-        }
-      />
+      <PlanGlowProvider value={glow}>
+        <PlanAnswer
+          plan={data}
+          calendar={calendar.data}
+          onOpenDay={openDay}
+          onFill={fill}
+          added={added}
+          edit={editSteps}
+          answers={answers}
+          ideas={ideas}
+          slots={slots}
+          swap={
+            swapping
+              ? {
+                  day: swapping,
+                  onPick: (other) => pickSwap(swapping, other),
+                  onClose: endSwap,
+                }
+              : null
+          }
+        />
+      </PlanGlowProvider>
 
       <PlanDaySheet
         day={day}

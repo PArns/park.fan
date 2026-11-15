@@ -213,6 +213,9 @@ function SheetPark({
   const t = useTranslations('tripHub.sheet');
   const tRegion = useTranslations('tripRegion.hub.sheet');
   const tCommon = useTranslations('common');
+  // The calendar's and its lanes' words, where the sheet says the same thing about the same day.
+  const tCalendar = useTranslations('tripHub.calendar');
+  const tLanes = useTranslations('tripHub.lanes');
   const { timezone } = requireTripRegion(region.slug);
   const clock = (iso: string) => formatClockTime(iso, locale, timezone);
   const seasonsOf = (ids: string[] | undefined): TripSeason[] =>
@@ -229,14 +232,14 @@ function SheetPark({
     !parkDay || parkDay.status === 'UNKNOWN'
       ? isRankable(parkDay)
         ? t('noHoursFigure')
-        : t('noHours')
+        : tCalendar('stateUnknown')
       : parkDay.status === 'CLOSED'
         ? closure?.name
           ? t('closedFor', { name: closure.name })
           : tCommon('closed')
         : parkDay.opensAt && parkDay.closesAt
           ? formatHoursRange(parkDay.opensAt, parkDay.closesAt, locale, timezone)
-          : t('noHours');
+          : tCalendar('stateUnknown');
 
   return (
     <li className="border-border/60 bg-card/50 rounded-xl border p-3">
@@ -306,7 +309,7 @@ function SheetPark({
               .map((s) => (
                 <li key={s.id} className="text-muted-foreground">
                   {s.name}
-                  {s.status === 'expected' ? ` · ${t('expected')}` : ''}
+                  {s.status === 'expected' ? ` · ${tLanes('expected')}` : ''}
                 </li>
               ))}
             {leg && parkDay?.status !== 'CLOSED' && (

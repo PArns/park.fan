@@ -41,6 +41,7 @@ import { EntityMediaPanel } from '../../_ui/entity-media';
 import { EntityPostsPanel } from '../../_ui/entity-posts';
 import { useCan } from '../../_app/session';
 import { SeasonList } from '../../seasons/_components/season-editor';
+import { SeasonSummary } from '../../seasons/_components/season-summary';
 import { LocationEditor } from '../_components/location-editor';
 import { PhotoCoverage } from '../_components/photo-coverage';
 import { AttractionFeaturesEditor } from '../_components/attraction-features-editor';
@@ -378,6 +379,21 @@ function ParkAttractionsTab({ parkId }: { parkId: string }) {
                       .filter(Boolean)
                       .join(' · ') || '—'}
                   </p>
+                  {/* A bound ride has no months, so without this line the row would say
+                      „saisonal“ and nothing about when. */}
+                  {attraction.boundSeason && (
+                    <SeasonSummary
+                      season={attraction.boundSeason}
+                      className="text-muted-foreground text-xs"
+                    />
+                  )}
+                  {attraction.pausedBySeason && (
+                    <SeasonSummary
+                      season={attraction.pausedBySeason}
+                      prefix="Pausiert während"
+                      className="text-muted-foreground text-xs"
+                    />
+                  )}
                 </div>
 
                 <div className="flex shrink-0 items-center gap-1.5">

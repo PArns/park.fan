@@ -1,6 +1,7 @@
 import type { ParkDailyPrediction, ParkYearlyHoliday } from '@/lib/api/parks';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { CROWD_LEVEL_ORDER, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
+import { monthLength } from '@/lib/utils/park-day';
 
 /**
  * The park's long-range forecast, laid out as twelve calendar months.
@@ -88,11 +89,6 @@ export interface OutlookMonth {
   dominant: ColoredCrowdLevel | null;
 }
 
-/** Days in a 1-based (year, month): `Date.UTC(y, m, 0)` is the last day of month `m`. */
-function daysInMonth(year: number, month: number): number {
-  return new Date(Date.UTC(year, month, 0)).getUTCDate();
-}
-
 /** One prediction as the outlook keeps it. A recommendation counts only beside a coloured tier. */
 function outlookDay(prediction: ParkDailyPrediction): OutlookDay {
   const day: OutlookDay = { level: prediction.crowdLevel };
@@ -172,7 +168,7 @@ export function buildYearlyOutlook(
     const year = startYear + Math.floor(monthIndex / 12);
     const month = (monthIndex % 12) + 1;
     const key = `${year}-${String(month).padStart(2, '0')}`;
-    const length = daysInMonth(year, month);
+    const length = monthLength(year, month);
 
     const days: OutlookMonth['days'] = new Array(length).fill(null);
     for (const prediction of predictionsByMonth.get(key) ?? []) {

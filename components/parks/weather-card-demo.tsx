@@ -11,6 +11,7 @@ import type {
   WeatherNowcast,
   ScheduleItem,
 } from '@/lib/api/types';
+import { parkDayOf } from '@/lib/utils/park-day';
 import { FORECAST_TEMPLATE, VARIANT_CURRENT, type Variant } from './weather-card-demo-data';
 
 function buildWeather(today: Date, variant: Variant): WeatherData {
@@ -200,12 +201,7 @@ function buildNowcastFor(variant: Variant, now: number): WeatherNowcast | null {
 
 /** "Today" in the demo park's timezone — the hourly chart hides itself otherwise. */
 function berlinDateStr(now: number): string {
-  return new Intl.DateTimeFormat('sv-SE', {
-    timeZone: 'Europe/Berlin',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).format(now);
+  return parkDayOf(now, 'Europe/Berlin');
 }
 
 interface HourlyVariantConfig {

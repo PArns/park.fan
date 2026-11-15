@@ -19,19 +19,6 @@ export const localeNames: Record<Locale, string> = {
   it: 'Italiano',
 };
 
-/** Builds the absolute hreflang alternates, one per locale, from a path template. */
-export function generateAlternateLanguages(
-  pathTemplate: (locale: Locale) => string
-): Record<string, string> {
-  const result: Record<string, string> = {};
-
-  for (const locale of locales) {
-    result[locale] = `${SITE_URL}${pathTemplate(locale)}`;
-  }
-
-  return result;
-}
-
 /**
  * Check if a string is a valid locale
  */

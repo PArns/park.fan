@@ -1,7 +1,7 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { translateContinent } from '@/lib/i18n/helpers';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
 import { getContinents } from '@/lib/api/discovery';
 import { getGeoLiveStats } from '@/lib/api/analytics';
@@ -36,13 +36,7 @@ export async function generateMetadata({ params }: ParksPageProps): Promise<Meta
       url: `${SITE_URL}/${locale}/parks`,
       ogImageUrl,
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/parks`,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}/parks`),
-        'x-default': `${SITE_URL}/en/parks`,
-      },
-    },
+    alternates: buildAlternates(locale, () => '/parks'),
   };
 }
 

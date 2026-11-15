@@ -30,15 +30,16 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-calendar.tsx`](../../components/trip-regions/hub/hub-calendar.tsx)
 
-- `HubCalendar` _component_: The calendar chapter's body: which park on which day, at the depth a visitor asks for.
+- `HubCalendar` _component_: The calendar chapter's body: which park on which day, a week at a time.
 - Types: `HubCalendarProps`
 
 ### [`hub/hub-cell-styles.ts`](../../components/trip-regions/hub/hub-cell-styles.ts)
 
-- `HUB_CELL` _const_: The square: a fixed box with the minutes centred, tabular so columns line up.
-- `HUB_CELL_BEST` _const_: The resort's shortest line that day: one ring inside the box, so the grid never shifts.
-- `EARLY_CLOSE_CORNER` _const_: The early-close mark: a small folded corner, top right, where a ticketed evening sends the day guests out early. A shape, not an icon, so the square still holds only its number.
-- `NO_HOURS_DOT` _const_: The mark of a figure that stands without published hours: a small dot, bottom left, so the number still reads and the legend and the day sheet say what it means.
+- `HUB_CELL` _const_: The legend's small tile: a fixed box with the minutes centred, in the tile's own tint.
+- `HUB_CELL_BEST` _const_: The resort's shortest line that day: one ring inside the tile, so the grid never shifts.
+- `EARLY_CLOSE_CORNER` _const_: The early-close mark: a small folded corner, top right, where a ticketed evening sends the day guests out early; the tile's closing time is bold below it. A shape, not an icon, so it never reads as a season's.
+- `HUB_WEEK_CELL` _const_: Which page of the calendar a column (`HUB_WEEK_CELL`) or a day of the phone's list (`HUB_WEEK_ITEM`) is on, shown by the `data-week` of the `group/week` around it.
+- `HUB_WEEK_ITEM` _const_: `HUB_WEEK_CELL` for a day of the phone's list.
 
 ### [`hub/hub-day-sheet.tsx`](../../components/trip-regions/hub/hub-day-sheet.tsx)
 
@@ -72,7 +73,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
-- `HubLegend` _component_: How to read the calendar, at the top of its chapter. In view: the number, the ring and the hatching, and one line that says what the colour means (a day against the park's own normal day, the crowd level and nothing else).
+- `HubLegend` _component_: How to read the calendar, at the top of its chapter. In view: the wait, the ring, the star and one line that says what the colour means (a day against the park's own normal day, the crowd level and nothing else).
 
 ### [`hub/hub-month-index.tsx`](../../components/trip-regions/hub/hub-month-index.tsx)
 
@@ -160,6 +161,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanDayCard` _component_: A park day as a card, the Days view's unit in every region: the park's photo with the date, its crowd level (`CrowdLevelBadge`) and, for a repeat, which visit it is; under it the peak wait, the way from the hotel, two sentences on why this …
 
+### [`planner/plan-day-glow.tsx`](../../components/trip-regions/planner/plan-day-glow.tsx)
+
+- `PlanDayGlow` _component_: A brief ring over a day the last edit moved or an idea changed (`.plan-day-glow`): it rises and fades, or only fades under reduced motion. The parent is `relative` and keeps its rounding; the ring takes no press.
+- `usePlanGlow` _hook_: The glow of the last edit or undo (`editGlowDays`), once the plan it asked for is on screen: while the result waits for the new plan the old days would glow, so nothing does.
+- `PlanGlowProvider` _const_: Provides the result's `usePlanGlow` to the days of every view.
+
 ### [`planner/plan-day-sheet.tsx`](../../components/trip-regions/planner/plan-day-sheet.tsx)
 
 - `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.
@@ -181,6 +188,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `DayHint` _component_: The idea about one day, under its card: Parky's face, the line and the button that applies it.
 - `useShownIdeas` _hook_: Parky's ideas for the plan on screen, as the planner shows them: the API's best single edits (`usePlanIdeas`) less those that would overrule an answer the visitor gave in the assistant (`shownIdeas`).
 - `useIdeaWords` _hook_: An idea in words: its line („DisneySea am Mo., 25. Jan. statt am Fr., 22. Jan.“) and its figure.
+- `useIdeaCard` _hook_: An idea as the chat's card shows it (`AssistantTripIdeaCard`), in the planner's words: its line, its figure and its buttons.
+- `useIdeaCardBridge` _hook_: Lends the chat the planner's words for the ideas Parky offers on his own while this planner is on screen (`tripPlannerBridge.ideaCard`).
 
 ### [`planner/plan-keep.tsx`](../../components/trip-regions/planner/plan-keep.tsx)
 
@@ -253,7 +262,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-tickets-card.tsx`](../../components/trip-regions/planner/plan-tickets-card.tsx)
 
-- `PlanTicketsCard` _component_: The tickets at Level 0, after the saving and before the day lines. Plan first, a compact block: the one sentence that names the tickets to buy and "Ticket details", which open in a sheet on a phone and in place at a desk.
+- `PlanTicketsCard` _component_: The tickets at Level 0, after the saving and before the day lines, and under the assistant's "Not yet".
 - `TicketsAsk` _component_: "Already have tickets? Add them": the way to the assistant's Tickets step, under the plan's tickets (`onAsk`, the result's `edit.tickets`) and on the hub's landing without one, where it starts the assistant there …
 - Types: `PlanEdit`
 
@@ -318,6 +327,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
 
 - `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
+
+### [`wizard/steps/area-map-tiles.tsx`](../../components/trip-regions/wizard/steps/area-map-tiles.tsx)
+
+- `AreaMapTiles` _component_: The hotel areas and parks of a city on CARTO's tiles (`cartoTileUrl`), light or dark with the site's theme, the view fitted once to every place with `FIT_PADDING`: at that zoom the motorways (I-4 through Orlando, the rail lines across …
+- Types: `AreaMapPlace`
 
 ### [`wizard/steps/area-picker.tsx`](../../components/trip-regions/wizard/steps/area-picker.tsx)
 

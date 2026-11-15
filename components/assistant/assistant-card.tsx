@@ -602,6 +602,8 @@ export function AssistantCardView({ card }: { card: AssistantCard }) {
   if (card.kind === 'restaurants') return <RestaurantsCard card={card} />;
   if (card.kind === 'posts') return <PostsCard card={card} />;
   if (card.kind === 'glossary') return <GlossaryCard card={card} />;
+  // An idea is drawn under the answer as its trip idea (`AssistantTripIdeaCard`), never here.
+  if (card.kind === 'idea') return null;
   return <LiveCard card={card} />;
 }
 

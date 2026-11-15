@@ -1,12 +1,13 @@
 import { Suspense } from 'react';
 import { parkDayOf } from '@/lib/utils/park-day';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import {
   buildOpenGraphMetadata,
   fitWithin,
   MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
+  buildAlternates,
 } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -45,6 +46,7 @@ import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
 import { ParkKidsLink } from '@/components/parks/park-kids-link';
 import { initialRiderHeightFromParam, kidsPageData } from '@/lib/parks/kids-page';
@@ -225,15 +227,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
       ogImageUrl,
       imageAlt: tImageAlt('park', { park: parkName }),
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}`,
-      languages: {
-        ...generateAlternateLanguages(
-          (l) => `/${l}/parks/${continent}/${country}/${city}/${parkSlug}`
-        ),
-        'x-default': `${SITE_URL}/en/parks/${continent}/${country}/${city}/${parkSlug}`,
-      },
-    },
+    alternates: buildAlternates(locale, () => `/parks/${continent}/${country}/${city}/${parkSlug}`),
   };
 }
 
@@ -660,6 +654,7 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
               parkSlug={parkSlug}
               parkPath={`/parks/${continent}/${country}/${city}/${parkSlug}`}
               renderedAtMs={seedNowMs}
+              seasons={eventSeasonsNearToday(seasons, todayIso)}
             />
           }
           // Server-rendered, and handed down only so the „Mit Kindern“ block's slider can be the

@@ -1,6 +1,6 @@
 {
   "name": "park.fan",
-  "version": "2.22.0",
+  "version": "2.22.1",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
@@ -183,6 +183,7 @@
     "test:news-park": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-park.mjs",
     "test:park-guide": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-park-guide.mjs",
     "test:meta-descriptions": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-meta-descriptions.mjs",
+    "test:page-alternates": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-page-alternates.mjs",
     "test:closed-ride": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-closed-ride.mjs",
     "test:glossary-ride-href": "node --experimental-strip-types scripts/test-glossary-ride-href.mjs",
     "test:ridden-rides": "node --experimental-strip-types scripts/test-ridden-rides.mjs",

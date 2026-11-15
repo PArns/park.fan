@@ -40,3 +40,16 @@ Wintertraum · 20. Nov. – 18. Jan. 2027", with the status beside the name when
 `formatSeasonRange` (`lib/parks/park-season-days.ts`), the one the park's season card prints. The
 ride card and the ride page pass it; Parky's card and the show card have no bound season. The admin
 season editor says under „Betrifft" what naming a ride means for the season's kind.
+
+## A ride a park season pauses
+
+The same kinds can list a ride in `pausedAttractionIds` instead: the ride runs all year and closes
+for the season (Phantasialand's River Quest during Wintertraum). On the season's days the API sends
+`isCurrentlyInSeason: false`, and the ride carries `pausedBySeason` in the same shape as
+`boundSeason`: the pausing season running today, else the next, else the last; absent where none
+pauses it or the ride's curated months or curated „no“ outrank it.
+
+Because it can name the next or the last season, the payload alone does not say the ride is paused.
+`SeasonalBadge` takes `pausedBySeason` with the park's `todayIso` and says „Pausiert während
+Wintertraum · 14. Nov. – 24. Jan." only on the season's days (`seasonRunsOn`); on every other day it
+draws nothing, and its callers render it for `pausedBySeason` as well as for `isSeasonal`.

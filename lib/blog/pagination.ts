@@ -1,5 +1,3 @@
-import { locales, SITE_URL, type Locale } from '@/i18n/config';
-
 /**
  * Pagination for the blog and news listings. Page 1 is the listing's own URL, every later page
  * `<listing>/page/<n>`: a path and not `?page=`, because a query parameter would render the
@@ -75,23 +73,6 @@ export function splitPageSegments(segments: string[]): { segments: string[]; pag
 /** `segments` plus the `/page/<n>` tail for page `page`, the inverse of {@link splitPageSegments}. */
 export function pagedSegments(segments: string[], page: number): string[] {
   return page > 1 ? [...segments, PAGE_SEGMENT, String(page)] : segments;
-}
-
-/**
- * The hreflang map of one listing page: every locale for which `pathFor` names a path, absolute,
- * plus `x-default` on the English one. A later page exists only where the locale's listing is long
- * enough, so `pathFor` returns `null` where it is not.
- */
-export function listingAlternates(
-  pathFor: (locale: Locale) => string | null
-): Record<string, string> {
-  const languages: Record<string, string> = {};
-  for (const locale of locales) {
-    const path = pathFor(locale);
-    if (path) languages[locale] = `${SITE_URL}/${locale}${path}`;
-  }
-  if (languages.en) languages['x-default'] = languages.en;
-  return languages;
 }
 
 /**

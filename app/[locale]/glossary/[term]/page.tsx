@@ -2,8 +2,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { getGlossaryTerms, getTermBySlug, findTermByAnySlug } from '@/lib/glossary/translations';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
-import { locales, SITE_URL } from '@/i18n/config';
-import { buildOpenGraphMetadata, fitSentences } from '@/lib/utils/metadata';
+import { SITE_URL } from '@/i18n/config';
+import { alternateLanguages, buildOpenGraphMetadata, fitSentences } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { PageContainer } from '@/components/common/page-container';
 import { GlossaryTermRides } from '@/components/glossary/glossary-term-rides';
@@ -61,14 +61,6 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
     : [];
   const keywords = [term.name, t(`category.${term.category}`), ...relatedNames].join(', ');
 
-  const languages: Record<string, string> = {};
-  for (const l of locales) {
-    const localSlug = term.slugs[l];
-    const localSegment = GLOSSARY_SEGMENTS[l];
-    languages[l] = `${SITE_URL}/${l}/${localSegment}/${localSlug}`;
-  }
-  languages['x-default'] = `${SITE_URL}/en/glossary/${term.slugs.en}`;
-
   return {
     title,
     description,
@@ -82,7 +74,7 @@ export async function generateMetadata({ params }: TermPageProps): Promise<Metad
     }),
     alternates: {
       canonical: url,
-      languages,
+      languages: alternateLanguages((l) => `/${GLOSSARY_SEGMENTS[l]}/${term.slugs[l]}`),
     },
   };
 }

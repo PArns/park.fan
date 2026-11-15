@@ -24,6 +24,7 @@ import {
   type TrafficRange,
 } from './traffic-range';
 import { plotValue, type MetricUnit } from './traffic-series';
+import { monthLength } from '@/lib/utils/park-day';
 
 /**
  * The pure half of the Search Console section on `/admin/traffic/seo`: the four figures Google
@@ -305,7 +306,7 @@ export function defaultSearchConsoleInterval(days: number): SearchConsoleInterva
 /** The last day of the month that starts at `start`. */
 function monthEnd(start: string): string {
   const [year, month] = start.split('-').map(Number);
-  return `${start.slice(0, 8)}${String(new Date(Date.UTC(year, month, 0)).getUTCDate()).padStart(2, '0')}`;
+  return `${start.slice(0, 8)}${String(monthLength(year, month)).padStart(2, '0')}`;
 }
 
 /**

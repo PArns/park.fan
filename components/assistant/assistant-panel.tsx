@@ -521,7 +521,12 @@ export function AssistantPanel({
                     {message.cards?.map((card, index) => (
                       <AssistantCardView key={`${card.kind}-${index}`} card={card} />
                     ))}
-                    {message.tripIdea && <AssistantTripIdeaCard card={message.tripIdea} />}
+                    {message.tripIdea && (
+                      <AssistantTripIdeaCard
+                        card={message.tripIdea}
+                        onStepAside={phone && !interview ? onClose : undefined}
+                      />
+                    )}
                     {message.chips && message.chips.length > 0 && (
                       <div className="mt-1.5 flex flex-wrap gap-1.5 pl-1">
                         {message.chips.map((chip, index) => {

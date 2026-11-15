@@ -2,11 +2,12 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
+import { buildOpenGraphMetadata, alternateLanguages } from '@/lib/utils/metadata';
 import { listArticles, hasPublishedPosts } from '@/lib/blog/listing';
 import { getAuthor, resolveAuthor } from '@/lib/blog/authors';
 import type { BlogListItem } from '@/lib/blog/types';
-import { hasPage, listingAlternates, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
+import { hasPage, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 import { BlogAuthorProfile } from '@/components/blog/blog-author-profile';
 import { BlogPostStream } from '@/components/blog/blog-post-stream';
 import { ListingPagination } from '@/components/blog/listing-pagination';
@@ -50,20 +51,20 @@ export async function buildAuthorMetadata(
   return {
     title: { absolute: fullTitle },
     description,
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description,
-      locale: localeToOpenGraphLocale[locale as Locale],
       url: `${SITE_URL}/${locale}${path}`,
-      siteName: 'park.fan',
+      ogImageUrl,
+      imageAlt: entry.name,
       type: 'profile',
-      images: [{ url: ogImageUrl, width: 1200, height: 630, alt: entry.name }],
-    },
-    twitter: { card: 'summary_large_image', title: fullTitle, description, images: [ogImageUrl] },
+      alternateLocale: false,
+    }),
     alternates: {
       canonical: `${SITE_URL}/${locale}${path}`,
       // The first page exists in every locale, the author's profile with or without posts.
-      languages: listingAlternates((l) =>
+      languages: alternateLanguages((l) =>
         page === 1 || hasPage(listAuthorArticles(l, author).length, page) ? path : null
       ),
       types: blogFeedAlternates(locale as Locale),

@@ -1,5 +1,4 @@
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { addDays } from '@/lib/utils/park-day';
+import { addDays, parkWallClock } from '@/lib/utils/park-day';
 
 /**
  * The trip as an iCalendar file (RFC 5545), built in the browser: one event per park day, timed in
@@ -128,18 +127,8 @@ export function icsFold(line: string): string {
 
 /** `YYYYMMDDTHHMMSS` of an instant on the wall clock of `timeZone`. */
 export function icsLocalDateTime(iso: string, timeZone: string): string {
-  const parts = getDateTimeFormat('en-CA', {
-    timeZone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-    hourCycle: 'h23',
-  }).formatToParts(new Date(iso));
-  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '00';
-  return `${get('year')}${get('month')}${get('day')}T${get('hour')}${get('minute')}${get('second')}`;
+  const { date, time, second } = parkWallClock(iso, timeZone);
+  return `${compactDate(date)}T${time.replace(':', '')}${String(second).padStart(2, '0')}`;
 }
 
 /** `YYYYMMDDTHHMMSSZ` of an instant, for `DTSTAMP`. */

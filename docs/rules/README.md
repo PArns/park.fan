@@ -28,7 +28,7 @@ _Open when you work on page payload, caching, `revalidate`, streaming, CLS, INP,
 - [A server render arms no timer](a-server-render-arms-no-timer.md) — `createQueryClient()` (`lib/query-client.ts`), `withSeedTimeout` (`lib/api/seed-timeout.ts`)
 - [A render redoes no work it did last time](a-render-redoes-no-work.md) — formatters from `lib/utils/intl-format.ts`, no `?? []` into `memo`, stores ignore no-ops
 - [A subscription lives in the leaf that shows it](a-subscription-lives-in-the-leaf-that-shows-it.md) — read a context or query where it is drawn (`HeaderNearbyPark`, `RideAlertBellDialog`)
-- [Work nobody can see is still work](work-nobody-can-see-is-still-work.md) — gate effects on visibility (`useMediaQuery`, observers); no endless animation under `backdrop-filter`
+- [Work nobody can see is still work](work-nobody-can-see-is-still-work.md) — gate effects on visibility (`useMediaQuery`, observers); no endless animation under `backdrop-filter` but the planner band's scenes
 - [No `:has()` in a stylesheet a page loads](no-has-selector-in-the-stylesheet.md) — use `peer-*`, data attributes or call-site classes; `pnpm check:no-has`
 - [A popup changes nothing the page inherits](a-popup-changes-nothing-the-page-inherits.md) — keep `PAGE_ROOT_STYLE` in `app/[locale]/layout.tsx`; `pnpm measure:inp`
 - [Translations are routed, not bundled](translations-are-routed-not-bundled.md) — `<RouteMessages route="…">`; `pnpm generate:route-namespaces`, `pnpm check:client-messages`

@@ -13,6 +13,7 @@ import { parkCode, spareSuggestions, type SpareSuggestion } from '@/lib/trip-reg
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
+import { PlanDayGlow } from './plan-day-glow';
 import { useBaseName } from './plan-place-words';
 import { useMoveWords } from './plan-stay-band';
 
@@ -64,7 +65,7 @@ export function PlanSpareRun({
         'flex flex-col gap-3',
         compact
           ? 'h-full overflow-y-auto p-2'
-          : 'border-border/60 bg-muted/20 rounded-2xl border p-4'
+          : 'border-border/60 bg-muted/20 relative rounded-2xl border p-4'
       )}
     >
       <h4 id={id} className={cn('font-semibold', compact ? 'text-sm' : 'text-base')}>
@@ -117,6 +118,7 @@ export function PlanSpareRun({
         onFill={onFill}
         compact={compact}
       />
+      {!compact && <PlanDayGlow date={days.map((d) => d.date)} />}
     </section>
   );
 }

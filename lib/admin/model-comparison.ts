@@ -10,6 +10,7 @@ import type {
   ModelComparisonReport,
 } from '@/lib/api/admin-model-comparison';
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 /**
  * The pure half of the admin model comparison (`app/admin/ml/vergleich`): wording, column order,
@@ -406,12 +407,7 @@ const REPORT_ZONE = 'Europe/Berlin';
 
 /** The report's day (`YYYY-MM-DD`, Berlin): what "overdue" and "in N Tagen" count from. */
 export function reportDay(generatedAt: string): string {
-  return getDateTimeFormat('en-CA', {
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    timeZone: REPORT_ZONE,
-  }).format(new Date(generatedAt));
+  return parkDayOf(new Date(generatedAt), REPORT_ZONE);
 }
 
 /** The report's time of day in Berlin, `10:04`. */

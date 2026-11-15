@@ -8,7 +8,8 @@ import {
   MINUTE_MS,
   type LiveMinutePoint,
 } from '@/lib/admin/live-traffic';
-import { CATEGORICAL, niceScale, useWidth } from '../../../_ui/charts';
+import { useWidth } from '@/lib/hooks/use-width';
+import { CATEGORICAL, niceScale } from '../../../_ui/charts';
 
 const TWEEN_MS = 750;
 /** A window that moved further than this (a tab woken after a while) jumps instead of racing past. */

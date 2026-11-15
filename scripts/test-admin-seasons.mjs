@@ -7,13 +7,17 @@
  */
 import assert from 'node:assert/strict';
 import {
+  bindableSeasons,
   parseSeasonDates,
+  ridesInBothLists,
   seasonBody,
   seasonDraft,
   seasonFilterQuery,
   seasonFiltersFrom,
   seasonPatch,
   seasonProblems,
+  seasonRideMode,
+  seasonRidePatch,
   weekdayDates,
 } from '../app/admin/_lib/seasons.ts';
 
@@ -112,6 +116,83 @@ test('the filters survive the address, the current year left out of it', () => {
   assert.equal(filters.year, '2026');
   assert.equal(seasonFilterQuery(filters, 2026), 'kind=halloween&current=true');
   assert.equal(seasonFiltersFrom(new URLSearchParams('year=all'), 2026).year, null);
+});
+
+const RIDE = '7F0C2D8E-0000-4000-8000-000000000001';
+const OTHER = '7f0c2d8e-0000-4000-8000-000000000002';
+
+test('a ride is in one list of a season or in none, its id compared in lower case', () => {
+  assert.equal(seasonRideMode({ attractionIds: [RIDE.toLowerCase()] }, RIDE), 'only');
+  assert.equal(
+    seasonRideMode({ attractionIds: null, pausedAttractionIds: [RIDE] }, RIDE),
+    'paused'
+  );
+  assert.equal(seasonRideMode({ attractionIds: [OTHER] }, RIDE), 'none');
+});
+
+test('choosing how a season holds a ride writes that list and takes it out of the other', () => {
+  const season = { attractionIds: [OTHER, RIDE.toLowerCase()], pausedAttractionIds: null };
+  assert.deepEqual(seasonRidePatch(season, RIDE, 'paused'), {
+    attractionIds: [OTHER],
+    pausedAttractionIds: [RIDE],
+  });
+  assert.deepEqual(seasonRidePatch(season, RIDE, 'none'), { attractionIds: [OTHER] });
+  assert.deepEqual(seasonRidePatch({ attractionIds: [RIDE] }, RIDE, 'none'), {
+    attractionIds: null,
+  });
+  // Already there: nothing to send, so a list the API does not know yet stays out of the body.
+  assert.deepEqual(seasonRidePatch(season, RIDE, 'only'), {});
+});
+
+test('the paused list goes out only with rides in it, and an emptied one is cleared', () => {
+  assert.equal('pausedAttractionIds' in seasonBody(seasonDraft(null, '2026-11-14')), false);
+  const paused = { ...stored, pausedAttractionIds: [OTHER] };
+  assert.deepEqual(
+    seasonPatch(paused, { ...seasonDraft(paused, '2026-11-14'), pausedAttractionIds: [] }),
+    {
+      pausedAttractionIds: null,
+    }
+  );
+  assert.deepEqual(
+    seasonPatch(stored, { ...seasonDraft(stored, '2026-11-14'), pausedAttractionIds: [RIDE] }),
+    {
+      pausedAttractionIds: [RIDE],
+    }
+  );
+});
+
+test('a ride in both lists of one season is named in the form before the API refuses it', () => {
+  const draft = {
+    ...seasonDraft(stored, '2026-11-14'),
+    attractionIds: [RIDE.toLowerCase()],
+    pausedAttractionIds: [RIDE, OTHER],
+  };
+  assert.deepEqual(ridesInBothLists(draft), [RIDE]);
+  assert.match(seasonProblems(draft).pausedAttractionIds ?? '', /Betrifft/);
+});
+
+test('a ride page offers the running and coming seasons that bind, the first to start first', () => {
+  const season = (id, kind, status, startDate, endDate) => ({
+    id,
+    kind,
+    status,
+    startDate,
+    endDate,
+  });
+  const shown = bindableSeasons(
+    [
+      season('later', 'winter', 'confirmed', '2026-11-20', '2027-01-18'),
+      season('running', 'halloween', 'announced', '2026-10-01', '2026-11-14'),
+      season('over', 'halloween', 'confirmed', '2026-10-01', '2026-11-13'),
+      season('cancelled', 'christmas', 'cancelled', '2026-12-01', '2026-12-24'),
+      season('park', 'opening', 'confirmed', '2026-04-01', '2026-11-30'),
+    ],
+    '2026-11-14'
+  );
+  assert.deepEqual(
+    shown.map((s) => s.id),
+    ['running', 'later']
+  );
 });
 
 console.log(`\n${passed} cases passed.`);

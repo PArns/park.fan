@@ -1,21 +1,31 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { Check, Lightbulb, Undo2 } from 'lucide-react';
+import { ArrowLeftRight, Check, Lightbulb, Undo2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { AssistantTripIdea } from '@/lib/assistant/trip-idea';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
 
 /**
- * The trip plan idea the visitor asked Parky about, under his answer: the idea in one line, what
- * it does in minutes, and its button, which applies it to the planner on screen through the
- * planner's bridge, as the strip over the plan does. Applied, it reads „Im Plan: …“ with Undo,
- * which takes back the planner's last edit. Without the planner on screen the button stays off.
+ * A trip plan idea under Parky's answer, the one the visitor asked about or one he offered on his
+ * own: the idea in one line, what it does in minutes, and its button, which applies it to the
+ * planner on screen through the planner's bridge, as the strip over the plan does. Applied, it
+ * reads „Im Plan: …“ with Undo, which takes back the planner's last edit. „Anderen Tag“ opens the
+ * planner's swap mode for the idea's park instead; on a phone the chat steps aside for it
+ * (`onStepAside`). Without the planner on screen the buttons stay off.
  */
-export function AssistantTripIdeaCard({ card }: { card: AssistantTripIdea }) {
+export function AssistantTripIdeaCard({
+  card,
+  onStepAside,
+}: {
+  card: AssistantTripIdea;
+  /** Makes room for the planner: the panel's close on a phone, outside an interview. */
+  onStepAside?: () => void;
+}) {
   const [applied, setApplied] = useState(false);
   const planner = usePlannerOn(card.region);
+  const park = card.idea.park;
   useEffect(() => {
     trackTripEvent(card.region, 'trip_idea_shown', { kind: card.idea.kind, place: 'chat' });
   }, [card.region, card.idea.kind]);
@@ -48,21 +58,35 @@ export function AssistantTripIdeaCard({ card }: { card: AssistantTripIdea }) {
           </Button>
         </div>
       ) : (
-        <Button
-          size="sm"
-          className="self-start"
-          disabled={!planner}
-          onClick={() => {
-            if (!tripPlannerBridge.applyIdea(card.region, card.idea, 'parky')) return;
-            trackTripEvent(card.region, 'trip_idea_applied', {
-              kind: card.idea.kind,
-              place: 'chat',
-            });
-            setApplied(true);
-          }}
-        >
-          {card.apply}
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            size="sm"
+            disabled={!planner}
+            onClick={() => {
+              if (!tripPlannerBridge.applyIdea(card.region, card.idea, 'parky')) return;
+              trackTripEvent(card.region, 'trip_idea_applied', {
+                kind: card.idea.kind,
+                place: 'chat',
+              });
+              setApplied(true);
+            }}
+          >
+            {card.apply}
+          </Button>
+          {card.otherDay && park && (
+            <Button
+              size="sm"
+              variant="outline"
+              disabled={!planner}
+              onClick={() => {
+                if (tripPlannerBridge.openSwap(card.region, park, card.idea.from)) onStepAside?.();
+              }}
+            >
+              <ArrowLeftRight aria-hidden="true" />
+              {card.otherDay}
+            </Button>
+          )}
+        </div>
       )}
     </div>
   );

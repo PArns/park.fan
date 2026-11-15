@@ -4,7 +4,7 @@ import type { TripBase, TripCalendarDay, TripHotel, TripLeg, TripRegion } from '
 
 /**
  * The pure halves of the assistant's option steps (Hotel, Route, Hotels, Tempo, Abende): what the
- * Hotel step says of getting in early, the day patterns of the Tempo cards, the ways from a hotel area to the trip's parks, the schematic map of
+ * Hotel step says of getting in early, the day patterns of the Tempo cards, the ways from a hotel area to the trip's parks, the box and the markers of the map of
  * a city's hotel areas, and the fact a travel day's card names. `scripts/test-wizard-choices.mjs`
  * pins them. docs/features/trip-planner/wizard.md#the-trip-planners-option-steps.
  */
@@ -157,99 +157,236 @@ export function homeBases(bases: readonly TripBase[], parks: readonly string[]):
   return bases.filter((b) => homes.has(b.key)).map((b) => b.key);
 }
 
-/** A place on a schematic map: a hotel area or a park, by the API's coordinates. */
+/** A place on the area map, by the API's coordinates: a hotel area or a park. */
 export interface MapPlace {
   key: string;
   latitude: number;
   longitude: number;
 }
 
-/** A place where the map draws it, in the box's own units, north up. */
+/**
+ * A marker on the area map, in pixels from the map's top left corner as the map projected it,
+ * with half its size (the room nobody else may take) and, for a place that carries one, the size
+ * of its label.
+ */
+export interface MapMarker {
+  key: string;
+  x: number;
+  y: number;
+  radius: number;
+  label?: { width: number; height: number };
+}
+
+/** A marker where the map draws it once nudged clear of its neighbours. */
 export interface MapPoint {
   key: string;
   x: number;
   y: number;
+  radius: number;
 }
-
-/** The box a schematic map is drawn in, the room kept at its edge, and the least gap between two places. */
-export interface MapBox {
-  width: number;
-  height: number;
-  pad: number;
-  gap: number;
-}
-
-/** Rounds of nudging before the map gives up on a gap; a city has at most a dozen places. */
-const SPREAD_ROUNDS = 60;
 
 /**
- * Places on a schematic map, no tiles: the coordinates projected flat (longitude by the cosine of
- * the middle latitude, north up), fitted into the box with `pad` at the edges and centred, then
- * nudged apart until no two are nearer than `gap`, so a cluster (Maihama and the DisneySea hotels a
- * kilometre apart beside Shinjuku twenty away) stays readable. Once nudged it is not to scale,
- * which is what schematic means here. The same places always land in the same spots.
+ * A label where the map draws it: the centre of its box, and whether it stands away from its marker
+ * and needs a line back to it.
  */
-export function schematicMap(places: readonly MapPlace[], box: MapBox): MapPoint[] {
-  if (places.length === 0) return [];
-  const lats = places.map((p) => p.latitude);
-  const midLat = ((Math.min(...lats) + Math.max(...lats)) / 2) * (Math.PI / 180);
-  const flat = places.map((p) => ({
-    key: p.key,
-    x: p.longitude * Math.cos(midLat),
-    y: -p.latitude,
-  }));
-  const xs = flat.map((p) => p.x);
-  const ys = flat.map((p) => p.y);
-  const [minX, minY] = [Math.min(...xs), Math.min(...ys)];
-  const spanX = Math.max(...xs) - minX;
-  const spanY = Math.max(...ys) - minY;
-  const innerW = box.width - 2 * box.pad;
-  const innerH = box.height - 2 * box.pad;
-  const scale = Math.min(
-    spanX > 0 ? innerW / spanX : Infinity,
-    spanY > 0 ? innerH / spanY : Infinity
-  );
-  const k = Number.isFinite(scale) ? scale : 0;
-  const offX = box.pad + (innerW - spanX * k) / 2;
-  const offY = box.pad + (innerH - spanY * k) / 2;
-  const points = flat.map((p) => ({
-    key: p.key,
-    x: offX + (p.x - minX) * k,
-    y: offY + (p.y - minY) * k,
-  }));
-  spread(points, box);
-  return points.map((p) => ({ key: p.key, x: round1(p.x), y: round1(p.y) }));
+export interface MapLabel {
+  key: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  leader: boolean;
 }
 
-/** Push every pair nearer than the gap apart, half each, and keep them inside the padded box. */
-function spread(points: MapPoint[], box: MapBox): void {
-  const clamp = (v: number, max: number) => Math.min(max - box.pad, Math.max(box.pad, v));
+/** The room the area map may take: the width it has, the heights it keeps to, the margin inside. */
+export interface MapFrame {
+  maxWidth: number;
+  minHeight: number;
+  maxHeight: number;
+  /** Kept free at every edge, so a marker and its label stay inside. */
+  pad: number;
+}
+
+/** The least room between two markers, beyond their radii. */
+const MARKER_GAP = 4;
+
+/** The room between a marker and its label. */
+const LABEL_GAP = 3;
+
+/** How far a label may stand off before its candidates run out; it then gets a leader line. */
+const LEADER_STEP = 16;
+
+/** Rounds of nudging before the map gives up on a gap; a city has at most a dozen places. */
+const SPREAD_ROUNDS = 80;
+
+/** A map is never narrower than this, so a city laid out north to south still has room for labels. */
+const MIN_MAP_WIDTH = 180;
+
+/**
+ * The box the area map is reserved and drawn in, from the places it shows: as tall as their
+ * bounding box asks at the full width (longitude by the cosine of the middle latitude, north up,
+ * `pad` at the edges), within `minHeight` and `maxHeight`, and only as wide as the places need at
+ * that height. A city that runs north to south (Orlando) gets a narrow map that stands beside the
+ * cards at a desk; one that runs west to east (Tokyo) takes the full width. The tiles then fit the
+ * same bounds inside it.
+ */
+export function mapBoxSize(
+  places: readonly MapPlace[],
+  frame: MapFrame
+): { width: number; height: number } {
+  if (places.length === 0) return { width: 0, height: 0 };
+  const lats = places.map((p) => p.latitude);
+  const midLat = ((Math.min(...lats) + Math.max(...lats)) / 2) * (Math.PI / 180);
+  const xs = places.map((p) => p.longitude * Math.cos(midLat));
+  const spanX = Math.max(...xs) - Math.min(...xs);
+  const spanY = Math.max(...lats) - Math.min(...lats);
+  const pad = frame.pad;
+  const fullInner = frame.maxWidth - 2 * pad;
+  const wanted =
+    spanX > 0
+      ? fullInner * (spanY / spanX) + 2 * pad
+      : spanY > 0
+        ? frame.maxHeight
+        : frame.minHeight;
+  const height = Math.min(frame.maxHeight, Math.max(frame.minHeight, wanted));
+  const scale = Math.min(
+    spanX > 0 ? fullInner / spanX : Infinity,
+    spanY > 0 ? (height - 2 * pad) / spanY : Infinity
+  );
+  const k = Number.isFinite(scale) ? scale : 0;
+  const width = Math.min(
+    frame.maxWidth,
+    Math.max(Math.min(frame.maxWidth, MIN_MAP_WIDTH), spanX * k + 2 * pad)
+  );
+  return { width: Math.round(width), height: Math.round(height) };
+}
+
+/**
+ * The markers of the area map kept apart and their labels placed, in the pixels the map projected
+ * them to. Markers nearer than their radii are nudged apart, half each, inside the map (the
+ * Disney hotels sit a kilometre from EPCOT, a few pixels at the zoom that shows all of Orlando).
+ * Each label then takes the first of eight spots around its marker (below, above, right, left, the
+ * corners) that stays inside the map and clear of every marker and every label placed before it,
+ * else the same a step further out with a leader line, else the spot that covers least. Markers
+ * never move for a label. The same markers always give the same result.
+ */
+export function declutterMap(
+  markers: readonly MapMarker[],
+  width: number,
+  height: number
+): { points: MapPoint[]; labels: MapLabel[] } {
+  const points: MapPoint[] = markers.map(({ key, x, y, radius }) => ({ key, x, y, radius }));
+  spread(points, width, height);
+  const rounded = points.map((p) => ({ ...p, x: round1(p.x), y: round1(p.y) }));
+  return { points: rounded, labels: placeLabels(markers, rounded, width, height) };
+}
+
+/** Push every pair of markers nearer than their radii apart, half each, inside the map. */
+function spread(points: MapPoint[], width: number, height: number): void {
+  const clamp = (v: number, r: number, max: number) => Math.min(max - r - 1, Math.max(r + 1, v));
   for (let round = 0; round < SPREAD_ROUNDS; round += 1) {
     let moved = false;
     for (let i = 0; i < points.length; i += 1) {
       for (let j = i + 1; j < points.length; j += 1) {
         const a = points[i];
         const b = points[j];
+        const gap = a.radius + b.radius + MARKER_GAP;
         let dx = b.x - a.x;
         let dy = b.y - a.y;
         let d = Math.hypot(dx, dy);
-        if (d >= box.gap) continue;
+        if (d >= gap) continue;
         if (d < 1e-6) {
           // Two places on one spot part along a fixed angle per pair, so the result is stable.
           const angle = (i * 7 + j * 3) * 0.7;
           [dx, dy, d] = [Math.cos(angle), Math.sin(angle), 1];
         }
-        const push = (box.gap - d) / 2 + 0.01;
+        const push = (gap - d) / 2 + 0.01;
         const [ux, uy] = [dx / d, dy / d];
-        a.x = clamp(a.x - ux * push, box.width);
-        a.y = clamp(a.y - uy * push, box.height);
-        b.x = clamp(b.x + ux * push, box.width);
-        b.y = clamp(b.y + uy * push, box.height);
+        a.x = clamp(a.x - ux * push, a.radius, width);
+        a.y = clamp(a.y - uy * push, a.radius, height);
+        b.x = clamp(b.x + ux * push, b.radius, width);
+        b.y = clamp(b.y + uy * push, b.radius, height);
         moved = true;
       }
     }
     if (!moved) return;
   }
+}
+
+interface Box {
+  left: number;
+  top: number;
+  right: number;
+  bottom: number;
+}
+
+const overlap = (a: Box, b: Box): number =>
+  Math.max(0, Math.min(a.right, b.right) - Math.max(a.left, b.left)) *
+  Math.max(0, Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top));
+
+const boxAt = (x: number, y: number, w: number, h: number): Box => ({
+  left: x - w / 2,
+  top: y - h / 2,
+  right: x + w / 2,
+  bottom: y + h / 2,
+});
+
+/** Where a label may stand around its marker, nearest first: below, above, right, left, corners. */
+function labelSpots(point: MapPoint, w: number, h: number, ring: number) {
+  const r = point.radius + LABEL_GAP + ring * LEADER_STEP;
+  const [dx, dy] = [r + w / 2, r + h / 2];
+  return [
+    [0, dy],
+    [0, -dy],
+    [dx, 0],
+    [-dx, 0],
+    [dx, dy],
+    [-dx, dy],
+    [dx, -dy],
+    [-dx, -dy],
+  ].map(([x, y]) => ({ x: point.x + x, y: point.y + y }));
+}
+
+/** Each label in the first clear spot of the nearer ring, then of the outer one, else the least bad. */
+function placeLabels(
+  markers: readonly MapMarker[],
+  points: readonly MapPoint[],
+  width: number,
+  height: number
+): MapLabel[] {
+  const obstacles: Box[] = points.map((p) => boxAt(p.x, p.y, 2 * p.radius, 2 * p.radius));
+  const labels: MapLabel[] = [];
+  markers.forEach((marker, i) => {
+    if (!marker.label) return;
+    const { width: w, height: h } = marker.label;
+    let best: { x: number; y: number; ring: number; cost: number } | null = null;
+    for (const ring of [0, 1]) {
+      for (const spot of labelSpots(points[i], w, h, ring)) {
+        const box = boxAt(spot.x, spot.y, w, h);
+        const outside =
+          Math.max(0, -box.left) +
+          Math.max(0, box.right - width) +
+          Math.max(0, -box.top) +
+          Math.max(0, box.bottom - height);
+        const cost =
+          outside * 1000 + obstacles.reduce((sum, other) => sum + overlap(box, other), 0);
+        if (best === null || cost < best.cost) best = { ...spot, ring, cost };
+        if (cost === 0) break;
+      }
+      if (best && best.cost === 0) break;
+    }
+    if (!best) return;
+    obstacles.push(boxAt(best.x, best.y, w, h));
+    labels.push({
+      key: marker.key,
+      x: round1(best.x),
+      y: round1(best.y),
+      width: w,
+      height: h,
+      leader: best.ring > 0,
+    });
+  });
+  return labels;
 }
 
 const round1 = (v: number) => Math.round(v * 10) / 10;

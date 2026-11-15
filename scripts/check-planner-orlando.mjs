@@ -462,7 +462,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await context.close();
   }
 
-  // ── Plan first: the compact block, its details, the hopper per resort ─────────
+  // ── Plan first: a ticket per resort, its rules, the hopper per resort ─────────
   // A trip three weeks out, where the calendar knows the evenings the hopper verdict counts.
   const from = addDays(orlandoToday(), 21);
   const firstPath = `/en/orlando?from=${from}&to=${addDays(from, 8)}#planner`;
@@ -472,25 +472,29 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await ready(page, firstPath);
     const card = page.locator('[data-plan-tickets-card="suggested"]');
     await card.waitFor({ timeout: PLAN_TIMEOUT });
-    const box = await card.boundingBox();
+    const tickets = card.locator('[data-plan-suggestion]');
+    const count = await tickets.count();
+    let complete = count > 0;
+    for (let i = 0; i < count; i++) {
+      const ticket = tickets.nth(i);
+      complete &&=
+        (await ticket.locator('[data-plan-suggestion-product]').count()) === 1 &&
+        (await ticket.locator('[data-plan-suggestion-day]').count()) > 0 &&
+        (await ticket.locator('[data-plan-purchase-links] [data-ticket-link]').count()) > 0;
+    }
     check(
-      'Orlando · Plan first: ein kompakter Block auf Level 0 (Satz, „Ticket details“, „Already have tickets?“)',
-      box !== null &&
-        box.height <= 260 &&
-        (await card.locator('[data-plan-ticket-sentence]').count()) === 1,
-      box ? `${Math.round(box.height)} px` : 'kein Block'
+      'Orlando · Plan first: Satz, dann ein Ticket pro Resort mit Produkt, Parktagen und Kauf-Links, ohne Klappe davor',
+      complete && (await card.locator('[data-plan-ticket-sentence]').count()) === 1,
+      `${count} Tickets`
     );
-    await card.locator('[data-plan-ticket-details]').click();
-    await page.locator(`${SHEET} [data-plan-ticket-details-body]`).waitFor();
+    const buy = await card.locator('[data-ticket-link]').first().boundingBox();
+    const width = await page.evaluate(() => document.documentElement.scrollWidth);
     check(
-      'Orlando · auf dem Telefon öffnen die Details ein Sheet',
-      (await page.locator(`${SHEET} [data-plan-suggestion]`).count()) >= 1
-    );
-    const opened = await events(page, 'trip_ticket_details_opened');
-    check(
-      'Orlando · Ereignis trip_ticket_details_opened: sheet',
-      opened.length === 1 && opened[0].surface === 'sheet' && opened[0].region === 'orlando',
-      JSON.stringify(opened)
+      'Orlando · auf dem Telefon sind die Kauf-Links 44 px hohe Knöpfe im Bild, ohne Querscrollen',
+      buy !== null && buy.height >= 44 && buy.x + buy.width <= 390 && width <= 390,
+      buy
+        ? `${Math.round(buy.height)} px hoch, rechts bei ${Math.round(buy.x + buy.width)}`
+        : 'kein Link'
     );
     await context.close();
   }
@@ -499,24 +503,26 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await ready(page, firstPath);
     const card = page.locator('[data-plan-tickets-card="suggested"]');
     await card.waitFor({ timeout: PLAN_TIMEOUT });
-    const details = card.locator('[data-plan-ticket-details]');
-    await details.click();
-    check(
-      'Orlando · am Schreibtisch klappen die Details an Ort und Stelle auf',
-      (await details.getAttribute('aria-expanded')) === 'true' &&
-        (await card.locator('[data-plan-ticket-details-body]').isVisible())
-    );
-    const inline = await events(page, 'trip_ticket_details_opened');
-    check(
-      'Orlando · Ereignis trip_ticket_details_opened: inline',
-      inline.length === 1 && inline[0].surface === 'inline',
-      JSON.stringify(inline)
-    );
+    const facts = card.locator('[data-plan-ticket-facts]').first();
+    if ((await facts.count()) > 0) {
+      const resort = await facts.getAttribute('data-plan-ticket-facts');
+      await facts.locator('summary').click();
+      check(
+        'Orlando · „How the ticket works“ klappt die Regeln des Tickets an Ort und Stelle auf',
+        (await facts.getAttribute('open')) !== null
+      );
+      const opened = await events(page, 'trip_ticket_details_opened');
+      check(
+        'Orlando · Ereignis trip_ticket_details_opened mit dem Resort',
+        opened.length === 1 && opened[0].resort === resort && opened[0].region === 'orlando',
+        JSON.stringify(opened)
+      );
+    }
     const toggles = card.locator('[data-plan-hopper-toggle]');
     const count = await toggles.count();
     if (count === 0) {
       check(
-        'Orlando · „Show the plan with Park Hopper“ erscheint, wo der Hopper etwas bringt',
+        'Orlando · „Plan with Park Hopper“ erscheint, wo der Hopper etwas bringt',
         (await card.locator('[data-plan-verdict]').count()) > 0,
         'auf diesen Tagen bringt kein Hopper etwas'
       );
@@ -529,7 +535,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         { timeout: 10_000 }
       );
       check(
-        'Orlando · „Show the plan with Park Hopper“ setzt hopper= nur für dieses Resort',
+        'Orlando · „Plan with Park Hopper“ setzt hopper= nur für dieses Resort',
         query(page).get('hopper') === resort && !query(page).has('ticket'),
         page.url()
       );
@@ -543,9 +549,9 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         .locator(`[data-plan-hopper-toggle="${resort}"][aria-pressed="true"]`)
         .waitFor({ timeout: PLAN_TIMEOUT });
       check(
-        'Orlando · und heißt danach „Show the plan without …“',
+        'Orlando · und heißt danach „Plan without …“',
         (await page.locator(`[data-plan-hopper-toggle="${resort}"]`).innerText()).startsWith(
-          'Show the plan without'
+          'Plan without'
         )
       );
     }
@@ -574,7 +580,6 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await ready(page, firstPath);
     const card = page.locator('[data-plan-tickets-card="suggested"]');
     await card.waitFor({ timeout: PLAN_TIMEOUT });
-    await card.locator('[data-plan-ticket-details]').click();
     const sponsored = card.locator('[data-ticket-link="sponsored"]').first();
     const official = card.locator('[data-ticket-link="official"]').first();
     const attrs = async (link) => ({

@@ -57,6 +57,7 @@ import { useEveningName, useTicketDayLabel } from './plan-day-bits';
 import { MOVE_INK, MoveIcon, PlanStayBand, useMoveWords } from './plan-stay-band';
 import { useBaseName } from './plan-place-words';
 import { PlanSpareRun } from './plan-spare-run';
+import { PlanDayGlow } from './plan-day-glow';
 
 /** The gap between two day columns, which the stay band above them keeps to. */
 const COLUMN_GAP_PX = 4;
@@ -310,6 +311,7 @@ function SpareColumn({
             compact
           />
         )}
+        <PlanDayGlow date={column.days.map((d) => d.date)} />
       </div>
     </li>
   );
@@ -677,6 +679,7 @@ function WeekColumn({
             )}
           </div>
         )}
+        <PlanDayGlow date={span.date} />
       </div>
     </li>
   );

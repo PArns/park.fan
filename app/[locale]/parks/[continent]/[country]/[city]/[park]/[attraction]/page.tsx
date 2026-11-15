@@ -1,8 +1,8 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { parkDayOf } from '@/lib/utils/park-day';
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
-import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, buildAlternates } from '@/lib/utils/metadata';
 import {
   buildAttractionTitle,
   buildAttractionDescription,
@@ -258,16 +258,10 @@ export async function generateMetadata({ params }: AttractionPageProps): Promise
         park: parkName,
       }),
     }),
-    alternates: {
-      canonical: `${SITE_URL}/${locale}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
-      languages: {
-        ...generateAlternateLanguages(
-          (l) =>
-            `/${l}/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`
-        ),
-        'x-default': `${SITE_URL}/en/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`,
-      },
-    },
+    alternates: buildAlternates(
+      locale,
+      () => `/parks/${continent}/${country}/${city}/${parkSlug}/${canonicalAttractionSlug}`
+    ),
   };
 }
 
@@ -313,13 +307,7 @@ async function closedRideMetadata({
         park: parkName,
       }),
     }),
-    alternates: {
-      canonical: url,
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${path}`),
-        'x-default': `${SITE_URL}/en${path}`,
-      },
-    },
+    alternates: buildAlternates(locale, () => path),
   };
 }
 
@@ -692,11 +680,13 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                           of the season and works badges beside it. */}
                       <TransportSystemBadge attractionKind={attraction.attractionKind} />
                       <HalloweenMazeBadge attractionKind={attraction.attractionKind} />
-                      {attraction.isSeasonal && (
+                      {(attraction.isSeasonal || attraction.pausedBySeason) && (
                         <SeasonalBadge
                           seasonMonths={attraction.seasonMonths}
                           isCurrentlyInSeason={attraction.isCurrentlyInSeason}
                           boundSeason={attraction.boundSeason}
+                          pausedBySeason={attraction.pausedBySeason}
+                          todayIso={todayIso}
                         />
                       )}
                       {/* Beside the season badge and not instead of it — the two say different

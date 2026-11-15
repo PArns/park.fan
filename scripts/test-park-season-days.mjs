@@ -7,6 +7,7 @@
  */
 import assert from 'node:assert/strict';
 import {
+  eventSeasonsNearToday,
   seasonDaysOfMonth,
   seasonKindsIn,
   seasonMarks,
@@ -187,6 +188,40 @@ test('a tile marks each kind once, quiet only when every season of that kind is'
       ['special_event', true, 1],
     ]
   );
+});
+
+test('„Heute im Park" gets the seasons on today or tomorrow, with only those dates', () => {
+  const near = eventSeasonsNearToday(
+    [
+      season('wintertraum', {
+        kind: 'winter',
+        name: 'Wintertraum',
+        startDate: '2026-11-14',
+        endDate: '2027-01-24',
+        dates: ['2026-11-14', '2026-11-15', '2026-11-16'],
+      }),
+      // Starts tomorrow: kept, so a tab left open past midnight still names it.
+      season('advent', { kind: 'christmas', startDate: '2026-11-14', endDate: '2026-12-24' }),
+      season('done', { kind: 'halloween', startDate: '2026-10-01', endDate: '2026-11-01' }),
+      season('off', { kind: 'closure', startDate: '2026-11-01', endDate: '2026-11-30' }),
+      season('called-off', {
+        kind: 'special_event',
+        status: 'cancelled',
+        startDate: '2026-11-13',
+        endDate: '2026-11-14',
+      }),
+    ],
+    '2026-11-13'
+  );
+  assert.equal(near.today, '2026-11-13');
+  assert.deepEqual(
+    near.seasons.map((s) => [s.id, s.dates]),
+    [
+      ['wintertraum', ['2026-11-14']],
+      ['advent', null],
+    ]
+  );
+  assert.equal('priceFrom' in near.seasons[0], false);
 });
 
 console.log(`\n${passed} passed`);

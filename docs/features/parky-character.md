@@ -96,10 +96,21 @@ planner band ([header navigation](header-navigation.md#the-planner-panel)).
   grins; in the evening (the dark theme) the glasses sit on his head and his eyes follow the
   fireworks, where `LOOK_GAZE.fireworks` points the live Parky's. The bursts are the fireworks
   act's `BURST`, three to four times the size.
-- **Motion plays once**: the launch's trail and the bursts each time the band shows
-  (`.parky-orlando-*` in `app/parky.css`), never in a loop, since the band is glass; under reduced
-  motion the picture stands finished. Both pictures are `aria-hidden` and take their colours from
-  Tailwind classes with `dark:` twins.
+- **An entrance wherever he is shown, a loop only in the band.** Each time a region's picture is
+  shown it plays its entrance and comes to rest on the finished picture: in Orlando the rocket, a
+  launch from the Space Coast and no firework, lifts off from behind the far shore and climbs to its
+  place drawing its trail, and the bursts open. In the header's planner band, and only there
+  (`loop` in `TripRegionSceneProps`, set by `PlannerRegionArt`), the region scenes go on moving
+  while the band is open: Orlando's bursts open, stand and fade in turn with their glints on the
+  lake, and the rocket stays put while its flame flickers and its plume breathes; Southern
+  California's pier wheel turns, the waves roll in and the gulls ride the wind; in Japan the petals
+  fall and sway and the lanterns swing; in Paris the tower glitters like its hourly light show and
+  the beacon turns, and by day the steam rises, the clouds drift and the boat rocks. Each scene's
+  moves are its own stylesheet (`sceneMotion`, `LOOPING` in `holiday-parky.tsx`), in its lazy
+  chunk. The band is glass, which is otherwise no place for a loop
+  ([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)). Under reduced motion the
+  picture stands finished: bursts open, the rocket at its place with its trail, the wheel still.
+  The pictures are `aria-hidden` and take their colours from Tailwind classes with `dark:` twins.
 - **A new region gets its own picture** of him on holiday there, the same way, as its entry's
   `scene` in the registry (`components/layout/region-art/<slug>.tsx`,
   [trip regions](trip-regions.md#the-planner-band-with-several-regions)).

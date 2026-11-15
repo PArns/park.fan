@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { WeatherNowcastBanner } from '@/components/parks/weather-nowcast-banner';
 import type { WeatherNowcast } from '@/lib/api/types';
+import { parkLocalIso } from '@/lib/utils/park-day';
 
 const DEMO_PARK = {
   id: 'demo-park',
@@ -21,17 +22,7 @@ const inMinIso = (base: number, minutes: number) => new Date(base + minutes * 60
 
 /** Naive park-local time ("YYYY-MM-DDTHH:MM") — matches the API's step time format. */
 const localIso = (base: number, minutes: number) =>
-  new Intl.DateTimeFormat('sv-SE', {
-    timeZone: DEMO_PARK.timezone,
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-    hour: '2-digit',
-    minute: '2-digit',
-    hour12: false,
-  })
-    .format(base + minutes * 60_000)
-    .replace(' ', 'T');
+  parkLocalIso(base + minutes * 60_000, DEMO_PARK.timezone);
 
 /** Build 15-min nowcast steps from a per-slot precipitation profile (mm). */
 const mkSteps = (now: number, mm: number[], code: number) =>

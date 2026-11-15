@@ -1,8 +1,8 @@
 /**
  * Unit tests for the Orlando hub's pure logic (`lib/trip-regions/*`): the month window and its proxy
  * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
- * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries and
- * the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
+ * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries, the
+ * calendar's weeks with their fragment, star and column heads, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
  *
  * Run: `pnpm test:orlando-hub`
  */
@@ -10,13 +10,22 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   closesEarly,
+  dayPick,
   eventLanes,
   formatWindow,
   hoursUnpublished,
+  HUB_WEEK_DAYS,
+  HUB_WINDOW_DAYS,
+  hubWeekFragment,
+  hubWeekFromFragment,
+  hubWeeks,
   isRankable,
   glanceDay,
   glanceLines,
+  quietestDay,
+  quietSeasons,
   rankGroupParks,
+  regionGroups,
   regionResorts,
   resortMonthSummaries,
   shortGroupName,
@@ -39,6 +48,8 @@ import { flatStretch } from '../lib/trip-regions/best-time.ts';
 import { breakFacts, isoWeekday, usualHours, weekdayFacts } from '../lib/trip-regions/hub-facts.ts';
 import { hubTripOf, restorableTrip } from '../lib/trip-regions/hub-trip.ts';
 import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
+import { HUB_WEEK_CELL, HUB_WEEK_ITEM } from '../components/trip-regions/hub/hub-cell-styles.ts';
+import { addDays } from '../lib/utils/park-day.ts';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
@@ -433,6 +444,126 @@ test('a remembered trip comes back on a bare visit, before it has ended', () => 
   assert.equal(restorableTrip('parks=epcot', kept, '2026-11-14'), null);
   assert.equal(restorableTrip('', 'when=10', '2026-11-14'), null);
   assert.equal(restorableTrip('', null, '2026-11-14'), null);
+});
+
+/** `n` dates from `from`, as the calendar's days carry them. */
+const dates = (from, n) => Array.from({ length: n }, (_, i) => ({ date: addDays(from, i) }));
+
+test('the calendar pages the window in weeks from its first day, the last one shorter', () => {
+  const weeks = hubWeeks(dates('2026-11-14', HUB_WINDOW_DAYS + 1));
+  assert.deepEqual(
+    weeks.map((w) => [w.from, w.to, w.start, w.length]),
+    [
+      ['2026-11-14', '2026-11-20', 0, 7],
+      ['2026-11-21', '2026-11-27', 7, 7],
+      ['2026-11-28', '2026-12-04', 14, 7],
+      ['2026-12-05', '2026-12-11', 21, 7],
+      ['2026-12-12', '2026-12-14', 28, 3],
+    ]
+  );
+  assert.deepEqual(hubWeeks([]), []);
+  assert.equal(hubWeeks(calendar.days).length, 2);
+  // Every page has its show class: the hub's 31 days and a month's 31.
+  for (const n of [HUB_WINDOW_DAYS + 1, 31]) {
+    const pages = Math.ceil(n / HUB_WEEK_DAYS);
+    assert.ok(pages <= HUB_WEEK_CELL.length && pages <= HUB_WEEK_ITEM.length, `${n} days`);
+  }
+  HUB_WEEK_CELL.forEach((cls, i) => assert.ok(cls.includes(`[week=${i}]`)));
+  HUB_WEEK_ITEM.forEach((cls, i) => assert.ok(cls.includes(`[week=${i}]`)));
+});
+
+test('a week fragment names its first date and finds the week that holds a date', () => {
+  const weeks = hubWeeks(dates('2026-11-14', 31));
+  assert.equal(hubWeekFragment(weeks[2]), 'calendar-2026-11-28');
+  assert.equal(hubWeekFromFragment('#calendar-2026-11-28', weeks), 2);
+  assert.equal(hubWeekFromFragment('calendar-2026-11-28', weeks), 2);
+  // Shared a day later, when the pages start a day later: the date still shows.
+  assert.equal(hubWeekFromFragment('#calendar-2026-11-27', weeks), 1);
+  assert.equal(hubWeekFromFragment('#calendar-2026-12-14', weeks), 4);
+  for (const other of [
+    '',
+    '#calendar',
+    '#planner',
+    '#calendar-2026-12-15',
+    '#calendar-2026-11-13',
+  ]) {
+    assert.equal(hubWeekFromFragment(other, weeks), null, other);
+  }
+  assert.equal(hubWeekFromFragment('#calendar-28.11.2026', weeks), null);
+});
+
+/** A park's day for the star's rules: open, a figure, hours from 09:00 to `close`. */
+const parkDay = (
+  date,
+  wait,
+  { close = '21:00', basis = 'forecast', shown, status = 'OPERATING' } = {}
+) => ({
+  date,
+  parks: {
+    p: {
+      status,
+      hoursPublished: true,
+      crowdLevel: 'low',
+      basis,
+      headlinerWait: wait,
+      ...(shown !== undefined && { forecastWait: shown }),
+      opensAt: `${date}T09:00:00-05:00`,
+      closesAt: `${date}T${close}:00-05:00`,
+    },
+  },
+});
+
+test("a park's star is its quietest day of the week, and only where one day is", () => {
+  const a = '2026-11-14';
+  const b = '2026-11-15';
+  const c = '2026-11-16';
+  assert.equal(quietestDay([parkDay(a, 40), parkDay(b, 30), parkDay(c, 45)], 'p'), b);
+  // Two days on one figure and one day's hours: no star.
+  assert.equal(quietestDay([parkDay(a, 30), parkDay(b, 30), parkDay(c, 45)], 'p'), null);
+  // The same figure, a longer day: that one.
+  assert.equal(quietestDay([parkDay(a, 30, { close: '18:00' }), parkDay(b, 30)], 'p'), b);
+  // Never on a higher printed figure than another day's.
+  assert.equal(
+    quietestDay([parkDay(a, 30, { shown: 40 }), parkDay(b, 35, { shown: 35 })], 'p'),
+    null
+  );
+  // Last year's days, closed days and a lone open day are no week to compare.
+  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' }), parkDay(b, 30)], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 20, { status: 'CLOSED' }), parkDay(b, 30)], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 20)], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 20)], 'unknown-park'), null);
+  // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
+  assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');
+  assert.equal(quietestDay(calendar.days.slice(7), 'magic-kingdom-park'), '2026-11-19');
+});
+
+test("a day's column names the region's shortest pick, or the chosen resort's", () => {
+  const day = calendar.days.find((d) => d.date === '2026-11-15');
+  assert.equal(dayPick(day, region)?.park.slug, 'universal-islands-of-adventure');
+  const wdw = regionGroups(region).find((g) => g.key === 'walt-disney-world');
+  assert.equal(dayPick(day, region, wdw)?.park.slug, 'disneys-animal-kingdom-theme-park');
+  const lastYear = {
+    ...day,
+    parks: Object.fromEntries(
+      Object.entries(day.parks).map(([slug, p]) => [slug, { ...p, basis: 'last_year' }])
+    ),
+  };
+  assert.equal(dayPick(lastYear, region), null);
+});
+
+test('a season most of the window runs in, or only expected, is drawn quietly', () => {
+  const quiet = quietSeasons(calendar);
+  assert.ok(quiet.has('dev-season-2'), 'Magic Kingdom christmas, 13 of 14 days');
+  assert.ok(quiet.has('dev-season-1'), 'the party, 8 of 14 nights');
+  assert.ok(!quiet.has('dev-season-20'), 'the Hollywood Studios party, 4 nights');
+  assert.ok(!quiet.has('dev-season-31'), 'one night at Epic Universe');
+  const expected = {
+    ...calendar,
+    seasons: calendar.seasons.map((s) =>
+      s.id === 'dev-season-31' ? { ...s, status: 'expected' } : s
+    ),
+  };
+  assert.ok(quietSeasons(expected).has('dev-season-31'));
 });
 
 console.log(`\n${passed} passed`);

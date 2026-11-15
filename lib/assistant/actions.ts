@@ -11,6 +11,7 @@ import { MAX_BREAK_MINUTES } from './chat-end';
 import { readInterview, type AssistantInterview } from './interview';
 import { cleanParty, type TripParty } from '@/lib/trip-regions/remembered-trip';
 import { liveTripRegion } from '@/lib/trip-regions/registry';
+import { PLAN_IDEA_KINDS, type PlanIdea } from '@/lib/trip-regions/plan-ideas';
 
 /** The park as the API names it for the planner. */
 export interface AssistantPlannerPark {
@@ -155,6 +156,13 @@ export type AssistantCard =
       kind: 'glossary';
       /** One to three terms; `url` is the canonical page, `/de/glossar/…`. */
       terms: Array<{ name: string; definition: string; category: string | null; url: string }>;
+    }
+  | {
+      kind: 'idea';
+      /** The live trip region whose planner the idea is for. */
+      region: string;
+      /** One of the plan's ideas (`/plan/ideas`), as the planner applies it. */
+      idea: PlanIdea;
     };
 
 /** What Parky may ask the widget to do; mirrors the API's `ClientAction`. */
@@ -594,6 +602,8 @@ function isPostsOrTerms(card: AssistantCard): boolean {
 
 function isCard(card: AssistantCard | undefined): card is AssistantCard {
   if (!card) return false;
+  // An idea card is rebuilt by `readIdeaCard`, never passed through.
+  if (card.kind === 'idea') return false;
   if (card.kind === 'posts' || card.kind === 'glossary') return isPostsOrTerms(card);
   if (card.kind === 'parks') {
     if (!isParkList(card.parks)) return false;
@@ -654,6 +664,57 @@ function readTrip(value: unknown): AssistantAction | null {
   return days.length > 0
     ? { type: 'planner_reserve_trip', days: days.slice(0, MAX_RESERVED_TRIP_DAYS) }
     : null;
+}
+
+/** A `{ before?, after? }` pair of minutes, each kept only when it is a number. */
+function minutesPair(value: unknown): { before?: number; after?: number } {
+  const pair = (value ?? {}) as Record<string, unknown>;
+  const before = number(pair.before);
+  const after = number(pair.after);
+  return { ...(before !== null && { before }), ...(after !== null && { after }) };
+}
+
+/**
+ * An idea card: a live region's slug and one idea of a kind this client knows, its change in the
+ * planner's alphabet, rebuilt field by field so nothing else rides along. Its words are the
+ * planner's, made where it is shown (`tripPlannerBridge.ideaCard`).
+ */
+function readIdeaCard(
+  card: Record<string, unknown>
+): Extract<AssistantCard, { kind: 'idea' }> | null {
+  const { region } = card;
+  if (typeof region !== 'string' || !SLUG.test(region) || !liveTripRegion(region)) return null;
+  const raw = (card.idea ?? {}) as Record<string, unknown>;
+  const kind = raw.kind as PlanIdea['kind'];
+  if (!PLAN_IDEA_KINDS.includes(kind)) return null;
+  if (typeof raw.query !== 'string' || !TRIP_QUERY.test(raw.query)) return null;
+  const savedMinutes = number(raw.savedMinutes);
+  if (savedMinutes === null) return null;
+  const slug = (v: unknown) => (typeof v === 'string' && SLUG.test(v) ? v : undefined);
+  const day = (v: unknown) => (typeof v === 'string' && DAY.test(v) ? v : undefined);
+  const park = slug(raw.park);
+  const from = day(raw.from);
+  const to = day(raw.to);
+  const swapWith = slug(raw.with);
+  const places = Array.isArray(raw.places)
+    ? raw.places.filter((p): p is string => typeof p === 'string' && SLUG.test(p)).slice(0, 8)
+    : [];
+  return {
+    kind: 'idea',
+    region,
+    idea: {
+      kind,
+      query: raw.query,
+      ...(park && { park }),
+      ...(from && { from }),
+      ...(to && { to }),
+      ...(swapWith && { with: swapWith }),
+      headlinerWait: minutesPair(raw.headlinerWait),
+      totals: minutesPair(raw.totals),
+      savedMinutes,
+      ...(places.length > 0 && { places }),
+    },
+  };
 }
 
 /**
@@ -877,8 +938,13 @@ export function readAssistantAction(raw: unknown): AssistantAction | null {
       return typeof action.locale === 'string' && isValidLocale(action.locale)
         ? { type: 'switch_locale', locale: action.locale }
         : null;
-    case 'card':
+    case 'card': {
+      if ((action.card as { kind?: unknown } | undefined)?.kind === 'idea') {
+        const card = readIdeaCard(action.card as Record<string, unknown>);
+        return card ? { type: 'card', card } : null;
+      }
       return isCard(action.card) ? action : null;
+    }
     case 'planner_open_day':
       return isPark(action.park) && DAY.test(action.date) ? action : null;
     case 'planner_optimize':

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound, permanentRedirect, redirect } from 'next/navigation';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing, type Locale } from '@/i18n/routing';
-import { locales, localeNames, localeToOpenGraphLocale, SITE_URL } from '@/i18n/config';
+import { localeNames, SITE_URL } from '@/i18n/config';
 import { buildPostAlternates, getPostByLocaleSlug, getTranslationIndex } from '@/lib/blog';
 import {
   categoryPath,
@@ -38,7 +38,7 @@ import { BlogReferences } from '@/components/blog/blog-references';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { fitWithin, MAX_TITLE_LENGTH } from '@/lib/utils/metadata';
+import { fitWithin, MAX_TITLE_LENGTH, buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { versionedPath } from '@/lib/media/focus';
 import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -139,33 +139,21 @@ export async function buildPostMetadata(
     description,
     authors: [{ name: metaAuthor.name, url: metaAuthor.url }],
     keywords: allKeywords.length > 0 ? allKeywords : undefined,
-    openGraph: {
+    ...buildOpenGraphMetadata({
+      locale,
       title: fullTitle,
       description,
-      locale: localeToOpenGraphLocale[locale as Locale],
-      alternateLocale: locales.filter((l) => l !== locale).map((l) => localeToOpenGraphLocale[l]),
       url: localeUrl,
-      siteName: 'park.fan',
+      ogImageUrl: fullOgImage,
+      imageAlt: frontmatter.coverImage?.alt ?? frontmatter.title,
       type: 'article',
-      publishedTime: frontmatter.date,
-      modifiedTime: frontmatter.updatedAt ?? frontmatter.date,
-      section: sectionName,
-      tags: frontmatter.tags,
-      images: [
-        {
-          url: fullOgImage,
-          width: 1200,
-          height: 630,
-          alt: frontmatter.coverImage?.alt ?? frontmatter.title,
-        },
-      ],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: fullTitle,
-      description,
-      images: [fullOgImage],
-    },
+      article: {
+        publishedTime: frontmatter.date,
+        modifiedTime: frontmatter.updatedAt ?? frontmatter.date,
+        section: sectionName,
+        tags: frontmatter.tags,
+      },
+    }),
     alternates: {
       canonical: canonicalOverride ?? canonicalUrl,
       languages: {

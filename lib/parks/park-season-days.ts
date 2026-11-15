@@ -1,6 +1,7 @@
 import type { CalendarDay, ParkSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { addDays } from '@/lib/utils/park-day';
 
 /**
  * Which curated seasons a calendar day marks, and how. Pure, so the park calendar's grid, its
@@ -69,12 +70,53 @@ export function seasonRunsOn(
 }
 
 /** The event seasons running on a date the calendar shows `closed` or not, in the order given. */
-export function eventSeasonsOn<T extends ParkSeason>(
-  seasons: readonly T[],
-  date: string,
-  closed = false
-): T[] {
+export function eventSeasonsOn<
+  T extends Pick<ParkSeason, 'kind' | 'status' | 'startDate' | 'endDate' | 'dates'>,
+>(seasons: readonly T[], date: string, closed = false): T[] {
   return seasons.filter((season) => isSeasonEvent(season) && seasonRunsOn(season, date, closed));
+}
+
+/** An event season as a „today" surface draws it: its name and kind, and when it runs. */
+export type TodaySeason = Pick<
+  ParkSeason,
+  'id' | 'kind' | 'name' | 'status' | 'startDate' | 'endDate' | 'dates'
+>;
+
+/** A park's event seasons around one day, for a surface that names the season running today. */
+export interface SeasonsNearToday {
+  /** The server's park-local day, which the first HTML is drawn for. */
+  today: string;
+  /** The event seasons running on {@link today} or the day after. */
+  seasons: TodaySeason[];
+}
+
+/**
+ * The event seasons that run on `todayIso` or the day after, `dates` cut to those two days. The
+ * „Heute im Park" panel draws the server's day first and then the browser's, and stays open past
+ * midnight, so it needs tomorrow too; the rest of a list like Wintertraum's 67 days it never draws.
+ */
+export function eventSeasonsNearToday(
+  seasons: readonly ParkSeason[],
+  todayIso: string
+): SeasonsNearToday {
+  const tomorrow = addDays(todayIso, 1);
+  return {
+    today: todayIso,
+    seasons: seasons
+      .filter((season) => isSeasonEvent(season))
+      .filter((season) => seasonRunsOn(season, todayIso) || seasonRunsOn(season, tomorrow))
+      .map(({ id, kind, name, status, startDate, endDate, dates }) => ({
+        id,
+        kind,
+        name,
+        status,
+        startDate,
+        endDate,
+        // Never cut to empty: a season kept here runs on one of the two days, and an empty list
+        // would read as „every day of the range" to `seasonRunsOn`.
+        dates: dates?.length ? dates.filter((d) => d === todayIso || d === tomorrow) : null,
+      })),
+  };
 }
 
 /**
@@ -171,9 +213,9 @@ export function seasonKindsIn(days: SeasonDays): SeasonEventKind[] {
  * A day's seasons as the tile marks them: one icon per kind, in `SEASON_EVENT_KINDS` order, quiet
  * only when every season of that kind is.
  */
-export function seasonMarks(
-  seasons: readonly SeasonOnDay[]
-): Array<{ kind: SeasonEventKind; quiet: boolean; seasons: SeasonOnDay[] }> {
+export function seasonMarks<S extends { kind: ParkSeasonKind; quiet: boolean } = SeasonOnDay>(
+  seasons: readonly S[]
+): Array<{ kind: SeasonEventKind; quiet: boolean; seasons: S[] }> {
   return SEASON_EVENT_KINDS.flatMap((kind) => {
     const ofKind = seasons.filter((season) => season.kind === kind);
     return ofKind.length > 0

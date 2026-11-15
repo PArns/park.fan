@@ -955,12 +955,12 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     when: '„Diese Daten planen“ auf einem gefundenen Zeitraum; mit seinem Rang.',
   },
   trip_ticket_details_opened: {
-    label: 'Ticket-Details geöffnet',
-    when: 'Die Details zu den vorgeschlagenen Tickets; als Sheet oder an Ort und Stelle.',
+    label: 'Ticket-Regeln geöffnet',
+    when: '„Wie das Ticket gilt“ bei einem vorgeschlagenen Ticket; mit dem Resort.',
   },
   trip_hopper_toggled: {
     label: 'Plan mit Park Hopper',
-    when: '„Plan mit Park Hopper zeigen“ für ein Resort, oder zurück.',
+    when: '„Mit Park Hopper planen“ für ein Resort, oder zurück.',
   },
   trip_tickets_adopted: {
     label: 'Vorschläge übernommen',
@@ -994,7 +994,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_undo: {
     label: 'Änderung zurückgenommen',
-    when: '„Rückgängig“ im Statusband über dem Plan oder an Parkys Karte im Chat; mit der Art der Änderung (Pin, Tausch, Verschieben, freier Tag, Park entfernt, Park dazu, alle gelöst, Idee).',
+    when: '„Rückgängig“ im Statusband über dem Plan oder an Parkys Karte im Chat; mit der Art der Änderung (Pin, Tausch, Verschieben, freier Tag, Park entfernt, Park dazu, alle gelöst, Idee, Parkys Änderung im Chat).',
   },
   trip_idea_shown: {
     label: 'Parkys Idee gezeigt',

@@ -480,8 +480,11 @@ export function useAssistantActions(closeWindow: () => void) {
           const before = currentTripQuery(action.region);
           if (sameTripQuery(before, action.query)) return null;
           rememberTripChange(action.region, before, action.query);
-          setTrip(action.region, action.query);
           const kinds: TripChangeKind[] = action.change.length > 0 ? action.change : ['dates'];
+          // On screen it is an edit the planner's status band names and undoes, as a press is.
+          if (!tripPlannerBridge.applyChange(action.region, action.query, kinds)) {
+            setTrip(action.region, action.query);
+          }
           for (const kind of kinds) {
             trackSiteEvent('assistant_plan_changed', { planner: 'trip', change: kind });
           }

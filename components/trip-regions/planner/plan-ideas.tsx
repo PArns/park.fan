@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MessagesSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { oneFullStop } from '@/lib/utils/metadata';
 import { assistantGate } from '@/lib/assistant/config';
-import { askParkyAboutIdea } from '@/lib/assistant/trip-idea';
+import { askParkyAboutIdea, type AssistantTripIdea } from '@/lib/assistant/trip-idea';
 import {
   ideaFigure,
   ideaKey,
@@ -19,7 +19,7 @@ import {
   shownIdeas,
   type PlanIdea,
 } from '@/lib/trip-regions/plan-ideas';
-import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
+import { connectIdeaCards, tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
 import { tripWizardAnswered } from '@/lib/trip-regions/planner-ui';
 import type { TripIdeaPlace } from '@/lib/analytics/site-analytics';
 import { usePlanContext, useTripEvents } from './plan-context';
@@ -73,6 +73,45 @@ export function useIdeaWords() {
   };
 }
 
+/**
+ * An idea as the chat's card shows it (`AssistantTripIdeaCard`), in the planner's words: its line,
+ * its figure and its buttons. „Im Chat“ sends it with the question, and the planner hands it to the
+ * chat for an idea Parky offers on his own (`useIdeaCardBridge`).
+ */
+export function useIdeaCard(): (idea: PlanIdea) => AssistantTripIdea {
+  const t = useTranslations('tripPlanner');
+  const { region } = usePlanContext();
+  const words = useIdeaWords();
+  return (idea) => {
+    const title = words.title(idea);
+    return {
+      region: region.slug,
+      idea,
+      title,
+      figure: words.figure(idea),
+      apply: t('ideas.inPlan'),
+      applied: oneFullStop(t('ideas.applied', { idea: title })),
+      undo: t('edit.undo'),
+      otherDay: t('ideas.otherDay'),
+    };
+  };
+}
+
+/**
+ * Lends the chat the planner's words for the ideas Parky offers on his own while this planner is
+ * on screen (`tripPlannerBridge.ideaCard`). The words are read when a card arrives, so the latest
+ * render's are used without connecting again on every one.
+ */
+export function useIdeaCardBridge(): void {
+  const { region } = usePlanContext();
+  const cardOf = useIdeaCard();
+  const latest = useRef(cardOf);
+  useEffect(() => {
+    latest.current = cardOf;
+  });
+  useEffect(() => connectIdeaCards(region.slug, (idea) => latest.current(idea)), [region.slug]);
+}
+
 /** Ideas already counted as shown, per region, idea and place: a re-render is no new showing. */
 const counted = new Set<string>();
 
@@ -86,6 +125,7 @@ function useIdea(idea: PlanIdea, place: TripIdeaPlace) {
   const { region } = usePlanContext();
   const track = useTripEvents();
   const words = useIdeaWords();
+  const cardOf = useIdeaCard();
   const parky = useSyncExternalStore(
     assistantGate.subscribe,
     assistantGate.getStatus,
@@ -110,15 +150,7 @@ function useIdea(idea: PlanIdea, place: TripIdeaPlace) {
       parky === 'on'
         ? () => {
             track('trip_idea_chat', { kind: idea.kind });
-            askParkyAboutIdea(t('ideas.ask', { idea: title }), {
-              region: region.slug,
-              idea,
-              title,
-              figure: words.figure(idea),
-              apply: t('ideas.inPlan'),
-              applied: oneFullStop(t('ideas.applied', { idea: title })),
-              undo: t('edit.undo'),
-            });
+            askParkyAboutIdea(t('ideas.ask', { idea: title }), cardOf(idea));
           }
         : null,
   };

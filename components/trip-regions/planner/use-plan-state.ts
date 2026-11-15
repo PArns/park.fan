@@ -55,10 +55,14 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
   const known = useRef(new Set<string>());
   const history = useRef<Array<{ before: TripPlanState; change: PlanEditChange }>>([]);
   const [edits, setEdits] = useState<PlanEdits>(NO_EDITS);
+  const seq = useRef(0);
   const record = useCallback(
-    (entries: Array<{ before: TripPlanState; change: PlanEditChange }>, edits: PlanEdits) => {
+    (
+      entries: Array<{ before: TripPlanState; change: PlanEditChange }>,
+      edits: Omit<PlanEdits, 'seq'> | null
+    ) => {
       history.current = entries;
-      setEdits(edits);
+      setEdits(edits ? { ...edits, seq: ++seq.current } : NO_EDITS);
     },
     []
   );
@@ -78,7 +82,7 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
       if (next === before) return;
       latest.current = next;
       if (change === 'clear') {
-        record([], NO_EDITS);
+        record([], null);
       } else if (change !== 'undo') {
         record([...history.current, { before, change }], { change, undone: false, canUndo: true });
       }
@@ -136,7 +140,7 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
   useEffect(() => {
     if (isOwn || reported.current === search || known.current.has(search)) return;
     reported.current = search;
-    record([], NO_EDITS);
+    record([], null);
     onExternal?.();
   }, [search, isOwn, onExternal, record]);
 
@@ -152,7 +156,9 @@ export interface PlanEdits {
   /** `change` was just taken back. */
   undone: boolean;
   canUndo: boolean;
+  /** Counts every edit and undo, so the same days glow again for the next one (`PlanDayGlow`). */
+  seq: number;
 }
 
 /** No edit yet, or the history started afresh. */
-export const NO_EDITS: PlanEdits = { change: null, undone: false, canUndo: false };
+export const NO_EDITS: PlanEdits = { change: null, undone: false, canUndo: false, seq: 0 };

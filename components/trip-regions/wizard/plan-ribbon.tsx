@@ -1,11 +1,18 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { ChevronRight } from 'lucide-react';
+import {
+  BedDouble,
+  ChevronRight,
+  PlaneLanding,
+  PlaneTakeoff,
+  Sun,
+  type LucideIcon,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { CROWD_SOLID_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
-import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
+import { isSpareDay, type PlanDay, type TripPlan } from '@/lib/trip-regions/plan';
 import { planSavings } from '@/lib/trip-regions/plan-copy';
 import { parkLabel, shownTotals } from '@/lib/trip-regions/plan-week';
 import { usePlanContext } from '../planner/plan-context';
@@ -120,9 +127,11 @@ function RibbonCells({ plan }: { plan: TripPlan | undefined }) {
               cellClass(day)
             )}
           >
-            {(day.kind === 'park' || day.kind === 'hop') && day.parks[0]
-              ? code(day.parks[0].slug)
-              : null}
+            {(day.kind === 'park' || day.kind === 'hop') && day.parks[0] ? (
+              code(day.parks[0].slug)
+            ) : (
+              <QuietMark day={day} />
+            )}
           </span>
         ))
       )}
@@ -130,7 +139,13 @@ function RibbonCells({ plan }: { plan: TripPlan | undefined }) {
   );
 }
 
-/** A day's field: its crowd colour on a park day, the muted ground on a travel day's ends. */
+/**
+ * A day without a park: outlined in the muted ink, quieter than a park day's solid colour but seen
+ * on the dark ground too, with the mark the Month view gives it.
+ */
+const QUIET_CELL = 'border-muted-foreground/50 text-muted-foreground border';
+
+/** A day's field: its crowd colour on a park day, the move's dashed ink, else the quiet outline. */
 function cellClass(day: PlanDay): string {
   if (day.kind === 'park' || day.kind === 'hop') {
     const level = day.crowdLevel ?? day.parks[0]?.crowdLevel;
@@ -139,6 +154,19 @@ function cellClass(day: PlanDay): string {
       : 'bg-muted text-foreground border-border border';
   }
   if (day.kind === 'travel') return 'border-primary/60 border border-dashed';
-  if (day.kind === 'arrival' || day.kind === 'departure') return 'bg-muted';
-  return 'border-border/70 border';
+  return QUIET_CELL;
+}
+
+/** The Month view's mark of a day without a park: a sun for a free day, a bed, the planes. */
+function QuietMark({ day }: { day: PlanDay }) {
+  const Mark: LucideIcon | null = isSpareDay(day)
+    ? Sun
+    : day.kind === 'rest'
+      ? BedDouble
+      : day.kind === 'arrival'
+        ? PlaneLanding
+        : day.kind === 'departure'
+          ? PlaneTakeoff
+          : null;
+  return Mark ? <Mark className="size-3 shrink-0" /> : null;
 }

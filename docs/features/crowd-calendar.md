@@ -124,6 +124,18 @@ month without a season. A season over more than half the month (a winter season)
 the crowd colours. The icon names its seasons on hover and in the tile's `aria-label`, with the
 status where it is not `confirmed`.
 
+**Season names.** From `lg`, where the week grid's tile has the height, the name stands on a line of
+its own under the status word, with the icon in front of it, and the status row drops its icon; the
+tile stays 150 px. The two-column list below `lg` keeps the icon alone. The two-day comparison takes
+each pick's seasons into its store (`dayComparisonStore.toggle`), because `seasonDaysOfMonth` covers
+only the month on screen, and opens its rows with a „Saison" row: the event, „Reguläre Saison" or
+„Geschlossen". The row is never scored, since a winter event makes a different day, not a better
+one. Its hours row shows the times on the park's clock with the duration in brackets, since two
+seasons of one park tend to differ in their times rather than their length; the duration is still
+what the row ticks. „Heute im Park" names today's season under the hours, from
+`eventSeasonsNearToday`: the seasons of the server's today and tomorrow, `dates` cut to those two
+days, the server's day in the first HTML and the browser's after mount.
+
 **Seasons beyond the grid.** The grid ends where the published schedule ends, so the month index
 and the yearly outlook mark the months further out. Each month chip in `ParkCalendarMonthIndex`
 carries its month's season icons, at most three and quiet (`SeasonMonthMarks`), and each outlook row

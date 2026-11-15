@@ -3,7 +3,7 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { CalendarDays, Ruler, Zap } from 'lucide-react';
 
-import { generateAlternateLanguages, SITE_URL } from '@/i18n/config';
+import { SITE_URL } from '@/i18n/config';
 import type { Locale } from '@/i18n/config';
 import { LandingNextSteps } from '@/components/marketing/editorial-ui';
 import { RouteMessages } from '@/i18n/route-messages';
@@ -29,6 +29,7 @@ import {
   fitWithin,
   MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
+  buildAlternates,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { parkArgs } from '@/lib/i18n/park-phrase';
@@ -46,6 +47,8 @@ import { ParkNavTiles } from '@/components/parks/park-nav-tiles';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
+import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
+import { parkDayOf } from '@/lib/utils/park-day';
 
 interface ParkKidsPageProps {
   params: Promise<{
@@ -106,15 +109,8 @@ export async function generateMetadata({ params }: ParkKidsPageProps): Promise<M
   return {
     title,
     description,
-    alternates: {
-      canonical,
-      // Each locale gets its own segment, the same shape `app/sitemap.ts` writes for these URLs;
-      // a page and the sitemap disagreeing about x-default is an hreflang conflict.
-      languages: {
-        ...generateAlternateLanguages((l) => `/${l}${path(l)}`),
-        'x-default': `${SITE_URL}/en${path('en')}`,
-      },
-    },
+    // Each locale gets its own segment, the URL the rewrite serves.
+    alternates: buildAlternates(locale, path),
     ...buildOpenGraphMetadata({
       title,
       description,
@@ -271,6 +267,7 @@ export default async function ParkKidsPage({ params }: ParkKidsPageProps) {
               city={city}
               parkSlug={parkSlug}
               parkPath={parkPath}
+              seasons={eventSeasonsNearToday(seasons, parkDayOf(new Date(), park.timezone))}
             />
           }
           tiles={

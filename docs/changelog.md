@@ -11,6 +11,263 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.22.1 (2026-11-14) – Karte, Ticket-Karte, Wochenkalender, animiertes Menü, pausierte Rides, Parkys Ideen im Chat
+
+Geschnitten am 2026-11-14 aus 8 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.1.md`. Neueste Abschnitte zuerst.
+
+### Parky bietet eine Idee für den Reiseplan von sich aus an
+
+Bisher zeigte der Chat eine Ideenkarte nur, wenn man im Planer bei einer Idee „Im Chat“ drückte.
+Jetzt legen Parkys Reise-Werkzeuge (`get_trip_plan`, `change_trip`) bis zu drei Ideen aus
+`/plan/ideas` in ihr Ergebnis, und Parky kann eine davon als Karte unter seine Antwort legen: eine,
+die mindestens 5 Minuten spart oder einen ausgelassenen Park unterbringt, und nie eine, die man
+schon abgelehnt hat.
+
+- **Karte:** Die API schickt `{ kind: 'idea', region, idea }`. `readIdeaCard` in
+  `lib/assistant/actions.ts` baut die Idee Feld für Feld neu auf: eine bekannte Art
+  (`PLAN_IDEA_KINDS`), eine Region, die live ist, die Änderung im Alphabet des Planers. Gezeichnet
+  wird sie mit der vorhandenen `AssistantTripIdeaCard` unter der Antwort, wie nach „Im Chat“;
+  `AssistantCardView` zeichnet sie nicht ein zweites Mal.
+- **Worte:** Der Chat trägt keine Texte des Planers. Der Planer auf dem Schirm leiht sie ihm über
+  `tripPlannerBridge.ideaCard` (`useIdeaCardBridge` in `PlanAnswerSection`); „Im Chat“ und die
+  Brücke bauen die Karte mit derselben Funktion (`useIdeaCard`). Ohne Planer auf dem Schirm gibt
+  es keine Karte, weil es nichts gäbe, worauf sie sich anwenden ließe.
+- **Übernehmen:** Wie bisher über `tripPlannerBridge.applyIdea`, als Änderung, die die Statuszeile
+  des Planers nennt und „Rückgängig“ zurücknimmt.
+- **„Anderen Tag“:** Ein zweiter Knopf öffnet den Tauschmodus des Planers für den Park der Idee
+  (`tripPlannerBridge.openSwap`). Auf dem Telefon schließt sich der Chat dabei, wie bei den anderen
+  Aktionen, außer während eines Interviews.
+
+### Bearbeitete Tage leuchten kurz auf, Parkys Änderung lässt sich im Plan zurücknehmen, und Bahnen lassen sich an Saisons binden oder für sie pausieren
+
+#### Reiseplaner
+
+- **Leuchten:** Nach einem Tausch, einem Verschieben, einem frei gemachten Tag, einem Park auf
+  einem freien Tag oder einer übernommenen Idee leuchten die Tage, auf denen jetzt etwas anderes
+  liegt, einmal kurz auf, in allen drei Ansichten (`PlanDayGlow`, `editGlowDays` in
+  `lib/trip-regions/plan.ts`), nach „Rückgängig“ dieselben Tage noch einmal. Das Leuchten beginnt
+  erst, wenn der neue Plan da ist; solange der alte gedimmt wartet, leuchtet nichts. Ein Ring in
+  der Primärfarbe, nach innen gezeichnet, weil Karten und Spalten nach außen abschneiden. Mit
+  Bewegung schwillt er an und blendet aus (1,8 s), bei `prefers-reduced-motion` steht er sofort
+  und blendet nur aus.
+- **Parkys Änderung im Plan:** Ändert Parky im Chat die Reise (`change_trip`), während der Planer
+  auf dem Schirm ist, ist das jetzt eine Bearbeitung wie ein Druck auf einen Knopf
+  (`tripPlannerBridge.applyChange`): Das Statusband sagt „Parky hat die Reisedaten geändert.“ (je
+  nach Art der Änderung, zehn Fassungen in sechs Sprachen) und bietet „Rückgängig“, das sie
+  zurücknimmt, ohne die Bearbeitungen davor zu verlieren. Vorher setzte die Änderung den Verlauf
+  zurück, und zurücknehmen ließ sie sich nur im Chat. `trip_undo` zählt sie als `what: parky`.
+
+#### Saisons
+
+- **Nicht während einer Saison:** Eine Bahn, die das ganze Jahr läuft und für eine Saison schließt
+  (River Quest und Phenies während Wintertraum), zeigt an den Tagen der Saison „Pausiert während
+  Wintertraum · 14. Nov. – 24. Jan.“ mit dem Symbol der Saison (`SeasonalBadge`, aus
+  `pausedBySeason` der API). Weil die API auch die nächste oder die letzte Saison schickt, prüft
+  die Karte den Tag des Parks selbst (`seasonRunsOn`); außerhalb der Saison steht kein Badge.
+- **Admin, Fahrgeschäft → Stammdaten → Kuratierte Felder → Saison:** neu „An Saison gebunden“, die
+  laufenden und kommenden Saisons des Parks, die Bahnen binden (Halloween, Weihnachten, Winter,
+  Sommernächte, Sonderevent, nicht abgesagt), je mit Symbol, Name, Zeitraum, Status und „—“, „Nur
+  während“ oder „Nicht während“. Die Wahl schreibt `attractionIds` oder `pausedAttractionIds` der
+  Saison und nimmt die Bahn aus der anderen Liste, dieselben Listen, die das Saisonformular
+  bearbeitet; der Name öffnet das Formular. Hat die Bahn kuratierte Monate oder ein kuratiertes
+  „Nein“, sagt ein Hinweis, dass sie Vorrang vor der Bindung haben, mit „Monate zurücksetzen“.
+  Phantasialands „Ice skate hire“ hat Januar, November und Dezember kuratiert; ohne den Hinweis
+  hätte die Bindung an Wintertraum nichts geändert, ohne dass es jemand sieht.
+- **Admin, Saisonformular:** neben „Betrifft“ die zweite Liste „Pausiert während der Saison“,
+  derselbe Picker. Eine Bahn in beiden Listen nennt das Formular, bevor die API sie ablehnt.
+- **Admin, Fahrgeschäfte eines Parks:** Eine gebundene oder pausierte Bahn nennt ihre Saison mit
+  Symbol und Zeitraum unter ihren Angaben, sobald die Liste der API `boundSeason` und
+  `pausedBySeason` mitschickt. Bisher stand dort nur „saisonal“, ohne Monate.
+
+### Die vier Parky-Bilder im Planen-Menü bewegen sich, solange das Menü offen ist
+
+Die Bilder der vier Reiseregionen im Band „Planen" spielten beim Öffnen einmal ihren Auftritt und
+standen dann still. Jetzt bleiben sie in Bewegung, solange das Band zu sehen ist, und nur dort:
+`PlannerRegionArt` gibt der Szene `loop` (`TripRegionSceneProps`, `lib/trip-regions/registry.ts`),
+`HolidaySceneSvg` setzt dafür `data-scene-loop` an die Wurzel, und die Regeln jeder Szene stehen
+in ihrem eigenen Stylesheet (`sceneMotion`, `LOOPING` in `components/assistant/parky/holiday-parky.tsx`).
+Die Kachel auf den Parkseiten, die Zeilen im Handy-Menü und das Band des Assistenten spielen
+weiter nur den Auftritt.
+
+- **Orlando:** Die Rakete ist ein Start an der Space Coast, kein Feuerwerk. Sie steigt hinter dem
+  Ufer auf und zieht ihre Spur mit (Keyframes aus der Bézierkurve der Spur, Rakete und
+  `stroke-dashoffset` auf denselben Takten), bleibt an ihrem Platz stehen, und im Menü flackert die
+  Flamme in einem Glühen, während eine Abgasfahne, unten breiter, um die Spur atmet. Das Feuerwerk
+  am Abend öffnet sich, steht und verglüht in Runden von 4,2 bis 5,4 s, die auseinanderlaufen, die
+  Spiegelung im See mit ihm. Die Regeln liegen nicht mehr in `app/parky.css` (51 Zeilen weniger
+  auf jeder Seite), sondern im Chunk der Szene.
+- **Südkalifornien:** Das Riesenrad am Pier dreht sich in 18 s einmal, die Gondeln sind Kreise und
+  hängen von selbst gerade. Die Welle läuft den Strand hinauf und zieht sich zurück, eine Brandung
+  rollt im selben Takt heran, das Glitzern auf dem Wasser wandert, die Möwen schweben.
+- **Japan:** Jedes Blütenblatt in der Luft fällt mit eigener Dauer und eigenem Pendeln ins Gras
+  und kommt über dem Baum wieder herein, fünf mehr als im Standbild. Die Laternen schaukeln an
+  ihren Schnüren, jede zweite einen Takt versetzt.
+- **Paris:** Am Abend glitzert der Eiffelturm wie bei seiner stündlichen Lichtshow, 40 Lichter in
+  acht Gruppen mit eigenem Takt, und die zwei Strahlen des Leuchtfeuers an der Spitze drehen sich.
+  Am Tag steigt der Dampf aus der Tasse weiter, die Wolken ziehen, das Boot schaukelt.
+
+Nur `transform` und `opacity`; bis auf das einmalige Zeichnen der Raketenspur setzt Chromium alle
+Animationen auf den Compositor. Geschlossen ist das Band `display: none`, dann gibt es keine
+einzige Animation der Szenen. Unter `prefers-reduced-motion: reduce` stehen die Bilder fertig
+da: Feuerwerk offen, Rakete an ihrem Platz mit Spur, das Rad still. Die Lichter des Turms als eine
+Animation pro Licht kosteten im Dev-Build rund 145 ms Hauptthread pro Sekunde, in acht Gruppen
+rund 16 ms. Das Band ist Glas, unter dem sonst nichts endlos laufen darf; die Ausnahme steht in
+der Regel [work nobody can see](rules/work-nobody-can-see-is-still-work.md).
+
+### Die Ticket-Karte des Reiseplaners zeigt ein Ticket pro Resort statt einer Textwand
+
+„Tickets für diesen Plan“ war ein Satz, darunter die Zeile zu den 14-Tage-Tickets aus UK-Shops und
+„Details zu den Tickets“, auf dem Telefon ein Sheet, am Desktop zwei Spalten mit Sätzen in der
+340 px breiten linken Spalte. Bei Orlando, 15. bis 30. November mit Disney-Hotel, standen dort
+bis zu vier Kauflinks und der Preis-Hinweis je Resort, die 14-Tage-Tickets mit noch einmal zehn
+Links, und was man kauft, für welche Tage und warum, stand über die Sätze beider Spalten verteilt.
+
+Jetzt ist die Karte die Tickets, ohne Klappe davor, im Ergebnis wie unter „Noch nicht“ im
+Assistenten (`PlanTicketsCard`): oben ein kurzer Satz („Universal 5 Tage, dann Disney 6 Tage.“),
+dann je Resort ein Ticket (`SuggestionTicket`) mit dem Produkt in Klartext („5-Tage-Ticket“, bei
+Tagestickets „4 × 1-Day Passport“), den Parktagen als Chips mit Datum, der Gültigkeit als Balken
+mit einem Feld pro Tag („Gültig 16.–22. Nov. · 5 von 7 Tagen“, `ticketWindowDays`) und dem Hopper
+in einer Zeile: „Park Hopper lohnt sich“ mit „Magic Kingdom an 2 Abenden“ und „Mit Park Hopper
+planen“ in einem getönten Kasten, die Abende als Mond auf ihren Chips (`hopperHighlights`), oder
+„Park-to-Park bringt hier nichts“. Fensterregel, Hogwarts Express, Zusatztage und Promotion stehen
+hinter „Wie das Ticket gilt“. Die Kauflinks sind Knöpfe, die Länder-Shops eines Händlers in einer
+Reihe („Attraction Tickets“: „Deutschland (€)“, „Niederlande (€)“, `ticketLinkGroups`), der Shop
+des eigenen Landes zuerst und getönt (`isVisitorStore`); der Preis-Hinweis steht einmal. Die
+14-Tage-Tickets sind eine gestrichelte Zeile „Alternative“ unter den Tickets, mit „Damit planen“
+und ihren Shops hinter einer Klappe. Zwei Spalten gibt es nur, wo die Karte breit genug ist
+(`@xl`, der Assistent am Desktop).
+
+`trip_ticket_details_opened` zählt jetzt „Wie das Ticket gilt“ mit dem Resort statt `surface`, die
+Knöpfe heißen „Mit/Ohne Park Hopper planen“, und `ticket_link_clicked` zählt die Stelle unter den
+Knöpfen, wie sie gezeichnet sind. `pnpm test:orlando-plan` prüft die neuen Helfer, `pnpm
+check:planner --orlando` die Karte auf dem Telefon: ein Ticket pro Resort mit Kauflinks, 44 px hoch
+und ohne Querscrollen ([Reiseplaner, Tickets](features/orlando-planner.md#tickets)).
+
+Die drei Screenshots des Beitrags zum Orlando-Reiseplaner sind in allen sechs Sprachen neu
+aufgenommen (`scripts/capture-hub-steps.mjs --post`): `tickets-vorschlag` zeigt die Ticket-Karte
+unter dem Abreisetag bei 1000 px, wo das Ergebnis eine Spalte hat und die beiden Tickets
+nebeneinanderstehen, `tickets-uk` den Schritt „Tickets“ des Assistenten mit den beiden
+14-Tage-Tickets, `wochenansicht` die Woche mit „Tage“ statt „Liste“ bei 1536 px, wo
+„Universal-Tag 1 von 3“ in eine Zeile passt. Die Sätze, die „Mehr Optionen“, die Liste, die Zeile
+mit der Spitzenwartezeit und den Hinweis „Außerhalb der USA verkauft“ nannten, nennen jetzt die
+Schritte des Assistenten, die Ansicht „Tage“, die Karte und „UK-Shop“.
+
+Der Kalender-Screenshot desselben Beitrags (`orlando-kalender`) zeigt jetzt das Kapitel 02 mit
+der Woche vom 14. bis 20. November, den Wochen zum Blättern, der Zeile „Bester Park“ und den
+kompakten Kacheln. Er ist wie vorher 1024 px breit, aber 1584 px hoch statt etwa 1200, weil alle 16
+Parks im Bild stehen. Der Beitrag nennt die fünf Kapitel des Hubs in ihrer neuen Reihenfolge, und
+Parks in der Saisonpause sind dort eine Zeile statt schraffierter Kästchen. Die Screenshots
+`japan-monatsansicht`, `orlando-reisedaten` und `orlando-hub-erster-bildschirm` sind gelöscht, weil
+kein Beitrag, keine Seite und kein Skript sie verwendet hat.
+
+### Die Karte der Hotelgegenden zeigt Straßen und Parks, und jeder Schritt beginnt oben
+
+Die Karte im Hotel-Schritt war eine Skizze auf leerem Grund: Kreise und Dreiecke, aber keine
+Straße, kein Wasser, nichts, woran man Disney, Universal oder den International Drive erkennt.
+Jetzt liegen die Marken auf den Kacheln von CARTO (`cartoTileUrl`, hell `rastertiles/voyager`,
+dunkel `dark_all`), wie auf den Parkseiten. Orlando steht am Desktop in etwa 370 × 420 px neben den
+Karten, bei Zoom 11,5 sind die I-4 und die Flächen der Parks zu sehen; Tokio nutzt die ganze Breite
+mit Zoom 12. Die Karte steht still (kein Ziehen, kein Zoom, keine Animation), ein Klick auf einen
+Kreis wählt die Gegend wie ihre Karte. Leaflet lädt erst mit dem Schritt (`area-map-tiles.tsx`,
+`next/dynamic` ohne Server-Render), der Platz ist vorher reserviert (`mapBoxSize`).
+`declutterMap` hält die Marken auseinander und setzt die Kürzel frei, `pnpm test:wizard-choices`
+prüft das für Orlando und Tokio. Die gezeichnete Skizze (`layoutSchematicMap`) ist entfernt.
+
+Ein neuer Schritt des Assistenten öffnete an der Stelle, an der der vorige gescrollt war, nach
+Hotel, Route oder Tickets also halb unten. Jetzt springt der Inhalt des Dialogs bei Weiter, Zurück,
+Überspringen, einem Sprung in der Schrittleiste und einem Antwort-Chip vor dem Zeichnen nach oben,
+ohne Animation, und erst dann geht der Fokus auf Parkys Frage.
+
+`tripPlanner.route.stayShort` war in 2.22.0 mit den toten Optionsschlüsseln gelöscht worden, obwohl
+das Finale, der Kopf des Ergebnisses und die Städte darin ihn lesen; Japan und Paris zeigten den
+Schlüssel statt „Osaka 4 Nächte“. Er ist in allen sechs Sprachen zurück.
+
+### Der Hub-Kalender zeigt eine Woche, auf den Kacheln des Wartezeiten-Kalenders
+
+„Die nächsten 30 Tage“ auf den Hubs (Orlando, Südkalifornien, Japan, Paris) war eine Matrix aus 16
+Parks und 30 Tagen, in jedem Feld nur die Spitzenwartezeit. Selbst bei 2000 px scrollte sie seitlich,
+und aus der Wand ähnlicher Zahlen ließ sich nicht ablesen, welcher Tag besser ist. Jetzt zeigt der
+Kalender sieben Tage auf einmal, ab dem heutigen Tag der Region („Sa., 14. – Fr., 20. Nov.“), mit ‹ ›
+und ab `sm` einem Chip je Woche. Die Pfeiltasten blättern auf allen Bedienelementen, Pos1 und Ende
+springen an die Enden. Eine Woche nach der ersten steht im Fragment (`#calendar-2026-11-28`), damit
+ein Neuladen oder ein geteilter Link sie zeigt; das Datum findet seine Woche auch einen Tag später
+(`hubWeeks`, `hubWeekFromFragment`).
+
+Jedes Feld ist jetzt die Kachel des Wartezeiten-Kalenders. Ihr Darstellungsteil liegt als
+`CalendarDayTile` (`components/parks/calendar-day-tile.tsx`) für beide Seiten; `ParkCalendarDay`
+liest weiter den API-Tag und gibt nur weiter, was er zeigt. Das Markup des Parkkalenders ist
+unverändert (die 11 Kacheln auf `/de/ui` und der Anleitung byte-gleich). Der Hub nutzt
+`density="compact"`, 60 px hoch: Spitzenwartezeit, Andrang in Farbe und Wort, Öffnungszeiten der
+Tagesgäste mit fettem Schluss und Eselsohr bei frühem Schluss, „Zeiten folgen“ ohne veröffentlichte
+Zeiten, die Saison-Symbole, „Geschlossen“. Darauf der Ring (bester Park im Resort) und neu der Stern:
+der ruhigste Tag der Woche je Park (`quietestDay`, niedrigste `headlinerWait`, bei Gleichstand der
+längere Tag; kein Stern bei echtem Gleichstand, an einem Vorjahrestag oder über einer höheren
+gedruckten Zahl). Über den Kacheln steht je Tag „Bester Park“ (`dayPick`: die kürzeste Schlange unter
+den Picks der ersten Antwort, mit Resort-Filter der Pick dieses Resorts), die Sturmzeit und „Ferien &
+Feiertage“. Ein Park, dessen ganzes Fenster dasselbe sagt (Saisonpause, noch keine Zeiten), ist eine
+Zeile statt sieben Kacheln. Am Telefon folgt die Tagesliste derselben Woche, je Gruppe der erste Park
+auf seiner Kachel, zwei nebeneinander.
+
+Alle Tage des Fensters stehen im ausgelieferten HTML: Der Hub reicht das ganze Fenster an den Client,
+statt die erste Woche zu rendern und den Rest über das Relay zu holen. Jede Spalte und jeder Listentag
+trägt die Klasse ihrer Woche (`HUB_WEEK_CELL`, `HUB_WEEK_ITEM`), ein `data-week` zeigt sieben, und
+die Zeilen sind memoisiert, sodass Blättern ein Attribut ändert. Das HTML von `/de/orlando` wächst
+dafür um 11 KB Brotli (76,6 → 87,6 KB, `next dev`), und die Relay-Anfrage des Kalenders entfällt
+([der Orlando-Hub](features/orlando-hub.md)).
+
+### Der Tagesvergleich, die Kalenderkachel und „Heute im Park" nennen die Saison
+
+Phantasialand fährt am 13. November den normalen Betrieb und ab dem 14. den Wintertraum, mit
+anderen Öffnungszeiten (9–18 gegen 11–20 Uhr). Der Vergleich der beiden Tage zeigte nur Andrang,
+Wartezeit, Öffnungsdauer und Regen, die Saison kam nicht vor: Die Saisons stecken nicht im
+`CalendarDay`, sondern in `seasonDaysOfMonth` der Seite, und die gilt nur für den Monat auf dem
+Schirm.
+
+- **Tagesvergleich:** `dayComparisonStore.toggle` nimmt die Saisons des gewählten Tages mit
+  (`DayComparisonSelection.seasons`, nach Datum), also auch über einen Monatswechsel. Der Dialog
+  (`ParkCalendarComparison`) zeigt als erste Zeile „Saison", mit Symbol und Namen wie auf der
+  Kachel, „Reguläre Saison" für einen Tag ohne Event und „Geschlossen" für einen geschlossenen. Die
+  Zeile wird nicht gewertet: Ein Wintertag ist ein anderer Tag, kein besserer oder schlechterer.
+- **Öffnungszeiten im Vergleich:** Die Zeile hieß „Öffnungsdauer" und zeigte an beiden Tagen nur
+  „9 Std.". Jetzt heißt sie „Öffnungszeiten" und zeigt die Uhrzeiten auf der Uhr des Parks
+  (`ParkTimeRange`), die Dauer in Klammern: „09:00 – 18:00 (9 Std.)" gegen „11:00 – 20:00 (9
+  Std.)". Unter `sm` rutscht die Dauer in die zweite Zeile. Gewertet wird weiter die Dauer. Ein
+  Saisonname bricht in seiner Zelle um und wird getrennt, statt abgeschnitten zu werden; bei 320 px
+  stand dort „Wintertrau…".
+- **Kalenderkachel:** Im Wochenraster ab `lg` steht der Name der Saison in einer eigenen Zeile unter
+  der Andrangsstufe, mit dem Symbol davor, leise wie das Symbol (`ParkCalendarDay`). Die
+  zweispaltige Liste darunter behält das Symbol allein; dort fehlt die Höhe für eine weitere Zeile.
+- **„Heute im Park":** Die Statuszelle nennt unter den Öffnungszeiten die Saison, die heute läuft.
+  Die Seite reicht `eventSeasonsNearToday` herein: die Saisons von heute und morgen, `dates` auf
+  diese zwei Tage gekürzt, statt der 67 Termine des Wintertraums. Vor dem Mount gilt der Tag des
+  Servers, danach der des Browsers, also steht die Zeile schon im ersten HTML.
+
+### Die Karte der Hotelgegenden nutzt ihren Platz, und die Knöpfe im Assistenten heben sich ab
+
+Die Karte im Hotel-Schritt zeichnete jede Stadt in ein festes Feld von 320 × 160 Einheiten. Am
+Desktop wurde daraus ein Kasten von 715 × 220 px, und weil Orlando von Norden nach Süden reicht,
+standen alle Marken im mittleren Drittel. Die Kürzel der Parks lagen fest unter ihrem Dreieck, also
+auf den Kreisen der Gegenden („US“ unter Kreis 2, „EP“ unter Kreis 1), und nichts sagte, was Dreieck
+und Kreis bedeuten.
+
+`layoutSchematicMap` (`lib/trip-regions/wizard-choices.ts`) legt die Karte jetzt in Pixeln für die
+Breite an, die der Schritt hat (`useWidth`, aus dem Admin nach `lib/hooks/use-width.ts`
+gezogen): Projektion mit dem Kosinus der Breite, eingepasst in den Rahmen aller Gegenden und Parks
+mit 22 px Rand, 150 bis 300 px hoch und nur so breit, wie die Orte es brauchen. Orlando wird so
+etwa 270 px breit und steht am Desktop neben den Karten, Tokio nutzt die ganze Breite. Jedes
+Kürzel nimmt die erste von acht Stellen um sein Dreieck, die keine Marke und kein anderes Kürzel
+berührt, sonst eine weiter außen mit einer Linie zurück; die Kreise weichen nie. Die gewählte Gegend
+ist gefüllt, größer und umrandet, die anderen sind blass, und eine Legende („▲ Park, ① Gegend“) steht
+unter der Karte. `pnpm test:wizard-choices` prüft für Orlando und Tokio bei 715 und 343 px, dass sich
+nichts überdeckt.
+
+In der Fußzeile des Assistenten waren „Zurück“ und „Überspringen“ blasser Text neben dem blauen
+„Weiter“. „Zurück“ ist jetzt ein Knopf mit Rahmen (`outline`), „Überspringen“ steht in der
+Textfarbe (`ghost`), beide mit mehr als 15 : 1 Kontrast in beiden Themen. Im Planstreifen waren
+die Tage ohne Park dunkle Felder auf dunklem Grund; sie haben jetzt einen Rahmen in der gedämpften
+Farbe und das Zeichen der Monatsansicht: Sonne für einen freien Tag, Bett für einen Ruhetag,
+Flugzeug für An- und Abreise.
+
 ## 2.22.0 (2026-11-14) – Der Reiseplaner als Assistent, Parkys Ideen, Saisons im Jahresausblick, saisonale Rides
 
 Geschnitten am 2026-11-14 aus 5 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.0.md`. Neueste Abschnitte zuerst.

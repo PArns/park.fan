@@ -15,6 +15,7 @@ import {
 import { assistantTripsSnapshot } from './trip-context';
 import { interviewStore } from './interview';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
 import { trackSiteEvent, type AssistantQuestionKind } from '@/lib/analytics/site-analytics';
 import { plannerStore } from '@/lib/planner/store';
 import { assistantPlannerSnapshot } from './planner-context';
@@ -320,7 +321,12 @@ export function useAssistantChat(
             patchLast((m) => ({ ...m, text: m.text + payload.text }));
           } else if (event === 'action') {
             const action = readAssistantAction((payload as unknown as { action: unknown }).action);
-            if (action?.type === 'card') {
+            if (action?.type === 'card' && action.card.kind === 'idea') {
+              // An idea Parky offers on his own: the card the planner on screen words, drawn
+              // under the answer as for „Im Chat“; without that planner there is none to apply.
+              const tripIdea = tripPlannerBridge.ideaCard(action.card.region, action.card.idea);
+              if (tripIdea) patchLast((m) => ({ ...m, tripIdea }));
+            } else if (action?.type === 'card') {
               if (action.card.kind === 'park') {
                 const url = action.card.url;
                 const slug = url

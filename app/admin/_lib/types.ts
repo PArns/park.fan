@@ -1,4 +1,4 @@
-import type { ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
+import type { BoundSeason, ParkSeasonKind, ParkSeasonStatus } from '@/lib/api/types';
 
 /**
  * The shapes the admin API answers with, hand-written and narrow: they describe what the admin
@@ -130,6 +130,13 @@ export interface AdminAttractionListItem {
   isSeasonal: boolean;
   seasonMonths: number[] | null;
   seasonalityCurated: boolean;
+  /**
+   * The park season that binds the ride, in the public payload's shape: its days replace the
+   * months, so `seasonMonths` is null whenever it is set. Absent when no season binds the ride.
+   */
+  boundSeason?: BoundSeason;
+  /** The park season the ride closes for, in the same shape; absent when none pauses it. */
+  pausedBySeason?: BoundSeason;
   retiredAt: string | null;
   /**
    * The ride's own fast-pass columns, raw rather than resolved.
@@ -213,6 +220,12 @@ export interface ParkSeason {
   opensAt: string | null;
   closesAt: string | null;
   attractionIds: string[] | null;
+  /**
+   * The rides that close for the season and run the rest of the year (Phantasialand's River Quest
+   * during Wintertraum). Never a ride of `attractionIds`. Optional until every API answering the
+   * admin sends it.
+   */
+  pausedAttractionIds?: string[] | null;
   url: string | null;
   sourceUrl: string | null;
   confirmedAt: string | null;
