@@ -179,6 +179,7 @@
     "test:media-references": "node scripts/generate-blog-manifest.mjs && node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-references.mjs",
     "test:blog-image-sidecar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-image-sidecar.mjs",
     "test:new-posts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-new-posts.mjs",
+    "test:contribute-prefill": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-contribute-prefill.mjs",
     "test:news-redirects": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-redirects.mjs",
     "test:news-sitemap": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-sitemap.mjs",
     "test:news-park": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-park.mjs",

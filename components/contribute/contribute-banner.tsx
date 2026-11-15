@@ -20,9 +20,6 @@ export async function ContributeBanner({ href = '/contribute', className }: Cont
   return (
     <Link
       href={href}
-      // The prefilled form of this href is a distinct URL per park and ride, all of them the same
-      // upload form; `nofollow` keeps crawlers from walking that space. Visitors are unaffected.
-      rel="nofollow"
       data-card=""
       className={cn(
         'group relative block overflow-hidden rounded-2xl border p-6 transition-all sm:p-8',
