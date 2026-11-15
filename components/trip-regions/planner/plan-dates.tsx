@@ -11,6 +11,7 @@ import {
 import { useTranslations } from 'next-intl';
 import { CloudRain, Sparkles, Ticket } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SCROLL_FADE_X } from '@/lib/utils/scroll-fade';
 import { monthLabel, monthMatrix, monthOf, shiftMonth } from '@/lib/planner/month-grid';
 import { formatClockTime, getDateTimeFormat, getListFormat } from '@/lib/utils/intl-format';
 import { CROWD_TEXT_CLASS, isColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
@@ -616,7 +617,10 @@ function MonthChips({
     <div
       role="group"
       aria-label={label}
-      className="-mx-1 flex [scrollbar-width:thin] gap-1.5 overflow-x-auto px-1 pb-1"
+      className={cn(
+        '-mx-1 flex [scrollbar-width:thin] gap-1.5 overflow-x-auto px-1 pb-1',
+        SCROLL_FADE_X
+      )}
       data-plan-month-chips=""
     >
       {months.map((month, i) => {
