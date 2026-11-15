@@ -44,7 +44,7 @@ import { TrendPill } from './trend-pill';
 import { OutageNote } from './outage-note';
 import { PerformanceBadge } from './performance-badge';
 import { PerformanceCountdown } from './performance-countdown';
-import { performanceTimesShown } from '@/lib/utils/performance-schedule';
+import { performanceTimesShown, startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 import { RideOpensAtNote } from './ride-opens-at-note';
 
 interface AttractionCardProps {
@@ -177,10 +177,11 @@ export function AttractionCard({
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
   // A ride that starts at set times shows its next start in place of the wait, and a CLOSED from a
   // feed that does not know the programme stops reading as a closure.
+  const performanceSchedules =
+    'performanceSchedules' in attraction ? attraction.performanceSchedules : undefined;
   const performanceTimes = effectiveTimezone
     ? performanceTimesShown({
-        schedules:
-          'performanceSchedules' in attraction ? attraction.performanceSchedules : undefined,
+        schedules: performanceSchedules,
         worksPeriods,
         status,
         parkStatus,
@@ -213,8 +214,12 @@ export function AttractionCard({
 
   const trend = isOperatingOrUnknown && waitTime !== null ? shortTermWaitTrend(history) : null;
 
-  // The "in X min" text is time-relative, so the client <AttractionCardBestTime> renders it.
-  const bestSlot = status === 'OPERATING' ? getBestSlot(attraction) : null;
+  // The "in X min" text is time-relative, so the client <AttractionCardBestTime> renders it. A ride
+  // that starts at set times today has its next show instead.
+  const bestSlot =
+    status === 'OPERATING' && !startsAtSetTimesOn(performanceSchedules, todayIso)
+      ? getBestSlot(attraction)
+      : null;
 
   const ropeDropData = getRopeDrop(attraction);
   const ropeDrop = ropeDropData?.worth ? ropeDropData : null;

@@ -871,6 +871,7 @@ export default async function AttractionPage({ params }: AttractionPageProps) {
                   country={country}
                   city={city}
                   parkSlug={parkSlug}
+                  todayIso={todayIso}
                 />
                 <RideAlternatives
                   initialPark={shellPark}

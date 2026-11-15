@@ -18,6 +18,7 @@ import { useTranslations } from 'next-intl';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { roundWaitDeltaTo5 } from '@/lib/utils/wait-time';
 import type { ParkWithAttractions, QueueType, QueueStatus } from '@/lib/api/types';
+import { startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 
 const QUEUE_TYPE_KEYS = {
   STANDBY: 'queue.STANDBY',
@@ -42,6 +43,8 @@ interface LiveAttractionDataProps {
   country: string;
   city: string;
   parkSlug: string;
+  /** Today in the park's timezone (`yyyy-MM-dd`), from the server: whether the ride runs on set times. */
+  todayIso: string;
 }
 
 /**
@@ -56,6 +59,7 @@ export function LiveAttractionData({
   country,
   city,
   parkSlug,
+  todayIso,
 }: LiveAttractionDataProps) {
   const t = useTranslations('attractions');
   const tChart = useTranslations('attractions.todayChart');
@@ -133,7 +137,12 @@ export function LiveAttractionData({
                 hourlyForecast={detail!.hourlyForecast}
                 timezone={park.timezone}
                 schedule={detail!.schedule}
-                bestVisitTimes={detail!.bestVisitTimes ?? attraction.bestVisitTimes}
+                // A ride that starts at set times today has no best time, only its next show.
+                bestVisitTimes={
+                  startsAtSetTimesOn(attraction.performanceSchedules, todayIso)
+                    ? null
+                    : (detail!.bestVisitTimes ?? attraction.bestVisitTimes)
+                }
                 corridor={{
                   continent,
                   country,

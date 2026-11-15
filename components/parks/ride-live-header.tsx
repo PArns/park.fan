@@ -9,7 +9,7 @@ import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
 import { useWaitInTabTitle } from '@/lib/hooks/use-wait-in-tab-title';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
-import { performanceTimesShown } from '@/lib/utils/performance-schedule';
+import { performanceTimesShown, startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 import { worksPeriodsOf } from '@/lib/utils/works-period';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
@@ -43,8 +43,11 @@ export function RideLiveHeader({
 
   // Measured on the SHELL, before the live merge can overlay `bestVisitTimes` — see the panel's
   // `slotSlots`. `initialPark` is the one-attraction snapshot the page built.
-  const shellSlotCount =
-    initialPark.attractions?.find((a) => a.slug === attractionSlug)?.bestVisitTimes?.length ?? 0;
+  // A ride that starts at set times today gets no best times, so its column is never reserved.
+  const shellAttraction = initialPark.attractions?.find((a) => a.slug === attractionSlug);
+  const shellSlotCount = startsAtSetTimesOn(shellAttraction?.performanceSchedules, todayIso)
+    ? 0
+    : (shellAttraction?.bestVisitTimes?.length ?? 0);
 
   const { park, attraction, isFetching } = useLiveAttractionData({
     continent,

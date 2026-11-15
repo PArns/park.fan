@@ -31,14 +31,15 @@ began a minute ago is gone.
 
 ## Surfaces
 
-| Surface                            | With today's times                                                                                                                    |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `AttractionCard`                   | `PerformanceBadge` („Feste Vorstellungen") instead of the status badge, no crowd badge, no opens-at note, the photo not dimmed        |
-| `AttractionCard` bottom panel      | `PerformanceCountdown` `block`: „Nächste Vorstellung", the next start, „in 23 Min.", every start of the day, past ones struck through |
-| `AttractionCard` phone row         | `PerformanceCountdown` `row`: the next start beside the name; nothing once the last has begun                                         |
-| `RideNowPanel` („Wartezeit jetzt") | The first cell: badge, the next start with its countdown, the day's starts; no lastUpdated or typical-hour line                       |
-| `RideNavTiles`                     | „Wartezeiten heute" says „Nächste Vorstellung 13:00 Uhr", or „Heute keine Vorstellung mehr"                                           |
-| `RideLiveHeader`                   | No wait in the tab title                                                                                                              |
+| Surface                            | With today's times                                                                                                                             |
+| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AttractionCard`                   | `PerformanceBadge` („Feste Vorstellungen") instead of the status badge, no crowd badge, no opens-at note, the photo not dimmed                 |
+| `AttractionCard` bottom panel      | `PerformanceCountdown` `block`: „Nächste Vorstellung", the next start, „in 23 Min.", every start of the day, past ones struck through          |
+| `AttractionCard` phone row         | `PerformanceCountdown` `row`: the next start beside the name; nothing once the last has begun                                                  |
+| `RideNowPanel` („Wartezeit jetzt") | The first cell: badge, the next start with its countdown, the day's starts; no lastUpdated or typical-hour line                                |
+| `RideNavTiles`                     | „Wartezeiten heute" says „Nächste Vorstellung 13:00 Uhr", or „Heute keine Vorstellung mehr"                                                    |
+| `RideLiveHeader`                   | No wait in the tab title                                                                                                                       |
+| Best times to visit                | None on a day a schedule covers (`startsAtSetTimesOn`, PAR-1358): no „Beste Zeiten heute" column, plan-tile hint, day-chart marks or card line |
 
 The ride page ships `performanceSchedules` and `worksPeriods` in its shell (`RIDE_SHELL_FIELDS`),
 absent on nearly every ride. The countdown is a Client Component on the shared minute tick

@@ -12,6 +12,7 @@ import {
   nextPerformance,
   performanceTimesOn,
   performanceTimesShown,
+  startsAtSetTimesOn,
 } from '@/lib/utils/performance-schedule.ts';
 import {
   performanceSchedulesError,
@@ -47,6 +48,13 @@ test('a schedule without dates holds every day', () => {
   assert.deepEqual(performanceTimesOn([{ from: null, to: null, times: ['10:00'] }], '2030-02-28'), [
     '10:00',
   ]);
+});
+
+test('a day a schedule covers has no best time to visit, whatever the live status (PAR-1358)', () => {
+  assert.equal(startsAtSetTimesOn([summer, winter], '2026-11-15'), true);
+  assert.equal(startsAtSetTimesOn([summer, winter], '2026-11-05'), false);
+  assert.equal(startsAtSetTimesOn([winter], undefined), false);
+  assert.equal(startsAtSetTimesOn(undefined, '2026-11-15'), false);
 });
 
 const gate = (overrides) => ({
