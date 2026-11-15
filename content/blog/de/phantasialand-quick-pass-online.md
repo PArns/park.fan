@@ -85,7 +85,7 @@ Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quic
 
 ## Was du außerdem brauchst
 
-Der Quick Pass gilt nur zusammen mit einem gültigen Tagesticket, im Eintritt steckt er nicht. Tagestickets gibt es nur online, denn eine Tageskasse am Eingang hat der Park nicht. Für den Besuchstag selbst verkauft er sie bis 14 Uhr. Die Mindestgröße der Bahn gilt mit Quick Pass genauso wie ohne, und eine freie Platzwahl im Zug gehört zum Pass nicht dazu.
+Der Quick Pass gilt nur zusammen mit einem gültigen Tagesticket, im Eintritt steckt er nicht. Tagestickets gibt es nur online. Eine Tageskasse am Eingang hat der Park nicht. Für den Besuchstag selbst verkauft er sie bis 14 Uhr. Die Mindestgröße der Bahn gilt mit Quick Pass genauso wie ohne, und eine freie Platzwahl im Zug gehört zum Pass nicht dazu.
 
 ## Wenn der Eingang pausiert oder die Bahn steht
 
@@ -103,7 +103,7 @@ Für den Abend zählt vor allem Taron After Dark. Der Einzelpass gilt ab 17 Uhr.
 
 ## Bisher nur am Gästeservice
 
-Am Gästeservice war die Menge begrenzt, im Wintertraum waren die Pässe am Wochenende oft mittags weg. Online bleibt das Kontingent begrenzt: Auf den Bildschirmen im Park steht neben „Auch einfach online erhältlich“ der Hinweis „Limitiertes Kontingent“. Die Infoseite des Parks beschreibt weiter den Verkauf am Gästeservice. Seit wann der Shop die Pässe anbietet, hat das Phantasialand nicht bekannt gegeben.
+Am Gästeservice war die Menge begrenzt. Im Wintertraum waren die Pässe dort am Wochenende oft mittags weg. Online bleibt das Kontingent begrenzt: Auf den Bildschirmen im Park steht neben „Auch einfach online erhältlich“ der Hinweis „Limitiertes Kontingent“. Die Infoseite des Parks beschreibt weiter den Verkauf am Gästeservice. Seit wann der Shop die Pässe anbietet, hat das Phantasialand nicht bekannt gegeben.
 
 An einem grünen Tag mit früher Ankunft brauchst du den Quick Pass nach meiner Erfahrung gar nicht, an einem tiefroten Ferien-Samstag kann er den Tag retten. In welcher Reihenfolge ich ohne Pass fahre, steht in den [Phantasialand-Tipps](/blog/phantasialand-tipps).
 
