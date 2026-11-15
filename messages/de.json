@@ -3610,6 +3610,13 @@
       "closed": "{park} ist dann geschlossen",
       "noFigure": "keine Zahl"
     },
+    "delete": {
+      "action": "Reise löschen",
+      "confirm": "Diese Reise löschen? Deine Daten, Parks und Änderungen werden auf diesem Gerät entfernt.",
+      "yes": "Löschen",
+      "no": "Behalten",
+      "done": "Deine Reise vom {range} ist gelöscht."
+    },
     "keep": {
       "addAll": "In den Tagesplaner übernehmen",
       "ics": "In den Kalender (.ics)",

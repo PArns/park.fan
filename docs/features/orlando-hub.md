@@ -108,10 +108,10 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 `components/trip-regions/hub/hub-trip-state.tsx`; the rules are pure in
 `lib/trip-regions/hub-trip.ts` and pinned in `pnpm test:orlando-hub`).
 
-| State        | When                                                                           | Head                                                                                           | Chapter 01                      |
-| ------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- |
-| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                            | the four steps and Parky's line |
-| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt“ | „Deine Reise“ and the planner   |
+| State        | When                                                                           | Head                                                                                                          | Chapter 01                      |
+| ------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                                           | the four steps and Parky's line |
+| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt. Reise löschen“ | „Deine Reise“ and the planner   |
 
 - **Only chapter 01 changes.** The calendar, the resorts, the best time and the questions are open
   in both states, in full, with no fold and no toggle: with a plan, „Deine Reise“ stands at the top
@@ -129,8 +129,13 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
   the four steps.
 - **Every start goes through one place**, `startPlanner` in `hub-hero-action.tsx`:
   `tripPlannerUi.openStart(source)` with `hero` (the head), `landing` (chapter 01, the closing
-  call) or `restart` („Neue Reise planen“, which first clears the plan through
-  `tripPlannerBridge.apply(region, '')`). Each counts as `trip_hub_action`.
+  call) or `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
+  clearing „Reise löschen“ uses, without its undo). Each counts as `trip_hub_action`; the clear
+  counts no `trip_option_changed`.
+- **A trip can be deleted** from the head's line and from the result („Reise löschen“, asked in
+  place, with „Rückgängig“ for a few seconds after). It clears every store of the region's trip on
+  this device and puts the hub back on its landing page; the stores and the undo are
+  [orlando-planner](orlando-planner.md#keeping-a-plan)'s.
 
 ## Chapters
 
@@ -286,7 +291,8 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
 for the head's two ways in (`plan`, `calendar`, on the hub or a month) and for the landing's
 „Reise planen“ in chapter 01 and the closing call (`plan`); `trip_planner_started` tells them apart by
-its `source` (`hero`, `landing`, `restart`), `internal_link_clicked`
+its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for „Reise löschen“ in the
+head, `internal_link_clicked`
 from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts'
 park links), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
 `trip_accuracy_opened {surface: hub}` for the accuracy line, and `faq_opened` with the question's

@@ -431,6 +431,7 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_spare_filled`                                                                   | `from`: card (the Days view and a free day's sheet), week (the Week view's panel); idea and chat once Parky offers parks                                                                                                           |
 | `trip_day_moved`, `trip_day_freed`, `trip_park_removed`                               | none: a day put on a free day, a day made free, a park taken out, from a day's „More“                                                                                                                                              |
 | `trip_undo`                                                                           | `what`: pin, swap, move, free, remove, add, release, idea, parky                                                                                                                                                                   |
+| `trip_deleted`                                                                        | `from`: head (the hub's head), result (under the keep actions); sent on the confirm, an undo after it included                                                                                                                     |
 | `trip_idea_shown`                                                                     | `kind` (move, swap, add, travel_day, hopper, avoid_party), `place` (header, day, chat); once per idea and place                                                                                                                    |
 | `trip_idea_applied`                                                                   | `kind`, `place`                                                                                                                                                                                                                    |
 | `trip_idea_chat`                                                                      | `kind`                                                                                                                                                                                                                             |
@@ -446,7 +447,9 @@ Each carries `region` besides these. A value is one of the listed, never free te
 `trip_option_changed` is built from a diff of the state before and after each change
 (`tripOptionChanges` in `lib/trip-regions/plan-analytics.ts`), one event per option, in
 `usePlanState`; Parky's changes through the planner bridge count as `by: parky` (his own count stays
-`assistant_plan_changed`). Dates, pins, tickets and the hopper are not options: their own events
+`assistant_plan_changed`). A cleared trip („Reise löschen“, „Neue Reise planen“) and one put back
+change no option and count none: `trip_deleted` and `trip_planner_started` with `restart` say what
+happened. Dates, pins, tickets and the hopper are not options: their own events
 count them. `value` only from small closed sets: `move_buffer` 30, 60, 90, 120 or default; `rest`
 auto, none, max; on or off for arrival, departure, split, evenings, hop, fireworks; blocks on, off
 or default; `hotel` the region's hotel kind; `parks` added or removed; `start_base` and `end_base`
@@ -542,6 +545,33 @@ as it is), and "Open the first day" opens the day planner on the first of them
 (`setActive`). "Add to calendar (.ics)" builds the file in the browser: one event per park day, timed
 with `TZID=America/New_York` and a `VTIMEZONE` where the hours are known, all-day where not, with
 the minutes, the reason and the link. "Copy link" copies the address.
+
+**Deleting the trip.** „Reise löschen“ stands under the keep actions and at the end of the hub
+head's „Dein Plan für … ist in diesem Browser gemerkt.“ (`PlanDelete`,
+`components/trip-regions/planner/plan-delete.tsx`). A press asks in place of the line („Diese Reise
+löschen? Deine Daten, Parks und Änderungen werden auf diesem Gerät entfernt.“, „Löschen“,
+„Behalten“; Escape keeps it), never with the browser's `confirm()`. „Löschen“ runs `clearTrip`
+(`lib/trip-regions/trip-clear.ts`), the one clearing „Neue Reise planen“ runs too, over every place
+this device keeps the region's trip:
+
+| Store                                               | Where                                                            |
+| --------------------------------------------------- | ---------------------------------------------------------------- |
+| the query: dates, parks, pins, tickets, options     | the address bar, through the planner (`tripPlannerBridge.clear`) |
+| the edits and their undo                            | `usePlanState`, in memory                                        |
+| the remembered trip and the party Parky asked about | localStorage `parkfan_trip_<region>` (`forgetTrip`)              |
+| the questions answered in the assistant             | sessionStorage `parkfan:trip-wizard-answered`, per region        |
+| the answer to „Schon Tickets?“                      | localStorage `parkfan_<region>_tickets_asked`                    |
+| Parky's trip interview for the region               | sessionStorage `parkfan:assistant-interview`                     |
+| Parky's last change, which his undo would take back | `trip-context.ts`, in memory                                     |
+
+The address becomes the hub's own path, without query or fragment, so a reload is the landing
+page and `restorableTrip` finds nothing to put back. Another region's trip stays, and so do the
+result's chosen view (`parkfan_<region>_view`, a preference of the browser) and the days already
+copied into the day planner. For eight seconds the head says „Deine Reise vom … ist gelöscht.“
+with „Rückgängig“ (`PlanDeleteStatus`, in the note's cell, so its end moves nothing; the focus
+goes to it); the undo puts every store back from the copy in memory, the plan's edit history
+included. After that the copy goes and nothing is kept. `pnpm test:trip-clear` pins the stores,
+the other region and the undo.
 
 ## Honest states
 
