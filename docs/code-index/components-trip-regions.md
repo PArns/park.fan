@@ -223,6 +223,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
 - `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
+- `useVenueName` _hook_: An evening venue's name: "Strand am Polynesian Village Resort" in German.
 - `useBaseName` _hook_: A base's name: "Tokio" in German.
 - `useGatewayName` _hook_: A gateway's short name: "Haneda", "Charles de Gaulle".
 

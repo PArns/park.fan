@@ -4467,6 +4467,9 @@
         "area": {
           "universal": "Universal-Hotels",
           "disney_springs": "Disney Springs Resort Area"
+        },
+        "venue": {
+          "polynesian-beach": "Strand am Polynesian Village Resort"
         }
       }
     },

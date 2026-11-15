@@ -5,10 +5,11 @@ import type { TripGateway } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 
 /**
- * The places of a region as a reader says them, by the API's key: a hotel area, a base, a gateway.
- * The API names them once, in English ("Universal Orlando hotels", "Tokyo", "Haneda Airport"); the
- * region's own words (`tripRegion.planner.area.<key>`, `base.<key>`, `gateway.<code>`) win where
- * they have the key, and a place they lack keeps the API's name.
+ * The places of a region as a reader says them, by the API's key: a hotel area, a base, a gateway,
+ * an evening venue. The API names them once, in English ("Universal Orlando hotels", "Tokyo",
+ * "Haneda Airport"); the region's own words (`tripRegion.planner.area.<key>`, `base.<key>`,
+ * `gateway.<code>`, `venue.<key>`) win where they have the key, and a place they lack keeps the
+ * API's name.
  */
 
 /** A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels". */
@@ -19,6 +20,17 @@ export function useAreaName(): (key: string) => string {
     const own = `area.${key}`;
     if (tRegion.has(own)) return tRegion(own);
     return region.hotelAreas.find((a) => a.key === key)?.name ?? key;
+  };
+}
+
+/** An evening venue's name: "Strand am Polynesian Village Resort" in German. */
+export function useVenueName(): (key: string) => string | null {
+  const tRegion = useTranslations('tripRegion.planner');
+  const { venueByKey } = usePlanContext();
+  return (key) => {
+    const own = `venue.${key}`;
+    if (tRegion.has(own)) return tRegion(own);
+    return venueByKey.get(key)?.name ?? null;
   };
 }
 
