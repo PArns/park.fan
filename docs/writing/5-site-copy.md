@@ -138,7 +138,7 @@ says one thing:
 
 > **Mit Kindern** · Ab welcher Größe dein Kind mitfahren darf
 >
-> Für jeden dieser Parks: alle Bahnen, sortiert nach der Mindestgröße, die der Park angibt.
+> Für jeden dieser Parks: alle Bahnen, sortiert nach der Mindestgröße, die der Park angibt
 
 The card line goes, or carries a figure the heading does not (how many rides at that park have a
 height limit).

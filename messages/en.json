@@ -112,8 +112,8 @@
       "cta": "Explore Parks",
       "searchPlaceholder": "Search parks, attractions, shows & restaurants...",
       "title": "Where is the wait worth it today?",
-      "intro": "Find the park with the shortest queues: wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes, plus a forecast for the days ahead.",
-      "introShort": "Live wait times at <strong>{parks} theme parks</strong>.",
+      "intro": "Find the park with the shortest queues: wait times at <strong>{parks} theme parks</strong> and <strong>{attractions} attractions</strong>, updated every five minutes, plus a forecast for the days ahead",
+      "introShort": "Live wait times at <strong>{parks} theme parks</strong>",
       "openNow": "{count, plural, =1 {1 park open right now} other {# parks open right now}}",
       "searchExamples": "Europa-Park, Taron, Efteling …",
       "parkyHello": "Hey, I’m Parky!",
@@ -168,7 +168,7 @@
     "favorites": {
       "kicker": "Favorites",
       "title": "Your parks and rides",
-      "lead": "Everything you marked with the star, with its status and current wait."
+      "lead": "Everything you marked with the star, with its status and current wait"
     },
     "favoritesIntro": {
       "star": {
@@ -192,7 +192,7 @@
     "faq": {
       "kicker": "Common questions",
       "title": "Theme park wait times, briefly explained",
-      "lead": "Where the wait times come from, which parks are in, and what it costs, which is nothing.",
+      "lead": "Where the wait times come from, which parks are in, and what it costs, which is nothing",
       "link": "How park.fan works",
       "note": "All figures without guarantee."
     },
@@ -204,7 +204,7 @@
     },
     "reading": {
       "title": "Theme park news and guides",
-      "lead": "Who’s building, who’s closing, who’s sold out. And the guides read most over the past month.",
+      "lead": "Who’s building, who’s closing, who’s sold out, and the guides read most over the past month",
       "popularGuides": "Most read guides"
     },
     "tour": {
@@ -340,7 +340,7 @@
     "admin": "Admin",
     "nearbyPark": "Nearby: {parkName}",
     "howto": "How it works",
-    "howtoHint": "How to read a wait time, and where the numbers come from.",
+    "howtoHint": "How to read a wait time, and where the numbers come from",
     "planner": "Day planner",
     "plannerMenu": "Plan",
     "tripPlanner": "Trip planner",
@@ -350,7 +350,7 @@
     "planTrip": "Plan a trip",
     "crowdCalendar": "Crowd calendar",
     "dayPlannerTitle": "Plan your park day ride by ride",
-    "dayPlannerHint": "Rides on a timeline, with the forecast waits.",
+    "dayPlannerHint": "Rides on a timeline, with the forecast waits",
     "planDay": "Plan a day",
     "yourPlan": "Your plan",
     "yourPlanAt": "Your plan: {park}, {date}",
@@ -361,14 +361,14 @@
     "planDayIn": "Plan a day at",
     "planDayInList": "Plan a day at one of these parks",
     "glossary": "Dictionary",
-    "glossaryHint": "Queue and roller coaster terms, explained.",
+    "glossaryHint": "Queue and roller coaster terms, explained",
     "blog": "Guides",
     "more": "More",
     "fancast": "Fancast",
-    "fancastHint": "The forecasting model behind the crowd calendar.",
+    "fancastHint": "The forecasting model behind the crowd calendar",
     "contribute": "Upload photos",
     "bestTime": "Best Time to Visit",
-    "bestTimeHint": "The quietest weekdays and months, park by park.",
+    "bestTimeHint": "The quietest weekdays and months, park by park",
     "latestPosts": "Latest posts",
     "searchArticles": "Search guides…",
     "searchResults": "{count, plural, =1 {# result} other {# results}}",
@@ -460,7 +460,7 @@
       "allDays": "every day"
     },
     "sheet": {
-      "intro": "Each resort’s best park comes first; an early close counts against it.",
+      "intro": "Each resort’s best park comes first; an early close counts against it",
       "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "open, no forecast",
@@ -493,7 +493,7 @@
       "title": "Plan your trip"
     },
     "next": {
-      "body": "Give the planner your dates and parks, and it puts each park on the day its lines are shortest.",
+      "body": "Give the planner your dates and parks, and it puts each park on the day its lines are shortest",
       "parkCalendar": "{park} Crowd Calendar"
     },
     "dataset": {
@@ -507,7 +507,7 @@
       "open": "Open the trip planner"
     },
     "tile": {
-      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day."
+      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day"
     },
     "faq": {
       "parks": {
@@ -599,24 +599,24 @@
       "steps": {
         "dates": {
           "title": "Pick your dates",
-          "text": "Under each day is the park with the shortest peak wait. Once you pick the day you leave, the first plan is there."
+          "text": "Under each day is the park with the shortest peak wait, and once you pick the day you leave, the first plan is there"
         },
         "questions": {
           "title": "A few questions, all optional",
-          "text": "Parks, hotel, pace, evenings, tickets. Answer them, or skip any of them."
+          "text": "Parks, hotel, pace, evenings, tickets: answer them, or skip any of them"
         },
         "plan": {
           "title": "Your plan, day by day",
-          "text": "Which park on which day, why that day, and roughly how long the lines get."
+          "text": "Which park on which day, why that day, and roughly how long the lines get"
         },
         "edit": {
           "title": "Change it, with Parky too",
-          "text": "Swap or pin days, add parks, or ask Parky in the chat. Then take it to the day planner or your calendar."
+          "text": "Swap or pin days, add parks, or ask Parky in the chat, then take it to the day planner or your calendar"
         }
       },
       "parky": "Only your dates are required, and you can skip every question after them. Start with the dates.",
       "chat": "Rather in the chat",
-      "calendarLead": "Where the plan gets its days from: each park’s peak wait on each day.",
+      "calendarLead": "Where the plan gets its days from: each park’s peak wait on each day",
       "hero": {
         "note": "Only your dates are required; the first plan is there as soon as you pick them.",
         "toPlan": "Go to your plan",
@@ -629,7 +629,7 @@
     },
     "finalCta": {
       "title": "Your trip, planned day by day",
-      "text": "Pick your dates, then answer a few questions or skip them. You see the first plan as soon as the dates are set."
+      "text": "As soon as your dates are set, you see the first plan, and you can answer the questions after that or skip them"
     }
   },
   "theme": {
@@ -648,7 +648,7 @@
     },
     "blogPosts": {
       "title": "{park} on the blog",
-      "intro": "Posts from our blog that feature {park}.",
+      "intro": "Posts from our blog that feature {park}",
       "viewAll": "Read all posts",
       "moreGuides": "More guides"
     },
@@ -658,9 +658,9 @@
     "firstVisit": {
       "label": "First visit",
       "title": "First visit: {park}",
-      "intro": "Start with our guide, then read up on the terms every new visitor runs into.",
+      "intro": "Start with our guide, then read up on the terms every new visitor runs into",
       "termsTitle": "Terms for your first day",
-      "termsIntro": "Signs and park apps use them without explaining them."
+      "termsIntro": "Signs and park apps use them without explaining them"
     },
     "title": "More Thrills, Less Waiting",
     "heroWelcomeAttractions": "{count} attractions operating",
@@ -769,7 +769,7 @@
     "offSeasonCount": "{count} off-season",
     "filterSection": {
       "title": "Narrow down the attractions",
-      "hint": "Shows only what matches your choices.",
+      "hint": "Shows only what matches your choices",
       "searchLabel": "Search",
       "todayLabel": "Today",
       "traitsLabel": "Traits",
@@ -1290,7 +1290,7 @@
       "monthMetaDescriptionNoCity": "How busy is {park} in {month}? Expected crowds day by day, opening hours, school holidays and weather.",
       "monthIntro": "Day by day through {month}: expected crowds {inPark}, opening hours, school holidays and weather. Tap a day for the details.",
       "gridTitle": "Find the quietest day",
-      "gridSubline": "Every day in {month} with its expected crowds, opening hours, school holidays and weather {inPark}.",
+      "gridSubline": "Every day in {month} with its expected crowds, opening hours, school holidays and weather {inPark}",
       "previousMonth": "Previous month",
       "nextMonth": "Next month",
       "currentMonth": "Today",
@@ -1339,7 +1339,7 @@
       "leadLongest": "The longest queue is usually {ride}: typically {minutes} minutes.",
       "leadFallback": "Wait times {inPark} by month, weekday and hour, measured across {days} operating days.",
       "hourlyTitle": "The typical day",
-      "hourlyHint": "From {days} operating days over the past year.",
+      "hourlyHint": "From {days} operating days over the past year",
       "nextTitle": "Where to go next",
       "nextLive": "Live wait times",
       "nextLiveBody": "The wait times right now, ride by ride.",
@@ -1367,9 +1367,9 @@
       "metaTitleShort": "{park} Height Requirements",
       "metaDescription": "How tall does a child have to be {inPark} in {city}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
       "metaDescriptionNoCity": "How tall does a child have to be {inPark}? {withHeight} of {total} attractions have a minimum height, starting at {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} of {total} attractions have a minimum height, in {steps} steps.",
+      "lead": "{inParkLeading}, {withHeight} of {total} attractions have a minimum height, in {steps} steps",
       "tiersTitle": "What fits at which height",
-      "tiersHint": "{withHeight} of {total} attractions have a minimum height. Every step is a limit the park sets itself.",
+      "tiersHint": "{withHeight} of {total} attractions have a minimum height, and every step is a limit the park sets itself",
       "noLimitTitle": "No minimum height posted",
       "noLimitSummary": "{count, plural, =1 {The attraction without a limit} other {The {count} attractions without a limit}}",
       "noLimitNote": "The park names no limit for these. Whether the ride is open to every height or the figure is just missing, we can’t tell. What’s posted at the ride entrance is what counts.",
@@ -1390,7 +1390,7 @@
       "nextCalendarBody": "Expected crowds day by day, with holidays and opening hours.",
       "linkTitle": "With kids",
       "linkAnchor": "{park} with kids",
-      "linkBody": "{withHeight} of {total} attractions have a minimum height. Which ride from which height, in {steps} steps.",
+      "linkBody": "{withHeight} of {total} attractions have a minimum height: which ride from which height, in {steps} steps",
       "filterToList": "Go to the attractions list"
     },
     "planDayCta": "Plan a day at {park}",
@@ -1404,9 +1404,9 @@
       "reset": "Clear selection",
       "pickDay": "pick for comparison",
       "title": "Two days compared",
-      "resultClear": "{day} is the clearly better day.",
-      "resultSlight": "{day} is slightly ahead.",
-      "resultTie": "There is nothing to choose between these two days.",
+      "resultClear": "{day} is the clearly better day",
+      "resultSlight": "{day} is slightly ahead",
+      "resultTie": "There is nothing to choose between these two days",
       "better": "Better day",
       "bothDays": "Both days",
       "noReasons": "There are no comparable figures for these two days.",
@@ -1427,7 +1427,7 @@
       "blockerClosed": "The park is closed on this day.",
       "blockerPast": "This day is in the past.",
       "blockerNoForecast": "There is no forecast for this day yet.",
-      "resultUnavailable": "Neither of these two days can be compared.",
+      "resultUnavailable": "Neither of these two days can be compared",
       "beyondPlanner": "The day planner does not reach this day yet."
     },
     "overview": {
@@ -1642,7 +1642,7 @@
     },
     "sectionLiveNow": "Wait time right now",
     "sectionPlanVisit": "Plan the best time to visit",
-    "sectionPlanVisitHint": "From this ride's measured wait times.",
+    "sectionPlanVisitHint": "From this ride's measured wait times",
     "todayRange": "Range today",
     "peakToday": "Peak today",
     "parkToday": "Park today",
@@ -1682,7 +1682,7 @@
     },
     "downtime": {
       "title": "Reported outages",
-      "hint": "What the park's data source reported, not what the operator published.",
+      "hint": "What the park's data source reported, not what the operator published",
       "reportedCaption": "In {days} days",
       "reportedDetail": "{count} reported outages across {observedDays} observed operating days.",
       "medianCaption": "Median in minutes",
@@ -2156,7 +2156,7 @@
   "favoritesPage": {
     "title": "My favorites",
     "metaTitle": "My favorites - park.fan",
-    "subtitle": "Parks, rides, shows and restaurants you starred in this browser, with live status and wait times.",
+    "subtitle": "Parks, rides, shows and restaurants you starred in this browser, with live status and wait times",
     "howToTitle": "How to add favorites"
   },
   "pushAlerts": {
@@ -2167,9 +2167,9 @@
     },
     "showDialog": {
       "title": "Show reminder",
-      "explain": "We’ll notify you 25 to 35 minutes before {show}’s next showtime.",
+      "explain": "We’ll notify you 25 to 35 minutes before {show}’s next showtime",
       "explainLate": "That is already tight for the next showtime, so this one gets its message about 10 minutes ahead.",
-      "explainChosen": "We’ll notify you about half an hour before this performance.",
+      "explainChosen": "We’ll notify you about half an hour before this performance",
       "follow": "Turn on reminder",
       "following": "Reminder is on",
       "unfollow": "Turn off reminder",
@@ -2187,7 +2187,7 @@
     },
     "rideDialog": {
       "title": "Wait-time alerts",
-      "subtitle": "For {park} – we’ll notify you once the wait drops below your threshold.",
+      "subtitle": "For {park} – we’ll notify you once the wait drops below your threshold",
       "loading": "Loading…",
       "empty": "No alerts for this park yet.",
       "thresholdLabel": "under {minutes} min",
@@ -2222,7 +2222,7 @@
     "overview": {
       "title": "My alerts",
       "metaTitle": "My alerts - park.fan",
-      "subtitle": "Wait-time alerts and show reminders for this device, across every park.",
+      "subtitle": "Wait-time alerts and show reminders for this device, across every park",
       "loading": "Loading…",
       "emptyBody": "Nothing set up yet. On a park page, the bell next to a ride or a show sets up a reminder.",
       "rideAlertsTitle": "{count, plural, =1 {One wait-time alert} other {# wait-time alerts}}",
@@ -2267,7 +2267,7 @@
       "title": "{term} on the blog"
     },
     "overviewTitle": "Theme Park Dictionary",
-    "overviewDescription": "Over {count} theme park terms and definitions explained in plain language: wait times, crowd levels, Lightning Lanes, virtual queues, coaster elements, single rider, fast pass, soft openings, and more.",
+    "overviewDescription": "Over {count} theme park terms and definitions explained in plain language: wait times, crowd levels, Lightning Lanes, virtual queues, coaster elements, single rider, fast pass, soft openings, and more",
     "overviewKeywords": "theme park dictionary, theme park definitions, wait time definition, crowd level meaning, Lightning Lane, virtual queue, roller coaster terms, theme park vocabulary, amusement park terms",
     "termTitleSuffix": "Theme Park Dictionary",
     "termH1Suffix": "Explained – Theme Park Definition",
@@ -2367,7 +2367,7 @@
     "answer": {
       "sentence": "Shortest lines on a {days}-day trip in {year}: {windows}.",
       "below": "{percent}% below the {year} average",
-      "none": "No {days}-day trip in {year} has figures yet.",
+      "none": "No {days}-day trip in {year} has figures yet",
       "why": "Why these dates",
       "events": "Events: {list}",
       "cautions": "Worth knowing",
@@ -2472,7 +2472,7 @@
     "heroTitle": "Stories and data from the parks",
     "badge": "park.fan Blog",
     "description": "Trip reports, wait-time analyses and park guides from the park.fan team.",
-    "intro": "Trip reports, wait-time analyses and guides to the parks we cover. Written by someone who stands in the queues too.",
+    "intro": "Trip reports, wait-time analyses and guides to the parks we cover, written by someone who stands in the queues too",
     "blog": "Blog",
     "empty": "No posts yet. Check back soon.",
     "readMore": "Read article",
@@ -2599,7 +2599,7 @@
   "contribute": {
     "gallery": {
       "title": "These parks and rides are waiting for your photos",
-      "subtitle": "Airtime hills, dark rides with plenty of scenery, whole parks at dusk: a few examples on park.fan you can add photos to."
+      "subtitle": "Airtime hills, dark rides with plenty of scenery, whole parks at dusk: a few examples on park.fan you can add photos to"
     },
     "meta": {
       "title": "Share your park & ride photos",
@@ -2612,7 +2612,7 @@
     "banner": {
       "eyebrow": "Community gallery",
       "title": "Got photos of this ride or park?",
-      "subtitle": "Upload your shots so other fans can see what they are letting themselves in for. Drag, assign, done.",
+      "subtitle": "Upload your shots so other fans can see what they’re letting themselves in for: drag, assign, done",
       "cta": "Upload photos"
     },
     "dropzone": {
@@ -2664,7 +2664,7 @@
     },
     "success": {
       "title": "Thank you",
-      "message": "{count, plural, one {Your photo has} other {Your # photos have}} been submitted and will appear in the gallery after a quick review.",
+      "message": "{count, plural, one {Your photo has} other {Your # photos have}} been submitted and will appear in the gallery after a quick review",
       "again": "Upload more photos",
       "home": "Back to home"
     },
@@ -2980,7 +2980,7 @@
     "trip": {
       "open": "Spread parks over days",
       "title": "Spread parks over days",
-      "subtitle": "A proposal from the crowd forecast. Your plan only changes once you accept.",
+      "subtitle": "A proposal from the crowd forecast that only changes your plan once you accept it",
       "from": "From",
       "to": "To",
       "parks": "Parks",
@@ -3056,15 +3056,15 @@
       "steps": {
         "find": {
           "title": "Pick a park and a day",
-          "body": "In the wait-time calendar you can see how busy a day will be. From there you go straight into a plan."
+          "body": "In the wait-time calendar you can see how busy a day will be, and from there you go straight into a plan"
         },
         "add": {
           "title": "Add rides",
-          "body": "There's a button on every attraction page. Inside the planner you can search, or drag a ride in."
+          "body": "There's a button on every attraction page, and inside the planner you can search, or drag a ride in"
         },
         "arrange": {
           "title": "Move things until it fits",
-          "body": "Drag a block to another time. The wait and the colour move with it, because both belong to the hour."
+          "body": "Drag a block to another time: the wait and the colour move with it, because both belong to the hour"
         }
       }
     },
@@ -3090,7 +3090,7 @@
       "finish": "Open the plan",
       "lunch": {
         "label": "Plan a lunch break",
-        "hint": "Puts a block at 12:30 into the day. You can drag it anywhere once the planner is open."
+        "hint": "Puts a block at 12:30 into the day, and you can drag it anywhere once the planner is open"
       },
       "kids": {
         "label": "Children are coming",
@@ -3099,17 +3099,17 @@
       },
       "wet": {
         "label": "Stay dry if possible",
-        "hint": "Water rides get a mark in the list."
+        "hint": "Water rides get a mark in the list"
       },
       "earlyEntry": {
         "label": "We have early entry",
-        "hint": "Hotel guests can ride the big rides here before the park officially opens.",
-        "hintMinutes": "Hotel guests can ride the big rides here {minutes} minutes before the park officially opens."
+        "hint": "Hotel guests can ride the big rides here before the park officially opens",
+        "hintMinutes": "Hotel guests can ride the big rides here {minutes} minutes before the park officially opens"
       },
       "headliners": {
         "label": "Plan the headliners",
-        "hint": "Puts the {count} big rides into the day, ordered by their hourly curves.",
-        "hintTight": "There is room for {fits} of {total} before the park closes.",
+        "hint": "Puts the {count} big rides into the day, ordered by their hourly curves",
+        "hintTight": "There is room for {fits} of {total} before the park closes",
         "conflict": "{fits} of {total} fit. Untick what you can do without, or move up what you really want to ride.",
         "none": "No big ride is missing from this day.",
         "noneFitHeight": "No big ride suits your group: {count, plural, one {the one here has} other {all # have}} a minimum height above your smallest rider. You can still add them one by one in the planner.",
@@ -3153,7 +3153,7 @@
     "shared": {
       "metaTitle": "Shared plan | park.fan",
       "title": "Shared plan",
-      "subtitle": "Someone sent you a plan from the day planner.",
+      "subtitle": "Someone sent you a plan from the day planner",
       "loading": "Loading the plan…",
       "missing": "There is no plan behind this link. It may have been copied incompletely or have expired, or the sender turned notifications off, which deletes the plan.",
       "failed": "The plan couldn’t be loaded just now.",
@@ -3277,26 +3277,26 @@
     "options": {
       "hotel": "Hotel",
       "area": "Hotel area",
-      "areaNoneHint": "The plan then shows no drive times.",
+      "areaNoneHint": "The plan then shows no drive times",
       "fireworksWant": "I want to see them",
       "fireworksAny": "Doesn’t matter",
-      "blocksHint": "Each resort’s days in one run, so you drive between the resorts less.",
+      "blocksHint": "Each resort’s days in one run, so you drive between the resorts less",
       "rest": "Rest days",
       "restAutoLabel": "Automatic",
-      "restAutoHint": "At most four park days in a row; the rest days fall on the busiest days.",
+      "restAutoHint": "At most four park days in a row; the rest days fall on the busiest days",
       "restMaxLabel": "My own limit",
       "restNoneLabel": "No rest days",
       "restFewer": "One day fewer",
       "restMore": "One day more",
       "hop": "Park hopping",
-      "hopHint": "Two parks of one resort on one day, when the trip has fewer days than park visits.",
+      "hopHint": "Two parks of one resort on one day, when the trip has fewer days than park visits",
       "evenings": "Evenings",
       "blocksAuto": "Mixed only where it saves time",
-      "blocksAutoHint": "Inside your tickets’ dates, mixed where that saves at least 3 min a ride.",
+      "blocksAutoHint": "Inside your tickets’ dates, mixed where that saves at least 3 min a ride",
       "blocksAlways": "Always together",
       "blocksFree": "Mixed wherever the lines are shorter",
       "split": "Second park days",
-      "splitHint": "Parks set to “1–2 days” get a second day where the trip has room.",
+      "splitHint": "Parks set to “1–2 days” get a second day where the trip has room",
       "guide": "More in the trip planner guide",
       "moveBuffer": "Hotel change",
       "moveBufferMinutes": "{minutes} min",
@@ -3398,7 +3398,7 @@
       "leftOut": "{parks} {count, plural, =1 {doesn’t} other {don’t}} fit into {days, plural, =1 {1 park day} other {# park days}}.",
       "travelDays": "Use arrival and departure days",
       "longer": "{count, plural, =1 {1 more day} other {# more days}}",
-      "peakSaved": "Peak wait on your days about {minutes} min, {saved} min less than the average of your trip days.",
+      "peakSaved": "Peak wait on your days about {minutes} min, {saved} min less than the average of your trip days",
       "peakFlat": "Peak wait on your days about {minutes} min. Your trip days are about equally busy, so the order changes little.",
       "accuracy": "How accurate is this?",
       "moves": "{cities, plural, =1 {1 city} other {# cities}}, {moves, plural, =0 {no hotel change} =1 {1 hotel change} other {# hotel changes}}",
@@ -3695,7 +3695,7 @@
     },
     "tickets": {
       "title": "Tickets",
-      "lead": "With your tickets, the plan keeps to their days and parks.",
+      "lead": "With your tickets, the plan keeps to their days and parks",
       "add": "Add ticket",
       "addLabel": "Add a {resort} ticket",
       "addAnother": "Add another {resort} ticket",
@@ -3926,8 +3926,8 @@
       "finish": "Done, see the plan",
       "showPlan": "See the plan",
       "hotel": {
-        "lead": "A resort hotel gets you into the parks earlier.",
-        "leadNone": "Here no hotel gets you into the parks earlier. The hotel decides how far you have to go.",
+        "lead": "A resort hotel gets you into the parks earlier",
+        "leadNone": "Here no hotel gets you into the parks earlier, so the hotel only decides how far you have to go",
         "noEarly": "No early entry",
         "hintNoEarly": "{hint}, no early entry",
         "area": "Which area?",
@@ -3942,21 +3942,21 @@
         "open": "Not decided yet",
         "openHint": "The plan picks",
         "openShared": "The plan picks the hotel",
-        "oneCity": "For {nights, plural, =1 {one night} other {# nights}} the plan suggests one city.",
+        "oneCity": "For {nights, plural, =1 {one night} other {# nights}} the plan suggests one city",
         "otherCities": "Other cities"
       },
       "hotels": {
         "ask": "Where are you staying in {cities}?",
         "in": "Where are you staying in {city}?",
         "open": "Don’t know yet",
-        "openHint": "The ways then start from {area}, without early entry.",
+        "openHint": "The ways then start from {area}, without early entry",
         "moveBuffer": "Time for a hotel change",
         "map": "Schematic map: {count, plural, =1 {one area} other {# areas}}, numbered as in the list below, and {parks}.",
         "mapAreas": "Schematic map: {count, plural, =1 {one area} other {# areas}}, numbered as in the list below."
       },
       "pace": {
-        "maxHint": "At most {n, plural, =1 {1 park day} other {# park days}} in a row, then a rest day.",
-        "noneHint": "A park every day while there are parks left.",
+        "maxHint": "At most {n, plural, =1 {1 park day} other {# park days}} in a row, then a rest day",
+        "noneHint": "A park every day while there are parks left",
         "streak": "Park days in a row",
         "patternKey": "Each pattern is a week: blue is a park day, pale a rest day.",
         "more": "Anything else?",
@@ -3991,7 +3991,7 @@
         "pace": "How full should the trip be?",
         "evenings": "And in the evenings?",
         "tickets": "Do you have tickets yet?",
-        "finale": "Your plan is ready.",
+        "finale": "Your plan is ready",
         "departure": "And when do you fly home?"
       },
       "ribbon": {
@@ -4004,15 +4004,15 @@
         "months": "Month"
       },
       "parks": {
-        "lead": "The big ones are chosen already. Tap a picture to add a park or take it out.",
+        "lead": "The big ones are chosen already, and a tap on a picture adds a park or takes it out",
         "daysLabel": "Days",
         "moreCount": "{count, plural, =1 {1 park} other {# parks}}",
         "wayFrom": "{way} from {city}",
         "conflict": {
-          "travelDays": "The trip then has {count, plural, =1 {1 park day} other {# park days}}.",
+          "travelDays": "The trip then has {count, plural, =1 {1 park day} other {# park days}}",
           "only": "Only {parks}",
-          "onlyHint": "{parks} {count, plural, =1 {is} other {are}} left out instead.",
-          "longer": "The trip then ends on {date}."
+          "onlyHint": "{parks} {count, plural, =1 {is} other {are}} left out instead",
+          "longer": "The trip then ends on {date}"
         }
       },
       "spare": {
@@ -4021,21 +4021,21 @@
         "planned": "{count, plural, =1 {1 more is already taken} other {# more are already taken}}.",
         "ask": "What should happen on the other {free}?",
         "moreParks": "Add more parks",
-        "moreParksHint": "{parks} {count, plural, =1 {joins} other {join}} the trip.",
+        "moreParksHint": "{parks} {count, plural, =1 {joins} other {join}} the trip",
         "moreDays": "More time in your parks",
-        "moreDaysHint": "One more day each at {parks}.",
+        "moreDaysHint": "One more day each at {parks}",
         "free": "Free days, spread over the trip",
-        "freeHint": "The plan puts them between the park days, for the city or for a rest.",
+        "freeHint": "The plan puts them between the park days, for the city or for a rest",
         "shorter": "A shorter trip",
-        "shorterHint": "{days} days are enough for {parks, plural, =1 {1 park} other {# parks}}.",
+        "shorterHint": "{days} days are enough for {parks, plural, =1 {1 park} other {# parks}}",
         "parkDays": "+{count, plural, =1 {1 park day} other {# park days}}",
         "days": "{count} days"
       },
       "tickets": {
         "notYet": "Not yet",
-        "notYetHint": "The plan tells you which ones you need.",
+        "notYetHint": "The plan tells you which ones you need",
         "owned": "Yes, bought already",
-        "ownedHint": "Enter them, and the plan keeps to their dates."
+        "ownedHint": "Enter them, and the plan keeps to their dates"
       },
       "finale": {
         "days": "{count, plural, =1 {1 day} other {# days}}",
@@ -4074,7 +4074,7 @@
         "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando Crowd Calendar",
-        "calendarHint": "Which park on which day, and a planner for your whole trip."
+        "calendarHint": "Which park on which day, and a planner for your whole trip"
       },
       "hub": {
         "title": "Orlando Crowd Calendar",
@@ -4086,8 +4086,8 @@
         "metaDescriptionPlain": "Which park on which day at Walt Disney World, Universal with Epic Universe and SeaWorld, and a planner that puts your parks on your dates.",
         "metaDescriptionMonth": "Quietest Orlando days in {month}: {verdict}. Every park day by day, Epic Universe included.",
         "metaDescriptionMonthPlain": "Orlando in {month}, day by day: the shortest lines at Disney World, Universal with Epic Universe, SeaWorld and the day trips.",
-        "lead": "A calendar for all 16 parks around Orlando, and a planner for your trip days.",
-        "leadMonth": "All 16 parks around Orlando in {month}, day by day, and a planner for your trip days.",
+        "lead": "A calendar for all 16 parks around Orlando, and a planner for your trip days",
+        "leadMonth": "All 16 parks around Orlando in {month}, day by day, and a planner for your trip days",
         "monthIndexLabel": "Orlando by month",
         "calendar": {
           "caption": "Orlando’s parks, {from} to {to}: peak wait at the big rides, in minutes"
@@ -4151,19 +4151,19 @@
         "resorts": {
           "title": "The resorts around Orlando",
           "walt-disney-world": {
-            "lead": "Four theme parks and two water parks. Disney hotel guests get into the parks early in the morning with Early Entry.",
+            "lead": "Four theme parks and two water parks, which Disney hotel guests get into early in the morning with Early Entry",
             "stay": "From a hotel in Lake Buena Vista every theme park is under half an hour away."
           },
           "universal-orlando": {
-            "lead": "Three theme parks and the Volcano Bay water park. Universal hotel guests get into the parks early with Early Park Admission.",
+            "lead": "Three theme parks and the Volcano Bay water park, which Universal hotel guests get into early with Early Park Admission",
             "stay": "The Premier hotels add Express at Universal Studios and Islands of Adventure."
           },
           "seaworld-orlando": {
             "name": "SeaWorld Orlando",
-            "lead": "SeaWorld, the Aquatica water park and Discovery Cove, which opens by reservation only. Multi-park tickets include Busch Gardens and Adventure Island in Tampa."
+            "lead": "SeaWorld, the Aquatica water park and Discovery Cove, which opens by reservation only, plus Busch Gardens and Adventure Island in Tampa on multi-park tickets"
           },
           "day-trips": {
-            "lead": "LEGOLAND Florida, Busch Gardens Tampa and the Adventure Island water park lie outside Orlando.",
+            "lead": "LEGOLAND Florida, Busch Gardens Tampa and the Adventure Island water park lie outside Orlando",
             "stay": "From Lake Buena Vista, LEGOLAND is just under an hour away, Busch Gardens about an hour and a half."
           }
         }
@@ -4246,10 +4246,10 @@
             "universal_premier": "Early Park Admission, and Express at Universal Studios and Islands of Adventure"
           },
           "fireworks": "Magic Kingdom fireworks",
-          "fireworksWantHint": "Your Magic Kingdom days avoid party nights, when day guests have to leave early.",
-          "fireworksAnyHint": "A party night can be a Magic Kingdom day if its shorter lines make up for the shorter day.",
+          "fireworksWantHint": "Your Magic Kingdom days avoid party nights, when day guests have to leave early",
+          "fireworksAnyHint": "A party night can be a Magic Kingdom day if its shorter lines make up for the shorter day",
           "blocks": "Keep Disney days and Universal days together",
-          "eveningsHint": "Where a park closes early, the plan suggests a second park or Disney Springs and CityWalk for the evening.",
+          "eveningsHint": "Where a park closes early, the plan suggests a second park or Disney Springs and CityWalk for the evening",
           "blocksTickets": "Disney days and Universal days"
         },
         "details": {
@@ -4425,7 +4425,7 @@
           "hogwarts": "You need park-to-park for the Hogwarts Express between Universal Studios and Islands of Adventure.",
           "longStay": {
             "title": "14-day tickets from UK shops",
-            "line": "One each for Disney and Universal, also together as a Combo Ticket.",
+            "line": "One each for Disney and Universal, also together as a Combo Ticket",
             "plan": "Plan with these"
           },
           "mixing": {
@@ -4442,7 +4442,7 @@
       "homeStory": {
         "kicker": "Orlando",
         "title": "Orlando: which park on which day",
-        "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates.",
+        "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates",
         "link": "Orlando Crowd Calendar"
       }
     },
@@ -4452,7 +4452,7 @@
         "inRegion": "in Southern California",
         "area": "Los Angeles and San Diego",
         "calendar": "Disneyland & Universal Hollywood Crowd Calendar",
-        "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip."
+        "calendarHint": "Which of the eight parks is quietest on which day, and a planner for your trip"
       },
       "hub": {
         "title": "Disneyland & Universal Hollywood Crowd Calendar",
@@ -4464,8 +4464,8 @@
         "metaDescriptionPlain": "Which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and the parks down to San Diego, plus a planner for your trip dates.",
         "metaDescriptionMonth": "Quietest days in {month}: {verdict}. All eight parks from Six Flags Magic Mountain to San Diego, day by day.",
         "metaDescriptionMonthPlain": "Southern California in {month}, day by day: which park is quietest when at the Disneyland Resort, Universal Studios Hollywood and around San Diego.",
-        "lead": "A calendar for all eight parks around Los Angeles and San Diego, and a planner for your trip days.",
-        "leadMonth": "All eight parks around Los Angeles and San Diego in {month}, day by day, and a planner for your trip days.",
+        "lead": "A calendar for all eight parks around Los Angeles and San Diego, and a planner for your trip days",
+        "leadMonth": "All eight parks around Los Angeles and San Diego in {month}, day by day, and a planner for your trip days",
         "monthIndexLabel": "Southern California by month",
         "calendar": {
           "caption": "Southern California’s parks, {from} to {to}: peak wait in minutes"
@@ -4524,15 +4524,15 @@
         "resorts": {
           "title": "The resorts in Southern California",
           "disneyland-resort": {
-            "lead": "Disneyland Park and Disney California Adventure stand side by side in Anaheim. On Oogie Boogie Bash nights California Adventure closes early to day guests.",
+            "lead": "Disneyland Park and Disney California Adventure stand side by side in Anaheim, and on Oogie Boogie Bash nights California Adventure closes early to day guests",
             "stay": "From the Disney hotels and Harbor Boulevard you walk to both parks."
           },
           "universal-studios-hollywood": {
-            "lead": "Universal Studios Hollywood is in Universal City in Los Angeles, with its own ticket and its own calendar.",
+            "lead": "Universal Studios Hollywood is in Universal City in Los Angeles, with its own ticket and its own calendar",
             "stay": "The nearby hotel areas are Universal City and Hollywood."
           },
           "day-trips": {
-            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain and three parks in and around San Diego: SeaWorld, LEGOLAND California and Sesame Place.",
+            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain and three parks in and around San Diego: SeaWorld, LEGOLAND California and Sesame Place",
             "stay": "For SeaWorld, LEGOLAND and Sesame Place there are hotel areas in San Diego and Carlsbad."
           }
         }
@@ -4595,9 +4595,9 @@
             "disney": "Disneyland Hotel, Grand Californian or Pixar Place: a walk to both parks"
           },
           "fireworks": "Night shows",
-          "fireworksWantHint": "Your park days avoid party nights, when day guests have to leave early.",
-          "fireworksAnyHint": "A party night can be a park day if its lower peak wait makes up for the shorter day.",
-          "eveningsHint": "Where a park closes early, the plan suggests an evening: the other Disney park, Downtown Disney or Universal CityWalk."
+          "fireworksWantHint": "Your park days avoid party nights, when day guests have to leave early",
+          "fireworksAnyHint": "A party night can be a park day if its lower peak wait makes up for the shorter day",
+          "eveningsHint": "Where a park closes early, the plan suggests an evening: the other Disney park, Downtown Disney or Universal CityWalk"
         },
         "relaxed": {
           "blocks_relaxed": "The Disneyland Resort days couldn’t all go back to back on these dates."
@@ -4720,7 +4720,7 @@
       "homeStory": {
         "kicker": "Southern California",
         "title": "Southern California: which park on which day",
-        "lead": "Disneyland, California Adventure, Universal Hollywood and five more parks in one calendar: which one is quietest when, and a planner for your trip dates.",
+        "lead": "Disneyland, California Adventure, Universal Hollywood and five more parks in one calendar: which one is quietest when, and a planner for your trip dates",
         "link": "Southern California Crowd Calendar"
       }
     },
@@ -4730,7 +4730,7 @@
         "inRegion": "in Japan",
         "area": "Tokyo to Osaka",
         "calendar": "Tokyo Disney & USJ Crowd Calendar",
-        "calendarHint": "Five parks day by day, and a planner for a trip across several cities."
+        "calendarHint": "Five parks day by day, and a planner for a trip across several cities"
       },
       "hub": {
         "title": "Tokyo Disney & USJ Crowd Calendar",
@@ -4742,8 +4742,8 @@
         "metaDescriptionPlain": "Peak waits at Tokyo Disneyland, DisneySea, Universal Studios Japan, Fuji-Q and LEGOLAND Japan day by day, and a planner that splits the nights.",
         "metaDescriptionMonth": "Quietest days at Japan's parks in {month}: {verdict}. All five parks day by day.",
         "metaDescriptionMonthPlain": "Japan in {month}, day by day: the peak wait at Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan and Universal Studios Japan.",
-        "lead": "A calendar for five parks between Tokyo and Osaka, and a planner that puts your cities in order and splits the nights.",
-        "leadMonth": "All five parks between Tokyo and Osaka in {month}, day by day, and a planner that puts your cities in order and splits the nights.",
+        "lead": "A calendar for five parks between Tokyo and Osaka, and a planner that puts your cities in order and splits the nights",
+        "leadMonth": "All five parks between Tokyo and Osaka in {month}, day by day, and a planner that puts your cities in order and splits the nights",
         "monthIndexLabel": "Japan by month",
         "glance": {
           "zone": "Japan time"
@@ -4816,19 +4816,19 @@
         "resorts": {
           "title": "The resorts and parks in Japan",
           "tokyo-disney-resort": {
-            "lead": "Tokyo Disneyland and Tokyo DisneySea stand side by side in Maihama. Disney hotel guests get into Tokyo Disneyland 15 minutes early with Happy Entry.",
+            "lead": "Tokyo Disneyland and Tokyo DisneySea stand side by side in Maihama, and Disney hotel guests get into Tokyo Disneyland 15 minutes early with Happy Entry",
             "stay": "Maihama for both Disney parks: a walk to Tokyo Disneyland, the monorail to DisneySea."
           },
           "universal-studios-japan": {
-            "lead": "Universal Studios Japan is in Osaka, at the end of the line from Tokyo through Nagoya.",
+            "lead": "Universal Studios Japan is in Osaka, at the end of the line from Tokyo through Nagoya",
             "stay": "Universal City is at the gate, Umeda and Namba are in town; Kyoto is an hour away."
           },
           "fuji-q-highland": {
-            "lead": "Fuji-Q Highland is in Fujikawaguchiko. The coach from Shinjuku takes just under two hours.",
+            "lead": "Fuji-Q Highland is in Fujikawaguchiko, just under two hours by coach from Shinjuku",
             "stay": "Shinjuku for the buses from Tokyo, Kawaguchiko by the lake, or the Highland Resort at the park."
           },
           "legoland-japan": {
-            "lead": "LEGOLAND Japan is in Nagoya, on the way between Tokyo and Osaka.",
+            "lead": "LEGOLAND Japan is in Nagoya, on the way between Tokyo and Osaka",
             "stay": "Nagoya Station for the Shinkansen, or the LEGOLAND Japan Hotel at the gate."
           }
         }
@@ -4902,7 +4902,7 @@
             "park_hotel": "Park hotel at Fuji-Q or LEGOLAND",
             "offsite": "Somewhere else"
           },
-          "eveningsHint": "Where a park closes early, the plan suggests IKSPIARI by the Disney parks or Universal CityWalk Osaka for the evening.",
+          "eveningsHint": "Where a park closes early, the plan suggests IKSPIARI by the Disney parks or Universal CityWalk Osaka for the evening",
           "moveBufferHint": "With your bags sent ahead (takkyubin), 30 minutes is usually enough."
         },
         "details": {
@@ -5055,7 +5055,7 @@
       "homeStory": {
         "kicker": "Japan",
         "title": "Japan: which park on which day",
-        "lead": "Five parks from Tokyo to Osaka in one calendar, day by day, and a trip planner that fits the cities, the nights and the parks to your dates.",
+        "lead": "Five parks from Tokyo to Osaka in one calendar, day by day, and a trip planner that fits the cities, the nights and the parks to your dates",
         "link": "Japan Crowd Calendar"
       }
     },
@@ -5065,7 +5065,7 @@
         "inRegion": "in Paris",
         "area": "France",
         "calendar": "Disneyland Paris & Parc Astérix Crowd Calendar",
-        "calendarHint": "Which of the three parks on which day, and where to stay for it."
+        "calendarHint": "Which of the three parks on which day, and where to stay for it"
       },
       "hub": {
         "title": "Disneyland Paris & Parc Astérix Crowd Calendar",
@@ -5077,8 +5077,8 @@
         "metaDescriptionPlain": "Peak wait and crowd level at Disneyland Park, Disney Adventure World and Parc Astérix, day by day, plus a trip planner for park days and hotels.",
         "metaDescriptionMonth": "The quietest days at Disneyland Paris and Parc Astérix in {month}: {verdict}. All three parks, day by day.",
         "metaDescriptionMonthPlain": "Disneyland Paris and Parc Astérix in {month}, day by day: peak wait, crowd level and opening hours at all three parks.",
-        "lead": "A calendar for Disneyland Paris and Parc Astérix, two resorts with their own hotels, and a planner that tells you where to stay.",
-        "leadMonth": "Disneyland Paris and Parc Astérix in {month}, day by day, and a planner that tells you where to stay.",
+        "lead": "A calendar for Disneyland Paris and Parc Astérix, two resorts with their own hotels, and a planner that tells you where to stay",
+        "leadMonth": "Disneyland Paris and Parc Astérix in {month}, day by day, and a planner that tells you where to stay",
         "monthIndexLabel": "Crowd calendar by month",
         "glance": {
           "zone": "Paris time"
@@ -5137,11 +5137,11 @@
         "resorts": {
           "title": "The resorts around Paris",
           "disneyland-paris": {
-            "lead": "Disneyland Park and Disney Adventure World stand side by side, their gates a few minutes’ walk apart. Disney hotel guests get into the parks early with Extra Magic Time.",
+            "lead": "Disneyland Park and Disney Adventure World stand side by side, their gates a few minutes’ walk apart, and Disney hotel guests get in early with Extra Magic Time",
             "stay": "The Disney Hotels by Lake Disney are a walk from the gates; the partner hotels in Val d’Europe and Val de France run a free shuttle."
           },
           "parc-asterix": {
-            "lead": "A theme park with its own hotels, about an hour by car from Disneyland Paris. Without a car, a shuttle runs from Charles de Gaulle airport to the park.",
+            "lead": "A theme park with its own hotels, about an hour by car from Disneyland Paris, or by shuttle from Charles de Gaulle airport without one",
             "stay": "The park’s three hotels are a walk from the gate, and a stay includes park tickets and Early Entry to some rides."
           }
         }
@@ -5206,7 +5206,7 @@
             "parc_asterix": "Parc Astérix hotel",
             "offsite": "Another hotel"
           },
-          "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village.",
+          "eveningsHint": "When a park closes early, the evening goes to the other Disney park or to Disney Village",
           "moveBufferHint": "With your suitcases in tow, 60 minutes is realistic."
         },
         "details": {
@@ -5318,7 +5318,7 @@
   "news": {
     "metaTitle": "Theme park news: events, openings and dates",
     "metaDescription": "Short news from the theme parks: new rides, events, anniversaries and sales, each dated and linked to the park it is about.",
-    "intro": "What is happening at the parks, newest first.",
+    "intro": "What is happening at the parks, newest first",
     "count": "{count, plural, one {# story} other {# stories}}",
     "filter": {
       "label": "Filter by park",
@@ -5358,12 +5358,12 @@
       "action": "Crowd calendar for your park",
       "next": {
         "title": "Your date in the crowd calendar",
-        "body": "On every park page each published day is green, yellow or red, with the region’s school holidays and public holidays counted in."
+        "body": "On every park page each published day is green, yellow or red, with the region’s school holidays and public holidays counted in"
       }
     },
     "bestTime": {
       "kicker": "park.fan · trip planning",
-      "tagline": "Theme-park crowds follow a pattern. From the wait times we’ve measured at 200+ parks since December 2025, here are the quietest days and how to dodge the busy ones.",
+      "tagline": "Theme-park crowds follow a pattern: from the wait times we’ve measured at 200+ parks since December 2025, here are the quietest days and how to dodge the busy ones",
       "stats": {
         "parks": {
           "value": "200+",
@@ -5398,7 +5398,7 @@
       "action": "Plan a day",
       "next": {
         "title": "No date yet?",
-        "body": "The quietest weekdays and months from wait times measured at over 200 parks, and on every park page a crowd calendar with a forecast for each day the park has published."
+        "body": "The quietest weekdays and months from wait times measured at over 200 parks, and on every park page a crowd calendar with a forecast for each day the park has published"
       }
     },
     "blog": {
@@ -5754,7 +5754,7 @@
     "metaTitle": "Parky: wait times and day plans in an AI chat",
     "metaDescription": "Parky knows the waits right now and the quietest days, and he plans your park day with you. park.fan’s AI chat, free and without an account.",
     "title": "Parky’s coming to the park with you",
-    "lead": "He knows the waits right now and the quietest days, and he plans your park day with you.",
+    "lead": "He knows the waits right now and the quietest days, and he plans your park day with you",
     "intro": "Parky lives at the bottom right of park.fan, in the round speech bubble with a Ferris wheel on his head. Tap him and write to him like you would to a friend who knows their theme parks. Whatever you’ve set up in the day planner, he already knows.",
     "ask": "Chat with Parky",
     "off": "Parky is taking a break right now. Check back later.",
