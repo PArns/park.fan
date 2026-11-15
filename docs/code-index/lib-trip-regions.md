@@ -352,10 +352,8 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
 - `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
 - `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
-- `visitorCountry` _function_: The visitor's country from the browser's languages: the region of the first one, upper case (`en-IE` → `IE`), `null` without one.
-- `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
+- `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one's region (`en-IE` → `IE`) names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
 - `ticketLinksOf` _function_: A product's purchase links in the admin's order; without `links` (an older answer) the official `shopUrl` alone, under `officialSeller`.
-- `isVisitorStore` _function_: Whether a link goes to the seller's store for the visitor's own country.
 - `compareTicketOrder` _function_: The one order of the planner's shops, tickets and packages, as the owner sets it in the admin: sponsored first, then the admin's order.
 - `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them (`compareTicketOrder`): the sponsored ones first, then the admin's order. Without `links` (an older answer) the official `shopUrl` stands alone.
 - `primaryTicketLink` _function_: The link a recommendation buys through: the first in the ticket order that is not the operator's own shop, else the shop. `null` without links.

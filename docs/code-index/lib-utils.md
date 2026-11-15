@@ -466,6 +466,11 @@ Route guards for the `/[locale]/...` tree.
 - `OFFSEASON_MIN_DAYS` _const_: How far off a closed park's next opening has to be before it is between seasons rather than shut for a few days.
 - Types: `ScheduleSummary`, `ParkOpening`, `ParkOpeningCountdownStrings`
 
+### [`scroll-fade.ts`](../../lib/utils/scroll-fade.ts)
+
+- `SCROLL_FADE_X` _const_: The far edge of a row that scrolls sideways, faded over its last 2rem, so a chip or tab cut by the edge reads as a row to swipe rather than as a fault. The `pr-8` under the fade lets the last item scroll clear of it.
+- `SCROLL_FADE_Y` _const_: The same at the foot of a pane that scrolls down: a row cut by its edge reads as more below.
+
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
 
 - `isScrollKey` _function_: Whether a key press scrolls the page: a scroll key, and not typed into a field.

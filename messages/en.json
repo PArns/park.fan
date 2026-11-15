@@ -3971,7 +3971,7 @@
         "maxHint": "At most {n, plural, =1 {1 park day} other {# park days}} in a row, then a rest day",
         "noneHint": "A park every day while there are parks left",
         "streak": "Park days in a row",
-        "patternKey": "Each pattern is a week: blue is a park day, pale a rest day.",
+        "patternKey": "Each pattern is a week: blue is a park day, outlined a rest day.",
         "more": "Anything else?",
         "startsIn": "The trip starts in {city}.",
         "endsIn": "The trip ends in {city}.",
@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 hot park day} other {# hot park days}}",
       "heatForecast": "over <temp></temp> forecast",
-      "heatNormal": "{count, plural, =1 {<temp></temp> on average} other {up to <temp></temp> on average}}",
+      "heatNormal": "{count, plural, =1 {typically <temp></temp>} other {typically up to <temp></temp>}}",
       "noHeat": "No hot park day",
       "stormFrom": "{season} from {date}",
       "stormUntil": "{season} until {date}",
@@ -4467,6 +4467,9 @@
         "area": {
           "universal": "Universal Orlando hotels",
           "disney_springs": "Disney Springs Resort Area"
+        },
+        "venue": {
+          "polynesian-beach": "Beach at Disney's Polynesian Village Resort"
         }
       }
     },

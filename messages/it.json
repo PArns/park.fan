@@ -3971,7 +3971,7 @@
         "maxHint": "Al massimo {n, plural, =1 {1 giorno al parco} other {# giorni al parco}} di fila, poi un giorno di riposo",
         "noneHint": "Un parco ogni giorno finché ne restano",
         "streak": "Giorni al parco di fila",
-        "patternKey": "Ogni schema è una settimana: in blu un giorno al parco, in chiaro un giorno di riposo.",
+        "patternKey": "Ogni schema è una settimana: un quadratino blu è un giorno al parco, uno vuoto un giorno di riposo.",
         "more": "Altro?",
         "startsIn": "Il viaggio inizia a {city}.",
         "endsIn": "Il viaggio finisce a {city}.",
@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 giorno di parco caldo} other {# giorni di parco caldi}}",
       "heatForecast": "oltre <temp></temp> previsti",
-      "heatNormal": "{count, plural, =1 {<temp></temp> in media} other {fino a <temp></temp> in media}}",
+      "heatNormal": "{count, plural, =1 {di solito <temp></temp>} other {di solito fino a <temp></temp>}}",
       "noHeat": "Nessun giorno di parco caldo",
       "stormFrom": "{season} dal {date}",
       "stormUntil": "{season} fino al {date}",
@@ -4467,6 +4467,9 @@
         "area": {
           "universal": "Hotel Universal",
           "disney_springs": "Disney Springs Resort Area"
+        },
+        "venue": {
+          "polynesian-beach": "Spiaggia del Polynesian Village Resort"
         }
       }
     },

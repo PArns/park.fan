@@ -12,7 +12,6 @@ import {
   entryOfProduct,
   hopperHighlights,
   hopperOn,
-  isVisitorStore,
   linkMarket,
   longStayTickets,
   needsConnectedHop,
@@ -35,7 +34,6 @@ import {
   ticketWindowDays,
   toggleHopper,
   windowLength,
-  visitorCountry,
   visitorMarket,
   type HopperHighlight,
   type SuggestionGroup,
@@ -1031,9 +1029,11 @@ function SuggestionRow({
         }
         data-plan-ticket-facts={resort}
       >
+        {/* On a phone Parky's launcher floats over the card's right edge; the room keeps the
+            chevron beside it rather than under it. */}
         <summary
           className={cn(
-            'flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-md py-2 [&::-webkit-details-marker]:hidden',
+            'flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-md py-2 max-sm:pr-12 [&::-webkit-details-marker]:hidden',
             PLAN_FOCUS
           )}
         >
@@ -1344,7 +1344,7 @@ function useTicketVisitor(): TicketLinkVisitor & { market: ReturnType<typeof vis
     () => ''
   );
   const languages = language ? [language] : [];
-  return { locale, market: visitorMarket(languages), country: visitorCountry(languages) };
+  return { locale, market: visitorMarket(languages) };
 }
 
 const noSubscribe = () => () => {};
@@ -1353,7 +1353,7 @@ const noSubscribe = () => () => {};
  * One purchase link: in a new tab with park.fan as its referrer (`ticketLinkAttributes`), counted
  * as `ticket_link_clicked` with its place among the links drawn (`index`), a middle click
  * included. `primary` is the recommendation's filled button, `outline` a compact one, `text` a
- * link in a line; the visitor's own country store is drawn in the primary tint.
+ * link in a line. Every seller is drawn alike: a tint on one of two reads as a fault.
  */
 function BuyLink({
   link,
@@ -1396,9 +1396,6 @@ function BuyLink({
           withIcon: true,
           className: cn(
             'h-auto min-h-8 max-w-full py-1 text-left whitespace-normal max-sm:h-auto max-sm:min-h-11',
-            tone === 'outline' &&
-              isVisitorStore(link, visitor) &&
-              'border-primary/60 bg-primary/10 text-primary-ink dark:border-primary/60 dark:bg-primary/15',
             className
           ),
         });
@@ -1440,10 +1437,10 @@ function BuyLabel({ link, prefix }: { link: TicketLink; prefix?: string }) {
 /**
  * Where to buy a ticket, every shop as compact buttons: the product's links in the ticket order
  * (`orderTicketLinks`), a seller's country stores together under its name (`ticketLinkGroups`),
- * the store of the visitor's own country drawn in the primary tint. The official shop is
- * marked, a country store named by its country and currency („Deutschland (€)",
- * `ticketStoreName`), a shop abroad tagged with where it sells ("UK shop", `linkMarket`), a
- * sponsored one labelled "Partner link" beside it, which says what that means.
+ * every store drawn alike. The official shop is marked, a country store named by its country and
+ * currency („Deutschland (€)", `ticketStoreName`), a shop abroad tagged with where it sells ("UK
+ * shop", `linkMarket`), a sponsored one labelled "Partner link" beside it, which says what that
+ * means.
  */
 function PurchaseLinks({
   source,

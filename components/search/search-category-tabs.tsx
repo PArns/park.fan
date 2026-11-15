@@ -3,6 +3,8 @@
 import type { KeyboardEvent, MouseEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { cn } from '@/lib/utils';
+import { SCROLL_FADE_X } from '@/lib/utils/scroll-fade';
 import type { SearchGroup, SearchTab } from '@/components/search/search-result-groups';
 
 /** `TabsTrigger`'s base is a segmented control; here a tab is a label over an underline. */
@@ -41,10 +43,11 @@ export function SearchCategoryTabs({ groups, onTabChange }: SearchCategoryTabsPr
 
   return (
     <TabsList
-      // The right edge fades, so tabs that run past it read as a row to swipe; the padding under
-      // the fade lets the last tab scroll clear of it. The line below is the panel's, or it would
-      // fade too.
-      className="flex h-auto w-full shrink-0 [scrollbar-width:none] justify-start gap-0.5 overflow-x-auto rounded-none bg-transparent [mask-image:linear-gradient(to_right,black_calc(100%-2rem),transparent)] p-0 pr-8 pl-2"
+      // The line below is the panel's, or it would fade with the row's edge.
+      className={cn(
+        'flex h-auto w-full shrink-0 [scrollbar-width:none] justify-start gap-0.5 overflow-x-auto rounded-none bg-transparent p-0 pl-2',
+        SCROLL_FADE_X
+      )}
       onKeyDown={onTabKeyDown}
     >
       <TabsTrigger value="all" className={TAB_CLASS} {...pointerProps('all')}>

@@ -223,6 +223,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
 - `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
+- `useVenueName` _hook_: An evening venue's name: "Strand am Polynesian Village Resort" in German.
 - `useBaseName` _hook_: A base's name: "Tokio" in German.
 - `useGatewayName` _hook_: A gateway's short name: "Haneda", "Charles de Gaulle".
 
@@ -335,6 +336,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
 - `RIBBON_GRID` _const_: The ribbon's day grid, a column per trip day; the trip head's weather ruler keeps its geometry.
+- `QUIET_CELL` _const_: A day without a park: outlined in the muted ink, quieter than a park day's solid colour but seen on the dark ground too, with the mark the Month view gives it.
 
 ### [`wizard/steps/area-map-tiles.tsx`](../../components/trip-regions/wizard/steps/area-map-tiles.tsx)
 
@@ -371,7 +373,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/pace-step.tsx`](../../components/trip-regions/wizard/steps/pace-step.tsx)
 
-- `PaceStep` _component_: Tempo: how full the trip is, as three cards with a week drawn as a pattern (`pacePattern`), park days solid and rest days pale, the own limit's pattern following its stepper; then the switches for second days and a park on the travel days, …
+- `PaceStep` _component_: Tempo: how full the trip is, as three cards with a week drawn as a pattern (`pacePattern`), park days solid and rest days outlined, the own limit's pattern following its stepper; then the switches for second days and a park on the travel …
 
 ### [`wizard/steps/parks-step.tsx`](../../components/trip-regions/wizard/steps/parks-step.tsx)
 

@@ -151,7 +151,7 @@ function RibbonCells({ plan }: { plan: TripPlan | undefined }) {
  * A day without a park: outlined in the muted ink, quieter than a park day's solid colour but seen
  * on the dark ground too, with the mark the Month view gives it.
  */
-const QUIET_CELL = 'border-muted-foreground/50 text-muted-foreground border';
+export const QUIET_CELL = 'border-muted-foreground/50 text-muted-foreground border';
 
 /** A day's field: its crowd colour on a park day, the move's dashed ink, else the quiet outline. */
 function cellClass(day: PlanDay): string {

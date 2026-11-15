@@ -3971,7 +3971,7 @@
         "maxHint": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée, puis un jour de repos",
         "noneHint": "Un parc chaque jour tant qu’il en reste",
         "streak": "Jours de parc d’affilée",
-        "patternKey": "Chaque motif est une semaine : en bleu un jour de parc, en clair un jour de repos.",
+        "patternKey": "Chaque motif est une semaine : un carré bleu est un jour de parc, un carré vide un jour de repos.",
         "more": "Autre chose ?",
         "startsIn": "Le voyage commence à {city}.",
         "endsIn": "Le voyage se termine à {city}.",
@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 jour de parc chaud} other {# jours de parc chauds}}",
       "heatForecast": "plus de <temp></temp> prévus",
-      "heatNormal": "{count, plural, =1 {<temp></temp> en moyenne} other {jusqu’à <temp></temp> en moyenne}}",
+      "heatNormal": "{count, plural, =1 {habituellement <temp></temp>} other {habituellement jusqu’à <temp></temp>}}",
       "noHeat": "Aucun jour de parc chaud",
       "stormFrom": "{season} à partir du {date}",
       "stormUntil": "{season} jusqu’au {date}",
@@ -4467,6 +4467,9 @@
         "area": {
           "universal": "Hôtels Universal",
           "disney_springs": "Disney Springs Resort Area"
+        },
+        "venue": {
+          "polynesian-beach": "Plage du Polynesian Village Resort"
         }
       }
     },

@@ -3971,7 +3971,7 @@
         "maxHint": "Höchstens {n, plural, =1 {1 Parktag} other {# Parktage}} am Stück, dann ein Ruhetag",
         "noneHint": "Jeden Tag ein Park, solange Parks übrig sind",
         "streak": "Parktage am Stück",
-        "patternKey": "Ein Muster ist eine Woche: blau ein Parktag, hell ein Ruhetag.",
+        "patternKey": "Ein Muster ist eine Woche: blau ein Parktag, umrandet ein Ruhetag.",
         "more": "Und sonst?",
         "startsIn": "Die Reise beginnt in {city}.",
         "endsIn": "Die Reise endet in {city}.",
@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 heißer Parktag} other {# heiße Parktage}}",
       "heatForecast": "über <temp></temp> vorhergesagt",
-      "heatNormal": "{count, plural, =1 {im Schnitt <temp></temp>} other {im Schnitt bis <temp></temp>}}",
+      "heatNormal": "{count, plural, =1 {typisch <temp></temp>} other {typisch bis <temp></temp>}}",
       "noHeat": "Kein heißer Parktag",
       "stormFrom": "{season} ab {date}",
       "stormUntil": "{season} bis {date}",
@@ -4467,6 +4467,9 @@
         "area": {
           "universal": "Universal-Hotels",
           "disney_springs": "Disney Springs Resort Area"
+        },
+        "venue": {
+          "polynesian-beach": "Strand am Polynesian Village Resort"
         }
       }
     },

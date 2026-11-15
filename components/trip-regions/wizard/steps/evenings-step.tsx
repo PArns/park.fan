@@ -22,6 +22,7 @@ import {
   WizardToggle,
 } from '@/components/planner/wizard-toggle';
 import { usePlanContext, useTripEvents } from '../../planner/plan-context';
+import { useVenueName } from '../../planner/plan-place-words';
 import { useHopperWord } from '../../planner/plan-ticket-words';
 import { useStatePlan } from '../../planner/use-trip-plan';
 import type { WizardStepProps } from '../wizard-step';
@@ -50,6 +51,7 @@ function EveningToggle() {
   const tOptions = useTranslations('tripPlanner.options');
   const tRegion = useTranslations('tripRegion.planner.options');
   const { region, state, update, headliners, parkBySlug } = usePlanContext();
+  const venueName = useVenueName();
   const groups = new Set(
     effectiveParks(state, headliners).map((p) => parkBySlug.get(p.slug)?.group)
   );
@@ -69,7 +71,7 @@ function EveningToggle() {
               key={venue.key}
               className="border-border/70 text-muted-foreground rounded-full border px-2.5 py-0.5 text-xs"
             >
-              {venue.name}
+              {venueName(venue.key)}
             </li>
           ))}
         </ul>
