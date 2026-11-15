@@ -3160,7 +3160,7 @@
     },
     "parky": {
       "button": "Plan your perfect park day with Parky",
-      "line": "A few questions in the chat, and each answer goes straight into this day."
+      "line": "I'll ask you a few questions in the chat and put each answer straight into this day."
     }
   },
   "tripPlanner": {
@@ -3922,7 +3922,7 @@
     },
     "parky": {
       "button": "Plan your perfect trip with Parky",
-      "line": "A few questions in the chat, and each answer goes straight into this planner."
+      "line": "I'll ask you a few questions in the chat and put each answer straight into this planner."
     },
     "codeKey": "Parks",
     "crowdColour": "Colour: how busy the park is that day, compared with a normal day there.",
@@ -5726,6 +5726,9 @@
       "planStands": "Your plan stands. Fine-tune it if you like",
       "end": "End",
       "done": "Done",
+      "start": {
+        "name": "Parky"
+      },
       "steps": {
         "region": "Region",
         "dates": "Dates",
