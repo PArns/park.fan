@@ -3869,6 +3869,18 @@
         "label": "Partnerlink",
         "note": "Kaufst du über diesen Link, bekommt park.fan eine Provision. Der Preis ändert sich für dich nicht."
       },
+      "pick": {
+        "title": "Empfehlung",
+        "ad": "Anzeige",
+        "exact": "Passend zu diesem Plan",
+        "parkDays": "{count, plural, =1 {1 Parktag} other {# Parktage}}",
+        "via": "Kaufen bei",
+        "official": "{count, plural, =1 {Offizieller Shop:} other {Offizielle Shops:}}",
+        "details": "So nutzt der Plan die Tickets",
+        "daysIn": "{days} Parktage in {window} Tagen",
+        "everyDay": "Jeden Tag, {window} Tage am Stück",
+        "hopping": "{hopper} inklusive"
+      },
       "later": "Schon Tickets?",
       "enter": "Eintragen"
     },

@@ -1,6 +1,6 @@
 'use client';
 
-import { useId, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { useState, useSyncExternalStore, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { ChevronDown, CircleAlert, ExternalLink, Info, Moon, Ticket } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -16,16 +16,18 @@ import {
   linkMarket,
   longStayTickets,
   needsConnectedHop,
+  officialTicketLink,
   orderTicketLinks,
   ownedUse,
   ticketLinkAttributes,
   ticketLinkGroups,
-  ticketLinksOf,
   plannedVisits,
+  primaryTicketLink,
   setTickets,
   suggestionGroups,
   suggestionsByStart,
   ticketHomeMarket,
+  ticketFacts,
   ticketLength,
   ticketStoreName,
   ticketWindowDays,
@@ -36,6 +38,8 @@ import {
   type HopperHighlight,
   type SuggestionGroup,
   type TicketCatalog,
+  type TicketFact,
+  type TicketLinkVisitor,
 } from '@/lib/trip-regions/plan-tickets';
 import type { TicketLink } from '@/lib/trip-regions/types';
 import { ticketLinkClickProps, ticketModeOf } from '@/lib/trip-regions/plan-analytics';
@@ -77,8 +81,9 @@ export interface PlanEdit {
 
 /**
  * The tickets at Level 0, after the saving and before the day lines, and under the assistant's
- * "Not yet". Plan first: one sentence that names the tickets to buy, then a ticket per resort with
- * its park days, its window and where to buy it, the long stay's alternative set apart. Owned,
+ * "Not yet". Plan first: one line that names the tickets to buy, the recommendation with a buy
+ * button per ticket and the long stay's 14-day tickets as the package beside it, then a line per
+ * ticket that opens on its park days, its window and its rules. Owned,
  * "Your tickets": per ticket its validity and how many days the plan uses, and what the visitor can
  * do about a day outside it. Both, "Tickets" with the two halves. Nothing without a catalog or
  * without either.
@@ -407,9 +412,9 @@ const KNOWN_UNUSED = new Set(['parks_fewer_than_days', 'window_outside_trip', 'n
 // ── Plan first ────────────────────────────────────────────────────────────────
 
 /**
- * Plan first: the tickets to buy, one sentence that names them and a ticket per resort under it,
- * then "Use these as your tickets" and the long stay's alternative. No fold: the tickets are the
- * card.
+ * Plan first: the tickets to buy, named in one line under the card's title, then the
+ * recommendation as packages to compare with a buy button per ticket (`TicketPick`), then one line
+ * per ticket that opens on its days and rules (`SuggestionRow`), then "Use these as your tickets".
  */
 function SuggestedTickets({
   plan,
@@ -435,26 +440,28 @@ function SuggestedTickets({
         t('suggest.group', { resort: resortWord(g.resort), count: g.items.length, days: g.days })
       )
     : suggested.map((s) => t('named.datedShort', { resort: resortWord(s.resort), days: s.days }));
-  const sentence = oneFullStop(
-    `${parts.join(grouped ? t('suggest.groupSep') : t('suggest.then'))}.`
-  );
-  const longStay = longStayProducts(suggested, catalog);
-  const comparable = [
-    ...groups.map((g) => suggestionShop(g.items[0], catalog)),
-    ...longStay.map((id) => catalog.get(id) ?? {}),
-  ].some((source) => ticketLinksOf(source, '').length > 1);
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-base font-semibold" data-plan-ticket-sentence="">
-        {sentence}
+      <p className="text-foreground/75 text-sm" data-plan-ticket-sentence="">
+        {parts.join(grouped ? t('suggest.groupSep') : t('suggest.then'))}
       </p>
-      <div className="grid gap-3 @xl:grid-cols-2">
-        {groups.map((g) => (
-          <SuggestionTicket key={g.items[0].id} plan={plan} group={g} suggested={suggested} />
-        ))}
+      <TicketPick
+        plan={plan}
+        groups={groups}
+        suggested={suggested}
+        longStay={longStayProducts(suggested, catalog)}
+      />
+      <div className="flex flex-col gap-1">
+        <h5 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">
+          {t('pick.details')}
+        </h5>
+        <ul className="divide-border/60 flex flex-col divide-y">
+          {groups.map((g) => (
+            <SuggestionRow key={g.items[0].id} plan={plan} group={g} suggested={suggested} />
+          ))}
+        </ul>
       </div>
-      {comparable && <p className="text-muted-foreground text-xs">{t('links.compare')}</p>}
       {!owns && (
         <button
           type="button"
@@ -474,7 +481,6 @@ function SuggestedTickets({
           {t('adopt')}
         </button>
       )}
-      <LongStayAlternative plan={plan} suggested={suggested} products={longStay} />
     </div>
   );
 }
@@ -503,13 +509,395 @@ function longStayProducts(
   ].filter((id) => catalog.has(id));
 }
 
+/** One ticket the recommendation names, with the link it is bought through and the shop's own. */
+interface PickItem {
+  key: string;
+  resort: string;
+  product: string;
+  /** "Universal 5 days + Park-to-Park", "Disney 14-Day Magic Ticket". */
+  name: string;
+  /** What the catalog says it holds, for a long stay's ticket. */
+  facts: TicketFact[];
+  buy: TicketLink | null;
+  official: TicketLink | null;
+  /** How many shops sell it, for the line that prices differ between them. */
+  links: number;
+  surface: TicketLinkSurface;
+}
+
+/** The recommendation's tickets as {@link PickItem}s, each with its links in the visitor's order. */
+function usePickItems(
+  groups: readonly SuggestionGroup[],
+  longStay: readonly string[]
+): { exact: PickItem[]; long: PickItem[] } {
+  const t = useTranslations('tripPlanner.tickets');
+  const { tickets: catalog } = usePlanContext();
+  const name = useTicketName();
+  const resortWord = useResortWord();
+  const visitor = useTicketVisitor();
+  const item = (
+    key: string,
+    resort: string,
+    product: string,
+    label: string,
+    source: { links?: readonly TicketLink[]; shopUrl?: string },
+    surface: TicketLinkSurface,
+    facts: TicketFact[]
+  ): PickItem => {
+    const ordered = orderTicketLinks(source, visitor, resortWord(resort));
+    return {
+      key,
+      resort,
+      product,
+      name: label,
+      facts,
+      buy: primaryTicketLink(ordered),
+      official: officialTicketLink(ordered),
+      links: ordered.length,
+      surface,
+    };
+  };
+  return {
+    exact: groups.map((g) => {
+      const worth = g.items.some((s) => s.hopper?.recommended);
+      const label = name({ product: g.product, days: g.days, hopper: worth ? 'yes' : 'no' }, true);
+      return item(
+        g.items[0].id,
+        g.resort,
+        g.product,
+        g.items.length > 1 ? t('suggest.count', { count: g.items.length, name: label }) : label,
+        suggestionShop(g.items[0], catalog),
+        'suggestion',
+        []
+      );
+    }),
+    long: longStay.flatMap((id) => {
+      const product = catalog.get(id);
+      if (!product) return [];
+      return [
+        item(
+          id,
+          product.resort,
+          id,
+          name({ product: id, days: null, hopper: 'no' }, true),
+          product,
+          'long_stay',
+          ticketFacts(product, null)
+        ),
+      ];
+    }),
+  };
+}
+
 /**
- * One ticket to buy: the resort and the product in plain words, the park days on it as chips with
- * their dates, its window as a bar, what the hopper adds in one line with the way to plan with it
- * or without, where to buy it, and its rules behind "How the ticket works". A group of day tickets
- * (`suggestionGroups`) is one ticket with its count.
+ * The recommendation at the top of plan first, as packages to compare by their park days: the
+ * tickets this plan needs ("Fits this plan · 12 park days"), and where the region sells 14-day
+ * tickets for a long stay, those with what the catalog says they hold and "Plan with these". Each
+ * ticket has one button to the seller it is bought through (`primaryTicketLink`: a sponsored seller
+ * first, else the first that is not the operator's; the visitor's own country store first among a
+ * seller's), the operators' own shops in a line under them, and the line that prices differ by
+ * the shop's country once. A sponsored link moves up for being one, so with one in it the block is
+ * marked as an ad, its note saying what that means, and the link says "Partner link"; without one,
+ * neither shows.
  */
-function SuggestionTicket({
+function TicketPick({
+  plan,
+  groups,
+  suggested,
+  longStay,
+}: {
+  plan: TripPlan;
+  groups: readonly SuggestionGroup[];
+  suggested: PlanTicketSuggestion[];
+  longStay: readonly string[];
+}) {
+  const t = useTranslations('tripPlanner.tickets');
+  const tRegion = useTranslations('tripRegion.planner.tickets');
+  const { region, tickets: catalog, ticketStep, update, today, state } = usePlanContext();
+  const track = useTripEvents();
+  const { exact, long } = usePickItems(groups, longStay);
+  const owns = (plan.meta.tickets ?? []).length > 0;
+  const plannable = owns ? [] : longStayTickets(ticketStep, suggested, catalog, plan.meta.from);
+  const longShown = (long.length > 0 || plannable.length > 0) && tRegion.has('longStay.title');
+  const shown = longShown ? [...exact, ...long] : exact;
+  if (shown.every((i) => !i.buy)) return null;
+  const ticketMode = ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length);
+  // Each link's place among the buttons the block draws, which the statistic counts: the tickets'
+  // buttons in order, the operators' shops after them.
+  const position = new Map(shown.map((i, index) => [i.key, index]));
+  const linkProps = (i: PickItem) => ({ product: i.product, surface: i.surface, ticketMode });
+  const longDays = long.reduce((sum, i) => {
+    const fact = i.facts.find((f) => f.kind !== 'hopping');
+    return (
+      sum + (fact?.kind === 'daysIn' ? fact.days : fact?.kind === 'everyDay' ? fact.window : 0)
+    );
+  }, 0);
+
+  return (
+    <section className="flex flex-col gap-2" data-plan-ticket-pick="">
+      <div className="flex items-center justify-between gap-2">
+        <h5 className="text-primary-ink text-xs font-semibold tracking-wide uppercase">
+          {t('pick.title')}
+        </h5>
+        {shown.some((i) => i.buy?.sponsored) && <PartnerLabel label={t('pick.ad')} />}
+      </div>
+      <PickPackage
+        title={t('pick.exact')}
+        meta={t('pick.parkDays', {
+          count: groups.reduce((sum, g) => sum + g.days * g.items.length, 0),
+        })}
+        tone="primary"
+        items={exact}
+        linkProps={linkProps}
+        position={position}
+        officialBase={shown.length}
+      />
+      {longShown && (
+        <PickPackage
+          title={tRegion('longStay.title')}
+          meta={t('pick.parkDays', { count: longDays })}
+          items={long}
+          linkProps={linkProps}
+          position={position}
+          officialBase={shown.length + exact.length}
+          lead={
+            <p className="text-foreground/75 text-sm">
+              {tRegion('longStay.line')}
+              {plannable.length > 0 && (
+                <>
+                  {' '}
+                  <InlineAction
+                    inText
+                    data-plan-long-stay=""
+                    onClick={() => {
+                      track('trip_long_stay_used', { count: plannable.length });
+                      tripTicketAnswer(region.slug).set('yes');
+                      update((s) =>
+                        setTickets(s, [...state.tickets, ...plannable], catalog, today)
+                      );
+                    }}
+                  >
+                    {tRegion('longStay.plan')}
+                  </InlineAction>
+                </>
+              )}
+            </p>
+          }
+          alternative
+        />
+      )}
+      {shown.some((i) => i.links > 1) && (
+        <p className="text-muted-foreground text-xs">{t('links.compare')}</p>
+      )}
+    </section>
+  );
+}
+
+/**
+ * A package of the recommendation: its title and park days on one line, an optional `lead` under
+ * them, then its tickets ({@link PickGroup}); the plan's own in the primary tint.
+ */
+function PickPackage({
+  title,
+  meta,
+  tone,
+  items,
+  linkProps,
+  position,
+  officialBase,
+  lead,
+  alternative = false,
+}: {
+  title: string;
+  meta: string;
+  tone?: 'primary';
+  items: readonly PickItem[];
+  linkProps: PickLinkProps;
+  position: ReadonlyMap<string, number>;
+  officialBase: number;
+  lead?: ReactNode;
+  alternative?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        'flex flex-col gap-2 rounded-xl border p-3',
+        tone === 'primary' ? 'border-primary/40 bg-primary/5' : 'border-border/60 bg-background'
+      )}
+      data-plan-ticket-alternative={alternative ? '' : undefined}
+    >
+      <div className="flex items-baseline justify-between gap-2">
+        <h6 className="text-sm font-semibold">{title}</h6>
+        <span className="text-muted-foreground shrink-0 text-xs tabular-nums">{meta}</span>
+      </div>
+      {lead}
+      <PickGroup
+        items={items}
+        linkProps={linkProps}
+        position={position}
+        officialBase={officialBase}
+        tone={tone}
+      />
+    </div>
+  );
+}
+
+/** What a recommendation's link counts with besides its place: its product, surface and mode. */
+type PickLinkProps = (i: PickItem) => {
+  product: string;
+  surface: TicketLinkSurface;
+  ticketMode: TicketMode;
+};
+
+/**
+ * Some tickets bought together: each with what it holds, the seller once where they share one
+ * ("Buy at Attraction Tickets", its store too where they share that), then a compact button per
+ * ticket named by its resort (and its store's currency where the stores differ), `action` after
+ * them, and the operators' own shops in a line.
+ */
+function PickGroup({
+  items,
+  linkProps,
+  position,
+  officialBase,
+  tone,
+}: {
+  items: readonly PickItem[];
+  linkProps: PickLinkProps;
+  position: ReadonlyMap<string, number>;
+  officialBase: number;
+  tone?: 'primary';
+}) {
+  const t = useTranslations('tripPlanner.tickets');
+  const resortWord = useResortWord();
+  const factLine = useFactLine();
+  const { locale } = usePlanContext();
+  const buys = items.flatMap((i) => (i.buy ? [i.buy] : []));
+  const sameSeller =
+    buys.length > 0 && buys.every((b) => b.seller === buys[0].seller && !b.official);
+  const sameStore = sameSeller && buys.every((b) => buyKey(b) === buyKey(buys[0]));
+  // The seller's line says "Partner link" for all of them, or each sponsored button for itself.
+  const allSponsored = sameSeller && buys.every((b) => b.sponsored);
+  const label = (i: PickItem, buy: TicketLink) =>
+    sameStore
+      ? resortWord(i.resort)
+      : sameSeller && buy.store
+        ? `${resortWord(i.resort)} (${ticketStoreName(buy.store, locale).currency})`
+        : null;
+  return (
+    <>
+      <ul className="flex flex-col gap-1 text-sm">
+        {items.map((i) => (
+          <li key={i.key} data-plan-pick={i.resort}>
+            <span className="font-medium">{i.name}</span>
+            {i.facts.length > 0 && (
+              <span className="text-foreground/75 block text-xs">{factLine(i)}</span>
+            )}
+          </li>
+        ))}
+      </ul>
+      {sameSeller && (
+        <p className="text-foreground/75 text-xs">
+          {t('pick.via')}{' '}
+          <span className="whitespace-nowrap">
+            {sameStore ? <BuyLabel link={buys[0]} /> : buys[0].seller}
+          </span>
+          {allSponsored && <PartnerWord />}
+        </p>
+      )}
+      <div className="flex flex-wrap gap-2">
+        {items.map((i) => {
+          if (!i.buy) return null;
+          const short = label(i, i.buy);
+          return (
+            <span key={i.key} className="inline-flex max-w-full items-center">
+              <BuyLink
+                link={i.buy}
+                index={position.get(i.key) ?? 0}
+                tone={tone === 'primary' ? 'primary' : 'outline'}
+                {...linkProps(i)}
+              >
+                {short ?? <BuyLabel link={i.buy} prefix={resortWord(i.resort)} />}
+                {short && <span className="sr-only">{`, ${i.buy.seller}`}</span>}
+              </BuyLink>
+              {i.buy.sponsored && !allSponsored && <PartnerWord />}
+            </span>
+          );
+        })}
+      </div>
+      <OfficialShops items={items} base={officialBase} linkProps={linkProps} />
+    </>
+  );
+}
+
+const buyKey = (link: TicketLink) => `${link.seller}|${link.store?.country ?? ''}`;
+
+/** A ticket's facts in one line: "14 days in 18 · Park Hopper included". */
+function useFactLine(): (item: PickItem) => string {
+  const t = useTranslations('tripPlanner.tickets.pick');
+  const hopperWord = useHopperWord();
+  return (item) =>
+    item.facts
+      .map((fact) =>
+        fact.kind === 'daysIn'
+          ? t('daysIn', { days: fact.days, window: fact.window })
+          : fact.kind === 'everyDay'
+            ? t('everyDay', { window: fact.window })
+            : t('hopping', { hopper: hopperWord(item.resort) })
+      )
+      .join(' · ');
+}
+
+/**
+ * The operators' own shops of some tickets in one quiet line, once each, so the official way to
+ * buy is always on the card.
+ */
+function OfficialShops({
+  items,
+  base,
+  linkProps,
+}: {
+  items: readonly PickItem[];
+  base: number;
+  linkProps: PickLinkProps;
+}) {
+  const t = useTranslations('tripPlanner.tickets');
+  const resortWord = useResortWord();
+  const shops = items.filter(
+    (i, index) =>
+      i.official &&
+      i.official.url !== i.buy?.url &&
+      items.findIndex((x) => x.official?.url === i.official?.url) === index
+  );
+  if (shops.length === 0) return null;
+  return (
+    <p className="text-muted-foreground text-xs" data-plan-official-shops="">
+      {t('pick.official', { count: shops.length })}{' '}
+      {shops.map((i, index) => (
+        <span key={i.key}>
+          {index > 0 && ' · '}
+          <BuyLink
+            link={i.official as TicketLink}
+            index={base + index}
+            tone="text"
+            {...linkProps(i)}
+          >
+            {resortWord(i.resort)}
+            <span className="sr-only">{`, ${(i.official as TicketLink).seller}`}</span>
+          </BuyLink>
+        </span>
+      ))}
+    </p>
+  );
+}
+
+/**
+ * One ticket of plan first as a line: the resort, the product, its window and how many of its
+ * days the plan uses. It opens on the park days as chips with their dates, the window as a bar,
+ * what the hopper adds with the way to plan with it or without, how the ticket works, and every
+ * shop. A group of day tickets (`suggestionGroups`) is one line with its count.
+ */
+function SuggestionRow({
   plan,
   group,
   suggested,
@@ -520,12 +908,11 @@ function SuggestionTicket({
 }) {
   const t = useTranslations('tripPlanner.tickets');
   const tRegion = useTranslations('tripRegion.planner.tickets');
-  const { tickets: catalog, ticketStep, state, update, parkName } = usePlanContext();
+  const { tickets: catalog, ticketStep, state, update, parkName, locale } = usePlanContext();
   const track = useTripEvents();
   const resortWord = useResortWord();
   const hopperWord = useHopperWord();
   const day = useShortDay();
-  const headingId = useId();
   const { resort, items } = group;
   const first = items[0];
   const product = catalog.get(group.product);
@@ -608,117 +995,134 @@ function SuggestionTicket({
       {on ? t('hopper.without', { hopper }) : t('hopper.with', { hopper })}
     </Button>
   );
+  const used = (s: PlanTicketSuggestion) =>
+    new Set(plan.days.filter((d) => d.ticket === s.id && !d.ticketAllowance).map((d) => d.date));
+  const everyOnItsDay = items.every((s) => s.start === s.end);
+  const summary = everyOnItsDay
+    ? t('suggest.eachOnItsDay', { count: items.length })
+    : items
+        .map(
+          (s) =>
+            `${formatParkDayRange(locale, s.start, s.end, { day: 'numeric', month: 'short' })} · ${t(
+              'suggest.inWindow',
+              { used: used(s).size, window: ticketWindowDays(s.start, s.end, used(s)).length }
+            )}`
+        )
+        .join('; ');
 
   return (
-    <section
-      aria-labelledby={headingId}
-      className="border-border/60 bg-background flex min-w-0 flex-col gap-3 rounded-xl border p-3"
-      data-plan-suggestion={resort}
-    >
-      <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
-        <h5 id={headingId} className="text-sm font-semibold">
-          {first.id.endsWith(':2') && items.length === 1
-            ? t('suggest.second', { resort: tRegion(`resort.${resort}`) })
-            : tRegion(`resort.${resort}`)}
-        </h5>
-        <span className="text-primary-ink text-sm font-semibold" data-plan-suggestion-product="">
-          {items.length > 1
-            ? t('suggest.count', { count: items.length, name: productLabel })
-            : productLabel}
-        </span>
-      </div>
-
-      {notCovered.map((o) => (
-        <p key={o.id} className="text-foreground/75 text-sm">
-          {t('suggest.notCovered', {
-            name: productName(catalog, o.product),
-            parks: plannedParks.map(parkName).join(', '),
-          })}
-        </p>
-      ))}
-
-      {parkDays.length > 0 && (
-        <ul className="flex flex-wrap gap-1.5" aria-label={t('fields.days')}>
-          {parkDays.map((d) => {
-            const evening = evenings.get(d.date);
-            return (
-              <li key={d.date} className="min-w-0">
-                <Badge
-                  variant="secondary"
-                  className="h-auto max-w-full flex-wrap justify-start gap-x-1.5 gap-y-0 rounded-xl text-left font-normal whitespace-normal"
-                  data-plan-suggestion-day={d.date}
-                >
-                  <span className="text-muted-foreground whitespace-nowrap">{day(d.date)}</span>
-                  <span className="font-medium">
-                    {d.parks.map((p) => parkName(p.slug)).join(' + ')}
-                  </span>
-                  {evening && (
-                    <span className="text-primary-ink inline-flex items-center gap-0.5 font-medium whitespace-nowrap">
-                      <Moon className="size-3 shrink-0" aria-hidden="true" />
-                      <span className="sr-only">{t('hopper.eveningMark', { hopper })}</span>
-                      {parkName(evening)}
-                    </span>
-                  )}
-                </Badge>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-
-      {items.every((s) => s.start === s.end) ? (
-        <p className="text-muted-foreground text-xs">
-          {t('suggest.eachOnItsDay', { count: items.length })}
-        </p>
-      ) : (
-        items.map((s) => (
-          <TicketWindowBar
-            key={s.id}
-            from={s.start}
-            to={s.end}
-            used={
-              new Set(
-                plan.days.filter((d) => d.ticket === s.id && !d.ticketAllowance).map((d) => d.date)
-              )
-            }
-          />
-        ))
-      )}
-
-      {verdicts.map((verdict, i) => (
-        <Verdict
-          key={i}
-          verdict={verdict}
-          resort={resort}
-          chipDates={chipDates}
-          action={i === verdicts.length - 1 ? toggle : null}
-        />
-      ))}
-
-      {facts.length > 0 && (
-        <QuietDisclosure
-          label={t('howValid')}
-          onOpen={() => track('trip_ticket_details_opened', { resort })}
-          data-plan-ticket-facts={resort}
+    <li className="min-w-0" data-plan-suggestion={resort}>
+      <details
+        className="group/row"
+        onToggle={(event) =>
+          event.currentTarget.open && track('trip_ticket_details_opened', { resort })
+        }
+        data-plan-ticket-facts={resort}
+      >
+        <summary
+          className={cn(
+            'flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-md py-2 [&::-webkit-details-marker]:hidden',
+            PLAN_FOCUS
+          )}
         >
-          {facts}
-        </QuietDisclosure>
-      )}
+          <span className="flex min-w-0 flex-1 flex-col">
+            <span className="text-sm">
+              <span className="font-semibold">
+                {first.id.endsWith(':2') && items.length === 1
+                  ? t('suggest.second', { resort: tRegion(`resort.${resort}`) })
+                  : tRegion(`resort.${resort}`)}
+              </span>
+              {' · '}
+              <span className="text-primary-ink font-medium" data-plan-suggestion-product="">
+                {items.length > 1
+                  ? t('suggest.count', { count: items.length, name: productLabel })
+                  : productLabel}
+              </span>
+            </span>
+            <span className="text-muted-foreground text-xs tabular-nums">{summary}</span>
+          </span>
+          <ChevronDown
+            className="text-muted-foreground size-4 shrink-0 transition-transform duration-200 group-open/row:rotate-180"
+            aria-hidden="true"
+          />
+        </summary>
+        <div className="flex flex-col gap-3 pb-3">
+          {notCovered.map((o) => (
+            <p key={o.id} className="text-foreground/75 text-sm">
+              {t('suggest.notCovered', {
+                name: productName(catalog, o.product),
+                parks: plannedParks.map(parkName).join(', '),
+              })}
+            </p>
+          ))}
 
-      <PurchaseLinks
-        source={suggestionShop(first, catalog)}
-        resort={resort}
-        product={group.product}
-        surface="suggestion"
-        ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
-        title
-      />
-    </section>
+          {parkDays.length > 0 && (
+            <ul className="flex flex-wrap gap-1.5" aria-label={t('fields.days')}>
+              {parkDays.map((d) => {
+                const evening = evenings.get(d.date);
+                return (
+                  <li key={d.date} className="min-w-0">
+                    <Badge
+                      variant="secondary"
+                      className="h-auto max-w-full flex-wrap justify-start gap-x-1.5 gap-y-0 rounded-xl text-left font-normal whitespace-normal"
+                      data-plan-suggestion-day={d.date}
+                    >
+                      <span className="text-muted-foreground whitespace-nowrap">{day(d.date)}</span>
+                      <span className="font-medium">
+                        {d.parks.map((p) => parkName(p.slug)).join(' + ')}
+                      </span>
+                      {evening && (
+                        <span className="text-primary-ink inline-flex items-center gap-0.5 font-medium whitespace-nowrap">
+                          <Moon className="size-3 shrink-0" aria-hidden="true" />
+                          <span className="sr-only">{t('hopper.eveningMark', { hopper })}</span>
+                          {parkName(evening)}
+                        </span>
+                      )}
+                    </Badge>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+
+          {!everyOnItsDay &&
+            items.map((s) => (
+              <TicketWindowBar key={s.id} from={s.start} to={s.end} used={used(s)} />
+            ))}
+
+          {verdicts.map((verdict, i) => (
+            <Verdict
+              key={i}
+              verdict={verdict}
+              resort={resort}
+              chipDates={chipDates}
+              action={i === verdicts.length - 1 ? toggle : null}
+            />
+          ))}
+
+          {facts.length > 0 && (
+            <div className="flex flex-col gap-1.5 text-sm">
+              <p className="text-muted-foreground text-xs font-medium">{t('howValid')}</p>
+              {facts}
+            </div>
+          )}
+
+          <PurchaseLinks
+            source={suggestionShop(first, catalog)}
+            resort={resort}
+            product={group.product}
+            surface="suggestion"
+            ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
+            title
+          />
+        </div>
+      </details>
+    </li>
   );
 }
 
 /**
- * A ticket's window as a bar, a segment a day, the days the plan uses on it filled; under it the
+ * A ticket's window as a bar, a segment a day, the days the plan uses filled; under it the
  * window's dates and how many of its days the plan uses. The bar is a picture of that line.
  */
 function TicketWindowBar({
@@ -756,80 +1160,6 @@ function TicketWindowBar({
         <span>{t('inWindow', { used: count, window: days.length })}</span>
       </p>
     </div>
-  );
-}
-
-/**
- * The long stay's alternative, set apart and marked as one: the 14-day tickets the UK shops sell,
- * what they change, "Plan with these" without owned tickets, and where to buy them behind a quiet
- * fold. Only where the region has words for it.
- */
-function LongStayAlternative({
-  plan,
-  suggested,
-  products,
-}: {
-  plan: TripPlan;
-  suggested: PlanTicketSuggestion[];
-  products: string[];
-}) {
-  const t = useTranslations('tripPlanner.tickets');
-  const tRegion = useTranslations('tripRegion.planner.tickets');
-  const { region, tickets: catalog, ticketStep, update, today, state } = usePlanContext();
-  const track = useTripEvents();
-  const headingId = useId();
-  const owns = (plan.meta.tickets ?? []).length > 0;
-  const plannable = owns ? [] : longStayTickets(ticketStep, suggested, catalog, plan.meta.from);
-  if ((products.length === 0 && plannable.length === 0) || !tRegion.has('longStay.title')) {
-    return null;
-  }
-  return (
-    <section
-      aria-labelledby={headingId}
-      className="border-border flex flex-col gap-2 rounded-xl border border-dashed p-3"
-      data-plan-ticket-alternative=""
-    >
-      <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
-        <Badge variant="outline">{t('alternative')}</Badge>
-        <h5 id={headingId} className="text-sm font-semibold">
-          {tRegion('longStay.title')}
-        </h5>
-      </div>
-      <p className="text-foreground/75 text-sm">{tRegion('longStay.line')}</p>
-      {plannable.length > 0 && (
-        <Button
-          variant="outline"
-          size="sm"
-          className="self-start"
-          data-plan-long-stay=""
-          onClick={() => {
-            track('trip_long_stay_used', { count: plannable.length });
-            tripTicketAnswer(region.slug).set('yes');
-            update((s) => setTickets(s, [...state.tickets, ...plannable], catalog, today));
-          }}
-        >
-          {tRegion('longStay.plan')}
-        </Button>
-      )}
-      {products.length > 0 && (
-        <QuietDisclosure label={t('links.title')}>
-          <ul className="flex flex-col gap-3">
-            {products.map((id) => (
-              <li key={id} className="flex flex-col gap-1.5">
-                <span className="font-medium">{productName(catalog, id)}</span>
-                <PurchaseLinks
-                  source={catalog.get(id) ?? {}}
-                  resort={catalog.get(id)?.resort ?? ''}
-                  product={id}
-                  surface="long_stay"
-                  ticketMode={ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length)}
-                />
-              </li>
-            ))}
-          </ul>
-        </QuietDisclosure>
-      )}
-    </section>
   );
 }
 
@@ -935,13 +1265,26 @@ function Warning({ children, ...data }: { children: ReactNode; [key: `data-${str
   );
 }
 
-function InlineAction({ onClick, children }: { onClick: () => void; children: ReactNode }) {
+function InlineAction({
+  onClick,
+  inText = false,
+  children,
+  ...data
+}: {
+  onClick: () => void;
+  /** Inside a sentence, where a 44 px box would push the line apart. */
+  inText?: boolean;
+  children: ReactNode;
+  [key: `data-${string}`]: string;
+}) {
   return (
     <button
       type="button"
       onClick={onClick}
+      {...data}
       className={cn(
-        'text-primary-ink inline-flex min-h-11 items-center rounded-sm font-medium underline-offset-4 hover:underline',
+        'text-primary-ink inline-flex items-center rounded-sm font-medium underline-offset-4 hover:underline',
+        !inText && 'min-h-11',
         PLAN_FOCUS
       )}
     >
@@ -979,52 +1322,116 @@ function ShopLink({
   );
 }
 
+/** Who reads the purchase links: the page's locale and the region of the browser's first language. */
+function useTicketVisitor(): TicketLinkVisitor & { market: ReturnType<typeof visitorMarket> } {
+  const { locale } = usePlanContext();
+  // A string, never `navigator.languages` itself: that is a new array on every read.
+  const language = useSyncExternalStore(
+    noSubscribe,
+    () => navigator.languages?.[0] ?? '',
+    () => ''
+  );
+  const languages = language ? [language] : [];
+  return { locale, market: visitorMarket(languages), country: visitorCountry(languages) };
+}
+
+const noSubscribe = () => () => {};
+
 /**
- * A fold for what a ticket says in detail, quieter than the actions above it: the label in muted
- * ink with a chevron, its content in place. `onOpen` runs each time it opens.
+ * One purchase link: in a new tab with park.fan as its referrer (`ticketLinkAttributes`), counted
+ * as `ticket_link_clicked` with its place among the links drawn (`index`), a middle click
+ * included. `primary` is the recommendation's filled button, `outline` a compact one, `text` a
+ * link in a line; the visitor's own country store is drawn in the primary tint.
  */
-function QuietDisclosure({
-  label,
-  onOpen,
+function BuyLink({
+  link,
+  index,
+  product,
+  surface,
+  ticketMode,
+  tone = 'outline',
+  className,
   children,
-  ...data
 }: {
-  label: string;
-  onOpen?: () => void;
+  link: TicketLink;
+  index: number;
+  product: string;
+  surface: TicketLinkSurface;
+  ticketMode: TicketMode;
+  tone?: 'primary' | 'outline' | 'text';
+  className?: string;
   children: ReactNode;
-  [key: `data-${string}`]: string;
 }) {
+  const t = useTranslations('tripPlanner.tickets');
+  const visitor = useTicketVisitor();
+  const count = () =>
+    trackSiteEvent(
+      'ticket_link_clicked',
+      ticketLinkClickProps({ product, link, index, visitor, surface, ticketMode })
+    );
+  const look =
+    tone === 'text'
+      ? {
+          className: cn(
+            'text-primary-ink inline-flex items-center gap-1 rounded-sm py-1 font-medium underline-offset-4 hover:underline',
+            PLAN_FOCUS,
+            className
+          ),
+        }
+      : buttonLinkProps({
+          variant: tone === 'primary' ? 'default' : 'outline',
+          size: 'sm',
+          withIcon: true,
+          className: cn(
+            'h-auto min-h-8 max-w-full py-1 text-left whitespace-normal max-sm:h-auto max-sm:min-h-11',
+            tone === 'outline' &&
+              isVisitorStore(link, visitor) &&
+              'border-primary/60 bg-primary/10 text-primary-ink dark:border-primary/60 dark:bg-primary/15',
+            className
+          ),
+        });
   return (
-    <details
-      className="group/fold"
-      onToggle={(event) => event.currentTarget.open && onOpen?.()}
-      {...data}
+    <a
+      href={link.url}
+      {...ticketLinkAttributes(link)}
+      onClick={count}
+      onAuxClick={(event) => event.button === 1 && count()}
+      data-ticket-link={link.sponsored ? 'sponsored' : link.official ? 'official' : 'plain'}
+      {...look}
     >
-      <summary
-        className={cn(
-          'text-muted-foreground hover:text-foreground -my-1 flex min-h-11 cursor-pointer list-none items-center gap-1 self-start rounded-md text-sm font-medium transition-colors lg:min-h-9 [&::-webkit-details-marker]:hidden',
-          PLAN_FOCUS
-        )}
-      >
-        {label}
-        <ChevronDown
-          className="size-4 transition-transform duration-200 group-open/fold:rotate-180"
-          aria-hidden="true"
-        />
-      </summary>
-      <div className="flex flex-col gap-1.5 pt-1 text-sm">{children}</div>
-    </details>
+      {children}
+      <ExternalLink className="size-3.5 shrink-0" aria-hidden="true" />
+      <span className="sr-only">
+        {link.sponsored ? `${t('partner.label')}. ` : ''}
+        {t('newTab')}
+      </span>
+    </a>
   );
 }
 
 /**
- * Where to buy a ticket, as compact buttons: the product's links in the visitor's order
+ * A purchase link's name: the operator's shop marked as such, a country store by its seller,
+ * country and currency („Attraction Tickets · Deutschland (€)", `ticketStoreName`), any other by
+ * its seller; `prefix` (a resort) before it.
+ */
+function BuyLabel({ link, prefix }: { link: TicketLink; prefix?: string }) {
+  const t = useTranslations('tripPlanner.tickets');
+  const { locale } = usePlanContext();
+  const name = link.official
+    ? t('links.official', { seller: link.seller })
+    : link.store
+      ? t('links.store', { seller: link.seller, ...ticketStoreName(link.store, locale) })
+      : link.seller;
+  return <>{prefix ? `${prefix} · ${name}` : name}</>;
+}
+
+/**
+ * Where to buy a ticket, every shop as compact buttons: the product's links in the visitor's order
  * (`orderTicketLinks`), a seller's country stores together under its name (`ticketLinkGroups`),
- * the store of the visitor's own country first and drawn in the primary tint. Each opens in a new
- * tab with park.fan as its referrer (`ticketLinkAttributes`); the official shop is marked, a
- * country store named by its country and currency („Deutschland (€)", `ticketStoreName`), a shop
- * abroad tagged with where it sells ("UK shop", `linkMarket`), a sponsored one labelled "Partner
- * link" beside it, which says what that means. The card says once that prices differ by country.
+ * the store of the visitor's own country first and drawn in the primary tint. The official shop is
+ * marked, a country store named by its country and currency („Deutschland (€)",
+ * `ticketStoreName`), a shop abroad tagged with where it sells ("UK shop", `linkMarket`), a
+ * sponsored one labelled "Partner link" beside it, which says what that means.
  */
 function PurchaseLinks({
   source,
@@ -1044,67 +1451,30 @@ function PurchaseLinks({
   const t = useTranslations('tripPlanner.tickets');
   const { locale, region, tickets: catalog, ticketStep } = usePlanContext();
   const resortWord = useResortWord();
+  const visitor = useTicketVisitor();
   const productMarkets = catalog.get(product)?.markets;
   const home = ticketHomeMarket(region, ticketStep);
-  // A string, never `navigator.languages` itself: that is a new array on every read.
-  const language = useSyncExternalStore(
-    noSubscribe,
-    () => navigator.languages?.[0] ?? '',
-    () => ''
-  );
-  const languages = language ? [language] : [];
-  const visitor = {
-    locale,
-    market: visitorMarket(languages),
-    country: visitorCountry(languages),
-  };
   const groups = ticketLinkGroups(orderTicketLinks(source, visitor, resortWord(resort)));
   if (groups.length === 0) return null;
 
-  const count = (link: TicketLink, index: number) =>
-    trackSiteEvent(
-      'ticket_link_clicked',
-      ticketLinkClickProps({ product, link, index, visitor, surface, ticketMode })
-    );
   const button = ({ link, index }: { link: TicketLink; index: number }, label: ReactNode) => {
     const market = linkMarket(link, productMarkets, home);
     return (
       <li key={link.url} className="flex max-w-full flex-wrap items-center gap-1.5">
-        <a
-          href={link.url}
-          {...ticketLinkAttributes(link)}
-          onClick={() => count(link, index)}
-          onAuxClick={(event) => event.button === 1 && count(link, index)}
-          data-ticket-link={link.sponsored ? 'sponsored' : link.official ? 'official' : 'plain'}
-          {...buttonLinkProps({
-            variant: 'outline',
-            size: 'sm',
-            withIcon: true,
-            className: cn(
-              'h-auto min-h-8 max-w-full py-1 text-left whitespace-normal max-sm:h-auto max-sm:min-h-11',
-              isVisitorStore(link, visitor) &&
-                'border-primary/60 bg-primary/10 text-primary-ink dark:border-primary/60 dark:bg-primary/15'
-            ),
-          })}
+        <BuyLink
+          link={link}
+          index={index}
+          product={product}
+          surface={surface}
+          ticketMode={ticketMode}
         >
           {label}
-          <ExternalLink className="size-3.5" aria-hidden="true" />
-          <span className="sr-only">
-            {link.sponsored ? `${t('partner.label')}. ` : ''}
-            {t('newTab')}
-          </span>
-        </a>
+        </BuyLink>
         {market && <TicketMarketTag market={market} />}
         {link.sponsored && <PartnerLabel />}
       </li>
     );
   };
-  const label = (link: TicketLink) =>
-    link.official
-      ? t('links.official', { seller: link.seller })
-      : link.store
-        ? t('links.store', { seller: link.seller, ...ticketStoreName(link.store, locale) })
-        : link.seller;
 
   return (
     <div className="flex flex-col gap-1.5" data-plan-purchase-links="">
@@ -1128,7 +1498,7 @@ function PurchaseLinks({
               </ul>
             </li>
           ) : (
-            button(group.items[0], label(group.items[0].link))
+            button(group.items[0], <BuyLabel link={group.items[0].link} />)
           )
         )}
       </ul>
@@ -1136,14 +1506,12 @@ function PurchaseLinks({
   );
 }
 
-const noSubscribe = () => () => {};
-
 /**
  * The visible "Partner link" label beside a sponsored link (a legal requirement, so never subtle):
  * a pressable pill that says on hover, focus or a tap that park.fan earns a commission and the
  * price stays the same.
  */
-function PartnerLabel() {
+function PartnerLabel({ label }: { label?: string }) {
   const t = useTranslations('tripPlanner.tickets.partner');
   const [open, setOpen] = useState(false);
   return (
@@ -1160,7 +1528,7 @@ function PartnerLabel() {
           )}
         >
           <Info className="size-3.5" aria-hidden="true" />
-          {t('label')}
+          {label ?? t('label')}
         </button>
       </PopoverTrigger>
       {/* Above the phone's details sheet, which sits at z-[70]. */}
@@ -1168,6 +1536,22 @@ function PartnerLabel() {
         {t('note')}
       </PopoverContent>
     </Popover>
+  );
+}
+
+/**
+ * "Partner link" as a word beside a sponsored link in the recommendation, whose head carries the
+ * pill that explains it ({@link PartnerLabel} as "Ad").
+ */
+function PartnerWord() {
+  const t = useTranslations('tripPlanner.tickets.partner');
+  return (
+    <span
+      className="text-muted-foreground ms-1.5 shrink-0 text-xs font-medium"
+      data-partner-word=""
+    >
+      {t('label')}
+    </span>
   );
 }
 

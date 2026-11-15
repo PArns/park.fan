@@ -3869,6 +3869,18 @@
         "label": "Partner link",
         "note": "If you buy through this link, park.fan earns a commission. The price stays the same for you."
       },
+      "pick": {
+        "title": "Recommended",
+        "ad": "Ad",
+        "exact": "Fits this plan",
+        "parkDays": "{count, plural, =1 {1 park day} other {# park days}}",
+        "via": "Buy at",
+        "official": "{count, plural, =1 {Official shop:} other {Official shops:}}",
+        "details": "How the plan uses each ticket",
+        "daysIn": "{days} park days within {window} days",
+        "everyDay": "Every day, {window} days in a row",
+        "hopping": "{hopper} included"
+      },
       "later": "Already have tickets?",
       "enter": "Add them"
     },
