@@ -18,6 +18,8 @@ import {
   needsConnectedHop,
   officialTicketLink,
   orderTicketLinks,
+  orderTicketPackages,
+  orderTicketPicks,
   ownedUse,
   ticketLinkAttributes,
   ticketLinkGroups,
@@ -534,7 +536,6 @@ function usePickItems(
   const { tickets: catalog } = usePlanContext();
   const name = useTicketName();
   const resortWord = useResortWord();
-  const visitor = useTicketVisitor();
   const item = (
     key: string,
     resort: string,
@@ -544,7 +545,7 @@ function usePickItems(
     surface: TicketLinkSurface,
     facts: TicketFact[]
   ): PickItem => {
-    const ordered = orderTicketLinks(source, visitor, resortWord(resort));
+    const ordered = orderTicketLinks(source, resortWord(resort));
     return {
       key,
       resort,
@@ -557,7 +558,7 @@ function usePickItems(
       surface,
     };
   };
-  return {
+  const picks = {
     exact: groups.map((g) => {
       const worth = g.items.some((s) => s.hopper?.recommended);
       const label = name({ product: g.product, days: g.days, hopper: worth ? 'yes' : 'no' }, true);
@@ -587,6 +588,10 @@ function usePickItems(
       ];
     }),
   };
+  return {
+    exact: orderTicketPicks(picks.exact, catalog),
+    long: orderTicketPicks(picks.long, catalog),
+  };
 }
 
 /**
@@ -594,11 +599,11 @@ function usePickItems(
  * tickets this plan needs ("Fits this plan · 12 park days"), and where the region sells 14-day
  * tickets for a long stay, those with what the catalog says they hold and "Plan with these". Each
  * ticket has one button to the seller it is bought through (`primaryTicketLink`: a sponsored seller
- * first, else the first that is not the operator's; the visitor's own country store first among a
- * seller's), the operators' own shops in a line under them, and the line that prices differ by
- * the shop's country once. A sponsored link moves up for being one, so with one in it the block is
- * marked as an ad, its note saying what that means, and the link says "Partner link"; without one,
- * neither shows.
+ * first, else the first that is not the operator's, in the admin's order), the operators' own shops
+ * in a line under them, and the line that prices differ by the shop's country once. Tickets and
+ * packages follow the admin's order (`orderTicketPicks`, `orderTicketPackages`). A sponsored link
+ * moves up for being one, so with one in it the block is marked as an ad, its note saying what that
+ * means, and the link says "Partner link"; without one, neither shows.
  */
 function TicketPick({
   plan,
@@ -619,7 +624,8 @@ function TicketPick({
   const owns = (plan.meta.tickets ?? []).length > 0;
   const plannable = owns ? [] : longStayTickets(ticketStep, suggested, catalog, plan.meta.from);
   const longShown = (long.length > 0 || plannable.length > 0) && tRegion.has('longStay.title');
-  const shown = longShown ? [...exact, ...long] : exact;
+  const packages = orderTicketPackages(longShown ? [exact, long] : [exact], (p) => p, catalog);
+  const shown = packages.flat();
   if (shown.every((i) => !i.buy)) return null;
   const ticketMode = ticketModeOf(plan.meta.tickets?.length ?? 0, suggested.length);
   // Each link's place among the buttons the block draws, which the statistic counts: the tickets'
@@ -641,51 +647,57 @@ function TicketPick({
         </h5>
         {shown.some((i) => i.buy?.sponsored) && <PartnerLabel label={t('pick.ad')} />}
       </div>
-      <PickPackage
-        title={t('pick.exact')}
-        meta={t('pick.parkDays', {
-          count: groups.reduce((sum, g) => sum + g.days * g.items.length, 0),
-        })}
-        tone="primary"
-        items={exact}
-        linkProps={linkProps}
-        position={position}
-        officialBase={shown.length}
-      />
-      {longShown && (
-        <PickPackage
-          title={tRegion('longStay.title')}
-          meta={t('pick.parkDays', { count: longDays })}
-          items={long}
-          linkProps={linkProps}
-          position={position}
-          officialBase={shown.length + exact.length}
-          lead={
-            <p className="text-foreground/75 text-sm">
-              {tRegion('longStay.line')}
-              {plannable.length > 0 && (
-                <>
-                  {' '}
-                  <InlineAction
-                    inText
-                    data-plan-long-stay=""
-                    onClick={() => {
-                      track('trip_long_stay_used', { count: plannable.length });
-                      tripTicketAnswer(region.slug).set('yes');
-                      update((s) =>
-                        setTickets(s, [...state.tickets, ...plannable], catalog, today)
-                      );
-                    }}
-                  >
-                    {tRegion('longStay.plan')}
-                  </InlineAction>
-                </>
-              )}
-            </p>
-          }
-          alternative
-        />
-      )}
+      {packages.map((items, at) => {
+        const officialBase = shown.length + packages.slice(0, at).flat().length;
+        return items === exact ? (
+          <PickPackage
+            key="exact"
+            title={t('pick.exact')}
+            meta={t('pick.parkDays', {
+              count: groups.reduce((sum, g) => sum + g.days * g.items.length, 0),
+            })}
+            tone="primary"
+            items={exact}
+            linkProps={linkProps}
+            position={position}
+            officialBase={officialBase}
+          />
+        ) : (
+          <PickPackage
+            key="long"
+            title={tRegion('longStay.title')}
+            meta={t('pick.parkDays', { count: longDays })}
+            items={long}
+            linkProps={linkProps}
+            position={position}
+            officialBase={officialBase}
+            lead={
+              <p className="text-foreground/75 text-sm">
+                {tRegion('longStay.line')}
+                {plannable.length > 0 && (
+                  <>
+                    {' '}
+                    <InlineAction
+                      inText
+                      data-plan-long-stay=""
+                      onClick={() => {
+                        track('trip_long_stay_used', { count: plannable.length });
+                        tripTicketAnswer(region.slug).set('yes');
+                        update((s) =>
+                          setTickets(s, [...state.tickets, ...plannable], catalog, today)
+                        );
+                      }}
+                    >
+                      {tRegion('longStay.plan')}
+                    </InlineAction>
+                  </>
+                )}
+              </p>
+            }
+            alternative
+          />
+        );
+      })}
       {shown.some((i) => i.links > 1) && (
         <p className="text-muted-foreground text-xs">{t('links.compare')}</p>
       )}
@@ -1426,9 +1438,9 @@ function BuyLabel({ link, prefix }: { link: TicketLink; prefix?: string }) {
 }
 
 /**
- * Where to buy a ticket, every shop as compact buttons: the product's links in the visitor's order
+ * Where to buy a ticket, every shop as compact buttons: the product's links in the ticket order
  * (`orderTicketLinks`), a seller's country stores together under its name (`ticketLinkGroups`),
- * the store of the visitor's own country first and drawn in the primary tint. The official shop is
+ * the store of the visitor's own country drawn in the primary tint. The official shop is
  * marked, a country store named by its country and currency („Deutschland (€)",
  * `ticketStoreName`), a shop abroad tagged with where it sells ("UK shop", `linkMarket`), a
  * sponsored one labelled "Partner link" beside it, which says what that means.
@@ -1451,10 +1463,9 @@ function PurchaseLinks({
   const t = useTranslations('tripPlanner.tickets');
   const { locale, region, tickets: catalog, ticketStep } = usePlanContext();
   const resortWord = useResortWord();
-  const visitor = useTicketVisitor();
   const productMarkets = catalog.get(product)?.markets;
   const home = ticketHomeMarket(region, ticketStep);
-  const groups = ticketLinkGroups(orderTicketLinks(source, visitor, resortWord(resort)));
+  const groups = ticketLinkGroups(orderTicketLinks(source, resortWord(resort)));
   if (groups.length === 0) return null;
 
   const button = ({ link, index }: { link: TicketLink; index: number }, label: ReactNode) => {

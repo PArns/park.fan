@@ -356,13 +356,16 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
 - `ticketLinksOf` _function_: A product's purchase links in the admin's order; without `links` (an older answer) the official `shopUrl` alone, under `officialSeller`.
 - `isVisitorStore` _function_: Whether a link goes to the seller's store for the visitor's own country.
-- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: the store of the visitor's own country first, then those for their locale or market, the rest after, each group in the admin's order, which is the display order.
-- `primaryTicketLink` _function_: The link a recommendation buys through, from links in the visitor's order: the first sponsored seller's (their store for the visitor's country first, as the order puts it), else the first seller's that is not the operator's, else the …
+- `compareTicketOrder` _function_: The one order of the planner's shops, tickets and packages, as the owner sets it in the admin: sponsored first, then the admin's order.
+- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them (`compareTicketOrder`): the sponsored ones first, then the admin's order. Without `links` (an older answer) the official `shopUrl` stands alone.
+- `primaryTicketLink` _function_: The link a recommendation buys through: the first in the ticket order that is not the operator's own shop, else the shop. `null` without links.
+- `orderTicketPicks` _function_: A package's tickets in the ticket order (`compareTicketOrder`): bought through a sponsored link first, then by the product's place in the catalog, which is the admin's order. Tickets of one product keep the order they came in.
+- `orderTicketPackages` _function_: Packages in the ticket order by their first ticket in it; on a tie, or without tickets, they keep the order they came in, so the plan's own package stays first.
 - `officialTicketLink` _function_: The operator's own shop among a product's links, `null` where it has none.
-- `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone.
+- `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone, in …
 - `ticketStoreName` _function_: A country store as its link names it in the visitor's language: the country's short name and the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketFact`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketLinkGroup`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketFact`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketOrderKey`, `TicketPickOrder`, `TicketLinkGroup`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 
