@@ -1,4 +1,9 @@
-import { searchPosition, sitePageTypeOf, type SiteEventMap } from '@/lib/analytics/site-analytics';
+import {
+  searchPosition,
+  sitePageTypeOf,
+  type NavMenuId,
+  type SiteEventMap,
+} from '@/lib/analytics/site-analytics';
 import { isUuid } from '@/lib/utils';
 
 /**
@@ -22,6 +27,7 @@ const LINK_BLOCKS = [
   'trip_tile',
   'trip_answer',
   'trip_parks',
+  'trip_home',
   'nav',
   'related',
   'most_read',
@@ -29,6 +35,12 @@ const LINK_BLOCKS = [
   'favorites',
   'featured',
   'header',
+  'menu_guides',
+  'menu_news',
+  'menu_planner',
+  'menu_parks',
+  'menu_favorites',
+  'menu_more',
   'menu_sheet',
   'footer',
   'breadcrumbs',
@@ -36,6 +48,15 @@ const LINK_BLOCKS = [
 
 /** One of {@link LINK_BLOCKS}. */
 export type LinkBlock = (typeof LINK_BLOCKS)[number];
+
+/**
+ * The block of a header menu's links, in its band and in its part of the phone sheet, so a click
+ * under Planen is told from one under „Mehr". The bar's own links stay `header`, the rest of the
+ * sheet `menu_sheet`.
+ */
+export function menuBlock(menu: Exclude<NavMenuId, 'sheet'>): LinkBlock {
+  return `menu_${menu}`;
+}
 
 /** The attribute that marks an element as a block of links and names it. */
 export const LINK_BLOCK_ATTRIBUTE = 'data-link-block';

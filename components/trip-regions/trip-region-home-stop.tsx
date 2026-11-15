@@ -25,6 +25,7 @@ export async function TripRegionHomeStop({
   return (
     <HomeStop
       divider
+      block="trip_home"
       heading={
         <ChapterHeading
           variant="stop"

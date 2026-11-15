@@ -3432,7 +3432,7 @@
       "noFigure": "no figure",
       "noHours": "no hours yet",
       "early": "Early slot for your hotel",
-      "earlyAt": "<label>Early entry</label> from {time}",
+      "earlyAt": "<label>Early entry</label> <at>from {time}</at>",
       "extendedEvening": "Extended Evening Hours for your hotel",
       "party": "Party night",
       "partyNamed": "{name}, separate ticket",

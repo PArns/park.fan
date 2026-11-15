@@ -57,7 +57,7 @@ import type { MoreMenu } from '@/lib/navigation/more-menu';
 import type { PlannerMenu } from '@/lib/navigation/planner-menu';
 import { plannerQuickStarts, quickStartClick } from '@/lib/planner/quick-start';
 import { plannerUi } from '@/lib/planner/ui-store';
-import { linkBlockAttributes } from '@/lib/analytics/internal-link';
+import { linkBlockAttributes, menuBlock } from '@/lib/analytics/internal-link';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 
 /** Stable fallbacks, so a missing list does not defeat a panel's memo. */
@@ -89,9 +89,27 @@ type MenuEntry = (typeof MENU_ORDER)[number];
 /**
  * A layout's entries in {@link MENU_ORDER}. `null` where the layout has no such entry: the bar has
  * no home entry, since the logo is its link, and the sheet draws the favourites above its list.
+ * `marked` puts each entry that has a band under that band's link block (`menuBlock`), for the
+ * sheet, whose entries are not bands; `contents` leaves the list's layout as it was.
  */
-function inMenuOrder(entries: Record<MenuEntry, React.ReactNode>) {
-  return MENU_ORDER.map((entry) => <Fragment key={entry}>{entries[entry]}</Fragment>);
+function inMenuOrder(
+  entries: Record<MenuEntry, React.ReactNode>,
+  { marked = false }: { marked?: boolean } = {}
+) {
+  return MENU_ORDER.map((entry) => {
+    const node = entries[entry];
+    return (
+      <Fragment key={entry}>
+        {marked && node && entry !== 'home' ? (
+          <div className="contents" {...linkBlockAttributes(menuBlock(entry))}>
+            {node}
+          </div>
+        ) : (
+          node
+        )}
+      </Fragment>
+    );
+  });
 }
 
 /**
@@ -915,7 +933,7 @@ export function Header({
                     <div data-sheet-stagger className="border-border/60 border-b pb-4">
                       <FavoritesMenuPanel open variant="sheet" />
                     </div>
-                    {inMenuOrder(sheetEntries)}
+                    {inMenuOrder(sheetEntries, { marked: true })}
                   </div>
                   {/* The same row as the foot of the "Mehr" panel, from one definition, smaller
                     because these are places visitors come across rather than look for. "Meine

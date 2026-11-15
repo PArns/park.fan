@@ -25,6 +25,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`internal-link.ts`](../../lib/analytics/internal-link.ts)
 
+- `menuBlock` _function_: The block of a header menu's links, in its band and in its part of the phone sheet, so a click under Planen is told from one under „Mehr". The bar's own links stay `header`, the rest of the sheet `menu_sheet`.
 - `isLinkBlock` _function_: Whether a string read off the DOM is a block the event knows.
 - `linkBlockAttributes` _function_: The attribute to spread onto the element that holds a block's links.
 - `linkEntityAttributes` _function_: The attribute to spread onto a card's wrapper inside a block, so a click on the card names the park or ride it opens. Nothing for an id that is not a UUID.
@@ -94,10 +95,11 @@ Where an outbound link goes, the closed list of the event's `target`.
 
 ### [`section-seen.ts`](../../lib/analytics/section-seen.ts)
 
-The places a park page marks, top to bottom, then the band no park page has: the closed list of the event's `section`. The tile stands above „Heute im Park" or under the calendar's header.
+The places a park page marks, top to bottom, then the band no park page has, then the homepage's stops: the closed list of the event's `section`. The tile stands above „Heute im Park" or under the calendar's header.
 
 - `isSeenSection` _function_: Whether a string read off the DOM is a place the event knows.
 - `BLOCK_SEEN_SECTIONS` _const_: The marks that stand only where their block is: they count the block's views, and say nothing about how far down a page was read.
+- `HOME_SEEN_SECTIONS` _const_: The homepage's marks, one where each stop begins, so the homepage says how far down it was read the way a park page does; they stand wherever the stops do.
 - `SECTION_SEEN_ATTRIBUTE` _const_: The attribute that makes an element a mark and names its place.
 - Types: `SeenSection`
 

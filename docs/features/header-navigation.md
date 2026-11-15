@@ -251,8 +251,8 @@ The panel is only the look; the data and the click behaviour live in the modules
   source `menu-park`), the hand-off the Orlando hub's "Plan this day" uses, and the navigation goes
   on. The park page's beacon publishes the same park and clears it when the visitor leaves.
 - **Analytics** as for the other bands: `nav_menu_opened` with `menu=planner`, clicks as
-  `internal_link_clicked` with `header` or `menu_sheet`, and `planner_opened` with `menu-plan` or
-  `menu-park`.
+  `internal_link_clicked` with `menu_planner` (band and sheet alike), and `planner_opened` with
+  `menu-plan` or `menu-park`.
 - **The buttons** are the site's (`buttonLinkProps`, `Button`), drawn round as in the draft.
 - **Cost**: about +1.0 KB brotli per page against the plain link it replaces (0.99 to 1.03 KB over
   three runs, 16.7 KB raw with the site's button classes; median over the six locales on
