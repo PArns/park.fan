@@ -16,12 +16,16 @@ answers:
 - **No endless animation inside a `backdrop-filter` box.** The blur is re-read whenever its region
   is dirtied, and `will-change` did not stop the "Heute im Park" header from flickering. A live
   indicator in a glass card is a static dot: `<LiveDot showPing={false} … />`. The one exception
-  is the owner's: the region scenes in the header's planner band loop while the band is open
-  (`loop` in `TripRegionSceneProps`, [Parky on holiday](../features/parky-character.md#pictures-of-him)).
-  They loop nowhere else, run only while the band shows (it is `display: none` when closed, which
-  cancels every CSS animation in it), move only `transform` and `opacity` inside opaque tiles,
-  animate a set of lights as one element rather than each light, and stand still under reduced
-  motion.
+  is the owner's: the region scenes (`loop` in `TripRegionSceneProps`,
+  [Parky on holiday](../features/parky-character.md#pictures-of-him)) loop in the header's planner
+  band while it is open, in the trip planner's assistant while its dialog is open, and on a page
+  (the homepage's region tiles, a park's planner tile) while any of the tile shows below the
+  header. They run only while they are seen: the band is `display: none` when closed, which
+  cancels every CSS animation in it, the dialog's content is unmounted when it closes, and a tile
+  on a page asks `useActiveOnScreen` with the header's 48 px taken off the top, so nothing loops
+  under the header's glass alone or in a background tab. They move only `transform` and `opacity`
+  inside opaque tiles, animate a set of lights as one element rather than each light, and stand
+  still under reduced motion.
 - **Every endless animation stops for `prefers-reduced-motion`** (`LiveDot`:
   `motion-reduce:hidden`, `motion-reduce:animate-none`).
 - **A layout read belongs in an observer callback or at the start of a hover**, not in a `scroll`,
@@ -44,7 +48,8 @@ rises in CSS from its first paint (`.pk-tile-reveal`, `app/globals.css`), and a 
 park or ride page no longer requests the chunk.
 
 The planner band's scenes loop since 2.22.1, at the owner's request („so lange das Menü sichtbar
-ist"). Measured on 2026-11-14 in headless Chromium against `next dev`: with the band closed none of
+ist"), and the tiles on the homepage and in the trip planner since the owner asked for them to move
+„wie im Supermenü“. Measured on 2026-11-14 in headless Chromium against `next dev`: with the band closed none of
 the scenes' animations exist; with it open Chromium composites all of them but the trail's one-off
 draw, and the glass beside the tiles stayed the same in 30 screenshots in a row. One animation per
 light on the Eiffel Tower cost the main thread about 145 ms per second, eight sets of five lights

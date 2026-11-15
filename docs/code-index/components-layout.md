@@ -135,16 +135,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlannerMenuPanel` _component_: The planner band: the trip planner per region, the day planner, and the locale's popular parks as quick starts into the day planner.
 - `RegionTile` _component_: A region as one of several, from the four-region design: the scene above, and over a fade at its foot where it is, its name and an arrow; the line every region shares („Welcher Park an welchem Tag") stands once on the row's heading.
-- `usePlanSummary` _hook_: This browser's plan, summed up: nothing on the server and during hydration, where neither the plan nor the clock is known.
-- `planSummary` _function_: The plan the band reports: the next planned day from today on (the active one where it is among them), and how many such days there are. A plan whose days are all over reports nothing. `now` is the browser's clock, never the server's.
-- `formatPlanDay` _function_: A planned day as `YYYY-MM-DD`, written short in the reader's language: „Sa., 21. Nov.".
-- Types: `PlanSummary`
 
 ### [`planner-region-art.tsx`](../../components/layout/planner-region-art.tsx)
 
 - `PlannerRegionArt` _component_: The picture of a region's card in the planner band: its Parky scene where `TRIP_REGIONS` gives it one, else the hub's photo.
 - `SceneFade` _component_: A loaded scene filling its box, faded in over the card's ground rather than cut in; the scene comes from `useRegionScene`, and `loop` is the scene's own (`TripRegionSceneProps`).
-- `RegionSceneInView` _component_: A region's scene in a card on a page, the planner tile on a park's pages: fetched once the page has loaded and the card nears the screen (`LazyMount`), and kept from then on, so the chunk costs the first load nothing and a card below the …
+- `RegionSceneInView` _component_: A region's scene in a card on a page, the homepage's region tiles and the planner tile on a park's pages: fetched once the page has loaded and the card nears the screen (`LazyMount`), and kept from then on, so the chunk costs the first …
 - `RegionSceneCut` _component_: A region's scene cut to a 56 × 36 box, for its row in the phone sheet where several regions are listed.
 - `useRegionScene` _hook_: A region's Parky scene, or `null` where `TRIP_REGIONS` gives it none: the one loader for the planner band, the park tile, the phone sheet and the trip planner's assistant.
 - Types: `RegionScene`

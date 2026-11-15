@@ -1,7 +1,7 @@
 'use client';
 
-import { useSyncExternalStore, type ReactNode } from 'react';
-import { assistantGate } from '@/lib/assistant/config';
+import type { ReactNode } from 'react';
+import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
 import { openParky } from '@/lib/assistant/open';
 import { StopLink } from './home-stop';
 
@@ -12,11 +12,7 @@ import { StopLink } from './home-stop';
  * the gate decides in the browser.
  */
 export function ParkyAskLink({ children }: { children: ReactNode }) {
-  const status = useSyncExternalStore(
-    assistantGate.subscribe,
-    assistantGate.getStatus,
-    assistantGate.getServerStatus
-  );
+  const status = useAssistantGateStatus();
   return (
     <StopLink
       href="/parky"

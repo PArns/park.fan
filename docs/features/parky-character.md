@@ -88,7 +88,10 @@ Outside the chat he appears in two still pictures, each built from the live draw
 than drawn again, so he looks the same everywhere: the break panel's sleeping Parky
 (`break-scene.tsx`, [park break panel](park-break-panel.md#the-picture)) and Parky on holiday in
 Orlando (`components/assistant/parky/orlando-scene.tsx`), the trip-planner card in the header's
-planner band ([header navigation](header-navigation.md#the-planner-panel)).
+planner band ([header navigation](header-navigation.md#the-planner-panel)). On the homepage's day
+planner stop he is the live drawing, calm, beside his speech bubble, and takes out his clipboard
+(the `plan` act) once while the day beside him fills in
+([homepage](homepage.md#the-day-planner-with-parky)).
 
 - **On holiday** he stands at a lake in Florida with his park map held low (`ParkyMap still`), a
   suitcase beside him, a flamingo in the shallows, a coaster on the far shore and a launch from the
@@ -96,12 +99,14 @@ planner band ([header navigation](header-navigation.md#the-planner-panel)).
   grins; in the evening (the dark theme) the glasses sit on his head and his eyes follow the
   fireworks, where `LOOK_GAZE.fireworks` points the live Parky's. The bursts are the fireworks
   act's `BURST`, three to four times the size.
-- **An entrance wherever he is shown, a loop only in the band.** Each time a region's picture is
-  shown it plays its entrance and comes to rest on the finished picture: in Orlando the rocket, a
-  launch from the Space Coast and no firework, lifts off from behind the far shore and climbs to its
-  place drawing its trail, and the bursts open. In the header's planner band, and only there
-  (`loop` in `TripRegionSceneProps`, set by `PlannerRegionArt`), the region scenes go on moving
-  while the band is open: Orlando's bursts open, stand and fade in turn with their glints on the
+- **An entrance wherever he is shown, a loop wherever he is seen.** Each time a region's picture
+  is shown it plays its entrance: in Orlando the rocket, a launch from the Space Coast and no
+  firework, lifts off from behind the far shore and climbs to its place drawing its trail, and the
+  bursts open. Then the scenes go on moving (`loop` in `TripRegionSceneProps`) for as long as
+  somebody sees them: in the header's planner band while it is open (`PlannerRegionArt`), in the
+  trip planner's assistant while its dialog is open (`WizardGuideBand`), and on the homepage's
+  region tiles and a park's planner tile while any of the tile shows below the header
+  (`RegionSceneInView`); out of view the picture comes to rest on its finished state: Orlando's bursts open, stand and fade in turn with their glints on the
   lake, and the rocket stays put while its flame flickers and its plume breathes; Southern
   California's pier wheel turns, the waves roll in and the gulls ride the wind; in Japan the petals
   fall and sway and the lanterns swing; in Paris the tower glitters like its hourly light show and

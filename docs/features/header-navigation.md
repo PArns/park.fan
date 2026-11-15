@@ -223,18 +223,22 @@ The panel is only the look; the data and the click behaviour live in the modules
   cover is in any page's HTML; it fades in over the card's ground (`starting:opacity-0`). A region
   without a scene shows the hub's photo, and so does a scene whose chunk fails to load, since the
   header has no error boundary. The scene's contract is `TripRegionSceneProps`; Orlando's is
-  [Parky on holiday](parky-character.md#pictures-of-him). Here alone the scenes loop (`loop`): an
+  [Parky on holiday](parky-character.md#pictures-of-him). The scenes loop here (`loop`): an
   entrance each time the band opens, then their moves for as long as it shows; the band's `hidden`
-  is `display: none`, which cancels every animation in it on each close.
+  is `display: none`, which cancels every animation in it on each close. The tiles on a page and
+  the trip planner's assistant loop the same way while they are seen
+  ([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)).
 - **Day planner.** Without a plan, and always on the server: its title, one line, a drawn day
-  (`DrawnDay` on `DayStrip`, `aria-hidden`, hours in the reader's clock, drawn from the first
-  opening) and „Tag planen" into the planner page's start (`#plan`). With a plan in this browser
-  (`usePlanSummary`: the store's snapshot and the browser's clock after hydration; the band is hidden
-  on the first paint, so the swap shifts nothing): „Dein Plan" with the next planned day from today
-  on (the active one where it is among them; `planSummary`, each park's today in its own zone), the
-  planned days ahead, „8 Bahnen · 10:00–17:40" and the day's blocks on the strip
-  (`PlanDayStrip`, from the planner's own `/plan/day` query once the band has opened; line and strip
-  hold their height until it answers), „Meinen Plan öffnen" on the open signal
+  (`DrawnDayStrip` on `DayStrip`, `components/planner/day-strip.tsx`, shared with the homepage's
+  [day planner stop](homepage.md#the-day-planner-with-parky); `aria-hidden`, hours in the reader's
+  clock, drawn from the first opening) and „Tag planen" into the planner page's start (`#plan`).
+  With a plan in this browser (`usePlanSummary`, `lib/planner/plan-summary.ts`: the store's snapshot
+  and the browser's clock after hydration; the band is hidden on the first paint, so the swap shifts
+  nothing): „Dein Plan" with the next planned day from today on (the active one where it is among
+  them; `planSummary`, each park's today in its own zone), the planned days ahead, „8 Bahnen ·
+  10:00–17:40" and the day's blocks on the strip (`PlanDayStrip`, from the planner's own `/plan/day`
+  query once the band has opened; line and strip hold their height until it answers, and a day it
+  could not answer is drawn in the grey of a block without a wait), „Meinen Plan öffnen" on the open signal
   (`plannerUi.requestOpen('menu-plan')`, which the launcher treats like the phone's calendar button:
   a day that is over is asked about first) and „Neuer Tag" into the page's start. The draft's „Parks
   auf Tage verteilen" row is left out: the planner page's assistant for it (`PlannerTripAssistant`)

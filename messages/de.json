@@ -162,6 +162,16 @@
       "countryOpen": "{count} offen",
       "viewAll": "Alle Parks in {continent} ansehen",
       "countryClosed": "{count} geschlossen"
+    },
+    "dayPlanner": {
+      "line": "Sag mir Park, Tag und deine Wunschfahrten, dann planen wir zusammen, wann du wo am kürzesten anstehst.",
+      "lineYours": "{park} ist schon geplant. Wollen wir noch einen Parktag zusammen planen?",
+      "drawnTitle": "So sieht ein geplanter Tag aus",
+      "waitLabel": "Wartezeit:",
+      "waitShort": "kurz",
+      "waitMedium": "mittel",
+      "waitLong": "lang",
+      "chat": "Mit Parky planen"
     }
   },
   "homeStory": {
@@ -201,6 +211,10 @@
       "title": "Parky, dein Buddy für jede Parkfrage",
       "lead": "Parky ist ein Freizeitpark-Nerd. Er weiß, wie lang du gerade an Taron anstehst, an welchem Samstag im Juni der Europa-Park am leersten ist und was Airtime eigentlich ist.",
       "link": "Mit Parky schreiben"
+    },
+    "dayPlanner": {
+      "lead": "Deine Bahnen auf einer Zeitleiste, jede mit der Wartezeit, die für ihre Stunde vorhergesagt ist. So siehst du schon zu Hause, ob alles vor Parkschluss drankommt.",
+      "link": "So funktioniert der Tagesplaner"
     },
     "reading": {
       "title": "Freizeitpark-News und Guides",

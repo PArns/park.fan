@@ -142,7 +142,8 @@ the left the line over the question (region and step, then region and dates, the
 the speech bubble, whose tail points at Parky. The bubble stands on the card's ground, not on the
 scene, is the dialog's title and takes the focus on every new step, so a screen reader reads the
 question first. The evenings step gives the scene's container `dark`, its night version in either
-theme.
+theme. The scene loops as in the header's band (`loop`): the dialog's content is mounted only while
+it is open, so it moves for exactly as long as somebody sees it.
 
 ### The frame
 

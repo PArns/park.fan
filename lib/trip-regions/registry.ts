@@ -29,8 +29,9 @@ export interface TripRegionSceneProps {
   className?: string;
   /**
    * Keep moving after the entrance, for as long as the scene is shown: the header's planner band
-   * asks for it, and the band is `display: none` whenever it is closed, which stops every
-   * animation in it. Everywhere else the scene plays its entrance and stands still.
+   * while it is open (it is `display: none` when closed, which stops every animation in it), the
+   * trip planner's assistant while its dialog is open, and a tile on a page while it shows below
+   * the header (`RegionSceneInView`). Without it the scene plays its entrance and stands still.
    */
   loop?: boolean;
 }

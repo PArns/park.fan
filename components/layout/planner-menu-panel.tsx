@@ -1,6 +1,6 @@
 'use client';
 
-import { memo, useMemo, useSyncExternalStore } from 'react';
+import { memo } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { ArrowRight, CalendarClock, CalendarDays, CalendarPlus } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
@@ -14,24 +14,12 @@ import {
   REGION_KICKER,
   REGION_PILL as PILL,
 } from '@/components/trip-regions/region-card-classes';
-import { useBrowserNow } from '@/lib/hooks/use-mounted';
-import { usePlanDay } from '@/lib/hooks/use-plan-day';
+import { DrawnDayStrip, PlanDayStrip } from '@/components/planner/day-strip';
 import { translateCountry } from '@/lib/i18n/helpers';
-import { spansFor, estimateFor } from '@/lib/planner/estimate';
-import { todayInZone } from '@/lib/planner/park-time';
+import { formatPlanDay, usePlanSummary } from '@/lib/planner/plan-summary';
 import { PLANNER_START_ID } from '@/lib/planner/segments';
-import { plannerStore } from '@/lib/planner/store';
-import {
-  isPlannedDay,
-  type PlannerEntry,
-  type PlannerGeo,
-  type PlannerState,
-} from '@/lib/planner/types';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { quickStartClick, type PlannerQuickStart } from '@/lib/planner/quick-start';
-import { waitTimeCrowdTier } from '@/lib/utils/crowd-level-styles';
-import { getDateTimeFormat } from '@/lib/utils/intl-format';
-import { formatParkDay } from '@/lib/utils/park-day';
 import { cn } from '@/lib/utils';
 import type { PlannerMenuRegion } from '@/lib/navigation/planner-menu';
 
@@ -349,70 +337,6 @@ export function RegionTile({
   );
 }
 
-/** The day the band reports from this browser's plan, with what drawing it takes. */
-export interface PlanSummary {
-  parkSlug: string;
-  park: string;
-  geo: PlannerGeo;
-  date: string;
-  entries: PlannerEntry[];
-  /** Planned days from today on, every park's in its own zone. */
-  days: number;
-}
-
-/**
- * The plan the band reports: the next planned day from today on (the active one where it is
- * among them), and how many such days there are. A plan whose days are all over reports nothing.
- * `now` is the browser's clock, never the server's.
- */
-export function planSummary(state: PlannerState, now: number): PlanSummary | null {
-  const upcoming: { slug: string; date: string }[] = [];
-  for (const park of Object.values(state.parks)) {
-    const today = todayInZone(park.timezone, now);
-    for (const day of Object.values(park.days)) {
-      if (isPlannedDay(day) && day.date >= today)
-        upcoming.push({ slug: park.slug, date: day.date });
-    }
-  }
-  if (upcoming.length === 0) return null;
-  const active = upcoming.find(
-    (day) => day.slug === state.activeParkSlug && day.date === state.activeDate
-  );
-  const next =
-    active ??
-    upcoming.reduce((first, day) =>
-      day.date < first.date || (day.date === first.date && day.slug < first.slug) ? day : first
-    );
-  const park = state.parks[next.slug];
-  return {
-    parkSlug: park.slug,
-    park: park.name,
-    geo: park.geo,
-    date: next.date,
-    entries: park.days[next.date].entries,
-    days: upcoming.length,
-  };
-}
-
-/** A planned day as `YYYY-MM-DD`, written short in the reader's language: „Sa., 21. Nov.". */
-export function formatPlanDay(date: string, locale: string): string {
-  return formatParkDay(locale, date, { weekday: 'short', day: 'numeric', month: 'short' });
-}
-
-/**
- * This browser's plan, summed up: nothing on the server and during hydration, where neither the
- * plan nor the clock is known.
- */
-export function usePlanSummary(): PlanSummary | null {
-  const state = useSyncExternalStore(
-    plannerStore.subscribe,
-    plannerStore.getSnapshot,
-    plannerStore.getServerSnapshot
-  );
-  const now = useBrowserNow();
-  return useMemo(() => (now ? planSummary(state, now.getTime()) : null), [state, now]);
-}
-
 /**
  * The day planner's card. Without a plan (and on the server): what it does, a drawn day for a
  * picture, and „Tag planen" into the planner page's start. With one, read from this browser after
@@ -424,6 +348,7 @@ function DayPlannerCard({ href }: { href: string }) {
   const t = useTranslations('navigation');
   const locale = useLocale();
   const plan = usePlanSummary();
+  const opened = useMenuBandOpened();
   const startHref = `${href}#${PLANNER_START_ID}`;
 
   return (
@@ -443,7 +368,7 @@ function DayPlannerCard({ href }: { href: string }) {
               {t('plannedDays', { count: plan.days })}
             </span>
           </div>
-          <PlanDayStrip plan={plan} locale={locale} />
+          <PlanDayStrip plan={plan} locale={locale} enabled={opened} />
           <div className="mt-3 flex flex-wrap items-center gap-2">
             <Button
               type="button"
@@ -476,7 +401,7 @@ function DayPlannerCard({ href }: { href: string }) {
             {t('dayPlannerTitle')}
           </div>
           <p className="text-muted-foreground mt-1 text-xs leading-snug">{t('dayPlannerHint')}</p>
-          <DrawnDay locale={locale} />
+          <DrawnDayStrip locale={locale} shown={opened} />
           <div className="mt-3">
             <Link
               href={startHref as '/'}
@@ -494,177 +419,5 @@ function DayPlannerCard({ href }: { href: string }) {
         </>
       )}
     </div>
-  );
-}
-
-/** A block on a strip: where it starts and ends, in park-local minutes, and how busy it is. */
-interface StripBlock {
-  from: number;
-  to: number;
-  level: keyof typeof BLOCK_INK;
-}
-
-const BLOCK_INK = {
-  low: 'bg-crowd-low/15 border-crowd-low dark:bg-crowd-low/20',
-  moderate: 'bg-crowd-moderate/15 border-crowd-moderate dark:bg-crowd-moderate/20',
-  high: 'bg-crowd-high/20 border-crowd-high dark:bg-crowd-high/25',
-  /** A block of the visitor's own, or a ride with no wait to go on. */
-  none: 'bg-muted border-muted-foreground/50',
-};
-
-/**
- * A day drawn the way the planner draws one, as a strip: blocks on an hour axis, coloured by how
- * busy the hour is, a dot for each walk between them. Drawn from the band's first opening, while
- * the box it fills holds its height from the start, so neither the drawn day nor the plan's own
- * ever shifts the card. The hours follow the reader's clock (1, 2 … in English); a long day labels
- * every other hour. `aria-hidden`: what it says is in the line above it.
- */
-function DayStrip({
-  locale,
-  from,
-  to,
-  blocks,
-}: {
-  locale: string;
-  /** The axis, in park-local minutes: a whole hour before the first block to one after the last. */
-  from: number;
-  to: number;
-  blocks: StripBlock[] | null;
-}) {
-  const hour = getDateTimeFormat(locale, { hour: 'numeric', timeZone: 'UTC' });
-  const label = (h: number) =>
-    hour.formatToParts(Date.UTC(2026, 0, 1, h % 24)).find((part) => part.type === 'hour')?.value ??
-    '';
-  const at = (minute: number) => ((minute - from) / (to - from)) * 100;
-  const hours = Array.from({ length: (to - from) / 60 - 1 }, (_, i) => from / 60 + 1 + i);
-  const step = hours.length > 10 ? 2 : 1;
-  return (
-    <div className="relative mt-3 h-14" aria-hidden="true">
-      {blocks && (
-        <>
-          {hours.map((h, i) => (
-            <span key={h}>
-              {i % step === 0 && (
-                <span
-                  className="text-muted-foreground absolute top-0 -translate-x-1/2 text-[10px] tabular-nums"
-                  style={{ left: `${at(h * 60)}%` }}
-                >
-                  {label(h)}
-                </span>
-              )}
-              <span
-                className="bg-border/70 absolute top-4 bottom-0 w-px"
-                style={{ left: `${at(h * 60)}%` }}
-              />
-            </span>
-          ))}
-          {blocks.map((block, i) => {
-            const next = blocks[i + 1];
-            return (
-              <span key={`${block.from} ${i}`}>
-                <span
-                  className={cn(
-                    'absolute top-5 h-7 rounded-[5px] border-l-2',
-                    BLOCK_INK[block.level]
-                  )}
-                  style={{
-                    left: `${at(block.from)}%`,
-                    width: `calc(${at(block.to) - at(block.from)}% - 1px)`,
-                  }}
-                />
-                {next && next.from > block.to && (
-                  <span
-                    className="bg-muted-foreground/40 absolute top-[2.05rem] size-1 -translate-x-1/2 rounded-full"
-                    style={{ left: `${at((block.to + next.from) / 2)}%` }}
-                  />
-                )}
-              </span>
-            );
-          })}
-        </>
-      )}
-    </div>
-  );
-}
-
-/** The drawn day: ten to six, eight rides between quiet and busy hours. */
-const DRAWN_BLOCKS: StripBlock[] = [
-  { from: 555, to: 585, level: 'low' },
-  { from: 600, to: 645, level: 'low' },
-  { from: 660, to: 720, level: 'moderate' },
-  { from: 744, to: 816, level: 'high' },
-  { from: 840, to: 876, level: 'moderate' },
-  { from: 900, to: 966, level: 'high' },
-  { from: 984, to: 1020, level: 'moderate' },
-  { from: 1038, to: 1068, level: 'low' },
-];
-
-/** A picture of the tool, not anybody's plan, on the band's first opening. */
-function DrawnDay({ locale }: { locale: string }) {
-  const opened = useMenuBandOpened();
-  return <DayStrip locale={locale} from={540} to={1140} blocks={opened ? DRAWN_BLOCKS : null} />;
-}
-
-/** The busyness a ride's expected wait reads as, in the strip's three inks. */
-function stripLevel(wait: number | null): StripBlock['level'] {
-  if (wait === null) return 'none';
-  const tier = waitTimeCrowdTier(wait);
-  if (tier === 'very_low' || tier === 'low') return 'low';
-  if (tier === 'moderate') return 'moderate';
-  return 'high';
-}
-
-/**
- * The plan's own day: its rides and hours in a line, its blocks on the strip, from the planner's
- * `/plan/day` for that park and date (the same query and cache as the panel), asked for once the
- * band has opened. Until it answers the line keeps its height with nothing in it, because the
- * hours depend on the waits.
- */
-function PlanDayStrip({ plan, locale }: { plan: PlanSummary; locale: string }) {
-  const t = useTranslations('navigation');
-  const opened = useMenuBandOpened();
-  const { data: day, isSuccess } = usePlanDay({
-    ...plan.geo,
-    parkSlug: plan.parkSlug,
-    date: plan.date,
-    enabled: opened,
-  });
-  const strip = useMemo(() => {
-    if (!isSuccess || plan.entries.length === 0) return null;
-    const sorted = [...plan.entries].sort((a, b) => a.startMinute - b.startMinute);
-    const spans = spansFor(day, sorted);
-    const blocks: StripBlock[] = sorted.map((entry, i) => ({
-      from: spans[i].startMinute,
-      to: spans[i].startMinute + spans[i].spanMinutes,
-      level:
-        entry.attractionSlug && !entry.custom ? stripLevel(estimateFor(day, entry).wait) : 'none',
-    }));
-    const first = Math.min(...blocks.map((block) => block.from));
-    const last = Math.max(...blocks.map((block) => block.to));
-    return {
-      blocks,
-      first,
-      last,
-      from: Math.floor(first / 60) * 60 - 60,
-      to: Math.ceil(last / 60) * 60 + 60,
-    };
-  }, [isSuccess, day, plan.entries]);
-  const rides = plan.entries.filter((entry) => entry.attractionSlug && !entry.custom).length;
-  const clock = getDateTimeFormat(locale, { hour: 'numeric', minute: '2-digit', timeZone: 'UTC' });
-  const time = (minute: number) => new Date(Date.UTC(2026, 0, 1, 0, minute));
-
-  return (
-    <>
-      <div className="text-muted-foreground min-h-4 text-xs tabular-nums">
-        {strip &&
-          `${t('planRides', { count: rides })} · ${clock.formatRange(time(strip.first), time(strip.last))}`}
-      </div>
-      <DayStrip
-        locale={locale}
-        from={strip?.from ?? 540}
-        to={strip?.to ?? 1140}
-        blocks={strip?.blocks ?? null}
-      />
-    </>
   );
 }

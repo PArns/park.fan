@@ -162,6 +162,16 @@
       "countryOpen": "{count, plural, one {# aperto} other {# aperti}}",
       "viewAll": "Vedi tutti i parchi in {continent}",
       "countryClosed": "{count, plural, one {# chiuso} other {# chiusi}}"
+    },
+    "dayPlanner": {
+      "line": "Dimmi parco, giorno e attrazioni che vuoi fare, e vediamo insieme a che ora ognuna ha la coda più corta.",
+      "lineYours": "{park} è già pianificato. Pianifichiamo insieme un’altra giornata al parco?",
+      "drawnTitle": "Com’è una giornata pianificata",
+      "waitLabel": "Attesa:",
+      "waitShort": "breve",
+      "waitMedium": "media",
+      "waitLong": "lunga",
+      "chat": "Pianifica con Parky"
     }
   },
   "homeStory": {
@@ -201,6 +211,10 @@
       "title": "Parky, il tuo amico per ogni domanda sui parchi",
       "lead": "Parky è un nerd dei parchi divertimento. Sa quanto stai aspettando adesso a Taron, quale sabato di giugno Europa-Park è più vuoto e cosa sia davvero l’airtime.",
       "link": "Scrivi a Parky"
+    },
+    "dayPlanner": {
+      "lead": "Le tue attrazioni su una linea del tempo, ognuna con l’attesa prevista per la sua ora. Così vedi già da casa se ci sta tutto prima della chiusura del parco.",
+      "link": "Come funziona il pianificatore"
     },
     "reading": {
       "title": "Notizie e guide dai parchi divertimento",

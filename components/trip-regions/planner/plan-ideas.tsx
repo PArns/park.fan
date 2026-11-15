@@ -8,7 +8,7 @@ import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
 import { cn } from '@/lib/utils';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { oneFullStop } from '@/lib/utils/metadata';
-import { assistantGate } from '@/lib/assistant/config';
+import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
 import { askParkyAboutIdea, type AssistantTripIdea } from '@/lib/assistant/trip-idea';
 import {
   ideaFigure,
@@ -126,11 +126,7 @@ function useIdea(idea: PlanIdea, place: TripIdeaPlace) {
   const track = useTripEvents();
   const words = useIdeaWords();
   const cardOf = useIdeaCard();
-  const parky = useSyncExternalStore(
-    assistantGate.subscribe,
-    assistantGate.getStatus,
-    assistantGate.getServerStatus
-  );
+  const parky = useAssistantGateStatus();
   const key = `${region.slug}|${ideaKey(idea)}|${place}`;
   useEffect(() => {
     if (counted.has(key)) return;

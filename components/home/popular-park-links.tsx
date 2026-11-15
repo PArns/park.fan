@@ -9,6 +9,7 @@ import type { Locale } from '@/i18n/config';
 import { getGeoStructure } from '@/lib/api/discovery';
 import { catchNonFatal } from '@/lib/api/client';
 import { extractFeaturedParks } from './featured-parks-section';
+import { STOP_PILL_CLASS } from './home-stop';
 
 /** How many parks, besides the cards beside the list. */
 const PARKS = 9;
@@ -39,10 +40,7 @@ export async function PopularParkLinks({ locale }: { locale: Locale }) {
         its name leading to the waits and the icon at its end to the calendar. */}
       <ul className="flex flex-wrap gap-2">
         {parks.map((park) => (
-          <li
-            key={park.href}
-            className="border-border/60 bg-card/40 flex min-h-10 items-center rounded-full border text-sm"
-          >
+          <li key={park.href} className={STOP_PILL_CLASS}>
             <Link
               href={park.href as '/'}
               prefetch={false}

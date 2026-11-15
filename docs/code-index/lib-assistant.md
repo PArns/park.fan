@@ -82,6 +82,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `interviewEnded` _function_: What `assistant_interview_ended` carries for an interview that ends now.
 - `readInterview` _function_: An interview read leniently, from the API's action or this tab's storage, rebuilt so nothing rides along; null for one that cannot be read.
 - `startInterview` _function_: The planner's button: the interview set on its first step, and its first question waiting for the chat window, which sends it once its session is ready (`takeInterviewKickoff`).
+- `openInterview` _function_: A button's way into the interview: the interview set on its first step (`startInterview`) and the chat window opened for it, which asks the first question once its session is ready.
 - `takeInterviewKickoff` _function_: The kind of interview whose first question waits to be sent, once: reading it clears it.
 - `TRIP_INTERVIEW_CORE` _const_: The interview goes from simple to detailed: a short core, then the plan, then refinements Parky offers as replies (`refine`). The order is a guide; a step answered early counts at once.
 - `TRIP_INTERVIEW_REFINE` _const_: A trip's refinements, offered once its plan stands.
@@ -387,6 +388,10 @@ What counts as a control the bubble must not cover.
 - `assistantPagePath` _function_: The page as the API accepts it: a path of slugs, else the locale's home.
 - `ASSISTANT_API` _const_: Parky is served by api.park.fan itself, never by a relay route, so a chat costs no function.
 - Types: `AssistantLookup`, `AssistantChatMessage`, `AssistantChatPhase`
+
+### [`use-assistant-gate.ts`](../../lib/assistant/use-assistant-gate.ts)
+
+- `useAssistantGateStatus` _hook_: Where Parky's gate stands for this visitor, `pending` on the server and until it is decided, so an offer of Parky never decides server-rendered markup.
 
 ### [`use-assistant-session.ts`](../../lib/assistant/use-assistant-session.ts)
 

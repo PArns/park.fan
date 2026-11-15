@@ -15,6 +15,7 @@ import { PLAN_FOCUS } from '../planner/plan-controls';
  * line over the question (region, dates or step) and Parky's question in a speech bubble whose tail
  * points at him. The bubble is the dialog's title and takes the focus when the step changes, so a
  * screen reader reads the question. `evening` draws the scene's night version in either theme.
+ * The scene loops as in the header's band: the dialog's content exists only while it is open.
  * docs/features/trip-planner/wizard.md#the-band.
  */
 export function WizardGuideBand({
@@ -49,7 +50,7 @@ export function WizardGuideBand({
             evening && 'dark'
           )}
         >
-          <SceneFade Scene={Scene} fallback={null} />
+          <SceneFade Scene={Scene} fallback={null} loop />
         </span>
       )}
       <div className="relative flex h-full max-w-[62%] flex-col justify-center gap-1.5 pl-4 sm:pl-6">

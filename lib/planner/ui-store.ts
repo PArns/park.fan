@@ -44,6 +44,8 @@ export type PlannerOpenedSource =
   | 'plan-list'
   | 'shared-link'
   | 'home-hero'
+  | 'home-park'
+  | 'home-plan'
   | 'kids-page'
   | `${string}-hub`
   | `${string}-trip-day`
