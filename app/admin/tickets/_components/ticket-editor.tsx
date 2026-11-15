@@ -15,6 +15,7 @@ import {
   MAX_TICKET_DAYS,
   MAX_TICKET_LINKS,
   MAX_TICKET_WINDOW,
+  TICKET_ORDER_HINT,
   TICKET_PUBLISH_DELAY,
   TICKET_ANCHOR_LABELS,
   TICKET_CONFIDENCE_LABELS,
@@ -818,7 +819,7 @@ export function TicketEditor({
 
             <Tile
               title="Links"
-              hint="Die Reihenfolge hier ist die auf der Website: Der erste Link steht vorn. Genau einer ist der Shop des Betreibers."
+              hint={`${TICKET_ORDER_HINT} Genau einer ist der Shop des Betreibers.`}
             >
               {at('links') && <p className="text-destructive text-xs">{at('links')}</p>}
               <ol className="grid gap-3">

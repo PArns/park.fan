@@ -146,6 +146,7 @@ import {
 } from '../lib/trip-regions/plan-fetch.ts';
 import {
   adoptSuggestions,
+  compareTicketOrder,
   draftTicket,
   entryMarket,
   linkMarket,
@@ -160,6 +161,8 @@ import {
   needsConnectedHop,
   officialTicketLink,
   orderTicketLinks,
+  orderTicketPackages,
+  orderTicketPicks,
   ownedUse,
   primaryTicketLink,
   ticketFacts,
@@ -2344,28 +2347,19 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       sponsored: false,
     },
   ];
-  const order = (locale, market) =>
-    orderTicketLinks({ links }, { locale, market }, 'Disney').map((l) => l.seller);
-  test(
-    'links keep the admin’s order unless one is for the visitor’s locale or market',
-    [order('fr', 'intl'), order('de', 'intl'), order('en', 'uk'), order('nl', 'uk')],
-    [
-      ['Cheap Seller', 'Attraction Tickets', 'Fan Shop DE', 'Walt Disney World'],
-      ['Fan Shop DE', 'Cheap Seller', 'Attraction Tickets', 'Walt Disney World'],
-      ['Attraction Tickets', 'Cheap Seller', 'Fan Shop DE', 'Walt Disney World'],
-      ['Attraction Tickets', 'Cheap Seller', 'Fan Shop DE', 'Walt Disney World'],
-    ]
-  );
+  const order = orderTicketLinks({ links }, 'Disney').map((l) => l.seller);
+  test('a sponsored link comes first, the rest keep the admin’s order', order, [
+    'Attraction Tickets',
+    'Cheap Seller',
+    'Fan Shop DE',
+    'Walt Disney World',
+  ]);
   test(
     'the official link is never moved to the front, and an older answer’s shopUrl stands alone',
     [
-      order('it', null).indexOf('Walt Disney World'),
-      orderTicketLinks(
-        { shopUrl: 'https://shop.example/' },
-        { locale: 'en', market: null },
-        'Disney'
-      ),
-      orderTicketLinks({}, { locale: 'en', market: null }, 'Disney'),
+      order.indexOf('Walt Disney World'),
+      orderTicketLinks({ shopUrl: 'https://shop.example/' }, 'Disney'),
+      orderTicketLinks({}, 'Disney'),
     ],
     [3, [{ seller: 'Disney', url: 'https://shop.example/', official: true, sponsored: false }], []]
   );
@@ -2395,26 +2389,10 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     at('DE', 'EUR', 'de'),
     { seller: 'Walt Disney World', url: 'https://wdw.example/', official: true, sponsored: false },
   ];
-  const storeOrder = (locale, languages) =>
-    orderTicketLinks(
-      { links: stores },
-      { locale, market: visitorMarket(languages), country: visitorCountry(languages) },
-      'Disney'
-    ).map((l) => l.seller);
   test(
-    'every store is listed, the visitor’s own country first, then their language’s',
-    [
-      storeOrder('en', ['en-IE']),
-      storeOrder('en', ['en']),
-      storeOrder('de', ['de-AT']),
-      storeOrder('de', ['en-IE']),
-    ],
-    [
-      ['AT IE', 'AT GB', 'AT NL', 'AT DE', 'Walt Disney World'],
-      ['AT GB', 'AT IE', 'AT NL', 'AT DE', 'Walt Disney World'],
-      ['AT DE', 'AT GB', 'AT IE', 'AT NL', 'Walt Disney World'],
-      ['AT IE', 'AT DE', 'AT GB', 'AT NL', 'Walt Disney World'],
-    ]
+    'every store is listed in the admin’s order, whatever the visitor’s country',
+    orderTicketLinks({ links: stores }, 'Disney').map((l) => l.seller),
+    ['AT GB', 'AT IE', 'AT NL', 'AT DE', 'Walt Disney World']
   );
   const groupsOf = (links) =>
     ticketLinkGroups(links).map((g) => [
@@ -2452,6 +2430,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [
       seller(primaryTicketLink([attraction('NL'), official, sponsoredDe])),
       seller(primaryTicketLink([official, attraction('DE'), attraction('NL')])),
+      seller(primaryTicketLink([attraction('NL'), { ...attraction('DE'), sponsored: true }])),
       seller(primaryTicketLink([official])),
       primaryTicketLink([]),
       seller(officialTicketLink([attraction('DE'), official])),
@@ -2460,10 +2439,35 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [
       'Partner Shop DE',
       'Attraction Tickets DE',
+      'Attraction Tickets DE',
       'Walt Disney World',
       null,
       'Walt Disney World',
       null,
+    ]
+  );
+  const catalog = ticketCatalog([{ id: 'wdw' }, { id: 'uor' }, { id: 'uk-14' }]);
+  const pick = (product, sponsored = false) => ({ product, buy: { sponsored } });
+  const picked = (picks) => picks.map((p) => `${p.product}${p.buy.sponsored ? '*' : ''}`);
+  test(
+    'one ticket order for links, tickets and packages: sponsored first, then the admin’s',
+    [
+      compareTicketOrder({ sponsored: false, place: 0 }, { sponsored: true, place: 5 }) > 0,
+      compareTicketOrder({ sponsored: false, place: 1 }, { sponsored: false, place: 2 }) < 0,
+      picked(orderTicketPicks([pick('uk-14'), pick('uor'), pick('wdw')], catalog)),
+      picked(orderTicketPicks([pick('wdw'), pick('uor', true), pick('gone')], catalog)),
+      orderTicketPackages([[pick('uor')], [pick('uk-14')]], (p) => p, catalog).map(picked),
+      orderTicketPackages([[pick('wdw')], [pick('uk-14', true)]], (p) => p, catalog).map(picked),
+      orderTicketPackages([[pick('wdw')], [pick('wdw')], []], (p) => p, catalog).length,
+    ],
+    [
+      true,
+      true,
+      ['wdw', 'uor', 'uk-14'],
+      ['uor*', 'wdw', 'gone'],
+      [['uor'], ['uk-14']],
+      [['uk-14*'], ['wdw']],
+      3,
     ]
   );
   test(

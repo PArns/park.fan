@@ -361,14 +361,17 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   The API suggests from every market, so a long stay may get a UK 14-day ticket itself, its shop
   link tagged "UK shop".
 
-- **Where to buy.** The recommendation buys each ticket through one link (`primaryTicketLink`): a
-  sponsored seller's first, else the first seller's that is not the operator's, else the operator's
-  shop, each in the visitor's order, so the store of their own country comes first among a
-  seller's. Inside a ticket's line, every link of the product's `links` as compact buttons in the
-  admin's order: the store of the visitor's own country first and drawn in the primary tint (the
-  region of the browser's first language, `visitorCountry`, `isVisitorStore`), then those for
-  their locale or market (`orderTicketLinks`); the official shop keeps its place. Every link is
-  shown to every visitor. A seller with two or more country stores (their `store`) gets one row
+- **Where to buy.** One order for links, tickets and packages, as the owner sets it in the admin
+  (`compareTicketOrder`): sponsored first, then the admin's order, which is a product's `links` as
+  listed and the products as the catalog lists them (their `sortOrder`). The visitor's country
+  orders nothing. The recommendation buys each ticket through one link (`primaryTicketLink`): the
+  first in that order that is not the operator's shop, else the shop. Its tickets and its packages
+  follow the same order (`orderTicketPicks`, `orderTicketPackages`), so the plan's own package
+  stays first unless the admin moves a long-stay ticket above it or only that one is sponsored.
+  Inside a ticket's line, every link of the product's `links` as compact buttons in that order
+  (`orderTicketLinks`), the store of the visitor's own country drawn in the primary tint (the
+  region of the browser's first language, `visitorCountry`, `isVisitorStore`). Every link is shown
+  to every visitor. A seller with two or more country stores (their `store`) gets one row
   under its name, a button per country with the store's currency: "Attraction Tickets" with
   "Deutschland (€)", "UK (£)" (`ticketLinkGroups`, `ticketStoreName`: the short country name and
   the currency symbol from `Intl`, so a new store needs no string); a single store is named in

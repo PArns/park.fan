@@ -15,6 +15,18 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 Geschnitten am 2026-11-15 aus 9 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.2.md`. Neueste Abschnitte zuerst.
 
+### Tickets und Shops stehen in der Reihenfolge des Admins, gesponserte zuerst
+
+Bisher sortierte der Planer die Shops selbst: der Shop des Landes aus der Browsersprache zuerst,
+dann die für Sprache oder Markt. Jetzt gilt eine Reihenfolge für Shops, Tickets und Pakete
+(`compareTicketOrder` in `lib/trip-regions/plan-tickets.ts`): gesponserte zuerst, dann die des
+Admins, also die Links eines Produkts, wie sie im Ticket-Editor stehen, und die Produkte nach ihrer
+`sortOrder`. Das Land des Besuchers sortiert nichts mehr (PAR-1352). Die API liefert beides schon in
+dieser Reihenfolge, sie ändert sich nicht. Im Admin verschieben die Pfeile Links und Produkte wie
+bisher; Liste und Links-Kachel sagen jetzt „Oben steht zuerst; gesponserte Links stehen immer ganz
+oben." Geprüft mit `pnpm test:orlando-plan` (232, neu: `compareTicketOrder`, `orderTicketPicks`,
+`orderTicketPackages`). Beschreibung: [Orlando-Planer](features/orlando-planner.md).
+
 ### Extremes Wetter vermeiden: ein Schalter im Parks-Schritt, und der Plan zeigt Hitze und Sturmsaison
 
 Im Parks-Schritt des Reiseassistenten steht unter den Parkkarten der Schalter „Extremes Wetter
@@ -183,7 +195,7 @@ November 879 px (Universal 5 Tage, dann Disney 6 Tage, die 14-Tage-Tickets einge
   der Katalog nicht, also behauptet die Karte weder „ab“ noch eine Ersparnis.
 - **Welcher Link kauft** (`primaryTicketLink`, `officialTicketLink` in
   `lib/trip-regions/plan-tickets.ts`): ein gesponserter Händler zuerst, sonst der erste, der nicht
-  der Betreiber ist, jeweils der Shop des eigenen Landes zuerst. Steht ein gesponserter Link in der
+  der Betreiber ist, in der Reihenfolge des Admins. Steht ein gesponserter Link in der
   Empfehlung, trägt ihr Kopf „Anzeige“ mit der Provisions-Erklärung, und der Link sagt
   „Partnerlink“; heute ist im Katalog keiner markiert, also zeigt die Karte keins von beiden.
 - **Je Ticket eine Zeile** (`SuggestionRow`): „Universal Orlando · 5-Tage-Ticket“ und „16.–22.
