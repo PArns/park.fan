@@ -276,16 +276,44 @@ tot extreem.
 Met de **Quick Pass** omzeil je de reguliere rij. Sinds de Wintertraum 2025/26
 werkt hij compleet anders. Er zijn twee varianten:
 
-- **Quick Pass (Single)**, de fast track voor **één rit** op één bepaalde attractie. Bij de start heette het dat de prijs _dynamisch_ was en met de actuele wachttijd zou meestijgen. Ik zag aan de balie toch altijd dezelfde prijs, en inmiddels is er een vaste lijst: 5 € voor [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere), [Maus au Chocolat](ref:phantasialand/maus-au-chocolat), [Mystery Castle](ref:phantasialand/mystery-castle) en [Talocan](ref:phantasialand/talocan), elk 7 € voor [Colorado Adventure](ref:phantasialand/colorado-adventure), [Winja’s Fear](ref:phantasialand/winjas-fear) en Winja’s Force, 10 € voor [Black Mamba](ref:phantasialand/black-mamba) en [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € voor [Taron](ref:phantasialand/taron). In de online shop kost Colorado Adventure 7 €, op de infopagina van het park staat nog 5 €. River Quest staat op dit moment op geen van beide lijsten.
-- **Quick Pass Ultimate** voor 80 €: één keer elk van die tien banen plus één keer [F.L.Y.](ref:phantasialand/fly). **Alleen met Ultimate kom je via Quick Pass in F.L.Y.**, los is de baan niet te koop. Alle tien losse passen samen kosten 73 €, de Ultimate is dus 7 € duurder, en voor die 7 € rijd je F.L.Y. Het loont alleen als je echt overal in wilt.
+- **Quick Pass (Single)**, de fast track voor **één rit** op één bepaalde
+  attractie. Bij de start heette het dat de prijs _dynamisch_ was en met de
+  actuele wachttijd zou meestijgen. Ik zag aan de balie toch altijd dezelfde
+  prijs, en inmiddels is er een vaste lijst: 5 € voor
+  [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
+  [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
+  [Mystery Castle](ref:phantasialand/mystery-castle) en
+  [Talocan](ref:phantasialand/talocan), elk 7 € voor
+  [Colorado Adventure](ref:phantasialand/colorado-adventure),
+  [Winja’s Fear](ref:phantasialand/winjas-fear) en Winja’s Force, 10 € voor
+  [Black Mamba](ref:phantasialand/black-mamba) en
+  [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € voor
+  [Taron](ref:phantasialand/taron). In de online shop kost Colorado Adventure
+  7 €, op de infopagina van het park staat nog 5 €. River Quest staat op dit
+  moment op geen van beide lijsten.
+- **Quick Pass Ultimate** voor 80 €: één keer elk van die tien banen plus één
+  keer [F.L.Y.](ref:phantasialand/fly). **Alleen met Ultimate kom je via Quick
+  Pass in F.L.Y.**, los is de baan niet te koop. Alle tien losse passen samen
+  kosten 73 €, de Ultimate is dus 7 € duurder, en voor die 7 € rijd je F.L.Y.
+  Het loont alleen als je echt overal in wilt.
 
 Zelfs met de Quick Pass wacht je bij F.L.Y. nog, boven, in het station. De
 baan doet er door haar ingewikkelde vliegbeugels lang over om te laden, en die
 opstopping lost ook in de fast track niet op.
 
-Inmiddels kun je de Quick Pass ook [in de online shop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand) kopen. Je betaalt daar, krijgt de pass als pdf per mail en laat de QR-code bij de Quick Pass-ingang op je telefoon zien, met de helderheid van het scherm helemaal open. Elke pass geldt voor één persoon. De gastenservice in het themagebied Berlin verkoopt ze ook nog ter plekke.
+Inmiddels kun je de Quick Pass ook
+[in de online shop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand)
+kopen. Je betaalt daar, krijgt de pass als pdf per mail en laat de QR-code bij
+de Quick Pass-ingang op je telefoon zien, met de helderheid van het scherm
+helemaal open. Elke pass geldt voor één persoon. De gastenservice in het
+themagebied Berlin verkoopt ze ook nog ter plekke.
 
-Een Quick Pass geldt alleen op de dag van de boeking. Een andere datum kies je niet, en omboeken of terugbetalen kan ook niet. Wie ’s avonds op de bank al voor morgen koopt, heeft een pass voor een dag die zo goed als voorbij is. Koop hem dus op de ochtend van je bezoek. Het aantal is beperkt, en juist tijdens de Wintertraum zijn de Quick Passes in het weekend vaak al rond het middaguur uitverkocht.
+Een Quick Pass geldt alleen op de dag van de boeking. Een andere datum kies je
+niet, en omboeken of terugbetalen kan ook niet. Wie ’s avonds op de bank al voor
+morgen koopt, heeft een pass voor een dag die zo goed als voorbij is. Koop hem
+dus op de ochtend van je bezoek. Het aantal is beperkt, en juist tijdens de
+Wintertraum zijn de Quick Passes in het weekend vaak al rond het middaguur
+uitverkocht.
 
 ```cta-widget
 href: https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand

@@ -48,11 +48,11 @@ seo:
 
 Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice in themawereld Berlin.
 
-Een Quick Pass is alleen geldig op de dag dat je hem boekt. In de shop kies je geen andere dag, omboeken kan niet en je geld terugkrijgen ook niet. Koop hem dus op de dag zelf, 's ochtends onderweg naar Brühl of meteen nadat je door de ingang bent. Bestel je hem de avond ervoor vanaf de bank, dan heb je de volgende ochtend een mooie pdf en verder niets. Bovenaan de shop stond op 15 november dan ook “Nur heute gültig: 15.11.2026”, alleen vandaag geldig.
+Een Quick Pass is alleen geldig op de dag dat je hem boekt. Een andere dag kiezen kan in de shop niet. Omboeken ook niet, en je geld terugkrijgen evenmin. Koop hem dus op de dag zelf, 's ochtends onderweg naar Brühl of meteen nadat je door de ingang van het park bent gelopen. Bestel je hem de avond ervoor vanaf de bank, dan heb je de volgende ochtend een mooie pdf en verder niets. Bovenaan de shop stond op 15 november dan ook “Nur heute gültig: 15.11.2026”, alleen vandaag geldig.
 
 ## Zo koop je de Quick Pass online
 
-In de shop kies je de banen waarvoor je een pass wilt, of meteen de Ultimate. Vanaf dat moment loopt de klok: tien minuten houdt het winkelmandje de passes voor je vast, en binnen die tijd rond je de bestelling af. Elke pass geldt voor één persoon, dus een gezin van vier heeft er voor Black Mamba vier nodig. Na de betaling komt de e-mail, en de passes zijn direct geldig. De shop is er in het Duits, Engels, Frans en Nederlands.
+In de shop kies je de banen waarvoor je een pass wilt, of meteen de Ultimate. Vanaf dat moment loopt de klok: tien minuten houdt het winkelmandje de passes voor je vast, en binnen die tijd rond je de bestelling af. Elke pass geldt voor één persoon, dus een gezin van vier heeft er voor Black Mamba vier nodig. Na de betaling komt de e-mail. De passes gelden meteen. De shop is er in het Duits, Engels, Frans en Nederlands.
 
 Bij de baan loop je naar de Quick-Pass-ingang en houd je je telefoon met de QR-code uit de pdf omhoog. Zet de helderheid van je scherm van tevoren op de hoogste stand, ook 's avonds in de Wintertraum, als je accu na een koude dag vol foto's toch al om genade smeekt.
 
@@ -88,7 +88,7 @@ Naast de Quick Pass heb je een geldig dagticket nodig, want in de entree zit hij
 
 ## Als de ingang pauzeert of de baan stilstaat
 
-De Quick Pass maakt je wachttijd korter, maar belooft niet dat je meteen instapt. De Quick-Pass-ingang kan af en toe pauzeren als de capaciteit van de baan krap wordt. Gaat een baan dicht door een technische storing of door het weer, dan krijg je je geld niet terug. Dat geldt ook voor een pass die je gewoon niet gebruikt. Doorverkopen is verboden, en een verloren pass wordt niet vervangen.
+De Quick Pass maakt je wachttijd korter. Meteen instappen belooft hij niet, en de Quick-Pass-ingang kan af en toe even pauzeren als de capaciteit van de baan krap wordt. Gaat een baan dicht door een technische storing of door het weer, dan krijg je je geld niet terug. Dat geldt ook voor een pass die je gewoon niet gebruikt. Doorverkopen is verboden, en een verloren pass wordt niet vervangen.
 
 ## In de Wintertraum
 

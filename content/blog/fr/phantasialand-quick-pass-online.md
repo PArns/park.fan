@@ -1,5 +1,5 @@
 ---
-title: 'Le Quick Pass du Phantasialand s’achète désormais en ligne'
+title: 'Le Quick Pass du Phantasialand se vend désormais en ligne'
 translationKey: phantasialand-quick-pass-online
 date: '2026-11-15'
 time: '17:45'
@@ -47,7 +47,7 @@ seo:
     - Phantasialand Wintertraum 2026
 ---
 
-Le Quick Pass du [Phantasialand](ref:phantasialand) se vend désormais sur la [boutique en ligne du parc](https://shop.phantasialand.de/fr/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Une fois payé, il arrive par e-mail sous forme de PDF, et c’est le QR code de ce fichier que tu présentes sur ton téléphone à l’entrée Quick Pass de l’attraction. Jusqu’ici, on ne pouvait l’acheter qu’au service des visiteurs, dans le quartier Berlin.
+Le Quick Pass du [Phantasialand](ref:phantasialand) s’achète désormais sur la [boutique en ligne du parc](https://shop.phantasialand.de/fr/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Une fois payé, il arrive par e-mail sous forme de PDF, et c’est le QR code de ce fichier que tu présentes sur ton téléphone à l’entrée Quick Pass de l’attraction. Jusqu’ici, on ne pouvait l’acheter qu’au service des visiteurs, dans le quartier Berlin.
 
 Un Quick Pass ne vaut que pour le jour où tu le réserves. La boutique ne laisse choisir aucune autre date, et le pass n’est ni modifiable ni remboursable. Achète-le donc le jour même de ta visite, le matin sur la route de Brühl ou juste après être entré dans le parc. Commandé la veille au soir depuis le canapé, il ne sera le lendemain qu’un joli PDF. Le 15 novembre, le haut de la boutique affichait d’ailleurs « Nur heute gültig: 15.11.2026 », autrement dit valable aujourd’hui seulement.
 

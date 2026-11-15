@@ -282,16 +282,44 @@ ricaviamo un livello di affluenza per ogni giorno, da molto basso a estremo.
 Con il **Quick Pass** salti la coda regolare. Dal Wintertraum 2025/26 funziona in
 modo completamente nuovo. Ci sono due varianti:
 
-- **Quick Pass (Single)**, il fast-track per **una singola corsa** su un’attrazione precisa. Al lancio si parlava di un prezzo _dinamico_, destinato a salire con il tempo di attesa del momento. Alla cassa io ho sempre visto lo stesso prezzo, e ora c’è un listino fisso: 5 € per [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere), [Maus au Chocolat](ref:phantasialand/maus-au-chocolat), [Mystery Castle](ref:phantasialand/mystery-castle) e [Talocan](ref:phantasialand/talocan), 7 € ciascuno per [Colorado Adventure](ref:phantasialand/colorado-adventure), [Winja’s Fear](ref:phantasialand/winjas-fear) e Winja’s Force, 10 € per [Black Mamba](ref:phantasialand/black-mamba) e [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € per [Taron](ref:phantasialand/taron). Lo shop online chiede 7 € per Colorado Adventure, mentre la pagina informativa del parco riporta ancora 5 €. River Quest per ora non compare in nessuno dei due listini.
-- **Quick Pass Ultimate** a 80 €: una corsa su ognuna di queste dieci attrazioni più una su [F.L.Y.](ref:phantasialand/fly). **Solo con l’Ultimate sali su F.L.Y. con il Quick Pass**; da solo, per quell’attrazione, non si vende. I dieci pass singoli costano in tutto 73 €, quindi l’Ultimate costa 7 € in più, e quei 7 € sono il prezzo di F.L.Y. Conviene però solo se vuoi davvero fare tutto.
+- **Quick Pass (Single)**, il fast-track per **una singola corsa** su
+  un’attrazione precisa. Al lancio si parlava di un prezzo _dinamico_, destinato
+  a salire con il tempo di attesa del momento. Alla cassa io ho sempre visto lo
+  stesso prezzo, e ora c’è un listino fisso: 5 € per
+  [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
+  [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
+  [Mystery Castle](ref:phantasialand/mystery-castle) e
+  [Talocan](ref:phantasialand/talocan), 7 € ciascuno per
+  [Colorado Adventure](ref:phantasialand/colorado-adventure),
+  [Winja’s Fear](ref:phantasialand/winjas-fear) e Winja’s Force, 10 € per
+  [Black Mamba](ref:phantasialand/black-mamba) e
+  [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € per
+  [Taron](ref:phantasialand/taron). Lo shop online chiede 7 € per Colorado
+  Adventure, mentre la pagina informativa del parco riporta ancora 5 €. River
+  Quest per ora non compare in nessuno dei due listini.
+- **Quick Pass Ultimate** a 80 €: una corsa su ognuna di queste dieci attrazioni
+  più una su [F.L.Y.](ref:phantasialand/fly). **Solo con l’Ultimate sali su
+  F.L.Y. con il Quick Pass**; da solo, per quell’attrazione, non si vende. I
+  dieci pass singoli costano in tutto 73 €, quindi l’Ultimate costa 7 € in più,
+  e quei 7 € sono il prezzo di F.L.Y. Conviene però solo se vuoi davvero fare
+  tutto.
 
 Anche con il Quick Pass, a F.L.Y. aspetti lo stesso, su, in stazione. A causa
 delle sue elaborate barre di sicurezza da volo, l’attrazione impiega molto per il
 carico, e questo ingorgo non si scioglie nemmeno con il fast-track.
 
-Ora il Quick Pass si compra anche [nello shop online del Phantasialand](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand), in inglese. Paghi lì, lo ricevi in PDF per e-mail e all’ingresso Quick Pass mostri il codice QR sul telefono, con la luminosità dello schermo al massimo. Ogni pass vale per una persona. Il servizio ospiti nell’area Berlin continua a venderli sul posto.
+Ora il Quick Pass si compra anche
+[nello shop online del Phantasialand](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand),
+in inglese. Paghi lì, lo ricevi in PDF per e-mail e all’ingresso Quick Pass
+mostri il codice QR sul telefono, con la luminosità dello schermo al massimo.
+Ogni pass vale per una persona. Il servizio ospiti nell’area Berlin continua a
+venderli sul posto.
 
-Un Quick Pass vale solo nel giorno della prenotazione. Non puoi scegliere un’altra data, né cambiarlo, né fartelo rimborsare. Se lo compri la sera prima dal divano, hai un pass per una giornata ormai finita, quindi compralo la mattina della visita. Il numero è limitato, e proprio durante il Wintertraum, nel weekend, i Quick Pass sono spesso già esauriti a mezzogiorno.
+Un Quick Pass vale solo nel giorno della prenotazione. Non puoi scegliere
+un’altra data, né cambiarlo, né fartelo rimborsare. Se lo compri la sera prima
+dal divano, hai un pass per una giornata ormai finita, quindi compralo la
+mattina della visita. Il numero è limitato, e proprio durante il Wintertraum,
+nel weekend, i Quick Pass sono spesso già esauriti a mezzogiorno.
 
 ```cta-widget
 href: https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand
