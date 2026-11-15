@@ -57,6 +57,9 @@ interface HeroInlineSearchPanelProps {
   session: SearchSession;
 }
 
+/** The parks the list shows before anything is typed: four, and the trip regions' row as a fifth. */
+const HERO_PARK_ROWS = 4;
+
 /**
  * Desktop-only in-place hero search: the input stays in the hero and its list hangs from it, one
  * glass object (`HeroSearchFrame`) that grows downward over the page. Nothing in the hero moves
@@ -93,6 +96,7 @@ export default function HeroInlineSearchPanel({
     handleGlossarySelect,
     handlePostSelect,
     handleTripSelect,
+    handleBrowseTripSelect,
   } = useSearchNavigation(session);
 
   useEffect(() => onTextTaken?.(), [onTextTaken]);
@@ -270,6 +274,8 @@ export default function HeroInlineSearchPanel({
               onGlossarySelect={handleGlossarySelect}
               onPostSelect={handlePostSelect}
               onTripSelect={handleTripSelect}
+              onBrowseTripSelect={handleBrowseTripSelect}
+              browseLimit={HERO_PARK_ROWS}
               browseItems={withStatusLabels(heroBrowseRows(search.browse))}
               labelFavorites={withStatusLabels}
               browseHeader={<HeroBrowseHeader browse={search.browse} />}

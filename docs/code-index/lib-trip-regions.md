@@ -9,6 +9,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `tripRegionCacheTag` _function_: The Data Cache tag on every read of a region, for the API's revalidation webhook.
 - `tripTicketsCacheTag` _function_: The Data Cache tag of a region's ticket catalog, which the API revalidates after every edit.
+- `tripRegionApiUrl` _function_: The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this build as `v`.
 - `getTripRegionTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getTripRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
 - `getTripRegionLinks` _function_: The live regions a page can link into, for the bands on park, calendar, city, country and post pages and `/search`.

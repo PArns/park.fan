@@ -4468,12 +4468,6 @@
           "universal": "Universal-hotels",
           "disney_springs": "Disney Springs Resort Area"
         }
-      },
-      "homeStory": {
-        "kicker": "Orlando",
-        "title": "Orlando: welk park op welke dag",
-        "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen",
-        "link": "Orlando drukte-kalender"
       }
     },
     "southern-california": {
@@ -4746,12 +4740,6 @@
             "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Zuid-Californië",
-        "title": "Zuid-Californië: welk park op welke dag",
-        "lead": "Disneyland, California Adventure, Universal Hollywood en vijf andere parken in één kalender: wanneer welk park het rustigst is, en een planner voor je reisdagen",
-        "link": "Zuid-Californië drukte-kalender"
       }
     },
     "japan": {
@@ -5081,12 +5069,6 @@
             "legoland-japan-combo-1-day": "Met SEA LIFE Nagoya"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Japan",
-        "title": "Japan: welk park op welke dag",
-        "lead": "Vijf parken van Tokio tot Osaka in één kalender, dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt",
-        "link": "Japan drukte-kalender"
       }
     },
     "paris": {
@@ -5336,12 +5318,6 @@
             "dlp-pass": "Bronze Max, Silver of Gold"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Parijs",
-        "title": "Disneyland Paris en Parc Astérix: welk park op welke dag",
-        "lead": "Disneyland Paris heeft twee parken, Parc Astérix één, en beide resorts hebben eigen hotels. In de kalender staan alle drie dag voor dag met hun piekwachttijd, en in de reisplanner zie je waar je voor welk park het best overnacht.",
-        "link": "Drukte-kalender Disneyland Paris & Parc Astérix"
       }
     }
   },

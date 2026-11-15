@@ -335,8 +335,8 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
 - The day planner's plan list (its overview and the planner page), once the plan holds a day at a
   region park: one line per plan with those parks chosen
   ([trip planner](trip-planner/README.md#a-plan-in-a-trip-region-leads-to-the-trip-planner)).
-- `TripRegionHomeStop` on the homepage, data-free beyond the region's park list, because the homepage
-  keeps a day at the edge.
+- `TripRegionsHomeStop` on the homepage, one tile per region from the planner band's data and no
+  forecast, because the homepage keeps a day at the edge.
 - Parky's `plan_vacation` links `/orlando?from=…&to=…&parks=…#planner`.
 
 ## Checks

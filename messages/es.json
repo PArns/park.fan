@@ -4468,12 +4468,6 @@
           "universal": "Hoteles de Universal",
           "disney_springs": "Disney Springs Resort Area"
         }
-      },
-      "homeStory": {
-        "kicker": "Orlando",
-        "title": "Orlando: qué parque qué día",
-        "lead": "Dieciséis parques alrededor de Orlando en un solo calendario: para cada día ves dónde son más cortas las colas en Disney World y Universal, y el planificador pone tus parques en tus fechas",
-        "link": "Calendario de afluencia de Orlando"
       }
     },
     "southern-california": {
@@ -4746,12 +4740,6 @@
             "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "California del Sur",
-        "title": "California del Sur: qué parque qué día",
-        "lead": "Disneyland, California Adventure, Universal Hollywood y otros cinco parques en un solo calendario: cuándo tiene menos gente cada uno, y un planificador para tus días de viaje",
-        "link": "Calendario de afluencia de California del Sur"
       }
     },
     "japan": {
@@ -5081,12 +5069,6 @@
             "legoland-japan-combo-1-day": "Con SEA LIFE Nagoya"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Japón",
-        "title": "Japón: qué parque qué día",
-        "lead": "Cinco parques de Tokio a Osaka en un solo calendario, día a día, y un planificador que reparte ciudades, noches y parques entre tus fechas",
-        "link": "Calendario de afluencia de Japón"
       }
     },
     "paris": {
@@ -5336,12 +5318,6 @@
             "dlp-pass": "Bronze Max, Silver o Gold"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "París",
-        "title": "Disneyland Paris y Parc Astérix: qué parque qué día",
-        "lead": "Disneyland Paris tiene dos parques, Parc Astérix uno, y cada uno tiene sus hoteles. En el calendario tienes los tres día a día con su espera punta, y en el planificador ves dónde dormir para cada parque.",
-        "link": "Calendario de afluencia de Disneyland Paris y Parc Astérix"
       }
     }
   },

@@ -1273,8 +1273,8 @@
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
       "h1Suffix": "Andrang im {month}",
-      "metaTitle": "{park}: Andrang & Öffnungszeiten im {month}",
-      "metaTitleShort": "{park}: Andrang im {month}",
+      "metaTitle": "{park}: Andrangskalender & Auslastung {month}",
+      "metaTitleShort": "{park}: Andrangskalender {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wann ist es {inPark} in {city} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
@@ -1998,8 +1998,8 @@
       "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit"
     },
     "home": {
-      "title": "Freizeitpark-Wartezeiten live & Crowd-Prognosen",
-      "description": "Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu. Dazu ein Crowd-Kalender für die kommenden Tage und eine Prognose, die ihren Fehler offenlegt."
+      "title": "Freizeitpark-Wartezeiten live & Auslastung heute",
+      "description": "Wie voll ist es heute im Europa-Park oder Phantasialand? Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu, und der Andrang der nächsten Tage."
     },
     "parks": {
       "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",
@@ -4468,12 +4468,6 @@
           "universal": "Universal-Hotels",
           "disney_springs": "Disney Springs Resort Area"
         }
-      },
-      "homeStory": {
-        "kicker": "Orlando",
-        "title": "Orlando: welcher Park an welchem Tag",
-        "lead": "Sechzehn Parks rund um Orlando in einem Kalender: Für jeden Tag siehst du, wo du in Disney World und bei Universal am kürzesten anstehst, und der Planer legt deine Parks auf deine Reisetage",
-        "link": "Orlando Andrang-Kalender"
       }
     },
     "southern-california": {
@@ -4746,12 +4740,6 @@
             "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Südkalifornien",
-        "title": "Südkalifornien: welcher Park an welchem Tag",
-        "lead": "Disneyland, California Adventure, Universal Hollywood und fünf weitere Parks in einem Kalender: wann welcher am leersten ist, und ein Planer für deine Reisetage",
-        "link": "Südkalifornien Andrang-Kalender"
       }
     },
     "japan": {
@@ -5081,12 +5069,6 @@
             "legoland-japan-combo-1-day": "Mit SEA LIFE Nagoya"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Japan",
-        "title": "Japan: welcher Park an welchem Tag",
-        "lead": "Fünf Parks von Tokio bis Osaka in einem Kalender, Tag für Tag, und ein Reiseplaner, der Städte, Nächte und Parks auf deine Reisetage verteilt",
-        "link": "Japan Andrang-Kalender"
       }
     },
     "paris": {
@@ -5336,12 +5318,6 @@
             "dlp-pass": "Bronze Max, Silver oder Gold"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Paris",
-        "title": "Disneyland Paris und Parc Astérix: welcher Park an welchem Tag",
-        "lead": "Disneyland Paris hat zwei Parks, der Parc Astérix einen, und beide haben eigene Hotels. Im Kalender stehen alle drei Tag für Tag mit ihrer Spitzenwartezeit, und im Reiseplaner siehst du, wo du für welchen Park am besten übernachtest.",
-        "link": "Andrang-Kalender Disneyland Paris & Parc Astérix"
       }
     }
   },
