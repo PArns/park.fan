@@ -1,28 +1,37 @@
-import type { CSSProperties } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
 
 /**
  * One key of a day-signal legend: the mark, then the word. Shared by the calendar's legend and the
  * park page's twelve-month outlook, so a school break is the same yellow bar under the same word in
- * both. `style` is for a mark a class cannot draw, such as the closed-day hatch.
+ * both. `style` is for a mark a class cannot draw, such as the closed-day hatch; `mark` replaces
+ * the bar for a key that is not one, such as a block of the trip planner's Week view.
  */
 export function DaySignalKey({
   className,
   style,
+  mark,
   label,
 }: {
-  className: string;
+  className?: string;
   style?: CSSProperties;
+  mark?: ReactNode;
   label: string;
 }) {
   return (
     <span className="flex items-center gap-1.5 whitespace-nowrap">
-      <span
-        className={cn('h-[3px] w-4 shrink-0 rounded-full', className)}
-        style={style}
-        aria-hidden="true"
-      />
+      {mark ? (
+        <span className="flex shrink-0" aria-hidden="true">
+          {mark}
+        </span>
+      ) : (
+        <span
+          className={cn('h-[3px] w-4 shrink-0 rounded-full', className)}
+          style={style}
+          aria-hidden="true"
+        />
+      )}
       <span className="text-[11px]">{label}</span>
     </span>
   );

@@ -1,5 +1,6 @@
 'use client';
 
+import type { CSSProperties, ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
@@ -14,17 +15,32 @@ import type { SeasonEventKind } from '@/lib/parks/park-season-days';
 const ALL_SIGNALS: readonly DaySignal[] = ['school', 'neighbor', 'holiday', 'bridge'];
 
 /**
+ * One more key of {@link ParkCalendarLegend}: a segment of the signal bar by its class (and
+ * `style`), or any other mark the view draws, then its word.
+ */
+export interface CalendarLegendKey {
+  key: string;
+  label: string;
+  className?: string;
+  style?: CSSProperties;
+  /** Drawn instead of the bar segment, hidden from a screen reader like the segment. */
+  mark?: ReactNode;
+}
+
+/**
  * What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one
  * strip of butted chips because it is a ruler; the signal keys are independent facts and keep
  * their gaps. All six tiers are named even when a month shows four, so any colour the API sends can
- * be looked up. The works icon is keyed only for a park that has a curated window, since on every
- * other park the grid never draws it; `signals` names the bar's segments a grid can draw, so the
- * trip planner's grids, which know no bridge days, key only theirs. `extraSignals` keys segments a
- * caller draws beyond the holidays, such as a region's storm season, after them in the same row.
+ * be looked up; `showCrowd` drops the scale where the view shows no crowd colour at all. The works
+ * icon is keyed only for a park that has a curated window, since on every other park the grid never
+ * draws it; `signals` names the bar's segments a grid can draw, so the trip planner's grids, which
+ * know no bridge days, key only theirs. `extraSignals` keys what a caller draws beyond the holidays,
+ * such as a region's storm season or the Week view's blocks, after them in the same row.
  * `seasonKinds` keys the season icons the shown month draws, and only those: a month without a
  * season has no season key.
  */
 export function ParkCalendarLegend({
+  showCrowd = true,
   showWorks = false,
   signals = ALL_SIGNALS,
   signalsLabel = true,
@@ -32,12 +48,13 @@ export function ParkCalendarLegend({
   seasonKinds = [],
   className,
 }: {
+  showCrowd?: boolean;
   showWorks?: boolean;
   signals?: readonly DaySignal[];
   /** Whether the signal keys open with their group's label; the coloured dashes say enough alone. */
   signalsLabel?: boolean;
-  /** More segments of the bar, each its mark's class and its word. */
-  extraSignals?: ReadonlyArray<{ key: string; className: string; label: string }>;
+  /** More keys after the signal bar's, in the caller's order. */
+  extraSignals?: readonly CalendarLegendKey[];
   /** The season kinds the shown month's tiles carry (`seasonKindsIn`). */
   seasonKinds?: readonly SeasonEventKind[];
   className?: string;
@@ -51,40 +68,42 @@ export function ParkCalendarLegend({
 
   return (
     <div className={cn('flex flex-wrap items-center gap-x-5 gap-y-2', className)}>
-      <div className="flex w-full min-w-0 items-center gap-2 sm:w-auto">
-        <span className="text-muted-foreground shrink-0 text-[10px] font-medium tracking-widest uppercase">
-          {tGroups('crowd')}
-        </span>
+      {showCrowd && (
+        <div className="flex w-full min-w-0 items-center gap-2 sm:w-auto">
+          <span className="text-muted-foreground shrink-0 text-[10px] font-medium tracking-widest uppercase">
+            {tGroups('crowd')}
+          </span>
 
-        {/* Below `sm` the six names do not fit and pushed the legend past the card's edge, so the
+          {/* Below `sm` the six names do not fit and pushed the legend past the card's edge, so the
             phone gets the ramp with only its two ends named. Every tile in the grid spells out its
             own tier. */}
-        <div className="flex min-w-0 flex-1 flex-col gap-1 sm:hidden">
-          <div className="flex h-2.5 overflow-hidden rounded-md" aria-hidden="true">
+          <div className="flex min-w-0 flex-1 flex-col gap-1 sm:hidden">
+            <div className="flex h-2.5 overflow-hidden rounded-md" aria-hidden="true">
+              {CROWD_LEVEL_ORDER.map((level) => (
+                <span key={level} className={cn('flex-1', CROWD_SCALE_CLASS[level])} />
+              ))}
+            </div>
+            <div className="text-muted-foreground flex justify-between text-[9px] font-medium tracking-wide uppercase">
+              <span>{tCrowd('very_low')}</span>
+              <span>{tCrowd('extreme')}</span>
+            </div>
+          </div>
+
+          <div className="hidden min-w-0 overflow-hidden rounded-md sm:flex">
             {CROWD_LEVEL_ORDER.map((level) => (
-              <span key={level} className={cn('flex-1', CROWD_SCALE_CLASS[level])} />
+              <span
+                key={level}
+                className={cn(
+                  'truncate px-2.5 py-1 text-[10.5px] font-bold tracking-wide uppercase',
+                  CROWD_SCALE_CLASS[level]
+                )}
+              >
+                {tCrowd(level)}
+              </span>
             ))}
           </div>
-          <div className="text-muted-foreground flex justify-between text-[9px] font-medium tracking-wide uppercase">
-            <span>{tCrowd('very_low')}</span>
-            <span>{tCrowd('extreme')}</span>
-          </div>
         </div>
-
-        <div className="hidden min-w-0 overflow-hidden rounded-md sm:flex">
-          {CROWD_LEVEL_ORDER.map((level) => (
-            <span
-              key={level}
-              className={cn(
-                'truncate px-2.5 py-1 text-[10.5px] font-bold tracking-wide uppercase',
-                CROWD_SCALE_CLASS[level]
-              )}
-            >
-              {tCrowd(level)}
-            </span>
-          ))}
-        </div>
-      </div>
+      )}
 
       {(signals.length > 0 || extraSignals.length > 0 || showWorks) && (
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
@@ -109,7 +128,13 @@ export function ParkCalendarLegend({
             />
           ))}
           {extraSignals.map((signal) => (
-            <DaySignalKey key={signal.key} className={signal.className} label={signal.label} />
+            <DaySignalKey
+              key={signal.key}
+              className={signal.className}
+              style={signal.style}
+              mark={signal.mark}
+              label={signal.label}
+            />
           ))}
           {showWorks && (
             <span className="flex items-center gap-1.5 whitespace-nowrap">

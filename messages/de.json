@@ -3432,6 +3432,7 @@
       "noFigure": "keine Zahl",
       "noHours": "noch keine Zeiten",
       "early": "Früher Einlass für dein Hotel",
+      "earlyAt": "<label>Früher Einlass</label> ab {time}",
       "extendedEvening": "Extended Evening Hours für dein Hotel",
       "party": "Party-Abend",
       "partyNamed": "{name}, eigenes Ticket",
