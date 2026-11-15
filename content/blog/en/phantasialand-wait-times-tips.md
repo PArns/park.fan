@@ -29,17 +29,20 @@ coverImage:
 seo:
   title: 'Phantasialand tips: Quick Pass, quiet days, wait times'
   description: >-
-    Keep Phantasialand wait times down: the right day, the Quick Pass, Rutmor’s
-    Taverne and Wintertraum, from a regular of more than thirty years.
+    Keep Phantasialand wait times down: the right day, the Quick Pass, now sold online too, and Wintertraum, from a regular of more than thirty years.
   keywords:
     - Phantasialand wait times
     - avoid Phantasialand wait times
     - Phantasialand tips
     - Phantasialand tips 2026
+    - Phantasialand tips winter 2026/27
     - Phantasialand when least busy
     - Phantasialand best time to visit
     - Phantasialand Quick Pass
     - Phantasialand Quick Pass Ultimate
+    - buy Phantasialand Quick Pass online
+    - Phantasialand Quick Pass price
+    - Phantasialand Fast Pass
     - Phantasialand ticket prices 2026
     - Phantasialand annual pass
     - Phantasialand best restaurants
@@ -47,7 +50,7 @@ seo:
     - Taron wait times
     - F.L.Y. Phantasialand
     - Phantasialand getting there Brühl
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 I’ve been going to [Phantasialand](ref:phantasialand) for over thirty years. My

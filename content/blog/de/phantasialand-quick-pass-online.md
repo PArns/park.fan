@@ -33,18 +33,28 @@ coverImage:
   alt: 'Der beleuchtete Turm des Mystery Castle im Nebel an einem Winterabend, davor die Schienen von F.L.Y.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Quick Pass online kaufen und am Handy zeigen'
+  title: 'Phantasialand Quick Pass gibt es jetzt auch online'
   description: >-
-    Phantasialand Quick Pass online kaufen: PDF mit QR-Code per E-Mail, gültig nur am Kauftag. Quick Pass Preise ab 5 €, Ultimate 80 €, kürzere Wartezeiten.
+    Den Phantasialand Quick Pass gibt es jetzt online, als QR-Code fürs Handy. Er gilt nur am Tag der Buchung. Einzelpässe kosten ab 5 €, der Ultimate 80 €.
   keywords:
     - Phantasialand Quick Pass online kaufen
+    - Phantasialand Quick Pass
+    - Quick Pass Phantasialand
+    - Quickpass Phantasialand
+    - Phantasialand Quick Pass Preis
+    - Quick Pass Phantasialand Preis
     - Phantasialand Quick Pass Preise
     - Quick Pass Preise
     - Phantasialand Quick Pass Ultimate
+    - Phantasialand Fast Pass
+    - Phantasialand Express Pass
+    - Phantasialand Speedy Pass
+    - Phantasialand Speed Pass
+    - Phantasialand Tageskasse
     - phantasialand wartezeiten
     - wartezeiten phantasialand
     - phantasialand auslastung
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin.

@@ -33,17 +33,22 @@ coverImage:
   alt: 'De verlichte toren van Mystery Castle in de mist op een winteravond, met de rails van F.L.Y. ervoor.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Quick Pass online kopen en op je telefoon tonen'
+  title: 'Phantasialand Quick Pass nu ook online te koop'
   description: >-
-    Phantasialand Quick Pass online kopen: pdf met QR-code per mail, alleen geldig op de koopdag. Vanaf € 5, Ultimate € 80, kortere wachttijden.
+    De Phantasialand Quick Pass koop je nu online, als QR-code op je telefoon. Hij geldt alleen op de boekingsdag. Losse passen vanaf € 5, de Ultimate € 80.
   keywords:
     - Phantasialand Quick Pass online kopen
+    - Phantasialand Quick Pass
+    - Quick Pass Phantasialand
+    - Phantasialand Quick Pass prijs
     - Phantasialand Quick Pass prijzen
     - Quick Pass prijzen
     - Phantasialand Quick Pass Ultimate
+    - Phantasialand Fast Pass
+    - Phantasialand Express Pass
     - phantasialand wachttijden
     - drukte phantasialand
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin.

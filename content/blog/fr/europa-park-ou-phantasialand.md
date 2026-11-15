@@ -2,7 +2,7 @@
 title: 'À l’Europa-Park, tu fais moins la queue qu’au Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-10-26'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -88,12 +88,14 @@ Si les files sont plus courtes à l’Europa-Park, c’est aussi parce qu’il a
 
 Au Phantasialand, le Quick Pass te fait passer devant la file normale. Pour un seul tour, il coûte
 
-- 5 € sur Colorado Adventure, Mystery Castle, Talocan, Maus au Chocolat ou Die 3 Mausketiere,
-- 7 € sur Winja's Fear ou Winja's Force,
+- 5 € sur Mystery Castle, Talocan, Maus au Chocolat ou Die 3 Mausketiere,
+- 7 € sur Colorado Adventure, Winja's Fear ou Winja's Force,
 - 10 € sur Black Mamba ou Chiapas,
-- 12 € sur Taron ou River Quest.
+- 12 € sur Taron.
 
-F.L.Y. n’est que dans le Quick Pass Ultimate, qui pour 80 € comprend un passage sur chacune de ces attractions, plus F.L.Y. On ne l’achète qu’au service clients de l’univers Berlin, et le nombre est limité.
+La page d’informations du parc indique encore 5 € pour Colorado Adventure, la boutique en ligne en demande 7. River Quest ne figure pour l’instant sur aucune des deux listes. F.L.Y. n’est que dans le Quick Pass Ultimate, qui pour 80 € comprend un passage sur chacune de ces dix attractions, plus F.L.Y.
+
+On l’achète sur la boutique en ligne du parc, qui l’envoie par e-mail en PDF avec un code QR, ou au service clients de l’univers Berlin. Il n’est valable que le jour de la réservation, donc achète-le le matin de ta visite et pas la veille au soir. Le nombre est limité.
 
 À l’Europa-Park, tu réserves à la place, gratuitement dans l’appli du parc, un créneau sur blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron ou Wodan, et tu vas faire autre chose en attendant. Un billet ne permet qu’une attraction à la fois, l’appli ne marche que dans le parc, et si tu arrives en retard à ton créneau, tu perds ta place. Les jours de forte affluence, les créneaux partent vite, selon le parc. Arthur, blue fire, Eurosat, Voletarium, Voltron et Wodan ont aussi une file single rider, pour ceux qui montent seuls et comblent les places libres.
 
@@ -257,7 +259,7 @@ Oui, tous les deux, à quelques jours de fermeture près. L’Europa-Park est ou
 - Prix : [Billets et offres (Europa-Park)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [Billets et prix (Phantasialand)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Calendrier des billets dans la boutique en ligne (Phantasialand)](https://shop.phantasialand.de/de/produkte/themenpark-tickets/)
 - Saison, hiver et horaires : [Horaires et saisons (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [Winterzauber (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park) · [Pre-Opening Weeks 2027 (Europa-Park)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening) · [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/)
 - Virtual Line : [VirtualLine à l’Europa-Park (site officiel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
-- Quick Pass, Baby-Switch, casiers, poussettes et charrettes à bras : [Informations pour la visite (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Conseils pour la visite avec Virtual Line, single rider et Baby-Switch (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)
+- Quick Pass, Baby-Switch, casiers, poussettes et charrettes à bras : [Informations pour la visite (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Quick Pass sur la boutique en ligne (Phantasialand)](https://shop.phantasialand.de/fr/quick-pass) · [Conseils pour la visite avec Virtual Line, single rider et Baby-Switch (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)
 - Nouveautés et agrandissement : [L’Europa-Park annonce trois nouvelles attractions familiales (MACK Gruppe)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an) · [Pérennité du site (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · [Demande de référendum local (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html)
 - Cartes annuelles : [Billets et offres avec le ResortPass (Europa-Park)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [La Club-Karte est supprimée (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
 - Hôtels et Rulantica : [Offres d’hébergement pour les visiteurs de l’Europa-Park](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Rulantica (Europa-Park)](https://www.europapark.de/de/rulantica) · [Informations sur les hôtels à thème (Phantasialand)](https://www.phantasialand.de/de/informationen-hotels/)

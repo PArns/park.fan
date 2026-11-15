@@ -29,17 +29,21 @@ coverImage:
 seo:
   title: 'Phantasialand Tipps: Quick Pass, leere Tage, Wartezeiten'
   description: >-
-    Phantasialand-Wartezeiten kleinhalten: der richtige Tag, der Quick Pass,
-    Rutmor’s Taverne und der Wintertraum, vom Stammgast seit über dreißig Jahren.
+    Phantasialand-Wartezeiten kleinhalten: der richtige Tag, der Quick Pass, jetzt auch online, und der Wintertraum, vom Stammgast seit über dreißig Jahren.
   keywords:
     - Phantasialand Wartezeiten
     - Phantasialand Wartezeiten vermeiden
     - Phantasialand Tipps
     - Phantasialand Tipps 2026
+    - Phantasialand Tipps Winter 2026/27
     - Phantasialand wann am wenigsten los
     - Phantasialand beste Reisezeit
     - Phantasialand Quick Pass
     - Phantasialand Quick Pass Ultimate
+    - Phantasialand Quick Pass online kaufen
+    - Phantasialand Quick Pass Preis
+    - Phantasialand Fast Pass
+    - Phantasialand Tageskasse
     - Phantasialand Tickets Preise 2026
     - Phantasialand Jahreskarte
     - Phantasialand beste Restaurants
@@ -47,7 +51,7 @@ seo:
     - Taron Wartezeiten
     - F.L.Y. Phantasialand
     - Phantasialand Anreise Brühl
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 Ins [Phantasialand](ref:phantasialand) gehe ich seit über dreißig Jahren. Meine

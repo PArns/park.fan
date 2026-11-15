@@ -2,7 +2,7 @@
 title: 'You’ll queue less at Europa-Park than at Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-10-26'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -39,6 +39,7 @@ seo:
     - Europa-Park Phantasialand comparison
     - Europa-Park Phantasialand wait times
     - Europa-Park Phantasialand prices
+    - Phantasialand Quick Pass price
     - Europa-Park Phantasialand distance
 ---
 
@@ -92,12 +93,14 @@ Part of the reason the queues are shorter at Europa-Park is that it has twice as
 
 Phantasialand’s Quick Pass lets you buy your way past the regular queue. For a single ride it costs
 
-- €5 on Colorado Adventure, Mystery Castle, Talocan, Maus au Chocolat or Die 3 Mausketiere,
-- €7 on Winja’s Fear or Winja’s Force,
+- €5 on Mystery Castle, Talocan, Maus au Chocolat or Die 3 Mausketiere,
+- €7 on Colorado Adventure, Winja’s Fear or Winja’s Force,
 - €10 on Black Mamba or Chiapas,
-- €12 on Taron or River Quest.
+- €12 on Taron.
 
-F.L.Y. comes only with the Quick Pass Ultimate, which costs €80 and includes one go on each of those rides plus F.L.Y. You can only buy it at Guest Services in the Berlin themed area, and there are a limited number.
+The park’s information page still lists Colorado Adventure at €5, while the online shop charges €7. River Quest isn’t on either list at the moment. F.L.Y. comes only with the Quick Pass Ultimate, which costs €80 and includes one go on each of those ten rides plus F.L.Y.
+
+You can buy it in the park’s online shop, which emails it to you as a PDF with a QR code, or at Guest Services in the Berlin themed area. It’s only valid on the day you book it, so buy it on the morning of your visit, not the evening before. There are a limited number.
 
 At Europa-Park you book a free time slot in the park app instead, for blue fire, Euro-Mir, Piraten in Batavia, Poseidon, Voletarium, Voltron or Wodan and go somewhere else in the meantime. One ticket holds a slot at only one attraction at a time, the app works only inside the park, and if you turn up late for your slot you lose it. On busy days, the park says, the slots go quickly. Arthur, blue fire, Eurosat, Voletarium, Voltron and Wodan also have a single rider queue for anyone riding alone and happy to fill an empty seat.
 
@@ -261,7 +264,7 @@ At Europa-Park an adult day ticket costs €67 to €76 online, at Phantasialand
 - Prices: [Tickets and offers (Europa-Park)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [Tickets and prices (Phantasialand)](https://www.phantasialand.de/de/themenpark/preise-und-tickets/) · [Ticket calendar in the online shop (Phantasialand)](https://shop.phantasialand.de/de/produkte/themenpark-tickets/)
 - Seasons, winter and opening hours: [Opening hours and seasons (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [Winterzauber (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park) · [Pre-Opening Weeks 2027 (Europa-Park)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening) · [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/)
 - Virtual Line: [VirtualLine at Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park)
-- Quick Pass, Baby Switch, lockers, pushchairs and pull-along wagons: [Visitor information (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Tips for your visit, with Virtual Line, single rider and Baby Switch (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)
+- Quick Pass, Baby Switch, lockers, pushchairs and pull-along wagons: [Visitor information (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) · [Quick Pass in the online shop (Phantasialand)](https://shop.phantasialand.de/en/quick-pass) · [Tips for your visit, with Virtual Line, single rider and Baby Switch (Europa-Park)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park)
 - New rides and the expansion: [Europa-Park announces three new family attractions (MACK Group)](https://mack.group/de/presse-medien/pressemitteilungen/europa-park-kuendigt-drei-neue-familienattraktionen-an) · [Securing the site (Phantasialand)](https://www.phantasialand.de/de/rechtliches/standortsicherung/) · [Citizens’ petition (Netzwerk NSG Ententeich)](https://nsg-ententeich.de/buegerbegehren.html)
 - Annual passes: [Tickets and offers with ResortPass (Europa-Park)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [Club-Karte to be scrapped (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html)
 - Hotels and Rulantica: [Overnight stays for Europa-Park guests](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Rulantica (Europa-Park)](https://www.europapark.de/de/rulantica) · [About the themed hotels (Phantasialand)](https://www.phantasialand.de/de/informationen-hotels/)

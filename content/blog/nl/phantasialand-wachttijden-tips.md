@@ -30,17 +30,20 @@ coverImage:
 seo:
   title: 'Phantasialand tips: Quick Pass, rustige dagen, wachttijden'
   description: >-
-    Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass,
-    Rutmor’s Taverne en Wintertraum, van iemand die er al ruim dertig jaar komt.
+    Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass, nu ook online, en Wintertraum, van iemand die er al ruim dertig jaar komt.
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden vermijden
     - Phantasialand tips
     - Phantasialand tips 2026
+    - Phantasialand tips winter 2026/27
     - Phantasialand wanneer het rustigst
     - Phantasialand beste reistijd
     - Phantasialand Quick Pass
     - Phantasialand Quick Pass Ultimate
+    - Phantasialand Quick Pass online kopen
+    - Phantasialand Quick Pass prijs
+    - Phantasialand Fast Pass
     - Phantasialand tickets prijzen 2026
     - Phantasialand jaarkaart
     - Phantasialand beste restaurants
@@ -48,7 +51,7 @@ seo:
     - Taron wachttijden
     - F.L.Y. Phantasialand
     - Phantasialand route Brühl
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 Naar het [Phantasialand](ref:phantasialand) ga ik al meer dan dertig jaar. Mijn

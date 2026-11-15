@@ -30,17 +30,20 @@ coverImage:
 seo:
   title: 'Phantasialand: Quick Pass, giorni tranquilli e attese'
   description: >-
-    Meno attesa al Phantasialand: il giorno giusto, il Quick Pass, Rutmor’s
-    Taverne e il Wintertraum, da chi ci va da oltre trent’anni.
+    Meno attesa al Phantasialand: il giorno giusto, il Quick Pass, ora anche online, e il Wintertraum, da chi ci va da oltre trent’anni.
   keywords:
     - tempi di attesa Phantasialand
     - evitare i tempi di attesa Phantasialand
     - consigli Phantasialand
     - consigli Phantasialand 2026
+    - consigli Phantasialand inverno 2026/27
     - Phantasialand quando è meno affollato
     - Phantasialand miglior periodo per andare
     - Phantasialand Quick Pass
     - Phantasialand Quick Pass Ultimate
+    - comprare Phantasialand Quick Pass online
+    - Phantasialand Quick Pass prezzo
+    - Phantasialand Fast Pass
     - Phantasialand biglietti prezzi 2026
     - Phantasialand abbonamento annuale
     - Phantasialand migliori ristoranti
@@ -48,7 +51,7 @@ seo:
     - tempi di attesa Taron
     - F.L.Y. Phantasialand
     - come arrivare al Phantasialand Brühl
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 Vado al [Phantasialand](ref:phantasialand) da oltre trent’anni. Qui i miei
