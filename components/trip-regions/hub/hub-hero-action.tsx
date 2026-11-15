@@ -63,7 +63,7 @@ export function HubPlanAction({
   page: HubPage;
   source: TripPlannerStartSource;
   landingAction?: boolean;
-  variant?: 'default' | 'outline';
+  variant?: 'default' | 'glass';
   className?: string;
 }) {
   return (
@@ -100,7 +100,7 @@ export function HubCalendarAction({
     <Link
       href={href}
       onClick={() => trackTripEvent(region, 'trip_hub_action', { action: 'calendar', page })}
-      {...buttonLinkProps({ variant: 'outline', size: 'lg', withIcon: true, className })}
+      {...buttonLinkProps({ variant: 'glass', size: 'lg', withIcon: true, className })}
     >
       <CalendarDays aria-hidden />
       {label}
@@ -158,7 +158,7 @@ export function HubHeroActions({
               region={region}
               page={page}
               source="restart"
-              variant="outline"
+              variant="glass"
               className={button}
             />
           </>

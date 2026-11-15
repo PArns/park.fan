@@ -547,7 +547,7 @@ with `TZID=America/New_York` and a `VTIMEZONE` where the hours are known, all-da
 the minutes, the reason and the link. "Copy link" copies the address.
 
 **Deleting the trip.** „Reise löschen“ stands under the keep actions and at the end of the hub
-head's „Dein Plan für … ist in diesem Browser gemerkt.“ (`PlanDelete`,
+head's „Dein Plan für … ist in diesem Browser gespeichert.“ (`PlanDelete`,
 `components/trip-regions/planner/plan-delete.tsx`). A press asks in place of the line („Diese Reise
 löschen? Deine Daten, Parks und Änderungen werden auf diesem Gerät entfernt.“, „Löschen“,
 „Behalten“; Escape keeps it), never with the browser's `confirm()`. „Löschen“ runs `clearTrip`

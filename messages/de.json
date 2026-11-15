@@ -621,7 +621,7 @@
         "note": "Nur die Reisedaten sind Pflicht; der erste Plan steht, sobald sie gewählt sind.",
         "toPlan": "Zu deinem Plan",
         "newTrip": "Neue Reise planen",
-        "remembered": "Dein Plan für {range} ist in diesem Browser gemerkt."
+        "remembered": "Dein Plan für {range} ist in diesem Browser gespeichert."
       }
     },
     "resorts": {

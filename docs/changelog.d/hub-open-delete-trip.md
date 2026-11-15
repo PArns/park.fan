@@ -14,14 +14,14 @@ in sechs Sprachen sind entfernt ([Orlando-Hub](../features/orlando-hub.md#two-st
 
 #### Reise löschen
 
-„Reise löschen“ steht am Ende der Zeile „Dein Plan für … ist in diesem Browser gemerkt.“ im Kopf
+„Reise löschen“ steht am Ende der Zeile „Dein Plan für … ist in diesem Browser gespeichert.“ im Kopf
 des Hubs und unter „In den Tagesplaner übernehmen“, „In den Kalender“ und „Link kopieren“ im
 Ergebnis (`PlanDelete`, `components/trip-regions/planner/plan-delete.tsx`). Die Rückfrage steht an
 Ort und Stelle statt der Zeile, ohne `confirm()` des Browsers: „Diese Reise löschen? Deine Daten,
 Parks und Änderungen werden auf diesem Gerät entfernt.“ mit „Löschen“ und „Behalten“. „Löschen“
 leert alle sieben Ablagen der Reise dieser Region (`clearTrip` in `lib/trip-regions/trip-clear.ts`):
 die Abfrage in der Adresszeile mit Daten, Parks, Pins und Tickets, die Bearbeitungen samt
-„Rückgängig“ im Planer, die gemerkte Reise mit Parkys Reisegruppe (`parkfan_trip_<region>`), die
+„Rückgängig“ im Planer, die gespeicherte Reise mit Parkys Reisegruppe (`parkfan_trip_<region>`), die
 beantworteten Fragen des Assistenten, die Antwort auf „Schon Tickets?“, Parkys laufendes
 Reise-Interview und seine letzte Änderung. Die Adresse wird der nackte Pfad des Hubs, sodass
 `restorableTrip` beim Neuladen nichts zurückholt; die Reisen anderer Regionen bleiben. Acht
@@ -32,6 +32,16 @@ Neues Ereignis `trip_deleted` mit `from` (head, result), mit Beschriftung im Adm
 „Neue Reise planen“ leert die Reise jetzt mit demselben `clearTrip`. Bisher setzte es den Plan über
 Parkys Brücke zurück (`tripPlannerBridge.apply(region, '')`), und jede Option, die dabei
 verschwand, zählte als `trip_option_changed` mit `by: parky`. Ein Leeren zählt jetzt keine Option;
-die gemerkte Reise und die Antworten des Assistenten gehen mit, sodass ein Neuladen keine alte Reise
+die gespeicherte Reise und die Antworten des Assistenten gehen mit, sodass ein Neuladen keine alte Reise
 zurückbringt. `pnpm test:trip-clear` prüft die Ablagen, die andere Region und das Rückgängig
 ([Reiseplaner](../features/orlando-planner.md#keeping-a-plan)).
+
+#### Glas für den zweiten Knopf im Kopf
+
+„Neue Reise planen“ und „Zum Kalender“ im Kopf der Hubs waren `outline`-Knöpfe: im hellen Thema ein
+deckender weißer Kasten, im dunklen ein Haarstrich auf fast durchsichtigem Grund, über dem Foto in
+beiden Fällen flach. Die neue `Button`-Variante `glass` (`components/ui/button.tsx`) legt das Glas
+des Hero (`HEAVY_GLASS`, Füllung und `backdrop-blur-xl`) mit einem hellen Rand darüber. Sie gilt
+nur auf Fotos: Auf einer schlichten Seite verschwindet der helle Rand im Hintergrund, dort bleibt
+`outline` ([Tokens](../design/tokens.md#glass)). Im Deutschen heißt die Zeile darunter jetzt „Dein
+Plan für … ist in diesem Browser gespeichert.“ statt „gemerkt“.

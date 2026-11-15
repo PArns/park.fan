@@ -111,7 +111,7 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 | State        | When                                                                           | Head                                                                                                          | Chapter 01                      |
 | ------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ------------------------------- |
 | landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                                           | the four steps and Parky's line |
-| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt. Reise löschen“ | „Deine Reise“ and the planner   |
+| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gespeichert. Reise löschen“ | „Deine Reise“ and the planner   |
 
 - **Only chapter 01 changes.** The calendar, the resorts, the best time and the questions are open
   in both states, in full, with no fold and no toggle: with a plan, „Deine Reise“ stands at the top
