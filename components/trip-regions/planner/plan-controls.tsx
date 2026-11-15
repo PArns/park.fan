@@ -1,7 +1,7 @@
 'use client';
 
-import { useId, type ReactNode } from 'react';
-import { Check, Minus, Plus, X } from 'lucide-react';
+import { useId, type ComponentProps, type ReactNode } from 'react';
+import { Check, ChevronDown, Minus, Plus, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 /** `lg`, where the planner's panels are drawn inline and the result has its two columns; below it, sheets. */
@@ -13,6 +13,32 @@ export const PLAN_FOCUS =
 
 /** A select or date field in the planner's panels, 44 px tall like every target in them. */
 export const PLAN_FIELD = `border-border bg-background h-11 rounded-md border px-2 text-sm ${PLAN_FOCUS}`;
+
+/**
+ * A native select in {@link PLAN_FIELD}'s style with a chevron of its own, inside the field: the
+ * browser's marker sat against the right border and kept the light theme's look. Native, so a phone
+ * opens its own picker; the list follows the dark theme through `color-scheme`. For a choice of
+ * many options; a few short ones are `PlanSegmented`.
+ */
+export function PlanSelect({ className, children, ...props }: ComponentProps<'select'>) {
+  return (
+    <span className={cn('relative flex min-w-0', className)}>
+      <select
+        {...props}
+        className={cn(
+          PLAN_FIELD,
+          'w-full min-w-0 appearance-none truncate pr-9 disabled:opacity-50 dark:[color-scheme:dark]'
+        )}
+      >
+        {children}
+      </select>
+      <ChevronDown
+        aria-hidden="true"
+        className="text-muted-foreground pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2"
+      />
+    </span>
+  );
+}
 
 /** The × in the head of one of the planner's sheets, a 44 px target. */
 export function PlanSheetClose({ label, onClick }: { label: string; onClick: () => void }) {

@@ -125,6 +125,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-controls.tsx`](../../components/trip-regions/planner/plan-controls.tsx)
 
+- `PlanSelect` _component_: A native select in `PLAN_FIELD`'s style with a chevron of its own, inside the field: the browser's marker sat against the right border and kept the light theme's look.
 - `PlanSheetClose` _component_: The × in the head of one of the planner's sheets, a 44 px target.
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.

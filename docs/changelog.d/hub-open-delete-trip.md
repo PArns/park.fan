@@ -1,4 +1,4 @@
-### Die Kapitel der Reise-Hubs sind immer offen, und eine Reise lässt sich löschen
+### Reise-Hubs mit offenen Kapiteln, dem ruhigsten Tag je Park und „Reise löschen“
 
 #### Offene Kapitel
 
@@ -63,3 +63,13 @@ eine Karte je Resort mit den Daten der Woche und je Park sieben 44-px-Kacheln
 sein ruhigster Tag der Woche markiert“. Die Antwort im Kopf („Bester Park je Resort“) und die Frage
 in der H1 („Welcher Park an welchem Tag?“) bleiben: Sie stammen nicht aus der entfernten Zeile, und
 die H1 trägt den Suchbegriff der Seite.
+
+#### Auswahlfelder mit eigenem Pfeil
+
+Die Auswahl „Hotel“ im Tagesblatt des Hubs zeichnete den Pfeil des Browsers, an den rechten Rand
+gedrückt und im dunklen Thema hell. Die Hotelgebiete sind zu viele für Segmente (5 in Orlando, 14 in
+Japan), also bleibt es ein natives `<select>`, jetzt aus `PlanSelect`
+(`components/trip-regions/planner/plan-controls.tsx`): im Stil von `PLAN_FIELD`, mit
+`appearance-none`, einem eigenen Pfeil innen mit Abstand nach rechts und `color-scheme: dark` im
+dunklen Thema, damit auch die Liste dunkel aufgeht. Die beiden Auswahlfelder der Ferien-Suche
+(Land, Region) in `plan-find.tsx` nutzen dieselbe Komponente.
