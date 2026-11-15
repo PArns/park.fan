@@ -170,6 +170,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.
 
+### [`planner/plan-delete.tsx`](../../components/trip-regions/planner/plan-delete.tsx)
+
+- `PlanDelete` _component_: „Reise löschen“, where a visitor manages the trip: the hub's head (after the line that says the plan is saved, `children`) and the result, under the keep actions.
+- `PlanDeleteStatus` _component_: The line after „Löschen“: „Deine Reise vom 3.–9. Dez. ist gelöscht.“ and „Rückgängig“, for a few seconds (`UNDO_MS`), then the trip's copy goes and nothing of it is kept.
+- `useTripDeleted` _hook_: Whether a delete of this region's trip is waiting out its undo.
+
 ### [`planner/plan-edit-status.tsx`](../../components/trip-regions/planner/plan-edit-status.tsx)
 
 - `PlanEditStatus` _component_: The band over the answer after an edit (`role="status"`, so it is read out): what changed, in words („Tokyo DisneySea liegt jetzt am Mi., 20.

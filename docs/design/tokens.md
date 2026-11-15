@@ -136,6 +136,12 @@ so is the language banner that hangs under the header (`components/layout/langua
 Two glass utility classes are left in `app/globals.css`: `.glass-light` (`planner-day-grid.tsx`)
 and `.glass-card` (the pill breadcrumb in `breadcrumb-nav.tsx`).
 
+A secondary button on a photograph is `Button` with `variant="glass"` (`buttonLinkProps` takes it
+too): `HEAVY_GLASS` with a light rim, so it lifts off the photo where `outline`'s opaque or hairline
+box reads flat. The hub head's „Zum Kalender“ and „Neue Reise planen“ use it. On a plain page
+`outline` stays, since the light rim disappears against the background; a button on a title card's
+glass is `GLASS_BUTTON`.
+
 Two constraints hold for every glass surface: a transform or `backdrop-filter` on an ancestor makes
 it a backdrop root and flattens the blur (see [cards](cards-and-heroes.md#pointer-depth) and the
 [header](header.md#two-states-one-navigation)), and no endless animation runs inside one but the

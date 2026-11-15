@@ -370,6 +370,7 @@ What counts as a control the bubble must not cover.
 - `currentTripQuery` _function_: The trip's query right now: the planner on screen, else the one remembered.
 - `sameTripQuery` _function_: Parameter order and spelling aside, two queries that say the same.
 - `rememberTripChange` _function_: Keep a change Parky just sent for a region, with the trip before it.
+- `forgetTripChange` _function_: Forget Parky's last change of a region's trip, for a deleted trip, so his undo cannot bring it back; returns how to put the change back.
 - `takeTripUndo` _function_: The trip before Parky's last change, while the trip is still what he left; `changed` once the visitor has changed it since, so their own edits are never undone. Consumes the change.
 - `TRIPS_SNAPSHOT_MAX` _const_: The API reads one trip per region and at most this many.
 - Types: `AssistantTripSnapshot`, `TripUndo`
