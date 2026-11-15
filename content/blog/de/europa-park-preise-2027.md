@@ -2,7 +2,7 @@
 title: 'Europa-Park-Tagesticket wird 2027 bis zu 3,50 € teurer'
 translationKey: europa-park-preise-2027
 date: '2026-11-15'
-time: '08:00'
+time: '16:31'
 author: patrick
 mode: published
 featured: false

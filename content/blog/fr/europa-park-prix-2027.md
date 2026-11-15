@@ -2,7 +2,7 @@
 title: 'Billet journée Europa-Park : jusqu’à 3,50 € de plus en 2027'
 translationKey: europa-park-preise-2027
 date: '2026-11-15'
-time: '08:00'
+time: '16:31'
 author: patrick
 mode: published
 featured: false

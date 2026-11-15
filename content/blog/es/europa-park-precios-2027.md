@@ -2,7 +2,7 @@
 title: 'La entrada de un día a Europa-Park sube hasta 3,50 € en 2027'
 translationKey: europa-park-preise-2027
 date: '2026-11-15'
-time: '08:00'
+time: '16:31'
 author: patrick
 mode: published
 featured: false
