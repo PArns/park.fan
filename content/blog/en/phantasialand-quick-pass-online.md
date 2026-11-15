@@ -2,7 +2,7 @@
 title: "Phantasialand's Quick Pass is now sold online"
 translationKey: phantasialand-quick-pass-online
 date: '2026-11-15'
-time: '17:45'
+time: '21:30'
 author: patrick
 mode: published
 featured: false

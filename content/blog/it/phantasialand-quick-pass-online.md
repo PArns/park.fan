@@ -2,7 +2,7 @@
 title: 'Il Quick Pass del Phantasialand ora si compra online'
 translationKey: phantasialand-quick-pass-online
 date: '2026-11-15'
-time: '17:45'
+time: '21:30'
 author: patrick
 mode: published
 featured: false

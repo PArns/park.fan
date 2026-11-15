@@ -53,9 +53,9 @@ seo:
     - Phantasialand Wintertraum tickets
 ---
 
-Since 14 November there's ice on the Kaiserplatz at [Phantasialand](ref:phantasialand) again, right under the big tree of lights. Until 24 January 2027 the gates stay open until 8 pm, so you get about three hours in the dark, and at about 7:50 pm the MAGIC SYMPHONY fireworks go up over Berlin. In between come seven shows, mulled wine at the stalls and [Taron](ref:phantasialand/taron) in the dark.
+Since 14 November there's ice on the Kaiserplatz at [Phantasialand](ref:phantasialand) again, right under the big tree of lights. Until 24 January 2027 the gates stay open until 8 pm, so you get about three hours in the dark, and at about 7:50 pm the MAGIC SYMPHONY fireworks go up over Berlin. Between opening and the fireworks there are seven shows, and after dusk [Taron](ref:phantasialand/taron) races through red-lit fog.
 
-There's a lot of new decoration in the park this winter, and the stalls sell plenty of new treats. Neither is on the park's own list of what's new. In Mexico, for example, the Chiapas logo now glows in colour. You can't get to the water ride without passing it, and if you're planning to get wet, you've got time for a photo first.
+Some of this winter's changes aren't on the park's list of novelties: new decoration all over the park and new treats at the stalls. In Mexico, for example, the Chiapas logo now glows in colour. You can't get to the water ride without passing it, and if you're planning to get wet, you've got time for a photo first.
 
 ## Dates and opening times 2026/27
 
@@ -67,7 +67,7 @@ There's a lot of new decoration in the park this winter, and the stalls sell ple
 
 On Totensonntag the rides open at 11 am like on any other Wintertraum day. Only the show programme moves into the evening, because in North Rhine-Westphalia it's a "quiet" public holiday. There's more on that in the post about [Totensonntag at Phantasialand](/blog/phantasialand-totensonntag).
 
-Of the nine hours the park is open, you'll ride just under three to three and a half of them in the dark. In Brühl the sun sets at about 4:45 pm in mid-November, at 4:29 pm on 21 December, the shortest day, and at 5:09 pm on the last Wintertraum day in January. It's properly dark a good half hour later.
+In Brühl the sun sets at about 4:45 pm in mid-November, at 4:29 pm on 21 December, the shortest day, and at 5:09 pm on the last Wintertraum day in January. It's properly dark a good half hour later.
 
 ## What's new in 2026/27
 
@@ -83,7 +83,7 @@ The 4D film [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere) in the Resi
 
 ## The seven winter shows
 
-Three shows play in theatres, four outdoors in the themed areas. Each theatre show has one day off a week, and on its website the park gives a fixed time only for the finale. All other show times are posted day by day on the screens in the park and in the Phantasialand app. The theatres open 30 minutes before the show and seating is limited.
+Each of the three theatre shows has one day off a week, and on its website the park gives a fixed time only for the finale. All other show times are posted day by day on the screens in the park and in the Phantasialand app. The theatres open 30 minutes before the show and seating is limited.
 
 | Show                        | Type                           | Where                     | Length  | Day off    |
 | --------------------------- | ------------------------------ | ------------------------- | ------- | ---------- |
@@ -103,7 +103,7 @@ Three shows play in theatres, four outdoors in the themed areas. Each theatre sh
 
 The **Kaiserplatz Illumination** is meant for families with small children, for whom a finale at ten to eight is too late. It starts at dusk, when the tree of lights and the houses of Berlin come on to a song written for the show.
 
-For **Tiempo de Fuego**, get there a quarter of an hour early. The show projects the changing seasons onto the rocks and buildings of Mexico, at the end flames several metres high shoot up around the bell tower; bad weather can call it off.
+For **Tiempo de Fuego**, get there a quarter of an hour early. The show projects the changing seasons onto the rocks and buildings of Mexico, at the end flames several metres high shoot up around the bell tower. In rain or strong wind the park can cancel it, as it does the fireworks.
 
 At **Pulse of Rookburgh**, beams of light cut through the Rookburgh fog, through the track of [F.L.Y.](ref:phantasialand/fly) and over the Hotel Charles Lindbergh. The show uses fast, bright strobe effects, so if you're sensitive to them, watch from further back.
 
@@ -133,7 +133,7 @@ LIGHTS OF MEMORIES is the park's name for its evening light shows: the four outd
 
 ## What runs and what takes the winter off
 
-Everything runs during Wintertraum except three water attractions. [River Quest](ref:phantasialand/river-quest) has been closed since 2 November, Wakobato and Wözl's Wassertreter since 14 November, all three until 24 January.
+Everything runs during Wintertraum except the water rides: [River Quest](ref:phantasialand/river-quest) has been closed since 2 November, Wakobato and Wözl's Wassertreter since 14 November, all three until 24 January.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -168,13 +168,13 @@ Children up to three get in free and don't need a ticket, only an ID card or bir
 
 Only in these weeks can you get salmon cooked over an open fire and, on the Kaiserplatz, a kale pan. Next to the mulled wine there's eggnog punch and Hot Chardonnay, and alcohol-free punch for children. On the sweet side there are concha doughnuts with pistachio or nougat and crêpe brûlée, and the park's patisserie bakes its own winter tartlets.
 
-**Phenie's Shakes & Pancakes** sits on the shore of the Mondsee lake and looks like a round magic mushroom, with a floor that looks like dough, a topping machine and dripping lamps. The menu has pancake towers, shakes and, for children up to eleven, Cold Pancakes with soft serve, which won't warm anyone up after a turn on the ice but do cheer them up.
+**Phenie's Shakes & Pancakes** sits on the shore of the Mondsee lake and looks like a round magic mushroom, with a floor that looks like dough, a topping machine and dripping lamps. The menu has pancake towers, shakes and, for children up to eleven, Cold Pancakes with soft serve, which takes some nerve to order after a turn on the ice next door.
 
 At the Parkscout Publikums Award 2025/26, visitors voted Phantasialand's food the best of any German theme park. For a proper meal somewhere warm there's Restaurant Uhrwerk in Rookburgh, and my favourite, Rutmor's Taverne in Klugheim, with Eierknöpfli.
 
 ## How busy Wintertraum gets
 
-We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. During the Christmas holidays people queued at Phantasialand as long as in the August summer holidays. In January only the weekdays were quieter: 6 January, the last day of the holidays, was very quiet, the weekdays after it were quiet, and the weekends of 10/11 and 17/18 January were very busy.
+We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. During the Christmas holidays people queued at Phantasialand as long as in the August summer holidays. In January only the weekdays were quieter. 6 January, the last day of the holidays, was the calmest day, the weekdays after it stayed quiet, and on the weekends of 10/11 and 17/18 January the queues were long again.
 
 ```stats-widget slug=phantasialand show=months
 
@@ -182,7 +182,7 @@ We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. Du
 
 This winter the North Rhine-Westphalia Christmas holidays run from 23 December 2026 to 6 January 2027, and I'd plan the days between Christmas and New Year like a day in August. Those January weekdays are when I'd go, and on many of them the park charges €29, the lowest price in the calendar.
 
-On the first Wintertraum weekend of 2026, crowds were high on Saturday, 14 November, and very low on the Sunday, in drizzle. That's only one Sunday, but with the Winja's hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
+On the first Wintertraum weekend of 2026, the park was busy on Saturday, 14 November, and almost empty on the drizzly Sunday. That's only one Sunday, but with the Winja's hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
 
 ```best-days-widget slug=phantasialand
 
@@ -211,7 +211,7 @@ With a Quick Pass you skip the queue once at one ride, through a separate entran
 
 Every Quick Pass is only valid on the day you book it, so buy it in the morning of your visit, not the evening before. Sales in the shop start at 11 am when the park opens, and the park only sells a limited number. The steps for booking in the shop and showing the QR code at the Quick Pass entrance are in our news item on the [Quick Pass going online](/news/phantasialand-quick-pass-online).
 
-On a Tuesday in January I'd keep my money. On a Saturday in the Christmas holidays I'd buy a Taron After Dark pass right at eleven and use it for my first ride in the dark.
+On a Tuesday in January the queues are short enough without one. In the Christmas holidays I'd buy Taron After Dark right at eleven, when the shop starts selling, and save it for my first ride in the dark.
 
 ## A Wintertraum day from 11 am to 8 pm
 
@@ -252,7 +252,7 @@ Adult prices (age 12 and up) in the ticket calendar, as of 15 November 2026:
 
 Children aged 4 to 11 have their own price, which changes by day like the adult one. They and guests aged 60 and over need proof of age at the gate.
 
-12 December, a Saturday in Advent, was already sold out on the opening weekend. I wouldn't wait long for any Advent Saturday.
+If you want an Advent Saturday, book it now: 12 December was already sold out on the opening weekend.
 
 ```cta-widget
 href: https://shop.phantasialand.de/en/products/theme-park-tickets/2026-11?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-wintertraum
@@ -321,7 +321,7 @@ An adult day ticket costs between €29 on weekdays in January and €42 on some
 
 ### When is Wintertraum quietest?
 
-Monday to Friday in January, after the Christmas holidays. Last winter the Christmas holidays were as busy as the August summer holidays, and the January weekends were very busy.
+Monday to Friday in January, once the NRW Christmas holidays end on 6 January 2027; on many of those days an adult ticket costs €29. Last winter the January weekends were very busy.
 
 ### Is there a Quick Pass during Wintertraum?
 

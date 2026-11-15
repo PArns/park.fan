@@ -2,7 +2,7 @@
 title: 'Quick Pass voor Phantasialand koop je nu online'
 translationKey: phantasialand-quick-pass-online
 date: '2026-11-15'
-time: '17:45'
+time: '21:30'
 author: patrick
 mode: published
 featured: false
