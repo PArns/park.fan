@@ -14,12 +14,18 @@ come the popular parks and the questions. A visitor who has starred something fi
 | --- | --------------- | ------- | -------------------------------------------------------------------- | ---------------------------------------------------------- |
 | –   | Hero            | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                          |
 | –   | News and guides | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous      |
+| –   | Trip regions    | stacked | `TripRegionsHomeStop` → the planner band's `RegionTile`              | `getPlannerMenu` (the layout's), each hub's `lead`         |
 | –   | Favourites      | stacked | a `HomeStop` in `page.tsx`, `FavoritesSection`; with favourites only | the favourites cookie                                      |
 | –   | The tour        | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
 | –   | Ask Parky       | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
 | –   | Favourites, how | phone   | `FavoritesIntro` → two `ShotStop`s; without favourites only          | none; screenshots in `public/media/home/`                  |
 | –   | Popular parks   | beside  | a `HomeStop` in `page.tsx`, `FeaturedParksSlot` + `PopularParkLinks` | `getGeoStructure` (a week), the page-view snapshot         |
 | –   | Questions       | beside  | `FaqSection`, the page's only `FAQPage`                              | `seo.homepage.faq`                                         |
+
+The trip regions follow the news (and the compass, in a park), because planning is what most
+visitors come for: one stop with a tile per live region, the scene the planner band draws, loaded
+once the stop nears the screen (`RegionSceneInView`), and under each tile its hub's lead
+(`tripRegions.<slug>.hub.lead`). Its clicks count as `trip_home`, its place as `home_trips`.
 
 In a park, `ParkCompassSlot` puts the headliners on a compass right under the hero
 ([the in-park compass](park-compass.md)); the announcement band (`AnnounceSection`,

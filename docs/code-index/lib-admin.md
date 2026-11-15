@@ -454,6 +454,7 @@ The ticket catalog of a trip region as `/admin/tickets` edits it: every product 
 - `MAX_TICKET_URL_LENGTH` _const_: Characters of any url the catalog stores.
 - `MAX_TICKET_SELLER_LENGTH` _const_: Characters of a seller's name.
 - `TICKET_PUBLISH_DELAY` _const_: How soon a saved edit is seen, as the API publishes it: plans drop the old catalog within 30 seconds (every instance lets go of its copy by then), the open catalog route and the site's ticket list within 15 minutes, its edge window.
+- `TICKET_ORDER_HINT` _const_: How the planner orders the tickets and links the admin lists: as listed here, except that the planner puts a sponsored link first (`compareTicketOrder` in `lib/trip-regions/plan-tickets.ts`).
 - `TICKETS_QUERY_KEY` _const_: The query key every ticket read sits under, so one invalidation drops all of them.
 - `TICKET_LINK_EVENT` _const_: The event the planner sends for a click on a ticket link, with the product, the seller and the host among its properties (`SiteEventMap`); the admin only reads it.
 - `TICKET_CLICK_DAYS` _const_: The window the ticket admin counts clicks in, in UTC days with today.

@@ -8,8 +8,9 @@
  */
 
 /**
- * The places a park page marks, top to bottom, then the band no park page has: the closed list of
- * the event's `section`. The tile stands above „Heute im Park" or under the calendar's header.
+ * The places a park page marks, top to bottom, then the band no park page has, then the
+ * homepage's stops: the closed list of the event's `section`. The tile stands above „Heute im
+ * Park" or under the calendar's header.
  */
 const SEEN_SECTIONS = [
   'trip_tile',
@@ -21,6 +22,13 @@ const SEEN_SECTIONS = [
   'faq',
   'end',
   'trip_band',
+  'home_news',
+  'home_trips',
+  'home_tour',
+  'home_parky',
+  'home_popular',
+  'home_faq',
+  'home_end',
 ] as const;
 
 /** One of {@link SEEN_SECTIONS}. */
@@ -31,6 +39,20 @@ export type SeenSection = (typeof SEEN_SECTIONS)[number];
  * about how far down a page was read.
  */
 export const BLOCK_SEEN_SECTIONS: readonly SeenSection[] = ['trip_tile', 'trip_band'];
+
+/**
+ * The homepage's marks, one where each stop begins, so the homepage says how far down it was read
+ * the way a park page does; they stand wherever the stops do.
+ */
+export const HOME_SEEN_SECTIONS: readonly SeenSection[] = [
+  'home_news',
+  'home_trips',
+  'home_tour',
+  'home_parky',
+  'home_popular',
+  'home_faq',
+  'home_end',
+];
 
 /** The attribute that makes an element a mark and names its place. */
 export const SECTION_SEEN_ATTRIBUTE = 'data-section-seen';

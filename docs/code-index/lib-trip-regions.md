@@ -9,6 +9,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `tripRegionCacheTag` _function_: The Data Cache tag on every read of a region, for the API's revalidation webhook.
 - `tripTicketsCacheTag` _function_: The Data Cache tag of a region's ticket catalog, which the API revalidates after every edit.
+- `tripRegionApiUrl` _function_: The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this deploy as `v`.
 - `getTripRegionTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getTripRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
 - `getTripRegionLinks` _function_: The live regions a page can link into, for the bands on park, calendar, city, country and post pages and `/search`.
@@ -84,14 +85,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `isRankable` _function_: Whether a park can be ranked on a day: not closed, with a figure.
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
-- `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie to the longer day for the day guest.
-- `dayPick` _function_: The park a day's column names above the tiles: with one group shown, that group's first park (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first answer names (`glanceLines`), by `headlinerWait`, a tie …
-- `resortHasChoice` _function_: Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
+- `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest figure the tile prints (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then to the earlier date.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
-- `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
+- `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `weekdayDay` "Thu 12", `dayMonth` "12 Nov".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
@@ -192,6 +191,10 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 ### [`plan-copy.ts`](../../lib/trip-regions/plan-copy.ts)
 
 - `climateChips` _function_: The climate chips of a day's or a window's warnings, in order, the season folded into its peak.
+- `isHotDay` _function_: Whether a park day passes the plan's heat threshold (`extreme_heat`): the one switch for every heat mark.
+- `dayHeat` _function_: A hot park day's high: the day's own, on a hop day the hotter park's. `null` on a day that is not hot, and where an older API sends no figure: the mark then goes without one.
+- `tripHeat` _function_: The trip's hot park days grouped by the basis of their figure, the forecast first: one group as a rule, two only where the trip crosses the forecast's 16-day edge.
+- `tripStorm` _function_: The storm season a trip lies in, by its strongest code (the peak before the season), with the first date of that code where it starts inside the trip, else the last where it ends inside it. `null` when no date of the trip is in the season.
 - `eveningReasons` _function_: An evening's reasons this client can say, in order.
 - `primaryReason` _function_: The one-line reason of a day: the first code of `PLAN_REASON_ORDER` or `REST_REASON_ORDER` it carries.
 - `dayWarnings` _function_: A day's warnings this client can say, in order, the two spellings of a back-to-back repeat folded into one.
@@ -218,7 +221,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
 - `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
 - `RUNNER_UP_CLOSE_MINUTES` _const_: Within this many minutes the runner-up day reads as just as full: the API's `runner_up_close`.
-- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `TripHeatGroup`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
 
 ### [`plan-fetch.ts`](../../lib/trip-regions/plan-fetch.ts)
 
@@ -322,6 +325,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
 - `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.
 - `isEveryDayTicket` _function_: Whether a ticket is valid every day of its window, so it has no days to count off: a window as long as its days (Universal's UK 14-day tickets), or a window without a day count (SeaWorld's Four Parks).
+- `ticketFacts` _function_: `TicketFact`s of a product for a ticket of `days`, in the order a line says them.
 - `onSaleAt` _function_: Whether the product is sold for a ticket starting on `date`.
 - `ticketWindow` _function_: A ticket's window as dates, both ends included; `null` without a start or for a pass.
 - `rollingFortnightAt` _function_: The region's rolling 14-day tickets sold for a start (Universal's UK ones, Three Park Adventure first): one product in most weeks, both in the week their sales overlap (the step then asks about the add-on), none outside, and none where the …
@@ -348,15 +352,18 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `ticketDayOf` _function_: Where a plan day sits on its ticket, from `ticket` and `ticketDay` and the ticket the meta names; `null` for a day without a ticket and for a water-park visit on the allowance.
 - `ownedUse` _function_: An owned ticket's use, read the contract's way for its kind of product.
 - `plannedVisits` _function_: The planned visits of a park, for "Leave this visit out" on a day outside its ticket.
-- `visitorCountry` _function_: The visitor's country from the browser's languages: the region of the first one, upper case (`en-IE` → `IE`), `null` without one.
-- `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
+- `visitorMarket` _function_: The visitor's market from the browser's languages: `us` or `uk` where the first one's region (`en-IE` → `IE`) names the US, Great Britain or Ireland, `intl` for any other region, `null` without one.
 - `ticketLinksOf` _function_: A product's purchase links in the admin's order; without `links` (an older answer) the official `shopUrl` alone, under `officialSeller`.
-- `isVisitorStore` _function_: Whether a link goes to the seller's store for the visitor's own country.
-- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: the store of the visitor's own country first, then those for their locale or market, the rest after, each group in the admin's order, which is the display order.
-- `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone.
+- `compareTicketOrder` _function_: The one order of the planner's shops, tickets and packages, as the owner sets it in the admin: sponsored first, then the admin's order.
+- `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them (`compareTicketOrder`): the sponsored ones first, then the admin's order. Without `links` (an older answer) the official `shopUrl` stands alone.
+- `primaryTicketLink` _function_: The link a recommendation buys through: the first in the ticket order that is not the operator's own shop, else the shop. `null` without links.
+- `orderTicketPicks` _function_: A package's tickets in the ticket order (`compareTicketOrder`): bought through a sponsored link first, then by the product's place in the catalog, which is the admin's order. Tickets of one product keep the order they came in.
+- `orderTicketPackages` _function_: Packages in the ticket order by their first ticket in it; on a tie, or without tickets, they keep the order they came in, so the plan's own package stays first.
+- `officialTicketLink` _function_: The operator's own shop among a product's links, `null` where it has none.
+- `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone, in …
 - `ticketStoreName` _function_: A country store as its link names it in the visitor's language: the country's short name and the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketLinkGroup`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketFact`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketOrderKey`, `TicketPickOrder`, `TicketLinkGroup`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 
@@ -467,7 +474,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanDayWeather`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
@@ -543,7 +550,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `rememberedTrip` _function_: The remembered trip of one region, or null.
 - `rememberTrip` _function_: Keep the planner's query for a region, once it holds dates or a search; an untouched planner (a bare hub visit) never erases what was kept. The party stays.
 - `rememberParty` _function_: Keep the party Parky's interview asked about with the region's trip.
-- `forgetTrip` _function_: Drop a region's remembered trip: Parky's undo of the trip he started.
+- `forgetTrip` _function_: Drop a region's remembered trip (Parky's undo of the trip he started, a deleted trip) and return how to put back the record it dropped, party and time included.
 - `rememberedTrips` _function_: Every region's remembered trip, newest first.
 - `REMEMBERED_QUERY_MAX` _const_: The API takes this much of a query; a 21-day trip with pins and tickets fits.
 - Types: `TripParty`, `RememberedTrip`
@@ -570,6 +577,11 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 ### [`ticket-answer.ts`](../../lib/trip-regions/ticket-answer.ts)
 
 - `tripTicketAnswer` _function_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself.
+
+### [`trip-clear.ts`](../../lib/trip-regions/trip-clear.ts)
+
+- `clearTrip` _function_: Clear every place this device keeps one region's trip in, the same for „Reise löschen“ and „Neue Reise planen“, and keep what it cleared in memory only:
+- Types: `ClearedTrip`
 
 ### [`trip-links.ts`](../../lib/trip-regions/trip-links.ts)
 

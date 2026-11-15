@@ -135,7 +135,9 @@ ticket step, the month a month page opens on, the planner's `PlanEdit` and „Pl
 
 `WizardGuideBand`: the region's Parky scene (`useRegionScene`, the registry's loader) right-aligned
 at its own 2 : 1 and faded into the card's ground on its left (`mask-l-from-65%`), so Parky is
-never cropped at 360, 390 or 1280 px. The band is 128 px tall on a phone and 160 px at a desk. On
+never cropped at 360, 390 or 1280 px. It ends a close button's width short of the right edge, with
+a short fade (`mask-r-from-90%`), so the close button stands on the card's ground and not on
+Parky's hat or the moon. The band is 128 px tall on a phone and 160 px at a desk. On
 the left the line over the question (region and step, then region and dates, then „Fertig“) and
 the speech bubble, whose tail points at Parky. The bubble stands on the card's ground, not on the
 scene, is the dialog's title and takes the focus on every new step, so a screen reader reads the
@@ -186,6 +188,18 @@ Where the plan left chosen parks out (`parksLeftOut`, until the API names the co
 Parky says which, and up to three cards make room, each counted as `trip_left_out_fix`: a park on
 the travel days, only the parks left out (where they are most of the choice, a Paris weekend's two
 Disney parks against Parc Astérix), and a longer trip.
+
+### Avoiding extreme weather
+
+Under the park cards, before the free-day question, a switch „Extremes Wetter vermeiden“
+(`WizardToggle` with `ThermometerSun`): on, the state's `weather` is `avoid` and the request carries
+`weather=avoid`, written only while on, since an API that does not know the name answers it with a 400. The API then prices heat from lower highs and more steeply, so theme parks move to the cooler
+days and water parks take the hottest, and in Orlando and Japan the storm season counts twice
+([the API's contract](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#avoiding-extreme-weather-weatheravoid)).
+While on, the plan's hot park days and its storm season stand under the switch as chips („1
+heißer Parktag“, „Hochphase der Hurrikansaison“, or „Kein heißer Parktag“), and „Deine Antworten“
+gets a pill of its own after Parks. A change is counted as `trip_option_changed` with
+`option: weather`. Every region has a heat model, so the switch is offered in all of them.
 
 ### Days without a park
 

@@ -53,7 +53,7 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
-import { TRIP_PLANNER_ID, tripRegionPath } from '@/lib/trip-regions/paths';
+import { tripRegionPath } from '@/lib/trip-regions/paths';
 import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 
 const arg = (name, fallback) =>
@@ -188,9 +188,7 @@ for (const locale of locales) {
     `/${locale}/${GLOSSARY_SEGMENTS[locale]}`,
     `/${locale}/${HOWTO_SEGMENTS[locale]}`,
     `/${locale}/${PLANNER_SEGMENTS[locale]}`,
-    ...LIVE_TRIP_REGIONS.map(
-      (region) => `/${locale}${tripRegionPath(region.slug, locale)}#${TRIP_PLANNER_ID}`
-    ),
+    ...LIVE_TRIP_REGIONS.map((region) => `/${locale}${tripRegionPath(region.slug, locale)}`),
     ...geoPaths.map((path) => `/${locale}${path}`),
   ];
 

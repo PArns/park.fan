@@ -11,6 +11,344 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.22.2 (2026-11-15) – Extremes Wetter vermeiden, kürzere Ticket-Karte, Planen vorn im Menü und auf der Startseite, Reise löschen, lesbare Wochenansicht
+
+Geschnitten am 2026-11-15 aus 9 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.2.md`. Neueste Abschnitte zuerst.
+
+### Tickets und Shops stehen in der Reihenfolge des Admins, gesponserte zuerst
+
+Bisher sortierte der Planer die Shops selbst: der Shop des Landes aus der Browsersprache zuerst,
+dann die für Sprache oder Markt. Jetzt gilt eine Reihenfolge für Shops, Tickets und Pakete
+(`compareTicketOrder` in `lib/trip-regions/plan-tickets.ts`): gesponserte zuerst, dann die des
+Admins, also die Links eines Produkts, wie sie im Ticket-Editor stehen, und die Produkte nach ihrer
+`sortOrder`. Das Land des Besuchers sortiert nichts mehr (PAR-1352). Die API liefert beides schon in
+dieser Reihenfolge, sie ändert sich nicht. Im Admin verschieben die Pfeile Links und Produkte wie
+bisher; Liste und Links-Kachel sagen jetzt „Oben steht zuerst; gesponserte Links stehen immer ganz
+oben." Geprüft mit `pnpm test:orlando-plan` (232, neu: `compareTicketOrder`, `orderTicketPicks`,
+`orderTicketPackages`). Beschreibung: [Orlando-Planer](features/orlando-planner.md).
+
+### Extremes Wetter vermeiden: ein Schalter im Parks-Schritt, und der Plan zeigt Hitze und Sturmsaison
+
+Im Parks-Schritt des Reiseassistenten steht unter den Parkkarten der Schalter „Extremes Wetter
+vermeiden“ (`components/trip-regions/wizard/steps/parks-step.tsx`). An schickt der Plan
+`weather=avoid` an die API, und nur dann: eine API, die den Namen nicht kennt, antwortet mit 400.
+Die API rechnet Hitze dann ab niedrigeren Höchstwerten und steiler, Themenparks wandern auf kühlere
+Tage, Wasserparks auf die heißesten, und in Orlando und Japan zählt die Sturmsaison doppelt. Der
+Schalter steht in der Adresse, im gemerkten Trip und in „Deine Antworten“ als eigene Pille nach
+Parks; `trip_option_changed` zählt ihn als `option: weather`.
+
+Hitze und Sturmsaison haben jetzt eigene Farben, keine Crowd-Farbe: Hitze ein Magenta
+(`--signal-heat`, `HEAT_CHIP_CLASS`, 4,98 : 1 auf dem eigenen Ton hell, 5,96 dunkel) mit
+Thermometer, die Saison das Violett des Kalenders (`STORM_CHIP_CLASS`), gestrichelt und an der
+Spitze durchgezogen.
+
+- **Kopf des Plans:** ein Wetterband (`PlanWeatherBand`) mit den heißen Parktagen nach Grundlage
+  („1 heißer Parktag, im Schnitt 32 °C“, „über 35 °C vorhergesagt“) und der Saison als Chip, über
+  einem Lineal der Reisetage im Raster des Plan-Bands.
+- **Wochenansicht:** eine Wetterzeile in jedem Spaltenkopf, wo die Seite einen heißen Tag oder
+  Saisontage hat: die Pille („Ø 32°“) und das Saisonband durch die Lücken; der Schlüssel nennt beide.
+- **Tageskarte:** die Pille neben dem Datum, die Saison als oberer Rand, beides in einem
+  `dark`-Rahmen, weil das Foto in beiden Themes dunkel ist; mit dem Schalter sagt ein heißer Tag,
+  dass kein kühlerer in den Plan passte.
+- **Tagesblatt:** unter der Zahl, dass Ø ein Schnitt vergangener Jahre und die Saison eine Statistik
+  ist, keine Vorhersage.
+
+Die Zahlen kommen aus der API (2.22.2): jeder Parktag trägt `weather: { tempMax, basis }`,
+`meta.heat` die Schwellen, gegen die `extreme_heat` gelesen wurde. Die Summen des Plans verlieren
+`penalties`, die die Plan-Route nie geschickt hat.
+
+### Jeder Deploy liest die Reise-Regionen frisch von der Edge
+
+Nach einem API-Deploy, der die Antwort einer Region änderte, lieferte Cloudflare
+`/v1/trip-regions/:region` bis zu 26 Stunden lang alt aus (ein Tag `s-maxage`, zwei Stunden
+`stale-while-revalidate`), und die API kann Cloudflare nicht leeren. Am 15. November war Orlandos
+Kopie an der Edge rund 18 Stunden alt und hatte kein `weather`, keine `hotels` und keine
+`ticketMarkets`. Jetzt hängt jeder Server-Read einer Reise-Region-Route, der Relay
+(`app/api/trip-regions/[...path]/route.ts`) eingeschlossen, den Commit des Deploys als `v` an
+(`tripRegionApiUrl` in `lib/trip-regions/api.ts`, aus `VERCEL_GIT_COMMIT_SHA`), also liest jeder
+Deploy eine eigene Edge-Kopie. `build-info.json` wäre dafür die falsche Quelle: Die
+Node-Testskripte, die das Modul laden, laufen ohne die Datei. Die API nimmt `v` auf allen
+Reise-Region-Routen an und muss vorher ausgerollt sein. Tags und Revalidate-Zeiten des Data Cache
+bleiben, wie sie waren ([Reise-Regionen](features/trip-regions.md#data)).
+
+### Die Wochenansicht des Reiseplans sagt, was ihre Blöcke und Zahlen sind
+
+In der Wochenansicht (`components/trip-regions/planner/plan-week-view.tsx`) stand über den meisten
+Parkblöcken ein blauer gestrichelter Block ohne Text, und im Parkblock stand „50 Min.“ ohne zu sagen,
+welche Zahl das ist. Die Bedeutung des blauen Blocks stand nur im `title`, den auf dem Telefon
+niemand sieht.
+
+- **Früher Einlass:** Der Streifen schreibt jetzt „Früher Einlass“ und „ab 08:30“
+  (`tripPlanner.week.earlyAt`, neu in sechs Sprachen). Hat er nur eine Zeile, steht dort das Wort;
+  die Zeit steht daneben nur in einer breiten Spalte, sonst im Parkblock unter den Öffnungszeiten
+  (eine Container Query auf der Spalte). Ist er zu niedrig für eine Zeile, steht beides im
+  Parkblock. Der 30-Minuten-Streifen von Disney ist auf dem Desktop 18 px hoch. Er ist jetzt ein
+  Knopf wie der Parkblock: Antippen öffnet den Tag, dessen Blatt den Einlass des Hotels nennt. Der
+  Tooltip bleibt. Extended Evening Hours tragen ihren Namen ebenso.
+- **Die Minuten** sind die Spitzenwartezeit des Parks an dem Tag (`shownWaitOn`: der Mittelwert der
+  Tagesspitzen seiner großen Bahnen, auf 5 Minuten gerundet, in den Tagen der Prognose so, wie sie
+  der Kalender des Parks zeigt). Der Block schreibt sie mit den Worten der Tageskarte,
+  „Spitze etwa 50 Min.“ (`tripPlanner.result.card.peak`).
+- **Die Zeiten:** Darunter die Öffnungszeit des Parks bis zum Schluss für Tagesgäste, mit
+  `formatGridHours` auf der Uhr des Parks („09–21“). An einem Tag mit zwei Parks teilt die Spalte
+  den Tag in der Mitte; jeder Block nennt trotzdem die Zeiten seines Parks
+  (`TripBlockSpan.openMin` und `closeMin` in `lib/trip-regions/plan-week.ts`).
+- **Legende:** Unter dem Raster steht die Andrangsskala und ein Eintrag für jede Markierung ohne
+  eigene Worte, nur für das, was die Seite zeigt: früher Einlass, Extended Evening Hours und die
+  Stunden, die ein Hotelwechsel am Morgen kostet (`WeekKey`). Sie ist `ParkCalendarLegend`, deren
+  `extraSignals` jetzt eine eigene Markierung tragen dürfen (`CalendarLegendKey`, `mark` an
+  `DaySignalKey`); `showCrowd` lässt die Skala weg, wo kein Block eine Farbe hat.
+
+### Planen steht im Menü an dritter Stelle, „Mehr" immer zuletzt
+
+Die Leiste lautet jetzt Guides, News, Planen, Parks entdecken, Favoriten und „Mehr", davor wie
+bisher der Chip des nahen Parks. Bisher stand Planen zwischen „Mehr" und den Favoriten am Ende. Eine
+Liste gibt beiden Menüs die Reihenfolge (`MENU_ORDER` in `components/layout/header.tsx`): Leiste und
+Telefonmenü füllen je einen Eintrag pro Schlüssel, und der Typ der Liste lässt keine zu, die nicht
+auf „Mehr" endet. Im Telefonmenü folgen auf Guides und News jetzt Planen, Parks entdecken,
+Startseite und zuletzt die drei Hubs aus „Mehr"; die Favoriten bleiben dort über der Liste.
+
+„Mehr" zeigt die vier Reise-Regionen nicht mehr als breite Fotostreifen. Das Planen-Band verlinkt
+dieselben Hub-URLs (`tripRegionPath`), also geht kein interner Link verloren. Weg sind
+`MoreMenuRegion` und die Regionen in `getMoreMenu` (`lib/navigation/more-menu.ts`), die
+Kalenderzeilen am Ende des Telefonmenüs (dieselben URLs wie die Regionen unter „Planen") und
+`calendarLabel` in `PlannerMenuRegion`. „Mehr" hat damit wieder seine drei Spalten und ist bei 1440 px
+591 px hoch. Gemessen auf `/fr/parks/europe/germany`: Die Zeile bleibt in jeder Breite einzeilig, mit
+82 px Luft bei 1024 und 96 px bei 1280 und 1440, wie vorher
+([Header-Navigation](features/header-navigation.md#the-bar)).
+
+#### Messpunkte für die nächste Runde
+
+Ein Klick im Header ließ sich bisher nicht einem Menü zuordnen: Alles im Band zählte als `header`,
+alles im Telefonmenü als `menu_sheet`. Jetzt trägt jedes Band seinen eigenen Block (`menu_guides`,
+`menu_news`, `menu_planner`, `menu_parks`, `menu_favorites`, `menu_more`, aus `menuBlock` in
+`lib/analytics/internal-link.ts`), und derselbe Eintrag im Telefonmenü trägt denselben. `header`
+bleibt für die Links der Leiste selbst, `menu_sheet` für den Rest des Telefonmenüs. Die
+Regionen-Stopps der Startseite zählen ihre Klicks als `trip_home`. Die Startseite setzt
+`section_seen`-Marken an den Anfang jedes Stopps (`home_news` bis `home_end`), sodass sich wie bei
+den Parkseiten ablesen lässt, wie weit sie gelesen wird. Die API nimmt die neuen Werte ohne Änderung
+an ([Analytics](development/analytics.md)).
+
+#### Die Startseiten-Suche bietet die Reise-Regionen an
+
+Öffnet man die Suche im Hero der Startseite, steht unter vier Parks in der Nähe eine Zeile „Reise
+planen" mit Orlando, Südkalifornien, Japan und Paris; jede Region führt in ihren Reiseplaner
+(`SearchTripRow`, `components/search/search-trip-row.tsx`). Ist kein Park in der Nähe bekannt und die
+Liste zeigt die beliebten Parks, steht die Zeile oben. Auf dem Desktop nimmt sie den Platz des
+fünften Parks ein, die Liste bleibt gleich hoch; auf dem Handy steht sie in der Palette, die das
+Hero-Feld öffnet, nicht in der des Headers. Das Suchfeld selbst ist unverändert. Ein Klick zählt als
+`search_browse_clicked` mit `item: trip_region`
+([Seitensuche](features/site-search.md#a-trip-regions-planner-comes-first)).
+
+#### Die Reise-Regionen stehen auf der Startseite direkt unter den News
+
+Statt vier einzelner Stopps weit unten (nach Rundgang, Parky und Favoriten) zeigt die Startseite
+die Regionen jetzt in einem Stopp direkt unter den News: „Reiseplaner · Reise planen" mit den vier
+Kacheln des Planen-Bands samt Parky-Szenen (`TripRegionsHomeStop`,
+`components/trip-regions/trip-region-home-stop.tsx`, `RegionTile` aus
+`components/layout/planner-menu-panel.tsx`). Die Szenen lädt `RegionSceneInView` erst nach dem Laden
+und kurz bevor der Stopp in den Bildschirm kommt; die Kacheln haben feste Höhen. Unter jeder Kachel
+steht der Lead ihres Hubs (`tripRegions.<slug>.hub.lead`), damit die Startseite weiter sagt, worum es
+in der Region geht. Die Klicks zählen als `trip_home`, die Stelle als `home_trips`. Die alten
+Stopps und ihre Texte (`tripRegions.<slug>.homeStory` in sechs Sprachen) sind entfernt; statt vier
+Anfragen an die Regionen-Route liest der Stopp die Daten des Planen-Bands, die das Layout schon hat
+([Startseite](features/homepage.md)).
+
+#### Titeltest auf Deutsch: Startseite und Andrangskalender
+
+Ein Test nur für `de`, die anderen fünf Sprachen bleiben, wie sie sind. Vergleichsbasis ist der
+2026-11-15 in der Search Console: „freizeitpark wartezeiten" stand auf Position 3,4 mit 0,4 % CTR,
+„wartezeiten" auf 5,7 mit 0,2 %, „andrangskalender europa park" auf 5,3 mit 0,45 % CTR bei 1.779
+Impressionen; die Anfragen mit „Auslastung" und „Andrang" standen auf 8 bis 9. Gesucht wird nach
+„Auslastung", „Andrang" und „heute", nicht nach „Crowd-Prognosen".
+
+- **Startseite, Titel** (`seo.home.title`, mit „ | park.fan" 59 Zeichen): vorher „Freizeitpark-Wartezeiten
+  live & Crowd-Prognosen", jetzt „Freizeitpark-Wartezeiten live & Auslastung heute".
+- **Startseite, Beschreibung** (`seo.home.description`, 159 Zeichen): vorher „Live-Wartezeiten aus
+  über 200 Freizeitparks, alle fünf Minuten neu. Dazu ein Crowd-Kalender für die kommenden Tage und
+  eine Prognose, die ihren Fehler offenlegt.", jetzt „Wie voll ist es heute im Europa-Park oder
+  Phantasialand? Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu, und der Andrang
+  der nächsten Tage."
+- **Andrangskalender** (`parks.calendarPage`, `fitWithin` nimmt den ersten Titel unter 60 Zeichen):
+  `metaTitle` vorher „{park}: Andrang & Öffnungszeiten im {month}", jetzt „{park}:
+  Andrangskalender & Auslastung {month}"; `metaTitleShort` vorher „{park}: Andrang im {month}",
+  jetzt „{park}: Andrangskalender {month}"; `metaTitleBare` bleibt „{park}: {month}". Beispiele:
+  „Europa-Park: Andrangskalender & Auslastung November 2026" (56 Zeichen), „Phantasialand:
+  Andrangskalender & Auslastung September 2026" (59); ab 16 Zeichen Parkname greift die kurze
+  Form, etwa „Movie Park Germany: Andrangskalender November 2026".
+
+### Die Ticket-Karte empfiehlt zuerst, was man kauft, und passt in eine Spalte
+
+In 2.22.1 lief „Tickets für diesen Plan“ in der 340-px-Spalte für Orlando 14.–30. November auf
+1716 px: je Resort fünf Tages-Chips, Gültigkeitsbalken, Hopper-Urteil, Regeln und sechs
+Kaufknöpfe untereinander, die 14-Tage-Tickets als gestrichelte Zeile ganz unten. Was man kaufen
+soll und wo, ging darin unter. Jetzt steht oben die Empfehlung, und die Karte misst für 15.–30.
+November 879 px (Universal 5 Tage, dann Disney 6 Tage, die 14-Tage-Tickets eingeschlossen).
+
+- **Empfehlung** (`TicketPick` in `components/trip-regions/planner/plan-tickets-card.tsx`): zwei
+  Pakete zum Vergleichen nach Parktagen. „Passend zu diesem Plan · 11 Parktage“ nennt die Tickets
+  mit dem Hopper, wo die API ihn empfiehlt („Disney 6 Tage + Park Hopper“), „14-Tage-Tickets
+  aus UK-Shops · 28 Parktage“ die Alternative der langen Reise mit dem, was der Katalog über sie
+  sagt (`ticketFacts`: „14 Parktage in 18 Tagen · Park Hopper inklusive“), dem Combo-Satz und
+  „Damit planen“. Je Paket steht der Händler einmal, je Ticket ein Knopf mit dem Resort; die
+  offiziellen Shops stehen in einer leisen Zeile darunter und sind nie versteckt. Preise kennt
+  der Katalog nicht, also behauptet die Karte weder „ab“ noch eine Ersparnis.
+- **Welcher Link kauft** (`primaryTicketLink`, `officialTicketLink` in
+  `lib/trip-regions/plan-tickets.ts`): ein gesponserter Händler zuerst, sonst der erste, der nicht
+  der Betreiber ist, in der Reihenfolge des Admins. Steht ein gesponserter Link in der
+  Empfehlung, trägt ihr Kopf „Anzeige“ mit der Provisions-Erklärung, und der Link sagt
+  „Partnerlink“; heute ist im Katalog keiner markiert, also zeigt die Karte keins von beiden.
+- **Je Ticket eine Zeile** (`SuggestionRow`): „Universal Orlando · 5-Tage-Ticket“ und „16.–22.
+  Nov. · 5 von 7 Tagen“, aufgeklappt die Chips, der Balken, das Hopper-Urteil mit „Mit Park-to-Park
+  planen“, „Wie das Ticket gilt“ und alle Shops (`trip_ticket_details_opened` beim Öffnen).
+- Kaufknöpfe zeichnen `BuyLink` und `BuyLabel`, in der Empfehlung wie in der Shop-Liste, mit
+  derselben Zählung (`ticket_link_clicked`). Der Satz unter dem Titel und die neuen Überschriften
+  enden ohne Punkt. Dieselbe Karte steht im Tickets-Schritt des Assistenten.
+
+Geprüft mit `pnpm test:orlando-plan` (231, neu: `ticketFacts`, `primaryTicketLink`);
+`scripts/check-planner-orlando.mjs` liest die Empfehlung und die aufklappbaren Zeilen.
+Beschreibung: [Orlando-Planer](features/orlando-planner.md).
+
+### Parkys Einladung in den Planern, und Parky im Reise-Assistenten wieder ganz
+
+#### Die Leiste über „Deine Antworten“
+
+`ParkyInterviewStart` (`components/assistant/parky-interview-start.tsx`), die Leiste in Reiseplaner,
+Tagesplaner und Hub, ist jetzt Parkys eigenes Angebot: Parky links, daneben eine Sprechblase mit
+seinem Namen und einem Satz in der ersten Person („Ich stell dir im Chat ein paar Fragen und trag
+jede Antwort sofort hier im Planer ein.“), darunter die Fragen, mit denen der Chat beginnt, als
+nummerierte Badges aus `interviewCore(kind)` mit den Namen aus `assistant.interview.steps`, wie
+die Leiste im Chat sie zählt. Der Knopf bleibt der Aufruf. Ab 36rem Breite steht die Reihe auf
+höchstens `max-w-4xl` in der Mitte, statt den Knopf an den rechten Rand von 1504 px zu schieben;
+darunter steht sie wie bisher untereinander. Im Hub mit „Reise planen“ fehlen die Badges, weil die
+Zeile dort vom Planer spricht. Die Blase und ihr Zipfel sind aus dem Band des Reise-Assistenten
+herausgezogen (`PARKY_BUBBLE`, `ParkyBubbleTail` in `parky-speech-bubble.tsx`), damit beide gleich
+aussehen.
+
+Parky stand nicht mittig, weil sein Riesenrad über der 48er-Box seines Gesichts steht
+(`overflow-visible`): Ein Layout, das die Box zentriert, zentriert das Gesicht und lässt den Hut in
+das Padding darüber ragen, sodass die Figur 5 Einheiten zu hoch sitzt. `ParkyLogo` hat dafür
+`framed`: Die Box umfasst dann die ganze Figur samt Hut und Zipfel (`viewBox` `-3.5 -9 55 55`).
+Die Leiste und die drei Parkys in `plan-ideas.tsx` nutzen es; Launcher, Fenster und Hero behalten
+die Gesichtsbox, an der ihre Fahrten, Docks und Sprünge gemessen sind.
+
+#### Der Kopf des Reise-Assistenten
+
+Wer im Kopf der Seite das Menü „Planen“ geöffnet hatte und danach den Reise-Assistenten für Orlando
+öffnete, sah im Band des Assistenten nur Parkys Augen, Wangen und Riesenrad: Körper, Himmel und See
+fehlten. Die Orlando-Szene (`components/assistant/parky/orlando-scene.tsx`) gab ihren Verläufen feste
+ids wie `parky-orlando-ground`, und das geschlossene Menü behält seine Kopie der Szene unter
+`hidden`. `url(#…)` fand den Verlauf zuerst dort, und ein Verlauf in einem versteckten Teilbaum malt
+nichts. Die ids kommen jetzt aus `useId()`, wie in den Szenen von Südkalifornien, Japan und Paris
+schon; die Pausen-Szene (`break-scene.tsx`) ebenso, deren Kopien auf `/ui` sich einen Himmel
+teilten. Im Band endet die Szene eine Knopfbreite vor dem rechten Rand, mit kurzer Blende
+(`mask-r-from-90%`), sodass das Schließen-X auf dem Grund der Karte steht und nicht mehr auf Parkys
+Riesenrad und dem Mond. Das goldene Feuerwerk über Orlando sitzt 4 Einheiten tiefer und wird oben
+nicht mehr abgeschnitten
+([Parky](features/parky-character.md#pictures-of-him),
+[Assistent](features/trip-planner/wizard.md#the-band)).
+
+### Überschriften und die Zeile darunter enden ohne Punkt
+
+Unter der H1 des Orlando-Hubs stand „Ein Kalender für alle 16 Parks rund um Orlando und ein Planer
+für deine Reisetage.“, und so endeten Unterzeilen auf der ganzen Seite. Jetzt enden Titel,
+Unterzeilen, Leads, Taglines und die Einzeiler unter einem Kartentitel ohne Punkt, in allen sechs
+Sprachen: 123 Schlüssel in `messages/*.json`, also 738 Strings. Gefunden über die Komponenten, die
+sie zeichnen (`ChapterHeading`- und `SectionHeading`-`hint`, `LandingHero`-`tagline`,
+`DialogHero`, `PushDialogHero`, `SheetDescription`, `LandingNextSteps`, `HubBanner`,
+`WizardOptionCard`, `WizardToggle`), nicht über die Schlüsselnamen: 97 Schlüssel verlieren nur den
+Punkt, 26 sind umformuliert, meist zwei Sätze zu einem (die acht Resort-Karten der Hubs, die
+Schritte unter „So plant der Reiseplaner deine Reise“, die Schritt-Karten des Tagesplaners). 32
+Zeilen aus mehreren Sätzen und fünf, die der Code aus Sätzen zusammensetzt, behalten ihre Punkte,
+ebenso Fließtext, FAQ-Antworten, Meta-Beschreibungen, Hinweise und Fehler. Im Niederländischen und Französischen fiel dabei aus `parks.kidsPage.lead` der Satz „Diese
+Seite zeigt …“, den die anderen vier Sprachen nie hatten.
+
+Die Regel steht in [§4.3](writing/4-typography.md#43-headings), und `check:prose` schlägt fehl,
+wenn ein Schlüssel `title`, `heading`, `headline`, `subtitle`, `subline`, `tagline`, `kicker`,
+`eyebrow` oder `lead` aus einem Satz besteht und auf einen Punkt endet; drei Schlüssel, die kein
+Kopf sind, stehen mit Grund in `HEADING_STOP_ALLOWED`.
+
+### Parkys Hinweis unter dem Eingabefeld sagt „kann Fehler machen“
+
+`assistant.disclaimer` (de) lautet jetzt „Parky ist eine KI und kann Fehler machen. Seine Antworten
+sind ohne Gewähr.“ statt „kann sich irren“. Die anderen Sprachen sagen es schon so.
+
+### Reise-Hubs mit offenen Kapiteln, dem ruhigsten Tag je Park und „Reise löschen“
+
+#### Offene Kapitel
+
+Auf den vier Hubs (Orlando, Südkalifornien, Japan, Paris) und ihren Monatsseiten klappte sich mit
+einem Plan der Kalender in „Kalender für alle 16 Parks, Tag für Tag“ und die Resorts in eine Zeile
+mit ihren Namen ein (`HubPlanFold` in `components/trip-regions/hub/hub-trip-state.tsx`). Jetzt sind
+alle Kapitel in beiden Zuständen offen, ohne Knopf zum Ein- und Ausklappen: Mit einem Plan steht
+„Deine Reise“ als Kapitel 01 oben, Kalender, Resorts, beste Reisezeit und Fragen folgen darunter wie
+auf der Landingpage. Weil sich nach der Hydration nur noch Kapitel 01 ändert, verschiebt der Wechsel
+in den Planzustand nichts darunter. Die Fragen behalten ihr Akkordeon pro Frage; ein Kapitel-Fold
+lag um sie nie. `HubPlanFold`, die Zusammenfassung der Resorts und `tripHub.howItWorks.calendarFold`
+in sechs Sprachen sind entfernt ([Orlando-Hub](features/orlando-hub.md#two-states)).
+
+#### Reise löschen
+
+„Reise löschen“ steht am Ende der Zeile „Dein Plan für … ist in diesem Browser gespeichert.“ im Kopf
+des Hubs und unter „In den Tagesplaner übernehmen“, „In den Kalender“ und „Link kopieren“ im
+Ergebnis (`PlanDelete`, `components/trip-regions/planner/plan-delete.tsx`). Die Rückfrage steht an
+Ort und Stelle statt der Zeile, ohne `confirm()` des Browsers: „Diese Reise löschen? Deine Daten,
+Parks und Änderungen werden auf diesem Gerät entfernt.“ mit „Löschen“ und „Behalten“. „Löschen“
+leert alle sieben Ablagen der Reise dieser Region (`clearTrip` in `lib/trip-regions/trip-clear.ts`):
+die Abfrage in der Adresszeile mit Daten, Parks, Pins und Tickets, die Bearbeitungen samt
+„Rückgängig“ im Planer, die gespeicherte Reise mit Parkys Reisegruppe (`parkfan_trip_<region>`), die
+beantworteten Fragen des Assistenten, die Antwort auf „Schon Tickets?“, Parkys laufendes
+Reise-Interview und seine letzte Änderung. Die Adresse wird der nackte Pfad des Hubs, sodass
+`restorableTrip` beim Neuladen nichts zurückholt; die Reisen anderer Regionen bleiben. Acht
+Sekunden lang sagt der Kopf „Deine Reise vom … ist gelöscht.“ mit „Rückgängig“ (`PlanDeleteStatus`,
+in der Zelle der Notiz, damit ihr Ende nichts verschiebt), danach ist die Kopie im Speicher weg.
+Neues Ereignis `trip_deleted` mit `from` (head, result), mit Beschriftung im Admin.
+
+„Neue Reise planen“ leert die Reise jetzt mit demselben `clearTrip`. Bisher setzte es den Plan über
+Parkys Brücke zurück (`tripPlannerBridge.apply(region, '')`), und jede Option, die dabei
+verschwand, zählte als `trip_option_changed` mit `by: parky`. Ein Leeren zählt jetzt keine Option;
+die gespeicherte Reise und die Antworten des Assistenten gehen mit, sodass ein Neuladen keine alte Reise
+zurückbringt. `pnpm test:trip-clear` prüft die Ablagen, die andere Region und das Rückgängig
+([Reiseplaner](features/orlando-planner.md#keeping-a-plan)).
+
+#### Glas für den zweiten Knopf im Kopf
+
+„Neue Reise planen“ und „Zum Kalender“ im Kopf der Hubs waren `outline`-Knöpfe: im hellen Thema ein
+deckender weißer Kasten, im dunklen ein Haarstrich auf fast durchsichtigem Grund, über dem Foto in
+beiden Fällen flach. Die neue `Button`-Variante `glass` (`components/ui/button.tsx`) legt das Glas
+des Hero (`HEAVY_GLASS`, Füllung und `backdrop-blur-xl`) mit einem hellen Rand darüber. Sie gilt
+nur auf Fotos: Auf einer schlichten Seite verschwindet der helle Rand im Hintergrund, dort bleibt
+`outline` ([Tokens](design/tokens.md#glass)). Im Deutschen heißt die Zeile darunter jetzt „Dein
+Plan für … ist in diesem Browser gespeichert.“ statt „gemerkt“.
+
+#### Im Wochenkalender zählt der ruhigste Tag je Park
+
+Der Wochenkalender in Kapitel 02 beantwortete, welcher Park eines Resorts an einem Tag der beste ist:
+ein Ring um den Park mit der kürzesten Schlange im Resort und darüber die Zeile „Bester Park“. Wer
+alle Parks einmal besuchen will, braucht die andere Richtung: welcher Tag der Woche für jeden Park
+der leerste ist. Ring und Zeile sind weg, samt `dayPick`, `resortHasChoice`, `bestAtResort` und
+den Texten `pickRow`, `pickRowGroup`, `cellBest`, `more`, `earlyElsewhere`, `today` und
+`legend.ring` in sechs Sprachen. Der ruhigste Tag jedes Parks (`quietestDay`, dieselbe Regel wie
+bisher für den Stern: niedrigste `headlinerWait`, bei Gleichstand der längere Tag, nichts bei einem
+echten Gleichstand oder einem Vorjahrestag) trägt jetzt den Ring in Textfarbe (`HUB_CELL_BEST`) und
+den Stern, und neben dem Parknamen steht er mit Wartezeit („★ Mi., 18. · 30 Min“, `QuietestNote`).
+Auf dem Telefon ersetzt dasselbe Raster die Tagesliste, die pro Resort nur den besten Park zeigte:
+eine Karte je Resort mit den Daten der Woche und je Park sieben 44-px-Kacheln
+(`CalendarDayTile` mit der neuen Dichte `mini`). Legende und Unterzeile sagen es: „Bei jedem Park ist
+sein ruhigster Tag der Woche markiert“. Die Antwort im Kopf („Bester Park je Resort“) und die Frage
+in der H1 („Welcher Park an welchem Tag?“) bleiben: Sie stammen nicht aus der entfernten Zeile, und
+die H1 trägt den Suchbegriff der Seite.
+
+#### Auswahlfelder mit eigenem Pfeil
+
+Die Auswahl „Hotel“ im Tagesblatt des Hubs zeichnete den Pfeil des Browsers, an den rechten Rand
+gedrückt und im dunklen Thema hell. Die Hotelgebiete sind zu viele für Segmente (5 in Orlando, 14 in
+Japan), also bleibt es ein natives `<select>`, jetzt aus `PlanSelect`
+(`components/trip-regions/planner/plan-controls.tsx`): im Stil von `PLAN_FIELD`, mit
+`appearance-none`, einem eigenen Pfeil innen mit Abstand nach rechts und `color-scheme: dark` im
+dunklen Thema, damit auch die Liste dunkel aufgeht. Die beiden Auswahlfelder der Ferien-Suche
+(Land, Region) in `plan-find.tsx` nutzen dieselbe Komponente.
+
 ## 2.22.1 (2026-11-14) – Karte, Ticket-Karte, Wochenkalender, animiertes Menü, pausierte Rides, Parkys Ideen im Chat
 
 Geschnitten am 2026-11-14 aus 8 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.1.md`. Neueste Abschnitte zuerst.

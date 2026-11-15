@@ -102,6 +102,14 @@ export function PlanRibbon({
   );
 }
 
+/** The ribbon's day grid, a column per trip day; the trip head's weather ruler keeps its geometry. */
+export const RIBBON_GRID = {
+  className: 'grid h-7 gap-0.5 sm:h-8 sm:gap-1',
+  style: (days: number) => ({
+    gridTemplateColumns: `repeat(${Math.max(days, 1)}, minmax(0, 1fr))`,
+  }),
+};
+
 /** The row of fields, one per day of the plan; a muted row of the same height before the first. */
 function RibbonCells({ plan }: { plan: TripPlan | undefined }) {
   const { parkBySlug, config } = usePlanContext();
@@ -113,8 +121,8 @@ function RibbonCells({ plan }: { plan: TripPlan | undefined }) {
   return (
     <div
       aria-hidden="true"
-      className="grid h-7 gap-0.5 sm:h-8 sm:gap-1"
-      style={{ gridTemplateColumns: `repeat(${Math.max(days.length, 1)}, minmax(0, 1fr))` }}
+      className={RIBBON_GRID.className}
+      style={RIBBON_GRID.style(days.length)}
     >
       {days.length === 0 ? (
         <span className="bg-muted/60 rounded-sm" />
@@ -143,7 +151,7 @@ function RibbonCells({ plan }: { plan: TripPlan | undefined }) {
  * A day without a park: outlined in the muted ink, quieter than a park day's solid colour but seen
  * on the dark ground too, with the mark the Month view gives it.
  */
-const QUIET_CELL = 'border-muted-foreground/50 text-muted-foreground border';
+export const QUIET_CELL = 'border-muted-foreground/50 text-muted-foreground border';
 
 /** A day's field: its crowd colour on a park day, the move's dashed ink, else the quiet outline. */
 function cellClass(day: PlanDay): string {

@@ -242,6 +242,12 @@ export function ticketCatalogPath(region: string, ...segments: string[]): string
 export const TICKET_PUBLISH_DELAY =
   'Pläne rechnen nach spätestens 30 Sekunden damit, die Ticketliste der Website folgt nach spätestens 15 Minuten.';
 
+/**
+ * How the planner orders the tickets and links the admin lists: as listed here, except that the
+ * planner puts a sponsored link first (`compareTicketOrder` in `lib/trip-regions/plan-tickets.ts`).
+ */
+export const TICKET_ORDER_HINT = 'Oben steht zuerst; gesponserte Links stehen immer ganz oben.';
+
 /** The query key every ticket read sits under, so one invalidation drops all of them. */
 export const TICKETS_QUERY_KEY = ['admin', 'tickets'] as const;
 

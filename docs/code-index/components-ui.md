@@ -23,7 +23,7 @@ Badge primitive (shadcn/ui, with Radix Slot and class-variance-authority): a sma
 
 ### [`button.tsx`](../../components/ui/button.tsx)
 
-Button primitive (shadcn/ui, with Radix Slot and class-variance-authority): six variants and the size scale every control uses, 32, 36 and 40 px on desktop with `sm` and `default` at 44 px on phones, plus `buttonLinkProps` for a link drawn …
+Button primitive (shadcn/ui, with Radix Slot and class-variance-authority): seven variants and the size scale every control uses, 32, 36 and 40 px on desktop with `sm` and `default` at 44 px on phones, plus `buttonLinkProps` for a link …
 
 - `Button` _component_
 - `buttonLinkProps` _function_: The exact presentation props `<Button>` applies, for a link that should _look_ like a button.

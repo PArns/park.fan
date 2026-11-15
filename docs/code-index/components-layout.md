@@ -50,7 +50,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`header.tsx`](../../components/layout/header.tsx)
 
-- `Header` _component_: The 48 px site header: brand lockup, the parks, blog, news and more menus, favourites, nearby park, planner, search, language, unit and theme controls, and the burger sheet on phones.
+- `Header` _component_: The 48 px site header: brand lockup, nearby park, the guides, news, planner, parks, favourites and „Mehr" menus in `MENU_ORDER`, search, language, unit and theme controls, and the burger sheet on phones, which follows the same order.
 
 ### [`hero-background.tsx`](../../components/layout/hero-background.tsx)
 
@@ -134,6 +134,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner-menu-panel.tsx`](../../components/layout/planner-menu-panel.tsx)
 
 - `PlannerMenuPanel` _component_: The planner band: the trip planner per region, the day planner, and the locale's popular parks as quick starts into the day planner.
+- `RegionTile` _component_: A region as one of several, from the four-region design: the scene above, and over a fade at its foot where it is, its name and an arrow; the line every region shares („Welcher Park an welchem Tag") stands once on the row's heading.
 - `usePlanSummary` _hook_: This browser's plan, summed up: nothing on the server and during hydration, where neither the plan nor the clock is known.
 - `planSummary` _function_: The plan the band reports: the next planned day from today on (the active one where it is among them), and how many such days there are. A plan whose days are all over reports nothing. `now` is the browser's clock, never the server's.
 - `formatPlanDay` _function_: A planned day as `YYYY-MM-DD`, written short in the reader's language: „Sa., 21. Nov.".

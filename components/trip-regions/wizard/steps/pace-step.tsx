@@ -23,11 +23,12 @@ import { usePlanContext } from '../../planner/plan-context';
 import { PLAN_FOCUS, PlanStepper } from '../../planner/plan-controls';
 import { useBaseName } from '../../planner/plan-place-words';
 import { useStatePlan, useTripCalendar } from '../../planner/use-trip-plan';
+import { QUIET_CELL } from '../plan-ribbon';
 import type { WizardStepProps } from '../wizard-step';
 
 /**
  * Tempo: how full the trip is, as three cards with a week drawn as a pattern (`pacePattern`), park
- * days solid and rest days pale, the own limit's pattern following its stepper; then the switches
+ * days solid and rest days outlined, the own limit's pattern following its stepper; then the switches
  * for second days and a park on the travel days, whose cards name a fact of that day from the
  * calendar (`travelDayFact`). The region's planner guide is linked under the cards, the one place that
  * explains the options at length.
@@ -137,15 +138,15 @@ export function PaceStep({ questions, askId }: WizardStepProps) {
   );
 }
 
-/** A week of the trip as squares: a park day solid, a rest day pale. A picture; the card says it. */
+/**
+ * A week of the trip as squares: a park day solid, a rest day outlined as the ribbon draws a day
+ * without a park (`QUIET_CELL`), so it shows on the dark card too. A picture; the card says it.
+ */
 function PacePattern({ streak }: { streak: number | null }) {
   return (
     <span aria-hidden="true" className="flex gap-0.5 pt-1">
       {pacePattern(streak).map((park, i) => (
-        <span
-          key={i}
-          className={cn('size-2.5 rounded-[3px]', park ? 'bg-primary' : 'bg-primary/15')}
-        />
+        <span key={i} className={cn('size-2.5 rounded-[3px]', park ? 'bg-primary' : QUIET_CELL)} />
       ))}
     </span>
   );

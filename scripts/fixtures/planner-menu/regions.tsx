@@ -21,7 +21,7 @@ type FixtureLocale = keyof typeof MESSAGES;
 
 /** One fixture region: its slug, its name and kicker per fixture locale, its photo and figures. */
 const REGIONS: Array<
-  Omit<PlannerMenuRegion, 'name' | 'area' | 'calendarLabel'> & {
+  Omit<PlannerMenuRegion, 'name' | 'area'> & {
     name: Record<FixtureLocale, string>;
     area: Record<FixtureLocale, string>;
   }
@@ -91,7 +91,6 @@ const regions: PlannerMenuRegion[] = REGIONS.slice(0, count).map((region) => ({
   ...region,
   name: region.name[locale],
   area: region.area[locale],
-  calendarLabel: region.name[locale],
 }));
 
 createRoot(document.getElementById('root') as HTMLElement).render(
@@ -104,7 +103,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
       ))}
     </div>
     <header className="@container relative h-12 border-b">
-      <MenuBand id="planner-fixture" open>
+      <MenuBand id="planner-fixture" menu="planner" open>
         <PlannerMenuPanel
           dayPlannerHref={locale === 'de' ? '/tagesplaner' : '/trip-planner'}
           regions={regions}

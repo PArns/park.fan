@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
   TICKETS_QUERY_KEY,
+  TICKET_ORDER_HINT,
   TICKET_PUBLISH_DELAY,
   formatTicketDays,
   formatTicketLinks,
@@ -160,7 +161,7 @@ export default function TicketsPage() {
           title={`Tickets für ${tripRegionTitle(region)}`}
           hint={
             catalog.data
-              ? `${products.filter((product) => product.active).length} im Katalog, ${products.filter((product) => !product.active).length} archiviert. ${TICKET_PUBLISH_DELAY}`
+              ? `${products.filter((product) => product.active).length} im Katalog, ${products.filter((product) => !product.active).length} archiviert. ${TICKET_ORDER_HINT} ${TICKET_PUBLISH_DELAY}`
               : 'Was der Reiseplaner über Tickets weiß: Produkte, Regeln und wo man sie kauft.'
           }
           action={

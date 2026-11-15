@@ -30,13 +30,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-calendar.tsx`](../../components/trip-regions/hub/hub-calendar.tsx)
 
-- `HubCalendar` _component_: The calendar chapter's body: which park on which day, a week at a time.
+- `HubCalendar` _component_: The calendar chapter's body: which day of the week is each park's quietest, a week at a time.
 - Types: `HubCalendarProps`
 
 ### [`hub/hub-cell-styles.ts`](../../components/trip-regions/hub/hub-cell-styles.ts)
 
 - `HUB_CELL` _const_: The legend's small tile: a fixed box with the minutes centred, in the tile's own tint.
-- `HUB_CELL_BEST` _const_: The resort's shortest line that day: one ring inside the tile, so the grid never shifts.
+- `HUB_CELL_BEST` _const_: A park's quietest day of the week, beside the star: a ring in the text colour inside the tile, so it stands out on every crowd tint in both themes and the grid never shifts.
 - `EARLY_CLOSE_CORNER` _const_: The early-close mark: a small folded corner, top right, where a ticketed evening sends the day guests out early; the tile's closing time is bold below it. A shape, not an icon, so it never reads as a season's.
 - `HUB_WEEK_CELL` _const_: Which page of the calendar a column (`HUB_WEEK_CELL`) or a day of the phone's list (`HUB_WEEK_ITEM`) is on, shown by the `data-week` of the `group/week` around it.
 - `HUB_WEEK_ITEM` _const_: `HUB_WEEK_CELL` for a day of the phone's list.
@@ -73,7 +73,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
-- `HubLegend` _component_: How to read the calendar, at the top of its chapter. In view: the wait, the ring, the star and one line that says what the colour means (a day against the park's own normal day, the crowd level and nothing else).
+- `HubLegend` _component_: How to read the calendar, at the top of its chapter.
 
 ### [`hub/hub-month-index.tsx`](../../components/trip-regions/hub/hub-month-index.tsx)
 
@@ -90,7 +90,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 01 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps, the closing band): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
-- `HubPlanFold` _component_: A chapter's body that folds into one line while the hub shows a plan (the calendar, the resorts): open on the landing page, which is the served HTML, so every link and day stays in it.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
@@ -126,6 +125,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-controls.tsx`](../../components/trip-regions/planner/plan-controls.tsx)
 
+- `PlanSelect` _component_: A native select in `PLAN_FIELD`'s style with a chevron of its own, inside the field: the browser's marker sat against the right border and kept the light theme's look.
 - `PlanSheetClose` _component_: The × in the head of one of the planner's sheets, a 44 px target.
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
 - `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
@@ -150,7 +150,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-day-bits.tsx`](../../components/trip-regions/planner/plan-day-bits.tsx)
 
 - `PlanDayMarker` _component_: The one marker a day wears in the overview: an icon with words, never colour alone. `compact` keeps the icon and moves the words into a tooltip, for the Month view's cells, whose own label carries them.
-- `ClimateChips` _component_: The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by the day sheet and the When mode's cards.
+- `ClimateChips` _component_: The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by the day sheet, the When mode's cards, the Parks step and the trip head's weather band.
+- `HeatFigure` _component_: A hot day's high: „Ø 32°“ for a climate normal, „36°“ for a forecast, in the reader's unit.
 - `useDayParks` _hook_: The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure").
 - `useDayMarkerText` _hook_: The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's early slot or its extended evening; `null` for none. For a label that has to carry them where the marker is only an icon.
 - `useEveningName` _hook_: The name of a day's evening: the second park's (short) name or the venue's; `null` without an evening or for a venue the region does not list.
@@ -170,6 +171,12 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-day-sheet.tsx`](../../components/trip-regions/planner/plan-day-sheet.tsx)
 
 - `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.
+
+### [`planner/plan-delete.tsx`](../../components/trip-regions/planner/plan-delete.tsx)
+
+- `PlanDelete` _component_: „Reise löschen“, where a visitor manages the trip: the hub's head (after the line that says the plan is saved, `children`) and the result, under the keep actions.
+- `PlanDeleteStatus` _component_: The line after „Löschen“: „Deine Reise vom 3.–9. Dez. ist gelöscht.“ and „Rückgängig“, for a few seconds (`UNDO_MS`), then the trip's copy goes and nothing of it is kept.
+- `useTripDeleted` _hook_: Whether a delete of this region's trip is waiting out its undo.
 
 ### [`planner/plan-edit-status.tsx`](../../components/trip-regions/planner/plan-edit-status.tsx)
 
@@ -216,6 +223,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
 - `useAreaName` _hook_: A hotel area's name: "Universal-Hotels" in German, where the API says "Universal Orlando hotels".
+- `useVenueName` _hook_: An evening venue's name: "Strand am Polynesian Village Resort" in German.
 - `useBaseName` _hook_: A base's name: "Tokio" in German.
 - `useGatewayName` _hook_: A gateway's short name: "Haneda", "Charles de Gaulle".
 
@@ -322,11 +330,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
-- `TripRegionHomeStop` _component_: The homepage's stop for a trip region's hub: what it is and its link, in the region's own words (`tripRegions.<slug>.homeStory`), beside the region's parks by resort, from the open `/trip-regions/:region` (a day in the Data Cache).
+- `TripRegionsHomeStop` _component_: The homepage's stop for the trip regions, right under the news: the planner band's tiles, each its hub's planner, with its scene once the stop nears the screen (`RegionSceneInView`, so the first load pays nothing for it), and under each …
 
 ### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
 
 - `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
+- `RIBBON_GRID` _const_: The ribbon's day grid, a column per trip day; the trip head's weather ruler keeps its geometry.
+- `QUIET_CELL` _const_: A day without a park: outlined in the muted ink, quieter than a park day's solid colour but seen on the dark ground too, with the mark the Month view gives it.
 
 ### [`wizard/steps/area-map-tiles.tsx`](../../components/trip-regions/wizard/steps/area-map-tiles.tsx)
 
@@ -363,7 +373,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/pace-step.tsx`](../../components/trip-regions/wizard/steps/pace-step.tsx)
 
-- `PaceStep` _component_: Tempo: how full the trip is, as three cards with a week drawn as a pattern (`pacePattern`), park days solid and rest days pale, the own limit's pattern following its stepper; then the switches for second days and a park on the travel days, …
+- `PaceStep` _component_: Tempo: how full the trip is, as three cards with a week drawn as a pattern (`pacePattern`), park days solid and rest days outlined, the own limit's pattern following its stepper; then the switches for second days and a park on the travel …
 
 ### [`wizard/steps/parks-step.tsx`](../../components/trip-regions/wizard/steps/parks-step.tsx)
 
@@ -393,7 +403,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/wizard-guide-band.tsx`](../../components/trip-regions/wizard/wizard-guide-band.tsx)
 
-- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width; on the left the line over the question (region, dates or step) and …
+- `WizardGuideBand` _component_: The assistant's band: the region's Parky scene on the right, always at its own 2 : 1 and fading into the card's ground on its left, so Parky is never cropped at any width, and stopping short of the close button, which stands on the card's …
 
 ### [`wizard/wizard-step.tsx`](../../components/trip-regions/wizard/wizard-step.tsx)
 

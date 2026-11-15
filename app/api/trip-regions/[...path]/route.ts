@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import { getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
-import { tripRegionCacheTag } from '@/lib/trip-regions/api';
+import { tripRegionApiUrl, tripRegionCacheTag } from '@/lib/trip-regions/api';
 import { tripRegionRelayTarget } from '@/lib/trip-regions/relay';
 import { isSlugPath } from '@/lib/utils/servable-route';
 
@@ -35,7 +35,7 @@ export async function GET(
   const cached =
     target.route !== 'plan' && target.route !== 'plan/ideas' && target.route !== 'when';
   try {
-    const response = await fetch(`${getApiBaseUrl()}${target.apiPath}`, {
+    const response = await fetch(tripRegionApiUrl(target.apiPath), {
       ...(cached
         ? {
             next: {

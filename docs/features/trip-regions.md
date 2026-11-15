@@ -13,7 +13,7 @@ the same pages from the same code.
 | Part     | Where                                                           | What                                                                                                                                                                                   |
 | -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, the FAQ's parks and questions), hotels, ticket step, storm season |
-| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`, `homeStory`                                                                                                               |
+| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`                                                                                                                            |
 | Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the region's card in the header band and of its planner tile on a park's pages, built on `HolidayParky` (`holiday-parky.tsx`)                                     |
 | API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                         |
 
@@ -69,6 +69,14 @@ that `test:trip-regions` checks a segment never equals a route folder or the bes
 browser asks through the relay, `/api/trip-regions/<slug>/…` (`tripRegionRelayUrl`), which accepts
 the registry's slugs. Query keys and the planner's stored choices carry the region
 (`parkfan_<slug>_view`, `parkfan_<slug>_tickets_asked`, so Orlando's browsers keep theirs).
+
+Every server read of `/v1/trip-regions/…`, the relay's included, carries this deploy's commit as
+`v` (`tripRegionApiUrl`, the first 12 characters of `VERCEL_GIT_COMMIT_SHA`, `dev` elsewhere).
+Cloudflare keeps the region route a day and two hours stale, the API cannot purge it, and a deploy
+here purges only `park.fan`'s cache, so without `v` a deploy that needs a field the API just added
+could read the old copy for 26 hours. The API ships
+first and takes `v` on every trip-region route without reading it, so each deploy asks one fresh
+edge copy per URL; the Data Cache's tags and windows stay as they were.
 
 The planner band's park count and its longest trip are the API's: `GET /v1/trip-regions` (the
 list of regions, a day in the Data Cache under `trip-regions`; `parkCount`, `maxTripDays`), else
@@ -130,9 +138,9 @@ and a region with a typhoon season instead of hurricanes says so on its best-tim
 
 ## Ways in
 
-All from the registry: the header's planner band and its phone sheet (a crowd calendar link per
-region), the More menu (a wide tile per region), the footer's „Reiseplaner" (the first live
-region), the homepage stop (one per live region), `TripPlannerTile` on a park's page and crowd
+All from the registry: the header's planner band and its phone sheet (a row per region under
+„Planen"), the footer's „Reiseplaner" (the first live region), the homepage's region stop (a tile per live
+region), `TripPlannerTile` on a park's page and crowd
 calendar and `TripPlannerBand` under a post, on a city or country listing and on `/search` (the
 regions whose `parks[]` hold the page's parks), the search palette and `/search`
 (`matchTripRegion` over every live region), the OG cards (`<locale>/<slug>`,

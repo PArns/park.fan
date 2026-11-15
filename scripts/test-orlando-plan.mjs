@@ -146,6 +146,7 @@ import {
 } from '../lib/trip-regions/plan-fetch.ts';
 import {
   adoptSuggestions,
+  compareTicketOrder,
   draftTicket,
   entryMarket,
   linkMarket,
@@ -154,18 +155,21 @@ import {
   hopperGains,
   hopperHighlights,
   hopperResorts,
-  isVisitorStore,
   isEveryDayTicket,
   longStayTickets,
   needsConnectedHop,
+  officialTicketLink,
   orderTicketLinks,
+  orderTicketPackages,
+  orderTicketPicks,
   ownedUse,
+  primaryTicketLink,
+  ticketFacts,
   ticketLinkAttributes,
   ticketLinkGroups,
   ticketLinksOf,
   ticketStoreName,
   ticketWindowDays,
-  visitorCountry,
   visitorMarket,
   setTickets,
   ticketCatalog,
@@ -210,7 +214,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
 {
   const s = readPlanQuery(
     q(
-      'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
+      'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&weather=avoid&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
     ),
     keys
   );
@@ -224,6 +228,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       s.area,
       s.blocks,
       s.fireworks,
+      s.weather,
       s.rest,
       s.hop,
       s.split,
@@ -240,6 +245,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       'disney',
       false,
       'want',
+      'avoid',
       'max:3',
       true,
       'fixed',
@@ -249,7 +255,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'and written back in the API order, readable',
     writePlanQuery(s),
-    'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
+    'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&weather=avoid&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
   );
   test('the untouched state writes nothing', writePlanQuery(DEFAULT_PLAN_STATE), '');
   test(
@@ -941,7 +947,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'a block ends at the day guests’ close, the party hatched after it',
     [span.blocks, span.evening],
     [
-      [{ slug: 'magic-kingdom-park', startMin: 540, endMin: 1080 }],
+      [{ slug: 'magic-kingdom-park', startMin: 540, endMin: 1080, openMin: 540, closeMin: 1080 }],
       { kind: 'ticketed_event', startMin: 1140, endMin: 1440 },
     ]
   );
@@ -1919,6 +1925,21 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [true, true, false, false]
   );
   test(
+    'a ticket’s facts from the catalog: days in its window, every day, the hopping included',
+    [
+      ticketFacts(CATALOG.get('wdw-uk-14-day-magic'), null),
+      ticketFacts(CATALOG.get('uor-uk-three-park-adventure'), null),
+      ticketFacts(CATALOG.get('wdw-date-based'), 4),
+      ticketFacts(CATALOG.get('wdw-annual-pass'), null),
+    ],
+    [
+      [{ kind: 'daysIn', days: 14, window: 18 }, { kind: 'hopping' }],
+      [{ kind: 'everyDay', window: 14 }, { kind: 'hopping' }],
+      [{ kind: 'daysIn', days: 4, window: 7 }],
+      [{ kind: 'hopping' }],
+    ]
+  );
+  test(
     'the UK Universal ticket is the one on sale at its start, both in the overlap week',
     [
       rollingFortnightAt(STEP, CATALOG, '2027-02-07'),
@@ -2324,28 +2345,19 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       sponsored: false,
     },
   ];
-  const order = (locale, market) =>
-    orderTicketLinks({ links }, { locale, market }, 'Disney').map((l) => l.seller);
-  test(
-    'links keep the admin’s order unless one is for the visitor’s locale or market',
-    [order('fr', 'intl'), order('de', 'intl'), order('en', 'uk'), order('nl', 'uk')],
-    [
-      ['Cheap Seller', 'Attraction Tickets', 'Fan Shop DE', 'Walt Disney World'],
-      ['Fan Shop DE', 'Cheap Seller', 'Attraction Tickets', 'Walt Disney World'],
-      ['Attraction Tickets', 'Cheap Seller', 'Fan Shop DE', 'Walt Disney World'],
-      ['Attraction Tickets', 'Cheap Seller', 'Fan Shop DE', 'Walt Disney World'],
-    ]
-  );
+  const order = orderTicketLinks({ links }, 'Disney').map((l) => l.seller);
+  test('a sponsored link comes first, the rest keep the admin’s order', order, [
+    'Attraction Tickets',
+    'Cheap Seller',
+    'Fan Shop DE',
+    'Walt Disney World',
+  ]);
   test(
     'the official link is never moved to the front, and an older answer’s shopUrl stands alone',
     [
-      order('it', null).indexOf('Walt Disney World'),
-      orderTicketLinks(
-        { shopUrl: 'https://shop.example/' },
-        { locale: 'en', market: null },
-        'Disney'
-      ),
-      orderTicketLinks({}, { locale: 'en', market: null }, 'Disney'),
+      order.indexOf('Walt Disney World'),
+      orderTicketLinks({ shopUrl: 'https://shop.example/' }, 'Disney'),
+      orderTicketLinks({}, 'Disney'),
     ],
     [3, [{ seller: 'Disney', url: 'https://shop.example/', official: true, sponsored: false }], []]
   );
@@ -2358,8 +2370,9 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       visitorMarket(['de-DE']),
       visitorMarket(['de']),
       visitorMarket([]),
+      visitorMarket(['zh-Hant-TW']),
     ],
-    ['uk', 'uk', 'us', 'intl', null, null]
+    ['uk', 'uk', 'us', 'intl', null, null, 'intl']
   );
   const at = (country, currency, locale) => ({
     seller: `AT ${country}`,
@@ -2375,26 +2388,10 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     at('DE', 'EUR', 'de'),
     { seller: 'Walt Disney World', url: 'https://wdw.example/', official: true, sponsored: false },
   ];
-  const storeOrder = (locale, languages) =>
-    orderTicketLinks(
-      { links: stores },
-      { locale, market: visitorMarket(languages), country: visitorCountry(languages) },
-      'Disney'
-    ).map((l) => l.seller);
   test(
-    'every store is listed, the visitor’s own country first, then their language’s',
-    [
-      storeOrder('en', ['en-IE']),
-      storeOrder('en', ['en']),
-      storeOrder('de', ['de-AT']),
-      storeOrder('de', ['en-IE']),
-    ],
-    [
-      ['AT IE', 'AT GB', 'AT NL', 'AT DE', 'Walt Disney World'],
-      ['AT GB', 'AT IE', 'AT NL', 'AT DE', 'Walt Disney World'],
-      ['AT DE', 'AT GB', 'AT IE', 'AT NL', 'Walt Disney World'],
-      ['AT IE', 'AT DE', 'AT GB', 'AT NL', 'Walt Disney World'],
-    ]
+    'every store is listed in the admin’s order, whatever the visitor’s country',
+    orderTicketLinks({ links: stores }, 'Disney').map((l) => l.seller),
+    ['AT GB', 'AT IE', 'AT NL', 'AT DE', 'Walt Disney World']
   );
   const groupsOf = (links) =>
     ticketLinkGroups(links).map((g) => [
@@ -2425,24 +2422,61 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       [],
     ]
   );
+  const sponsoredDe = { ...attraction('DE'), seller: 'Partner Shop', sponsored: true };
+  const seller = (link) => link && `${link.seller}${link.store ? ` ${link.store.country}` : ''}`;
   test(
-    'the visitor’s own store is the one of their country; an older answer has only its shop',
+    'the recommendation buys through a sponsored seller first, else the first that is not the shop',
     [
-      isVisitorStore(attraction('DE'), { country: 'DE' }),
-      isVisitorStore(attraction('DE'), { country: null }),
-      isVisitorStore(official, { country: 'US' }),
+      seller(primaryTicketLink([attraction('NL'), official, sponsoredDe])),
+      seller(primaryTicketLink([official, attraction('DE'), attraction('NL')])),
+      seller(primaryTicketLink([attraction('NL'), { ...attraction('DE'), sponsored: true }])),
+      seller(primaryTicketLink([official])),
+      primaryTicketLink([]),
+      seller(officialTicketLink([attraction('DE'), official])),
+      officialTicketLink([attraction('DE')]),
+    ],
+    [
+      'Partner Shop DE',
+      'Attraction Tickets DE',
+      'Attraction Tickets DE',
+      'Walt Disney World',
+      null,
+      'Walt Disney World',
+      null,
+    ]
+  );
+  const catalog = ticketCatalog([{ id: 'wdw' }, { id: 'uor' }, { id: 'uk-14' }]);
+  const pick = (product, sponsored = false) => ({ product, buy: { sponsored } });
+  const picked = (picks) => picks.map((p) => `${p.product}${p.buy.sponsored ? '*' : ''}`);
+  test(
+    'one ticket order for links, tickets and packages: sponsored first, then the admin’s',
+    [
+      compareTicketOrder({ sponsored: false, place: 0 }, { sponsored: true, place: 5 }) > 0,
+      compareTicketOrder({ sponsored: false, place: 1 }, { sponsored: false, place: 2 }) < 0,
+      picked(orderTicketPicks([pick('uk-14'), pick('uor'), pick('wdw')], catalog)),
+      picked(orderTicketPicks([pick('wdw'), pick('uor', true), pick('gone')], catalog)),
+      orderTicketPackages([[pick('uor')], [pick('uk-14')]], (p) => p, catalog).map(picked),
+      orderTicketPackages([[pick('wdw')], [pick('uk-14', true)]], (p) => p, catalog).map(picked),
+      orderTicketPackages([[pick('wdw')], [pick('wdw')], []], (p) => p, catalog).length,
+    ],
+    [
+      true,
+      true,
+      ['wdw', 'uor', 'uk-14'],
+      ['uor*', 'wdw', 'gone'],
+      [['uor'], ['uk-14']],
+      [['uk-14*'], ['wdw']],
+      3,
+    ]
+  );
+  test(
+    'an older answer has only its shop',
+    [
       ticketLinksOf({ shopUrl: 'https://wdw.example/' }, 'Disney'),
       ticketLinksOf({}, 'Disney'),
       ticketLinksOf({ links: stores, shopUrl: 'https://wdw.example/' }, 'Disney').length,
     ],
-    [
-      true,
-      false,
-      false,
-      [{ seller: 'Disney', url: 'https://wdw.example/', official: true, sponsored: false }],
-      [],
-      5,
-    ]
+    [[{ seller: 'Disney', url: 'https://wdw.example/', official: true, sponsored: false }], [], 5]
   );
   test(
     'a store is named by its country and currency in the visitor’s language',
@@ -2450,13 +2484,11 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       ticketStoreName({ country: 'GB', currency: 'GBP' }, 'de'),
       ticketStoreName({ country: 'IE', currency: 'EUR' }, 'de'),
       ticketStoreName({ country: 'US', currency: 'USD' }, 'de'),
-      visitorCountry(['zh-Hant-TW']),
     ],
     [
       { country: 'UK', currency: '£' },
       { country: 'Irland', currency: '€' },
       { country: 'USA', currency: '$' },
-      'TW',
     ]
   );
   test(

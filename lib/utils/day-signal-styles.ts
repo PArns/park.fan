@@ -28,6 +28,11 @@ export const STORM_SIGNAL_CLASS: Record<StormSignal, string> = {
   stormPeak: 'bg-signal-storm',
 };
 
+/** Extreme heat as a chip or a pill: its own tint and ink, never a crowd colour. */
+export const HEAT_CHIP_CLASS = 'bg-signal-heat/12 text-signal-heat';
+/** A storm code as a chip: the season's tint and ink. */
+export const STORM_CHIP_CLASS = 'bg-signal-storm/12 text-signal-storm';
+
 /**
  * The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are
  * not among them: only the calendar carries those.

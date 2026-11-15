@@ -13,6 +13,7 @@ import {
 import { useTranslations } from 'next-intl';
 import { ArrowRight, Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { SCROLL_FADE_Y } from '@/lib/utils/scroll-fade';
 import { daysBetween, formatParkDayRange } from '@/lib/utils/park-day';
 import { Dialog, DialogContent, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
@@ -265,7 +266,10 @@ export function TripWizard({
             {/* The only row that scrolls; `min-h-0` lets it shrink so `overflow-y-auto` works. */}
             <div
               ref={bodyRef}
-              className="min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6"
+              className={cn(
+                'min-h-0 flex-1 overflow-y-auto overscroll-contain px-4 py-4 sm:px-6',
+                SCROLL_FADE_Y
+              )}
             >
               <div
                 key={screen}

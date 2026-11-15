@@ -1,8 +1,8 @@
 'use client';
 
-import { useId } from 'react';
+import { Fragment, useId, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { Pencil } from 'lucide-react';
+import { Pencil, ThermometerSun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { tripPlannerUi } from '@/lib/trip-regions/planner-ui';
 import { usePlanContext } from '../planner/plan-context';
@@ -13,11 +13,12 @@ import { useWizardSteps } from './trip-wizard';
  * "Your answers" over the result: a chip per step of the assistant, by the rail's own list and
  * words (`useWizardSteps`), so a region shows the steps it asks and a merged step none of its own.
  * A press opens the assistant on that step (`tripPlannerUi.openStep`), counted as
- * `trip_wizard_step` with `via: answers`.
+ * `trip_wizard_step` with `via: answers`. With „Extremes Wetter vermeiden“ on, a pill of its own
+ * after Parks opens the Parks step, where the switch is.
  */
 export function WizardAnswers() {
   const t = useTranslations('tripPlanner');
-  const { live } = usePlanContext();
+  const { live, state } = usePlanContext();
   const steps = useWizardSteps();
   const id = useId();
   return (
@@ -29,25 +30,64 @@ export function WizardAnswers() {
         {steps.map(({ key }) => {
           const label = t(`wizard.steps.${key}`);
           return (
-            <button
-              key={key}
-              type="button"
-              disabled={!live}
-              onClick={() => tripPlannerUi.openStep(key)}
-              aria-label={t('result.answers.edit', { step: label })}
-              className={cn(
-                PLAN_PILL,
-                PLAN_PILL_IDLE,
-                'inline-flex items-center gap-1.5 disabled:opacity-40',
-                PLAN_FOCUS
+            <Fragment key={key}>
+              <AnswerPill
+                label={label}
+                icon={
+                  <Pencil className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
+                }
+                disabled={!live}
+                onClick={() => tripPlannerUi.openStep(key)}
+              />
+              {key === 'parks' && state.weather === 'avoid' && (
+                <AnswerPill
+                  label={t('wizard.parks.weather.label')}
+                  icon={
+                    <ThermometerSun
+                      className="text-signal-heat size-3.5 shrink-0"
+                      aria-hidden="true"
+                    />
+                  }
+                  disabled={!live}
+                  onClick={() => tripPlannerUi.openStep('parks')}
+                />
               )}
-            >
-              <Pencil className="text-muted-foreground size-3.5 shrink-0" aria-hidden="true" />
-              {label}
-            </button>
+            </Fragment>
           );
         })}
       </div>
     </div>
+  );
+}
+
+/** One answer as a pill that opens its step: „Antwort ändern“ in its accessible name. */
+function AnswerPill({
+  label,
+  icon,
+  disabled,
+  onClick,
+}: {
+  label: string;
+  icon: ReactNode;
+  disabled: boolean;
+  onClick: () => void;
+}) {
+  const t = useTranslations('tripPlanner');
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={onClick}
+      aria-label={t('result.answers.edit', { step: label })}
+      className={cn(
+        PLAN_PILL,
+        PLAN_PILL_IDLE,
+        'inline-flex items-center gap-1.5 disabled:opacity-40',
+        PLAN_FOCUS
+      )}
+    >
+      {icon}
+      {label}
+    </button>
   );
 }

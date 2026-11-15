@@ -71,6 +71,17 @@ nicht über die Bäume` drops the infinitive after the modal, as speech does, an
   (`Saison 2026`, `23. Mai 2026`) is fine; a live or counted one (`214 Öffnungstage`,
   `Ø 34 Min.`, `82 Attraktionen`, `1,4 Millionen Gäste`) belongs in the paragraph that carries its
   source and date. The body's twin of this rule is the wait time never typed into a post (§5.4).
+- **A heading and the line under it end without a full stop**, in all six languages. That covers
+  every title (page, chapter, card, dialog, sheet, a step of the trip assistant, the metadata
+  title) and the subtitle, lead, tagline, kicker or one-line card subtitle directly under one:
+  `Ein Kalender für alle 16 Parks rund um Orlando und ein Planer für deine Reisetage`. A question
+  keeps its `?`, an exclamation its `!`, and `…` or an abbreviation's dot (`Min.`) stays. A line of
+  two sentences becomes one where that reads naturally in all six, or keeps both stops; never
+  `Satz eins. Satz zwei` with only the last one cut. Body paragraphs, FAQ answers, meta
+  descriptions, `alt` and captions, toasts, errors and notices, `aria-label`s, lists of sentences
+  and post bodies keep their punctuation. `check:prose` fails on a single sentence ending in `.`
+  under a `title`, `heading`, `headline`, `subtitle`, `subline`, `tagline`, `kicker`, `eyebrow` or
+  `lead` key in `messages/*.json`.
 - A section with two sentences under it is a paragraph; do not fragment a text into a heading
   every three sentences.
 - No title case in German: sentence case, always.

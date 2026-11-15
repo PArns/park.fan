@@ -104,6 +104,19 @@ so it needs 3 : 1 against what it sits on:
 | light                         | 5.76        | 4.14                | `oklch(0.54 0.25 295)` |
 | dark (page, card, muted tile) | 7.49        | 5.72                | `oklch(0.72 0.17 295)` |
 
+## Heat
+
+`--signal-heat` (`bg-signal-heat`, `text-signal-heat`) marks a park day whose high passes the
+plan's heat threshold (`extreme_heat`), as the Week view's pill, the day card's pill, the trip
+head's chip and the ruler cell. It is text as often as a graphic, so it holds 4.5 : 1 as ink on its
+own 12 % tint. Its nearest neighbours are the `extreme` crowd tier and the storm violet, and it
+keeps the storm season's distance from both.
+
+| `--signal-heat`                | on the page   | on its 12 % tint | nearest neighbours (OKLab)                 | value                  |
+| ------------------------------ | ------------- | ---------------- | ------------------------------------------ | ---------------------- |
+| light                          | 6.19 on white | 4.98             | `extreme` 0.143, closed 0.161, storm 0.220 | `oklch(0.52 0.22 350)` |
+| dark (card `oklch(0.205 0 0)`) | 7.16          | 5.96             | `extreme` 0.127, storm 0.158               | `oklch(0.74 0.17 350)` |
+
 ## Badges
 
 A badge is `Badge` (`components/ui/badge.tsx`) plus **one** class from `@layer utilities` that
@@ -135,6 +148,12 @@ strings `TILE_GLASS` (the header cards and frosted chapter bands), `HEAVY_GLASS`
 so is the language banner that hangs under the header (`components/layout/language-banner.tsx`).
 Two glass utility classes are left in `app/globals.css`: `.glass-light` (`planner-day-grid.tsx`)
 and `.glass-card` (the pill breadcrumb in `breadcrumb-nav.tsx`).
+
+A secondary button on a photograph is `Button` with `variant="glass"` (`buttonLinkProps` takes it
+too): `HEAVY_GLASS` with a light rim, so it lifts off the photo where `outline`'s opaque or hairline
+box reads flat. The hub head's „Zum Kalender“ and „Neue Reise planen“ use it. On a plain page
+`outline` stays, since the light rim disappears against the background; a button on a title card's
+glass is `GLASS_BUTTON`.
 
 Two constraints hold for every glass surface: a transform or `backdrop-filter` on an ancestor makes
 it a backdrop root and flattens the blur (see [cards](cards-and-heroes.md#pointer-depth) and the

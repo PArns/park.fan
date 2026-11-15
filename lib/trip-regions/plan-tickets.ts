@@ -211,6 +211,27 @@ export function isEveryDayTicket(product: TicketProduct, days: number | null): b
   return window !== null && (length === null || length === window);
 }
 
+/**
+ * What a ticket of this product holds, from the catalog alone: its days within its window ("14
+ * days in 18"), or every day of the window ("14 days in a row"), and the hopping where it is
+ * included. A pass and a product without either have no days to say.
+ */
+export type TicketFact =
+  | { kind: 'daysIn'; days: number; window: number }
+  | { kind: 'everyDay'; window: number }
+  | { kind: 'hopping' };
+
+/** {@link TicketFact}s of a product for a ticket of `days`, in the order a line says them. */
+export function ticketFacts(product: TicketProduct, days: number | null): TicketFact[] {
+  const facts: TicketFact[] = [];
+  const window = windowLength(product, days);
+  const length = ticketLength(product, days);
+  if (window !== null && isEveryDayTicket(product, days)) facts.push({ kind: 'everyDay', window });
+  else if (window !== null && length !== null) facts.push({ kind: 'daysIn', days: length, window });
+  if (product.hopping === 'included') facts.push({ kind: 'hopping' });
+  return facts;
+}
+
 /** Whether the product is sold for a ticket starting on `date`. */
 export function onSaleAt(product: TicketProduct, date: string): boolean {
   if (!product.onSale || product.onSale.length === 0) return true;
@@ -806,24 +827,16 @@ export function plannedVisits(days: readonly Pick<PlanDay, 'parks'>[], slug: str
 // ── Where to buy ──────────────────────────────────────────────────────────────
 
 /**
- * The visitor's country from the browser's languages: the region of the first one, upper case
- * (`en-IE` → `IE`), `null` without one.
+ * The visitor's market from the browser's languages: `us` or `uk` where the first one's region
+ * (`en-IE` → `IE`) names the US, Great Britain or Ireland, `intl` for any other region, `null`
+ * without one. Only the link statistic reads it; nothing is hidden, moved or claimed.
  */
-export function visitorCountry(languages: readonly string[]): string | null {
+export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl' | null {
   const region = languages[0]
     ?.split('-')
     .slice(1)
-    .find((part) => /^[a-z]{2}$/i.test(part));
-  return region ? region.toUpperCase() : null;
-}
-
-/**
- * The visitor's market from the browser's languages: `us` or `uk` where the first one names the
- * US, Great Britain or Ireland, `intl` for any other region, `null` without one. Only the order of
- * the purchase links follows it; nothing is hidden or claimed.
- */
-export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl' | null {
-  const region = visitorCountry(languages);
+    .find((part) => /^[a-z]{2}$/i.test(part))
+    ?.toUpperCase();
   if (!region) return null;
   if (region === 'US') return 'us';
   return region === 'GB' || region === 'IE' ? 'uk' : 'intl';
@@ -833,7 +846,6 @@ export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl
 export interface TicketLinkVisitor {
   locale: string;
   market: string | null;
-  country?: string | null;
 }
 
 /**
@@ -850,34 +862,103 @@ export function ticketLinksOf(
     : [];
 }
 
-/** Whether a link goes to the seller's store for the visitor's own country. */
-export function isVisitorStore(
-  link: Pick<TicketLink, 'store'>,
-  visitor: Pick<TicketLinkVisitor, 'country'>
-): boolean {
-  return Boolean(visitor.country && link.store?.country === visitor.country);
+/** What the ticket order reads of a link, a ticket or a package: sponsored, and its place. */
+export interface TicketOrderKey {
+  sponsored: boolean;
+  /** Its place in the admin's order: a link's in its product's list, a product's in the catalog. */
+  place: number;
 }
 
 /**
- * A product's purchase links in the order a visitor sees them: the store of the visitor's own
- * country first, then those for their locale or market, the rest after, each group in the admin's
- * order, which is the display order. The official link keeps its place. Without `links` (an older
- * answer) the official `shopUrl` stands alone.
+ * The one order of the planner's shops, tickets and packages, as the owner sets it in the admin:
+ * sponsored first, then the admin's order. The visitor's country orders nothing, so the cheapest
+ * shop the owner puts on top stays there for everyone.
+ */
+export function compareTicketOrder(a: TicketOrderKey, b: TicketOrderKey): number {
+  return Number(b.sponsored) - Number(a.sponsored) || a.place - b.place;
+}
+
+function inTicketOrder<T>(items: readonly T[], keyOf: (item: T, index: number) => TicketOrderKey) {
+  return items
+    .map((item, index) => ({ item, key: keyOf(item, index) }))
+    .sort((a, b) => compareTicketOrder(a.key, b.key))
+    .map(({ item }) => item);
+}
+
+const linkOrder = (links: readonly TicketLink[]) =>
+  inTicketOrder(links, (link, place) => ({ sponsored: link.sponsored, place }));
+
+/**
+ * A product's purchase links in the order a visitor sees them ({@link compareTicketOrder}): the
+ * sponsored ones first, then the admin's order. Without `links` (an older answer) the official
+ * `shopUrl` stands alone.
  */
 export function orderTicketLinks(
   source: { links?: readonly TicketLink[]; shopUrl?: string },
-  visitor: TicketLinkVisitor,
   officialSeller: string
 ): TicketLink[] {
-  const links = ticketLinksOf(source, officialSeller);
-  const tier = (link: TicketLink) => {
-    if (isVisitorStore(link, visitor)) return 0;
-    const forVisitor =
-      Boolean(link.locales?.includes(visitor.locale)) ||
-      Boolean(visitor.market && link.markets?.includes(visitor.market));
-    return forVisitor ? 1 : 2;
+  return linkOrder(ticketLinksOf(source, officialSeller));
+}
+
+/**
+ * The link a recommendation buys through: the first in the ticket order that is not the
+ * operator's own shop, else the shop. `null` without links.
+ */
+export function primaryTicketLink(links: readonly TicketLink[]): TicketLink | null {
+  const ordered = linkOrder(links);
+  return ordered.find((link) => !link.official) ?? ordered[0] ?? null;
+}
+
+/** A ticket of a recommendation as the ticket order reads it: its product and its buy link. */
+export interface TicketPickOrder {
+  product: string;
+  buy: Pick<TicketLink, 'sponsored'> | null;
+}
+
+function pickKey(pick: TicketPickOrder, places: ReadonlyMap<string, number>): TicketOrderKey {
+  return {
+    sponsored: Boolean(pick.buy?.sponsored),
+    place: places.get(pick.product) ?? Number.MAX_SAFE_INTEGER,
   };
-  return [0, 1, 2].flatMap((rank) => links.filter((link) => tier(link) === rank));
+}
+
+const catalogPlaces = (catalog: TicketCatalog) =>
+  new Map([...catalog.keys()].map((id, place) => [id, place]));
+
+/**
+ * A package's tickets in the ticket order ({@link compareTicketOrder}): bought through a sponsored
+ * link first, then by the product's place in the catalog, which is the admin's order. Tickets of
+ * one product keep the order they came in.
+ */
+export function orderTicketPicks<T extends TicketPickOrder>(
+  picks: readonly T[],
+  catalog: TicketCatalog
+): T[] {
+  const places = catalogPlaces(catalog);
+  return inTicketOrder(picks, (pick) => pickKey(pick, places));
+}
+
+/**
+ * Packages in the ticket order by their first ticket in it; on a tie, or without tickets, they
+ * keep the order they came in, so the plan's own package stays first.
+ */
+export function orderTicketPackages<T>(
+  packages: readonly T[],
+  picksOf: (pkg: T) => readonly TicketPickOrder[],
+  catalog: TicketCatalog
+): T[] {
+  const places = catalogPlaces(catalog);
+  const none: TicketOrderKey = { sponsored: false, place: Number.MAX_SAFE_INTEGER };
+  return inTicketOrder(packages, (pkg) =>
+    picksOf(pkg)
+      .map((pick) => pickKey(pick, places))
+      .reduce((best, key) => (compareTicketOrder(key, best) < 0 ? key : best), none)
+  );
+}
+
+/** The operator's own shop among a product's links, `null` where it has none. */
+export function officialTicketLink(links: readonly TicketLink[]): TicketLink | null {
+  return links.find((link) => link.official) ?? null;
 }
 
 /** Purchase links as a ticket card lists them: one seller's country stores together. */
@@ -892,7 +973,7 @@ export interface TicketLinkGroup {
 /**
  * Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a
  * `store`, the official one aside) under its name where it has two or more, the group where its
- * first store stands; every other link alone. The visitor's own store stays first.
+ * first store stands; every other link alone, in the order given.
  */
 export function ticketLinkGroups(links: readonly TicketLink[]): TicketLinkGroup[] {
   const stores = new Map<string, number>();

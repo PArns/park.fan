@@ -1,6 +1,8 @@
+import { stormCodeOn, type StormCode } from './date-facts';
 import {
   isSpareDay,
   type PlanDay,
+  type PlanDayWeather,
   type PlanMeta,
   type PlanParkSummary,
   type PlanTotals,
@@ -77,6 +79,78 @@ export function climateChips(warnings: readonly string[]): ClimateChip[] {
   }
   if (warnings.includes('rainy_season')) chips.push('rainy_season');
   return chips;
+}
+
+/** Whether a park day passes the plan's heat threshold (`extreme_heat`): the one switch for every heat mark. */
+export function isHotDay(day: Pick<PlanDay, 'warnings'>): boolean {
+  return day.warnings.includes('extreme_heat');
+}
+
+/**
+ * A hot park day's high: the day's own, on a hop day the hotter park's. `null` on a day that is not
+ * hot, and where an older API sends no figure: the mark then goes without one.
+ */
+export function dayHeat(
+  day: Pick<PlanDay, 'warnings' | 'weather' | 'parks'>
+): PlanDayWeather | null {
+  if (!isHotDay(day)) return null;
+  if (day.weather) return day.weather;
+  let hottest: PlanDayWeather | null = null;
+  for (const { weather } of day.parks) {
+    if (weather && (!hottest || weather.tempMax > hottest.tempMax)) hottest = weather;
+  }
+  return hottest;
+}
+
+/** A trip's hot park days with figures of one basis (`null`: no figure), and the highest of them. */
+export interface TripHeatGroup {
+  basis: PlanDayWeather['basis'] | null;
+  count: number;
+  maxC: number | null;
+}
+
+/**
+ * The trip's hot park days grouped by the basis of their figure, the forecast first: one group
+ * as a rule, two only where the trip crosses the forecast's 16-day edge.
+ */
+export function tripHeat(plan: Pick<TripPlan, 'days'>): TripHeatGroup[] {
+  const groups = new Map<TripHeatGroup['basis'], TripHeatGroup>();
+  for (const day of plan.days) {
+    if (!isHotDay(day)) continue;
+    const weather = dayHeat(day);
+    const basis = weather?.basis ?? null;
+    const group = groups.get(basis) ?? { basis, count: 0, maxC: null };
+    group.count += 1;
+    if (weather && (group.maxC === null || weather.tempMax > group.maxC)) {
+      group.maxC = weather.tempMax;
+    }
+    groups.set(basis, group);
+  }
+  return (['forecast', 'climate_normal', null] as const).flatMap((basis) => {
+    const group = groups.get(basis);
+    return group ? [group] : [];
+  });
+}
+
+/**
+ * The storm season a trip lies in, by its strongest code (the peak before the season), with the
+ * first date of that code where it starts inside the trip, else the last where it ends inside it.
+ * `null` when no date of the trip is in the season.
+ */
+export function tripStorm(
+  dates: readonly string[],
+  weather: Parameters<typeof stormCodeOn>[1]
+): { code: StormCode; from: string | null; until: string | null } | null {
+  const codes = dates.map((date) => stormCodeOn(date, weather));
+  const code = codes.find((c) => c?.endsWith('_peak')) ?? codes.find((c) => c !== null) ?? null;
+  if (!code) return null;
+  const first = codes.indexOf(code);
+  const last = codes.lastIndexOf(code);
+  return {
+    code,
+    from: first > 0 ? dates[first] : null,
+    until: first === 0 && last < dates.length - 1 ? dates[last] : null,
+  };
 }
 
 /** Why an evening after the park is worth it, most telling first; the sheet says the first. */

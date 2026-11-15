@@ -2,7 +2,7 @@
  * Unit tests for the Orlando hub's pure logic (`lib/trip-regions/*`): the month window and its proxy
  * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
  * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries, the
- * calendar's weeks with their fragment, star and column heads, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
+ * calendar's weeks with their fragment and each park's quietest day, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
  *
  * Run: `pnpm test:orlando-hub`
  */
@@ -10,7 +10,6 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   closesEarly,
-  dayPick,
   eventLanes,
   formatWindow,
   hoursUnpublished,
@@ -25,7 +24,6 @@ import {
   quietestDay,
   quietSeasons,
   rankGroupParks,
-  regionGroups,
   regionResorts,
   resortMonthSummaries,
   shortGroupName,
@@ -513,42 +511,27 @@ const parkDay = (
   },
 });
 
-test("a park's star is its quietest day of the week, and only where one day is", () => {
+test("a park's star is its quietest day of the week, one for every park with an open day", () => {
   const a = '2026-11-14';
   const b = '2026-11-15';
   const c = '2026-11-16';
   assert.equal(quietestDay([parkDay(a, 40), parkDay(b, 30), parkDay(c, 45)], 'p'), b);
-  // Two days on one figure and one day's hours: no star.
-  assert.equal(quietestDay([parkDay(a, 30), parkDay(b, 30), parkDay(c, 45)], 'p'), null);
-  // The same figure, a longer day: that one.
+  // One rounded headliner wait: the lower printed figure.
+  assert.equal(quietestDay([parkDay(a, 30, { shown: 28 }), parkDay(b, 30, { shown: 26 })], 'p'), b);
+  // The same figure, a longer day: that one; the same day too: the earlier date.
   assert.equal(quietestDay([parkDay(a, 30, { close: '18:00' }), parkDay(b, 30)], 'p'), b);
+  assert.equal(quietestDay([parkDay(a, 30), parkDay(b, 30), parkDay(c, 45)], 'p'), a);
   // Never on a higher printed figure than another day's.
-  assert.equal(
-    quietestDay([parkDay(a, 30, { shown: 40 }), parkDay(b, 35, { shown: 35 })], 'p'),
-    null
-  );
-  // Last year's days, closed days and a lone open day are no week to compare.
-  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' }), parkDay(b, 30)], 'p'), null);
-  assert.equal(quietestDay([parkDay(a, 20, { status: 'CLOSED' }), parkDay(b, 30)], 'p'), null);
-  assert.equal(quietestDay([parkDay(a, 20)], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 30, { shown: 40 }), parkDay(b, 35, { shown: 35 })], 'p'), b);
+  // Never a last-year or a closed day; a lone open day is the week's quietest.
+  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' }), parkDay(b, 30)], 'p'), b);
+  assert.equal(quietestDay([parkDay(a, 20, { status: 'CLOSED' }), parkDay(b, 30)], 'p'), b);
+  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' })], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 20)], 'p'), a);
   assert.equal(quietestDay([parkDay(a, 20)], 'unknown-park'), null);
   // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
   assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');
   assert.equal(quietestDay(calendar.days.slice(7), 'magic-kingdom-park'), '2026-11-19');
-});
-
-test("a day's column names the region's shortest pick, or the chosen resort's", () => {
-  const day = calendar.days.find((d) => d.date === '2026-11-15');
-  assert.equal(dayPick(day, region)?.park.slug, 'universal-islands-of-adventure');
-  const wdw = regionGroups(region).find((g) => g.key === 'walt-disney-world');
-  assert.equal(dayPick(day, region, wdw)?.park.slug, 'disneys-animal-kingdom-theme-park');
-  const lastYear = {
-    ...day,
-    parks: Object.fromEntries(
-      Object.entries(day.parks).map(([slug, p]) => [slug, { ...p, basis: 'last_year' }])
-    ),
-  };
-  assert.equal(dayPick(lastYear, region), null);
 });
 
 test('a season most of the window runs in, or only expected, is drawn quietly', () => {

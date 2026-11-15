@@ -120,6 +120,8 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 - `holidaySignals` _function_: The signals a day's own holidays light, in the calendar cell's order. Neighbouring regions are not among them: only the calendar carries those.
 - `DAY_SIGNAL_CLASS` _const_: Segment colour per day signal, so the calendar cells, the day dialog and the legend agree.
 - `STORM_SIGNAL_CLASS` _const_: The storm season's segment, in its own violet (`--signal-storm`): dashed for the season, solid for the peak, so the peak reads stronger without a second colour.
+- `HEAT_CHIP_CLASS` _const_: Extreme heat as a chip or a pill: its own tint and ink, never a crowd colour.
+- `STORM_CHIP_CLASS` _const_: A storm code as a chip: the season's tint and ink.
 - Types: `DaySignal`, `StormSignal`
 
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
@@ -463,6 +465,11 @@ Route guards for the `/[locale]/...` tree.
 - `getScheduleMessage` _function_: The schedule line for a park card (opening soon, closing at, off season), drawn by `ParkCardScheduleFooter`.
 - `OFFSEASON_MIN_DAYS` _const_: How far off a closed park's next opening has to be before it is between seasons rather than shut for a few days.
 - Types: `ScheduleSummary`, `ParkOpening`, `ParkOpeningCountdownStrings`
+
+### [`scroll-fade.ts`](../../lib/utils/scroll-fade.ts)
+
+- `SCROLL_FADE_X` _const_: The far edge of a row that scrolls sideways, faded over its last 2rem, so a chip or tab cut by the edge reads as a row to swipe rather than as a fault. The `pr-8` under the fade lets the last item scroll clear of it.
+- `SCROLL_FADE_Y` _const_: The same at the foot of a pane that scrolls down: a row cut by its edge reads as more below.
 
 ### [`scroll-when-settled.ts`](../../lib/utils/scroll-when-settled.ts)
 

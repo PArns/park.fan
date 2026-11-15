@@ -36,10 +36,11 @@ import { FaqSection } from '@/components/home/faq-section';
 import { ParkyStop } from '@/components/home/parky-stop';
 import { FavoritesIntro } from '@/components/home/favorites-intro';
 import { HomeStop, StopLink } from '@/components/home/home-stop';
-import { TripRegionHomeStop } from '@/components/trip-regions/trip-region-home-stop';
-import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { TripRegionsHomeStop } from '@/components/trip-regions/trip-region-home-stop';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
+import { SectionMark } from '@/components/analytics/section-mark';
+import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 
 const LocationBanner = nextDynamic(
   () => import('@/components/common/location-banner').then((m) => ({ default: m.LocationBanner })),
@@ -207,10 +208,16 @@ export default async function HomePage({ params }: HomePageProps) {
         <LocationBanner />
 
         {/* What is new comes first: the hero already lists the parks near the visitor, and the
-          news is what changes from one visit to the next. */}
+          news is what changes from one visit to the next. The marks say how far down the page was
+          read (`section_seen`), one where each stop begins. */}
+        <SectionMark section="home_news" />
         <HomeReading locale={locale as Locale} />
 
         <ParkCompassSlot placement="news" />
+
+        {/* The trip regions right under the news: planning is what most visitors come for. */}
+        <SectionMark section="home_trips" />
+        <TripRegionsHomeStop locale={locale as Locale} />
 
         {/* The visitor's favourites, right under the news, for a visitor who has some only: for
           them it is what they came back for, and for anybody else an empty state about a feature
@@ -235,21 +242,19 @@ export default async function HomePage({ params }: HomePageProps) {
           <FavoritesSection heading="none" className={BORROWED_BAND} />
         </HomeStop>
 
+        <SectionMark section="home_tour" />
         <HomeTour locale={locale as Locale} />
 
         {/* The tour's last stop: what park.fan does not show on a page, Parky answers. */}
+        <SectionMark section="home_parky" />
         <ParkyStop locale={locale as Locale} />
 
         {/* For a visitor without favourites: how to star a park and where the favourites show. */}
         <FavoritesIntro locale={locale as Locale} />
 
-        {/* Each live trip region (Orlando: sixteen parks) and the hub that puts them on a trip's days. */}
-        {LIVE_TRIP_REGIONS.map((region) => (
-          <TripRegionHomeStop key={region.slug} region={region.slug} locale={locale} />
-        ))}
-
         {/* Popular parks per locale: the cards (SSR seed + client live data) beside the heading,
           and under the heading a link to each one's waits and calendar, which needs no API. */}
+        <SectionMark section="home_popular" />
         <HomeStop
           divider
           reverse
@@ -280,7 +285,10 @@ export default async function HomePage({ params }: HomePageProps) {
 
         {/* The page's only FAQPage markup — FaqSection renders the questions and the JSON-LD from
           one array. */}
+        <SectionMark section="home_faq" />
         <FaqSection locale={locale as Locale} />
+        <SectionMark section="home_end" />
+        <SectionSeenTracker />
       </div>
     </RouteMessages>
   );

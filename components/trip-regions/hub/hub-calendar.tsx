@@ -11,12 +11,11 @@ import {
   type RefObject,
 } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/calendar-day-tile';
 import { useSeasonLabel } from '@/components/parks/season-headline';
 import { cn } from '@/lib/utils';
 import { useLocationHash } from '@/lib/hooks/use-location-hash';
-import { CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { formatClockTime, formatHoursRange } from '@/lib/utils/intl-format';
 import { addDays } from '@/lib/utils/park-day';
@@ -27,8 +26,6 @@ import {
   closesEarly,
   dayBasis,
   dayGuestClose,
-  dayPick,
-  earlyCloseBehind,
   eventLanes,
   formatDateRange,
   formatHubDate,
@@ -41,9 +38,7 @@ import {
   isWeekend,
   quietestDay,
   quietSeasons,
-  rankGroupParks,
   regionGroups,
-  resortHasChoice,
   shortGroupName,
   shortParkName,
   tintLevel,
@@ -68,7 +63,7 @@ import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 /** The history state key of an open day sheet, which Back closes. */
 const SHEET_ENTRY = 'hubDaySheet';
 
-/** What a park's tile shows on a day; the ring and the star are the grid's. */
+/** What a park's tile shows on a day; the ring and the star are the week's. */
 type HubTile = Pick<
   CalendarDayTileProps,
   'level' | 'closed' | 'wait' | 'status' | 'seasons' | 'hours' | 'overlay'
@@ -77,7 +72,10 @@ type HubTile = Pick<
 /** Each park's tiles, by its slug, one per day of the window. */
 type HubTiles = ReadonlyMap<string, readonly HubTile[]>;
 
-/** The days a park's star stands on, as `<slug>:<date>`. */
+/** Each park's quietest day of each week (`quietestDay`), by its slug: a date or `null` per week. */
+type HubQuiet = ReadonlyMap<string, readonly (string | null)[]>;
+
+/** The days a park's ring and star stand on, as `<slug>:<date>`. */
 type HubStars = ReadonlySet<string>;
 
 /** The hub's calendar section: the props the server hands over. */
@@ -93,13 +91,13 @@ export interface HubCalendarProps {
 }
 
 /**
- * The calendar chapter's body: which park on which day, a week at a time. A desktop gets the parks
- * by resort down the side and seven days across, each a compact tile of the crowd calendar
- * (`CalendarDayTile`), with the day's best park and its holidays above the tiles; a phone gets the
- * same seven days as a list, each resort's best park on its tile. Every day of the window is in
- * the served HTML; the week buttons and the fragment (`#calendar-2026-11-21`) only change which
- * seven a `data-week` shows, so paging asks nothing and moves nothing below the grid. A tap on a
- * day opens the day sheet.
+ * The calendar chapter's body: which day of the week is each park's quietest, a week at a time.
+ * The parks by resort down the side and seven days across, each park's quietest day ringed and
+ * starred (`quietestDay`) and named beside it: on a desktop a compact tile of the crowd calendar
+ * (`CalendarDayTile`) per day with the holidays above, on a phone a 44 px tile per day under the
+ * park's name. Every day of the window is in the served HTML; the week buttons and the fragment
+ * (`#calendar-2026-11-21`) only change which seven a `data-week` shows, so paging asks nothing and
+ * moves nothing below the grid. A tap on a day opens the day sheet.
  */
 export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubCalendarProps) {
   const t = useTranslations('tripHub.calendar');
@@ -174,24 +172,30 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
       new Map(region.parks.map((park) => [park.slug, days.map((d) => tileOf(d.parks[park.slug]))])),
     [region.parks, days, tileOf]
   );
+  const quiet = useMemo<HubQuiet>(
+    () =>
+      new Map(
+        region.parks.map((park) => [
+          park.slug,
+          weeks.map((w) => quietestDay(days.slice(w.start, w.start + w.length), park.slug)),
+        ])
+      ),
+    [weeks, region.parks, days]
+  );
   const stars = useMemo<HubStars>(
     () =>
       new Set(
-        weeks.flatMap((w) =>
-          region.parks.flatMap((park) => {
-            const date = quietestDay(days.slice(w.start, w.start + w.length), park.slug);
-            return date ? [`${park.slug}:${date}`] : [];
-          })
+        [...quiet].flatMap(([slug, dates]) =>
+          dates.flatMap((date) => (date ? [`${slug}:${date}`] : []))
         )
       ),
-    [weeks, region.parks, days]
+    [quiet]
   );
   const storm = useStormDays(days, region.weather);
   const visibleGroups = useMemo(
     () => (deferredOnly ? groups.filter((g) => g.key === deferredOnly) : groups),
     [groups, deferredOnly]
   );
-  const pickGroup = deferredOnly ? (groups.find((g) => g.key === deferredOnly) ?? null) : null;
   // A chip that changes the selection counts; pressing the one already chosen does not.
   const filter = (next: string | null) => {
     if (next === only) return;
@@ -230,12 +234,13 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
       )}
 
       <div className="lg:hidden">
-        <DayList
+        <PhoneWeek
           days={days}
           storm={storm}
           groups={visibleGroups}
           tiles={tiles}
           stars={stars}
+          quiet={quiet}
           week={shownWeek}
           todayIso={todayIso}
           locale={locale}
@@ -246,13 +251,12 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
 
       <div className="hidden lg:block">
         <Matrix
-          region={region}
           days={days}
           storm={storm}
           groups={visibleGroups}
-          pickGroup={pickGroup}
           tiles={tiles}
           stars={stars}
+          quiet={quiet}
           weeks={weeks}
           week={shownWeek}
           todayIso={todayIso}
@@ -477,13 +481,7 @@ function useCellLabel(locale: string, timezone: string) {
   const t = useTranslations('tripHub.calendar');
   const tLevel = useTranslations('parks.crowdLevels');
   return useCallback(
-    (
-      parkName: string,
-      date: string,
-      day: TripParkDay | undefined,
-      bestAt: string | null,
-      quietest: boolean
-    ) => {
+    (parkName: string, date: string, day: TripParkDay | undefined, quietest: boolean) => {
       const when = formatHubDate(date, locale);
       if (day?.status === 'CLOSED') return t('cellClosed', { park: parkName, date: when });
       if (!isRankable(day)) {
@@ -504,7 +502,6 @@ function useCellLabel(locale: string, timezone: string) {
       if (day.status === 'OPERATING' && day.opensAt && close) {
         parts.push(formatHoursRange(day.opensAt, close, locale, timezone));
       }
-      if (bestAt) parts.push(t('cellBest', { resort: bestAt }));
       if (quietest) parts.push(t('quietest'));
       if (closesEarly(day) && close) {
         parts.push(t('cellEarly', { time: formatClockTime(close, locale, timezone) }));
@@ -517,15 +514,6 @@ function useCellLabel(locale: string, timezone: string) {
   );
 }
 
-/**
- * The resort a park is the day's pick of, or `null`. A resort with one park that has a figure that
- * day (SeaWorld beside two parks nobody queues at) has nothing to choose between and gets no ring.
- */
-function bestAtResort(day: TripCalendarDay, group: RegionGroup, slug: string): string | null {
-  if (group.kind !== 'resort' || day.best?.[group.key] !== slug) return null;
-  return resortHasChoice(day, group) ? shortGroupName(group.name) : null;
-}
-
 /** A day's holidays and school breaks, each name once, in the reader's language. */
 function holidayNames(day: TripCalendarDay, locale: string): string {
   return [
@@ -536,158 +524,217 @@ function holidayNames(day: TripCalendarDay, locale: string): string {
 }
 
 /**
- * The phone's list: one card per day, the date a button that opens the day sheet over the whole
- * card. Per group its first park (`rankGroupParks`, the pick first) on its tile and how many more
- * parks it has; the ranking is the sheet's. Every day is in the served HTML; `data-week` shows a
- * week of them. Memoised, so the urgent render of a week press skips it.
+ * A park's quietest day of each week beside its name: the star, the date and the wait its tile
+ * prints, one per week, so paging shows the week's. Nothing in a week without one (no open day
+ * with a forecast).
  */
-const DayList = memo(function DayList({
+function QuietestNote({
+  slug,
+  dates,
   days,
-  storm,
-  groups,
-  tiles,
-  stars,
-  week,
-  todayIso,
   locale,
-  timezone,
-  onOpen,
+  className,
 }: {
+  slug: string;
+  /** The park's quietest day per week (`HubQuiet`). */
+  dates: readonly (string | null)[];
   days: readonly TripCalendarDay[];
-  storm: ReadonlyMap<string, StormCode> | null;
-  groups: RegionGroup[];
-  tiles: HubTiles;
-  stars: HubStars;
-  week: number;
-  todayIso: string;
   locale: string;
-  /** The region's zone, for the closing time of a park the pick beat. */
-  timezone: string;
-  onOpen: (date: string) => void;
+  className?: string;
 }) {
   const t = useTranslations('tripHub.calendar');
+  const tCommon = useTranslations('common');
   return (
     <>
-      {storm && <StormKey storm={storm} className="text-muted-foreground mb-2 text-xs" />}
-      <ol aria-label={t('listLabel')} data-week={week} className="group/week space-y-2">
-        {days.map((day, index) => (
-          <DayItem
-            key={day.date}
-            day={day}
-            index={index}
-            stormCode={storm?.get(day.date)}
-            groups={groups}
-            tiles={tiles}
-            stars={stars}
-            todayIso={todayIso}
-            locale={locale}
-            timezone={timezone}
-            onOpen={onOpen}
-          />
-        ))}
-      </ol>
+      {dates.map((date, w) => {
+        const park = date ? days.find((d) => d.date === date)?.parks[slug] : undefined;
+        const minutes = park ? shownWait(park) : null;
+        if (!date || minutes == null) return null;
+        return (
+          <span
+            key={date}
+            className={cn(
+              HUB_WEEK_ITEM[w],
+              'text-foreground text-[11px] font-semibold whitespace-nowrap tabular-nums',
+              className
+            )}
+          >
+            <Star
+              role="img"
+              aria-label={t('quietest')}
+              className="mr-1 inline size-3 fill-current align-[-2px]"
+            />
+            {formatHubDate(date, locale, 'weekdayDay')} · {minutes} {tCommon('min')}
+          </span>
+        );
+      })}
     </>
   );
-});
+}
 
-/** One day of the phone's list; its props do not change with the week, so paging skips it. */
-const DayItem = memo(function DayItem({
-  day,
-  index,
-  stormCode,
+/**
+ * The phone's week, the desktop grid at a phone's width: per resort a card with the week's dates
+ * (each a button to the day's sheet, with the storm bar and a dot for a holiday), then each park's
+ * name with its quietest day of the week (`QuietestNote`) and its seven days as 44 px tiles
+ * (`CalendarDayTile` `mini`), that day ringed and starred. A park whose whole window says one thing
+ * is one line. Every day is in the served HTML; `data-week` shows a week of them, and the cards
+ * do not take the week, so paging re-renders none of them.
+ */
+function PhoneWeek({
+  storm,
   groups,
-  tiles,
-  stars,
-  todayIso,
-  locale,
-  timezone,
-  onOpen,
-}: {
-  day: TripCalendarDay;
-  index: number;
-  stormCode: StormCode | undefined;
-  groups: RegionGroup[];
+  week,
+  ...card
+}: Omit<PhoneGroupProps, 'group'> & { groups: RegionGroup[]; week: number }) {
+  const t = useTranslations('tripHub.calendar');
+  return (
+    <div data-week={week} className="group/week space-y-3">
+      {storm && <StormKey storm={storm} className="text-muted-foreground text-xs" />}
+      <ul aria-label={t('listLabel')} className="space-y-3">
+        {groups.map((group) => (
+          <PhoneGroup key={group.key} group={group} storm={storm} {...card} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+/** What a resort's card on a phone needs; none of it changes with the week shown. */
+interface PhoneGroupProps {
+  group: RegionGroup;
+  days: readonly TripCalendarDay[];
+  storm: ReadonlyMap<string, StormCode> | null;
   tiles: HubTiles;
   stars: HubStars;
+  quiet: HubQuiet;
   todayIso: string;
   locale: string;
   timezone: string;
   onOpen: (date: string) => void;
-}) {
+}
+
+/** One resort's card of the phone's week; memoised, so a week press skips it. */
+const PhoneGroup = memo(function PhoneGroup({
+  group,
+  days,
+  storm,
+  tiles,
+  stars,
+  quiet,
+  todayIso,
+  locale,
+  timezone,
+  onOpen,
+}: PhoneGroupProps) {
   const t = useTranslations('tripHub.calendar');
   const tClimate = useTranslations('tripPlanner.climate');
-  const basis = dayBasis(day);
-  const holidays = holidayNames(day, locale);
+  const label = useCellLabel(locale, timezone);
+  const pageOf = (index: number) => HUB_WEEK_ITEM[Math.floor(index / HUB_WEEK_DAYS)];
   return (
-    <li className={HUB_WEEK_ITEM[Math.floor(index / HUB_WEEK_DAYS)]}>
-      <div className="border-border/60 bg-card/60 hover:bg-muted/40 relative flex items-start gap-3 rounded-xl border p-3">
-        {/* The date is the button; its layer spans the card, above the tiles, so a tap anywhere
-            opens the day. */}
-        <button
-          type="button"
-          onClick={() => onOpen(day.date)}
-          aria-haspopup="dialog"
-          aria-label={[
-            t('openDay', { date: formatHubDate(day.date, locale, 'long') }),
-            ...(stormCode ? [tClimate(stormCode)] : []),
-          ].join(', ')}
-          className="focus-visible:after:ring-ring flex w-12 shrink-0 flex-col items-center after:absolute after:inset-0 after:z-10 after:rounded-xl after:content-[''] focus-visible:outline-none focus-visible:after:ring-2"
-        >
-          <span className="text-muted-foreground text-[11px] font-semibold uppercase">
-            {day.date === todayIso ? t('today') : formatHubDate(day.date, locale, 'weekday')}
-          </span>
-          <time dateTime={day.date} className="text-xl font-bold tabular-nums">
-            {formatHubDate(day.date, locale, 'day')}
-          </time>
-          {basis === 'long_range' && (
-            <span className="text-muted-foreground text-[10px]">{t('outlook')}</span>
-          )}
-          {stormCode && (
-            <span
-              aria-hidden
-              className={cn(
-                'mt-1 h-1.5 w-8 rounded-full',
-                STORM_SIGNAL_CLASS[stormSignal(stormCode)]
-              )}
-            />
-          )}
-        </button>
-        <div className="min-w-0 flex-1 space-y-2">
-          {holidays && <HolidayLine day={day} names={holidays} />}
-          <div className="grid grid-cols-2 gap-x-2 gap-y-2.5">
-            {groups.map((group) => {
-              const ranked = rankGroupParks(day, group.parks, group.key);
-              const top = ranked[0];
-              if (!top) return null;
-              const others = ranked.slice(1).filter((r) => isRankable(r.day)).length;
-              const di = tiles.get(top.park.slug)?.[index];
-              const early = earlyCloseBehind(day, group, top.park.slug);
-              const earlyClose = early ? dayGuestClose(early.day) : undefined;
-              return (
-                <div key={group.key} className="min-w-0 space-y-1">
-                  <p className="truncate text-xs font-semibold">{shortParkName(top.park.name)}</p>
-                  {di && (
-                    <CalendarDayTile
-                      density="compact"
-                      {...di}
-                      best={stars.has(`${top.park.slug}:${day.date}`) ? t('quietest') : null}
-                    />
+    <li className="border-border/60 bg-card/60 rounded-xl border p-3">
+      <h3 className="text-muted-foreground text-[11px] font-semibold tracking-wider uppercase">
+        {group.name}
+      </h3>
+      <div className="mt-2 grid grid-cols-7 gap-1">
+        {days.map((day, index) => {
+          const stormCode = storm?.get(day.date);
+          const holidays = holidayNames(day, locale);
+          return (
+            <div key={day.date} className={pageOf(index)}>
+              <button
+                type="button"
+                onClick={() => onOpen(day.date)}
+                aria-haspopup="dialog"
+                aria-label={[
+                  t('openDay', { date: formatHubDate(day.date, locale, 'long') }),
+                  ...(stormCode ? [tClimate(stormCode)] : []),
+                  ...(holidays ? [holidays] : []),
+                ].join(', ')}
+                className={cn(
+                  'focus-visible:ring-ring relative flex min-h-11 w-full flex-col items-center justify-center rounded-md text-[11px] leading-tight focus-visible:ring-2 focus-visible:outline-none',
+                  isWeekend(day.date) && 'bg-muted/40'
+                )}
+              >
+                <span className="text-muted-foreground font-medium">
+                  {formatHubDate(day.date, locale, 'weekday')}
+                </span>
+                <time
+                  dateTime={day.date}
+                  className={cn(
+                    'text-sm font-bold tabular-nums',
+                    day.date === todayIso &&
+                      'bg-primary text-primary-foreground rounded-full px-1.5'
                   )}
-                  {(others > 0 || (early && earlyClose)) && (
-                    <p className="text-muted-foreground text-[11px] leading-snug">
-                      {early && earlyClose
-                        ? t('earlyElsewhere', {
-                            park: shortParkName(early.park.name),
-                            time: formatClockTime(earlyClose, locale, timezone),
-                          })
-                        : t('more', { count: others })}
-                    </p>
+                >
+                  {formatHubDate(day.date, locale, 'day')}
+                </time>
+                {holidays && (
+                  <span
+                    aria-hidden
+                    className={cn(
+                      'absolute top-1 right-1 size-1.5 rounded-full',
+                      DAY_SIGNAL_CLASS[day.isHoliday ? 'holiday' : 'school']
+                    )}
+                  />
+                )}
+                <span
+                  aria-hidden
+                  className={cn(
+                    'mt-0.5 h-1 w-full rounded-full',
+                    stormCode && STORM_SIGNAL_CLASS[stormSignal(stormCode)]
                   )}
+                />
+              </button>
+            </div>
+          );
+        })}
+      </div>
+      <div className="mt-2 space-y-2.5">
+        {group.parks.map((park) => {
+          const name = shortParkName(park.name);
+          const state = parkState(days, park.slug);
+          const own = tiles.get(park.slug) ?? [];
+          return (
+            <div key={park.slug}>
+              <div className="flex items-baseline justify-between gap-2">
+                <p className="min-w-0 truncate text-sm font-medium">{name}</p>
+                {!state && (
+                  <QuietestNote
+                    slug={park.slug}
+                    dates={quiet.get(park.slug) ?? []}
+                    days={days}
+                    locale={locale}
+                    className="shrink-0"
+                  />
+                )}
+              </div>
+              {state ? (
+                <p className="border-border/40 bg-muted/20 text-muted-foreground mt-1 flex h-9 items-center rounded-lg border px-3 text-xs">
+                  {t(state)}
+                </p>
+              ) : (
+                <div className="mt-1 grid grid-cols-7 gap-1">
+                  {days.map((day, index) => {
+                    const star = stars.has(`${park.slug}:${day.date}`);
+                    return (
+                      <div key={day.date} className={pageOf(index)}>
+                        <CalendarDayTile
+                          density="mini"
+                          {...own[index]}
+                          best={star ? t('quietest') : null}
+                          className={cn(star && HUB_CELL_BEST)}
+                          onSelect={() => onOpen(day.date)}
+                          aria-haspopup="dialog"
+                          aria-label={label(name, day.date, day.parks[park.slug], star)}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
-              );
-            })}
-          </div>
-        </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </li>
   );
@@ -760,20 +807,19 @@ interface Slot {
 
 /**
  * The desktop grid: a real `<table>` with a caption and `scope`d headers, parks by resort down the
- * side and seven days across. Above the tiles each day's best park (`dayPick`: the region's, or the
- * resort's while one is chosen) and its holidays; a park whose whole window says one thing
- * (closed for the season, no hours yet) is one line instead of tiles. One tab stop for the grid:
+ * side and seven days across, each park's quietest day of the week ringed and starred and named
+ * under the park (`QuietestNote`). Above the tiles each day's holidays; a park whose whole window
+ * says one thing (closed for the season, no hours yet) is one line instead of tiles. One tab stop for the grid:
  * the arrows move between the week's tiles, Enter opens the day (`role="grid"` with a roving
  * `tabIndex`). Memoised, so the urgent render of a week press skips it.
  */
 const Matrix = memo(function Matrix({
-  region,
   days,
   storm,
   groups,
-  pickGroup,
   tiles,
   stars,
+  quiet,
   weeks,
   week,
   todayIso,
@@ -781,14 +827,12 @@ const Matrix = memo(function Matrix({
   timezone,
   onOpen,
 }: {
-  region: TripRegion;
   days: readonly TripCalendarDay[];
   storm: ReadonlyMap<string, StormCode> | null;
   groups: RegionGroup[];
-  /** The group the filter shows, whose pick the column heads name; `null` for the region's. */
-  pickGroup: RegionGroup | null;
   tiles: HubTiles;
   stars: HubStars;
+  quiet: HubQuiet;
   weeks: readonly HubWeek[];
   week: number;
   todayIso: string;
@@ -874,10 +918,8 @@ const Matrix = memo(function Matrix({
             : t('listLabel')}
         </caption>
         <MatrixHead
-          region={region}
           days={days}
           storm={storm}
-          pickGroup={pickGroup}
           slots={slots}
           todayIso={todayIso}
           locale={locale}
@@ -909,15 +951,15 @@ const Matrix = memo(function Matrix({
                   key={park.slug}
                   slug={park.slug}
                   name={shortParkName(park.name)}
-                  group={group}
                   r={r}
                   days={days}
                   slots={slots}
                   tiles={tiles}
                   stars={stars}
+                  quietest={quiet.get(park.slug) ?? []}
                   tabCol={tab.r === r ? tab.c : null}
                   label={label}
-                  quietest={t('quietest')}
+                  locale={locale}
                   onOpen={onOpen}
                   onFocusCell={setFocus}
                 />
@@ -931,25 +973,20 @@ const Matrix = memo(function Matrix({
 });
 
 /**
- * The grid's head: each date, a button that opens the day, with the storm season under it; the
- * day's best park and its wait; its holidays. Its props do not change with the week, so paging
- * skips it. The two rows under the dates are drawn when a day of the window fills them, so turning
- * a week never adds a row.
+ * The grid's head: each date, a button that opens the day, with the storm season under it, then
+ * the day's holidays. Its props do not change with the week, so paging skips it. The holidays' row
+ * is drawn when a day of the window fills it, so turning a week never adds a row.
  */
 const MatrixHead = memo(function MatrixHead({
-  region,
   days,
   storm,
-  pickGroup,
   slots,
   todayIso,
   locale,
   onOpen,
 }: {
-  region: TripRegion;
   days: readonly TripCalendarDay[];
   storm: ReadonlyMap<string, StormCode> | null;
-  pickGroup: RegionGroup | null;
   slots: readonly Slot[];
   todayIso: string;
   locale: string;
@@ -957,11 +994,6 @@ const MatrixHead = memo(function MatrixHead({
 }) {
   const t = useTranslations('tripHub.calendar');
   const tClimate = useTranslations('tripPlanner.climate');
-  const tCommon = useTranslations('common');
-  const picks = useMemo(
-    () => days.map((d) => dayPick(d, region, pickGroup)),
-    [days, region, pickGroup]
-  );
   const holidays = useMemo(() => days.map((d) => holidayNames(d, locale)), [days, locale]);
   const filler = (slot: Slot, i: number) => (
     <td key={`pad-${i}`} aria-hidden className={HUB_WEEK_CELL[slot.week]} />
@@ -1030,44 +1062,6 @@ const MatrixHead = memo(function MatrixHead({
           );
         })}
       </tr>
-      {picks.some(Boolean) && (
-        <tr>
-          <th scope="row" className={cn(rowLabel, 'pt-1')}>
-            {pickGroup
-              ? t('pickRowGroup', { group: shortGroupName(pickGroup.name) })
-              : t('pickRow')}
-          </th>
-          {slots.map((slot, i) => {
-            if (slot.index === null) return filler(slot, i);
-            const pick = picks[slot.index];
-            const level = pick ? tintLevel(pick.day.crowdLevel) : null;
-            return (
-              <td
-                key={days[slot.index].date}
-                className={cn('px-1 pt-1 align-top', HUB_WEEK_CELL[slot.week])}
-              >
-                {pick ? (
-                  <>
-                    <span className="block truncate text-xs font-semibold">
-                      {shortParkName(pick.park.name)}
-                    </span>
-                    <span
-                      className={cn(
-                        'block text-[11px] font-semibold tabular-nums',
-                        level ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground'
-                      )}
-                    >
-                      {shownWait(pick.day)} {tCommon('min')}
-                    </span>
-                  </>
-                ) : (
-                  <span className="text-muted-foreground text-xs">–</span>
-                )}
-              </td>
-            );
-          })}
-        </tr>
-      )}
       {holidays.some(Boolean) && (
         <tr>
           <th scope="row" className={rowLabel}>
@@ -1088,43 +1082,48 @@ const MatrixHead = memo(function MatrixHead({
   );
 });
 
-/** A park's row of tiles; memoised on everything but the tab stop, so paging skips it. */
+/**
+ * A park's row of tiles, its quietest day of the week under its name; memoised on everything but
+ * the tab stop, so paging skips it.
+ */
 const ParkRow = memo(function ParkRow({
   slug,
   name,
-  group,
   r,
   days,
   slots,
   tiles,
   stars,
+  quietest,
   tabCol,
   label,
-  quietest,
+  locale,
   onOpen,
   onFocusCell,
 }: {
   slug: string;
   name: string;
-  group: RegionGroup;
   r: number;
   days: readonly TripCalendarDay[];
   slots: readonly Slot[];
   tiles: HubTiles;
   stars: HubStars;
+  /** The park's quietest day per week (`HubQuiet`). */
+  quietest: readonly (string | null)[];
   /** The column holding the grid's tab stop, when it is in this row. */
   tabCol: number | null;
   label: ReturnType<typeof useCellLabel>;
-  /** The star's name. */
-  quietest: string;
+  locale: string;
   onOpen: (date: string) => void;
   onFocusCell: (cell: { r: number; c: number }) => void;
 }) {
+  const t = useTranslations('tripHub.calendar');
   const own = tiles.get(slug) ?? [];
   return (
     <tr>
       <th scope="row" className="px-2 text-left align-middle font-medium">
         <span className="block truncate text-sm">{name}</span>
+        <QuietestNote slug={slug} dates={quietest} days={days} locale={locale} />
       </th>
       {slots.map((slot, i) => {
         if (slot.index === null) {
@@ -1132,21 +1131,20 @@ const ParkRow = memo(function ParkRow({
         }
         const c = slot.index;
         const day = days[c];
-        const bestAt = bestAtResort(day, group, slug);
         const star = stars.has(`${slug}:${day.date}`);
         return (
           <td key={day.date} role="gridcell" className={cn('p-0', HUB_WEEK_CELL[slot.week])}>
             <CalendarDayTile
               density="compact"
               {...own[c]}
-              best={star ? quietest : null}
-              className={cn(bestAt && HUB_CELL_BEST)}
+              best={star ? t('quietest') : null}
+              className={cn(star && HUB_CELL_BEST)}
               onSelect={() => onOpen(day.date)}
               tabIndex={tabCol === c ? 0 : -1}
               data-cell={`${r}:${c}`}
               onFocus={() => onFocusCell({ r, c })}
               aria-haspopup="dialog"
-              aria-label={label(name, day.date, day.parks[slug], bestAt, star)}
+              aria-label={label(name, day.date, day.parks[slug], star)}
             />
           </td>
         );

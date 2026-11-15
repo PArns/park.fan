@@ -27,6 +27,7 @@ import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import {
   climateChips,
   closesEarly,
+  dayHeat,
   eveningReasons,
   dayWarnings,
   earlyPerk,
@@ -63,7 +64,7 @@ import { oneFullStop } from '@/lib/utils/metadata';
 import { useHopperWord, useResortWord } from './plan-ticket-words';
 import { PlanSheetContent } from './plan-sheet';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
-import { useAreaName, useBaseName } from './plan-place-words';
+import { useAreaName, useBaseName, useVenueName } from './plan-place-words';
 import { MOVE_INK, MoveIcon, useMoveNotes, useMoveWords } from './plan-stay-band';
 import { baseLeg } from '@/lib/trip-regions/plan-stays';
 import { PlanSpareSuggestions } from './plan-spare-run';
@@ -385,6 +386,12 @@ function DayDetails({
   }
 
   const chips = climateChips(day.warnings);
+  // What a normal and a season are, under the figures: neither is a forecast.
+  const weatherNotes = [
+    dayHeat(day)?.basis === 'climate_normal' && t('weather.normalNote'),
+    chips.some((code) => code.startsWith('hurricane_') || code.startsWith('typhoon_')) &&
+      t('weather.stormNote'),
+  ].filter(Boolean);
   // Last year's figure is said with the figure, calmly: after the forecast's days every day has it.
   const warnings = dayWarnings(day).filter(
     (w) => w !== 'party_night_short_hours' && w !== 'closes_early' && w !== 'estimate_last_year'
@@ -408,6 +415,11 @@ function DayDetails({
             {t('details.minutesCaption')}
             {lastYear && ` ${t('warning.estimate_last_year')}`}
           </span>
+          {weatherNotes.length > 0 && (
+            <span className="text-muted-foreground w-full text-xs" data-plan-weather-note="">
+              {weatherNotes.join(' ')}
+            </span>
+          )}
         </div>
       )}
 
@@ -610,9 +622,11 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
 function EveningSection({ evening, date }: { evening: PlanEvening; date: string }) {
   const t = useTranslations('tripPlanner.evening');
   const { parkName, venueByKey, timeZone } = usePlanContext();
+  const venueName = useVenueName();
   const track = useTripEvents();
   const venue = evening.venue ? venueByKey.get(evening.venue) : undefined;
-  const name = evening.kind === 'hop' && evening.park ? parkName(evening.park) : venue?.name;
+  const name =
+    evening.kind === 'hop' && evening.park ? parkName(evening.park) : venue && venueName(venue.key);
   const clock = (value: string) => {
     const minute = planTimeMinute(value, date, timeZone);
     return minute === null ? value : formatGridTime(minute);
@@ -620,7 +634,7 @@ function EveningSection({ evening, date }: { evening: PlanEvening; date: string 
   const reason = eveningReasons(evening)[0];
   const highlight = evening.highlights?.find((h) => h.at) ?? evening.highlights?.[0];
   const others = (evening.alternatives ?? [])
-    .map((a) => (a.park ? parkName(a.park) : a.venue ? venueByKey.get(a.venue)?.name : null))
+    .map((a) => (a.park ? parkName(a.park) : a.venue ? venueName(a.venue) : null))
     .filter((n): n is string => Boolean(n));
 
   return (
@@ -655,7 +669,7 @@ function EveningSection({ evening, date }: { evening: PlanEvening; date: string 
           onAuxClick={(event) => event.button === 1 && track('trip_evening_link_clicked')}
           className="text-primary-ink min-h-11 self-start py-2 font-medium underline-offset-4 hover:underline"
         >
-          {t('officialSite', { name: venue.name })}
+          {t('officialSite', { name: venueName(venue.key) ?? venue.name })}
         </a>
       )}
     </section>

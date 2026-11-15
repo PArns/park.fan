@@ -65,6 +65,11 @@ export function PlannerPolaroids({ photos }: PlannerPolaroidsProps) {
                 sizes="(max-width: 640px) 33vw, 180px"
                 quality={60}
                 style={{ objectFit: 'cover', objectPosition: photo.position }}
+                // A photo that fails leaves the print's grey: alt text or the browser's broken
+                // mark on a polaroid reads as a fault, not as decoration.
+                onError={(event) => {
+                  event.currentTarget.style.visibility = 'hidden';
+                }}
               />
             </span>
             {/* Left-aligned: each card covers the right 40 % of the one before, so only the left

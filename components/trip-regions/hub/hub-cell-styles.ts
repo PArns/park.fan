@@ -1,5 +1,5 @@
 /**
- * The class strings of the hub calendar's marks, shared by the week grid, the phone list and the
+ * The class strings of the hub calendar's marks, shared by the week grid, the phone's week and the
  * legend, so the key draws exactly what the grid draws. The tile itself is the crowd calendar's
  * (`CalendarDayTile`). The tint per level is the site's own
  * (`CROWD_TILE_CLASS` and `CROWD_TEXT_CLASS` in `lib/utils/crowd-level-styles.ts`); nothing here
@@ -10,8 +10,11 @@
 export const HUB_CELL =
   'inline-flex items-center justify-center rounded-md border font-semibold tabular-nums leading-none';
 
-/** The resort's shortest line that day: one ring inside the tile, so the grid never shifts. */
-export const HUB_CELL_BEST = 'ring-foreground/70 ring-2 ring-inset';
+/**
+ * A park's quietest day of the week, beside the star: a ring in the text colour inside the tile,
+ * so it stands out on every crowd tint in both themes and the grid never shifts.
+ */
+export const HUB_CELL_BEST = 'ring-foreground ring-2 ring-inset';
 
 /**
  * The early-close mark: a small folded corner, top right, where a ticketed evening sends the day

@@ -86,6 +86,7 @@ export function tripOptionChanges(
     add('blocks', after.blocks === null ? 'default' : onOff(after.blocks));
   }
   if (before.fireworks !== after.fireworks) add('fireworks', onOff(after.fireworks === 'want'));
+  if (before.weather !== after.weather) add('weather', onOff(after.weather === 'avoid'));
   // The untouched choice is the headliners, so a first edit compares against them.
   const parks = (state: TripPlanState) => effectiveParks(state, headliners).map((p) => p.slug);
   const [was, now] = [parks(before), parks(after)];

@@ -226,59 +226,26 @@ export function rankGroupParks(
 }
 
 /**
- * A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie
- * to the longer day for the day guest. None where fewer than two days have a figure, where two
- * days tie on both, or where the star would sit on a higher printed figure (`shownWait`) than
- * another day's; and never a last-year day, which is never offered as a pick.
+ * A park's quietest day among some days, the star on its tile: the lowest figure the tile prints
+ * (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then
+ * to the earlier date. The API rounds `headlinerWait` to 5 min, so a tie on it alone is common; a
+ * park with an open day always gets its one star, and the star never sits on a higher printed
+ * figure than another day's. Never a last-year day, which is never offered as a pick.
  */
 export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
-  const open = days.flatMap((d) => {
-    const park = d.parks[slug];
-    return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
-  });
-  if (open.length < 2) return null;
-  const [first, second] = [...open].sort(
-    (a, b) =>
-      a.park.headlinerWait - b.park.headlinerWait ||
-      dayGuestMinutes(b.park) - dayGuestMinutes(a.park)
-  );
-  if (
-    first.park.headlinerWait === second.park.headlinerWait &&
-    dayGuestMinutes(first.park) === dayGuestMinutes(second.park)
-  ) {
-    return null;
-  }
-  const shown = shownWait(first.park)!;
-  return open.every((o) => shownWait(o.park)! >= shown) ? first.date : null;
-}
-
-/**
- * The park a day's column names above the tiles: with one group shown, that group's first park
- * (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first
- * answer names (`glanceLines`), by `headlinerWait`, a tie to the longer day. None on a last-year
- * day, which is never offered as a pick, or where no park has a figure.
- */
-export function dayPick(
-  day: TripCalendarDay,
-  region: TripRegion,
-  group?: RegionGroup | null
-): { park: TripRegionPark; day: TripParkDay & { headlinerWait: number } } | null {
-  if (dayBasis(day) === 'last_year') return null;
-  const top = group
-    ? rankGroupParks(day, group.parks, group.key)[0]
-    : rankGroupParks(
-        day,
-        glanceLines(day, region).map((line) => line.park)
-      )[0];
-  return top && isRankable(top.day) ? { park: top.park, day: top.day } : null;
-}
-
-/**
- * Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A
- * resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
- */
-export function resortHasChoice(day: TripCalendarDay, group: RegionGroup): boolean {
-  return group.parks.filter((p) => isRankable(day.parks[p.slug])).length > 1;
+  const [first] = days
+    .flatMap((d) => {
+      const park = d.parks[slug];
+      return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
+    })
+    .sort(
+      (a, b) =>
+        shownWait(a.park)! - shownWait(b.park)! ||
+        a.park.headlinerWait - b.park.headlinerWait ||
+        dayGuestMinutes(b.park) - dayGuestMinutes(a.park) ||
+        a.date.localeCompare(b.date)
+    );
+  return first?.date ?? null;
 }
 
 /** A resort's pick on a day, as the hub names it. */
@@ -370,12 +337,14 @@ const HUB_DATE_STYLES = {
   long: { weekday: 'long', day: 'numeric', month: 'long' },
   day: { day: 'numeric' },
   weekday: { weekday: 'short' },
+  weekdayDay: { weekday: 'short', day: 'numeric' },
   dayMonth: { day: 'numeric', month: 'short' },
 } satisfies Record<string, Intl.DateTimeFormatOptions>;
 
 /**
  * A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov",
- * `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
+ * `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `weekdayDay` "Thu 12",
+ * `dayMonth` "12 Nov".
  */
 export function formatHubDate(
   date: string,

@@ -312,6 +312,7 @@ export function SearchCommand({
           query={query}
           onQueryChange={setQuery}
           session={session}
+          browseTrips={trigger === 'hero'}
         />
       )}
     </>

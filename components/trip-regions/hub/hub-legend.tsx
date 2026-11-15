@@ -18,8 +18,8 @@ function Key({ children, label }: { children: React.ReactNode; label: string }) 
 }
 
 /**
- * How to read the calendar, at the top of its chapter. In view: the wait, the ring, the star and
- * one line that says what the colour means (a day against the park's own normal day, the crowd
+ * How to read the calendar, at the top of its chapter. In view: the wait, the ring with the star
+ * (each park's quietest day of the week) and one line that says what the colour means (a day against the park's own normal day, the crowd
  * level and nothing else). Under „So liest du den Kalender“ the rarer mark, the early close. A
  * tile says closed, the level and „Zeiten folgen" in words, so none of them needs a key; what the
  * figure is and how far the forecast reaches are the chapter's questions.
@@ -35,22 +35,19 @@ export async function HubLegend() {
             40
           </span>
         </Key>
-        <Key label={t('ring')}>
+        <Key label={t('quietest')}>
           <span
             className={cn(
               HUB_CELL,
               SWATCH,
+              'gap-0.5',
               HUB_CELL_BEST,
               CROWD_TILE_CLASS.low,
               CROWD_TEXT_CLASS.low
             )}
           >
+            <Star aria-hidden className="size-2.5 fill-current" />
             35
-          </span>
-        </Key>
-        <Key label={t('quietest')}>
-          <span className={cn(HUB_CELL, SWATCH, CROWD_TILE_CLASS.low, CROWD_TEXT_CLASS.low)}>
-            <Star aria-hidden className="size-3 fill-current" />
           </span>
         </Key>
         <Key label={t('colour')}>

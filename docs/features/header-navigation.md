@@ -16,11 +16,14 @@ The alerts group itself (bells, subscriptions, `/alerts`) is described in [ride 
 ## The bar
 
 From left: the nearby-park chip, **Guides** (`/blog`), **News** (absent while a locale has no
-news), **Parks entdecken** (`/parks`), **„Mehr"**, **Planen**, and the favorites star on the
-right. The order is the phone sheet's, so the two menus are learnt once; the homepage has no entry,
-the logo is its link. Each entry leads with the glyph its destination carries elsewhere, at 14 px
-in the accent (`NavEntryLabel` in `nav-menu.tsx`, `icon` required on `NavMenu`): `Newspaper`,
-`Megaphone`, `RollerCoaster`, `Ellipsis`, `CalendarPlus`. The sheet draws the same component at
+news), **Planen**, **Parks entdecken** (`/parks`), the favorites star, and **„Mehr"** last. Guides,
+News and Planen lead, because planning is what most visitors come for; „Mehr" is always the last
+entry. One list sets the order for the bar and the phone sheet (`MENU_ORDER` in `header.tsx`), so
+the two menus are learnt once: each layout fills a record keyed by the list's entries, so neither
+can place one by hand, and the list's type refuses a list that does not end on „Mehr". The bar has
+no home entry, the logo is its link. Each entry leads with the glyph its destination carries
+elsewhere, at 14 px in the accent (`NavEntryLabel` in `nav-menu.tsx`, `icon` required on
+`NavMenu`): `Newspaper`, `Megaphone`, `CalendarPlus`, `RollerCoaster`, `Ellipsis`. The sheet draws the same component at
 `size="sheet"`. Measured on `/<locale>/parks/europe/germany`: one line in all six locales at a 1024
 and a 1280 px bar. Slack at 1024 (the row's content box minus lockup, nav and actions): de 122.6,
 en 158.4, nl 115.2, fr 82.0, es 102.3, it 127.6 px, 14 more at 1280. French stays the tightest; the
@@ -194,8 +197,8 @@ The panel is only the look; the data and the click behaviour live in the modules
   `lib/trip-regions/registry.ts`, [trip regions](trip-regions.md)); a region is listed once its hub
   goes live, never as a teaser, and the band, the phone sheet and `pnpm check:header-links` read the
   same list. `getPlannerMenu` (`lib/navigation/planner-menu.ts`, server-only) resolves each per
-  locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's planner
-  anchor (`/orlando#planner`) and crowd calendar, the hub's photo, its park count from the API's
+  locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's address
+  (`/orlando`, opened at its top) and crowd calendar, the hub's photo, its park count from the API's
   list of regions (else the region route's `parks[]`; without either the chip is left out) and its
   longest trip from the same list (else `MAX_TRIP_DAYS`). The parks are memoised per process like
   `getFeaturedParksMenu`; the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
@@ -208,9 +211,10 @@ The panel is only the look; the data and the click behaviour live in the modules
   parks one column of four below a 1280 px bar and two columns of six from there. No page shows
   that yet; `node scripts/shoot-planner-regions.mjs` renders the real panel and the sheet's rows
   with two to four regions ([trip regions](trip-regions.md#the-planner-band-with-several-regions)).
-  „Mehr" draws a wide tile per live region from the same entries, and the phone sheet a crowd
-  calendar link per region and, from two regions on, a 44 px row per region with a cut of its
-  scene (`SheetRegionLink`).
+  The phone sheet lists the same regions under „Planen", from two regions on as a 44 px row per
+  region with a cut of its scene (`SheetRegionLink`). The band and that list are the header's only
+  links to the hubs; „Mehr" lists no region, since a tile there would be a second link to the same
+  URL one entry away.
 - **The region's picture** is `PlannerRegionArt`: the region's Parky scene, a `React.lazy` chunk
   fetched on the band's first opening (`useMenuBandOpen`), so neither the scene nor a photo it would
   cover is in any page's HTML; it fades in over the card's ground (`starting:opacity-0`). A region
@@ -247,8 +251,8 @@ The panel is only the look; the data and the click behaviour live in the modules
   source `menu-park`), the hand-off the Orlando hub's "Plan this day" uses, and the navigation goes
   on. The park page's beacon publishes the same park and clears it when the visitor leaves.
 - **Analytics** as for the other bands: `nav_menu_opened` with `menu=planner`, clicks as
-  `internal_link_clicked` with `header` or `menu_sheet`, and `planner_opened` with `menu-plan` or
-  `menu-park`.
+  `internal_link_clicked` with `menu_planner` (band and sheet alike), and `planner_opened` with
+  `menu-plan` or `menu-park`.
 - **The buttons** are the site's (`buttonLinkProps`, `Button`), drawn round as in the draft.
 - **Cost**: about +1.0 KB brotli per page against the plain link it replaces (0.99 to 1.03 KB over
   three runs, 16.7 KB raw with the site's button classes; median over the six locales on
@@ -315,11 +319,11 @@ duplicates the desktop nav; put nothing unique there. From the top:
   column);
 - the favorites panel (`variant="sheet"`), before the destinations: a returning visitor's own parks
   are the shortest route out;
-- the destinations through `SheetNavLink`, each with its glyph in the accent: Guides, News,
-  Startseite (`House`), then `SheetDisclosure`s — Parks entdecken (`/parks` and the continents),
-  right under it „Planen", because planning is what most visitors come for, then each of the three
-  hubs, whose first row is the hub itself („Übersicht", `navigation.overview`) and then its
-  categories or chapters with the band's numbers, in the band's order. „Planen" follows the band's
+- the destinations in the bar's order (`MENU_ORDER`), each with its glyph in the accent: Guides
+  and News (`SheetNavLink`), „Planen" (a `SheetDisclosure`), Parks entdecken (`/parks` and the
+  continents), Startseite (`House`), and last the three hubs of „Mehr", whose first row is the hub
+  itself („Übersicht", `navigation.overview`) and then its categories or chapters with the band's
+  numbers, in the band's order. „Planen" follows the band's
   order: the regions under „Reiseplaner" (one row per live region; from two regions on each row is
   a `SheetRegionLink`, 44 px high with a 56 × 36 cut of the region's Parky scene), then under
   „Tagesplaner" the day planner's page („Tag planen"), „Dein Plan: <park>, <day>" where this
@@ -327,8 +331,7 @@ duplicates the desktop nav; put nothing unique there. From the top:
   alone; it closes the sheet and opens the plan, as the band's „Meinen Plan öffnen" does), and the
   band's first four parks under „Einen Tag planen im" with its quick start. Each group's caption
   (`SheetCaption`) is bold in the text colour, so a caption reads as a heading and not as one more
-  row. A disclosure row is the toggle, not a link beside a chevron; after the hubs each live
-  region's crowd calendar keeps its own row, like the „Mehr" tiles;
+  row. A disclosure row is the toggle, not a link beside a chevron;
 - the footer row (`MoreMenuLinks variant="sheet"`), **outside** the scrolling list on the sheet's
   bottom edge with `pb-[max(0.25rem,env(safe-area-inset-bottom))]` (the `env()` half reads 0: the
   viewport does not opt into `viewport-fit=cover`, so the browser keeps the page above the home

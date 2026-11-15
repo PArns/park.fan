@@ -258,7 +258,7 @@ test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(SURFACE_LABEL).length, 12);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 9);
   assert.equal(propValueLabel('result', 'trip_planner'), 'Reiseplaner');
-  assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 6);
+  assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 7);
   assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
   assert.equal(breakdownValueLabel('channel', 'new_channel'), 'new_channel');
   assert.equal(breakdownValueLabel('device', 'tablet'), 'Tablet');
@@ -826,11 +826,11 @@ test('a way into the planner reads in German, and so does a day begun with it sh
 });
 
 test('the ways through the site read in German, a value this build does not know as sent', () => {
-  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 21);
+  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 28);
   assert.equal(propValueLabel('block', 'trip_answer'), 'Antwort im Hub-Kopf');
   assert.equal(propValueLabel('block', 'trip_band'), 'Reiseplaner-Band');
   assert.equal(propValueLabel('block', 'trip_tile'), 'Reiseplaner-Kachel');
-  assert.equal(Object.keys(SECTION_LABEL).length, 9);
+  assert.equal(Object.keys(SECTION_LABEL).length, 16);
   assert.equal(propValueLabel('section', 'trip_tile'), 'Reiseplaner-Kachel');
   assert.equal(propValueLabel('link', 'calendar'), 'Kalender der Region');
   assert.equal(Object.keys(NAV_MENU_LABEL).length, 7);

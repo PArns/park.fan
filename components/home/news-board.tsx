@@ -160,7 +160,9 @@ export async function NewsBoard({
   });
 
   return (
-    <div className="bg-card text-foreground border-border grid grid-cols-1 gap-2 rounded-3xl border p-2 shadow-[0_40px_120px_-40px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:p-3 @min-[1024px]/page:grid-cols-2 @min-[1024px]/page:gap-4">
+    // On a phone the glow ends inside the stop's room below the board: the trip stop runs on
+    // right under it, and a glow that reaches it ends there in a hard line.
+    <div className="bg-card text-foreground border-border grid grid-cols-1 gap-2 rounded-3xl border p-2 shadow-[0_24px_56px_-24px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] sm:p-3 sm:shadow-[0_40px_120px_-40px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] @min-[1024px]/page:grid-cols-2 @min-[1024px]/page:gap-4">
       {news.length > 0 && (
         <BoardGroup
           icon={Megaphone}

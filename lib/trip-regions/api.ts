@@ -39,6 +39,24 @@ export function tripTicketsCacheTag(region: string): string {
 /** The Data Cache tag of the list of regions (`GET /v1/trip-regions`). */
 export const TRIP_REGIONS_CACHE_TAG = 'trip-regions';
 
+/**
+ * This deploy's commit, which every trip-region read sends as `v`; `dev` outside Vercel. Read from
+ * the environment rather than `build-info.json`, which the node test scripts that load this module
+ * run without.
+ */
+const TRIP_REGION_READ_VERSION = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 12) || 'dev';
+
+/**
+ * The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this
+ * deploy as `v`. The API cannot purge Cloudflare, which keeps the region route a day and two hours
+ * stale, so each deploy reads its own edge copy; the API's routes take `v` and read nothing from it
+ * (docs/features/trip-regions.md#data).
+ */
+export function tripRegionApiUrl(apiPath: string): string {
+  const v = encodeURIComponent(TRIP_REGION_READ_VERSION);
+  return `${getApiBaseUrl()}${apiPath}${apiPath.includes('?') ? '&' : '?'}v=${v}`;
+}
+
 /** The query of a keyed read: a window, region-local. */
 export interface TripWindow {
   from?: string;
@@ -57,7 +75,9 @@ async function readTripRegion<T>(
     if (value) params.set(key, value);
   }
   const qs = params.toString();
-  const url = `${getApiBaseUrl()}/v1/trip-regions/${encodeURIComponent(region)}${path}${qs ? `?${qs}` : ''}`;
+  const url = tripRegionApiUrl(
+    `/v1/trip-regions/${encodeURIComponent(region)}${path}${qs ? `?${qs}` : ''}`
+  );
   const response = await fetch(url, {
     next: { revalidate, tags },
     headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
@@ -173,7 +193,7 @@ let listFailedAt = -Infinity;
 
 async function readTripRegionList(): Promise<{ regions?: TripRegionListEntry[] }> {
   if (Date.now() - listFailedAt < LIST_RETRY_MS) throw new Error('Trip regions: failed recently');
-  const response = await fetch(`${getApiBaseUrl()}/v1/trip-regions`, {
+  const response = await fetch(tripRegionApiUrl('/v1/trip-regions'), {
     next: { revalidate: CACHE_TTL.tripRegion, tags: [TRIP_REGIONS_CACHE_TAG] },
     headers: { 'Content-Type': 'application/json', ...getServerApiHeaders() },
   }).catch((error: unknown) => {
@@ -250,7 +270,9 @@ export async function getTripRegionSchoolBreaks(
   });
   const { 'X-API-Key': _dataKey, ...headers } = getServerApiHeaders();
   void _dataKey;
-  const url = `${getApiBaseUrl()}/v1/trip-regions/${encodeURIComponent(region)}/school-breaks?${params}`;
+  const url = tripRegionApiUrl(
+    `/v1/trip-regions/${encodeURIComponent(region)}/school-breaks?${params}`
+  );
   const response = await fetch(url, {
     next: { revalidate: SCHOOL_BREAKS_REVALIDATE, tags: [tripRegionCacheTag(region)] },
     headers: { 'Content-Type': 'application/json', ...headers },
@@ -269,7 +291,7 @@ export async function getTripRegionSchoolBreaks(
 export async function getTripRegionAccuracy(region: string): Promise<TripForecastAccuracy | null> {
   const { 'X-API-Key': _dataKey, ...headers } = getServerApiHeaders();
   void _dataKey;
-  const url = `${getApiBaseUrl()}/v1/trip-regions/${encodeURIComponent(region)}/accuracy`;
+  const url = tripRegionApiUrl(`/v1/trip-regions/${encodeURIComponent(region)}/accuracy`);
   const response = await fetch(url, {
     next: { revalidate: CACHE_TTL.tripRegionData, tags: [tripRegionCacheTag(region)] },
     headers: { 'Content-Type': 'application/json', ...headers },

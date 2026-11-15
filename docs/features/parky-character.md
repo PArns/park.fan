@@ -111,6 +111,9 @@ planner band ([header navigation](header-navigation.md#the-planner-panel)).
   ([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)). Under reduced motion the
   picture stands finished: bursts open, the rocket at its place with its trail, the wheel still.
   The pictures are `aria-hidden` and take their colours from Tailwind classes with `dark:` twins.
+  Their gradient ids come from `useId()`: a page can hold one scene twice (the Plan menu keeps a
+  closed band's copy mounted under `hidden`), and a `url(#…)` that reaches a hidden copy's gradient
+  paints nothing, which left the wizard's Parky without a body.
 - **A new region gets its own picture** of him on holiday there, the same way, as its entry's
   `scene` in the registry (`components/layout/region-art/<slug>.tsx`,
   [trip regions](trip-regions.md#the-planner-band-with-several-regions)).

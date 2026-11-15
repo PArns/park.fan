@@ -73,6 +73,12 @@ export interface TripBlockSpan {
   slug: string;
   startMin: number;
   endMin: number;
+  /**
+   * The park's own hours that day, opening to the day guests' close. The block's ends on a park
+   * day; on a hop day the blocks split the day, and these stay the park's.
+   */
+  openMin: number;
+  closeMin: number;
 }
 
 /** A column of the Week view: what each piece of the day is, in minutes. */
@@ -238,12 +244,32 @@ export function tripDaySpans(
       // column splits the day in the middle and draws the leg there.
       const mid = Math.round((first.open + second.close) / 2 / 15) * 15;
       span.blocks = [
-        { slug: first.slug, startMin: first.open, endMin: mid },
-        { slug: second.slug, startMin: mid, endMin: second.close },
+        {
+          slug: first.slug,
+          startMin: first.open,
+          endMin: mid,
+          openMin: first.open,
+          closeMin: first.close,
+        },
+        {
+          slug: second.slug,
+          startMin: mid,
+          endMin: second.close,
+          openMin: second.open,
+          closeMin: second.close,
+        },
       ];
       span.hopAt = mid;
     } else {
-      span.blocks = [{ slug: first.slug, startMin: first.open, endMin: first.close }];
+      span.blocks = [
+        {
+          slug: first.slug,
+          startMin: first.open,
+          endMin: first.close,
+          openMin: first.open,
+          closeMin: first.close,
+        },
+      ];
     }
 
     const early = first.cell?.early;
