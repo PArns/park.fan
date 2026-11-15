@@ -11,6 +11,54 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.22.5 (2026-11-15) – Heute bisher im Tagesdialog, Parkys Wissen im Admin, „Mit Parky planen“ auf den Hubs
+
+Geschnitten am 2026-11-15 aus 3 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.5.md`. Neueste Abschnitte zuerst.
+
+### Parkys Wissen im Admin: Themen, die er nur bei Bedarf liest, mit Editor und Historie
+
+Unter „Parky → Wissen“ (`/admin/assistant/knowledge`) steht die Wissensbasis, die Parky seit
+PAR-1361 in der API hat: eine Liste der Themen mit ihrer Zeile „Wann lesen“ (das, was sein Prompt
+nennt), an oder aus, Länge und letzter Änderung, und pro Thema
+(`/admin/assistant/knowledge/[topic]`) ein Editor für diese Zeile, den Text und den Schalter, darunter
+die Änderungen aus dem Audit-Log mit dem Text davor. Ein Name, den die Basis nicht hat, öffnet ein
+leeres Formular, und Speichern legt das Thema an. Lesen dürfen alle im Admin, schreiben ab
+`editor`. Eine Änderung gilt ab dem nächsten Chat, spätestens nach einer Minute, ohne Deploy. Die
+Grenzen der Felder (20 bis 400 und 40 bis 4.000 Zeichen) prüft das Formular wie die API
+(`KNOWLEDGE_LIMITS` in `app/admin/assistant/_lib/assistant.ts`).
+
+### Parkys Angebot auf den Reise-Hubs öffnet den Chat und läuft nicht mehr über die ganze Breite
+
+In Kapitel 01 der vier Reise-Hubs stand unter den vier Schritten Parkys Zeile mit zwei Knöpfen:
+blau „Reise planen“, das den Planer von Hand startete, und daneben umrandet „Lieber im Chat“. Der
+blaue Knopf in Parkys Kasten führte also gerade nicht zu Parky. Jetzt hat der Kasten einen Knopf,
+„Mit Parky planen“ (`tripHub.howItWorks.chat`, in allen sechs Sprachen), der das Interview startet
+und Parky öffnet. Den Planer starten weiter die Knöpfe im Kopf und im Band unten; „Reise planen“
+steht damit zweimal auf der Seite statt dreimal.
+
+Der Kasten lief über die ganze Inhaltsbreite, mit der Zeile in einer 56rem breiten Mitte, und las
+sich auf einem breiten Bildschirm wie ein leeres Band. Jetzt endet die Karte selbst bei 56rem
+(`ParkyInterviewStart`). `action` ist weg, weil nur der Hub es nutzte; wo die Zeile die Schritte
+schon nennt, lässt `showSteps={false}` die nummerierten Fragen weg. Ist Parky für den Besucher aus,
+zeichnet der Hub hier nichts mehr.
+
+### Der Tagesdialog nennt den Andrang seit Öffnung „Heute bisher“, nicht „Andrang jetzt“
+
+Ein Besucher meldete am 15. November für den Europa-Park: Die Tageskarte zeigt „Andrang jetzt:
+hoch“, der Dialog hinter „Prognose heute“ „Andrang jetzt: Normal“. Beide Werte stimmten, nur das
+Label nicht. `ParkTodayPanel` zeigt unter „Andrang jetzt“ den Live-Wert (`currentCrowd`), der
+Dialog `ParkCalendarDayDetail` unter demselben Label `todayCrowdLevel`, den gemessenen Andrang des
+Tages seit Öffnung auf der Skala der Prognose. Um 12:19 hielt der ruhige Vormittag diesen Wert eine Stufe unter dem Live-Wert. Der Dialog
+beschriftet ihn jetzt mit `dayDetail.soFarLabel` („Heute bisher“, in allen sechs Sprachen).
+
+#### Das Interview vom Planer-Button zählt seinen Start
+
+`startInterview()` (`lib/assistant/interview.ts`) schreibt den Interview-Zustand direkt in den
+Store, ohne Parkys Aktion. `trackInterview` sah den Start deshalb nie, und
+`assistant_interview_started` fiel für diesen Weg nicht: In der Woche bis zum 15. November standen
+im Report 0 Starts bei 6 Interview-Fragen, die alle vom Button kamen. Die Funktion sendet das Event
+jetzt selbst, mit `source: planner`.
+
 ## 2.22.4 (2026-11-15) – Keine besten Besuchszeiten bei festen Vorstellungen, Wartezeit-Verlauf ohne falsche Schließtage
 
 Geschnitten am 2026-11-15 aus 2 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.4.md`. Neueste Abschnitte zuerst.
