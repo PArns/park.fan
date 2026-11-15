@@ -27,8 +27,8 @@ console.log('='.repeat(80) + '\n');
 
 /* ── The window itself ─────────────────────────────────────────────────────── */
 
-test('window is today plus thirty days back', () => HISTORY_WINDOW_DAYS, 30);
-test('list rows are half of 31, rounded up', () => historyListRows(), 16);
+test('window is today plus twenty-nine days back, the API thirty', () => HISTORY_WINDOW_DAYS, 29);
+test('list rows are half of 30', () => historyListRows(), 15);
 
 /* ── Rows, which no longer depend on anything ────────────────────────────────
  *
@@ -38,9 +38,9 @@ test('list rows are half of 31, rounded up', () => historyListRows(), 16);
  * „Verlauf", and made the reservation flip between five rows and six depending on which weekday
  * the window happened to start on.
  */
-test('two columns take sixteen rows', () => historyRows(2), 16);
+test('two columns take fifteen rows', () => historyRows(2), 15);
 test('seven columns take five rows', () => historyGridRows(), 5);
-test('one column is the whole window', () => historyRows(1), 31);
+test('one column is the whole window', () => historyRows(1), 30);
 
 /* ── The reservation the placeholder actually reads ──────────────────────────
  *
@@ -51,7 +51,7 @@ test('one column is the whole window', () => historyRows(1), 31);
  * curve in it (30 of 31 tiles measured 119.000 on Taron and Talocan at 390 px in de and fr; the
  * exception was the one day with no curve).
  */
-test('below lg: 16 tiles of 119 with 15 gaps', () => historyGridReservation().base, 2024);
+test('below lg: 15 tiles of 119 with 14 gaps', () => historyGridReservation().base, 1897);
 test('from lg: 5 tiles of 164 with 4 gaps', () => historyGridReservation().lg, 852);
 test(
   'phone: 4 tiles of 119 with 3 gaps, a gap and the 44 px button',

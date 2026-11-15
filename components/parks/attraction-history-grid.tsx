@@ -73,7 +73,7 @@ export function AttractionHistoryGrid({ history, schedule, todayIso }: Attractio
   }, [todayIso, history, schedule]);
 
   // Thirty days in which the ride never once ran. The grid would be a wall of grey tiles saying
-  // the same thing thirty-one times, so it says it once.
+  // the same thing thirty times, so it says it once.
   if (days.length > 0 && !historyHasARunningDay(days)) {
     return (
       <p className="text-muted-foreground flex h-full min-h-40 items-center justify-center text-center text-sm">
