@@ -3971,7 +3971,7 @@
         "maxHint": "Como mucho {n, plural, =1 {1 día de parque} other {# días de parque}} seguidos, luego un día de descanso",
         "noneHint": "Un parque cada día mientras queden parques",
         "streak": "Días de parque seguidos",
-        "patternKey": "Cada patrón es una semana: en azul un día de parque, en claro un día de descanso.",
+        "patternKey": "Cada patrón es una semana: un cuadro azul es un día de parque y uno vacío, un día de descanso.",
         "more": "¿Algo más?",
         "startsIn": "El viaje empieza en {city}.",
         "endsIn": "El viaje termina en {city}.",

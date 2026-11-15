@@ -3971,7 +3971,7 @@
         "maxHint": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée, puis un jour de repos",
         "noneHint": "Un parc chaque jour tant qu’il en reste",
         "streak": "Jours de parc d’affilée",
-        "patternKey": "Chaque motif est une semaine : en bleu un jour de parc, en clair un jour de repos.",
+        "patternKey": "Chaque motif est une semaine : un carré bleu est un jour de parc, un carré vide un jour de repos.",
         "more": "Autre chose ?",
         "startsIn": "Le voyage commence à {city}.",
         "endsIn": "Le voyage se termine à {city}.",

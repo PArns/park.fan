@@ -3971,7 +3971,7 @@
         "maxHint": "Höchstens {n, plural, =1 {1 Parktag} other {# Parktage}} am Stück, dann ein Ruhetag",
         "noneHint": "Jeden Tag ein Park, solange Parks übrig sind",
         "streak": "Parktage am Stück",
-        "patternKey": "Ein Muster ist eine Woche: blau ein Parktag, hell ein Ruhetag.",
+        "patternKey": "Ein Muster ist eine Woche: blau ein Parktag, umrandet ein Ruhetag.",
         "more": "Und sonst?",
         "startsIn": "Die Reise beginnt in {city}.",
         "endsIn": "Die Reise endet in {city}.",

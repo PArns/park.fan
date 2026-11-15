@@ -3971,7 +3971,7 @@
         "maxHint": "At most {n, plural, =1 {1 park day} other {# park days}} in a row, then a rest day",
         "noneHint": "A park every day while there are parks left",
         "streak": "Park days in a row",
-        "patternKey": "Each pattern is a week: blue is a park day, pale a rest day.",
+        "patternKey": "Each pattern is a week: blue is a park day, outlined a rest day.",
         "more": "Anything else?",
         "startsIn": "The trip starts in {city}.",
         "endsIn": "The trip ends in {city}.",

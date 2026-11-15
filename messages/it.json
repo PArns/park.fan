@@ -3971,7 +3971,7 @@
         "maxHint": "Al massimo {n, plural, =1 {1 giorno al parco} other {# giorni al parco}} di fila, poi un giorno di riposo",
         "noneHint": "Un parco ogni giorno finché ne restano",
         "streak": "Giorni al parco di fila",
-        "patternKey": "Ogni schema è una settimana: in blu un giorno al parco, in chiaro un giorno di riposo.",
+        "patternKey": "Ogni schema è una settimana: un quadratino blu è un giorno al parco, uno vuoto un giorno di riposo.",
         "more": "Altro?",
         "startsIn": "Il viaggio inizia a {city}.",
         "endsIn": "Il viaggio finisce a {city}.",
