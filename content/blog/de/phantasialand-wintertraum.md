@@ -61,9 +61,9 @@ seo:
     - phantasialand auslastung
 ---
 
-Seit dem 14. November ist das [Phantasialand](ref:phantasialand) wieder ein Winterdorf. Der Wintertraum läuft bis zum 24. Januar 2027, jeden Tag von 11 bis 20 Uhr, und gegen 19:50 Uhr steigt über dem Kaiserplatz in Berlin das Feuerwerk von MAGIC SYMPHONY. Dazwischen liegen sieben Shows, eine Eisbahn unter dem großen Lichterbaum, Glühwein an den Ständen und [Taron](ref:phantasialand/taron) im Dunkeln.
+Seit dem 14. November liegt im [Phantasialand](ref:phantasialand) wieder Eis auf dem Kaiserplatz, unter dem großen Lichterbaum. Der Wintertraum läuft bis zum 24. Januar 2027, jeden Tag von 11 bis 20 Uhr, und gegen 19:50 Uhr steigt über Berlin das Feuerwerk von MAGIC SYMPHONY. Dazwischen liegen sieben Shows, Glühwein an den Ständen und [Taron](ref:phantasialand/taron) im Dunkeln.
 
-Was in diesem Winter am meisten auffällt, steht auf keiner Neuheitenliste des Parks: sehr viel neue Deko und an den Ständen viele neue Leckereien. In Mexico leuchtet zum Beispiel das Chiapas-Logo bunt. Wer zur Wasserbahn will, kommt daran nicht vorbei, und wer nass werden will, darf vorher ruhig ein Foto machen.
+In diesem Winter hängt sehr viel neue Deko im Park, und an den Ständen gibt es viele neue Leckereien. Auf der Neuheitenliste des Parks steht beides nicht. In Mexico leuchtet zum Beispiel das Chiapas-Logo bunt. Wer zur Wasserbahn will, kommt daran nicht vorbei, und wer nass werden will, darf vorher ruhig ein Foto machen.
 
 ## Termine und Öffnungszeiten 2026/27
 
@@ -73,13 +73,13 @@ Was in diesem Winter am meisten auffällt, steht auf keiner Neuheitenliste des P
 - Silvester: am 31. Dezember nur von 11 bis 18 Uhr
 - Totensonntag: am 22. November beginnen alle Shows erst um 18 Uhr
 
-Am Totensonntag fahren die Bahnen wie an jedem Wintertraum-Tag ab 11 Uhr, nur das Showprogramm rückt in den Abend. Warum, steht im Beitrag über den [Totensonntag im Phantasialand](/blog/phantasialand-totensonntag).
+Am Totensonntag fahren die Bahnen wie an jedem Wintertraum-Tag ab 11 Uhr, nur das Showprogramm rückt in den Abend, weil er in NRW ein stiller Feiertag ist. Mehr dazu im Beitrag über den [Totensonntag im Phantasialand](/blog/phantasialand-totensonntag).
 
 Von den neun Stunden Betrieb fährst du knapp drei bis dreieinhalb im Dunkeln, denn in Brühl geht die Sonne Mitte November gegen 16:45 Uhr unter, am kürzesten Tag, dem 21. Dezember, um 16:29 Uhr und am letzten Wintertraum-Tag im Januar um 17:09 Uhr. Eine gute halbe Stunde danach ist es richtig dunkel.
 
 ## Was 2026/27 neu ist
 
-Auf der Neuheitenliste des Parks selbst stehen diese:
+Der Park selbst nennt als neu im Winter 2026/27:
 
 - Phenie’s Shakes & Pancakes am Mondsee in Fantasy, auf der Restaurantseite des Parks mit „NEU“ markiert.
 - Winni Snow, ein Schneespielplatz für die Kleinsten im Tal der Wuze, den es nur im Wintertraum gibt.
@@ -103,27 +103,27 @@ Drei Shows laufen in Theatern, vier draußen in den Themenwelten. Jede Theatersh
 | Pulse of Rookburgh          | 360-Grad-Lichtshow mit Laser  | Rookburgh                 | ca. 10 Min. | –         |
 | MAGIC SYMPHONY              | Abschlussshow mit Feuerwerk   | Kaiserplatz, Berlin       | ca. 10 Min. | –         |
 
-**Spectaculum Phantastère** ist laut Park besonders für Kinder ab dem Grundschulalter geeignet: ein Gauklerfest in einer glitzernden Burg, mit Trampolinartistik, Akrobatik und Live-Gesang.
+**Spectaculum Phantastère** ist ein Gauklerfest in einer glitzernden Burg, mit Trampolinartistik, Akrobatik und Live-Gesang, und für Kinder ab dem Grundschulalter gedacht.
 
-**Der goldene Faden** beginnt in einem Kostümfundus: Die Gehilfin des Schneiders löst einen goldenen Faden, und die Show springt zwischen Gestern und Heute hin und her, mit Artistik, Tanz und viel Komik. Sie ist mit 40 Minuten die längste der drei.
+**Der goldene Faden** beginnt in einem Kostümfundus: Die Gehilfin des Schneiders löst einen goldenen Faden, und die Show springt zwischen Gestern und Heute hin und her, mit Artistik, Tanz und viel Komik.
 
 **Arctaris – The Hidden World** ist die Eisshow der Arena de Fiesta, mit Videowänden, Paarlauf und Feuerartistik auf Kufen. Eine Eisshow im Dezember klingt nach doppelter Kälte, die Arena ist aber ein Theater mit Dach.
 
 Die **Kaiserplatz Illumination** empfiehlt der Park ausdrücklich Familien mit kleinen Kindern, für die das Finale gegen zehn vor acht zu spät ist. Sie läuft mit der Dämmerung, und Lichterbaum und Häuser von Berlin gehen zu einem eigens komponierten Song an.
 
-Bei **Tiempo de Fuego** solltest du laut Park eine Viertelstunde vorher da sein. Die Show projiziert den Wechsel der Jahreszeiten auf die Felsen und Gebäude von Mexico, am Ende schießen meterhohe Flammen um den Glockenturm, und bei schlechtem Wetter kann sie ausfallen.
+Für **Tiempo de Fuego** bist du eine Viertelstunde vorher da. Die Show projiziert den Wechsel der Jahreszeiten auf die Felsen und Gebäude von Mexico, am Ende schießen meterhohe Flammen um den Glockenturm, und bei schlechtem Wetter kann sie ausfallen.
 
-Vor den schnellen, hellen Blitzeffekten in **Pulse of Rookburgh** warnt der Park. Gebündelte Lichtstrahlen gehen dabei durch den Nebel von Rookburgh, durch die Schienen von [F.L.Y.](ref:phantasialand/fly) und über das Hotel Charles Lindbergh.
+Bei **Pulse of Rookburgh** gehen gebündelte Lichtstrahlen durch den Nebel von Rookburgh, durch die Schienen von [F.L.Y.](ref:phantasialand/fly) und über das Hotel Charles Lindbergh. Die Show arbeitet mit schnellen, hellen Blitzeffekten, und wer darauf empfindlich reagiert, schaut besser von weiter weg zu.
 
 Außerhalb des Programms sind auf dem Kaiserplatz Sway-Pole-Artistinnen auf hohen Stangen unterwegs, und die Drachen des Parks treffen Kinder in ihren Themenwelten: Drago in Berlin, Wang in China Town, Kroka in Deep in Africa und Phenie in Fantasy.
 
 ### MAGIC SYMPHONY und der Good Night Wish
 
-Das Finale, das die Freizeitpark-Besucher zum zweiten Mal in Folge zur besten Show Deutschlands gewählt haben, beginnt jeden Abend gegen 19:50 Uhr auf dem Kaiserplatz und dauert etwa zehn Minuten, mit Licht, Funken, einem eigens komponierten Song und dem Feuerwerk über den Dächern von Berlin.
+MAGIC SYMPHONY, von den Freizeitpark-Besuchern zum zweiten Mal in Folge zur besten Show Deutschlands gewählt, dauert etwa zehn Minuten, mit Licht, Funken, einem eigens komponierten Song und Feuerwerk über den Dächern von Berlin.
 
 Weil nicht alle auf den Kaiserplatz passen, rät der Park, ab 18:50 Uhr nach Berlin zu gehen. Ab dann lenkt das Personal alle Gäste über eigene Zugänge und weist die Plätze zu, und spätestens um 19:40 Uhr, an vollen Tagen auch früher, schließen die Zugänge. Kinderwagen bleiben auf eigenen Parkplätzen. Die Stände rund um die Eisfläche sind bis zur Show offen und schließen während der Show ganz. Der Bereich direkt daneben wird wegen des Feuerwerks gesperrt. Glühwein und Crêpe nimmst du also vorher mit in die Straße Berlin. Für Rollstuhlfahrer gibt es einen eigenen Zuschauerbereich, den du bis 18 Uhr kostenlos im Gästeservice reservierst.
 
-Bei starkem Wind oder anderem schlechten Wetter fällt MAGIC SYMPHONY aus Sicherheitsgründen aus. Dann verabschiedet der Park seine Gäste mit dem „Good Night Wish“, einer kurzen Szene aus Musik und Licht ohne Feuerwerk. Ob es klappt, entscheidet sich am Abend, und die Monitore im Park zeigen es an.
+Bei starkem Wind oder anderem schlechten Wetter fällt MAGIC SYMPHONY aus Sicherheitsgründen aus. Dann verabschiedet der Park seine Gäste mit dem „Good Night Wish“, einer kurzen Szene aus Musik und Licht ohne Feuerwerk. Ob das Feuerwerk stattfindet, zeigen am Abend die Monitore im Park.
 
 ## Lichterwelten und LIGHTS OF MEMORIES
 
@@ -137,11 +137,11 @@ Mit der Dämmerung geht in jeder Themenwelt eine eigene Beleuchtung an. Der Park
 - Mexico: Feuer in den Felsen von Chiapas
 - Fantasy: Lichtkugeln auf dem Mondsee
 
-Unter LIGHTS OF MEMORIES fasst der Park die Lichtshows zusammen, die abends an mehreren Orten laufen: Kaiserplatz Illumination, Tiempo de Fuego, Pulse of Rookburgh und MAGIC SYMPHONY, dazu zwei, die in keinem Showprogramm stehen. Bei **Mystic Winter Castle** tut der Turm von [Mystery Castle](ref:phantasialand/mystery-castle) mit Licht so, als zerbersten seine Wände, dazu rauscht Wasser und Trolle tauchen auf. Um den [Wellenflug](ref:phantasialand/wellenflug) in Berlin tanzen Fontänen, und diese Show heißt **Water. Music. Light.**
+Unter LIGHTS OF MEMORIES fasst der Park die Lichtshows zusammen, die abends an mehreren Orten laufen: Kaiserplatz Illumination, Tiempo de Fuego, Pulse of Rookburgh und MAGIC SYMPHONY, dazu zwei, die in keinem Showprogramm stehen. Bei **Mystic Winter Castle** tut der Turm von [Mystery Castle](ref:phantasialand/mystery-castle) mit Licht so, als zerbersten seine Wände, dazu rauscht Wasser und Trolle tauchen auf. Um den [Wellenflug](ref:phantasialand/wellenflug) in Berlin tanzen Fontänen, bei der Show **Water. Music. Light.**
 
 ## Was fährt und was im Winter pausiert
 
-Bis auf drei Wasserattraktionen fährt im Wintertraum alles: [River Quest](ref:phantasialand/river-quest) seit dem 2. November, Wakobato und Wözl’s Wassertreter seit dem 14. November, alle drei bis zum 24. Januar. Die Wasserspielplätze Winni Splash und Wavy Battle fehlen in der Winterübersicht des Parks, dafür gibt es Winni Snow im Tal der Wuze.
+Im Wintertraum fährt alles bis auf drei Wasserattraktionen: [River Quest](ref:phantasialand/river-quest) pausiert seit dem 2. November, Wakobato und Wözl’s Wassertreter seit dem 14. November, alle drei bis zum 24. Januar. Die Wasserspielplätze Winni Splash und Wavy Battle fehlen in der Winterübersicht des Parks, dafür gibt es Winni Snow im Tal der Wuze.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -153,7 +153,7 @@ Im Trockenen fährst du in der Halle von Wuze Town, dort laufen [Winja’s Fear]
 
 ```
 
-## Für Kinder: Eisbahn, Drachen und Schnee
+## Für Kinder: Eisbahn, Schnee und Mindestgrößen
 
 Das **Berliner Eislaufen** ist die Eisfläche, die nur im Winter auf dem Kaiserplatz liegt, direkt unter dem Lichterbaum. Eine Mindestgröße gibt es nicht, Schlittschuhe leihst du direkt nebenan, und für Anfänger stehen Pinguine als Lauflernhilfe bereit. Für die Kleinsten gibt es Winni Snow in Fantasy, Avoras zum Klettern und Mopti’s Monkey Depot in Deep in Africa, alle ohne Größenvorgabe. Die Gesichtsmaler sind kostenlos.
 
@@ -174,11 +174,11 @@ Kinder bis drei Jahre haben freien Eintritt und brauchen kein Ticket, nur einen 
 
 ## Essen und Trinken im Wintertraum
 
-Nur in diesen Wochen gibt es zum Beispiel Flammlachs vom offenen Feuer, Leberkäse im Brioche, Smashed Potatoes mit Toppings und auf dem Kaiserplatz eine Grünkohlpfanne, dazu neben Glühwein Eierpunsch und Hot Chardonnay, und wer keinen Alkohol will, nimmt Kinderpunsch oder heiße Schokolade. Süß sind Concha-Krapfen mit Pistazie oder Nougat, Hot Crumble mit Bratapfel-Mousse und Crêpe Brûlée, und die Konditorei des Parks backt eigene Wintertörtchen.
+Nur in diesen Wochen gibt es Flammlachs vom offenen Feuer und auf dem Kaiserplatz eine Grünkohlpfanne, neben dem Glühwein stehen Eierpunsch und Hot Chardonnay, für Kinder Punsch ohne Alkohol. Süß sind Concha-Krapfen mit Pistazie oder Nougat und Crêpe Brûlée, und die Konditorei des Parks backt eigene Wintertörtchen.
 
 **Phenie’s Shakes & Pancakes** steht am Ufer des Mondsees und sieht aus wie ein runder Zauberpilz, mit einem Boden wie Teig, einer Topping-Maschine und tropfenden Lampen. Auf der Karte stehen Pancake-Türme, Shakes und, für Kinder bis elf Jahre, Cold Pancakes mit Softeis, die nach einer Runde Eislaufen zwar nicht wärmen, aber trösten.
 
-Beim Parkscout Publikums Award 2025/26 haben die Besucher das Phantasialand zum dritten Mal in Folge für die beste Gastronomie in einem deutschen Freizeitpark gewählt. Für ein richtiges Essen im Warmen gehe ich am liebsten in Rutmor’s Taverne in Klugheim, mit Eierknöpfli. Warm und im Thema isst du auch im Restaurant Uhrwerk in Rookburgh.
+Die Gastronomie des Phantasialands haben die Besucher beim Parkscout Publikums Award 2025/26 zur besten in einem deutschen Freizeitpark gewählt. Für ein richtiges Essen im Warmen gehe ich am liebsten in Rutmor’s Taverne in Klugheim, mit Eierknöpfli. Warm und im Thema isst du auch im Restaurant Uhrwerk in Rookburgh.
 
 ## Wie voll es im Wintertraum wird
 
@@ -188,9 +188,9 @@ Gemessen haben wir den letzten Wintertraum vom 26. Dezember 2025 bis zum 25. Jan
 
 ```
 
-Die NRW-Weihnachtsferien laufen in diesem Winter vom 23. Dezember 2026 bis zum 6. Januar 2027, und die Tage zwischen den Jahren würde ich wie einen Augusttag planen. Montag bis Freitag im Januar nach den Ferien sind die beste Wahl. Der Park verlangt an vielen dieser Tage 29 €, den niedrigsten Preis im Kalender.
+Die NRW-Weihnachtsferien laufen in diesem Winter vom 23. Dezember 2026 bis zum 6. Januar 2027, und die Tage zwischen den Jahren würde ich wie einen Augusttag planen. Montag bis Freitag nach den Ferien war im letzten Januar am wenigsten los, und an vielen dieser Tage verlangt der Park 29 €, den niedrigsten Preis im Kalender.
 
-Am ersten Wintertraum-Wochenende 2026 war der Andrang am Samstag, dem 14. November, hoch und am Sonntag sehr niedrig, bei Nieselregen. Ein Sonntag ist noch kein Muster, aber bei solchem Wetter fahren die Winja’s in der Halle und die drei Theatershows laufen unter Dach, deshalb würde ich so einen Tag nicht absagen. Den Totensonntag am 22. November halte ich für einen vollen Tag, weil er am zweiten Wintertraum-Wochenende liegt und alle sieben Shows dann in zwei Abendstunden laufen.
+Am ersten Wintertraum-Wochenende 2026 war der Andrang am Samstag, dem 14. November, hoch und am Sonntag sehr niedrig, bei Nieselregen. Das war nur ein Sonntag, aber bei solchem Wetter fahren die Winja’s in der Halle und die drei Theatershows laufen unter Dach, deshalb würde ich so einen Tag nicht absagen. Den Totensonntag am 22. November halte ich für einen vollen Tag, weil er am zweiten Wintertraum-Wochenende liegt und alle sieben Shows dann in zwei Abendstunden laufen.
 
 ```best-days-widget slug=phantasialand
 
@@ -217,9 +217,9 @@ Mit dem Quick Pass gehst du an einer Bahn einmal durch einen eigenen Eingang an 
 - Chiapas: 10 €, nur am Gästeservice, laut Infoseite
 - Quick Pass Ultimate: 80 €, einmal an jedem Quick-Pass-Eingang und einmal an F.L.Y., das es einzeln nicht gibt
 
-Jeder Quick Pass gilt nur an dem Tag, an dem du ihn buchst, also kaufst du ihn morgens am Besuchstag und nicht am Abend vorher. Der Verkauf im Shop beginnt um 11 Uhr mit der Parköffnung, und der Park verkauft nur eine begrenzte Zahl. Alles zu Preisen und Ablauf steht in unserer News zum [Quick Pass online](/news/phantasialand-quick-pass-online).
+Jeder Quick Pass gilt nur an dem Tag, an dem du ihn buchst, also kaufst du ihn morgens am Besuchstag und nicht am Abend vorher. Der Verkauf im Shop beginnt um 11 Uhr mit der Parköffnung, und der Park verkauft nur eine begrenzte Zahl. Wie die Buchung im Shop und der QR-Code am Quick-Pass-Eingang funktionieren, steht in unserer News zum [Quick Pass online](/news/phantasialand-quick-pass-online).
 
-An einem Dienstag im Januar würde ich keinen kaufen. An einem Samstag in den Weihnachtsferien würde ich gleich um elf einen Pass für Taron After Dark kaufen und ihn für die erste Fahrt im Dunkeln nutzen.
+An einem Dienstag im Januar würde ich mir das Geld sparen, im letzten Winter war an diesen Tagen wenig los. An einem Samstag in den Weihnachtsferien würde ich gleich um elf einen Pass für Taron After Dark kaufen und ihn für die erste Fahrt im Dunkeln nutzen.
 
 ## Ein Wintertraum-Tag von 11 bis 20 Uhr
 
@@ -258,7 +258,7 @@ Preise für Erwachsene ab 12 Jahren im Ticket-Kalender, Stand 15. November 2026:
 | Montag, 11. Januar             | 29 €                   |
 | Sonntag, 24. Januar            | 35 €                   |
 
-Den Kinderpreis für 4 bis 11 Jahre zeigt der Shop erst, wenn du ein Datum gewählt hast. Kinder von 4 bis 11 Jahren und Gäste ab 60 brauchen am Einlass einen Altersnachweis.
+Für Kinder von 4 bis 11 Jahren gibt es einen eigenen Preis, den der Shop je Tag anzeigt. Sie und Gäste ab 60 brauchen am Einlass einen Altersnachweis.
 
 Der 12. Dezember, ein Adventssamstag, war schon am Eröffnungswochenende ausverkauft. Für einen Samstag im Advent würde ich nicht lange warten.
 
@@ -276,7 +276,7 @@ Mit der Bahn fährst du mit RE5, RB26 oder RB48 bis Brühl (Rheinland) oder mit 
 
 Im Wintertraum fährt der Shuttle nur an Öffnungstagen. Der erste Bus fährt um 10:25 Uhr am Bahnhof ab, dann alle halbe Stunde. Zurück geht der erste um 10:45 Uhr am Park, der letzte um 21:15 Uhr. Ohne Shuttle fährt die Buslinie 985 bis zur Haltestelle Berggeiststraße, von dort sind es etwa zehn Minuten zu Fuß.
 
-Vom Flughafen Köln/Bonn bist du laut Park mit der Bahn in 40 bis 50 Minuten in Brühl, mit dem Auto in rund 20 Minuten.
+Vom Flughafen Köln/Bonn bist du mit der Bahn in 40 bis 50 Minuten in Brühl, mit dem Auto in rund 20 Minuten.
 
 ## Übernachten im Winter
 
