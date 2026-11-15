@@ -108,11 +108,15 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 `components/trip-regions/hub/hub-trip-state.tsx`; the rules are pure in
 `lib/trip-regions/hub-trip.ts` and pinned in `pnpm test:orlando-hub`).
 
-| State        | When                                                                           | Head                                                                                           | Chapter 01                      | Calendar, resorts      |
-| ------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- | ---------------------- |
-| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                            | the four steps and Parky's line | open                   |
-| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt“ | „Deine Reise“ and the planner   | one line each, to open |
+| State        | When                                                                           | Head                                                                                           | Chapter 01                      |
+| ------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- |
+| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                            | the four steps and Parky's line |
+| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt“ | „Deine Reise“ and the planner   |
 
+- **Only chapter 01 changes.** The calendar, the resorts, the best time and the questions are open
+  in both states, in full, with no fold and no toggle: with a plan, „Deine Reise“ stands at the top
+  and the chapters follow it as they do on the landing page, so the swap after hydration moves
+  nothing below chapter 01. The questions keep their own accordion, one question at a time.
 - **The server always renders the landing page.** The plan exists only in the browser, so the
   provider reads the query after hydration (`useMounted`); a crawler and a page without script get
   the landing page with every link open. The swap happens in chapter 01 and below.
@@ -191,8 +195,7 @@ Each chapter opens with its heading and then the thing itself.
    the calendar; `forecastAccuracy: null` (too few measured days) or a failed read draws nothing.
    Its link opens the accuracy question in chapter 05 (`FaqLink`, `TRIP_ACCURACY_ID`). Then the
    month index (`HubMonthIndex`, a labelled `<nav>` with the park calendar's chips, all twelve
-   months). With a plan the body folds into „Kalender für alle 16 Parks, Tag für Tag“
-   (`HubPlanFold`).
+   months).
 
 3. **03 Die Resorts rund um Orlando** (`HubResorts`): one card per API group, in the order of the
    region's `hub.resorts` (a group it does not list follows): the photo (`hub.resorts[].photo`, else
@@ -202,7 +205,7 @@ Each chapter opens with its heading and then the thing itself.
    the window, every headliner when `/best-days` fails) and one sentence on where to stay (`.stay`).
    A card without its words keeps its name and links. Every sentence is a fact of the API (parks,
    water parks, perks, hotel areas, `stayNote`, travel legs) or of the region's existing copy;
-   nothing is invented for a card. With a plan the chapter folds into the resorts' names.
+   nothing is invented for a card.
 4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen`): a teaser of the best-time pages, drawn only
    for a region with best-time pages and its words for them. It sends the best-time page's own
    query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of the trip's length), so
@@ -263,7 +266,7 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 - Everything below the answer that is "more" is a `<details>` or a hidden tab panel, so it is in the
   served HTML. The landing chapters are Server Components: the four steps with their screenshots as
   `<img>` with alt text, the resorts with their links. The served HTML is always the landing page,
-  so no plan, a folded chapter or a hidden step reaches a crawler. The planner comes before the
+  so no plan or hidden step reaches a crawler. The planner comes before the
   calendar; the answer stays in the first screen. The hub and the month pages are in `app/sitemap.ts` with hreflang and no `lastmod`: each forecast
   warmup rebuilds every month at once, a stamp rather than an observed change
   ([a lastmod is observed](../rules/a-lastmod-is-observed-never-stamped.md)).

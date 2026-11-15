@@ -56,7 +56,7 @@ import { HubHeroActions } from './hub-hero-action';
 import { HubFinalCta } from './hub-final-cta';
 import { HubHowItWorks } from './hub-how-it-works';
 import { HubResorts } from './hub-resorts';
-import { HubPlanFold, HubTripProvider } from './hub-trip-state';
+import { HubTripProvider } from './hub-trip-state';
 
 /**
  * The hero photo: the first of the region's `hub.heroPhotos` the media database still has, with
@@ -105,9 +105,9 @@ export interface TripRegionHubPageProps {
  * closing call and the band, which ends on the region's travel guide while that post is served.
  *
  * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
- * address bar or remembered in this browser, chapter 01 is the plan, the head's buttons lead to it
- * and the calendar and the resorts fold into a line each. A block without the region's words draws
- * nothing. Every sentence and every day of the window are in the served HTML.
+ * address bar or remembered in this browser, chapter 01 is the plan and the head's buttons lead to
+ * it. Every other chapter is open in both states, with no fold. A block without the region's words
+ * draws nothing. Every sentence and every day of the window are in the served HTML.
  */
 export async function TripRegionHubPage({
   locale,
@@ -201,7 +201,6 @@ export async function TripRegionHubPage({
     ? resolveEntryForLocale(config.regionGuide, locale as Locale)
     : null;
 
-  const parkCount = region.parks.length;
   const planner = (
     <PlannerChapterSlot
       index="01"
@@ -264,45 +263,43 @@ export async function TripRegionHubPage({
               }
               hint={t('howItWorks.calendarLead')}
             />
-            <HubPlanFold summary={t('howItWorks.calendarFold', { count: parkCount })}>
-              {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
-              {lastYearFrom && (
-                <p
-                  role="note"
-                  className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
-                >
-                  {t('lastYearFrom', {
-                    date: formatHubDate(lastYearFrom.from, locale, 'dayMonth'),
-                  })}
-                </p>
-              )}
-              {calendar && windowDays.length > 0 ? (
-                <HubCalendar
-                  region={slimRegion(region)}
-                  // The whole window from today, the hub's 30 days or the month: a week shows at a
-                  // time, and the others stay in the served HTML for a reader without script.
-                  calendar={sliceCalendar(calendar, windowDays)}
-                  todayIso={todayIso}
-                  locale={locale}
-                  legend={<HubLegend />}
-                />
-              ) : (
-                <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
-              )}
-              {sources && (
-                <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
-              )}
-              <Suspense fallback={null}>
-                <HubAccuracy region={region.slug} accuracy={accuracy} />
-              </Suspense>
-              <HubMonthIndex
-                region={region.slug}
-                current={current}
-                active={month}
+            {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
+            {lastYearFrom && (
+              <p
+                role="note"
+                className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
+              >
+                {t('lastYearFrom', {
+                  date: formatHubDate(lastYearFrom.from, locale, 'dayMonth'),
+                })}
+              </p>
+            )}
+            {calendar && windowDays.length > 0 ? (
+              <HubCalendar
+                region={slimRegion(region)}
+                // The whole window from today, the hub's 30 days or the month: a week shows at a
+                // time, and the others stay in the served HTML for a reader without script.
+                calendar={sliceCalendar(calendar, windowDays)}
+                todayIso={todayIso}
                 locale={locale}
-                className="mt-8"
+                legend={<HubLegend />}
               />
-            </HubPlanFold>
+            ) : (
+              <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
+            )}
+            {sources && (
+              <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
+            )}
+            <Suspense fallback={null}>
+              <HubAccuracy region={region.slug} accuracy={accuracy} />
+            </Suspense>
+            <HubMonthIndex
+              region={region.slug}
+              current={current}
+              active={month}
+              locale={locale}
+              className="mt-8"
+            />
           </section>
 
           <HubResorts

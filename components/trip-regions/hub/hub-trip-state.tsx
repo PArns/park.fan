@@ -1,21 +1,10 @@
 'use client';
 
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useId,
-  useMemo,
-  useRef,
-  useState,
-  type ReactNode,
-} from 'react';
+import { createContext, useContext, useEffect, useMemo, useRef, type ReactNode } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { ChevronDown } from 'lucide-react';
 import { useMounted } from '@/lib/hooks/use-mounted';
 import { hubTripOf, restorableTrip, type HubTripDates } from '@/lib/trip-regions/hub-trip';
 import { rememberedTrip } from '@/lib/trip-regions/remembered-trip';
-import { cn } from '@/lib/utils';
 
 /** The hub's state: the trip it shows, and whether the planner has anything to show at all. */
 interface HubState {
@@ -105,40 +94,6 @@ export function HubLandingOnly({
   return (
     <div hidden={useHubTrip() !== null} className={className}>
       {children}
-    </div>
-  );
-}
-
-/**
- * A chapter's body that folds into one line while the hub shows a plan (the calendar, the resorts):
- * open on the landing page, which is the served HTML, so every link and day stays in it. The line
- * is a button that opens the body in place; the body stays mounted either way.
- */
-export function HubPlanFold({ summary, children }: { summary: string; children: ReactNode }) {
-  const trip = useHubTrip();
-  const [open, setOpen] = useState(false);
-  const id = useId();
-  const folded = trip !== null && !open;
-  return (
-    <div>
-      {trip && (
-        <button
-          type="button"
-          aria-expanded={!folded}
-          aria-controls={id}
-          onClick={() => setOpen((o) => !o)}
-          className="border-border/60 bg-card hover:bg-muted/40 flex min-h-11 w-full items-center justify-between gap-3 rounded-xl border px-4 py-2 text-left text-sm"
-        >
-          <span>{summary}</span>
-          <ChevronDown
-            aria-hidden
-            className={cn('size-4 shrink-0 transition-transform', !folded && 'rotate-180')}
-          />
-        </button>
-      )}
-      <div id={id} hidden={folded} className={cn(trip && !folded && 'mt-4')}>
-        {children}
-      </div>
     </div>
   );
 }

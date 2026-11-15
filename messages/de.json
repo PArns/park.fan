@@ -617,7 +617,6 @@
       "parky": "Nur die Reisedaten sind Pflicht, jede Frage danach kannst du überspringen. Fang mit den Daten an.",
       "chat": "Lieber im Chat",
       "calendarLead": "Woher der Plan seine Tage nimmt: die Spitzenwartezeit jedes Parks an jedem Tag.",
-      "calendarFold": "Kalender für alle {count} Parks, Tag für Tag",
       "hero": {
         "note": "Nur die Reisedaten sind Pflicht; der erste Plan steht, sobald sie gewählt sind.",
         "toPlan": "Zu deinem Plan",
