@@ -1521,6 +1521,7 @@
       "today": "Vandaag"
     },
     "rideClosed": "Attractie gesloten",
+    "ranWithoutWait": "Open, geen wachttijd",
     "parkClosed": "Park gesloten",
     "notYetOpen": "Nog niet open vandaag",
     "queue": {

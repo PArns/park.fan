@@ -7,6 +7,10 @@ import type { AttractionHistoryDay, ScheduleItem } from '@/lib/api/types';
 import { AttractionHistoryDay as HistoryDay, type DayDataProps } from './attraction-history-day';
 import { MobileMore } from '@/components/common/mobile-more';
 import { HISTORY_WINDOW_DAYS, PHONE_HISTORY_DAYS } from '@/lib/parks/attraction-history-geometry';
+import {
+  attractionHistoryStatus,
+  historyHasARunningDay,
+} from '@/lib/parks/attraction-history-status';
 
 interface AttractionHistoryGridProps {
   history?: AttractionHistoryDay[];
@@ -48,21 +52,12 @@ export function AttractionHistoryGrid({ history, schedule, todayIso }: Attractio
       const dateStr = date.toISOString().slice(0, 10);
       const historyData = historyMap.get(dateStr);
       const scheduleData = scheduleMap.get(dateStr);
-      const hasHistory = !!historyData?.hourlyP90 && historyData.hourlyP90.length > 1;
       const isToday = dateStr === todayIso;
-
-      let attractionStatus: DayDataProps['attractionStatus'] = 'UNKNOWN';
-      if (hasHistory) {
-        attractionStatus = 'OPEN';
-      } else if (scheduleData) {
-        if (scheduleData.scheduleType !== 'OPERATING') {
-          attractionStatus = 'PARK_CLOSED';
-        } else if (isToday) {
-          attractionStatus = 'NOT_YET_OPEN';
-        } else if (date.getTime() < today.getTime()) {
-          attractionStatus = 'CLOSED_RIDE';
-        }
-      }
+      const attractionStatus = attractionHistoryStatus(
+        historyData,
+        scheduleData,
+        isToday ? 'today' : date.getTime() < today.getTime() ? 'past' : 'future'
+      );
 
       return { dateStr, historyData, scheduleData, attractionStatus, isToday };
     });
@@ -79,7 +74,7 @@ export function AttractionHistoryGrid({ history, schedule, todayIso }: Attractio
 
   // Thirty days in which the ride never once ran. The grid would be a wall of grey tiles saying
   // the same thing thirty-one times, so it says it once.
-  if (days.length > 0 && !days.some((d) => d.attractionStatus === 'OPEN')) {
+  if (days.length > 0 && !historyHasARunningDay(days)) {
     return (
       <p className="text-muted-foreground flex h-full min-h-40 items-center justify-center text-center text-sm">
         {t('noHistoryData')}

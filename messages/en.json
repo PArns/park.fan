@@ -1521,6 +1521,7 @@
       "today": "Today"
     },
     "rideClosed": "Ride Closed",
+    "ranWithoutWait": "Open, no wait",
     "parkClosed": "Park Closed",
     "notYetOpen": "Not yet open today",
     "queue": {

@@ -15,6 +15,12 @@ by hand: change the comment in the code and re-run the script. -->
 - `PHONE_HISTORY_DAYS` _const_: Days a phone (a page under 768 px) shows before its „show more" button: four rows of two. All thirty-one are sixteen rows there, eight screens of tiles.
 - Types: `HistoryGridReservation`
 
+### [`attraction-history-status.ts`](../../lib/parks/attraction-history-status.ts)
+
+- `attractionHistoryStatus` _function_: A history day's status: a measured curve is a running day, a free-flow day without a wait is a walk-on day, and a day without either reads from the park's schedule.
+- `historyHasARunningDay` _function_: Whether the ride ran on any day of the window, which decides between a grid and one line.
+- Types: `AttractionHistoryStatus`
+
 ### [`calendar-grid-geometry.ts`](../../lib/parks/calendar-grid-geometry.ts)
 
 - `weekRowsInMonth` _function_: Week rows a month spans on a Monday-first seven-column grid.

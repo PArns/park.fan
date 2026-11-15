@@ -17,13 +17,14 @@ import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
+import type { AttractionHistoryStatus } from '@/lib/parks/attraction-history-status';
 
 /** One day of the ride's history window, as the grid hands it to a cell. */
 export interface DayDataProps {
   dateStr: string;
   historyData?: AttractionHistoryDayData;
   scheduleData?: ScheduleItem;
-  attractionStatus: 'OPEN' | 'CLOSED_RIDE' | 'NOT_YET_OPEN' | 'PARK_CLOSED' | 'UNKNOWN';
+  attractionStatus: AttractionHistoryStatus;
   isToday: boolean;
 }
 
@@ -127,17 +128,20 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
   const displayMin = minMax ? roundWaitTo5(minMax.min) : null;
   const displayMax = minMax ? roundWaitTo5(minMax.max) : null;
 
+  const ranWithoutWait = day.attractionStatus === 'NO_WAIT';
   const statusLabel = isOpen
     ? colored
       ? tCrowd(colored)
       : tCrowd('unknown')
-    : day.attractionStatus === 'PARK_CLOSED'
-      ? t('parkClosed')
-      : day.attractionStatus === 'NOT_YET_OPEN'
-        ? t('notYetOpen')
-        : day.attractionStatus === 'CLOSED_RIDE'
-          ? t('rideClosed')
-          : tCrowd('unknown');
+    : ranWithoutWait
+      ? t('ranWithoutWait')
+      : day.attractionStatus === 'PARK_CLOSED'
+        ? t('parkClosed')
+        : day.attractionStatus === 'NOT_YET_OPEN'
+          ? t('notYetOpen')
+          : day.attractionStatus === 'CLOSED_RIDE'
+            ? t('rideClosed')
+            : tCrowd('unknown');
 
   /**
    * The bar's segments, each with the name of what it marks: the legend names the category, only
@@ -237,11 +241,13 @@ function AttractionHistoryDayComponent({ day, yMax }: AttractionHistoryDayProps)
           // `line-clamp-2`, not `truncate`: „Ganztägig geschlossen" is two words and would be cut
           // at seven columns, and the tile has slack under its `min-h` for a second line.
           'mt-1.5 line-clamp-2 text-[9.5px] font-bold tracking-wider uppercase @min-[1024px]/page:mt-2 @min-[1024px]/page:text-[10.5px]',
-          !isOpen
-            ? 'text-status-closed'
-            : colored
-              ? CROWD_TEXT_CLASS[colored]
-              : 'text-muted-foreground'
+          ranWithoutWait
+            ? 'text-status-operating'
+            : !isOpen
+              ? 'text-status-closed'
+              : colored
+                ? CROWD_TEXT_CLASS[colored]
+                : 'text-muted-foreground'
         )}
       >
         {statusLabel}
