@@ -617,7 +617,6 @@
       "parky": "Only your dates are required, and you can skip every question after them. Start with the dates.",
       "chat": "Rather in the chat",
       "calendarLead": "Where the plan gets its days from: each park’s peak wait on each day.",
-      "calendarFold": "Calendar for all {count} parks, day by day",
       "hero": {
         "note": "Only your dates are required; the first plan is there as soon as you pick them.",
         "toPlan": "Go to your plan",

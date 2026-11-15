@@ -617,7 +617,6 @@
       "parky": "Solo las fechas son obligatorias, y puedes saltar cada pregunta que viene después. Empieza por las fechas.",
       "chat": "Mejor en el chat",
       "calendarLead": "De dónde saca el plan sus días: la espera punta de cada parque en cada día.",
-      "calendarFold": "Calendario de los {count} parques, día a día",
       "hero": {
         "note": "Solo las fechas son obligatorias; el primer plan aparece en cuanto las eliges.",
         "toPlan": "Ir a tu plan",

@@ -617,7 +617,6 @@
       "parky": "Seules tes dates sont obligatoires, et tu peux passer chaque question qui suit. Commence par les dates.",
       "chat": "Plutôt dans le chat",
       "calendarLead": "D’où le plan tire ses jours : l’attente de pointe de chaque parc, chaque jour.",
-      "calendarFold": "Calendrier des {count} parcs, jour par jour",
       "hero": {
         "note": "Seules les dates sont obligatoires ; le premier plan est là dès que tu les choisis.",
         "toPlan": "Vers ton plan",
