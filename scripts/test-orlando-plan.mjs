@@ -213,7 +213,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
 {
   const s = readPlanQuery(
     q(
-      'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
+      'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&weather=avoid&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
     ),
     keys
   );
@@ -227,6 +227,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       s.area,
       s.blocks,
       s.fireworks,
+      s.weather,
       s.rest,
       s.hop,
       s.split,
@@ -243,6 +244,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       'disney',
       false,
       'want',
+      'avoid',
       'max:3',
       true,
       'fixed',
@@ -252,7 +254,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
   test(
     'and written back in the API order, readable',
     writePlanQuery(s),
-    'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
+    'from=2026-11-28&to=2026-12-06&parks=magic-kingdom-park:2,epcot&weather=avoid&hotel=disney&area=disney&blocks=0&fireworks=want&rest=max:3&hop=1&split=fixed&lock=epcot@2026-12-01,rest@2026-12-02'
   );
   test('the untouched state writes nothing', writePlanQuery(DEFAULT_PLAN_STATE), '');
   test(

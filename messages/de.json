@@ -4026,6 +4026,10 @@
           "only": "Nur {parks}",
           "onlyHint": "{parks} {count, plural, =1 {fällt} other {fallen}} dafür weg",
           "longer": "Die Reise endet dann am {date}"
+        },
+        "weather": {
+          "label": "Extremes Wetter vermeiden",
+          "hint": "Themenparks auf die kühleren Tage, Wasserparks auf die heißesten{storm, select, hurricane {; die Hochphase der Hurrikansaison zählt mehr} typhoon {; die Hochphase der Taifunsaison zählt mehr} other {}}"
         }
       },
       "spare": {
@@ -4078,6 +4082,19 @@
       "applied": "Im Plan: {idea}.",
       "inPlan": "In den Plan",
       "otherDay": "Anderen Tag"
+    },
+    "weather": {
+      "heatDays": "{count, plural, =1 {1 heißer Parktag} other {# heiße Parktage}}",
+      "heatForecast": "über <temp></temp> vorhergesagt",
+      "heatNormal": "{count, plural, =1 {im Schnitt <temp></temp>} other {im Schnitt bis <temp></temp>}}",
+      "noHeat": "Kein heißer Parktag",
+      "stormFrom": "{season} ab {date}",
+      "stormUntil": "{season} bis {date}",
+      "stormNote": "Die Saison ist eine Statistik vergangener Jahre, keine Sturmwarnung; ob ein Sturm kommt, zeigt sich erst wenige Tage vorher.",
+      "normalNote": "Ø ist der Schnitt vergangener Jahre für dieses Datum, keine Vorhersage.",
+      "noCooler": "Kein kühlerer Tag passte in den Plan",
+      "keyHeat": "Heißer Parktag",
+      "keyHeatNormal": "Heißer Parktag; Ø ist der Schnitt vergangener Jahre"
     }
   },
   "tripRegions": {

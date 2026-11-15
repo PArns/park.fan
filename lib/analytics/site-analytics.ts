@@ -705,6 +705,7 @@ export type TripOption =
   | 'hop'
   | 'blocks'
   | 'fireworks'
+  | 'weather'
   | 'parks'
   | 'visits'
   | 'cities'

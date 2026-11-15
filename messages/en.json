@@ -4026,6 +4026,10 @@
           "only": "Only {parks}",
           "onlyHint": "{parks} {count, plural, =1 {is} other {are}} left out instead",
           "longer": "The trip then ends on {date}"
+        },
+        "weather": {
+          "label": "Avoid extreme weather",
+          "hint": "Theme parks on the cooler days, water parks on the hottest{storm, select, hurricane {; the peak of hurricane season counts for more} typhoon {; the peak of typhoon season counts for more} other {}}"
         }
       },
       "spare": {
@@ -4078,6 +4082,19 @@
       "applied": "In the plan: {idea}.",
       "inPlan": "Add to the plan",
       "otherDay": "Another day"
+    },
+    "weather": {
+      "heatDays": "{count, plural, =1 {1 hot park day} other {# hot park days}}",
+      "heatForecast": "over <temp></temp> forecast",
+      "heatNormal": "{count, plural, =1 {<temp></temp> on average} other {up to <temp></temp> on average}}",
+      "noHeat": "No hot park day",
+      "stormFrom": "{season} from {date}",
+      "stormUntil": "{season} until {date}",
+      "stormNote": "The season is a pattern of past years, not a storm warning; whether a storm comes shows only a few days ahead.",
+      "normalNote": "Ø is the average of past years for this date, not a forecast.",
+      "noCooler": "No cooler day fitted the plan",
+      "keyHeat": "Hot park day",
+      "keyHeatNormal": "Hot park day; Ø is the average of past years"
     }
   },
   "tripRegions": {

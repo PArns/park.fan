@@ -150,7 +150,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-day-bits.tsx`](../../components/trip-regions/planner/plan-day-bits.tsx)
 
 - `PlanDayMarker` _component_: The one marker a day wears in the overview: an icon with words, never colour alone. `compact` keeps the icon and moves the words into a tooltip, for the Month view's cells, whose own label carries them.
-- `ClimateChips` _component_: The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by the day sheet and the When mode's cards.
+- `ClimateChips` _component_: The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by the day sheet, the When mode's cards, the Parks step and the trip head's weather band.
+- `HeatFigure` _component_: A hot day's high: „Ø 32°“ for a climate normal, „36°“ for a forecast, in the reader's unit.
 - `useDayParks` _hook_: The park or parks of a day, as one label ("Universal Studios Florida + Islands of Adventure").
 - `useDayMarkerText` _hook_: The words of a day's one overview marker (`dayMarker`): "closes 6 pm", rest day, the hotel's early slot or its extended evening; `null` for none. For a label that has to carry them where the marker is only an icon.
 - `useEveningName` _hook_: The name of a day's evening: the second park's (short) name or the venue's; `null` without an evening or for a venue the region does not list.
@@ -333,6 +334,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
 
 - `PlanRibbon` _component_: The plan in one row while the assistant asks: a field per trip day, a park day in its crowd colour with the park's code, a free day empty, a travel day dashed, and under it the plan's park days, free days and peak wait.
+- `RIBBON_GRID` _const_: The ribbon's day grid, a column per trip day; the trip head's weather ruler keeps its geometry.
 
 ### [`wizard/steps/area-map-tiles.tsx`](../../components/trip-regions/wizard/steps/area-map-tiles.tsx)
 

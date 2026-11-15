@@ -9,7 +9,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `tripRegionCacheTag` _function_: The Data Cache tag on every read of a region, for the API's revalidation webhook.
 - `tripTicketsCacheTag` _function_: The Data Cache tag of a region's ticket catalog, which the API revalidates after every edit.
-- `tripRegionApiUrl` _function_: The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this build as `v`.
+- `tripRegionApiUrl` _function_: The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this deploy as `v`.
 - `getTripRegionTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getTripRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
 - `getTripRegionLinks` _function_: The live regions a page can link into, for the bands on park, calendar, city, country and post pages and `/search`.
@@ -191,6 +191,10 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 ### [`plan-copy.ts`](../../lib/trip-regions/plan-copy.ts)
 
 - `climateChips` _function_: The climate chips of a day's or a window's warnings, in order, the season folded into its peak.
+- `isHotDay` _function_: Whether a park day passes the plan's heat threshold (`extreme_heat`): the one switch for every heat mark.
+- `dayHeat` _function_: A hot park day's high: the day's own, on a hop day the hotter park's. `null` on a day that is not hot, and where an older API sends no figure: the mark then goes without one.
+- `tripHeat` _function_: The trip's hot park days grouped by the basis of their figure, the forecast first: one group as a rule, two only where the trip crosses the forecast's 16-day edge.
+- `tripStorm` _function_: The storm season a trip lies in, by its strongest code (the peak before the season), with the first date of that code where it starts inside the trip, else the last where it ends inside it. `null` when no date of the trip is in the season.
 - `eveningReasons` _function_: An evening's reasons this client can say, in order.
 - `primaryReason` _function_: The one-line reason of a day: the first code of `PLAN_REASON_ORDER` or `REST_REASON_ORDER` it carries.
 - `dayWarnings` _function_: A day's warnings this client can say, in order, the two spellings of a back-to-back repeat folded into one.
@@ -217,7 +221,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
 - `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
 - `RUNNER_UP_CLOSE_MINUTES` _const_: Within this many minutes the runner-up day reads as just as full: the API's `runner_up_close`.
-- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `TripHeatGroup`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
 
 ### [`plan-fetch.ts`](../../lib/trip-regions/plan-fetch.ts)
 
@@ -469,7 +473,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanDayWeather`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)

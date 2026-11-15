@@ -12,6 +12,7 @@ import {
   PlaneTakeoff,
   Plus,
   Sun,
+  ThermometerSun,
   Ticket,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -29,6 +30,9 @@ import {
 } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
 import { sentenceCase } from '@/lib/utils/sentence-case';
+import { HEAT_CHIP_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { dayHeat, isHotDay } from '@/lib/trip-regions/plan-copy';
+import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import {
   TRIP_WEEK_PX_PER_MIN,
   TRIP_WEEK_PX_PER_MIN_COARSE,
@@ -60,7 +64,8 @@ import { PlannerBlockBar, PlannerBlockPhoto } from '@/components/planner/planner
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { usePartyName } from './use-day-facts';
-import { useEveningName, useTicketDayLabel } from './plan-day-bits';
+import { HeatFigure, useEveningName, useTicketDayLabel } from './plan-day-bits';
+import { useStormKeys } from './plan-calendar-keys';
 import { MOVE_INK, MoveIcon, PlanStayBand, useMoveWords } from './plan-stay-band';
 import { useBaseName } from './plan-place-words';
 import { PlanSpareRun } from './plan-spare-run';
@@ -86,6 +91,24 @@ const EARLY_TIME_ON_BLOCK = '@min-[9.5rem]:hidden';
 
 /** A key's mark: a block of the grid at legend size. */
 const KEY_MARK = 'block h-2.5 w-4 border';
+
+/**
+ * A column header's height and the hour gutter's matching top: a line more for an owned ticket's
+ * day, a weather row more where heat or a storm season touches the page. Spelled out because
+ * Tailwind reads only literal classes.
+ */
+const HEADER = {
+  plain: { h: 'h-12', pt: 'pt-12' },
+  ticket: { h: 'h-16', pt: 'pt-16' },
+  weather: { h: 'h-[4.5rem]', pt: 'pt-[4.5rem]' },
+  both: { h: 'h-[5.5rem]', pt: 'pt-[5.5rem]' },
+} as const;
+
+/** {@link HEADER}'s row for a page with or without a ticket line and a weather row. */
+function headerOf(ticket: boolean, weather: boolean): (typeof HEADER)[keyof typeof HEADER] {
+  if (ticket) return weather ? HEADER.both : HEADER.ticket;
+  return weather ? HEADER.weather : HEADER.plain;
+}
 
 /**
  * After a morning move, the park's hours before the guest gets in: open, but spent on the way.
@@ -139,7 +162,7 @@ export function PlanWeekView({
   onFill: (suggestion: SpareSuggestion) => void;
 }) {
   const t = useTranslations('tripPlanner');
-  const { timeZone, locale } = usePlanContext();
+  const { timeZone, locale, region } = usePlanContext();
   const phone = useMediaQuery(PLANNER_PHONE_QUERY);
   const pxPerMin = phone ? TRIP_WEEK_PX_PER_MIN_COARSE : TRIP_WEEK_PX_PER_MIN;
   const perPage = phone ? WEEK_COLUMNS_PHONE : WEEK_COLUMNS_WIDE;
@@ -170,6 +193,12 @@ export function PlanWeekView({
   const axis = shown[0] ? tripColumnGrid(shown[0], canvas, pxPerMin) : null;
   // Owned tickets add a line under each column's date, the header grows by it on every column.
   const ticketLine = (plan.meta.tickets ?? []).length > 0;
+  // So does the weather row, where a day of the page is hot or in the storm season.
+  const weatherRow = shown.some((span) => {
+    const day = dayBy.get(span.date);
+    return (day !== undefined && isHotDay(day)) || stormCodeOn(span.date, region.weather) !== null;
+  });
+  const header = headerOf(ticketLine, weatherRow);
 
   const touch = useRef<number | null>(null);
   const go = (delta: number) => setPage(Math.max(0, Math.min(pages.length - 1, current + delta)));
@@ -233,7 +262,7 @@ export function PlanWeekView({
         }}
       >
         {/* The planner's hour gutter. */}
-        <div className={cn('w-10 shrink-0', ticketLine ? 'pt-16' : 'pt-12')} aria-hidden="true">
+        <div className={cn('w-10 shrink-0', header.pt)} aria-hidden="true">
           <div className="relative" style={{ height }}>
             {axis &&
               hours.map((hour) => (
@@ -252,15 +281,18 @@ export function PlanWeekView({
           className="grid min-w-0 flex-1"
           style={{ gridTemplateColumns: weekTemplate(columns, empty), columnGap: COLUMN_GAP_PX }}
         >
-          {columns.map((column) => {
+          {columns.map((column, i) => {
             const date = column.days[0].date;
             const span = spanBy.get(date);
+            const weather = weatherRow ? { last: i === columns.length - 1 } : null;
             return column.width === 'day' && span ? (
               <WeekColumn
                 key={date}
                 span={span}
                 day={column.days[0]}
                 meta={ticketLine ? plan.meta : null}
+                header={header.h}
+                weather={weather}
                 phone={phone}
                 canvas={canvas}
                 pxPerMin={pxPerMin}
@@ -272,7 +304,8 @@ export function PlanWeekView({
               <SpareColumn
                 key={date}
                 column={column}
-                tall={ticketLine}
+                header={header.h}
+                weather={weather}
                 height={height}
                 plan={plan}
                 calendar={calendar}
@@ -302,7 +335,13 @@ function WeekKey({
   dayBy: ReadonlyMap<string, PlanDay>;
 }) {
   const t = useTranslations('tripPlanner');
-  const { timeZone } = usePlanContext();
+  const { timeZone, region } = usePlanContext();
+  const stormKeys = useStormKeys();
+  const hot = spans.flatMap((span) => {
+    const day = dayBy.get(span.date);
+    return day && isHotDay(day) ? [day] : [];
+  });
+  const storms = spans.flatMap((span) => stormCodeOn(span.date, region.weather) ?? []);
   const entries: Array<CalendarLegendKey & { shown: boolean }> = [
     {
       key: 'early',
@@ -325,6 +364,19 @@ function WeekKey({
           className={cn(KEY_MARK, 'border-border/60 rounded-sm border-dashed')}
           style={{ backgroundImage: UNUSABLE_HATCH_IMAGE }}
         />
+      ),
+    },
+    ...stormKeys(storms).map((key) => ({ ...key, shown: true })),
+    {
+      key: 'heat',
+      shown: hot.length > 0,
+      label: hot.some((day) => dayHeat(day)?.basis === 'climate_normal')
+        ? t('weather.keyHeatNormal')
+        : t('weather.keyHeat'),
+      mark: (
+        <span className={cn('inline-flex rounded-full px-1', HEAT_CHIP_CLASS)}>
+          <ThermometerSun className="size-3" />
+        </span>
       ),
     },
   ];
@@ -352,7 +404,8 @@ function WeekKey({
  */
 function SpareColumn({
   column,
-  tall,
+  header,
+  weather,
   height,
   plan,
   calendar,
@@ -360,8 +413,10 @@ function SpareColumn({
   onFill,
 }: {
   column: WeekColumnGroup<PlanDay>;
-  /** The header carries a ticket line, as every other column's does. */
-  tall: boolean;
+  /** The header's height class, every column's ({@link headerOf}). */
+  header: string;
+  /** The page's weather row, where it has one: the band runs on, no heat pill. */
+  weather: { last: boolean } | null;
   height: number;
   plan: TripPlan;
   calendar: TripCalendar | undefined;
@@ -369,16 +424,18 @@ function SpareColumn({
   onFill: (suggestion: SpareSuggestion) => void;
 }) {
   const t = useTranslations('tripPlanner');
-  const { locale } = usePlanContext();
+  const tClimate = useTranslations('tripPlanner.climate');
+  const { locale, region } = usePlanContext();
   const first = column.days[0];
   const last = column.days.at(-1) ?? first;
   const narrow = column.width === 'narrow';
+  const storms = column.days.map((d) => stormCodeOn(d.date, region.weather));
   return (
     <li className="flex min-w-0 flex-col" data-plan-spare-column={column.width}>
       <div
         className={cn(
           'flex flex-col items-center justify-center text-center leading-tight',
-          tall ? 'h-16' : 'h-12'
+          header
         )}
       >
         <span className="text-muted-foreground text-[11px] uppercase">
@@ -389,6 +446,9 @@ function SpareColumn({
             ? formatParkDay(locale, first.date, { day: 'numeric' })
             : formatParkDayRange(locale, first.date, last.date, { day: 'numeric', month: 'short' })}
         </span>
+        {weather && (
+          <WeatherRow heat={null} hot={false} storms={storms} last={weather.last} phone />
+        )}
       </div>
       <div
         className="border-border/60 bg-muted/20 relative overflow-hidden rounded-md border border-dashed"
@@ -398,7 +458,7 @@ function SpareColumn({
           <button
             type="button"
             onClick={() => onOpenDay(first.date)}
-            aria-label={`${formatParkDay(locale, first.date, { weekday: 'short', day: 'numeric', month: 'short' })}: ${t('spare.day')}, ${t('spare.ideas')}`}
+            aria-label={`${formatParkDay(locale, first.date, { weekday: 'short', day: 'numeric', month: 'short' })}: ${[t('spare.day'), t('spare.ideas'), storms[0] ? tClimate(storms[0]) : null].filter(Boolean).join(', ')}`}
             className={cn(
               'hover:bg-muted/50 absolute inset-0 flex flex-col items-center justify-center gap-2 transition-colors',
               PLAN_FOCUS
@@ -433,6 +493,8 @@ function WeekColumn({
   span,
   day,
   meta,
+  header,
+  weather,
   phone,
   canvas,
   pxPerMin,
@@ -446,6 +508,10 @@ function WeekColumn({
   city: string | null;
   /** The plan's meta where it has owned tickets, whose day each column names. */
   meta: TripPlan['meta'] | null;
+  /** The header's height class, every column's ({@link headerOf}). */
+  header: string;
+  /** The page's weather row, where it has one. */
+  weather: { last: boolean } | null;
   phone: boolean;
   canvas: TripCanvas;
   pxPerMin: number;
@@ -453,8 +519,11 @@ function WeekColumn({
   onOpen: () => void;
 }) {
   const t = useTranslations('tripPlanner');
-  const { locale, parkName, photos, timeZone, state } = usePlanContext();
+  const tClimate = useTranslations('tripPlanner.climate');
+  const { locale, parkName, photos, timeZone, state, region } = usePlanContext();
   const grid = tripColumnGrid(span, canvas, pxPerMin);
+  const hot = day !== undefined && isHotDay(day);
+  const storm = stormCodeOn(span.date, region.weather);
   const pinned = state.locks.some((lock) => lock.date === span.date);
   const partyName = usePartyName(calendar, day);
   const eveningOf = useEveningName();
@@ -462,7 +531,13 @@ function WeekColumn({
   const weekday = formatParkDay(locale, span.date, { weekday: 'short' });
   const date = formatParkDay(locale, span.date, { day: 'numeric', month: 'short' });
   // Across cities, each day's label names where it is spent; the band above says it only in ink.
-  const dayLabel = [`${weekday} ${date}`, city, pinned ? t('marker.pinned') : null]
+  const dayLabel = [
+    `${weekday} ${date}`,
+    city,
+    pinned ? t('marker.pinned') : null,
+    hot ? tClimate('extreme_heat') : null,
+    storm ? tClimate(storm) : null,
+  ]
     .filter(Boolean)
     .join(', ');
   const ticketLabel = useTicketDayLabel();
@@ -519,7 +594,7 @@ function WeekColumn({
       <div
         className={cn(
           'flex flex-col items-center justify-center text-center leading-tight',
-          meta ? 'h-16' : 'h-12'
+          header
         )}
       >
         <span className="text-muted-foreground text-[11px] uppercase">{weekday}</span>
@@ -545,6 +620,15 @@ function WeekColumn({
               </>
             )}
           </span>
+        )}
+        {weather && (
+          <WeatherRow
+            heat={day ? dayHeat(day) : null}
+            hot={hot}
+            storms={[storm]}
+            last={weather.last}
+            phone={phone}
+          />
         )}
       </div>
       <div
@@ -850,5 +934,48 @@ function WeekColumn({
         <PlanDayGlow date={span.date} />
       </div>
     </li>
+  );
+}
+
+/**
+ * A column header's weather row, a picture of the day label's words and so hidden from a screen
+ * reader: a hot park day's pill („Ø 32°“, the icon alone on a phone), and under it the storm
+ * season's band, a segment per date, run through the gap to the next column so the page reads as
+ * one band.
+ */
+function WeatherRow({
+  heat,
+  hot,
+  storms,
+  last,
+  phone,
+}: {
+  heat: ReturnType<typeof dayHeat>;
+  hot: boolean;
+  storms: ReadonlyArray<StormCode | null>;
+  last: boolean;
+  phone: boolean;
+}) {
+  return (
+    <span aria-hidden="true" className="mt-auto flex flex-col self-stretch">
+      <span className="flex h-5 items-center justify-center">
+        {hot && (
+          <span
+            className={cn(
+              'inline-flex items-center gap-0.5 rounded-full px-1.5 text-[10px] font-medium tabular-nums',
+              HEAT_CHIP_CLASS
+            )}
+          >
+            <ThermometerSun className="size-3" />
+            {heat && !phone && <HeatFigure weather={heat} />}
+          </span>
+        )}
+      </span>
+      <span className={cn('mb-1 flex h-1', !last && '-mr-1')}>
+        {storms.map((code, i) => (
+          <span key={i} className={cn('flex-1', code && STORM_SIGNAL_CLASS[stormSignal(code)])} />
+        ))}
+      </span>
+    </span>
   );
 }
