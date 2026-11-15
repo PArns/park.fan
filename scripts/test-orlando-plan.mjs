@@ -155,7 +155,6 @@ import {
   hopperGains,
   hopperHighlights,
   hopperResorts,
-  isVisitorStore,
   isEveryDayTicket,
   longStayTickets,
   needsConnectedHop,
@@ -171,7 +170,6 @@ import {
   ticketLinksOf,
   ticketStoreName,
   ticketWindowDays,
-  visitorCountry,
   visitorMarket,
   setTickets,
   ticketCatalog,
@@ -2372,8 +2370,9 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       visitorMarket(['de-DE']),
       visitorMarket(['de']),
       visitorMarket([]),
+      visitorMarket(['zh-Hant-TW']),
     ],
-    ['uk', 'uk', 'us', 'intl', null, null]
+    ['uk', 'uk', 'us', 'intl', null, null, 'intl']
   );
   const at = (country, currency, locale) => ({
     seller: `AT ${country}`,
@@ -2471,23 +2470,13 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     ]
   );
   test(
-    'the visitor’s own store is the one of their country; an older answer has only its shop',
+    'an older answer has only its shop',
     [
-      isVisitorStore(attraction('DE'), { country: 'DE' }),
-      isVisitorStore(attraction('DE'), { country: null }),
-      isVisitorStore(official, { country: 'US' }),
       ticketLinksOf({ shopUrl: 'https://wdw.example/' }, 'Disney'),
       ticketLinksOf({}, 'Disney'),
       ticketLinksOf({ links: stores, shopUrl: 'https://wdw.example/' }, 'Disney').length,
     ],
-    [
-      true,
-      false,
-      false,
-      [{ seller: 'Disney', url: 'https://wdw.example/', official: true, sponsored: false }],
-      [],
-      5,
-    ]
+    [[{ seller: 'Disney', url: 'https://wdw.example/', official: true, sponsored: false }], [], 5]
   );
   test(
     'a store is named by its country and currency in the visitor’s language',
@@ -2495,13 +2484,11 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
       ticketStoreName({ country: 'GB', currency: 'GBP' }, 'de'),
       ticketStoreName({ country: 'IE', currency: 'EUR' }, 'de'),
       ticketStoreName({ country: 'US', currency: 'USD' }, 'de'),
-      visitorCountry(['zh-Hant-TW']),
     ],
     [
       { country: 'UK', currency: '£' },
       { country: 'Irland', currency: '€' },
       { country: 'USA', currency: '$' },
-      'TW',
     ]
   );
   test(

@@ -369,10 +369,9 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   follow the same order (`orderTicketPicks`, `orderTicketPackages`), so the plan's own package
   stays first unless the admin moves a long-stay ticket above it or only that one is sponsored.
   Inside a ticket's line, every link of the product's `links` as compact buttons in that order
-  (`orderTicketLinks`), the store of the visitor's own country drawn in the primary tint (the
-  region of the browser's first language, `visitorCountry`, `isVisitorStore`). Every link is shown
-  to every visitor. A seller with two or more country stores (their `store`) gets one row
-  under its name, a button per country with the store's currency: "Attraction Tickets" with
+  (`orderTicketLinks`), every store drawn alike. Every link is shown to every visitor. A seller
+  with two or more country stores (their `store`) gets one row under its name, a button per
+  country with the store's currency: "Attraction Tickets" with
   "Deutschland (€)", "UK (£)" (`ticketLinkGroups`, `ticketStoreName`: the short country name and
   the currency symbol from `Intl`, so a new store needs no string); a single store is named in
   full, "Attraction Tickets · UK (£)". Other links sold in a market other than the operators' own

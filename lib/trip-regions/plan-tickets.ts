@@ -827,24 +827,16 @@ export function plannedVisits(days: readonly Pick<PlanDay, 'parks'>[], slug: str
 // ── Where to buy ──────────────────────────────────────────────────────────────
 
 /**
- * The visitor's country from the browser's languages: the region of the first one, upper case
- * (`en-IE` → `IE`), `null` without one.
+ * The visitor's market from the browser's languages: `us` or `uk` where the first one's region
+ * (`en-IE` → `IE`) names the US, Great Britain or Ireland, `intl` for any other region, `null`
+ * without one. Only the link statistic reads it; nothing is hidden, moved or claimed.
  */
-export function visitorCountry(languages: readonly string[]): string | null {
+export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl' | null {
   const region = languages[0]
     ?.split('-')
     .slice(1)
-    .find((part) => /^[a-z]{2}$/i.test(part));
-  return region ? region.toUpperCase() : null;
-}
-
-/**
- * The visitor's market from the browser's languages: `us` or `uk` where the first one names the
- * US, Great Britain or Ireland, `intl` for any other region, `null` without one. Only the link
- * statistic reads it; nothing is hidden, moved or claimed.
- */
-export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl' | null {
-  const region = visitorCountry(languages);
+    .find((part) => /^[a-z]{2}$/i.test(part))
+    ?.toUpperCase();
   if (!region) return null;
   if (region === 'US') return 'us';
   return region === 'GB' || region === 'IE' ? 'uk' : 'intl';
@@ -854,7 +846,6 @@ export function visitorMarket(languages: readonly string[]): 'us' | 'uk' | 'intl
 export interface TicketLinkVisitor {
   locale: string;
   market: string | null;
-  country?: string | null;
 }
 
 /**
@@ -869,14 +860,6 @@ export function ticketLinksOf(
   return source.shopUrl
     ? [{ seller: officialSeller, url: source.shopUrl, official: true, sponsored: false }]
     : [];
-}
-
-/** Whether a link goes to the seller's store for the visitor's own country. */
-export function isVisitorStore(
-  link: Pick<TicketLink, 'store'>,
-  visitor: Pick<TicketLinkVisitor, 'country'>
-): boolean {
-  return Boolean(visitor.country && link.store?.country === visitor.country);
 }
 
 /** What the ticket order reads of a link, a ticket or a package: sponsored, and its place. */
