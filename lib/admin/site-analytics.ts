@@ -457,6 +457,7 @@ export const BROWSE_ITEM_LABEL: Record<SearchBrowseItem, string> = {
   favorite_park: 'Favorisierter Park',
   news: 'News',
   guide: 'Guide',
+  trip_region: 'Reise-Region',
 };
 
 /** A suggestion kind as it reads in a list; one the site sends later stays as sent. */

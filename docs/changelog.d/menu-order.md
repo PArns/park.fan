@@ -27,3 +27,14 @@ Regionen-Stopps der Startseite zählen ihre Klicks als `trip_home`. Die Startsei
 `section_seen`-Marken an den Anfang jedes Stopps (`home_news` bis `home_end`), sodass sich wie bei
 den Parkseiten ablesen lässt, wie weit sie gelesen wird. Die API nimmt die neuen Werte ohne Änderung
 an ([Analytics](../development/analytics.md)).
+
+#### Die Startseiten-Suche bietet die Reise-Regionen an
+
+Öffnet man die Suche im Hero der Startseite, steht unter vier Parks in der Nähe eine Zeile „Reise
+planen" mit Orlando, Südkalifornien, Japan und Paris; jede Region führt in ihren Reiseplaner
+(`SearchTripRow`, `components/search/search-trip-row.tsx`). Ist kein Park in der Nähe bekannt und die
+Liste zeigt die beliebten Parks, steht die Zeile oben. Auf dem Desktop nimmt sie den Platz des
+fünften Parks ein, die Liste bleibt gleich hoch; auf dem Handy steht sie in der Palette, die das
+Hero-Feld öffnet, nicht in der des Headers. Das Suchfeld selbst ist unverändert. Ein Klick zählt als
+`search_browse_clicked` mit `item: trip_region`
+([Seitensuche](../features/site-search.md#a-trip-regions-planner-comes-first)).

@@ -114,7 +114,13 @@ export type NavMenuId = 'guides' | 'news' | 'parks' | 'more' | 'planner' | 'favo
 
 /** What was picked from a search surface's list before anything was typed. */
 export type SearchBrowseItem =
-  'nearby_park' | 'in_park_ride' | 'popular_park' | 'favorite_park' | 'news' | 'guide';
+  | 'nearby_park'
+  | 'in_park_ride'
+  | 'popular_park'
+  | 'favorite_park'
+  | 'news'
+  | 'guide'
+  | 'trip_region';
 
 /** A step of the planner's wizard, in the order it asks them. */
 export type PlannerWizardStep = 'park' | 'date' | 'setup' | 'headliners';

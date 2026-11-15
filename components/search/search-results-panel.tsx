@@ -22,6 +22,7 @@ import {
 } from '@/components/search/search-result-groups';
 import { SearchCategoryTabs } from '@/components/search/search-category-tabs';
 import { SearchBrowseGroup } from '@/components/search/search-browse-group';
+import { SearchTripRow } from '@/components/search/search-trip-row';
 import {
   HERO_GROUP_HEADING_HIDDEN_CLASS,
   HERO_SEARCH_FOOTER_CLASS,
@@ -50,6 +51,12 @@ interface SearchResultsPanelProps {
   onPostSelect: (post: PostSearchEntry, position: number) => void;
   onTripSelect: (region: TripRegionLinks) => void;
   onBrowseSelect: (item: NearbySearchItem, index: number) => void;
+  /**
+   * Where given (the homepage hero), the trip regions as one row of the pre-query list
+   * (`SearchTripRow`): after the parks near the visitor, or first where no park near them is known
+   * and the rows are the popular ones.
+   */
+  onBrowseTripSelect?: (region: TripRegionLinks, index: number) => void;
   /** Called before "all results" navigates — the palette closes itself on it. */
   onNavigate?: () => void;
   /**
@@ -116,6 +123,7 @@ export function SearchResultsPanel({
   onPostSelect,
   onTripSelect,
   onBrowseSelect,
+  onBrowseTripSelect,
   onNavigate,
   browseLimit,
   browseItems,
@@ -172,6 +180,9 @@ export function SearchResultsPanel({
   const browsing = query.length < 3;
   const heading = useBrowseHeading(browse);
   const rows = (browseItems ?? browse.items).slice(0, browseLimit);
+  const tripRow = onBrowseTripSelect && !isPending && browsing && (
+    <SearchTripRow onSelect={onBrowseTripSelect} className={browseRowClassName} />
+  );
   // A starred park the browse rows already list stays there: cmdk keys a row by its id.
   const starred = useFavoriteParkRows();
   const favorites = (labelFavorites ?? ((items) => items))(
@@ -248,6 +259,7 @@ export function SearchResultsPanel({
         />
       )}
 
+      {browse.isFallback && tripRow}
       {!isPending &&
         browsing &&
         (rows.length > 0 ? (
@@ -270,6 +282,7 @@ export function SearchResultsPanel({
           rowClassName={browseRowClassName}
         />
       )}
+      {!browse.isFallback && tripRow}
       {browsing && (isPending ? browseExtraPending : browseExtra)}
     </CommandList>
   );
