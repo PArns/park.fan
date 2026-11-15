@@ -1,6 +1,5 @@
 import 'server-only';
 
-import buildInfo from '@/build-info.json' with { type: 'json' };
 import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
@@ -41,13 +40,20 @@ export function tripTicketsCacheTag(region: string): string {
 export const TRIP_REGIONS_CACHE_TAG = 'trip-regions';
 
 /**
+ * This deploy's commit, which every trip-region read sends as `v`; `dev` outside Vercel. Read from
+ * the environment rather than `build-info.json`, which the node test scripts that load this module
+ * run without.
+ */
+const TRIP_REGION_READ_VERSION = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 12) || 'dev';
+
+/**
  * The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this
- * build as `v`. The API cannot purge Cloudflare, which keeps the region route a day and two hours
- * stale, so each build reads its own edge copy; the API's routes take `v` and read nothing from it
+ * deploy as `v`. The API cannot purge Cloudflare, which keeps the region route a day and two hours
+ * stale, so each deploy reads its own edge copy; the API's routes take `v` and read nothing from it
  * (docs/features/trip-regions.md#data).
  */
 export function tripRegionApiUrl(apiPath: string): string {
-  const v = encodeURIComponent(buildInfo.buildNumber);
+  const v = encodeURIComponent(TRIP_REGION_READ_VERSION);
   return `${getApiBaseUrl()}${apiPath}${apiPath.includes('?') ? '&' : '?'}v=${v}`;
 }
 

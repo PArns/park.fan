@@ -70,11 +70,11 @@ browser asks through the relay, `/api/trip-regions/<slug>/…` (`tripRegionRelay
 the registry's slugs. Query keys and the planner's stored choices carry the region
 (`parkfan_<slug>_view`, `parkfan_<slug>_tickets_asked`, so Orlando's browsers keep theirs).
 
-Every server read of `/v1/trip-regions/…`, the relay's included, carries this build as `v`
-(`tripRegionApiUrl`, `buildInfo.buildNumber`). Cloudflare keeps the region route a day and two hours
+Every server read of `/v1/trip-regions/…`, the relay's included, carries this deploy's commit as
+`v` (`tripRegionApiUrl`, the first 12 characters of `VERCEL_GIT_COMMIT_SHA`, `dev` elsewhere). Cloudflare keeps the region route a day and two hours
 stale, the API cannot purge it, and a deploy here purges only `park.fan`'s cache, so without `v` a
-build that needs a field the API just added could read the old copy for 26 hours. The API ships
-first and takes `v` on every trip-region route without reading it, so each build asks one fresh
+deploy that needs a field the API just added could read the old copy for 26 hours. The API ships
+first and takes `v` on every trip-region route without reading it, so each deploy asks one fresh
 edge copy per URL; the Data Cache's tags and windows stay as they were.
 
 The planner band's park count and its longest trip are the API's: `GET /v1/trip-regions` (the
