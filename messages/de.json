@@ -3167,7 +3167,7 @@
     },
     "parky": {
       "button": "Plane mit Parky deinen perfekten Parktag",
-      "line": "Ein paar Fragen im Chat, und jede Antwort landet sofort in diesem Tag."
+      "line": "Ich stell dir im Chat ein paar Fragen und trag jede Antwort sofort in diesen Tag ein."
     }
   },
   "tripPlanner": {
@@ -3917,7 +3917,7 @@
     },
     "parky": {
       "button": "Plane mit Parky deine perfekte Reise",
-      "line": "Ein paar Fragen im Chat, und jede Antwort landet sofort hier im Planer."
+      "line": "Ich stell dir im Chat ein paar Fragen und trag jede Antwort sofort hier im Planer ein."
     },
     "codeKey": "Parks",
     "crowdColour": "Farbe: wie voll der Park an dem Tag ist, verglichen mit einem normalen Tag dort.",
@@ -5721,6 +5721,9 @@
       "planStands": "Dein Plan steht. Feinschliff nach Wunsch",
       "end": "Beenden",
       "done": "Fertig",
+      "start": {
+        "name": "Parky"
+      },
       "steps": {
         "region": "Region",
         "dates": "Reisedaten",

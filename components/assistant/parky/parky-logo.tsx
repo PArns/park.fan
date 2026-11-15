@@ -86,6 +86,13 @@ const SEARCH_GAZE = { x: 0, y: 0.8 };
 const BELL_GAZE = { x: -1.8, y: -2.2 };
 
 /**
+ * The square round Parky as a whole at rest, hat and tail included, in the drawing's units, centred
+ * on him: the face alone fills `0 0 VIEW VIEW`, and the hat, the wheel or a season's, stands above
+ * that.
+ */
+const FIGURE_BOX = '-3.5 -9 55 55';
+
+/**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,
  * rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame. It
  * blinks every 7 to 8 s, shows its {@link ParkyMood}, and while `idle` has a life of its own in
@@ -100,6 +107,7 @@ export function ParkyLogo({
   talking = false,
   idle = false,
   calm = false,
+  framed = false,
   cue = null,
 }: {
   className?: string;
@@ -115,6 +123,13 @@ export function ParkyLogo({
    * plays either way.
    */
   calm?: boolean;
+  /**
+   * The box holds the whole figure, hat included, rather than the face alone, which leaves the hat
+   * above the box: for Parky in a row or a card, where whatever centres or pads the box should
+   * centre him as seen; the face comes out smaller in the same box. The launcher, the window and the
+   * hero keep the face's box, which their rides, docks and jumps are measured in.
+   */
+  framed?: boolean;
   /** An act to play at once, with `idle`. */
   cue?: ParkyCue | null;
 }) {
@@ -205,7 +220,7 @@ export function ParkyLogo({
   return (
     <svg
       ref={svg}
-      viewBox={`0 0 ${VIEW} ${VIEW}`}
+      viewBox={framed ? FIGURE_BOX : `0 0 ${VIEW} ${VIEW}`}
       className={cn('size-8 overflow-visible', className)}
       style={
         length || dream

@@ -287,8 +287,13 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
   `ParkyInterviewStart`, in separate files so each route ships only its own planner's two strings,
   drawn only where Parky shows for this visitor (`assistantGate`). The card lays itself out by its
   own width (`@container`, side by side from `@xl`, 36rem), not the window's: the day planner's
-  panel is about 400 px wide on the widest screen, the trip planner's card wide on a tablet. A
-  press sets the interview on its first step (`startInterview`) and opens the window
+  panel is about 400 px wide on the widest screen, the trip planner's card wide on a tablet. It is
+  Parky's own offer: Parky (`ParkyLogo framed`, so the box holds his hat and a row centres him as
+  seen), a speech bubble (`PARKY_BUBBLE`, the trip assistant's) with his name, the planner's line in
+  his first person and the interview's core steps as numbered badges (`interviewCore`,
+  `assistant.interview.steps`), then the button; on a wide page the row keeps to `max-w-4xl` in
+  the middle. With the hub's `action` the badges are left out. A press sets the interview on its
+  first step (`startInterview`) and opens the window
   (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the
   visitor's message once its session is ready (`takeInterviewKickoff`, `assistant_question` kind
   `interview`). In the chat: asking for it, or the opener's `suggestInterview` and

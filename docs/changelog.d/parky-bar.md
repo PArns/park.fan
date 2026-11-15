@@ -1,4 +1,25 @@
-### Parky im Reise-Assistenten wieder ganz
+### Parkys Einladung in den Planern, und Parky im Reise-Assistenten wieder ganz
+
+#### Die Leiste über „Deine Antworten“
+
+`ParkyInterviewStart` (`components/assistant/parky-interview-start.tsx`), die Leiste in Reiseplaner,
+Tagesplaner und Hub, ist jetzt Parkys eigenes Angebot: Parky links, daneben eine Sprechblase mit
+seinem Namen und einem Satz in der ersten Person („Ich stell dir im Chat ein paar Fragen und trag
+jede Antwort sofort hier im Planer ein.“), darunter die Fragen, mit denen der Chat beginnt, als
+nummerierte Badges aus `interviewCore(kind)` mit den Namen aus `assistant.interview.steps`, wie
+die Leiste im Chat sie zählt. Der Knopf bleibt der Aufruf. Ab 36rem Breite steht die Reihe auf
+höchstens `max-w-4xl` in der Mitte, statt den Knopf an den rechten Rand von 1504 px zu schieben;
+darunter steht sie wie bisher untereinander. Im Hub mit „Reise planen“ fehlen die Badges, weil die
+Zeile dort vom Planer spricht. Die Blase und ihr Zipfel sind aus dem Band des Reise-Assistenten
+herausgezogen (`PARKY_BUBBLE`, `ParkyBubbleTail` in `parky-speech-bubble.tsx`), damit beide gleich
+aussehen.
+
+Parky stand nicht mittig, weil sein Riesenrad über der 48er-Box seines Gesichts steht
+(`overflow-visible`): Ein Layout, das die Box zentriert, zentriert das Gesicht und lässt den Hut in
+das Padding darüber ragen, sodass die Figur 5 Einheiten zu hoch sitzt. `ParkyLogo` hat dafür
+`framed`: Die Box umfasst dann die ganze Figur samt Hut und Zipfel (`viewBox` `-3.5 -9 55 55`).
+Die Leiste und die drei Parkys in `plan-ideas.tsx` nutzen es; Launcher, Fenster und Hero behalten
+die Gesichtsbox, an der ihre Fahrten, Docks und Sprünge gemessen sind.
 
 #### Der Kopf des Reise-Assistenten
 

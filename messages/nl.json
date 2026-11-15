@@ -3167,7 +3167,7 @@
     },
     "parky": {
       "button": "Plan met Parky je perfecte parkdag",
-      "line": "Een paar vragen in de chat, en elk antwoord komt meteen in deze dag."
+      "line": "Ik stel je in de chat een paar vragen en zet elk antwoord meteen in deze dag."
     }
   },
   "tripPlanner": {
@@ -3917,7 +3917,7 @@
     },
     "parky": {
       "button": "Plan met Parky je perfecte reis",
-      "line": "Een paar vragen in de chat, en elk antwoord komt meteen hier in de planner."
+      "line": "Ik stel je in de chat een paar vragen en zet elk antwoord meteen hier in de planner."
     },
     "codeKey": "Parken",
     "crowdColour": "Kleur: hoe druk het park die dag is, vergeleken met een normale dag daar.",
@@ -5721,6 +5721,9 @@
       "planStands": "Je plan staat. Verfijn het als je wilt",
       "end": "Stoppen",
       "done": "Klaar",
+      "start": {
+        "name": "Parky"
+      },
       "steps": {
         "region": "Regio",
         "dates": "Reisdata",

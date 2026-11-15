@@ -5,6 +5,7 @@ import { X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { DialogTitle } from '@/components/ui/dialog';
 import { SceneFade, useRegionScene } from '@/components/layout/planner-region-art';
+import { PARKY_BUBBLE, ParkyBubbleTail } from '@/components/assistant/parky-speech-bubble';
 import { PLAN_FOCUS } from '../planner/plan-controls';
 
 /**
@@ -61,17 +62,14 @@ export function WizardGuideBand({
             ref={askRef}
             tabIndex={-1}
             className={cn(
-              'bg-card border-border/70 relative z-10 rounded-2xl border px-3.5 py-2 text-base leading-snug font-semibold text-balance shadow-sm outline-none sm:px-4 sm:py-2.5 sm:text-lg',
+              PARKY_BUBBLE,
+              'px-3.5 py-2 text-base leading-snug font-semibold text-balance outline-none sm:px-4 sm:py-2.5 sm:text-lg',
               'focus-visible:ring-ring focus-visible:ring-2'
             )}
           >
             {ask}
           </DialogTitle>
-          {/* The tail: a square turned on its edge, under the bubble's right side, pointing at Parky. */}
-          <span
-            aria-hidden="true"
-            className="bg-card border-border/70 absolute top-1/2 -right-1.5 size-3 -translate-y-1/2 rotate-45 border-t border-r"
-          />
+          <ParkyBubbleTail side="right" />
         </div>
       </div>
       <button
