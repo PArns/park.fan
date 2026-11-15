@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { CheckCircle2, Loader2, Send } from 'lucide-react';
 import { useRouter } from '@/i18n/navigation';
@@ -9,6 +9,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { cn } from '@/lib/utils';
 import { MAX_FILE_SIZE } from '@/lib/contribute/config';
+import { parseEntityFromHash } from '@/lib/contribute/prefill';
+import { useLocationHash } from '@/lib/hooks/use-location-hash';
 import type { AssignedEntity, UploadedBlob } from '@/lib/contribute/types';
 import { PhotoDropzone, type PendingImage } from './photo-dropzone';
 import { EntityPicker } from './entity-picker';
@@ -43,7 +45,8 @@ function Step({ n, title, children }: { n: number; title: string; children: Reac
 /**
  * The photo contribution form: drop photos, pick the park or ride, add caption and credit, consent,
  * pass Turnstile. Submits in three steps (`/api/contribute/start`, one `file` upload per photo,
- * `finalize`), then opens the thank-you page.
+ * `finalize`), then opens the thank-you page. A park or ride page's link names its entity in the
+ * fragment (`buildContributeHref`), which preselects it until the reader picks another.
  */
 export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
   const t = useTranslations('contribute.form');
@@ -51,7 +54,11 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
   const router = useRouter();
 
   const [images, setImages] = useState<PendingImage[]>([]);
-  const [entity, setEntity] = useState<AssignedEntity | null>(initialEntity);
+  const fragment = useLocationHash();
+  const fragmentEntity = useMemo(() => parseEntityFromHash(fragment), [fragment]);
+  // `undefined` until the reader picks or clears one in the picker.
+  const [picked, setPicked] = useState<AssignedEntity | null | undefined>(undefined);
+  const entity = picked !== undefined ? picked : (initialEntity ?? fragmentEntity);
   const [caption, setCaption] = useState('');
   const [credit, setCredit] = useState('');
   const [consent, setConsent] = useState(false);
@@ -139,7 +146,7 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
           </Step>
 
           <Step n={2} title={t('step2')}>
-            <EntityPicker value={entity} onChange={setEntity} disabled={submitting} />
+            <EntityPicker value={entity} onChange={setPicked} disabled={submitting} />
           </Step>
 
           <Step n={3} title={t('step3')}>

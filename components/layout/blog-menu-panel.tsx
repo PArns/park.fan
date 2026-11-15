@@ -10,6 +10,7 @@ import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { MenuAllLink } from '@/components/layout/menu-all-link';
 import { MostReadMenuColumn } from '@/components/layout/most-read-menu-column';
 import { MenuPostRow } from '@/components/layout/menu-post-row';
+import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { BlogCoverFallback, slugFromPostPath } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
 import type { BlogMenu } from '@/lib/navigation/blog-menu';
@@ -29,10 +30,11 @@ import { categoryPath } from '@/lib/blog/paths';
  * reading time and teaser, and along the bottom the categories as a pill row with the link to all
  * articles (`MenuAllLink`) at its end. One heading over both columns, a `MenuSectionHeading`
  * linking to `/blog`, with a search field on its right that swaps both columns for the matching
- * articles. The teaser is cut on the server (`trimExcerpt`), because
- * this text ships in the chrome of every page and a CSS clamp would not stop the bytes; for the
- * same reason the search reads its list from `/api/nav/posts/[locale]`, fetched when the field
- * is first pointed at or focused. Articles only; news has its own panel. Memoised for the same
+ * articles. The teasers appear once the band has been opened (`useMenuBandOpened`): the links
+ * stay in every page's HTML for crawlers, but five teasers about other topics would put their
+ * prose above every page's own heading. They are cut on the server (`trimExcerpt`), since
+ * the props still ship in the chrome of every page; for the same reason the search reads its list
+ * from `/api/nav/posts/[locale]`, fetched when the field is first pointed at or focused. Articles only; news has its own panel. Memoised for the same
  * reason as `ParksMenuPanel`.
  */
 export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, total }: BlogMenu) {
@@ -41,6 +43,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
    * namespace into the chrome every page serializes.
    */
   const t = useTranslations('navigation');
+  const opened = useMenuBandOpened();
   const metaOf = usePostMetaLine();
   const router = useRouter();
   const [lead, ...rest] = recent;
@@ -176,7 +179,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
                     <span className="text-foreground group-hover:text-primary block text-lg leading-snug font-bold text-pretty transition-colors">
                       {lead.title}
                     </span>
-                    {lead.excerpt && (
+                    {opened && lead.excerpt && (
                       <span className="text-muted-foreground mt-1.5 line-clamp-4 text-[13px] leading-relaxed">
                         {lead.excerpt}
                       </span>
@@ -193,7 +196,7 @@ export const BlogMenuPanel = memo(function BlogMenuPanel({ categories, recent, t
                   <ul className="flex flex-col gap-1">
                     {rest.map((post) => (
                       <li key={post.path}>
-                        <MenuPostRow post={post} meta={metaOf(post)} />
+                        <MenuPostRow post={post} meta={metaOf(post)} teaser={opened} />
                       </li>
                     ))}
                   </ul>

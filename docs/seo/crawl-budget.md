@@ -94,6 +94,11 @@ What the four drilldowns contained:
 5. **Calendar months that fell out of the window** keep answering 308 (how many:
    [decision log](../optimization/decisions.md#2026-09-01--accepted-calendar-back-span-12--3)). That
    one is a standing, accepted cost, not an error.
+6. **One contribute URL per park and ride.** The "Add your photos" link on every park and ride
+   page carried its entity in the query, so the form existed under one URL per entity and
+   language; `nofollow` and `noindex` did not keep Google from listing them (737 in the sample
+   above). The entity travels in the fragment now, and a query link gets a 308 to it
+   ([contribute](../features/contribute.md#linking-from-parks-and-rides)).
 
 The 3,252 robots.txt blocks are the `/api/…` requests the pages make while Google renders them;
 they are meant to stay blocked, and validating that category in Search Console fails by design.

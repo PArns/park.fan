@@ -113,8 +113,18 @@ in `lib/contribute/submissions.ts`) and the storage driver are the two seams to 
 ## Linking from parks and rides
 
 Park pages (`components/parks/park-page-shell.tsx`) and ride pages render `<ContributeBanner>` with a
-link built by `buildContributeHref()`; the contribute page reads it back with
-`parseEntityFromParams()` (`lib/contribute/prefill.ts`), so the entity arrives pre-assigned.
+link built by `buildContributeHref()`, which writes the park or ride into the fragment
+(`/de/contribute#type=park&id=…`). The form reads it back with `parseEntityFromHash()`
+(`lib/contribute/prefill.ts`) through `useLocationHash`, so the entity arrives pre-assigned until the
+reader picks another, and the page itself stays one static URL per language.
+
+A fragment never reaches a server or a cache, so about 7,600 parks and rides do not become as many
+URLs of the same form. With the entity in the query they did: Google listed the variants as
+"alternate page with proper canonical tag", and scrapers that ignore `nofollow` walked them in all
+six languages, which made `/contribute` the most-entered page of direct visits in the site
+statistic. A link that still carries the entity in its query gets a 308 to the fragment form in
+`proxy.ts` (`contributeQueryRedirect`, `lib/contribute/prefill-keys.ts`, kept free of zod for the
+proxy). `pnpm test:contribute-prefill` pins both directions.
 
 ## Rights
 

@@ -6,9 +6,18 @@ import type { BlogMenuPost } from '@/lib/navigation/blog-menu';
 /**
  * A post as a row of the guides panel, the same for the newest posts and for search results, and
  * of Parky's posts card in the chat: a small cover, the category, the title, one line of teaser,
- * and the two facts that decide a click, how old the post is and how long it takes.
+ * and the two facts that decide a click, how old the post is and how long it takes. `teaser`
+ * false leaves the teaser out, for a band that has not been opened yet.
  */
-export function MenuPostRow({ post, meta }: { post: BlogMenuPost; meta: string }) {
+export function MenuPostRow({
+  post,
+  meta,
+  teaser = true,
+}: {
+  post: BlogMenuPost;
+  meta: string;
+  teaser?: boolean;
+}) {
   return (
     <Link
       href={post.path}
@@ -45,7 +54,7 @@ export function MenuPostRow({ post, meta }: { post: BlogMenuPost; meta: string }
         <span className="text-foreground group-hover:text-primary line-clamp-2 text-sm leading-snug font-medium text-pretty transition-colors">
           {post.title}
         </span>
-        {post.excerpt && (
+        {teaser && post.excerpt && (
           <span className="text-muted-foreground mt-0.5 line-clamp-1 text-xs">{post.excerpt}</span>
         )}
         <span className="text-muted-foreground/80 mt-1 block text-[11px]">{meta}</span>

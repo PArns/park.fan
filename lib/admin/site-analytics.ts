@@ -145,40 +145,86 @@ export function withoutTrafficFilter(
 }
 
 /**
- * Which rows a report counts by network (`?datacenter=`): the API leaves the data centres' out
- * unless asked (clouds and hosters by the address's ASN; docs/features/site-analytics.md).
+ * The rows the API marks and keeps, each with a query parameter of its name: a data centre's
+ * (clouds and hosters by the address's ASN) and an automated visit's (one that opens without a
+ * referrer on a page that is not English, from a browser naming no language of the page). The
+ * reports leave both out unless asked (docs/features/site-analytics.md).
  */
-export const DATACENTER_SCOPES = ['exclude', 'include', 'only'] as const;
+export const MARKED_ROW_KINDS = ['datacenter', 'automated'] as const;
 
-/** One of {@link DATACENTER_SCOPES}. */
-export type DatacenterScope = (typeof DATACENTER_SCOPES)[number];
+/** One of {@link MARKED_ROW_KINDS}. */
+export type MarkedRowKind = (typeof MARKED_ROW_KINDS)[number];
 
-/** The switch's words for each {@link DatacenterScope}, and what each does when hovered. */
-export const DATACENTER_LABEL: Record<DatacenterScope, { label: string; title: string }> = {
-  exclude: {
-    label: 'ohne RZ',
-    title: 'Aufrufe aus Rechenzentren (Clouds und Hoster, nach dem Netz der Adresse) ausblenden',
+/** Which rows of one mark a report counts: none of them, them with the rest, or them alone. */
+export const MARKED_ROW_SCOPES = ['exclude', 'include', 'only'] as const;
+
+/** One of {@link MARKED_ROW_SCOPES}. */
+export type MarkedRowScope = (typeof MARKED_ROW_SCOPES)[number];
+
+/** The scope of each mark, as the address and the API name them. */
+export type MarkedRows = Record<MarkedRowKind, MarkedRowScope>;
+
+/** Each mark's switch: its name, and the words of each scope with what it does when hovered. */
+export const MARKED_ROW_LABEL: Record<
+  MarkedRowKind,
+  { name: string; scopes: Record<MarkedRowScope, { label: string; title: string }> }
+> = {
+  datacenter: {
+    name: 'Rechenzentren',
+    scopes: {
+      exclude: {
+        label: 'ohne RZ',
+        title:
+          'Aufrufe aus Rechenzentren (Clouds und Hoster, nach dem Netz der Adresse) ausblenden',
+      },
+      include: { label: 'mit RZ', title: 'Aufrufe aus Rechenzentren mitzählen' },
+      only: { label: 'nur RZ', title: 'Nur Aufrufe aus Rechenzentren zeigen' },
+    },
   },
-  include: { label: 'mit RZ', title: 'Aufrufe aus Rechenzentren mitzählen' },
-  only: { label: 'nur RZ', title: 'Nur Aufrufe aus Rechenzentren zeigen' },
+  automated: {
+    name: 'Automatisierte Besuche',
+    scopes: {
+      exclude: {
+        label: 'ohne Bots',
+        title:
+          'Automatisierte Besuche ausblenden: ohne Herkunft auf einer nicht englischen Seite, von einem Browser, der die Sprache der Seite nicht nennt',
+      },
+      include: { label: 'mit Bots', title: 'Automatisierte Besuche mitzählen' },
+      only: { label: 'nur Bots', title: 'Nur automatisierte Besuche zeigen' },
+    },
+  },
 };
 
 /** The scope an address asks for; the API's default, `exclude`, for anything else. */
-export function parseDatacenterScope(raw: string | null | undefined): DatacenterScope {
-  return (DATACENTER_SCOPES as readonly string[]).includes(raw ?? '')
-    ? (raw as DatacenterScope)
+export function parseMarkedRowScope(raw: string | null | undefined): MarkedRowScope {
+  return (MARKED_ROW_SCOPES as readonly string[]).includes(raw ?? '')
+    ? (raw as MarkedRowScope)
     : 'exclude';
 }
 
-/** What the page asks the API with, and what its address holds. */
-export interface TrafficQueryState {
+/** Each mark's scope from an address, `exclude` where it names none. */
+export function parseMarkedRows(params: { get(name: string): string | null }): MarkedRows {
+  return {
+    datacenter: parseMarkedRowScope(params.get('datacenter')),
+    automated: parseMarkedRowScope(params.get('automated')),
+  };
+}
+
+/** Puts each mark that is not `exclude`, the API's default, into a query. */
+export function setMarkedRowParams(params: URLSearchParams, rows: Partial<MarkedRows>): void {
+  for (const kind of MARKED_ROW_KINDS) {
+    const scope = rows[kind];
+    if (scope && scope !== 'exclude') params.set(kind, scope);
+  }
+}
+
+/** What the page asks the API with, and what its address holds; an absent mark sends nothing. */
+export interface TrafficQueryState extends Partial<MarkedRows> {
   range: TrafficRange;
   /** The step of the series the address asked for; `null` leaves it to the API's default. */
   interval?: SeriesInterval | null;
   locale: Locale | null;
   filters?: readonly TrafficFilter[];
-  /** Absent or `exclude` sends nothing: the API's default. */
-  datacenter?: DatacenterScope;
 }
 
 /**
@@ -194,9 +240,7 @@ export function trafficQuery(
   if (state.locale) params.set('locale', state.locale);
   for (const filter of serializeTrafficFilters(state.filters ?? []))
     params.append('filter', filter);
-  if (state.datacenter && state.datacenter !== 'exclude') {
-    params.set('datacenter', state.datacenter);
-  }
+  setMarkedRowParams(params, state);
   for (const [key, value] of Object.entries(extra)) params.set(key, String(value));
   return params.toString();
 }

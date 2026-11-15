@@ -9,6 +9,7 @@ import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { MenuAllLink } from '@/components/layout/menu-all-link';
 import { MostReadMenuColumn } from '@/components/layout/most-read-menu-column';
 import { NewsAge } from '@/components/blog/news-age';
+import { useMenuBandOpened } from '@/components/layout/menu-band';
 import { NewsUpdateBadge } from '@/components/blog/news-update-badge';
 import { BlogCoverFallback } from '@/components/blog/blog-cover-fallback';
 import { PhotoCredit } from '@/components/media/photo-credit';
@@ -18,11 +19,13 @@ import type { NewsMenu } from '@/lib/navigation/news-menu';
 /**
  * The news menu: one lead with a cover and teaser, then the headlines on a time line, each with its
  * age (`NewsAge`) rather than a category and a thumbnail on the right, so the dots keep the left
- * edge. It does not look like the blog panel on purpose, see `lib/navigation/news-menu.ts`.
+ * edge. It does not look like the blog panel on purpose, see `lib/navigation/news-menu.ts`. The
+ * lead's teaser appears once the band has been opened, as in `BlogMenuPanel`.
  * Strings come from `navigation`, never `blog`. Memoised for the same reason as `ParksMenuPanel`.
  */
 export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, total }: NewsMenu) {
   const t = useTranslations('navigation');
+  const opened = useMenuBandOpened();
   const [lead, ...wire] = items;
   if (!lead) return null;
 
@@ -68,7 +71,7 @@ export const NewsMenuPanel = memo(function NewsMenuPanel({ label, path, items, t
                 {lead.updatedOn && <NewsUpdateBadge date={lead.updatedOn} className="mr-2" />}
                 {lead.title}
               </span>
-              {lead.excerpt && (
+              {opened && lead.excerpt && (
                 <span className="text-muted-foreground mt-1.5 line-clamp-3 text-[13px] leading-relaxed">
                   {lead.excerpt}
                 </span>

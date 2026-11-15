@@ -1252,14 +1252,9 @@ const nextConfig: NextConfig = {
         // the browser; the HTML carries the PUBLIC site key and no token, so there is nothing in
         // it that belongs to one visitor. Both routes have `generateStaticParams()`.
         //
-        // The cost of that mistake is written down one file over, in this route's own docblock:
-        // every park and ride page links here through `buildContributeHref`, which mints one
-        // crawlable URL per entity, and over 24 h the page took **4 K requests and 154 MB — more
-        // than the park pages themselves**. The `rel="nofollow"` on those links stops new ones
-        // being walked; this is the half that stops paying for the ones already indexed.
-        //
-        // The query string stays in Cloudflare's cache key, so a prefilled variant and the bare
-        // page are separate entries and nobody gets somebody else's preselection.
+        // A park or ride page preselects itself through the fragment (`buildContributeHref`),
+        // which never reaches a cache, so every reader shares one cached page per language. A link
+        // with the entity in its query is answered by the proxy's 308 before it gets here.
         source: '/:locale/contribute/:path*',
         headers: edgeCache(CONTENT_WINDOW),
       },

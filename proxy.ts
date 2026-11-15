@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { routing } from './i18n/routing';
 import { parkCalendarRedirect } from './lib/parks/calendar-redirects';
 import { newsRedirect } from './lib/blog/news-redirects-rule';
+import { contributeQueryRedirect } from './lib/contribute/prefill-keys';
 import { unprefixedPathRedirect } from './lib/i18n/unprefixed-redirect';
 import { tripRegionRedirect } from './lib/trip-regions/redirects';
 
@@ -30,6 +31,16 @@ export default function proxy(request: NextRequest) {
   const newsTarget = newsRedirect(request.nextUrl.pathname);
   if (newsTarget) {
     return NextResponse.redirect(new URL(newsTarget, request.url), 308);
+  }
+
+  // A contribute link with the park or ride in its query: one URL per entity for a crawler, so the
+  // values move into the fragment, which the form reads.
+  const contributeTarget = contributeQueryRedirect(
+    request.nextUrl.pathname,
+    request.nextUrl.searchParams
+  );
+  if (contributeTarget) {
+    return NextResponse.redirect(new URL(contributeTarget, request.url), 308);
   }
 
   // A path without a locale prefix whose target does not depend on the visitor (a localized

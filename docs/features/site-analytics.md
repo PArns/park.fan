@@ -159,12 +159,20 @@ Every call goes through the admin proxy as `/api/admin/analytics/…`, which map
   chip that takes itself off, and the event, SEO and search pages carry them too. A language is the
   language switch, not a filter. Filters combine with AND, and a second press on the same
   dimension replaces the first.
-- **Data centres are left out unless asked for.** The API marks a hit from a cloud or hosting
-  network (by the address's ASN, never stored) and leaves those hits out of every report by
-  default, since they are programs far more often than people. The switch „Rechenzentren" in the
-  filter bar and on the live page (`?datacenter=include|only`, absent for `exclude`) counts them in
-  or shows them alone; `DATACENTER_SCOPES` and `DATACENTER_LABEL` in `lib/admin/site-analytics.ts`
-  hold its values and words. The most read lists never count them.
+- **Data centres and automated visits are left out unless asked for.** The API marks a hit from
+  a cloud or hosting network (by the address's ASN, never stored), and every hit of a visit that
+  opens without a referrer on a page that is not English, from a browser whose `Accept-Language`
+  names no language of the page: headless browsers on home lines open visits that way, one
+  language version after the other. It keeps both and leaves them out of every report by default
+  ([data centres](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/site-analytics.md#data-centres),
+  [automated visits](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/site-analytics.md#automated-visits)).
+  The switches „Rechenzentren" (`ohne RZ`, `mit RZ`, `nur RZ`) and „Automatisierte Besuche"
+  (`ohne Bots`, `mit Bots`, `nur Bots`) in the filter bar and on the live page
+  (`?datacenter=include|only`, `?automated=include|only`, absent for `exclude`) count them in or
+  show them alone; with `nur` on both, a report shows the rows of both marks. `MarkedRowSwitches`
+  draws the pair, and `MARKED_ROW_KINDS`, `MARKED_ROW_SCOPES` and `MARKED_ROW_LABEL` in
+  `lib/admin/site-analytics.ts` hold their parameters, values and words. A CSV names both. The
+  most read lists never count either.
 - **The window, the step and the language are in the address.** The window is `?days=1|7|28|90|365` (an older `days=30` still opens, but the default is 28 days)
   or `?from=2026-10-01&to=2026-10-27` (UTC days, at most 366, not after today), the step is
   `?interval=hour|day|week|month`, the language `?locale=de`, so a view is a link, and `replace`
