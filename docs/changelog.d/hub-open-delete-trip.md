@@ -1,4 +1,4 @@
-### Die Kapitel der Reise-Hubs sind immer offen, und eine Reise lässt sich löschen
+### Reise-Hubs mit offenen Kapiteln, dem ruhigsten Tag je Park und „Reise löschen“
 
 #### Offene Kapitel
 
@@ -45,3 +45,31 @@ des Hero (`HEAVY_GLASS`, Füllung und `backdrop-blur-xl`) mit einem hellen Rand 
 nur auf Fotos: Auf einer schlichten Seite verschwindet der helle Rand im Hintergrund, dort bleibt
 `outline` ([Tokens](../design/tokens.md#glass)). Im Deutschen heißt die Zeile darunter jetzt „Dein
 Plan für … ist in diesem Browser gespeichert.“ statt „gemerkt“.
+
+#### Im Wochenkalender zählt der ruhigste Tag je Park
+
+Der Wochenkalender in Kapitel 02 beantwortete, welcher Park eines Resorts an einem Tag der beste ist:
+ein Ring um den Park mit der kürzesten Schlange im Resort und darüber die Zeile „Bester Park“. Wer
+alle Parks einmal besuchen will, braucht die andere Richtung: welcher Tag der Woche für jeden Park
+der leerste ist. Ring und Zeile sind weg, samt `dayPick`, `resortHasChoice`, `bestAtResort` und
+den Texten `pickRow`, `pickRowGroup`, `cellBest`, `more`, `earlyElsewhere`, `today` und
+`legend.ring` in sechs Sprachen. Der ruhigste Tag jedes Parks (`quietestDay`, dieselbe Regel wie
+bisher für den Stern: niedrigste `headlinerWait`, bei Gleichstand der längere Tag, nichts bei einem
+echten Gleichstand oder einem Vorjahrestag) trägt jetzt den Ring in Textfarbe (`HUB_CELL_BEST`) und
+den Stern, und neben dem Parknamen steht er mit Wartezeit („★ Mi., 18. · 30 Min“, `QuietestNote`).
+Auf dem Telefon ersetzt dasselbe Raster die Tagesliste, die pro Resort nur den besten Park zeigte:
+eine Karte je Resort mit den Daten der Woche und je Park sieben 44-px-Kacheln
+(`CalendarDayTile` mit der neuen Dichte `mini`). Legende und Unterzeile sagen es: „Bei jedem Park ist
+sein ruhigster Tag der Woche markiert“. Die Antwort im Kopf („Bester Park je Resort“) und die Frage
+in der H1 („Welcher Park an welchem Tag?“) bleiben: Sie stammen nicht aus der entfernten Zeile, und
+die H1 trägt den Suchbegriff der Seite.
+
+#### Auswahlfelder mit eigenem Pfeil
+
+Die Auswahl „Hotel“ im Tagesblatt des Hubs zeichnete den Pfeil des Browsers, an den rechten Rand
+gedrückt und im dunklen Thema hell. Die Hotelgebiete sind zu viele für Segmente (5 in Orlando, 14 in
+Japan), also bleibt es ein natives `<select>`, jetzt aus `PlanSelect`
+(`components/trip-regions/planner/plan-controls.tsx`): im Stil von `PLAN_FIELD`, mit
+`appearance-none`, einem eigenen Pfeil innen mit Abstand nach rechts und `color-scheme: dark` im
+dunklen Thema, damit auch die Liste dunkel aufgeht. Die beiden Auswahlfelder der Ferien-Suche
+(Land, Region) in `plan-find.tsx` nutzen dieselbe Komponente.

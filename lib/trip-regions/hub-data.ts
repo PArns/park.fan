@@ -252,35 +252,6 @@ export function quietestDay(days: readonly TripCalendarDay[], slug: string): str
   return open.every((o) => shownWait(o.park)! >= shown) ? first.date : null;
 }
 
-/**
- * The park a day's column names above the tiles: with one group shown, that group's first park
- * (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first
- * answer names (`glanceLines`), by `headlinerWait`, a tie to the longer day. None on a last-year
- * day, which is never offered as a pick, or where no park has a figure.
- */
-export function dayPick(
-  day: TripCalendarDay,
-  region: TripRegion,
-  group?: RegionGroup | null
-): { park: TripRegionPark; day: TripParkDay & { headlinerWait: number } } | null {
-  if (dayBasis(day) === 'last_year') return null;
-  const top = group
-    ? rankGroupParks(day, group.parks, group.key)[0]
-    : rankGroupParks(
-        day,
-        glanceLines(day, region).map((line) => line.park)
-      )[0];
-  return top && isRankable(top.day) ? { park: top.park, day: top.day } : null;
-}
-
-/**
- * Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A
- * resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
- */
-export function resortHasChoice(day: TripCalendarDay, group: RegionGroup): boolean {
-  return group.parks.filter((p) => isRankable(day.parks[p.slug])).length > 1;
-}
-
 /** A resort's pick on a day, as the hub names it. */
 export interface ShortestLine {
   group: RegionGroup;
@@ -370,12 +341,14 @@ const HUB_DATE_STYLES = {
   long: { weekday: 'long', day: 'numeric', month: 'long' },
   day: { day: 'numeric' },
   weekday: { weekday: 'short' },
+  weekdayDay: { weekday: 'short', day: 'numeric' },
   dayMonth: { day: 'numeric', month: 'short' },
 } satisfies Record<string, Intl.DateTimeFormatOptions>;
 
 /**
  * A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov",
- * `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
+ * `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `weekdayDay` "Thu 12",
+ * `dayMonth` "12 Nov".
  */
 export function formatHubDate(
   date: string,
