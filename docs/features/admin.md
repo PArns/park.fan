@@ -445,6 +445,14 @@ problem in German; a 400 from the API shows in the save bar like every other sav
 single-window fields (`curatedOutOfServiceFrom`, `…To`, `…ToUncertain`) are hidden: by a `legacy`
 or `hidden` flag on the descriptor, or by key when a `periods` field sits in the same group.
 
+A ride's performance times (group „Vorstellungen“) are one `performances` field,
+`curatedPerformanceSchedules`: rows of „ab“, „bis“ and the start times in one input, comma-separated
+(„13:00, 14:00, 15:00“). The input is split at its commas as typed, so a trailing comma survives the
+next render; the save trims, drops blanks and sorts (`app/admin/_lib/performance-schedules.ts`). The
+editor's checks mirror the API's: „ab“ not after „bis“, at least one time per row, every time
+`HH:MM`, no two rows on one day (a row without dates holds every day and stands alone), at most
+`max` rows and `maxTimes` times. What the site shows: [performance schedules](../api/performance-schedules.md).
+
 On the public side the park facts arrive as one `info` object on the park detail payload and render
 in `ParkInfoCard` (`components/parks/park-info-card.tsx`), a Server Component that renders nothing
 for a park nobody has curated. The same values add street, postcode, telephone and `sameAs` to the

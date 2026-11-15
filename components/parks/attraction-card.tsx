@@ -42,6 +42,9 @@ import { HalloweenMazeBadge } from './halloween-maze-badge';
 import { WaitTimeSparklineCard } from './wait-time-sparkline-card';
 import { TrendPill } from './trend-pill';
 import { OutageNote } from './outage-note';
+import { PerformanceBadge } from './performance-badge';
+import { PerformanceCountdown } from './performance-countdown';
+import { performanceTimesShown } from '@/lib/utils/performance-schedule';
 import { RideOpensAtNote } from './ride-opens-at-note';
 
 interface AttractionCardProps {
@@ -161,7 +164,6 @@ export function AttractionCard({
     parkStatus !== undefined &&
     parkStatus !== 'OPERATING' &&
     parkStatus !== 'UNKNOWN';
-  const waitTime = isOperatingOrUnknown ? getStandbyWait(attraction) : null;
   const worksPeriods = worksPeriodsOf({
     worksPeriod: 'worksPeriod' in attraction ? attraction.worksPeriod : null,
     worksPeriods: 'worksPeriods' in attraction ? attraction.worksPeriods : null,
@@ -173,6 +175,19 @@ export function AttractionCard({
   const effectiveTimezone =
     timezone ??
     ('park' in attraction && attraction.park?.timezone ? attraction.park.timezone : undefined);
+  // A ride that starts at set times shows its next start in place of the wait, and a CLOSED from a
+  // feed that does not know the programme stops reading as a closure.
+  const performanceTimes = effectiveTimezone
+    ? performanceTimesShown({
+        schedules:
+          'performanceSchedules' in attraction ? attraction.performanceSchedules : undefined,
+        worksPeriods,
+        status,
+        parkStatus,
+        day: todayIso,
+      })
+    : null;
+  const waitTime = isOperatingOrUnknown && !performanceTimes ? getStandbyWait(attraction) : null;
   const parkName =
     parkNameProp ??
     ('park' in attraction && attraction.park?.name
@@ -207,11 +222,12 @@ export function AttractionCard({
   // Gates above read the raw block; what the badges print is the five-minute figure the card shows.
   const ropeDropShown = ropeDropData ? ropeDropDisplayWaits(ropeDropData) : null;
 
-  // The bottom glass panel (wait time + sparkline) only exists when there is a
-  // live wait time. Without it row 3 is empty rather than covered, so the photo
+  // The bottom glass panel (wait time + sparkline, or the next performance) only exists when
+  // there is one of the two. Without it row 3 is empty rather than covered, so the photo
   // the visitor sees runs all the way down — and the framed photo layer has to
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
-  const hasBottomPanel = isOperatingOrUnknown && waitTime !== null;
+  const waitShown = isOperatingOrUnknown && waitTime !== null;
+  const hasBottomPanel = performanceTimes !== null || waitShown;
 
   // What the top panel's lower edge (the seam between the upper glass and what is under it) sits
   // on. With no bottom panel and no photo there is only the flat placeholder, so no seam is drawn.
@@ -403,7 +419,16 @@ export function AttractionCard({
                 )}
               >
                 {heading}
-                {hasBottomPanel && (
+                {performanceTimes && effectiveTimezone && (
+                  <PerformanceCountdown
+                    times={performanceTimes}
+                    timezone={effectiveTimezone}
+                    variant="row"
+                    figureClassName="text-[22px] font-extrabold tracking-[-0.02em] tabular-nums"
+                    className="flex shrink-0 sm:hidden"
+                  />
+                )}
+                {waitShown && (
                   <span className="flex shrink-0 leading-none sm:hidden">
                     <WaitTimeValue
                       minutes={roundWaitTo5(waitTime)}
@@ -461,13 +486,18 @@ export function AttractionCard({
                 'max-sm:mt-[6px] max-sm:min-h-[22px] max-sm:flex-nowrap max-sm:overflow-hidden max-sm:[mask-image:linear-gradient(to_right,black_85%,transparent)] max-sm:*:flex max-sm:*:shrink-0'
             )}
           >
-            {!parkClosed && !statusShownByWorks && (
-              <ParkStatusBadge
-                status={status}
-                className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
-              />
+            {performanceTimes ? (
+              <PerformanceBadge />
+            ) : (
+              !parkClosed &&
+              !statusShownByWorks && (
+                <ParkStatusBadge
+                  status={status}
+                  className={phoneRow && hasBottomPanel ? 'max-sm:hidden!' : undefined}
+                />
+              )
             )}
-            {isOperatingOrUnknown && crowdLevel && (
+            {isOperatingOrUnknown && !performanceTimes && crowdLevel && (
               // The scale is this ride's own, in minutes, and only where the API sent the
               // baseline it rated against — without one the badge stands alone.
               <RideCrowdScaleTooltip
@@ -579,17 +609,19 @@ export function AttractionCard({
                 closed, or the ride's own later opening where the park page knows one. Never
                 beside an outage line, which says more, and only under a CLOSED badge — see
                 `NotRunTodayNote`. */}
-            {status === 'CLOSED' && !('outage' in attraction && attraction.outage) && (
-              <RideOpensAtNote
-                slug={attraction.slug}
-                notRunToday={'notRunToday' in attraction ? attraction.notRunToday : undefined}
-                runsOnWeekdays={
-                  'runsOnWeekdays' in attraction ? attraction.runsOnWeekdays : undefined
-                }
-                timezone={effectiveTimezone}
-                variant="compact"
-              />
-            )}
+            {status === 'CLOSED' &&
+              !performanceTimes &&
+              !('outage' in attraction && attraction.outage) && (
+                <RideOpensAtNote
+                  slug={attraction.slug}
+                  notRunToday={'notRunToday' in attraction ? attraction.notRunToday : undefined}
+                  runsOnWeekdays={
+                    'runsOnWeekdays' in attraction ? attraction.runsOnWeekdays : undefined
+                  }
+                  timezone={effectiveTimezone}
+                  variant="compact"
+                />
+              )}
           </div>
         </div>
 
@@ -609,7 +641,7 @@ export function AttractionCard({
               objectPosition={objectPosition}
               src={backgroundImage}
               alt={stripNewPrefix(attraction.name)}
-              closed={!isOperatingOrUnknown}
+              closed={!isOperatingOrUnknown && !performanceTimes}
               hideOnMobile
             />
           )}
@@ -639,100 +671,123 @@ export function AttractionCard({
               }}
             />
 
-            <div className="relative flex flex-col gap-2">
-              <div className="flex items-stretch gap-3">
-                {/* Always reserves a trend-pill slot, so cards with and without a trend keep their
-                    sparkline rows aligned. */}
-                <div className="flex shrink-0 flex-col gap-1" style={{ width: 88 }}>
-                  <div className="flex items-baseline gap-1 leading-none">
-                    <WaitTimeValue
-                      minutes={roundWaitTo5(waitTime)}
-                      className="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
-                    />
-                    <span className="text-[12px] font-medium" style={{ color: 'var(--pk-text-3)' }}>
-                      min
-                    </span>
-                  </div>
-                  <div className="mt-1 min-h-[24px]">
-                    {(() => {
-                      const t = trend ?? { direction: 'stable' as const, delta: 0 };
-                      return <TrendPill direction={t.direction} delta={t.delta} />;
-                    })()}
-                  </div>
-                </div>
-
-                <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
-                  <WaitTimeSparklineCard
-                    history={history ?? []}
-                    timezone={effectiveTimezone}
-                    fallbackWaitTime={waitTime}
-                  />
-                </div>
+            {performanceTimes && effectiveTimezone && (
+              <div className="relative flex flex-col gap-1.5">
+                <span
+                  className="text-[10.5px] font-semibold tracking-[0.08em] uppercase"
+                  style={{ color: 'var(--pk-text-3)' }}
+                >
+                  {t('performance.next')}
+                </span>
+                <PerformanceCountdown
+                  times={performanceTimes}
+                  timezone={effectiveTimezone}
+                  variant="block"
+                  figureClassName="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
+                />
               </div>
-
-              {(stats?.peakWaitToday != null ||
-                stats?.avgWaitToday != null ||
-                bestSlot ||
-                ropeDrop) && (
-                <>
-                  <div className="h-px w-full" style={{ background: 'var(--pk-panel-border)' }} />
-                  {(stats?.peakWaitToday != null || stats?.avgWaitToday != null) && (
-                    <div
-                      className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] font-medium"
-                      style={{ color: 'var(--pk-text-2)' }}
-                    >
-                      {stats?.peakWaitToday != null && (
-                        <span className="flex items-center gap-1">
-                          <ChartColumn
-                            className="h-[11px] w-[11px] shrink-0"
-                            style={{ color: 'var(--pk-text-3)' }}
-                            aria-hidden="true"
-                          />
-                          <span>{t('cardHigh', { time: roundWaitTo5(stats.peakWaitToday) })}</span>
-                        </span>
-                      )}
-                      {stats?.peakWaitToday != null && stats?.avgWaitToday != null && (
-                        <span style={{ color: 'var(--pk-text-3)' }} aria-hidden="true">
-                          ·
-                        </span>
-                      )}
-                      {stats?.avgWaitToday != null && (
-                        <span className="flex items-center gap-1">
-                          <Clock
-                            className="h-[11px] w-[11px] shrink-0"
-                            style={{ color: 'var(--pk-text-3)' }}
-                            aria-hidden="true"
-                          />
-                          <span>
-                            {t('cardAvgToday', {
-                              time: roundWaitTo5(stats.avgWaitToday),
-                            })}
-                          </span>
-                        </span>
-                      )}
+            )}
+            {waitShown && (
+              <div className="relative flex flex-col gap-2">
+                <div className="flex items-stretch gap-3">
+                  {/* Always reserves a trend-pill slot, so cards with and without a trend keep
+                      their sparkline rows aligned. */}
+                  <div className="flex shrink-0 flex-col gap-1" style={{ width: 88 }}>
+                    <div className="flex items-baseline gap-1 leading-none">
+                      <WaitTimeValue
+                        minutes={roundWaitTo5(waitTime)}
+                        className="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
+                      />
+                      <span
+                        className="text-[12px] font-medium"
+                        style={{ color: 'var(--pk-text-3)' }}
+                      >
+                        min
+                      </span>
                     </div>
-                  )}
-                  {/* Reserves the one-line row, so the client-rendered value (it needs the current
+                    <div className="mt-1 min-h-[24px]">
+                      {(() => {
+                        const t = trend ?? { direction: 'stable' as const, delta: 0 };
+                        return <TrendPill direction={t.direction} delta={t.delta} />;
+                      })()}
+                    </div>
+                  </div>
+
+                  <div className="relative min-w-0 flex-1" style={{ color: 'var(--pk-text-1)' }}>
+                    <WaitTimeSparklineCard
+                      history={history ?? []}
+                      timezone={effectiveTimezone}
+                      fallbackWaitTime={waitTime}
+                    />
+                  </div>
+                </div>
+
+                {(stats?.peakWaitToday != null ||
+                  stats?.avgWaitToday != null ||
+                  bestSlot ||
+                  ropeDrop) && (
+                  <>
+                    <div className="h-px w-full" style={{ background: 'var(--pk-panel-border)' }} />
+                    {(stats?.peakWaitToday != null || stats?.avgWaitToday != null) && (
+                      <div
+                        className="flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] font-medium"
+                        style={{ color: 'var(--pk-text-2)' }}
+                      >
+                        {stats?.peakWaitToday != null && (
+                          <span className="flex items-center gap-1">
+                            <ChartColumn
+                              className="h-[11px] w-[11px] shrink-0"
+                              style={{ color: 'var(--pk-text-3)' }}
+                              aria-hidden="true"
+                            />
+                            <span>
+                              {t('cardHigh', { time: roundWaitTo5(stats.peakWaitToday) })}
+                            </span>
+                          </span>
+                        )}
+                        {stats?.peakWaitToday != null && stats?.avgWaitToday != null && (
+                          <span style={{ color: 'var(--pk-text-3)' }} aria-hidden="true">
+                            ·
+                          </span>
+                        )}
+                        {stats?.avgWaitToday != null && (
+                          <span className="flex items-center gap-1">
+                            <Clock
+                              className="h-[11px] w-[11px] shrink-0"
+                              style={{ color: 'var(--pk-text-3)' }}
+                              aria-hidden="true"
+                            />
+                            <span>
+                              {t('cardAvgToday', {
+                                time: roundWaitTo5(stats.avgWaitToday),
+                              })}
+                            </span>
+                          </span>
+                        )}
+                      </div>
+                    )}
+                    {/* Reserves the one-line row, so the client-rendered value (it needs the current
                       time) swaps in without a shift. `h-4` is that row's `text-xs` line. */}
-                  {bestSlot && (
-                    <Suspense fallback={<Skeleton className="h-4 w-28" />}>
-                      <AttractionCardBestTime
-                        bestSlot={bestSlot}
-                        effectiveTimezone={effectiveTimezone}
-                      />
-                    </Suspense>
-                  )}
-                  {ropeDrop && (
-                    <Suspense fallback={<Skeleton className="h-4 w-28" />}>
-                      <AttractionCardRopeDrop
-                        ropeDrop={ropeDrop}
-                        effectiveTimezone={effectiveTimezone}
-                      />
-                    </Suspense>
-                  )}
-                </>
-              )}
-            </div>
+                    {bestSlot && (
+                      <Suspense fallback={<Skeleton className="h-4 w-28" />}>
+                        <AttractionCardBestTime
+                          bestSlot={bestSlot}
+                          effectiveTimezone={effectiveTimezone}
+                        />
+                      </Suspense>
+                    )}
+                    {ropeDrop && (
+                      <Suspense fallback={<Skeleton className="h-4 w-28" />}>
+                        <AttractionCardRopeDrop
+                          ropeDrop={ropeDrop}
+                          effectiveTimezone={effectiveTimezone}
+                        />
+                      </Suspense>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
           </div>
         )}
       </article>

@@ -1648,7 +1648,8 @@
       "live": "Nu <b>{min}</b> min.",
       "liveClosed": "Momenteel gesloten",
       "plan": "Beste tijd <b>{time}</b>",
-      "history": "<b>{days}</b> dagen · piek <b>{max}</b> min."
+      "history": "<b>{days}</b> dagen · piek <b>{max}</b> min.",
+      "performance": "Volgende voorstelling <b>{time}</b>"
     },
     "alternatives": {
       "heading": "Kortere wachtrijen in de buurt",
@@ -1710,7 +1711,16 @@
     "riddenMark": "Markeren als gereden",
     "riddenUnmark": "Markering “gereden” weghalen",
     "riddenProgress": "{count} van {total} attracties gereden",
-    "tabTitleWait": "{minutes} min · {title}"
+    "tabTitleWait": "{minutes} min · {title}",
+    "performance": {
+      "badge": "Vaste voorstellingen",
+      "hint": "Begint op vaste tijden en draait niet doorlopend. Je gaat naar binnen voor de volgende voorstelling.",
+      "next": "Volgende voorstelling",
+      "in": "over {duration}",
+      "now": "begint nu",
+      "noneLeft": "Vandaag geen voorstelling meer",
+      "todayList": "Voorstellingen vandaag"
+    }
   },
   "nearby": {
     "title": "Parken in de buurt",

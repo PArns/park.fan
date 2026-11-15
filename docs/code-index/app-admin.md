@@ -88,6 +88,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `commitPhoto` _function_: Commit one photograph into the open media session.
 - Types: `ParkSuggestion`, `RideSuggestion`, `AnalyzedFile`, `PhotoSidecar`, `CommitPhotoInput`, `CommitPhotoResult`
 
+### [`_lib/performance-schedules.ts`](../../app/admin/_lib/performance-schedules.ts)
+
+- `cleanTimes` _function_: A row's start times as the backend stores them: trimmed, without blanks, unique and sorted.
+- `performanceRows` _function_: The value of a `performances` field as rows; anything else reads as no schedules.
+- `performanceSchedulesForSave` _function_: The rows as a save sends them: in the stored order, each with its times cleaned.
+- `performanceSchedulesError` _function_: The API's checks on a schedule list, run before the save so the editor sees the problem at the row. Returns the first problem as a German sentence, or null when the list may be saved.
+- Types: `PerformanceScheduleRow`
+
 ### [`_lib/public-path.ts`](../../app/admin/_lib/public-path.ts)
 
 - `slugsFromPublicPath` _function_: `/<locale>/parks/<continent>/<country>/<city>/<park>[/<ride>]` → its slugs.
@@ -172,8 +180,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `isHiddenCuratedField` _function_: Whether the editor leaves a field out: flagged `legacy` or `hidden` by the backend, or one of the old single-window columns while a `periods` field in the same group already holds their value.
 - `sortWorksPeriods` _function_: The windows in the order the backend stores them: by start, an open start first, then by end.
 - `worksPeriodsError` _function_: The API's checks on a window list, run before the save so the editor sees the problem at the row. Returns the first problem as a German sentence, or null when the list may be saved.
+- `firstOverlap` _function_: The first two windows that share a day, in the stored order, or null. Sorted by start, a window overlaps an earlier one exactly when it starts on or before the furthest end seen so far. Both bounds are inclusive, an open end runs forever.
+- `dayWindowLabel` _function_: A window as the editor names it in a message: „14.11.2026–24.01.2027", `…` for an open bound.
 - `MAX_WORKS_PERIODS` _const_: The backend's cap on windows per ride.
-- Types: `WorksPeriodRow`
+- Types: `WorksPeriodRow`, `DayWindowRow`
 
 ### [`_overview/area-table.tsx`](../../app/admin/_overview/area-table.tsx)
 

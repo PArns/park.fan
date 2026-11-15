@@ -18,11 +18,18 @@ import { adminFetch, useInvalidateAdmin } from '../_lib/api';
 import type { CuratedField, CurationResponse } from '../_lib/types';
 import {
   MAX_WORKS_PERIODS,
+  dayWindowLabel,
   isHiddenCuratedField,
   sortWorksPeriods,
   worksPeriodsError,
   type WorksPeriodRow,
 } from '../_lib/works-periods';
+import {
+  performanceRows,
+  performanceSchedulesError,
+  performanceSchedulesForSave,
+  type PerformanceScheduleRow,
+} from '../_lib/performance-schedules';
 
 /** ⌘S on a Mac, Strg+S everywhere else. Read once, in the browser. */
 function saveShortcutLabel(): string {
@@ -97,6 +104,12 @@ function formatFieldValue(field: CuratedField, value: unknown): string {
             )
             .join(', ')
         : '—';
+    case 'performances':
+      return performanceRows(value).length > 0
+        ? performanceRows(value)
+            .map((row) => `${dayWindowLabel(row)}: ${row.times.join(', ')}`)
+            .join('; ')
+        : '—';
     default:
       return String(value);
   }
@@ -116,6 +129,14 @@ function formatDay(value: unknown): string {
 /** The value of a `periods` field as rows; anything else reads as no windows. */
 function periodRows(value: unknown): WorksPeriodRow[] {
   return Array.isArray(value) ? (value as WorksPeriodRow[]) : [];
+}
+
+/** What a list field's rows break of the API's checks, or null; other fields have no such check. */
+function listFieldError(field: CuratedField, value: unknown): string | null {
+  if (field.type === 'periods') return worksPeriodsError(periodRows(value));
+  if (field.type === 'performances')
+    return performanceSchedulesError(performanceRows(value), field);
+  return null;
 }
 
 function sameValue(a: unknown, b: unknown): boolean {
@@ -140,7 +161,7 @@ function CuratedFieldRow({
     value !== undefined &&
     value !== '' &&
     !(Array.isArray(value) && value.length === 0);
-  const error = field.type === 'periods' && dirty ? worksPeriodsError(periodRows(value)) : null;
+  const error = dirty ? listFieldError(field, value) : null;
   const agreesWithUpstream =
     hasCorrection && !field.humanOnly && sameValue(value, field.syncedValue);
 
@@ -316,6 +337,18 @@ function FieldControl({
         />
       );
 
+    case 'performances':
+      return (
+        <PerformancesEditor
+          id={id}
+          label={field.label}
+          max={field.max}
+          disabled={disabled}
+          value={performanceRows(value)}
+          onChange={onChange}
+        />
+      );
+
     case 'months':
       return (
         <MonthPicker
@@ -427,6 +460,101 @@ function PeriodsEditor({
       >
         <Plus className="h-4 w-4" aria-hidden="true" />
         Wartungsfenster hinzufügen
+      </Button>
+    </div>
+  );
+}
+
+/**
+ * The rows of a `performances` field: „ab" and „bis" per schedule, and its start times in one
+ * input, comma-separated. The input is split at its commas as typed, so a trailing comma survives
+ * the next render; the save trims and sorts.
+ */
+function PerformancesEditor({
+  id,
+  label,
+  max,
+  value,
+  onChange,
+  disabled,
+}: {
+  id: string;
+  label: string;
+  max?: number;
+  value: PerformanceScheduleRow[];
+  onChange: (value: unknown) => void;
+  disabled: boolean;
+}) {
+  const update = (index: number, patch: Partial<PerformanceScheduleRow>) =>
+    onChange(value.map((row, i) => (i === index ? { ...row, ...patch } : row)));
+  const remove = (index: number) => {
+    const next = value.filter((_, i) => i !== index);
+    onChange(next.length > 0 ? next : null);
+  };
+
+  return (
+    <div id={id} role="group" aria-label={label} className="space-y-2">
+      {value.length === 0 && (
+        <p className="text-muted-foreground text-xs">Keine Vorstellungszeiten eingetragen.</p>
+      )}
+      {value.map((row, index) => {
+        const name = `${label} ${index + 1}`;
+        return (
+          <div key={index} className="flex flex-wrap items-center gap-2">
+            <label className="text-muted-foreground flex items-center gap-1.5 text-xs">
+              ab
+              <TextInput
+                type="date"
+                disabled={disabled}
+                aria-label={`${name}: ab`}
+                value={row.from ?? ''}
+                onChange={(event) => update(index, { from: event.target.value || null })}
+                className="w-40"
+              />
+            </label>
+            <label className="text-muted-foreground flex items-center gap-1.5 text-xs">
+              bis
+              <TextInput
+                type="date"
+                disabled={disabled}
+                aria-label={`${name}: bis`}
+                value={row.to ?? ''}
+                onChange={(event) => update(index, { to: event.target.value || null })}
+                className="w-40"
+              />
+            </label>
+            <label className="text-muted-foreground flex min-w-60 flex-1 items-center gap-1.5 text-xs">
+              um
+              <TextInput
+                disabled={disabled}
+                aria-label={`${name}: Startzeiten`}
+                placeholder="13:00, 14:00, 15:00"
+                value={row.times.join(',')}
+                onChange={(event) => update(index, { times: event.target.value.split(',') })}
+              />
+            </label>
+            <button
+              type="button"
+              disabled={disabled}
+              onClick={() => remove(index)}
+              aria-label={`${name} entfernen`}
+              title="Zeile entfernen"
+              className="text-muted-foreground hover:text-destructive rounded p-1.5 disabled:opacity-40"
+            >
+              <Trash2 className="h-3.5 w-3.5" aria-hidden="true" />
+            </button>
+          </div>
+        );
+      })}
+      <Button
+        type="button"
+        variant="ghost"
+        size="sm"
+        disabled={disabled || (max !== undefined && value.length >= max)}
+        onClick={() => onChange([...value, { from: null, to: null, times: [] }])}
+      >
+        <Plus className="h-4 w-4" aria-hidden="true" />
+        Zeitraum hinzufügen
       </Button>
     </div>
   );
@@ -586,10 +714,7 @@ function CuratedFieldsEditor({
   const dirty = form.dirtyKeys.length > 0;
   const dirtyKeySet = new Set(form.dirtyKeys);
   const invalid = fields.some(
-    (field) =>
-      field.type === 'periods' &&
-      dirtyKeySet.has(field.key) &&
-      worksPeriodsError(periodRows(form.values[field.key])) !== null
+    (field) => dirtyKeySet.has(field.key) && listFieldError(field, form.values[field.key]) !== null
   );
 
   function handleSave() {
@@ -597,11 +722,14 @@ function CuratedFieldsEditor({
     const changed: FieldValues = {};
     for (const key of form.dirtyKeys) {
       const value = form.values[key];
-      // A window list is replaced whole, so it goes out complete and in the stored order.
+      // A list is replaced whole, so it goes out complete and in the stored order.
+      const type = fields.find((field) => field.key === key)?.type;
       changed[key] =
-        fields.find((field) => field.key === key)?.type === 'periods'
+        type === 'periods'
           ? sortWorksPeriods(periodRows(value))
-          : value;
+          : type === 'performances' && value !== null
+            ? performanceSchedulesForSave(performanceRows(value))
+            : value;
     }
     onSave({ fields: changed, reason: reason.trim(), sourceUrl: sourceUrl.trim() });
     setReason('');

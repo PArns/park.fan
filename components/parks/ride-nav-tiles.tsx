@@ -16,6 +16,13 @@ import { useMinuteNowDate } from '@/lib/hooks/use-minute-now';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import { formatTime } from '@/lib/utils/intl-format';
+import { parkDayOf, parkWallClock } from '@/lib/utils/park-day';
+import {
+  formatPerformanceTime,
+  nextPerformance,
+  performanceTimesShown,
+} from '@/lib/utils/performance-schedule';
+import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { useLocale } from 'next-intl';
 import { cn } from '@/lib/utils';
 import type { ParkAttraction } from '@/lib/api/types';
@@ -110,7 +117,22 @@ export function RideNavTiles({
    * the display status for the same reason.
    */
   const status = getLiveAttractionStatus(live, undefined);
-  const wait = status === 'OPERATING' ? getStandbyWait(live) : null;
+  // A ride that starts at set times names its next start, as the panel above does. The park's status
+  // comes with the detail response, so the tile says „geschlossen" until it has one.
+  const performanceTimes = browserNow
+    ? performanceTimesShown({
+        schedules: attraction.performanceSchedules,
+        worksPeriods: worksPeriodsOf(attraction),
+        status,
+        parkStatus: detail?.park?.status,
+        day: parkDayOf(browserNow, timezone),
+      })
+    : null;
+  const nextShow =
+    performanceTimes && browserNow
+      ? nextPerformance(performanceTimes, parkWallClock(browserNow, timezone).time)
+      : null;
+  const wait = status === 'OPERATING' && !performanceTimes ? getStandbyWait(live) : null;
 
   /** The next recommended slot still ahead of the reader — the plan tile's whole point. */
   const nextSlot = useMemo(() => {
@@ -158,8 +180,14 @@ export function RideNavTiles({
             // card above, and a tile labelled „Wartezeit jetzt" that scrolled past it to a chart
             // would lie about where it goes.
             label: t('todayChart.title'),
-            hint:
-              wait !== null
+            hint: performanceTimes
+              ? nextShow
+                ? t.rich('tiles.performance', {
+                    time: formatPerformanceTime(nextShow.time, locale),
+                    b: bold,
+                  })
+                : t('performance.noneLeft')
+              : wait !== null
                 ? t.rich('tiles.live', { min: roundWaitTo5(wait), b: bold })
                 : t('tiles.liveClosed'),
           },

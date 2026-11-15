@@ -1648,7 +1648,8 @@
       "live": "<b>{min}</b> min ahora",
       "liveClosed": "Cerrada ahora mismo",
       "plan": "Mejor hora <b>{time}</b>",
-      "history": "<b>{days}</b> días · pico <b>{max}</b> min"
+      "history": "<b>{days}</b> días · pico <b>{max}</b> min",
+      "performance": "Próxima sesión <b>{time}</b>"
     },
     "alternatives": {
       "heading": "Colas más cortas cerca",
@@ -1710,7 +1711,16 @@
     "riddenMark": "Marcar como montada",
     "riddenUnmark": "Quitar la marca de montada",
     "riddenProgress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}",
-    "tabTitleWait": "{minutes} min · {title}"
+    "tabTitleWait": "{minutes} min · {title}",
+    "performance": {
+      "badge": "Sesiones a horas fijas",
+      "hint": "Empieza a horas fijas en lugar de funcionar sin parar. Se entra para la siguiente sesión.",
+      "next": "Próxima sesión",
+      "in": "en {duration}",
+      "now": "empieza ahora",
+      "noneLeft": "No quedan sesiones hoy",
+      "todayList": "Sesiones de hoy"
+    }
   },
   "nearby": {
     "title": "Parques cercanos",
