@@ -1,5 +1,5 @@
 ---
-title: 'L’entrée d’Europa-Park augmente jusqu’à 3,50 € en 2027'
+title: 'Billet journée Europa-Park : jusqu’à 3,50 € de plus en 2027'
 translationKey: europa-park-preise-2027
 date: '2026-11-15'
 time: '08:00'
@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  À partir du 20 mars 2027, un adulte paiera en ligne entre 70 et 79,50 € la journée à Europa-Park, jusqu’à 3,50 € de plus qu’en 2026. Le parking passe de 10 à 12 €. Pour une famille avec deux enfants, une journée parking compris revient à 270 à 307 €.
+  À partir du 20 mars 2027, un adulte paiera en ligne entre 70 et 79,50 € la journée à Europa-Park, jusqu’à 3,50 € de plus qu’en 2026. Le parking passe de 10 à 12 €. Pour deux adultes et deux enfants de 4 à 11 ans, une journée parking compris revient à 270 à 307 €.
 tags:
   - actualites
   - europa-park
@@ -24,7 +24,7 @@ coverImage:
   caption: 'L’épave dans le bassin de Poseidon, dans le quartier grec. Elle était déjà dans cet état avant la hausse des prix.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Europa-Park prix 2027 : billet jusqu’à 79,50 €, parking 12 €'
+  title: 'Europa-Park prix 2027 : en ligne jusqu’à 79,50 €, parking 12 €'
   description: >-
     Europa-Park dès le 20 mars 2027 : billet journée en ligne de 70 à 79,50 € pour un adulte, de 59 à 68 € pour un enfant, parking 12 €. Comparatif avec 2026.
   keywords:
@@ -38,28 +38,28 @@ Au début de la saison d’été, le 20 mars 2027, le billet journée d’[Europ
 
 ## Le prix d’une journée
 
-Les nouveaux tarifs s’appliquent aux visites du 20 mars 2027 au 9 janvier 2028, Halloween, HALLOWinter et Winterzauber compris. Le tableau donne les prix en ligne, par personne.
+Les nouveaux tarifs valent pour toute la saison, jusqu’au 9 janvier 2028, Halloween et hiver compris. Le tableau donne les prix en ligne, par personne.
 
-| Billet                      | Saison 2026     | dès le 20 mars 2027 |
-| --------------------------- | --------------- | ------------------- |
-| Journée enfant (4–11 ans)   | 56,50–65,00 €   | 59,00–68,00 €       |
-| Journée adulte (dès 12 ans) | 67,00–76,00 €   | 70,00–79,50 €       |
-| Journée senior (dès 60 ans) | 56,50–65,00 €   | 59,00–68,00 €       |
-| 2 jours enfant, senior      | 105,00–119,00 € | 109,50–124,50 €     |
-| 2 jours adulte              | 127,00–143,50 € | 132,50–150,00 €     |
-| Tout-petits (0–3 ans)       | gratuit         | gratuit             |
+| Billet                                         | Saison 2026     | Saison 2027     |
+| ---------------------------------------------- | --------------- | --------------- |
+| Journée enfant (4–11 ans)                      | 56,50–65,00 €   | 59,00–68,00 €   |
+| Journée adulte (dès 12 ans)                    | 67,00–76,00 €   | 70,00–79,50 €   |
+| Journée senior (dès 60 ans)                    | 56,50–65,00 €   | 59,00–68,00 €   |
+| 2 jours enfant (4–11 ans), senior (dès 60 ans) | 105,00–119,00 € | 109,50–124,50 € |
+| 2 jours adulte                                 | 127,00–143,50 € | 132,50–150,00 € |
+| Tout-petits (0–3 ans)                          | gratuit         | gratuit         |
 
-Chaque jour d’ouverture relève de l’une de deux catégories de prix. En catégorie 1, l’adulte paie 79,50 € en ligne, en catégorie 2, 70 €. Pour les enfants et les seniors, c’est 68 ou 59 €. Le calendrier des prix de la page billetterie indique la catégorie de chaque jour, et ce classement vaut aussi bien en ligne qu’au guichet.
+Chaque jour d’ouverture relève de l’une de deux catégories de prix. Les jours de catégorie 1, ce sont les prix les plus élevés du tableau qui s’appliquent, les jours de catégorie 2, les plus bas. Le calendrier des prix de la billetterie en ligne indique la catégorie de chaque jour. Au guichet, le classement est le même.
 
 Avec le billet 2 jours, la seconde visite peut avoir lieu jusqu’à cinq jours après la première. Le parc réserve un contingent de billets à part pour ce deuxième jour, l’entrée est donc garantie.
 
 ## Guichet et parking
 
-Au guichet, chaque billet coûte 10 € de plus qu’en ligne. Le parc recommande vivement de l’acheter à l’avance sur la billetterie en ligne.
+Au guichet, chaque billet coûte 10 € de plus qu’en ligne.
 
-Les 12 € de parking couvrent toute la journée sur le parking visiteurs. Jusqu’au 19 mars 2027, le tarif reste de 10 €. Le ticket de parking s’achète à l’avance sur la billetterie en ligne. Il est daté et ne vaut que pour le jour choisi à l’achat. Si tu saisis alors la plaque d’immatriculation de ta voiture, la barrière s’ouvre toute seule à l’entrée comme à la sortie. Sinon, tu scannes le ticket.
+Le ticket de parking vaut pour toute la journée sur le parking visiteurs et coûte encore 10 € jusqu’au 19 mars 2027. Il s’achète à l’avance sur la billetterie en ligne. Il est daté et ne vaut que pour le jour choisi à l’achat. Si tu saisis alors la plaque d’immatriculation de ta voiture, la barrière s’ouvre toute seule à l’entrée comme à la sortie. Sinon, tu scannes le ticket.
 
-Les autocars se garent gratuitement sur le parking visiteurs. Les motos et les vélos aussi, mais sur le parking « Reserviertes Parken », devant l’entrée principale. Les camping-cars et les caravanes de plus de 5,50 mètres vont sur le parking « Tagescamper », à côté de Silver Lake City. Il coûte en ce moment 20 €, à payer sur place auprès d’un employé.
+Les autocars se garent gratuitement sur le parking visiteurs. Les motos et les vélos aussi, mais sur le parking « Reserviertes Parken », devant l’entrée principale. Les camping-cars et les caravanes de plus de 5,50 mètres stationnent sur le parking « Tagescamper », à côté de Silver Lake City. La journée y coûte en ce moment 20 €, que tu paies sur place à un employé.
 
 ## Ce que ça change pour une famille
 
@@ -69,7 +69,7 @@ Pour cette famille, le guichet pèse plus lourd que toute la hausse : les quatr
 
 ## Qui paie moins
 
-Les enfants de trois ans et moins entrent toujours gratuitement. C’est la seule tranche d’âge de la grille dont le prix ne bouge pas en 2027. Un enfant dont c’est l’anniversaire le jour de la visite entre gratuitement, jusqu’à ses 12 ans inclus, sur présentation d’une pièce d’identité à la caisse de l’entrée principale.
+Qui fête le jour de sa visite un anniversaire de 12 ans ou moins entre gratuitement. Il suffit de montrer une pièce d’identité à la caisse de l’entrée principale.
 
 Les groupes, les classes et les visiteurs en situation de handicap ont leurs propres tarifs, qui augmentent eux aussi le 20 mars 2027 :
 
@@ -80,17 +80,17 @@ Les groupes, les classes et les visiteurs en situation de handicap ont leurs pro
 - visiteurs aveugles (mention Bl) et visiteurs en fauteuil roulant atteints de paraplégie (mention aG), sur place uniquement : 35,50–40,00 €, contre 34,00–38,00 €
 - visiteurs en fauteuil roulant atteints de tétraplégie : entrée gratuite
 
-Qui dort dans le resort obtient ses billets avec une garantie du meilleur prix et entre dans le parc avant l’ouverture normale. Les abonnements annuels ResortPass Silver et Gold, eux, ne sont pas disponibles en ce moment : le contingent est épuisé.
+Les clients des hôtels du resort entrent dans le parc avant l’ouverture normale, et le parc leur accorde une garantie du meilleur prix sur les billets. Les abonnements annuels ResortPass Silver et Gold, eux, ne sont pas disponibles en ce moment : le contingent est épuisé.
 
 ## Bons cadeaux et billets non datés
 
 Les billets non datés, les bons cadeaux et les billets des saisons précédentes doivent être rattachés à un jour avant la visite, sur [europapark.de/umwandlung](https://www.europapark.de/umwandlung). Si ce jour coûte plus cher que le prix payé, tu règles la différence au moment de la datation, et la page affiche le montant à l’avance. Un bon acheté aux prix de 2026 peut donc entraîner un supplément pour un jour à partir du 20 mars 2027.
 
-Faire dater le billet sur place coûte 10 € de frais de service par billet. Billets non datés et bons cadeaux restent valables trois années pleines après l’année d’achat, jusqu’au 31 décembre : un bon de 2026 vaut donc jusqu’à fin 2029.
+Faire dater le billet sur place coûte 10 € de frais de service par billet. Billets non datés et bons cadeaux restent valables jusqu’à la fin de la troisième année qui suit l’année d’achat : un bon de 2026 vaut donc jusqu’à fin 2029.
 
 ## Moins cher en mars
 
-Du 7 au 19 mars 2027, deux semaines avant le début de la saison, le parc ouvre pour les Pre-Opening Weeks. Le billet journée en ligne coûte alors de 59,50 à 70 € pour un adulte et de 50 à 59 € pour un enfant ou un senior. Le jour de mars le plus cher revient donc à un adulte au même prix qu’un jour d’été de catégorie 2. Le prix de chaque jour et ce qui est ouvert pendant ces deux semaines sont dans notre [article sur les Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027).
+Du 7 au 19 mars 2027, pendant les deux semaines à peine qui précèdent le début de la saison, le parc ouvre pour les Pre-Opening Weeks. Le billet journée en ligne coûte alors de 59,50 à 70 € pour un adulte et de 50 à 59 € pour un enfant ou un senior. Le jour de mars le plus cher coûte ainsi autant que le jour le moins cher à partir du 20 mars. Le prix de chaque jour et ce qui est ouvert pendant ces deux semaines sont dans notre [article sur les Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027).
 
 ## Saison 2027 et horaires
 
@@ -99,7 +99,7 @@ Du 7 au 19 mars 2027, deux semaines avant le début de la saison, le parc ouvre 
 - HALLOWinter : du 8 au 26 novembre 2027, tous les jours de 11 h à 19 h au moins
 - Winterzauber : du 27 novembre 2027 au 9 janvier 2028, tous les jours de 11 h à 19 h au moins
 
-Les jours de la semaine et les mois où Europa-Park est le moins fréquenté, nous les avons tirés de nos relevés depuis décembre 2025, dans notre [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils).
+Les jours de la semaine et les mois où il y a peu de monde à Europa-Park sont dans notre [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils).
 
 ```best-days-widget slug=europa-park
 
