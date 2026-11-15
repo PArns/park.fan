@@ -1273,8 +1273,8 @@
     "calendarPage": {
       "breadcrumb": "Wartezeiten-Kalender",
       "h1Suffix": "Andrang im {month}",
-      "metaTitle": "{park}: Andrang & Öffnungszeiten im {month}",
-      "metaTitleShort": "{park}: Andrang im {month}",
+      "metaTitle": "{park}: Andrangskalender & Auslastung {month}",
+      "metaTitleShort": "{park}: Andrangskalender {month}",
       "metaTitleBare": "{park}: {month}",
       "metaDescription": "Wann ist es {inPark} in {city} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
@@ -1998,8 +1998,8 @@
       "keywords": "Freizeitpark Wartezeiten, Wartezeiten LIVE, Wartezeiten heute, Crowd-Kalender, KI-Prognose, Warteschlangen, Besucherprognosen, Öffnungszeiten, Achterbahn, Disney Wartezeiten, Universal Studios, Europa-Park, Phantasialand, beste Besuchszeit"
     },
     "home": {
-      "title": "Freizeitpark-Wartezeiten live & Crowd-Prognosen",
-      "description": "Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu. Dazu ein Crowd-Kalender für die kommenden Tage und eine Prognose, die ihren Fehler offenlegt."
+      "title": "Freizeitpark-Wartezeiten live & Auslastung heute",
+      "description": "Wie voll ist es heute im Europa-Park oder Phantasialand? Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu, und der Andrang der nächsten Tage."
     },
     "parks": {
       "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",

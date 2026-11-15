@@ -52,3 +52,26 @@ in der Region geht. Die Klicks zählen als `trip_home`, die Stelle als `home_tri
 Stopps und ihre Texte (`tripRegions.<slug>.homeStory` in sechs Sprachen) sind entfernt; statt vier
 Anfragen an die Regionen-Route liest der Stopp die Daten des Planen-Bands, die das Layout schon hat
 ([Startseite](../features/homepage.md)).
+
+#### Titeltest auf Deutsch: Startseite und Andrangskalender
+
+Ein Test nur für `de`, die anderen fünf Sprachen bleiben, wie sie sind. Vergleichsbasis ist der
+2026-11-15 in der Search Console: „freizeitpark wartezeiten" stand auf Position 3,4 mit 0,4 % CTR,
+„wartezeiten" auf 5,7 mit 0,2 %, „andrangskalender europa park" auf 5,3 mit 0,45 % CTR bei 1.779
+Impressionen; die Anfragen mit „Auslastung" und „Andrang" standen auf 8 bis 9. Gesucht wird nach
+„Auslastung", „Andrang" und „heute", nicht nach „Crowd-Prognosen".
+
+- **Startseite, Titel** (`seo.home.title`, mit „ | park.fan" 59 Zeichen): vorher „Freizeitpark-Wartezeiten
+  live & Crowd-Prognosen", jetzt „Freizeitpark-Wartezeiten live & Auslastung heute".
+- **Startseite, Beschreibung** (`seo.home.description`, 159 Zeichen): vorher „Live-Wartezeiten aus
+  über 200 Freizeitparks, alle fünf Minuten neu. Dazu ein Crowd-Kalender für die kommenden Tage und
+  eine Prognose, die ihren Fehler offenlegt.", jetzt „Wie voll ist es heute im Europa-Park oder
+  Phantasialand? Live-Wartezeiten aus über 200 Freizeitparks, alle fünf Minuten neu, und der Andrang
+  der nächsten Tage."
+- **Andrangskalender** (`parks.calendarPage`, `fitWithin` nimmt den ersten Titel unter 60 Zeichen):
+  `metaTitle` vorher „{park}: Andrang & Öffnungszeiten im {month}", jetzt „{park}:
+  Andrangskalender & Auslastung {month}"; `metaTitleShort` vorher „{park}: Andrang im {month}",
+  jetzt „{park}: Andrangskalender {month}"; `metaTitleBare` bleibt „{park}: {month}". Beispiele:
+  „Europa-Park: Andrangskalender & Auslastung November 2026" (56 Zeichen), „Phantasialand:
+  Andrangskalender & Auslastung September 2026" (59); ab 16 Zeichen Parkname greift die kurze
+  Form, etwa „Movie Park Germany: Andrangskalender November 2026".
