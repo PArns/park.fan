@@ -36,8 +36,8 @@ interface NavMenuProps {
   /** Where the trigger itself navigates. Omitted where the entry has no page — see rule 2. */
   href?: string;
   label: string;
-  /** Which menu this is, for `nav_menu_opened`. */
-  menu: NavMenuId;
+  /** Which menu this is, for `nav_menu_opened` and the block its band's links count under. */
+  menu: Exclude<NavMenuId, 'sheet'>;
   /** Panel body. Rendered on the server, present in the HTML, hidden until opened. */
   children: React.ReactNode;
   /**
@@ -140,7 +140,7 @@ export function NavMenu({ href, label, menu, children, floating, icon }: NavMenu
         )}
       </div>
 
-      <MenuBand id={panelId} open={open} onClick={closeOnSamePageClick}>
+      <MenuBand id={panelId} menu={menu} open={open} onClick={closeOnSamePageClick}>
         {children}
       </MenuBand>
     </div>

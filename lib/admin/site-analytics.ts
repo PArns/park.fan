@@ -7,7 +7,11 @@ import type {
   SiteEventName,
 } from '@/lib/analytics/site-analytics';
 import type { LinkBlock } from '@/lib/analytics/internal-link';
-import { BLOCK_SEEN_SECTIONS, type SeenSection } from '@/lib/analytics/section-seen';
+import {
+  BLOCK_SEEN_SECTIONS,
+  HOME_SEEN_SECTIONS,
+  type SeenSection,
+} from '@/lib/analytics/section-seen';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
 import { tripRegionConfig, tripRegionTitle } from '@/lib/trip-regions/registry';
 import type {
@@ -1144,6 +1148,7 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   trip_tile: 'Reiseplaner-Kachel',
   trip_answer: 'Antwort im Hub-Kopf',
   trip_parks: 'Andrang-Kalender je Park im Hub',
+  trip_home: 'Reise-Region auf der Startseite',
   nav: 'Vorheriger, nächster Beitrag',
   related: 'Weiterlesen',
   most_read: 'Meistgelesen',
@@ -1151,6 +1156,12 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   favorites: 'Favoriten',
   featured: 'Beliebte Parks',
   header: 'Header',
+  menu_guides: 'Menü: Guides',
+  menu_news: 'Menü: News',
+  menu_planner: 'Menü: Planen',
+  menu_parks: 'Menü: Parks entdecken',
+  menu_favorites: 'Menü: Favoriten',
+  menu_more: 'Menü: Mehr',
   menu_sheet: 'Handy-Menü',
   footer: 'Footer',
   breadcrumbs: 'Brotkrumen',
@@ -1167,6 +1178,13 @@ export const SECTION_LABEL: Record<SeenSection, string> = {
   faq: 'FAQ',
   end: 'Seitenende',
   trip_band: 'Reiseplaner-Band',
+  home_news: 'Startseite: News',
+  home_tour: 'Startseite: Rundgang',
+  home_parky: 'Startseite: Parky',
+  home_trips: 'Startseite: Reise-Regionen',
+  home_popular: 'Startseite: Beliebte Parks',
+  home_faq: 'Startseite: FAQ',
+  home_end: 'Startseite: Seitenende',
 };
 
 /** The places in the order the page has them. */
@@ -1174,10 +1192,11 @@ export const SEEN_SECTION_ORDER = Object.keys(SECTION_LABEL) as SeenSection[];
 
 /**
  * The places that say how far down a park page was read, every one listed in the reach table; a
- * block's own mark (the planner tile) is a row there only once it was seen.
+ * block's own mark (the planner tile) is a row there only once it was seen, and the homepage's
+ * marks are not a park page's.
  */
 const DEPTH_SECTION_ORDER = SEEN_SECTION_ORDER.filter(
-  (section) => !BLOCK_SEEN_SECTIONS.includes(section)
+  (section) => !BLOCK_SEEN_SECTIONS.includes(section) && !HOME_SEEN_SECTIONS.includes(section)
 );
 
 /** The header's menus in German. */

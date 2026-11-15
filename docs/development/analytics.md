@@ -207,7 +207,7 @@ the rule is on the call site, and `trackSiteEvent` says it too.
 | `error_shown`                | an error page is rendered; the message is not sent                                                                                                                  | `boundary` (page, maintenance, global)                                                                                                                                              |                       |
 | `share_clicked`              | a share row button (share sheet on a touch screen, WhatsApp, Facebook, X, copy link) or the planner's share link                                                    | `target` (native, whatsapp, facebook, x, link, trip_plan)                                                                                                                           |                       |
 | `internal_link_clicked`      | a click, middle click included, on a link to another page of the site inside a marked block                                                                         | `block`, `dest` (the page type it leads to), `position`                                                                                                                             | a card's park or ride |
-| `section_seen`               | a marked place of a park page comes on screen, once per page view and place; the planner tile and band count their views so                                         | `section` (trip_tile, main_end, blog, nearby, stats, outlook, faq, end, trip_band)                                                                                                  |                       |
+| `section_seen`               | a marked place of a park page comes on screen, once per page view and place; the planner tile and band count their views so                                         | `section` (trip_tile, main_end, blog, nearby, stats, outlook, faq, end, trip_band; on the homepage home_news, home_tour, home_parky, home_trips, home_popular, home_faq, home_end)  |                       |
 | `nav_menu_opened`            | a header band opens (hover after 90 ms included) or the phone sheet does, once per opening                                                                          | `menu` (guides, news, parks, more, planner, favorites, sheet)                                                                                                                       |                       |
 | `faq_opened`                 | a question of an FAQ (`FaqAccordion`) opens                                                                                                                         | `position` (1-based); `key` on a trip region hub, the question's message key                                                                                                        |                       |
 | `park_links_opened`          | the „Mehr" flyout of a park's title card opens; what is clicked inside is the outbound tracking                                                                     | none                                                                                                                                                                                | the park              |
@@ -320,9 +320,11 @@ all from server-rendered markup and the same listeners as the outbound links:
   `related`, `most_read`; the park page's `rides`, `posts` (the ride page's posts too), and its title card's `guide_band` (the guide's window) and `news_band` (the news rail); `trip_tile`, the planner tile on a region park's page and calendar; `trip_band`, the way
   into a trip region's planner from a city or country listing, a post, `/search` and
   the day planner's plan list; the hub's `trip_answer` (the first answer's park calendars) and
-  `trip_parks` (its index of park calendars), each link with the park as entity; `nearby`,
-  `favorites`, `featured`; the chrome's `header`, `menu_sheet`,
-  `footer`, `breadcrumbs`. Together
+  `trip_parks` (its index of park calendars), each link with the park as entity; `trip_home`, a
+  region's stop on the homepage; `nearby`, `favorites`, `featured`; the chrome's `header` (the
+  bar's own links), one block per header menu (`menu_guides`, `menu_news`, `menu_planner`,
+  `menu_parks`, `menu_favorites`, `menu_more`, from `menuBlock`: the band, and the same entry in
+  the phone sheet), `menu_sheet` (the rest of the sheet), `footer`, `breadcrumbs`. Together
   with the page type every hit carries, it is a one-step map of where readers go from where.
 - **`section_seen`.** `ParkPageShell` draws a zero-height `SectionMark` where each chapter begins,
   whether or not the park has it, and `SectionSeenTracker` sends each the first time it is on
@@ -330,10 +332,12 @@ all from server-rendered markup and the same listeners as the outbound links:
   has no box, so the margins around it collapse as before. Two marks stand only where their block
   does and so count its views: `trip_tile` over the planner tile, and `trip_band` over the planner
   band, which brings its own tracker to the pages it stands on (a mark one tracker watches, a
-  second leaves alone).
+  second leaves alone). The homepage marks where each of its stops begins (`HOME_SEEN_SECTIONS`,
+  `home_news` to `home_end`) with a tracker of its own; the admin's reach table for park pages
+  leaves them out.
 - **`nav_menu_opened`.** `useMenuTrigger(menu)` sends it on every opening of a band, so a hover
-  that opens one counts; what is clicked inside is `internal_link_clicked` with `header` or
-  `menu_sheet`.
+  that opens one counts; what is clicked inside is `internal_link_clicked` with the menu's block
+  (`menu_planner` …), in the band or in the sheet.
 - **`faq_opened`.** `FaqAccordion`'s rows carry `faqPositionAttributes(index, key)`; `toggle` does
   not bubble, so the listener catches it on its way down. The question's text is never sent. A trip
   region hub's questions depend on the data, so a place names another question on another page or
