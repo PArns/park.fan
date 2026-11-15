@@ -162,6 +162,16 @@
       "countryOpen": "{count} open",
       "viewAll": "Alle parken in {continent} bekijken",
       "countryClosed": "{count} gesloten"
+    },
+    "dayPlanner": {
+      "line": "Zeg me welk park, welke dag en welke attracties je wilt, dan zoeken we samen uit wanneer je waar het kortst wacht.",
+      "lineYours": "{park} staat al gepland. Zullen we samen nog een parkdag plannen?",
+      "drawnTitle": "Zo ziet een geplande dag eruit",
+      "waitLabel": "Wachttijd:",
+      "waitShort": "kort",
+      "waitMedium": "gemiddeld",
+      "waitLong": "lang",
+      "chat": "Plannen met Parky"
     }
   },
   "homeStory": {
@@ -201,6 +211,10 @@
       "title": "Parky, je maatje voor elke parkvraag",
       "lead": "Parky is een pretparknerd. Hij weet hoe lang je nu bij Taron in de rij staat, op welke zaterdag in juni Europa-Park het leegst is en wat airtime eigenlijk is.",
       "link": "Chat met Parky"
+    },
+    "dayPlanner": {
+      "lead": "Je attracties op een tijdlijn, elk met de wachttijd die voor dat uur voorspeld is. Zo zie je al thuis of alles vóór sluitingstijd aan de beurt komt.",
+      "link": "Zo werkt de dagplanner"
     },
     "reading": {
       "title": "Pretparknieuws en gidsen",

@@ -1,6 +1,5 @@
 'use client';
 
-import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MessagesSquare } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -8,9 +7,8 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
 import { PARKY_BUBBLE, ParkyBubbleTail } from '@/components/assistant/parky-speech-bubble';
-import { assistantGate } from '@/lib/assistant/config';
-import { openParky } from '@/lib/assistant/open';
-import { interviewCore, startInterview, type InterviewStart } from '@/lib/assistant/interview';
+import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
+import { interviewCore, openInterview, type InterviewStart } from '@/lib/assistant/interview';
 
 /**
  * The planners' way into Parky's interview, as his own offer: Parky beside a speech bubble with his
@@ -36,11 +34,7 @@ export function ParkyInterviewStart({
 }) {
   const t = useTranslations('assistant.interview.start');
   const steps = useTranslations('assistant.interview.steps');
-  const status = useSyncExternalStore(
-    assistantGate.subscribe,
-    assistantGate.getStatus,
-    assistantGate.getServerStatus
-  );
+  const status = useAssistantGateStatus();
   if (status !== 'on') return null;
   return (
     // Laid out by its own width, not the window's: the day planner's side panel is narrow on the
@@ -80,10 +74,7 @@ export function ParkyInterviewStart({
           </div>
           <Button
             type="button"
-            onClick={() => {
-              startInterview(start);
-              openParky('interview');
-            }}
+            onClick={() => openInterview(start)}
             className="h-auto min-h-9 w-full text-balance whitespace-normal max-sm:min-h-11 @xl:w-auto @xl:max-w-[40%] @xl:shrink-0"
           >
             <MessagesSquare aria-hidden="true" />

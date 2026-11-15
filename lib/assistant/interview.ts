@@ -1,4 +1,5 @@
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
+import { openParky } from '@/lib/assistant/open';
 import { isUuid } from '@/lib/utils';
 
 /**
@@ -223,6 +224,15 @@ export function startInterview(start: InterviewStart): void {
   } catch {
     // The window then opens without the first question; the bar still says the interview runs.
   }
+}
+
+/**
+ * A button's way into the interview: the interview set on its first step ({@link startInterview})
+ * and the chat window opened for it, which asks the first question once its session is ready.
+ */
+export function openInterview(start: InterviewStart): void {
+  startInterview(start);
+  openParky('interview');
 }
 
 /** The kind of interview whose first question waits to be sent, once: reading it clears it. */

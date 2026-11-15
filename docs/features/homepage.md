@@ -15,6 +15,7 @@ come the popular parks and the questions. A visitor who has starred something fi
 | –   | Hero            | –       | the `<section id="hero">` in `page.tsx`                              | [homepage hero](homepage-hero.md)                          |
 | –   | News and guides | stacked | `HomeReading` → `NewsBoard`                                          | the blog manifest and the most-read seed, synchronous      |
 | –   | Trip regions    | stacked | `TripRegionsHomeStop` → the planner band's `RegionTile`              | `getPlannerMenu` (the layout's), each hub's `lead`         |
+| –   | Day planner     | beside  | `DayPlannerHomeStop` → `HomeDayPlannerBoard`, `HomeDayPlannerParks`  | `getPlannerMenu` (the layout's); this browser's plan       |
 | –   | Favourites      | stacked | a `HomeStop` in `page.tsx`, `FavoritesSection`; with favourites only | the favourites cookie                                      |
 | –   | The tour        | phone   | `HomeTour` → `ShotStop`                                              | none; screenshots in `public/media/home/`                  |
 | –   | Ask Parky       | phone   | `ParkyStop` → `ShotStop`, `ParkyAskLink`                             | none; the screenshot in `public/media/parky/<l>/chat.webp` |
@@ -26,6 +27,8 @@ The trip regions follow the news (and the compass, in a park), because planning 
 visitors come for: one stop with a tile per live region, the scene the planner band draws, loaded
 once the stop nears the screen (`RegionSceneInView`), and under each tile its hub's lead
 (`tripRegions.<slug>.hub.lead`). Its clicks count as `trip_home`, its place as `home_trips`.
+A whole trip, then a single day: the [day planner with Parky](#the-day-planner-with-parky) comes
+right after it.
 
 In a park, `ParkCompassSlot` puts the headliners on a compass right under the hero
 ([the in-park compass](park-compass.md)); the announcement band (`AnnounceSection`,
@@ -43,8 +46,9 @@ layouts:
   width. For what wants every column: the news board and the favourites. A heading beside these left half the page to a few lines of text.
 - **Beside** (`HomeStop`): from a 1024 px page the heading takes five twelfths and stays in view
   (`sticky`) while the content scrolls past; `reverse` swaps the sides and the tracks with them, so
-  the content keeps the wide one. Only where both columns fill: the popular parks, whose twelve
-  links stand under the heading (`aside`, after the cards on a phone), and the questions. The
+  the content keeps the wide one. Only where both columns fill: the day planner and the popular
+  parks, whose quick starts and twelve links stand under the heading (`aside`, after the content on
+  a phone), and the questions. The
   content column is its own `@container/page`, so a card grid inside asks for two columns, not
   three.
 - **Phone** (`ShotStop`): the heading beside a screenshot on a phone (`ShotRow`), alternating
@@ -76,7 +80,9 @@ auslastung", „andrang kalender", „prognose", „wie voll ist … heute" („
 impressions, position 4.7), „wartezeiten" (2,039, 7.7), „freizeitpark auslastung" and „wartezeiten
 app". The page answers in those words:
 
-- every stop's `<h2>` is worded as people search: „Freizeitpark-News und Guides", the tour's
+- every stop's `<h2>` is worded as people search: „Freizeitpark-News und Guides", „Deinen Parktag
+  Bahn für Bahn planen" („parktag planen"; the planner page itself had one such query in 90 days, „freizeitpark
+  planung", at position 1), the tour's
   „Wartezeiten live, für jede Bahn", „Der Andrang-Kalender: wie voll es wird, Tag für Tag",
   „Prognose: …", then „Wartezeiten und Andrang in den beliebtesten Parks" and
   „Freizeitpark-Wartezeiten, kurz erklärt";
@@ -109,6 +115,39 @@ a 1024 px page. Four articles are about as tall as six news posts over five days
 The stop stands first because the hero's cards already show what is near the visitor, and the news is
 what changes from one visit to the next. The manifest is read synchronously, so the board is in the
 first HTML and changes with every deploy that brings a post.
+
+## The day planner with Parky
+
+`DayPlannerHomeStop` (`components/home/day-planner-stop.tsx`) follows the trip regions: the day
+planner's title as its `<h2>` (`navigation.dayPlannerTitle`, the planner page's own words, „Deinen
+Parktag Bahn für Bahn planen"), a lead, „So funktioniert der Tagesplaner" to the planner page, and
+under the heading the planner band's parks as quick starts (`HomeDayPlannerParks`, „Einen Tag planen
+im": each the park's page, a plain click starting the wizard on it, source `home-park`). Beside it
+stands Parky's board (`HomeDayPlannerBoard`):
+
+- **Parky and his line.** The live drawing (`ParkyLogo idle calm framed`, already on the page for the
+  hero) beside his speech bubble (`PARKY_BUBBLE`): „Sag mir Park, Tag und deine Wunschfahrten, dann
+  planen wir zusammen, wann du wo am kürzesten anstehst." His idle life runs only while the board is
+  near the screen.
+- **A drawn day** on the band's strip (`DrawnDayStrip size="lg"`), with a legend for its three inks.
+  Once the board reaches the middle of the screen, Parky plays his `plan` act (the clipboard, ticked
+  off row by row) and the day fills in block by block, timed to the act's 4.2 s
+  (`data-strip-fill`, `pk-strip-in` in `app/globals.css`). Before hydration, without JavaScript and
+  under reduced motion the day stands finished.
+- **Two ways in.** „Mit Parky planen" opens his day interview (`openInterview({ kind: 'day' })`,
+  [the interview](assistant.md#the-interview)), which asks the park and the date first; for a
+  visitor the rollout left out it is a link to Parky's page, the same markup either way, as
+  `ParkyAskLink` does it. „Tag planen" goes to the planner page's start (`#plan`).
+- **With a plan in this browser**, after hydration: Parky says it is planned and offers another day,
+  the box shows „Dein Plan: <park>, <day>" with that day's strip (`PlanDayStrip`, asked for once
+  the board nears the screen), and „Meinen Plan öffnen" (source `home-plan`, treated like the band's
+  `menu-plan`) takes the place of „Tag planen". The rows keep their height, so the swap moves
+  nothing.
+
+Its clicks count as `day_home`, its place as `home_day`; an interview started here is
+`assistant_interview_started` on the page type `home`. In the 30 days to 2026-11-15 the homepage
+opened the planner 11 times out of 724. On the dev server the stop is 594 px tall at a 1440 px
+window and 1,034 px on an iPhone 13.
 
 ## The tour
 

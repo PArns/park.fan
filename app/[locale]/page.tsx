@@ -37,6 +37,7 @@ import { ParkyStop } from '@/components/home/parky-stop';
 import { FavoritesIntro } from '@/components/home/favorites-intro';
 import { HomeStop, StopLink } from '@/components/home/home-stop';
 import { TripRegionsHomeStop } from '@/components/trip-regions/trip-region-home-stop';
+import { DayPlannerHomeStop } from '@/components/home/day-planner-stop';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FavoritesEmptyState } from '@/components/parks/favorites-empty-state';
 import { SectionMark } from '@/components/analytics/section-mark';
@@ -111,7 +112,7 @@ export async function generateMetadata({ params }: HomePageProps): Promise<Metad
  * The homepage, written for somebody who has never been here: what this is and where a queue is
  * short near them right now (the hero and its card rail), then one stop after another, each a
  * heading worded as people search beside its content (`HomeStop`): what is new (the news board),
- * their favourites where they have some, what park.fan does (the tour), for whoever has not found
+ * the trip regions and the day planner with Parky, their favourites where they have some, what park.fan does (the tour), for whoever has not found
  * it yet Parky, how favourites work where they have none, the popular parks and five questions.
  * Everything that explains a tool at length lives on that tool's own page.
  */
@@ -218,6 +219,11 @@ export default async function HomePage({ params }: HomePageProps) {
         {/* The trip regions right under the news: planning is what most visitors come for. */}
         <SectionMark section="home_trips" />
         <TripRegionsHomeStop locale={locale as Locale} />
+
+        {/* A whole trip, then a single day: Parky plans it with the visitor in the chat, or the
+          planner's own wizard does. */}
+        <SectionMark section="home_day" />
+        <DayPlannerHomeStop locale={locale as Locale} />
 
         {/* The visitor's favourites, right under the news, for a visitor who has some only: for
           them it is what they came back for, and for anybody else an empty state about a feature

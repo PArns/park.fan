@@ -842,6 +842,10 @@ test('the planner page types keep the site order and every device class', () => 
 test('a way into the planner reads in German, and so does a day begun with it shut', () => {
   assert.equal(propValueLabel('source', 'park-header'), '„Tag planen“ im Park-Kopf');
   assert.equal(propValueLabel('source', 'none'), 'Planer zu');
+  assert.equal(
+    propValueLabel('source', 'home-park'),
+    'Tagesplaner auf der Startseite, ein beliebter Park'
+  );
   assert.equal(propValueLabel('source', 'search'), 'Suche im Planer');
   assert.equal(isPlannerEvent('plan_item_added'), true);
   assert.equal(isPlannerEvent('planner_opened'), true);
@@ -849,11 +853,13 @@ test('a way into the planner reads in German, and so does a day begun with it sh
 });
 
 test('the ways through the site read in German, a value this build does not know as sent', () => {
-  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 28);
+  assert.equal(Object.keys(LINK_BLOCK_LABEL).length, 29);
+  assert.equal(propValueLabel('block', 'day_home'), 'Tagesplaner auf der Startseite');
   assert.equal(propValueLabel('block', 'trip_answer'), 'Antwort im Hub-Kopf');
   assert.equal(propValueLabel('block', 'trip_band'), 'Reiseplaner-Band');
   assert.equal(propValueLabel('block', 'trip_tile'), 'Reiseplaner-Kachel');
-  assert.equal(Object.keys(SECTION_LABEL).length, 16);
+  assert.equal(Object.keys(SECTION_LABEL).length, 17);
+  assert.equal(propValueLabel('section', 'home_day'), 'Startseite: Tagesplaner');
   assert.equal(propValueLabel('section', 'trip_tile'), 'Reiseplaner-Kachel');
   assert.equal(propValueLabel('link', 'calendar'), 'Kalender der Region');
   assert.equal(Object.keys(NAV_MENU_LABEL).length, 7);

@@ -295,7 +295,7 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
   day planner's „Plane mit Parky deinen perfekten Parktag" (on an empty day),
   `parky-trip-interview-button.tsx` and `parky-day-interview-button.tsx` on one
   `ParkyInterviewStart`, in separate files so each route ships only its own planner's two strings,
-  drawn only where Parky shows for this visitor (`assistantGate`). The card lays itself out by its
+  drawn only where Parky shows for this visitor (`useAssistantGateStatus`). The card lays itself out by its
   own width (`@container`, side by side from `@xl`, 36rem), not the window's: the day planner's
   panel is about 400 px wide on the widest screen, the trip planner's card wide on a tablet. It is
   Parky's own offer: Parky (`ParkyLogo framed`, so the box holds his hat and a row centres him as
@@ -303,7 +303,10 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
   his first person and the interview's core steps as numbered badges (`interviewCore`,
   `assistant.interview.steps`), then the button; on a wide page the card itself stops at
   `max-w-4xl` in the middle, since a full-width tint around a centred row read as an empty band.
-  `showSteps={false}` leaves the badges out where the line names the steps (the hub). A press sets
+  `showSteps={false}` leaves the badges out where the line names the steps (the hub). The
+  homepage's day planner stop has the third way in, „Mit Parky planen" on Parky's board, for a day
+  with no park chosen yet ([homepage](homepage.md#the-day-planner-with-parky)); for a visitor the
+  rollout left out it leads to Parky's page instead. A press (`openInterview`) sets
   the interview on its first step (`startInterview`, which counts `assistant_interview_started`
   with `source: planner`) and opens the window
   (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the

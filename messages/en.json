@@ -162,6 +162,16 @@
       "countryOpen": "{count} open",
       "viewAll": "See all parks in {continent}",
       "countryClosed": "{count} closed"
+    },
+    "dayPlanner": {
+      "line": "Tell me the park, the day and the rides you want, and we’ll work out together when each one has its shortest queue.",
+      "lineYours": "{park} is already planned. Shall we plan another park day together?",
+      "drawnTitle": "What a planned day looks like",
+      "waitLabel": "Wait:",
+      "waitShort": "short",
+      "waitMedium": "medium",
+      "waitLong": "long",
+      "chat": "Plan with Parky"
     }
   },
   "homeStory": {
@@ -201,6 +211,10 @@
       "title": "Parky, your buddy for every park question",
       "lead": "Parky is a theme park nerd. He knows how long the line for Taron is right now, which Saturday in June Europa-Park is emptiest and what airtime actually is.",
       "link": "Chat with Parky"
+    },
+    "dayPlanner": {
+      "lead": "Your rides on a timeline, each with the wait forecast for its hour. You’ll know before you leave home whether everything fits in before the park closes.",
+      "link": "How the day planner works"
     },
     "reading": {
       "title": "Theme park news and guides",

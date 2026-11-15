@@ -88,7 +88,10 @@ Outside the chat he appears in two still pictures, each built from the live draw
 than drawn again, so he looks the same everywhere: the break panel's sleeping Parky
 (`break-scene.tsx`, [park break panel](park-break-panel.md#the-picture)) and Parky on holiday in
 Orlando (`components/assistant/parky/orlando-scene.tsx`), the trip-planner card in the header's
-planner band ([header navigation](header-navigation.md#the-planner-panel)).
+planner band ([header navigation](header-navigation.md#the-planner-panel)). On the homepage's day
+planner stop he is the live drawing, calm, beside his speech bubble, and takes out his clipboard
+(the `plan` act) once while the day beside him fills in
+([homepage](homepage.md#the-day-planner-with-parky)).
 
 - **On holiday** he stands at a lake in Florida with his park map held low (`ParkyMap still`), a
   suitcase beside him, a flamingo in the shallows, a coaster on the far shore and a launch from the

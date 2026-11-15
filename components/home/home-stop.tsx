@@ -7,6 +7,13 @@ import { linkBlockAttributes, type LinkBlock } from '@/lib/analytics/internal-li
 import { cn } from '@/lib/utils';
 
 /**
+ * A park as a pill on a stop, the popular parks' links and the day planner's quick starts: a
+ * rounded outline on the card's ground, as tall as a tap needs.
+ */
+export const STOP_PILL_CLASS =
+  'border-border/60 bg-card/40 flex min-h-10 items-center rounded-full border text-sm';
+
+/**
  * A hairline that fades out at both ends, where a new group of stops begins: enough to tell two
  * chapters apart without a band or a frame around either.
  */

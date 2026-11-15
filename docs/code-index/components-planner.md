@@ -9,6 +9,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AddToPlannerButton` _component_: Puts one ride into the plan, from a ride card, a ride page or the mobile search alike, so it takes the park's identity as props rather than from a context.
 
+### [`day-strip.tsx`](../../components/planner/day-strip.tsx)
+
+- `DayStrip` _component_: A day drawn the way the planner draws one, as a strip: blocks on an hour axis, coloured by how busy the hour is, a dot for each walk between them.
+- `DrawnDayStrip` _component_: A picture of the tool, not anybody's plan: the drawn day on `DayStrip`, its blocks only once `shown` (the header band draws it from its first opening).
+- `PlanDayStrip` _component_: A planned day's own strip: its rides and hours in a line, its blocks on `DayStrip`, from the planner's `/plan/day` for that park and date (the same query and cache as the panel), asked for once `enabled`.
+- `STRIP_INK` _const_: The strip's inks: a ride's busyness in three steps, and a block with no wait to go on.
+- Types: `StripBlock`
+
 ### [`plan-day-button-lazy.tsx`](../../components/planner/plan-day-button-lazy.tsx)
 
 - `PlanDayButtonLazy` _component_: The lazy boundary around the calendar's "plan this day" button, so the `planner` namespace is not in the payload of every park page and calendar URL for one label.

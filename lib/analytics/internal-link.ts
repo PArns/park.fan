@@ -28,6 +28,7 @@ const LINK_BLOCKS = [
   'trip_answer',
   'trip_parks',
   'trip_home',
+  'day_home',
   'nav',
   'related',
   'most_read',

@@ -31,11 +31,8 @@ import { ParksMenuPanel } from '@/components/layout/parks-menu-panel';
 import { MoreMenuLinks } from '@/components/layout/more-menu-links';
 import { LIVE_TRIP_REGIONS, tripRegionSegment } from '@/lib/trip-regions/registry';
 import { MoreMenuPanel } from '@/components/layout/more-menu-panel';
-import {
-  PlannerMenuPanel,
-  usePlanSummary,
-  formatPlanDay,
-} from '@/components/layout/planner-menu-panel';
+import { PlannerMenuPanel } from '@/components/layout/planner-menu-panel';
+import { formatPlanDay, usePlanSummary } from '@/lib/planner/plan-summary';
 import { BlogMenuPanel } from '@/components/layout/blog-menu-panel';
 import { NewsMenuPanel } from '@/components/layout/news-menu-panel';
 import { LatestNewsCard, latestNewsFrom } from '@/components/blog/latest-news-card';

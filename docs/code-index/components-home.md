@@ -9,6 +9,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AnnounceSection` _component_: Homepage announcement band from `content/home/announce.<locale>.md`: background photo, title, flip-clock countdown to `countdownTo` and the markdown body. Renders nothing outside the `startAt`/`endAt` window or without a countdown.
 
+### [`day-planner-board.tsx`](../../components/home/day-planner-board.tsx)
+
+- `HomeDayPlannerBoard` _component_: The homepage's day planner as Parky's own board: Parky beside his speech bubble, a day on the planner's strip, and the two ways in, planning with him in the chat or alone in the planner.
+
+### [`day-planner-parks.tsx`](../../components/home/day-planner-parks.tsx)
+
+- `HomeDayPlannerParks` _component_: The day planner stop's quick starts, „Einen Tag planen im" over the planner band's parks: each a pill linking the park's page, and a plain click starts the planner's wizard on that park on the way there (`quickStartClick`, source …
+
+### [`day-planner-stop.tsx`](../../components/home/day-planner-stop.tsx)
+
+- `DayPlannerHomeStop` _component_: The homepage's stop for the day planner, right under the trip regions: the heading with the planner page as its link, under it the planner band's parks as quick starts (`getPlannerMenu`, which the layout has already asked for), and beside …
+
 ### [`faq-section.tsx`](../../components/home/faq-section.tsx)
 
 - `FaqSection` _component_: The homepage FAQ, visible, and the page's only `FAQPage` markup: `FaqList` emits it from the same array it renders, so the markup cannot drift from the page.
@@ -85,6 +97,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `HomeStop` _component_: One stop of the homepage under the hero: its opening (`ChapterHeading variant="stop"`, the chapter's link as its `action`) beside its content, the way the tour's stops stand beside their phones, or over it (`stacked`) where the content …
 - `ShotStop` _component_: A stop whose content is a screenshot on a phone (`ShotRow`), as the tour's and Parky's are: the heading beside the phone, which glides as the page scrolls past.
 - `StopLink` _component_: A stop's link, under its lead (`ChapterHeading`'s `action`): the page that tells the rest. `onClick` lets a client caller do more than follow it (`ParkyAskLink`).
+- `STOP_PILL_CLASS` _const_: A park as a pill on a stop, the popular parks' links and the day planner's quick starts: a rounded outline on the card's ground, as tall as a tap needs.
 - `STOP_DIVIDER_CLASS` _const_: A hairline that fades out at both ends, where a new group of stops begins: enough to tell two chapters apart without a band or a frame around either.
 
 ### [`home-tour.tsx`](../../components/home/home-tour.tsx)

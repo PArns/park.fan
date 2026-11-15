@@ -296,6 +296,13 @@ How wide the desktop panel is, as an external store rather than component state:
 - `MAX_RIDER_CM` _const_: The tallest rider height accepted, in centimetres.
 - Types: `PartyRideFacts`, `PartyFlags`
 
+### [`plan-summary.ts`](../../lib/planner/plan-summary.ts)
+
+- `usePlanSummary` _hook_: This browser's plan, summed up: nothing on the server and during hydration, where neither the plan nor the clock is known.
+- `planSummary` _function_: The next planned day from today on (the active one where it is among them), and how many such days there are. A plan whose days are all over reports nothing. `now` is the browser's clock, never the server's.
+- `formatPlanDay` _function_: A planned day as `YYYY-MM-DD`, written short in the reader's language: „Sa., 21. Nov.".
+- Types: `PlanSummary`
+
 ### [`pointer-capture.ts`](../../lib/planner/pointer-capture.ts)
 
 - `capturePointer` _function_: Claim a pointer for one gesture, and say where that gesture's events arrive.
