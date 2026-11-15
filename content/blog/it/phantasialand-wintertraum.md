@@ -173,7 +173,7 @@ Al Parkscout Publikums Award 2025/26 i visitatori hanno votato la ristorazione d
 
 ## Quanta gente c’è al Wintertraum
 
-L’ultimo Wintertraum l’abbiamo misurato dal 26 dicembre 2025 al 25 gennaio 2026; di novembre e inizio dicembre dell’inverno scorso non abbiamo dati. Durante le vacanze di Natale al Phantasialand si stava in coda quanto ad agosto, nelle vacanze estive. Gennaio è stato più tranquillo, ma solo nei giorni feriali. Il 6 gennaio 2026, ultimo giorno di vacanza, l’affluenza è stata molto bassa. Nei giorni feriali dopo le vacanze è stata bassa, nei fine settimana del 10/11 e del 17/18 gennaio molto alta.
+L’ultimo Wintertraum l’abbiamo misurato dal 26 dicembre 2025 al 25 gennaio 2026; di novembre e inizio dicembre dell’inverno scorso non abbiamo dati. Durante le vacanze di Natale al Phantasialand si stava in coda quanto ad agosto, nelle vacanze estive. Gennaio è stato più tranquillo, ma solo dal lunedì al venerdì. Il 6 gennaio 2026, ultimo giorno di vacanza, l’affluenza è stata molto bassa. Dal lunedì al venerdì dopo le vacanze è stata bassa, nei fine settimana del 10/11 e del 17/18 gennaio molto alta.
 
 ```stats-widget slug=phantasialand show=months
 
@@ -206,7 +206,7 @@ Con il Quick Pass passi una volta da un ingresso separato, saltando la coda di u
 - Winja’s Fear, Winja’s Force, Colorado Adventure: 7 € ciascuno
 - Maus au Chocolat, Mystery Castle, Talocan: 5 € ciascuno
 - Chiapas: 10 €, solo al servizio ospiti, secondo la pagina informativa
-- Quick Pass Ultimate: 80 €, un passaggio a ogni ingresso Quick Pass e uno a F.L.Y., che da solo non si vende
+- Quick Pass Ultimate: 80 €, un passaggio a ogni ingresso Quick Pass e uno a F.L.Y., per cui un pass singolo non esiste
 
 Ogni Quick Pass vale soltanto nel giorno in cui lo prenoti, quindi lo compri la mattina della visita e non la sera prima. La vendita online comincia alle 11, con l’apertura del parco, e il numero di pass è limitato. Come funzionano la prenotazione nel negozio e il codice QR all’ingresso Quick Pass lo spieghiamo nella notizia sul [Quick Pass online](/news/phantasialand-quick-pass-online).
 
@@ -316,11 +316,11 @@ River Quest, Wakobato e Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Chia
 
 ### Quanto costa il Wintertraum del Phantasialand?
 
-Un biglietto giornaliero per adulti costa, a seconda del giorno, fra i 29 € dei giorni feriali di gennaio e i 42 € di alcuni giorni del fine settimana come il 27 dicembre. I biglietti si comprano solo online, il giorno della visita fino alle 14. I bambini fino a tre anni entrano gratis.
+Un biglietto giornaliero per adulti costa, a seconda del giorno, fra i 29 € di molti giorni dal lunedì al venerdì a gennaio e i 42 € di alcuni giorni del fine settimana come il 27 dicembre. I biglietti si comprano solo online, il giorno della visita fino alle 14. I bambini fino a tre anni entrano gratis.
 
 ### Quando c’è meno gente al Wintertraum?
 
-Dal lunedì al venerdì di gennaio, dopo le vacanze di Natale. L’inverno scorso, durante le vacanze di Natale, l’affluenza era quella delle vacanze estive di agosto, i fine settimana di gennaio erano molto pieni, e nei giorni feriali in mezzo c’era poca gente.
+Dal lunedì al venerdì di gennaio, dopo le vacanze di Natale. L’inverno scorso, durante le vacanze di Natale, l’affluenza era quella delle vacanze estive di agosto, i fine settimana di gennaio erano molto pieni, e dal lunedì al venerdì in mezzo c’era poca gente.
 
 ### C’è un Quick Pass durante il Wintertraum?
 

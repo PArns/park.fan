@@ -206,7 +206,7 @@ Con el Quick Pass entras una vez en una atracción por un acceso propio y te sal
 - Winja’s Fear, Winja’s Force, Colorado Adventure: 7 € cada uno
 - Maus au Chocolat, Mystery Castle, Talocan: 5 € cada uno
 - Chiapas: 10 €, solo en el Gästeservice, según la página informativa
-- Quick Pass Ultimate: 80 €, una vez por cada acceso Quick Pass y una vez en F.L.Y., que no se vende suelto
+- Quick Pass Ultimate: 80 €, una vez por cada acceso Quick Pass y una vez en F.L.Y., la única forma de saltarse su cola con un pase
 
 Cada Quick Pass vale solo para el día en que lo reservas, así que lo compras por la mañana del día de la visita y no la noche anterior. En la tienda se pone a la venta a las 11:00, cuando abre el parque, y el parque vende un número limitado. Cómo se reserva en la tienda y cómo funciona el código QR en el acceso Quick Pass lo explicamos en la noticia sobre [el Quick Pass online](/news/phantasialand-quick-pass-online).
 
@@ -279,7 +279,7 @@ Los paquetes de Nochevieja con alojamiento están agotados.
 
 ## Nochevieja en el Phantasialand
 
-En Nochevieja el parque cierra ya a las 18:00, casi dos horas antes de los fuegos de cada noche. El parque todavía no ha dicho si MAGIC SYMPHONY empezará antes ese día.
+En Nochevieja el parque cierra ya a las 18:00, casi dos horas antes de los fuegos de cada noche. A qué hora empieza MAGIC SYMPHONY ese día no figura todavía en la web del parque.
 
 Para esa noche hay cuatro eventos sin alojamiento que se reservan aparte:
 

@@ -137,7 +137,7 @@ Everything runs during Wintertraum except three water attractions. [River Quest]
 
 [Taron](ref:phantasialand/taron?full)
 
-The big rides are outdoors. The park says Taron runs down to minus ten degrees, [Black Mamba](ref:phantasialand/black-mamba) and [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) down to minus five. Chiapas brakes with magnets at the end instead of in the water, which the park says gets you "usually less wet". At four below zero I'd take that "usually" seriously and pack a dry jacket to change into.
+The big rides are outdoors. The park says Taron runs down to minus ten degrees, [Black Mamba](ref:phantasialand/black-mamba) and [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) down to minus five. At the end Chiapas brakes with magnets instead of in the water, and the park's own wording is that this gets you "usually less wet". At four below zero I'd take that "usually" seriously and pack a dry jacket to change into.
 
 You can ride in the dry in the Wuze Town hall, where [Winja's Fear](ref:phantasialand/winjas-fear), [Winja's Force](ref:phantasialand/winjas-force) and Wözl's Duck Washer run. Die 3 Mausketiere plays in the air-conditioned Residenz Theater, and the Geister Rikscha runs underground. That's thin for a whole wet afternoon, which is where the three theatre shows come in handy.
 
