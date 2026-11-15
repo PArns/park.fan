@@ -65,7 +65,7 @@ Coaches park free on the visitor car park. Motorbikes and bicycles don't pay eit
 
 Take two adults and two children aged 4 to 11 who drive there and book everything online. On a price category 1 day their four day tickets come to €295, or €307 with parking. That's €15 more than in 2026, €2 of it for parking. On a price category 2 day the same four pay €258 for tickets and €270 with parking, €13 more than the year before.
 
-If the family only decides at the gate, the four tickets cost €40 more at the ticket office than online, which is more than the whole price rise costs them.
+Deciding at the gate costs the family another €40 for the four tickets, more than the whole 2027 rise adds.
 
 ## Who pays less
 
@@ -90,7 +90,7 @@ If you leave the dating until you're at the park, there's a €10 service fee pe
 
 ## Cheaper in March
 
-From 7 to 19 March 2027, in the not quite two weeks before the season starts, the park opens for its Pre-Opening Weeks. An online day ticket then costs €59.50 to €70 for adults and €50 to €59 for children and seniors. That makes the dearest day in March cost the same as the cheapest day from 20 March. The [post on the Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) has every March day with its price, plus what's already open in those two weeks.
+The park already opens from 7 to 19 March 2027 for its Pre-Opening Weeks. An online day ticket then costs €59.50 to €70 for adults and €50 to €59 for children and seniors. Even the dearest March day costs adults no more than a price category 2 day from 20 March. The [post on the Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) has every March day with its price, plus what's already open in those two weeks.
 
 ## The 2027 season and opening hours
 
@@ -99,7 +99,7 @@ From 7 to 19 March 2027, in the not quite two weeks before the season starts, th
 - HALLOWinter: 8 to 26 November 2027, daily from 11 a.m. until at least 7 p.m.
 - Winterzauber: 27 November 2027 to 9 January 2028, daily from 11 a.m. until at least 7 p.m.
 
-If you haven't picked a date yet, the quietest weekdays and months at Europa-Park are in our [Europa-Park guide](/blog/europa-park-wait-times-tips).
+Besides the price category, crowds matter when you pick a day. The quietest weekdays and months at Europa-Park are in our [Europa-Park guide](/blog/europa-park-wait-times-tips).
 
 ```best-days-widget slug=europa-park
 

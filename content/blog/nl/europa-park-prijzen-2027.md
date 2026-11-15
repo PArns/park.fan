@@ -90,7 +90,7 @@ Laat je de datum pas ter plaatse invullen, dan betaal je € 10 servicekosten pe
 
 ## Goedkoper in maart
 
-Van 7 tot en met 19 maart 2027, in de bijna twee weken voor de seizoensstart, is het park open voor de Pre-Opening Weeks. Een online dagticket kost dan € 59,50 tot € 70 voor volwassenen en € 50 tot € 59 voor kinderen en senioren. De duurste maartdag kost daarmee evenveel als de goedkoopste dag vanaf 20 maart. In het [bericht over de Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) staat elke maartdag met zijn prijs, en ook wat er in die twee weken al open is.
+Al van 7 tot en met 19 maart 2027 is het park open voor de Pre-Opening Weeks. Een online dagticket kost dan € 59,50 tot € 70 voor volwassenen en € 50 tot € 59 voor kinderen en senioren. Ook de duurste maartdag kost volwassenen niet meer dan een dag in prijscategorie 2 vanaf 20 maart. In het [bericht over de Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) staat elke maartdag met zijn prijs, en ook wat er in die twee weken al open is.
 
 ## Seizoen 2027 en openingstijden
 
@@ -99,7 +99,7 @@ Van 7 tot en met 19 maart 2027, in de bijna twee weken voor de seizoensstart, is
 - HALLOWinter: 8 tot en met 26 november 2027, dagelijks van 11 tot minstens 19 uur
 - Winterzauber: 27 november 2027 tot en met 9 januari 2028, dagelijks van 11 tot minstens 19 uur
 
-Heb je nog geen datum gekozen, dan vind je de rustigste weekdagen en maanden in Europa-Park in onze [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
+Naast de prijscategorie telt bij het kiezen van een dag ook de drukte. De rustigste weekdagen en maanden in Europa-Park staan in onze [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 ```best-days-widget slug=europa-park
 

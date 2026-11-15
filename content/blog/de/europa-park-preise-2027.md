@@ -90,7 +90,7 @@ Wer erst vor Ort datieren lässt, zahlt 10 Euro Servicegebühr pro Ticket. Undat
 
 ## Günstiger im März
 
-Vom 7. bis 19. März 2027, in den knapp zwei Wochen vor dem Saisonstart, öffnet der Park zu den Pre-Opening Weeks. Ein Tagesticket kostet dann online 59,50 bis 70 Euro für Erwachsene und 50 bis 59 Euro für Kinder und Senioren. Der teuerste Märztag kostet damit so viel wie der günstigste Tag ab dem 20. März. Im [Beitrag zu den Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) steht jeder Märztag mit seinem Preis, dazu, was in den zwei Wochen schon offen hat.
+Schon vom 7. bis 19. März 2027 öffnet der Park zu den Pre-Opening Weeks. Ein Tagesticket kostet dann online 59,50 bis 70 Euro für Erwachsene und 50 bis 59 Euro für Kinder und Senioren. Auch der teuerste Märztag kostet Erwachsene nicht mehr als ein Tag der Preiskategorie 2 ab dem 20. März. Im [Beitrag zu den Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) steht jeder Märztag mit seinem Preis, dazu, was in den zwei Wochen schon offen hat.
 
 ## Saison 2027 und Öffnungszeiten
 
@@ -99,7 +99,7 @@ Vom 7. bis 19. März 2027, in den knapp zwei Wochen vor dem Saisonstart, öffnet
 - HALLOWinter: 8. bis 26. November 2027, täglich 11 bis mindestens 19 Uhr
 - Winterzauber: 27. November 2027 bis 9. Januar 2028, täglich 11 bis mindestens 19 Uhr
 
-Die ruhigsten Wochentage und Monate im Europa-Park stehen im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps), falls du deinen Tag noch nicht festgelegt hast.
+Neben der Preiskategorie zählt bei der Wahl des Tages der Andrang. Die ruhigsten Wochentage und Monate im Europa-Park stehen im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
 
 ```best-days-widget slug=europa-park
 

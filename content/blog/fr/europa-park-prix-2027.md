@@ -90,7 +90,7 @@ Si tu fais dater sur place, compte 10 € de frais de service par billet. Billet
 
 ## Moins cher en mars
 
-Du 7 au 19 mars 2027, pendant les deux semaines à peine qui précèdent le début de la saison, le parc ouvre pour les Pre-Opening Weeks. Le billet journée en ligne coûte alors de 59,50 à 70 € pour un adulte et de 50 à 59 € pour un enfant ou un senior. Le jour de mars le plus cher coûte ainsi autant que le jour le moins cher à partir du 20 mars. L’[article sur les Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) donne chaque jour de mars avec son prix, et ce qui est déjà ouvert pendant ces deux semaines.
+Le parc ouvre dès le 7 mars 2027, jusqu’au 19 mars, pour les Pre-Opening Weeks. Le billet journée en ligne coûte alors de 59,50 à 70 € pour un adulte et de 50 à 59 € pour un enfant ou un senior. Même le jour de mars le plus cher ne coûte pas plus à un adulte qu’un jour de catégorie 2 à partir du 20 mars. L’[article sur les Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) donne chaque jour de mars avec son prix, et ce qui est déjà ouvert pendant ces deux semaines.
 
 ## Saison 2027 et horaires
 
@@ -99,7 +99,7 @@ Du 7 au 19 mars 2027, pendant les deux semaines à peine qui précèdent le déb
 - HALLOWinter : du 8 au 26 novembre 2027, tous les jours de 11 h à 19 h au moins
 - Winterzauber : du 27 novembre 2027 au 9 janvier 2028, tous les jours de 11 h à 19 h au moins
 
-Si tu n’as pas encore choisi ta date, les jours de la semaine et les mois les plus calmes à Europa-Park sont dans notre [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils).
+Outre la catégorie de prix, l’affluence compte dans le choix du jour. Les jours de la semaine et les mois les plus calmes à Europa-Park figurent dans notre [guide d’Europa-Park](/blog/europa-park-temps-d-attente-conseils).
 
 ```best-days-widget slug=europa-park
 

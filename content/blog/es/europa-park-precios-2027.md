@@ -90,7 +90,7 @@ Si pones la fecha en el propio parque, pagas 10 euros de gestión por entrada. L
 
 ## Más barato en marzo
 
-Del 7 al 19 de marzo de 2027, en las casi dos semanas antes de que empiece la temporada, el parque abre durante las Pre-Opening Weeks. La entrada de un día cuesta entonces en línea entre 59,50 y 70 euros para adultos y entre 50 y 59 euros para niños y mayores. Así, el día más caro de marzo cuesta lo mismo que el más barato a partir del 20 de marzo. En el [artículo sobre las Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) está cada día de marzo con su precio, y también lo que ya abre en esas dos semanas.
+El parque abre ya del 7 al 19 de marzo de 2027 durante las Pre-Opening Weeks. La entrada de un día cuesta entonces en línea entre 59,50 y 70 euros para adultos y entre 50 y 59 euros para niños y mayores. Incluso el día más caro de marzo no le cuesta a un adulto más que un día de la categoría 2 a partir del 20 de marzo. En el [artículo sobre las Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) está cada día de marzo con su precio, y también lo que ya abre en esas dos semanas.
 
 ## Temporada 2027 y horarios
 
@@ -99,7 +99,7 @@ Del 7 al 19 de marzo de 2027, en las casi dos semanas antes de que empiece la te
 - HALLOWinter: del 8 al 26 de noviembre de 2027, todos los días de 11 a 19 h como mínimo
 - Winterzauber: del 27 de noviembre de 2027 al 9 de enero de 2028, todos los días de 11 a 19 h como mínimo
 
-Si todavía no has elegido fecha, los días de la semana y los meses más tranquilos de Europa-Park están en nuestra [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
+Además de la categoría de precio, al elegir día cuenta la afluencia. Los días de la semana y los meses más tranquilos de Europa-Park están en nuestra [guía de Europa-Park](/blog/europa-park-tiempos-de-espera-consejos).
 
 ```best-days-widget slug=europa-park
 
