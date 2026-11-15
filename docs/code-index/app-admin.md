@@ -1034,6 +1034,10 @@ Route `/admin/tickets` (page).
 - `useShowMore` _hook_: The first `LIST_SHOWN` rows of a list, or all of them once opened, with the props for its `MoreButton` and a way to fold it again when the list changes underneath.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
 
+### [`traffic/_components/marked-row-switches.tsx`](../../app/admin/traffic/_components/marked-row-switches.tsx)
+
+- `MarkedRowSwitches` _component_: One switch for each kind of row the API marks and keeps, the data centres' and the automated visits': left out, counted with the rest, or shown alone. The traffic pages and the live view carry the same pair.
+
 ### [`traffic/_components/paths-view.tsx`](../../app/admin/traffic/_components/paths-view.tsx)
 
 - `PathsView` _component_: `/admin/traffic/paths`: where readers go on from a page. How far down the park pages are read, which block's links are followed and to what kind of page, how the header's menus are opened, and which FAQ questions are.
@@ -1162,7 +1166,7 @@ Route `/admin/traffic/events/[name]` (page).
 
 ### [`traffic/live/_lib/use-live-traffic.ts`](../../app/admin/traffic/live/_lib/use-live-traffic.ts)
 
-- `useLiveTraffic` _hook_: The live counters for one language or all, without the data centres' readers unless `datacenter` says otherwise, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React Query's interval …
+- `useLiveTraffic` _hook_: The live counters for one language or all, without the data centres' readers and the automated visits' unless `marked` says otherwise, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React …
 
 ### [`traffic/live/page.tsx`](../../app/admin/traffic/live/page.tsx)
 

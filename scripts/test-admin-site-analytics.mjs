@@ -57,6 +57,7 @@ import {
   pathEditorHref,
   positionRows,
   propCount,
+  parseMarkedRows,
   propValueLabel,
   propValues,
   serializeTrafficFilters,
@@ -166,6 +167,28 @@ test('the query carries the window, the language only when set, the filters and 
     }),
     'days=30&filter=channel%3Asearch&filter=country%3Ade'
   );
+});
+
+test('a mark goes into the query only when it is not the API default', () => {
+  const thirty = { kind: 'days', days: 30 };
+  assert.equal(
+    trafficQuery({ range: thirty, locale: null, datacenter: 'exclude', automated: 'exclude' }),
+    'days=30'
+  );
+  assert.equal(
+    trafficQuery({ range: thirty, locale: null, datacenter: 'include', automated: 'only' }),
+    'days=30&datacenter=include&automated=only'
+  );
+});
+
+test('each mark is read from the address, exclude for anything it does not know', () => {
+  const marks = (query) => parseMarkedRows(new URLSearchParams(query));
+  assert.deepEqual(marks(''), { datacenter: 'exclude', automated: 'exclude' });
+  assert.deepEqual(marks('automated=only&datacenter=include'), {
+    datacenter: 'include',
+    automated: 'only',
+  });
+  assert.deepEqual(marks('automated=all'), { datacenter: 'exclude', automated: 'exclude' });
 });
 
 test('a filter is a dimension and a value, split at the first colon', () => {

@@ -320,7 +320,9 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `serializeTrafficFilters` _function_: The `dimension:value` strings of a list of filters, the way the address and the API take them.
 - `toggleTrafficFilter` _function_: The filters with one more: a dimension is held to one value, so a second value of the same dimension replaces the first (two values of one dimension would match nothing), and the same value again takes it off, which makes a row in a panel …
 - `withoutTrafficFilter` _function_: The filters without the one on `dim`.
-- `parseDatacenterScope` _function_: The scope an address asks for; the API's default, `exclude`, for anything else.
+- `parseMarkedRowScope` _function_: The scope an address asks for; the API's default, `exclude`, for anything else.
+- `parseMarkedRows` _function_: Each mark's scope from an address, `exclude` where it names none.
+- `setMarkedRowParams` _function_: Puts each mark that is not `exclude`, the API's default, into a query.
 - `trafficQuery` _function_: The query string both ends read: `days=30&locale=de&filter=channel:search`. `extra` is appended as given, one parameter per key.
 - `deltaOf` _function_: The change from `previous` to `current`: flat under half a percent, `new` out of nothing.
 - `figureDelta` _function_: The change of a figure that may be missing: `null` when either side is, as visitors are under a filter, so a percentage is never worked out from nothing.
@@ -384,8 +386,9 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `formatChange` _function_: The change in visits as a signed figure: `+12`, `−8`, `±0`.
 - `TRAFFIC_LOCALES` _const_: German first, then the rest: most of the traffic, and the admin's own language.
 - `DIMENSION_LABEL` _const_: What a dimension is called in a filter chip.
-- `DATACENTER_SCOPES` _const_: Which rows a report counts by network (`?datacenter=`): the API leaves the data centres' out unless asked (clouds and hosters by the address's ASN; docs/features/site-analytics.md).
-- `DATACENTER_LABEL` _const_: The switch's words for each `DatacenterScope`, and what each does when hovered.
+- `MARKED_ROW_KINDS` _const_: The rows the API marks and keeps, each with a query parameter of its name: a data centre's (clouds and hosters by the address's ASN) and an automated visit's (one that opens without a referrer on a page that is not English, from a browser …
+- `MARKED_ROW_SCOPES` _const_: Which rows of one mark a report counts: none of them, them with the rest, or them alone.
+- `MARKED_ROW_LABEL` _const_: Each mark's switch: its name, and the words of each scope with what it does when hovered.
 - `VISITOR_FILTER_HINT` _const_: Why a visitor figure can be missing: the API counts visitors without a filter and under one filter on country, device, browser, operating system or channel, and under any other filter, several included, sends `null`.
 - `PAGE_TYPE_LABEL` _const_: The German name of a page type this build knows; see `pageTypeLabel` for any other.
 - `DEVICES` _const_: The device classes the API derives from the User-Agent, in the order a list shows them.
@@ -405,7 +408,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `CROSSTAB_REST` _const_: What the API puts in the place of the values past the 30 biggest of a crosstab side. It is a value nothing real can be: `other` is a real page type.
 - `TRAFFIC_CROSSTAB_PRESETS` _const_: The pairs the traffic crosstab offers as shortcuts, each with the metric that has its dimensions.
 - `PLANNER_STAGE_LABEL` _const_: The planner funnel's stages in German, for its tiles and its series alike.
-- Types: `FilterDimension`, `TrafficFilter`, `DatacenterScope`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`, `SectionReachRow`, `SectionReach`
+- Types: `FilterDimension`, `TrafficFilter`, `MarkedRowKind`, `MarkedRowScope`, `MarkedRows`, `TrafficQueryState`, `TrafficDelta`, `CrosstabMetric`, `SectionReachRow`, `SectionReach`
 
 ### [`tickets.ts`](../../lib/admin/tickets.ts)
 

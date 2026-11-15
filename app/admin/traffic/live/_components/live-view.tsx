@@ -9,14 +9,15 @@ import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import {
   breakdownValueLabel,
   countryName,
-  DATACENTER_LABEL,
-  DATACENTER_SCOPES,
   eventLabel,
+  MARKED_ROW_KINDS,
   pageTypeLabel,
-  parseDatacenterScope,
+  parseMarkedRows,
   parseTrafficLocale,
   referrerHref,
-  type DatacenterScope,
+  type MarkedRowKind,
+  type MarkedRowScope,
+  type MarkedRows,
 } from '@/lib/admin/site-analytics';
 import {
   formatLiveClock,
@@ -41,7 +42,7 @@ import {
 } from '../../../_ui/primitives';
 import { PageLinks, PublicLink } from '../../../_ui/row-links';
 import { LanguageSwitch } from '../../_components/language-switch';
-import { Segmented } from '../../../_ui/controls';
+import { MarkedRowSwitches } from '../../_components/marked-row-switches';
 import { useLiveTraffic } from '../_lib/use-live-traffic';
 import { CountUp } from './count-up';
 import { LiveList } from './live-list';
@@ -72,7 +73,7 @@ export function LiveView() {
   const pathname = usePathname();
   const router = useRouter();
   const locale = parseTrafficLocale(params.get('locale'));
-  const datacenter = parseDatacenterScope(params.get('datacenter'));
+  const marked = parseMarkedRows(params);
 
   const setParam = useCallback(
     (key: string, value: string | null) => {
@@ -88,11 +89,11 @@ export function LiveView() {
   return (
     <AdminPage width="wide">
       <LiveBoard
-        key={`${locale ?? 'all'}|${datacenter}`}
+        key={[locale ?? 'all', ...MARKED_ROW_KINDS.map((kind) => marked[kind])].join('|')}
         locale={locale}
         onLocale={(value) => setParam('locale', value)}
-        datacenter={datacenter}
-        onDatacenter={(value) => setParam('datacenter', value === 'exclude' ? null : value)}
+        marked={marked}
+        onMarked={(kind, scope) => setParam(kind, scope === 'exclude' ? null : scope)}
       />
     </AdminPage>
   );
@@ -101,15 +102,15 @@ export function LiveView() {
 function LiveBoard({
   locale,
   onLocale,
-  datacenter,
-  onDatacenter,
+  marked,
+  onMarked,
 }: {
   locale: Locale | null;
   onLocale: (locale: Locale | null) => void;
-  datacenter: DatacenterScope;
-  onDatacenter: (datacenter: DatacenterScope) => void;
+  marked: MarkedRows;
+  onMarked: (kind: MarkedRowKind, scope: MarkedRowScope) => void;
 }) {
-  const live = useLiveTraffic(locale, datacenter);
+  const live = useLiveTraffic(locale, marked);
   const animate = !useMediaQuery('(prefers-reduced-motion: reduce)');
   const data = live.data;
   const minutes = useMemo(() => (data ? minuteSeries(data) : []), [data]);
@@ -117,12 +118,7 @@ function LiveBoard({
   const languages = (
     <div className="flex flex-wrap gap-2">
       <LanguageSwitch value={locale} onChange={onLocale} />
-      <Segmented
-        label="Rechenzentren"
-        value={datacenter}
-        onChange={onDatacenter}
-        options={DATACENTER_SCOPES.map((scope) => ({ value: scope, ...DATACENTER_LABEL[scope] }))}
-      />
+      <MarkedRowSwitches value={marked} onChange={onMarked} />
     </div>
   );
 
