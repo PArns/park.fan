@@ -39,6 +39,7 @@ seo:
     - Europa-Park Phantasialand comparativa
     - Europa-Park Phantasialand tiempos de espera
     - Europa-Park Phantasialand precios
+    - precio Quick Pass Phantasialand
     - Europa-Park Phantasialand distancia
 ---
 

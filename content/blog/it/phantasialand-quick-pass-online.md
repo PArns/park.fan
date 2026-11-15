@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'Il Quick Pass del Phantasialand ora si vende anche online'
   description: >-
-    Il Quick Pass del Phantasialand ora si compra online, con QR sul telefono. Vale solo nel giorno dell’acquisto. Pass singoli da 5 €, l’Ultimate 80 €.
+    Il Quick Pass del Phantasialand ora si compra online, con il QR sul telefono. Vale solo il giorno dell’acquisto. Si parte da 5 €, l’Ultimate costa 80 €.
   keywords:
     - Phantasialand Quick Pass online
     - Phantasialand Quick Pass

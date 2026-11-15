@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'Le Quick Pass Phantasialand se vend aussi en ligne'
   description: >-
-    Le Quick Pass Phantasialand se vend en ligne, avec un QR code sur mobile. Il ne vaut que le jour de l’achat. Le pass simple dès 5 €, l’Ultimate à 80 €.
+    Le Quick Pass Phantasialand se vend en ligne, avec un QR code sur mobile. Il ne vaut que le jour de l’achat. Le pass simple coûte dès 5 €, l’Ultimate 80 €.
   keywords:
     - Quick Pass Phantasialand en ligne
     - Quick Pass Phantasialand

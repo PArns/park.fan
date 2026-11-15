@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'El Quick Pass del Phantasialand también se vende online'
   description: >-
-    El Quick Pass del Phantasialand ya se vende online, con QR en el móvil. Solo vale el día en que lo reservas. Pases sueltos desde 5 €; el Ultimate, 80 €.
+    El Quick Pass del Phantasialand ya se vende online, con QR en el móvil. Solo vale el día de la reserva. Un pase suelto cuesta desde 5 €; el Ultimate, 80 €.
   keywords:
     - Phantasialand Quick Pass comprar online
     - Phantasialand Quick Pass

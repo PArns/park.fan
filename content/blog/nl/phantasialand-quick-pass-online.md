@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'Phantasialand Quick Pass nu ook online te koop'
   description: >-
-    De Phantasialand Quick Pass koop je nu online, als QR-code op je telefoon. Hij geldt alleen op de boekingsdag. Losse passen vanaf € 5, de Ultimate € 80.
+    De Phantasialand Quick Pass koop je nu online, als QR-code op je mobiel. Hij geldt alleen op de koopdag. Een losse pass kost vanaf € 5, de Ultimate € 80.
   keywords:
     - Phantasialand Quick Pass online kopen
     - Phantasialand Quick Pass

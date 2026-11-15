@@ -3133,7 +3133,7 @@ const translations: GlossaryTermTranslation[] = [
     shortDefinition:
       'Il prodotto salta-fila a pagamento di Phantasialand, acquistato per singola attrazione.',
     definition:
-      'Il QUICK Pass è l’accesso a pagamento che salta la fila a Phantasialand. A differenza della maggior parte dei parchi non si compra per la giornata ma per attrazione: Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSi vende solo nel parco, al servizio ospiti nell’area tematica Berlin, e vale solo nella data stampata. Il prezzo per attrazione è fisso e non segue l’affluenza. Esiste anche il Quick Pass Ultimate: un passaggio su ogni attrazione Quick Pass e uno su F.L.Y.\n\nAnche l’ingresso QUICK Pass ha una fila, ma molto più corta.',
+      'Il QUICK Pass è l’accesso a pagamento che salta la fila a Phantasialand. A differenza della maggior parte dei parchi non si compra per la giornata ma per attrazione: Taron, Black Mamba, Chiapas, Talocan o Maus au Chocolat.\n\nSi compra nello shop online del parco, in PDF con codice QR, oppure al servizio ospiti nell’area tematica Berlin, e vale solo nel giorno della prenotazione. Il prezzo per attrazione è fisso e non segue l’affluenza. Esiste anche il Quick Pass Ultimate: un passaggio su ogni attrazione Quick Pass e uno su F.L.Y.\n\nAnche l’ingresso QUICK Pass ha una fila, ma molto più corta.',
     relatedTermIds: ['express-pass', 'virtual-queue', 'wait-time', 'fastpass'],
     aliases: ['Quick Pass', 'QuickPass'],
   },

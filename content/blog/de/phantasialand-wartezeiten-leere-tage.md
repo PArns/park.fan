@@ -2,6 +2,7 @@
 title: 'Leere Tage im Phantasialand: Gibt es sie noch?'
 translationKey: phantasialand-quiet-days-autumn
 date: '2026-10-19'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -153,8 +154,8 @@ Bei [F.L.Y.](ref:phantasialand/fly), [Chiapas](ref:phantasialand/chiapas-die-was
 Phasen mit zehn Minuten oder weniger, auch an Samstagen und Sonntagen.
 
 Einen [Quick Pass](/blog/phantasialand-tipps) würde ich an solchen Tagen nicht kaufen. Für Taron
-kostet er einzeln 12 €, F.L.Y. gibt es nur im Quick Pass Ultimate für 80 €, und verkauft wird er
-nur im Park, beim Gästeservice am Kaiserplatz.
+kostet er einzeln 12 €, F.L.Y. gibt es nur im Quick Pass Ultimate für 80 €. Du bekommst ihn im
+Online-Shop des Parks oder beim Gästeservice am Kaiserplatz, und er gilt nur am Tag der Buchung.
 
 ## Öffnungszeiten und Sonnenuntergang bis zum 13. November
 
@@ -221,7 +222,8 @@ er für Taron 12 €.
   [Bobbejaanland (offiziell)](https://www.bobbejaanland.be/halloween)
 - Öffnungszeiten, Quick Pass und Wintertraum:
   [Informationen zum Besuch (offiziell)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) ·
-  [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/)
+  [Wintertraum (offiziell)](https://www.phantasialand.de/de/themenpark/wintertraum/) ·
+  [Quick Pass im Online-Shop (offiziell)](https://shop.phantasialand.de/de/quick-pass)
 - Sonnenuntergang:
   [Sonnenaufgang und Sonnenuntergang in Brühl, Oktober 2026 (timeanddate.de)](https://www.timeanddate.de/sonne/deutschland/bruehl?month=10&year=2026)
 - Weitere Beiträge: [Phantasialand-Guide](/blog/phantasialand-tipps) ·

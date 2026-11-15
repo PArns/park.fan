@@ -2,6 +2,7 @@
 title: "Phantasialand's quiet days: do they still exist?"
 translationKey: phantasialand-quiet-days-autumn
 date: '2026-10-19'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -152,8 +153,8 @@ At [F.L.Y.](ref:phantasialand/fly), [Chiapas](ref:phantasialand/chiapas-die-wass
 or less, Saturdays and Sundays included.
 
 I wouldn't buy a [Quick Pass](/blog/phantasialand-wait-times-tips) on days like these. A single one
-for Taron costs €12, F.L.Y. is only in the Quick Pass Ultimate for €80, and you can only buy it in
-the park, at Guest Services on Kaiserplatz.
+for Taron costs €12, F.L.Y. is only in the Quick Pass Ultimate for €80. You can buy it in the park's
+online shop or at Guest Services on Kaiserplatz, and it's only valid on the day you book it.
 
 ## Opening hours and sunset until 13 November
 
@@ -220,7 +221,8 @@ costs €12.
   [Bobbejaanland (official, Dutch)](https://www.bobbejaanland.be/halloween)
 - Opening hours, Quick Pass and Wintertraum:
   [Information and arrival (official)](https://www.phantasialand.de/en/theme-park/information-and-arrival/) ·
-  [Wintertraum (official)](https://www.phantasialand.de/en/theme-park/wintertraum/)
+  [Wintertraum (official)](https://www.phantasialand.de/en/theme-park/wintertraum/) ·
+  [Quick Pass in the online shop (official)](https://shop.phantasialand.de/en/quick-pass)
 - Sunset:
   [Sunrise and sunset in Brühl, October 2026 (timeanddate.de, German)](https://www.timeanddate.de/sonne/deutschland/bruehl?month=10&year=2026)
 - More posts: [Phantasialand guide](/blog/phantasialand-wait-times-tips) ·
