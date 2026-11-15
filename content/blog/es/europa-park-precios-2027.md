@@ -24,9 +24,9 @@ coverImage:
   caption: 'El barco hundido en el estanque de Poseidon, en la zona griega, ya estaba así antes de la subida de precios.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Precios de Europa-Park en 2027: hasta 79,50 € y parking a 12 €'
+  title: 'Europa-Park 2027: entrada hasta 79,50 € y parking a 12 €'
   description: >-
-    Europa-Park desde el 20 de marzo de 2027: entrada de un día en línea de 70 a 79,50 € para adultos, de 59 a 68 € para niños y parking a 12 €. Comparado con 2026.
+    Europa-Park desde el 20 de marzo de 2027: un día en línea cuesta 70–79,50 € a adultos, 59–68 € a niños, y el parking 12 €. Comparado con 2026.
   keywords:
     - Europa-Park precios 2027
     - Europa-Park entrada 2027

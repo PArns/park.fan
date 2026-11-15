@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park day tickets go up by as much as €3.50 in 2027'
+title: 'Europa-Park raises its day ticket prices for 2027'
 translationKey: europa-park-preise-2027
 date: '2026-11-15'
 time: '08:00'
@@ -90,7 +90,7 @@ If you leave the dating until you're at the park, there's a €10 service fee pe
 
 ## Cheaper in March
 
-From 7 to 19 March 2027, the two weeks before the season starts, the park opens for its Pre-Opening Weeks. An online day ticket then costs €59.50 to €70 for adults and €50 to €59 for children and seniors, so the dearest March day costs an adult the same as a price category 2 day in summer. Which days cost what and what's open in those weeks is in our [post on the Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027).
+From 7 to 19 March 2027, the two weeks before the season starts, the park opens for its Pre-Opening Weeks. An online day ticket then costs €59.50 to €70 for adults and €50 to €59 for children and seniors, so the dearest March day costs an adult the same as a price category 2 day in summer. Our [post on the Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) lists the price of each day and what's open in those weeks.
 
 ## The 2027 season and opening hours
 
@@ -99,7 +99,7 @@ From 7 to 19 March 2027, the two weeks before the season starts, the park opens 
 - HALLOWinter: 8 to 26 November 2027, daily from 11 a.m. until at least 7 p.m.
 - Winterzauber: 27 November 2027 to 9 January 2028, daily from 11 a.m. until at least 7 p.m.
 
-Which weekdays and months are quietest at Europa-Park is in our [Europa-Park guide](/blog/europa-park-wait-times-tips), worked out from what we've measured since December 2025.
+In our [Europa-Park guide](/blog/europa-park-wait-times-tips) we've used our measurements since December 2025 to work out the quietest weekdays and months at the park.
 
 ```best-days-widget slug=europa-park
 
