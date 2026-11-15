@@ -18,8 +18,6 @@ tags:
   - tipps
   - deutschland
 category: guides
-parkLinks:
-  - phantasialand
 rideLinks:
   - phantasialand/taron
   - phantasialand/fly
@@ -43,7 +41,7 @@ coverImage:
 seo:
   title: 'Phantasialand Wintertraum 2026/27: Öffnungszeiten, Shows und Tipps'
   description: >-
-    Phantasialand Wintertraum 2026/27: täglich 11 bis 20 Uhr bis 24. Januar, sieben Shows, Feuerwerk gegen 19:50 Uhr, Tickets nur online und wann wenig los ist.
+    Phantasialand Wintertraum 2026/27: täglich 11 bis 20 Uhr bis 24. Januar, sieben Shows, Feuerwerk gegen 19:50 Uhr, nur online buchbar, die ruhigsten Tage.
   keywords:
     - Phantasialand Wintertraum 2026/27
     - Phantasialand Wintertraum
