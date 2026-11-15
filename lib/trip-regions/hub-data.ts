@@ -226,30 +226,26 @@ export function rankGroupParks(
 }
 
 /**
- * A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie
- * to the longer day for the day guest. None where fewer than two days have a figure, where two
- * days tie on both, or where the star would sit on a higher printed figure (`shownWait`) than
- * another day's; and never a last-year day, which is never offered as a pick.
+ * A park's quietest day among some days, the star on its tile: the lowest figure the tile prints
+ * (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then
+ * to the earlier date. The API rounds `headlinerWait` to 5 min, so a tie on it alone is common; a
+ * park with an open day always gets its one star, and the star never sits on a higher printed
+ * figure than another day's. Never a last-year day, which is never offered as a pick.
  */
 export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
-  const open = days.flatMap((d) => {
-    const park = d.parks[slug];
-    return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
-  });
-  if (open.length < 2) return null;
-  const [first, second] = [...open].sort(
-    (a, b) =>
-      a.park.headlinerWait - b.park.headlinerWait ||
-      dayGuestMinutes(b.park) - dayGuestMinutes(a.park)
-  );
-  if (
-    first.park.headlinerWait === second.park.headlinerWait &&
-    dayGuestMinutes(first.park) === dayGuestMinutes(second.park)
-  ) {
-    return null;
-  }
-  const shown = shownWait(first.park)!;
-  return open.every((o) => shownWait(o.park)! >= shown) ? first.date : null;
+  const [first] = days
+    .flatMap((d) => {
+      const park = d.parks[slug];
+      return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
+    })
+    .sort(
+      (a, b) =>
+        shownWait(a.park)! - shownWait(b.park)! ||
+        a.park.headlinerWait - b.park.headlinerWait ||
+        dayGuestMinutes(b.park) - dayGuestMinutes(a.park) ||
+        a.date.localeCompare(b.date)
+    );
+  return first?.date ?? null;
 }
 
 /** A resort's pick on a day, as the hub names it. */
