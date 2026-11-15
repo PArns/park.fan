@@ -611,7 +611,7 @@
         }
       },
       "parky": "Je kunt de reis ook met mij in de chat plannen. Ik vraag naar je reisdata, parken en hotel en geef daarna elk park zijn dag.",
-      "chat": "Liever in de chat",
+      "chat": "Plannen met Parky",
       "calendarLead": "Bij elk park is de rustigste dag van de week gemarkeerd",
       "hero": {
         "note": "Alleen je reisdata zijn verplicht; het eerste plan staat er zodra je ze kiest.",
@@ -1253,6 +1253,7 @@
     "dayDetail": {
       "fancastLink": "Hoe we dit voorspellen: Fancast",
       "forecastLabel": "Voorspelling",
+      "soFarLabel": "Vandaag tot nu toe",
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
       "actualWaitsTitle": "Gemiddelde wachttijden",

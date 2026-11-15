@@ -611,7 +611,7 @@
         }
       },
       "parky": "También puedes planificar el viaje conmigo en el chat. Te pregunto por tus fechas, tus parques y tu hotel, y luego le doy su día a cada parque.",
-      "chat": "Mejor en el chat",
+      "chat": "Planear con Parky",
       "calendarLead": "En cada parque está marcado su día más tranquilo de la semana",
       "hero": {
         "note": "Solo las fechas son obligatorias; el primer plan aparece en cuanto las eliges.",
@@ -1253,6 +1253,7 @@
     "dayDetail": {
       "fancastLink": "Cómo lo predecimos: Fancast",
       "forecastLabel": "Previsión",
+      "soFarLabel": "Hoy hasta ahora",
       "hourlyTitle": "Previsión por horas",
       "holidaysTitle": "Festivos y vacaciones escolares",
       "actualWaitsTitle": "Esperas medias",

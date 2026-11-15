@@ -16,6 +16,7 @@ itself, with its prompt, tools, limits and the stored key, runs on api.park.fan 
 | Blog and news for the bot              | `/api/assistant-posts` (search), `/api/assistant-post` (text) |
 | Widget                                 | `components/assistant/`, mounted in `app/[locale]/layout.tsx` |
 | Admin: settings, chats, feedback, cost | `/admin/assistant`, through the admin proxy                   |
+| Admin: Parky's knowledge base          | `/admin/assistant/knowledge[/topic]`, editor writes           |
 
 The chat goes to the API directly, not through a relay route, so a streamed answer never holds a
 Vercel function open. The config goes through a route because Cloudflare caches it, and a cached
@@ -98,6 +99,15 @@ What the visitor typed is shown as text too. The admin shows chats, tool inputs 
 plain text, never as Markdown or HTML, and links a stored page only through `sitePageUrl`
 (`app/admin/assistant/_lib/assistant.ts`), which takes nothing but a path of slugs, so a path
 glued to the origin cannot become `https://park.fan@host`. The admin exports nothing.
+
+**Parky's knowledge base** (`/admin/assistant/knowledge`, „Wissen“ in the sidebar) is the wiki
+he reads only when a question needs it: a list of topics with their „Wann lesen“ line (what his
+prompt lists), on or off, length and last edit, and per topic an editor for that line, the text and
+the switch, with the edits from the audit log under it (`Stand davor` opens the text before each).
+A name the base does not hold opens an empty form, and saving creates it; viewers read, editors
+write. The texts are English, for Parky, and shown as plain text. An edit reaches the next chat
+within a minute, without a deploy. The API's `docs/frontend/assistant.md#parkys-knowledge-base`
+holds the table, the tool and the MCP's three tools.
 
 Each answer in the chat view carries the prompt version it was written with (`Prompt v26`), and
 the chat list shows the version of a chat's latest answer and filters by it, so a bad answer
@@ -291,9 +301,11 @@ shows and arrival). The order is a guide: what a visitor says early is taken at 
   Parky's own offer: Parky (`ParkyLogo framed`, so the box holds his hat and a row centres him as
   seen), a speech bubble (`PARKY_BUBBLE`, the trip assistant's) with his name, the planner's line in
   his first person and the interview's core steps as numbered badges (`interviewCore`,
-  `assistant.interview.steps`), then the button; on a wide page the row keeps to `max-w-4xl` in
-  the middle. With the hub's `action` the badges are left out. A press sets the interview on its
-  first step (`startInterview`) and opens the window
+  `assistant.interview.steps`), then the button; on a wide page the card itself stops at
+  `max-w-4xl` in the middle, since a full-width tint around a centred row read as an empty band.
+  `showSteps={false}` leaves the badges out where the line names the steps (the hub). A press sets
+  the interview on its first step (`startInterview`, which counts `assistant_interview_started`
+  with `source: planner`) and opens the window
   (`openParky('interview')`), which sends „Plan meine Reise mit mir, Frage für Frage." as the
   visitor's message once its session is ready (`takeInterviewKickoff`, `assistant_question` kind
   `interview`). In the chat: asking for it, or the opener's `suggestInterview` and

@@ -105,6 +105,41 @@ export function sitePageUrl(path: string): string | null {
   return /^\/[a-z0-9-][a-z0-9\-/]*$|^\/$/.test(path) ? `${SITE_ORIGIN}${path}` : null;
 }
 
+/** One topic of Parky's knowledge base as `GET assistant/knowledge` lists it. */
+export interface KnowledgeTopic {
+  topic: string;
+  /** What the topic holds and when Parky reads it: the line his prompt lists. */
+  readWhen: string;
+  text: string;
+  enabled: boolean;
+  updatedBy?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+/** One edit of a topic, from the audit log, with the whole topic before and after. */
+export interface KnowledgeEdit {
+  at: string;
+  action: string;
+  by?: string;
+  before?: Partial<Pick<KnowledgeTopic, 'readWhen' | 'text' | 'enabled'>>;
+  after?: Partial<Pick<KnowledgeTopic, 'readWhen' | 'text' | 'enabled'>>;
+}
+
+/** One topic with its edits, as `GET assistant/knowledge/:topic` answers. */
+export interface KnowledgeTopicDetail extends KnowledgeTopic {
+  history: KnowledgeEdit[];
+}
+
+/** A topic's name as the API takes it: lowercase words joined by "_", 2 to 40 characters. */
+export const KNOWLEDGE_TOPIC_PATTERN = /^[a-z]+(?:_[a-z]+)*$/;
+
+/** The API's bounds for a topic's two texts (`knowledgeWriteSchema`). */
+export const KNOWLEDGE_LIMITS = {
+  readWhen: { min: 20, max: 400 },
+  text: { min: 40, max: 4000 },
+} as const;
+
 /** A page of a list endpoint. */
 export interface Page<T> {
   total: number;

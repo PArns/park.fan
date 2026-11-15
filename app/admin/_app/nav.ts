@@ -1,6 +1,7 @@
 import {
   Activity,
   Archive,
+  BookOpen,
   Bot,
   Brain,
   Camera,
@@ -331,6 +332,13 @@ const NAV_GROUPS: NavGroup[] = [
             icon: MessageSquareHeart,
             description: 'Feedback zur Seite, das Besucher über das Widget schicken',
             keywords: ['rückmeldung', 'kritik', 'lob', 'kontakt'],
+          },
+          {
+            href: '/admin/assistant/knowledge',
+            label: 'Wissen',
+            icon: BookOpen,
+            description: 'Hintergrund, den Parky nur liest, wenn eine Frage ihn braucht',
+            keywords: ['wissensbasis', 'wiki', 'knowledge', 'fancast', 'prognose', 'themen'],
           },
           {
             href: '/admin/assistant/settings',

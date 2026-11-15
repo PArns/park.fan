@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Bot, KeyRound, MessageSquareHeart, MessagesSquare } from 'lucide-react';
+import { BookOpen, Bot, KeyRound, MessageSquareHeart, MessagesSquare } from 'lucide-react';
 import { adminKeys, useAdminQuery } from '../_lib/api';
 import {
   AdminPage,
@@ -24,6 +24,7 @@ import {
 const LINKS = [
   { href: '/admin/assistant/conversations', label: 'Chats', icon: MessagesSquare },
   { href: '/admin/assistant/feedback', label: 'Feedback', icon: MessageSquareHeart },
+  { href: '/admin/assistant/knowledge', label: 'Wissen', icon: BookOpen },
   { href: '/admin/assistant/settings', label: 'Einstellungen', icon: KeyRound },
 ];
 

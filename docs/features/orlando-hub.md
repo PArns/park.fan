@@ -146,9 +146,10 @@ Each chapter opens with its heading and then the thing itself.
    optional; the plan day by day; changing it, with Parky too), each a screenshot from the region's
    `hub.howItWorks` in the page's language (`<base>-<locale>`, else `-en`, else `-de`,
    `hubShot` in `lib/trip-regions/hub-media.ts`), an `<h3>` and a sentence; swiped sideways on a
-   phone, four columns from `md`. Under them Parky's offer to plan the trip in the chat, with
-   „Reise planen“ and „Lieber im Chat“ (`ParkyInterviewStart` with its `action`; without Parky only
-   the button stands, since the line offers the chat). That only the dates are required is said
+   phone, four columns from `md`. Under them Parky's offer to plan the trip in the chat, with one
+   button, „Mit Parky planen“, that opens him (`ParkyInterviewStart` with `showSteps={false}`, since
+   the line names the steps; without Parky nothing is drawn, and the head's „Reise planen“ starts
+   the planner). That only the dates are required is said
    once, under the head's buttons, and not again here. The planner itself is
    [orlando-planner](orlando-planner.md)'s; the screenshots are the media database's
    (`public/media/reiseplaner/`), with their alt texts and focus in the sidecars.
