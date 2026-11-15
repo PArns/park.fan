@@ -91,3 +91,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `SearchSkeletonList` _component_: Heading and rows, everything inside a pending dropdown above its footer. The heading's bar is inline-block inside a `text-[10px]` line box, so the line keeps the height the real heading's text gives it.
 - `HERO_SKELETON_ROW_CLASS` _const_: The hero list's rows from `md` up: a fixed 60 px, because a row's content is 44 px for a shut park and 50 px for an open one with its wait badge; the open row's extra 6 px stay inside its padding. The real rows take `HERO_ROW_CLASS`.
 - `HERO_ROW_CLASS` _const_: The real rows' half of `HERO_SKELETON_ROW_CLASS`; the padding is the panel root's.
+
+### [`search-trip-row.tsx`](../../components/search/search-trip-row.tsx)
+
+- `SearchTripRow` _component_: „Reise planen: Orlando · Südkalifornien · Japan · Paris", one row of the hero's list before anything is typed, each region a chip into its trip planner.

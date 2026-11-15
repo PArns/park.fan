@@ -76,11 +76,21 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     router.push(post.path as '/parks/europe');
   };
 
+  const openTripPlanner = (region: Pick<TripRegionLinks, 'slug'>) => {
+    onNavigate?.();
+    router.push(tripPlannerHref(region.slug, locale) as '/parks/europe');
+  };
+
   /** The planner of the trip region the query names, the row before every group. */
   const handleTripSelect = (region: Pick<TripRegionLinks, 'slug'>) => {
     session.resultClicked('trip_planner', 0);
-    onNavigate?.();
-    router.push(tripPlannerHref(region.slug, locale) as '/parks/europe');
+    openTripPlanner(region);
+  };
+
+  /** One of the regions the hero lists before anything is typed (`SearchTripRow`). */
+  const handleBrowseTripSelect = (region: Pick<TripRegionLinks, 'slug'>, index: number) => {
+    session.browseClicked('trip_region', index);
+    openTripPlanner(region);
   };
 
   /** One of the posts the hero lists before anything is typed. */
@@ -100,6 +110,7 @@ export function useSearchNavigation(session: SearchSession, onNavigate?: () => v
     handleGlossarySelect,
     handlePostSelect,
     handleTripSelect,
+    handleBrowseTripSelect,
     handleBrowsePostSelect,
   };
 }

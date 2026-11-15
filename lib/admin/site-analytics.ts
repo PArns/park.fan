@@ -457,6 +457,7 @@ export const BROWSE_ITEM_LABEL: Record<SearchBrowseItem, string> = {
   favorite_park: 'Favorisierter Park',
   news: 'News',
   guide: 'Guide',
+  trip_region: 'Reise-Region',
 };
 
 /** A suggestion kind as it reads in a list; one the site sends later stays as sent. */
@@ -1179,9 +1180,9 @@ export const SECTION_LABEL: Record<SeenSection, string> = {
   end: 'Seitenende',
   trip_band: 'Reiseplaner-Band',
   home_news: 'Startseite: News',
+  home_trips: 'Startseite: Reise-Regionen',
   home_tour: 'Startseite: Rundgang',
   home_parky: 'Startseite: Parky',
-  home_trips: 'Startseite: Reise-Regionen',
   home_popular: 'Startseite: Beliebte Parks',
   home_faq: 'Startseite: FAQ',
   home_end: 'Startseite: Seitenende',

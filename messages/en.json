@@ -4451,12 +4451,6 @@
           "universal": "Universal Orlando hotels",
           "disney_springs": "Disney Springs Resort Area"
         }
-      },
-      "homeStory": {
-        "kicker": "Orlando",
-        "title": "Orlando: which park on which day",
-        "lead": "Sixteen parks around Orlando in one calendar: for every day you see where the lines are shortest at Disney World and Universal, and the planner puts your parks on your dates",
-        "link": "Orlando Crowd Calendar"
       }
     },
     "southern-california": {
@@ -4729,12 +4723,6 @@
             "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Southern California",
-        "title": "Southern California: which park on which day",
-        "lead": "Disneyland, California Adventure, Universal Hollywood and five more parks in one calendar: which one is quietest when, and a planner for your trip dates",
-        "link": "Southern California Crowd Calendar"
       }
     },
     "japan": {
@@ -5064,12 +5052,6 @@
             "legoland-japan-combo-1-day": "With SEA LIFE Nagoya"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Japan",
-        "title": "Japan: which park on which day",
-        "lead": "Five parks from Tokyo to Osaka in one calendar, day by day, and a trip planner that fits the cities, the nights and the parks to your dates",
-        "link": "Japan Crowd Calendar"
       }
     },
     "paris": {
@@ -5319,12 +5301,6 @@
             "dlp-pass": "Bronze Max, Silver or Gold"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Paris",
-        "title": "Disneyland Paris and Parc Astérix: which park on which day",
-        "lead": "Disneyland Paris has two parks, Parc Astérix one, and each resort has its own hotels. The calendar has all three day by day with their peak wait, and the trip planner shows where to stay for which park.",
-        "link": "Disneyland Paris & Parc Astérix Crowd Calendar"
       }
     }
   },

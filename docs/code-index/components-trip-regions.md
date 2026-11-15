@@ -328,7 +328,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
-- `TripRegionHomeStop` _component_: The homepage's stop for a trip region's hub: what it is and its link, in the region's own words (`tripRegions.<slug>.homeStory`), beside the region's parks by resort, from the open `/trip-regions/:region` (a day in the Data Cache).
+- `TripRegionsHomeStop` _component_: The homepage's stop for the trip regions, right under the news: the planner band's tiles, each its hub's planner, with its scene once the stop nears the screen (`RegionSceneInView`, so the first load pays nothing for it), and under each …
 
 ### [`wizard/plan-ribbon.tsx`](../../components/trip-regions/wizard/plan-ribbon.tsx)
 

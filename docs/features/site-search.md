@@ -125,6 +125,15 @@ post list's, so the row never appears above results already on screen. A pick se
 `search_result_clicked` with `result` `trip_planner`. `/search` puts `TripPlannerBand`'s `search`
 variant above its results for the same match, marked as its first result.
 
+**Before anything is typed, on the homepage's hero only**, the list carries the regions as one
+row, „Reise planen: Orlando · Südkalifornien · Japan · Paris" (`SearchTripRow`), each region a chip
+into its planner. After the parks near the visitor, and first where none is known and the rows are
+the popular ones (`browse.isFallback`), so a visitor without a location sees the planner first. On
+the desktop list it is a fifth row the height of a park's (`HERO_PARK_ROWS` 4), so the list keeps
+its height; on a phone it is the hero palette's (`SearchCommand trigger="hero"`), and the header's
+palette never shows it. The regions are the same `useTripRegionLinks` list, asked for when the row
+first mounts. A pick sends `search_browse_clicked` with `item` `trip_region`.
+
 ## The list's height eases
 
 The palette and the hero's list change height on every query (browse list → skeleton → results,
@@ -224,7 +233,7 @@ the viewport come with every hit, the surface with every search event.
   `useSettledQueryEvents`; `glossary_searched` is gone, the glossary's typing is `search_typed`.
 - **`position`** is the row's place in its own group (the first park, the second guide), bucketed by
   `searchPosition`: 1, 2, 3, 4-5, 6-10, 11+. **`item`** says which list the row came from:
-  `nearby_park`, `in_park_ride`, `popular_park`, `favorite_park`, `news`, `guide`.
+  `nearby_park`, `in_park_ride`, `popular_park`, `favorite_park`, `news`, `guide`, `trip_region`.
 - **The palette knows its surface**: `SearchCommand` opens it as its `searchOpenSource`, `/` as
   `keyboard`, and the hero's type-anywhere shortcut on a phone as `hero`; every event of that opening
   carries it. The hero's phone field hands its palette the field's session (`session`).

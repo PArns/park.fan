@@ -258,7 +258,7 @@ test('every closed list has a word for each value', () => {
   assert.equal(Object.keys(SURFACE_LABEL).length, 12);
   assert.equal(Object.keys(RESULT_KIND_LABEL).length, 9);
   assert.equal(propValueLabel('result', 'trip_planner'), 'Reiseplaner');
-  assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 6);
+  assert.equal(Object.keys(BROWSE_ITEM_LABEL).length, 7);
   assert.equal(breakdownValueLabel('channel', 'ai'), 'KI-Assistenten');
   assert.equal(breakdownValueLabel('channel', 'new_channel'), 'new_channel');
   assert.equal(breakdownValueLabel('device', 'tablet'), 'Tablet');

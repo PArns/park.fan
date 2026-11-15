@@ -4451,12 +4451,6 @@
           "universal": "Hôtels Universal",
           "disney_springs": "Disney Springs Resort Area"
         }
-      },
-      "homeStory": {
-        "kicker": "Orlando",
-        "title": "Orlando : quel parc quel jour",
-        "lead": "Seize parcs autour d’Orlando dans un seul calendrier : pour chaque jour, tu vois où les files sont les plus courtes à Disney World et chez Universal, et le planificateur place tes parcs sur tes dates",
-        "link": "Calendrier d’affluence Orlando"
       }
     },
     "southern-california": {
@@ -4729,12 +4723,6 @@
             "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Californie du Sud",
-        "title": "Californie du Sud : quel parc quel jour",
-        "lead": "Disneyland, California Adventure, Universal Hollywood et cinq autres parcs dans un seul calendrier : quand chacun est le plus calme, et un planificateur pour tes dates de voyage",
-        "link": "Calendrier d’affluence Californie du Sud"
       }
     },
     "japan": {
@@ -5064,12 +5052,6 @@
             "legoland-japan-combo-1-day": "Avec SEA LIFE Nagoya"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Japon",
-        "title": "Japon : quel parc quel jour",
-        "lead": "Cinq parcs de Tokyo à Osaka dans un seul calendrier, jour par jour, et un planificateur qui répartit les villes, les nuits et les parcs sur tes dates",
-        "link": "Calendrier d’affluence Japon"
       }
     },
     "paris": {
@@ -5319,12 +5301,6 @@
             "dlp-pass": "Bronze Max, Silver ou Gold"
           }
         }
-      },
-      "homeStory": {
-        "kicker": "Paris",
-        "title": "Disneyland Paris et Parc Astérix : quel parc quel jour",
-        "lead": "Disneyland Paris compte deux parcs, le Parc Astérix un seul, et chacun a ses hôtels. Dans le calendrier, tu as les trois parcs jour par jour avec leur attente de pointe, et dans le planificateur, tu vois où dormir pour quel parc.",
-        "link": "Calendrier d’affluence Disneyland Paris et Parc Astérix"
       }
     }
   },

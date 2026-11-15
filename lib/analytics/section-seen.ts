@@ -23,9 +23,9 @@ const SEEN_SECTIONS = [
   'end',
   'trip_band',
   'home_news',
+  'home_trips',
   'home_tour',
   'home_parky',
-  'home_trips',
   'home_popular',
   'home_faq',
   'home_end',
@@ -46,9 +46,9 @@ export const BLOCK_SEEN_SECTIONS: readonly SeenSection[] = ['trip_tile', 'trip_b
  */
 export const HOME_SEEN_SECTIONS: readonly SeenSection[] = [
   'home_news',
+  'home_trips',
   'home_tour',
   'home_parky',
-  'home_trips',
   'home_popular',
   'home_faq',
   'home_end',

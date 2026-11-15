@@ -18,6 +18,8 @@ interface SearchDialogProps {
   onQueryChange: (query: string) => void;
   /** The trigger's session, which knows the surface this opening came from. */
   session: SearchSession;
+  /** The hero's phone field: the trip regions stand in the list before anything is typed. */
+  browseTrips?: boolean;
 }
 
 /**
@@ -40,6 +42,7 @@ export default function SearchDialog({
   query,
   onQueryChange,
   session,
+  browseTrips = false,
 }: SearchDialogProps) {
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
@@ -55,6 +58,7 @@ export default function SearchDialog({
     handleGlossarySelect,
     handlePostSelect,
     handleTripSelect,
+    handleBrowseTripSelect,
   } = useSearchNavigation(session, () => onOpenChange(false));
 
   const isMobile = useMediaQuery('(max-width: 639px)');
@@ -84,6 +88,7 @@ export default function SearchDialog({
           onGlossarySelect={handleGlossarySelect}
           onPostSelect={handlePostSelect}
           onTripSelect={handleTripSelect}
+          onBrowseTripSelect={browseTrips ? handleBrowseTripSelect : undefined}
           onNavigate={() => onOpenChange(false)}
           listClassName={LIST_HEIGHT_CLASS}
           restingFooter={null}
