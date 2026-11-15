@@ -11,6 +11,35 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.22.4 (2026-11-15) – Keine besten Besuchszeiten bei festen Vorstellungen, Wartezeit-Verlauf ohne falsche Schließtage
+
+Geschnitten am 2026-11-15 aus 2 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.4.md`. Neueste Abschnitte zuerst.
+
+### Der Wartezeit-Verlauf zeigt eine frei zugängliche Attraktion an ihren Betriebstagen als offen
+
+Im Wartezeit-Verlauf der Mausketiere stand an 30 von 31 Tagen „Ganztägig geschlossen" und heute
+„Heute noch nicht geöffnet", obwohl das Kino lief. Es ist als frei zugänglich kuratiert
+(`open_with_park`) und liest 0 Minuten, und die History der API zählt nur Werte ab 5 Minuten. Die
+API markiert solche Tage jetzt mit `withoutWait`, das Raster zeigt sie als „Offen, ohne Wartezeit"
+in der Betriebsfarbe (`NO_WAIT` in `lib/parks/attraction-history-status.ts`). Ein Fenster nur aus
+solchen Tagen zeichnet das Raster statt der Zeile „keine Daten". Außerdem zeichnete das Raster 31
+Tage, die API liefert 30 (heute eingeschlossen): Der älteste Tag stand bei jeder Bahn auf
+„Ganztägig geschlossen". `HISTORY_WINDOW_DAYS` ist jetzt 29, das Fenster heißt „Basierend auf den
+letzten 30 Tagen", und die Reservierung unter `lg` sinkt von 2.024 auf 1.897 px. Geprüft mit
+`pnpm test:attraction-history-status` (5) und `pnpm test:attraction-history-geometry` (9).
+
+### Attraktionen mit festen Vorstellungen zeigen keine besten Besuchszeiten mehr
+
+Auf der Bahnseite der Mausketiere stand neben „Nächste Vorstellung 13:00" die Spalte „Beste Zeiten
+heute" mit 12:45 und 13:45 bei 5 Minuten. Das ist die Wartezeit-Prognose, und für ein Kino mit
+festen Startzeiten sagt sie nichts. Deckt ein Vorstellungsplan den Parktag, entfallen die besten
+Zeiten jetzt überall (`startsAtSetTimesOn` in `lib/utils/performance-schedule.ts`): die Spalte in
+`RideNowPanel`, der Hinweis „Beste Zeit" auf der Kachel „Beste Besuchszeit planen", die
+Markierungen im Tagesdiagramm `DailyWaitTimeChartClient` und die Bestzeit-Zeile der
+`AttractionCard`. Entschieden wird am Parktag aus dem Server-Render, nicht am Live-Status, damit
+die reservierte Spalte nicht mit dem Poll auf- und zugeht. Geprüft mit
+`pnpm test:performance-schedule` (13).
+
 ## 2.22.3 (2026-11-15) – Feste Vorstellungen statt Wartezeit, Reise-Hubs mit einem Schluss und Parks- und Längenwahl, automatisierte Besuche im Admin, eine Foto-URL pro Sprache, Menü-Teaser erst beim Öffnen
 
 Geschnitten am 2026-11-15 aus 5 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.3.md`. Neueste Abschnitte zuerst.
