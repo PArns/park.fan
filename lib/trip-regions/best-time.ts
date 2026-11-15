@@ -2,7 +2,7 @@ import { getListFormat } from '@/lib/utils/intl-format';
 import { addDays, daysBetween } from '@/lib/utils/park-day';
 import { formatWindow } from './hub-data';
 import { monthKey, monthOfDate, tripMonthRange } from './paths';
-import { DEFAULT_FIND_DAYS, MAX_DAYS_AHEAD, type PlanSearchRange } from './plan-query';
+import { MAX_DAYS_AHEAD, MAX_TRIP_DAYS, MIN_FIND_DAYS, type PlanSearchRange } from './plan-query';
 import { weekInWindow } from './plan-when';
 import { bestTimePageOf, tripRegionConfig, type TripRegionConfig } from './registry';
 import type {
@@ -30,8 +30,44 @@ export const REGION_BEST_TIME_PAGE = 'region';
 /** A best-time page by its id: the region's own (`region`), or a resort's segment. */
 export type BestTimePageId = string;
 
-/** The trip length every page ranks, the planner's own default. */
-export const BEST_TIME_TRIP_DAYS = DEFAULT_FIND_DAYS;
+/** The days a trip has beside its park days: the day of arrival and the day of departure. */
+const TRAVEL_DAYS = 2;
+
+/** The longer trips the hub's teaser offers beside a page's own length. */
+const LONGER_TRIPS = [5, 7, 10, 12, 14];
+
+/** How many lengths the hub's teaser offers. */
+const TRIP_LENGTH_CHOICES = 3;
+
+/**
+ * The trip length for a number of parks at a number of resorts: a day per park, a day between
+ * two resorts, arrival and departure, and `extra` days where the resorts are cities apart; within
+ * what the planner searches. Disney World's four parks are six days, all seven Orlando parks at
+ * two resorts ten.
+ */
+export function bestTimeTripDays(parks: number, resorts = 1, extra = 0): number {
+  const days = parks + TRAVEL_DAYS + Math.max(0, resorts - 1) + extra;
+  return Math.max(MIN_FIND_DAYS, Math.min(MAX_TRIP_DAYS, days));
+}
+
+/** The trip length a best-time page ranks: {@link bestTimeTripDays} for its parks and resorts. */
+export function bestTimePageDays(region: TripRegion, page: BestTimePageId): number {
+  const config = tripRegionConfig(region.slug);
+  const pageConfig = config && bestTimePageOf(config, page);
+  const parks = bestTimeParks(region, page);
+  const resorts = (pageConfig?.groups ?? []).filter((group) =>
+    region.parks.some((p) => p.headliner && p.group === group)
+  ).length;
+  return bestTimeTripDays(parks.length, resorts, pageConfig?.extraDays);
+}
+
+/**
+ * The lengths the hub's teaser lets a reader pick beside a page's own (`own`, first): the next
+ * longer trips that add two days or more.
+ */
+export function bestTimeTripLengths(own: number): number[] {
+  return [own, ...LONGER_TRIPS.filter((days) => days >= own + 2)].slice(0, TRIP_LENGTH_CHOICES);
+}
 
 /** The windows the first answer names. */
 export const BEST_TIME_WINDOWS = 3;
@@ -88,24 +124,48 @@ export function bestTimeParks(region: TripRegion, page: BestTimePageId): string[
   return region.parks.filter((p) => p.headliner && groups.includes(p.group)).map((p) => p.slug);
 }
 
+/** A `/when` query as the route reads it, every value a string for the URL. */
+export type BestTimeWhenQuery = {
+  from: string;
+  to: string;
+  days: string;
+  limit: string;
+  gap: string;
+  parks: string;
+};
+
 /**
- * The one `/when` query a best-time page and the hub's teaser send for the same parks, so both
- * read one cached answer and never print two figures for one window. The gap is the trip's
- * length: the windows named side by side never overlap.
+ * The `/when` query for a set of parks and a trip length: the quietest {@link BEST_TIME_WINDOWS}
+ * trips in `range`. The gap is the trip's length, so the windows named side by side never overlap.
+ * One function for the server's read and the teaser's switch in the browser, so the same choice
+ * is the same cached answer.
+ */
+export function whenQueryFor(
+  parks: readonly string[],
+  range: PlanSearchRange,
+  days: number
+): BestTimeWhenQuery {
+  return {
+    from: range.from,
+    to: range.to,
+    days: String(days),
+    limit: String(BEST_TIME_WINDOWS),
+    gap: String(days),
+    parks: parks.join(','),
+  };
+}
+
+/**
+ * The one `/when` query a best-time page and the hub's teaser send for a page's parks at its own
+ * length ({@link bestTimePageDays}), so both read one cached answer and never print two figures
+ * for one window.
  */
 export function bestTimeWhenQuery(
   region: TripRegion,
   page: BestTimePageId,
   range: PlanSearchRange
-): { from: string; to: string; days: number; limit: number; gap: number; parks: string } {
-  return {
-    from: range.from,
-    to: range.to,
-    days: BEST_TIME_TRIP_DAYS,
-    limit: BEST_TIME_WINDOWS,
-    gap: BEST_TIME_TRIP_DAYS,
-    parks: bestTimeParks(region, page).join(','),
-  };
+): BestTimeWhenQuery {
+  return whenQueryFor(bestTimeParks(region, page), range, bestTimePageDays(region, page));
 }
 
 /**
@@ -113,9 +173,13 @@ export function bestTimeWhenQuery(
  * week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet")
  * instead of failing, as every page does without a key.
  */
-export function noWhenAnswer(region: string, range: PlanSearchRange): TripWhenWithMonths {
+export function noWhenAnswer(
+  region: string,
+  range: PlanSearchRange,
+  days: number
+): TripWhenWithMonths {
   return {
-    meta: { region, from: range.from, to: range.to, days: BEST_TIME_TRIP_DAYS, computedAt: '' },
+    meta: { region, from: range.from, to: range.to, days, computedAt: '' },
     windows: [],
     weeks: [],
     seasons: [],

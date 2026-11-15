@@ -108,10 +108,10 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 `components/trip-regions/hub/hub-trip-state.tsx`; the rules are pure in
 `lib/trip-regions/hub-trip.ts` and pinned in `pnpm test:orlando-hub`).
 
-| State        | When                                                                           | Head                                                                                                              | Chapter 01                      |
-| ------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------- |
-| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                                               | the four steps and Parky's line |
-| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gespeichert. Reise löschen“ | „Deine Reise“ and the planner   |
+| State        | When                                                                           | Head                                                                                                              | Chapter 01                       |
+| ------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                                               | the four steps and Parky's offer |
+| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gespeichert. Reise löschen“ | „Deine Reise“ and the planner    |
 
 - **Only chapter 01 changes.** The calendar, the resorts, the best time and the questions are open
   in both states, in full, with no fold and no toggle: with a plan, „Deine Reise“ stands at the top
@@ -129,7 +129,7 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
   the four steps.
 - **Every start goes through one place**, `startPlanner` in `hub-hero-action.tsx`:
   `tripPlannerUi.openStart(source)` with `hero` (the head), `landing` (chapter 01, the closing
-  call) or `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
+  band) or `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
   clearing „Reise löschen“ uses, without its undo). Each counts as `trip_hub_action`; the clear
   counts no `trip_option_changed`.
 - **A trip can be deleted** from the head's line and from the result („Reise löschen“, asked in
@@ -141,13 +141,15 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 
 Each chapter opens with its heading and then the thing itself.
 
-1. **01 So plant der Reiseplaner deine Reise** (`PlannerChapterSlot`, `id="planner"`, with a plan
-   „Deine Reise“). On the landing page `HubHowItWorks`: four steps (dates; a few questions, all
+1. **01 So plant der Reiseplaner deine Tage in Orlando** (`PlannerChapterSlot`, `id="planner"`,
+   the region's `nav.inRegion` in the title; with a plan „Deine Reise“). On the landing page `HubHowItWorks`: four steps (dates; a few questions, all
    optional; the plan day by day; changing it, with Parky too), each a screenshot from the region's
    `hub.howItWorks` in the page's language (`<base>-<locale>`, else `-en`, else `-de`,
    `hubShot` in `lib/trip-regions/hub-media.ts`), an `<h3>` and a sentence; swiped sideways on a
-   phone, four columns from `md`. Under them Parky's line with „Reise planen“ and „Lieber im Chat“
-   (`ParkyInterviewStart` with its `action`; without Parky the button stays). The planner itself is
+   phone, four columns from `md`. Under them Parky's offer to plan the trip in the chat, with
+   „Reise planen“ and „Lieber im Chat“ (`ParkyInterviewStart` with its `action`; without Parky only
+   the button stands, since the line offers the chat). That only the dates are required is said
+   once, under the head's buttons, and not again here. The planner itself is
    [orlando-planner](orlando-planner.md)'s; the screenshots are the media database's
    (`public/media/reiseplaner/`), with their alt texts and focus in the sidecars.
 2. **02 Die nächsten 30 Tage** (`HubCalendar`, client; on a month page „Tag für Tag im <month>“),
@@ -209,22 +211,47 @@ Each chapter opens with its heading and then the thing itself.
    months).
 
 3. **03 Die Resorts rund um Orlando** (`HubResorts`): one card per API group, in the order of the
-   region's `hub.resorts` (a group it does not list follows): the photo (`hub.resorts[].photo`, else
-   the region's Parky picture `hub.scene`) with the name over it, two sentences
+   region's `hub.resorts` (a group it does not list follows): the photo (`hub.resorts[].photo`) with
+   the name over it, or a tinted panel of the same height with the name for a group without one (never a picture
+   another card shows), two sentences
    (`tripRegions.<slug>.hub.resorts.<group>.lead`), each park as a link to its crowd calendar
    („<park> Andrang-Kalender“, the links `HubParkIndex` used to carry: every park with quiet days in
    the window, every headliner when `/best-days` fails) and one sentence on where to stay (`.stay`).
-   A card without its words keeps its name and links. Every sentence is a fact of the API (parks,
+   Each park link is a row with a chevron, 44 px high on a phone. A card without its words keeps
+   its name and links. The grid has as many columns as cards, up
+   to four, so two resorts fill the row. Every sentence is a fact of the API (parks,
    water parks, perks, hotel areas, `stayNote`, travel legs) or of the region's existing copy;
    nothing is invented for a card.
-4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen`): a teaser of the best-time pages, drawn only
-   for a region with best-time pages and its words for them. It sends the best-time page's own
-   query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of the trip's length), so
-   both read one cached answer. The three quietest 10-day windows for the seven headliner parks
-   from `/when`, as three cards with their peak wait and „Diese Reise planen“
-   (`?from=&to=#planner`, `rel="nofollow"`), and the link to
-   `tripRegionBestTimePath(region, locale)`. The year strip, the weeks and their questions are the
-   best-time pages', so the two do not compete for one query.
+4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen` → `HubWhenTeaser`, client): a teaser of the
+   best-time pages, drawn only for a region with best-time pages and its words for them. Two
+   switches come first (`HubFilterChip`, the calendar's chip):
+   - **The parks**, one choice per best-time page of the region (`bestTime` in its registry
+     entry): „Disney und Universal · 7 Parks“, „Disney · 4 Parks“, „Universal · 3 Parks“, the
+     resorts by `resortWords`. A region with one best-time page has no such switch.
+   - **The trip's length**, which starts at the page's own (`bestTimePageDays`: a day per park, a
+     day between two resorts, arrival and departure, and a page's `extraDays` where the resorts
+     are cities apart; Orlando's seven parks at two resorts are 10 days, Disney World's four 6,
+     Japan's three parks from Tokyo to Osaka 7), then up to two longer trips
+     (`bestTimeTripLengths`). Picking other parks puts the length back to theirs.
+
+   The served HTML holds the region's own page at its own length, the query that best-time page
+   sends (`bestTimeWhenQuery`), so both read one cached answer. Another choice is read once
+   through the relay with the same function's query (`whenQueryFor`) and kept; the cards of the
+   last answer stay, dimmed, while it loads. Then a year line (`yearLine` in `hub-data.ts`): the
+   months of the searched range as a ruled track and each window as a bar under its numbered dot,
+   decoration beside the cards. Then the three quietest windows from `/when`, as three cards with
+   their place, their dates, the trip's length as a badge, their peak wait as the large figure,
+   the first reason the window was picked (left out where all three share it), the storm season
+   or heat as chips (`ClimateChips`) and „Diese Reise
+   planen“ (`?from=&to=#planner`, with `parks=` for one resort, `rel="nofollow"`). A card names no
+   basis: that a date past the forecast reads last year is the accuracy question's in chapter 05
+   and the best-time page's. The link under the cards („Alle Wochen des Jahres vergleichen“) goes
+   to the chosen parks' best-time page (`tripRegionBestTimePath(region, locale, page)`). The year
+   strip, the weeks and their questions are the best-time pages', so the two do not compete for
+   one query. The ranking adds minutes for heat and the storm season, so a trip can stand above one with a
+   shorter wait; its card then says so („Steht vor Nr. 2, weil dort Hurrikansaison ist“,
+   `aheadForWeather`). A switch that changes the choice counts `trip_best_time_switch`.
+
 5. **05 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), ten questions, the method folded
    in, every answer built from the page's data or the region's words: first up to six on the
    window, in this order of worth (the quietest and busiest days per resort, the events with their
@@ -239,9 +266,12 @@ Each chapter opens with its heading and then the thing itself.
    none, no chapter and no `FAQPage`. The facts behind the shared questions are pure functions in
    `lib/trip-regions/hub-facts.ts` (`weekdayFacts`, `usualHours`, `breakFacts`, `parkMeans`,
    `parkClosures`, each reading the forecast's days or, past it, last year's).
-6. **The closing call** (`HubFinalCta`, a card with its `<h2>`): the region's Parky picture, one
-   line and „Reise planen“. Landing page only.
-7. **`LandingNextSteps`** „Reiseplaner für Orlando“: plan the trip, the best-time page.
+6. **`LandingNextSteps`** „Reiseplaner für Orlando“, the page's one closing call: the region's
+   Parky picture (`hub.scene`, beside the words from `md`, above them on a phone), one sentence
+   on what the planner does, then „Reise planen“ (it starts the planner like the head's button;
+   with a plan it reads „Zu deinem Plan“ and leads to it), the best-time page and the region's
+   travel guide. There is no card before it: a second „Reise planen“ block directly above the band said
+   the same thing twice.
 
 A month page asks only about its month: its quietest and busiest days, its events, its party
 nights, its weekdays, its breaks and holidays, Epic Universe on its weekends and its usual hours,
@@ -296,7 +326,7 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 
 What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
 for the head's two ways in (`plan`, `calendar`, on the hub or a month) and for the landing's
-„Reise planen“ in chapter 01 and the closing call (`plan`); `trip_planner_started` tells them apart by
+„Reise planen“ in chapter 01 (`plan`); `trip_planner_started` tells them apart by
 its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for „Reise löschen“ in the
 head, `internal_link_clicked`
 from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts'

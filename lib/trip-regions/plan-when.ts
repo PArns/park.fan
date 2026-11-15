@@ -147,6 +147,39 @@ export function windowWarnings(window: Pick<TripWhenWindow, 'warnings'>): WhenWa
 }
 
 /**
+ * The weather term a window pays more for than the one above it: heat, or a storm season, `_more`
+ * where the window above lies in that season too and this one deeper.
+ */
+export type WhenWeatherTerm = 'heat' | `${'hurricane' | 'typhoon'}${'' | '_more'}`;
+
+/**
+ * Why a window stands above one with a shorter wait: the ranking adds minutes for heat and the
+ * storm season, so a trip can lose its place to a longer wait in better weather. For each such
+ * window (by rank), the first one below it that waits less and pays more of those minutes, and
+ * the term in which the two differ most. A card says it, so the order does not read as a mistake.
+ */
+export function aheadForWeather(
+  windows: readonly Pick<TripWhenWindow, 'rank' | 'headlinerWait' | 'penalties'>[]
+): Map<number, { rank: number; why: WhenWeatherTerm }> {
+  const terms = ['heat', 'hurricane', 'typhoon'] as const;
+  const paid = (w: Pick<TripWhenWindow, 'penalties'>) =>
+    terms.reduce((sum, term) => sum + (w.penalties?.[term] ?? 0), 0);
+  const ahead = new Map<number, { rank: number; why: WhenWeatherTerm }>();
+  windows.forEach((window, i) => {
+    const behind = windows
+      .slice(i + 1)
+      .find((w) => w.headlinerWait < window.headlinerWait && paid(w) > paid(window));
+    if (!behind) return;
+    const more = (term: (typeof terms)[number]) =>
+      (behind.penalties?.[term] ?? 0) - (window.penalties?.[term] ?? 0);
+    const term = terms.reduce((most, next) => (more(next) > more(most) ? next : most));
+    const shared = term !== 'heat' && (window.penalties?.[term] ?? 0) > 0;
+    ahead.set(window.rank, { rank: behind.rank, why: shared ? `${term}_more` : term });
+  });
+  return ahead;
+}
+
+/**
  * How far a window lies below the range's average, in whole percent: "27 % below the period's
  * average". `null` where it is not below or a figure is missing; a window above average is never
  * sold as a saving.

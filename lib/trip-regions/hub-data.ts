@@ -1,4 +1,11 @@
-import { addDays, formatParkDay, formatParkDayRange, parkDayOf } from '@/lib/utils/park-day';
+import {
+  addDays,
+  daysBetween,
+  formatParkDay,
+  formatParkDayRange,
+  monthLength,
+  parkDayOf,
+} from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { isSeasonEvent } from '@/lib/parks/park-season-days';
@@ -757,4 +764,48 @@ export function formatDateRange(
 /** A trip window's dates as one short range ({@link formatDateRange}). */
 export function formatWindow(window: { from: string; to: string }, locale: string): string {
   return formatDateRange(window.from, window.to, locale);
+}
+
+/** A span on the best-time teaser's year line, as shares of its width. */
+export interface YearLineSpan {
+  /** Where the span starts, 0 to 100. */
+  left: number;
+  /** How wide it is, 0 to 100. */
+  width: number;
+}
+
+/**
+ * The year line of the hub's best-time teaser: each month of `range` and each trip window as a
+ * share of the range's days, so three trips can be drawn where they lie in the year. A month the
+ * range cuts keeps only its days inside; a window is clipped to the range the same way.
+ */
+export function yearLine(
+  range: { from: string; to: string },
+  windows: readonly { from: string; to: string }[]
+): { months: Array<YearLineSpan & { month: string }>; windows: YearLineSpan[] } {
+  const total = daysBetween(range.from, range.to) + 1;
+  const span = (from: string, to: string): YearLineSpan => {
+    const start = from < range.from ? range.from : from;
+    const end = to > range.to ? range.to : to;
+    return {
+      left: (daysBetween(range.from, start) / total) * 100,
+      width: (Math.max(0, daysBetween(start, end) + 1) / total) * 100,
+    };
+  };
+  const months: Array<YearLineSpan & { month: string }> = [];
+  let [year, month] = range.from.split('-').map(Number);
+  for (;;) {
+    const key = `${year}-${String(month).padStart(2, '0')}`;
+    if (`${key}-01` > range.to) break;
+    months.push({
+      month: key,
+      ...span(`${key}-01`, `${key}-${String(monthLength(year, month)).padStart(2, '0')}`),
+    });
+    month += 1;
+    if (month > 12) {
+      month = 1;
+      year += 1;
+    }
+  }
+  return { months, windows: windows.map((w) => span(w.from, w.to)) };
 }

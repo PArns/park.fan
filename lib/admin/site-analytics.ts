@@ -978,6 +978,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Hub-Kalender gefiltert',
     when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',
   },
+  trip_best_time_switch: {
+    label: 'Beste Reisezeit umgeschaltet',
+    when: 'Ein Chip über den drei Reisen in Kapitel 04 des Hubs, nur wenn er die Auswahl ändert: andere Parks (parks) oder eine andere Reiselänge (days); mit der Bestzeit-Seite der Wahl und den Tagen.',
+  },
   trip_accuracy_opened: {
     label: 'Genauigkeit geöffnet',
     when: '„Wie genau ist das?“ im Plan oder die Genauigkeitszeile unter dem Hub-Kalender.',

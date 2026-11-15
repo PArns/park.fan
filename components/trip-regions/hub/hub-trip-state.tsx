@@ -81,7 +81,7 @@ export function HubStateSwitch({ landing, plan }: { landing: ReactNode; plan: Re
 }
 
 /**
- * What only the landing page shows (the four steps, the closing band): hidden while the hub shows
+ * What only the landing page shows (the four steps): hidden while the hub shows
  * a plan, never unmounted, so the server's markup stays the same tree.
  */
 export function HubLandingOnly({
