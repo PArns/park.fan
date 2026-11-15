@@ -3610,6 +3610,13 @@
       "closed": "{park} is dan gesloten",
       "noFigure": "geen cijfer"
     },
+    "delete": {
+      "action": "Reis verwijderen",
+      "confirm": "Deze reis verwijderen? Je reisdata, parken en wijzigingen worden van dit apparaat verwijderd.",
+      "yes": "Verwijderen",
+      "no": "Bewaren",
+      "done": "Je reis van {range} is verwijderd."
+    },
     "keep": {
       "addAll": "Naar de dagplanner",
       "ics": "In de agenda (.ics)",

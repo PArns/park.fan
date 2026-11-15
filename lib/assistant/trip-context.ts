@@ -101,6 +101,19 @@ export function rememberTripChange(region: string, before: string, sent: string)
   });
 }
 
+/**
+ * Forget Parky's last change of a region's trip, for a deleted trip, so his undo cannot bring it
+ * back; returns how to put the change back.
+ */
+export function forgetTripChange(region: string): () => void {
+  const change = tripChanges.get(region);
+  if (!change) return () => undefined;
+  tripChanges.delete(region);
+  return () => {
+    tripChanges.set(region, change);
+  };
+}
+
 /** What Parky's undo of a region's trip does: the query to go back to, or why there is none. */
 export type TripUndo = { query: string } | 'changed' | 'none';
 

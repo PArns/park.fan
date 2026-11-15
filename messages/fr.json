@@ -3610,6 +3610,13 @@
       "closed": "{park} est fermé ce jour-là",
       "noFigure": "pas de chiffre"
     },
+    "delete": {
+      "action": "Supprimer le voyage",
+      "confirm": "Supprimer ce voyage ? Tes dates, tes parcs et tes modifications sont effacés de cet appareil.",
+      "yes": "Supprimer",
+      "no": "Garder",
+      "done": "Ton voyage du {range} est supprimé."
+    },
     "keep": {
       "addAll": "Copier dans le planificateur de journée",
       "ics": "Ajouter au calendrier (.ics)",

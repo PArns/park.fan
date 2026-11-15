@@ -79,6 +79,7 @@ import { PlanGlowProvider, usePlanGlow } from './plan-day-glow';
 import { DayHint, IdeasStrip, useIdeaCardBridge, useShownIdeas } from './plan-ideas';
 import { PlanSwapMode } from './plan-swap-mode';
 import { PlanDaySheet } from './plan-day-sheet';
+import { PlanDelete } from './plan-delete';
 import { PlanKeep } from './plan-keep';
 import { PlanMonthView } from './plan-month-view';
 import { PlanPeakCard } from './plan-peak-card';
@@ -509,7 +510,15 @@ function PlanAnswer({
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
-  const { locale, parkName, parkBySlug, state, tickets: catalog, ticketStep } = usePlanContext();
+  const {
+    region,
+    locale,
+    parkName,
+    parkBySlug,
+    state,
+    tickets: catalog,
+    ticketStep,
+  } = usePlanContext();
   const resortWord = useResortWord();
   const dropped = useDroppedTickets();
   const lastYear = lastYearStart(
@@ -641,6 +650,7 @@ function PlanAnswer({
           }
         />
         <PlanKeep plan={plan} calendar={calendar} />
+        <PlanDelete region={region.slug} from="result" className="text-sm" />
       </div>
     </div>
   );

@@ -3610,6 +3610,13 @@
       "closed": "{park} is closed then",
       "noFigure": "no figure"
     },
+    "delete": {
+      "action": "Delete trip",
+      "confirm": "Delete this trip? Your dates, parks and changes are removed from this device.",
+      "yes": "Delete",
+      "no": "Keep",
+      "done": "Your {range} trip is deleted."
+    },
     "keep": {
       "addAll": "Copy to the day planner",
       "ics": "Add to calendar (.ics)",

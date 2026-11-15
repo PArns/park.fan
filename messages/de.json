@@ -621,7 +621,7 @@
         "note": "Nur die Reisedaten sind Pflicht; der erste Plan steht, sobald sie gewählt sind.",
         "toPlan": "Zu deinem Plan",
         "newTrip": "Neue Reise planen",
-        "remembered": "Dein Plan für {range} ist in diesem Browser gemerkt."
+        "remembered": "Dein Plan für {range} ist in diesem Browser gespeichert."
       }
     },
     "resorts": {
@@ -3610,6 +3610,13 @@
       "closed": "{park} ist dann geschlossen",
       "noFigure": "keine Zahl"
     },
+    "delete": {
+      "action": "Reise löschen",
+      "confirm": "Diese Reise löschen? Deine Daten, Parks und Änderungen werden auf diesem Gerät entfernt.",
+      "yes": "Löschen",
+      "no": "Behalten",
+      "done": "Deine Reise vom {range} ist gelöscht."
+    },
     "keep": {
       "addAll": "In den Tagesplaner übernehmen",
       "ics": "In den Kalender (.ics)",
@@ -5488,7 +5495,7 @@
     "rateUp": "Gute Antwort",
     "rateDown": "Daneben",
     "rated": "Danke dir.",
-    "disclaimer": "Parky ist eine KI und kann sich irren. Seine Antworten sind ohne Gewähr.",
+    "disclaimer": "Parky ist eine KI und kann Fehler machen. Seine Antworten sind ohne Gewähr.",
     "privacy": "Datenschutz",
     "feedbackIntro": "Etwas fehlt, hakt oder gefällt dir besonders? Schreib es uns, wir lesen alles.",
     "feedbackLabel": "Dein Feedback",
