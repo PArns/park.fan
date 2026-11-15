@@ -25,7 +25,8 @@ come the popular parks and the questions. A visitor who has starred something fi
 
 The trip regions follow the news (and the compass, in a park), because planning is what most
 visitors come for: one stop with a tile per live region, the scene the planner band draws, loaded
-once the stop nears the screen (`RegionSceneInView`), and under each tile its hub's lead
+once the stop nears the screen and looping as in the band while the tile shows below the header
+(`RegionSceneInView`), and under each tile its hub's lead
 (`tripRegions.<slug>.hub.lead`). Its clicks count as `trip_home`, its place as `home_trips`.
 A whole trip, then a single day: the [day planner with Parky](#the-day-planner-with-parky) comes
 right after it.

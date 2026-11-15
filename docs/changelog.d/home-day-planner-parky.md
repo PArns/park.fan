@@ -23,3 +23,14 @@ Der Streifen (`DayStrip`, `DrawnDayStrip`, `PlanDayStrip`) liegt dafür in
 den Tag eines Plans nicht liefern, zeichnet der Streifen dessen Blöcke grau, wie einen Block ohne
 Wartezeit, statt einen leeren Kasten zu lassen; das gilt im Menü genauso. Den Status von Parkys
 Freigabe lesen die vier Stellen, die ihn brauchen, über `useAssistantGateStatus`.
+
+#### Die Parky-Szenen der Reise-Regionen bewegen sich auch außerhalb des Menüs
+
+Bisher liefen die Szenen nur im Planen-Menü in Schleife; auf der Startseite, auf der
+Reiseplaner-Kachel einer Parkseite und im Assistenten des Reiseplaners spielten sie ihren Auftritt
+einmal und blieben stehen. Jetzt laufen sie überall weiter, solange man sie sieht:
+`RegionSceneInView` setzt `loop`, solange ein Teil der Kachel unter dem 48 px hohen Header im
+Fenster steht und der Tab sichtbar ist (`useActiveOnScreen` mit `-48px` oben), und
+`WizardGuideBand` immer, weil der Inhalt des Dialogs nur existiert, solange er offen ist. Die
+Ausnahme in [Arbeit, die niemand sieht](../rules/work-nobody-can-see-is-still-work.md) nennt jetzt
+alle drei Orte.

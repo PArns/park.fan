@@ -223,9 +223,11 @@ The panel is only the look; the data and the click behaviour live in the modules
   cover is in any page's HTML; it fades in over the card's ground (`starting:opacity-0`). A region
   without a scene shows the hub's photo, and so does a scene whose chunk fails to load, since the
   header has no error boundary. The scene's contract is `TripRegionSceneProps`; Orlando's is
-  [Parky on holiday](parky-character.md#pictures-of-him). Here alone the scenes loop (`loop`): an
+  [Parky on holiday](parky-character.md#pictures-of-him). The scenes loop here (`loop`): an
   entrance each time the band opens, then their moves for as long as it shows; the band's `hidden`
-  is `display: none`, which cancels every animation in it on each close.
+  is `display: none`, which cancels every animation in it on each close. The tiles on a page and
+  the trip planner's assistant loop the same way while they are seen
+  ([work nobody can see](../rules/work-nobody-can-see-is-still-work.md)).
 - **Day planner.** Without a plan, and always on the server: its title, one line, a drawn day
   (`DrawnDayStrip` on `DayStrip`, `components/planner/day-strip.tsx`, shared with the homepage's
   [day planner stop](homepage.md#the-day-planner-with-parky); `aria-hidden`, hours in the reader's
