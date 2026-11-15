@@ -511,24 +511,23 @@ const parkDay = (
   },
 });
 
-test("a park's star is its quietest day of the week, and only where one day is", () => {
+test("a park's star is its quietest day of the week, one for every park with an open day", () => {
   const a = '2026-11-14';
   const b = '2026-11-15';
   const c = '2026-11-16';
   assert.equal(quietestDay([parkDay(a, 40), parkDay(b, 30), parkDay(c, 45)], 'p'), b);
-  // Two days on one figure and one day's hours: no star.
-  assert.equal(quietestDay([parkDay(a, 30), parkDay(b, 30), parkDay(c, 45)], 'p'), null);
-  // The same figure, a longer day: that one.
+  // One rounded headliner wait: the lower printed figure.
+  assert.equal(quietestDay([parkDay(a, 30, { shown: 28 }), parkDay(b, 30, { shown: 26 })], 'p'), b);
+  // The same figure, a longer day: that one; the same day too: the earlier date.
   assert.equal(quietestDay([parkDay(a, 30, { close: '18:00' }), parkDay(b, 30)], 'p'), b);
+  assert.equal(quietestDay([parkDay(a, 30), parkDay(b, 30), parkDay(c, 45)], 'p'), a);
   // Never on a higher printed figure than another day's.
-  assert.equal(
-    quietestDay([parkDay(a, 30, { shown: 40 }), parkDay(b, 35, { shown: 35 })], 'p'),
-    null
-  );
-  // Last year's days, closed days and a lone open day are no week to compare.
-  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' }), parkDay(b, 30)], 'p'), null);
-  assert.equal(quietestDay([parkDay(a, 20, { status: 'CLOSED' }), parkDay(b, 30)], 'p'), null);
-  assert.equal(quietestDay([parkDay(a, 20)], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 30, { shown: 40 }), parkDay(b, 35, { shown: 35 })], 'p'), b);
+  // Never a last-year or a closed day; a lone open day is the week's quietest.
+  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' }), parkDay(b, 30)], 'p'), b);
+  assert.equal(quietestDay([parkDay(a, 20, { status: 'CLOSED' }), parkDay(b, 30)], 'p'), b);
+  assert.equal(quietestDay([parkDay(a, 20, { basis: 'last_year' })], 'p'), null);
+  assert.equal(quietestDay([parkDay(a, 20)], 'p'), a);
   assert.equal(quietestDay([parkDay(a, 20)], 'unknown-park'), null);
   // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
   assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');

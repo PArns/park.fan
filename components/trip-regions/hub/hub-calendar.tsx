@@ -525,8 +525,8 @@ function holidayNames(day: TripCalendarDay, locale: string): string {
 
 /**
  * A park's quietest day of each week beside its name: the star, the date and the wait its tile
- * prints, one per week, so paging shows the week's. Nothing in a week without one (a tie, a
- * last-year day, fewer than two days with a figure).
+ * prints, one per week, so paging shows the week's. Nothing in a week without one (no open day
+ * with a forecast).
  */
 function QuietestNote({
   slug,

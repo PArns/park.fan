@@ -4742,6 +4742,17 @@
             "gocity-la-all-inclusive": "All-Inclusive Pass",
             "gocity-la-all-inclusive-plus": "All-Inclusive Pass Plus"
           }
+        },
+        "area": {
+          "disneyland_resort": "Disneyland Resort hotels",
+          "anaheim_harbor": "Harbor Boulevard (Anaheim)",
+          "buena_park": "Buena Park",
+          "universal_city": "Universal City",
+          "hollywood": "Hollywood",
+          "santa_monica": "Santa Monica",
+          "downtown_la": "Downtown Los Angeles",
+          "san_diego": "San Diego (Downtown)",
+          "carlsbad": "Carlsbad"
         }
       }
     },

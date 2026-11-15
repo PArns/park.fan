@@ -175,11 +175,12 @@ Each chapter opens with its heading and then the thing itself.
      „Keine Prognose“ beside a forecast), the day guest's hours with an early close in bold under
      the folded corner, „Zeiten folgen“ without published hours, the season icons (quiet for a
      season most of the window runs in, `quietSeasons`), „Geschlossen“.
-   - **Each park's quietest day of the week** (`quietestDay`: lowest `headlinerWait`, a tie to the
-     longer day; none on a tie, on a last-year day, or where it would sit on a higher printed
-     figure) is ringed in the text colour (`HUB_CELL_BEST`) and starred, and named beside the park
-     with its wait („★ Mi., 18. · 30 Min“, `QuietestNote`, one per week, so paging shows the
-     week's). The ring is the strongest mark on the grid, so a row reads at a glance.
+   - **Each park's quietest day of the week** (`quietestDay`: the lowest printed wait, `shownWait`,
+     a tie to the lower `headlinerWait`, then the longer day, then the earlier date; one for every
+     park with an open day, never a last-year day) is ringed in the text colour (`HUB_CELL_BEST`)
+     and starred, and named beside the park with its wait („★ Mi., 18. · 30 Min“, `QuietestNote`,
+     one per week, so paging shows the week's). The ring is the strongest mark on the grid, so a
+     row reads at a glance.
    - **From `lg`** a `<table role="grid">` with a caption naming the week, `scope`d headers, one tab
      stop and arrow keys within the week: parks by resort down the side, each with its quietest
      day under its name, seven tiles across. Above the tiles each date (a button to the day), the
