@@ -61,11 +61,9 @@ seo:
     - phantasialand auslastung
 ---
 
-Seit dem 14. November ist das [Phantasialand](ref:phantasialand) wieder ein Winterdorf. Der Wintertraum läuft bis zum 24. Januar 2027, jeden Tag von 11 bis 20 Uhr, und um 19:50 Uhr steigt über dem Kaiserplatz in Berlin das Feuerwerk von MAGIC SYMPHONY. Dazwischen liegen sieben Shows, eine Eisbahn unter dem großen Lichterbaum, Glühwein in jeder Themenwelt und [Taron](ref:phantasialand/taron) im Dunkeln, die Fahrt, die ich im ganzen Jahr am liebsten mache.
+Seit dem 14. November ist das [Phantasialand](ref:phantasialand) wieder ein Winterdorf. Der Wintertraum läuft bis zum 24. Januar 2027, jeden Tag von 11 bis 20 Uhr, und um 19:50 Uhr steigt über dem Kaiserplatz in Berlin das Feuerwerk von MAGIC SYMPHONY. Dazwischen liegen sieben Shows, eine Eisbahn unter dem großen Lichterbaum, Glühwein in jeder Themenwelt und [Taron](ref:phantasialand/taron) im Dunkeln.
 
-Am Sonntag, dem 15. November, war ich im Park, bei Nieselregen und mit sehr wenig Andrang. Aufgefallen sind mir vor allem zwei Dinge: Es gibt viele neue Leckereien, und es hängt sehr viel neue Deko, zum Beispiel ein bunt beleuchtetes Chiapas-Logo in Mexico. Wer zur Wasserbahn will, kommt daran nicht vorbei, und wer nass werden will, darf vorher ruhig ein Foto machen.
-
-Ins Phantasialand gehe ich seit über dreißig Jahren, im Winter am liebsten an einem grauen Tag unter der Woche.
+Neu in diesem Winter sind vor allem zwei Dinge, die auf keiner Liste des Parks stehen: viele neue Leckereien und sehr viel neue Deko, zum Beispiel ein bunt beleuchtetes Chiapas-Logo in Mexico. Wer zur Wasserbahn will, kommt daran nicht vorbei, und wer nass werden will, darf vorher ruhig ein Foto machen.
 
 ## Termine und Öffnungszeiten 2026/27
 
@@ -81,7 +79,7 @@ Die neun Stunden haben eine besondere Aufteilung, denn ein guter Teil davon lieg
 
 ## Was 2026/27 neu ist
 
-Neben der Deko und den Leckereien, die ich am Eröffnungswochenende gesehen habe, nennt der Park selbst diese Neuheiten:
+Neben der Deko und den Leckereien nennt der Park selbst diese Neuheiten:
 
 - **[Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)**, der 4D-Film im Residenz Theater in Berlin. Er läuft seit 2025 und ganzjährig, der Park führt ihn weiter als „Weltneuheit in 4D“. Die Leinwand ist eine LED-Wand statt einer Projektion, die Bewegungssitze sind laut Park die ersten ihrer Art in Europa, und den Soundtrack hat das Filmorchester Babelsberg eingespielt. Lottie, Otto und Herbert jagen darin einen Rattenboss, der die „Kugel des Spaßes“ stehlen will.
 - **Phenie’s Shakes & Pancakes** am Mondsee in Fantasy, auf der Restaurantseite des Parks mit „NEU“ markiert. Mehr dazu weiter unten beim Essen.
@@ -177,7 +175,7 @@ Kinder bis drei Jahre haben freien Eintritt und brauchen kein Ticket, nur einen 
 
 Im Winter stellt der Park eigene Gerichte auf, die es nur in diesen Wochen gibt. Herzhaft sind das unter anderem Flammlachs vom offenen Feuer, Leberkäse im Brioche, Smashed Potatoes mit Toppings und die Grünkohlpfanne auf dem Kaiserplatz. Süß gibt es Concha-Krapfen mit Pistazie oder Nougat, Hot Crumble mit Bratapfel-Mousse und Crêpe Brûlée. Zu trinken stehen neben Glühwein Eierpunsch, Kinderpunsch, heiße Schokolade und Hot Chardonnay auf der Karte. Die Konditorei des Parks backt eigene Wintertörtchen.
 
-Die Liste auf der Website ist kürzer als das, was ich am Sonntag an den Ständen gesehen habe. Neue Leckereien gibt es viele, aber ich zähle hier nur auf, was der Park selbst nennt.
+An den Ständen gibt es in diesem Winter viele neue Leckereien, mehr als die Liste auf der Website. Ich zähle hier nur auf, was der Park selbst nennt.
 
 **Phenie’s Shakes & Pancakes** steht am Ufer des Mondsees und sieht aus wie ein runder Zauberpilz, mit einem Boden wie Teig, einer Topping-Maschine und tropfenden Lampen. Auf der Karte stehen Pancake-Türme, Shakes und, für Kinder bis elf Jahre, Cold Pancakes mit Softeis. Nach einer Runde Eislaufen wärmt das nicht, aber es tröstet.
 
