@@ -477,10 +477,13 @@
       "none": "Non è stato possibile caricare i viaggi più tranquilli dell’anno.",
       "lastYearNote": "Le date oltre 60 giorni sono ordinate sui giorni misurati l’anno scorso.",
       "rank": "N. {rank}",
-      "figure": "Attesa di picco: circa {minutes} min",
-      "basisLastYear": "Affluenza misurata l’anno scorso",
-      "basisMixed": "In parte affluenza misurata l’anno scorso",
-      "plan": "Pianifica questo viaggio"
+      "plan": "Pianifica questo viaggio",
+      "allWeeks": "Confronta tutte le settimane dell’anno",
+      "length": "{days, plural, =1 {# giorno} other {# giorni}}",
+      "scope": "{resorts} · {count, plural, =1 {# parco} other {# parchi}}",
+      "scopeLabel": "Parchi del viaggio",
+      "lengthLabel": "Durata del viaggio",
+      "ahead": "Precede il n. {rank} {why, select, heat {perché allora fa più caldo} hurricane {perché quel viaggio cade nella stagione degli uragani} typhoon {perché quel viaggio cade nella stagione dei tifoni} hurricane_more {perché quel viaggio cade più dentro la stagione degli uragani} typhoon_more {perché quel viaggio cade più dentro la stagione dei tifoni} other {perché allora il tempo è peggiore}}."
     },
     "planner": {
       "title": "Pianifica il tuo viaggio"
@@ -587,12 +590,12 @@
     "regionGuide": "Guida di viaggio {region}",
     "lastYearFrom": "Dal {date}: valori dell’anno scorso, ogni volta lo stesso giorno della settimana, come l’abbiamo misurato.",
     "howItWorks": {
-      "title": "Come il pianificatore organizza il tuo viaggio",
+      "title": "Come il pianificatore organizza i tuoi giorni {inRegion}",
       "planTitle": "Il tuo viaggio",
       "steps": {
         "dates": {
           "title": "Scegli le date",
-          "text": "Sotto ogni giorno c’è il parco con l’attesa di picco più breve, e appena scegli il giorno della partenza, il primo piano è pronto"
+          "text": "Tocca nel calendario il giorno di arrivo e quello di partenza. Sotto ogni giorno c’è già il parco con l’attesa di picco più breve"
         },
         "questions": {
           "title": "Qualche domanda, tutte facoltative",
@@ -607,7 +610,7 @@
           "text": "Scambia o blocca giorni, aggiungi parchi o chiedi a Parky in chat, poi passa al pianificatore della giornata o al tuo calendario"
         }
       },
-      "parky": "Solo le date sono obbligatorie, e ogni domanda dopo puoi saltarla. Inizia dalle date.",
+      "parky": "Puoi pianificare il viaggio anche con me in chat. Ti chiedo date, parchi e hotel, poi assegno a ogni parco il suo giorno.",
       "chat": "Meglio in chat",
       "calendarLead": "Per ogni parco è segnato il giorno più tranquillo della settimana",
       "hero": {
@@ -619,10 +622,6 @@
     },
     "resorts": {
       "title": "I resort"
-    },
-    "finalCta": {
-      "title": "Il tuo viaggio, pianificato giorno per giorno",
-      "text": "Appena le date sono fissate, vedi il primo piano, e dopo puoi rispondere alle domande o saltarle"
     }
   },
   "theme": {

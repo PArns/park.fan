@@ -15,6 +15,7 @@ import { ChevronDown, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/calendar-day-tile';
 import { useSeasonLabel } from '@/components/parks/season-headline';
 import { cn } from '@/lib/utils';
+import { HubFilterChip as FilterChip } from './hub-filter-chip';
 import { useLocationHash } from '@/lib/hooks/use-location-hash';
 import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { formatClockTime, formatHoursRange } from '@/lib/utils/intl-format';
@@ -441,35 +442,6 @@ function WeekNav({
         ))}
       </div>
     </div>
-  );
-}
-
-/** A filter toggle, 44 px on a phone. */
-function FilterChip({
-  pressed,
-  onClick,
-  children,
-  ...props
-}: {
-  pressed: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-} & Omit<React.ComponentProps<'button'>, 'onClick' | 'children'>) {
-  return (
-    <button
-      type="button"
-      aria-pressed={pressed}
-      onClick={onClick}
-      className={cn(
-        'focus-visible:ring-ring inline-flex min-h-11 shrink-0 items-center rounded-full border px-3.5 text-sm font-medium whitespace-nowrap transition-colors focus-visible:ring-2 focus-visible:outline-none sm:min-h-9',
-        pressed
-          ? 'border-primary/50 bg-primary/15 text-foreground'
-          : 'border-border/60 text-muted-foreground hover:text-foreground hover:bg-muted/50'
-      )}
-      {...props}
-    >
-      {children}
-    </button>
   );
 }
 

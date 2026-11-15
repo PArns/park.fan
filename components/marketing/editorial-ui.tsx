@@ -336,6 +336,11 @@ export interface LandingDestination {
    * `plannerPath(locale)`. The page needs a `PlannerPageParkBeacon` for the wizard to know the park.
    */
   parkPlanner?: { locale: string };
+  /**
+   * The row's button, drawn instead of the link built from `href` and `label` (which stay its
+   * key and its destination without script): a trip hub's „Reise planen“, which starts the planner.
+   */
+  element?: React.ReactNode;
 }
 
 /**
@@ -351,10 +356,13 @@ export function LandingNextSteps({
   destinations,
   surface = 'band',
   headingId,
+  picture,
 }: {
   kicker?: string;
   title: string;
   body?: string;
+  /** A decorative picture beside the band's words (above them on a phone); `band` only. */
+  picture?: React.ReactNode;
   destinations:
     | [LandingDestination]
     | [LandingDestination, LandingDestination]
@@ -374,6 +382,7 @@ export function LandingNextSteps({
       // rather than pushing the button past the container.
       className: 'h-auto min-h-10 max-w-full py-2 whitespace-normal max-sm:min-h-11',
     });
+    if (d.element) return <React.Fragment key={d.href}>{d.element}</React.Fragment>;
     if (d.parkPlanner) {
       return (
         <ParkPlannerLink key={d.href} label={d.label} locale={d.parkPlanner.locale} button={look} />
@@ -421,15 +430,26 @@ export function LandingNextSteps({
         className="from-primary/12 pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br via-transparent to-amber-500/10"
       />
       <div className="container mx-auto px-4 py-16 sm:py-24">
-        <Reveal>
-          {kicker && (
-            <p className="text-primary mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
-              {kicker}
-            </p>
+        <Reveal
+          className={cn(
+            picture && 'grid gap-8 md:grid-cols-[1fr_minmax(0,24rem)] md:items-center md:gap-12'
           )}
-          <h2 className="text-2xl font-bold text-balance sm:text-4xl">{title}</h2>
-          {body && <p className="text-muted-foreground mt-4 leading-relaxed">{body}</p>}
-          <div className="mt-8">{list}</div>
+        >
+          <div>
+            {kicker && (
+              <p className="text-primary mb-3 text-xs font-semibold tracking-[0.2em] uppercase">
+                {kicker}
+              </p>
+            )}
+            <h2 className="text-2xl font-bold text-balance sm:text-4xl">{title}</h2>
+            {body && <p className="text-muted-foreground mt-4 max-w-2xl leading-relaxed">{body}</p>}
+            <div className="mt-8">{list}</div>
+          </div>
+          {picture && (
+            <div className="border-border/60 overflow-hidden rounded-2xl border shadow-sm max-md:order-first">
+              {picture}
+            </div>
+          )}
         </Reveal>
       </div>
     </section>

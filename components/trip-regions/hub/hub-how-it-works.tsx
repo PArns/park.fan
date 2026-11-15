@@ -40,8 +40,8 @@ export async function HubHowItWorks({
               key={step}
               className="w-[78vw] max-w-80 shrink-0 snap-start md:w-auto md:max-w-none"
             >
-              <figure className="space-y-3">
-                <div className="border-border/60 bg-muted/40 aspect-[4/3] overflow-hidden rounded-2xl border shadow-sm">
+              <figure className="group space-y-3">
+                <div className="border-border/60 bg-muted/40 group-hover:border-primary/40 aspect-[4/3] overflow-hidden rounded-2xl border shadow-sm transition-[border-color,box-shadow] duration-200 group-hover:shadow-md">
                   {shot && (
                     <Image
                       src={shot.src}
@@ -49,7 +49,7 @@ export async function HubHowItWorks({
                       width={shot.width}
                       height={shot.height}
                       sizes="(max-width: 768px) 78vw, 300px"
-                      className="size-full object-cover"
+                      className="size-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-[1.04]"
                       style={{ objectPosition: shot.position }}
                     />
                   )}

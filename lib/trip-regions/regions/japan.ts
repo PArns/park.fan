@@ -93,6 +93,8 @@ export const JAPAN: TripRegionConfig = {
     {
       id: 'region',
       groups: ['tokyo-disney-resort', 'universal-studios-japan'],
+      // Tokyo to Osaka: the half days on the Shinkansen and the change of hotel.
+      extraDays: 1,
       photo: 'tokyo-disneysea/mediterranean-harbor',
     },
     {

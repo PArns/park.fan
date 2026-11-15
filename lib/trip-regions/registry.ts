@@ -49,6 +49,8 @@ export interface TripBestTimePage {
   segment?: string;
   /** The API groups whose headliner parks the page plans. */
   groups: readonly string[];
+  /** Days the page's trip gets on top of its parks' and resorts', where the resorts are cities apart. */
+  extraDays?: number;
   /** The hero photo, a media id; its credit and alt come from the media database. */
   photo: string;
   /** The park whose crowd calendar the page offers as its third next step. */
@@ -124,7 +126,7 @@ export type TripHubShots = readonly [string, string, string, string];
 export interface TripHubResort {
   /** The API's group key. */
   group: string;
-  /** The card's photo as a media id; absent, the region's {@link TripHub.scene} picture. */
+  /** The card's photo as a media id; absent, the card opens on a tinted strip with its name. */
   photo?: string;
 }
 
@@ -140,8 +142,8 @@ export interface TripHub {
   /** The resorts chapter's cards, in the order they stand; a group not listed has no card. */
   resorts: readonly TripHubResort[];
   /**
-   * The region's Parky scene as a picture (a media id), for a resort card without a photo and the
-   * closing band: the drawn scene carries gradient ids, so it may stand on a page only once.
+   * The region's Parky scene as a picture (a media id), for the closing band: the drawn scene
+   * carries gradient ids, so it may stand on a page only once.
    */
   scene: string;
 }

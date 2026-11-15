@@ -501,6 +501,11 @@ export interface SiteEventMap {
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
   trip_hub_filter: TripEvent<{ resort: string }>;
   /**
+   * The hub's best-time teaser switched to other parks or another trip length; on a change only.
+   * `scope` is the best-time page's id, `days` the length now shown.
+   */
+  trip_best_time_switch: TripEvent<{ scope: string; days: number; changed: 'parks' | 'days' }>;
+  /**
    * The ticket question before PAR-1309: no longer sent, kept for the history it counted. Its
    * successor is `trip_tickets_opened`.
    */

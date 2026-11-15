@@ -19,8 +19,8 @@ import { interviewCore, startInterview, type InterviewStart } from '@/lib/assist
  * and opens the chat, which asks the first question once its session is ready. Drawn only where
  * Parky shows for this visitor (`assistantGate`), so it never opens a window that does not come.
  * An `action` (the hub's „Reise planen“) stands before the chat's button, which then takes the
- * outline look, and the questions are left out, since the line is the page's; with an action the
- * card is drawn where Parky is off too, without the chat's button.
+ * outline look, and the questions are left out, since the line names them. Where Parky is off the
+ * action stands alone: his line offers the chat, so it is not said without one.
  */
 export function ParkyInterviewStart({
   label,
@@ -43,8 +43,9 @@ export function ParkyInterviewStart({
     assistantGate.getStatus,
     assistantGate.getServerStatus
   );
-  if (status !== 'on' && !action) return null;
-  const chat = status === 'on';
+  if (status !== 'on') {
+    return action ? <div className={cn('@container', className)}>{action}</div> : null;
+  }
   return (
     // Laid out by its own width, not the window's: the day planner's side panel is narrow on the
     // widest screen. Side by side from 36rem, where the longest label (Italian, French) still
@@ -59,7 +60,7 @@ export function ParkyInterviewStart({
               <div className={cn(PARKY_BUBBLE, 'px-3 py-2 @xl:px-4 @xl:py-2.5')}>
                 <p className="text-primary-ink text-xs font-semibold">{t('name')}</p>
                 <p className="text-foreground/90 text-sm text-pretty @xl:text-base">{line}</p>
-                {chat && !action && (
+                {!action && (
                   <ol className="mt-2 flex flex-wrap gap-1.5">
                     {interviewCore(start.kind).map((step, index) => (
                       <li key={step}>
@@ -81,20 +82,18 @@ export function ParkyInterviewStart({
             </div>
           </div>
           {action}
-          {chat && (
-            <Button
-              type="button"
-              variant={action ? 'outline' : 'default'}
-              onClick={() => {
-                startInterview(start);
-                openParky('interview');
-              }}
-              className="h-auto min-h-9 w-full text-balance whitespace-normal max-sm:min-h-11 @xl:w-auto @xl:max-w-[40%] @xl:shrink-0"
-            >
-              <MessagesSquare aria-hidden="true" />
-              {label}
-            </Button>
-          )}
+          <Button
+            type="button"
+            variant={action ? 'outline' : 'default'}
+            onClick={() => {
+              startInterview(start);
+              openParky('interview');
+            }}
+            className="h-auto min-h-9 w-full text-balance whitespace-normal max-sm:min-h-11 @xl:w-auto @xl:max-w-[40%] @xl:shrink-0"
+          >
+            <MessagesSquare aria-hidden="true" />
+            {label}
+          </Button>
         </div>
       </div>
     </div>
