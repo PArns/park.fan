@@ -49,7 +49,7 @@ Die neuen Preise gelten die ganze Saison bis zum 9. Januar 2028, Halloween und W
 | 2-Tagesticket Erwachsene                      | 127,00–143,50 € | 132,50–150,00 € |
 | Kleinkinder (0–3)                             | frei            | frei            |
 
-Der Park teilt seine Öffnungstage in zwei Preiskategorien ein. An Tagen der Preiskategorie 1 gelten die höheren Preise der Tabelle, an Tagen der Kategorie 2 die niedrigeren. Welche Kategorie ein Tag hat, zeigt der Preiskalender im Ticketshop. An der Tageskasse gilt dieselbe Einteilung.
+Der Park teilt seine Öffnungstage in zwei Preiskategorien ein. An Tagen der Preiskategorie 1 gelten die höheren Preise der Tabelle, an Tagen der Kategorie 2 die niedrigeren. Die Kategorie jedes Tages steht im Preiskalender des Ticketshops, und an der Tageskasse gilt dieselbe Einteilung.
 
 Den zweiten Besuch mit dem 2-Tagesticket kannst du innerhalb von fünf Tagen nach dem ersten legen. Für diesen zweiten Tag hält der Park ein eigenes Ticketkontingent zurück, der Einlass ist dann garantiert.
 
@@ -65,7 +65,7 @@ Reisebusse parken auf dem Besucherparkplatz kostenlos. Motorräder und Fahrräde
 
 Angenommen, zwei Erwachsene und zwei Kinder zwischen 4 und 11 Jahren kommen mit dem Auto und buchen alles online. An einem Tag der Preiskategorie 1 kosten ihre vier Tagestickets 295 Euro, mit dem Parkticket 307 Euro. Das sind 15 Euro mehr als 2026, 2 Euro davon gehen aufs Parken. In Preiskategorie 2 zahlen dieselben vier 258 Euro für die Tickets und 270 Euro mit Parkplatz, 13 Euro mehr als im Jahr davor.
 
-Teurer als die ganze Preiserhöhung ist für diese Familie die Tageskasse. Dort kosten die vier Tickets zusammen 40 Euro mehr als online.
+Entscheidet sich die Familie erst vor dem Eingang, zahlt sie an der Tageskasse für die vier Tickets 40 Euro mehr als online, also mehr, als sie die ganze Preiserhöhung kostet.
 
 ## Wer weniger zahlt
 
@@ -80,7 +80,7 @@ Für Gruppen, Schulklassen und Gäste mit Behinderungen gelten eigene Tarife, di
 - blinde Gäste (Merkzeichen Bl) und Gäste im Rollstuhl mit Paraplegie (Merkzeichen aG), nur vor Ort: 35,50–40,00 €, bisher 34,00–38,00 €
 - Gäste im Rollstuhl mit Tetraplegie: freier Eintritt
 
-Hotelgäste im Erlebnis-Resort dürfen vor der regulären Öffnungszeit in den Park, und der Park gibt ihnen auf die Tickets eine Best-Preis-Garantie. Die Jahreskarten ResortPass Silver und Gold sind derzeit gar nicht zu haben, weil das Kontingent erschöpft ist.
+Hotelgäste im Erlebnis-Resort dürfen vor der regulären Öffnungszeit in den Park. Die Jahreskarten ResortPass Silver und Gold sind derzeit gar nicht zu haben, weil das Kontingent erschöpft ist.
 
 ## Gutscheintickets und undatierte Tickets
 
@@ -90,7 +90,7 @@ Wer erst vor Ort datieren lässt, zahlt 10 Euro Servicegebühr pro Ticket. Undat
 
 ## Günstiger im März
 
-Vom 7. bis 19. März 2027, in den knapp zwei Wochen vor dem Saisonstart, öffnet der Park zu den Pre-Opening Weeks. Ein Tagesticket kostet dann online 59,50 bis 70 Euro für Erwachsene und 50 bis 59 Euro für Kinder und Senioren. Der teuerste Märztag kostet damit so viel wie der günstigste Tag ab dem 20. März. Welche Tage was kosten und was in diesen Wochen offen ist, steht in unserem [Beitrag zu den Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027).
+Vom 7. bis 19. März 2027, in den knapp zwei Wochen vor dem Saisonstart, öffnet der Park zu den Pre-Opening Weeks. Ein Tagesticket kostet dann online 59,50 bis 70 Euro für Erwachsene und 50 bis 59 Euro für Kinder und Senioren. Der teuerste Märztag kostet damit so viel wie der günstigste Tag ab dem 20. März. Im [Beitrag zu den Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) steht jeder Märztag mit seinem Preis, dazu, was in den zwei Wochen schon offen hat.
 
 ## Saison 2027 und Öffnungszeiten
 
@@ -99,7 +99,7 @@ Vom 7. bis 19. März 2027, in den knapp zwei Wochen vor dem Saisonstart, öffnet
 - HALLOWinter: 8. bis 26. November 2027, täglich 11 bis mindestens 19 Uhr
 - Winterzauber: 27. November 2027 bis 9. Januar 2028, täglich 11 bis mindestens 19 Uhr
 
-Wann im Europa-Park wenig los ist, steht nach Wochentagen und Monaten im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps).
+Die ruhigsten Wochentage und Monate im Europa-Park stehen im [Europa-Park-Guide](/blog/europa-park-wartezeiten-tipps), falls du deinen Tag noch nicht festgelegt hast.
 
 ```best-days-widget slug=europa-park
 
