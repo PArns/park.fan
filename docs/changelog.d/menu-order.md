@@ -38,3 +38,17 @@ fünften Parks ein, die Liste bleibt gleich hoch; auf dem Handy steht sie in der
 Hero-Feld öffnet, nicht in der des Headers. Das Suchfeld selbst ist unverändert. Ein Klick zählt als
 `search_browse_clicked` mit `item: trip_region`
 ([Seitensuche](../features/site-search.md#a-trip-regions-planner-comes-first)).
+
+#### Die Reise-Regionen stehen auf der Startseite direkt unter den News
+
+Statt vier einzelner Stopps weit unten (nach Rundgang, Parky und Favoriten) zeigt die Startseite
+die Regionen jetzt in einem Stopp direkt unter den News: „Reiseplaner · Reise planen" mit den vier
+Kacheln des Planen-Bands samt Parky-Szenen (`TripRegionsHomeStop`,
+`components/trip-regions/trip-region-home-stop.tsx`, `RegionTile` aus
+`components/layout/planner-menu-panel.tsx`). Die Szenen lädt `RegionSceneInView` erst nach dem Laden
+und kurz bevor der Stopp in den Bildschirm kommt; die Kacheln haben feste Höhen. Unter jeder Kachel
+steht der Lead ihres Hubs (`tripRegions.<slug>.hub.lead`), damit die Startseite weiter sagt, worum es
+in der Region geht. Die Klicks zählen als `trip_home`, die Stelle als `home_trips`. Die alten
+Stopps und ihre Texte (`tripRegions.<slug>.homeStory` in sechs Sprachen) sind entfernt; statt vier
+Anfragen an die Regionen-Route liest der Stopp die Daten des Planen-Bands, die das Layout schon hat
+([Startseite](../features/homepage.md)).

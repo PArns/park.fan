@@ -301,9 +301,19 @@ function RegionCard({ region }: { region: PlannerMenuRegion }) {
  * Tag") stands once on the row's heading. A long name takes two balanced lines rather than being
  * cut: at a 1024 px bar a tile has 173 px beside the arrow, and "Southern California" needs 190.
  * The fade covers half the tile, so a scene's props under the text stay texture. The whole tile is
- * the trip planner's link; the crowd calendar is the large card's and the hub's.
+ * the trip planner's link; the crowd calendar is the large card's and the hub's. The homepage's
+ * region stop draws the same tile with the scene a page loads (`art`).
  */
-function RegionTile({ region, height }: { region: PlannerMenuRegion; height: string }) {
+export function RegionTile({
+  region,
+  height,
+  art,
+}: {
+  region: PlannerMenuRegion;
+  height: string;
+  /** The picture where the tile stands outside the band; in the band, the band's scene. */
+  art?: React.ReactNode;
+}) {
   return (
     <Link
       href={region.href as '/'}
@@ -315,7 +325,7 @@ function RegionTile({ region, height }: { region: PlannerMenuRegion; height: str
       )}
     >
       <span className="absolute inset-0 -z-10">
-        <PlannerRegionArt regionId={region.id} photo={region.photo} />
+        {art ?? <PlannerRegionArt regionId={region.id} photo={region.photo} />}
       </span>
       <span
         aria-hidden="true"

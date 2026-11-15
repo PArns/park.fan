@@ -1,58 +1,56 @@
-import { CalendarDays } from 'lucide-react';
+import { CalendarPlus } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
+import type { Locale } from '@/i18n/config';
 import { ChapterHeading } from '@/components/common/chapter-heading';
-import { HomeStop, StopLink } from '@/components/home/home-stop';
-import { catchNonFatal } from '@/lib/api/client';
-import { getTripRegion } from '@/lib/trip-regions/api';
-import { regionGroups, shortGroupName, shortParkName } from '@/lib/trip-regions/hub-data';
-import { tripRegionPath } from '@/lib/trip-regions/paths';
+import { HomeStop } from '@/components/home/home-stop';
+import { RegionTile } from '@/components/layout/planner-menu-panel';
+import { RegionSceneInView } from '@/components/layout/planner-region-art';
+import { getPlannerMenu } from '@/lib/navigation/planner-menu';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 
 /**
- * The homepage's stop for a trip region's hub: what it is and its link, in the region's own words
- * (`tripRegions.<slug>.homeStory`), beside the region's parks by resort, from the open
- * `/trip-regions/:region` (a day in the Data Cache). No forecast here: the homepage keeps a day at
- * the edge, and a day named "today" would be yesterday's by evening.
+ * The homepage's stop for the trip regions, right under the news: the planner band's tiles, each
+ * its hub's planner, with its scene once the stop nears the screen (`RegionSceneInView`, so the
+ * first load pays nothing for it), and under each the hub's own lead (`tripRegions.<slug>.hub.lead`),
+ * which keeps what the region is about in the homepage's text. The regions are the band's
+ * (`getPlannerMenu`, which the layout has already asked for).
  */
-export async function TripRegionHomeStop({
-  region: slug,
-  locale,
-}: {
-  region: string;
-  locale: string;
-}) {
-  const t = await getRegionTranslations(slug, 'homeStory');
-  const region = await catchNonFatal(getTripRegion(slug));
+export async function TripRegionsHomeStop({ locale }: { locale: Locale }) {
+  const [t, { regions }] = await Promise.all([
+    getTranslations('navigation'),
+    getPlannerMenu(locale),
+  ]);
+  if (regions.length === 0) return null;
+  const leads = await Promise.all(
+    regions.map(async (region) => (await getRegionTranslations(region.id, 'hub', locale))('lead'))
+  );
   return (
     <HomeStop
+      stacked
       divider
       block="trip_home"
       heading={
         <ChapterHeading
           variant="stop"
-          icon={CalendarDays}
-          kicker={t('kicker')}
-          title={t('title')}
-          hint={t('lead')}
-          action={<StopLink href={tripRegionPath(slug, locale)}>{t('link')}</StopLink>}
+          icon={CalendarPlus}
+          kicker={t('tripPlanner')}
+          title={t('planTrip')}
+          hint={t('tripPlannerHint')}
         />
       }
     >
-      {region ? (
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {regionGroups(region).map((group) => (
-            <li key={group.key} className="border-border/60 bg-card/50 rounded-xl border p-4">
-              <p className="text-muted-foreground text-xs font-semibold tracking-wider uppercase">
-                {shortGroupName(group.name)}
-              </p>
-              <p className="mt-1 text-sm leading-relaxed">
-                {group.parks.map((park) => shortParkName(park.name)).join(' · ')}
-              </p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <div />
-      )}
+      <ul className="grid grid-cols-1 gap-x-3 gap-y-5 sm:grid-cols-2 lg:grid-cols-4">
+        {regions.map((region, index) => (
+          <li key={region.id} className="min-w-0">
+            <RegionTile
+              region={region}
+              height="h-44 md:h-56"
+              art={<RegionSceneInView regionId={region.id} />}
+            />
+            <p className="text-muted-foreground mt-2.5 text-sm text-pretty">{leads[index]}</p>
+          </li>
+        ))}
+      </ul>
     </HomeStop>
   );
 }
