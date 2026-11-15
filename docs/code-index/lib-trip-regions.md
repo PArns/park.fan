@@ -85,13 +85,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
 - `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest `headlinerWait`, a tie to the longer day for the day guest.
-- `dayPick` _function_: The park a day's column names above the tiles: with one group shown, that group's first park (`rankGroupParks`, the API's pick first); else the shortest line among the picks the first answer names (`glanceLines`), by `headlinerWait`, a tie …
-- `resortHasChoice` _function_: Whether a resort has a pick worth naming on a day: more than one of its parks has a figure. A resort with one (SeaWorld beside two parks nobody queues at) has nothing to choose between.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
 - `isWeekend` _function_: `true` when a date is a weekend (Saturday or Sunday); the date is already the region's.
-- `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `dayMonth` "12 Nov".
+- `formatHubDate` _function_: A plain date as the hub prints it (`formatParkDay`, so no zone moves it): `short` "Thu 12 Nov", `long` "Thursday, 12 November", `day` "12", `weekday` "Thu", `weekdayDay` "Thu 12", `dayMonth` "12 Nov".
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
