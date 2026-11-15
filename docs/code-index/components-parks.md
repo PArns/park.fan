@@ -638,6 +638,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PeakHourBadge` _component_: Badge counting down to the peak hour ("in 1 hour 20 minutes"). Renders nothing before mount, for an invalid timestamp, or once the time has passed.
 
+### [`performance-badge.tsx`](../../components/parks/performance-badge.tsx)
+
+- `PerformanceBadge` _component_: „Feste Vorstellungen": stands where the status badge would on a ride that shows today's performance times instead of a wait. The feed reads such a ride CLOSED between two performances, and a red badge over a countdown would contradict it.
+
+### [`performance-countdown.tsx`](../../components/parks/performance-countdown.tsx)
+
+- `PerformanceCountdown` _component_: The next performance of a ride that starts at set times, in place of its wait: „14:00 · in 23 Min.", and once the last one has begun, that there is none left today.
+
 ### [`queue-type-badge.tsx`](../../components/parks/queue-type-badge.tsx)
 
 - `QueueTypeBadge` _component_: Badge for a ride's extra queue: single rider, virtual queue return window, boarding groups, Lightning Lane or Express price. Nothing for standby; most link to their glossary term.

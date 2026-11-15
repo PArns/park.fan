@@ -477,10 +477,13 @@
       "none": "No se pudieron cargar los viajes más tranquilos del año.",
       "lastYearNote": "Las fechas a más de 60 días se ordenan con los días medidos el año pasado.",
       "rank": "N.º {rank}",
-      "figure": "Espera punta: unos {minutes} min",
-      "basisLastYear": "Afluencia medida el año pasado",
-      "basisMixed": "En parte, afluencia medida el año pasado",
-      "plan": "Planificar este viaje"
+      "plan": "Planificar este viaje",
+      "allWeeks": "Comparar todas las semanas del año",
+      "length": "{days, plural, =1 {# día} other {# días}}",
+      "scope": "{resorts} · {count, plural, =1 {# parque} other {# parques}}",
+      "scopeLabel": "Parques del viaje",
+      "lengthLabel": "Duración del viaje",
+      "ahead": "Va por delante del n.º {rank} {why, select, heat {porque entonces hace más calor} hurricane {porque ese viaje cae en temporada de huracanes} typhoon {porque ese viaje cae en temporada de tifones} hurricane_more {porque ese viaje cae más de lleno en la temporada de huracanes} typhoon_more {porque ese viaje cae más de lleno en la temporada de tifones} other {porque entonces el tiempo es peor}}."
     },
     "planner": {
       "title": "Planifica tu viaje"
@@ -587,12 +590,12 @@
     "regionGuide": "Guía de viaje de {region}",
     "lastYearFrom": "Desde el {date}: cifras del año pasado, siempre el mismo día de la semana tal como lo medimos.",
     "howItWorks": {
-      "title": "Así planifica tu viaje el planificador",
+      "title": "Así planifica el planificador tus días {inRegion}",
       "planTitle": "Tu viaje",
       "steps": {
         "dates": {
           "title": "Elige las fechas",
-          "text": "Bajo cada día aparece el parque con la espera punta más corta, y en cuanto eliges el día de vuelta, tienes el primer plan"
+          "text": "Toca en el calendario el día de llegada y el de vuelta. Bajo cada día ya aparece el parque con la espera punta más corta"
         },
         "questions": {
           "title": "Unas preguntas, todas opcionales",
@@ -607,7 +610,7 @@
           "text": "Intercambia o fija días, añade parques o pregunta a Parky en el chat, y después llévalo al planificador del día o a tu calendario"
         }
       },
-      "parky": "Solo las fechas son obligatorias, y puedes saltar cada pregunta que viene después. Empieza por las fechas.",
+      "parky": "También puedes planificar el viaje conmigo en el chat. Te pregunto por tus fechas, tus parques y tu hotel, y luego le doy su día a cada parque.",
       "chat": "Mejor en el chat",
       "calendarLead": "En cada parque está marcado su día más tranquilo de la semana",
       "hero": {
@@ -619,10 +622,6 @@
     },
     "resorts": {
       "title": "Los resorts"
-    },
-    "finalCta": {
-      "title": "Tu viaje, planificado día a día",
-      "text": "En cuanto tus fechas están fijadas, ves el primer plan, y después puedes responder las preguntas o saltarlas"
     }
   },
   "theme": {
@@ -1648,7 +1647,8 @@
       "live": "<b>{min}</b> min ahora",
       "liveClosed": "Cerrada ahora mismo",
       "plan": "Mejor hora <b>{time}</b>",
-      "history": "<b>{days}</b> días · pico <b>{max}</b> min"
+      "history": "<b>{days}</b> días · pico <b>{max}</b> min",
+      "performance": "Próxima sesión <b>{time}</b>"
     },
     "alternatives": {
       "heading": "Colas más cortas cerca",
@@ -1710,7 +1710,16 @@
     "riddenMark": "Marcar como montada",
     "riddenUnmark": "Quitar la marca de montada",
     "riddenProgress": "{count, plural, one {# atracción montada} other {# atracciones montadas}} de {total}",
-    "tabTitleWait": "{minutes} min · {title}"
+    "tabTitleWait": "{minutes} min · {title}",
+    "performance": {
+      "badge": "Sesiones a horas fijas",
+      "hint": "Empieza a horas fijas en lugar de funcionar sin parar. Se entra para la siguiente sesión.",
+      "next": "Próxima sesión",
+      "in": "en {duration}",
+      "now": "empieza ahora",
+      "noneLeft": "No quedan sesiones hoy",
+      "todayList": "Sesiones de hoy"
+    }
   },
   "nearby": {
     "title": "Parques cercanos",

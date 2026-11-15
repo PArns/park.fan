@@ -541,6 +541,22 @@ export interface WorksPeriod {
 }
 
 /**
+ * When a ride that runs as performances (a 4D cinema, a show walk-through) starts them, for a run
+ * of park-local days. Curated under `/admin/attractions/<id>`, because no feed carries it: the
+ * feed reads such a ride CLOSED between two performances. Both days inclusive and either may be
+ * null; a schedule with neither holds every day. `lib/utils/performance-schedule.ts` picks today's.
+ * Contract: `docs/frontend/performance-schedules.md` in the API repo.
+ */
+export interface PerformanceSchedule {
+  /** First park-local day, inclusive, or null for a schedule with no start. */
+  from: string | null;
+  /** Last park-local day, inclusive, or null for a schedule with no end. */
+  to: string | null;
+  /** Park-local start times, `HH:MM` on a 24-hour clock, ascending and never empty. */
+  times: string[];
+}
+
+/**
  * A ride that has not run yet today, and when it last did. Separate from `outage` because it claims
  * nothing about why (a cold day, a late opening, maintenance), so the page shows it neutrally,
  * never in the outage colour. Present only while the ride reads CLOSED a quarter hour into an open
@@ -734,6 +750,11 @@ export interface ParkAttraction {
   worksPeriod?: WorksPeriod | null;
   /** Every curated works window of the ride, sorted; `worksPeriod` is the one that matters today. */
   worksPeriods?: WorksPeriod[];
+  /**
+   * The ride's performance start times, per run of days; absent for nearly every ride. Day-stable,
+   * so it rides the server render and not the poll. See {@link PerformanceSchedule}.
+   */
+  performanceSchedules?: PerformanceSchedule[];
   /**
    * Reported-outage figures, or the reason there are none. Attraction detail response only: the
    * park page renders none of it, so the park list and the poll do not carry it.

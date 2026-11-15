@@ -5,15 +5,17 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { keepPreviousData } from '@tanstack/react-query';
 import type { Locale } from '@/i18n/config';
 import {
-  parseDatacenterScope,
+  parseMarkedRows,
   parseTrafficFilters,
   parseTrafficLocale,
   serializeTrafficFilters,
   toggleTrafficFilter,
   trafficQuery,
   withoutTrafficFilter,
-  type DatacenterScope,
   type FilterDimension,
+  type MarkedRowKind,
+  type MarkedRowScope,
+  type MarkedRows,
   type TrafficFilter,
 } from '@/lib/admin/site-analytics';
 import {
@@ -29,8 +31,12 @@ import {
 import type { SeriesInterval, TrafficOverview } from '@/lib/api/admin-site-analytics';
 import { adminKeys, useAdminQuery } from '../../_lib/api';
 
-/** The window, step, language and filters every traffic page shows, as the URL holds them. */
-export interface TrafficFilters {
+/**
+ * The window, step, language, filters and marked rows every traffic page shows, as the URL holds
+ * them. Each mark (`datacenter`, `automated`) is `exclude`, the API's default, unless the address
+ * says.
+ */
+export interface TrafficFilters extends MarkedRows {
   range: TrafficRange;
   /** The window as the API will echo it, worked out with today's date. */
   window: RangeWindow;
@@ -42,8 +48,6 @@ export interface TrafficFilters {
   activeInterval: SeriesInterval;
   locale: Locale | null;
   filters: TrafficFilter[];
-  /** Which rows count by network; `exclude`, the API's default, unless the address says. */
-  datacenter: DatacenterScope;
 }
 
 /** What the filter bar and the panels change. */
@@ -52,7 +56,8 @@ export interface TrafficFilterActions {
   /** `null` goes back to the default step of the window. */
   setInterval: (interval: SeriesInterval | null) => void;
   setLocale: (locale: Locale | null) => void;
-  setDatacenter: (datacenter: DatacenterScope) => void;
+  /** Counts one mark's rows out, in, or alone; `exclude` leaves the address without it. */
+  setMarkedRows: (kind: MarkedRowKind, scope: MarkedRowScope) => void;
   /** Sets the filter of a dimension, replaces it, or takes it off when it is already that value. */
   toggleFilter: (dim: FilterDimension, value: string) => void;
   removeFilter: (dim: FilterDimension) => void;
@@ -99,7 +104,7 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
   const interval =
     isInterval(askedInterval) && askedInterval === activeInterval ? askedInterval : null;
   const locale = parseTrafficLocale(params.get('locale'));
-  const datacenter = parseDatacenterScope(params.get('datacenter'));
+  const marked = parseMarkedRows(params);
   const filterParams = params.getAll('filter');
   // The strings, not the array, key the memo: `getAll` is a new array on every render.
   const filterKey = filterParams.join('\u0000');
@@ -123,7 +128,7 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
     activeInterval,
     locale,
     filters,
-    datacenter,
+    ...marked,
     setRange: useCallback(
       (value) =>
         write((next) => {
@@ -153,11 +158,11 @@ export function useTrafficFilters(): TrafficFilters & TrafficFilterActions {
         }),
       [write]
     ),
-    setDatacenter: useCallback(
-      (value) =>
+    setMarkedRows: useCallback(
+      (kind, scope) =>
         write((next) => {
-          if (value === 'exclude') next.delete('datacenter');
-          else next.set('datacenter', value);
+          if (scope === 'exclude') next.delete(kind);
+          else next.set(kind, scope);
         }),
       [write]
     ),
@@ -190,11 +195,11 @@ function hasSeries(endpoint: string): boolean {
  */
 export function analyticsPath(
   endpoint: string,
-  state: Pick<TrafficFilters, 'range' | 'locale'> & {
-    interval?: SeriesInterval | null;
-    filters?: readonly TrafficFilter[];
-    datacenter?: DatacenterScope;
-  },
+  state: Pick<TrafficFilters, 'range' | 'locale'> &
+    Partial<MarkedRows> & {
+      interval?: SeriesInterval | null;
+      filters?: readonly TrafficFilter[];
+    },
   extra?: Record<string, string | number>
 ): string {
   const query = trafficQuery(

@@ -1,6 +1,6 @@
 {
   "name": "park.fan",
-  "version": "2.22.2",
+  "version": "2.22.3",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.16.0",
@@ -58,6 +58,7 @@
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",
     "test:ride-alternatives": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-alternatives.mjs",
     "test:show-order": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-order.mjs",
+    "test:performance-schedule": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-performance-schedule.mjs",
     "test:assistant": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-assistant.mjs",
     "test:parky-look": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-parky-look.mjs",
     "test:assistant-context": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-assistant-context.mjs",
@@ -179,6 +180,7 @@
     "test:media-references": "node scripts/generate-blog-manifest.mjs && node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-media-references.mjs",
     "test:blog-image-sidecar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-image-sidecar.mjs",
     "test:new-posts": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-new-posts.mjs",
+    "test:contribute-prefill": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-contribute-prefill.mjs",
     "test:news-redirects": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-redirects.mjs",
     "test:news-sitemap": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-sitemap.mjs",
     "test:news-park": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-news-park.mjs",

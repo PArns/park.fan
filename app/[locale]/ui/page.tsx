@@ -359,6 +359,26 @@ const MOCK_ATTRACTION_REFURB = {
   statistics: null,
 } as unknown as ParkAttraction;
 
+/** A 4D cinema that plays on the hour while the feed reads it CLOSED (PAR-1355). */
+const MOCK_ATTRACTION_PERFORMANCES = {
+  id: 'die-3-mausketiere',
+  slug: 'die-3-mausketiere',
+  name: 'Die 3 Mausketiere',
+  land: 'Berlin',
+  status: 'CLOSED' as const,
+  queues: [],
+  currentLoad: null,
+  trend: null,
+  statistics: null,
+  performanceSchedules: [
+    {
+      from: null,
+      to: null,
+      times: Array.from({ length: 14 }, (_, i) => `${String(9 + i).padStart(2, '0')}:00`),
+    },
+  ],
+} as unknown as ParkAttraction;
+
 const MOCK_ATTRACTION_TREND_DOWN = {
   id: 'colorado-adventure',
   slug: 'colorado-adventure',
@@ -1665,6 +1685,18 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                     attraction={MOCK_ATTRACTION_REFURB}
                     parkPath="/parks/europe/germany/bruhl/phantasialand"
                     parkStatus="OPERATING"
+                  />
+                </div>
+              </Sub>
+              <Sub title="AttractionCard — set showtimes: the next start in place of the wait, the feed reads CLOSED">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+                  <AttractionCard
+                    attraction={MOCK_ATTRACTION_PERFORMANCES}
+                    parkPath="/parks/europe/germany/bruhl/phantasialand"
+                    parkStatus="OPERATING"
+                    phoneRow
+                    timezone="Europe/Berlin"
+                    todayIso="2026-11-15"
                   />
                 </div>
               </Sub>

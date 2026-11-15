@@ -477,10 +477,13 @@
       "none": "De rustigste reizen van het jaar konden niet worden geladen.",
       "lastYearNote": "Data meer dan 60 dagen vooruit zijn gerekend met de gemeten dagen van vorig jaar.",
       "rank": "Nr. {rank}",
-      "figure": "Piekwachttijd: ongeveer {minutes} min",
-      "basisLastYear": "Gemeten drukte van vorig jaar",
-      "basisMixed": "Deels gemeten drukte van vorig jaar",
-      "plan": "Deze reis plannen"
+      "plan": "Deze reis plannen",
+      "allWeeks": "Alle weken van het jaar vergelijken",
+      "length": "{days, plural, =1 {# dag} other {# dagen}}",
+      "scope": "{resorts} · {count, plural, =1 {# park} other {# parken}}",
+      "scopeLabel": "Parken van de reis",
+      "lengthLabel": "Lengte van de reis",
+      "ahead": "Staat boven nr. {rank}, {why, select, heat {omdat het dan heter is} hurricane {omdat het dan orkaanseizoen is} typhoon {omdat het dan tyfoonseizoen is} hurricane_more {omdat die reis dieper in het orkaanseizoen valt} typhoon_more {omdat die reis dieper in het tyfoonseizoen valt} other {omdat het weer dan slechter is}}."
     },
     "planner": {
       "title": "Plan je reis"
@@ -587,12 +590,12 @@
     "regionGuide": "Reisgids {region}",
     "lastYearFrom": "Vanaf {date}: cijfers van vorig jaar, telkens dezelfde weekdag zoals wij die gemeten hebben.",
     "howItWorks": {
-      "title": "Zo plant de reisplanner je reis",
+      "title": "Zo plant de reisplanner je dagen {inRegion}",
       "planTitle": "Je reis",
       "steps": {
         "dates": {
           "title": "Kies je reisdata",
-          "text": "Onder elke dag staat het park met de kortste piekwachttijd, en zodra je de dag van vertrek kiest, staat het eerste plan er"
+          "text": "Tik je aankomst en je vertrek aan in de kalender. Onder elke dag staat al het park met de kortste piekwachttijd"
         },
         "questions": {
           "title": "Een paar vragen, allemaal vrijwillig",
@@ -607,7 +610,7 @@
           "text": "Dagen ruilen of vastzetten, parken toevoegen of Parky in de chat vragen, daarna naar de dagplanner of je agenda"
         }
       },
-      "parky": "Alleen je reisdata zijn verplicht, elke vraag daarna kun je overslaan. Begin met de data.",
+      "parky": "Je kunt de reis ook met mij in de chat plannen. Ik vraag naar je reisdata, parken en hotel en geef daarna elk park zijn dag.",
       "chat": "Liever in de chat",
       "calendarLead": "Bij elk park is de rustigste dag van de week gemarkeerd",
       "hero": {
@@ -619,10 +622,6 @@
     },
     "resorts": {
       "title": "De resorts"
-    },
-    "finalCta": {
-      "title": "Je reis, dag voor dag gepland",
-      "text": "Zodra je reisdata vaststaan, zie je het eerste plan, en de vragen daarna kun je beantwoorden of overslaan"
     }
   },
   "theme": {
@@ -1648,7 +1647,8 @@
       "live": "Nu <b>{min}</b> min.",
       "liveClosed": "Momenteel gesloten",
       "plan": "Beste tijd <b>{time}</b>",
-      "history": "<b>{days}</b> dagen · piek <b>{max}</b> min."
+      "history": "<b>{days}</b> dagen · piek <b>{max}</b> min.",
+      "performance": "Volgende voorstelling <b>{time}</b>"
     },
     "alternatives": {
       "heading": "Kortere wachtrijen in de buurt",
@@ -1710,7 +1710,16 @@
     "riddenMark": "Markeren als gereden",
     "riddenUnmark": "Markering “gereden” weghalen",
     "riddenProgress": "{count} van {total} attracties gereden",
-    "tabTitleWait": "{minutes} min · {title}"
+    "tabTitleWait": "{minutes} min · {title}",
+    "performance": {
+      "badge": "Vaste voorstellingen",
+      "hint": "Begint op vaste tijden en draait niet doorlopend. Je gaat naar binnen voor de volgende voorstelling.",
+      "next": "Volgende voorstelling",
+      "in": "over {duration}",
+      "now": "begint nu",
+      "noneLeft": "Vandaag geen voorstelling meer",
+      "todayList": "Voorstellingen vandaag"
+    }
   },
   "nearby": {
     "title": "Parken in de buurt",

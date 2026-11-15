@@ -11,6 +11,126 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.22.3 (2026-11-15) – Feste Vorstellungen statt Wartezeit, Reise-Hubs mit einem Schluss und Parks- und Längenwahl, automatisierte Besuche im Admin, eine Foto-URL pro Sprache, Menü-Teaser erst beim Öffnen
+
+Geschnitten am 2026-11-15 aus 5 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.3.md`. Neueste Abschnitte zuerst.
+
+### Die Teaser im Guides- und News-Menü erscheinen erst, wenn das Menü offen war
+
+Das Header-Menü steht mit allen Bändern im HTML jeder Seite, damit Crawler seine Links lesen. Mit
+den Links kamen bisher auch die Teaser: auf der deutschen Phantasialand-Parkseite 833 Wörter im
+`<nav>`, davon 750 vor der `h1`. 191 Wörter davon waren Fließtext über andere Themen, etwa
+Hotels bei Disneyland Paris, eine Japan-Reise und die Gurte bei Max & Moritz in der Efteling.
+`BlogMenuPanel` und `NewsMenuPanel` zeigen ihre Teaser jetzt erst, wenn das Band einmal offen war
+(`useMenuBandOpened`). Das passiert im selben Render, in dem es sich öffnet, also ohne sichtbares
+Nachladen. `MenuPostRow` bekommt dafür `teaser`, weil Parkys Chat die Zeile auch außerhalb eines
+Bands zeigt. Links, Titel, Bilder und Daten bleiben im HTML, und vor der `h1` stehen jetzt 559
+statt 750 Wörter.
+
+### Der Foto-Link einer Park- oder Ride-Seite trägt sein Ziel im Fragment, `/contribute` ist eine URL pro Sprache
+
+`buildContributeHref` schrieb Park oder Ride in den Query (`/de/contribute?type=park&id=…`), also
+eine eigene URL je Park, Ride und Sprache für dasselbe Formular, bei rund 7.600 Parks und Rides.
+`nofollow` und `noindex` hielten Google nicht davon ab, sie zu sammeln: Die URL-Prüfung von
+`/en/contribute` listet sie als verweisende Seiten, der Crawl-Budget-Export vom 24. September
+zählte 737 in der Stichprobe „Alternative Seite mit kanonischem Tag“. Scraper, die `nofollow`
+ignorieren, machten `/contribute` in der eigenen Statistik zur Seite mit den meisten direkten
+Einstiegen, in allen sechs Sprachen und mit 99 bis 100 % Absprung nach 0 Sekunden.
+
+Der Link trägt die Werte jetzt im Fragment (`/de/contribute#type=park&id=…`), das nie einen Server
+oder Cache erreicht. `ContributeForm` liest es über `useLocationHash` und `parseEntityFromHash`. Die
+Seite liest keine `searchParams` mehr und ist damit statisch. Ein Link mit dem Ziel im Query
+bekommt in `proxy.ts` eine 308 auf die Fragment-Form (`contributeQueryRedirect`,
+`lib/contribute/prefill-keys.ts`). `pnpm test:contribute-prefill` prüft beide Richtungen.
+
+### Automatisierte Besuche haben im Admin einen eigenen Schalter neben den Rechenzentren
+
+Die API markiert jetzt einen Besuch als automatisiert, wenn seine erste Seite ohne Referrer kommt,
+nicht englisch ist und der Browser in `Accept-Language` keine Sprache dieser Seite nennt. Wie die
+Rechenzentren bleibt er gezählt, aber aus jedem Bericht draußen, solange niemand fragt. Die
+Filterleiste und die Live-Seite haben dafür neben „Rechenzentren" den Schalter „Automatisierte
+Besuche" (`ohne Bots`, `mit Bots`, `nur Bots`, in der Adresse `?automated=include|only`). Beide
+Schalter zeichnet `MarkedRowSwitches`, und `lib/admin/site-analytics.ts` hält ihre Parameter, Werte
+und Wörter an einer Stelle (`MARKED_ROW_KINDS`, `MARKED_ROW_LABEL`, `parseMarkedRows`,
+`setMarkedRowParams`). Der CSV-Export nennt beide.
+
+Anlass war ein Rückgang der Besuche Anfang November, der zu 63 % aus direkten Chrome-Besuchen kam.
+Vom 2. bis 15. November gab es 5.200 direkte Chrome-Besuche mit englischer Browsersprache auf
+spanischen, deutschen, niederländischen, französischen und italienischen Seiten, zu 99 bis 100 %
+Absprünge von 0 bis 3 Sekunden. Direkte Safari-Besuche hatten im selben Zeitraum nur 9 Mal eine
+Browsersprache, die nicht zur Seite passte. Die Datenschutzerklärung (de, en) beschreibt die
+Markierung, die getrennt gezählten Besucher und das neue Merkmal im Besuch.
+
+### Reise-Hubs: ein Schluss statt zwei, Kapitel 04 ohne Vorjahres-Zeile
+
+Auf den vier Hubs standen unten zwei Blöcke mit „Reise planen“ direkt untereinander: die Karte
+`HubFinalCta` („Deine Reise, Tag für Tag geplant“) und das Band `LandingNextSteps`. Die Karte ist
+weg (`components/trip-regions/hub/hub-final-cta.tsx`, `tripHub.finalCta.*`). Das Band trägt jetzt
+ihr Parky-Bild (`picture`), einen Satz (`tripHub.next.body`) und einen ersten Knopf, der den Planer
+startet wie der im Kopf (`LandingDestination.element`, mit Plan „Zu deinem Plan“). „Reise planen“
+steht damit dreimal auf der Seite statt viermal.
+
+„Nur die Reisedaten sind Pflicht“ stand an vier Stellen: unter den Knöpfen im Kopf, in Schritt 2,
+in Parkys Zeile und in der Schlusskarte. Parky bietet in Kapitel 01 jetzt den Chat an
+(`tripHub.howItWorks.parky`). Wo Parky aus ist, zeichnet `ParkyInterviewStart` mit `action` nur
+noch den Knopf, weil die Zeile einen Chat verspricht.
+
+Kapitel 04 (`HubWhen`): Die Zeile „Gemessener Andrang des Vorjahres“ steht auf keiner Karte mehr
+(`when.basisLastYear`, `when.basisMixed` entfernt); woher ein Wert kommt, sagt die Frage zur
+Prognose in Kapitel 05. Über den Karten liegt eine Jahresleiste (`yearLine` in
+`lib/trip-regions/hub-data.ts`): die Monate des durchsuchten Zeitraums und die drei Reisen als
+Balken unter ihrer Nummer. Auf der Karte steht die Spitzenwartezeit als große Zahl
+(`glance.minutes`, `when.figure` entfernt), darunter der erste Grund des Fensters, wenn sich die
+drei darin unterscheiden, und der Knopf über die ganze Breite. Neben dem Datum steht die Länge der Reise (`when.length`, „10 Tage“), und der Link darunter heißt „Alle Wochen des Jahres vergleichen“
+(`when.allWeeks`) statt noch einmal wie Titel und Band.
+
+Kapitel 04 hat zwei Umschalter (`HubWhenTeaser`, Client; die Chips sind `HubFilterChip`, aus dem
+Kalender herausgelöst). Der erste wählt die Parks, eine Wahl je Bestzeit-Seite der Region
+(„Disney und Universal · 7 Parks“, „Disney · 4 Parks“, „Universal · 3 Parks“), der zweite die Länge
+der Reise. Das HTML vom Server enthält die Antwort der Region; jede andere Wahl lädt der Browser
+einmal über das Relay (`whenQueryFor` in `lib/trip-regions/best-time.ts`, dieselbe Abfrage wie auf
+dem Server). „Diese Reise planen“ nimmt die gewählten Parks mit, der Link darunter führt zur
+Bestzeit-Seite der Wahl.
+
+Die Reiselänge folgt den Parks (`bestTimePageDays`, ersetzt `BEST_TIME_TRIP_DAYS`): ein Tag je
+Park, ein Tag zwischen zwei Resorts, An- und Abreise, und `extraDays` einer Bestzeit-Seite, wo die
+Resorts in verschiedenen Städten liegen. Vorher rechneten Hub und Bestzeit-Seiten immer mit 10
+Tagen, auch für Disney allein. Jetzt sind es in Orlando 10 Tage für alle sieben Parks, 6 für
+Disney World und 5 für Universal, in Paris und Südkalifornien 6, in Japan 7; Titel, Beschreibungen
+und Antworten der Bestzeit-Seiten nennen die neue Länge.
+
+Die Rangfolge der API rechnet Minuten für Hitze und Sturmsaison ein, eine Reise kann also vor
+einer mit kürzerer Wartezeit stehen. Die Karte sagt das jetzt („Steht vor Nr. 2, weil dort
+Hurrikansaison ist“, `aheadForWeather` in `lib/trip-regions/plan-when.ts`, `when.ahead`), und die
+Sturmsaison oder Hitze steht als Chip auf der betroffenen Karte (`ClimateChips`). Ein Umschalter,
+der die Wahl ändert, zählt `trip_best_time_switch` (`scope`, `days`, `changed`).
+
+Kapitel 03 (`HubResorts`): Eine Karte ohne eigenes Foto zeigte das Parky-Bild der Region, in
+Orlando zweimal nebeneinander. Sie beginnt jetzt mit einer getönten Fläche in der Höhe der Fotos
+und dem Namen. Das Raster hat so viele Spalten wie Karten, bis vier, damit die zwei Resorts in
+Paris die Zeile füllen. Jeder Park-Link ist eine Zeile mit Pfeil, auf dem Handy 44 px hoch; Karten
+und die vier Screenshots in Kapitel 01 heben sich beim Überfahren.
+
+Die Überschrift von Kapitel 01 nennt die Region („So plant der Reiseplaner deine Tage in Orlando“,
+aus `nav.inRegion`); vorher war sie auf den 52 Hub- und Monatsseiten jeder Sprache dieselbe.
+
+### Attraktionen mit festen Vorstellungen zeigen die nächste statt einer Wartezeit
+
+„Die 3 Mausketiere" im Phantasialand läuft im Wintertraum nur um 13, 14, 15, 16 und 17 Uhr. Der
+Feed führt das 4D-Kino als Attraktion ohne Spielzeiten und meldet es CLOSED, also stand auf der
+Karte „Geschlossen". Die API liefert jetzt kuratierte Vorstellungszeiten je Zeitraum
+(`performanceSchedules`). Gilt einer davon am heutigen Parktag und ist der Park offen, zeigt die
+Karte statt der Wartezeit die nächste Startzeit mit Countdown („14:00 · in 23 Min.") und darunter
+alle Zeiten des Tages, vergangene durchgestrichen. Nach der letzten Vorstellung steht dort „Heute
+keine Vorstellung mehr". Statt des Status steht das Badge „Feste Vorstellungen". Ein CLOSED, ein
+UNKNOWN oder ein OPERATING aus dem Feed weicht dem Countdown, DOWN, REFURBISHMENT und ein laufendes
+Wartungsfenster nicht (`performanceTimesShown` in `lib/utils/performance-schedule.ts`). Die
+Bahnseite zeigt dasselbe im Panel „Wartezeit jetzt" (`RideNowPanel`), die Kachel „Wartezeiten
+heute" nennt die nächste Vorstellung. Im Admin gibt es dafür die Gruppe „Vorstellungen": je Zeile
+eine Saison des Parks oder „ab" und „bis", dazu die Startzeiten. Geprüft mit
+`pnpm test:performance-schedule` (12). Beschreibung:
+[Feste Vorstellungen](api/performance-schedules.md).
+
 ## 2.22.2 (2026-11-15) – Extremes Wetter vermeiden, kürzere Ticket-Karte, Planen vorn im Menü und auf der Startseite, Reise löschen, lesbare Wochenansicht
 
 Geschnitten am 2026-11-15 aus 9 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.2.md`. Neueste Abschnitte zuerst.

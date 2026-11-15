@@ -20,10 +20,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `resolveDriver` _function_: Returns the contribution storage backend: `STORAGE_DRIVER` when set, else Vercel Blob when a token exists, else the local filesystem.
 - Types: `Driver`
 
+### [`prefill-keys.ts`](../../lib/contribute/prefill-keys.ts)
+
+- `contributeQueryRedirect` _function_: Where a contribute link with the park or ride in its query goes (`/de/contribute?type=park&id=…`): the same page with the values in the fragment.
+- `CONTRIBUTE_PREFILL_FIELDS` _const_: The values that carry a preselected park or ride to /contribute, in the order a link writes them: the `AssignedEntity` field each fills, and its key in the link. Kept apart from the schema so the proxy reads it without zod.
+
 ### [`prefill.ts`](../../lib/contribute/prefill.ts)
 
-- `buildContributeHref` _function_: The /contribute link with a park or ride already assigned through query params, for the "Add your photos" button on its page.
-- `parseEntityFromParams` _function_: Parse a pre-assigned entity from contribute-page search params (null if absent/invalid).
+- `buildContributeHref` _function_: The /contribute link with a park or ride already assigned, for the "Add your photos" button on its page. The values travel in the fragment, so every park and ride page links the same URL.
+- `parseEntityFromHash` _function_: A pre-assigned entity from a /contribute fragment (`#type=park&id=…`), null if absent or invalid.
 
 ### [`storage.ts`](../../lib/contribute/storage.ts)
 

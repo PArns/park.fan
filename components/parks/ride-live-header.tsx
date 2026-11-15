@@ -9,6 +9,8 @@ import { ParkOpeningsProvider } from '@/components/parks/park-openings-context';
 import { useWaitInTabTitle } from '@/lib/hooks/use-wait-in-tab-title';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { performanceTimesShown } from '@/lib/utils/performance-schedule';
+import { worksPeriodsOf } from '@/lib/utils/works-period';
 import type { ParkWithAttractions } from '@/lib/api/types';
 
 interface RideLiveHeaderProps {
@@ -65,7 +67,19 @@ export function RideLiveHeader({
   // season, and reports UNKNOWN rather than flattening it to closed.
   // The wait is the panel's figure: standby, only while the ride is operating.
   const status = attraction ? getLiveAttractionStatus(attraction, park.status) : null;
-  const liveWait = attraction && status === 'OPERATING' ? getStandbyWait(attraction) : null;
+  // A ride that starts at set times shows its next start instead, as its card does.
+  const performanceTimes =
+    attraction && status
+      ? performanceTimesShown({
+          schedules: attraction.performanceSchedules,
+          worksPeriods: worksPeriodsOf(attraction),
+          status,
+          parkStatus: park.status,
+          day: todayIso,
+        })
+      : null;
+  const liveWait =
+    attraction && status === 'OPERATING' && !performanceTimes ? getStandbyWait(attraction) : null;
   const formatTabTitle = useCallback(
     (wait: number, title: string) => t('tabTitleWait', { minutes: roundWaitTo5(wait), title }),
     [t]
@@ -97,6 +111,7 @@ export function RideLiveHeader({
         status={status}
         statusLabel={t(`status.${status.toLowerCase()}` as 'status.operating')}
         todayIso={todayIso}
+        performanceTimes={performanceTimes}
         shellSlotCount={shellSlotCount}
         todaySchedule={todaySchedule}
         isRefreshing={isFetching}

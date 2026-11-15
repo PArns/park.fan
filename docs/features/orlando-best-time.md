@@ -31,7 +31,7 @@ shows. The anatomy is a hub's ([a landing page has one anatomy](../rules/a-landi
 
 - **The region** (`getTripRegion`) for the parks: the headliner parks of the page's resorts
   (`bestTimeParks`, the region's `bestTime` pages).
-- **`/when`** (`getTripRegionWhen`) once, for those parks, `days=10`, `limit=3`, over the **title's
+- **`/when`** (`getTripRegionWhen`) once, for those parks, `days` a day per park, a day between two resorts, arrival and departure (`bestTimePageDays`: all seven Orlando parks 10, Disney World's four 6, Universal's three 5; Japan's region page one more for Tokyo to Osaka, 7), `gap` the same, `limit=3`, over the **title's
   year**: from today at the earliest, never past the year ahead the API accepts (`bestTimeRange`).
   The year is the coming one from September on (`bestTimeYear`). Its `months[]` feed chapter 02.
 - **`/school-breaks`** (`getTripRegionSchoolBreaks`), open and a day in the Data Cache, for DE, NL and

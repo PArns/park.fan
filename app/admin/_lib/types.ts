@@ -20,6 +20,9 @@ export type CuratedFieldType =
   | 'url'
   // A list of park-local works windows, `{ from, to, toUncertain }[]`, saved as a whole.
   | 'periods'
+  // A list of performance schedules, `{ from, to, times }[]`: park-local days and `HH:MM` start
+  // times, saved as a whole.
+  | 'performances'
   // A frontend glossary term id. Rendered as a text input — the editor's
   // `default` case — and checked against the glossary when it is saved.
   | 'glossaryTerm';
@@ -46,6 +49,8 @@ export interface CuratedField {
   max?: number;
   /** Text and url fields only. */
   maxLength?: number;
+  /** `performances` only: the most start times one schedule takes. */
+  maxTimes?: number;
   hint?: string;
   /** Superseded by another field and kept for old clients; the editor leaves it out. */
   legacy?: boolean;

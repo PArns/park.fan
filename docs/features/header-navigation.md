@@ -106,8 +106,11 @@ The detail row holds its height whether or not a country is open.
 four rows (`RECENT_LIMIT` 5) in `listArticlesByRecency` order, each printing the date it is sorted
 by — „Aktualisiert …" (`navigation.updatedOn`) for an update, the bare date for a publication
 (`pnpm test:news-split`; what moves `updatedAt` is [its own rule](../rules/updated-at-is-for-new-content.md)).
-Every row carries its category in the opener's accent, and a 128 × 80 thumbnail. Teasers are cut on
-the server (`trimExcerpt`), because the text ships in the chrome of every page. One heading over both
+Every row carries its category in the opener's accent, and a 128 × 80 thumbnail. The teasers (the
+opener's, the rows', the news lead's) appear once the band has been opened (`useMenuBandOpened`):
+the links stay in every page's HTML, but the prose put 191 words about other topics above every
+page's own `h1` (the German Phantasialand page: 750 words before it, 559 without the teasers). They are still cut on the server (`trimExcerpt`), because the props
+ship in the chrome of every page. One heading over both
 columns, a `MenuSectionHeading` linking `/blog`; the categories as a pill row along the bottom with
 `MenuAllLink` („All posts", the count). No tags. A third column ranks the most read
 (`MostReadMenuColumn`, also in the news panel), fetched from `/api/nav/most-read/[locale]` when the

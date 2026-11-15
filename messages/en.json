@@ -477,10 +477,13 @@
       "none": "The quietest trips of the year could not be loaded.",
       "lastYearNote": "Dates more than 60 days ahead are ranked on last year’s measured days.",
       "rank": "No. {rank}",
-      "figure": "Peak wait: about {minutes} min",
-      "basisLastYear": "Last year's measured crowds",
-      "basisMixed": "Partly last year's measured crowds",
-      "plan": "Plan this trip"
+      "plan": "Plan this trip",
+      "allWeeks": "Compare every week of the year",
+      "length": "{days, plural, =1 {# day} other {# days}}",
+      "scope": "{resorts} · {count, plural, =1 {# park} other {# parks}}",
+      "scopeLabel": "Parks of the trip",
+      "lengthLabel": "Length of the trip",
+      "ahead": "Ranks above no. {rank} {why, select, heat {because it is hotter then} hurricane {because that trip falls in hurricane season} typhoon {because that trip falls in typhoon season} hurricane_more {because that trip falls deeper into hurricane season} typhoon_more {because that trip falls deeper into typhoon season} other {because the weather is worse then}}."
     },
     "planner": {
       "title": "Plan your trip"
@@ -587,12 +590,12 @@
     "regionGuide": "{region} travel guide",
     "lastYearFrom": "From {date}: last year’s figures, each the same weekday as we measured it.",
     "howItWorks": {
-      "title": "How the trip planner plans your trip",
+      "title": "How the trip planner plans your days {inRegion}",
       "planTitle": "Your trip",
       "steps": {
         "dates": {
           "title": "Pick your dates",
-          "text": "Under each day is the park with the shortest peak wait, and once you pick the day you leave, the first plan is there"
+          "text": "Tap the day you arrive and the day you leave. Under each day you already see the park with the shortest peak wait"
         },
         "questions": {
           "title": "A few questions, all optional",
@@ -607,7 +610,7 @@
           "text": "Swap or pin days, add parks, or ask Parky in the chat, then take it to the day planner or your calendar"
         }
       },
-      "parky": "Only your dates are required, and you can skip every question after them. Start with the dates.",
+      "parky": "You can also plan the trip with me in the chat. I ask for your dates, parks and hotel, then give each park its day.",
       "chat": "Rather in the chat",
       "calendarLead": "Each park’s quietest day of the week is marked",
       "hero": {
@@ -619,10 +622,6 @@
     },
     "resorts": {
       "title": "The resorts"
-    },
-    "finalCta": {
-      "title": "Your trip, planned day by day",
-      "text": "As soon as your dates are set, you see the first plan, and you can answer the questions after that or skip them"
     }
   },
   "theme": {
@@ -1648,7 +1647,8 @@
       "live": "<b>{min}</b> min right now",
       "liveClosed": "Currently closed",
       "plan": "Best time <b>{time}</b>",
-      "history": "<b>{days}</b> days · peak <b>{max}</b> min"
+      "history": "<b>{days}</b> days · peak <b>{max}</b> min",
+      "performance": "Next show <b>{time}</b>"
     },
     "alternatives": {
       "heading": "Shorter queues nearby",
@@ -1710,7 +1710,16 @@
     "riddenMark": "Mark as ridden",
     "riddenUnmark": "Remove ridden mark",
     "riddenProgress": "{count} of {total} rides ridden",
-    "tabTitleWait": "{minutes} min · {title}"
+    "tabTitleWait": "{minutes} min · {title}",
+    "performance": {
+      "badge": "Set showtimes",
+      "hint": "Starts at set times rather than running continuously. Entry is for the next show.",
+      "next": "Next show",
+      "in": "in {duration}",
+      "now": "starting now",
+      "noneLeft": "No more shows today",
+      "todayList": "Shows today"
+    }
   },
   "nearby": {
     "title": "Nearby parks",

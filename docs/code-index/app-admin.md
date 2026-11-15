@@ -88,6 +88,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `commitPhoto` _function_: Commit one photograph into the open media session.
 - Types: `ParkSuggestion`, `RideSuggestion`, `AnalyzedFile`, `PhotoSidecar`, `CommitPhotoInput`, `CommitPhotoResult`
 
+### [`_lib/performance-schedules.ts`](../../app/admin/_lib/performance-schedules.ts)
+
+- `cleanTimes` _function_: A row's start times as the backend stores them: trimmed, without blanks, unique and sorted.
+- `performanceRows` _function_: The value of a `performances` field as rows; anything else reads as no schedules.
+- `performanceSchedulesForSave` _function_: The rows as a save sends them: in the stored order, each with its times cleaned.
+- `performanceSchedulesError` _function_: The API's checks on a schedule list, run before the save so the editor sees the problem at the row. Returns the first problem as a German sentence, or null when the list may be saved.
+- `seasonOfRow` _function_: The season whose first and last day a row's span is, or null: what the row's season picker shows.
+- Types: `PerformanceScheduleRow`
+
 ### [`_lib/public-path.ts`](../../app/admin/_lib/public-path.ts)
 
 - `slugsFromPublicPath` _function_: `/<locale>/parks/<continent>/<country>/<city>/<park>[/<ride>]` → its slugs.
@@ -172,8 +181,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `isHiddenCuratedField` _function_: Whether the editor leaves a field out: flagged `legacy` or `hidden` by the backend, or one of the old single-window columns while a `periods` field in the same group already holds their value.
 - `sortWorksPeriods` _function_: The windows in the order the backend stores them: by start, an open start first, then by end.
 - `worksPeriodsError` _function_: The API's checks on a window list, run before the save so the editor sees the problem at the row. Returns the first problem as a German sentence, or null when the list may be saved.
+- `firstOverlap` _function_: The first two windows that share a day, in the stored order, or null. Sorted by start, a window overlaps an earlier one exactly when it starts on or before the furthest end seen so far. Both bounds are inclusive, an open end runs forever.
+- `dayWindowLabel` _function_: A window as the editor names it in a message: „14.11.2026–24.01.2027", `…` for an open bound.
 - `MAX_WORKS_PERIODS` _const_: The backend's cap on windows per ride.
-- Types: `WorksPeriodRow`
+- Types: `WorksPeriodRow`, `DayWindowRow`
 
 ### [`_overview/area-table.tsx`](../../app/admin/_overview/area-table.tsx)
 
@@ -299,6 +310,11 @@ Crash protection for the curated-fields editor: a draft in localStorage survives
 ### [`_ui/open-in-editor.tsx`](../../app/admin/_ui/open-in-editor.tsx)
 
 - `OpenInEditor` _component_: Resolves a park slug (and optional ride and city slug) to admin ids and renders chip links to the park and ride editors. Renders nothing while resolving, when the slug is unknown or ambiguous.
+
+### [`_ui/park-seasons-context.tsx`](../../app/admin/_ui/park-seasons-context.tsx)
+
+- `ParkSeasonsProvider` _component_: The running and coming seasons of the park a curated form belongs to, for a field that is edited per season (the performance schedules). The query is the one `SeasonBindings` reads, by the same key, so the ride page asks the API once.
+- `useParkSeasons` _hook_: The seasons `ParkSeasonsProvider` loaded, or none outside one (a park's own form).
 
 ### [`_ui/primitives.tsx`](../../app/admin/_ui/primitives.tsx)
 
@@ -1034,6 +1050,10 @@ Route `/admin/tickets` (page).
 - `useShowMore` _hook_: The first `LIST_SHOWN` rows of a list, or all of them once opened, with the props for its `MoreButton` and a way to fold it again when the list changes underneath.
 - `LIST_SHOWN` _const_: Rows shown before the rest of a list waits behind a button.
 
+### [`traffic/_components/marked-row-switches.tsx`](../../app/admin/traffic/_components/marked-row-switches.tsx)
+
+- `MarkedRowSwitches` _component_: One switch for each kind of row the API marks and keeps, the data centres' and the automated visits': left out, counted with the rest, or shown alone. The traffic pages and the live view carry the same pair.
+
 ### [`traffic/_components/paths-view.tsx`](../../app/admin/traffic/_components/paths-view.tsx)
 
 - `PathsView` _component_: `/admin/traffic/paths`: where readers go on from a page. How far down the park pages are read, which block's links are followed and to what kind of page, how the header's menus are opened, and which FAQ questions are.
@@ -1162,7 +1182,7 @@ Route `/admin/traffic/events/[name]` (page).
 
 ### [`traffic/live/_lib/use-live-traffic.ts`](../../app/admin/traffic/live/_lib/use-live-traffic.ts)
 
-- `useLiveTraffic` _hook_: The live counters for one language or all, without the data centres' readers unless `datacenter` says otherwise, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React Query's interval …
+- `useLiveTraffic` _hook_: The live counters for one language or all, without the data centres' readers and the automated visits' unless `marked` says otherwise, asked every five seconds while the tab is in front and not at all while it is hidden, which is how React …
 
 ### [`traffic/live/page.tsx`](../../app/admin/traffic/live/page.tsx)
 

@@ -8,7 +8,7 @@ export function DatenschutzDE() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Datenschutzerklärung</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Stand: 14. November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Stand: 15. November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Verantwortlicher</LegalH2>
@@ -360,7 +360,11 @@ export function DatenschutzDE() {
           zu welchem Netz die Adresse gehört, und hält nur fest, ob es das Netz eines Rechenzentrums
           ist, etwa einer Cloud oder eines Hosters. Solche Aufrufe kommen meist von Programmen und
           nicht von Menschen. Wir zählen sie weiter, zeigen sie in unserer Auswertung aber getrennt.
-          Welches Netz es war, speichern wir nicht. Am User-Agent erkennt er außerdem, ob ein Bot
+          Welches Netz es war, speichern wir nicht. Beginnt ein Besuch ohne Herkunftswebsite auf
+          einer Seite, die nicht englisch ist, und nennt Ihr Browser keine Sprache dieser Seite,
+          hält der Server den Besuch als automatisiert fest, denn so beginnen Besuche von
+          Programmen. Auch diese Aufrufe zählen wir weiter und zeigen sie getrennt. Die Sprachen
+          Ihres Browsers speichern wir dafür nicht. Am User-Agent erkennt er außerdem, ob ein Bot
           anfragt, und aus IP-Adresse und User-Agent bildet er eine Kennung, die nur einen Tag gilt
           (siehe unten). IP-Adresse und User-Agent selbst speichern wir nicht, weder in der
           Datenbank noch im Arbeitsspeicher noch in Protokollen der Statistik. Der Server verwendet
@@ -379,12 +383,13 @@ export function DatenschutzDE() {
           Tabelle, nach 400 Tagen, sodass sie bis zu 407 Tage bleibt. Nach 400 Tagen löscht er auch
           die Besucherzahlen (eine Zahl je Tag und je Stunde, insgesamt und je Sprache) und die je
           Land, Gerät, Browser, Betriebssystem und Kanal (eine Zahl je Tag, Sprache und Wert).
-          Besucher aus Rechenzentren zählt er dabei getrennt. Wir behalten die Tageszahlen so lange,
-          weil wir Saisons von Jahr zu Jahr vergleichen, etwa Ferien und Eröffnungen. Bei wenig
-          besuchten Seiten kann eine Zeile für einen einzigen Aufruf stehen. Sie enthält keine
-          Kennung und keinen Zeitpunkt, aber die Stunde und die unten genannten Angaben zu Seite,
-          Gerät, Land und Browsersprache. Jede Zeile hält außerdem fest, ob die Anfrage aus einem
-          Rechenzentrum kam. Es gibt vier Arten von Zeilen:
+          Besucher aus Rechenzentren und aus automatisierten Besuchen zählt er dabei getrennt. Wir
+          behalten die Tageszahlen so lange, weil wir Saisons von Jahr zu Jahr vergleichen, etwa
+          Ferien und Eröffnungen. Bei wenig besuchten Seiten kann eine Zeile für einen einzigen
+          Aufruf stehen. Sie enthält keine Kennung und keinen Zeitpunkt, aber die Stunde und die
+          unten genannten Angaben zu Seite, Gerät, Land und Browsersprache. Jede Zeile hält außerdem
+          fest, ob die Anfrage aus einem Rechenzentrum kam oder zu einem automatisierten Besuch
+          gehört. Es gibt vier Arten von Zeilen:
         </p>
         <LegalList>
           <li>
@@ -423,10 +428,11 @@ export function DatenschutzDE() {
         </p>
         <LegalList>
           <li>
-            <strong>Der Besuch:</strong> erste Seite, Herkunft (die Website), Kanal, Zahl der
-            Seiten, der erste und der letzte Aufruf nach der Uhr des Servers (in Sekunden) und die
-            Angaben zum Ende (letzte Seite und Gerät). Das wird gelöscht, wenn der Besuch endet, 30
-            bis 35 Minuten nach dem letzten Aufruf, spätestens nach 40 Minuten.
+            <strong>Der Besuch:</strong> erste Seite, Herkunft (die Website), Kanal, ob er
+            automatisiert ist, Zahl der Seiten, der erste und der letzte Aufruf nach der Uhr des
+            Servers (in Sekunden) und die Angaben zum Ende (letzte Seite und Gerät). Das wird
+            gelöscht, wenn der Besuch endet, 30 bis 35 Minuten nach dem letzten Aufruf, spätestens
+            nach 40 Minuten.
           </li>
           <li>
             <strong>Die offenen Besuche:</strong> die Kennungen der laufenden Besuche mit der Zeit

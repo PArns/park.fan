@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 14 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 15 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -340,12 +340,15 @@ export function DatenschutzEN() {
           network the address belongs to, and records only whether that is the network of a data
           centre, such as a cloud or a hosting provider. Such requests mostly come from programs
           rather than people. We keep counting them but show them separately in our reports. Which
-          network it was is not stored. From the user agent it also tells whether a bot is asking,
-          and from the IP address and the user agent it forms an ID that is valid for one day only
-          (see below). We do not store the IP address or the user agent themselves, neither in the
-          database nor in working memory nor in the logs of the statistics. The server uses them
-          only for this one request. On the way to it, Cloudflare processes the IP address (see
-          section 2).
+          network it was is not stored. If a visit begins without an origin website on a page that
+          is not in English, and your browser names no language of that page, the server records the
+          visit as automated, because that is how visits by programs begin. We keep counting these
+          views too and show them separately. Your browser's languages are not stored for this. From
+          the user agent it also tells whether a bot is asking, and from the IP address and the user
+          agent it forms an ID that is valid for one day only (see below). We do not store the IP
+          address or the user agent themselves, neither in the database nor in working memory nor in
+          the logs of the statistics. The server uses them only for this one request. On the way to
+          it, Cloudflare processes the IP address (see section 2).
         </p>
         <p>
           The database holds only rows of counters, each for one full hour (UTC) and never for a
@@ -359,12 +362,12 @@ export function DatenschutzEN() {
           days, so they stay for up to 407 days. After 400 days it also deletes the visitor counts
           (one number per day and per hour, in total and per language) and those per country,
           device, browser, operating system and channel (one number per day, language and value).
-          Visitors from data centres are counted separately. We keep the daily counts that long
-          because we compare seasons from one year to the next, such as holidays and openings. For a
-          page that few people visit, a row can stand for a single view. It holds no ID and no
-          moment, but the hour and the details named below about page, device, country and browser
-          language. Every row also records whether the request came from a data centre. There are
-          four kinds of row:
+          Visitors from data centres and from automated visits are counted separately. We keep the
+          daily counts that long because we compare seasons from one year to the next, such as
+          holidays and openings. For a page that few people visit, a row can stand for a single
+          view. It holds no ID and no moment, but the hour and the details named below about page,
+          device, country and browser language. Every row also records whether the request came from
+          a data centre or belongs to an automated visit. There are four kinds of row:
         </p>
         <LegalList>
           <li>
@@ -401,10 +404,10 @@ export function DatenschutzEN() {
         </p>
         <LegalList>
           <li>
-            <strong>The visit:</strong> first page, origin (the website), channel, number of pages,
-            the first and the last hit by the server's clock (in seconds) and the details of its end
-            (last page and device). It is deleted when the visit ends, 30 to 35 minutes after the
-            last hit, and after 40 minutes at the latest.
+            <strong>The visit:</strong> first page, origin (the website), channel, whether it is
+            automated, number of pages, the first and the last hit by the server's clock (in
+            seconds) and the details of its end (last page and device). It is deleted when the visit
+            ends, 30 to 35 minutes after the last hit, and after 40 minutes at the latest.
           </li>
           <li>
             <strong>The open visits:</strong> the IDs of the visits under way with the time of their

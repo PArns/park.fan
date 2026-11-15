@@ -8,37 +8,25 @@ import { getOgImageUrl } from '@/lib/utils/og-image';
 import { ContributeForm } from '@/components/contribute/contribute-form';
 import { RightsNotice } from '@/components/contribute/rights-notice';
 import { ExampleGallery } from '@/components/contribute/example-gallery';
-import { parseEntityFromParams } from '@/lib/contribute/prefill';
 import { RouteMessages } from '@/i18n/route-messages';
 import { LandingHero } from '@/components/marketing/editorial-ui';
 
 interface ContributePageProps {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export async function generateMetadata({
-  params,
-  searchParams,
-}: ContributePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: ContributePageProps): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'contribute.meta' });
   const ogImageUrl = getOgImageUrl([locale, 'contribute']);
 
-  // Every park and ride page links here through `buildContributeHref` with the entity as query
-  // params, one crawlable URL per entity, all rendering the same form. The links are `nofollow`;
-  // the prefilled variants are also `noindex` with the bare page as canonical, so Google
-  // consolidates them onto one URL.
-  const isPrefilled = parseEntityFromParams(await searchParams) !== null;
-
   return {
     title: t('title'),
     description: t('description'),
-    ...(isPrefilled && { robots: { index: false, follow: true } }),
     ...buildOpenGraphMetadata({
       locale,
       title: t('title'),
@@ -50,10 +38,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function ContributePage({ params, searchParams }: ContributePageProps) {
+export default async function ContributePage({ params }: ContributePageProps) {
   const { locale } = await params;
   setRequestLocale(locale);
-  const initialEntity = parseEntityFromParams(await searchParams);
   const t = await getTranslations('contribute.hero');
   const tBanner = await getTranslations('contribute.banner');
   const tLanding = await getTranslations('landing.contribute');
@@ -77,7 +64,7 @@ export default async function ContributePage({ params, searchParams }: Contribut
 
           <div id="upload" className="max-w-3xl scroll-mt-24">
             <RightsNotice />
-            <ContributeForm initialEntity={initialEntity} />
+            <ContributeForm />
           </div>
         </div>
       </div>

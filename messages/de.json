@@ -477,10 +477,13 @@
       "none": "Die ruhigsten Reisen des Jahres konnten nicht geladen werden.",
       "lastYearNote": "Termine mehr als 60 Tage voraus sind mit dem gemessenen Vorjahr gerechnet.",
       "rank": "Nr. {rank}",
-      "figure": "Spitzenwartezeit: etwa {minutes} Min.",
-      "basisLastYear": "Gemessener Andrang des Vorjahres",
-      "basisMixed": "Teils gemessener Andrang des Vorjahres",
-      "plan": "Diese Reise planen"
+      "plan": "Diese Reise planen",
+      "allWeeks": "Alle Wochen des Jahres vergleichen",
+      "length": "{days, plural, =1 {# Tag} other {# Tage}}",
+      "scope": "{resorts} · {count, plural, =1 {# Park} other {# Parks}}",
+      "scopeLabel": "Parks der Reise",
+      "lengthLabel": "Länge der Reise",
+      "ahead": "Steht vor Nr. {rank}, {why, select, heat {weil es dort heißer ist} hurricane {weil dort Hurrikansaison ist} typhoon {weil dort Taifunsaison ist} hurricane_more {weil jene Reise tiefer in der Hurrikansaison liegt} typhoon_more {weil jene Reise tiefer in der Taifunsaison liegt} other {weil das Wetter dort schlechter ist}}."
     },
     "planner": {
       "title": "Deine Reise planen"
@@ -587,12 +590,12 @@
     "regionGuide": "Reiseführer {region}",
     "lastYearFrom": "Ab dem {date}: Werte aus dem Vorjahr, jeweils derselbe Wochentag, so wie wir ihn gemessen haben.",
     "howItWorks": {
-      "title": "So plant der Reiseplaner deine Reise",
+      "title": "So plant der Reiseplaner deine Tage {inRegion}",
       "planTitle": "Deine Reise",
       "steps": {
         "dates": {
           "title": "Reisedaten wählen",
-          "text": "Unter jedem Tag steht der Park mit der kürzesten Spitzenwartezeit, und mit der Abreise steht der erste Plan"
+          "text": "An- und Abreise im Kalender antippen. Unter jedem Tag steht schon der Park mit der kürzesten Spitzenwartezeit"
         },
         "questions": {
           "title": "Ein paar Fragen, alle freiwillig",
@@ -607,7 +610,7 @@
           "text": "Tage tauschen oder festhalten, Parks dazunehmen oder Parky im Chat fragen, dann in den Tagesplaner oder in deinen Kalender"
         }
       },
-      "parky": "Nur die Reisedaten sind Pflicht, jede Frage danach kannst du überspringen. Fang mit den Daten an.",
+      "parky": "Du kannst die Reise auch mit mir im Chat planen. Ich frage nach Reisedaten, Parks und Hotel und lege dann jeden Park auf seinen Tag.",
       "chat": "Lieber im Chat",
       "calendarLead": "Bei jedem Park ist sein ruhigster Tag der Woche markiert",
       "hero": {
@@ -619,10 +622,6 @@
     },
     "resorts": {
       "title": "Die Resorts"
-    },
-    "finalCta": {
-      "title": "Deine Reise, Tag für Tag geplant",
-      "text": "Sobald deine Reisedaten stehen, siehst du den ersten Plan, und die Fragen danach kannst du beantworten oder überspringen"
     }
   },
   "theme": {
@@ -1648,7 +1647,8 @@
       "live": "Jetzt <b>{min}</b> Min.",
       "liveClosed": "Zurzeit geschlossen",
       "plan": "Beste Zeit <b>{time}</b> Uhr",
-      "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min."
+      "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min.",
+      "performance": "Nächste Vorstellung <b>{time}</b> Uhr"
     },
     "alternatives": {
       "heading": "Kürzere Wartezeiten in der Nähe",
@@ -1710,7 +1710,16 @@
     "riddenMark": "Als gefahren markieren",
     "riddenUnmark": "Markierung „gefahren“ entfernen",
     "riddenProgress": "{count} von {total} Bahnen gefahren",
-    "tabTitleWait": "{minutes} Min. · {title}"
+    "tabTitleWait": "{minutes} Min. · {title}",
+    "performance": {
+      "badge": "Feste Vorstellungen",
+      "hint": "Beginnt zu festen Zeiten, nicht durchgehend. Eingelassen wird zur nächsten Vorstellung.",
+      "next": "Nächste Vorstellung",
+      "in": "in {duration}",
+      "now": "beginnt jetzt",
+      "noneLeft": "Heute keine Vorstellung mehr",
+      "todayList": "Vorstellungen heute"
+    }
   },
   "nearby": {
     "title": "Parks in deiner Nähe",

@@ -1,7 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import { DATACENTER_LABEL, serializeTrafficFilters } from '@/lib/admin/site-analytics';
+import {
+  MARKED_ROW_KINDS,
+  MARKED_ROW_LABEL,
+  serializeTrafficFilters,
+} from '@/lib/admin/site-analytics';
 import { csvNamePart } from '@/lib/admin/report-csv';
 import { CsvButton } from '../../_ui/csv-button';
 import type { TrafficFilters } from '../_lib/use-traffic';
@@ -69,7 +73,10 @@ export function TrafficCsvButton({
         ['Bis', to],
         ['Sprache', filters.locale ?? 'alle'],
         ['Filter', filterList.length > 0 ? filterList.join(' | ') : 'keine'],
-        ['Rechenzentren', DATACENTER_LABEL[filters.datacenter].label],
+        ...MARKED_ROW_KINDS.map((kind): [string, string] => [
+          MARKED_ROW_LABEL[kind].name,
+          MARKED_ROW_LABEL[kind].scopes[filters[kind]].label,
+        ]),
       ]}
     />
   );

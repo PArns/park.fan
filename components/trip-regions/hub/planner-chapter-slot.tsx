@@ -6,6 +6,7 @@ import { TripRegionPlanner } from '@/components/trip-regions/planner/trip-region
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import { tripPlannerPhotos } from '@/lib/trip-regions/plan-photos';
 import { asksForTickets, leanTicketCatalog, ticketCatalog } from '@/lib/trip-regions/plan-tickets';
+import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import { TicketsAsk } from '@/components/trip-regions/planner/plan-tickets-card';
 import { getTripRegionTickets } from '@/lib/trip-regions/api';
@@ -19,7 +20,7 @@ const CATALOG_TIMEOUT_MS = 1500;
 
 /**
  * Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
- * page „So plant der Reiseplaner deine Reise“ with `landing` (the four steps) above the planner, with
+ * page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with
  * a plan „Deine Reise“ and the plan. Under the landing's steps stands „Schon Tickets? Eintragen“,
  * which starts the assistant on its Tickets step, since bought tickets may set the dates. The
  * heading belongs to the page, so the planner draws none of
@@ -44,6 +45,7 @@ export async function PlannerChapterSlot({
   defaultMonth?: string;
 }) {
   const t = await getTranslations('tripHub.howItWorks');
+  const tNav = await getRegionTranslations(region.slug, 'nav');
   const catalog = await withSeedTimeout(
     catchNonFatal(getTripRegionTickets(region.slug)),
     CATALOG_TIMEOUT_MS
@@ -61,7 +63,12 @@ export async function PlannerChapterSlot({
       <ChapterHeading
         index={index}
         icon={Route}
-        title={<HubStateSwitch landing={t('title')} plan={t('planTitle')} />}
+        title={
+          <HubStateSwitch
+            landing={t('title', { inRegion: tNav('inRegion') })}
+            plan={t('planTitle')}
+          />
+        }
       />
       {landing && (
         <HubLandingOnly className="mb-8 space-y-4">
