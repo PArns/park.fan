@@ -279,7 +279,7 @@ Les forfaits de la Saint-Sylvestre avec nuitée sont complets.
 
 ## La Saint-Sylvestre au Phantasialand
 
-Le 31 décembre, le parc ferme dès 18 h, presque deux heures avant l’heure habituelle du feu d’artifice. Le parc n’a pas encore dit si MAGIC SYMPHONY commencera plus tôt ce soir-là.
+Le 31 décembre, le parc ferme dès 18 h, presque deux heures avant l’heure habituelle du feu d’artifice. Le parc n’a pas encore annoncé si MAGIC SYMPHONY commencera plus tôt ce soir-là.
 
 Pour la soirée, quatre événements sans nuitée se réservent à part :
 
