@@ -51,10 +51,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HubFaq` _component_: Chapter 04's questions, answered from the data the page shows.
 
-### [`hub/hub-final-cta.tsx`](../../components/trip-regions/hub/hub-final-cta.tsx)
-
-- `HubFinalCta` _component_: The landing page's last word before the questions' links and the closing band: the region's Parky picture, one line on the planner and „Reise planen“, which starts it like the head's button.
-
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
 - `HubGlance` _component_: The hub's first answer, under its two buttons: the best park of each group with a headliner on one day, by its date in the region's time and never as "today", because a cached copy outlives midnight there; then the quietest days of the …
@@ -81,7 +77,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-resorts.tsx`](../../components/trip-regions/hub/hub-resorts.tsx)
 
-- `HubResorts` _component_: Chapter 03, the resorts: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo or the region's Parky picture, the region's two sentences, each park as a link to its …
+- `HubResorts` _component_: Chapter 03, the resorts: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on a tinted strip with its name, never on a picture another …
 - `calendarParks` _function_: The parks whose crowd calendar the hub links: every park the window has quiet days for (a water park out of season has none), or, without `/best-days`, every headliner, so a failed read never takes the links away.
 
 ### [`hub/hub-trip-state.tsx`](../../components/trip-regions/hub/hub-trip-state.tsx)
@@ -89,16 +85,17 @@ by hand: change the comment in the code and re-run the script. -->
 - `HubTripProvider` _component_: The hub's state for everything below it: the trip the planner shows, or null for the landing page.
 - `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 01 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
-- `HubLandingOnly` _component_: What only the landing page shows (the four steps, the closing band): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
+- `HubLandingOnly` _component_: What only the landing page shows (the four steps): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
 
-- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: the three quietest trip windows for the headliner parks as three cards with their peak wait, each with "Plan this trip", which opens the planner on that window …
+- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: the quietest trip windows for the headliner parks as cards, each with its place as a numbered dot, its dates, its peak wait and "Plan this trip", which opens the …
+- `HUB_WHEN_WINDOWS` _const_: How many windows the teaser names.
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)
 
-- `PlannerChapterSlot` _component_: Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Reise“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ and the plan.
+- `PlannerChapterSlot` _component_: Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ and the …
 
 ### [`hub/trip-region-hub-page.tsx`](../../components/trip-regions/hub/trip-region-hub-page.tsx)
 

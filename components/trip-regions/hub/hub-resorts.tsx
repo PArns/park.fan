@@ -3,6 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import { BedDouble, MapPinned } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Link } from '@/i18n/navigation';
+import { cn } from '@/lib/utils';
 import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import {
   parkCalendarHref,
@@ -36,8 +37,8 @@ export function calendarParks(
 
 /**
  * Chapter 03, the resorts: one card per API group in the order the region lists them
- * (`hub.resorts`; a group it does not list follows), with its photo or the region's Parky picture,
- * the region's two sentences, each park as a link to its crowd calendar („<park> Andrang-Kalender“,
+ * (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on
+ * a tinted strip with its name, never on a picture another card shows), the region's two sentences, each park as a link to its crowd calendar („<park> Andrang-Kalender“,
  * the query that page ranks for) and one sentence on where to stay. Server HTML, open in both of
  * the hub's states. A card whose words are missing keeps its name and links.
  */
@@ -61,7 +62,6 @@ export async function HubResorts({
     const i = hub.resorts.findIndex((r) => r.group === key);
     return i < 0 ? hub.resorts.length : i;
   };
-  const scene = hubPhoto(hub.scene, locale, '50% 50%');
   const cards = regionGroups(region)
     .sort((a, b) => order(a.key) - order(b.key))
     .map((group) => {
@@ -71,7 +71,7 @@ export async function HubResorts({
         name: ownWords(tRegion, `resorts.${group.key}.name`) ?? shortGroupName(group.name),
         lead: ownWords(tRegion, `resorts.${group.key}.lead`),
         stay: ownWords(tRegion, `resorts.${group.key}.stay`),
-        photo: (photoId ? hubPhoto(photoId, locale) : null) ?? scene,
+        photo: photoId ? hubPhoto(photoId, locale) : null,
         parks: group.parks.filter(linked),
       };
     });
@@ -81,14 +81,27 @@ export async function HubResorts({
   return (
     <section id="resorts" className="scroll-mt-24">
       <ChapterHeading index={index} icon={MapPinned} title={title} />
-      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul
+        className={cn(
+          'grid gap-4 sm:grid-cols-2',
+          cards.length === 3 && 'lg:grid-cols-3',
+          cards.length >= 4 && 'lg:grid-cols-4'
+        )}
+      >
         {cards.map((card) => (
           <li key={card.key} className="flex">
             <article
               data-card=""
               className="border-border/60 bg-card flex w-full flex-col overflow-hidden rounded-2xl border shadow-sm"
             >
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div
+                className={cn(
+                  'relative overflow-hidden',
+                  card.photo
+                    ? cn('aspect-[16/9]', cards.length <= 2 && 'lg:aspect-[5/2]')
+                    : 'from-primary/25 via-primary/10 to-status-operating/15 bg-gradient-to-br pt-10'
+                )}
+              >
                 {card.photo && (
                   <Image
                     src={card.photo.src}
@@ -100,11 +113,18 @@ export async function HubResorts({
                     style={{ objectPosition: card.photo.position }}
                   />
                 )}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
-                />
-                <h3 className="absolute inset-x-3 bottom-2 text-lg font-semibold text-white drop-shadow">
+                {card.photo && (
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
+                  />
+                )}
+                <h3
+                  className={cn(
+                    'text-lg font-semibold',
+                    card.photo ? 'absolute inset-x-3 bottom-2 text-white drop-shadow' : 'px-4 pb-2'
+                  )}
+                >
                   {card.name}
                 </h3>
               </div>

@@ -124,7 +124,7 @@ export type TripHubShots = readonly [string, string, string, string];
 export interface TripHubResort {
   /** The API's group key. */
   group: string;
-  /** The card's photo as a media id; absent, the region's {@link TripHub.scene} picture. */
+  /** The card's photo as a media id; absent, the card opens on a tinted strip with its name. */
   photo?: string;
 }
 
@@ -140,8 +140,8 @@ export interface TripHub {
   /** The resorts chapter's cards, in the order they stand; a group not listed has no card. */
   resorts: readonly TripHubResort[];
   /**
-   * The region's Parky scene as a picture (a media id), for a resort card without a photo and the
-   * closing band: the drawn scene carries gradient ids, so it may stand on a page only once.
+   * The region's Parky scene as a picture (a media id), for the closing band: the drawn scene
+   * carries gradient ids, so it may stand on a page only once.
    */
   scene: string;
 }

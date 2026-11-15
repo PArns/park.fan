@@ -478,9 +478,9 @@
       "lastYearNote": "Les dates à plus de 60 jours sont classées sur les jours mesurés l’an dernier.",
       "rank": "N° {rank}",
       "figure": "Attente de pointe : environ {minutes} min",
-      "basisLastYear": "Affluence mesurée l’an dernier",
-      "basisMixed": "En partie l’affluence mesurée l’an dernier",
-      "plan": "Planifier ce voyage"
+      "plan": "Planifier ce voyage",
+      "hint": "Les trois voyages de {days} jours les plus calmes des douze prochains mois",
+      "allWeeks": "Comparer toutes les semaines de l’année"
     },
     "planner": {
       "title": "Planifier ton voyage"
@@ -587,12 +587,12 @@
     "regionGuide": "Guide de voyage {region}",
     "lastYearFrom": "À partir du {date} : valeurs de l’an dernier, chaque fois le même jour de la semaine, tel que nous l’avons mesuré.",
     "howItWorks": {
-      "title": "Comment le planificateur organise ton voyage",
+      "title": "Comment le planificateur organise tes journées {inRegion}",
       "planTitle": "Ton voyage",
       "steps": {
         "dates": {
           "title": "Choisir tes dates",
-          "text": "Sous chaque jour figure le parc à l’attente de pointe la plus courte, et dès le jour du départ choisi, le premier plan est là"
+          "text": "Touche ton jour d’arrivée et ton jour de départ dans le calendrier. Sous chaque jour figure déjà le parc à l’attente de pointe la plus courte"
         },
         "questions": {
           "title": "Quelques questions, toutes facultatives",
@@ -607,7 +607,7 @@
           "text": "Échanger ou fixer des jours, ajouter des parcs ou demander à Parky dans le chat, puis passer au planificateur de journée ou à ton agenda"
         }
       },
-      "parky": "Seules tes dates sont obligatoires, et tu peux passer chaque question qui suit. Commence par les dates.",
+      "parky": "Tu peux aussi préparer le voyage avec moi dans le chat. Je te demande tes dates, tes parcs et ton hôtel, puis je donne son jour à chaque parc.",
       "chat": "Plutôt dans le chat",
       "calendarLead": "Pour chaque parc, le jour le plus calme de la semaine est marqué",
       "hero": {
@@ -619,10 +619,6 @@
     },
     "resorts": {
       "title": "Les resorts"
-    },
-    "finalCta": {
-      "title": "Ton voyage, planifié jour par jour",
-      "text": "Dès que tes dates sont fixées, le premier plan s’affiche, et tu peux ensuite répondre aux questions ou les passer"
     }
   },
   "theme": {

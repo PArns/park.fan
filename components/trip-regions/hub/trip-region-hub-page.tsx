@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { BookOpen, CalendarDays, CalendarPlus, Sun } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -7,13 +8,16 @@ import {
   LandingHero,
   LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
+import { buttonLinkProps } from '@/components/ui/button';
 import type { Locale } from '@/i18n/config';
+import { Link } from '@/i18n/navigation';
 import { resolveEntryForLocale } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
 import { getMediaImageBySrc } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
+import { daysBetween } from '@/lib/utils/park-day';
 import {
   dayBasis,
   formatHubDate,
@@ -24,6 +28,7 @@ import {
   sliceCalendar,
   slimRegion,
 } from '@/lib/trip-regions/hub-data';
+import { hubPhoto } from '@/lib/trip-regions/hub-media';
 import { bestTimeYear } from '@/lib/trip-regions/best-time';
 import { lastYearStart } from '@/lib/trip-regions/plan-copy';
 import {
@@ -51,12 +56,11 @@ import { HubGlance, MonthGlance } from './hub-glance';
 import { HubLegend } from './hub-legend';
 import { HubMonthIndex } from './hub-month-index';
 import { PlannerChapterSlot } from './planner-chapter-slot';
-import { HubWhen } from './hub-when';
-import { HubHeroActions } from './hub-hero-action';
-import { HubFinalCta } from './hub-final-cta';
+import { HUB_WHEN_WINDOWS, HubWhen } from './hub-when';
+import { HubHeroActions, HubPlanAction } from './hub-hero-action';
 import { HubHowItWorks } from './hub-how-it-works';
 import { HubResorts } from './hub-resorts';
-import { HubTripProvider } from './hub-trip-state';
+import { HubStateSwitch, HubTripProvider } from './hub-trip-state';
 
 /**
  * The hero photo: the first of the region's `hub.heroPhotos` the media database still has, with
@@ -101,8 +105,9 @@ export interface TripRegionHubPageProps {
  * holds, and offers the planner and the calendar, with the answer under them: the best park per
  * resort and the quietest days ahead. Then 01 how the planner plans a trip (its four steps) and the
  * planner, 02 the calendar with its key and the month index, 03 the resorts with each park's
- * calendar, 04 the best time to go (where the region has best-time pages), 05 the questions, the
- * closing call and the band, which ends on the region's travel guide while that post is served.
+ * calendar, 04 the best time to go (where the region has best-time pages), 05 the questions and
+ * the band, the page's one closing call, which ends on the region's travel guide while that post
+ * is served.
  *
  * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
  * address bar or remembered in this browser, chapter 01 is the plan and the head's buttons lead to
@@ -127,6 +132,7 @@ export async function TripRegionHubPage({
   const config = requireTripRegion(region.slug);
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;
   const hero = heroPhoto(config.hub.heroPhotos, locale);
+  const scene = hubPhoto(config.hub.scene, locale);
 
   const summaries = calendar ? resortMonthSummaries(region, calendar, bestDays) : [];
   const firstFrom = calendar?.days.find((d) => d.date >= todayIso)?.date ?? todayIso;
@@ -176,6 +182,7 @@ export async function TripRegionHubPage({
   );
 
   const whenYear = when ? bestTimeYear(when.meta.from) : null;
+  const whenWindows = (when?.windows ?? []).slice(0, HUB_WHEN_WINDOWS);
   // The best-time chapter needs the region's pages and its words for them; without, it is left out.
   const whenTitle =
     config.bestTime.length > 0
@@ -317,8 +324,20 @@ export async function TripRegionHubPage({
                 icon={Sun}
                 kicker={ownWords(tRegion, 'when.kicker') ?? undefined}
                 title={whenTitle}
+                hint={
+                  whenWindows.length === HUB_WHEN_WINDOWS
+                    ? t('when.hint', {
+                        days: daysBetween(whenWindows[0].from, whenWindows[0].to) + 1,
+                      })
+                    : undefined
+                }
               />
-              <HubWhen region={region.slug} when={when} pagePath={pagePath} locale={locale} />
+              <HubWhen
+                region={region.slug}
+                windows={whenWindows}
+                pagePath={pagePath}
+                locale={locale}
+              />
             </section>
           )}
 
@@ -334,22 +353,53 @@ export async function TripRegionHubPage({
               locale={locale}
             />
           </Suspense>
-
-          <HubFinalCta
-            region={region.slug}
-            scene={config.hub.scene}
-            locale={locale}
-            planHref={planHref}
-            page={page}
-          />
         </div>
       </div>
 
       <LandingNextSteps
         title={bandTitle}
+        body={t('next.body')}
+        picture={
+          scene && (
+            <Image
+              src={scene.src}
+              alt=""
+              width={scene.width}
+              height={scene.height}
+              sizes="(max-width: 768px) 92vw, 384px"
+              className="aspect-[2/1] size-full object-cover"
+              style={{ objectPosition: scene.position }}
+            />
+          )
+        }
         destinations={
           [
-            { href: planHref, label: t('plan'), icon: CalendarPlus },
+            {
+              href: planHref,
+              label: t('plan'),
+              element: (
+                <HubStateSwitch
+                  landing={
+                    <HubPlanAction
+                      href={planHref}
+                      label={t('plan')}
+                      region={region.slug}
+                      page={page}
+                      source="landing"
+                    />
+                  }
+                  plan={
+                    <Link
+                      href={planHref}
+                      {...buttonLinkProps({ variant: 'default', size: 'lg', withIcon: true })}
+                    >
+                      <CalendarPlus aria-hidden />
+                      {t('howItWorks.hero.toPlan')}
+                    </Link>
+                  }
+                />
+              ),
+            },
             ...(whenTitle && bestTimeLabel
               ? [{ href: bestTimePath, label: bestTimeLabel, icon: Sun }]
               : []),

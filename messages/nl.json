@@ -478,9 +478,9 @@
       "lastYearNote": "Data meer dan 60 dagen vooruit zijn gerekend met de gemeten dagen van vorig jaar.",
       "rank": "Nr. {rank}",
       "figure": "Piekwachttijd: ongeveer {minutes} min",
-      "basisLastYear": "Gemeten drukte van vorig jaar",
-      "basisMixed": "Deels gemeten drukte van vorig jaar",
-      "plan": "Deze reis plannen"
+      "plan": "Deze reis plannen",
+      "hint": "De drie rustigste reizen van {days} dagen in de komende twaalf maanden",
+      "allWeeks": "Alle weken van het jaar vergelijken"
     },
     "planner": {
       "title": "Plan je reis"
@@ -587,12 +587,12 @@
     "regionGuide": "Reisgids {region}",
     "lastYearFrom": "Vanaf {date}: cijfers van vorig jaar, telkens dezelfde weekdag zoals wij die gemeten hebben.",
     "howItWorks": {
-      "title": "Zo plant de reisplanner je reis",
+      "title": "Zo plant de reisplanner je dagen {inRegion}",
       "planTitle": "Je reis",
       "steps": {
         "dates": {
           "title": "Kies je reisdata",
-          "text": "Onder elke dag staat het park met de kortste piekwachttijd, en zodra je de dag van vertrek kiest, staat het eerste plan er"
+          "text": "Tik je aankomst en je vertrek aan in de kalender. Onder elke dag staat al het park met de kortste piekwachttijd"
         },
         "questions": {
           "title": "Een paar vragen, allemaal vrijwillig",
@@ -607,7 +607,7 @@
           "text": "Dagen ruilen of vastzetten, parken toevoegen of Parky in de chat vragen, daarna naar de dagplanner of je agenda"
         }
       },
-      "parky": "Alleen je reisdata zijn verplicht, elke vraag daarna kun je overslaan. Begin met de data.",
+      "parky": "Je kunt de reis ook met mij in de chat plannen. Ik vraag naar je reisdata, parken en hotel en geef daarna elk park zijn dag.",
       "chat": "Liever in de chat",
       "calendarLead": "Bij elk park is de rustigste dag van de week gemarkeerd",
       "hero": {
@@ -619,10 +619,6 @@
     },
     "resorts": {
       "title": "De resorts"
-    },
-    "finalCta": {
-      "title": "Je reis, dag voor dag gepland",
-      "text": "Zodra je reisdata vaststaan, zie je het eerste plan, en de vragen daarna kun je beantwoorden of overslaan"
     }
   },
   "theme": {
