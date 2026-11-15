@@ -13,6 +13,8 @@ export interface LocalChoice<T extends string> {
   /** `null` on the server, which never renders what depends on it. */
   getServerSnapshot(): T | null;
   set(value: T): void;
+  /** Forget the choice, so it reads as none yet; returns how to put it back. */
+  forget(): () => void;
 }
 
 /** A {@link LocalChoice} under `key`, holding one of `values`. */
@@ -32,7 +34,7 @@ export function localChoice<T extends string>(key: string, values: readonly T[])
     return chosen;
   };
 
-  return {
+  const store: LocalChoice<T> = {
     subscribe(listener) {
       listeners.add(listener);
       return () => listeners.delete(listener);
@@ -49,5 +51,18 @@ export function localChoice<T extends string>(key: string, values: readonly T[])
       }
       for (const listener of listeners) listener();
     },
+    forget() {
+      const kept = load();
+      if (kept === null) return () => undefined;
+      chosen = null;
+      try {
+        window.localStorage.removeItem(key);
+      } catch {
+        // Forgotten for this session.
+      }
+      for (const listener of listeners) listener();
+      return () => store.set(kept);
+    },
   };
+  return store;
 }

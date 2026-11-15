@@ -28,7 +28,7 @@ import { rememberTrip } from './remembered-trip';
 /** Who applied an idea: the visitor's press on the planner, or the chat's card. */
 type IdeaBy = 'visitor' | 'parky';
 
-/** The planner's edit and undo, as `usePlanState` hands them out. */
+/** The planner's edit, undo and clear, as `usePlanState` hands them out. */
 export interface PlannerEdits {
   edit: (
     recipe: (state: TripPlanState) => TripPlanState,
@@ -36,6 +36,11 @@ export interface PlannerEdits {
     by?: IdeaBy
   ) => void;
   undo: () => boolean;
+  /**
+   * Empty the planner, its edits and their undo with it, as no change of an option (nothing is
+   * counted); returns how to put the plan and its edits back.
+   */
+  clear: () => () => void;
 }
 
 interface Connected {
@@ -45,6 +50,7 @@ interface Connected {
   applyChange: (query: string, changes: readonly TripChangeKind[]) => void;
   applyIdea: (idea: PlanIdea, by: IdeaBy) => void;
   undo: () => boolean;
+  clear: () => () => void;
 }
 
 /** The result's swap mode: opens it for a park's day, false where the plan has none for it. */
@@ -113,6 +119,13 @@ export const tripPlannerBridge = {
   undo(region: string): boolean {
     return connected?.region === region && connected.undo();
   },
+  /**
+   * Empty the planner of `region` (`clearTrip`): its query, its pins and its edits' undo, counted as
+   * no option changed. Returns how to put them back, or null when that planner is not on screen.
+   */
+  clear(region: string): (() => void) | null {
+    return connected?.region === region ? connected.clear() : null;
+  },
   /** Told whenever the planner on screen changes or leaves. */
   subscribe(listener: () => void): () => void {
     listeners.add(listener);
@@ -146,6 +159,7 @@ export function connectPlannerBridge(
     applyIdea: (idea, by) =>
       edits.edit((s) => applyIdea(s, idea, keys), { kind: 'idea', idea }, by),
     undo: edits.undo,
+    clear: edits.clear,
   };
   connected = own;
   notify();
