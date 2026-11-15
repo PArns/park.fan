@@ -75,6 +75,15 @@ const PERK_INK = 'border-primary/50 bg-primary/25 border-dashed';
 /** One line of a stripe's 10 px type, which decides how much of its label a stripe can hold. */
 const STRIPE_LINE_PX = 12;
 
+/**
+ * A one-line early stripe holds its time beside the label („Früher Einlass ab 08:30“) only in a wide
+ * day column; in a narrower one the park block gives the time. The two halves of one threshold,
+ * spelled out because Tailwind reads only literal classes.
+ */
+const EARLY_TIME_ON_STRIPE = 'hidden @min-[9.5rem]:block';
+/** {@link EARLY_TIME_ON_STRIPE}'s other half, on the park block. */
+const EARLY_TIME_ON_BLOCK = '@min-[9.5rem]:hidden';
+
 /** A key's mark: a block of the grid at legend size. */
 const KEY_MARK = 'block h-2.5 w-4 border';
 
@@ -474,13 +483,17 @@ function WeekColumn({
       })()
     : null;
   const lost = lostMorning(span, day, timeZone);
-  // The stripe's label where it has two lines, the time alone in one; with none, the block says it.
+  // What the stripe is comes first: two lines hold the label and the time, one holds the label and
+  // the time only in a wide column (`EARLY_TIME_ON_STRIPE`), otherwise the block under it gives the
+  // time; a stripe too low for a line leaves both to the block.
   const earlyLines = span.early
     ? Math.floor((heightFor(grid, span.early.endMin - span.early.startMin) - 1) / STRIPE_LINE_PX)
     : 0;
   const earlyTime = span.early ? formatGridTime(span.early.startMin) : null;
-  const earlyLine = (label: (chunks: React.ReactNode) => React.ReactNode) =>
-    earlyTime ? t.rich('week.earlyAt', { time: earlyTime, label }) : null;
+  const earlyLine = (
+    label: (chunks: React.ReactNode) => React.ReactNode,
+    at: (chunks: React.ReactNode) => React.ReactNode
+  ) => (earlyTime ? t.rich('week.earlyAt', { time: earlyTime, label, at }) : null);
   const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel' | 'move') => (
     <button
       type="button"
@@ -535,7 +548,7 @@ function WeekColumn({
         )}
       </div>
       <div
-        className="bg-muted/10 relative overflow-hidden rounded-md"
+        className="bg-muted/10 @container relative overflow-hidden rounded-md"
         style={{ height: grid.heightPx }}
       >
         {isPark && span.blocks.length > 0 && <PlannerGridGround grid={grid} />}
@@ -584,9 +597,9 @@ function WeekColumn({
             onClick={onOpen}
             data-plan-early=""
             title={t('week.early')}
-            aria-label={`${dayLabel}: ${t.markup('week.earlyAt', { time: earlyTime, label: (chunks) => chunks })}`}
+            aria-label={`${dayLabel}: ${t.markup('week.earlyAt', { time: earlyTime, label: (chunks) => chunks, at: (chunks) => chunks })}`}
             className={cn(
-              '@container absolute inset-x-2 flex items-center overflow-hidden rounded-t-sm border border-b-0 px-1 text-left text-[10px] leading-[12px] tabular-nums transition-colors hover:brightness-125',
+              'absolute inset-x-2 flex items-center overflow-hidden rounded-t-sm border border-b-0 px-1 text-left text-[10px] leading-[12px] tabular-nums transition-colors hover:brightness-125',
               PERK_INK,
               PLAN_FOCUS
             )}
@@ -595,23 +608,20 @@ function WeekColumn({
               height: heightFor(grid, span.early.endMin - span.early.startMin),
             }}
           >
-            {/* On one line the label gives way first, so the time stays whole. */}
             {earlyLines > 0 && (
               <span
                 className={cn('min-w-0', earlyLines > 1 ? 'block' : 'flex gap-1 whitespace-nowrap')}
               >
-                {earlyLine((chunks) => (
-                  <span
-                    className={cn(
-                      'font-semibold',
-                      earlyLines > 1
-                        ? 'block truncate'
-                        : 'hidden min-w-0 truncate @min-[6rem]:block'
-                    )}
-                  >
-                    {chunks}
-                  </span>
-                ))}
+                {earlyLine(
+                  (chunks) => (
+                    <span className="block min-w-0 truncate font-semibold">{chunks}</span>
+                  ),
+                  (chunks) => (
+                    <span className={cn('shrink-0', earlyLines < 2 && EARLY_TIME_ON_STRIPE)}>
+                      {chunks}
+                    </span>
+                  )
+                )}
               </span>
             )}
           </button>
@@ -684,9 +694,17 @@ function WeekColumn({
                   <Clock3 className="size-3 shrink-0" aria-hidden="true" />
                   {formatGridHours(block.openMin, block.closeMin)}
                 </span>
-                {index === 0 && earlyTime && earlyLines < 1 && (
-                  <span className="text-primary-ink relative text-[11px] leading-tight tabular-nums">
-                    {earlyLine((chunks) => chunks)}
+                {index === 0 && earlyTime && earlyLines < 2 && (
+                  <span
+                    className={cn(
+                      'text-primary-ink relative text-[11px] leading-tight tabular-nums',
+                      earlyLines === 1 && EARLY_TIME_ON_BLOCK
+                    )}
+                  >
+                    {earlyLine(
+                      (chunks) => (earlyLines === 1 ? null : chunks),
+                      (chunks) => chunks
+                    )}
                   </span>
                 )}
               </span>

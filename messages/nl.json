@@ -3439,7 +3439,7 @@
       "noFigure": "geen cijfer",
       "noHours": "nog geen tijden",
       "early": "Vroege toegang voor je hotel",
-      "earlyAt": "<label>Vroege toegang</label> vanaf {time}",
+      "earlyAt": "<label>Vroege toegang</label> <at>vanaf {time}</at>",
       "extendedEvening": "Extended Evening Hours voor je hotel",
       "party": "Feestavond",
       "partyNamed": "{name}, apart ticket",
