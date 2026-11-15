@@ -31,9 +31,10 @@ export interface CalendarDayTileProps extends Omit<ComponentProps<'div'>, 'onSel
   /**
    * `full`: the crowd calendar's tile, the date in its corner. `compact`: a row of a park's week
    * beside other parks, where the column names the date, so the wait leads and the tile is a fixed
-   * 60 px tall.
+   * 60 px tall. `mini`: a phone's seven days across, 44 px: the wait without its unit, the star in
+   * the corner, and the rest in the caller's `aria-label` and the day's sheet.
    */
-  density?: 'full' | 'compact';
+  density?: 'full' | 'compact' | 'mini';
   /** The level that tints the tile; `null` keeps it grey. */
   level: ColoredCrowdLevel | null;
   closed: boolean;
@@ -87,7 +88,52 @@ export function CalendarDayTile({
   const tCommon = useTranslations('common');
   const compact = density === 'compact';
   const ink = level ? CROWD_TEXT_CLASS[level] : 'text-muted-foreground';
-  const isToday = !compact && !!date?.today;
+  const isToday = density === 'full' && !!date?.today;
+  const tint = level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60';
+  const pressable =
+    onSelect &&
+    'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none';
+  const selectable = onSelect
+    ? {
+        role: 'button' as const,
+        tabIndex: 0,
+        onClick: onSelect,
+        onKeyDown: (e: KeyboardEvent) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            onSelect();
+          }
+        },
+      }
+    : {};
+
+  if (density === 'mini') {
+    return (
+      <Card
+        className={cn(
+          'relative flex h-11 items-center justify-center gap-0 overflow-hidden rounded-md p-0 backdrop-blur-none',
+          tint,
+          pressable,
+          className
+        )}
+        {...selectable}
+        {...props}
+      >
+        {best && !closed && (
+          <Star aria-hidden className="absolute top-0.5 left-0.5 size-2.5 fill-current" />
+        )}
+        <span
+          className={cn(
+            'text-sm leading-none font-bold tabular-nums',
+            closed ? 'text-status-closed' : ink
+          )}
+        >
+          {closed || wait === null ? '–' : wait}
+        </span>
+        {overlay}
+      </Card>
+    );
+  }
 
   // At full size from `lg` the season's name has a line of its own, which carries the icon instead.
   const marks = seasons.map((mark) => (
@@ -122,28 +168,15 @@ export function CalendarDayTile({
         compact
           ? 'relative flex h-15 flex-col gap-0 overflow-hidden rounded-lg px-2 py-1.5 backdrop-blur-none'
           : 'relative flex h-full min-h-[92px] flex-col gap-0 overflow-hidden rounded-xl p-[10px] lg:min-h-[150px] lg:p-3',
-        level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60',
+        tint,
         isToday && 'border-primary border-2',
         // The picked state is a ring, not a border colour: the crowd tile and „heute" already own
         // the border, and a ring outside the box keeps the day's crowd level readable.
         selectionIndex !== null && 'ring-primary ring-offset-background z-10 ring-2 ring-offset-2',
-        onSelect &&
-          'focus-visible:ring-primary cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none',
+        pressable,
         className
       )}
-      {...(onSelect
-        ? {
-            role: 'button' as const,
-            tabIndex: 0,
-            onClick: onSelect,
-            onKeyDown: (e: KeyboardEvent) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                onSelect();
-              }
-            },
-          }
-        : {})}
+      {...selectable}
       {...props}
     >
       {/* Which of the two picks this is. Numbered, not ticked: the comparison's left column is the

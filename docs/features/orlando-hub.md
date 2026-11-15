@@ -1,7 +1,7 @@
 # The Orlando hub
 
 `/<locale>/orlando` and its month pages `/<locale>/orlando/<yyyy>/<m>`: a landing page around the
-trip planner, then which of Orlando's sixteen parks has the shortest lines on which day, the resorts,
+trip planner, then each of Orlando's sixteen parks with its quietest day of the week, the resorts,
 the best time of year and the questions about the figure. Every region's hub is built the same way
 from its registry entry. Open this page before changing the hub's route, its chapters, its two
 states, the day sheet, its ways in or the data it reads. The trip planner in chapter 01 has its own page,
@@ -53,9 +53,9 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   closes early for day guests loses to a full day with a similar wait: Animal Kingdom at 45 min,
   open to 19:00, ranks above Magic Kingdom at 40 min on a party night. When `bestWhy` says
   `closes_early_elsewhere`, the first answer adds "(Magic Kingdom closes at 6 pm for an evening
-  event)", the phone list "Magic Kingdom closes 18:00" and the day sheet "Ranked above Magic
-  Kingdom, where day guests must leave at 6 pm" (`earlyCloseBehind`). The phone list's top chip and
-  the day sheet's first row follow `best` too (`rankGroupParks`).
+  event)" and the day sheet "Ranked above Magic Kingdom, where day guests must leave at 6 pm"
+  (`earlyCloseBehind`). The day sheet's first row follows `best` too (`rankGroupParks`). The
+  calendar names no pick: it marks each park's own quietest day of the week.
 - **An early close is never silent.** `closesEarly` (or a ticketed evening) draws the folded corner
   on a tile and its closing time in bold, puts "closes 6 pm" in its accessible name, and the
   best-days chips carry the close time.
@@ -74,9 +74,9 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   rest; one line above the calendar says „Ab dem 13. Jan.: Werte aus dem Vorjahr …“ from the first
   such day (`tripHub.lastYearFrom`), and the day sheet says it for its day. `long_range` (nothing
   measured a year back) keeps its "outlook" label. A last-year day is never offered as a pick: no
-  ring, no star, no best park above it.
+  ring and no star.
 - **The storm season** (Orlando's hurricanes, Japan's typhoons) is on the timeline itself, where a
-  date is picked: a bar under each date of the week grid and under each date of the phone list, by
+  date is picked: a bar under each date of the week grid and of the phone's week, by
   the planner's own `stormCodeOn` from the region's `weather.storm`, and its name in the grid's
   first column and above the list (`StormKey`). The signal violet (`STORM_SIGNAL_CLASS`), dashed for the
   season, solid for its peak, in `tripPlanner.climate`'s words, and in the date's accessible name.
@@ -84,13 +84,13 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 
 ## Simple first, more on request
 
-| Level | What                        | Where                                                                                      |
-| ----- | --------------------------- | ------------------------------------------------------------------------------------------ |
-| 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks |
-| 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead      |
-| 1     | the overview                | a week: tiles with wait, level, hours, season icons; the ring, the star; lanes closed      |
-| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides           |
-| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date               |
+| Level | What                        | Where                                                                                                          |
+| ----- | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks                     |
+| 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead                          |
+| 1     | the overview                | a week: tiles with wait, level, hours, season icons; each park's quietest day ringed and starred; lanes closed |
+| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides                               |
+| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                   |
 
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
 welchem Tag?“ as its big one), the lead, the two buttons and the answer; the calendar's first day
@@ -108,10 +108,10 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 `components/trip-regions/hub/hub-trip-state.tsx`; the rules are pure in
 `lib/trip-regions/hub-trip.ts` and pinned in `pnpm test:orlando-hub`).
 
-| State        | When                                                                           | Head                                                                                           | Chapter 01                      |
-| ------------ | ------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ------------------------------- |
-| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                            | the four steps and Parky's line |
-| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gemerkt“ | „Deine Reise“ and the planner   |
+| State        | When                                                                           | Head                                                                                                              | Chapter 01                      |
+| ------------ | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- | ------------------------------- |
+| landing page | the served HTML, and in the browser while the query holds no dates             | „Reise planen“, „Zum Kalender“, „Nur die Reisedaten sind Pflicht …“                                               | the four steps and Parky's line |
+| with a plan  | `from` and `to` in the query (a shared link, Parky's, one planned on the page) | „Zu deinem Plan“ (still `data-landing-action`), „Neue Reise planen“, „Dein Plan für … gespeichert. Reise löschen“ | „Deine Reise“ and the planner   |
 
 - **Only chapter 01 changes.** The calendar, the resorts, the best time and the questions are open
   in both states, in full, with no fold and no toggle: with a plan, „Deine Reise“ stands at the top
@@ -129,8 +129,13 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
   the four steps.
 - **Every start goes through one place**, `startPlanner` in `hub-hero-action.tsx`:
   `tripPlannerUi.openStart(source)` with `hero` (the head), `landing` (chapter 01, the closing
-  call) or `restart` („Neue Reise planen“, which first clears the plan through
-  `tripPlannerBridge.apply(region, '')`). Each counts as `trip_hub_action`.
+  call) or `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
+  clearing „Reise löschen“ uses, without its undo). Each counts as `trip_hub_action`; the clear
+  counts no `trip_option_changed`.
+- **A trip can be deleted** from the head's line and from the result („Reise löschen“, asked in
+  place, with „Rückgängig“ for a few seconds after). It clears every store of the region's trip on
+  this device and puts the hub back on its landing page; the stores and the undo are
+  [orlando-planner](orlando-planner.md#keeping-a-plan)'s.
 
 ## Chapters
 
@@ -146,10 +151,12 @@ Each chapter opens with its heading and then the thing itself.
    [orlando-planner](orlando-planner.md)'s; the screenshots are the media database's
    (`public/media/reiseplaner/`), with their alt texts and focus in the sidecars.
 2. **02 Die nächsten 30 Tage** (`HubCalendar`, client; on a month page „Tag für Tag im <month>“),
-   with one line under the title: where the plan gets its days from. The key comes first
-   (`HubLegend`, handed in as `legend`): the peak wait, the ring, the star and one line for the
-   colour; under „So liest du den Kalender“ the early close. Then a week at a time, because a wall
-   of thirty similar numbers decided nothing:
+   with one line under the title: „Bei jedem Park ist sein ruhigster Tag der Woche markiert“. The
+   question a visitor brings is which day to give each park, since a trip visits every park once,
+   not the same park five times. The key comes first (`HubLegend`, handed in as `legend`): the peak
+   wait, the ring with the star (each park's quietest day of the week) and one line for the colour;
+   under „So liest du den Kalender“ the early close. Then a week at a time, because a wall of thirty
+   similar numbers decided nothing:
    - **The week.** Seven days from the window's first (the region's today on the hub), so the first
      week is the one ahead („Sa., 14. – Fr., 20. Nov.“); the last week holds what is left and keeps
      the columns' width (`hubWeeks`). ‹ and › page, from `sm` a chip per week jumps; the arrow keys
@@ -167,21 +174,24 @@ Each chapter opens with its heading and then the thing itself.
      level, the wait (`shownWait`), the level in words (none for a figure without a level, never
      „Keine Prognose“ beside a forecast), the day guest's hours with an early close in bold under
      the folded corner, „Zeiten folgen“ without published hours, the season icons (quiet for a
-     season most of the window runs in, `quietSeasons`), „Geschlossen“. On it the ring (the
-     resort's pick, `bestAtResort`) and the star: the park's quietest day of the week
-     (`quietestDay`, lowest `headlinerWait`, a tie to the longer day; none on a tie, on a
-     last-year day, or where it would sit on a higher printed figure).
+     season most of the window runs in, `quietSeasons`), „Geschlossen“.
+   - **Each park's quietest day of the week** (`quietestDay`: lowest `headlinerWait`, a tie to the
+     longer day; none on a tie, on a last-year day, or where it would sit on a higher printed
+     figure) is ringed in the text colour (`HUB_CELL_BEST`) and starred, and named beside the park
+     with its wait („★ Mi., 18. · 30 Min“, `QuietestNote`, one per week, so paging shows the
+     week's). The ring is the strongest mark on the grid, so a row reads at a glance.
    - **From `lg`** a `<table role="grid">` with a caption naming the week, `scope`d headers, one tab
-     stop and arrow keys within the week: parks by resort down the side, seven tiles across. Above
-     the tiles each date (a button to the day), the storm bar, „Bester Park“ (`dayPick`: the
-     shortest line among the picks the first answer names, by `headlinerWait`; with a resort chosen
-     that resort's pick) and „Ferien & Feiertage“ with the signal dot of a public holiday or a
-     school break; each of the two rows only where a day of the window fills it, so a week never
-     adds one. A park whose whole window says one thing (Saisonpause, no hours yet, open without a
-     forecast, `parkState`) is one line instead of seven tiles.
-   - **A phone** gets the same week as a list of days: the date a button over the whole card, the
-     day's holidays, and per group its first park (`rankGroupParks`, the pick first) on its tile,
-     two to a row, with „+n weitere“ or the park the pick beat because it closes early.
+     stop and arrow keys within the week: parks by resort down the side, each with its quietest
+     day under its name, seven tiles across. Above the tiles each date (a button to the day), the
+     storm bar and „Ferien & Feiertage“ with the signal dot of a public holiday or a school break,
+     that row only where a day of the window fills it, so a week never adds one. A park whose whole
+     window says one thing (Saisonpause, no hours yet, open without a forecast, `parkState`) is one
+     line instead of seven tiles.
+   - **A phone** gets the same grid at its width (`PhoneWeek`): a card per resort with the week's
+     dates (a button each, the storm bar, a dot for a holiday), then each park's name with its
+     quietest day and its seven days as 44 px tiles (`CalendarDayTile`, `density="mini"`: the wait
+     without its unit, the star in the corner, the rest in the tile's accessible name and the day
+     sheet).
 
    The resort filter and the week are urgent, the grid follows through `useDeferredValue`. The
    events sit under it as one closed `<details>` row over the whole window. A tap opens
@@ -286,7 +296,8 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
 for the head's two ways in (`plan`, `calendar`, on the hub or a month) and for the landing's
 „Reise planen“ in chapter 01 and the closing call (`plan`); `trip_planner_started` tells them apart by
-its `source` (`hero`, `landing`, `restart`), `internal_link_clicked`
+its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for „Reise löschen“ in the
+head, `internal_link_clicked`
 from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts'
 park links), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
 `trip_accuracy_opened {surface: hub}` for the accuracy line, and `faq_opened` with the question's
@@ -295,8 +306,8 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
 
 ## Ways in
 
-- The More menu's wide tile and the phone sheet's link (`lib/navigation/more-menu.ts`,
-  `components/layout/more-menu-panel.tsx`, `components/layout/header.tsx`).
+- The header's planner band and the phone sheet's „Planen" rows (`lib/navigation/planner-menu.ts`,
+  `components/layout/planner-menu-panel.tsx`, `components/layout/header.tsx`).
 - `TripPlannerTile` and `TripPlannerBand` (`components/trip-regions/`), from every page about the
   region's parks into the planner. Which parks: the region route's `parks[]`, reduced by
   `tripRegionLinks` (`lib/trip-regions/trip-links.ts`, which keeps the live regions of the
@@ -331,7 +342,7 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
 ## Checks
 
 `pnpm test:orlando-hub` (window, redirects, relay allow-list, the pick and its clause, tomorrow
-after close, lanes, summaries, ranges, the calendar's weeks and fragment, the star, the column's
-best park, the quiet seasons), `pnpm test:edge-windows`, and against a running build
+after close, lanes, summaries, ranges, the calendar's weeks and fragment, each park's quietest
+day, the quiet seasons), `pnpm test:trip-clear`, `pnpm test:edge-windows`, and against a running build
 `pnpm check:landing-pages` and `pnpm check:semantic-html`, which list `/de/orlando`, `/en/orlando`
 and next month's page.

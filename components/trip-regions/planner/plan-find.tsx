@@ -18,7 +18,14 @@ import {
   type WhenPeriodKey,
 } from '@/lib/trip-regions/plan-when';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FIELD, PLAN_FOCUS, PlanCheckRow, PlanChip, PlanStepper } from './plan-controls';
+import {
+  PLAN_FIELD,
+  PLAN_FOCUS,
+  PlanCheckRow,
+  PlanChip,
+  PlanSelect,
+  PlanStepper,
+} from './plan-controls';
 import { PlanDates } from './plan-dates';
 import { useSchoolBreaks } from './use-trip-plan';
 
@@ -226,32 +233,30 @@ export function PlanFind() {
           <div id={regionsId} className="grid grid-cols-2 gap-2 pl-9">
             <label className="flex flex-col gap-1 text-xs">
               {t('country')}
-              <select
+              <PlanSelect
                 value={withinCountry ?? ''}
                 disabled={!live}
                 onChange={(e) => {
                   const country = countries.find((c) => c.country === e.currentTarget.value);
                   if (country) update((s) => ({ ...s, within: country.regions[0]?.code ?? null }));
                 }}
-                className={PLAN_FIELD}
               >
                 {countries.map((c) => (
                   <option key={c.country} value={c.country}>
                     {countryName?.of(c.country) ?? c.country}
                   </option>
                 ))}
-              </select>
+              </PlanSelect>
             </label>
             <label className="flex flex-col gap-1 text-xs">
               {t('region')}
-              <select
+              <PlanSelect
                 value={state.within}
                 disabled={!live}
                 onChange={(e) => {
                   const code = e.currentTarget.value;
                   update((s) => ({ ...s, within: code }));
                 }}
-                className={PLAN_FIELD}
               >
                 {countries
                   .find((c) => c.country === withinCountry)
@@ -260,7 +265,7 @@ export function PlanFind() {
                       {r.name}
                     </option>
                   ))}
-              </select>
+              </PlanSelect>
             </label>
             {withinRegion?.through && today && (
               <p className="text-muted-foreground col-span-2 text-xs">

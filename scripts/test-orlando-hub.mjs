@@ -2,7 +2,7 @@
  * Unit tests for the Orlando hub's pure logic (`lib/trip-regions/*`): the month window and its proxy
  * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
  * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries, the
- * calendar's weeks with their fragment, star and column heads, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
+ * calendar's weeks with their fragment and each park's quietest day, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
  *
  * Run: `pnpm test:orlando-hub`
  */
@@ -10,7 +10,6 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   closesEarly,
-  dayPick,
   eventLanes,
   formatWindow,
   hoursUnpublished,
@@ -25,7 +24,6 @@ import {
   quietestDay,
   quietSeasons,
   rankGroupParks,
-  regionGroups,
   regionResorts,
   resortMonthSummaries,
   shortGroupName,
@@ -535,20 +533,6 @@ test("a park's star is its quietest day of the week, and only where one day is",
   // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
   assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');
   assert.equal(quietestDay(calendar.days.slice(7), 'magic-kingdom-park'), '2026-11-19');
-});
-
-test("a day's column names the region's shortest pick, or the chosen resort's", () => {
-  const day = calendar.days.find((d) => d.date === '2026-11-15');
-  assert.equal(dayPick(day, region)?.park.slug, 'universal-islands-of-adventure');
-  const wdw = regionGroups(region).find((g) => g.key === 'walt-disney-world');
-  assert.equal(dayPick(day, region, wdw)?.park.slug, 'disneys-animal-kingdom-theme-park');
-  const lastYear = {
-    ...day,
-    parks: Object.fromEntries(
-      Object.entries(day.parks).map(([slug, p]) => [slug, { ...p, basis: 'last_year' }])
-    ),
-  };
-  assert.equal(dayPick(lastYear, region), null);
 });
 
 test('a season most of the window runs in, or only expected, is drawn quietly', () => {

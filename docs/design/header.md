@@ -21,6 +21,11 @@ on desktop and ~50 on a phone because it costs that much of every viewport for t
 
 ## What sits in it
 
+From a 1024 px bar the nav row stands between the lockup and the search: the nearby-park chip, then
+Guides, News, Planen, Parks entdecken, the favorites star and „Mehr", always last. One list,
+`MENU_ORDER` in `header.tsx`, gives the bar and the burger sheet that order; why, and what each
+entry opens, is in [header navigation → the bar](../features/header-navigation.md#the-bar).
+
 | Element                     | Height | Of the bar |
 | --------------------------- | -----: | ---------: |
 | logo lockup (`BrandLockup`) |  26 px |       55 % |

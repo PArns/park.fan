@@ -28,7 +28,8 @@ pages get only the rules with no exception. It splits its output the way a regex
 - **Errors** are rules with no legitimate exception: an em dash (§4.1); the honesty family and
   chat register where the subject is us (§3.3 rule 1, §5.1); placeholder text (§1.8); the house
   rules §3.3 marks as errors; a post that rates its own information (§1.4); a document that does
-  the sums (§2.13); a heading that asks and then orders (§5.6); a German date that opens a line
+  the sums (§2.13); a heading that asks and then orders (§5.6); a heading or its subline in a
+  message catalog that ends on a full stop (§4.3); a German date that opens a line
   (§4.4); a German quote closed with `"` and Markdown in a plain-text field (§4.5); a `[!QUOTE]`
   without a source line; German spelling from before 1996 (§5.9).
 - **Warnings** are budgets and signals a person decides on: `eerlijke prijzen` in a paragraph

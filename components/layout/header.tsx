@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { GLOSSARY_SEGMENTS } from '@/lib/glossary/segments';
@@ -10,7 +10,6 @@ import { PLANNER_SEGMENTS } from '@/lib/planner/segments';
 import type { Locale } from '@/i18n/config';
 import {
   BookOpen,
-  CalendarDays,
   CalendarPlus,
   CalendarRange,
   ChevronDown,
@@ -67,6 +66,33 @@ const NO_PLANNER_MENU: PlannerMenu = { regions: [], parks: [] };
 
 /** The quick starts the phone sheet lists, the band's first four: the sheet is a phone's column. */
 const SHEET_QUICK_STARTS = 4;
+
+/**
+ * The entries in the one order the bar and the phone sheet both draw, so the two menus are learnt
+ * once: Guides, News and Planen first, because planning is what most visitors come for, then the
+ * rest, and „Mehr" always last; the type refuses a list that does not end on it. Each layout fills
+ * a record keyed by these (see {@link inMenuOrder}), so no entry is placed by hand in either.
+ */
+const MENU_ORDER = [
+  'guides',
+  'news',
+  'planner',
+  'parks',
+  'home',
+  'favorites',
+  'more',
+] as const satisfies readonly [...string[], 'more'];
+
+/** One entry of {@link MENU_ORDER}. */
+type MenuEntry = (typeof MENU_ORDER)[number];
+
+/**
+ * A layout's entries in {@link MENU_ORDER}. `null` where the layout has no such entry: the bar has
+ * no home entry, since the logo is its link, and the sheet draws the favourites above its list.
+ */
+function inMenuOrder(entries: Record<MenuEntry, React.ReactNode>) {
+  return MENU_ORDER.map((entry) => <Fragment key={entry}>{entries[entry]}</Fragment>);
+}
 
 /**
  * Where a transparent hero bar turns solid, and where it turns back: a band rather than one line,
@@ -258,9 +284,10 @@ function SheetSubLink({
 }
 
 /**
- * The 48 px site header: brand lockup, the parks, blog, news and more menus, favourites, nearby
- * park, planner, search, language, unit and theme controls, and the burger sheet on phones. Floats
- * transparent over full-bleed heroes until the page scrolls.
+ * The 48 px site header: brand lockup, nearby park, the guides, news, planner, parks, favourites
+ * and „Mehr" menus in `MENU_ORDER`, search, language, unit and theme controls, and the burger sheet
+ * on phones, which follows the same order. Floats transparent over full-bleed heroes until the
+ * page scrolls.
  */
 export function Header({
   showBlog = true,
@@ -443,6 +470,229 @@ export function Header({
   // entry's hover. See docs/rules/the-header-is-48-px.md.
   const navLinkClass = `text-sm font-medium transition-colors duration-200 ${headerNavInk(isTransparent)}`;
 
+  // The bar's entries, which `MENU_ORDER` places. Each carries its sheet icon (`NavEntryLabel`).
+  const barEntries: Record<MenuEntry, React.ReactNode> = {
+    // Guides, the blog: an entry of its own rather than inside „Mehr", because it is the site's
+    // strongest SEO driver. A `NavMenu` with `href="/blog"` (a real `<a>` plus a chevron button, see
+    // NavMenu rule 2); without panel data, the bare link.
+    guides: showBlog && (
+      <li>
+        {blogMenu && blogMenu.recent.length > 0 ? (
+          <NavMenu
+            href="/blog"
+            label={t('blog')}
+            menu="guides"
+            icon={Newspaper}
+            floating={isTransparent}
+          >
+            <BlogMenuPanel {...blogMenu} />
+          </NavMenu>
+        ) : (
+          <Link href="/blog" prefetch={false} className={navLinkClass}>
+            <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
+          </Link>
+        )}
+      </li>
+    ),
+    // News, an entry of its own beside Guides, since the two sections share no post. Same pattern,
+    // `href="/news"` plus a chevron; no news, no entry. The label is the news category's
+    // (`categories.json`).
+    news: newsMenu && newsMenu.items.length > 0 && (
+      <li>
+        <NavMenu
+          href={newsMenu.path}
+          label={newsMenu.label}
+          menu="news"
+          icon={Megaphone}
+          floating={isTransparent}
+        >
+          <NewsMenuPanel {...newsMenu} />
+        </NavMenu>
+      </li>
+    ),
+    // A band with the trip planner per region, the day planner and the popular parks as quick
+    // starts into it. No `href`, like „Mehr": the entry covers two tools and has no page of its
+    // own; the band carries both planners' links (NavMenu rule 2).
+    planner: (
+      <li>
+        <NavMenu
+          label={plannerMenuLabel}
+          menu="planner"
+          icon={CalendarPlus}
+          floating={isTransparent}
+        >
+          <PlannerMenuPanel
+            dayPlannerHref={plannerPath}
+            regions={plannerMenu.regions}
+            parks={quickStarts}
+          />
+        </NavMenu>
+      </li>
+    ),
+    parks: (
+      <li>
+        {geoMenu && geoMenu.length > 0 ? (
+          <NavMenu
+            href="/parks"
+            label={t('explore')}
+            menu="parks"
+            icon={RollerCoaster}
+            floating={isTransparent}
+          >
+            <ParksMenuPanel continents={geoMenu} featured={featuredParks ?? NO_FEATURED_PARKS} />
+          </NavMenu>
+        ) : (
+          <Link href="/parks" prefetch={false} className={navLinkClass}>
+            <NavEntryLabel icon={RollerCoaster}>{t('explore')}</NavEntryLabel>
+          </Link>
+        )}
+      </li>
+    ),
+    home: null,
+    // The favourites stand in this row because they open the same band as „Parks entdecken" and
+    // „Mehr", with the same hover hysteresis. No link: their page answers every reader
+    // differently, see FavoritesMenu.
+    favorites: (
+      <li>
+        <FavoritesMenu floating={isTransparent} />
+      </li>
+    ),
+    // „Mehr" holds „Beste Reisezeit", „Wörterbuch" and „So funktioniert's", which as entries of
+    // their own overflowed the row in French. `MenuBand` hides the panel rather than unmounting
+    // it, so the links stay in every page's HTML. No `href`: „Mehr" has no page of its own
+    // (NavMenu rule 2).
+    more: (
+      <li>
+        <NavMenu label={t('more')} menu="more" icon={Ellipsis} floating={isTransparent}>
+          <MoreMenuPanel
+            bestTimeHref={bestTimePath}
+            glossaryHref={glossaryPath}
+            howtoHref={howtoPath}
+            menu={moreMenu}
+          />
+        </NavMenu>
+      </li>
+    ),
+  };
+
+  // The sheet's entries, which `MENU_ORDER` places. Every one leads with the icon its destination
+  // carries elsewhere, so the sheet does not invent a second icon for a place that has one.
+  const sheetEntries: Record<MenuEntry, React.ReactNode> = {
+    guides: showBlog && (
+      <SheetNavLink href="/blog" icon={Newspaper}>
+        {t('blog')}
+      </SheetNavLink>
+    ),
+    news: newsMenu && newsMenu.items.length > 0 && (
+      <SheetNavLink href={newsMenu.path} icon={Megaphone}>
+        {newsMenu.label}
+      </SheetNavLink>
+    ),
+    // The planner band's rows in the band's order: the regions' trip planners first, then the day
+    // planner with this browser's plan and the quick starts. Each group has its caption, so the
+    // day planner's link is not read as one of the regions. The region rows are the sheet's only
+    // links to the hubs, as the band is the bar's.
+    planner: (
+      <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
+        {plannerMenu.regions.length > 0 && <SheetCaption>{t('tripPlanner')}</SheetCaption>}
+        {plannerMenu.regions.length > 1 ? (
+          <div className="-mt-1 flex flex-col gap-0.5">
+            {plannerMenu.regions.map((region) => (
+              <SheetRegionLink key={region.id} region={region} />
+            ))}
+          </div>
+        ) : (
+          plannerMenu.regions.map((region) => (
+            <SheetSubLink key={region.id} href={region.href}>
+              {region.name}
+            </SheetSubLink>
+          ))
+        )}
+        <SheetCaption>{t('planner')}</SheetCaption>
+        <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
+        <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
+        {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
+        {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
+          <SheetSubLink
+            key={park.href}
+            href={park.href}
+            onClick={quickStartClick(park, 'menu-park')}
+          >
+            {park.name}
+          </SheetSubLink>
+        ))}
+      </SheetDisclosure>
+    ),
+    // Discovery in the sheet. The countries stay out of it — the sheet is a phone-sized column,
+    // and the continent hubs are one tap from the parks that matter.
+    parks: (
+      <SheetDisclosure icon={RollerCoaster} label={t('explore')}>
+        <SheetSubLink href="/parks">{t('parks')}</SheetSubLink>
+        {(geoMenu ?? []).map((continent) => (
+          <SheetSubLink key={continent.slug} href={`/parks/${continent.slug}`}>
+            {translateContinent(tGeo, continent.slug, locale, continent.name)}
+          </SheetSubLink>
+        ))}
+      </SheetDisclosure>
+    ),
+    home: (
+      <SheetNavLink href="/" icon={House}>
+        {t('home')}
+      </SheetNavLink>
+    ),
+    favorites: null,
+    // „Mehr": the band's three hubs, in its column order, each opening onto its own page as the
+    // first row and then its categories or chapters. Without the lists a hub is a plain link.
+    more: (
+      <>
+        {moreMenu && moreMenu.glossary.categories.length > 0 ? (
+          <SheetDisclosure icon={BookOpen} label={t('glossary')}>
+            <SheetSubLink href={glossaryPath} count={moreMenu.glossary.termCount}>
+              {t('overview')}
+            </SheetSubLink>
+            {moreMenu.glossary.categories.map((category) => (
+              <SheetSubLink key={category.id} href={category.href}>
+                {category.label}
+              </SheetSubLink>
+            ))}
+          </SheetDisclosure>
+        ) : (
+          <SheetNavLink href={glossaryPath} icon={BookOpen}>
+            {t('glossary')}
+          </SheetNavLink>
+        )}
+        {moreMenu && moreMenu.bestTime.chapters.length > 0 ? (
+          <SheetDisclosure icon={CalendarRange} label={t('bestTime')}>
+            <SheetSubLink href={bestTimePath}>{t('overview')}</SheetSubLink>
+            {moreMenu.bestTime.chapters.map((chapter) => (
+              <SheetSubLink key={chapter.href} href={chapter.href} index={chapter.index}>
+                {chapter.label}
+              </SheetSubLink>
+            ))}
+          </SheetDisclosure>
+        ) : (
+          <SheetNavLink href={bestTimePath} icon={CalendarRange}>
+            {t('bestTime')}
+          </SheetNavLink>
+        )}
+        {moreMenu && moreMenu.howto.chapters.length > 0 ? (
+          <SheetDisclosure icon={Compass} label={t('howto')}>
+            <SheetSubLink href={howtoPath}>{t('overview')}</SheetSubLink>
+            {moreMenu.howto.chapters.map((chapter) => (
+              <SheetSubLink key={chapter.href} href={chapter.href} index={chapter.index}>
+                {chapter.label}
+              </SheetSubLink>
+            ))}
+          </SheetDisclosure>
+        ) : (
+          <SheetNavLink href={howtoPath} icon={Compass}>
+            {t('howto')}
+          </SheetNavLink>
+        )}
+      </>
+    ),
+  };
+
   return (
     <header
       /* No `backdrop-filter` on this element: it would become a backdrop root, and the menu band,
@@ -548,106 +798,7 @@ export function Header({
               in every locale; from 1280 the name comes back, truncated where the bar is narrow.
               It brings its own `<li>`, so no empty item holds a gap while there is none. */}
             <HeaderNearbyPark variant="bar" />
-            {/* The order is the phone menu's: Guides, News, Parks entdecken, „Mehr" where the
-              sheet lists its three hubs, then the planner. No home entry, the logo is its link.
-              Every entry carries its sheet icon (`NavEntryLabel`). */}
-
-            {/* Guides, the blog: an entry of its own rather than inside „Mehr", because it is
-              the site's strongest SEO driver. A `NavMenu` with `href="/blog"` (a real `<a>` plus a
-              chevron button, see NavMenu rule 2); without panel data, the bare link. */}
-            {showBlog && (
-              <li>
-                {blogMenu && blogMenu.recent.length > 0 ? (
-                  <NavMenu
-                    href="/blog"
-                    label={t('blog')}
-                    menu="guides"
-                    icon={Newspaper}
-                    floating={isTransparent}
-                  >
-                    <BlogMenuPanel {...blogMenu} />
-                  </NavMenu>
-                ) : (
-                  <Link href="/blog" prefetch={false} className={navLinkClass}>
-                    <NavEntryLabel icon={Newspaper}>{t('blog')}</NavEntryLabel>
-                  </Link>
-                )}
-              </li>
-            )}
-            {/* News, an entry of its own beside Guides, since the two sections share no post.
-              Same pattern, `href="/news"` plus a chevron; no news, no entry. The label is the news
-              category's (`categories.json`). */}
-            {newsMenu && newsMenu.items.length > 0 && (
-              <li>
-                <NavMenu
-                  href={newsMenu.path}
-                  label={newsMenu.label}
-                  menu="news"
-                  icon={Megaphone}
-                  floating={isTransparent}
-                >
-                  <NewsMenuPanel {...newsMenu} />
-                </NavMenu>
-              </li>
-            )}
-            <li>
-              {geoMenu && geoMenu.length > 0 ? (
-                <NavMenu
-                  href="/parks"
-                  label={t('explore')}
-                  menu="parks"
-                  icon={RollerCoaster}
-                  floating={isTransparent}
-                >
-                  <ParksMenuPanel
-                    continents={geoMenu}
-                    featured={featuredParks ?? NO_FEATURED_PARKS}
-                  />
-                </NavMenu>
-              ) : (
-                <Link href="/parks" prefetch={false} className={navLinkClass}>
-                  <NavEntryLabel icon={RollerCoaster}>{t('explore')}</NavEntryLabel>
-                </Link>
-              )}
-            </li>
-            {/* „Mehr" holds „Beste Reisezeit", „Wörterbuch" and „So funktioniert's", which as
-              entries of their own overflowed the row in French. `MenuBand` hides the panel rather
-              than unmounting it, so the links stay in every page's HTML. No `href`: „Mehr" has no
-              page of its own (NavMenu rule 2). */}
-            <li>
-              <NavMenu label={t('more')} menu="more" icon={Ellipsis} floating={isTransparent}>
-                <MoreMenuPanel
-                  bestTimeHref={bestTimePath}
-                  glossaryHref={glossaryPath}
-                  howtoHref={howtoPath}
-                  menu={moreMenu}
-                />
-              </NavMenu>
-            </li>
-            {/* The planner, last before the favourites, as in the phone menu: a band with the trip
-              planner per region, the day planner and the popular parks as quick starts into it.
-              No `href`, like „Mehr": the entry covers two tools and has no page of its own; the
-              band carries both planners' links (NavMenu rule 2). */}
-            <li>
-              <NavMenu
-                label={plannerMenuLabel}
-                menu="planner"
-                icon={CalendarPlus}
-                floating={isTransparent}
-              >
-                <PlannerMenuPanel
-                  dayPlannerHref={plannerPath}
-                  regions={plannerMenu.regions}
-                  parks={quickStarts}
-                />
-              </NavMenu>
-            </li>
-            {/* The favourites stand in this row because they open the same band as „Parks
-              entdecken" and „Mehr", with the same hover hysteresis. No link: their page answers
-              every reader differently, see FavoritesMenu. */}
-            <li>
-              <FavoritesMenu floating={isTransparent} />
-            </li>
+            {inMenuOrder(barEntries)}
           </ul>
         </nav>
 
@@ -764,128 +915,7 @@ export function Header({
                     <div data-sheet-stagger className="border-border/60 border-b pb-4">
                       <FavoritesMenuPanel open variant="sheet" />
                     </div>
-                    {/* Every entry leads with the icon its destination carries elsewhere, so the
-                      sheet does not invent a second icon for a place that has one. */}
-                    {showBlog && (
-                      <SheetNavLink href="/blog" icon={Newspaper}>
-                        {t('blog')}
-                      </SheetNavLink>
-                    )}
-                    {newsMenu && newsMenu.items.length > 0 && (
-                      <SheetNavLink href={newsMenu.path} icon={Megaphone}>
-                        {newsMenu.label}
-                      </SheetNavLink>
-                    )}
-                    <SheetNavLink href="/" icon={House}>
-                      {t('home')}
-                    </SheetNavLink>
-                    {/* Discovery in the sheet. The countries stay out of it — the sheet is a
-                      phone-sized column, and the continent hubs are one tap from the parks that
-                      matter. */}
-                    <SheetDisclosure icon={RollerCoaster} label={t('explore')}>
-                      <SheetSubLink href="/parks">{t('parks')}</SheetSubLink>
-                      {(geoMenu ?? []).map((continent) => (
-                        <SheetSubLink key={continent.slug} href={`/parks/${continent.slug}`}>
-                          {translateContinent(tGeo, continent.slug, locale, continent.name)}
-                        </SheetSubLink>
-                      ))}
-                    </SheetDisclosure>
-                    {/* Right under the parks, because planning is what most visitors come for.
-                      The planner band's rows in the band's order: the regions' trip planners
-                      first, then the day planner with this browser's plan and the quick starts.
-                      Each group has its caption, so the day planner's link is not read as one of
-                      the regions. */}
-                    <SheetDisclosure icon={CalendarPlus} label={plannerMenuLabel}>
-                      {plannerMenu.regions.length > 0 && (
-                        <SheetCaption>{t('tripPlanner')}</SheetCaption>
-                      )}
-                      {plannerMenu.regions.length > 1 ? (
-                        <div className="-mt-1 flex flex-col gap-0.5">
-                          {plannerMenu.regions.map((region) => (
-                            <SheetRegionLink key={region.id} region={region} />
-                          ))}
-                        </div>
-                      ) : (
-                        plannerMenu.regions.map((region) => (
-                          <SheetSubLink key={region.id} href={region.href}>
-                            {region.name}
-                          </SheetSubLink>
-                        ))
-                      )}
-                      <SheetCaption>{t('planner')}</SheetCaption>
-                      <SheetSubLink href={plannerPath}>{t('planDay')}</SheetSubLink>
-                      <SheetPlanRow onOpen={() => setMobileMenuOpen(false)} />
-                      {quickStarts.length > 0 && <SheetCaption>{t('planDayIn')}</SheetCaption>}
-                      {quickStarts.slice(0, SHEET_QUICK_STARTS).map((park) => (
-                        <SheetSubLink
-                          key={park.href}
-                          href={park.href}
-                          onClick={quickStartClick(park, 'menu-park')}
-                        >
-                          {park.name}
-                        </SheetSubLink>
-                      ))}
-                    </SheetDisclosure>
-                    {/* The three hubs of the desktop "more" band, in its column order, each opening
-                      onto its own page as the first row and then its categories or chapters.
-                      Without the lists a hub is a plain link. */}
-                    {moreMenu && moreMenu.glossary.categories.length > 0 ? (
-                      <SheetDisclosure icon={BookOpen} label={t('glossary')}>
-                        <SheetSubLink href={glossaryPath} count={moreMenu.glossary.termCount}>
-                          {t('overview')}
-                        </SheetSubLink>
-                        {moreMenu.glossary.categories.map((category) => (
-                          <SheetSubLink key={category.id} href={category.href}>
-                            {category.label}
-                          </SheetSubLink>
-                        ))}
-                      </SheetDisclosure>
-                    ) : (
-                      <SheetNavLink href={glossaryPath} icon={BookOpen}>
-                        {t('glossary')}
-                      </SheetNavLink>
-                    )}
-                    {moreMenu && moreMenu.bestTime.chapters.length > 0 ? (
-                      <SheetDisclosure icon={CalendarRange} label={t('bestTime')}>
-                        <SheetSubLink href={bestTimePath}>{t('overview')}</SheetSubLink>
-                        {moreMenu.bestTime.chapters.map((chapter) => (
-                          <SheetSubLink
-                            key={chapter.href}
-                            href={chapter.href}
-                            index={chapter.index}
-                          >
-                            {chapter.label}
-                          </SheetSubLink>
-                        ))}
-                      </SheetDisclosure>
-                    ) : (
-                      <SheetNavLink href={bestTimePath} icon={CalendarRange}>
-                        {t('bestTime')}
-                      </SheetNavLink>
-                    )}
-                    {moreMenu && moreMenu.howto.chapters.length > 0 ? (
-                      <SheetDisclosure icon={Compass} label={t('howto')}>
-                        <SheetSubLink href={howtoPath}>{t('overview')}</SheetSubLink>
-                        {moreMenu.howto.chapters.map((chapter) => (
-                          <SheetSubLink
-                            key={chapter.href}
-                            href={chapter.href}
-                            index={chapter.index}
-                          >
-                            {chapter.label}
-                          </SheetSubLink>
-                        ))}
-                      </SheetDisclosure>
-                    ) : (
-                      <SheetNavLink href={howtoPath} icon={Compass}>
-                        {t('howto')}
-                      </SheetNavLink>
-                    )}
-                    {plannerMenu.regions.map((region) => (
-                      <SheetNavLink key={region.id} href={region.calendarHref} icon={CalendarDays}>
-                        {region.calendarLabel}
-                      </SheetNavLink>
-                    ))}
+                    {inMenuOrder(sheetEntries)}
                   </div>
                   {/* The same row as the foot of the "Mehr" panel, from one definition, smaller
                     because these are places visitors come across rather than look for. "Meine

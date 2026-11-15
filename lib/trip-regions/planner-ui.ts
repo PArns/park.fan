@@ -100,6 +100,20 @@ function readAnswered(): Record<string, ReadonlySet<TripWizardQuestion>> {
   return value;
 }
 
+/** Write every region's answers, to the tab's storage and the cache, and tell the readers. */
+function writeAnswered(value: Record<string, ReadonlySet<TripWizardQuestion>>): void {
+  const raw = JSON.stringify(
+    Object.fromEntries(Object.entries(value).map(([k, v]) => [k, [...v]]))
+  );
+  try {
+    answeredStorage()?.setItem(ANSWERED_KEY, raw);
+  } catch {
+    // Kept in memory below.
+  }
+  answeredCache = { raw: answeredStorage() ? raw : answeredCache.raw, value };
+  for (const listener of answeredListeners) listener();
+}
+
 /**
  * The questions the visitor answered in the assistant, per region, for this tab: a step left with
  * "Next" answers its questions, a skipped one does not. What the API cannot know (a free arrival
@@ -113,20 +127,20 @@ export const tripWizardAnswered = {
     const all = readAnswered();
     const next = new Set([...(all[region] ?? []), ...questions]);
     if (next.size === (all[region]?.size ?? 0)) return;
-    const record = Object.fromEntries(
-      Object.entries({ ...all, [region]: next }).map(([k, v]) => [k, [...v]])
-    );
-    const raw = JSON.stringify(record);
-    try {
-      answeredStorage()?.setItem(ANSWERED_KEY, raw);
-    } catch {
-      // Kept in memory below.
-    }
-    answeredCache = {
-      raw: answeredStorage() ? raw : answeredCache.raw,
-      value: { ...all, [region]: next },
-    };
-    for (const listener of answeredListeners) listener();
+    writeAnswered({ ...all, [region]: next });
+  },
+  /**
+   * Forget what `region`'s assistant was told, for a deleted or restarted trip; the other regions
+   * keep theirs. Returns how to put the answers back.
+   */
+  forget(region: string): () => void {
+    const all = readAnswered();
+    const kept = all[region];
+    if (!kept) return () => undefined;
+    const rest = { ...all };
+    delete rest[region];
+    writeAnswered(rest);
+    return () => writeAnswered({ ...readAnswered(), [region]: kept });
   },
   /** The answered questions of `region`; the same set until the next mark. */
   get(region: string): ReadonlySet<TripWizardQuestion> {

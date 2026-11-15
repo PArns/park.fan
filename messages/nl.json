@@ -112,8 +112,8 @@
       "cta": "Ontdek parken",
       "searchPlaceholder": "Zoek parken, attracties, shows & restaurants...",
       "title": "Waar is de rij vandaag de moeite waard?",
-      "intro": "Vind het park met de kortste rijen: wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten bijgewerkt, plus een voorspelling voor de komende dagen.",
-      "introShort": "Live wachttijden van <strong>{parks} parken</strong>.",
+      "intro": "Vind het park met de kortste rijen: wachttijden van <strong>{parks} pretparken</strong> en <strong>{attractions} attracties</strong>, elke vijf minuten bijgewerkt, plus een voorspelling voor de komende dagen",
+      "introShort": "Live wachttijden van <strong>{parks} parken</strong>",
       "openNow": "{count, plural, =1 {1 park nu open} other {# parken nu open}}",
       "searchExamples": "Efteling, Taron, Europa-Park …",
       "parkyHello": "Hoi, ik ben Parky!",
@@ -168,7 +168,7 @@
     "favorites": {
       "kicker": "Favorieten",
       "title": "Jouw parken en attracties",
-      "lead": "Alles wat je met de ster hebt gemarkeerd, met status en actuele wachttijd."
+      "lead": "Alles wat je met de ster hebt gemarkeerd, met status en actuele wachttijd"
     },
     "favoritesIntro": {
       "star": {
@@ -192,7 +192,7 @@
     "faq": {
       "kicker": "Veelgestelde vragen",
       "title": "Wachttijden in pretparken, kort uitgelegd",
-      "lead": "Waar de wachttijden vandaan komen, welke parken erbij zijn en wat het kost: niets.",
+      "lead": "Waar de wachttijden vandaan komen, welke parken erbij zijn en wat het kost: niets",
       "link": "Zo werkt park.fan",
       "note": "Alle gegevens zonder garantie."
     },
@@ -204,7 +204,7 @@
     },
     "reading": {
       "title": "Pretparknieuws en gidsen",
-      "lead": "Wie bouwt, wie sluit, wie is uitverkocht. En de gidsen die de afgelopen maand het meest gelezen zijn.",
+      "lead": "Wie bouwt, wie sluit, wie is uitverkocht, en de gidsen die de afgelopen maand het meest gelezen zijn",
       "popularGuides": "Meest gelezen gidsen"
     },
     "tour": {
@@ -340,7 +340,7 @@
     "admin": "Admin",
     "nearbyPark": "In de buurt: {parkName}",
     "howto": "Zo werkt het",
-    "howtoHint": "Hoe je een wachttijd inschat en waar de cijfers vandaan komen.",
+    "howtoHint": "Hoe je een wachttijd inschat en waar de cijfers vandaan komen",
     "planner": "Dagplanner",
     "plannerMenu": "Plannen",
     "tripPlanner": "Reisplanner",
@@ -350,7 +350,7 @@
     "planTrip": "Reis plannen",
     "crowdCalendar": "Drukte-kalender",
     "dayPlannerTitle": "Je parkdag attractie voor attractie plannen",
-    "dayPlannerHint": "Attracties op een tijdlijn, met de voorspelde wachttijden.",
+    "dayPlannerHint": "Attracties op een tijdlijn, met de voorspelde wachttijden",
     "planDay": "Dag plannen",
     "yourPlan": "Jouw plan",
     "yourPlanAt": "Jouw plan: {park}, {date}",
@@ -361,14 +361,14 @@
     "planDayIn": "Een dag plannen in",
     "planDayInList": "Een dag plannen in een van deze parken",
     "glossary": "Woordenboek",
-    "glossaryHint": "Begrippen uit de wachtrij en de achtbaan, uitgelegd.",
+    "glossaryHint": "Begrippen uit de wachtrij en de achtbaan, uitgelegd",
     "blog": "Gidsen",
     "more": "Meer",
     "fancast": "Fancast",
-    "fancastHint": "Het voorspelmodel achter de druktekalender.",
+    "fancastHint": "Het voorspelmodel achter de druktekalender",
     "contribute": "Foto’s uploaden",
     "bestTime": "Beste reistijd",
-    "bestTimeHint": "De rustigste weekdagen en maanden, park voor park.",
+    "bestTimeHint": "De rustigste weekdagen en maanden, park voor park",
     "latestPosts": "Nieuwste berichten",
     "searchArticles": "Gidsen zoeken…",
     "searchResults": "{count, plural, =1 {# resultaat} other {# resultaten}}",
@@ -410,7 +410,6 @@
     },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
-      "ring": "beste park in het resort",
       "quietest": "rustigste dag van de week in dat park",
       "early": "sluit eerder voor dagbezoekers",
       "howTo": "Zo lees je dit",
@@ -424,32 +423,26 @@
       "parkColumn": "Park",
       "filterLabel": "Getoonde parken",
       "filterAll": "Alle parken",
-      "listLabel": "Beste park per resort, dag voor dag",
-      "more": "+{count} meer",
+      "listLabel": "Piekwachttijd per park en dag",
       "weekNav": "Kies een week",
       "weekPrev": "Vorige week",
       "weekNext": "Volgende week",
       "weekNextDates": "Volgende week: {dates}",
-      "pickRow": "Beste park",
-      "pickRowGroup": "Beste park: {group}",
       "holidayRow": "Vakanties & feestdagen",
       "quietest": "rustigste dag van deze week",
       "hoursLater": "Tijden volgen",
       "openDay": "{date}: toon alle parken",
-      "today": "Vandaag",
       "outlook": "vooruitblik",
       "lastYear": "vorig jaar",
       "cell": "{park}, {date}: ongeveer {minutes} min, {level}",
       "cellClosed": "{park}, {date}: gesloten",
       "cellUnknown": "{park}, {date}: nog geen openingstijden",
       "cellOpen": "{park}, {date}: open, geen voorspelling",
-      "cellBest": "beste park in {resort}",
       "cellEarly": "sluit {time}",
       "stateClosed": "Gesloten voor het seizoen",
       "stateUnknown": "Nog geen openingstijden",
       "stateOpen": "Open, geen voorspelling",
       "cellNoHours": "openingstijden nog niet gepubliceerd",
-      "earlyElsewhere": "{park} sluit om {time}",
       "sourcesTravel": "Reistijden: {attribution}",
       "titleMonth": "Dag voor dag in {month}"
     },
@@ -460,7 +453,7 @@
       "allDays": "elke dag"
     },
     "sheet": {
-      "intro": "Per resort staat het beste park bovenaan; een vroege sluiting telt mee.",
+      "intro": "Per resort staat het beste park bovenaan; een vroege sluiting telt mee",
       "stayingAt": "Hotel",
       "minutes": "{minutes} min",
       "noForecast": "open, geen voorspelling",
@@ -493,7 +486,7 @@
       "title": "Plan je reis"
     },
     "next": {
-      "body": "Geef de planner je reisdagen en je parken, en hij zet elk park op de dag waarop de rijen er het kortst zijn.",
+      "body": "Geef de planner je reisdagen en je parken, en hij zet elk park op de dag waarop de rijen er het kortst zijn",
       "parkCalendar": "{park} drukte-kalender"
     },
     "dataset": {
@@ -507,7 +500,7 @@
       "open": "Reisplanner openen"
     },
     "tile": {
-      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is."
+      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is"
     },
     "faq": {
       "parks": {
@@ -599,24 +592,24 @@
       "steps": {
         "dates": {
           "title": "Kies je reisdata",
-          "text": "Onder elke dag staat het park met de kortste piekwachttijd. Zodra je de dag van vertrek kiest, staat het eerste plan er."
+          "text": "Onder elke dag staat het park met de kortste piekwachttijd, en zodra je de dag van vertrek kiest, staat het eerste plan er"
         },
         "questions": {
           "title": "Een paar vragen, allemaal vrijwillig",
-          "text": "Parken, hotel, tempo, avonden, tickets. Beantwoord ze, of sla een vraag over."
+          "text": "Parken, hotel, tempo, avonden, tickets: beantwoord ze, of sla een vraag over"
         },
         "plan": {
           "title": "Je plan, dag voor dag",
-          "text": "Welk park op welke dag, waarom die dag en hoe lang de rijen ongeveer worden."
+          "text": "Welk park op welke dag, waarom die dag en hoe lang de rijen ongeveer worden"
         },
         "edit": {
           "title": "Aanpassen, ook met Parky",
-          "text": "Dagen ruilen of vastzetten, parken toevoegen of Parky in de chat vragen. Daarna naar de dagplanner of je agenda."
+          "text": "Dagen ruilen of vastzetten, parken toevoegen of Parky in de chat vragen, daarna naar de dagplanner of je agenda"
         }
       },
       "parky": "Alleen je reisdata zijn verplicht, elke vraag daarna kun je overslaan. Begin met de data.",
       "chat": "Liever in de chat",
-      "calendarLead": "Waar het plan zijn dagen vandaan haalt: de piekwachttijd van elk park op elke dag.",
+      "calendarLead": "Bij elk park is de rustigste dag van de week gemarkeerd",
       "hero": {
         "note": "Alleen je reisdata zijn verplicht; het eerste plan staat er zodra je ze kiest.",
         "toPlan": "Naar je plan",
@@ -629,7 +622,7 @@
     },
     "finalCta": {
       "title": "Je reis, dag voor dag gepland",
-      "text": "Kies je reisdata en beantwoord een paar vragen of sla ze over. Het eerste plan zie je zodra de data vaststaan."
+      "text": "Zodra je reisdata vaststaan, zie je het eerste plan, en de vragen daarna kun je beantwoorden of overslaan"
     }
   },
   "theme": {
@@ -648,7 +641,7 @@
     },
     "blogPosts": {
       "title": "{park} op het blog",
-      "intro": "Artikelen uit ons blog waarin {park} voorkomt.",
+      "intro": "Artikelen uit ons blog waarin {park} voorkomt",
       "viewAll": "Alle artikelen lezen",
       "moreGuides": "Meer gidsen"
     },
@@ -658,9 +651,9 @@
     "firstVisit": {
       "label": "Eerste bezoek",
       "title": "Eerste bezoek: {park}",
-      "intro": "Begin met de gids en lees daarna de begrippen die elke nieuwe bezoeker tegenkomt.",
+      "intro": "Begin met de gids en lees daarna de begrippen die elke nieuwe bezoeker tegenkomt",
       "termsTitle": "Begrippen voor je eerste dag",
-      "termsIntro": "Bordjes en park-apps gaan ervan uit dat je ze kent."
+      "termsIntro": "Bordjes en park-apps gaan ervan uit dat je ze kent"
     },
     "title": "Meer loopings, minder wachten",
     "heroWelcomeAttractions": "{count} attracties in bedrijf",
@@ -769,7 +762,7 @@
     "offSeasonCount": "{count} buiten seizoen",
     "filterSection": {
       "title": "Attracties verfijnen",
-      "hint": "Toont alleen wat bij je keuze past.",
+      "hint": "Toont alleen wat bij je keuze past",
       "searchLabel": "Zoeken",
       "todayLabel": "Vandaag",
       "traitsLabel": "Kenmerken",
@@ -1290,7 +1283,7 @@
       "monthMetaDescriptionNoCity": "Hoe druk is het in {park} in {month}? Verwachte drukte per dag, openingstijden, schoolvakanties en weer.",
       "monthIntro": "Dag voor dag door {month}: verwachte drukte in {park}, openingstijden, schoolvakanties en weer. Tik op een dag voor de details.",
       "gridTitle": "De rustigste dag vinden",
-      "gridSubline": "Elke dag in {month} met de verwachte drukte, openingstijden, vakanties en het weer in {park}.",
+      "gridSubline": "Elke dag in {month} met de verwachte drukte, openingstijden, vakanties en het weer in {park}",
       "previousMonth": "Vorige maand",
       "nextMonth": "Volgende maand",
       "currentMonth": "Vandaag",
@@ -1339,7 +1332,7 @@
       "leadLongest": "De langste rij staat meestal bij {ride}: typisch {minutes} minuten.",
       "leadFallback": "Wachttijden {inPark} per maand, weekdag en uur, gemeten over {days} openingsdagen.",
       "hourlyTitle": "De typische dag",
-      "hourlyHint": "Uit {days} openingsdagen van het afgelopen jaar.",
+      "hourlyHint": "Uit {days} openingsdagen van het afgelopen jaar",
       "nextTitle": "Verder naar",
       "nextLive": "Actuele wachttijden",
       "nextLiveBody": "De wachttijden van dit moment, attractie voor attractie.",
@@ -1367,9 +1360,9 @@
       "metaTitleShort": "{park}: minimumlengte",
       "metaDescription": "Hoe lang moet een kind zijn {inPark} in {city}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
       "metaDescriptionNoCity": "Hoe lang moet een kind zijn {inPark}? Bij {withHeight} van de {total} attracties geldt een minimumlengte, de eerste vanaf {low} cm.",
-      "lead": "{inParkLeading} geldt bij {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen. Deze pagina laat zien wat een kind bij welke lengte mag.",
+      "lead": "{inParkLeading} geldt bij {withHeight} van de {total} attracties een minimumlengte, verdeeld over {steps} stappen",
       "tiersTitle": "Wat kan bij welke lengte",
-      "tiersHint": "Bij {withHeight} van de {total} attracties geldt een minimumlengte. Elke stap is een grens die het park zelf opgeeft.",
+      "tiersHint": "Bij {withHeight} van de {total} attracties geldt een minimumlengte, en elke stap is een grens die het park zelf opgeeft",
       "noLimitTitle": "Geen minimumlengte opgegeven",
       "noLimitSummary": "{count, plural, =1 {De attractie zonder opgave} other {De {count} attracties zonder opgave}}",
       "noLimitNote": "Het park noemt voor deze attracties geen grens. Of ze voor elke lengte openstaan of de opgave ontbreekt, blijkt hier niet uit. Wat bij de ingang van de attractie staat, geldt.",
@@ -1390,7 +1383,7 @@
       "nextCalendarBody": "Verwachte drukte dag voor dag, met vakanties en openingstijden.",
       "linkTitle": "Met kinderen",
       "linkAnchor": "{park} met kinderen",
-      "linkBody": "Bij {withHeight} van de {total} attracties geldt een minimumlengte. Welke attractie vanaf welke lengte, in {steps} stappen.",
+      "linkBody": "Bij {withHeight} van de {total} attracties geldt een minimumlengte: welke attractie vanaf welke lengte, in {steps} stappen",
       "filterToList": "Naar de lijst met attracties"
     },
     "planDayCta": "Een dag in {park} plannen",
@@ -1404,9 +1397,9 @@
       "reset": "Selectie wissen",
       "pickDay": "kiezen om te vergelijken",
       "title": "Twee dagen vergeleken",
-      "resultClear": "{day} is duidelijk de betere dag.",
-      "resultSlight": "{day} ligt nipt voor.",
-      "resultTie": "Tussen deze twee dagen zit nauwelijks verschil.",
+      "resultClear": "{day} is duidelijk de betere dag",
+      "resultSlight": "{day} ligt nipt voor",
+      "resultTie": "Tussen deze twee dagen zit nauwelijks verschil",
       "better": "Betere dag",
       "bothDays": "Beide dagen",
       "noReasons": "Voor deze twee dagen zijn er geen vergelijkbare cijfers.",
@@ -1427,7 +1420,7 @@
       "blockerClosed": "Het park is op deze dag gesloten.",
       "blockerPast": "Deze dag ligt in het verleden.",
       "blockerNoForecast": "Voor deze dag is er nog geen voorspelling.",
-      "resultUnavailable": "Geen van deze twee dagen is te vergelijken.",
+      "resultUnavailable": "Geen van deze twee dagen is te vergelijken",
       "beyondPlanner": "De dagplanner reikt nog niet tot deze dag."
     },
     "overview": {
@@ -1642,7 +1635,7 @@
     },
     "sectionLiveNow": "Wachttijd op dit moment",
     "sectionPlanVisit": "Plan de beste bezoektijd",
-    "sectionPlanVisitHint": "Uit de gemeten wachttijden van deze attractie.",
+    "sectionPlanVisitHint": "Uit de gemeten wachttijden van deze attractie",
     "todayRange": "Bereik vandaag",
     "peakToday": "Piek vandaag",
     "parkToday": "Park vandaag",
@@ -1682,7 +1675,7 @@
     },
     "downtime": {
       "title": "Gemelde storingen",
-      "hint": "Wat de databron van het park heeft gemeld, niet wat de exploitant publiceert.",
+      "hint": "Wat de databron van het park heeft gemeld, niet wat de exploitant publiceert",
       "reportedCaption": "In {days} dagen",
       "reportedDetail": "{count} gemelde storingen op {observedDays} waargenomen bedrijfsdagen.",
       "medianCaption": "Mediaan in minuten",
@@ -2156,7 +2149,7 @@
   "favoritesPage": {
     "title": "Mijn favorieten",
     "metaTitle": "Mijn favorieten - park.fan",
-    "subtitle": "Parken, attracties, shows en restaurants die je in deze browser hebt gemarkeerd, met live status en wachttijden.",
+    "subtitle": "Parken, attracties, shows en restaurants die je in deze browser hebt gemarkeerd, met live status en wachttijden",
     "howToTitle": "Zo voeg je favorieten toe"
   },
   "pushAlerts": {
@@ -2167,9 +2160,9 @@
     },
     "showDialog": {
       "title": "Show-herinnering",
-      "explain": "We melden het 25 tot 35 minuten voor de eerstvolgende voorstelling van {show}.",
+      "explain": "We melden het 25 tot 35 minuten voor de eerstvolgende voorstelling van {show}",
       "explainLate": "Voor de eerstvolgende voorstelling is dat al krap: die melding komt ongeveer 10 minuten van tevoren.",
-      "explainChosen": "We melden het ongeveer een half uur voor deze voorstelling.",
+      "explainChosen": "We melden het ongeveer een half uur voor deze voorstelling",
       "follow": "Herinnering inschakelen",
       "following": "Herinnering is actief",
       "unfollow": "Herinnering uitschakelen",
@@ -2187,7 +2180,7 @@
     },
     "rideDialog": {
       "title": "Wachttijdmeldingen",
-      "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt.",
+      "subtitle": "Voor {park} – we melden het zodra de wachttijd onder de ingestelde grens komt",
       "loading": "Laden…",
       "empty": "Nog geen meldingen voor dit park.",
       "thresholdLabel": "onder {minutes} min.",
@@ -2222,7 +2215,7 @@
     "overview": {
       "title": "Mijn meldingen",
       "metaTitle": "Mijn meldingen - park.fan",
-      "subtitle": "Wachttijdmeldingen en show-herinneringen voor dit apparaat, voor alle parken.",
+      "subtitle": "Wachttijdmeldingen en show-herinneringen voor dit apparaat, voor alle parken",
       "loading": "Laden…",
       "emptyBody": "Nog niets ingesteld. Op een parkpagina stel je via de bel bij een attractie of show een herinnering in.",
       "rideAlertsTitle": "{count, plural, =1 {Eén wachttijdmelding} other {# wachttijdmeldingen}}",
@@ -2267,7 +2260,7 @@
       "title": "{term} op het blog"
     },
     "overviewTitle": "Pretpark woordenboek",
-    "overviewDescription": "Meer dan {count} pretparkbegrippen en definities helder uitgelegd – wachttijden, drukte, Lightning Lane, virtuele wachtrijen, achtbaanelementen, single rider, fast pass, soft openings en meer.",
+    "overviewDescription": "Meer dan {count} pretparkbegrippen en definities helder uitgelegd – wachttijden, drukte, Lightning Lane, virtuele wachtrijen, achtbaanelementen, single rider, fast pass, soft openings en meer",
     "overviewKeywords": "pretpark woordenboek, pretpark definities, wachttijd betekenis, Lightning Lane, drukteniveau, achtbaan begrippen, virtuele wachtrij, pretpark termen",
     "termTitleSuffix": "Pretpark woordenboek",
     "termH1Suffix": "uitgelegd – betekenis",
@@ -2367,7 +2360,7 @@
     "answer": {
       "sentence": "De kortste rijen op een reis van {days} dagen in {year}: {windows}.",
       "below": "{percent}% onder het gemiddelde van {year}",
-      "none": "Voor {year} zijn er nog geen cijfers voor een reis van {days} dagen.",
+      "none": "Voor {year} zijn er nog geen cijfers voor een reis van {days} dagen",
       "why": "Waarom deze dagen",
       "events": "Evenementen: {list}",
       "cautions": "Goed om te weten",
@@ -2472,7 +2465,7 @@
     "heroTitle": "Verhalen en data uit de parken",
     "badge": "park.fan Blog",
     "description": "Reisverslagen, data-analyses en parkgidsen van het park.fan-team.",
-    "intro": "Reisverslagen, wachttijdanalyses en gidsen over de parken die we volgen. Geschreven door iemand die zelf in de rij staat.",
+    "intro": "Reisverslagen, wachttijdanalyses en gidsen over de parken die we volgen, geschreven door iemand die zelf in de rij staat",
     "blog": "Blog",
     "empty": "Nog geen artikelen. Kom snel terug.",
     "readMore": "Artikel lezen",
@@ -2599,7 +2592,7 @@
   "contribute": {
     "gallery": {
       "title": "Deze parken en attracties wachten op jouw foto’s",
-      "subtitle": "Airtime-heuvels, dark rides vol decor, hele parken in het avondlicht: een paar voorbeelden op park.fan waar je foto’s bij kunt zetten."
+      "subtitle": "Airtime-heuvels, dark rides vol decor, hele parken in het avondlicht: een paar voorbeelden op park.fan waar je foto’s bij kunt zetten"
     },
     "meta": {
       "title": "Deel je park- & attractiefoto’s",
@@ -2612,7 +2605,7 @@
     "banner": {
       "eyebrow": "Community-galerij",
       "title": "Foto’s van deze attractie of dit park?",
-      "subtitle": "Upload je foto’s, zodat andere fans vooraf zien waar ze aan beginnen.",
+      "subtitle": "Upload je foto’s, zodat andere fans vooraf zien waar ze aan beginnen",
       "cta": "Foto’s uploaden"
     },
     "dropzone": {
@@ -2664,7 +2657,7 @@
     },
     "success": {
       "title": "Bedankt",
-      "message": "{count, plural, one {Je foto is} other {Je # foto’s zijn}} verstuurd en verschijnt na een korte controle in de galerij.",
+      "message": "{count, plural, one {Je foto is} other {Je # foto’s zijn}} verstuurd en verschijnt na een korte controle in de galerij",
       "again": "Meer foto’s uploaden",
       "home": "Terug naar home"
     },
@@ -2980,7 +2973,7 @@
     "trip": {
       "open": "Parken over dagen verdelen",
       "title": "Parken over dagen verdelen",
-      "subtitle": "Een voorstel op basis van de drukteverwachting. Je plan verandert pas als je het accepteert.",
+      "subtitle": "Een voorstel op basis van de drukteverwachting, dat je plan pas verandert als je het accepteert",
       "from": "Van",
       "to": "Tot",
       "parks": "Parken",
@@ -3056,15 +3049,15 @@
       "steps": {
         "find": {
           "title": "Kies een park en een dag",
-          "body": "In de wachttijdenkalender zie je hoe druk een dag wordt. Vandaar ga je meteen een plan in."
+          "body": "In de wachttijdenkalender zie je hoe druk een dag wordt, en vandaar ga je meteen een plan in"
         },
         "add": {
           "title": "Attracties toevoegen",
-          "body": "Op elke attractiepagina staat een knop. In de planner kun je ook zoeken of een attractie erin slepen."
+          "body": "Op elke attractiepagina staat een knop, en in de planner kun je ook zoeken of een attractie erin slepen"
         },
         "arrange": {
           "title": "Schuiven tot het past",
-          "body": "Sleep een blok naar een ander tijdstip. De wachttijd en de kleur gaan mee, want beide horen bij het uur."
+          "body": "Sleep een blok naar een ander tijdstip: de wachttijd en de kleur gaan mee, want beide horen bij het uur"
         }
       }
     },
@@ -3090,7 +3083,7 @@
       "finish": "Plan openen",
       "lunch": {
         "label": "Lunchpauze inplannen",
-        "hint": "Zet een blok om 12:30 in de dag. In de planner kun je het verslepen."
+        "hint": "Zet een blok om 12:30 in de dag, en in de planner kun je het verslepen"
       },
       "kids": {
         "label": "Er gaan kinderen mee",
@@ -3099,17 +3092,17 @@
       },
       "wet": {
         "label": "Zo droog mogelijk blijven",
-        "hint": "Waterattracties krijgen een markering in de lijst."
+        "hint": "Waterattracties krijgen een markering in de lijst"
       },
       "earlyEntry": {
         "label": "We hebben early entry",
-        "hint": "Hotelgasten mogen hier vóór de officiële opening in de grote attracties.",
-        "hintMinutes": "Hotelgasten mogen hier {minutes} minuten vóór de officiële opening in de grote attracties."
+        "hint": "Hotelgasten mogen hier vóór de officiële opening in de grote attracties",
+        "hintMinutes": "Hotelgasten mogen hier {minutes} minuten vóór de officiële opening in de grote attracties"
       },
       "headliners": {
         "label": "Headliners inplannen",
-        "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves.",
-        "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}.",
+        "hint": "Zet de {count} grote attracties in de dag, op volgorde van hun uurcurves",
+        "hintTight": "Voor sluitingstijd is er plek voor {fits} van {total}",
         "conflict": "Er passen {fits} van {total}. Vink uit wat kan vervallen, of zet bovenaan wat je zeker wilt rijden.",
         "none": "Voor deze dag ontbreekt geen grote attractie meer.",
         "noneFitHeight": "Geen grote attractie past bij jullie groep: {count, plural, one {de enige hier heeft} other {alle # hebben}} een hogere minimumlengte dan de kleinste persoon. In de planner kun je ze toch los inplannen.",
@@ -3153,7 +3146,7 @@
     "shared": {
       "metaTitle": "Gedeeld plan | park.fan",
       "title": "Gedeeld plan",
-      "subtitle": "Iemand heeft je een plan uit de dagplanner gestuurd.",
+      "subtitle": "Iemand heeft je een plan uit de dagplanner gestuurd",
       "loading": "Plan wordt geladen…",
       "missing": "Bij deze link hoort geen plan. Misschien is hij niet volledig gekopieerd of verlopen, of heeft de afzender de meldingen uitgezet en het plan daarmee verwijderd.",
       "failed": "Het plan kon nu niet worden geladen.",
@@ -3167,7 +3160,7 @@
     },
     "parky": {
       "button": "Plan met Parky je perfecte parkdag",
-      "line": "Een paar vragen in de chat, en elk antwoord komt meteen in deze dag."
+      "line": "Ik stel je in de chat een paar vragen en zet elk antwoord meteen in deze dag."
     }
   },
   "tripPlanner": {
@@ -3277,26 +3270,26 @@
     "options": {
       "hotel": "Hotel",
       "area": "Hotelgebied",
-      "areaNoneHint": "Het plan toont dan geen rijtijden.",
+      "areaNoneHint": "Het plan toont dan geen rijtijden",
       "fireworksWant": "Wil ik zien",
       "fireworksAny": "Maakt niet uit",
-      "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt.",
+      "blocksHint": "De dagen van een resort achter elkaar, zodat je minder tussen de resorts rijdt",
       "rest": "Rustdagen",
       "restAutoLabel": "Automatisch",
-      "restAutoHint": "Hoogstens vier parkdagen achter elkaar; de rustdagen vallen op de drukste dagen.",
+      "restAutoHint": "Hoogstens vier parkdagen achter elkaar; de rustdagen vallen op de drukste dagen",
       "restMaxLabel": "Eigen grens",
       "restNoneLabel": "Geen rustdagen",
       "restFewer": "Een dag minder",
       "restMore": "Een dag meer",
       "hop": "Parkhoppen",
-      "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft.",
+      "hopHint": "Twee parken van één resort op één dag, als de reis minder dagen dan parkbezoeken heeft",
       "evenings": "Avonden",
       "blocksAuto": "Alleen gemengd als het tijd scheelt",
-      "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt.",
+      "blocksAutoHint": "Binnen de data van je tickets gemengd als dat minstens 3 min per attractie scheelt",
       "blocksAlways": "Altijd bij elkaar",
       "blocksFree": "Gemengd waar de wachttijden korter zijn",
       "split": "Tweede parkdagen",
-      "splitHint": "Parken met “1–2 dagen” krijgen een tweede dag als de reis ruimte heeft.",
+      "splitHint": "Parken met “1–2 dagen” krijgen een tweede dag als de reis ruimte heeft",
       "guide": "Meer in de gids bij de reisplanner",
       "moveBuffer": "Hotelwissel",
       "moveBufferMinutes": "{minutes} min.",
@@ -3398,7 +3391,7 @@
       "leftOut": "{parks} {count, plural, =1 {past} other {passen}} niet in {days, plural, =1 {1 parkdag} other {# parkdagen}}.",
       "travelDays": "Park op aankomst- en vertrekdag",
       "longer": "{count, plural, =1 {1 dag langer} other {# dagen langer}}",
-      "peakSaved": "Piekwachttijd op je dagen ongeveer {minutes} min., {saved} min. minder dan gemiddeld over je reisdagen.",
+      "peakSaved": "Piekwachttijd op je dagen ongeveer {minutes} min., {saved} min. minder dan gemiddeld over je reisdagen",
       "peakFlat": "Piekwachttijd op je dagen ongeveer {minutes} min. Je reisdagen zijn ongeveer even druk, de volgorde maakt weinig uit.",
       "accuracy": "Hoe nauwkeurig is dit?",
       "moves": "{cities, plural, =1 {1 stad} other {# steden}}, {moves, plural, =0 {geen hotelwissel} =1 {1 hotelwissel} other {# hotelwissels}}",
@@ -3439,6 +3432,7 @@
       "noFigure": "geen cijfer",
       "noHours": "nog geen tijden",
       "early": "Vroege toegang voor je hotel",
+      "earlyAt": "<label>Vroege toegang</label> vanaf {time}",
       "extendedEvening": "Extended Evening Hours voor je hotel",
       "party": "Feestavond",
       "partyNamed": "{name}, apart ticket",
@@ -3610,6 +3604,13 @@
       "closed": "{park} is dan gesloten",
       "noFigure": "geen cijfer"
     },
+    "delete": {
+      "action": "Reis verwijderen",
+      "confirm": "Deze reis verwijderen? Je reisdata, parken en wijzigingen worden van dit apparaat verwijderd.",
+      "yes": "Verwijderen",
+      "no": "Bewaren",
+      "done": "Je reis van {range} is verwijderd."
+    },
     "keep": {
       "addAll": "Naar de dagplanner",
       "ics": "In de agenda (.ics)",
@@ -3695,7 +3696,7 @@
     },
     "tickets": {
       "title": "Tickets",
-      "lead": "Met je tickets houdt het plan zich aan hun dagen en parken.",
+      "lead": "Met je tickets houdt het plan zich aan hun dagen en parken",
       "add": "Ticket toevoegen",
       "addLabel": "Een {resort}-ticket toevoegen",
       "addAnother": "Nog een {resort}-ticket toevoegen",
@@ -3862,6 +3863,18 @@
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
       },
+      "pick": {
+        "title": "Aanbevolen",
+        "ad": "Advertentie",
+        "exact": "Past bij dit plan",
+        "parkDays": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
+        "via": "Kopen bij",
+        "official": "{count, plural, =1 {Officiële winkel:} other {Officiële winkels:}}",
+        "details": "Zo gebruikt het plan de tickets",
+        "daysIn": "{days} parkdagen binnen {window} dagen",
+        "everyDay": "Elke dag, {window} dagen achter elkaar",
+        "hopping": "{hopper} inbegrepen"
+      },
       "later": "Al tickets?",
       "enter": "Invullen"
     },
@@ -3910,7 +3923,7 @@
     },
     "parky": {
       "button": "Plan met Parky je perfecte reis",
-      "line": "Een paar vragen in de chat, en elk antwoord komt meteen hier in de planner."
+      "line": "Ik stel je in de chat een paar vragen en zet elk antwoord meteen hier in de planner."
     },
     "codeKey": "Parken",
     "crowdColour": "Kleur: hoe druk het park die dag is, vergeleken met een normale dag daar.",
@@ -3926,8 +3939,8 @@
       "finish": "Klaar, plan bekijken",
       "showPlan": "Plan bekijken",
       "hotel": {
-        "lead": "Met een hotel van het resort kom je eerder de parken in.",
-        "leadNone": "Hier kom je met geen enkel hotel eerder de parken in. Het hotel bepaalt hoe ver je moet.",
+        "lead": "Met een hotel van het resort kom je eerder de parken in",
+        "leadNone": "Hier kom je met geen enkel hotel eerder de parken in, dus het hotel bepaalt alleen hoe ver je moet",
         "noEarly": "Geen vroege toegang",
         "hintNoEarly": "{hint}, zonder vroege toegang",
         "area": "In welke buurt?",
@@ -3942,21 +3955,21 @@
         "open": "Nog open",
         "openHint": "Het plan kiest",
         "openShared": "Het plan kiest het hotel",
-        "oneCity": "Voor {nights, plural, =1 {één nacht} other {# nachten}} stelt het plan één stad voor.",
+        "oneCity": "Voor {nights, plural, =1 {één nacht} other {# nachten}} stelt het plan één stad voor",
         "otherCities": "Andere steden"
       },
       "hotels": {
         "ask": "Waar slaap je in {cities}?",
         "in": "Waar slaap je in {city}?",
         "open": "Weet ik nog niet",
-        "openHint": "De wegen gelden dan vanaf {area}, zonder vroege toegang.",
+        "openHint": "De wegen gelden dan vanaf {area}, zonder vroege toegang",
         "moveBuffer": "Tijd voor de hotelwissel",
         "map": "Schematische kaart: {count, plural, =1 {één buurt} other {# buurten}}, genummerd zoals de lijst eronder, en {parks}.",
         "mapAreas": "Schematische kaart: {count, plural, =1 {één buurt} other {# buurten}}, genummerd zoals de lijst eronder."
       },
       "pace": {
-        "maxHint": "Hoogstens {n, plural, =1 {1 parkdag} other {# parkdagen}} achter elkaar, dan een rustdag.",
-        "noneHint": "Elke dag een park, zolang er parken over zijn.",
+        "maxHint": "Hoogstens {n, plural, =1 {1 parkdag} other {# parkdagen}} achter elkaar, dan een rustdag",
+        "noneHint": "Elke dag een park, zolang er parken over zijn",
         "streak": "Parkdagen achter elkaar",
         "patternKey": "Elk patroon is een week: blauw een parkdag, licht een rustdag.",
         "more": "Verder nog iets?",
@@ -3991,7 +4004,7 @@
         "pace": "Hoe vol moet de reis zijn?",
         "evenings": "En 's avonds?",
         "tickets": "Heb je al tickets?",
-        "finale": "Je plan staat.",
+        "finale": "Je plan staat",
         "departure": "En wanneer vlieg je terug?"
       },
       "ribbon": {
@@ -4004,15 +4017,15 @@
         "months": "Maand"
       },
       "parks": {
-        "lead": "De grote parken zijn al gekozen. Tik op een foto om een park toe te voegen of weg te halen.",
+        "lead": "De grote parken zijn al gekozen, en met een tik op een foto voeg je een park toe of haal je het weg",
         "daysLabel": "Dagen",
         "moreCount": "{count, plural, =1 {1 park} other {# parken}}",
         "wayFrom": "{way} vanaf {city}",
         "conflict": {
-          "travelDays": "Dan heeft de reis {count, plural, =1 {1 parkdag} other {# parkdagen}}.",
+          "travelDays": "Dan heeft de reis {count, plural, =1 {1 parkdag} other {# parkdagen}}",
           "only": "Alleen {parks}",
-          "onlyHint": "{parks} {count, plural, =1 {valt} other {vallen}} daarvoor af.",
-          "longer": "De reis eindigt dan op {date}."
+          "onlyHint": "{parks} {count, plural, =1 {valt} other {vallen}} daarvoor af",
+          "longer": "De reis eindigt dan op {date}"
         }
       },
       "spare": {
@@ -4021,21 +4034,21 @@
         "planned": "{count, plural, =1 {Nog 1 dag ligt al vast} other {Nog # dagen liggen al vast}}.",
         "ask": "Wat moet er op de andere {free} gebeuren?",
         "moreParks": "Meer parken toevoegen",
-        "moreParksHint": "{parks} {count, plural, =1 {komt} other {komen}} erbij.",
+        "moreParksHint": "{parks} {count, plural, =1 {komt} other {komen}} erbij",
         "moreDays": "Meer tijd in je parken",
-        "moreDaysHint": "{parks} elk een dag extra.",
+        "moreDaysHint": "{parks} elk een dag extra",
         "free": "Vrije dagen, verspreid over de reis",
-        "freeHint": "Het plan zet ze tussen de parkdagen, voor de stad of om uit te rusten.",
+        "freeHint": "Het plan zet ze tussen de parkdagen, voor de stad of om uit te rusten",
         "shorter": "Korter reizen",
-        "shorterHint": "Voor {parks, plural, =1 {1 park} other {# parken}} zijn {days} dagen genoeg.",
+        "shorterHint": "Voor {parks, plural, =1 {1 park} other {# parken}} zijn {days} dagen genoeg",
         "parkDays": "+{count, plural, =1 {1 parkdag} other {# parkdagen}}",
         "days": "{count} dagen"
       },
       "tickets": {
         "notYet": "Nog niet",
-        "notYetHint": "Het plan zegt je welke je nodig hebt.",
+        "notYetHint": "Het plan zegt je welke je nodig hebt",
         "owned": "Ja, al gekocht",
-        "ownedHint": "Vul ze in, dan houdt het plan zich aan hun data."
+        "ownedHint": "Vul ze in, dan houdt het plan zich aan hun data"
       },
       "finale": {
         "days": "{count, plural, =1 {1 dag} other {# dagen}}",
@@ -4074,7 +4087,7 @@
         "inRegion": "in Orlando",
         "area": "Florida",
         "calendar": "Orlando drukte-kalender",
-        "calendarHint": "Welk park op welke dag, en een planner voor je hele reis."
+        "calendarHint": "Welk park op welke dag, en een planner voor je hele reis"
       },
       "hub": {
         "title": "Orlando drukte-kalender",
@@ -4086,8 +4099,8 @@
         "metaDescriptionPlain": "Welk park op welke dag in Walt Disney World, bij Universal met Epic Universe en in SeaWorld, en een planner die je parken op je reisdagen zet.",
         "metaDescriptionMonth": "De rustigste dagen in Orlando in {month}: {verdict}. Elk park dag voor dag, met Epic Universe.",
         "metaDescriptionMonthPlain": "Orlando in {month}, dag voor dag: waar je in Disney World, bij Universal met Epic Universe, in SeaWorld en op de dagtrips het kortst in de rij staat.",
-        "lead": "Een kalender voor alle 16 parken rond Orlando en een planner voor je reisdagen.",
-        "leadMonth": "Alle 16 parken rond Orlando in {month}, dag voor dag, en een planner voor je reisdagen.",
+        "lead": "Een kalender voor alle 16 parken rond Orlando en een planner voor je reisdagen",
+        "leadMonth": "Alle 16 parken rond Orlando in {month}, dag voor dag, en een planner voor je reisdagen",
         "monthIndexLabel": "Orlando per maand",
         "calendar": {
           "caption": "De parken van Orlando van {from} tot {to}: piekwachttijd bij de grote attracties, in minuten"
@@ -4151,19 +4164,19 @@
         "resorts": {
           "title": "De resorts rond Orlando",
           "walt-disney-world": {
-            "lead": "Vier themaparken en twee waterparken. Gasten van de Disney-hotels komen met Early Entry ’s ochtends eerder de parken in.",
+            "lead": "Vier themaparken en twee waterparken, waar gasten van de Disney-hotels met Early Entry ’s ochtends eerder in mogen",
             "stay": "Vanuit een hotel in Lake Buena Vista ligt elk themapark binnen een halfuur."
           },
           "universal-orlando": {
-            "lead": "Drie themaparken en waterpark Volcano Bay. Gasten van de Universal-hotels komen met Early Park Admission eerder de parken in.",
+            "lead": "Drie themaparken en waterpark Volcano Bay, waar gasten van de Universal-hotels met Early Park Admission eerder in mogen",
             "stay": "De Premier-hotels geven daarbij Express voor Universal Studios en Islands of Adventure."
           },
           "seaworld-orlando": {
             "name": "SeaWorld Orlando",
-            "lead": "SeaWorld, waterpark Aquatica en Discovery Cove, dat alleen met reservering opengaat. Tickets voor meerdere parken tellen ook Busch Gardens en Adventure Island in Tampa mee."
+            "lead": "SeaWorld, waterpark Aquatica en Discovery Cove, dat alleen met reservering opengaat, en met tickets voor meerdere parken ook Busch Gardens en Adventure Island in Tampa"
           },
           "day-trips": {
-            "lead": "LEGOLAND Florida, Busch Gardens Tampa en waterpark Adventure Island liggen buiten Orlando.",
+            "lead": "LEGOLAND Florida, Busch Gardens Tampa en waterpark Adventure Island liggen buiten Orlando",
             "stay": "Vanuit Lake Buena Vista is LEGOLAND net onder een uur rijden, Busch Gardens ongeveer anderhalf uur."
           }
         }
@@ -4246,10 +4259,10 @@
             "universal_premier": "Early Park Admission, plus Express in Universal Studios en Islands of Adventure"
           },
           "fireworks": "Vuurwerk in Magic Kingdom",
-          "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten.",
-          "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken.",
+          "fireworksWantHint": "Je dagen in Magic Kingdom mijden feestavonden, waarop dagbezoekers vroeger weg moeten",
+          "fireworksAnyHint": "Een feestavond kan een Magic Kingdom-dag worden als de kortere rijen de kortere dag goedmaken",
           "blocks": "Disney-dagen en Universal-dagen bij elkaar houden",
-          "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor.",
+          "eveningsHint": "Sluit een park vroeg, dan stelt het plan voor de avond een tweede park of Disney Springs en CityWalk voor",
           "blocksTickets": "Disney-dagen en Universal-dagen"
         },
         "details": {
@@ -4425,7 +4438,7 @@
           "hogwarts": "Voor de Hogwarts Express tussen Universal Studios en Islands of Adventure heb je park-to-park nodig.",
           "longStay": {
             "title": "Tickets voor 14 dagen uit Britse winkels",
-            "line": "Eén voor Disney en één voor Universal, ook samen als Combo Ticket.",
+            "line": "Eén voor Disney en één voor Universal, ook samen als Combo Ticket",
             "plan": "Daarmee plannen"
           },
           "mixing": {
@@ -4442,7 +4455,7 @@
       "homeStory": {
         "kicker": "Orlando",
         "title": "Orlando: welk park op welke dag",
-        "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen.",
+        "lead": "Zestien parken rond Orlando in één kalender: voor elke dag zie je waar de rijen in Disney World en bij Universal het kortst zijn, en de planner zet je parken op je reisdagen",
         "link": "Orlando drukte-kalender"
       }
     },
@@ -4452,7 +4465,7 @@
         "inRegion": "in Zuid-Californië",
         "area": "Los Angeles en San Diego",
         "calendar": "Disneyland Californië drukte-kalender",
-        "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis."
+        "calendarHint": "Welk van de acht parken op welke dag het rustigst is, en een planner voor je reis"
       },
       "hub": {
         "title": "Disneyland Californië drukte-kalender",
@@ -4464,8 +4477,8 @@
         "metaDescriptionPlain": "Welk park wanneer het rustigst is in het Disneyland Resort, bij Universal Studios Hollywood en in de parken tot San Diego, plus een planner voor je reisdagen.",
         "metaDescriptionMonth": "De rustigste dagen in Zuid-Californië in {month}: {verdict}. Elk park dag voor dag.",
         "metaDescriptionMonthPlain": "Zuid-Californië in {month}, dag voor dag: welk park in het Disneyland Resort, bij Universal Studios Hollywood en rond San Diego wanneer het rustigst is.",
-        "lead": "Een kalender voor alle acht parken rond Los Angeles en San Diego, en een planner voor je reisdagen.",
-        "leadMonth": "Alle acht parken rond Los Angeles en San Diego in {month}, dag voor dag, en een planner voor je reisdagen.",
+        "lead": "Een kalender voor alle acht parken rond Los Angeles en San Diego, en een planner voor je reisdagen",
+        "leadMonth": "Alle acht parken rond Los Angeles en San Diego in {month}, dag voor dag, en een planner voor je reisdagen",
         "monthIndexLabel": "Zuid-Californië per maand",
         "calendar": {
           "caption": "De parken in Zuid-Californië van {from} tot {to}: piekwachttijd in minuten"
@@ -4524,15 +4537,15 @@
         "resorts": {
           "title": "De resorts in Zuid-Californië",
           "disneyland-resort": {
-            "lead": "Disneyland Park en Disney California Adventure liggen naast elkaar in Anaheim. Op avonden met Oogie Boogie Bash sluit California Adventure eerder voor daggasten.",
+            "lead": "Disneyland Park en Disney California Adventure liggen naast elkaar in Anaheim, en op avonden met Oogie Boogie Bash sluit California Adventure eerder voor daggasten",
             "stay": "Vanuit de Disney-hotels en Harbor Boulevard loop je naar beide parken."
           },
           "universal-studios-hollywood": {
-            "lead": "Universal Studios Hollywood ligt in Universal City in Los Angeles, met een eigen ticket en een eigen kalender.",
+            "lead": "Universal Studios Hollywood ligt in Universal City in Los Angeles, met een eigen ticket en een eigen kalender",
             "stay": "Hotelgebieden in de buurt zijn Universal City en Hollywood."
           },
           "day-trips": {
-            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain en drie parken in en rond San Diego: SeaWorld, LEGOLAND California en Sesame Place.",
+            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain en drie parken in en rond San Diego: SeaWorld, LEGOLAND California en Sesame Place",
             "stay": "Voor SeaWorld, LEGOLAND en Sesame Place zijn er hotelgebieden in San Diego en Carlsbad."
           }
         }
@@ -4595,9 +4608,9 @@
             "disney": "Disneyland Hotel, Grand Californian of Pixar Place: lopend naar beide parken"
           },
           "fireworks": "Avondshows",
-          "fireworksWantHint": "Je parkdagen mijden feestavonden, waarop dagbezoekers eerder weg moeten.",
-          "fireworksAnyHint": "Een feestavond kan een parkdag worden als de lagere piekwachttijd de kortere dag goedmaakt.",
-          "eveningsHint": "Sluit een park eerder, dan stelt het plan iets voor de avond voor: het andere Disney-park, Downtown Disney of Universal CityWalk."
+          "fireworksWantHint": "Je parkdagen mijden feestavonden, waarop dagbezoekers eerder weg moeten",
+          "fireworksAnyHint": "Een feestavond kan een parkdag worden als de lagere piekwachttijd de kortere dag goedmaakt",
+          "eveningsHint": "Sluit een park eerder, dan stelt het plan iets voor de avond voor: het andere Disney-park, Downtown Disney of Universal CityWalk"
         },
         "relaxed": {
           "blocks_relaxed": "De dagen in het Disneyland Resort konden op deze data niet allemaal achter elkaar."
@@ -4720,7 +4733,7 @@
       "homeStory": {
         "kicker": "Zuid-Californië",
         "title": "Zuid-Californië: welk park op welke dag",
-        "lead": "Disneyland, California Adventure, Universal Hollywood en vijf andere parken in één kalender: wanneer welk park het rustigst is, en een planner voor je reisdagen.",
+        "lead": "Disneyland, California Adventure, Universal Hollywood en vijf andere parken in één kalender: wanneer welk park het rustigst is, en een planner voor je reisdagen",
         "link": "Zuid-Californië drukte-kalender"
       }
     },
@@ -4730,7 +4743,7 @@
         "inRegion": "in Japan",
         "area": "Tokio tot Osaka",
         "calendar": "Tokyo Disney & USJ drukte-kalender",
-        "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden."
+        "calendarHint": "Vijf parken dag voor dag, en een planner voor een reis langs meerdere steden"
       },
       "hub": {
         "title": "Tokyo Disney & USJ drukte-kalender",
@@ -4742,8 +4755,8 @@
         "metaDescriptionPlain": "Piekwachttijd in Tokyo Disneyland, DisneySea, Universal Studios Japan, Fuji-Q en LEGOLAND Japan dag voor dag, en een planner voor steden en nachten.",
         "metaDescriptionMonth": "De rustigste dagen in de parken van Japan in {month}: {verdict}. Alle vijf parken dag voor dag.",
         "metaDescriptionMonthPlain": "Japan in {month}, dag voor dag: de piekwachttijd in Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan en Universal Studios Japan.",
-        "lead": "Een kalender voor vijf parken tussen Tokio en Osaka, en een planner die je steden op volgorde zet en de nachten verdeelt.",
-        "leadMonth": "Alle vijf parken tussen Tokio en Osaka in {month}, dag voor dag, en een planner die je steden op volgorde zet en de nachten verdeelt.",
+        "lead": "Een kalender voor vijf parken tussen Tokio en Osaka, en een planner die je steden op volgorde zet en de nachten verdeelt",
+        "leadMonth": "Alle vijf parken tussen Tokio en Osaka in {month}, dag voor dag, en een planner die je steden op volgorde zet en de nachten verdeelt",
         "monthIndexLabel": "Japan per maand",
         "glance": {
           "zone": "tijd in Japan"
@@ -4816,19 +4829,19 @@
         "resorts": {
           "title": "De resorts en parken in Japan",
           "tokyo-disney-resort": {
-            "lead": "Tokyo Disneyland en Tokyo DisneySea liggen naast elkaar in Maihama. Gasten van de Disney-hotels komen met Happy Entry 15 minuten eerder Tokyo Disneyland in.",
+            "lead": "Tokyo Disneyland en Tokyo DisneySea liggen naast elkaar in Maihama, en gasten van de Disney-hotels komen met Happy Entry 15 minuten eerder Tokyo Disneyland in",
             "stay": "Maihama voor beide Disney-parken: lopend naar Tokyo Disneyland, met de monorail naar DisneySea."
           },
           "universal-studios-japan": {
-            "lead": "Universal Studios Japan ligt in Osaka, aan het eind van de route vanaf Tokio via Nagoya.",
+            "lead": "Universal Studios Japan ligt in Osaka, aan het eind van de route vanaf Tokio via Nagoya",
             "stay": "Universal City ligt bij de ingang, Umeda en Namba in de stad; Kyoto ligt een uur verderop."
           },
           "fuji-q-highland": {
-            "lead": "Fuji-Q Highland ligt in Fujikawaguchiko. De bus vanaf Shinjuku doet er net geen twee uur over.",
+            "lead": "Fuji-Q Highland ligt in Fujikawaguchiko, net geen twee uur met de bus vanaf Shinjuku",
             "stay": "Shinjuku voor de bussen vanuit Tokio, Kawaguchiko aan het meer of het Highland Resort bij het park."
           },
           "legoland-japan": {
-            "lead": "LEGOLAND Japan ligt in Nagoya, op de route tussen Tokio en Osaka.",
+            "lead": "LEGOLAND Japan ligt in Nagoya, op de route tussen Tokio en Osaka",
             "stay": "Nagoya Station voor de Shinkansen, of het LEGOLAND Japan Hotel bij de ingang."
           }
         }
@@ -4902,7 +4915,7 @@
             "park_hotel": "Parkhotel bij Fuji-Q of LEGOLAND",
             "offsite": "Ergens anders"
           },
-          "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor.",
+          "eveningsHint": "Sluit een park eerder, dan stelt het plan voor de avond IKSPIARI bij de Disney-parken of Universal CityWalk Osaka voor",
           "moveBufferHint": "Met vooruitgestuurde bagage (takkyubin) is 30 minuten meestal genoeg."
         },
         "details": {
@@ -5055,7 +5068,7 @@
       "homeStory": {
         "kicker": "Japan",
         "title": "Japan: welk park op welke dag",
-        "lead": "Vijf parken van Tokio tot Osaka in één kalender, dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt.",
+        "lead": "Vijf parken van Tokio tot Osaka in één kalender, dag voor dag, en een reisplanner die steden, nachten en parken over je reisdagen verdeelt",
         "link": "Japan drukte-kalender"
       }
     },
@@ -5065,7 +5078,7 @@
         "inRegion": "in Parijs",
         "area": "Frankrijk",
         "calendar": "Drukte-kalender Disneyland Paris & Parc Astérix",
-        "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht."
+        "calendarHint": "Welk van de drie parken op welke dag, en waar je daarvoor overnacht"
       },
       "hub": {
         "title": "Drukte-kalender Disneyland Paris & Parc Astérix",
@@ -5077,8 +5090,8 @@
         "metaDescriptionPlain": "Piekwachttijd en drukte in Disneyland Park, Disney Adventure World en Parc Astérix, dag voor dag, plus een reisplanner voor parkdagen en hotels.",
         "metaDescriptionMonth": "De rustigste dagen in Disneyland Paris en Parc Astérix in {month}: {verdict}. Alle drie de parken dag voor dag.",
         "metaDescriptionMonthPlain": "Disneyland Paris en Parc Astérix in {month}, dag voor dag: piekwachttijd, drukte en openingstijden van alle drie de parken.",
-        "lead": "Een kalender voor Disneyland Paris en Parc Astérix, twee resorts met eigen hotels, en een planner die je zegt waar je overnacht.",
-        "leadMonth": "Disneyland Paris en Parc Astérix in {month}, dag voor dag, en een planner die je zegt waar je overnacht.",
+        "lead": "Een kalender voor Disneyland Paris en Parc Astérix, twee resorts met eigen hotels, en een planner die je zegt waar je overnacht",
+        "leadMonth": "Disneyland Paris en Parc Astérix in {month}, dag voor dag, en een planner die je zegt waar je overnacht",
         "monthIndexLabel": "Drukte-kalender per maand",
         "glance": {
           "zone": "tijd in Parijs"
@@ -5137,11 +5150,11 @@
         "resorts": {
           "title": "De resorts rond Parijs",
           "disneyland-paris": {
-            "lead": "Disneyland Park en Disney Adventure World liggen naast elkaar, de ingangen een paar minuten lopen uit elkaar. Gasten van de Disney-hotels komen met Extra Magic Time eerder de parken in.",
+            "lead": "Disneyland Park en Disney Adventure World liggen naast elkaar, de ingangen een paar minuten lopen uit elkaar, en gasten van de Disney-hotels komen met Extra Magic Time eerder binnen",
             "stay": "De Disney-hotels aan Lake Disney liggen op loopafstand van de ingangen; vanaf de partnerhotels in Val d’Europe en Val de France rijdt een gratis shuttle."
           },
           "parc-asterix": {
-            "lead": "Een themapark met eigen hotels, ongeveer een uur rijden van Disneyland Paris. Zonder auto rijdt er een shuttle van luchthaven Charles de Gaulle naar het park.",
+            "lead": "Een themapark met eigen hotels, ongeveer een uur rijden van Disneyland Paris en zonder auto met een shuttle vanaf luchthaven Charles de Gaulle te bereiken",
             "stay": "De drie hotels van het park liggen op loopafstand van de ingang, en een verblijf bevat parktickets en Early Entry voor een paar attracties."
           }
         }
@@ -5206,7 +5219,7 @@
             "parc_asterix": "Hotel van Parc Astérix",
             "offsite": "Ander hotel"
           },
-          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village.",
+          "eveningsHint": "Sluit een park eerder, dan gaat de avond naar het andere Disney-park of naar Disney Village",
           "moveBufferHint": "Met je koffers naar het volgende hotel is 60 minuten realistisch."
         },
         "details": {
@@ -5318,7 +5331,7 @@
   "news": {
     "metaTitle": "Pretparknieuws: evenementen en nieuwe attracties",
     "metaDescription": "Korte berichten uit de pretparken: nieuwe attracties, evenementen, jubilea en verkopen, telkens met datum en een link naar het park.",
-    "intro": "Wat er in de parken gebeurt, het nieuwste eerst.",
+    "intro": "Wat er in de parken gebeurt, het nieuwste eerst",
     "count": "{count, plural, one {# bericht} other {# berichten}}",
     "filter": {
       "label": "Filteren op park",
@@ -5358,12 +5371,12 @@
       "action": "Druktekalender van jouw park",
       "next": {
         "title": "Jouw datum in de druktekalender",
-        "body": "Op elke parkpagina is elke gepubliceerde dag groen, geel of rood, met de schoolvakanties en feestdagen van de regio meegerekend."
+        "body": "Op elke parkpagina is elke gepubliceerde dag groen, geel of rood, met de schoolvakanties en feestdagen van de regio meegerekend"
       }
     },
     "bestTime": {
       "kicker": "park.fan · reisplanning",
-      "tagline": "De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen.",
+      "tagline": "De rustigste dagen in meer dan 200 parken, gemeten aan de wachttijden sinds december 2025, en wat je op een drukke dag kunt doen",
       "stats": {
         "parks": {
           "value": "200+",
@@ -5398,7 +5411,7 @@
       "action": "Een dag plannen",
       "next": {
         "title": "Nog geen datum?",
-        "body": "De rustigste weekdagen en maanden volgens de gemeten wachttijden van meer dan 200 parken, en op elke parkpagina een druktekalender met een voorspelling voor elke dag die het park heeft gepubliceerd."
+        "body": "De rustigste weekdagen en maanden volgens de gemeten wachttijden van meer dan 200 parken, en op elke parkpagina een druktekalender met een voorspelling voor elke dag die het park heeft gepubliceerd"
       }
     },
     "blog": {
@@ -5714,6 +5727,9 @@
       "planStands": "Je plan staat. Verfijn het als je wilt",
       "end": "Stoppen",
       "done": "Klaar",
+      "start": {
+        "name": "Parky"
+      },
       "steps": {
         "region": "Regio",
         "dates": "Reisdata",
@@ -5754,7 +5770,7 @@
     "metaTitle": "Parky: wachttijden en dagplanning in een AI-chat",
     "metaDescription": "Parky kent de wachttijden van nu en de rustigste dagen, en je parkdag plant hij samen met jou. De AI-chat van park.fan, gratis en zonder account.",
     "title": "Parky gaat mee naar het park",
-    "lead": "Hij kent de wachttijden van nu en de rustigste dagen, en je parkdag plant hij samen met jou.",
+    "lead": "Hij kent de wachttijden van nu en de rustigste dagen, en je parkdag plant hij samen met jou",
     "intro": "Parky woont rechtsonder op park.fan, in de ronde tekstballon met een reuzenrad op zijn hoofd. Tik hem aan en schrijf hem zoals je een vriend schrijft die alles van pretparken weet. Wat je in de dagplanner hebt gezet, kent hij dan al.",
     "ask": "Chat met Parky",
     "off": "Parky houdt even pauze. Kom later nog eens terug.",

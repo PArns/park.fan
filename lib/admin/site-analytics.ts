@@ -921,6 +921,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Weg im Hub-Kopf',
     when: '„Reise planen“ oder „Zum Kalender“ im Kopf eines Hubs oder einer Monatsseite, „Reise planen“ auch in Kapitel 01 und im Schlussband; mit der Seite.',
   },
+  trip_deleted: {
+    label: 'Reise gelöscht',
+    when: '„Reise löschen“ bestätigt, im Kopf des Hubs (head) oder unter dem Plan (result): Daten, Parks, Änderungen und Antworten der Region auf dem Gerät entfernt. Gezählt beim Bestätigen, auch wenn „Rückgängig“ folgt.',
+  },
   trip_hub_filter: {
     label: 'Hub-Kalender gefiltert',
     when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',

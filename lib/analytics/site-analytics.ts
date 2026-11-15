@@ -487,6 +487,11 @@ export interface SiteEventMap {
   trip_spare_choice: TripEvent<{ choice: 'more_parks' | 'more_days' | 'free' | 'shorter' }>;
   /** One of the hub head's two ways in pressed: plan the trip, or go to the calendar. */
   trip_hub_action: TripEvent<{ action: 'plan' | 'calendar'; page: 'hub' | 'month' }>;
+  /**
+   * „Reise löschen“ confirmed: every store of the region's trip on this device cleared, from the
+   * hub's head or the result. Sent on the confirm, so a delete taken back with „Rückgängig“ counts.
+   */
+  trip_deleted: TripEvent<{ from: TripDeleteFrom }>;
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
   trip_hub_filter: TripEvent<{ resort: string }>;
   /**
@@ -649,6 +654,9 @@ type TripEvent<Props extends object = object> = { region: string } & Props;
 
 /** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
 export type TripTileLink = 'plan' | 'calendar';
+
+/** Where „Reise löschen“ was confirmed, as `trip_deleted` names it. */
+export type TripDeleteFrom = 'head' | 'result';
 
 /** Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already". */
 export type TripTicketsFrom =

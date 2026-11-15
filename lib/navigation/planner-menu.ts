@@ -32,8 +32,6 @@ export interface PlannerMenuRegion {
   href: string;
   /** The hub's crowd calendar, locale-relative. */
   calendarHref: string;
-  /** The hub's crowd calendar by its name, "Orlando Crowd Calendar", for the phone sheet. */
-  calendarLabel: string;
   /** The hub's photo; `null` where the catalog lost it. */
   photo: MoreMenuPhoto | null;
   /**
@@ -136,7 +134,6 @@ export async function getPlannerMenu(locale: Locale): Promise<PlannerMenu> {
           // The hub from its head, where the question and the answer are, not scrolled to chapter 02.
           href: calendarHref,
           calendarHref,
-          calendarLabel: words.calendar,
           photo: menuPhoto(region.photo ? getMediaImageBySrc(region.photo) : null),
         };
       })

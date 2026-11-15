@@ -135,7 +135,9 @@ ticket step, the month a month page opens on, the planner's `PlanEdit` and „Pl
 
 `WizardGuideBand`: the region's Parky scene (`useRegionScene`, the registry's loader) right-aligned
 at its own 2 : 1 and faded into the card's ground on its left (`mask-l-from-65%`), so Parky is
-never cropped at 360, 390 or 1280 px. The band is 128 px tall on a phone and 160 px at a desk. On
+never cropped at 360, 390 or 1280 px. It ends a close button's width short of the right edge, with
+a short fade (`mask-r-from-90%`), so the close button stands on the card's ground and not on
+Parky's hat or the moon. The band is 128 px tall on a phone and 160 px at a desk. On
 the left the line over the question (region and step, then region and dates, then „Fertig“) and
 the speech bubble, whose tail points at Parky. The bubble stands on the card's ground, not on the
 scene, is the dialog's title and takes the focus on every new step, so a screen reader reads the
