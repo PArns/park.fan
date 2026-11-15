@@ -1,6 +1,6 @@
 'use client';
 
-import { useSyncExternalStore, type ReactNode } from 'react';
+import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { MessagesSquare } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -15,25 +15,23 @@ import { interviewCore, startInterview, type InterviewStart } from '@/lib/assist
 /**
  * The planners' way into Parky's interview, as his own offer: Parky beside a speech bubble with his
  * name and his line, under it the questions the chat starts with (the interview's core steps,
- * numbered as the chat's bar counts them), and a button that sets the interview on its first step
- * and opens the chat, which asks the first question once its session is ready. Drawn only where
- * Parky shows for this visitor (`assistantGate`), so it never opens a window that does not come.
- * An `action` (the hub's „Reise planen“) stands before the chat's button, which then takes the
- * outline look, and the questions are left out, since the line names them. Where Parky is off the
- * action stands alone: his line offers the chat, so it is not said without one.
+ * numbered as the chat's bar counts them), and the one button, which sets the interview on its
+ * first step and opens the chat; the chat asks the first question once its session is ready.
+ * `showSteps` false leaves the questions out where the line names them. Drawn only where Parky
+ * shows for this visitor (`assistantGate`), so it never opens a window that does not come.
  */
 export function ParkyInterviewStart({
   label,
   line,
   start,
-  action,
+  showSteps = true,
   className,
 }: {
   label: string;
   line: string;
   start: InterviewStart;
-  /** The page's own way in beside the chat, drawn first. */
-  action?: ReactNode;
+  /** Whether the interview's questions show under the line; false where the line names them. */
+  showSteps?: boolean;
   className?: string;
 }) {
   const t = useTranslations('assistant.interview.start');
@@ -43,24 +41,23 @@ export function ParkyInterviewStart({
     assistantGate.getStatus,
     assistantGate.getServerStatus
   );
-  if (status !== 'on') {
-    return action ? <div className={cn('@container', className)}>{action}</div> : null;
-  }
+  if (status !== 'on') return null;
   return (
     // Laid out by its own width, not the window's: the day planner's side panel is narrow on the
     // widest screen. Side by side from 36rem, where the longest label (Italian, French) still
     // leaves the bubble a column of its own; stacked below that, the button as wide as the card.
-    // On a wide page the row keeps to the middle rather than pushing the button to the far edge.
+    // On a wide page the card itself stops at 56rem: a full-width tint around a centred row read
+    // as an empty band with the offer lost in its middle.
     <div data-parky-interview-start={start.kind} className={cn('@container', className)}>
-      <div className="border-primary/30 bg-primary/5 rounded-xl border p-3 @xl:px-6 @xl:py-4">
-        <div className="mx-auto flex max-w-4xl flex-col gap-3 @xl:flex-row @xl:items-center @xl:gap-6">
+      <div className="border-primary/30 bg-primary/5 mx-auto max-w-4xl rounded-xl border p-3 @xl:px-6 @xl:py-4">
+        <div className="flex flex-col gap-3 @xl:flex-row @xl:items-center @xl:gap-6">
           <div className="flex min-w-0 flex-1 items-center gap-3 @xl:gap-4">
             <ParkyLogo className="size-14 shrink-0 drop-shadow-sm @xl:size-20" idle calm framed />
             <div className="relative min-w-0 flex-1">
               <div className={cn(PARKY_BUBBLE, 'px-3 py-2 @xl:px-4 @xl:py-2.5')}>
                 <p className="text-primary-ink text-xs font-semibold">{t('name')}</p>
                 <p className="text-foreground/90 text-sm text-pretty @xl:text-base">{line}</p>
-                {!action && (
+                {showSteps && (
                   <ol className="mt-2 flex flex-wrap gap-1.5">
                     {interviewCore(start.kind).map((step, index) => (
                       <li key={step}>
@@ -81,10 +78,8 @@ export function ParkyInterviewStart({
               <ParkyBubbleTail side="left" />
             </div>
           </div>
-          {action}
           <Button
             type="button"
-            variant={action ? 'outline' : 'default'}
             onClick={() => {
               startInterview(start);
               openParky('interview');

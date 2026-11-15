@@ -399,7 +399,9 @@ Route `/admin/api-keys` (page).
 - `formatCount` _function_: A count with thousands separators.
 - `ASSISTANT_API` _const_: The admin proxy prefix of every Parky endpoint.
 - `FEEDBACK_KIND_LABEL` _const_: The admin's words for a `FeedbackKind`.
-- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `FeedbackKind`, `Page`, `ConversationDetail`, `AssistantStats`
+- `KNOWLEDGE_TOPIC_PATTERN` _const_: A topic's name as the API takes it: lowercase words joined by "_", 2 to 40 characters.
+- `KNOWLEDGE_LIMITS` _const_: The API's bounds for a topic's two texts (`knowledgeWriteSchema`).
+- Types: `AssistantSettings`, `ConversationRow`, `ToolCall`, `ConversationMessage`, `FeedbackEntry`, `FeedbackStatus`, `FeedbackKind`, `KnowledgeTopic`, `KnowledgeEdit`, `KnowledgeTopicDetail`, `Page`, `ConversationDetail`, `AssistantStats`
 
 ### [`assistant/_lib/delete-chat.tsx`](../../app/admin/assistant/_lib/delete-chat.tsx)
 
@@ -422,6 +424,18 @@ Route `/admin/assistant/conversations` (page).
 Route `/admin/assistant/feedback` (page).
 
 - `default (AssistantFeedbackPage)` _component_: What visitors sent through the widget's feedback tab or told Parky, to read and close.
+
+### [`assistant/knowledge/[topic]/page.tsx`](../../app/admin/assistant/knowledge/%5Btopic%5D/page.tsx)
+
+Route `/admin/assistant/knowledge/[topic]` (page).
+
+- `default (AssistantKnowledgeTopicPage)` _component_: One topic of Parky's knowledge base: its „Wann lesen“ line, the text he reads, whether it is on, and every edit with the whole topic before and after. A name the base does not hold yet opens an empty form, and saving creates the topic.
+
+### [`assistant/knowledge/page.tsx`](../../app/admin/assistant/knowledge/page.tsx)
+
+Route `/admin/assistant/knowledge` (page).
+
+- `default (AssistantKnowledgePage)` _component_: Parky's knowledge base: the topics he reads only when a question needs one. His prompt lists each enabled topic's „Wann lesen“; the text itself comes into a chat only when he reads it.
 
 ### [`assistant/page.tsx`](../../app/admin/assistant/page.tsx)
 

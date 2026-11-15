@@ -611,7 +611,7 @@
         }
       },
       "parky": "You can also plan the trip with me in the chat. I ask for your dates, parks and hotel, then give each park its day.",
-      "chat": "Rather in the chat",
+      "chat": "Plan it with Parky",
       "calendarLead": "Each park’s quietest day of the week is marked",
       "hero": {
         "note": "Only your dates are required; the first plan is there as soon as you pick them.",

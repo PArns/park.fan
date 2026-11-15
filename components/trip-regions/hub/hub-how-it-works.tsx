@@ -3,7 +3,6 @@ import { getTranslations } from 'next-intl/server';
 import { ParkyInterviewStart } from '@/components/assistant/parky-interview-start';
 import { hubShot } from '@/lib/trip-regions/hub-media';
 import type { TripHubShots } from '@/lib/trip-regions/registry';
-import { HubPlanAction } from './hub-hero-action';
 import { HubLandingOnly } from './hub-trip-state';
 
 /** The planner's four steps as chapter 01 names them, in the order of `TripHub.howItWorks`. */
@@ -11,8 +10,8 @@ export const HUB_STEPS = ['dates', 'questions', 'plan', 'edit'] as const;
 
 /**
  * Chapter 01 of the landing page: how the trip planner plans a trip, in four steps with a
- * screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's line with
- * „Reise planen“ and „Lieber im Chat“. Server HTML: every step, image and alt is in the served page;
+ * screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to
+ * plan it with him in the chat, whose button opens him. Server HTML: every step, image and alt is in the served page;
  * swiped sideways on a phone, four columns from `md`. Hidden, not removed, while the hub shows a
  * plan, which then stands in this chapter instead.
  */
@@ -20,14 +19,10 @@ export async function HubHowItWorks({
   region,
   shots,
   locale,
-  planHref,
-  page,
 }: {
   region: string;
   shots: TripHubShots;
   locale: string;
-  planHref: string;
-  page: 'hub' | 'month';
 }) {
   const t = await getTranslations('tripHub');
   return (
@@ -77,16 +72,7 @@ export async function HubHowItWorks({
         line={t('howItWorks.parky')}
         label={t('howItWorks.chat')}
         start={{ kind: 'trip', region }}
-        action={
-          <HubPlanAction
-            href={planHref}
-            label={t('plan')}
-            region={region}
-            page={page}
-            source="landing"
-            className="w-full @xl:w-auto @xl:shrink-0"
-          />
-        }
+        showSteps={false}
       />
     </HubLandingOnly>
   );

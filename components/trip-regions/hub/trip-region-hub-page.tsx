@@ -212,15 +212,7 @@ export async function TripRegionHubPage({
       region={region}
       locale={locale}
       defaultMonth={month ? monthKey(month) : undefined}
-      landing={
-        <HubHowItWorks
-          region={region.slug}
-          shots={config.hub.howItWorks}
-          locale={locale}
-          planHref={planHref}
-          page={page}
-        />
-      }
+      landing={<HubHowItWorks region={region.slug} shots={config.hub.howItWorks} locale={locale} />}
     />
   );
 

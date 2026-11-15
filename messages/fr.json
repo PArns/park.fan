@@ -611,7 +611,7 @@
         }
       },
       "parky": "Tu peux aussi préparer le voyage avec moi dans le chat. Je te demande tes dates, tes parcs et ton hôtel, puis je donne son jour à chaque parc.",
-      "chat": "Plutôt dans le chat",
+      "chat": "Préparer avec Parky",
       "calendarLead": "Pour chaque parc, le jour le plus calme de la semaine est marqué",
       "hero": {
         "note": "Seules les dates sont obligatoires ; le premier plan est là dès que tu les choisis.",

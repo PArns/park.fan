@@ -68,7 +68,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-how-it-works.tsx`](../../components/trip-regions/hub/hub-how-it-works.tsx)
 
-- `HubHowItWorks` _component_: Chapter 01 of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's line with „Reise planen“ and „Lieber im Chat“.
+- `HubHowItWorks` _component_: Chapter 01 of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to plan it with him in the chat, whose button opens him.
 - `HUB_STEPS` _const_: The planner's four steps as chapter 01 names them, in the order of `TripHub.howItWorks`.
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
