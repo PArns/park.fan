@@ -53,7 +53,7 @@ seo:
     - Phantasialand Wintertraum tickets
 ---
 
-Since 14 November there's ice on the Kaiserplatz at [Phantasialand](ref:phantasialand) again, right under the big tree of lights. Wintertraum runs until 24 January 2027, every day from 11 am to 8 pm, and at about 7:50 pm the fireworks of MAGIC SYMPHONY go up over Berlin. In between come seven shows, mulled wine at the stalls and [Taron](ref:phantasialand/taron) in the dark.
+Since 14 November there's ice on the Kaiserplatz at [Phantasialand](ref:phantasialand) again, right under the big tree of lights. Until 24 January 2027 the gates stay open until 8 pm, so you get about three hours in the dark, and at about 7:50 pm the MAGIC SYMPHONY fireworks go up over Berlin. In between come seven shows, mulled wine at the stalls and [Taron](ref:phantasialand/taron) in the dark.
 
 There's a lot of new decoration in the park this winter, and the stalls sell plenty of new treats. Neither is on the park's own list of what's new. In Mexico, for example, the Chiapas logo now glows in colour. You can't get to the water ride without passing it, and if you're planning to get wet, you've got time for a photo first.
 
@@ -71,7 +71,7 @@ Of the nine hours the park is open, you'll ride just under three to three and a 
 
 ## What's new in 2026/27
 
-The park lists these as new for winter 2026/27:
+These are on the park's list of what's new for winter 2026/27:
 
 - Phenie's Shakes & Pancakes by the Mondsee lake in Fantasy, marked "NEU" on the park's restaurant page.
 - Winni Snow, a snow playground for the youngest in the Tal der Wuze that only exists during Wintertraum.
@@ -99,11 +99,11 @@ Three shows play in theatres, four outdoors in the themed areas. Each theatre sh
 
 **Der goldene Faden** opens in a costume store. The tailor's assistant pulls loose a golden thread, and from then on the show jumps back and forth between past and present, with acrobatics, dance and a lot of comedy.
 
-**Arctaris – The Hidden World** is the ice show in the Arena de Fiesta, with video walls, pair skating and fire acts on skates. An ice show in December sounds like being cold twice over, but the arena is a theatre with a roof.
+**Arctaris – The Hidden World** brings video walls, pair skating and fire acts on skates. An ice show in December sounds like being cold twice over, but the arena is a theatre with a roof.
 
-The park recommends the **Kaiserplatz Illumination** to families with small children, for whom a finale at ten to eight is too late. It starts at dusk, when the tree of lights and the houses of Berlin come on to a song written for the show.
+The **Kaiserplatz Illumination** is meant for families with small children, for whom a finale at ten to eight is too late. It starts at dusk, when the tree of lights and the houses of Berlin come on to a song written for the show.
 
-For **Tiempo de Fuego**, get there a quarter of an hour early. The show projects the changing seasons onto the rocks and buildings of Mexico, at the end flames several metres high shoot up around the bell tower, and in bad weather it may be cancelled.
+For **Tiempo de Fuego**, get there a quarter of an hour early. The show projects the changing seasons onto the rocks and buildings of Mexico, at the end flames several metres high shoot up around the bell tower; bad weather can call it off.
 
 At **Pulse of Rookburgh**, beams of light cut through the Rookburgh fog, through the track of [F.L.Y.](ref:phantasialand/fly) and over the Hotel Charles Lindbergh. The show uses fast, bright strobe effects, so if you're sensitive to them, watch from further back.
 
@@ -111,9 +111,9 @@ Outside the programme, sway pole artists perform on tall poles on the Kaiserplat
 
 ### MAGIC SYMPHONY and the Good Night Wish
 
-MAGIC SYMPHONY was voted Germany's best show by theme park visitors for the second year running. It lasts about ten minutes, with light, sparks, a song written for it and fireworks over the roofs of Berlin.
+MAGIC SYMPHONY, which theme park visitors voted Germany's best show for the second year running, lasts about ten minutes, with light, sparks, a song written for it and fireworks over the roofs of Berlin.
 
-Not everybody fits on the Kaiserplatz, so the park advises heading to Berlin from 6:50 pm. From then on, staff guide every guest in through separate entrances and assign the spots, and the entrances close at 7:40 pm at the latest, earlier on busy days. Pushchairs go to their own parking areas. The stalls around the ice rink stay open until the show and close completely while it's on, and the area right next to it is cordoned off because of the fireworks. So take your mulled wine and crêpe with you into the Berlin street beforehand. Wheelchair users have their own viewing area, which you can book for free at Guest Service until 6 pm.
+Not everybody fits on the Kaiserplatz, so head to Berlin from 6:50 pm. From then on, staff guide every guest in through separate entrances and assign the spots, and the entrances close at 7:40 pm at the latest, earlier on busy days. Pushchairs go to their own parking areas. The stalls around the ice rink stay open until the show and close completely while it's on, and the area right next to it is cordoned off because of the fireworks. So take your mulled wine and crêpe with you into the Berlin street beforehand. Wheelchair users have their own viewing area, which you can book for free at Guest Service until 6 pm.
 
 In strong wind or other bad weather MAGIC SYMPHONY is cancelled for safety reasons. The park then says goodbye with the "Good Night Wish", a short scene of music and light without fireworks. The screens in the park show in the evening whether the fireworks are on.
 
@@ -129,17 +129,17 @@ At dusk each themed area switches on its own lighting. The park talks of million
 - Mexico: fire in the rocks of Chiapas
 - Fantasy: balls of light on the Mondsee lake
 
-LIGHTS OF MEMORIES is the park's name for the light shows that run in several places in the evening: Kaiserplatz Illumination, Tiempo de Fuego, Pulse of Rookburgh and MAGIC SYMPHONY, plus two that aren't in any show schedule. In **Mystic Winter Castle**, the tower of [Mystery Castle](ref:phantasialand/mystery-castle) uses light to look as if its walls are bursting apart, with rushing water and trolls popping up. And at **Water. Music. Light.**, fountains dance around the [Wellenflug](ref:phantasialand/wellenflug) in Berlin.
+LIGHTS OF MEMORIES is the park's name for its evening light shows: the four outdoor shows from the table plus two that aren't in any schedule. In **Mystic Winter Castle**, lights make the walls of the [Mystery Castle](ref:phantasialand/mystery-castle) tower look as if they're bursting apart, with rushing water and trolls popping up. And at **Water. Music. Light.**, fountains dance around the [Wellenflug](ref:phantasialand/wellenflug) in Berlin.
 
 ## What runs and what takes the winter off
 
-Everything runs during Wintertraum except three water attractions. [River Quest](ref:phantasialand/river-quest) has been closed since 2 November, Wakobato and Wözl's Wassertreter since 14 November, all three until 24 January. The splash playgrounds Winni Splash and Wavy Battle aren't on the park's winter overview, but there's Winni Snow in the Tal der Wuze instead.
+Everything runs during Wintertraum except three water attractions. [River Quest](ref:phantasialand/river-quest) has been closed since 2 November, Wakobato and Wözl's Wassertreter since 14 November, all three until 24 January.
 
 [Taron](ref:phantasialand/taron?full)
 
-The big rides are outdoors. The park says Taron runs down to minus ten degrees, [Black Mamba](ref:phantasialand/black-mamba) and [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) down to minus five. At the end Chiapas brakes with magnets instead of in the water, and the park's own wording is that this gets you "usually less wet". At four below zero I'd take that "usually" seriously and pack a dry jacket to change into.
+The big rides are outdoors. Taron runs down to minus ten degrees, [Black Mamba](ref:phantasialand/black-mamba) and [Chiapas](ref:phantasialand/chiapas-die-wasserbahn) down to minus five. At the end Chiapas brakes with magnets instead of in the water, and the park's own wording is that this gets you "usually less wet". At four below zero I'd take that "usually" seriously and pack a dry jacket to change into.
 
-You can ride in the dry in the Wuze Town hall, where [Winja's Fear](ref:phantasialand/winjas-fear), [Winja's Force](ref:phantasialand/winjas-force) and Wözl's Duck Washer run. Die 3 Mausketiere plays in the air-conditioned Residenz Theater, and the Geister Rikscha runs underground. That's thin for a whole wet afternoon, which is where the three theatre shows come in handy.
+You can ride in the dry in the Wuze Town hall, where [Winja's Fear](ref:phantasialand/winjas-fear), [Winja's Force](ref:phantasialand/winjas-force) and Wözl's Duck Washer run. Die 3 Mausketiere plays in the air-conditioned Residenz Theater, and the Geister Rikscha runs underground. That's thin for a whole wet afternoon, but the three theatre shows add about a hundred minutes under a roof.
 
 ```ride-waits-widget park=phantasialand top=8 columns=land,peak,days
 
@@ -147,7 +147,7 @@ You can ride in the dry in the Wuze Town hall, where [Winja's Fear](ref:phantasi
 
 ## For children: ice rink, snow and height limits
 
-**Berliner Eislaufen** is the ice rink that's only on the Kaiserplatz in winter, right under the tree of lights. There's no minimum height, you hire skates right next to it, and beginners can push penguin skating aids. For the youngest there's Winni Snow in Fantasy, plus Avoras to climb on and Mopti's Monkey Depot in Deep in Africa, none with a height limit. The face painters are free.
+**Berliner Eislaufen**, the winter ice rink on the Kaiserplatz, has no minimum height, you hire skates right next to it, and beginners can push penguin skating aids. For the youngest there's Winni Snow in Fantasy, plus Avoras to climb on and Mopti's Monkey Depot in Deep in Africa, none with a height limit. The face painters are free.
 
 At Guest Service on the Kaiserplatz, staff measure your child and write the height on a wristband, so you don't have to get measured again at every ride. There and at the entrances you can also pick up free wristbands for a parent's phone number. With Baby Switch, one parent rides while the other waits with the child, then they swap without queuing twice. It works at Taron, F.L.Y., Black Mamba, Chiapas and Maus au Chocolat, among others.
 
@@ -170,19 +170,19 @@ Only in these weeks can you get salmon cooked over an open fire and, on the Kais
 
 **Phenie's Shakes & Pancakes** sits on the shore of the Mondsee lake and looks like a round magic mushroom, with a floor that looks like dough, a topping machine and dripping lamps. The menu has pancake towers, shakes and, for children up to eleven, Cold Pancakes with soft serve, which won't warm anyone up after a turn on the ice but do cheer them up.
 
-At the Parkscout Publikums Award 2025/26, visitors voted Phantasialand's food the best of any German theme park. For a proper meal somewhere warm, my favourite is Rutmor's Taverne in Klugheim, with Eierknöpfli. Restaurant Uhrwerk in Rookburgh is another warm, themed place to eat.
+At the Parkscout Publikums Award 2025/26, visitors voted Phantasialand's food the best of any German theme park. For a proper meal somewhere warm there's Restaurant Uhrwerk in Rookburgh, and my favourite, Rutmor's Taverne in Klugheim, with Eierknöpfli.
 
 ## How busy Wintertraum gets
 
-We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. We have no figures from last winter for November and early December. During the Christmas holidays people queued at Phantasialand as long as in the August summer holidays. January was quieter, but only on weekdays. On 6 January 2026, the last day of the holidays, crowds were very low. On the weekdays after the holidays they were low, and on the weekends of 10/11 and 17/18 January very high.
+We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. During the Christmas holidays people queued at Phantasialand as long as in the August summer holidays. In January only the weekdays were quieter: 6 January, the last day of the holidays, was very quiet, the weekdays after it were quiet, and the weekends of 10/11 and 17/18 January were very busy.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-This winter the North Rhine-Westphalia Christmas holidays run from 23 December 2026 to 6 January 2027, and I'd plan the days between Christmas and New Year like a day in August. Monday to Friday after the holidays was the quietest stretch last January, and on many of those days the park charges €29, the lowest price in the calendar.
+This winter the North Rhine-Westphalia Christmas holidays run from 23 December 2026 to 6 January 2027, and I'd plan the days between Christmas and New Year like a day in August. Those January weekdays are when I'd go, and on many of them the park charges €29, the lowest price in the calendar.
 
-On the first Wintertraum weekend of 2026, crowds were high on Saturday, 14 November, and very low on the Sunday, in drizzle. That's only one Sunday, but in that kind of weather the Winja's rides run in their hall and the three theatre shows are under a roof, so I wouldn't call off a day like that. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
+On the first Wintertraum weekend of 2026, crowds were high on Saturday, 14 November, and very low on the Sunday, in drizzle. That's only one Sunday, but with the Winja's hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
 
 ```best-days-widget slug=phantasialand
 
@@ -209,9 +209,9 @@ With a Quick Pass you skip the queue once at one ride, through a separate entran
 - Chiapas: €10, only at Guest Service, according to the info page
 - Quick Pass Ultimate: €80, once at every Quick Pass entrance and once at F.L.Y., which has no single pass
 
-Every Quick Pass is only valid on the day you book it, so buy it in the morning of your visit, not the evening before. Sales in the shop start at 11 am when the park opens, and the park only sells a limited number. How booking in the shop and the QR code at the Quick Pass entrance work is in our news item on the [Quick Pass going online](/news/phantasialand-quick-pass-online).
+Every Quick Pass is only valid on the day you book it, so buy it in the morning of your visit, not the evening before. Sales in the shop start at 11 am when the park opens, and the park only sells a limited number. The steps for booking in the shop and showing the QR code at the Quick Pass entrance are in our news item on the [Quick Pass going online](/news/phantasialand-quick-pass-online).
 
-On a Tuesday in January I'd keep my money, since those days were quiet last winter. On a Saturday in the Christmas holidays I'd buy a Taron After Dark pass right at eleven and use it for my first ride in the dark.
+On a Tuesday in January I'd keep my money. On a Saturday in the Christmas holidays I'd buy a Taron After Dark pass right at eleven and use it for my first ride in the dark.
 
 ## A Wintertraum day from 11 am to 8 pm
 
@@ -250,7 +250,7 @@ Adult prices (age 12 and up) in the ticket calendar, as of 15 November 2026:
 | Monday, 11 January          | €29              |
 | Sunday, 24 January          | €35              |
 
-Children aged 4 to 11 have their own price, which the shop shows for each day. They and guests aged 60 and over need proof of age at the gate.
+Children aged 4 to 11 have their own price, which changes by day like the adult one. They and guests aged 60 and over need proof of age at the gate.
 
 12 December, a Saturday in Advent, was already sold out on the opening weekend. I wouldn't wait long for any Advent Saturday.
 
@@ -274,13 +274,13 @@ From Cologne Bonn Airport it's 40 to 50 minutes to Brühl by train, or about 20 
 
 The park has three themed hotels right next to it: Ling Bao in China Town, Matamba in Deep in Africa and Charles Lindbergh in Rookburgh, which won "Europe's best themed hotel" at the Parkscout|plus Award 2025.
 
-For a short winter break the park advertises up to 45 % off for early bookings. Breakfast is included, parking at the hotel is free, and you walk straight into the park through the hotel gardens or a gate of your own. Guests at Matamba and Ling Bao get faster access once per person per night to one of these rides: Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force or Colorado Adventure, but only with a valid park ticket. Charles Lindbergh guests get faster access to F.L.Y. as Explorers, and the hotel also has an Explorer package with a night's stay, a three-course dinner, breakfast and two park days. The new pool and spa area at Ling Bao is for its own guests only.
+For a short winter break there's up to 45 % off for early bookings. Breakfast is included, parking at the hotel is free, and you walk straight into the park through the hotel gardens or a gate of your own. Guests at Matamba and Ling Bao get faster access once per person per night to one of these rides: Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force or Colorado Adventure, but only with a valid park ticket. Charles Lindbergh guests get faster access to F.L.Y. as Explorers, and the hotel also has an Explorer package with a night's stay, a three-course dinner, breakfast and two park days. The new pool and spa area at Ling Bao is for its own guests only.
 
 The New Year's Eve packages with an overnight stay are fully booked.
 
 ## New Year's Eve at Phantasialand
 
-On New Year's Eve the park closes at 6 pm, almost two hours before the usual fireworks. The park hasn't said yet whether MAGIC SYMPHONY starts earlier as a result.
+On New Year's Eve the park closes at 6 pm, almost two hours before the usual fireworks. The park hasn't announced yet whether MAGIC SYMPHONY starts earlier that evening.
 
 For the evening there are four events without an overnight stay, booked separately:
 
@@ -313,7 +313,7 @@ Seven: Spectaculum Phantastère in the Silverado Theatre, Der goldene Faden in t
 
 ### Which attractions are closed during Wintertraum?
 
-River Quest, Wakobato and Wözl's Wassertreter. Taron, F.L.Y., Black Mamba, Chiapas, Maus au Chocolat and the Winja's rides are running. The park says Taron runs down to minus ten degrees, Black Mamba and Chiapas down to minus five.
+River Quest, Wakobato and Wözl's Wassertreter. Everything else runs; Black Mamba and Chiapas run down to minus five degrees and Taron down to minus ten.
 
 ### How much does Phantasialand Wintertraum cost?
 
@@ -321,7 +321,7 @@ An adult day ticket costs between €29 on weekdays in January and €42 on some
 
 ### When is Wintertraum quietest?
 
-Monday to Friday in January, after the Christmas holidays. Last winter the Christmas holidays were as busy as the August summer holidays, the January weekends were very busy, and the weekdays in between were quiet.
+Monday to Friday in January, after the Christmas holidays. Last winter the Christmas holidays were as busy as the August summer holidays, and the January weekends were very busy.
 
 ### Is there a Quick Pass during Wintertraum?
 
