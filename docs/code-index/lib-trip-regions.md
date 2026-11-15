@@ -468,7 +468,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanDayWeather`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)

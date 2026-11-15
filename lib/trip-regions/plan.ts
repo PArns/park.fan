@@ -102,6 +102,15 @@ export interface PlanTravel {
   transferMinutes?: number;
 }
 
+/**
+ * A park's high on a plan day, one decimal: the forecast within its 16 days, else the climate
+ * normal for the date. Absent from an API before 2.22.2 and where the calendar has none.
+ */
+export interface PlanDayWeather {
+  tempMax: number;
+  basis: 'forecast' | 'climate_normal';
+}
+
 /** One park on a plan day; a hop day's two halves carry their own figures. */
 export interface PlanParkVisit {
   slug: string;
@@ -110,6 +119,7 @@ export interface PlanParkVisit {
   crowdLevel?: TripCrowdLevel;
   basis?: TripBasis;
   perks?: TripPerk[];
+  weather?: PlanDayWeather;
   closesEarly?: boolean;
   dayGuestCloseAt?: string;
 }
@@ -126,6 +136,8 @@ export interface PlanDay {
   crowdLevel?: TripCrowdLevel;
   basis?: TripBasis;
   perks?: TripPerk[];
+  /** A one-park day's high; a hop day's parks carry their own. */
+  weather?: PlanDayWeather;
   travel?: PlanTravel;
   between?: PlanTravel;
   /**
@@ -310,6 +322,11 @@ export interface PlanMeta {
   computedAt: string;
   objective: string;
   exact: boolean;
+  /**
+   * The highs a day's `extreme_heat` was read against, the region's or `weather=avoid`'s. Absent
+   * from an API before 2.22.2.
+   */
+  heat?: { forecastFromC: number; normalFromC: number };
   relaxed?: string[];
   /**
    * The parks `split=auto` gave more than one visit, and how many; `ticket` names the owned ticket
