@@ -2,7 +2,7 @@
 title: 'A Phantasialand il Quick Pass conviene solo nei giorni pieni'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -282,33 +282,22 @@ ricaviamo un livello di affluenza per ogni giorno, da molto basso a estremo.
 Con il **Quick Pass** salti la coda regolare. Dal Wintertraum 2025/26 funziona in
 modo completamente nuovo. Ci sono due varianti:
 
-- **Quick Pass (Single)**, il fast-track per **una singola corsa** su
-  un’attrazione precisa. Al lancio si parlava di un prezzo _dinamico_, destinato a
-  salire con il tempo di attesa del momento. Alla cassa io ho sempre visto lo
-  stesso prezzo, e ora la pagina informativa del parco pubblica anche un listino
-  fisso: 5 € per [Colorado Adventure](ref:phantasialand/colorado-adventure),
-  [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
-  [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
-  [Mystery Castle](ref:phantasialand/mystery-castle) e
-  [Talocan](ref:phantasialand/talocan), 7 € ciascuno per
-  [Winja’s Fear](ref:phantasialand/winjas-fear) e Winja’s Force, 10 € per
-  [Black Mamba](ref:phantasialand/black-mamba) e
-  [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € per
-  [River Quest](ref:phantasialand/river-quest) e
-  [Taron](ref:phantasialand/taron).
-- **Quick Pass Ultimate** a 80 €: una corsa su ognuna di queste undici
-  attrazioni più una su [F.L.Y.](ref:phantasialand/fly). **Solo con l’Ultimate
-  sali su F.L.Y. con il Quick Pass**; da solo, per quell’attrazione, non si vende.
-  Gli undici pass singoli costano in tutto 83 €, quindi l’Ultimate costa meno e ci
-  aggiunge pure F.L.Y. Conviene però solo se vuoi davvero fare tutto.
+- **Quick Pass (Single)**, il fast-track per **una singola corsa** su un’attrazione precisa. Al lancio si parlava di un prezzo _dinamico_, destinato a salire con il tempo di attesa del momento. Alla cassa io ho sempre visto lo stesso prezzo, e ora c’è un listino fisso: 5 € per [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere), [Maus au Chocolat](ref:phantasialand/maus-au-chocolat), [Mystery Castle](ref:phantasialand/mystery-castle) e [Talocan](ref:phantasialand/talocan), 7 € ciascuno per [Colorado Adventure](ref:phantasialand/colorado-adventure), [Winja’s Fear](ref:phantasialand/winjas-fear) e Winja’s Force, 10 € per [Black Mamba](ref:phantasialand/black-mamba) e [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € per [Taron](ref:phantasialand/taron). Lo shop online chiede 7 € per Colorado Adventure, mentre la pagina informativa del parco riporta ancora 5 €. River Quest per ora non compare in nessuno dei due listini.
+- **Quick Pass Ultimate** a 80 €: una corsa su ognuna di queste dieci attrazioni più una su [F.L.Y.](ref:phantasialand/fly). **Solo con l’Ultimate sali su F.L.Y. con il Quick Pass**; da solo, per quell’attrazione, non si vende. I dieci pass singoli costano in tutto 73 €, quindi l’Ultimate costa 7 € in più, e quei 7 € sono il prezzo di F.L.Y. Conviene però solo se vuoi davvero fare tutto.
 
 Anche con il Quick Pass, a F.L.Y. aspetti lo stesso, su, in stazione. A causa
 delle sue elaborate barre di sicurezza da volo, l’attrazione impiega molto per il
 carico, e questo ingorgo non si scioglie nemmeno con il fast-track.
 
-Si compra solo sul posto, al servizio ospiti del Kaiserplatz, in numero limitato,
-e proprio durante il Wintertraum, nel weekend, i Quick Pass sono spesso già
-esauriti a mezzogiorno.
+Ora il Quick Pass si compra anche [nello shop online del Phantasialand](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand), in inglese. Paghi lì, lo ricevi in PDF per e-mail e all’ingresso Quick Pass mostri il codice QR sul telefono, con la luminosità dello schermo al massimo. Ogni pass vale per una persona. Il servizio ospiti nell’area Berlin continua a venderli sul posto.
+
+Un Quick Pass vale solo nel giorno della prenotazione. Non puoi scegliere un’altra data, né cambiarlo, né fartelo rimborsare. Se lo compri la sera prima dal divano, hai un pass per una giornata ormai finita, quindi compralo la mattina della visita. Il numero è limitato, e proprio durante il Wintertraum, nel weekend, i Quick Pass sono spesso già esauriti a mezzogiorno.
+
+```cta-widget
+href: https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand
+label: Compra un Quick Pass nello shop del Phantasialand
+text: Vale solo nel giorno della prenotazione.
+```
 
 Dopo tante visite penso che **in un giorno verde non ti serva.** Chi arriva
 presto e segue un ordine sensato fa gli headliner con poca attesa. In un sabato di
@@ -541,6 +530,7 @@ una giornata. Due giorni sono più rilassati.
 - Prezzi, biglietti e orari 2026: [Biglietti e offerte (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/tickets-offers/) · [Calendario dei biglietti nello shop online](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Informazioni per la visita, con orari e prezzi del Quick Pass (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - Fine degli abbonamenti annuali e petizioni dei fan: [La Club-Karte viene abolita (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petizione “Reintroduzione degli abbonamenti annuali del Phantasialand” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Il Quick Pass al lancio nel Wintertraum 2025/26: [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
+- Quick Pass online, prezzi e validità (al 15 novembre 2026): [Quick Pass nello shop online (ufficiale, in inglese)](https://shop.phantasialand.de/en/quick-pass)
 - Storia, l’incendio del 2001 e il Märchenwald: [Phantasialand (Wikipedia, in tedesco)](https://de.wikipedia.org/wiki/Phantasialand) · [30 aprile 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
 - Incendio del 2001, numero di feriti: [Dati della polizia del 1° maggio 2001 (wissen.de, in tedesco)](https://www.wissen.de/kalendar/1-mai-2001) · [«Die Wunden des Brandes heilen langsam» (Kölner Stadt-Anzeiger, 30 aprile 2002, ripubblicato nel forum Planet Phantasialand)](https://freizeitparkweb.de/cgi-bin/dcf/dcboard.cgi?az=printer_format&om=1705&forum=DCForumID1)
 - Dati tecnici: [Phantasialand (RCDB)](https://rcdb.com/4872.htm) · [Space Center / Crazy Bats (RCDB)](https://rcdb.com/980.htm) · [Gebirgsbahn (RCDB)](https://rcdb.com/979.htm)
