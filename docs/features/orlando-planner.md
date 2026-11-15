@@ -313,51 +313,65 @@ Without a catalog the step and the card are not drawn, plan first works as befor
   the latest window's end, at most 21 days); the Dates grid draws each window as a bar with a key.
   "Find the best dates" is off while a first day is fixed. A ticket the dates miss holds the
   request back and says so, with "Change dates" and "Change ticket".
-- **Plan first** (no owned ticket for a resort): the card is the tickets, with no fold before
-  them, the same in the result and under the assistant's „Noch nicht“ (`PlanTicketsCard`). One
-  sentence on top ("Universal 5 days, then Disney 6 days."), then one ticket per resort
-  (`SuggestionTicket`; day tickets of one product are one ticket with their count, "4 × 1-Day
-  Passport", `suggestionGroups`), side by side where the card is wide enough (`@xl`):
-  - the resort and the product in plain words ("Universal Orlando · 5-day ticket");
-  - the park days on it as chips with their dates, a moon and the second park on a day the hopper
-    would give an evening (`eveningHopList`);
-  - its window as a bar, a segment a day, the days the plan uses filled (`ticketWindowDays`),
-    with "Valid Nov 16–22" and "5 of 7 days" under it; day tickets say "Each is valid on its date
-    only." instead;
-  - what the hopper adds in one line (`hopperHighlights`: evenings by park, then the parks that fit
-    only with it, the hop days and the minutes): "Park Hopper is worth it" in a tinted box only
-    where the API recommends it, "Park-to-Park adds nothing here" where it adds nothing, and
-    "Plan with Park Hopper" / "Plan without …" (`hopper=<resort>`) where it adds something or is on;
-  - "How the ticket works", a quiet fold with the window rule, why a ticket has more days than
-    park days (`extraDays`), the Hogwarts Express line where both Universal parks are planned and a
-    promotion that fits the same days (`trip_ticket_details_opened` with the resort);
-  - where to buy it, as the next point says.
+- **Plan first** (no owned ticket for a resort): the card is the tickets, the same in the result
+  and under the assistant's „Noch nicht“ (`PlanTicketsCard`), and it fits about one screen of the
+  340 px column. Under its title one line names them, without a full stop ("Universal 5 days, then
+  Disney 7 days"); day tickets of one product are one ticket with their count, "4 × 1-Day
+  Passport" (`suggestionGroups`). Then, in this order:
+  - **"Recommended"** (`TicketPick`), the tickets as packages to compare by their park days. "Fits
+    this plan · 12 park days" holds the plan's tickets in plain words, the hopper added where the
+    API recommends it ("Universal 5 days + Park-to-Park"). On a trip of ten days or more, "14-day
+    tickets from UK shops · 28 park days" holds the long stay's alternatives with what the catalog
+    says they hold (`ticketFacts`: "14 park days within 18 days · Park Hopper included", "Every
+    day, 14 days in a row"), the line on the Combo Ticket and "Plan with these", without owned
+    tickets, inline after it. Each package names its seller once ("Buy at Attraction Tickets ·
+    Germany (€)") and has one button per ticket named by its resort, with the store's currency where
+    the stores differ ("Universal (€)", "Disney (£)"). Under each, the operators' own shops in a
+    quiet line ("Official shops: Universal · Disney"), so the official way to buy is always on the
+    card. Under both, once, the line that prices differ by the shop's country. No price, saving or
+    "cheapest" is claimed: the catalog has no prices, and the values are only its facts.
+  - **"How the plan uses each ticket"**, one line per ticket (`SuggestionRow`): the resort, the
+    product and its window with the days used ("Universal Orlando · 5-day ticket", "Nov 15–21 · 5
+    of 7 days"). It opens in place (`trip_ticket_details_opened` with the resort) on the park days
+    as chips with their dates, a moon and the second park on a day the hopper would give an evening
+    (`eveningHopList`); the window as a bar, a segment a day, the days the plan uses filled
+    (`ticketWindowDays`), or "Each is valid on its date only." for day tickets; what the hopper adds
+    in one line (`hopperHighlights`: evenings by park, then the parks that fit only with it, the
+    hop days and the minutes), "Park Hopper is worth it" in a tinted box only where the API
+    recommends it, "Park-to-Park adds nothing here" where it adds nothing, and "Plan with Park
+    Hopper" / "Plan without …" (`hopper=<resort>`) where it adds something or is on; "How the
+    ticket works", the window rule, why a ticket has more days than park days (`extraDays`), the
+    Hogwarts Express line where both Universal parks are planned and a promotion that fits the
+    same days; and every shop, as the next point says.
+  - "Use these as your tickets" (written with `blocks=1`, so the days stay), then "Already have
+    tickets? Add them".
 
-  Under the tickets, once, the line that prices differ by the shop's country, then "Use these as
-  your tickets" (written with `blocks=1`, so the days stay). The API suggests from every market, so
-  a long stay may get a UK 14-day ticket itself, its shop link tagged "UK shop". On a trip of ten
-  days or more, a dashed row marked "Alternative" offers the 14-day tickets the UK shops sell, one
-  each for Disney and Universal, with "Plan with these" and their shops behind a quiet fold, to
-  every visitor.
+  The API suggests from every market, so a long stay may get a UK 14-day ticket itself, its shop
+  link tagged "UK shop".
 
-- **Where to buy.** A suggestion and the 14-day alternatives list the product's `links` as compact
-  buttons in the admin's order: the store of the visitor's own country first and drawn in the
-  primary tint (the region of the browser's first language, `visitorCountry`, `isVisitorStore`),
-  then those for their locale or market (`orderTicketLinks`); the official shop keeps its place.
-  Every link is shown to every visitor. A seller with two or more country stores (their `store`)
-  gets one row under its name, a button per country with the store's currency: "Attraction
-  Tickets" with "Deutschland (€)", "UK (£)" (`ticketLinkGroups`, `ticketStoreName`: the short
-  country name and the currency symbol from `Intl`, so a new store needs no string); a single store
-  is named in full, "Attraction Tickets · UK (£)". Other links sold in a market other than the
-  operators' own (its `markets`, on the official link the product's) carry the same tag as the
-  step, "UK shop" (`linkMarket`). The card says once that prices differ by the shop's country and
-  that it pays to compare them all (`tripPlanner.tickets.links.compare`). Every link opens in a
-  new tab with `referrerPolicy="origin"` and no `noreferrer`, so the seller sees `https://park.fan/`
-  and never the trip's path (the site's own policy is `same-origin`); a sponsored link is
-  `rel="sponsored nofollow noopener"` and carries a visible "Partner link" label that explains the
-  commission on hover, focus or a tap (`ticketLinkAttributes`, `PartnerLabel`). The imprint and the
-  privacy page say the same. `ticket_link_clicked` counts a link's place among the buttons as
-  drawn.
+- **Where to buy.** The recommendation buys each ticket through one link (`primaryTicketLink`): a
+  sponsored seller's first, else the first seller's that is not the operator's, else the operator's
+  shop, each in the visitor's order, so the store of their own country comes first among a
+  seller's. Inside a ticket's line, every link of the product's `links` as compact buttons in the
+  admin's order: the store of the visitor's own country first and drawn in the primary tint (the
+  region of the browser's first language, `visitorCountry`, `isVisitorStore`), then those for
+  their locale or market (`orderTicketLinks`); the official shop keeps its place. Every link is
+  shown to every visitor. A seller with two or more country stores (their `store`) gets one row
+  under its name, a button per country with the store's currency: "Attraction Tickets" with
+  "Deutschland (€)", "UK (£)" (`ticketLinkGroups`, `ticketStoreName`: the short country name and
+  the currency symbol from `Intl`, so a new store needs no string); a single store is named in
+  full, "Attraction Tickets · UK (£)". Other links sold in a market other than the operators' own
+  (its `markets`, on the official link the product's) carry the same tag as the step, "UK shop"
+  (`linkMarket`). Every link opens in a new tab with `referrerPolicy="origin"` and no
+  `noreferrer`, so the seller sees `https://park.fan/` and never the trip's path (the site's own
+  policy is `same-origin`); a sponsored link is `rel="sponsored nofollow noopener"` and says so.
+  In a ticket's line it carries a visible "Partner link" label that explains the commission on
+  hover, focus or a tap (`ticketLinkAttributes`, `PartnerLabel`). In the recommendation it is
+  also put first for being sponsored, so the block's head carries "Ad", the same pill with the
+  same note, and the link "Partner link" as a word beside it (`PartnerWord`); without a sponsored
+  link neither shows. The imprint and the privacy page say the same. `ticket_link_clicked` counts
+  a link's place among the buttons as drawn: in the recommendation the tickets' buttons first,
+  the official shops after them.
 - **Owned** ("Your tickets"): each ticket's window, the days the plan uses ("8 of 14 days", or
   "used on 5 of its 14 days" for an every-day ticket), why days stay unused, whether Disney and
   Universal days mix (`meta.mixing`), a day outside the window with "Leave this visit out" and
@@ -431,6 +445,7 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_spare_filled`                                                                   | `from`: card (the Days view and a free day's sheet), week (the Week view's panel); idea and chat once Parky offers parks                                                                                                           |
 | `trip_day_moved`, `trip_day_freed`, `trip_park_removed`                               | none: a day put on a free day, a day made free, a park taken out, from a day's „More“                                                                                                                                              |
 | `trip_undo`                                                                           | `what`: pin, swap, move, free, remove, add, release, idea, parky                                                                                                                                                                   |
+| `trip_deleted`                                                                        | `from`: head (the hub's head), result (under the keep actions); sent on the confirm, an undo after it included                                                                                                                     |
 | `trip_idea_shown`                                                                     | `kind` (move, swap, add, travel_day, hopper, avoid_party), `place` (header, day, chat); once per idea and place                                                                                                                    |
 | `trip_idea_applied`                                                                   | `kind`, `place`                                                                                                                                                                                                                    |
 | `trip_idea_chat`                                                                      | `kind`                                                                                                                                                                                                                             |
@@ -446,7 +461,9 @@ Each carries `region` besides these. A value is one of the listed, never free te
 `trip_option_changed` is built from a diff of the state before and after each change
 (`tripOptionChanges` in `lib/trip-regions/plan-analytics.ts`), one event per option, in
 `usePlanState`; Parky's changes through the planner bridge count as `by: parky` (his own count stays
-`assistant_plan_changed`). Dates, pins, tickets and the hopper are not options: their own events
+`assistant_plan_changed`). A cleared trip („Reise löschen“, „Neue Reise planen“) and one put back
+change no option and count none: `trip_deleted` and `trip_planner_started` with `restart` say what
+happened. Dates, pins, tickets and the hopper are not options: their own events
 count them. `value` only from small closed sets: `move_buffer` 30, 60, 90, 120 or default; `rest`
 auto, none, max; on or off for arrival, departure, split, evenings, hop, fireworks; blocks on, off
 or default; `hotel` the region's hotel kind; `parks` added or removed; `start_base` and `end_base`
@@ -542,6 +559,33 @@ as it is), and "Open the first day" opens the day planner on the first of them
 (`setActive`). "Add to calendar (.ics)" builds the file in the browser: one event per park day, timed
 with `TZID=America/New_York` and a `VTIMEZONE` where the hours are known, all-day where not, with
 the minutes, the reason and the link. "Copy link" copies the address.
+
+**Deleting the trip.** „Reise löschen“ stands under the keep actions and at the end of the hub
+head's „Dein Plan für … ist in diesem Browser gespeichert.“ (`PlanDelete`,
+`components/trip-regions/planner/plan-delete.tsx`). A press asks in place of the line („Diese Reise
+löschen? Deine Daten, Parks und Änderungen werden auf diesem Gerät entfernt.“, „Löschen“,
+„Behalten“; Escape keeps it), never with the browser's `confirm()`. „Löschen“ runs `clearTrip`
+(`lib/trip-regions/trip-clear.ts`), the one clearing „Neue Reise planen“ runs too, over every place
+this device keeps the region's trip:
+
+| Store                                               | Where                                                            |
+| --------------------------------------------------- | ---------------------------------------------------------------- |
+| the query: dates, parks, pins, tickets, options     | the address bar, through the planner (`tripPlannerBridge.clear`) |
+| the edits and their undo                            | `usePlanState`, in memory                                        |
+| the remembered trip and the party Parky asked about | localStorage `parkfan_trip_<region>` (`forgetTrip`)              |
+| the questions answered in the assistant             | sessionStorage `parkfan:trip-wizard-answered`, per region        |
+| the answer to „Schon Tickets?“                      | localStorage `parkfan_<region>_tickets_asked`                    |
+| Parky's trip interview for the region               | sessionStorage `parkfan:assistant-interview`                     |
+| Parky's last change, which his undo would take back | `trip-context.ts`, in memory                                     |
+
+The address becomes the hub's own path, without query or fragment, so a reload is the landing
+page and `restorableTrip` finds nothing to put back. Another region's trip stays, and so do the
+result's chosen view (`parkfan_<region>_view`, a preference of the browser) and the days already
+copied into the day planner. For eight seconds the head says „Deine Reise vom … ist gelöscht.“
+with „Rückgängig“ (`PlanDeleteStatus`, in the note's cell, so its end moves nothing; the focus
+goes to it); the undo puts every store back from the copy in memory, the plan's edit history
+included. After that the copy goes and nothing is kept. `pnpm test:trip-clear` pins the stores,
+the other region and the undo.
 
 ## Honest states
 

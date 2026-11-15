@@ -130,9 +130,9 @@ and a region with a typhoon season instead of hurricanes says so on its best-tim
 
 ## Ways in
 
-All from the registry: the header's planner band and its phone sheet (a crowd calendar link per
-region), the More menu (a wide tile per region), the footer's „Reiseplaner" (the first live
-region), the homepage stop (one per live region), `TripPlannerTile` on a park's page and crowd
+All from the registry: the header's planner band and its phone sheet (a row per region under
+„Planen"), the footer's „Reiseplaner" (the first live region), the homepage stop (one per live
+region), `TripPlannerTile` on a park's page and crowd
 calendar and `TripPlannerBand` under a post, on a city or country listing and on `/search` (the
 regions whose `parks[]` hold the page's parks), the search palette and `/search`
 (`matchTripRegion` over every live region), the OG cards (`<locale>/<slug>`,

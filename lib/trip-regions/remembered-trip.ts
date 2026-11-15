@@ -2,7 +2,8 @@
  * The last trip this browser planned per region, so Parky reads it on any page and an interview's
  * answers outlive leaving the hub: the planner's own query (its whole state) and the party the
  * visitor told Parky, which neither planner has a field for. localStorage only, never the server;
- * the privacy policy says so. The hub itself does not reopen it: Parky does, on request.
+ * the privacy policy says so. The hub puts it back on a bare visit (`restorableTrip`), and
+ * „Reise löschen“ drops it with the rest of the trip (`clearTrip`).
  */
 
 /** How many people travel and the children's heights, as Parky's interview asked. */
@@ -123,14 +124,21 @@ export function rememberParty(region: string, party: TripParty, now = Date.now()
   write({ region, query: kept?.query ?? '', party: clean, updatedAt: now });
 }
 
-/** Drop a region's remembered trip: Parky's undo of the trip he started. */
-export function forgetTrip(region: string): void {
-  if (!REGION.test(region)) return;
+/**
+ * Drop a region's remembered trip (Parky's undo of the trip he started, a deleted trip) and return
+ * how to put back the record it dropped, party and time included.
+ */
+export function forgetTrip(region: string): () => void {
+  const kept = rememberedTrip(region);
+  if (!REGION.test(region)) return () => undefined;
   try {
     window.localStorage.removeItem(keyOf(region));
   } catch {
     // Nothing kept, nothing to drop.
   }
+  return () => {
+    if (kept) write(kept);
+  };
 }
 
 /** Every region's remembered trip, newest first. */

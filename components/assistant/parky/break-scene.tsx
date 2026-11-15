@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import type { ParkyOutfit } from '@/lib/assistant/parky/look';
 import type { ParkBreakScene } from '@/lib/utils/park-break';
 import {
@@ -353,20 +354,23 @@ export function ParkyBreakScene({
   className?: string;
 }) {
   const winter = scene === 'winter';
+  const id = useId();
+  const sky = `${id}sky`;
+  const ground = `${id}ground`;
   return (
     <HolidaySceneSvg className={className}>
       <defs>
-        <linearGradient id="parky-break-sky" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={sky} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" className={SKY[scene][0]} />
           <stop offset="1" className={SKY[scene][1]} />
         </linearGradient>
-        <linearGradient id="parky-break-ground" x1="0" y1="0" x2="1" y2="1">
+        <linearGradient id={ground} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor={blue} />
           <stop offset="1" stopColor={green} />
         </linearGradient>
       </defs>
 
-      <rect width="320" height="160" fill="url(#parky-break-sky)" />
+      <rect width="320" height="160" fill={`url(#${sky})`} />
 
       {/* Night in winter; outside it a sun by day, and the moon only in the dark theme. */}
       <g className={winter ? undefined : 'hidden dark:inline'}>
@@ -449,8 +453,8 @@ export function ParkyBreakScene({
 
       <g transform={PARKY_AT[scene]}>
         {winter ? <ParkyLookHat hat="beanie" still /> : <ParkyWheel />}
-        <path d={BUBBLE} fill="url(#parky-break-ground)" />
-        <ParkyLookWear outfit={OUTFIT[scene]} ground="parky-break-ground" />
+        <path d={BUBBLE} fill={`url(#${ground})`} />
+        <ParkyLookWear outfit={OUTFIT[scene]} ground={ground} />
         <path d={SHUT_EYES} fill="none" stroke={ink} strokeWidth="1.8" strokeLinecap="round" />
         {CHEEKS.map((x) => (
           <ellipse key={x} cx={x} cy="31" rx="2.4" ry="1.4" fill={blush} opacity=".7" />

@@ -166,7 +166,7 @@ export function IdeasStrip({ ideas }: { ideas: readonly PlanIdea[] }) {
   return (
     <section className="flex flex-col gap-2" aria-label={t('label')} data-plan-ideas="">
       <p className="flex items-center gap-2 text-sm font-semibold">
-        <ParkyLogo className="size-6 shrink-0" calm />
+        <ParkyLogo className="size-6 shrink-0" calm framed />
         {t('title', { count: ideas.length })}
       </p>
       <ul className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 xl:grid-cols-3">
@@ -190,7 +190,7 @@ export function IdeaCard({ idea }: { idea: PlanIdea }) {
       data-plan-idea={idea.kind}
     >
       <div className="flex gap-2.5">
-        <ParkyLogo className="size-9 shrink-0" calm />
+        <ParkyLogo className="size-9 shrink-0" calm framed />
         <div className="flex min-w-0 flex-col gap-0.5">
           <p className="text-sm font-medium">{title}</p>
           {figure && <p className="text-muted-foreground text-xs tabular-nums">{figure}</p>}
@@ -217,7 +217,7 @@ export function DayHint({ idea, className }: { idea: PlanIdea; className?: strin
   const { title, figure, verb, apply, chat } = useIdea(idea, 'day');
   return (
     <div className={cn('flex flex-wrap items-center gap-x-3 gap-y-1.5', className)}>
-      <ParkyLogo className="size-6 shrink-0" calm />
+      <ParkyLogo className="size-6 shrink-0" calm framed />
       <p className="min-w-0 flex-1 text-xs">
         {title}
         {figure && <span className="text-muted-foreground tabular-nums"> · {figure}</span>}

@@ -211,6 +211,27 @@ export function isEveryDayTicket(product: TicketProduct, days: number | null): b
   return window !== null && (length === null || length === window);
 }
 
+/**
+ * What a ticket of this product holds, from the catalog alone: its days within its window ("14
+ * days in 18"), or every day of the window ("14 days in a row"), and the hopping where it is
+ * included. A pass and a product without either have no days to say.
+ */
+export type TicketFact =
+  | { kind: 'daysIn'; days: number; window: number }
+  | { kind: 'everyDay'; window: number }
+  | { kind: 'hopping' };
+
+/** {@link TicketFact}s of a product for a ticket of `days`, in the order a line says them. */
+export function ticketFacts(product: TicketProduct, days: number | null): TicketFact[] {
+  const facts: TicketFact[] = [];
+  const window = windowLength(product, days);
+  const length = ticketLength(product, days);
+  if (window !== null && isEveryDayTicket(product, days)) facts.push({ kind: 'everyDay', window });
+  else if (window !== null && length !== null) facts.push({ kind: 'daysIn', days: length, window });
+  if (product.hopping === 'included') facts.push({ kind: 'hopping' });
+  return facts;
+}
+
 /** Whether the product is sold for a ticket starting on `date`. */
 export function onSaleAt(product: TicketProduct, date: string): boolean {
   if (!product.onSale || product.onSale.length === 0) return true;
@@ -878,6 +899,25 @@ export function orderTicketLinks(
     return forVisitor ? 1 : 2;
   };
   return [0, 1, 2].flatMap((rank) => links.filter((link) => tier(link) === rank));
+}
+
+/**
+ * The link a recommendation buys through, from links in the visitor's order: the first sponsored
+ * seller's (their store for the visitor's country first, as the order puts it), else the first
+ * seller's that is not the operator's, else the operator's shop. `null` without links.
+ */
+export function primaryTicketLink(ordered: readonly TicketLink[]): TicketLink | null {
+  return (
+    ordered.find((link) => link.sponsored && !link.official) ??
+    ordered.find((link) => !link.official) ??
+    ordered[0] ??
+    null
+  );
+}
+
+/** The operator's own shop among a product's links, `null` where it has none. */
+export function officialTicketLink(links: readonly TicketLink[]): TicketLink | null {
+  return links.find((link) => link.official) ?? null;
 }
 
 /** Purchase links as a ticket card lists them: one seller's country stores together. */

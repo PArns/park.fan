@@ -1,13 +1,14 @@
 /**
- * Button primitive (shadcn/ui, with Radix Slot and class-variance-authority): six variants and the
- * size scale every control uses, 32, 36 and 40 px on desktop with `sm` and `default` at 44 px on
- * phones, plus `buttonLinkProps` for a link drawn as a button.
+ * Button primitive (shadcn/ui, with Radix Slot and class-variance-authority): seven variants and
+ * the size scale every control uses, 32, 36 and 40 px on desktop with `sm` and `default` at 44 px
+ * on phones, plus `buttonLinkProps` for a link drawn as a button.
  */
 import * as React from 'react';
 import { Slot } from '@radix-ui/react-slot';
 import { cva, type VariantProps } from 'class-variance-authority';
 
 import { cn } from '@/lib/utils';
+import { HEAVY_GLASS } from '@/components/common/glass-card';
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
@@ -19,6 +20,10 @@ const buttonVariants = cva(
           'bg-destructive text-white hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60',
         outline:
           'border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50',
+        // `outline` where it sits on a photograph (a hub's head): the hero's glass with a light rim,
+        // since the plain outline's opaque or hairline box reads flat there. Not for a plain page,
+        // where the light rim disappears against the background.
+        glass: `${HEAVY_GLASS} border border-white/50 shadow-sm shadow-black/5 hover:bg-background/80 dark:border-white/20 dark:hover:bg-[oklch(0.13_0.02_241_/_0.8)]`,
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
         link: 'text-primary underline-offset-4 hover:underline',

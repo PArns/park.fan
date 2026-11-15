@@ -112,8 +112,8 @@
       "cta": "Explorer les parcs",
       "searchPlaceholder": "Rechercher parcs, attractions, spectacles & restaurants...",
       "title": "Où l’attente en vaut-elle la peine aujourd’hui ?",
-      "intro": "Trouve le parc où l’on attend le moins : les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, mis à jour toutes les cinq minutes, plus une prévision pour les prochains jours.",
-      "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>.",
+      "intro": "Trouve le parc où l’on attend le moins : les temps d’attente de <strong>{parks} parcs d’attractions</strong> et <strong>{attractions} attractions</strong>, mis à jour toutes les cinq minutes, plus une prévision pour les prochains jours",
+      "introShort": "Temps d’attente en direct de <strong>{parks} parcs</strong>",
       "openNow": "{count, plural, one {# parc ouvert en ce moment} other {# parcs ouverts en ce moment}}",
       "searchExamples": "Disneyland Paris, Taron, Efteling …",
       "parkyHello": "Salut, moi c’est Parky !",
@@ -168,7 +168,7 @@
     "favorites": {
       "kicker": "Favoris",
       "title": "Tes parcs et attractions",
-      "lead": "Tout ce que tu as marqué d’une étoile, avec son état et son attente actuelle."
+      "lead": "Tout ce que tu as marqué d’une étoile, avec son état et son attente actuelle"
     },
     "favoritesIntro": {
       "star": {
@@ -192,7 +192,7 @@
     "faq": {
       "kicker": "Questions fréquentes",
       "title": "Les temps d’attente en parc, en bref",
-      "lead": "D’où viennent les temps d’attente, quels parcs sont couverts et combien ça coûte : rien.",
+      "lead": "D’où viennent les temps d’attente, quels parcs sont couverts et combien ça coûte : rien",
       "link": "Comment fonctionne park.fan",
       "note": "Informations données sans garantie."
     },
@@ -204,7 +204,7 @@
     },
     "reading": {
       "title": "Actus et guides des parcs d’attractions",
-      "lead": "Qui construit, qui ferme, qui affiche complet. Et les guides les plus lus ces trente derniers jours.",
+      "lead": "Qui construit, qui ferme, qui affiche complet, et les guides les plus lus ces trente derniers jours",
       "popularGuides": "Guides les plus lus"
     },
     "tour": {
@@ -340,7 +340,7 @@
     "admin": "Admin",
     "nearbyPark": "À proximité : {parkName}",
     "howto": "Comment ça marche",
-    "howtoHint": "Comment lire un temps d'attente et d'où viennent les chiffres.",
+    "howtoHint": "Comment lire un temps d'attente et d'où viennent les chiffres",
     "planner": "Planificateur de journée",
     "plannerMenu": "Planifier",
     "tripPlanner": "Planificateur de voyage",
@@ -350,7 +350,7 @@
     "planTrip": "Planifier un séjour",
     "crowdCalendar": "Calendrier d’affluence",
     "dayPlannerTitle": "Planifier sa journée au parc attraction par attraction",
-    "dayPlannerHint": "Les attractions sur une frise, avec les attentes prévues.",
+    "dayPlannerHint": "Les attractions sur une frise, avec les attentes prévues",
     "planDay": "Planifier une journée",
     "yourPlan": "Votre plan",
     "yourPlanAt": "Votre plan : {park}, {date}",
@@ -361,14 +361,14 @@
     "planDayIn": "Planifier une journée à",
     "planDayInList": "Planifier une journée dans l’un de ces parcs",
     "glossary": "Dictionnaire",
-    "glossaryHint": "Les termes des files d'attente et des montagnes russes, expliqués.",
+    "glossaryHint": "Les termes des files d'attente et des montagnes russes, expliqués",
     "blog": "Guides",
     "more": "Plus",
     "fancast": "Fancast",
-    "fancastHint": "Le modèle de prévision derrière le calendrier d’affluence.",
+    "fancastHint": "Le modèle de prévision derrière le calendrier d’affluence",
     "contribute": "Téléverser des photos",
     "bestTime": "Meilleure période",
-    "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc.",
+    "bestTimeHint": "Les jours et les mois les plus calmes, parc par parc",
     "latestPosts": "Derniers articles",
     "searchArticles": "Rechercher un guide…",
     "searchResults": "{count, plural, one {# résultat} other {# résultats}}",
@@ -410,7 +410,6 @@
     },
     "legend": {
       "minutes": "Attente de pointe aux grandes attractions, en minutes",
-      "ring": "meilleur parc du resort",
       "quietest": "jour le plus calme de la semaine dans ce parc",
       "early": "ferme plus tôt pour les visiteurs du jour",
       "howTo": "Comment lire ceci",
@@ -424,32 +423,26 @@
       "parkColumn": "Parc",
       "filterLabel": "Parcs affichés",
       "filterAll": "Tous les parcs",
-      "listLabel": "Meilleur parc par resort, jour par jour",
-      "more": "+{count} autres",
+      "listLabel": "Attente de pointe par parc et par jour",
       "weekNav": "Choisir une semaine",
       "weekPrev": "Semaine précédente",
       "weekNext": "Semaine suivante",
       "weekNextDates": "Semaine suivante : {dates}",
-      "pickRow": "Meilleur parc",
-      "pickRowGroup": "Meilleur parc : {group}",
       "holidayRow": "Vacances & jours fériés",
       "quietest": "jour le plus calme de la semaine",
       "hoursLater": "Horaires à venir",
       "openDay": "{date} : afficher tous les parcs",
-      "today": "Aujourd’hui",
       "outlook": "tendance",
       "lastYear": "l’an dernier",
       "cell": "{park}, {date} : environ {minutes} min, {level}",
       "cellClosed": "{park}, {date} : fermé",
       "cellUnknown": "{park}, {date} : pas encore d’horaires",
       "cellOpen": "{park}, {date} : ouvert, pas de prévision",
-      "cellBest": "meilleur parc de {resort}",
       "cellEarly": "ferme à {time}",
       "stateClosed": "Fermé pour la saison",
       "stateUnknown": "Pas encore d’horaires",
       "stateOpen": "Ouvert, pas de prévision",
       "cellNoHours": "horaires pas encore publiés",
-      "earlyElsewhere": "{park} ferme à {time}",
       "sourcesTravel": "Trajets : {attribution}",
       "titleMonth": "Jour par jour en {month}"
     },
@@ -460,7 +453,7 @@
       "allDays": "tous les jours"
     },
     "sheet": {
-      "intro": "Dans chaque resort, le meilleur parc vient en tête ; une fermeture anticipée compte.",
+      "intro": "Dans chaque resort, le meilleur parc vient en tête ; une fermeture anticipée compte",
       "stayingAt": "Hôtel",
       "minutes": "{minutes} min",
       "noForecast": "ouvert, pas de prévision",
@@ -493,7 +486,7 @@
       "title": "Planifier ton voyage"
     },
     "next": {
-      "body": "Donne au planificateur tes dates et tes parcs, et il place chaque parc le jour où ses files sont les plus courtes.",
+      "body": "Donne au planificateur tes dates et tes parcs, et il place chaque parc le jour où ses files sont les plus courtes",
       "parkCalendar": "Calendrier d’affluence {park}"
     },
     "dataset": {
@@ -507,7 +500,7 @@
       "open": "Ouvrir le planificateur de voyage"
     },
     "tile": {
-      "line": "Tu donnes tes dates, le planificateur te dit lequel des {count} parcs est le plus calme chaque jour."
+      "line": "Tu donnes tes dates, le planificateur te dit lequel des {count} parcs est le plus calme chaque jour"
     },
     "faq": {
       "parks": {
@@ -599,24 +592,24 @@
       "steps": {
         "dates": {
           "title": "Choisir tes dates",
-          "text": "Sous chaque jour figure le parc à l’attente de pointe la plus courte. Dès le jour du départ choisi, le premier plan est là."
+          "text": "Sous chaque jour figure le parc à l’attente de pointe la plus courte, et dès le jour du départ choisi, le premier plan est là"
         },
         "questions": {
           "title": "Quelques questions, toutes facultatives",
-          "text": "Parcs, hôtel, rythme, soirées, billets. Tu réponds, ou tu passes la question."
+          "text": "Parcs, hôtel, rythme, soirées, billets : tu réponds, ou tu passes la question"
         },
         "plan": {
           "title": "Ton plan, jour par jour",
-          "text": "Quel parc quel jour, pourquoi ce jour-là et la longueur approximative des files."
+          "text": "Quel parc quel jour, pourquoi ce jour-là et la longueur approximative des files"
         },
         "edit": {
           "title": "Modifier, aussi avec Parky",
-          "text": "Échanger ou fixer des jours, ajouter des parcs ou demander à Parky dans le chat. Ensuite, vers le planificateur de journée ou ton agenda."
+          "text": "Échanger ou fixer des jours, ajouter des parcs ou demander à Parky dans le chat, puis passer au planificateur de journée ou à ton agenda"
         }
       },
       "parky": "Seules tes dates sont obligatoires, et tu peux passer chaque question qui suit. Commence par les dates.",
       "chat": "Plutôt dans le chat",
-      "calendarLead": "D’où le plan tire ses jours : l’attente de pointe de chaque parc, chaque jour.",
+      "calendarLead": "Pour chaque parc, le jour le plus calme de la semaine est marqué",
       "hero": {
         "note": "Seules les dates sont obligatoires ; le premier plan est là dès que tu les choisis.",
         "toPlan": "Vers ton plan",
@@ -629,7 +622,7 @@
     },
     "finalCta": {
       "title": "Ton voyage, planifié jour par jour",
-      "text": "Choisis tes dates, puis réponds à quelques questions ou passe-les. Le premier plan s’affiche dès que les dates sont fixées."
+      "text": "Dès que tes dates sont fixées, le premier plan s’affiche, et tu peux ensuite répondre aux questions ou les passer"
     }
   },
   "theme": {
@@ -648,7 +641,7 @@
     },
     "blogPosts": {
       "title": "{park} sur le blog",
-      "intro": "Articles de notre blog où il est question de {park}.",
+      "intro": "Articles de notre blog où il est question de {park}",
       "viewAll": "Lire tous les articles",
       "moreGuides": "Autres guides"
     },
@@ -658,9 +651,9 @@
     "firstVisit": {
       "label": "Première visite",
       "title": "Première visite : {park}",
-      "intro": "Commencez par le guide, puis lisez les termes que rencontre tout nouveau visiteur.",
+      "intro": "Commencez par le guide, puis lisez les termes que rencontre tout nouveau visiteur",
       "termsTitle": "Les termes du premier jour",
-      "termsIntro": "Les panneaux et les applis des parcs les emploient sans les expliquer."
+      "termsIntro": "Les panneaux et les applis des parcs les emploient sans les expliquer"
     },
     "title": "Plus de loopings, moins d’attente",
     "heroWelcomeAttractions": "{count} attractions en fonctionnement",
@@ -769,7 +762,7 @@
     "offSeasonCount": "{count} hors saison",
     "filterSection": {
       "title": "Affiner les attractions",
-      "hint": "N'affiche que ce qui correspond à votre choix.",
+      "hint": "N'affiche que ce qui correspond à votre choix",
       "searchLabel": "Recherche",
       "todayLabel": "Aujourd'hui",
       "traitsLabel": "Caractéristiques",
@@ -1290,7 +1283,7 @@
       "monthMetaDescriptionNoCity": "Quelle affluence à {park} en {month} ? Affluence attendue jour par jour, horaires, vacances scolaires et météo.",
       "monthIntro": "Jour par jour à travers {month} : affluence attendue à {park}, horaires, vacances scolaires et météo. Touche un jour pour le détail.",
       "gridTitle": "Trouver le jour le plus calme",
-      "gridSubline": "Chaque jour en {month} avec l’affluence attendue, les horaires, les vacances scolaires et la météo à {park}.",
+      "gridSubline": "Chaque jour en {month} avec l’affluence attendue, les horaires, les vacances scolaires et la météo à {park}",
       "previousMonth": "Mois précédent",
       "nextMonth": "Mois suivant",
       "currentMonth": "Aujourd’hui",
@@ -1339,7 +1332,7 @@
       "leadLongest": "La file la plus longue est en général celle de {ride} : {minutes} minutes en temps normal.",
       "leadFallback": "Les temps d’attente {inPark} par mois, jour et heure, mesurés sur {days} jours d’ouverture.",
       "hourlyTitle": "La journée type",
-      "hourlyHint": "Sur {days} jours d’ouverture de l’année écoulée.",
+      "hourlyHint": "Sur {days} jours d’ouverture de l’année écoulée",
       "nextTitle": "Et ensuite",
       "nextLive": "Temps d’attente en direct",
       "nextLiveBody": "Les temps d’attente du moment, attraction par attraction.",
@@ -1367,9 +1360,9 @@
       "metaTitleShort": "{park} : taille minimale",
       "metaDescription": "Dès quelle taille un enfant peut-il monter {inPark} ({city}) ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
       "metaDescriptionNoCity": "Dès quelle taille un enfant peut-il monter {inPark} ? {withHeight} attractions sur {total} exigent une taille minimale, les premières dès {low} cm.",
-      "lead": "{inParkLeading}, {withHeight} attractions sur {total} exigent une taille minimale, en {steps} paliers. Cette page montre ce qu'un enfant peut faire à chaque taille.",
+      "lead": "{inParkLeading}, {withHeight} attractions sur {total} exigent une taille minimale, en {steps} paliers",
       "tiersTitle": "Ce qui est possible à chaque taille",
-      "tiersHint": "{withHeight} attractions sur {total} exigent une taille minimale. Chaque palier est une limite que le parc annonce lui-même.",
+      "tiersHint": "{withHeight} attractions sur {total} exigent une taille minimale, et chaque palier est une limite que le parc annonce lui-même",
       "noLimitTitle": "Sans taille minimale indiquée",
       "noLimitSummary": "{count, plural, =1 {L'attraction sans indication} other {Les {count} attractions sans indication}}",
       "noLimitNote": "Le parc n'indique aucune limite pour celles-ci. On ne sait pas si l'attraction est ouverte à toutes les tailles ou si l'information manque. C'est la taille indiquée à l'entrée de l'attraction qui fait foi.",
@@ -1390,7 +1383,7 @@
       "nextCalendarBody": "Affluence attendue jour par jour, avec vacances et horaires.",
       "linkTitle": "Avec des enfants",
       "linkAnchor": "{park} avec des enfants",
-      "linkBody": "{withHeight} attractions sur {total} exigent une taille minimale. Quelle attraction à partir de quelle taille, en {steps} paliers.",
+      "linkBody": "{withHeight} attractions sur {total} exigent une taille minimale : quelle attraction à partir de quelle taille, en {steps} paliers",
       "filterToList": "Aller à la liste des attractions"
     },
     "planDayCta": "Planifier une journée à {park}",
@@ -1404,9 +1397,9 @@
       "reset": "Effacer la sélection",
       "pickDay": "sélectionner pour comparer",
       "title": "Deux jours comparés",
-      "resultClear": "{day} est nettement le meilleur jour.",
-      "resultSlight": "{day} devance légèrement.",
-      "resultTie": "Ces deux jours se valent.",
+      "resultClear": "{day} est nettement le meilleur jour",
+      "resultSlight": "{day} devance légèrement",
+      "resultTie": "Ces deux jours se valent",
       "better": "Meilleur jour",
       "bothDays": "Les deux jours",
       "noReasons": "Aucune valeur comparable n'est disponible pour ces deux jours.",
@@ -1427,7 +1420,7 @@
       "blockerClosed": "Le parc est fermé ce jour-là.",
       "blockerPast": "Ce jour est déjà passé.",
       "blockerNoForecast": "Aucune prévision n'est encore disponible pour ce jour.",
-      "resultUnavailable": "Aucun de ces deux jours ne peut être comparé.",
+      "resultUnavailable": "Aucun de ces deux jours ne peut être comparé",
       "beyondPlanner": "Le planificateur ne va pas encore jusqu'à ce jour."
     },
     "overview": {
@@ -1642,7 +1635,7 @@
     },
     "sectionLiveNow": "Temps d’attente en ce moment",
     "sectionPlanVisit": "Planifier le meilleur moment pour visiter",
-    "sectionPlanVisitHint": "D'après les temps d'attente mesurés de cette attraction.",
+    "sectionPlanVisitHint": "D'après les temps d'attente mesurés de cette attraction",
     "todayRange": "Amplitude du jour",
     "peakToday": "Pic du jour",
     "parkToday": "Le parc aujourd'hui",
@@ -1682,7 +1675,7 @@
     },
     "downtime": {
       "title": "Pannes signalées",
-      "hint": "Ce que la source de données du parc a signalé, pas ce que l'exploitant publie.",
+      "hint": "Ce que la source de données du parc a signalé, pas ce que l'exploitant publie",
       "reportedCaption": "En {days} jours",
       "reportedDetail": "{count} pannes signalées sur {observedDays} jours d'exploitation observés.",
       "medianCaption": "Médiane en minutes",
@@ -2156,7 +2149,7 @@
   "favoritesPage": {
     "title": "Mes favoris",
     "metaTitle": "Mes favoris - park.fan",
-    "subtitle": "Parcs, attractions, spectacles et restaurants que vous avez marqués dans ce navigateur, avec leur statut en direct et leurs temps d’attente.",
+    "subtitle": "Parcs, attractions, spectacles et restaurants que vous avez marqués dans ce navigateur, avec leur statut en direct et leurs temps d’attente",
     "howToTitle": "Comment ajouter des favoris"
   },
   "pushAlerts": {
@@ -2167,9 +2160,9 @@
     },
     "showDialog": {
       "title": "Rappel de spectacle",
-      "explain": "Nous vous prévenons 25 à 35 minutes avant la prochaine séance de {show}.",
+      "explain": "Nous vous prévenons 25 à 35 minutes avant la prochaine séance de {show}",
       "explainLate": "C’est déjà juste pour la prochaine séance : le message arrivera environ 10 minutes avant.",
-      "explainChosen": "Nous vous prévenons environ une demi-heure avant cette séance.",
+      "explainChosen": "Nous vous prévenons environ une demi-heure avant cette séance",
       "follow": "Activer le rappel",
       "following": "Rappel activé",
       "unfollow": "Désactiver le rappel",
@@ -2187,7 +2180,7 @@
     },
     "rideDialog": {
       "title": "Alertes de temps d’attente",
-      "subtitle": "Pour {park} – nous vous prévenons dès que l’attente passe sous le seuil choisi.",
+      "subtitle": "Pour {park} – nous vous prévenons dès que l’attente passe sous le seuil choisi",
       "loading": "Chargement…",
       "empty": "Aucune alerte pour ce parc pour l’instant.",
       "thresholdLabel": "sous {minutes} min",
@@ -2222,7 +2215,7 @@
     "overview": {
       "title": "Mes alertes",
       "metaTitle": "Mes alertes - park.fan",
-      "subtitle": "Alertes de temps d’attente et rappels de spectacles pour cet appareil, tous parcs confondus.",
+      "subtitle": "Alertes de temps d’attente et rappels de spectacles pour cet appareil, tous parcs confondus",
       "loading": "Chargement…",
       "emptyBody": "Rien configuré pour l’instant. Sur la page d’un parc, la cloche à côté d’une attraction ou d’un spectacle permet de créer un rappel.",
       "rideAlertsTitle": "{count, plural, =1 {Une alerte de temps d’attente} other {# alertes de temps d’attente}}",
@@ -2267,7 +2260,7 @@
       "title": "{term} sur le blog"
     },
     "overviewTitle": "Dictionnaire des parcs à thème",
-    "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair – temps d’attente, niveaux d’affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore.",
+    "overviewDescription": "Plus de {count} termes et définitions des parcs à thème expliqués en langage clair – temps d’attente, niveaux d’affluence, Lightning Lane, files virtuelles, éléments de montagnes russes, single rider, fast pass, soft openings et plus encore",
     "overviewKeywords": "dictionnaire parc à thème, définitions parc à thème, définition temps d’attente, Lightning Lane, niveau affluence, termes montagnes russes, file d’attente virtuelle, vocabulaire parc loisirs",
     "termTitleSuffix": "Dictionnaire parcs d’attractions",
     "termH1Suffix": "expliqué – définition",
@@ -2367,7 +2360,7 @@
     "answer": {
       "sentence": "Les files les plus courtes pour un séjour de {days} jours en {year} : {windows}.",
       "below": "{percent} % sous la moyenne de {year}",
-      "none": "Aucun séjour de {days} jours en {year} n’a encore de chiffres.",
+      "none": "Aucun séjour de {days} jours en {year} n’a encore de chiffres",
       "why": "Pourquoi ces dates",
       "events": "Événements : {list}",
       "cautions": "À savoir",
@@ -2472,7 +2465,7 @@
     "heroTitle": "Histoires et données des parcs",
     "badge": "Blog park.fan",
     "description": "Carnets de visite, analyses de données et guides des parcs par l’équipe park.fan.",
-    "intro": "Carnets de visite, analyses des temps d’attente et guides des parcs que nous couvrons. Écrits par quelqu’un qui fait la queue lui-même.",
+    "intro": "Carnets de visite, analyses des temps d’attente et guides des parcs que nous couvrons, écrits par quelqu’un qui fait la queue lui-même",
     "blog": "Blog",
     "empty": "Aucun article pour le moment.",
     "readMore": "Lire l’article",
@@ -2599,7 +2592,7 @@
   "contribute": {
     "gallery": {
       "title": "Ces parcs et attractions attendent vos photos",
-      "subtitle": "Des bosses à airtime, des dark rides pleins de décors, des parcs entiers à la tombée du jour : quelques exemples sur park.fan auxquels ajouter vos photos."
+      "subtitle": "Des bosses à airtime, des dark rides pleins de décors, des parcs entiers à la tombée du jour : quelques exemples sur park.fan auxquels ajouter vos photos"
     },
     "meta": {
       "title": "Partagez vos photos de parcs et attractions",
@@ -2612,7 +2605,7 @@
     "banner": {
       "eyebrow": "Galerie communautaire",
       "title": "Des photos de cette attraction ou de ce parc ?",
-      "subtitle": "Téléversez vos clichés pour que d’autres fans voient à quoi ils s’engagent.",
+      "subtitle": "Téléversez vos clichés pour que d’autres fans voient à quoi ils s’engagent",
       "cta": "Téléverser des photos"
     },
     "dropzone": {
@@ -2664,7 +2657,7 @@
     },
     "success": {
       "title": "Merci",
-      "message": "{count, plural, one {Votre photo a} other {Vos # photos ont}} été envoyée(s) et apparaîtra(ont) dans la galerie après une rapide vérification.",
+      "message": "{count, plural, one {Votre photo a} other {Vos # photos ont}} été envoyée(s) et apparaîtra(ont) dans la galerie après une rapide vérification",
       "again": "Téléverser d’autres photos",
       "home": "Retour à l’accueil"
     },
@@ -2980,7 +2973,7 @@
     "trip": {
       "open": "Répartir les parcs sur les jours",
       "title": "Répartir les parcs sur les jours",
-      "subtitle": "Une proposition d'après les prévisions d'affluence. Ton plan ne change que si tu l'acceptes.",
+      "subtitle": "Une proposition d'après les prévisions d'affluence, qui ne change ton plan que si tu l'acceptes",
       "from": "Du",
       "to": "Au",
       "parks": "Parcs",
@@ -3056,15 +3049,15 @@
       "steps": {
         "find": {
           "title": "Choisir un parc et un jour",
-          "body": "Dans le calendrier des temps d'attente, on voit l'affluence d'une journée. De là, on passe directement au plan."
+          "body": "Dans le calendrier des temps d'attente, on voit l'affluence d'une journée, et de là, on passe directement au plan"
         },
         "add": {
           "title": "Ajouter des attractions",
-          "body": "Un bouton figure sur chaque page d'attraction. Dans le planificateur, vous pouvez aussi chercher ou faire glisser une attraction."
+          "body": "Un bouton figure sur chaque page d'attraction, et dans le planificateur, vous pouvez aussi chercher ou faire glisser une attraction"
         },
         "arrange": {
           "title": "Déplacer jusqu'à ce que ça tombe juste",
-          "body": "Faites glisser un bloc à une autre heure. L'attente et la couleur suivent, car les deux appartiennent à l'heure."
+          "body": "Faites glisser un bloc à une autre heure : l'attente et la couleur suivent, car les deux appartiennent à l'heure"
         }
       }
     },
@@ -3090,7 +3083,7 @@
       "finish": "Ouvrir le planning",
       "lunch": {
         "label": "Prévoir le déjeuner",
-        "hint": "Place un bloc à 12h30 dans la journée. Tu pourras le déplacer dans le planificateur."
+        "hint": "Place un bloc à 12h30 dans la journée, et tu pourras le déplacer dans le planificateur"
       },
       "kids": {
         "label": "Des enfants sont là",
@@ -3099,17 +3092,17 @@
       },
       "wet": {
         "label": "Rester sec si possible",
-        "hint": "Les attractions aquatiques sont signalées dans la liste."
+        "hint": "Les attractions aquatiques sont signalées dans la liste"
       },
       "earlyEntry": {
         "label": "Nous avons l’accès anticipé",
-        "hint": "Ici, les clients des hôtels accèdent aux grandes attractions avant l’ouverture officielle.",
-        "hintMinutes": "Ici, les clients des hôtels accèdent aux grandes attractions {minutes} minutes avant l’ouverture officielle."
+        "hint": "Ici, les clients des hôtels accèdent aux grandes attractions avant l’ouverture officielle",
+        "hintMinutes": "Ici, les clients des hôtels accèdent aux grandes attractions {minutes} minutes avant l’ouverture officielle"
       },
       "headliners": {
         "label": "Planifier les attractions phares",
-        "hint": "Place les {count} grandes attractions dans la journée, selon leurs courbes horaires.",
-        "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture.",
+        "hint": "Place les {count} grandes attractions dans la journée, selon leurs courbes horaires",
+        "hintTight": "Il y a de la place pour {fits} sur {total} avant la fermeture",
         "conflict": "{fits} sur {total} rentrent. Décochez ce dont vous pouvez vous passer, ou remontez ce que vous voulez absolument faire.",
         "none": "Aucune attraction phare ne manque pour cette journée.",
         "noneFitHeight": "Aucune attraction phare ne convient à votre groupe : {count, plural, one {la seule du parc exige} other {les # exigent}} une taille minimale supérieure à celle de la plus petite personne. Vous pouvez quand même les ajouter une par une dans le planificateur.",
@@ -3153,7 +3146,7 @@
     "shared": {
       "metaTitle": "Plan partagé | park.fan",
       "title": "Plan partagé",
-      "subtitle": "Quelqu’un vous a envoyé un plan du planificateur.",
+      "subtitle": "Quelqu’un vous a envoyé un plan du planificateur",
       "loading": "Chargement du plan…",
       "missing": "Aucun plan ne correspond à ce lien. Il a peut-être été copié en partie ou a expiré, ou l’expéditeur a désactivé les notifications, ce qui supprime le plan.",
       "failed": "Le plan n’a pas pu être chargé pour le moment.",
@@ -3167,7 +3160,7 @@
     },
     "parky": {
       "button": "Prépare avec Parky ta journée idéale au parc",
-      "line": "Quelques questions dans le chat, et chaque réponse arrive tout de suite dans cette journée."
+      "line": "Je te pose quelques questions dans le chat et je note chaque réponse tout de suite dans cette journée."
     }
   },
   "tripPlanner": {
@@ -3277,26 +3270,26 @@
     "options": {
       "hotel": "Hôtel",
       "area": "Quartier de l’hôtel",
-      "areaNoneHint": "Le plan n’indique alors pas de trajets.",
+      "areaNoneHint": "Le plan n’indique alors pas de trajets",
       "fireworksWant": "Je veux le voir",
       "fireworksAny": "Peu importe",
-      "blocksHint": "Les jours d’un même resort à la suite, pour moins rouler entre les resorts.",
+      "blocksHint": "Les jours d’un même resort à la suite, pour moins rouler entre les resorts",
       "rest": "Jours de repos",
       "restAutoLabel": "Automatique",
-      "restAutoHint": "Au plus quatre jours de parc d’affilée ; les jours de repos tombent sur les jours les plus chargés.",
+      "restAutoHint": "Au plus quatre jours de parc d’affilée ; les jours de repos tombent sur les jours les plus chargés",
       "restMaxLabel": "Ma propre limite",
       "restNoneLabel": "Pas de jour de repos",
       "restFewer": "Un jour de moins",
       "restMore": "Un jour de plus",
       "hop": "Park hopping",
-      "hopHint": "Deux parcs d’un même resort dans la journée, quand le voyage compte moins de jours que de visites.",
+      "hopHint": "Deux parcs d’un même resort dans la journée, quand le voyage compte moins de jours que de visites",
       "evenings": "Soirées",
       "blocksAuto": "Mélangés seulement si cela fait gagner du temps",
-      "blocksAutoHint": "Dans les dates de tes billets, mélangés là où cela fait gagner au moins 3 min par attraction.",
+      "blocksAutoHint": "Dans les dates de tes billets, mélangés là où cela fait gagner au moins 3 min par attraction",
       "blocksAlways": "Toujours groupés",
       "blocksFree": "Mélangés partout où l’attente est plus courte",
       "split": "Deuxièmes jours de parc",
-      "splitHint": "Les parcs sur « 1–2 jours » ont un deuxième jour si le voyage le permet.",
+      "splitHint": "Les parcs sur « 1–2 jours » ont un deuxième jour si le voyage le permet",
       "guide": "Plus de détails dans le guide du planificateur",
       "moveBuffer": "Changement d’hôtel",
       "moveBufferMinutes": "{minutes} min",
@@ -3398,7 +3391,7 @@
       "leftOut": "{parks} {count, plural, =1 {ne tient} other {ne tiennent}} pas dans {days, plural, =1 {1 jour de parc} other {# jours de parc}}.",
       "travelDays": "Parc le jour d’arrivée et de départ",
       "longer": "{count, plural, =1 {1 jour de plus} other {# jours de plus}}",
-      "peakSaved": "Attente de pointe à tes dates : environ {minutes} min, {saved} min de moins qu’en moyenne sur tes jours de voyage.",
+      "peakSaved": "Attente de pointe à tes dates : environ {minutes} min, {saved} min de moins qu’en moyenne sur tes jours de voyage",
       "peakFlat": "Attente de pointe à tes dates : environ {minutes} min. Tes jours de voyage sont à peu près aussi chargés, l’ordre change peu.",
       "accuracy": "Quelle précision ?",
       "moves": "{cities, plural, =1 {1 ville} other {# villes}}, {moves, plural, =0 {aucun changement d’hôtel} =1 {1 changement d’hôtel} other {# changements d’hôtel}}",
@@ -3611,6 +3604,13 @@
       "closed": "{park} est fermé ce jour-là",
       "noFigure": "pas de chiffre"
     },
+    "delete": {
+      "action": "Supprimer le voyage",
+      "confirm": "Supprimer ce voyage ? Tes dates, tes parcs et tes modifications sont effacés de cet appareil.",
+      "yes": "Supprimer",
+      "no": "Garder",
+      "done": "Ton voyage du {range} est supprimé."
+    },
     "keep": {
       "addAll": "Copier dans le planificateur de journée",
       "ics": "Ajouter au calendrier (.ics)",
@@ -3696,7 +3696,7 @@
     },
     "tickets": {
       "title": "Billets",
-      "lead": "Avec tes billets, le plan suit leurs jours et leurs parcs.",
+      "lead": "Avec tes billets, le plan suit leurs jours et leurs parcs",
       "add": "Ajouter un billet",
       "addLabel": "Ajouter un billet {resort}",
       "addAnother": "Ajouter un autre billet {resort}",
@@ -3863,6 +3863,18 @@
         "label": "Lien partenaire",
         "note": "Si tu achètes par ce lien, park.fan touche une commission. Le prix ne change pas pour toi."
       },
+      "pick": {
+        "title": "Notre conseil",
+        "ad": "Publicité",
+        "exact": "Adapté à ce plan",
+        "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+        "via": "En vente chez",
+        "official": "{count, plural, =1 {Boutique officielle :} other {Boutiques officielles :}}",
+        "details": "Comment le plan utilise les billets",
+        "daysIn": "{days} jours de parc sur {window} jours",
+        "everyDay": "Chaque jour, {window} jours d’affilée",
+        "hopping": "{hopper} inclus"
+      },
       "later": "Déjà des billets ?",
       "enter": "Les ajouter"
     },
@@ -3911,7 +3923,7 @@
     },
     "parky": {
       "button": "Prépare avec Parky ton voyage idéal",
-      "line": "Quelques questions dans le chat, et chaque réponse arrive tout de suite ici, dans le planificateur."
+      "line": "Je te pose quelques questions dans le chat et je note chaque réponse tout de suite ici, dans le planificateur."
     },
     "codeKey": "Parcs",
     "crowdColour": "Couleur : l’affluence du parc ce jour-là, comparée à un jour normal chez lui.",
@@ -3927,8 +3939,8 @@
       "finish": "Terminé, voir le plan",
       "showPlan": "Voir le plan",
       "hotel": {
-        "lead": "Avec un hôtel du resort, tu entres plus tôt dans les parcs.",
-        "leadNone": "Ici, aucun hôtel ne te fait entrer plus tôt dans les parcs. L’hôtel décide de la longueur de tes trajets.",
+        "lead": "Avec un hôtel du resort, tu entres plus tôt dans les parcs",
+        "leadNone": "Ici, aucun hôtel ne te fait entrer plus tôt dans les parcs : l’hôtel décide seulement de la longueur de tes trajets",
         "noEarly": "Pas d’entrée anticipée",
         "hintNoEarly": "{hint}, sans entrée anticipée",
         "area": "Dans quel quartier ?",
@@ -3943,21 +3955,21 @@
         "open": "Pas encore choisi",
         "openHint": "Le plan choisit",
         "openShared": "Le plan choisit l’hôtel",
-        "oneCity": "Pour {nights, plural, =1 {une nuit} other {# nuits}}, le plan propose une seule ville.",
+        "oneCity": "Pour {nights, plural, =1 {une nuit} other {# nuits}}, le plan propose une seule ville",
         "otherCities": "Autres villes"
       },
       "hotels": {
         "ask": "Où dors-tu à {cities} ?",
         "in": "Où dors-tu à {city} ?",
         "open": "Je ne sais pas encore",
-        "openHint": "Les trajets partent alors de {area}, sans entrée anticipée.",
+        "openHint": "Les trajets partent alors de {area}, sans entrée anticipée",
         "moveBuffer": "Temps pour changer d’hôtel",
         "map": "Carte schématique : {count, plural, =1 {un quartier} other {# quartiers}}, numérotés comme la liste en dessous, et {parks}.",
         "mapAreas": "Carte schématique : {count, plural, =1 {un quartier} other {# quartiers}}, numérotés comme la liste en dessous."
       },
       "pace": {
-        "maxHint": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée, puis un jour de repos.",
-        "noneHint": "Un parc chaque jour tant qu’il en reste.",
+        "maxHint": "Au plus {n, plural, =1 {1 jour de parc} other {# jours de parc}} d’affilée, puis un jour de repos",
+        "noneHint": "Un parc chaque jour tant qu’il en reste",
         "streak": "Jours de parc d’affilée",
         "patternKey": "Chaque motif est une semaine : en bleu un jour de parc, en clair un jour de repos.",
         "more": "Autre chose ?",
@@ -3992,7 +4004,7 @@
         "pace": "À quel point le voyage doit-il être chargé ?",
         "evenings": "Et le soir ?",
         "tickets": "As-tu déjà des billets ?",
-        "finale": "Ton plan est prêt.",
+        "finale": "Ton plan est prêt",
         "departure": "Et quand prends-tu l’avion du retour ?"
       },
       "ribbon": {
@@ -4005,15 +4017,15 @@
         "months": "Mois"
       },
       "parks": {
-        "lead": "Les grands parcs sont déjà choisis. Touche une photo pour ajouter un parc ou le retirer.",
+        "lead": "Les grands parcs sont déjà choisis, et une touche sur une photo ajoute un parc ou le retire",
         "daysLabel": "Jours",
         "moreCount": "{count, plural, =1 {1 parc} other {# parcs}}",
         "wayFrom": "{way} depuis {city}",
         "conflict": {
-          "travelDays": "Le voyage compte alors {count, plural, =1 {1 jour de parc} other {# jours de parc}}.",
+          "travelDays": "Le voyage compte alors {count, plural, =1 {1 jour de parc} other {# jours de parc}}",
           "only": "Seulement {parks}",
-          "onlyHint": "{parks} {count, plural, =1 {sort} other {sortent}} du plan.",
-          "longer": "Le voyage se termine alors le {date}."
+          "onlyHint": "{parks} {count, plural, =1 {sort} other {sortent}} du plan",
+          "longer": "Le voyage se termine alors le {date}"
         }
       },
       "spare": {
@@ -4022,21 +4034,21 @@
         "planned": "{count, plural, =1 {1 autre est déjà prévu} other {# autres sont déjà prévus}}.",
         "ask": "Que faire des {free} qui restent ?",
         "moreParks": "Ajouter d’autres parcs",
-        "moreParksHint": "{parks} {count, plural, =1 {s’ajoute} other {s’ajoutent}} au voyage.",
+        "moreParksHint": "{parks} {count, plural, =1 {s’ajoute} other {s’ajoutent}} au voyage",
         "moreDays": "Plus de temps dans tes parcs",
-        "moreDaysHint": "Un jour de plus pour {parks}.",
+        "moreDaysHint": "Un jour de plus pour {parks}",
         "free": "Des jours libres, répartis sur le voyage",
-        "freeHint": "Le plan les place entre les jours de parc, pour la ville ou pour se reposer.",
+        "freeHint": "Le plan les place entre les jours de parc, pour la ville ou pour se reposer",
         "shorter": "Voyager moins longtemps",
-        "shorterHint": "{days} jours suffisent pour {parks, plural, =1 {1 parc} other {# parcs}}.",
+        "shorterHint": "{days} jours suffisent pour {parks, plural, =1 {1 parc} other {# parcs}}",
         "parkDays": "+{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
         "days": "{count} jours"
       },
       "tickets": {
         "notYet": "Pas encore",
-        "notYetHint": "Le plan te dit lesquels il te faut.",
+        "notYetHint": "Le plan te dit lesquels il te faut",
         "owned": "Oui, déjà achetés",
-        "ownedHint": "Saisis-les, et le plan suit leurs dates."
+        "ownedHint": "Saisis-les, et le plan suit leurs dates"
       },
       "finale": {
         "days": "{count, plural, =1 {1 jour} other {# jours}}",
@@ -4075,7 +4087,7 @@
         "inRegion": "à Orlando",
         "area": "Floride",
         "calendar": "Calendrier d’affluence Orlando",
-        "calendarHint": "Quel parc quel jour, et un planificateur pour tout le voyage."
+        "calendarHint": "Quel parc quel jour, et un planificateur pour tout le voyage"
       },
       "hub": {
         "title": "Calendrier d’affluence Orlando",
@@ -4087,8 +4099,8 @@
         "metaDescriptionPlain": "Quel parc quel jour à Walt Disney World, chez Universal avec Epic Universe et à SeaWorld, et un planificateur qui place tes parcs sur tes dates.",
         "metaDescriptionMonth": "Les jours les plus calmes à Orlando en {month} : {verdict}. Chaque parc jour par jour, Epic Universe compris.",
         "metaDescriptionMonthPlain": "Orlando en {month}, jour par jour : où les files sont les plus courtes à Disney World, chez Universal avec Epic Universe, à SeaWorld et en excursion.",
-        "lead": "Un calendrier pour les 16 parcs autour d’Orlando et un planificateur pour tes jours de voyage.",
-        "leadMonth": "Les 16 parcs autour d’Orlando en {month}, jour par jour, et un planificateur pour tes jours de voyage.",
+        "lead": "Un calendrier pour les 16 parcs autour d’Orlando et un planificateur pour tes jours de voyage",
+        "leadMonth": "Les 16 parcs autour d’Orlando en {month}, jour par jour, et un planificateur pour tes jours de voyage",
         "monthIndexLabel": "Orlando mois par mois",
         "calendar": {
           "caption": "Les parcs d’Orlando du {from} au {to} : attente de pointe aux grandes attractions, en minutes"
@@ -4152,19 +4164,19 @@
         "resorts": {
           "title": "Les resorts autour d’Orlando",
           "walt-disney-world": {
-            "lead": "Quatre parcs à thème et deux parcs aquatiques. Les clients des hôtels Disney entrent plus tôt le matin grâce à l’Early Entry.",
+            "lead": "Quatre parcs à thème et deux parcs aquatiques, où les clients des hôtels Disney entrent plus tôt le matin grâce à l’Early Entry",
             "stay": "Depuis un hôtel de Lake Buena Vista, chaque parc à thème est à moins d’une demi-heure."
           },
           "universal-orlando": {
-            "lead": "Trois parcs à thème et le parc aquatique Volcano Bay. Les clients des hôtels Universal entrent plus tôt grâce à l’Early Park Admission.",
+            "lead": "Trois parcs à thème et le parc aquatique Volcano Bay, où les clients des hôtels Universal entrent plus tôt grâce à l’Early Park Admission",
             "stay": "Les hôtels Premier ajoutent l’Express à Universal Studios et Islands of Adventure."
           },
           "seaworld-orlando": {
             "name": "SeaWorld Orlando",
-            "lead": "SeaWorld, le parc aquatique Aquatica et Discovery Cove, qui n’ouvre que sur réservation. Les billets multiparcs incluent Busch Gardens et Adventure Island à Tampa."
+            "lead": "SeaWorld, le parc aquatique Aquatica et Discovery Cove, qui n’ouvre que sur réservation, plus Busch Gardens et Adventure Island à Tampa avec les billets multiparcs"
           },
           "day-trips": {
-            "lead": "LEGOLAND Florida, Busch Gardens Tampa et le parc aquatique Adventure Island sont en dehors d’Orlando.",
+            "lead": "LEGOLAND Florida, Busch Gardens Tampa et le parc aquatique Adventure Island sont en dehors d’Orlando",
             "stay": "Depuis Lake Buena Vista, LEGOLAND est à un peu moins d’une heure, Busch Gardens à environ une heure et demie."
           }
         }
@@ -4247,10 +4259,10 @@
             "universal_premier": "Early Park Admission, plus Express à Universal Studios et Islands of Adventure"
           },
           "fireworks": "Feu d’artifice de Magic Kingdom",
-          "fireworksWantHint": "Tes jours à Magic Kingdom évitent les soirées de fête, où les visiteurs à la journée doivent partir plus tôt.",
-          "fireworksAnyHint": "Une soirée de fête peut devenir un jour à Magic Kingdom si les files plus courtes compensent la journée plus courte.",
+          "fireworksWantHint": "Tes jours à Magic Kingdom évitent les soirées de fête, où les visiteurs à la journée doivent partir plus tôt",
+          "fireworksAnyHint": "Une soirée de fête peut devenir un jour à Magic Kingdom si les files plus courtes compensent la journée plus courte",
           "blocks": "Garder ensemble les jours Disney et les jours Universal",
-          "eveningsHint": "Quand un parc ferme tôt, le plan propose pour la soirée un deuxième parc ou Disney Springs et CityWalk.",
+          "eveningsHint": "Quand un parc ferme tôt, le plan propose pour la soirée un deuxième parc ou Disney Springs et CityWalk",
           "blocksTickets": "Jours Disney et jours Universal"
         },
         "details": {
@@ -4426,7 +4438,7 @@
           "hogwarts": "Pour le Hogwarts Express entre Universal Studios et Islands of Adventure, il te faut le park-to-park.",
           "longStay": {
             "title": "Billets 14 jours des boutiques britanniques",
-            "line": "Un pour Disney, un pour Universal, aussi ensemble en Combo Ticket.",
+            "line": "Un pour Disney, un pour Universal, aussi ensemble en Combo Ticket",
             "plan": "Planifier avec eux"
           },
           "mixing": {
@@ -4443,7 +4455,7 @@
       "homeStory": {
         "kicker": "Orlando",
         "title": "Orlando : quel parc quel jour",
-        "lead": "Seize parcs autour d’Orlando dans un seul calendrier : pour chaque jour, tu vois où les files sont les plus courtes à Disney World et chez Universal, et le planificateur place tes parcs sur tes dates.",
+        "lead": "Seize parcs autour d’Orlando dans un seul calendrier : pour chaque jour, tu vois où les files sont les plus courtes à Disney World et chez Universal, et le planificateur place tes parcs sur tes dates",
         "link": "Calendrier d’affluence Orlando"
       }
     },
@@ -4453,7 +4465,7 @@
         "inRegion": "en Californie du Sud",
         "area": "Los Angeles et San Diego",
         "calendar": "Calendrier d’affluence Disneyland Californie",
-        "calendarHint": "Lequel des huit parcs est le plus calme quel jour, et un planificateur pour ton voyage."
+        "calendarHint": "Lequel des huit parcs est le plus calme quel jour, et un planificateur pour ton voyage"
       },
       "hub": {
         "title": "Calendrier d’affluence Disneyland Californie",
@@ -4465,8 +4477,8 @@
         "metaDescriptionPlain": "Quel parc est le plus calme quel jour au Disneyland Resort, à Universal Studios Hollywood et jusqu’à San Diego, avec un planificateur pour tes dates.",
         "metaDescriptionMonth": "Les jours les plus calmes en Californie du Sud en {month} : {verdict}. Chaque parc, jour par jour.",
         "metaDescriptionMonthPlain": "La Californie du Sud en {month}, jour par jour : le parc le plus calme au Disneyland Resort, à Universal Studios Hollywood et autour de San Diego.",
-        "lead": "Un calendrier pour les huit parcs autour de Los Angeles et San Diego, et un planificateur pour tes jours de voyage.",
-        "leadMonth": "Les huit parcs autour de Los Angeles et San Diego en {month}, jour par jour, et un planificateur pour tes jours de voyage.",
+        "lead": "Un calendrier pour les huit parcs autour de Los Angeles et San Diego, et un planificateur pour tes jours de voyage",
+        "leadMonth": "Les huit parcs autour de Los Angeles et San Diego en {month}, jour par jour, et un planificateur pour tes jours de voyage",
         "monthIndexLabel": "La Californie du Sud mois par mois",
         "calendar": {
           "caption": "Les parcs de Californie du Sud du {from} au {to} : attente de pointe en minutes"
@@ -4525,15 +4537,15 @@
         "resorts": {
           "title": "Les resorts de Californie du Sud",
           "disneyland-resort": {
-            "lead": "Disneyland Park et Disney California Adventure sont côte à côte à Anaheim. Les soirs d’Oogie Boogie Bash, California Adventure ferme plus tôt aux visiteurs de la journée.",
+            "lead": "Disneyland Park et Disney California Adventure sont côte à côte à Anaheim, et les soirs d’Oogie Boogie Bash, California Adventure ferme plus tôt aux visiteurs de la journée",
             "stay": "Depuis les hôtels Disney et Harbor Boulevard, tu vas à pied aux deux parcs."
           },
           "universal-studios-hollywood": {
-            "lead": "Universal Studios Hollywood est à Universal City, à Los Angeles, avec son propre billet et son propre calendrier.",
+            "lead": "Universal Studios Hollywood est à Universal City, à Los Angeles, avec son propre billet et son propre calendrier",
             "stay": "Les quartiers d’hôtels proches sont Universal City et Hollywood."
           },
           "day-trips": {
-            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain et trois parcs à San Diego et autour : SeaWorld, LEGOLAND California et Sesame Place.",
+            "lead": "Knott’s Berry Farm, Six Flags Magic Mountain et trois parcs à San Diego et autour : SeaWorld, LEGOLAND California et Sesame Place",
             "stay": "Pour SeaWorld, LEGOLAND et Sesame Place, il y a des quartiers d’hôtels à San Diego et Carlsbad."
           }
         }
@@ -4596,9 +4608,9 @@
             "disney": "Disneyland Hotel, Grand Californian ou Pixar Place : à pied jusqu’aux deux parcs"
           },
           "fireworks": "Spectacles du soir",
-          "fireworksWantHint": "Tes journées de parc évitent les soirées de fête, où les visiteurs du jour doivent partir plus tôt.",
-          "fireworksAnyHint": "Une soirée de fête peut devenir une journée de parc si l’attente de pointe plus basse compense la journée plus courte.",
-          "eveningsHint": "Quand un parc ferme plus tôt, le plan propose une soirée : l’autre parc Disney, Downtown Disney ou Universal CityWalk."
+          "fireworksWantHint": "Tes journées de parc évitent les soirées de fête, où les visiteurs du jour doivent partir plus tôt",
+          "fireworksAnyHint": "Une soirée de fête peut devenir une journée de parc si l’attente de pointe plus basse compense la journée plus courte",
+          "eveningsHint": "Quand un parc ferme plus tôt, le plan propose une soirée : l’autre parc Disney, Downtown Disney ou Universal CityWalk"
         },
         "relaxed": {
           "blocks_relaxed": "Les jours au Disneyland Resort n’ont pas pu tous se suivre à ces dates."
@@ -4721,7 +4733,7 @@
       "homeStory": {
         "kicker": "Californie du Sud",
         "title": "Californie du Sud : quel parc quel jour",
-        "lead": "Disneyland, California Adventure, Universal Hollywood et cinq autres parcs dans un seul calendrier : quand chacun est le plus calme, et un planificateur pour tes dates de voyage.",
+        "lead": "Disneyland, California Adventure, Universal Hollywood et cinq autres parcs dans un seul calendrier : quand chacun est le plus calme, et un planificateur pour tes dates de voyage",
         "link": "Calendrier d’affluence Californie du Sud"
       }
     },
@@ -4731,7 +4743,7 @@
         "inRegion": "au Japon",
         "area": "De Tokyo à Osaka",
         "calendar": "Affluence Tokyo Disney et Universal Studios Japan",
-        "calendarHint": "Cinq parcs jour par jour, et un planificateur pour un voyage entre plusieurs villes."
+        "calendarHint": "Cinq parcs jour par jour, et un planificateur pour un voyage entre plusieurs villes"
       },
       "hub": {
         "title": "Affluence Tokyo Disney et Universal Studios Japan",
@@ -4743,8 +4755,8 @@
         "metaDescriptionPlain": "Attente de pointe à Tokyo Disneyland, DisneySea, Universal Studios Japan (Osaka), Fuji-Q et LEGOLAND Japan, jour par jour, et un planificateur.",
         "metaDescriptionMonth": "Les jours les plus calmes dans les parcs du Japon en {month} : {verdict}. Les cinq parcs jour par jour.",
         "metaDescriptionMonthPlain": "Le Japon en {month}, jour par jour : l’attente de pointe à Tokyo Disneyland, Tokyo DisneySea, Fuji-Q Highland, LEGOLAND Japan et Universal Studios Japan.",
-        "lead": "Un calendrier pour cinq parcs entre Tokyo et Osaka, et un planificateur qui met tes villes dans l’ordre et répartit les nuits.",
-        "leadMonth": "Les cinq parcs entre Tokyo et Osaka en {month}, jour par jour, et un planificateur qui met tes villes dans l’ordre et répartit les nuits.",
+        "lead": "Un calendrier pour cinq parcs entre Tokyo et Osaka, et un planificateur qui met tes villes dans l’ordre et répartit les nuits",
+        "leadMonth": "Les cinq parcs entre Tokyo et Osaka en {month}, jour par jour, et un planificateur qui met tes villes dans l’ordre et répartit les nuits",
         "monthIndexLabel": "Le Japon mois par mois",
         "glance": {
           "zone": "heure du Japon"
@@ -4817,19 +4829,19 @@
         "resorts": {
           "title": "Les resorts et parcs du Japon",
           "tokyo-disney-resort": {
-            "lead": "Tokyo Disneyland et Tokyo DisneySea sont côte à côte à Maihama. Les clients des hôtels Disney entrent à Tokyo Disneyland 15 minutes plus tôt grâce à l’Happy Entry.",
+            "lead": "Tokyo Disneyland et Tokyo DisneySea sont côte à côte à Maihama, et les clients des hôtels Disney entrent à Tokyo Disneyland 15 minutes plus tôt grâce à l’Happy Entry",
             "stay": "Maihama pour les deux parcs Disney : à pied jusqu’à Tokyo Disneyland, en monorail jusqu’à DisneySea."
           },
           "universal-studios-japan": {
-            "lead": "Universal Studios Japan est à Osaka, au bout de la ligne qui part de Tokyo et passe par Nagoya.",
+            "lead": "Universal Studios Japan est à Osaka, au bout de la ligne qui part de Tokyo et passe par Nagoya",
             "stay": "Universal City est à l’entrée, Umeda et Namba en ville ; Kyoto est à une heure."
           },
           "fuji-q-highland": {
-            "lead": "Fuji-Q Highland est à Fujikawaguchiko. Le car depuis Shinjuku met un peu moins de deux heures.",
+            "lead": "Fuji-Q Highland est à Fujikawaguchiko, à un peu moins de deux heures de car depuis Shinjuku",
             "stay": "Shinjuku pour les cars depuis Tokyo, Kawaguchiko au bord du lac, ou le Highland Resort au parc."
           },
           "legoland-japan": {
-            "lead": "LEGOLAND Japan est à Nagoya, sur la route entre Tokyo et Osaka.",
+            "lead": "LEGOLAND Japan est à Nagoya, sur la route entre Tokyo et Osaka",
             "stay": "Nagoya Station pour le Shinkansen, ou le LEGOLAND Japan Hotel à l’entrée."
           }
         }
@@ -4903,7 +4915,7 @@
             "park_hotel": "Hôtel de parc à Fuji-Q ou LEGOLAND",
             "offsite": "Ailleurs"
           },
-          "eveningsHint": "Si un parc ferme plus tôt, le plan propose pour la soirée IKSPIARI près des parcs Disney ou Universal CityWalk Osaka.",
+          "eveningsHint": "Si un parc ferme plus tôt, le plan propose pour la soirée IKSPIARI près des parcs Disney ou Universal CityWalk Osaka",
           "moveBufferHint": "Avec des bagages envoyés à l’avance (takkyubin), 30 minutes suffisent en général."
         },
         "details": {
@@ -5056,7 +5068,7 @@
       "homeStory": {
         "kicker": "Japon",
         "title": "Japon : quel parc quel jour",
-        "lead": "Cinq parcs de Tokyo à Osaka dans un seul calendrier, jour par jour, et un planificateur qui répartit les villes, les nuits et les parcs sur tes dates.",
+        "lead": "Cinq parcs de Tokyo à Osaka dans un seul calendrier, jour par jour, et un planificateur qui répartit les villes, les nuits et les parcs sur tes dates",
         "link": "Calendrier d’affluence Japon"
       }
     },
@@ -5066,7 +5078,7 @@
         "inRegion": "à Paris",
         "area": "France",
         "calendar": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
-        "calendarHint": "Quel parc quel jour parmi les trois, et où dormir pour chacun."
+        "calendarHint": "Quel parc quel jour parmi les trois, et où dormir pour chacun"
       },
       "hub": {
         "title": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
@@ -5078,8 +5090,8 @@
         "metaDescriptionPlain": "Attente de pointe et affluence au Parc Disneyland, à Disney Adventure World et au Parc Astérix, jour par jour, avec un planificateur de séjour.",
         "metaDescriptionMonth": "Les jours les plus calmes en {month} à Disneyland Paris et au Parc Astérix : {verdict}. Les trois parcs jour par jour.",
         "metaDescriptionMonthPlain": "Disneyland Paris et le Parc Astérix en {month}, jour par jour : attente de pointe, affluence et horaires des trois parcs.",
-        "lead": "Un calendrier pour Disneyland Paris et le Parc Astérix, chacun avec ses hôtels, et un planificateur qui te dit où dormir.",
-        "leadMonth": "Disneyland Paris et le Parc Astérix en {month}, jour par jour, et un planificateur qui te dit où dormir.",
+        "lead": "Un calendrier pour Disneyland Paris et le Parc Astérix, chacun avec ses hôtels, et un planificateur qui te dit où dormir",
+        "leadMonth": "Disneyland Paris et le Parc Astérix en {month}, jour par jour, et un planificateur qui te dit où dormir",
         "monthIndexLabel": "Calendrier d’affluence par mois",
         "glance": {
           "zone": "heure de Paris"
@@ -5138,11 +5150,11 @@
         "resorts": {
           "title": "Les resorts autour de Paris",
           "disneyland-paris": {
-            "lead": "Disneyland Park et Disney Adventure World sont côte à côte, leurs entrées à quelques minutes à pied. Les clients des hôtels Disney entrent plus tôt grâce aux Extra Magic Time.",
+            "lead": "Disneyland Park et Disney Adventure World sont côte à côte, leurs entrées à quelques minutes à pied, et les clients des hôtels Disney entrent plus tôt grâce aux Extra Magic Time",
             "stay": "Les hôtels Disney au bord du Lake Disney sont à pied des entrées ; les hôtels partenaires de Val d’Europe et Val de France ont une navette gratuite."
           },
           "parc-asterix": {
-            "lead": "Un parc à thème avec ses propres hôtels, à environ une heure de voiture de Disneyland Paris. Sans voiture, une navette relie l’aéroport Charles de Gaulle au parc.",
+            "lead": "Un parc à thème avec ses propres hôtels, à environ une heure de voiture de Disneyland Paris, ou en navette depuis l’aéroport Charles de Gaulle sans voiture",
             "stay": "Les trois hôtels du parc sont à pied de l’entrée, et un séjour comprend les billets et l’Early Entry pour certaines attractions."
           }
         }
@@ -5207,7 +5219,7 @@
             "parc_asterix": "Hôtel du Parc Astérix",
             "offsite": "Autre hôtel"
           },
-          "eveningsHint": "Si un parc ferme plus tôt, la soirée passe à l’autre parc Disney ou à Disney Village.",
+          "eveningsHint": "Si un parc ferme plus tôt, la soirée passe à l’autre parc Disney ou à Disney Village",
           "moveBufferHint": "Avec tes valises jusqu’à l’hôtel suivant, 60 minutes sont réalistes."
         },
         "details": {
@@ -5319,7 +5331,7 @@
   "news": {
     "metaTitle": "Actualités des parcs : événements et nouveautés",
     "metaDescription": "Brèves des parcs d’attractions : nouvelles attractions, événements, anniversaires et ventes, chacune datée et reliée au parc concerné.",
-    "intro": "Ce qui se passe dans les parcs, le plus récent d’abord.",
+    "intro": "Ce qui se passe dans les parcs, le plus récent d’abord",
     "count": "{count, plural, one {# actualité} other {# actualités}}",
     "filter": {
       "label": "Filtrer par parc",
@@ -5359,12 +5371,12 @@
       "action": "Le calendrier d’affluence de votre parc",
       "next": {
         "title": "Votre date dans le calendrier d’affluence",
-        "body": "Sur chaque page de parc, chaque jour publié est vert, jaune ou rouge, vacances scolaires et jours fériés de la région compris."
+        "body": "Sur chaque page de parc, chaque jour publié est vert, jaune ou rouge, vacances scolaires et jours fériés de la région compris"
       }
     },
     "bestTime": {
       "kicker": "park.fan · préparer sa visite",
-      "tagline": "L'affluence suit des tendances. À partir des temps d'attente que nous mesurons depuis décembre 2025 dans plus de 200 parcs, voici les jours les plus calmes et comment éviter les pires.",
+      "tagline": "L'affluence suit des tendances : à partir des temps d'attente que nous mesurons depuis décembre 2025 dans plus de 200 parcs, voici les jours les plus calmes et comment éviter les pires",
       "stats": {
         "parks": {
           "value": "200+",
@@ -5399,7 +5411,7 @@
       "action": "Planifier une journée",
       "next": {
         "title": "Pas encore de date ?",
-        "body": "Les jours de la semaine et les mois les plus calmes, à partir des temps d’attente mesurés dans plus de 200 parcs, et sur chaque page de parc un calendrier d’affluence avec une prévision pour chaque jour que le parc a publié."
+        "body": "Les jours de la semaine et les mois les plus calmes, à partir des temps d’attente mesurés dans plus de 200 parcs, et sur chaque page de parc un calendrier d’affluence avec une prévision pour chaque jour que le parc a publié"
       }
     },
     "blog": {
@@ -5715,6 +5727,9 @@
       "planStands": "Ton plan est prêt. À affiner si tu veux",
       "end": "Arrêter",
       "done": "Terminé",
+      "start": {
+        "name": "Parky"
+      },
       "steps": {
         "region": "Région",
         "dates": "Dates",
@@ -5755,7 +5770,7 @@
     "metaTitle": "Parky : temps d’attente et planning dans un chat IA",
     "metaDescription": "Parky connaît les temps d’attente actuels et les jours les plus calmes, et prépare ta journée au parc avec toi. Le chat IA de park.fan, gratuit et sans compte.",
     "title": "Parky t’accompagne au parc",
-    "lead": "Il connaît les temps d’attente du moment et les jours les plus calmes, et il prépare ta journée au parc avec toi.",
+    "lead": "Il connaît les temps d’attente du moment et les jours les plus calmes, et il prépare ta journée au parc avec toi",
     "intro": "Parky habite en bas à droite de park.fan, dans la bulle ronde avec une grande roue sur la tête. Touche-le et écris-lui comme à un ami qui connaît les parcs d’attractions par cœur. Ce que tu as mis dans ton planning, il le connaît déjà.",
     "ask": "Écrire à Parky",
     "off": "Parky fait une pause en ce moment. Repasse plus tard.",

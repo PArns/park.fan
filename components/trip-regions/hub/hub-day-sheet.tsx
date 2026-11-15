@@ -41,6 +41,7 @@ import type {
   TripSeason,
 } from '@/lib/trip-regions/types';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
+import { PlanSelect } from '../planner/plan-controls';
 
 /** How many big rides a park lists for its day. */
 const BIG_RIDES = 5;
@@ -116,17 +117,17 @@ export function HubDaySheet({
               )}
               <label className="mt-3 flex items-center gap-2 text-sm">
                 <span className="text-muted-foreground shrink-0">{t('stayingAt')}</span>
-                <select
+                <PlanSelect
                   value={area}
                   onChange={(event) => setArea(event.target.value)}
-                  className="border-border bg-background min-h-11 min-w-0 flex-1 rounded-md border px-2 sm:min-h-9"
+                  className="flex-1"
                 >
                   {region.hotelAreas.map((a) => (
                     <option key={a.key} value={a.key}>
                       {a.name}
                     </option>
                   ))}
-                </select>
+                </PlanSelect>
               </label>
             </div>
 

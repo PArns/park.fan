@@ -38,8 +38,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`more-menu.ts`](../../lib/navigation/more-menu.ts)
 
 - `menuPhoto` _function_: A catalog photo as a header band draws it: the pre-cut 16:9 crop where there is one (it was cut around the focal point already), else the original and where its subject is.
-- `getMoreMenu` _function_: Builds the header's "more" band for a locale: the glossary, guide and best-time hubs with their photos and chapters, the Fancast card and a tile per live trip region.
-- Types: `MoreMenuPhoto`, `MoreMenuChapter`, `MoreMenuHub`, `MoreMenuRegion`, `MoreMenu`
+- `getMoreMenu` _function_: Builds the header's "more" band for a locale: the glossary, guide and best-time hubs with their photos and chapters, and the Fancast card. The trip regions' hubs are the planner band's.
+- Types: `MoreMenuPhoto`, `MoreMenuChapter`, `MoreMenuHub`, `MoreMenu`
 
 ### [`news-menu.ts`](../../lib/navigation/news-menu.ts)
 

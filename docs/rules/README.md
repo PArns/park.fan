@@ -108,3 +108,4 @@ _Open when you write a post, a news item or UI copy, or add an image._
 - [A quote names its source, and a legal claim names its side](a-quote-names-its-source.md) — `> [!QUOTE]` with a source line (`BlogQuote`); legal claims attributed
 - [„Werktags" is Monday to Saturday](werktags-is-monday-to-saturday.md) — „Mo–Fr" / „lun–ven" in labels (`formatWeekdayList`); `pnpm check:prose` (`werktag-meaning`)
 - [A ride's figure comes from the RCDB](a-ride-figure-comes-from-the-rcdb.md) — height, length, drop, speed; where the park differs, both stand with their owners
+- [A heading and the line under it end without a full stop](../writing/4-typography.md#43-headings) — titles, subtitles, leads, taglines, kickers, one-line card subtitles, in all six; `?`, `!`, `…` stay, two sentences keep both stops; `pnpm check:prose`

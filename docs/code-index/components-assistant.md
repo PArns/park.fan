@@ -68,12 +68,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky-interview-start.tsx`](../../components/assistant/parky-interview-start.tsx)
 
-- `ParkyInterviewStart` _component_: The planners' way into Parky's interview: Parky's face beside a line on what the chat does, and a button that sets the interview on its first step and opens the chat, which asks the first question once its session is ready.
+- `ParkyInterviewStart` _component_: The planners' way into Parky's interview, as his own offer: Parky beside a speech bubble with his name and his line, under it the questions the chat starts with (the interview's core steps, numbered as the chat's bar counts them), and a …
 
 ### [`parky-layer.ts`](../../components/assistant/parky-layer.ts)
 
 - `PARKY_LAYER` _const_: Parky's layer: button, speech bubble and window lie above everything else on the page, the header, the planner and the navigation bar's `z-[9999]` included. One class for all three.
 - `ASSISTANT_PHONE_QUERY` _const_: Below this width Parky's window takes the screen: the page behind it is locked, it stands in what the browser shows, and a step that leads elsewhere on the page closes it.
+
+### [`parky-speech-bubble.tsx`](../../components/assistant/parky-speech-bubble.tsx)
+
+- `ParkyBubbleTail` _component_: The tail of `PARKY_BUBBLE`: a square turned on its edge, half under the bubble's side at its middle, pointing at Parky on that side. It goes beside the bubble in a `relative` wrapper.
+- `PARKY_BUBBLE` _const_: The surface of Parky's speech bubble in the planners: the card's ground, a hairline and a soft shadow, above its tail (`ParkyBubbleTail`), whose inner half it covers.
 
 ### [`parky-trip-interview-button.tsx`](../../components/assistant/parky-trip-interview-button.tsx)
 
