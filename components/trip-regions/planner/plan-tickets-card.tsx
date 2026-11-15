@@ -1029,9 +1029,11 @@ function SuggestionRow({
         }
         data-plan-ticket-facts={resort}
       >
+        {/* On a phone Parky's launcher floats over the card's right edge; the room keeps the
+            chevron beside it rather than under it. */}
         <summary
           className={cn(
-            'flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-md py-2 [&::-webkit-details-marker]:hidden',
+            'flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-md py-2 max-sm:pr-12 [&::-webkit-details-marker]:hidden',
             PLAN_FOCUS
           )}
         >
