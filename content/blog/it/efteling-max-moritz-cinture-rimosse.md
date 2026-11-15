@@ -2,7 +2,7 @@
 title: 'Efteling toglie le cinture da Max & Moritz'
 translationKey: efteling-max-moritz-belts-removed
 date: '2026-11-15'
-time: '07:30'
+time: '07:00'
 author: patrick
 mode: published
 featured: false
