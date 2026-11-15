@@ -197,8 +197,8 @@ The panel is only the look; the data and the click behaviour live in the modules
   `lib/trip-regions/registry.ts`, [trip regions](trip-regions.md)); a region is listed once its hub
   goes live, never as a teaser, and the band, the phone sheet and `pnpm check:header-links` read the
   same list. `getPlannerMenu` (`lib/navigation/planner-menu.ts`, server-only) resolves each per
-  locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's planner
-  anchor (`/orlando#planner`) and crowd calendar, the hub's photo, its park count from the API's
+  locale: its name, area and crowd calendar's name from `tripRegions.<slug>.nav`, the hub's address
+  (`/orlando`, opened at its top) and crowd calendar, the hub's photo, its park count from the API's
   list of regions (else the region route's `parks[]`; without either the chip is left out) and its
   longest trip from the same list (else `MAX_TRIP_DAYS`). The parks are memoised per process like
   `getFeaturedParksMenu`; the layout hands the whole to the header. One region is a large card (`RegionCard`) beside the
