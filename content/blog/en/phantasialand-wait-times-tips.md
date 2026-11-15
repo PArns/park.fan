@@ -2,7 +2,7 @@
 title: 'At Phantasialand, the Quick Pass only pays off on busy days'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -29,17 +29,20 @@ coverImage:
 seo:
   title: 'Phantasialand tips: Quick Pass, quiet days, wait times'
   description: >-
-    Keep Phantasialand wait times down: the right day, the Quick Pass, Rutmor’s
-    Taverne and Wintertraum, from a regular of more than thirty years.
+    Keep Phantasialand wait times down: the right day, the Quick Pass, now sold online too, and Wintertraum, from a regular of more than thirty years.
   keywords:
     - Phantasialand wait times
     - avoid Phantasialand wait times
     - Phantasialand tips
     - Phantasialand tips 2026
+    - Phantasialand tips winter 2026/27
     - Phantasialand when least busy
     - Phantasialand best time to visit
     - Phantasialand Quick Pass
     - Phantasialand Quick Pass Ultimate
+    - buy Phantasialand Quick Pass online
+    - Phantasialand Quick Pass price
+    - Phantasialand Fast Pass
     - Phantasialand ticket prices 2026
     - Phantasialand annual pass
     - Phantasialand best restaurants
@@ -47,7 +50,7 @@ seo:
     - Taron wait times
     - F.L.Y. Phantasialand
     - Phantasialand getting there Brühl
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 I’ve been going to [Phantasialand](ref:phantasialand) for over thirty years. My
@@ -274,30 +277,46 @@ works completely differently. There are two variants:
 - **Quick Pass (Single)**, the fast track for **one ride** on one specific
   attraction. At launch the price was billed as _dynamic_, rising with the
   current wait time. I always saw the same price at the counter anyway, and by
-  now the park’s information page lists fixed prices too: €5 for
-  [Colorado Adventure](ref:phantasialand/colorado-adventure),
+  now there’s a fixed list: €5 for
   [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
   [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
   [Mystery Castle](ref:phantasialand/mystery-castle) and
   [Talocan](ref:phantasialand/talocan), €7 each for
+  [Colorado Adventure](ref:phantasialand/colorado-adventure),
   [Winja’s Fear](ref:phantasialand/winjas-fear) and Winja’s Force, €10 for
   [Black Mamba](ref:phantasialand/black-mamba) and
   [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), €12 for
-  [River Quest](ref:phantasialand/river-quest) and
-  [Taron](ref:phantasialand/taron).
-- **Quick Pass Ultimate** for €80: one go on each of those eleven rides plus one
-  on [F.L.Y.](ref:phantasialand/fly). **Only Ultimate gets you onto F.L.Y. with a
-  Quick Pass**; you can’t buy it singly. All eleven single passes add up to €83,
-  so Ultimate is cheaper and throws F.L.Y. in on top. It only pays off if you
-  really want to do the lot, though.
+  [Taron](ref:phantasialand/taron). The online shop charges €7 for Colorado
+  Adventure, while the park’s information page still says €5. River Quest isn’t
+  on either list at the moment.
+- **Quick Pass Ultimate** for €80: one go on each of those ten rides plus one on
+  [F.L.Y.](ref:phantasialand/fly). **Only Ultimate gets you onto F.L.Y. with a
+  Quick Pass**; you can’t buy it singly. All ten single passes add up to €73, so
+  Ultimate costs €7 more, and that €7 is what F.L.Y. costs you. It only pays off
+  if you really want to do the lot, though.
 
 Even with the Quick Pass you still wait at F.L.Y., up top, in the station.
 The elaborate flying restraints make loading slow, and the fast track doesn’t
 make that jam go away.
 
-You can only buy it on the spot, at Guest Services on Kaiserplatz, and there
-aren’t many. During Wintertraum in particular, the Quick Passes are often sold
-out by midday on weekends.
+These days you can also buy the Quick Pass
+[in Phantasialand’s online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand).
+You pay there, it arrives as a PDF by email, and at the Quick Pass entrance you
+show the QR code on your phone with the screen brightness turned all the way up.
+Each pass is for one person. Guest Services in the Berlin area still sells them
+on the spot.
+
+A Quick Pass is only valid on the day you book it. You can’t pick another date,
+rebook it or get a refund. Buy one on the sofa the evening before and you’ve got
+a pass for a day that’s nearly over, so buy it on the morning of your visit.
+There aren’t many, and during Wintertraum in particular they’re often sold out
+by midday on weekends.
+
+```cta-widget
+href: https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand
+label: Buy a Quick Pass in the Phantasialand shop
+text: Valid only on the day you book it.
+```
 
 After many visits, I think **on a green day you don’t need it.** Arrive early,
 ride in a sensible order, and you’ll get the headliners with short waits. On a
@@ -525,6 +544,7 @@ one day. Two days are more relaxed.
 - Prices, tickets & opening hours 2026: [Tickets & prices (official)](https://www.phantasialand.de/en/theme-park/tickets-offers/) · [Ticket calendar in the online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Visitor information with opening hours and Quick Pass prices (official)](https://www.phantasialand.de/en/theme-park/information-and-arrival/)
 - End of the annual pass & fan petitions: [Club-Karte abolished (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petition “Reintroduce the Phantasialand annual passes” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass at its Wintertraum 2025/26 launch: [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
+- Quick Pass online, prices and validity: [Quick Pass in the online shop (official)](https://shop.phantasialand.de/en/quick-pass)
 - History, the 2001 fire and the Märchenwald: [Phantasialand (Wikipedia, German)](https://de.wikipedia.org/wiki/Phantasialand) · [30 April 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
 - The 2001 fire, number injured: [Police figures of 1 May 2001 (wissen.de, German)](https://www.wissen.de/kalendar/1-mai-2001) · [“Die Wunden des Brandes heilen langsam” (Kölner Stadt-Anzeiger, 30 April 2002, reprinted in the Planet Phantasialand forum)](https://freizeitparkweb.de/cgi-bin/dcf/dcboard.cgi?az=printer_format&om=1705&forum=DCForumID1)
 - Ride data: [Phantasialand (RCDB)](https://rcdb.com/4872.htm) · [Space Center / Crazy Bats (RCDB)](https://rcdb.com/980.htm) · [Gebirgsbahn (RCDB)](https://rcdb.com/979.htm)

@@ -2,6 +2,7 @@
 title: 'Rustige dagen in Phantasialand: bestaan ze nog?'
 translationKey: phantasialand-quiet-days-autumn
 date: '2026-10-19'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -153,8 +154,9 @@ Bij [F.L.Y.](ref:phantasialand/fly), [Chiapas](ref:phantasialand/chiapas-die-was
 met tien minuten of minder, ook op zaterdag en zondag.
 
 Een [Quick Pass](/blog/phantasialand-wachttijden-tips) zou ik op zulke dagen niet kopen. Voor Taron
-kost hij los 12 €, F.L.Y. zit alleen in de Quick Pass Ultimate van 80 €, en je koopt hem alleen in
-het park, bij de gastenservice op de Kaiserplatz.
+kost hij los 12 €, F.L.Y. zit alleen in de Quick Pass Ultimate van 80 €. Je koopt hem in de webshop
+van het park of bij de gastenservice op de Kaiserplatz, en hij geldt alleen op de dag van de
+boeking.
 
 ## Openingstijden en zonsondergang tot 13 november
 
@@ -223,7 +225,8 @@ hij voor Taron 12 €.
   [Bobbejaanland (officieel)](https://www.bobbejaanland.be/halloween)
 - Openingstijden, Quick Pass en Wintertraum:
   [Informatie over je bezoek (officieel, Duits)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) ·
-  [Wintertraum (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/)
+  [Wintertraum (officieel)](https://www.phantasialand.de/nl/themapark/wintertraum/) ·
+  [Quick Pass in de webshop (officieel)](https://shop.phantasialand.de/nl/quick-pass)
 - Zonsondergang:
   [Zonsopkomst en zonsondergang in Brühl, oktober 2026 (timeanddate.de, Duits)](https://www.timeanddate.de/sonne/deutschland/bruehl?month=10&year=2026)
 - Meer artikelen: [Gids voor Phantasialand](/blog/phantasialand-wachttijden-tips) ·

@@ -2,6 +2,7 @@
 title: 'Ce que coûte un coupe-file dans 15 parcs et resorts'
 translationKey: fast-pass-comparison
 date: '2026-10-22'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -29,8 +30,8 @@ coverImage:
 seo:
   title: 'Coupe-file en parc d’attractions : prix et attractions comparés'
   description: >-
-    Quick Pass, Express, Fastrack et Premier Access dans 15 parcs et resorts. À Phantasialand, le
-    Quick Pass coûte de 5 à 12 € par tour, l’Ultimate 80 €.
+    Quick Pass, Express, Fastrack et Premier Access dans 15 parcs. À Phantasialand, le Quick Pass,
+    aussi en ligne, coûte de 5 à 12 € par tour, l’Ultimate 80 €.
   keywords:
     - coupe-file parc d’attractions
     - coupe-file ça vaut le coup
@@ -38,6 +39,9 @@ seo:
     - Phantasialand Quick Pass prix
     - Phantasialand Quick Pass avis
     - Quick Pass Ultimate
+    - Phantasialand Quick Pass en ligne
+    - coupe-file Phantasialand
+    - Phantasialand fast pass
     - Heide Park Express Ticket
     - Movie Park Speedy Pass
     - Legoland Fastrack
@@ -70,23 +74,23 @@ Tous les prix s’entendent par personne. « dès » signifie que le parc demand
 
 État au 22 octobre 2026 :
 
-| Parc                   | Nom                   | Formules et prix                                                                                              | Attractions                                  | Contingent                                                |
-| ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | --------------------------------------------------------- |
-| Phantasialand          | Quick Pass            | à l’unité de 5 à 12 € par tour, Ultimate 80 €                                                                 | 11, plus F.L.Y. avec l’Ultimate              | limité, vente uniquement sur place                        |
-| Heide Park             | Express Ticket        | Bronze dès 25 €, Silber dès 39 €, Gold dès 59 €, Platin dès 99 €                                              | 8                                            | certains jours seulement                                  |
-| Movie Park Germany     | Speedy Pass           | One Ride dès 6,90 €, Bronze dès 14,90 €, Silber dès 19,90 €, Gold dès 29,90 €, Platinum dès 44,90 €           | 28                                           | –                                                         |
-| Legoland Deutschland   | Fastrack              | Bronze dès 25 €, Silber dès 42 €, Gold dès 89 €                                                               | 18                                           | limité                                                    |
-| Plopsaland Deutschland | Express Pass          | Single 7 €, Classic 35 €, Unlimited 95 €                                                                      | 8                                            | limité                                                    |
-| Plopsaland Belgium     | Express Pass          | Single 7 €, Classic 35 €, Unlimited 95 €                                                                      | 9                                            | limité                                                    |
-| Walibi Belgium         | Speedy                | One 8 €, Rides 55 €, Rides Unlimited 110 €                                                                    | 16, 18 avec Rides                            | limité                                                    |
-| Disneyland Paris       | Disney Premier Access | One et Ultimate, prix affiché à l’achat                                                                       | 19 dans les deux parcs                       | limité, One trois fois au plus par attraction et par jour |
-| Parc Astérix           | Filotomatix           | Bronze 19 €, Argent 35 €, Or 55 €, Illimité 139 € (en ligne)                                                  | 9, 12 avec Illimité                          | limité                                                    |
-| PortAventura Park      | Express               | ONE dès 7 €, 5 Fun dès 29 €, 5 Adrenaline dès 46 €, 10 dès 59 €, Unlimited dès 75 €, Unlimited Plus dès 135 € | 13                                           | selon disponibilité                                       |
-| Gardaland              | Gardaland Express     | Give Me 5 dès 27 €, Epic 17 dès 57 €, NoLimits dès 87 € (en ligne)                                            | 17                                           | limité                                                    |
-| Mirabilandia           | Flash Pass            | One Shot dès 5,90 € sur place, Regular dès 24,90 € et Gold dès 49,90 € en ligne                               | toutes celles à entrée Flash Pass sauf trois | limité                                                    |
-| Thorpe Park            | Fastrack              | One Shot dès 6 £, Bronze dès 9 £, Silver dès 35 £, Gold dès 115 £, Platinum dès 135 £                         | 14, 15 avec Platinum                         | limité                                                    |
-| Walt Disney World      | Lightning Lane        | Multi Pass, Single Pass et Premier Pass, prix selon le parc, l’attraction et la date                          | variable selon le parc                       | deux Single Pass au plus par jour                         |
-| Universal Orlando      | Universal Express     | Express de 119,99 à 319,99 $, Express Unlimited                                                               | dans trois parcs et à Volcano Bay            | selon disponibilité                                       |
+| Parc                   | Nom                   | Formules et prix                                                                                              | Attractions                                  | Contingent                                                       |
+| ---------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------- | -------------------------------------------- | ---------------------------------------------------------------- |
+| Phantasialand          | Quick Pass            | à l’unité de 5 à 12 € par tour, Ultimate 80 €                                                                 | 10, plus F.L.Y. avec l’Ultimate              | limité, en ligne et sur place, valable le jour de la réservation |
+| Heide Park             | Express Ticket        | Bronze dès 25 €, Silber dès 39 €, Gold dès 59 €, Platin dès 99 €                                              | 8                                            | certains jours seulement                                         |
+| Movie Park Germany     | Speedy Pass           | One Ride dès 6,90 €, Bronze dès 14,90 €, Silber dès 19,90 €, Gold dès 29,90 €, Platinum dès 44,90 €           | 28                                           | –                                                                |
+| Legoland Deutschland   | Fastrack              | Bronze dès 25 €, Silber dès 42 €, Gold dès 89 €                                                               | 18                                           | limité                                                           |
+| Plopsaland Deutschland | Express Pass          | Single 7 €, Classic 35 €, Unlimited 95 €                                                                      | 8                                            | limité                                                           |
+| Plopsaland Belgium     | Express Pass          | Single 7 €, Classic 35 €, Unlimited 95 €                                                                      | 9                                            | limité                                                           |
+| Walibi Belgium         | Speedy                | One 8 €, Rides 55 €, Rides Unlimited 110 €                                                                    | 16, 18 avec Rides                            | limité                                                           |
+| Disneyland Paris       | Disney Premier Access | One et Ultimate, prix affiché à l’achat                                                                       | 19 dans les deux parcs                       | limité, One trois fois au plus par attraction et par jour        |
+| Parc Astérix           | Filotomatix           | Bronze 19 €, Argent 35 €, Or 55 €, Illimité 139 € (en ligne)                                                  | 9, 12 avec Illimité                          | limité                                                           |
+| PortAventura Park      | Express               | ONE dès 7 €, 5 Fun dès 29 €, 5 Adrenaline dès 46 €, 10 dès 59 €, Unlimited dès 75 €, Unlimited Plus dès 135 € | 13                                           | selon disponibilité                                              |
+| Gardaland              | Gardaland Express     | Give Me 5 dès 27 €, Epic 17 dès 57 €, NoLimits dès 87 € (en ligne)                                            | 17                                           | limité                                                           |
+| Mirabilandia           | Flash Pass            | One Shot dès 5,90 € sur place, Regular dès 24,90 € et Gold dès 49,90 € en ligne                               | toutes celles à entrée Flash Pass sauf trois | limité                                                           |
+| Thorpe Park            | Fastrack              | One Shot dès 6 £, Bronze dès 9 £, Silver dès 35 £, Gold dès 115 £, Platinum dès 135 £                         | 14, 15 avec Platinum                         | limité                                                           |
+| Walt Disney World      | Lightning Lane        | Multi Pass, Single Pass et Premier Pass, prix selon le parc, l’attraction et la date                          | variable selon le parc                       | deux Single Pass au plus par jour                                |
+| Universal Orlando      | Universal Express     | Express de 119,99 à 319,99 $, Express Unlimited                                                               | dans trois parcs et à Volcano Bay            | selon disponibilité                                              |
 
 ## Ce que valent les niveaux
 
@@ -114,9 +118,10 @@ Speedy Pass.
 
 ## Acheter à l’avance ou sur place
 
-Certains pass ne s’achètent que le jour de la visite : le Quick Pass de Phantasialand, One Ride au
-Movie Park, Premier Access One à Disneyland Paris, et le One Shot à Mirabilandia comme à Thorpe
-Park. Tu vois donc le matin à quel point le parc est rempli, et tu ne paies qu’ensuite. Les jours
+Certains pass ne s’achètent que le jour de la visite : One Ride au Movie Park, Premier
+Access One à Disneyland Paris, et le One Shot à Mirabilandia comme à Thorpe Park. Le Quick Pass
+de Phantasialand se vend aussi en ligne, mais il n’est valable que le jour de la réservation, donc
+lui aussi s’achète le jour même. Tu vois donc le matin à quel point le parc est rempli, et tu ne paies qu’ensuite. Les jours
 d’affluence, le contingent limité est pourtant parfois épuisé pendant que tu hésites encore.
 
 Sur place, Filotomatix revient 4 à 6 € plus cher qu’en ligne au Parc Astérix, l’Express 3 € plus cher à Gardaland. Le Flash Pass de
@@ -283,27 +288,33 @@ l’application une fois dans le parc, pour une attraction et un créneau.
 
 ## Le Quick Pass de Phantasialand
 
-À Phantasialand, le Quick Pass s’achète pour un seul tour sur une attraction précise, au service
-clients de la zone Berlin, sur la Kaiserplatz. Pour tout le groupe, tu en prends plusieurs pour la
+À Phantasialand, le Quick Pass s’achète pour un seul tour sur une attraction précise, sur la
+boutique en ligne du parc ou au service clients de la zone Berlin, sur la Kaiserplatz. La boutique
+l’envoie en PDF avec un code QR, que tu montres sur ton téléphone à l’entrée Quick Pass. Pour tout le groupe, tu en prends plusieurs pour la
 même attraction, tant qu’il en reste. Le prix dépend de l’attraction :
 
-- 5 € pour [Colorado Adventure](ref:phantasialand/colorado-adventure),
-  [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
+- 5 € pour [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
   [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
   [Mystery Castle](ref:phantasialand/mystery-castle) et [Talocan](ref:phantasialand/talocan)
-- 7 € pour [Winja’s Fear](ref:phantasialand/winjas-fear) et
+- 7 € pour [Colorado Adventure](ref:phantasialand/colorado-adventure),
+  [Winja’s Fear](ref:phantasialand/winjas-fear) et
   [Winja’s Force](ref:phantasialand/winjas-force)
 - 10 € pour [Black Mamba](ref:phantasialand/black-mamba) et
   [Chiapas](ref:phantasialand/chiapas-die-wasserbahn)
-- 12 € pour [River Quest](ref:phantasialand/river-quest) et [Taron](ref:phantasialand/taron)
+- 12 € pour [Taron](ref:phantasialand/taron)
 
-Le Quick Pass Ultimate à 80 € vaut une fois sur chacune de ces onze attractions et une fois sur
+La page d’informations du parc indique encore 5 € pour Colorado Adventure, la boutique en ligne en
+demande 7. [River Quest](ref:phantasialand/river-quest) ne figure pour l’instant sur aucune des deux
+listes.
+
+Le Quick Pass Ultimate à 80 € vaut une fois sur chacune de ces dix attractions et une fois sur
 [F.L.Y.](ref:phantasialand/fly). Il n’existe pas de Quick Pass à l’unité pour F.L.Y. Qui achète les
-onze à l’unité paie 83 €, donc plus que l’Ultimate, et fait quand même la file normale devant F.L.Y.
+dix à l’unité paie 73 € et fait quand même la file normale devant F.L.Y. Avec l’Ultimate, tu paies
+7 € de plus et tu passes aussi par l’entrée Quick Pass de F.L.Y.
 
 ![Un train de Taron entre les roches de basalte de Klugheim. | La file d’attente de Taron traverse Klugheim.](/media/phantasialand/taron.jpg)
 
-Le pass n’est valable que le jour imprimé dessus. Pendant le Wintertraum, du 14 novembre 2026 au
+Le pass n’est valable que le jour de la réservation, sans changement de date ni remboursement. Pendant le Wintertraum, du 14 novembre 2026 au
 24 janvier 2027, River Quest est fermée.
 
 ## Quand le pass ne vaut pas le coup
@@ -354,7 +365,7 @@ une glace.
 
 ### Combien coûte le Quick Pass à Phantasialand ?
 
-De 5 à 12 € par tour selon l’attraction, River Quest et Taron étant les plus chères. Le Quick Pass
+De 5 à 12 € par tour selon l’attraction, Taron étant la plus chère. Le Quick Pass
 Ultimate coûte 80 € et vaut en plus sur F.L.Y.
 
 ### Le Quick Pass de Phantasialand vaut-il le coup ?
@@ -364,7 +375,8 @@ non.
 
 ### Peut-on acheter le Quick Pass dans l’application ?
 
-Non, uniquement au service clients dans le parc.
+En ligne sur la boutique du parc, en PDF avec un code QR, ou au service clients dans le parc. Il
+n’est valable que le jour de la réservation.
 
 ### Y a-t-il un coupe-file à l’Europa-Park ?
 
@@ -408,6 +420,8 @@ Ultimate un passage sur chaque attraction participante sauf Orbitron, sans crén
 - Quick Pass et Quick Pass Ultimate, prix par attraction, vente et fermetures pendant le
   Wintertraum :
   [Informationen und Anreise (Phantasialand)](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/)
+- Quick Pass en ligne, prix et validité :
+  [Quick Pass sur la boutique en ligne (Phantasialand)](https://shop.phantasialand.de/fr/quick-pass)
 - Express Ticket, niveaux, attractions et jours de vente :
   [Express Ticket (Heide Park)](https://www.heide-park.de/tickets-paesse/extras/express-ticket/)
 - Speedy Pass, niveaux et attractions :

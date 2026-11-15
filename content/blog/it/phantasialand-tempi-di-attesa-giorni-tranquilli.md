@@ -2,6 +2,7 @@
 title: 'Giorni tranquilli al Phantasialand: esistono ancora?'
 translationKey: phantasialand-quiet-days-autumn
 date: '2026-10-19'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -157,8 +158,9 @@ Al [F.L.Y.](ref:phantasialand/fly), al [Chiapas](ref:phantasialand/chiapas-die-w
 sono stati momenti con dieci minuti o meno, anche di sabato e di domenica.
 
 In giorni così non comprerei un [Quick Pass](/blog/phantasialand-tempi-di-attesa-consigli). Per
-il Taron costa 12 € a corsa, il F.L.Y. si ha solo con il Quick Pass Ultimate da 80 €, e si compra
-solo nel parco, al servizio ospiti del Kaiserplatz.
+il Taron costa 12 € a corsa, il F.L.Y. si ha solo con il Quick Pass Ultimate da 80 €. Si compra
+nello shop online del parco o al servizio ospiti del Kaiserplatz, e vale solo nel giorno della
+prenotazione.
 
 ## Orari e tramonto fino al 13 novembre
 
@@ -225,7 +227,8 @@ Taron una corsa costa 12 €.
   [Bobbejaanland (ufficiale, in olandese)](https://www.bobbejaanland.be/halloween)
 - Orari, Quick Pass e Wintertraum:
   [Informazioni per la visita (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/information-and-arrival/) ·
-  [Wintertraum (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/)
+  [Wintertraum (ufficiale, in inglese)](https://www.phantasialand.de/en/theme-park/wintertraum/) ·
+  [Quick Pass nello shop online (ufficiale, in inglese)](https://shop.phantasialand.de/en/quick-pass)
 - Tramonto:
   [Alba e tramonto a Brühl, ottobre 2026 (timeanddate.de, in tedesco)](https://www.timeanddate.de/sonne/deutschland/bruehl?month=10&year=2026)
 - Altri articoli: [Guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli) ·

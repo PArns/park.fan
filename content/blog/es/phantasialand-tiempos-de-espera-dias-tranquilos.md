@@ -2,6 +2,7 @@
 title: 'Días vacíos en el Phantasialand: ¿todavía existen?'
 translationKey: phantasialand-quiet-days-autumn
 date: '2026-10-19'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -156,8 +157,9 @@ En [F.L.Y.](ref:phantasialand/fly), [Chiapas](ref:phantasialand/chiapas-die-wass
 días, ratos con diez minutos o menos, también sábados y domingos.
 
 Yo no compraría un [Quick Pass](/blog/phantasialand-tiempos-de-espera-consejos) en días así. Para
-Taron cuesta 12 € por un viaje, F.L.Y. solo está incluido en el Quick Pass Ultimate por 80 €, y
-solo se vende en el parque, en el servicio de atención al visitante de la Kaiserplatz.
+Taron cuesta 12 € por un viaje, F.L.Y. solo está incluido en el Quick Pass Ultimate por 80 €. Se
+compra en la tienda online del parque o en el servicio de atención al visitante de la Kaiserplatz,
+y solo vale el día de la reserva.
 
 ## Horario y puesta de sol hasta el 13 de noviembre
 
@@ -229,7 +231,8 @@ un viaje en Taron cuesta 12 €.
   [Bobbejaanland (oficial, en neerlandés)](https://www.bobbejaanland.be/halloween)
 - Horarios, Quick Pass y Wintertraum:
   [Información para la visita (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/information-and-arrival/) ·
-  [Wintertraum (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/wintertraum/)
+  [Wintertraum (oficial, en inglés)](https://www.phantasialand.de/en/theme-park/wintertraum/) ·
+  [Quick Pass en la tienda online (oficial, en inglés)](https://shop.phantasialand.de/en/quick-pass)
 - Puesta de sol:
   [Salida y puesta del sol en Brühl, octubre de 2026 (timeanddate.de, en alemán)](https://www.timeanddate.de/sonne/deutschland/bruehl?month=10&year=2026)
 - Más artículos: [Guía del Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos) ·

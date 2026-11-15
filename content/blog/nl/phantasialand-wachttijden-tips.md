@@ -2,7 +2,7 @@
 title: 'In Phantasialand loont de Quick Pass alleen op drukke dagen'
 translationKey: phantasialand-tips-2026
 date: '2026-07-24'
-updatedAt: '2026-10-14'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -30,17 +30,20 @@ coverImage:
 seo:
   title: 'Phantasialand tips: Quick Pass, rustige dagen, wachttijden'
   description: >-
-    Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass,
-    Rutmor’s Taverne en Wintertraum, van iemand die er al ruim dertig jaar komt.
+    Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass, nu ook online, en Wintertraum, van iemand die er al ruim dertig jaar komt.
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden vermijden
     - Phantasialand tips
     - Phantasialand tips 2026
+    - Phantasialand tips winter 2026/27
     - Phantasialand wanneer het rustigst
     - Phantasialand beste reistijd
     - Phantasialand Quick Pass
     - Phantasialand Quick Pass Ultimate
+    - Phantasialand Quick Pass online kopen
+    - Phantasialand Quick Pass prijs
+    - Phantasialand Fast Pass
     - Phantasialand tickets prijzen 2026
     - Phantasialand jaarkaart
     - Phantasialand beste restaurants
@@ -48,7 +51,7 @@ seo:
     - Taron wachttijden
     - F.L.Y. Phantasialand
     - Phantasialand route Brühl
-    - Phantasialand Wintertraum 2026
+    - Phantasialand Wintertraum 2026/27
 ---
 
 Naar het [Phantasialand](ref:phantasialand) ga ik al meer dan dertig jaar. Mijn
@@ -279,30 +282,47 @@ werkt hij compleet anders. Er zijn twee varianten:
 - **Quick Pass (Single)**, de fast track voor **één rit** op één bepaalde
   attractie. Bij de start heette het dat de prijs _dynamisch_ was en met de
   actuele wachttijd zou meestijgen. Ik zag aan de balie toch altijd dezelfde
-  prijs, en inmiddels staat er op de infopagina van het park ook een vaste lijst:
-  5 € voor [Colorado Adventure](ref:phantasialand/colorado-adventure),
+  prijs, en inmiddels is er een vaste lijst: 5 € voor
   [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere),
   [Maus au Chocolat](ref:phantasialand/maus-au-chocolat),
   [Mystery Castle](ref:phantasialand/mystery-castle) en
   [Talocan](ref:phantasialand/talocan), elk 7 € voor
+  [Colorado Adventure](ref:phantasialand/colorado-adventure),
   [Winja’s Fear](ref:phantasialand/winjas-fear) en Winja’s Force, 10 € voor
   [Black Mamba](ref:phantasialand/black-mamba) en
   [Chiapas](ref:phantasialand/chiapas-die-wasserbahn), 12 € voor
-  [River Quest](ref:phantasialand/river-quest) en
-  [Taron](ref:phantasialand/taron).
-- **Quick Pass Ultimate** voor 80 €: één keer elk van die elf banen plus één keer
-  [F.L.Y.](ref:phantasialand/fly). **Alleen met Ultimate kom je via Quick Pass in
-  F.L.Y.**, los is de baan niet te koop. Alle elf losse passen samen kosten 83 €,
-  de Ultimate is dus goedkoper en doet F.L.Y. er nog bovenop. Het loont alleen als
-  je echt overal in wilt.
+  [Taron](ref:phantasialand/taron). In de online shop kost Colorado Adventure
+  7 €, op de infopagina van het park staat nog 5 €. River Quest staat op dit
+  moment op geen van beide lijsten.
+- **Quick Pass Ultimate** voor 80 €: één keer elk van die tien banen plus één
+  keer [F.L.Y.](ref:phantasialand/fly). **Alleen met Ultimate kom je via Quick
+  Pass in F.L.Y.**, los is de baan niet te koop. Alle tien losse passen samen
+  kosten 73 €, de Ultimate is dus 7 € duurder, en voor die 7 € rijd je F.L.Y.
+  Het loont alleen als je echt overal in wilt.
 
 Zelfs met de Quick Pass wacht je bij F.L.Y. nog, boven, in het station. De
 baan doet er door haar ingewikkelde vliegbeugels lang over om te laden, en die
 opstopping lost ook in de fast track niet op.
 
-Kopen doe je alleen ter plekke, bij de gastenservice op de Kaiserplatz, en het
-aantal is beperkt. Juist tijdens de Wintertraum zijn de Quick Passes in het
-weekend vaak al rond het middaguur uitverkocht.
+Inmiddels kun je de Quick Pass ook
+[in de online shop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand)
+kopen. Je betaalt daar, krijgt de pass als pdf per mail en laat de QR-code bij
+de Quick Pass-ingang op je telefoon zien, met de helderheid van het scherm
+helemaal open. Elke pass geldt voor één persoon. De gastenservice in het
+themagebied Berlin verkoopt ze ook nog ter plekke.
+
+Een Quick Pass geldt alleen op de dag van de boeking. Een andere datum kies je
+niet, en omboeken of terugbetalen kan ook niet. Wie ’s avonds op de bank al voor
+morgen koopt, heeft een pass voor een dag die zo goed als voorbij is. Koop hem
+dus op de ochtend van je bezoek. Het aantal is beperkt, en juist tijdens de
+Wintertraum zijn de Quick Passes in het weekend vaak al rond het middaguur
+uitverkocht.
+
+```cta-widget
+href: https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-phantasialand
+label: Quick Pass kopen in de Phantasialand-shop
+text: Alleen geldig op de dag van de boeking.
+```
 
 Na veel bezoeken vind ik dat je hem **op een groene dag niet nodig hebt.** Wie
 vroeg present is en een verstandige volgorde rijdt, haalt de headliners met
@@ -532,6 +552,7 @@ Ja, met een goed gekozen dag en de volgorde hierboven past al het belangrijke in
 - Prijzen, tickets & openingstijden 2026: [Ticketprijzen & aanbiedingen (officieel)](https://www.phantasialand.de/nl/themapark/ticketprijzen-aanbiedingen/) · [Ticketkalender in de online shop](https://shop.phantasialand.de/de/produkte/themenpark-tickets/) · [Plan je bezoek, met openingstijden en Quick Pass-prijzen (officieel)](https://www.phantasialand.de/nl/themapark/plan-je-bezoek/)
 - Einde van de jaarkaarten & fanpetities: [Club-Karte wordt afgeschaft (Parkerlebnis)](https://www.parkerlebnis.de/phantasialand-clubkarte-abgeschafft_128648.html) · [Petitie “Herinvoering van de Phantasialand jaarkaarten” (Change.org)](https://www.change.org/p/wiedereinf%C3%BChrung-der-phantasialand-jahreskarten)
 - Quick Pass bij de start in de Wintertraum 2025/26: [“QUICK Pass Switches to Dynamic Pricing” (Wartezeiten.APP)](https://www.wartezeiten.app/en/phantasialand/news/phantasialand-quick-pass-switches-to-dynamic-pricing-fans-outraged-2429.html)
+- Quick Pass online, prijzen en geldigheid: [Quick Pass in de online shop (officieel)](https://shop.phantasialand.de/nl/quick-pass)
 - Geschiedenis, de brand van 2001 en de Märchenwald: [Phantasialand (Wikipedia, Duits)](https://de.wikipedia.org/wiki/Phantasialand) · [30 april 1967 (WDR Stichtag)](https://www1.wdr.de/stichtag/stichtag-eroeffnung-phantasialand-100.html) · [Märchenwald (Frei-Zeit Blog)](https://frei-zeit-blog.de/phantasialand/attraktionen/maerchenwald/)
 - Brand van 2001, aantal gewonden: [Politiecijfers van 1 mei 2001 (wissen.de, Duits)](https://www.wissen.de/kalendar/1-mai-2001) · [“Die Wunden des Brandes heilen langsam” (Kölner Stadt-Anzeiger, 30 april 2002, overgenomen op het forum Planet Phantasialand)](https://freizeitparkweb.de/cgi-bin/dcf/dcboard.cgi?az=printer_format&om=1705&forum=DCForumID1)
 - Baangegevens: [Phantasialand (RCDB)](https://rcdb.com/4872.htm) · [Space Center / Crazy Bats (RCDB)](https://rcdb.com/980.htm) · [Gebirgsbahn (RCDB)](https://rcdb.com/979.htm)

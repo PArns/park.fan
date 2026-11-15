@@ -2,6 +2,7 @@
 title: 'Jours creux au Phantasialand : existent-ils encore ?'
 translationKey: phantasialand-quiet-days-autumn
 date: '2026-10-19'
+updatedAt: '2026-11-15'
 author: patrick
 mode: published
 featured: false
@@ -159,7 +160,8 @@ jours, des moments à dix minutes ou moins, samedis et dimanches compris.
 
 Ces jours-là, je n’achèterais pas de [Quick Pass](/blog/phantasialand-temps-d-attente-conseils).
 Pour Taron, il coûte 12 € à l’unité, F.L.Y. n’est accessible qu’avec le Quick Pass Ultimate à
-80 €, et il ne se vend que dans le parc, au service clients de la Kaiserplatz.
+80 €. Il s’achète sur la boutique en ligne du parc ou au service clients de la Kaiserplatz, et ne
+vaut que le jour de la réservation.
 
 ## Horaires et coucher du soleil jusqu’au 13 novembre
 
@@ -230,7 +232,8 @@ il coûte 12 € à l’unité.
   [Bobbejaanland (officiel)](https://www.bobbejaanland.be/fr/halloween)
 - Horaires, Quick Pass et Wintertraum :
   [Informations pour la visite (officiel, en anglais)](https://www.phantasialand.de/en/theme-park/information-and-arrival/) ·
-  [Wintertraum (officiel, en anglais)](https://www.phantasialand.de/en/theme-park/wintertraum/)
+  [Wintertraum (officiel, en anglais)](https://www.phantasialand.de/en/theme-park/wintertraum/) ·
+  [Quick Pass sur la boutique en ligne (officiel)](https://shop.phantasialand.de/fr/quick-pass)
 - Coucher du soleil :
   [Lever et coucher du soleil à Brühl, octobre 2026 (timeanddate.de, en allemand)](https://www.timeanddate.de/sonne/deutschland/bruehl?month=10&year=2026)
 - Autres articles : [Guide du Phantasialand](/blog/phantasialand-temps-d-attente-conseils) ·
