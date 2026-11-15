@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Since early November, the lap bar alone holds each rider on Max & Moritz at Efteling again. The park had added seat belts as a precaution in July 2025. The smallest person in a car still boards first.
+  Since the first week of November, the lap bar alone holds each rider on Max & Moritz at Efteling again. The park had added seat belts as a precaution in July 2025. The smallest person in a car still boards first.
 tags:
   - news
   - efteling
@@ -35,13 +35,13 @@ seo:
     - Efteling maintenance
 ---
 
-At the start of November, [Efteling](ref:efteling) took the seat belts back out of the cars on its family coaster [Max & Moritz](ref:efteling/max-and-moritz). Each rider is now held by their own lap bar and nothing else. The Dutch theme park site Looopings reported the change. The park fitted the belts in July 2025 and called them a temporary measure at the time; they ended up staying for about 15 months. Efteling hasn't explained why they've gone.
+In the first week of November, [Efteling](ref:efteling) took the seat belts back out of the cars on its family coaster [Max & Moritz](ref:efteling/max-and-moritz). Since then, each rider has been held by their own lap bar and nothing else. The Dutch theme park site Looopings reported the change, and the park itself hasn't commented on it so far. The belts went in during July 2025 as a temporary fix, as Efteling put it at the time. That fix lasted about 15 months.
 
 ## What changes when you board
 
 Before each train leaves, the staff now only check the lap bars, without a belt to check at every seat as well. Looopings expects boarding to go faster as a result, so the ride can get more people through each hour.
 
-The boarding rule stays. Since the end of September a drawing in the queue has explained it in Dutch, English, German and French: the smallest person gets in first. When a child rides next to an adult, that puts the child on the left and the adult on the right. It's the same on both tracks, Max and Moritz. The reason is the restraint. Every seat has its own lap bar, and the bars on the left and the right are set differently.
+Since the end of September there's also been a fixed order: the smallest person gets in first. The queue shows it with a drawing, in Dutch, English, German and French. Whoever gets in first sits on the left, because the lap bars on the left and the right are set differently. A child riding next to an adult always ends up in the left seat. It's the same on both tracks, Max and Moritz.
 
 ## Who can ride
 
@@ -51,19 +51,19 @@ Max & Moritz has its own single rider queue and offers Baby Switch. Part of the 
 
 ## Max & Moritz during Winter Efteling
 
-[Winter Efteling](/news/winter-efteling-2026-ice-rink-show) runs from 16 November 2026 to 31 January 2027. Max & Moritz isn't on the list of maintenance work the park keeps on its website. Other rides do close for a while: the Droomvlucht until 4 December, De Oude Tufferbaan from 16 to 27 November and Joris en de Draak from 30 November to 18 December.
+[Winter Efteling](/news/winter-efteling-2026-ice-rink-show) runs from 16 November 2026 to 31 January 2027. Max & Moritz isn't on the list of maintenance work the park keeps on its website. Other rides do close for a while, including the Droomvlucht until 4 December, De Oude Tufferbaan from 16 to 27 November and Joris en de Draak from 30 November to 18 December.
 
 [Max & Moritz](ref:efteling/max-and-moritz?full)
 
 ## The ride and the one before it
 
-Max & Moritz opened on Saturday, 20 June 2020, in the Anderrijk area. It took the place of the bobsled ride Efteling pulled down in 2019, whose station building is still standing and is now the Max & Moritz station. The theme comes from Wilhelm Busch's picture story, published in 1865, and on the Max & Moritz square the restaurant Frau Boltes Küche does the cooking.
+Max & Moritz opened on Saturday, 20 June 2020. It took the place of the bobsled ride Efteling pulled down in 2019, whose station building is still standing and is now the Max & Moritz station. The theme comes from Wilhelm Busch's picture story, published in 1865, and on the Max & Moritz square the restaurant Frau Boltes Küche does the cooking.
 
 Mack Rides built the dual coaster as a Powered Coaster. Each train carries its own motors, so its speed can change along the way, and Efteling had never had a ride of that type before. The blue track is called Max and the green one Moritz. The trains run in opposite directions and pass each other several times, and you pick your track at the station. Each track is 300 metres long and no more than 6 metres high, and the cars lean up to 40 degrees into the turns. RCDB gives a top speed of 36 km/h, Mack Rides says 35. A ride lasts two and a half minutes, a train has 38 seats, and up to 1,800 people an hour can ride.
 
 ## Why there were belts at all
 
-Every seat on Max & Moritz has its own lap bar, while older Powered Coasters share one bar between two seats. The belts were added on top of the bars in July 2025, five years after the opening. At the time, insiders told Looopings that the bars had come open during the ride several times before then. Efteling didn't confirm that account. A spokeswoman told Looopings there had been "een signaal over lichte speling op de beugel", a report of slight play in the lap bar.
+Older Powered Coasters have one lap bar for every two riders; on Max & Moritz each seat has its own. Five years after the opening, in July 2025, the belts were added as a second restraint. At the time, insiders told Looopings that the bars had come open during the ride several times before then. Efteling itself only told Looopings about "een signaal over lichte speling op de beugel", a report of slight play in the lap bar.
 
 > [!QUOTE]
 > Of course we took that report seriously. […] The belts were added as a precaution, in consultation with the ride's supplier.
@@ -72,7 +72,7 @@ Every seat on Max & Moritz has its own lap bar, while older Powered Coasters sha
 >
 > An Efteling spokeswoman to [Looopings in July 2025](https://www.looopings.nl/weblog/29769/Efteling-installeert-veiligheidsgordels-in-familieachtbaan-Max--Moritz--vijf-jaar-na-de-opening.html), translated from Dutch
 
-The ride had always been safe and still was, the spokeswoman stressed back then. Other Mack Powered Coasters in Europe run without belts, including the manufacturer's rides at Drievliet, [Plopsaland Belgium](ref:plopsaland-belgium) and [Bobbejaanland](ref:bobbejaanland). None of them has a boarding rule based on height either.
+The ride had always been safe and still was, the spokeswoman stressed back then. Mack's other Powered Coasters in Europe don't have belts, for example the ones at Drievliet, [Plopsaland Belgium](ref:plopsaland-belgium) and [Bobbejaanland](ref:bobbejaanland). Nor do those rides have a rule about who gets in first.
 
 Sources:
 [Looopings on removing the belts](https://www.looopings.nl/weblog/34837/Efteling-haalt-veiligheidsgordels-bij-Max--Moritz-na-ruim-een-jaar-weer-weg.html),

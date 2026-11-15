@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde principios de noviembre, en Max & Moritz de Efteling solo la barra de regazo sujeta a cada pasajero. El parque había puesto los cinturones como precaución en julio de 2025. La persona más pequeña sigue subiendo primero.
+  Desde la primera semana de noviembre, en Max & Moritz de Efteling solo la barra de regazo sujeta a cada pasajero. El parque había puesto los cinturones como precaución en julio de 2025. La persona más pequeña sigue subiendo primero.
 tags:
   - news
   - efteling
@@ -35,13 +35,13 @@ seo:
     - Efteling mantenimiento
 ---
 
-A principios de noviembre, [Efteling](ref:efteling) retiró los cinturones de los vagones de [Max & Moritz](ref:efteling/max-and-moritz), su montaña rusa familiar, y desde entonces cada pasajero va sujeto solo por su propia barra de regazo. Lo cuenta Looopings, la web neerlandesa sobre parques de atracciones. El parque había instalado los cinturones en julio de 2025 y entonces los presentó como una medida temporal, que al final duró unos 15 meses. Efteling no ha explicado por qué los quita ahora.
+En la primera semana de noviembre, [Efteling](ref:efteling) retiró los cinturones de los vagones de [Max & Moritz](ref:efteling/max-and-moritz), su montaña rusa familiar. Desde entonces, a cada pasajero lo sujeta solo su propia barra de regazo. Lo cuenta Looopings, la web neerlandesa sobre parques de atracciones; el parque no se ha pronunciado sobre la retirada hasta ahora. Los cinturones llegaron en julio de 2025 como solución provisional, según dijo Efteling entonces. Al final duraron unos 15 meses.
 
 ## Qué cambia al subir
 
 Antes de cada salida, el personal ya solo revisa las barras y no tiene que comprobar además un cinturón en cada asiento. Looopings calcula que así se puede subir más deprisa y que la atracción puede llevar a más gente por hora.
 
-La regla para subir no cambia. Desde finales de septiembre hay un cartel con un dibujo en la fila, en neerlandés, inglés, alemán y francés, que dice que la persona más pequeña sube primero. Si un niño va al lado de un adulto, el niño se sienta a la izquierda y el adulto a la derecha. Vale en los dos recorridos, Max y Moritz. La razón está en la barra: cada asiento tiene la suya, y las de la izquierda y las de la derecha están ajustadas de forma distinta.
+Desde finales de septiembre hay además un orden fijo: la persona más pequeña sube primero. Así se explica en la fila, con un dibujo y en neerlandés, inglés, alemán y francés. Quien sube primero se sienta a la izquierda, porque las barras de la izquierda y las de la derecha están ajustadas de forma distinta. Un niño que va al lado de un adulto se queda así siempre con el asiento de la izquierda. Vale en los dos recorridos, Max y Moritz.
 
 ## Para quién es
 
@@ -51,19 +51,19 @@ Max & Moritz tiene su propia fila de single rider y ofrece baby switch. Una part
 
 ## Max & Moritz en Winter Efteling
 
-[Winter Efteling](/news/winter-efteling-2026-pista-hielo-espectaculo) va del 16 de noviembre de 2026 al 31 de enero de 2027. Max & Moritz no aparece en la lista de trabajos de mantenimiento que el parque publica en su web. Otras atracciones sí faltan algunos días: Droomvlucht hasta el 4 de diciembre, De Oude Tufferbaan del 16 al 27 de noviembre y Joris en de Draak del 30 de noviembre al 18 de diciembre.
+[Winter Efteling](/news/winter-efteling-2026-pista-hielo-espectaculo) va del 16 de noviembre de 2026 al 31 de enero de 2027. Max & Moritz no aparece en la lista de trabajos de mantenimiento que el parque publica en su web. Otras atracciones sí faltan algunos días, entre ellas Droomvlucht hasta el 4 de diciembre, De Oude Tufferbaan del 16 al 27 de noviembre y Joris en de Draak del 30 de noviembre al 18 de diciembre.
 
 [Max & Moritz](ref:efteling/max-and-moritz?full)
 
 ## La atracción y la que había antes
 
-Max & Moritz abrió el sábado 20 de junio de 2020 en la zona de Anderrijk, en el sitio del bobsleigh que Efteling había desmontado en 2019. El edificio de la estación de aquel bobsleigh sigue en pie y hoy es la estación de Max & Moritz. El tema viene de la historia ilustrada que Wilhelm Busch publicó en 1865, y en la plaza de Max & Moritz está el restaurante Frau Boltes Küche.
+Max & Moritz abrió el sábado 20 de junio de 2020 en el sitio del bobsleigh que Efteling había desmontado en 2019. El edificio de la estación de aquel bobsleigh sigue en pie y hoy es la estación de Max & Moritz. El tema viene de la historia ilustrada que Wilhelm Busch publicó en 1865, y en la plaza de Max & Moritz está el restaurante Frau Boltes Küche.
 
 La doble montaña rusa es de Mack Rides y es un powered coaster: cada tren lleva los motores a bordo y puede cambiar de velocidad durante el viaje. Para Efteling era un tipo de atracción nuevo. El recorrido azul se llama Max y el verde, Moritz. Los trenes van en sentidos opuestos y se cruzan varias veces, y tú eliges uno al subir. Cada recorrido mide 300 metros y tiene como mucho 6 metros de altura, y en las curvas los vagones se inclinan hasta 40 grados. Según la RCDB, los trenes llegan a 36 km/h; Mack Rides da 35. El viaje dura dos minutos y medio, cada tren tiene 38 plazas y pasan hasta 1.800 personas por hora.
 
 ## Por qué había cinturones
 
-En Max & Moritz cada asiento tiene su propia barra de regazo, mientras que los powered coasters más antiguos llevan una barra para dos plazas. Los cinturones se añadieron en julio de 2025, cinco años después de la apertura. Unas fuentes internas contaron entonces a Looopings que, antes de eso, las barras se habían abierto varias veces durante el viaje. Efteling no ha confirmado esa versión. Una portavoz habló con Looopings de «een signaal over lichte speling op de beugel», un aviso de que la barra tenía un poco de holgura.
+Los powered coasters más antiguos llevan una barra para dos pasajeros; en Max & Moritz cada asiento tiene la suya. Cinco años después de la apertura, en julio de 2025, se añadieron los cinturones como segunda sujeción. Unas fuentes internas contaron entonces a Looopings que, antes de eso, las barras se habían abierto varias veces durante el viaje. Efteling, por su parte, solo habló con Looopings de «een signaal over lichte speling op de beugel», un aviso de que la barra tenía un poco de holgura.
 
 > [!QUOTE]
 > Por supuesto, nos tomamos en serio ese aviso. […] Los cinturones se añadieron por precaución, de acuerdo con el proveedor de la atracción.
@@ -72,7 +72,7 @@ En Max & Moritz cada asiento tiene su propia barra de regazo, mientras que los p
 >
 > Una portavoz de Efteling a [Looopings en julio de 2025](https://www.looopings.nl/weblog/29769/Efteling-installeert-veiligheidsgordels-in-familieachtbaan-Max--Moritz--vijf-jaar-na-de-opening.html), traducido del neerlandés
 
-La portavoz insistió entonces en que la seguridad de la atracción siempre había estado garantizada y lo seguía estando. Otros powered coasters de Mack en Europa funcionan sin cinturones, también los del mismo fabricante en Drievliet, [Plopsaland Belgium](ref:plopsaland-belgium) y [Bobbejaanland](ref:bobbejaanland). Allí tampoco hay una regla para subir según la estatura.
+La portavoz insistió entonces en que la seguridad de la atracción siempre había estado garantizada y lo seguía estando. Los demás powered coasters de Mack en Europa no llevan cinturones, por ejemplo los de Drievliet, [Plopsaland Belgium](ref:plopsaland-belgium) y [Bobbejaanland](ref:bobbejaanland). Tampoco tienen ninguna norma sobre quién sube primero.
 
 Fuentes:
 [Looopings sobre la retirada de los cinturones](https://www.looopings.nl/weblog/34837/Efteling-haalt-veiligheidsgordels-bij-Max--Moritz-na-ruim-een-jaar-weer-weg.html),
