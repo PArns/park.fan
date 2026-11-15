@@ -212,12 +212,13 @@ Each chapter opens with its heading and then the thing itself.
 
 3. **03 Die Resorts rund um Orlando** (`HubResorts`): one card per API group, in the order of the
    region's `hub.resorts` (a group it does not list follows): the photo (`hub.resorts[].photo`) with
-   the name over it, or a tinted strip with the name for a group without one (never a picture
+   the name over it, or a tinted panel of the same height with the name for a group without one (never a picture
    another card shows), two sentences
    (`tripRegions.<slug>.hub.resorts.<group>.lead`), each park as a link to its crowd calendar
    („<park> Andrang-Kalender“, the links `HubParkIndex` used to carry: every park with quiet days in
    the window, every headliner when `/best-days` fails) and one sentence on where to stay (`.stay`).
-   A card without its words keeps its name and links. The grid has as many columns as cards, up
+   Each park link is a row with a chevron, 44 px high on a phone. A card without its words keeps
+   its name and links. The grid has as many columns as cards, up
    to four, so two resorts fill the row. Every sentence is a fact of the API (parks,
    water parks, perks, hotel areas, `stayNote`, travel legs) or of the region's existing copy;
    nothing is invented for a card.
@@ -225,11 +226,14 @@ Each chapter opens with its heading and then the thing itself.
    for a region with best-time pages and its words for them. It sends the best-time page's own
    query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of the trip's length), so
    both read one cached answer. Under the title one line says what the cards are („Die drei
-   ruhigsten Reisen über 10 Tage in den nächsten zwölf Monaten“, the length read off the first
-   window). Then the three quietest windows for the headliner parks from `/when`, as three cards
-   with their place, their dates, their peak wait and „Diese Reise planen“ (`?from=&to=#planner`,
-   `rel="nofollow"`). A card names no basis: that a date past the forecast reads last year is the
-   accuracy question's in chapter 05 and the best-time page's. The link under the cards („Alle
+   ruhigsten Reisen über 10 Tage“, the length read off the first window). Then a year line
+   (`yearLine` in `hub-data.ts`): the months of the searched range as a ruled track and each
+   window as a bar under its numbered dot, decoration beside the cards. Then the three quietest
+   windows for the headliner parks from `/when`, as three cards with their place, their dates,
+   their peak wait as the large figure, the first reason the window was picked (left out where all
+   three share it) and „Diese Reise planen“ (`?from=&to=#planner`, `rel="nofollow"`). A card names
+   no basis: that a date past the forecast reads last year is the accuracy question's in chapter
+   05 and the best-time page's. The link under the cards („Alle
    Wochen des Jahres vergleichen“) goes to `tripRegionBestTimePath(region, locale)` in other words
    than the chapter's title, which the closing band already links. The year strip, the weeks and
    their questions are the best-time pages', so the two do not compete for one query.

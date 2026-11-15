@@ -77,7 +77,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-resorts.tsx`](../../components/trip-regions/hub/hub-resorts.tsx)
 
-- `HubResorts` _component_: Chapter 03, the resorts: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on a tinted strip with its name, never on a picture another …
+- `HubResorts` _component_: Chapter 03, the resorts: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on a tinted panel with its name, never on a picture another …
 - `calendarParks` _function_: The parks whose crowd calendar the hub links: every park the window has quiet days for (a water park out of season has none), or, without `/best-days`, every headliner, so a failed read never takes the links away.
 
 ### [`hub/hub-trip-state.tsx`](../../components/trip-regions/hub/hub-trip-state.tsx)
@@ -90,7 +90,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
 
-- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: the quietest trip windows for the headliner parks as cards, each with its place as a numbered dot, its dates, its peak wait and "Plan this trip", which opens the …
+- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: a year line with the quietest trip windows for the headliner parks on it, then a card per window with its place, its dates, its peak wait as the card's large figure, …
 - `HUB_WHEN_WINDOWS` _const_: How many windows the teaser names.
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)

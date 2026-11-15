@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { BedDouble, MapPinned } from 'lucide-react';
+import { BedDouble, ChevronRight, MapPinned } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -38,7 +38,7 @@ export function calendarParks(
 /**
  * Chapter 03, the resorts: one card per API group in the order the region lists them
  * (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on
- * a tinted strip with its name, never on a picture another card shows), the region's two sentences, each park as a link to its crowd calendar („<park> Andrang-Kalender“,
+ * a tinted panel with its name, never on a picture another card shows), the region's two sentences, each park as a link to its crowd calendar („<park> Andrang-Kalender“,
  * the query that page ranks for) and one sentence on where to stay. Server HTML, open in both of
  * the hub's states. A card whose words are missing keeps its name and links.
  */
@@ -92,14 +92,15 @@ export async function HubResorts({
           <li key={card.key} className="flex">
             <article
               data-card=""
-              className="border-border/60 bg-card flex w-full flex-col overflow-hidden rounded-2xl border shadow-sm"
+              className="group border-border/60 bg-card hover:border-primary/40 flex w-full flex-col overflow-hidden rounded-2xl border shadow-sm transition-[border-color,translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md"
             >
               <div
                 className={cn(
                   'relative overflow-hidden',
+                  cards.length <= 2 && 'lg:aspect-[5/2]',
                   card.photo
-                    ? cn('aspect-[16/9]', cards.length <= 2 && 'lg:aspect-[5/2]')
-                    : 'from-primary/25 via-primary/10 to-status-operating/15 bg-gradient-to-br pt-10'
+                    ? 'aspect-[16/9]'
+                    : 'from-primary/25 via-primary/10 to-status-operating/15 bg-gradient-to-br pt-10 sm:aspect-[16/9] sm:pt-0'
                 )}
               >
                 {card.photo && (
@@ -109,8 +110,15 @@ export async function HubResorts({
                     width={card.photo.width}
                     height={card.photo.height}
                     sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 300px"
-                    className="size-full object-cover"
+                    className="size-full object-cover transition-transform duration-500 ease-out motion-safe:group-hover:scale-105"
                     style={{ objectPosition: card.photo.position }}
+                  />
+                )}
+                {!card.photo && (
+                  <MapPinned
+                    aria-hidden
+                    strokeWidth={1.25}
+                    className="text-primary/20 absolute top-1/2 right-4 size-24 -translate-y-1/2 max-sm:hidden"
                   />
                 )}
                 {card.photo && (
@@ -122,7 +130,9 @@ export async function HubResorts({
                 <h3
                   className={cn(
                     'text-lg font-semibold',
-                    card.photo ? 'absolute inset-x-3 bottom-2 text-white drop-shadow' : 'px-4 pb-2'
+                    card.photo
+                      ? 'absolute inset-x-3 bottom-2 text-white drop-shadow'
+                      : 'px-4 pb-2 sm:absolute sm:inset-x-4 sm:bottom-2 sm:p-0'
                   )}
                 >
                   {card.name}
@@ -131,16 +141,17 @@ export async function HubResorts({
               <div className="flex flex-1 flex-col gap-3 p-4">
                 {card.lead && <p className="text-sm leading-relaxed">{card.lead}</p>}
                 {card.parks.length > 0 && (
-                  <ul className="flex flex-col gap-1" {...linkBlockAttributes('trip_parks')}>
+                  <ul className="-mx-2 flex flex-col" {...linkBlockAttributes('trip_parks')}>
                     {card.parks.map((park) => (
                       <li key={park.slug} className="flex flex-col">
                         <Link
                           href={parkCalendarHref(park, locale)}
                           prefetch={false}
                           {...linkEntityAttributes(park.id)}
-                          className="text-primary-ink inline-flex min-h-11 items-center text-sm font-medium underline-offset-4 hover:underline sm:min-h-8"
+                          className="text-primary-ink hover:bg-primary/10 flex min-h-11 items-center justify-between gap-2 rounded-lg px-2 text-sm font-medium transition-colors sm:min-h-9"
                         >
                           {t('parksIndex.link', { park: shortParkName(park.name) })}
+                          <ChevronRight aria-hidden className="size-4 shrink-0 opacity-60" />
                         </Link>
                       </li>
                     ))}

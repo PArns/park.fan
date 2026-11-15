@@ -477,9 +477,8 @@
       "none": "De rustigste reizen van het jaar konden niet worden geladen.",
       "lastYearNote": "Data meer dan 60 dagen vooruit zijn gerekend met de gemeten dagen van vorig jaar.",
       "rank": "Nr. {rank}",
-      "figure": "Piekwachttijd: ongeveer {minutes} min",
       "plan": "Deze reis plannen",
-      "hint": "De drie rustigste reizen van {days} dagen in de komende twaalf maanden",
+      "hint": "De drie rustigste reizen van {days} dagen",
       "allWeeks": "Alle weken van het jaar vergelijken"
     },
     "planner": {

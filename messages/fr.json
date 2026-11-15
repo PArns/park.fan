@@ -477,9 +477,8 @@
       "none": "Les voyages les plus calmes de l’année n’ont pas pu être chargés.",
       "lastYearNote": "Les dates à plus de 60 jours sont classées sur les jours mesurés l’an dernier.",
       "rank": "N° {rank}",
-      "figure": "Attente de pointe : environ {minutes} min",
       "plan": "Planifier ce voyage",
-      "hint": "Les trois voyages de {days} jours les plus calmes des douze prochains mois",
+      "hint": "Les trois voyages de {days} jours les plus calmes",
       "allWeeks": "Comparer toutes les semaines de l’année"
     },
     "planner": {

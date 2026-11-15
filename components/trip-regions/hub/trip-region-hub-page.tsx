@@ -335,6 +335,7 @@ export async function TripRegionHubPage({
               <HubWhen
                 region={region.slug}
                 windows={whenWindows}
+                range={when ? { from: when.meta.from, to: when.meta.to } : null}
                 pagePath={pagePath}
                 locale={locale}
               />

@@ -477,9 +477,8 @@
       "none": "Non è stato possibile caricare i viaggi più tranquilli dell’anno.",
       "lastYearNote": "Le date oltre 60 giorni sono ordinate sui giorni misurati l’anno scorso.",
       "rank": "N. {rank}",
-      "figure": "Attesa di picco: circa {minutes} min",
       "plan": "Pianifica questo viaggio",
-      "hint": "I tre viaggi di {days} giorni più tranquilli dei prossimi dodici mesi",
+      "hint": "I tre viaggi di {days} giorni più tranquilli",
       "allWeeks": "Confronta tutte le settimane dell’anno"
     },
     "planner": {

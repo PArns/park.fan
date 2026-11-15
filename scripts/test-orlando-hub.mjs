@@ -18,6 +18,7 @@ import {
   hubWeekFragment,
   hubWeekFromFragment,
   hubWeeks,
+  yearLine,
   isRankable,
   glanceDay,
   glanceLines,
@@ -63,6 +64,23 @@ function test(name, fn) {
 }
 
 const NOV = { year: 2026, month: 11 };
+
+test('the year line places months and trips by their share of the range', () => {
+  const line = yearLine({ from: '2027-01-01', to: '2027-04-10' }, [
+    { from: '2027-01-11', to: '2027-01-20' },
+    { from: '2027-04-06', to: '2027-04-15' },
+  ]);
+  assert.deepEqual(
+    line.months.map((m) => m.month),
+    ['2027-01', '2027-02', '2027-03', '2027-04']
+  );
+  assert.equal(line.months[0].left, 0);
+  assert.equal(line.months[0].width, 31);
+  assert.equal(line.months[3].width, 10);
+  assert.deepEqual(line.windows[0], { left: 10, width: 10 });
+  // A trip that runs past the range ends with it.
+  assert.deepEqual(line.windows[1], { left: 95, width: 5 });
+});
 
 test('the hub serves twelve months from the current one', () => {
   const months = tripRegionMonths(NOV);

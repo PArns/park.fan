@@ -477,9 +477,8 @@
       "none": "Die ruhigsten Reisen des Jahres konnten nicht geladen werden.",
       "lastYearNote": "Termine mehr als 60 Tage voraus sind mit dem gemessenen Vorjahr gerechnet.",
       "rank": "Nr. {rank}",
-      "figure": "Spitzenwartezeit: etwa {minutes} Min.",
       "plan": "Diese Reise planen",
-      "hint": "Die drei ruhigsten Reisen über {days} Tage in den nächsten zwölf Monaten",
+      "hint": "Die drei ruhigsten Reisen über {days} Tage",
       "allWeeks": "Alle Wochen des Jahres vergleichen"
     },
     "planner": {
