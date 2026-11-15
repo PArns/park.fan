@@ -50,7 +50,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`header.tsx`](../../components/layout/header.tsx)
 
-- `Header` _component_: The 48 px site header: brand lockup, the parks, blog, news and more menus, favourites, nearby park, planner, search, language, unit and theme controls, and the burger sheet on phones.
+- `Header` _component_: The 48 px site header: brand lockup, nearby park, the guides, news, planner, parks, favourites and „Mehr" menus in `MENU_ORDER`, search, language, unit and theme controls, and the burger sheet on phones, which follows the same order.
 
 ### [`hero-background.tsx`](../../components/layout/hero-background.tsx)
 

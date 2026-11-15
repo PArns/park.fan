@@ -301,8 +301,8 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
 
 ## Ways in
 
-- The More menu's wide tile and the phone sheet's link (`lib/navigation/more-menu.ts`,
-  `components/layout/more-menu-panel.tsx`, `components/layout/header.tsx`).
+- The header's planner band and the phone sheet's „Planen" rows (`lib/navigation/planner-menu.ts`,
+  `components/layout/planner-menu-panel.tsx`, `components/layout/header.tsx`).
 - `TripPlannerTile` and `TripPlannerBand` (`components/trip-regions/`), from every page about the
   region's parks into the planner. Which parks: the region route's `parks[]`, reduced by
   `tripRegionLinks` (`lib/trip-regions/trip-links.ts`, which keeps the live regions of the
