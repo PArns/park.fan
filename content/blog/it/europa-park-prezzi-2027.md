@@ -24,7 +24,7 @@ coverImage:
   caption: 'Il relitto nella vasca di Poseidon, nell’area a tema greca, era ridotto così anche prima dell’aumento dei prezzi.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Prezzi Europa-Park 2027: online fino a 79,50 €, parcheggio 12 €'
+  title: 'Europa-Park 2027: online fino a 79,50 €, parcheggio a 12 €'
   description: >-
     Europa-Park dal 20 marzo 2027: online 70–79,50 € per gli adulti, 59–68 € per i bambini, parcheggio 12 €. Tutti i prezzi a confronto col 2026.
   keywords:

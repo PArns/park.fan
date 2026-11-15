@@ -24,7 +24,7 @@ coverImage:
   caption: 'L’épave dans le bassin de Poseidon, dans le quartier grec. Elle était déjà dans cet état avant la hausse des prix.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Europa-Park prix 2027 : en ligne jusqu’à 79,50 €, parking 12 €'
+  title: 'Europa-Park 2027 : jusqu’à 79,50 € en ligne, parking 12 €'
   description: >-
     Europa-Park dès le 20 mars 2027 : billet journée en ligne de 70 à 79,50 € pour un adulte, de 59 à 68 € pour un enfant, parking 12 €. Comparatif avec 2026.
   keywords:
