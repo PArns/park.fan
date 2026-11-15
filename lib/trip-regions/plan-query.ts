@@ -92,6 +92,8 @@ export interface TripPlanState {
    */
   blocks: boolean | null;
   fireworks: 'want' | 'any';
+  /** `weather=avoid`: extreme heat and the storm season weigh more, the Parks step's option. */
+  weather: 'avoid' | 'any';
   rest: PlanRest;
   hop: boolean;
   /** `ticket=hopper`: every plan-first resort with its hopper, as older links and Parky ask. */
@@ -145,6 +147,7 @@ export const DEFAULT_PLAN_STATE: TripPlanState = {
   departure: 'free',
   blocks: null,
   fireworks: 'any',
+  weather: 'any',
   rest: 'auto',
   hop: false,
   ticket: 'base',
@@ -170,6 +173,7 @@ export const PLAN_QUERY_NAMES = [
   'days',
   'within',
   'parks',
+  'weather',
   'hotel',
   'area',
   'arrival',
@@ -459,6 +463,7 @@ export function readPlanQuery(query: QueryReader, keys?: PlanRegionKeys): TripPl
 
   const fireworks = query.get('fireworks');
   state.fireworks = fireworks === 'want' ? 'want' : 'any';
+  state.weather = query.get('weather') === 'avoid' ? 'avoid' : 'any';
 
   const rest = query.get('rest');
   if (rest === 'none' || rest === 'auto') state.rest = rest;
@@ -521,6 +526,7 @@ export function planQueryEntries(state: TripPlanState): Array<[string, string]> 
       state.parks.map((p) => (p.visits ? `${p.slug}:${p.visits}` : p.slug)).join(','),
     ]);
   }
+  if (state.weather === 'avoid') out.push(['weather', 'avoid']);
   if (state.hotel) out.push(['hotel', state.hotel]);
   if (state.area) out.push(['area', state.area]);
   if (state.arrival === 'park') out.push(['arrival', 'park']);

@@ -292,8 +292,6 @@ export interface PlanTotals {
   savedMinutesPerRide?: number;
   expectedError?: number;
   orderMatters?: boolean;
-  /** What heat and the hurricane season added to the ranking, minutes per park day. */
-  penalties?: { heat?: number; hurricane?: number; typhoon?: number };
   parkDays: number;
   restDays: number;
   /** Of `restDays`, those with `spare`; absent from an API before 2.21.1. */
