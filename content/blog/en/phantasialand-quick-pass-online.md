@@ -47,15 +47,15 @@ seo:
     - Phantasialand Wintertraum 2026
 ---
 
-[Phantasialand](ref:phantasialand) now sells its Quick Pass in the [park's online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Once you've paid, it arrives as a PDF by email, and at the ride's Quick Pass entrance you show the QR code from it on your phone. Until now you could only get one at Guest Services in the Berlin area.
+[Phantasialand](ref:phantasialand) now sells its Quick Pass in the [park's online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Once you've paid, it arrives as a PDF by email, and at the ride's Quick Pass entrance you show the QR code from it on your phone. Until now you could only get one at Guest Services on the Kaiserplatz, in the Berlin area.
 
-A Quick Pass is valid only on the day you book it. The shop doesn't let you pick another day, and there's no rebooking and no refund. So buy it on the day of your visit, in the morning on the way to Brühl or right after you're through the gates. A pass you order from the sofa the evening before is a nice-looking PDF the next morning and nothing more. On 15 November the banner at the top of the shop said as much: "Valid today only: Nov 15, 2026".
+A Quick Pass is valid only on the day you book it, which is why the top of the shop says "Valid today only" with the day's date. You can't pick another day, and there's no rebooking and no refund. So buy it on the day of your visit, in the morning on the way to Brühl or right after you're through the gates. A pass you order from the sofa the evening before is a nice-looking PDF the next morning and nothing more.
 
 ## How to buy the Quick Pass online
 
-In the shop you pick the rides you want a pass for, or go straight for the Ultimate. From then on the clock is running: the basket holds the passes for ten minutes, and you finish the order within that time. Each pass is for one person, so a family of four needs four for Black Mamba. The email arrives after payment, and the passes are valid straight away. The shop is in German, English, French and Dutch.
+In the shop you pick the rides you want a pass for, or go straight for the Ultimate. The basket then holds the passes for ten minutes, and you finish the order within that time. Each pass is for one person, so a family of four needs four for Black Mamba. The passes are valid as soon as you've paid. The shop is in German, English, French and Dutch.
 
-At the ride, go to the Quick Pass entrance and hold up your phone with the QR code from the PDF. Turn the screen brightness all the way up first, in the evening at Wintertraum too, when your battery is already begging for mercy after a cold day of photos.
+Before you hold up your phone at the Quick Pass entrance, turn the screen brightness all the way up. Do it in the evening at Wintertraum too, when your battery is already begging for mercy after a cold day of photos.
 
 ```cta-widget
 href: https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
@@ -65,7 +65,7 @@ text: Valid only on the day you book it, so buy it on the day of your visit.
 
 ## Prices in the shop on 15 November
 
-A Quick Pass Single takes one person through the Quick Pass entrance of the chosen ride once. On 15 November the shop listed these single passes:
+A Quick Pass Single takes you through the Quick Pass entrance of the chosen ride once.
 
 | Ride                                                       | Quick Pass Single  |
 | ---------------------------------------------------------- | ------------------ |
@@ -79,13 +79,13 @@ A Quick Pass Single takes one person through the Quick Pass entrance of the chos
 | [Talocan](ref:phantasialand/talocan)                       | €5.00              |
 | [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)   | currently sold out |
 
-Colorado Adventure has gone up. The park's info page, which describes buying at Guest Services, still has the pass for the mine train at €5; the shop charges €7. The other prices haven't changed. Taron by day, Chiapas and River Quest weren't among the single passes on 15 November.
+Colorado Adventure has gone up. The park's info page still has the pass for the mine train at €5; the shop charges €7. The other prices haven't changed. Taron by day, Chiapas and River Quest weren't among the single passes.
 
-The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and onto [F.L.Y.](ref:phantasialand/fly) faster once. The shop explicitly lists Taron in the Ultimate as "Daylight & After Dark". F.L.Y. is only available with a Quick Pass through the Ultimate.
+The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and onto [F.L.Y.](ref:phantasialand/fly) faster once, which has no single pass. For Taron, the shop explicitly lists the Ultimate as "Daylight & After Dark".
 
 ## What else you need
 
-On top of the Quick Pass you need a valid day ticket, because admission doesn't include it. Day tickets are sold online only. On the day of your visit the park sells them until 2 pm, since there's no ticket office at the entrance. The ride's minimum height applies with a Quick Pass just as it does without one, and the pass doesn't let you choose your seat on the train.
+A Quick Pass only works with a valid day ticket, and admission doesn't include it. Day tickets are sold online only, as there's no ticket office at the entrance. For the day itself the park sells them until 2 pm. The ride's minimum height applies with a Quick Pass just as it does without one, and the pass doesn't let you choose your seat on the train.
 
 ## When the entrance pauses or the ride is down
 
@@ -103,7 +103,7 @@ For the evening, Taron After Dark is what counts. The single pass is valid from 
 
 ## Until now only at Guest Services
 
-Until now you had to go to Guest Services on the Kaiserplatz for a Quick Pass, and there were only so many. At Wintertraum they were often gone by midday on weekends. The allocation is still limited online: next to "Also available online", the screens in the park say "Limited availability". The park's info page still lists Guest Services in the Berlin area as a place to buy them. Phantasialand hasn't said since when the shop has been selling the passes.
+At Guest Services there were only so many, and at Wintertraum they were often gone by midday on weekends. The allocation is still limited online: next to "Also available online", the screens in the park say "Limited availability". The park's info page still describes buying them at Guest Services. Phantasialand hasn't announced when the shop started selling them.
 
 In my experience you don't need a Quick Pass at all on a green day when you arrive early, but on a deep-red Saturday in the school holidays it can save the day. The order I ride in without one is in the [Phantasialand tips](/blog/phantasialand-wait-times-tips).
 

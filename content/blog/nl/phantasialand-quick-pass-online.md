@@ -46,15 +46,15 @@ seo:
     - Phantasialand Wintertraum 2026
 ---
 
-Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice in themawereld Berlin.
+Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin.
 
-Een Quick Pass is alleen geldig op de dag dat je hem boekt. Een andere dag kiezen kan in de shop niet. Omboeken ook niet, en je geld terugkrijgen evenmin. Koop hem dus op de dag zelf, 's ochtends onderweg naar Brühl of meteen nadat je door de ingang van het park bent gelopen. Bestel je hem de avond ervoor vanaf de bank, dan heb je de volgende ochtend een mooie pdf en verder niets. Bovenaan de shop stond op 15 november dan ook “Nur heute gültig: 15.11.2026”, alleen vandaag geldig.
+Een Quick Pass is alleen geldig op de dag dat je hem boekt, en daarom staat bovenaan de shop “Nur heute gültig” (alleen vandaag geldig) met de datum van die dag. Een andere dag kiezen kan niet. Omboeken ook niet, en je geld terugkrijgen evenmin. Koop hem dus op de dag zelf, 's ochtends onderweg naar Brühl of meteen nadat je door de ingang van het park bent gelopen. Bestel je hem de avond ervoor vanaf de bank, dan heb je de volgende ochtend een mooie pdf en verder niets.
 
 ## Zo koop je de Quick Pass online
 
-In de shop kies je de banen waarvoor je een pass wilt, of meteen de Ultimate. Vanaf dat moment loopt de klok: tien minuten houdt het winkelmandje de passes voor je vast, en binnen die tijd rond je de bestelling af. Elke pass geldt voor één persoon, dus een gezin van vier heeft er voor Black Mamba vier nodig. Na de betaling komt de e-mail. De passes gelden meteen. De shop is er in het Duits, Engels, Frans en Nederlands.
+In de shop kies je de banen waarvoor je een pass wilt, of meteen de Ultimate. Het winkelmandje houdt de passes dan tien minuten voor je vast, en binnen die tijd rond je de bestelling af. Elke pass geldt voor één persoon, dus een gezin van vier heeft er voor Black Mamba vier nodig. Geldig zijn de passes meteen na de betaling. De shop is er in het Duits, Engels, Frans en Nederlands.
 
-Bij de baan loop je naar de Quick-Pass-ingang en houd je je telefoon met de QR-code uit de pdf omhoog. Zet de helderheid van je scherm van tevoren op de hoogste stand, ook 's avonds in de Wintertraum, als je accu na een koude dag vol foto's toch al om genade smeekt.
+Zet de helderheid van je scherm op de hoogste stand voordat je je telefoon bij de Quick-Pass-ingang omhooghoudt. Dat geldt ook 's avonds in de Wintertraum, als je accu na een koude dag vol foto's toch al om genade smeekt.
 
 ```cta-widget
 href: https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
@@ -64,7 +64,7 @@ text: Alleen geldig op de dag van boeken, dus koop hem op de dag van je bezoek.
 
 ## Prijzen in de shop op 15 november
 
-Met een Quick Pass Single kan één persoon één keer door de Quick-Pass-ingang van de gekozen baan. Op 15 november had de shop deze losse passes:
+Met een Quick Pass Single ga je één keer door de Quick-Pass-ingang van de gekozen baan.
 
 | Baan                                                       | Quick Pass Single         |
 | ---------------------------------------------------------- | ------------------------- |
@@ -78,13 +78,13 @@ Met een Quick Pass Single kan één persoon één keer door de Quick-Pass-ingang
 | [Talocan](ref:phantasialand/talocan)                       | € 5,00                    |
 | [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)   | op dit moment uitverkocht |
 
-Colorado Adventure is duurder geworden. Op de infopagina van het park, die de verkoop bij de gastenservice beschrijft, kost de pass voor de mijntrein nog € 5, in de shop € 7. De andere prijzen zijn gelijk gebleven. Taron overdag, Chiapas en River Quest stonden op 15 november niet tussen de losse passes.
+Colorado Adventure is duurder geworden. Op de infopagina van het park kost de pass voor de mijntrein nog € 5, in de shop € 7. De andere prijzen zijn gelijk gebleven. Taron overdag, Chiapas en River Quest stonden niet tussen de losse passes.
 
-De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pass-ingang en kom je één keer sneller in [F.L.Y.](ref:phantasialand/fly). Bij Taron staat in de shop uitdrukkelijk “Daylight & After Dark” in de Ultimate. Voor F.L.Y. bestaat een Quick Pass alleen als onderdeel van de Ultimate.
+De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pass-ingang en kom je één keer sneller in [F.L.Y.](ref:phantasialand/fly), waarvoor geen losse pass bestaat. Bij Taron vermeldt de shop voor de Ultimate uitdrukkelijk “Daylight & After Dark”.
 
 ## Wat je verder nodig hebt
 
-Naast de Quick Pass heb je een geldig dagticket nodig, want in de entree zit hij niet. Dagtickets zijn er alleen online. Op de dag van je bezoek verkoopt het park ze tot 14 uur; een kassa bij de ingang is er niet. De minimumlengte van een baan geldt met Quick Pass net zo goed als zonder, en een vrije plaatskeuze in de trein hoort niet bij de pass.
+De Quick Pass geldt alleen samen met een geldig dagticket, want in de entree zit hij niet. Dagtickets zijn er alleen online. Een kassa bij de ingang heeft het park niet, en voor de dag zelf verkoopt het ze tot 14 uur. De minimumlengte van een baan geldt met Quick Pass net zo goed als zonder, en een vrije plaatskeuze in de trein hoort niet bij de pass.
 
 ## Als de ingang pauzeert of de baan stilstaat
 
@@ -94,7 +94,7 @@ De Quick Pass maakt je wachttijd korter. Meteen instappen belooft hij niet, en d
 
 De Wintertraum loopt sinds 14 november tot en met 24 januari 2027, elke dag van 11 tot 20 uur. Gesloten is het park op 24 en 25 december, op 1 januari en op 12 en 13 januari. Op oudejaarsdag sluit het om 18 uur.
 
-'s Avonds draait het vooral om Taron After Dark. De losse pass geldt vanaf 17 uur, dus tot sluitingstijd heb je in de Wintertraum drie uur, op oudejaarsdag één.
+'s Avonds draait het vooral om de losse pass voor Taron After Dark, die vanaf 17 uur geldt. Tot sluitingstijd heb je daarmee in de Wintertraum drie uur, op oudejaarsdag één.
 
 ```best-days-widget slug=phantasialand
 
@@ -102,7 +102,7 @@ De Wintertraum loopt sinds 14 november tot en met 24 januari 2027, elke dag van 
 
 ## Tot nu toe alleen bij de gastenservice
 
-Tot nu toe moest je voor de Quick Pass naar de gastenservice aan de Kaiserplatz, en het aantal was beperkt. In de Wintertraum waren ze in het weekend vaak rond het middaguur op. Online blijft het aantal beperkt: op de schermen in het park staat naast “Auch einfach online erhältlich” (ook gewoon online te koop) de melding “Limitiertes Kontingent”, een beperkt aantal. Op de infopagina van het park staat de gastenservice in themawereld Berlin nog steeds als verkooppunt. Sinds wanneer de shop de passes verkoopt, heeft het Phantasialand niet bekendgemaakt.
+Bij de gastenservice was het aantal beperkt, en in de Wintertraum waren de passes in het weekend vaak rond het middaguur op. Online blijft het aantal beperkt: op de schermen in het park staat naast “Auch einfach online erhältlich” (ook gewoon online te koop) de melding “Limitiertes Kontingent”, een beperkt aantal. De infopagina van het park beschrijft nog steeds de verkoop bij de gastenservice. Sinds wanneer de shop de passes verkoopt, heeft het Phantasialand niet bekendgemaakt.
 
 Op een groene dag waarop je vroeg aankomt, heb je de Quick Pass volgens mij niet nodig. Op een dieprode zaterdag in de vakantie kan hij je dag redden. In welke volgorde ik zonder pass de banen afga, lees je in de [Phantasialand-tips](/blog/phantasialand-wachttijden-tips).
 

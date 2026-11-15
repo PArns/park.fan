@@ -47,15 +47,15 @@ seo:
     - Phantasialand Wintertraum 2026
 ---
 
-Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice in der Themenwelt Berlin.
+Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin.
 
-Ein Quick Pass gilt ausschließlich an dem Tag, an dem du ihn buchst. Im Shop lässt sich kein anderer Nutzungstag wählen, eine Umbuchung gibt es ebenso wenig wie eine Erstattung. Kauf ihn deshalb am Besuchstag selbst, morgens auf dem Weg nach Brühl oder gleich nach dem Einlass im Park. Ein Pass, den du am Abend vorher auf dem Sofa bestellst, ist am nächsten Morgen ein hübsches PDF und sonst nichts. Oben im Shop stand am 15. November entsprechend „Nur heute gültig: 15.11.2026“.
+Ein Quick Pass gilt ausschließlich an dem Tag, an dem du ihn buchst, und oben im Shop steht deshalb „Nur heute gültig“ mit dem Datum des Tages. Einen anderen Nutzungstag kannst du nicht wählen, eine Umbuchung gibt es ebenso wenig wie eine Erstattung. Kauf ihn deshalb am Besuchstag selbst, morgens auf dem Weg nach Brühl oder gleich nach dem Einlass im Park. Ein Pass, den du am Abend vorher auf dem Sofa bestellst, ist am nächsten Morgen ein hübsches PDF und sonst nichts.
 
 ## So kaufst du den Quick Pass online
 
-Im Shop wählst du die Bahnen aus, für die du einen Pass willst, oder gleich den Ultimate. Ab dann läuft die Uhr. Zehn Minuten hält der Warenkorb die Pässe für dich fest, in dieser Zeit schließt du die Bestellung ab. Jeder Pass gilt für eine Person. Eine Familie zu viert braucht für Black Mamba also vier. Nach der Zahlung kommt die E-Mail. Die Pässe gelten sofort. Den Shop gibt es auf Deutsch, Englisch, Französisch und Niederländisch.
+Im Shop wählst du die Bahnen aus, für die du einen Pass willst, oder gleich den Ultimate. Der Warenkorb hält die Pässe dann zehn Minuten für dich fest, in dieser Zeit schließt du die Bestellung ab. Jeder Pass gilt für eine Person. Eine Familie zu viert braucht für Black Mamba also vier, und alle vier gelten sofort nach der Zahlung. Den Shop gibt es auf Deutsch, Englisch, Französisch und Niederländisch.
 
-An der Bahn gehst du zum Quick-Pass-Eingang und hältst das Handy mit dem QR-Code aus dem PDF hin. Stell die Displayhelligkeit vorher auf die höchste Stufe, auch abends im Wintertraum, wenn der Akku nach einem kalten Tag voller Fotos ohnehin schon um Gnade bittet.
+Bevor du am Quick-Pass-Eingang das Handy hinhältst, dreh die Displayhelligkeit ganz auf. Das gilt auch abends im Wintertraum, wenn der Akku nach einem kalten Tag voller Fotos ohnehin schon um Gnade bittet.
 
 ```cta-widget
 href: https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
@@ -65,7 +65,7 @@ text: Gilt nur am Tag der Buchung, also am Besuchstag kaufen.
 
 ## Preise im Shop am 15. November
 
-Ein Quick Pass Single bringt eine Person einmal durch den Quick-Pass-Eingang der gewählten Bahn. Am 15. November hatte der Shop diese Einzelpässe:
+Ein Quick Pass Single bringt dich einmal durch den Quick-Pass-Eingang der gewählten Bahn.
 
 | Bahn                                                       | Quick Pass Single   |
 | ---------------------------------------------------------- | ------------------- |
@@ -79,13 +79,13 @@ Ein Quick Pass Single bringt eine Person einmal durch den Quick-Pass-Eingang der
 | [Talocan](ref:phantasialand/talocan)                       | 5,00 €              |
 | [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)   | derzeit ausverkauft |
 
-Teurer geworden ist Colorado Adventure. Auf der Infoseite des Parks, die den Verkauf am Gästeservice beschreibt, kostet der Pass für die Minenbahn noch 5 €, im Shop 7 €. Die übrigen Preise sind gleich geblieben. Taron bei Tag, Chiapas und River Quest fehlten am 15. November in der Liste der Einzelpässe.
+Teurer geworden ist Colorado Adventure. Auf der Infoseite des Parks kostet der Pass für die Minenbahn noch 5 €, im Shop 7 €. Die übrigen Preise sind gleich geblieben. Taron bei Tag, Chiapas und River Quest fehlten in der Liste der Einzelpässe.
 
-Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quick-Pass-Eingang und einmal schneller auf [F.L.Y.](ref:phantasialand/fly). Taron steht im Shop dabei ausdrücklich mit „Daylight & After Dark“ im Ultimate. F.L.Y. gibt es per Quick Pass nur im Ultimate.
+Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quick-Pass-Eingang und einmal schneller auf [F.L.Y.](ref:phantasialand/fly), für die es keinen Einzelpass gibt. Bei Taron nennt der Shop für den Ultimate ausdrücklich „Daylight & After Dark“.
 
 ## Was du außerdem brauchst
 
-Zum Quick Pass kommt ein gültiges Tagesticket, denn im Eintritt steckt er nicht. Tagestickets gibt es nur online. Am Besuchstag selbst verkauft der Park sie bis 14 Uhr, denn eine Tageskasse am Eingang gibt es nicht. Die Mindestgröße der Bahn gilt mit Quick Pass genauso wie ohne, und eine freie Platzwahl im Zug gehört zum Pass nicht dazu.
+Der Quick Pass gilt nur zusammen mit einem gültigen Tagesticket, im Eintritt steckt er nicht. Tagestickets gibt es nur online, denn eine Tageskasse am Eingang hat der Park nicht. Für den Besuchstag selbst verkauft er sie bis 14 Uhr. Die Mindestgröße der Bahn gilt mit Quick Pass genauso wie ohne, und eine freie Platzwahl im Zug gehört zum Pass nicht dazu.
 
 ## Wenn der Eingang pausiert oder die Bahn steht
 
@@ -93,7 +93,7 @@ Der Quick Pass verkürzt die Wartezeit. Sofort einsteigen verspricht er nicht, u
 
 ## Im Wintertraum
 
-Der Wintertraum läuft seit dem 14. November und bis einschließlich 24. Januar 2027, täglich von 11 bis 20 Uhr. Geschlossen ist am 24. und 25. Dezember, am 1. Januar sowie am 12. und 13. Januar. Silvester endet um 18 Uhr.
+Der Wintertraum läuft seit dem 14. November und bis einschließlich 24. Januar 2027, täglich von 11 bis 20 Uhr. Geschlossen ist am 24. und 25. Dezember, am 1. Januar sowie am 12. und 13. Januar. An Silvester schließt der Park um 18 Uhr.
 
 Für den Abend zählt vor allem Taron After Dark. Der Einzelpass gilt ab 17 Uhr. Bis Parkschluss bleiben dir damit im Wintertraum drei Stunden, an Silvester eine.
 
@@ -103,7 +103,7 @@ Für den Abend zählt vor allem Taron After Dark. Der Einzelpass gilt ab 17 Uhr.
 
 ## Bisher nur am Gästeservice
 
-Bis jetzt musstest du für den Quick Pass zum Gästeservice am Kaiserplatz, und die Menge war begrenzt. Im Wintertraum waren sie am Wochenende oft mittags weg. Online bleibt das Kontingent begrenzt: Auf den Bildschirmen im Park steht neben „Auch einfach online erhältlich“ der Hinweis „Limitiertes Kontingent“. Der Gästeservice in der Themenwelt Berlin steht auf der Infoseite des Parks weiter als Verkaufsstelle. Seit wann der Shop die Pässe anbietet, hat das Phantasialand nicht bekannt gegeben.
+Am Gästeservice war die Menge begrenzt, im Wintertraum waren die Pässe am Wochenende oft mittags weg. Online bleibt das Kontingent begrenzt: Auf den Bildschirmen im Park steht neben „Auch einfach online erhältlich“ der Hinweis „Limitiertes Kontingent“. Die Infoseite des Parks beschreibt weiter den Verkauf am Gästeservice. Seit wann der Shop die Pässe anbietet, hat das Phantasialand nicht bekannt gegeben.
 
 An einem grünen Tag mit früher Ankunft brauchst du den Quick Pass nach meiner Erfahrung gar nicht, an einem tiefroten Ferien-Samstag kann er den Tag retten. In welcher Reihenfolge ich ohne Pass fahre, steht in den [Phantasialand-Tipps](/blog/phantasialand-tipps).
 
