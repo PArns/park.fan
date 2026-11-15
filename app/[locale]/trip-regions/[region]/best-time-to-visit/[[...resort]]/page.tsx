@@ -34,7 +34,7 @@ import {
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { liveTripRegion } from '@/lib/trip-regions/registry';
 import {
-  bestTimeTripDays,
+  bestTimePageDays,
   BEST_TIME_WINDOWS,
   REGION_BEST_TIME_PAGE,
   bestTimeParks,
@@ -76,7 +76,7 @@ async function loadWhen(slug: string, page: BestTimePageId, range: { from: strin
   );
   const when: TripWhenWithMonths = answer
     ? { ...answer, months: answer.months ?? [] }
-    : noWhenAnswer(slug, range, bestTimeTripDays(parks.length));
+    : noWhenAnswer(slug, range, bestTimePageDays(region, page));
   return { region, parks, when };
 }
 
@@ -100,7 +100,7 @@ export async function generateMetadata({ params }: BestTimeRouteProps): Promise<
   const loaded = await catchNonFatal(loadWhen(slug, page, range));
   const windows = loaded?.when.windows.slice(0, BEST_TIME_WINDOWS) ?? [];
   const values = {
-    days: loaded ? bestTimeTripDays(loaded.parks.length) : DEFAULT_FIND_DAYS,
+    days: loaded ? bestTimePageDays(loaded.region, page) : DEFAULT_FIND_DAYS,
     year,
     parks: tOwn(`resort.${page}`),
     windows: windowList(windows, locale),

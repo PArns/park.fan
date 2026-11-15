@@ -24,14 +24,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`best-time.ts`](../../lib/trip-regions/best-time.ts)
 
-- `bestTimeTripDays` _function_: The trip length a page ranks for its parks: a day per park plus arrival and departure, within what the planner searches. Disney World's four parks are six days, all seven Orlando parks nine.
-- `bestTimeTripLengths` _function_: The lengths the hub's teaser lets a reader pick for a number of parks: the page's own (`bestTimeTripDays`) first, then the next longer trips that add two days or more.
+- `bestTimeTripDays` _function_: The trip length for a number of parks at a number of resorts: a day per park, a day between two resorts, arrival and departure, and `extra` days where the resorts are cities apart; within what the planner searches.
+- `bestTimePageDays` _function_: The trip length a best-time page ranks: `bestTimeTripDays` for its parks and resorts.
+- `bestTimeTripLengths` _function_: The lengths the hub's teaser lets a reader pick beside a page's own (`own`, first): the next longer trips that add two days or more.
 - `parseBestTimePage` _function_: The page a `[[...resort]]` segment list asks for in a region, or `null` for a 404: the region's own page where it has one, or a resort's by its segment.
 - `bestTimeYear` _function_: The year in the title: the coming year from September on, else the current one, so the page answers the trip people are booking.
 - `bestTimeRange` _function_: The range `/when` and `/school-breaks` are asked for: the title's year, from today at the earliest and never past the year ahead both routes accept.
 - `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
 - `whenQueryFor` _function_: The `/when` query for a set of parks and a trip length: the quietest `BEST_TIME_WINDOWS` trips in `range`. The gap is the trip's length, so the windows named side by side never overlap.
-- `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for a page's parks at its own length (`bestTimeTripDays`), so both read one cached answer and never print two figures for one window.
+- `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for a page's parks at its own length (`bestTimePageDays`), so both read one cached answer and never print two figures for one window.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
@@ -425,6 +426,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `whenRequestQuery` _function_: The `/when` request's query: the search, the length, the holiday region, the three windows the cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode.
 - `windowReasons` _function_: A window's reasons this client can say, in order.
 - `windowWarnings` _function_: A window's warnings this client can say, in order.
+- `aheadForWeather` _function_: Why a window stands above one with a shorter wait: the ranking adds minutes for heat and the storm season, so a trip can lose its place to a longer wait in better weather.
 - `percentBelowAverage` _function_: How far a window lies below the range's average, in whole percent: "27 % below the period's average". `null` where it is not below or a figure is missing; a window above average is never sold as a saving.
 - `weekTiers` _function_: The year strip's tint per week: where the week's figure falls among the range's weeks, in five equal shares from the quietest to the busiest.
 - `weekInWindow` _function_: Whether a week overlaps a window, for marking the window on the strip.
@@ -434,7 +436,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
 - `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first. `estimate_last_year` is none: after the forecast's days nearly every window has it, and the answer says once from when.
 - `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where park.fan's visitors live, one per locale.
-- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenHolidayCountry`
+- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenWeatherTerm`, `WhenHolidayCountry`
 
 ### [`plan.ts`](../../lib/trip-regions/plan.ts)
 

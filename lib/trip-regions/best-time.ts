@@ -34,25 +34,38 @@ export type BestTimePageId = string;
 const TRAVEL_DAYS = 2;
 
 /** The longer trips the hub's teaser offers beside a page's own length. */
-const LONGER_TRIPS = [7, 10, 12, 14];
+const LONGER_TRIPS = [5, 7, 10, 12, 14];
 
 /** How many lengths the hub's teaser offers. */
 const TRIP_LENGTH_CHOICES = 3;
 
 /**
- * The trip length a page ranks for its parks: a day per park plus arrival and departure, within
- * what the planner searches. Disney World's four parks are six days, all seven Orlando parks nine.
+ * The trip length for a number of parks at a number of resorts: a day per park, a day between
+ * two resorts, arrival and departure, and `extra` days where the resorts are cities apart; within
+ * what the planner searches. Disney World's four parks are six days, all seven Orlando parks at
+ * two resorts ten.
  */
-export function bestTimeTripDays(parks: number): number {
-  return Math.max(MIN_FIND_DAYS, Math.min(MAX_TRIP_DAYS, parks + TRAVEL_DAYS));
+export function bestTimeTripDays(parks: number, resorts = 1, extra = 0): number {
+  const days = parks + TRAVEL_DAYS + Math.max(0, resorts - 1) + extra;
+  return Math.max(MIN_FIND_DAYS, Math.min(MAX_TRIP_DAYS, days));
+}
+
+/** The trip length a best-time page ranks: {@link bestTimeTripDays} for its parks and resorts. */
+export function bestTimePageDays(region: TripRegion, page: BestTimePageId): number {
+  const config = tripRegionConfig(region.slug);
+  const pageConfig = config && bestTimePageOf(config, page);
+  const parks = bestTimeParks(region, page);
+  const resorts = (pageConfig?.groups ?? []).filter((group) =>
+    region.parks.some((p) => p.headliner && p.group === group)
+  ).length;
+  return bestTimeTripDays(parks.length, resorts, pageConfig?.extraDays);
 }
 
 /**
- * The lengths the hub's teaser lets a reader pick for a number of parks: the page's own
- * ({@link bestTimeTripDays}) first, then the next longer trips that add two days or more.
+ * The lengths the hub's teaser lets a reader pick beside a page's own (`own`, first): the next
+ * longer trips that add two days or more.
  */
-export function bestTimeTripLengths(parks: number): number[] {
-  const own = bestTimeTripDays(parks);
+export function bestTimeTripLengths(own: number): number[] {
   return [own, ...LONGER_TRIPS.filter((days) => days >= own + 2)].slice(0, TRIP_LENGTH_CHOICES);
 }
 
@@ -144,7 +157,7 @@ export function whenQueryFor(
 
 /**
  * The one `/when` query a best-time page and the hub's teaser send for a page's parks at its own
- * length ({@link bestTimeTripDays}), so both read one cached answer and never print two figures
+ * length ({@link bestTimePageDays}), so both read one cached answer and never print two figures
  * for one window.
  */
 export function bestTimeWhenQuery(
@@ -152,8 +165,7 @@ export function bestTimeWhenQuery(
   page: BestTimePageId,
   range: PlanSearchRange
 ): BestTimeWhenQuery {
-  const parks = bestTimeParks(region, page);
-  return whenQueryFor(parks, range, bestTimeTripDays(parks.length));
+  return whenQueryFor(bestTimeParks(region, page), range, bestTimePageDays(region, page));
 }
 
 /**

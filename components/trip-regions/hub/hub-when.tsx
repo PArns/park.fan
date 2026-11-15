@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { getListFormat } from '@/lib/utils/intl-format';
 import {
   BEST_TIME_WINDOWS,
+  bestTimePageDays,
   bestTimeParks,
   bestTimeTripLengths,
   REGION_BEST_TIME_PAGE,
@@ -58,7 +59,7 @@ export async function HubWhen({
         id: page.id,
         label: list.format(resorts),
         parks,
-        lengths: bestTimeTripLengths(parks.length),
+        lengths: bestTimeTripLengths(bestTimePageDays(region, page.id)),
         href: tripRegionBestTimePath(region.slug, locale, page.id),
         namesParks: page.id !== REGION_BEST_TIME_PAGE,
       };

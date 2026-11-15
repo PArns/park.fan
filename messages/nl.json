@@ -482,7 +482,8 @@
       "length": "{days, plural, =1 {# dag} other {# dagen}}",
       "scope": "{resorts} · {count, plural, =1 {# park} other {# parken}}",
       "scopeLabel": "Parken van de reis",
-      "lengthLabel": "Lengte van de reis"
+      "lengthLabel": "Lengte van de reis",
+      "ahead": "Staat boven nr. {rank}, {why, select, heat {omdat het dan heter is} hurricane {omdat het dan orkaanseizoen is} typhoon {omdat het dan tyfoonseizoen is} hurricane_more {omdat die reis dieper in het orkaanseizoen valt} typhoon_more {omdat die reis dieper in het tyfoonseizoen valt} other {omdat het weer dan slechter is}}."
     },
     "planner": {
       "title": "Plan je reis"

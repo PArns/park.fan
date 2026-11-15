@@ -49,6 +49,8 @@ export interface TripBestTimePage {
   segment?: string;
   /** The API groups whose headliner parks the page plans. */
   groups: readonly string[];
+  /** Days the page's trip gets on top of its parks' and resorts', where the resorts are cities apart. */
+  extraDays?: number;
   /** The hero photo, a media id; its credit and alt come from the media database. */
   photo: string;
   /** The park whose crowd calendar the page offers as its third next step. */

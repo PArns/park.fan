@@ -482,7 +482,8 @@
       "length": "{days, plural, =1 {# day} other {# days}}",
       "scope": "{resorts} · {count, plural, =1 {# park} other {# parks}}",
       "scopeLabel": "Parks of the trip",
-      "lengthLabel": "Length of the trip"
+      "lengthLabel": "Length of the trip",
+      "ahead": "Ranks above no. {rank} {why, select, heat {because it is hotter then} hurricane {because that trip falls in hurricane season} typhoon {because that trip falls in typhoon season} hurricane_more {because that trip falls deeper into hurricane season} typhoon_more {because that trip falls deeper into typhoon season} other {because the weather is worse then}}."
     },
     "planner": {
       "title": "Plan your trip"

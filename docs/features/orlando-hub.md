@@ -228,8 +228,10 @@ Each chapter opens with its heading and then the thing itself.
    - **The parks**, one choice per best-time page of the region (`bestTime` in its registry
      entry): „Disney und Universal · 7 Parks“, „Disney · 4 Parks“, „Universal · 3 Parks“, the
      resorts by `resortWords`. A region with one best-time page has no such switch.
-   - **The trip's length**, which starts at a day per park plus arrival and departure
-     (`bestTimeTripDays`: 7 parks are 9 days, 4 are 6, 3 are 5), then up to two longer trips
+   - **The trip's length**, which starts at the page's own (`bestTimePageDays`: a day per park, a
+     day between two resorts, arrival and departure, and a page's `extraDays` where the resorts
+     are cities apart; Orlando's seven parks at two resorts are 10 days, Disney World's four 6,
+     Japan's three parks from Tokyo to Osaka 7), then up to two longer trips
      (`bestTimeTripLengths`). Picking other parks puts the length back to theirs.
 
    The served HTML holds the region's own page at its own length, the query that best-time page
@@ -239,13 +241,16 @@ Each chapter opens with its heading and then the thing itself.
    months of the searched range as a ruled track and each window as a bar under its numbered dot,
    decoration beside the cards. Then the three quietest windows from `/when`, as three cards with
    their place, their dates, the trip's length as a badge, their peak wait as the large figure,
-   the first reason the window was picked (left out where all three share it) and „Diese Reise
+   the first reason the window was picked (left out where all three share it), the storm season
+   or heat as chips (`ClimateChips`) and „Diese Reise
    planen“ (`?from=&to=#planner`, with `parks=` for one resort, `rel="nofollow"`). A card names no
    basis: that a date past the forecast reads last year is the accuracy question's in chapter 05
    and the best-time page's. The link under the cards („Alle Wochen des Jahres vergleichen“) goes
    to the chosen parks' best-time page (`tripRegionBestTimePath(region, locale, page)`). The year
    strip, the weeks and their questions are the best-time pages', so the two do not compete for
-   one query. The switches count no event yet.
+   one query. The ranking adds minutes for heat and the storm season, so a trip can stand above one with a
+   shorter wait; its card then says so („Steht vor Nr. 2, weil dort Hurrikansaison ist“,
+   `aheadForWeather`). A switch that changes the choice counts `trip_best_time_switch`.
 
 5. **05 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), ten questions, the method folded
    in, every answer built from the page's data or the region's words: first up to six on the

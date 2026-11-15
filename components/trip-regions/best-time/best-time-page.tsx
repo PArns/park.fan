@@ -34,7 +34,7 @@ import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { ownWords } from '@/lib/trip-regions/region-words';
 import { bestTimePageOf, requireTripRegion } from '@/lib/trip-regions/registry';
 import {
-  bestTimeTripDays,
+  bestTimePageDays,
   flatStretch,
   holidayWeek,
   lastYearFrom,
@@ -106,7 +106,7 @@ export async function BestTimePage(props: BestTimePageProps) {
     getRegionTranslations(region.slug, 'nav', locale),
     bestTimeLabels(locale),
   ]);
-  const days = bestTimeTripDays(parks.length);
+  const days = bestTimePageDays(region, page);
   const parkName = (slug: string) =>
     shortParkName(region.parks.find((p) => p.slug === slug)?.name ?? slug);
   const resortName = tOwn(`resort.${page}`);
@@ -343,7 +343,7 @@ function buildFaq({
   labels: Awaited<ReturnType<typeof bestTimeLabels>>;
 }): Array<{ question: string; answer: string }> {
   const items: Array<{ question: string; answer: string }> = [];
-  const days = bestTimeTripDays(parks.length);
+  const days = bestTimePageDays(region, page);
   const longDay = (date: string) => formatParkDay(locale, date, { day: 'numeric', month: 'long' });
   const list = (parts: string[]) => getListFormat(locale, { type: 'conjunction' }).format(parts);
 

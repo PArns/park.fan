@@ -8,6 +8,7 @@
  */
 
 import assert from 'node:assert/strict';
+import { aheadForWeather } from '../lib/trip-regions/plan-when.ts';
 import {
   bestAndWorstWeeks,
   bestTimeParks,
@@ -64,19 +65,51 @@ test('the segments name the Orlando page, a resort, or nothing', () => {
   assert.equal(parseBestTimePage(ORLANDO, ['disney-world', 'x']), null);
 });
 
-test('a trip is a day per park plus arrival and departure', () => {
-  assert.equal(bestTimeTripDays(7), 9);
+test('a trip is a day per park, a day between resorts, plus arrival and departure', () => {
   assert.equal(bestTimeTripDays(4), 6);
   assert.equal(bestTimeTripDays(3), 5);
+  // A day between two resorts, and one more where they are cities apart.
+  assert.equal(bestTimeTripDays(7, 2), 10);
+  assert.equal(bestTimeTripDays(3, 2), 6);
+  assert.equal(bestTimeTripDays(3, 2, 1), 7);
   // One park alone is still a trip the planner can search for.
   assert.equal(bestTimeTripDays(1), 3);
   assert.equal(bestTimeTripDays(30), 21);
 });
 
 test("the teaser offers the page's length, then longer trips two days apart or more", () => {
-  assert.deepEqual(bestTimeTripLengths(7), [9, 12, 14]);
-  assert.deepEqual(bestTimeTripLengths(4), [6, 10, 12]);
-  assert.deepEqual(bestTimeTripLengths(3), [5, 7, 10]);
+  assert.deepEqual(bestTimeTripLengths(10), [10, 12, 14]);
+  assert.deepEqual(bestTimeTripLengths(6), [6, 10, 12]);
+  assert.deepEqual(bestTimeTripLengths(5), [5, 7, 10]);
+  assert.deepEqual(bestTimeTripLengths(3), [3, 5, 7]);
+});
+
+test('a trip that stands above a shorter wait says which weather the other pays for', () => {
+  const ahead = aheadForWeather([
+    { rank: 1, headlinerWait: 43 },
+    { rank: 2, headlinerWait: 42, penalties: { hurricane: 2.3, heat: 0.5 } },
+    { rank: 3, headlinerWait: 46 },
+  ]);
+  assert.deepEqual([...ahead], [[1, { rank: 2, why: 'hurricane' }]]);
+  // Both in the season, the one below deeper in it.
+  assert.deepEqual(
+    [
+      ...aheadForWeather([
+        { rank: 1, headlinerWait: 69, penalties: { typhoon: 0.9 } },
+        { rank: 2, headlinerWait: 68, penalties: { typhoon: 4 } },
+      ]),
+    ],
+    [[1, { rank: 2, why: 'typhoon_more' }]]
+  );
+  // A shorter wait without a weather term is no explanation, and neither is a longer one.
+  assert.equal(
+    aheadForWeather([
+      { rank: 1, headlinerWait: 45 },
+      { rank: 2, headlinerWait: 44 },
+      { rank: 3, headlinerWait: 50, penalties: { heat: 3 } },
+    ]).size,
+    0
+  );
 });
 
 test('without an answer from /when the page has its months and no figure', () => {

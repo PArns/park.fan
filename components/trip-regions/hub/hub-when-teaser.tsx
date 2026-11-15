@@ -14,8 +14,11 @@ import { whenQueryFor } from '@/lib/trip-regions/best-time';
 import { formatWindow, yearLine } from '@/lib/trip-regions/hub-data';
 import { fetchTripWhen } from '@/lib/trip-regions/plan-fetch';
 import { plannerHrefOn } from '@/lib/trip-regions/plan-query';
-import { windowReasons, type WhenReasonCode } from '@/lib/trip-regions/plan-when';
+import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
+import { climateChips } from '@/lib/trip-regions/plan-copy';
+import { aheadForWeather, windowReasons, type WhenReasonCode } from '@/lib/trip-regions/plan-when';
 import type { TripWhenWindow } from '@/lib/trip-regions/types';
+import { ClimateChips } from '@/components/trip-regions/planner/plan-day-bits';
 import { HubFilterChip } from './hub-filter-chip';
 
 /** Below this share of the line a month has no room for its name. */
@@ -111,7 +114,9 @@ function YearLine({
  * second the trip's length, which starts at a day per park plus arrival and departure. The
  * served HTML holds the region's own answer; another choice is read through the relay once and
  * kept, the cards dimmed while it loads. Each card has its place, its dates and their length, its
- * peak wait as the large figure, the first reason it was picked (where the cards differ in it)
+ * peak wait as the large figure, the first reason it was picked (where the cards differ in it),
+ * why it stands above a trip with a shorter wait (`aheadForWeather`), the storm season or heat
+ * as chips
  * and "Plan this trip", which opens the planner on those dates and parks. The link under the
  * cards goes to the chosen parks' best-time page.
  */
@@ -151,8 +156,15 @@ export function HubWhenTeaser({
   const [answers, setAnswers] = useState<Record<string, Answer>>({ [firstKey]: initial });
   const scope = scopes.find((s) => s.id === choice.scope) ?? scopes[0];
   const answer = answers[key];
-  const pick = (scopeId: string, days: number) =>
+  const pick = (scopeId: string, days: number) => {
+    if (scopeId === choice.scope && days === choice.days) return;
+    trackTripEvent(region, 'trip_best_time_switch', {
+      scope: scopeId,
+      days,
+      changed: scopeId === choice.scope ? 'days' : 'parks',
+    });
     setChoice({ scope: scopeId, days, held: answer ? key : choice.held });
+  };
 
   useEffect(() => {
     if (answer) return;
@@ -173,6 +185,7 @@ export function HubWhenTeaser({
   const loading = !answer;
   // One reason on every card is a line said three times; it stands only where the cards differ.
   const sameReason = new Set(windows.map((w) => windowReasons(w)[0])).size === 1;
+  const ahead = aheadForWeather(windows);
 
   return (
     <div className="space-y-5">
@@ -229,6 +242,8 @@ export function HubWhenTeaser({
             <ol className="grid gap-4 sm:grid-cols-3">
               {windows.map((window) => {
                 const reason = sameReason ? undefined : windowReasons(window)[0];
+                const before = ahead.get(window.rank);
+                const climate = climateChips(window.warnings);
                 return (
                   <li key={window.rank} className="flex">
                     <Card className="hover:border-primary/40 relative flex w-full flex-col gap-4 overflow-hidden p-5 transition-[border-color,translate,box-shadow] duration-200 hover:-translate-y-0.5 hover:shadow-md">
@@ -249,7 +264,13 @@ export function HubWhenTeaser({
                         </p>
                         <p className="text-muted-foreground mt-1.5 text-sm">{tData('varWait')}</p>
                       </div>
-                      {reason && <p className="text-sm">{reasons[reason]}</p>}
+                      {(reason || before || climate.length > 0) && (
+                        <div className="space-y-2 text-sm">
+                          {reason && <p>{reasons[reason]}</p>}
+                          {before && <p>{t('ahead', before)}</p>}
+                          <ClimateChips codes={climate} />
+                        </div>
+                      )}
                       <Link
                         href={plannerHrefOn(pagePath, {
                           from: window.from,

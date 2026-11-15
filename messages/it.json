@@ -482,7 +482,8 @@
       "length": "{days, plural, =1 {# giorno} other {# giorni}}",
       "scope": "{resorts} · {count, plural, =1 {# parco} other {# parchi}}",
       "scopeLabel": "Parchi del viaggio",
-      "lengthLabel": "Durata del viaggio"
+      "lengthLabel": "Durata del viaggio",
+      "ahead": "Precede il n. {rank} {why, select, heat {perché allora fa più caldo} hurricane {perché quel viaggio cade nella stagione degli uragani} typhoon {perché quel viaggio cade nella stagione dei tifoni} hurricane_more {perché quel viaggio cade più dentro la stagione degli uragani} typhoon_more {perché quel viaggio cade più dentro la stagione dei tifoni} other {perché allora il tempo è peggiore}}."
     },
     "planner": {
       "title": "Pianifica il tuo viaggio"
