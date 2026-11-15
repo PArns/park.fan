@@ -41,7 +41,7 @@ coverImage:
 seo:
   title: 'Phantasialand Wintertraum 2026/27: horarios, espectáculos y consejos'
   description: >-
-    Wintertraum 2026/27 en el Phantasialand: 11:00 a 20:00 hasta el 24 de enero, siete espectáculos, fuegos hacia las 19:50, entradas solo online y días tranquilos.
+    Wintertraum 2026/27 en el Phantasialand: 11:00 a 20:00 hasta el 24 de enero, siete espectáculos, fuegos hacia las 19:50, entradas online y días tranquilos.
   keywords:
     - Phantasialand Wintertraum 2026/27
     - Phantasialand invierno
