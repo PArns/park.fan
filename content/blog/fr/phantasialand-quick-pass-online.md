@@ -53,18 +53,18 @@ seo:
 
 Le Quick Pass du [Phantasialand](ref:phantasialand) s’achète désormais sur la [boutique en ligne du parc](https://shop.phantasialand.de/fr/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Une fois payé, il arrive par e-mail en PDF. À l’entrée Quick Pass de l’attraction, tu montres sur ton téléphone le QR code qu’il contient. Jusqu’ici, on ne pouvait l’acheter qu’au service des visiteurs, sur la Kaiserplatz, dans le quartier Berlin.
 
-Un Quick Pass ne vaut que pour le jour où tu le réserves, et c’est pourquoi le haut de la boutique affiche « Nur heute gültig » (valable aujourd’hui seulement) avec la date du jour. Aucune autre date ne se choisit, et le pass n’est ni modifiable ni remboursable. Achète-le donc le jour même de ta visite, le matin sur la route de Brühl ou juste après être entré dans le parc. Commandé la veille au soir depuis le canapé, il ne sera le lendemain qu’un joli PDF.
+Un Quick Pass ne vaut que pour le jour où tu le réserves, et c’est pourquoi le haut de la boutique affiche « Nur heute gültig » (valable aujourd’hui seulement) avec la date du jour. Impossible aussi de le modifier ou de se le faire rembourser. Achète-le donc le jour même de ta visite, le matin sur la route de Brühl ou juste après être entré dans le parc. Commandé la veille au soir depuis le canapé, il ne sera le lendemain qu’un joli PDF.
 
 ## Acheter le Quick Pass en ligne
 
 Dans la boutique, tu sélectionnes les attractions pour lesquelles tu veux un pass, ou directement l’Ultimate. Le panier te les réserve ensuite dix minutes, juste de quoi finaliser la commande. Chaque pass vaut pour une seule personne, et une famille de quatre en prend donc quatre pour Black Mamba. Les pass sont valables dès le paiement. La boutique existe en allemand, en anglais, en français et en néerlandais.
 
-Avant de tendre ton téléphone à l’entrée Quick Pass, pousse la luminosité de l’écran au maximum. Fais-le aussi le soir au Wintertraum, quand une journée de froid et de photos a déjà mis la batterie à genoux.
+Avant de tendre ton téléphone à l’entrée Quick Pass, pousse la luminosité de l’écran au maximum. Au Wintertraum, le soir, une journée de froid et de photos a de toute façon mis la batterie à genoux, et sans batterie, pas de QR code. Garde quelques pourcents pour Taron After Dark.
 
 ```cta-widget
 href: https://shop.phantasialand.de/fr/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
 label: Acheter le Quick Pass sur la boutique du Phantasialand
-text: Valable uniquement le jour de l’achat, à prendre le jour de ta visite.
+text: À acheter de préférence le matin de ta visite, pas la veille au soir.
 ```
 
 ## Les prix de la boutique au 15 novembre
@@ -83,23 +83,25 @@ Un Quick Pass Single te fait passer une fois par l’entrée Quick Pass de l’a
 | [Talocan](ref:phantasialand/talocan)                       | 5,00 €                |
 | [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)   | épuisé pour l’instant |
 
-Colorado Adventure a augmenté. La page d’information du parc annonce encore 5 € pour le train de la mine, contre 7 € dans la boutique. Les autres prix n’ont pas bougé. Taron de jour, Chiapas et River Quest manquaient dans la liste des pass individuels.
+Pour Colorado Adventure, la boutique demande 7 €, soit 2 € de plus qu’avant, alors que la page d’information du parc affiche encore 5 € pour le train de la mine. Les autres prix n’ont pas bougé. Taron de jour, Chiapas et River Quest manquaient dans la liste des pass individuels.
 
-Le Quick Pass Ultimate coûte 80 €. Il t’ouvre une fois chaque entrée Quick Pass et te fait passer une fois plus vite sur [F.L.Y.](ref:phantasialand/fly), qui n’a pas de pass individuel. Pour Taron, la boutique précise que l’Ultimate couvre « Daylight & After Dark ».
+Le Quick Pass Ultimate coûte 80 €. Il t’ouvre une fois chaque entrée Quick Pass et te fait passer une fois plus vite sur [F.L.Y.](ref:phantasialand/fly), qui n’a pas de pass individuel. Pour Taron, l’Ultimate vaut selon la boutique pour « Daylight & After Dark », donc de jour comme le soir.
 
 ## Ce qu’il te faut en plus
 
-Le Quick Pass ne vaut qu’avec un billet journée valable, car il n’est pas compris dans l’entrée. Ces billets se vendent uniquement en ligne, et le parc n’a pas de caisse à l’entrée. Pour le jour même, il les vend jusqu’à 14 h. La taille minimale de l’attraction s’applique avec le pass comme sans, et le pass ne donne pas le choix de ta place dans le train.
+Le Quick Pass se paie en plus et ne vaut qu’avec un billet journée valable. Ces billets se vendent uniquement en ligne, le parc n’a pas de caisse à l’entrée, et pour le jour même il les vend jusqu’à 14 h. Si tu arrives au portail à 14 h 30 sans billet, tu as donc un plus gros problème que la file de Black Mamba.
+
+Le pass ne donne pas le choix de ta place dans le train, et la taille minimale de l’attraction s’applique avec le pass comme sans.
 
 ## Quand l’entrée est suspendue ou l’attraction arrêtée
 
-Le Quick Pass raccourcit l’attente. Il ne garantit pas que tu montes aussitôt, et l’entrée Quick Pass peut être suspendue un moment quand la capacité de l’attraction devient juste. Si une attraction ferme pour une raison technique ou à cause de la météo, tu n’as droit à aucun remboursement, pas plus que pour un pass que tu n’utilises tout simplement pas. La revente est interdite, et un pass perdu n’est pas remplacé.
+Avec le Quick Pass, tu fais la queue moins longtemps, mais tu la fais quand même, et l’entrée Quick Pass peut être suspendue un moment quand la capacité de l’attraction devient juste. Si une attraction ferme pour une raison technique ou à cause de la météo, tu n’as droit à aucun remboursement, pas plus que pour un pass que tu n’utilises tout simplement pas. La revente est interdite, et le parc ne remplace pas un pass perdu.
 
 ## Pendant le Wintertraum
 
 Le Wintertraum a commencé le 14 novembre et dure jusqu’au 24 janvier 2027 inclus, tous les jours de 11 h à 20 h. Le parc reste fermé les 24 et 25 décembre, le 1er janvier ainsi que les 12 et 13 janvier. Le soir de la Saint-Sylvestre, il ferme à 18 h.
 
-En soirée, c’est surtout le pass individuel de Taron After Dark qui compte, valable à partir de 17 h. Pendant le Wintertraum, il te reste donc trois heures avant la fermeture, et une seule le 31 décembre.
+Le pass individuel de Taron After Dark vaut à partir de 17 h, et au Wintertraum il fait alors nuit depuis longtemps. Avec la fermeture à 20 h, il te reste donc trois heures, et une seule le 31 décembre.
 
 ```best-days-widget slug=phantasialand
 
@@ -107,8 +109,8 @@ En soirée, c’est surtout le pass individuel de Taron After Dark qui compte, v
 
 ## Jusqu’ici, seulement au service des visiteurs
 
-Au service des visiteurs, la quantité était limitée, et pendant le Wintertraum il n’en restait souvent plus à midi le week-end. En ligne aussi, le contingent reste limité : sur les écrans du parc, la mention « Auch einfach online erhältlich » (disponible aussi en ligne) s’accompagne de « Limitiertes Kontingent » (contingent limité). La page d’information du parc décrit toujours la vente au service des visiteurs. Le Phantasialand n’a pas communiqué depuis quand la boutique vend les pass.
+Au service des visiteurs, la quantité était limitée, et pendant le Wintertraum il n’en restait souvent plus à midi le week-end. En ligne aussi, le contingent reste limité : sur les écrans du parc, la mention « Auch einfach online erhältlich » (disponible aussi en ligne) s’accompagne de « Limitiertes Kontingent » (contingent limité). La page d’information du parc décrit toujours la vente au service des visiteurs.
 
-D’expérience, un jour vert où tu arrives tôt, le Quick Pass ne te sert à rien. Un samedi de vacances en rouge foncé, il peut sauver la journée. L’ordre dans lequel je fais les attractions sans pass se trouve dans les [conseils pour le Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
+D’expérience, un jour vert dans le calendrier, le Quick Pass ne te sert à rien si tu es devant le portail à l’ouverture. Un samedi de vacances en rouge foncé, 10 € pour Black Mamba peuvent être l’argent le mieux dépensé de la journée. L’ordre dans lequel je fais les attractions sans pass se trouve dans les [conseils pour le Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
 
 Sources : [Quick Pass sur la boutique en ligne du Phantasialand](https://shop.phantasialand.de/fr/quick-pass), [conditions d’utilisation du Quick Pass](https://www.phantasialand.de/de/quick-pass/), [informations et accès, section Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [prix et billets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [horaires d’ouverture](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
