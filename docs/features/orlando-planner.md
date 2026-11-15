@@ -270,7 +270,19 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
   section with the reason, the highlight and its time, the way there, the alternatives and the
   venue's official page.
 - **Heat and the hurricane season** are short chips ("hot", "hurricane season", "peak hurricane
-  season") in the day's sheet and on the When mode's cards. A card whose ranking the season's terms
+  season") in the day's sheet and on the When mode's cards, heat in its own magenta
+  (`--signal-heat`, `HEAT_CHIP_CLASS`) with a thermometer, the season in the storm violet with its
+  dashed or solid swatch (`STORM_CHIP_CLASS`), never a crowd colour. A park day is hot when the API
+  says `extreme_heat` (`isHotDay`), and its figure is the day's `weather` (`dayHeat`): „Ø 32°“ for
+  a climate normal, a plain figure only for a forecast. The trip head's weather band
+  (`PlanWeatherBand`) gives the hot park days by basis („1 heißer Parktag, im Schnitt 32 °C“,
+  `tripHeat`) and the season as one chip (`tripStorm`), over a ruler of the trip's days on the
+  plan ribbon's grid. The Week view adds a weather row to every column header where the page has a
+  hot day or a season date: the day's pill and the season's band, run through the gaps as one; its
+  key names both. A day card carries the pill beside its date and the season as its top edge, both
+  inside a `dark` wrapper because the photo's scrim is dark in either theme; with „Extremes Wetter
+  vermeiden“ on, a hot card says no cooler day fitted. The day's sheet says under its figure that
+  a normal and a season are no forecast. A card whose ranking the season's terms
   pushed down says "ranked lower: hurricane season" beside its unchanged minutes. The Dates grid
   and the Month view mark the storm season as a violet segment of the signal bar (`--signal-storm`,
   `STORM_SIGNAL_CLASS`), dashed and solid at the peak, from the region's `weather.storm`

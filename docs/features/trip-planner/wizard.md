@@ -189,6 +189,18 @@ Parky says which, and up to three cards make room, each counted as `trip_left_ou
 the travel days, only the parks left out (where they are most of the choice, a Paris weekend's two
 Disney parks against Parc Astérix), and a longer trip.
 
+### Avoiding extreme weather
+
+Under the park cards, before the free-day question, a switch „Extremes Wetter vermeiden“
+(`WizardToggle` with `ThermometerSun`): on, the state's `weather` is `avoid` and the request carries
+`weather=avoid`, written only while on, since an API that does not know the name answers it with a 400. The API then prices heat from lower highs and more steeply, so theme parks move to the cooler
+days and water parks take the hottest, and in Orlando and Japan the storm season counts twice
+([the API's contract](https://github.com/PArns/v4.api.park.fan/blob/main/docs/frontend/trip-regions.md#avoiding-extreme-weather-weatheravoid)).
+While on, the plan's hot park days and its storm season stand under the switch as chips („1
+heißer Parktag“, „Hochphase der Hurrikansaison“, or „Kein heißer Parktag“), and „Deine Antworten“
+gets a pill of its own after Parks. A change is counted as `trip_option_changed` with
+`option: weather`. Every region has a heat model, so the switch is offered in all of them.
+
 ### Days without a park
 
 `SpareDaysQuestion`, from `lib/trip-regions/spare-days.ts`: once the free days outnumber the park

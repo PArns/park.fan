@@ -3,14 +3,23 @@
 import type { ReactNode } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Car, CircleAlert, Lock, MoonStar, Sparkles, Sunrise } from 'lucide-react';
+import { Car, CircleAlert, Lock, MoonStar, Sparkles, Sunrise, ThermometerSun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatShortDuration } from '@/lib/utils/duration';
 import { formatParkDay } from '@/lib/utils/park-day';
 import { formatGridTime } from '@/lib/planner/park-time';
+import { HEAT_CHIP_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { lockOn, type PlanDay, type TripPlan } from '@/lib/trip-regions/plan';
-import { cardWarnings, dayWhy, earlyPerk, parkStreakAt } from '@/lib/trip-regions/plan-copy';
+import {
+  cardWarnings,
+  dayHeat,
+  dayWhy,
+  earlyPerk,
+  isHotDay,
+  parkStreakAt,
+} from '@/lib/trip-regions/plan-copy';
+import { stormCodeOn, stormSignal } from '@/lib/trip-regions/date-facts';
 import {
   calendarCell,
   dayRunnerUp,
@@ -23,7 +32,7 @@ import { regionOrShared } from '@/lib/trip-regions/region-words';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
-import { useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
+import { HeatFigure, useDayMarkerText, useDayParks, useEveningName } from './plan-day-bits';
 import { PlanDayGlow } from './plan-day-glow';
 import { useBaseName } from './plan-place-words';
 import { MoveIcon, useMoveWords } from './plan-stay-band';
@@ -34,14 +43,18 @@ const CARD_CHIP = 'inline-flex max-w-full items-center gap-1 rounded-full px-2 p
 const CHIP_PLUS = 'bg-primary/10 text-primary-ink';
 /** What costs the day something: the crowd scale's high ink, as the sheet's warnings. */
 const CHIP_WARN = 'bg-crowd-high/12 text-crowd-ink-high';
+/** A label on the photo: the date, the day's heat. */
+const PHOTO_PILL = 'rounded-md bg-black/50 px-2 py-0.5 text-xs font-semibold text-white';
 
 /**
  * A park day as a card, the Days view's unit in every region: the park's photo with the date, its
  * crowd level (`CrowdLevelBadge`) and, for a repeat, which visit it is; under it the peak wait, the
  * way from the hotel, two sentences on why this day (the API's reason, then the runner-up day in
  * the same figure the card shows, `dayRunnerUp`) and chips for what changes the day: the hotel's
- * early slot, the evening, and the warnings in the crowd ink. A press on the photo or the text
- * opens the day's sheet. Without a photo the head is a tinted field with the park's code.
+ * early slot, the evening, and the warnings in the crowd ink. A hot day carries its high beside
+ * the date („Ø 32°“), a day in the storm season the season's band as the card's top edge, and with
+ * „Extremes Wetter vermeiden“ on a hot day says no cooler one fitted. A press on the photo or the
+ * text opens the day's sheet. Without a photo the head is a tinted field with the park's code.
  *
  * Editing goes through two slots, so the card itself stays the plan's picture:
  * - `actions`: the row under the card's text, behind a hairline, for the day's own controls
@@ -72,6 +85,7 @@ export function PlanDayCard({
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
   const tLevel = useTranslations('parks.crowdLevels');
+  const tClimate = useTranslations('tripPlanner.climate');
   const { locale, timeZone, state, photos, parkBySlug, parkName, region } = usePlanContext();
   const parksOf = useDayParks();
   const markerText = useDayMarkerText();
@@ -84,6 +98,9 @@ export function PlanDayCard({
   const wait = shownDayWait(day, calendar);
   const level = day.crowdLevel ?? first?.crowdLevel ?? null;
   const pinned = lockOn(state, day.date) !== null;
+  const hot = isHotDay(day);
+  const heat = dayHeat(day);
+  const storm = stormCodeOn(day.date, region.weather);
   const photo = first ? photos[first.slug] : undefined;
   const park = first ? parkBySlug.get(first.slug) : undefined;
   const dates = first ? (plan.parks.find((p) => p.slug === first.slug)?.dates ?? []) : [];
@@ -161,6 +178,14 @@ export function PlanDayCard({
       tone: CHIP_PLUS,
     });
   }
+  if (hot && state.weather === 'avoid') {
+    chips.push({
+      key: 'heat',
+      icon: <ThermometerSun className="size-3.5 shrink-0" aria-hidden="true" />,
+      text: t('weather.noCooler'),
+      tone: HEAT_CHIP_CLASS,
+    });
+  }
   for (const code of cardWarnings(day)) {
     const text =
       code === 'outside_ticket' || code === 'closes'
@@ -194,6 +219,8 @@ export function PlanDayCard({
     visit > 0 ? t('result.card.visit', { count: visit }) : null,
     wait != null ? t('peakWait', { minutes: wait }) : null,
     level && level !== 'unknown' ? tLevel(level) : null,
+    hot ? tClimate('extreme_heat') : null,
+    storm ? tClimate(storm) : null,
     pinned ? t('marker.pinned') : null,
     added ? t('result.card.added') : null,
   ]
@@ -239,25 +266,42 @@ export function PlanDayCard({
             </span>
           )}
           <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-black/10" />
-          <span className="absolute top-2.5 left-3 flex items-center gap-1.5">
-            <span className="rounded-md bg-black/50 px-2 py-0.5 text-xs font-semibold text-white">
-              {date}
-            </span>
-            {pinned && (
+          {/* The scrim is dark in either theme, so the signals on it take their dark values. */}
+          <span className="dark absolute inset-0">
+            {storm && (
               <span
-                className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-semibold"
-                data-plan-pinned=""
-              >
-                <Lock className="size-3" />
-                {t('marker.pinned')}
-              </span>
+                className={cn(
+                  'absolute inset-x-0 top-0 h-1',
+                  STORM_SIGNAL_CLASS[stormSignal(storm)]
+                )}
+              />
             )}
-            {added && (
-              <span className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-semibold">
-                <Sparkles className="size-3" />
-                {t('result.card.added')}
-              </span>
-            )}
+            <span className="absolute top-2.5 right-28 left-3 flex flex-wrap items-center gap-1.5">
+              <span className={PHOTO_PILL}>{date}</span>
+              {hot && (
+                <span
+                  className={cn(PHOTO_PILL, 'inline-flex items-center gap-1 px-1.5 tabular-nums')}
+                >
+                  <ThermometerSun className="text-signal-heat size-3.5 shrink-0" />
+                  {heat && <HeatFigure weather={heat} />}
+                </span>
+              )}
+              {pinned && (
+                <span
+                  className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-semibold"
+                  data-plan-pinned=""
+                >
+                  <Lock className="size-3" />
+                  {t('marker.pinned')}
+                </span>
+              )}
+              {added && (
+                <span className="bg-primary text-primary-foreground inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-xs font-semibold">
+                  <Sparkles className="size-3" />
+                  {t('result.card.added')}
+                </span>
+              )}
+            </span>
           </span>
           {level && level !== 'unknown' && (
             <CrowdLevelBadge level={level} className="absolute top-2.5 right-3 shadow-sm" />

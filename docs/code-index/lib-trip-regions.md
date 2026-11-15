@@ -190,6 +190,10 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 ### [`plan-copy.ts`](../../lib/trip-regions/plan-copy.ts)
 
 - `climateChips` _function_: The climate chips of a day's or a window's warnings, in order, the season folded into its peak.
+- `isHotDay` _function_: Whether a park day passes the plan's heat threshold (`extreme_heat`): the one switch for every heat mark.
+- `dayHeat` _function_: A hot park day's high: the day's own, on a hop day the hotter park's. `null` on a day that is not hot, and where an older API sends no figure: the mark then goes without one.
+- `tripHeat` _function_: The trip's hot park days grouped by the basis of their figure, the forecast first: one group as a rule, two only where the trip crosses the forecast's 16-day edge.
+- `tripStorm` _function_: The storm season a trip lies in, by its strongest code (the peak before the season), with the first date of that code where it starts inside the trip, else the last where it ends inside it. `null` when no date of the trip is in the season.
 - `eveningReasons` _function_: An evening's reasons this client can say, in order.
 - `primaryReason` _function_: The one-line reason of a day: the first code of `PLAN_REASON_ORDER` or `REST_REASON_ORDER` it carries.
 - `dayWarnings` _function_: A day's warnings this client can say, in order, the two spellings of a back-to-back repeat folded into one.
@@ -216,7 +220,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `PLAN_WARNING_ORDER` _const_: The warnings, most consequential first. `repeat_back_to_back` and `adjacent_repeat` say the same thing (two visits of one park on consecutive days, because nothing else fitted); the API names it either way depending on its version, so both …
 - `EVENING_REASON_ORDER` _const_: Why an evening after the park is worth it, most telling first; the sheet says the first.
 - `RUNNER_UP_CLOSE_MINUTES` _const_: Within this many minutes the runner-up day reads as just as full: the API's `runner_up_close`.
-- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
+- Types: `PlanReasonCode`, `RestReasonCode`, `ClimateChip`, `TripHeatGroup`, `EveningReasonCode`, `PlanWarningCode`, `DayMarker`, `UnplacedPark`, `PlanSavings`, `DayWhy`
 
 ### [`plan-fetch.ts`](../../lib/trip-regions/plan-fetch.ts)
 

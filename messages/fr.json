@@ -4026,6 +4026,10 @@
           "only": "Seulement {parks}",
           "onlyHint": "{parks} {count, plural, =1 {sort} other {sortent}} du plan",
           "longer": "Le voyage se termine alors le {date}"
+        },
+        "weather": {
+          "label": "Éviter la météo extrême",
+          "hint": "Les parcs à thème les jours plus frais, les parcs aquatiques les plus chauds{storm, select, hurricane { ; le pic de la saison des ouragans compte davantage} typhoon { ; le pic de la saison des typhons compte davantage} other {}}"
         }
       },
       "spare": {
@@ -4078,6 +4082,19 @@
       "applied": "Dans le plan : {idea}.",
       "inPlan": "Ajouter au plan",
       "otherDay": "Un autre jour"
+    },
+    "weather": {
+      "heatDays": "{count, plural, =1 {1 jour de parc chaud} other {# jours de parc chauds}}",
+      "heatForecast": "plus de <temp></temp> prévus",
+      "heatNormal": "{count, plural, =1 {<temp></temp> en moyenne} other {jusqu’à <temp></temp> en moyenne}}",
+      "noHeat": "Aucun jour de parc chaud",
+      "stormFrom": "{season} à partir du {date}",
+      "stormUntil": "{season} jusqu’au {date}",
+      "stormNote": "La saison est une statistique des années passées, pas une alerte de tempête ; on ne sait que quelques jours avant si une tempête arrive.",
+      "normalNote": "Ø est la moyenne des années passées à cette date, pas une prévision.",
+      "noCooler": "Aucun jour plus frais ne rentrait dans le plan",
+      "keyHeat": "Jour de parc chaud",
+      "keyHeatNormal": "Jour de parc chaud ; Ø est la moyenne des années passées"
     }
   },
   "tripRegions": {

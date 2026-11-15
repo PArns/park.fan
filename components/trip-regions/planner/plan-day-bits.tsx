@@ -1,13 +1,29 @@
 'use client';
 
+import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { BedDouble, CircleAlert, Clock3, MoonStar, Sunrise } from 'lucide-react';
+import {
+  BedDouble,
+  CircleAlert,
+  Clock3,
+  MoonStar,
+  Sunrise,
+  ThermometerSun,
+  Umbrella,
+} from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { formatClockTime } from '@/lib/utils/intl-format';
-import { dayMarker, earlyPerk } from '@/lib/trip-regions/plan-copy';
+import {
+  HEAT_CHIP_CLASS,
+  STORM_CHIP_CLASS,
+  STORM_SIGNAL_CLASS,
+} from '@/lib/utils/day-signal-styles';
+import { Temp } from '@/components/common/unit-display';
+import { dayMarker, earlyPerk, type ClimateChip } from '@/lib/trip-regions/plan-copy';
+import { stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import { calendarCell } from '@/lib/trip-regions/plan-week';
 import { ticketDayOf } from '@/lib/trip-regions/plan-tickets';
-import type { PlanDay, PlanMeta } from '@/lib/trip-regions/plan';
+import type { PlanDay, PlanDayWeather, PlanMeta } from '@/lib/trip-regions/plan';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext } from './plan-context';
 import { useResortWord } from './plan-ticket-words';
@@ -125,24 +141,70 @@ export function useEveningName(): (day: PlanDay) => string | null {
 
 /**
  * The season's facts as short chips ("hot", "hurricane season", "peak hurricane season"), shared by
- * the day sheet and the When mode's cards.
+ * the day sheet, the When mode's cards, the Parks step and the trip head's weather band. Heat and
+ * the storm season each in their own signal colour with a mark of their own, never a crowd colour
+ * (docs/design/tokens.md#heat). `texts` puts other words on a chip ("2 hot park days"); `md` is
+ * the band's size.
  */
-export function ClimateChips({ codes }: { codes: readonly string[] }) {
+export function ClimateChips({
+  codes,
+  texts,
+  size = 'sm',
+}: {
+  codes: readonly string[];
+  texts?: Partial<Record<ClimateChip, ReactNode>>;
+  size?: 'sm' | 'md';
+}) {
   const t = useTranslations('tripPlanner.climate');
   // A season this client has no words for yet (a new region's) is not drawn.
   const said = codes.filter((code) => t.has(code));
   if (said.length === 0) return null;
+  const icon = size === 'md' ? 'size-4' : 'size-3.5';
   return (
     <span className="flex flex-wrap gap-1">
-      {said.map((code) => (
-        <span
-          key={code}
-          className="border-crowd-high/40 text-crowd-ink-high rounded-full border px-2 py-0.5 text-xs"
-        >
-          {t(code)}
-        </span>
-      ))}
+      {said.map((code) => {
+        const storm = code.startsWith('hurricane_') || code.startsWith('typhoon_');
+        return (
+          <span
+            key={code}
+            className={cn(
+              'inline-flex items-center gap-1 rounded-full px-2 py-0.5',
+              size === 'md' ? 'text-sm' : 'text-xs',
+              code === 'extreme_heat'
+                ? HEAT_CHIP_CLASS
+                : storm
+                  ? STORM_CHIP_CLASS
+                  : 'bg-muted text-foreground'
+            )}
+          >
+            {code === 'extreme_heat' ? (
+              <ThermometerSun className={cn(icon, 'shrink-0')} aria-hidden="true" />
+            ) : storm ? (
+              <span
+                className={cn(
+                  'h-1 w-3 shrink-0 rounded-full',
+                  STORM_SIGNAL_CLASS[stormSignal(code as StormCode)]
+                )}
+                aria-hidden="true"
+              />
+            ) : (
+              <Umbrella className={cn(icon, 'shrink-0')} aria-hidden="true" />
+            )}
+            {texts?.[code as ClimateChip] ?? t(code)}
+          </span>
+        );
+      })}
     </span>
+  );
+}
+
+/** A hot day's high: „Ø 32°“ for a climate normal, „36°“ for a forecast, in the reader's unit. */
+export function HeatFigure({ weather }: { weather: PlanDayWeather }) {
+  return (
+    <>
+      {weather.basis === 'climate_normal' && 'Ø '}
+      <Temp celsius={weather.tempMax} />
+    </>
   );
 }
 

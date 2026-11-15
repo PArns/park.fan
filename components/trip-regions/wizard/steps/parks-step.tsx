@@ -3,7 +3,7 @@
 import { useId, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown, ListChecks, Plane, Plus } from 'lucide-react';
+import { CalendarPlus, ChevronDown, ListChecks, Plane, Plus, ThermometerSun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { addDays, formatParkDay } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -19,14 +19,16 @@ import {
   visitSteps,
 } from '@/lib/trip-regions/plan';
 import { findLeg, legMinutes } from '@/lib/trip-regions/hub-data';
-import { parksLeftOut } from '@/lib/trip-regions/plan-copy';
+import { sentenceCase } from '@/lib/utils/sentence-case';
+import { parksLeftOut, tripHeat, tripStorm } from '@/lib/trip-regions/plan-copy';
 import { parkCode } from '@/lib/trip-regions/plan-week';
 import { leftOutBucket } from '@/lib/trip-regions/plan-analytics';
 import type { TripCalendar, TripRegionPark } from '@/lib/trip-regions/types';
-import { WizardCheck } from '@/components/planner/wizard-toggle';
+import { WizardCheck, WizardToggle } from '@/components/planner/wizard-toggle';
 import { WizardOptionCard, WizardOptionGroup } from '@/components/planner/wizard-option-card';
 import { usePlanContext, useTripEvents } from '../../planner/plan-context';
 import { PLAN_FOCUS, PlanStepper } from '../../planner/plan-controls';
+import { ClimateChips } from '../../planner/plan-day-bits';
 import { useBaseName } from '../../planner/plan-place-words';
 import { useStatePlan, useTripCalendar } from '../../planner/use-trip-plan';
 import { useWizardAsk, type WizardStepProps } from '../wizard-step';
@@ -62,8 +64,9 @@ function tripState(
  * with. A chosen card has its check and a stepper for its days; one not chosen is paler, shows a
  * plus and the way there (from the hotel area, or in a region with bases from the nearest city),
  * and a park closed on every day of the trip says so before anyone chooses it. Under the cards the
- * question for a trip with many more days than its parks need (`SpareDaysQuestion`). Where the plan
- * left chosen parks out, Parky says so and the step opens with three ways to make room.
+ * switch that keeps extreme weather off the park days (`weather=avoid`) and the question for a trip
+ * with many more days than its parks need (`SpareDaysQuestion`). Where the plan left chosen parks
+ * out, Parky says so and the step opens with three ways to make room.
  */
 export function ParksStep({ merged, askId }: WizardStepProps) {
   const t = useTranslations('tripPlanner');
@@ -146,8 +149,56 @@ export function ParksStep({ merged, askId }: WizardStepProps) {
           {t('parks.budgetOver', { parks: picks.length, days, over })}
         </p>
       )}
+      <WeatherToggle />
       <SpareDaysQuestion />
     </div>
+  );
+}
+
+/**
+ * „Extremes Wetter vermeiden“: theme parks on the cooler days, water parks on the hottest, and the
+ * storm season weighs more (`weather=avoid`). While on, the plan's hot park days and its storm season
+ * as chips, so the switch shows what is left of the heat.
+ */
+function WeatherToggle() {
+  const t = useTranslations('tripPlanner');
+  const tClimate = useTranslations('tripPlanner.climate');
+  const { region, state, update } = usePlanContext();
+  const plan = useStatePlan();
+  const on = state.weather === 'avoid';
+  const shown = on && plan.data && plan.current ? plan.data : null;
+  const hot = shown ? tripHeat(shown).reduce((sum, group) => sum + group.count, 0) : 0;
+  const storm = shown
+    ? tripStorm(
+        shown.days.map((d) => d.date),
+        region.weather
+      )
+    : null;
+  return (
+    <WizardToggle
+      icon={ThermometerSun}
+      label={t('wizard.parks.weather.label')}
+      hint={t('wizard.parks.weather.hint', { storm: region.weather?.storm?.kind ?? 'none' })}
+      checked={on}
+      onChange={(next) => update((s) => ({ ...s, weather: next ? 'avoid' : 'any' }))}
+    >
+      {shown && (
+        <span className="flex flex-wrap gap-1.5" data-wizard-weather="">
+          <ClimateChips
+            codes={['extreme_heat']}
+            texts={{
+              extreme_heat: hot > 0 ? t('weather.heatDays', { count: hot }) : t('weather.noHeat'),
+            }}
+          />
+          {storm && (
+            <ClimateChips
+              codes={[storm.code]}
+              texts={{ [storm.code]: sentenceCase(tClimate(storm.code)) }}
+            />
+          )}
+        </span>
+      )}
+    </WizardToggle>
   );
 }
 

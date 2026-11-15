@@ -216,6 +216,7 @@
   --color-crowd-ink-very-high: var(--crowd-ink-very-high);
   --color-crowd-ink-extreme: var(--crowd-ink-extreme);
   --color-signal-storm: var(--signal-storm);
+  --color-signal-heat: var(--signal-heat);
   --color-element-launch: var(--element-launch);
   --color-element-airtime: var(--element-airtime);
   --color-element-inversion: var(--element-inversion);
@@ -780,6 +781,9 @@
      tier, holiday signal or the brand blue uses, at 3:1 or more on every tile
      (docs/design/tokens.md#storm-season). */
   --signal-storm: oklch(0.54 0.25 295);
+  /* A park day's extreme heat: magenta, the top of the US National Weather Service's HeatRisk
+     scale, apart from every crowd tier and the storm violet (docs/design/tokens.md#heat). */
+  --signal-heat: oklch(0.52 0.22 350);
 
   /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white and small text in it misses AA; 0.53
      is 4.74:1 and visually the same green. */
@@ -874,6 +878,7 @@
   --element-brake: oklch(0.7 0.02 240);
 
   --signal-storm: oklch(0.72 0.17 295);
+  --signal-heat: oklch(0.74 0.17 350);
 
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);

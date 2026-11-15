@@ -27,6 +27,7 @@ import { parkGeoFromUrl } from '@/lib/planner/park-url';
 import {
   climateChips,
   closesEarly,
+  dayHeat,
   eveningReasons,
   dayWarnings,
   earlyPerk,
@@ -385,6 +386,12 @@ function DayDetails({
   }
 
   const chips = climateChips(day.warnings);
+  // What a normal and a season are, under the figures: neither is a forecast.
+  const weatherNotes = [
+    dayHeat(day)?.basis === 'climate_normal' && t('weather.normalNote'),
+    chips.some((code) => code.startsWith('hurricane_') || code.startsWith('typhoon_')) &&
+      t('weather.stormNote'),
+  ].filter(Boolean);
   // Last year's figure is said with the figure, calmly: after the forecast's days every day has it.
   const warnings = dayWarnings(day).filter(
     (w) => w !== 'party_night_short_hours' && w !== 'closes_early' && w !== 'estimate_last_year'
@@ -408,6 +415,11 @@ function DayDetails({
             {t('details.minutesCaption')}
             {lastYear && ` ${t('warning.estimate_last_year')}`}
           </span>
+          {weatherNotes.length > 0 && (
+            <span className="text-muted-foreground w-full text-xs" data-plan-weather-note="">
+              {weatherNotes.join(' ')}
+            </span>
+          )}
         </div>
       )}
 

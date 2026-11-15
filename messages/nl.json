@@ -4026,6 +4026,10 @@
           "only": "Alleen {parks}",
           "onlyHint": "{parks} {count, plural, =1 {valt} other {vallen}} daarvoor af",
           "longer": "De reis eindigt dan op {date}"
+        },
+        "weather": {
+          "label": "Extreem weer vermijden",
+          "hint": "Pretparken op de koelere dagen, waterparken op de heetste{storm, select, hurricane {; de piek van het orkaanseizoen telt zwaarder} typhoon {; de piek van het tyfoonseizoen telt zwaarder} other {}}"
         }
       },
       "spare": {
@@ -4078,6 +4082,19 @@
       "applied": "In het plan: {idea}.",
       "inPlan": "In het plan",
       "otherDay": "Andere dag"
+    },
+    "weather": {
+      "heatDays": "{count, plural, =1 {1 hete parkdag} other {# hete parkdagen}}",
+      "heatForecast": "boven <temp></temp> voorspeld",
+      "heatNormal": "{count, plural, =1 {gemiddeld <temp></temp>} other {gemiddeld tot <temp></temp>}}",
+      "noHeat": "Geen hete parkdag",
+      "stormFrom": "{season} vanaf {date}",
+      "stormUntil": "{season} tot {date}",
+      "stormNote": "Het seizoen is een statistiek van eerdere jaren, geen stormwaarschuwing; of er een storm komt, zie je pas een paar dagen vooraf.",
+      "normalNote": "Ø is het gemiddelde van eerdere jaren op deze datum, geen voorspelling.",
+      "noCooler": "Er paste geen koelere dag in het plan",
+      "keyHeat": "Hete parkdag",
+      "keyHeatNormal": "Hete parkdag; Ø is het gemiddelde van eerdere jaren"
     }
   },
   "tripRegions": {
