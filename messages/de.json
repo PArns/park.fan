@@ -478,8 +478,8 @@
       "lastYearNote": "Termine mehr als 60 Tage voraus sind mit dem gemessenen Vorjahr gerechnet.",
       "rank": "Nr. {rank}",
       "plan": "Diese Reise planen",
-      "hint": "Die drei ruhigsten Reisen über {days} Tage",
-      "allWeeks": "Alle Wochen des Jahres vergleichen"
+      "allWeeks": "Alle Wochen des Jahres vergleichen",
+      "length": "{days, plural, =1 {# Tag} other {# Tage}}"
     },
     "planner": {
       "title": "Deine Reise planen"

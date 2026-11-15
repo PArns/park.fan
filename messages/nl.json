@@ -478,8 +478,8 @@
       "lastYearNote": "Data meer dan 60 dagen vooruit zijn gerekend met de gemeten dagen van vorig jaar.",
       "rank": "Nr. {rank}",
       "plan": "Deze reis plannen",
-      "hint": "De drie rustigste reizen van {days} dagen",
-      "allWeeks": "Alle weken van het jaar vergelijken"
+      "allWeeks": "Alle weken van het jaar vergelijken",
+      "length": "{days, plural, =1 {# dag} other {# dagen}}"
     },
     "planner": {
       "title": "Plan je reis"

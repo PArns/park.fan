@@ -17,7 +17,6 @@ import { getMediaImageBySrc } from '@/lib/media';
 import { getMediaAlt } from '@/lib/media/text';
 import { versionedSrc } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
-import { daysBetween } from '@/lib/utils/park-day';
 import {
   dayBasis,
   formatHubDate,
@@ -324,13 +323,6 @@ export async function TripRegionHubPage({
                 icon={Sun}
                 kicker={ownWords(tRegion, 'when.kicker') ?? undefined}
                 title={whenTitle}
-                hint={
-                  whenWindows.length === HUB_WHEN_WINDOWS
-                    ? t('when.hint', {
-                        days: daysBetween(whenWindows[0].from, whenWindows[0].to) + 1,
-                      })
-                    : undefined
-                }
               />
               <HubWhen
                 region={region.slug}

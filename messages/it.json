@@ -478,8 +478,8 @@
       "lastYearNote": "Le date oltre 60 giorni sono ordinate sui giorni misurati l’anno scorso.",
       "rank": "N. {rank}",
       "plan": "Pianifica questo viaggio",
-      "hint": "I tre viaggi di {days} giorni più tranquilli",
-      "allWeeks": "Confronta tutte le settimane dell’anno"
+      "allWeeks": "Confronta tutte le settimane dell’anno",
+      "length": "{days, plural, =1 {# giorno} other {# giorni}}"
     },
     "planner": {
       "title": "Pianifica il tuo viaggio"

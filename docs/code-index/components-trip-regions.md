@@ -90,7 +90,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
 
-- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: a year line with the quietest trip windows for the headliner parks on it, then a card per window with its place, its dates, its peak wait as the card's large figure, …
+- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: a year line with the quietest trip windows for the headliner parks on it, then a card per window with its place, its dates and how many days they are, its peak wait …
 - `HUB_WHEN_WINDOWS` _const_: How many windows the teaser names.
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)

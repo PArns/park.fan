@@ -1,10 +1,12 @@
 import { getTranslations } from 'next-intl/server';
 import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
+import { daysBetween } from '@/lib/utils/park-day';
 import { formatWindow, yearLine } from '@/lib/trip-regions/hub-data';
 import { tripRegionBestTimePath } from '@/lib/trip-regions/paths';
 import { plannerHrefOn } from '@/lib/trip-regions/plan-query';
@@ -88,7 +90,7 @@ function YearLine({
 /**
  * The best-time chapter's body, the teaser of the region's best-time pages: a year line with the
  * quietest trip windows for the headliner parks on it, then a card per window with its place, its
- * dates, its peak wait as the card's large figure, the first reason it was picked (where the cards
+ * dates and how many days they are, its peak wait as the card's large figure, the first reason it was picked (where the cards
  * differ in it) and "Plan this
  * trip", which opens the planner on that window (`?from=&to=#planner`, the query Parky builds).
  * One figure and no second baseline; where a figure comes from is the questions' and the
@@ -153,6 +155,9 @@ export async function HubWhen({
                   <h3 className="text-xl font-bold">
                     <time dateTime={window.from}>{formatWindow(window, locale)}</time>
                   </h3>
+                  <Badge variant="outline" className="ml-auto shrink-0 tabular-nums">
+                    {t('length', { days: daysBetween(window.from, window.to) + 1 })}
+                  </Badge>
                 </div>
                 <div>
                   <p className="text-4xl leading-none font-bold tabular-nums">

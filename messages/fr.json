@@ -478,8 +478,8 @@
       "lastYearNote": "Les dates à plus de 60 jours sont classées sur les jours mesurés l’an dernier.",
       "rank": "N° {rank}",
       "plan": "Planifier ce voyage",
-      "hint": "Les trois voyages de {days} jours les plus calmes",
-      "allWeeks": "Comparer toutes les semaines de l’année"
+      "allWeeks": "Comparer toutes les semaines de l’année",
+      "length": "{days, plural, =1 {# jour} other {# jours}}"
     },
     "planner": {
       "title": "Planifier ton voyage"

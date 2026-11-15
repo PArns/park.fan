@@ -478,8 +478,8 @@
       "lastYearNote": "Dates more than 60 days ahead are ranked on last year’s measured days.",
       "rank": "No. {rank}",
       "plan": "Plan this trip",
-      "hint": "The three quietest {days}-day trips",
-      "allWeeks": "Compare every week of the year"
+      "allWeeks": "Compare every week of the year",
+      "length": "{days, plural, =1 {# day} other {# days}}"
     },
     "planner": {
       "title": "Plan your trip"

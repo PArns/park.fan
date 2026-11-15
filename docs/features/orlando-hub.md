@@ -225,11 +225,10 @@ Each chapter opens with its heading and then the thing itself.
 4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen`): a teaser of the best-time pages, drawn only
    for a region with best-time pages and its words for them. It sends the best-time page's own
    query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of the trip's length), so
-   both read one cached answer. Under the title one line says what the cards are („Die drei
-   ruhigsten Reisen über 10 Tage“, the length read off the first window). Then a year line
+   both read one cached answer. Then a year line
    (`yearLine` in `hub-data.ts`): the months of the searched range as a ruled track and each
    window as a bar under its numbered dot, decoration beside the cards. Then the three quietest
-   windows for the headliner parks from `/when`, as three cards with their place, their dates,
+   windows for the headliner parks from `/when`, as three cards with their place, their dates, the trip's length as a badge („10 Tage“, since not every reader stays that long),
    their peak wait as the large figure, the first reason the window was picked (left out where all
    three share it) and „Diese Reise planen“ (`?from=&to=#planner`, `rel="nofollow"`). A card names
    no basis: that a date past the forecast reads last year is the accuracy question's in chapter
