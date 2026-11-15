@@ -214,15 +214,9 @@ async function readTripRegionList(): Promise<{ regions?: TripRegionListEntry[] }
  */
 export function getTripRegionWhen(
   region: string,
-  query: TripWindow & { days?: number; limit?: number; gap?: number; parks?: string } = {}
+  query: TripWindow & { days?: string; limit?: string; gap?: string; parks?: string } = {}
 ): Promise<TripWhen> {
-  const { days, limit, gap, ...rest } = query;
-  return readTripRegion<TripWhen>(region, '/when', CACHE_TTL.tripRegionData, {
-    ...rest,
-    days: days === undefined ? undefined : String(days),
-    limit: limit === undefined ? undefined : String(limit),
-    gap: gap === undefined ? undefined : String(gap),
-  });
+  return readTripRegion<TripWhen>(region, '/when', CACHE_TTL.tripRegionData, { ...query });
 }
 
 /** Every park's days side by side, with the seasons that run on them; at most 92 days. */

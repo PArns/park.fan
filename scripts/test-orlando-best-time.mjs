@@ -21,6 +21,8 @@ import {
   monthRows,
   quietWeekInStorm,
   noWhenAnswer,
+  bestTimeTripDays,
+  bestTimeTripLengths,
   parseBestTimePage,
   partySeasons,
   planOrder,
@@ -62,8 +64,23 @@ test('the segments name the Orlando page, a resort, or nothing', () => {
   assert.equal(parseBestTimePage(ORLANDO, ['disney-world', 'x']), null);
 });
 
+test('a trip is a day per park plus arrival and departure', () => {
+  assert.equal(bestTimeTripDays(7), 9);
+  assert.equal(bestTimeTripDays(4), 6);
+  assert.equal(bestTimeTripDays(3), 5);
+  // One park alone is still a trip the planner can search for.
+  assert.equal(bestTimeTripDays(1), 3);
+  assert.equal(bestTimeTripDays(30), 21);
+});
+
+test("the teaser offers the page's length, then longer trips two days apart or more", () => {
+  assert.deepEqual(bestTimeTripLengths(7), [9, 12, 14]);
+  assert.deepEqual(bestTimeTripLengths(4), [6, 10, 12]);
+  assert.deepEqual(bestTimeTripLengths(3), [5, 7, 10]);
+});
+
 test('without an answer from /when the page has its months and no figure', () => {
-  const when = noWhenAnswer('orlando', bestTimeRange('2026-11-12'));
+  const when = noWhenAnswer('orlando', bestTimeRange('2026-11-12'), 9);
   assert.deepEqual([when.windows, when.weeks, when.months], [[], [], []]);
   assert.equal(when.meta.from, '2027-01-01');
   const rows = monthRows(when, '2026-11-12');

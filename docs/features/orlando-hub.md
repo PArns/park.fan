@@ -222,20 +222,31 @@ Each chapter opens with its heading and then the thing itself.
    to four, so two resorts fill the row. Every sentence is a fact of the API (parks,
    water parks, perks, hotel areas, `stayNote`, travel legs) or of the region's existing copy;
    nothing is invented for a card.
-4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen`): a teaser of the best-time pages, drawn only
-   for a region with best-time pages and its words for them. It sends the best-time page's own
-   query (`bestTimeWhenQuery`: same range, days, parks, limit and a gap of the trip's length), so
-   both read one cached answer. Then a year line
-   (`yearLine` in `hub-data.ts`): the months of the searched range as a ruled track and each
-   window as a bar under its numbered dot, decoration beside the cards. Then the three quietest
-   windows for the headliner parks from `/when`, as three cards with their place, their dates, the trip's length as a badge („10 Tage“, since not every reader stays that long),
-   their peak wait as the large figure, the first reason the window was picked (left out where all
-   three share it) and „Diese Reise planen“ (`?from=&to=#planner`, `rel="nofollow"`). A card names
-   no basis: that a date past the forecast reads last year is the accuracy question's in chapter
-   05 and the best-time page's. The link under the cards („Alle
-   Wochen des Jahres vergleichen“) goes to `tripRegionBestTimePath(region, locale)` in other words
-   than the chapter's title, which the closing band already links. The year strip, the weeks and
-   their questions are the best-time pages', so the two do not compete for one query.
+4. **04 Beste Reisezeit für Orlando <year>** (`HubWhen` → `HubWhenTeaser`, client): a teaser of the
+   best-time pages, drawn only for a region with best-time pages and its words for them. Two
+   switches come first (`HubFilterChip`, the calendar's chip):
+   - **The parks**, one choice per best-time page of the region (`bestTime` in its registry
+     entry): „Disney und Universal · 7 Parks“, „Disney · 4 Parks“, „Universal · 3 Parks“, the
+     resorts by `resortWords`. A region with one best-time page has no such switch.
+   - **The trip's length**, which starts at a day per park plus arrival and departure
+     (`bestTimeTripDays`: 7 parks are 9 days, 4 are 6, 3 are 5), then up to two longer trips
+     (`bestTimeTripLengths`). Picking other parks puts the length back to theirs.
+
+   The served HTML holds the region's own page at its own length, the query that best-time page
+   sends (`bestTimeWhenQuery`), so both read one cached answer. Another choice is read once
+   through the relay with the same function's query (`whenQueryFor`) and kept; the cards of the
+   last answer stay, dimmed, while it loads. Then a year line (`yearLine` in `hub-data.ts`): the
+   months of the searched range as a ruled track and each window as a bar under its numbered dot,
+   decoration beside the cards. Then the three quietest windows from `/when`, as three cards with
+   their place, their dates, the trip's length as a badge, their peak wait as the large figure,
+   the first reason the window was picked (left out where all three share it) and „Diese Reise
+   planen“ (`?from=&to=#planner`, with `parks=` for one resort, `rel="nofollow"`). A card names no
+   basis: that a date past the forecast reads last year is the accuracy question's in chapter 05
+   and the best-time page's. The link under the cards („Alle Wochen des Jahres vergleichen“) goes
+   to the chosen parks' best-time page (`tripRegionBestTimePath(region, locale, page)`). The year
+   strip, the weeks and their questions are the best-time pages', so the two do not compete for
+   one query. The switches count no event yet.
+
 5. **05 Fragen zum Andrang in Orlando** (`HubFaq` → `FaqList`), ten questions, the method folded
    in, every answer built from the page's data or the region's words: first up to six on the
    window, in this order of worth (the quietest and busiest days per resort, the events with their

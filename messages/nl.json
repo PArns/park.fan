@@ -479,7 +479,10 @@
       "rank": "Nr. {rank}",
       "plan": "Deze reis plannen",
       "allWeeks": "Alle weken van het jaar vergelijken",
-      "length": "{days, plural, =1 {# dag} other {# dagen}}"
+      "length": "{days, plural, =1 {# dag} other {# dagen}}",
+      "scope": "{resorts} · {count, plural, =1 {# park} other {# parken}}",
+      "scopeLabel": "Parken van de reis",
+      "lengthLabel": "Lengte van de reis"
     },
     "planner": {
       "title": "Plan je reis"

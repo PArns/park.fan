@@ -28,7 +28,7 @@ import {
   slimRegion,
 } from '@/lib/trip-regions/hub-data';
 import { hubPhoto } from '@/lib/trip-regions/hub-media';
-import { bestTimeYear } from '@/lib/trip-regions/best-time';
+import { bestTimeRange, bestTimeYear } from '@/lib/trip-regions/best-time';
 import { lastYearStart } from '@/lib/trip-regions/plan-copy';
 import {
   monthKey,
@@ -55,7 +55,7 @@ import { HubGlance, MonthGlance } from './hub-glance';
 import { HubLegend } from './hub-legend';
 import { HubMonthIndex } from './hub-month-index';
 import { PlannerChapterSlot } from './planner-chapter-slot';
-import { HUB_WHEN_WINDOWS, HubWhen } from './hub-when';
+import { HubWhen } from './hub-when';
 import { HubHeroActions, HubPlanAction } from './hub-hero-action';
 import { HubHowItWorks } from './hub-how-it-works';
 import { HubResorts } from './hub-resorts';
@@ -181,7 +181,6 @@ export async function TripRegionHubPage({
   );
 
   const whenYear = when ? bestTimeYear(when.meta.from) : null;
-  const whenWindows = (when?.windows ?? []).slice(0, HUB_WHEN_WINDOWS);
   // The best-time chapter needs the region's pages and its words for them; without, it is left out.
   const whenTitle =
     config.bestTime.length > 0
@@ -325,9 +324,9 @@ export async function TripRegionHubPage({
                 title={whenTitle}
               />
               <HubWhen
-                region={region.slug}
-                windows={whenWindows}
-                range={when ? { from: when.meta.from, to: when.meta.to } : null}
+                region={region}
+                when={when}
+                range={bestTimeRange(todayIso)}
                 pagePath={pagePath}
                 locale={locale}
               />

@@ -51,6 +51,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HubFaq` _component_: Chapter 04's questions, answered from the data the page shows.
 
+### [`hub/hub-filter-chip.tsx`](../../components/trip-regions/hub/hub-filter-chip.tsx)
+
+- `HubFilterChip` _component_: A toggle of the hub's switches (the calendar's resorts, the best-time teaser's parks and trip lengths): a pill that says whether it is pressed, 44 px high on a phone.
+
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
 - `HubGlance` _component_: The hub's first answer, under its two buttons: the best park of each group with a headliner on one day, by its date in the region's time and never as "today", because a cached copy outlives midnight there; then the quietest days of the …
@@ -88,10 +92,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
 
+### [`hub/hub-when-teaser.tsx`](../../components/trip-regions/hub/hub-when-teaser.tsx)
+
+- `HubWhenTeaser` _component_: The best-time chapter's body on a hub: two switches, then a year line and a card per trip.
+- Types: `HubWhenScope`
+
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
 
-- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages: a year line with the quietest trip windows for the headliner parks on it, then a card per window with its place, its dates and how many days they are, its peak wait …
-- `HUB_WHEN_WINDOWS` _const_: How many windows the teaser names.
+- `HubWhen` _component_: The best-time chapter's body, the teaser of the region's best-time pages (`HubWhenTeaser`), with what only the server knows: a choice per best-time page of the region (its resorts by their short words, its headliner parks, the trip lengths …
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)
 

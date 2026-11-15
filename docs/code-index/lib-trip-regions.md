@@ -24,11 +24,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`best-time.ts`](../../lib/trip-regions/best-time.ts)
 
+- `bestTimeTripDays` _function_: The trip length a page ranks for its parks: a day per park plus arrival and departure, within what the planner searches. Disney World's four parks are six days, all seven Orlando parks nine.
+- `bestTimeTripLengths` _function_: The lengths the hub's teaser lets a reader pick for a number of parks: the page's own (`bestTimeTripDays`) first, then the next longer trips that add two days or more.
 - `parseBestTimePage` _function_: The page a `[[...resort]]` segment list asks for in a region, or `null` for a 404: the region's own page where it has one, or a resort's by its segment.
 - `bestTimeYear` _function_: The year in the title: the coming year from September on, else the current one, so the page answers the trip people are booking.
 - `bestTimeRange` _function_: The range `/when` and `/school-breaks` are asked for: the title's year, from today at the earliest and never past the year ahead both routes accept.
 - `bestTimeParks` _function_: The headliner parks a page plans, in the region's order.
-- `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for the same parks, so both read one cached answer and never print two figures for one window. The gap is the trip's length: the windows named side by side never overlap.
+- `whenQueryFor` _function_: The `/when` query for a set of parks and a trip length: the quietest `BEST_TIME_WINDOWS` trips in `range`. The gap is the trip's length, so the windows named side by side never overlap.
+- `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for a page's parks at its own length (`bestTimeTripDays`), so both read one cached answer and never print two figures for one window.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
@@ -50,10 +53,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `windowList` _function_: Windows as one phrase in the reader's language, "16–25 Feb, 1–10 Mar and 6–15 Apr", for the first answer's sentence and the meta description.
 - `flatStretch` _function_: A flat stretch around the first window: the run of weeks whose figure stays within a couple of minutes of the quietest week, when it is long enough that naming one window would rank a tie. `null` when the year has a real low.
 - `REGION_BEST_TIME_PAGE` _const_: The id of a region's own best-time page; a resort's page is its segment.
-- `BEST_TIME_TRIP_DAYS` _const_: The trip length every page ranks, the planner's own default.
 - `BEST_TIME_WINDOWS` _const_: The windows the first answer names.
 - `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
-- Types: `BestTimePageId`, `MonthHours`, `MonthMark`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
+- Types: `BestTimePageId`, `BestTimeWhenQuery`, `MonthHours`, `MonthMark`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
 
 ### [`date-facts.ts`](../../lib/trip-regions/date-facts.ts)
 

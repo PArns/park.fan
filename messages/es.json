@@ -479,7 +479,10 @@
       "rank": "N.º {rank}",
       "plan": "Planificar este viaje",
       "allWeeks": "Comparar todas las semanas del año",
-      "length": "{days, plural, =1 {# día} other {# días}}"
+      "length": "{days, plural, =1 {# día} other {# días}}",
+      "scope": "{resorts} · {count, plural, =1 {# parque} other {# parques}}",
+      "scopeLabel": "Parques del viaje",
+      "lengthLabel": "Duración del viaje"
     },
     "planner": {
       "title": "Planifica tu viaje"
