@@ -49,7 +49,7 @@ De nieuwe prijzen gelden het hele seizoen tot en met 9 januari 2028, Halloween e
 | 2-dagenticket volwassene                | € 127,00–143,50 | € 132,50–150,00 |
 | Peuters (0–3)                           | gratis          | gratis          |
 
-Het park deelt zijn openingsdagen in twee prijscategorieën in. Op dagen in prijscategorie 1 gelden de hogere prijzen uit de tabel, op dagen in categorie 2 de lagere. Welke categorie een dag heeft, zie je in de prijskalender in de ticketshop. Aan de kassa geldt dezelfde indeling.
+Het park deelt zijn openingsdagen in twee prijscategorieën in. Op dagen in prijscategorie 1 gelden de hogere prijzen uit de tabel, op dagen in categorie 2 de lagere. De categorie van elke dag staat in de prijskalender van de ticketshop, en aan de kassa geldt dezelfde indeling.
 
 Met het 2-dagenticket mag je de tweede dag binnen vijf dagen na de eerste plannen. Het park houdt voor die tweede dag een eigen ticketcontingent apart, zodat je dan zeker binnenkomt.
 
@@ -57,7 +57,7 @@ Met het 2-dagenticket mag je de tweede dag binnen vijf dagen na de eerste planne
 
 Aan de kassa kost elk ticket € 10 meer dan online.
 
-Het parkeerticket geldt voor een hele dag op de bezoekersparkeerplaats en kost tot en met 19 maart 2027 nog € 10. Je koopt het vooraf in de ticketshop. Het staat op een datum en is alleen geldig op de dag die je bij het kopen kiest. Vul je daarbij je kenteken in, dan gaat de slagboom bij het in- en uitrijden vanzelf open; anders scan je het ticket.
+Het parkeerticket geldt voor een hele dag op de bezoekersparkeerplaats en kost tot en met 19 maart 2027 nog € 10. Je koopt het vooraf in de ticketshop. Het ticket is gedateerd en alleen geldig op de dag die je bij het kopen kiest. Vul je daarbij je kenteken in, dan gaat de slagboom bij het in- en uitrijden vanzelf open; anders scan je het ticket.
 
 Touringcars parkeren gratis op de bezoekersparkeerplaats. Ook motoren en fietsen staan gratis, op de parkeerplaats “Reserviertes Parken” bij de hoofdingang. Campers en caravans langer dan 5,50 meter staan op de parkeerplaats “Tagescamper” naast Silver Lake City. Een dag kost daar op dit moment € 20, die je ter plaatse aan een medewerker betaalt.
 
@@ -65,7 +65,7 @@ Touringcars parkeren gratis op de bezoekersparkeerplaats. Ook motoren en fietsen
 
 Neem twee volwassenen en twee kinderen van 4 tot 11 jaar die met de auto komen en alles online boeken. Op een dag in prijscategorie 1 kosten hun vier dagtickets € 295, met parkeerticket € 307. Dat is € 15 meer dan in 2026, waarvan € 2 voor het parkeren. In prijscategorie 2 betalen ze € 258 voor de tickets en € 270 met parkeren, € 13 meer dan een jaar eerder.
 
-Voor dit gezin weegt de kassa zwaarder dan de hele prijsverhoging: daar kosten de vier tickets samen € 40 meer dan online.
+Beslist het gezin pas bij de ingang, dan kosten de vier tickets aan de kassa € 40 meer dan online, en dat is meer dan de hele prijsverhoging hen kost.
 
 ## Wie minder betaalt
 
@@ -77,20 +77,20 @@ Groepen, schoolklassen en gasten met een beperking hebben eigen tarieven, en die
 - schoolklassen vanaf 10 betalende personen: € 40,00 per leerling, was € 38,50
 - gasten met een beperking vanaf 16 jaar, online: € 59,00–68,00, was € 56,50–65,00
 - gasten met een beperking van 4 tot 15 jaar, alleen ter plaatse: € 40,00–49,00, was € 38,50–47,00
-- blinde gasten (Merkzeichen Bl) en rolstoelgebruikers met paraplegie (Merkzeichen aG), alleen ter plaatse: € 35,50–40,00, was € 34,00–38,00
+- blinde gasten (kenmerk Bl op de Duitse gehandicaptenkaart) en rolstoelgebruikers met paraplegie (kenmerk aG), alleen ter plaatse: € 35,50–40,00, was € 34,00–38,00
 - rolstoelgebruikers met tetraplegie: gratis toegang
 
-Hotelgasten in het resort mogen voor de gewone openingstijd het park in, en het park geeft hun op de tickets een laagsteprijsgarantie. De jaarkaarten ResortPass Silver en Gold zijn op dit moment helemaal niet te koop, omdat het contingent op is.
+Hotelgasten in het resort mogen voor de gewone openingstijd het park in. De jaarkaarten ResortPass Silver en Gold zijn op dit moment helemaal niet te koop, omdat het contingent op is.
 
 ## Cadeaubonnen en tickets zonder datum
 
-Tickets zonder datum, cadeaubontickets en tickets uit eerdere seizoenen moet je voor je bezoek op [europapark.de/umwandlung](https://www.europapark.de/umwandlung) aan een dag koppelen. Kost die dag meer dan je ervoor betaald hebt, dan betaal je bij het koppelen het verschil bij; de omzetting toont het bedrag vooraf. Een cadeaubon die tegen de prijzen van 2026 is gekocht, kan voor een dag vanaf 20 maart 2027 dus een toeslag kosten.
+Tickets zonder datum, cadeaubontickets en tickets uit eerdere seizoenen moet je voor je bezoek op [europapark.de/umwandlung](https://www.europapark.de/umwandlung) aan een dag koppelen. Kost die dag meer dan je ervoor betaald hebt, dan betaal je bij het koppelen het verschil bij; de website toont het bedrag vooraf. Een cadeaubon die tegen de prijzen van 2026 is gekocht, kan voor een dag vanaf 20 maart 2027 dus een toeslag kosten.
 
 Laat je de datum pas ter plaatse invullen, dan betaal je € 10 servicekosten per ticket. Tickets zonder datum en cadeaubontickets zijn geldig tot het eind van het derde jaar na het jaar van aankoop, een bon uit 2026 dus tot eind 2029.
 
 ## Goedkoper in maart
 
-Van 7 tot en met 19 maart 2027, in de bijna twee weken voor de seizoensstart, is het park open voor de Pre-Opening Weeks. Een online dagticket kost dan € 59,50 tot € 70 voor volwassenen en € 50 tot € 59 voor kinderen en senioren. De duurste maartdag kost daarmee evenveel als de goedkoopste dag vanaf 20 maart. Welke dag wat kost en wat er in die weken open is, lees je in ons [bericht over de Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027).
+Van 7 tot en met 19 maart 2027, in de bijna twee weken voor de seizoensstart, is het park open voor de Pre-Opening Weeks. Een online dagticket kost dan € 59,50 tot € 70 voor volwassenen en € 50 tot € 59 voor kinderen en senioren. De duurste maartdag kost daarmee evenveel als de goedkoopste dag vanaf 20 maart. In het [bericht over de Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) staat elke maartdag met zijn prijs, en ook wat er in die twee weken al open is.
 
 ## Seizoen 2027 en openingstijden
 
@@ -99,7 +99,7 @@ Van 7 tot en met 19 maart 2027, in de bijna twee weken voor de seizoensstart, is
 - HALLOWinter: 8 tot en met 26 november 2027, dagelijks van 11 tot minstens 19 uur
 - Winterzauber: 27 november 2027 tot en met 9 januari 2028, dagelijks van 11 tot minstens 19 uur
 
-Wanneer het in Europa-Park weinig druk is, per weekdag en per maand, lees je in de [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
+Heb je nog geen datum gekozen, dan vind je de rustigste weekdagen en maanden in Europa-Park in onze [Europa-Park-gids](/blog/europa-park-wachttijden-tips).
 
 ```best-days-widget slug=europa-park
 

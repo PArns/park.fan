@@ -49,7 +49,7 @@ The new prices apply all season until 9 January 2028, Halloween and winter inclu
 | 2-day ticket, adults                         | €127.00–143.50 | €132.50–150.00 |
 | Toddlers (0–3)                               | free           | free           |
 
-Each opening day falls into one of two price categories. On price category 1 days the higher prices in the table apply, on category 2 days the lower ones. The price calendar in the online ticket shop shows which category a day is in. The ticket office uses the same split.
+Each opening day falls into one of two price categories. On price category 1 days the higher prices in the table apply, on category 2 days the lower ones. The category of each day is in the shop's price calendar, and the ticket office uses the same split.
 
 With the 2-day ticket, your second visit can be any day within five days of the first. The park keeps a separate allocation of tickets back for that second day, so you're guaranteed to get in.
 
@@ -65,7 +65,7 @@ Coaches park free on the visitor car park. Motorbikes and bicycles don't pay eit
 
 Take two adults and two children aged 4 to 11 who drive there and book everything online. On a price category 1 day their four day tickets come to €295, or €307 with parking. That's €15 more than in 2026, €2 of it for parking. On a price category 2 day the same four pay €258 for tickets and €270 with parking, €13 more than the year before.
 
-The ticket office costs this family more than the whole price rise: buying the four tickets there adds €40 to the online price.
+If the family only decides at the gate, the four tickets cost €40 more at the ticket office than online, which is more than the whole price rise costs them.
 
 ## Who pays less
 
@@ -80,7 +80,7 @@ Groups, school classes and guests with disabilities have their own rates, which 
 - blind guests (German disability card marked Bl) and wheelchair users with paraplegia (marked aG), on site only: €35.50–40.00, previously €34.00–38.00
 - wheelchair users with tetraplegia: free
 
-Hotel guests at the resort can enter the park before regular opening time, and the park gives them a best-price guarantee on their tickets. The ResortPass Silver and Gold annual passes can't be bought at all right now, because they've sold out.
+Hotel guests at the resort can enter the park before regular opening time. The ResortPass Silver and Gold annual passes can't be bought at all right now, because they've sold out.
 
 ## Vouchers and undated tickets
 
@@ -90,7 +90,7 @@ If you leave the dating until you're at the park, there's a €10 service fee pe
 
 ## Cheaper in March
 
-From 7 to 19 March 2027, in the not quite two weeks before the season starts, the park opens for its Pre-Opening Weeks. An online day ticket then costs €59.50 to €70 for adults and €50 to €59 for children and seniors. That makes the dearest day in March cost the same as the cheapest day from 20 March. Our [post on the Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) lists the price of each day and what's open in those weeks.
+From 7 to 19 March 2027, in the not quite two weeks before the season starts, the park opens for its Pre-Opening Weeks. An online day ticket then costs €59.50 to €70 for adults and €50 to €59 for children and seniors. That makes the dearest day in March cost the same as the cheapest day from 20 March. The [post on the Pre-Opening Weeks](/news/europa-park-pre-opening-weeks-2027) has every March day with its price, plus what's already open in those two weeks.
 
 ## The 2027 season and opening hours
 
@@ -99,7 +99,7 @@ From 7 to 19 March 2027, in the not quite two weeks before the season starts, th
 - HALLOWinter: 8 to 26 November 2027, daily from 11 a.m. until at least 7 p.m.
 - Winterzauber: 27 November 2027 to 9 January 2028, daily from 11 a.m. until at least 7 p.m.
 
-Our [Europa-Park guide](/blog/europa-park-wait-times-tips) breaks down by weekday and by month when the park is least busy.
+If you haven't picked a date yet, the quietest weekdays and months at Europa-Park are in our [Europa-Park guide](/blog/europa-park-wait-times-tips).
 
 ```best-days-widget slug=europa-park
 
