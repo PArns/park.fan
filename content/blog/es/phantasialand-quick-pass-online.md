@@ -53,7 +53,7 @@ Cada Quick Pass vale únicamente el día en que lo reservas. La tienda no deja e
 
 ## Cómo se compra el Quick Pass online
 
-En la tienda eliges las atracciones para las que quieres pase, o directamente el Ultimate. A partir de ahí corre el reloj: el carrito te guarda los pases diez minutos y en ese tiempo tienes que cerrar el pedido. Cada pase es para una persona, de modo que una familia de cuatro necesita cuatro para Black Mamba. Después del pago llega el correo y los pases valen desde ese momento. La tienda está en alemán, inglés, francés y neerlandés.
+En la tienda eliges las atracciones para las que quieres pase, o directamente el Ultimate. A partir de ahí corre el reloj. El carrito te guarda los pases diez minutos y en ese tiempo tienes que cerrar el pedido. Cada pase es para una persona, de modo que una familia de cuatro necesita cuatro para Black Mamba. Después del pago llega el correo. Los pases valen al instante. La tienda está en alemán, inglés, francés y neerlandés.
 
 En la atracción vas a la entrada Quick Pass y acercas el móvil con el código QR del PDF. Sube antes el brillo de la pantalla al máximo, también por la tarde en el Wintertraum, cuando la batería, tras un día frío lleno de fotos, ya va pidiendo clemencia.
 
@@ -85,7 +85,7 @@ El Quick Pass Ultimate cuesta 80 €. Te da una pasada por cada entrada Quick Pa
 
 ## Qué más necesitas
 
-El Quick Pass no incluye la entrada, así que además necesitas una entrada de día válida. Esas entradas solo se venden online: el mismo día de la visita, el parque las vende hasta las 14:00, porque en la puerta no hay taquilla. La altura mínima de cada atracción se aplica igual con Quick Pass que sin él, y el pase no te deja escoger asiento en el tren.
+El Quick Pass no incluye la entrada, así que además necesitas una entrada de día válida. Solo se venden online. El mismo día de la visita, el parque las vende hasta las 14:00, porque en la puerta no hay taquilla. La altura mínima de cada atracción se aplica igual con Quick Pass que sin él, y el pase no te deja escoger asiento en el tren.
 
 ## Si la entrada se detiene o la atracción cierra
 
@@ -103,7 +103,7 @@ Para la tarde, lo que más cuenta es Taron After Dark. El pase suelto vale desde
 
 ## Hasta ahora, solo en atención al visitante
 
-Hasta ahora había que ir a por el Quick Pass al servicio de atención al visitante de la Kaiserplatz, y había un número limitado. En el Wintertraum, los fines de semana solían agotarse a mediodía. Online el cupo sigue siendo limitado: en las pantallas del parque, junto a «Auch einfach online erhältlich» (también disponible online), aparece el aviso «Limitiertes Kontingent» (cupo limitado). La página informativa del parque sigue citando el servicio de atención al visitante del área Berlin como punto de venta. El Phantasialand no ha dicho desde cuándo vende los pases en la tienda.
+Hasta ahora había que ir a por el Quick Pass al servicio de atención al visitante de la Kaiserplatz, y había un número limitado. En el Wintertraum, los fines de semana solían agotarse a mediodía. Online el cupo sigue siendo limitado: en las pantallas del parque, junto a «Auch einfach online erhältlich» (también disponible online), aparece el aviso «Limitiertes Kontingent» (cupo limitado). La página informativa del parque sigue citando el servicio de atención al visitante del área Berlin como punto de venta. El Phantasialand no ha hecho público desde cuándo vende los pases en la tienda.
 
 Por mi experiencia, en un día verde llegando temprano el Quick Pass no hace ninguna falta; en un sábado de vacaciones en rojo intenso puede salvarte el día. El orden en que monto sin pase lo cuento en los [consejos para el Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 
