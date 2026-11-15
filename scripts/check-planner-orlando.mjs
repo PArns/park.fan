@@ -483,8 +483,10 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         (await ticket.locator('[data-plan-purchase-links] [data-ticket-link]').count()) > 0;
     }
     check(
-      'Orlando · Plan first: Satz, dann ein Ticket pro Resort mit Produkt, Parktagen und Kauf-Links, ohne Klappe davor',
-      complete && (await card.locator('[data-plan-ticket-sentence]').count()) === 1,
+      'Orlando · Plan first: Satz, Empfehlung mit Kauf-Knopf je Ticket, dann eine Zeile pro Resort mit Produkt, Parktagen und allen Shops',
+      complete &&
+        (await card.locator('[data-plan-ticket-sentence]').count()) === 1 &&
+        (await card.locator('[data-plan-ticket-pick] [data-ticket-link]').count()) >= count,
       `${count} Tickets`
     );
     const buy = await card.locator('[data-ticket-link]').first().boundingBox();
@@ -508,7 +510,7 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       const resort = await facts.getAttribute('data-plan-ticket-facts');
       await facts.locator('summary').click();
       check(
-        'Orlando · „How the ticket works“ klappt die Regeln des Tickets an Ort und Stelle auf',
+        'Orlando · die Zeile eines Tickets klappt seine Tage und Regeln an Ort und Stelle auf',
         (await facts.getAttribute('open')) !== null
       );
       const opened = await events(page, 'trip_ticket_details_opened');
@@ -528,6 +530,11 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       );
     } else {
       const resort = await toggles.first().getAttribute('data-plan-hopper-toggle');
+      // The toggle sits in its ticket's line, which opens first.
+      await toggles.first().evaluate((el) => {
+        const row = el.closest('details');
+        if (row) row.open = true;
+      });
       await toggles.first().click();
       await page.waitForFunction(
         (r) => new URL(location.href).searchParams.get('hopper') === r,
@@ -580,7 +587,10 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await ready(page, firstPath);
     const card = page.locator('[data-plan-tickets-card="suggested"]');
     await card.waitFor({ timeout: PLAN_TIMEOUT });
-    const sponsored = card.locator('[data-ticket-link="sponsored"]').first();
+    // The recommendation buys through the sponsored seller first.
+    const sponsored = card
+      .locator('[data-plan-ticket-pick] [data-ticket-link="sponsored"]')
+      .first();
     const official = card.locator('[data-ticket-link="official"]').first();
     const attrs = async (link) => ({
       rel: await link.getAttribute('rel'),
@@ -601,15 +611,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     );
     // The click opens the seller in a new tab; the count is what matters here.
     context.on('page', (opened) => opened.close().catch(() => {}));
-    // `orderTicketLinks` puts the visitor's own store first, so the stub's place is the list's.
-    const position = await sponsored.evaluate(
-      (el) =>
-        [
-          ...(el.closest('[data-plan-purchase-links]') ?? document).querySelectorAll(
-            '[data-ticket-link]'
-          ),
-        ].indexOf(el) + 1
-    );
+    // The first ticket's button is the recommendation's first.
+    const position = 1;
     await sponsored.click();
     const counted = await page.evaluate(() =>
       (window.__parkfanEventLog ?? []).filter((e) => e.name === 'ticket_link_clicked')
@@ -625,17 +628,30 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         counted[0].props.ticket_mode === 'plan_first',
       JSON.stringify(counted[0]?.props ?? 'kein Ereignis')
     );
-    const label = sponsored.locator('xpath=following-sibling::*[@data-partner-label]');
+    const word = card.locator('[data-plan-ticket-pick] [data-partner-word]').first();
+    const label = card.locator('[data-plan-ticket-pick] [data-partner-label]').first();
     await label.click();
     const note = page.locator('[data-partner-note]');
     await note.waitFor({ timeout: 5000 }).catch(() => {});
     check(
-      'Orlando · neben dem Partnerlink steht „Partner link“ und erklärt sich auf Druck',
-      (await label.isVisible()) &&
-        (await label.innerText()).includes('Partner link') &&
+      'Orlando · die Empfehlung ist als „Ad“ markiert, das sich auf Druck erklärt, und ihr Partnerlink sagt „Partner link“',
+      (await word.isVisible()) &&
+        (await word.innerText()).includes('Partner link') &&
+        (await label.innerText()).includes('Ad') &&
         (await note.isVisible()) &&
         (await note.innerText()).includes('commission'),
       await note.innerText().catch(() => 'keine Erklärung')
+    );
+    await page.keyboard.press('Escape');
+    // In a ticket's line, every shop with the pill beside a partner link.
+    await card.locator('[data-plan-ticket-facts] summary').first().click();
+    const listed = card
+      .locator('[data-plan-purchase-links] [data-ticket-link="sponsored"]')
+      .first()
+      .locator('xpath=following-sibling::*[@data-partner-label]');
+    check(
+      'Orlando · in der Liste aller Shops steht „Partner link“ neben dem Partnerlink',
+      (await listed.isVisible()) && (await listed.innerText()).includes('Partner link')
     );
     await context.close();
   }

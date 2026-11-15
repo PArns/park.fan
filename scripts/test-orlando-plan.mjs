@@ -158,8 +158,11 @@ import {
   isEveryDayTicket,
   longStayTickets,
   needsConnectedHop,
+  officialTicketLink,
   orderTicketLinks,
   ownedUse,
+  primaryTicketLink,
+  ticketFacts,
   ticketLinkAttributes,
   ticketLinkGroups,
   ticketLinksOf,
@@ -1919,6 +1922,21 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     [true, true, false, false]
   );
   test(
+    'a ticket’s facts from the catalog: days in its window, every day, the hopping included',
+    [
+      ticketFacts(CATALOG.get('wdw-uk-14-day-magic'), null),
+      ticketFacts(CATALOG.get('uor-uk-three-park-adventure'), null),
+      ticketFacts(CATALOG.get('wdw-date-based'), 4),
+      ticketFacts(CATALOG.get('wdw-annual-pass'), null),
+    ],
+    [
+      [{ kind: 'daysIn', days: 14, window: 18 }, { kind: 'hopping' }],
+      [{ kind: 'everyDay', window: 14 }, { kind: 'hopping' }],
+      [{ kind: 'daysIn', days: 4, window: 7 }],
+      [{ kind: 'hopping' }],
+    ]
+  );
+  test(
     'the UK Universal ticket is the one on sale at its start, both in the overlap week',
     [
       rollingFortnightAt(STEP, CATALOG, '2027-02-07'),
@@ -2423,6 +2441,27 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
         ['Walt Disney World', false, ['1:Walt Disney World']],
       ],
       [],
+    ]
+  );
+  const sponsoredDe = { ...attraction('DE'), seller: 'Partner Shop', sponsored: true };
+  const seller = (link) => link && `${link.seller}${link.store ? ` ${link.store.country}` : ''}`;
+  test(
+    'the recommendation buys through a sponsored seller first, else the first that is not the shop',
+    [
+      seller(primaryTicketLink([attraction('NL'), official, sponsoredDe])),
+      seller(primaryTicketLink([official, attraction('DE'), attraction('NL')])),
+      seller(primaryTicketLink([official])),
+      primaryTicketLink([]),
+      seller(officialTicketLink([attraction('DE'), official])),
+      officialTicketLink([attraction('DE')]),
+    ],
+    [
+      'Partner Shop DE',
+      'Attraction Tickets DE',
+      'Walt Disney World',
+      null,
+      'Walt Disney World',
+      null,
     ]
   );
   test(
