@@ -21,6 +21,7 @@ import {
   formatPerformanceTime,
   nextPerformance,
   performanceTimesShown,
+  startsAtSetTimesOn,
 } from '@/lib/utils/performance-schedule';
 import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { useLocale } from 'next-intl';
@@ -137,6 +138,9 @@ export function RideNavTiles({
   /** The next recommended slot still ahead of the reader — the plan tile's whole point. */
   const nextSlot = useMemo(() => {
     if (!browserNow) return null;
+    if (startsAtSetTimesOn(attraction.performanceSchedules, parkDayOf(browserNow, timezone))) {
+      return null;
+    }
     const nowMs = browserNow.getTime();
     const slot = (detail?.bestVisitTimes ?? attraction.bestVisitTimes ?? [])
       .filter((s) => new Date(s.time).getTime() > nowMs)
@@ -148,7 +152,14 @@ export function RideNavTiles({
       minute: '2-digit',
       timeZone: timezone,
     });
-  }, [detail?.bestVisitTimes, attraction.bestVisitTimes, browserNow, locale, timezone]);
+  }, [
+    detail?.bestVisitTimes,
+    attraction.bestVisitTimes,
+    attraction.performanceSchedules,
+    browserNow,
+    locale,
+    timezone,
+  ]);
 
   /** The window's high-water mark, so the history tile says what is in the grid below. */
   const historyPeak = useMemo(() => {

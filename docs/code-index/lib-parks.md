@@ -11,9 +11,15 @@ by hand: change the comment in the code and re-run the script. -->
 - `historyListRows` _function_: Rows the two-column list below that needs.
 - `historyGridRows` _function_: Rows the seven-column grid needs above it.
 - `historyGridReservation` _function_: The three heights the placeholder reserves, the same on every day of the year. Numbers rather than a class string, because Tailwind cannot see a computed class name; the panel writes them into CSS custom properties.
-- `HISTORY_WINDOW_DAYS` _const_: Today plus the thirty days behind it: the window `AttractionHistoryGrid` builds.
-- `PHONE_HISTORY_DAYS` _const_: Days a phone (a page under 768 px) shows before its „show more" button: four rows of two. All thirty-one are sixteen rows there, eight screens of tiles.
+- `HISTORY_WINDOW_DAYS` _const_: Today plus the twenty-nine days behind it: the window `AttractionHistoryGrid` builds, and the thirty days the API's history covers (`days=30`, today included).
+- `PHONE_HISTORY_DAYS` _const_: Days a phone (a page under 768 px) shows before its „show more" button: four rows of two. All thirty are fifteen rows there, eight screens of tiles.
 - Types: `HistoryGridReservation`
+
+### [`attraction-history-status.ts`](../../lib/parks/attraction-history-status.ts)
+
+- `attractionHistoryStatus` _function_: A history day's status: a measured curve is a running day, a free-flow day without a wait is a walk-on day, and a day without either reads from the park's schedule.
+- `historyHasARunningDay` _function_: Whether the ride ran on any day of the window, which decides between a grid and one line.
+- Types: `AttractionHistoryStatus`
 
 ### [`calendar-grid-geometry.ts`](../../lib/parks/calendar-grid-geometry.ts)
 

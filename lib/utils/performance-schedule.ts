@@ -24,6 +24,18 @@ export function performanceTimesOn(
   return schedule && schedule.times.length > 0 ? schedule.times : null;
 }
 
+/**
+ * Whether a schedule covers the park's day. Such a ride starts at set times, so a best time to
+ * visit, a forecast of its wait, answers nothing that day. Asked of the day alone and never of the
+ * live status, so a surface that reserves room for best times can decide it from the server render.
+ */
+export function startsAtSetTimesOn(
+  schedules: readonly PerformanceSchedule[] | null | undefined,
+  day: string | undefined
+): boolean {
+  return performanceTimesOn(schedules, day) !== null;
+}
+
 /** What decides whether a ride shows its performances today; see {@link performanceTimesShown}. */
 export interface PerformanceGate {
   schedules: readonly PerformanceSchedule[] | null | undefined;

@@ -1298,6 +1298,11 @@ export interface AttractionHistoryDay {
     hour: string;
     value: number;
   }>;
+  /**
+   * A free-flow ride ran that day while the park was open, but no reading reached 5 minutes, so
+   * `hourlyP90` is empty: walk-on, not closed. Absent on every other day.
+   */
+  withoutWait?: true;
 }
 
 /** Today's wait statistics for one attraction. */

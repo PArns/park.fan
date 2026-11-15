@@ -5,15 +5,19 @@
  * pin it. See docs/rules/a-streamed-section-owes-the-page-its-height.md.
  */
 
-/** Today plus the thirty days behind it: the window `AttractionHistoryGrid` builds. */
-export const HISTORY_WINDOW_DAYS = 30;
+/**
+ * Today plus the twenty-nine days behind it: the window `AttractionHistoryGrid` builds, and the
+ * thirty days the API's history covers (`days=30`, today included). One day more drew a tile the
+ * API never sends, and it read „ganztägig geschlossen" on every ride (PAR-1359).
+ */
+export const HISTORY_WINDOW_DAYS = 29;
 
 /** Columns the grid draws at a page width of 1024 px and up. Below that it is two. */
 const LG_COLUMNS = 7;
 
 /**
  * Days a phone (a page under 768 px) shows before its „show more" button: four rows of two. All
- * thirty-one are sixteen rows there, eight screens of tiles.
+ * thirty are fifteen rows there, eight screens of tiles.
  */
 export const PHONE_HISTORY_DAYS = 8;
 

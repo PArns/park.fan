@@ -55,6 +55,7 @@
     "test:trip-clear": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-trip-clear.mjs",
     "test:day-comparison": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-day-comparison.mjs",
     "test:attraction-history-geometry": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-attraction-history-geometry.mjs",
+    "test:attraction-history-status": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-attraction-history-status.mjs",
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",
     "test:ride-alternatives": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-alternatives.mjs",
     "test:show-order": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-order.mjs",

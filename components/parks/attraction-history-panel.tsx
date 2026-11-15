@@ -62,7 +62,7 @@ export function AttractionHistoryPanel({
       <ChapterHeading
         icon={CalendarDays}
         title={t('historyCalendar')}
-        // `+ 1`: the window is today AND the thirty days behind it, so the grid draws 31 cells.
+        // `+ 1`: the window is today AND the twenty-nine days behind it, so the grid draws 30 cells.
         hint={t('typicalWaits.basedOn', { days: HISTORY_WINDOW_DAYS + 1 })}
         frosted
         className="mb-0 rounded-b-none"

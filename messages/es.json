@@ -1521,6 +1521,7 @@
       "today": "Hoy"
     },
     "rideClosed": "Atracción cerrada",
+    "ranWithoutWait": "Abierto, sin espera",
     "parkClosed": "Parque cerrado",
     "notYetOpen": "Aún no abre hoy",
     "queue": {
