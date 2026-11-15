@@ -27,7 +27,7 @@ export async function TripRegionsHomeStop({ locale }: { locale: Locale }) {
   return (
     <HomeStop
       stacked
-      divider
+      flushTop
       block="trip_home"
       heading={
         <ChapterHeading
