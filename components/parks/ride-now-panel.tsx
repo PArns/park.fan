@@ -8,6 +8,8 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { OutageNote } from '@/components/parks/outage-note';
 import { RideOpensAtNote } from '@/components/parks/ride-opens-at-note';
+import { PerformanceBadge } from '@/components/parks/performance-badge';
+import { PerformanceCountdown } from '@/components/parks/performance-countdown';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { formatPeakDate } from '@/lib/utils/typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -43,6 +45,11 @@ interface RideNowPanelProps {
    */
   todayIso: string;
   /**
+   * Today's start times of a ride that runs as performances (`performanceTimesShown`), shown in
+   * place of the wait; null for every other ride.
+   */
+  performanceTimes?: readonly string[] | null;
+  /**
    * How many best-visit slots the server render saw, for the column's row reservation. Separate
    * from `attraction.bestVisitTimes`, which the live merge overlays (see `slotSlots`).
    */
@@ -69,6 +76,7 @@ export function RideNowPanel({
   status,
   statusLabel,
   todayIso,
+  performanceTimes = null,
   shellSlotCount,
   todaySchedule,
   isRefreshing,
@@ -152,7 +160,7 @@ export function RideNowPanel({
           <span
             className={cn(
               'h-1.5 w-1.5 rounded-full',
-              isOperating ? 'bg-status-operating' : 'bg-muted-foreground/40'
+              isOperating || performanceTimes ? 'bg-status-operating' : 'bg-muted-foreground/40'
             )}
             aria-hidden="true"
           />
@@ -204,59 +212,74 @@ export function RideNowPanel({
 
       <div className="overflow-hidden">
         <PanelGrid columnCount={columnCount}>
-          <div className={cell}>
-            <PanelMetric caption={t('waitTime')}>
-              <ParkStatusBadge status={status} />
-            </PanelMetric>
-            {/* Reserved at the number's own height whether or not there is a number: a ride that
+          {performanceTimes ? (
+            <div className={cell}>
+              <PanelMetric caption={t('performance.next')}>
+                <PerformanceBadge className="self-start" />
+              </PanelMetric>
+              <PerformanceCountdown
+                times={performanceTimes}
+                timezone={timezone}
+                variant="block"
+                figureClassName="text-4xl leading-none font-bold tabular-nums"
+                className="min-h-[3.25rem]"
+              />
+            </div>
+          ) : (
+            <div className={cell}>
+              <PanelMetric caption={t('waitTime')}>
+                <ParkStatusBadge status={status} />
+              </PanelMetric>
+              {/* Reserved at the number's own height whether or not there is a number: a ride that
               shuts mid-afternoon leaves a dash behind instead of collapsing the panel. */}
-            <div className="flex min-h-[3.25rem] flex-col gap-1">
-              {wait !== null ? (
-                <div className="flex items-baseline gap-2">
-                  <span className="text-4xl leading-none font-bold tabular-nums">
-                    {roundWaitTo5(wait)}
-                  </span>
-                  <span className="text-muted-foreground text-base">{tCommon('minutes')}</span>
-                  {trend && <TrendPill {...trend} className="ml-0.5" />}
-                </div>
-              ) : (
-                <span className="text-xl font-semibold">{statusLabel}</span>
-              )}
-              {/* Inside the box reserved for the number, where a ride with no wait shows its
+              <div className="flex min-h-[3.25rem] flex-col gap-1">
+                {wait !== null ? (
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl leading-none font-bold tabular-nums">
+                      {roundWaitTo5(wait)}
+                    </span>
+                    <span className="text-muted-foreground text-base">{tCommon('minutes')}</span>
+                    {trend && <TrendPill {...trend} className="ml-0.5" />}
+                  </div>
+                ) : (
+                  <span className="text-xl font-semibold">{statusLabel}</span>
+                )}
+                {/* Inside the box reserved for the number, where a ride with no wait shows its
                   status: a DOWN ride is that case. The `full` block carries both estimate figures,
                   since this is the page a visitor opens standing in front of the ride. */}
-              <OutageNote
-                outage={attraction.outage}
-                timezone={timezone}
-                variant="full"
-                className="my-1.5"
-              />
-              {status === 'CLOSED' && !attraction.outage && (
-                <RideOpensAtNote
-                  slug={attraction.slug}
-                  notRunToday={attraction.notRunToday}
-                  runsOnWeekdays={attraction.runsOnWeekdays}
+                <OutageNote
+                  outage={attraction.outage}
                   timezone={timezone}
                   variant="full"
                   className="my-1.5"
                 />
-              )}
-              {mainQueue?.lastUpdated && (
-                <span className="text-muted-foreground text-xs">
-                  {tCommon('updated')}{' '}
-                  <LocalTime time={mainQueue.lastUpdated} timeZone={timezone} />
-                </span>
-              )}
-            </div>
-            {/* Two lines reserved on the one-column layout, so the line arriving with the poll does
+                {status === 'CLOSED' && !attraction.outage && (
+                  <RideOpensAtNote
+                    slug={attraction.slug}
+                    notRunToday={attraction.notRunToday}
+                    runsOnWeekdays={attraction.runsOnWeekdays}
+                    timezone={timezone}
+                    variant="full"
+                    className="my-1.5"
+                  />
+                )}
+                {mainQueue?.lastUpdated && (
+                  <span className="text-muted-foreground text-xs">
+                    {tCommon('updated')}{' '}
+                    <LocalTime time={mainQueue.lastUpdated} timeZone={timezone} />
+                  </span>
+                )}
+              </div>
+              {/* Two lines reserved on the one-column layout, so the line arriving with the poll does
                 not move the panel. */}
-            <p className="text-muted-foreground mt-auto min-h-8 text-xs">
-              {typicalHour &&
-                (typicalHour.rare !== null
-                  ? t('typicalThisHour', { typical: typicalHour.typical, rare: typicalHour.rare })
-                  : t('typicalThisHourNoCap', { typical: typicalHour.typical }))}
-            </p>
-          </div>
+              <p className="text-muted-foreground mt-auto min-h-8 text-xs">
+                {typicalHour &&
+                  (typicalHour.rare !== null
+                    ? t('typicalThisHour', { typical: typicalHour.typical, rare: typicalHour.rare })
+                    : t('typicalThisHourNoCap', { typical: typicalHour.typical }))}
+              </p>
+            </div>
+          )}
 
           <div className={cell}>
             <div className="flex flex-wrap gap-x-6 gap-y-3">

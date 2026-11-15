@@ -1647,7 +1647,8 @@
       "live": "Jetzt <b>{min}</b> Min.",
       "liveClosed": "Zurzeit geschlossen",
       "plan": "Beste Zeit <b>{time}</b> Uhr",
-      "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min."
+      "history": "<b>{days}</b> Tage · Spitze <b>{max}</b> Min.",
+      "performance": "Nächste Vorstellung <b>{time}</b> Uhr"
     },
     "alternatives": {
       "heading": "Kürzere Wartezeiten in der Nähe",
@@ -1709,7 +1710,16 @@
     "riddenMark": "Als gefahren markieren",
     "riddenUnmark": "Markierung „gefahren“ entfernen",
     "riddenProgress": "{count} von {total} Bahnen gefahren",
-    "tabTitleWait": "{minutes} Min. · {title}"
+    "tabTitleWait": "{minutes} Min. · {title}",
+    "performance": {
+      "badge": "Feste Vorstellungen",
+      "hint": "Beginnt zu festen Zeiten, nicht durchgehend. Eingelassen wird zur nächsten Vorstellung.",
+      "next": "Nächste Vorstellung",
+      "in": "in {duration}",
+      "now": "beginnt jetzt",
+      "noneLeft": "Heute keine Vorstellung mehr",
+      "todayList": "Vorstellungen heute"
+    }
   },
   "nearby": {
     "title": "Parks in deiner Nähe",

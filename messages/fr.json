@@ -1647,7 +1647,8 @@
       "live": "<b>{min}</b> min en ce moment",
       "liveClosed": "Actuellement fermée",
       "plan": "Meilleur moment <b>{time}</b>",
-      "history": "<b>{days}</b> jours · pic <b>{max}</b> min"
+      "history": "<b>{days}</b> jours · pic <b>{max}</b> min",
+      "performance": "Prochaine séance <b>{time}</b>"
     },
     "alternatives": {
       "heading": "Files plus courtes à proximité",
@@ -1709,7 +1710,16 @@
     "riddenMark": "Marquer comme faite",
     "riddenUnmark": "Retirer la marque « faite »",
     "riddenProgress": "{count, plural, one {# attraction faite} other {# attractions faites}} sur {total}",
-    "tabTitleWait": "{minutes} min · {title}"
+    "tabTitleWait": "{minutes} min · {title}",
+    "performance": {
+      "badge": "Séances à heure fixe",
+      "hint": "Commence à heures fixes au lieu de tourner en continu. On entre pour la séance suivante.",
+      "next": "Prochaine séance",
+      "in": "dans {duration}",
+      "now": "commence maintenant",
+      "noneLeft": "Plus de séance aujourd’hui",
+      "todayList": "Séances du jour"
+    }
   },
   "nearby": {
     "title": "Parcs à proximité",

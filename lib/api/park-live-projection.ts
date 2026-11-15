@@ -259,7 +259,8 @@ const CALENDAR_RESTAURANT_FIELDS = [
 
 /**
  * The ride fields the ride page's client trees read off its seed: `RideLiveHeader` and
- * `RideNowPanel` (status, queues, statistics, typical waits, outage and the opens-at note),
+ * `RideNowPanel` (status, queues, statistics, typical waits, outage, the opens-at note, and the
+ * performance schedules and works windows that put a countdown in place of the wait),
  * `RideNavTiles` and `LiveAttractionData` (best visit times). `RideAlternatives` takes positions,
  * types and heights from its own query. The badges, the ride profile, rope drop and the FAQ are
  * Server Components that read the full ride, so none of their fields has to reach the browser.
@@ -282,6 +283,8 @@ const RIDE_SHELL_FIELDS = [
   'outage',
   'notRunToday',
   'runsOnWeekdays',
+  'performanceSchedules',
+  'worksPeriods',
 ] as const;
 
 /**

@@ -58,6 +58,7 @@
     "test:holiday-names": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-holiday-names.mjs",
     "test:ride-alternatives": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-ride-alternatives.mjs",
     "test:show-order": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-show-order.mjs",
+    "test:performance-schedule": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-performance-schedule.mjs",
     "test:assistant": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-assistant.mjs",
     "test:parky-look": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-parky-look.mjs",
     "test:assistant-context": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-assistant-context.mjs",

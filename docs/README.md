@@ -41,6 +41,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [calendar-status-closed](api/calendar-status-closed.md) — How the calendar renders UNKNOWN/CLOSED and how scheduleCoverage.to bounds published months
 - [seasonal-attractions](api/seasonal-attractions.md) — Every surface that reads a ride's or show's season, and what it does with an out-of-season one
 - [parks-without-wait-times](api/parks-without-wait-times.md) — Every surface for a park whose wait times cannot be read, and the data-nosnippet guard
+- [performance-schedules](api/performance-schedules.md) — Rides that start at set times: the rule that puts the next start in place of the wait, and every surface that shows it
 
 ## Features
 

@@ -375,6 +375,14 @@ When the nowcast says it is time to go under a roof: the trigger for the covered
 - `chunk` _function_: The list cut into consecutive slices of `size` (the last may be shorter).
 - `sortLandNames` _function_: Land names in display order: alphabetical, then the Halloween-maze group, then the land-less one.
 
+### [`performance-schedule.ts`](../../lib/utils/performance-schedule.ts)
+
+- `performanceTimesOn` _function_: The start times on a park-local day, or null when no schedule covers it. The twin of the API's `performanceTimesOn()`: schedules never share a day, both bounds are inclusive and either may be open.
+- `performanceTimesShown` _function_: Today's start times when a ride shows them in place of its wait, else null. The ride's card and its page ask this one question, so the two cannot disagree.
+- `nextPerformance` _function_: The first start at or after the park's current minute, or null when the day's last one has begun. A performance that started a minute ago is gone: the doors close as it begins.
+- `formatPerformanceTime` _function_: A start time as the locale writes a clock time: „13:00" in German, „1 PM" in English. The time is already the park's, so it is formatted as a UTC instant in UTC and no zone can move it.
+- Types: `PerformanceGate`, `NextPerformance`
+
 ### [`pick-random.ts`](../../lib/utils/pick-random.ts)
 
 - `pickRandom` _function_: A random item of `list`, never `except` while there is another to take.

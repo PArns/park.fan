@@ -32,8 +32,14 @@ export function isHiddenCuratedField(field: CuratedField, fields: CuratedField[]
   );
 }
 
+/** A run of park-local days, both inclusive and either open: a works window or a schedule's span. */
+export interface DayWindowRow {
+  from: string | null;
+  to: string | null;
+}
+
 /** The windows in the order the backend stores them: by start, an open start first, then by end. */
-export function sortWorksPeriods(periods: WorksPeriodRow[]): WorksPeriodRow[] {
+export function sortWorksPeriods<T extends DayWindowRow>(periods: T[]): T[] {
   return [...periods].sort(
     (a, b) =>
       (a.from ?? '').localeCompare(b.from ?? '') ||
@@ -59,22 +65,33 @@ export function worksPeriodsError(periods: WorksPeriodRow[]): string | null {
       return `${row}: „Ende geschätzt" braucht ein „bis".`;
     }
   }
-  // Sorted by start, a window overlaps an earlier one exactly when it starts on or before the
-  // furthest end seen so far. Both bounds are inclusive, an open end runs forever.
+  const overlap = firstOverlap(periods);
+  return overlap
+    ? `Wartungsfenster überschneiden sich (${dayWindowLabel(overlap[0])} und ${dayWindowLabel(overlap[1])}).`
+    : null;
+}
+
+/**
+ * The first two windows that share a day, in the stored order, or null. Sorted by start, a window
+ * overlaps an earlier one exactly when it starts on or before the furthest end seen so far. Both
+ * bounds are inclusive, an open end runs forever.
+ */
+export function firstOverlap<T extends DayWindowRow>(windows: T[]): [T, T] | null {
   let furthestEnd: string | null = null;
-  let previous: WorksPeriodRow | null = null;
-  for (const period of sortWorksPeriods(periods)) {
-    if (previous && furthestEnd !== null && (period.from ?? '') <= furthestEnd) {
-      return `Wartungsfenster überschneiden sich (${label(previous)} und ${label(period)}).`;
+  let previous: T | null = null;
+  for (const window of sortWorksPeriods(windows)) {
+    if (previous && furthestEnd !== null && (window.from ?? '') <= furthestEnd) {
+      return [previous, window];
     }
-    const end = period.to ?? OPEN_END;
+    const end = window.to ?? OPEN_END;
     if (furthestEnd === null || end > furthestEnd) furthestEnd = end;
-    previous = period;
+    previous = window;
   }
   return null;
 }
 
-function label(period: WorksPeriodRow): string {
+/** A window as the editor names it in a message: „14.11.2026–24.01.2027", `…` for an open bound. */
+export function dayWindowLabel(period: DayWindowRow): string {
   const day = (iso: string | null) =>
     iso ? `${iso.slice(8, 10)}.${iso.slice(5, 7)}.${iso.slice(0, 4)}` : '…';
   return `${day(period.from)}–${day(period.to)}`;
