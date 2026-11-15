@@ -99,7 +99,7 @@ From 7 to 19 March 2027, in the not quite two weeks before the season starts, th
 - HALLOWinter: 8 to 26 November 2027, daily from 11 a.m. until at least 7 p.m.
 - Winterzauber: 27 November 2027 to 9 January 2028, daily from 11 a.m. until at least 7 p.m.
 
-Our [Europa-Park guide](/blog/europa-park-wait-times-tips) shows, by weekday and by month, when the park is least busy.
+Our [Europa-Park guide](/blog/europa-park-wait-times-tips) breaks down by weekday and by month when the park is least busy.
 
 ```best-days-widget slug=europa-park
 

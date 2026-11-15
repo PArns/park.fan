@@ -1,5 +1,5 @@
 ---
-title: 'Europa-Park 2027: il biglietto giornaliero sale fino a 3,50 €'
+title: 'Europa-Park 2027: biglietto giornaliero fino a 3,50 € in più'
 translationKey: europa-park-preise-2027
 date: '2026-11-15'
 time: '08:00'
