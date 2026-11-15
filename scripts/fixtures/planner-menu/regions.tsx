@@ -103,7 +103,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
       ))}
     </div>
     <header className="@container relative h-12 border-b">
-      <MenuBand id="planner-fixture" open>
+      <MenuBand id="planner-fixture" menu="planner" open>
         <PlannerMenuPanel
           dayPlannerHref={locale === 'de' ? '/tagesplaner' : '/trip-planner'}
           regions={regions}

@@ -59,7 +59,7 @@ export const FavoritesMenu = memo(function FavoritesMenu({ floating }: { floatin
         />
       </button>
 
-      <MenuBand id={panelId} open={open} onClick={closeOnSamePageClick}>
+      <MenuBand id={panelId} menu="favorites" open={open} onClick={closeOnSamePageClick}>
         <FavoritesMenuPanel open={open} />
       </MenuBand>
     </div>

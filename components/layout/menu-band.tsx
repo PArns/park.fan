@@ -6,6 +6,8 @@ import {
   registerEdgeMenuBand,
 } from '@/lib/hooks/use-menu-band-over-edge-tab';
 import { useMenuReveal } from '@/lib/hooks/use-menu-reveal';
+import { linkBlockAttributes, menuBlock } from '@/lib/analytics/internal-link';
+import type { NavMenuId } from '@/lib/analytics/site-analytics';
 
 const MenuBandOpenContext = createContext(false);
 
@@ -40,11 +42,14 @@ export function useMenuBandOpened(): boolean {
  */
 export function MenuBand({
   id,
+  menu,
   open,
   onClick,
   children,
 }: {
   id: string;
+  /** Which menu opened it: the block its links are counted under (`menuBlock`). */
+  menu: Exclude<NavMenuId, 'sheet'>;
   open: boolean;
   /** `useMenuTrigger().closeOnSamePageClick`: a link to the page already showing closes it. */
   onClick?: React.MouseEventHandler<HTMLDivElement>;
@@ -65,6 +70,7 @@ export function MenuBand({
       id={id}
       // A stable hook for the checks in scripts/, which must not key on the surface's styling.
       data-nav-panel=""
+      {...linkBlockAttributes(menuBlock(menu))}
       onClick={onClick}
       className={`absolute inset-x-0 top-full z-50 ${open ? '' : 'hidden'}`}
     >
