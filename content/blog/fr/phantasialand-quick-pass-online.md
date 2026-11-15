@@ -89,7 +89,7 @@ Le Quick Pass Ultimate coûte 80 €. Il t’ouvre une fois chaque entrée Quick
 
 ## Ce qu’il te faut en plus
 
-Le Quick Pass se paie en plus et ne vaut qu’avec un billet journée valable. Ces billets se vendent uniquement en ligne, le parc n’a pas de caisse à l’entrée, et pour le jour même il les vend jusqu’à 14 h. Si tu arrives au portail à 14 h 30 sans billet, tu as donc un plus gros problème que la file de Black Mamba.
+Le Quick Pass se paie en plus et ne vaut qu’avec un billet journée valable. Ces billets se vendent uniquement en ligne, le parc n’a pas de caisse à l’entrée, et pour le jour même il les vend jusqu’à 14 h. Si tu arrives au portail à 14 h 30 sans billet, tu as un plus gros problème que la file de Black Mamba.
 
 Le pass ne donne pas le choix de ta place dans le train, et la taille minimale de l’attraction s’applique avec le pass comme sans.
 

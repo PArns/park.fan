@@ -90,7 +90,7 @@ Il Quick Pass Ultimate costa 80 €. Ti fa passare una volta da ogni ingresso Qu
 
 ## Cos’altro serve
 
-Il Quick Pass si paga a parte e vale solo insieme a un biglietto giornaliero valido. I biglietti giornalieri esistono solo online, all’ingresso non c’è una biglietteria, e per il giorno stesso della visita il parco li vende fino alle 14. Chi si presenta al cancello alle due e mezza senza biglietto ha quindi un problema più grosso della coda di Black Mamba.
+Il Quick Pass si paga a parte e vale solo insieme a un biglietto giornaliero valido. I biglietti giornalieri esistono solo online, all’ingresso non c’è una biglietteria, e per il giorno stesso della visita il parco li vende fino alle 14. Chi si presenta al cancello alle due e mezza senza biglietto ha un problema più grosso della coda di Black Mamba.
 
 Il pass non dà diritto a scegliere il posto sul treno, e l’altezza minima dell’attrazione resta la stessa con o senza Quick Pass.
 

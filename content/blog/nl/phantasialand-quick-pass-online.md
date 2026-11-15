@@ -83,13 +83,13 @@ Met een Quick Pass Single ga je één keer door de Quick-Pass-ingang van de geko
 | [Talocan](ref:phantasialand/talocan)                       | € 5,00                    |
 | [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere)   | op dit moment uitverkocht |
 
-Voor Colorado Adventure vraagt de shop € 7, dus € 2 meer dan tot nu toe, terwijl de mijntrein op de infopagina van het park nog voor € 5 staat. De andere prijzen zijn gelijk gebleven. Taron overdag, Chiapas en River Quest stonden niet tussen de losse passes.
+Voor Colorado Adventure vraagt de shop € 7, € 2 meer dan tot nu toe, terwijl de mijntrein op de infopagina van het park nog voor € 5 staat. De andere prijzen zijn gelijk gebleven. Taron overdag, Chiapas en River Quest stonden niet tussen de losse passes.
 
 De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pass-ingang en kom je één keer sneller in [F.L.Y.](ref:phantasialand/fly), waarvoor geen losse pass bestaat. Bij Taron geldt de Ultimate volgens de shop voor “Daylight & After Dark”, dus overdag en 's avonds.
 
 ## Wat je verder nodig hebt
 
-De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets zijn er alleen online, een kassa bij de ingang is er niet, en voor de dag zelf verkoopt het park ze tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft dus een groter probleem dan de rij bij Black Mamba.
+De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets zijn er alleen online, een kassa bij de ingang is er niet, en voor de dag zelf verkoopt het park ze tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
 
 Een vrije plaatskeuze in de trein hoort niet bij de pass, en de minimumlengte van een baan geldt met Quick Pass net zo goed als zonder.
 

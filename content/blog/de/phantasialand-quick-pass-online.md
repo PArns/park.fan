@@ -95,7 +95,7 @@ Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quic
 
 ## Was du außerdem brauchst
 
-Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets gibt es nur online, eine Tageskasse gibt es nicht, für den Besuchstag selbst bis 14 Uhr. Wer um halb drei ohne Ticket am Tor steht, hat also ein größeres Problem als die Schlange an Black Mamba.
+Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets gibt es nur online, eine Tageskasse gibt es nicht, für den Besuchstag selbst bis 14 Uhr. Wer um halb drei ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
 
 Eine freie Platzwahl im Zug gehört nicht zum Pass, und die Mindestgröße der Bahn gilt mit Quick Pass genauso wie ohne.
 
