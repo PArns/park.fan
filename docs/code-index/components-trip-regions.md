@@ -90,7 +90,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 01 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps, the closing band): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
-- `HubPlanFold` _component_: A chapter's body that folds into one line while the hub shows a plan (the calendar, the resorts): open on the landing page, which is the served HTML, so every link and day stays in it.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
 
 ### [`hub/hub-when.tsx`](../../components/trip-regions/hub/hub-when.tsx)
@@ -170,6 +169,12 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-day-sheet.tsx`](../../components/trip-regions/planner/plan-day-sheet.tsx)
 
 - `PlanDaySheet` _component_: Level 2: everything about one day, on a press in any view. A bottom sheet on a phone, a panel at the right edge at a desk.
+
+### [`planner/plan-delete.tsx`](../../components/trip-regions/planner/plan-delete.tsx)
+
+- `PlanDelete` _component_: „Reise löschen“, where a visitor manages the trip: the hub's head (after the line that says the plan is saved, `children`) and the result, under the keep actions.
+- `PlanDeleteStatus` _component_: The line after „Löschen“: „Deine Reise vom 3.–9. Dez. ist gelöscht.“ and „Rückgängig“, for a few seconds (`UNDO_MS`), then the trip's copy goes and nothing of it is kept.
+- `useTripDeleted` _hook_: Whether a delete of this region's trip is waiting out its undo.
 
 ### [`planner/plan-edit-status.tsx`](../../components/trip-regions/planner/plan-edit-status.tsx)
 

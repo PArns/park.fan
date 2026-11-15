@@ -973,6 +973,22 @@ function explainerHabits(file, text, locale) {
  */
 const HEADING_KEY = /(^|\.)(title|heading|headline)$/i;
 const DEK_KEY = /(^|\.)(lead|subtitle|intro|dek|teaser|tagline|body|text)$/i;
+/*
+ * A heading and the line under it end without a full stop (§4.3): with one, a title or its dek
+ * reads as a sentence of body text. Only one sentence counts, because a line of two keeps both.
+ */
+const HEADING_LINE_KEY =
+  /(^|\.)(title|heading|headline|subtitle|subline|tagline|kicker|eyebrow|lead)$/;
+/** Keys with one of those names that are neither a heading nor the line under one. */
+const HEADING_STOP_ALLOWED = [
+  // A run-in label: the sentence it opens follows in the same paragraph.
+  /^planner\.climatology\.title$/,
+  // The first paragraph of the running text, `<Lead>` or `<P>` before the next `<P>`.
+  /^tripRegions\.[^.]+\.bestTime\.intro\.lead$/,
+  /^tripBestTime\.strip\.lead$/,
+];
+/** The dot of an abbreviation or an ordinal, not a full stop: `{minutes} Min.`, `ab 22.11.`. */
+const ABBREVIATION_END = /(?:\b(?:Min|min|Std|Max|max|ca|etc|usw|bzw)|\d)\.$/;
 /** A question, then a fragment that is not a sentence: `Sind 70 Minuten viel? Kommt drauf an …`. */
 const QUESTION_THEN_FRAGMENT = /\?\s+(\S[^?]*[^.?!:…])$/;
 /** …and the fragment is an order: a German infinitive at the end, or a call-to-action verb up front. */
@@ -1623,6 +1639,15 @@ for (const locale of runs('catalogs') ? LOCALES : []) {
   }
 
   for (const [key, value] of strings) {
+    const line = value.trim();
+    if (
+      HEADING_LINE_KEY.test(key) &&
+      !HEADING_STOP_ALLOWED.some((allowed) => allowed.test(key)) &&
+      /[^.]\.$/.test(line) &&
+      !ABBREVIATION_END.test(line) &&
+      splitSentences(line).length === 1
+    )
+      fail(file, `${key}: a heading or its subline ends with a full stop (§4.3) — "${line}"`);
     if (CHAT_RESIDUE.test(value))
       fail(file, `${key}: chat register in a UI string (§5.1) — "${value.slice(0, 60)}"`);
     CHAT_RESIDUE.lastIndex = 0;

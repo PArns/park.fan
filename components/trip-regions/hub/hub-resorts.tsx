@@ -4,7 +4,6 @@ import { BedDouble, MapPinned } from 'lucide-react';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { Link } from '@/i18n/navigation';
 import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
-import { getListFormat } from '@/lib/utils/intl-format';
 import {
   parkCalendarHref,
   regionGroups,
@@ -16,7 +15,6 @@ import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { ownWords } from '@/lib/trip-regions/region-words';
 import type { TripHub } from '@/lib/trip-regions/registry';
 import type { TripBestDays, TripRegion, TripRegionPark } from '@/lib/trip-regions/types';
-import { HubPlanFold } from './hub-trip-state';
 
 /**
  * The parks whose crowd calendar the hub links: every park the window has quiet days for (a water
@@ -40,8 +38,8 @@ export function calendarParks(
  * Chapter 03, the resorts: one card per API group in the order the region lists them
  * (`hub.resorts`; a group it does not list follows), with its photo or the region's Parky picture,
  * the region's two sentences, each park as a link to its crowd calendar („<park> Andrang-Kalender“,
- * the query that page ranks for) and one sentence on where to stay. Server HTML, folded into one
- * line while the hub shows a plan. A card whose words are missing keeps its name and links.
+ * the query that page ranks for) and one sentence on where to stay. Server HTML, open in both of
+ * the hub's states. A card whose words are missing keeps its name and links.
  */
 export async function HubResorts({
   index,
@@ -79,69 +77,66 @@ export async function HubResorts({
     });
   if (cards.length === 0) return null;
   const title = ownWords(tRegion, 'resorts.title') ?? t('resorts.title');
-  const summary = getListFormat(locale, { type: 'conjunction' }).format(cards.map((c) => c.name));
 
   return (
     <section id="resorts" className="scroll-mt-24">
       <ChapterHeading index={index} icon={MapPinned} title={title} />
-      <HubPlanFold summary={summary}>
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {cards.map((card) => (
-            <li key={card.key} className="flex">
-              <article
-                data-card=""
-                className="border-border/60 bg-card flex w-full flex-col overflow-hidden rounded-2xl border shadow-sm"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden">
-                  {card.photo && (
-                    <Image
-                      src={card.photo.src}
-                      alt={card.photo.alt}
-                      width={card.photo.width}
-                      height={card.photo.height}
-                      sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 300px"
-                      className="size-full object-cover"
-                      style={{ objectPosition: card.photo.position }}
-                    />
-                  )}
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
+      <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {cards.map((card) => (
+          <li key={card.key} className="flex">
+            <article
+              data-card=""
+              className="border-border/60 bg-card flex w-full flex-col overflow-hidden rounded-2xl border shadow-sm"
+            >
+              <div className="relative aspect-[16/9] overflow-hidden">
+                {card.photo && (
+                  <Image
+                    src={card.photo.src}
+                    alt={card.photo.alt}
+                    width={card.photo.width}
+                    height={card.photo.height}
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 300px"
+                    className="size-full object-cover"
+                    style={{ objectPosition: card.photo.position }}
                   />
-                  <h3 className="absolute inset-x-3 bottom-2 text-lg font-semibold text-white drop-shadow">
-                    {card.name}
-                  </h3>
-                </div>
-                <div className="flex flex-1 flex-col gap-3 p-4">
-                  {card.lead && <p className="text-sm leading-relaxed">{card.lead}</p>}
-                  {card.parks.length > 0 && (
-                    <ul className="flex flex-col gap-1" {...linkBlockAttributes('trip_parks')}>
-                      {card.parks.map((park) => (
-                        <li key={park.slug} className="flex flex-col">
-                          <Link
-                            href={parkCalendarHref(park, locale)}
-                            prefetch={false}
-                            {...linkEntityAttributes(park.id)}
-                            className="text-primary-ink inline-flex min-h-11 items-center text-sm font-medium underline-offset-4 hover:underline sm:min-h-8"
-                          >
-                            {t('parksIndex.link', { park: shortParkName(park.name) })}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                  {card.stay && (
-                    <p className="text-muted-foreground mt-auto flex gap-2 text-xs leading-relaxed">
-                      <BedDouble aria-hidden className="mt-0.5 size-4 shrink-0" />
-                      <span>{card.stay}</span>
-                    </p>
-                  )}
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
-      </HubPlanFold>
+                )}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
+                />
+                <h3 className="absolute inset-x-3 bottom-2 text-lg font-semibold text-white drop-shadow">
+                  {card.name}
+                </h3>
+              </div>
+              <div className="flex flex-1 flex-col gap-3 p-4">
+                {card.lead && <p className="text-sm leading-relaxed">{card.lead}</p>}
+                {card.parks.length > 0 && (
+                  <ul className="flex flex-col gap-1" {...linkBlockAttributes('trip_parks')}>
+                    {card.parks.map((park) => (
+                      <li key={park.slug} className="flex flex-col">
+                        <Link
+                          href={parkCalendarHref(park, locale)}
+                          prefetch={false}
+                          {...linkEntityAttributes(park.id)}
+                          className="text-primary-ink inline-flex min-h-11 items-center text-sm font-medium underline-offset-4 hover:underline sm:min-h-8"
+                        >
+                          {t('parksIndex.link', { park: shortParkName(park.name) })}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {card.stay && (
+                  <p className="text-muted-foreground mt-auto flex gap-2 text-xs leading-relaxed">
+                    <BedDouble aria-hidden className="mt-0.5 size-4 shrink-0" />
+                    <span>{card.stay}</span>
+                  </p>
+                )}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

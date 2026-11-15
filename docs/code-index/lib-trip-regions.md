@@ -546,7 +546,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `rememberedTrip` _function_: The remembered trip of one region, or null.
 - `rememberTrip` _function_: Keep the planner's query for a region, once it holds dates or a search; an untouched planner (a bare hub visit) never erases what was kept. The party stays.
 - `rememberParty` _function_: Keep the party Parky's interview asked about with the region's trip.
-- `forgetTrip` _function_: Drop a region's remembered trip: Parky's undo of the trip he started.
+- `forgetTrip` _function_: Drop a region's remembered trip (Parky's undo of the trip he started, a deleted trip) and return how to put back the record it dropped, party and time included.
 - `rememberedTrips` _function_: Every region's remembered trip, newest first.
 - `REMEMBERED_QUERY_MAX` _const_: The API takes this much of a query; a 21-day trip with pins and tickets fits.
 - Types: `TripParty`, `RememberedTrip`
@@ -573,6 +573,11 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 ### [`ticket-answer.ts`](../../lib/trip-regions/ticket-answer.ts)
 
 - `tripTicketAnswer` _function_: Whether this browser answered "Do you already have tickets?", so the walk asks once and the Tickets row knows how to word itself.
+
+### [`trip-clear.ts`](../../lib/trip-regions/trip-clear.ts)
+
+- `clearTrip` _function_: Clear every place this device keeps one region's trip in, the same for „Reise löschen“ and „Neue Reise planen“, and keep what it cleared in memory only:
+- Types: `ClearedTrip`
 
 ### [`trip-links.ts`](../../lib/trip-regions/trip-links.ts)
 
