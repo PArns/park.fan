@@ -1,6 +1,6 @@
 import 'server-only';
 
-import buildInfo from '@/build-info.json';
+import buildInfo from '@/build-info.json' with { type: 'json' };
 import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { withSeedTimeout } from '@/lib/api/seed-timeout';
