@@ -6,6 +6,7 @@ import {
   BedDouble,
   ChevronLeft,
   ChevronRight,
+  Clock3,
   Lock,
   PlaneLanding,
   PlaneTakeoff,
@@ -15,7 +16,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useMediaQuery } from '@/lib/hooks/use-media-query';
-import { formatGridTime } from '@/lib/planner/park-time';
+import { formatGridHours, formatGridTime } from '@/lib/planner/park-time';
 import { heightFor, yFor } from '@/lib/planner/day-grid';
 import { PLANNER_PHONE_QUERY } from '@/lib/planner/use-grid-scale';
 import { TRANSFER_CHIP_CLASS, TRANSFER_RAIL_CLASS } from '@/lib/planner/leg-styles';
@@ -24,8 +25,10 @@ import {
   CROWD_DOT_CLASS,
   CROWD_TILE_CLASS,
   isColoredCrowdLevel,
+  type ColoredCrowdLevel,
 } from '@/lib/utils/crowd-level-styles';
 import { formatParkDay, formatParkDayRange } from '@/lib/utils/park-day';
+import { sentenceCase } from '@/lib/utils/sentence-case';
 import {
   TRIP_WEEK_PX_PER_MIN,
   TRIP_WEEK_PX_PER_MIN_COARSE,
@@ -48,6 +51,10 @@ import {
 import type { PlanDay, TripPlan } from '@/lib/trip-regions/plan';
 import { dayStayBase, planStays } from '@/lib/trip-regions/plan-stays';
 import type { TripCalendar } from '@/lib/trip-regions/types';
+import {
+  ParkCalendarLegend,
+  type CalendarLegendKey,
+} from '@/components/parks/park-calendar-legend';
 import { PlannerGridGround } from '@/components/planner/planner-grid-ground';
 import { PlannerBlockBar, PlannerBlockPhoto } from '@/components/planner/planner-block-ink';
 import { usePlanContext } from './plan-context';
@@ -62,16 +69,54 @@ import { PlanDayGlow } from './plan-day-glow';
 /** The gap between two day columns, which the stay band above them keeps to. */
 const COLUMN_GAP_PX = 4;
 
+/** The hotel's own hours, before opening and after the close: the stripes and their keys. */
+const PERK_INK = 'border-primary/50 bg-primary/25 border-dashed';
+
+/** One line of a stripe's 10 px type, which decides how much of its label a stripe can hold. */
+const STRIPE_LINE_PX = 12;
+
+/** A key's mark: a block of the grid at legend size. */
+const KEY_MARK = 'block h-2.5 w-4 border';
+
+/**
+ * After a morning move, the park's hours before the guest gets in: open, but spent on the way.
+ * `null` on any other day.
+ */
+function lostMorning(
+  span: TripDaySpan,
+  day: PlanDay | undefined,
+  timeZone: string
+): { startMin: number; endMin: number } | null {
+  const block = span.blocks[0];
+  if (!block || day?.move?.when !== 'morning' || !day.startAt) return null;
+  const startAt = planTimeMinute(day.startAt, span.date, timeZone);
+  return startAt !== null && startAt > block.startMin
+    ? { startMin: block.startMin, endMin: Math.min(startAt, block.endMin) }
+    : null;
+}
+
+/** A block's crowd colour: the day's level, on a hop day each park's own. */
+function blockTone(
+  span: TripDaySpan,
+  day: PlanDay | undefined,
+  slug: string
+): ColoredCrowdLevel | null {
+  const level =
+    span.kind === 'hop' ? day?.parks.find((p) => p.slug === slug)?.crowdLevel : day?.crowdLevel;
+  return level && isColoredCrowdLevel(level) ? level : null;
+}
+
 /**
  * The Week view, the Outlook view of the trip: one column per day, up to a week a page (three on a
  * phone, by swipe or the arrows), on one hour axis from the earliest early slot to the latest close.
  * Each column stands on the day planner's own ground (`PlannerGridGround`: the day's band, its
  * early slot, the hour rules) and its blocks use the planner's ink. A park day is one block from
- * opening to the day guests' close with the park and its minutes and nothing else; a party night
- * is hatched after it with its name, Early Entry and Extended Evening Hours thin stripes where the
- * hotel gets them, a hop day two blocks with the leg chip between them. A free day gets no hour
- * grid: alone it is a narrow column with its sun, and a run of them is one panel with the parks it
- * could take (`weekColumns`, `PlanSpareRun`). A press opens the day.
+ * opening to the day guests' close with the park, its peak wait and its hours; a party night is
+ * hatched after it with its name, Early Entry and Extended Evening Hours stripes where the hotel
+ * gets them, each saying what it is where it is tall enough, a hop day two blocks with the leg chip
+ * between them. A free day gets no hour grid: alone it is a narrow column with its sun, and a run of
+ * them is one panel with the parks it could take (`weekColumns`, `PlanSpareRun`). A press opens the
+ * day, whose sheet says the rest; the key under the grid names what the page draws (`WeekKey`).
  */
 export function PlanWeekView({
   plan,
@@ -229,6 +274,64 @@ export function PlanWeekView({
           })}
         </ol>
       </div>
+
+      <WeekKey spans={shown} dayBy={dayBy} />
+    </div>
+  );
+}
+
+/**
+ * The key under the Week view: the crowd scale where a block on the page is coloured, then one
+ * entry for each thing the page draws without words of its own, and only those. One list, so a new
+ * mark on the grid is one more entry here.
+ */
+function WeekKey({
+  spans,
+  dayBy,
+}: {
+  spans: readonly TripDaySpan[];
+  dayBy: ReadonlyMap<string, PlanDay>;
+}) {
+  const t = useTranslations('tripPlanner');
+  const { timeZone } = usePlanContext();
+  const entries: Array<CalendarLegendKey & { shown: boolean }> = [
+    {
+      key: 'early',
+      shown: spans.some((span) => span.early !== null),
+      label: t('week.early'),
+      mark: <span className={cn(KEY_MARK, PERK_INK, 'rounded-t-sm border-b-0')} />,
+    },
+    {
+      key: 'extended',
+      shown: spans.some((span) => span.evening?.kind === 'extended_evening'),
+      label: t('week.extendedEvening'),
+      mark: <span className={cn(KEY_MARK, PERK_INK, 'rounded-b-sm border-t-0')} />,
+    },
+    {
+      key: 'lost',
+      shown: spans.some((span) => lostMorning(span, dayBy.get(span.date), timeZone) !== null),
+      label: sentenceCase(t('move.lost')),
+      mark: (
+        <span
+          className={cn(KEY_MARK, 'border-border/60 rounded-sm border-dashed')}
+          style={{ backgroundImage: UNUSABLE_HATCH_IMAGE }}
+        />
+      ),
+    },
+  ];
+  const keys = entries.filter((entry) => entry.shown);
+  const coloured = spans.some((span) =>
+    span.blocks.some((block) => blockTone(span, dayBy.get(span.date), block.slug) !== null)
+  );
+  if (!coloured && keys.length === 0) return null;
+  return (
+    <div className="mt-1 sm:pl-10" data-plan-week-key="">
+      <ParkCalendarLegend
+        showCrowd={coloured}
+        signals={[]}
+        signalsLabel={false}
+        extraSignals={keys}
+      />
     </div>
   );
 }
@@ -370,11 +473,14 @@ function WeekColumn({
           : null;
       })()
     : null;
-  // After a morning move the park's hours until the guest gets in are open but lost.
-  const startAtMin =
-    move?.when === 'morning' && day?.startAt
-      ? planTimeMinute(day.startAt, span.date, timeZone)
-      : null;
+  const lost = lostMorning(span, day, timeZone);
+  // The stripe's label where it has two lines, the time alone in one; with none, the block says it.
+  const earlyLines = span.early
+    ? Math.floor((heightFor(grid, span.early.endMin - span.early.startMin) - 1) / STRIPE_LINE_PX)
+    : 0;
+  const earlyTime = span.early ? formatGridTime(span.early.startMin) : null;
+  const earlyLine = (label: (chunks: React.ReactNode) => React.ReactNode) =>
+    earlyTime ? t.rich('week.earlyAt', { time: earlyTime, label }) : null;
   const fullDay = (label: string, icon: React.ReactNode, tone: 'rest' | 'travel' | 'move') => (
     <button
       type="button"
@@ -470,16 +576,45 @@ function WeekColumn({
             'travel'
           )}
 
-        {span.early && (
-          <div
+        {span.early && earlyTime && (
+          // A button like the block under it: a tap on a phone, which has no tooltip, opens the
+          // day, whose sheet names the hotel's slot.
+          <button
+            type="button"
+            onClick={onOpen}
             data-plan-early=""
             title={t('week.early')}
-            className="border-primary/50 bg-primary/25 absolute inset-x-2 rounded-t-sm border border-b-0 border-dashed"
+            aria-label={`${dayLabel}: ${t.markup('week.earlyAt', { time: earlyTime, label: (chunks) => chunks })}`}
+            className={cn(
+              '@container absolute inset-x-2 flex items-center overflow-hidden rounded-t-sm border border-b-0 px-1 text-left text-[10px] leading-[12px] tabular-nums transition-colors hover:brightness-125',
+              PERK_INK,
+              PLAN_FOCUS
+            )}
             style={{
               top: yFor(grid, span.early.startMin),
               height: heightFor(grid, span.early.endMin - span.early.startMin),
             }}
-          />
+          >
+            {/* On one line the label gives way first, so the time stays whole. */}
+            {earlyLines > 0 && (
+              <span
+                className={cn('min-w-0', earlyLines > 1 ? 'block' : 'flex gap-1 whitespace-nowrap')}
+              >
+                {earlyLine((chunks) => (
+                  <span
+                    className={cn(
+                      'font-semibold',
+                      earlyLines > 1
+                        ? 'block truncate'
+                        : 'hidden min-w-0 truncate @min-[6rem]:block'
+                    )}
+                  >
+                    {chunks}
+                  </span>
+                ))}
+              </span>
+            )}
+          </button>
         )}
 
         {span.blocks.map((block, index) => {
@@ -490,15 +625,13 @@ function WeekColumn({
             span.date,
             span.kind === 'hop' ? visit?.headlinerWait : day?.headlinerWait
           );
-          const level = span.kind === 'hop' ? visit?.crowdLevel : day?.crowdLevel;
-          const tone = level && isColoredCrowdLevel(level) ? level : null;
+          const tone = blockTone(span, day, block.slug);
           const photo = photos[block.slug];
           const name = parkName(block.slug);
-          const minutes = wait != null ? t('week.minutes', { minutes: wait }) : t('week.noFigure');
-          const start =
-            index === 0 && startAtMin !== null && startAtMin > block.startMin
-              ? Math.min(startAtMin, block.endMin)
-              : block.startMin;
+          const hours = t('details.hours', {
+            range: `${formatGridTime(block.openMin)}–${formatGridTime(block.closeMin, true)}`,
+          });
+          const start = index === 0 && lost ? lost.endMin : block.startMin;
           const top = yFor(grid, start) + (index > 0 ? 2 : 0);
           const blockHeight = Math.max(
             0,
@@ -510,7 +643,7 @@ function WeekColumn({
               type="button"
               onClick={onOpen}
               data-plan-block={block.slug}
-              aria-label={`${dayLabel}: ${[name, ticketDay, wait != null ? t('peakWait', { minutes: wait }) : minutes].filter(Boolean).join(', ')}`}
+              aria-label={`${dayLabel}: ${[name, ticketDay, wait != null ? t('peakWait', { minutes: wait }) : t('week.noFigure'), hours].filter(Boolean).join(', ')}`}
               className={cn('absolute inset-x-0.5 rounded-md text-left', PLAN_FOCUS)}
               style={{ top, height: blockHeight }}
             >
@@ -537,23 +670,38 @@ function WeekColumn({
                   )}
                   {name}
                 </span>
-                <span className="relative text-xs tabular-nums">{minutes}</span>
+                <span className="relative text-xs tabular-nums">
+                  {wait != null
+                    ? t.rich('result.card.peak', {
+                        minutes: wait,
+                        strong: (chunks) => (
+                          <strong className="font-semibold whitespace-nowrap">{chunks}</strong>
+                        ),
+                      })
+                    : t('week.noFigure')}
+                </span>
+                <span className="text-foreground/80 relative flex items-center gap-1 text-[11px] tabular-nums">
+                  <Clock3 className="size-3 shrink-0" aria-hidden="true" />
+                  {formatGridHours(block.openMin, block.closeMin)}
+                </span>
+                {index === 0 && earlyTime && earlyLines < 1 && (
+                  <span className="text-primary-ink relative text-[11px] leading-tight tabular-nums">
+                    {earlyLine((chunks) => chunks)}
+                  </span>
+                )}
               </span>
             </button>
           );
         })}
 
-        {startAtMin !== null && span.blocks[0] && startAtMin > span.blocks[0].startMin && (
+        {lost && (
           <div
             data-plan-move-lost=""
             title={t('move.lost')}
             className="border-border/60 absolute inset-x-0.5 rounded-md border border-dashed"
             style={{
-              top: yFor(grid, span.blocks[0].startMin),
-              height: heightFor(
-                grid,
-                Math.min(startAtMin, span.blocks[0].endMin) - span.blocks[0].startMin
-              ),
+              top: yFor(grid, lost.startMin),
+              height: heightFor(grid, lost.endMin - lost.startMin),
               backgroundImage: UNUSABLE_HATCH_IMAGE,
             }}
           />
@@ -657,7 +805,7 @@ function WeekColumn({
               'absolute inset-x-0.5 overflow-hidden px-1 py-0.5 text-[10px] leading-tight',
               span.evening.kind === 'ticketed_event'
                 ? 'border-border/70 text-muted-foreground rounded-b-md border border-t-0'
-                : 'border-primary/50 bg-primary/25 inset-x-2 rounded-b-sm border border-t-0 border-dashed'
+                : cn(PERK_INK, 'inset-x-2 rounded-b-sm border border-t-0')
             )}
             style={{
               top: yFor(grid, span.evening.startMin),
@@ -672,10 +820,12 @@ function WeekColumn({
                 : t('week.extendedEvening')
             }
           >
-            {span.evening.kind === 'ticketed_event' && (
+            {span.evening.kind === 'ticketed_event' ? (
               <span className="bg-background/80 line-clamp-3 rounded-sm px-0.5">
                 {t('week.partyNamed', { name: partyName ?? t('week.party') })}
               </span>
+            ) : (
+              <span className="line-clamp-3 font-semibold">{t('week.extendedEvening')}</span>
             )}
           </div>
         )}

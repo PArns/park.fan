@@ -3439,6 +3439,7 @@
       "noFigure": "pas de chiffre",
       "noHours": "pas encore d’horaires",
       "early": "Entrée anticipée pour ton hôtel",
+      "earlyAt": "<label>Entrée anticipée</label> dès {time}",
       "extendedEvening": "Extended Evening Hours pour ton hôtel",
       "party": "Soirée de fête",
       "partyNamed": "{name}, billet séparé",

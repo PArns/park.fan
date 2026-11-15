@@ -941,7 +941,7 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'a block ends at the day guests’ close, the party hatched after it',
     [span.blocks, span.evening],
     [
-      [{ slug: 'magic-kingdom-park', startMin: 540, endMin: 1080 }],
+      [{ slug: 'magic-kingdom-park', startMin: 540, endMin: 1080, openMin: 540, closeMin: 1080 }],
       { kind: 'ticketed_event', startMin: 1140, endMin: 1440 },
     ]
   );
