@@ -3863,6 +3863,18 @@
         "label": "Partnerlink",
         "note": "Koop je via deze link, dan krijgt park.fan een commissie. De prijs blijft voor jou hetzelfde."
       },
+      "pick": {
+        "title": "Aanbevolen",
+        "ad": "Advertentie",
+        "exact": "Past bij dit plan",
+        "parkDays": "{count, plural, =1 {1 parkdag} other {# parkdagen}}",
+        "via": "Kopen bij",
+        "official": "{count, plural, =1 {Officiële winkel:} other {Officiële winkels:}}",
+        "details": "Zo gebruikt het plan de tickets",
+        "daysIn": "{days} parkdagen binnen {window} dagen",
+        "everyDay": "Elke dag, {window} dagen achter elkaar",
+        "hopping": "{hopper} inbegrepen"
+      },
       "later": "Al tickets?",
       "enter": "Invullen"
     },

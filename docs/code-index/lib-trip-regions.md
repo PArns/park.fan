@@ -322,6 +322,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `windowLength` _function_: The calendar days a ticket may be used in, from its start: the window of its length, or the product's own window; `null` for a pass.
 - `ticketLength` _function_: The days a ticket of this product has to count off, `null` for a pass or a window-only product.
 - `isEveryDayTicket` _function_: Whether a ticket is valid every day of its window, so it has no days to count off: a window as long as its days (Universal's UK 14-day tickets), or a window without a day count (SeaWorld's Four Parks).
+- `ticketFacts` _function_: `TicketFact`s of a product for a ticket of `days`, in the order a line says them.
 - `onSaleAt` _function_: Whether the product is sold for a ticket starting on `date`.
 - `ticketWindow` _function_: A ticket's window as dates, both ends included; `null` without a start or for a pass.
 - `rollingFortnightAt` _function_: The region's rolling 14-day tickets sold for a start (Universal's UK ones, Three Park Adventure first): one product in most weeks, both in the week their sales overlap (the step then asks about the add-on), none outside, and none where the …
@@ -353,10 +354,12 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `ticketLinksOf` _function_: A product's purchase links in the admin's order; without `links` (an older answer) the official `shopUrl` alone, under `officialSeller`.
 - `isVisitorStore` _function_: Whether a link goes to the seller's store for the visitor's own country.
 - `orderTicketLinks` _function_: A product's purchase links in the order a visitor sees them: the store of the visitor's own country first, then those for their locale or market, the rest after, each group in the admin's order, which is the display order.
+- `primaryTicketLink` _function_: The link a recommendation buys through, from links in the visitor's order: the first sponsored seller's (their store for the visitor's country first, as the order puts it), else the first seller's that is not the operator's, else the …
+- `officialTicketLink` _function_: The operator's own shop among a product's links, `null` where it has none.
 - `ticketLinkGroups` _function_: Ordered purchase links grouped for compact buttons: a seller's country stores (its links with a `store`, the official one aside) under its name where it has two or more, the group where its first store stands; every other link alone.
 - `ticketStoreName` _function_: A country store as its link names it in the visitor's language: the country's short name and the currency's symbol („UK", „£"; „Irland", „€"), both from `Intl`, so a store needs no string.
 - `ticketLinkAttributes` _function_: The attributes of a purchase link. Sellers have to see that a visitor came from park.fan, so no `noreferrer`, and `referrerPolicy="origin"` overrides the site's `same-origin` policy for this one link: the seller gets `https://park.fan/`, …
-- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketLinkGroup`
+- Types: `TicketCatalog`, `TicketResort`, `TicketEntry`, `TicketMarketLabel`, `TicketFact`, `TicketDraft`, `DraftIssue`, `TicketProblem`, `SuggestionGroup`, `HopperGain`, `HopperHighlight`, `TicketDayInfo`, `OwnedUse`, `TicketLinkVisitor`, `TicketLinkGroup`
 
 ### [`plan-view.ts`](../../lib/trip-regions/plan-view.ts)
 

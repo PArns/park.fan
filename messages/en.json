@@ -3866,7 +3866,6 @@
       "pick": {
         "title": "Recommended",
         "ad": "Ad",
-        "or": "Or",
         "exact": "Fits this plan",
         "parkDays": "{count, plural, =1 {1 park day} other {# park days}}",
         "via": "Buy at",

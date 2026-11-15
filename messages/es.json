@@ -3863,6 +3863,18 @@
         "label": "Enlace de afiliado",
         "note": "Si compras con este enlace, park.fan recibe una comisión. El precio no cambia para ti."
       },
+      "pick": {
+        "title": "Recomendación",
+        "ad": "Publicidad",
+        "exact": "Encaja con este plan",
+        "parkDays": "{count, plural, =1 {1 día de parque} other {# días de parque}}",
+        "via": "Comprar en",
+        "official": "{count, plural, =1 {Tienda oficial:} other {Tiendas oficiales:}}",
+        "details": "Cómo usa el plan cada entrada",
+        "daysIn": "{days} días de parque en {window} días",
+        "everyDay": "Todos los días, {window} días seguidos",
+        "hopping": "{hopper} incluido"
+      },
       "later": "¿Ya tienes entradas?",
       "enter": "Añadirlas"
     },

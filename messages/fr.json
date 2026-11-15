@@ -3863,6 +3863,18 @@
         "label": "Lien partenaire",
         "note": "Si tu achètes par ce lien, park.fan touche une commission. Le prix ne change pas pour toi."
       },
+      "pick": {
+        "title": "Notre conseil",
+        "ad": "Publicité",
+        "exact": "Adapté à ce plan",
+        "parkDays": "{count, plural, =1 {1 jour de parc} other {# jours de parc}}",
+        "via": "En vente chez",
+        "official": "{count, plural, =1 {Boutique officielle :} other {Boutiques officielles :}}",
+        "details": "Comment le plan utilise les billets",
+        "daysIn": "{days} jours de parc sur {window} jours",
+        "everyDay": "Chaque jour, {window} jours d’affilée",
+        "hopping": "{hopper} inclus"
+      },
       "later": "Déjà des billets ?",
       "enter": "Les ajouter"
     },
