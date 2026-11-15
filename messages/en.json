@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 hot park day} other {# hot park days}}",
       "heatForecast": "over <temp></temp> forecast",
-      "heatNormal": "{count, plural, =1 {<temp></temp> on average} other {up to <temp></temp> on average}}",
+      "heatNormal": "{count, plural, =1 {typically <temp></temp>} other {typically up to <temp></temp>}}",
       "noHeat": "No hot park day",
       "stormFrom": "{season} from {date}",
       "stormUntil": "{season} until {date}",

@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 día de parque caluroso} other {# días de parque calurosos}}",
       "heatForecast": "más de <temp></temp> previstos",
-      "heatNormal": "{count, plural, =1 {<temp></temp> de media} other {hasta <temp></temp> de media}}",
+      "heatNormal": "{count, plural, =1 {normalmente <temp></temp>} other {normalmente hasta <temp></temp>}}",
       "noHeat": "Ningún día de parque caluroso",
       "stormFrom": "{season} desde el {date}",
       "stormUntil": "{season} hasta el {date}",

@@ -91,7 +91,7 @@ export function PlanResultHead({ plan }: { plan: TripPlan }) {
 
 /**
  * The trip's weather in one band: the hot park days as chips, by the basis of their figure („1
- * heißer Parktag, im Schnitt 32 °C“), and the storm season as one chip, its strongest code with the
+ * heißer Parktag, typisch 32 °C“), and the storm season as one chip, its strongest code with the
  * date it starts or ends inside the trip. Under them a ruler of the trip's days, the ribbon's
  * geometry, the hot park days marked and the season running beneath as one band: a picture of the
  * chips, so hidden from a screen reader. A note says what a normal and a season are. Drawn only
@@ -175,7 +175,7 @@ function PlanWeatherBand({ plan }: { plan: TripPlan }) {
               <span
                 key={day.date}
                 className={cn(
-                  'flex flex-col items-center justify-center rounded-md text-[10px] leading-none tabular-nums',
+                  'flex flex-col items-center justify-center gap-0.5 rounded-md text-[10px] leading-none tabular-nums sm:gap-1',
                   hot
                     ? cn(HEAT_CHIP_CLASS, 'font-semibold')
                     : parkDay

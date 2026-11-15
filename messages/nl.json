@@ -4086,7 +4086,7 @@
     "weather": {
       "heatDays": "{count, plural, =1 {1 hete parkdag} other {# hete parkdagen}}",
       "heatForecast": "boven <temp></temp> voorspeld",
-      "heatNormal": "{count, plural, =1 {gemiddeld <temp></temp>} other {gemiddeld tot <temp></temp>}}",
+      "heatNormal": "{count, plural, =1 {doorgaans <temp></temp>} other {doorgaans tot <temp></temp>}}",
       "noHeat": "Geen hete parkdag",
       "stormFrom": "{season} vanaf {date}",
       "stormUntil": "{season} tot {date}",

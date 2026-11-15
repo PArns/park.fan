@@ -275,7 +275,7 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
   dashed or solid swatch (`STORM_CHIP_CLASS`), never a crowd colour. A park day is hot when the API
   says `extreme_heat` (`isHotDay`), and its figure is the day's `weather` (`dayHeat`): „Ø 32°“ for
   a climate normal, a plain figure only for a forecast. The trip head's weather band
-  (`PlanWeatherBand`) gives the hot park days by basis („1 heißer Parktag, im Schnitt 32 °C“,
+  (`PlanWeatherBand`) gives the hot park days by basis („1 heißer Parktag, typisch 32 °C“,
   `tripHeat`) and the season as one chip (`tripStorm`), over a ruler of the trip's days on the
   plan ribbon's grid. The Week view adds a weather row to every column header where the page has a
   hot day or a season date: the day's pill and the season's band, run through the gaps as one; its
