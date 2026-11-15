@@ -1253,6 +1253,7 @@
     "dayDetail": {
       "fancastLink": "Hoe we dit voorspellen: Fancast",
       "forecastLabel": "Voorspelling",
+      "soFarLabel": "Vandaag tot nu toe",
       "hourlyTitle": "Voorspelling per uur",
       "holidaysTitle": "Feestdagen & schoolvakanties",
       "actualWaitsTitle": "Gemiddelde wachttijden",

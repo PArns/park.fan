@@ -492,11 +492,14 @@ export function ParkCalendarDayDetail({
               </div>
               {/* Today splits in two: `todayCrowdLevel` is what the day has measured so far,
                   `crowdLevel` its forecast. The panel is tinted by the forecast, so the measured
-                  half gets its own badge. */}
+                  half gets its own badge. Not „Andrang jetzt": the today panel shows that, the
+                  live level, and a quiet morning keeps the day's level below it at noon. */}
               {showLiveSplit && (
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-muted-foreground text-xs">{t('crowdNow')}</span>
+                    <span className="text-muted-foreground text-xs">
+                      {t('dayDetail.soFarLabel')}
+                    </span>
                     <CrowdLevelBadge level={day.todayCrowdLevel} />
                   </div>
                   <div className="flex items-center gap-2">

@@ -1,3 +1,4 @@
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { isUuid } from '@/lib/utils';
 
 /**
@@ -196,10 +197,16 @@ export interface InterviewStart {
 
 /**
  * The planner's button: the interview set on its first step, and its first question waiting for
- * the chat window, which sends it once its session is ready (`takeInterviewKickoff`).
+ * the chat window, which sends it once its session is ready (`takeInterviewKickoff`). It counts the
+ * start itself, since the store write below is no action and `trackInterview` never sees it.
  */
 export function startInterview(start: InterviewStart): void {
   const first = interviewCore(start.kind)[0];
+  trackSiteEvent('assistant_interview_started', {
+    kind: start.kind,
+    source: 'planner',
+    region: interviewRegion(start),
+  });
   interviewStore.set({
     kind: start.kind,
     ...(start.region && { region: start.region }),

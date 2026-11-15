@@ -1253,6 +1253,7 @@
     "dayDetail": {
       "fancastLink": "Cómo lo predecimos: Fancast",
       "forecastLabel": "Previsión",
+      "soFarLabel": "Hoy hasta ahora",
       "hourlyTitle": "Previsión por horas",
       "holidaysTitle": "Festivos y vacaciones escolares",
       "actualWaitsTitle": "Esperas medias",

@@ -1253,6 +1253,7 @@
     "dayDetail": {
       "fancastLink": "Wie wir das vorhersagen: Fancast",
       "forecastLabel": "Prognose",
+      "soFarLabel": "Heute bisher",
       "hourlyTitle": "Prognose je Stunde",
       "holidaysTitle": "Ferien & Feiertage",
       "actualWaitsTitle": "Ø Wartezeiten",

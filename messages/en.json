@@ -1253,6 +1253,7 @@
     "dayDetail": {
       "fancastLink": "How we predict this: Fancast",
       "forecastLabel": "Forecast",
+      "soFarLabel": "So far today",
       "hourlyTitle": "Hour-by-hour forecast",
       "holidaysTitle": "Holidays & school breaks",
       "actualWaitsTitle": "Average waits",
