@@ -6,10 +6,12 @@ welche Zahl das ist. Die Bedeutung des blauen Blocks stand nur im `title`, den a
 niemand sieht.
 
 - **Früher Einlass:** Der Streifen schreibt jetzt „Früher Einlass“ und „ab 08:30“
-  (`tripPlanner.week.earlyAt`, neu in sechs Sprachen), auf einer Zeile nur so viel vom Wort, wie
-  neben der Zeit Platz hat. Ist er zu niedrig für eine Zeile, steht die Zeile im Parkblock. Er ist
-  jetzt ein Knopf wie der Parkblock: Antippen öffnet den Tag, dessen Blatt den Einlass des Hotels
-  nennt. Der Tooltip bleibt. Extended Evening Hours tragen ihren Namen ebenso.
+  (`tripPlanner.week.earlyAt`, neu in sechs Sprachen). Hat er nur eine Zeile, steht dort das Wort;
+  die Zeit steht daneben nur in einer breiten Spalte, sonst im Parkblock unter den Öffnungszeiten
+  (eine Container Query auf der Spalte). Ist er zu niedrig für eine Zeile, steht beides im
+  Parkblock. Der 30-Minuten-Streifen von Disney ist auf dem Desktop 18 px hoch. Er ist jetzt ein
+  Knopf wie der Parkblock: Antippen öffnet den Tag, dessen Blatt den Einlass des Hotels nennt. Der
+  Tooltip bleibt. Extended Evening Hours tragen ihren Namen ebenso.
 - **Die Minuten** sind die Spitzenwartezeit des Parks an dem Tag (`shownWaitOn`: der Mittelwert der
   Tagesspitzen seiner großen Bahnen, auf 5 Minuten gerundet, in den Tagen der Prognose so, wie sie
   der Kalender des Parks zeigt). Der Block schreibt sie mit den Worten der Tageskarte,

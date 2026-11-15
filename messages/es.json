@@ -3432,7 +3432,7 @@
       "noFigure": "sin cifra",
       "noHours": "aún sin horarios",
       "early": "Entrada anticipada para tu hotel",
-      "earlyAt": "<label>Entrada anticipada</label> desde las {time}",
+      "earlyAt": "<label>Entrada anticipada</label> <at>desde las {time}</at>",
       "extendedEvening": "Extended Evening Hours para tu hotel",
       "party": "Noche de fiesta",
       "partyNamed": "{name}, entrada aparte",
