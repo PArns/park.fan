@@ -553,6 +553,9 @@ Abbau. An der Stelle entsteht ein eigener Weltraum-Themenbereich mit einer neuen
 von Mack Rides, fertig sein soll er in der Saison 2028. Der Park arbeitet dafür mit der Europäischen
 Weltraumorganisation ESA zusammen, die Partnerschaft wurde am 8. Juni 2026 unterschrieben.
 
+> [!PARKY]
+> Bevor wir die Neuheiten zählen, sagen wir Tschüss: Die Euro-Mir fährt noch in der Wintersaison ab dem 28. November, am 9. Januar 2027 ist Schluss. Seit 1997 dreht sie sich um die verspiegelten Türme, und so eine Abschiedsrunde lasse ich mir nicht entgehen.
+
 ### Loup-Garou in Walibi Belgium
 
 Der [Loup-Garou](ref:walibi-belgium/loup-garou) in [Walibi Belgium](ref:walibi-belgium) ist eine

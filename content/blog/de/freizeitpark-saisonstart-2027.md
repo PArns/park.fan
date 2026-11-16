@@ -288,6 +288,9 @@ Im Heide Park lag der 1. April 2026 auf „extrem“, am 14. und 15. April stand
 
 Für 2027 heißt das, dass die Woche nach den Osterferien, also der 5. bis 9. April, in Bayern, Niedersachsen und NRW die erste richtig leere Woche des Jahres werden dürfte. Die Ausnahme ist der Hansa-Park, wo die Schleswig-Holsteiner erst am 30. März in die Ferien gehen. In Sierksdorf sind dafür die ersten Tage vom 25. bis 29. März ein guter Zeitpunkt, weil dann nur die anderen Länder Ferien haben und die Hamburger schon wieder in der Schule sitzen.
 
+> [!PARKY]
+> Mein Kreuz im Kalender kommt auf den 5. bis 9. April: Das dürfte in Bayern, Niedersachsen und NRW die erste richtig leere Woche des Jahres werden. In der Woche nach den Osterferien 2026 stand das Legoland von Montag bis Donnerstag auf „sehr niedrig“, und ein Walk-on ist für mich ein Geschenk.
+
 ```stats-widget slug=phantasialand show=months
 
 ```

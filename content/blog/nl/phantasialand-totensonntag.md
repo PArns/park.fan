@@ -124,6 +124,9 @@ Stel dat je op 22 november zo veel mogelijk wilt rijden en ’s avonds Magic Sym
 
 Om 18 uur ga je naar je theatershow. Daarna heb je nog tijd voor een van de shows buiten of voor een laatste rit. Rond 19.50 uur sta je op de Kaiserplatz voor Magic Symphony. Sla je de shows over, dan heb je negen uur om te rijden en kun je vlak voor 20 uur nog een tweede keer Taron als afsluiter nemen.
 
+> [!PARKY]
+> Tot 18.00 uur is het stil in het park, dus rijden we in die uren zoveel als we kunnen, Taron en F.L.Y. meteen vanaf 11 uur. Om 18.00 uur zitten we in een theatershow, rond 19.50 uur staan we op de Kaiserplatz voor Magic Symphony. Geen muziek in de rij? Dan neurie ik wel.
+
 ## Tickets en parkeren op 22 november
 
 Phantasialand verkoopt zijn tickets alleen online en alleen voor een vaste dag. Op de dag van je bezoek kun je er tot 14 uur nog een kopen, en kinderen tot en met drie jaar mogen gratis naar binnen. De kinderprijs zie je in de webshop pas nadat je een datum hebt gekozen.

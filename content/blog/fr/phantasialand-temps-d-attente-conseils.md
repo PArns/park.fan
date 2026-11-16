@@ -372,6 +372,9 @@ heure :
    spectacle, sers-t’en dans l’autre sens : pendant qu’il se joue, une salle de
    théâtre entière est assise à l’intérieur et pas devant toi dans la file.
 
+> [!PARKY]
+> Ne file pas de Taron directement à Rookburgh : la file de F.L.Y. culmine à 11 h et elle est au plus court en fin d’après-midi. On vole donc à l’heure du goûter, et moi, je décolle un peu de mon siège de toute façon.
+
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 

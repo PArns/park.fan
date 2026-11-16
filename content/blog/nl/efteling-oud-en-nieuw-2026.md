@@ -77,6 +77,9 @@ Op de officiÃ«le plattegrond van 2024/25 stonden onder meer een silent disco, â€
 
 In 2022 was de avond op 3 december uitverkocht, ruim drie weken na de start van de verkoop op 9 november. In 2018 waren de kaarten al op 16 november op.
 
+> [!PARKY]
+> Oud & Nieuw 2026 is weg, voor 2027 zijn we er sneller bij: op de eventpagina schrijf je je in voor een bericht zodra de verkoop begint. In 2022 was het feest ruim drie weken na de verkoopstart uitverkocht, dus niet treuzelen.
+
 ## Overnachten
 
 Accommodaties zijn er voor Oud & Nieuw niet meer, schreef de Efteling op 8 oktober.

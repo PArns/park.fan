@@ -288,6 +288,9 @@ En Heide Park, el 1 de abril de 2026 estuvo en «Extrema», y el 14 y el 15 de a
 
 Para 2027, eso quiere decir que la semana después de las vacaciones de Pascua, del 5 al 9 de abril, debería ser en Baviera, Baja Sajonia y Renania del Norte-Westfalia la primera semana realmente vacía del año. La excepción es Hansa-Park, porque en Schleswig-Holstein las vacaciones no empiezan hasta el 30 de marzo. En Sierksdorf, en cambio, los primeros días, del 25 al 29 de marzo, son buen momento: solo están de vacaciones los demás estados, y los niños de Hamburgo ya han vuelto al colegio.
 
+> [!PARKY]
+> Mi cruz en el calendario va del 5 al 9 de abril: debería ser la primera semana realmente vacía del año en Baviera, Baja Sajonia y Renania del Norte-Westfalia. La semana después de las vacaciones de Pascua de 2026, Legoland marcó «Muy baja» de lunes a jueves, y una atracción sin cola es para mí un regalo.
+
 ```stats-widget slug=phantasialand show=months
 
 ```

@@ -559,6 +559,9 @@ naîtra une zone thématique consacrée à l’espace, avec une nouvelle montagn
 Rides, prévue pour la saison 2028. Le parc y travaille avec l’Agence spatiale européenne, l’ESA,
 avec laquelle il a signé un partenariat le 8 juin 2026.
 
+> [!PARKY]
+> Avant de compter les nouveautés, on dit au revoir : Euro-Mir roule encore pendant la saison d’hiver à partir du 28 novembre, et le 9 janvier 2027, c’est fini. Elle tourne autour de ses tours à miroirs depuis 1997, et ce tour d’adieu, je ne le rate pas.
+
 ### Loup-Garou à Walibi Belgium
 
 Le [Loup-Garou](ref:walibi-belgium/loup-garou) de [Walibi Belgium](ref:walibi-belgium) est une

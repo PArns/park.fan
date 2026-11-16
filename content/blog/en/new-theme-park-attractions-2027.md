@@ -536,6 +536,9 @@ place comes a space-themed area of its own with a new Mack Rides family coaster,
 for the 2028 season. The park is working with the European Space Agency, ESA, on it, and the
 partnership was signed on 8 June 2026.
 
+> [!PARKY]
+> Before we count the new rides, we say goodbye: Euro-Mir still runs in the winter season from 28 November, and on 9 January 2027 it’s over. It has been spinning round its mirrored towers since 1997, and I’m not missing a farewell lap like that.
+
 ### Loup-Garou at Walibi Belgium
 
 [Loup-Garou](ref:walibi-belgium/loup-garou) at [Walibi Belgium](ref:walibi-belgium) is a wooden

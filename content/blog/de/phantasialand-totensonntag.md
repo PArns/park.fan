@@ -125,6 +125,9 @@ Angenommen, du willst am 22. November so viel fahren wie möglich und am Abend M
 
 Um 18 Uhr gehst du zu deiner Theatershow. Danach bleibt Zeit für eine der Shows im Freien oder für eine letzte Fahrt. Gegen 19:50 Uhr stehst du auf dem Kaiserplatz für Magic Symphony. Wer die Shows auslässt, hat neun Stunden zum Fahren und kann Taron bis 20 Uhr ein zweites Mal ans Ende legen.
 
+> [!PARKY]
+> Bis 18 Uhr ist es im Park still, also fahren wir in diesen Stunden so viel es geht, Taron und F.L.Y. gleich ab 11 Uhr. Um 18 Uhr sitzen wir in einer Theatershow, gegen 19:50 Uhr stehen wir für Magic Symphony auf dem Kaiserplatz. Keine Musik in der Warteschlange? Dann summe ich eben.
+
 ## Tickets und Parken am 22. November
 
 Das Phantasialand verkauft seine Tickets nur online und nur für einen festen Tag. Am Besuchstag kannst du bis 14 Uhr noch eins kaufen, Kinder bis drei Jahre sind frei. Den Kinderpreis siehst du im Shop erst nach der Wahl des Datums.

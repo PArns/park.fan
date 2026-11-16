@@ -70,6 +70,9 @@ Dans la même déclaration, le parc met en avant les emplois. Il s’agit « de
 
 Une [contre-pétition](/news/phantasialand-agrandissement-petition-en-ligne) sur openPetition plaide depuis mai pour l’agrandissement. Elle court jusqu’au 23 novembre. Début novembre, 211 personnes l’avaient signée, dont 52 de Brühl. Ce n’est qu’à partir de 740 signatures de Brühl qu’openPetition demande aux membres du conseil de prendre position.
 
+> [!PARKY]
+> Pour ta visite, rien ne change pour l’instant : rien ne peut être construit sur le terrain tant qu’un plan d’urbanisme n’est pas en vigueur, et la ville y travaille encore. L’affluence de ton jour de visite, c’est sur la page du parc, et c’est là qu’on regarde en premier.
+
 [Phantasialand](ref:phantasialand?full)
 
 Sources :

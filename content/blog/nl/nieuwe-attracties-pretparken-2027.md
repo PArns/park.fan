@@ -314,6 +314,9 @@ Twee achtbanen in Europa rijden deze winter voor het laatst, en ze worden allebe
 
 Zijn laatste rondes rijdt Euro-Mir in het [winterseizoen](/blog/europa-park-wachttijden-tips), dat op 28 november 2026 begint en op 9 januari 2027 eindigt. Op die dag neemt het park met een groot evenement [afscheid](/blog/europa-park-neemt-afscheid-van-euro-mir), daarna begint de afbraak. Op die plek komt een eigen themagebied rond de ruimtevaart met een nieuwe familieachtbaan van Mack Rides, dat in het seizoen 2028 klaar moet zijn. Het park werkt daarvoor samen met het Europese ruimtevaartagentschap ESA, en het partnerschap werd op 8 juni 2026 getekend.
 
+> [!PARKY]
+> Voor we de nieuwkomers tellen, nemen we eerst afscheid: Euro-Mir rijdt nog in het winterseizoen vanaf 28 november, op 9 januari 2027 is het voorbij. Sinds 1997 draait hij rond de spiegeltorens, en zo’n afscheidsrondje laat ik niet schieten.
+
 ### Loup-Garou in Walibi Belgium
 
 [Loup-Garou](ref:walibi-belgium/loup-garou) in [Walibi Belgium](ref:walibi-belgium) is een houten achtbaan, 28 meter hoog, 1.035 meter lang en tot 80 km/u snel. Op 3 januari 2027 rijdt hij voor het laatst in deze vorm. Het park is in de [winter](/blog/walibi-belgium-wachttijden-tips) open van 5 december 2026 tot en met die dag. In januari 2027 beginnen de werkzaamheden, en Rocky Mountain Construction bouwt de baan om tot een hybride achtbaan die in 2028 open moet gaan.

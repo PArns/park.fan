@@ -364,6 +364,9 @@ umgebaut habe:
    andersherum: Während sie läuft, sitzt ein ganzer Theatersaal voller Leute
    drinnen und nicht vor dir in der Warteschlange.
 
+> [!PARKY]
+> Lauf von Taron nicht direkt nach Rookburgh: Bei F.L.Y. ist die Warteschlange um 11 Uhr am längsten und am späten Nachmittag am kürzesten. Wir fliegen also zur Kaffeezeit, und ein bisschen abheben tu ich dabei sowieso.
+
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 
