@@ -18,35 +18,27 @@ disagree. A free block with no place adds none.
 
 `legBetween` grades a gap on four rungs: `broken` when the gap is under the transfer's certifiable
 **floor** (fast walk; zero walk where coordinates are missing, so a guess can never call a plan
-impossible), then `tight` / `good` / `generous` by the slack over the assumed **ceiling**, with the
-boundary set by the previous ride's `uncertaintyMinutes`: `tight` below one spread, `good` below
-`max(2 × spread, GENEROUS_MIN_MINUTES)`, `generous` above. So `knapp` means "this breaks if the
-forecast is as wrong as it says it might be". No spread reported is not a spread of zero: the
-ladder then caps at `good` (with `°`, `missing: 'no-spread'`). A past day (`observed`) runs the full
-ladder against a spread of zero, since its gap is a fact.
+impossible), `tight` when it clears the floor and not the assumed **ceiling** (park pace with the
+detour factor), and `good` above that. So `knapp` means "the walk fits at a brisk pace and may not
+at park pace". A forecast stops at `good`: `generous` is a claim about room the forecast's own error
+might take back, so only a past day (`observed`), whose gap is a fact, reaches it, at
+`GENEROUS_MIN_MINUTES` of slack.
 
-**On a day the optimiser packed, the ladder reports the packing.** The search reserves the ceiling
-too, so a packed day's slack is mostly the remainder on `SNAP_MIN_FINE`. Measured over 169 planned
-days (14 parks × 14 dates, 1369 legs, 2026-09-13): slack median 6 min (p25 2, p75 10, max 26)
-against a band of median 15 — measured on the raw CatBoost band, before the backend widened
-`uncertaintyMinutes` by a split-conformal factor (PAR-1060), so not re-measured since. With the
-search reserving the wait (PAR-169), 144 of 162 band-carrying legs (88.9 %) read `tight`, 18 `good`,
-none `generous` (reserving wait + band, it was 0 / 91.7 % / 8.3 %).
+**The model's spread is not read.** The ladder used to set the `tight`/`good` boundary at the
+previous ride's `uncertaintyMinutes`, so `knapp` meant "this breaks if the forecast is as wrong as it
+says it might be". That figure is the band around the day's peak (`/plan/day` takes it from the
+day-level row), and since the backend widened it by a split-conformal factor (PAR-1060) it is wider
+than most of the day's queues: a median of 29–44 minutes on measured days at Efteling, Disneyland
+and Disneyland Paris against a day peak of 15–20 (2026-11-16), and 31–47 on composed ones. Composed
+days carry it on every ride now, where they once carried it on almost none. Measured on 23 headliner
+days (six parks, four dates), 177 of 177 legs read `tight`, a packed day and a loose one alike, so
+the chip said nothing. The forecast's uncertainty is still drawn, as the band on each block.
 
-Whether a leg has a band at all is mostly a property of the **date**: `tier: measured` (today,
-tomorrow) carries `uncertaintyMinutes` on every ride, `composed` almost never (13 of 2846 rides at
-lead 2–45), so the same packed day reads amber for tomorrow and green for the day after. A block
-within `LIVE_WINDOW_MIN` of now is re-based on the live wait and passed with no spread, and
-`estimateFor` reports none for a free block, an assumed wait or a park with no readable source —
-all of those cap at `good`.
-
-**The threshold stays at the whole band.** Lowering it only moves the rung a packed day collapses
-onto (¼ band: 4.7 % tight, 92.1 % good) while costing the days where the rungs separate: headliners
-at a 60-minute cadence read 42.1 % tight / 27.6 % good / 22.8 % generous (8.5 % of all legs
-`broken`), at 90 minutes 2.9 / 23.5 / 71.6. Full tables in PAR-174. `pnpm test:planner-leg` pins the
-three points that tell thresholds apart: the snap remainder against a real band is `tight`, four
-fifths of a band is still `tight`, a whole band is `good` (four fifths, because 11 of 15 reads
-`tight` under the whole band and a ¾ threshold alike).
+**On a day the optimiser packed, every leg reads `good`.** The search reserves the same ceiling the
+chip judges against and files the next stop on the first five-minute step after it
+(`START_STEP_MIN`), so a packed leg clears the ceiling by under a step. `tight` and `broken` come
+from a drag, or from a live wait that has grown since the press. `pnpm test:planner-leg` pins both
+rungs at their boundaries and the packed leg.
 
 ## Placement in the drawn gap
 

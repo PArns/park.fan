@@ -11,6 +11,7 @@ import { fitChoiceAll, type FitChoice } from '@/lib/planner/fit';
 import {
   optimizeKeyOf,
   requestOptimize,
+  walkSaved,
   type FitAnswer,
   type FitQuestion,
   type OptimizeAnswer,
@@ -197,13 +198,16 @@ export function PlannerOptimizeActions({
     const saved = roundWaitDeltaTo5(
       preview.before.totalWaitMinutes - preview.after.totalWaitMinutes
     );
+    // The optimizer weighs walking too, so a press can save a walk across the park and no queue.
+    const walked = roundWaitDeltaTo5(walkSaved(preview.before, preview.after));
     // Clashes the plan takes out: a pause dragged onto a ride leaves the waits where they were and
     // the day impossible, which neither figure above sees.
     const resolved = preview.before.clashes - preview.after.clashes;
-    if (fitted <= 0 && saved < 5 && resolved <= 0) return null;
+    if (fitted <= 0 && saved < 5 && walked < 5 && resolved <= 0) return null;
     return {
       fitted: Math.max(0, fitted),
       saved: Math.max(0, saved),
+      walked: Math.max(0, walked),
       resolved: Math.max(0, resolved),
     };
   }, [preview]);
@@ -301,13 +305,15 @@ export function PlannerOptimizeActions({
       const saved = before.totalWaitMinutes - after.totalWaitMinutes;
       // On the five-minute grid, like every wait on screen and like the promise in `gain`.
       const shownSaved = roundWaitDeltaTo5(saved);
+      const shownWalked = roundWaitDeltaTo5(walkSaved(before, after));
       const resolved = before.clashes - after.clashes;
       if (resolved > 0) parts.push(t('optimize.resolved', { count: resolved }));
       if (fitted > 0) parts.push(t('optimize.fitted', { count: fitted }));
       if (shownSaved > 0) parts.push(t('optimize.saved', { minutes: shownSaved }));
-      // A rebuilt day that queues more and gained nothing only says it moved: the API returns such
-      // a plan only for a day that could not be walked.
-      else if (fitted <= 0 && resolved <= 0) {
+      if (shownWalked > 0) parts.push(t('optimize.walkSaved', { minutes: shownWalked }));
+      // A rebuilt day with nothing above to show only says it moved: the API returns such a plan
+      // for a day that could not be walked, or for a gain under the five-minute grid.
+      if (fitted <= 0 && resolved <= 0 && shownSaved <= 0 && shownWalked <= 0) {
         parts.push(saved < 0 ? t('optimize.resorted') : t('optimize.sameWait'));
       }
     }
@@ -446,7 +452,9 @@ export function PlannerOptimizeActions({
                       ? t('optimize.resolved', { count: gain.resolved })
                       : gain.fitted > 0
                         ? t('optimize.fitted', { count: gain.fitted })
-                        : t('optimize.saved', { minutes: gain.saved })}
+                        : gain.saved >= 5
+                          ? t('optimize.saved', { minutes: gain.saved })
+                          : t('optimize.walkSaved', { minutes: gain.walked })}
                   </span>
                 </span>
               ) : (

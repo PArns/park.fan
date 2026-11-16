@@ -2897,7 +2897,6 @@
       "distance": "{distance} as the crow flies",
       "minWalk": "at least {minutes} min to change",
       "allowance": "incl. leaving the station and the ride itself, estimated",
-      "noSpread": "calculated without the forecast’s spread",
       "gap": "{minutes} min"
     },
     "close": "Clear selection",
@@ -2947,6 +2946,7 @@
       "failed": "The day could not be optimised. Your plan is unchanged.",
       "hint": "Orders the rides by their hourly curves, the walk between them and when they open. Breaks and rides you have ticked off stay where they are.",
       "saved": "{minutes} min less queueing",
+      "walkSaved": "{minutes} min less walking",
       "already": "Already in the right order",
       "fitted": "{count, plural, one {one ride now fits the day} other {# rides now fit the day}}",
       "resolved": "{count, plural, one {one clash fixed} other {# clashes fixed}}",

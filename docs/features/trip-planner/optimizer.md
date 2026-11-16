@@ -31,19 +31,25 @@ The engine is the one this repo used to run in the browser, moved to the API unc
    comparable number rather than added as Pareto axes. Without a `priority` the weight is the
    ride's expected queue as a rank, longest first; a lap ranks behind every first ride, and the
    fit assistant's list draws laps at the bottom (`fitOrder`).
-2. **What the day costs:** queued minutes plus 0.5 × the standing-about the optimiser itself chose
-   (a deliberate delay to let a queue fall, at most 120 minutes). A free minute is worth something,
-   and less than one in a queue.
+2. **What the day costs:** queued minutes, plus 0.5 × the standing-about the optimiser itself chose
+   (a deliberate delay to let a queue fall, at most 120 minutes), plus 0.2 × the minutes on foot
+   between two stops. A free minute is worth something, and less than one in a queue; a minute
+   walking is worth less again, so a queue five minutes shorter still beats a kilometre more on
+   foot, and a day no longer crosses the park for a queue a minute shorter.
 3. **The moment the last queue is left**, only as a tie-break: the plan that frees the evening wins.
 
-A queue nobody joins costs nothing: the wait and idle in front of a stop that does not fit are out
-of the totals. A walk only moves the clock, so with one slot left the shorter queue wins however
-far away it is.
+A queue nobody joins costs nothing: the wait, the idle and the walk in front of a stop that does not
+fit are out of the totals.
 
-**The schedule is contiguous, so the order is the only free variable.** A ride starts when the one
-before lets go: its start, plus what the block occupies, plus the walk. The one exception is a
-deliberate wait: idling `d` minutes and then queueing `w(t+d)` beats queueing `w(t)` now whenever
-`d + w(t+d) < w(t)`.
+**The schedule is contiguous, so the order is the only free variable.** A ride starts on the first
+five-minute step (`START_STEP_MIN`) after the one before lets go: its start, plus its queue, plus
+the transfer (exit, ride, walk). A queue holds its own minutes and no more; the floors of the day,
+today's now included, stay on the quarter hour. The one exception is a deliberate wait: idling `d`
+minutes and then queueing `w(t+d)` beats queueing `w(t)` now whenever `0.5 d + w(t+d) < w(t)`.
+
+Until the API's PAR-1364 every start sat on the quarter hour and a queue held at least fifteen
+minutes, which left a packed day 23.7 minutes between the end of one queue and the start of the
+next; on the same 23 park-days it is 15.7, with 23 % less walking.
 
 **Rope drop is not a special case.** "The biggest ride first, at opening" is what minimising the sum
 produces where the curve says so, and not where it does not (Taron's day is flat at 60/60/54/53/59

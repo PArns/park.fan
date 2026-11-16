@@ -24,8 +24,7 @@ export function ContentIT({ day, entries }: { day: PlanDay; entries: PlannerEntr
           quanto la coda che ti aspetta a quell&apos;ora. Se lo trascini in un&apos;ora più
           affollata cresce, in una più tranquilla si accorcia. Tra due blocchi c&apos;è il cambio,
           con la distanza dalla prossima attrazione e l&apos;indicazione se il tempo basta.
-          «Stretto» vuol dire che non torna più appena l&apos;attesa precedente si discosta quanto
-          al solito.
+          «Stretto» vuol dire che ce la fai solo camminando di buon passo.
         </P>
         <P>
           Qui sotto c&apos;è un piano per <A href={PARK}>Phantasialand</A> per sabato 12 settembre

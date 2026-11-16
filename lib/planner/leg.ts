@@ -1,5 +1,5 @@
 import { calculateDistance } from '@/lib/utils/distance-utils';
-import { RIDE_DURATION_MIN, SNAP_MIN_FINE } from './day-grid';
+import { RIDE_DURATION_MIN, START_STEP_MIN } from './day-grid';
 import type { PlanDay, PlanDayRide } from '@/lib/api/types';
 import type { PlannerEntry } from './types';
 
@@ -36,7 +36,7 @@ export const SAME_LAND_CEIL_MIN = 3;
 /** …different land. A judgement. */
 export const CROSS_LAND_CEIL_MIN = 8;
 
-/** Under this a gap is never called "großzügig", however small the model's spread. */
+/** On a day that happened, the slack over the ceiling from which a gap is "großzügig". */
 export const GENEROUS_MIN_MINUTES = 10;
 
 /** How a leg is graded: `broken` against the floor, the rest against the ceiling. */
@@ -56,7 +56,7 @@ export interface Leg {
   gapMinutes: number;
   verdict: TransferVerdict;
   /** Why there is no verdict, when there is none. */
-  missing: 'none' | 'no-wait' | 'no-spread';
+  missing: 'none' | 'no-wait';
 }
 
 /**
@@ -234,20 +234,14 @@ export function dayWalkMinutes(
 /**
  * The transfer between two consecutive entries.
  *
- * The previous ride's `uncertaintyMinutes` decides where "knapp" begins, so `knapp` means "this
- * breaks if the forecast is as wrong as it says it might be". On a day the optimiser just packed
- * the ladder mostly reports the packing, and that is not the threshold's fault. See
+ * `knapp` means the gap clears the certifiable floor and not the assumed ceiling: the walk fits at
+ * a brisk pace and may not at park pace. A forecast stops at "gut"; "großzügig" is a claim only a
+ * gap that is a fact can carry, so only `observed` reaches it. The model's spread is not read:
+ * `/plan/day`'s `uncertaintyMinutes` is the band around the day's peak, often wider than the peak
+ * itself, and judged against it every leg of a planned day read "knapp". See
  * docs/features/trip-planner/leg-chip.md#the-verdict-ladder.
- *
- * `observed` means the waits are measurements: a missing spread caps a forecast at "gut", but on a
- * day that already happened the gap is a fact and runs the full ladder.
  */
-export function legBetween(
-  from: LegEnd,
-  to: LegEnd,
-  uncertaintyMinutes: number | null,
-  observed = false
-): Leg {
+export function legBetween(from: LegEnd, to: LegEnd, observed = false): Leg {
   const { metres, crossesLand, floorMinutes, ceilingMinutes } = transferBetween(
     from.ride,
     to.ride,
@@ -270,49 +264,27 @@ export function legBetween(
   const gapMinutes = to.startMinute - (from.startMinute + from.wait);
   const slack = gapMinutes - ceilingMinutes;
 
-  if (gapMinutes < floorMinutes) {
-    return { ...base, gapMinutes, verdict: 'broken', missing: 'none' };
-  }
-
-  // A measured day runs the full ladder against a spread of zero.
-  if (observed) {
-    return {
-      ...base,
-      gapMinutes,
-      verdict: slack < 0 ? 'tight' : slack < GENEROUS_MIN_MINUTES ? 'good' : 'generous',
-      missing: 'none',
-    };
-  }
-
-  // No spread reported is not a spread of zero. The ladder caps at `good`: "großzügig" is a claim
-  // about the room the forecast's own error leaves.
-  if (uncertaintyMinutes === null) {
-    return {
-      ...base,
-      gapMinutes,
-      verdict: slack < 0 ? 'tight' : 'good',
-      missing: 'no-spread',
-    };
-  }
-
-  if (slack < uncertaintyMinutes) {
-    return { ...base, gapMinutes, verdict: 'tight', missing: 'none' };
-  }
-  if (slack < Math.max(2 * uncertaintyMinutes, GENEROUS_MIN_MINUTES)) {
-    return { ...base, gapMinutes, verdict: 'good', missing: 'none' };
-  }
-  return { ...base, gapMinutes, verdict: 'generous', missing: 'none' };
+  const verdict: TransferVerdict =
+    gapMinutes < floorMinutes
+      ? 'broken'
+      : slack < 0
+        ? 'tight'
+        : observed && slack >= GENEROUS_MIN_MINUTES
+          ? 'generous'
+          : 'good';
+  return { ...base, gapMinutes, verdict, missing: 'none' };
 }
 
 /**
- * The earliest start for the later ride that clears the transfer, snapped up, never down. Offered
- * on a button and never applied on its own, so the visitor sees that the plan did not work.
+ * The earliest start for the later ride that clears the transfer, snapped up, never down, to the
+ * step the optimiser files its starts on. Offered on a button and never applied on its own, so the
+ * visitor sees that the plan did not work.
  */
 export function earliestGoodStart(from: LegEnd, leg: Leg): number {
   const end = from.startMinute + (from.wait ?? 0);
   // A ceiling, not `snapTo`, which rounds to the nearest step; "+ step - 1" overshoots by a step
   // once the target is past the midpoint.
-  return Math.ceil((end + leg.ceilingMinutes) / SNAP_MIN_FINE) * SNAP_MIN_FINE;
+  return Math.ceil((end + leg.ceilingMinutes) / START_STEP_MIN) * START_STEP_MIN;
 }
 
 /**
