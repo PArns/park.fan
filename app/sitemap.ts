@@ -26,6 +26,7 @@ import {
   tripRegionPath,
 } from '@/lib/trip-regions/paths';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { DEVELOPERS_PATH } from '@/lib/developers/paths';
 
 const BASE_URL = SITE_URL;
 
@@ -78,6 +79,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const fancastAlternates = buildAlternates(() => '/fancast');
   const parkyAlternates = buildAlternates(() => '/parky');
   const contributeAlternates = buildAlternates(() => '/contribute');
+  const developersAlternates = buildAlternates(() => DEVELOPERS_PATH);
 
   for (const locale of locales) {
     routes.push(
@@ -106,6 +108,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       {
         url: `${BASE_URL}/${locale}/contribute`,
         alternates: contributeAlternates,
+      },
+      {
+        url: `${BASE_URL}/${locale}${DEVELOPERS_PATH}`,
+        alternates: developersAlternates,
       }
     );
   }

@@ -43,7 +43,8 @@ worth more than three forms. `server.json` in the repository root describes the 
 (`fan.park/park-fan`, streamable HTTP at `https://park.fan/api/mcp`) and validates against the
 schema it names. Its `version` is the **server's**: bump it when a tool is added, removed or its
 arguments or credentials change, not per deploy. 1.1.0 added the optional `X-API-Key` header the
-forecast tool reads; the registry shows it only after the next publish.
+forecast tool reads; 1.2.0 made search need it too, while the wait times stay keyless. The registry
+shows a change only after the next publish.
 
 The namespace `fan.park` is the reverse-DNS form of the domain, which domain-authenticated
 publishing requires (a GitHub-authenticated publish would be `io.github.parns/…` and name a person).

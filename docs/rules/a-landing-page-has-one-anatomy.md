@@ -7,7 +7,7 @@ and keeps its own hero.
 | Kind               | Pages                                                                                                                      | Head                                                  |
 | ------------------ | -------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
 | Hub                | best time to visit, trip planner, how park.fan works, Fancast, Parky, blog, the trip region hubs and their best-time pages | `LandingHero` (`data-landing-hero="hub"`)             |
-| Tool page          | contribute, news index, compare, glossary index, changelog                                                                 | `LandingHero variant="compact"` (`="compact"`)        |
+| Tool page          | contribute, developer portal, news index, compare, glossary index, changelog                                               | `LandingHero variant="compact"` (`="compact"`)        |
 | Park audience page | `/mit-kindern`, `/durchschnittliche-wartezeiten`, the persona pages after them                                             | the park chrome: `ParkTitleHeader` + `ParkHeaderCard` |
 
 The sequence is head, intro, chapters, FAQ, next step, in that order. Hubs run all five; the other

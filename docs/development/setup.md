@@ -85,11 +85,11 @@ and this table only names it.
 
 **Storage**
 
-| Variable                   | Default                                         | Kind   | Read by                                                                                                                                                           |
-| -------------------------- | ----------------------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `BLOB_READ_WRITE_TOKEN`    | set by Vercel when a Blob store is linked       | secret | `lib/contribute/driver.ts` picks Blob when it is set; `@vercel/blob` reads it for contributions and the content-change dates (`lib/seo/content-changes/store.ts`) |
-| `STORAGE_DRIVER`           | automatic                                       | server | `lib/contribute/driver.ts`: `local` (`./.uploads`, `./.data`) or `vercel-blob`                                                                                    |
-| `CONTRIBUTE_TICKET_SECRET` | the Blob token, then a fixed development string | secret | `lib/contribute/ticket.ts` ([contributions](../features/contribute.md))                                                                                           |
+| Variable                   | Default                                         | Kind   | Read by                                                                                                                                                        |
+| -------------------------- | ----------------------------------------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `BLOB_READ_WRITE_TOKEN`    | set by Vercel when a Blob store is linked       | secret | `lib/storage/driver.ts` picks Blob when it is set; `@vercel/blob` reads it for contributions and the content-change dates (`lib/seo/content-changes/store.ts`) |
+| `STORAGE_DRIVER`           | automatic                                       | server | `lib/storage/driver.ts`: `local` (`./.uploads`, `./.data`) or `vercel-blob`                                                                                    |
+| `CONTRIBUTE_TICKET_SECRET` | the Blob token, then a fixed development string | secret | `lib/contribute/ticket.ts` ([contributions](../features/contribute.md))                                                                                        |
 
 **Admin**
 

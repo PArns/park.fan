@@ -1,7 +1,7 @@
-// The forecast relays under /api/parks/* answer only park.fan's own pages, and the server asks the
-// API's mixed routes for their forecast fields with `forecast=true`. These cases pin which relay
-// paths count as forecasts, which requests count as the site's own, and how the flag is appended.
-import { isForecastRelayPath, isSameOriginRequest } from '../lib/api/forecast-relay.ts';
+// The relays under /api/parks/* answer only park.fan's own pages except for the wait times, and the
+// server asks the API's mixed routes for their forecast fields with `forecast=true`. These cases pin
+// which relay paths stay keyless, which requests count as the site's own, and how the flag is appended.
+import { isKeylessRelayPath, isSameOriginRequest } from '../lib/api/forecast-relay.ts';
 import { fetchWithForecast, readWithForecast, withForecast } from '../lib/api/forecast-query.ts';
 
 const park = ['north-america', 'united-states', 'orlando', 'magic-kingdom-park'];
@@ -50,34 +50,27 @@ async function withKeyAndFetch(statuses, read) {
 
 const testCases = [
   {
-    name: 'the live poll is a forecast path',
-    actual: () => isForecastRelayPath(park),
+    name: "only a park's wait times are keyless",
+    actual: () => isKeylessRelayPath([...park, 'wait-times']),
     expected: true,
   },
   {
-    name: 'calendar, best days, the day plan, its optimizer and the day curve are forecast paths',
+    name: 'the live poll, calendar, plan, stats, weather, positions and rides answer pages only',
     actual: () =>
       [
+        [],
         ['calendar'],
         ['calendar', 'hourly'],
         ['best-days'],
         ['plan', 'day'],
         ['plan', 'optimize'],
+        ['stats'],
         ['stats', 'day'],
-      ].every((rest) => isForecastRelayPath([...park, ...rest])),
-    expected: true,
-  },
-  {
-    name: "a ride's detail is a forecast path",
-    actual: () => isForecastRelayPath([...park, 'attractions', 'tron-lightcycle-run']),
-    expected: true,
-  },
-  {
-    name: 'wait times, history and positions stay open',
-    actual: () =>
-      [['wait-times'], ['stats'], ['stats', 'hourly'], ['positions'], ['weather', 'nowcast']].some(
-        (rest) => isForecastRelayPath([...park, ...rest])
-      ),
+        ['stats', 'hourly'],
+        ['positions'],
+        ['weather', 'nowcast'],
+        ['attractions', 'tron-lightcycle-run'],
+      ].some((rest) => isKeylessRelayPath([...park, ...rest])),
     expected: false,
   },
   {

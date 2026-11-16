@@ -669,17 +669,6 @@ const nextConfig: NextConfig = {
       }
     );
 
-    // 14. The developers page is gone; everything it listed is in the API's own
-    // reference, so a bookmark or a backlink lands there instead of on a 404.
-    rules.push(
-      { source: '/developers', destination: 'https://api.park.fan/api', permanent: true },
-      {
-        source: '/:locale(en|de|fr|it|nl|es)/developers',
-        destination: 'https://api.park.fan/api',
-        permanent: true,
-      }
-    );
-
     return rules;
   },
   async rewrites() {

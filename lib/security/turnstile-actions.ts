@@ -8,6 +8,7 @@ export const TURNSTILE_ACTIONS = {
   contribute: 'contribute',
   adminLogin: 'admin-login',
   assistantSession: 'assistant-session',
+  developerRegister: 'developer-register',
 } as const;
 
 export type TurnstileAction = (typeof TURNSTILE_ACTIONS)[keyof typeof TURNSTILE_ACTIONS];

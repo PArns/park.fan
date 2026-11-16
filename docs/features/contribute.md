@@ -12,30 +12,30 @@ until a moderator moves it into the [media database](media-database.md).
 
 ## Pieces
 
-| Concern                                         | File                                                                  |
-| ----------------------------------------------- | --------------------------------------------------------------------- |
-| Public page (hero, gallery, rights, form)       | `app/[locale]/contribute/page.tsx`                                    |
-| Form orchestrator (start → upload → finalize)   | `components/contribute/contribute-form.tsx`                           |
-| Drag and drop multi-upload with previews        | `components/contribute/photo-dropzone.tsx`                            |
-| Ride/park picker (cmdk over `/api/search`)      | `components/contribute/entity-picker.tsx`                             |
-| Rights notice                                   | `components/contribute/rights-notice.tsx`                             |
-| Example gallery                                 | `components/contribute/example-gallery.tsx`                           |
-| CTA banner on park and ride pages               | `components/contribute/contribute-banner.tsx`                         |
-| Client-side downscale                           | `components/contribute/compress.ts`                                   |
-| Limits shared by client and server              | `lib/contribute/config.ts` (`MAX_FILES` 10, 4 MB per file)            |
-| Begin (Turnstile + signed ticket)               | `app/api/contribute/start/route.ts`                                   |
-| Proxy one photo into the private store          | `app/api/contribute/file/route.ts`                                    |
-| Finalize (write the moderation record)          | `app/api/contribute/finalize/route.ts`                                |
-| Turnstile widget and server check (shared)      | `components/common/turnstile-widget.tsx`, `lib/security/turnstile.ts` |
-| HMAC ticket                                     | `lib/contribute/ticket.ts`                                            |
-| Storage driver, image store, submissions repo   | `lib/contribute/driver.ts`, `storage.ts`, `submissions.ts`            |
-| Prefill (park/ride page → form)                 | `lib/contribute/prefill.ts`                                           |
-| Moderation page                                 | `app/admin/contributions/page.tsx`                                    |
-| Hand-over into the media database               | `app/admin/contributions/_components/adopt-into-media.tsx`            |
-| "New submissions" toast after login             | `app/admin/_app/new-contributions-notice.tsx`                         |
-| Admin APIs (list, patch, delete, file, summary) | `app/api/admin/contributions/**`                                      |
-| Orphan cleanup (blobs without a record)         | `DELETE /api/admin/contributions/orphans`                             |
-| Strings                                         | `contribute` namespace in `messages/*.json`                           |
+| Concern                                         | File                                                                   |
+| ----------------------------------------------- | ---------------------------------------------------------------------- |
+| Public page (hero, gallery, rights, form)       | `app/[locale]/contribute/page.tsx`                                     |
+| Form orchestrator (start → upload → finalize)   | `components/contribute/contribute-form.tsx`                            |
+| Drag and drop multi-upload with previews        | `components/contribute/photo-dropzone.tsx`                             |
+| Ride/park picker (cmdk over `/api/search`)      | `components/contribute/entity-picker.tsx`                              |
+| Rights notice                                   | `components/contribute/rights-notice.tsx`                              |
+| Example gallery                                 | `components/contribute/example-gallery.tsx`                            |
+| CTA banner on park and ride pages               | `components/contribute/contribute-banner.tsx`                          |
+| Client-side downscale                           | `components/contribute/compress.ts`                                    |
+| Limits shared by client and server              | `lib/contribute/config.ts` (`MAX_FILES` 10, 4 MB per file)             |
+| Begin (Turnstile + signed ticket)               | `app/api/contribute/start/route.ts`                                    |
+| Proxy one photo into the private store          | `app/api/contribute/file/route.ts`                                     |
+| Finalize (write the moderation record)          | `app/api/contribute/finalize/route.ts`                                 |
+| Turnstile widget and server check (shared)      | `components/common/turnstile-widget.tsx`, `lib/security/turnstile.ts`  |
+| HMAC ticket                                     | `lib/contribute/ticket.ts`                                             |
+| Storage driver, image store, submissions repo   | `lib/storage/driver.ts`, `lib/contribute/storage.ts`, `submissions.ts` |
+| Prefill (park/ride page → form)                 | `lib/contribute/prefill.ts`                                            |
+| Moderation page                                 | `app/admin/contributions/page.tsx`                                     |
+| Hand-over into the media database               | `app/admin/contributions/_components/adopt-into-media.tsx`             |
+| "New submissions" toast after login             | `app/admin/_app/new-contributions-notice.tsx`                          |
+| Admin APIs (list, patch, delete, file, summary) | `app/api/admin/contributions/**`                                       |
+| Orphan cleanup (blobs without a record)         | `DELETE /api/admin/contributions/orphans`                              |
+| Strings                                         | `contribute` namespace in `messages/*.json`                            |
 
 ## Upload flow
 
@@ -98,7 +98,7 @@ below `author` do not ask, since the route would answer 403.
 
 ## Storage
 
-`lib/contribute/driver.ts` picks the backend:
+`lib/storage/driver.ts` picks the backend:
 
 - **vercel-blob** (default when `BLOB_READ_WRITE_TOKEN` is set, i.e. any deploy with a linked Blob
   store): photos under `contributions/<id>/…`, each submission's record as JSON at

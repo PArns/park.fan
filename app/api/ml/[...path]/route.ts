@@ -3,6 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -24,6 +25,9 @@ export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
 ) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+
   const { path } = await params;
 
   const denied = await denyUnlessAdmin(request, 'viewer');

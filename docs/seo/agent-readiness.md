@@ -13,7 +13,7 @@ the same commit.
 | `/robots.txt`                          | crawl rules, per-crawler AI policy, Content Signals, `License`, `Agentmap`, the four sitemaps     | `app/robots.txt/route.ts`                         |
 | `/license.xml`                         | the same policy as an RSL licence                                                                 | `app/license.xml/route.ts`                        |
 | `/llms.txt`                            | the site in one page, for a model that has only the hostname ([llmstxt.org](https://llmstxt.org)) | `app/llms.txt/route.ts`                           |
-| `/auth.md`                             | how to authenticate: you do not                                                                   | `app/auth.md/route.ts`                            |
+| `/auth.md`                             | how to authenticate: for the wait times not at all, for everything else with a data key           | `app/auth.md/route.ts`                            |
 | `/.well-known/api-catalog`             | the public API as a linkset ([RFC 9727](https://www.rfc-editor.org/rfc/rfc9727))                  | `lib/agents/api-catalog.ts`                       |
 | `Link:` on the homepage                | a pointer to that catalog ([RFC 8288](https://www.rfc-editor.org/rfc/rfc8288))                    | `HOMEPAGE_LINK_HEADER`, `next.config.ts`          |
 | `/.well-known/agent-skills/index.json` | three skills with SHA-256 digests (Agent Skills Discovery v0.2.0)                                 | `lib/agents/skills.ts`                            |
@@ -65,18 +65,26 @@ number came from), and `<terms>` (RSL 1.0 §3.17) pointing at the terms of use b
   links **and** the licence in one string, because Next resolves a repeated header key
   last-match-wins and the homepage rules come last.
 
-## Terms of use: forecasts need a key, commercial use needs an agreement
+## Terms of use: only the wait times are keyless, a free key needs open source and a backlink
 
-The terms are prose, in the Impressum under `#data-use` (de and en): free for non-commercial use
-with a credit; park.fan's forecasts (crowd calendar, expected crowds per day and hour, predicted
-waits, best days, day plans) through the API only against a data key, free for non-commercial use
-on request, and commercially only under a written agreement; the live data of park.fan's sources
+The terms are prose, in the Impressum under `#data-use` (de and en): without a key a park's live
+wait times and nothing else; everything else through a data key with the matching permission,
+requested on `/developers` and approved by hand ([developer portal](../features/developer-portal.md)).
+A key is free only for an open-source project that earns nothing from it (donations are fine)
+with a visible, followable link to park.fan on an indexable page (`#attribution` on the portal);
+any other use takes a paid key under a written agreement. The live data of park.fan's sources is
 for non-commercial use only, because park.fan holds no rights to it. The URL is `DATA_TERMS_URL`
 in `lib/agents/licensing.ts`, and every machine document links it:
 
 - `license.xml` with `<terms>`, the API catalog with `terms-of-service` (RFC 6903);
 - `llms.txt` and `auth.md` with a paragraph; the `park-fan-data` skill types the URL out,
   because it is a static file served byte for byte.
+
+Where to get a key is the developer portal, `DEVELOPER_PORTAL_URL` (`lib/developers/paths.ts`),
+which `auth.md`, `llms.txt`, the keyed tools' descriptions and `server.json` name; the skill
+types it out. The portal is a page with readers, so it is not one of the documents above: it lists
+the permissions of a key from `lib/developers/permissions.ts` and leads to the dashboard, where a
+key is requested and picked up.
 
 `pnpm check:agent-ready` fetches the page the licence names and fails when the anchor is gone, and
 fails when the catalog links a different URL.
@@ -144,9 +152,11 @@ this server never writes to. The tools are read-only:
 `components/agents/webmcp-tools.tsx` registers the same three through `navigator.modelContext` and
 executes them by calling `/api/mcp`, plus `open_park_fan_page`, which navigates the tab.
 Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both surfaces. The tab's
-calls are same-origin, so the forecast tool answers them without a key, as the page itself would
-(`forecastGrant`, `lib/agents/forecast-access.ts`); any other client's key goes to the API with the
-read itself, so revocation, parks and the hourly allowance apply as on api.park.fan. The browser
+calls are same-origin, so the keyed tools (search, best days) answer them without a key, as the
+page itself would (`keyGrant`, `lib/agents/forecast-access.ts`); any other client's key goes to
+the API with the read itself, so its permissions, parks and hourly allowance apply as on
+api.park.fan. Without either, only `get_park_wait_times` answers, without land, crowd level and
+maintenance dates. The browser
 tools call the server rather than the API because two answers depend on rules that sit with the
 data:
 

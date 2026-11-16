@@ -3,12 +3,16 @@ import { getMostViewedParks, getPopularParks } from '@/lib/api/parks';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { routing, type Locale } from '@/i18n/routing';
 import { enrichParksWithImages } from '@/lib/utils/park-assets';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 
 /**
  * The most popular parks, each with its card photo. With `locale`, the ones that language's readers
  * opened most (`getMostViewedParks`, the hero's fallback); without, the API's request ranking.
  */
 export async function GET(request: NextRequest) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+
   const params = new URL(request.url).searchParams;
   const limitParam = params.get('limit');
   const parsed = limitParam ? Number.parseInt(limitParam, 10) : 20;

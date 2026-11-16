@@ -8,7 +8,7 @@
  *    flag off.
  * 2. The card photo map the browser loads gives every park and ride exactly the photo and crop the
  *    server-side lookup did before the map existed, so a card looks the same either way.
- * 3. `withNearbyCardImages` and `favoritesForCards`, which both the relays and the direct call run.
+ * 3. `withNearbyCardImages` and `favoritesForCards`, which the relays run.
  *
  * Run: pnpm test:direct-api
  */

@@ -19,6 +19,7 @@ import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { getCurrentYear } from '@/lib/utils/server-time';
 import { NEWS_INDEX_PATH } from '@/lib/blog/paths';
 import { CHANGELOG_PATH } from '@/lib/changelog/paths';
+import { DEVELOPERS_PATH } from '@/lib/developers/paths';
 import { rankedFirst } from '@/lib/parks/viewed-parks';
 import { viewedParksSeed } from '@/lib/parks/viewed-parks-seed';
 import type { Locale } from '@/i18n/config';
@@ -330,23 +331,21 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
             <PreferredSourceButton />
             <InstallAppButton />
             {/* Where the column is narrower than 20rem the links stack and the bullets go: a
-                wrapping row puts a „•" at the end or start of a line. Two links off the site, so
-                a list and not a `<nav>`, which is for the site's own navigation. */}
+                wrapping row puts a „•" at the end or start of a line. The developer portal and a
+                link off the site, resources rather than the site's navigation, so a list and not
+                a `<nav>`. */}
             <ul
               className="text-muted-foreground flex flex-col items-start gap-1.5 text-sm max-sm:gap-0 @min-[20rem]:flex-row @min-[20rem]:flex-wrap @min-[20rem]:items-center @min-[20rem]:gap-1.5"
               aria-label={t('sections.resources')}
             >
               <li>
-                <a
-                  href="https://api.park.fan/api"
-                  target="_blank"
-                  rel="noopener noreferrer nofollow"
+                <Link
+                  href={DEVELOPERS_PATH}
+                  prefetch={false}
                   className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
                 >
                   {t('api')}
-                  <span className="sr-only"> ({t('opensInNewTab')})</span>
-                  <ExternalLink className="h-3 w-3" aria-hidden="true" />
-                </a>
+                </Link>
               </li>
               <li className="flex items-center gap-1.5">
                 <span

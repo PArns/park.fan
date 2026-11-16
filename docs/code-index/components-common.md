@@ -56,6 +56,12 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 - `CHAPTER_GAP` _const_: The gap above a chapter, below `sm` and from `sm` up.
 - `CHAPTER_GAP_COMPACT` _const_
 
+### [`code.tsx`](../../components/common/code.tsx)
+
+- `CodeSample` _component_: A block of code, kept on its lines and scrolling sideways on a phone rather than wrapping.
+- `CODE_BLOCK_CLASS` _const_: The look of a block of code on a public page (a post's fenced block, an API example).
+- `INLINE_CODE_CLASS` _const_: The look of code inside running text: a path, a header name, a key prefix.
+
 ### [`compact-number-with-tooltip.tsx`](../../components/common/compact-number-with-tooltip.tsx)
 
 - `CompactNumberWithTooltip` _component_: Renders a compact number (e.g. 4.9M, 4,9 Mio.) with a tooltip showing the full locale-formatted value and a suffix.
@@ -86,6 +92,10 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 ### [`first-load-script.tsx`](../../components/common/first-load-script.tsx)
 
 - `FirstLoadScript` _component_: An inline script that belongs to the server's HTML only: it runs as the document loads, before hydration.
+
+### [`form-step.tsx`](../../components/common/form-step.tsx)
+
+- `FormStep` _component_: One numbered step of a public form (photo contribution, API key request): the number in a tinted disc, the step's title as the `<h2>` inside the form's card, and its fields indented under the title.
 
 ### [`geo-location-card.tsx`](../../components/common/geo-location-card.tsx)
 

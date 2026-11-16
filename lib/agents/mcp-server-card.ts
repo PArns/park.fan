@@ -1,5 +1,5 @@
 import { SITE_URL } from '@/i18n/config';
-import { FORECAST_TOOL_NAMES } from './tool-descriptors';
+import { KEYED_TOOL_NAMES } from './tool-descriptors';
 
 /**
  * What park.fan's MCP server says about itself — the server card (SEP-1649) and the two
@@ -49,7 +49,7 @@ export function mcpServerCard(toolNames: string[]) {
       type: 'api-key',
       in: 'header',
       name: 'X-API-Key',
-      requiredFor: [...FORECAST_TOOL_NAMES],
+      requiredFor: [...KEYED_TOOL_NAMES],
     },
     documentation: `${SITE_URL}/.well-known/agent-skills/park-fan-data/SKILL.md`,
   };

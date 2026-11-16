@@ -59,7 +59,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `catchNonFatal` _function_: Like `.catch(() => null)` but re-throws maintenance errors so the error boundary can render the maintenance page.
 - `ApiError` _class_: Error thrown by `apiFetch` for a non-OK API response, carrying the HTTP status; a 502 or a Cloudflare 1033 page sets `isMaintenance` and the `API_MAINTENANCE_1033` digest.
 - `API_ORIGIN` _const_: The API's origin, `https://api.park.fan` unless `NEXT_PUBLIC_API_URL` points elsewhere.
-- `DIRECT_API_ORIGIN` _const_: The API origin a browser calls directly for the per-visitor requests no cache can share (nearby, favorites, trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go through this app's relay routes.
+- `DIRECT_API_ORIGIN` _const_: The API origin a browser calls directly for the per-visitor requests no cache can share (trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go through this app's relay routes.
 - `API_MAINTENANCE_DIGEST` _const_: Digest forwarded to the error boundary so it can render the maintenance page. Production redacts `error.message` for server-thrown errors but keeps a custom `digest`.
 - `api` _const_: `GET` and `POST` shorthands over `apiFetch`.
 - Types: `FetchOptions`
@@ -87,8 +87,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`favorites.ts`](../../lib/api/favorites.ts)
 
-- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md).
-- `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser either the API too (`NEXT_PUBLIC_API_DIRECT`) or the `/api/favorites` relay.
+- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md). `/api/favorites` runs it.
+- `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser the `/api/favorites` relay, which sends the site's key. The API needs the ids as query parameters, so no ids means an empty answer without a request.
 - Types: `FavoritePark`, `FavoriteAttraction`, `FavoriteShow`, `FavoriteRestaurant`, `FavoritesResponse`
 
 ### [`forecast-query.ts`](../../lib/api/forecast-query.ts)
@@ -101,7 +101,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`forecast-relay.ts`](../../lib/api/forecast-relay.ts)
 
-- `isForecastRelayPath` _function_: Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries `bestVisitTimes`), the calendar, best days, the day plan and its optimizer, a ride's detail and its day curve.
+- `isKeylessRelayPath` _function_: Whether a relay path under `/api/parks/*` reads only what api.park.fan serves without a key: a park's wait times. Every other path relays data the site's key opens, so it answers park.fan's own pages only.
 - `isSameOriginRequest` _function_: Whether a relay request comes from a park.fan page. Browsers send `Sec-Fetch-Site: same-origin` on a page's own fetches, and a page on another site cannot make them say so.
 - `foreignForecastRequest` _function_: The answer a forecast relay gives a caller that is not a park.fan page. Never cached.
 
@@ -120,7 +120,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary, like `getBestDaysCalendarSeed`: a timeout drops only the summary card.
 - `BEST_DAYS_REVALIDATE` _const_: Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters against a fresh „today" on every render.
 - `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused: a day, since what it says (open days, quietest and busiest days, usual hours) does not change within one.
-- Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`, `ApiKeyRefusal`
+- Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`
+
+### [`keyed-read.ts`](../../lib/api/keyed-read.ts)
+
+- `readWithApiKey` _function_: A read of `path` with a caller's own data key and nothing of the server's, so the API applies that key's permissions, parks and hourly allowance to it.
+- `isApiKeyRefusal` _function_: The answer is the API's refusal of the key.
+- Types: `ApiKeyRefusal`
 
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 
@@ -177,6 +183,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`search.ts`](../../lib/api/search.ts)
 
 - `search` _function_: Search parks, attractions, shows and restaurants.
+- `searchWithApiKey` _function_: `search` with a caller's own data key, so the API applies that key's permissions (`parks.directory`) and allowance to it; an agent's search through park.fan's MCP server.
 - Types: `SearchType`
 
 ### [`seed-timeout.ts`](../../lib/api/seed-timeout.ts)
