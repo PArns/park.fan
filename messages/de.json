@@ -5925,6 +5925,8 @@
       "ask": "{verdict} – Parky fragen",
       "walkOn": "Walk-on!",
       "walkOnQuestion": "{ride} hat gerade {minutes, plural, =0 {gar keine Wartezeit} =1 {nur eine Minute Wartezeit} other {nur # Minuten Wartezeit}}. Lohnt es sich, jetzt hinzugehen, und was fahre ich danach?",
+      "belowTypical": "Jetzt hin!",
+      "belowTypicalQuestion": "{ride} hat gerade nur {minutes} Minuten Wartezeit, um diese Uhrzeit sind es sonst {typical} Minuten. Soll ich jetzt hin?",
       "quietPark": "Kaum was los!",
       "quietParkQuestion": "Heute ist in {park} kaum was los. Was sollte ich heute dort unbedingt fahren?"
     },

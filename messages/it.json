@@ -5925,6 +5925,8 @@
       "ask": "{verdict} – chiedi a Parky",
       "walkOn": "Zero coda!",
       "walkOnQuestion": "{ride} ha {minutes, plural, =0 {zero attesa} =1 {solo un minuto di attesa} other {solo # minuti di attesa}} in questo momento. Conviene andarci adesso, e cosa faccio dopo?",
+      "belowTypical": "Vai ora!",
+      "belowTypicalQuestion": "{ride} ha solo {minutes} minuti di attesa in questo momento, a quest’ora di solito sono {typical} minuti. Ci vado adesso?",
       "quietPark": "Che calma!",
       "quietParkQuestion": "Oggi a {park} non c’è quasi nessuno. Cosa devo assolutamente fare lì oggi?"
     },

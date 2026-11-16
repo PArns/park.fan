@@ -131,8 +131,12 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   peeking over its top edge. It stamps down once, 220 ms, never under reduced motion. `size` is
   `sm` for cards, `md` for a calendar day. On a ride card with a live wait at or under the walk-on
   limit (`LIVE_LIMITS.walkOn`) it reads „Walk-on!“, on an open park card with a very low crowd
-  „Kaum was los!“. Given a `question` it is a button that opens the chat with it (source `stamp`),
-  a tab stop of its own that never follows the card's link.
+  „Kaum was los!“. On a ride's own page it sits beside the live wait in „Wartezeit jetzt“
+  (`RideNowPanel`): „Walk-on!“ as on the card, and „Jetzt hin!“ when the printed wait is at most
+  half the typical for this hour printed under it (`rideStampVerdict`, `BELOW_TYPICAL_SHARE`). The
+  card leaves that second verdict out, so a list of rides stays quiet and the stamp is said where
+  the visitor decides whether to go. Given a `question` it is a button that opens the chat with it
+  (source `stamp`), a tab stop of its own that never follows the card's link.
 - **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a
   `pose`, his one line under it (`parkyStill.empty`) and, given a question, „Frag Parky“
   (`ParkyAskButton`, source `empty`, shown only where the gate lets Parky in). `lost` on the 404,

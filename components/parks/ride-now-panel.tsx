@@ -10,6 +10,8 @@ import { OutageNote } from '@/components/parks/outage-note';
 import { RideOpensAtNote } from '@/components/parks/ride-opens-at-note';
 import { PerformanceBadge } from '@/components/parks/performance-badge';
 import { PerformanceCountdown } from '@/components/parks/performance-countdown';
+import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
+import { rideStampVerdict } from '@/lib/assistant/parky/live';
 import { PANEL_CELL, PanelGrid, PanelMetric } from '@/components/parks/park-panel-cell';
 import { formatPeakDate } from '@/lib/utils/typical-waits';
 import { ParkTimeRange } from '@/components/common/park-time';
@@ -20,7 +22,7 @@ import { formatTime } from '@/lib/utils/intl-format';
 import { getStandbyWait } from '@/lib/utils/park-utils';
 import { roundWaitTo5, shortTermWaitTrend, typicalHourFigures } from '@/lib/utils/wait-time';
 import { accuracyStyle } from '@/lib/utils/accuracy-styles';
-import { cn } from '@/lib/utils';
+import { cn, stripNewPrefix } from '@/lib/utils';
 import type {
   AttractionStatus,
   ParkAttraction,
@@ -84,6 +86,7 @@ export function RideNowPanel({
   const t = useTranslations('attractions');
   const tCommon = useTranslations('common');
   const tClock = useTranslations('parks.clock');
+  const tStamp = useTranslations('parkyStill.stamp');
   const locale = useLocale();
   const timezone = park.timezone ?? 'UTC';
 
@@ -126,6 +129,10 @@ export function RideNowPanel({
   const typicalHour = isOperating
     ? typicalHourFigures(stats?.typicalWaitThisHour, stats?.percentile95ThisHour)
     : null;
+
+  // Against the typical this hour the panel prints under the wait, so the stamp never disagrees
+  // with the two figures beside it.
+  const stamp = wait !== null ? rideStampVerdict(wait, typicalHour?.typical ?? null) : null;
 
   /** The next few recommended slots — the ones still ahead of the reader. */
   const slots = useMemo(() => {
@@ -240,6 +247,25 @@ export function RideNowPanel({
                     </span>
                     <span className="text-muted-foreground text-base">{tCommon('minutes')}</span>
                     {trend && <TrendPill {...trend} className="ml-0.5" />}
+                    {stamp && (
+                      <ParkyStamp
+                        tone="good"
+                        label={tStamp(stamp)}
+                        question={
+                          stamp === 'walkOn'
+                            ? tStamp('walkOnQuestion', {
+                                ride: stripNewPrefix(attraction.name),
+                                minutes: roundWaitTo5(wait),
+                              })
+                            : tStamp('belowTypicalQuestion', {
+                                ride: stripNewPrefix(attraction.name),
+                                minutes: roundWaitTo5(wait),
+                                typical: typicalHour!.typical,
+                              })
+                        }
+                        className="ml-auto shrink-0 self-center"
+                      />
+                    )}
                   </div>
                 ) : (
                   <span className="text-xl font-semibold">{statusLabel}</span>

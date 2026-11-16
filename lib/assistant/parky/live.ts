@@ -2,6 +2,7 @@ import type { LiveParkSnapshot } from '@/lib/api/parks';
 import type { CrowdLevel, ParkAttraction } from '@/lib/api/types';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ParkyPlay } from './acts';
 
 /**
@@ -18,6 +19,33 @@ export type LiveChange = 'down' | 'drop';
  * least this much and at least half the wait gone).
  */
 export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
+
+/**
+ * How far under its usual wait for the hour a ride has to be for „Jetzt hin!“: at most half. A few
+ * minutes under the usual moves from one poll to the next; half of a usual 40 is a 20 the visitor
+ * does not get at this hour on an ordinary day.
+ */
+export const BELOW_TYPICAL_SHARE = 0.5;
+
+/** What Parky's stamp says about one ride's live wait (`parkyStill.stamp`). */
+export type RideStampVerdict = 'walkOn' | 'belowTypical';
+
+/**
+ * Parky's stamp for a ride's live standby `wait`: `walkOn` at or under his walk-on limit, the one
+ * his own line uses; `belowTypical` when the five-minute figure the page prints is at most
+ * {@link BELOW_TYPICAL_SHARE} of `typicalThisHour`, the printed typical for this hour; else null.
+ * A list of ride cards passes null for `typicalThisHour`, so only a walk-on stamps a card there.
+ */
+export function rideStampVerdict(
+  wait: number,
+  typicalThisHour: number | null
+): RideStampVerdict | null {
+  if (wait <= LIVE_LIMITS.walkOn) return 'walkOn';
+  if (typicalThisHour !== null && roundWaitTo5(wait) <= typicalThisHour * BELOW_TYPICAL_SHARE) {
+    return 'belowTypical';
+  }
+  return null;
+}
 
 /**
  * `?parky=live`: any open queue counts as long, so an open park always has its line; the walk-on

@@ -77,6 +77,7 @@ import {
   liveActDue,
   liveChange,
   liveMoment,
+  rideStampVerdict,
   SHOW_RUN_MIN,
   SHOW_SOON_MIN,
   showRunning,
@@ -2196,5 +2197,15 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
   check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
   check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
+}
+// Parky's stamp on a ride's live wait: the walk-on first, then half the usual for the hour or less.
+{
+  check(rideStampVerdict(10, null), 'walkOn', 'stamp: walk-on at the limit');
+  check(rideStampVerdict(11, null), null, 'stamp: a card stamps only the walk-on');
+  check(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the typical');
+  check(rideStampVerdict(20, 40), 'belowTypical', 'stamp: half the usual');
+  check(rideStampVerdict(22, 40), 'belowTypical', 'stamp: the printed 20 against 40');
+  check(rideStampVerdict(23, 40), null, 'stamp: the printed 25 is more than half');
+  check(rideStampVerdict(15, 25), null, 'stamp: 15 against 25');
 }
 console.log(`assistant: ${passed} checks passed`);

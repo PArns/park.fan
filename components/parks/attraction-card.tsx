@@ -47,7 +47,7 @@ import { PerformanceCountdown } from './performance-countdown';
 import { performanceTimesShown, startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 import { RideOpensAtNote } from './ride-opens-at-note';
 import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
-import { LIVE_LIMITS } from '@/lib/assistant/parky/live';
+import { rideStampVerdict } from '@/lib/assistant/parky/live';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -236,8 +236,9 @@ export function AttractionCard({
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const waitShown = isOperatingOrUnknown && waitTime !== null;
   const hasBottomPanel = performanceTimes !== null || waitShown;
-  // The live wait only: Parky's walk-on, the limit his own line uses.
-  const walkOn = status === 'OPERATING' && waitShown && waitTime <= LIVE_LIMITS.walkOn;
+  // The live wait only, and only the walk-on: a list of cards stays quiet.
+  const walkOn =
+    status === 'OPERATING' && waitShown && rideStampVerdict(waitTime, null) === 'walkOn';
 
   // What the top panel's lower edge (the seam between the upper glass and what is under it) sits
   // on. With no bottom panel and no photo there is only the flat placeholder, so no seam is drawn.

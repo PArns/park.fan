@@ -2579,9 +2579,10 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
 
             <Section title="Parky" icon={Star}>
               <ComponentLabel name="ParkyStamp" file="components/assistant/parky/parky-stamp.tsx" />
-              <Sub title="Verdicts — sm on cards, md in the calendar">
+              <Sub title="Verdicts — sm on cards and the ride's live wait, md in the calendar">
                 <div className="flex flex-wrap items-end gap-8 pt-8">
                   <ParkyStamp tone="good" label="Walk-on!" />
+                  <ParkyStamp tone="good" label="Jetzt hin!" />
                   <ParkyStamp tone="good" label="Top-Tag!" size="md" />
                   <ParkyStamp tone="meh" label="Geht so" size="md" />
                   <ParkyStamp tone="bad" label="Lieber nicht" size="md" />

@@ -5925,6 +5925,8 @@
       "ask": "{verdict} – vraag het Parky",
       "walkOn": "Walk-on!",
       "walkOnQuestion": "{ride} heeft nu {minutes, plural, =0 {helemaal geen wachttijd} =1 {maar één minuut wachttijd} other {maar # minuten wachttijd}}. Moet ik er nu heen, en wat pak ik daarna?",
+      "belowTypical": "Nu gaan!",
+      "belowTypicalQuestion": "{ride} heeft nu maar {minutes} minuten wachttijd, op dit uur is dat meestal {typical} minuten. Moet ik er nu heen?",
       "quietPark": "Lekker rustig!",
       "quietParkQuestion": "Het is vandaag heel rustig in {park}. Wat moet ik daar vandaag zeker doen?"
     },

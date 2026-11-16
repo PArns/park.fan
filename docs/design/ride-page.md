@@ -21,7 +21,9 @@ same card built from the same parts:
 - **The panel.** `RideNowPanel` takes the park panel's header strip (live dot, clock), its
   `PanelGrid` of hairline-ruled columns and its `PanelMetric` captions, and gathers what the ride
   page used to say in four places: the live wait, the park's status and hours, the day's best slots
-  and the typical/busy pair. A visitor searching „Taron Wartezeit" no longer assembles it.
+  and the typical/busy pair. A visitor searching „Taron Wartezeit" no longer assembles it. Beside
+  the live wait Parky stamps „Walk-on!“ or „Jetzt hin!“ when the wait earns it
+  ([Parky's character](../features/parky-character.md#pictures-of-him)).
 - **The chapter row stays jump links.** The park's tiles switch `Tabs` whose inactive panels are not
   in the DOM; doing that here would take the typical waits, the history, the ride profile and the
   FAQ out of the served HTML of every attraction URL. `RideNavTiles` takes the park row's cell

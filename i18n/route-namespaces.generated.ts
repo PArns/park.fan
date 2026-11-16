@@ -136,6 +136,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parks.seasons',
     'parks.transportSystem',
     'parks.worksPeriod',
+    'parkyStill.stamp',
     'planner',
     'share',
   ],

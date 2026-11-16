@@ -229,6 +229,7 @@ What counts as a control the bubble must not cover.
 
 ### [`parky/live.ts`](../../lib/assistant/parky/live.ts)
 
+- `rideStampVerdict` _function_: Parky's stamp for a ride's live standby `wait`: `walkOn` at or under his walk-on limit, the one his own line uses; `belowTypical` when the five-minute figure the page prints is at most `BELOW_TYPICAL_SHARE` of `typicalThisHour`, the …
 - `headlinersOf` _function_: The rides Parky watches: the park's favourite (`PARK_FAVOURITES`) and its top attractions.
 - `showSoon` _function_: The next show that starts within `SHOW_SOON_MIN` of `now`, or with `anyLater` (`?parky=show`) the next one still to start today; `null` when there is none.
 - `showRunning` _function_: Whether one of the park's shows is on right now: started, and less than `SHOW_RUN_MIN` ago.
@@ -236,11 +237,12 @@ What counts as a control the bubble must not cover.
 - `liveChange` _function_: What changed between two polls that Parky notices, the most notable first: a headliner went down, a headliner's wait dropped sharply, then a moment that newly holds (a walk-on, a queue over an hour, the park turning very full).
 - `liveActDue` _function_: Whether an act without a line may play now, the last one having played at `lastAt`.
 - `LIVE_LIMITS` _const_: The limits, in minutes: a walk-on, a queue that offends him, and a drop worth a whisper (at least this much and at least half the wait gone).
+- `BELOW_TYPICAL_SHARE` _const_: How far under its usual wait for the hour a ride has to be for „Jetzt hin!“: at most half. A few minutes under the usual moves from one poll to the next; half of a usual 40 is a 20 the visitor does not get at this hour on an ordinary day.
 - `SHOW_SOON_MIN` _const_: A show starting this many minutes from now, both ends included, is worth a line: soon enough to matter, far enough off to get a seat.
 - `SHOW_RUN_MIN` _const_: How long a show counts as running after its start; the API sends no end or duration.
 - `LIVE_ACT_GAP_MS` _const_: An act without a line, on a noticeable change of the live data, comes at most this often; a poll lands every five minutes, so this lets most changes play and keeps a flapping ride quiet.
 - `LIVE_LINES` _const_: What Parky says about each reading (`assistant` namespace, with `{park}`, `{ride}` and `{wait}`, a show's with `{show}` and `{minutes}`), each with the act it goes with: airtime for a walk-on, grumpy at a long queue, squashed in a full …
-- Types: `LiveMoment`, `LiveChange`, `LiveReading`
+- Types: `LiveMoment`, `LiveChange`, `RideStampVerdict`, `LiveReading`
 
 ### [`parky/look.ts`](../../lib/assistant/parky/look.ts)
 
