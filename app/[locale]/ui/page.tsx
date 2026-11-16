@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 import Image from 'next/image';
+import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
+import { ParkyPose } from '@/components/assistant/parky/parky-pose';
+import { ParkCalendarParkyTip } from '@/components/parks/park-calendar-parky-tip';
 import {
   Users,
   Clock,
@@ -2570,6 +2573,47 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                   <TrainingStatusBadge state="idle" label="v20260524_0600" />
                   <TrainingStatusBadge state="error" label="reset on startup" />
                   <TrainingStatusBadge state="unknown" />
+                </div>
+              </Sub>
+            </Section>
+
+            <Section title="Parky" icon={Star}>
+              <ComponentLabel name="ParkyStamp" file="components/assistant/parky/parky-stamp.tsx" />
+              <Sub title="Verdicts — sm on cards, md in the calendar">
+                <div className="flex flex-wrap items-end gap-8 pt-8">
+                  <ParkyStamp tone="good" label="Walk-on!" />
+                  <ParkyStamp tone="good" label="Top-Tag!" size="md" />
+                  <ParkyStamp tone="meh" label="Geht so" size="md" />
+                  <ParkyStamp tone="bad" label="Lieber nicht" size="md" />
+                </div>
+              </Sub>
+
+              <ComponentLabel name="ParkyPose" file="components/assistant/parky/parky-pose.tsx" />
+              <Sub title="Empty and error states">
+                <div className="grid grid-cols-2 gap-6 sm:grid-cols-5">
+                  {(['lost', 'dizzy', 'smitten', 'searching', 'asleep'] as const).map((pose) => (
+                    <div key={pose} className="flex flex-col items-center gap-2">
+                      <ParkyPose pose={pose} />
+                      <span className="text-muted-foreground font-mono text-xs">{pose}</span>
+                    </div>
+                  ))}
+                </div>
+              </Sub>
+
+              <ComponentLabel
+                name="ParkCalendarParkyTip"
+                file="components/parks/park-calendar-parky-tip.tsx"
+              />
+              <Sub title="The calendar day dialog's tip (live from the relay; only where Parky shows)">
+                <div className="flex max-w-md flex-col">
+                  <ParkCalendarParkyTip
+                    geo={{ continent: 'europe', country: 'germany', city: 'bruehl' }}
+                    parkSlug="phantasialand"
+                    parkName="Phantasialand"
+                    date={new Date().toISOString().slice(0, 10)}
+                    dateLabel="heute"
+                    open
+                  />
                 </div>
               </Sub>
             </Section>

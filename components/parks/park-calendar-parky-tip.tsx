@@ -33,7 +33,7 @@ export function ParkCalendarParkyTip({
   dateLabel: string;
   open: boolean;
   /** Closes the dialog: Parky ducks under a modal one, and the chat would open unseen. */
-  onAsk: () => void;
+  onAsk?: () => void;
 }) {
   const t = useTranslations('parkyStill.tip');
   const locale = useLocale();
@@ -53,22 +53,22 @@ export function ParkCalendarParkyTip({
     <button
       type="button"
       onClick={() => {
-        onAsk();
+        onAsk?.();
         askParky(t('question', { park: parkName, day: dateLabel, tip: tip.text }), 'tip');
       }}
       className="group border-primary/30 from-primary/10 hover:border-primary/50 focus-visible:ring-ring flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >
       <ParkyStill ground={ground} className="mt-0.5 size-11 shrink-0" />
       <span className="min-w-0 flex-1">
-        <span className="flex items-start justify-between gap-2">
-          <span className="text-primary text-xs font-bold tracking-wider uppercase">
-            {t('label')}
-          </span>
-          <ParkyStamp tone={tip.verdict} label={t(tip.verdict)} size="md" className="-mt-1" />
+        <span className="text-primary block text-xs font-bold tracking-wider uppercase">
+          {t('label')}
         </span>
         <span className="text-foreground/85 mt-1 block text-sm leading-snug">{tip.text}</span>
-        <span className="text-primary mt-1 block text-xs font-medium group-hover:underline">
-          {t('ask')}
+        {/* The stamp at the foot, where the little Parky peeking over it has the gap above to
+            himself instead of covering the text or the dialog's band. */}
+        <span className="mt-7 flex items-end justify-between gap-3">
+          <span className="text-primary text-xs font-medium group-hover:underline">{t('ask')}</span>
+          <ParkyStamp tone={tip.verdict} label={t(tip.verdict)} size="md" className="mr-1" />
         </span>
       </span>
     </button>
