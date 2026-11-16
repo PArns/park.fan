@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Ab dem 21. November steht im Everland ein rund zehn Meter hoher Wunschbaum am Eingang. Parade und die neue Nachtshow Magic in the Sky laufen vom 27. November bis Silvester.
+  Ab dem 21. November steht im Everland ein rund zehn Meter hoher Wunschbaum am Eingang. Parade und die Nachtshow Magic in the Sky laufen vom 27. November bis Silvester.
 tags:
   - news
   - everland
@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Everland Weihnachten 2026: Christmas Wish ab 21. November'
   description: >-
-    Christmas Wish im Everland: Wunschbaum ab 21.11., Parade und neue Nachtshow Magic in the Sky ab 27.11. bis Silvester. Eintritt im Dezember ab 45.000 Won.
+    Christmas Wish im Everland: Wunschbaum ab 21.11., Parade und Nachtshow Magic in the Sky ab 27.11. bis Silvester. Eintritt im Dezember ab 45.000 Won.
   keywords:
     - Everland Weihnachten
     - Everland Christmas 2026
@@ -39,19 +39,19 @@ seo:
     - Everland Anreise
 ---
 
-Im [Everland](ref:everland) in Yongin beginnt am 21. November die Weihnachtssaison Christmas Wish, mit einem rund zehn Meter hohen Wunschbaum am Haupteingang. Die Bling Bling X-mas Parade und die neue Nachtshow Magic in the Sky kommen am 27. November dazu, alles zusammen läuft bis Silvester. Angekündigt hat das Programm Samsung C&T, der Betreiber des Parks, am 16. November. Christmas Wish ist das Winterkapitel von What?Ever, der Reihe, mit der Everland 2026 Monat für Monat ein eigenes Thema zeigt.
+Im [Everland](ref:everland) in Yongin beginnt am 21. November die Weihnachtssaison Christmas Wish, mit einem rund zehn Meter hohen Wunschbaum am Haupteingang. Die Bling Bling X-mas Parade und die Nachtshow Magic in the Sky kommen am 27. November dazu, alles zusammen läuft bis Silvester. Angekündigt hat das Programm Samsung C&T, der Betreiber des Parks, am 16. November. Christmas Wish ist das Winterkapitel der Whatever Series, der Reihe, mit der Everland 2026 Monat für Monat ein eigenes Thema zeigt.
 
 ## Der Wunschbaum am Eingang
 
 Der Giant Wish Tree steht in Global Fair am Haupteingang. Am Baum stehen Figuren der Panda-Zwillinge Rui Bao und Hui Bao. Anders als die echten beiden müssen die Figuren nicht in Quarantäne.
 
-In der ersten Woche gibt es den Baum, aber noch keine Parade. Abends läuft bis zum 23. November das bisherige Feuerwerk Guardians of Light, vom 24. bis zum 26. November hat Everland gar keine Nachtshow im Kalender.
+In der ersten Woche gibt es den Baum, aber noch keine Parade. Abends läuft bis zum 23. November das bisherige Feuerwerk The Guardians of Light, vom 24. bis zum 26. November hat Everland gar keine Nachtshow im Kalender.
 
 ## Parade und Nachtshow ab dem 27. November
 
 Die Bling Bling X-mas Parade dauert etwa eine halbe Stunde und zieht vom Eingang des Rose Garden bis zum Carnival Square. Mit den Weihnachtswagen kommen mehrere Dutzend Darsteller als Santa, Rudolph, Schneemann und andere Figuren, die zu Weihnachtsliedern tanzen. Unter diesem Namen lief die Parade schon 2025, damals mit Wagen in Form eines Baums, eines Schlittens und einer Torte.
 
-Neu ist Magic in the Sky, ein Feuerwerk mit Weihnachtsfilm, Musik, Lasern und mehreren tausend Feuerwerkskörpern. Es ersetzt die Mitsing-Show zu K-Pop Demon Hunters, die Everland im vorigen Winter mit Netflix jeden Abend gezeigt hat. Wer damals „Golden“ und „Soda Pop“ mitgesungen hat, darf den Text dieses Jahr vergessen.
+Magic in the Sky ist ein Feuerwerk mit Videos zu Weihnachtsmotiven, Musik, Lasern und mehreren tausend Feuerwerkskörpern. Im vorigen Winter lief abends stattdessen die Mitsing-Show zu K-Pop Demon Hunters, die Everland mit Netflix jeden Abend zeigte, mit „Golden“ und „Soda Pop“. In der Ankündigung für dieses Jahr kommt sie nicht mehr vor.
 
 Zu welchen Uhrzeiten Parade und Show laufen und wo die Show zu sehen ist, hat Everland noch nicht veröffentlicht. Die Showzeiten stehen, sobald es sie gibt, im Tagesplan auf everland.com.
 
@@ -65,7 +65,7 @@ Caribbean Bay hat ein eigenes Ticket. Bis Ende Dezember zahlen Erwachsene 45.000
 
 ## Eintritt und Öffnungszeiten
 
-Eine Tageskarte für das Everland kostet im November für Erwachsene und Jugendliche von 13 bis 18 Jahren 65.000 Won, für Kinder von 36 Monaten bis 12 Jahren und Senioren ab 65 Jahren 55.000 Won. Im Dezember sind es 55.000 und 45.000 Won. Wer vor allem Parade und Show sehen will, fährt also im Dezember günstiger als an den vier Novembertagen ab dem 27. Kinder unter 36 Monaten kommen frei hinein. Einige Angebote wie Münzgeräte und Verleih kosten im Park extra.
+Eine Tageskarte für das Everland kostet im November für Erwachsene und Jugendliche von 13 bis 18 Jahren 65.000 Won, für Kinder von 36 Monaten bis 12 Jahren und Senioren ab 65 Jahren 55.000 Won. Im Dezember sind es 55.000 und 45.000 Won. Wer vor allem Parade und Show sehen will, fährt also im Dezember günstiger als an den vier Novembertagen ab dem 27. Kinder unter 36 Monaten kommen frei hinein. Einige Einrichtungen im Park kosten extra, für Kinder unter 36 Monaten auch die Angebote nur für Kleinkinder.
 
 Am Starttag, Samstag, dem 21. November, ist der Park von 10 bis 21 Uhr geöffnet, am Sonntag und Montag danach bis 20 Uhr. Weiter reicht der Tagesplan noch nicht, Everland stellt ihn jede Woche neu ein.
 
@@ -73,7 +73,7 @@ Am Starttag, Samstag, dem 21. November, ist der Park von 10 bis 21 Uhr geöffnet
 
 ```
 
-Über den Winter pausieren einige Bahnen, je nach Wetter: der Play Yard ab dem 23. November, Amazon Express ab dem 7. Dezember und Thunder Falls ab dem 14. Dezember, alle bis Februar oder März. Außerdem prüft Everland mehrere Anlagen, Hurricane steht deshalb vom 23. bis zum 26. November still, Flying Rescue vom 23. November bis zum 2. Dezember und Sky Cruise vom 30. November bis zum 4. Dezember.
+Über den Winter pausieren einige Bahnen, je nach Wetter: der Play Yard ab dem 23. November, Amazon Express ab dem 7. Dezember und Thunder Falls ab dem 14. Dezember, alle bis Februar oder März. Außerdem prüft Everland mehrere Anlagen, Hurricane steht deshalb vom 23. bis zum 26. November still, Flying Rescue vom 23. November bis zum 2. Dezember und Sky Cruise vom 30. November bis zum 4. Dezember und noch einmal vom 14. bis zum 17. Dezember.
 
 ## Anreise
 
@@ -81,7 +81,7 @@ Mit der U-Bahn nimmst du die Bundang-Linie bis Giheung und wechselst dort in die
 
 ## Rui Bao und Hui Bao bis zum 11. Dezember
 
-Die Panda-Zwillinge sind am 11. Dezember zum letzten Mal öffentlich zu sehen, in der dritten Dezemberwoche ziehen sie nach China. Seit dem 13. November sind sie im Panda Second House in Quarantäne und nur eingeschränkt im Innengehege zu sehen. Baum und Zwillinge an einem Tag gibt es damit drei Wochen lang, mit Parade nur noch vom 27. November bis zum 11. Dezember. Wie die Besuche bei den Pandas ablaufen, steht in unserem Beitrag zum [Abschied von Rui Bao und Hui Bao](/news/everland-pandas-ruibao-huibao-abschied).
+Die Panda-Zwillinge sind voraussichtlich am 11. Dezember zum letzten Mal öffentlich zu sehen, in der dritten Dezemberwoche ziehen sie nach China. Seit dem 13. November sind sie im Panda Second House in Quarantäne und nur eingeschränkt im Innengehege zu sehen. Baum und Zwillinge an einem Tag gibt es damit drei Wochen lang, mit Parade nur noch vom 27. November bis zum 11. Dezember. Wie die Besuche bei den Pandas ablaufen, steht in unserem Beitrag zum [Abschied von Rui Bao und Hui Bao](/news/everland-pandas-ruibao-huibao-abschied).
 
 [Everland](ref:everland?full)
 
