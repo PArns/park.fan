@@ -38,17 +38,17 @@ Im [Parque Warner Madrid](ref:parque-warner-madrid) in San Martín de la Vega be
 
 ## Die neue Show, ACME Factory und die Repsol-Station
 
-„El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Erzählt wird von einem alten Reich, das jahrhundertelang von drei Gaben beschützt wurde: Hoffnung, Vorfreude und Magie. Jede Seifenblase trägt eine Erinnerung oder einen Wunsch, und Blase für Blase holt sich das Reich zurück, was es vergessen hatte. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, er braucht dafür jemanden aus dem Publikum, und wer vorne sitzt, sollte also mit einer kleinen Nebenrolle rechnen.
+„El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Erzählt wird von einem alten Reich, das jahrhundertelang von drei Gaben beschützt wurde: Hoffnung, Vorfreude und Magie. Jede Seifenblase trägt eine Erinnerung oder einen Wunsch, und Blase für Blase holt sich das Reich zurück, was es vergessen hatte. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, dafür holt er sich einen Freiwilligen aus dem Publikum.
 
-Schon ab dem 21. November ist ACME Factory: Christmas Candies offen. In der Weihnachtsfassung der Kinder-Attraktion, die zu Halloween eröffnet hat, holen Kinder mit den Looney Tunes das geheime Rezept der Weihnachtssüßigkeiten zurück. Das Rezept ist also schon wieder weg, im Oktober waren es die Kürbisbonbons, nachdem der Kojote durch die Fabrik gefegt war.
+Schon ab dem 21. November ist ACME Factory: Christmas Candies offen. In der Weihnachtsfassung der Kinder-Attraktion, die zu Halloween eröffnet hat, holen Kinder mit den Looney Tunes das geheime Rezept der Weihnachtssüßigkeiten zurück. Das Rezept ist also schon wieder weg, zu Halloween waren es die Kürbisbonbons, nachdem der Kojote durch die Fabrik gefegt war.
 
 Neu ist außerdem die Estación Energía de Repsol, ein Rundgang durch drei Räume zum Mitmachen. Darin verläufst du dich in einem Spiegellabyrinth, spielst bei einer Lichtinstallation mit und gehst durch eine Installation, die Sonnenstrahlen nachempfunden ist.
 
 ## Shows, Parade und Weihnachtsmann
 
-Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Lichter und Kunstschnee gibt es in allen fünf Themenbereichen, also in Cartoon Village, am Hollywood Boulevard, in DC Super Heroes World, in Movie World Studios und im Old West Territory. Am Hollywood Market schalten die Looney Tunes in einer eigenen Show die Weihnachtsbeleuchtung an.
+Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Lichter und Kunstschnee gibt es in allen fünf Themenbereichen, also in Cartoon Village, am Hollywood Boulevard, in DC Super Heroes World, in Movie World Studios und im Old West Territory. Den Weihnachtsbaum schalten die Looney Tunes in einer eigenen Show an.
 
-Auf den Bühnen laufen das Musical The Santa's Magical Bell, ab dem 5. Dezember wieder die Tanzshow vom Hollywood Boulevard, die 2025 Premiere hatte, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt, und die Heiligen Drei Könige empfangen dort ebenfalls Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in Winterkleidung für Fotos bereit. Den Tag beschließt die Superstars of Christmas Parade, in der Looney Tunes, Superhelden, der Weihnachtsmann und die drei Könige auf Wagen durch den Park fahren.
+Auf den Bühnen laufen das Musical The Santa's Magical Bell, ab dem 5. Dezember wieder die Tanzshow vom Hollywood Boulevard, die 2025 Premiere hatte, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt, und die Heiligen Drei Könige empfangen dort ebenfalls Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in festlicher Kleidung für Fotos bereit. Den Tag beschließt die Superstars of Christmas Parade, in der Looney Tunes, Superhelden, der Weihnachtsmann und die drei Könige auf Wagen durch den Park fahren.
 
 ## Öffnungstage und Uhrzeiten
 
@@ -74,7 +74,7 @@ Gedacht ist das meiste im Weihnachtsprogramm für Kinder. In der ACME Factory sp
 
 Christmas Studios gibt es zum dritten Mal. 2025 lief die zweite Ausgabe vom 6. Dezember bis zum 5. Januar. In diesem Jahr beginnt sie am 21. November statt am 6. Dezember und endet am 10. statt am 5. Januar.
 
-Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubble Christmas neu, mit der Elfe Bublinna, die das Gähnen der Kinder vor dem Einschlafen einsammelt und in Blasen verwandelt. Die Show steht 2026 nicht mehr im Programm. Auch das Repsol Christmas Music Studio, in dem Familien 2025 ihr Weihnachtslied aufnehmen konnten, ist durch die Estación Energía ersetzt.
+Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubble Christmas neu, mit der Elfe Bublinna, die das Gähnen der Kinder vor dem Einschlafen einsammelt und in Blasen verwandelt. Im Programm 2026 taucht die Show nicht mehr auf, ebenso wenig das Repsol Christmas Music Studio, in dem Familien 2025 ihr Weihnachtslied aufnehmen konnten. Repsol ist diesmal mit der Estación Energía vertreten.
 
 ## Anreise
 
