@@ -139,7 +139,7 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   - **Only on a ride that usually queues**: its usual wait is at least `STAMP_MIN_USUAL`
     (20 minutes). A walk-on on a ride that is a walk-on anyway is no news (`rideStampVerdict`).
   - **On the park page's ride cards, only what stands out in the park**: „Walk-on!“ where the live
-    wait is at or under the walk-on limit (`LIVE_LIMITS.walkOn`) and the ride's `baseline` is at
+    wait is a walk-on as his line counts one (`isWalkOn`: 10 minutes or less, or Disney's posted 13) and the ride's `baseline` is at
     least 20. `standoutRides` decides it once for the whole park (`TabsWithHash`, through
     `LandSection`'s `standouts` to the card's `parkyStamp`): when more than `STANDOUT_MAX` (three)
     rides stand out at once, the park is simply empty, every crowd badge says so, and no card gets

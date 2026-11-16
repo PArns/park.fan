@@ -2,7 +2,7 @@ import type { LiveParkSnapshot } from '@/lib/api/parks';
 import type { CrowdLevel, ParkAttraction, ParkStatus } from '@/lib/api/types';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
-import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { WALK_ON_WAIT_MINUTES, roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ParkyPlay } from './acts';
 
 /**
@@ -19,6 +19,14 @@ export type LiveChange = 'down' | 'drop';
  * least this much and at least half the wait gone).
  */
 export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
+
+/**
+ * Whether a live standby wait is a walk-on: at or under `limit`, or Disney's posted 13
+ * ({@link WALK_ON_WAIT_MINUTES}), the park's own sign for one, which sits above the limit.
+ */
+export function isWalkOn(wait: number, limit: number = LIVE_LIMITS.walkOn): boolean {
+  return wait <= limit || wait === WALK_ON_WAIT_MINUTES;
+}
 
 /**
  * How far under its usual wait for the hour a ride has to be for „Jetzt hin!“: at most half. A few
@@ -44,14 +52,14 @@ export type RideStampVerdict = 'walkOn' | 'belowTypical';
 
 /**
  * Parky's stamp for a ride's live standby `wait` against its `usual` wait, null where it says
- * nothing: no usual, or one under {@link STAMP_MIN_USUAL}. Otherwise `walkOn` at or under his
- * walk-on limit, the one his own line uses, and `belowTypical` when the five-minute figure the page
+ * nothing: no usual, or one under {@link STAMP_MIN_USUAL}. Otherwise `walkOn` for a walk-on as his
+ * own line counts one ({@link isWalkOn}), and `belowTypical` when the five-minute figure the page
  * prints is at most {@link BELOW_TYPICAL_SHARE} of the usual. The ride page's usual is the typical
  * for this hour it prints under the wait; a park's list uses each ride's `baseline`.
  */
 export function rideStampVerdict(wait: number, usual: number | null): RideStampVerdict | null {
   if (usual === null || usual < STAMP_MIN_USUAL) return null;
-  if (wait <= LIVE_LIMITS.walkOn) return 'walkOn';
+  if (isWalkOn(wait)) return 'walkOn';
   if (roundWaitTo5(wait) <= usual * BELOW_TYPICAL_SHARE) return 'belowTypical';
   return null;
 }
@@ -243,8 +251,10 @@ export function liveMoment(
   if (park.status !== 'OPERATING') return null;
   const limits = preview ? PREVIEW_LIMITS : LIVE_LIMITS;
   const rides = ridesOf(park);
-  const walkOn = openHeadliners(rides, headliners)[0];
-  if (walkOn && walkOn.wait! <= limits.walkOn) {
+  const walkOn = openHeadliners(rides, headliners).find((ride) =>
+    isWalkOn(ride.wait!, limits.walkOn)
+  );
+  if (walkOn) {
     return { kind: 'walkOn', ride: walkOn.name, wait: walkOn.wait! };
   }
   // As the park header reads it: the day's statistic, else the live load.

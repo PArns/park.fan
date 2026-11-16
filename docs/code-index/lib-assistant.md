@@ -229,6 +229,7 @@ What counts as a control the bubble must not cover.
 
 ### [`parky/live.ts`](../../lib/assistant/parky/live.ts)
 
+- `isWalkOn` _function_: Whether a live standby wait is a walk-on: at or under `limit`, or Disney's posted 13 (`WALK_ON_WAIT_MINUTES`), the park's own sign for one, which sits above the limit.
 - `rideStampVerdict` _function_: Parky's stamp for a ride's live standby `wait` against its `usual` wait, null where it says nothing: no usual, or one under `STAMP_MIN_USUAL`.
 - `standoutRides` _function_: The rides of one park whose live wait stands out against their own `baseline` right now, with their `rideStampVerdict`: open, as `parkStatus` and the ride's own status read together.
 - `headlinersOf` _function_: The rides Parky watches: the park's favourite (`PARK_FAVOURITES`) and its top attractions.

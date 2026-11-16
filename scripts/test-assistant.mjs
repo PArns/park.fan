@@ -76,6 +76,7 @@ import {
   LIVE_LINES,
   liveActDue,
   liveChange,
+  isWalkOn,
   liveMoment,
   rideStampVerdict,
   SHOW_RUN_MIN,
@@ -1222,6 +1223,20 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'a walk-on counts only for a headliner, and 15 minutes is no walk-on'
   );
   check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 11), ride('Black Mamba', 'OPERATING', 13)]),
+      heads,
+      false
+    ),
+    { kind: 'walkOn', ride: 'Black Mamba', wait: 13 },
+    "Disney's posted 13 is a walk-on, even behind a shorter headliner that is none"
+  );
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 12)]), heads, false),
+    null,
+    'only the posted 13 sits above the limit, not 12'
+  );
+  check(
     liveMoment(park([ride('Taron', 'OPERATING', 75), ride('Maus', 'OPERATING', 61)]), heads, false),
     { kind: 'queue', ride: 'Taron', wait: 75 },
     'the longest queue over an hour'
@@ -2206,11 +2221,16 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   check(rideStampVerdict(5, 15), null, 'stamp: a ride that is short anyway');
   check(rideStampVerdict(10, 20), 'walkOn', 'stamp: walk-on at the limit, usual 20');
   check(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the half');
+  check(rideStampVerdict(13, 30), 'walkOn', "stamp: Disney's posted 13 is a walk-on");
+  check(rideStampVerdict(14, 30), 'belowTypical', 'stamp: 14 is the printed 15, half of 30');
   check(rideStampVerdict(20, 40), 'belowTypical', 'stamp: half the usual');
   check(rideStampVerdict(22, 40), 'belowTypical', 'stamp: the printed 20 against 40');
   check(rideStampVerdict(23, 40), null, 'stamp: the printed 25 is more than half');
   check(rideStampVerdict(15, 25), null, 'stamp: 15 against 25');
 }
+check(isWalkOn(10), true, 'walk-on: the limit');
+check(isWalkOn(11), false, 'walk-on: over the limit');
+check(isWalkOn(13), true, "walk-on: Disney's posted 13");
 // Which rides stand out in their park: a few at most, or none when the park is simply empty.
 {
   const ride = (id, wait, baseline, status = 'OPERATING') => ({
