@@ -4,6 +4,7 @@ import { getCardImageMap } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 import { isSimulationEnabled, resolveSimLocation } from '@/lib/nearby-simulation';
 import { NEARBY_API_MAX_RADIUS_M, withNearbyCardImages } from '@/lib/nearby/fetch-nearby';
+import { refuseForeignRequest } from '@/lib/api/keyed-relay';
 
 // The answer depends on the client IP (GeoIP without coordinates), so it is never cached. With
 // NEXT_PUBLIC_API_DIRECT on, only simulations come through here (`fetchNearby`).
@@ -16,6 +17,10 @@ const MAX_RADIUS = 50000;
 const MAX_LIMIT = 50;
 
 export async function GET(request: NextRequest) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  const refused = refuseForeignRequest(request);
+  if (refused) return refused;
+
   const { searchParams } = new URL(request.url);
   const lat = searchParams.get('lat');
   const lng = searchParams.get('lng');

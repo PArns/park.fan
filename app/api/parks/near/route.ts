@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getParksNearLocationFresh } from '@/lib/api/discovery';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { refuseForeignRequest } from '@/lib/api/keyed-relay';
 
 /**
  * Live "parks near these coordinates" for the park page's nearby cards (`useParkNeighbors`), which
@@ -9,6 +10,10 @@ import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
  * A backend failure answers an uncached 502, never a shared empty list.
  */
 export async function GET(request: NextRequest) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  const refused = refuseForeignRequest(request);
+  if (refused) return refused;
+
   const sp = new URL(request.url).searchParams;
   const lat = Number(sp.get('lat'));
   const lng = Number(sp.get('lng'));

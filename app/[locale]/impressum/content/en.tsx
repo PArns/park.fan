@@ -4,7 +4,7 @@ import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
-import { DEVELOPERS_PATH } from '@/lib/developers/paths';
+import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in English, shown on every locale but `de`. */
@@ -219,50 +219,94 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           Using the data
         </h2>
         <p className="mb-4">
-          Anyone may use the data park.fan publishes on its pages and through the API at
-          api.park.fan (wait times, opening hours, statistics and forecasts) free of charge for
-          non-commercial purposes: in their own app, on a fan site without advertising, in a
-          research project or a school assignment. Credit park.fan and link to the page of the park
-          or ride the data is about. Texts and photos are not included.
+          These terms cover all data park.fan publishes on its pages, through the API at
+          api.park.fan and through the MCP server. Texts and photos are not included; the
+          photographers hold the rights to many of the photos.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Forecasts and park.fan's own data need an API key
-        </h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Without an API key, wait times only</h3>
         <p className="mb-4">
-          Forecasts are everything park.fan predicts with its own models, including the crowd
-          calendar, the expected crowds per day and per hour, predicted wait times, the best days to
-          visit, the yearly predictions and the plans of the day planner and the trip planner. The
-          API returns them only with an API key.
+          Without a key the API serves the current wait times and status of a park's attractions,
+          and nothing else. Everything else needs an API key with the matching permission: the park
+          directory and park data, ride data such as minimum height, ride profile and links, opening
+          hours, seasons, the weather, statistics, forecasts, the day and trip planners and the
+          travel data. A key carries only the permissions granted to it. The wait times without a
+          key, too, may only be used by those who earn no money with them and link park.fan as
+          described under "Credit".
         </p>
         <p className="mb-4">
-          The same applies to everything else park.fan makes itself: the statistics drawn from the
-          measured wait times, the seasons, events, ride profiles and maintenance windows kept by
-          hand, and the data of the trip regions. Using them through the API takes an API key with
-          the matching permission. A key carries only the permissions granted to it. A key for
-          non-commercial use is free; request one on the{' '}
+          You request a key on the{' '}
           <Link href={DEVELOPERS_PATH} className="text-primary hover:text-primary/80 underline">
             developer portal
           </Link>
-          .
+          . Every request is reviewed by hand; nobody is entitled to a key.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          A free key only for open source without earnings
+        </h3>
+        <p className="mb-4">A free key is issued only when all three conditions hold:</p>
+        <ul className="mb-4 list-disc space-y-2 pl-6">
+          <li>The project's source code is public, under an open-source licence.</li>
+          <li>
+            The project earns no money: no ads, no affiliate or paid links, no price, no
+            subscription, no in-app purchases, no client work. Donations and sponsorship are fine.
+          </li>
+          <li>
+            Every page and screen showing park.fan's data links park.fan visibly, as described under
+            "Credit".
+          </li>
+        </ul>
         <p className="mb-4">
-          Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
-          advertising, a website with advertising or affiliate links, and any product a company
-          offers. Using park.fan's forecasts, statistics and its other own data commercially
-          requires a written agreement with Patrick Arns (park.fan). Without one, they may not be
-          shown, stored or passed on for such purposes, whether they come from the pages, the API or
-          the MCP server.
+          When one of the conditions no longer holds, the free key ends. park.fan may then revoke it
+          without notice.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data for non-commercial use only</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Any other use is paid</h3>
+        <p className="mb-4">
+          Any other use gets a key only against payment and with a written agreement with Patrick
+          Arns (park.fan): anything with ads, affiliate links, a price, a subscription or in-app
+          purchases, client work, any company's product, and any project whose source code is not
+          public. Without that agreement, park.fan's data may not be shown, stored or passed on for
+          such purposes, whether it comes from the pages, the API or the MCP server.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Credit</h3>
+        <p className="mb-4">
+          Whoever shows park.fan's data links park.fan. For a free key and for the wait times
+          without a key:
+        </p>
+        <ul className="mb-4 list-disc space-y-2 pl-6">
+          <li>
+            A text link with the word park.fan to the park.fan page of the park or attraction whose
+            data is shown; when a view shows many parks, to the home page.
+          </li>
+          <li>
+            An ordinary link in the page's HTML: without nofollow, sponsored or ugc, without a
+            redirect, and not added only by a script.
+          </li>
+          <li>Visible and close to the data, on a page search engines may index.</li>
+          <li>
+            In an app, the visible line "Data: park.fan" and such a link on the project's website.
+          </li>
+        </ul>
+        <p className="mb-4">
+          Examples and every detail are on the{' '}
+          <Link
+            href={`${DEVELOPERS_PATH}#${ATTRIBUTION_ANCHOR}`}
+            className="text-primary hover:text-primary/80 underline"
+          >
+            developer portal
+          </Link>
+          . For a paid key, the agreement settles the credit.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Wait times, opening hours and weather</h3>
         <p className="mb-4">
           Wait times and opening hours come from the platforms listed under Data Sources, the
-          weather from Open-Meteo. park.fan passes them on for non-commercial use, on the terms
-          above. It holds no rights of its own in this data and so cannot permit commercial use of
-          it: that takes an agreement with the source itself.
+          weather from Open-Meteo. park.fan passes them on under the terms above. park.fan holds no
+          rights of its own to this data and so cannot allow commercial use of it either: that needs
+          an agreement with the source in question.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">No training of AI models</h3>

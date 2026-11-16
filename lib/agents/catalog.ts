@@ -38,7 +38,7 @@ export function aiCatalog() {
       identifier: identifier('api', 'catalog'),
       displayName: 'park.fan API catalog',
       description:
-        'RFC 9727 catalog naming the OpenAPI description, the reference docs and the health endpoint of the public park.fan API. Live data needs no authentication; forecasts need a data key.',
+        'RFC 9727 catalog naming the OpenAPI description, the reference docs and the health endpoint of the public park.fan API. Only the live wait times need no authentication; everything else needs a data key.',
       type: LINKSET_MEDIA_TYPE,
       url: `${SITE_URL}${API_CATALOG_PATH}`,
       representativeQueries: [

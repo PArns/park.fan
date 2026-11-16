@@ -2854,7 +2854,7 @@
     "tiers": {
       "kicker": "Kosten",
       "title": "Kostenlos oder kostenpflichtig",
-      "lead": "Welcher Key in Frage kommt, hängt davon ab, ob dein Code offen ist und ob dein Projekt Geld verdient.",
+      "lead": "Welcher Key in Frage kommt, hängt davon ab, ob dein Code offen ist und ob dein Projekt Geld verdient",
       "freeTitle": "Kostenloser Key",
       "free": {
         "openSource": "Der Quellcode ist öffentlich, unter einer Open-Source-Lizenz.",
@@ -2875,15 +2875,45 @@
     "attribution": {
       "kicker": "Quellenhinweis",
       "title": "So muss der Link auf park.fan aussehen",
-      "lead": "Der Link ist die Gegenleistung für den kostenlosen Key. Er muss für Besucher sichtbar und für Suchmaschinen ein gewöhnlicher Link sein.",
-      "doTitle": "So ist es richtig",
-      "do": {
-        "visible": "Sichtbar auf jeder Seite oder in jeder Ansicht, die Daten von park.fan zeigt, in normaler Schriftgröße.",
-        "link": "Ein Textlink mit dem Wort park.fan, der auf die Seite des Parks oder der Attraktion bei park.fan führt, um die es geht.",
-        "follow": "Ein gewöhnlicher Link, ohne <code>nofollow</code>, <code>sponsored</code> oder <code>ugc</code> im <code>rel</code>-Attribut.",
-        "indexable": "Auf einer Seite, die Suchmaschinen indexieren dürfen: kein <code>noindex</code>, keine Sperre in der robots.txt, kein Login davor.",
-        "near": "Nah an den Daten, zum Beispiel unter der Tabelle mit den Wartezeiten oder im Footer der Seite.",
-        "apps": "In einer App: der Hinweis „Daten: park.fan“ sichtbar in der App und ein Link wie oben auf der Website oder der Store-Seite des Projekts."
+      "lead": "Der Link ist die Gegenleistung für den kostenlosen Key. Er muss für Besucher sichtbar und für Suchmaschinen ein gewöhnlicher Link sein, der auf park.fan zeigt. Jeder Punkt unten ist Bedingung.",
+      "spec": {
+        "title": "So sieht der Link aus",
+        "target": {
+          "label": "Ziel",
+          "text": "Die Seite des Parks oder der Attraktion auf park.fan, deren Daten du zeigst, in der Sprache deiner Seite. Zeigt eine Ansicht viele Parks auf einmal, die Startseite <code>https://park.fan/de</code>."
+        },
+        "anchor": {
+          "label": "Linktext",
+          "text": "Enthält das Wort park.fan, etwa „park.fan“ oder „Wartezeiten von park.fan“. Nicht „hier“, „Quelle“ oder nur ein Logo."
+        },
+        "rel": {
+          "label": "Attribut rel",
+          "text": "Leer oder nur <code>noopener</code>. Nie <code>nofollow</code>, <code>sponsored</code> oder <code>ugc</code>."
+        },
+        "markup": {
+          "label": "Im HTML",
+          "text": "Ein gewöhnliches <code>{tag}</code> im HTML, das dein Server ausliefert, ohne Weiterleitung und ohne Link-Shortener. Kein Button mit JavaScript, kein Link, den erst ein Skript einfügt."
+        },
+        "visible": {
+          "label": "Sichtbar",
+          "text": "In normaler Schriftgröße und mit lesbarem Kontrast, ohne Aufklappen oder Scrollen in einem eigenen Kasten erreichbar."
+        },
+        "place": {
+          "label": "Ort",
+          "text": "Auf jeder Seite und in jeder Ansicht mit Daten von park.fan, nah an den Daten: unter der Tabelle mit den Wartezeiten oder im Footer der Seite."
+        },
+        "indexable": {
+          "label": "Seite",
+          "text": "Suchmaschinen dürfen sie indexieren: kein <code>noindex</code>, keine Sperre in der robots.txt, kein Login davor."
+        },
+        "apps": {
+          "label": "Apps",
+          "text": "In der App steht sichtbar „Daten: park.fan“, wo die Daten erscheinen. Dazu kommt ein Link wie oben auf der Website des Projekts, auf der Seite über die App."
+        },
+        "duration": {
+          "label": "Dauer",
+          "text": "Solange du den Key nutzt. Fehlt der Link, endet der kostenlose Key."
+        }
       },
       "dontTitle": "Das zählt nicht",
       "dont": {
@@ -2893,8 +2923,12 @@
         "redirect": "Ein Umweg über einen Link-Shortener oder eine Weiterleitung",
         "image": "Nur ein Logo oder Bild ohne Textlink"
       },
-      "exampleTitle": "Beispiel",
-      "exampleBody": "So sieht ein Quellenhinweis aus, der alle Punkte erfüllt. Der Link führt auf die Seite des Parks, dessen Daten daneben stehen."
+      "exampleTitle": "Beispiele",
+      "exampleBody": "Unter Daten zu einem Park verlinkst du dessen Seite. Ein Footer, der auf jeder Seite steht, verlinkt die Startseite.",
+      "examplePark": "Wartezeiten und Prognosen:",
+      "exampleFooter": "Daten:",
+      "checkTitle": "So prüfst du den Link",
+      "checkBody": "Öffne deine Seite, lass dir den Quelltext anzeigen (nicht die Entwicklertools) und such nach park.fan. Dort muss das <code>{tag}</code> mit der Adresse von park.fan stehen, ohne <code>nofollow</code>. Fehlt es im Quelltext, fügt es erst ein Skript ein, und dann zählt es nicht."
     },
     "usage": {
       "kicker": "Abfragen",
@@ -3080,7 +3114,7 @@
     "dashboard": {
       "metaTitle": "Entwickler-Dashboard",
       "title": "Entwickler-Dashboard",
-      "lead": "Deine API-Keys, ihre Nutzung und deine Anträge.",
+      "lead": "Deine API-Keys, ihre Nutzung und deine Anträge",
       "backToPortal": "Zurück zur API-Übersicht",
       "loading": "Wird geladen",
       "loadFailed": "Das Dashboard ließ sich nicht laden.",
@@ -3097,7 +3131,7 @@
       "noKeys": "Noch kein Key. Sobald ein Antrag freigegeben ist, steht der Key hier.",
       "requestsTitle": "Deine Anträge",
       "newRequest": "Key beantragen",
-      "filed": "Der Antrag ist angekommen. Die Entscheidung steht hier, sobald sie gefallen ist.",
+      "filed": "Der Antrag ist angekommen. Die Entscheidung erscheint in dieser Liste, sobald sie gefallen ist.",
       "noRequests": "Noch kein Antrag.",
       "pendingHint": "Jeder Antrag wird von Hand geprüft.",
       "withdraw": "Zurückziehen",

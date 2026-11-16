@@ -360,14 +360,15 @@ The section „API-Zugriff / MCP“ (`account/mcp-access.tsx`) has the address w
 
 ### Data API keys: `/admin/api-keys`
 
-The keys that unlock park.fan's forecasts on api.park.fan for one consumer each
-([a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md)).
+The keys that unlock api.park.fan for one consumer each, permission by permission
+([only the wait times leave park.fan without a key](../rules/only-the-wait-times-leave-without-a-key.md)).
 Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key.create`,
 `api-key.update`, `api-key.revoke`, `api-key.rotate`, `api-key.previous.revoke` and
-`api-key.delete`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`, paths from `dataApiKeyPath`.
+`api-key.delete`), because a key decides who uses park.fan's data. Helpers in `lib/admin/api-keys.ts`, paths from `dataApiKeyPath`.
 
-Above the keys stand the key requests from the developer portal, each of which becomes a key
-through the create dialog, and once the API stores scopes both dialogs carry them: both in
+On top stands the usage of all keys (active keys, this hour, today, 30 days, the busiest keys),
+then the requests developers filed on their dashboard, each of which becomes a key only through
+„Freigeben“ here, with the permissions picked per group. Both are described in
 [the developer portal](developer-portal.md#review-in-the-admin).
 
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
@@ -378,9 +379,11 @@ through the create dialog, and once the API stores scopes both dialogs carry the
   with the requests its allowance refused (`formatKeyUsage`). The chart button opens the use per
   UTC day for 30 days (`SeriesChart`, refusals as a second line when there were any) and per month
   for the last 12, from the first month with a request on (`usedMonths`); the API counts every key,
-  the `internal` one included. An active row has an edit button (allowance, parks and end date,
+  the `internal` one included. An active row has an edit button (permissions, allowance, parks and end date,
   `PATCH`, from the next request on) and its revoke button behind a `ConfirmDialog`, which warns
-  that revoking the `internal` key takes the forecasts off the site. A revoked or expired key stays
+  that revoking the `internal` key leaves the site with the wait times alone. A row also shows the
+  key's permissions („Altbestand“ for one from before them), the developer account that holds it
+  and „nicht abgeholt“ while an approved key waits on the dashboard. A revoked or expired key stays
   listed with its text dimmed; an expired one keeps its edit button, because a new date brings it
   back. A revoked row has a delete button where the revoke button was („… löschen“), behind a
   `ConfirmDialog`: `POST …/delete` removes the key and its statistics for good, and the row goes with

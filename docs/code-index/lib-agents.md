@@ -20,13 +20,6 @@ What park.fan tells machines about its API: the catalog document served at /.wel
 - `aiCatalog` _function_: Builds the ARD capability manifest served at `/.well-known/ai-catalog.json`: one entry for the API catalog and one per agent skill.
 - `AI_CATALOG_PATH` _const_: The ARD capability manifest (agenticresourcediscovery.org): what park.fan can do for an agent. Every entry points at a document served elsewhere in this repository, so it cannot drift.
 
-### [`forecast-access.ts`](../../lib/agents/forecast-access.ts)
-
-- `presentedApiKey` _function_: The data key an MCP request presents, from `X-API-Key` or `Authorization: Bearer pfk_…`.
-- `forecastGrant` _function_: Whether an MCP request may call a forecast tool, and how; null when it may not.
-- `FORECAST_TOOLS` _const_: See `FORECAST_TOOL_NAMES`.
-- Types: `ForecastGrant`
-
 ### [`http.ts`](../../lib/agents/http.ts)
 
 - `agentDocumentHeaders` _function_: Response headers for a machine-readable document: the given content type, `AGENT_DOC_CACHE_CONTROL` and open CORS, since these exist to be read from other origins.
@@ -38,7 +31,7 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 - `RSL_LICENSE_PATH` _const_
 - `DATA_TERMS_ANCHOR` _const_: The `id` of the terms section in both Impressum languages, so one link reaches either.
-- `DATA_TERMS_URL` _const_: The human-readable terms for reusing park.fan's data: free for non-commercial use, commercial use of the forecasts only under a written agreement, the live data under its sources' terms.
+- `DATA_TERMS_URL` _const_: The human-readable terms for reusing park.fan's data: the wait times open, everything else with a data key, free only for open source without earnings and a visible link, any other use under a written agreement, the live data under its …
 - `RSL_CONTENT_TYPE` _const_: RSL 1.0 §3. Served as `application/rsl+xml`.
 - `RSL_DOCUMENT` _const_: The licence itself. `payment type="attribution"` is RSL's way of saying the price is a credit: name park.fan and link the page the number came from.
 - `LICENSE_LINK_HEADER` _const_: RSL 1.0 §4.5: the licence, associated with the asset being served.
@@ -69,11 +62,18 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 - `AGENT_SKILLS` _const_: Three skills for the three questions people arrive with: the queue right now, which day to go, and the data itself. None of them mentions `/admin`, on purpose.
 - Types: `AgentSkillName`
 
+### [`tool-access.ts`](../../lib/agents/tool-access.ts)
+
+- `presentedApiKey` _function_: The data key an MCP request presents, from `X-API-Key` or `Authorization: Bearer pfk_…`.
+- `toolGrant` _function_: How an MCP request may read, or null for a caller with neither: such a caller gets the wait times and nothing that needs a key.
+- `KEYED_TOOLS` _const_: See `KEYED_TOOL_NAMES`.
+- Types: `ToolGrant`
+
 ### [`tool-descriptors.ts`](../../lib/agents/tool-descriptors.ts)
 
 The three tools park.fan offers an agent, described once because they are served twice: over MCP at `/api/mcp` and through `navigator.modelContext` on the page. `lib/agents/mcp-tools.ts` implements them.
 
 - `toolDescriptor` _function_: Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when there is none.
 - `TOOL_DESCRIPTORS` _const_
-- `FORECAST_TOOL_NAMES` _const_: The tools whose answer is a forecast. Like the API's forecast routes they need a data key, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
+- `KEYED_TOOL_NAMES` _const_: The tools that need a data key, as the API routes behind them do, unless the call comes from a park.fan page (`lib/agents/tool-access.ts`). The wait-times tool is open and answers a caller without a key with the wait times alone.
 - Types: `ToolDescriptor`

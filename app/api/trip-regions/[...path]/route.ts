@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerApiHeaders } from '@/lib/api/client';
 import { CACHE_TTL } from '@/lib/api/cache-config';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
-import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
+import { refuseForeignRequest } from '@/lib/api/keyed-relay';
 import { tripRegionApiUrl, tripRegionCacheTag } from '@/lib/trip-regions/api';
 import { tripRegionRelayTarget } from '@/lib/trip-regions/relay';
 import { isSlugPath } from '@/lib/utils/servable-route';
@@ -11,7 +11,7 @@ import { isSlugPath } from '@/lib/utils/servable-route';
  * The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan,/plan/ideas}`: the planner
  * asks `/plan` on every change and the calendar asks other windows than the page rendered, and the
  * keyed routes need the site's data key, which never reaches a browser. The forecast branches
- * answer only this site's pages (docs/rules/a-forecast-leaves-only-with-a-key.md).
+ * answer only this site's pages (docs/rules/only-the-wait-times-leave-without-a-key.md).
  *
  * The calendar and best days go through the Data Cache under the region's tag, so the window the
  * page rendered and the one its matrix then asks for are one upstream call. A plan and its ideas do
@@ -30,7 +30,8 @@ export async function GET(
   if (!target) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400, headers: NO_STORE });
   }
-  if (target.forecast && !isSameOriginRequest(request)) return foreignForecastRequest();
+  const refused = refuseForeignRequest(request);
+  if (refused) return refused;
 
   const cached =
     target.route !== 'plan' && target.route !== 'plan/ideas' && target.route !== 'when';

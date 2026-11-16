@@ -11,6 +11,7 @@ import { blogFeedUrl } from '@/lib/blog/feed';
 import { tripRegionPath } from '@/lib/trip-regions/paths';
 import { getRegionTranslations } from '@/lib/trip-regions/region-messages';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
+import { ATTRIBUTION_ANCHOR, DEVELOPER_PORTAL_URL } from '@/lib/developers/paths';
 
 /**
  * `/llms.txt` (llmstxt.org): the one file to read when an agent has the hostname and nothing
@@ -90,7 +91,7 @@ ${[
   line(
     'OpenAPI',
     'https://api.park.fan/api-json',
-    'the description; live data needs no key, forecasts need X-API-Key'
+    'the description; only the wait times need no key, everything else needs X-API-Key'
   ),
   line('API reference', 'https://api.park.fan/api', 'the same, for people'),
   line(
@@ -136,14 +137,15 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
 
 ## Reusing the data
 
-Free for non-commercial use: name park.fan and link the page a number came from. The forecasts
-(everything park.fan's own models predict: crowd calendar, expected crowds per day and hour,
-predicted wait times, best days, yearly predictions, day plans) come from the API and the MCP
-forecast tool only with a data key in \`X-API-Key\`, free for non-commercial use on request
-(${EN}/developers, which also lists what each scope of a key opens). Using the forecasts or park.fan's statistics commercially requires a written
-agreement with Patrick Arns (park.fan). Live wait times and opening hours come from park.fan's
-sources and are passed on for non-commercial use only. Without a key, the API allows 60 reads a
-minute and 1,000 an hour per address. The full terms: ${DATA_TERMS_URL}
+Without a key the API and the MCP server give out a park's live wait times and nothing else.
+Everything else, from the park directory, search and ride details to opening hours, weather,
+seasons, statistics, forecasts and the planners, needs a data key in \`X-API-Key\` that carries the
+matching permission. A person requests one on the developer dashboard; the portal lists the
+permissions and what each opens: ${DEVELOPER_PORTAL_URL}. A free key is only for an open-source
+project that earns no money (donations are fine) and links park.fan visibly with an ordinary,
+followable link on an indexable page (${DEVELOPER_PORTAL_URL}#${ATTRIBUTION_ANCHOR}). Any other use
+needs a paid key under a written agreement with Patrick Arns (park.fan). Without a key, the API
+allows 60 reads a minute and 1,000 an hour per address. The full terms: ${DATA_TERMS_URL}
 
 ## Contact
 

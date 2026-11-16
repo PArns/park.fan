@@ -185,11 +185,19 @@ Route `/[locale]/datenschutz` (page).
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 
+### [`developers/dashboard/page.tsx`](../../app/%5Blocale%5D/developers/dashboard/page.tsx)
+
+Route `/[locale]/developers/dashboard` (page).
+
+- `default (DeveloperDashboardPage)` _component_: The developer dashboard: an account's keys, their use, pickup, rotation and revocation, and its key requests.
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
 ### [`developers/page.tsx`](../../app/%5Blocale%5D/developers/page.tsx)
 
 Route `/[locale]/developers` (page).
 
-- `default (DevelopersPage)` _component_: The developer portal: what the API serves openly and what each key scope opens (from `lib/developers/scopes.ts`), how to send and check a key, the terms in short, and the key request form.
+- `default (DevelopersPage)` _component_: The developer portal: what is open without a key (the wait times) and what each permission of a key opens, how a key is requested and picked up on the dashboard, which key the terms allow, how the credit must look, and how to call the API.
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 

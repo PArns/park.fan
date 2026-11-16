@@ -3,6 +3,7 @@ import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { hasReadableWaitTimes } from '@/lib/utils/live-wait-times';
 import type { DiscoveryCityResponse, LiveParkFields } from '@/lib/api/types';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { refuseForeignRequest } from '@/lib/api/keyed-relay';
 
 /**
  * Guardrail for a public route that fans out to the backend. The featured strip needs at most six
@@ -18,6 +19,10 @@ const REGION_RE = /^[a-z0-9-]+\/[a-z0-9-]+$/;
  * response maps each park id to its `LiveParkFields`.
  */
 export async function GET(request: NextRequest) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  const refused = refuseForeignRequest(request);
+  if (refused) return refused;
+
   const raw = request.nextUrl.searchParams.get('regions') ?? '';
   const regions = [...new Set(raw.split(',').filter(Boolean))];
 

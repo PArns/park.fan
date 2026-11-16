@@ -1,7 +1,11 @@
-// The forecast relays under /api/parks/* answer only park.fan's own pages, and the server asks the
+// The relays answer only park.fan's own pages, except a park's wait times, and the server asks the
 // API's mixed routes for their forecast fields with `forecast=true`. These cases pin which relay
-// paths count as forecasts, which requests count as the site's own, and how the flag is appended.
-import { isForecastRelayPath, isSameOriginRequest } from '../lib/api/forecast-relay.ts';
+// path stays open, which requests count as the site's own, and how the flag is appended.
+import {
+  isOpenRelayPath,
+  isSameOriginRequest,
+  refuseForeignRequest,
+} from '../lib/api/keyed-relay.ts';
 import { fetchWithForecast, readWithForecast, withForecast } from '../lib/api/forecast-query.ts';
 
 const park = ['north-america', 'united-states', 'orlando', 'magic-kingdom-park'];
@@ -50,35 +54,62 @@ async function withKeyAndFetch(statuses, read) {
 
 const testCases = [
   {
-    name: 'the live poll is a forecast path',
-    actual: () => isForecastRelayPath(park),
-    expected: true,
-  },
-  {
-    name: 'calendar, best days, the day plan, its optimizer and the day curve are forecast paths',
-    actual: () =>
-      [
+    name: "only a park's wait times stay open; the live poll and every other branch need a page",
+    actual: () => [
+      isOpenRelayPath([...park, 'wait-times']),
+      isOpenRelayPath(park),
+      ...[
         ['calendar'],
         ['calendar', 'hourly'],
         ['best-days'],
         ['plan', 'day'],
         ['plan', 'optimize'],
+        ['stats'],
+        ['stats', 'hourly'],
         ['stats', 'day'],
-      ].every((rest) => isForecastRelayPath([...park, ...rest])),
-    expected: true,
+        ['positions'],
+        ['ride-stats'],
+        ['weather', 'nowcast'],
+        ['attractions', 'tron-lightcycle-run'],
+      ].map((rest) => isOpenRelayPath([...park, ...rest])),
+    ],
+    expected: [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ],
   },
   {
-    name: "a ride's detail is a forecast path",
-    actual: () => isForecastRelayPath([...park, 'attractions', 'tron-lightcycle-run']),
-    expected: true,
-  },
-  {
-    name: 'wait times, history and positions stay open',
-    actual: () =>
-      [['wait-times'], ['stats'], ['stats', 'hourly'], ['positions'], ['weather', 'nowcast']].some(
-        (rest) => isForecastRelayPath([...park, ...rest])
-      ),
-    expected: false,
+    name: 'a refused relay names the portal and the terms, and is never cached',
+    actual: async () => {
+      const response = refuseForeignRequest(request({ 'sec-fetch-site': 'cross-site' }));
+      const body = await response.json();
+      return {
+        status: response.status,
+        error: body.error,
+        portal: body.portal,
+        cache: response.headers.get('cache-control'),
+        page: refuseForeignRequest(request({ 'sec-fetch-site': 'same-origin' })),
+      };
+    },
+    expected: {
+      status: 403,
+      error: 'park-fan-relay',
+      portal: 'https://park.fan/en/developers',
+      cache: 'no-store, must-revalidate',
+      page: null,
+    },
   },
   {
     name: "a page's own fetch is same-origin",

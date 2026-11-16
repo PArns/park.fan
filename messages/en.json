@@ -2854,7 +2854,7 @@
     "tiers": {
       "kicker": "Cost",
       "title": "Free or paid",
-      "lead": "Which key fits depends on whether your code is open and whether your project earns money.",
+      "lead": "Which key fits depends on whether your code is open and whether your project earns money",
       "freeTitle": "Free key",
       "free": {
         "openSource": "The source code is public, under an open-source licence.",
@@ -2875,15 +2875,45 @@
     "attribution": {
       "kicker": "Credit",
       "title": "What the link to park.fan must look like",
-      "lead": "The link is what a free key costs. It must be visible to visitors and an ordinary link to search engines.",
-      "doTitle": "Like this",
-      "do": {
-        "visible": "Visible on every page or screen that shows park.fan's data, in normal type size.",
-        "link": "A text link with the word park.fan that leads to the page of the park or attraction in question on park.fan.",
-        "follow": "An ordinary link, without <code>nofollow</code>, <code>sponsored</code> or <code>ugc</code> in its <code>rel</code> attribute.",
-        "indexable": "On a page search engines may index: no <code>noindex</code>, no block in robots.txt, no login in front of it.",
-        "near": "Close to the data, for example below the wait-time table or in the page's footer.",
-        "apps": "In an app: the line “Data: park.fan” visible in the app, and a link as above on the project's website or store page."
+      "lead": "The link is what a free key costs. It must be visible to visitors and, for search engines, an ordinary link pointing to park.fan. Every point below is a condition.",
+      "spec": {
+        "title": "What the link looks like",
+        "target": {
+          "label": "Target",
+          "text": "The park.fan page of the park or attraction whose data you show, in your page's language. When a view shows many parks at once, the home page <code>https://park.fan/en</code>."
+        },
+        "anchor": {
+          "label": "Link text",
+          "text": "Contains the word park.fan, such as “park.fan” or “Wait times by park.fan”. Not “here”, “source” or only a logo."
+        },
+        "rel": {
+          "label": "rel attribute",
+          "text": "Empty or only <code>noopener</code>. Never <code>nofollow</code>, <code>sponsored</code> or <code>ugc</code>."
+        },
+        "markup": {
+          "label": "In the HTML",
+          "text": "An ordinary <code>{tag}</code> in the HTML your server sends, with no redirect and no link shortener. No JavaScript button, no link that only a script adds."
+        },
+        "visible": {
+          "label": "Visible",
+          "text": "In normal type size and readable contrast, reachable without expanding anything or scrolling inside a box of its own."
+        },
+        "place": {
+          "label": "Place",
+          "text": "On every page and screen that shows park.fan's data, close to the data: below the wait-time table or in the page's footer."
+        },
+        "indexable": {
+          "label": "Page",
+          "text": "Search engines may index it: no <code>noindex</code>, no block in robots.txt, no login in front of it."
+        },
+        "apps": {
+          "label": "Apps",
+          "text": "The app shows “Data: park.fan” where the data appears. On top of that comes a link as above on the project's website, on the page about the app."
+        },
+        "duration": {
+          "label": "Duration",
+          "text": "As long as you use the key. Without the link, the free key ends."
+        }
       },
       "dontTitle": "This does not count",
       "dont": {
@@ -2893,8 +2923,12 @@
         "redirect": "A detour through a link shortener or a redirect",
         "image": "Only a logo or image without a text link"
       },
-      "exampleTitle": "Example",
-      "exampleBody": "A credit that meets every point. The link leads to the page of the park whose data stands next to it."
+      "exampleTitle": "Examples",
+      "exampleBody": "Below the data of one park, link that park's page. A footer that appears on every page links the home page.",
+      "examplePark": "Wait times and forecasts:",
+      "exampleFooter": "Data:",
+      "checkTitle": "How to check the link",
+      "checkBody": "Open your page, view its source (not the developer tools) and search for park.fan. The <code>{tag}</code> with park.fan's address must be there, without <code>nofollow</code>. If the source lacks it, a script adds it later, and then it does not count."
     },
     "usage": {
       "kicker": "Requests",
@@ -3080,7 +3114,7 @@
     "dashboard": {
       "metaTitle": "Developer dashboard",
       "title": "Developer dashboard",
-      "lead": "Your API keys, their use and your requests.",
+      "lead": "Your API keys, their use and your requests",
       "backToPortal": "Back to the API overview",
       "loading": "Loading",
       "loadFailed": "The dashboard could not be loaded.",
@@ -3097,7 +3131,7 @@
       "noKeys": "No key yet. Once a request is approved, the key appears here.",
       "requestsTitle": "Your requests",
       "newRequest": "Request a key",
-      "filed": "The request has arrived. The decision appears here once it is made.",
+      "filed": "The request has arrived. The decision appears in this list once it is made.",
       "noRequests": "No request yet.",
       "pendingHint": "Every request is reviewed by hand.",
       "withdraw": "Withdraw",
@@ -3117,7 +3151,7 @@
         "expired": "expired",
         "revoked": "revoked"
       },
-      "pickupText": "The key is approved. Pick it up: it is shown to you exactly once.",
+      "pickupText": "Your request is approved. Pick up the key now: it is shown to you exactly once.",
       "pickup": "Pick up the key",
       "thisHour": "This hour",
       "noLimit": "no limit",

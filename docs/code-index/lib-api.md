@@ -44,6 +44,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CACHE_TTL` _const_: Data Cache windows (`next: { revalidate }`) for backend fetches, one per kind of data, each set from that data's own cadence.
 
+### [`caller-key.ts`](../../lib/api/caller-key.ts)
+
+- `isApiKeyRefusal` _function_: The value is the API's refusal of a caller's key rather than an answer.
+- `readWithCallerKey` _function_: GETs an API path with `apiKey` as the only credential. A refusal comes back as `ApiKeyRefusal`, a 404 as null, any other failure throws.
+- Types: `ApiKeyRefusal`
+
 ### [`cdn-cache-headers.ts`](../../lib/api/cdn-cache-headers.ts)
 
 - `cdnCacheHeaders` _function_: Cache headers for an API route meant to sit in a shared cache.
@@ -87,8 +93,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`favorites.ts`](../../lib/api/favorites.ts)
 
-- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md).
-- `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser either the API too (`NEXT_PUBLIC_API_DIRECT`) or the `/api/favorites` relay.
+- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md). `/api/favorites` runs it.
+- `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser the `/api/favorites` relay, since the API answers them only to a key.
 - Types: `FavoritePark`, `FavoriteAttraction`, `FavoriteShow`, `FavoriteRestaurant`, `FavoritesResponse`
 
 ### [`forecast-query.ts`](../../lib/api/forecast-query.ts)
@@ -98,12 +104,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `readWithForecast` _function_: Reads `path` with the forecast flag, and once more without it when the API refuses the server's key. A revoked, expired or park-limited site key then costs a page its forecast fields instead of the page; the log says so once per process.
 - `fetchWithForecast` _function_: `readWithForecast` for a plain `fetch`, which answers a refusal rather than throwing.
 - `FORECAST_QUERY` _const_: The API leaves the forecast fields of a mixed route (park detail, ride detail, `/stats/day`, `/favorites`) out unless the request carries `forecast=true` and a key; the server's `x-auth-key` counts as one.
-
-### [`forecast-relay.ts`](../../lib/api/forecast-relay.ts)
-
-- `isForecastRelayPath` _function_: Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries `bestVisitTimes`), the calendar, best days, the day plan and its optimizer, a ride's detail and its day curve.
-- `isSameOriginRequest` _function_: Whether a relay request comes from a park.fan page. Browsers send `Sec-Fetch-Site: same-origin` on a page's own fetches, and a page on another site cannot make them say so.
-- `foreignForecastRequest` _function_: The answer a forecast relay gives a caller that is not a park.fan page. Never cached.
 
 ### [`glossary-rides.ts`](../../lib/api/glossary-rides.ts)
 
@@ -115,12 +115,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `getIntegratedCalendar` _function_: Fetch a park's integrated calendar (hours, weather, holidays per day) in one uncached call. `from` defaults to today and `to` to 30 days later on the API side.
 - `getBestDaysCalendar` _function_: Best-days snapshot for the SSR seed, data-cached and tagged so repeat renders never touch the backend. Feeds the best-days section and the crowd FAQ and its FAQPage JSON-LD.
 - `getBestDaysSnapshotFresh` _function_: Live (no-store) best-days snapshot for the `/api/parks/.../best-days` client-poll proxy, so it reflects the backend's latest snapshot. Mirrors `getParkByGeoPathFresh`.
-- `getBestDaysForApiKey` _function_: The best-days snapshot read with a caller's own data key and nothing of the server's, so the API applies that key's revocation, parks and hourly allowance to this read.
+- `getBestDaysForApiKey` _function_: The best-days snapshot read with a caller's own data key and nothing of the server's (`readWithCallerKey`). A park the API does not know throws.
 - `getBestDaysCalendarSeed` _function_: Timeout-bounded `getBestDaysCalendar` for the park page's streamed SEO seed.
 - `getCalendarMonthSeed` _function_: Timeout-bounded month fetch for the calendar page's streamed summary, like `getBestDaysCalendarSeed`: a timeout drops only the summary card.
 - `BEST_DAYS_REVALIDATE` _const_: Data-cache window for the SSR best-days snapshot. Only the fallback cadence: the backend fires `revalidateTag('best-days:<slug>')` after every forecast warmup, and `analyzeBestDays` re-filters against a fresh „today" on every render.
 - `CALENDAR_MONTH_REVALIDATE` _const_: How long a month page's server-rendered summary may be reused: a day, since what it says (open days, quietest and busiest days, usual hours) does not change within one.
-- Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`, `ApiKeyRefusal`
+- Types: `CalendarHourlyMode`, `BestDaysByDayOfWeek`, `BestDaysSnapshot`
+
+### [`keyed-relay.ts`](../../lib/api/keyed-relay.ts)
+
+- `isOpenRelayPath` _function_: Whether a relay path under `/api/parks/*` serves what the API serves without a key: a park's live wait times. Every other branch relays data the API gives only to a key, and answers park.fan's own pages only.
+- `isSameOriginRequest` _function_: Whether a relay request comes from a park.fan page. Browsers send `Sec-Fetch-Site: same-origin` on a page's own fetches, and a page on another site cannot make them say so.
+- `foreignRelayRequest` _function_: The answer a relay gives a caller that is not a park.fan page. Never cached.
+- `refuseForeignRequest` _function_: The refusal for a request that is not from a park.fan page, or null to go on. The first line of every relay that hands out data the API keeps behind a key.
 
 ### [`kids-page.ts`](../../lib/api/kids-page.ts)
 

@@ -19,8 +19,9 @@ export const RSL_LICENSE_PATH = '/license.xml';
 export const DATA_TERMS_ANCHOR = 'data-use';
 
 /**
- * The human-readable terms for reusing park.fan's data: free for non-commercial use, commercial
- * use of the forecasts only under a written agreement, the live data under its sources' terms. English,
+ * The human-readable terms for reusing park.fan's data: the wait times open, everything else with
+ * a data key, free only for open source without earnings and a visible link, any other use under a
+ * written agreement, the live data under its sources' terms. English,
  * because the reader it is handed to is a developer or a licensing tool, not a park visitor.
  */
 export const DATA_TERMS_URL = `${SITE}/en/impressum#${DATA_TERMS_ANCHOR}`;

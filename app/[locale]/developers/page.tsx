@@ -20,6 +20,7 @@ import {
   Map,
   Plane,
   Route,
+  Search,
   ShieldCheck,
   Timer,
   UserPlus,
@@ -95,11 +96,30 @@ const STEPS: ReadonlyArray<{ key: string; icon: LucideIcon }> = [
   { key: 'pickup', icon: KeyRound },
 ];
 
-/** The attribution a project shows, with the park's page as its link. */
-const ATTRIBUTION_SNIPPET = `<p>
-  Wait times and crowd forecasts:
-  <a href="https://park.fan/en/parks/europe/germany/rust/europa-park">park.fan</a>
-</p>`;
+/** The rows of the backlink's specification, in the order the portal lists them. */
+const ATTRIBUTION_SPEC = [
+  'target',
+  'anchor',
+  'rel',
+  'markup',
+  'visible',
+  'place',
+  'indexable',
+  'apps',
+  'duration',
+] as const;
+
+/** The tag the specification and the check name, kept out of the copy so ICU does not parse it. */
+const ANCHOR_TAG = '<a href="https://park.fan/…">';
+
+/** The two credits the portal shows: below one park's data, and a footer on every page. */
+function attributionSnippets(locale: string, lead: { park: string; footer: string }) {
+  const home = `${SITE_URL}/${locale}`;
+  return {
+    park: `<p>\n  ${lead.park}\n  <a href="${home}/parks/europe/germany/rust/europa-park">park.fan</a>\n</p>`,
+    footer: `<footer>\n  ${lead.footer} <a href="${home}">park.fan</a>\n</footer>`,
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -190,6 +210,10 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
   const number = getNumberFormat(locale);
   const faq = t.raw('faq.items') as Array<{ question: string; answer: string }>;
   const termsHref = `/impressum#${DATA_TERMS_ANCHOR}`;
+  const snippets = attributionSnippets(locale, {
+    park: t('attribution.examplePark'),
+    footer: t('attribution.exampleFooter'),
+  });
 
   return (
     <>
@@ -368,18 +392,22 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
           icon={Link2}
         >
           <P>{t('attribution.lead')}</P>
+          <InfoCard icon={CheckCircle2} title={t('attribution.spec.title')}>
+            <dl className="divide-border/60 divide-y text-sm">
+              {ATTRIBUTION_SPEC.map((row) => (
+                <div
+                  key={row}
+                  className="grid gap-1 py-3 first:pt-0 last:pb-0 sm:grid-cols-[9rem_1fr] sm:gap-4"
+                >
+                  <dt className="font-semibold">{t(`attribution.spec.${row}.label`)}</dt>
+                  <dd className="text-muted-foreground min-w-0 leading-relaxed">
+                    {t.rich(`attribution.spec.${row}.text`, { code, tag: ANCHOR_TAG })}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </InfoCard>
           <div className="grid gap-4 lg:grid-cols-2">
-            <InfoCard icon={CheckCircle2} title={t('attribution.doTitle')}>
-              <ul className="space-y-2 text-sm leading-relaxed">
-                {(['visible', 'link', 'follow', 'indexable', 'near', 'apps'] as const).map(
-                  (key) => (
-                    <Check key={key} ok>
-                      {t.rich(`attribution.do.${key}`, { code })}
-                    </Check>
-                  )
-                )}
-              </ul>
-            </InfoCard>
             <InfoCard icon={XCircle} title={t('attribution.dontTitle')}>
               <ul className="space-y-2 text-sm leading-relaxed">
                 {(['nofollow', 'hidden', 'scriptOnly', 'redirect', 'image'] as const).map((key) => (
@@ -389,12 +417,18 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
                 ))}
               </ul>
             </InfoCard>
+            <InfoCard icon={Search} title={t('attribution.checkTitle')}>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {t.rich('attribution.checkBody', { code, tag: ANCHOR_TAG })}
+              </p>
+            </InfoCard>
           </div>
           <InfoCard icon={Braces} title={t('attribution.exampleTitle')}>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t('attribution.exampleBody')}
             </p>
-            <CodeSample>{ATTRIBUTION_SNIPPET}</CodeSample>
+            <CodeSample>{snippets.park}</CodeSample>
+            <CodeSample>{snippets.footer}</CodeSample>
           </InfoCard>
         </SectionShell>
 

@@ -14,5 +14,3 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `readPrivateJson` _function_: The document at `pathname`, or null when there is none or it cannot be read or parsed.
 - `writePrivateJson` _function_: Writes `value` at `pathname`, replacing what is there.
-- `listPrivateJson` _function_: The pathnames of the `.json` documents directly under `prefix` (`developer-requests/`).
-- `deletePrivateJson` _function_: Deletes the document at `pathname`; one that is not there is not an error.

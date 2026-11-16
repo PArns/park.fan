@@ -6,6 +6,7 @@ import { getTripRegionWords } from '@/lib/trip-regions/region-messages';
 import { LIVE_TRIP_REGIONS } from '@/lib/trip-regions/registry';
 import { TRIP_REGION_CACHE_CONTROL } from '@/lib/trip-regions/relay';
 import { tripRegionLinks } from '@/lib/trip-regions/trip-links';
+import { refuseForeignRequest } from '@/lib/api/keyed-relay';
 
 /**
  * The live trip regions as the browser links into them (`TripRegionLinks`): their names for the
@@ -16,6 +17,10 @@ import { tripRegionLinks } from '@/lib/trip-regions/trip-links';
  * a 502 nobody caches, never a shorter list kept for a day.
  */
 export async function GET(request: Request) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  const refused = refuseForeignRequest(request);
+  if (refused) return refused;
+
   const requested = new URL(request.url).searchParams.get('locale');
   const locale = requested && isValidLocale(requested) ? requested : null;
   try {

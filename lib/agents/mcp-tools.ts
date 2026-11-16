@@ -1,7 +1,8 @@
-import type { ForecastGrant } from './forecast-access';
+import type { ToolGrant } from './tool-access';
 import 'server-only';
 import { search } from '@/lib/api/search';
 import { getParkByGeoPath, getParkByGeoPathForAgents, getParkSeasons } from '@/lib/api/parks';
+import { isApiKeyRefusal, readWithCallerKey } from '@/lib/api/caller-key';
 import { eventSeasonsOn } from '@/lib/parks/park-season-days';
 import { catchNonFatal } from '@/lib/api/client';
 import { parkDayOf } from '@/lib/utils/park-day';
@@ -12,7 +13,7 @@ import {
   worksPeriodOn,
   worksPeriodsOf,
 } from '@/lib/utils/works-period';
-import type { WorksPeriod } from '@/lib/api/types';
+import type { ParkSeason, ParkWithAttractions, SearchResult, WorksPeriod } from '@/lib/api/types';
 import { getBestDaysCalendar, getBestDaysForApiKey } from '@/lib/api/integrated-calendar';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
@@ -25,16 +26,17 @@ import { SITE_URL } from '@/i18n/config';
 import type { SearchResultItem } from '@/lib/api/types';
 
 /**
- * What the three tools in `tool-descriptors.ts` do. They read the public API through the same
- * functions the pages use, so a park with no wait-time source goes through
- * `noLiveWaitTimesReason` here too instead of reading as a park shut for the night. All three are
- * read-only, and nothing here reaches `/admin`.
+ * What the three tools in `tool-descriptors.ts` do. A call from a park.fan page reads through the
+ * functions the pages use; a caller with a key reads with that key only, so the API applies its
+ * permissions; a caller with neither gets the wait times alone. A park with no wait-time source
+ * goes through `noLiveWaitTimesReason` here too instead of reading as a park shut for the night.
+ * All three are read-only, and nothing here reaches `/admin`.
  */
 
 /** What the server knows about the caller when it runs a tool. */
 export interface McpToolContext {
-  /** Set for a forecast tool: whether it reads like a page or with the caller's own key. */
-  forecastGrant?: ForecastGrant;
+  /** How the caller may read; absent for a caller with neither a page nor a key. */
+  grant?: ToolGrant;
 }
 
 export type McpTool = ToolDescriptor & {
@@ -66,6 +68,53 @@ async function resolvePark(query: string) {
   return segments ? { name: hit.name, path, segments } : null;
 }
 
+/** The API path of a park, from its four slugs. */
+function parkApiPath(segments: readonly string[]): string {
+  return `/v1/parks/${segments.join('/')}`;
+}
+
+type ResolvedPark = NonNullable<Awaited<ReturnType<typeof resolvePark>>>;
+
+/**
+ * The wait-times tool's answer for a caller without a key: each ride's wait and status and the
+ * park's, projected from the server's own read so a park without a wait-time source still says so,
+ * and nothing that needs a key (no crowd level, lands, maintenance or time zone). `keyNote` is the
+ * API's reason when a presented key was refused the park detail.
+ */
+function openWaitTimes(
+  park: ResolvedPark,
+  url: string,
+  data: ParkWithAttractions,
+  keyNote: string | null
+) {
+  const rides = (data.attractions ?? []).map((attraction) => {
+    const standby = attraction.queues?.find((queue) => queue.queueType === 'STANDBY');
+    return {
+      name: attraction.name,
+      status: (attraction as { effectiveStatus?: string }).effectiveStatus ?? attraction.status,
+      waitMinutes: standby && 'waitTime' in standby ? (standby.waitTime ?? null) : null,
+    };
+  });
+  const noWaitTimes = noLiveWaitTimesReason(data);
+  return {
+    park: park.name,
+    url,
+    parkStatus: data.status,
+    ...(noWaitTimes
+      ? {
+          waitTimesAvailable: false,
+          note: NO_WAIT_TIMES_NOTE[noWaitTimes] ?? NO_WAIT_TIMES_NOTE.not_published,
+        }
+      : {
+          note: 'Wait times are what the park published, rounded to five minutes. A null wait is a ride with no published number, not a queue of zero. A park.fan data API key adds how busy the park is, each ride’s land and planned maintenance.',
+        }),
+    ...(keyNote && { keyNote }),
+    ridesOpen: rides.filter((ride) => ride.status === 'OPERATING').length,
+    ridesTotal: rides.length,
+    rides: [...rides].sort((a, b) => (b.waitMinutes ?? -1) - (a.waitMinutes ?? -1)),
+  };
+}
+
 /**
  * A maintenance window as an agent reads it: park-local days, both inclusive, and whether the end
  * is park.fan's estimate rather than a date the park published. `null` bounds are open.
@@ -92,14 +141,19 @@ const NO_WAIT_TIMES_NOTE: Record<string, string> = {
 };
 
 const EXECUTORS: Record<string, McpTool['execute']> = {
-  async search_theme_parks(input) {
+  async search_theme_parks(input, context) {
     const query = String(input.query ?? '').trim();
     if (query.length < 3) return { error: 'Query must be at least three characters.' };
     const locale = localeOf(input);
-    const data = await search(query);
+    const grant = context?.grant;
+    const data =
+      grant?.via === 'key'
+        ? await readWithCallerKey<SearchResult>('/v1/search', grant.apiKey, { q: query })
+        : await search(query);
+    if (isApiKeyRefusal(data)) return { error: data.message };
     return {
       query,
-      results: (data.results ?? []).slice(0, 10).map((result) => ({
+      results: (data?.results ?? []).slice(0, 10).map((result) => ({
         type: result.type,
         name: result.name,
         park: result.parentPark?.name,
@@ -112,13 +166,27 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     };
   },
 
-  async get_park_wait_times(input) {
+  async get_park_wait_times(input, context) {
     const query = String(input.park ?? '');
+    // The name is resolved with the server's own search, so the open tool can take a name too.
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
+    const url = `${SITE_URL}/${localeOf(input)}${park.path}`;
 
-    const data = await getParkByGeoPathForAgents(...park.segments);
+    // A key reads the detail with that key alone, so the API applies its permissions. A page, a
+    // caller without a key and a key refused the detail all start from the server's own read; only
+    // the page gets more than the open projection of it.
+    const grant = context?.grant;
+    const own =
+      grant?.via === 'key'
+        ? await readWithCallerKey<ParkWithAttractions>(parkApiPath(park.segments), grant.apiKey)
+        : null;
+    const data =
+      own && !isApiKeyRefusal(own) ? own : await getParkByGeoPathForAgents(...park.segments);
     if (!data) return { error: `No live data for ${park.name}.` };
+    if (grant?.via !== 'page' && (!own || isApiKeyRefusal(own))) {
+      return openWaitTimes(park, url, data, isApiKeyRefusal(own) ? own.message : null);
+    }
 
     // `effectiveStatus` is the API's own verdict and already accounts for a ride that is out of
     // season — the raw `status` does not, and an ice rink in August would otherwise come back as
@@ -148,7 +216,7 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
 
     return {
       park: park.name,
-      url: `${SITE_URL}/${localeOf(input)}${park.path}`,
+      url,
       parkStatus: data.status,
       timezone: data.timezone,
       ...(noWaitTimes
@@ -176,20 +244,31 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const query = String(input.park ?? '');
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
-    const grant = context?.forecastGrant;
+    const apiKey = context?.grant?.via === 'key' ? context.grant.apiKey : null;
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
-    // The rides come from the park's cached structure, the entry the park page reads, and the
-    // seasons from the park page's own list, a year from today; a failed read costs the days
-    // their maintenance or season list, never the days.
+    // The rides come from the park's structure and the seasons from the park's list, a year from
+    // today: for a page the cached entries the park page reads, for a key what that key may read.
+    // A failed or refused read costs the days their maintenance or season list, never the days.
     const [snapshot, structure, seasons] = await Promise.all([
-      grant?.via === 'key'
-        ? getBestDaysForApiKey(...park.segments, grant.apiKey)
+      apiKey
+        ? getBestDaysForApiKey(...park.segments, apiKey)
         : getBestDaysCalendar(...park.segments),
-      catchNonFatal(getParkByGeoPath(...park.segments)),
-      getParkSeasons(...park.segments),
+      apiKey
+        ? readWithCallerKey<ParkWithAttractions>(parkApiPath(park.segments), apiKey)
+            .then((read) => (isApiKeyRefusal(read) ? null : read))
+            .catch(() => null)
+        : catchNonFatal(getParkByGeoPath(...park.segments)),
+      apiKey
+        ? readWithCallerKey<{ seasons: ParkSeason[] }>(
+            `${parkApiPath(park.segments)}/seasons`,
+            apiKey
+          )
+            .then((read) => (read && !isApiKeyRefusal(read) ? (read.seasons ?? []) : []))
+            .catch(() => [])
+        : getParkSeasons(...park.segments),
     ]);
-    if ('refused' in snapshot) return { error: snapshot.message };
+    if (isApiKeyRefusal(snapshot)) return { error: snapshot.message };
     const rides = structure?.attractions ?? [];
 
     return {

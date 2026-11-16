@@ -17,7 +17,7 @@ import type {
 
 /**
  * A region hub's server reads of the trip-region routes. SERVER ONLY: the keyed routes leave the
- * API only with the site's data key (docs/rules/a-forecast-leaves-only-with-a-key.md), and a
+ * API only with the site's data key (docs/rules/only-the-wait-times-leave-without-a-key.md), and a
  * browser asks them through the relay instead (`tripRegionRelayUrl`, `lib/trip-regions/paths.ts`).
  *
  * Every read goes through Next's Data Cache with its region's tag (the ticket catalog with its

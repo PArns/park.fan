@@ -1,6 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   Activity,
@@ -21,22 +22,17 @@ import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { cn } from '@/lib/utils';
 import {
-  DeveloperApiError,
+  DEVELOPER_OVERVIEW_QUERY_KEY,
   fetchDeveloperOverview,
   usageTotals,
   withdrawKeyRequest,
+  type DeveloperApiError,
   type DeveloperOverview,
 } from '@/lib/developers/dashboard';
 import { requestedPermissions, type KeyRequestRecord } from '@/lib/developers/key-request';
 import { DeveloperAuth } from './developer-auth';
 import { DeveloperKeyCard } from './developer-key-card';
 import { KeyRequestForm } from './key-request-form';
-
-type Load =
-  | { status: 'loading' }
-  | { status: 'signed-out' }
-  | { status: 'error' }
-  | { status: 'ready'; data: DeveloperOverview };
 
 /** One figure of the dashboard's head. */
 function Tile({ icon: Icon, label, value }: { icon: typeof Gauge; label: string; value: string }) {
@@ -108,30 +104,24 @@ export function DeveloperDashboard() {
   const locale = useLocale();
   const number = getNumberFormat(locale);
   const now = useMinuteNow();
-  const [load, setLoad] = useState<Load>({ status: 'loading' });
+  const queryClient = useQueryClient();
+  const overview = useQuery<DeveloperOverview, DeveloperApiError>({
+    queryKey: DEVELOPER_OVERVIEW_QUERY_KEY,
+    queryFn: () => fetchDeveloperOverview(),
+    // A 401 means nobody is signed in, which asking again does not change.
+    retry: (count, error) => error.status !== 401 && count < 1,
+  });
   const [requesting, setRequesting] = useState(false);
   const [filed, setFiled] = useState(false);
 
-  const refresh = useCallback(async () => {
-    try {
-      setLoad({ status: 'ready', data: await fetchDeveloperOverview() });
-    } catch (err) {
-      setLoad({
-        status: err instanceof DeveloperApiError && err.status === 401 ? 'signed-out' : 'error',
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    void refresh();
-  }, [refresh]);
+  const refresh = () => queryClient.invalidateQueries({ queryKey: DEVELOPER_OVERVIEW_QUERY_KEY });
 
   async function signOut() {
     await fetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
-    setLoad({ status: 'signed-out' });
+    await queryClient.resetQueries({ queryKey: DEVELOPER_OVERVIEW_QUERY_KEY });
   }
 
-  if (load.status === 'loading') {
+  if (overview.isPending) {
     return (
       <div className="flex min-h-64 items-center justify-center" role="status">
         <Loader2 className="text-muted-foreground size-6 animate-spin" aria-label={t('loading')} />
@@ -139,11 +129,11 @@ export function DeveloperDashboard() {
     );
   }
 
-  if (load.status === 'signed-out') {
+  if (overview.error?.status === 401) {
     return <DeveloperAuth onSignedIn={() => void refresh()} />;
   }
 
-  if (load.status === 'error') {
+  if (overview.isError) {
     return (
       <Card className="mx-auto max-w-md">
         <CardContent className="space-y-4 text-center">
@@ -157,7 +147,7 @@ export function DeveloperDashboard() {
     );
   }
 
-  const { account, keys, requests } = load.data;
+  const { account, keys, requests } = overview.data;
   const totals = usageTotals(keys);
   const activeKeys = keys.filter((key) => !key.revokedAt);
   const pending = requests.filter((request) => request.status === 'pending');

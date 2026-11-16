@@ -3,7 +3,7 @@ import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
-import { DEVELOPERS_PATH } from '@/lib/developers/paths';
+import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in German, shown on the `de` locale. */
@@ -222,55 +222,105 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           Nutzung der Daten
         </h2>
         <p className="mb-4">
-          Die Daten, die park.fan auf den Seiten und über die API unter api.park.fan veröffentlicht
-          (Wartezeiten, Öffnungszeiten, Statistiken und Prognosen), darf jeder kostenlos für
-          nicht-kommerzielle Zwecke verwenden: in einer eigenen App, auf einer Fanseite ohne
-          Werbung, in einem Forschungsprojekt oder einer Schularbeit. Bedingung ist ein
-          Quellenhinweis auf park.fan mit Link zur Seite des Parks oder der Attraktion, um die es
-          geht. Texte und Fotos gehören nicht dazu.
+          Diese Bedingungen gelten für alle Daten, die park.fan auf den Seiten, über die API unter
+          api.park.fan und über den MCP-Server veröffentlicht. Texte und Fotos gehören nicht dazu;
+          an vielen Fotos halten die Fotografen die Rechte.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Prognosen und eigene Daten nur mit API-Key
-        </h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Ohne API-Key nur Wartezeiten</h3>
         <p className="mb-4">
-          Prognosen sind alles, was park.fan mit eigenen Modellen vorhersagt, darunter der
-          Crowd-Kalender, der erwartete Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten,
-          die besten Besuchstage, die Jahresprognosen und die Pläne des Tagesplaners. Die API gibt
-          sie nur mit einem API-Key heraus.
+          Ohne Key gibt die API die aktuellen Wartezeiten und den Status der Attraktionen eines
+          Parks heraus, sonst nichts. Alles andere braucht einen API-Key mit der passenden
+          Berechtigung: das Parkverzeichnis und die Parkdaten, Attraktionsdaten wie Mindestgröße,
+          Fahrprofil und Links, Öffnungszeiten, Saisons, das Wetter, Statistiken, Prognosen, Tages-
+          und Reiseplaner und die Reisedaten. Ein Key trägt nur die Berechtigungen, die für ihn
+          freigegeben sind. Auch die Wartezeiten ohne Key darf nur nutzen, wer damit kein Geld
+          verdient und park.fan verlinkt, wie unter „Quellenhinweis“ beschrieben.
         </p>
         <p className="mb-4">
-          Dasselbe gilt für alles andere, was park.fan selbst erstellt: die Statistiken aus den
-          gemessenen Wartezeiten, die von Hand gepflegten Saisons, Events, Fahrprofile und
-          Wartungsfenster und die Daten der Reiseregionen. Wer sie über die API nutzt, braucht einen
-          API-Key mit der passenden Berechtigung. Ein Key trägt nur die Berechtigungen, die für ihn
-          freigegeben sind. Für nicht-kommerzielle Zwecke ist er kostenlos; beantragen lässt er sich
-          im{' '}
+          Einen Key beantragst du im{' '}
           <Link href={DEVELOPERS_PATH} className="text-primary hover:text-primary/80 underline">
             Entwicklerportal
           </Link>
-          .
-        </p>
-
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Kommerzielle Nutzung</h3>
-        <p className="mb-4">
-          Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
-          oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
-          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen, der Statistiken und der
-          übrigen eigenen Daten von park.fan braucht es eine schriftliche Vereinbarung mit Patrick
-          Arns (park.fan). Ohne sie dürfen sie für solche Zwecke weder gezeigt noch gespeichert noch
-          weitergegeben werden, gleich ob sie von den Seiten, aus der API oder vom MCP-Server
-          stammen.
+          . Jeder Antrag wird von Hand geprüft; einen Anspruch auf einen Key gibt es nicht.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">
-          Live-Daten nur für nicht-kommerzielle Zwecke
+          Kostenloser Key nur für Open Source ohne Einnahmen
         </h3>
         <p className="mb-4">
+          Einen kostenlosen Key gibt es nur, wenn alle drei Bedingungen erfüllt sind:
+        </p>
+        <ul className="mb-4 list-disc space-y-2 pl-6">
+          <li>Der Quellcode des Projekts ist öffentlich, unter einer Open-Source-Lizenz.</li>
+          <li>
+            Das Projekt verdient kein Geld: keine Werbung, keine Affiliate- oder bezahlten Links,
+            kein Kaufpreis, kein Abo, keine In-App-Käufe, keine Auftragsarbeit. Spenden und
+            Sponsoring sind erlaubt.
+          </li>
+          <li>
+            Jede Seite und jede Ansicht mit Daten von park.fan verlinkt park.fan sichtbar, wie unter
+            „Quellenhinweis“ beschrieben.
+          </li>
+        </ul>
+        <p className="mb-4">
+          Fällt eine der Bedingungen weg, endet der kostenlose Key. park.fan kann ihn dann ohne
+          Vorankündigung widerrufen.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Jede andere Nutzung ist kostenpflichtig
+        </h3>
+        <p className="mb-4">
+          Für jede andere Nutzung gibt es den Key nur gegen Bezahlung und mit einer schriftlichen
+          Vereinbarung mit Patrick Arns (park.fan): für alles mit Werbung, Affiliate-Links,
+          Kaufpreis, Abo oder In-App-Käufen, für Auftragsarbeiten, für jedes Produkt eines
+          Unternehmens und für jedes Projekt, dessen Quellcode nicht öffentlich ist. Ohne diese
+          Vereinbarung dürfen die Daten von park.fan für solche Zwecke weder gezeigt noch
+          gespeichert noch weitergegeben werden, gleich ob sie von den Seiten, aus der API oder vom
+          MCP-Server stammen.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Quellenhinweis</h3>
+        <p className="mb-4">
+          Wer Daten von park.fan zeigt, verlinkt park.fan. Für einen kostenlosen Key und für die
+          Wartezeiten ohne Key gilt:
+        </p>
+        <ul className="mb-4 list-disc space-y-2 pl-6">
+          <li>
+            Ein Textlink mit dem Wort park.fan auf die Seite des Parks oder der Attraktion bei
+            park.fan, deren Daten gezeigt werden; zeigt eine Ansicht viele Parks, auf die
+            Startseite.
+          </li>
+          <li>
+            Ein gewöhnlicher Link im HTML der Seite: ohne nofollow, sponsored oder ugc, ohne
+            Weiterleitung und nicht erst per Skript eingefügt.
+          </li>
+          <li>
+            Sichtbar und nah an den Daten, auf einer Seite, die Suchmaschinen indexieren dürfen.
+          </li>
+          <li>
+            In einer App der sichtbare Hinweis „Daten: park.fan“ und ein solcher Link auf der
+            Website des Projekts.
+          </li>
+        </ul>
+        <p className="mb-4">
+          Beispiele und alle Einzelheiten stehen im{' '}
+          <Link
+            href={`${DEVELOPERS_PATH}#${ATTRIBUTION_ANCHOR}`}
+            className="text-primary hover:text-primary/80 underline"
+          >
+            Entwicklerportal
+          </Link>
+          . Bei einem kostenpflichtigen Key regelt die Vereinbarung den Quellenhinweis.
+        </p>
+
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">Wartezeiten, Öffnungszeiten und Wetter</h3>
+        <p className="mb-4">
           Wartezeiten und Öffnungszeiten kommen von den Plattformen unter „Datenquellen“, das Wetter
-          von Open-Meteo. park.fan gibt sie für nicht-kommerzielle Zwecke weiter, zu den Bedingungen
-          oben. Eigene Rechte an diesen Daten hat park.fan nicht und kann eine kommerzielle Nutzung
-          deshalb auch nicht erlauben: Dafür braucht es eine Vereinbarung mit der jeweiligen Quelle.
+          von Open-Meteo. park.fan gibt sie zu den Bedingungen oben weiter. Eigene Rechte an diesen
+          Daten hat park.fan nicht und kann eine kommerzielle Nutzung deshalb auch nicht erlauben:
+          Dafür braucht es eine Vereinbarung mit der jeweiligen Quelle.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Kein Training von KI-Modellen</h3>

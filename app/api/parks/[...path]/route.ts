@@ -1,11 +1,7 @@
 import geomagnetism from 'geomagnetism';
 import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
-import {
-  foreignForecastRequest,
-  isForecastRelayPath,
-  isSameOriginRequest,
-} from '@/lib/api/forecast-relay';
+import { isOpenRelayPath, refuseForeignRequest } from '@/lib/api/keyed-relay';
 import {
   getParkByGeoPath,
   getParkByGeoPathFresh,
@@ -94,9 +90,10 @@ export async function GET(
     return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
   }
 
-  // The forecast branches answer only park.fan's own pages; see `isSameOriginRequest`.
-  if (isForecastRelayPath(path) && !isSameOriginRequest(request)) {
-    return foreignForecastRequest();
+  // Everything but the wait times needs a key on the API, so it answers park.fan's own pages only.
+  if (!isOpenRelayPath(path)) {
+    const refused = refuseForeignRequest(request);
+    if (refused) return refused;
   }
 
   // The park page's live poll.
@@ -653,7 +650,8 @@ export async function POST(
   ) {
     return NextResponse.json({ error: 'Not found' }, { status: 404, headers: NO_STORE });
   }
-  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+  const refused = refuseForeignRequest(request);
+  if (refused) return refused;
   return relayJsonWrite(request, `/v1/parks/${path.join('/')}`, {
     method: 'POST',
     unreachable: 'Optimizer unreachable',

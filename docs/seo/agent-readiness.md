@@ -65,15 +65,15 @@ number came from), and `<terms>` (RSL 1.0 §3.17) pointing at the terms of use b
   links **and** the licence in one string, because Next resolves a repeated header key
   last-match-wins and the homepage rules come last.
 
-## Terms of use: forecasts need a key, commercial use needs an agreement
+## Terms of use: only the wait times are open, a free key only for open source
 
-The terms are prose, in the Impressum under `#data-use` (de and en): free for non-commercial use
-with a credit; park.fan's forecasts (crowd calendar, expected crowds per day and hour, predicted
-waits, best days, day plans) and its other own data (statistics, curated data, travel data)
-through the API only against a data key with the matching scope, free for non-commercial use on
-request at `/developers` ([developer portal](../features/developer-portal.md)), and commercially
-only under a written agreement; the live data of park.fan's sources
-for non-commercial use only, because park.fan holds no rights to it. The URL is `DATA_TERMS_URL`
+The terms are prose, in the Impressum under `#data-use` (de and en): without a key the API gives
+out a park's wait times and nothing else; everything else needs a data key with the matching
+permission, requested on the developer dashboard
+([developer portal](../features/developer-portal.md)); a free key only for an open-source project
+that earns no money and links park.fan visibly with a followable link on an indexable page; any
+other use only under a written agreement; the live data of park.fan's sources under their terms,
+because park.fan holds no rights to it. The URL is `DATA_TERMS_URL`
 in `lib/agents/licensing.ts`, and every machine document links it:
 
 - `license.xml` with `<terms>`, the API catalog with `terms-of-service` (RFC 6903);
@@ -81,9 +81,10 @@ in `lib/agents/licensing.ts`, and every machine document links it:
   because it is a static file served byte for byte.
 
 Where to get a key is the developer portal, `DEVELOPER_PORTAL_URL` (`lib/developers/paths.ts`),
-which `auth.md`, `llms.txt`, the forecast tool's description and `server.json` name; the skill
-types it out. The portal is a page with readers, so it is not one of the documents above: it lists
-the scopes of a key from `lib/developers/scopes.ts` and holds the request form.
+which `auth.md`, `llms.txt`, the keyed tools' descriptions and `server.json` name; the skill types
+it out. The portal is a page with readers, so it is not one of the documents above: it lists the
+permissions from `lib/developers/permissions.ts` and the backlink rules, and the dashboard holds
+the request form.
 
 `pnpm check:agent-ready` fetches the page the licence names and fails when the anchor is gone, and
 fails when the catalog links a different URL.
@@ -94,8 +95,8 @@ fails when the catalog links a different URL.
   that.
 - **The key is the mechanism; the rate limit is not.** A commercial app that caches four parks
   once a day stays far below any limit, so a limit could not tell it from a fan site. The API
-  refuses forecasts without a key instead, and the rules that follow for this repo are in
-  [a forecast leaves park.fan only with a key](../rules/a-forecast-leaves-only-with-a-key.md).
+  refuses everything but the wait times without a key instead, and the rules that follow for this repo are in
+  [only the wait times leave park.fan without a key](../rules/only-the-wait-times-leave-without-a-key.md).
 
 ## The back office is not part of the offer
 
@@ -144,16 +145,18 @@ this server never writes to. The tools are read-only:
 
 | Tool                  | Answers                                                                                                                               |
 | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| `search_theme_parks`  | a name → the park, ride or city, with its page URL                                                                                    |
-| `get_park_wait_times` | every ride's current queue and status, longest first; a planned maintenance window today or next                                      |
+| `search_theme_parks`  | a name → the park, ride or city, with its page URL. Needs a data key in `X-API-Key`                                                   |
+| `get_park_wait_times` | every ride's current queue and status, longest first; with a key also crowd level, lands and a maintenance window today or next       |
 | `get_park_best_days`  | the crowd forecast per day, for picking a date; the rides planned maintenance shuts on each open day. Needs a data key in `X-API-Key` |
 
 `components/agents/webmcp-tools.tsx` registers the same three through `navigator.modelContext` and
 executes them by calling `/api/mcp`, plus `open_park_fan_page`, which navigates the tab.
 Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both surfaces. The tab's
-calls are same-origin, so the forecast tool answers them without a key, as the page itself would
-(`forecastGrant`, `lib/agents/forecast-access.ts`); any other client's key goes to the API with the
-read itself, so revocation, parks and the hourly allowance apply as on api.park.fan. The browser
+calls are same-origin, so every tool answers them in full without a key, as the page itself would
+(`toolGrant`, `lib/agents/tool-access.ts`); any other client's key goes to the API with every read
+of the tool (`readWithCallerKey`), so permissions, revocation, parks and the hourly allowance apply
+as on api.park.fan. A client with neither gets `get_park_wait_times` with waits and statuses only,
+and the other two refuse. The browser
 tools call the server rather than the API because two answers depend on rules that sit with the
 data:
 

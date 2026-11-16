@@ -14,7 +14,7 @@ its own `/plan/day` for that date. Code here: `lib/planner/optimize-remote.ts` (
 answer's types), `lib/planner/use-optimize-remote.ts` (the preview and the fit assistant's answers,
 through React Query), and the relay branch `POST` in `app/api/parks/[...path]/route.ts`, which adds
 the server key and answers only this site's pages
-([a forecast leaves only with a key](../../rules/a-forecast-leaves-only-with-a-key.md)).
+([only the wait times leave without a key](../../rules/only-the-wait-times-leave-without-a-key.md)).
 
 Two standing rules govern it and are not repeated here:
 [the planner's day ends when the park closes, and a headliner is not a residual](../../rules/the-planners-day-ends-when-the-park-closes-and-a-headliner-is.md)

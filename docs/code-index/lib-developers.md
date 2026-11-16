@@ -5,53 +5,64 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
-### [`key-request-store.ts`](../../lib/developers/key-request-store.ts)
+### [`dashboard.ts`](../../lib/developers/dashboard.ts)
 
-- `listKeyRequests` _function_: Every stored request, newest first.
-- `recordKeyRequest` _function_: Stores a new request, unless one from the same address is still undecided (the applicant sent the form twice) or the queue is full.
-- `decideKeyRequest` _function_: Records the admin's decision; null when there is no such request.
-- `deleteKeyRequest` _function_: Deletes a request for good; false when there was none.
-- `MAX_PENDING_REQUESTS` _const_: How many undecided requests may wait at once. Turnstile keeps scripts out; this keeps a person who solves it by hand from filling the store.
-- Types: `KeyRequestRefusal`
+- `fetchDeveloperOverview` _function_: The signed-in account's keys and requests. A 401 means nobody is signed in.
+- `createKeyRequest` _function_: Files a key request.
+- `withdrawKeyRequest` _function_: Withdraws an undecided request.
+- `rotateDeveloperKey` _function_: Gives a key a new secret and answers it this once. A key nobody has picked up yet is picked up this way, with no grace period, since nobody has its first secret.
+- `endDeveloperKeyGrace` _function_: Ends a key's grace period now: the replaced secret stops at once.
+- `revokeDeveloperKey` _function_: Revokes a key for good.
+- `developerKeyState` _function_: Where a key stands, seen from `nowMs`.
+- `usageTotals` _function_: The requests of the last days, summed, and the busiest day's count, for the dashboard's tiles.
+- `DeveloperApiError` _class_: A failed call, with the API's status and error code when it named one.
+- `DEVELOPER_OVERVIEW_QUERY_KEY` _const_: The React Query key of the overview.
+- Types: `DeveloperOverview`, `RevealedKey`, `DeveloperKeyState`
 
 ### [`key-request.ts`](../../lib/developers/key-request.ts)
 
-- `isCommercialRequest` _function_: The revenue models make the use commercial, so it needs a written agreement.
+- `requestTier` _function_: Which key the terms allow: free only for an open-source project that earns nothing but donations; any other use is a paid key. The backend's `requestTier`.
 - `toggleRevenue` _function_: The revenue checkboxes after one was toggled: `none` clears the others, any other clears it.
-- `suggestedRequestsPerHour` _function_: The hourly allowance to start the key dialog with: about four times the hourly average of the expected daily volume, so a morning peak fits, never below the API's default of 1,000. Null for the open bracket, where the admin decides.
-- `requestedScopes` _function_: The scopes a request asked for, in the catalog's order.
+- `suggestedRequestsPerHour` _function_: The hourly allowance to start the approval with: about four times the hourly average of the expected daily volume, so a morning peak fits, never below the API's default. Null for the open bracket, where the admin decides.
+- `requestedPermissions` _function_: The permissions a request asked for, in the catalog's order.
+- `normalizeUrl` _function_: An http(s) URL as the API accepts it, a bare host read as https; null for anything else.
 - `PROJECT_KINDS` _const_: What the project is.
+- `PLATFORMS` _const_: Where the project runs.
 - `SOURCE_MODELS` _const_: Whether its source is public.
-- `REVENUE_MODELS` _const_: How the project earns money, several at once. `none` stands alone. The terms' examples of commercial use (Impressum, `#data-use`) are each a value here, so the form can tell an applicant before sending that the request needs an agreement.
-- `COMMERCIAL_REVENUE` _const_: The revenue models that make a use commercial under the terms.
-- `REQUEST_VOLUMES` _const_: Requests per day the project expects, in brackets an applicant can estimate.
-- `KEY_REQUEST_LIMITS` _const_: Field lengths, shared by the form's `maxLength` and the schema.
-- `keyRequestInputSchema` _const_: What the form sends, without the Turnstile token.
-- `KEY_REQUEST_PATH` _const_: The path the form posts to.
-- Types: `ProjectKind`, `SourceModel`, `RevenueModel`, `RequestVolume`, `KeyRequestInput`, `KeyRequestStatus`, `KeyRequestDecision`, `KeyRequestRecord`
+- `REVENUE_MODELS` _const_: How the project earns money, several at once; `none` stands alone.
+- `FREE_REVENUE` _const_: What a free key allows besides earning nothing: donations and sponsorship.
+- `REQUEST_VOLUMES` _const_: Requests per day the project expects.
+- `KEY_REQUEST_LIMITS` _const_: Field lengths, the backend's `REQUEST_LIMITS`.
+- Types: `ProjectKind`, `Platform`, `SourceModel`, `RevenueModel`, `RequestVolume`, `RequestTier`, `KeyRequestStatus`, `KeyRequestInput`, `KeyRequestRecord`
 
 ### [`paths.ts`](../../lib/developers/paths.ts)
 
-- `DEVELOPERS_PATH` _const_: The portal's path below the locale, and the request form's anchor on it.
-- `KEY_REQUEST_ANCHOR` _const_
+- `DEVELOPERS_PATH` _const_: The portal's path below the locale.
+- `DEVELOPER_DASHBOARD_PATH` _const_: The developer dashboard: sign-in, keys, statistics, requests.
+- `ATTRIBUTION_ANCHOR` _const_: The portal's anchor for the attribution rules, which the dashboard's form links to.
 - `DEVELOPER_PORTAL_URL` _const_: The portal in English, as the machine-facing documents name it (`auth.md`, `llms.txt`, the skills, the MCP tools), whose reader is a developer or an agent rather than a park visitor.
 
-### [`scopes.ts`](../../lib/developers/scopes.ts)
+### [`permissions.ts`](../../lib/developers/permissions.ts)
 
-- `isApiScope` _function_: The value is a scope this module knows.
-- `sortScopes` _function_: `scopes` in the catalog's order, unknown values and repeats dropped.
-- `apiKeyCurlExample` _function_: The curl call the portal and the admin show for a key, against a route the key opens.
-- `API_SCOPES` _const_: The scopes in the order the portal, the form and the admin list them.
+- `isApiPermission` _function_: The value is a permission this module knows.
+- `sortPermissions` _function_: `permissions` in the catalog's order, unknown values and repeats dropped.
+- `permissionGroup` _function_: The group a permission belongs to.
+- `apiKeyCurlExample` _function_: The curl call the portal and the admin show for a key, against a route a key needs.
+- `API_PERMISSIONS` _const_: Every permission a key can carry.
+- `API_PERMISSION_GROUP_IDS` _const_: The groups, in the order every list shows them.
+- `API_PERMISSION_GROUPS` _const_: The permissions of each group, in catalog order; each permission is in exactly one.
 - `PARK_ROUTE` _const_: `/v1/parks/{continent}/{country}/{city}/{park}`, shortened to keep the route lists readable.
-- `API_SCOPE_DEFINITIONS` _const_: Every scope with its routes.
-- `LEGACY_KEY_SCOPES` _const_: What a key without a scope list opens: what every key opened before scopes existed. The API reads a key that carries no scopes this way, so no key issued earlier loses a route.
-- `OPEN_API_ROUTES` _const_: The routes anyone may read without a key: the live sources' data and the park directory.
+- `PERMISSION_ROUTES` _const_: The routes each permission opens, as the portal lists them; `{…}/{park}` is `PARK_ROUTE`.
+- `KEYLESS_PERMISSIONS` _const_: What a caller without a key may read.
+- `LEGACY_KEY_PERMISSIONS` _const_: What a key issued before permissions existed reads: everything.
 - `API_BASE_URL` _const_: The API's base URL, which every route above is relative to.
 - `API_REFERENCE_URL` _const_: The interactive reference (Swagger UI) and the OpenAPI document behind it.
 - `API_OPENAPI_URL` _const_
-- `API_KEY_VERIFY_URL` _const_: Answers 200 for an active key, 401 for an unknown or expired one; `?park=` checks a park.
+- `API_KEY_VERIFY_URL` _const_: Answers 200 with the key's permissions for an active key, 401 otherwise; `?park=` checks a park.
+- `API_PERMISSIONS_URL` _const_: The catalog as the API serves it.
 - `API_KEY_HEADER` _const_: The header a key travels in.
-- `KEYLESS_LIMITS` _const_: What the API allows a caller without a key, per address.
+- `KEYLESS_LIMITS` _const_: What the API allows a caller without a key, per address, on the wait times.
 - `DEFAULT_KEY_REQUESTS_PER_HOUR` _const_: What a key is allowed per hour unless agreed otherwise; the backend's default too.
 - `API_KEY_ERRORS` _const_: The refusals a key can meet, as the API sends them in `error`, with their HTTP status.
-- Types: `ApiScope`, `ApiScopeDefinition`, `ApiKeyErrorCode`
+- `KEYLESS_CURL_EXAMPLE` _const_: The keyless call the portal shows: the one route open without a key.
+- Types: `ApiPermission`, `ApiPermissionGroupId`, `ApiKeyErrorCode`

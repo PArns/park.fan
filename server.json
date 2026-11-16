@@ -16,7 +16,7 @@
       "headers": [
         {
           "name": "X-API-Key",
-          "description": "park.fan data key (pfk_…). Only the forecast tool get_park_best_days needs it; free for non-commercial use on request through https://park.fan/en/developers.",
+          "description": "park.fan data key (pfk_…). get_park_wait_times works without it; search_theme_parks and get_park_best_days need it. Request one at https://park.fan/en/developers.",
           "isRequired": false,
           "isSecret": true
         }

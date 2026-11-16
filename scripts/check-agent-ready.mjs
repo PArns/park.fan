@@ -214,16 +214,23 @@ check(
 const call = async (name, args) =>
   (await rpc('tools/call', { name, arguments: args }))?.result?.structuredContent;
 
-const found = await call('search_theme_parks', { query: 'Europa-Park' });
+// Search needs a data key like the API's directory routes; the wait times stay open.
+const searchRefused = (
+  await rpc('tools/call', { name: 'search_theme_parks', arguments: { query: 'Europa-Park' } })
+)?.result;
 check(
-  'search_theme_parks resolves a park to its page',
-  (found?.results ?? []).some((r) => /\/parks\/.*europa-park$/.test(r.url ?? ''))
+  'search_theme_parks without a key refuses and names the header',
+  searchRefused?.isError === true && /X-API-Key/.test(searchRefused?.content?.[0]?.text ?? ''),
+  searchRefused?.content?.[0]?.text?.slice(0, 80)
 );
 
 const waits = await call('get_park_wait_times', { park: 'Europa-Park' });
 check(
-  'get_park_wait_times returns rides',
-  (waits?.rides ?? []).length > 0,
+  'get_park_wait_times returns rides without a key, and nothing that needs one',
+  (waits?.rides ?? []).length > 0 &&
+    waits.crowdLevel === undefined &&
+    waits.timezone === undefined &&
+    waits.rides.every((ride) => ride.land === undefined && ride.maintenance === undefined),
   `${waits?.ridesOpen}/${waits?.ridesTotal} open`
 );
 
@@ -301,8 +308,19 @@ if (DATA_KEY) {
     (bestDays?.days ?? []).length === 5 &&
       bestDays.days.every((d) => /^\d{4}-\d{2}-\d{2}$/.test(d.date))
   );
+  const found = (
+    await rpc(
+      'tools/call',
+      { name: 'search_theme_parks', arguments: { query: 'Europa-Park' } },
+      { 'X-API-Key': DATA_KEY }
+    )
+  )?.result?.structuredContent;
+  check(
+    'search_theme_parks with a key resolves a park to its page',
+    (found?.results ?? []).some((r) => /\/parks\/.*europa-park$/.test(r.url ?? ''))
+  );
 } else {
-  console.log('➖ get_park_best_days with a key: skipped, PARKFAN_DATA_KEY is not set');
+  console.log('➖ the keyed MCP tools with a key: skipped, PARKFAN_DATA_KEY is not set');
 }
 
 // ── the blog feed ───────────────────────────────────────────────────────────

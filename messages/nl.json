@@ -2702,287 +2702,321 @@
   },
   "developers": {
     "meta": {
-      "title": "park.fan API: wait times, park data and API keys for developers",
-      "description": "Live wait times for more than 200 theme parks without signing up. Park data, weather, statistics and forecasts come with API keys that carry single permissions, free for open source that earns nothing."
+      "title": "park.fan API: wachttijden, parkdata en API-keys voor ontwikkelaars",
+      "description": "Live wachttijden van meer dan 200 pretparken, zonder account. Parkdata, weer, statistieken en voorspellingen krijg je met API-keys met losse rechten, gratis voor opensourceprojecten zonder inkomsten."
     },
     "hero": {
-      "title": "The park.fan API",
-      "tagline": "Without a key you read the live wait times. Everything else, from opening hours to ride data to forecasts, comes with a key that carries exactly the permissions your project needs.",
-      "action": "Open the dashboard"
+      "title": "De park.fan API",
+      "tagline": "Zonder key lees je de live wachttijden. Al het andere, van openingstijden en attractiedata tot voorspellingen, krijg je met een key met precies de rechten die je project nodig heeft.",
+      "action": "Naar het dashboard"
     },
-    "intro": "Since December 2025, park.fan has measured the wait times in more than 200 parks every five minutes and turned them into statistics, forecasts and day plans. api.park.fan serves the same data as JSON. You request a key on the dashboard, and we review every request by hand.",
+    "intro": "Sinds december 2025 meet park.fan elke vijf minuten de wachttijden in meer dan 200 parken en maakt daar statistieken, voorspellingen en dagplannen van. api.park.fan levert dezelfde data als JSON. Een key vraag je aan in het dashboard, en elke aanvraag bekijken we met de hand.",
     "steps": {
       "register": {
-        "title": "Create an account",
-        "text": "With an email address and a password, on the dashboard. The account sees only your own keys and requests."
+        "title": "Account aanmaken",
+        "text": "Met een e-mailadres en een wachtwoord, in het dashboard. Het account ziet alleen je eigen keys en aanvragen."
       },
       "request": {
-        "title": "Request a key",
-        "text": "Describe your project, pick the permissions and name the page with the link to park.fan."
+        "title": "Key aanvragen",
+        "text": "Beschrijf je project, kies de rechten en geef de pagina op met de link naar park.fan."
       },
       "review": {
-        "title": "Review",
-        "text": "We read every request and set the permissions, hourly limit and term. The answer appears on the dashboard."
+        "title": "Beoordeling",
+        "text": "We lezen elke aanvraag en leggen de rechten, de uurlimiet en de looptijd vast. Het antwoord verschijnt in het dashboard."
       },
       "pickup": {
-        "title": "Pick up the key",
-        "text": "Once approved, the dashboard shows you the key once. There you see its use and can rotate or revoke it."
+        "title": "Key ophalen",
+        "text": "Na goedkeuring toont het dashboard je de key één keer. Daar zie je ook het gebruik en kun je hem roteren of intrekken."
       }
     },
     "access": {
-      "kicker": "Access",
-      "title": "Without a key, wait times only",
-      "lead": "Without a key the API serves one route: the current wait times and status of a park's attractions. Park data, opening hours, weather, seasons, statistics, forecasts and the planners need a key with the matching permission.",
-      "openTitle": "Without a key",
+      "kicker": "Toegang",
+      "title": "Zonder key alleen wachttijden",
+      "lead": "Zonder key levert de API één route: de actuele wachttijden en de status van de attracties in een park. Parkdata, openingstijden, weer, seizoenen, statistieken, voorspellingen en de planners vragen een key met het juiste recht.",
+      "openTitle": "Zonder key",
       "openBadge": "open",
-      "openBody": "Wait times and status of every attraction in a park. Without a key you get {perMinute} requests a minute and {perHour} an hour per IP address.",
-      "keyTitle": "With a key",
-      "keyBadge": "by permission",
-      "keyBody": "Every other route. A key carries only the permissions granted to it; when one is missing, the API answers 403 and names it."
+      "openBody": "Wachttijden en status van elke attractie in een park. Zonder key krijg je {perMinute} verzoeken per minuut en {perHour} per uur per IP-adres.",
+      "keyTitle": "Met key",
+      "keyBadge": "per recht",
+      "keyBody": "Elke andere route. Een key heeft alleen de rechten die ervoor zijn vrijgegeven; ontbreekt er een, dan antwoordt de API met 403 en zegt welk."
     },
     "permissionsChapter": {
-      "kicker": "Permissions",
-      "title": "What a key may read",
-      "lead": "The permissions are sorted into seven groups. Request only the permissions whose data your project shows. The park and ride detail leave out the fields your key has no permission for.",
+      "kicker": "Rechten",
+      "title": "Wat een key mag lezen",
+      "lead": "De rechten zijn verdeeld over zeven groepen. Vraag alleen de rechten aan waarvan je project de data toont. In de details van parken en attracties ontbreken de velden waarvoor je key geen recht heeft.",
       "routes": "Endpoints",
-      "parkRoute": "<code>{short}</code> stands for <code>{full}</code>.",
-      "catalog": "The catalog is also available in machine-readable form at <code>{url}</code>."
+      "parkRoute": "<code>{short}</code> staat voor <code>{full}</code>.",
+      "catalog": "De catalogus is ook machineleesbaar te vinden op <code>{url}</code>."
     },
     "permissions": {
       "groups": {
         "live": "Live data",
-        "parks": "Parks",
-        "rides": "Rides, shows and restaurants",
-        "stats": "Statistics",
-        "forecasts": "Forecasts",
-        "planner": "Planner",
-        "travel": "Travel data"
+        "parks": "Parken",
+        "rides": "Attracties, shows en restaurants",
+        "stats": "Statistieken",
+        "forecasts": "Voorspellingen",
+        "planner": "Planners",
+        "travel": "Reisdata"
       },
       "items": {
         "live": {
           "waits": {
-            "title": "Wait times",
-            "description": "Current wait time and status of every attraction. Open without a key."
+            "title": "Wachttijden",
+            "description": "Actuele wachttijd en status van elke attractie. Open zonder key."
           },
           "schedule": {
-            "title": "Opening hours",
-            "description": "The park's opening hours, show times and the restaurants' opening hours."
+            "title": "Openingstijden",
+            "description": "De openingstijden van het park, de showtijden en de openingstijden van de restaurants."
           },
           "weather": {
-            "title": "Weather",
-            "description": "Current weather, forecast and nowcast from Open-Meteo."
+            "title": "Weer",
+            "description": "Het actuele weer, de verwachting en de nowcast van Open-Meteo."
           }
         },
         "parks": {
           "directory": {
-            "title": "Park directory",
-            "description": "Lists by continent, country and city, search, nearby parks and popular parks."
+            "title": "Parkoverzicht",
+            "description": "Lijsten per continent, land en stad, zoeken, parken in de buurt en populaire parken."
           },
           "details": {
-            "title": "Park details",
-            "description": "A park with its address, coordinates, time zone, links and facts. Its other fields need their own permissions."
+            "title": "Parkdetails",
+            "description": "Een park met adres, coördinaten, tijdzone, links en feiten. Voor de overige velden zijn aparte rechten nodig."
           },
           "seasons": {
-            "title": "Seasons and maintenance",
-            "description": "Seasons and events, whether a ride is in season, and planned maintenance windows."
+            "title": "Seizoenen en onderhoud",
+            "description": "Seizoenen en evenementen, of een attractie in het seizoen draait, en geplande onderhoudsperiodes."
           }
         },
         "rides": {
           "details": {
-            "title": "Ride data",
-            "description": "The ride list and detail: area, coordinates, minimum and maximum height, single rider, virtual queue, indoor or outdoor, wet."
+            "title": "Attractiedata",
+            "description": "Lijst en details van de attracties: gebied, coördinaten, minimum- en maximumlengte, single rider, virtuele wachtrij, binnen of buiten, nat."
           },
           "profiles": {
-            "title": "Ride profiles",
-            "description": "Manufacturer, model, elements, inversions, height, length, speed and ride duration, plus the glossary routes."
+            "title": "Ritprofielen",
+            "description": "Fabrikant, model, elementen, inversies, hoogte, lengte, snelheid en ritduur, plus de routes van het woordenboek."
           }
         },
         "stats": {
           "live": {
-            "title": "Live analysis",
-            "description": "Crowd level, occupancy, trend and the comparison with a typical day."
+            "title": "Live-analyse",
+            "description": "Drukte, bezetting, trend en de vergelijking met een normale dag."
           },
           "history": {
-            "title": "History",
-            "description": "Measured wait times looking back: park statistics, hourly profile, a ride's day curve and history, typical waits, rope drop, outages."
+            "title": "Verloop",
+            "description": "Gemeten wachttijden achteraf: parkstatistiek, uurprofiel, dagcurve en verloop van een attractie, gebruikelijke wachttijden, rope drop, storingen."
           },
           "platform": {
-            "title": "Platform figures",
-            "description": "Live totals across all parks, the ticker and the best times to visit overall."
+            "title": "Platformcijfers",
+            "description": "Live totalen over alle parken, de ticker en de beste bezoektijden in het algemeen."
           },
           "accuracy": {
-            "title": "Forecast accuracy",
-            "description": "How far the forecasts were from the measured wait times."
+            "title": "Nauwkeurigheid van de voorspellingen",
+            "description": "Hoe ver de voorspellingen naast de gemeten wachttijden lagen."
           }
         },
         "forecasts": {
           "crowd": {
-            "title": "Crowd forecast",
-            "description": "Crowd calendar, best days to visit, yearly forecast and the trip regions' calendars."
+            "title": "Druktevoorspelling",
+            "description": "Druktekalender, beste bezoekdagen, jaarvoorspelling en de kalenders van de reisregio’s."
           },
           "waits": {
-            "title": "Wait-time forecast",
-            "description": "Best visit times, hourly forecast and the forecast in a day curve, with ?forecast=true."
+            "title": "Wachttijdvoorspelling",
+            "description": "Beste bezoektijden, voorspelling per uur en de voorspelling in de dagcurve, met ?forecast=true."
           }
         },
         "planner": {
           "day": {
-            "title": "Day planner",
-            "description": "A park day's hour-by-hour plan per ride and the optimisation of a planned day."
+            "title": "Dagplanner",
+            "description": "Het plan van een parkdag per uur en per attractie, en de optimalisatie van een geplande dag."
           },
           "trip": {
-            "title": "Trip planner",
-            "description": "Trip plans across several parks and days, and their suggested improvements."
+            "title": "Reisplanner",
+            "description": "Reisplannen over meerdere parken en dagen, en de voorgestelde verbeteringen."
           }
         },
         "travel": {
           "regions": {
-            "title": "Trip regions",
-            "description": "The regions with their parks, hotel areas and travel times."
+            "title": "Reisregio’s",
+            "description": "De regio’s met hun parken, hotelgebieden en reistijden."
           },
           "tickets": {
-            "title": "Ticket catalogue",
-            "description": "A trip region's tickets."
+            "title": "Ticketcatalogus",
+            "description": "De tickets van een reisregio."
           },
           "school-breaks": {
-            "title": "School holidays",
-            "description": "The school holidays of the countries visitors come from."
+            "title": "Schoolvakanties",
+            "description": "De schoolvakanties van de landen waar de bezoekers vandaan komen."
           }
         }
       }
     },
     "tiers": {
-      "kicker": "Cost",
-      "title": "Free or paid",
-      "lead": "Which key fits depends on whether your code is open and whether your project earns money.",
-      "freeTitle": "Free key",
+      "kicker": "Kosten",
+      "title": "Gratis of betaald",
+      "lead": "Welke key past, hangt ervan af of je code open is en of je project geld verdient",
+      "freeTitle": "Gratis key",
       "free": {
-        "openSource": "The source code is public, under an open-source licence.",
-        "noMoney": "The project earns no money: no ads, no affiliate or paid links, no price, no subscription, no in-app purchases.",
-        "donations": "Donations and sponsorship are fine.",
-        "backlink": "A visible link to park.fan, as the next chapter describes."
+        "openSource": "De broncode is openbaar, onder een opensourcelicentie.",
+        "noMoney": "Het project verdient geen geld: geen advertenties, geen affiliate- of betaalde links, geen prijs, geen abonnement, geen in-app-aankopen.",
+        "donations": "Donaties en sponsoring zijn toegestaan.",
+        "backlink": "Een zichtbare link naar park.fan, zoals het volgende hoofdstuk beschrijft."
       },
-      "paidTitle": "Paid key",
-      "paidBody": "Any other use gets a paid key, with a written agreement on scope and price. You request it on the dashboard too, and we get back to you with an offer.",
+      "paidTitle": "Betaalde key",
+      "paidBody": "Voor elk ander gebruik is er een betaalde key, met een schriftelijke overeenkomst over omvang en prijs. Die vraag je ook aan in het dashboard, en wij komen terug met een offerte.",
       "paid": {
-        "ads": "Ads, including through an ad network",
-        "affiliate": "Affiliate or paid links",
-        "price": "A price, subscription, in-app purchases, client work or a company's product",
-        "closed": "Source code not public"
+        "ads": "Advertenties, ook via een advertentienetwerk",
+        "affiliate": "Affiliate- of betaalde links",
+        "price": "Een prijs, abonnement, in-app-aankopen, opdrachtwerk of een product van een bedrijf",
+        "closed": "Broncode niet openbaar"
       },
-      "review": "Every request is decided by hand, including one for a free key. We set which permissions, which hourly limit and which term the key gets."
+      "review": "Over elke aanvraag beslissen we met de hand, ook over een aanvraag voor een gratis key. Wij bepalen welke rechten, welke uurlimiet en welke looptijd de key krijgt."
     },
     "attribution": {
-      "kicker": "Credit",
-      "title": "What the link to park.fan must look like",
-      "lead": "The link is what a free key costs. It must be visible to visitors and an ordinary link to search engines.",
-      "doTitle": "Like this",
-      "do": {
-        "visible": "Visible on every page or screen that shows park.fan's data, in normal type size.",
-        "link": "A text link with the word park.fan that leads to the page of the park or attraction in question on park.fan.",
-        "follow": "An ordinary link, without <code>nofollow</code>, <code>sponsored</code> or <code>ugc</code> in its <code>rel</code> attribute.",
-        "indexable": "On a page search engines may index: no <code>noindex</code>, no block in robots.txt, no login in front of it.",
-        "near": "Close to the data, for example below the wait-time table or in the page's footer.",
-        "apps": "In an app: the line “Data: park.fan” visible in the app, and a link as above on the project's website or store page."
+      "kicker": "Bronvermelding",
+      "title": "Zo moet de link naar park.fan eruitzien",
+      "lead": "De link is wat een gratis key kost. Bezoekers moeten hem kunnen zien, en voor zoekmachines moet het een gewone link naar park.fan zijn. Elk punt hieronder is een voorwaarde.",
+      "spec": {
+        "title": "Zo ziet de link eruit",
+        "target": {
+          "label": "Doel",
+          "text": "De pagina op park.fan van het park of de attractie waarvan je de data toont, in de taal van je pagina. Toont een weergave veel parken tegelijk, dan de startpagina <code>https://park.fan/nl</code>."
+        },
+        "anchor": {
+          "label": "Linktekst",
+          "text": "Bevat het woord park.fan, bijvoorbeeld “park.fan” of “Wachttijden van park.fan”. Niet “hier”, “bron” of alleen een logo."
+        },
+        "rel": {
+          "label": "rel-attribuut",
+          "text": "Leeg of alleen <code>noopener</code>. Nooit <code>nofollow</code>, <code>sponsored</code> of <code>ugc</code>."
+        },
+        "markup": {
+          "label": "In de HTML",
+          "text": "Een gewone <code>{tag}</code> in de HTML die je server verstuurt, zonder doorverwijzing en zonder linkverkorter. Geen knop met JavaScript, geen link die pas een script toevoegt."
+        },
+        "visible": {
+          "label": "Zichtbaar",
+          "text": "In normale lettergrootte en met leesbaar contrast, bereikbaar zonder iets uit te klappen of in een apart vak te scrollen."
+        },
+        "place": {
+          "label": "Plaats",
+          "text": "Op elke pagina en elk scherm met data van park.fan, dicht bij die data: onder de tabel met wachttijden of in de footer van de pagina."
+        },
+        "indexable": {
+          "label": "Pagina",
+          "text": "Zoekmachines mogen de pagina indexeren: geen <code>noindex</code>, geen blokkade in robots.txt, geen login ervoor."
+        },
+        "apps": {
+          "label": "Apps",
+          "text": "De app toont “Data: park.fan” waar de data verschijnt. Daarnaast hoort er een link zoals hierboven op de website van het project, op de pagina over de app."
+        },
+        "duration": {
+          "label": "Duur",
+          "text": "Zolang je de key gebruikt. Zonder link stopt de gratis key."
+        }
       },
-      "dontTitle": "This does not count",
+      "dontTitle": "Dit telt niet",
       "dont": {
-        "nofollow": "<code>nofollow</code>, <code>sponsored</code> or <code>ugc</code> on the link",
-        "hidden": "Hidden, tiny or invisibly coloured links",
-        "scriptOnly": "A link that only JavaScript adds and the HTML lacks",
-        "redirect": "A detour through a link shortener or a redirect",
-        "image": "Only a logo or image without a text link"
+        "nofollow": "<code>nofollow</code>, <code>sponsored</code> of <code>ugc</code> op de link",
+        "hidden": "Verborgen, piepkleine of onzichtbaar gekleurde links",
+        "scriptOnly": "Een link die pas JavaScript toevoegt en die in de HTML ontbreekt",
+        "redirect": "Een omweg via een linkverkorter of een doorverwijzing",
+        "image": "Alleen een logo of afbeelding zonder tekstlink"
       },
-      "exampleTitle": "Example",
-      "exampleBody": "A credit that meets every point. The link leads to the page of the park whose data stands next to it."
+      "exampleTitle": "Voorbeelden",
+      "exampleBody": "Onder de data van één park link je naar de pagina van dat park. Een footer die op elke pagina staat, linkt naar de startpagina.",
+      "examplePark": "Wachttijden en voorspellingen:",
+      "exampleFooter": "Data:",
+      "checkTitle": "Zo controleer je de link",
+      "checkBody": "Open je pagina, bekijk de paginabron (niet de ontwikkelaarstools) en zoek naar park.fan. Daar moet de <code>{tag}</code> met het adres van park.fan staan, zonder <code>nofollow</code>. Ontbreekt hij in de bron, dan voegt een script hem pas later toe, en dan telt hij niet."
     },
     "usage": {
-      "kicker": "Requests",
-      "title": "How to query the API",
-      "keyTitle": "Send the key in a header",
-      "keyBody": "Every endpoint sits under <code>/v1</code> and answers in JSON. The key goes in the <code>X-API-Key</code> header and starts with <code>pfk_</code>. It never goes in a URL.",
-      "verifyTitle": "Check a key",
-      "verifyBody": "This endpoint tells you whether your key is valid, which permissions it carries, for which parks and until when. With <code>?park=</code> it checks a single park.",
-      "errorsTitle": "When the API refuses",
+      "kicker": "Verzoeken",
+      "title": "Zo bevraag je de API",
+      "keyTitle": "Stuur de key mee in een header",
+      "keyBody": "Alle endpoints staan onder <code>/v1</code> en antwoorden in JSON. De key gaat in de header <code>X-API-Key</code> en begint met <code>pfk_</code>. In een URL hoort hij nooit.",
+      "verifyTitle": "Een key controleren",
+      "verifyBody": "Dit endpoint vertelt je of je key geldig is, welke rechten hij heeft, voor welke parken en tot wanneer. Met <code>?park=</code> controleert het één park.",
+      "errorsTitle": "Als de API weigert",
       "errorStatus": "Status",
       "errorCode": "Code",
-      "errorMeaning": "Meaning",
+      "errorMeaning": "Betekenis",
       "errors": {
-        "api-key-required": "The route needs a key and the request carried none.",
-        "api-key-invalid": "The key does not exist or has been revoked.",
-        "api-key-expired": "The key has expired.",
-        "api-key-permission-missing": "The key lacks the permission for this route; requiredPermission names it.",
-        "api-key-park-not-allowed": "This key only covers other parks.",
-        "api-key-park-required": "This key only covers certain parks, and the route names none.",
-        "api-key-rate-limited": "The hourly limit is used up until the next full hour."
+        "api-key-required": "De route vraagt een key en het verzoek had er geen.",
+        "api-key-invalid": "De key bestaat niet of is ingetrokken.",
+        "api-key-expired": "De key is verlopen.",
+        "api-key-permission-missing": "De key mist het recht voor deze route. Welk recht het is, staat in requiredPermission.",
+        "api-key-park-not-allowed": "Deze key geldt alleen voor andere parken.",
+        "api-key-park-required": "Deze key geldt alleen voor bepaalde parken, en de route noemt er geen.",
+        "api-key-rate-limited": "De uurlimiet is op tot het volgende hele uur."
       },
-      "limitsTitle": "Limits",
-      "limitsBody": "A key may make {perHour} requests an hour unless agreed otherwise. Every answer reports what is left in <code>X-API-Key-Hourly-Remaining</code>. Beyond that, the API answers 429 until the next full hour.",
-      "secretTitle": "The key belongs on your server",
-      "secretBody": "Anything inside an app, a browser extension or a web page's JavaScript can be read by anyone. Call the API from your server and pass only the result to your users. If a key does leak, give it a new secret on the dashboard.",
-      "referenceTitle": "Reference",
-      "referenceBody": "Every endpoint with its parameters and response format is in the interactive reference. Any client generator can load the OpenAPI document behind it.",
-      "referenceLink": "Interactive reference",
-      "openapiLink": "OpenAPI document",
-      "mcpTitle": "MCP server",
-      "mcpBody": "For assistants there is an MCP server at <code>{url}</code>. Without a key it answers only the question about a park's current wait times; search and the best days need your key in the <code>X-API-Key</code> header.",
-      "terms": "The full terms of use in the legal notice"
+      "limitsTitle": "Limieten",
+      "limitsBody": "Een key mag {perHour} verzoeken per uur doen, tenzij anders afgesproken. Elk antwoord meldt in <code>X-API-Key-Hourly-Remaining</code> hoeveel er over zijn. Daarboven antwoordt de API tot het volgende hele uur met 429.",
+      "secretTitle": "De key hoort op je server",
+      "secretBody": "Wat in een app, een browserextensie of het JavaScript van een webpagina zit, kan iedereen uitlezen. Roep de API aan vanaf je server en geef je gebruikers alleen het resultaat. Is een key toch uitgelekt, geef hem dan in het dashboard een nieuw geheim.",
+      "referenceTitle": "Referentie",
+      "referenceBody": "Elk endpoint met zijn parameters en antwoordformaat vind je in de interactieve referentie. Elke clientgenerator kan het OpenAPI-document erachter laden.",
+      "referenceLink": "Interactieve referentie",
+      "openapiLink": "OpenAPI-document",
+      "mcpTitle": "MCP-server",
+      "mcpBody": "Voor assistenten is er een MCP-server op <code>{url}</code>. Zonder key beantwoordt hij alleen de vraag naar de actuele wachttijden van een park; zoeken en de beste bezoekdagen vragen je key in de header <code>X-API-Key</code>.",
+      "terms": "De volledige gebruiksvoorwaarden in het colofon"
     },
     "faq": {
-      "kicker": "Quick questions",
-      "title": "Common questions about the API",
+      "kicker": "Kort gevraagd",
+      "title": "Veelgestelde vragen over de API",
       "items": [
         {
-          "question": "May one key on my server serve every user of my app?",
-          "answer": "Yes, that is what it is for. Your app asks your server, your server asks park.fan with the key and caches the answers. The hourly limit covers all of the key's requests together."
+          "question": "Mag één key op mijn server alle gebruikers van mijn app bedienen?",
+          "answer": "Ja, daar is hij voor. Je app vraagt het aan je server, je server vraagt het met de key aan park.fan en slaat de antwoorden tijdelijk op. De uurlimiet geldt voor alle verzoeken van de key samen."
         },
         {
-          "question": "Do I have to pass the answers on unchanged?",
-          "answer": "No. Pass on only the fields you show. And request only the permissions whose fields you need."
+          "question": "Moet ik de antwoorden ongewijzigd doorgeven?",
+          "answer": "Nee. Geef alleen de velden door die je toont. En vraag alleen de rechten aan waarvan je de velden nodig hebt."
         },
         {
-          "question": "Does a key cover every park, with no end date?",
-          "answer": "We decide that on approval. Name the parks you need in the request; without a list we consider a key for every park. A key mostly gets a term when an agreement is limited in time."
+          "question": "Geldt een key voor alle parken, zonder einddatum?",
+          "answer": "Dat bepalen we bij de goedkeuring. Noem in de aanvraag de parken die je nodig hebt; zonder lijst bekijken we een key voor alle parken. Een looptijd krijgt een key vooral als een overeenkomst tijdelijk is."
         },
         {
-          "question": "What does a key cost?",
-          "answer": "Nothing for an open-source project that earns no money and links park.fan visibly. Any other use comes with a written agreement and a price."
+          "question": "Wat kost een key?",
+          "answer": "Niets voor een opensourceproject dat geen geld verdient en zichtbaar naar park.fan linkt. Voor elk ander gebruik is er een schriftelijke overeenkomst met een prijs."
         },
         {
-          "question": "Do donations count as earnings?",
-          "answer": "No. Donations and sponsorship of an open-source project are fine with a free key; ads, affiliate links and sales are not."
+          "question": "Tellen donaties als inkomsten?",
+          "answer": "Nee. Donaties en sponsoring van een opensourceproject mogen met een gratis key; advertenties, affiliate-links en verkoop niet."
         },
         {
-          "question": "My key ended up in a public repository. What now?",
-          "answer": "Give it a new secret on the dashboard right away, without a grace period. The old value stops working from the next request."
+          "question": "Mijn key is in een openbare repository beland. Wat nu?",
+          "answer": "Geef hem meteen een nieuw geheim in het dashboard, zonder overgangsperiode. De oude waarde werkt vanaf het volgende verzoek niet meer."
         },
         {
-          "question": "Are articles and photos available through the API?",
-          "answer": "No. Articles, glossary texts and photos are not part of the API, and the photographers hold the rights to many of the photos. To reuse any of it, ask by email at hello@park.fan."
+          "question": "Zijn artikelen en foto’s via de API beschikbaar?",
+          "answer": "Nee. Artikelen, woordenboekteksten en foto’s horen niet bij de API, en van veel foto’s hebben de fotografen de rechten. Wil je iets daarvan hergebruiken, vraag het dan per e-mail aan hello@park.fan."
         }
       ]
     },
     "next": {
-      "title": "Next",
-      "dashboard": "Open the dashboard",
-      "dashboardDescription": "Create an account, request a key, see its use",
-      "reference": "Open the API reference",
-      "referenceDescription": "Every endpoint with parameters and sample responses"
+      "title": "Verder",
+      "dashboard": "Naar het dashboard",
+      "dashboardDescription": "Account aanmaken, key aanvragen, gebruik bekijken",
+      "reference": "API-referentie openen",
+      "referenceDescription": "Alle endpoints met parameters en voorbeeldantwoorden"
     },
     "form": {
-      "project": "Your project",
-      "projectName": "Project name",
-      "projectNameHint": "Your dashboard lists the key under this name.",
-      "kind": "What is it?",
-      "kindPlaceholder": "Choose one",
+      "project": "Je project",
+      "projectName": "Projectnaam",
+      "projectNameHint": "Onder deze naam staat de key in je dashboard.",
+      "kind": "Wat is het?",
+      "kindPlaceholder": "Kies er een",
       "kinds": {
-        "mobile-app": "App for iOS or Android",
-        "website": "Website or blog",
-        "smart-home": "Smart home, widget or display",
-        "chat-bot": "Bot or assistant",
-        "research": "Research, university or school",
-        "internal-tool": "Tool for your own company",
-        "other": "Something else"
+        "mobile-app": "App voor iOS of Android",
+        "website": "Website of blog",
+        "smart-home": "Smart home, widget of display",
+        "chat-bot": "Bot of assistent",
+        "research": "Onderzoek, universiteit of school",
+        "internal-tool": "Tool voor je eigen bedrijf",
+        "other": "Iets anders"
       },
       "platforms": "Platforms",
       "platformNames": {
@@ -2990,170 +3024,170 @@
         "android": "Android",
         "web": "Web",
         "desktop": "Desktop",
-        "server": "Server or service",
-        "other": "Other"
+        "server": "Server of dienst",
+        "other": "Anders"
       },
-      "website": "Website or store link",
-      "optional": "optional",
-      "languages": "Languages",
-      "languagesHint": "For example: EN, DE, ES",
-      "description": "What does the project do?",
-      "descriptionHint": "Who uses it, and which of park.fan's data does it show where? At least {min} characters.",
-      "sourceAndMoney": "Source code and money",
-      "source": "Source code",
+      "website": "Website of link naar de store",
+      "optional": "optioneel",
+      "languages": "Talen",
+      "languagesHint": "Bijvoorbeeld: NL, EN, DE",
+      "description": "Wat doet het project?",
+      "descriptionHint": "Wie gebruikt het, en welke data van park.fan toont het waar? Minstens {min} tekens.",
+      "sourceAndMoney": "Broncode en geld",
+      "source": "Broncode",
       "sources": {
         "open-source": "Open source",
-        "closed-source": "Not public"
+        "closed-source": "Niet openbaar"
       },
-      "repository": "Repository link",
-      "license": "Licence",
-      "money": "How is the project funded?",
-      "moneyHint": "Tick everything that applies.",
+      "repository": "Link naar de repository",
+      "license": "Licentie",
+      "money": "Hoe wordt het project gefinancierd?",
+      "moneyHint": "Vink alles aan wat van toepassing is.",
       "revenue": {
-        "none": "Not at all: free and without ads",
-        "donations": "Donations or sponsorship",
-        "ads": "Ads",
-        "affiliate": "Affiliate or paid links",
-        "paid": "Purchase price, subscription or in-app purchases",
-        "client-work": "Commissioned work for a client",
-        "company": "A company's product or service"
+        "none": "Helemaal niet: gratis en zonder advertenties",
+        "donations": "Donaties of sponsoring",
+        "ads": "Advertenties",
+        "affiliate": "Affiliate- of betaalde links",
+        "paid": "Aankoopprijs, abonnement of in-app-aankopen",
+        "client-work": "Opdrachtwerk voor een klant",
+        "company": "Product of dienst van een bedrijf"
       },
-      "tierFree": "From your answers, a free key fits. The condition is the visible link to park.fan.",
-      "tierPaid": "From your answers, the project needs a paid key with a written agreement. Send the request anyway, and we will get back to you with an offer.",
-      "needs": "What you need",
-      "permissionsHint": "Wait times are open without a key. Tick the permissions whose data your project shows.",
-      "volume": "Requests per day, estimated",
+      "tierFree": "Volgens je antwoorden komt een gratis key in aanmerking. Voorwaarde is de zichtbare link naar park.fan.",
+      "tierPaid": "Volgens je antwoorden heeft het project een betaalde key met een schriftelijke overeenkomst nodig. Stuur de aanvraag toch in, dan komen we terug met een offerte.",
+      "needs": "Wat je nodig hebt",
+      "permissionsHint": "Wachttijden zijn open zonder key. Vink de rechten aan waarvan je project de data toont.",
+      "volume": "Verzoeken per dag, geschat",
       "volumes": {
-        "under-1k": "under 1,000",
-        "under-10k": "1,000 to 10,000",
-        "under-100k": "10,000 to 100,000",
-        "more": "more than 100,000"
+        "under-1k": "onder 1.000",
+        "under-10k": "1.000 tot 10.000",
+        "under-100k": "10.000 tot 100.000",
+        "more": "meer dan 100.000"
       },
-      "parks": "Only certain parks?",
-      "parksHint": "Name them here. Empty means all parks.",
-      "endpoints": "Which endpoints do you call?",
-      "endpointsHint": "One line per endpoint. It tells us which permissions you need.",
-      "integration": "Integration and credit",
-      "serverSide": "The key stays on my server",
-      "serverSideHint": "It never sits in an app, a browser, a URL or a log.",
-      "caching": "How long do you cache answers?",
-      "cachingHint": "For example: wait times 5 minutes, calendar 24 hours.",
-      "attributionUrl": "Page with the link to park.fan",
-      "attributionUrlHint": "The page that carries the visible link. What it must look like is in the <link>credit chapter</link>.",
-      "message": "Anything else?",
-      "terms": "I have read the <link>terms of use</link> and will link park.fan as described.",
-      "submit": "Send request",
-      "submitting": "Sending",
-      "requirements": "Fill in the required fields, pick at least one permission and confirm server-side use and the terms."
+      "parks": "Alleen bepaalde parken?",
+      "parksHint": "Noem ze hier. Leeg betekent alle parken.",
+      "endpoints": "Welke endpoints roep je aan?",
+      "endpointsHint": "Eén regel per endpoint. Daaraan zien we welke rechten je nodig hebt.",
+      "integration": "Integratie en bronvermelding",
+      "serverSide": "De key blijft op mijn server",
+      "serverSideHint": "Hij staat nooit in een app, een browser, een URL of een log.",
+      "caching": "Hoe lang cache je antwoorden?",
+      "cachingHint": "Bijvoorbeeld: wachttijden 5 minuten, kalender 24 uur.",
+      "attributionUrl": "Pagina met de link naar park.fan",
+      "attributionUrlHint": "De pagina met de zichtbare link. Hoe die eruit moet zien, lees je in het <link>hoofdstuk Bronvermelding</link>.",
+      "message": "Nog iets?",
+      "terms": "Ik heb de <link>gebruiksvoorwaarden</link> gelezen en link naar park.fan zoals beschreven.",
+      "submit": "Aanvraag versturen",
+      "submitting": "Wordt verstuurd",
+      "requirements": "Vul de verplichte velden in, kies minstens één recht en bevestig het gebruik op de server en de voorwaarden."
     },
     "error": {
-      "too-many-pending": "Three of your requests are already waiting. Wait for a decision or withdraw one.",
-      "Unauthorized": "Your session has expired. Sign in again.",
-      "network": "No connection to the server. Check your connection and try again.",
-      "generic": "The request did not arrive. Check the fields and try again."
+      "too-many-pending": "Er wachten al drie aanvragen van je. Wacht op een beslissing of trek er een in.",
+      "Unauthorized": "Je sessie is verlopen. Log opnieuw in.",
+      "network": "Geen verbinding met de server. Controleer je verbinding en probeer het opnieuw.",
+      "generic": "De aanvraag is niet aangekomen. Controleer de velden en probeer het opnieuw."
     },
     "auth": {
-      "registerTab": "Create account",
-      "loginTab": "Sign in",
-      "displayName": "Name",
-      "email": "Email",
-      "emailHint": "Our questions about your requests go to this address.",
-      "password": "Password",
-      "passwordHint": "At least {min} characters.",
-      "totp": "Code from your authenticator app",
-      "totpHint": "Your account signs in with a second factor.",
-      "signIn": "Sign in",
-      "errorLocked": "Too many attempts. Wait a few minutes and try again.",
-      "errorTurnstile": "The security check failed. Solve it again.",
-      "errorCredentials": "Email or password is wrong.",
-      "errorNetwork": "No connection to the server. Try again in a moment.",
+      "registerTab": "Account aanmaken",
+      "loginTab": "Inloggen",
+      "displayName": "Naam",
+      "email": "E-mail",
+      "emailHint": "Onze vragen over je aanvragen sturen we naar dit adres.",
+      "password": "Wachtwoord",
+      "passwordHint": "Minstens {min} tekens.",
+      "totp": "Code uit je authenticator-app",
+      "totpHint": "Je account logt in met een tweede factor.",
+      "signIn": "Inloggen",
+      "errorLocked": "Te veel pogingen. Wacht een paar minuten en probeer het opnieuw.",
+      "errorTurnstile": "De beveiligingscontrole is mislukt. Doe de controle opnieuw.",
+      "errorCredentials": "E-mail of wachtwoord klopt niet.",
+      "errorNetwork": "Geen verbinding met de server. Probeer het zo meteen opnieuw.",
       "register": {
-        "submit": "Create account",
-        "account-exists": "This address already has an account. Sign in instead.",
-        "invalid-form": "Check the address and the password.",
-        "rate-limited": "Too many attempts. Wait a minute.",
-        "turnstile-failed": "The security check failed. Solve it again.",
-        "network": "No connection to the server.",
-        "generic": "The account could not be created. Try again."
+        "submit": "Account aanmaken",
+        "account-exists": "Voor dit adres bestaat al een account. Log in.",
+        "invalid-form": "Controleer het adres en het wachtwoord.",
+        "rate-limited": "Te veel pogingen. Wacht een minuut.",
+        "turnstile-failed": "De beveiligingscontrole is mislukt. Doe de controle opnieuw.",
+        "network": "Geen verbinding met de server.",
+        "generic": "Het account kon niet worden aangemaakt. Probeer het opnieuw."
       }
     },
     "dashboard": {
-      "metaTitle": "Developer dashboard",
-      "title": "Developer dashboard",
-      "lead": "Your API keys, their use and your requests.",
-      "backToPortal": "Back to the API overview",
-      "loading": "Loading",
-      "loadFailed": "The dashboard could not be loaded.",
-      "retry": "Try again",
-      "signedInAs": "Signed in as {email}",
-      "signOut": "Sign out",
+      "metaTitle": "Dashboard voor ontwikkelaars",
+      "title": "Dashboard voor ontwikkelaars",
+      "lead": "Je API-keys, hun gebruik en je aanvragen",
+      "backToPortal": "Terug naar het API-overzicht",
+      "loading": "Wordt geladen",
+      "loadFailed": "Het dashboard kon niet worden geladen.",
+      "retry": "Opnieuw proberen",
+      "signedInAs": "Ingelogd als {email}",
+      "signOut": "Uitloggen",
       "tiles": {
-        "keys": "Active keys",
-        "thisHour": "Requests this hour",
-        "today": "Requests today (UTC)",
-        "last30": "Requests in 30 days"
+        "keys": "Actieve keys",
+        "thisHour": "Verzoeken dit uur",
+        "today": "Verzoeken vandaag (UTC)",
+        "last30": "Verzoeken in 30 dagen"
       },
-      "keysTitle": "Your keys",
-      "noKeys": "No key yet. Once a request is approved, the key appears here.",
-      "requestsTitle": "Your requests",
-      "newRequest": "Request a key",
-      "filed": "The request has arrived. The decision appears here once it is made.",
-      "noRequests": "No request yet.",
-      "pendingHint": "Every request is reviewed by hand.",
-      "withdraw": "Withdraw",
+      "keysTitle": "Je keys",
+      "noKeys": "Nog geen key. Zodra een aanvraag is goedgekeurd, verschijnt de key hier.",
+      "requestsTitle": "Je aanvragen",
+      "newRequest": "Key aanvragen",
+      "filed": "De aanvraag is binnen. De beslissing verschijnt in deze lijst zodra die genomen is.",
+      "noRequests": "Nog geen aanvraag.",
+      "pendingHint": "Elke aanvraag wordt met de hand beoordeeld.",
+      "withdraw": "Intrekken",
       "requestState": {
-        "pending": "in review",
-        "approved": "approved",
-        "rejected": "declined",
-        "withdrawn": "withdrawn"
+        "pending": "in beoordeling",
+        "approved": "goedgekeurd",
+        "rejected": "afgewezen",
+        "withdrawn": "ingetrokken"
       },
       "tier": {
-        "free": "free",
-        "paid": "paid"
+        "free": "gratis",
+        "paid": "betaald"
       },
       "state": {
-        "pickup": "ready to pick up",
-        "active": "active",
-        "expired": "expired",
-        "revoked": "revoked"
+        "pickup": "klaar om op te halen",
+        "active": "actief",
+        "expired": "verlopen",
+        "revoked": "ingetrokken"
       },
-      "pickupText": "The key is approved. Pick it up: it is shown to you exactly once.",
-      "pickup": "Pick up the key",
-      "thisHour": "This hour",
-      "noLimit": "no limit",
-      "last30": "Last 30 days",
-      "limited": "{count} refused over the limit",
-      "lastUsed": "Last used",
-      "never": "never",
-      "validUntil": "valid until {date}",
-      "noEnd": "no end date",
-      "usageChart": "Requests per day over the last 30 days",
-      "permissions": "Permissions",
-      "legacy": "legacy",
-      "onlyParks": "Only for: {parks}",
-      "graceRunning": "The old value works until {date}.",
-      "endGrace": "Block the old value now",
-      "actionFailed": "That did not work. Reload the page and try again.",
-      "rotate": "New secret",
-      "revoke": "Revoke",
-      "rotateTitle": "New secret for {name}",
-      "rotateText": "The key gets a new value. Permissions, limit and statistics stay. How long should the old value keep working?",
-      "graceLabel": "Grace period",
+      "pickupText": "De key is goedgekeurd. Haal hem op: je ziet hem precies één keer.",
+      "pickup": "Key ophalen",
+      "thisHour": "Dit uur",
+      "noLimit": "geen limiet",
+      "last30": "Laatste 30 dagen",
+      "limited": "{count} geweigerd boven de limiet",
+      "lastUsed": "Laatst gebruikt",
+      "never": "nooit",
+      "validUntil": "geldig tot {date}",
+      "noEnd": "geen einddatum",
+      "usageChart": "Verzoeken per dag in de laatste 30 dagen",
+      "permissions": "Rechten",
+      "legacy": "oud model",
+      "onlyParks": "Alleen voor: {parks}",
+      "graceRunning": "De oude waarde werkt nog tot {date}.",
+      "endGrace": "Oude waarde nu blokkeren",
+      "actionFailed": "Dat is niet gelukt. Laad de pagina opnieuw en probeer het nog eens.",
+      "rotate": "Nieuw geheim",
+      "revoke": "Intrekken",
+      "rotateTitle": "Nieuw geheim voor {name}",
+      "rotateText": "De key krijgt een nieuwe waarde. Rechten, limiet en statistieken blijven. Hoe lang moet de oude waarde nog werken?",
+      "graceLabel": "Overgangsperiode",
       "grace": {
-        "0": "None, block it now",
-        "1": "1 hour",
-        "24": "24 hours",
-        "168": "7 days"
+        "0": "Geen, nu blokkeren",
+        "1": "1 uur",
+        "24": "24 uur",
+        "168": "7 dagen"
       },
-      "cancel": "Cancel",
-      "rotateConfirm": "Create a new secret",
-      "revealedTitle": "Your key",
-      "revealedText": "Copy it now. It is shown only this once; if it gets lost, you create a new secret.",
-      "copy": "Copy",
-      "copied": "Copied",
-      "revealedDone": "Saved",
-      "revokeTitle": "Revoke {name}?",
-      "revokeText": "The key stops working from the next request, and this cannot be undone. A new key is a new request."
+      "cancel": "Annuleren",
+      "rotateConfirm": "Nieuw geheim maken",
+      "revealedTitle": "Je key",
+      "revealedText": "Kopieer hem nu. Je ziet hem alleen deze ene keer; raak je hem kwijt, dan maak je een nieuw geheim.",
+      "copy": "Kopiëren",
+      "copied": "Gekopieerd",
+      "revealedDone": "Opgeslagen",
+      "revokeTitle": "{name} intrekken?",
+      "revokeText": "De key werkt vanaf het volgende verzoek niet meer, en dat kun je niet ongedaan maken. Een nieuwe key is een nieuwe aanvraag."
     }
   },
   "attraction": {
