@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { ACT_MS, CLASS_ACTS, quietShowy, type ParkyCue } from '@/lib/assistant/parky/acts';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import {
   RIDE_MOTION,
   RIDES,
@@ -151,7 +150,6 @@ export function ParkyLogo({
     setLatestCue(cue);
   }
   const getDizzy = useCallback(() => {
-    trackSiteEvent('assistant_played', { play: 'circle' });
     const next = { act: 'dizzy' as const, id: (ownCue?.id ?? 0) - 1 };
     setOwnCue(next);
     setLatestCue(next);

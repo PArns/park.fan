@@ -803,7 +803,7 @@ the dark theme. Run it again after the widget changes visibly.
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`
 (the button on screen, once per page view, with the entrance it made or `none`),
 `assistant_opened` (with `source`: the button, a line, Parky's page, `language` after his
-language switch, or `interview` from a planner's button), `assistant_line_shown`,
+language switch, `interview` from a planner's button, or `stamp`, `tip` and `empty` from a Parky element that asks about what it shows, `askParky` in `lib/assistant/ask.ts`, its question sent as kind `context`), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion, typed, a reply chip
@@ -818,9 +818,7 @@ region; the helpers are `interviewRegion`, `interviewPlanStood`, `interviewEnded
 `assistant_plan_changed` (trip or day, one event per kind of change, the route and the buffer among
 them, never its content), `assistant_change_undone` (undone, or changed since; `via` the receipt's
 button or the chat), `assistant_answer` (result and number of lookups), `assistant_link_clicked`
-(a link in an answer followed, with the `target` page type or `directions`), `assistant_played`
-(`play`: thrown by a hard scroll down or up, each throw once, circled until dizzy, or the Konami
-code), `assistant_rated`,
+(a link in an answer followed, with the `target` page type or `directions`), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
 the planner opening as `planner_opened` with source `assistant`.

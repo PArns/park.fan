@@ -171,7 +171,8 @@ type NoProps = Record<string, never>;
  * How a question reached Parky: an opener suggestion, typed, a reply chip under his answer, or the
  * planner's interview button.
  */
-export type AssistantQuestionKind = 'suggestion' | 'typed' | 'chip' | 'interview' | 'idea';
+export type AssistantQuestionKind =
+  'suggestion' | 'typed' | 'chip' | 'interview' | 'idea' | 'context';
 
 /**
  * The greeting a chat opened with: one about the visitor's own plans (`YOURS_GREETINGS`), or one
@@ -224,10 +225,20 @@ export type AssistantPlanChange =
 /**
  * What made Parky's window open: the round button, a line in its bubble, Parky's own page, Parky in
  * the homepage hero, or Parky himself, reopening it on the page he just switched to another
- * language.
+ * language; or one of his elements on the page asking about what it shows (`askParky`): a stamp,
+ * a tip, an empty state.
  */
 export type AssistantOpenSource =
-  'button' | 'line' | 'page' | 'hero' | 'language' | 'interview' | 'idea';
+  | 'button'
+  | 'line'
+  | 'page'
+  | 'hero'
+  | 'language'
+  | 'interview'
+  | 'idea'
+  | 'stamp'
+  | 'tip'
+  | 'empty';
 
 /**
  * A line in Parky's speech bubble: an invitation, after an entrance, bored, woken, a holiday's, a
@@ -257,9 +268,6 @@ export type AssistantLineKind =
   | 'live'
   | 'clock'
   | 'yours';
-
-/** A way of playing with Parky himself, for `assistant_played`. */
-export type AssistantPlay = 'fling_down' | 'fling_up' | 'circle' | 'konami';
 
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
@@ -317,11 +325,6 @@ export interface SiteEventMap {
   assistant_line_clicked: { line: AssistantLineKind };
   /** A line was closed with its ✕, which ends the lines for the session. */
   assistant_line_closed: { line: AssistantLineKind };
-  /**
-   * Somebody played with Parky rather than with his window: threw him with a hard scroll (once a
-   * throw, not per frame), circled him with the pointer until he got dizzy, or typed the Konami code.
-   */
-  assistant_played: { play: AssistantPlay };
   /** A link in one of Parky's answers was followed: the page type it leads to, or `directions`. */
   assistant_link_clicked: { target: SitePageType | 'directions' };
   /** Parky's window closed again, with how many questions were asked while it was open. */

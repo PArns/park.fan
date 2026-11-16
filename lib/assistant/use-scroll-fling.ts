@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { isScrollKey } from '@/lib/utils/scroll-when-settled';
-import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { parkyStill } from './parky/motion';
 import {
   FlingTracker,
@@ -35,11 +34,8 @@ export function useScrollFling(enabled: boolean): ParkyFling | null {
     let hand: FlingHandAt | null = null;
     let frame = 0;
     let settle = 0;
-    // Each throw counts once, not each frame he hangs on.
-    let thrown: ParkyFling | null = null;
     const letGo = () => {
       tracker.letGo();
-      thrown = null;
       setFling(null);
     };
     const by = (kind: FlingHand) => () => {
@@ -54,10 +50,6 @@ export function useScrollFling(enabled: boolean): ParkyFling | null {
       if (dragging) onBar();
       const state = tracker.read(performance.now(), window.scrollY, viewport, hand);
       if (!state.fling) return;
-      if (state.fling !== thrown) {
-        thrown = state.fling;
-        trackSiteEvent('assistant_played', { play: `fling_${state.fling}` });
-      }
       setFling(state.fling);
       if (!state.holding) return;
       clearTimeout(settle);

@@ -479,7 +479,6 @@ export function AssistantTeaser({
       progress = konamiProgress(progress, event.key);
       if (progress < KONAMI_LENGTH) return;
       progress = 0;
-      trackSiteEvent('assistant_played', { play: 'konami' });
       present({ text: t('secretKonami'), kind: 'secret' });
       latest.current.onAct('ride');
     };

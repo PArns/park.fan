@@ -729,7 +729,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_opened: {
     label: 'Parky geöffnet',
-    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite, neu nach einem Sprachwechsel durch Parky, den Interview-Knopf eines Planers oder „Im Chat“ an einer Idee für den Reiseplan.',
+    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite, neu nach einem Sprachwechsel durch Parky, den Interview-Knopf eines Planers, „Im Chat“ an einer Idee für den Reiseplan oder ein Parky-Element mit Frage (Stempel, Tipp, leerer Zustand).',
   },
   assistant_line_shown: {
     label: 'Parky-Spruch angezeigt',
@@ -742,10 +742,6 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   assistant_line_closed: {
     label: 'Parky-Spruch geschlossen',
     when: 'Der Spruch wird mit dem Kreuz geschlossen, danach schweigt Parky für die Sitzung; mit seiner Art.',
-  },
-  assistant_played: {
-    label: 'Mit Parky gespielt',
-    when: 'Jemand spielt mit Parky selbst: wirft ihn mit hartem Scrollen (einmal je Wurf), kreist ihn mit dem Zeiger schwindlig oder tippt den Konami-Code.',
   },
   assistant_link_clicked: {
     label: 'Link in Parkys Antwort',
@@ -1358,6 +1354,9 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     hero: 'Parky auf der Startseite',
     language: 'Sprachwechsel durch Parky',
     idea: 'Idee für den Reiseplan',
+    stamp: 'Parky-Stempel',
+    tip: 'Parkys Tipp',
+    empty: 'Parky im leeren Zustand',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
   lever: {
