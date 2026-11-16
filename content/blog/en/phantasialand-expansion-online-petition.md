@@ -334,7 +334,7 @@ referendum petition.
 ```cta-widget
 href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
 label: Sign the petition on openPetition
-text: The petition runs until 23 November. If you live in Brühl, your signature also counts towards the quorum. Printable signature sheets are available there as a PDF.
+text: If you live in Brühl, your signature also counts towards the quorum. Printable signature sheets are available there as a PDF.
 ```
 
 [Phantasialand](ref:phantasialand?full)
