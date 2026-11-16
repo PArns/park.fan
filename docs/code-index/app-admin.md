@@ -1264,6 +1264,10 @@ Route `/admin/traffic/trip-planner` (page).
 - `default (TripPlannerTrafficPage)` _component_: The admin's dashboard of the multi-day trip planner and the region hubs. The view reads the window and language from the address, under a `Suspense` boundary.
 - `metadata` _const_
 
+### [`users/_components/attempts-panel.tsx`](../../app/admin/users/_components/attempts-panel.tsx)
+
+- `AttemptsPanel` _component_: How many sign in and how many try to make an account, per outcome: today, 7 and 30 days. The API counts numbers only; who tried is not stored.
+
 ### [`users/page.tsx`](../../app/admin/users/page.tsx)
 
 Route `/admin/users` (page).

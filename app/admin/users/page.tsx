@@ -24,6 +24,7 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { ApiTokenList } from '../_ui/api-token-list';
+import { AttemptsPanel } from './_components/attempts-panel';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
 import { formatAgo, formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
@@ -106,6 +107,8 @@ export default function UsersPage() {
           </PanelBody>
         )}
       </Panel>
+
+      <AttemptsPanel />
 
       {creating && <CreateUserDialog onClose={() => setCreating(false)} />}
     </AdminPage>

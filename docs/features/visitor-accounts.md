@@ -19,6 +19,12 @@ them; a member reaches the sign-in only by its address.
 
 ## Sign-in, members-only pages and features
 
+- **One sign-in for every account.** `/login` signs in visitors, developers and staff alike (it is
+  the same session endpoint); afterwards a visitor goes to `?next=` or `/account`, a developer to
+  the developer dashboard, staff to `/admin`.
+- **Attempts are counted.** The API counts every sign-in and registration per day and outcome,
+  numbers only; owners see them under „Anmeldeversuche“ on `/admin/users`
+  (`app/admin/users/_components/attempts-panel.tsx`).
 - **Registration is closed for now.** `/login` shows only the sign-in until
   `NEXT_PUBLIC_ACCOUNT_REGISTRATION=open`, and the API refuses a registration with 403
   `registration-closed` until its own `ACCOUNT_REGISTRATION=open`. Set both together.

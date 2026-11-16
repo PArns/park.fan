@@ -17,6 +17,7 @@ import {
 import { TURNSTILE_ACTIONS, type TurnstileAction } from '@/lib/security/turnstile-actions';
 import { cn } from '@/lib/utils';
 import { normalizeTotpCode } from '@/lib/admin/totp';
+import type { AdminRole } from '@/lib/admin/roles';
 
 /** The shortest password the API accepts. */
 export const MIN_PASSWORD = 12;
@@ -35,7 +36,8 @@ export interface SelfServiceAuthProps {
     loginTitle: string;
     loginLead: ReactNode;
   };
-  onSignedIn: () => void;
+  /** Called once signed in, with the account's role where the sign-in knows it. */
+  onSignedIn: (role?: AdminRole) => void;
 }
 
 /** The password field's labels, from the shared namespace. */
@@ -72,7 +74,7 @@ function SubmitButton({
 }
 
 /** Signs in with an existing account, through the admin's session route. */
-function LoginForm({ onSignedIn }: { onSignedIn: () => void }) {
+function LoginForm({ onSignedIn }: { onSignedIn: (role?: AdminRole) => void }) {
   const t = useTranslations('accountAuth');
   const labels = usePasswordLabels();
   const turnstile = useRef<TurnstileHandle>(null);
@@ -100,8 +102,11 @@ function LoginForm({ onSignedIn }: { onSignedIn: () => void }) {
           ...(needsTotp && totpCode ? { totpCode } : {}),
         }),
       });
-      const data = (await response.json().catch(() => ({}))) as { status?: string };
-      if (response.ok && data.status === 'ok') return onSignedIn();
+      const data = (await response.json().catch(() => ({}))) as {
+        status?: string;
+        user?: { role?: AdminRole };
+      };
+      if (response.ok && data.status === 'ok') return onSignedIn(data.user?.role);
       if (response.ok && data.status === 'totp-required') setNeedsTotp(true);
       else if (response.ok) setError(t('errorLocked'));
       else setError(response.status === 403 ? t('errorTurnstile') : t('errorCredentials'));

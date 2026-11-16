@@ -123,6 +123,7 @@ export const adminKeys = {
   history: (params?: Record<string, unknown>) => ['admin', 'history', params ?? {}] as const,
   users: ['admin', 'users'] as const,
   sessions: ['admin', 'sessions'] as const,
+  authAttempts: ['admin', 'auth-attempts'] as const,
   /** Without a window, the prefix every window's report sits under. */
   dataQuality: (windowDays?: string) =>
     windowDays
