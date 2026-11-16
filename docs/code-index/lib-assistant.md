@@ -25,6 +25,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `ALERTS_SNAPSHOT_MAX` _const_: The most rides and shows a question carries.
 - Types: `AssistantPushState`, `AssistantAlertsSnapshot`, `AssistantAlertTarget`, `AssistantAlertPrompt`, `AssistantActionFailure`, `AssistantActionOutcome`
 
+### [`ask.ts`](../../lib/assistant/ask.ts)
+
+- `askParky` _function_: A Parky element on the page (a stamp, a tip, an empty state) asks him about what it shows: the question waits for the chat window, which sends it once its session is ready (`takeParkyAsk`), and the window opens.
+- `takeParkyAsk` _function_: The question an element handed over, once: reading it clears it.
+- `ASK_PATH` _const_: Stands in a question for the page's path, filled in when the visitor asks (`ParkyAskButton`): a server render that cannot know the path, the 404's, passes it as the path's value.
+- Types: `ParkyAskSource`
+
 ### [`cards.ts`](../../lib/assistant/cards.ts)
 
 - `calendarWeeks` _function_: The days of a calendar card as Monday-first weeks of seven, with `null` before the first day and after the last. Each day sits by its date, so a gap in the days stays a gap.
@@ -55,7 +62,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`entrance.ts`](../../lib/assistant/entrance.ts)
 
-- `pageEntrance` _function_: This page load's entrance: a random one each time the page loads, `?parky=<entrance>` to see a given one, none without motion.
+- `pageEntrance` _function_: This page load's entrance: a random one on the session's first page load, `?parky=<entrance>` to see a given one on any load, none without motion. A show on every load wore thin by the third page.
 - `ENTRANCE_MS` _const_: How Parky arrives in its corner each time a page loads, and how long each takes. Each entrance has a line of its own; the stylesheet (`.parky-enter-*`) reads the length as `--parky-enter`, so it is written here only.
 - Types: `ParkyEntrance`
 
@@ -146,10 +153,17 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `PARKY_CORNER_ATTR` _const_: Marks the drawing in the corner button, where the hop starts and lands.
 - `PARKY_LANDED_EVENT` _const_: Sent on `window` when a hop has landed. Parky's eyes aimed at the pointer from wherever he was mid-air (the page scrolls under a still pointer while he flies), so they aim again from where he stands now.
 
+### [`parky-tip.ts`](../../lib/assistant/parky-tip.ts)
+
+- `isServableTipRequest` _function_: Whether the relay may ask for a tip on `date` in `locale`: both land in the CDN's cache key, so only a real day from yesterday (a park west of UTC) to the horizon, in one of the site's six languages.
+- `isParkyDayTip` _function_: Whether a relayed body is a tip this site can show.
+- Types: `ParkyTipVerdict`, `ParkyDayTip`
+
 ### [`parky/acts.ts`](../../lib/assistant/parky/acts.ts)
 
 - `actLength` _function_: How long an act runs with the one that follows it, for a page that plays acts in turn.
 - `actFor` _function_: An act by name, or for `ride` a random one of the rides that fit on screen round the drawing at `box`; `null` when none does. A ride asked for by name plays wherever Parky is, as on its page's stage.
+- `quietShowy` _function_: A showy pool for a page that is read rather than browsed (a post, a glossary entry): his tricks stay, the acts that rise into the text beside him go.
 - `pauseOf` _function_: A wait drawn from a class's pause.
 - `ACT_MS` _const_: Parky's little acts and how long each runs. The stylesheet reads the length as `--parky-act`, so a duration is written here only.
 - `FOLLOW_UP` _const_: An act that always comes straight after another: off a ride Parky is dizzy, and out of the log flume he shakes the water off.

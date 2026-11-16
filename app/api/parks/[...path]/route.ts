@@ -84,7 +84,8 @@ const RIDE_STATS_CACHE_CONTROL =
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
 
 /** Six hours, the API's own window for a tip; next.config.ts names the same. */
-const PARKY_TIP_CACHE_CONTROL = 'public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600';
+const PARKY_TIP_CACHE_CONTROL =
+  'public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600';
 /** A model call answers in a few seconds; a tip that takes longer is simply not shown. */
 const PARKY_TIP_TIMEOUT_MS = 12_000;
 

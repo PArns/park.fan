@@ -977,9 +977,7 @@ const nextConfig: NextConfig = {
       {
         // Parky's day tip: the handler's own six hours, kept identical.
         source: '/api/parks/:continent/:country/:city/:park/parky-tip',
-        headers: sharedCache(
-          'public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600'
-        ),
+        headers: sharedCache('public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600'),
       },
       {
         source: '/api/parks/:continent/:country/:city/:park/best-days',

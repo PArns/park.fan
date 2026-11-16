@@ -234,6 +234,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `useParkWaitTimes` _hook_: The live status and standby wait of every ride in a park, keyed by attraction slug: one request per park, shared by every ride reference in a blog post. Client-only, polling like `useRegionParks`.
 - Types: `LiveRideFields`, `ParkWaitTimesSnapshot`
 
+### [`use-parky-day-tip.ts`](../../lib/hooks/use-parky-day-tip.ts)
+
+- `useParkyDayTip` _hook_: Parky's tip for one calendar day, through the park relay (`…/parky-tip`), or null when he has nothing to say (a closed day, no forecast, Parky off).
+
 ### [`use-placed-out-of-sight.ts`](../../lib/hooks/use-placed-out-of-sight.ts)
 
 - `usePlacedOutOfSight` _hook_: Whether a late block with no box held open for it may go into the slot `ref` marks: once `ready`, the first moment its arrival moves nothing the reader is looking at. Once true it stays true.

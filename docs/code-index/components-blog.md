@@ -113,6 +113,14 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `BlogParkWidget` _component_: Inline embeddable park card used inside blog posts via: `park-widget slug=disney-magic-kingdom `
 
+### [`blog-parky-ask.tsx`](../../components/blog/blog-parky-ask.tsx)
+
+- `BlogParkyAsk` _component_: The "Parky says" card's button: hands Parky a question about his tip and opens the chat. Only where Parky shows for this visitor; until the gate decides, and for a visitor it left out, nothing, so the card reads as a plain tip.
+
+### [`blog-parky-says.tsx`](../../components/blog/blog-parky-says.tsx)
+
+- `BlogParkySays` _component_: A post's `> [!PARKY]` callout: one tip in Parky's voice on a glass card, the still Parky beside it as the one who says it. The card is server-rendered; only `ask`, the button that hands Parky a question about the tip, is client code.
+
 ### [`blog-post-banner.tsx`](../../components/blog/blog-post-banner.tsx)
 
 - `BlogPostBanner` _component_: Full-bleed article hero: the cover photo runs edge-to-edge behind the header bar (which floats transparent over it), with the title, excerpt and byline in white on top and a theme-aware fade into the page at the bottom — the same language …

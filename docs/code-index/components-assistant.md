@@ -102,6 +102,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `heartRed` _const_: The red of a heart.
 - `gold` _const_: Warm gold for stars, sparkles and lit windows.
 - `CABIN_COLOURS` _const_: The Ferris wheel's cabins in turn, and confetti in the same colours.
+- `FIGURE_BOX` _const_: The square round Parky as a whole at rest, hat and tail included, in the drawing's units, centred on him: the face alone fills `0 0 VIEW VIEW`, and the hat, the wheel or a season's, stands above that.
 - `BUBBLE` _const_: Parky's body: a round speech bubble with its tail at the lower left.
 - `SHUT_EYES` _const_: Both eyes shut, two arcs bowed down: asleep, or in a nap.
 - `SMILE` _const_: The smile Parky wears whenever nothing else takes the mouth.
@@ -113,6 +114,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `HEART` _const_: A heart about 10 units wide round the origin, for heart eyes and the ones floating up.
 - `BURST` _const_: A firework's burst round the origin: eight rays, five units out, with a gap at the centre.
 - `SHADES` _const_: Sunglasses over the eyes: the bridge, the two lenses and a glint on each.
+- `WOOZY` _const_: The wobbly mouth of the dizzy act, in place of the smile.
+- `QUERY` _const_: The question mark over the top left when a search found nothing: its hook, then its dot.
 - `GRIN` _const_: The open grin of a ride or a cheer, in place of the smile.
 - `HAPPY_EYES` _const_: A happy squint: both eyes turned up into arcs.
 - `EYES` _const_: The eyes' centres on the x axis, left and right.
@@ -139,6 +142,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkyEyeWhite` _component_: One of Parky's open eyes, the white of it, round its centre on the x axis (`EYES`). The live Parky and his pictures draw the same eye, so a picture of him never looks like somebody else.
 - `ParkyPupil` _component_: The pupil of the eye at `x` with its glint, `dx` and `dy` off the middle: where a picture points his gaze (`LOOK_GAZE`), while the live Parky moves the group round it instead.
+- `ParkyHeartEyes` _component_: Heart eyes, one `HEART` on each eye: the `love` act's, and a picture's of him smitten. `className` goes on each heart, for the live act's beat.
 
 ### [`parky/holiday-parky.tsx`](../../components/assistant/parky/holiday-parky.tsx)
 
@@ -175,16 +179,37 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkyParisScene` _component_: The Paris scene, filling its box from the right edge (`xMaxYMid slice`).
 
+### [`parky/parky-ask-button.tsx`](../../components/assistant/parky/parky-ask-button.tsx)
+
+- `ParkyAskButton` _component_: „Frag Parky“ under a still Parky in an empty state: opens the chat with `question` (`askParky`, source `empty`).
+
 ### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
 
 - `ParkyLogo` _component_: Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse, rosy cheeks and a smile, and for a hat a Ferris wheel with coloured cabins on an A-frame.
 - Types: `ParkyMood`
+
+### [`parky/parky-pose.tsx`](../../components/assistant/parky/parky-pose.tsx)
+
+- `ParkyPose` _component_: A still Parky for an empty or error state, in one of his `ParkyPoseName` poses, with his one line under him when `line` is given.
+- Types: `ParkyPoseName`
+
+### [`parky/parky-stamp.tsx`](../../components/assistant/parky/parky-stamp.tsx)
+
+- `ParkyStamp` _component_: Parky's verdict pressed onto a card like a rubber stamp: a short `label` in capitals in a double ring, tilted, in the ink of its `tone`, with a tiny Parky (the live drawing's wheel, bubble and eyes) peeking over its top edge at the right.
+- Types: `ParkyStampTone`
+
+### [`parky/parky-still.tsx`](../../components/assistant/parky/parky-still.tsx)
+
+- `ParkyStill` _component_: Parky standing still and smiling, hat included, as one `<svg>` that needs no client code: the live drawing's pieces with nothing moving, for a post's "Parky says" card and the share images.
 
 ### [`parky/props.tsx`](../../components/assistant/parky/props.tsx)
 
 - `ParkyRideTrack` _component_: The rails a ride runs on, drawn behind Parky so they stand while he moves: the loop's two rails with ties between them, the tower's mast, the flume's water channel with its splash, the teacups' turntable, or the track a ride's geometry …
 - `ParkyVehicle` _component_: What Parky rides in, its foot on the rail at the resting point: the red car, the flume's log boat or a pink teacup.
 - `ParkySpotlight` _component_: The stage a show puts behind Parky for `applause`: a spotlight cone from above with its pool of light at his feet, a red curtain's edge on either side and a few sparkles. Drawn behind the body, so he stands in the light.
+- `ParkyQuery` _component_: The question mark over his top left when a search found nothing. `className` carries the live act's motion; a picture leaves it off.
+- `ParkyLensGlass` _component_: The magnifying glass over his right eye (`LENS`): handle, ferrule, lens and glint. The live Parky swings it in round the handle's end; a picture draws it where it ends up.
+- `ParkyNightcap` _component_: A nightcap in place of the wheel: a white brim round the top of the head, the cap flopping over to the left, a bobble at its tip and two stars on the cloth. `still` leaves out the live act's settling and the bobble's swing, for a picture.
 - `ParkyMap` _component_: A park map held low in front of Parky: three panels, the middle one with a lake and a dot where he is. In the `map` moment the side panels unfold and the dot pulses; `still` draws it unfolded and quiet, for a picture rather than an act.
 - `ParkyMoment` _component_: What Parky holds or wears for a moment of a park day, drawn over his face; `null` for an act without one. The motion is the stylesheet's (`.parky-act-<act>`); under reduced motion the prop simply shows for the act.
 
