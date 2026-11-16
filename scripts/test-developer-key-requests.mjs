@@ -1,261 +1,337 @@
-// The developer portal's key requests: what the form's schema accepts and refuses, which revenue
-// models make a use commercial, what the admin's key dialog starts with for a request, how scopes
-// read on a key from before scopes, and what the reply mails carry.
+// The developer portal's key model: the permission catalog's shape, which projects get a free
+// key, what the request form and the admin's approval start with, how a key from before
+// permissions reads, what the dashboard counts, and that no reply mail carries a key.
 import {
-  isCommercialRequest,
-  keyRequestInputSchema,
+  API_KEY_ERRORS,
+  API_PERMISSIONS,
+  API_PERMISSION_GROUPS,
+  API_PERMISSION_GROUP_IDS,
+  KEYLESS_PERMISSIONS,
+  PERMISSION_ROUTES,
+  permissionGroup,
+  sortPermissions,
+} from '../lib/developers/permissions.ts';
+import {
+  normalizeUrl,
+  requestTier,
+  requestedPermissions,
   suggestedRequestsPerHour,
   toggleRevenue,
 } from '../lib/developers/key-request.ts';
+import { developerKeyState, usageTotals } from '../lib/developers/dashboard.ts';
 import {
-  API_SCOPES,
-  API_SCOPE_DEFINITIONS,
-  LEGACY_KEY_SCOPES,
-  OPEN_API_ROUTES,
-  sortScopes,
-} from '../lib/developers/scopes.ts';
-import {
-  apiStoresScopes,
+  apiStoresPermissions,
   createDataApiKeyBody,
-  effectiveScopes,
-  formatScopes,
+  effectivePermissions,
+  isLegacyKey,
 } from '../lib/admin/api-keys.ts';
 import {
-  keyApprovalMailto,
-  keyRejectionMailto,
-  keyRequestPrefill,
+  approvalDraft,
+  approveKeyRequestBody,
+  keyDecisionMailto,
+  keyRequestPath,
+  sortKeyRequests,
 } from '../lib/admin/key-requests.ts';
 
-const VALID = {
-  locale: 'de',
-  name: 'Ada',
-  email: 'ada@example.org',
-  projectName: 'Coaster Widget',
-  website: 'example.org',
-  kind: 'smart-home',
-  source: 'closed-source',
+const REQUEST = {
+  id: '00000000-0000-4000-8000-000000000001',
+  userId: '00000000-0000-4000-8000-0000000000aa',
+  status: 'pending',
+  tier: 'free',
+  projectName: 'MagicParks',
+  website: 'https://magicparks.example',
+  kind: 'mobile-app',
+  platforms: ['ios', 'android', 'web'],
+  languages: 'ES, EN, DE, FR, IT, PT',
+  description: 'A free app with live wait times for parks in Europe and the United States.',
+  source: 'open-source',
+  repository: 'https://github.com/example/magicparks',
+  license: 'MIT',
   revenue: ['none'],
-  scopes: ['statistics', 'forecasts'],
-  volume: 'under-1k',
-  description: 'Ein Widget für den Flur, das die Wartezeiten von drei Parks anzeigt.',
-  terms: true,
+  permissions: ['live.schedule', 'parks.directory', 'forecasts.crowd'],
+  volume: 'under-10k',
+  parks: '',
+  serverSide: true,
+  caching: 'discovery 15 min, park 1 h, calendar 24 h',
+  attributionUrl: 'https://magicparks.example/about',
+  locale: 'es',
+  createdAt: '2026-11-16T08:00:00.000Z',
+  applicant: { email: 'dev@example.org', displayName: 'Rubén' },
 };
 
-/** The fields a parse refused, or the parsed value's chosen fields. */
-function parse(input, pick = []) {
-  const result = keyRequestInputSchema.safeParse(input);
-  if (!result.success) return { refused: [...new Set(result.error.issues.map((i) => i.path[0]))] };
-  return Object.fromEntries(pick.map((key) => [key, result.data[key]]));
+const HOUR = 3_600_000;
+const NOW = Date.parse('2026-11-16T12:00:00.000Z');
+
+/** A key row as the lists return it, with only the fields a case needs. */
+function key(fields) {
+  return { revokedAt: null, expiresAt: null, revealedAt: '2026-11-01T00:00:00.000Z', ...fields };
 }
 
-const RECORD = {
-  ...parse(VALID, Object.keys(VALID)),
-  organisation: '',
-  repository: '',
-  parks: 'Phantasialand, Toverland',
-  message: '',
-  id: '00000000-0000-4000-8000-000000000001',
-  createdAt: '2026-11-16T08:00:00.000Z',
-  status: 'pending',
-};
-
-/** The decoded body of a `mailto:` link. */
-function mailBody(href) {
-  return decodeURIComponent(new URL(href).searchParams.get('body') ?? '');
+/** The decoded subject and body of a `mailto:` link. */
+function mail(href) {
+  const url = new URL(href);
+  return {
+    to: decodeURIComponent(url.pathname),
+    text: `${url.searchParams.get('subject')}\n${url.searchParams.get('body')}`,
+  };
 }
 
 const testCases = [
   {
-    name: 'a complete request passes, a bare host becomes https and scopes take the catalog order',
-    actual: () => parse(VALID, ['website', 'scopes', 'organisation', 'repository']),
-    expected: {
-      website: 'https://example.org',
-      scopes: ['forecasts', 'statistics'],
-      organisation: '',
-      repository: '',
+    name: 'every permission sits in exactly one group, and the groups are the listed ones',
+    actual: () => {
+      const grouped = API_PERMISSION_GROUP_IDS.flatMap((group) => API_PERMISSION_GROUPS[group]);
+      return {
+        sameSet: [...grouped].sort().join() === [...API_PERMISSIONS].sort().join(),
+        noRepeat: new Set(grouped).size === grouped.length,
+        prefixed: API_PERMISSIONS.every((p) => p.startsWith(`${permissionGroup(p)}.`)),
+        routed: API_PERMISSIONS.every((p) => Array.isArray(PERMISSION_ROUTES[p])),
+      };
     },
+    expected: { sameSet: true, noRepeat: true, prefixed: true, routed: true },
   },
   {
-    name: 'open source needs the repository',
-    actual: () => parse({ ...VALID, source: 'open-source' }),
-    expected: { refused: ['repository'] },
+    name: 'without a key only the wait times are open',
+    actual: () => [...KEYLESS_PERMISSIONS],
+    expected: ['live.waits'],
   },
   {
-    name: '„none“ cannot stand beside a revenue model',
-    actual: () => parse({ ...VALID, revenue: ['none', 'ads'] }),
-    expected: { refused: ['revenue'] },
+    name: 'the refusal codes are unique and name a permission refusal as 403',
+    actual: () => ({
+      unique: new Set(API_KEY_ERRORS.map((e) => e.code)).size === API_KEY_ERRORS.length,
+      missing: API_KEY_ERRORS.find((e) => e.code === 'api-key-permission-missing')?.status,
+    }),
+    expected: { unique: true, missing: 403 },
   },
   {
-    name: 'no scope, no terms, a short description and a bad address are each refused',
-    actual: () =>
-      parse({
-        ...VALID,
-        scopes: [],
-        terms: false,
-        description: 'kurz',
-        email: 'nope',
-      }).refused.sort(),
-    expected: ['description', 'email', 'scopes', 'terms'],
+    name: 'permissions sort into catalog order and lose unknown values and repeats',
+    actual: () => sortPermissions(['planner.day', 'nope', 'live.weather', 'planner.day']),
+    expected: ['live.weather', 'planner.day'],
   },
   {
-    name: 'a URL that is not http(s) is refused',
-    actual: () => parse({ ...VALID, website: 'javascript:alert(1)' }),
-    expected: { refused: ['website'] },
-  },
-  {
-    name: 'an unknown scope is refused',
-    actual: () => parse({ ...VALID, scopes: ['forecasts', 'everything'] }),
-    expected: { refused: ['scopes'] },
-  },
-  {
-    name: 'ads, affiliate links, a price, client work and a company product are commercial',
-    actual: () =>
-      ['none', 'donations', 'ads', 'affiliate', 'paid', 'client-work', 'company'].map((m) =>
-        isCommercialRequest([m])
-      ),
-    expected: [false, false, true, true, true, true, true],
-  },
-  {
-    name: 'ticking „none“ clears the rest, ticking anything else clears „none“',
+    name: 'a free key needs open source and no earnings; donations are fine',
     actual: () => [
-      toggleRevenue(['ads', 'paid'], 'none', true),
-      toggleRevenue(['none'], 'ads', true),
-      toggleRevenue(['ads', 'paid'], 'ads', false),
+      requestTier({ source: 'open-source', revenue: ['none'] }),
+      requestTier({ source: 'open-source', revenue: ['donations'] }),
+      requestTier({ source: 'open-source', revenue: ['donations', 'ads'] }),
+      requestTier({ source: 'open-source', revenue: ['affiliate'] }),
+      requestTier({ source: 'closed-source', revenue: ['none'] }),
+      requestTier({ source: null, revenue: ['none'] }),
+      requestTier({ source: 'open-source', revenue: [] }),
     ],
-    expected: [['none'], ['ads'], ['paid']],
+    expected: ['free', 'free', 'paid', 'paid', 'paid', 'paid', 'paid'],
   },
   {
-    name: 'the suggested allowance follows the volume, never under the default',
-    actual: () => ['under-1k', 'under-10k', 'under-100k', 'more'].map(suggestedRequestsPerHour),
+    name: '„none“ excludes every other revenue model, and any other clears it',
+    actual: () => [
+      toggleRevenue(['ads', 'donations'], 'none', true),
+      toggleRevenue(['none'], 'donations', true),
+      toggleRevenue(['donations', 'ads'], 'ads', false),
+    ],
+    expected: [['none'], ['donations'], ['donations']],
+  },
+  {
+    name: 'the suggested allowance follows the volume, the open bracket left to the owner',
+    actual: () =>
+      ['under-1k', 'under-10k', 'under-100k', 'more'].map((v) => suggestedRequestsPerHour(v)),
     expected: [1000, 1000, 20000, null],
   },
   {
-    name: 'every scope has routes, and none of them is an open route',
-    actual: () =>
-      API_SCOPES.every(
-        (scope) =>
-          API_SCOPE_DEFINITIONS[scope].routes.length > 0 &&
-          API_SCOPE_DEFINITIONS[scope].routes.every((route) => !OPEN_API_ROUTES.includes(route))
-      ),
-    expected: true,
+    name: 'a bare host becomes https, anything without a dot is refused',
+    actual: () => [normalizeUrl('example.org'), normalizeUrl('localhost'), normalizeUrl('  ')],
+    expected: ['https://example.org/', null, null],
   },
   {
-    name: 'scopes sort into the catalog order and drop what the catalog does not know',
-    actual: () => sortScopes(['travel', 'nope', 'forecasts', 'travel']),
-    expected: ['forecasts', 'travel'],
+    name: 'a key from before permissions reads everything, and the dialogs know whether to send them',
+    actual: () => ({
+      legacy: isLegacyKey({ permissions: null }),
+      legacyReads: effectivePermissions({ permissions: null }).length === API_PERMISSIONS.length,
+      own: effectivePermissions({ permissions: ['planner.trip', 'live.weather'] }),
+      oldApi: apiStoresPermissions([{ name: 'a' }]),
+      newApi: apiStoresPermissions([{ permissions: null }]),
+    }),
+    expected: {
+      legacy: true,
+      legacyReads: true,
+      own: ['live.weather', 'planner.trip'],
+      oldApi: false,
+      newApi: true,
+    },
   },
   {
-    name: 'a key from before scopes opens forecasts and the planner',
-    actual: () => [effectiveScopes({ scopes: null }), LEGACY_KEY_SCOPES],
-    expected: [
-      ['forecasts', 'planner'],
-      ['forecasts', 'planner'],
-    ],
-  },
-  {
-    name: 'the API stores scopes only when its key list carries the field',
-    actual: () => [
-      apiStoresScopes([]),
-      apiStoresScopes([{ id: 'a' }]),
-      apiStoresScopes([{ id: 'a', scopes: null }]),
-    ],
-    expected: [false, false, true],
-  },
-  {
-    name: 'scopes read in German, in the catalog order',
-    actual: () => [formatScopes(['statistics', 'forecasts']), formatScopes([])],
-    expected: ['Prognosen, Statistiken', 'keine Berechtigung'],
-  },
-  {
-    name: 'a create sends scopes only when given',
+    name: 'a hand-made key sends sorted permissions, and none to an API without them',
     actual: () => {
       const base = {
-        name: 'X',
+        name: ' Site ',
         contact: '',
-        usage: 'non-commercial',
+        usage: 'internal',
         note: '',
-        requestsPerHour: 1000,
+        requestsPerHour: null,
         allowedParkIds: [],
         expiresAt: null,
       };
       return [
-        'scopes' in createDataApiKeyBody(base),
-        createDataApiKeyBody({ ...base, scopes: ['travel', 'forecasts'] }).scopes,
+        createDataApiKeyBody({ ...base, permissions: ['stats.live', 'live.waits'] }),
+        createDataApiKeyBody(base),
       ];
     },
-    expected: [false, ['forecasts', 'travel']],
+    expected: [
+      {
+        name: 'Site',
+        usage: 'internal',
+        requestsPerHour: null,
+        allowedParkIds: null,
+        permissions: ['live.waits', 'stats.live'],
+      },
+      { name: 'Site', usage: 'internal', requestsPerHour: null, allowedParkIds: null },
+    ],
   },
   {
-    name: 'a request fills the key dialog: name, address, usage, allowance, scopes, a note',
-    actual: () => keyRequestPrefill({ ...RECORD, revenue: ['affiliate'], volume: 'under-100k' }),
-    expected: {
-      requestId: RECORD.id,
-      name: 'Coaster Widget',
-      contact: 'ada@example.org',
-      usage: 'commercial',
-      note: 'Antrag vom 2026-11-16, Ada. Parks laut Antrag: Phantasialand, Toverland.',
-      requestsPerHour: 20000,
-      scopes: ['forecasts', 'statistics'],
-    },
+    name: 'an approval starts with what the request asked, and a paid tier is commercial',
+    actual: () => [
+      approvalDraft(REQUEST),
+      approvalDraft({ ...REQUEST, tier: 'paid', parks: 'Efteling' }),
+    ],
+    expected: [
+      {
+        name: 'MagicParks',
+        usage: 'non-commercial',
+        permissions: ['live.schedule', 'parks.directory', 'forecasts.crowd'],
+        requestsPerHour: 1000,
+        note: 'Antrag vom 2026-11-16, dev@example.org.',
+      },
+      {
+        name: 'MagicParks',
+        usage: 'commercial',
+        permissions: ['live.schedule', 'parks.directory', 'forecasts.crowd'],
+        requestsPerHour: 1000,
+        note: 'Antrag vom 2026-11-16, dev@example.org. Parks laut Antrag: Efteling.',
+      },
+    ],
   },
   {
-    name: 'the approval mail goes to the applicant with the key, its scopes and the portal',
-    actual: () => {
-      const href = keyApprovalMailto(
-        RECORD,
-        'pfk_secret',
-        { requestsPerHour: 1000 },
-        ['forecasts'],
-        'Patrick'
-      );
-      const body = mailBody(href);
-      return [
-        href.startsWith('mailto:ada%40example.org?'),
-        body.includes('pfk_secret'),
-        body.includes('Er öffnet: Prognosen.'),
-        body.includes('https://park.fan/de/developers'),
-        body.trim().endsWith('Patrick'),
-      ];
-    },
-    expected: [true, true, true, true, true],
-  },
-  {
-    name: 'an applicant from another language page gets the English mail, without a scope line while the API has none',
-    actual: () => {
-      const body = mailBody(
-        keyApprovalMailto(
-          { ...RECORD, locale: 'fr' },
-          'pfk_x',
-          { requestsPerHour: null },
-          null,
-          'P'
-        )
-      );
-      return [
-        body.startsWith('Hi Ada,'),
-        body.includes('It opens'),
-        body.includes('no hourly limit'),
-        body.includes('https://park.fan/en/developers'),
-      ];
-    },
-    expected: [true, false, true, true],
-  },
-  {
-    name: 'the rejection mail carries the reason',
+    name: 'an approval body leaves empty fields out',
     actual: () =>
-      mailBody(
-        keyRejectionMailto(
-          { ...RECORD, status: 'rejected', decision: { at: '', by: 'P', reason: 'Zu früh.' } },
-          'P'
-        )
-      ).includes('Zu früh.'),
-    expected: true,
+      approveKeyRequestBody({
+        name: ' MagicParks ',
+        usage: 'non-commercial',
+        permissions: ['forecasts.crowd', 'live.schedule'],
+        requestsPerHour: 1000,
+        allowedParkIds: [],
+        expiresAt: null,
+        note: ' ',
+        message: ' Bitte den Link im Footer lassen. ',
+      }),
+    expected: {
+      name: 'MagicParks',
+      usage: 'non-commercial',
+      permissions: ['live.schedule', 'forecasts.crowd'],
+      requestsPerHour: 1000,
+      allowedParkIds: null,
+      message: 'Bitte den Link im Footer lassen.',
+    },
+  },
+  {
+    name: 'the request paths name the decision',
+    actual: () => [keyRequestPath('a b'), keyRequestPath('x', 'approve')],
+    expected: ['/api/admin/api-key-requests/a%20b', '/api/admin/api-key-requests/x/approve'],
+  },
+  {
+    name: 'open requests come first, oldest on top; decided ones after, newest first',
+    actual: () =>
+      sortKeyRequests([
+        {
+          id: 'd1',
+          status: 'rejected',
+          createdAt: '2026-11-01T00:00:00Z',
+          decidedAt: '2026-11-02T00:00:00Z',
+        },
+        { id: 'p2', status: 'pending', createdAt: '2026-11-10T00:00:00Z' },
+        {
+          id: 'd2',
+          status: 'approved',
+          createdAt: '2026-11-03T00:00:00Z',
+          decidedAt: '2026-11-05T00:00:00Z',
+        },
+        { id: 'p1', status: 'pending', createdAt: '2026-11-09T00:00:00Z' },
+      ]).map((r) => r.id),
+    expected: ['p1', 'p2', 'd2', 'd1'],
+  },
+  {
+    name: 'the decision mail goes to the account, points to the dashboard and never carries a key',
+    actual: () => {
+      const approved = mail(
+        keyDecisionMailto({ ...REQUEST, status: 'approved', decisionNote: 'Link im Footer.' }, 'P')
+      );
+      const rejected = mail(
+        keyDecisionMailto({ ...REQUEST, status: 'rejected', locale: 'de' }, 'P')
+      );
+      return {
+        to: approved.to,
+        english: approved.text.includes('is approved'),
+        dashboard: approved.text.includes('https://park.fan/en/developers/dashboard'),
+        note: approved.text.includes('Link im Footer.'),
+        noKey: !approved.text.includes('pfk_'),
+        german: rejected.text.includes('nicht ausstellen'),
+        pending: keyDecisionMailto(REQUEST, 'P'),
+        withdrawn: keyDecisionMailto({ ...REQUEST, status: 'withdrawn' }, 'P'),
+        noAddress: keyDecisionMailto({ ...REQUEST, status: 'approved', applicant: null }, 'P'),
+      };
+    },
+    expected: {
+      to: 'dev@example.org',
+      english: true,
+      dashboard: true,
+      note: true,
+      noKey: true,
+      german: true,
+      pending: null,
+      withdrawn: null,
+      noAddress: null,
+    },
+  },
+  {
+    name: 'a key waits for pick-up until revealed; revoked and expired win',
+    actual: () => [
+      developerKeyState(key({ revealedAt: null }), NOW),
+      developerKeyState(key({}), NOW),
+      developerKeyState(key({ expiresAt: new Date(NOW - HOUR).toISOString() }), NOW),
+      developerKeyState(key({ revokedAt: '2026-11-15T00:00:00Z', revealedAt: null }), NOW),
+    ],
+    expected: ['pickup', 'active', 'expired', 'revoked'],
+  },
+  {
+    name: 'the dashboard sums live keys only',
+    actual: () =>
+      usageTotals([
+        key({
+          requestsThisHour: 5,
+          stats: {
+            days: [
+              { date: 'a', requests: 10, limited: 0 },
+              { date: 'b', requests: 7, limited: 1 },
+            ],
+            months: [],
+          },
+        }),
+        key({
+          revokedAt: '2026-11-15T00:00:00Z',
+          requestsThisHour: 99,
+          stats: { days: [{ date: 'b', requests: 99, limited: 0 }], months: [] },
+        }),
+      ]),
+    expected: { thisHour: 5, last30Days: 17, today: 7 },
+  },
+  {
+    name: 'a request’s permissions read in catalog order',
+    actual: () => requestedPermissions({ permissions: ['travel.tickets', 'live.weather'] }),
+    expected: ['live.weather', 'travel.tickets'],
   },
 ];
 
 let passed = 0;
 let failed = 0;
-
+console.log('\n🔑 Developer key model\n');
 for (const testCase of testCases) {
   let result;
   try {

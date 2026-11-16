@@ -69,7 +69,9 @@ export async function GET(request: Request) {
     store.delete(ADMIN_MARKER_COOKIE);
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(SESSION_ABSOLUTE_TTL_SECONDS));
+  // A developer account signs in here too, and reads none of the admin's figures.
+  if (identity.role === 'developer') store.delete(ADMIN_MARKER_COOKIE);
+  else store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(SESSION_ABSOLUTE_TTL_SECONDS));
   return NextResponse.json(identity, {
     headers: NO_STORE,
   });
@@ -154,7 +156,9 @@ export async function POST(request: Request) {
 
   const store = await cookies();
   store.set(ADMIN_SESSION_COOKIE, result.token, sessionCookieOptions(expiresIn));
-  store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(expiresIn));
+  if ((result.user as { role?: string } | null)?.role !== 'developer') {
+    store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(expiresIn));
+  }
 
   return NextResponse.json(
     { status: 'ok', user: result.user, expiresAt: result.expiresAt },

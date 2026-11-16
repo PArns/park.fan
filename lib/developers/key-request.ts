@@ -1,11 +1,9 @@
-import { z } from 'zod';
-import { locales } from '@/i18n/config';
-import { API_SCOPES, DEFAULT_KEY_REQUESTS_PER_HOUR, sortScopes, type ApiScope } from './scopes';
+import { DEFAULT_KEY_REQUESTS_PER_HOUR, sortPermissions, type ApiPermission } from './permissions';
 
 /**
- * A request for a data key, as the portal's form sends it and the admin reviews it. The form asks
- * for what decides the key: who to reach, what the project is, how it makes money and which
- * scopes it needs. Shared by the form, the public route that stores it and the admin's review.
+ * A request for a data key, as the developer dashboard's form fills it in and the API stores it
+ * (`api_key_requests`, `CreateApiKeyRequestDto` in v4.api.park.fan). Every request is decided by
+ * hand; the answers decide which key the terms allow (`requestTier`).
  */
 
 /** What the project is. */
@@ -20,15 +18,15 @@ export const PROJECT_KINDS = [
 ] as const;
 export type ProjectKind = (typeof PROJECT_KINDS)[number];
 
+/** Where the project runs. */
+export const PLATFORMS = ['ios', 'android', 'web', 'desktop', 'server', 'other'] as const;
+export type Platform = (typeof PLATFORMS)[number];
+
 /** Whether its source is public. */
 export const SOURCE_MODELS = ['open-source', 'closed-source'] as const;
 export type SourceModel = (typeof SOURCE_MODELS)[number];
 
-/**
- * How the project earns money, several at once. `none` stands alone. The terms' examples of
- * commercial use (Impressum, `#data-use`) are each a value here, so the form can tell an applicant
- * before sending that the request needs an agreement.
- */
+/** How the project earns money, several at once; `none` stands alone. */
 export const REVENUE_MODELS = [
   'none',
   'donations',
@@ -40,107 +38,85 @@ export const REVENUE_MODELS = [
 ] as const;
 export type RevenueModel = (typeof REVENUE_MODELS)[number];
 
-/** The revenue models that make a use commercial under the terms. */
-export const COMMERCIAL_REVENUE: ReadonlySet<RevenueModel> = new Set([
-  'ads',
-  'affiliate',
-  'paid',
-  'client-work',
-  'company',
-]);
+/** What a free key allows besides earning nothing: donations and sponsorship. */
+export const FREE_REVENUE: ReadonlySet<RevenueModel> = new Set(['none', 'donations']);
 
-/** Requests per day the project expects, in brackets an applicant can estimate. */
+/** Requests per day the project expects. */
 export const REQUEST_VOLUMES = ['under-1k', 'under-10k', 'under-100k', 'more'] as const;
 export type RequestVolume = (typeof REQUEST_VOLUMES)[number];
 
-/** Field lengths, shared by the form's `maxLength` and the schema. */
-export const KEY_REQUEST_LIMITS = {
-  name: 80,
-  email: 200,
-  organisation: 120,
-  /** The project's name becomes the key's name, which the API caps at 80. */
-  projectName: 80,
-  url: 200,
-  descriptionMin: 40,
-  description: 2000,
-  parks: 300,
-  message: 1000,
-} as const;
-
-const L = KEY_REQUEST_LIMITS;
-
-/** An http(s) URL, or nothing. A bare host (`example.org`) is read as https. */
-const optionalUrl = z
-  .string()
-  .trim()
-  .max(L.url)
-  .transform((value) => (value && !/^https?:\/\//i.test(value) ? `https://${value}` : value))
-  .refine((value) => value === '' || z.url({ protocol: /^https?$/ }).safeParse(value).success, {
-    message: 'invalid-url',
-  });
-
-/** What the form sends, without the Turnstile token. */
-export const keyRequestInputSchema = z
-  .object({
-    locale: z.enum(locales),
-    name: z.string().trim().min(1).max(L.name),
-    email: z.string().trim().max(L.email).pipe(z.email()),
-    organisation: z.string().trim().max(L.organisation).default(''),
-    projectName: z.string().trim().min(1).max(L.projectName),
-    website: optionalUrl.default(''),
-    kind: z.enum(PROJECT_KINDS),
-    source: z.enum(SOURCE_MODELS),
-    repository: optionalUrl.default(''),
-    revenue: z
-      .array(z.enum(REVENUE_MODELS))
-      .min(1)
-      .refine((values) => !values.includes('none') || values.length === 1, {
-        message: 'none-stands-alone',
-      }),
-    scopes: z.array(z.enum(API_SCOPES)).min(1).transform(sortScopes),
-    volume: z.enum(REQUEST_VOLUMES),
-    parks: z.string().trim().max(L.parks).default(''),
-    description: z.string().trim().min(L.descriptionMin).max(L.description),
-    message: z.string().trim().max(L.message).default(''),
-    /** The applicant accepts the terms, the credit with a link among them. */
-    terms: z.literal(true),
-  })
-  .refine((input) => input.source !== 'open-source' || input.repository !== '', {
-    message: 'repository-required',
-    path: ['repository'],
-  });
-
-/** A validated request as the form sent it. */
-export type KeyRequestInput = z.infer<typeof keyRequestInputSchema>;
+/** Which key the terms allow: free, or paid under a written agreement. */
+export type RequestTier = 'free' | 'paid';
 
 /** Where a request stands. */
-export type KeyRequestStatus = 'pending' | 'approved' | 'rejected';
+export type KeyRequestStatus = 'pending' | 'approved' | 'rejected' | 'withdrawn';
 
-/** The admin's decision on a request. */
-export interface KeyRequestDecision {
-  at: string;
-  /** The admin's display name. */
-  by: string;
-  /** The key issued for it; approved requests only. */
-  keyId?: string;
-  /** Its first characters, as the key list shows them. */
-  keyPrefix?: string;
-  /** Why it was turned down, for the reply. */
-  reason?: string;
+/** Field lengths, the backend's `REQUEST_LIMITS`. */
+export const KEY_REQUEST_LIMITS = {
+  projectName: 80,
+  url: 300,
+  languages: 200,
+  descriptionMin: 40,
+  description: 3000,
+  license: 80,
+  endpoints: 2000,
+  parks: 500,
+  caching: 1000,
+  message: 2000,
+  reason: 2000,
+} as const;
+
+/** What the form sends to `POST /v1/developer/requests`. */
+export interface KeyRequestInput {
+  projectName: string;
+  website?: string;
+  kind: ProjectKind;
+  platforms: Platform[];
+  languages?: string;
+  description: string;
+  source: SourceModel;
+  repository?: string;
+  license?: string;
+  revenue: RevenueModel[];
+  permissions: ApiPermission[];
+  endpoints?: string;
+  volume: RequestVolume;
+  parks?: string;
+  serverSide: boolean;
+  caching?: string;
+  attributionUrl: string;
+  message?: string;
+  locale: string;
+  terms: true;
 }
 
-/** A stored request. */
-export interface KeyRequestRecord extends KeyRequestInput {
+/** A stored request, as the API answers it. Fields the API left null are absent. */
+export interface KeyRequestRecord extends Omit<KeyRequestInput, 'terms'> {
   id: string;
-  createdAt: string;
+  userId: string;
   status: KeyRequestStatus;
-  userAgent?: string;
-  decision?: KeyRequestDecision;
+  tier: RequestTier;
+  createdAt: string;
+  decidedAt?: string;
+  decidedBy?: string;
+  /** Why it was turned down, or the owner's message beside the approval. */
+  decisionNote?: string;
+  keyId?: string;
+  /** The account that asked; the admin list only. */
+  applicant?: { email: string; displayName: string } | null;
 }
 
-/** The revenue models make the use commercial, so it needs a written agreement. */
-export function isCommercialRequest(revenue: readonly RevenueModel[]): boolean {
-  return revenue.some((model) => COMMERCIAL_REVENUE.has(model));
+/**
+ * Which key the terms allow: free only for an open-source project that earns nothing but
+ * donations; any other use is a paid key. The backend's `requestTier`.
+ */
+export function requestTier(input: {
+  source: SourceModel | null;
+  revenue: readonly RevenueModel[];
+}): RequestTier {
+  const earnsNothing =
+    input.revenue.length > 0 && input.revenue.every((model) => FREE_REVENUE.has(model));
+  return input.source === 'open-source' && earnsNothing ? 'free' : 'paid';
 }
 
 /** The revenue checkboxes after one was toggled: `none` clears the others, any other clears it. */
@@ -155,9 +131,9 @@ export function toggleRevenue(
 }
 
 /**
- * The hourly allowance to start the key dialog with: about four times the hourly average of the
- * expected daily volume, so a morning peak fits, never below the API's default of 1,000. Null for
- * the open bracket, where the admin decides.
+ * The hourly allowance to start the approval with: about four times the hourly average of the
+ * expected daily volume, so a morning peak fits, never below the API's default. Null for the open
+ * bracket, where the admin decides.
  */
 export function suggestedRequestsPerHour(volume: RequestVolume): number | null {
   switch (volume) {
@@ -171,10 +147,22 @@ export function suggestedRequestsPerHour(volume: RequestVolume): number | null {
   }
 }
 
-/** The scopes a request asked for, in the catalog's order. */
-export function requestedScopes(request: Pick<KeyRequestInput, 'scopes'>): ApiScope[] {
-  return API_SCOPES.filter((scope) => request.scopes.includes(scope));
+/** The permissions a request asked for, in the catalog's order. */
+export function requestedPermissions(
+  request: Pick<KeyRequestInput, 'permissions'>
+): ApiPermission[] {
+  return sortPermissions(request.permissions);
 }
 
-/** The path the form posts to. */
-export const KEY_REQUEST_PATH = '/api/developers/key-request';
+/** An http(s) URL as the API accepts it, a bare host read as https; null for anything else. */
+export function normalizeUrl(value: string): string | null {
+  const text = value.trim();
+  if (!text) return null;
+  const withScheme = /^https?:\/\//i.test(text) ? text : `https://${text}`;
+  try {
+    const url = new URL(withScheme);
+    return url.hostname.includes('.') ? url.toString() : null;
+  } catch {
+    return null;
+  }
+}
