@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De Quick Pass voor het Phantasialand koop je nu in de webshop, en bij de baan laat je de QR-code uit de e-mail op je telefoon zien. Hij geldt alleen op de dag dat je hem boekt, dus koop hem op de dag van je bezoek en niet de avond ervoor. De Ultimate van € 80 geldt één keer bij elke Quick-Pass-ingang, ook bij F.L.Y., waarvoor geen losse pass bestaat.
+  De Quick Pass voor het Phantasialand koop je nu vanaf 11 uur op je telefoon, zonder rij bij de gastenservice. Tijdens de Wintertraum is dat precies de opening, en de pass geldt alleen die dag.
 tags:
   - nieuws
   - phantasialand
@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'Phantasialand Quick Pass nu ook online te koop'
   description: >-
-    De Phantasialand Quick Pass koop je nu online, als QR-code op je mobiel. Hij geldt alleen op de koopdag. Een losse pass kost vanaf € 5, de Ultimate € 80.
+    De Phantasialand Quick Pass koop je nu online vanaf 11 uur, zonder rij bij de gastenservice. Alleen geldig op de koopdag, vanaf € 5, Ultimate € 80.
   keywords:
     - Phantasialand Quick Pass online kopen
     - Phantasialand Quick Pass
@@ -51,9 +51,11 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
-Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin.
+Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin, en daar stond je eerst in de rij om later bij een baan korter in de rij te staan.
 
-Een Quick Pass is alleen geldig op de dag dat je hem boekt, en bovenaan de shop staat “Nur heute gültig” (alleen vandaag geldig) met de datum van die dag. Omboeken of terugbetalen kan ook niet. Koop hem dus op de dag zelf, 's ochtends onderweg naar Brühl of meteen nadat je door de ingang van het park bent gelopen. Bestel je hem de avond ervoor vanaf de bank, dan heb je de volgende ochtend een mooie pdf en verder niets.
+Online verkoopt het park de pass vanaf 11 uur. Tijdens de Wintertraum gaat dan ook het park open. Je loopt door de poort en bestelt de pass rustig op je telefoon, terwijl je al op weg bent naar Taron of Black Mamba. Voor elven meldt de shop alleen dat de verkoop nog niet is begonnen.
+
+Een Quick Pass is alleen geldig op de dag dat je hem boekt, en bovenaan de shop staat “Nur heute gültig” (alleen vandaag geldig) met de datum van die dag. Omboeken of terugbetalen kan ook niet. Wie 's avonds vanaf de bank bestelt, heeft een pass voor precies die avond, op de bank.
 
 ## Zo koop je de Quick Pass online
 
@@ -64,7 +66,7 @@ Open de QR-code het liefst al in de rij en zet de helderheid op de hoogste stand
 ```cta-widget
 href: https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
 label: Quick Pass kopen in de Phantasialand-shop
-text: Losse passes vanaf € 5, de Ultimate € 80, alleen geldig op de dag dat je boekt.
+text: Eén pass per persoon en per baan, de QR-code krijg je per e-mail.
 ```
 
 ## Prijzen in de shop op 15 november
@@ -89,9 +91,9 @@ De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pas
 
 ## Wat je verder nodig hebt
 
-De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets zijn er alleen online, een kassa bij de ingang is er niet, en voor de dag zelf verkoopt het park ze tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
+De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets verkoopt het park alleen online, een kassa bij de ingang heeft het niet, en voor de dag zelf koop je tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
 
-Een plaats in de trein kies je ook met pass niet zelf uit, en wie te klein is voor Taron, is dat met Quick Pass net zo goed.
+Een plaats in de trein kies je ook met pass niet zelf uit, en de minimale lengte geldt met pass net zo goed, voor Taron 1,30 m.
 
 ## Als de ingang pauzeert of de baan stilstaat
 
@@ -99,7 +101,7 @@ Met de Quick Pass sta je korter in de rij, al sta je er nog steeds, en de Quick-
 
 ## In de Wintertraum
 
-De Wintertraum loopt sinds 14 november tot en met 24 januari 2027, elke dag van 11 tot 20 uur. Gesloten is het park op 24 en 25 december, op 1 januari en op 12 en 13 januari.
+De Wintertraum loopt sinds 14 november tot en met 24 januari 2027, elke dag van 11 tot 20 uur, met vijf sluitingsdagen rond kerst, nieuwjaar en half januari.
 
 De losse pass voor Taron After Dark geldt vanaf 17 uur, en in de Wintertraum is het dan al lang donker. Op oudejaarsdag sluit het park al om 18 uur, en dan loont de pass voor Taron After Dark alleen als je om vijf uur al bij de baan staat.
 
@@ -107,10 +109,10 @@ De losse pass voor Taron After Dark geldt vanaf 17 uur, en in de Wintertraum is 
 
 ```
 
-## Hoeveel passes er zijn en wanneer er een loont
+## Beperkte passes en wanneer er een loont
 
-Bij de gastenservice was het aantal beperkt, en in de Wintertraum waren de passes in het weekend vaak rond het middaguur op. Online blijft het aantal beperkt: op de schermen in het park staat naast “Auch einfach online erhältlich” (ook gewoon online te koop) de melding “Limitiertes Kontingent”, een beperkt aantal. Volgens de infopagina kun je de pass bij de gastenservice ook gewoon blijven kopen.
+Bij de gastenservice was het aantal beperkt. In de Wintertraum waren de passes daar in het weekend vaak rond het middaguur op, en wie er een wilde, stond er 's ochtends voor in de rij. Ook online is het aantal beperkt: op de schermen in het park staat naast “Auch einfach online erhältlich” (ook gewoon online te koop) de melding “Limitiertes Kontingent”, beperkte voorraad. Wie om elf uur op zijn telefoon bestelt, is iedereen voor die pas 's middags naar de gastenservice gaat. Volgens de infopagina kun je de pass bij de gastenservice ook gewoon blijven kopen.
 
-Op een groene dag in de kalender heb je de Quick Pass volgens mij niet nodig als je bij de opening aan de poort staat. Op een dieprode zaterdag in de vakantie zou ik de € 10 voor Black Mamba uitgeven voordat ik 's middags in de rij ervoor ga staan. In welke volgorde ik zonder pass de banen afga, lees je in de [Phantasialand-tips](/blog/phantasialand-wachttijden-tips).
+Op een groene dag in de kalender heb je de Quick Pass volgens mij niet nodig als je bij de opening aan de poort staat. Op een dieprode zaterdag in de vakantie zou ik de € 10 voor Black Mamba uitgeven voordat ik 's middags in de rij ervoor ga staan. Zonder pass rijd ik de banen af in de volgorde uit de [Phantasialand-tips](/blog/phantasialand-wachttijden-tips).
 
 Bronnen: [Quick Pass in de webshop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass), [gebruiksvoorwaarden van de Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, onderdeel Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).

@@ -343,7 +343,7 @@ burgerinitiatief tekenen.
 ```cta-widget
 href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
 label: Teken de petitie op openPetition
-text: De petitie loopt tot 23 november. Woon je in Brühl, dan telt je handtekening ook mee voor het quorum. Handtekeningenlijsten om uit te printen staan er als pdf.
+text: Woon je in Brühl, dan telt je handtekening ook mee voor het quorum. Handtekeningenlijsten om uit te printen staan er als pdf.
 ```
 
 [Phantasialand](ref:phantasialand?full)

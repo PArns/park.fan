@@ -2,11 +2,12 @@
 title: 'Wintertraum in Phantasialand loopt tot 24 januari'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
+updatedAt: '2026-11-16'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  De Wintertraum in Phantasialand loopt tot 24 januari 2027, elke dag van 11 tot 20 uur, en elke avond rond 19.50 uur begint op de Kaiserplatz MAGIC SYMPHONY met vuurwerk. Taron rijdt tot min tien graden, River Quest ligt stil. Het rustigst was het vorige winter van maandag tot en met vrijdag in januari, na de kerstvakantie.
+  Taron in het donker rijd ik het liefst, en tijdens de Wintertraum kan dat tot 24 januari elke avond vanaf een uur of vijf. Het rustigst was het vorige winter doordeweeks na de kerstvakantie.
 tags:
   - phantasialand
   - wintertraum
@@ -34,9 +35,9 @@ rideLinks:
   - phantasialand/raik
   - phantasialand/river-quest
 coverImage:
-  src: /media/phantasialand/tittle-tattle-tree.jpg
-  alt: 'De glazen koepel boven Wuze Town, eronder een toren met gesneden vogels en de rails van een achtbaan.'
-  caption: 'Wuze Town is een hal, dus de Winja’s rijden hier ook als het motregent.'
+  src: /media/phantasialand/background.jpg
+  alt: 'Een verlichte zweefmolen draait in het donker, ervoor fonteinen achter een hek, links een lichtboom.'
+  caption: 'De Wellenflug in Berlin tijdens de vorige Wintertraum, links achteraan de lichtboom van de Kaiserplatz.'
   credit: 'park.fan'
 seo:
   title: 'Phantasialand Wintertraum 2026/27: tijden, shows en tips'
@@ -53,9 +54,11 @@ seo:
     - Phantasialand Wintertraum tickets
 ---
 
-Sinds 14 november ligt er in [Phantasialand](ref:phantasialand) weer ijs op de Kaiserplatz, onder de grote lichtboom. De Wintertraum duurt tot 24 januari 2027, elke dag van 11 tot 20 uur, en rond 19.50 uur gaat boven Berlin het vuurwerk van MAGIC SYMPHONY de lucht in. Tussendoor zijn er zeven shows, staat er glühwein bij de kraampjes en rijdt [Taron](ref:phantasialand/taron) in het donker.
+Sinds 14 november ligt er in [Phantasialand](ref:phantasialand) weer ijs op de Kaiserplatz, onder de grote lichtboom. De Wintertraum duurt tot 24 januari 2027, elke dag van 11 tot 20 uur, en rond 19.50 uur gaat boven Berlin het vuurwerk van MAGIC SYMPHONY de lucht in. Tussendoor zijn er zeven shows, en bij de kraampjes schenken ze weer glühwein.
 
-Er hangt deze winter heel veel nieuwe versiering in het park, en de kraampjes verkopen veel nieuwe lekkernijen. Op de lijst met nieuwigheden van het park staat geen van beide. In Mexico licht bijvoorbeeld het logo van Chiapas in kleuren op. Op weg naar de wildwaterbaan loop je er vanzelf langs, en wie toch nat gaat worden, heeft tijd genoeg voor een foto vooraf.
+Op het openingsweekend was ik zelf in het park, en het eerste wat me opviel was de versiering. Er hangt veel nieuws, in Mexico licht bijvoorbeeld het logo van Chiapas nu in kleuren op. Op weg naar de wildwaterbaan loop je er vanzelf langs, en die foto maak je beter voor de rit dan erna. Bij de kraampjes lag een en ander dat ik van vorige winter nog niet kende. Op de lijst met nieuwigheden van het park staat de versiering niet, en het eten ook niet.
+
+Mijn eigenlijke reden voor de Wintertraum is wel [Taron](ref:phantasialand/taron). In het donker rijd ik geen enkele attractie in het park liever, en in de zomer lukt dat niet, omdat het park om 18 of 19 uur dichtgaat, uren voor zonsondergang. Tijdens de Wintertraum is het op elke openingsdag rond vijf uur zover.
 
 ## Data en openingstijden 2026/27
 
@@ -67,17 +70,15 @@ Er hangt deze winter heel veel nieuwe versiering in het park, en de kraampjes ve
 
 Op Totensonntag rijden de attracties gewoon vanaf 11 uur, zoals op elke Wintertraum-dag. Alleen de shows schuiven naar de avond, omdat de dag in Noordrijn-Westfalen (NRW) een stille feestdag is. Hoe dat zit, lees je in het stuk over [Totensonntag in Phantasialand](/blog/phantasialand-totensonntag).
 
-Van de negen openingsuren zit je er drie tot drieënhalf in het donker. In Brühl gaat de zon half november rond 16.45 uur onder, op de kortste dag, 21 december, om 16.29 uur en op de laatste Wintertraum-dag in januari om 17.09 uur. Een goed halfuur later is het echt donker.
+In Brühl gaat de zon tijdens de Wintertraum onder tussen 16.29 uur op 21 december en 17.09 uur op 24 januari, en een goed halfuur later is het echt donker. Van de negen openingsuren zit je er dus bijna drie tot drieënhalf in het donker.
 
 ## Wat er in 2026/27 nieuw is
-
-Als nieuw voor de winter van 2026/27 noemt het park zelf:
 
 - Phenie’s Shakes & Pancakes aan de Mondsee in Fantasy, op de restaurantpagina van het park gemarkeerd met “NIEUW”.
 - Winni Snow, een sneeuwspeeltuin voor de allerkleinsten in het Tal der Wuze, die er alleen tijdens de Wintertraum is.
 - Tiempo de Fuego, de 3D-mappingshow op de rotsen van Mexico, draait deze winter met nieuwe projectietechniek en nieuwe vuureffecten.
 - Der goldene Faden in de Wintergarten heeft het park voor deze winter opnieuw in scène gezet.
-- De Quick Pass koop je nu ook in de webshop, als QR-code op je telefoon.
+- De Quick Pass koop je nu ook in de webshop, als QR-code op je telefoon, zonder dat je bij de gastenservice in de rij hoeft te staan.
 
 De 4D-film [Die 3 Mausketiere](ref:phantasialand/die-3-mausketiere) in het Residenz Theater in Berlin bestaat al sinds 2025 en draait het hele jaar, maar het park blijft hem aanprijzen als “wereldprimeur in 4D”. Het beeld komt van een ledwand in plaats van een projector, en de stoelen bewegen mee, volgens het park als eerste in hun soort in Europa. Lottie, Otto en Herbert zitten in de film achter een rattenbaas aan die de “bol van het plezier” wil stelen.
 
@@ -95,25 +96,25 @@ Drie shows spelen in een theater, vier buiten in de themagebieden. Elke theaters
 | Pulse of Rookburgh          | 360-gradenlichtshow met lasers | Rookburgh                 | ca. 10 min. | –        |
 | MAGIC SYMPHONY              | Slotshow met vuurwerk          | Kaiserplatz, Berlin       | ca. 10 min. | –        |
 
-**Spectaculum Phantastère** is een feest van rondtrekkende artiesten in een glinsterende burcht, met trampolineacrobatiek, acrobatiek en livezang, bedoeld voor kinderen vanaf de basisschoolleeftijd.
+In **Spectaculum Phantastère** springen acrobaten in een kermisburcht van de trampoline, er wordt live gezongen, en de show is bedoeld voor kinderen vanaf de basisschoolleeftijd.
 
-**Der goldene Faden** begint in een kostuumopslag. De assistente van de kleermaker trekt een gouden draad los, en vanaf dan springt de show heen en weer tussen vroeger en nu, met acrobatiek, dans en veel humor.
+**Der goldene Faden** begint in een kostuumopslag, waar de assistente van de kleermaker een gouden draad lostrekt. Vanaf dan springt het verhaal heen en weer tussen vroeger en nu, verteld door acrobaten en dansers.
 
-**Arctaris – The Hidden World** is de ijsshow van de Arena de Fiesta, met videowanden, paarrijden en vuuracrobatiek op schaatsen. Een ijsshow in december klinkt als twee keer kou lijden, maar de arena is een overdekt theater.
+In **Arctaris – The Hidden World** schaatsen paren voor videowanden over het ijs, en tussendoor is er vuuracrobatiek op schaatsen. Een ijsshow in december klinkt als twee keer kou lijden, maar de Arena de Fiesta is een overdekt theater.
 
-De **Kaiserplatz Illumination** raadt het park uitdrukkelijk aan voor gezinnen met kleine kinderen, voor wie de slotshow rond tien voor acht te laat is. Ze begint als het schemert, en de lichtboom en de huizen van Berlin gaan aan op een lied dat speciaal hiervoor is geschreven.
+Met kleine kinderen, voor wie de slotshow om tien voor acht te laat is, kijk je naar de **Kaiserplatz Illumination**, en dat raadt het park ook aan. Ze begint als het schemert, en de lichtboom en de huizen van Berlin gaan aan op een lied dat speciaal hiervoor is geschreven.
 
 Voor **Tiempo de Fuego** ben je een kwartier van tevoren op je plek. De show projecteert de wisseling van de seizoenen op de rotsen en gebouwen van Mexico, aan het eind schieten metershoge vlammen rond de klokkentoren op, en bij slecht weer kan hij uitvallen.
 
-Bij **Pulse of Rookburgh** gaan gebundelde lichtstralen door de mist van Rookburgh, door de rails van [F.L.Y.](ref:phantasialand/fly) en over Hotel Charles Lindbergh. De show werkt met snelle, felle flitsen, dus wie daar gevoelig voor is, kijkt beter van een afstand.
+Bij **Pulse of Rookburgh** gaan gebundelde lichtstralen door de mist van Rookburgh, door de rails van [F.L.Y.](ref:phantasialand/fly) en over Hotel Charles Lindbergh. Daarbij flitst het snel en fel, dus wie daar gevoelig voor is, kijkt beter van een afstand.
 
 Buiten het programma lopen er op de Kaiserplatz sway-pole-artiesten rond, hoog op wiegende palen, en de draken van het park ontmoeten kinderen in hun eigen themagebied: Drago in Berlin, Wang in China Town, Kroka in Deep in Africa en Phenie in Fantasy.
 
 ### MAGIC SYMPHONY en de Good Night Wish
 
-MAGIC SYMPHONY is door bezoekers van pretparken voor het tweede jaar op rij verkozen tot beste show van Duitsland. Hij duurt ongeveer tien minuten, met licht, vonken, een speciaal geschreven lied en vuurwerk boven de daken van Berlin.
+MAGIC SYMPHONY duurt ongeveer tien minuten, met vonken en vuurwerk boven de straat Berlin en een lied dat alleen voor deze show is geschreven.
 
-Niet iedereen past op de Kaiserplatz, dus het park raadt aan om vanaf 18.50 uur naar Berlin te gaan. Vanaf dan leidt het personeel alle gasten via aparte toegangen naar binnen en wijst het de plaatsen toe, en uiterlijk om 19.40 uur gaan de toegangen dicht, op drukke dagen eerder. Kinderwagens blijven achter op eigen parkeerplekken. De kraampjes rond de ijsbaan zijn tot de show open en gaan tijdens de show helemaal dicht. Het gebied er direct naast wordt vanwege het vuurwerk afgezet, dus je glühwein en crêpe neem je vooraf mee de straat Berlin in. Voor rolstoelgebruikers is er een eigen kijkvak, dat je tot 18 uur gratis reserveert bij de gastenservice.
+Niet iedereen past op de Kaiserplatz, dus het park raadt aan om vanaf 18.50 uur naar Berlin te gaan. Vanaf dan leidt het personeel alle gasten via aparte toegangen naar binnen en wijst het de plaatsen toe, en uiterlijk om 19.40 uur gaan de toegangen dicht, op drukke dagen eerder. Kinderwagens blijven achter op eigen parkeerplekken. De kraampjes rond de ijsbaan gaan dicht zodra de show begint. Het gebied er direct naast wordt vanwege het vuurwerk afgezet, dus je glühwein en crêpe neem je vooraf mee de straat Berlin in. Voor rolstoelgebruikers is er een eigen kijkvak, dat je tot 18 uur gratis reserveert bij de gastenservice.
 
 Bij harde wind of ander slecht weer gaat MAGIC SYMPHONY om veiligheidsredenen niet door. Het park neemt dan afscheid met de “Good Night Wish”, een korte scène met muziek en licht zonder vuurwerk. Of het vuurwerk doorgaat, zie je 's avonds op de schermen in het park.
 
@@ -129,11 +130,11 @@ Zodra het schemert, gaat in elk themagebied een eigen verlichting aan. Het park 
 - Mexico: vuur in de rotsen van Chiapas
 - Fantasy: lichtbollen op de Mondsee
 
-LIGHTS OF MEMORIES is de naam die het park geeft aan de lichtshows die 's avonds op verschillende plekken lopen: Kaiserplatz Illumination, Tiempo de Fuego, Pulse of Rookburgh en MAGIC SYMPHONY, plus twee die in geen enkel showprogramma staan. Bij **Mystic Winter Castle** lijkt de toren van [Mystery Castle](ref:phantasialand/mystery-castle) met licht uit elkaar te barsten, terwijl er water ruist en trollen opduiken. Rond de [Wellenflug](ref:phantasialand/wellenflug) in Berlin dansen fonteinen, bij de show **Water. Music. Light.**
+LIGHTS OF MEMORIES is de naam die het park geeft aan de lichtshows die 's avonds op verschillende plekken lopen: Kaiserplatz Illumination, Tiempo de Fuego, Pulse of Rookburgh en MAGIC SYMPHONY, plus twee die in geen enkel showprogramma staan. Bij **Mystic Winter Castle** lijkt de toren van [Mystery Castle](ref:phantasialand/mystery-castle) met licht uit elkaar te barsten, terwijl er water ruist en trollen opduiken. Rond de [Wellenflug](ref:phantasialand/wellenflug) in Berlin dansen fonteinen, bij de show **Water. Music. Light.** De foto bovenaan heb ik daar vorige winter gemaakt, net toen de fonteinen aan stonden.
 
 ## Wat er rijdt en wat in de winter stilligt
 
-Tijdens de Wintertraum rijdt alles behalve drie waterattracties. [River Quest](ref:phantasialand/river-quest) ligt sinds 2 november stil, Wakobato en Wözl’s Wassertreter sinds 14 november, alle drie tot 24 januari. De waterspeeltuinen Winni Splash en Wavy Battle ontbreken in het winteroverzicht van het park, en daarvoor in de plaats komt Winni Snow in het Tal der Wuze.
+Tijdens de Wintertraum rijdt alles behalve drie waterattracties. [River Quest](ref:phantasialand/river-quest) ligt sinds 2 november stil, Wakobato en Wözl’s Wassertreter sinds 14 november, alle drie tot 24 januari. De waterspeeltuinen Winni Splash en Wavy Battle ontbreken in het winteroverzicht van het park.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -147,7 +148,7 @@ Droog rijd je in de hal van Wuze Town, waar [Winja’s Fear](ref:phantasialand/w
 
 ## Voor kinderen: ijsbaan, sneeuw en minimale lengtes
 
-Het **Berliner Eislaufen** is de ijsbaan die alleen in de winter op de Kaiserplatz ligt, recht onder de lichtboom. Een minimale lengte is er niet, schaatsen huur je er vlak naast, en voor beginners staan er pinguïns klaar om op te steunen. Voor de allerkleinsten zijn er Winni Snow in Fantasy, het klimtoestel Avoras en Mopti’s Monkey Depot in Deep in Africa, allemaal zonder lengte-eis. De schmink is gratis.
+Op het **Berliner Eislaufen** geldt geen minimale lengte, schaatsen huur je er vlak naast, en voor beginners staan er pinguïns klaar om op te steunen. Voor de allerkleinsten zijn er Winni Snow in Fantasy, het klimtoestel Avoras en Mopti’s Monkey Depot in Deep in Africa, allemaal zonder lengte-eis. De schmink is gratis.
 
 Bij de gastenservice op de Kaiserplatz meet het team je kind en zet de lengte op een polsbandje, zodat je niet bij elke attractie opnieuw hoeft te meten. Daar en bij de ingangen krijg je ook gratis polsbandjes waarop je het telefoonnummer van de ouders schrijft. Met de Baby Switch rijdt de ene ouder terwijl de andere met het kind wacht, en daarna wissel je zonder opnieuw in de rij te staan. Dat kan onder meer bij Taron, F.L.Y., Black Mamba, Chiapas en Maus au Chocolat.
 
@@ -164,25 +165,17 @@ De minimale lengtes van de attracties die tijdens de Wintertraum rijden:
 
 Kinderen tot en met drie jaar mogen gratis naar binnen en hebben geen ticket nodig, alleen een identiteitsbewijs of geboorteakte, een kopie mag ook. Jarige kinderen tot en met elf jaar komen op hun verjaardag ook gratis binnen, als ze hun bezoek vooraf online reserveren.
 
-## Eten en drinken tijdens de Wintertraum
-
-Alleen in deze weken is er zalm van het open vuur en op de Kaiserplatz een boerenkoolpan. Naast de glühwein staan eierpunch en Hot Chardonnay op de kaart, voor kinderen punch zonder alcohol. Wie iets zoets wil, kiest Concha-krapfen met pistache of noga of een Crêpe Brûlée, en de banketbakkerij van het park bakt eigen wintertaartjes.
-
-**Phenie’s Shakes & Pancakes** staat aan de oever van de Mondsee en ziet eruit als een ronde toverpaddenstoel, met een vloer die op deeg lijkt, een toppingmachine en lampen die lijken te druipen. Op de kaart staan torens van pannenkoeken, shakes en, voor kinderen tot en met elf jaar, Cold Pancakes met softijs. Na een rondje schaatsen word je daar niet warm van, wel getroost.
-
-Bij de Parkscout Publikums Award 2025/26 kozen de bezoekers de horeca van Phantasialand tot de beste in een Duits pretpark. Voor een echte maaltijd binnen ga ik het liefst naar Rutmor’s Taverne in Klugheim, voor de Eierknöpfli. Warm en in thema eet je ook in Restaurant Uhrwerk in Rookburgh.
-
 ## Hoe druk het wordt tijdens de Wintertraum
 
-De vorige Wintertraum hebben we gemeten van 26 december 2025 tot 25 januari 2026. Voor november en begin december hebben we van vorige winter geen cijfers. In de kerstvakantie stonden mensen in Phantasialand even lang in de rij als in de zomervakantie in augustus. Januari was rustiger, maar alleen door de week. Op 6 januari 2026, de laatste vakantiedag, was de drukte zeer laag. Op de doordeweekse dagen na de vakantie was die laag, in de weekenden van 10 en 11 januari en 17 en 18 januari zeer hoog.
+De vorige Wintertraum hebben we gemeten van 26 december 2025 tot 25 januari 2026. Voor november en begin december hebben we van vorige winter geen cijfers. In de kerstvakantie stonden mensen in Phantasialand even lang in de rij als in de zomervakantie in augustus. In januari was het alleen door de week minder druk: heel rustig op 6 januari 2026, de laatste vakantiedag, rustig op de dagen van maandag tot en met vrijdag daarna, en heel druk in de weekenden van 10 en 11 en van 17 en 18 januari.
 
 ```stats-widget slug=phantasialand show=months
 
 ```
 
-De kerstvakantie in NRW loopt deze winter van 23 december 2026 tot en met 6 januari 2027, en de dagen tussen kerst en oud en nieuw zou ik plannen als een dag in augustus. Van maandag tot en met vrijdag na de vakantie was het vorige januari het rustigst, en op veel van die dagen vraagt het park 29 €, de laagste prijs in de kalender.
+De kerstvakantie in NRW loopt deze winter van 23 december 2026 tot en met 6 januari 2027, en de dagen tussen kerst en oud en nieuw zou ik plannen als een dag in augustus. Voor de dagen van maandag tot en met vrijdag na de vakantie vraagt het park vaak maar 29 €, de laagste prijs in de kalender.
 
-Op het eerste Wintertraum-weekend van 2026 was de drukte op zaterdag 14 november hoog en op zondag zeer laag, met motregen. Dat was maar één zondag, maar met zulk weer rijden de Winja’s in de hal en spelen de drie theatershows onder een dak, dus zo'n dag zou ik niet afzeggen. Totensonntag op 22 november verwacht ik vol, omdat hij in het tweede Wintertraum-weekend valt en alle zeven shows dan in twee avonduren spelen.
+Op het openingsweekend was het op zaterdag 14 november druk en op zondag, met motregen, heel rustig. Dat was maar één zondag, maar met zulk weer rijden de Winja’s in de hal en spelen de drie theatershows onder een dak, dus zo'n dag zou ik niet afzeggen. Totensonntag op 22 november verwacht ik vol, omdat hij in het tweede Wintertraum-weekend valt en alle zeven shows dan in twee avonduren spelen.
 
 ```best-days-widget slug=phantasialand
 
@@ -200,7 +193,7 @@ Op het eerste Wintertraum-weekend van 2026 was de drukte op zaterdag 14 november
 
 ## De Quick Pass tijdens de Wintertraum
 
-Met de Quick Pass ga je bij een attractie één keer via een eigen ingang langs de wachtrij. Je koopt hem bij de gastenservice op de Kaiserplatz en in de webshop.
+Met de Quick Pass ga je bij een attractie één keer via een eigen ingang langs de wachtrij. Tot nu toe stond je daarvoor eerst in de rij bij de gastenservice op de Kaiserplatz, dus in de ene wachtrij om een andere over te slaan. Nu koop je hem ook in de webshop, vanaf 11 uur en dus vanaf de opening van het park, rustig op je telefoon, en bij de Quick Pass-ingang laat je de QR-code zien.
 
 - Taron After Dark, vanaf 17 uur: 12 € (online is Taron alleen zo los te koop)
 - Black Mamba: 10 €
@@ -209,9 +202,9 @@ Met de Quick Pass ga je bij een attractie één keer via een eigen ingang langs 
 - Chiapas: 10 €, volgens de infopagina alleen bij de gastenservice
 - Quick Pass Ultimate: 80 €, één keer bij elke Quick Pass-ingang en één keer bij F.L.Y., dat je los niet kunt kopen
 
-Elke Quick Pass geldt alleen op de dag waarop je hem boekt, dus je koopt hem 's ochtends op de dag van je bezoek en niet de avond ervoor. De verkoop in de webshop begint om 11 uur, als het park opengaat, en het park verkoopt er maar een beperkt aantal. Hoe het boeken in de shop en de QR-code bij de Quick Pass-ingang werken, staat in ons nieuwsbericht over de [Quick Pass online](/news/phantasialand-quick-pass-online).
+Elke Quick Pass geldt alleen op de dag waarop je hem boekt, en het park verkoopt er per dag maar een beperkt aantal. Het boeken stap voor stap, van het winkelmandje dat de passes tien minuten vasthoudt tot de pdf met de QR-code, staat in ons [nieuwsbericht over de Quick Pass online](/news/phantasialand-quick-pass-online).
 
-Op een dinsdag in januari zou ik het geld in mijn zak houden, want vorige winter was het op die dagen rustig. Op een zaterdag in de kerstvakantie zou ik meteen om elf uur een pass voor Taron After Dark kopen en die gebruiken voor de eerste rit in het donker.
+Op een zaterdag in de kerstvakantie zou ik meteen om elf uur een pass voor Taron After Dark kopen en die gebruiken voor de eerste rit in het donker. Op een dinsdag in januari vind ik die 12 € zonde.
 
 ## Een Wintertraum-dag van 11 tot 20 uur
 
@@ -250,14 +243,14 @@ Prijzen voor volwassenen vanaf 12 jaar in de ticketkalender, stand 15 november 2
 | Maandag 11 januari             | 29 €                  |
 | Zondag 24 januari              | 35 €                  |
 
-Kinderen van 4 tot en met 11 jaar hebben een eigen prijs, die de shop per dag toont. Zij en gasten vanaf 60 jaar moeten bij de ingang hun leeftijd kunnen aantonen.
+Kinderen van 4 tot en met 11 jaar betalen een eigen, lagere dagprijs. Zij en gasten vanaf 60 jaar moeten bij de ingang hun leeftijd kunnen aantonen.
 
 Zaterdag 12 december, een adventszaterdag, was al in het openingsweekend uitverkocht. Wie op een zaterdag in de advent wil, zou ik aanraden niet te lang te wachten.
 
 ```cta-widget
 href: https://shop.phantasialand.de/nl/producten/themapark-tickets/2026-11?utm_source=park.fan&utm_medium=referral&utm_campaign=guide-wintertraum
 label: Kies je Wintertraum-dag in de ticketkalender
-text: Alleen online, voor een vaste dag, op de dag zelf tot 14 uur.
+text: Volwassenen vanaf 29 €, kinderen tot en met drie jaar gratis.
 ```
 
 ## Naar het park in de winter
@@ -266,15 +259,23 @@ Phantasialand ligt in Brühl, tussen Keulen en Bonn, en het adres voor de naviga
 
 Met de trein neem je de RE5, RB26 of RB48 naar Brühl (Rheinland), of tramlijn 18 van de KVB naar Brühl Mitte. Vandaar brengt de shuttlebus van het park je heen en terug voor 6 € per persoon, en kinderen tot 1,00 m rijden gratis mee. Kaartjes van het regionale openbaar vervoer gelden niet in de shuttle. Bij station Brühl stopt de shuttle vanwege werkzaamheden op dit moment aan de Comesstraße, zo'n twee minuten lopen van het stationsplein.
 
-Tijdens de Wintertraum rijdt de shuttle alleen op openingsdagen. De eerste bus vertrekt om 10.25 uur bij het station, daarna elk halfuur. Terug gaat de eerste om 10.45 uur bij het park, de laatste om 21.15 uur. Zonder shuttle neem je buslijn 985 tot halte Berggeiststraße, en vandaar is het ongeveer tien minuten lopen.
+De eerste bus vertrekt om 10.25 uur bij het station, daarna elk halfuur, en de laatste terug om 21.15 uur bij het park. Zonder shuttle neem je buslijn 985 tot halte Berggeiststraße, en vandaar is het ongeveer tien minuten lopen.
 
 Vanaf luchthaven Keulen/Bonn ben je met de trein in 40 tot 50 minuten in Brühl, met de auto in zo'n 20 minuten.
+
+## Eten en drinken tijdens de Wintertraum
+
+Alleen in deze weken is er zalm van het open vuur en op de Kaiserplatz een boerenkoolpan. Naast de glühwein staan eierpunch en Hot Chardonnay op de kaart, voor kinderen punch zonder alcohol. Wie iets zoets wil, kiest Concha-krapfen met pistache of noga of een Crêpe Brûlée, en de banketbakkerij van het park bakt eigen wintertaartjes. Mijn favoriete snack in het park blijven toch de Flat Croissants uit China Town, knapperig platgeperst en boterig, ook al liggen ze er het hele jaar.
+
+**Phenie’s Shakes & Pancakes** aan de Mondsee ziet eruit als een ronde toverpaddenstoel, met een vloer die op deeg lijkt, en aan het plafond hangen lampen die lijken te druipen. Op de kaart staan torens van pannenkoeken, shakes en, voor kinderen tot en met elf jaar, Cold Pancakes met softijs. Na een rondje schaatsen word je daar niet warm van, wel getroost.
+
+Voor een echte maaltijd binnen ga ik het liefst naar Rutmor’s Taverne in Klugheim, voor de Eierknöpfli. Warm en in thema eet je ook in Restaurant Uhrwerk in Rookburgh. Bij de Parkscout Publikums Award 2025/26 kozen de bezoekers het eten in Phantasialand tot het beste in een Duits pretpark, en na mijn laatste bord Eierknöpfli ga ik daar niet tegenin.
 
 ## Overnachten in de winter
 
 Het park heeft drie themahotels direct aan het terrein: Ling Bao in China Town, Matamba in Deep in Africa en Charles Lindbergh in Rookburgh, dat bij de Parkscout|plus Award 2025 de titel “beste themahotel van Europa” kreeg.
 
-Voor een korte wintervakantie adverteert het park met tot 45 % korting als je vroeg boekt. Het ontbijt is inbegrepen, parkeren bij het hotel is gratis, en via de hoteltuinen of een eigen poort loop je zo het park in. Gasten van Matamba en Ling Bao krijgen per persoon per nacht één keer snellere toegang tot een van deze attracties: Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure, wel alleen met een geldig parkticket. Gasten van Charles Lindbergh krijgen als Explorer snellere toegang tot F.L.Y., en daar is ook een Explorer-arrangement met overnachting, driegangendiner, ontbijt en twee parkdagen. Het nieuwe zwembad en de wellness in Ling Bao zijn alleen voor gasten van dat hotel.
+Voor een korte wintervakantie adverteert het park met tot 45 % korting als je vroeg boekt. Ontbijt en parkeren bij het hotel zitten in de prijs, en via de hoteltuinen of een eigen poort loop je zo het park in. Na MAGIC SYMPHONY is dat de kortste weg naar je bed, terwijl alle anderen naar P1 en P2 lopen. Gasten van Matamba en Ling Bao krijgen per persoon per nacht één keer snellere toegang tot een van deze attracties: Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure, wel alleen met een geldig parkticket. Gasten van Charles Lindbergh krijgen als Explorer snellere toegang tot F.L.Y., en daar is ook een Explorer-arrangement met overnachting, driegangendiner, ontbijt en twee parkdagen. Het nieuwe zwembad en de wellness in Ling Bao zijn alleen voor gasten van dat hotel.
 
 De oudejaarsarrangementen met overnachting zijn volgeboekt.
 
@@ -293,9 +294,9 @@ Voor de avond zijn er vier evenementen zonder overnachting, die je apart boekt:
 
 Tot en met 2001 was Phantasialand van november tot maart dicht. In 2002 ging het voor het eerst een paar weken in de winter open, eerst alleen tot ongeveer 6 januari. In die eerste jaren waren er een sneeuwbol waar je in kon lopen, een kerstmanbureau, een levende kerststal, een snowboardsimulator en een rodelbaan op de heuvel tussen Mystery Castle en River Quest, en toen ook al een ijsbaan. Van dat alles is alleen de ijsbaan over.
 
-Van 1996 tot en met 2006 was er elke oktober het Festival der Lichter, met langere openingstijden tot 21 uur, duizenden lampjes en als afsluiting de lichtparade “The Miracle of Light” in Alt-Berlin. Tussen 2002 en 2006 liepen beide programma's naast elkaar, daarna stopte het park met het festival.
+Van 1996 tot en met 2006 was er elke oktober het Festival der Lichter, met langere openingstijden tot 21 uur, duizenden lampjes en als afsluiting de lichtparade “The Miracle of Light” in Alt-Berlin.
 
-Tot het seizoen 2019/20 had het winterprogramma steeds een andere naam. Sindsdien heet het Wintertraum, en onder die naam kozen de bezoekers het bij de Parkscout Publikums Award 2025/26 tot beste evenement van Duitsland, net als in de twee jaren daarvoor. Sinds 2021 gaat het park in de herfst niet meer dicht. Het bouwt tijdens de gewone openingsdagen om naar de winter en sluit pas na de Wintertraum voor twee maanden. Het seizoen 2026 begon daarom op 28 maart en loopt zonder onderbreking door tot 24 januari 2027.
+Wintertraum heet het winterprogramma onafgebroken sinds het seizoen 2019/20, en onder die naam kozen de bezoekers het bij de Parkscout Publikums Award 2025/26 tot beste evenement van Duitsland, net als in de twee jaren daarvoor. Sinds 2021 gaat het park in de herfst niet meer dicht. Het bouwt tijdens de gewone openingsdagen om naar de winter en sluit pas na de Wintertraum voor twee maanden. Het seizoen 2026 begon daarom op 28 maart en loopt zonder onderbreking door tot 24 januari 2027.
 
 ## Veelgestelde vragen over de Phantasialand Wintertraum
 
@@ -325,7 +326,7 @@ Van maandag tot en met vrijdag in januari, na de kerstvakantie. Vorige winter wa
 
 ### Is er een Quick Pass tijdens de Wintertraum?
 
-Ja, bij de gastenservice op de Kaiserplatz en in de webshop. Elke pass geldt alleen op de dag van boeking, en de onlineverkoop begint om 11 uur. In de shop kost Taron After Dark vanaf 17 uur 12 €, Colorado Adventure 7 € en de Ultimate met F.L.Y. 80 €. Chiapas koop je alleen bij de gastenservice.
+Ja, in de webshop vanaf 11 uur, dus vanaf de opening van het park, op je telefoon en zonder in de rij te staan, of bij de gastenservice op de Kaiserplatz. Elke pass geldt alleen op de dag van boeking. In de shop kost Taron After Dark vanaf 17 uur 12 €, Colorado Adventure 7 € en de Ultimate met F.L.Y. 80 €. Chiapas koop je alleen bij de gastenservice.
 
 — Patrick
 

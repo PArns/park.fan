@@ -98,9 +98,20 @@ sentences and the words people search for, never the post's table of contents:
 Holland keine.` `check:prose` warns on `häufigsten Fragen`, `FAQ`, `Reiseplanung` and their twins
 in either field.
 
-**The excerpt is written last: three sentences at most, one finding each.** No count sentence, no
-word from our database (`API`, `Einträge`, `führt einen Wert`, §2.19), no three facts chained with
-commas and `und`, and no sentence the reader cannot say in one breath:
+**The excerpt is written last: two sentences and 200 characters at most** (220 in French, Spanish
+and Italian, which run longer), one finding each. It is the lead under the title, the first two lines
+of a card (the rest is cut) and the feed item. The Wintertraum
+guide shipped with 334 characters in four sentences (dates, hours, the firework, two rides and the
+quietest weeks), and Patrick's verdict was „viel zu lang und zu unpersönlich“. Write it the way the
+post speaks: `du` for the reader, `ich` where Patrick was there or has a verdict, and the one
+finding a friend would want first:
+`Taron im Dunkeln fahre ich am liebsten, und im Wintertraum geht das bis zum 24. Januar jeden Abend
+ab etwa fünf.` A sentence that could stand unchanged in the park's press release is not an
+excerpt. `check:prose` warns (`excerpt-length`) on a post dated or updated from 2026-11-16 on; an
+older post keeps its excerpt until it is next updated.
+
+No count sentence, no word from our database (`API`, `Einträge`, `führt einen Wert`, §2.19), no
+three facts chained with commas and `und`, and no sentence the reader cannot say in one breath:
 `Der Express Unlimited gilt nur in den Studios und den Islands of Adventure, der einfache Express
 kostet dort 119,99 bis 319,99 Dollar, und die Mindestgröße der großen Bahnen liegt zwischen 1,22 und
 1,38 Metern.` answers three questions at once. Two short sentences that each answer the reader's

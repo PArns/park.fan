@@ -344,7 +344,7 @@ ciudadana.
 ```cta-widget
 href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
 label: Firmar la petición en openPetition
-text: La petición sigue abierta hasta el 23 de noviembre. Si vives en Brühl, tu firma cuenta también para el quórum. Allí hay hojas de firmas para imprimir en PDF.
+text: Si vives en Brühl, tu firma cuenta también para el quórum. Allí hay hojas de firmas para imprimir en PDF.
 ```
 
 [Phantasialand](ref:phantasialand?full)

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Den Quick Pass fürs Phantasialand kaufst du jetzt im Online-Shop und zeigst den QR-Code aus der E-Mail am Handy vor. Er gilt nur am Tag der Buchung, also kaufst du ihn am Besuchstag selbst und nicht am Abend davor. Der Ultimate für 80 € gilt je einmal an jedem Quick-Pass-Eingang, auch an F.L.Y., für die es keinen Einzelpass gibt.
+  Den Quick Pass fürs Phantasialand kaufst du jetzt ab 11 Uhr auf dem Handy, statt dich am Gästeservice anzustellen. Im Wintertraum ist das genau die Parköffnung, und der Pass gilt nur an diesem Tag.
 tags:
   - news
   - phantasialand
@@ -35,7 +35,7 @@ coverImage:
 seo:
   title: 'Phantasialand Quick Pass gibt es jetzt auch online'
   description: >-
-    Den Phantasialand Quick Pass gibt es jetzt online, als QR-Code fürs Handy. Er gilt nur am Tag der Buchung. Einzelpässe kosten ab 5 €, der Ultimate 80 €.
+    Den Phantasialand Quick Pass gibt es jetzt online ab 11 Uhr, ohne Anstehen am Gästeservice. Gültig nur am Tag der Buchung, ab 5 €, Ultimate 80 €.
   keywords:
     - Phantasialand Quick Pass online kaufen
     - Phantasialand Quick Pass
@@ -57,9 +57,11 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
-Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin.
+Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin, und dort hast du dich erst einmal angestellt, um später an einer Bahn weniger anzustehen.
 
-Ein Quick Pass gilt ausschließlich an dem Tag, an dem du ihn buchst, oben im Shop steht „Nur heute gültig“ mit dem Datum des Tages. Umbuchen oder erstatten lässt sich der Pass auch nicht. Kauf ihn deshalb am Besuchstag selbst, morgens auf dem Weg nach Brühl oder gleich nach dem Einlass im Park. Ein Pass, den du am Abend vorher auf dem Sofa bestellst, ist am nächsten Morgen ein hübsches PDF und sonst nichts.
+Verkauft wird online ab 11 Uhr. Im Wintertraum öffnet dann auch der Park. Du gehst durchs Tor, bestellst den Pass in Ruhe auf dem Handy, während du schon Richtung Taron oder Black Mamba läufst. Vor elf meldet der Shop nur, dass der Verkauf noch nicht begonnen hat.
+
+Ein Quick Pass gilt ausschließlich an dem Tag, an dem du ihn buchst, oben im Shop steht „Nur heute gültig“ mit dem Datum des Tages. Umbuchen oder erstatten lässt sich der Pass auch nicht. Wer abends auf dem Sofa bestellt, hat einen Pass für genau diesen Abend, auf dem Sofa.
 
 ## So kaufst du den Quick Pass online
 
@@ -70,7 +72,7 @@ Den QR-Code öffnest du am besten schon in der Warteschlange und drehst die Hell
 ```cta-widget
 href: https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
 label: Quick Pass im Phantasialand-Shop kaufen
-text: Einzelpässe ab 5 €, der Ultimate für 80 €, gültig nur am Tag der Buchung.
+text: Ein Pass pro Person und Bahn, der QR-Code kommt per E-Mail.
 ```
 
 ## Preise im Shop am 15. November
@@ -95,9 +97,9 @@ Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quic
 
 ## Was du außerdem brauchst
 
-Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets gibt es nur online, eine Tageskasse gibt es nicht, für den Besuchstag selbst bis 14 Uhr. Wer um halb drei ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
+Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets verkauft der Park nur online, eine Tageskasse hat er nicht, und für den Besuchstag selbst kaufst du bis 14 Uhr. Wer um halb drei ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
 
-Einen Platz im Zug suchst du dir auch mit Pass nicht aus, und wer für Taron zu klein ist, ist es mit Quick Pass genauso.
+Einen Platz im Zug suchst du dir auch mit Pass nicht aus, und die Mindestgröße gilt mit Pass genauso, für Taron 1,30 m.
 
 ## Wenn der Eingang pausiert oder die Bahn steht
 
@@ -105,7 +107,7 @@ Mit dem Quick Pass stehst du kürzer an, aber nicht gar nicht, und der Quick-Pas
 
 ## Im Wintertraum
 
-Der Wintertraum läuft seit dem 14. November und bis einschließlich 24. Januar 2027, täglich von 11 bis 20 Uhr. Geschlossen ist am 24. und 25. Dezember, am 1. Januar sowie am 12. und 13. Januar.
+Der Wintertraum läuft seit dem 14. November und bis einschließlich 24. Januar 2027, täglich von 11 bis 20 Uhr, mit fünf Schließtagen an Weihnachten, Neujahr und Mitte Januar.
 
 Der Einzelpass für Taron After Dark gilt ab 17 Uhr, im Wintertraum ist es da längst dunkel. An Silvester schließt der Park schon um 18 Uhr, der Pass für Taron After Dark lohnt sich dann nur, wenn du um fünf schon an der Bahn stehst.
 
@@ -113,10 +115,10 @@ Der Einzelpass für Taron After Dark gilt ab 17 Uhr, im Wintertraum ist es da l�
 
 ```
 
-## Wie viele Pässe es gibt und wann sich einer lohnt
+## Begrenzte Pässe und wann sich einer lohnt
 
-Am Gästeservice war die Menge begrenzt. Im Wintertraum waren die Pässe dort am Wochenende oft mittags weg. Online bleibt das Kontingent begrenzt: Auf den Bildschirmen im Park steht neben „Auch einfach online erhältlich“ der Hinweis „Limitiertes Kontingent“. Am Gästeservice gibt es den Pass laut Infoseite weiterhin.
+Am Gästeservice war die Menge begrenzt. Im Wintertraum waren die Pässe dort am Wochenende oft mittags weg, und wer sie wollte, stand dafür am Vormittag an. Auch online gibt es nur eine begrenzte Zahl, auf den Bildschirmen im Park steht neben „Auch einfach online erhältlich“ der Hinweis „Limitiertes Kontingent“. Wer um elf am Handy bestellt, ist vor allen dran, die erst mittags zum Gästeservice gehen. Am Gästeservice gibt es den Pass laut Infoseite weiterhin.
 
-An einem grünen Tag im Kalender brauchst du den Quick Pass nach meiner Erfahrung nicht, wenn du zur Öffnung am Tor stehst. An einem tiefroten Ferien-Samstag würde ich die 10 € für Black Mamba ausgeben, bevor ich mich mittags in ihre Warteschlange stelle. In welcher Reihenfolge ich ohne Pass fahre, steht in den [Phantasialand-Tipps](/blog/phantasialand-tipps).
+An einem grünen Tag im Kalender brauchst du den Quick Pass nach meiner Erfahrung nicht, wenn du zur Öffnung am Tor stehst. An einem tiefroten Ferien-Samstag würde ich die 10 € für Black Mamba ausgeben, bevor ich mich mittags in ihre Warteschlange stelle. Ohne Pass fahre ich in der Reihenfolge aus den [Phantasialand-Tipps](/blog/phantasialand-tipps).
 
 Quellen: [Quick Pass im Online-Shop des Phantasialand](https://shop.phantasialand.de/de/quick-pass), [Nutzungsbedingungen zum Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, Abschnitt Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).

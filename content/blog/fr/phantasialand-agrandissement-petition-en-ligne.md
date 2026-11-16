@@ -355,7 +355,7 @@ signent l’initiative citoyenne.
 ```cta-widget
 href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
 label: Signer la pétition sur openPetition
-text: La pétition court jusqu’au 23 novembre. Si tu habites à Brühl, ta signature compte aussi pour le quorum. Des feuilles de signatures à imprimer y sont disponibles en PDF.
+text: Si tu habites à Brühl, ta signature compte aussi pour le quorum. Des feuilles de signatures à imprimer y sont disponibles en PDF.
 ```
 
 [Phantasialand](ref:phantasialand?full)

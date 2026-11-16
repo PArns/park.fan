@@ -330,7 +330,7 @@ Bürgerbegehren unterschreiben.
 ```cta-widget
 href: https://www.openpetition.de/petition/online/fuer-eine-verantwortungsvolle-erweiterung-des-phantasialands
 label: Petition auf openPetition unterschreiben
-text: Die Petition läuft bis zum 23. November. Wohnst du in Brühl, zählt deine Unterschrift auch für das Quorum. Sammelbögen zum Ausdrucken gibt es dort als PDF.
+text: Wohnst du in Brühl, zählt deine Unterschrift auch für das Quorum. Sammelbögen zum Ausdrucken gibt es dort als PDF.
 ```
 
 [Phantasialand](ref:phantasialand?full)
