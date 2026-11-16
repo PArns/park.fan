@@ -199,6 +199,7 @@ export async function GET(
       'trip-planner': { namespace: 'planner.page', key: 'title' },
       ...tripRegionCards(),
       contribute: { namespace: 'contribute.meta', key: 'title' },
+      developers: { namespace: 'developers.meta', key: 'title' },
       ...glossaryEntries,
     };
 
