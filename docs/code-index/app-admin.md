@@ -396,6 +396,7 @@ Route `/admin/analytics` (page).
 ### [`api-keys/_components/key-requests-panel.tsx`](../../app/admin/api-keys/_components/key-requests-panel.tsx)
 
 - `KeyRequestsPanel` _component_: The key requests developers filed on their dashboard, open ones first. Each is approved into a key, with the permissions, allowance, parks and end date the owner sets, or declined with a note the developer reads.
+- `useKeyRequests` _hook_: The developers' key requests from the API. An API that answers them stores permissions too, so the page reads its success as that, also while no key exists yet to show the field.
 
 ### [`api-keys/page.tsx`](../../app/admin/api-keys/page.tsx)
 

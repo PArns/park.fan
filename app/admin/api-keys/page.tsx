@@ -87,7 +87,7 @@ import {
   PermissionsField,
   useKeyExpiry,
 } from './_components/key-fields';
-import { KeyRequestsPanel } from './_components/key-requests-panel';
+import { KeyRequestsPanel, useKeyRequests } from './_components/key-requests-panel';
 import { useToast } from '../_ui/toast';
 
 const USAGE_OPTIONS = (Object.keys(DATA_API_KEY_USAGE_LABELS) as DataApiKeyUsage[]).map(
@@ -105,7 +105,8 @@ export default function ApiKeysPage() {
   const [creating, setCreating] = useState(false);
   const keys = useAdminQuery<{ items: DataApiKey[] }>(DATA_API_KEYS_QUERY_KEY, DATA_API_KEYS_PATH);
   const items = keys.data?.items ?? [];
-  const permissionsStored = apiStoresPermissions(items);
+  const requests = useKeyRequests();
+  const permissionsStored = apiStoresPermissions(items) || requests.isSuccess;
 
   if (identity.role !== 'owner') {
     return (
@@ -121,7 +122,7 @@ export default function ApiKeysPage() {
     <AdminPage width="narrow">
       {items.length > 0 && <KeyOverview items={items} />}
 
-      <KeyRequestsPanel permissionsStored={permissionsStored} />
+      <KeyRequestsPanel />
 
       <Panel>
         <PanelHeader

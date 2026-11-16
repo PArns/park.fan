@@ -66,17 +66,25 @@ const STATUS_TONES: Record<KeyRequestRecord['status'], ChipTone> = {
 };
 
 /**
- * The key requests developers filed on their dashboard, open ones first. Each is approved into a
- * key, with the permissions, allowance, parks and end date the owner sets, or declined with a note
- * the developer reads. Nothing is issued without this step.
+ * The developers' key requests from the API. An API that answers them stores permissions too, so
+ * the page reads its success as that, also while no key exists yet to show the field.
  */
-export function KeyRequestsPanel({ permissionsStored }: { permissionsStored: boolean }) {
-  const requests = useAdminQuery<{ items: KeyRequestRecord[] }>(
+export function useKeyRequests() {
+  return useAdminQuery<{ items: KeyRequestRecord[] }>(
     KEY_REQUESTS_QUERY_KEY,
     KEY_REQUESTS_PATH,
     // An API without the requests answers 404, which retrying does not change.
     { retry: (count, error) => error.status !== 404 && count < 2 }
   );
+}
+
+/**
+ * The key requests developers filed on their dashboard, open ones first. Each is approved into a
+ * key, with the permissions, allowance, parks and end date the owner sets, or declined with a note
+ * the developer reads. Nothing is issued without this step.
+ */
+export function KeyRequestsPanel() {
+  const requests = useKeyRequests();
   const [approving, setApproving] = useState<KeyRequestRecord | null>(null);
   const [rejecting, setRejecting] = useState<KeyRequestRecord | null>(null);
   const items = sortKeyRequests(requests.data?.items ?? []);
@@ -138,12 +146,7 @@ export function KeyRequestsPanel({ permissionsStored }: { permissionsStored: boo
       )}
 
       {approving && (
-        <ApproveDialog
-          key={approving.id}
-          request={approving}
-          permissionsStored={permissionsStored}
-          onClose={() => setApproving(null)}
-        />
+        <ApproveDialog key={approving.id} request={approving} onClose={() => setApproving(null)} />
       )}
       {rejecting && (
         <RejectDialog key={rejecting.id} request={rejecting} onClose={() => setRejecting(null)} />
@@ -338,15 +341,7 @@ function RequestCard({
  * Approves a request into a key. The fields start with what the request asked for; the key goes
  * to the developer's account unrevealed, and they pick it up on their dashboard.
  */
-function ApproveDialog({
-  request,
-  permissionsStored,
-  onClose,
-}: {
-  request: KeyRequestRecord;
-  permissionsStored: boolean;
-  onClose: () => void;
-}) {
+function ApproveDialog({ request, onClose }: { request: KeyRequestRecord; onClose: () => void }) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const { identity } = useSession();
@@ -483,7 +478,7 @@ function ApproveDialog({
               />
             </Field>
             <PermissionsField
-              stored={permissionsStored}
+              stored
               value={permissions}
               onChange={setPermissions}
               requested={draft.permissions}
