@@ -209,6 +209,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `remarkCallouts` _function_: Remark plugin that turns a blockquote starting with `[!NOTE]`, `[!CORRECTION]`, `[!QUOTE]` and the other markers into a callout tagged with `data-callout`.
 - `CALLOUT_TYPES` _const_: GitHub-style alert callouts (`> [!NOTE]`). remark-gfm leaves them as plain blockquotes; this plugin strips the `[!TYPE]` marker and tags the blockquote `data-callout="note"` for the renderer in blog-content.tsx.
+- `CALLOUT_MARKER_RE` _const_: A callout's `[!TYPE]` marker at the start of a blockquote; the admin editor reads the same one.
 - Types: `CalloutType`
 
 ### [`remark-table-themes.ts`](../../lib/blog/remark-table-themes.ts)

@@ -4,11 +4,16 @@ import { useEffect, useRef } from 'react';
 import { LOOP, REST, RIDE_MOTION, TURNTABLE, type ParkyRide } from '@/lib/assistant/parky/rides';
 import { animateParky } from '@/lib/assistant/parky/motion';
 import {
+  FERRULE,
   GRIN,
+  HANDLE,
   HAPPY_EYES,
   HEART,
+  LENS,
+  QUERY,
   STAR,
   blue,
+  capBlue,
   frame,
   gold,
   heartRed,
@@ -237,6 +242,100 @@ export function ParkySpotlight() {
           </g>
         ))}
       </g>
+    </g>
+  );
+}
+
+/**
+ * The question mark over his top left when a search found nothing. `className` carries the live
+ * act's motion; a picture leaves it off.
+ */
+export function ParkyQuery({ className }: { className?: string }) {
+  return (
+    <g className={className}>
+      <path d={QUERY.hook} fill="none" stroke={blue} strokeWidth="1.7" strokeLinecap="round" />
+      <circle cx={QUERY.dot.x} cy={QUERY.dot.y} r="1.1" fill={blue} />
+    </g>
+  );
+}
+
+/**
+ * The magnifying glass over his right eye ({@link LENS}): handle, ferrule, lens and glint. The live
+ * Parky swings it in round the handle's end; a picture draws it where it ends up.
+ */
+export function ParkyLensGlass() {
+  return (
+    <>
+      <path d={HANDLE} stroke="oklch(0.56 0.12 55)" strokeWidth="3.2" strokeLinecap="round" />
+      <path d={FERRULE} stroke={ink} strokeWidth="3.8" />
+      <circle
+        cx={LENS.x}
+        cy={LENS.y}
+        r={LENS.r}
+        fill="oklch(0.92 0.04 230)"
+        fillOpacity=".22"
+        stroke={ink}
+        strokeWidth="1.7"
+      />
+      <circle
+        cx={LENS.x}
+        cy={LENS.y}
+        r={LENS.r - 1}
+        fill="none"
+        stroke="white"
+        strokeOpacity=".5"
+        strokeWidth=".5"
+      />
+      {/* The glint, top left in the glass. */}
+      <path
+        d={`M${LENS.x - 4.8} ${LENS.y - 2.9}a5.4 5.4 0 0 1 3.2-3`}
+        fill="none"
+        stroke="white"
+        strokeOpacity=".85"
+        strokeWidth="1.1"
+        strokeLinecap="round"
+      />
+    </>
+  );
+}
+
+/**
+ * A nightcap in place of the wheel: a white brim round the top of the head, the cap flopping over
+ * to the left, a bobble at its tip and two stars on the cloth. `still` leaves out the live act's
+ * settling and the bobble's swing, for a picture.
+ */
+export function ParkyNightcap({ still = false }: { still?: boolean }) {
+  return (
+    <g className={still ? undefined : 'parky-nightcap'}>
+      <path
+        d="M38.6 13.6C38.4 3.4 31.6-5.6 22.2-5.4 13.6-5.2 6.4-.8 2.4 4.6c4.4-1.6 8.6.2 10 4.4L9.4 13.6Z"
+        fill={capBlue}
+      />
+      <path
+        d="M22.2-5.4C13.6-5.2 6.4-.8 2.4 4.6c4.4-1.6 8.6.2 10 4.4"
+        fill="none"
+        stroke="white"
+        strokeOpacity=".25"
+        strokeWidth="1.2"
+      />
+      <g fill="oklch(0.9 0.12 95)">
+        <path d={STAR} transform="translate(6 -1.5) scale(.7)" />
+        <path d={STAR} transform="translate(13 4.5) scale(.55)" />
+      </g>
+      <path
+        d="M9.2 13.8Q24 2.4 38.8 13.8"
+        fill="none"
+        stroke="white"
+        strokeWidth="3.6"
+        strokeLinecap="round"
+      />
+      <circle
+        className={still ? undefined : 'parky-bobble'}
+        cx="2.4"
+        cy="5.4"
+        r="2.6"
+        fill="white"
+      />
     </g>
   );
 }

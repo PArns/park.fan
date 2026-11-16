@@ -28,6 +28,7 @@ import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
+import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip.ts';
 import {
   ASLEEP_AFTER_MS,
   BORED_AFTER_MS,
@@ -75,8 +76,11 @@ import {
   LIVE_LINES,
   liveActDue,
   liveChange,
+  isWalkOn,
   liveMoment,
+  rideStampVerdict,
   SHOW_RUN_MIN,
+  standoutRides,
   SHOW_SOON_MIN,
   showRunning,
   showSoon,
@@ -1219,6 +1223,20 @@ check(topCoaster([]), null, 'no ranking, no ride');
     'a walk-on counts only for a headliner, and 15 minutes is no walk-on'
   );
   check(
+    liveMoment(
+      park([ride('Taron', 'OPERATING', 11), ride('Black Mamba', 'OPERATING', 13)]),
+      heads,
+      false
+    ),
+    { kind: 'walkOn', ride: 'Black Mamba', wait: 13 },
+    "Disney's posted 13 is a walk-on, even behind a shorter headliner that is none"
+  );
+  check(
+    liveMoment(park([ride('Taron', 'OPERATING', 12)]), heads, false),
+    null,
+    'only the posted 13 sits above the limit, not 12'
+  );
+  check(
     liveMoment(park([ride('Taron', 'OPERATING', 75), ride('Maus', 'OPERATING', 61)]), heads, false),
     { kind: 'queue', ride: 'Taron', wait: 75 },
     'the longest queue over an hour'
@@ -2180,5 +2198,70 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ['weather'],
     'a weather code alone is a weather tile'
   );
+}
+// Parky's day tip: what the relay lets into the CDN's cache key, and what it shows.
+{
+  const now = Date.parse('2026-11-16T12:00:00Z');
+  check(isServableTipRequest('2026-11-16', 'de', now), true, 'tip: today');
+  check(isServableTipRequest('2026-11-15', 'en', now), true, 'tip: yesterday, a park west of UTC');
+  check(isServableTipRequest('2026-11-14', 'en', now), false, 'tip: two days ago');
+  check(isServableTipRequest('2027-02-16', 'nl', now), true, 'tip: the horizon');
+  check(isServableTipRequest('2027-02-17', 'nl', now), false, 'tip: past the horizon');
+  check(isServableTipRequest('2026-02-30', 'de', now), false, 'tip: no such day');
+  check(isServableTipRequest('2026-11-16', 'pt', now), false, 'tip: not a site language');
+  check(isServableTipRequest(null, 'de', now), false, 'tip: no date');
+  check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
+  check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
+  check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
+}
+// Parky's stamp on a ride's live wait: only on a ride that usually queues, the walk-on first, then
+// half the usual or less.
+{
+  check(rideStampVerdict(5, null), null, 'stamp: no usual, no stamp');
+  check(rideStampVerdict(5, 15), null, 'stamp: a ride that is short anyway');
+  check(rideStampVerdict(10, 20), 'walkOn', 'stamp: walk-on at the limit, usual 20');
+  check(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the half');
+  check(rideStampVerdict(13, 30), 'walkOn', "stamp: Disney's posted 13 is a walk-on");
+  check(rideStampVerdict(14, 30), 'belowTypical', 'stamp: 14 is the printed 15, half of 30');
+  check(rideStampVerdict(20, 40), 'belowTypical', 'stamp: half the usual');
+  check(rideStampVerdict(22, 40), 'belowTypical', 'stamp: the printed 20 against 40');
+  check(rideStampVerdict(23, 40), null, 'stamp: the printed 25 is more than half');
+  check(rideStampVerdict(15, 25), null, 'stamp: 15 against 25');
+}
+check(isWalkOn(10), true, 'walk-on: the limit');
+check(isWalkOn(11), false, 'walk-on: over the limit');
+check(isWalkOn(13), true, "walk-on: Disney's posted 13");
+// Which rides stand out in their park: a few at most, or none when the park is simply empty.
+{
+  const ride = (id, wait, baseline, status = 'OPERATING') => ({
+    id,
+    name: id,
+    status,
+    baseline,
+    queues: [{ queueType: 'STANDBY', status, waitTime: wait }],
+  });
+  const busy = [ride('a', 45, 40), ride('b', 60, 50), ride('c', 30, 30)];
+  const three = [...busy, ride('w1', 5, 40), ride('w2', 10, 25), ride('h1', 15, 40)];
+  const found = standoutRides(three, 'OPERATING');
+  check(found.size, 3, 'standouts: three stand out');
+  check(found.get('w1'), 'walkOn', 'standouts: a walk-on on a ride that queues');
+  check(found.get('h1'), 'belowTypical', 'standouts: under half its baseline');
+  check(found.has('a'), false, 'standouts: an ordinary queue');
+  check(
+    standoutRides([...three, ride('w3', 5, 30)], 'OPERATING').size,
+    0,
+    'standouts: four, the park is empty'
+  );
+  check(
+    standoutRides([ride('k', 5, 10), ride('n', 5, null)], 'OPERATING').size,
+    0,
+    'standouts: short anyway or no baseline'
+  );
+  check(
+    standoutRides([ride('d', 5, 40, 'DOWN')], 'OPERATING').size,
+    0,
+    'standouts: a ride that is down'
+  );
+  check(standoutRides(three, 'CLOSED').size, 0, 'standouts: a closed park');
 }
 console.log(`assistant: ${passed} checks passed`);

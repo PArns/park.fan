@@ -1,4 +1,4 @@
-import { ink } from './drawing';
+import { EYES, HEART, heartRed, ink } from './drawing';
 
 /**
  * One of Parky's open eyes, the white of it, round its centre on the x axis (`EYES`). The live
@@ -18,5 +18,21 @@ export function ParkyPupil({ x, dx = 0, dy = 0 }: { x: number; dx?: number; dy?:
       <circle cx={x + dx} cy={23 + dy} r="3" fill={ink} />
       <circle cx={x + 1.1 + dx} cy={21.7 + dy} r="1.05" fill="white" />
     </>
+  );
+}
+
+/**
+ * Heart eyes, one {@link HEART} on each eye: the `love` act's, and a picture's of him smitten.
+ * `className` goes on each heart, for the live act's beat.
+ */
+export function ParkyHeartEyes({ className }: { className?: string }) {
+  return (
+    <g fill={heartRed}>
+      {EYES.map((x) => (
+        <g key={x} transform={`translate(${x} 23)`}>
+          <path className={className} d={HEART} />
+        </g>
+      ))}
+    </g>
   );
 }

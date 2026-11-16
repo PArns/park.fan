@@ -350,6 +350,9 @@ My order, which I rebuilt in one place after our hourly data:
    round: while it runs, a whole theatre full of people is sitting inside and
    not in the line ahead of you.
 
+> [!PARKY]
+> Don’t walk from Taron straight to Rookburgh: F.L.Y.’s line peaks at 11 a.m. and is shortest in the late afternoon. So we fly at teatime, and I float off my seat a little anyway.
+
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 

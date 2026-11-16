@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { ParkyPose } from '@/components/assistant/parky/parky-pose';
 
 /** How often to probe whether the API is reachable again. */
 const RECOVERY_POLL_MS = 15_000;
@@ -12,6 +13,7 @@ const RECOVERY_POLL_MS = 15_000;
  */
 export function MaintenancePage() {
   const t = useTranslations('common');
+  const tParky = useTranslations('parkyStill.empty');
 
   // The /maintenance route is static and would otherwise show the outage screen forever. Leave by
   // full navigation once the API answers, so no stale error state survives.
@@ -41,23 +43,9 @@ export function MaintenancePage() {
       </div>
 
       <div className="relative z-10 flex max-w-md flex-col items-center rounded-3xl border border-white/30 bg-white/20 px-8 py-12 text-center shadow-2xl backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
-        <div className="relative mb-8 h-36 w-36 sm:h-44 sm:w-44">
-          {/* SVGs don't benefit from next/image optimization — use a plain img element */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo-big.svg"
-            alt="park.fan"
-            className="h-full w-full object-contain dark:hidden"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/logo-big-dark.svg"
-            alt="park.fan"
-            className="hidden h-full w-full object-contain dark:block"
-          />
-        </div>
-
-        <h1 className="mb-3 text-3xl font-bold">{t('maintenanceTitle')}</h1>
+        {/* No question for Parky here: his chat needs the API that is down. */}
+        <ParkyPose pose="asleep" line={tParky('asleepLine')} className="size-36 sm:size-40" />
+        <h1 className="mt-6 mb-3 text-3xl font-bold">{t('maintenanceTitle')}</h1>
         <p className="text-muted-foreground text-base">{t('maintenanceDescription')}</p>
       </div>
     </div>

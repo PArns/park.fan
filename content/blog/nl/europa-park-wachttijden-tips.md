@@ -691,6 +691,9 @@ pieken pas in de middag.
 De waterbanen hebben bij opening allebei nauwelijks een rij;
 Poseidon piekt om elf uur, Atlantica pas in de middag. Wie ’s ochtends nat wil worden, rijdt ze allebei in de tijd die hij ’s middags voor één ervan nodig zou hebben.
 
+> [!PARKY]
+> Om tien uur ’s ochtends al nat? Ik doe mee. Poseidon en Atlantica hebben bij opening nauwelijks een rij, dus we doen ze allebei in de tijd die er ’s middags voor één opgaat. Om elf uur staat bij Poseidon de langste rij van de dag, en die bekijken we druipend van buitenaf.
+
 Een dagindeling die daaruit volgt:
 
 1. **Bij opening naar het Voletarium.** Duitsland ligt dicht bij de ingang, en

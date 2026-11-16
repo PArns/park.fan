@@ -404,6 +404,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `ParkCalendarPanel` _component_: Client half of the park's calendar page: chapter heading, month stepper links, legend, comparison toggle, the month grid (loaded client-side into a reserved height) and the month index.
 
+### [`park-calendar-parky-tip.tsx`](../../components/parks/park-calendar-parky-tip.tsx)
+
+- `ParkCalendarParkyTip` _component_: Parky's tip for the day open in the calendar's dialog: his sentence about it, written by the API's model from the calendar around the day, and his verdict as a stamp.
+
 ### [`park-card-nearby-skeleton.tsx`](../../components/parks/park-card-nearby-skeleton.tsx)
 
 - `ParkCardNearbySkeleton` _component_: Placeholder for one `<ParkCard>`, at the height the real card measures: a 100 px row below `sm`, a 365 px card above it.

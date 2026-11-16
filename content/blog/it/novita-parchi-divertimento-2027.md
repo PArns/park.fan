@@ -548,6 +548,9 @@ suo posto nasce un’area tematica dedicata allo spazio, con una nuova montagna 
 Mack Rides, che dovrebbe essere pronta per la stagione 2028. Per quest’area il parco lavora con
 l’Agenzia spaziale europea, l’ESA, e l’accordo è stato firmato l’8 giugno 2026.
 
+> [!PARKY]
+> Prima di contare le novità, salutiamo: l’Euro-Mir gira ancora nella stagione invernale dal 28 novembre, e il 9 gennaio 2027 è finita. Dal 1997 ruota intorno alle sue torri a specchio, e un giro d’addio così non me lo perdo.
+
 ### Loup-Garou a Walibi Belgium
 
 Il [Loup-Garou](ref:walibi-belgium/loup-garou) di [Walibi Belgium](ref:walibi-belgium) è una

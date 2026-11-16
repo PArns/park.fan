@@ -4,6 +4,8 @@ import { GlassCard } from '@/components/common/glass-card';
 import { buttonLinkProps } from '@/components/ui/button';
 import { notFoundMetadataWithoutLocale } from '@/lib/seo/not-found-metadata';
 import { NotFoundMarker } from '@/components/analytics/not-found-marker';
+import { ParkyPose } from '@/components/assistant/parky/parky-pose';
+import { ASK_PATH } from '@/lib/assistant/ask';
 import type { Metadata } from 'next';
 
 /** Its own head instead of the layout's homepage title and canonical; see `notFoundMetadata`. */
@@ -18,12 +20,19 @@ export function generateMetadata(): Metadata {
 export default async function LocaleNotFound() {
   const locale = await getLocale();
   const t = await getTranslations({ locale, namespace: 'notFound' });
+  const tParky = await getTranslations({ locale, namespace: 'parkyStill.empty' });
 
   return (
     <div className="container mx-auto flex justify-center px-4 py-24">
       <NotFoundMarker />
       <GlassCard variant="medium" className="max-w-lg p-10 text-center">
-        <p className="text-primary text-7xl font-bold tracking-tight">404</p>
+        <ParkyPose
+          pose="lost"
+          line={tParky('lostLine')}
+          question={tParky('lostQuestion', { path: ASK_PATH })}
+          className="size-32"
+        />
+        <p className="text-primary mt-4 text-7xl font-bold tracking-tight">404</p>
         <h1 className="mt-4 text-2xl font-bold">{t('title')}</h1>
         <p className="text-muted-foreground mt-3">{t('description')}</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">

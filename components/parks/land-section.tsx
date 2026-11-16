@@ -7,6 +7,7 @@ import { cn } from '@/lib/utils';
 import { getAttractionDisplayStatus } from '@/lib/utils/park-utils';
 import { searchResultData } from '@/lib/analytics/search-session';
 import type { ParkAttraction, ParkStatus } from '@/lib/api/types';
+import type { RideStampVerdict } from '@/lib/assistant/parky/live';
 
 // Per-card memo boundary: once the live poll touches one ride the land's `attractions` array is
 // rebuilt, but React Query's structural sharing keeps unchanged attraction objects identical, so
@@ -37,6 +38,11 @@ interface LandSectionProps {
    * Memoise it at the call site, or every render of the parent re-renders the whole land.
    */
   action?: ReactNode;
+  /**
+   * The park's rides whose wait stands out right now (`standoutRides`), worked out over the whole
+   * park by the caller: a walk-on among them carries Parky's stamp. Keep it referentially stable.
+   */
+  standouts?: ReadonlyMap<string, RideStampVerdict>;
   /** Only the cards, no heading: a slice of the flat „shortest wait" list, which has no lands. */
   bare?: boolean;
   /**
@@ -66,6 +72,7 @@ export const LandSection = memo(function LandSection({
   action,
   bare = false,
   searchable = false,
+  standouts,
 }: LandSectionProps) {
   const t = useTranslations('parks');
   const operatingCount = attractions.filter(
@@ -148,6 +155,7 @@ export const LandSection = memo(function LandSection({
                 parkName={parkName}
                 phoneRow
                 rideLog
+                parkyStamp={standouts?.get(attraction.id) === 'walkOn'}
               />
             </li>
           );

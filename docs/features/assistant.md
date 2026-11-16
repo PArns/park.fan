@@ -415,7 +415,9 @@ queues on the page. The drawing's shared colours and shapes are in `components/a
 in `dreams.tsx`.
 
 A showy act takes the place of the fidget that would come after it is due. That is the button in
-the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
+the corner. On a page people read (a guide, a news post, a glossary entry) he is `quiet`: his
+tricks stay, the rides and airtime, which rise into the text beside him, leave the pool
+(`quietShowy`). In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
 follows the pointer, bored he gets sleepy, falls asleep and dreams, and what he does for the
 visitor plays as everywhere. The dream's cloud is drawn half again as large as its puffs
 (`DREAM_CLOUD_SCALE`), its scene stays inside it (`clipPath`), and the train runs its track as a
@@ -600,13 +602,13 @@ whole of it is in [homepage hero → Parky in the hero](homepage-hero.md#parky-i
 
 ## How Parky arrives
 
-Each time a page loads, the button makes an entrance (`pageEntrance`, `lib/assistant/entrance.ts`),
+On the session's first page load the button makes an entrance (`pageEntrance`, `lib/assistant/entrance.ts`, `parkfan:parky-entered` in session storage),
 drawn from five, or the one `?parky=<entrance>` asks for: it scurries in from the right with speed lines and
 spins in the air, drops from above and lands in a puff of dust, rolls in and wobbles dizzily,
 peeks in from the edge at a tilt before hopping in, or pops up out of nothing in a burst of
-sparkles. After a client navigation (the button stays), a closed window or under reduced motion
-it only fades in. Only the session's first line is an entrance's own; later loads arrive without
-one, and only when the visitor's own plans have no line for it.
+sparkles. Later page loads, a client navigation (the button stays), a closed window and reduced
+motion only fade him in: a show on every load turned into noise by the third page. The entrance's
+line comes with it, only when the visitor's own plans have no line for it.
 `ENTRANCE_MS` holds each length, which the stylesheet reads as `--parky-enter`; the launcher waits
 that long before Parky has landed and speaks, by a timer, because `animationend` never reached
 React's handler on the home page.
@@ -677,12 +679,14 @@ its corner offset. These lines go in it, from the `assistant` namespace:
   park's page runs anyway (`parkLiveQueryKey`, React Query's cache, no request of its own). The
   headliners are the park's favourite in `PARK_FAVOURITES` and the first five top attractions of
   the `/stats` the page has loaded (`headlinersOf`). The slot's line is the first of these that
-  holds (`liveMoment`, limits in `LIVE_LIMITS`):
+  holds (`liveMoment`, limits in `LIVE_LIMITS`). A walk-on is `isWalkOn`: 10 minutes or less, or
+  Disney's posted 13 (`WALK_ON_WAIT_MINUTES`), the park's own sign for one, which sits above the
+  limit and counts for the shortest headliner that is one, not only the shortest overall:
 
   | The page says                                       | Act                    | Lines             |
   | --------------------------------------------------- | ---------------------- | ----------------- |
   | shut today (closed, no hours for today on the page) | `doze` or `read`       | `liveClosed1`–`3` |
-  | a headliner open at 10 minutes or less              | `airtime`              | `liveWalkOn1`–`3` |
+  | a headliner open at 10 minutes or less, or at 13    | `airtime`              | `liveWalkOn1`–`3` |
   | the park's crowd level is very high or extreme      | `squashed` mood, 2.4 s | `liveFull1`–`3`   |
   | the longest open queue is over 60 minutes           | `grumpy`               | `liveQueue1`–`3`  |
   | a show starts in 15 to 30 minutes                   | `applause`             | `liveShow1`–`3`   |
@@ -801,7 +805,7 @@ the dark theme. Run it again after the widget changes visibly.
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`
 (the button on screen, once per page view, with the entrance it made or `none`),
 `assistant_opened` (with `source`: the button, a line, Parky's page, `language` after his
-language switch, or `interview` from a planner's button), `assistant_line_shown`,
+language switch, `interview` from a planner's button, or `stamp`, `tip` and `empty` from a Parky element that asks about what it shows, `askParky` in `lib/assistant/ask.ts`, its question sent as kind `context`), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion, typed, a reply chip
@@ -815,7 +819,8 @@ planner or the chat, its `region`, `none` for a park day or a region not settled
 region; the helpers are `interviewRegion`, `interviewPlanStood`, `interviewEnded`),
 `assistant_plan_changed` (trip or day, one event per kind of change, the route and the buffer among
 them, never its content), `assistant_change_undone` (undone, or changed since; `via` the receipt's
-button or the chat), `assistant_answer` (result and number of lookups), `assistant_rated`,
+button or the chat), `assistant_answer` (result and number of lookups), `assistant_link_clicked`
+(a link in an answer followed, with the `target` page type or `directions`), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
 the planner opening as `planner_opened` with source `assistant`.

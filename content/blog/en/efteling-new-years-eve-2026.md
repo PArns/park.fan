@@ -75,6 +75,9 @@ The official map for 2024/25 marked, among other things, a silent disco, "Grootm
 
 In 2022 the evening sold out on 3 December, just over three weeks after sales opened on 9 November. In 2018 the tickets were gone by 16 November.
 
+> [!PARKY]
+> New Year’s Eve 2026 is gone, so we’ll be quicker for 2027: sign up on the event page and you get a message when sales start. In 2022 the tickets sold out just over three weeks after going on sale, so no dawdling.
+
 ## Staying overnight
 
 Efteling wrote on 8 October that no accommodation was left for Oud & Nieuw.

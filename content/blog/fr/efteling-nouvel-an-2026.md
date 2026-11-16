@@ -75,6 +75,9 @@ Le plan officiel de 2024/25 indiquait entre autres une silent disco, « Grootmo
 
 En 2022, la soirée affichait complet le 3 décembre, un peu plus de trois semaines après l’ouverture des ventes le 9 novembre. En 2018, les billets étaient partis dès le 16 novembre.
 
+> [!PARKY]
+> Le Nouvel An 2026, c’est raté, alors pour 2027, on sera plus rapides : sur la page de l’événement, tu peux t’inscrire pour être prévenu dès l’ouverture des ventes. En 2022, tout était vendu un peu plus de trois semaines après le début des ventes, donc pas de traînage.
+
 ## Dormir sur place
 
 Il ne reste plus d’hébergement pour Oud & Nieuw, écrivait l’Efteling le 8 octobre.

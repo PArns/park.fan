@@ -693,6 +693,9 @@ haben ihre Spitze erst am Nachmittag.
 Die beiden Wasserbahnen haben zur Öffnung kaum eine Warteschlange, Poseidon
 erreicht seine Spitze um elf, Atlantica erst am Nachmittag. Wer morgens nass werden mag, fährt beide in der Zeit, die er mittags für eine bräuchte.
 
+> [!PARKY]
+> Nass werden um zehn Uhr morgens? Ich bin dabei. Poseidon und Atlantica haben zur Öffnung kaum eine Warteschlange, und wir schaffen beide in der Zeit, die mittags für eine draufgeht. Um elf steht an Poseidon dann die längste Warteschlange des Tages, und die schauen wir uns tropfend von außen an.
+
 Ein Tagesablauf, der daraus folgt:
 
 1. **Zur Öffnung ins Voletarium.** Deutschland liegt nah am Eingang, und um zehn

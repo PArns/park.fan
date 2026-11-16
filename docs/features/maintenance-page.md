@@ -26,8 +26,10 @@ own component's error state, and an API route answers its own failure status.
 ## `/maintenance`
 
 `app/[locale]/maintenance/page.tsx`, static per locale and `noindex`, renders `MaintenancePage`
-(`components/maintenance-page.tsx`): a full-screen card with the logo and two strings from
-`common` (`maintenanceTitle`, `maintenanceDescription`).
+(`components/maintenance-page.tsx`): a full-screen card with Parky asleep in his nightcap
+(`ParkyPose pose="asleep"`) and his line (`parkyStill.empty.asleepLine`), then two strings from
+`common` (`maintenanceTitle`, `maintenanceDescription`). No „Frag Parky“ here: his chat needs the
+API that is down.
 
 Because the route is static it would show the outage for ever, so it polls `/api/health` every
 15 s (`RECOVERY_POLL_MS`) and leaves with `location.replace('/')`, a full navigation, once that

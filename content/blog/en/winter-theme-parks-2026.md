@@ -444,6 +444,9 @@ Wintertraum starts with 11:00 to 20:00. Your best shot is a weekday
 between 16 November and the start of the North Rhine-Westphalia Christmas
 holidays on 23 December, ideally a Thursday or Friday, when all three theatre shows are playing.
 
+> [!PARKY]
+> My Wintertraum day: a Thursday or Friday between 16 November and 23 December. A weekday is our best shot, and on those two days all three theatre shows are on. Between Christmas and New Year it was full everywhere last winter, and grumbling in a queue in the cold is not my idea of a park day.
+
 Don’t trust the crowd calendar for this one winter. At the end of September 2026 it had
 every December day in Brühl at "Low" or "Very Low", including the days between
 Christmas and New Year that were "High" throughout last winter. December at

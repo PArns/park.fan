@@ -362,6 +362,9 @@ Il mio ordine, che ho rifatto in un punto in base ai nostri dati orari:
    contrario: mentre va in scena, un intero teatro pieno di gente è seduto dentro e
    non in coda davanti a te.
 
+> [!PARKY]
+> Non andare da Taron dritto a Rookburgh: la coda di F.L.Y. tocca il massimo alle 11:00 ed è più corta nel tardo pomeriggio. Quindi voliamo all’ora della merenda, e io dal sedile mi stacco un po’ comunque.
+
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 

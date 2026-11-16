@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FavoritesHowTo } from '@/components/parks/favorites-how-to';
 import { cn } from '@/lib/utils';
+import { ParkyPose } from '@/components/assistant/parky/parky-pose';
 
 /**
  * The favorites band as it looks for a visitor who has none — which is almost everyone
@@ -32,6 +33,7 @@ export function FavoritesEmptyState({
   className?: string;
 }) {
   const t = useTranslations('favorites');
+  const tParky = useTranslations('parkyStill.empty');
 
   return (
     <section className={cn('bg-muted/30 px-4 py-12', className)}>
@@ -55,6 +57,14 @@ export function FavoritesEmptyState({
           >
             {t('empty')}
           </p>
+          <div className="mt-3">
+            <ParkyPose
+              pose="smitten"
+              line={tParky('smittenLine')}
+              question={tParky('smittenQuestion')}
+              className="size-24"
+            />
+          </div>
           {/* Every state of this band renders the same markup, the text held back where needed,
               so the box costs no shift. */}
           {!standalone && <FavoritesHowTo className="mx-auto mt-5 max-w-3xl" />}

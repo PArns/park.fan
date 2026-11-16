@@ -75,6 +75,9 @@ La mappa ufficiale del 2024/25 segnava, tra le altre cose, una silent disco, «G
 
 Nel 2022 la serata andò esaurita il 3 dicembre, poco più di tre settimane dopo l’apertura delle vendite il 9 novembre. Nel 2018 i biglietti erano finiti già il 16 novembre.
 
+> [!PARKY]
+> Il Capodanno 2026 è andato, per il 2027 saremo più veloci: sulla pagina dell’evento ti iscrivi e ricevi un messaggio appena parte la vendita. Nel 2022 i biglietti erano esauriti poco più di tre settimane dopo l’inizio della vendita, quindi niente indugi.
+
 ## Dormire al parco
 
 Per Oud & Nieuw non ci sono più alloggi, scriveva Efteling l’8 ottobre.

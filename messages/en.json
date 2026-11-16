@@ -2500,6 +2500,9 @@
     "update": "Update",
     "updateOn": "Update, {date}",
     "quoteOriginal": "Original in {language}",
+    "parkySays": "Parky says",
+    "parkyAsk": "Ask Parky about it",
+    "parkyAskQuestion": "About your tip in “{title}”: {tip} Tell me more.",
     "languageNotice": {
       "available": "This article is also available in {language}",
       "fallback": "Not translated yet. Showing the {language} version."
@@ -5914,6 +5917,36 @@
       "plannerDescription": "Plan your park day yourself, ride by ride.",
       "parks": "All parks",
       "parksDescription": "Wait times and forecasts for every park."
+    }
+  },
+  "parkyStill": {
+    "stamp": {
+      "verdict": "Parky’s verdict: {label}",
+      "ask": "{verdict} – ask Parky",
+      "walkOn": "Walk-on!",
+      "walkOnQuestion": "{ride} has {minutes, plural, =0 {no wait at all} =1 {just a one-minute wait} other {just a #-minute wait}} right now. Is it worth heading over now, and what should I ride after?",
+      "belowTypical": "Go now!",
+      "belowTypicalQuestion": "{ride} has only a {minutes}-minute wait right now, when it’s usually {typical} minutes at this hour. Should I head over now?"
+    },
+    "empty": {
+      "ask": "Ask Parky",
+      "lostLine": "This page isn’t on any map. I checked, upside down too.",
+      "lostQuestion": "I was looking for a page that doesn’t exist ({path}). Where can I find what I’m after?",
+      "dizzyLine": "Something went wrong here. My head’s still spinning: one teacup ride too many.",
+      "dizzyQuestion": "Something just went wrong on this page. Can you help me anyway?",
+      "smittenLine": "Star a park or a ride and I’ll never forget it.",
+      "smittenQuestion": "Which parks and rides should I save as favorites?",
+      "searchingLine": "I checked everywhere with my magnifying glass. Maybe it’s spelled differently?",
+      "searchingQuestion": "I searched for “{query}” and found nothing. Can you help?",
+      "asleepLine": "The wait times are taking a break, and so am I. Back shortly."
+    },
+    "tip": {
+      "label": "Parky's tip",
+      "good": "Great day!",
+      "meh": "So-so",
+      "bad": "Better not",
+      "ask": "Ask Parky about this day",
+      "question": "For {day} at {park} you say: “{tip}” How do we make the most of that day?"
     }
   }
 }

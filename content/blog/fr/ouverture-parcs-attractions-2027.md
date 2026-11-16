@@ -288,6 +288,9 @@ Au Heide Park, le 1er avril 2026 était en « Extrême », et les 14 et 15 avr
 
 Pour 2027, la semaine qui suit les vacances de Pâques, du 5 au 9 avril, devrait donc être la première semaine vraiment vide de l’année en Bavière, en Basse-Saxe et en Rhénanie-du-Nord-Westphalie. L’exception est le Hansa-Park, puisque le Schleswig-Holstein ne part en vacances que le 30 mars. À Sierksdorf, ce sont en revanche les premiers jours, du 25 au 29 mars, qui tombent bien : seuls les autres Länder sont alors en vacances, et les Hambourgeois sont déjà retournés en classe.
 
+> [!PARKY]
+> Ma croix dans le calendrier, je la mets sur le 5 au 9 avril : ce devrait être la première semaine vraiment vide de l’année en Bavière, en Basse-Saxe et en Rhénanie-du-Nord-Westphalie. La semaine après les vacances de Pâques 2026, le Legoland était en « Très faible » du lundi au jeudi, et une attraction sans file, pour moi, c’est un cadeau.
+
 ```stats-widget slug=phantasialand show=months
 
 ```

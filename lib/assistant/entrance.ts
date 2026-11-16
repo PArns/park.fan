@@ -16,13 +16,27 @@ const ENTRANCES = Object.keys(ENTRANCE_MS) as ParkyEntrance[];
 
 let drawn: ParkyEntrance | null | undefined;
 
+const ENTERED_KEY = 'parkfan:parky-entered';
+
+/** Whether this browser session has seen an entrance already; storage blocked counts as yes. */
+function enteredBefore(): boolean {
+  try {
+    if (window.sessionStorage.getItem(ENTERED_KEY)) return true;
+    window.sessionStorage.setItem(ENTERED_KEY, '1');
+    return false;
+  } catch {
+    return true;
+  }
+}
+
 function isEntrance(value: string | null): value is ParkyEntrance {
   return value !== null && value in ENTRANCE_MS;
 }
 
 /**
- * This page load's entrance: a random one each time the page loads, `?parky=<entrance>` to see a
- * given one, none without motion. Drawn once per load, so a remount (the button back after the
+ * This page load's entrance: a random one on the session's first page load, `?parky=<entrance>`
+ * to see a given one on any load, none without motion. A show on every load wore thin by the third
+ * page. Drawn once per load, so a remount (the button back after the
  * window closed) or React's strict mode gets the same answer, and a client navigation, which keeps
  * the button, none. Browser only.
  */
@@ -35,6 +49,7 @@ export function pageEntrance(): ParkyEntrance | null {
     return drawn;
   }
   const asked = parkySwitch();
-  drawn = isEntrance(asked) ? asked : pickRandom(ENTRANCES);
+  if (isEntrance(asked)) drawn = asked;
+  else if (!enteredBefore()) drawn = pickRandom(ENTRANCES);
   return drawn;
 }

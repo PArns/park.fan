@@ -334,6 +334,9 @@ attractions ne se remplissent qu’après le déjeuner, avec un pic vers 14 h.
 
 La dernière heure dépend du jour. De mai à octobre 2026, hors vacances, le parc fermait à 17 h 30 en semaine et à 18 h le week-end, à 19 h ou 20 h pendant les vacances d’été et à 23 h les soirs de Halloween Nights. Un mercredi de septembre, c’est donc l’heure qui commence à 16 h 30.
 
+> [!PARKY]
+> Troy vit à sa propre heure. Sa plus longue file, c’est vers 11 h, et pile quand le reste du parc part déjeuner, elle raccourcit. Alors on mange plus tard. Un churro après Troy, c’est de toute façon meilleur qu’un churro dans la file.
+
 ![Le cheval de Troie en bois, la file d’attente devant | Troy dans Ithaka. Le cheval de Troie se dresse à l’entrée, le parcours derrière, entre les arbres. | left](/media/toverland/troy-4x3.jpg)
 
 Comme Toverland ne vend pas de coupe-file, seul l’ordre aide contre l’attente. Un

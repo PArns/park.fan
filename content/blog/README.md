@@ -445,6 +445,28 @@ starting with „25." reads as a numbered list item.
 > were still open. They are already part of the 2027 pass.
 ```
 
+### Parky says
+
+`> [!PARKY]` is one practical tip in Parky's own voice, on a glass card with a still Parky beside it
+and the label `blog.parkySays` („Parky sagt“). Where the visitor's Parky is switched on, the card
+carries „Frag Parky dazu“ (`blog.parkyAsk`), which opens the chat with a question about the tip
+(`blog.parkyAskQuestion`: the post's title and the tip's first 200 characters).
+
+```md
+> [!PARKY]
+> Nass werden um zehn Uhr morgens? Ich bin dabei. Poseidon und Atlantica haben zur Öffnung kaum
+> eine Warteschlange, und wir schaffen beide in der Zeit, die mittags für eine draufgeht.
+```
+
+- **At most one or two a post**, where the tip helps most: after the passage it acts on, never as
+  an opener or a summary.
+- **Facts first, then the joke.** One concrete move the reader can make, in a sentence or three.
+  Every fact in it is one the post itself states or park.fan's data shows; Parky never invents one
+  ([his character](../../docs/features/parky-character.md#his-voice)).
+- **His voice**: „wir“ and „du“, a buddy who comes along, never an assistant; funny about once,
+  queue grumbling, airtime and churros are his flavour, at most one emoji. Each locale is written
+  natively, not translated word for word.
+
 ### Quotes
 
 A sentence somebody else said or wrote is a `> [!QUOTE]` block whose **last paragraph is the

@@ -70,6 +70,9 @@ In dezelfde verklaring wijst het park op de banen. Het gaat om “de nu zo’n 1
 
 Voor de uitbreiding pleit sinds mei een [tegenpetitie](/news/phantasialand-uitbreiding-online-petitie) op openPetition. Die loopt nog tot 23 november. Begin november hadden 211 mensen getekend, 52 van hen uit Brühl. Pas vanaf 740 handtekeningen uit Brühl vraagt openPetition de raadsleden om een standpunt.
 
+> [!PARKY]
+> Voor je bezoek verandert er nu niets: op het terrein kan pas gebouwd worden als er een bestemmingsplan geldt, en daar werkt de stad nog aan. Hoe druk het op jouw dag wordt, zie je op de parkpagina, en daar kijken we eerst.
+
 [Phantasialand](ref:phantasialand?full)
 
 Bronnen:

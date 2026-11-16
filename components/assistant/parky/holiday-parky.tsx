@@ -1,7 +1,20 @@
 import type { ReactNode } from 'react';
 import { cn } from '@/lib/utils';
-import { BUBBLE, CHEEKS, EYES, GRIN, HAPPY_EYES, SMILE, blue, blush, green, ink } from './drawing';
-import { ParkyEyeWhite, ParkyPupil } from './eyes';
+import {
+  BUBBLE,
+  CHEEKS,
+  EYES,
+  GRIN,
+  HAPPY_EYES,
+  SHUT_EYES,
+  SMILE,
+  WOOZY,
+  blue,
+  blush,
+  green,
+  ink,
+} from './drawing';
+import { ParkyEyeWhite, ParkyHeartEyes, ParkyPupil } from './eyes';
 import { ParkyShades } from './looks';
 import { ParkyWheel } from './wheel';
 
@@ -13,18 +26,29 @@ import { ParkyWheel } from './wheel';
 
 /**
  * How his eyes are drawn: open and looking somewhere (`look` is the pupils' offset, as in
- * `LOOK_GAZE`), screwed up into a happy squint, or behind his sunglasses.
+ * `LOOK_GAZE`), screwed up into a happy squint, behind his sunglasses, shut in his sleep, as
+ * hearts, or `dizzy`, the pupils off to opposite sides as the dizzy act leaves them.
  */
-export type HolidayEyes = { look: { x: number; y: number } } | 'happy' | 'shades';
+export type HolidayEyes =
+  { look: { x: number; y: number } } | 'happy' | 'shades' | 'shut' | 'hearts' | 'dizzy';
 
-/** His mouth: the open grin, the smile, or a small round "oh" for something he marvels at. */
-export type HolidayMouth = 'grin' | 'smile' | 'wonder';
+/**
+ * His mouth: the open grin, the smile, a small round "oh" for something he marvels at, or the
+ * dizzy act's wobbly line.
+ */
+export type HolidayMouth = 'grin' | 'smile' | 'wonder' | 'woozy';
+
+/** Where the pupils of a `dizzy` look sit, left eye and right: one up and out, one down and in. */
+const DIZZY_LOOK = [
+  { x: -1.6, y: -1.4 },
+  { x: -1.2, y: 1.6 },
+];
 
 /**
  * Parky in his 48-unit space, standing on the scene's ground: `behind` is drawn before him (a board
  * he leans on), `wear` right over his body (a necklace, a scarf, a sprig), `hands` last (what he
  * holds in front). `ground` names the scene's own gradient for his body, so no two pictures on one
- * page share an id.
+ * page share an id. `hat` stands in for the Ferris wheel (the nightcap of a picture of him asleep).
  */
 export function HolidayParky({
   ground,
@@ -33,6 +57,7 @@ export function HolidayParky({
   behind,
   wear,
   hands,
+  hat,
 }: {
   ground: string;
   eyes: HolidayEyes;
@@ -40,24 +65,32 @@ export function HolidayParky({
   behind?: ReactNode;
   wear?: ReactNode;
   hands?: ReactNode;
+  hat?: ReactNode;
 }) {
   return (
     <>
       {behind}
-      <ParkyWheel />
+      {hat ?? <ParkyWheel />}
       <path d={BUBBLE} fill={`url(#${ground})`} />
       {wear}
       {eyes === 'shades' ? (
         <ParkyShades />
       ) : eyes === 'happy' ? (
         <path d={HAPPY_EYES} fill="none" stroke={ink} strokeWidth="2" strokeLinecap="round" />
+      ) : eyes === 'shut' ? (
+        <path d={SHUT_EYES} fill="none" stroke={ink} strokeWidth="1.8" strokeLinecap="round" />
+      ) : eyes === 'hearts' ? (
+        <ParkyHeartEyes />
       ) : (
-        EYES.map((x) => (
-          <g key={x}>
-            <ParkyEyeWhite x={x} />
-            <ParkyPupil x={x} dx={eyes.look.x} dy={eyes.look.y} />
-          </g>
-        ))
+        EYES.map((x, i) => {
+          const look = eyes === 'dizzy' ? DIZZY_LOOK[i] : eyes.look;
+          return (
+            <g key={x}>
+              <ParkyEyeWhite x={x} />
+              <ParkyPupil x={x} dx={look.x} dy={look.y} />
+            </g>
+          );
+        })
       )}
       {CHEEKS.map((x) => (
         <ellipse key={x} cx={x} cy="31" rx="2.4" ry="1.4" fill={blush} opacity=".7" />
@@ -67,6 +100,9 @@ export function HolidayParky({
         <path d={SMILE} fill="none" stroke={ink} strokeWidth="1.8" strokeLinecap="round" />
       )}
       {mouth === 'wonder' && <ellipse cx="24" cy="34" rx="2" ry="2.4" fill={ink} />}
+      {mouth === 'woozy' && (
+        <path d={WOOZY} fill="none" stroke={ink} strokeWidth="1.6" strokeLinecap="round" />
+      )}
       {hands}
     </>
   );
