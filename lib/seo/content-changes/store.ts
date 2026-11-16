@@ -1,8 +1,5 @@
 import 'server-only';
-import { promises as fs } from 'fs';
-import path from 'path';
-import { put, get } from '@vercel/blob';
-import { resolveDriver } from '@/lib/contribute/driver';
+import { readPrivateJson, writePrivateJson } from '@/lib/storage/private-json';
 import type { ContentChangeSnapshot } from './types';
 
 /**
@@ -13,49 +10,15 @@ import type { ContentChangeSnapshot } from './types';
  */
 
 const BLOB_KEY = 'seo/content-changes.json';
-const LOCAL_PATH = path.join(process.cwd(), '.data', 'seo', 'content-changes.json');
-
-async function readLocal(): Promise<ContentChangeSnapshot | null> {
-  try {
-    return JSON.parse(await fs.readFile(LOCAL_PATH, 'utf8')) as ContentChangeSnapshot;
-  } catch {
-    return null;
-  }
-}
-
-async function writeLocal(snapshot: ContentChangeSnapshot): Promise<void> {
-  await fs.mkdir(path.dirname(LOCAL_PATH), { recursive: true });
-  await fs.writeFile(LOCAL_PATH, JSON.stringify(snapshot));
-}
-
-async function readBlob(): Promise<ContentChangeSnapshot | null> {
-  try {
-    const result = await get(BLOB_KEY, { access: 'private' });
-    if (!result?.stream) return null;
-    return (await new Response(result.stream).json()) as ContentChangeSnapshot;
-  } catch {
-    return null;
-  }
-}
-
-async function writeBlob(snapshot: ContentChangeSnapshot): Promise<void> {
-  await put(BLOB_KEY, JSON.stringify(snapshot), {
-    access: 'private',
-    contentType: 'application/json',
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    cacheControlMaxAge: 0,
-  });
-}
 
 /** The stored content-change snapshot, or null when there is none or it cannot be read. */
 export function readContentChangeSnapshot(): Promise<ContentChangeSnapshot | null> {
-  return resolveDriver() === 'vercel-blob' ? readBlob() : readLocal();
+  return readPrivateJson<ContentChangeSnapshot>(BLOB_KEY);
 }
 
 /** Stores the content-change snapshot for the sitemaps to read. */
 export function writeContentChangeSnapshot(snapshot: ContentChangeSnapshot): Promise<void> {
-  return resolveDriver() === 'vercel-blob' ? writeBlob(snapshot) : writeLocal(snapshot);
+  return writePrivateJson(BLOB_KEY, snapshot);
 }
 
 /**

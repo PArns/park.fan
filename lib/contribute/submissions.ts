@@ -1,8 +1,9 @@
 import 'server-only';
 import { promises as fs } from 'fs';
 import path from 'path';
-import { put, list, del, get } from '@vercel/blob';
-import { resolveDriver } from './driver';
+import { list, del } from '@vercel/blob';
+import { resolveDriver } from '@/lib/storage/driver';
+import { readPrivateJson, writePrivateJson } from '@/lib/storage/private-json';
 import { deleteImagesLocal } from './storage';
 import type { SubmissionPatch, SubmissionRecord, SubmissionSummary } from './types';
 
@@ -57,34 +58,19 @@ const local = {
   },
 };
 
-/** Read a private metadata JSON blob by pathname (public URLs don't work on a private store). */
-async function readMeta(pathname: string): Promise<SubmissionRecord | null> {
-  try {
-    const result = await get(pathname, { access: 'private' });
-    if (!result || !result.stream) return null;
-    return (await new Response(result.stream).json()) as SubmissionRecord;
-  } catch {
-    return null;
-  }
-}
-
 const blob = {
   async record(rec: SubmissionRecord): Promise<void> {
-    await put(metaPath(rec.id), JSON.stringify(rec), {
-      access: 'private',
-      contentType: 'application/json',
-      addRandomSuffix: false,
-      allowOverwrite: true,
-      cacheControlMaxAge: 0,
-    });
+    await writePrivateJson(metaPath(rec.id), rec);
   },
   async list(): Promise<SubmissionRecord[]> {
     const { blobs } = await list({ prefix: META_PREFIX, limit: 1000 });
-    const records = await Promise.all(blobs.map((b) => readMeta(b.pathname)));
+    const records = await Promise.all(
+      blobs.map((b) => readPrivateJson<SubmissionRecord>(b.pathname))
+    );
     return records.filter((r): r is SubmissionRecord => r !== null);
   },
   async get(id: string): Promise<SubmissionRecord | null> {
-    return readMeta(metaPath(id));
+    return readPrivateJson<SubmissionRecord>(metaPath(id));
   },
   async remove(rec: SubmissionRecord): Promise<void> {
     // Images and metadata are deleted by their pathname (key).

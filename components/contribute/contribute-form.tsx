@@ -14,6 +14,7 @@ import { useLocationHash } from '@/lib/hooks/use-location-hash';
 import type { AssignedEntity, UploadedBlob } from '@/lib/contribute/types';
 import { PhotoDropzone, type PendingImage } from './photo-dropzone';
 import { EntityPicker } from './entity-picker';
+import { FormStep } from '@/components/common/form-step';
 import { TurnstileWidget } from '@/components/common/turnstile-widget';
 import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { compressImage } from './compress';
@@ -27,20 +28,6 @@ type SubmitState =
   | { status: 'idle' }
   | { status: 'submitting'; done: number; total: number }
   | { status: 'error'; code: string };
-
-function Step({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
-  return (
-    <section className="space-y-3">
-      <h2 className="flex items-center gap-2.5 text-lg font-semibold">
-        <span className="bg-primary/15 text-primary flex size-7 items-center justify-center rounded-full text-sm font-bold">
-          {n}
-        </span>
-        {title}
-      </h2>
-      <div className="pl-9.5">{children}</div>
-    </section>
-  );
-}
 
 /**
  * The photo contribution form: drop photos, pick the park or ride, add caption and credit, consent,
@@ -141,15 +128,15 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
     <form onSubmit={handleSubmit}>
       <Card>
         <CardContent className="space-y-8">
-          <Step n={1} title={t('step1')}>
+          <FormStep n={1} title={t('step1')}>
             <PhotoDropzone images={images} onChange={setImages} disabled={submitting} />
-          </Step>
+          </FormStep>
 
-          <Step n={2} title={t('step2')}>
+          <FormStep n={2} title={t('step2')}>
             <EntityPicker value={entity} onChange={setPicked} disabled={submitting} />
-          </Step>
+          </FormStep>
 
-          <Step n={3} title={t('step3')}>
+          <FormStep n={3} title={t('step3')}>
             <div className="space-y-4">
               <div className="space-y-1.5">
                 <label htmlFor="caption" className="text-sm font-medium">
@@ -198,15 +185,15 @@ export function ContributeForm({ initialEntity = null }: ContributeFormProps) {
                 </span>
               </label>
             </div>
-          </Step>
+          </FormStep>
 
-          <Step n={4} title={t('step4')}>
+          <FormStep n={4} title={t('step4')}>
             <TurnstileWidget
               action={TURNSTILE_ACTIONS.contribute}
               onVerify={setToken}
               onExpire={() => setToken('')}
             />
-          </Step>
+          </FormStep>
 
           {submit.status === 'error' && (
             <p className="text-destructive text-sm" role="alert">

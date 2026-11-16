@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import {
+  Activity,
   BarChart3,
   KeySquare,
   Loader2,
@@ -25,11 +26,12 @@ import {
   DATA_API_KEYS_PATH,
   DATA_API_KEYS_QUERY_KEY,
   DATA_API_KEY_USAGE_LABELS,
-  DEFAULT_REQUESTS_PER_HOUR,
+  apiStoresPermissions,
+  effectivePermissions,
+  isLegacyKey,
   DEFAULT_ROTATION_GRACE_HOURS,
   ROTATION_GRACE_CHOICES,
   createDataApiKeyBody,
-  dataApiKeyCurlExample,
   dataApiKeyPath,
   describeRotationGrace,
   formatAllowedParks,
@@ -39,29 +41,31 @@ import {
   formatKeyUsage,
   formatPreviousKeyStatus,
   formatUsageMonth,
-  KEY_EXPIRY_CHOICES,
   usedMonths,
-  keyExpiryDay,
-  keyExpiryFrom,
-  MAX_REQUESTS_PER_HOUR,
   parseRequestsPerHour,
   previousKeyValidUntil,
   type CreatedDataApiKey,
   type DataApiKey,
   type DataApiKeyUsage,
-  type KeyExpiryChoice,
   type RotationGraceHours,
 } from '@/lib/admin/api-keys';
+import { formatPermissions } from '@/lib/admin/developer-labels';
+import {
+  API_PERMISSIONS,
+  DEFAULT_KEY_REQUESTS_PER_HOUR,
+  apiKeyCurlExample,
+  type ApiPermission,
+} from '@/lib/developers/permissions';
+import { usageTotals } from '@/lib/developers/dashboard';
 import { hasPassed } from '@/lib/admin/mcp';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { adminFetch, useAdminQuery, useInvalidateAdmin } from '../_lib/api';
-import { parkCatalogOptions, useParkCatalog } from '../_lib/use-park-catalog';
 import { formatAgo } from '../_lib/format';
 import { useSession } from '../_app/session';
 import { BarList, CATEGORICAL, SeriesChart, Sparkline } from '../_ui/charts';
 import { CodeBlock, SYSTEM_MONO } from '../_ui/code-block';
 import { CopyButton } from '../_ui/copy-button';
-import { Field, MultiSearchSelect, Select, TextInput, useFieldId } from '../_ui/controls';
+import { Field, Select, TextInput, useFieldId } from '../_ui/controls';
 import {
   AdminPage,
   Chip,
@@ -73,8 +77,17 @@ import {
   PanelHeader,
   SCROLLING_DIALOG,
   SkeletonRows,
+  StatTile,
   Tile,
 } from '../_ui/primitives';
+import {
+  ExpiryField,
+  LimitField,
+  ParksField,
+  PermissionsField,
+  useKeyExpiry,
+} from './_components/key-fields';
+import { KeyRequestsPanel } from './_components/key-requests-panel';
 import { useToast } from '../_ui/toast';
 
 const USAGE_OPTIONS = (Object.keys(DATA_API_KEY_USAGE_LABELS) as DataApiKeyUsage[]).map(
@@ -82,14 +95,17 @@ const USAGE_OPTIONS = (Object.keys(DATA_API_KEY_USAGE_LABELS) as DataApiKeyUsage
 );
 
 /**
- * The data API keys: who may read park.fan's forecasts on api.park.fan. Owner only, because a key
- * decides who uses the forecasts, which is a licensing decision rather than an editorial one; the
- * backend enforces the same.
+ * The data API keys: who may read what on api.park.fan, permission by permission. Owner only,
+ * because a key is a licensing decision rather than an editorial one; the backend enforces the
+ * same. On top, the keys' use in figures; then the requests from the developer dashboard, each of
+ * which becomes a key only here; then the keys themselves.
  */
 export default function ApiKeysPage() {
   const { identity } = useSession();
   const [creating, setCreating] = useState(false);
   const keys = useAdminQuery<{ items: DataApiKey[] }>(DATA_API_KEYS_QUERY_KEY, DATA_API_KEYS_PATH);
+  const items = keys.data?.items ?? [];
+  const permissionsStored = apiStoresPermissions(items);
 
   if (identity.role !== 'owner') {
     return (
@@ -103,11 +119,15 @@ export default function ApiKeysPage() {
 
   return (
     <AdminPage width="narrow">
+      {items.length > 0 && <KeyOverview items={items} />}
+
+      <KeyRequestsPanel permissionsStored={permissionsStored} />
+
       <Panel>
         <PanelHeader
           icon={KeySquare}
           title="API-Keys"
-          hint="Ein Key schaltet die Prognosen auf api.park.fan frei, für eine Person oder ein Projekt."
+          hint="Ein Key öffnet api.park.fan Berechtigung für Berechtigung, für eine Person oder ein Projekt. Ohne Key sind nur die Wartezeiten offen."
           action={
             <Button size="sm" variant="outline" onClick={() => setCreating(true)}>
               <Plus className="h-4 w-4" /> Key erstellen
@@ -120,17 +140,77 @@ export default function ApiKeysPage() {
           <SkeletonRows rows={3} />
         ) : (
           <PanelBody>
-            <KeyList items={keys.data?.items ?? []} />
+            <KeyList items={items} permissionsStored={permissionsStored} />
           </PanelBody>
         )}
       </Panel>
 
-      {creating && <CreateKeyDialog onClose={() => setCreating(false)} />}
+      {creating && (
+        <CreateKeyDialog permissionsStored={permissionsStored} onClose={() => setCreating(false)} />
+      )}
     </AdminPage>
   );
 }
 
-function KeyList({ items }: { items: DataApiKey[] }) {
+/**
+ * Every key's use at a glance: the live keys, the requests of this hour, today and the last 30
+ * days across all of them, and the busiest keys of those 30 days.
+ */
+function KeyOverview({ items }: { items: DataApiKey[] }) {
+  const now = useMinuteNow();
+  const totals = usageTotals(items);
+  const live = items.filter(
+    (key) => !key.revokedAt && (now === null || !hasPassed(key.expiresAt, now))
+  );
+  const fromRequests = live.filter((key) => key.ownerUserId).length;
+  const waiting = live.filter((key) => key.revealedAt === null).length;
+  const sum = (key: DataApiKey, field: 'requests' | 'limited') =>
+    (key.stats?.days ?? []).reduce((total, day) => total + day[field], 0);
+  const limited = live.reduce((total, key) => total + sum(key, 'limited'), 0);
+  const busiest = live
+    .map((key) => ({ key: key.id, label: key.name, value: sum(key, 'requests') }))
+    .filter((row) => row.value > 0)
+    .sort((a, b) => b.value - a.value);
+  const count = (value: number) => value.toLocaleString('de-DE');
+  const origin = [
+    fromRequests > 0 && `${count(fromRequests)} aus Anträgen`,
+    waiting > 0 && `${count(waiting)} nicht abgeholt`,
+  ].filter(Boolean);
+  return (
+    <Panel>
+      <PanelHeader
+        icon={Activity}
+        title="Nutzung"
+        hint="Alle aktiven Keys zusammen; ein Tag läuft nach UTC."
+      />
+      <PanelBody className="space-y-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatTile
+            label="Aktive Keys"
+            value={count(live.length)}
+            sub={origin.length > 0 ? origin.join(', ') : undefined}
+          />
+          <StatTile label="Diese Stunde" value={count(totals.thisHour)} />
+          <StatTile label="Heute" value={count(totals.today)} />
+          <StatTile
+            label="30 Tage"
+            value={count(totals.last30Days)}
+            sub={limited > 0 ? `${count(limited)} über dem Limit abgelehnt` : undefined}
+          />
+        </div>
+        {busiest.length > 0 && <BarList unit="Anfragen in 30 Tagen" limit={8} rows={busiest} />}
+      </PanelBody>
+    </Panel>
+  );
+}
+
+function KeyList({
+  items,
+  permissionsStored,
+}: {
+  items: DataApiKey[];
+  permissionsStored: boolean;
+}) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   // Kept after the dialog closes, so its text does not change while it fades out.
@@ -169,7 +249,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
       <EmptyState
         icon={KeySquare}
         title="Noch keine Keys"
-        description="Ohne Key liefert die API keine Prognosen. Leg für die Website einen Key mit der Nutzung „park.fan selbst“ an und setz ihn in Vercel als API_DATA_KEY; bis die API mit FORECAST_BYPASS_KEY=off läuft, öffnet ihr auch der Bypass-Key die Prognosen."
+        description="Ohne Key liefert die API nur Wartezeiten. Leg für die Website einen Key mit der Nutzung „park.fan selbst“ an und setz ihn in Vercel als API_DATA_KEY; bis die API mit FORECAST_BYPASS_KEY=off läuft, öffnet ihr auch der Bypass-Key alles."
       />
     );
   }
@@ -182,6 +262,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
             key={key.id}
             apiKey={key}
             now={now}
+            permissionsStored={permissionsStored}
             onStats={() => setViewing(key)}
             onEdit={() => setEditing(key)}
             onRotate={() => setRotating(key)}
@@ -209,8 +290,8 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         title={`Key „${pending?.name ?? ''}“ widerrufen?`}
         description={
           pending?.usage === 'internal'
-            ? 'Das ist der Key der Website: park.fan zeigt dann keine Prognosen mehr, bis ein neuer Key in Vercel als API_DATA_KEY steht. Das lässt sich nicht rückgängig machen.'
-            : 'Wer diesen Key nutzt, bekommt sofort keine Prognosen mehr. Das lässt sich nicht rückgängig machen.'
+            ? 'Das ist der Key der Website: park.fan bekommt von der API dann nur noch Wartezeiten, bis ein neuer Key in Vercel als API_DATA_KEY steht. Das lässt sich nicht rückgängig machen.'
+            : 'Wer diesen Key nutzt, bekommt ab der nächsten Anfrage nur noch, was ohne Key offen ist. Das lässt sich nicht rückgängig machen.'
         }
         confirmLabel="Widerrufen"
         cancelLabel="Abbrechen"
@@ -231,8 +312,8 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         title={`Alten Key von „${ending?.name ?? ''}“ jetzt sperren?`}
         description={
           ending?.usage === 'internal'
-            ? 'Das ist der Key der Website: Steht der neue Key noch nicht in Vercel als API_DATA_KEY, zeigt park.fan ab der nächsten Anfrage keine Prognosen mehr. Der neue Key gilt weiter.'
-            : 'Wer noch den alten Key sendet, bekommt ab der nächsten Anfrage keine Prognosen mehr. Der neue Key gilt weiter.'
+            ? 'Das ist der Key der Website: Steht der neue Key noch nicht in Vercel als API_DATA_KEY, bekommt park.fan ab der nächsten Anfrage nur noch Wartezeiten. Der neue Key gilt weiter.'
+            : 'Wer noch den alten Key sendet, bekommt ab der nächsten Anfrage nur noch, was ohne Key offen ist. Der neue Key gilt weiter.'
         }
         confirmLabel="Alten Key sperren"
         cancelLabel="Abbrechen"
@@ -263,7 +344,13 @@ function KeyList({ items }: { items: DataApiKey[] }) {
         }
       />
 
-      {editing && <EditKeyDialog apiKey={editing} onClose={() => setEditing(null)} />}
+      {editing && (
+        <EditKeyDialog
+          apiKey={editing}
+          permissionsStored={permissionsStored}
+          onClose={() => setEditing(null)}
+        />
+      )}
       {rotating && <RotateKeyDialog apiKey={rotating} onClose={() => setRotating(null)} />}
       {viewing && <StatsDialog apiKey={viewing} onClose={() => setViewing(null)} />}
     </>
@@ -273,6 +360,7 @@ function KeyList({ items }: { items: DataApiKey[] }) {
 function KeyRow({
   apiKey,
   now,
+  permissionsStored,
   onStats,
   onEdit,
   onRotate,
@@ -283,6 +371,7 @@ function KeyRow({
   apiKey: DataApiKey;
   /** Null until the clock is known, so the server and the first render agree. */
   now: number | null;
+  permissionsStored: boolean;
   onStats: () => void;
   onEdit: () => void;
   onRotate: () => void;
@@ -313,6 +402,8 @@ function KeyRow({
           <Chip tone={apiKey.usage === 'commercial' ? 'primary' : 'muted'}>
             {DATA_API_KEY_USAGE_LABELS[apiKey.usage]}
           </Chip>
+          {apiKey.owner && <Chip tone="muted">Entwicklerkonto</Chip>}
+          {!revoked && apiKey.revealedAt === null && <Chip tone="warning">nicht abgeholt</Chip>}
           {revoked && <Chip tone="danger">widerrufen</Chip>}
           {expired && <Chip tone="danger">abgelaufen</Chip>}
         </p>
@@ -361,7 +452,13 @@ function KeyRow({
       <div className={`text-muted-foreground mt-1 space-y-1 text-xs sm:pl-7 ${dimmed}`}>
         <p className="flex flex-wrap gap-x-3 gap-y-0.5">
           <code className={SYSTEM_MONO}>{apiKey.prefix}…</code>
-          {apiKey.contact && <span className="break-all">{apiKey.contact}</span>}
+          {apiKey.owner ? (
+            <span className="break-all">
+              {apiKey.owner.displayName} · {apiKey.owner.email}
+            </span>
+          ) : (
+            apiKey.contact && <span className="break-all">{apiKey.contact}</span>
+          )}
           <span>erstellt {formatAgo(apiKey.createdAt)}</span>
           <span>
             {apiKey.lastUsedAt ? `zuletzt genutzt ${formatAgo(apiKey.lastUsedAt)}` : 'nie genutzt'}
@@ -376,6 +473,13 @@ function KeyRow({
               {now !== null && <span>{formatKeyExpiry(apiKey.expiresAt, now)}</span>}
             </p>
             <p>{formatAllowedParks(apiKey)}</p>
+            {permissionsStored && (
+              <p>
+                {isLegacyKey(apiKey)
+                  ? 'Altbestand ohne eigene Berechtigungen: liest alles'
+                  : formatPermissions(effectivePermissions(apiKey))}
+              </p>
+            )}
           </>
         )}
         {previousUntil && (
@@ -403,15 +507,26 @@ function KeyRow({
   );
 }
 
-function CreateKeyDialog({ onClose }: { onClose: () => void }) {
+/**
+ * Issues a key by hand, for park.fan itself or a partner with an agreement; developers' keys come
+ * from their requests. The key is shown once, in this dialog.
+ */
+function CreateKeyDialog({
+  permissionsStored,
+  onClose,
+}: {
+  permissionsStored: boolean;
+  onClose: () => void;
+}) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const [name, setName] = useState('');
   const [contact, setContact] = useState('');
   const [usage, setUsage] = useState<DataApiKeyUsage>('non-commercial');
   const [note, setNote] = useState('');
-  const [limit, setLimit] = useState(String(DEFAULT_REQUESTS_PER_HOUR));
+  const [limit, setLimit] = useState(String(DEFAULT_KEY_REQUESTS_PER_HOUR));
   const [parkIds, setParkIds] = useState<string[]>([]);
+  const [permissions, setPermissions] = useState<ApiPermission[]>([...API_PERMISSIONS]);
   const expiry = useKeyExpiry(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -430,7 +545,10 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
   };
   const requestsPerHour = parseRequestsPerHour(limit);
   const complete =
-    name.trim().length > 0 && requestsPerHour !== undefined && expiry.expiresAt !== undefined;
+    name.trim().length > 0 &&
+    requestsPerHour !== undefined &&
+    expiry.expiresAt !== undefined &&
+    (!permissionsStored || permissions.length > 0);
 
   async function create(event: FormEvent) {
     event.preventDefault();
@@ -456,6 +574,7 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
           requestsPerHour,
           allowedParkIds: parkIds,
           expiresAt: expiry.expiresAt,
+          ...(permissionsStored && { permissions }),
         }),
       });
       setCreated(result);
@@ -505,8 +624,8 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
             <DialogHeader>
               <DialogTitle>Key erstellen</DialogTitle>
               <DialogDescription>
-                Ein Key gibt die Prognosen auf api.park.fan frei. Für Live-Daten braucht niemand
-                einen Key; mit einem fallen aber die Grenzen für Abrufe ohne Key weg.
+                Für park.fan selbst oder einen Partner mit Vereinbarung. Ein Key von hier gehört
+                keinem Entwicklerkonto; Anträge gibst du oben frei.
               </DialogDescription>
             </DialogHeader>
 
@@ -542,6 +661,11 @@ function CreateKeyDialog({ onClose }: { onClose: () => void }) {
                 options={USAGE_OPTIONS}
               />
             </Field>
+            <PermissionsField
+              stored={permissionsStored}
+              value={permissions}
+              onChange={setPermissions}
+            />
             <LimitField id={ids.limit} value={limit} onChange={setLimit} />
             <ParksField id={ids.parks} value={parkIds} onChange={setParkIds} />
             <ExpiryField id={ids.expiry} expiry={expiry} />
@@ -602,9 +726,9 @@ function OneTimeKey({ apiKey, ifLost }: { apiKey: string; ifLost: string }) {
         <Tile
           title="So wird er gesendet"
           hint="Im Header X-API-Key, nie in der URL."
-          action={<CopyButton value={dataApiKeyCurlExample(apiKey)} />}
+          action={<CopyButton value={apiKeyCurlExample(apiKey)} />}
         >
-          <CodeBlock>{dataApiKeyCurlExample(apiKey)}</CodeBlock>
+          <CodeBlock>{apiKeyCurlExample(apiKey)}</CodeBlock>
         </Tile>
       </div>
     </>
@@ -743,72 +867,6 @@ function RotateKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () 
   );
 }
 
-function LimitField({
-  id,
-  value,
-  onChange,
-}: {
-  id: string;
-  value: string;
-  onChange: (value: string) => void;
-}) {
-  const invalid = parseRequestsPerHour(value) === undefined;
-  return (
-    <Field
-      label="Anfragen pro Stunde"
-      htmlFor={id}
-      hint="Gezählt ab jeder vollen Stunde, zusätzlich zum allgemeinen Limit der API. Leer lassen, wenn der Key kein eigenes Limit haben soll."
-      error={
-        invalid
-          ? `Eine ganze Zahl von 1 bis ${MAX_REQUESTS_PER_HOUR.toLocaleString('de-DE')} oder leer.`
-          : null
-      }
-    >
-      <TextInput
-        id={id}
-        inputMode="numeric"
-        value={value}
-        onChange={(event) => onChange(event.target.value)}
-        placeholder="kein eigenes Limit"
-        autoComplete="off"
-        aria-invalid={invalid || undefined}
-      />
-    </Field>
-  );
-}
-
-/** Adds parks one at a time through the admin's park search; a chosen park is a chip to remove. */
-function ParksField({
-  id,
-  value,
-  onChange,
-}: {
-  id: string;
-  value: string[];
-  onChange: (ids: string[]) => void;
-}) {
-  const parks = useParkCatalog();
-  return (
-    <Field
-      label="Parks"
-      htmlFor={id}
-      hint="Leer für alle Parks. Mit einer Auswahl öffnet der Key die Prognosen nur für diese Parks."
-      error={parks.isError ? 'Die Parkliste ließ sich nicht laden.' : null}
-    >
-      <MultiSearchSelect
-        id={id}
-        value={value}
-        onChange={onChange}
-        options={parkCatalogOptions(parks.data?.parks ?? [])}
-        placeholder={parks.isLoading ? 'Parks werden geladen…' : 'Park hinzufügen'}
-        searchPlaceholder="Park suchen…"
-        disabled={parks.isLoading || parks.isError}
-        fuzzy="park"
-      />
-    </Field>
-  );
-}
-
 /**
  * A key's use: its requests per UTC day for the last 30 days, with the ones its allowance refused
  * when there were any, and its requests per month for the last 12, newest first.
@@ -877,72 +935,37 @@ function StatsDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => v
 }
 
 /**
- * The end-date field's state: a lifetime, a day or never, and the date that stands for once the
- * clock is known. `unchanged` while it still says what `initial` said, so an edit can leave an
- * expired key's past date alone instead of sending it back to be refused.
+ * Changes a key's permissions, hourly allowance, parks and end date; the key itself, its name and
+ * usage stay. A key from before permissions gets its first list here, starting with everything.
  */
-function useKeyExpiry(initial: string | null) {
-  const [choice, setChoice] = useState<KeyExpiryChoice>(initial ? 'date' : 'never');
-  const [day, setDay] = useState(initial ? keyExpiryDay(initial) : '');
-  const now = useMinuteNow();
-  const unchanged =
-    initial === null ? choice === 'never' : choice === 'date' && day === keyExpiryDay(initial);
-  const expiresAt = unchanged
-    ? initial
-    : now === null
-      ? undefined
-      : keyExpiryFrom(choice, day, now);
-  return { choice, setChoice, day, setDay, unchanged, expiresAt };
-}
-
-function ExpiryField({ id, expiry }: { id: string; expiry: ReturnType<typeof useKeyExpiry> }) {
-  const past = expiry.choice === 'date' && expiry.day !== '' && expiry.expiresAt === undefined;
-  return (
-    <Field
-      label="Gültig"
-      htmlFor={id}
-      hint="Ein Datum gilt einschließlich, bis Mitternacht deutscher Zeit. Ist der Key abgelaufen, verlängerst du ihn hier mit einem neuen Datum."
-      error={past ? 'Dieser Tag ist schon vorbei.' : null}
-    >
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-        <Select
-          id={id}
-          value={expiry.choice}
-          allowEmpty={false}
-          onValueChange={(value) =>
-            expiry.setChoice((value as KeyExpiryChoice | null) ?? expiry.choice)
-          }
-          options={[...KEY_EXPIRY_CHOICES]}
-        />
-        {expiry.choice === 'date' && (
-          <TextInput
-            type="date"
-            value={expiry.day}
-            onChange={(event) => expiry.setDay(event.target.value)}
-            aria-label="Gültig bis einschließlich"
-            aria-invalid={past || undefined}
-          />
-        )}
-      </div>
-    </Field>
-  );
-}
-
-/** Changes a key's hourly allowance, parks and end date; the key itself, its name and usage stay. */
-function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () => void }) {
+function EditKeyDialog({
+  apiKey,
+  permissionsStored,
+  onClose,
+}: {
+  apiKey: DataApiKey;
+  permissionsStored: boolean;
+  onClose: () => void;
+}) {
   const toast = useToast();
   const invalidate = useInvalidateAdmin();
   const [limit, setLimit] = useState(
     apiKey.requestsPerHour === null ? '' : String(apiKey.requestsPerHour)
   );
   const [parkIds, setParkIds] = useState<string[]>(apiKey.allowedParkIds ?? []);
+  const [permissions, setPermissions] = useState<ApiPermission[]>(() =>
+    effectivePermissions(apiKey)
+  );
   const [busy, setBusy] = useState(false);
   const expiry = useKeyExpiry(apiKey.expiresAt);
   const fieldId = useFieldId('api-key-limit-edit');
   const parksId = useFieldId('api-key-parks-edit');
   const expiryId = useFieldId('api-key-expiry-edit');
   const requestsPerHour = parseRequestsPerHour(limit);
-  const ready = requestsPerHour !== undefined && expiry.expiresAt !== undefined;
+  const ready =
+    requestsPerHour !== undefined &&
+    expiry.expiresAt !== undefined &&
+    (!permissionsStored || permissions.length > 0);
 
   async function save(event: FormEvent) {
     event.preventDefault();
@@ -954,6 +977,7 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
         body: {
           requestsPerHour,
           allowedParkIds: parkIds.length > 0 ? parkIds : null,
+          ...(permissionsStored && { permissions }),
           // Only when it changed: an expired key's old date would be refused as past.
           ...(!expiry.unchanged && { expiresAt: expiry.expiresAt }),
         },
@@ -982,6 +1006,11 @@ function EditKeyDialog({ apiKey, onClose }: { apiKey: DataApiKey; onClose: () =>
               Gilt ab der nächsten Anfrage. {formatHourlyUsage(apiKey)}.
             </DialogDescription>
           </DialogHeader>
+          <PermissionsField
+            stored={permissionsStored}
+            value={permissions}
+            onChange={setPermissions}
+          />
           <LimitField id={fieldId} value={limit} onChange={setLimit} />
           <ParksField id={parksId} value={parkIds} onChange={setParkIds} />
           <ExpiryField id={expiryId} expiry={expiry} />

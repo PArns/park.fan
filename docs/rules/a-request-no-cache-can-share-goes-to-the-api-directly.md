@@ -1,14 +1,18 @@
 # A request no cache can share goes to the API directly (REQUIREMENT)
 
 **A browser request whose answer belongs to one visitor is addressed through `browserApiUrl()`
-(`lib/api/client.ts`), never as a literal `/api/…` path.** These are nearby (`fetchNearby`,
-`lib/nearby/fetch-nearby.ts`), favorites (`lib/api/favorites.ts`), trips (`lib/planner/trip-sync.ts`,
-the shared-plan page) and push (`lib/push/`, `lib/planner/push-repoint.ts`,
-`lib/planner/use-push-subscription.ts`).
+(`lib/api/client.ts`), never as a literal `/api/…` path,** unless the API wants a key for it.
+These are trips (`lib/planner/trip-sync.ts`, the shared-plan page) and push (`lib/push/`,
+`lib/planner/push-repoint.ts`, `lib/planner/use-push-subscription.ts`).
+
+- **A request the API wants a key for stays a relay.** Nearby (`/v1/discovery/nearby`,
+  `parks.directory`) and favorites (`/v1/favorites`, `parks.details`) need the site's key, which
+  never reaches a browser, so `fetchNearby` and `getFavorites` always call `/api/nearby` and
+  `/api/favorites` ([only the wait times leave without a key](a-forecast-leaves-only-with-a-key.md)).
 
 With `NEXT_PUBLIC_API_DIRECT=1` the request goes to api.park.fan and never reaches Vercel. With the
 flag off it goes to the relay route that mirrors the API path under `/api/` (`/v1/trips/<id>` →
-`/api/trips/<id>`); nearby is the one relay under another name, so its call names `/api/nearby`.
+`/api/trips/<id>`).
 
 - **A cached route stays a relay.** `/api/search`, `/api/parks/…`, `/api/parks/live` and the rest
   answer with `CDN-Cache-Control`, so the edge serves nearly every request. Calling api.park.fan for
@@ -17,11 +21,6 @@ flag off it goes to the relay route that mirrors the API path under `/api/` (`/v
   `Access-Control-Allow-Origin`. Admin, ML and contribute stay relays because they carry a secret.
 - **A direct GET sends no request headers.** A `Content-Type` on a cross-origin GET triggers an
   `OPTIONS` preflight before every request.
-- **The card photos the relay attached come from `loadCardImageMap()`** (`lib/media/card-images.ts`,
-  `/api/card-images`, prerendered at build, 2.6 KB brotli). Relays and direct calls run the same
-  transforms on it (`withNearbyCardImages`, `favoritesForCards`), so a card gets the same photo
-  either way.
-- **A `?sim=` nearby simulation takes the relay**: it overrides the coordinates on the server.
 
 ## Why
 
@@ -39,11 +38,11 @@ function go entirely: on the server it costs 17 µs for 40 rides.
    variable replaces the default list, so it names park.fan again.
 2. Set `NEXT_PUBLIC_API_DIRECT=1` in Vercel, Preview first. It is read at build time, so it takes a
    new deployment.
-3. Check in the network panel that the nearby request goes to `api.park.fan` and answers with
-   `access-control-allow-origin`, and that a starred park still shows its photo.
+3. Check in the network panel that a trip sync goes to `api.park.fan` and answers with
+   `access-control-allow-origin`.
 
 With the flag on before the backend allows the origin, the browser refuses every one of these
-answers: no nearby parks, no favorites, no trip sync, no push. With it on, the layout adds a
+answers: no trip sync, no push. With it on, the layout adds a
 `<link rel="dns-prefetch">` for the API origin after load.
 
 ## Check

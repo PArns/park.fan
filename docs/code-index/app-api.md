@@ -266,11 +266,31 @@ Route `/api/cron/websub` (route).
 - `GET` _function_: Tells the WebSub hub the blog feeds may have changed, so subscribers get a push instead of polling. Daily and unconditional: the hub diffs the feed and pushes only on a change, so a ping for an unchanged feed costs one conditional GET.
 - `maxDuration` _const_
 
+### [`developer/[...path]/route.ts`](../../app/api/developer/%5B...path%5D/route.ts)
+
+Route `/api/developer/[...path]` (route).
+
+- `GET` _function_
+- `POST` _function_
+- `PATCH` _function_
+- `PUT` _function_
+- `DELETE` _function_
+- `runtime` _const_
+- `dynamic` _const_
+
+### [`developers/register/route.ts`](../../app/api/developers/register/route.ts)
+
+Route `/api/developers/register` (route).
+
+- `POST` _function_: POST /api/developers/register: a developer's own account.
+- `runtime` _const_
+- `dynamic` _const_
+
 ### [`favorites/route.ts`](../../app/api/favorites/route.ts)
 
 Route `/api/favorites` (route).
 
-- `GET` _function_: The answer depends on cookies and optionally the IP, so it is never cached. With NEXT_PUBLIC_API_DIRECT on, the browser asks the API itself (`getFavorites`).
+- `GET` _function_: The answer depends on cookies and optionally the IP, so it is never cached. The browser always comes through here, since the API wants a key for favorites.
 
 ### [`glossary-search/route.ts`](../../app/api/glossary-search/route.ts)
 

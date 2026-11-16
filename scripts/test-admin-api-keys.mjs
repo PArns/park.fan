@@ -201,7 +201,7 @@ const testCases = [
     name: 'the grace choice says what happens to the old key',
     actual: () => [describeRotationGrace(0), describeRotationGrace(168)],
     expected: [
-      'Der alte Key wird sofort gesperrt: Wer ihn noch sendet, bekommt ab der nächsten Anfrage keine Prognosen mehr.',
+      'Der alte Key wird sofort gesperrt: Wer ihn noch sendet, bekommt ab der nächsten Anfrage nur noch, was ohne Key offen ist.',
       'Der alte Key gilt noch 7 Tage neben dem neuen, damit der Inhaber umstellen kann, und wird dann gesperrt.',
     ],
   },

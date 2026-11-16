@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 import { get } from '@vercel/blob';
 import { denyUnlessAdmin } from '@/lib/admin/session';
 import { readImageLocal } from '@/lib/contribute/storage';
-import { resolveDriver } from '@/lib/contribute/driver';
+import { resolveDriver } from '@/lib/storage/driver';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'nodejs';

@@ -6,7 +6,8 @@ import { QueryClientProvider } from '@tanstack/react-query';
 import { createQueryClient } from '@/lib/query-client';
 import { AdminApiError } from '../_lib/api';
 import { Button } from '@/components/ui/button';
-import { LoadingState } from '../_ui/primitives';
+import { EmptyState, LoadingState } from '../_ui/primitives';
+import { DEVELOPER_DASHBOARD_PATH } from '@/lib/developers/paths';
 import { ToastHost } from '../_ui/toast';
 import { InspectorProvider } from './inspector';
 import { LoginScreen } from './login-screen';
@@ -104,6 +105,12 @@ function SessionGate({ children }: { children: ReactNode }) {
     );
   }
 
+  // A developer account signs in with the same session, and none of the admin is theirs: the
+  // backend refuses every request the shell would make, so the shell is not drawn at all.
+  if (session.data.role === 'developer') {
+    return <DeveloperAccountNotice />;
+  }
+
   if (standalone) {
     return (
       <SessionProvider identity={session.data}>
@@ -118,5 +125,25 @@ function SessionGate({ children }: { children: ReactNode }) {
         <AdminShell>{children}</AdminShell>
       </InspectorProvider>
     </SessionProvider>
+  );
+}
+
+/** What a developer account sees at `/admin`: the way to its own dashboard. */
+function DeveloperAccountNotice() {
+  return (
+    <div className="flex min-h-[100dvh] items-center justify-center p-6">
+      <EmptyState
+        title="Das ist ein Entwicklerkonto"
+        description="Deine Keys, ihre Statistik und deine Anträge stehen im Entwickler-Dashboard."
+        action={
+          <a
+            href={`/en${DEVELOPER_DASHBOARD_PATH}`}
+            className="text-primary-ink text-sm font-medium underline"
+          >
+            Zum Dashboard
+          </a>
+        }
+      />
+    </div>
   );
 }

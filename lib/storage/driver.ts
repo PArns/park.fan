@@ -1,8 +1,9 @@
 import 'server-only';
 
 /**
- * A storage backend for contributions: Vercel Blob, or the local filesystem, which is for
- * offline dev only because Vercel's runtime filesystem is read-only.
+ * Where this app keeps what it writes at runtime (contributions, the observed content-change
+ * dates, API key requests): Vercel Blob, or the local filesystem, which is for offline dev only
+ * because Vercel's runtime filesystem is read-only.
  */
 export type Driver = 'vercel-blob' | 'local';
 
@@ -12,8 +13,8 @@ function isBlobConfigured(): boolean {
 }
 
 /**
- * Returns the contribution storage backend: `STORAGE_DRIVER` when set, else Vercel Blob when a
- * token exists, else the local filesystem.
+ * Returns the storage backend: `STORAGE_DRIVER` when set, else Vercel Blob when a token exists,
+ * else the local filesystem.
  */
 export function resolveDriver(): Driver {
   if (process.env.STORAGE_DRIVER === 'local') return 'local';

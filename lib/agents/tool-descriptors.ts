@@ -3,6 +3,7 @@
  * MCP at `/api/mcp` and through `navigator.modelContext` on the page. `lib/agents/mcp-tools.ts`
  * implements them. Pure data, so a Client Component can import it.
  */
+import { DEVELOPER_PORTAL_URL } from '@/lib/developers/paths';
 
 export type ToolDescriptor = {
   name: string;
@@ -24,8 +25,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
   {
     name: 'search_theme_parks',
     title: 'Search parks, rides and cities',
-    description:
-      'Find a theme park, ride, show or city on park.fan by name. Returns the page URL for each hit, plus the current wait time for rides that have one. Use this to turn a name into something the other tools can take.',
+    description: `Find a theme park, ride, show or city on park.fan by name. Returns the page URL for each hit, plus the current wait time for rides that have one. Needs a park.fan data API key with the parks.directory permission in the X-API-Key header; request one at ${DEVELOPER_PORTAL_URL}.`,
     inputSchema: {
       type: 'object',
       properties: {
@@ -40,7 +40,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
     name: 'get_park_wait_times',
     title: 'Live wait times for a park',
     description:
-      'Current wait times for every ride in a theme park, with the park status and how busy it is right now, and for a ride in planned maintenance the dates: running today (maintenance) or the next one (nextMaintenance). Takes a park name or slug.',
+      'Current wait times for every ride in a theme park, with the park status. Takes a park name or slug and needs no key. With a park.fan data API key in the X-API-Key header it adds how busy the park is right now and, for a ride in planned maintenance, the dates: running today (maintenance) or the next one (nextMaintenance).',
     inputSchema: {
       type: 'object',
       properties: {
@@ -54,8 +54,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
   {
     name: 'get_park_best_days',
     title: 'Crowd forecast per day',
-    description:
-      "The crowd forecast for a park over the coming three months: one entry per day with the predicted crowd level, whether the park is open, whether it is a holiday or school vacation, which rides planned maintenance shuts that day, and which of the park's seasons and events (Halloween, Christmas, a winter season …) run that day. Use this to pick a date rather than to read a queue. Needs a park.fan data API key in the X-API-Key header, free for non-commercial use on request.",
+    description: `The crowd forecast for a park over the coming three months: one entry per day with the predicted crowd level, whether the park is open, whether it is a holiday or school vacation, which rides planned maintenance shuts that day, and which of the park's seasons and events (Halloween, Christmas, a winter season …) run that day. Use this to pick a date rather than to read a queue. Needs a park.fan data API key with the forecasts.crowd permission in the X-API-Key header; request one at ${DEVELOPER_PORTAL_URL}.`,
     inputSchema: {
       type: 'object',
       properties: {
@@ -85,7 +84,7 @@ export function toolDescriptor(name: string): ToolDescriptor {
 }
 
 /**
- * The tools whose answer is a forecast. Like the API's forecast routes they need a data key, unless
- * the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
+ * The tools that read more than the live wait times. Like the API's routes beyond the wait times
+ * they need a data key, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
  */
-export const FORECAST_TOOL_NAMES: readonly string[] = ['get_park_best_days'];
+export const KEYED_TOOL_NAMES: readonly string[] = ['search_theme_parks', 'get_park_best_days'];

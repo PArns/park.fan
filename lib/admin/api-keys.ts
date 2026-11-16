@@ -1,9 +1,15 @@
 /**
- * The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecasts on
- * api.park.fan for one consumer each. The backend owns them (`/v1/admin/api-keys`, owner only);
- * this module holds what the page and its dialog share.
+ * The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data on
+ * api.park.fan for one consumer each, permission by permission (`lib/developers/permissions.ts`).
+ * The backend owns them (`/v1/admin/api-keys`, owner only); this module holds what the page, its
+ * dialogs and the developer dashboard share.
  */
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import {
+  LEGACY_KEY_PERMISSIONS,
+  sortPermissions,
+  type ApiPermission,
+} from '@/lib/developers/permissions';
 import { TOKEN_EXPIRY_OPTIONS, hasPassed } from './mcp';
 
 /** What a key was issued for, as the backend stores it. */
@@ -39,8 +45,24 @@ export interface DataApiKey {
   requestsThisHour?: number;
   /** Its use per day and month; absent from an API without the counters. */
   stats?: DataApiKeyStats;
-  /** The parks the key may read forecasts for; null means every park. */
+  /** The parks the key may read data for; null means every park. */
   allowedParkIds: string[] | null;
+  /**
+   * The permissions the key carries. Absent from an API that does not know permissions yet; null
+   * for a key issued before them, which the API reads as `LEGACY_KEY_PERMISSIONS`.
+   */
+  permissions?: ApiPermission[] | null;
+  /** The developer account that holds the key; null for a key the owner issued by hand. */
+  ownerUserId?: string | null;
+  /** That account's address and name, as the owner's list returns them. */
+  owner?: { email: string; displayName: string } | null;
+  /** The request the key was approved from. */
+  requestId?: string | null;
+  /**
+   * When the developer first saw the key in clear; null while an approved key waits on the
+   * dashboard to be picked up.
+   */
+  revealedAt?: string | null;
   /** The same parks with their names, as the list returns them. */
   allowedParks?: { id: string; name: string }[] | null;
   /** When the key stops working; null means never. An expired key can be extended. */
@@ -73,8 +95,24 @@ export const DATA_API_KEY_USAGE_LABELS: Record<DataApiKeyUsage, string> = {
   internal: 'park.fan selbst',
 };
 
-/** What a new key is allowed per hour unless the dialog says otherwise; the backend's default too. */
-export const DEFAULT_REQUESTS_PER_HOUR = 1000;
+/**
+ * The API stores permissions: its key list carries the field. Until it does, a key opens what every
+ * key opens, and the dialogs send no permissions, which an API without them would refuse as an
+ * unknown field.
+ */
+export function apiStoresPermissions(items: readonly DataApiKey[]): boolean {
+  return items.some((key) => key.permissions !== undefined);
+}
+
+/** What a key opens: its permissions, or for a key from before them everything. */
+export function effectivePermissions(key: Pick<DataApiKey, 'permissions'>): ApiPermission[] {
+  return key.permissions ? sortPermissions(key.permissions) : [...LEGACY_KEY_PERMISSIONS];
+}
+
+/** The key was issued before permissions and reads everything. */
+export function isLegacyKey(key: Pick<DataApiKey, 'permissions'>): boolean {
+  return key.permissions === null;
+}
 
 /** The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`. */
 export const MAX_REQUESTS_PER_HOUR = 1_000_000;
@@ -217,7 +255,7 @@ export const DEFAULT_ROTATION_GRACE_HOURS: RotationGraceHours = 24;
 /** What a rotation with this grace period does to the old key, in one sentence. */
 export function describeRotationGrace(hours: RotationGraceHours): string {
   if (hours === 0) {
-    return 'Der alte Key wird sofort gesperrt: Wer ihn noch sendet, bekommt ab der nächsten Anfrage keine Prognosen mehr.';
+    return 'Der alte Key wird sofort gesperrt: Wer ihn noch sendet, bekommt ab der nächsten Anfrage nur noch, was ohne Key offen ist.';
   }
   const label = ROTATION_GRACE_CHOICES.find((choice) => choice.value === hours)?.label;
   return `Der alte Key gilt noch ${label} neben dem neuen, damit der Inhaber umstellen kann, und wird dann gesperrt.`;
@@ -267,6 +305,8 @@ export interface CreateDataApiKeyBody {
   requestsPerHour: number | null;
   /** Null for every park. */
   allowedParkIds: string[] | null;
+  /** Only to an API that stores permissions (`apiStoresPermissions`). */
+  permissions?: ApiPermission[];
   expiresAt?: string;
   contact?: string;
   note?: string;
@@ -283,6 +323,8 @@ export function createDataApiKeyBody(input: {
   allowedParkIds: readonly string[];
   /** ISO 8601; null for a key that does not expire. */
   expiresAt: string | null;
+  /** Left out for an API that does not store permissions. */
+  permissions?: readonly ApiPermission[];
 }): CreateDataApiKeyBody {
   const contact = input.contact.trim();
   const note = input.note.trim();
@@ -291,13 +333,9 @@ export function createDataApiKeyBody(input: {
     usage: input.usage,
     requestsPerHour: input.requestsPerHour,
     allowedParkIds: input.allowedParkIds.length > 0 ? [...input.allowedParkIds] : null,
+    ...(input.permissions && { permissions: sortPermissions(input.permissions) }),
     ...(input.expiresAt && { expiresAt: input.expiresAt }),
     ...(contact && { contact }),
     ...(note && { note }),
   };
-}
-
-/** How a client sends the key, for the dialog to show next to it. */
-export function dataApiKeyCurlExample(key: string): string {
-  return `curl -H "X-API-Key: ${key}" https://api.park.fan/v1/parks/europe/germany/rust/europa-park/best-days`;
 }

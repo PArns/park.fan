@@ -385,11 +385,23 @@ Route `/admin/analytics` (page).
 
 - `default (AnalyticsPage)` _component_
 
+### [`api-keys/_components/key-fields.tsx`](../../app/admin/api-keys/_components/key-fields.tsx)
+
+- `LimitField` _component_: The hourly allowance, as a number field that also takes German thousands points.
+- `PermissionsField` _component_: The permissions a key carries, group by group: each group's permissions as toggles, and a button that grants or takes the whole group.
+- `ParksField` _component_: Adds parks one at a time through the admin's park search; a chosen park is a chip to remove.
+- `ExpiryField` _component_: The end date: never, a lifetime, or a day of the owner's choosing.
+- `useKeyExpiry` _hook_: The end-date field's state: a lifetime, a day or never, and the date that stands for once the clock is known.
+
+### [`api-keys/_components/key-requests-panel.tsx`](../../app/admin/api-keys/_components/key-requests-panel.tsx)
+
+- `KeyRequestsPanel` _component_: The key requests developers filed on their dashboard, open ones first. Each is approved into a key, with the permissions, allowance, parks and end date the owner sets, or declined with a note the developer reads.
+
 ### [`api-keys/page.tsx`](../../app/admin/api-keys/page.tsx)
 
 Route `/admin/api-keys` (page).
 
-- `default (ApiKeysPage)` _component_: The data API keys: who may read park.fan's forecasts on api.park.fan. Owner only, because a key decides who uses the forecasts, which is a licensing decision rather than an editorial one; the backend enforces the same.
+- `default (ApiKeysPage)` _component_: The data API keys: who may read what on api.park.fan, permission by permission. Owner only, because a key is a licensing decision rather than an editorial one; the backend enforces the same.
 
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 

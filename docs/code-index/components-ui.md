@@ -109,9 +109,11 @@ Hover card primitives (shadcn/ui on Radix HoverCard): root, trigger and the floa
 
 ### [`input.tsx`](../../components/ui/input.tsx)
 
-Text input primitive (shadcn/ui): a styled `<input>` with focus and invalid states.
+Text input primitives (shadcn/ui): a styled `<input>`, `<textarea>` and `<select>` with focus and invalid states.
 
 - `Input` _component_
+- `NativeSelect` _component_: A native `<select>` with the input's look, so the phone's own picker opens.
+- `Textarea` _component_: A multi-line text field with the input's look; grows with `rows`, resizes vertically.
 
 ### [`local-time.tsx`](../../components/ui/local-time.tsx)
 

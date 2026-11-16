@@ -15,11 +15,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `ACCEPTED_MIME_TYPES` _const_: MIME types we accept. Covers the common high-res photo formats incl. Apple HEIC.
 - `ACCEPT_ATTR` _const_: Value for the file input's `accept` attribute.
 
-### [`driver.ts`](../../lib/contribute/driver.ts)
-
-- `resolveDriver` _function_: Returns the contribution storage backend: `STORAGE_DRIVER` when set, else Vercel Blob when a token exists, else the local filesystem.
-- Types: `Driver`
-
 ### [`prefill-keys.ts`](../../lib/contribute/prefill-keys.ts)
 
 - `contributeQueryRedirect` _function_: Where a contribute link with the park or ride in its query goes (`/de/contribute?type=park&id=…`): the same page with the values in the fragment.

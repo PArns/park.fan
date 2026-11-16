@@ -49,6 +49,6 @@ with `Accept: text/markdown`) sit the parts that answer a date:
 
 Every one of these has an endpoint on the public API under
 `https://api.park.fan/v1/parks/{continent}/{country}/{city}/{park}`: `/schedule`, `/stats`,
-`/stats/hourly` and `/weather` without a key; `/best-days`, `/calendar` and `/predictions/yearly`
-with a data key in `X-API-Key`, because they are forecasts. See the `park-fan-data` skill for the
-catalog, the key and the OpenAPI description.
+`/stats/hourly`, `/weather`, `/best-days`, `/calendar` and `/predictions/yearly`, each with a data
+key in `X-API-Key` that carries the permission for it. Only `/wait-times` is open without a key.
+See the `park-fan-data` skill for the catalog, the key and the OpenAPI description.

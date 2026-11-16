@@ -3,6 +3,7 @@ import { parkCacheTag } from './park-live-projection';
 import { withSeedTimeout } from './seed-timeout';
 import type { IntegratedCalendarResponse } from '@/lib/api/types';
 import { parkCalendarMonthRange, type ParkCalendarMonth } from '@/lib/parks/calendar-segments';
+import { readWithApiKey, type ApiKeyRefusal } from '@/lib/api/keyed-read';
 
 /**
  * Which days of a calendar range carry an hourly crowd curve (`CalendarDay.hourly`). The backend
@@ -144,44 +145,19 @@ export function getBestDaysSnapshotFresh(
   return fetchBestDays(continent, country, city, parkSlug, true);
 }
 
-/** The API's refusal of a caller's own key (401, 403 or 429), with the message it gave. */
-export interface ApiKeyRefusal {
-  refused: true;
-  status: number;
-  message: string;
-}
-
-/** Statuses with which the API refuses a key: missing or unknown, wrong park, allowance spent. */
-const KEY_REFUSALS = new Set([401, 403, 429]);
-
 /**
  * The best-days snapshot read with a caller's own data key and nothing of the server's, so the API
- * applies that key's revocation, parks and hourly allowance to this read. Uncached for the same
- * reason: a cached copy would answer a revoked key and never count against its allowance.
+ * applies that key's revocation, parks and hourly allowance to this read.
  */
-export async function getBestDaysForApiKey(
+export function getBestDaysForApiKey(
   continent: string,
   country: string,
   city: string,
   parkSlug: string,
   apiKey: string
 ): Promise<BestDaysSnapshot | ApiKeyRefusal> {
-  const response = await fetch(bestDaysUrl(continent, country, city, parkSlug), {
-    cache: 'no-store',
-    headers: { 'Content-Type': 'application/json', 'X-API-Key': apiKey },
-  });
-  if (KEY_REFUSALS.has(response.status)) {
-    const body = (await response.json().catch(() => null)) as { message?: string } | null;
-    return {
-      refused: true,
-      status: response.status,
-      message: body?.message ?? `The API refused this key (${response.status}).`,
-    };
-  }
-  if (!response.ok) {
-    throw new Error(`Best-days ${response.status}: ${response.statusText}`);
-  }
-  return (await response.json()) as BestDaysSnapshot;
+  const url = new URL(bestDaysUrl(continent, country, city, parkSlug));
+  return readWithApiKey<BestDaysSnapshot>(`${url.pathname}${url.search}`, apiKey);
 }
 
 /**
