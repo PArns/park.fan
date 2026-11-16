@@ -642,7 +642,7 @@ export function AttractionCard({
            scrim. */}
         <div
           className={cn(
-            'relative z-0',
+            'relative z-0 col-start-1 row-start-2',
             !hasBottomPanel && 'row-span-2',
             backgroundImage && 'sm:min-h-[220px]'
           )}
@@ -657,6 +657,30 @@ export function AttractionCard({
             />
           )}
         </div>
+
+        {/* Parky's walk-on stamp, half over the seam on the right: he stands in the corner the
+            circles leave free above it, and the sparkline below keeps its line. The photo's cell
+            is the seam's, so the stamp gets its own layer there, over both panels; both name the
+            cell, or the bottom panel would be placed into the next one. Not in a phone row, whose
+            one line has no room for him. */}
+        {walkOn && (
+          <div
+            className={cn(
+              'pointer-events-none relative z-[4] col-start-1 row-start-2',
+              phoneRow && 'max-sm:hidden'
+            )}
+          >
+            <ParkyStamp
+              tone="good"
+              label={tStamp('walkOn')}
+              question={tStamp('walkOnQuestion', {
+                ride: stripNewPrefix(attraction.name),
+                minutes: roundWaitTo5(waitTime),
+              })}
+              className="pointer-events-auto absolute right-4 bottom-0 translate-y-1/2"
+            />
+          </div>
+        )}
 
         {/* A phone row shows the wait time on its first line instead. */}
         {hasBottomPanel && (
@@ -697,19 +721,6 @@ export function AttractionCard({
                   figureClassName="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
                 />
               </div>
-            )}
-            {walkOn && (
-              // Over the start of the sparkline, the morning's oldest readings: clear of the wait,
-              // the trend, the latest reading at the line's right end and every control.
-              <ParkyStamp
-                tone="good"
-                label={tStamp('walkOn')}
-                question={tStamp('walkOnQuestion', {
-                  ride: stripNewPrefix(attraction.name),
-                  minutes: roundWaitTo5(waitTime),
-                })}
-                className="absolute top-[42px] left-[118px] z-[1]"
-              />
             )}
             {waitShown && (
               <div className="relative flex flex-col gap-2">

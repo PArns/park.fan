@@ -131,8 +131,10 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   over its top edge with both mittens on it, about half the width of a short label so he reads as
   himself and not as a dot. It stamps down once, 220 ms, never under reduced motion. `size` is
   `sm` for cards, `md` for a calendar day. On a ride card with a live wait at or under the walk-on
-  limit (`LIVE_LIMITS.walkOn`) it reads „Walk-on!“, on an open park card with a very low crowd
-  „Kaum was los!“. On a ride's own page it sits beside the live wait in „Wartezeit jetzt“
+  limit (`LIVE_LIMITS.walkOn`) it reads „Walk-on!“, half over the seam between the photo and the
+  wait panel on the right, so Parky stands in the corner under the card's circles and the
+  sparkline stays clear; a phone row, one line high, leaves it out. On an open park card with a
+  very low crowd it reads „Kaum was los!“. On a ride's own page it sits beside the live wait in „Wartezeit jetzt“
   (`RideNowPanel`): „Walk-on!“ as on the card, and „Jetzt hin!“ when the printed wait is at most
   half the typical for this hour printed under it (`rideStampVerdict`, `BELOW_TYPICAL_SHARE`). The
   card leaves that second verdict out, so a list of rides stays quiet and the stamp is said where
