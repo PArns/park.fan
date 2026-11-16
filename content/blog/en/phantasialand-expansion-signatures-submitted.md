@@ -70,6 +70,9 @@ In the same statement the park points to jobs. It’s about "the roughly 1,800 p
 
 A [counter-petition](/news/phantasialand-expansion-online-petition) on openPetition has been making the case for the expansion since May. It runs until 23 November. By early November, 211 people had signed, 52 of them from Brühl. Only once 740 signatures from Brühl come together does openPetition ask the council members for a statement.
 
+> [!PARKY]
+> Nothing changes for your visit right now: nothing can be built on the site until a zoning plan is in force, and the town is still working on that. How busy your day will be is on the park page, and that’s where we look first.
+
 [Phantasialand](ref:phantasialand?full)
 
 Sources:

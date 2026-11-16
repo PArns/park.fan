@@ -325,6 +325,9 @@ uur.
 
 Wanneer dat laatste uur is, hangt van de dag af. Van mei tot en met oktober ging het park in 2026 buiten de vakanties doordeweeks om 17.30 uur dicht en in het weekend om 18.00 uur, in de zomervakantie om 19.00 of 20.00 uur en op de avonden van de Halloween Nights om 23.00 uur. Op een woensdag in september is het dus het uur vanaf 16.30 uur.
 
+> [!PARKY]
+> Troy houdt er een eigen klok op na. Om 11 uur staat daar de langste rij, en net als de rest van het park gaat lunchen, wordt ze korter. Dus wij lunchen later. Een churro na Troy smaakt sowieso beter dan een churro in de rij.
+
 ![Het houten paard van Troje, met de wachtrij ervoor | Troy in Ithaka. Het Trojaanse paard staat voor de ingang, de baan erachter tussen de bomen. | left](/media/toverland/troy-4x3.jpg)
 
 Omdat Toverland geen fastpass verkoopt, helpt alleen de volgorde tegen de rij. Op een

@@ -31,6 +31,7 @@ import {
   CONFETTI,
   EYES,
   FERRULE,
+  FIGURE_BOX,
   FLOATERS,
   GRIN,
   HANDLE,
@@ -84,13 +85,6 @@ const SEARCH_GAZE = { x: 0, y: 0.8 };
 
 /** Where the pupils rest while a bell rings: up, at it, over the left eye. */
 const BELL_GAZE = { x: -1.8, y: -2.2 };
-
-/**
- * The square round Parky as a whole at rest, hat and tail included, in the drawing's units, centred
- * on him: the face alone fills `0 0 VIEW VIEW`, and the hat, the wheel or a season's, stands above
- * that.
- */
-const FIGURE_BOX = '-3.5 -9 55 55';
 
 /**
  * Parky's face: a speech bubble in the brand's blue to green with big eyes that follow the mouse,

@@ -75,6 +75,9 @@ Der offizielle Lageplan für 2024/25 verzeichnete unter anderem eine Silent Disc
 
 2022 war der Abend am 3. Dezember ausverkauft, gut drei Wochen nach dem Verkaufsstart am 9. November. 2018 waren die Karten schon am 16. November weg.
 
+> [!PARKY]
+> Silvester 2026 ist weg, für 2027 sind wir schneller: Auf der Eventseite kannst du dich eintragen und bekommst eine Nachricht, sobald der Verkauf beginnt. 2022 waren die Karten gut drei Wochen nach dem Start ausverkauft, da trödeln wir nicht.
+
 ## Übernachten
 
 Unterkünfte gibt es zu Oud & Nieuw keine mehr, schrieb das Efteling am 8. Oktober.

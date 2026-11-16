@@ -74,6 +74,9 @@ Vier weitere Wing Coaster in Europa stammen von Intamin. Der längste davon, [Fu
 
 Unter allen Wing Coastern von B&M weltweit wäre Rokan der höchste, knapp vor Eagle Flying im chinesischen Wuxi Sunac Land mit 60,2 Metern. Länger sind Eagle Flying und der Parrot Coaster im Chimelong Ocean Kingdom mit je 1.278 Metern, dazu GateKeeper in Cedar Point mit 1.269 Metern.
 
+> [!PARKY]
+> Für Rokan gibt es noch keinen Termin, aber das Maßband kannst du schon holen: 140 Zentimeter Mindestgröße. Bis dahin sitzen wir in Toverland bei Fēnix schon mal neben der Schiene, mit 40 Metern ein ganzes Stück niedriger.
+
 ## Anreise nach Zator
 
 Zator liegt zwischen Schlesien und Kleinpolen, weniger als 20 Kilometer von Wadowice und Oświęcim entfernt. Die Adresse ist al. 3 Maja 2, 32-640 Zator. Der Parkplatz vor dem Eingang kostet 30 zł für den ganzen Tag, Reisebusse parken kostenlos.

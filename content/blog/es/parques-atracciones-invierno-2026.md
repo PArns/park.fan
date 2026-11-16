@@ -467,6 +467,9 @@ entre el 16 de noviembre y el inicio de las vacaciones de Navidad de Renania del
 Norte-Westfalia, el 23 de diciembre, mejor un jueves o un viernes, cuando se
 representan los tres espectáculos de sala.
 
+> [!PARKY]
+> Mi día de Wintertraum: un jueves o un viernes entre el 16 de noviembre y el 23 de diciembre. Entre semana tenemos la mejor oportunidad, y esos dos días hay función de los tres espectáculos de teatro. Entre Navidad y Año Nuevo, el invierno pasado estaba lleno en todas partes, y refunfuñar en una cola con frío no es lo mío.
+
 No te tomes al pie de la letra el calendario de afluencia este invierno. A finales de septiembre de 2026 clasificaba cada día de diciembre en Brühl como «Baja» o «Muy baja»,
 incluidos los días entre Navidad y Año Nuevo que el invierno pasado estuvieron
 todos en «Alta». En Europa-Park y en Efteling diciembre tenía entonces el mismo aspecto.

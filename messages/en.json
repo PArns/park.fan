@@ -2500,6 +2500,9 @@
     "update": "Update",
     "updateOn": "Update, {date}",
     "quoteOriginal": "Original in {language}",
+    "parkySays": "Parky says",
+    "parkyAsk": "Ask Parky about it",
+    "parkyAskQuestion": "About your tip in “{title}”: {tip} Tell me more.",
     "languageNotice": {
       "available": "This article is also available in {language}",
       "fallback": "Not translated yet. Showing the {language} version."

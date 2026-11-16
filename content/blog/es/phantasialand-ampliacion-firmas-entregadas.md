@@ -70,6 +70,9 @@ En la misma declaración, el parque habla de los empleos. Se trata de «los unos
 
 Desde mayo, una [contrapetición](/news/phantasialand-ampliacion-peticion-online) en openPetition defiende la ampliación. Sigue abierta hasta el 23 de noviembre. A principios de noviembre la habían firmado 211 personas, 52 de ellas de Brühl. Solo a partir de 740 firmas de Brühl pide openPetition a los concejales que se posicionen.
 
+> [!PARKY]
+> Para tu visita no cambia nada por ahora: en el terreno no se puede construir hasta que haya un plan urbanístico en vigor, y la ciudad todavía trabaja en él. Lo lleno que estará tu día lo ves en la página del parque, y ahí miramos primero.
+
 [Phantasialand](ref:phantasialand?full)
 
 Fuentes:

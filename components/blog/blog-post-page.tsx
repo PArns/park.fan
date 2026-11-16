@@ -330,7 +330,11 @@ export async function BlogPostPageBody({
             )}
 
             <div className="min-w-0 lg:col-start-1 lg:row-start-1" {...linkBlockAttributes('body')}>
-              <BlogContent markdown={post.content} locale={locale as Locale} />
+              <BlogContent
+                markdown={post.content}
+                locale={locale as Locale}
+                title={post.frontmatter.title}
+              />
 
               {(() => {
                 const images = resolveGallery(post.frontmatter.gallery, locale);

@@ -710,6 +710,9 @@ el fjord rafting tocan techo por la tarde.
 Al abrir el parque, las dos acuáticas apenas tienen cola; Poseidon llega a su máximo a las once y Atlantica solo por la tarde. Quien esté dispuesto a mojarse por la mañana monta
 en las dos en el tiempo que a mediodía le costaría una.
 
+> [!PARKY]
+> ¿Mojarse a las diez de la mañana? Me apunto. Poseidon y Atlantica apenas tienen cola al abrir, así que montamos en las dos en el tiempo que a mediodía se va en una sola. A las once, Poseidon tiene la cola más larga del día, y nosotros la miramos desde fuera, chorreando.
+
 Un plan de día que sale de ahí:
 
 1. **Al Voletarium en la apertura.** Alemania queda cerca de la entrada, y a las

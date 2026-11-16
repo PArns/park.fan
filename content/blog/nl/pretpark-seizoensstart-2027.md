@@ -288,6 +288,9 @@ In Heide Park stond 1 april 2026 op “extreem”, op 14 en 15 april stond Solta
 
 Voor 2027 betekent dat: de week na de paasvakantie, van 5 tot 9 april, wordt in Beieren, Nedersaksen en NRW waarschijnlijk de eerste echt lege week van het jaar. De uitzondering is Hansa-Park, want Sleeswijk-Holstein krijgt pas op 30 maart vakantie. In Sierksdorf zijn juist de eerste dagen, van 25 tot 29 maart, een goed moment: dan hebben alleen de andere deelstaten vakantie, en de Hamburgse kinderen zitten alweer in de schoolbanken.
 
+> [!PARKY]
+> Mijn kruisje in de kalender gaat op 5 tot 9 april: dat wordt in Beieren, Nedersaksen en NRW waarschijnlijk de eerste echt lege week van het jaar. In de week na de paasvakantie van 2026 stond Legoland van maandag tot donderdag op “zeer laag”, en een attractie zonder rij is voor mij een cadeautje.
+
 ```stats-widget slug=phantasialand show=months
 
 ```

@@ -68,6 +68,9 @@ In derselben Stellungnahme verweist der Park auf die Arbeitsplätze. Es gehe um 
 
 Für die Erweiterung wirbt seit Mai eine [Gegenpetition](/news/phantasialand-erweiterung-online-petition) auf openPetition. Sie läuft noch bis zum 23. November. Anfang November hatten 211 Menschen unterschrieben, 52 davon aus Brühl. Erst ab 740 Unterschriften aus Brühl bittet openPetition die Ratsmitglieder um eine Stellungnahme.
 
+> [!PARKY]
+> Für deinen Besuch ändert sich gerade nichts: Gebaut wird auf der Fläche erst, wenn ein Bebauungsplan gilt, und an dem arbeitet die Stadt noch. Wie voll es an deinem Tag wird, steht auf der Parkseite, und da schauen wir zuerst hin.
+
 [Phantasialand](ref:phantasialand?full)
 
 Quellen:

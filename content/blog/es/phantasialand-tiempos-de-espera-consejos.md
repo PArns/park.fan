@@ -368,6 +368,9 @@ Mi orden, que rehíce en un punto según nuestros datos por horas:
    ya lo has visto, úsalo al revés: mientras dura, todo un teatro lleno de gente
    está sentado dentro y no delante de ti en la cola.
 
+> [!PARKY]
+> No vayas de Taron directo a Rookburgh: la cola de F.L.Y. llega a su pico a las 11:00 y es más corta a última hora de la tarde. Así que volamos a la hora de la merienda, y yo me despego un poco del asiento de todas formas.
+
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 

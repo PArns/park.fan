@@ -26,6 +26,13 @@ export const gold = 'oklch(0.86 0.15 90)';
 /** The Ferris wheel's cabins in turn, and confetti in the same colours. */
 export const CABIN_COLOURS = ['oklch(0.72 0.17 355)', gold, green, 'oklch(0.76 0.16 55)'];
 
+/**
+ * The square round Parky as a whole at rest, hat and tail included, in the drawing's units, centred
+ * on him: the face alone fills `0 0 VIEW VIEW`, and the hat, the wheel or a season's, stands above
+ * that.
+ */
+export const FIGURE_BOX = '-3.5 -9 55 55';
+
 /** Parky's body: a round speech bubble with its tail at the lower left. */
 export const BUBBLE =
   'M24 7c11 0 20 8.1 20 18.2S35 43.4 24 43.4c-2.5 0-4.9-.4-7.1-1.1L7.5 46l2.3-8C6.1 34.7 4 30.2 4 25.2 4 15.1 13 7 24 7Z';

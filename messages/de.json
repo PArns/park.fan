@@ -2500,6 +2500,9 @@
     "update": "Update",
     "updateOn": "Update vom {date}",
     "quoteOriginal": "Original auf {language}",
+    "parkySays": "Parky sagt",
+    "parkyAsk": "Frag Parky dazu",
+    "parkyAskQuestion": "Zu deinem Tipp in „{title}“: {tip} Erzähl mir mehr dazu.",
     "languageNotice": {
       "available": "Diesen Artikel gibt es auch auf {language}",
       "fallback": "Noch nicht übersetzt – du siehst die Version auf {language}."

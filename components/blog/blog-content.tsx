@@ -56,6 +56,7 @@ import { BlogAttractionWidget } from './blog-attraction-widget';
 import { BlogYouTubeEmbed } from './blog-youtube-embed';
 import { BlogInstagramEmbed } from './blog-instagram-embed';
 import { BlogSunoEmbed } from './blog-suno-embed';
+import { BlogParkySays } from './blog-parky-says';
 import { BlogQuote } from './blog-quote';
 import { parseYouTube, parseInstagram, parseSuno } from '@/lib/blog/embeds';
 import { BlogMapWidget } from './blog-map-widget';
@@ -76,7 +77,7 @@ import { postPath } from '@/lib/blog/paths';
 /** Box / title classes + icon per GitHub-alert callout type. Kept as static
  *  class strings so Tailwind sees them at build time. */
 const CALLOUT_META: Record<
-  Exclude<CalloutType, 'quote'>,
+  Exclude<CalloutType, 'quote' | 'parky'>,
   { label: string; icon: typeof Info; box: string; title: string }
 > = {
   note: {
@@ -131,6 +132,18 @@ const CALLOUT_META: Record<
 interface BlogContentProps {
   markdown: string;
   locale: Locale;
+  /** The post's title, named in the question a "Parky says" card hands Parky. */
+  title: string;
+}
+
+/** How much of a "Parky says" tip goes into the question about it; the page goes along anyway. */
+const PARKY_TIP_CHARS = 200;
+
+/** A tip cut to {@link PARKY_TIP_CHARS} at a word, with an ellipsis where it was cut. */
+function clipTip(text: string): string {
+  const tip = text.replace(/\s+/g, ' ').trim();
+  if (tip.length <= PARKY_TIP_CHARS) return tip;
+  return `${tip.slice(0, tip.lastIndexOf(' ', PARKY_TIP_CHARS))}…`;
 }
 
 interface Segment {
@@ -354,7 +367,7 @@ function hastText(node: unknown): string {
  * ride and post links, images, and every widget fence (wait tables, maps, weather, galleries,
  * embeds). Server Component; resolves the parks and rides it names against the API first.
  */
-export async function BlogContent({ markdown, locale }: BlogContentProps) {
+export async function BlogContent({ markdown, locale, title }: BlogContentProps) {
   const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
   const tBlog = await getTranslations({ locale, namespace: 'blog' });
 
@@ -758,7 +771,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       </ol>
     ),
     li: ({ children }) => <li>{injectGlossary(children)}</li>,
-    blockquote: ({ children, ...rest }) => {
+    blockquote: ({ children, node, ...rest }) => {
       // remark-callouts tags GitHub-style `> [!NOTE]` blockquotes with a
       // data-callout attribute — those render as coloured boxes instead of
       // the plain quote treatment.
@@ -772,6 +785,18 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
           >
             {children}
           </BlogQuote>
+        );
+      if (callout === 'parky')
+        return (
+          <BlogParkySays
+            label={tBlog('parkySays')}
+            ask={{
+              label: tBlog('parkyAsk'),
+              question: tBlog('parkyAskQuestion', { title, tip: clipTip(hastText(node)) }),
+            }}
+          >
+            {injectGlossary(children)}
+          </BlogParkySays>
         );
       if (callout && CALLOUT_META[callout]) {
         const meta = CALLOUT_META[callout];
