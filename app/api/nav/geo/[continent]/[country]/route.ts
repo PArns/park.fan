@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { getCitiesWithParks } from '@/lib/api/discovery';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 
 /**
  * The header menu's third pane: one country's cities and parks, fetched when a country is opened
@@ -13,9 +14,12 @@ import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 const SLUG = /^[a-z0-9-]{1,64}$/;
 
 export async function GET(
-  _request: Request,
+  request: Request,
   { params }: { params: Promise<{ continent: string; country: string }> }
 ) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+
   const { continent, country } = await params;
   if (!SLUG.test(continent) || !SLUG.test(country)) {
     return NextResponse.json({ error: 'Invalid slug' }, { status: 400, headers: NO_STORE });

@@ -425,7 +425,7 @@ const NAV_GROUPS: NavGroup[] = [
         href: '/admin/api-keys',
         label: 'API-Keys',
         icon: KeySquare,
-        description: 'Keys für die Prognosen auf api.park.fan vergeben und widerrufen',
+        description: 'Anträge freigeben, Keys für api.park.fan vergeben und widerrufen',
         minRole: 'owner',
         keywords: ['api', 'key', 'schlüssel', 'prognosen', 'lizenz', 'daten'],
       },

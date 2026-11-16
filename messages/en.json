@@ -2923,12 +2923,18 @@
         "style": {
           "label": "Appearance",
           "value": "At least as large as the body text around it, with normal contrast, and recognisable as a link."
+        },
+        "duration": {
+          "label": "Duration",
+          "value": "As long as you use the key. Without the link, the free key ends."
         }
       },
       "previewTitle": "What it looks like",
       "sampleText": "Wait times and forecasts:",
       "parkVariant": "Below a park’s data",
-      "footerVariant": "In the footer of the whole site"
+      "footerVariant": "In the footer of the whole site",
+      "checkTitle": "How to check the link",
+      "checkBody": "Open your page, view its source (not the developer tools) and search for park.fan. The <code>{tag}</code> with park.fan's address must be there, without <code>nofollow</code>. If the source lacks it, a script adds it later, and then it does not count."
     },
     "usage": {
       "kicker": "Requests",

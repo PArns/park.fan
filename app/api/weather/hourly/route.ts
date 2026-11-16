@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import type { WeatherHourlyPoint, WeatherHourlyToday } from '@/lib/api/types';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
 import { isIsoDate } from '@/lib/utils/calendar-utils';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 
 /**
  * Today's hour-by-hour forecast for a park location, proxied from Open-Meteo because the backend
@@ -27,6 +28,9 @@ interface OpenMeteoHourlyResponse {
 const TZ_PATTERN = /^[A-Za-z0-9_+\-/]{1,64}$/;
 
 export async function GET(request: NextRequest) {
+  // Weather is a source's data the API gives only to a key; this relay serves park.fan's pages only.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+
   const { searchParams } = new URL(request.url);
   const latParam = searchParams.get('lat');
   const lonParam = searchParams.get('lon');

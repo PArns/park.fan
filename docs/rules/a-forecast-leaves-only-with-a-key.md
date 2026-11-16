@@ -25,16 +25,21 @@ Only `/wait-times` stays open.
   `/api/favorites` and `/api/nearby`, also in direct mode (`NEXT_PUBLIC_API_DIRECT`), which keeps
   only trips and push direct.
 - **A relay that sends the site's key answers only this site's pages.** Every branch of
-  `/api/parks/*` but `/wait-times` (`isKeylessRelayPath()`), `/api/favorites`, `/api/nearby`,
-  `/api/analytics/*` and the keyed branches of `/api/trip-regions/*` call `isSameOriginRequest()`
-  (`lib/api/forecast-relay.ts`) and answer 403 otherwise. Without it the relay is the API without a
-  key. A script that calls one sends `Sec-Fetch-Site: same-origin`, as `check-planner.mjs` does.
+  `/api/parks/*` but `/wait-times` (`isKeylessRelayPath()`), `/api/parks/near`, `/api/parks/popular`,
+  `/api/parks/live`, `/api/search`, `/api/favorites`, `/api/nearby`, `/api/analytics/*`, `/api/ml/*`,
+  `/api/nav/geo/*`, `/api/nav/trip-regions`, every route of `/api/trip-regions/*` and
+  `/api/weather/hourly` (Open-Meteo, which the API keeps behind `live.weather` too) call
+  `isSameOriginRequest()` (`lib/api/forecast-relay.ts`) and answer 403 otherwise. Without it the
+  relay is the API without a key. A new relay that passes on API data starts with the same line. A
+  script that calls one sends `Sec-Fetch-Site: same-origin`, as `check-planner.mjs` does.
 - **A keyed MCP tool reads with the caller's key, except from this site's own pages.**
   `KEYED_TOOL_NAMES` (`lib/agents/tool-descriptors.ts`: search and best days); `keyGrant()`
   (`lib/agents/forecast-access.ts`) hands the tool the presented key, and the tool sends that key
   and nothing of the server's to the API (`readWithApiKey`, `lib/api/keyed-read.ts`), which applies
   the key's permissions, its parks and its hourly allowance on that read. `get_park_wait_times`
-  needs no key and leaves out crowd level and maintenance dates without one. Nothing here caches a verdict. A WebMCP call
+  needs no key and leaves out lands, the time zone, crowd level and maintenance dates without one;
+  with a key it reads the park with that key too, so a made-up key opens nothing more. The best-days
+  tool reads the park's rides and seasons with the caller's key as well. Nothing here caches a verdict. A WebMCP call
   from a page passes the relays' `isSameOriginRequest()` and reads like the page; forging the
   header there gains what forging it on the relay gains.
 - **An error from a relay under a shared rule answers `NO_STORE`**, which sets

@@ -2,8 +2,12 @@ import { NextResponse } from 'next/server';
 import { search } from '@/lib/api/search';
 import { enrichSearchResultsWithImages } from '@/lib/utils/search-assets';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 
 export async function GET(request: Request) {
+  // The API gives this only to a key, so the relay answers park.fan's own pages only.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
+
   const { searchParams } = new URL(request.url);
   const query = searchParams.get('q');
 

@@ -2923,12 +2923,18 @@
         "style": {
           "label": "Aspetto",
           "value": "Grande almeno quanto il testo intorno, con un contrasto normale e riconoscibile come link."
+        },
+        "duration": {
+          "label": "Durata",
+          "value": "Finché usi la chiave. Senza il link, la chiave gratuita decade."
         }
       },
       "previewTitle": "Come appare",
       "sampleText": "Tempi di attesa e previsioni:",
       "parkVariant": "Sotto i dati di un parco",
-      "footerVariant": "Nel footer dell’intero sito"
+      "footerVariant": "Nel footer dell’intero sito",
+      "checkTitle": "Come controllare il link",
+      "checkBody": "Apri la tua pagina, visualizzane il sorgente (non gli strumenti per sviluppatori) e cerca park.fan. Lì deve esserci il tag <code>{tag}</code> con l’indirizzo di park.fan, senza <code>nofollow</code>. Se nel sorgente manca, lo aggiunge uno script in un secondo momento, e allora non vale."
     },
     "usage": {
       "kicker": "Richieste",

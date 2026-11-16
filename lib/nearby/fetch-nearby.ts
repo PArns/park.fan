@@ -6,8 +6,7 @@ export const NEARBY_API_MAX_RADIUS_M = 10_000;
 
 /**
  * A nearby answer with the card photo on every park in it, the in-park one included, and on every
- * ride in it (the short waits, the in-park rides) its own photo. `/api/nearby` and the direct
- * browser call both run it, so a park or a ride gets the same photo either way.
+ * ride in it (the short waits, the in-park rides) its own photo, as `/api/nearby` attaches them.
  */
 export function withNearbyCardImages(map: CardImageMap, answer: NearbyResponse): NearbyResponse {
   if (answer.type === 'nearby_parks') {

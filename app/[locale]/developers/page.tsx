@@ -20,6 +20,7 @@ import {
   Map,
   Plane,
   Route,
+  Search,
   ShieldCheck,
   Timer,
   UserPlus,
@@ -99,7 +100,10 @@ const STEPS: ReadonlyArray<{ key: string; icon: LucideIcon }> = [
 const EXAMPLE_PARK_PATH = '/parks/europe/germany/rust/europa-park';
 
 /** The properties of a valid credit, in the order the requirements list them. */
-const ATTRIBUTION_SPEC = ['text', 'anchor', 'target', 'rel', 'place', 'style'] as const;
+const ATTRIBUTION_SPEC = ['text', 'anchor', 'target', 'rel', 'place', 'style', 'duration'] as const;
+
+/** The tag the link check names, kept out of the copy so ICU does not parse it. */
+const ANCHOR_TAG = '<a href="https://park.fan/…">';
 
 /** A credit as HTML: the line of text, then a plain link to `href`. */
 function attributionHtml(text: string, href: string): string {
@@ -446,6 +450,11 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
                 </CodeSample>
               </div>
             </div>
+          </InfoCard>
+          <InfoCard icon={Search} title={t('attribution.checkTitle')}>
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              {t.rich('attribution.checkBody', { code, tag: ANCHOR_TAG })}
+            </p>
           </InfoCard>
         </SectionShell>
 
