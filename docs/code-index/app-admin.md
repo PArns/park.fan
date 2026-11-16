@@ -1066,6 +1066,10 @@ Route `/admin/tickets` (page).
 
 - `HourlyNotice` _component_: The line under a panel's figures when the API could not read the hourly rows for the whole window (`hourlyFrom` in its answer): from which day on they are complete.
 
+### [`traffic/_components/keywords-view.tsx`](../../app/admin/traffic/_components/keywords-view.tsx)
+
+- `KeywordsView` _component_: `/admin/traffic/keywords`: the weekly keyword report from Search Console, like a rank tracker's but from Google's own figures. The keywords are the queries with the most impressions; no list is kept by hand. Competitors are not in it.
+
 ### [`traffic/_components/kpi-tiles.tsx`](../../app/admin/traffic/_components/kpi-tiles.tsx)
 
 - `KpiTiles` _component_: The headline figures of the window, each with its change against the window before, and the realtime tile beside them: visitors in the last five minutes and a line of the pageviews of each of the last thirty.
@@ -1182,6 +1186,13 @@ Route `/admin/tickets` (page).
 Route `/admin/traffic/events/[name]` (page).
 
 - `default (EventDetailPage)` _component_: One event of the counter. The name is a route segment, so the page is a link that can be shared; the window and language are in the query, which the view reads under its `Suspense`.
+
+### [`traffic/keywords/page.tsx`](../../app/admin/traffic/keywords/page.tsx)
+
+Route `/admin/traffic/keywords` (page).
+
+- `default (KeywordsPage)` _component_: The weekly keyword report: the last complete week against the one before, for the queries with the most impressions, from the Search Console data the API stores.
+- `metadata` _const_
 
 ### [`traffic/live/_components/count-up.tsx`](../../app/admin/traffic/live/_components/count-up.tsx)
 

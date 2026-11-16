@@ -23,6 +23,7 @@ import {
   MessagesSquare,
   PenLine,
   Plane,
+  ListOrdered,
   Radar,
   Radio,
   Route,
@@ -220,6 +221,22 @@ const NAV_GROUPS: NavGroup[] = [
             icon: Radio,
             description: 'Wer gerade auf park.fan ist: Seiten, Länder, Herkunft, Minute für Minute',
             keywords: ['live', 'echtzeit', 'jetzt', 'aktiv', 'realtime', 'karte', 'besucher'],
+          },
+          {
+            href: '/admin/traffic/keywords',
+            label: 'Keywords',
+            icon: ListOrdered,
+            description:
+              'Wochenreport: Positionen, Sichtbarkeit, Auf- und Absteiger aus der Search Console',
+            keywords: [
+              'keywords',
+              'ranking',
+              'position',
+              'sichtbarkeit',
+              'seobility',
+              'rank',
+              'woche',
+            ],
           },
           {
             href: '/admin/traffic/seo',

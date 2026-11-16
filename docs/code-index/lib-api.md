@@ -15,7 +15,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`admin-search-console.ts`](../../lib/api/admin-search-console.ts)
 
-- Types: `SearchConsoleStatus`, `SearchConsoleTotals`, `SearchConsoleChange`, `SearchConsoleQuery`, `SearchConsoleQueriesResponse`, `SearchConsoleSiteFigures`, `SearchConsolePage`, `SearchConsolePagesResponse`, `SearchConsoleSeriesPoint`, `SearchConsoleSeriesResponse`, `SearchConsoleReindexItem`, `SearchConsoleReindexQueue`, `SearchConsoleReindexRecord`
+- Types: `SearchConsoleStatus`, `SearchConsoleTotals`, `SearchConsoleChange`, `SearchConsoleQuery`, `SearchConsoleQueriesResponse`, `SearchConsoleSiteFigures`, `SearchConsolePage`, `SearchConsolePagesResponse`, `SearchConsoleSeriesPoint`, `SearchConsoleSeriesResponse`, `SearchConsoleReindexItem`, `SearchConsoleReindexQueue`, `SearchConsoleReindexRecord`, `KeywordWeek`, `KeywordTrend`, `KeywordRow`, `KeywordReport`
 
 ### [`admin-site-analytics.ts`](../../lib/api/admin-site-analytics.ts)
 
