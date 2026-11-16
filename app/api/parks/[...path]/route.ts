@@ -35,7 +35,8 @@ import {
 } from '@/lib/parks/park-simulation';
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
-import { catchNonFatal } from '@/lib/api/client';
+import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip';
 import { relayJsonWrite } from '@/lib/api/relay';
 import { ridesInWorksOn } from '@/lib/utils/works-period';
 import type { PlanDay, PlanDayRideInWorks, ParkWithAttractions } from '@/lib/api/types';
@@ -81,6 +82,11 @@ const RIDE_STATS_CACHE_CONTROL =
  * next.config.ts, like every other cacheable /api route.
  */
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
+
+/** Six hours, the API's own window for a tip; next.config.ts names the same. */
+const PARKY_TIP_CACHE_CONTROL = 'public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600';
+/** A model call answers in a few seconds; a tip that takes longer is simply not shown. */
+const PARKY_TIP_TIMEOUT_MS = 12_000;
 
 export async function GET(
   request: NextRequest,
@@ -234,6 +240,41 @@ export async function GET(
         { error: 'Failed to fetch hourly forecast' },
         { status: 500, headers: NO_STORE }
       );
+    }
+  }
+
+  // Parky's tip for one calendar day (`?date=&locale=`), written by the API's model and cached
+  // there for 12 h; the same six hours here as the API asks for. A 204 (closed, no forecast,
+  // Parky off) is cached too, so a closed day costs one request a window, not one per dialog.
+  if (path && path.length === 5 && path[4] === 'parky-tip') {
+    const [continent, country, city, park] = path;
+    const date = request.nextUrl.searchParams.get('date');
+    const locale = request.nextUrl.searchParams.get('locale');
+    if (!isServableTipRequest(date, locale, Date.now())) {
+      return NextResponse.json(
+        { error: 'Missing or out-of-range query parameter: date or locale' },
+        { status: 400, headers: NO_STORE }
+      );
+    }
+    try {
+      const response = await fetch(
+        `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${park}/parky-tip?date=${date}&locale=${locale}`,
+        {
+          cache: 'no-store',
+          headers: getServerApiHeaders(),
+          signal: AbortSignal.timeout(PARKY_TIP_TIMEOUT_MS),
+        }
+      );
+      const body: unknown = response.status === 200 ? await response.json() : null;
+      if (response.status !== 204 && !isParkyDayTip(body)) {
+        return new NextResponse(null, { status: 204, headers: NO_STORE });
+      }
+      return response.status === 204
+        ? new NextResponse(null, { status: 204, headers: cdnCacheHeaders(PARKY_TIP_CACHE_CONTROL) })
+        : NextResponse.json(body, { headers: cdnCacheHeaders(PARKY_TIP_CACHE_CONTROL) });
+    } catch (error) {
+      console.error('[Parky tip API] Error:', error);
+      return new NextResponse(null, { status: 204, headers: NO_STORE });
     }
   }
 
@@ -628,7 +669,7 @@ export async function GET(
   return NextResponse.json(
     {
       error:
-        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, or /weather/nowcast',
+        'Invalid path format. Expected: /api/parks/{continent}/{country}/{city}/{park}, /calendar, /calendar/hourly, /best-days, /ride-stats, /stats, /stats/hourly, /stats/day, /wait-times, /parky-tip, or /weather/nowcast',
     },
     { status: 400 }
   );

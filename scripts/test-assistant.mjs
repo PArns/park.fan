@@ -28,6 +28,7 @@ import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
+import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip.ts';
 import {
   ASLEEP_AFTER_MS,
   BORED_AFTER_MS,
@@ -2180,5 +2181,20 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     ['weather'],
     'a weather code alone is a weather tile'
   );
+}
+// Parky's day tip: what the relay lets into the CDN's cache key, and what it shows.
+{
+  const now = Date.parse('2026-11-16T12:00:00Z');
+  check(isServableTipRequest('2026-11-16', 'de', now), true, 'tip: today');
+  check(isServableTipRequest('2026-11-15', 'en', now), true, 'tip: yesterday, a park west of UTC');
+  check(isServableTipRequest('2026-11-14', 'en', now), false, 'tip: two days ago');
+  check(isServableTipRequest('2027-02-16', 'nl', now), true, 'tip: the horizon');
+  check(isServableTipRequest('2027-02-17', 'nl', now), false, 'tip: past the horizon');
+  check(isServableTipRequest('2026-02-30', 'de', now), false, 'tip: no such day');
+  check(isServableTipRequest('2026-11-16', 'pt', now), false, 'tip: not a site language');
+  check(isServableTipRequest(null, 'de', now), false, 'tip: no date');
+  check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
+  check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
+  check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
 }
 console.log(`assistant: ${passed} checks passed`);
