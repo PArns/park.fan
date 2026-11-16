@@ -94,6 +94,7 @@ export const PERMISSION_ROUTES: Record<ApiPermission, readonly string[]> = {
     `${PARK_ROUTE}/calendar`,
     `${PARK_ROUTE}/best-days`,
     `${PARK_ROUTE}/predictions/yearly`,
+    `${PARK_ROUTE}/parky-tip`,
     '/v1/trip-regions/{region}/calendar',
     '/v1/trip-regions/{region}/best-days',
     '/v1/trip-regions/{region}/when',
