@@ -130,16 +130,31 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   green, `meh` the amber and `bad` the red of the crowd scale), Parky (wheel, bubble, eyes) looking
   over its top edge with both mittens on it, about half the width of a short label so he reads as
   himself and not as a dot. It stamps down once, 220 ms, never under reduced motion. `size` is
-  `sm` for cards, `md` for a calendar day. On a ride card with a live wait at or under the walk-on
-  limit (`LIVE_LIMITS.walkOn`) it reads „Walk-on!“, half over the seam between the photo and the
-  wait panel on the right, so Parky stands in the corner under the card's circles and the
-  sparkline stays clear; a phone row, one line high, leaves it out. On an open park card with a
-  very low crowd it reads „Kaum was los!“. On a ride's own page it sits beside the live wait in „Wartezeit jetzt“
-  (`RideNowPanel`): „Walk-on!“ as on the card, and „Jetzt hin!“ when the printed wait is at most
-  half the typical for this hour printed under it (`rideStampVerdict`, `BELOW_TYPICAL_SHARE`). The
-  card leaves that second verdict out, so a list of rides stays quiet and the stamp is said where
-  the visitor decides whether to go. Given a `question` it is a button that opens the chat with it
-  (source `stamp`), a tab stop of its own that never follows the card's link.
+  `sm` for cards, `md` for a calendar day. Given a `question` it is a button that opens the chat
+  with it (source `stamp`), a tab stop of its own that never follows the card's link.
+
+  **A stamp says what the number beside it does not**, so it is rare by design and never comes
+  just because a park is very empty or very full:
+
+  - **Only on a ride that usually queues**: its usual wait is at least `STAMP_MIN_USUAL`
+    (20 minutes). A walk-on on a ride that is a walk-on anyway is no news (`rideStampVerdict`).
+  - **On the park page's ride cards, only what stands out in the park**: „Walk-on!“ where the live
+    wait is at or under the walk-on limit (`LIVE_LIMITS.walkOn`) and the ride's `baseline` is at
+    least 20. `standoutRides` decides it once for the whole park (`TabsWithHash`, through
+    `LandSection`'s `standouts` to the card's `parkyStamp`): when more than `STANDOUT_MAX` (three)
+    rides stand out at once, the park is simply empty, every crowd badge says so, and no card gets
+    a stamp. Other lists of ride cards (favourites, posts) have no stamp. On the card it sits half
+    over the seam between the photo and the wait panel, on the right: Parky stands in the corner
+    under the circles, the badges keep out of that corner (`PARKY_CORNER`), the top panel is at
+    least 104 px high so he clears the circles, and the sparkline stays free. A phone row, one
+    line high, leaves it out.
+  - **On a ride's own page** it sits beside the live wait in „Wartezeit jetzt“ (`RideNowPanel`),
+    measured against the typical for this hour printed under it: „Walk-on!“, and „Jetzt hin!“ when
+    the printed wait is at most half that typical (`BELOW_TYPICAL_SHARE`). The page holds only this
+    ride live, so there is no park-wide count; the visitor here is deciding about this one ride.
+  - **In the calendar's day dialog**, the verdict on Parky's tip for the day.
+  - **No park card has one**: a very low crowd is what the card's crowd badge already says.
+
 - **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a
   `pose`, his one line under it (`parkyStill.empty`) and, given a question, „Frag Parky“
   (`ParkyAskButton`, source `empty`, shown only where the gate lets Parky in). `lost` on the 404,

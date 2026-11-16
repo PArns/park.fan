@@ -5926,9 +5926,7 @@
       "walkOn": "Sans attente !",
       "walkOnQuestion": "Pour {ride}, il n’y a {minutes, plural, =0 {aucune attente} =1 {qu’une minute d’attente} other {que # minutes d’attente}} en ce moment. Ça vaut le coup d’y aller maintenant, et je fais quoi après ?",
       "belowTypical": "Vas-y !",
-      "belowTypicalQuestion": "Pour {ride}, il n’y a que {minutes} minutes d’attente en ce moment, contre {typical} minutes d’habitude à cette heure-ci. J’y vais maintenant ?",
-      "quietPark": "C’est calme !",
-      "quietParkQuestion": "Il n’y a presque personne à {park} aujourd’hui. Qu’est-ce que je dois absolument faire là-bas ?"
+      "belowTypicalQuestion": "Pour {ride}, il n’y a que {minutes} minutes d’attente en ce moment, contre {typical} minutes d’habitude à cette heure-ci. J’y vais maintenant ?"
     },
     "empty": {
       "ask": "Demande à Parky",

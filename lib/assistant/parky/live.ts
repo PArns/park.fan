@@ -1,5 +1,5 @@
 import type { LiveParkSnapshot } from '@/lib/api/parks';
-import type { CrowdLevel, ParkAttraction } from '@/lib/api/types';
+import type { CrowdLevel, ParkAttraction, ParkStatus } from '@/lib/api/types';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
@@ -27,24 +27,54 @@ export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
  */
 export const BELOW_TYPICAL_SHARE = 0.5;
 
+/**
+ * A stamp is only news on a ride that usually queues at least this long. A walk-on on a ride that
+ * is a walk-on anyway says nothing the wait beside it does not.
+ */
+export const STAMP_MIN_USUAL = 20;
+
+/**
+ * More rides than this standing out at once, and none does: the park is simply empty, and every
+ * card's crowd badge already says so.
+ */
+export const STANDOUT_MAX = 3;
+
 /** What Parky's stamp says about one ride's live wait (`parkyStill.stamp`). */
 export type RideStampVerdict = 'walkOn' | 'belowTypical';
 
 /**
- * Parky's stamp for a ride's live standby `wait`: `walkOn` at or under his walk-on limit, the one
- * his own line uses; `belowTypical` when the five-minute figure the page prints is at most
- * {@link BELOW_TYPICAL_SHARE} of `typicalThisHour`, the printed typical for this hour; else null.
- * A list of ride cards passes null for `typicalThisHour`, so only a walk-on stamps a card there.
+ * Parky's stamp for a ride's live standby `wait` against its `usual` wait, null where it says
+ * nothing: no usual, or one under {@link STAMP_MIN_USUAL}. Otherwise `walkOn` at or under his
+ * walk-on limit, the one his own line uses, and `belowTypical` when the five-minute figure the page
+ * prints is at most {@link BELOW_TYPICAL_SHARE} of the usual. The ride page's usual is the typical
+ * for this hour it prints under the wait; a park's list uses each ride's `baseline`.
  */
-export function rideStampVerdict(
-  wait: number,
-  typicalThisHour: number | null
-): RideStampVerdict | null {
+export function rideStampVerdict(wait: number, usual: number | null): RideStampVerdict | null {
+  if (usual === null || usual < STAMP_MIN_USUAL) return null;
   if (wait <= LIVE_LIMITS.walkOn) return 'walkOn';
-  if (typicalThisHour !== null && roundWaitTo5(wait) <= typicalThisHour * BELOW_TYPICAL_SHARE) {
-    return 'belowTypical';
-  }
+  if (roundWaitTo5(wait) <= usual * BELOW_TYPICAL_SHARE) return 'belowTypical';
   return null;
+}
+
+const NO_STANDOUTS: ReadonlyMap<string, RideStampVerdict> = new Map();
+
+/**
+ * The rides of one park whose live wait stands out against their own `baseline` right now, with
+ * their {@link rideStampVerdict}: open, as `parkStatus` and the ride's own status read together.
+ * None at all when more than {@link STANDOUT_MAX} do, since then nothing stands out.
+ */
+export function standoutRides(
+  rides: readonly ParkAttraction[],
+  parkStatus?: ParkStatus
+): ReadonlyMap<string, RideStampVerdict> {
+  const standouts = new Map<string, RideStampVerdict>();
+  for (const ride of rides) {
+    if (getLiveAttractionStatus(ride, parkStatus) !== 'OPERATING') continue;
+    const wait = getStandbyWait(ride);
+    const verdict = wait === null ? null : rideStampVerdict(wait, ride.baseline ?? null);
+    if (verdict) standouts.set(ride.id, verdict);
+  }
+  return standouts.size > STANDOUT_MAX ? NO_STANDOUTS : standouts;
 }
 
 /**

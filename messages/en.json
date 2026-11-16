@@ -5926,9 +5926,7 @@
       "walkOn": "Walk-on!",
       "walkOnQuestion": "{ride} has {minutes, plural, =0 {no wait at all} =1 {just a one-minute wait} other {just a #-minute wait}} right now. Is it worth heading over now, and what should I ride after?",
       "belowTypical": "Go now!",
-      "belowTypicalQuestion": "{ride} has only a {minutes}-minute wait right now, when it’s usually {typical} minutes at this hour. Should I head over now?",
-      "quietPark": "Nice and quiet!",
-      "quietParkQuestion": "{park} is really quiet today. What should I make sure to ride there today?"
+      "belowTypicalQuestion": "{ride} has only a {minutes}-minute wait right now, when it’s usually {typical} minutes at this hour. Should I head over now?"
     },
     "empty": {
       "ask": "Ask Parky",

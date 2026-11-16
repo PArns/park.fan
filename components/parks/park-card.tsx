@@ -15,7 +15,6 @@ import { cn } from '@/lib/utils';
 import { formatDistance } from '@/lib/utils/distance-utils';
 import type { ParkStatus, CrowdLevel } from '@/lib/api/types';
 import { useTranslations } from 'next-intl';
-import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
 import type { ScheduleSummary } from '@/lib/api/types';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
@@ -129,7 +128,6 @@ export function ParkCard({
 }: ParkCardProps) {
   const tNearby = useTranslations('nearby');
   const tGeo = useTranslations('geo');
-  const tStamp = useTranslations('parkyStill.stamp');
 
   const effectiveHref = href ?? (url ? convertApiUrlToFrontendUrl(url) : '/');
   const effectiveParkId = parkId ?? id;
@@ -173,17 +171,6 @@ export function ParkCard({
     </>
   );
   const showNearestOpen = highlightAsNearestOpen && isOpen;
-  // Open now and hardly anybody there; never on a closed park.
-  const quietStamp = (className: string) =>
-    isOpen &&
-    effectiveCrowdLevel === 'very_low' && (
-      <ParkyStamp
-        tone="good"
-        label={tStamp('quietPark')}
-        question={tStamp('quietParkQuestion', { park: name })}
-        className={className}
-      />
-    );
 
   const scheduleFooter = (compact: boolean) => (
     <ParkCardScheduleFooter
@@ -269,9 +256,6 @@ export function ParkCard({
             )}
           </div>
         </div>
-        {/* On the time line's right end, which „Bis 19:00 Uhr“ leaves free; Parky peeks up past
-            the badges' end into the column the star keeps clear, low enough to stay under it. */}
-        {quietStamp('absolute right-2 bottom-0.5')}
         {effectiveParkId && (
           <div className="absolute top-1.5 right-1.5 h-7 w-7">
             <FavoriteStar
@@ -390,12 +374,7 @@ export function ParkCard({
         {/* The 1fr row resolves to 0 in an intrinsic-height container, so `min-h` forces it open
             when there is a photo. It is also the strip the panels leave visible, so the framed
             layer lives here (see `CardPhotoFrame`), at `z-0` so the scrim still darkens it. */}
-        <div
-          className={cn(
-            'relative z-0 col-start-1 row-start-2',
-            backgroundImage && 'sm:min-h-[220px]'
-          )}
-        >
+        <div className={cn('relative z-0', backgroundImage && 'sm:min-h-[220px]')}>
           {/* `hideOnMobile` is belt and braces: the whole card is `display:none` below `sm`, where
               the row above renders. */}
           {backgroundImage ? (
@@ -412,13 +391,6 @@ export function ParkCard({
             // brand cover fills it instead of an empty grey strip, as the parks menu does.
             showBackground && <BlogCoverFallback slug={slugFromPostPath(effectiveHref)} />
           )}
-        </div>
-
-        {/* Pressed onto the photo's lower right, over the scrim and under the panels. Its own
-            layer in the photo's cell, since the photo's `z-0` keeps whatever it holds under the
-            scrim; both name the cell, or the photo would be placed into the next one. */}
-        <div className="pointer-events-none relative z-[2] col-start-1 row-start-2">
-          {quietStamp('pointer-events-auto absolute right-3 bottom-7')}
         </div>
 
         <div

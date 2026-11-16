@@ -45,6 +45,7 @@ import type {
   RopeDropHeadliner,
 } from '@/lib/api/types';
 import { linkBlockAttributes } from '@/lib/analytics/internal-link';
+import { standoutRides } from '@/lib/assistant/parky/live';
 
 /** The enter animation of the attractions panel, named because both branches must carry the
  *  same one — see the pre-mount branch below. */
@@ -514,6 +515,12 @@ export const TabsWithHash = memo(function TabsWithHash({
       />
     );
 
+  // Which rides Parky stamps is a question about the whole park, not one land or slice of it.
+  const standouts = useMemo(
+    () => standoutRides(park.attractions ?? NO_ATTRACTIONS, park.status),
+    [park.attractions, park.status]
+  );
+
   // Attractions grouped by Land — ONE tree, rendered by both branches below.
   //
   // It used to be two: before the mount the tab showed `AttractionWaitOverview`, a compact row
@@ -551,6 +558,7 @@ export const TabsWithHash = memo(function TabsWithHash({
           timezone={park.timezone}
           todayIso={todayIso}
           parkName={park.name}
+          standouts={standouts}
           action={headlinerAlertsAction}
         />
       )}
@@ -584,6 +592,7 @@ export const TabsWithHash = memo(function TabsWithHash({
               timezone={park.timezone}
               todayIso={todayIso}
               parkName={park.name}
+              standouts={standouts}
             />
           </LazyMount>
         ))
@@ -623,6 +632,7 @@ export const TabsWithHash = memo(function TabsWithHash({
                 timezone={park.timezone}
                 todayIso={todayIso}
                 parkName={park.name}
+                standouts={standouts}
               />
             </LazyMount>
           );

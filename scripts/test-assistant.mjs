@@ -79,6 +79,7 @@ import {
   liveMoment,
   rideStampVerdict,
   SHOW_RUN_MIN,
+  standoutRides,
   SHOW_SOON_MIN,
   showRunning,
   showSoon,
@@ -2198,14 +2199,49 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
   check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
 }
-// Parky's stamp on a ride's live wait: the walk-on first, then half the usual for the hour or less.
+// Parky's stamp on a ride's live wait: only on a ride that usually queues, the walk-on first, then
+// half the usual or less.
 {
-  check(rideStampVerdict(10, null), 'walkOn', 'stamp: walk-on at the limit');
-  check(rideStampVerdict(11, null), null, 'stamp: a card stamps only the walk-on');
-  check(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the typical');
+  check(rideStampVerdict(5, null), null, 'stamp: no usual, no stamp');
+  check(rideStampVerdict(5, 15), null, 'stamp: a ride that is short anyway');
+  check(rideStampVerdict(10, 20), 'walkOn', 'stamp: walk-on at the limit, usual 20');
+  check(rideStampVerdict(5, 40), 'walkOn', 'stamp: a walk-on before the half');
   check(rideStampVerdict(20, 40), 'belowTypical', 'stamp: half the usual');
   check(rideStampVerdict(22, 40), 'belowTypical', 'stamp: the printed 20 against 40');
   check(rideStampVerdict(23, 40), null, 'stamp: the printed 25 is more than half');
   check(rideStampVerdict(15, 25), null, 'stamp: 15 against 25');
+}
+// Which rides stand out in their park: a few at most, or none when the park is simply empty.
+{
+  const ride = (id, wait, baseline, status = 'OPERATING') => ({
+    id,
+    name: id,
+    status,
+    baseline,
+    queues: [{ queueType: 'STANDBY', status, waitTime: wait }],
+  });
+  const busy = [ride('a', 45, 40), ride('b', 60, 50), ride('c', 30, 30)];
+  const three = [...busy, ride('w1', 5, 40), ride('w2', 10, 25), ride('h1', 15, 40)];
+  const found = standoutRides(three, 'OPERATING');
+  check(found.size, 3, 'standouts: three stand out');
+  check(found.get('w1'), 'walkOn', 'standouts: a walk-on on a ride that queues');
+  check(found.get('h1'), 'belowTypical', 'standouts: under half its baseline');
+  check(found.has('a'), false, 'standouts: an ordinary queue');
+  check(
+    standoutRides([...three, ride('w3', 5, 30)], 'OPERATING').size,
+    0,
+    'standouts: four, the park is empty'
+  );
+  check(
+    standoutRides([ride('k', 5, 10), ride('n', 5, null)], 'OPERATING').size,
+    0,
+    'standouts: short anyway or no baseline'
+  );
+  check(
+    standoutRides([ride('d', 5, 40, 'DOWN')], 'OPERATING').size,
+    0,
+    'standouts: a ride that is down'
+  );
+  check(standoutRides(three, 'CLOSED').size, 0, 'standouts: a closed park');
 }
 console.log(`assistant: ${passed} checks passed`);

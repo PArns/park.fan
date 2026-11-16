@@ -47,7 +47,6 @@ import { PerformanceCountdown } from './performance-countdown';
 import { performanceTimesShown, startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 import { RideOpensAtNote } from './ride-opens-at-note';
 import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
-import { rideStampVerdict } from '@/lib/assistant/parky/live';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -101,7 +100,19 @@ interface AttractionCardProps {
    * width has to be known to the server render.
    */
   rideLog?: boolean;
+  /**
+   * Parky's „Walk-on!“ stamp. The park's list decides it for all its cards at once
+   * (`standoutRides`), because whether a walk-on is news depends on the other rides: on an empty
+   * day every ride is one. The card shows it only beside its own live wait.
+   */
+  parkyStamp?: boolean;
 }
+
+/**
+ * The corner Parky takes over a card's seam (`ParkyStamp` at `right-4`, 40 px wide, and a gap):
+ * no badge may run into it.
+ */
+const PARKY_CORNER = 62;
 
 function getCrowdLevel(attraction: ParkAttraction | FavoriteAttraction): string | undefined {
   if ('crowdLevel' in attraction) return attraction.crowdLevel;
@@ -155,6 +166,7 @@ export function AttractionCard({
   parkName: parkNameProp,
   phoneRow = false,
   rideLog = false,
+  parkyStamp = false,
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
@@ -209,9 +221,6 @@ export function AttractionCard({
       ? attraction.backgroundPosition
       : 'top');
 
-  // 40 px per corner circle (34 px and a 6 px gap), a pair at the least.
-  const cornerReserve = (parkName ? 92 : 52) + (rideLog ? 40 : 0);
-
   const stats = attraction.statistics;
   const history = stats?.history;
 
@@ -236,9 +245,13 @@ export function AttractionCard({
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const waitShown = isOperatingOrUnknown && waitTime !== null;
   const hasBottomPanel = performanceTimes !== null || waitShown;
-  // The live wait only, and only the walk-on: a list of cards stays quiet.
-  const walkOn =
-    status === 'OPERATING' && waitShown && rideStampVerdict(waitTime, null) === 'walkOn';
+  const walkOn = parkyStamp && status === 'OPERATING' && waitShown;
+  // 40 px per corner circle (34 px and a 6 px gap), a pair at the least, and never less than the
+  // corner Parky stands in.
+  const cornerReserve = Math.max(
+    (parkName ? 92 : 52) + (rideLog ? 40 : 0),
+    walkOn ? PARKY_CORNER : 0
+  );
 
   // What the top panel's lower edge (the seam between the upper glass and what is under it) sits
   // on. With no bottom panel and no photo there is only the flat placeholder, so no seam is drawn.
@@ -367,6 +380,10 @@ export function AttractionCard({
           className={cn(
             'pk-panel-top relative z-[3] -mb-4 flex flex-col overflow-hidden',
             seamOnClass && 'pk-panel-seam-sm',
+            // Tall enough that Parky over the seam stays clear of the corner circles; the subgrid
+            // gives the row's other cards the same height.
+            walkOn && 'min-h-[104px]',
+            walkOn && phoneRow && 'max-sm:min-h-0',
             phoneRow && 'max-sm:mb-0 max-sm:pt-[10px]! max-sm:pr-2! max-sm:pb-2! max-sm:pl-2!'
           )}
           style={{

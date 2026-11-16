@@ -5926,9 +5926,7 @@
       "walkOn": "¡Sin cola!",
       "walkOnQuestion": "{ride} tiene ahora {minutes, plural, =0 {cero espera} =1 {solo un minuto de espera} other {solo # minutos de espera}}. ¿Merece la pena ir ya, y a qué me subo después?",
       "belowTypical": "¡Ve ya!",
-      "belowTypicalQuestion": "{ride} tiene ahora solo {minutes} minutos de espera, cuando a esta hora suele tener {typical} minutos. ¿Voy ya?",
-      "quietPark": "¡Qué tranquilo!",
-      "quietParkQuestion": "Hoy apenas hay gente en {park}. ¿Qué no me puedo perder allí hoy?"
+      "belowTypicalQuestion": "{ride} tiene ahora solo {minutes} minutos de espera, cuando a esta hora suele tener {typical} minutos. ¿Voy ya?"
     },
     "empty": {
       "ask": "Pregunta a Parky",
