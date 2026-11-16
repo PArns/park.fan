@@ -49,23 +49,23 @@ Por la noche sigue hasta el 23 de noviembre el espectáculo de fuegos artificial
 
 ## Desfile y espectáculo desde el 27 de noviembre
 
-El Bling Bling X-mas Parade dura una media hora y recorre el camino desde la entrada del Rose Garden hasta Carnival Square. Con las carrozas navideñas salen varias decenas de artistas disfrazados de Papá Noel, Rudolph, muñeco de nieve y otros personajes, que bailan al ritmo de villancicos. Con ese nombre ya hubo desfile en 2025, aquella vez con carrozas en forma de árbol, de trineo y de tarta.
+El Bling Bling X-mas Parade dura una media hora y recorre el camino desde la entrada del Rose Garden hasta Carnival Square. Entre las carrozas, varias decenas de artistas bailan villancicos disfrazados de Papá Noel, de Rudolph o de muñeco de nieve. Con ese nombre ya hubo desfile en 2025, aquella vez con carrozas en forma de árbol, de trineo y de tarta.
 
-Magic in the Sky es un espectáculo de fuegos artificiales con vídeos de temas navideños, música, láseres y varios miles de cohetes. El invierno pasado, en su lugar, Everland montaba cada noche con Netflix un espectáculo para cantar a coro de K-Pop Demon Hunters, con «Golden» y «Soda Pop». Samsung C&T ya no lo menciona en el anuncio de este año.
+En Magic in the Sky se proyectan vídeos con motivos navideños mientras estallan por encima varios miles de fuegos artificiales, acompañados de láseres y música. El invierno pasado, en su lugar, Everland montaba cada noche con Netflix un espectáculo para cantar a coro de K-Pop Demon Hunters, con «Golden» y «Soda Pop». En el anuncio de este invierno ese espectáculo ya no aparece.
 
 Everland todavía no ha publicado a qué horas salen el desfile y el espectáculo, ni desde dónde se ve este último. Cuando estén, los horarios aparecerán en el plan del día de everland.com.
 
 ## Snow Buster y Winter Spa
 
-En algún momento de diciembre abre la pista de trineos Snow Buster, con un recorrido familiar para padres con niños, una pista de carreras y más actividades en la nieve. El año pasado, las primeras instalaciones de nieve se pusieron en marcha el 12 de diciembre. Entonces el Snow Buster estaba en Alpine Village, justo al lado de Carnival Square, donde también termina el desfile.
+En algún momento de diciembre abre la pista de trineos Snow Buster, con un recorrido familiar en el que los padres bajan con sus hijos y una pista de carreras. El año pasado, las primeras instalaciones de nieve se pusieron en marcha el 12 de diciembre. Entonces el Snow Buster estaba en Alpine Village, justo al lado de Carnival Square, donde también termina el desfile.
 
-Al lado, en el parque acuático Caribbean Bay, el Winter Spa Cabi empieza el jueves 3 de diciembre, dos días antes que en 2025. A partir de ese día todas las piscinas están climatizadas, también el río lento y el Aquatic Center. Se añaden un baño al aire libre de ciprés hinoki, una sauna finlandesa y puestos de comida de invierno.
+Al lado, en el parque acuático Caribbean Bay, el Winter Spa Cabi empieza el jueves 3 de diciembre, dos días antes que en 2025. A partir de ese día todas las piscinas están climatizadas, también el río lento y el Aquatic Center. Para entrar en calor hay además un baño al aire libre de ciprés hinoki y una sauna finlandesa, y en los puestos de comida venden tentempiés de invierno.
 
-Caribbean Bay tiene su propia entrada. Hasta finales de diciembre, los adultos pagan 45.000 wones y los niños y los mayores, 36.000; a partir de las 14:30, 39.000 y 30.000 wones. Los días de mucha gente, el parque acuático puede cerrar el acceso. Hasta el 2 de diciembre cierra los martes y los miércoles. Una chaqueta de alquiler te cuesta 8.000 wones, y una toalla grande, 6.000. La entrada combinada Ever to Cabi del invierno pasado, con la que se podía cambiar de un parque a otro el mismo día, Samsung C&T no la ha anunciado para este año.
+Caribbean Bay tiene su propia entrada. Hasta finales de diciembre, los adultos pagan 45.000 wones y los niños y los mayores, 36.000; a partir de las 14:30, 39.000 y 30.000 wones. Los días de mucha gente, el parque acuático puede cerrar el acceso. Hasta el 2 de diciembre cierra los martes y los miércoles. Una chaqueta de alquiler te cuesta 8.000 wones, y una toalla grande, 6.000. La entrada combinada Ever to Cabi, con la que el invierno pasado se podía cambiar de un parque a otro el mismo día, de momento no figura en el anuncio de este invierno. Así que cuenta con dos entradas.
 
 ## Entradas y horarios
 
-En noviembre, la entrada de un día a Everland cuesta 65.000 wones para adultos y jóvenes de 13 a 18 años, y 55.000 wones para niños de 36 meses a 12 años y personas de 65 años o más. En diciembre son 55.000 y 45.000 wones. Si vas sobre todo por el desfile y el espectáculo, diciembre te sale más barato que los cuatro días de noviembre a partir del 27. Los menores de 36 meses entran gratis. Algunas instalaciones del parque se pagan aparte, y para los menores de 36 meses también las actividades pensadas solo para los más pequeños.
+En noviembre, la entrada de un día a Everland cuesta 65.000 wones para adultos y jóvenes de 13 a 18 años, y 55.000 wones para niños de 36 meses a 12 años y personas de 65 años o más. En diciembre son 55.000 y 45.000 wones. Por el desfile y el espectáculo pagas, por tanto, 10.000 wones más por persona en los cuatro días de noviembre a partir del 27 que desde el 1 de diciembre. Los menores de 36 meses entran gratis. Aun así, el día no les sale del todo gratis a los más pequeños, porque las actividades solo para niños pequeños también se las cobran aparte, como algunas otras instalaciones del parque.
 
 El día del estreno, el sábado 21 de noviembre, el parque abre de 10:00 a 21:00, y el domingo y el lunes siguientes, hasta las 20:00. Everland publica el plan del día semana a semana.
 

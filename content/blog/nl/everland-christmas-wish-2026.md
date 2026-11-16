@@ -49,23 +49,23 @@ De Giant Wish Tree staat in Global Fair, vlak bij de hoofdingang. Rond de boom s
 
 ## Parade en avondshow vanaf 27 november
 
-De Bling Bling X-mas Parade duurt ongeveer een halfuur en trekt van de ingang van de Rose Garden naar Carnival Square. Naast de kerstwagens lopen enkele tientallen artiesten mee als kerstman, Rudolph, sneeuwpop en andere figuren, die op kerstliedjes dansen. Onder dezelfde naam reed de parade ook in 2025, toen met wagens in de vorm van een kerstboom, een slee en een taart.
+De Bling Bling X-mas Parade duurt ongeveer een halfuur en trekt van de ingang van de Rose Garden naar Carnival Square. Tussen de wagens dansen enkele tientallen artiesten op kerstliedjes, verkleed als kerstman, Rudolph of sneeuwpop. Onder dezelfde naam reed de parade ook in 2025, toen met wagens in de vorm van een kerstboom, een slee en een taart.
 
-Magic in the Sky is een vuurwerkshow die video's in kerstsfeer, muziek en lasers combineert met een paar duizend stuks vuurwerk. Vorige winter liet Everland in plaats daarvan samen met Netflix elke avond een meezingshow rond K-Pop Demon Hunters zien, met “Golden” en “Soda Pop”. Voor dit jaar noemt Samsung C&T die show niet meer.
+Bij Magic in the Sky gaan boven video's met kerstmotieven een paar duizend stuks vuurwerk de lucht in, met lasers en muziek erbij. Vorige winter liet Everland in plaats daarvan samen met Netflix elke avond een meezingshow rond K-Pop Demon Hunters zien, met “Golden” en “Soda Pop”. In de aankondiging voor deze winter komt die show niet meer voor.
 
 Hoe laat parade en show beginnen en waar je de show kunt zien, heeft Everland nog niet bekendgemaakt. Zodra die tijden er zijn, staan ze in de dagplanning op everland.com.
 
 ## Snow Buster en Winter Spa
 
-Ergens in december gaat de sleeheuvel Snow Buster open, met een familiebaan voor ouders met kinderen, een racebaan en nog meer te doen in de sneeuw. Vorig jaar gingen de eerste sneeuwattracties op 12 december open. De Snow Buster lag toen in Alpine Village, direct naast Carnival Square, waar ook de parade eindigt.
+Ergens in december gaat de sleeheuvel Snow Buster open, met een familiebaan waar ouders samen met hun kinderen naar beneden sleeën, en een racebaan. Vorig jaar gingen de eerste sneeuwattracties op 12 december open. De Snow Buster lag toen in Alpine Village, direct naast Carnival Square, waar ook de parade eindigt.
 
-In het waterpark Caribbean Bay ernaast begint op donderdag 3 december de Winter Spa Cabi, twee dagen eerder dan in 2025. Dan zijn alle baden verwarmd, ook de Lazy River en het Aquatic Center. Er komen een buitenbad van hinokicipres, een Finse sauna en wintersnacks bij.
+In het waterpark Caribbean Bay ernaast begint op donderdag 3 december de Winter Spa Cabi, twee dagen eerder dan in 2025. Dan zijn alle baden verwarmd, ook de Lazy River en het Aquatic Center. Opwarmen kan ook in een buitenbad van hinokicipres en in een Finse sauna, en bij de kraampjes zijn er wintersnacks.
 
-Caribbean Bay heeft een eigen kaartje. Tot eind december betalen volwassenen 45.000 won en kinderen en senioren 36.000 won, vanaf 14.30 uur is dat 39.000 en 30.000 won. Op drukke dagen kan het waterpark de toegang stopzetten. Tot en met 2 december is het op dinsdag en woensdag dicht. Een jas huur je voor 8.000 won, een grote handdoek voor 6.000. Het combiticket Ever to Cabi van vorige winter, waarmee je op dezelfde dag tussen de twee parken kon wisselen, heeft Samsung C&T voor dit jaar niet aangekondigd.
+Caribbean Bay heeft een eigen kaartje. Tot eind december betalen volwassenen 45.000 won en kinderen en senioren 36.000 won, vanaf 14.30 uur is dat 39.000 en 30.000 won. Op drukke dagen kan het waterpark de toegang stopzetten. Tot en met 2 december is het op dinsdag en woensdag dicht. Een jas huur je voor 8.000 won, een grote handdoek voor 6.000. Het combiticket Ever to Cabi, waarmee je vorige winter op dezelfde dag tussen de twee parken kon wisselen, staat tot nu toe niet in de aankondiging voor deze winter. Reken dus op twee kaartjes.
 
 ## Entree en openingstijden
 
-Een dagkaart voor Everland kost in november 65.000 won voor volwassenen en jongeren van 13 tot en met 18 jaar, en 55.000 won voor kinderen van 36 maanden tot en met 12 jaar en 65-plussers. In december is dat 55.000 en 45.000 won. Kom je vooral voor de parade en de show, dan ben je in december dus goedkoper uit dan op de vier novemberdagen vanaf de 27e. Kinderen onder 36 maanden mogen gratis naar binnen. Een paar voorzieningen in het park kosten extra, voor kinderen onder 36 maanden ook wat er speciaal voor de allerkleinsten is.
+Een dagkaart voor Everland kost in november 65.000 won voor volwassenen en jongeren van 13 tot en met 18 jaar, en 55.000 won voor kinderen van 36 maanden tot en met 12 jaar en 65-plussers. In december is dat 55.000 en 45.000 won. Voor de parade en de show betaal je op de vier novemberdagen vanaf de 27e dus 10.000 won per persoon meer dan vanaf 1 december. Kinderen onder 36 maanden mogen gratis naar binnen. Helemaal gratis is de dag voor de allerkleinsten toch niet, want wat speciaal voor peuters bedoeld is, kost ook voor hen extra, net als een paar andere voorzieningen in het park.
 
 Op de openingsdag, zaterdag 21 november, is het park open van 10.00 tot 21.00 uur, op de zondag en maandag daarna tot 20.00 uur. Everland zet de dagplanning per week online.
 
