@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Everland Navidad 2026: Christmas Wish desde el 21/11'
   description: >-
-    Christmas Wish en Everland: árbol de los deseos desde el 21/11, desfile y Magic in the Sky del 27/11 a Nochevieja. Entrada en diciembre desde 45.000 wones.
+    Christmas Wish en Everland: árbol de los deseos desde el 21/11, desfile y Magic in the Sky del 27/11 al 31/12. Entrada en diciembre desde 45.000 wones.
   keywords:
     - Everland Navidad 2026
     - Everland Christmas 2026
