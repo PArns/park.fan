@@ -102,7 +102,7 @@ const NO_WAIT_TIMES_NOTE: Record<string, string> = {
 };
 
 /** What a caller without the permissions reads instead of the extras. */
-const WAITS_ONLY_NOTE = `Land, crowd level and maintenance dates need a park.fan data API key in the X-API-Key header with the matching permissions: ${DEVELOPER_PORTAL_URL}`;
+const WAITS_ONLY_NOTE = `Land, time zone, crowd level and maintenance dates need a park.fan data API key in the X-API-Key header with the matching permissions: ${DEVELOPER_PORTAL_URL}`;
 
 /**
  * The park as this caller may read it. A park.fan page reads it like the page. A caller's own key
@@ -198,7 +198,7 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
       park: park.name,
       url: `${SITE_URL}/${localeOf(input)}${park.path}`,
       parkStatus: data.status,
-      timezone: data.timezone,
+      ...(!waitsOnly && { timezone: data.timezone }),
       ...(noWaitTimes
         ? {
             waitTimesAvailable: false,

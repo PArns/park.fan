@@ -184,7 +184,7 @@ function ExternalUrl({ href }: { href?: string | null }) {
 /**
  * A request with everything the form asked: who, what, which platforms, open or closed, how it
  * earns, what it needs, how it calls the API and where the backlink sits. Open requests carry the
- * decision buttons, decided ones the reply mail and, once over, a delete.
+ * decision buttons, decided ones the reply mail, and every one a delete.
  */
 function RequestCard({
   request,
@@ -309,17 +309,15 @@ function RequestCard({
             <RotateCcw className="h-4 w-4" /> Wieder öffnen
           </Button>
         )}
-        {request.status !== 'pending' && request.status !== 'approved' && (
-          <Button
-            size="sm"
-            variant="ghost"
-            className="ml-auto"
-            onClick={() => setConfirmingDelete(true)}
-            aria-label={`Antrag ${request.projectName} löschen`}
-          >
-            <Trash2 className="h-4 w-4" />
-          </Button>
-        )}
+        <Button
+          size="sm"
+          variant="ghost"
+          className="ml-auto"
+          onClick={() => setConfirmingDelete(true)}
+          aria-label={`Antrag ${request.projectName} löschen`}
+        >
+          <Trash2 className="h-4 w-4" />
+        </Button>
       </div>
 
       <ConfirmDialog
@@ -328,7 +326,13 @@ function RequestCard({
         icon={Trash2}
         tone="destructive"
         title={`Antrag „${request.projectName}“ löschen?`}
-        description="Der Antrag verschwindet aus der Liste und aus dem Dashboard des Entwicklers; unter „Änderungen“ bleibt er verzeichnet."
+        description={
+          request.status === 'approved'
+            ? 'Der Antrag verschwindet aus der Liste und aus dem Dashboard des Entwicklers. Der Key, der aus ihm wurde, bleibt; den widerrufst du unten bei den Keys. Unter „Änderungen“ bleibt der Antrag verzeichnet.'
+            : request.status === 'pending'
+              ? 'Der offene Antrag verschwindet ohne Entscheidung aus der Liste und aus dem Dashboard des Entwicklers. Unter „Änderungen“ bleibt er verzeichnet.'
+              : 'Der Antrag verschwindet aus der Liste und aus dem Dashboard des Entwicklers; unter „Änderungen“ bleibt er verzeichnet.'
+        }
         confirmLabel="Löschen"
         cancelLabel="Abbrechen"
         onConfirm={() => void act(keyRequestPath(request.id), 'DELETE', 'Antrag gelöscht')}
