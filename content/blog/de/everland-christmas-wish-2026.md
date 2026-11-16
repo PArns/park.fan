@@ -2,7 +2,7 @@
 title: 'Im Everland beginnt am 21. November die Weihnachtssaison'
 translationKey: everland-christmas-wish-2026
 date: '2026-11-16'
-time: '07:40'
+time: '08:25'
 author: patrick
 mode: published
 featured: false
