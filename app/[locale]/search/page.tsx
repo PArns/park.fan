@@ -364,7 +364,10 @@ async function SearchBody({
                     <ParkyPose
                       pose="searching"
                       line={tParky('searchingLine')}
-                      question={tParky('searchingQuestion', { query: query ?? '' })}
+                      ask={{
+                        question: tParky('searchingQuestion', { query: query ?? '' }),
+                        kind: 'search',
+                      }}
                     />
                   </div>
                 )

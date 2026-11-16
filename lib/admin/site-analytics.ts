@@ -1,3 +1,4 @@
+import type { ParkyElement } from '@/lib/analytics/parky-elements';
 import { locales, localeNames, type Locale } from '@/i18n/config';
 import type {
   NavMenuId,
@@ -729,7 +730,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   assistant_opened: {
     label: 'Parky geöffnet',
-    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite, neu nach einem Sprachwechsel durch Parky, den Interview-Knopf eines Planers, „Im Chat“ an einer Idee für den Reiseplan oder ein Parky-Element mit Frage (Stempel, Tipp, leerer Zustand).',
+    when: 'Das Chatfenster von Parky geht von zu auf offen; über den Knopf, einen Spruch, Parkys Seite, Parky auf der Startseite, neu nach einem Sprachwechsel durch Parky, den Interview-Knopf eines Planers, „Im Chat“ an einer Idee für den Reiseplan oder ein Parky-Element mit Frage (Stempel, Tagestipp, „Parky sagt“ im Beitrag, leerer Zustand).',
   },
   assistant_line_shown: {
     label: 'Parky-Spruch angezeigt',
@@ -742,6 +743,14 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   assistant_line_closed: {
     label: 'Parky-Spruch geschlossen',
     when: 'Der Spruch wird mit dem Kreuz geschlossen, danach schweigt Parky für die Sitzung; mit seiner Art.',
+  },
+  parky_element_seen: {
+    label: 'Parky-Element im Bild',
+    when: 'Der drückbare Teil eines Parky-Elements (Stempel, Tagestipp im Kalender, „Parky sagt“ im Beitrag, „Frag Parky“ im leeren Zustand) ist zur Hälfte im Bild; einmal je Seitenaufruf und Art. Nur wo Parky für den Besucher an ist, also dieselben Leute wie beim Klick.',
+  },
+  parky_element_clicked: {
+    label: 'Parky-Element gedrückt',
+    when: 'Ein Parky-Element wird gedrückt und gibt Parky seine Frage mit; Element und Art wie beim Im-Bild-Ereignis.',
   },
   assistant_link_clicked: {
     label: 'Link in Parkys Antwort',
@@ -1183,6 +1192,7 @@ const PROP_LABEL: Record<string, string> = {
   line: 'Spruch',
   link: 'Link',
   length: 'Länge der Eingabe',
+  element: 'Element',
 };
 
 /**
@@ -1300,9 +1310,33 @@ const TRIP_OPEN_SOURCES: ReadonlyArray<readonly [string, string]> = [
   ['-trip-first', 'Reiseplan, „Ersten Tag öffnen“'],
 ];
 
+/**
+ * The kinds of Parky's elements (`parky_element_seen`, `parky_element_clicked`), apart from the
+ * planner's kinds, whose list is the planner matrix's columns. Typed by the catalogue, so a kind
+ * added there fails the build here until it has its word.
+ */
+const PARKY_KIND_LABEL: Record<ParkyElement['kind'], string> = {
+  walk_on: '„Walk-on!“',
+  below_typical: '„Jetzt hin!“',
+  good: '„Top-Tag!“',
+  meh: '„Geht so“',
+  bad: '„Lieber nicht“',
+  post: 'Tipp im Beitrag',
+  not_found: '404',
+  error: 'Fehlerseite',
+  favorites: 'Keine Favoriten',
+  search: 'Suche ohne Treffer',
+};
+
 const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
   step: { park: 'Park', date: 'Tag', setup: 'Wer kommt mit', headliners: 'Headliner' },
   kind: { ride: 'Fahrgeschäft', show: 'Show', block: 'Eigener Block' },
+  element: {
+    stamp: 'Stempel',
+    tip: 'Tagestipp im Kalender',
+    callout: '„Parky sagt“ im Beitrag',
+    empty: 'Leerer Zustand',
+  },
   line: {
     invitation: 'Einladung',
     entrance: 'Nach dem Auftritt',
@@ -1355,7 +1389,8 @@ const PLANNER_VALUE_LABEL: Record<string, Record<string, string>> = {
     language: 'Sprachwechsel durch Parky',
     idea: 'Idee für den Reiseplan',
     stamp: 'Parky-Stempel',
-    tip: 'Parkys Tipp',
+    tip: 'Parkys Tagestipp',
+    callout: '„Parky sagt“ im Beitrag',
     empty: 'Parky im leeren Zustand',
   },
   mode: { day: '„Tag optimieren“', headliners: '„Alle Headliner“', fit: 'Antwort des Assistenten' },
@@ -1391,6 +1426,9 @@ export function propValueLabel(prop: string, value: string): string {
     if (prop !== 'source' || !value.endsWith(suffix)) continue;
     const region = tripRegionConfig(value.slice(0, -suffix.length));
     if (region) return `${tripRegionTitle(region.slug)}, ${words}`;
+  }
+  if (prop === 'kind' && !PLANNER_VALUE_LABEL.kind[value] && value in PARKY_KIND_LABEL) {
+    return PARKY_KIND_LABEL[value as ParkyElement['kind']];
   }
   return PLANNER_VALUE_LABEL[prop]?.[value] ?? value;
 }

@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { ParkyStill } from '@/components/assistant/parky/parky-still';
 import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
 import { askParky } from '@/lib/assistant/ask';
+import { useParkyElementSeen } from '@/lib/hooks/use-parky-element-seen';
 import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
 import { useParkyDayTip } from '@/lib/hooks/use-parky-day-tip';
 import type { PlannerGeo } from '@/lib/planner/types';
@@ -13,7 +14,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 /**
  * Parky's tip for the day open in the calendar's dialog: his sentence about it, written by the
  * API's model from the calendar around the day, and his verdict as a stamp. The whole card asks
- * him about the day (`askParky`, source `tip`), so the chat picks up where the tip stops. Only
+ * him about the day (`askParky`, element `tip` with the verdict as its kind), so the chat picks up where the tip stops. Only
  * where Parky shows for this visitor; nothing at all for a day he has nothing to say about.
  */
 export function ParkCalendarParkyTip({
@@ -46,15 +47,22 @@ export function ParkCalendarParkyTip({
     locale,
     enabled: open && gate === 'on',
   });
+  const seen = useParkyElementSeen(
+    gate === 'on' && tip ? { element: 'tip', kind: tip.verdict } : undefined
+  );
   if (gate !== 'on') return null;
   if (isPending) return <Skeleton className="h-[76px] shrink-0 rounded-xl" />;
   if (!tip) return null;
   return (
     <button
+      ref={seen}
       type="button"
       onClick={() => {
         onAsk?.();
-        askParky(t('question', { park: parkName, day: dateLabel, tip: tip.text }), 'tip');
+        askParky(t('question', { park: parkName, day: dateLabel, tip: tip.text }), {
+          element: 'tip',
+          kind: tip.verdict,
+        });
       }}
       className="group border-primary/30 from-primary/10 hover:border-primary/50 focus-visible:ring-ring flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
     >

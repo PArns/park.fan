@@ -15,6 +15,7 @@ import { PARK_CALENDAR_SEGMENTS } from '@/lib/parks/calendar-segments';
 import { PARK_STATS_SEGMENTS } from '@/lib/parks/stats-segments';
 import { PARK_KIDS_SEGMENTS } from '@/lib/parks/kids-segments';
 import type { ParkyEntrance } from '@/lib/assistant/entrance';
+import type { ParkyElement } from '@/lib/analytics/parky-elements';
 import type { SearchTab } from '@/components/search/search-result-groups';
 
 /**
@@ -226,7 +227,7 @@ export type AssistantPlanChange =
  * What made Parky's window open: the round button, a line in its bubble, Parky's own page, Parky in
  * the homepage hero, or Parky himself, reopening it on the page he just switched to another
  * language; or one of his elements on the page asking about what it shows (`askParky`): a stamp,
- * a tip, an empty state.
+ * the calendar's tip, a post's callout, an empty state.
  */
 export type AssistantOpenSource =
   | 'button'
@@ -238,6 +239,7 @@ export type AssistantOpenSource =
   | 'idea'
   | 'stamp'
   | 'tip'
+  | 'callout'
   | 'empty';
 
 /**
@@ -327,6 +329,14 @@ export interface SiteEventMap {
   assistant_line_closed: { line: AssistantLineKind };
   /** A link in one of Parky's answers was followed: the page type it leads to, or `directions`. */
   assistant_link_clicked: { target: SitePageType | 'directions' };
+  /**
+   * The pressable part of one of Parky's elements (a stamp, the calendar's tip, a post's callout,
+   * an empty state's „Frag Parky“) came on screen, once per page view and kind
+   * (`useParkyElementSeen`).
+   */
+  parky_element_seen: ParkyElement;
+  /** One of those elements was pressed, which hands Parky its question and opens him. */
+  parky_element_clicked: ParkyElement;
   /** Parky's window closed again, with how many questions were asked while it was open. */
   assistant_closed: { questions: number };
   /**

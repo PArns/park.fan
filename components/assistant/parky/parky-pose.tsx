@@ -1,5 +1,6 @@
 import { useId, type ReactNode } from 'react';
 import { cn } from '@/lib/utils';
+import type { ParkyEmptyKind } from '@/lib/analytics/parky-elements';
 import { HANDLE_END, HEART, STAR, ZED, blue, gold, heartRed } from './drawing';
 import {
   HolidayGround,
@@ -108,18 +109,19 @@ function poseHands(pose: ParkyPoseName, ground: string): ReactNode {
  * A still Parky for an empty or error state, in one of his {@link ParkyPoseName} poses, with his
  * one line under him when `line` is given. Built from the live drawing's pieces (`HolidayParky`,
  * the map, the glass, the nightcap), and entirely still: these states are read, not watched. The
- * picture is decorative (`aria-hidden`); the line is real text. With a `question`, a „Frag Parky“
- * button under them opens the chat with it ({@link ParkyAskButton}). `className` sizes the picture.
+ * picture is decorative (`aria-hidden`); the line is real text. With `ask`, a „Frag Parky“ button
+ * under them opens the chat with `ask.question` and counts as the empty state `ask.kind`
+ * ({@link ParkyAskButton}). `className` sizes the picture.
  */
 export function ParkyPose({
   pose,
   line,
-  question,
+  ask,
   className,
 }: {
   pose: ParkyPoseName;
   line?: string;
-  question?: string;
+  ask?: { question: string; kind: ParkyEmptyKind };
   className?: string;
 }) {
   const ground = `${useId()}ground`;
@@ -147,7 +149,7 @@ export function ParkyPose({
         {pose === 'dizzy' ? <g transform="rotate(-6 24 46)">{figure}</g> : figure}
       </svg>
       {line && <p className="text-muted-foreground mt-2 max-w-xs text-sm text-balance">{line}</p>}
-      {question && <ParkyAskButton question={question} />}
+      {ask && <ParkyAskButton question={ask.question} kind={ask.kind} />}
     </div>
   );
 }

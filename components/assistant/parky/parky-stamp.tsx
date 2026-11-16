@@ -5,6 +5,8 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { askParky } from '@/lib/assistant/ask';
+import type { ParkyElement } from '@/lib/analytics/parky-elements';
+import { useParkyElementSeen } from '@/lib/hooks/use-parky-element-seen';
 import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
 import { BUBBLE, EYES, ink } from './drawing';
 import { ParkyEyeWhite, ParkyPupil } from './eyes';
@@ -46,28 +48,29 @@ const GRIP_X = [8.5, 39.5] as const;
  * and not at all under reduced motion (`.parky-stamp` in `app/parky.css`).
  *
  * `label` is the caller's, already translated and short ("Walk-on!"); screen readers hear it as
- * „Parkys Urteil: …“. With a `question`, and where Parky shows for this visitor, the stamp is a
- * button that opens the chat with that question (`askParky`, source `stamp`); on a card that is a
- * link it stays its own tab stop and never follows the card's link. `className` places it.
+ * „Parkys Urteil: …“. With `ask`, and where Parky shows for this visitor, the stamp is a button
+ * that opens the chat with `ask.question` (`askParky`) and counts as `ask.element`; on a card that
+ * is a link it stays its own tab stop and never follows the card's link. `className` places it.
  */
 export function ParkyStamp({
   tone,
   label,
   size = 'sm',
-  question,
+  ask,
   className,
 }: {
   tone: ParkyStampTone;
   label: string;
   size?: keyof typeof SIZE;
-  question?: string;
+  ask?: { question: string; element: ParkyElement };
   className?: string;
 }) {
   const t = useTranslations('parkyStill.stamp');
   const id = useId();
   const ground = `${id}ground`;
   const edge = `${id}edge`;
-  const askable = useAssistantGateStatus() === 'on' && question !== undefined;
+  const askable = useAssistantGateStatus() === 'on' && ask !== undefined;
+  const seen = useParkyElementSeen(askable ? ask.element : undefined);
   const verdict = t('verdict', { label });
   const body = (
     <>
@@ -127,16 +130,17 @@ export function ParkyStamp({
   const stamp = cn('parky-stamp relative inline-block -rotate-7 select-none', INK[tone], className);
 
   if (!askable) return <span className={stamp}>{body}</span>;
-  const ask = (event: MouseEvent) => {
+  const press = (event: MouseEvent) => {
     // The stamp sits on a card that is itself a link.
     event.preventDefault();
     event.stopPropagation();
-    askParky(question, 'stamp');
+    askParky(ask.question, ask.element);
   };
   return (
     <button
+      ref={seen}
       type="button"
-      onClick={ask}
+      onClick={press}
       aria-label={t('ask', { verdict })}
       className={cn(
         stamp,

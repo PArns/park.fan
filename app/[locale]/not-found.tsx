@@ -29,7 +29,7 @@ export default async function LocaleNotFound() {
         <ParkyPose
           pose="lost"
           line={tParky('lostLine')}
-          question={tParky('lostQuestion', { path: ASK_PATH })}
+          ask={{ question: tParky('lostQuestion', { path: ASK_PATH }), kind: 'not_found' }}
           className="size-32"
         />
         <p className="text-primary mt-4 text-7xl font-bold tracking-tight">404</p>
