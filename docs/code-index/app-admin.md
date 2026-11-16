@@ -403,6 +403,10 @@ Route `/admin/api-keys` (page).
 
 - `default (ApiKeysPage)` _component_: The data API keys: who may read what on api.park.fan, permission by permission. Owner only, because a key is a licensing decision rather than an editorial one; the backend enforces the same.
 
+### [`assistant/_components/parky-elements-panel.tsx`](../../app/admin/assistant/_components/parky-elements-panel.tsx)
+
+- `ParkyElementsPanel` _component_: Parky's elements on the site over 30 days: per element and kind, how often the pressable part was on screen for a visitor Parky shows for, how often it was pressed, and the share; then which links in his answers were followed.
+
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 
 - `sitePageUrl` _function_: Where a page a chat or a feedback names opens on the site, or null for anything but a path of slugs. The API stores only those; checked again because the path is glued to the origin, where `@host` or `//host` would lead off the site.
@@ -453,7 +457,7 @@ Route `/admin/assistant/knowledge` (page).
 
 Route `/admin/assistant` (page).
 
-- `default (AssistantOverviewPage)` _component_: Parky at a glance: is he on, what did 30 days cost, how are the answers rated.
+- `default (AssistantOverviewPage)` _component_: Parky at a glance: is he on, what did 30 days cost, how are the answers rated, and how often his elements on the site are pressed.
 
 ### [`assistant/settings/page.tsx`](../../app/admin/assistant/settings/page.tsx)
 

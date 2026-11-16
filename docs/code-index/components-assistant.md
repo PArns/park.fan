@@ -181,7 +181,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky/parky-ask-button.tsx`](../../components/assistant/parky/parky-ask-button.tsx)
 
-- `ParkyAskButton` _component_: „Frag Parky“ under a still Parky in an empty state: opens the chat with `question` (`askParky`, source `empty`).
+- `ParkyAskButton` _component_: „Frag Parky“ under a still Parky in an empty state: opens the chat with `question` (`askParky`, element `empty` of `kind`).
 
 ### [`parky/parky-logo.tsx`](../../components/assistant/parky/parky-logo.tsx)
 

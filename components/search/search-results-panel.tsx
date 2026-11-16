@@ -253,7 +253,10 @@ export function SearchResultsPanel({
           <ParkyPose
             pose="searching"
             line={tParky('searchingLine')}
-            question={tParky('searchingQuestion', { query: debouncedQuery })}
+            ask={{
+              question: tParky('searchingQuestion', { query: debouncedQuery }),
+              kind: 'search',
+            }}
             className="mt-3 size-24"
           />
         </CommandEmpty>

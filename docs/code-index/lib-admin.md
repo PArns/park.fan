@@ -258,6 +258,12 @@ Unique roles move; they are never shared. `ride-card` and `park-background` name
 - `MATRIX_BLOCKS` _const_: How the matrix is cut into blocks: the live and today rows share one, since the same models answer both. A group not named here gets a block of its own after these.
 - Types: `DayChoice`, `CellRef`, `ResultDate`, `FamilyRun`, `MatrixBlock`
 
+### [`parky-elements.ts`](../../lib/admin/parky-elements.ts)
+
+- `parkyElementRows` _function_: The two crosstabs (rows `prop:element`, columns `prop:kind`) as one table: every kind the site knows in `PARKY_ELEMENT_KINDS`' order, zero where nothing was counted, so a kind nobody saw still has its line, then whatever else the API sent …
+- `PARKY_ELEMENT_EVENTS` _const_: The events behind `/admin/assistant`'s element table, each by `element` and `kind`.
+- Types: `ParkyElementRow`
+
 ### [`provenance.ts`](../../lib/admin/provenance.ts)
 
 - `isHttpUrl` _function_: Whether a text is an absolute `http:` or `https:` address, the API's check on a source link.

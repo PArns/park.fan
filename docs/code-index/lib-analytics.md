@@ -59,6 +59,11 @@ Where an outbound link goes, the closed list of the event's `target`.
 - `PAGE_VIEW_DWELL_MS` _const_: How long a page has to be in front of the reader before it counts as read.
 - Types: `PageViewKind`
 
+### [`parky-elements.ts`](../../lib/analytics/parky-elements.ts)
+
+- `PARKY_ELEMENT_KINDS` _const_: Parky's elements on the page that hand him a question, and what each one said: the closed list behind `parky_element_seen` and `parky_element_clicked`.
+- Types: `ParkyElementName`, `ParkyElement`, `ParkyEmptyKind`
+
 ### [`planner-funnel.ts`](../../lib/analytics/planner-funnel.ts)
 
 - `trackPlannerOpened` _function_: Counts `planner_opened` with its `source` on the closed to open edge of the planner panel, the top of the funnel, and starts an opening. `source` is the one property, because which way in earns its place is the decision it answers.
