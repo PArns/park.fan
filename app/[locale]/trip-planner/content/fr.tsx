@@ -24,8 +24,8 @@ export function ContentFR({ day, entries }: { day: PlanDay; entries: PlannerEntr
           correspond à l&apos;attente prévue à cette heure-là. Faites-le glisser vers une heure plus
           chargée et il grandit, vers une heure plus calme et il rétrécit. Entre deux blocs figure
           le transfert, avec la distance jusqu&apos;à l&apos;attraction suivante et le temps dont
-          vous disposez. «&nbsp;Juste&nbsp;» signifie que le transfert ne passe plus dès que
-          l&apos;attente précédente s&apos;écarte de la prévision autant que d&apos;habitude.
+          vous disposez. «&nbsp;Juste&nbsp;» signifie que vous ne faites le transfert qu&apos;en
+          marchant d&apos;un bon pas.
         </P>
         <P>
           Ci-dessous, un plan pour <A href={PARK}>Phantasialand</A> le samedi 12 septembre 2026,

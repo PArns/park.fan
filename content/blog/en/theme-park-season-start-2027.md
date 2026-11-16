@@ -288,6 +288,9 @@ At Heide Park, 1 April 2026 was "Extreme", while on 14 and 15 April Soltau sat a
 
 For 2027 that means the week after the Easter holidays, 5 to 9 April, is likely to be the first properly empty week of the year in Bavaria, Lower Saxony and North Rhine-Westphalia. The exception is Hansa-Park, because Schleswig-Holstein’s schools don’t break up until 30 March. In Sierksdorf the first days, 25 to 29 March, are a good bet instead, since only the other states are on holiday and Hamburg’s kids are already back at their desks.
 
+> [!PARKY]
+> My cross in the calendar goes on 5 to 9 April: that’s likely to be the first properly empty week of the year in Bavaria, Lower Saxony and North Rhine-Westphalia. In the week after the 2026 Easter holidays Legoland was "Very Low" from Monday to Thursday, and a walk-on is a gift in my book.
+
 ```stats-widget slug=phantasialand show=months
 
 ```

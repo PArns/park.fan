@@ -75,6 +75,9 @@ El plano oficial de 2024/25 señalaba, entre otras cosas, una silent disco, «Gr
 
 En 2022 la noche se agotó el 3 de diciembre, algo más de tres semanas después de que empezara la venta el 9 de noviembre. En 2018 ya no quedaba ninguna el 16 de noviembre.
 
+> [!PARKY]
+> La Nochevieja de 2026 ya está agotada, así que para 2027 seremos más rápidos: en la página del evento te apuntas y te avisan en cuanto empiece la venta. En 2022 las entradas se agotaron poco más de tres semanas después de salir a la venta, así que nada de entretenerse.
+
 ## Dormir en el parque
 
 Para Oud & Nieuw ya no quedan alojamientos, escribió Efteling el 8 de octubre.

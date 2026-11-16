@@ -545,6 +545,9 @@ desmontaje. En su lugar se construirá una zona temática propia dedicada al esp
 montaña rusa familiar de Mack Rides, que debería estar lista para la temporada 2028. Para ello el
 parque colabora con la Agencia Espacial Europea (ESA), con la que firmó el acuerdo el 8 de junio de 2026.
 
+> [!PARKY]
+> Antes de contar las novedades, toca despedirse: Euro-Mir sigue funcionando en la temporada de invierno desde el 28 de noviembre, y el 9 de enero de 2027 se acaba. Lleva desde 1997 girando alrededor de sus torres de espejos, y esa vuelta de despedida no me la pierdo.
+
 ### Loup-Garou en Walibi Belgium
 
 El [Loup-Garou](ref:walibi-belgium/loup-garou) de [Walibi Belgium](ref:walibi-belgium) es una

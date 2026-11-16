@@ -3233,3 +3233,17 @@
     animation-delay: -0.8s;
   }
 }
+
+/* Parky's stamp (`parky-stamp.tsx`) presses down once onto its card and settles with a small
+   overshoot. `backwards`, not `both`, so a hover's own scale still applies once it has landed. */
+@keyframes parky-stamp-down {
+  from {
+    scale: 1.35;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .parky-stamp {
+    animation: parky-stamp-down 220ms cubic-bezier(0.34, 1.4, 0.64, 1) backwards;
+  }
+}

@@ -124,6 +124,9 @@ Supongamos que el 22 de noviembre quieres subir a todo lo que puedas y por la no
 
 A las 18:00 vas a tu espectáculo de teatro. Después queda tiempo para uno de los espectáculos al aire libre o para una última atracción. Hacia las 19:50 te colocas en la Kaiserplatz para Magic Symphony. Quien se salte los espectáculos tiene nueve horas para montar y puede dejar una segunda vuelta en Taron para el final, antes de las 20:00.
 
+> [!PARKY]
+> Hasta las 18:00 el parque está en silencio, así que en esas horas montamos todo lo que podamos, Taron y F.L.Y. nada más abrir a las 11:00. A las 18:00 nos sentamos en un espectáculo de teatro, y hacia las 19:50 estamos en la Kaiserplatz para Magic Symphony. ¿Sin música en la cola? Pues tarareo yo.
+
 ## Entradas y aparcamiento para el 22 de noviembre
 
 El Phantasialand solo vende entradas online y solo para un día concreto. El mismo día de la visita aún puedes comprar una hasta las 14:00, y los niños de hasta tres años no pagan. El precio infantil aparece en la tienda solo después de elegir la fecha.

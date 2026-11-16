@@ -458,6 +458,9 @@ met 11 tot 20 uur. Je beste kans is een doordeweekse dag tussen 16 november en h
 begin van de kerstvakantie in Noordrijn-Westfalen op 23 december, het liefst een
 donderdag of vrijdag, want dan spelen alle drie de theatershows.
 
+> [!PARKY]
+> Mijn Wintertraum-dag: een donderdag of vrijdag tussen 16 november en 23 december. Doordeweeks hebben we de beste kans, en op die twee dagen spelen alle drie de theatershows. Tussen kerst en oud en nieuw was het vorige winter overal vol, en mopperend in de kou in een rij staan, dat laat ik liever.
+
 Vertrouw de drukte-kalender deze ene winter nog niet blind. Eind september 2026 stond in Brühl
 elke decemberdag op “Laag” of “Zeer laag”, ook de dagen tussen
 kerst en oud en nieuw die vorige winter allemaal op “Hoog” stonden. In het

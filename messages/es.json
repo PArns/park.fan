@@ -2500,6 +2500,9 @@
     "update": "Actualización",
     "updateOn": "Actualización del {date}",
     "quoteOriginal": "Original en {language}",
+    "parkySays": "Parky dice",
+    "parkyAsk": "Pregúntale a Parky",
+    "parkyAskQuestion": "Sobre tu consejo en «{title}»: {tip} ¿Me cuentas más?",
     "languageNotice": {
       "available": "Este artículo también está disponible en {language}",
       "fallback": "Aún no traducido: estás viendo la versión en {language}."
@@ -2897,7 +2900,6 @@
       "distance": "{distance} en línea recta",
       "minWalk": "al menos {minutes} min de cambio",
       "allowance": "incluye salir de la estación y la atracción, estimado",
-      "noSpread": "calculado sin la dispersión de la previsión",
       "gap": "{minutes} min"
     },
     "close": "Quitar la selección",
@@ -2947,6 +2949,7 @@
       "failed": "No se pudo optimizar el plan. Tu plan sigue igual.",
       "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
       "saved": "{minutes} min menos de cola",
+      "walkSaved": "{minutes} min menos a pie",
       "already": "Ya está en el orden bueno",
       "fitted": "{count, plural, one {una atracción ya cabe en el día} other {# atracciones ya caben en el día}}",
       "resolved": "{count, plural, one {un conflicto menos} other {# conflictos menos}}",
@@ -5914,6 +5917,36 @@
       "plannerDescription": "Planifica tú mismo tu día en el parque, atracción a atracción.",
       "parks": "Todos los parques",
       "parksDescription": "Tiempos de espera y previsiones para cada parque."
+    }
+  },
+  "parkyStill": {
+    "stamp": {
+      "verdict": "El veredicto de Parky: {label}",
+      "ask": "{verdict} – preguntar a Parky",
+      "walkOn": "¡Sin cola!",
+      "walkOnQuestion": "{ride} tiene ahora {minutes, plural, =0 {cero espera} =1 {solo un minuto de espera} other {solo # minutos de espera}}. ¿Merece la pena ir ya, y a qué me subo después?",
+      "belowTypical": "¡Ve ya!",
+      "belowTypicalQuestion": "{ride} tiene ahora solo {minutes} minutos de espera, cuando a esta hora suele tener {typical} minutos. ¿Voy ya?"
+    },
+    "empty": {
+      "ask": "Pregunta a Parky",
+      "lostLine": "Esta página no sale en ningún mapa. Lo he mirado, hasta del revés.",
+      "lostQuestion": "Buscaba una página que no existe ({path}). ¿Dónde encuentro lo que busco?",
+      "dizzyLine": "Aquí algo ha fallado. Todavía me da vueltas la cabeza: una vuelta de más en las tazas.",
+      "dizzyQuestion": "Acaba de producirse un error aquí. ¿Me puedes ayudar igualmente?",
+      "smittenLine": "Ponle una estrella a un parque o una atracción y no lo olvidaré jamás.",
+      "smittenQuestion": "¿Qué parques y atracciones debería guardar como favoritos?",
+      "searchingLine": "Lo he mirado todo con la lupa. ¿Quizá se escribe de otra forma?",
+      "searchingQuestion": "He buscado «{query}» y no he encontrado nada. ¿Me ayudas?",
+      "asleepLine": "Los tiempos de espera se toman un descanso, y yo también. Volvemos enseguida."
+    },
+    "tip": {
+      "label": "El consejo de Parky",
+      "good": "¡Día top!",
+      "meh": "Regular",
+      "bad": "Mejor no",
+      "ask": "Pregúntale a Parky por este día",
+      "question": "Para {day} en {park} dices: «{tip}» ¿Cómo le sacamos el máximo partido a ese día?"
     }
   }
 }

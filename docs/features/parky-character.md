@@ -84,7 +84,7 @@ What Parky shows follows what the page shows, never against it:
 
 ## Pictures of him
 
-Outside the chat he appears in two still pictures, each built from the live drawing's pieces rather
+Outside the chat he appears in two scenes, each built from the live drawing's pieces rather
 than drawn again, so he looks the same everywhere: the break panel's sleeping Parky
 (`break-scene.tsx`, [park break panel](park-break-panel.md#the-picture)) and Parky on holiday in
 Orlando (`components/assistant/parky/orlando-scene.tsx`), the trip-planner card in the header's
@@ -92,6 +92,12 @@ planner band ([header navigation](header-navigation.md#the-planner-panel)). On t
 planner stop he is the live drawing, calm, beside his speech bubble, and takes out his clipboard
 (the `plan` act) once while the day beside him fills in
 ([homepage](homepage.md#the-day-planner-with-parky)).
+
+Standing still and smiling, hat on, he is `ParkyStill` (`components/assistant/parky/parky-still.tsx`),
+server-rendered with no client code. He signs every share image beside the park.fan lockup and is
+the hero of his own page's card ([OG images](og-images.md#rendering-and-assets)), and he says the
+tip in a post's „Parky sagt“ card (`> [!PARKY]`, `BlogParkySays`), whose „Frag Parky dazu“ opens
+the chat with a question about it ([authoring guide](../../content/blog/README.md#parky-says)).
 
 - **On holiday** he stands at a lake in Florida with his park map held low (`ParkyMap still`), a
   suitcase beside him, a flamingo in the shallows, a coaster on the far shore and a launch from the
@@ -119,6 +125,44 @@ planner stop he is the live drawing, calm, beside his speech bubble, and takes o
   Their gradient ids come from `useId()`: a page can hold one scene twice (the Plan menu keeps a
   closed band's copy mounted under `hidden`), and a `url(#…)` that reaches a hidden copy's gradient
   paints nothing, which left the wizard's Parky without a body.
+- **His verdict, a stamp** (`ParkyStamp`, `components/assistant/parky/parky-stamp.tsx`): a short
+  capitalised label in a double ring, tilted by 7°, in the ink of its `tone` (`good` the open-status
+  green, `meh` the amber and `bad` the red of the crowd scale), Parky (wheel, bubble, eyes) looking
+  over its top edge with both mittens on it, about half the width of a short label so he reads as
+  himself and not as a dot. It stamps down once, 220 ms, never under reduced motion. `size` is
+  `sm` for cards, `md` for a calendar day. Given a `question` it is a button that opens the chat
+  with it (source `stamp`), a tab stop of its own that never follows the card's link.
+
+  **A stamp says what the number beside it does not**, so it is rare by design and never comes
+  just because a park is very empty or very full:
+
+  - **Only on a ride that usually queues**: its usual wait is at least `STAMP_MIN_USUAL`
+    (20 minutes). A walk-on on a ride that is a walk-on anyway is no news (`rideStampVerdict`).
+  - **On the park page's ride cards, only what stands out in the park**: „Walk-on!“ where the live
+    wait is a walk-on as his line counts one (`isWalkOn`: 10 minutes or less, or Disney's posted 13) and the ride's `baseline` is at
+    least 20. `standoutRides` decides it once for the whole park (`TabsWithHash`, through
+    `LandSection`'s `standouts` to the card's `parkyStamp`): when more than `STANDOUT_MAX` (three)
+    rides stand out at once, the park is simply empty, every crowd badge says so, and no card gets
+    a stamp. Other lists of ride cards (favourites, posts) have no stamp. On the card it sits half
+    over the seam between the photo and the wait panel, on the right: Parky stands in the corner
+    under the circles, the badges keep out of that corner (`PARKY_CORNER`), the top panel is at
+    least 104 px high so he clears the circles, and the sparkline stays free. A phone row, one
+    line high, leaves it out.
+  - **On a ride's own page** it sits beside the live wait in „Wartezeit jetzt“ (`RideNowPanel`),
+    measured against the typical for this hour printed under it: „Walk-on!“, and „Jetzt hin!“ when
+    the printed wait is at most half that typical (`BELOW_TYPICAL_SHARE`). The page holds only this
+    ride live, so there is no park-wide count; the visitor here is deciding about this one ride.
+  - **In the calendar's day dialog**, the verdict on Parky's tip for the day.
+  - **No park card has one**: a very low crowd is what the card's crowd badge already says.
+
+- **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a
+  `pose`, his one line under it (`parkyStill.empty`) and, given a question, „Frag Parky“
+  (`ParkyAskButton`, source `empty`, shown only where the gate lets Parky in). `lost` on the 404,
+  his map upside down; `dizzy` on an error, one teacup ride too many; `smitten` with heart eyes and
+  a heart in the empty favourites band; `searching` with the glass where a search found nothing;
+  `asleep` in his nightcap on the maintenance page, without a button. No loop: these are read,
+  not watched. The map, the glass, the nightcap, the question mark and the heart eyes are the live
+  acts' own pieces (`props.tsx`, `eyes.tsx`), and `HolidayParky` draws the figure.
 - **A new region gets its own picture** of him on holiday there, the same way, as its entry's
   `scene` in the registry (`components/layout/region-art/<slug>.tsx`,
   [trip regions](trip-regions.md#the-planner-band-with-several-regions)).

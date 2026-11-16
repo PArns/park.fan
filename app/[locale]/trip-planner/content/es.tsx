@@ -23,8 +23,8 @@ export function ContentES({ day, entries }: { day: PlanDay; entries: PlannerEntr
           Cada atracción de tu plan es un bloque en la línea de tiempo del día, y mide tanto como la
           cola que te espera a esa hora. Si lo arrastras a una hora más llena, crece; en una más
           tranquila, encoge. Entre dos bloques está el enlace, con la distancia hasta la siguiente
-          atracción y si te da tiempo. «Justo» quiere decir que deja de salir en cuanto la espera
-          anterior se desvía tanto como suele hacerlo.
+          atracción y si te da tiempo. «Justo» quiere decir que solo llegas al cambio si caminas a
+          buen paso.
         </P>
         <P>
           Abajo hay un plan para <A href={PARK}>Phantasialand</A> el sábado 12 de septiembre de

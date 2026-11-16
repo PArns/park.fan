@@ -122,6 +122,9 @@ Say you want to ride as much as you can on 22 November and still catch Magic Sym
 
 At 6 p.m. you head to your theatre show. After that there's time for one of the outdoor shows or a last ride, and at around 7:50 p.m. you're on Kaiserplatz for Magic Symphony. If you skip the shows, you've got nine hours of riding and can save a second Taron ride for just before 8 p.m.
 
+> [!PARKY]
+> Until 6 p.m. the park is quiet, so we ride as much as we can in those hours, Taron and F.L.Y. straight from 11. At 6 we sit down for a theatre show, and at around 7:50 we’re on Kaiserplatz for Magic Symphony. No music in the line? Then I’ll hum.
+
 ## Tickets and parking on 22 November
 
 Phantasialand only sells tickets online, and only for a fixed date. You can still buy one on the day of your visit until 2 p.m., and children up to three get in free. The shop only shows the child price once you've picked a date.

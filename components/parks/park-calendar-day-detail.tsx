@@ -38,6 +38,7 @@ import { Link } from '@/i18n/navigation';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { DialogHero } from '@/components/common/dialog-hero';
 import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
+import { ParkCalendarParkyTip } from '@/components/parks/park-calendar-parky-tip';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { Precip, Temp, Wind as WindValue } from '@/components/common/unit-display';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
@@ -398,6 +399,17 @@ export function ParkCalendarDayDetail({
           )}
           aria-busy={navigating}
         >
+          {planner && (
+            <ParkCalendarParkyTip
+              geo={planner.geo}
+              parkSlug={planner.parkSlug}
+              parkName={planner.parkName}
+              date={day.date}
+              dateLabel={title}
+              open={open && !navigating}
+              onAsk={() => onOpenChange(false)}
+            />
+          )}
           {day.status === 'OPERATING' && day.hours && (
             <div className="text-muted-foreground flex items-center gap-2 text-sm">
               <Clock className="h-4 w-4" />

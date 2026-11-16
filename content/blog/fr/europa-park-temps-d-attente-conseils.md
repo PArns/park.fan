@@ -710,6 +710,9 @@ Atlantica et le rafting des fjords culminent l’après-midi.
 
 À l’ouverture, les deux attractions aquatiques n’ont presque pas de file ; Poseidon culmine à onze heures, Atlantica seulement l’après-midi. Qui accepte de se faire mouiller le matin fait les deux dans le temps qu’il lui faudrait à midi pour une seule.
 
+> [!PARKY]
+> Se faire tremper à dix heures du matin ? Je suis partant. Poseidon et Atlantica n’ont presque pas de file à l’ouverture, alors on fait les deux dans le temps qu’il faut à midi pour une seule. À onze heures, Poseidon a sa plus longue file de la journée, et nous, on la regarde de l’extérieur, en dégoulinant.
+
 Un déroulé de journée qui en découle :
 
 1. **Au Voletarium dès l’ouverture.** L’Allemagne est proche de l’entrée, et à

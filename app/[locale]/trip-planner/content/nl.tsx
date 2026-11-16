@@ -24,7 +24,7 @@ export function ContentNL({ day, entries }: { day: PlanDay; entries: PlannerEntr
           als de wachttijd die je op dat uur kunt verwachten. Sleep je het naar een drukker uur, dan
           groeit het, in een rustiger uur krimpt het. Tussen twee blokken staat de overstap, met de
           afstand tot de volgende attractie en of de tijd genoeg is. &ldquo;Krap&rdquo; betekent dat
-          het niet meer lukt zodra de wachttijd ervoor er zoveel naast zit als gewoonlijk.
+          je de overstap alleen haalt als je flink doorloopt.
         </P>
         <P>
           Hieronder staat een plan voor <A href={PARK}>Phantasialand</A> op zaterdag 12 september

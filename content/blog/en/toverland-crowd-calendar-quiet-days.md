@@ -322,6 +322,9 @@ lunch, peaking around 2 p.m.
 
 When that last hour is depends on the day. From May to October 2026, outside the holidays, the park closed at 5.30 p.m. on weekdays and 6 p.m. at weekends, at 7 or 8 p.m. in the summer holidays and at 11 p.m. on Halloween Nights evenings. On a Wednesday in September that makes it the hour from 4.30 p.m.
 
+> [!PARKY]
+> Troy keeps its own clock. Its longest queue comes around 11, and just as the rest of the park heads off for lunch, it gets shorter. So we eat later. A churro after Troy beats a churro in the queue anyway.
+
 ![The wooden Trojan horse with the queue in front of it | Troy in Ithaka. The Trojan horse stands at the entrance, the track behind it among the trees. | left](/media/toverland/troy-4x3.jpg)
 
 With no fast pass on sale at Toverland, the order is your only tool against the queues. On a Wednesday in

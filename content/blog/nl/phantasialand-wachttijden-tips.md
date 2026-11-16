@@ -357,6 +357,9 @@ Mijn volgorde, die ik op één punt naar onze gegevens per uur heb omgebouwd:
    terwijl hij loopt, zit een hele theaterzaal vol mensen binnen en niet voor je
    in de rij.
 
+> [!PARKY]
+> Loop niet van Taron meteen door naar Rookburgh: bij F.L.Y. is de rij om 11 uur het langst en aan het eind van de middag het kortst. Wij vliegen dus rond theetijd, en een beetje los van mijn stoel kom ik toch wel.
+
 [Taron](ref:phantasialand/taron?full)
 [F.L.Y.](ref:phantasialand/fly?full)
 

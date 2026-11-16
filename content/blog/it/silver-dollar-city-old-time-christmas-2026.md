@@ -103,6 +103,9 @@ Babbo Natale riceve nella Santa's Cottage, dentro la Carousel Barn, fino al 23 d
 
 Con il freddo è proprio Thunderation a resistere più a lungo: funziona fino a 32 °F (0 °C). Outlaw Run chiude già a 34 °F (1 °C) e riparte solo da 37 °F (quasi 3 °C), Time Traveler chiude a 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) è al coperto e nell'elenco delle temperature non c'è. Se per colpa del meteo la visita si accorcia, alla biglietteria si riceve gratis un biglietto per un altro giorno di apertura della stagione in corso.
 
+> [!PARKY]
+> Giornata fredda a Branson? Allora cominciamo da Thunderation: funziona ancora a 0 °C, quando Outlaw Run si è già fermato a 1 °C, e il 2 gennaio 2027 fa il suo ultimo giro.
+
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
 ```

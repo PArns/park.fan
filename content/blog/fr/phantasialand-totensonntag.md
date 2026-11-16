@@ -123,6 +123,9 @@ Admettons que tu veuilles enchaîner le plus d’attractions possible le 22 nove
 
 À 18 h, direction ton spectacle en salle. Après, il reste le temps pour un spectacle en plein air ou un dernier tour. Vers 19 h 50, tu te places sur la Kaiserplatz pour Magic Symphony. Si tu laisses les spectacles de côté, tu as neuf heures pour les attractions et tu peux garder un second tour de Taron pour la fin, jusqu’à 20 h.
 
+> [!PARKY]
+> Jusqu’à 18 h, le parc est silencieux, alors on enchaîne les attractions pendant ces heures-là, Taron et F.L.Y. dès 11 h. À 18 h, on s’assoit pour un spectacle en salle, et vers 19 h 50, on est sur la Kaiserplatz pour Magic Symphony. Pas de musique dans la file ? Je fredonne, alors.
+
 ## Billets et parking le 22 novembre
 
 Le Phantasialand ne vend ses billets qu’en ligne, et toujours pour une date précise. Le jour même, tu peux encore en acheter jusqu’à 14 h. Les enfants jusqu’à trois ans entrent gratuitement. Le tarif enfant n’apparaît dans la boutique qu’une fois la date choisie.

@@ -2500,6 +2500,9 @@
     "update": "Update",
     "updateOn": "Update van {date}",
     "quoteOriginal": "Origineel in het {language}",
+    "parkySays": "Parky zegt",
+    "parkyAsk": "Vraag Parky ernaar",
+    "parkyAskQuestion": "Over je tip in ‘{title}’: {tip} Vertel me er meer over.",
     "languageNotice": {
       "available": "Dit artikel is ook beschikbaar in het {language}",
       "fallback": "Nog niet vertaald – je ziet de {language}-versie."
@@ -2897,7 +2900,6 @@
       "distance": "{distance} hemelsbreed",
       "minWalk": "minstens {minutes} min overstap",
       "allowance": "incl. uitstappen en de rit zelf, geschat",
-      "noSpread": "gerekend zonder de spreiding van de prognose",
       "gap": "{minutes} min"
     },
     "close": "Selectie opheffen",
@@ -2947,6 +2949,7 @@
       "failed": "De optimalisatie kon niet draaien. Je plan is niet veranderd.",
       "hint": "Zet de attracties op volgorde van hun uurcurves, de loopafstand ertussen en hun openingstijd. Pauzes en afgevinkte attracties blijven staan.",
       "saved": "{minutes} min. minder wachten",
+      "walkSaved": "{minutes} min. minder lopen",
       "already": "Staat al goed",
       "fitted": "{count, plural, one {één attractie past nu in de dag} other {# attracties passen nu in de dag}}",
       "resolved": "{count, plural, one {één conflict minder} other {# conflicten minder}}",
@@ -5914,6 +5917,36 @@
       "plannerDescription": "Plan je parkdag zelf, attractie voor attractie.",
       "parks": "Alle parken",
       "parksDescription": "Wachttijden en voorspellingen voor elk park."
+    }
+  },
+  "parkyStill": {
+    "stamp": {
+      "verdict": "Parky’s oordeel: {label}",
+      "ask": "{verdict} – vraag het Parky",
+      "walkOn": "Walk-on!",
+      "walkOnQuestion": "{ride} heeft nu {minutes, plural, =0 {helemaal geen wachttijd} =1 {maar één minuut wachttijd} other {maar # minuten wachttijd}}. Moet ik er nu heen, en wat pak ik daarna?",
+      "belowTypical": "Nu gaan!",
+      "belowTypicalQuestion": "{ride} heeft nu maar {minutes} minuten wachttijd, op dit uur is dat meestal {typical} minuten. Moet ik er nu heen?"
+    },
+    "empty": {
+      "ask": "Vraag het Parky",
+      "lostLine": "Deze pagina staat op geen enkele kaart. Ik heb gekeken, ook ondersteboven.",
+      "lostQuestion": "Ik zocht een pagina die niet bestaat ({path}). Waar vind ik wat ik zoek?",
+      "dizzyLine": "Hier ging iets mis. Mijn hoofd tolt nog: één rondje theekopjes te veel.",
+      "dizzyQuestion": "Er ging hier net iets mis. Kun je me toch verder helpen?",
+      "smittenLine": "Eén ster bij een park of attractie en ik vergeet ’m nooit meer.",
+      "smittenQuestion": "Welke parken en attracties moet ik als favoriet bewaren?",
+      "searchingLine": "Ik heb overal met mijn vergrootglas gekeken. Misschien anders gespeld?",
+      "searchingQuestion": "Ik zocht naar “{query}” en vond niets. Kun je me helpen?",
+      "asleepLine": "De wachttijden houden even pauze, ik ook. Zo zijn we terug."
+    },
+    "tip": {
+      "label": "Parky's tip",
+      "good": "Topdag!",
+      "meh": "Gaat wel",
+      "bad": "Liever niet",
+      "ask": "Vraag Parky naar deze dag",
+      "question": "Over {day} in {park} zeg je: ‘{tip}’ Hoe halen we het meeste uit die dag?"
     }
   }
 }

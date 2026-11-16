@@ -333,6 +333,9 @@ se llenan después de comer, con su pico hacia las 14:00.
 
 Cuándo es esa última hora depende del día. De mayo a octubre de 2026, fuera de vacaciones, el parque cerraba a las 17:30 entre semana y a las 18:00 los fines de semana, a las 19:00 o las 20:00 en las vacaciones de verano y a las 23:00 las noches de Halloween Nights. Un miércoles de septiembre es, por tanto, la hora que empieza a las 16:30.
 
+> [!PARKY]
+> Troy va con su propio reloj. Su cola más larga llega hacia las 11:00, y justo cuando el resto del parque se va a comer, se acorta. Así que nosotros comemos más tarde. Un churro después de Troy sabe mejor que uno en la cola, eso seguro.
+
 ![El caballo de Troya de madera, con la cola delante | Troy en Ithaka. El caballo de Troya está en la entrada, el recorrido detrás, entre los árboles. | left](/media/toverland/troy-4x3.jpg)
 
 Como Toverland no vende pase rápido, contra las colas solo ayuda el orden. Un

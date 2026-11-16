@@ -14,6 +14,7 @@ export function isForecastRelayPath(path: readonly string[]): boolean {
     rest === 'calendar' ||
     rest === 'calendar/hourly' ||
     rest === 'best-days' ||
+    rest === 'parky-tip' ||
     rest === 'plan/day' ||
     rest === 'plan/optimize' ||
     rest === 'stats/day' ||

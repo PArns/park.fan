@@ -32,11 +32,22 @@ export interface PlanScore {
   /** Minutes queued across the stops that happen, raw rather than on the five-minute grid. */
   totalWaitMinutes: number;
   idleMinutes: number;
+  /**
+   * Minutes on foot between the stops that happen, which the optimizer weighs too. Absent where
+   * the API does not report it; read it through {@link walkSaved}.
+   */
+  walkMinutes?: number;
   endMinute: number;
   /** Stops whose queue is joined after closing. */
   overflow: number;
   /** Times the next thing starts before the one before it is over and walked from. */
   clashes: number;
+}
+
+/** Minutes on foot a press saves, raw; zero where either score does not report its walking. */
+export function walkSaved(before: PlanScore, after: PlanScore): number {
+  if (before.walkMinutes === undefined || after.walkMinutes === undefined) return 0;
+  return before.walkMinutes - after.walkMinutes;
 }
 
 /** The fit assistant's answer for one choice, as the API sends it. */
@@ -86,6 +97,7 @@ export interface OptimizeAnswer {
     stops: OptimizeStop[];
     totalWaitMinutes: number;
     idleMinutes: number;
+    walkMinutes?: number;
     endMinute: number;
     overflow: number;
     /** Rides left out because one search holds at most `maxStops`. */

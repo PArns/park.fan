@@ -2,6 +2,7 @@ import { Extension } from '@tiptap/core';
 import { Plugin, PluginKey } from '@tiptap/pm/state';
 import { Decoration, DecorationSet } from '@tiptap/pm/view';
 import type { Node as PMNode } from '@tiptap/pm/model';
+import { CALLOUT_MARKER_RE as MARKER_RE } from '@/lib/blog/remark-callouts';
 
 /**
  * WYSIWYG layer for GitHub-style alert callouts:
@@ -13,8 +14,6 @@ import type { Node as PMNode } from '@tiptap/pm/model';
  * only decorates the blockquote and styles the marker as a pill. Deleting the marker makes it a
  * plain quote again.
  */
-
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|UPDATE|QUOTE)\]/;
 
 interface CalloutSpan {
   /** Blockquote node position. */

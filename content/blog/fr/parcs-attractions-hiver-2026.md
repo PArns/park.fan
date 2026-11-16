@@ -460,6 +460,9 @@ semaine entre le 16 novembre et le début des vacances de Noël en
 Rhénanie-du-Nord-Westphalie, le 23 décembre, de préférence un jeudi ou un
 vendredi, quand les trois spectacles en salle se jouent.
 
+> [!PARKY]
+> Ma journée Wintertraum : un jeudi ou un vendredi entre le 16 novembre et le 23 décembre. En semaine, on a la meilleure chance, et ces deux jours-là, les trois spectacles en salle se jouent. Entre Noël et le Nouvel An, c’était plein partout l’hiver dernier, et râler dans une file en plein froid, très peu pour moi.
+
 Ne prenez pas le calendrier d’affluence au mot pour cet hiver-ci. Fin septembre 2026, il
 classait chaque jour de décembre à Brühl en « Faible » ou « Très
 faible », y compris les jours entre Noël et le Nouvel An qui étaient tous en

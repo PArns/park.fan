@@ -1,7 +1,8 @@
 import type { LiveParkSnapshot } from '@/lib/api/parks';
-import type { CrowdLevel, ParkAttraction } from '@/lib/api/types';
+import type { CrowdLevel, ParkAttraction, ParkStatus } from '@/lib/api/types';
 import { getLiveAttractionStatus, getStandbyWait } from '@/lib/utils/park-utils';
 import { stripNewPrefix } from '@/lib/utils';
+import { WALK_ON_WAIT_MINUTES, roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ParkyPlay } from './acts';
 
 /**
@@ -18,6 +19,71 @@ export type LiveChange = 'down' | 'drop';
  * least this much and at least half the wait gone).
  */
 export const LIVE_LIMITS = { walkOn: 10, queue: 60, drop: 20 } as const;
+
+/**
+ * Whether a live standby wait is a walk-on: at or under `limit`, or Disney's posted 13
+ * ({@link WALK_ON_WAIT_MINUTES}), the park's own sign for one, which sits above the limit.
+ */
+export function isWalkOn(wait: number, limit: number = LIVE_LIMITS.walkOn): boolean {
+  return wait <= limit || wait === WALK_ON_WAIT_MINUTES;
+}
+
+/**
+ * How far under its usual wait for the hour a ride has to be for „Jetzt hin!“: at most half. A few
+ * minutes under the usual moves from one poll to the next; half of a usual 40 is a 20 the visitor
+ * does not get at this hour on an ordinary day.
+ */
+export const BELOW_TYPICAL_SHARE = 0.5;
+
+/**
+ * A stamp is only news on a ride that usually queues at least this long. A walk-on on a ride that
+ * is a walk-on anyway says nothing the wait beside it does not.
+ */
+export const STAMP_MIN_USUAL = 20;
+
+/**
+ * More rides than this standing out at once, and none does: the park is simply empty, and every
+ * card's crowd badge already says so.
+ */
+export const STANDOUT_MAX = 3;
+
+/** What Parky's stamp says about one ride's live wait (`parkyStill.stamp`). */
+export type RideStampVerdict = 'walkOn' | 'belowTypical';
+
+/**
+ * Parky's stamp for a ride's live standby `wait` against its `usual` wait, null where it says
+ * nothing: no usual, or one under {@link STAMP_MIN_USUAL}. Otherwise `walkOn` for a walk-on as his
+ * own line counts one ({@link isWalkOn}), and `belowTypical` when the five-minute figure the page
+ * prints is at most {@link BELOW_TYPICAL_SHARE} of the usual. The ride page's usual is the typical
+ * for this hour it prints under the wait; a park's list uses each ride's `baseline`.
+ */
+export function rideStampVerdict(wait: number, usual: number | null): RideStampVerdict | null {
+  if (usual === null || usual < STAMP_MIN_USUAL) return null;
+  if (isWalkOn(wait)) return 'walkOn';
+  if (roundWaitTo5(wait) <= usual * BELOW_TYPICAL_SHARE) return 'belowTypical';
+  return null;
+}
+
+const NO_STANDOUTS: ReadonlyMap<string, RideStampVerdict> = new Map();
+
+/**
+ * The rides of one park whose live wait stands out against their own `baseline` right now, with
+ * their {@link rideStampVerdict}: open, as `parkStatus` and the ride's own status read together.
+ * None at all when more than {@link STANDOUT_MAX} do, since then nothing stands out.
+ */
+export function standoutRides(
+  rides: readonly ParkAttraction[],
+  parkStatus?: ParkStatus
+): ReadonlyMap<string, RideStampVerdict> {
+  const standouts = new Map<string, RideStampVerdict>();
+  for (const ride of rides) {
+    if (getLiveAttractionStatus(ride, parkStatus) !== 'OPERATING') continue;
+    const wait = getStandbyWait(ride);
+    const verdict = wait === null ? null : rideStampVerdict(wait, ride.baseline ?? null);
+    if (verdict) standouts.set(ride.id, verdict);
+  }
+  return standouts.size > STANDOUT_MAX ? NO_STANDOUTS : standouts;
+}
 
 /**
  * `?parky=live`: any open queue counts as long, so an open park always has its line; the walk-on
@@ -185,8 +251,10 @@ export function liveMoment(
   if (park.status !== 'OPERATING') return null;
   const limits = preview ? PREVIEW_LIMITS : LIVE_LIMITS;
   const rides = ridesOf(park);
-  const walkOn = openHeadliners(rides, headliners)[0];
-  if (walkOn && walkOn.wait! <= limits.walkOn) {
+  const walkOn = openHeadliners(rides, headliners).find((ride) =>
+    isWalkOn(ride.wait!, limits.walkOn)
+  );
+  if (walkOn) {
     return { kind: 'walkOn', ride: walkOn.name, wait: walkOn.wait! };
   }
   // As the park header reads it: the day's statistic, else the live load.

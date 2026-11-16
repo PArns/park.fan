@@ -334,6 +334,9 @@ voll, mit der Spitze gegen 14 Uhr.
 
 Wann die letzte Stunde ist, hängt vom Tag ab. Von Mai bis Oktober schloss der Park 2026 außerhalb der Ferien unter der Woche um 17:30 Uhr und am Wochenende um 18 Uhr, in den Sommerferien um 19 oder 20 Uhr und an den Abenden der Halloween Nights um 23 Uhr. An einem Septembermittwoch ist es also die Stunde ab 16:30 Uhr.
 
+> [!PARKY]
+> Troy hat seine eigene Uhr. Um 11 Uhr steht dort die längste Warteschlange, und genau wenn der Rest des Parks zum Mittagessen geht, wird sie kürzer. Wir essen also später. Ein Churro nach Troy schmeckt sowieso besser als einer in der Warteschlange.
+
 ![Das hölzerne trojanische Pferd, davor die Warteschlange | Troy in Ithaka. Das trojanische Pferd steht vor dem Eingang, die Strecke dahinter zwischen den Bäumen. | left](/media/toverland/troy-4x3.jpg)
 
 Weil das Toverland keinen Fastpass verkauft, hilft gegen das Anstehen nur die Reihenfolge. An einem Mittwoch im September brauchst du die Reihenfolge kaum. An einem Samstag in den

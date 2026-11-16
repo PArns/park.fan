@@ -156,6 +156,17 @@ export const CLASS_ACTS: Record<'fidget' | 'showy' | 'sleepy', readonly (ParkyAc
   sleepy: ['yawn', 'nap', 'nightcap', 'doze'],
 };
 
+/** The showy acts that rise above Parky's corner into the page: a ride and airtime. */
+const RISING: ReadonlySet<ParkyAct | 'ride'> = new Set(['ride', 'airtime']);
+
+/**
+ * A showy pool for a page that is read rather than browsed (a post, a glossary entry): his tricks
+ * stay, the acts that rise into the text beside him go.
+ */
+export function quietShowy<T extends ParkyAct | 'ride'>(pool: readonly T[]): T[] {
+  return pool.filter((act) => !RISING.has(act));
+}
+
 /** How Parky wakes up when somebody moves, calm or not. */
 export const WAKE_ACTS = [
   'startle',

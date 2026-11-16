@@ -14,6 +14,7 @@ import { BEST_TIME_SEGMENTS } from '@/lib/best-time/segments';
 import { regionMessagesPath } from '@/i18n/client-messages';
 import { LIVE_TRIP_REGIONS, liveTripRegion } from '@/lib/trip-regions/registry';
 import { OgBrandLockup } from '@/lib/og/brand-mark';
+import { OgParky } from '@/lib/og/parky-mark';
 import { ogBackgroundSrc } from '@/lib/og/background-photo';
 import { ogAsJpeg } from '@/lib/og/jpeg';
 import { OG_IMAGE_FILENAME } from '@/lib/utils/og-image';
@@ -385,6 +386,9 @@ export async function GET(
     // Park & attraction cards ("place cards") get the centred, large-headline treatment:
     // they carry no badge row any more, so the name and location own the composition.
     const isPlaceCard = !['CONTINENT', 'COUNTRY', 'CITY', 'GENERIC', 'HOME'].includes(type);
+    // Parky's own page puts him on the card large, in place of the search badge, beside a title
+    // narrowed to leave him room.
+    const isParkyCard = type === 'GENERIC' && secondSegment === 'parky';
 
     // Background photo, inlined off the deployment's own disk rather than fetched over the public
     // internet on every render — see lib/og/background-photo.ts for the measurements. Falls back
@@ -745,7 +749,7 @@ export async function GET(
                       lineHeight: 1.1,
                       letterSpacing: '-0.02em',
                       textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                      maxWidth: '90%',
+                      maxWidth: isParkyCard ? '62%' : '90%',
                       ...(isPlaceCard ? { textAlign: 'center', justifyContent: 'center' } : {}),
                     }}
                   >
@@ -790,7 +794,7 @@ export async function GET(
                     park-count badge that just repeated the footer line below. */}
 
                   {/* Status Badges Row - GENERIC */}
-                  {type === 'GENERIC' && (
+                  {type === 'GENERIC' && !isParkyCard && (
                     <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
                       <div
                         style={{
@@ -811,6 +815,12 @@ export async function GET(
                     </div>
                   )}
                 </div>
+
+                {isParkyCard && (
+                  <div style={{ position: 'absolute', right: 56, bottom: 36, display: 'flex' }}>
+                    <OgParky size={400} />
+                  </div>
+                )}
 
                 {/* Bottom Section: regional stats only. Park/attraction cards used to
                   show the current wait time here; that is exactly the data which forced

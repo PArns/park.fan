@@ -103,6 +103,9 @@ Santa sitzt in Santa's Cottage in der Carousel Barn, laut Eventbeschreibung bis 
 
 Bei Kälte hält ausgerechnet Thunderation am längsten durch, sie fährt bis 32 Grad Fahrenheit (0 °C). Outlaw Run schließt schon bei 34 °F (1 °C) und startet erst ab 37 °F (knapp 3 °C) wieder, Time Traveler schließt bei 41 °F (5 °C). [Fire In The Hole](ref:silver-dollar-city/new-fire-in-the-hole) fährt in einem Gebäude und steht auf der Temperaturliste nicht. Muss ein Besuch wegen des Wetters kürzer ausfallen, gibt es am Ticketschalter ein kostenloses Ticket für einen weiteren Betriebstag der laufenden Saison.
 
+> [!PARKY]
+> Kalter Tag in Branson? Dann fangen wir mit Thunderation an: Sie fährt noch bei 0 °C, wenn Outlaw Run schon bei 1 °C Pause macht, und am 2. Januar 2027 dreht sie ihre letzte Runde.
+
 ```ride-waits-widget park=silver-dollar-city top=8 columns=peak,days
 
 ```

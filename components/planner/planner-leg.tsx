@@ -75,7 +75,6 @@ export function PlannerLeg({
     leg.metres !== null ? t('transfer.distance', { distance: formatDistance(leg.metres) }) : null,
     t('transfer.minWalk', { minutes: leg.floorMinutes }),
     t('transfer.allowance'),
-    leg.missing === 'no-spread' ? t('transfer.noSpread') : null,
   ]
     .filter(Boolean)
     .join(' · ');
@@ -142,7 +141,6 @@ export function PlannerLeg({
               <span className="opacity-70 max-[399px]:hidden">{signed(slack)}</span>
             )}
             <span>{verdictLabel}</span>
-            {leg.missing === 'no-spread' && <span aria-hidden="true">°</span>}
           </span>
         )}
       </div>

@@ -168,6 +168,14 @@ post ([after the post](post-page-end.md)). The field is a button drawn like a te
 mounts the palette on a touch device once it is a screen away (`prewarm="near"`), so the first tap
 raises the keyboard without putting cmdk on the idle path of every post view.
 
+## Nothing found
+
+Where a search finds nothing, the palette, the hero's panel (`SearchResultsPanel`) and `/search`
+show Parky with his magnifying glass and a question mark (`ParkyPose pose="searching"`), his line
+and „Frag Parky“, which opens the chat with the query in a question
+(`parkyStill.empty.searchingQuestion`, `askParky(…, 'empty')`). The query goes to the chat only
+when the visitor presses it, as if typed; the statistic still never sees it.
+
 ## What is counted
 
 Every search surface reports through our own statistic (`trackSiteEvent`,
