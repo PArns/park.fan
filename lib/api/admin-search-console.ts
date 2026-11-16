@@ -165,3 +165,43 @@ export interface SearchConsoleReindexRecord {
   requestsLast24h: number;
   dailyLimit: number;
 }
+
+/** One week of a keyword in `GET /v1/admin/search-console/keywords`; no position when not shown. */
+export interface KeywordWeek {
+  clicks: number;
+  impressions: number;
+  position: number | null;
+}
+
+/** How a keyword moved: `up` and `down` from one place on. */
+export type KeywordTrend = 'up' | 'down' | 'same' | 'new' | 'lost';
+
+/** One monitored keyword. `change` is in places, positive is up. */
+export interface KeywordRow {
+  query: string;
+  page: string | null;
+  current: KeywordWeek;
+  previous: KeywordWeek;
+  change: number | null;
+  trend: KeywordTrend;
+}
+
+/** The weekly keyword report: last complete week against the one before. */
+export interface KeywordReport {
+  current: { from: string; to: string } | null;
+  previous: { from: string; to: string } | null;
+  complete: boolean;
+  summary: {
+    keywords: number;
+    /** Percent of the clicks the keywords would get at position 1. */
+    visibility: { current: number; previous: number; change: number };
+    top3: { current: number; previous: number };
+    top10: { current: number; previous: number };
+    risers: { keywords: number; places: number };
+    fallers: { keywords: number; places: number };
+    new: number;
+    lost: number;
+  };
+  movers: { risers: KeywordRow[]; fallers: KeywordRow[] };
+  items: KeywordRow[];
+}
