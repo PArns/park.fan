@@ -13,7 +13,7 @@ import {
   worksPeriodOn,
   worksPeriodsOf,
 } from '@/lib/utils/works-period';
-import type { ParkWithAttractions, WorksPeriod } from '@/lib/api/types';
+import type { ParkSeason, ParkWithAttractions, WorksPeriod } from '@/lib/api/types';
 import { getBestDaysCalendar, getBestDaysForApiKey } from '@/lib/api/integrated-calendar';
 import { convertApiUrlToFrontendUrl } from '@/lib/utils/url-utils';
 import { noLiveWaitTimesReason } from '@/lib/utils/live-wait-times';
@@ -71,6 +71,11 @@ async function resolvePark(query: string) {
   return segments ? { name: hit.name, path, segments } : null;
 }
 
+/** The API path of a park, from its four slugs. */
+function parkApiPath(segments: readonly string[]): string {
+  return `/v1/parks/${segments.join('/')}`;
+}
+
 /**
  * A maintenance window as an agent reads it: park-local days, both inclusive, and whether the end
  * is park.fan's estimate rather than a date the park published. `null` bounds are open.
@@ -114,10 +119,7 @@ async function parkForCaller(
   { data: ParkWithAttractions | null; waitsOnly: boolean; keyNote?: string } | { error: string }
 > {
   if (grant?.via === 'key') {
-    const keyed = await readWithApiKey<ParkWithAttractions>(
-      `/v1/parks/${segments.join('/')}`,
-      grant.apiKey
-    );
+    const keyed = await readWithApiKey<ParkWithAttractions>(parkApiPath(segments), grant.apiKey);
     if (!isApiKeyRefusal(keyed)) return { data: keyed, waitsOnly: false };
     if (keyed.status !== 403) return { error: keyed.message };
     return {
@@ -226,17 +228,27 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
     const grant = context?.keyGrant;
+    const apiKey = grant?.via === 'key' ? grant.apiKey : null;
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
-    // The rides come from the park's cached structure, the entry the park page reads, and the
-    // seasons from the park page's own list, a year from today; a failed read costs the days
-    // their maintenance or season list, never the days.
+    // The rides come from the park's structure and the seasons from the park's list, a year from
+    // today: for a page the cached entries the park page reads, for a key what that key may read,
+    // so a key without `parks.seasons` gets no maintenance or seasons. A failed or refused read
+    // costs the days their maintenance or season list, never the days.
     const [snapshot, structure, seasons] = await Promise.all([
-      grant?.via === 'key'
-        ? getBestDaysForApiKey(...park.segments, grant.apiKey)
+      apiKey
+        ? getBestDaysForApiKey(...park.segments, apiKey)
         : getBestDaysCalendar(...park.segments),
-      catchNonFatal(getParkByGeoPath(...park.segments)),
-      getParkSeasons(...park.segments),
+      apiKey
+        ? readWithApiKey<ParkWithAttractions>(parkApiPath(park.segments), apiKey)
+            .then((read) => (isApiKeyRefusal(read) ? null : read))
+            .catch(() => null)
+        : catchNonFatal(getParkByGeoPath(...park.segments)),
+      apiKey
+        ? readWithApiKey<{ seasons: ParkSeason[] }>(`${parkApiPath(park.segments)}/seasons`, apiKey)
+            .then((read) => (isApiKeyRefusal(read) ? [] : (read.seasons ?? [])))
+            .catch(() => [])
+        : getParkSeasons(...park.segments),
     ]);
     if ('refused' in snapshot) return { error: snapshot.message };
     const rides = structure?.attractions ?? [];

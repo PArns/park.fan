@@ -87,7 +87,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`favorites.ts`](../../lib/api/favorites.ts)
 
-- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md).
+- `favoritesForCards` _function_: A favorites answer as the cards read it: every park and ride with its card photo, and a park with no readable wait-time source without the averages it has over an empty set (see docs/rules/parks-we-cannot-read.md). `/api/favorites` runs it.
 - `getFavorites` _function_: Get favorites with full details: the API directly on the server, and in the browser the `/api/favorites` relay, which sends the site's key. The API needs the ids as query parameters, so no ids means an empty answer without a request.
 - Types: `FavoritePark`, `FavoriteAttraction`, `FavoriteShow`, `FavoriteRestaurant`, `FavoritesResponse`
 

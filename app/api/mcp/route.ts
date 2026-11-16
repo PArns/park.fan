@@ -9,9 +9,9 @@ import { MCP_PROTOCOL_VERSION, MCP_SERVER_INFO } from '@/lib/agents/mcp-server-c
  * park.fan's MCP server: Streamable HTTP, stateless, read-only. Written out rather than taken from
  * the SDK, whose session store and SSE transport it does not need, so a cold start stays fast.
  * Stateless means no session id, so `initialize` returns capabilities only (within spec). GET is
- * 405 because it would open a server-to-client stream this server never writes to. The live tools
- * take no credential; a forecast tool needs a data key in `X-API-Key`, like the API's forecast
- * routes, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
+ * 405 because it would open a server-to-client stream this server never writes to. The wait-times
+ * tool takes no credential; the others need a data key in `X-API-Key`, like the API routes behind
+ * them, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).
  */
 
 // Live wait times: never cached, never prerendered.

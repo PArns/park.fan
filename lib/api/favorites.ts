@@ -197,7 +197,7 @@ export interface FavoritesResponse {
 /**
  * A favorites answer as the cards read it: every park and ride with its card photo, and a park
  * with no readable wait-time source without the averages it has over an empty set (see
- * docs/rules/parks-we-cannot-read.md). `/api/favorites` and the direct browser call both run it.
+ * docs/rules/parks-we-cannot-read.md). `/api/favorites` runs it.
  */
 export function favoritesForCards(map: CardImageMap, data: FavoritesResponse): FavoritesResponse {
   return {

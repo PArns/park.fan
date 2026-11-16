@@ -96,7 +96,7 @@ export interface TripRegionRelayTarget {
   region: string;
   /** The API path with its filtered query, `/v1/trip-regions/orlando/plan?from=…`. */
   apiPath: string;
-  /** Whether the answer carries forecasts, so only this site's own pages may ask. */
+  /** Whether the answer carries forecasts, which the Data Cache keeps shorter than the region. */
   forecast: boolean;
   cacheControl: string;
 }
@@ -105,7 +105,7 @@ export interface TripRegionRelayTarget {
  * The upstream request for a relay path and query, or `null` when the relay answers 400: a region
  * the registry does not list, an unknown route, a parameter the route does not take or a value
  * that is not one. A region that is not live yet passes: the admin's ticket page reads its parks
- * before its pages exist, and the keyed routes answer this site's own pages alone anyway.
+ * before its pages exist, and every route answers this site's own pages alone anyway.
  */
 export function tripRegionRelayTarget(
   path: readonly string[],
@@ -128,7 +128,7 @@ export function tripRegionRelayTarget(
     route,
     region,
     apiPath: `/v1/trip-regions/${region}${route ? `/${route}` : ''}${qs ? `?${qs}` : ''}`,
-    // The region and the school breaks carry no forecast: open routes, cached a day like the API's.
+    // The region and the school breaks carry no forecast and are cached a day, like the API's.
     forecast: route !== '' && route !== 'school-breaks',
     cacheControl:
       route && route !== 'school-breaks'

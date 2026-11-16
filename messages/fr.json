@@ -2923,12 +2923,18 @@
         "style": {
           "label": "Apparence",
           "value": "Au moins aussi grand que le texte courant autour, avec un contraste normal, et reconnaissable comme lien."
+        },
+        "duration": {
+          "label": "Durée",
+          "value": "Aussi longtemps que vous utilisez la clé. Sans le lien, la clé gratuite prend fin."
         }
       },
       "previewTitle": "Ce que ça donne",
       "sampleText": "Temps d’attente et prévisions :",
       "parkVariant": "Sous les données d’un parc",
-      "footerVariant": "Dans le pied de page du site entier"
+      "footerVariant": "Dans le pied de page du site entier",
+      "checkTitle": "Comment vérifier le lien",
+      "checkBody": "Ouvrez votre page, affichez son code source (pas les outils de développement) et cherchez park.fan. La balise <code>{tag}</code> avec l’adresse de park.fan doit s’y trouver, sans <code>nofollow</code>. Si le code source ne la contient pas, c’est un script qui l’ajoute plus tard, et elle ne compte pas."
     },
     "usage": {
       "kicker": "Requêtes",

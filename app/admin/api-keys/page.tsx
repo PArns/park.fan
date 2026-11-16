@@ -476,9 +476,11 @@ function KeyRow({
             <p>{formatAllowedParks(apiKey)}</p>
             {permissionsStored && (
               <p>
-                {isLegacyKey(apiKey)
-                  ? 'Altbestand ohne eigene Berechtigungen: liest alles'
-                  : formatPermissions(effectivePermissions(apiKey))}
+                {apiKey.usage === 'internal'
+                  ? 'liest alles, als park.fan selbst'
+                  : isLegacyKey(apiKey)
+                    ? 'Altbestand ohne eigene Berechtigungen: liest alles'
+                    : formatPermissions(effectivePermissions(apiKey))}
               </p>
             )}
           </>

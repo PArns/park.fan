@@ -2923,12 +2923,18 @@
         "style": {
           "label": "Aspecto",
           "value": "Al menos del tamaño del texto que lo rodea, con un contraste normal y reconocible como enlace."
+        },
+        "duration": {
+          "label": "Duración",
+          "value": "Mientras uses la clave. Sin el enlace, la clave gratuita se termina."
         }
       },
       "previewTitle": "Cómo se ve",
       "sampleText": "Tiempos de espera y previsiones:",
       "parkVariant": "Debajo de los datos de un parque",
-      "footerVariant": "En el pie de toda la web"
+      "footerVariant": "En el pie de toda la web",
+      "checkTitle": "Cómo comprobar el enlace",
+      "checkBody": "Abre tu página, mira su código fuente (no las herramientas de desarrollo) y busca park.fan. Ahí tiene que estar la etiqueta <code>{tag}</code> con la dirección de park.fan, sin <code>nofollow</code>. Si el código fuente no la contiene, la añade un script más tarde, y entonces no cuenta."
     },
     "usage": {
       "kicker": "Peticiones",

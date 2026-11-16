@@ -2923,12 +2923,18 @@
         "style": {
           "label": "Darstellung",
           "value": "Mindestens so groß wie der Fließtext daneben, mit normalem Kontrast und als Link erkennbar."
+        },
+        "duration": {
+          "label": "Dauer",
+          "value": "Solange du den Key nutzt. Fehlt der Link, endet der kostenlose Key."
         }
       },
       "previewTitle": "So sieht es aus",
       "sampleText": "Wartezeiten und Prognosen:",
       "parkVariant": "Unter den Daten eines Parks",
-      "footerVariant": "Im Footer der ganzen Website"
+      "footerVariant": "Im Footer der ganzen Website",
+      "checkTitle": "So prüfst du den Link",
+      "checkBody": "Öffne deine Seite, lass dir den Quelltext anzeigen (nicht die Entwicklertools) und such nach park.fan. Dort muss das <code>{tag}</code> mit der Adresse von park.fan stehen, ohne <code>nofollow</code>. Fehlt es im Quelltext, fügt es erst ein Skript ein, und dann zählt es nicht."
     },
     "usage": {
       "kicker": "Abfragen",

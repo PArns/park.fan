@@ -2923,12 +2923,18 @@
         "style": {
           "label": "Weergave",
           "value": "Minstens zo groot als de lopende tekst eromheen, met normaal contrast en herkenbaar als link."
+        },
+        "duration": {
+          "label": "Duur",
+          "value": "Zolang je de key gebruikt. Zonder link stopt de gratis key."
         }
       },
       "previewTitle": "Zo ziet het eruit",
       "sampleText": "Wachttijden en voorspellingen:",
       "parkVariant": "Onder de data van een park",
-      "footerVariant": "In de footer van de hele site"
+      "footerVariant": "In de footer van de hele site",
+      "checkTitle": "Zo controleer je de link",
+      "checkBody": "Open je pagina, bekijk de paginabron (niet de ontwikkelaarstools) en zoek naar park.fan. Daar moet de <code>{tag}</code> met het adres van park.fan staan, zonder <code>nofollow</code>. Ontbreekt hij in de bron, dan voegt een script hem pas later toe, en dan telt hij niet."
     },
     "usage": {
       "kicker": "Verzoeken",

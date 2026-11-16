@@ -10,8 +10,8 @@ import { isSlugPath } from '@/lib/utils/servable-route';
 /**
  * The hubs' relay to `/v1/trip-regions/<region>{,/calendar,/best-days,/plan,/plan/ideas}`: the planner
  * asks `/plan` on every change and the calendar asks other windows than the page rendered, and the
- * keyed routes need the site's data key, which never reaches a browser. The forecast branches
- * answer only this site's pages (docs/rules/a-forecast-leaves-only-with-a-key.md).
+ * routes need the site's data key, which never reaches a browser. Every route answers only this
+ * site's pages (docs/rules/a-forecast-leaves-only-with-a-key.md).
  *
  * The calendar and best days go through the Data Cache under the region's tag, so the window the
  * page rendered and the one its matrix then asks for are one upstream call. A plan and its ideas do
@@ -30,7 +30,8 @@ export async function GET(
   if (!target) {
     return NextResponse.json({ error: 'Invalid request' }, { status: 400, headers: NO_STORE });
   }
-  if (target.forecast && !isSameOriginRequest(request)) return foreignForecastRequest();
+  // Every trip-region route needs a key on the API, the region and its school breaks included.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
 
   const cached =
     target.route !== 'plan' && target.route !== 'plan/ideas' && target.route !== 'when';
