@@ -64,9 +64,9 @@ export function ParkCalendarParkyTip({
           {t('label')}
         </span>
         <span className="text-foreground/85 mt-1 block text-sm leading-snug">{tip.text}</span>
-        {/* The stamp at the foot, where the little Parky peeking over it has the gap above to
-            himself instead of covering the text or the dialog's band. */}
-        <span className="mt-7 flex items-end justify-between gap-3">
+        {/* The stamp at the foot, where Parky looking over it has the gap above to himself
+            instead of covering the text or the dialog's band. */}
+        <span className="mt-11 flex items-end justify-between gap-3">
           <span className="text-primary text-xs font-medium group-hover:underline">{t('ask')}</span>
           <ParkyStamp tone={tip.verdict} label={t(tip.verdict)} size="md" className="mr-1" />
         </span>

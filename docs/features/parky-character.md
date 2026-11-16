@@ -127,8 +127,9 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   paints nothing, which left the wizard's Parky without a body.
 - **His verdict, a stamp** (`ParkyStamp`, `components/assistant/parky/parky-stamp.tsx`): a short
   capitalised label in a double ring, tilted by 7°, in the ink of its `tone` (`good` the open-status
-  green, `meh` the amber and `bad` the red of the crowd scale), a tiny Parky (wheel, bubble, eyes)
-  peeking over its top edge. It stamps down once, 220 ms, never under reduced motion. `size` is
+  green, `meh` the amber and `bad` the red of the crowd scale), Parky (wheel, bubble, eyes) looking
+  over its top edge with both mittens on it, about half the width of a short label so he reads as
+  himself and not as a dot. It stamps down once, 220 ms, never under reduced motion. `size` is
   `sm` for cards, `md` for a calendar day. On a ride card with a live wait at or under the walk-on
   limit (`LIVE_LIMITS.walkOn`) it reads „Walk-on!“, on an open park card with a very low crowd
   „Kaum was los!“. On a ride's own page it sits beside the live wait in „Wartezeit jetzt“

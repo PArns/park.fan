@@ -18,9 +18,9 @@ Besucher freigeschaltet ist und nur von park.fans eigenen Seiten (`isForecastRel
 
 **Der Stempel.** `ParkyStamp` drückt Parkys Urteil als Gummistempel auf: „Walk-on!“ auf einer
 Fahrt, die live höchstens so lange wartet wie Parkys eigene Walk-on-Grenze (`LIVE_LIMITS`), „Kaum
-was los!“ auf einem geöffneten Park mit sehr niedrigem Andrang, und das Urteil im Kalender. Der
-kleine Parky schaut über den Rand, der Stempel kommt einmal mit Schwung und unter reduzierter
-Bewegung gar nicht. Auf den Karten fragt ein Druck Parky nach der Fahrt oder dem Park. Auf der
+was los!“ auf einem geöffneten Park mit sehr niedrigem Andrang, und das Urteil im Kalender. Parky
+schaut über die Oberkante und hält sich mit beiden Händen daran fest, etwa halb so breit wie ein
+kurzes Etikett; der Stempel kommt einmal mit Schwung und unter reduzierter Bewegung gar nicht. Auf den Karten fragt ein Druck Parky nach der Fahrt oder dem Park. Auf der
 Seite einer Fahrt steht er neben der Live-Wartezeit in „Wartezeit jetzt“ (`RideNowPanel`): dort
 „Walk-on!“ wie auf der Karte und „Jetzt hin!“, wenn die gezeigte Wartezeit höchstens halb so lang
 ist wie das Übliche zu dieser Stunde darunter (`rideStampVerdict`). Die Karten in der Liste

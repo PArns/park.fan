@@ -269,9 +269,9 @@ export function ParkCard({
             )}
           </div>
         </div>
-        {/* On the time line's right end, which „Bis 19:00 Uhr“ leaves free; the little Parky
-            peeks up past the badges' end into the column the star keeps clear. */}
-        {quietStamp('absolute right-2 bottom-1.5')}
+        {/* On the time line's right end, which „Bis 19:00 Uhr“ leaves free; Parky peeks up past
+            the badges' end into the column the star keeps clear, low enough to stay under it. */}
+        {quietStamp('absolute right-2 bottom-0.5')}
         {effectiveParkId && (
           <div className="absolute top-1.5 right-1.5 h-7 w-7">
             <FavoriteStar

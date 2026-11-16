@@ -708,7 +708,7 @@ export function AttractionCard({
                   ride: stripNewPrefix(attraction.name),
                   minutes: roundWaitTo5(waitTime),
                 })}
-                className="absolute top-[30px] left-[118px] z-[1]"
+                className="absolute top-[42px] left-[118px] z-[1]"
               />
             )}
             {waitShown && (

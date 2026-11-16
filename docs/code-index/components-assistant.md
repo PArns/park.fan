@@ -195,7 +195,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`parky/parky-stamp.tsx`](../../components/assistant/parky/parky-stamp.tsx)
 
-- `ParkyStamp` _component_: Parky's verdict pressed onto a card like a rubber stamp: a short `label` in capitals in a double ring, tilted, in the ink of its `tone`, with a tiny Parky (the live drawing's wheel, bubble and eyes) peeking over its top edge at the right.
+- `ParkyStamp` _component_: Parky's verdict pressed onto a card like a rubber stamp: a short `label` in capitals in a double ring, tilted, in the ink of its `tone`, with Parky (the live drawing's wheel, bubble and eyes) looking over its top edge at the right, both …
 - Types: `ParkyStampTone`
 
 ### [`parky/parky-still.tsx`](../../components/assistant/parky/parky-still.tsx)
