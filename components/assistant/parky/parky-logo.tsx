@@ -30,11 +30,9 @@ import {
   CHEEKS,
   CONFETTI,
   EYES,
-  FERRULE,
   FIGURE_BOX,
   FLOATERS,
   GRIN,
-  HANDLE,
   HANDLE_END,
   HAPPY_EYES,
   HEART,
@@ -44,19 +42,27 @@ import {
   SHUT_EYES,
   SMILE,
   STAR,
+  WOOZY,
   ZED,
   blue,
   blush,
-  capBlue,
   green,
   heartRed,
   ink,
   pink,
 } from './drawing';
 import { DREAM_MS, ParkyDreamCloud } from './dreams';
-import { ParkyMoment, ParkyRideTrack, ParkySpotlight, ParkyVehicle } from './props';
+import {
+  ParkyLensGlass,
+  ParkyMoment,
+  ParkyNightcap,
+  ParkyQuery,
+  ParkyRideTrack,
+  ParkySpotlight,
+  ParkyVehicle,
+} from './props';
 import { ParkyWheel } from './wheel';
-import { ParkyEyeWhite, ParkyPupil } from './eyes';
+import { ParkyEyeWhite, ParkyHeartEyes, ParkyPupil } from './eyes';
 import { useGaze } from './use-gaze';
 import { useIdleAct } from './use-idle-act';
 import { LENS_OUT_MS, PUZZLED_MS, useSearchAlong } from './use-search-along';
@@ -286,16 +292,7 @@ export function ParkyLogo({
       )}
       {puzzled && (
         // A question mark over the top left: the search found nothing.
-        <g className="parky-alarm parky-query">
-          <path
-            d="M5.1 3.4a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1.1.9-1.1 1.8"
-            fill="none"
-            stroke={blue}
-            strokeWidth="1.7"
-            strokeLinecap="round"
-          />
-          <circle cx="7.5" cy="10.2" r="1.1" fill={blue} />
-        </g>
+        <ParkyQuery className="parky-alarm parky-query" />
       )}
       {act === 'bell' && (
         // A bell over the top left, swinging from its top, with the ring on either side.
@@ -449,13 +446,7 @@ export function ParkyLogo({
         )}
         {act === 'love' && (
           // Heart eyes, beating.
-          <g fill={heartRed}>
-            {EYES.map((x) => (
-              <g key={x} transform={`translate(${x} 23)`}>
-                <path className="parky-heart" d={HEART} />
-              </g>
-            ))}
-          </g>
+          <ParkyHeartEyes className="parky-heart" />
         )}
         {state === 'squashed' && (
           // Pressed flat: the eyes screwed shut into > <, a puff of impact out at each side.
@@ -481,35 +472,7 @@ export function ParkyLogo({
           // Sunglasses, slid down from the hat onto the eyes.
           <ParkyShades className="parky-shades" />
         )}
-        {act === 'nightcap' && (
-          // A nightcap in place of the wheel: a white brim round the top of the head, the cap
-          // flopping over to the left, a bobble at its tip and two stars on the cloth.
-          <g className="parky-nightcap">
-            <path
-              d="M38.6 13.6C38.4 3.4 31.6-5.6 22.2-5.4 13.6-5.2 6.4-.8 2.4 4.6c4.4-1.6 8.6.2 10 4.4L9.4 13.6Z"
-              fill={capBlue}
-            />
-            <path
-              d="M22.2-5.4C13.6-5.2 6.4-.8 2.4 4.6c4.4-1.6 8.6.2 10 4.4"
-              fill="none"
-              stroke="white"
-              strokeOpacity=".25"
-              strokeWidth="1.2"
-            />
-            <g fill="oklch(0.9 0.12 95)">
-              <path d={STAR} transform="translate(6 -1.5) scale(.7)" />
-              <path d={STAR} transform="translate(13 4.5) scale(.55)" />
-            </g>
-            <path
-              d="M9.2 13.8Q24 2.4 38.8 13.8"
-              fill="none"
-              stroke="white"
-              strokeWidth="3.6"
-              strokeLinecap="round"
-            />
-            <circle className="parky-bobble" cx="2.4" cy="5.4" r="2.6" fill="white" />
-          </g>
-        )}
+        {act === 'nightcap' && <ParkyNightcap />}
         {CHEEKS.map((x) => (
           <ellipse key={x} cx={x} cy="31" rx="2.4" ry="1.4" fill={blush} opacity=".7" />
         ))}
@@ -588,7 +551,7 @@ export function ParkyLogo({
           <>
             <path
               className="parky-woozy"
-              d="M19.5 33.5q1.25-1.6 2.5 0t2.5 0 2.5 0"
+              d={WOOZY}
               fill="none"
               stroke={ink}
               strokeWidth="1.6"
@@ -617,40 +580,7 @@ export function ParkyLogo({
               ref={lens}
               style={{ transformBox: 'view-box', transformOrigin: `${LENS.x}px ${LENS.y}px` }}
             >
-              <path
-                d={HANDLE}
-                stroke="oklch(0.56 0.12 55)"
-                strokeWidth="3.2"
-                strokeLinecap="round"
-              />
-              <path d={FERRULE} stroke={ink} strokeWidth="3.8" />
-              <circle
-                cx={LENS.x}
-                cy={LENS.y}
-                r={LENS.r}
-                fill="oklch(0.92 0.04 230)"
-                fillOpacity=".22"
-                stroke={ink}
-                strokeWidth="1.7"
-              />
-              <circle
-                cx={LENS.x}
-                cy={LENS.y}
-                r={LENS.r - 1}
-                fill="none"
-                stroke="white"
-                strokeOpacity=".5"
-                strokeWidth=".5"
-              />
-              {/* The glint, top left in the glass. */}
-              <path
-                d={`M${LENS.x - 4.8} ${LENS.y - 2.9}a5.4 5.4 0 0 1 3.2-3`}
-                fill="none"
-                stroke="white"
-                strokeOpacity=".85"
-                strokeWidth="1.1"
-                strokeLinecap="round"
-              />
+              <ParkyLensGlass />
             </g>
           </g>
         )}

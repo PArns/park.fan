@@ -21,6 +21,13 @@ export function askParky(question: string, source: ParkyAskSource): void {
   openParky(source);
 }
 
+/**
+ * Stands in a question for the page's path, filled in when the visitor asks (`ParkyAskButton`): a
+ * server render that cannot know the path, the 404's, passes it as the path's value. Server-safe
+ * here, where a `'use client'` module would hand a server component a reference, not the string.
+ */
+export const ASK_PATH = '\u2060path\u2060';
+
 /** The question an element handed over, once: reading it clears it. */
 export function takeParkyAsk(): string | null {
   try {

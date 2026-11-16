@@ -5918,5 +5918,35 @@
       "parks": "All parks",
       "parksDescription": "Wait times and forecasts for every park."
     }
+  },
+  "parkyStill": {
+    "stamp": {
+      "verdict": "Parky’s verdict: {label}",
+      "ask": "{verdict} – ask Parky",
+      "walkOn": "Walk-on!",
+      "walkOnQuestion": "{ride} has {minutes, plural, =0 {no wait at all} =1 {just a one-minute wait} other {just a #-minute wait}} right now. Is it worth heading over now, and what should I ride after?",
+      "quietPark": "Nice and quiet!",
+      "quietParkQuestion": "{park} is really quiet today. What should I make sure to ride there today?"
+    },
+    "empty": {
+      "ask": "Ask Parky",
+      "lostLine": "This page isn’t on any map. I checked, upside down too.",
+      "lostQuestion": "I was looking for a page that doesn’t exist ({path}). Where can I find what I’m after?",
+      "dizzyLine": "Something went wrong here. My head’s still spinning: one teacup ride too many.",
+      "dizzyQuestion": "Something just went wrong on this page. Can you help me anyway?",
+      "smittenLine": "Star a park or a ride and I’ll never forget it.",
+      "smittenQuestion": "Which parks and rides should I save as favorites?",
+      "searchingLine": "I checked everywhere with my magnifying glass. Maybe it’s spelled differently?",
+      "searchingQuestion": "I searched for “{query}” and found nothing. Can you help?",
+      "asleepLine": "The wait times are taking a break, and so am I. Back shortly."
+    },
+    "tip": {
+      "label": "Parky's tip",
+      "good": "Great day!",
+      "meh": "So-so",
+      "bad": "Better not",
+      "ask": "Ask Parky about this day",
+      "question": "For {day} at {park} you say: “{tip}” How do we make the most of that day?"
+    }
   }
 }

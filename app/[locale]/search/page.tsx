@@ -22,6 +22,7 @@ import { TripPlannerBand } from '@/components/trip-regions/trip-planner-band';
 import { getTripRegionLinks } from '@/lib/trip-regions/api';
 import { matchTripRegion } from '@/lib/trip-regions/trip-links';
 import { searchResultData } from '@/lib/analytics/search-session';
+import { ParkyPose } from '@/components/assistant/parky/parky-pose';
 import type { Metadata } from 'next';
 import type { Locale } from '@/i18n/config';
 import type { SearchResultItem } from '@/lib/api/types';
@@ -277,6 +278,7 @@ async function SearchBody({
   const tSearch = await getTranslations('searchPage');
   const tHeadings = await getTranslations('search.headings');
   const tSearchLabels = await getTranslations('search');
+  const tParky = await getTranslations('parkyStill.empty');
 
   let results = null;
   let posts = null;
@@ -357,8 +359,13 @@ async function SearchBody({
                 </section>
               ) : (
                 !hasPosts && (
-                  <div className="py-12 text-center">
-                    <p className="text-muted-foreground text-lg">{t('noResults')}</p>
+                  <div className="flex flex-col items-center py-12 text-center">
+                    <p className="text-muted-foreground mb-4 text-lg">{t('noResults')}</p>
+                    <ParkyPose
+                      pose="searching"
+                      line={tParky('searchingLine')}
+                      question={tParky('searchingQuestion', { query: query ?? '' })}
+                    />
                   </div>
                 )
               )}

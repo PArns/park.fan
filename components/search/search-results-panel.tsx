@@ -11,6 +11,7 @@ import {
 import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { CommandEmpty, CommandList } from '@/components/ui/command';
+import { ParkyPose } from '@/components/assistant/parky/parky-pose';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent } from '@/components/ui/tabs';
 import { cn } from '@/lib/utils';
@@ -141,6 +142,7 @@ export function SearchResultsPanel({
   const t = useTranslations('common');
   const tSearch = useTranslations('search');
   const tFavorites = useTranslations('favorites');
+  const tParky = useTranslations('parkyStill.empty');
   const router = useRouter();
   const [tab, setTab] = useState<SearchTab>('all');
 
@@ -245,7 +247,17 @@ export function SearchResultsPanel({
         />
       )}
 
-      {nothingFound && <CommandEmpty>{t('noResults')}</CommandEmpty>}
+      {nothingFound && (
+        <CommandEmpty className="flex flex-col items-center py-6 text-center text-sm">
+          {t('noResults')}
+          <ParkyPose
+            pose="searching"
+            line={tParky('searchingLine')}
+            question={tParky('searchingQuestion', { query: debouncedQuery })}
+            className="mt-3 size-24"
+          />
+        </CommandEmpty>
+      )}
 
       {(groups.length > 0 || trip) && (
         <SearchResultGroups

@@ -5918,5 +5918,35 @@
       "parks": "Tous les parcs",
       "parksDescription": "Temps d’attente et prévisions pour chaque parc."
     }
+  },
+  "parkyStill": {
+    "stamp": {
+      "verdict": "Le verdict de Parky : {label}",
+      "ask": "{verdict} – demander à Parky",
+      "walkOn": "Sans attente !",
+      "walkOnQuestion": "Pour {ride}, il n’y a {minutes, plural, =0 {aucune attente} =1 {qu’une minute d’attente} other {que # minutes d’attente}} en ce moment. Ça vaut le coup d’y aller maintenant, et je fais quoi après ?",
+      "quietPark": "C’est calme !",
+      "quietParkQuestion": "Il n’y a presque personne à {park} aujourd’hui. Qu’est-ce que je dois absolument faire là-bas ?"
+    },
+    "empty": {
+      "ask": "Demande à Parky",
+      "lostLine": "Cette page n’est sur aucun plan. J’ai vérifié, même à l’envers.",
+      "lostQuestion": "Je cherchais une page qui n’existe pas ({path}). Où trouver ce que je cherche ?",
+      "dizzyLine": "Quelque chose a planté ici. La tête me tourne encore : un tour de tasses de trop.",
+      "dizzyQuestion": "Une erreur vient de se produire ici. Tu peux quand même m’aider ?",
+      "smittenLine": "Une étoile sur un parc ou une attraction, et je ne l’oublie plus jamais.",
+      "smittenQuestion": "Quels parcs et quelles attractions devrais-je garder en favoris ?",
+      "searchingLine": "J’ai tout fouillé à la loupe. Peut-être une autre orthographe ?",
+      "searchingQuestion": "J’ai cherché « {query} » et rien trouvé. Tu peux m’aider ?",
+      "asleepLine": "Les temps d’attente font une pause, moi aussi. On revient vite."
+    },
+    "tip": {
+      "label": "L’astuce de Parky",
+      "good": "Super jour !",
+      "meh": "Bof",
+      "bad": "Plutôt pas",
+      "ask": "Demande à Parky pour ce jour",
+      "question": "Pour {day} à {park}, tu dis : « {tip} » Comment on profite au mieux de cette journée ?"
+    }
   }
 }

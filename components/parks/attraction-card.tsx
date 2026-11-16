@@ -46,6 +46,8 @@ import { PerformanceBadge } from './performance-badge';
 import { PerformanceCountdown } from './performance-countdown';
 import { performanceTimesShown, startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 import { RideOpensAtNote } from './ride-opens-at-note';
+import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
+import { LIVE_LIMITS } from '@/lib/assistant/parky/live';
 
 interface AttractionCardProps {
   attraction: ParkAttraction | FavoriteAttraction;
@@ -156,6 +158,7 @@ export function AttractionCard({
 }: AttractionCardProps) {
   const t = useTranslations('attractions');
   const tGeo = useTranslations('geo');
+  const tStamp = useTranslations('parkyStill.stamp');
 
   const status = closedPermanently ? 'RETIRED' : getLiveAttractionStatus(attraction, parkStatus);
   const isOperatingOrUnknown = status === 'OPERATING' || status === 'UNKNOWN';
@@ -233,6 +236,8 @@ export function AttractionCard({
   // claim that row too, or its lower edge sits exposed mid-card as a crop seam.
   const waitShown = isOperatingOrUnknown && waitTime !== null;
   const hasBottomPanel = performanceTimes !== null || waitShown;
+  // The live wait only: Parky's walk-on, the limit his own line uses.
+  const walkOn = status === 'OPERATING' && waitShown && waitTime <= LIVE_LIMITS.walkOn;
 
   // What the top panel's lower edge (the seam between the upper glass and what is under it) sits
   // on. With no bottom panel and no photo there is only the flat placeholder, so no seam is drawn.
@@ -691,6 +696,19 @@ export function AttractionCard({
                   figureClassName="text-[40px] font-extrabold tracking-[-0.02em] tabular-nums"
                 />
               </div>
+            )}
+            {walkOn && (
+              // Over the start of the sparkline, the morning's oldest readings: clear of the wait,
+              // the trend, the latest reading at the line's right end and every control.
+              <ParkyStamp
+                tone="good"
+                label={tStamp('walkOn')}
+                question={tStamp('walkOnQuestion', {
+                  ride: stripNewPrefix(attraction.name),
+                  minutes: roundWaitTo5(waitTime),
+                })}
+                className="absolute top-[30px] left-[118px] z-[1]"
+              />
             )}
             {waitShown && (
               <div className="relative flex flex-col gap-2">

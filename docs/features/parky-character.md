@@ -125,6 +125,22 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   Their gradient ids come from `useId()`: a page can hold one scene twice (the Plan menu keeps a
   closed band's copy mounted under `hidden`), and a `url(#…)` that reaches a hidden copy's gradient
   paints nothing, which left the wizard's Parky without a body.
+- **His verdict, a stamp** (`ParkyStamp`, `components/assistant/parky/parky-stamp.tsx`): a short
+  capitalised label in a double ring, tilted by 7°, in the ink of its `tone` (`good` the open-status
+  green, `meh` the amber and `bad` the red of the crowd scale), a tiny Parky (wheel, bubble, eyes)
+  peeking over its top edge. It stamps down once, 220 ms, never under reduced motion. `size` is
+  `sm` for cards, `md` for a calendar day. On a ride card with a live wait at or under the walk-on
+  limit (`LIVE_LIMITS.walkOn`) it reads „Walk-on!“, on an open park card with a very low crowd
+  „Kaum was los!“. Given a `question` it is a button that opens the chat with it (source `stamp`),
+  a tab stop of its own that never follows the card's link.
+- **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a
+  `pose`, his one line under it (`parkyStill.empty`) and, given a question, „Frag Parky“
+  (`ParkyAskButton`, source `empty`, shown only where the gate lets Parky in). `lost` on the 404,
+  his map upside down; `dizzy` on an error, one teacup ride too many; `smitten` with heart eyes and
+  a heart in the empty favourites band; `searching` with the glass where a search found nothing;
+  `asleep` in his nightcap on the maintenance page, without a button. No loop: these are read,
+  not watched. The map, the glass, the nightcap, the question mark and the heart eyes are the live
+  acts' own pieces (`props.tsx`, `eyes.tsx`), and `HolidayParky` draws the figure.
 - **A new region gets its own picture** of him on holiday there, the same way, as its entry's
   `scene` in the registry (`components/layout/region-art/<slug>.tsx`,
   [trip regions](trip-regions.md#the-planner-band-with-several-regions)).

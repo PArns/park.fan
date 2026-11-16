@@ -74,6 +74,15 @@ export const SHADES = {
   glint: 'M13 19.4h3.2M27.4 19.4h3.2',
 } as const;
 
+/** The wobbly mouth of the dizzy act, in place of the smile. */
+export const WOOZY = 'M19.5 33.5q1.25-1.6 2.5 0t2.5 0 2.5 0';
+
+/** The question mark over the top left when a search found nothing: its hook, then its dot. */
+export const QUERY = {
+  hook: 'M5.1 3.4a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1.1.9-1.1 1.8',
+  dot: { x: 7.5, y: 10.2 },
+};
+
 /** The open grin of a ride or a cheer, in place of the smile. */
 export const GRIN = 'M20 31.5h8q0 5.5-4 5.5t-4-5.5Z';
 

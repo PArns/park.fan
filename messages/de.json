@@ -5918,5 +5918,35 @@
       "parks": "Alle Parks",
       "parksDescription": "Wartezeiten und Prognosen für jeden Park."
     }
+  },
+  "parkyStill": {
+    "stamp": {
+      "verdict": "Parkys Urteil: {label}",
+      "ask": "{verdict} – Parky fragen",
+      "walkOn": "Walk-on!",
+      "walkOnQuestion": "{ride} hat gerade {minutes, plural, =0 {gar keine Wartezeit} =1 {nur eine Minute Wartezeit} other {nur # Minuten Wartezeit}}. Lohnt es sich, jetzt hinzugehen, und was fahre ich danach?",
+      "quietPark": "Kaum was los!",
+      "quietParkQuestion": "Heute ist in {park} kaum was los. Was sollte ich heute dort unbedingt fahren?"
+    },
+    "empty": {
+      "ask": "Frag Parky",
+      "lostLine": "Diese Seite steht auf keiner Karte. Ich hab extra nachgesehen, auch andersrum.",
+      "lostQuestion": "Ich habe eine Seite gesucht, die es nicht gibt ({path}). Wo finde ich, was ich suche?",
+      "dizzyLine": "Hier ist was schiefgelaufen. Mir dreht sich noch alles, eine Runde Teetassen zu viel.",
+      "dizzyQuestion": "Hier ist gerade ein Fehler aufgetreten. Kannst du mir trotzdem weiterhelfen?",
+      "smittenLine": "Ein Stern an einem Park oder einer Bahn, und ich vergess sie nie wieder.",
+      "smittenQuestion": "Welche Parks und Fahrgeschäfte sollte ich mir als Favoriten merken?",
+      "searchingLine": "Ich hab mit der Lupe überall nachgesehen. Vielleicht anders geschrieben?",
+      "searchingQuestion": "Ich habe nach „{query}“ gesucht und nichts gefunden. Kannst du mir helfen?",
+      "asleepLine": "Die Wartezeiten machen gerade Pause, ich auch. Gleich geht’s weiter."
+    },
+    "tip": {
+      "label": "Parkys Tipp",
+      "good": "Top-Tag!",
+      "meh": "Geht so",
+      "bad": "Lieber nicht",
+      "ask": "Frag Parky zu diesem Tag",
+      "question": "Für {day} in {park} sagst du: „{tip}“ Wie holen wir an dem Tag am meisten raus?"
+    }
   }
 }
