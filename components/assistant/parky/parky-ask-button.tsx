@@ -5,19 +5,25 @@ import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 import { ASK_PATH, askParky } from '@/lib/assistant/ask';
 import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
+import type { ParkyEmptyKind } from '@/lib/analytics/parky-elements';
+import { useParkyElementSeen } from '@/lib/hooks/use-parky-element-seen';
 
 /**
  * „Frag Parky“ under a still Parky in an empty state: opens the chat with `question`
- * (`askParky`, source `empty`). Only where Parky shows for this visitor; until the gate has
+ * (`askParky`, element `empty` of `kind`). Only where Parky shows for this visitor; until the gate has
  * decided, and where he does not, the button keeps its line but stays hidden, so nothing moves.
  */
-export function ParkyAskButton({ question }: { question: string }) {
+export function ParkyAskButton({ question, kind }: { question: string; kind: ParkyEmptyKind }) {
   const t = useTranslations('parkyStill.empty');
   const on = useAssistantGateStatus() === 'on';
+  const seen = useParkyElementSeen(on ? { element: 'empty', kind } : undefined);
   return (
     <button
+      ref={seen}
       type="button"
-      onClick={() => askParky(question.replace(ASK_PATH, window.location.pathname), 'empty')}
+      onClick={() =>
+        askParky(question.replace(ASK_PATH, window.location.pathname), { element: 'empty', kind })
+      }
       disabled={!on}
       aria-hidden={on ? undefined : true}
       className={cn(

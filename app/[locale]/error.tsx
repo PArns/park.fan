@@ -52,7 +52,7 @@ export default function Error({ error, retry }: ErrorProps) {
       <ParkyPose
         pose="dizzy"
         line={tParky('dizzyLine')}
-        question={tParky('dizzyQuestion')}
+        ask={{ question: tParky('dizzyQuestion'), kind: 'error' }}
         className="size-32"
       />
 

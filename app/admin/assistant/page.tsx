@@ -20,6 +20,7 @@ import {
   type AssistantSettings,
   type AssistantStats,
 } from './_lib/assistant';
+import { ParkyElementsPanel } from './_components/parky-elements-panel';
 
 const LINKS = [
   { href: '/admin/assistant/conversations', label: 'Chats', icon: MessagesSquare },
@@ -28,7 +29,10 @@ const LINKS = [
   { href: '/admin/assistant/settings', label: 'Einstellungen', icon: KeyRound },
 ];
 
-/** Parky at a glance: is he on, what did 30 days cost, how are the answers rated. */
+/**
+ * Parky at a glance: is he on, what did 30 days cost, how are the answers rated, and how often
+ * his elements on the site are pressed.
+ */
 export default function AssistantOverviewPage() {
   const stats = useAdminQuery<AssistantStats>(
     adminKeys.raw(`${ASSISTANT_API}/stats`),
@@ -88,6 +92,8 @@ export default function AssistantOverviewPage() {
           </div>
         </PanelBody>
       </Panel>
+
+      <ParkyElementsPanel />
 
       <Panel>
         <PanelHeader title="Pro Tag" hint="UTC, die letzten 30 Tage" />

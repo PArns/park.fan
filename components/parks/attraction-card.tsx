@@ -690,10 +690,13 @@ export function AttractionCard({
             <ParkyStamp
               tone="good"
               label={tStamp('walkOn')}
-              question={tStamp('walkOnQuestion', {
-                ride: stripNewPrefix(attraction.name),
-                minutes: roundWaitTo5(waitTime),
-              })}
+              ask={{
+                question: tStamp('walkOnQuestion', {
+                  ride: stripNewPrefix(attraction.name),
+                  minutes: roundWaitTo5(waitTime),
+                }),
+                element: { element: 'stamp', kind: 'walk_on' },
+              }}
               className="pointer-events-auto absolute right-4 bottom-0 translate-y-1/2"
             />
           </div>

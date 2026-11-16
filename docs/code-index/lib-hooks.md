@@ -238,6 +238,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `useParkyDayTip` _hook_: Parky's tip for one calendar day, through the park relay (`…/parky-tip`), or null when he has nothing to say (a closed day, no forecast, Parky off).
 
+### [`use-parky-element-seen.ts`](../../lib/hooks/use-parky-element-seen.ts)
+
+- `useParkyElementSeen` _hook_: A ref for the part of a Parky element a visitor can press: sends `parky_element_seen` the first time half of it is on screen, once per page view and element kind.
+
 ### [`use-placed-out-of-sight.ts`](../../lib/hooks/use-placed-out-of-sight.ts)
 
 - `usePlacedOutOfSight` _hook_: Whether a late block with no box held open for it may go into the slot `ref` marks: once `ready`, the first moment its arrival moves nothing the reader is looking at. Once true it stays true.

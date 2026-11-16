@@ -805,7 +805,7 @@ the dark theme. Run it again after the widget changes visibly.
 Our own statistic (`trackSiteEvent`, labels in `lib/admin/site-analytics.ts`): `assistant_shown`
 (the button on screen, once per page view, with the entrance it made or `none`),
 `assistant_opened` (with `source`: the button, a line, Parky's page, `language` after his
-language switch, `interview` from a planner's button, or `stamp`, `tip` and `empty` from a Parky element that asks about what it shows, `askParky` in `lib/assistant/ask.ts`, its question sent as kind `context`), `assistant_line_shown`,
+language switch, `interview` from a planner's button, or `stamp`, `tip`, `callout` and `empty` from a Parky element that asks about what it shows, `askParky` in `lib/assistant/ask.ts`, its question sent as kind `context`), `assistant_line_shown`,
 `assistant_line_clicked` and `assistant_line_closed` (each with the line's kind as `line`: invitation,
 entrance, bored, woke, holiday, park, fact, secret, weather, live, clock, or the answer's planner, plan, favourite, alert, theme
 or install), `assistant_closed` (questions while open), `assistant_question` (suggestion, typed, a reply chip
@@ -824,6 +824,15 @@ button or the chat), `assistant_answer` (result and number of lookups), `assista
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
 the planner opening as `planner_opened` with source `assistant`.
+
+Parky's elements on the page count apart from the chat: `parky_element_seen` when the pressable part
+of a stamp, the calendar's day tip, a post's „Parky sagt“ or an empty state's „Frag Parky“ is half on
+screen (once per page view and kind, `useParkyElementSeen`), and `parky_element_clicked` when it is
+pressed (`askParky`). Both carry `element` and `kind` from `PARKY_ELEMENT_KINDS` in
+`lib/analytics/parky-elements.ts`: the stamp's `walk_on` or `below_typical`, the tip's verdict, the
+callout's `post`, the empty state's `not_found`, `error`, `favorites` or `search`. The pressable part
+only stands where Parky shows for the visitor, so both events count the same people. `/admin/assistant`
+shows them per kind with the click rate („Parkys Elemente“), and the links followed in his answers.
 
 ## Checks
 
