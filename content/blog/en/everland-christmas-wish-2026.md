@@ -49,23 +49,23 @@ In the first week's evenings the old fireworks show, The Guardians of Light, car
 
 ## Parade and night show from 27 November
 
-The Bling Bling X-mas Parade takes about half an hour and runs from the Rose Garden entrance to Carnival Square. Several dozen performers come along with the Christmas floats, dressed as Santa, Rudolph, a snowman and other characters, dancing to Christmas songs. The parade already ran under that name in 2025, when its floats were shaped like a tree, a sleigh and a cake.
+The Bling Bling X-mas Parade takes about half an hour and runs from the Rose Garden entrance to Carnival Square. Between the floats, several dozen performers dance to Christmas songs as Santa, Rudolph or a snowman. The parade already ran under that name in 2025, when its floats were shaped like a tree, a sleigh and a cake.
 
-Magic in the Sky mixes Christmas-themed video with music, lasers and several thousand fireworks. Last winter the evening slot went to a K-Pop Demon Hunters sing-along that Everland ran every night with Netflix. The songs included "Golden" and "Soda Pop". Samsung C&T hasn't announced it for this year.
+Magic in the Sky plays Christmas-themed video, sends several thousand fireworks up above it and adds lasers and music. Last winter the evening slot went to a K-Pop Demon Hunters sing-along that Everland ran every night with Netflix. The crowd sang along to "Golden" and "Soda Pop", and the sing-along isn't in Samsung C&T's announcement for this winter.
 
 Everland hasn't yet published the times for the parade and the show, or where the show can be seen. Once the times are set, they'll be in the daily schedule on everland.com.
 
 ## Snow Buster and the Winter Spa
 
-The sledding slope Snow Buster opens at some point in December, with a family run for parents and children, a racing run and more to do in the snow. Last year the first snow attractions started on 12 December. Back then Snow Buster sat in Alpine Village, right beside Carnival Square, where the parade also ends.
+The sledding slope Snow Buster opens at some point in December, with a family run where parents slide down with their children and a racing run. Last year the first snow attractions started on 12 December. Back then Snow Buster sat in Alpine Village, right beside Carnival Square, where the parade also ends.
 
-Next door at the Caribbean Bay water park, Winter Spa Cabi starts on Thursday 3 December, two days earlier than in 2025. Every pool is heated then, the lazy river and the Aquatic Center included. On top of that there's an outdoor bath made of hinoki cypress, a Finnish sauna and winter snack stands.
+Next door at the Caribbean Bay water park, Winter Spa Cabi starts on Thursday 3 December, two days earlier than in 2025. Every pool is heated then, the lazy river and the Aquatic Center included. To warm up there's also an outdoor bath made of hinoki cypress and a Finnish sauna, and the snack stands sell winter snacks.
 
-Caribbean Bay has its own ticket. Until the end of December adults pay 45,000 won and children and seniors 36,000 won, or 39,000 and 30,000 won from 2:30 pm. On busy days the water park can stop letting people in. Until 2 December it's closed on Tuesdays and Wednesdays. You can rent a jacket for 8,000 won and a large towel for 6,000. Last winter the Ever to Cabi combo ticket let you switch between the two parks on the same day. Samsung C&T hasn't brought it back for this winter so far.
+Caribbean Bay has its own ticket. Until the end of December adults pay 45,000 won and children and seniors 36,000 won, or 39,000 and 30,000 won from 2:30 pm. On busy days the water park can stop letting people in. Until 2 December it's closed on Tuesdays and Wednesdays. You can rent a jacket for 8,000 won and a large towel for 6,000. The Ever to Cabi combo ticket, which let you switch between the two parks on the same day last winter, isn't in this winter's announcement yet, so plan on two tickets.
 
 ## Tickets and opening hours
 
-In November an Everland day ticket costs 65,000 won for adults and teenagers from 13 to 18. Children from 36 months to 12 years and seniors from 65 pay 55,000 won. In December it's 55,000 and 45,000 won. If the parade and the show are what you're after, December is cheaper than the four November days from the 27th. Children under 36 months get in free. Some attractions in the park cost extra, and for children under 36 months so do the ones meant only for toddlers.
+In November an Everland day ticket costs 65,000 won for adults and teenagers from 13 to 18. Children from 36 months to 12 years and seniors from 65 pay 55,000 won. In December it's 55,000 and 45,000 won. For the parade and the show, the four November days from the 27th cost you 10,000 won more per person than any day from 1 December. Children under 36 months get in free. Free entry doesn't make the day free for the youngest, because toddler-only attractions are charged even for under-threes, like a few other things in the park.
 
 On opening day, Saturday 21 November, the park is open from 10 am to 9 pm, and on the Sunday and Monday after that until 8 pm. Everland publishes opening hours only a week ahead.
 
