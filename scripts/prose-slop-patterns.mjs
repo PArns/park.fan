@@ -1230,6 +1230,10 @@ const OPENED = {
   it: /(?<!\p{L})(?:aperto|inaugurato|aprì|fondato)(?!\p{L})/iu,
 };
 const YEAR = /(?<!\d)(?:1[89]|20)\d\d(?!\d)/;
+/** The excerpt's ceiling (§5.4); French, Spanish and Italian run about a tenth longer than German. */
+const EXCERPT_MAX_CHARS = { de: 200, en: 200, nl: 200, fr: 220, es: 220, it: 220 };
+const EXCERPT_MAX_SENTENCES = 2;
+const EXCERPT_RULE_SINCE = '2026-11-16';
 /** `Der Europa-Park in Rust …`, `Efteling in Kaatsheuvel …`: a park and its town open the sentence. */
 const PARK_IN_TOWN =
   /^(?:(?:Der|Das|Die|The|Het|De|Le|La|L['’]|El|Il|Lo)\s+)?\p{Lu}[^,.]{0,40}?\s(?:in|à|a|en|bei|near|nahe)\s+\p{Lu}/u;
@@ -4579,6 +4583,52 @@ export const SLOP_RULES = [
     min: 3,
     run({ raw, locale }) {
       return captionsOf(raw).filter((c) => YEAR.test(c) && FOUNDING[locale].test(c));
+    },
+  },
+  {
+    id: 'excerpt-length',
+    section: '§5.4',
+    // The excerpt is the lead under the title, two lines on a card and the feed item. The German
+    // ones averaged 257 characters in November 2026, the Wintertraum guide's 334 in four
+    // sentences, and Patrick found it „viel zu lang“. A post older than the rule keeps its excerpt
+    // until it is next dated or updated.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ fields, raw, locale }) {
+      const days = raw.match(/^(?:date|updatedAt):\s*['"]?\d{4}-\d{2}-\d{2}/gm) ?? [];
+      if (!days.some((d) => d.slice(-10) >= EXCERPT_RULE_SINCE)) return [];
+      return fields
+        .filter(([name]) => name === 'excerpt')
+        .map(([, value]) => value)
+        .filter(
+          (v) =>
+            [...v].length > EXCERPT_MAX_CHARS[locale] ||
+            splitSentences(v).length > EXCERPT_MAX_SENTENCES
+        )
+        .map((v) => `${[...v].length} Zeichen, ${splitSentences(v).length} Sätze: ${v}`);
+    },
+  },
+  {
+    id: 'cta-echo',
+    section: '§2.20 #124',
+    // `text: Ab 11 Uhr am Besuchstag, ohne Anstehen am Gästeservice.` under an excerpt that said
+    // the same: the button's line read the snippet a third time. One shared run of three words
+    // with the excerpt or the description is enough.
+    locales: ['de', 'en', 'nl', 'fr', 'es', 'it'],
+    min: 1,
+    run({ fields, raw }) {
+      const snippet = fields
+        .filter(([name]) => name === 'excerpt' || name === 'description')
+        .map(([, v]) => v)
+        .join(' ');
+      const runs = (s) => {
+        const w = s.toLowerCase().match(/[\p{L}\d]+/gu) ?? [];
+        return new Set(w.slice(2).map((_, i) => w.slice(i, i + 3).join(' ')));
+      };
+      const inSnippet = runs(snippet);
+      return [...raw.matchAll(/^```cta-widget\n[\s\S]*?^text:\s*(.+)$/gm)]
+        .map((m) => m[1])
+        .filter((text) => [...runs(text)].some((r) => inSnippet.has(r)));
     },
   },
 ];

@@ -24,8 +24,8 @@ a paragraph or a neighbouring block. Numbers 21, 39 and 67 are not rules: 21 is 
 opens a line, an error under §4.4; 39 is the caption pass; 67 (an example from the rulebook copied
 into a post) fired on the wording the rulebook recommends and was dropped.
 
-Two more named warnings live with the rule they enforce: `news-outlet-attribution` (§5.0) and
-`withheld-as-said` (§1.9).
+Three more named warnings live with the rule they enforce: `news-outlet-attribution` (§5.0),
+`withheld-as-said` (§1.9) and `excerpt-length` (§5.4).
 
 ## The rules
 
@@ -150,6 +150,8 @@ Two more named warnings live with the rule they enforce: `news-outlet-attributio
 - **#122 `object-first-calque`** (2 sentences; en). German word order in English (§6): the object first, then a subject and a verb with nothing left to take, or the indirect question in front. `Seasons, festivals and parties we enter by hand …`, `A single park day you plan ride by ride …`, `Whether you'll queue less …, you read from the minutes.` A sentence that opens on a time (`Every morning you …`) and a contact clause (`The median we measure is …`) do not count. The other languages may put the object first.
 - **#123 `caption-founding-series`** (3 captions; all six). Captions built from a year and a first or an oldest (§5.2). `am 17. Juli 1955 eröffnet und damit das älteste aller Disney-Schlösser`, `als erstes LEGOLAND außerhalb Europas`, `Die erste SeaWorld überhaupt öffnete 1964`.
 
+- **#124 `cta-echo`** (1 widget; all six). The `text:` line of a `cta-widget` shares a run of three words with the excerpt or the description, so the snippet is read out a third time next to the button. `text: Ab 11 Uhr am Besuchstag, ohne Anstehen am Gästeservice.` under an excerpt about buying from 11 am without queuing. Give the line what the reader needs at the button and has not read yet: `text: Ein Pass pro Person und Bahn, der QR-Code kommt per E-Mail.`
+
 ## Where a rule gives way to a template
 
 Three rules meet a rule the templates impose and give way to it. A guide has a travel chapter with
@@ -239,3 +241,17 @@ Fujikawaguchiko`, once the railway and once our planner's stop.
 - **The agent named after its verb.** `sold by sellers`.
 - **The translated pairs.** `have flown and floated over and on the new lake … since`, two stacked
   pairs and a perfect copied from `seit`.
+- **The crowd scale read aloud.** `war der Andrang sehr niedrig`, `an den Wochenenden sehr hoch`:
+  the levels of our crowd calendar recited like field values (§2.19). Say how it was:
+  `sehr wenig los`, `sehr viel los`. Rare in the corpus since the Wintertraum guide was fixed, so
+  no check.
+- **The award series.** `zum zweiten Mal in Folge zur besten Show gewählt`, `zur besten
+Gastronomie gewählt`, `zum besten Event gewählt`, `Europas bestes Themenhotel`: four prizes in one
+  guide, each in the same formula. Keep the one the reader cares about, with its name and year
+  (§1.1). A post about the awards themselves is the exception, which is why no script counts it.
+- **The brochure triple.** `…, mit Trampolinartistik, Akrobatik und Live-Gesang.`,
+  `…, mit Artistik, Tanz und viel Komik.`: a show, a restaurant and a hotel described in turn by a
+  list of three on the end of a sentence, the park's page read out. Say what happens on stage.
+- **The mirrored day verdict.** `An einem Dienstag im Januar würde ich … An einem Samstag in den
+Ferien würde ich …`: the same opener and the same `würde ich` twice in a row. Vary one of them
+  (`Für einen Dienstag im Januar wären mir die 12 € zu schade.`).

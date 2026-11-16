@@ -3542,6 +3542,38 @@ no(
   ].join('\n\n')
 );
 
+// excerpt-length: posts dated or updated from 2026-11-16 on
+const newPost = "---\ndate: '2026-11-16'\n---\n\nText.";
+const oldPost = "---\ndate: '2026-11-15'\n---\n\nText.";
+const longExcerpt = [
+  [
+    'excerpt',
+    'Der Wintertraum im Phantasialand läuft bis zum 24. Januar 2027, täglich von 11 bis 20 Uhr, und jeden Abend beginnt gegen 19:50 Uhr auf dem Kaiserplatz MAGIC SYMPHONY mit Feuerwerk. Taron fährt bis minus zehn Grad.',
+  ],
+];
+yes('excerpt-length', newPost, 'de', longExcerpt);
+yes('excerpt-length', newPost, 'de', [['excerpt', 'Eins ist kurz. Zwei auch. Drei ebenso.']]);
+yes(
+  'excerpt-length',
+  "---\ndate: '2026-11-15'\nupdatedAt: '2026-11-16'\n---\n\nText.",
+  'de',
+  longExcerpt
+);
+no('excerpt-length', oldPost, 'de', longExcerpt);
+no('excerpt-length', newPost, 'de', [
+  ['excerpt', 'Taron im Dunkeln fahre ich am liebsten. Am wenigsten los war im Januar.'],
+]);
+
+// 124 cta-echo
+const cta = (text) =>
+  `Absatz.\n\n\`\`\`cta-widget\nhref: https://example.com\nlabel: Kaufen\ntext: ${text}\n\`\`\``;
+yes('cta-echo', cta('Ab 11 Uhr am Besuchstag, ohne Anstehen.'), 'de', [
+  ['excerpt', 'Den Pass kaufst du ab 11 Uhr am Handy.'],
+]);
+no('cta-echo', cta('Ein Pass pro Person und Bahn.'), 'de', [
+  ['excerpt', 'Den Pass kaufst du ab 11 Uhr am Handy.'],
+]);
+
 // old-orthography: an error on every surface, German only
 cases += 4;
 assert.equal(oldSpellings('Er sagt, daß der Fluß hoch ist.').length, 2);
