@@ -40,7 +40,7 @@ Christmas Studios, the winter season at [Parque Warner Madrid](ref:parque-warner
 
 "El Reino de Cristal" lasts about 25 minutes and only plays in December. The show tells of an old kingdom that hope, anticipation and magic kept safe for centuries. Every bubble brings it back a memory or a wish. At the end a mime tries to light an old lantern, the kingdom's last light. He can't manage it alone, so he brings up a volunteer from the audience.
 
-ACME Factory: Christmas Candies is open from 21 November. In the Christmas version of the children's attraction that opened for Halloween, kids help the Looney Tunes recover the secret recipe for the Christmas sweets. So the recipe has gone missing again: at Halloween it was the pumpkin sweets, after the Coyote had torn through the factory.
+ACME Factory: Christmas Candies is open from 21 November. In the Christmas version of the children's attraction that opened for Halloween, kids help the Looney Tunes recover the secret recipe for the Christmas sweets. So the recipe has gone missing again: at Halloween it was the pumpkin sweets, after the chaos the Coyote had left behind.
 
 Also new is the Estación Energía de Repsol, a hands-on walk through three rooms. First you get lost in a mirror maze, then you play with a light installation, and at the end you walk through recreated rays of sunlight.
 
@@ -66,7 +66,7 @@ Until mid-December the park opens only at weekends and on 7 and 8 December. Of a
 
 ## Tickets
 
-Online, a day ticket costs from €32.90 depending on the date, the same for everyone 100 cm and taller. At the gate you pay €62.90 from 140 cm and €56.90 from 100 to 140 cm; guests aged 65 and over pay the children's gate price too. Children under 100 cm get in free. For several visits there's the Bono Parques annual pass. We've put its prices and the park's rain guarantee in our [Parque Warner Madrid guide](/blog/parque-warner-madrid-wait-times-tips). Parking costs from €16 online.
+Online, a day ticket costs from €32.90 depending on the date, the same for everyone 100 cm and taller. At the gate you pay €62.90 over 140 cm and €56.90 from 100 to 140 cm; guests over 65 pay the children's gate price too. Children under 100 cm get in free. For several visits there's the Bono Parques annual pass. We've put its prices and the park's rain guarantee in our [Parque Warner Madrid guide](/blog/parque-warner-madrid-wait-times-tips). Parking costs from €16 online.
 
 ## What's changed since 2025
 

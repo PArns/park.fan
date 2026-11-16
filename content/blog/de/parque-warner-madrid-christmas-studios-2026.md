@@ -40,7 +40,7 @@ Im [Parque Warner Madrid](ref:parque-warner-madrid) in San Martín de la Vega be
 
 „El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Die Show erzählt von einem alten Reich, das Hoffnung, Vorfreude und Magie jahrhundertelang beschützt haben. Jede Seifenblase bringt ihm eine Erinnerung oder einen Wunsch zurück. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, dafür holt er sich einen Freiwilligen aus dem Publikum.
 
-Schon ab dem 21. November ist ACME Factory: Christmas Candies offen. In der Weihnachtsfassung der Kinder-Attraktion, die zu Halloween eröffnet hat, holen Kinder mit den Looney Tunes das geheime Rezept der Weihnachtssüßigkeiten zurück. Das Rezept ist also schon wieder weg, zu Halloween waren es die Kürbisbonbons, nachdem der Kojote durch die Fabrik gefegt war.
+Schon ab dem 21. November ist ACME Factory: Christmas Candies offen. In der Weihnachtsfassung der Kinder-Attraktion, die zu Halloween eröffnet hat, holen Kinder mit den Looney Tunes das geheime Rezept der Weihnachtssüßigkeiten zurück. Das Rezept ist also schon wieder weg, zu Halloween waren es die Kürbisbonbons, nach dem Chaos, das der Kojote angerichtet hatte.
 
 Neu ist außerdem die Estación Energía de Repsol, ein Rundgang durch drei Räume zum Mitmachen. Erst verläufst du dich im Spiegellabyrinth, dann spielst du an einer Lichtinstallation, und zum Schluss gehst du zwischen nachgebauten Sonnenstrahlen hindurch.
 
@@ -66,7 +66,7 @@ Bis Mitte Dezember öffnet der Park nur an Wochenenden und am 7. und 8. Dezember
 
 ## Eintritt
 
-Online kostet die Tageskarte je nach Besuchstag ab 32,90 €, für alle ab 100 cm gleich. An der Kasse zahlst du ab 140 cm 62,90 €, zwischen 100 und 140 cm 56,90 €. Den Kinderpreis an der Kasse zahlen auch Gäste ab 65. Kinder unter 100 cm kommen umsonst hinein. Für mehrere Besuche gibt es die Jahreskarte Bono Parques. Ihre Preise und die Regengarantie des Parks haben wir im [Guide zum Parque Warner Madrid](/blog/parque-warner-madrid-wartezeiten-tipps) zusammengetragen. Parken kostet online ab 16 €.
+Online kostet die Tageskarte je nach Besuchstag ab 32,90 €, für alle ab 100 cm gleich. An der Kasse zahlst du über 140 cm 62,90 €, zwischen 100 und 140 cm 56,90 €. Den Kinderpreis an der Kasse zahlen auch Gäste über 65. Kinder unter 100 cm kommen umsonst hinein. Für mehrere Besuche gibt es die Jahreskarte Bono Parques. Ihre Preise und die Regengarantie des Parks haben wir im [Guide zum Parque Warner Madrid](/blog/parque-warner-madrid-wartezeiten-tipps) zusammengetragen. Parken kostet online ab 16 €.
 
 ## Was sich gegenüber 2025 geändert hat
 
