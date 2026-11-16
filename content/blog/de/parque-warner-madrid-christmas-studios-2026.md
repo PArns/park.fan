@@ -38,17 +38,17 @@ Im [Parque Warner Madrid](ref:parque-warner-madrid) in San Martín de la Vega be
 
 ## Neu in diesem Winter
 
-„El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Erzählt wird von einem alten Reich, das jahrhundertelang von drei Gaben beschützt wurde: Hoffnung, Vorfreude und Magie. Jede Seifenblase trägt eine Erinnerung oder einen Wunsch, und Blase für Blase holt sich das Reich zurück, was es vergessen hatte. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, dafür holt er sich einen Freiwilligen aus dem Publikum.
+„El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Erzählt wird von einem alten Reich, das jahrhundertelang von drei Gaben beschützt wurde: Hoffnung, Vorfreude und Magie. Jede Seifenblase trägt eine Erinnerung oder einen Wunsch, und mit jeder fällt dem Reich wieder etwas ein, das es vergessen hatte. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, dafür holt er sich einen Freiwilligen aus dem Publikum.
 
 Schon ab dem 21. November ist ACME Factory: Christmas Candies offen. In der Weihnachtsfassung der Kinder-Attraktion, die zu Halloween eröffnet hat, holen Kinder mit den Looney Tunes das geheime Rezept der Weihnachtssüßigkeiten zurück. Das Rezept ist also schon wieder weg, zu Halloween waren es die Kürbisbonbons, nachdem der Kojote durch die Fabrik gefegt war.
 
-Neu ist außerdem die Estación Energía de Repsol, ein Rundgang durch drei Räume zum Mitmachen. Darin verläufst du dich in einem Spiegellabyrinth, spielst bei einer Lichtinstallation mit und gehst durch eine Installation, die Sonnenstrahlen nachempfunden ist.
+Neu ist außerdem die Estación Energía de Repsol, ein Rundgang durch drei Räume zum Mitmachen. Im ersten Raum verläufst du dich im Spiegellabyrinth, im zweiten spielst du mit einer Lichtinstallation, und durch den dritten gehst du zwischen nachgebauten Sonnenstrahlen.
 
 ## Shows, Parade und Weihnachtsmann
 
-Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Lichter und Kunstschnee gibt es in allen fünf Themenbereichen, also in Cartoon Village, am Hollywood Boulevard, in DC Super Heroes World, in Movie World Studios und im Old West Territory. Den Weihnachtsbaum schalten die Looney Tunes in einer eigenen Show an.
+Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Lichter und Kunstschnee gibt es im ganzen Park, in allen fünf Themenbereichen. Den Weihnachtsbaum schalten die Looney Tunes in einer eigenen Show an.
 
-Auf den Bühnen laufen das Musical The Santa's Magical Bell, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. Ab dem 5. Dezember kommt die Tanzshow vom Hollywood Boulevard zurück, die 2025 Premiere hatte. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt. Auch die Heiligen Drei Könige empfangen dort Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in festlicher Kleidung für Fotos bereit. Den Tag beschließt die Superstars of Christmas Parade, in der Looney Tunes, Superhelden, der Weihnachtsmann und die drei Könige auf Wagen durch den Park fahren.
+Auf den Bühnen laufen das Musical The Santa's Magical Bell, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. Ab dem 5. Dezember tanzt am Hollywood Boulevard wieder „Happy Holiday!“, die Tanzshow aus dem Vorjahr. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt, nach Angabe des Parks vor allem für die Kleinsten. Auch die Heiligen Drei Könige empfangen dort Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in festlicher Kleidung für Fotos bereit. Den Tag beschließt die Superstars of Christmas Parade: Dieselben Figuren fahren noch einmal auf Wagen durch den Park, Weihnachtsmann und drei Könige eingeschlossen.
 
 ## Öffnungstage und Uhrzeiten
 
@@ -58,23 +58,21 @@ Christmas Studios hat an 29 Tagen geöffnet, immer ab 12 Uhr:
 - Dezember: 5. bis 8., 12. und 13., 19. bis 23. und 26. bis 30., bis 21 Uhr
 - Januar 2027: 1. bis 5. und 7. bis 10., bis 20 Uhr
 
-Bis Mitte Dezember ist der Park also nur an Wochenenden und am 7. und 8. Dezember offen. Zu bleibt er am 24., 25. und 31. Dezember und am 6. Januar. Heiligabend und Silvester verbringst du also nicht unter dem 22-Meter-Baum.
+Bis Mitte Dezember öffnet der Park nur an Wochenenden und am 7. und 8. Dezember. Zu bleibt er ausgerechnet an Heiligabend, am ersten Weihnachtstag, an Silvester und am 6. Januar, dem Dreikönigstag.
 
 ```best-days-widget slug=parque-warner-madrid
 
 ```
 
-## Eintritt und Kinder
+## Eintritt
 
-Online kostet die Tageskarte ab 32,90 €, für alle ab 100 cm gleich. Der Online-Preis hängt vom Besuchstag ab. An der Kasse zahlst du ab 140 cm 62,90 €, zwischen 100 und 140 cm 56,90 €. Den Kinderpreis an der Kasse zahlen auch Gäste ab 65. Kinder unter 100 cm kommen umsonst hinein. Wer öfter kommt, sollte die Jahreskarte Bono Parques durchrechnen; ihre Preise und die Regengarantie des Parks stehen in unserem [Guide zum Parque Warner Madrid](/blog/parque-warner-madrid-wartezeiten-tipps). Parken kostet online ab 16 €.
-
-Gedacht ist das meiste im Weihnachtsprogramm für Kinder, die Werkstatt des Weihnachtsmanns richtet der Park ausdrücklich an die Kleinsten.
+Online kostet die Tageskarte je nach Besuchstag ab 32,90 €, für alle ab 100 cm gleich. An der Kasse zahlst du ab 140 cm 62,90 €, zwischen 100 und 140 cm 56,90 €. Den Kinderpreis an der Kasse zahlen auch Gäste ab 65. Kinder unter 100 cm kommen umsonst hinein. Wer öfter kommt, schaut sich besser die Jahreskarte Bono Parques an. Ihre Preise und die Regengarantie des Parks haben wir im [Guide zum Parque Warner Madrid](/blog/parque-warner-madrid-wartezeiten-tipps) zusammengetragen. Parken kostet online ab 16 €.
 
 ## Was sich gegenüber 2025 geändert hat
 
 Christmas Studios gibt es zum dritten Mal. 2025 lief die zweite Ausgabe vom 6. Dezember bis zum 5. Januar.
 
-Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubble Christmas neu, mit dem Elfen Bublinna, der das Gähnen der Kinder vor dem Einschlafen einsammelt und in Blasen verwandelt. Im Programm 2026 taucht die Show nicht mehr auf, ebenso wenig das Repsol Christmas Music Studio, in dem Familien 2025 ihr Weihnachtslied aufnehmen konnten. Repsol ist diesmal mit der Estación Energía vertreten.
+Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubble Christmas neu, mit dem Elfen Bublinna, der das Gähnen der Kinder vor dem Einschlafen einsammelt und in Blasen verwandelt. Im Programm 2026 taucht die Show nicht mehr auf, ebenso wenig das Repsol Christmas Music Studio, in dem Familien 2025 ihr Weihnachtslied aufnehmen konnten. Repsols Platz im Programm hat jetzt die Estación Energía.
 
 ## Anreise
 
@@ -82,7 +80,7 @@ Mit dem Auto fährst du von Madrid über die A-4 nach Süden bis zur Ausfahrt 22
 
 ## Ein Tag im Park
 
-Für Bahnen, Shows und Figuren hast du die acht bis neun Stunden vor der Parade. Die Wartezeiten nach Bahn und Tageszeit stehen in unserem [Guide](/blog/parque-warner-madrid-wartezeiten-tipps). An den Warteschlangen vorbei kommst du mit dem Pase Correcaminos, den es gegen Aufpreis zum Eintritt gibt.
+Ab 12 Uhr bleiben dir bis zur Parade acht bis neun Stunden, und in die müssen Bahnen, Shows und das Foto mit Gizmo passen. Wann welche Bahn am kürzesten ist, haben wir im [Guide](/blog/parque-warner-madrid-wartezeiten-tipps) nach Tageszeit aufgeschlüsselt. An den Warteschlangen vorbei kommst du mit dem Pase Correcaminos, benannt nach dem Road Runner, den es gegen Aufpreis zum Eintritt gibt.
 
 [Parque Warner Madrid](ref:parque-warner-madrid?full)
 
