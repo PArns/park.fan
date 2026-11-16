@@ -14,8 +14,8 @@ export function presentedApiKey(request: Request): string | null {
 
 /**
  * How a tool reads beyond the wait times: like a park.fan page, through the server's own key, or
- * with the caller's data key. Search and best days send that key to the API, so its permissions,
- * parks and allowance apply; the wait-time tool only checks that one was presented.
+ * with the caller's data key. Every tool sends that key to the API with its read, so the key's
+ * permissions, parks and allowance apply.
  */
 export type KeyGrant = { via: 'page' } | { via: 'key'; apiKey: string };
 

@@ -155,7 +155,7 @@ Descriptions and schemas come from `lib/agents/tool-descriptors.ts` for both sur
 calls are same-origin, so the keyed tools (search, best days) answer them without a key, as the
 page itself would (`keyGrant`, `lib/agents/forecast-access.ts`); any other client's key goes to
 the API with the read itself, so its permissions, parks and hourly allowance apply as on
-api.park.fan. Without either, only `get_park_wait_times` answers, without crowd level and
+api.park.fan. Without either, only `get_park_wait_times` answers, without land, crowd level and
 maintenance dates. The browser
 tools call the server rather than the API because two answers depend on rules that sit with the
 data:

@@ -98,9 +98,10 @@ keys), then the requests, then the keys.
 The site's relays send the server's key, so they answer only park.fan's own pages
 (`isSameOriginRequest`), except a park's wait times (`isKeylessRelayPath`). Favorites and nearby
 always go through their relays, never straight from the browser to the API. The MCP tools follow
-the same line: `get_park_wait_times` works without a key but leaves out crowd level and
-maintenance dates; `search_theme_parks` and `get_park_best_days` need a key, which they send to
-the API as the caller's own (`keyGrant`, `lib/agents/forecast-access.ts`).
+the same line: `get_park_wait_times` works without a key but then leaves out land, crowd level
+and maintenance dates; with a key it reads the park with that key, so the API drops what the
+key's permissions do not open. `search_theme_parks` and `get_park_best_days` need a key, which
+they send to the API as the caller's own (`keyGrant`, `lib/agents/forecast-access.ts`).
 
 ## Deploying
 

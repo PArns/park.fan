@@ -40,7 +40,7 @@ export const TOOL_DESCRIPTORS: ToolDescriptor[] = [
     name: 'get_park_wait_times',
     title: 'Live wait times for a park',
     description:
-      'Current wait times for every ride in a theme park, with the park status. Takes a park name or slug and needs no key. With a park.fan data API key in the X-API-Key header it adds how busy the park is right now and, for a ride in planned maintenance, the dates: running today (maintenance) or the next one (nextMaintenance).',
+      'Current wait times for every ride in a theme park, with the park status. Takes a park name or slug and needs no key. With a park.fan data API key in the X-API-Key header it reads the park with that key and adds what the key’s permissions open: each ride’s land (rides.details), how busy the park is right now (stats.live) and, for a ride in planned maintenance, the dates running today (maintenance) or the next ones (nextMaintenance, parks.seasons).',
     inputSchema: {
       type: 'object',
       properties: {
