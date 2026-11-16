@@ -42,6 +42,10 @@ overrides:
   # in 4.6.6. @vercel/cli-config pins zod 4.1.11 exactly (via @vercel/blob >
   # @vercel/oidc), so only an override moves it.
   zod@<4.6.6: ^4.6.7
+  # minimatch globparts amplification DoS (GHSA-g3hv-75wg-m249) has no fix on
+  # the 10.x line; 11.0.1 patches it. Lint tooling only (eslint and
+  # typescript-eslint), which calls minimatch() the same way on 11.
+  minimatch@10: ^11.0.8
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
