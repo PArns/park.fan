@@ -116,6 +116,3 @@ Bij de gastenservice was het aantal beperkt. In de Wintertraum waren de passes d
 Op een groene dag in de kalender heb je de Quick Pass volgens mij niet nodig als je bij de opening aan de poort staat. Op een dieprode zaterdag in de vakantie zou ik de € 10 voor Black Mamba uitgeven voordat ik 's middags in de rij ervoor ga staan. Zonder pass rijd ik de banen af in de volgorde uit de [Phantasialand-tips](/blog/phantasialand-wachttijden-tips).
 
 Bronnen: [Quick Pass in de webshop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass), [gebruiksvoorwaarden van de Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, onderdeel Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
-
-> [!CORRECTION]
-> 16 november 2026: in de eerste versie stond dat je de pass 's ochtends onderweg naar Brühl kon kopen. Online verkoopt het park hem pas vanaf 11 uur, tijdens de Wintertraum vanaf de opening van het park.

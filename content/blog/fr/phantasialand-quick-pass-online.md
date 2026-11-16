@@ -116,6 +116,3 @@ Au service des visiteurs, la quantité était limitée. Pendant le Wintertraum, 
 D’expérience, un jour vert dans le calendrier, le Quick Pass ne te sert à rien si tu es devant le portail à l’ouverture. Un samedi de vacances en rouge foncé, je dépenserais les 10 € pour Black Mamba avant d’aller me mettre dans sa file à midi. Sans pass, je fais les attractions dans l’ordre des [conseils pour le Phantasialand](/blog/phantasialand-temps-d-attente-conseils).
 
 Sources : [Quick Pass sur la boutique en ligne du Phantasialand](https://shop.phantasialand.de/fr/quick-pass), [conditions d’utilisation du Quick Pass](https://www.phantasialand.de/de/quick-pass/), [informations et accès, section Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [prix et billets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [horaires d’ouverture](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
-
-> [!CORRECTION]
-> 16 novembre 2026 : la première version disait que tu pouvais acheter le pass le matin, sur la route de Brühl. En ligne, le parc ne le vend qu’à partir de 11 h, soit à l’ouverture pendant le Wintertraum.

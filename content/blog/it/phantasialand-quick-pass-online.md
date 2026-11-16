@@ -117,6 +117,3 @@ Al servizio ospiti i pass erano in numero limitato. Al Wintertraum nei fine sett
 Per esperienza, in un giorno verde del calendario il Quick Pass non serve se sei al cancello all’apertura. In un sabato di vacanze tutto rosso, i 10 € per Black Mamba li spenderei prima di mettermi in coda a mezzogiorno. Senza pass faccio le attrazioni nell’ordine della [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
 
 Fonti: [Quick Pass nel negozio online del Phantasialand](https://shop.phantasialand.de/en/quick-pass), [Condizioni d’uso del Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informazioni e come arrivare, sezione Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prezzi e biglietti](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Orari di apertura](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
-
-> [!CORRECTION]
-> 16 novembre 2026: la prima versione diceva che potevi comprare il pass la mattina, mentre vai verso Brühl. Online il parco lo vende solo dalle 11, che al Wintertraum è l’ora di apertura.

@@ -117,6 +117,3 @@ At Guest Services there were only so many, and at Wintertraum they were often go
 In my experience you don't need a Quick Pass on a green day in the calendar if you're at the gate when the park opens. On a deep-red Saturday in the school holidays I'd rather spend the €10 on Black Mamba than join its queue at midday. Without a pass I ride in the order from the [Phantasialand tips](/blog/phantasialand-wait-times-tips).
 
 Sources: [Quick Pass in the Phantasialand online shop](https://shop.phantasialand.de/en/quick-pass), [Quick Pass terms of use](https://www.phantasialand.de/de/quick-pass/), [Information and directions, Quick Pass section](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prices and tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Opening hours](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
-
-> [!CORRECTION]
-> 16 November 2026: The first version said you could buy the pass in the morning on the way to Brühl. Online, the park only sells it from 11 am, which during Wintertraum is opening time.

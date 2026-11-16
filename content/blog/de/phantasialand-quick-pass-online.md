@@ -122,5 +122,3 @@ Am Gästeservice war die Menge begrenzt. Im Wintertraum waren die Pässe dort am
 An einem grünen Tag im Kalender brauchst du den Quick Pass nach meiner Erfahrung nicht, wenn du zur Öffnung am Tor stehst. An einem tiefroten Ferien-Samstag würde ich die 10 € für Black Mamba ausgeben, bevor ich mich mittags in ihre Warteschlange stelle. Ohne Pass fahre ich in der Reihenfolge aus den [Phantasialand-Tipps](/blog/phantasialand-tipps).
 
 Quellen: [Quick Pass im Online-Shop des Phantasialand](https://shop.phantasialand.de/de/quick-pass), [Nutzungsbedingungen zum Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, Abschnitt Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
-
-> [!CORRECTION] 16. November 2026: In der ersten Fassung stand, du könntest den Pass morgens auf dem Weg nach Brühl kaufen. Online verkauft der Park ihn erst ab 11 Uhr, im Wintertraum ab der Parköffnung.
