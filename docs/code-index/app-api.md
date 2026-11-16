@@ -5,17 +5,37 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`account/[[...path]]/route.ts`](../../app/api/account/%5B%5B...path%5D%5D/route.ts)
+
+Route `/api/account/[[...path]]` (route).
+
+- `runtime` _const_
+- `dynamic` _const_
+- `GET` _const_
+- `POST` _const_
+- `PATCH` _const_
+- `PUT` _const_
+- `DELETE` _const_
+
+### [`account/register/route.ts`](../../app/api/account/register/route.ts)
+
+Route `/api/account/register` (route).
+
+- `POST` _function_: POST /api/account/register: a visitor's own account (role `user`), which starts the sync.
+- `runtime` _const_
+- `dynamic` _const_
+
 ### [`admin/[...path]/route.ts`](../../app/api/admin/%5B...path%5D/route.ts)
 
 Route `/api/admin/[...path]` (route).
 
-- `GET` _function_
-- `POST` _function_
-- `PATCH` _function_
-- `PUT` _function_
-- `DELETE` _function_
 - `runtime` _const_
 - `dynamic` _const_
+- `GET` _const_
+- `POST` _const_
+- `PATCH` _const_
+- `PUT` _const_
+- `DELETE` _const_
 
 ### [`admin/backlinks/route.ts`](../../app/api/admin/backlinks/route.ts)
 
@@ -270,19 +290,19 @@ Route `/api/cron/websub` (route).
 
 Route `/api/developer/[...path]` (route).
 
-- `GET` _function_
-- `POST` _function_
-- `PATCH` _function_
-- `PUT` _function_
-- `DELETE` _function_
 - `runtime` _const_
 - `dynamic` _const_
+- `GET` _const_
+- `POST` _const_
+- `PATCH` _const_
+- `PUT` _const_
+- `DELETE` _const_
 
 ### [`developers/register/route.ts`](../../app/api/developers/register/route.ts)
 
 Route `/api/developers/register` (route).
 
-- `POST` _function_: POST /api/developers/register: a developer's own account.
+- `POST` _function_: POST /api/developers/register: a developer's own account (role `developer`).
 - `runtime` _const_
 - `dynamic` _const_
 

@@ -1,9 +1,9 @@
 /**
- * An account's role, most privileged first. Mirrors the backend's `ADMIN_ROLES`. `developer` is not
- * staff: an outside developer's account, which reaches the developer dashboard and nothing of the
- * admin.
+ * An account's role, most privileged first. Mirrors the backend's `ADMIN_ROLES`. `developer` and
+ * `user` are not staff: an outside developer's account, which reaches the developer dashboard, and
+ * a visitor's, which reaches its own synced state; neither reaches anything of the admin.
  */
-export type AdminRole = 'owner' | 'editor' | 'author' | 'viewer' | 'developer';
+export type AdminRole = 'owner' | 'editor' | 'author' | 'viewer' | 'developer' | 'user';
 
 /** What each role is called on screen. */
 export const ROLE_LABELS: Record<AdminRole, string> = {
@@ -12,6 +12,7 @@ export const ROLE_LABELS: Record<AdminRole, string> = {
   author: 'Autor',
   viewer: 'Lesend',
   developer: 'Entwickler',
+  user: 'Besucher',
 };
 
 const ROLE_RANK: Record<AdminRole, number> = {
@@ -20,6 +21,7 @@ const ROLE_RANK: Record<AdminRole, number> = {
   author: 10,
   viewer: 0,
   developer: -10,
+  user: -20,
 };
 
 /**
@@ -28,6 +30,11 @@ const ROLE_RANK: Record<AdminRole, number> = {
  */
 export function roleAtLeast(role: AdminRole, minimum: AdminRole): boolean {
   return (ROLE_RANK[role] ?? -1) >= ROLE_RANK[minimum];
+}
+
+/** The role is staff: it reaches the admin, unlike a developer's or a visitor's account. */
+export function isStaffRole(role: AdminRole): boolean {
+  return roleAtLeast(role, 'viewer');
 }
 
 /** Who an admin session belongs to, as `auth/me` and the account list answer. */

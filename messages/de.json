@@ -3092,31 +3092,6 @@
       "network": "Keine Verbindung zum Server. Prüf deine Verbindung und versuch es erneut.",
       "generic": "Der Antrag ist nicht angekommen. Prüf die Felder und versuch es noch einmal."
     },
-    "auth": {
-      "registerTab": "Konto anlegen",
-      "loginTab": "Anmelden",
-      "displayName": "Name",
-      "email": "E-Mail",
-      "emailHint": "An diese Adresse richten sich unsere Rückfragen.",
-      "password": "Passwort",
-      "passwordHint": "Mindestens {min} Zeichen.",
-      "totp": "Code aus der Authenticator-App",
-      "totpHint": "Dein Konto meldet sich mit zweitem Faktor an.",
-      "signIn": "Anmelden",
-      "errorLocked": "Zu viele Versuche. Warte ein paar Minuten und versuch es erneut.",
-      "errorTurnstile": "Die Sicherheitsprüfung ist fehlgeschlagen. Lös sie noch einmal.",
-      "errorCredentials": "E-Mail oder Passwort stimmen nicht.",
-      "errorNetwork": "Keine Verbindung zum Server. Versuch es gleich noch einmal.",
-      "register": {
-        "submit": "Konto anlegen",
-        "account-exists": "Für diese Adresse gibt es schon ein Konto. Melde dich an.",
-        "invalid-form": "Prüf die Adresse und das Passwort.",
-        "rate-limited": "Zu viele Versuche. Warte eine Minute.",
-        "turnstile-failed": "Die Sicherheitsprüfung ist fehlgeschlagen. Lös sie noch einmal.",
-        "network": "Keine Verbindung zum Server.",
-        "generic": "Das Konto ließ sich nicht anlegen. Versuch es noch einmal."
-      }
-    },
     "dashboard": {
       "metaTitle": "Entwickler-Dashboard",
       "title": "Entwickler-Dashboard",
@@ -3193,7 +3168,14 @@
       "copied": "Kopiert",
       "revealedDone": "Gespeichert",
       "revokeTitle": "{name} widerrufen?",
-      "revokeText": "Der Key funktioniert ab der nächsten Anfrage nicht mehr, und das lässt sich nicht rückgängig machen. Ein neuer Key ist ein neuer Antrag."
+      "revokeText": "Der Key funktioniert ab der nächsten Anfrage nicht mehr, und das lässt sich nicht rückgängig machen. Ein neuer Key ist ein neuer Antrag.",
+      "auth": {
+        "registerTitle": "Entwicklerkonto anlegen",
+        "registerLead": "Mit dem Konto beantragst du Keys und siehst ihre Nutzung.",
+        "loginTitle": "Willkommen zurück",
+        "loginLead": "Melde dich an, um deine Keys und Anträge zu sehen."
+      },
+      "securityTitle": "Sicherheit"
     }
   },
   "attraction": {
@@ -6443,6 +6425,129 @@
       "bad": "Lieber nicht",
       "ask": "Frag Parky zu diesem Tag",
       "question": "Für {day} in {park} sagst du: „{tip}“ Wie holen wir an dem Tag am meisten raus?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Konto anlegen",
+    "loginTab": "Anmelden",
+    "displayName": "Name",
+    "email": "E-Mail",
+    "emailHint": "Damit meldest du dich an.",
+    "password": "Passwort",
+    "passwordHint": "Mindestens {min} Zeichen.",
+    "totp": "Code aus der Authenticator-App",
+    "totpHint": "Dein Konto meldet sich mit zweitem Faktor an.",
+    "signIn": "Anmelden",
+    "errorLocked": "Zu viele Versuche. Warte ein paar Minuten und versuch es erneut.",
+    "errorTurnstile": "Die Sicherheitsprüfung ist fehlgeschlagen. Lös sie noch einmal.",
+    "errorCredentials": "E-Mail oder Passwort stimmen nicht.",
+    "errorNetwork": "Keine Verbindung zum Server. Versuch es gleich noch einmal.",
+    "register": {
+      "submit": "Konto anlegen",
+      "account-exists": "Für diese Adresse gibt es schon ein Konto. Melde dich an.",
+      "invalid-form": "Prüf die Adresse und das Passwort.",
+      "rate-limited": "Zu viele Versuche. Warte eine Minute.",
+      "turnstile-failed": "Die Sicherheitsprüfung ist fehlgeschlagen. Lös sie noch einmal.",
+      "network": "Keine Verbindung zum Server.",
+      "generic": "Das Konto ließ sich nicht anlegen. Versuch es noch einmal."
+    },
+    "showPassword": "Passwort anzeigen",
+    "hidePassword": "Passwort verbergen",
+    "capsLock": "Feststelltaste ist an."
+  },
+  "account": {
+    "metaTitle": "Dein Konto",
+    "title": "Dein park.fan-Konto",
+    "lead": "Favoriten, gefahrene Attraktionen und deine Temperatureinheit auf jedem Gerät, auf dem du angemeldet bist",
+    "loading": "Lädt",
+    "signOut": "Abmelden",
+    "syncNow": "Jetzt abgleichen",
+    "syncedAt": "Zuletzt abgeglichen: {when}",
+    "neverSynced": "Noch nicht abgeglichen",
+    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
+    "auth": {
+      "registerTitle": "Konto anlegen",
+      "registerLead": "Deine Favoriten und gefahrenen Attraktionen auf jedem Gerät. Kostenlos, ohne Werbung.",
+      "loginTitle": "Willkommen zurück",
+      "loginLead": "Melde dich an, um deine Favoriten auf dieses Gerät zu holen."
+    },
+    "delete": {
+      "title": "Konto löschen",
+      "body": "Das Konto und alles, was es abgeglichen hat, wird endgültig gelöscht. Auf diesem Gerät bleiben deine Favoriten erhalten.",
+      "open": "Konto löschen",
+      "confirmTitle": "Konto endgültig löschen?",
+      "confirmBody": "Gib zur Bestätigung dein Passwort ein. Das lässt sich nicht rückgängig machen.",
+      "confirm": "Endgültig löschen",
+      "cancel": "Abbrechen",
+      "wrongPassword": "Das Passwort stimmt nicht.",
+      "failed": "Das Konto ließ sich nicht löschen. Versuch es noch einmal."
+    },
+    "login": {
+      "metaTitle": "Anmelden",
+      "title": "Anmelden",
+      "lead": "Melde dich an oder leg ein Konto an. Beides ist kostenlos."
+    },
+    "figures": {
+      "parks": "Lieblingsparks",
+      "rides": "Gemerkte Attraktionen",
+      "ridden": "Gefahrene Attraktionen",
+      "unit": "Temperatureinheit",
+      "unitNone": "nicht gewählt"
+    },
+    "syncTitle": "Abgleich",
+    "profile": {
+      "title": "Profil",
+      "name": "Name",
+      "email": "E-Mail",
+      "emailHint": "Die Adresse lässt sich noch nicht ändern.",
+      "save": "Speichern",
+      "saved": "Gespeichert.",
+      "failed": "Das hat nicht geklappt. Versuch es noch einmal.",
+      "memberSince": "Dabei seit {date}",
+      "lastLogin": "zuletzt angemeldet {date}"
+    },
+    "security": {
+      "title": "Sicherheit",
+      "lead": "Passwort, zweiter Faktor und die Geräte, auf denen du angemeldet bist",
+      "passwordTitle": "Passwort ändern",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "repeatPassword": "Neues Passwort wiederholen",
+      "passwordHint": "Mindestens {min} Zeichen.",
+      "mismatch": "Die beiden Passwörter stimmen nicht überein.",
+      "changePassword": "Passwort ändern",
+      "passwordChanged": "Passwort geändert. Auf deinen anderen Geräten bist du jetzt abgemeldet.",
+      "wrongPassword": "Das Passwort stimmt nicht.",
+      "tooMany": "Zu viele Versuche. Warte ein paar Minuten.",
+      "rejected": "Das wurde abgelehnt. Prüf deine Eingabe.",
+      "failed": "Das hat nicht geklappt. Versuch es noch einmal.",
+      "twoFactorTitle": "Zweiter Faktor",
+      "twoFactorOn": "aktiv",
+      "twoFactorOff": "aus",
+      "twoFactorIntro": "Mit einem zweiten Faktor reicht ein gestohlenes Passwort nicht: Beim Anmelden fragt park.fan zusätzlich nach einem Code aus deiner Authenticator-App.",
+      "setUp": "Einrichten",
+      "secretHint": "Trag diesen Schlüssel in deiner Authenticator-App ein, oder öffne den Link auf dem Gerät mit der App. Aktiv wird der zweite Faktor erst mit dem ersten Code.",
+      "openApp": "In der Authenticator-App öffnen",
+      "code": "Code aus der App",
+      "confirmCode": "Bestätigen",
+      "enabled": "Der zweite Faktor ist aktiv.",
+      "turnOff": "Ausschalten",
+      "disabled": "Der zweite Faktor ist aus.",
+      "codeWrong": "Der Code stimmt nicht. Nimm den aktuellen aus der App.",
+      "sessionsTitle": "Angemeldete Geräte",
+      "unknownDevice": "Unbekanntes Gerät",
+      "thisDevice": "dieses Gerät",
+      "lastActive": "zuletzt aktiv {when}",
+      "endSession": "Abmelden",
+      "everywhere": "Überall abmelden",
+      "everywhereHint": "Beendet jede Anmeldung, auch diese."
+    },
+    "data": {
+      "title": "Deine Daten",
+      "lead": "Alles, was dein Konto speichert, als eine Datei zum Herunterladen",
+      "stored": "Gespeicherte Einträge",
+      "export": "Daten herunterladen",
+      "failed": "Der Download hat nicht geklappt. Versuch es noch einmal."
     }
   }
 }

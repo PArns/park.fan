@@ -21,6 +21,13 @@ import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import type { DataApiKey } from '@/lib/admin/api-keys';
 import {
+  DEFAULT_ROTATION_GRACE_HOURS,
+  ROTATION_GRACE_HOURS,
+  keyDaysSum,
+  previousKeyValidUntil,
+  type RotationGraceHours,
+} from '@/lib/developers/key-lifecycle';
+import {
   API_PERMISSION_GROUPS,
   API_PERMISSION_GROUP_IDS,
   LEGACY_KEY_PERMISSIONS,
@@ -36,7 +43,6 @@ import {
 } from '@/lib/developers/dashboard';
 
 /** The grace periods a holder may give the old secret, in hours. */
-const GRACE_CHOICES = [0, 1, 24, 168] as const;
 
 /** Thirty days of requests as bars, today last; the height is the share of the busiest day. */
 function UsageBars({ days, label }: { days: { date: string; requests: number }[]; label: string }) {
@@ -105,18 +111,16 @@ export function DeveloperKeyCard({
   const state = developerKeyState(apiKey, nowMs);
   const permissions = sortPermissions(apiKey.permissions ?? LEGACY_KEY_PERMISSIONS);
   const days = apiKey.stats?.days ?? [];
-  const total30 = days.reduce((sum, day) => sum + day.requests, 0);
-  const limited30 = days.reduce((sum, day) => sum + day.limited, 0);
+  const total30 = keyDaysSum(apiKey.stats, 'requests');
+  const limited30 = keyDaysSum(apiKey.stats, 'limited');
   const used = apiKey.requestsThisHour ?? 0;
   const limit = apiKey.requestsPerHour;
-  const graceUntil =
-    apiKey.previousExpiresAt && Date.parse(apiKey.previousExpiresAt) > nowMs
-      ? apiKey.previousExpiresAt
-      : null;
+  // As the API decides it: the grace end, or the key's own end date when that comes first.
+  const graceUntil = previousKeyValidUntil(apiKey, nowMs);
 
   const [revealed, setRevealed] = useState<RevealedKey | null>(null);
   const [rotating, setRotating] = useState(false);
-  const [grace, setGrace] = useState<number>(24);
+  const [grace, setGrace] = useState<RotationGraceHours>(DEFAULT_ROTATION_GRACE_HOURS);
   const [busy, setBusy] = useState(false);
   const [revoking, setRevoking] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -284,8 +288,11 @@ export function DeveloperKeyCard({
           </DialogHeader>
           <label className="space-y-1.5 text-sm">
             <span className="font-medium">{t('graceLabel')}</span>
-            <NativeSelect value={grace} onChange={(e) => setGrace(Number(e.target.value))}>
-              {GRACE_CHOICES.map((hours) => (
+            <NativeSelect
+              value={grace}
+              onChange={(e) => setGrace(Number(e.target.value) as RotationGraceHours)}
+            >
+              {ROTATION_GRACE_HOURS.map((hours) => (
                 <option key={hours} value={hours}>
                   {t(`grace.${hours}`)}
                 </option>

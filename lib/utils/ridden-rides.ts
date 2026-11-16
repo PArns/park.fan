@@ -1,7 +1,7 @@
 /*
  * The rides a visitor has marked as ridden, as an external store over `localStorage`.
  *
- * Local to the browser on purpose: no account, no sync. The server and hydration read the empty
+ * Local to the browser; a signed-in visitor's account carries a copy (`lib/account/sync.ts`). The server and hydration read the empty
  * set (`getServerRiddenSnapshot`), so every consumer renders the same markup on both sides and
  * flips in one batch once the real set is known (the mount-gate rule). The set is keyed on the
  * ride's `id`, which is stable across parks and seasons.
@@ -66,11 +66,8 @@ export function subscribeToRidden(listener: () => void): () => void {
   };
 }
 
-/** Marks the ride as ridden, or takes the mark off; returns the new state. */
-export function toggleRidden(id: string): boolean {
-  const next = new Set(getRiddenSnapshot());
-  const marked = !next.delete(id);
-  if (marked) next.add(id);
+/** Stores the set and tells every subscriber. */
+function writeRidden(next: ReadonlySet<string>): void {
   try {
     localStorage.setItem(RIDDEN_RIDES_KEY, JSON.stringify([...next]));
   } catch {
@@ -80,5 +77,18 @@ export function toggleRidden(id: string): boolean {
     cachedSet = next;
   }
   for (const listener of listeners) listener();
+}
+
+/** Marks the ride as ridden, or takes the mark off; returns the new state. */
+export function toggleRidden(id: string): boolean {
+  const next = new Set(getRiddenSnapshot());
+  const marked = !next.delete(id);
+  if (marked) next.add(id);
+  writeRidden(next);
   return marked;
+}
+
+/** Replaces the whole set, as a visitor account's sync does (`lib/account/sync.ts`). */
+export function replaceRidden(ids: readonly string[]): void {
+  writeRidden(new Set(ids));
 }

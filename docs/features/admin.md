@@ -811,5 +811,5 @@ models in one sentence and the switch rule.
 - [Writing to the media database](media-database-writes.md): the media browser, sessions and uploads
 - [Contributions](contribute.md): the moderation queue at `/admin/contributions`
 - [Most read](most-read.md#the-admin): `/admin/popularity`
-- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo`, `/admin/traffic/search`, `/admin/traffic/planner` and the live view `/admin/traffic/live`
+- [Site analytics](site-analytics.md#the-admin): `/admin/traffic` with its filters and map, its event pages, `/admin/traffic/seo`, `/admin/traffic/keywords`, `/admin/traffic/search`, `/admin/traffic/planner` and the live view `/admin/traffic/live`
 - [Glossary](glossary.md#ride--glossary-link): where the ride-profile term ids come from

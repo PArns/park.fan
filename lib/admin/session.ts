@@ -1,8 +1,8 @@
 import 'server-only';
 import { cookies } from 'next/headers';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { readCookie } from './cookie';
-import { adminGuardRefusal, type AdminIdentity, type AdminRole } from './roles';
+import { ACCOUNT_MARKER_COOKIE, ADMIN_MARKER_COOKIE, readCookie } from './cookie';
+import { adminGuardRefusal, isStaffRole, type AdminIdentity, type AdminRole } from './roles';
 
 /**
  * The admin session cookie: httpOnly, so no script on the admin origin can read the token, and
@@ -171,6 +171,27 @@ export function sessionCookieOptions(maxAgeSeconds: number) {
 /** The attributes of {@link ADMIN_MARKER_COOKIE}: the session's, but readable by scripts. */
 export function markerCookieOptions(maxAgeSeconds: number) {
   return { ...sessionCookieOptions(maxAgeSeconds), httpOnly: false };
+}
+
+/** What `cookies()` returns, as far as the markers need it. */
+type CookieStore = Awaited<ReturnType<typeof cookies>>;
+
+/**
+ * The script-readable markers that go with a session, by its role: the admin marker for staff,
+ * which public pages read to ask the admin for its figures, and the account marker for a visitor,
+ * which starts the sync. A developer gets neither.
+ */
+export function setSessionMarkers(store: CookieStore, role: AdminRole, maxAgeSeconds: number) {
+  if (isStaffRole(role)) store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(maxAgeSeconds));
+  else store.delete(ADMIN_MARKER_COOKIE);
+  if (role === 'user') store.set(ACCOUNT_MARKER_COOKIE, '1', markerCookieOptions(maxAgeSeconds));
+  else store.delete(ACCOUNT_MARKER_COOKIE);
+}
+
+/** Drops both markers, on sign-out or when the session turned out to be gone. */
+export function clearSessionMarkers(store: CookieStore) {
+  store.delete(ADMIN_MARKER_COOKIE);
+  store.delete(ACCOUNT_MARKER_COOKIE);
 }
 
 /** The one-line form of {@link requireAdmin}, for handlers that need no identity. */

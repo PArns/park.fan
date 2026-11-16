@@ -159,6 +159,7 @@ Short „minutes" and „hours" labels per locale. A static map, because `Intl.N
 - `countFavorites` _function_: Counts a favorites set per kind and in total.
 - `parseFavoritesCookie` _function_: The cookie's value as `FavoritesData`, or `null` when it is missing or not the JSON object this module writes. Pure, so the server can read the same cookie and render `/favorites` at the size of the list.
 - `getFavoritesFromCookies` _function_: The visitor's favorites from the cookie, empty on the server or when there is none.
+- `replaceFavorites` _function_: Replaces all favorites at once, as a visitor account's sync does (`lib/account/sync.ts`).
 - `subscribeToFavorites` _function_: `useSyncExternalStore` subscriber for the cookie: every add and remove above announces itself.
 - `toggleFavorite` _function_: Toggle a favorite and return the new state at once (optimistic).
 - `isFavorite` _function_: Whether an item is a favorite.
@@ -188,6 +189,10 @@ Short „minutes" and „hours" labels per locale. A static map, because `Intl.N
 - `locationBannerIsQuiet` _function_: Whether a banner closed at `dismissedAt` (epoch ms, `null` = never) is still closed at `now`. A timestamp from the future (a clock that was wrong) does not hold the banner shut forever.
 - `LOCATION_BANNER_QUIET_MS` _const_: How long a closed location banner stays closed.
 - Types: `StoredPermission`, `InitialLocationAction`, `LocationHelpPlatform`
+
+### [`has-passed.ts`](../../lib/utils/has-passed.ts)
+
+- `hasPassed` _function_: Whether an ISO time has passed at `nowMs`; a missing time never expires.
 
 ### [`hatch.ts`](../../lib/utils/hatch.ts)
 
@@ -434,6 +439,7 @@ Redirects for malformed or stale park URLs: a missing city segment (a park slug 
 - `getServerRiddenSnapshot` _function_: The snapshot on the server and while hydrating: nothing marked yet.
 - `subscribeToRidden` _function_: Calls `listener` when a ride is marked here or in another tab; returns the unsubscribe.
 - `toggleRidden` _function_: Marks the ride as ridden, or takes the mark off; returns the new state.
+- `replaceRidden` _function_: Replaces the whole set, as a visitor account's sync does (`lib/account/sync.ts`).
 - `RIDDEN_RIDES_KEY` _const_: Where the marked ride ids live, as a JSON array of strings.
 
 ### [`ride-crowd-scale.ts`](../../lib/utils/ride-crowd-scale.ts)

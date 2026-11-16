@@ -93,12 +93,21 @@ keys), then the requests, then the keys.
   language that points to the dashboard; it never carries a key. The app sends no mail itself.
 - An API without the request endpoints answers 404, and the panel says so instead of erroring.
 
+## Deleting accounts and requests
+
+On `/admin/users` the owner deletes any account but their own (`DELETE /api/admin/auth/users/:id`).
+A developer account goes with its sessions, every API key with its statistics and every request,
+and its keys stop working on the next request; a staff account goes with its sessions and tokens,
+while what it curated stays. The toast names what went with it. On `/admin/api-keys` a request can
+be deleted in any state; a key approved from it stays and is revoked on its own. The backend side:
+`docs/admin/authentication.md#deleting-an-account` in v4.api.park.fan.
+
 ## What leaves park.fan without a key
 
 The site's relays send the server's key, so they answer only park.fan's own pages
 (`isSameOriginRequest`), except a park's wait times (`isKeylessRelayPath`). Favorites and nearby
 always go through their relays, never straight from the browser to the API. The MCP tools follow
-the same line: `get_park_wait_times` works without a key but then leaves out land, crowd level
+the same line: `get_park_wait_times` works without a key but then leaves out land, time zone, crowd level
 and maintenance dates; with a key it reads the park with that key, so the API drops what the
 key's permissions do not open. `search_theme_parks` and `get_park_best_days` need a key, which
 they send to the API as the caller's own (`keyGrant`, `lib/agents/forecast-access.ts`).

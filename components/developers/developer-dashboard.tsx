@@ -15,6 +15,7 @@ import {
   Timer,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { IconFigure } from '@/components/common/icon-figure';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { ChapterHeading } from '@/components/common/chapter-heading';
@@ -23,37 +24,23 @@ import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { cn } from '@/lib/utils';
 import {
   DEVELOPER_OVERVIEW_QUERY_KEY,
-  DeveloperApiError,
   fetchDeveloperOverview,
   usageTotals,
   withdrawKeyRequest,
   type DeveloperOverview,
+  developerKeyState,
 } from '@/lib/developers/dashboard';
 import { requestedPermissions, type KeyRequestRecord } from '@/lib/developers/key-request';
-import { DeveloperAuth } from './developer-auth';
+import { SessionApiError } from '@/lib/admin/session-client';
+import { AccountSecurity } from '@/components/account/account-security';
+import { SelfServiceAuth } from '@/components/common/self-service-auth';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { DeveloperKeyCard } from './developer-key-card';
 import { KeyRequestForm } from './key-request-form';
 
 /** The API said nobody is signed in. */
 function isSignedOut(error: unknown): boolean {
-  return error instanceof DeveloperApiError && error.status === 401;
-}
-
-/** One figure of the dashboard's head. */
-function Tile({ icon: Icon, label, value }: { icon: typeof Gauge; label: string; value: string }) {
-  return (
-    <Card className="gap-1 py-4">
-      <CardContent className="flex items-center gap-3 px-4">
-        <span className="bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-lg">
-          <Icon className="size-5" aria-hidden />
-        </span>
-        <div className="min-w-0">
-          <p className="text-muted-foreground truncate text-xs">{label}</p>
-          <p className="text-xl font-semibold tabular-nums">{value}</p>
-        </div>
-      </CardContent>
-    </Card>
-  );
+  return error instanceof SessionApiError && error.status === 401;
 }
 
 /** One of the developer's requests: its project, state, tier, and the owner's answer. */
@@ -112,6 +99,7 @@ export function DeveloperDashboard() {
   const client = useQueryClient();
   const [requesting, setRequesting] = useState(false);
   const [filed, setFiled] = useState(false);
+  const [withdrawFailed, setWithdrawFailed] = useState(false);
   const overview = useQuery<DeveloperOverview, Error>({
     queryKey: DEVELOPER_OVERVIEW_QUERY_KEY,
     queryFn: fetchDeveloperOverview,
@@ -134,7 +122,21 @@ export function DeveloperDashboard() {
   }
 
   if (overview.isError && isSignedOut(overview.error)) {
-    return <DeveloperAuth onSignedIn={refresh} />;
+    return (
+      <SelfServiceAuth
+        register={{
+          endpoint: '/api/developers/register',
+          action: TURNSTILE_ACTIONS.developerRegister,
+        }}
+        copy={{
+          registerTitle: t('auth.registerTitle'),
+          registerLead: t('auth.registerLead'),
+          loginTitle: t('auth.loginTitle'),
+          loginLead: t('auth.loginLead'),
+        }}
+        onSignedIn={refresh}
+      />
+    );
   }
 
   if (overview.isError) {
@@ -153,7 +155,11 @@ export function DeveloperDashboard() {
 
   const { account, keys, requests } = overview.data;
   const totals = usageTotals(keys);
-  const activeKeys = keys.filter((key) => !key.revokedAt);
+  // As the admin counts them: neither revoked nor past their end date.
+  const activeKeys = keys.filter((key) => {
+    const state = developerKeyState(key, now ?? Date.parse(key.createdAt));
+    return state === 'active' || state === 'pickup';
+  });
   const pending = requests.filter((request) => request.status === 'pending');
 
   return (
@@ -172,10 +178,22 @@ export function DeveloperDashboard() {
       </div>
 
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Tile icon={KeyRound} label={t('tiles.keys')} value={number.format(activeKeys.length)} />
-        <Tile icon={Timer} label={t('tiles.thisHour')} value={number.format(totals.thisHour)} />
-        <Tile icon={Activity} label={t('tiles.today')} value={number.format(totals.today)} />
-        <Tile icon={Gauge} label={t('tiles.last30')} value={number.format(totals.last30Days)} />
+        <IconFigure
+          icon={KeyRound}
+          label={t('tiles.keys')}
+          value={number.format(activeKeys.length)}
+        />
+        <IconFigure
+          icon={Timer}
+          label={t('tiles.thisHour')}
+          value={number.format(totals.thisHour)}
+        />
+        <IconFigure icon={Activity} label={t('tiles.today')} value={number.format(totals.today)} />
+        <IconFigure
+          icon={Gauge}
+          label={t('tiles.last30')}
+          value={number.format(totals.last30Days)}
+        />
       </div>
 
       <section aria-labelledby="dev-keys" className="space-y-4">
@@ -235,12 +253,25 @@ export function DeveloperDashboard() {
               <RequestRow
                 key={request.id}
                 request={request}
-                onWithdraw={() => void withdrawKeyRequest(request.id).then(refresh)}
+                onWithdraw={() =>
+                  void withdrawKeyRequest(request.id)
+                    .then(refresh)
+                    .catch(() => setWithdrawFailed(true))
+                }
               />
             ))}
           </ul>
         )}
+        {withdrawFailed && (
+          <p role="alert" className="text-destructive text-sm">
+            {t('actionFailed')}
+          </p>
+        )}
         {pending.length > 0 && <p className="text-muted-foreground text-xs">{t('pendingHint')}</p>}
+      </section>
+
+      <section aria-label={t('securityTitle')} className="max-w-2xl">
+        <AccountSecurity totpEnabled={account.totpEnabled} onTwoFactorChange={refresh} />
       </section>
     </div>
   );

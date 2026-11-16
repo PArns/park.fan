@@ -18,3 +18,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `TemperatureUnitProvider` _component_: Centralized temperature-unit preference (°C / °F).
 - `useTemperatureUnit` _hook_: Returns the visitor's temperature unit (°C or °F) and its setter; outside the provider it answers °C and a no-op setter.
+- `readChosenTemperatureUnit` _function_: The unit the visitor picked, from the cookie; null when they never picked one.
+- `subscribeToTemperatureUnit` _function_: Calls `onChange` when the unit changes in this tab; returns the unsubscribe.
+- `writeUnit` _function_: Sets the unit everywhere at once: the attribute, the cookie and every subscriber.

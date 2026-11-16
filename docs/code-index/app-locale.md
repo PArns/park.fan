@@ -12,6 +12,14 @@ Route `/[locale]/[...rest]` (page).
 - `default (UnmatchedLocalePath)` _component_
 - `generateMetadata` _function_: Any path under a locale that no route matches (`/en/nonexistent`).
 
+### [`account/page.tsx`](../../app/%5Blocale%5D/account/page.tsx)
+
+Route `/[locale]/account` (page).
+
+- `default (AccountPage)` _component_: A visitor's account: sign in or register, then what follows the visitor across devices. Static; everything account-bound is fetched in the browser through the session proxy.
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
 ### [`alerts/page.tsx`](../../app/%5Blocale%5D/alerts/page.tsx)
 
 Route `/[locale]/alerts` (page).
@@ -404,6 +412,14 @@ Route `/[locale]/impressum` (page).
 Route `/[locale]` (layout).
 
 - `default (LocaleLayout)` _component_
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
+### [`login/page.tsx`](../../app/%5Blocale%5D/login/page.tsx)
+
+Route `/[locale]/login` (page).
+
+- `default (LoginPage)` _component_: The sign-in for visitor accounts. Both forms are behind Turnstile: the widget in the browser and the check in `/api/admin/session` and `/api/account/register` before an address or password reaches the API.
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 

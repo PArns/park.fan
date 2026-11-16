@@ -35,7 +35,8 @@ import {
   type SourceModel,
 } from '@/lib/developers/key-request';
 import { ATTRIBUTION_ANCHOR, DEVELOPERS_PATH } from '@/lib/developers/paths';
-import { DeveloperApiError, createKeyRequest } from '@/lib/developers/dashboard';
+import { createKeyRequest } from '@/lib/developers/dashboard';
+import { SessionApiError } from '@/lib/admin/session-client';
 
 const L = KEY_REQUEST_LIMITS;
 
@@ -202,7 +203,7 @@ export function KeyRequestForm({ onFiled }: { onFiled: () => void }) {
       await createKeyRequest(input);
       onFiled();
     } catch (err) {
-      const code = err instanceof DeveloperApiError ? err.code : 'network';
+      const code = err instanceof SessionApiError ? err.code : 'network';
       setError(tErr.has(code) ? tErr(code) : tErr('generic'));
     } finally {
       setBusy(false);

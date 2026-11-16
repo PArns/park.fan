@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import { Loader2, Plus, ShieldCheck, UserCog, UserPlus } from 'lucide-react';
+import { Loader2, Plus, ShieldCheck, Trash2, UserCog, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import {
   Dialog,
   DialogContent,
@@ -23,10 +24,13 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { ApiTokenList } from '../_ui/api-token-list';
+import { AttemptsPanel } from './_components/attempts-panel';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
 import { formatAgo, formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
 import { useSession } from '../_app/session';
+import { DATA_API_KEYS_QUERY_KEY } from '@/lib/admin/api-keys';
+import { KEY_REQUESTS_QUERY_KEY } from '@/lib/admin/key-requests';
 
 /**
  * Who may do what.
@@ -49,6 +53,16 @@ const ROLES: Array<{ value: AdminRole; label: string; hint: string }> = [
   },
   { value: 'author', label: ROLE_LABELS.author, hint: 'Blog und Medien, keine Parkdaten.' },
   { value: 'viewer', label: ROLE_LABELS.viewer, hint: 'Sieht die Dashboards, ändert nichts.' },
+  {
+    value: 'developer',
+    label: ROLE_LABELS.developer,
+    hint: 'Nur das Entwickler-Dashboard: eigene API-Keys und Anträge.',
+  },
+  {
+    value: 'user',
+    label: ROLE_LABELS.user,
+    hint: 'Ein Besucherkonto: eigene Favoriten und gefahrene Attraktionen.',
+  },
 ];
 
 export default function UsersPage() {
@@ -94,9 +108,22 @@ export default function UsersPage() {
         )}
       </Panel>
 
+      <AttemptsPanel />
+
       {creating && <CreateUserDialog onClose={() => setCreating(false)} />}
     </AdminPage>
   );
+}
+
+/** „2 API-Keys und 3 Anträge mit gelöscht“, or nothing when the account held none. */
+function describeErased(erased: { apiKeys?: number; keyRequests?: number }): string | undefined {
+  const parts = [
+    erased.apiKeys ? `${erased.apiKeys} API-${erased.apiKeys === 1 ? 'Key' : 'Keys'}` : null,
+    erased.keyRequests
+      ? `${erased.keyRequests} ${erased.keyRequests === 1 ? 'Antrag' : 'Anträge'}`
+      : null,
+  ].filter(Boolean);
+  return parts.length > 0 ? `${parts.join(' und ')} mit gelöscht.` : undefined;
 }
 
 function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
@@ -106,6 +133,7 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
   const [resetting, setResetting] = useState(false);
   const [showTokens, setShowTokens] = useState(false);
   const [newPassword, setNewPassword] = useState('');
+  const [confirmingDelete, setConfirmingDelete] = useState(false);
 
   async function patch(body: Record<string, unknown>) {
     setBusy(true);
@@ -142,6 +170,30 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
     } catch (error) {
       toast.push({
         title: 'Zurücksetzen fehlgeschlagen',
+        description: error instanceof Error ? error.message : undefined,
+        tone: 'error',
+      });
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function remove() {
+    setBusy(true);
+    try {
+      const result = await adminFetch<{ erased: { apiKeys?: number; keyRequests?: number } }>(
+        `/api/admin/auth/users/${user.id}`,
+        { method: 'DELETE' }
+      );
+      invalidate(adminKeys.users, DATA_API_KEYS_QUERY_KEY, KEY_REQUESTS_QUERY_KEY);
+      toast.push({
+        title: 'Konto gelöscht',
+        description: describeErased(result.erased),
+        tone: 'success',
+      });
+    } catch (error) {
+      toast.push({
+        title: 'Löschen abgelehnt',
         description: error instanceof Error ? error.message : undefined,
         tone: 'error',
       });
@@ -209,8 +261,37 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
           >
             Passwort zurücksetzen
           </button>
+          {!isSelf && (
+            <button
+              type="button"
+              onClick={() => setConfirmingDelete(true)}
+              disabled={busy}
+              aria-label={`${user.email} löschen`}
+              className="text-muted-foreground hover:text-destructive rounded p-1"
+            >
+              <Trash2 className="h-3.5 w-3.5" />
+            </button>
+          )}
         </div>
       </div>
+
+      <ConfirmDialog
+        open={confirmingDelete}
+        onOpenChange={setConfirmingDelete}
+        icon={Trash2}
+        tone="destructive"
+        title={`Konto ${user.email} endgültig löschen?`}
+        description={
+          user.role === 'developer'
+            ? 'Das Konto verschwindet mit seinen Sitzungen, allen API-Keys samt Statistik und allen Anträgen. Seine Keys hören sofort auf zu funktionieren. Das lässt sich nicht rückgängig machen; unter „Änderungen“ bleibt es verzeichnet.'
+            : user.role === 'user'
+              ? 'Das Besucherkonto verschwindet mit seinen Sitzungen und den abgeglichenen Favoriten. Das lässt sich nicht rückgängig machen; unter „Änderungen“ bleibt es verzeichnet.'
+              : 'Das Konto verschwindet mit seinen Sitzungen und Tokens. Was es kuratiert hat, bleibt. Das lässt sich nicht rückgängig machen; deaktivieren ist der Weg zurück.'
+        }
+        confirmLabel="Endgültig löschen"
+        cancelLabel="Abbrechen"
+        onConfirm={() => void remove()}
+      />
 
       {showTokens && user.id && (
         <div className="border-border/50 space-y-2 border-t pt-2">

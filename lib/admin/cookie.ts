@@ -6,6 +6,13 @@
 export const ADMIN_MARKER_COOKIE = 'parkfan_admin';
 
 /**
+ * Set beside the session cookie for a visitor's account (role `user`) and readable by scripts: it
+ * holds no credential, it only tells the site to sync favorites, ridden rides and the temperature
+ * unit with the account. A stale one costs a 401, after which the sync removes it.
+ */
+export const ACCOUNT_MARKER_COOKIE = 'parkfan_account';
+
+/**
  * Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses
  * attacker-controlled input can be tested; split rather than matched, so the name comparison is
  * exact and no regex runs over hostile input.
