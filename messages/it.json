@@ -3174,7 +3174,8 @@
         "registerLead": "Con l’account richiedi le chiavi e vedi come vengono usate.",
         "loginTitle": "Bentornato",
         "loginLead": "Accedi per vedere le tue chiavi e le tue richieste."
-      }
+      },
+      "securityTitle": "Sicurezza"
     }
   },
   "attraction": {

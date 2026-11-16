@@ -3174,7 +3174,8 @@
         "registerLead": "Con la cuenta solicitas claves y ves cómo se usan.",
         "loginTitle": "Hola de nuevo",
         "loginLead": "Inicia sesión para ver tus claves y solicitudes."
-      }
+      },
+      "securityTitle": "Seguridad"
     }
   },
   "attraction": {

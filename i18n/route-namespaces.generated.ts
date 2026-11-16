@@ -62,6 +62,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/datenschutz': ['datenschutz.analyticsOptOut'],
   '/developers': [],
   '/developers/dashboard': [
+    'account.security',
     'accountAuth',
     'developers.dashboard',
     'developers.error',

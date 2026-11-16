@@ -20,7 +20,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`account-security.tsx`](../../components/account/account-security.tsx)
 
-- `AccountSecurity` _component_: Password, second factor and sessions, in one area of the account page.
+- `AccountSecurity` _component_: Password, second factor and sessions, in one area: the visitor's account page and the developer dashboard both show it. `onTwoFactorChange` tells the page the factor went on or off.
 
 ### [`account-sync-gate.tsx`](../../components/account/account-sync-gate.tsx)
 

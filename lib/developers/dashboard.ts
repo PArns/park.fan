@@ -11,7 +11,7 @@ import type { KeyRequestInput, KeyRequestRecord } from './key-request';
 
 /** The dashboard's answer from `GET /v1/developer/overview`. */
 export interface DeveloperOverview {
-  account: { email: string; displayName: string; role: string };
+  account: { email: string; displayName: string; role: string; totpEnabled: boolean };
   keys: DataApiKey[];
   requests: KeyRequestRecord[];
 }

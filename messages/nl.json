@@ -3174,7 +3174,8 @@
         "registerLead": "Met het account vraag je sleutels aan en zie je hoe ze gebruikt worden.",
         "loginTitle": "Welkom terug",
         "loginLead": "Log in om je sleutels en aanvragen te zien."
-      }
+      },
+      "securityTitle": "Beveiliging"
     }
   },
   "attraction": {

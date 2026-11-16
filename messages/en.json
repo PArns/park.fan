@@ -3174,7 +3174,8 @@
         "registerLead": "With the account you request keys and see how they are used.",
         "loginTitle": "Welcome back",
         "loginLead": "Sign in to see your keys and requests."
-      }
+      },
+      "securityTitle": "Security"
     }
   },
   "attraction": {

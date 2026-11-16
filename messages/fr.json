@@ -3174,7 +3174,8 @@
         "registerLead": "Avec ce compte, vous demandez des clés et suivez leur utilisation.",
         "loginTitle": "Bon retour",
         "loginLead": "Connectez-vous pour voir vos clés et vos demandes."
-      }
+      },
+      "securityTitle": "Sécurité"
     }
   },
   "attraction": {

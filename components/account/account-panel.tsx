@@ -44,6 +44,7 @@ export function AccountPanel() {
 function AccountDetails({ overview }: { overview: AccountOverview }) {
   const t = useTranslations('account');
   const signOut = useAccountSignOut();
+  const client = useQueryClient();
   return (
     <div className="mx-auto max-w-2xl space-y-6">
       <div className="flex justify-end">
@@ -54,7 +55,14 @@ function AccountDetails({ overview }: { overview: AccountOverview }) {
       </div>
       <AccountProfile account={overview.account} />
       <AccountSync data={overview.data} />
-      <AccountSecurity account={overview.account} />
+      <AccountSecurity
+        totpEnabled={overview.account.totpEnabled}
+        onTwoFactorChange={(totpEnabled) =>
+          client.setQueryData<AccountOverview>(ACCOUNT_QUERY_KEY, (current) =>
+            current ? { ...current, account: { ...current.account, totpEnabled } } : current
+          )
+        }
+      />
       <AccountData />
       <AccountDeletion onDeleted={signOut} />
     </div>

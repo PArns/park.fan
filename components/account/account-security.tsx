@@ -2,13 +2,13 @@
 
 import { useState, type FormEvent } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { KeyRound, Loader2, LogOut, Monitor, ShieldCheck, ShieldOff, Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { AUTH_FIELD_CLASS, AuthField, AuthPasswordField } from '@/components/common/auth-card';
 import { MIN_PASSWORD, usePasswordLabels } from '@/components/common/self-service-auth';
 import { AccountSection, FormNote } from '@/components/account/account-section';
-import { ACCOUNT_QUERY_KEY, useAccountSignOut } from '@/lib/account/member';
+import { useAccountSignOut } from '@/lib/account/member';
 import {
   beginTwoFactor,
   changePassword,
@@ -18,7 +18,6 @@ import {
   listSessions,
   signOutEverywhere,
 } from '@/lib/account/manage';
-import type { AccountOverview } from '@/lib/account/sync';
 import { SessionApiError } from '@/lib/admin/session-client';
 import { normalizeTotpCode, TOTP_CODE_LENGTH } from '@/lib/admin/totp';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
@@ -129,11 +128,16 @@ function CodeField({ value, onChange }: { value: string; onChange: (code: string
  * The optional second factor: set up with the password, a secret for the app and a first code;
  * turned off with the password and a current code.
  */
-function TwoFactor({ enabled }: { enabled: boolean }) {
+function TwoFactor({
+  enabled,
+  onChange,
+}: {
+  enabled: boolean;
+  onChange: (enabled: boolean) => void;
+}) {
   const t = useTranslations('account.security');
   const labels = usePasswordLabels();
   const errorText = useErrorText();
-  const client = useQueryClient();
   const [password, setPassword] = useState('');
   const [code, setCode] = useState('');
   const [enrolment, setEnrolment] = useState<{ secret: string; uri: string } | null>(null);
@@ -159,11 +163,6 @@ function TwoFactor({ enabled }: { enabled: boolean }) {
       setBusy(false);
     }
   }
-
-  const setEnabled = (value: boolean) =>
-    client.setQueryData<AccountOverview>(ACCOUNT_QUERY_KEY, (current) =>
-      current ? { ...current, account: { ...current.account, totpEnabled: value } } : current
-    );
 
   return (
     <div className="space-y-4">
@@ -225,7 +224,7 @@ function TwoFactor({ enabled }: { enabled: boolean }) {
                 await confirmTwoFactor(code);
                 setEnrolment(null);
                 setCode('');
-                setEnabled(true);
+                onChange(true);
               }, t('enabled'))
             }
           >
@@ -255,7 +254,7 @@ function TwoFactor({ enabled }: { enabled: boolean }) {
                 await disableTwoFactor(password, code);
                 setPassword('');
                 setCode('');
-                setEnabled(false);
+                onChange(false);
               }, t('disabled'))
             }
           >
@@ -350,14 +349,23 @@ function Sessions() {
   );
 }
 
-/** Password, second factor and sessions, in one area of the account page. */
-export function AccountSecurity({ account }: { account: AccountOverview['account'] }) {
+/**
+ * Password, second factor and sessions, in one area: the visitor's account page and the developer
+ * dashboard both show it. `onTwoFactorChange` tells the page the factor went on or off.
+ */
+export function AccountSecurity({
+  totpEnabled,
+  onTwoFactorChange,
+}: {
+  totpEnabled: boolean;
+  onTwoFactorChange: (enabled: boolean) => void;
+}) {
   const t = useTranslations('account.security');
   return (
     <AccountSection icon={KeyRound} title={t('title')} lead={t('lead')}>
       <PasswordForm />
       <div className="border-border/60 border-t pt-5">
-        <TwoFactor enabled={account.totpEnabled} />
+        <TwoFactor enabled={totpEnabled} onChange={onTwoFactorChange} />
       </div>
       <div className="border-border/60 border-t pt-5">
         <Sessions />

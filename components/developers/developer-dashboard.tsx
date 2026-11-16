@@ -32,6 +32,7 @@ import {
 } from '@/lib/developers/dashboard';
 import { requestedPermissions, type KeyRequestRecord } from '@/lib/developers/key-request';
 import { SessionApiError } from '@/lib/admin/session-client';
+import { AccountSecurity } from '@/components/account/account-security';
 import { SelfServiceAuth } from '@/components/common/self-service-auth';
 import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { DeveloperKeyCard } from './developer-key-card';
@@ -267,6 +268,10 @@ export function DeveloperDashboard() {
           </p>
         )}
         {pending.length > 0 && <p className="text-muted-foreground text-xs">{t('pendingHint')}</p>}
+      </section>
+
+      <section aria-label={t('securityTitle')} className="max-w-2xl">
+        <AccountSecurity totpEnabled={account.totpEnabled} onTwoFactorChange={refresh} />
       </section>
     </div>
   );

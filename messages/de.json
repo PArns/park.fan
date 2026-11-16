@@ -3174,7 +3174,8 @@
         "registerLead": "Mit dem Konto beantragst du Keys und siehst ihre Nutzung.",
         "loginTitle": "Willkommen zurück",
         "loginLead": "Melde dich an, um deine Keys und Anträge zu sehen."
-      }
+      },
+      "securityTitle": "Sicherheit"
     }
   },
   "attraction": {
