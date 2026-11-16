@@ -74,7 +74,7 @@ Gedacht ist das meiste im Weihnachtsprogramm für Kinder. In der ACME Factory sp
 
 Christmas Studios gibt es zum dritten Mal. 2025 lief die zweite Ausgabe vom 6. Dezember bis zum 5. Januar. In diesem Jahr beginnt sie am 21. November statt am 6. Dezember und endet am 10. statt am 5. Januar.
 
-Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubble Christmas neu, mit der Elfe Bublinna, die das Gähnen der Kinder vor dem Einschlafen einsammelt und in Blasen verwandelt. Im Programm 2026 taucht die Show nicht mehr auf, ebenso wenig das Repsol Christmas Music Studio, in dem Familien 2025 ihr Weihnachtslied aufnehmen konnten. Repsol ist diesmal mit der Estación Energía vertreten.
+Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubble Christmas neu, mit dem Elfen Bublinna, der das Gähnen der Kinder vor dem Einschlafen einsammelt und in Blasen verwandelt. Im Programm 2026 taucht die Show nicht mehr auf, ebenso wenig das Repsol Christmas Music Studio, in dem Familien 2025 ihr Weihnachtslied aufnehmen konnten. Repsol ist diesmal mit der Estación Energía vertreten.
 
 ## Anreise
 

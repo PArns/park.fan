@@ -66,7 +66,7 @@ Fino a metà dicembre, quindi, il parco apre solo nei fine settimana e il 7 e 8 
 
 ## Biglietti e bambini
 
-Online il biglietto giornaliero parte da 32,90 €, uguale per adulti e bambini dai 140 cm in su e per i bambini tra 100 e 140 cm. Il prezzo online cambia in base al giorno della visita. Alla cassa si pagano 62,90 € dai 140 cm e 56,90 € tra 100 e 140 cm; la tariffa bambini della cassa vale anche per chi ha più di 65 anni. Sotto i 100 cm si entra gratis. Chi pensa di tornare più volte fa meglio a guardare l’abbonamento annuale Bono Parques: i prezzi sono nella nostra [guida al Parque Warner Madrid](/blog/parque-warner-madrid-tempi-di-attesa-consigli), insieme alla garanzia pioggia del parco. Il parcheggio costa online da 16 €.
+Online il biglietto giornaliero parte da 32,90 €, uguale per adulti e bambini dai 140 cm in su e per i bambini da 100 a 140 cm. Il prezzo online cambia in base al giorno della visita. Alla cassa si pagano 62,90 € dai 140 cm e 56,90 € sotto quella soglia, dai 100 cm in su; la tariffa bambini della cassa vale anche per chi ha più di 65 anni. Sotto i 100 cm si entra gratis. Chi pensa di tornare più volte fa meglio a guardare l’abbonamento annuale Bono Parques: i prezzi sono nella nostra [guida al Parque Warner Madrid](/blog/parque-warner-madrid-tempi-di-attesa-consigli), insieme alla garanzia pioggia del parco. Il parcheggio costa online da 16 €.
 
 Il programma di Natale è pensato soprattutto per i bambini. Nella ACME Factory i protagonisti sono loro, e il laboratorio di Babbo Natale il parco lo rivolge espressamente ai più piccoli.
 
