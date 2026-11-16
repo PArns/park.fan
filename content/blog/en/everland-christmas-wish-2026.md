@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Everland Christmas 2026: Christmas Wish from 21 November'
   description: >-
-    Christmas Wish at Everland: wish tree from 21 Nov, parade and the night show Magic in the Sky from 27 Nov to New Year's Eve. December entry from 45,000 won.
+    Christmas Wish at Everland: wish tree from 21 Nov, parade and night show Magic in the Sky from 27 Nov to New Year's Eve. December entry from 45,000 won.
   keywords:
     - Everland Christmas
     - Everland Christmas 2026
