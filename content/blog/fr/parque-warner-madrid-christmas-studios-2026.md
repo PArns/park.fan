@@ -39,17 +39,17 @@ Le samedi 21 novembre, le [Parque Warner Madrid](ref:parque-warner-madrid), à S
 
 ## Le nouveau spectacle, ACME Factory et la station Repsol
 
-« El Reino de Cristal » dure environ 25 minutes et ne se joue qu’en décembre. Il raconte un ancien royaume que trois dons ont protégé pendant des siècles : l’espoir, l’impatience des fêtes et la magie. Chaque bulle porte un souvenir ou un vœu, et bulle après bulle, le royaume retrouve ce qu’il avait oublié. À la fin, un mime essaie d’allumer une vieille lanterne, la dernière lumière du royaume. Seul, il n’y arrive pas et doit faire appel à quelqu’un du public. Au premier rang, attendez-vous donc à un petit rôle.
+« El Reino de Cristal » dure environ 25 minutes et ne se joue qu’en décembre. Il raconte un ancien royaume que trois dons ont protégé pendant des siècles : l’espoir, l’impatience des fêtes et la magie. Chaque bulle porte un souvenir ou un vœu, et bulle après bulle, le royaume retrouve ce qu’il avait oublié. À la fin, un mime essaie d’allumer une vieille lanterne, la dernière lumière du royaume. Seul, il n’y arrive pas, alors il fait monter un volontaire du public.
 
-ACME Factory: Christmas Candies ouvre dès le 21 novembre. Dans cette version de Noël de l’attraction pour enfants inaugurée à Halloween, les enfants aident les Looney Tunes à récupérer la recette secrète des friandises de Noël. La recette a donc encore disparu : en octobre, c’étaient les bonbons à la citrouille, après le passage du coyote dans l’usine.
+ACME Factory: Christmas Candies ouvre dès le 21 novembre. Dans cette version de Noël de l’attraction pour enfants inaugurée à Halloween, les enfants aident les Looney Tunes à récupérer la recette secrète des friandises de Noël. La recette a donc encore disparu : à Halloween, c’étaient les bonbons à la citrouille, après le passage du coyote dans l’usine.
 
 Autre nouveauté, l’Estación Energía de Repsol est un parcours interactif en trois salles. On s’y perd dans un labyrinthe de miroirs, on joue avec une installation lumineuse et on traverse une installation inspirée des rayons du soleil.
 
 ## Spectacles, parade et père Noël
 
-Le sapin de 22 mètres est de retour à l’entrée. Lumières et neige artificielle habillent les cinq zones du parc, Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios et Old West Territory. Au Hollywood Market, les Looney Tunes allument les illuminations de Noël dans un spectacle à eux.
+Le sapin de 22 mètres est de retour à l’entrée. Lumières et neige artificielle habillent les cinq zones du parc, Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios et Old West Territory. Le sapin, ce sont les Looney Tunes qui l’allument, dans un spectacle à eux.
 
-Les scènes accueillent la comédie musicale The Santa’s Magical Bell, le Looney Tunes Dance Festival en Christmas Edition, Una Navidad en Dodge City dans la partie western et, à partir du 5 décembre, le spectacle de danse du Hollywood Boulevard créé en 2025. À Christmas Town, un petit village de Noël avec elfes et rennes, le père Noël ouvre son atelier dans El Taller de Papá Noel, et les Rois mages y reçoivent aussi les visiteurs. Bugs Bunny, Titi, Daffy Duck, les super-héros DC et Gizmo, le Gremlin, posent pour les photos en tenue d’hiver. La journée se termine avec la Superstars of Christmas Parade, où Looney Tunes, super-héros, père Noël et Rois mages traversent le parc sur des chars.
+Les scènes accueillent la comédie musicale The Santa’s Magical Bell, le Looney Tunes Dance Festival en Christmas Edition, Una Navidad en Dodge City dans la partie western et, à partir du 5 décembre, le spectacle de danse du Hollywood Boulevard créé en 2025. À Christmas Town, un petit village de Noël avec elfes et rennes, le père Noël ouvre son atelier dans El Taller de Papá Noel, et les Rois mages y reçoivent aussi les visiteurs. Bugs Bunny, Titi, Daffy Duck, les super-héros DC et Gizmo, le Gremlin, posent pour les photos en tenue de fête. La journée se termine avec la Superstars of Christmas Parade, où Looney Tunes, super-héros, père Noël et Rois mages traversent le parc sur des chars.
 
 ## Jours d’ouverture et horaires
 
@@ -75,7 +75,7 @@ L’essentiel du programme de Noël s’adresse aux enfants. Ils tiennent le pre
 
 Christmas Studios en est à sa troisième édition. La deuxième, en 2025, avait duré du 6 décembre au 5 janvier. Cette année, la saison commence le 21 novembre au lieu du 6 décembre et se termine le 10 janvier au lieu du 5.
 
-Les bulles de savon étaient déjà là l’hiver dernier. Le Teatro Chino présentait alors une nouveauté, Bubble Christmas, avec l’elfe Bublinna, qui recueille les bâillements des enfants avant qu’ils s’endorment et les change en bulles. Ce spectacle ne figure plus au programme 2026. Le Repsol Christmas Music Studio, où les familles pouvaient enregistrer leur chanson de Noël en 2025, cède lui aussi sa place à l’Estación Energía.
+Les bulles de savon étaient déjà là l’hiver dernier. Le Teatro Chino présentait alors une nouveauté, Bubble Christmas, avec le lutin Bublinna, qui recueille les bâillements des enfants avant qu’ils s’endorment et les change en bulles. Le programme 2026 ne mentionne plus ce spectacle, pas plus que le Repsol Christmas Music Studio, où les familles pouvaient enregistrer leur chanson de Noël en 2025. Cette fois, Repsol est présent avec l’Estación Energía.
 
 ## Accès
 

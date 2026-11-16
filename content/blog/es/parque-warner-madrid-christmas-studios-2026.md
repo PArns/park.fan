@@ -38,17 +38,17 @@ Christmas Studios, la Navidad del [Parque Warner Madrid](ref:parque-warner-madri
 
 ## El show nuevo, ACME Factory y la estación de Repsol
 
-«El Reino de Cristal» dura unos 25 minutos y solo se representa en diciembre. Cuenta la historia de un antiguo reino al que durante siglos protegieron tres dones: la Esperanza, la Ilusión y la Magia. Cada pompa guarda un recuerdo o un deseo, y pompa a pompa el reino recupera lo que había olvidado. Al final, un mimo intenta encender un viejo farol, la última luz del reino, y solo no lo consigue: necesita a un voluntario del público. Si te sientas en primera fila, ve contando con un pequeño papel secundario.
+«El Reino de Cristal» dura unos 25 minutos y solo se representa en diciembre. Cuenta la historia de un antiguo reino al que durante siglos protegieron tres dones: la Esperanza, la Ilusión y la Magia. Cada pompa guarda un recuerdo o un deseo, y pompa a pompa el reino recupera lo que había olvidado. Al final, un mimo intenta encender un viejo farol, la última luz del reino, y como solo no lo consigue, saca a un voluntario del público.
 
-ACME Factory: Christmas Candies abre ya el 21 de noviembre. Es la versión navideña de la atracción infantil que se estrenó en Halloween, y en ella los niños ayudan a los Looney Tunes a recuperar la receta secreta de los dulces de Navidad. Sí, la receta ha vuelto a desaparecer, y eso que en octubre ya se perdieron los caramelos de calabaza cuando el Coyote pasó arrasando por la fábrica.
+ACME Factory: Christmas Candies abre ya el 21 de noviembre. Es la versión navideña de la atracción infantil que se estrenó en Halloween, y en ella los niños ayudan a los Looney Tunes a recuperar la receta secreta de los dulces de Navidad. Sí, la receta ha vuelto a desaparecer, y eso que en Halloween ya se perdieron los caramelos de calabaza cuando el Coyote pasó arrasando por la fábrica.
 
 También es nueva la Estación Energía de Repsol, un recorrido por tres espacios interactivos. Dentro te pierdes en un laberinto de espejos, participas en una instalación de luz y atraviesas otra inspirada en los rayos del sol.
 
 ## Espectáculos, desfile y Papá Noel
 
-En la entrada vuelve a estar el árbol de Navidad de 22 metros. Hay luces y nieve artificial en las cinco áreas temáticas: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios y Old West Territory. En Hollywood Market, los Looney Tunes encienden la iluminación navideña en un espectáculo propio, el Encendido de los Looney Tunes.
+En la entrada vuelve a estar el árbol de Navidad de 22 metros. Hay luces y nieve artificial en las cinco áreas temáticas: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios y Old West Territory. El árbol lo encienden los Looney Tunes en un espectáculo propio.
 
-En los escenarios hay cuatro propuestas: el musical The Santa's Magical Bell; desde el 5 de diciembre, otra vez el espectáculo de baile del Hollywood Boulevard que se estrenó en 2025; el Looney Tunes Dance Festival en su Christmas Edition, y en el Old West Territory, Una Navidad en Dodge City. En Christmas Town, una pequeña villa navideña con duendes y renos, Papá Noel enseña su taller en El Taller de Papá Noel, y allí reciben visitas también los Reyes Magos. Bugs Bunny, Piolín, el Pato Lucas, los superhéroes de DC y Gizmo, el de los Gremlins, posan para las fotos con ropa de invierno. El día se cierra con el Superstars of Christmas Parade, en el que los Looney Tunes, los superhéroes, Papá Noel y los Reyes Magos recorren el parque subidos a carrozas.
+En los escenarios hay cuatro propuestas: el musical The Santa's Magical Bell; desde el 5 de diciembre, otra vez el espectáculo de baile del Hollywood Boulevard que se estrenó en 2025; el Looney Tunes Dance Festival en su Christmas Edition, y en el Old West Territory, Una Navidad en Dodge City. En Christmas Town, una pequeña villa navideña con duendes y renos, Papá Noel enseña su taller en El Taller de Papá Noel, y allí reciben visitas también los Reyes Magos. Bugs Bunny, Piolín, el Pato Lucas, los superhéroes de DC y Gizmo, el de los Gremlins, posan para las fotos con ropa de fiesta. El día se cierra con el Superstars of Christmas Parade, en el que los Looney Tunes, los superhéroes, Papá Noel y los Reyes Magos recorren el parque subidos a carrozas.
 
 ## Días y horarios
 
@@ -74,7 +74,7 @@ Casi todo el programa navideño está pensado para niños. En ACME Factory son e
 
 Es la tercera edición de Christmas Studios. La segunda, en 2025, fue del 6 de diciembre al 5 de enero. Este año empieza el 21 de noviembre en lugar del 6 de diciembre y termina el 10 de enero en lugar del 5.
 
-Pompas ya hubo el invierno pasado. Entonces la novedad del Teatro Chino era Bubble Christmas, con la elfa Bublinna, que recoge los bostezos de los niños antes de dormir y los convierte en pompas. Ese espectáculo ya no está en el programa de 2026. El Repsol Christmas Music Studio, donde en 2025 las familias podían grabar su villancico, también ha dejado su sitio a la Estación Energía.
+Pompas ya hubo el invierno pasado. Entonces la novedad del Teatro Chino era Bubble Christmas, con el duende Bublinna, que recoge los bostezos de los niños antes de dormir y los convierte en pompas. En el programa de 2026 ese espectáculo ya no aparece, ni tampoco el Repsol Christmas Music Studio, donde en 2025 las familias podían grabar su villancico. Esta vez Repsol está presente con la Estación Energía.
 
 ## Cómo llegar
 

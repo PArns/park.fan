@@ -38,17 +38,17 @@ Op zaterdag 21 november begint in [Parque Warner Madrid](ref:parque-warner-madri
 
 ## De nieuwe show, ACME Factory en het Repsol-station
 
-“El Reino de Cristal” duurt ongeveer 25 minuten en is alleen in december te zien. De show gaat over een oud rijk dat eeuwenlang werd beschermd door drie gaven: hoop, voorpret en magie. In elke zeepbel zit een herinnering of een wens, en bel voor bel krijgt het rijk terug wat het vergeten was. Aan het eind probeert een mime een oude lantaarn aan te steken, het laatste licht van het rijk. In zijn eentje lukt hem dat niet: hij heeft iemand uit het publiek nodig. Wie vooraan zit, kan dus een kleine bijrol verwachten.
+“El Reino de Cristal” duurt ongeveer 25 minuten en is alleen in december te zien. De show gaat over een oud rijk dat eeuwenlang werd beschermd door drie gaven: hoop, voorpret en magie. In elke zeepbel zit een herinnering of een wens, en bel voor bel krijgt het rijk terug wat het vergeten was. Aan het eind probeert een mime een oude lantaarn aan te steken, het laatste licht van het rijk. In zijn eentje lukt hem dat niet, dus haalt hij een vrijwilliger uit het publiek.
 
-ACME Factory: Christmas Candies is al vanaf 21 november open. In de kerstversie van de kinderattractie, die met Halloween openging, halen kinderen samen met de Looney Tunes het geheime recept van de kerstsnoepjes terug. Dat recept is dus alweer zoek. In oktober ging het om de pompoensnoepjes, nadat de coyote door de fabriek was geraasd.
+ACME Factory: Christmas Candies is al vanaf 21 november open. In de kerstversie van de kinderattractie, die met Halloween openging, halen kinderen samen met de Looney Tunes het geheime recept van de kerstsnoepjes terug. Dat recept is dus alweer zoek. Met Halloween ging het om de pompoensnoepjes, nadat de coyote door de fabriek was geraasd.
 
 Nieuw is ook de Estación Energía de Repsol, een route door drie ruimtes waarin je zelf meedoet. Je raakt de weg kwijt in een spiegeldoolhof, speelt mee met een lichtinstallatie en loopt door een installatie die is gebaseerd op zonnestralen.
 
 ## Shows, parade en de kerstman
 
-Bij de ingang staat weer de kerstboom van 22 meter. Lichtjes en kunstsneeuw zijn er in alle vijf themagebieden: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios en Old West Territory. Op de Hollywood Market zetten de Looney Tunes in een eigen show de kerstverlichting aan.
+Bij de ingang staat weer de kerstboom van 22 meter. Lichtjes en kunstsneeuw zijn er in alle vijf themagebieden: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios en Old West Territory. De kerstboom zetten de Looney Tunes in een eigen show aan.
 
-Op de podia staan de musical The Santa's Magical Bell, vanaf 5 december opnieuw de dansshow van de Hollywood Boulevard die in 2025 in première ging, het Looney Tunes Dance Festival in een Christmas Edition en in het westerngebied Una Navidad en Dodge City. In Christmas Town, een klein kerstdorp met elfen en rendieren, laat de kerstman in El Taller de Papá Noel zijn werkplaats zien. De Drie Koningen ontvangen daar ook bezoek. Bugs Bunny, Tweety, Daffy Duck, de superhelden van DC en Gizmo uit Gremlins staan in winterkleren klaar voor de foto. De dag sluit af met de Superstars of Christmas Parade, waarin Looney Tunes, superhelden, de kerstman en de Drie Koningen op praalwagens door het park rijden.
+Op de podia staan de musical The Santa's Magical Bell, vanaf 5 december opnieuw de dansshow van de Hollywood Boulevard die in 2025 in première ging, het Looney Tunes Dance Festival in een Christmas Edition en in het westerngebied Una Navidad en Dodge City. In Christmas Town, een klein kerstdorp met elfen en rendieren, laat de kerstman in El Taller de Papá Noel zijn werkplaats zien. De Drie Koningen ontvangen daar ook bezoek. Bugs Bunny, Tweety, Daffy Duck, de superhelden van DC en Gizmo uit Gremlins staan in feestkleding klaar voor de foto. De dag sluit af met de Superstars of Christmas Parade, waarin Looney Tunes, superhelden, de kerstman en de Drie Koningen op praalwagens door het park rijden.
 
 ## Openingsdagen en tijden
 
@@ -74,7 +74,7 @@ Het meeste uit het kerstprogramma is voor kinderen bedoeld. In de ACME Factory s
 
 Dit is de derde Christmas Studios. De tweede editie liep in 2025 van 6 december tot 5 januari. Dit jaar begint het seizoen op 21 november in plaats van 6 december en eindigt het op 10 in plaats van 5 januari.
 
-Zeepbellen waren er vorige winter ook al. Toen was in het Teatro Chino Bubble Christmas nieuw, met het elfje Bublinna, dat het gapen van kinderen voor het slapengaan verzamelt en er bellen van maakt. Die show staat in 2026 niet meer op het programma. Ook de Repsol Christmas Music Studio, waar gezinnen in 2025 hun eigen kerstlied konden opnemen, heeft plaatsgemaakt voor de Estación Energía.
+Zeepbellen waren er vorige winter ook al. Toen was in het Teatro Chino Bubble Christmas nieuw, met de elf Bublinna, die het gapen van kinderen voor het slapengaan verzamelt en er bellen van maakt. In het programma voor 2026 komt die show niet meer voor, en het Repsol Christmas Music Studio, waar gezinnen in 2025 hun eigen kerstlied konden opnemen, evenmin. Repsol is er deze keer met de Estación Energía.
 
 ## Bereikbaarheid
 
