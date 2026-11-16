@@ -6464,14 +6464,6 @@
     "syncedAt": "Last synced: {when}",
     "neverSynced": "Not synced yet",
     "whatSyncs": "Favorites, ridden rides and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
-    "figures": {
-      "parks": "Favorite parks",
-      "rides": "Saved rides",
-      "ridden": "Rides ridden",
-      "unit": "Temperature unit",
-      "unitNone": "not chosen",
-      "stored": "Stored entries"
-    },
     "auth": {
       "registerTitle": "Create an account",
       "registerLead": "Your favorites and ridden rides on every device. Free, without ads.",
@@ -6493,6 +6485,68 @@
       "metaTitle": "Sign in",
       "title": "Sign in",
       "lead": "Sign in or create an account. Both are free."
+    },
+    "figures": {
+      "parks": "Favorite parks",
+      "rides": "Saved rides",
+      "ridden": "Rides ridden",
+      "unit": "Temperature unit",
+      "unitNone": "not chosen"
+    },
+    "syncTitle": "Sync",
+    "profile": {
+      "title": "Profile",
+      "name": "Name",
+      "email": "Email",
+      "emailHint": "The address cannot be changed yet.",
+      "save": "Save",
+      "saved": "Saved.",
+      "failed": "That did not work. Please try again.",
+      "memberSince": "Member since {date}",
+      "lastLogin": "last signed in {date}"
+    },
+    "security": {
+      "title": "Security",
+      "lead": "Your password, a second factor and the devices you are signed in on",
+      "passwordTitle": "Change password",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "repeatPassword": "Repeat the new password",
+      "passwordHint": "At least {min} characters.",
+      "mismatch": "The two passwords do not match.",
+      "changePassword": "Change password",
+      "passwordChanged": "Password changed. Your other devices are now signed out.",
+      "wrongPassword": "The password is not correct.",
+      "tooMany": "Too many attempts. Wait a few minutes.",
+      "rejected": "That was refused. Check what you entered.",
+      "failed": "That did not work. Please try again.",
+      "twoFactorTitle": "Second factor",
+      "twoFactorOn": "on",
+      "twoFactorOff": "off",
+      "twoFactorIntro": "With a second factor a stolen password is not enough: when you sign in, park.fan also asks for a code from your authenticator app.",
+      "setUp": "Set up",
+      "secretHint": "Enter this key in your authenticator app, or open the link on the device with the app. The second factor turns on with the first code.",
+      "openApp": "Open in the authenticator app",
+      "code": "Code from the app",
+      "confirmCode": "Confirm",
+      "enabled": "The second factor is on.",
+      "turnOff": "Turn off",
+      "disabled": "The second factor is off.",
+      "codeWrong": "The code is not correct. Use the current one from the app.",
+      "sessionsTitle": "Signed-in devices",
+      "unknownDevice": "Unknown device",
+      "thisDevice": "this device",
+      "lastActive": "last active {when}",
+      "endSession": "Sign out",
+      "everywhere": "Sign out everywhere",
+      "everywhereHint": "Ends every session, this one too."
+    },
+    "data": {
+      "title": "Your data",
+      "lead": "Everything your account stores, as one file to download",
+      "stored": "Stored entries",
+      "export": "Download data",
+      "failed": "The download did not work. Please try again."
     }
   }
 }

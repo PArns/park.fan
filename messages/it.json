@@ -6464,14 +6464,6 @@
     "syncedAt": "Ultima sincronizzazione: {when}",
     "neverSynced": "Non ancora sincronizzato",
     "whatSyncs": "Vengono sincronizzati i preferiti, le attrazioni già provate e °C o °F. Il piano della giornata e gli avvisi restano sul dispositivo in cui li hai creati.",
-    "figures": {
-      "parks": "Parchi preferiti",
-      "rides": "Attrazioni salvate",
-      "ridden": "Attrazioni provate",
-      "unit": "Unità di temperatura",
-      "unitNone": "non scelta",
-      "stored": "Elementi salvati"
-    },
     "auth": {
       "registerTitle": "Crea un account",
       "registerLead": "I tuoi preferiti e le attrazioni provate su ogni dispositivo. Gratis, senza pubblicità.",
@@ -6493,6 +6485,68 @@
       "metaTitle": "Accedi",
       "title": "Accedi",
       "lead": "Accedi o crea un account. È gratis."
+    },
+    "figures": {
+      "parks": "Parchi preferiti",
+      "rides": "Attrazioni salvate",
+      "ridden": "Attrazioni provate",
+      "unit": "Unità di temperatura",
+      "unitNone": "non scelta"
+    },
+    "syncTitle": "Sincronizzazione",
+    "profile": {
+      "title": "Profilo",
+      "name": "Nome",
+      "email": "E-mail",
+      "emailHint": "L’indirizzo non si può ancora cambiare.",
+      "save": "Salva",
+      "saved": "Salvato.",
+      "failed": "Non ha funzionato. Riprova.",
+      "memberSince": "Membro dal {date}",
+      "lastLogin": "ultimo accesso il {date}"
+    },
+    "security": {
+      "title": "Sicurezza",
+      "lead": "La tua password, un secondo fattore e i dispositivi su cui hai effettuato l’accesso",
+      "passwordTitle": "Cambia password",
+      "currentPassword": "Password attuale",
+      "newPassword": "Nuova password",
+      "repeatPassword": "Ripeti la nuova password",
+      "passwordHint": "Almeno {min} caratteri.",
+      "mismatch": "Le due password non coincidono.",
+      "changePassword": "Cambia password",
+      "passwordChanged": "Password cambiata. Sugli altri dispositivi sei stato disconnesso.",
+      "wrongPassword": "La password non è corretta.",
+      "tooMany": "Troppi tentativi. Attendi qualche minuto.",
+      "rejected": "È stato rifiutato. Controlla i dati inseriti.",
+      "failed": "Non ha funzionato. Riprova.",
+      "twoFactorTitle": "Secondo fattore",
+      "twoFactorOn": "attivo",
+      "twoFactorOff": "disattivo",
+      "twoFactorIntro": "Con un secondo fattore una password rubata non basta: all’accesso park.fan chiede anche un codice dalla tua app di autenticazione.",
+      "setUp": "Configura",
+      "secretHint": "Inserisci questa chiave nella tua app di autenticazione oppure apri il link sul dispositivo con l’app. Il secondo fattore si attiva con il primo codice.",
+      "openApp": "Apri nell’app di autenticazione",
+      "code": "Codice dall’app",
+      "confirmCode": "Conferma",
+      "enabled": "Il secondo fattore è attivo.",
+      "turnOff": "Disattiva",
+      "disabled": "Il secondo fattore è disattivato.",
+      "codeWrong": "Il codice non è corretto. Usa quello attuale dell’app.",
+      "sessionsTitle": "Dispositivi connessi",
+      "unknownDevice": "Dispositivo sconosciuto",
+      "thisDevice": "questo dispositivo",
+      "lastActive": "ultima attività il {when}",
+      "endSession": "Esci",
+      "everywhere": "Esci ovunque",
+      "everywhereHint": "Chiude ogni sessione, anche questa."
+    },
+    "data": {
+      "title": "I tuoi dati",
+      "lead": "Tutto ciò che il tuo account conserva, in un file da scaricare",
+      "stored": "Elementi salvati",
+      "export": "Scarica i dati",
+      "failed": "Il download non ha funzionato. Riprova."
     }
   }
 }

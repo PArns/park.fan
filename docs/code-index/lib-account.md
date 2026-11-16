@@ -5,9 +5,23 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`manage.ts`](../../lib/account/manage.ts)
+
+- `updateDisplayName` _function_: Renames the account.
+- `changePassword` _function_: Changes the password; the other sessions end, this one stays.
+- `listSessions` _function_: Every session of the account, this one marked `current`.
+- `endSession` _function_: Ends one session elsewhere.
+- `signOutEverywhere` _function_: Ends every session, this one too.
+- `beginTwoFactor` _function_: Starts setting up a second factor: the secret and the `otpauth://` link for the app.
+- `confirmTwoFactor` _function_: Turns the second factor on with a first code from the app.
+- `disableTwoFactor` _function_: Turns the second factor off; needs the password and a current code.
+- `downloadAccountExport` _function_: Downloads everything stored about the account as one JSON file.
+- Types: `AccountSession`
+
 ### [`member.ts`](../../lib/account/member.ts)
 
 - `useMembership` _hook_: The visitor's membership, for `MembersOnly`, `MemberPage` and members-only features.
+- `useAccountSignOut` _hook_: Signing out here: the sync ends and forgets this browser's agreement, the session and its markers go, every cached account answer is dropped, and the member lands on the home page.
 - `ACCOUNT_QUERY_KEY` _const_: The React Query key of the signed-in member's account.
 - Types: `Membership`
 

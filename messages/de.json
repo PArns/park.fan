@@ -6464,14 +6464,6 @@
     "syncedAt": "Zuletzt abgeglichen: {when}",
     "neverSynced": "Noch nicht abgeglichen",
     "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
-    "figures": {
-      "parks": "Lieblingsparks",
-      "rides": "Gemerkte Attraktionen",
-      "ridden": "Gefahrene Attraktionen",
-      "unit": "Temperatureinheit",
-      "unitNone": "nicht gewählt",
-      "stored": "Gespeicherte Einträge"
-    },
     "auth": {
       "registerTitle": "Konto anlegen",
       "registerLead": "Deine Favoriten und gefahrenen Attraktionen auf jedem Gerät. Kostenlos, ohne Werbung.",
@@ -6493,6 +6485,68 @@
       "metaTitle": "Anmelden",
       "title": "Anmelden",
       "lead": "Melde dich an oder leg ein Konto an. Beides ist kostenlos."
+    },
+    "figures": {
+      "parks": "Lieblingsparks",
+      "rides": "Gemerkte Attraktionen",
+      "ridden": "Gefahrene Attraktionen",
+      "unit": "Temperatureinheit",
+      "unitNone": "nicht gewählt"
+    },
+    "syncTitle": "Abgleich",
+    "profile": {
+      "title": "Profil",
+      "name": "Name",
+      "email": "E-Mail",
+      "emailHint": "Die Adresse lässt sich noch nicht ändern.",
+      "save": "Speichern",
+      "saved": "Gespeichert.",
+      "failed": "Das hat nicht geklappt. Versuch es noch einmal.",
+      "memberSince": "Dabei seit {date}",
+      "lastLogin": "zuletzt angemeldet {date}"
+    },
+    "security": {
+      "title": "Sicherheit",
+      "lead": "Passwort, zweiter Faktor und die Geräte, auf denen du angemeldet bist",
+      "passwordTitle": "Passwort ändern",
+      "currentPassword": "Aktuelles Passwort",
+      "newPassword": "Neues Passwort",
+      "repeatPassword": "Neues Passwort wiederholen",
+      "passwordHint": "Mindestens {min} Zeichen.",
+      "mismatch": "Die beiden Passwörter stimmen nicht überein.",
+      "changePassword": "Passwort ändern",
+      "passwordChanged": "Passwort geändert. Auf deinen anderen Geräten bist du jetzt abgemeldet.",
+      "wrongPassword": "Das Passwort stimmt nicht.",
+      "tooMany": "Zu viele Versuche. Warte ein paar Minuten.",
+      "rejected": "Das wurde abgelehnt. Prüf deine Eingabe.",
+      "failed": "Das hat nicht geklappt. Versuch es noch einmal.",
+      "twoFactorTitle": "Zweiter Faktor",
+      "twoFactorOn": "aktiv",
+      "twoFactorOff": "aus",
+      "twoFactorIntro": "Mit einem zweiten Faktor reicht ein gestohlenes Passwort nicht: Beim Anmelden fragt park.fan zusätzlich nach einem Code aus deiner Authenticator-App.",
+      "setUp": "Einrichten",
+      "secretHint": "Trag diesen Schlüssel in deiner Authenticator-App ein, oder öffne den Link auf dem Gerät mit der App. Aktiv wird der zweite Faktor erst mit dem ersten Code.",
+      "openApp": "In der Authenticator-App öffnen",
+      "code": "Code aus der App",
+      "confirmCode": "Bestätigen",
+      "enabled": "Der zweite Faktor ist aktiv.",
+      "turnOff": "Ausschalten",
+      "disabled": "Der zweite Faktor ist aus.",
+      "codeWrong": "Der Code stimmt nicht. Nimm den aktuellen aus der App.",
+      "sessionsTitle": "Angemeldete Geräte",
+      "unknownDevice": "Unbekanntes Gerät",
+      "thisDevice": "dieses Gerät",
+      "lastActive": "zuletzt aktiv {when}",
+      "endSession": "Abmelden",
+      "everywhere": "Überall abmelden",
+      "everywhereHint": "Beendet jede Anmeldung, auch diese."
+    },
+    "data": {
+      "title": "Deine Daten",
+      "lead": "Alles, was dein Konto speichert, als eine Datei zum Herunterladen",
+      "stored": "Gespeicherte Einträge",
+      "export": "Daten herunterladen",
+      "failed": "Der Download hat nicht geklappt. Versuch es noch einmal."
     }
   }
 }

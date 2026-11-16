@@ -19,14 +19,15 @@ import { cn } from '@/lib/utils';
 import { normalizeTotpCode } from '@/lib/admin/totp';
 
 /** The shortest password the API accepts. */
-const MIN_PASSWORD = 12;
+export const MIN_PASSWORD = 12;
 
 /** What a sign-in looks like where it is used: the endpoint a new account goes to, and the words. */
 export interface SelfServiceAuthProps {
-  /** The app's registration route: `/api/developers/register` or `/api/account/register`. */
-  registerEndpoint: string;
-  /** The Turnstile action that route verifies. */
-  registerAction: TurnstileAction;
+  /**
+   * The app's registration route (`/api/developers/register` or `/api/account/register`) and the
+   * Turnstile action it verifies. Without it the card only signs in.
+   */
+  register?: { endpoint: string; action: TurnstileAction };
   /** The card's title and line on each tab, in the caller's words. */
   copy: {
     registerTitle: string;
@@ -38,7 +39,7 @@ export interface SelfServiceAuthProps {
 }
 
 /** The password field's labels, from the shared namespace. */
-function usePasswordLabels() {
+export function usePasswordLabels() {
   const t = useTranslations('accountAuth');
   return { show: t('showPassword'), hide: t('hidePassword'), capsLock: t('capsLock') };
 }
@@ -275,13 +276,19 @@ function RegisterForm({
  * account sees its own keys and requests, a visitor's its own synced state; neither sees anything
  * of the admin. Styled like the admin's login (`components/common/auth-card.tsx`).
  */
-export function SelfServiceAuth({
-  registerEndpoint,
-  registerAction,
-  copy,
-  onSignedIn,
-}: SelfServiceAuthProps) {
+export function SelfServiceAuth({ register, copy, onSignedIn }: SelfServiceAuthProps) {
   const t = useTranslations('accountAuth');
+  if (!register) {
+    return (
+      <div className={cn(AUTH_CARD_CLASS, 'mx-auto w-full max-w-md')}>
+        <AuthCardHairline />
+        <AuthFormHeading as="h2" title={copy.loginTitle}>
+          {copy.loginLead}
+        </AuthFormHeading>
+        <LoginForm onSignedIn={onSignedIn} />
+      </div>
+    );
+  }
   return (
     <div className={cn(AUTH_CARD_CLASS, 'mx-auto w-full max-w-md')}>
       <AuthCardHairline />
@@ -295,8 +302,8 @@ export function SelfServiceAuth({
             {copy.registerLead}
           </AuthFormHeading>
           <RegisterForm
-            endpoint={registerEndpoint}
-            action={registerAction}
+            endpoint={register.endpoint}
+            action={register.action}
             onSignedIn={onSignedIn}
           />
         </TabsContent>

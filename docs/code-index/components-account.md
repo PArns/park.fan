@@ -7,7 +7,20 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`account-panel.tsx`](../../components/account/account-panel.tsx)
 
-- `AccountPanel` _component_: A member's account page: what follows them across devices (favorites, ridden rides, the temperature unit) and what members-only features stored for them, a sync on demand, signing out and deleting the account.
+- `AccountPanel` _component_: A member's account page, a members-only page (`MemberPage`; a guest goes to `/login`): the profile, what follows the member across devices, password, second factor and sessions, the export of everything stored, signing out and deleting the …
+
+### [`account-profile.tsx`](../../components/account/account-profile.tsx)
+
+- `AccountProfile` _component_: The member's name, which they can change, the address, and since when the account exists.
+
+### [`account-section.tsx`](../../components/account/account-section.tsx)
+
+- `AccountSection` _component_: One area of the account page: an icon, a heading, a line under it, and its content.
+- `FormNote` _component_: A line of feedback under a form: green when it worked, red when not.
+
+### [`account-security.tsx`](../../components/account/account-security.tsx)
+
+- `AccountSecurity` _component_: Password, second factor and sessions, in one area of the account page.
 
 ### [`account-sync-gate.tsx`](../../components/account/account-sync-gate.tsx)
 
@@ -15,7 +28,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`login-panel.tsx`](../../components/account/login-panel.tsx)
 
-- `LoginPanel` _component_: The visitor sign-in at `/login`: create an account or sign in, both behind Turnstile, then back to the members-only page that sent the visitor here (`?next=`), or to the account. A member who is already signed in goes straight on.
+- `LoginPanel` _component_: The visitor sign-in at `/login`: sign in, or create an account while registration is open, both behind Turnstile, then back to the members-only page that sent the visitor here (`?next=`), or to the account.
 
 ### [`members-only.tsx`](../../components/account/members-only.tsx)
 

@@ -6464,14 +6464,6 @@
     "syncedAt": "Laatst gesynchroniseerd: {when}",
     "neverSynced": "Nog niet gesynchroniseerd",
     "whatSyncs": "Favorieten, attracties waarin je zat en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
-    "figures": {
-      "parks": "Favoriete parken",
-      "rides": "Bewaarde attracties",
-      "ridden": "Attracties waarin je zat",
-      "unit": "Temperatuureenheid",
-      "unitNone": "niet gekozen",
-      "stored": "Opgeslagen items"
-    },
     "auth": {
       "registerTitle": "Account aanmaken",
       "registerLead": "Je favorieten en attracties op elk apparaat. Gratis, zonder reclame.",
@@ -6493,6 +6485,68 @@
       "metaTitle": "Inloggen",
       "title": "Inloggen",
       "lead": "Log in of maak een account aan. Allebei gratis."
+    },
+    "figures": {
+      "parks": "Favoriete parken",
+      "rides": "Bewaarde attracties",
+      "ridden": "Attracties waarin je zat",
+      "unit": "Temperatuureenheid",
+      "unitNone": "niet gekozen"
+    },
+    "syncTitle": "Synchronisatie",
+    "profile": {
+      "title": "Profiel",
+      "name": "Naam",
+      "email": "E-mail",
+      "emailHint": "Het adres kan nog niet worden gewijzigd.",
+      "save": "Opslaan",
+      "saved": "Opgeslagen.",
+      "failed": "Dat lukte niet. Probeer het opnieuw.",
+      "memberSince": "Lid sinds {date}",
+      "lastLogin": "laatst ingelogd {date}"
+    },
+    "security": {
+      "title": "Beveiliging",
+      "lead": "Je wachtwoord, een tweede factor en de apparaten waarop je bent ingelogd",
+      "passwordTitle": "Wachtwoord wijzigen",
+      "currentPassword": "Huidig wachtwoord",
+      "newPassword": "Nieuw wachtwoord",
+      "repeatPassword": "Herhaal het nieuwe wachtwoord",
+      "passwordHint": "Minstens {min} tekens.",
+      "mismatch": "De twee wachtwoorden komen niet overeen.",
+      "changePassword": "Wachtwoord wijzigen",
+      "passwordChanged": "Wachtwoord gewijzigd. Op je andere apparaten ben je nu uitgelogd.",
+      "wrongPassword": "Het wachtwoord klopt niet.",
+      "tooMany": "Te veel pogingen. Wacht een paar minuten.",
+      "rejected": "Dat werd geweigerd. Controleer wat je invoerde.",
+      "failed": "Dat lukte niet. Probeer het opnieuw.",
+      "twoFactorTitle": "Tweede factor",
+      "twoFactorOn": "aan",
+      "twoFactorOff": "uit",
+      "twoFactorIntro": "Met een tweede factor is een gestolen wachtwoord niet genoeg: bij het inloggen vraagt park.fan ook om een code uit je authenticator-app.",
+      "setUp": "Instellen",
+      "secretHint": "Voer deze sleutel in je authenticator-app in, of open de link op het apparaat met de app. De tweede factor wordt actief met de eerste code.",
+      "openApp": "Openen in de authenticator-app",
+      "code": "Code uit de app",
+      "confirmCode": "Bevestigen",
+      "enabled": "De tweede factor staat aan.",
+      "turnOff": "Uitzetten",
+      "disabled": "De tweede factor staat uit.",
+      "codeWrong": "De code klopt niet. Gebruik de huidige uit de app.",
+      "sessionsTitle": "Ingelogde apparaten",
+      "unknownDevice": "Onbekend apparaat",
+      "thisDevice": "dit apparaat",
+      "lastActive": "laatst actief {when}",
+      "endSession": "Uitloggen",
+      "everywhere": "Overal uitloggen",
+      "everywhereHint": "Beëindigt elke sessie, ook deze."
+    },
+    "data": {
+      "title": "Je gegevens",
+      "lead": "Alles wat je account opslaat, als één bestand om te downloaden",
+      "stored": "Opgeslagen items",
+      "export": "Gegevens downloaden",
+      "failed": "Het downloaden lukte niet. Probeer het opnieuw."
     }
   }
 }

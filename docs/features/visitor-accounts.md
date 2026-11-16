@@ -19,6 +19,13 @@ them; a member reaches the sign-in only by its address.
 
 ## Sign-in, members-only pages and features
 
+- **Registration is closed for now.** `/login` shows only the sign-in until
+  `NEXT_PUBLIC_ACCOUNT_REGISTRATION=open`, and the API refuses a registration with 403
+  `registration-closed` until its own `ACCOUNT_REGISTRATION=open`. Set both together.
+- **Account management** (`components/account/account-*.tsx`, calls in `lib/account/manage.ts`): the
+  name, the password, a second factor, the signed-in devices, the JSON export of everything stored,
+  and the deletion. Password, second factor and devices use the session routes every account has
+  (`/api/admin/auth/*`); the name and the export are the account's own (`/api/account/*`).
 - **`/login`** (`components/account/login-panel.tsx`): create an account or sign in. Both forms are
   behind Turnstile, solved in the browser and checked by `/api/account/register` and
   `/api/admin/session` before an address or password reaches the API. `?next=` names the page to

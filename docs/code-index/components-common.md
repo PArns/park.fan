@@ -265,6 +265,8 @@ These dots carry `will-change` because they animate forever inside cards with `b
 ### [`self-service-auth.tsx`](../../components/common/self-service-auth.tsx)
 
 - `SelfServiceAuth` _component_: The door to an account somebody opens for themselves: create one, or sign in. A developer's account sees its own keys and requests, a visitor's its own synced state; neither sees anything of the admin.
+- `usePasswordLabels` _hook_: The password field's labels, from the shared namespace.
+- `MIN_PASSWORD` _const_: The shortest password the API accepts.
 - Types: `SelfServiceAuthProps`
 
 ### [`share-buttons.tsx`](../../components/common/share-buttons.tsx)

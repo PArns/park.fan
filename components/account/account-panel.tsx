@@ -6,8 +6,10 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   CheckCircle2,
   Database,
+  Download,
   Heart,
   KeyRound,
+  Loader2,
   LogOut,
   RefreshCw,
   Thermometer,
@@ -16,14 +18,14 @@ import {
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
 import { IconFigure } from '@/components/common/icon-figure';
-import {
-  AUTH_CARD_CLASS,
-  AuthCardHairline,
-  AuthPasswordField,
-} from '@/components/common/auth-card';
+import { AuthPasswordField } from '@/components/common/auth-card';
+import { usePasswordLabels } from '@/components/common/self-service-auth';
 import { MemberPage } from '@/components/account/members-only';
-import { useRouter } from '@/i18n/navigation';
-import { ACCOUNT_QUERY_KEY } from '@/lib/account/member';
+import { AccountSection, FormNote } from '@/components/account/account-section';
+import { AccountProfile } from '@/components/account/account-profile';
+import { AccountSecurity } from '@/components/account/account-security';
+import { ACCOUNT_QUERY_KEY, useAccountSignOut } from '@/lib/account/member';
+import { downloadAccountExport } from '@/lib/account/manage';
 import { listAccountKeys } from '@/lib/account/storage';
 import { sessionCall, SessionApiError } from '@/lib/admin/session-client';
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
@@ -31,9 +33,9 @@ import { cn } from '@/lib/utils';
 import type { AccountOverview } from '@/lib/account/sync';
 
 /**
- * A member's account page: what follows them across devices (favorites, ridden rides, the
- * temperature unit) and what members-only features stored for them, a sync on demand, signing out
- * and deleting the account. A members-only page (`MemberPage`); a guest goes to `/login`.
+ * A member's account page, a members-only page (`MemberPage`; a guest goes to `/login`): the
+ * profile, what follows the member across devices, password, second factor and sessions, the
+ * export of everything stored, signing out and deleting the account.
  */
 export function AccountPanel() {
   return <MemberPage>{({ overview }) => <AccountDetails overview={overview} />}</MemberPage>;
@@ -41,17 +43,35 @@ export function AccountPanel() {
 
 function AccountDetails({ overview }: { overview: AccountOverview }) {
   const t = useTranslations('account');
-  const tAuth = useTranslations('accountAuth');
+  const signOut = useAccountSignOut();
+  return (
+    <div className="mx-auto max-w-2xl space-y-6">
+      <div className="flex justify-end">
+        <Button variant="ghost" size="sm" className="gap-1.5" onClick={() => void signOut()}>
+          <LogOut className="size-4" />
+          {t('signOut')}
+        </Button>
+      </div>
+      <AccountProfile account={overview.account} />
+      <AccountSync data={overview.data} />
+      <AccountSecurity account={overview.account} />
+      <AccountData />
+      <AccountDeletion onDeleted={signOut} />
+    </div>
+  );
+}
+
+/** What follows the member across devices, and a sync on demand. */
+function AccountSync({ data }: { data: AccountOverview['data'] }) {
+  const t = useTranslations('account');
   const locale = useLocale();
-  const router = useRouter();
   const client = useQueryClient();
   const number = getNumberFormat(locale);
   const moment = getDateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' });
   const [syncing, setSyncing] = useState(false);
-  const [deleting, setDeleting] = useState(false);
-  const [password, setPassword] = useState('');
-  const [deleteError, setDeleteError] = useState<string | null>(null);
-  const stored = useQuery({ queryKey: ['account', 'storage'], queryFn: listAccountKeys });
+  const favorites = data.favorites;
+  const rides =
+    favorites.attractions.length + favorites.shows.length + favorites.restaurants.length;
 
   async function syncNow() {
     setSyncing(true);
@@ -66,138 +86,144 @@ function AccountDetails({ overview }: { overview: AccountOverview }) {
     }
   }
 
-  async function signOut() {
-    const { endAccountSync } = await import('@/lib/account/sync');
-    endAccountSync();
-    await fetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
-    client.removeQueries({ queryKey: ['account'] });
-    router.replace('/');
+  return (
+    <AccountSection icon={RefreshCw} title={t('syncTitle')} lead={t('whatSyncs')}>
+      <div className="grid gap-3 sm:grid-cols-2">
+        <IconFigure
+          icon={Heart}
+          label={t('figures.parks')}
+          value={number.format(favorites.parks.length)}
+        />
+        <IconFigure icon={Heart} label={t('figures.rides')} value={number.format(rides)} />
+        <IconFigure
+          icon={CheckCircle2}
+          label={t('figures.ridden')}
+          value={number.format(data.riddenRides.length)}
+        />
+        <IconFigure
+          icon={Thermometer}
+          label={t('figures.unit')}
+          value={data.temperatureUnit ? `°${data.temperatureUnit}` : t('figures.unitNone')}
+        />
+      </div>
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <p className="text-muted-foreground text-xs">
+          {data.updatedAt
+            ? t('syncedAt', { when: moment.format(new Date(data.updatedAt)) })
+            : t('neverSynced')}
+        </p>
+        <Button
+          variant="outline"
+          size="sm"
+          className="gap-1.5"
+          disabled={syncing}
+          onClick={() => void syncNow()}
+        >
+          <RefreshCw className={cn('size-4', syncing && 'animate-spin')} />
+          {t('syncNow')}
+        </Button>
+      </div>
+    </AccountSection>
+  );
+}
+
+/** What members-only features stored, and the export of everything. */
+function AccountData() {
+  const t = useTranslations('account.data');
+  const locale = useLocale();
+  const number = getNumberFormat(locale);
+  const stored = useQuery({ queryKey: ['account', 'storage'], queryFn: listAccountKeys });
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  async function exportAll() {
+    setBusy(true);
+    setFailed(false);
+    try {
+      await downloadAccountExport();
+    } catch {
+      setFailed(true);
+    } finally {
+      setBusy(false);
+    }
   }
 
-  async function deleteAccount() {
-    setDeleteError(null);
+  return (
+    <AccountSection icon={Database} title={t('title')} lead={t('lead')}>
+      <IconFigure
+        icon={Database}
+        label={t('stored')}
+        value={stored.data ? number.format(stored.data.items.length) : '–'}
+      />
+      {failed && <FormNote tone="error">{t('failed')}</FormNote>}
+      <Button
+        variant="outline"
+        size="sm"
+        className="gap-1.5"
+        disabled={busy}
+        onClick={() => void exportAll()}
+      >
+        {busy ? <Loader2 className="size-4 animate-spin" /> : <Download className="size-4" />}
+        {t('export')}
+      </Button>
+    </AccountSection>
+  );
+}
+
+/** Deleting the account for good, confirmed with the password. */
+function AccountDeletion({ onDeleted }: { onDeleted: () => Promise<void> }) {
+  const t = useTranslations('account.delete');
+  const tAuth = useTranslations('accountAuth');
+  const passwordLabels = usePasswordLabels();
+  const [open, setOpen] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
+
+  async function remove() {
+    setError(null);
     try {
       await sessionCall('/api/account', { method: 'DELETE', body: { password } });
-    } catch (error) {
-      setDeleteError(
-        error instanceof SessionApiError && error.signedOut
-          ? t('delete.wrongPassword')
-          : t('delete.failed')
+    } catch (failure) {
+      setError(
+        failure instanceof SessionApiError && failure.signedOut ? t('wrongPassword') : t('failed')
       );
       return;
     }
     setPassword('');
-    await signOut();
+    await onDeleted();
   }
 
-  const { account, data } = overview;
-  const favorites = data.favorites;
-  const rides =
-    favorites.attractions.length + favorites.shows.length + favorites.restaurants.length;
-
   return (
-    <div className="mx-auto max-w-2xl space-y-6">
-      <div className={cn(AUTH_CARD_CLASS, 'space-y-6')}>
-        <AuthCardHairline />
-        <div className="flex flex-wrap items-center gap-3">
-          <div className="min-w-0 flex-1">
-            <p className="truncate text-lg font-semibold">{account.displayName}</p>
-            <p className="text-muted-foreground truncate text-sm">{account.email}</p>
-          </div>
-          <Button variant="ghost" size="sm" className="gap-1.5" onClick={() => void signOut()}>
-            <LogOut className="size-4" />
-            {t('signOut')}
-          </Button>
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2">
-          <IconFigure
-            icon={Heart}
-            label={t('figures.parks')}
-            value={number.format(favorites.parks.length)}
-          />
-          <IconFigure icon={Heart} label={t('figures.rides')} value={number.format(rides)} />
-          <IconFigure
-            icon={CheckCircle2}
-            label={t('figures.ridden')}
-            value={number.format(data.riddenRides.length)}
-          />
-          <IconFigure
-            icon={Thermometer}
-            label={t('figures.unit')}
-            value={data.temperatureUnit ? `°${data.temperatureUnit}` : t('figures.unitNone')}
-          />
-          <IconFigure
-            icon={Database}
-            label={t('figures.stored')}
-            value={stored.data ? number.format(stored.data.items.length) : '–'}
-          />
-        </div>
-
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-muted-foreground text-xs">
-            {data.updatedAt
-              ? t('syncedAt', { when: moment.format(new Date(data.updatedAt)) })
-              : t('neverSynced')}
-          </p>
-          <Button
-            variant="outline"
-            size="sm"
-            className="gap-1.5"
-            disabled={syncing}
-            onClick={() => void syncNow()}
-          >
-            <RefreshCw className={cn('size-4', syncing && 'animate-spin')} />
-            {t('syncNow')}
-          </Button>
-        </div>
-        <p className="text-muted-foreground text-xs leading-relaxed">{t('whatSyncs')}</p>
-      </div>
-
-      <div className="border-destructive/30 rounded-3xl border p-6">
-        <h2 className="font-semibold">{t('delete.title')}</h2>
-        <p className="text-muted-foreground mt-1 mb-4 text-sm leading-relaxed">
-          {t('delete.body')}
-        </p>
-        {deleteError && (
-          <p role="alert" className="text-destructive mb-3 text-sm">
-            {deleteError}
-          </p>
-        )}
-        <Button variant="outline" className="gap-1.5" onClick={() => setDeleting(true)}>
-          <Trash2 className="size-4" />
-          {t('delete.open')}
-        </Button>
-      </div>
-
+    <AccountSection icon={Trash2} title={t('title')} lead={t('body')} tone="danger">
+      {error && <FormNote tone="error">{error}</FormNote>}
+      <Button variant="outline" className="gap-1.5" onClick={() => setOpen(true)}>
+        <Trash2 className="size-4" />
+        {t('open')}
+      </Button>
       <ConfirmDialog
-        open={deleting}
-        onOpenChange={(open) => {
-          setDeleting(open);
-          if (!open) setPassword('');
+        open={open}
+        onOpenChange={(next) => {
+          setOpen(next);
+          if (!next) setPassword('');
         }}
         icon={KeyRound}
         tone="destructive"
-        title={t('delete.confirmTitle')}
-        description={t('delete.confirmBody')}
-        confirmLabel={t('delete.confirm')}
-        cancelLabel={t('delete.cancel')}
+        title={t('confirmTitle')}
+        description={t('confirmBody')}
+        confirmLabel={t('confirm')}
+        cancelLabel={t('cancel')}
         confirmDisabled={password.length === 0}
-        onConfirm={() => void deleteAccount()}
+        onConfirm={() => void remove()}
       >
         <AuthPasswordField
           id="account-delete-password"
           label={tAuth('password')}
-          labels={{
-            show: tAuth('showPassword'),
-            hide: tAuth('hidePassword'),
-            capsLock: tAuth('capsLock'),
-          }}
+          labels={passwordLabels}
           autoComplete="current-password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
       </ConfirmDialog>
-    </div>
+    </AccountSection>
   );
 }

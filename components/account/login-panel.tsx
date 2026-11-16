@@ -10,13 +10,20 @@ import { ACCOUNT_QUERY_KEY, useMembership } from '@/lib/account/member';
 import { safeNextPath } from '@/lib/account/paths';
 import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 
+/**
+ * Whether visitors may create accounts here. The API decides (`ACCOUNT_REGISTRATION=open`); this
+ * only hides the form it would refuse, so set both together.
+ */
+const ACCOUNT_REGISTRATION_OPEN = process.env.NEXT_PUBLIC_ACCOUNT_REGISTRATION === 'open';
+
 /** The page to return to, from `?next=`; read in the browser only. */
 function nextPath(): string {
   return safeNextPath(new URLSearchParams(window.location.search).get('next'));
 }
 
 /**
- * The visitor sign-in at `/login`: create an account or sign in, both behind Turnstile, then back
+ * The visitor sign-in at `/login`: sign in, or create an account while registration is open, both
+ * behind Turnstile, then back
  * to the members-only page that sent the visitor here (`?next=`), or to the account. A member who
  * is already signed in goes straight on.
  */
@@ -41,8 +48,11 @@ export function LoginPanel() {
 
   return (
     <SelfServiceAuth
-      registerEndpoint="/api/account/register"
-      registerAction={TURNSTILE_ACTIONS.accountRegister}
+      register={
+        ACCOUNT_REGISTRATION_OPEN
+          ? { endpoint: '/api/account/register', action: TURNSTILE_ACTIONS.accountRegister }
+          : undefined
+      }
       copy={{
         registerTitle: t('auth.registerTitle'),
         registerLead: t('auth.registerLead'),

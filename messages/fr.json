@@ -6464,14 +6464,6 @@
     "syncedAt": "Dernière synchronisation : {when}",
     "neverSynced": "Pas encore synchronisé",
     "whatSyncs": "Les favoris, les attractions déjà faites et °C ou °F sont synchronisés. Votre planning de journée et vos alertes restent sur l’appareil où vous les avez créés.",
-    "figures": {
-      "parks": "Parcs favoris",
-      "rides": "Attractions enregistrées",
-      "ridden": "Attractions déjà faites",
-      "unit": "Unité de température",
-      "unitNone": "non choisie",
-      "stored": "Éléments enregistrés"
-    },
     "auth": {
       "registerTitle": "Créer un compte",
       "registerLead": "Vos favoris et attractions faites sur tous vos appareils. Gratuit, sans publicité.",
@@ -6493,6 +6485,68 @@
       "metaTitle": "Connexion",
       "title": "Connexion",
       "lead": "Connectez-vous ou créez un compte. C’est gratuit."
+    },
+    "figures": {
+      "parks": "Parcs favoris",
+      "rides": "Attractions enregistrées",
+      "ridden": "Attractions déjà faites",
+      "unit": "Unité de température",
+      "unitNone": "non choisie"
+    },
+    "syncTitle": "Synchronisation",
+    "profile": {
+      "title": "Profil",
+      "name": "Nom",
+      "email": "E-mail",
+      "emailHint": "L’adresse ne peut pas encore être modifiée.",
+      "save": "Enregistrer",
+      "saved": "Enregistré.",
+      "failed": "Cela n’a pas fonctionné. Veuillez réessayer.",
+      "memberSince": "Membre depuis le {date}",
+      "lastLogin": "dernière connexion le {date}"
+    },
+    "security": {
+      "title": "Sécurité",
+      "lead": "Votre mot de passe, un second facteur et les appareils où vous êtes connecté",
+      "passwordTitle": "Changer le mot de passe",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "repeatPassword": "Répétez le nouveau mot de passe",
+      "passwordHint": "Au moins {min} caractères.",
+      "mismatch": "Les deux mots de passe ne correspondent pas.",
+      "changePassword": "Changer le mot de passe",
+      "passwordChanged": "Mot de passe changé. Vous êtes déconnecté de vos autres appareils.",
+      "wrongPassword": "Le mot de passe est incorrect.",
+      "tooMany": "Trop de tentatives. Attendez quelques minutes.",
+      "rejected": "Cela a été refusé. Vérifiez votre saisie.",
+      "failed": "Cela n’a pas fonctionné. Veuillez réessayer.",
+      "twoFactorTitle": "Second facteur",
+      "twoFactorOn": "activé",
+      "twoFactorOff": "désactivé",
+      "twoFactorIntro": "Avec un second facteur, un mot de passe volé ne suffit pas : à la connexion, park.fan demande aussi un code de votre application d’authentification.",
+      "setUp": "Configurer",
+      "secretHint": "Saisissez cette clé dans votre application d’authentification, ou ouvrez le lien sur l’appareil qui a l’application. Le second facteur s’active avec le premier code.",
+      "openApp": "Ouvrir dans l’application d’authentification",
+      "code": "Code de l’application",
+      "confirmCode": "Confirmer",
+      "enabled": "Le second facteur est activé.",
+      "turnOff": "Désactiver",
+      "disabled": "Le second facteur est désactivé.",
+      "codeWrong": "Le code est incorrect. Utilisez le code actuel de l’application.",
+      "sessionsTitle": "Appareils connectés",
+      "unknownDevice": "Appareil inconnu",
+      "thisDevice": "cet appareil",
+      "lastActive": "dernière activité le {when}",
+      "endSession": "Se déconnecter",
+      "everywhere": "Se déconnecter partout",
+      "everywhereHint": "Met fin à toutes les sessions, y compris celle-ci."
+    },
+    "data": {
+      "title": "Vos données",
+      "lead": "Tout ce que votre compte enregistre, dans un fichier à télécharger",
+      "stored": "Éléments enregistrés",
+      "export": "Télécharger les données",
+      "failed": "Le téléchargement n’a pas fonctionné. Veuillez réessayer."
     }
   }
 }

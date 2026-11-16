@@ -123,8 +123,10 @@ export function DeveloperDashboard() {
   if (overview.isError && isSignedOut(overview.error)) {
     return (
       <SelfServiceAuth
-        registerEndpoint="/api/developers/register"
-        registerAction={TURNSTILE_ACTIONS.developerRegister}
+        register={{
+          endpoint: '/api/developers/register',
+          action: TURNSTILE_ACTIONS.developerRegister,
+        }}
         copy={{
           registerTitle: t('auth.registerTitle'),
           registerLead: t('auth.registerLead'),

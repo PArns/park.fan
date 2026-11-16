@@ -1,5 +1,6 @@
 import { useSyncExternalStore } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useRouter } from '@/i18n/navigation';
 import { ACCOUNT_MARKER_COOKIE } from '@/lib/admin/cookie';
 import { SessionApiError } from '@/lib/admin/session-client';
 import { readCookie } from '@/lib/utils/browser-cookie';
@@ -49,4 +50,20 @@ export function useMembership(): Membership {
   if (!marker || account.isError) return { status: 'guest' };
   if (account.data) return { status: 'member', overview: account.data };
   return { status: 'loading' };
+}
+
+/**
+ * Signing out here: the sync ends and forgets this browser's agreement, the session and its
+ * markers go, every cached account answer is dropped, and the member lands on the home page.
+ */
+export function useAccountSignOut(): () => Promise<void> {
+  const router = useRouter();
+  const client = useQueryClient();
+  return async () => {
+    const { endAccountSync } = await import('./sync');
+    endAccountSync();
+    await fetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
+    client.removeQueries({ queryKey: ['account'] });
+    router.replace('/');
+  };
 }

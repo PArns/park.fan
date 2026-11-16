@@ -32,7 +32,14 @@ const PUSH_DELAY_MS = 1000;
 
 /** The account as `GET /api/account` answers it. */
 export interface AccountOverview {
-  account: { email: string; displayName: string; role: string };
+  account: {
+    email: string;
+    displayName: string;
+    role: string;
+    totpEnabled: boolean;
+    createdAt: string;
+    lastLoginAt: string | null;
+  };
   data: AccountServerState;
 }
 
