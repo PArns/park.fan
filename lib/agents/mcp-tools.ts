@@ -250,7 +250,7 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
             .catch(() => [])
         : getParkSeasons(...park.segments),
     ]);
-    if ('refused' in snapshot) return { error: snapshot.message };
+    if (isApiKeyRefusal(snapshot)) return { error: snapshot.message };
     const rides = structure?.attractions ?? [];
 
     return {

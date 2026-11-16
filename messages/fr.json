@@ -3092,31 +3092,6 @@
       "network": "Pas de connexion au serveur. Vérifiez votre connexion et réessayez.",
       "generic": "La demande n’est pas arrivée. Vérifiez les champs et réessayez."
     },
-    "auth": {
-      "registerTab": "Créer un compte",
-      "loginTab": "Se connecter",
-      "displayName": "Nom",
-      "email": "E-mail",
-      "emailHint": "Nos questions sur vos demandes arrivent à cette adresse.",
-      "password": "Mot de passe",
-      "passwordHint": "Au moins {min} caractères.",
-      "totp": "Code de votre application d’authentification",
-      "totpHint": "Votre compte se connecte avec un second facteur.",
-      "signIn": "Se connecter",
-      "errorLocked": "Trop de tentatives. Attendez quelques minutes et réessayez.",
-      "errorTurnstile": "La vérification de sécurité a échoué. Recommencez-la.",
-      "errorCredentials": "E-mail ou mot de passe incorrect.",
-      "errorNetwork": "Pas de connexion au serveur. Réessayez dans un instant.",
-      "register": {
-        "submit": "Créer un compte",
-        "account-exists": "Un compte existe déjà pour cette adresse. Connectez-vous plutôt.",
-        "invalid-form": "Vérifiez l’adresse et le mot de passe.",
-        "rate-limited": "Trop de tentatives. Attendez une minute.",
-        "turnstile-failed": "La vérification de sécurité a échoué. Recommencez-la.",
-        "network": "Pas de connexion au serveur.",
-        "generic": "Le compte n’a pas pu être créé. Réessayez."
-      }
-    },
     "dashboard": {
       "metaTitle": "Tableau de bord développeur",
       "title": "Tableau de bord développeur",
@@ -3193,7 +3168,14 @@
       "copied": "Copié",
       "revealedDone": "Enregistrée",
       "revokeTitle": "Révoquer {name} ?",
-      "revokeText": "La clé cesse de fonctionner dès la requête suivante, et c’est irréversible. Une nouvelle clé passe par une nouvelle demande."
+      "revokeText": "La clé cesse de fonctionner dès la requête suivante, et c’est irréversible. Une nouvelle clé passe par une nouvelle demande.",
+      "auth": {
+        "registerTitle": "Créer un compte développeur",
+        "registerLead": "Avec ce compte, vous demandez des clés et suivez leur utilisation.",
+        "loginTitle": "Bon retour",
+        "loginLead": "Connectez-vous pour voir vos clés et vos demandes."
+      },
+      "securityTitle": "Sécurité"
     }
   },
   "attraction": {
@@ -6443,6 +6425,129 @@
       "bad": "Plutôt pas",
       "ask": "Demande à Parky pour ce jour",
       "question": "Pour {day} à {park}, tu dis : « {tip} » Comment on profite au mieux de cette journée ?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Créer un compte",
+    "loginTab": "Se connecter",
+    "displayName": "Nom",
+    "email": "E-mail",
+    "emailHint": "Vous vous connectez avec cette adresse.",
+    "password": "Mot de passe",
+    "passwordHint": "Au moins {min} caractères.",
+    "totp": "Code de votre application d’authentification",
+    "totpHint": "Votre compte se connecte avec un second facteur.",
+    "signIn": "Se connecter",
+    "errorLocked": "Trop de tentatives. Attendez quelques minutes et réessayez.",
+    "errorTurnstile": "La vérification de sécurité a échoué. Recommencez-la.",
+    "errorCredentials": "E-mail ou mot de passe incorrect.",
+    "errorNetwork": "Pas de connexion au serveur. Réessayez dans un instant.",
+    "register": {
+      "submit": "Créer un compte",
+      "account-exists": "Un compte existe déjà pour cette adresse. Connectez-vous plutôt.",
+      "invalid-form": "Vérifiez l’adresse et le mot de passe.",
+      "rate-limited": "Trop de tentatives. Attendez une minute.",
+      "turnstile-failed": "La vérification de sécurité a échoué. Recommencez-la.",
+      "network": "Pas de connexion au serveur.",
+      "generic": "Le compte n’a pas pu être créé. Réessayez."
+    },
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "capsLock": "Le verrouillage des majuscules est activé."
+  },
+  "account": {
+    "metaTitle": "Votre compte",
+    "title": "Votre compte park.fan",
+    "lead": "Vos favoris, les attractions déjà faites et votre unité de température sur chaque appareil où vous êtes connecté",
+    "loading": "Chargement",
+    "signOut": "Se déconnecter",
+    "syncNow": "Synchroniser",
+    "syncedAt": "Dernière synchronisation : {when}",
+    "neverSynced": "Pas encore synchronisé",
+    "whatSyncs": "Les favoris, les attractions déjà faites et °C ou °F sont synchronisés. Votre planning de journée et vos alertes restent sur l’appareil où vous les avez créés.",
+    "auth": {
+      "registerTitle": "Créer un compte",
+      "registerLead": "Vos favoris et attractions faites sur tous vos appareils. Gratuit, sans publicité.",
+      "loginTitle": "Bon retour",
+      "loginLead": "Connectez-vous pour retrouver vos favoris sur cet appareil."
+    },
+    "delete": {
+      "title": "Supprimer le compte",
+      "body": "Le compte et tout ce qu’il a synchronisé sont supprimés définitivement. Vos favoris restent sur cet appareil.",
+      "open": "Supprimer le compte",
+      "confirmTitle": "Supprimer définitivement le compte ?",
+      "confirmBody": "Saisissez votre mot de passe pour confirmer. Cette action est irréversible.",
+      "confirm": "Supprimer définitivement",
+      "cancel": "Annuler",
+      "wrongPassword": "Le mot de passe est incorrect.",
+      "failed": "Impossible de supprimer le compte. Veuillez réessayer."
+    },
+    "login": {
+      "metaTitle": "Connexion",
+      "title": "Connexion",
+      "lead": "Connectez-vous ou créez un compte. C’est gratuit."
+    },
+    "figures": {
+      "parks": "Parcs favoris",
+      "rides": "Attractions enregistrées",
+      "ridden": "Attractions déjà faites",
+      "unit": "Unité de température",
+      "unitNone": "non choisie"
+    },
+    "syncTitle": "Synchronisation",
+    "profile": {
+      "title": "Profil",
+      "name": "Nom",
+      "email": "E-mail",
+      "emailHint": "L’adresse ne peut pas encore être modifiée.",
+      "save": "Enregistrer",
+      "saved": "Enregistré.",
+      "failed": "Cela n’a pas fonctionné. Veuillez réessayer.",
+      "memberSince": "Membre depuis le {date}",
+      "lastLogin": "dernière connexion le {date}"
+    },
+    "security": {
+      "title": "Sécurité",
+      "lead": "Votre mot de passe, un second facteur et les appareils où vous êtes connecté",
+      "passwordTitle": "Changer le mot de passe",
+      "currentPassword": "Mot de passe actuel",
+      "newPassword": "Nouveau mot de passe",
+      "repeatPassword": "Répétez le nouveau mot de passe",
+      "passwordHint": "Au moins {min} caractères.",
+      "mismatch": "Les deux mots de passe ne correspondent pas.",
+      "changePassword": "Changer le mot de passe",
+      "passwordChanged": "Mot de passe changé. Vous êtes déconnecté de vos autres appareils.",
+      "wrongPassword": "Le mot de passe est incorrect.",
+      "tooMany": "Trop de tentatives. Attendez quelques minutes.",
+      "rejected": "Cela a été refusé. Vérifiez votre saisie.",
+      "failed": "Cela n’a pas fonctionné. Veuillez réessayer.",
+      "twoFactorTitle": "Second facteur",
+      "twoFactorOn": "activé",
+      "twoFactorOff": "désactivé",
+      "twoFactorIntro": "Avec un second facteur, un mot de passe volé ne suffit pas : à la connexion, park.fan demande aussi un code de votre application d’authentification.",
+      "setUp": "Configurer",
+      "secretHint": "Saisissez cette clé dans votre application d’authentification, ou ouvrez le lien sur l’appareil qui a l’application. Le second facteur s’active avec le premier code.",
+      "openApp": "Ouvrir dans l’application d’authentification",
+      "code": "Code de l’application",
+      "confirmCode": "Confirmer",
+      "enabled": "Le second facteur est activé.",
+      "turnOff": "Désactiver",
+      "disabled": "Le second facteur est désactivé.",
+      "codeWrong": "Le code est incorrect. Utilisez le code actuel de l’application.",
+      "sessionsTitle": "Appareils connectés",
+      "unknownDevice": "Appareil inconnu",
+      "thisDevice": "cet appareil",
+      "lastActive": "dernière activité le {when}",
+      "endSession": "Se déconnecter",
+      "everywhere": "Se déconnecter partout",
+      "everywhereHint": "Met fin à toutes les sessions, y compris celle-ci."
+    },
+    "data": {
+      "title": "Vos données",
+      "lead": "Tout ce que votre compte enregistre, dans un fichier à télécharger",
+      "stored": "Éléments enregistrés",
+      "export": "Télécharger les données",
+      "failed": "Le téléchargement n’a pas fonctionné. Veuillez réessayer."
     }
   }
 }

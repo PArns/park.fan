@@ -5,10 +5,6 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
-### [`developer-auth.tsx`](../../components/developers/developer-auth.tsx)
-
-- `DeveloperAuth` _component_: The dashboard's door: sign in with an account, or create one. A new account is a developer account, which sees its own keys and requests and nothing of the admin.
-
 ### [`developer-dashboard.tsx`](../../components/developers/developer-dashboard.tsx)
 
 - `DeveloperDashboard` _component_: The developer dashboard: sign-in or registration, then the account's keys with their figures and actions, its requests, and the form for a new one.

@@ -8,6 +8,7 @@ import { AdminApiError } from '../_lib/api';
 import { Button } from '@/components/ui/button';
 import { EmptyState, LoadingState } from '../_ui/primitives';
 import { DEVELOPER_DASHBOARD_PATH } from '@/lib/developers/paths';
+import { ACCOUNT_PATH } from '@/lib/account/paths';
 import { ToastHost } from '../_ui/toast';
 import { InspectorProvider } from './inspector';
 import { LoginScreen } from './login-screen';
@@ -105,10 +106,10 @@ function SessionGate({ children }: { children: ReactNode }) {
     );
   }
 
-  // A developer account signs in with the same session, and none of the admin is theirs: the
-  // backend refuses every request the shell would make, so the shell is not drawn at all.
-  if (session.data.role === 'developer') {
-    return <DeveloperAccountNotice />;
+  // Developer and visitor accounts sign in with the same session, and none of the admin is theirs:
+  // the backend refuses every request the shell would make, so the shell is not drawn at all.
+  if (session.data.role === 'developer' || session.data.role === 'user') {
+    return <OwnAreaNotice role={session.data.role} />;
   }
 
   if (standalone) {
@@ -128,19 +129,33 @@ function SessionGate({ children }: { children: ReactNode }) {
   );
 }
 
-/** What a developer account sees at `/admin`: the way to its own dashboard. */
-function DeveloperAccountNotice() {
+/** Where an account that is not staff belongs instead of the admin, and what it is called. */
+const OWN_AREAS = {
+  developer: {
+    title: 'Das ist ein Entwicklerkonto',
+    description: 'Deine Keys, ihre Statistik und deine Anträge stehen im Entwickler-Dashboard.',
+    href: DEVELOPER_DASHBOARD_PATH,
+    action: 'Zum Dashboard',
+  },
+  user: {
+    title: 'Das ist ein Besucherkonto',
+    description: 'Deine Favoriten und gefahrenen Attraktionen stehen in deinem Konto auf park.fan.',
+    href: ACCOUNT_PATH,
+    action: 'Zum Konto',
+  },
+} as const;
+
+/** What an account that is not staff sees at `/admin`: the way to its own area. */
+function OwnAreaNotice({ role }: { role: keyof typeof OWN_AREAS }) {
+  const area = OWN_AREAS[role];
   return (
     <div className="flex min-h-[100dvh] items-center justify-center p-6">
       <EmptyState
-        title="Das ist ein Entwicklerkonto"
-        description="Deine Keys, ihre Statistik und deine Anträge stehen im Entwickler-Dashboard."
+        title={area.title}
+        description={area.description}
         action={
-          <a
-            href={`/en${DEVELOPER_DASHBOARD_PATH}`}
-            className="text-primary-ink text-sm font-medium underline"
-          >
-            Zum Dashboard
+          <a href={area.href} className="text-primary-ink text-sm font-medium underline">
+            {area.action}
           </a>
         }
       />

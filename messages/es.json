@@ -3092,31 +3092,6 @@
       "network": "No hay conexión con el servidor. Comprueba tu conexión e inténtalo de nuevo.",
       "generic": "La solicitud no ha llegado. Revisa los campos e inténtalo de nuevo."
     },
-    "auth": {
-      "registerTab": "Crear cuenta",
-      "loginTab": "Iniciar sesión",
-      "displayName": "Nombre",
-      "email": "Correo electrónico",
-      "emailHint": "Nuestras preguntas sobre tus solicitudes llegan a esta dirección.",
-      "password": "Contraseña",
-      "passwordHint": "Al menos {min} caracteres.",
-      "totp": "Código de tu app de autenticación",
-      "totpHint": "Tu cuenta inicia sesión con un segundo factor.",
-      "signIn": "Iniciar sesión",
-      "errorLocked": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
-      "errorTurnstile": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
-      "errorCredentials": "El correo o la contraseña no son correctos.",
-      "errorNetwork": "No hay conexión con el servidor. Inténtalo de nuevo en un momento.",
-      "register": {
-        "submit": "Crear cuenta",
-        "account-exists": "Esta dirección ya tiene una cuenta. Inicia sesión.",
-        "invalid-form": "Revisa la dirección y la contraseña.",
-        "rate-limited": "Demasiados intentos. Espera un minuto.",
-        "turnstile-failed": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
-        "network": "No hay conexión con el servidor.",
-        "generic": "No se ha podido crear la cuenta. Inténtalo de nuevo."
-      }
-    },
     "dashboard": {
       "metaTitle": "Panel para desarrolladores",
       "title": "Panel para desarrolladores",
@@ -3193,7 +3168,14 @@
       "copied": "Copiada",
       "revealedDone": "Guardada",
       "revokeTitle": "¿Revocar {name}?",
-      "revokeText": "La clave deja de funcionar desde la siguiente petición, y esto no se puede deshacer. Una clave nueva es una solicitud nueva."
+      "revokeText": "La clave deja de funcionar desde la siguiente petición, y esto no se puede deshacer. Una clave nueva es una solicitud nueva.",
+      "auth": {
+        "registerTitle": "Crear una cuenta de desarrollador",
+        "registerLead": "Con la cuenta solicitas claves y ves cómo se usan.",
+        "loginTitle": "Hola de nuevo",
+        "loginLead": "Inicia sesión para ver tus claves y solicitudes."
+      },
+      "securityTitle": "Seguridad"
     }
   },
   "attraction": {
@@ -6443,6 +6425,129 @@
       "bad": "Mejor no",
       "ask": "Pregúntale a Parky por este día",
       "question": "Para {day} en {park} dices: «{tip}» ¿Cómo le sacamos el máximo partido a ese día?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Crear cuenta",
+    "loginTab": "Iniciar sesión",
+    "displayName": "Nombre",
+    "email": "Correo electrónico",
+    "emailHint": "Con ella inicias sesión.",
+    "password": "Contraseña",
+    "passwordHint": "Al menos {min} caracteres.",
+    "totp": "Código de tu app de autenticación",
+    "totpHint": "Tu cuenta inicia sesión con un segundo factor.",
+    "signIn": "Iniciar sesión",
+    "errorLocked": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "errorTurnstile": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
+    "errorCredentials": "El correo o la contraseña no son correctos.",
+    "errorNetwork": "No hay conexión con el servidor. Inténtalo de nuevo en un momento.",
+    "register": {
+      "submit": "Crear cuenta",
+      "account-exists": "Esta dirección ya tiene una cuenta. Inicia sesión.",
+      "invalid-form": "Revisa la dirección y la contraseña.",
+      "rate-limited": "Demasiados intentos. Espera un minuto.",
+      "turnstile-failed": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
+      "network": "No hay conexión con el servidor.",
+      "generic": "No se ha podido crear la cuenta. Inténtalo de nuevo."
+    },
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "capsLock": "Bloq Mayús está activado."
+  },
+  "account": {
+    "metaTitle": "Tu cuenta",
+    "title": "Tu cuenta de park.fan",
+    "lead": "Tus favoritos, las atracciones en las que ya montaste y tu unidad de temperatura en cada dispositivo donde inicies sesión",
+    "loading": "Cargando",
+    "signOut": "Cerrar sesión",
+    "syncNow": "Sincronizar ahora",
+    "syncedAt": "Última sincronización: {when}",
+    "neverSynced": "Aún sin sincronizar",
+    "whatSyncs": "Se sincronizan los favoritos, las atracciones en las que ya montaste y °C o °F. Tu plan del día y tus avisos se quedan en el dispositivo donde los creaste.",
+    "auth": {
+      "registerTitle": "Crear una cuenta",
+      "registerLead": "Tus favoritos y atracciones montadas en todos tus dispositivos. Gratis y sin anuncios.",
+      "loginTitle": "Hola de nuevo",
+      "loginLead": "Inicia sesión para traer tus favoritos a este dispositivo."
+    },
+    "delete": {
+      "title": "Eliminar la cuenta",
+      "body": "La cuenta y todo lo que ha sincronizado se eliminan para siempre. Tus favoritos se quedan en este dispositivo.",
+      "open": "Eliminar la cuenta",
+      "confirmTitle": "¿Eliminar la cuenta para siempre?",
+      "confirmBody": "Introduce tu contraseña para confirmarlo. No se puede deshacer.",
+      "confirm": "Eliminar para siempre",
+      "cancel": "Cancelar",
+      "wrongPassword": "La contraseña no es correcta.",
+      "failed": "No se pudo eliminar la cuenta. Inténtalo de nuevo."
+    },
+    "login": {
+      "metaTitle": "Iniciar sesión",
+      "title": "Iniciar sesión",
+      "lead": "Inicia sesión o crea una cuenta. Es gratis."
+    },
+    "figures": {
+      "parks": "Parques favoritos",
+      "rides": "Atracciones guardadas",
+      "ridden": "Atracciones montadas",
+      "unit": "Unidad de temperatura",
+      "unitNone": "sin elegir"
+    },
+    "syncTitle": "Sincronización",
+    "profile": {
+      "title": "Perfil",
+      "name": "Nombre",
+      "email": "Correo electrónico",
+      "emailHint": "La dirección todavía no se puede cambiar.",
+      "save": "Guardar",
+      "saved": "Guardado.",
+      "failed": "No ha funcionado. Inténtalo de nuevo.",
+      "memberSince": "Miembro desde el {date}",
+      "lastLogin": "último acceso el {date}"
+    },
+    "security": {
+      "title": "Seguridad",
+      "lead": "Tu contraseña, un segundo factor y los dispositivos en los que has iniciado sesión",
+      "passwordTitle": "Cambiar la contraseña",
+      "currentPassword": "Contraseña actual",
+      "newPassword": "Nueva contraseña",
+      "repeatPassword": "Repite la nueva contraseña",
+      "passwordHint": "Al menos {min} caracteres.",
+      "mismatch": "Las dos contraseñas no coinciden.",
+      "changePassword": "Cambiar la contraseña",
+      "passwordChanged": "Contraseña cambiada. Se ha cerrado la sesión en tus otros dispositivos.",
+      "wrongPassword": "La contraseña no es correcta.",
+      "tooMany": "Demasiados intentos. Espera unos minutos.",
+      "rejected": "Se ha rechazado. Revisa lo que has introducido.",
+      "failed": "No ha funcionado. Inténtalo de nuevo.",
+      "twoFactorTitle": "Segundo factor",
+      "twoFactorOn": "activado",
+      "twoFactorOff": "desactivado",
+      "twoFactorIntro": "Con un segundo factor no basta con una contraseña robada: al iniciar sesión, park.fan también pide un código de tu app de autenticación.",
+      "setUp": "Configurar",
+      "secretHint": "Introduce esta clave en tu app de autenticación o abre el enlace en el dispositivo que tiene la app. El segundo factor se activa con el primer código.",
+      "openApp": "Abrir en la app de autenticación",
+      "code": "Código de la app",
+      "confirmCode": "Confirmar",
+      "enabled": "El segundo factor está activado.",
+      "turnOff": "Desactivar",
+      "disabled": "El segundo factor está desactivado.",
+      "codeWrong": "El código no es correcto. Usa el actual de la app.",
+      "sessionsTitle": "Dispositivos con sesión iniciada",
+      "unknownDevice": "Dispositivo desconocido",
+      "thisDevice": "este dispositivo",
+      "lastActive": "última actividad el {when}",
+      "endSession": "Cerrar sesión",
+      "everywhere": "Cerrar sesión en todas partes",
+      "everywhereHint": "Cierra todas las sesiones, también esta."
+    },
+    "data": {
+      "title": "Tus datos",
+      "lead": "Todo lo que guarda tu cuenta, en un archivo para descargar",
+      "stored": "Elementos guardados",
+      "export": "Descargar datos",
+      "failed": "La descarga no ha funcionado. Inténtalo de nuevo."
     }
   }
 }

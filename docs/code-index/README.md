@@ -16,6 +16,7 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 ## Pages
 
 - [`components/`](components.md)
+- [`components/account/`](components-account.md)
 - [`components/admin/`](components-admin.md)
 - [`components/agents/`](components-agents.md)
 - [`components/analytics/`](components-analytics.md)
@@ -41,6 +42,7 @@ Why it works this way: [the rule](../rules/the-code-index-is-generated-from-the-
 - [`components/trip-regions/`](components-trip-regions.md)
 - [`components/ui/`](components-ui.md)
 - [`lib/`](lib.md)
+- [`lib/account/`](lib-account.md)
 - [`lib/admin/`](lib-admin.md)
 - [`lib/agents/`](lib-agents.md)
 - [`lib/analytics/`](lib-analytics.md)

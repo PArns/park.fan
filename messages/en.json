@@ -3092,31 +3092,6 @@
       "network": "No connection to the server. Check your connection and try again.",
       "generic": "The request did not arrive. Check the fields and try again."
     },
-    "auth": {
-      "registerTab": "Create account",
-      "loginTab": "Sign in",
-      "displayName": "Name",
-      "email": "Email",
-      "emailHint": "Our questions about your requests go to this address.",
-      "password": "Password",
-      "passwordHint": "At least {min} characters.",
-      "totp": "Code from your authenticator app",
-      "totpHint": "Your account signs in with a second factor.",
-      "signIn": "Sign in",
-      "errorLocked": "Too many attempts. Wait a few minutes and try again.",
-      "errorTurnstile": "The security check failed. Solve it again.",
-      "errorCredentials": "Email or password is wrong.",
-      "errorNetwork": "No connection to the server. Try again in a moment.",
-      "register": {
-        "submit": "Create account",
-        "account-exists": "This address already has an account. Sign in instead.",
-        "invalid-form": "Check the address and the password.",
-        "rate-limited": "Too many attempts. Wait a minute.",
-        "turnstile-failed": "The security check failed. Solve it again.",
-        "network": "No connection to the server.",
-        "generic": "The account could not be created. Try again."
-      }
-    },
     "dashboard": {
       "metaTitle": "Developer dashboard",
       "title": "Developer dashboard",
@@ -3193,7 +3168,14 @@
       "copied": "Copied",
       "revealedDone": "Saved",
       "revokeTitle": "Revoke {name}?",
-      "revokeText": "The key stops working from the next request, and this cannot be undone. A new key is a new request."
+      "revokeText": "The key stops working from the next request, and this cannot be undone. A new key is a new request.",
+      "auth": {
+        "registerTitle": "Create a developer account",
+        "registerLead": "With the account you request keys and see how they are used.",
+        "loginTitle": "Welcome back",
+        "loginLead": "Sign in to see your keys and requests."
+      },
+      "securityTitle": "Security"
     }
   },
   "attraction": {
@@ -6443,6 +6425,129 @@
       "bad": "Better not",
       "ask": "Ask Parky about this day",
       "question": "For {day} at {park} you say: “{tip}” How do we make the most of that day?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Create account",
+    "loginTab": "Sign in",
+    "displayName": "Name",
+    "email": "Email",
+    "emailHint": "You sign in with it.",
+    "password": "Password",
+    "passwordHint": "At least {min} characters.",
+    "totp": "Code from your authenticator app",
+    "totpHint": "Your account signs in with a second factor.",
+    "signIn": "Sign in",
+    "errorLocked": "Too many attempts. Wait a few minutes and try again.",
+    "errorTurnstile": "The security check failed. Solve it again.",
+    "errorCredentials": "Email or password is wrong.",
+    "errorNetwork": "No connection to the server. Try again in a moment.",
+    "register": {
+      "submit": "Create account",
+      "account-exists": "This address already has an account. Sign in instead.",
+      "invalid-form": "Check the address and the password.",
+      "rate-limited": "Too many attempts. Wait a minute.",
+      "turnstile-failed": "The security check failed. Solve it again.",
+      "network": "No connection to the server.",
+      "generic": "The account could not be created. Try again."
+    },
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "capsLock": "Caps Lock is on."
+  },
+  "account": {
+    "metaTitle": "Your account",
+    "title": "Your park.fan account",
+    "lead": "Favorites, rides you have ridden and your temperature unit on every device you sign in on",
+    "loading": "Loading",
+    "signOut": "Sign out",
+    "syncNow": "Sync now",
+    "syncedAt": "Last synced: {when}",
+    "neverSynced": "Not synced yet",
+    "whatSyncs": "Favorites, ridden rides and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
+    "auth": {
+      "registerTitle": "Create an account",
+      "registerLead": "Your favorites and ridden rides on every device. Free, without ads.",
+      "loginTitle": "Welcome back",
+      "loginLead": "Sign in to bring your favorites to this device."
+    },
+    "delete": {
+      "title": "Delete account",
+      "body": "The account and everything it synced is deleted for good. Your favorites stay on this device.",
+      "open": "Delete account",
+      "confirmTitle": "Delete the account for good?",
+      "confirmBody": "Enter your password to confirm. This cannot be undone.",
+      "confirm": "Delete for good",
+      "cancel": "Cancel",
+      "wrongPassword": "The password is not correct.",
+      "failed": "The account could not be deleted. Please try again."
+    },
+    "login": {
+      "metaTitle": "Sign in",
+      "title": "Sign in",
+      "lead": "Sign in or create an account. Both are free."
+    },
+    "figures": {
+      "parks": "Favorite parks",
+      "rides": "Saved rides",
+      "ridden": "Rides ridden",
+      "unit": "Temperature unit",
+      "unitNone": "not chosen"
+    },
+    "syncTitle": "Sync",
+    "profile": {
+      "title": "Profile",
+      "name": "Name",
+      "email": "Email",
+      "emailHint": "The address cannot be changed yet.",
+      "save": "Save",
+      "saved": "Saved.",
+      "failed": "That did not work. Please try again.",
+      "memberSince": "Member since {date}",
+      "lastLogin": "last signed in {date}"
+    },
+    "security": {
+      "title": "Security",
+      "lead": "Your password, a second factor and the devices you are signed in on",
+      "passwordTitle": "Change password",
+      "currentPassword": "Current password",
+      "newPassword": "New password",
+      "repeatPassword": "Repeat the new password",
+      "passwordHint": "At least {min} characters.",
+      "mismatch": "The two passwords do not match.",
+      "changePassword": "Change password",
+      "passwordChanged": "Password changed. Your other devices are now signed out.",
+      "wrongPassword": "The password is not correct.",
+      "tooMany": "Too many attempts. Wait a few minutes.",
+      "rejected": "That was refused. Check what you entered.",
+      "failed": "That did not work. Please try again.",
+      "twoFactorTitle": "Second factor",
+      "twoFactorOn": "on",
+      "twoFactorOff": "off",
+      "twoFactorIntro": "With a second factor a stolen password is not enough: when you sign in, park.fan also asks for a code from your authenticator app.",
+      "setUp": "Set up",
+      "secretHint": "Enter this key in your authenticator app, or open the link on the device with the app. The second factor turns on with the first code.",
+      "openApp": "Open in the authenticator app",
+      "code": "Code from the app",
+      "confirmCode": "Confirm",
+      "enabled": "The second factor is on.",
+      "turnOff": "Turn off",
+      "disabled": "The second factor is off.",
+      "codeWrong": "The code is not correct. Use the current one from the app.",
+      "sessionsTitle": "Signed-in devices",
+      "unknownDevice": "Unknown device",
+      "thisDevice": "this device",
+      "lastActive": "last active {when}",
+      "endSession": "Sign out",
+      "everywhere": "Sign out everywhere",
+      "everywhereHint": "Ends every session, this one too."
+    },
+    "data": {
+      "title": "Your data",
+      "lead": "Everything your account stores, as one file to download",
+      "stored": "Stored entries",
+      "export": "Download data",
+      "failed": "The download did not work. Please try again."
     }
   }
 }

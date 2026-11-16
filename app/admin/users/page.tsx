@@ -24,6 +24,7 @@ import {
   SkeletonRows,
 } from '../_ui/primitives';
 import { ApiTokenList } from '../_ui/api-token-list';
+import { AttemptsPanel } from './_components/attempts-panel';
 import { Field, Select, Switch, TextInput } from '../_ui/controls';
 import { formatAgo, formatDisplayName } from '../_lib/format';
 import { useToast } from '../_ui/toast';
@@ -56,6 +57,11 @@ const ROLES: Array<{ value: AdminRole; label: string; hint: string }> = [
     value: 'developer',
     label: ROLE_LABELS.developer,
     hint: 'Nur das Entwickler-Dashboard: eigene API-Keys und Anträge.',
+  },
+  {
+    value: 'user',
+    label: ROLE_LABELS.user,
+    hint: 'Ein Besucherkonto: eigene Favoriten und gefahrene Attraktionen.',
   },
 ];
 
@@ -101,6 +107,8 @@ export default function UsersPage() {
           </PanelBody>
         )}
       </Panel>
+
+      <AttemptsPanel />
 
       {creating && <CreateUserDialog onClose={() => setCreating(false)} />}
     </AdminPage>
@@ -276,7 +284,9 @@ function UserRow({ user, isSelf }: { user: AdminIdentity; isSelf: boolean }) {
         description={
           user.role === 'developer'
             ? 'Das Konto verschwindet mit seinen Sitzungen, allen API-Keys samt Statistik und allen Anträgen. Seine Keys hören sofort auf zu funktionieren. Das lässt sich nicht rückgängig machen; unter „Änderungen“ bleibt es verzeichnet.'
-            : 'Das Konto verschwindet mit seinen Sitzungen und Tokens. Was es kuratiert hat, bleibt. Das lässt sich nicht rückgängig machen; deaktivieren ist der Weg zurück.'
+            : user.role === 'user'
+              ? 'Das Besucherkonto verschwindet mit seinen Sitzungen und den abgeglichenen Favoriten. Das lässt sich nicht rückgängig machen; unter „Änderungen“ bleibt es verzeichnet.'
+              : 'Das Konto verschwindet mit seinen Sitzungen und Tokens. Was es kuratiert hat, bleibt. Das lässt sich nicht rückgängig machen; deaktivieren ist der Weg zurück.'
         }
         confirmLabel="Endgültig löschen"
         cancelLabel="Abbrechen"

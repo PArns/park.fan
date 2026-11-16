@@ -7,15 +7,16 @@ import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { getClientIp } from '@/lib/utils/request-ip';
 import {
   ADMIN_SESSION_COOKIE,
+  clearSessionMarkers,
   forgetSession,
-  markerCookieOptions,
   readSessionToken,
   resolveAdminIdentity,
   SESSION_ABSOLUTE_TTL_SECONDS,
   sessionCookieOptions,
+  setSessionMarkers,
 } from '@/lib/admin/session';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
-import { ADMIN_MARKER_COOKIE } from '@/lib/admin/cookie';
+import type { AdminRole } from '@/lib/admin/roles';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -66,12 +67,10 @@ export async function GET(request: Request) {
   // The shell reads this on every admin visit, so a session from before the marker existed gets one.
   const store = await cookies();
   if (!identity) {
-    store.delete(ADMIN_MARKER_COOKIE);
+    clearSessionMarkers(store);
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  // A developer account signs in here too, and reads none of the admin's figures.
-  if (identity.role === 'developer') store.delete(ADMIN_MARKER_COOKIE);
-  else store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(SESSION_ABSOLUTE_TTL_SECONDS));
+  setSessionMarkers(store, identity.role, SESSION_ABSOLUTE_TTL_SECONDS);
   return NextResponse.json(identity, {
     headers: NO_STORE,
   });
@@ -156,9 +155,7 @@ export async function POST(request: Request) {
 
   const store = await cookies();
   store.set(ADMIN_SESSION_COOKIE, result.token, sessionCookieOptions(expiresIn));
-  if ((result.user as { role?: string } | null)?.role !== 'developer') {
-    store.set(ADMIN_MARKER_COOKIE, '1', markerCookieOptions(expiresIn));
-  }
+  setSessionMarkers(store, (result.user as { role: AdminRole }).role, expiresIn);
 
   return NextResponse.json(
     { status: 'ok', user: result.user, expiresAt: result.expiresAt },
@@ -184,7 +181,7 @@ export async function DELETE(request: Request) {
 
   const store = await cookies();
   store.delete(ADMIN_SESSION_COOKIE);
-  store.delete(ADMIN_MARKER_COOKIE);
+  clearSessionMarkers(store);
 
   return new NextResponse(null, { status: 204 });
 }

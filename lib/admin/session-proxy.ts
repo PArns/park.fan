@@ -15,16 +15,16 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
 
 /**
- * The session proxy to api.park.fan behind `/api/admin/*` (the admin UI) and `/api/developer/*`
- * (the developer dashboard). The session token lives in an httpOnly cookie, so only the server can
+ * The session proxy to api.park.fan behind `/api/admin/*` (the admin UI), `/api/developer/*` (the
+ * developer dashboard) and `/api/account/*` (a visitor's account). The session token lives in an httpOnly cookie, so only the server can
  * turn it into the `Authorization: Bearer` header, and the browser needs no CORS relationship with
  * the API. A route must export every verb, must not assume a body (logout and DELETE answer 204),
  * and the admin's must move the token a password change re-issues into the cookie. See
  * docs/rules/the-admin-holds-no-credential.md.
  */
 
-/** Which API namespace a proxy route forwards to: `/v1/admin/*` or `/v1/developer/*`. */
-export type SessionProxyScope = 'admin' | 'developer';
+/** Which API namespace a proxy route forwards to: `/v1/admin/*`, `/v1/developer/*` or `/v1/account/*`. */
+export type SessionProxyScope = 'admin' | 'developer' | 'account';
 
 const FORWARDED_RESPONSE_HEADERS = ['content-type'];
 
@@ -33,7 +33,10 @@ const FORWARDED_RESPONSE_HEADERS = ['content-type'];
  * only helps the instance that served the request, so it is the second line; the first is that
  * `requireAdmin` never answers a write from cache (`lib/admin/session.ts`).
  */
-function revokesSessions(method: string, route: string): boolean {
+function revokesSessions(scope: SessionProxyScope, method: string, route: string): boolean {
+  // An account that deleted itself is gone, and its cached identity must go with it.
+  if (scope === 'account') return method === 'DELETE' && route === '';
+  if (scope !== 'admin') return false;
   if (route === 'auth/change-password' || route === 'auth/logout') return true;
   if (method === 'DELETE' && route.startsWith('auth/sessions')) return true;
   if (method === 'PATCH' && route.startsWith('auth/users/')) return true;
@@ -51,8 +54,9 @@ export async function proxySessionRequest(
 ) {
   // See `lib/admin/proxy-path.ts` — a percent-encoded separator survives Next's
   // route matching and only becomes one inside `new URL()`.
-  const upstreamPath = adminProxyPath(path);
-  if (!upstreamPath) {
+  // No segments is the namespace's own root, as `GET /v1/account`.
+  const upstreamPath = path.length === 0 ? '' : adminProxyPath(path);
+  if (upstreamPath === null) {
     return NextResponse.json({ error: 'Bad request' }, { status: 400 });
   }
 
@@ -69,7 +73,7 @@ export async function proxySessionRequest(
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const target = new URL(`${getApiBaseUrl()}/v1/${scope}/${upstreamPath}`);
+  const target = new URL(`${getApiBaseUrl()}/v1/${scope}${upstreamPath ? `/${upstreamPath}` : ''}`);
   target.search = adminProxyQuery(new URL(request.url).searchParams).toString();
 
   const hasBody = !['GET', 'HEAD'].includes(request.method);
@@ -90,7 +94,7 @@ export async function proxySessionRequest(
     body: body && body.length > 0 ? body : undefined,
   });
 
-  if (upstream.ok && scope === 'admin' && revokesSessions(request.method, route)) {
+  if (upstream.ok && revokesSessions(scope, request.method, route)) {
     forgetAllSessions();
   }
 
@@ -182,4 +186,17 @@ async function rotateSessionToken(payload: unknown, path: string[]): Promise<unk
   const store = await cookies();
   store.set(ADMIN_SESSION_COOKIE, token, sessionCookieOptions(maxAge));
   return rest;
+}
+
+type ProxyContext = { params: Promise<{ path?: string[] }> };
+
+/**
+ * The verbs of a proxy route, for its `route.ts` to export one by one: every verb goes to
+ * {@link proxySessionRequest} with the route's scope. An optional catch-all passes no segments for
+ * the namespace's root.
+ */
+export function sessionProxyRoute(scope: SessionProxyScope) {
+  const handle = async (request: NextRequest, { params }: ProxyContext) =>
+    proxySessionRequest(request, (await params).path ?? [], scope);
+  return { GET: handle, POST: handle, PATCH: handle, PUT: handle, DELETE: handle };
 }

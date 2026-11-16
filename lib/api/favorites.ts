@@ -273,8 +273,6 @@ export async function getFavorites(
     return response.json() as Promise<FavoritesResponse>;
   }
 
-  // Straight to the API the request carries no key, so the cards come without best visit times;
-  // through the relay the server adds them.
   const url = new URL('/api/favorites', window.location.origin);
 
   Object.entries(params).forEach(([key, value]) => {

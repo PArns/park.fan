@@ -62,8 +62,5 @@ export const REQUEST_LABELS = {
   volume: FORM.volumes as Record<RequestVolume, string>,
 } as const;
 
-/** A request's tier, as the admin's chip shows it. */
-export const REQUEST_TIER_LABELS: Record<RequestTier, string> = {
-  free: 'kostenlos',
-  paid: 'kostenpflichtig',
-};
+/** A request's tier, as the admin's chip shows it: the dashboard's own words. */
+export const REQUEST_TIER_LABELS: Record<RequestTier, string> = messages.developers.dashboard.tier;

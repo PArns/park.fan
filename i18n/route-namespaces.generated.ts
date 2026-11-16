@@ -28,6 +28,7 @@ export const LAYOUT_MESSAGE_NAMESPACES = [
 export const ROUTE_MESSAGE_NAMESPACES = {
   '/': ['assistant.interview.start', 'home', 'location', 'nearby', 'parkCard', 'parks'],
   '/[...rest]': [],
+  '/account': ['account', 'accountAuth'],
   '/alerts': ['pushAlerts.overview', 'pushAlerts.pushErrors'],
   '/best-time-to-visit': ['nearby', 'parkCard'],
   '/blog': ['nearby', 'parkCard'],
@@ -61,7 +62,8 @@ export const ROUTE_MESSAGE_NAMESPACES = {
   '/datenschutz': ['datenschutz.analyticsOptOut'],
   '/developers': [],
   '/developers/dashboard': [
-    'developers.auth',
+    'account.security',
+    'accountAuth',
     'developers.dashboard',
     'developers.error',
     'developers.form',
@@ -85,6 +87,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.showDialog',
   ],
   '/impressum': [],
+  '/login': ['account', 'accountAuth'],
   '/maintenance': [],
   '/news': ['nearby', 'parkCard'],
   '/news/[slug]': [

@@ -74,14 +74,15 @@ and this table only names it.
 
 **Analytics, maps, bot protection**
 
-| Variable                         | Default                                            | Kind   | Read by                                                                                                                        |
-| -------------------------------- | -------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `NEXT_PUBLIC_UMAMI_URL`          | not read                                           | public | Umami is switched off; nothing reads it ([analytics](analytics.md))                                                            |
-| `NEXT_PUBLIC_UMAMI_WEBSITE_ID`   | not read                                           | public | same                                                                                                                           |
-| `NEXT_PUBLIC_CARTO_MAP_KEY`      | CARTO's anonymous endpoint                         | public | `lib/utils/carto-tile-url.ts` ([park map](../features/park-map.md))                                                            |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare's always-passing test key               | public | `components/common/turnstile-widget.tsx`                                                                                       |
-| `TURNSTILE_SECRET_KEY`           | unset: check skipped in dev, refused in production | secret | `lib/security/turnstile.ts`, for `/contribute` and the admin login ([admin](../features/admin.md#bot-protection-on-the-login)) |
-| `TURNSTILE_HOSTNAMES`            | empty: hostname check skipped                      | server | same; comma-separated hosts a token may be solved on                                                                           |
+| Variable                           | Default                                            | Kind   | Read by                                                                                                                        |
+| ---------------------------------- | -------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `NEXT_PUBLIC_UMAMI_URL`            | not read                                           | public | Umami is switched off; nothing reads it ([analytics](analytics.md))                                                            |
+| `NEXT_PUBLIC_UMAMI_WEBSITE_ID`     | not read                                           | public | same                                                                                                                           |
+| `NEXT_PUBLIC_CARTO_MAP_KEY`        | CARTO's anonymous endpoint                         | public | `lib/utils/carto-tile-url.ts` ([park map](../features/park-map.md))                                                            |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`   | Cloudflare's always-passing test key               | public | `components/common/turnstile-widget.tsx`                                                                                       |
+| `NEXT_PUBLIC_ACCOUNT_REGISTRATION` | unset: `/login` only signs in                      | public | `components/account/login-panel.tsx`; `open` shows the sign-up, together with the API's `ACCOUNT_REGISTRATION`                 |
+| `TURNSTILE_SECRET_KEY`             | unset: check skipped in dev, refused in production | secret | `lib/security/turnstile.ts`, for `/contribute` and the admin login ([admin](../features/admin.md#bot-protection-on-the-login)) |
+| `TURNSTILE_HOSTNAMES`              | empty: hostname check skipped                      | server | same; comma-separated hosts a token may be solved on                                                                           |
 
 **Storage**
 

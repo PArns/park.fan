@@ -14,10 +14,17 @@ by hand: change the comment in the code and re-run the script. -->
 - `endDeveloperKeyGrace` _function_: Ends a key's grace period now: the replaced secret stops at once.
 - `revokeDeveloperKey` _function_: Revokes a key for good.
 - `developerKeyState` _function_: Where a key stands, seen from `nowMs`.
-- `usageTotals` _function_: The requests of the last days, summed, and the busiest day's count, for the dashboard's tiles.
-- `DeveloperApiError` _class_: A failed call, with the API's status and error code when it named one.
+- `usageTotals` _function_: The dashboard's tiles: requests of this hour, of today (UTC) and of the last 30 days, over every key not revoked.
 - `DEVELOPER_OVERVIEW_QUERY_KEY` _const_: The React Query key of the overview.
 - Types: `DeveloperOverview`, `RevealedKey`, `DeveloperKeyState`
+
+### [`key-lifecycle.ts`](../../lib/developers/key-lifecycle.ts)
+
+- `keyDaysSum` _function_: A key's requests or refusals over the days its statistics cover (30, UTC).
+- `previousKeyValidUntil` _function_: Until when the secret a key's last rotation replaced still works, seen from `nowMs`: the end of its grace period, or the key's own end date when that comes first, as the API decides it.
+- `ROTATION_GRACE_HOURS` _const_: The grace periods a rotation offers, in hours, shortest first; the admin and the dashboard both.
+- `DEFAULT_ROTATION_GRACE_HOURS` _const_: The grace period the dialog starts with: a day, time for a holder to deploy the new key.
+- Types: `RotationGraceHours`
 
 ### [`key-request.ts`](../../lib/developers/key-request.ts)
 

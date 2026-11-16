@@ -29,7 +29,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`providers.tsx`](../../lib/providers.tsx)
 
-- `Providers` _component_: Client-side providers: React Query, the temperature unit and geolocation. `ThemeProvider` (next-themes) is mounted in the locale layout instead, to avoid React 19 script injection warnings.
+- `Providers` _component_: Client-side providers: React Query, the temperature unit and geolocation, and the gate that starts a signed-in visitor's account sync.
 
 ### [`query-client.ts`](../../lib/query-client.ts)
 

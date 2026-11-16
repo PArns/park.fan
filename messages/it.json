@@ -3092,31 +3092,6 @@
       "network": "Nessuna connessione al server. Controlla la connessione e riprova.",
       "generic": "La richiesta non è arrivata. Controlla i campi e riprova."
     },
-    "auth": {
-      "registerTab": "Crea account",
-      "loginTab": "Accedi",
-      "displayName": "Nome",
-      "email": "Email",
-      "emailHint": "Le nostre domande sulle tue richieste arrivano a questo indirizzo.",
-      "password": "Password",
-      "passwordHint": "Almeno {min} caratteri.",
-      "totp": "Codice dalla tua app di autenticazione",
-      "totpHint": "Il tuo account accede con un secondo fattore.",
-      "signIn": "Accedi",
-      "errorLocked": "Troppi tentativi. Aspetta qualche minuto e riprova.",
-      "errorTurnstile": "Il controllo di sicurezza non è riuscito. Risolvilo di nuovo.",
-      "errorCredentials": "Email o password errate.",
-      "errorNetwork": "Nessuna connessione al server. Riprova tra un momento.",
-      "register": {
-        "submit": "Crea account",
-        "account-exists": "Questo indirizzo ha già un account. Accedi invece.",
-        "invalid-form": "Controlla l’indirizzo e la password.",
-        "rate-limited": "Troppi tentativi. Aspetta un minuto.",
-        "turnstile-failed": "Il controllo di sicurezza non è riuscito. Risolvilo di nuovo.",
-        "network": "Nessuna connessione al server.",
-        "generic": "Non è stato possibile creare l’account. Riprova."
-      }
-    },
     "dashboard": {
       "metaTitle": "Dashboard per sviluppatori",
       "title": "Dashboard per sviluppatori",
@@ -3193,7 +3168,14 @@
       "copied": "Copiata",
       "revealedDone": "Salvata",
       "revokeTitle": "Revocare {name}?",
-      "revokeText": "La chiave smette di funzionare dalla richiesta successiva, e non si può annullare. Una nuova chiave è una nuova richiesta."
+      "revokeText": "La chiave smette di funzionare dalla richiesta successiva, e non si può annullare. Una nuova chiave è una nuova richiesta.",
+      "auth": {
+        "registerTitle": "Crea un account sviluppatore",
+        "registerLead": "Con l’account richiedi le chiavi e vedi come vengono usate.",
+        "loginTitle": "Bentornato",
+        "loginLead": "Accedi per vedere le tue chiavi e le tue richieste."
+      },
+      "securityTitle": "Sicurezza"
     }
   },
   "attraction": {
@@ -6443,6 +6425,129 @@
       "bad": "Meglio di no",
       "ask": "Chiedi a Parky di questo giorno",
       "question": "Per {day} a {park} dici: «{tip}» Come ci godiamo al massimo quella giornata?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Crea account",
+    "loginTab": "Accedi",
+    "displayName": "Nome",
+    "email": "Email",
+    "emailHint": "La usi per accedere.",
+    "password": "Password",
+    "passwordHint": "Almeno {min} caratteri.",
+    "totp": "Codice dalla tua app di autenticazione",
+    "totpHint": "Il tuo account accede con un secondo fattore.",
+    "signIn": "Accedi",
+    "errorLocked": "Troppi tentativi. Aspetta qualche minuto e riprova.",
+    "errorTurnstile": "Il controllo di sicurezza non è riuscito. Risolvilo di nuovo.",
+    "errorCredentials": "Email o password errate.",
+    "errorNetwork": "Nessuna connessione al server. Riprova tra un momento.",
+    "register": {
+      "submit": "Crea account",
+      "account-exists": "Questo indirizzo ha già un account. Accedi invece.",
+      "invalid-form": "Controlla l’indirizzo e la password.",
+      "rate-limited": "Troppi tentativi. Aspetta un minuto.",
+      "turnstile-failed": "Il controllo di sicurezza non è riuscito. Risolvilo di nuovo.",
+      "network": "Nessuna connessione al server.",
+      "generic": "Non è stato possibile creare l’account. Riprova."
+    },
+    "showPassword": "Mostra password",
+    "hidePassword": "Nascondi password",
+    "capsLock": "Il Bloc Maiusc è attivo."
+  },
+  "account": {
+    "metaTitle": "Il tuo account",
+    "title": "Il tuo account park.fan",
+    "lead": "Preferiti, attrazioni già provate e unità di temperatura su ogni dispositivo in cui accedi",
+    "loading": "Caricamento",
+    "signOut": "Esci",
+    "syncNow": "Sincronizza ora",
+    "syncedAt": "Ultima sincronizzazione: {when}",
+    "neverSynced": "Non ancora sincronizzato",
+    "whatSyncs": "Vengono sincronizzati i preferiti, le attrazioni già provate e °C o °F. Il piano della giornata e gli avvisi restano sul dispositivo in cui li hai creati.",
+    "auth": {
+      "registerTitle": "Crea un account",
+      "registerLead": "I tuoi preferiti e le attrazioni provate su ogni dispositivo. Gratis, senza pubblicità.",
+      "loginTitle": "Bentornato",
+      "loginLead": "Accedi per portare i tuoi preferiti su questo dispositivo."
+    },
+    "delete": {
+      "title": "Elimina l’account",
+      "body": "L’account e tutto ciò che ha sincronizzato vengono eliminati definitivamente. I tuoi preferiti restano su questo dispositivo.",
+      "open": "Elimina l’account",
+      "confirmTitle": "Eliminare definitivamente l’account?",
+      "confirmBody": "Inserisci la password per confermare. L’operazione non può essere annullata.",
+      "confirm": "Elimina definitivamente",
+      "cancel": "Annulla",
+      "wrongPassword": "La password non è corretta.",
+      "failed": "Impossibile eliminare l’account. Riprova."
+    },
+    "login": {
+      "metaTitle": "Accedi",
+      "title": "Accedi",
+      "lead": "Accedi o crea un account. È gratis."
+    },
+    "figures": {
+      "parks": "Parchi preferiti",
+      "rides": "Attrazioni salvate",
+      "ridden": "Attrazioni provate",
+      "unit": "Unità di temperatura",
+      "unitNone": "non scelta"
+    },
+    "syncTitle": "Sincronizzazione",
+    "profile": {
+      "title": "Profilo",
+      "name": "Nome",
+      "email": "E-mail",
+      "emailHint": "L’indirizzo non si può ancora cambiare.",
+      "save": "Salva",
+      "saved": "Salvato.",
+      "failed": "Non ha funzionato. Riprova.",
+      "memberSince": "Membro dal {date}",
+      "lastLogin": "ultimo accesso il {date}"
+    },
+    "security": {
+      "title": "Sicurezza",
+      "lead": "La tua password, un secondo fattore e i dispositivi su cui hai effettuato l’accesso",
+      "passwordTitle": "Cambia password",
+      "currentPassword": "Password attuale",
+      "newPassword": "Nuova password",
+      "repeatPassword": "Ripeti la nuova password",
+      "passwordHint": "Almeno {min} caratteri.",
+      "mismatch": "Le due password non coincidono.",
+      "changePassword": "Cambia password",
+      "passwordChanged": "Password cambiata. Sugli altri dispositivi sei stato disconnesso.",
+      "wrongPassword": "La password non è corretta.",
+      "tooMany": "Troppi tentativi. Attendi qualche minuto.",
+      "rejected": "È stato rifiutato. Controlla i dati inseriti.",
+      "failed": "Non ha funzionato. Riprova.",
+      "twoFactorTitle": "Secondo fattore",
+      "twoFactorOn": "attivo",
+      "twoFactorOff": "disattivo",
+      "twoFactorIntro": "Con un secondo fattore una password rubata non basta: all’accesso park.fan chiede anche un codice dalla tua app di autenticazione.",
+      "setUp": "Configura",
+      "secretHint": "Inserisci questa chiave nella tua app di autenticazione oppure apri il link sul dispositivo con l’app. Il secondo fattore si attiva con il primo codice.",
+      "openApp": "Apri nell’app di autenticazione",
+      "code": "Codice dall’app",
+      "confirmCode": "Conferma",
+      "enabled": "Il secondo fattore è attivo.",
+      "turnOff": "Disattiva",
+      "disabled": "Il secondo fattore è disattivato.",
+      "codeWrong": "Il codice non è corretto. Usa quello attuale dell’app.",
+      "sessionsTitle": "Dispositivi connessi",
+      "unknownDevice": "Dispositivo sconosciuto",
+      "thisDevice": "questo dispositivo",
+      "lastActive": "ultima attività il {when}",
+      "endSession": "Esci",
+      "everywhere": "Esci ovunque",
+      "everywhereHint": "Chiude ogni sessione, anche questa."
+    },
+    "data": {
+      "title": "I tuoi dati",
+      "lead": "Tutto ciò che il tuo account conserva, in un file da scaricare",
+      "stored": "Elementi salvati",
+      "export": "Scarica i dati",
+      "failed": "Il download non ha funzionato. Riprova."
     }
   }
 }
