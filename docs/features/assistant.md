@@ -415,7 +415,9 @@ queues on the page. The drawing's shared colours and shapes are in `components/a
 in `dreams.tsx`.
 
 A showy act takes the place of the fidget that would come after it is due. That is the button in
-the corner. In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
+the corner. On a page people read (a guide, a news post, a glossary entry) he is `quiet`: his
+tricks stay, the rides and airtime, which rise into the text beside him, leave the pool
+(`quietShowy`). In the open window and in the homepage hero Parky is `calm`: awake he only blinks and
 follows the pointer, bored he gets sleepy, falls asleep and dreams, and what he does for the
 visitor plays as everywhere. The dream's cloud is drawn half again as large as its puffs
 (`DREAM_CLOUD_SCALE`), its scene stays inside it (`clipPath`), and the train runs its track as a
@@ -600,13 +602,13 @@ whole of it is in [homepage hero → Parky in the hero](homepage-hero.md#parky-i
 
 ## How Parky arrives
 
-Each time a page loads, the button makes an entrance (`pageEntrance`, `lib/assistant/entrance.ts`),
+On the session's first page load the button makes an entrance (`pageEntrance`, `lib/assistant/entrance.ts`, `parkfan:parky-entered` in session storage),
 drawn from five, or the one `?parky=<entrance>` asks for: it scurries in from the right with speed lines and
 spins in the air, drops from above and lands in a puff of dust, rolls in and wobbles dizzily,
 peeks in from the edge at a tilt before hopping in, or pops up out of nothing in a burst of
-sparkles. After a client navigation (the button stays), a closed window or under reduced motion
-it only fades in. Only the session's first line is an entrance's own; later loads arrive without
-one, and only when the visitor's own plans have no line for it.
+sparkles. Later page loads, a client navigation (the button stays), a closed window and reduced
+motion only fade him in: a show on every load turned into noise by the third page. The entrance's
+line comes with it, only when the visitor's own plans have no line for it.
 `ENTRANCE_MS` holds each length, which the stylesheet reads as `--parky-enter`; the launcher waits
 that long before Parky has landed and speaks, by a timer, because `animationend` never reached
 React's handler on the home page.
@@ -815,7 +817,10 @@ planner or the chat, its `region`, `none` for a park day or a region not settled
 region; the helpers are `interviewRegion`, `interviewPlanStood`, `interviewEnded`),
 `assistant_plan_changed` (trip or day, one event per kind of change, the route and the buffer among
 them, never its content), `assistant_change_undone` (undone, or changed since; `via` the receipt's
-button or the chat), `assistant_answer` (result and number of lookups), `assistant_rated`,
+button or the chat), `assistant_answer` (result and number of lookups), `assistant_link_clicked`
+(a link in an answer followed, with the `target` page type or `directions`), `assistant_played`
+(`play`: thrown by a hard scroll down or up, each throw once, circled until dizzy, or the Konami
+code), `assistant_rated`,
 `assistant_feedback_sent` (whether with an e-mail, never the e-mail) and
 `assistant_challenge_failed`. Planner writes count as `plan_item_added` with source `assistant`,
 the planner opening as `planner_opened` with source `assistant`.

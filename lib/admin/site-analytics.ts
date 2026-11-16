@@ -743,6 +743,14 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Parky-Spruch geschlossen',
     when: 'Der Spruch wird mit dem Kreuz geschlossen, danach schweigt Parky für die Sitzung; mit seiner Art.',
   },
+  assistant_played: {
+    label: 'Mit Parky gespielt',
+    when: 'Jemand spielt mit Parky selbst: wirft ihn mit hartem Scrollen (einmal je Wurf), kreist ihn mit dem Zeiger schwindlig oder tippt den Konami-Code.',
+  },
+  assistant_link_clicked: {
+    label: 'Link in Parkys Antwort',
+    when: 'Ein Link in einer Antwort von Parky wird geklickt; mit dem Seitentyp des Ziels oder „directions“ für die Route.',
+  },
   assistant_closed: {
     label: 'Parky geschlossen',
     when: 'Das Chatfenster schließt; mit der Zahl der Fragen, solange es offen war.',

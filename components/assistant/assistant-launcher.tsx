@@ -19,7 +19,12 @@ import dynamic from 'next/dynamic';
 import { ParkyLogo } from './parky/parky-logo';
 import type { ParkyCue, ParkyPlay } from '@/lib/assistant/parky/acts';
 import { PARKY_LAYER } from './parky-layer';
-import { trackSiteEvent, type AssistantOpenSource } from '@/lib/analytics/site-analytics';
+import {
+  sitePageTypeOf,
+  trackSiteEvent,
+  type AssistantOpenSource,
+  type SitePageType,
+} from '@/lib/analytics/site-analytics';
 import { stopTeasers } from '@/lib/assistant/teaser-store';
 import { ENTRANCE_MS, pageEntrance, type ParkyEntrance } from '@/lib/assistant/entrance';
 import { parkySwitch } from '@/lib/assistant/parky/easter-eggs';
@@ -102,6 +107,9 @@ function EntranceEffects({ entrance }: { entrance: ParkyEntrance }) {
 }
 
 /** The last path `assistant_shown` counted, so a closed and reopened window counts no second view. */
+/** Pages people read: Parky keeps his acts in his corner there (`quiet`). */
+const READING_PAGES: ReadonlySet<SitePageType> = new Set(['guide', 'news', 'glossary']);
+
 let countedPath: string | null = null;
 
 /**
@@ -152,6 +160,7 @@ function LauncherButton({
   // `navigation`, which the layout ships anyway: a key of `assistant` read in this file would put
   // the whole namespace into every page's chrome (docs/rules/translations-are-routed-not-bundled.md).
   const t = useTranslations('navigation');
+  const quiet = READING_PAGES.has(sitePageTypeOf(usePathname()));
   // A button that came in with an entrance has arrived; it must not fade in a second time after.
   // Set on the entrance's first render, not the mount: the button mounts unseen before it has one.
   const [entered, setEntered] = useState(entrance !== null);
@@ -241,6 +250,7 @@ function LauncherButton({
             <span className="parky-shake grid size-full">
               <ParkyLogo
                 idle
+                quiet={quiet}
                 mood={fling === 'down' ? 'scared' : fling === 'up' || squashed ? 'squashed' : null}
                 cue={cue}
                 className="size-full drop-shadow-[0_6px_14px_rgb(0_0_0/0.35)]"

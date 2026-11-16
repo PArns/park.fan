@@ -2,7 +2,8 @@
 
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
-import { ACT_MS, CLASS_ACTS, type ParkyCue } from '@/lib/assistant/parky/acts';
+import { ACT_MS, CLASS_ACTS, quietShowy, type ParkyCue } from '@/lib/assistant/parky/acts';
+import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import {
   RIDE_MOTION,
   RIDES,
@@ -107,6 +108,7 @@ export function ParkyLogo({
   talking = false,
   idle = false,
   calm = false,
+  quiet = false,
   framed = false,
   cue = null,
 }: {
@@ -123,6 +125,8 @@ export function ParkyLogo({
    * plays either way.
    */
   calm?: boolean;
+  /** With `idle`, on a page people read: no showy act that rises into the text (`quietShowy`). */
+  quiet?: boolean;
   /**
    * The box holds the whole figure, hat included, rather than the face alone, which leaves the hat
    * above the box: for Parky in a row or a card, where whatever centres or pads the box should
@@ -147,6 +151,7 @@ export function ParkyLogo({
     setLatestCue(cue);
   }
   const getDizzy = useCallback(() => {
+    trackSiteEvent('assistant_played', { play: 'circle' });
     const next = { act: 'dizzy' as const, id: (ownCue?.id ?? 0) - 1 };
     setOwnCue(next);
     setLatestCue(next);
@@ -156,7 +161,10 @@ export function ParkyLogo({
   // on the page is something to do.
   const { search, puzzled } = useSearchAlong(idle && !state);
   const look = useParkyLook();
-  const showy = useMemo(() => showyPool(CLASS_ACTS.showy, look), [look]);
+  const showy = useMemo(() => {
+    const pool = showyPool(CLASS_ACTS.showy, look);
+    return quiet ? quietShowy(pool) : pool;
+  }, [look, quiet]);
   const { act, asleep, dream } = useIdleAct(idle && !state && !search, latestCue, svg, calm, showy);
   const outfit = outfitFor(look, act ?? state ?? (search ? 'search' : null));
   const searching = search === 'searching';

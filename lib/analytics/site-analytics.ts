@@ -258,6 +258,9 @@ export type AssistantLineKind =
   | 'clock'
   | 'yours';
 
+/** A way of playing with Parky himself, for `assistant_played`. */
+export type AssistantPlay = 'fling_down' | 'fling_up' | 'circle' | 'konami';
+
 /** How one of Parky's answers ended. */
 export type AssistantAnswerResult =
   'answered' | 'limit' | 'off' | 'upstream' | 'network' | 'session' | 'expired';
@@ -314,6 +317,13 @@ export interface SiteEventMap {
   assistant_line_clicked: { line: AssistantLineKind };
   /** A line was closed with its ✕, which ends the lines for the session. */
   assistant_line_closed: { line: AssistantLineKind };
+  /**
+   * Somebody played with Parky rather than with his window: threw him with a hard scroll (once a
+   * throw, not per frame), circled him with the pointer until he got dizzy, or typed the Konami code.
+   */
+  assistant_played: { play: AssistantPlay };
+  /** A link in one of Parky's answers was followed: the page type it leads to, or `directions`. */
+  assistant_link_clicked: { target: SitePageType | 'directions' };
   /** Parky's window closed again, with how many questions were asked while it was open. */
   assistant_closed: { questions: number };
   /**

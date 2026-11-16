@@ -9,6 +9,7 @@ import { directionsHref, safeAssistantHref } from '@/lib/assistant/links';
 import { localizedPath } from '@/lib/i18n/localized-path';
 import { splitWaits } from '@/lib/assistant/wait-chips';
 import { cn } from '@/lib/utils';
+import { sitePageTypeOf, trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { useSmoothText } from '@/lib/assistant/use-smooth-text';
 import { LiveWaitPill } from '@/components/parks/live-wait-pill';
 
@@ -52,8 +53,15 @@ export function AssistantMessageText({ text }: { text: string }) {
       a: ({ href, children }) => {
         const site = safeAssistantHref(href);
         if (site) {
+          const path = localizedPath(site, locale);
           return (
-            <NextLink href={localizedPath(site, locale)} className={LINK}>
+            <NextLink
+              href={path}
+              className={LINK}
+              onClick={() =>
+                trackSiteEvent('assistant_link_clicked', { target: sitePageTypeOf(path) })
+              }
+            >
               {children}
             </NextLink>
           );
@@ -65,6 +73,7 @@ export function AssistantMessageText({ text }: { text: string }) {
               href={directions}
               target="_blank"
               rel="noopener noreferrer nofollow"
+              onClick={() => trackSiteEvent('assistant_link_clicked', { target: 'directions' })}
               className={`${LINK} inline-flex items-center gap-0.5`}
             >
               <MapPin className="size-3.5" />
