@@ -13,6 +13,15 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `AnimatedHeight` _component_: A box that eases to the height of its content instead of jumping to it, for a list that grows when results arrive. The two boxes `useAnimatedHeight` needs, for a call site that has no box of its own to animate.
 
+### [`auth-card.tsx`](../../components/common/auth-card.tsx)
+
+- `AuthCardHairline` _component_: A highlight along the card's top edge, positioned against the card (see `AUTH_CARD_CLASS`).
+- `AuthFormHeading` _component_: The card's title and the line under it.
+- `AuthField` _component_: A labelled field with an icon inside it on the left, and an optional hint under it.
+- `AuthPasswordField` _component_: The password field: a key icon, a button that shows or hides what was typed, and a warning under it while Caps Lock is on. The labels come from the caller, in the caller's language.
+- `AUTH_FIELD_CLASS` _const_: `text-base` below `sm`: under 16 px iOS Safari zooms in on a focused input and does not zoom back out on blur.
+- `AUTH_CARD_CLASS` _const_: A class string rather than a wrapper, so a `<form>` can itself be the card and no element stands between a password manager and the inputs.
+
 ### [`background-image.tsx`](../../components/common/background-image.tsx)
 
 - `BackgroundImage` _component_: `next/image` with `backgroundImageLoader`, for a Server Component. A loader is a function and cannot cross into a Client Component as a prop, so a Server Component that passed it directly answered 500 the moment it rendered.
@@ -248,6 +257,11 @@ These dots carry `will-change` because they animate forever inside cards with `b
 ### [`section-heading.tsx`](../../components/common/section-heading.tsx)
 
 - `SectionHeading` _component_: Labeled section header that splits a page into chapters instead of anonymous `<Separator>` dividers. Server-compatible, so it renders into the static shell.
+
+### [`self-service-auth.tsx`](../../components/common/self-service-auth.tsx)
+
+- `SelfServiceAuth` _component_: The door to an account somebody opens for themselves: create one, or sign in. A developer's account sees its own keys and requests, a visitor's its own synced state; neither sees anything of the admin.
+- Types: `SelfServiceAuthProps`
 
 ### [`share-buttons.tsx`](../../components/common/share-buttons.tsx)
 

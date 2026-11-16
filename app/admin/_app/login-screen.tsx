@@ -1,14 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent, type ReactNode, type Ref } from 'react';
+import { useEffect, useRef, useState, type FormEvent, type Ref } from 'react';
 import Image from 'next/image';
 import { useQueryClient } from '@tanstack/react-query';
 import {
   ArrowRight,
   AtSign,
-  Eye,
-  EyeOff,
-  KeyRound,
   Loader2,
   MapPin,
   RefreshCw,
@@ -23,6 +20,14 @@ import { heroObjectPosition } from '@/lib/media/hero';
 import { useHeroPhoto } from '../_lib/use-hero-photo';
 import { cn } from '@/lib/utils';
 import { AdminBrand } from '../_ui/admin-brand';
+import {
+  AUTH_CARD_CLASS,
+  AUTH_FIELD_CLASS,
+  AuthCardHairline,
+  AuthField,
+  AuthFormHeading,
+  AuthPasswordField,
+} from '@/components/common/auth-card';
 import { TOTP_CODE_LENGTH, normalizeTotpCode } from '@/lib/admin/totp';
 
 type LoginResponse =
@@ -46,7 +51,6 @@ export function LoginScreen() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
   const [totpCode, setTotpCode] = useState('');
   // Set only by the backend's `totp-required`. It decides a message and a focus, never which
   // form is on screen: there is only one.
@@ -54,7 +58,6 @@ export function LoginScreen() {
   const [error, setError] = useState<string | null>(null);
   const [lockedFor, setLockedFor] = useState<number | null>(null);
   const [busy, setBusy] = useState(false);
-  const [capsLock, setCapsLock] = useState(false);
 
   // An empty token means not solved yet. `turnstileBroken` means the challenge never arrived (a
   // blocked script, an offline laptop), which the gate says out loud instead of leaving the
@@ -287,15 +290,15 @@ export function LoginScreen() {
           {/* One form for all three fields from the first paint: a password manager fills a login
               from what is in the document when it looks, so a code field that arrives after a
               round trip is never filled. See docs/rules/the-admin-holds-no-credential.md. */}
-          <form onSubmit={handleSubmit} className={CARD_CLASS}>
-            <CardHairline />
+          <form onSubmit={handleSubmit} className={AUTH_CARD_CLASS}>
+            <AuthCardHairline />
 
-            <FormHeading title="Anmelden">
+            <AuthFormHeading title="Anmelden">
               Parks, Bahnen, Saisons und alles, was daran hängt.
-            </FormHeading>
+            </AuthFormHeading>
 
             <div className="space-y-4">
-              <LoginField label="E-Mail" htmlFor="admin-email" icon={AtSign}>
+              <AuthField label="E-Mail" htmlFor="admin-email" icon={AtSign}>
                 <input
                   id="admin-email"
                   ref={emailRef}
@@ -310,38 +313,24 @@ export function LoginScreen() {
                     setTotpMissing(false);
                   }}
                   required
-                  className={cn(FIELD_CLASS, 'pl-10')}
+                  className={cn(AUTH_FIELD_CLASS, 'pl-10')}
                 />
-              </LoginField>
+              </AuthField>
 
-              <LoginField label="Passwort" htmlFor="admin-password" icon={KeyRound}>
-                <input
-                  id="admin-password"
-                  type={showPassword ? 'text' : 'password'}
-                  autoComplete="current-password"
-                  placeholder="••••••••••••"
-                  value={password}
-                  onChange={(event) => setPassword(event.target.value)}
-                  onKeyUp={(event) => setCapsLock(event.getModifierState?.('CapsLock') ?? false)}
-                  required
-                  className={cn(FIELD_CLASS, 'pr-11 pl-10')}
-                />
-                <button
-                  type="button"
-                  onClick={() => setShowPassword((shown) => !shown)}
-                  aria-label={showPassword ? 'Passwort verbergen' : 'Passwort anzeigen'}
-                  className="text-muted-foreground hover:text-foreground absolute top-1/2 right-2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-lg transition-colors"
-                >
-                  {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                </button>
-              </LoginField>
-
-              {capsLock && (
-                <p className="flex items-center gap-1.5 text-[11px] text-amber-400">
-                  <TriangleAlert className="h-3 w-3" />
-                  Feststelltaste ist an.
-                </p>
-              )}
+              <AuthPasswordField
+                id="admin-password"
+                label="Passwort"
+                labels={{
+                  show: 'Passwort anzeigen',
+                  hide: 'Passwort verbergen',
+                  capsLock: 'Feststelltaste ist an.',
+                }}
+                autoComplete="current-password"
+                placeholder="••••••••••••"
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                required
+              />
               <TotpField
                 ref={totpRef}
                 code={totpCode}
@@ -364,66 +353,6 @@ export function LoginScreen() {
           </span>
         </p>
       )}
-    </div>
-  );
-}
-
-/**
- * `text-base` below `sm`: under 16 px iOS Safari zooms in on a focused input and does not zoom
- * back out on blur.
- */
-const FIELD_CLASS =
-  'border-border/60 bg-background/50 focus:border-primary/60 focus:ring-primary/25 placeholder:text-muted-foreground/50 h-11 w-full rounded-xl border px-3 text-base outline-none transition-[color,box-shadow,border-color] focus:ring-2 sm:text-sm';
-
-/**
- * A class string rather than a wrapper, so the `<form>` itself is the card and no element stands
- * between a password manager and the three inputs.
- */
-const CARD_CLASS =
-  'border-border/60 bg-card/70 relative overflow-hidden rounded-3xl border p-6 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.95)] ring-1 ring-white/5 backdrop-blur-2xl sm:p-7';
-
-/** A highlight along the card's top edge, positioned against the `<form>` (see `CARD_CLASS`). */
-function CardHairline() {
-  return (
-    <span
-      aria-hidden="true"
-      className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-    />
-  );
-}
-
-function FormHeading({ title, children }: { title: string; children: ReactNode }) {
-  return (
-    <div className="mb-5">
-      <h1 className="text-lg font-semibold tracking-tight">{title}</h1>
-      <p className="text-muted-foreground mt-1 text-xs leading-relaxed">{children}</p>
-    </div>
-  );
-}
-
-function LoginField({
-  label,
-  htmlFor,
-  icon: Icon,
-  children,
-}: {
-  label: string;
-  htmlFor: string;
-  icon: typeof KeyRound;
-  children: ReactNode;
-}) {
-  return (
-    <div>
-      <label
-        htmlFor={htmlFor}
-        className="text-muted-foreground mb-1.5 block text-[11px] font-medium tracking-wide uppercase"
-      >
-        {label}
-      </label>
-      <div className="relative">
-        <Icon className="text-muted-foreground pointer-events-none absolute top-1/2 left-3.5 h-4 w-4 -translate-y-1/2" />
-        {children}
-      </div>
     </div>
   );
 }

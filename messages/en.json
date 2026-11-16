@@ -3092,31 +3092,6 @@
       "network": "No connection to the server. Check your connection and try again.",
       "generic": "The request did not arrive. Check the fields and try again."
     },
-    "auth": {
-      "registerTab": "Create account",
-      "loginTab": "Sign in",
-      "displayName": "Name",
-      "email": "Email",
-      "emailHint": "Our questions about your requests go to this address.",
-      "password": "Password",
-      "passwordHint": "At least {min} characters.",
-      "totp": "Code from your authenticator app",
-      "totpHint": "Your account signs in with a second factor.",
-      "signIn": "Sign in",
-      "errorLocked": "Too many attempts. Wait a few minutes and try again.",
-      "errorTurnstile": "The security check failed. Solve it again.",
-      "errorCredentials": "Email or password is wrong.",
-      "errorNetwork": "No connection to the server. Try again in a moment.",
-      "register": {
-        "submit": "Create account",
-        "account-exists": "This address already has an account. Sign in instead.",
-        "invalid-form": "Check the address and the password.",
-        "rate-limited": "Too many attempts. Wait a minute.",
-        "turnstile-failed": "The security check failed. Solve it again.",
-        "network": "No connection to the server.",
-        "generic": "The account could not be created. Try again."
-      }
-    },
     "dashboard": {
       "metaTitle": "Developer dashboard",
       "title": "Developer dashboard",
@@ -3193,7 +3168,13 @@
       "copied": "Copied",
       "revealedDone": "Saved",
       "revokeTitle": "Revoke {name}?",
-      "revokeText": "The key stops working from the next request, and this cannot be undone. A new key is a new request."
+      "revokeText": "The key stops working from the next request, and this cannot be undone. A new key is a new request.",
+      "auth": {
+        "registerTitle": "Create a developer account",
+        "registerLead": "With the account you request keys and see how they are used.",
+        "loginTitle": "Welcome back",
+        "loginLead": "Sign in to see your keys and requests."
+      }
     }
   },
   "attraction": {
@@ -6443,6 +6424,71 @@
       "bad": "Better not",
       "ask": "Ask Parky about this day",
       "question": "For {day} at {park} you say: “{tip}” How do we make the most of that day?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Create account",
+    "loginTab": "Sign in",
+    "displayName": "Name",
+    "email": "Email",
+    "emailHint": "You sign in with it.",
+    "password": "Password",
+    "passwordHint": "At least {min} characters.",
+    "totp": "Code from your authenticator app",
+    "totpHint": "Your account signs in with a second factor.",
+    "signIn": "Sign in",
+    "errorLocked": "Too many attempts. Wait a few minutes and try again.",
+    "errorTurnstile": "The security check failed. Solve it again.",
+    "errorCredentials": "Email or password is wrong.",
+    "errorNetwork": "No connection to the server. Try again in a moment.",
+    "register": {
+      "submit": "Create account",
+      "account-exists": "This address already has an account. Sign in instead.",
+      "invalid-form": "Check the address and the password.",
+      "rate-limited": "Too many attempts. Wait a minute.",
+      "turnstile-failed": "The security check failed. Solve it again.",
+      "network": "No connection to the server.",
+      "generic": "The account could not be created. Try again."
+    },
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "capsLock": "Caps Lock is on."
+  },
+  "account": {
+    "metaTitle": "Your account",
+    "title": "Your park.fan account",
+    "lead": "Favorites, rides you have ridden and your temperature unit on every device you sign in on",
+    "loading": "Loading",
+    "loadFailed": "The account could not be loaded.",
+    "retry": "Try again",
+    "signOut": "Sign out",
+    "syncNow": "Sync now",
+    "syncedAt": "Last synced: {when}",
+    "neverSynced": "Not synced yet",
+    "whatSyncs": "Favorites, ridden rides and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
+    "figures": {
+      "parks": "Favorite parks",
+      "rides": "Saved rides",
+      "ridden": "Rides ridden",
+      "unit": "Temperature unit",
+      "unitNone": "not chosen"
+    },
+    "auth": {
+      "registerTitle": "Create an account",
+      "registerLead": "Your favorites and ridden rides on every device. Free, without ads.",
+      "loginTitle": "Welcome back",
+      "loginLead": "Sign in to bring your favorites to this device."
+    },
+    "delete": {
+      "title": "Delete account",
+      "body": "The account and everything it synced is deleted for good. Your favorites stay on this device.",
+      "open": "Delete account",
+      "confirmTitle": "Delete the account for good?",
+      "confirmBody": "Enter your password to confirm. This cannot be undone.",
+      "confirm": "Delete for good",
+      "cancel": "Cancel",
+      "wrongPassword": "The password is not correct.",
+      "failed": "The account could not be deleted. Please try again."
     }
   }
 }

@@ -3092,31 +3092,6 @@
       "network": "Geen verbinding met de server. Controleer je verbinding en probeer het opnieuw.",
       "generic": "De aanvraag is niet aangekomen. Controleer de velden en probeer het opnieuw."
     },
-    "auth": {
-      "registerTab": "Account aanmaken",
-      "loginTab": "Inloggen",
-      "displayName": "Naam",
-      "email": "E-mail",
-      "emailHint": "Onze vragen over je aanvragen gaan naar dit adres.",
-      "password": "Wachtwoord",
-      "passwordHint": "Minstens {min} tekens.",
-      "totp": "Code uit je authenticator-app",
-      "totpHint": "Je account logt in met een tweede factor.",
-      "signIn": "Inloggen",
-      "errorLocked": "Te veel pogingen. Wacht een paar minuten en probeer het opnieuw.",
-      "errorTurnstile": "De beveiligingscontrole is mislukt. Los hem opnieuw op.",
-      "errorCredentials": "E-mail of wachtwoord klopt niet.",
-      "errorNetwork": "Geen verbinding met de server. Probeer het zo opnieuw.",
-      "register": {
-        "submit": "Account aanmaken",
-        "account-exists": "Voor dit adres bestaat al een account. Log in plaats daarvan in.",
-        "invalid-form": "Controleer het adres en het wachtwoord.",
-        "rate-limited": "Te veel pogingen. Wacht een minuut.",
-        "turnstile-failed": "De beveiligingscontrole is mislukt. Los hem opnieuw op.",
-        "network": "Geen verbinding met de server.",
-        "generic": "Het account kon niet worden aangemaakt. Probeer het opnieuw."
-      }
-    },
     "dashboard": {
       "metaTitle": "Dashboard voor ontwikkelaars",
       "title": "Dashboard voor ontwikkelaars",
@@ -3193,7 +3168,13 @@
       "copied": "Gekopieerd",
       "revealedDone": "Opgeslagen",
       "revokeTitle": "{name} intrekken?",
-      "revokeText": "De sleutel werkt vanaf het volgende verzoek niet meer, en dat is niet terug te draaien. Een nieuwe sleutel is een nieuwe aanvraag."
+      "revokeText": "De sleutel werkt vanaf het volgende verzoek niet meer, en dat is niet terug te draaien. Een nieuwe sleutel is een nieuwe aanvraag.",
+      "auth": {
+        "registerTitle": "Ontwikkelaarsaccount aanmaken",
+        "registerLead": "Met het account vraag je sleutels aan en zie je hoe ze gebruikt worden.",
+        "loginTitle": "Welkom terug",
+        "loginLead": "Log in om je sleutels en aanvragen te zien."
+      }
     }
   },
   "attraction": {
@@ -6443,6 +6424,71 @@
       "bad": "Liever niet",
       "ask": "Vraag Parky naar deze dag",
       "question": "Over {day} in {park} zeg je: ‘{tip}’ Hoe halen we het meeste uit die dag?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Account aanmaken",
+    "loginTab": "Inloggen",
+    "displayName": "Naam",
+    "email": "E-mail",
+    "emailHint": "Hiermee log je in.",
+    "password": "Wachtwoord",
+    "passwordHint": "Minstens {min} tekens.",
+    "totp": "Code uit je authenticator-app",
+    "totpHint": "Je account logt in met een tweede factor.",
+    "signIn": "Inloggen",
+    "errorLocked": "Te veel pogingen. Wacht een paar minuten en probeer het opnieuw.",
+    "errorTurnstile": "De beveiligingscontrole is mislukt. Los hem opnieuw op.",
+    "errorCredentials": "E-mail of wachtwoord klopt niet.",
+    "errorNetwork": "Geen verbinding met de server. Probeer het zo opnieuw.",
+    "register": {
+      "submit": "Account aanmaken",
+      "account-exists": "Voor dit adres bestaat al een account. Log in plaats daarvan in.",
+      "invalid-form": "Controleer het adres en het wachtwoord.",
+      "rate-limited": "Te veel pogingen. Wacht een minuut.",
+      "turnstile-failed": "De beveiligingscontrole is mislukt. Los hem opnieuw op.",
+      "network": "Geen verbinding met de server.",
+      "generic": "Het account kon niet worden aangemaakt. Probeer het opnieuw."
+    },
+    "showPassword": "Wachtwoord tonen",
+    "hidePassword": "Wachtwoord verbergen",
+    "capsLock": "Caps Lock staat aan."
+  },
+  "account": {
+    "metaTitle": "Je account",
+    "title": "Je park.fan-account",
+    "lead": "Favorieten, attracties waarin je zat en je temperatuureenheid op elk apparaat waarop je bent ingelogd",
+    "loading": "Laden",
+    "loadFailed": "Het account kon niet worden geladen.",
+    "retry": "Opnieuw proberen",
+    "signOut": "Uitloggen",
+    "syncNow": "Nu synchroniseren",
+    "syncedAt": "Laatst gesynchroniseerd: {when}",
+    "neverSynced": "Nog niet gesynchroniseerd",
+    "whatSyncs": "Favorieten, attracties waarin je zat en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
+    "figures": {
+      "parks": "Favoriete parken",
+      "rides": "Bewaarde attracties",
+      "ridden": "Attracties waarin je zat",
+      "unit": "Temperatuureenheid",
+      "unitNone": "niet gekozen"
+    },
+    "auth": {
+      "registerTitle": "Account aanmaken",
+      "registerLead": "Je favorieten en attracties op elk apparaat. Gratis, zonder reclame.",
+      "loginTitle": "Welkom terug",
+      "loginLead": "Log in om je favorieten naar dit apparaat te halen."
+    },
+    "delete": {
+      "title": "Account verwijderen",
+      "body": "Het account en alles wat het heeft gesynchroniseerd, wordt definitief verwijderd. Op dit apparaat blijven je favorieten bewaard.",
+      "open": "Account verwijderen",
+      "confirmTitle": "Account definitief verwijderen?",
+      "confirmBody": "Voer ter bevestiging je wachtwoord in. Dit kan niet ongedaan worden gemaakt.",
+      "confirm": "Definitief verwijderen",
+      "cancel": "Annuleren",
+      "wrongPassword": "Het wachtwoord klopt niet.",
+      "failed": "Het account kon niet worden verwijderd. Probeer het opnieuw."
     }
   }
 }

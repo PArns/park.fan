@@ -169,6 +169,13 @@ function dispatchFavoritesChanged(): void {
   }
 }
 
+/** Replaces all favorites at once, as a visitor account's sync does (`lib/account/sync.ts`). */
+export function replaceFavorites(next: FavoritesData): void {
+  if (typeof window === 'undefined') return;
+  saveFavoritesToCookies(next);
+  dispatchFavoritesChanged();
+}
+
 /** `useSyncExternalStore` subscriber for the cookie: every add and remove above announces itself. */
 export function subscribeToFavorites(onChange: () => void): () => void {
   window.addEventListener('favorites-changed', onChange);

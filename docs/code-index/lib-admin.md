@@ -53,6 +53,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 
 - `readCookie` _function_: Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses attacker-controlled input can be tested; split rather than matched, so the name comparison is exact and no regex runs over hostile input.
 - `ADMIN_MARKER_COOKIE` _const_: Set beside the session cookie and readable by scripts: it holds no credential, it only tells a public page that this browser has signed in to the admin, so the page asks the admin proxy for its Search Console figures instead of every …
+- `ACCOUNT_MARKER_COOKIE` _const_: Set beside the session cookie for a visitor's account (role `user`) and readable by scripts: it holds no credential, it only tells the site to sync favorites, ridden rides and the temperature unit with the account.
 
 ### [`developer-labels.ts`](../../lib/admin/developer-labels.ts)
 
@@ -287,6 +288,7 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 ### [`roles.ts`](../../lib/admin/roles.ts)
 
 - `roleAtLeast` _function_: Returns true when an admin role ranks at or above the given minimum (owner &gt; editor &gt; author &gt; viewer).
+- `isStaffRole` _function_: The role is staff: it reaches the admin, unlike a developer's or a visitor's account.
 - `adminGuardRefusal` _function_: Why an identity may not use a route that needs `minRole`, as the status and message to answer with, or `null` when it may. Kept apart from `requireAdmin` so `pnpm test:guards` can pin it without a backend.
 - `ROLE_LABELS` _const_: What each role is called on screen.
 - Types: `AdminRole`, `AdminIdentity`
@@ -329,9 +331,15 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `SEARCH_CONSOLE_SETUP_DOC` _const_: The owner's setup steps in the API's docs: the service account, the property, the variables.
 - Types: `SearchConsoleReport`, `ImportMark`
 
+### [`self-registration.ts`](../../lib/admin/self-registration.ts)
+
+- `handleSelfRegistration` _function_: A registration route's whole work, for the developer portal and for visitors alike: Turnstile before the address and password go anywhere, the API creates the account and signs it in, and the token goes into the same httpOnly cookie the …
+- Types: `SelfRegistration`
+
 ### [`session-proxy.ts`](../../lib/admin/session-proxy.ts)
 
 - `proxySessionRequest` _function_: Forwards one request of a proxy route to `/v1/<scope>/<path>` with the cookie's session.
+- `sessionProxyRoute` _function_: The verbs of a proxy route, for its `route.ts` to export one by one: every verb goes to `proxySessionRequest` with the route's scope. An optional catch-all passes no segments for the namespace's root.
 - Types: `SessionProxyScope`
 
 ### [`session.ts`](../../lib/admin/session.ts)
@@ -343,6 +351,8 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `requireAdmin` _function_: Guard for this app's own admin route handlers: a ready-to-return response on failure, the identity on success. `minRole` defaults to `author` because every route behind it writes.
 - `sessionCookieOptions` _function_: The `Set-Cookie` attributes a session cookie is written with.
 - `markerCookieOptions` _function_: The attributes of `ADMIN_MARKER_COOKIE`: the session's, but readable by scripts.
+- `setSessionMarkers` _function_: The script-readable markers that go with a session, by its role: the admin marker for staff, which public pages read to ask the admin for its figures, and the account marker for a visitor, which starts the sync. A developer gets neither.
+- `clearSessionMarkers` _function_: Drops both markers, on sign-out or when the session turned out to be gone.
 - `denyUnlessAdmin` _function_: The one-line form of `requireAdmin`, for handlers that need no identity.
 - `ADMIN_SESSION_COOKIE` _const_: The admin session cookie: httpOnly, so no script on the admin origin can read the token, and `SameSite=Strict`.
 - `SESSION_ABSOLUTE_TTL_SECONDS` _const_: The backend's absolute session ceiling (`ABSOLUTE_TTL_SECONDS`), for the one case where a cookie has to be written without an `expiresAt` to derive it from.

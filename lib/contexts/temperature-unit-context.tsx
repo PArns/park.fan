@@ -48,12 +48,24 @@ function getServerSnapshot(): TemperatureUnit {
   return SERVER_UNIT;
 }
 
+/** The unit the visitor picked, from the cookie; null when they never picked one. */
+export function readChosenTemperatureUnit(): TemperatureUnit | null {
+  const value = readCookie(COOKIE_NAME);
+  return value === 'C' || value === 'F' ? value : null;
+}
+
+/** Calls `onChange` when the unit changes in this tab; returns the unsubscribe. */
+export function subscribeToTemperatureUnit(onChange: () => void): () => void {
+  return subscribe(onChange);
+}
+
 function subscribe(onChange: () => void): () => void {
   listeners.add(onChange);
   return () => listeners.delete(onChange);
 }
 
-function writeUnit(next: TemperatureUnit): void {
+/** Sets the unit everywhere at once: the attribute, the cookie and every subscriber. */
+export function writeUnit(next: TemperatureUnit): void {
   current = next;
   // Drives the CSS display toggle for every server-rendered dual-unit value.
   document.documentElement.setAttribute('data-temp-unit', next);

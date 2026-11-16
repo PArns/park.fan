@@ -30,7 +30,8 @@ import {
   type DeveloperOverview,
 } from '@/lib/developers/dashboard';
 import { requestedPermissions, type KeyRequestRecord } from '@/lib/developers/key-request';
-import { DeveloperAuth } from './developer-auth';
+import { SelfServiceAuth } from '@/components/common/self-service-auth';
+import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
 import { DeveloperKeyCard } from './developer-key-card';
 import { KeyRequestForm } from './key-request-form';
 
@@ -134,7 +135,19 @@ export function DeveloperDashboard() {
   }
 
   if (overview.isError && isSignedOut(overview.error)) {
-    return <DeveloperAuth onSignedIn={refresh} />;
+    return (
+      <SelfServiceAuth
+        registerEndpoint="/api/developers/register"
+        registerAction={TURNSTILE_ACTIONS.developerRegister}
+        copy={{
+          registerTitle: t('auth.registerTitle'),
+          registerLead: t('auth.registerLead'),
+          loginTitle: t('auth.loginTitle'),
+          loginLead: t('auth.loginLead'),
+        }}
+        onSignedIn={refresh}
+      />
+    );
   }
 
   if (overview.isError) {

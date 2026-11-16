@@ -3092,31 +3092,6 @@
       "network": "No hay conexión con el servidor. Comprueba tu conexión e inténtalo de nuevo.",
       "generic": "La solicitud no ha llegado. Revisa los campos e inténtalo de nuevo."
     },
-    "auth": {
-      "registerTab": "Crear cuenta",
-      "loginTab": "Iniciar sesión",
-      "displayName": "Nombre",
-      "email": "Correo electrónico",
-      "emailHint": "Nuestras preguntas sobre tus solicitudes llegan a esta dirección.",
-      "password": "Contraseña",
-      "passwordHint": "Al menos {min} caracteres.",
-      "totp": "Código de tu app de autenticación",
-      "totpHint": "Tu cuenta inicia sesión con un segundo factor.",
-      "signIn": "Iniciar sesión",
-      "errorLocked": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
-      "errorTurnstile": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
-      "errorCredentials": "El correo o la contraseña no son correctos.",
-      "errorNetwork": "No hay conexión con el servidor. Inténtalo de nuevo en un momento.",
-      "register": {
-        "submit": "Crear cuenta",
-        "account-exists": "Esta dirección ya tiene una cuenta. Inicia sesión.",
-        "invalid-form": "Revisa la dirección y la contraseña.",
-        "rate-limited": "Demasiados intentos. Espera un minuto.",
-        "turnstile-failed": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
-        "network": "No hay conexión con el servidor.",
-        "generic": "No se ha podido crear la cuenta. Inténtalo de nuevo."
-      }
-    },
     "dashboard": {
       "metaTitle": "Panel para desarrolladores",
       "title": "Panel para desarrolladores",
@@ -3193,7 +3168,13 @@
       "copied": "Copiada",
       "revealedDone": "Guardada",
       "revokeTitle": "¿Revocar {name}?",
-      "revokeText": "La clave deja de funcionar desde la siguiente petición, y esto no se puede deshacer. Una clave nueva es una solicitud nueva."
+      "revokeText": "La clave deja de funcionar desde la siguiente petición, y esto no se puede deshacer. Una clave nueva es una solicitud nueva.",
+      "auth": {
+        "registerTitle": "Crear una cuenta de desarrollador",
+        "registerLead": "Con la cuenta solicitas claves y ves cómo se usan.",
+        "loginTitle": "Hola de nuevo",
+        "loginLead": "Inicia sesión para ver tus claves y solicitudes."
+      }
     }
   },
   "attraction": {
@@ -6443,6 +6424,71 @@
       "bad": "Mejor no",
       "ask": "Pregúntale a Parky por este día",
       "question": "Para {day} en {park} dices: «{tip}» ¿Cómo le sacamos el máximo partido a ese día?"
+    }
+  },
+  "accountAuth": {
+    "registerTab": "Crear cuenta",
+    "loginTab": "Iniciar sesión",
+    "displayName": "Nombre",
+    "email": "Correo electrónico",
+    "emailHint": "Con ella inicias sesión.",
+    "password": "Contraseña",
+    "passwordHint": "Al menos {min} caracteres.",
+    "totp": "Código de tu app de autenticación",
+    "totpHint": "Tu cuenta inicia sesión con un segundo factor.",
+    "signIn": "Iniciar sesión",
+    "errorLocked": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "errorTurnstile": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
+    "errorCredentials": "El correo o la contraseña no son correctos.",
+    "errorNetwork": "No hay conexión con el servidor. Inténtalo de nuevo en un momento.",
+    "register": {
+      "submit": "Crear cuenta",
+      "account-exists": "Esta dirección ya tiene una cuenta. Inicia sesión.",
+      "invalid-form": "Revisa la dirección y la contraseña.",
+      "rate-limited": "Demasiados intentos. Espera un minuto.",
+      "turnstile-failed": "La comprobación de seguridad ha fallado. Resuélvela de nuevo.",
+      "network": "No hay conexión con el servidor.",
+      "generic": "No se ha podido crear la cuenta. Inténtalo de nuevo."
+    },
+    "showPassword": "Mostrar contraseña",
+    "hidePassword": "Ocultar contraseña",
+    "capsLock": "Bloq Mayús está activado."
+  },
+  "account": {
+    "metaTitle": "Tu cuenta",
+    "title": "Tu cuenta de park.fan",
+    "lead": "Tus favoritos, las atracciones en las que ya montaste y tu unidad de temperatura en cada dispositivo donde inicies sesión",
+    "loading": "Cargando",
+    "loadFailed": "No se pudo cargar la cuenta.",
+    "retry": "Reintentar",
+    "signOut": "Cerrar sesión",
+    "syncNow": "Sincronizar ahora",
+    "syncedAt": "Última sincronización: {when}",
+    "neverSynced": "Aún sin sincronizar",
+    "whatSyncs": "Se sincronizan los favoritos, las atracciones en las que ya montaste y °C o °F. Tu plan del día y tus avisos se quedan en el dispositivo donde los creaste.",
+    "figures": {
+      "parks": "Parques favoritos",
+      "rides": "Atracciones guardadas",
+      "ridden": "Atracciones montadas",
+      "unit": "Unidad de temperatura",
+      "unitNone": "sin elegir"
+    },
+    "auth": {
+      "registerTitle": "Crear una cuenta",
+      "registerLead": "Tus favoritos y atracciones montadas en todos tus dispositivos. Gratis y sin anuncios.",
+      "loginTitle": "Hola de nuevo",
+      "loginLead": "Inicia sesión para traer tus favoritos a este dispositivo."
+    },
+    "delete": {
+      "title": "Eliminar la cuenta",
+      "body": "La cuenta y todo lo que ha sincronizado se eliminan para siempre. Tus favoritos se quedan en este dispositivo.",
+      "open": "Eliminar la cuenta",
+      "confirmTitle": "¿Eliminar la cuenta para siempre?",
+      "confirmBody": "Introduce tu contraseña para confirmarlo. No se puede deshacer.",
+      "confirm": "Eliminar para siempre",
+      "cancel": "Cancelar",
+      "wrongPassword": "La contraseña no es correcta.",
+      "failed": "No se pudo eliminar la cuenta. Inténtalo de nuevo."
     }
   }
 }

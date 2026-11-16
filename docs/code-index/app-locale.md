@@ -12,6 +12,14 @@ Route `/[locale]/[...rest]` (page).
 - `default (UnmatchedLocalePath)` _component_
 - `generateMetadata` _function_: Any path under a locale that no route matches (`/en/nonexistent`).
 
+### [`account/page.tsx`](../../app/%5Blocale%5D/account/page.tsx)
+
+Route `/[locale]/account` (page).
+
+- `default (AccountPage)` _component_: A visitor's account: sign in or register, then what follows the visitor across devices. Static; everything account-bound is fetched in the browser through the session proxy.
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
 ### [`alerts/page.tsx`](../../app/%5Blocale%5D/alerts/page.tsx)
 
 Route `/[locale]/alerts` (page).
