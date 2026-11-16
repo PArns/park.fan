@@ -65,7 +65,7 @@ Caribbean Bay tiene su propia entrada. Hasta finales de diciembre, los adultos p
 
 ## Entradas y horarios
 
-En noviembre, la entrada de un día a Everland cuesta 65.000 wones para adultos y jóvenes de 13 a 18 años, y 55.000 wones para niños de 36 meses a 12 años y mayores de 65 años. En diciembre son 55.000 y 45.000 wones. Si vas sobre todo por el desfile y el espectáculo, diciembre te sale más barato que los cuatro días de noviembre a partir del 27. Los menores de 36 meses entran gratis. Algunas instalaciones del parque se pagan aparte, y para los menores de 36 meses también las actividades pensadas solo para los más pequeños.
+En noviembre, la entrada de un día a Everland cuesta 65.000 wones para adultos y jóvenes de 13 a 18 años, y 55.000 wones para niños de 36 meses a 12 años y personas de 65 años o más. En diciembre son 55.000 y 45.000 wones. Si vas sobre todo por el desfile y el espectáculo, diciembre te sale más barato que los cuatro días de noviembre a partir del 27. Los menores de 36 meses entran gratis. Algunas instalaciones del parque se pagan aparte, y para los menores de 36 meses también las actividades pensadas solo para los más pequeños.
 
 El día del estreno, el sábado 21 de noviembre, el parque abre de 10:00 a 21:00, y el domingo y el lunes siguientes, hasta las 20:00. Más allá no llega el plan del día, porque Everland lo publica semana a semana.
 
