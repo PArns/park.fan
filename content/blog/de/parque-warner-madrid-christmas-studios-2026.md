@@ -38,17 +38,17 @@ Im [Parque Warner Madrid](ref:parque-warner-madrid) in San Martín de la Vega be
 
 ## Neu in diesem Winter
 
-„El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Erzählt wird von einem alten Reich, das jahrhundertelang von drei Gaben beschützt wurde: Hoffnung, Vorfreude und Magie. Jede Seifenblase trägt eine Erinnerung oder einen Wunsch, und mit jeder fällt dem Reich wieder etwas ein, das es vergessen hatte. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, dafür holt er sich einen Freiwilligen aus dem Publikum.
+„El Reino de Cristal“ dauert rund 25 Minuten und läuft nur im Dezember. Die Show erzählt von einem alten Reich, das Hoffnung, Vorfreude und Magie jahrhundertelang beschützt haben. Jede Seifenblase bringt ihm eine Erinnerung oder einen Wunsch zurück. Zum Schluss versucht ein Pantomime, eine alte Laterne anzuzünden, das letzte Licht des Reichs. Allein schafft er das nicht, dafür holt er sich einen Freiwilligen aus dem Publikum.
 
 Schon ab dem 21. November ist ACME Factory: Christmas Candies offen. In der Weihnachtsfassung der Kinder-Attraktion, die zu Halloween eröffnet hat, holen Kinder mit den Looney Tunes das geheime Rezept der Weihnachtssüßigkeiten zurück. Das Rezept ist also schon wieder weg, zu Halloween waren es die Kürbisbonbons, nachdem der Kojote durch die Fabrik gefegt war.
 
-Neu ist außerdem die Estación Energía de Repsol, ein Rundgang durch drei Räume zum Mitmachen. Im ersten Raum verläufst du dich im Spiegellabyrinth, im zweiten spielst du mit einer Lichtinstallation, und durch den dritten gehst du zwischen nachgebauten Sonnenstrahlen.
+Neu ist außerdem die Estación Energía de Repsol, ein Rundgang durch drei Räume zum Mitmachen. Erst verläufst du dich im Spiegellabyrinth, dann spielst du an einer Lichtinstallation, und zum Schluss gehst du zwischen nachgebauten Sonnenstrahlen hindurch.
 
 ## Shows, Parade und Weihnachtsmann
 
-Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Lichter und Kunstschnee gibt es im ganzen Park, in allen fünf Themenbereichen. Den Weihnachtsbaum schalten die Looney Tunes in einer eigenen Show an.
+Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Angeschaltet wird er in einer eigenen Show der Looney Tunes, Lichter und Kunstschnee bekommen alle fünf Themenbereiche.
 
-Auf den Bühnen laufen das Musical The Santa's Magical Bell, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. Ab dem 5. Dezember tanzt am Hollywood Boulevard wieder „Happy Holiday!“, die Tanzshow aus dem Vorjahr. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt, nach Angabe des Parks vor allem für die Kleinsten. Auch die Heiligen Drei Könige empfangen dort Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in festlicher Kleidung für Fotos bereit. Den Tag beschließt die Superstars of Christmas Parade: Dieselben Figuren fahren noch einmal auf Wagen durch den Park, Weihnachtsmann und drei Könige eingeschlossen.
+Auf den Bühnen laufen das Musical The Santa's Magical Bell, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. Ab dem 5. Dezember tanzt am Hollywood Boulevard wieder „Happy Holiday!“, die Tanzshow aus dem Vorjahr. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt, nach Angabe des Parks vor allem für die Kleinsten. Auch die Heiligen Drei Könige empfangen dort Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in festlicher Kleidung für Fotos bereit. Zum Schluss des Tages fahren dieselben Figuren in der Superstars of Christmas Parade noch einmal auf Wagen durch den Park, Weihnachtsmann und drei Könige eingeschlossen.
 
 ## Öffnungstage und Uhrzeiten
 
@@ -66,7 +66,7 @@ Bis Mitte Dezember öffnet der Park nur an Wochenenden und am 7. und 8. Dezember
 
 ## Eintritt
 
-Online kostet die Tageskarte je nach Besuchstag ab 32,90 €, für alle ab 100 cm gleich. An der Kasse zahlst du ab 140 cm 62,90 €, zwischen 100 und 140 cm 56,90 €. Den Kinderpreis an der Kasse zahlen auch Gäste ab 65. Kinder unter 100 cm kommen umsonst hinein. Wer öfter kommt, schaut sich besser die Jahreskarte Bono Parques an. Ihre Preise und die Regengarantie des Parks haben wir im [Guide zum Parque Warner Madrid](/blog/parque-warner-madrid-wartezeiten-tipps) zusammengetragen. Parken kostet online ab 16 €.
+Online kostet die Tageskarte je nach Besuchstag ab 32,90 €, für alle ab 100 cm gleich. An der Kasse zahlst du ab 140 cm 62,90 €, zwischen 100 und 140 cm 56,90 €. Den Kinderpreis an der Kasse zahlen auch Gäste ab 65. Kinder unter 100 cm kommen umsonst hinein. Für mehrere Besuche gibt es die Jahreskarte Bono Parques. Ihre Preise und die Regengarantie des Parks haben wir im [Guide zum Parque Warner Madrid](/blog/parque-warner-madrid-wartezeiten-tipps) zusammengetragen. Parken kostet online ab 16 €.
 
 ## Was sich gegenüber 2025 geändert hat
 
@@ -78,9 +78,9 @@ Seifenblasen gab es schon im vergangenen Winter. Damals war im Teatro Chino Bubb
 
 Mit dem Auto fährst du von Madrid über die A-4 nach Süden bis zur Ausfahrt 22, danach ist der Park ausgeschildert. Ohne Auto nimmst du die Cercanías-Linie C-3 bis Pinto und dort den Bus 413 von La Veloz, der am Eingang hält. Die Linie 412 fährt ab Villaverde Bajo zum Park. Ab Méndez Álvaro und Príncipe Pío verkauft der Park Eintritt und Busfahrt zusammen.
 
-## Ein Tag im Park
+## Wartezeiten und Pase Correcaminos
 
-Ab 12 Uhr bleiben dir bis zur Parade acht bis neun Stunden, und in die müssen Bahnen, Shows und das Foto mit Gizmo passen. Wann welche Bahn am kürzesten ist, haben wir im [Guide](/blog/parque-warner-madrid-wartezeiten-tipps) nach Tageszeit aufgeschlüsselt. An den Warteschlangen vorbei kommst du mit dem Pase Correcaminos, benannt nach dem Road Runner, den es gegen Aufpreis zum Eintritt gibt.
+Wann welche Bahn am kürzesten ist, haben wir im [Guide](/blog/parque-warner-madrid-wartezeiten-tipps) nach Tageszeit aufgeschlüsselt. An den Warteschlangen vorbei kommst du mit dem Pase Correcaminos, benannt nach dem Road Runner, den es gegen Aufpreis zum Eintritt gibt.
 
 [Parque Warner Madrid](ref:parque-warner-madrid?full)
 
