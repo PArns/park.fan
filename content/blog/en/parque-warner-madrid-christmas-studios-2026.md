@@ -38,17 +38,17 @@ Christmas Studios, the winter season at [Parque Warner Madrid](ref:parque-warner
 
 ## The new show, ACME Factory and the Repsol station
 
-"El Reino de Cristal" lasts about 25 minutes and only plays in December. Its story is about an old kingdom that three gifts kept safe for centuries: hope, anticipation and magic. Every bubble holds a memory or a wish, and bubble by bubble the kingdom gets back what it had forgotten. At the end a mime tries to light an old lantern, the kingdom's last light. He can't manage it alone and needs someone from the audience, so if you sit at the front, expect a small walk-on part.
+"El Reino de Cristal" lasts about 25 minutes and only plays in December. Its story is about an old kingdom that three gifts kept safe for centuries: hope, anticipation and magic. Every bubble holds a memory or a wish, and bubble by bubble the kingdom gets back what it had forgotten. At the end a mime tries to light an old lantern, the kingdom's last light. He can't manage it alone, so he brings up a volunteer from the audience.
 
-ACME Factory: Christmas Candies is open from 21 November. In the Christmas version of the children's attraction that opened for Halloween, kids help the Looney Tunes recover the secret recipe for the Christmas sweets. So the recipe has gone missing again: in October it was the pumpkin sweets, after the Coyote had torn through the factory.
+ACME Factory: Christmas Candies is open from 21 November. In the Christmas version of the children's attraction that opened for Halloween, kids help the Looney Tunes recover the secret recipe for the Christmas sweets. So the recipe has gone missing again: at Halloween it was the pumpkin sweets, after the Coyote had torn through the factory.
 
 Also new is the Estación Energía de Repsol, a hands-on walk through three rooms. You get lost in a mirror maze, play along with a light installation and walk through an installation modelled on rays of sunlight.
 
 ## Shows, parade and Santa
 
-The 22-metre Christmas tree is back at the entrance. All five themed areas get lights and fake snow: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios and Old West Territory. At Hollywood Market, the Looney Tunes switch on the Christmas lights in a show of their own.
+The 22-metre Christmas tree is back at the entrance. All five themed areas get lights and fake snow: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios and Old West Territory. The Looney Tunes switch on the Christmas tree in a show of their own.
 
-On stage there's the musical The Santa's Magical Bell, the Hollywood Boulevard dance show that premiered in 2025 (back from 5 December), the Looney Tunes Dance Festival in its Christmas Edition and, in the Western area, Una Navidad en Dodge City. In Christmas Town, a small Christmas village with elves and reindeer, Santa shows off his workshop in El Taller de Papá Noel, and the Three Kings receive visitors there too. Bugs Bunny, Tweety, Daffy Duck, the DC superheroes and Gizmo from Gremlins pose for photos in winter clothes. The day ends with the Superstars of Christmas Parade, with the Looney Tunes, superheroes, Santa and the Three Kings riding through the park on floats.
+On stage there's the musical The Santa's Magical Bell, the Hollywood Boulevard dance show that premiered in 2025 (back from 5 December), the Looney Tunes Dance Festival in its Christmas Edition and, in the Western area, Una Navidad en Dodge City. In Christmas Town, a small Christmas village with elves and reindeer, Santa shows off his workshop in El Taller de Papá Noel, and the Three Kings receive visitors there too. Bugs Bunny, Tweety, Daffy Duck, the DC superheroes and Gizmo from Gremlins pose for photos in festive outfits. The day ends with the Superstars of Christmas Parade, with the Looney Tunes, superheroes, Santa and the Three Kings riding through the park on floats.
 
 ## Dates and opening hours
 
@@ -74,7 +74,7 @@ Most of the Christmas programme is aimed at children. They play the lead in ACME
 
 This is the third Christmas Studios. The second ran from 6 December to 5 January in 2025. This year it starts on 21 November instead of 6 December and ends on 10 January instead of 5 January.
 
-There were bubbles last winter as well. Back then, Bubble Christmas was new at the Teatro Chino, with the elf Bublinna, who collects the yawns children make before falling asleep and turns them into bubbles. That show isn't on the 2026 programme. The Repsol Christmas Music Studio, where families could record their own Christmas song in 2025, has also made way for the Estación Energía.
+There were bubbles last winter as well. Back then, Bubble Christmas was new at the Teatro Chino, with the elf Bublinna, who collects the yawns children make before falling asleep and turns them into bubbles. Neither that show nor the Repsol Christmas Music Studio, where families could record their own Christmas song in 2025, appears on the 2026 programme. This time Repsol is there with the Estación Energía.
 
 ## Getting there
 
