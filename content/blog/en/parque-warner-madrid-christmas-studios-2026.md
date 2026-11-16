@@ -2,7 +2,7 @@
 title: "Parque Warner Madrid's Christmas starts two weeks earlier"
 translationKey: parque-warner-madrid-christmas-studios-2026
 date: '2026-11-16'
-time: '17:45'
+time: '18:40'
 author: patrick
 mode: published
 featured: false

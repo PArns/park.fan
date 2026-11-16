@@ -2,7 +2,7 @@
 title: 'Parque Warner Madrid viert kerst twee weken eerder'
 translationKey: parque-warner-madrid-christmas-studios-2026
 date: '2026-11-16'
-time: '17:45'
+time: '18:40'
 author: patrick
 mode: published
 featured: false
@@ -38,17 +38,17 @@ Op zaterdag 21 november begint in [Parque Warner Madrid](ref:parque-warner-madri
 
 ## Nieuw deze winter
 
-“El Reino de Cristal” duurt ongeveer 25 minuten en is alleen in december te zien. De show gaat over een oud rijk dat eeuwenlang werd beschermd door drie gaven: hoop, voorpret en magie. In elke zeepbel zit een herinnering of een wens, en bel voor bel krijgt het rijk terug wat het vergeten was. Aan het eind probeert een mime een oude lantaarn aan te steken, het laatste licht van het rijk. In zijn eentje lukt hem dat niet, dus haalt hij een vrijwilliger uit het publiek.
+“El Reino de Cristal” duurt ongeveer 25 minuten en is alleen in december te zien. De show vertelt over een oud rijk dat eeuwenlang werd beschermd door hoop, voorpret en magie. Elke zeepbel brengt het een herinnering of een wens terug. Aan het eind probeert een mime een oude lantaarn aan te steken, het laatste licht van het rijk. In zijn eentje lukt hem dat niet, dus haalt hij een vrijwilliger uit het publiek.
 
-ACME Factory: Christmas Candies is al vanaf 21 november open. In de kerstversie van de kinderattractie, die met Halloween openging, halen kinderen samen met de Looney Tunes het geheime recept van de kerstsnoepjes terug. Dat recept is dus alweer zoek. Met Halloween ging het om de pompoensnoepjes, nadat de coyote door de fabriek was geraasd.
+ACME Factory: Christmas Candies is al vanaf 21 november open. In de kerstversie van de kinderattractie, die met Halloween openging, halen kinderen samen met de Looney Tunes het geheime recept van de kerstsnoepjes terug. Dat recept is dus alweer zoek. Met Halloween ging het om de pompoensnoepjes, na de chaos die de coyote had aangericht.
 
-Nieuw is ook de Estación Energía de Repsol, een route door drie ruimtes waarin je zelf meedoet. Je raakt de weg kwijt in een spiegeldoolhof, speelt mee met een lichtinstallatie en loopt door een installatie die is gebaseerd op zonnestralen.
+Nieuw is ook de Estación Energía de Repsol, een route door drie ruimtes waarin je zelf meedoet. Eerst raak je de weg kwijt in een spiegeldoolhof, dan speel je met een lichtinstallatie en tot slot loop je tussen nagebootste zonnestralen door.
 
 ## Shows, parade en de kerstman
 
-Bij de ingang staat weer de kerstboom van 22 meter. Lichtjes en kunstsneeuw zijn er in alle vijf themagebieden: Cartoon Village, Hollywood Boulevard, DC Super Heroes World, Movie World Studios en Old West Territory. De kerstboom zetten de Looney Tunes in een eigen show aan.
+Bij de ingang staat weer de kerstboom van 22 meter. Die gaat aan in een eigen show van de Looney Tunes, en alle vijf themagebieden krijgen lichtjes en kunstsneeuw.
 
-Op de podia staan de musical The Santa's Magical Bell, het Looney Tunes Dance Festival in een Christmas Edition en in het westerngebied Una Navidad en Dodge City. Vanaf 5 december is ook de dansshow van de Hollywood Boulevard terug, die in 2025 in première ging. In Christmas Town, een klein kerstdorp met elfen en rendieren, laat de kerstman in El Taller de Papá Noel zijn werkplaats zien. De Drie Koningen ontvangen daar ook bezoek. Bugs Bunny, Tweety, Daffy Duck, de superhelden van DC en Gizmo uit Gremlins staan in feestkleding klaar voor de foto. De dag sluit af met de Superstars of Christmas Parade, waarin Looney Tunes, superhelden, de kerstman en de Drie Koningen op praalwagens door het park rijden.
+Op de podia staan de musical The Santa's Magical Bell, het Looney Tunes Dance Festival in een Christmas Edition en in het westerngebied Una Navidad en Dodge City. Vanaf 5 december staat “Happy Holiday!”, de dansshow van vorig jaar, weer op de Hollywood Boulevard. In Christmas Town, een klein kerstdorp met elfen en rendieren, laat de kerstman in El Taller de Papá Noel zijn werkplaats zien, volgens het park vooral voor de allerkleinsten. De Drie Koningen ontvangen daar ook bezoek. Bugs Bunny, Tweety, Daffy Duck, de superhelden van DC en Gizmo uit Gremlins staan in feestkleding klaar voor de foto. Aan het eind van de dag rijden dezelfde figuren in de Superstars of Christmas Parade nog één keer op praalwagens door het park, de kerstman en de Drie Koningen incluis.
 
 ## Openingsdagen en tijden
 
@@ -58,31 +58,29 @@ Christmas Studios is 29 dagen open, steeds vanaf 12 uur:
 - december: 5 tot en met 8, 12 en 13, 19 tot en met 23 en 26 tot en met 30, tot 21 uur
 - januari 2027: 1 tot en met 5 en 7 tot en met 10, tot 20 uur
 
-Tot half december gaat het park dus alleen in het weekend open, plus op 7 en 8 december. Dicht is het op 24, 25 en 31 december en op 6 januari. Kerstavond en oudejaarsavond breng je dus niet door onder de boom van 22 meter.
+Tot half december gaat het park alleen in het weekend open, plus op 7 en 8 december. Dicht is het uitgerekend op kerstavond, eerste kerstdag en oudejaarsdag, en op 6 januari, Driekoningen.
 
 ```best-days-widget slug=parque-warner-madrid
 
 ```
 
-## Tickets en kinderen
+## Entree
 
-Online kost een dagticket vanaf € 32,90, voor iedereen vanaf 100 cm hetzelfde. De onlineprijs hangt af van de dag van je bezoek. Aan de kassa betaal je vanaf 140 cm € 62,90 en tussen 100 en 140 cm € 56,90. Die kinderprijs aan de kassa betalen ook bezoekers vanaf 65. Kinderen kleiner dan 100 cm mogen gratis naar binnen. Kom je vaker, reken dan de jaarkaart Bono Parques na. De prijzen ervan en de regengarantie van het park staan in onze [gids voor Parque Warner Madrid](/blog/parque-warner-madrid-wachttijden-tips). Parkeren kost online vanaf € 16.
-
-Het meeste uit het kerstprogramma is voor kinderen bedoeld, en de werkplaats van de kerstman richt het park uitdrukkelijk op de allerkleinsten.
+Online kost een dagticket afhankelijk van de bezoekdag vanaf € 32,90, voor iedereen vanaf 100 cm hetzelfde. Aan de kassa betaal je boven 140 cm € 62,90 en tussen 100 en 140 cm € 56,90. Die kinderprijs aan de kassa betalen ook bezoekers boven de 65. Kinderen kleiner dan 100 cm mogen gratis naar binnen. Voor meerdere bezoeken is er de jaarkaart Bono Parques. De prijzen ervan en de regengarantie van het park hebben we in onze [gids voor Parque Warner Madrid](/blog/parque-warner-madrid-wachttijden-tips) op een rij gezet. Parkeren kost online vanaf € 16.
 
 ## Wat er anders is dan in 2025
 
 Dit is de derde Christmas Studios. De tweede editie liep in 2025 van 6 december tot 5 januari.
 
-Zeepbellen waren er vorige winter ook al. Toen was in het Teatro Chino Bubble Christmas nieuw, met de elf Bublinna, die het gapen van kinderen voor het slapengaan verzamelt en er bellen van maakt. In het programma voor 2026 komt die show niet meer voor, en het Repsol Christmas Music Studio, waar gezinnen in 2025 hun eigen kerstlied konden opnemen, evenmin. Repsol is er deze keer met de Estación Energía.
+Zeepbellen waren er vorige winter ook al. Toen was in het Teatro Chino Bubble Christmas nieuw, met de elf Bublinna, die het gapen van kinderen voor het slapengaan verzamelt en er bellen van maakt. In het programma voor 2026 komt die show niet meer voor, en het Repsol Christmas Music Studio, waar gezinnen in 2025 hun eigen kerstlied konden opnemen, evenmin. De plek van Repsol in het programma is nu voor de Estación Energía.
 
 ## Bereikbaarheid
 
 Met de auto rijd je vanuit Madrid over de A-4 naar het zuiden tot afrit 22, daarna staat het park aangegeven. Zonder auto neem je Cercanías-lijn C-3 naar Pinto en daar bus 413 van La Veloz, die bij de ingang stopt. Lijn 412 rijdt vanaf Villaverde Bajo naar het park. Vanaf Méndez Álvaro en Príncipe Pío verkoopt het park toegang en busrit samen.
 
-## Een dag in het park
+## Wachttijden en Pase Correcaminos
 
-Voor attracties, shows en figuren heb je de acht tot negen uur vóór de parade. De wachttijden per attractie en tijdstip staan in onze [gids](/blog/parque-warner-madrid-wachttijden-tips). Langs de wachtrijen kom je met de Pase Correcaminos, die je bovenop je ticket bijkoopt.
+Bij welke attractie de rij op welk moment het kortst is, hebben we in onze [gids](/blog/parque-warner-madrid-wachttijden-tips) per tijdstip uitgezocht. Langs de wachtrijen kom je met de Pase Correcaminos, vernoemd naar de Road Runner, die je bovenop je ticket bijkoopt.
 
 [Parque Warner Madrid](ref:parque-warner-madrid?full)
 
