@@ -2897,7 +2897,6 @@
       "distance": "{distance} Luftlinie",
       "minWalk": "mindestens {minutes} Min. Umstieg",
       "allowance": "inkl. Ausstieg und Fahrt, geschätzt",
-      "noSpread": "ohne Streuung der Prognose gerechnet",
       "gap": "{minutes} Min."
     },
     "close": "Auswahl aufheben",
@@ -2947,6 +2946,7 @@
       "failed": "Die Optimierung konnte nicht laufen. Dein Plan ist unverändert.",
       "hint": "Sortiert die Bahnen nach ihren Stundenkurven, den Laufwegen und den Öffnungszeiten. Mittagspausen und abgehakte Bahnen bleiben, wo sie sind.",
       "saved": "{minutes} Min. weniger Warten",
+      "walkSaved": "{minutes} Min. weniger Fußweg",
       "already": "Passt schon so",
       "fitted": "{count, plural, one {eine Bahn passt jetzt in den Tag} other {# Bahnen passen jetzt in den Tag}}",
       "resolved": "{count, plural, one {ein Konflikt weniger} other {# Konflikte weniger}}",

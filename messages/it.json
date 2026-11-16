@@ -2897,7 +2897,6 @@
       "distance": "{distance} in linea d’aria",
       "minWalk": "almeno {minutes} min di trasferimento",
       "allowance": "inclusi uscita dalla stazione e giro, stimato",
-      "noSpread": "calcolato senza la dispersione della previsione",
       "gap": "{minutes} min"
     },
     "close": "Annulla la selezione",
@@ -2947,6 +2946,7 @@
       "failed": "Non è stato possibile ottimizzare il piano. Il tuo piano non è cambiato.",
       "hint": "Mette in fila le attrazioni secondo le curve orarie, il tragitto fra una e l’altra e l’ora in cui aprono. Pause e attrazioni già fatte restano dove sono.",
       "saved": "{minutes} min di coda in meno",
+      "walkSaved": "{minutes} min a piedi in meno",
       "already": "L’ordine va già bene",
       "fitted": "{count, plural, one {una attrazione ora entra nella giornata} other {# attrazioni ora entrano nella giornata}}",
       "resolved": "{count, plural, one {un conflitto in meno} other {# conflitti in meno}}",

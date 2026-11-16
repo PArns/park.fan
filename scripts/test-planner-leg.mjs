@@ -21,7 +21,7 @@ import {
   legBetween,
   legDeficit,
 } from '../lib/planner/leg.ts';
-import { RIDE_DURATION_MIN } from '../lib/planner/day-grid.ts';
+import { RIDE_DURATION_MIN, START_STEP_MIN } from '../lib/planner/day-grid.ts';
 import { LEG_CHIP_COMPACT_PX, LEG_CHIP_PX, legChipPlacement } from '../lib/planner/leg-chip.ts';
 
 const cases = [];
@@ -63,7 +63,7 @@ const to = (startMinute, ride = mamba) => ({ startMinute, wait: 30, ride });
 
 // ── The worked example ───────────────────────────────────────────────────────
 {
-  const leg = legBetween(from(600, 45), to(660), 10);
+  const leg = legBetween(from(600, 45), to(660));
   test('the distance is measured, not guessed', Math.round(leg.metres), 124);
   test('a land change is noticed', leg.crossesLand, true);
   // floor = exit 3 + ride 5 + ceil(124/100) 2 = 10
@@ -82,51 +82,49 @@ const to = (startMinute, ride = mamba) => ({ startMinute, wait: 30, ride });
 }
 
 // ── The ladder, at its boundaries ────────────────────────────────────────────
-// gap 15, ceiling 11 → slack 4. With u = 10, slack < u → knapp.
+// floor 10, ceiling 11, the queue ends at 645.
+// gap 10 → on the floor, a minute under the ceiling → knapp.
 test(
-  'a gap inside the forecast error is knapp',
-  legBetween(from(600, 45), to(660), 10).verdict,
+  'a gap over the floor and under the ceiling is knapp',
+  legBetween(from(600, 45), to(655)).verdict,
   'tight'
 );
-// gap 31 → slack 20. 2u = 20, so 20 >= 20 → großzügig.
+// gap 11 → exactly the ceiling → gut.
+test('a gap that clears the ceiling is gut', legBetween(from(600, 45), to(656)).verdict, 'good');
+// gap 31 → slack 20 → a forecast still stops at gut.
 test(
-  'a gap past twice the error is großzügig',
-  legBetween(from(600, 45), to(676), 10).verdict,
-  'generous'
+  'a forecast stops at gut, however wide the gap',
+  legBetween(from(600, 45), to(676)).verdict,
+  'good'
 );
-// gap 21 → slack 10. u = 10 → 10 >= 10 but < 20 → gut.
-test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verdict, 'good');
 
 // ── broken is decided on the FLOOR, never the ceiling ────────────────────────
 {
   // gap 5, floor 10, ceiling 11. Under the floor: certainly impossible.
-  const impossible = legBetween(from(600, 45), to(650), 10);
+  const impossible = legBetween(from(600, 45), to(650));
   test('a gap under the certifiable floor is broken', impossible.verdict, 'broken');
   test('…and the shortfall is reported against that floor', legDeficit(impossible), 5);
 
   // gap 10: at the floor, below the ceiling. Not broken — merely tight.
-  const squeezed = legBetween(from(600, 45), to(655), 10);
+  const squeezed = legBetween(from(600, 45), to(655));
   test('a gap above the floor is never called impossible', squeezed.verdict === 'broken', false);
 }
 
-// ── No spread reported caps the ladder ───────────────────────────────────────
+// ── The model's spread is not read ───────────────────────────────────────────
+// `/plan/day`'s band is the day peak's, often wider than the peak itself. Judged
+// against it, every leg of a packed day read knapp; the ladder now asks only
+// whether the walk fits.
 {
-  const huge = legBetween(from(600, 45), to(720), null);
-  test('with no spread, großzügig is unreachable', huge.verdict, 'good');
-  test('…and the reason is carried', huge.missing, 'no-spread');
-  test(
-    'a null spread is not a spread of zero',
-    legBetween(from(600, 45), to(660), 0).verdict,
-    'good'
-  );
+  const huge = legBetween(from(600, 45), to(720));
+  test('a two-hour gap on a forecast is gut', huge.verdict, 'good');
+  test('…and nothing is reported missing', huge.missing, 'none');
 }
 
 // ── No coordinates: the floor loses its walk term ────────────────────────────
 {
   const sameLand = legBetween(
     { startMinute: 600, wait: 45, ride: bare('Mystery') },
-    { startMinute: 660, wait: 30, ride: bare('Mystery') },
-    10
+    { startMinute: 660, wait: 30, ride: bare('Mystery') }
   );
   test('no coordinates means no distance', sameLand.metres, null);
   test('…and no walk in the floor', sameLand.floorMinutes, EXIT_MIN + RIDE_DURATION_MIN);
@@ -138,8 +136,7 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
 
   const crossLand = legBetween(
     { startMinute: 600, wait: 45, ride: bare('Mystery') },
-    { startMinute: 660, wait: 30, ride: bare('Berlin') },
-    10
+    { startMinute: 660, wait: 30, ride: bare('Berlin') }
   );
   test(
     'a land change raises only the ceiling',
@@ -152,8 +149,7 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
   // impossible. Even a 1-minute gap is only broken by exit + ride, never by a walk.
   const tightNoCoords = legBetween(
     { startMinute: 600, wait: 45, ride: bare('Mystery') },
-    { startMinute: 646, wait: 30, ride: bare('Berlin') },
-    10
+    { startMinute: 646, wait: 30, ride: bare('Berlin') }
   );
   test('a guessed hop is judged only on what is certain', tightNoCoords.verdict, 'broken');
   test(
@@ -165,12 +161,8 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
 
 // ── After a show or a free block there is no ride to leave (PAR-696) ─────────
 {
-  const afterShow = legBetween(
-    { startMinute: 540, wait: 30, ride: taron, block: true },
-    to(570),
-    10
-  );
-  const afterRide = legBetween(from(540, 30), to(570), 10);
+  const afterShow = legBetween({ startMinute: 540, wait: 30, ride: taron, block: true }, to(570));
+  const afterRide = legBetween(from(540, 30), to(570));
   test(
     'a show leaves no exit and no ride behind',
     afterShow.floorMinutes,
@@ -184,29 +176,26 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
   const show = { startMinute: 540, wait: 30, ride: taron, block: true };
   test(
     '…and only the walk is certain: one minute short is broken',
-    legBetween(show, to(570 + afterShow.floorMinutes - 1), 10).verdict,
+    legBetween(show, to(570 + afterShow.floorMinutes - 1)).verdict,
     'broken'
   );
   test(
     '…and the floor itself is not',
-    legBetween(show, to(570 + afterShow.floorMinutes), 10).verdict === 'broken',
+    legBetween(show, to(570 + afterShow.floorMinutes)).verdict === 'broken',
     false
   );
 
-  const placeless = legBetween(
-    { startMinute: 540, wait: 30, ride: null, block: true },
-    to(570),
-    10
-  );
+  const placeless = legBetween({ startMinute: 540, wait: 30, ride: null, block: true }, to(570));
   test('a show with no position has a floor of 0', placeless.floorMinutes, 0);
   test('…and a ceiling of 0', placeless.ceilingMinutes, 0);
   test('…so a ride straight after it is not broken', placeless.verdict === 'broken', false);
 
-  const intoPlaceless = legBetween(
-    from(540, 30),
-    { startMinute: 570, wait: 30, ride: null, block: true },
-    10
-  );
+  const intoPlaceless = legBetween(from(540, 30), {
+    startMinute: 570,
+    wait: 30,
+    ride: null,
+    block: true,
+  });
   test(
     'a ride in front of a block with no position still spends exit and ride',
     intoPlaceless.floorMinutes,
@@ -219,8 +208,7 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
   );
   const rideToRide = legBetween(
     { startMinute: 540, wait: 30, ride: bare('Berlin'), block: false },
-    { startMinute: 600, wait: 30, ride: bare('Berlin'), block: false },
-    10
+    { startMinute: 600, wait: 30, ride: bare('Berlin'), block: false }
   );
   test(
     'ride to ride with block: false keeps its floor',
@@ -233,11 +221,12 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
     EXIT_MIN + RIDE_DURATION_MIN + SAME_LAND_CEIL_MIN
   );
 
-  const intoLocated = legBetween(
-    from(540, 30),
-    { startMinute: 600, wait: 30, ride: mamba, block: true },
-    10
-  );
+  const intoLocated = legBetween(from(540, 30), {
+    startMinute: 600,
+    wait: 30,
+    ride: mamba,
+    block: true,
+  });
   test(
     'a ride before a located show still spends exit and ride',
     intoLocated.floorMinutes >= EXIT_MIN + RIDE_DURATION_MIN,
@@ -249,25 +238,24 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
 {
   const withDuration = legBetween(
     { startMinute: 600, wait: 45, ride: taron, rideSeconds: 47 },
-    to(660),
-    10
+    to(660)
   );
   test('a 47-second ride counts as one minute', withDuration.floorMinutes, EXIT_MIN + 1 + 2);
 }
 
 // ── No wait: nothing to be tight against ─────────────────────────────────────
 {
-  const noFigure = legBetween(from(600, null), to(660), 10);
+  const noFigure = legBetween(from(600, null), to(660));
   test('a block with no figure yields no verdict', noFigure.verdict, 'unknown');
   test('…with its reason stated', noFigure.missing, 'no-wait');
 }
 
 // ── The repair snaps UP ──────────────────────────────────────────────────────
 {
-  const leg = legBetween(from(600, 45), to(650), 10);
+  const leg = legBetween(from(600, 45), to(650));
   const fixed = earliestGoodStart(from(600, 45), leg);
   test('the repair clears the ceiling', fixed >= 600 + 45 + leg.ceilingMinutes, true);
-  test('…and lands on the snap grid', fixed % 15, 0);
+  test("…and lands on the optimiser's step", fixed % START_STEP_MIN, 0);
   test('…and never rounds back into the problem', fixed, 660);
 }
 
@@ -275,20 +263,17 @@ test('a gap between the two is gut', legBetween(from(600, 45), to(666), 10).verd
 test('the detour factor is the documented one', DETOUR_MAX, 1.6);
 
 // ── A measured day runs the full ladder ──────────────────────────────────────
-// On a forecast, no spread caps the verdict at `good`: "großzügig" is a claim
-// about how much room the forecast's own error leaves, and without an error
-// there is nothing to be generous about. On a day that already HAPPENED there
-// is no forecast error to leave room for — the gap is a fact — so capping it
-// would understate every leg of every past day.
+// A forecast stops at `good`: "großzügig" is a claim about room the forecast's
+// own error might take back. On a day that already HAPPENED the gap is a fact,
+// so capping it would understate every leg of every past day.
 {
   const from = { startMinute: 600, wait: 20, ride: null };
   const to = { startMinute: 780, wait: 20, ride: null };
 
-  const forecast = legBetween(from, to, null);
-  test('ohne Spanne kappt die Prognose bei „gut"', forecast.verdict, 'good');
-  test('und markiert die fehlende Spanne', forecast.missing, 'no-spread');
+  const forecast = legBetween(from, to);
+  test('die Prognose endet bei „gut"', forecast.verdict, 'good');
 
-  const measured = legBetween(from, to, null, true);
+  const measured = legBetween(from, to, true);
   test('gemessen darf dieselbe Lücke großzügig sein', measured.verdict, 'generous');
   test('und es fehlt nichts', measured.missing, 'none');
 
@@ -297,68 +282,21 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
   // tight whether or not the day is over: a walk does not get shorter because
   // the day is behind us.
   const tightTo = { startMinute: 628, wait: 20, ride: null };
-  test('zu knapp bleibt zu knapp', legBetween(from, tightTo, null, true).verdict, 'tight');
+  test('zu knapp bleibt zu knapp', legBetween(from, tightTo, true).verdict, 'tight');
   // And below the floor it is still impossible.
   const brokenTo = { startMinute: 622, wait: 20, ride: null };
-  test('unmöglich bleibt unmöglich', legBetween(from, brokenTo, null, true).verdict, 'broken');
+  test('unmöglich bleibt unmöglich', legBetween(from, brokenTo, true).verdict, 'broken');
 }
 
-// ── Die Schwelle ist das ganze Band, und sie bleibt es ───────────────────────
-//
-// Diese Sprosse ist nach PAR-169 zweimal angesehen worden, und beide Male sah
-// sie nach einer Panne aus: vorher stand jeder Chip eines gerechneten Tages auf
-// „gut", jetzt steht er auf „knapp". Der Grund ist keiner in dieser Datei — die
-// Suche baut gegen dasselbe `ceilingMinutes`, gegen das hier geurteilt wird,
-// also ist der Slack eines frisch gepackten Tages im Wesentlichen der
-// Rundungsrest auf `SNAP_MIN_FINE`. Gemessen über 169 Tage aus `/plan/day`:
-// median 6 Minuten gegen ein Band von median 15.
-//
-// Festgehalten wird deshalb beides — dass der gepackte Tag auf `tight` fällt
-// (das ist erwartet, nicht kaputt) und dass die Leiter trotzdem vollständig
-// durchläuft, sobald jemand den Tag auseinanderzieht. Sonst repariert der
-// nächste Lauf das eine und merkt nicht, dass er das andere abschafft.
+// ── A packed day reads gut ───────────────────────────────────────────────────
+// The optimiser files the next stop on the first step after the ceiling, the
+// same rounding `earliestGoodStart` uses, so a freshly packed leg clears the
+// ceiling by less than a step and reads gut, not knapp.
 {
-  const band = 15;
-
-  // Taron → Black Mamba: floor 8, ceiling 9, Schlangenende 645. Wohin ein
-  // gepackter Tag den nächsten Stopp legt, rechnet `earliestGoodStart` selbst
-  // aus — dieselbe Aufrundung, die der Optimierer verwendet —, statt die 15 hier
-  // aus SNAP_MIN_FINE nachzubauen: eine Formel neben der Funktion ist eine
-  // zweite Antwort auf dieselbe Frage. Das Ziel des Probe-Legs liefert nur die
-  // Geometrie, die Startzeit geht nicht ein.
-  const packedStart = earliestGoodStart(from(600, 45), legBetween(from(600, 45), to(700), band));
-  test('ein gepackter Tag legt den nächsten Stopp auf 11:00', packedStart, 660);
-
-  // 660 − 645 = 15 Minuten Lücke, davon 9 Ceiling: 6 Minuten Slack, zwei Fünftel
-  // des Bandes.
-  test(
-    'und dieser Rundungsrest gegen ein echtes Band ist knapp',
-    legBetween(from(600, 45), to(packedStart), band).verdict,
-    'tight'
-  );
-
-  // Lücke 23, Ceiling 11 → 12 Minuten Slack, also 80 % des Bandes: über drei
-  // Vierteln (11,25) und unter dem ganzen. Genau hier entscheidet sich, gegen
-  // WELCHEN Anteil geurteilt wird — ein Fall unterhalb jeder erwogenen Schwelle
-  // wäre unter allen grün und pinnte nichts.
-  test(
-    'vier Fünftel des Bandes reichen nicht — gemessen wird gegen das ganze',
-    legBetween(from(600, 45), to(668), band).verdict,
-    'tight'
-  );
-
-  // Und auseinandergezogen läuft die Leiter durch: ein volles Band Slack ist
-  // gut, zwei sind großzügig.
-  test(
-    'ein ganzes Band Slack ist gut',
-    legBetween(from(600, 45), to(645 + 11 + band), band).verdict,
-    'good'
-  );
-  test(
-    'zwei Bänder Slack sind großzügig',
-    legBetween(from(600, 45), to(645 + 11 + 2 * band), band).verdict,
-    'generous'
-  );
+  // Taron → Black Mamba: floor 10, ceiling 11, the queue ends at 645.
+  const packedStart = earliestGoodStart(from(600, 45), legBetween(from(600, 45), to(700)));
+  test('a packed day files the next stop on the step after the ceiling', packedStart, 660);
+  test('…and that leg reads gut', legBetween(from(600, 45), to(packedStart)).verdict, 'good');
 }
 
 // ── Wo die Pille hängt, und wie groß sie dort sein darf ──────────────────────
@@ -415,7 +353,7 @@ test('the detour factor is the documented one', DETOUR_MAX, 1.6);
 {
   const day = { rides: [taron, mamba], shows: [] };
   const ride = (slug, startMinute) => ({ id: slug, attractionSlug: slug, startMinute });
-  const leg = legBetween(from(600, 20, taron), { startMinute: 660, wait: 10, ride: mamba }, 5);
+  const leg = legBetween(from(600, 20, taron), { startMinute: 660, wait: 10, ride: mamba });
   const walk = leg.ceilingMinutes - EXIT_MIN - RIDE_DURATION_MIN;
   // Entered out of order on purpose: the grid pairs its legs in start order.
   const entries = [ride('taron', 720), ride('black-mamba', 660), ride('taron', 600)];

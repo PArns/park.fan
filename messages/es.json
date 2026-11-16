@@ -2897,7 +2897,6 @@
       "distance": "{distance} en línea recta",
       "minWalk": "al menos {minutes} min de cambio",
       "allowance": "incluye salir de la estación y la atracción, estimado",
-      "noSpread": "calculado sin la dispersión de la previsión",
       "gap": "{minutes} min"
     },
     "close": "Quitar la selección",
@@ -2947,6 +2946,7 @@
       "failed": "No se pudo optimizar el plan. Tu plan sigue igual.",
       "hint": "Ordena las atracciones por sus curvas horarias, el trayecto entre ellas y su hora de apertura. Las pausas y lo ya marcado se quedan donde están.",
       "saved": "{minutes} min menos de cola",
+      "walkSaved": "{minutes} min menos a pie",
       "already": "Ya está en el orden bueno",
       "fitted": "{count, plural, one {una atracción ya cabe en el día} other {# atracciones ya caben en el día}}",
       "resolved": "{count, plural, one {un conflicto menos} other {# conflictos menos}}",

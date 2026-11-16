@@ -23,8 +23,8 @@ export function ContentEN({ day, entries }: { day: PlanDay; entries: PlannerEntr
           Every ride in your plan is a block on the day’s timeline, and it’s as tall as the queue
           you’re expected to stand in at that hour. Drag it into a busier hour and it grows; drop it
           into a quieter one and it shrinks. Between two blocks sits the transfer, with the distance
-          to the next ride and whether there’s time for it. &ldquo;Tight&rdquo; means it stops
-          working as soon as the wait before it is off by as much as it usually is.
+          to the next ride and whether there’s time for it. &ldquo;Tight&rdquo; means you only make
+          the transfer at a brisk walk.
         </P>
         <P>
           Below is a plan for <A href={PARK}>Phantasialand</A> on Saturday 12 September 2026, with

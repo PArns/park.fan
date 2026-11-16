@@ -28,7 +28,7 @@ export function ContentDE({ day, entries }: { day: PlanDay; entries: PlannerEntr
           wie du zu dieser Uhrzeit voraussichtlich anstehst. Ziehst du ihn in eine vollere Stunde,
           wächst er, in einer ruhigeren schrumpft er. Zwischen zwei Blöcken steht der Umstieg mit
           der Entfernung zur nächsten Bahn und der Angabe, ob die Zeit reicht. „Knapp“ heißt, dass
-          es nicht mehr aufgeht, sobald die Wartezeit davor so weit danebenliegt wie üblich.
+          du den Umstieg nur mit zügigem Schritt schaffst.
         </P>
         <P>
           Unten liegt ein Plan für das <A href={PARK}>Phantasialand</A> am Samstag, 12. September

@@ -54,11 +54,18 @@ export const CLOSE_SLACK_MIN = 60;
 export const RIDE_DURATION_MIN = 5;
 
 /**
- * The quarter hour this app's own arithmetic sits on, 18 px here. Every start the app files lands
- * on it (`nowFloor`, `rideFloor`, the optimiser's search step, {@link latestStart}); a drag uses
- * {@link DRAG_SNAP_MIN} instead.
+ * The quarter hour this app's own arithmetic sits on, 18 px here. The floors and the slots the app
+ * files a block into land on it (`nowFloor`, `rideFloor`, {@link latestStart}); a drag uses
+ * {@link DRAG_SNAP_MIN} and the optimiser {@link START_STEP_MIN} instead.
  */
 export const SNAP_MIN_FINE = 15;
+
+/**
+ * The step the API's optimiser files a start on, and the repair button with it (`earliestGoodStart`
+ * in `leg.ts`). Rounding every start up to the quarter hour cost a packed day about seven minutes
+ * per stop. See docs/features/trip-planner/optimizer.md#what-it-minimises.
+ */
+export const START_STEP_MIN = 5;
 
 /**
  * The default a placement falls back to when nothing measured says otherwise.

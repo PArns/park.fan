@@ -95,7 +95,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `POST_PAD_MIN` _const_: A queue joined near closing overruns it. The pad is where the overrun is drawn, rather than being clipped into a claim that the day ends on time.
 - `CLOSE_SLACK_MIN` _const_: How much later than `DayGrid.closeMin` the park might really shut.
 - `RIDE_DURATION_MIN` _const_: How long one ride takes, boarding to the platform, for every ride alike: an assumption, since `PlanDayRide` carries no duration. Spent in the transfer (`transferBetween` in `leg.ts`) and once more after the last stop, never drawn.
-- `SNAP_MIN_FINE` _const_: The quarter hour this app's own arithmetic sits on, 18 px here. Every start the app files lands on it (`nowFloor`, `rideFloor`, the optimiser's search step, `latestStart`); a drag uses `DRAG_SNAP_MIN` instead.
+- `SNAP_MIN_FINE` _const_: The quarter hour this app's own arithmetic sits on, 18 px here. The floors and the slots the app files a block into land on it (`nowFloor`, `rideFloor`, `latestStart`); a drag uses `DRAG_SNAP_MIN` and the optimiser `START_STEP_MIN` instead.
+- `START_STEP_MIN` _const_: The step the API's optimiser files a start on, and the repair button with it (`earliestGoodStart` in `leg.ts`). Rounding every start up to the quarter hour cost a packed day about seven minutes per stop.
 - `DEFAULT_OCCUPIED_MINUTES` _const_: The default a placement falls back to when nothing measured says otherwise.
 - `SNAP_MIN_COARSE` _const_: The arrow-key step of a block on a coarse pointer, 54 px on the phone's axis.
 - `DRAG_SNAP_MIN` _const_: What a drag commits to, under a mouse and under a finger: five minutes, 6 px here and 9 px on the phone's axis. Five because every displayed wait is already a multiple of five, so a dropped block lands on a minute the panel can say.
@@ -176,7 +177,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `transferBetween` _function_: How long it takes to get from one ride to the next, the geometry alone.
 - `dayWalkMinutes` _function_: The day's walking, in minutes: the walk of every transfer between consecutive entries, paired in start order as the grid pairs its legs, so the total and the chips describe the same walks.
 - `legBetween` _function_: The transfer between two consecutive entries.
-- `earliestGoodStart` _function_: The earliest start for the later ride that clears the transfer, snapped up, never down. Offered on a button and never applied on its own, so the visitor sees that the plan did not work.
+- `earliestGoodStart` _function_: The earliest start for the later ride that clears the transfer, snapped up, never down, to the step the optimiser files its starts on. Offered on a button and never applied on its own, so the visitor sees that the plan did not work.
 - `legDeficit` _function_: Minutes of shortfall on a broken leg — what a reader is told is missing.
 - `EXIT_MIN` _const_: Out of the station, through the shop, onto the path. A judgement, not a measurement.
 - `WALK_FAST_M_PER_MIN` _const_: A brisk walker, metres per minute. Used ONLY for the floor: a lower bound divided by a typical pace is not a lower bound.
@@ -184,7 +185,7 @@ Whether the drag gesture has been explained once: a store over `localStorage`, l
 - `DETOUR_MAX` _const_: Assumed worst path-to-straight-line ratio.
 - `SAME_LAND_CEIL_MIN` _const_: Assumed ceiling with no coordinates at all, same land. A judgement.
 - `CROSS_LAND_CEIL_MIN` _const_: …different land. A judgement.
-- `GENEROUS_MIN_MINUTES` _const_: Under this a gap is never called "großzügig", however small the model's spread.
+- `GENEROUS_MIN_MINUTES` _const_: On a day that happened, the slack over the ceiling from which a gap is "großzügig".
 - Types: `TransferVerdict`, `Leg`, `LegPlace`, `LegEnd`, `TransferEnds`, `Transfer`
 
 ### [`live.ts`](../../lib/planner/live.ts)
@@ -223,6 +224,7 @@ The month grid the planner picks a day on. Pure, and reckoned at noon UTC throug
 
 ### [`optimize-remote.ts`](../../lib/planner/optimize-remote.ts)
 
+- `walkSaved` _function_: Minutes on foot a press saves, raw; zero where either score does not report its walking.
 - `fitQuestion` _function_: A fit question about `entries` with `add` on top, with the clock read once, now.
 - `requestOptimize` _function_: Asks the optimizer one question about one day. On today's date the park-local minute goes along, so the plan starts where the visitor's now line is.
 - `requestFit` _function_: The fit assistant's answer for one choice. A refusal is an error here: the question was asked about a day the optimizer could plan, so a refusal means the day changed under it.

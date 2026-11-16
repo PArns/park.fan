@@ -320,7 +320,6 @@ export function PlannerDayGrid({
             ride: to.place,
             block: isBlockEntry(to.entry),
           },
-          from.estimate.uncertaintyMinutes,
           day?.tier === 'observed'
         ),
         // The from block's lane: a leg descends from where one block ends, and in the destination's

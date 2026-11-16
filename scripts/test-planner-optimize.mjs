@@ -22,6 +22,7 @@ import {
   OptimizeError,
   optimizeKeyOf,
   requestOptimize,
+  walkSaved,
   wishesWithRides,
 } from '../lib/planner/optimize-remote.ts';
 import { fitChoiceAll, toggleWish } from '../lib/planner/fit.ts';
@@ -286,6 +287,23 @@ const ok = (body) => new Response(JSON.stringify(body), { status: 200 });
     result.plan.stops[0].entryId === null && result.plan.stops[0].waitMinutes === null
   );
   check('fehlende Felder werden null', result.before === null && result.fit === null);
+}
+
+// ── The walking a press saves ───────────────────────────────────────────────
+{
+  const score = (walkMinutes) => ({
+    totalWaitMinutes: 60,
+    idleMinutes: 0,
+    endMinute: 900,
+    overflow: 0,
+    clashes: 0,
+    ...(walkMinutes !== undefined && { walkMinutes }),
+  });
+  check('saved walking is before minus after', walkSaved(score(30), score(18)) === 12);
+  check(
+    'a score without walking saves none, never NaN',
+    walkSaved(score(undefined), score(18)) === 0 && walkSaved(score(30), score(undefined)) === 0
+  );
 }
 
 // ── What makes a new question ───────────────────────────────────────────────
