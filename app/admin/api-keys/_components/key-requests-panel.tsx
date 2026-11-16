@@ -337,6 +337,11 @@ function RequestCard({
   );
 }
 
+/** A decided request with the account the list showed, which a decision's answer leaves out. */
+function withApplicant(item: KeyRequestRecord, listed: KeyRequestRecord): KeyRequestRecord {
+  return { ...item, applicant: item.applicant ?? listed.applicant };
+}
+
 /**
  * Approves a request into a key. The fields start with what the request asked for; the key goes
  * to the developer's account unrevealed, and they pick it up on their dashboard.
@@ -408,7 +413,7 @@ function ApproveDialog({ request, onClose }: { request: KeyRequestRecord; onClos
           }),
         }
       );
-      setApproved(result.item);
+      setApproved(withApplicant(result.item, request));
       invalidate(KEY_REQUESTS_QUERY_KEY, DATA_API_KEYS_QUERY_KEY);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Freigabe fehlgeschlagen');
@@ -556,7 +561,7 @@ function RejectDialog({ request, onClose }: { request: KeyRequestRecord; onClose
         keyRequestPath(request.id, 'reject'),
         { method: 'POST', body: text ? { reason: text } : {} }
       );
-      setRejected(result.item);
+      setRejected(withApplicant(result.item, request));
       invalidate(KEY_REQUESTS_QUERY_KEY);
     } catch (err) {
       toast.push({

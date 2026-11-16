@@ -100,6 +100,8 @@ export function DeveloperKeyCard({
   const locale = useLocale();
   const number = getNumberFormat(locale);
   const date = getDateTimeFormat(locale, { dateStyle: 'medium' });
+  // A grace period can be one hour, so its end needs the time as well.
+  const moment = getDateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' });
   const state = developerKeyState(apiKey, nowMs);
   const permissions = sortPermissions(apiKey.permissions ?? LEGACY_KEY_PERMISSIONS);
   const days = apiKey.stats?.days ?? [];
@@ -232,7 +234,7 @@ export function DeveloperKeyCard({
         {graceUntil && (
           <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/40 bg-amber-500/10 p-3 text-sm">
             <p className="flex-1">
-              {t('graceRunning', { date: date.format(new Date(graceUntil)) })}
+              {t('graceRunning', { date: moment.format(new Date(graceUntil)) })}
             </p>
             <Button
               size="sm"
