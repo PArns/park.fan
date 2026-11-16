@@ -460,6 +460,9 @@ du an einem Tag unter der Woche zwischen dem 16. November und dem Beginn der
 NRW-Weihnachtsferien am 23. Dezember durch, und am besten an einem Donnerstag
 oder Freitag, weil dann alle drei Theatershows spielen.
 
+> [!PARKY]
+> Mein Wintertraum-Tag: ein Donnerstag oder Freitag zwischen dem 16. November und dem 23. Dezember. Unter der Woche kommen wir am ehesten durch, und an diesen beiden Tagen spielen alle drei Theatershows. Zwischen den Jahren war es letzten Winter überall voll, und in der Kälte anstehen und grummeln, das lasse ich lieber.
+
 Den Crowd-Kalender solltest du für diesen einen Winter noch nicht beim Wort
 nehmen. Ende September 2026 stufte er in Brühl jeden Dezembertag als „niedrig“
 oder „sehr niedrig“ ein, auch die Tage zwischen Weihnachten und Silvester, die

@@ -691,6 +691,9 @@ rafting sul fiordo toccano il massimo nel pomeriggio.
 All’apertura le due attrazioni acquatiche non hanno quasi coda; Poseidon tocca il massimo alle undici, Atlantica solo nel pomeriggio. Chi è disposto a bagnarsi la mattina le fa
 entrambe nel tempo che a mezzogiorno gliene costerebbe una.
 
+> [!PARKY]
+> Bagnarsi alle dieci del mattino? Ci sto. All’apertura Poseidon e Atlantica non hanno quasi coda, quindi le facciamo tutte e due nel tempo che a mezzogiorno se ne va per una sola. Alle undici Poseidon ha la coda più lunga della giornata, e noi la guardiamo da fuori, gocciolanti.
+
 Un programma di giornata che ne consegue:
 
 1. **Al Voletarium all’apertura.** La Germania sta vicino all’ingresso, e alle

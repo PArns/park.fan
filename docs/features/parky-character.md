@@ -84,7 +84,7 @@ What Parky shows follows what the page shows, never against it:
 
 ## Pictures of him
 
-Outside the chat he appears in two still pictures, each built from the live drawing's pieces rather
+Outside the chat he appears in two scenes, each built from the live drawing's pieces rather
 than drawn again, so he looks the same everywhere: the break panel's sleeping Parky
 (`break-scene.tsx`, [park break panel](park-break-panel.md#the-picture)) and Parky on holiday in
 Orlando (`components/assistant/parky/orlando-scene.tsx`), the trip-planner card in the header's
@@ -92,6 +92,12 @@ planner band ([header navigation](header-navigation.md#the-planner-panel)). On t
 planner stop he is the live drawing, calm, beside his speech bubble, and takes out his clipboard
 (the `plan` act) once while the day beside him fills in
 ([homepage](homepage.md#the-day-planner-with-parky)).
+
+Standing still and smiling, hat on, he is `ParkyStill` (`components/assistant/parky/parky-still.tsx`),
+server-rendered with no client code. He signs every share image beside the park.fan lockup and is
+the hero of his own page's card ([OG images](og-images.md#rendering-and-assets)), and he says the
+tip in a post's „Parky sagt“ card (`> [!PARKY]`, `BlogParkySays`), whose „Frag Parky dazu“ opens
+the chat with a question about it ([authoring guide](../../content/blog/README.md#parky-says)).
 
 - **On holiday** he stands at a lake in Florida with his park map held low (`ParkyMap still`), a
   suitcase beside him, a flamingo in the shallows, a coaster on the far shore and a launch from the

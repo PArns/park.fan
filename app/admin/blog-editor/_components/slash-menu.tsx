@@ -16,6 +16,7 @@ import {
   List,
   ListOrdered,
   MapPin,
+  MessageCircle,
   MessageSquareWarning,
   Minus,
   Music,
@@ -218,6 +219,7 @@ export function buildSlashItems(emit: (action: string) => void): SlashItem[] {
         ['caution', 'Caution callout', 'Red danger box', OctagonAlert],
         ['correction', 'Correction note', 'News only: dated fix under the signature', FilePenLine],
         ['quote', 'Quote with source', "Somebody else's words, speaker and link", Quote],
+        ['parky', 'Parky says', "One tip in Parky's voice, at most two a post", MessageCircle],
       ] as const
     ).map<SlashItem>(([kind, title, description, icon]) => ({
       title,

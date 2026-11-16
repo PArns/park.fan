@@ -331,6 +331,9 @@ si riempie solo dopo pranzo, con il picco verso le 14:00.
 
 Quando sia l’ultima ora dipende dal giorno. Da maggio a ottobre 2026, fuori dalle vacanze, il parco chiudeva alle 17:30 in settimana e alle 18:00 nel fine settimana, alle 19:00 o alle 20:00 nelle vacanze estive e alle 23:00 nelle serate delle Halloween Nights. Un mercoledì di settembre è quindi l’ora che comincia alle 16:30.
 
+> [!PARKY]
+> Troy ha un orologio tutto suo. La coda più lunga arriva verso le 11:00, e proprio quando il resto del parco va a pranzo si accorcia. Quindi noi mangiamo più tardi. Un churro dopo Troy è comunque meglio di un churro in coda.
+
 ![Il cavallo di Troia in legno, con la fila davanti | Troy a Ithaka. Il cavallo di Troia sta all’ingresso, il percorso dietro, tra gli alberi. | left](/media/toverland/troy-4x3.jpg)
 
 Siccome Toverland non vende un salta-fila, contro le code aiuta solo l’ordine. Un

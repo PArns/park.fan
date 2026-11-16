@@ -12,6 +12,7 @@ are cached.
 | `lib/og/blog-og.tsx`, `glossary-og.tsx` | The blog, news and glossary-term cards, both through `lib/og/text-card.tsx` |
 | `lib/og/background-photo.ts`            | The photo behind a card, read off `og-assets/` as a data URI                |
 | `lib/og/brand-mark.tsx`                 | The marker and wordmark (`OgBrandLockup`), read the same way                |
+| `lib/og/parky-mark.tsx`                 | `OgParky`: Parky in the lockup, and large on his own page's card            |
 | `lib/og/jpeg.ts`                        | `ogAsJpeg`: re-encodes the PNG `next/og` emits                              |
 | `scripts/generate-og-assets.mjs`        | Writes `og-assets/` in `prebuild` (`pnpm generate:og-assets`)               |
 | `scripts/render-og.mjs`                 | `pnpm og:preview`, a contact sheet of every template                        |
@@ -77,6 +78,13 @@ Without a rendition (or under `next dev` before `pnpm generate:og-assets` has ru
 back to its absolute URL, which usually paints nothing because Satori skips progressive JPEGs, and
 the brand marks fall back to `public/`. A raster blog cover is read the same way; an SVG cover is
 skipped, since Satori cannot size it.
+
+**Parky signs every card.** `OgBrandLockup` ends on a still Parky as tall as the marker, and the
+`parky` generic card puts him large at the right, in place of the search badge, with the title
+narrowed to 62 %. He is `ParkyStill`, the same drawing a post's "Parky says" card shows, passed
+through `forSatori`: it calls the drawing's components down to plain SVG elements and turns every
+`oklch()` colour into hex, which Satori's SVG renderer cannot read. A new picture of him on a card
+goes through the same function, never a hand-coloured copy.
 
 ## Cache windows
 

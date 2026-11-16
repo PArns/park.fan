@@ -679,6 +679,9 @@ afternoon.
 Both water rides have hardly any queue when the park opens; Poseidon peaks at eleven, Atlantica only in the afternoon. Anybody happy to get wet in the morning rides both
 in the time one of them would cost at midday.
 
+> [!PARKY]
+> Getting soaked at ten in the morning? Count me in. Poseidon and Atlantica have hardly any queue at opening, so we ride both in the time one of them costs at midday. By eleven Poseidon has its longest queue of the day, and we get to watch it from the outside, dripping.
+
 A plan for the day that follows from that:
 
 1. **Voletarium at opening.** Germany sits close to the entrance, and by ten it

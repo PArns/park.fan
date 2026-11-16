@@ -17,6 +17,8 @@ import { parseUpdateMarker } from './derive.mjs';
  *     > [en] The original words.
  *     >
  *     > Speaker, role, [where it was said](https://…), aus dem Englischen übersetzt
+ *
+ * `[!PARKY]` is one practical tip in Parky's voice, drawn with a still Parky beside it.
  */
 
 export const CALLOUT_TYPES = [
@@ -28,10 +30,13 @@ export const CALLOUT_TYPES = [
   'correction',
   'update',
   'quote',
+  'parky',
 ] as const;
 export type CalloutType = (typeof CALLOUT_TYPES)[number];
 
-const MARKER_RE = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION|CORRECTION|UPDATE|QUOTE)\]\s*\n?/;
+/** A callout's `[!TYPE]` marker at the start of a blockquote; the admin editor reads the same one. */
+export const CALLOUT_MARKER_RE = new RegExp(`^\\[!(${CALLOUT_TYPES.join('|').toUpperCase()})\\]`);
+const MARKER_RE = new RegExp(`${CALLOUT_MARKER_RE.source}\\s*\\n?`);
 /** `[en]`, `[pt-BR]`: the language of a quote's original, at the start of its paragraph. */
 const ORIGINAL_RE = /^\[([a-z]{2}(?:-[A-Z]{2})?)\]\s*/;
 

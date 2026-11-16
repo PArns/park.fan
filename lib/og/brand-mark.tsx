@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { OgParky } from './parky-mark';
 
 /**
  * The park.fan marker and wordmark for dynamically rendered OG images, as PNG data URIs read out
@@ -68,7 +69,8 @@ export function OgBrandMark({ height }: { height: number }) {
  * styled text so the wordmark is never rendered as a flat single-colour word.
  *
  * Proportions mirror the HOME OG card exactly (wordmark ≈ 0.93× marker height,
- * gap ≈ 0.19× marker height), so callers pass only the marker height.
+ * gap ≈ 0.19× marker height), so callers pass only the marker height. Parky stands after the
+ * wordmark as the brand's signature, as tall as the marker.
  */
 export function OgBrandLockup({ markerHeight }: { markerHeight: number }) {
   const wordmarkHeight = Math.round(markerHeight * (140 / 150));
@@ -85,6 +87,7 @@ export function OgBrandLockup({ markerHeight }: { markerHeight: number }) {
         height={wordmarkHeight}
         style={{ width: wordmarkWidth, height: wordmarkHeight }}
       />
+      <OgParky size={markerHeight} />
     </div>
   );
 }
