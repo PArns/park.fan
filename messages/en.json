@@ -2854,7 +2854,7 @@
     "tiers": {
       "kicker": "Cost",
       "title": "Free or paid",
-      "lead": "Which key fits depends on whether your code is open and whether your project earns money.",
+      "lead": "Which key fits depends on whether your code is open and whether your project earns money",
       "freeTitle": "Free key",
       "free": {
         "openSource": "The source code is public, under an open-source licence.",
@@ -2894,7 +2894,38 @@
         "image": "Only a logo or image without a text link"
       },
       "exampleTitle": "Example",
-      "exampleBody": "A credit that meets every point. The link leads to the page of the park whose data stands next to it."
+      "exampleBody": "A credit that meets every point. The link leads to the page of the park whose data stands next to it.",
+      "specTitle": "The requirements at a glance",
+      "spec": {
+        "text": {
+          "label": "Wording",
+          "value": "A short line that says what comes from park.fan, such as “Wait times and forecasts: park.fan”. It may be in your project’s language."
+        },
+        "anchor": {
+          "label": "Link text",
+          "value": "Exactly <code>park.fan</code>. Not “here”, not “source”, not a URL as the link text."
+        },
+        "target": {
+          "label": "Link target",
+          "value": "The park.fan page of the park or ride whose data sits next to it. In the footer of a whole site, <code>https://park.fan/</code> is enough."
+        },
+        "rel": {
+          "label": "Attributes",
+          "value": "A plain link with just <code>href</code>. <code>rel=\"noopener\"</code> is allowed, nothing else in <code>rel</code>."
+        },
+        "place": {
+          "label": "Placement",
+          "value": "On the same page as the data, reachable without a click or a login, in the HTML the server sends."
+        },
+        "style": {
+          "label": "Appearance",
+          "value": "At least as large as the body text around it, with normal contrast, and recognisable as a link."
+        }
+      },
+      "previewTitle": "What it looks like",
+      "sampleText": "Wait times and forecasts:",
+      "parkVariant": "Below a park’s data",
+      "footerVariant": "In the footer of the whole site"
     },
     "usage": {
       "kicker": "Requests",
@@ -3080,7 +3111,7 @@
     "dashboard": {
       "metaTitle": "Developer dashboard",
       "title": "Developer dashboard",
-      "lead": "Your API keys, their use and your requests.",
+      "lead": "Your API keys, their use and your requests",
       "backToPortal": "Back to the API overview",
       "loading": "Loading",
       "loadFailed": "The dashboard could not be loaded.",

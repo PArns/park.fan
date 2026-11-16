@@ -1,6 +1,7 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLocale, useTranslations } from 'next-intl';
 import {
   Activity,
@@ -21,6 +22,7 @@ import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { useMinuteNow } from '@/lib/hooks/use-minute-now';
 import { cn } from '@/lib/utils';
 import {
+  DEVELOPER_OVERVIEW_QUERY_KEY,
   DeveloperApiError,
   fetchDeveloperOverview,
   usageTotals,
@@ -32,11 +34,10 @@ import { DeveloperAuth } from './developer-auth';
 import { DeveloperKeyCard } from './developer-key-card';
 import { KeyRequestForm } from './key-request-form';
 
-type Load =
-  | { status: 'loading' }
-  | { status: 'signed-out' }
-  | { status: 'error' }
-  | { status: 'ready'; data: DeveloperOverview };
+/** The API said nobody is signed in. */
+function isSignedOut(error: unknown): boolean {
+  return error instanceof DeveloperApiError && error.status === 401;
+}
 
 /** One figure of the dashboard's head. */
 function Tile({ icon: Icon, label, value }: { icon: typeof Gauge; label: string; value: string }) {
@@ -108,30 +109,23 @@ export function DeveloperDashboard() {
   const locale = useLocale();
   const number = getNumberFormat(locale);
   const now = useMinuteNow();
-  const [load, setLoad] = useState<Load>({ status: 'loading' });
+  const client = useQueryClient();
   const [requesting, setRequesting] = useState(false);
   const [filed, setFiled] = useState(false);
-
-  const refresh = useCallback(async () => {
-    try {
-      setLoad({ status: 'ready', data: await fetchDeveloperOverview() });
-    } catch (err) {
-      setLoad({
-        status: err instanceof DeveloperApiError && err.status === 401 ? 'signed-out' : 'error',
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    void refresh();
-  }, [refresh]);
+  const overview = useQuery<DeveloperOverview, Error>({
+    queryKey: DEVELOPER_OVERVIEW_QUERY_KEY,
+    queryFn: fetchDeveloperOverview,
+    // A 401 means nobody is signed in; asking again does not change that.
+    retry: (count, error) => !isSignedOut(error) && count < 2,
+  });
+  const refresh = () => void overview.refetch();
 
   async function signOut() {
     await fetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
-    setLoad({ status: 'signed-out' });
+    await client.resetQueries({ queryKey: DEVELOPER_OVERVIEW_QUERY_KEY });
   }
 
-  if (load.status === 'loading') {
+  if (overview.isPending) {
     return (
       <div className="flex min-h-64 items-center justify-center" role="status">
         <Loader2 className="text-muted-foreground size-6 animate-spin" aria-label={t('loading')} />
@@ -139,16 +133,16 @@ export function DeveloperDashboard() {
     );
   }
 
-  if (load.status === 'signed-out') {
-    return <DeveloperAuth onSignedIn={() => void refresh()} />;
+  if (overview.isError && isSignedOut(overview.error)) {
+    return <DeveloperAuth onSignedIn={refresh} />;
   }
 
-  if (load.status === 'error') {
+  if (overview.isError) {
     return (
       <Card className="mx-auto max-w-md">
         <CardContent className="space-y-4 text-center">
           <p>{t('loadFailed')}</p>
-          <Button variant="outline" className="gap-1.5" onClick={() => void refresh()}>
+          <Button variant="outline" className="gap-1.5" onClick={refresh}>
             <RefreshCw className="size-4" />
             {t('retry')}
           </Button>
@@ -157,7 +151,7 @@ export function DeveloperDashboard() {
     );
   }
 
-  const { account, keys, requests } = load.data;
+  const { account, keys, requests } = overview.data;
   const totals = usageTotals(keys);
   const activeKeys = keys.filter((key) => !key.revokedAt);
   const pending = requests.filter((request) => request.status === 'pending');
@@ -195,7 +189,7 @@ export function DeveloperDashboard() {
                 key={key.id}
                 apiKey={key}
                 nowMs={now ?? Date.parse(key.createdAt)}
-                onChanged={() => void refresh()}
+                onChanged={refresh}
               />
             ))}
           </div>
@@ -229,7 +223,7 @@ export function DeveloperDashboard() {
             onFiled={() => {
               setRequesting(false);
               setFiled(true);
-              void refresh();
+              refresh();
             }}
           />
         )}

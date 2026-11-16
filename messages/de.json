@@ -2854,7 +2854,7 @@
     "tiers": {
       "kicker": "Kosten",
       "title": "Kostenlos oder kostenpflichtig",
-      "lead": "Welcher Key in Frage kommt, hängt davon ab, ob dein Code offen ist und ob dein Projekt Geld verdient.",
+      "lead": "Welcher Key in Frage kommt, hängt davon ab, ob dein Code offen ist und ob dein Projekt Geld verdient",
       "freeTitle": "Kostenloser Key",
       "free": {
         "openSource": "Der Quellcode ist öffentlich, unter einer Open-Source-Lizenz.",
@@ -2894,7 +2894,38 @@
         "image": "Nur ein Logo oder Bild ohne Textlink"
       },
       "exampleTitle": "Beispiel",
-      "exampleBody": "So sieht ein Quellenhinweis aus, der alle Punkte erfüllt. Der Link führt auf die Seite des Parks, dessen Daten daneben stehen."
+      "exampleBody": "So sieht ein Quellenhinweis aus, der alle Punkte erfüllt. Der Link führt auf die Seite des Parks, dessen Daten daneben stehen.",
+      "specTitle": "Die Vorgaben im Überblick",
+      "spec": {
+        "text": {
+          "label": "Wortlaut",
+          "value": "Ein kurzer Satz, der sagt, was von park.fan stammt, etwa „Wartezeiten und Prognosen: park.fan“. Die Sprache darf die deines Projekts sein."
+        },
+        "anchor": {
+          "label": "Linktext",
+          "value": "Genau <code>park.fan</code>. Kein „hier“, kein „Quelle“, keine URL als Linktext."
+        },
+        "target": {
+          "label": "Linkziel",
+          "value": "Die Seite des Parks oder der Attraktion bei park.fan, deren Daten daneben stehen. Im Footer einer ganzen Website reicht <code>https://park.fan/</code>."
+        },
+        "rel": {
+          "label": "Attribute",
+          "value": "Ein schlichter Link, nur mit <code>href</code>. Erlaubt ist <code>rel=\"noopener\"</code>, sonst nichts im <code>rel</code>."
+        },
+        "place": {
+          "label": "Platz",
+          "value": "Auf derselben Seite wie die Daten, ohne Klick oder Login erreichbar, im HTML, das der Server ausliefert."
+        },
+        "style": {
+          "label": "Darstellung",
+          "value": "Mindestens so groß wie der Fließtext daneben, mit normalem Kontrast und als Link erkennbar."
+        }
+      },
+      "previewTitle": "So sieht es aus",
+      "sampleText": "Wartezeiten und Prognosen:",
+      "parkVariant": "Unter den Daten eines Parks",
+      "footerVariant": "Im Footer der ganzen Website"
     },
     "usage": {
       "kicker": "Abfragen",
@@ -3080,7 +3111,7 @@
     "dashboard": {
       "metaTitle": "Entwickler-Dashboard",
       "title": "Entwickler-Dashboard",
-      "lead": "Deine API-Keys, ihre Nutzung und deine Anträge.",
+      "lead": "Deine API-Keys, ihre Nutzung und deine Anträge",
       "backToPortal": "Zurück zur API-Übersicht",
       "loading": "Wird geladen",
       "loadFailed": "Das Dashboard ließ sich nicht laden.",
@@ -3097,7 +3128,7 @@
       "noKeys": "Noch kein Key. Sobald ein Antrag freigegeben ist, steht der Key hier.",
       "requestsTitle": "Deine Anträge",
       "newRequest": "Key beantragen",
-      "filed": "Der Antrag ist angekommen. Die Entscheidung steht hier, sobald sie gefallen ist.",
+      "filed": "Der Antrag ist angekommen. Sobald er entschieden ist, siehst du die Entscheidung unter dem Antrag.",
       "noRequests": "Noch kein Antrag.",
       "pendingHint": "Jeder Antrag wird von Hand geprüft.",
       "withdraw": "Zurückziehen",

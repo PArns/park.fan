@@ -95,11 +95,16 @@ const STEPS: ReadonlyArray<{ key: string; icon: LucideIcon }> = [
   { key: 'pickup', icon: KeyRound },
 ];
 
-/** The attribution a project shows, with the park's page as its link. */
-const ATTRIBUTION_SNIPPET = `<p>
-  Wait times and crowd forecasts:
-  <a href="https://park.fan/en/parks/europe/germany/rust/europa-park">park.fan</a>
-</p>`;
+/** The park a credit's example links to. */
+const EXAMPLE_PARK_PATH = '/parks/europe/germany/rust/europa-park';
+
+/** The properties of a valid credit, in the order the requirements list them. */
+const ATTRIBUTION_SPEC = ['text', 'anchor', 'target', 'rel', 'place', 'style'] as const;
+
+/** A credit as HTML: the line of text, then a plain link to `href`. */
+function attributionHtml(text: string, href: string): string {
+  return `<p>\n  ${text}\n  <a href="${href}">park.fan</a>\n</p>`;
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -390,11 +395,57 @@ export default async function DevelopersPage({ params }: DevelopersPageProps) {
               </ul>
             </InfoCard>
           </div>
+          <InfoCard icon={BadgeCheck} title={t('attribution.specTitle')}>
+            <dl className="divide-border divide-y text-sm">
+              {ATTRIBUTION_SPEC.map((key) => (
+                <div key={key} className="grid gap-1 py-2.5 sm:grid-cols-[9rem_1fr] sm:gap-4">
+                  <dt className="font-semibold">{t(`attribution.spec.${key}.label`)}</dt>
+                  <dd className="text-muted-foreground leading-relaxed">
+                    {t.rich(`attribution.spec.${key}.value`, { code })}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </InfoCard>
           <InfoCard icon={Braces} title={t('attribution.exampleTitle')}>
             <p className="text-muted-foreground text-sm leading-relaxed">
               {t('attribution.exampleBody')}
             </p>
-            <CodeSample>{ATTRIBUTION_SNIPPET}</CodeSample>
+            <figure className="space-y-2">
+              <figcaption className="text-muted-foreground text-xs font-medium">
+                {t('attribution.previewTitle')}
+              </figcaption>
+              <p className="border-border bg-background/60 rounded-lg border border-dashed px-4 py-3 text-sm">
+                {t('attribution.sampleText')}{' '}
+                <a
+                  href={`${SITE_URL}/${locale}${EXAMPLE_PARK_PATH}`}
+                  className="text-primary underline underline-offset-2"
+                >
+                  park.fan
+                </a>
+              </p>
+            </figure>
+            <div className="grid gap-4 lg:grid-cols-2">
+              <div className="min-w-0 space-y-2">
+                <p className="text-muted-foreground text-xs font-medium">
+                  {t('attribution.parkVariant')}
+                </p>
+                <CodeSample>
+                  {attributionHtml(
+                    t('attribution.sampleText'),
+                    `${SITE_URL}/${locale}${EXAMPLE_PARK_PATH}`
+                  )}
+                </CodeSample>
+              </div>
+              <div className="min-w-0 space-y-2">
+                <p className="text-muted-foreground text-xs font-medium">
+                  {t('attribution.footerVariant')}
+                </p>
+                <CodeSample>
+                  {attributionHtml(t('attribution.sampleText'), `${SITE_URL}/`)}
+                </CodeSample>
+              </div>
+            </div>
           </InfoCard>
         </SectionShell>
 

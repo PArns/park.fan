@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
 import { getTickerData } from '@/lib/api/analytics';
 import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 
 /**
  * The three public analytics reads, and only those three. It stays anonymous, so the lock is the
@@ -19,9 +20,11 @@ const ANALYTICS_PATHS = new Set(['ticker', 'realtime', 'geo-live']);
 const SHARED_WINDOW = 'public, s-maxage=60, stale-while-revalidate=120';
 
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ path: string[] }> }
 ) {
+  // The platform statistics need a key at the API, and this relay sends the site's.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
   const { path } = await params;
 
   // Every homepage visitor and the admin dashboard poll the ticker without parameters, so it comes

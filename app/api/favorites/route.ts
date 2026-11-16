@@ -6,8 +6,8 @@ import { getForwardedForHeaders } from '@/lib/utils/request-ip';
 import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 import { fetchWithForecast } from '@/lib/api/forecast-query';
 
-// The answer depends on cookies and optionally the IP, so it is never cached. With
-// NEXT_PUBLIC_API_DIRECT on, the browser asks the API itself (`getFavorites`).
+// The answer depends on cookies and optionally the IP, so it is never cached. The browser always
+// comes through here, since the API wants a key for favorites.
 
 export async function GET(request: NextRequest) {
   // The answer carries forecast fields; it is for park.fan's own pages only.

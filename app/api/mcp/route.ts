@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 import { MCP_TOOLS } from '@/lib/agents/mcp-tools';
-import { FORECAST_TOOLS, forecastGrant } from '@/lib/agents/forecast-access';
+import { KEYED_TOOLS, keyGrant } from '@/lib/agents/forecast-access';
 import { DATA_TERMS_URL } from '@/lib/agents/licensing';
+import { DEVELOPER_PORTAL_URL } from '@/lib/developers/paths';
 import { MCP_PROTOCOL_VERSION, MCP_SERVER_INFO } from '@/lib/agents/mcp-server-card';
 
 /**
@@ -77,13 +78,13 @@ async function handle(request: JsonRpcRequest, http: Request): Promise<NextRespo
       const tool = MCP_TOOLS.find((candidate) => candidate.name === params.name);
       if (!tool) return failure(id, -32602, `Unknown tool: ${params.name}`);
 
-      const grant = FORECAST_TOOLS.has(tool.name) ? forecastGrant(http) : null;
-      if (FORECAST_TOOLS.has(tool.name) && !grant) {
+      const grant = keyGrant(http);
+      if (KEYED_TOOLS.has(tool.name) && !grant) {
         return result(id, {
           content: [
             {
               type: 'text',
-              text: `${tool.name} returns park.fan's crowd forecasts, which need a park.fan data API key in the X-API-Key header. Keys for non-commercial use are free on request. Terms: ${DATA_TERMS_URL}`,
+              text: `${tool.name} reads more than the live wait times, which needs a park.fan data API key in the X-API-Key header. Request one at ${DEVELOPER_PORTAL_URL}. Terms: ${DATA_TERMS_URL}`,
             },
           ],
           isError: true,
@@ -92,7 +93,7 @@ async function handle(request: JsonRpcRequest, http: Request): Promise<NextRespo
 
       try {
         const output = await tool.execute((params.arguments ?? {}) as Record<string, unknown>, {
-          forecastGrant: grant ?? undefined,
+          keyGrant: grant ?? undefined,
         });
         return result(id, {
           // Both shapes on purpose: `content` is what every client can read, `structuredContent`

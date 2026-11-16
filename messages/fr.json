@@ -2702,458 +2702,489 @@
   },
   "developers": {
     "meta": {
-      "title": "park.fan API: wait times, park data and API keys for developers",
-      "description": "Live wait times for more than 200 theme parks without signing up. Park data, weather, statistics and forecasts come with API keys that carry single permissions, free for open source that earns nothing."
+      "title": "API park.fan : temps d’attente, données des parcs et clés d’API pour développeurs",
+      "description": "Les temps d’attente en direct de plus de 200 parcs d’attractions, sans inscription. Données des parcs, météo, statistiques et prévisions s’obtiennent avec des clés d’API qui portent chacune des autorisations précises, gratuites pour l’open source qui ne rapporte rien."
     },
     "hero": {
-      "title": "The park.fan API",
-      "tagline": "Without a key you read the live wait times. Everything else, from opening hours to ride data to forecasts, comes with a key that carries exactly the permissions your project needs.",
-      "action": "Open the dashboard"
+      "title": "L’API park.fan",
+      "tagline": "Sans clé, vous lisez les temps d’attente en direct. Tout le reste, des horaires d’ouverture aux données des attractions et aux prévisions, passe par une clé qui porte exactement les autorisations dont votre projet a besoin.",
+      "action": "Ouvrir le tableau de bord"
     },
-    "intro": "Since December 2025, park.fan has measured the wait times in more than 200 parks every five minutes and turned them into statistics, forecasts and day plans. api.park.fan serves the same data as JSON. You request a key on the dashboard, and we review every request by hand.",
+    "intro": "Depuis décembre 2025, park.fan mesure toutes les cinq minutes les temps d’attente de plus de 200 parcs et en tire des statistiques, des prévisions et des plans de journée. api.park.fan sert les mêmes données en JSON. Vous demandez une clé sur le tableau de bord, et nous examinons chaque demande à la main.",
     "steps": {
       "register": {
-        "title": "Create an account",
-        "text": "With an email address and a password, on the dashboard. The account sees only your own keys and requests."
+        "title": "Créer un compte",
+        "text": "Avec une adresse e-mail et un mot de passe, sur le tableau de bord. Le compte ne voit que vos propres clés et demandes."
       },
       "request": {
-        "title": "Request a key",
-        "text": "Describe your project, pick the permissions and name the page with the link to park.fan."
+        "title": "Demander une clé",
+        "text": "Décrivez votre projet, choisissez les autorisations et indiquez la page qui porte le lien vers park.fan."
       },
       "review": {
-        "title": "Review",
-        "text": "We read every request and set the permissions, hourly limit and term. The answer appears on the dashboard."
+        "title": "Examen",
+        "text": "Nous lisons chaque demande et fixons les autorisations, la limite horaire et la durée. La réponse apparaît sur le tableau de bord."
       },
       "pickup": {
-        "title": "Pick up the key",
-        "text": "Once approved, the dashboard shows you the key once. There you see its use and can rotate or revoke it."
+        "title": "Récupérer la clé",
+        "text": "Une fois la demande acceptée, le tableau de bord vous montre la clé une seule fois. Vous y voyez aussi son utilisation et pouvez la renouveler ou la révoquer."
       }
     },
     "access": {
-      "kicker": "Access",
-      "title": "Without a key, wait times only",
-      "lead": "Without a key the API serves one route: the current wait times and status of a park's attractions. Park data, opening hours, weather, seasons, statistics, forecasts and the planners need a key with the matching permission.",
-      "openTitle": "Without a key",
-      "openBadge": "open",
-      "openBody": "Wait times and status of every attraction in a park. Without a key you get {perMinute} requests a minute and {perHour} an hour per IP address.",
-      "keyTitle": "With a key",
-      "keyBadge": "by permission",
-      "keyBody": "Every other route. A key carries only the permissions granted to it; when one is missing, the API answers 403 and names it."
+      "kicker": "Accès",
+      "title": "Sans clé, seulement les temps d’attente",
+      "lead": "Sans clé, l’API sert une seule route : les temps d’attente et l’état actuels des attractions d’un parc. Données des parcs, horaires, météo, saisons, statistiques, prévisions et planificateurs demandent une clé avec l’autorisation correspondante.",
+      "openTitle": "Sans clé",
+      "openBadge": "ouvert",
+      "openBody": "Temps d’attente et état de chaque attraction d’un parc. Sans clé, vous avez droit à {perMinute} requêtes par minute et {perHour} par heure et par adresse IP.",
+      "keyTitle": "Avec une clé",
+      "keyBadge": "selon autorisation",
+      "keyBody": "Toutes les autres routes. Une clé ne porte que les autorisations qui lui ont été accordées ; s’il en manque une, l’API répond 403 et la nomme."
     },
     "permissionsChapter": {
-      "kicker": "Permissions",
-      "title": "What a key may read",
-      "lead": "The permissions are sorted into seven groups. Request only the permissions whose data your project shows. The park and ride detail leave out the fields your key has no permission for.",
+      "kicker": "Autorisations",
+      "title": "Ce qu’une clé peut lire",
+      "lead": "Les autorisations sont réparties en sept groupes. Ne demandez que celles dont votre projet affiche les données. Le détail d’un parc ou d’une attraction omet les champs pour lesquels votre clé n’a pas d’autorisation.",
       "routes": "Endpoints",
-      "parkRoute": "<code>{short}</code> stands for <code>{full}</code>.",
-      "catalog": "The catalog is also available in machine-readable form at <code>{url}</code>."
+      "parkRoute": "<code>{short}</code> désigne <code>{full}</code>.",
+      "catalog": "Le catalogue existe aussi en version lisible par machine sur <code>{url}</code>."
     },
     "permissions": {
       "groups": {
-        "live": "Live data",
-        "parks": "Parks",
-        "rides": "Rides, shows and restaurants",
-        "stats": "Statistics",
-        "forecasts": "Forecasts",
-        "planner": "Planner",
-        "travel": "Travel data"
+        "live": "Données en direct",
+        "parks": "Parcs",
+        "rides": "Attractions, spectacles et restaurants",
+        "stats": "Statistiques",
+        "forecasts": "Prévisions",
+        "planner": "Planificateur",
+        "travel": "Données de voyage"
       },
       "items": {
         "live": {
           "waits": {
-            "title": "Wait times",
-            "description": "Current wait time and status of every attraction. Open without a key."
+            "title": "Temps d’attente",
+            "description": "Temps d’attente et état actuels de chaque attraction. Ouvert sans clé."
           },
           "schedule": {
-            "title": "Opening hours",
-            "description": "The park's opening hours, show times and the restaurants' opening hours."
+            "title": "Horaires d’ouverture",
+            "description": "Les horaires du parc, les heures des spectacles et les horaires des restaurants."
           },
           "weather": {
-            "title": "Weather",
-            "description": "Current weather, forecast and nowcast from Open-Meteo."
+            "title": "Météo",
+            "description": "Météo actuelle, prévisions et nowcast d’Open-Meteo."
           }
         },
         "parks": {
           "directory": {
-            "title": "Park directory",
-            "description": "Lists by continent, country and city, search, nearby parks and popular parks."
+            "title": "Annuaire des parcs",
+            "description": "Listes par continent, pays et ville, recherche, parcs à proximité et parcs populaires."
           },
           "details": {
-            "title": "Park details",
-            "description": "A park with its address, coordinates, time zone, links and facts. Its other fields need their own permissions."
+            "title": "Détails du parc",
+            "description": "Un parc avec son adresse, ses coordonnées, son fuseau horaire, ses liens et ses faits. Ses autres champs demandent leurs propres autorisations."
           },
           "seasons": {
-            "title": "Seasons and maintenance",
-            "description": "Seasons and events, whether a ride is in season, and planned maintenance windows."
+            "title": "Saisons et maintenance",
+            "description": "Saisons et événements, si une attraction est en saison, et périodes de maintenance prévues."
           }
         },
         "rides": {
           "details": {
-            "title": "Ride data",
-            "description": "The ride list and detail: area, coordinates, minimum and maximum height, single rider, virtual queue, indoor or outdoor, wet."
+            "title": "Données des attractions",
+            "description": "La liste des attractions et leur détail : zone, coordonnées, taille minimale et maximale, single rider, file virtuelle, intérieur ou extérieur, mouillé."
           },
           "profiles": {
-            "title": "Ride profiles",
-            "description": "Manufacturer, model, elements, inversions, height, length, speed and ride duration, plus the glossary routes."
+            "title": "Fiches des attractions",
+            "description": "Constructeur, modèle, éléments, inversions, hauteur, longueur, vitesse et durée du parcours, plus les routes du glossaire."
           }
         },
         "stats": {
           "live": {
-            "title": "Live analysis",
-            "description": "Crowd level, occupancy, trend and the comparison with a typical day."
+            "title": "Analyse en direct",
+            "description": "Niveau d’affluence, taux d’occupation, tendance et comparaison avec une journée type."
           },
           "history": {
-            "title": "History",
-            "description": "Measured wait times looking back: park statistics, hourly profile, a ride's day curve and history, typical waits, rope drop, outages."
+            "title": "Historique",
+            "description": "Les temps d’attente mesurés, en rétrospective : statistiques du parc, profil horaire, courbe du jour et historique d’une attraction, attentes habituelles, rope drop, pannes."
           },
           "platform": {
-            "title": "Platform figures",
-            "description": "Live totals across all parks, the ticker and the best times to visit overall."
+            "title": "Chiffres de la plateforme",
+            "description": "Totaux en direct sur tous les parcs, le ticker et les meilleurs moments de visite en général."
           },
           "accuracy": {
-            "title": "Forecast accuracy",
-            "description": "How far the forecasts were from the measured wait times."
+            "title": "Précision des prévisions",
+            "description": "L’écart entre les prévisions et les temps d’attente mesurés."
           }
         },
         "forecasts": {
           "crowd": {
-            "title": "Crowd forecast",
-            "description": "Crowd calendar, best days to visit, yearly forecast and the trip regions' calendars."
+            "title": "Prévision d’affluence",
+            "description": "Calendrier d’affluence, meilleurs jours de visite, prévision annuelle et calendriers des régions de voyage."
           },
           "waits": {
-            "title": "Wait-time forecast",
-            "description": "Best visit times, hourly forecast and the forecast in a day curve, with ?forecast=true."
+            "title": "Prévision des temps d’attente",
+            "description": "Meilleurs moments de visite, prévision heure par heure et prévision dans la courbe du jour, avec ?forecast=true."
           }
         },
         "planner": {
           "day": {
-            "title": "Day planner",
-            "description": "A park day's hour-by-hour plan per ride and the optimisation of a planned day."
+            "title": "Planificateur de journée",
+            "description": "Le plan heure par heure d’une journée au parc, par attraction, et l’optimisation d’une journée planifiée."
           },
           "trip": {
-            "title": "Trip planner",
-            "description": "Trip plans across several parks and days, and their suggested improvements."
+            "title": "Planificateur de voyage",
+            "description": "Plans de voyage sur plusieurs parcs et plusieurs jours, et les améliorations proposées."
           }
         },
         "travel": {
           "regions": {
-            "title": "Trip regions",
-            "description": "The regions with their parks, hotel areas and travel times."
+            "title": "Régions de voyage",
+            "description": "Les régions avec leurs parcs, leurs zones hôtelières et leurs temps de trajet."
           },
           "tickets": {
-            "title": "Ticket catalogue",
-            "description": "A trip region's tickets."
+            "title": "Catalogue des billets",
+            "description": "Les billets d’une région de voyage."
           },
           "school-breaks": {
-            "title": "School holidays",
-            "description": "The school holidays of the countries visitors come from."
+            "title": "Vacances scolaires",
+            "description": "Les vacances scolaires des pays d’où viennent les visiteurs."
           }
         }
       }
     },
     "tiers": {
-      "kicker": "Cost",
-      "title": "Free or paid",
-      "lead": "Which key fits depends on whether your code is open and whether your project earns money.",
-      "freeTitle": "Free key",
+      "kicker": "Coût",
+      "title": "Gratuit ou payant",
+      "lead": "La clé qui convient dépend de deux choses : votre code est-il ouvert, et votre projet rapporte-t-il de l’argent ?",
+      "freeTitle": "Clé gratuite",
       "free": {
-        "openSource": "The source code is public, under an open-source licence.",
-        "noMoney": "The project earns no money: no ads, no affiliate or paid links, no price, no subscription, no in-app purchases.",
-        "donations": "Donations and sponsorship are fine.",
-        "backlink": "A visible link to park.fan, as the next chapter describes."
+        "openSource": "Le code source est public, sous une licence open source.",
+        "noMoney": "Le projet ne rapporte pas d’argent : pas de publicité, pas de liens affiliés ou payants, pas de prix, pas d’abonnement, pas d’achats intégrés.",
+        "donations": "Les dons et le sponsoring sont acceptés.",
+        "backlink": "Un lien visible vers park.fan, comme le décrit le chapitre suivant."
       },
-      "paidTitle": "Paid key",
-      "paidBody": "Any other use gets a paid key, with a written agreement on scope and price. You request it on the dashboard too, and we get back to you with an offer.",
+      "paidTitle": "Clé payante",
+      "paidBody": "Tout autre usage passe par une clé payante, avec un accord écrit sur le périmètre et le prix. Vous la demandez aussi sur le tableau de bord, et nous revenons vers vous avec une offre.",
       "paid": {
-        "ads": "Ads, including through an ad network",
-        "affiliate": "Affiliate or paid links",
-        "price": "A price, subscription, in-app purchases, client work or a company's product",
-        "closed": "Source code not public"
+        "ads": "Publicité, y compris via une régie",
+        "affiliate": "Liens affiliés ou payants",
+        "price": "Un prix, un abonnement, des achats intégrés, un travail pour un client ou le produit d’une entreprise",
+        "closed": "Code source non public"
       },
-      "review": "Every request is decided by hand, including one for a free key. We set which permissions, which hourly limit and which term the key gets."
+      "review": "Chaque demande est tranchée à la main, y compris une demande de clé gratuite. Nous fixons les autorisations, la limite horaire et la durée de la clé."
     },
     "attribution": {
-      "kicker": "Credit",
-      "title": "What the link to park.fan must look like",
-      "lead": "The link is what a free key costs. It must be visible to visitors and an ordinary link to search engines.",
-      "doTitle": "Like this",
+      "kicker": "Mention",
+      "title": "À quoi doit ressembler le lien vers park.fan",
+      "lead": "Le lien est le prix d’une clé gratuite. Il doit être visible pour les visiteurs et être un lien ordinaire pour les moteurs de recherche.",
+      "doTitle": "Comme ceci",
       "do": {
-        "visible": "Visible on every page or screen that shows park.fan's data, in normal type size.",
-        "link": "A text link with the word park.fan that leads to the page of the park or attraction in question on park.fan.",
-        "follow": "An ordinary link, without <code>nofollow</code>, <code>sponsored</code> or <code>ugc</code> in its <code>rel</code> attribute.",
-        "indexable": "On a page search engines may index: no <code>noindex</code>, no block in robots.txt, no login in front of it.",
-        "near": "Close to the data, for example below the wait-time table or in the page's footer.",
-        "apps": "In an app: the line “Data: park.fan” visible in the app, and a link as above on the project's website or store page."
+        "visible": "Visible sur chaque page ou écran qui affiche des données de park.fan, en taille de texte normale.",
+        "link": "Un lien texte avec le mot park.fan, qui mène à la page du parc ou de l’attraction concernés sur park.fan.",
+        "follow": "Un lien ordinaire, sans <code>nofollow</code>, <code>sponsored</code> ni <code>ugc</code> dans son attribut <code>rel</code>.",
+        "indexable": "Sur une page que les moteurs de recherche peuvent indexer : pas de <code>noindex</code>, pas de blocage dans robots.txt, pas de connexion obligatoire.",
+        "near": "Près des données, par exemple sous le tableau des temps d’attente ou dans le pied de page.",
+        "apps": "Dans une application : la ligne « Données : park.fan » visible dans l’application, et un lien comme ci-dessus sur le site web ou la page de la boutique du projet."
       },
-      "dontTitle": "This does not count",
+      "dontTitle": "Ceci ne compte pas",
       "dont": {
-        "nofollow": "<code>nofollow</code>, <code>sponsored</code> or <code>ugc</code> on the link",
-        "hidden": "Hidden, tiny or invisibly coloured links",
-        "scriptOnly": "A link that only JavaScript adds and the HTML lacks",
-        "redirect": "A detour through a link shortener or a redirect",
-        "image": "Only a logo or image without a text link"
+        "nofollow": "<code>nofollow</code>, <code>sponsored</code> ou <code>ugc</code> sur le lien",
+        "hidden": "Liens cachés, minuscules ou d’une couleur invisible",
+        "scriptOnly": "Un lien ajouté uniquement par JavaScript et absent du HTML",
+        "redirect": "Un détour par un raccourcisseur de liens ou une redirection",
+        "image": "Seulement un logo ou une image sans lien texte"
       },
-      "exampleTitle": "Example",
-      "exampleBody": "A credit that meets every point. The link leads to the page of the park whose data stands next to it."
+      "exampleTitle": "Exemple",
+      "exampleBody": "Une mention qui remplit chaque point. Le lien mène à la page du parc dont les données sont affichées à côté.",
+      "specTitle": "Les exigences en bref",
+      "spec": {
+        "text": {
+          "label": "Texte",
+          "value": "Une ligne courte qui dit ce qui vient de park.fan, comme « Temps d’attente et prévisions : park.fan ». Elle peut être dans la langue de votre projet."
+        },
+        "anchor": {
+          "label": "Texte du lien",
+          "value": "Exactement <code>park.fan</code>. Pas « ici », pas « source », pas d’URL comme texte du lien."
+        },
+        "target": {
+          "label": "Cible du lien",
+          "value": "La page park.fan du parc ou de l’attraction dont les données sont affichées à côté. Dans le pied de page d’un site entier, <code>https://park.fan/</code> suffit."
+        },
+        "rel": {
+          "label": "Attributs",
+          "value": "Un lien simple avec seulement <code>href</code>. <code>rel=\"noopener\"</code> est permis, rien d’autre dans <code>rel</code>."
+        },
+        "place": {
+          "label": "Emplacement",
+          "value": "Sur la même page que les données, accessible sans clic ni connexion, dans le HTML envoyé par le serveur."
+        },
+        "style": {
+          "label": "Apparence",
+          "value": "Au moins aussi grand que le texte courant autour, avec un contraste normal, et reconnaissable comme lien."
+        }
+      },
+      "previewTitle": "Ce que ça donne",
+      "sampleText": "Temps d’attente et prévisions :",
+      "parkVariant": "Sous les données d’un parc",
+      "footerVariant": "Dans le pied de page du site entier"
     },
     "usage": {
-      "kicker": "Requests",
-      "title": "How to query the API",
-      "keyTitle": "Send the key in a header",
-      "keyBody": "Every endpoint sits under <code>/v1</code> and answers in JSON. The key goes in the <code>X-API-Key</code> header and starts with <code>pfk_</code>. It never goes in a URL.",
-      "verifyTitle": "Check a key",
-      "verifyBody": "This endpoint tells you whether your key is valid, which permissions it carries, for which parks and until when. With <code>?park=</code> it checks a single park.",
-      "errorsTitle": "When the API refuses",
-      "errorStatus": "Status",
+      "kicker": "Requêtes",
+      "title": "Comment interroger l’API",
+      "keyTitle": "Envoyer la clé dans un en-tête",
+      "keyBody": "Chaque endpoint se trouve sous <code>/v1</code> et répond en JSON. La clé va dans l’en-tête <code>X-API-Key</code> et commence par <code>pfk_</code>. Elle ne va jamais dans une URL.",
+      "verifyTitle": "Vérifier une clé",
+      "verifyBody": "Cet endpoint vous dit si votre clé est valide, quelles autorisations elle porte, pour quels parcs et jusqu’à quand. Avec <code>?park=</code>, il vérifie un seul parc.",
+      "errorsTitle": "Quand l’API refuse",
+      "errorStatus": "Statut",
       "errorCode": "Code",
-      "errorMeaning": "Meaning",
+      "errorMeaning": "Signification",
       "errors": {
-        "api-key-required": "The route needs a key and the request carried none.",
-        "api-key-invalid": "The key does not exist or has been revoked.",
-        "api-key-expired": "The key has expired.",
-        "api-key-permission-missing": "The key lacks the permission for this route; requiredPermission names it.",
-        "api-key-park-not-allowed": "This key only covers other parks.",
-        "api-key-park-required": "This key only covers certain parks, and the route names none.",
-        "api-key-rate-limited": "The hourly limit is used up until the next full hour."
+        "api-key-required": "La route demande une clé et la requête n’en portait pas.",
+        "api-key-invalid": "La clé n’existe pas ou a été révoquée.",
+        "api-key-expired": "La clé a expiré.",
+        "api-key-permission-missing": "La clé n’a pas l’autorisation pour cette route ; requiredPermission la nomme.",
+        "api-key-park-not-allowed": "Cette clé ne couvre que d’autres parcs.",
+        "api-key-park-required": "Cette clé ne couvre que certains parcs, et la route n’en nomme aucun.",
+        "api-key-rate-limited": "La limite horaire est épuisée jusqu’à la prochaine heure pleine."
       },
-      "limitsTitle": "Limits",
-      "limitsBody": "A key may make {perHour} requests an hour unless agreed otherwise. Every answer reports what is left in <code>X-API-Key-Hourly-Remaining</code>. Beyond that, the API answers 429 until the next full hour.",
-      "secretTitle": "The key belongs on your server",
-      "secretBody": "Anything inside an app, a browser extension or a web page's JavaScript can be read by anyone. Call the API from your server and pass only the result to your users. If a key does leak, give it a new secret on the dashboard.",
-      "referenceTitle": "Reference",
-      "referenceBody": "Every endpoint with its parameters and response format is in the interactive reference. Any client generator can load the OpenAPI document behind it.",
-      "referenceLink": "Interactive reference",
-      "openapiLink": "OpenAPI document",
-      "mcpTitle": "MCP server",
-      "mcpBody": "For assistants there is an MCP server at <code>{url}</code>. Without a key it answers only the question about a park's current wait times; search and the best days need your key in the <code>X-API-Key</code> header.",
-      "terms": "The full terms of use in the legal notice"
+      "limitsTitle": "Limites",
+      "limitsBody": "Une clé peut faire {perHour} requêtes par heure, sauf accord contraire. Chaque réponse indique le reste dans <code>X-API-Key-Hourly-Remaining</code>. Au-delà, l’API répond 429 jusqu’à la prochaine heure pleine.",
+      "secretTitle": "La clé a sa place sur votre serveur",
+      "secretBody": "Tout ce qui se trouve dans une application, une extension de navigateur ou le JavaScript d’une page web peut être lu par n’importe qui. Appelez l’API depuis votre serveur et ne transmettez que le résultat à vos utilisateurs. Si une clé fuite malgré tout, donnez-lui un nouveau secret sur le tableau de bord.",
+      "referenceTitle": "Référence",
+      "referenceBody": "Chaque endpoint, avec ses paramètres et son format de réponse, figure dans la référence interactive. N’importe quel générateur de clients peut charger le document OpenAPI qui la sous-tend.",
+      "referenceLink": "Référence interactive",
+      "openapiLink": "Document OpenAPI",
+      "mcpTitle": "Serveur MCP",
+      "mcpBody": "Pour les assistants, il existe un serveur MCP sur <code>{url}</code>. Sans clé, il ne répond qu’à la question des temps d’attente actuels d’un parc ; la recherche et les meilleurs jours demandent votre clé dans l’en-tête <code>X-API-Key</code>.",
+      "terms": "Les conditions d’utilisation complètes dans les mentions légales"
     },
     "faq": {
-      "kicker": "Quick questions",
-      "title": "Common questions about the API",
+      "kicker": "Questions rapides",
+      "title": "Questions fréquentes sur l’API",
       "items": [
         {
-          "question": "May one key on my server serve every user of my app?",
-          "answer": "Yes, that is what it is for. Your app asks your server, your server asks park.fan with the key and caches the answers. The hourly limit covers all of the key's requests together."
+          "question": "Une seule clé sur mon serveur peut-elle servir tous les utilisateurs de mon application ?",
+          "answer": "Oui, c’est fait pour ça. Votre application interroge votre serveur, votre serveur interroge park.fan avec la clé et met les réponses en cache. La limite horaire couvre toutes les requêtes de la clé ensemble."
         },
         {
-          "question": "Do I have to pass the answers on unchanged?",
-          "answer": "No. Pass on only the fields you show. And request only the permissions whose fields you need."
+          "question": "Dois-je transmettre les réponses telles quelles ?",
+          "answer": "Non. Ne transmettez que les champs que vous affichez. Et ne demandez que les autorisations dont vous utilisez les champs."
         },
         {
-          "question": "Does a key cover every park, with no end date?",
-          "answer": "We decide that on approval. Name the parks you need in the request; without a list we consider a key for every park. A key mostly gets a term when an agreement is limited in time."
+          "question": "Une clé couvre-t-elle tous les parcs, sans date de fin ?",
+          "answer": "Nous le décidons à l’acceptation. Indiquez dans la demande les parcs dont vous avez besoin ; sans liste, nous envisageons une clé pour tous les parcs. Une clé reçoit surtout une durée quand un accord est limité dans le temps."
         },
         {
-          "question": "What does a key cost?",
-          "answer": "Nothing for an open-source project that earns no money and links park.fan visibly. Any other use comes with a written agreement and a price."
+          "question": "Combien coûte une clé ?",
+          "answer": "Rien pour un projet open source qui ne rapporte pas d’argent et place un lien visible vers park.fan. Tout autre usage passe par un accord écrit et un prix."
         },
         {
-          "question": "Do donations count as earnings?",
-          "answer": "No. Donations and sponsorship of an open-source project are fine with a free key; ads, affiliate links and sales are not."
+          "question": "Les dons comptent-ils comme des revenus ?",
+          "answer": "Non. Les dons et le sponsoring d’un projet open source sont compatibles avec une clé gratuite ; la publicité, les liens affiliés et les ventes ne le sont pas."
         },
         {
-          "question": "My key ended up in a public repository. What now?",
-          "answer": "Give it a new secret on the dashboard right away, without a grace period. The old value stops working from the next request."
+          "question": "Ma clé s’est retrouvée dans un dépôt public. Que faire ?",
+          "answer": "Donnez-lui tout de suite un nouveau secret sur le tableau de bord, sans délai de transition. L’ancienne valeur cesse de fonctionner dès la requête suivante."
         },
         {
-          "question": "Are articles and photos available through the API?",
-          "answer": "No. Articles, glossary texts and photos are not part of the API, and the photographers hold the rights to many of the photos. To reuse any of it, ask by email at hello@park.fan."
+          "question": "Les articles et les photos sont-ils disponibles via l’API ?",
+          "answer": "Non. Les articles, les textes du glossaire et les photos ne font pas partie de l’API, et pour beaucoup de photos, les droits appartiennent aux photographes. Pour en réutiliser quelque chose, écrivez à hello@park.fan."
         }
       ]
     },
     "next": {
-      "title": "Next",
-      "dashboard": "Open the dashboard",
-      "dashboardDescription": "Create an account, request a key, see its use",
-      "reference": "Open the API reference",
-      "referenceDescription": "Every endpoint with parameters and sample responses"
+      "title": "Pour continuer",
+      "dashboard": "Ouvrir le tableau de bord",
+      "dashboardDescription": "Créer un compte, demander une clé, suivre son utilisation",
+      "reference": "Ouvrir la référence de l’API",
+      "referenceDescription": "Chaque endpoint avec ses paramètres et des exemples de réponses"
     },
     "form": {
-      "project": "Your project",
-      "projectName": "Project name",
-      "projectNameHint": "Your dashboard lists the key under this name.",
-      "kind": "What is it?",
-      "kindPlaceholder": "Choose one",
+      "project": "Votre projet",
+      "projectName": "Nom du projet",
+      "projectNameHint": "Votre tableau de bord affiche la clé sous ce nom.",
+      "kind": "De quoi s’agit-il ?",
+      "kindPlaceholder": "Choisissez",
       "kinds": {
-        "mobile-app": "App for iOS or Android",
-        "website": "Website or blog",
-        "smart-home": "Smart home, widget or display",
-        "chat-bot": "Bot or assistant",
-        "research": "Research, university or school",
-        "internal-tool": "Tool for your own company",
-        "other": "Something else"
+        "mobile-app": "Application iOS ou Android",
+        "website": "Site web ou blog",
+        "smart-home": "Maison connectée, widget ou écran",
+        "chat-bot": "Bot ou assistant",
+        "research": "Recherche, université ou école",
+        "internal-tool": "Outil pour votre propre entreprise",
+        "other": "Autre chose"
       },
-      "platforms": "Platforms",
+      "platforms": "Plateformes",
       "platformNames": {
         "ios": "iOS",
         "android": "Android",
         "web": "Web",
-        "desktop": "Desktop",
-        "server": "Server or service",
-        "other": "Other"
+        "desktop": "Ordinateur",
+        "server": "Serveur ou service",
+        "other": "Autre"
       },
-      "website": "Website or store link",
-      "optional": "optional",
-      "languages": "Languages",
-      "languagesHint": "For example: EN, DE, ES",
-      "description": "What does the project do?",
-      "descriptionHint": "Who uses it, and which of park.fan's data does it show where? At least {min} characters.",
-      "sourceAndMoney": "Source code and money",
-      "source": "Source code",
+      "website": "Site web ou lien vers la boutique",
+      "optional": "facultatif",
+      "languages": "Langues",
+      "languagesHint": "Par exemple : EN, DE, ES",
+      "description": "Que fait le projet ?",
+      "descriptionHint": "Qui l’utilise, et quelles données de park.fan affiche-t-il, et où ? Au moins {min} caractères.",
+      "sourceAndMoney": "Code source et argent",
+      "source": "Code source",
       "sources": {
         "open-source": "Open source",
-        "closed-source": "Not public"
+        "closed-source": "Non public"
       },
-      "repository": "Repository link",
+      "repository": "Lien vers le dépôt",
       "license": "Licence",
-      "money": "How is the project funded?",
-      "moneyHint": "Tick everything that applies.",
+      "money": "Comment le projet est-il financé ?",
+      "moneyHint": "Cochez tout ce qui s’applique.",
       "revenue": {
-        "none": "Not at all: free and without ads",
-        "donations": "Donations or sponsorship",
-        "ads": "Ads",
-        "affiliate": "Affiliate or paid links",
-        "paid": "Purchase price, subscription or in-app purchases",
-        "client-work": "Commissioned work for a client",
-        "company": "A company's product or service"
+        "none": "Pas du tout : gratuit et sans publicité",
+        "donations": "Dons ou sponsoring",
+        "ads": "Publicité",
+        "affiliate": "Liens affiliés ou payants",
+        "paid": "Prix d’achat, abonnement ou achats intégrés",
+        "client-work": "Travail commandé par un client",
+        "company": "Produit ou service d’une entreprise"
       },
-      "tierFree": "From your answers, a free key fits. The condition is the visible link to park.fan.",
-      "tierPaid": "From your answers, the project needs a paid key with a written agreement. Send the request anyway, and we will get back to you with an offer.",
-      "needs": "What you need",
-      "permissionsHint": "Wait times are open without a key. Tick the permissions whose data your project shows.",
-      "volume": "Requests per day, estimated",
+      "tierFree": "D’après vos réponses, une clé gratuite convient. La condition est le lien visible vers park.fan.",
+      "tierPaid": "D’après vos réponses, le projet a besoin d’une clé payante avec un accord écrit. Envoyez quand même la demande, et nous revenons vers vous avec une offre.",
+      "needs": "Ce dont vous avez besoin",
+      "permissionsHint": "Les temps d’attente sont ouverts sans clé. Cochez les autorisations dont votre projet affiche les données.",
+      "volume": "Requêtes par jour, estimation",
       "volumes": {
-        "under-1k": "under 1,000",
-        "under-10k": "1,000 to 10,000",
-        "under-100k": "10,000 to 100,000",
-        "more": "more than 100,000"
+        "under-1k": "moins de 1 000",
+        "under-10k": "1 000 à 10 000",
+        "under-100k": "10 000 à 100 000",
+        "more": "plus de 100 000"
       },
-      "parks": "Only certain parks?",
-      "parksHint": "Name them here. Empty means all parks.",
-      "endpoints": "Which endpoints do you call?",
-      "endpointsHint": "One line per endpoint. It tells us which permissions you need.",
-      "integration": "Integration and credit",
-      "serverSide": "The key stays on my server",
-      "serverSideHint": "It never sits in an app, a browser, a URL or a log.",
-      "caching": "How long do you cache answers?",
-      "cachingHint": "For example: wait times 5 minutes, calendar 24 hours.",
-      "attributionUrl": "Page with the link to park.fan",
-      "attributionUrlHint": "The page that carries the visible link. What it must look like is in the <link>credit chapter</link>.",
-      "message": "Anything else?",
-      "terms": "I have read the <link>terms of use</link> and will link park.fan as described.",
-      "submit": "Send request",
-      "submitting": "Sending",
-      "requirements": "Fill in the required fields, pick at least one permission and confirm server-side use and the terms."
+      "parks": "Seulement certains parcs ?",
+      "parksHint": "Indiquez-les ici. Vide signifie tous les parcs.",
+      "endpoints": "Quels endpoints appelez-vous ?",
+      "endpointsHint": "Une ligne par endpoint. Cela nous montre de quelles autorisations vous avez besoin.",
+      "integration": "Intégration et mention",
+      "serverSide": "La clé reste sur mon serveur",
+      "serverSideHint": "Elle ne se trouve jamais dans une application, un navigateur, une URL ou un journal.",
+      "caching": "Combien de temps mettez-vous les réponses en cache ?",
+      "cachingHint": "Par exemple : temps d’attente 5 minutes, calendrier 24 heures.",
+      "attributionUrl": "Page avec le lien vers park.fan",
+      "attributionUrlHint": "La page qui porte le lien visible. À quoi il doit ressembler est expliqué dans le <link>chapitre sur la mention</link>.",
+      "message": "Autre chose ?",
+      "terms": "J’ai lu les <link>conditions d’utilisation</link> et je mettrai un lien vers park.fan comme décrit.",
+      "submit": "Envoyer la demande",
+      "submitting": "Envoi en cours",
+      "requirements": "Remplissez les champs obligatoires, choisissez au moins une autorisation et confirmez l’utilisation côté serveur ainsi que les conditions."
     },
     "error": {
-      "too-many-pending": "Three of your requests are already waiting. Wait for a decision or withdraw one.",
-      "Unauthorized": "Your session has expired. Sign in again.",
-      "network": "No connection to the server. Check your connection and try again.",
-      "generic": "The request did not arrive. Check the fields and try again."
+      "too-many-pending": "Trois de vos demandes sont déjà en attente. Attendez une décision ou retirez-en une.",
+      "Unauthorized": "Votre session a expiré. Reconnectez-vous.",
+      "network": "Pas de connexion au serveur. Vérifiez votre connexion et réessayez.",
+      "generic": "La demande n’est pas arrivée. Vérifiez les champs et réessayez."
     },
     "auth": {
-      "registerTab": "Create account",
-      "loginTab": "Sign in",
-      "displayName": "Name",
-      "email": "Email",
-      "emailHint": "Our questions about your requests go to this address.",
-      "password": "Password",
-      "passwordHint": "At least {min} characters.",
-      "totp": "Code from your authenticator app",
-      "totpHint": "Your account signs in with a second factor.",
-      "signIn": "Sign in",
-      "errorLocked": "Too many attempts. Wait a few minutes and try again.",
-      "errorTurnstile": "The security check failed. Solve it again.",
-      "errorCredentials": "Email or password is wrong.",
-      "errorNetwork": "No connection to the server. Try again in a moment.",
+      "registerTab": "Créer un compte",
+      "loginTab": "Se connecter",
+      "displayName": "Nom",
+      "email": "E-mail",
+      "emailHint": "Nos questions sur vos demandes arrivent à cette adresse.",
+      "password": "Mot de passe",
+      "passwordHint": "Au moins {min} caractères.",
+      "totp": "Code de votre application d’authentification",
+      "totpHint": "Votre compte se connecte avec un second facteur.",
+      "signIn": "Se connecter",
+      "errorLocked": "Trop de tentatives. Attendez quelques minutes et réessayez.",
+      "errorTurnstile": "La vérification de sécurité a échoué. Recommencez-la.",
+      "errorCredentials": "E-mail ou mot de passe incorrect.",
+      "errorNetwork": "Pas de connexion au serveur. Réessayez dans un instant.",
       "register": {
-        "submit": "Create account",
-        "account-exists": "This address already has an account. Sign in instead.",
-        "invalid-form": "Check the address and the password.",
-        "rate-limited": "Too many attempts. Wait a minute.",
-        "turnstile-failed": "The security check failed. Solve it again.",
-        "network": "No connection to the server.",
-        "generic": "The account could not be created. Try again."
+        "submit": "Créer un compte",
+        "account-exists": "Un compte existe déjà pour cette adresse. Connectez-vous plutôt.",
+        "invalid-form": "Vérifiez l’adresse et le mot de passe.",
+        "rate-limited": "Trop de tentatives. Attendez une minute.",
+        "turnstile-failed": "La vérification de sécurité a échoué. Recommencez-la.",
+        "network": "Pas de connexion au serveur.",
+        "generic": "Le compte n’a pas pu être créé. Réessayez."
       }
     },
     "dashboard": {
-      "metaTitle": "Developer dashboard",
-      "title": "Developer dashboard",
-      "lead": "Your API keys, their use and your requests.",
-      "backToPortal": "Back to the API overview",
-      "loading": "Loading",
-      "loadFailed": "The dashboard could not be loaded.",
-      "retry": "Try again",
-      "signedInAs": "Signed in as {email}",
-      "signOut": "Sign out",
+      "metaTitle": "Tableau de bord développeur",
+      "title": "Tableau de bord développeur",
+      "lead": "Vos clés d’API, leur utilisation et vos demandes",
+      "backToPortal": "Retour à la présentation de l’API",
+      "loading": "Chargement",
+      "loadFailed": "Le tableau de bord n’a pas pu être chargé.",
+      "retry": "Réessayer",
+      "signedInAs": "Connecté en tant que {email}",
+      "signOut": "Se déconnecter",
       "tiles": {
-        "keys": "Active keys",
-        "thisHour": "Requests this hour",
-        "today": "Requests today (UTC)",
-        "last30": "Requests in 30 days"
+        "keys": "Clés actives",
+        "thisHour": "Requêtes cette heure-ci",
+        "today": "Requêtes aujourd’hui (UTC)",
+        "last30": "Requêtes sur 30 jours"
       },
-      "keysTitle": "Your keys",
-      "noKeys": "No key yet. Once a request is approved, the key appears here.",
-      "requestsTitle": "Your requests",
-      "newRequest": "Request a key",
-      "filed": "The request has arrived. The decision appears here once it is made.",
-      "noRequests": "No request yet.",
-      "pendingHint": "Every request is reviewed by hand.",
-      "withdraw": "Withdraw",
+      "keysTitle": "Vos clés",
+      "noKeys": "Pas encore de clé. Dès qu’une demande est acceptée, la clé apparaît ici.",
+      "requestsTitle": "Vos demandes",
+      "newRequest": "Demander une clé",
+      "filed": "La demande est arrivée. La décision s’affichera ici dès qu’elle sera prise.",
+      "noRequests": "Pas encore de demande.",
+      "pendingHint": "Chaque demande est examinée à la main.",
+      "withdraw": "Retirer",
       "requestState": {
-        "pending": "in review",
-        "approved": "approved",
-        "rejected": "declined",
-        "withdrawn": "withdrawn"
+        "pending": "en examen",
+        "approved": "acceptée",
+        "rejected": "refusée",
+        "withdrawn": "retirée"
       },
       "tier": {
-        "free": "free",
-        "paid": "paid"
+        "free": "gratuite",
+        "paid": "payante"
       },
       "state": {
-        "pickup": "ready to pick up",
+        "pickup": "prête à récupérer",
         "active": "active",
-        "expired": "expired",
-        "revoked": "revoked"
+        "expired": "expirée",
+        "revoked": "révoquée"
       },
-      "pickupText": "The key is approved. Pick it up: it is shown to you exactly once.",
-      "pickup": "Pick up the key",
-      "thisHour": "This hour",
-      "noLimit": "no limit",
-      "last30": "Last 30 days",
-      "limited": "{count} refused over the limit",
-      "lastUsed": "Last used",
-      "never": "never",
-      "validUntil": "valid until {date}",
-      "noEnd": "no end date",
-      "usageChart": "Requests per day over the last 30 days",
-      "permissions": "Permissions",
-      "legacy": "legacy",
-      "onlyParks": "Only for: {parks}",
-      "graceRunning": "The old value works until {date}.",
-      "endGrace": "Block the old value now",
-      "actionFailed": "That did not work. Reload the page and try again.",
-      "rotate": "New secret",
-      "revoke": "Revoke",
-      "rotateTitle": "New secret for {name}",
-      "rotateText": "The key gets a new value. Permissions, limit and statistics stay. How long should the old value keep working?",
-      "graceLabel": "Grace period",
+      "pickupText": "La clé est acceptée. Récupérez-la : elle ne vous sera montrée qu’une seule fois.",
+      "pickup": "Récupérer la clé",
+      "thisHour": "Cette heure-ci",
+      "noLimit": "sans limite",
+      "last30": "30 derniers jours",
+      "limited": "{count} refusées au-delà de la limite",
+      "lastUsed": "Dernière utilisation",
+      "never": "jamais",
+      "validUntil": "valable jusqu’au {date}",
+      "noEnd": "sans date de fin",
+      "usageChart": "Requêtes par jour sur les 30 derniers jours",
+      "permissions": "Autorisations",
+      "legacy": "ancienne",
+      "onlyParks": "Uniquement pour : {parks}",
+      "graceRunning": "L’ancienne valeur fonctionne jusqu’au {date}.",
+      "endGrace": "Bloquer l’ancienne valeur maintenant",
+      "actionFailed": "Ça n’a pas marché. Rechargez la page et réessayez.",
+      "rotate": "Nouveau secret",
+      "revoke": "Révoquer",
+      "rotateTitle": "Nouveau secret pour {name}",
+      "rotateText": "La clé reçoit une nouvelle valeur. Autorisations, limite et statistiques restent. Combien de temps l’ancienne valeur doit-elle encore fonctionner ?",
+      "graceLabel": "Délai de transition",
       "grace": {
-        "0": "None, block it now",
-        "1": "1 hour",
-        "24": "24 hours",
-        "168": "7 days"
+        "0": "Aucun, bloquer maintenant",
+        "1": "1 heure",
+        "24": "24 heures",
+        "168": "7 jours"
       },
-      "cancel": "Cancel",
-      "rotateConfirm": "Create a new secret",
-      "revealedTitle": "Your key",
-      "revealedText": "Copy it now. It is shown only this once; if it gets lost, you create a new secret.",
-      "copy": "Copy",
-      "copied": "Copied",
-      "revealedDone": "Saved",
-      "revokeTitle": "Revoke {name}?",
-      "revokeText": "The key stops working from the next request, and this cannot be undone. A new key is a new request."
+      "cancel": "Annuler",
+      "rotateConfirm": "Créer un nouveau secret",
+      "revealedTitle": "Votre clé",
+      "revealedText": "Copiez-la maintenant. Elle n’est montrée que cette fois ; si vous la perdez, vous créez un nouveau secret.",
+      "copy": "Copier",
+      "copied": "Copié",
+      "revealedDone": "Enregistrée",
+      "revokeTitle": "Révoquer {name} ?",
+      "revokeText": "La clé cesse de fonctionner dès la requête suivante, et c’est irréversible. Une nouvelle clé passe par une nouvelle demande."
     }
   },
   "attraction": {

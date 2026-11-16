@@ -1,24 +1,15 @@
 import { NextResponse } from 'next/server';
 import { DATA_TERMS_URL } from '@/lib/agents/licensing';
 import { NO_STORE } from '@/lib/api/cdn-cache-headers';
+import { DEVELOPER_PORTAL_URL } from '@/lib/developers/paths';
 
 /**
- * Whether a relay path under `/api/parks/*` answers with forecast data: the live poll (it carries
- * `bestVisitTimes`), the calendar, best days, the day plan and its optimizer, a ride's detail and
- * its day curve.
+ * Whether a relay path under `/api/parks/*` reads only what api.park.fan serves without a key: a
+ * park's wait times. Every other path relays data the site's key opens, so it answers park.fan's
+ * own pages only.
  */
-export function isForecastRelayPath(path: readonly string[]): boolean {
-  if (path.length === 4) return true;
-  const rest = path.slice(4).join('/');
-  return (
-    rest === 'calendar' ||
-    rest === 'calendar/hourly' ||
-    rest === 'best-days' ||
-    rest === 'plan/day' ||
-    rest === 'plan/optimize' ||
-    rest === 'stats/day' ||
-    (path.length === 6 && path[4] === 'attractions')
-  );
+export function isKeylessRelayPath(path: readonly string[]): boolean {
+  return path.length === 5 && path[4] === 'wait-times';
 }
 
 /**
@@ -46,7 +37,8 @@ export function foreignForecastRequest(): NextResponse {
     {
       error: 'forecast-relay',
       message:
-        "This is park.fan's internal endpoint for its own pages. Forecasts are available from api.park.fan with an API key.",
+        "This is park.fan's internal endpoint for its own pages. Everything beyond the live wait times is available from api.park.fan with an API key.",
+      portal: DEVELOPER_PORTAL_URL,
       terms: DATA_TERMS_URL,
     },
     { status: 403, headers: NO_STORE }

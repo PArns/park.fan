@@ -1,108 +1,109 @@
-# Developer portal (`/developers`)
+# Developer portal (`/developers`) and dashboard (`/developers/dashboard`)
 
-The page a developer lands on to use api.park.fan: what is open, which scope of a data key opens
-what, how to send and check a key, the terms in short, and the form that requests a key. Requests
-are reviewed on `/admin/api-keys`, where one becomes a key. Open this page before changing the
-scopes, the form, the request store or the review in the admin.
+The pages a developer uses to work with api.park.fan: what is open without a key (a park's live
+wait times, nothing else), which permission of a data key opens what, which key the terms allow,
+how the credit link must look, and how a key is sent and checked. Behind it the dashboard, where a
+developer registers, files key requests, picks up an approved key and watches, rotates and
+revokes it. The owner decides every request on `/admin/api-keys`. Open this page before changing
+the permissions, the request form, the dashboard or the review in the admin.
+
+The API owns everything that is stored: accounts (role `developer`), requests, keys and their
+permissions (PAR-1365 in `PArns/v4.api.park.fan`, `docs/frontend/api-keys.md` there). This repo
+stores nothing of it.
 
 ## Pieces
 
-| Concern                                                  | File                                                                 |
-| -------------------------------------------------------- | -------------------------------------------------------------------- |
-| Scope catalog: scopes, their routes, open routes, limits | `lib/developers/scopes.ts`                                           |
-| Request schema, revenue models, derived values           | `lib/developers/key-request.ts`                                      |
-| Portal URL and the form's anchor                         | `lib/developers/paths.ts`                                            |
-| Request store (private JSON per request)                 | `lib/developers/key-request-store.ts`, `lib/storage/private-json.ts` |
-| Public page                                              | `app/[locale]/developers/page.tsx`                                   |
-| Request form                                             | `components/developers/key-request-form.tsx`                         |
-| Public route (Turnstile, schema, store)                  | `app/api/developers/key-request/route.ts`                            |
-| Admin routes (list, decide, delete; owner only)          | `app/api/admin/developer-requests/**`                                |
-| Admin review panel                                       | `app/admin/api-keys/_components/key-requests-panel.tsx`              |
-| Admin labels, key dialog prefill, reply mails            | `lib/admin/key-requests.ts`                                          |
-| Scopes on a key in the admin                             | `lib/admin/api-keys.ts` (`apiStoresScopes`, `effectiveScopes`)       |
-| Strings                                                  | `developers` and `landing.developers` in `messages/*.json`           |
-| Tests                                                    | `pnpm test:developer-key-requests`                                   |
+| Concern                                                 | File                                                                               |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Permission catalog, groups, routes, limits, error codes | `lib/developers/permissions.ts` (mirrors the API's)                                |
+| Request model, tiers, revenue models, derived values    | `lib/developers/key-request.ts`                                                    |
+| Dashboard calls, key states, usage totals               | `lib/developers/dashboard.ts`                                                      |
+| Paths, the attribution anchor, the portal URL           | `lib/developers/paths.ts`                                                          |
+| Portal page                                             | `app/[locale]/developers/page.tsx`                                                 |
+| Dashboard page (noindex)                                | `app/[locale]/developers/dashboard/page.tsx`                                       |
+| Sign-in and registration                                | `components/developers/developer-auth.tsx`                                         |
+| Dashboard, key card, request form                       | `components/developers/developer-{dashboard,key-card}.tsx`, `key-request-form.tsx` |
+| Registration route (Turnstile `developer-register`)     | `app/api/developers/register/route.ts`                                             |
+| Session proxy to `/v1/developer/*`                      | `app/api/developer/[...path]/route.ts`, `lib/admin/session-proxy.ts`               |
+| Admin: requests, approval, keys with permissions        | `app/admin/api-keys/**`, `lib/admin/key-requests.ts`, `lib/admin/api-keys.ts`      |
+| Admin's German labels (read from `messages/de.json`)    | `lib/admin/developer-labels.ts`                                                    |
+| Strings                                                 | `developers` and `landing.developers` in `messages/*.json`                         |
+| Tests                                                   | `pnpm test:developer-key-requests`, `pnpm test:forecast-relay`                     |
 
-## Scopes
+## Permissions
 
-A data key (`pfk_…`) carries scopes, one per kind of data park.fan makes itself. What the live
-sources deliver (wait times, opening hours, weather) and the park directory stay open, because
-park.fan holds no rights to them and cannot grant any (`OPEN_API_ROUTES`).
+A data key (`pfk_…`) carries permissions, grouped as live, parks, rides, stats, forecasts,
+planner and travel (`API_PERMISSION_GROUPS`, 19 in all). Without a key a caller reads
+`live.waits`, a park's `/wait-times`, and nothing else (`KEYLESS_PERMISSIONS`). Weather, opening
+hours, seasons, ride heights, minimum height and URLs, the directory and search all need a key.
 
-| Scope        | Opens                                                                  | Enforced by the API |
-| ------------ | ---------------------------------------------------------------------- | ------------------- |
-| `forecasts`  | crowd calendar, best days, yearly predictions, `?forecast=true` fields | yes                 |
-| `planner`    | `/plan/day`, `/plan/optimize`, the trip regions' plans and ideas       | yes                 |
-| `statistics` | `/stats`, `/stats/hourly`, `/stats/day`, best times, forecast accuracy | not yet             |
-| `curated`    | seasons and events, glossary terms per ride                            | not yet             |
-| `travel`     | trip regions, hotel areas and travel times, tickets, school breaks     | not yet             |
+`PERMISSION_ROUTES` lists the routes each opens; the portal, the request form and the admin's
+picker read the same list. The ids must match the API's `src/api-keys/permissions.ts`, which
+also serves the catalog at `/v1/api-keys/permissions`. The park and ride detail drop the fields a
+key has no permission for instead of refusing the whole answer.
 
-`API_SCOPE_DEFINITIONS` holds the routes of each, and the portal, the form and the admin's dialog
-read the same list, so a scope cannot be offered in one place and missing in another. `enforced`
-is what the page says in the badge: „key required" or „key required soon".
+A key from before permissions has `permissions: null` and reads everything
+(`LEGACY_KEY_PERMISSIONS`); the admin marks it and gives it a list on the next edit. The site's
+own key has usage `internal` and reads everything too.
 
-Storing and enforcing scopes is the API's job (PAR-1365). Until the API stores them:
+## Tiers and the credit
 
-- **A key opens what every key opens**: `LEGACY_KEY_SCOPES`, forecasts and planner. The API reads
-  a key without a scope list the same way once it knows scopes, so no key issued earlier loses a
-  route.
-- **The admin sends no scopes.** `apiStoresScopes()` is true only when the key list carries the
-  field `scopes`; before that the dialogs say what every key opens instead of offering toggles,
-  because an API without the field would refuse it as unknown.
+`requestTier()` decides it, here and in the API alike: a free key only for an open-source project
+whose revenue is `none` or `donations`. Ads, affiliate links, a price, client work or a company
+behind it make it paid, under a written agreement. The form shows which tier the answers lead to
+before sending.
 
-When `api-key-scope-missing` goes live, it joins `API_KEY_ERRORS` and the error table in all six
-languages.
+The credit is chapter 04 of the portal (`#attribution`, `ATTRIBUTION_ANCHOR`): the requirements
+(wording, link text exactly `park.fan`, the park's page as target, no `nofollow`, `sponsored` or
+`ugc`, in the server's HTML on an indexable page, legible size), a rendered preview, and HTML for
+a park page and for a site-wide footer. The request form asks for the URL of the page with the
+link, and the Impressum's `#data-use` points to the same anchor.
 
-## The request form
+## Accounts and the dashboard
 
-The form asks what decides the key: who to reach (name, email, organisation), what the project
-is (name, website, kind, description of at least 40 characters, open source with the repository
-or not), how it earns money, which scopes it needs, how many requests a day, which parks, and
-consent to the terms. Turnstile action `developer-key-request`.
+A developer is an admin account with the role `developer`, ranked below `viewer`, so it reaches
+no admin route and no MCP tool; the API enforces that. Registration goes through
+`/api/developers/register`, which checks Turnstile and sets the same httpOnly session cookie as the
+admin login, without the admin marker cookie. Sign-in uses the admin's `/api/admin/session`. An
+account with the role `developer` that opens `/admin` sees a pointer to the dashboard.
 
-- **Revenue is several answers, and `none` stands alone.** `toggleRevenue()` clears the others
-  when „none" is ticked and clears „none" when anything else is. Ads, affiliate or paid links, a
-  price or subscription, client work and a company product are commercial
-  (`COMMERCIAL_REVENUE`), the terms' own examples; donations are not. A commercial answer shows
-  the agreement notice before sending, so nobody learns it from a rejection.
-- **The schema is the server's.** `keyRequestInputSchema` runs in the route; the form checks only
-  what enables the button and marks the fields the route names in `fields` on a 422. A bare host
-  becomes `https://…`, a non-http URL is refused, scopes are stored in the catalog's order.
-- **Answers:** 201 stored, 403 Turnstile, 409 `already-pending` (an undecided request from the
-  same address), 422 `invalid-form` with `fields`, 503 `queue-full` (more than
-  `MAX_PENDING_REQUESTS` undecided), 500 `store-failed`. Every answer is `no-store`.
+The dashboard reads `/v1/developer/overview` through React Query (`DEVELOPER_OVERVIEW_QUERY_KEY`);
+a 401 shows the sign-in.
 
-## The store
-
-One private JSON document per request at `developer-requests/<id>.json` in the Blob store, or
-under `.data/` in offline dev (`resolveDriver()`), through `lib/storage/private-json.ts`, which
-the content-change dates and the contributions' records use too. A request holds a name and an
-email address, so only the owner's admin routes read it, an id reaches the store only as a UUID,
-and deleting a request deletes the document.
+- **Pick-up.** An approved key waits unrevealed (`revealedAt: null`). „Abholen" is a rotation
+  with no grace period, which returns the secret once; the dialog cannot be dismissed until the
+  developer confirms they stored it.
+- **Rotate, end grace, revoke** work on the developer's own keys only; another account's key is a
+  404 at the API.
+- **Requests**: at most three open per account; an open one can be withdrawn. The owner's note on
+  a decision shows under the request.
 
 ## Review in the admin
 
-`/admin/api-keys` shows the requests above the keys, open ones first; decided ones behind a
-switch. Each card shows the answers with commercial or not, open source or not, kind and language
-as chips.
+`/admin/api-keys` (owner only) shows the use of all keys (this hour, today, 30 days, the busiest
+keys), then the requests, then the keys.
 
-- **„Key erstellen"** opens the key dialog with `keyRequestPrefill()`: the project's name, the
-  applicant's address, `commercial` when the revenue says so, an hourly allowance from the volume
-  (`suggestedRequestsPerHour`, at least the API's default of 1,000, none for the open bracket),
-  the requested scopes, and a note naming the request. The parks the applicant typed stand in the
-  parks field's hint, to pick from the list.
-- **Once the key exists** the request is marked approved with the key's id and prefix. The dialog
-  then offers „Antwort mit Key", a `mailto:` with the key, its scopes and allowance, the `curl`
-  line, the server-only rule, the credit and the links, in German for a request from the German
-  page and in English otherwise. That is the one moment the key exists in clear; nothing stores it.
-- **Ablehnen** asks for an optional reason, which the rejection mail carries. A rejected request
-  can be opened again. Deleting removes the request, never a key issued for it.
+- **Freigeben** opens a dialog prefilled by `approvalDraft()`: the project's name, `commercial` for
+  a paid tier, the requested permissions (marked with a dot), the allowance its volume suggests,
+  and a note naming the request. Permissions are picked per group, with „alle"/„keine" per group.
+  The key goes to the developer's account unrevealed; the owner never sees the secret.
+- **Ablehnen** takes an optional reason, which the developer reads on the dashboard. A rejected
+  request can be reopened; a decided or withdrawn one can be deleted.
+- **„Benachrichtigung mailen"** opens a `mailto:` (`keyDecisionMailto`) in the applicant's
+  language that points to the dashboard; it never carries a key. The app sends no mail itself.
+- An API without the request endpoints answers 404, and the panel says so instead of erroring.
 
-The app sends no mail itself: there is no mail service in this repo, and a key reply from the
-owner's own address is what an applicant can answer.
+## What leaves park.fan without a key
 
-## The old `/developers`
+The site's relays send the server's key, so they answer only park.fan's own pages
+(`isSameOriginRequest`), except a park's wait times (`isKeylessRelayPath`). Favorites and nearby
+always go through their relays, never straight from the browser to the API. The MCP tools follow
+the same line: `get_park_wait_times` works without a key but leaves out crowd level and
+maintenance dates; `search_theme_parks` and `get_park_best_days` need a key, which they send to
+the API as the caller's own (`keyGrant`, `lib/agents/forecast-access.ts`).
 
-`/developers` was once a list of the agent documents and then answered 308 to the
-Swagger UI. That redirect is gone. A browser that followed the 308 may keep going to Swagger from
-its cache until it drops the entry; the portal links the same reference.
+## Deploying
+
+The frontend ships before the API change: the site must already send `API_DATA_KEY` (a key with
+usage `internal`) on every server call and route favorites and nearby through the relays, because
+the API enforces the permissions from the moment it deploys.

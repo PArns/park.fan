@@ -366,9 +366,9 @@ Owner only, in the nav and on the API (`/v1/admin/api-keys`, audited as `api-key
 `api-key.update`, `api-key.revoke`, `api-key.rotate`, `api-key.previous.revoke` and
 `api-key.delete`), because a key decides who uses the forecasts. Helpers in `lib/admin/api-keys.ts`, paths from `dataApiKeyPath`.
 
-Above the keys stand the key requests from the developer portal, each of which becomes a key
-through the create dialog, and once the API stores scopes both dialogs carry them: both in
-[the developer portal](developer-portal.md#review-in-the-admin).
+Above the keys stand the use of all keys and the requests developers file on their dashboard;
+each becomes a key only through the approval dialog, which grants permissions per group. Keys,
+requests and permissions: [the developer portal](developer-portal.md#review-in-the-admin).
 
 - **The list** shows every key, active ones first: name, usage (nicht-kommerziell, or kommerziell
   for a holder with a written agreement), prefix, contact, created, last used, when it was

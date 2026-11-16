@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
+import { foreignForecastRequest, isSameOriginRequest } from '@/lib/api/forecast-relay';
 import { getCardImageMap } from '@/lib/utils/park-assets';
 import { getForwardedForHeaders, isLocalOrUnusableIp } from '@/lib/utils/request-ip';
 import { isSimulationEnabled, resolveSimLocation } from '@/lib/nearby-simulation';
 import { NEARBY_API_MAX_RADIUS_M, withNearbyCardImages } from '@/lib/nearby/fetch-nearby';
 
-// The answer depends on the client IP (GeoIP without coordinates), so it is never cached. With
-// NEXT_PUBLIC_API_DIRECT on, only simulations come through here (`fetchNearby`).
+// The answer depends on the client IP (GeoIP without coordinates), so it is never cached. The
+// browser always comes through here, since the API wants a key for the park directory.
 
 /** Default radius in meters (backend default: 1000). */
 const DEFAULT_RADIUS = 1000;
@@ -16,6 +17,8 @@ const MAX_RADIUS = 50000;
 const MAX_LIMIT = 50;
 
 export async function GET(request: NextRequest) {
+  // The park directory needs a key at the API, and this relay sends the site's.
+  if (!isSameOriginRequest(request)) return foreignForecastRequest();
   const { searchParams } = new URL(request.url);
   const lat = searchParams.get('lat');
   const lng = searchParams.get('lng');

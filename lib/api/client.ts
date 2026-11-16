@@ -12,7 +12,7 @@ export const API_ORIGIN = new URL(process.env.NEXT_PUBLIC_API_URL || 'https://ap
 
 /**
  * The API origin a browser calls directly for the per-visitor requests no cache can share
- * (nearby, favorites, trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go
+ * (trips, push), or `null` while `NEXT_PUBLIC_API_DIRECT` is off and they go
  * through this app's relay routes. Each relayed request starts a Vercel function; a direct one
  * never reaches Vercel. It needs api.park.fan's CORS list to name this origin. See
  * docs/rules/a-request-no-cache-can-share-goes-to-the-api-directly.md.

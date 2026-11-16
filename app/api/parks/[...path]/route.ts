@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
 import {
   foreignForecastRequest,
-  isForecastRelayPath,
+  isKeylessRelayPath,
   isSameOriginRequest,
 } from '@/lib/api/forecast-relay';
 import {
@@ -94,8 +94,8 @@ export async function GET(
     return NextResponse.json({ error: 'Invalid path' }, { status: 400 });
   }
 
-  // The forecast branches answer only park.fan's own pages; see `isSameOriginRequest`.
-  if (isForecastRelayPath(path) && !isSameOriginRequest(request)) {
+  // Beyond the wait times every branch relays keyed data, so it answers park.fan's own pages only.
+  if (!isKeylessRelayPath(path) && !isSameOriginRequest(request)) {
     return foreignForecastRequest();
   }
 

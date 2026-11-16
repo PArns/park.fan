@@ -90,7 +90,7 @@ ${[
   line(
     'OpenAPI',
     'https://api.park.fan/api-json',
-    'the description; live data needs no key, forecasts need X-API-Key'
+    'the description; only live wait times are keyless, everything else needs X-API-Key'
   ),
   line('API reference', 'https://api.park.fan/api', 'the same, for people'),
   line(
@@ -136,14 +136,14 @@ ${AGENT_SKILLS.map((skill) => line(skill.name, `${SITE_URL}${skillArtifactPath(s
 
 ## Reusing the data
 
-Free for non-commercial use: name park.fan and link the page a number came from. The forecasts
-(everything park.fan's own models predict: crowd calendar, expected crowds per day and hour,
-predicted wait times, best days, yearly predictions, day plans) come from the API and the MCP
-forecast tool only with a data key in \`X-API-Key\`, free for non-commercial use on request
-(${EN}/developers, which also lists what each scope of a key opens). Using the forecasts or park.fan's statistics commercially requires a written
-agreement with Patrick Arns (park.fan). Live wait times and opening hours come from park.fan's
-sources and are passed on for non-commercial use only. Without a key, the API allows 60 reads a
-minute and 1,000 an hour per address. The full terms: ${DATA_TERMS_URL}
+Without a key, the API serves the live wait times and nothing else (60 reads a minute and 1,000
+an hour per address). Everything else (the park and ride directory, park and ride details,
+opening hours, seasons, weather, statistics, forecasts, planners, travel data) and the MCP tools
+for search and best days need a data key in \`X-API-Key\`, with the permissions listed at
+${EN}/developers. A key is free only for an open-source project that earns nothing from it and
+links park.fan visibly, followable, on an indexable page; any other use takes a paid key under a
+written agreement with Patrick Arns (park.fan). Live wait times come from park.fan's sources and
+are passed on for non-commercial use only. The full terms: ${DATA_TERMS_URL}
 
 ## Contact
 

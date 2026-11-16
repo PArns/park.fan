@@ -1,6 +1,7 @@
-import type { ForecastGrant } from './forecast-access';
+import type { KeyGrant } from './forecast-access';
 import 'server-only';
-import { search } from '@/lib/api/search';
+import { search, searchWithApiKey } from '@/lib/api/search';
+import { isApiKeyRefusal } from '@/lib/api/keyed-read';
 import { getParkByGeoPath, getParkByGeoPathForAgents, getParkSeasons } from '@/lib/api/parks';
 import { eventSeasonsOn } from '@/lib/parks/park-season-days';
 import { catchNonFatal } from '@/lib/api/client';
@@ -22,6 +23,7 @@ import {
   type ToolDescriptor,
 } from '@/lib/agents/tool-descriptors';
 import { SITE_URL } from '@/i18n/config';
+import { DEVELOPER_PORTAL_URL } from '@/lib/developers/paths';
 import type { SearchResultItem } from '@/lib/api/types';
 
 /**
@@ -33,8 +35,11 @@ import type { SearchResultItem } from '@/lib/api/types';
 
 /** What the server knows about the caller when it runs a tool. */
 export interface McpToolContext {
-  /** Set for a forecast tool: whether it reads like a page or with the caller's own key. */
-  forecastGrant?: ForecastGrant;
+  /**
+   * Whether the caller reads like a park.fan page or with its own key; absent for a caller with
+   * neither, who gets the live wait times and nothing else.
+   */
+  keyGrant?: KeyGrant;
 }
 
 export type McpTool = ToolDescriptor & {
@@ -92,11 +97,14 @@ const NO_WAIT_TIMES_NOTE: Record<string, string> = {
 };
 
 const EXECUTORS: Record<string, McpTool['execute']> = {
-  async search_theme_parks(input) {
+  async search_theme_parks(input, context) {
     const query = String(input.query ?? '').trim();
     if (query.length < 3) return { error: 'Query must be at least three characters.' };
     const locale = localeOf(input);
-    const data = await search(query);
+    const grant = context?.keyGrant;
+    const data =
+      grant?.via === 'key' ? await searchWithApiKey(query, grant.apiKey) : await search(query);
+    if (isApiKeyRefusal(data)) return { error: data.message };
     return {
       query,
       results: (data.results ?? []).slice(0, 10).map((result) => ({
@@ -112,7 +120,9 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     };
   },
 
-  async get_park_wait_times(input) {
+  async get_park_wait_times(input, context) {
+    // Without a key only the waits leave: crowd level and maintenance windows are keyed data.
+    const keyed = context?.keyGrant !== undefined;
     const query = String(input.park ?? '');
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
@@ -136,8 +146,8 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
         land: attraction.land,
         status: (attraction as { effectiveStatus?: string }).effectiveStatus ?? attraction.status,
         waitMinutes: standby && 'waitTime' in standby ? (standby.waitTime ?? null) : null,
-        ...(running && { maintenance: maintenanceWindow(running) }),
-        ...(next && { nextMaintenance: maintenanceWindow(next) }),
+        ...(keyed && running && { maintenance: maintenanceWindow(running) }),
+        ...(keyed && next && { nextMaintenance: maintenanceWindow(next) }),
       };
     });
 
@@ -157,11 +167,16 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
             note: NO_WAIT_TIMES_NOTE[noWaitTimes] ?? NO_WAIT_TIMES_NOTE.not_published,
           }
         : {
-            crowdLevel: data.analytics?.statistics?.crowdLevel ?? data.currentLoad?.crowdLevel,
-            averageWaitMinutes:
-              data.analytics?.statistics?.avgWaitTime ?? data.currentLoad?.currentWaitTime,
+            ...(keyed && {
+              crowdLevel: data.analytics?.statistics?.crowdLevel ?? data.currentLoad?.crowdLevel,
+              averageWaitMinutes:
+                data.analytics?.statistics?.avgWaitTime ?? data.currentLoad?.currentWaitTime,
+            }),
             note: 'Wait times are what the park published, rounded to five minutes. A null wait is a ride with no published number, not a queue of zero.',
           }),
+      ...(!keyed && {
+        keyNote: `Crowd level and maintenance dates need a park.fan data API key in the X-API-Key header: ${DEVELOPER_PORTAL_URL}`,
+      }),
       maintenanceNote:
         'maintenance is a planned closure running today, nextMaintenance the next one: park-local days, both inclusive. A window can be one day or months; until null means no end is known yet, untilIsEstimate that the end is park.fan’s estimate.',
       ridesOpen: rides.filter((ride) => ride.status === 'OPERATING').length,
@@ -176,7 +191,7 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const query = String(input.park ?? '');
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
-    const grant = context?.forecastGrant;
+    const grant = context?.keyGrant;
 
     const days = Math.min(Math.max(Number(input.days) || 30, 1), 90);
     // The rides come from the park's cached structure, the entry the park page reads, and the

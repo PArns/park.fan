@@ -7,11 +7,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api-keys.ts`](../../lib/admin/api-keys.ts)
 
-The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data on api.park.fan for one consumer each, scope by scope (`lib/developers/scopes.ts`).
+The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data on api.park.fan for one consumer each, permission by permission (`lib/developers/permissions.ts`).
 
-- `apiStoresScopes` _function_: The API stores scopes: its key list carries the field. Until it does, a key opens what every key opens, and the dialogs send no scopes, which an API without them would refuse as an unknown field.
-- `effectiveScopes` _function_: What a key opens: its scopes, or for a key from before scopes what every key opened then.
-- `formatScopes` _function_: „Prognosen, Statistiken“, as one line.
+- `apiStoresPermissions` _function_: The API stores permissions: its key list carries the field. Until it does, a key opens what every key opens, and the dialogs send no permissions, which an API without them would refuse as an unknown field.
+- `effectivePermissions` _function_: What a key opens: its permissions, or for a key from before them everything.
+- `isLegacyKey` _function_: The key was issued before permissions and reads everything.
 - `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, written plain or with German thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit.
 - `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „12 in dieser Stunde, ohne eigenes Limit“.
 - `formatKeyUsage` _function_: „heute 120 · 30 Tage 3.456“, and „· 40 über dem Limit abgelehnt“ when the allowance refused any of them. „Heute“ is the UTC day the counters run on.
@@ -28,8 +28,6 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `formatPreviousKeyStatus` _function_: „Alter Key gültig bis 14.11.2026, 10:00, zuletzt genutzt vor 5 Minuten“; `lastUsed` is the last use as the page words it, null for never.
 - `createDataApiKeyBody` _function_: The body of a create, as an object for `adminFetch` to serialize.
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
-- `DATA_API_KEY_SCOPE_LABELS` _const_: The admin's names for the scopes, in German like the rest of the admin.
-- `DATA_API_KEY_SCOPE_OPTIONS` _const_: The scope checkboxes, in the catalog's order.
 - `MAX_REQUESTS_PER_HOUR` _const_: The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`.
 - `KEY_EXPIRY_TIME_ZONE` _const_: The time zone a key's end date is chosen and shown in: the admin's, Patrick's.
 - `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
@@ -55,6 +53,17 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 
 - `readCookie` _function_: Reads one cookie out of a `Cookie` header. Kept free of `next/headers` so the code that parses attacker-controlled input can be tested; split rather than matched, so the name comparison is exact and no regex runs over hostile input.
 - `ADMIN_MARKER_COOKIE` _const_: Set beside the session cookie and readable by scripts: it holds no credential, it only tells a public page that this browser has signed in to the admin, so the page asks the admin proxy for its Search Console figures instead of every …
+
+### [`developer-labels.ts`](../../lib/admin/developer-labels.ts)
+
+The German names the admin shows for the permissions and for the answers of a key request.
+
+- `permissionLabel` _function_: A permission's name and what it opens, as the portal words them.
+- `formatPermissions` _function_: „Wartezeiten, Wetter, Parkdetails“, as one line; „keine Berechtigung“ for none.
+- `PERMISSION_GROUP_LABELS` _const_: A group's name, as the portal words it.
+- `PERMISSION_GROUP_OPTIONS` _const_: The groups in catalog order, each with its name.
+- `REQUEST_LABELS` _const_: What a request's answers are called in the form, for the admin's view of it.
+- `REQUEST_TIER_LABELS` _const_: A request's tier, as the admin's chip shows it.
 
 ### [`github.ts`](../../lib/admin/github.ts)
 
@@ -87,19 +96,17 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 
 ### [`key-requests.ts`](../../lib/admin/key-requests.ts)
 
-The key requests from the developer portal, as `/admin/api-keys` reviews them: German labels for what the form asked, the key dialog's starting values for a request, and the reply mails.
+The key requests developers file on their dashboard, as `/admin/api-keys` reviews them: the proxy paths of the backend's `/v1/admin/api-key-requests` (owner only), what an approval starts with, and the reply mail.
 
-- `keyRequestPath` _function_
-- `keyRequestPrefill` _function_: The key dialog's starting values for a request: the project's name, the applicant's address, commercial when a revenue model makes it so, the allowance its volume suggests, the scopes it asked for, and a note that says where the key came …
-- `keyApprovalMailto` _function_: The approval mail with the key in it, in the applicant's language: what the key opens, its allowance, how to send it, where it must not go, the credit, and the links.
-- `keyRejectionMailto` _function_: The reply to a request that was turned down, with the reason when the admin gave one.
-- `KEY_REQUESTS_PATH` _const_: The proxy path of the request list, and of one request.
+- `keyRequestPath` _function_: The path of one request, or of a decision on it.
+- `sortKeyRequests` _function_: Open requests first, oldest of them on top; decided ones after, newest first.
+- `approvalDraft` _function_: The approval's starting values: the project's name, commercial for a paid tier, the permissions it asked for, the allowance its volume suggests, and a note that says where the key came from.
+- `approveKeyRequestBody` _function_: An approval's body from the dialog's fields.
+- `keyDecisionMailto` _function_: The mail that tells an applicant their request was decided, in German for one who wrote from the German page and in English otherwise, with the owner's note when there is one.
+- `KEY_REQUESTS_PATH` _const_: The proxy path of the request list.
 - `KEY_REQUESTS_QUERY_KEY` _const_: The React Query key of the list.
-- `PROJECT_KIND_LABELS` _const_
-- `SOURCE_MODEL_LABELS` _const_
-- `REVENUE_MODEL_LABELS` _const_
-- `REQUEST_VOLUME_LABELS` _const_
-- Types: `KeyRequestPrefill`
+- `KEY_REQUEST_STATUS_LABELS` _const_: A request's state, as the admin's chip shows it.
+- Types: `KeyRequestAction`, `ApprovalDraft`, `ApproveKeyRequestBody`
 
 ### [`live-traffic.ts`](../../lib/admin/live-traffic.ts)
 
@@ -315,6 +322,11 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 - `IMPORT_POLL_MS` _const_: Milliseconds between two asks for the status while an import is awaited.
 - `SEARCH_CONSOLE_SETUP_DOC` _const_: The owner's setup steps in the API's docs: the service account, the property, the variables.
 - Types: `SearchConsoleReport`, `ImportMark`
+
+### [`session-proxy.ts`](../../lib/admin/session-proxy.ts)
+
+- `proxySessionRequest` _function_: Forwards one request of a proxy route to `/v1/<scope>/<path>` with the cookie's session.
+- Types: `SessionProxyScope`
 
 ### [`session.ts`](../../lib/admin/session.ts)
 

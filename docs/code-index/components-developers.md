@@ -5,6 +5,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`developer-auth.tsx`](../../components/developers/developer-auth.tsx)
+
+- `DeveloperAuth` _component_: The dashboard's door: sign in with an account, or create one. A new account is a developer account, which sees its own keys and requests and nothing of the admin.
+
+### [`developer-dashboard.tsx`](../../components/developers/developer-dashboard.tsx)
+
+- `DeveloperDashboard` _component_: The developer dashboard: sign-in or registration, then the account's keys with their figures and actions, its requests, and the form for a new one.
+
+### [`developer-key-card.tsx`](../../components/developers/developer-key-card.tsx)
+
+- `DeveloperKeyCard` _component_: One of the developer's keys: its state, what it may read, this hour against its allowance, the last thirty days, and the actions on it.
+
 ### [`key-request-form.tsx`](../../components/developers/key-request-form.tsx)
 
-- `KeyRequestForm` _component_: The developer portal's key request: who asks, what the project is and how it earns money, which scopes it needs.
+- `KeyRequestForm` _component_: The dashboard's key request: what the project is, where it runs, whether its source is open, how it earns money, which permissions it needs, how it calls and caches the API, and the page with the backlink.

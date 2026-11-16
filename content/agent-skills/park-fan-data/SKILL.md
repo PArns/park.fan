@@ -20,10 +20,12 @@ reading order. This is the cheapest way to answer one question about one park.
 
 ## 2. The public API
 
-`https://api.park.fan/v1`. Live and historical data are open to anyone, without a key, OAuth or
-sign-up. Forecasts need a data key in the `X-API-Key` header (`pfk_…`), free for non-commercial
-use. A person requests one at https://park.fan/en/developers, which also lists the scopes a key
-can carry (forecasts, planner, statistics, curated, travel) and the routes each opens. The
+`https://api.park.fan/v1`. Without a key, OAuth or sign-up a caller reads a park's live wait
+times (`/wait-times`) and nothing else. Every other route needs a data key in the `X-API-Key`
+header (`pfk_…`) carrying the right permission. A person registers at
+https://park.fan/en/developers, files a request and picks the key up once it is approved; the
+portal lists the permissions (live, parks, rides, stats, forecasts, planner, travel) and the
+routes each opens, and https://api.park.fan/v1/api-keys/permissions serves the same catalog. The
 catalog describes the API in machine-readable form:
 
 ```bash
@@ -34,25 +36,27 @@ open https://api.park.fan/api                        # the same, for people
 
 The endpoints that answer most questions:
 
-| Endpoint                                        | Answers                                                     |
-| ----------------------------------------------- | ----------------------------------------------------------- |
-| `/v1/search?q=`                                 | slugs and URLs for a park, ride or city by name             |
-| `/v1/parks/{continent}/{country}/{city}/{park}` | the park with all its attractions and current waits ¹       |
-| `/v1/parks/…/{park}/wait-times`                 | just the queues                                             |
-| `/v1/parks/…/{park}/best-days`                  | the crowd projection per day (key)                          |
-| `/v1/parks/…/{park}/stats`, `/stats/hourly`     | historical waits by month, weekday, hour                    |
-| `/v1/discovery/geo`                             | every continent, country, city and park, i.e. all the slugs |
-| `/v1/discovery/nearby?lat=&lng=`                | parks around a point                                        |
-| `/v1/health`                                    | whether the above is up                                     |
+| Endpoint                                        | Answers                                                     | Permission        |
+| ----------------------------------------------- | ----------------------------------------------------------- | ----------------- |
+| `/v1/parks/…/{park}/wait-times`                 | just the queues                                             | none              |
+| `/v1/search?q=`                                 | slugs and URLs for a park, ride or city by name             | `parks.directory` |
+| `/v1/parks/{continent}/{country}/{city}/{park}` | the park with all its attractions and current waits ¹       | `parks.details`   |
+| `/v1/parks/…/{park}/best-days`                  | the crowd projection per day                                | `forecasts.crowd` |
+| `/v1/parks/…/{park}/stats`, `/stats/hourly`     | historical waits by month, weekday, hour                    | `stats.history`   |
+| `/v1/discovery/geo`                             | every continent, country, city and park, i.e. all the slugs | `parks.directory` |
+| `/v1/discovery/nearby?lat=&lng=`                | parks around a point                                        | `parks.directory` |
+| `/v1/health`                                    | whether the above is up                                     | none              |
 
-¹ Its forecast field, each ride's `bestVisitTimes`, comes only with `?forecast=true` and a key;
-`?forecast=true` without a key is a 401 for the whole request. The same holds for a ride's
-`hourlyForecast` and for `/stats/day`. `/calendar`, `/predictions/yearly`
-and `/plan/day` need a key outright. Without one they answer 401 with the terms URL. A key has an
-hourly allowance, counted from each full hour and reported in `X-API-Key-Hourly-Limit`,
-`-Remaining` and `-Reset`; past it the answer is 429 with `Retry-After`. A key
-limited to some parks gets 403 for any other park. Without a key, reads are limited to 60 a minute
-and 1,000 an hour per address; a data key lifts that.
+¹ The park detail leaves out what the key has no permission for: weather (`live.weather`),
+opening hours (`live.schedule`), seasons (`parks.seasons`), ride facts such as height, minimum
+height and URL (`rides.details`), ride profiles (`rides.profiles`) and live statistics
+(`stats.live`). Its forecast field, each ride's `bestVisitTimes`, comes only with
+`?forecast=true` and `forecasts.waits`. Without a key a route answers 401; a key without the
+permission gets 403 `api-key-permission-missing` with `requiredPermission`. A key has an hourly
+allowance, counted from each full hour and reported in `X-API-Key-Hourly-Limit`, `-Remaining` and
+`-Reset`; past it the answer is 429 with `Retry-After`. A key limited to some parks gets 403 for
+any other park. Without a key, the wait times are limited to 60 reads a minute and 1,000 an hour
+per address.
 
 `https://park.fan/sitemap.xml` and `/sitemap-attractions.xml` list the pages; `/llms.txt` is the
 short version of this file for a model that arrived with nothing.
@@ -69,10 +73,10 @@ short version of this file for a model that arrived with nothing.
 
 ## Terms of use
 
-- Free for non-commercial use, with the credit above.
-- The forecasts (everything park.fan's models predict: crowd calendar, expected crowds, predicted
-  wait times, best days, yearly predictions, day plans) need a data key. Commercial use of the
-  forecasts or park.fan's statistics, whether read from a page, the API or MCP, requires a written
+- Everything beyond the live wait times needs a data key. A key is free only for an open-source
+  project that earns nothing from it (donations are fine) and shows a visible, followable link to
+  park.fan on a page search engines may index; how that link must look:
+  https://park.fan/en/developers#attribution. Any other use takes a paid key under a written
   agreement with Patrick Arns (park.fan) (contact: https://park.fan/en/impressum).
 - Neither the pages nor the forecasts may be used to train or fine-tune a model.
 - Live wait times, opening hours and weather come from park.fan's sources and are passed on for
