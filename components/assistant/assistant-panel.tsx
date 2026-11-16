@@ -70,6 +70,7 @@ import { AssistantReceipts, ASSISTANT_DONE_CHIP_CLASS } from './assistant-receip
 import { AssistantInterviewBar } from './assistant-interview-bar';
 import { interviewStore, takeInterviewKickoff } from '@/lib/assistant/interview';
 import { takeTripIdeaAsk } from '@/lib/assistant/trip-idea';
+import { takeParkyAsk } from '@/lib/assistant/ask';
 import { AssistantTripIdeaCard } from './assistant-trip-idea';
 import type { ParkyReactionAct } from '@/lib/assistant/parky/reactions';
 
@@ -223,7 +224,13 @@ export function AssistantPanel({
     }
     // „Im Chat“ on one of the trip planner's ideas: the question, with the idea under the answer.
     const ask = takeTripIdeaAsk();
-    if (ask) void send(ask.question, 'idea', undefined, undefined, ask.card);
+    if (ask) {
+      void send(ask.question, 'idea', undefined, undefined, ask.card);
+      return;
+    }
+    // A stamp, a tip or an empty state on the page asked about what it shows.
+    const asked = takeParkyAsk();
+    if (asked) void send(asked, 'context');
   }, [open, session.state, phase, send, t]);
 
   /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */
