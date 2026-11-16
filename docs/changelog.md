@@ -11,6 +11,93 @@ heading, and the same pull request writes the public entry in `content/changelog
 
 ---
 
+## 2.23.0 (2026-11-16) – Tagesplaner auf der Startseite, Umstiege auf fünf Minuten, Fußwege im Optimierer, Höchstlänge für Auszüge, mittiger CTA-Kasten
+
+Geschnitten am 2026-11-16 aus 4 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.23.0.md`. Neueste Abschnitte zuerst.
+
+### Der Tagesplaner plant auf fünf Minuten genau, zählt den Fußweg und sagt nicht mehr bei jedem Umstieg „knapp“
+
+Der Optimierer der API (`POST …/plan/optimize`) hat jeden Start auf die Viertelstunde aufgerundet,
+jede Warteschlange mindestens fünfzehn Minuten lang belegt und Fußwege nicht gewertet. Ein
+gepackter Headliner-Tag verlor so rund sieben Minuten pro Stopp, und der Plan lief quer durch den
+Park: im Phantasialand am 21.11. Winja's Fear um 11:45 und Winja's Force, gleiche Station, um 16:30,
+1,8 km zu Fuß. Seit PAR-1364 in der API liegen Starts auf fünf Minuten, eine Schlange belegt ihre
+eigene Länge, und Fußweg kostet `0,2 ×` seine Minuten. Über 23 Parktage (sechs Parks, vier Termine,
+alle Headliner) sinkt die Zeit zwischen dem Ende einer Schlange und dem Anfang der nächsten von 23,7
+auf 15,7 Minuten, der Fußweg um 23 %, die letzte Schlange endet rund eine Stunde früher. Die
+[Optimierer-Seite](features/trip-planner/optimizer.md#what-it-minimises) beschreibt das Ziel.
+
+Der Umstieg-Chip (`legBetween`, `lib/planner/leg.ts`) las die Grenze zwischen „knapp“ und „gut“
+aus `uncertaintyMinutes`. Das ist das Band um die Tagesspitze, auf heutigen Tagen im Median 29–44
+Minuten bei einer Spitze von 15–20, und seit zusammengesetzte Tage es auf jeder Bahn tragen, stand
+jeder Umstieg auf „knapp“: 177 von 177 auf den 23 Tagen. Der Chip liest das Band nicht mehr.
+„Knapp“ heißt jetzt: über der sicheren Untergrenze, unter dem angenommenen Fußweg. Eine Prognose
+endet bei „gut“, „großzügig“ bleibt vergangenen Tagen vorbehalten, das `°` und `transfer.noSpread`
+entfallen. „Später legen“ rundet auf `START_STEP_MIN` (5) wie der Optimierer. Nach „Tag optimieren“
+nennt die Zeile auch gesparten Fußweg (`optimize.walkSaved`, sechs Sprachen), und die Planer-Seite
+erklärt „knapp“ in allen sechs neu. Siehe
+[Umstieg-Chip](features/trip-planner/leg-chip.md#the-verdict-ladder).
+
+### Der Auszug eines Beitrags hat eine Höchstlänge
+
+`check:prose` warnt mit der neuen Regel `excerpt-length` (§5.4), wenn der Auszug länger als zwei
+Sätze oder 200 Zeichen ist, im Französischen, Spanischen und Italienischen 220. Der Auszug steht
+als Lead unter der Überschrift, auf den Karten werden davon nur zwei Zeilen gezeigt. Die deutschen
+Auszüge lagen im Mittel bei 257 Zeichen, der des Wintertraum-Guides bei 334 in vier Sätzen. Die
+Regel gilt für Beiträge mit `date` oder `updatedAt` ab dem 16. November 2026, ältere behalten ihren
+Auszug bis zur nächsten Überarbeitung. Fünf Testfälle in `pnpm test:prose-rules`.
+
+### Der CTA-Kasten im Beitrag steht mittig und gibt park.fan als Herkunft weiter
+
+`BlogCtaWidget` (`components/blog/blog-cta-widget.tsx`) zog sich bisher über die ganze Textbreite,
+Text links, Button rechts. Jetzt ist der Kasten nur so breit wie sein Inhalt, höchstens `max-w-xl`,
+steht mittig im Text, Satz und Button untereinander und zentriert. Auf dem Handy bricht die
+Beschriftung im Button um, statt den Button auf volle Breite zu ziehen.
+
+Der Link öffnet weiter in einem neuen Tab, trägt aber nur noch `rel="noopener"` statt
+`noopener noreferrer`. Mit der `Referrer-Policy: origin-when-cross-origin` aus `next.config.ts`
+sieht die Zielseite damit `https://park.fan` als Herkunft, ohne den Pfad. Die übrigen externen
+Links im Beitrag bleiben bei `noreferrer`. Anlass ist der Quick-Pass-Shop des Phantasialand, den
+die News `phantasialand-quick-pass-online` und der Guide `phantasialand-tipps` mit einem CTA samt
+`utm_source=park.fan` verlinken.
+
+### Der Tagesplaner auf der Startseite: Parky plant den Tag mit, der Tag füllt sich, während er abhakt
+
+Die Startseite hatte unter den News die Reise-Regionen, aber keinen Weg in den Tagesplaner. In den
+30 Tagen bis zum 2026-11-15 öffnete sie ihn 11-mal von 724 Öffnungen. Direkt unter den Regionen
+steht jetzt eine eigene Station (`DayPlannerHomeStop`, `components/home/day-planner-stop.tsx`):
+„Deinen Parktag Bahn für Bahn planen“, darunter ein Lead, „So funktioniert der Tagesplaner“ und
+die sechs Parks aus dem Planen-Menü als Schnellstarts („Einen Tag planen im“, Quelle `home-park`).
+
+Daneben steht Parkys Brett (`HomeDayPlannerBoard`): Parky mit seiner Sprechblase („Sag mir Park, Tag
+und deine Wunschfahrten, dann planen wir zusammen, wann du wo am kürzesten anstehst.“), ein
+gezeichneter Tag auf dem Streifen des Menüs mit Legende für die drei Farben, „Mit Parky planen“ (sein
+Tages-Interview, `openInterview({ kind: 'day' })`; ohne Parky ein Link auf seine Seite) und „Tag
+planen“. Erreicht das Brett die Bildschirmmitte, holt Parky sein Klemmbrett raus (der Akt `plan`)
+und der Tag füllt sich Block für Block, auf die 4,2 s des Akts abgestimmt (`data-strip-fill`,
+`pk-strip-in` in `app/globals.css`). Ohne JavaScript und bei reduzierter Bewegung steht der Tag
+fertig da. Mit einem Plan im Browser zeigt das Brett dessen nächsten Tag, Parky bietet einen
+weiteren an, und „Meinen Plan öffnen“ (Quelle `home-plan`) ersetzt „Tag planen“, ohne dass sich
+eine Zeile in der Höhe ändert. Gezählt wird die Station als `day_home` und `home_day`.
+
+Der Streifen (`DayStrip`, `DrawnDayStrip`, `PlanDayStrip`) liegt dafür in
+`components/planner/day-strip.tsx`, die Plan-Zusammenfassung (`usePlanSummary`) in
+`lib/planner/plan-summary.ts`; das Planen-Menü und der Header lesen beide von dort. Kann die API
+den Tag eines Plans nicht liefern, zeichnet der Streifen dessen Blöcke grau, wie einen Block ohne
+Wartezeit, statt einen leeren Kasten zu lassen; das gilt im Menü genauso. Den Status von Parkys
+Freigabe lesen die vier Stellen, die ihn brauchen, über `useAssistantGateStatus`.
+
+#### Die Parky-Szenen der Reise-Regionen bewegen sich auch außerhalb des Menüs
+
+Bisher liefen die Szenen nur im Planen-Menü in Schleife; auf der Startseite, auf der
+Reiseplaner-Kachel einer Parkseite und im Assistenten des Reiseplaners spielten sie ihren Auftritt
+einmal und blieben stehen. Jetzt laufen sie überall weiter, solange man sie sieht:
+`RegionSceneInView` setzt `loop`, solange ein Teil der Kachel unter dem 48 px hohen Header im
+Fenster steht und der Tab sichtbar ist (`useActiveOnScreen` mit `-48px` oben), und
+`WizardGuideBand` immer, weil der Inhalt des Dialogs nur existiert, solange er offen ist. Die
+Ausnahme in [Arbeit, die niemand sieht](rules/work-nobody-can-see-is-still-work.md) nennt jetzt
+alle drei Orte.
+
 ## 2.22.5 (2026-11-15) – Heute bisher im Tagesdialog, Parkys Wissen im Admin, „Mit Parky planen“ auf den Hubs
 
 Geschnitten am 2026-11-15 aus 3 Fragmenten in `docs/changelog.d/`. Der öffentliche Eintrag ist `content/changelog/2.22.5.md`. Neueste Abschnitte zuerst.
