@@ -2700,6 +2700,204 @@
       "invalid-form": "De upload was ongeldig. Probeer het opnieuw."
     }
   },
+  "developers": {
+    "meta": {
+      "title": "API van park.fan: data voor ontwikkelaars en API-sleutels",
+      "description": "Wachttijden, openingstijden en weer van meer dan 200 pretparken via de API opvragen. Voorspellingen, statistieken en handmatig bijgehouden data krijg je met een API-sleutel, die je hier aanvraagt."
+    },
+    "hero": {
+      "title": "De API van park.fan",
+      "tagline": "Wachttijden, openingstijden en weer vraag je op zonder account. Voor voorspellingen, statistieken en alles wat park.fan zelf bijhoudt, heb je een API-sleutel met het juiste toegangsrecht nodig.",
+      "action": "API-sleutel aanvragen"
+    },
+    "intro": "park.fan meet sinds december 2025 elke vijf minuten de wachttijden in meer dan 200 parken en maakt daar voorspellingen, statistieken en dagplannen van. Dezelfde data die je op de site ziet, levert api.park.fan als JSON. Deze pagina beschrijft wat open is, waarvoor je een sleutel nodig hebt, hoe je die meestuurt en wat je met de data mag doen.",
+    "access": {
+      "kicker": "Toegang",
+      "title": "Wat open is en waarvoor je een sleutel nodig hebt",
+      "lead": "Wat de bronnen van de wachttijden leveren, geeft park.fan vrij door. Wat park.fan zelf berekent of met de hand bijhoudt, is verdeeld over toegangsrechten, en een sleutel krijgt alleen de rechten die voor hem zijn vrijgegeven.",
+      "openTitle": "Open, zonder sleutel",
+      "openBody": "Wachttijden en status van elke attractie, openingstijden, weer, het parkoverzicht en de zoekfunctie. Zonder sleutel zijn dat {perMinute} verzoeken per minuut en {perHour} per uur per IP-adres.",
+      "scopedTitle": "Met sleutel, per toegangsrecht",
+      "routes": "Endpoints",
+      "parkRoute": "<code>{short}</code> staat voor <code>{full}</code>.",
+      "enforced": "Alleen met sleutel",
+      "upcoming": "Sleutel binnenkort verplicht",
+      "upcomingHint": "Op dit moment levert de API deze data nog zonder sleutel. Vraag het toegangsrecht nu aan, dan blijft alles werken als de API overschakelt."
+    },
+    "scopes": {
+      "forecasts": {
+        "title": "Voorspellingen",
+        "description": "Druktekalender, verwachte drukte per dag en per uur, voorspelde wachttijden, beste bezoekdagen en jaarvoorspellingen, voor losse parken en voor reisregio’s."
+      },
+      "planner": {
+        "title": "Dag- en reisplanner",
+        "description": "Het uurschema van een parkdag per attractie, het optimaliseren van een geplande dag en reisplannen over meerdere parken en dagen."
+      },
+      "statistics": {
+        "title": "Statistieken",
+        "description": "Gemeten wachttijden achteraf: de dagcurve van een attractie, het uurprofiel van een park, gemiddelden en records, en hoe ver de voorspellingen van de gemeten waarden af zaten."
+      },
+      "curated": {
+        "title": "Handmatig bijgehouden parkdata",
+        "description": "Wat park.fan met de hand bijhoudt: seizoenen en evenementen van de parken, de baanprofielen van de attracties met de begrippen uit de woordenlijst, en onderhoudsperiodes."
+      },
+      "travel": {
+        "title": "Reisdata",
+        "description": "De reisregio’s met hun parken, hotelgebieden en reistijden, de ticketcatalogus en de schoolvakanties van de landen waar de bezoekers vandaan komen."
+      }
+    },
+    "usage": {
+      "kicker": "Verzoeken",
+      "title": "Zo roep je de API aan",
+      "keyTitle": "Sleutel meesturen in de header",
+      "keyBody": "Alle endpoints staan onder <code>/v1</code> en antwoorden in JSON. De sleutel gaat in de header <code>X-API-Key</code> en begint met <code>pfk_</code>.",
+      "verifyTitle": "Sleutel controleren",
+      "verifyBody": "Dit endpoint vertelt je of je sleutel geldig is, voor welke parken en tot wanneer. Met <code>?park=</code> controleert het één park.",
+      "errorsTitle": "Als de API weigert",
+      "errorStatus": "Status",
+      "errorCode": "Code",
+      "errorMeaning": "Betekenis",
+      "errors": {
+        "api-key-required": "De route vraagt om een sleutel, maar het verzoek had er geen.",
+        "api-key-invalid": "Deze sleutel bestaat niet of is geblokkeerd.",
+        "api-key-expired": "De sleutel is verlopen.",
+        "api-key-park-not-allowed": "Deze sleutel geldt alleen voor andere parken.",
+        "api-key-park-required": "Deze sleutel geldt alleen voor bepaalde parken, en in de route staat geen park."
+      },
+      "limitsTitle": "Limieten",
+      "limitsBody": "Een sleutel mag {perHour} verzoeken per uur doen, tenzij er iets anders is afgesproken. Daarboven antwoordt de API tot het volgende hele uur met 429.",
+      "secretTitle": "De sleutel hoort op je server",
+      "secretBody": "Wat in een app, een browserextensie of het JavaScript van een webpagina zit, kan iedereen uitlezen. Roep de API aan vanaf je eigen server en geef je gebruikers alleen het resultaat door. Is een sleutel toch uitgelekt, schrijf ons dan: hij krijgt een nieuw geheim, en het oude blijft geldig tot je bent overgestapt.",
+      "referenceTitle": "Referentie",
+      "referenceBody": "Elk endpoint met parameters en antwoordformaat vind je in de interactieve referentie. Elke clientgenerator kan het OpenAPI-document erachter inladen.",
+      "referenceLink": "Interactieve referentie",
+      "openapiLink": "OpenAPI-document",
+      "mcpTitle": "MCP-server",
+      "mcpBody": "Voor assistenten is er een MCP-server op <code>{url}</code> met drie tools: parken zoeken, actuele wachttijden en de beste bezoekdagen. Voor de derde heb je je sleutel nodig in de header <code>X-API-Key</code>."
+    },
+    "terms": {
+      "kicker": "Voorwaarden",
+      "title": "Wat je met de data mag doen",
+      "credit": "Noem park.fan als bron, met een link naar de pagina van het park of de attractie waar het om gaat.",
+      "nonCommercial": "Voor niet-commerciële projecten zijn de sleutel en de data gratis.",
+      "commercial": "Een app met een aankoopprijs, abonnement, in-app-aankopen of advertenties, een website met advertenties of affiliatelinks en elk product van een bedrijf zijn commercieel. Voorspellingen, statistieken en handmatig bijgehouden data krijg je daarvoor alleen met een schriftelijke overeenkomst.",
+      "live": "De livedata van de bronnen geeft park.fan alleen door voor niet-commercieel gebruik, omdat park.fan er geen rechten op heeft. Voor commercieel gebruik heb je een overeenkomst met de betreffende bron nodig.",
+      "training": "De data en de voorspellingen mogen niet worden gebruikt om AI- of voorspelmodellen te trainen.",
+      "texts": "Artikelen, teksten uit de woordenlijst en foto’s horen niet bij de API.",
+      "full": "Alle gebruiksvoorwaarden in het colofon"
+    },
+    "request": {
+      "kicker": "Aanvraag",
+      "title": "API-sleutel aanvragen",
+      "lead": "We lezen elke aanvraag zelf. Hoe preciezer je je project beschrijft, hoe minder we achteraf hoeven te vragen. Het antwoord komt per e-mail."
+    },
+    "form": {
+      "you": "Over jou",
+      "name": "Naam",
+      "email": "E-mail",
+      "emailHint": "Naar dit adres sturen we het antwoord met de sleutel.",
+      "organisation": "Bedrijf of vereniging",
+      "optional": "optioneel",
+      "project": "Je project",
+      "projectName": "Naam van het project",
+      "projectNameHint": "Onder deze naam staat de sleutel in onze lijst.",
+      "website": "Website of link naar de app store",
+      "kind": "Wat is het?",
+      "kindPlaceholder": "Maak een keuze",
+      "kinds": {
+        "mobile-app": "App voor iOS of Android",
+        "website": "Website of blog",
+        "smart-home": "Smart home, widget of scherm",
+        "chat-bot": "Bot of assistent",
+        "research": "Onderzoek, studie of school",
+        "internal-tool": "Tool voor je eigen bedrijf",
+        "other": "Iets anders"
+      },
+      "description": "Wat doet het project?",
+      "descriptionHint": "Wie gebruikt het, en waar verschijnt de data van park.fan? Minstens {min} tekens.",
+      "source": "Broncode",
+      "sources": {
+        "open-source": "Open source",
+        "closed-source": "Niet openbaar"
+      },
+      "repository": "Link naar de repository",
+      "money": "Hoe wordt het project gefinancierd?",
+      "moneyHint": "Vink alles aan wat van toepassing is.",
+      "revenue": {
+        "none": "Helemaal niet: gratis en zonder advertenties",
+        "donations": "Donaties of sponsoring",
+        "ads": "Advertenties",
+        "affiliate": "Affiliate- of betaalde links",
+        "paid": "Aankoopprijs, abonnement of in-app-aankopen",
+        "client-work": "Opdracht voor een klant",
+        "company": "Product of dienst van een bedrijf"
+      },
+      "commercialNotice": "Daarmee is het gebruik commercieel, en voorspellingen, statistieken en handmatig bijgehouden data krijg je daarvoor alleen met een schriftelijke overeenkomst. Stuur de aanvraag toch in: we komen bij je terug met een voorstel.",
+      "needs": "Wat je nodig hebt",
+      "scopes": "Toegangsrechten",
+      "scopesHint": "Wachttijden, openingstijden en weer zijn zonder sleutel open en ontbreken daarom in deze lijst.",
+      "volume": "Verzoeken per dag, geschat",
+      "volumes": {
+        "under-1k": "minder dan 1.000",
+        "under-10k": "1.000 tot 10.000",
+        "under-100k": "10.000 tot 100.000",
+        "more": "meer dan 100.000"
+      },
+      "parks": "Alleen bepaalde parken?",
+      "parksHint": "Noem ze hier. Leeg betekent: alle parken.",
+      "message": "Verder nog iets?",
+      "send": "Versturen",
+      "terms": "Ik heb de <link>gebruiksvoorwaarden</link> gelezen en vermeld park.fan met een link als bron.",
+      "submit": "Aanvraag versturen",
+      "submitting": "Bezig met versturen",
+      "requirements": "Vul de verplichte velden in, kies minstens één toegangsrecht en bevestig de voorwaarden.",
+      "fieldInvalid": "Dit klopt niet.",
+      "doneTitle": "Aanvraag ontvangen",
+      "doneBody": "We sturen ons antwoord naar {email}. Wordt de aanvraag goedgekeurd, dan staat de sleutel in die mail. Bewaar hem goed: hij kan geen tweede keer worden verstuurd, alleen worden vervangen door een nieuwe."
+    },
+    "error": {
+      "turnstile-failed": "De beveiligingscontrole is verlopen of mislukt. Doe hem opnieuw en verstuur de aanvraag nog een keer.",
+      "invalid-form": "Een paar gegevens kloppen niet. De velden zijn gemarkeerd.",
+      "already-pending": "Voor dit e-mailadres loopt al een aanvraag. Het antwoord komt zodra erover is beslist.",
+      "queue-full": "Er wachten nu te veel aanvragen. Schrijf naar hello@park.fan, dan raakt die van jou niet kwijt.",
+      "store-failed": "De aanvraag kon niet worden opgeslagen. Probeer het over een paar minuten opnieuw.",
+      "network": "Geen verbinding met de server. Controleer je verbinding en verstuur de aanvraag opnieuw.",
+      "generic": "De aanvraag is niet aangekomen. Probeer het nog eens."
+    },
+    "faq": {
+      "kicker": "Even gevraagd",
+      "title": "Veelgestelde vragen over de API",
+      "items": [
+        {
+          "question": "Wat kost een API-sleutel?",
+          "answer": "Voor niet-commerciële projecten niets. Voor commercieel gebruik is er een schriftelijke overeenkomst waarin omvang en prijs staan."
+        },
+        {
+          "question": "Wat telt als commercieel?",
+          "answer": "Een app met een aankoopprijs, abonnement, in-app-aankopen of advertenties, een website met advertenties of affiliatelinks en elk product dat een bedrijf aanbiedt. Past je project in geen van deze groepen, vink dan in de aanvraag aan wat klopt. In het antwoord lees je dan hoe wij het indelen."
+        },
+        {
+          "question": "Mag ik de sleutel in mijn app inbouwen?",
+          "answer": "Nee, alleen op een server die je zelf beheert. Uit een app of een webpagina is elke sleutel uit te lezen, en wie hem heeft, verbruikt jouw uurlimiet. Je app vraagt het aan je server, en je server vraagt het aan park.fan."
+        },
+        {
+          "question": "Kan ik later meer toegangsrechten krijgen?",
+          "answer": "Ja. Schrijf naar hello@park.fan welke je nodig hebt en waarvoor. De sleutel blijft dezelfde, en het nieuwe toegangsrecht geldt vanaf het volgende verzoek."
+        },
+        {
+          "question": "Zijn artikelen en foto’s ook via de API te krijgen?",
+          "answer": "Nee. Artikelen, teksten uit de woordenlijst en foto’s horen niet bij de API, en van veel foto’s liggen de rechten bij de fotografen. Wil je daar iets van overnemen, vraag het dan per e-mail aan hello@park.fan."
+        }
+      ]
+    },
+    "next": {
+      "title": "Verder naar de referentie",
+      "reference": "API-referentie openen",
+      "referenceDescription": "Alle endpoints met parameters en voorbeeldantwoorden",
+      "terms": "Gebruiksvoorwaarden lezen",
+      "termsDescription": "Bronvermelding, commercieel gebruik, livedata"
+    }
+  },
   "attraction": {
     "rideProfile": {
       "title": "Baanprofiel",
@@ -5431,6 +5629,9 @@
     },
     "contribute": {
       "kicker": "park.fan · jouw foto’s"
+    },
+    "developers": {
+      "kicker": "park.fan · voor ontwikkelaars"
     },
     "news": {
       "kicker": "park.fan · parknieuws"

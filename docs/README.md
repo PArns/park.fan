@@ -53,6 +53,7 @@ The frontend side of each API surface; the contract itself is linked from each p
 - [blog-editor](features/blog-editor.md) — The admin blog editor: what it edits, save as draft PR, translate route and its env, known data-loss limits
 - [compare](features/compare.md) — /compare: the ?parks= parameter, ambiguous slugs, noindex, picker and table
 - [contribute](features/contribute.md) — Visitor photo contributions (/contribute): upload flow, Blob storage, moderation, hand-over into media
+- [developer-portal](features/developer-portal.md) — /developers: scopes of a data key and their routes, the key request form and its store, review and reply mails in /admin/api-keys
 - [crowd-calendar](features/crowd-calendar.md) — Crowd calendar route: month URLs and window, redirects, grid, day dialog, best-days chapter, #calendar forward
 - [glossary](features/glossary.md) — Glossary: files, URLs, adding a term and its checks, pages, SEO, ride-glossary link, 3-D player, blog use
 - [header-navigation](features/header-navigation.md) — Header bar entries, the parks/guides/news/„Mehr"/favorites bands, open-close mechanics, the phone sheet

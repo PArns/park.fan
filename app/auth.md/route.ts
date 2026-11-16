@@ -1,12 +1,13 @@
 import { agentDocumentHeaders } from '@/lib/agents/http';
 import { SITE_URL } from '@/i18n/config';
 import { DATA_TERMS_URL } from '@/lib/agents/licensing';
+import { DEVELOPER_PORTAL_URL } from '@/lib/developers/paths';
 
 /**
- * `/auth.md`: where an agent looks for how to get credentials. Live data needs none, a forecast
- * needs a static data key issued by hand, and the admin authenticates a person, not a program, so
- * the document is self-contained and points at no OAuth Protected Resource Metadata or client
- * registration.
+ * `/auth.md`: where an agent looks for how to get credentials. Live data needs none, park.fan's
+ * own data needs a static data key that a person requests on the developer portal and the owner
+ * issues by hand, and the admin authenticates a person, not a program, so the document is
+ * self-contained and points at no OAuth Protected Resource Metadata or client registration.
  */
 export const dynamic = 'force-static';
 
@@ -27,8 +28,12 @@ the \`X-API-Key\` header (\`pfk_…\`). \`/calendar\`, \`/best-days\`, \`/predic
 \`/plan/day\` answer 401 without one; park detail, ride detail, \`/stats/day\` and \`/favorites\` add
 their forecast fields only with \`?forecast=true\` and a key, and \`?forecast=true\` without a key
 is a 401 for the whole request. The MCP tool \`get_park_best_days\`
-reads the same header. A key for non-commercial use is free and issued by hand: ask through
-${SITE_URL}/en/impressum. Never put it in a URL.
+reads the same header. Never put it in a URL.
+
+A key carries scopes, one per kind of data park.fan makes itself: \`forecasts\`, \`planner\`,
+\`statistics\`, \`curated\` and \`travel\`. The developer portal lists the routes each one opens
+and has the request form: ${DEVELOPER_PORTAL_URL}. A person fills it in; a key for non-commercial
+use is free and issued by hand, and it arrives by email.
 
 - OpenAPI description: https://api.park.fan/api-json
 - API catalog (RFC 9727): ${SITE_URL}/.well-known/api-catalog
@@ -50,7 +55,7 @@ The full terms: ${DATA_TERMS_URL}
 ## No agent registration
 
 There is no \`register_uri\`, no dynamic client registration, no issuer, and no token endpoint:
-a data key is issued by a person, on request. If you find a park.fan endpoint asking you to register
+a data key is issued by a person, on a request a person sent. If you find a park.fan endpoint asking you to register
 an agent, it is not park.fan.
 
 ## The administrative interface is not for agents

@@ -32,6 +32,7 @@ import {
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
 import { cn } from '@/lib/utils';
+import { CODE_BLOCK_CLASS } from '@/components/common/code';
 import { getDateTimeFormat, languageName } from '@/lib/utils/intl-format';
 import { parseGlossarySegments } from '@/lib/glossary/parse-segments';
 import { extractToc } from '@/lib/blog/toc';
@@ -874,9 +875,7 @@ export async function BlogContent({ markdown, locale }: BlogContentProps) {
       }
       return <code className={`${className ?? ''} font-mono text-sm`}>{children}</code>;
     },
-    pre: ({ children }) => (
-      <pre className="bg-muted my-6 overflow-x-auto rounded-xl p-4 text-sm">{children}</pre>
-    ),
+    pre: ({ children }) => <pre className={cn(CODE_BLOCK_CLASS, 'my-6')}>{children}</pre>,
   };
 
   return (

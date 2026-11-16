@@ -22,8 +22,9 @@ reading order. This is the cheapest way to answer one question about one park.
 
 `https://api.park.fan/v1`. Live and historical data are open to anyone, without a key, OAuth or
 sign-up. Forecasts need a data key in the `X-API-Key` header (`pfk_…`), free for non-commercial
-use on request through https://park.fan/en/impressum. The catalog describes the API in
-machine-readable form:
+use. A person requests one at https://park.fan/en/developers, which also lists the scopes a key
+can carry (forecasts, planner, statistics, curated, travel) and the routes each opens. The
+catalog describes the API in machine-readable form:
 
 ```bash
 curl https://park.fan/.well-known/api-catalog        # RFC 9727 linkset

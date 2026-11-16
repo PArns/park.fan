@@ -71,6 +71,7 @@ const PAGES = [
   // Every live trip region's hub, months and best-time pages are hubs.
   ...TRIP_REGION_PAGES.map((path) => [path, 'hub', true]),
   ['/de/contribute', 'tool'],
+  ['/de/developers', 'tool'],
   ['/de/news', 'tool'],
   ['/de/compare', 'tool'],
   ['/de/glossar', 'tool'],

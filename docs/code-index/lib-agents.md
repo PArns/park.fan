@@ -71,6 +71,8 @@ Literal rather than an env var, for the same reason the API catalog is: a previe
 
 ### [`tool-descriptors.ts`](../../lib/agents/tool-descriptors.ts)
 
+The three tools park.fan offers an agent, described once because they are served twice: over MCP at `/api/mcp` and through `navigator.modelContext` on the page. `lib/agents/mcp-tools.ts` implements them.
+
 - `toolDescriptor` _function_: Returns the agent tool descriptor with the given name from `TOOL_DESCRIPTORS`, and throws when there is none.
 - `TOOL_DESCRIPTORS` _const_
 - `FORECAST_TOOL_NAMES` _const_: The tools whose answer is a forecast. Like the API's forecast routes they need a data key, unless the call comes from a park.fan page (`lib/agents/forecast-access.ts`).

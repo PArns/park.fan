@@ -185,6 +185,14 @@ Route `/[locale]/datenschutz` (page).
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 
+### [`developers/page.tsx`](../../app/%5Blocale%5D/developers/page.tsx)
+
+Route `/[locale]/developers` (page).
+
+- `default (DevelopersPage)` _component_: The developer portal: what the API serves openly and what each key scope opens (from `lib/developers/scopes.ts`), how to send and check a key, the terms in short, and the key request form.
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
 ### [`error.tsx`](../../app/%5Blocale%5D/error.tsx)
 
 Route `/[locale]` (error).

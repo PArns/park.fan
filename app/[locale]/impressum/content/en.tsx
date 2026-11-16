@@ -4,6 +4,7 @@ import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
+import { DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in English, shown on every locale but `de`. */
@@ -225,22 +226,35 @@ export function ImpressumEN({ story }: { story: ImpressumStory | null }) {
           or ride the data is about. Texts and photos are not included.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Forecasts need an API key</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Forecasts and park.fan's own data need an API key
+        </h3>
         <p className="mb-4">
           Forecasts are everything park.fan predicts with its own models, including the crowd
           calendar, the expected crowds per day and per hour, predicted wait times, the best days to
           visit, the yearly predictions and the plans of the day planner and the trip planner. The
-          API returns them only with an API key. A key for non-commercial use is free; ask for one
-          at <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
+          API returns them only with an API key.
+        </p>
+        <p className="mb-4">
+          The same applies to everything else park.fan makes itself: the statistics drawn from the
+          measured wait times, the seasons, events, ride profiles and maintenance windows kept by
+          hand, and the data of the trip regions. Using them through the API takes an API key with
+          the matching permission. A key carries only the permissions granted to it. A key for
+          non-commercial use is free; request one on the{' '}
+          <Link href={DEVELOPERS_PATH} className="text-primary hover:text-primary/80 underline">
+            developer portal
+          </Link>
+          .
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Commercial use</h3>
         <p className="mb-4">
           Commercial means, for example, a paid app, an app with subscriptions, in-app purchases or
           advertising, a website with advertising or affiliate links, and any product a company
-          offers. Using park.fan's forecasts and statistics commercially requires a written
-          agreement with Patrick Arns (park.fan). Without one, they may not be shown, stored or
-          passed on for such purposes, whether they come from the pages, the API or the MCP server.
+          offers. Using park.fan's forecasts, statistics and its other own data commercially
+          requires a written agreement with Patrick Arns (park.fan). Without one, they may not be
+          shown, stored or passed on for such purposes, whether they come from the pages, the API or
+          the MCP server.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Live data for non-commercial use only</h3>

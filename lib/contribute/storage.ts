@@ -2,7 +2,7 @@ import 'server-only';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { list, put } from '@vercel/blob';
-import { resolveDriver } from './driver';
+import { resolveDriver } from '@/lib/storage/driver';
 import type { StoredImageRecord } from './types';
 
 /**

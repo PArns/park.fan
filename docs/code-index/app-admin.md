@@ -385,11 +385,15 @@ Route `/admin/analytics` (page).
 
 - `default (AnalyticsPage)` _component_
 
+### [`api-keys/_components/key-requests-panel.tsx`](../../app/admin/api-keys/_components/key-requests-panel.tsx)
+
+- `KeyRequestsPanel` _component_: The key requests from the developer portal, open ones first, decided ones behind a switch. „Key erstellen“ hands a request to the key dialog with its values filled in (`onApprove`); the dialog marks it approved once the key exists.
+
 ### [`api-keys/page.tsx`](../../app/admin/api-keys/page.tsx)
 
 Route `/admin/api-keys` (page).
 
-- `default (ApiKeysPage)` _component_: The data API keys: who may read park.fan's forecasts on api.park.fan. Owner only, because a key decides who uses the forecasts, which is a licensing decision rather than an editorial one; the backend enforces the same.
+- `default (ApiKeysPage)` _component_: The data API keys: who may read park.fan's own data on api.park.fan, and which scopes of it.
 
 ### [`assistant/_lib/assistant.ts`](../../app/admin/assistant/_lib/assistant.ts)
 

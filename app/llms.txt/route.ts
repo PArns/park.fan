@@ -140,7 +140,7 @@ Free for non-commercial use: name park.fan and link the page a number came from.
 (everything park.fan's own models predict: crowd calendar, expected crowds per day and hour,
 predicted wait times, best days, yearly predictions, day plans) come from the API and the MCP
 forecast tool only with a data key in \`X-API-Key\`, free for non-commercial use on request
-(${EN}/impressum). Using the forecasts or park.fan's statistics commercially requires a written
+(${EN}/developers, which also lists what each scope of a key opens). Using the forecasts or park.fan's statistics commercially requires a written
 agreement with Patrick Arns (park.fan). Live wait times and opening hours come from park.fan's
 sources and are passed on for non-commercial use only. Without a key, the API allows 60 reads a
 minute and 1,000 an hour per address. The full terms: ${DATA_TERMS_URL}

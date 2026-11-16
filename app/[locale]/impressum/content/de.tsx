@@ -3,6 +3,7 @@ import { ObfuscatedEmail } from '@/components/common/obfuscated-email';
 import { ObfuscatedPhone } from '@/components/common/obfuscated-phone';
 import { ExternalLink } from 'lucide-react';
 import { DATA_TERMS_ANCHOR, RSL_LICENSE_PATH } from '@/lib/agents/licensing';
+import { DEVELOPERS_PATH } from '@/lib/developers/paths';
 import type { ImpressumStory } from './story';
 
 /** The legal notice (Impressum) in German, shown on the `de` locale. */
@@ -229,24 +230,37 @@ export function ImpressumDE({ story }: { story: ImpressumStory | null }) {
           geht. Texte und Fotos gehören nicht dazu.
         </p>
 
-        <h3 className="mt-8 mb-4 text-2xl font-semibold">Prognosen nur mit API-Key</h3>
+        <h3 className="mt-8 mb-4 text-2xl font-semibold">
+          Prognosen und eigene Daten nur mit API-Key
+        </h3>
         <p className="mb-4">
           Prognosen sind alles, was park.fan mit eigenen Modellen vorhersagt, darunter der
           Crowd-Kalender, der erwartete Andrang pro Tag und pro Stunde, vorhergesagte Wartezeiten,
           die besten Besuchstage, die Jahresprognosen und die Pläne des Tagesplaners. Die API gibt
-          sie nur mit einem API-Key heraus. Für nicht-kommerzielle Zwecke ist der Key kostenlos; es
-          gibt ihn auf Anfrage an{' '}
-          <ObfuscatedEmail local="hello" domain="park.fan" displayText="hello [at] park.fan" />.
+          sie nur mit einem API-Key heraus.
+        </p>
+        <p className="mb-4">
+          Dasselbe gilt für alles andere, was park.fan selbst erstellt: die Statistiken aus den
+          gemessenen Wartezeiten, die von Hand gepflegten Saisons, Events, Fahrprofile und
+          Wartungsfenster und die Daten der Reiseregionen. Wer sie über die API nutzt, braucht einen
+          API-Key mit der passenden Berechtigung. Ein Key trägt nur die Berechtigungen, die für ihn
+          freigegeben sind. Für nicht-kommerzielle Zwecke ist er kostenlos; beantragen lässt er sich
+          im{' '}
+          <Link href={DEVELOPERS_PATH} className="text-primary hover:text-primary/80 underline">
+            Entwicklerportal
+          </Link>
+          .
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">Kommerzielle Nutzung</h3>
         <p className="mb-4">
           Kommerziell sind zum Beispiel eine kostenpflichtige App, eine App mit Abo, In-App-Käufen
           oder Werbung, eine Website mit Werbung oder Affiliate-Links und jedes Produkt, das ein
-          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen und Statistiken von
-          park.fan braucht es eine schriftliche Vereinbarung mit Patrick Arns (park.fan). Ohne sie
-          dürfen sie für solche Zwecke weder gezeigt noch gespeichert noch weitergegeben werden,
-          gleich ob sie von den Seiten, aus der API oder vom MCP-Server stammen.
+          Unternehmen anbietet. Für eine kommerzielle Nutzung der Prognosen, der Statistiken und der
+          übrigen eigenen Daten von park.fan braucht es eine schriftliche Vereinbarung mit Patrick
+          Arns (park.fan). Ohne sie dürfen sie für solche Zwecke weder gezeigt noch gespeichert noch
+          weitergegeben werden, gleich ob sie von den Seiten, aus der API oder vom MCP-Server
+          stammen.
         </p>
 
         <h3 className="mt-8 mb-4 text-2xl font-semibold">

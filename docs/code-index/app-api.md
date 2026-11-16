@@ -107,6 +107,23 @@ Route `/api/admin/contributions/summary` (route).
 - `dynamic` _const_
 - `runtime` _const_
 
+### [`admin/developer-requests/[id]/route.ts`](../../app/api/admin/developer-requests/%5Bid%5D/route.ts)
+
+Route `/api/admin/developer-requests/[id]` (route).
+
+- `PATCH` _function_: PATCH: approve a request with the key issued for it, turn it down, or reopen it. Owner only.
+- `DELETE` _function_: DELETE: remove a request and the personal data in it for good. Owner only.
+- `dynamic` _const_
+- `runtime` _const_
+
+### [`admin/developer-requests/route.ts`](../../app/api/admin/developer-requests/route.ts)
+
+Route `/api/admin/developer-requests` (route).
+
+- `GET` _function_: GET /api/admin/developer-requests: every key request from the developer portal, newest first. Owner only, like the keys themselves: a request holds an applicant's name and email, and answering it is a licensing decision.
+- `dynamic` _const_
+- `runtime` _const_
+
 ### [`admin/glossary-terms/route.ts`](../../app/api/admin/glossary-terms/route.ts)
 
 Route `/api/admin/glossary-terms` (route).
@@ -265,6 +282,14 @@ Route `/api/cron/websub` (route).
 
 - `GET` _function_: Tells the WebSub hub the blog feeds may have changed, so subscribers get a push instead of polling. Daily and unconditional: the hub diffs the feed and pushes only on a change, so a ping for an unchanged feed costs one conditional GET.
 - `maxDuration` _const_
+
+### [`developers/key-request/route.ts`](../../app/api/developers/key-request/route.ts)
+
+Route `/api/developers/key-request` (route).
+
+- `POST` _function_: POST /api/developers/key-request: stores a key request from the developer portal for the owner to review on `/admin/api-keys`. Turnstile first, so a script never reaches the store; then the shared schema.
+- `dynamic` _const_
+- `runtime` _const_
 
 ### [`favorites/route.ts`](../../app/api/favorites/route.ts)
 

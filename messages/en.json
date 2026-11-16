@@ -2700,6 +2700,204 @@
       "invalid-form": "The upload was malformed. Please try again."
     }
   },
+  "developers": {
+    "meta": {
+      "title": "park.fan API: data for developers and API keys",
+      "description": "Read wait times, opening hours and weather for more than 200 theme parks through the API. Forecasts, statistics and curated data come with an API key, which you request here."
+    },
+    "hero": {
+      "title": "The park.fan API",
+      "tagline": "Wait times, opening hours and weather need no sign-up. Forecasts, statistics and everything park.fan curates itself need an API key that carries the matching permission.",
+      "action": "Request an API key"
+    },
+    "intro": "Since December 2025, park.fan has measured the wait times in more than 200 parks every five minutes and turned them into forecasts, statistics and day plans. api.park.fan serves the same data the pages show, as JSON. This page covers what is open, what needs a key, how to send it and what you may do with the data.",
+    "access": {
+      "kicker": "Access",
+      "title": "What is open and what needs a key",
+      "lead": "What the wait-time sources deliver, park.fan passes on openly. What park.fan calculates or curates itself is split into permissions, and each key carries only the ones granted to it.",
+      "openTitle": "Open, no key",
+      "openBody": "Wait times and status of every attraction, opening hours, weather, the park directory and search. Without a key you get {perMinute} requests a minute and {perHour} an hour per IP address.",
+      "scopedTitle": "With a key, by permission",
+      "routes": "Endpoints",
+      "parkRoute": "<code>{short}</code> stands for <code>{full}</code>.",
+      "enforced": "Key required",
+      "upcoming": "Key required soon",
+      "upcomingHint": "The API still serves this data without a key. Request the permission now and nothing breaks when it switches over."
+    },
+    "scopes": {
+      "forecasts": {
+        "title": "Forecasts",
+        "description": "Crowd calendar, expected crowds per day and hour, predicted wait times, best days to visit and yearly forecasts, for single parks and for trip regions."
+      },
+      "planner": {
+        "title": "Day and trip planner",
+        "description": "A park day's hour-by-hour plan per attraction, the optimisation of a planned day, and trip plans across several parks and days."
+      },
+      "statistics": {
+        "title": "Statistics",
+        "description": "Measured wait times looking back: an attraction's day curve, a park's hourly profile, averages and records, plus how far the forecasts were from the measured values."
+      },
+      "curated": {
+        "title": "Curated park data",
+        "description": "What park.fan maintains by hand: the parks' seasons and events, the attractions' ride profiles with the terms from the glossary, and maintenance windows."
+      },
+      "travel": {
+        "title": "Travel data",
+        "description": "The trip regions with their parks, hotel areas and travel times, the ticket catalogue, and the school holidays of the countries visitors come from."
+      }
+    },
+    "usage": {
+      "kicker": "Requests",
+      "title": "How to query the API",
+      "keyTitle": "Send the key in a header",
+      "keyBody": "Every endpoint sits under <code>/v1</code> and answers in JSON. The key goes in the <code>X-API-Key</code> header and starts with <code>pfk_</code>.",
+      "verifyTitle": "Check a key",
+      "verifyBody": "This endpoint tells you whether your key is valid, for which parks and until when. With <code>?park=</code> it checks a single park.",
+      "errorsTitle": "When the API refuses",
+      "errorStatus": "Status",
+      "errorCode": "Code",
+      "errorMeaning": "Meaning",
+      "errors": {
+        "api-key-required": "The route needs a key and the request carried none.",
+        "api-key-invalid": "The key does not exist or has been revoked.",
+        "api-key-expired": "The key has expired.",
+        "api-key-park-not-allowed": "This key only covers other parks.",
+        "api-key-park-required": "This key only covers certain parks, and the route names none."
+      },
+      "limitsTitle": "Limits",
+      "limitsBody": "A key may make {perHour} requests an hour unless agreed otherwise. Beyond that, the API answers 429 until the next full hour.",
+      "secretTitle": "The key belongs on your server",
+      "secretBody": "Anything inside an app, a browser extension or a web page's JavaScript can be read by anyone. Call the API from your own server and pass only the result to your users. If a key does leak, write to us: it gets a new secret, and the old one keeps working until you have switched.",
+      "referenceTitle": "Reference",
+      "referenceBody": "Every endpoint with its parameters and response format is in the interactive reference. Any client generator can load the OpenAPI document behind it.",
+      "referenceLink": "Interactive reference",
+      "openapiLink": "OpenAPI document",
+      "mcpTitle": "MCP server",
+      "mcpBody": "For assistants there is an MCP server at <code>{url}</code> with three tools: search parks, current wait times and the best days to visit. The third needs your key in the <code>X-API-Key</code> header."
+    },
+    "terms": {
+      "kicker": "Terms",
+      "title": "What you may do with the data",
+      "credit": "Name park.fan as the source, with a link to the page of the park or attraction in question.",
+      "nonCommercial": "For non-commercial projects, the key and the data are free.",
+      "commercial": "An app with a price, a subscription, in-app purchases or ads, a website with ads or affiliate links, and any product a company offers are commercial. Forecasts, statistics and curated data are available for that only under a written agreement.",
+      "live": "park.fan passes on the sources' live data for non-commercial use only, because it holds no rights to it. Commercial use needs an agreement with the source in question.",
+      "training": "Neither the data nor the forecasts may be used to train AI or forecasting models.",
+      "texts": "Articles, glossary texts and photos are not part of the API.",
+      "full": "The full terms of use in the legal notice"
+    },
+    "request": {
+      "kicker": "Request",
+      "title": "Request an API key",
+      "lead": "We read every request ourselves. The more precisely you describe your project, the fewer follow-up questions there are. The answer comes by email."
+    },
+    "form": {
+      "you": "About you",
+      "name": "Name",
+      "email": "Email",
+      "emailHint": "The answer with the key goes to this address.",
+      "organisation": "Company or club",
+      "optional": "optional",
+      "project": "Your project",
+      "projectName": "Project name",
+      "projectNameHint": "Your key appears under this name in our list.",
+      "website": "Website or app store link",
+      "kind": "What is it?",
+      "kindPlaceholder": "Choose one",
+      "kinds": {
+        "mobile-app": "App for iOS or Android",
+        "website": "Website or blog",
+        "smart-home": "Smart home, widget or display",
+        "chat-bot": "Bot or assistant",
+        "research": "Research, university or school",
+        "internal-tool": "Tool for your own company",
+        "other": "Something else"
+      },
+      "description": "What does the project do?",
+      "descriptionHint": "Who uses it, and where does park.fan's data appear? At least {min} characters.",
+      "source": "Source code",
+      "sources": {
+        "open-source": "Open source",
+        "closed-source": "Not public"
+      },
+      "repository": "Repository link",
+      "money": "How is the project funded?",
+      "moneyHint": "Tick everything that applies.",
+      "revenue": {
+        "none": "Not at all: free and without ads",
+        "donations": "Donations or sponsorship",
+        "ads": "Ads",
+        "affiliate": "Affiliate or paid links",
+        "paid": "Purchase price, subscription or in-app purchases",
+        "client-work": "Commissioned work for a client",
+        "company": "A company's product or service"
+      },
+      "commercialNotice": "That makes the use commercial, and forecasts, statistics and curated data are available for it only under a written agreement. Send the request anyway: we will get back to you with a proposal.",
+      "needs": "What you need",
+      "scopes": "Permissions",
+      "scopesHint": "Wait times, opening hours and weather are open without a key, so they are not in this list.",
+      "volume": "Requests per day, estimated",
+      "volumes": {
+        "under-1k": "under 1,000",
+        "under-10k": "1,000 to 10,000",
+        "under-100k": "10,000 to 100,000",
+        "more": "more than 100,000"
+      },
+      "parks": "Only certain parks?",
+      "parksHint": "Name them here. Empty means all parks.",
+      "message": "Anything else?",
+      "send": "Send",
+      "terms": "I have read the <link>terms of use</link> and will name park.fan as the source, with a link.",
+      "submit": "Send request",
+      "submitting": "Sending",
+      "requirements": "Fill in the required fields, pick at least one permission and accept the terms.",
+      "fieldInvalid": "This entry does not fit.",
+      "doneTitle": "Request received",
+      "doneBody": "We will reply to {email}. If the request is approved, that email contains the key. Keep it safe: it cannot be sent a second time, only replaced with a new one."
+    },
+    "error": {
+      "turnstile-failed": "The security check expired or failed. Solve it again and resend the request.",
+      "invalid-form": "Some entries do not fit. The fields are marked.",
+      "already-pending": "A request from this email address is already waiting. The answer comes once it is decided.",
+      "queue-full": "Too many requests are waiting right now. Write to hello@park.fan so yours does not get lost.",
+      "store-failed": "The request could not be saved. Try again in a few minutes.",
+      "network": "No connection to the server. Check your connection and resend the request.",
+      "generic": "The request did not arrive. Try again."
+    },
+    "faq": {
+      "kicker": "Quick questions",
+      "title": "Common questions about the API",
+      "items": [
+        {
+          "question": "What does an API key cost?",
+          "answer": "Nothing for non-commercial projects. Commercial use comes with a written agreement that sets out scope and price."
+        },
+        {
+          "question": "What counts as commercial?",
+          "answer": "An app with a price, a subscription, in-app purchases or ads, a website with ads or affiliate links, and any product a company offers. If your project fits none of these, tick what applies in the request, and the answer will say how we class it."
+        },
+        {
+          "question": "May I build the key into my app?",
+          "answer": "No, only into a server you run. Any key can be read out of an app or a web page, and whoever has it spends your hourly limit. Your app asks your server, your server asks park.fan."
+        },
+        {
+          "question": "Can I get more permissions later?",
+          "answer": "Yes. Write to hello@park.fan with the ones you need and what for. The key stays the same, and the new permission applies from the next request."
+        },
+        {
+          "question": "Are articles and photos available through the API?",
+          "answer": "No. Articles, glossary texts and photos are not part of the API, and the photographers hold the rights to many of the photos. To reuse any of it, ask by email at hello@park.fan."
+        }
+      ]
+    },
+    "next": {
+      "title": "On to the reference",
+      "reference": "Open the API reference",
+      "referenceDescription": "Every endpoint with parameters and sample responses",
+      "terms": "Read the terms of use",
+      "termsDescription": "Credit, commercial use, live data"
+    }
+  },
   "attraction": {
     "rideProfile": {
       "title": "Ride profile",
@@ -5431,6 +5629,9 @@
     },
     "contribute": {
       "kicker": "park.fan · your photos"
+    },
+    "developers": {
+      "kicker": "park.fan · for developers"
     },
     "news": {
       "kicker": "park.fan · park news"

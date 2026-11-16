@@ -1,9 +1,11 @@
 /**
- * The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecasts on
- * api.park.fan for one consumer each. The backend owns them (`/v1/admin/api-keys`, owner only);
- * this module holds what the page and its dialog share.
+ * The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data on
+ * api.park.fan for one consumer each, scope by scope (`lib/developers/scopes.ts`). The backend
+ * owns them (`/v1/admin/api-keys`, owner only); this module holds what the page and its dialogs
+ * share.
  */
 import { formatInTimeZone, fromZonedTime } from 'date-fns-tz';
+import { API_SCOPES, LEGACY_KEY_SCOPES, sortScopes, type ApiScope } from '@/lib/developers/scopes';
 import { TOKEN_EXPIRY_OPTIONS, hasPassed } from './mcp';
 
 /** What a key was issued for, as the backend stores it. */
@@ -41,6 +43,11 @@ export interface DataApiKey {
   stats?: DataApiKeyStats;
   /** The parks the key may read forecasts for; null means every park. */
   allowedParkIds: string[] | null;
+  /**
+   * The scopes the key carries. Absent from an API that does not know scopes yet; null for a key
+   * issued before them, which the API reads as `LEGACY_KEY_SCOPES`.
+   */
+  scopes?: ApiScope[] | null;
   /** The same parks with their names, as the list returns them. */
   allowedParks?: { id: string; name: string }[] | null;
   /** When the key stops working; null means never. An expired key can be extended. */
@@ -73,8 +80,42 @@ export const DATA_API_KEY_USAGE_LABELS: Record<DataApiKeyUsage, string> = {
   internal: 'park.fan selbst',
 };
 
-/** What a new key is allowed per hour unless the dialog says otherwise; the backend's default too. */
-export const DEFAULT_REQUESTS_PER_HOUR = 1000;
+/** The admin's names for the scopes, in German like the rest of the admin. */
+export const DATA_API_KEY_SCOPE_LABELS: Record<ApiScope, string> = {
+  forecasts: 'Prognosen',
+  planner: 'Tages- und Reiseplaner',
+  statistics: 'Statistiken',
+  curated: 'Kuratierte Parkdaten',
+  travel: 'Reisedaten',
+};
+
+/** The scope checkboxes, in the catalog's order. */
+export const DATA_API_KEY_SCOPE_OPTIONS = API_SCOPES.map((scope) => ({
+  value: scope,
+  label: DATA_API_KEY_SCOPE_LABELS[scope],
+}));
+
+/**
+ * The API stores scopes: its key list carries the field. Until it does, a key opens what every key
+ * opens, and the dialogs send no scopes, which an API without them would refuse as an unknown field.
+ */
+export function apiStoresScopes(items: readonly DataApiKey[]): boolean {
+  return items.some((key) => key.scopes !== undefined);
+}
+
+/** What a key opens: its scopes, or for a key from before scopes what every key opened then. */
+export function effectiveScopes(key: Pick<DataApiKey, 'scopes'>): ApiScope[] {
+  return key.scopes ? sortScopes(key.scopes) : [...LEGACY_KEY_SCOPES];
+}
+
+/** „Prognosen, Statistiken“, as one line. */
+export function formatScopes(scopes: readonly ApiScope[]): string {
+  return scopes.length === 0
+    ? 'keine Berechtigung'
+    : sortScopes(scopes)
+        .map((scope) => DATA_API_KEY_SCOPE_LABELS[scope])
+        .join(', ');
+}
 
 /** The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`. */
 export const MAX_REQUESTS_PER_HOUR = 1_000_000;
@@ -267,6 +308,8 @@ export interface CreateDataApiKeyBody {
   requestsPerHour: number | null;
   /** Null for every park. */
   allowedParkIds: string[] | null;
+  /** Only to an API that stores scopes (`apiStoresScopes`). */
+  scopes?: ApiScope[];
   expiresAt?: string;
   contact?: string;
   note?: string;
@@ -283,6 +326,8 @@ export function createDataApiKeyBody(input: {
   allowedParkIds: readonly string[];
   /** ISO 8601; null for a key that does not expire. */
   expiresAt: string | null;
+  /** Left out for an API that does not store scopes. */
+  scopes?: readonly ApiScope[];
 }): CreateDataApiKeyBody {
   const contact = input.contact.trim();
   const note = input.note.trim();
@@ -291,13 +336,9 @@ export function createDataApiKeyBody(input: {
     usage: input.usage,
     requestsPerHour: input.requestsPerHour,
     allowedParkIds: input.allowedParkIds.length > 0 ? [...input.allowedParkIds] : null,
+    ...(input.scopes && { scopes: sortScopes(input.scopes) }),
     ...(input.expiresAt && { expiresAt: input.expiresAt }),
     ...(contact && { contact }),
     ...(note && { note }),
   };
-}
-
-/** How a client sends the key, for the dialog to show next to it. */
-export function dataApiKeyCurlExample(key: string): string {
-  return `curl -H "X-API-Key: ${key}" https://api.park.fan/v1/parks/europe/germany/rust/europa-park/best-days`;
 }

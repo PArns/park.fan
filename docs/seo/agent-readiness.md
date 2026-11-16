@@ -13,7 +13,7 @@ the same commit.
 | `/robots.txt`                          | crawl rules, per-crawler AI policy, Content Signals, `License`, `Agentmap`, the four sitemaps     | `app/robots.txt/route.ts`                         |
 | `/license.xml`                         | the same policy as an RSL licence                                                                 | `app/license.xml/route.ts`                        |
 | `/llms.txt`                            | the site in one page, for a model that has only the hostname ([llmstxt.org](https://llmstxt.org)) | `app/llms.txt/route.ts`                           |
-| `/auth.md`                             | how to authenticate: you do not                                                                   | `app/auth.md/route.ts`                            |
+| `/auth.md`                             | how to authenticate: for live data not at all, for park.fan's own data with a scoped key          | `app/auth.md/route.ts`                            |
 | `/.well-known/api-catalog`             | the public API as a linkset ([RFC 9727](https://www.rfc-editor.org/rfc/rfc9727))                  | `lib/agents/api-catalog.ts`                       |
 | `Link:` on the homepage                | a pointer to that catalog ([RFC 8288](https://www.rfc-editor.org/rfc/rfc8288))                    | `HOMEPAGE_LINK_HEADER`, `next.config.ts`          |
 | `/.well-known/agent-skills/index.json` | three skills with SHA-256 digests (Agent Skills Discovery v0.2.0)                                 | `lib/agents/skills.ts`                            |
@@ -69,14 +69,21 @@ number came from), and `<terms>` (RSL 1.0 §3.17) pointing at the terms of use b
 
 The terms are prose, in the Impressum under `#data-use` (de and en): free for non-commercial use
 with a credit; park.fan's forecasts (crowd calendar, expected crowds per day and hour, predicted
-waits, best days, day plans) through the API only against a data key, free for non-commercial use
-on request, and commercially only under a written agreement; the live data of park.fan's sources
+waits, best days, day plans) and its other own data (statistics, curated data, travel data)
+through the API only against a data key with the matching scope, free for non-commercial use on
+request at `/developers` ([developer portal](../features/developer-portal.md)), and commercially
+only under a written agreement; the live data of park.fan's sources
 for non-commercial use only, because park.fan holds no rights to it. The URL is `DATA_TERMS_URL`
 in `lib/agents/licensing.ts`, and every machine document links it:
 
 - `license.xml` with `<terms>`, the API catalog with `terms-of-service` (RFC 6903);
 - `llms.txt` and `auth.md` with a paragraph; the `park-fan-data` skill types the URL out,
   because it is a static file served byte for byte.
+
+Where to get a key is the developer portal, `DEVELOPER_PORTAL_URL` (`lib/developers/paths.ts`),
+which `auth.md`, `llms.txt`, the forecast tool's description and `server.json` name; the skill
+types it out. The portal is a page with readers, so it is not one of the documents above: it lists
+the scopes of a key from `lib/developers/scopes.ts` and holds the request form.
 
 `pnpm check:agent-ready` fetches the page the licence names and fails when the anchor is gone, and
 fails when the catalog links a different URL.

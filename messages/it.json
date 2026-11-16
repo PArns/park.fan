@@ -2700,6 +2700,204 @@
       "invalid-form": "Il caricamento non era valido. Riprova."
     }
   },
+  "developers": {
+    "meta": {
+      "title": "API di park.fan: dati per sviluppatori e chiave API",
+      "description": "Tempi di attesa, orari e meteo di oltre 200 parchi a tema, da leggere tramite l’API. Previsioni, statistiche e dati curati richiedono una chiave API, che puoi richiedere qui."
+    },
+    "hero": {
+      "title": "L’API di park.fan",
+      "tagline": "Tempi di attesa, orari e meteo si leggono senza registrazione. Per previsioni, statistiche e tutto ciò che park.fan cura in proprio ti serve una chiave API con l’autorizzazione giusta.",
+      "action": "Richiedi una chiave API"
+    },
+    "intro": "Da dicembre 2025 park.fan misura ogni cinque minuti i tempi di attesa in oltre 200 parchi e ne ricava previsioni, statistiche e piani della giornata. api.park.fan fornisce in JSON gli stessi dati che mostrano le pagine. Questa pagina spiega cosa è libero, cosa richiede una chiave, come inviarla e cosa puoi fare con i dati.",
+    "access": {
+      "kicker": "Accesso",
+      "title": "Cosa è libero e cosa richiede una chiave",
+      "lead": "Quello che forniscono le fonti dei tempi di attesa, park.fan lo passa liberamente. Quello che park.fan calcola o cura a mano è diviso in autorizzazioni, e ogni chiave porta solo quelle che le sono state concesse.",
+      "openTitle": "Libero, senza chiave",
+      "openBody": "Tempi di attesa e stato di ogni attrazione, orari, meteo, l’elenco dei parchi e la ricerca. Senza chiave hai {perMinute} chiamate al minuto e {perHour} all’ora per ogni indirizzo IP.",
+      "scopedTitle": "Con chiave, in base all’autorizzazione",
+      "routes": "Endpoint",
+      "parkRoute": "<code>{short}</code> sta per <code>{full}</code>.",
+      "enforced": "Solo con chiave",
+      "upcoming": "Chiave presto obbligatoria",
+      "upcomingHint": "Per ora l’API fornisce ancora questi dati senza chiave. Richiedi subito l’autorizzazione, così non si blocca nulla quando cambierà."
+    },
+    "scopes": {
+      "forecasts": {
+        "title": "Previsioni",
+        "description": "Calendario dell’affluenza, affluenza attesa per giorno e per ora, tempi di attesa previsti, giorni migliori per la visita e previsioni annuali, per singoli parchi e per regioni di viaggio."
+      },
+      "planner": {
+        "title": "Pianificatore della giornata e di viaggio",
+        "description": "Il programma ora per ora di una giornata al parco per ogni attrazione, l’ottimizzazione di una giornata pianificata e i piani di viaggio su più parchi e più giorni."
+      },
+      "statistics": {
+        "title": "Statistiche",
+        "description": "I tempi di attesa misurati, a posteriori: la curva giornaliera di un’attrazione, il profilo orario di un parco, medie e record, più lo scarto tra le previsioni e i valori misurati."
+      },
+      "curated": {
+        "title": "Dati curati dei parchi",
+        "description": "Ciò che park.fan cura a mano: stagioni ed eventi dei parchi, i profili delle attrazioni con i termini del glossario e le finestre di manutenzione."
+      },
+      "travel": {
+        "title": "Dati di viaggio",
+        "description": "Le regioni di viaggio con i loro parchi, le zone hotel e i tempi di spostamento, il catalogo dei biglietti e le vacanze scolastiche dei paesi da cui arrivano i visitatori."
+      }
+    },
+    "usage": {
+      "kicker": "Chiamate",
+      "title": "Come interrogare l’API",
+      "keyTitle": "La chiave nell’header",
+      "keyBody": "Tutti gli endpoint si trovano sotto <code>/v1</code> e rispondono in JSON. La chiave va nell’header <code>X-API-Key</code> e inizia con <code>pfk_</code>.",
+      "verifyTitle": "Verifica della chiave",
+      "verifyBody": "Questo endpoint ti dice se la tua chiave è valida, per quali parchi e fino a quando. Con <code>?park=</code> controlla un singolo parco.",
+      "errorsTitle": "Quando l’API rifiuta",
+      "errorStatus": "Stato",
+      "errorCode": "Codice",
+      "errorMeaning": "Significato",
+      "errors": {
+        "api-key-required": "La route richiede una chiave e la chiamata non ne aveva.",
+        "api-key-invalid": "Questa chiave non esiste o è stata bloccata.",
+        "api-key-expired": "La chiave è scaduta.",
+        "api-key-park-not-allowed": "Questa chiave vale solo per altri parchi.",
+        "api-key-park-required": "Questa chiave vale solo per alcuni parchi, e la route non ne indica nessuno."
+      },
+      "limitsTitle": "Limiti",
+      "limitsBody": "Salvo accordi diversi, una chiave può fare {perHour} chiamate all’ora. Oltre questa soglia l’API risponde con 429 fino all’ora piena successiva.",
+      "secretTitle": "La chiave resta sul tuo server",
+      "secretBody": "Quello che c’è dentro un’app, un’estensione del browser o il JavaScript di una pagina web può leggerlo chiunque. Chiama l’API dal tuo server e passa ai tuoi utenti solo il risultato. Se una chiave è comunque diventata pubblica, scrivici: riceve un nuovo segreto, e quello vecchio resta valido finché non sei passato a quello nuovo.",
+      "referenceTitle": "Riferimento",
+      "referenceBody": "Ogni endpoint con i suoi parametri e il formato della risposta si trova nel riferimento interattivo. Il documento OpenAPI alla base lo carica qualsiasi generatore di client.",
+      "referenceLink": "Riferimento interattivo",
+      "openapiLink": "Documento OpenAPI",
+      "mcpTitle": "Server MCP",
+      "mcpBody": "Per gli assistenti c’è un server MCP su <code>{url}</code> con tre strumenti: ricerca dei parchi, tempi di attesa attuali e giorni migliori per la visita. Il terzo richiede la tua chiave nell’header <code>X-API-Key</code>."
+    },
+    "terms": {
+      "kicker": "Condizioni",
+      "title": "Cosa puoi fare con i dati",
+      "credit": "Cita park.fan come fonte, con un link alla pagina del parco o dell’attrazione di cui si parla.",
+      "nonCommercial": "Per i progetti non commerciali la chiave e i dati sono gratuiti.",
+      "commercial": "Un’app a pagamento, in abbonamento, con acquisti in-app o pubblicità, un sito con pubblicità o link di affiliazione e qualsiasi prodotto di un’azienda sono commerciali. Per questi usi previsioni, statistiche e dati curati sono disponibili solo con un accordo scritto.",
+      "live": "park.fan passa i dati in tempo reale delle fonti solo per usi non commerciali, perché non ne detiene i diritti. Per un uso commerciale ti serve un accordo con la fonte in questione.",
+      "training": "Né i dati né le previsioni possono essere usati per addestrare modelli di IA o di previsione.",
+      "texts": "Articoli, testi del glossario e foto non fanno parte dell’API.",
+      "full": "Tutte le condizioni d’uso nelle note legali"
+    },
+    "request": {
+      "kicker": "Richiesta",
+      "title": "Richiedere una chiave API",
+      "lead": "Leggiamo ogni richiesta di persona. Più descrivi con precisione il tuo progetto, meno domande dovremo farti. La risposta arriva via e-mail."
+    },
+    "form": {
+      "you": "Su di te",
+      "name": "Nome",
+      "email": "E-mail",
+      "emailHint": "A questo indirizzo arriva la risposta con la chiave.",
+      "organisation": "Azienda o associazione",
+      "optional": "facoltativo",
+      "project": "Il tuo progetto",
+      "projectName": "Nome del progetto",
+      "projectNameHint": "Con questo nome la chiave compare nel nostro elenco.",
+      "website": "Sito web o link all’app store",
+      "kind": "Di cosa si tratta?",
+      "kindPlaceholder": "Scegli",
+      "kinds": {
+        "mobile-app": "App per iOS o Android",
+        "website": "Sito web o blog",
+        "smart-home": "Smart home, widget o display",
+        "chat-bot": "Bot o assistente",
+        "research": "Ricerca, università o scuola",
+        "internal-tool": "Strumento per la tua azienda",
+        "other": "Altro"
+      },
+      "description": "Cosa fa il progetto?",
+      "descriptionHint": "Chi lo usa, e dove compaiono i dati di park.fan? Almeno {min} caratteri.",
+      "source": "Codice sorgente",
+      "sources": {
+        "open-source": "Open source",
+        "closed-source": "Non pubblico"
+      },
+      "repository": "Link al repository",
+      "money": "Come si finanzia il progetto?",
+      "moneyHint": "Spunta tutto ciò che vale.",
+      "revenue": {
+        "none": "Per niente: gratuito e senza pubblicità",
+        "donations": "Donazioni o sponsorizzazioni",
+        "ads": "Pubblicità",
+        "affiliate": "Link di affiliazione o a pagamento",
+        "paid": "Prezzo d’acquisto, abbonamento o acquisti in-app",
+        "client-work": "Lavoro su commissione per un cliente",
+        "company": "Prodotto o servizio di un’azienda"
+      },
+      "commercialNotice": "Così l’uso è commerciale, e previsioni, statistiche e dati curati sono disponibili solo con un accordo scritto. Invia comunque la richiesta: ti risponderemo con una proposta.",
+      "needs": "Cosa ti serve",
+      "scopes": "Autorizzazioni",
+      "scopesHint": "Tempi di attesa, orari e meteo sono liberi senza chiave e per questo mancano in questo elenco.",
+      "volume": "Chiamate al giorno, stima",
+      "volumes": {
+        "under-1k": "meno di 1.000",
+        "under-10k": "da 1.000 a 10.000",
+        "under-100k": "da 10.000 a 100.000",
+        "more": "più di 100.000"
+      },
+      "parks": "Solo alcuni parchi?",
+      "parksHint": "Indicali qui. Se resta vuoto, valgono tutti i parchi.",
+      "message": "Altro da aggiungere?",
+      "send": "Invio",
+      "terms": "Ho letto le <link>condizioni d’uso</link> e cito park.fan come fonte, con un link.",
+      "submit": "Invia la richiesta",
+      "submitting": "Invio in corso",
+      "requirements": "Compila i campi obbligatori, scegli almeno un’autorizzazione e accetta le condizioni.",
+      "fieldInvalid": "Questo dato non va bene.",
+      "doneTitle": "Richiesta ricevuta",
+      "doneBody": "Risponderemo a {email}. Se la richiesta viene approvata, la chiave sarà in quella e-mail. Conservala bene: non si può inviare una seconda volta, solo sostituire con una nuova."
+    },
+    "error": {
+      "turnstile-failed": "Il controllo di sicurezza è scaduto o non è riuscito. Ripetilo e invia di nuovo la richiesta.",
+      "invalid-form": "Alcuni dati non vanno bene. I campi sono segnalati.",
+      "already-pending": "Per questo indirizzo e-mail c’è già una richiesta in attesa. La risposta arriva appena sarà decisa.",
+      "queue-full": "Al momento ci sono troppe richieste in attesa. Scrivi a hello@park.fan, così la tua non va persa.",
+      "store-failed": "Non è stato possibile salvare la richiesta. Riprova tra qualche minuto.",
+      "network": "Nessuna connessione al server. Controlla la connessione e invia di nuovo la richiesta.",
+      "generic": "La richiesta non è arrivata. Riprova."
+    },
+    "faq": {
+      "kicker": "In breve",
+      "title": "Domande frequenti sull’API",
+      "items": [
+        {
+          "question": "Quanto costa una chiave API?",
+          "answer": "Niente per i progetti non commerciali. Per un uso commerciale c’è un accordo scritto che fissa portata e prezzo."
+        },
+        {
+          "question": "Cosa conta come commerciale?",
+          "answer": "Un’app a pagamento, in abbonamento, con acquisti in-app o pubblicità, un sito con pubblicità o link di affiliazione e qualsiasi prodotto offerto da un’azienda. Se il tuo progetto non rientra in nessuno di questi casi, spunta nella richiesta ciò che vale. Nella risposta ti diremo come lo classifichiamo."
+        },
+        {
+          "question": "Posso inserire la chiave nella mia app?",
+          "answer": "No, solo su un server che gestisci tu. Da un’app o da una pagina web si può estrarre qualsiasi chiave, e chi la possiede consuma il tuo limite orario. La tua app chiede al tuo server, il tuo server chiede a park.fan."
+        },
+        {
+          "question": "Posso ottenere altre autorizzazioni più avanti?",
+          "answer": "Sì. Scrivi a hello@park.fan quali ti servono e a cosa. La chiave resta la stessa, e la nuova autorizzazione vale dalla chiamata successiva."
+        },
+        {
+          "question": "Articoli e foto sono disponibili anche tramite l’API?",
+          "answer": "No. Articoli, testi del glossario e foto non fanno parte dell’API, e i diritti di molte foto appartengono ai fotografi. Se vuoi riprendere qualcosa, chiedi via e-mail a hello@park.fan."
+        }
+      ]
+    },
+    "next": {
+      "title": "Al riferimento",
+      "reference": "Apri il riferimento dell’API",
+      "referenceDescription": "Tutti gli endpoint con parametri ed esempi di risposta",
+      "terms": "Leggi le condizioni d’uso",
+      "termsDescription": "Citazione della fonte, uso commerciale, dati in tempo reale"
+    }
+  },
   "attraction": {
     "rideProfile": {
       "title": "Profilo della giostra",
@@ -5431,6 +5629,9 @@
     },
     "contribute": {
       "kicker": "park.fan · le tue foto"
+    },
+    "developers": {
+      "kicker": "park.fan · per sviluppatori"
     },
     "news": {
       "kicker": "park.fan · notizie dai parchi"

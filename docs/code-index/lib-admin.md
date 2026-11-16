@@ -7,8 +7,11 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`api-keys.ts`](../../lib/admin/api-keys.ts)
 
-The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecasts on api.park.fan for one consumer each. The backend owns them (`/v1/admin/api-keys`, owner only); this module holds what the page and its dialog share.
+The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data on api.park.fan for one consumer each, scope by scope (`lib/developers/scopes.ts`).
 
+- `apiStoresScopes` _function_: The API stores scopes: its key list carries the field. Until it does, a key opens what every key opens, and the dialogs send no scopes, which an API without them would refuse as an unknown field.
+- `effectiveScopes` _function_: What a key opens: its scopes, or for a key from before scopes what every key opened then.
+- `formatScopes` _function_: „Prognosen, Statistiken“, as one line.
 - `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, written plain or with German thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit.
 - `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „12 in dieser Stunde, ohne eigenes Limit“.
 - `formatKeyUsage` _function_: „heute 120 · 30 Tage 3.456“, and „· 40 über dem Limit abgelehnt“ when the allowance refused any of them. „Heute“ is the UTC day the counters run on.
@@ -24,9 +27,9 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `formatKeyMoment` _function_: „14.11.2026, 10:00“: a moment as the admin reads it, in Berlin.
 - `formatPreviousKeyStatus` _function_: „Alter Key gültig bis 14.11.2026, 10:00, zuletzt genutzt vor 5 Minuten“; `lastUsed` is the last use as the page words it, null for never.
 - `createDataApiKeyBody` _function_: The body of a create, as an object for `adminFetch` to serialize.
-- `dataApiKeyCurlExample` _function_: How a client sends the key, for the dialog to show next to it.
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
-- `DEFAULT_REQUESTS_PER_HOUR` _const_: What a new key is allowed per hour unless the dialog says otherwise; the backend's default too.
+- `DATA_API_KEY_SCOPE_LABELS` _const_: The admin's names for the scopes, in German like the rest of the admin.
+- `DATA_API_KEY_SCOPE_OPTIONS` _const_: The scope checkboxes, in the catalog's order.
 - `MAX_REQUESTS_PER_HOUR` _const_: The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`.
 - `KEY_EXPIRY_TIME_ZONE` _const_: The time zone a key's end date is chosen and shown in: the admin's, Patrick's.
 - `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
@@ -81,6 +84,22 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's forecast
 - `FEED_STALE_MINUTES` _const_: Minutes since the newest wait-time row: a stalled cron goes unnoticed for months otherwise.
 - `WEATHER_DAYS_AHEAD` _const_: Days of weather forecast ahead of today; the table holds about 16, so fewer than a week means the import has stopped. Lower is worse: amber below `warn`, red at `bad` or below.
 - Types: `HealthTone`, `Reading`, `Threshold`, `HealthCheck`, `HealthAreaId`, `HealthArea`, `HealthProblem`, `NavSignal`, `AdminHealth`, `HealthSources`
+
+### [`key-requests.ts`](../../lib/admin/key-requests.ts)
+
+The key requests from the developer portal, as `/admin/api-keys` reviews them: German labels for what the form asked, the key dialog's starting values for a request, and the reply mails.
+
+- `keyRequestPath` _function_
+- `keyRequestPrefill` _function_: The key dialog's starting values for a request: the project's name, the applicant's address, commercial when a revenue model makes it so, the allowance its volume suggests, the scopes it asked for, and a note that says where the key came …
+- `keyApprovalMailto` _function_: The approval mail with the key in it, in the applicant's language: what the key opens, its allowance, how to send it, where it must not go, the credit, and the links.
+- `keyRejectionMailto` _function_: The reply to a request that was turned down, with the reason when the admin gave one.
+- `KEY_REQUESTS_PATH` _const_: The proxy path of the request list, and of one request.
+- `KEY_REQUESTS_QUERY_KEY` _const_: The React Query key of the list.
+- `PROJECT_KIND_LABELS` _const_
+- `SOURCE_MODEL_LABELS` _const_
+- `REVENUE_MODEL_LABELS` _const_
+- `REQUEST_VOLUME_LABELS` _const_
+- Types: `KeyRequestPrefill`
 
 ### [`live-traffic.ts`](../../lib/admin/live-traffic.ts)
 

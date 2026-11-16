@@ -38,7 +38,8 @@ Live and historical data stay open.
   cache a 403 and serve it to the site's own pages.
 - **The two server keys stay apart.** `API_AUTH_KEY` (`x-auth-key`) lifts the API's rate limits
   and makes it believe `X-Forwarded-For`; `API_DATA_KEY` opens the forecasts. Neither reaches a
-  data consumer, who gets a `pfk_` key of their own from `/admin/api-keys`. Until the API runs
+  data consumer, who requests a `pfk_` key of their own on `/developers` and gets it from
+  `/admin/api-keys` ([developer portal](../features/developer-portal.md)). Until the API runs
   with `FORECAST_BYPASS_KEY=off`, `x-auth-key` still opens the forecasts too.
 
 ## What it does not stop
