@@ -101,6 +101,39 @@ const NO_WAIT_TIMES_NOTE: Record<string, string> = {
     'This park publishes no wait times at all. No numbers exist here — and no number is not a queue of zero.',
 };
 
+/** What a caller without the permissions reads instead of the extras. */
+const WAITS_ONLY_NOTE = `Land, crowd level and maintenance dates need a park.fan data API key in the X-API-Key header with the matching permissions: ${DEVELOPER_PORTAL_URL}`;
+
+/**
+ * The park as this caller may read it. A park.fan page reads it like the page. A caller's own key
+ * reads it from the API with that key and nothing of the server's, so the API leaves out every
+ * field the key has no permission for (crowd level without `stats.live`, maintenance without
+ * `parks.seasons`, land without `rides.details`). A key the API refuses for this park (403, no
+ * `parks.details` or another park) and a caller without a key get the wait times only, which need
+ * no key; an invalid key or a spent allowance is an error, as on the API.
+ */
+async function parkForCaller(
+  segments: [string, string, string, string],
+  grant: KeyGrant | undefined
+): Promise<
+  { data: ParkWithAttractions | null; waitsOnly: boolean; keyNote?: string } | { error: string }
+> {
+  if (grant?.via === 'key') {
+    const keyed = await readWithApiKey<ParkWithAttractions>(parkApiPath(segments), grant.apiKey);
+    if (!isApiKeyRefusal(keyed)) return { data: keyed, waitsOnly: false };
+    if (keyed.status !== 403) return { error: keyed.message };
+    return {
+      data: await getParkByGeoPathForAgents(...segments),
+      waitsOnly: true,
+      keyNote: `${keyed.message} ${WAITS_ONLY_NOTE}`,
+    };
+  }
+  const data = await getParkByGeoPathForAgents(...segments);
+  return grant?.via === 'page'
+    ? { data, waitsOnly: false }
+    : { data, waitsOnly: true, keyNote: WAITS_ONLY_NOTE };
+}
+
 const EXECUTORS: Record<string, McpTool['execute']> = {
   async search_theme_parks(input, context) {
     const query = String(input.query ?? '').trim();
@@ -130,21 +163,9 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
     const park = await resolvePark(query);
     if (!park) return { error: `No park on park.fan matches "${query}".` };
 
-    // A presented key reads the park with that key alone, so the API applies its permissions and
-    // a made-up key opens nothing. A page reads like the page. Without either, or with a key the
-    // API refuses, only the waits and statuses leave: lands, the time zone, crowd level and
-    // maintenance windows are keyed data.
-    const grant = context?.keyGrant;
-    const own =
-      grant?.via === 'key'
-        ? await readWithApiKey<ParkWithAttractions>(parkApiPath(park.segments), grant.apiKey).catch(
-            () => null
-          )
-        : null;
-    const refusal = isApiKeyRefusal(own) ? own : null;
-    const keyed = grant?.via === 'page' || (own !== null && !refusal);
-    const data =
-      own && !isApiKeyRefusal(own) ? own : await getParkByGeoPathForAgents(...park.segments);
+    const read = await parkForCaller(park.segments, context?.keyGrant);
+    if ('error' in read) return { error: read.error };
+    const { data, waitsOnly, keyNote } = read;
     if (!data) return { error: `No live data for ${park.name}.` };
 
     // `effectiveStatus` is the API's own verdict and already accounts for a ride that is out of
@@ -160,11 +181,11 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
       const next = running ? null : nextWorksPeriod(windows, today);
       return {
         name: attraction.name,
-        ...(keyed && { land: attraction.land }),
+        ...(!waitsOnly && { land: attraction.land }),
         status: (attraction as { effectiveStatus?: string }).effectiveStatus ?? attraction.status,
         waitMinutes: standby && 'waitTime' in standby ? (standby.waitTime ?? null) : null,
-        ...(keyed && running && { maintenance: maintenanceWindow(running) }),
-        ...(keyed && next && { nextMaintenance: maintenanceWindow(next) }),
+        ...(!waitsOnly && running && { maintenance: maintenanceWindow(running) }),
+        ...(!waitsOnly && next && { nextMaintenance: maintenanceWindow(next) }),
       };
     });
 
@@ -177,25 +198,21 @@ const EXECUTORS: Record<string, McpTool['execute']> = {
       park: park.name,
       url: `${SITE_URL}/${localeOf(input)}${park.path}`,
       parkStatus: data.status,
-      ...(keyed && { timezone: data.timezone }),
+      timezone: data.timezone,
       ...(noWaitTimes
         ? {
             waitTimesAvailable: false,
             note: NO_WAIT_TIMES_NOTE[noWaitTimes] ?? NO_WAIT_TIMES_NOTE.not_published,
           }
         : {
-            ...(keyed && {
+            ...(!waitsOnly && {
               crowdLevel: data.analytics?.statistics?.crowdLevel ?? data.currentLoad?.crowdLevel,
               averageWaitMinutes:
                 data.analytics?.statistics?.avgWaitTime ?? data.currentLoad?.currentWaitTime,
             }),
             note: 'Wait times are what the park published, rounded to five minutes. A null wait is a ride with no published number, not a queue of zero.',
           }),
-      ...(!keyed && {
-        keyNote:
-          refusal?.message ??
-          `Crowd level, lands and maintenance dates need a park.fan data API key in the X-API-Key header: ${DEVELOPER_PORTAL_URL}`,
-      }),
+      ...(keyNote && { keyNote }),
       maintenanceNote:
         'maintenance is a planned closure running today, nextMaintenance the next one: park-local days, both inclusive. A window can be one day or months; until null means no end is known yet, untilIsEstimate that the end is park.fan’s estimate.',
       ridesOpen: rides.filter((ride) => ride.status === 'OPERATING').length,

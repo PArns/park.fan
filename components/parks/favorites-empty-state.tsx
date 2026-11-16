@@ -61,7 +61,7 @@ export function FavoritesEmptyState({
             <ParkyPose
               pose="smitten"
               line={tParky('smittenLine')}
-              question={tParky('smittenQuestion')}
+              ask={{ question: tParky('smittenQuestion'), kind: 'favorites' }}
               className="size-24"
             />
           </div>

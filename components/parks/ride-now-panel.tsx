@@ -251,17 +251,23 @@ export function RideNowPanel({
                       <ParkyStamp
                         tone="good"
                         label={tStamp(stamp)}
-                        question={
+                        ask={
                           stamp === 'walkOn'
-                            ? tStamp('walkOnQuestion', {
-                                ride: stripNewPrefix(attraction.name),
-                                minutes: roundWaitTo5(wait),
-                              })
-                            : tStamp('belowTypicalQuestion', {
-                                ride: stripNewPrefix(attraction.name),
-                                minutes: roundWaitTo5(wait),
-                                typical: typicalHour!.typical,
-                              })
+                            ? {
+                                question: tStamp('walkOnQuestion', {
+                                  ride: stripNewPrefix(attraction.name),
+                                  minutes: roundWaitTo5(wait),
+                                }),
+                                element: { element: 'stamp', kind: 'walk_on' },
+                              }
+                            : {
+                                question: tStamp('belowTypicalQuestion', {
+                                  ride: stripNewPrefix(attraction.name),
+                                  minutes: roundWaitTo5(wait),
+                                  typical: typicalHour!.typical,
+                                }),
+                                element: { element: 'stamp', kind: 'below_typical' },
+                              }
                         }
                         className="ml-auto shrink-0 self-center"
                       />

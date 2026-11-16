@@ -229,12 +229,11 @@ check(
   'get_park_wait_times returns rides without a key, and nothing that needs one',
   (waits?.rides ?? []).length > 0 &&
     waits.crowdLevel === undefined &&
-    waits.timezone === undefined &&
     waits.rides.every((ride) => ride.land === undefined && ride.maintenance === undefined),
   `${waits?.ridesOpen}/${waits?.ridesTotal} open`
 );
 
-// A made-up key opens nothing beyond the open answer: the tool reads with that key.
+// A made-up key opens nothing: the tool reads with that key, and the API refuses it.
 const madeUpWaits = (
   await rpc(
     'tools/call',
@@ -243,9 +242,9 @@ const madeUpWaits = (
   )
 )?.result?.structuredContent;
 check(
-  'get_park_wait_times with a made-up key answers like without one',
-  (madeUpWaits?.rides ?? []).length > 0 && madeUpWaits.crowdLevel === undefined,
-  madeUpWaits?.keyNote?.slice(0, 80)
+  'get_park_wait_times with a made-up key returns the API refusal, no crowd level',
+  typeof madeUpWaits?.error === 'string' && madeUpWaits.crowdLevel === undefined,
+  madeUpWaits?.error?.slice(0, 80)
 );
 
 // Hansa-Park publishes wait times only in its own app on the park WLAN. The payload for it is

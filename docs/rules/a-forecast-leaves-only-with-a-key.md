@@ -37,9 +37,9 @@ Only `/wait-times` stays open.
   (`lib/agents/forecast-access.ts`) hands the tool the presented key, and the tool sends that key
   and nothing of the server's to the API (`readWithApiKey`, `lib/api/keyed-read.ts`), which applies
   the key's permissions, its parks and its hourly allowance on that read. `get_park_wait_times`
-  needs no key and leaves out lands, the time zone, crowd level and maintenance dates without one;
-  with a key it reads the park with that key too, so a made-up key opens nothing more. The best-days
-  tool reads the park's rides and seasons with the caller's key as well. Nothing here caches a verdict. A WebMCP call
+  needs no key and then leaves out land, crowd level and maintenance dates; with a key it reads
+  the park with that key (`parkForCaller`), so it shows only what the key's permissions open. The
+  best-days tool reads the park's rides and seasons with the caller's key as well. Nothing here caches a verdict. A WebMCP call
   from a page passes the relays' `isSameOriginRequest()` and reads like the page; forging the
   header there gains what forging it on the relay gains.
 - **An error from a relay under a shared rule answers `NO_STORE`**, which sets
