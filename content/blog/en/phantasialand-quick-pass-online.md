@@ -54,15 +54,15 @@ seo:
 
 [Phantasialand](ref:phantasialand) now sells its Quick Pass in the [park's online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Once you've paid, it arrives as a PDF by email, and at the ride's Quick Pass entrance you show the QR code from it on your phone. Until now you could only get one at Guest Services on the Kaiserplatz, in the Berlin area, which meant queuing first so you could queue less at a ride later.
 
-Online sales start at 11 am. During Wintertraum that's when the park opens. You walk through the gates and order the pass on your phone at your own pace, already heading for Taron or Black Mamba. Before eleven the shop only tells you that sales haven't started yet.
+Online sales start at 11 am, the minute the Wintertraum gates open, so you order on your phone at your own pace while you're already heading for Taron or Black Mamba. Before eleven the shop only tells you that sales haven't started yet.
 
 A Quick Pass is valid only on the day you book it, and the top of the shop says "Valid today only" with the day's date. There's no rebooking and no refund either. Order one from the sofa in the evening and you've bought a pass for that evening, on the sofa.
 
 ## How to buy the Quick Pass online
 
-In the shop you pick the rides you want a pass for, or go straight for the Ultimate. The basket then holds the passes for ten minutes, and you finish the order within that time. Each pass is for one person, so a family of four needs four for Black Mamba. The passes are valid as soon as you've paid. The shop is in German, English, French and Dutch.
+In the shop you pick the rides you want a pass for, or go straight for the Ultimate. The basket then holds the passes for ten minutes, long enough to pay and not long enough to queue for a crêpe first. Each pass is for one person, so a family of four needs four for Black Mamba. The passes are valid as soon as you've paid. The shop is in German, English, French and Dutch.
 
-Open the QR code while you're in the queue and turn the brightness all the way up, so nobody at the Quick Pass entrance has to wait behind you while you scroll through your inbox. The pass for Taron After Dark only comes up in the evening, when after a cold Wintertraum day full of photos your phone often has hardly any battery left. So save a few percent.
+Open the QR code while you're in the queue and turn the brightness all the way up, so nobody at the Quick Pass entrance has to wait behind you while you scroll through your inbox. You'll use the Taron After Dark pass in the evening, after a cold day of photos, when plenty of phones are close to flat, so keep a few percent back for the QR code.
 
 ```cta-widget
 href: https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online
@@ -88,7 +88,7 @@ A Quick Pass Single takes you through the Quick Pass entrance of the chosen ride
 
 For Colorado Adventure the shop charges €7, while the park's info page still lists the mine train at the old price of €5. The other prices haven't changed. Taron by day, Chiapas and River Quest weren't among the single passes.
 
-The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and onto [F.L.Y.](ref:phantasialand/fly) faster once, which has no single pass. For Taron, the shop says the Ultimate covers "Daylight & After Dark".
+The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and once onto [F.L.Y.](ref:phantasialand/fly), which has no single pass of its own. For Taron, the shop says the Ultimate covers "Daylight & After Dark".
 
 ## What else you need
 
@@ -98,13 +98,13 @@ Even with a pass you don't get to pick your seat on the train, and the height li
 
 ## When the entrance pauses or the ride is down
 
-With a Quick Pass you queue for less time, not for no time, and the Quick Pass entrance may pause for a while when the ride is short on capacity. If a ride closes for technical reasons or because of the weather, you aren't entitled to a refund. Reselling is prohibited, and the park won't replace a lost pass.
+The Quick Pass entrance has a short queue of its own, and it may pause for a while when the ride is short on capacity. If a ride closes for technical reasons or because of the weather, you aren't entitled to a refund. Reselling is prohibited, and the park won't replace a lost pass.
 
 ## At Wintertraum
 
 Wintertraum has been running since 14 November and goes on until 24 January 2027, daily from 11 am to 8 pm, with five closed days at Christmas, New Year and in mid-January.
 
-The single pass for Taron After Dark is valid from 5 pm, when it has long been dark at Wintertraum. On New Year's Eve the park closes at 6 pm, and the Taron After Dark pass is then only worth it if you're at the ride by five.
+The single pass for Taron After Dark is valid from 5 pm, and during Wintertraum it's dark by then. On New Year's Eve the park closes at 6 pm, and the Taron After Dark pass is then only worth it if you're at the ride by five.
 
 ```best-days-widget slug=phantasialand
 
@@ -112,7 +112,7 @@ The single pass for Taron After Dark is valid from 5 pm, when it has long been d
 
 ## Limited passes, and when one pays off
 
-At Guest Services there were only so many, and at Wintertraum they were often gone by midday on weekends, so anyone who wanted one queued for it in the morning. Online the number is limited too, and next to "Also available online" the screens in the park say "Limited availability". Order on your phone at eleven and you're ahead of everyone who only gets to Guest Services at lunchtime. According to the park's info page, Guest Services sells them as before.
+At Guest Services there were only so many, and at Wintertraum they were often gone by midday on weekends, so anyone who wanted one queued for it in the morning. Online the number is limited too, and next to "Also available online" the screens in the park say "Limited availability". At eleven, on your phone, you're ahead of everyone who only reaches Guest Services at lunchtime. According to the park's info page, Guest Services sells them as before.
 
 In my experience you don't need a Quick Pass on a green day in the calendar if you're at the gate when the park opens. On a deep-red Saturday in the school holidays I'd rather spend the €10 on Black Mamba than join its queue at midday. Without a pass I ride in the order from the [Phantasialand tips](/blog/phantasialand-wait-times-tips).
 

@@ -54,9 +54,9 @@ seo:
     - Phantasialand Wintertraum tickets
 ---
 
-Since 14 November there's ice on the Kaiserplatz at [Phantasialand](ref:phantasialand) again, right under the big tree of lights. Until 24 January 2027 the gates stay open from 11 am to 8 pm, and at about 7:50 pm the MAGIC SYMPHONY fireworks go up over Berlin. In between there are seven shows, and the stalls are pouring mulled wine again.
+The ice has been back on the Kaiserplatz at [Phantasialand](ref:phantasialand) since 14 November, right under the big tree of lights. Until 24 January 2027 the gates stay open from 11 am to 8 pm, and at about 7:50 pm the MAGIC SYMPHONY fireworks go up over Berlin. In between there are seven shows, and the stalls are pouring mulled wine again.
 
-I was in the park on the opening weekend, and the first thing I noticed was the decoration. There's a lot of it that's new: in Mexico, for example, the Chiapas logo now glows in colour. You can't reach the water ride without passing it, and you'll want the photo before the ride rather than after. The stalls had quite a few things I didn't know from last winter. Neither the decoration nor the food is on the park's list of novelties.
+I was in the park on the opening weekend, and the first thing I noticed was the decoration. Much of it is new, like the Chiapas logo in Mexico, which now glows in colour. You can't reach the water ride without passing it, and you'll want the photo before the ride rather than after. The stalls had quite a few things I didn't know from last winter. The park's list of what's new for 2026/27 mentions neither.
 
 [Taron](ref:phantasialand/taron) is my real reason for Wintertraum, though. There's no ride in the park I'd rather do in the dark, and in summer I can't, because the park closes at 6 or 7 pm, hours before sunset. During Wintertraum it's dark by about five on every opening day.
 
@@ -68,9 +68,9 @@ I was in the park on the opening weekend, and the first thing I noticed was the 
 - New Year's Eve: 31 December, 11 am to 6 pm only
 - Totensonntag: on 22 November no show starts before 6 pm
 
-On Totensonntag the rides open at 11 am like on any other Wintertraum day. Only the show programme moves into the evening, because in North Rhine-Westphalia it's a "quiet" public holiday. There's more on that in the post about [Totensonntag at Phantasialand](/blog/phantasialand-totensonntag).
+On Totensonntag the rides open at 11 am as usual. Only the show programme moves into the evening, because in North Rhine-Westphalia it's a "quiet" public holiday. There's more on that in the post about [Totensonntag at Phantasialand](/blog/phantasialand-totensonntag).
 
-During Wintertraum the sun sets in Brühl between 4:29 pm on 21 December and 5:09 pm on 24 January, and it's properly dark a good half hour later. Of the nine opening hours, that leaves just under three to three and a half in the dark.
+During Wintertraum the sun sets in Brühl between 4:29 pm on 21 December and 5:09 pm on 24 January, and it's properly dark a good half hour later. That puts roughly the last three hours of the nine in the dark.
 
 ## What's new in 2026/27
 
@@ -104,11 +104,11 @@ In **Arctaris – The Hidden World** couples skate in front of video walls, with
 
 If your children are too small for a finale at ten to eight, watch the **Kaiserplatz Illumination** instead, which is what the park suggests too. It starts at dusk, when the tree of lights and the houses of Berlin come on to a song written for the show.
 
-For **Tiempo de Fuego**, get there a quarter of an hour early. The show projects the changing seasons onto the rocks and buildings of Mexico, at the end flames several metres high shoot up around the bell tower. In rain or strong wind the park can cancel it, as it does the fireworks.
+For **Tiempo de Fuego**, get there a quarter of an hour early. The show projects the changing seasons onto the rocks and buildings of Mexico, and at the end flames several metres high shoot up around the bell tower. In rain or strong wind the park can cancel it, as it does the fireworks.
 
 At **Pulse of Rookburgh**, beams of light cut through the Rookburgh fog, through the track of [F.L.Y.](ref:phantasialand/fly) and over the Hotel Charles Lindbergh. There's fast, bright flashing, so if you're sensitive to it, watch from further back.
 
-Outside the programme, sway pole artists perform on tall poles on the Kaiserplatz, and the park's dragons meet children in their own themed areas: Drago in Berlin, Wang in China Town, Kroka in Deep in Africa and Phenie in Fantasy.
+Outside the programme, sway pole artists sway high above the crowd on the Kaiserplatz, and the park's dragons meet children in their own themed areas: Drago in Berlin, Wang in China Town, Kroka in Deep in Africa and Phenie in Fantasy.
 
 ### MAGIC SYMPHONY and the Good Night Wish
 
@@ -134,7 +134,7 @@ LIGHTS OF MEMORIES is the park's name for its evening light shows: the four outd
 
 ## What runs and what takes the winter off
 
-Everything runs during Wintertraum except the water rides: [River Quest](ref:phantasialand/river-quest) has been closed since 2 November, Wakobato and Wözl's Wassertreter since 14 November, all three until 24 January.
+Everything runs during Wintertraum except three water rides: [River Quest](ref:phantasialand/river-quest) has been closed since 2 November, Wakobato and Wözl's Wassertreter since 14 November, all three until 24 January.
 
 [Taron](ref:phantasialand/taron?full)
 
@@ -175,7 +175,7 @@ We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. Du
 
 This winter the North Rhine-Westphalia Christmas holidays run from 23 December 2026 to 6 January 2027, and I'd plan the days between Christmas and New Year like a day in August. Those January weekdays are when I'd go, and on many of them the park charges €29, the lowest price in the calendar.
 
-On the opening weekend the park was busy on Saturday, 14 November, and almost empty on the drizzly Sunday. That's only one Sunday, but with the Winja's hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
+On the opening weekend the park was busy on Saturday, 14 November, and almost empty on the drizzly Sunday. That's only one Sunday, but with the Wuze Town hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
 
 ```best-days-widget slug=phantasialand
 
@@ -204,7 +204,7 @@ With a Quick Pass you skip the queue once at one ride, through a separate entran
 
 Every Quick Pass is only valid on the day you book it, and the park sells a limited number per day. Booking step by step, from the basket that holds the passes for ten minutes to the PDF with the QR code, is in our [news item on the Quick Pass going online](/news/phantasialand-quick-pass-online).
 
-On a Saturday in the Christmas holidays I'd buy Taron After Dark right at eleven and save it for my first ride in the dark. On a Tuesday in January I'd keep the €12.
+On a Saturday in the Christmas holidays I'd buy Taron After Dark right at eleven and save it for my first ride in the dark. A Tuesday in January isn't worth the €12 to me.
 
 ## A Wintertraum day from 11 am to 8 pm
 
@@ -212,7 +212,7 @@ Say you're coming on a Saturday in December, with a dated ticket on your phone, 
 
 You're at the gate just before eleven, and at eleven you head straight to Taron in Klugheim. After that, Black Mamba in Deep in Africa and Chiapas in Mexico while it's still light and your jacket can dry. In the early afternoon, when the queues are longest, sit down in one of the theatre shows; none of them has its day off on a Saturday. Children can go skating or into the Wuze Town hall in between.
 
-By about five it's dark. Now ride Taron again, through fog lit red and past basalt columns that have turned into outlines. Then F.L.Y. through floodlit Rookburgh, where Pulse of Rookburgh plays every so often, and Tiempo de Fuego in Mexico. With small children, the Kaiserplatz Illumination at dusk makes a better finale.
+Once it's dark, ride Taron again, through fog lit red and past basalt columns that have turned into outlines. Then F.L.Y. through floodlit Rookburgh, where Pulse of Rookburgh plays every so often, and Tiempo de Fuego in Mexico. With small children, the Kaiserplatz Illumination at dusk makes a better finale.
 
 At 6:50 pm head to Berlin, get your last mulled wine from a stall and be on the Kaiserplatz by 7:35 pm at the latest. MAGIC SYMPHONY starts at about 7:50 pm, and the park closes at 8. If you came by shuttle, the last bus back to Brühl leaves at 9:15 pm.
 
@@ -267,7 +267,7 @@ From Cologne Bonn Airport it's 40 to 50 minutes to Brühl by train, or about 20 
 
 Only in these weeks can you get salmon cooked over an open fire and, on the Kaiserplatz, a kale pan. Next to the mulled wine there's eggnog punch and Hot Chardonnay, and alcohol-free punch for children. On the sweet side there are concha doughnuts with pistachio or nougat and crêpe brûlée, and the park's patisserie bakes its own winter tartlets. For me, though, nothing beats the flat croissants from China Town, pressed crisp and buttery, even though they're sold all year.
 
-**Phenie's Shakes & Pancakes** by the Mondsee lake looks like a round magic mushroom, the floor like dough, and the lamps hanging from the ceiling look as if they're dripping. The menu has pancake towers, shakes and, for children up to eleven, Cold Pancakes with soft serve, which takes some nerve to order after a turn on the ice next door.
+**Phenie's Shakes & Pancakes** by the Mondsee lake looks like a round magic mushroom, the floor like dough, and the lamps hanging from the ceiling look as if they're dripping. The menu has pancake towers, shakes and, for children up to eleven, Cold Pancakes with soft serve, which won't warm anyone up after a turn on the ice but will cheer them up.
 
 For a proper meal somewhere warm I go to Rutmor's Taverne in Klugheim for the Eierknöpfli, and Restaurant Uhrwerk in Rookburgh is warm and themed too. At the Parkscout Publikums Award 2025/26 visitors voted Phantasialand's food the best of any German theme park, and after a plate of Eierknöpfli I won't argue.
 
@@ -296,7 +296,7 @@ Until 2001, Phantasialand shut from November to March. In 2002 it opened for a f
 
 From 1996 to 2006 the Festival der Lichter ran every October, with opening hours extended to 9 pm, thousands of lights and, to close, the light parade "The Miracle of Light" in Alt-Berlin.
 
-The winter programme has been called Wintertraum without a break since the 2019/20 season, and under that name visitors voted it Germany's best event at the Parkscout Publikums Award 2025/26, as in the two years before. Since 2021 the park no longer closes in autumn. It converts to winter while it's open and only shuts for two months after Wintertraum. That's why the 2026 season began on 28 March and runs without a break until 24 January 2027.
+The winter programme has been called Wintertraum every season since 2019/20, and under that name visitors voted it Germany's best event at the Parkscout Publikums Award 2025/26, as in the two years before. Since 2021 the park hasn't closed in autumn. It converts to winter while it's open and only shuts for two months after Wintertraum. That's why the 2026 season began on 28 March and runs without a break until 24 January 2027.
 
 ## Frequently asked questions about Phantasialand's Wintertraum
 
