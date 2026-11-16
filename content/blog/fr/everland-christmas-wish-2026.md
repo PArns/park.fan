@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dès le 21 novembre, un arbre à vœux d’une dizaine de mètres attend les visiteurs à l’entrée d’Everland. La parade et le spectacle nocturne Magic in the Sky suivent du 27 novembre à la Saint-Sylvestre.
+  Dès le 21 novembre, un arbre à vœux d’une dizaine de mètres se dresse à l’entrée d’Everland. La parade et le spectacle nocturne Magic in the Sky suivent du 27 novembre à la Saint-Sylvestre.
 tags:
   - actualites
   - everland
@@ -39,19 +39,19 @@ seo:
     - Everland accès
 ---
 
-Le 21 novembre, [Everland](ref:everland), à Yongin, ouvre sa saison de Noël, Christmas Wish, avec un arbre à vœux d’une dizaine de mètres devant l’entrée principale. La Bling Bling X-mas Parade et le spectacle nocturne Magic in the Sky arrivent le 27 novembre, et le tout dure jusqu’à la Saint-Sylvestre. Samsung C&T, l’exploitant du parc, a présenté le programme le 16 novembre. Christmas Wish est le chapitre d’hiver de la Whatever Series, la série avec laquelle Everland change de thème chaque mois en 2026.
+Le 21 novembre, [Everland](ref:everland), à Yongin, ouvre Christmas Wish, sa saison de Noël. Devant l’entrée principale, il y a dès ce jour un arbre à vœux d’une dizaine de mètres. La Bling Bling X-mas Parade et le spectacle nocturne Magic in the Sky arrivent le 27 novembre. Le tout dure jusqu’à la Saint-Sylvestre. Samsung C&T, l’exploitant du parc, a présenté le programme le 16 novembre. Christmas Wish est le chapitre d’hiver de la Whatever Series, la série avec laquelle Everland change de thème chaque mois en 2026.
 
 ## L’arbre à vœux de l’entrée
 
-Le Giant Wish Tree se dresse à Global Fair, près de l’entrée principale. Au pied de l’arbre, des figurines des jumelles panda Rui Bao et Hui Bao. Contrairement aux vraies, elles n’ont pas à passer par la quarantaine.
+Le Giant Wish Tree se dresse à Global Fair, près de l’entrée principale. Au pied de l’arbre, il y a des figurines des jumelles panda Rui Bao et Hui Bao. Contrairement aux vraies, elles n’ont pas à passer par la quarantaine.
 
-La première semaine, l’arbre est là, la parade pas encore. Le soir, l’ancien feu d’artifice The Guardians of Light reste à l’affiche jusqu’au 23 novembre, puis le calendrier d’Everland n’annonce aucun spectacle nocturne du 24 au 26 novembre.
+Le soir, l’ancien feu d’artifice The Guardians of Light reste à l’affiche jusqu’au 23 novembre, puis, du 24 au 26 novembre, Everland n’a aucun spectacle nocturne au calendrier.
 
 ## Parade et spectacle à partir du 27 novembre
 
 La Bling Bling X-mas Parade dure environ une demi-heure et va de l’entrée du Rose Garden jusqu’à Carnival Square. Autour des chars de Noël, plusieurs dizaines d’artistes déguisés en père Noël, en Rudolph, en bonhomme de neige ou en d’autres personnages dansent sur des chants de Noël. La parade portait déjà ce nom en 2025, avec à l’époque des chars en forme de sapin, de traîneau et de gâteau.
 
-Magic in the Sky mêle feu d’artifice, vidéos sur des thèmes de Noël, musique, lasers et plusieurs milliers de pièces pyrotechniques. L’hiver dernier, les soirées appartenaient au spectacle à chanter en chœur autour de K-Pop Demon Hunters, qu’Everland présentait chaque soir avec Netflix, avec « Golden » et « Soda Pop ». L’annonce de cette année ne le mentionne plus.
+Magic in the Sky mêle feu d’artifice, vidéos sur des thèmes de Noël, musique, lasers et plusieurs milliers de pièces pyrotechniques. L’hiver dernier, Everland présentait à la place chaque soir, avec Netflix, un spectacle à chanter en chœur autour de K-Pop Demon Hunters, sur « Golden » et « Soda Pop ». Samsung C&T ne le mentionne plus dans l’annonce de cette année.
 
 Everland n’a pas encore publié les horaires de la parade et du spectacle, ni l’endroit d’où l’on voit ce dernier. Ils figureront dans le programme du jour sur everland.com dès qu’ils seront fixés.
 
@@ -61,13 +61,13 @@ Dans le courant de décembre, la piste de luge Snow Buster ouvre ses portes, ave
 
 Juste à côté, le parc aquatique Caribbean Bay lance son Winter Spa Cabi le jeudi 3 décembre, deux jours plus tôt qu’en 2025. Tous les bassins sont alors chauffés, la rivière lente et l’Aquatic Center compris. S’y ajoutent un bain en plein air en cyprès hinoki, un sauna finlandais et des snacks d’hiver.
 
-Caribbean Bay a son propre billet. Jusqu’à fin décembre, les adultes paient 45 000 wons, les enfants et les seniors 36 000 wons, et à partir de 14 h 30, c’est 39 000 et 30 000 wons. Les jours de forte affluence, le parc aquatique peut cesser de laisser entrer du monde. Jusqu’au 2 décembre, il ferme le mardi et le mercredi. Une veste se loue 8 000 wons, une grande serviette 6 000. Le billet combiné Ever to Cabi de l’hiver dernier, qui permettait de passer d’un parc à l’autre le même jour, ne figure pas dans ce que Samsung C&T a annoncé pour cette année.
+Caribbean Bay a son propre billet. Jusqu’à fin décembre, les adultes paient 45 000 wons, les enfants et les seniors 36 000 wons, et à partir de 14 h 30, c’est 39 000 et 30 000 wons. Les jours de forte affluence, le parc aquatique peut cesser de laisser entrer du monde. Jusqu’au 2 décembre, il ferme le mardi et le mercredi. Une veste se loue 8 000 wons, une grande serviette 6 000. Samsung C&T n’a pas annoncé pour cette année le billet combiné Ever to Cabi de l’hiver dernier, qui permettait de passer d’un parc à l’autre le même jour.
 
 ## Prix et horaires
 
 En novembre, le billet d’une journée pour Everland coûte 65 000 wons aux adultes et aux jeunes de 13 à 18 ans, et 55 000 wons aux enfants de 36 mois à 12 ans et aux seniors de 65 ans et plus. En décembre, on descend à 55 000 et 45 000 wons. Pour qui vient d’abord pour la parade et le spectacle, décembre revient donc moins cher que les quatre jours de novembre à partir du 27. L’entrée est gratuite avant 36 mois. Certaines installations du parc sont payantes en plus, et pour les moins de 36 mois, les activités réservées aux tout-petits le sont aussi.
 
-Le samedi 21 novembre, jour du lancement, le parc ouvre de 10 h à 21 h, puis jusqu’à 20 h le dimanche et le lundi suivants. Le programme ne va pas plus loin pour l’instant : Everland le publie semaine après semaine.
+Le samedi 21 novembre, jour du lancement, le parc ouvre de 10 h à 21 h, puis jusqu’à 20 h le dimanche et le lundi suivants. Everland publie le programme semaine après semaine.
 
 ```best-days-widget slug=everland
 
@@ -81,7 +81,7 @@ En métro, on prend la ligne Bundang jusqu’à Giheung, puis l’EverLine, qui 
 
 ## Rui Bao et Hui Bao jusqu’au 11 décembre
 
-Les jumelles panda devraient se montrer au public pour la dernière fois le 11 décembre, avant de partir pour la Chine pendant la troisième semaine de décembre. Depuis le 13 novembre, elles sont en quarantaine au Panda Second House et ne restent visibles qu’avec des restrictions, dans l’enclos intérieur. L’arbre et les jumelles le même jour, c’est donc possible pendant trois semaines, et avec la parade en plus, seulement du 27 novembre au 11 décembre. Le déroulement des visites chez les pandas est expliqué dans notre article sur les [adieux de Rui Bao et Hui Bao](/news/everland-pandas-ruibao-huibao-adieu).
+Les jumelles panda devraient se montrer au public pour la dernière fois le 11 décembre, avant de partir pour la Chine pendant la troisième semaine de décembre. Depuis le 13 novembre, elles sont en quarantaine au Panda Second House et ne restent visibles qu’avec des restrictions, dans l’enclos intérieur. L’arbre et les jumelles le même jour, c’est donc possible pendant trois semaines, et avec la parade en plus, seulement du 27 novembre au 11 décembre. Comment se passent les visites chez les pandas, nous l’expliquons dans notre article sur les [adieux de Rui Bao et Hui Bao](/news/everland-pandas-ruibao-huibao-adieu).
 
 [Everland](ref:everland?full)
 

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Desde el 21 de noviembre, un árbol de los deseos de unos diez metros te espera en la entrada de Everland. El desfile y el espectáculo nocturno Magic in the Sky van del 27 de noviembre a Nochevieja.
+  Desde el 21 de noviembre, hay un árbol de los deseos de unos diez metros en la entrada de Everland. El desfile y el espectáculo nocturno Magic in the Sky van del 27 de noviembre a Nochevieja.
 tags:
   - noticias
   - everland
@@ -39,19 +39,19 @@ seo:
     - Everland cómo llegar
 ---
 
-En [Everland](ref:everland), en Yongin, la temporada navideña Christmas Wish arranca el 21 de noviembre con un árbol de los deseos de unos diez metros junto a la entrada principal. El 27 de noviembre se suman el desfile Bling Bling X-mas Parade y el espectáculo nocturno Magic in the Sky, y todo junto dura hasta Nochevieja. Samsung C&T, la empresa que gestiona el parque, presentó el programa el 16 de noviembre. Christmas Wish es el capítulo de invierno de la Whatever Series, la serie con la que Everland dedica en 2026 un tema propio a cada mes.
+En [Everland](ref:everland), en Yongin, la temporada navideña Christmas Wish arranca el 21 de noviembre. Ese día aparece junto a la entrada principal un árbol de los deseos de unos diez metros. El 27 de noviembre se suman el desfile Bling Bling X-mas Parade y el espectáculo nocturno Magic in the Sky. Todo dura hasta Nochevieja. Samsung C&T, la empresa que gestiona el parque, presentó el programa el 16 de noviembre. Christmas Wish es el capítulo de invierno de la Whatever Series, la serie con la que Everland dedica en 2026 un tema propio a cada mes.
 
 ## El árbol de la entrada
 
-El Giant Wish Tree está en Global Fair, al lado de la entrada principal. Junto a él hay figuras de las gemelas panda Rui Bao y Hui Bao, que tienen más suerte que las de verdad: a ellas nadie las pone en cuarentena.
+El Giant Wish Tree está en Global Fair, al lado de la entrada principal. Junto a él hay figuras de las gemelas panda Rui Bao y Hui Bao. Las figuras tienen más suerte que las pandas de verdad, porque a ellas nadie las pone en cuarentena.
 
-La primera semana hay árbol, pero todavía no hay desfile. Por la noche sigue hasta el 23 de noviembre el espectáculo de fuegos artificiales de hasta ahora, The Guardians of Light, y del 24 al 26 de noviembre Everland no tiene ningún espectáculo nocturno en el calendario.
+Por la noche sigue hasta el 23 de noviembre el espectáculo de fuegos artificiales actual, The Guardians of Light, y del 24 al 26 de noviembre Everland no tiene ningún espectáculo nocturno en el calendario.
 
 ## Desfile y espectáculo desde el 27 de noviembre
 
 El Bling Bling X-mas Parade dura una media hora y recorre el camino desde la entrada del Rose Garden hasta Carnival Square. Con las carrozas navideñas salen varias decenas de artistas disfrazados de Papá Noel, Rudolph, muñeco de nieve y otros personajes, que bailan al ritmo de villancicos. Con ese nombre ya hubo desfile en 2025, aquella vez con carrozas en forma de árbol, de trineo y de tarta.
 
-Magic in the Sky es un espectáculo de fuegos artificiales con vídeos de temas navideños, música, láseres y varios miles de cohetes. El invierno pasado ocupaba ese hueco por la noche el espectáculo para cantar a coro de K-Pop Demon Hunters, que Everland montaba cada noche con Netflix, con «Golden» y «Soda Pop». En el anuncio de este año ya no aparece.
+Magic in the Sky es un espectáculo de fuegos artificiales con vídeos de temas navideños, música, láseres y varios miles de cohetes. El invierno pasado, en su lugar, Everland montaba cada noche con Netflix un espectáculo para cantar a coro de K-Pop Demon Hunters, con «Golden» y «Soda Pop». Samsung C&T ya no lo menciona en el anuncio de este año.
 
 Everland todavía no ha publicado a qué horas salen el desfile y el espectáculo, ni desde dónde se ve este último. Cuando estén, los horarios aparecerán en el plan del día de everland.com.
 
@@ -67,13 +67,13 @@ Caribbean Bay tiene su propia entrada. Hasta finales de diciembre, los adultos p
 
 En noviembre, la entrada de un día a Everland cuesta 65.000 wones para adultos y jóvenes de 13 a 18 años, y 55.000 wones para niños de 36 meses a 12 años y personas de 65 años o más. En diciembre son 55.000 y 45.000 wones. Si vas sobre todo por el desfile y el espectáculo, diciembre te sale más barato que los cuatro días de noviembre a partir del 27. Los menores de 36 meses entran gratis. Algunas instalaciones del parque se pagan aparte, y para los menores de 36 meses también las actividades pensadas solo para los más pequeños.
 
-El día del estreno, el sábado 21 de noviembre, el parque abre de 10:00 a 21:00, y el domingo y el lunes siguientes, hasta las 20:00. Más allá no llega el plan del día, porque Everland lo publica semana a semana.
+El día del estreno, el sábado 21 de noviembre, el parque abre de 10:00 a 21:00, y el domingo y el lunes siguientes, hasta las 20:00. Everland publica el plan del día semana a semana.
 
 ```best-days-widget slug=everland
 
 ```
 
-En invierno, algunas atracciones descansan, según el tiempo que haga: el Play Yard desde el 23 de noviembre, Amazon Express desde el 7 de diciembre y Thunder Falls desde el 14 de diciembre, todas hasta febrero o marzo. Además, Everland revisa varias atracciones, y por eso Hurricane está parada del 23 al 26 de noviembre, Flying Rescue del 23 de noviembre al 2 de diciembre y Sky Cruise del 30 de noviembre al 4 de diciembre y otra vez del 14 al 17 de diciembre.
+En invierno, algunas atracciones descansan, según el tiempo que haga: el Play Yard desde el 23 de noviembre, Amazon Express desde el 7 de diciembre y Thunder Falls desde el 14 de diciembre, todas hasta febrero o marzo. Además, Everland revisa varias atracciones. Por eso Hurricane está parada del 23 al 26 de noviembre, Flying Rescue del 23 de noviembre al 2 de diciembre y Sky Cruise del 30 de noviembre al 4 de diciembre y otra vez del 14 al 17 de diciembre.
 
 ## Cómo llegar
 

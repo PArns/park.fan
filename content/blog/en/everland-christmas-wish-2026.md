@@ -61,7 +61,7 @@ The sledding slope Snow Buster opens at some point in December, with a family ru
 
 Next door at the Caribbean Bay water park, Winter Spa Cabi starts on Thursday 3 December, two days earlier than in 2025. Every pool is heated then, the lazy river and the Aquatic Center included. On top of that there's an outdoor bath made of hinoki cypress, a Finnish sauna and winter snack stands.
 
-Caribbean Bay has its own ticket. Until the end of December adults pay 45,000 won and children and seniors 36,000 won, or 39,000 and 30,000 won from 2:30 pm. On busy days the water park can stop letting people in. Until 2 December it's closed on Tuesdays and Wednesdays. You can rent a jacket for 8,000 won and a large towel for 6,000. Last winter the Ever to Cabi combo ticket let you switch between the two parks on the same day. Samsung C&T hasn't announced it for this year.
+Caribbean Bay has its own ticket. Until the end of December adults pay 45,000 won and children and seniors 36,000 won, or 39,000 and 30,000 won from 2:30 pm. On busy days the water park can stop letting people in. Until 2 December it's closed on Tuesdays and Wednesdays. You can rent a jacket for 8,000 won and a large towel for 6,000. Last winter the Ever to Cabi combo ticket let you switch between the two parks on the same day. Samsung C&T hasn't brought it back for this winter so far.
 
 ## Tickets and opening hours
 

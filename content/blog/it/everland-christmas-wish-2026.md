@@ -39,19 +39,19 @@ seo:
     - Everland come arrivare
 ---
 
-Il 21 novembre all'[Everland](ref:everland) di Yongin parte Christmas Wish, la stagione di Natale, e all'ingresso principale spunta un albero dei desideri alto una decina di metri. Il 27 novembre arrivano anche la Bling Bling X-mas Parade e lo spettacolo serale Magic in the Sky, e il programma completo resta in piedi fino a San Silvestro. L'ha annunciato il 16 novembre Samsung C&T, la società che gestisce il parco. Christmas Wish è il capitolo invernale della Whatever Series, la serie con cui nel 2026 Everland dà a ogni mese un tema tutto suo.
+Il 21 novembre all'[Everland](ref:everland) di Yongin parte Christmas Wish, la stagione di Natale. All'ingresso principale spunta un albero dei desideri alto una decina di metri. Il 27 novembre arrivano anche la Bling Bling X-mas Parade e lo spettacolo serale Magic in the Sky. Il programma completo va avanti fino a San Silvestro. L'ha annunciato il 16 novembre Samsung C&T, la società che gestisce il parco. Christmas Wish è il capitolo invernale della Whatever Series, la serie con cui nel 2026 Everland dà a ogni mese un tema tutto suo.
 
 ## L'albero all'ingresso
 
-Il Giant Wish Tree si trova in Global Fair, la zona dell'ingresso principale. Accanto all'albero ci sono le figure delle gemelle panda Rui Bao e Hui Bao, che a differenza delle originali non devono fare nessuna quarantena.
+Il Giant Wish Tree si trova in Global Fair, la zona dell'ingresso principale. Accanto all'albero ci sono le figure delle gemelle panda Rui Bao e Hui Bao. A differenza delle originali, le figure non devono fare nessuna quarantena.
 
-Nella prima settimana l'albero c'è già, la parata non ancora. Fino al 23 novembre la sera resta in cartellone lo spettacolo pirotecnico di questi mesi, The Guardians of Light, mentre dal 24 al 26 novembre Everland non ha in calendario nessuno spettacolo serale.
+Fino al 23 novembre la sera resta in cartellone lo spettacolo pirotecnico di questi mesi, The Guardians of Light, mentre dal 24 al 26 novembre Everland non ha in calendario nessuno spettacolo serale.
 
 ## Parata e spettacolo serale dal 27 novembre
 
 La Bling Bling X-mas Parade dura più o meno mezz'ora e va dall'ingresso del Rose Garden fino a Carnival Square. Ai carri natalizi si accompagnano alcune decine di artisti travestiti da Babbo Natale, Rudolph, pupazzo di neve e altri personaggi, che ballano sulle canzoni di Natale. Una parata con questo nome c'era già nel 2025, allora con carri a forma di albero, di slitta e di torta.
 
-Magic in the Sky mette insieme fuochi d'artificio, video a tema natalizio, musica e laser, con qualche migliaio di fuochi. Lo scorso inverno al suo posto la sera c'era lo show da cantare in coro su K-Pop Demon Hunters, che Everland proponeva ogni sera insieme a Netflix, con «Golden» e «Soda Pop». Nell'annuncio di quest'anno non compare più.
+Magic in the Sky mette insieme fuochi d'artificio, video a tema natalizio, musica e laser, con qualche migliaio di fuochi. Lo scorso inverno al suo posto Everland proponeva ogni sera, insieme a Netflix, uno show da cantare in coro su K-Pop Demon Hunters, con «Golden» e «Soda Pop». Samsung C&T non lo cita più nell'annuncio di quest'anno.
 
 A che ora partono parata e spettacolo, e da dove si vede lo show, Everland non l'ha ancora pubblicato. Gli orari compariranno nel programma del giorno su everland.com appena ci sono.
 
@@ -61,13 +61,13 @@ In un giorno di dicembre ancora senza data apre la pista da slittino Snow Buster
 
 Al parco acquatico di fianco, Caribbean Bay, giovedì 3 dicembre comincia il Winter Spa Cabi, due giorni prima che nel 2025. Da quel momento tutte le vasche sono riscaldate, compresi il fiume lento e l'Aquatic Center. In più ci sono una vasca all'aperto in legno di cipresso hinoki, una sauna finlandese e chioschi con spuntini invernali.
 
-Caribbean Bay ha un biglietto suo. Fino alla fine di dicembre gli adulti pagano 45.000 won, bambini e anziani 36.000; dalle 14:30 si scende a 39.000 e 30.000 won. Nei giorni di pienone il parco acquatico può bloccare gli ingressi, e fino al 2 dicembre il martedì e il mercoledì resta chiuso. Una giacca si noleggia a 8.000 won, un telo grande a 6.000. Il biglietto combinato Ever to Cabi dell'inverno scorso, che permetteva di passare da un parco all'altro nello stesso giorno, per quest'anno Samsung C&T non l'ha annunciato.
+Caribbean Bay ha un biglietto suo. Fino alla fine di dicembre gli adulti pagano 45.000 won, bambini e anziani 36.000; dalle 14:30 si scende a 39.000 e 30.000 won. Nei giorni di pienone il parco acquatico può bloccare gli ingressi. Fino al 2 dicembre il martedì e il mercoledì resta chiuso. Una giacca si noleggia a 8.000 won, un telo grande a 6.000. Il biglietto combinato Ever to Cabi dell'inverno scorso, che permetteva di passare da un parco all'altro nello stesso giorno, per quest'anno Samsung C&T non l'ha annunciato.
 
 ## Biglietti e orari
 
 A novembre il biglietto giornaliero dell'Everland costa 65.000 won per adulti e ragazzi dai 13 ai 18 anni e 55.000 per bambini dai 36 mesi ai 12 anni e over 65. A dicembre i prezzi scendono a 55.000 e 45.000 won. Se ti interessano soprattutto parata e spettacolo, dicembre costa meno dei quattro giorni di novembre a partire dal 27. Sotto i 36 mesi l'ingresso è gratuito. Alcune strutture del parco si pagano a parte, e per i bambini sotto i 36 mesi anche le attività riservate ai più piccoli.
 
-Sabato 21 novembre, il giorno d'apertura della stagione, il parco resta aperto dalle 10 alle 21, la domenica e il lunedì successivi fino alle 20. Oltre quella data il calendario non va ancora: Everland lo aggiorna una settimana alla volta.
+Sabato 21 novembre, il giorno d'apertura della stagione, il parco resta aperto dalle 10 alle 21, la domenica e il lunedì successivi fino alle 20. Everland pubblica il calendario una settimana alla volta.
 
 ```best-days-widget slug=everland
 

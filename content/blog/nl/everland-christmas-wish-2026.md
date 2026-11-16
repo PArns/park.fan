@@ -39,21 +39,21 @@ seo:
     - Everland bereikbaarheid
 ---
 
-Op 21 november begint in [Everland](ref:everland) in Yongin het kerstseizoen Christmas Wish, met een wensboom van zo'n tien meter hoog bij de hoofdingang. Op 27 november komen de Bling Bling X-mas Parade en de avondshow Magic in the Sky erbij, en dat geheel loopt tot en met oudejaarsavond. Samsung C&T, de exploitant van het park, maakte het programma op 16 november bekend. Christmas Wish is het winterhoofdstuk van de Whatever Series, de reeks waarmee Everland in 2026 elke maand een eigen thema neerzet.
+Op 21 november begint in [Everland](ref:everland) in Yongin het kerstseizoen Christmas Wish, met een wensboom van zo'n tien meter hoog bij de hoofdingang. Op 27 november komen de Bling Bling X-mas Parade en de avondshow Magic in the Sky erbij. Alles samen loopt tot en met oudejaarsavond. Samsung C&T, de exploitant van het park, maakte het programma op 16 november bekend. Christmas Wish is het winterhoofdstuk van de Whatever Series, de reeks waarmee Everland in 2026 elke maand een eigen thema neerzet.
 
 ## De wensboom bij de ingang
 
 De Giant Wish Tree staat in Global Fair, vlak bij de hoofdingang. Rond de boom staan figuren van de pandatweeling Rui Bao en Hui Bao. Die hoeven, anders dan de echte twee, niet in quarantaine.
 
-De eerste week staat de boom er al, maar is er nog geen parade. 's Avonds draait tot 23 november het oude vuurwerk The Guardians of Light, en van 24 tot en met 26 november heeft Everland helemaal geen avondshow op de kalender staan.
+'s Avonds draait tot 23 november het oude vuurwerk The Guardians of Light, en van 24 tot en met 26 november heeft Everland helemaal geen avondshow op de kalender staan.
 
 ## Parade en avondshow vanaf 27 november
 
-De Bling Bling X-mas Parade duurt ongeveer een halfuur en trekt van de ingang van de Rose Garden naar Carnival Square. Naast de kerstwagens lopen enkele tientallen artiesten mee als kerstman, Rudolph, sneeuwpop en andere figuren, en die dansen op kerstliedjes. Onder dezelfde naam reed de parade ook in 2025, toen met wagens in de vorm van een kerstboom, een slee en een taart.
+De Bling Bling X-mas Parade duurt ongeveer een halfuur en trekt van de ingang van de Rose Garden naar Carnival Square. Naast de kerstwagens lopen enkele tientallen artiesten mee als kerstman, Rudolph, sneeuwpop en andere figuren, die op kerstliedjes dansen. Onder dezelfde naam reed de parade ook in 2025, toen met wagens in de vorm van een kerstboom, een slee en een taart.
 
-Magic in the Sky is een vuurwerkshow die video's in kerstsfeer, muziek en lasers combineert met een paar duizend stuks vuurwerk. Vorige winter stond 's avonds in plaats daarvan de meezingshow rond K-Pop Demon Hunters op het programma, die Everland samen met Netflix elke avond liet zien, met “Golden” en “Soda Pop”. In de aankondiging voor dit jaar komt die show niet meer voor.
+Magic in the Sky is een vuurwerkshow die video's in kerstsfeer, muziek en lasers combineert met een paar duizend stuks vuurwerk. Vorige winter liet Everland in plaats daarvan samen met Netflix elke avond een meezingshow rond K-Pop Demon Hunters zien, met “Golden” en “Soda Pop”. Voor dit jaar noemt Samsung C&T die show niet meer.
 
-Hoe laat parade en show beginnen en waar je de show het best ziet, heeft Everland nog niet bekendgemaakt. Zodra die tijden er zijn, staan ze in de dagplanning op everland.com.
+Hoe laat parade en show beginnen en waar je de show kunt zien, heeft Everland nog niet bekendgemaakt. Zodra die tijden er zijn, staan ze in de dagplanning op everland.com.
 
 ## Snow Buster en Winter Spa
 
@@ -67,7 +67,7 @@ Caribbean Bay heeft een eigen kaartje. Tot eind december betalen volwassenen 45.
 
 Een dagkaart voor Everland kost in november 65.000 won voor volwassenen en jongeren van 13 tot en met 18 jaar, en 55.000 won voor kinderen van 36 maanden tot en met 12 jaar en 65-plussers. In december is dat 55.000 en 45.000 won. Kom je vooral voor de parade en de show, dan ben je in december dus goedkoper uit dan op de vier novemberdagen vanaf de 27e. Kinderen onder 36 maanden mogen gratis naar binnen. Een paar voorzieningen in het park kosten extra, voor kinderen onder 36 maanden ook wat er speciaal voor de allerkleinsten is.
 
-Op de openingsdag, zaterdag 21 november, is het park open van 10.00 tot 21.00 uur, op de zondag en maandag daarna tot 20.00 uur. Verder gaat de dagplanning nog niet, want Everland zet die elke week opnieuw online.
+Op de openingsdag, zaterdag 21 november, is het park open van 10.00 tot 21.00 uur, op de zondag en maandag daarna tot 20.00 uur. Everland zet de dagplanning per week online.
 
 ```best-days-widget slug=everland
 
