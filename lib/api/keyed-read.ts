@@ -1,4 +1,5 @@
 import { getApiBaseUrl } from '@/lib/api/client';
+import { API_KEY_HEADER } from '@/lib/developers/permissions';
 
 /** The API's refusal of a caller's own key (401, 403 or 429), with the message it gave. */
 export interface ApiKeyRefusal {
@@ -18,7 +19,7 @@ const KEY_REFUSALS = new Set([401, 403, 429]);
 export async function readWithApiKey<T>(path: string, apiKey: string): Promise<T | ApiKeyRefusal> {
   const response = await fetch(`${getApiBaseUrl()}${path}`, {
     cache: 'no-store',
-    headers: { 'Content-Type': 'application/json', 'X-API-Key': apiKey },
+    headers: { 'Content-Type': 'application/json', [API_KEY_HEADER]: apiKey },
   });
   if (KEY_REFUSALS.has(response.status)) {
     const body = (await response.json().catch(() => null)) as { message?: string } | null;

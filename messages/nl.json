@@ -6459,8 +6459,6 @@
     "title": "Je park.fan-account",
     "lead": "Favorieten, attracties waarin je zat en je temperatuureenheid op elk apparaat waarop je bent ingelogd",
     "loading": "Laden",
-    "loadFailed": "Het account kon niet worden geladen.",
-    "retry": "Opnieuw proberen",
     "signOut": "Uitloggen",
     "syncNow": "Nu synchroniseren",
     "syncedAt": "Laatst gesynchroniseerd: {when}",
@@ -6471,7 +6469,8 @@
       "rides": "Bewaarde attracties",
       "ridden": "Attracties waarin je zat",
       "unit": "Temperatuureenheid",
-      "unitNone": "niet gekozen"
+      "unitNone": "niet gekozen",
+      "stored": "Opgeslagen items"
     },
     "auth": {
       "registerTitle": "Account aanmaken",
@@ -6489,6 +6488,11 @@
       "cancel": "Annuleren",
       "wrongPassword": "Het wachtwoord klopt niet.",
       "failed": "Het account kon niet worden verwijderd. Probeer het opnieuw."
+    },
+    "login": {
+      "metaTitle": "Inloggen",
+      "title": "Inloggen",
+      "lead": "Log in of maak een account aan. Allebei gratis."
     }
   }
 }

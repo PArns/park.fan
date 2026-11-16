@@ -50,6 +50,7 @@ import {
   type RotationGraceHours,
 } from '@/lib/admin/api-keys';
 import { formatPermissions } from '@/lib/admin/developer-labels';
+import { keyDaysSum } from '@/lib/developers/key-lifecycle';
 import {
   API_PERMISSIONS,
   DEFAULT_KEY_REQUESTS_PER_HOUR,
@@ -165,8 +166,7 @@ function KeyOverview({ items }: { items: DataApiKey[] }) {
   );
   const fromRequests = live.filter((key) => key.ownerUserId).length;
   const waiting = live.filter((key) => key.revealedAt === null).length;
-  const sum = (key: DataApiKey, field: 'requests' | 'limited') =>
-    (key.stats?.days ?? []).reduce((total, day) => total + day[field], 0);
+  const sum = (key: DataApiKey, field: 'requests' | 'limited') => keyDaysSum(key.stats, field);
   const limited = live.reduce((total, key) => total + sum(key, 'limited'), 0);
   const busiest = live
     .map((key) => ({ key: key.id, label: key.name, value: sum(key, 'requests') }))

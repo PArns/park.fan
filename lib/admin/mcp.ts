@@ -2,6 +2,9 @@ import { API_ORIGIN } from '@/lib/api/client';
 import { ROLE_LABELS, roleAtLeast, type AdminRole } from './roles';
 import { breakdownValueLabel, countryName } from './site-analytics';
 import { TOTP_CODE_LENGTH } from './totp';
+import { hasPassed } from '@/lib/utils/has-passed';
+
+export { hasPassed };
 
 /**
  * What the admin knows about the API's MCP server: where it is, how a client connects, the shapes
@@ -462,11 +465,4 @@ export function describeOriginMismatch(
       .filter(Boolean)
       .join(', ');
   return { started: words(startedFrom), you: words(viewer) };
-}
-
-/** Whether an ISO time has passed at `nowMs`; a missing time never expires. */
-export function hasPassed(iso: string | null, nowMs: number): boolean {
-  if (!iso) return false;
-  const time = Date.parse(iso);
-  return Number.isFinite(time) && time <= nowMs;
 }

@@ -6459,8 +6459,6 @@
     "title": "Votre compte park.fan",
     "lead": "Vos favoris, les attractions déjà faites et votre unité de température sur chaque appareil où vous êtes connecté",
     "loading": "Chargement",
-    "loadFailed": "Impossible de charger le compte.",
-    "retry": "Réessayer",
     "signOut": "Se déconnecter",
     "syncNow": "Synchroniser",
     "syncedAt": "Dernière synchronisation : {when}",
@@ -6471,7 +6469,8 @@
       "rides": "Attractions enregistrées",
       "ridden": "Attractions déjà faites",
       "unit": "Unité de température",
-      "unitNone": "non choisie"
+      "unitNone": "non choisie",
+      "stored": "Éléments enregistrés"
     },
     "auth": {
       "registerTitle": "Créer un compte",
@@ -6489,6 +6488,11 @@
       "cancel": "Annuler",
       "wrongPassword": "Le mot de passe est incorrect.",
       "failed": "Impossible de supprimer le compte. Veuillez réessayer."
+    },
+    "login": {
+      "metaTitle": "Connexion",
+      "title": "Connexion",
+      "lead": "Connectez-vous ou créez un compte. C’est gratuit."
     }
   }
 }

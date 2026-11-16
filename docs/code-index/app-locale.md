@@ -415,6 +415,14 @@ Route `/[locale]` (layout).
 - `generateStaticParams` _function_
 - `generateMetadata` _function_
 
+### [`login/page.tsx`](../../app/%5Blocale%5D/login/page.tsx)
+
+Route `/[locale]/login` (page).
+
+- `default (LoginPage)` _component_: The sign-in for visitor accounts. Both forms are behind Turnstile: the widget in the browser and the check in `/api/admin/session` and `/api/account/register` before an address or password reaches the API.
+- `generateStaticParams` _function_
+- `generateMetadata` _function_
+
 ### [`maintenance/page.tsx`](../../app/%5Blocale%5D/maintenance/page.tsx)
 
 Route `/[locale]/maintenance` (page).

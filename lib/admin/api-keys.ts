@@ -11,6 +11,16 @@ import {
   type ApiPermission,
 } from '@/lib/developers/permissions';
 import { TOKEN_EXPIRY_OPTIONS, hasPassed } from './mcp';
+import {
+  DEFAULT_ROTATION_GRACE_HOURS,
+  ROTATION_GRACE_HOURS,
+  keyDaysSum,
+  previousKeyValidUntil,
+  type RotationGraceHours,
+} from '@/lib/developers/key-lifecycle';
+
+export { DEFAULT_ROTATION_GRACE_HOURS, ROTATION_GRACE_HOURS, previousKeyValidUntil };
+export type { RotationGraceHours };
 
 /** What a key was issued for, as the backend stores it. */
 export type DataApiKeyUsage = 'non-commercial' | 'commercial' | 'internal';
@@ -147,8 +157,8 @@ export function formatHourlyUsage(
 export function formatKeyUsage(stats: DataApiKeyStats): string {
   const count = (value: number) => value.toLocaleString('de-DE');
   const today = stats.days.at(-1)?.requests ?? 0;
-  const total = stats.days.reduce((sum, day) => sum + day.requests, 0);
-  const limited = stats.days.reduce((sum, day) => sum + day.limited, 0);
+  const total = keyDaysSum(stats, 'requests');
+  const limited = keyDaysSum(stats, 'limited');
   const refused = limited > 0 ? ` · ${count(limited)} über dem Limit abgelehnt` : '';
   return `heute ${count(today)} · 30 Tage ${count(total)}${refused}`;
 }
@@ -238,19 +248,16 @@ export function dataApiKeyPath(id: string, part?: 'rotate' | 'previous' | 'delet
   return part ? `${path}/${part}` : path;
 }
 
-/** How long a rotation keeps the old secret working beside the new one, in hours. */
-export type RotationGraceHours = 0 | 1 | 24 | 168;
+const GRACE_LABELS: Record<RotationGraceHours, string> = {
+  0: 'Keine, sofort sperren',
+  1: '1 Stunde',
+  24: '24 Stunden',
+  168: '7 Tage',
+};
 
-/** The grace periods the rotate dialog offers, shortest first. */
-export const ROTATION_GRACE_CHOICES: ReadonlyArray<{ value: RotationGraceHours; label: string }> = [
-  { value: 0, label: 'Keine, sofort sperren' },
-  { value: 1, label: '1 Stunde' },
-  { value: 24, label: '24 Stunden' },
-  { value: 168, label: '7 Tage' },
-];
-
-/** The grace period the dialog starts with: a day, time for a holder to deploy the new key. */
-export const DEFAULT_ROTATION_GRACE_HOURS: RotationGraceHours = 24;
+/** The grace periods the admin's rotate dialog offers, with their German labels. */
+export const ROTATION_GRACE_CHOICES: ReadonlyArray<{ value: RotationGraceHours; label: string }> =
+  ROTATION_GRACE_HOURS.map((value) => ({ value, label: GRACE_LABELS[value] }));
 
 /** What a rotation with this grace period does to the old key, in one sentence. */
 export function describeRotationGrace(hours: RotationGraceHours): string {
@@ -259,23 +266,6 @@ export function describeRotationGrace(hours: RotationGraceHours): string {
   }
   const label = ROTATION_GRACE_CHOICES.find((choice) => choice.value === hours)?.label;
   return `Der alte Key gilt noch ${label} neben dem neuen, damit der Inhaber umstellen kann, und wird dann gesperrt.`;
-}
-
-/**
- * Until when the secret a key's last rotation replaced still works, seen from `nowMs`: the end of
- * its grace period, or the key's own end date when that comes first, as the API decides it. Null
- * when there is none, it has run out, or the key is revoked.
- */
-export function previousKeyValidUntil(
-  key: Pick<DataApiKey, 'previousExpiresAt' | 'expiresAt' | 'revokedAt'>,
-  nowMs: number
-): string | null {
-  if (key.revokedAt || !key.previousExpiresAt) return null;
-  const until =
-    key.expiresAt && Date.parse(key.expiresAt) < Date.parse(key.previousExpiresAt)
-      ? key.expiresAt
-      : key.previousExpiresAt;
-  return hasPassed(until, nowMs) ? null : until;
 }
 
 /** „14.11.2026, 10:00“: a moment as the admin reads it, in Berlin. */

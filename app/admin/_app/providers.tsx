@@ -134,13 +134,13 @@ const OWN_AREAS = {
   developer: {
     title: 'Das ist ein Entwicklerkonto',
     description: 'Deine Keys, ihre Statistik und deine Anträge stehen im Entwickler-Dashboard.',
-    href: `/en${DEVELOPER_DASHBOARD_PATH}`,
+    href: DEVELOPER_DASHBOARD_PATH,
     action: 'Zum Dashboard',
   },
   user: {
     title: 'Das ist ein Besucherkonto',
     description: 'Deine Favoriten und gefahrenen Attraktionen stehen in deinem Konto auf park.fan.',
-    href: `/de${ACCOUNT_PATH}`,
+    href: ACCOUNT_PATH,
     action: 'Zum Konto',
   },
 } as const;

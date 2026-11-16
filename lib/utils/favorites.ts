@@ -1,5 +1,4 @@
 import { readCookie, writeCookie } from '@/lib/utils/browser-cookie';
-import { getFavorites } from '@/lib/api/favorites';
 
 /** The four kinds of thing a visitor can star. */
 export type FavoriteType = 'park' | 'attraction' | 'show' | 'restaurant';
@@ -15,28 +14,6 @@ export interface FavoritesData {
 /** Name of the cookie that holds the visitor's favorites. */
 export const FAVORITES_COOKIE_NAME = 'favorites';
 const FAVORITES_COOKIE_MAX_AGE = 365 * 24 * 60 * 60; // 1 year
-const SYNC_DEBOUNCE_MS = 400; // batches rapid toggles into one API call
-
-let syncTimeout: ReturnType<typeof setTimeout> | null = null;
-
-function scheduleSyncToApi(): void {
-  if (typeof window === 'undefined') return;
-
-  if (syncTimeout) clearTimeout(syncTimeout);
-  syncTimeout = setTimeout(() => {
-    syncTimeout = null;
-    const favorites = getFavoritesFromCookies();
-    getFavorites(
-      favorites.parks,
-      favorites.attractions,
-      favorites.shows,
-      favorites.restaurants
-    ).catch((error) => {
-      console.debug('[Favorites] API sync failed (non-critical):', error);
-    });
-  }, SYNC_DEBOUNCE_MS);
-}
-
 /** Parses JSON, dropping `__proto__`, `constructor` and `prototype` keys (prototype pollution). */
 function secureJsonParse(str: string): unknown {
   return JSON.parse(str, (key, value) => {
@@ -182,7 +159,7 @@ export function subscribeToFavorites(onChange: () => void): () => void {
   return () => window.removeEventListener('favorites-changed', onChange);
 }
 
-/** Add a favorite: the cookie and listeners update at once, the API sync runs in the background. */
+/** Add a favorite: the cookie and listeners update at once. */
 function addFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
@@ -196,11 +173,10 @@ function addFavorite(type: FavoriteType, id: string): void {
     const favorites: FavoritesData = { ...current, [key]: [...current[key], id] };
     saveFavoritesToCookies(favorites);
     dispatchFavoritesChanged();
-    scheduleSyncToApi();
   }
 }
 
-/** Remove a favorite: cookie and listeners update at once, the API sync runs in the background. */
+/** Remove a favorite: the cookie and listeners update at once. */
 function removeFavorite(type: FavoriteType, id: string): void {
   if (typeof window === 'undefined') {
     return;
@@ -214,7 +190,6 @@ function removeFavorite(type: FavoriteType, id: string): void {
     const favorites: FavoritesData = { ...current, [key]: current[key].filter((f) => f !== id) };
     saveFavoritesToCookies(favorites);
     dispatchFavoritesChanged();
-    scheduleSyncToApi();
   }
 }
 

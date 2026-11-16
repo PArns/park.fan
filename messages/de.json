@@ -6459,8 +6459,6 @@
     "title": "Dein park.fan-Konto",
     "lead": "Favoriten, gefahrene Attraktionen und deine Temperatureinheit auf jedem Gerät, auf dem du angemeldet bist",
     "loading": "Lädt",
-    "loadFailed": "Das Konto ließ sich nicht laden.",
-    "retry": "Erneut versuchen",
     "signOut": "Abmelden",
     "syncNow": "Jetzt abgleichen",
     "syncedAt": "Zuletzt abgeglichen: {when}",
@@ -6471,7 +6469,8 @@
       "rides": "Gemerkte Attraktionen",
       "ridden": "Gefahrene Attraktionen",
       "unit": "Temperatureinheit",
-      "unitNone": "nicht gewählt"
+      "unitNone": "nicht gewählt",
+      "stored": "Gespeicherte Einträge"
     },
     "auth": {
       "registerTitle": "Konto anlegen",
@@ -6489,6 +6488,11 @@
       "cancel": "Abbrechen",
       "wrongPassword": "Das Passwort stimmt nicht.",
       "failed": "Das Konto ließ sich nicht löschen. Versuch es noch einmal."
+    },
+    "login": {
+      "metaTitle": "Anmelden",
+      "title": "Anmelden",
+      "lead": "Melde dich an oder leg ein Konto an. Beides ist kostenlos."
     }
   }
 }

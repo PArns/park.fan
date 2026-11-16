@@ -11,6 +11,7 @@ import {
 } from '@/lib/contexts/temperature-unit-context';
 import { writeCookie } from '@/lib/utils/browser-cookie';
 import { ACCOUNT_MARKER_COOKIE } from '@/lib/admin/cookie';
+import { SessionApiError, sessionCall } from '@/lib/admin/session-client';
 import {
   accountSyncStep,
   type AccountServerState,
@@ -54,7 +55,7 @@ function writeRecord(record: AccountSyncRecord | null): void {
 }
 
 /** This browser's copy of the synced state. */
-export function readLocalAccountState(): AccountState {
+function readLocalAccountState(): AccountState {
   const favorites = getFavoritesFromCookies();
   return {
     favorites: {
@@ -82,40 +83,19 @@ function applyLocally(state: AccountState): void {
   }
 }
 
-/** A failed call to the account, with its status; 401 means the session is gone. */
-export class AccountSyncError extends Error {
-  readonly status: number;
-
-  constructor(status: number) {
-    super(`Account request failed: ${status}`);
-    this.name = 'AccountSyncError';
-    this.status = status;
-  }
-}
-
-async function call<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(path, {
-    cache: 'no-store',
-    ...init,
-    headers: { 'Content-Type': 'application/json', ...init?.headers },
-  });
-  if (!response.ok) throw new AccountSyncError(response.status);
-  return (await response.json()) as T;
-}
-
 /** The account and its synced state. */
-export function fetchAccount(): Promise<AccountOverview> {
-  return call<AccountOverview>('/api/account');
+function fetchAccount(): Promise<AccountOverview> {
+  return sessionCall<AccountOverview>('/api/account');
 }
 
 async function push(email: string, state: AccountState): Promise<AccountServerState> {
-  const { data } = await call<{ data: AccountServerState }>('/api/account/data', {
+  const { data } = await sessionCall<{ data: AccountServerState }>('/api/account/data', {
     method: 'PUT',
-    body: JSON.stringify({
+    body: {
       favorites: state.favorites,
       riddenRides: state.riddenRides,
       ...(state.temperatureUnit && { temperatureUnit: state.temperatureUnit }),
-    }),
+    },
   });
   writeRecord({ email, syncedAt: data.updatedAt });
   return data;
@@ -127,16 +107,26 @@ function forgetAccount(): void {
   writeRecord(null);
 }
 
+let inflight: Promise<AccountOverview> | null = null;
+
 /**
  * One round of the sync: reads the account, then merges, pulls or pushes. Returns the account as
- * it stands afterwards, for the account page.
+ * it stands afterwards, for the account page. A round already running is shared, so the page and
+ * the gate starting at once make one round, not two racing ones.
  */
-export async function syncAccountNow(): Promise<AccountOverview> {
+export function syncAccountNow(): Promise<AccountOverview> {
+  inflight ??= runRound().finally(() => {
+    inflight = null;
+  });
+  return inflight;
+}
+
+async function runRound(): Promise<AccountOverview> {
   let overview: AccountOverview;
   try {
     overview = await fetchAccount();
   } catch (error) {
-    if (error instanceof AccountSyncError && error.status === 401) forgetAccount();
+    if (error instanceof SessionApiError && error.signedOut) forgetAccount();
     throw error;
   }
   const { email } = overview.account;
@@ -164,7 +154,9 @@ let stop: (() => void) | null = null;
  */
 export function startAccountSync(): void {
   if (stop) return;
-  let email: string | null = null;
+  // The last agreement names the account at once, so a change made during the first round is
+  // pushed instead of waiting for the next one.
+  let email: string | null = readRecord()?.email ?? null;
   let timer: ReturnType<typeof setTimeout> | null = null;
   const schedule = () => {
     if (applying || !email) return;
@@ -173,7 +165,7 @@ export function startAccountSync(): void {
     timer = setTimeout(() => {
       timer = null;
       push(owner, readLocalAccountState()).catch((error: unknown) => {
-        if (error instanceof AccountSyncError && error.status === 401) {
+        if (error instanceof SessionApiError && error.signedOut) {
           forgetAccount();
           stopAccountSync();
         }

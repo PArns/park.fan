@@ -1,8 +1,9 @@
-# Visitor accounts (`/account`)
+# Visitor accounts (`/login`, `/account`) and members-only content
 
 A visitor's own account on park.fan (role `user` in the API's account system), so favorites,
 ridden rides and the temperature unit follow them to every device they sign in on. **Not linked
-yet:** the page is `noindex`, not in the sitemap, and nothing on the site points to it.
+yet:** `/login` and `/account` are `noindex`, not in the sitemap, and nothing on the site points to
+them; a member reaches the sign-in only by its address.
 
 ## Pieces
 
@@ -15,6 +16,31 @@ yet:** the page is `noindex`, not in the sitemap, and nothing on the site points
 | Registration route, proxy                       | `app/api/account/register`, `app/api/account/[[...path]]`                    |
 | Sign-in UI shared with developers and the admin | `components/common/self-service-auth.tsx`, `components/common/auth-card.tsx` |
 | Strings                                         | `account` and `accountAuth` in `messages/*.json`                             |
+
+## Sign-in, members-only pages and features
+
+- **`/login`** (`components/account/login-panel.tsx`): create an account or sign in. Both forms are
+  behind Turnstile, solved in the browser and checked by `/api/account/register` and
+  `/api/admin/session` before an address or password reaches the API. `?next=` names the page to
+  return to; `safeNextPath` accepts only a path on this site, so the sign-in cannot redirect
+  elsewhere. A signed-in member goes straight on.
+- **`useMembership()`** (`lib/account/member.ts`): `loading`, `guest` or `member` with the account.
+  A visitor without the marker is a guest without a request; a member's account is read once per
+  page, through the sync.
+- **`<MemberPage>`** (`components/account/members-only.tsx`) wraps a whole members-only page: a
+  guest is sent to `/login?next=…`, a member sees the page. `/account` is the first one.
+- **`<MembersOnly fallback>`** shows a part of a public page to members only.
+- **The gate is not the control.** A page stays static and public; what a member sees comes from
+  `/api/account/*`, which answers only the member's own session.
+
+## A member's storage
+
+`lib/account/storage.ts`: one JSON value per key for a members-only feature (`notes`,
+`planner.presets`), kept by the API for the account, at most 64 KB per value and 100 keys.
+`useAccountValue(key, fallback)` gives `{ value, save, loading, saving, error }` and shows a saved
+value at once; `listAccountKeys`, `readAccountValue`, `writeAccountValue` and `removeAccountValue`
+are the plain calls. The account page lists how many entries are stored. Deleting the account
+erases the storage.
 
 ## How the sync works
 

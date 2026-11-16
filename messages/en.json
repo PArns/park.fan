@@ -6459,8 +6459,6 @@
     "title": "Your park.fan account",
     "lead": "Favorites, rides you have ridden and your temperature unit on every device you sign in on",
     "loading": "Loading",
-    "loadFailed": "The account could not be loaded.",
-    "retry": "Try again",
     "signOut": "Sign out",
     "syncNow": "Sync now",
     "syncedAt": "Last synced: {when}",
@@ -6471,7 +6469,8 @@
       "rides": "Saved rides",
       "ridden": "Rides ridden",
       "unit": "Temperature unit",
-      "unitNone": "not chosen"
+      "unitNone": "not chosen",
+      "stored": "Stored entries"
     },
     "auth": {
       "registerTitle": "Create an account",
@@ -6489,6 +6488,11 @@
       "cancel": "Cancel",
       "wrongPassword": "The password is not correct.",
       "failed": "The account could not be deleted. Please try again."
+    },
+    "login": {
+      "metaTitle": "Sign in",
+      "title": "Sign in",
+      "lead": "Sign in or create an account. Both are free."
     }
   }
 }

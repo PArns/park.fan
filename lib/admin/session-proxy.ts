@@ -33,7 +33,10 @@ const FORWARDED_RESPONSE_HEADERS = ['content-type'];
  * only helps the instance that served the request, so it is the second line; the first is that
  * `requireAdmin` never answers a write from cache (`lib/admin/session.ts`).
  */
-function revokesSessions(method: string, route: string): boolean {
+function revokesSessions(scope: SessionProxyScope, method: string, route: string): boolean {
+  // An account that deleted itself is gone, and its cached identity must go with it.
+  if (scope === 'account') return method === 'DELETE' && route === '';
+  if (scope !== 'admin') return false;
   if (route === 'auth/change-password' || route === 'auth/logout') return true;
   if (method === 'DELETE' && route.startsWith('auth/sessions')) return true;
   if (method === 'PATCH' && route.startsWith('auth/users/')) return true;
@@ -91,7 +94,7 @@ export async function proxySessionRequest(
     body: body && body.length > 0 ? body : undefined,
   });
 
-  if (upstream.ok && scope === 'admin' && revokesSessions(request.method, route)) {
+  if (upstream.ok && revokesSessions(scope, request.method, route)) {
     forgetAllSessions();
   }
 

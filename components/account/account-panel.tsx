@@ -1,169 +1,96 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import {
   CheckCircle2,
+  Database,
   Heart,
   KeyRound,
-  Loader2,
   LogOut,
   RefreshCw,
   Thermometer,
   Trash2,
-  type LucideIcon,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ConfirmDialog } from '@/components/ui/confirm-dialog';
-import { SelfServiceAuth } from '@/components/common/self-service-auth';
+import { IconFigure } from '@/components/common/icon-figure';
 import {
   AUTH_CARD_CLASS,
   AuthCardHairline,
   AuthPasswordField,
 } from '@/components/common/auth-card';
-import { TURNSTILE_ACTIONS } from '@/lib/security/turnstile-actions';
+import { MemberPage } from '@/components/account/members-only';
+import { useRouter } from '@/i18n/navigation';
+import { ACCOUNT_QUERY_KEY } from '@/lib/account/member';
+import { listAccountKeys } from '@/lib/account/storage';
+import { sessionCall, SessionApiError } from '@/lib/admin/session-client';
 import { getDateTimeFormat, getNumberFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import type { AccountOverview } from '@/lib/account/sync';
 
-type Load =
-  | { status: 'loading' }
-  | { status: 'signed-out' }
-  | { status: 'error' }
-  | { status: 'ready'; overview: AccountOverview };
-
-/** One figure of what the account carries. */
-function Figure({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
-  return (
-    <div className="border-border/60 bg-background/40 flex items-center gap-3 rounded-2xl border p-4">
-      <span className="bg-primary/10 text-primary flex size-9 shrink-0 items-center justify-center rounded-xl">
-        <Icon className="size-4" aria-hidden />
-      </span>
-      <div className="min-w-0">
-        <p className="text-muted-foreground truncate text-xs">{label}</p>
-        <p className="text-lg font-semibold tabular-nums">{value}</p>
-      </div>
-    </div>
-  );
-}
-
 /**
- * A visitor's account: sign in or create one, then see what follows them across devices
- * (favorites, ridden rides, the temperature unit), sync now, sign out, or delete the account. Every
- * call goes through the session proxy `/api/account`, and the sync itself is `lib/account/sync.ts`.
+ * A member's account page: what follows them across devices (favorites, ridden rides, the
+ * temperature unit) and what members-only features stored for them, a sync on demand, signing out
+ * and deleting the account. A members-only page (`MemberPage`); a guest goes to `/login`.
  */
 export function AccountPanel() {
+  return <MemberPage>{({ overview }) => <AccountDetails overview={overview} />}</MemberPage>;
+}
+
+function AccountDetails({ overview }: { overview: AccountOverview }) {
   const t = useTranslations('account');
   const tAuth = useTranslations('accountAuth');
   const locale = useLocale();
+  const router = useRouter();
+  const client = useQueryClient();
   const number = getNumberFormat(locale);
   const moment = getDateTimeFormat(locale, { dateStyle: 'medium', timeStyle: 'short' });
-  const [load, setLoad] = useState<Load>({ status: 'loading' });
   const [syncing, setSyncing] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [password, setPassword] = useState('');
   const [deleteError, setDeleteError] = useState<string | null>(null);
+  const stored = useQuery({ queryKey: ['account', 'storage'], queryFn: listAccountKeys });
 
-  const sync = useCallback(async () => {
+  async function syncNow() {
     setSyncing(true);
     try {
-      const { syncAccountNow, startAccountSync, AccountSyncError } =
-        await import('@/lib/account/sync');
-      try {
-        const overview = await syncAccountNow();
-        startAccountSync();
-        setLoad({ status: 'ready', overview });
-      } catch (error) {
-        setLoad({
-          status:
-            error instanceof AccountSyncError && error.status === 401 ? 'signed-out' : 'error',
-        });
-      }
+      const { syncAccountNow } = await import('@/lib/account/sync');
+      client.setQueryData(ACCOUNT_QUERY_KEY, await syncAccountNow());
+    } catch {
+      // A lost session shows as the sign-in on the next render of a members-only page.
+      await client.invalidateQueries({ queryKey: ACCOUNT_QUERY_KEY });
     } finally {
       setSyncing(false);
     }
-  }, []);
-
-  // The first round runs once the page is in the browser; it calls the API, an external system.
-  useEffect(() => {
-    let cancelled = false;
-    void import('@/lib/account/sync').then(async ({ syncAccountNow, AccountSyncError }) => {
-      try {
-        const overview = await syncAccountNow();
-        if (!cancelled) setLoad({ status: 'ready', overview });
-      } catch (error) {
-        if (cancelled) return;
-        setLoad({
-          status:
-            error instanceof AccountSyncError && error.status === 401 ? 'signed-out' : 'error',
-        });
-      }
-    });
-    return () => {
-      cancelled = true;
-    };
-  }, []);
+  }
 
   async function signOut() {
     const { endAccountSync } = await import('@/lib/account/sync');
     endAccountSync();
     await fetch('/api/admin/session', { method: 'DELETE' }).catch(() => undefined);
-    setLoad({ status: 'signed-out' });
+    client.removeQueries({ queryKey: ['account'] });
+    router.replace('/');
   }
 
   async function deleteAccount() {
     setDeleteError(null);
-    const response = await fetch('/api/account', {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ password }),
-    }).catch(() => null);
-    if (!response?.ok) {
-      setDeleteError(response?.status === 401 ? t('delete.wrongPassword') : t('delete.failed'));
+    try {
+      await sessionCall('/api/account', { method: 'DELETE', body: { password } });
+    } catch (error) {
+      setDeleteError(
+        error instanceof SessionApiError && error.signedOut
+          ? t('delete.wrongPassword')
+          : t('delete.failed')
+      );
       return;
     }
     setPassword('');
     await signOut();
   }
 
-  if (load.status === 'loading') {
-    return (
-      <div className="flex min-h-64 items-center justify-center" role="status">
-        <Loader2 className="text-muted-foreground size-6 animate-spin" aria-label={t('loading')} />
-      </div>
-    );
-  }
-
-  if (load.status === 'signed-out') {
-    return (
-      <SelfServiceAuth
-        registerEndpoint="/api/account/register"
-        registerAction={TURNSTILE_ACTIONS.accountRegister}
-        copy={{
-          registerTitle: t('auth.registerTitle'),
-          registerLead: t('auth.registerLead'),
-          loginTitle: t('auth.loginTitle'),
-          loginLead: t('auth.loginLead'),
-        }}
-        onSignedIn={() => void sync()}
-      />
-    );
-  }
-
-  if (load.status === 'error') {
-    return (
-      <div className={cn(AUTH_CARD_CLASS, 'mx-auto max-w-md space-y-4 text-center')}>
-        <AuthCardHairline />
-        <p>{t('loadFailed')}</p>
-        <Button variant="outline" className="gap-1.5" onClick={() => void sync()}>
-          <RefreshCw className="size-4" />
-          {t('retry')}
-        </Button>
-      </div>
-    );
-  }
-
-  const { account, data } = load.overview;
+  const { account, data } = overview;
   const favorites = data.favorites;
   const rides =
     favorites.attractions.length + favorites.shows.length + favorites.restaurants.length;
@@ -184,21 +111,26 @@ export function AccountPanel() {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2">
-          <Figure
+          <IconFigure
             icon={Heart}
             label={t('figures.parks')}
             value={number.format(favorites.parks.length)}
           />
-          <Figure icon={Heart} label={t('figures.rides')} value={number.format(rides)} />
-          <Figure
+          <IconFigure icon={Heart} label={t('figures.rides')} value={number.format(rides)} />
+          <IconFigure
             icon={CheckCircle2}
             label={t('figures.ridden')}
             value={number.format(data.riddenRides.length)}
           />
-          <Figure
+          <IconFigure
             icon={Thermometer}
             label={t('figures.unit')}
             value={data.temperatureUnit ? `°${data.temperatureUnit}` : t('figures.unitNone')}
+          />
+          <IconFigure
+            icon={Database}
+            label={t('figures.stored')}
+            value={stored.data ? number.format(stored.data.items.length) : '–'}
           />
         </div>
 
@@ -213,7 +145,7 @@ export function AccountPanel() {
             size="sm"
             className="gap-1.5"
             disabled={syncing}
-            onClick={() => void sync()}
+            onClick={() => void syncNow()}
           >
             <RefreshCw className={cn('size-4', syncing && 'animate-spin')} />
             {t('syncNow')}

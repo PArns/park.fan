@@ -190,6 +190,10 @@ Short „minutes" and „hours" labels per locale. A static map, because `Intl.N
 - `LOCATION_BANNER_QUIET_MS` _const_: How long a closed location banner stays closed.
 - Types: `StoredPermission`, `InitialLocationAction`, `LocationHelpPlatform`
 
+### [`has-passed.ts`](../../lib/utils/has-passed.ts)
+
+- `hasPassed` _function_: Whether an ISO time has passed at `nowMs`; a missing time never expires.
+
 ### [`hatch.ts`](../../lib/utils/hatch.ts)
 
 - `UNUSABLE_HATCH_IMAGE` _const_: The diagonal hatch for time nobody can use: a closed day in the park's twelve-month outlook, the stretch of a planner lane outside a ride's hours. One string, so every hatch on the site has the same angle and pitch.

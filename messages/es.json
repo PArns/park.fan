@@ -6459,8 +6459,6 @@
     "title": "Tu cuenta de park.fan",
     "lead": "Tus favoritos, las atracciones en las que ya montaste y tu unidad de temperatura en cada dispositivo donde inicies sesión",
     "loading": "Cargando",
-    "loadFailed": "No se pudo cargar la cuenta.",
-    "retry": "Reintentar",
     "signOut": "Cerrar sesión",
     "syncNow": "Sincronizar ahora",
     "syncedAt": "Última sincronización: {when}",
@@ -6471,7 +6469,8 @@
       "rides": "Atracciones guardadas",
       "ridden": "Atracciones montadas",
       "unit": "Unidad de temperatura",
-      "unitNone": "sin elegir"
+      "unitNone": "sin elegir",
+      "stored": "Elementos guardados"
     },
     "auth": {
       "registerTitle": "Crear una cuenta",
@@ -6489,6 +6488,11 @@
       "cancel": "Cancelar",
       "wrongPassword": "La contraseña no es correcta.",
       "failed": "No se pudo eliminar la cuenta. Inténtalo de nuevo."
+    },
+    "login": {
+      "metaTitle": "Iniciar sesión",
+      "title": "Iniciar sesión",
+      "lead": "Inicia sesión o crea una cuenta. Es gratis."
     }
   }
 }

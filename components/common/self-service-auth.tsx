@@ -16,6 +16,7 @@ import {
 } from '@/components/common/auth-card';
 import { TURNSTILE_ACTIONS, type TurnstileAction } from '@/lib/security/turnstile-actions';
 import { cn } from '@/lib/utils';
+import { normalizeTotpCode } from '@/lib/admin/totp';
 
 /** The shortest password the API accepts. */
 const MIN_PASSWORD = 12;
@@ -146,7 +147,7 @@ function LoginForm({ onSignedIn }: { onSignedIn: () => void }) {
             inputMode="numeric"
             autoComplete="one-time-code"
             value={totpCode}
-            onChange={(event) => setTotpCode(event.target.value.replace(/\D/g, '').slice(0, 6))}
+            onChange={(event) => setTotpCode(normalizeTotpCode(event.target.value))}
             className={cn(AUTH_FIELD_CLASS, 'pl-10 tracking-[0.3em]')}
           />
         </AuthField>

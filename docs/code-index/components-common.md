@@ -134,6 +134,10 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 
 - `IconContainer` _component_: A Lucide icon centred in a rounded, tinted square, in three sizes and six colour variants.
 
+### [`icon-figure.tsx`](../../components/common/icon-figure.tsx)
+
+- `IconFigure` _component_: One figure with its icon in a tinted square, a small label and the value: the tiles of the developer dashboard and of a visitor's account.
+
 ### [`icons/flags.tsx`](../../components/common/icons/flags.tsx)
 
 Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the caller. Used by the locale switcher, the language banners, the OG images and, through `CountryFlag`, the parks menu.

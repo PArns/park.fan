@@ -5,9 +5,18 @@ by hand: change the comment in the code and re-run the script. -->
 
 [All pages](README.md).
 
+### [`member.ts`](../../lib/account/member.ts)
+
+- `useMembership` _hook_: The visitor's membership, for `MembersOnly`, `MemberPage` and members-only features.
+- `ACCOUNT_QUERY_KEY` _const_: The React Query key of the signed-in member's account.
+- Types: `Membership`
+
 ### [`paths.ts`](../../lib/account/paths.ts)
 
-- `ACCOUNT_PATH` _const_: The visitor account's page, under the locale. Not linked from the site yet.
+- `safeNextPath` _function_: Where to go after signing in: the `next` a members-only page sent, when it is a path on this site, else the account.
+- `loginPathFor` _function_: The sign-in with the page to come back to.
+- `ACCOUNT_PATH` _const_: The visitor account's page, under the locale; members only. Not linked from the site yet.
+- `LOGIN_PATH` _const_: The sign-in for visitor accounts, under the locale. Not linked from the site yet.
 
 ### [`state.ts`](../../lib/account/state.ts)
 
@@ -16,13 +25,19 @@ by hand: change the comment in the code and re-run the script. -->
 - `accountSyncStep` _function_: Decides between merging, taking the account's copy and sending this browser's: a browser that never synced with this account merges; one whose account changed since its last sync, on another device, takes the account's copy; otherwise this …
 - Types: `AccountState`, `AccountServerState`, `AccountSyncRecord`, `AccountSyncStep`
 
+### [`storage.ts`](../../lib/account/storage.ts)
+
+- `useAccountValue` _hook_: One stored value as React state: `value` is `fallback` until the API answered or when nothing is stored; `save` writes it and shows the new value at once. Only for members: render it inside `MembersOnly` or `MemberPage`.
+- `accountValueQueryKey` _function_: The React Query key of one stored value.
+- `listAccountKeys` _function_: The keys the member stored, newest first, with their size in bytes.
+- `readAccountValue` _function_: The value under a key, or `undefined` when nothing is stored there.
+- `writeAccountValue` _function_: Stores a value under a key, replacing what was there.
+- `removeAccountValue` _function_: Removes a key.
+
 ### [`sync.ts`](../../lib/account/sync.ts)
 
-- `readLocalAccountState` _function_: This browser's copy of the synced state.
-- `fetchAccount` _function_: The account and its synced state.
 - `syncAccountNow` _function_: One round of the sync: reads the account, then merges, pulls or pushes. Returns the account as it stands afterwards, for the account page.
 - `startAccountSync` _function_: Starts the sync for this page: one round now, then a push a second after each local change. Starting twice is one sync.
 - `stopAccountSync` _function_: Ends the sync for this page, on sign-out or a lost session.
 - `endAccountSync` _function_: Signing out or deleting the account: the sync ends and this browser forgets the agreement.
-- `AccountSyncError` _class_: A failed call to the account, with its status; 401 means the session is gone.
 - Types: `AccountOverview`

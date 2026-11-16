@@ -7,8 +7,17 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`account-panel.tsx`](../../components/account/account-panel.tsx)
 
-- `AccountPanel` _component_: A visitor's account: sign in or create one, then see what follows them across devices (favorites, ridden rides, the temperature unit), sync now, sign out, or delete the account.
+- `AccountPanel` _component_: A member's account page: what follows them across devices (favorites, ridden rides, the temperature unit) and what members-only features stored for them, a sync on demand, signing out and deleting the account.
 
 ### [`account-sync-gate.tsx`](../../components/account/account-sync-gate.tsx)
 
 - `AccountSyncGate` _component_: Starts a signed-in visitor's sync on every page, and costs nothing for everyone else: the sync module is loaded only when the account marker is set (`lib/account/sync.ts`).
+
+### [`login-panel.tsx`](../../components/account/login-panel.tsx)
+
+- `LoginPanel` _component_: The visitor sign-in at `/login`: create an account or sign in, both behind Turnstile, then back to the members-only page that sent the visitor here (`?next=`), or to the account. A member who is already signed in goes straight on.
+
+### [`members-only.tsx`](../../components/account/members-only.tsx)
+
+- `MembersOnly` _component_: Shows its children to signed-in members and `fallback` (nothing by default) to everyone else, for a members-only feature inside a public page.
+- `MemberPage` _component_: A whole members-only page: members see it, a guest is sent to the sign-in, which brings them back here afterwards.

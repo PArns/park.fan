@@ -86,6 +86,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'pushAlerts.showDialog',
   ],
   '/impressum': [],
+  '/login': ['account', 'accountAuth'],
   '/maintenance': [],
   '/news': ['nearby', 'parkCard'],
   '/news/[slug]': [

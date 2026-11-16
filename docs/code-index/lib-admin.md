@@ -23,19 +23,20 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `formatKeyExpiry` _function_: „gültig bis 30.06.2027“, „abgelaufen am 31.01.2026“, or „unbefristet“.
 - `dataApiKeyPath` _function_: The path of one key, or of its rotation (`rotate`), the secret its last rotation kept (`previous`) or the deletion of a revoked key (`delete`).
 - `describeRotationGrace` _function_: What a rotation with this grace period does to the old key, in one sentence.
-- `previousKeyValidUntil` _function_: Until when the secret a key's last rotation replaced still works, seen from `nowMs`: the end of its grace period, or the key's own end date when that comes first, as the API decides it.
 - `formatKeyMoment` _function_: „14.11.2026, 10:00“: a moment as the admin reads it, in Berlin.
 - `formatPreviousKeyStatus` _function_: „Alter Key gültig bis 14.11.2026, 10:00, zuletzt genutzt vor 5 Minuten“; `lastUsed` is the last use as the page words it, null for never.
 - `createDataApiKeyBody` _function_: The body of a create, as an object for `adminFetch` to serialize.
+- `DEFAULT_ROTATION_GRACE_HOURS` _const_
+- `ROTATION_GRACE_HOURS` _const_
+- `previousKeyValidUntil` _const_
 - `DATA_API_KEY_USAGE_LABELS` _const_: The labels the page uses for a key's usage.
 - `MAX_REQUESTS_PER_HOUR` _const_: The most a key may be allowed per hour; the backend's `MAX_REQUESTS_PER_HOUR`.
 - `KEY_EXPIRY_TIME_ZONE` _const_: The time zone a key's end date is chosen and shown in: the admin's, Patrick's.
 - `KEY_EXPIRY_CHOICES` _const_: The select's options, in the order the token dialog shows its lifetimes.
 - `DATA_API_KEYS_PATH` _const_: The proxy path of the backend's key endpoints.
-- `ROTATION_GRACE_CHOICES` _const_: The grace periods the rotate dialog offers, shortest first.
-- `DEFAULT_ROTATION_GRACE_HOURS` _const_: The grace period the dialog starts with: a day, time for a holder to deploy the new key.
+- `ROTATION_GRACE_CHOICES` _const_: The grace periods the admin's rotate dialog offers, with their German labels.
 - `DATA_API_KEYS_QUERY_KEY` _const_: The React Query key of the list.
-- Types: `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`, `RotationGraceHours`, `CreateDataApiKeyBody`
+- Types: `RotationGraceHours`, `DataApiKeyUsage`, `DataApiKeyDay`, `DataApiKeyStats`, `DataApiKey`, `CreatedDataApiKey`, `KeyExpiryChoice`, `CreateDataApiKeyBody`
 
 ### [`blog-image-sidecar.ts`](../../lib/admin/blog-image-sidecar.ts)
 
@@ -64,7 +65,7 @@ The German names the admin shows for the permissions and for the answers of a ke
 - `PERMISSION_GROUP_LABELS` _const_: A group's name, as the portal words it.
 - `PERMISSION_GROUP_OPTIONS` _const_: The groups in catalog order, each with its name.
 - `REQUEST_LABELS` _const_: What a request's answers are called in the form, for the admin's view of it.
-- `REQUEST_TIER_LABELS` _const_: A request's tier, as the admin's chip shows it.
+- `REQUEST_TIER_LABELS` _const_: A request's tier, as the admin's chip shows it: the dashboard's own words.
 
 ### [`github.ts`](../../lib/admin/github.ts)
 
@@ -148,7 +149,7 @@ The key requests developers file on their dashboard, as `/admin/api-keys` review
 - `safeRedirectTarget` _function_: The address the browser may be sent to after a decision, or null.
 - `describeRequestAge` _function_: The age of a consent request for the page: `gerade eben gestartet`, `vor 2 Minuten gestartet`, and `stale` above five minutes, since a person who has just pressed "connect" in the app arrives within seconds.
 - `describeOriginMismatch` _function_: What differs between the browser that started a consent request and the admin reading it: `{ started: 'Vereinigte Staaten, Firefox', you: 'Deutschland, Chrome' }`, naming only the facts that differ.
-- `hasPassed` _function_: Whether an ISO time has passed at `nowMs`; a missing time never expires.
+- `hasPassed` _const_
 - `MCP_URL` _const_: The address an MCP client connects to.
 - `MCP_SERVER_NAME` _const_: The name Claude Code registers the server under, so `/mcp` lists it by a name that says whose it is.
 - `CLAUDE_CODE_ADD_COMMAND` _const_: The one line that adds the server to Claude Code; the sign-in runs through `/mcp` afterwards.
@@ -335,6 +336,11 @@ The path guard and the query of `/api/admin/[...path]`, pure so they can be test
 
 - `handleSelfRegistration` _function_: A registration route's whole work, for the developer portal and for visitors alike: Turnstile before the address and password go anywhere, the API creates the account and signs it in, and the token goes into the same httpOnly cookie the …
 - Types: `SelfRegistration`
+
+### [`session-client.ts`](../../lib/admin/session-client.ts)
+
+- `sessionCall` _function_: One call; a body is sent as JSON, a 204 answers `undefined`.
+- `SessionApiError` _class_: A failed call, with the API's status and its error code (`generic` when it named none).
 
 ### [`session-proxy.ts`](../../lib/admin/session-proxy.ts)
 
