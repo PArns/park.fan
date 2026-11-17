@@ -6420,6 +6420,7 @@
     },
     "tip": {
       "label": "L’astuce de Parky",
+      "thinking": "Parky réfléchit à la journée…",
       "good": "Super jour !",
       "meh": "Bof",
       "bad": "Plutôt pas",

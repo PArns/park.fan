@@ -3,6 +3,7 @@
 import { useId } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { ParkyStill } from '@/components/assistant/parky/parky-still';
+import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
 import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
 import { askParky } from '@/lib/assistant/ask';
 import { useParkyElementSeen } from '@/lib/hooks/use-parky-element-seen';
@@ -11,14 +12,21 @@ import { useParkyDayTip } from '@/lib/hooks/use-parky-day-tip';
 import { tipAgreesWithLevel } from '@/lib/assistant/parky-tip';
 import type { CrowdLevel } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
-import { Skeleton } from '@/components/ui/skeleton';
+import { cn } from '@/lib/utils';
+
+/** The card both states share, so the thinking Parky turns into the tip in the same frame. */
+const TIP_CARD =
+  'border-primary/30 from-primary/10 flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left';
+const TIP_LABEL = 'text-primary block text-xs font-bold tracking-wider uppercase';
 
 /**
  * Parky's tip for the day open in the calendar's dialog: his sentence about it, written by the
  * API's model from the calendar around the day, and his verdict as a stamp. The whole card asks
  * him about the day (`askParky`, element `tip` with the verdict as its kind), so the chat picks up where the tip stops. Only
  * where Parky shows for this visitor; nothing at all for a day he has nothing to say about, or
- * when his verdict disagrees with the crowd level the dialog shows (`tipAgreesWithLevel`).
+ * when his verdict disagrees with the crowd level the dialog shows (`tipAgreesWithLevel`). While
+ * the model writes, the card shows him thinking (`ParkyLogo`'s `thinking` mood): the sentence takes
+ * a few seconds on a day nobody asked about yet.
  */
 export function ParkCalendarParkyTip({
   geo,
@@ -58,7 +66,19 @@ export function ParkCalendarParkyTip({
     gate === 'on' && tip ? { element: 'tip', kind: tip.verdict } : undefined
   );
   if (gate !== 'on') return null;
-  if (isPending) return <Skeleton className="h-[76px] shrink-0 rounded-xl" />;
+  if (isPending) {
+    return (
+      <div role="status" className={TIP_CARD}>
+        <ParkyLogo mood="thinking" framed className="mt-0.5 size-11 shrink-0" />
+        <span className="min-w-0 flex-1">
+          <span className={TIP_LABEL}>{t('label')}</span>
+          <span className="text-muted-foreground mt-1 block text-sm leading-snug">
+            {t('thinking')}
+          </span>
+        </span>
+      </div>
+    );
+  }
   if (!tip) return null;
   return (
     <button
@@ -71,13 +91,14 @@ export function ParkCalendarParkyTip({
           kind: tip.verdict,
         });
       }}
-      className="group border-primary/30 from-primary/10 hover:border-primary/50 focus-visible:ring-ring flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left transition-colors focus-visible:ring-2 focus-visible:outline-none"
+      className={cn(
+        TIP_CARD,
+        'group hover:border-primary/50 focus-visible:ring-ring transition-colors focus-visible:ring-2 focus-visible:outline-none'
+      )}
     >
       <ParkyStill ground={ground} className="mt-0.5 size-11 shrink-0" />
       <span className="min-w-0 flex-1">
-        <span className="text-primary block text-xs font-bold tracking-wider uppercase">
-          {t('label')}
-        </span>
+        <span className={TIP_LABEL}>{t('label')}</span>
         <span className="text-foreground/85 mt-1 block text-sm leading-snug">{tip.text}</span>
         {/* The stamp at the foot, where Parky looking over it has the gap above to himself
             instead of covering the text or the dialog's band. */}

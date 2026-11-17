@@ -155,7 +155,9 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
   - **In the calendar's day dialog**, the verdict on Parky's tip for the day. The tip only shows
     when that verdict matches the level of the crowd panel beneath it (`tipAgreesWithLevel`): the
     month comes from the calendar the CDN holds for a day, the tip from caches of its own, and
-    after the forecast moves overnight one of them still has the old day.
+    after the forecast moves overnight one of them still has the old day. While the model still
+    writes the sentence, the same card shows him in the chat's `thinking` mood instead of a grey
+    placeholder.
   - **No park card has one**: a very low crowd is what the card's crowd badge already says.
 
 - **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a
