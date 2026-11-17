@@ -45,7 +45,8 @@ function dayAt(value: string | null): number | null {
  * three land in the CDN's cache key, so only a real day from yesterday (a park west of UTC) to the
  * horizon, a today within a day of UTC's, and one of the site's six languages. `today` is in the
  * key because the sentence counts from it ("morgen", "am Samstag"): at the park's midnight the
- * dialog asks a new URL instead of reading yesterday's "morgen".
+ * dialog asks a new URL instead of reading yesterday's "morgen". Only the API knows the park's
+ * today, so the relay hands it on and the API refuses one that is not (`mayKeepNoTip`).
  */
 export function isServableTipRequest(
   date: string | null,
@@ -66,6 +67,16 @@ export function isServableTipRequest(
 }
 
 /**
+ * Whether the relay may keep the API's 204 for its minutes, read off the API's `Cache-Control`. The
+ * API says `no-store` where `today` is not the park's: a browser clock past the park's midnight
+ * would otherwise keep „nothing to say" under the URL of a day that has not begun there. An API
+ * that says `no-store` for every 204 only costs a relay call per dialog.
+ */
+export function mayKeepNoTip(cacheControl: string | null): boolean {
+  return !/\bno-store\b/i.test(cacheControl ?? '');
+}
+
+/**
  * The verdict the API gives a day rated `level`, or null where it writes no tip (`closed`,
  * `unknown`, no level): nothing to ask for, and nothing a tip could contradict.
  */
@@ -78,14 +89,17 @@ export function tipVerdictFor(
 /**
  * Whether a tip may stand above the crowd panel that shows `level` for the same day. The calendar
  * month and the tip are cached for different windows, so once the forecast moves overnight one of
- * them still has the old day: a „lieber nicht“ over „sehr niedrig“ is worse than no tip.
+ * them still has the old day: a „lieber nicht“ over „sehr niedrig“ is worse than no tip. A tip that
+ * names the level it was written for must name the panel's: a sentence about a „hoch“ day reads
+ * wrong over „extrem“ though both say „lieber nicht“. Without one, the verdicts must match.
  */
 export function tipAgreesWithLevel(
-  verdict: ParkyTipVerdict,
+  tip: Pick<ParkyDayTip, 'verdict' | 'crowdLevel'>,
   level: CrowdLevel | 'closed' | null | undefined
 ): boolean {
   const shown = tipVerdictFor(level);
-  return !shown || shown === verdict;
+  if (!shown) return true;
+  return tip.crowdLevel ? tip.crowdLevel === level : shown === tip.verdict;
 }
 
 /**

@@ -30,6 +30,7 @@ import {
   cdnCacheHeaders,
   FORECAST_WINDOW,
   NO_STORE,
+  PARKY_TIP_NONE_WINDOW,
   PARKY_TIP_WINDOW,
   tagPurgedCacheHeaders,
 } from '@/lib/api/cdn-cache-headers';
@@ -47,7 +48,7 @@ import {
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
 import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip';
+import { isParkyDayTip, isServableTipRequest, mayKeepNoTip } from '@/lib/assistant/parky-tip';
 import { relayJsonWrite } from '@/lib/api/relay';
 import { ridesInWorksOn } from '@/lib/utils/works-period';
 import type { PlanDay, PlanDayRideInWorks, ParkWithAttractions } from '@/lib/api/types';
@@ -253,11 +254,12 @@ export async function GET(
     }
   }
 
-  // Parky's tip for one calendar day (`?date=&today=&locale=`), written by the API's model for the
-  // day's crowd level. Under the calendar's tag, so it moves with the level the dialog shows next
-  // to it. `today` is the park's, only a cache key here: the API counts from its own. A 204
-  // (closed, no forecast, Parky off) is cached too, so a closed day costs one request a window,
-  // not one per dialog.
+  // Parky's tip for one calendar day (`?date=&today=&locale=`), written by the API's model from
+  // the levels of the days around it. Under the calendar's tag, so it moves with the level the
+  // dialog shows next to it. `today` is the park's as the browser counts it, and part of the cache
+  // key, so the API checks it (`mayKeepNoTip`). Its other 204s are kept for minutes
+  // (`PARKY_TIP_NONE_WINDOW`): a spent budget or a failed call passes within the day and must not
+  // stand until the next ring.
   if (path && path.length === 5 && path[4] === 'parky-tip') {
     const [continent, country, city, park] = path;
     const date = request.nextUrl.searchParams.get('date');
@@ -271,23 +273,27 @@ export async function GET(
     }
     try {
       const response = await fetch(
-        `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${park}/parky-tip?date=${date}&locale=${locale}`,
+        `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${park}/parky-tip?date=${date}&today=${today}&locale=${locale}`,
         {
           cache: 'no-store',
           headers: getServerApiHeaders(),
           signal: AbortSignal.timeout(PARKY_TIP_TIMEOUT_MS),
         }
       );
+      const tags = [parkCalendarCacheTag(continent, country, city, park)];
+      if (response.status === 204) {
+        return new NextResponse(null, {
+          status: 204,
+          headers: mayKeepNoTip(response.headers.get('cache-control'))
+            ? tagPurgedCacheHeaders(PARKY_TIP_NONE_WINDOW, tags)
+            : NO_STORE,
+        });
+      }
       const body: unknown = response.status === 200 ? await response.json() : null;
-      if (response.status !== 204 && !isParkyDayTip(body)) {
+      if (!isParkyDayTip(body)) {
         return new NextResponse(null, { status: 204, headers: NO_STORE });
       }
-      const headers = tagPurgedCacheHeaders(PARKY_TIP_WINDOW, [
-        parkCalendarCacheTag(continent, country, city, park),
-      ]);
-      return response.status === 204
-        ? new NextResponse(null, { status: 204, headers })
-        : NextResponse.json(body, { headers });
+      return NextResponse.json(body, { headers: tagPurgedCacheHeaders(PARKY_TIP_WINDOW, tags) });
     } catch (error) {
       console.error('[Parky tip API] Error:', error);
       return new NextResponse(null, { status: 204, headers: NO_STORE });

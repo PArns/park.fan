@@ -14,11 +14,15 @@ export function cdnCacheHeaders(value: string): Record<string, string> {
 }
 
 /**
- * The headers for an error response from a route under a shared rule in `next.config.ts`. Both
- * keys: a response without a header of its own takes that rule's window, and Cloudflare reads the
- * rule's `CDN-Cache-Control` ahead of the handler's `Cache-Control`, so a failure would be shared.
+ * The headers for an error response from a route under a shared rule in `next.config.ts`. Every
+ * key a rule sets: a response without a header of its own takes that rule's window, Cloudflare
+ * reads the rule's `CDN-Cache-Control` ahead of the handler's `Cache-Control`, and Vercel reads a
+ * rung route's `Vercel-CDN-Cache-Control` ahead of both, so a failure would be shared.
  */
-export const NO_STORE = cdnCacheHeaders('no-store, must-revalidate');
+export const NO_STORE: Record<string, string> = {
+  ...cdnCacheHeaders('no-store, must-revalidate'),
+  'Vercel-CDN-Cache-Control': 'no-store',
+};
 
 /**
  * The two windows of a route whose Vercel copy the backend ends by cache tag: the calendar month,
@@ -59,6 +63,22 @@ export const FORECAST_WINDOW: TagPurgedWindow = {
 export const PARKY_TIP_WINDOW: TagPurgedWindow = {
   vercel: UNTIL_RUNG,
   edge: 'public, max-age=3600, s-maxage=3600, stale-while-revalidate=600',
+};
+
+/**
+ * How long „nothing to say" from the tip relay is kept, in every cache including the tab's: the
+ * API's own window for its 204. What is left to answer 204 for passes within the day (a spent
+ * budget, a failed or refused call), and a ring a day away would keep the dialog empty until then.
+ */
+export const PARKY_TIP_NONE_SECONDS = 300;
+
+/**
+ * Parky's day tip when the API has nothing to say. Also the `next.config.ts` rule, which cannot tell
+ * a 204 from a 200: under `next start` both take these minutes, never a 204 the 200's day.
+ */
+export const PARKY_TIP_NONE_WINDOW: TagPurgedWindow = {
+  vercel: `public, s-maxage=${PARKY_TIP_NONE_SECONDS}`,
+  edge: `public, max-age=${PARKY_TIP_NONE_SECONDS}, s-maxage=${PARKY_TIP_NONE_SECONDS}`,
 };
 
 /** The `next.config.ts` rule of a route the backend rings: its windows without the tags, which name one park. */
