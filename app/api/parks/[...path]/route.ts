@@ -32,6 +32,7 @@ import {
   NO_STORE,
   PARKY_TIP_NONE_WINDOW,
   PARKY_TIP_TODAY_WINDOW,
+  CALENDAR_TODAY_WINDOW,
   PARKY_TIP_WINDOW,
   tagPurgedCacheHeaders,
 } from '@/lib/api/cdn-cache-headers';
@@ -198,11 +199,15 @@ export async function GET(
         includeHourly: 'none',
       });
 
-      // Every field is a statement about a whole day, which changes only when the forecast warmup
-      // or a schedule correction rewrites the month; both ring the calendar's tag, which ends
-      // Vercel's copy. Cloudflare keeps its own an hour.
+      // A day's forecast changes only when the forecast warmup or a schedule correction rewrites
+      // the month; both ring the calendar's tag, which ends Vercel's copy, and Cloudflare keeps its
+      // own an hour. Today's level so far moves without a ring, so a range that holds the park's
+      // today (the API marks it, in the park's zone) is kept half an hour.
+      const cacheWindow = data.days.some((day) => day.isToday)
+        ? CALENDAR_TODAY_WINDOW
+        : FORECAST_WINDOW;
       return NextResponse.json(data, {
-        headers: tagPurgedCacheHeaders(FORECAST_WINDOW, [
+        headers: tagPurgedCacheHeaders(cacheWindow, [
           parkCalendarCacheTag(continent, country, city, park),
         ]),
       });
