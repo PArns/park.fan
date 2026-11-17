@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dès le 19 décembre, Gaulois et Vikings dansent pour Cléopâtre sur la façade d’OzIris, le nouveau spectacle du Parc Astérix. Avec le Billet Noël à 57 €, tu entres le jour de ton choix jusqu’au 3 janvier.
+  Dès le 19 décembre, Gaulois et Vikings dansent pour Cléopâtre en projection sur la façade d’OzIris, au Parc Astérix. Avec le Billet Noël à 57 €, tu entres le jour de ton choix jusqu’au 3 janvier.
 tags:
   - actualites
   - parc-asterix
@@ -41,7 +41,7 @@ seo:
     - temps d'attente parc astérix
 ---
 
-Le [Parc Astérix](ref:parc-asterix), à Plailly, ouvre pour Noël Gaulois du 19 décembre 2026 au 3 janvier 2027, et cette saison a sa nouveauté du soir : « Les Merveilles de Cléopâtre », un spectacle projeté sur la façade d’[OzIris](ref:parc-asterix/oziris?bare). Le parc a présenté son programme de Noël le 16 novembre. Fermé jusqu’au 18 décembre, il ouvre ensuite 16 jours d’affilée, le jour de Noël et le 1er janvier compris.
+Le [Parc Astérix](ref:parc-asterix), à Plailly, ouvre pour Noël Gaulois du 19 décembre 2026 au 3 janvier 2027. Nouveau cette année, le spectacle du soir « Les Merveilles de Cléopâtre » est projeté sur la façade d’[OzIris](ref:parc-asterix/oziris?bare). Le parc a présenté son programme de Noël le 16 novembre. Il ouvre 16 jours d’affilée, le jour de Noël et le 1er janvier compris.
 
 ## Cléopâtre fait la fête devant OzIris
 
@@ -49,7 +49,7 @@ Le [Parc Astérix](ref:parc-asterix), à Plailly, ouvre pour Noël Gaulois du 19
 
 Le spectacle se joue dans l’Égypte, la zone ouverte en 2026. Il n’y a pas de places assises : on regarde debout et en plein air, et fin décembre, le bonnet fait partie du billet, ou presque. Le parc n’a encore publié ni l’horaire ni la durée.
 
-## Patinoire, bouée et parcours lumineux
+## Patinoire, glissade sur bouée et parcours lumineux
 
 Dans la zone viking, la [Patinoire Viking](ref:parc-asterix/patinoire-viking) est une patinoire extérieure couverte de 500 mètres carrés, et le parc prête les patins gratuitement. Sur le Mont Gaulois, [La Glissade d’Obélix](ref:parc-asterix/la-glissade-dobelix) est de retour : on dévale la pente assis sur une bouée.
 
@@ -61,7 +61,7 @@ Sur la glace, « Qui veut la peau du Père Noël ? » mêle acrobaties et danse 
 
 ## Horaires
 
-Le parc est ouvert de 11 h à 20 h, et jusqu’à 19 h les 24 et 31 décembre. À partir du 4 janvier, il ferme de nouveau. Les parcs où la saison d’hiver continue ensuite sont réunis dans notre [panorama des parcs d’attractions en hiver 2026-2027](/blog/parcs-attractions-hiver-2026).
+Le parc est ouvert de 11 h à 20 h, et jusqu’à 19 h les 24 et 31 décembre. Les parcs où la saison d’hiver continue après le 3 janvier sont réunis dans notre [panorama des parcs d’attractions en hiver 2026-2027](/blog/parcs-attractions-hiver-2026).
 
 ```best-days-widget slug=parc-asterix
 
@@ -69,15 +69,15 @@ Le parc est ouvert de 11 h à 20 h, et jusqu’à 19 h les 24 et 31 décembre. �
 
 ## Entrée, goûter et buffet
 
-Le Billet Noël coûte 57 €, un prix unique sans réduction pour les enfants. Il n’est pas daté, vaut aussi le week-end et se vend jusqu’à la veille. Il couvre toutes les attractions et tous les spectacles de Noël Gaulois ; les repas et les soirées de Noël et de la Saint-Sylvestre sont en supplément.
+Le Billet Noël coûte 57 €, un prix unique sans réduction pour les enfants. Il n’est pas daté, vaut aussi le week-end et se vend jusqu’à la veille. Il couvre toutes les attractions et tous les spectacles de Noël Gaulois. Les repas et les soirées de Noël et de la Saint-Sylvestre sont en supplément.
 
-Nouveauté de l’hiver, le Goûter du Père Noël a lieu au Buffet de Noël, qui devient pour l’occasion l’usine secrète de jouets. Les lutins et Saperlipopette y règlent quelques pannes avant la grande tournée, puis arrivent le chocolat chaud et les douceurs, et pour finir le Père Noël Gaulois, Astérix, Obélix et le sanglier. Le goûter coûte 18,90 € par personne, enfants compris, donc les parents auraient tort de laisser leur tasse refroidir. Il y a deux créneaux, de 16 h 30 à 17 h 30 et de 17 h 30 à 18 h 30. Tu peux réserver à l’avance, le jour même dans l’application ou sur place. À midi, le Buffet de Noël, en Égypte, sert un buffet de produits de saison, à 37,90 € par adulte et 12,90 € par enfant.
+Nouveauté de l’hiver, le Goûter du Père Noël a lieu au Buffet de Noël, qui devient pour l’occasion l’usine secrète de jouets. Les lutins et Saperlipopette y règlent quelques pannes avant la grande tournée, puis arrivent le chocolat chaud et les douceurs, et pour finir le Père Noël Gaulois, Astérix, Obélix et le sanglier. Le goûter coûte 18,90 € par personne, enfants compris, et le parent qui se contente de regarder paie quand même son chocolat. Il y a deux créneaux, de 16 h 30 à 17 h 30 et de 17 h 30 à 18 h 30. Tu peux réserver à l’avance, le jour même dans l’application ou sur place. À midi, le Buffet de Noël, en Égypte, sert un buffet de produits de saison, à 37,90 € par adulte et 12,90 € par enfant.
 
 Les Comptoirs d’Épidemaïs ont eux aussi un nouveau décor de fête, avec un buffet de fête le soir de la Saint-Sylvestre. Au Buffet de Noël, une soirée de gala a lieu le 31 décembre de 20 h à 2 h, dîner-spectacle d’abord, danse ensuite, à 179 € et 69 € pour les enfants. Les trois hôtels proposent des buffets du soir les 24 et 31 décembre, à 110 € et 49 € pour les enfants, et la fête y dure jusqu’à 2 h du matin.
 
 ## Quelles attractions tournent
 
-Selon le parc, les montagnes russes tournent en général, mais pas par mauvais temps. Restent fermées [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d’Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) et [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Le [Petit Train](ref:parc-asterix/le-petit-train?bare) et [Enigmatix](ref:parc-asterix/enigmatix?bare) se partagent la journée : le train roule de 11 h à 15 h 30, Enigmatix prend le relais de 15 h 30 à 20 h. Par temps de gel, le parc peut en plus fermer certaines attractions.
+Selon le parc, les montagnes russes tournent en général, mais pas par mauvais temps. Restent fermées [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d’Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) et [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Le [Petit Train](ref:parc-asterix/le-petit-train?bare) et [Enigmatix](ref:parc-asterix/enigmatix?bare) se partagent la journée : le train roule de 11 h à 15 h 30, Enigmatix prend le relais de 15 h 30 à la fermeture. Par temps de gel, le parc peut en plus fermer certaines attractions.
 
 ## Hôtels avec accès anticipé
 

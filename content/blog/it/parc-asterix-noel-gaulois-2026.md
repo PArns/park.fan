@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 19 dicembre al Parc Astérix galli e vichinghi ballano per Cleopatra, in uno show di luci sulla facciata di OzIris. Con il biglietto di Natale da 57 € entri quando vuoi fino al 3 gennaio.
+  Al Parc Astérix, dal 19 dicembre, galli e vichinghi ballano per Cleopatra in uno show di luci sulla facciata di OzIris. Con il biglietto di Natale da 57 € entri un giorno a scelta fino al 3 gennaio.
 tags:
   - notizie
   - parc-asterix
@@ -40,7 +40,7 @@ seo:
     - Parc Astérix come arrivare
 ---
 
-Dal 19 dicembre 2026 al 3 gennaio 2027 il [Parc Astérix](ref:parc-asterix) di Plailly apre per Noël Gaulois, la sua stagione invernale, e quest’anno aggiunge uno spettacolo serale sulla facciata di [OzIris](ref:parc-asterix/oziris?bare): “Les Merveilles de Cléopâtre”. Il parco ha presentato il programma di Natale il 16 novembre. Fino al 18 dicembre resta chiuso, poi apre per 16 giorni di fila, compresi il 25 dicembre e Capodanno.
+Dal 19 dicembre 2026 al 3 gennaio 2027 il [Parc Astérix](ref:parc-asterix) di Plailly apre per Noël Gaulois, la sua stagione invernale. Nuovo quest’anno è “Les Merveilles de Cléopâtre”, uno spettacolo serale sulla facciata di [OzIris](ref:parc-asterix/oziris?bare). Il parco ha presentato il programma di Natale il 16 novembre. Apre per 16 giorni di fila, compresi il 25 dicembre e Capodanno.
 
 ## La festa di Cleopatra davanti al tempio
 
@@ -60,7 +60,7 @@ Sul ghiaccio va in scena “Qui veut la peau du Père Noël ?”, 25 minuti di a
 
 ## Orari
 
-Il parco è aperto dalle 11 alle 20, la Vigilia di Natale e San Silvestro fino alle 19. Dal 4 gennaio chiude di nuovo. Quali parchi restano aperti anche dopo l’abbiamo raccolto nella [panoramica sui parchi divertimento in inverno 2026/27](/blog/parchi-divertimenti-inverno-2026).
+Il parco è aperto dalle 11 alle 20, la Vigilia di Natale e San Silvestro fino alle 19. Quali parchi restano aperti anche dopo il 3 gennaio lo trovi nella [panoramica sui parchi divertimento in inverno 2026/27](/blog/parchi-divertimenti-inverno-2026).
 
 ```best-days-widget slug=parc-asterix
 
@@ -70,13 +70,13 @@ Il parco è aperto dalle 11 alle 20, la Vigilia di Natale e San Silvestro fino a
 
 Il Billet Noël costa 57 €, prezzo unico senza sconto per i bambini. Non ha una data fissa, vale anche nel fine settimana e si compra fino al giorno prima. Copre tutte le attrazioni e gli spettacoli di Noël Gaulois. Il cibo e le serate di Natale e Capodanno si pagano a parte.
 
-La novità è il Goûter du Père Noël al Buffet de Noël, che per l’occasione diventa la fabbrica segreta dei giocattoli. Gli elfi e Saperlipopette risolvono qualche guaio prima del grande giro, poi arrivano cioccolata calda e dolci, e alla fine si presentano il Père Noël Gaulois, Astérix, Obélix e il cinghiale. Costa 18,90 € a persona, bambini compresi, quindi la cioccolata del papà vale quanto quella del figlio. Ci sono due turni, dalle 16:30 alle 17:30 e dalle 17:30 alle 18:30. Si prenota in anticipo, nell’app il giorno stesso oppure sul posto. A pranzo il Buffet de Noël, nell’area Égypte, serve un buffet con prodotti di stagione a 37,90 € per gli adulti e 12,90 € per i bambini.
+Nuovo è anche il Goûter du Père Noël al Buffet de Noël, che per l’occasione diventa la fabbrica segreta dei giocattoli. Gli elfi e Saperlipopette risolvono qualche guaio prima del grande giro, poi arrivano cioccolata calda e dolci, e alla fine si presentano il Père Noël Gaulois, Astérix, Obélix e il cinghiale. Costa 18,90 € a persona, bambini compresi, e anche il genitore che si limita a guardare paga la cioccolata intera. Ci sono due turni, dalle 16:30 alle 17:30 e dalle 17:30 alle 18:30. Si prenota in anticipo, nell’app il giorno stesso oppure sul posto. A pranzo il Buffet de Noël, nell’area Égypte, serve un buffet con prodotti di stagione a 37,90 € per gli adulti e 12,90 € per i bambini.
 
-Anche i Comptoirs d’Épidemaïs si vestono a festa per la prima volta, e a San Silvestro propongono un buffet di gala. Il 31 dicembre il Buffet de Noël ospita dalle 20 alle 2 una serata di gala, prima cena con spettacolo e poi ballo, a 179 € e 69 € per i bambini. I tre hotel offrono buffet serali la Vigilia di Natale e San Silvestro a 110 € e 49 € per i bambini, e lì si festeggia fino alle 2 di notte.
+Anche i Comptoirs d’Épidemaïs si vestono a festa per la prima volta, e a San Silvestro propongono un buffet delle feste. Il 31 dicembre il Buffet de Noël ospita dalle 20 alle 2 una serata di gala, prima cena con spettacolo e poi ballo, a 179 € e 69 € per i bambini. I tre hotel offrono buffet serali la Vigilia di Natale e San Silvestro a 110 € e 49 € per i bambini, e lì si festeggia fino alle 2 di notte.
 
 ## Quali attrazioni funzionano
 
-Secondo il parco, le montagne russe di norma girano, ma non con il maltempo. Restano chiuse [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d’Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) e [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Il [Petit Train](ref:parc-asterix/le-petit-train?bare) ed [Enigmatix](ref:parc-asterix/enigmatix?bare) si dividono la giornata: il trenino gira dalle 11 alle 15:30, Enigmatix dalle 15:30 alle 20. Quando gela, il parco può chiudere anche altre attrazioni.
+Secondo il parco, le montagne russe di norma girano, ma non con il maltempo. Restano chiuse [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d’Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) e [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Il [Petit Train](ref:parc-asterix/le-petit-train?bare) ed [Enigmatix](ref:parc-asterix/enigmatix?bare) si dividono la giornata: il trenino gira dalle 11 alle 15:30, Enigmatix dalle 15:30 alla chiusura del parco. Quando gela, il parco può chiudere anche altre attrazioni.
 
 ## Hotel con ingresso anticipato
 
@@ -86,7 +86,7 @@ I tre hotel del parco stanno nel bosco e si raggiungono a piedi: Les Quais de Lu
 
 Plailly si trova 35 chilometri a nord della Porte de la Chapelle, a Parigi. In auto si prende la A1 in direzione Lille: il parco ha un’uscita tutta sua tra la 7 e la 8, e ci vuole circa mezz’ora. Il parcheggio costa 25 € al giorno.
 
-Senza auto si va con la RER B fino alla stazione Aéroport Charles de Gaulle e da lì con la Navette per il parco. Passa ogni 15-30 minuti, impiega circa 25 minuti e costa 14 € andata e ritorno o 8 € solo andata, con data fissa. L’ultima riparte un’ora dopo la chiusura del parco, quindi la Vigilia di Natale e San Silvestro alle 20. Le altre strade, con il pullman a lunga percorrenza o la navetta dalla Torre Eiffel, e le attrazioni con le code più lunghe fuori dal periodo natalizio le trovi nella nostra [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli).
+Senza auto si va con la RER B fino alla stazione Aéroport Charles de Gaulle e da lì con la Navette per il parco. Passa ogni 15-30 minuti, impiega circa 25 minuti e costa 14 € andata e ritorno o 8 € solo andata, con data fissa. L’ultima riparte un’ora dopo la chiusura del parco, quindi la Vigilia di Natale e San Silvestro alle 20. Gli altri modi per arrivare, con il pullman a lunga percorrenza o la navetta dalla Torre Eiffel, e le attrazioni con le code più lunghe fuori dal periodo natalizio le trovi nella nostra [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli).
 
 [Parc Astérix](ref:parc-asterix?full)
 

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf 19 december dansen Galliërs en Vikingen in Parc Astérix voor Cleopatra, in een lichtshow op de gevel van OzIris. Met het kerstticket van € 57 kom je elke dag tot 3 januari binnen.
+  Vanaf 19 december dansen Galliërs en Vikingen in Parc Astérix voor Cleopatra, in een lichtshow op de gevel van OzIris. Met het kerstticket van € 57 kies je zelf je dag, tot en met 3 januari.
 tags:
   - nieuws
   - parc-asterix
@@ -40,7 +40,7 @@ seo:
     - Parc Astérix bereikbaarheid
 ---
 
-In [Parc Astérix](ref:parc-asterix) bij Plailly draait van 19 december 2026 tot en met 3 januari 2027 het winterseizoen Noël Gaulois, en daarin zit dit jaar een nieuwe avondshow op de gevel van [OzIris](ref:parc-asterix/oziris?bare): “Les Merveilles de Cléopâtre”. Het park maakte zijn kerstprogramma op 16 november bekend. Tot en met 18 december blijft het dicht, daarna is het zestien dagen achter elkaar open, eerste kerstdag en nieuwjaarsdag inbegrepen.
+In [Parc Astérix](ref:parc-asterix) bij Plailly draait van 19 december 2026 tot en met 3 januari 2027 het winterseizoen Noël Gaulois. Nieuw is dit jaar “Les Merveilles de Cléopâtre”, een avondshow op de gevel van [OzIris](ref:parc-asterix/oziris?bare). Het park maakte zijn kerstprogramma op 16 november bekend. Het is zestien dagen achter elkaar open, eerste kerstdag en nieuwjaarsdag inbegrepen.
 
 ## Cleopatra geeft een feest bij de tempel van OzIris
 
@@ -60,7 +60,7 @@ Op het ijs speelt “Qui veut la peau du Père Noël ?”, 25 minuten acrobatiek
 
 ## Openingstijden
 
-Het park is open van 11 tot 20 uur, op kerstavond en oudejaarsdag tot 19 uur. Vanaf 4 januari is het weer dicht. Waar je daarna nog een winterseizoen vindt, hebben we op een rij gezet in ons [overzicht van de pretparken in de winter 2026/27](/blog/winter-pretparken-2026).
+Het park is open van 11 tot 20 uur, op kerstavond en oudejaarsdag tot 19 uur. Waar je na 3 januari nog een winterseizoen vindt, staat in ons [overzicht van de pretparken in de winter 2026/27](/blog/winter-pretparken-2026).
 
 ```best-days-widget slug=parc-asterix
 
@@ -70,13 +70,13 @@ Het park is open van 11 tot 20 uur, op kerstavond en oudejaarsdag tot 19 uur. Va
 
 Het Billet Noël kost € 57, één prijs voor iedereen, zonder korting voor kinderen. Er staat geen vaste datum op, het geldt ook in het weekend en je kunt het tot de dag van tevoren kopen. Alle attracties en shows van Noël Gaulois zitten erbij inbegrepen; eten en de avonden met kerst en oud en nieuw betaal je apart.
 
-Nieuw is de Goûter du Père Noël in het Buffet de Noël, dat daarvoor verandert in een geheime speelgoedfabriek. De elfjes en Saperlipopette lossen er een paar pannes op voor de grote tocht, daarna krijg je warme chocolademelk en iets zoets, en tot slot komen de Père Noël Gaulois, Astérix, Obélix en het everzwijn langs. Het kost € 18,90 per persoon, ook voor kinderen, dus als ouder mag je je beker met een gerust hart leegdrinken. Er zijn twee tijdsloten, van 16.30 tot 17.30 uur en van 17.30 tot 18.30 uur. Boeken kan vooraf, op de dag zelf in de app of in het park. 's Middags eet je in het Buffet de Noël in Egypte van een buffet met seizoensproducten, voor € 37,90 als volwassene en € 12,90 als kind.
+Nieuw is de Goûter du Père Noël in het Buffet de Noël, dat daarvoor verandert in een geheime speelgoedfabriek. De elfjes en Saperlipopette lossen er een paar pannes op voor de grote tocht, daarna krijg je warme chocolademelk en iets zoets, en tot slot komen de Père Noël Gaulois, Astérix, Obélix en het everzwijn langs. Het kost € 18,90 per persoon, ook voor kinderen, en een ouder die alleen toekijkt, betaalt net zo goed de volle beker. Er zijn twee tijdsloten, van 16.30 tot 17.30 uur en van 17.30 tot 18.30 uur. Boeken kan vooraf, op de dag zelf in de app of in het park. Tussen de middag eet je in het Buffet de Noël in Egypte van een buffet met seizoensproducten, voor € 37,90 als volwassene en € 12,90 als kind.
 
 Ook de Comptoirs d'Épidemaïs krijgen dit jaar voor het eerst kerstversiering, en op oudejaarsavond staat daar een feestbuffet. In het Buffet de Noël is er op 31 december van 20 tot 2 uur een galaavond, eerst een dinnershow en dan dansen, voor € 179 en € 69 voor kinderen. De drie hotels serveren op kerstavond en oudejaarsavond een avondbuffet voor € 110 en € 49 voor kinderen, en daar duurt het feest tot 2 uur 's nachts.
 
 ## Welke attracties draaien
 
-Volgens het park rijden de achtbanen in de regel, maar bij slecht weer niet. Dicht blijven [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d'Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) en [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). De [Petit Train](ref:parc-asterix/le-petit-train?bare) en [Enigmatix](ref:parc-asterix/enigmatix?bare) delen de dag: het treintje rijdt van 11 tot 15.30 uur, Enigmatix van 15.30 tot 20 uur. Bij vorst kan het park nog meer attracties sluiten.
+Volgens het park rijden de achtbanen in de regel, maar bij slecht weer niet. Dicht blijven [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d'Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) en [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). De [Petit Train](ref:parc-asterix/le-petit-train?bare) en [Enigmatix](ref:parc-asterix/enigmatix?bare) delen de dag: het treintje rijdt van 11 tot 15.30 uur, Enigmatix van 15.30 uur tot sluitingstijd. Bij vorst kan het park nog meer attracties sluiten.
 
 ## Hotels met vroege toegang
 
