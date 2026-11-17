@@ -158,7 +158,7 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 - `isServableTipRequest` _function_: Whether the relay may ask for a tip on `date` in `locale`, written for the park's `today`: all three land in the CDN's cache key, so only a real day from yesterday (a park west of UTC) to the horizon, a today within a day of UTC's, and one …
 - `tipVerdictFor` _function_: The verdict the API gives a day rated `level`, or null where it writes no tip (`closed`, `unknown`, no level): nothing to ask for, and nothing a tip could contradict.
 - `tipAgreesWithLevel` _function_: Whether a tip may stand above the crowd panel that shows `level` for the same day.
-- `isParkyDayTip` _function_: Whether a relayed body is a tip this site can show.
+- `isParkyDayTip` _function_: Whether a relayed body is a tip this site can show. A `crowdLevel`, where one is sent, must be a level with that verdict: a tip whose own two fields disagree is not shown.
 - Types: `ParkyTipVerdict`, `ParkyDayTip`
 
 ### [`parky/acts.ts`](../../lib/assistant/parky/acts.ts)

@@ -57,7 +57,7 @@ Server fetches cache through `fetch` with `next: { revalidate, tags }`. Windows 
 | URL enumeration (sitemaps, IndexNow)   | `getSitemapAttractions`, geo reads in sitemap code       | `CACHE_TTL.geoSitemap`, 1 day           | `geo`                           |
 | Country summary                        | `getCountrySummary`                                      | `CACHE_TTL.countrySummary`, 1 day       | `geo`                           |
 | Best-days snapshot                     | `getBestDaysCalendar` (`lib/api/integrated-calendar.ts`) | `BEST_DAYS_REVALIDATE`, 3 days          | `best-days:<slug>`              |
-| Calendar month summary                 | `fetchCalendarMonth`                                     | `CALENDAR_MONTH_REVALIDATE`, 1 day      | `parks`, `park:<geo path>`      |
+| Calendar month summary                 | `fetchCalendarMonth`                                     | `CALENDAR_MONTH_REVALIDATE`, 1 day      | `parks`, `park-calendar:<geo>`  |
 | Historical stats, hourly profile       | `lib/api/stats.ts`                                       | `CACHE_TTL.stats`, 1 day                | `parks`                         |
 | Nowcast seed                           | `getParkWeatherNowcast`                                  | `NOWCAST_SEED_TTL`, 1 hour              | `weather`                       |
 | Global and per-continent counters      | `getGlobalStats`, `getGeoLiveStats` (SSR seed only)      | 7 days                                  | `analytics`                     |
@@ -79,11 +79,74 @@ ticker's 600 s pins no page, because its only consumer is `/admin/analytics`.
 
 `/api/revalidate` (POST, `REVALIDATE_SECRET`) takes `tags` and `paths`; `"expire": 0` makes the
 next request wait for fresh data instead of being served the old copy once more (used for a park's
-status flip). The backend pushes `["geo", "parks", "attractions"]` on renames, merges and
-retirements, `["parks", "attractions"]` on curated writes, a park's own tag when it opens or closes,
-and `best-days:<slug>` after each forecast warmup. A newly ingested park gets no `geo` push, so it
-reaches the menu and the hub lists up to a week late; its own page is live at once. Contract:
-[backend integration](../api/backend-integration.md#on-demand-revalidation).
+status flip and the forecast). The backend pushes `["geo", "parks", "attractions"]` on renames,
+merges and retirements, `["parks", "attractions"]` on curated writes, a park's own tag when it opens
+or closes, `best-days:<slug>` and `park-calendar:<geo>` after each forecast warmup, and a park's own
+tag with `park-calendar:<geo>` after the schedule sync. A tag reaches the Data Cache and, where a
+relay names it in `Vercel-Cache-Tag`, that relay's copy at Vercel's CDN; never Cloudflare
+([routes the backend rings](cdn-caching.md#routes-the-backend-rings)). A newly ingested park gets no
+`geo` push, so it reaches the menu and the hub lists up to a week late; its own page is live at
+once. Contract: [backend integration](../api/backend-integration.md#on-demand-revalidation).
+
+## One park-day on several surfaces
+
+The calendar grid and its day dialog, „Prognose heute" with the best-days section, a month page's
+summary and Parky's day tip all say how busy one park-day will be, often on one page. Each is cached
+for its own window, so once the forecast warmup (twice a day, [the API's forecast
+ring](https://github.com/PArns/v4.api.park.fan/blob/main/docs/architecture/caching-strategy.md#the-forecast-ring))
+moves a day, a surface still on the old copy contradicts one already on the new. On 2026-11-15 a
+visitor reported through Parky that the today panel and the day dialog named different levels for
+the same day, and a tip written for the new level is hidden by `tipAgreesWithLevel` for as long as
+the dialog beside it shows the old one.
+
+So every surface built on the calendar or the best-days snapshot ends at the same ring: the backend
+sends `best-days:<slug>` and `park-calendar:<geo>` (`parkCalendarCacheTag`,
+`lib/api/integrated-calendar.ts`) for each rebuilt park in one call with `"expire": 0`, and again 16
+minutes later. How far behind the ring a reader can still be:
+
+| Surface                                               | Reads                                                                            | Behind the ring, at most                                                                   |
+| ----------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Calendar grid, day dialog (also from the today panel) | `/api/parks/<geo>/calendar` (`useCalendarData`)                                  | 70 min at Cloudflare (`FORECAST_WINDOW`), an hour more in a tab open across the ring       |
+| „Prognose heute", best-days section, weekday hover    | `/api/parks/<geo>/best-days` (`useParkBestDaysCalendar`)                         | the same 70 min, 30 min more in an open tab                                                |
+| Best-days and the crowd FAQ in the first HTML         | `getBestDaysCalendarSeed`, Data Cache                                            | the page's edge window: 2 h on a park page and the calendar hub, 7 days 1 h on a month URL |
+| Month summary                                         | `getCalendarMonthSeed`, Data Cache                                               | the page's edge window, as above                                                           |
+| Parky's day tip                                       | `/api/parks/<geo>/parky-tip` (`PARKY_TIP_WINDOW`), keyed by the level at the API | 70 min at Cloudflare, an hour in the browser                                               |
+
+What can still differ, and for how long:
+
+- **A relay against its neighbour, for up to 70 minutes after a ring.** Each relay's Cloudflare copy
+  was filled at its own time, so in that hour one surface may already show the new level and the
+  other the old. The tip guard hides a disagreeing tip for those minutes rather than showing it.
+- **A month URL's summary against its grid, for up to a week.** The sentences are in the HTML, which
+  Cloudflare and Vercel keep 7 days and an hour on a month URL ([edge windows](cdn-caching.md#edge-windows));
+  the ring renews only the Data Cache entry the next render reads. On the hub, which shows the
+  current month, it is two hours. A `Vercel-Cache-Tag` on the page and a Cloudflare purge by tag
+  would close it; neither is built.
+- **The day dialog's „bisher" on today.** `todayCrowdLevel` is the day so far when the copy was
+  made, and nothing rings during the day, so it trails the live level by the copy's age: up to the
+  next ring at Vercel. The live „Andrang jetzt" in the today panel is the live poll's and is never
+  compared with it ([crowd levels](../api/backend-integration.md#crowd-levels)).
+- **The trip planner and the region hubs, by up to about three hours.** `/api/trip-regions/…` reads
+  through the Data Cache under `trip-region:<region>`, which the forecast warmup does not ring,
+  for `CACHE_TTL.tripRegionData` (1 h) on top of the API's own hour (`trip-regions:calendar:v2`,
+  not evicted by the warmup) and an hour at the edge; a URL nobody asked for in a day can be served
+  once from its day of `stale-while-revalidate`.
+- **`/plan/day` against the dialog's headliner forecast.** `/plan/day` is `no-store` here and 15
+  minutes at the API; its minutes come from the hourly forecast, the dialog's from the daily one per
+  headliner. They differ by model, not by cache, and no window can make them agree.
+
+What a ring costs: for about 200 parks, 400 tags in eight POSTs, twice a day and again 16 minutes
+later. Each `park-calendar:` tag ends the park's Data Cache entries (one month summary per month a
+page rendered, at most the 13 the month index links) and its relay copies at Vercel: about five
+month windows, one or two single days, one best-days snapshot and a tip per day and language asked,
+in each Vercel region that served them, so on the order of 2,000 to 4,000 entries a ring. Only an
+entry asked for again is refilled, once: a function call and one API read from Redis, 51 KB for a
+month, 1.9 KB for a day, 14.8 KB for best-days ([API budget](api-budget.md)). That replaces the
+refill the expiry used to cause once a day for the calendar and once an hour for best-days. The
+hour at Cloudflare adds up to 24 refills a day per hot URL, each a hit at Vercel with no function
+call: for 200 parks with three hot relay URLs in two Cloudflare tiers, about 29,000 edge requests
+and at most 1 GB uncompressed a day. Not measured yet: read `x-vercel-cache` and `age` on a second
+request after the next warmup's ring ([measuring](cdn-caching.md#measuring)).
 
 ## What an ISR write costs
 

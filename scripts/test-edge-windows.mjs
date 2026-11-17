@@ -21,6 +21,11 @@ import { PARK_STATS_SEGMENTS } from '../lib/parks/stats-segments.ts';
 import { PARK_KIDS_SEGMENTS } from '../lib/parks/kids-segments.ts';
 import { BEST_TIME_SEGMENTS } from '../lib/best-time/segments.ts';
 import { LIVE_TRIP_REGIONS, tripRegionSegment } from '../lib/trip-regions/registry.ts';
+import {
+  FORECAST_WINDOW,
+  PARKY_TIP_WINDOW,
+  tagPurgedCacheHeaders,
+} from '../lib/api/cdn-cache-headers.ts';
 
 const PARK = 'parks/europe/germany/rust/europa-park';
 
@@ -144,6 +149,42 @@ for (const region of LIVE_TRIP_REGIONS) {
     passed++;
   }
   console.log(`  ✓ a best-time path under ${region.slug}'s hub is not a month`);
+}
+
+// The relays the backend rings by tag: under `next start` the rule decides, on Vercel the handler,
+// so the rule must send exactly the handler's windows, and Cloudflare must get the short one.
+const RUNG_ROUTES = {
+  calendar: FORECAST_WINDOW,
+  'best-days': FORECAST_WINDOW,
+  'parky-tip': PARKY_TIP_WINDOW,
+};
+for (const [route, window] of Object.entries(RUNG_ROUTES)) {
+  const path = `/api/${PARK}/${route}`;
+  const handler = tagPurgedCacheHeaders(window, ['park-calendar:europe/germany/rust/europa-park']);
+  for (const key of ['Cache-Control', 'CDN-Cache-Control', 'Vercel-CDN-Cache-Control']) {
+    const { value } = headerFor(path, key.toLowerCase());
+    assert.equal(
+      value,
+      handler[key],
+      `${path}: ${key} is "${value}", the handler sends "${handler[key]}"`
+    );
+    passed++;
+  }
+  assert.match(
+    handler['CDN-Cache-Control'],
+    /\bs-maxage=3600\b/,
+    `${route}: Cloudflare keeps an hour`
+  );
+  assert.match(
+    handler['Vercel-CDN-Cache-Control'],
+    /\bs-maxage=86400\b/,
+    `${route}: Vercel keeps a day`
+  );
+  assert.equal(handler['Vercel-Cache-Tag'], 'park-calendar:europe/germany/rust/europa-park');
+  passed += 3;
+  console.log(
+    `  ✓ /api/…/${route}: rule and handler agree, Vercel until the ring, Cloudflare an hour`
+  );
 }
 
 console.log(`\n${passed} passed`);

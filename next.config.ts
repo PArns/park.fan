@@ -3,6 +3,7 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
+import { FORECAST_WINDOW, PARKY_TIP_WINDOW, tagPurgedCacheRule } from './lib/api/cdn-cache-headers';
 import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 import { HOWTO_CANONICAL_SEGMENT, HOWTO_SEGMENTS } from './lib/howto/segments';
 import { LIVE_TRIP_REGIONS } from './lib/trip-regions/registry';
@@ -943,15 +944,11 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
-        // A day, and it is the handler's own number rather than a second opinion: the route
-        // was raised from 300 s to 86400 on 2026-09-02 when today's cell stopped carrying a
-        // live occupancy reading, and this rule stayed at 300 — so the two halves disagreed by
-        // a factor of 288 for three days, and which one a visitor got depended on the platform.
-        // Measured against `pnpm start` on this build, `curl -D -` gave `s-maxage=300` while
-        // the handler was asking for a day. Keep the two identical; the reasoning for the value
-        // lives at the handler, where the payload is.
+        // The handler's own windows, from the same constant, so the two halves cannot drift.
+        // Vercel keeps the month until the backend rings its tag, which only the handler can
+        // name; Cloudflare keeps it an hour (docs/architecture/cdn-caching.md#routes-the-backend-rings).
         source: '/api/parks/:continent/:country/:city/:park/calendar',
-        headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=86400'),
+        headers: tagPurgedCacheRule(FORECAST_WINDOW),
       },
       {
         // Five minutes, and it is the handler's own number — the day-detail dialog's hourly curve
@@ -964,13 +961,14 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=300, stale-while-revalidate=300'),
       },
       {
-        // Parky's day tip: the handler's own six hours, kept identical.
+        // Parky's day tip and the best-days snapshot: rung with the calendar, the same constants
+        // as their handlers.
         source: '/api/parks/:continent/:country/:city/:park/parky-tip',
-        headers: sharedCache('public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600'),
+        headers: tagPurgedCacheRule(PARKY_TIP_WINDOW),
       },
       {
         source: '/api/parks/:continent/:country/:city/:park/best-days',
-        headers: sharedCache('public, s-maxage=3600, stale-while-revalidate=86400'),
+        headers: tagPurgedCacheRule(FORECAST_WINDOW),
       },
       {
         // The trip regions' relay: a region a day, its keyed routes the API's hour. The

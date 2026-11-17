@@ -2,10 +2,14 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { isParkyDayTip, type ParkyDayTip } from '@/lib/assistant/parky-tip';
+import { CALENDAR_STALE_TIME_MS } from '@/lib/hooks/use-calendar-data';
 import type { PlannerGeo } from '@/lib/planner/types';
 
-/** As long as the CDN keeps a tip: flipping back to a day opened before asks nothing. */
-const TIP_STALE_MS = 6 * 60 * 60 * 1000;
+/**
+ * As long as the month the dialog shows the tip on stays fresh in the tab: flipping back to a day
+ * opened before asks nothing, and a tip never outlives the level beside it by more than that.
+ */
+const TIP_STALE_MS = CALENDAR_STALE_TIME_MS;
 
 /**
  * Parky's tip for one calendar day, through the park relay (`…/parky-tip`), or null when he has

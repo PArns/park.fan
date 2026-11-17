@@ -572,3 +572,34 @@ write ISR entries nobody reads back, and there is no way to put those alone on `
 `force-dynamic`, drop its `generateStaticParams`, add it to `scripts/test-edge-windows.mjs` (both
 already have a window: the tag archive the `:section(blog|news)` rule, the city the
 `parks/:continent?/:country?/:city?` hub rule) and correct the rule's list of ISR routes.
+
+---
+
+## 2026-11-17 — ACCEPTED: the calendar relays end at Vercel by tag, and Cloudflare keeps them an hour
+
+**Lever:** invocations and bytes of `/api/parks/<geo>/{calendar,best-days,parky-tip}`.
+**Files:** `lib/api/cdn-cache-headers.ts` (`TagPurgedWindow`, `FORECAST_WINDOW`,
+`PARKY_TIP_WINDOW`), `app/api/parks/[...path]/route.ts`, `next.config.ts`,
+`lib/api/integrated-calendar.ts` (`parkCalendarCacheTag`); in the API the forecast ring.
+
+The calendar relay stood a day plus a stale day at both edges with no tag, best-days an hour plus a
+stale day, the tip six hours. After the forecast warmup they moved apart, and a page showed two
+levels for one day. Now Vercel keeps each until the backend rings `park-calendar:<geo>` or
+`best-days:<slug>` (`Vercel-Cache-Tag`, `Vercel-CDN-Cache-Control`, a day and a stale day without a
+ring), and Cloudflare, which no tag reaches, keeps an hour and ten stale minutes.
+
+**Estimated, not measured:** a ring ends on the order of 2,000 to 4,000 entries at Vercel and the
+Data Cache for about 200 parks, twice a day and once more 16 minutes later; only an entry asked
+for again is refilled, one function call and one Redis read at the API each. Against before, the
+calendar relay refills up to two or three times a day instead of once, the best-days relay two or
+three times instead of up to 24. The hour at Cloudflare costs up to 24 hits at Vercel a day per hot
+URL instead of one: about 29,000 edge requests and at most 1 GB uncompressed a day for three hot
+URLs per park in two Cloudflare tiers. The breakdown is in
+[one park-day on several surfaces](../architecture/caching-strategy.md#one-park-day-on-several-surfaces).
+
+**Cost shift:** function calls move from expiry to the ring; Cloudflare hit rate on these three
+routes falls, at no CPU.
+
+**Open:** measure invocations of the three routes before and after in Observability; purge the same
+tags at Cloudflare once the deploy purge is proven (PAR-1125), and the Cloudflare hour can go back
+to a day; a month URL's summary still stands in the page's seven-day HTML.
