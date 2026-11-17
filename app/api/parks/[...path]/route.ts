@@ -244,16 +244,18 @@ export async function GET(
     }
   }
 
-  // Parky's tip for one calendar day (`?date=&locale=`), written by the API's model and cached
-  // there for 12 h, six hours here. A 204 (closed, no forecast, Parky off) is cached too, so a
+  // Parky's tip for one calendar day (`?date=&today=&locale=`), written by the API's model and
+  // cached there for 12 h, six hours here. `today` is the park's, only a cache key here: the API
+  // counts from its own. A 204 (closed, no forecast, Parky off) is cached too, so a
   // closed day costs one request a window, not one per dialog.
   if (path && path.length === 5 && path[4] === 'parky-tip') {
     const [continent, country, city, park] = path;
     const date = request.nextUrl.searchParams.get('date');
+    const today = request.nextUrl.searchParams.get('today');
     const locale = request.nextUrl.searchParams.get('locale');
-    if (!isServableTipRequest(date, locale, Date.now())) {
+    if (!isServableTipRequest(date, today, locale, Date.now())) {
       return NextResponse.json(
-        { error: 'Missing or out-of-range query parameter: date or locale' },
+        { error: 'Missing or out-of-range query parameter: date, today or locale' },
         { status: 400, headers: NO_STORE }
       );
     }

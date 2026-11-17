@@ -13,10 +13,16 @@ import { tipAgreesWithLevel, tipVerdictFor } from '@/lib/assistant/parky-tip';
 import type { CrowdLevel } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { cn } from '@/lib/utils';
+import { TILE_GLASS } from '@/components/common/glass-card';
 
-/** The card both states share, so Parky reading up on the day turns into his tip in one frame. */
-const TIP_CARD =
-  'border-primary/30 from-primary/10 flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left';
+/**
+ * The card both states share, so Parky reading up on the day turns into his tip in one frame. The
+ * tile glass under the tint, so the line stays legible over whatever photo is behind the dialog.
+ */
+const TIP_CARD = cn(
+  TILE_GLASS,
+  'border-primary/30 from-primary/10 flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left'
+);
 const TIP_LABEL = 'text-primary block text-xs font-bold tracking-wider uppercase';
 
 /**
@@ -33,6 +39,7 @@ export function ParkCalendarParkyTip({
   parkSlug,
   parkName,
   date,
+  today,
   dateLabel,
   crowdLevel,
   open,
@@ -42,6 +49,8 @@ export function ParkCalendarParkyTip({
   parkSlug: string;
   parkName: string;
   date: string;
+  /** The park's today, which the sentence counts from („morgen“, „am Samstag“). */
+  today: string;
   /** The day as the dialog's title writes it, for the question. */
   dateLabel: string;
   /**
@@ -64,6 +73,7 @@ export function ParkCalendarParkyTip({
     geo,
     parkSlug,
     date,
+    today,
     locale,
     enabled: open && gate === 'on' && rated,
   });
