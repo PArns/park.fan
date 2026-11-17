@@ -834,6 +834,12 @@ callout's `post`, the empty state's `not_found`, `error`, `favorites` or `search
 only stands where Parky shows for the visitor, so both events count the same people. `/admin/assistant`
 shows them per kind with the click rate („Parkys Elemente“), and the links followed in his answers.
 
+A tap on the calendar's day tip hands the chat more than its question: `askParky` keeps the park's
+path, the day and the sentence shown (`AskDayTip`), `takeParkyAsk` reads them once, and the chat
+sends them as `dayTip` with its first question. The API reads the day's facts itself (the lines the
+tip is written from) and gives Parky both, so he answers from the tip he wrote rather than looking
+the day up again.
+
 ## Checks
 
 `pnpm test:assistant` covers the stream reader, the link checks, the rollout decision, the post

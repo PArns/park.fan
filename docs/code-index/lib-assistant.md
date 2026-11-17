@@ -28,8 +28,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ask.ts`](../../lib/assistant/ask.ts)
 
 - `askParky` _function_: A Parky element on the page (a stamp, a tip, a post's callout, an empty state) asks him about what it shows: the question waits for the chat window, which sends it once its session is ready (`takeParkyAsk`), and the window opens with the …
-- `takeParkyAsk` _function_: The question an element handed over, once: reading it clears it.
+- `takeParkyAsk` _function_: The question an element handed over, with its day tip, once: reading it clears both.
 - `ASK_PATH` _const_: Stands in a question for the page's path, filled in when the visitor asks (`ParkyAskButton`): a server render that cannot know the path, the 404's, passes it as the path's value.
+- Types: `AskDayTip`, `ParkyAsk`
 
 ### [`cards.ts`](../../lib/assistant/cards.ts)
 
