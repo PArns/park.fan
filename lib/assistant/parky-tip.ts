@@ -47,16 +47,25 @@ export function isServableTipRequest(
 }
 
 /**
+ * The verdict the API gives a day rated `level`, or null where it writes no tip (`closed`,
+ * `unknown`, no level): nothing to ask for, and nothing a tip could contradict.
+ */
+export function tipVerdictFor(
+  level: CrowdLevel | 'closed' | null | undefined
+): ParkyTipVerdict | null {
+  return (level && VERDICT_BY_LEVEL[level]) ?? null;
+}
+
+/**
  * Whether a tip may stand above the crowd panel that shows `level` for the same day. The calendar
  * month and the tip are cached for different windows, so once the forecast moves overnight one of
- * them still has the old day: a „lieber nicht" over „sehr niedrig" is worse than no tip. A level
- * without a verdict (`unknown`, none at all) contradicts nothing.
+ * them still has the old day: a „lieber nicht“ over „sehr niedrig“ is worse than no tip.
  */
 export function tipAgreesWithLevel(
   verdict: ParkyTipVerdict,
   level: CrowdLevel | 'closed' | null | undefined
 ): boolean {
-  const shown = level ? VERDICT_BY_LEVEL[level] : undefined;
+  const shown = tipVerdictFor(level);
   return !shown || shown === verdict;
 }
 

@@ -9,7 +9,7 @@ import { askParky } from '@/lib/assistant/ask';
 import { useParkyElementSeen } from '@/lib/hooks/use-parky-element-seen';
 import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
 import { useParkyDayTip } from '@/lib/hooks/use-parky-day-tip';
-import { tipAgreesWithLevel } from '@/lib/assistant/parky-tip';
+import { tipAgreesWithLevel, tipVerdictFor } from '@/lib/assistant/parky-tip';
 import type { CrowdLevel } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { cn } from '@/lib/utils';
@@ -44,8 +44,11 @@ export function ParkCalendarParkyTip({
   date: string;
   /** The day as the dialog's title writes it, for the question. */
   dateLabel: string;
-  /** The level the dialog's crowd panel shows for the day, which the tip may not contradict. */
-  crowdLevel: CrowdLevel | 'closed' | null | undefined;
+  /**
+   * The level the dialog's crowd panel shows for the day, which the tip may not contradict; null
+   * where no panel shows one (the UI showcase).
+   */
+  crowdLevel: CrowdLevel | 'closed' | null;
   open: boolean;
   /** Closes the dialog: Parky ducks under a modal one, and the chat would open unseen. */
   onAsk?: () => void;
@@ -54,21 +57,24 @@ export function ParkCalendarParkyTip({
   const locale = useLocale();
   const ground = useId();
   const gate = useAssistantGateStatus();
-  const { data, isPending } = useParkyDayTip({
+  // A day the API writes no tip for (closed, unrated) asks nothing and shows nothing, not even
+  // Parky reading up on it.
+  const rated = crowdLevel === null || tipVerdictFor(crowdLevel) !== null;
+  const { data, isLoading } = useParkyDayTip({
     geo,
     parkSlug,
     date,
     locale,
-    enabled: open && gate === 'on',
+    enabled: open && gate === 'on' && rated,
   });
   const tip = data && tipAgreesWithLevel(data.verdict, crowdLevel) ? data : null;
   const seen = useParkyElementSeen(
     gate === 'on' && tip ? { element: 'tip', kind: tip.verdict } : undefined
   );
-  if (gate !== 'on') return null;
-  if (isPending) {
+  if (gate !== 'on' || !rated) return null;
+  if (isLoading) {
     return (
-      <div role="status" className={TIP_CARD}>
+      <div role="status" aria-busy="true" className={TIP_CARD}>
         <ParkyLogo mood="looking" framed className="mt-0.5 size-11 shrink-0" />
         <span className="min-w-0 flex-1">
           <span className={TIP_LABEL}>{t('label')}</span>

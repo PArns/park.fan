@@ -32,6 +32,7 @@ import {
   isParkyDayTip,
   isServableTipRequest,
   tipAgreesWithLevel,
+  tipVerdictFor,
 } from '@/lib/assistant/parky-tip.ts';
 import {
   ASLEEP_AFTER_MS,
@@ -2223,7 +2224,10 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   check(tipAgreesWithLevel('meh', 'moderate'), true, 'tip: moderate is meh');
   check(tipAgreesWithLevel('bad', 'extreme'), true, 'tip: extreme is bad');
   check(tipAgreesWithLevel('bad', 'unknown'), true, 'tip: an unrated day contradicts nothing');
-  check(tipAgreesWithLevel('good', undefined), true, 'tip: no level, nothing to contradict');
+  check(tipAgreesWithLevel('good', null), true, 'tip: no panel, nothing to contradict');
+  check(tipVerdictFor('very_high'), 'bad', 'tip: very high is bad');
+  check(tipVerdictFor('closed'), null, 'tip: a closed day gets no tip');
+  check(tipVerdictFor('unknown'), null, 'tip: an unrated day gets no tip');
 }
 // Parky's stamp on a ride's live wait: only on a ride that usually queues, the walk-on first, then
 // half the usual or less.

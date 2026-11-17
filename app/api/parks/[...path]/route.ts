@@ -83,7 +83,7 @@ const RIDE_STATS_CACHE_CONTROL =
  */
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
 
-/** Six hours, the API's own window for a tip; next.config.ts names the same. */
+/** Six hours, half the twelve the API keeps a tip for; next.config.ts names the same. */
 const PARKY_TIP_CACHE_CONTROL =
   'public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600';
 /** A model call answers in a few seconds; a tip that takes longer is simply not shown. */
@@ -245,8 +245,8 @@ export async function GET(
   }
 
   // Parky's tip for one calendar day (`?date=&locale=`), written by the API's model and cached
-  // there for 12 h; the same six hours here as the API asks for. A 204 (closed, no forecast,
-  // Parky off) is cached too, so a closed day costs one request a window, not one per dialog.
+  // there for 12 h, six hours here. A 204 (closed, no forecast, Parky off) is cached too, so a
+  // closed day costs one request a window, not one per dialog.
   if (path && path.length === 5 && path[4] === 'parky-tip') {
     const [continent, country, city, park] = path;
     const date = request.nextUrl.searchParams.get('date');

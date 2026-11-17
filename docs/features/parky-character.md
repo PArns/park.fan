@@ -157,7 +157,8 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
     month comes from the calendar the CDN holds for a day, the tip from caches of its own, and
     after the forecast moves overnight one of them still has the old day. While the model still
     writes the sentence, the same card shows him reading up on the day in the chat's `looking`
-    mood instead of a grey placeholder.
+    mood instead of a grey placeholder. A day the API writes no tip for (past, closed, unrated)
+    gets neither, so he never reads up on a day he will say nothing about.
   - **No park card has one**: a very low crowd is what the card's crowd badge already says.
 
 - **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a
