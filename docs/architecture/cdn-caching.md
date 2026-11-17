@@ -149,6 +149,9 @@ is not listed. Both halves are needed because the two runtimes disagree: on Verc
 sources resolving in opposite directions is how the attraction detail served 600 s for months while
 the config said 300. Change one half, change the other. A rule matches a path, never a query string,
 so a response that needs its own window gets its own path (`…/calendar/hourly`, `…/ride-stats`).
+Nor does it match a status: where one path answers with two windows, the rule carries the shorter,
+so the runtime that follows the rule asks again sooner instead of keeping an answer too long.
+Parky's tip is the one such route (below).
 
 Windows with a reason worth knowing:
 
@@ -160,10 +163,12 @@ Windows with a reason worth knowing:
   would have shown a ten-minute-old wait under "live".
 - **Region cards, nearby status, analytics, search** (`/api/parks/live`, `/api/parks/near`,
   `/api/analytics/*`, `/api/search`): 60 s; the same answer for everybody asking the same thing.
-- **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`, both `Cache-Control` and
-  `CDN-Cache-Control`), or they would inherit the route's shared window ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
+- **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`: `Cache-Control`,
+  `CDN-Cache-Control` and `Vercel-CDN-Cache-Control`), or they would inherit the route's shared
+  window, Vercel's day on a rung route included ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
 - **Calendar, best-days and Parky's tip** (`…/calendar`, `…/best-days`, `…/parky-tip`): a day at
-  Vercel until the backend rings their tag, an hour at Cloudflare; below.
+  Vercel until the backend rings their tag, an hour at Cloudflare; below. The tip's 204 is kept five
+  minutes everywhere.
 
 ### Routes the backend rings
 
@@ -181,6 +186,18 @@ therefore sends two windows (`TagPurgedWindow`, `tagPurgedCacheHeaders` in
 | `Vercel-Cache-Tag`         | Vercel only                             | `park-calendar:<geo>` / `best-days:<slug>`     | `park-calendar:<geo>`                                     |
 | `CDN-Cache-Control`        | Cloudflare (Vercel reads its own first) | `s-maxage=3600, stale-while-revalidate=600`    | `max-age=3600, s-maxage=3600, stale-while-revalidate=600` |
 | `Cache-Control`            | the browser                             | as `CDN-Cache-Control`; no `max-age`           | an hour                                                   |
+
+**The tip's 204** („nothing to say") leaves with `PARKY_TIP_NONE_WINDOW`: five minutes at Vercel,
+at Cloudflare and in the browser (`PARKY_TIP_NONE_SECONDS`, the API's own window for it), still
+under the tag. What is left to answer 204 for passes within the day: a spent budget, a failed or
+refused call, Parky switched back on. A closed or unrated day is never asked; the dialog knows its
+level. The API answers a `today` that is not the park's with `no-store` (a browser clock past the
+park's midnight), and the relay keeps that 204 nowhere (`mayKeepNoTip`). The tip's rule in
+`next.config.ts` is this window, not `PARKY_TIP_WINDOW`: a rule cannot tell a 204 from a 200, and
+the shorter window is the safe one where the rule decides. So under `next start` a tip is asked
+again every five minutes (a Redis hit at the API, no model call); on Vercel the handler's windows
+stand. `pnpm test:edge-windows` checks that the rule is the 204's window and never outlasts the
+tip's.
 
 The backend rings `park-calendar:` and `best-days:` after every forecast warmup with
 `"expire": 0`, and `park-calendar:` after the schedule sync. A Cloudflare miss is then a hit at

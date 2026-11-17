@@ -3,7 +3,11 @@ import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
-import { FORECAST_WINDOW, PARKY_TIP_WINDOW, tagPurgedCacheRule } from './lib/api/cdn-cache-headers';
+import {
+  FORECAST_WINDOW,
+  PARKY_TIP_NONE_WINDOW,
+  tagPurgedCacheRule,
+} from './lib/api/cdn-cache-headers';
 import { LICENSE_LINK_HEADER } from './lib/agents/licensing';
 import { HOWTO_CANONICAL_SEGMENT, HOWTO_SEGMENTS } from './lib/howto/segments';
 import { LIVE_TRIP_REGIONS } from './lib/trip-regions/registry';
@@ -961,12 +965,15 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=300, stale-while-revalidate=300'),
       },
       {
-        // Parky's day tip and the best-days snapshot: rung with the calendar, the same constants
-        // as their handlers.
+        // Parky's day tip: its handler sends `PARKY_TIP_WINDOW` with a tip and the minutes of
+        // `PARKY_TIP_NONE_WINDOW` with a 204, and a rule cannot tell the two apart. It carries the
+        // shorter, so where the rule wins (`next start`) a tip is asked again sooner and a 204 is
+        // never kept for the tip's day; on Vercel the handler's own window stands.
         source: '/api/parks/:continent/:country/:city/:park/parky-tip',
-        headers: tagPurgedCacheRule(PARKY_TIP_WINDOW),
+        headers: tagPurgedCacheRule(PARKY_TIP_NONE_WINDOW),
       },
       {
+        // The best-days snapshot: rung with the calendar, the same constant as its handler.
         source: '/api/parks/:continent/:country/:city/:park/best-days',
         headers: tagPurgedCacheRule(FORECAST_WINDOW),
       },

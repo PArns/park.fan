@@ -52,6 +52,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `NO_STORE` _const_: The headers for an error response from a route under a shared rule in `next.config.ts`.
 - `FORECAST_WINDOW` _const_: The calendar month and the best-days snapshot: a ring reaches a reader at most 70 minutes late.
 - `PARKY_TIP_WINDOW` _const_: Parky's day tip: the forecast's window, and an hour in the browser, which is as long as the month the dialog shows it on stays fresh there (`CALENDAR_STALE_TIME_MS`).
+- `PARKY_TIP_NONE_SECONDS` _const_: How long „nothing to say" from the tip relay is kept, in every cache including the tab's: the API's own window for its 204.
+- `PARKY_TIP_NONE_WINDOW` _const_: Parky's day tip when the API has nothing to say. Also the `next.config.ts` rule, which cannot tell a 204 from a 200: under `next start` both take these minutes, never a 204 the 200's day.
 - Types: `TagPurgedWindow`
 
 ### [`client.ts`](../../lib/api/client.ts)

@@ -104,19 +104,22 @@ sends `best-days:<slug>` and `park-calendar:<geo>` (`parkCalendarCacheTag`,
 `lib/api/integrated-calendar.ts`) for each rebuilt park in one call with `"expire": 0`, and again 16
 minutes later. How far behind the ring a reader can still be:
 
-| Surface                                               | Reads                                                                            | Behind the ring, at most                                                                   |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Calendar grid, day dialog (also from the today panel) | `/api/parks/<geo>/calendar` (`useCalendarData`)                                  | 70 min at Cloudflare (`FORECAST_WINDOW`), an hour more in a tab open across the ring       |
-| „Prognose heute", best-days section, weekday hover    | `/api/parks/<geo>/best-days` (`useParkBestDaysCalendar`)                         | the same 70 min, 30 min more in an open tab                                                |
-| Best-days and the crowd FAQ in the first HTML         | `getBestDaysCalendarSeed`, Data Cache                                            | the page's edge window: 2 h on a park page and the calendar hub, 7 days 1 h on a month URL |
-| Month summary                                         | `getCalendarMonthSeed`, Data Cache                                               | the page's edge window, as above                                                           |
-| Parky's day tip                                       | `/api/parks/<geo>/parky-tip` (`PARKY_TIP_WINDOW`), keyed by the level at the API | 70 min at Cloudflare, an hour in the browser                                               |
+| Surface                                               | Reads                                                                         | Behind the ring, at most                                                                   |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Calendar grid, day dialog (also from the today panel) | `/api/parks/<geo>/calendar` (`useCalendarData`)                               | 70 min at Cloudflare (`FORECAST_WINDOW`), an hour more in a tab open across the ring       |
+| „Prognose heute", best-days section, weekday hover    | `/api/parks/<geo>/best-days` (`useParkBestDaysCalendar`)                      | the same 70 min, 30 min more in an open tab                                                |
+| Best-days and the crowd FAQ in the first HTML         | `getBestDaysCalendarSeed`, Data Cache                                         | the page's edge window: 2 h on a park page and the calendar hub, 7 days 1 h on a month URL |
+| Month summary                                         | `getCalendarMonthSeed`, Data Cache                                            | the page's edge window, as above                                                           |
+| Parky's day tip                                       | `/api/parks/<geo>/parky-tip` (`PARKY_TIP_WINDOW`), keyed by the days it reads | 70 min at Cloudflare, an hour in the browser; „nothing to say" five minutes                |
 
 What can still differ, and for how long:
 
 - **A relay against its neighbour, for up to 70 minutes after a ring.** Each relay's Cloudflare copy
   was filled at its own time, so in that hour one surface may already show the new level and the
-  other the old. The tip guard hides a disagreeing tip for those minutes rather than showing it.
+  other the old. The tip guard hides a tip written for another level than the dialog shows for
+  those minutes rather than showing it. At the API the tip is keyed by the status and level of every
+  day its sentence reads, so a sentence naming a quieter neighbour is written again once that
+  neighbour moves.
 - **A month URL's summary against its grid, for up to a week.** The sentences are in the HTML, which
   Cloudflare and Vercel keep 7 days and an hour on a month URL ([edge windows](cdn-caching.md#edge-windows));
   the ring renews only the Data Cache entry the next render reads. On the hub, which shows the

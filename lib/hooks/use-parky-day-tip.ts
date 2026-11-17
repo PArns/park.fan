@@ -2,6 +2,7 @@
 
 import { useQuery } from '@tanstack/react-query';
 import { isParkyDayTip, type ParkyDayTip } from '@/lib/assistant/parky-tip';
+import { PARKY_TIP_NONE_SECONDS } from '@/lib/api/cdn-cache-headers';
 import { CALENDAR_STALE_TIME_MS } from '@/lib/hooks/use-calendar-data';
 import type { PlannerGeo } from '@/lib/planner/types';
 
@@ -10,6 +11,8 @@ import type { PlannerGeo } from '@/lib/planner/types';
  * opened before asks nothing, and a tip never outlives the level beside it by more than that.
  */
 const TIP_STALE_MS = CALENDAR_STALE_TIME_MS;
+/** „Nothing to say" goes stale with the relay's 204, so a dialog opened again later asks again. */
+const NO_TIP_STALE_MS = PARKY_TIP_NONE_SECONDS * 1000;
 
 /**
  * Parky's tip for one calendar day, through the park relay (`…/parky-tip`), or null when he has
@@ -44,7 +47,7 @@ export function useParkyDayTip({
       return isParkyDayTip(body) ? body : null;
     },
     enabled: enabled && !!date,
-    staleTime: TIP_STALE_MS,
+    staleTime: (query) => (query.state.data === null ? NO_TIP_STALE_MS : TIP_STALE_MS),
     gcTime: TIP_STALE_MS,
     retry: false,
   });

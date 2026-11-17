@@ -603,3 +603,26 @@ routes falls, at no CPU.
 **Open:** measure invocations of the three routes before and after in Observability; purge the same
 tags at Cloudflare once the deploy purge is proven (PAR-1125), and the Cloudflare hour can go back
 to a day; a month URL's summary still stands in the page's seven-day HTML.
+
+---
+
+## 2026-11-17 — ACCEPTED: Parky's tip relay keeps „nothing to say" five minutes, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/parky-tip` answered 204.
+**Files:** `lib/api/cdn-cache-headers.ts` (`PARKY_TIP_NONE_WINDOW`, `PARKY_TIP_NONE_SECONDS`),
+`app/api/parks/[...path]/route.ts`, `next.config.ts`, `lib/hooks/use-parky-day-tip.ts`; in the API
+`TIP_NONE_CACHE_CONTROL`.
+
+A 204 took the tip's windows: a day at Vercel until the ring, an hour at Cloudflare and in the
+browser. The 204s left are a spent budget and a failed or refused call, which pass within the day,
+so a dialog stayed empty for hours after a tip could be written again. The dialog asks no closed or
+unrated day, so these are rare.
+
+**Estimated, not measured:** at most one function call and one API read (a Redis `MGET`, no model
+call) per 204 URL, Vercel region and five minutes while it is asked. The tip's `next.config.ts`
+rule carries the same five minutes, since a rule cannot tell a 204 from a 200; that only binds
+under `next start`, where a tip is then asked every five minutes.
+
+**Cost shift:** none on a 200.
+
+**Open:** count the relay's 204s in Observability after a day with a spent budget.

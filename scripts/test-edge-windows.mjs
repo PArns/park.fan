@@ -23,6 +23,8 @@ import { BEST_TIME_SEGMENTS } from '../lib/best-time/segments.ts';
 import { LIVE_TRIP_REGIONS, tripRegionSegment } from '../lib/trip-regions/registry.ts';
 import {
   FORECAST_WINDOW,
+  NO_STORE,
+  PARKY_TIP_NONE_WINDOW,
   PARKY_TIP_WINDOW,
   tagPurgedCacheHeaders,
 } from '../lib/api/cdn-cache-headers.ts';
@@ -152,22 +154,35 @@ for (const region of LIVE_TRIP_REGIONS) {
 }
 
 // The relays the backend rings by tag: under `next start` the rule decides, on Vercel the handler,
-// so the rule must send exactly the handler's windows, and Cloudflare must get the short one.
+// so the rule must send exactly the handler's windows, and Cloudflare must get the short one. The
+// tip's handler sends one window with a tip and another with a 204, which a path rule cannot tell
+// apart: its rule carries the 204's minutes, the shorter of the two.
+const TAG = 'park-calendar:europe/germany/rust/europa-park';
+const RUNG_KEYS = ['Cache-Control', 'CDN-Cache-Control', 'Vercel-CDN-Cache-Control'];
 const RUNG_ROUTES = {
-  calendar: FORECAST_WINDOW,
-  'best-days': FORECAST_WINDOW,
-  'parky-tip': PARKY_TIP_WINDOW,
+  calendar: { window: FORECAST_WINDOW, rule: FORECAST_WINDOW },
+  'best-days': { window: FORECAST_WINDOW, rule: FORECAST_WINDOW },
+  'parky-tip': { window: PARKY_TIP_WINDOW, rule: PARKY_TIP_NONE_WINDOW },
 };
-for (const [route, window] of Object.entries(RUNG_ROUTES)) {
+const seconds = (value, directive) =>
+  Number(new RegExp(`\\b${directive}=(\\d+)`).exec(value)?.[1] ?? 0);
+for (const [route, { window, rule }] of Object.entries(RUNG_ROUTES)) {
   const path = `/api/${PARK}/${route}`;
-  const handler = tagPurgedCacheHeaders(window, ['park-calendar:europe/germany/rust/europa-park']);
-  for (const key of ['Cache-Control', 'CDN-Cache-Control', 'Vercel-CDN-Cache-Control']) {
+  const handler = tagPurgedCacheHeaders(window, [TAG]);
+  const ruled = tagPurgedCacheHeaders(rule, [TAG]);
+  for (const key of RUNG_KEYS) {
     const { value } = headerFor(path, key.toLowerCase());
     assert.equal(
       value,
-      handler[key],
-      `${path}: ${key} is "${value}", the handler sends "${handler[key]}"`
+      ruled[key],
+      `${path}: ${key} is "${value}", the handler sends "${ruled[key]}"`
     );
+    for (const directive of ['max-age', 's-maxage', 'stale-while-revalidate']) {
+      assert.ok(
+        seconds(value, directive) <= seconds(handler[key], directive),
+        `${path}: the rule's ${key} ${directive} outlasts the handler's`
+      );
+    }
     passed++;
   }
   assert.match(
@@ -180,11 +195,33 @@ for (const [route, window] of Object.entries(RUNG_ROUTES)) {
     /\bs-maxage=86400\b/,
     `${route}: Vercel keeps a day`
   );
-  assert.equal(handler['Vercel-Cache-Tag'], 'park-calendar:europe/germany/rust/europa-park');
+  assert.equal(handler['Vercel-Cache-Tag'], TAG);
   passed += 3;
   console.log(
-    `  ✓ /api/…/${route}: rule and handler agree, Vercel until the ring, Cloudflare an hour`
+    `  ✓ /api/…/${route}: ${rule === window ? 'rule and handler agree' : "the rule is the 204's window"}, Vercel until the ring, Cloudflare an hour`
   );
 }
+
+// A tip relay's 204 is kept minutes everywhere, not until the ring: what the API has nothing to say
+// about now (a spent budget, a failed call) it may have in an hour.
+for (const key of RUNG_KEYS) {
+  const value = tagPurgedCacheHeaders(PARKY_TIP_NONE_WINDOW, [TAG])[key];
+  assert.ok(seconds(value, 's-maxage') > 0, `parky-tip 204: ${key} "${value}" keeps nothing`);
+  for (const directive of ['max-age', 's-maxage', 'stale-while-revalidate']) {
+    assert.ok(
+      seconds(value, directive) <= 600,
+      `parky-tip 204: ${key} keeps ${directive} longer than minutes`
+    );
+  }
+  passed++;
+}
+console.log('  ✓ /api/…/parky-tip 204: minutes in every cache');
+
+// An error under a rung route's rule must not take any of the rule's windows, Vercel's included.
+for (const key of RUNG_KEYS) {
+  assert.match(NO_STORE[key] ?? '', /\bno-store\b/, `NO_STORE sends no ${key}`);
+  passed++;
+}
+console.log("  ✓ NO_STORE overrides every header a rung route's rule sets");
 
 console.log(`\n${passed} passed`);

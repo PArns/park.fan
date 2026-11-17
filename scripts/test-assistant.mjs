@@ -32,6 +32,7 @@ import { splitWaits } from '@/lib/assistant/wait-chips.ts';
 import {
   isParkyDayTip,
   isServableTipRequest,
+  mayKeepNoTip,
   tipAgreesWithLevel,
   tipVerdictFor,
 } from '@/lib/assistant/parky-tip.ts';
@@ -2263,13 +2264,65 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     false,
     'tip: a level with no verdict'
   );
-  check(tipAgreesWithLevel('bad', 'very_low'), false, 'tip: "lieber nicht" over a quiet day');
-  check(tipAgreesWithLevel('good', 'high'), false, 'tip: "hin da" over a busy day');
-  check(tipAgreesWithLevel('good', 'low'), true, 'tip: low and very low share a verdict');
-  check(tipAgreesWithLevel('meh', 'moderate'), true, 'tip: moderate is meh');
-  check(tipAgreesWithLevel('bad', 'extreme'), true, 'tip: extreme is bad');
-  check(tipAgreesWithLevel('bad', 'unknown'), true, 'tip: an unrated day contradicts nothing');
-  check(tipAgreesWithLevel('good', null), true, 'tip: no panel, nothing to contradict');
+  // Without the level it was written for, a tip is held to its verdict.
+  check(
+    tipAgreesWithLevel({ verdict: 'bad' }, 'very_low'),
+    false,
+    'tip: "lieber nicht" over a quiet day'
+  );
+  check(tipAgreesWithLevel({ verdict: 'good' }, 'high'), false, 'tip: "hin da" over a busy day');
+  check(
+    tipAgreesWithLevel({ verdict: 'good' }, 'low'),
+    true,
+    'tip: low and very low share a verdict'
+  );
+  check(tipAgreesWithLevel({ verdict: 'meh' }, 'moderate'), true, 'tip: moderate is meh');
+  check(tipAgreesWithLevel({ verdict: 'bad' }, 'extreme'), true, 'tip: extreme is bad');
+  check(
+    tipAgreesWithLevel({ verdict: 'bad' }, 'unknown'),
+    true,
+    'tip: an unrated day contradicts nothing'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'good' }, null),
+    true,
+    'tip: no panel, nothing to contradict'
+  );
+  // With it, the level itself.
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'extreme'),
+    false,
+    'tip: a sentence for "hoch" over "extrem"'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'good', crowdLevel: 'low' }, 'very_low'),
+    false,
+    'tip: a sentence for "niedrig" over "sehr niedrig"'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'extreme' }, 'extreme'),
+    true,
+    'tip: written for the level the panel shows'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'unknown'),
+    true,
+    'tip: with its level, an unrated panel still contradicts nothing'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, null),
+    true,
+    'tip: with its level, no panel'
+  );
+  check(mayKeepNoTip('private, max-age=300'), true, 'tip: the API lets its 204 be kept');
+  check(mayKeepNoTip('public, max-age=300, s-maxage=300'), true, 'tip: the shared 204 too');
+  check(
+    mayKeepNoTip('private, no-store'),
+    false,
+    "tip: a today that is not the park's keeps nothing"
+  );
+  check(mayKeepNoTip('No-Store'), false, 'tip: in any case');
+  check(mayKeepNoTip(null), true, 'tip: a 204 without a header takes the relay window');
   check(tipVerdictFor('very_high'), 'bad', 'tip: very high is bad');
   check(tipVerdictFor('closed'), null, 'tip: a closed day gets no tip');
   check(tipVerdictFor('unknown'), null, 'tip: an unrated day gets no tip');
