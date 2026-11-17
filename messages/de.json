@@ -6420,6 +6420,7 @@
     },
     "tip": {
       "label": "Parkys Tipp",
+      "looking": "Parky schaut sich den Tag genauer an…",
       "good": "Top-Tag!",
       "meh": "Geht so",
       "bad": "Lieber nicht",

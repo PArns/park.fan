@@ -152,7 +152,16 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
     measured against the typical for this hour printed under it: „Walk-on!“, and „Jetzt hin!“ when
     the printed wait is at most half that typical (`BELOW_TYPICAL_SHARE`). The page holds only this
     ride live, so there is no park-wide count; the visitor here is deciding about this one ride.
-  - **In the calendar's day dialog**, the verdict on Parky's tip for the day.
+  - **In the calendar's day dialog**, the verdict on Parky's tip for the day. The tip only shows
+    when that verdict matches the level of the crowd panel beneath it (`tipAgreesWithLevel`): the
+    month comes from the calendar the CDN holds for a day, the tip from caches of its own, and
+    after the forecast moves overnight one of them still has the old day. While the model still
+    writes the sentence, the same card shows him reading up on the day in the chat's `looking`
+    mood instead of a grey placeholder. A day the API writes no tip for (past, closed, unrated)
+    gets neither, so he never reads up on a day he will say nothing about. The card sits on the
+    park page's tile glass (`TILE_GLASS`). The tip names days from the park's today („heute“,
+    „morgen“, „am Samstag“, „nächstes Wochenende“), so that today is part of the request
+    (`?today=`) and of every cache key: at the park's midnight the dialog asks a new URL.
   - **No park card has one**: a very low crowd is what the card's crowd badge already says.
 
 - **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a

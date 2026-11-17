@@ -399,13 +399,16 @@ export function ParkCalendarDayDetail({
           )}
           aria-busy={navigating}
         >
-          {planner && (
+          {/* The API writes tips from the park's today on, and none for a closed day. */}
+          {planner && !isClosed && day.date >= todayInPark && (
             <ParkCalendarParkyTip
               geo={planner.geo}
               parkSlug={planner.parkSlug}
               parkName={planner.parkName}
               date={day.date}
+              today={todayInPark}
               dateLabel={title}
+              crowdLevel={meaningLevel}
               open={open && !navigating}
               onAsk={() => onOpenChange(false)}
             />
