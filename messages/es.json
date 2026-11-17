@@ -6420,6 +6420,7 @@
     },
     "tip": {
       "label": "El consejo de Parky",
+      "looking": "Parky está mirando el día más de cerca…",
       "good": "¡Día top!",
       "meh": "Regular",
       "bad": "Mejor no",

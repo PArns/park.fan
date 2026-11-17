@@ -399,13 +399,19 @@ export function ParkCalendarDayDetail({
           )}
           aria-busy={navigating}
         >
-          {planner && (
+          {/* The API writes tips from the park's today on, and none for a closed day. */}
+          {planner && !isClosed && day.date >= todayInPark && (
             <ParkCalendarParkyTip
               geo={planner.geo}
               parkSlug={planner.parkSlug}
               parkName={planner.parkName}
               date={day.date}
+              today={todayInPark}
               dateLabel={title}
+              crowdLevel={meaningLevel}
+              // The level so far even where it equals the forecast and the split row is hidden:
+              // the panel's level then says the same.
+              soFarLevel={day.isToday ? (day.todayCrowdLevel ?? null) : null}
               open={open && !navigating}
               onAsk={() => onOpenChange(false)}
             />

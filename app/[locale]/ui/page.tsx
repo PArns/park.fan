@@ -2612,7 +2612,10 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                     parkSlug="phantasialand"
                     parkName="Phantasialand"
                     date={new Date().toISOString().slice(0, 10)}
+                    today={new Date().toISOString().slice(0, 10)}
                     dateLabel="heute"
+                    crowdLevel={null}
+                    soFarLevel={null}
                     open
                   />
                 </div>

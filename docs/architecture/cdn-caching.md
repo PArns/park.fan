@@ -149,6 +149,9 @@ is not listed. Both halves are needed because the two runtimes disagree: on Verc
 sources resolving in opposite directions is how the attraction detail served 600 s for months while
 the config said 300. Change one half, change the other. A rule matches a path, never a query string,
 so a response that needs its own window gets its own path (`…/calendar/hourly`, `…/ride-stats`).
+Nor does it match a status or what a response holds: where one path answers with two windows, the
+rule carries the shorter, so the runtime that follows the rule asks again sooner instead of keeping
+an answer too long. The calendar and Parky's tip are such routes (below).
 
 Windows with a reason worth knowing:
 
@@ -160,8 +163,85 @@ Windows with a reason worth knowing:
   would have shown a ten-minute-old wait under "live".
 - **Region cards, nearby status, analytics, search** (`/api/parks/live`, `/api/parks/near`,
   `/api/analytics/*`, `/api/search`): 60 s; the same answer for everybody asking the same thing.
-- **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`, both `Cache-Control` and
-  `CDN-Cache-Control`), or they would inherit the route's shared window ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
+- **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`: `Cache-Control`,
+  `CDN-Cache-Control` and `Vercel-CDN-Cache-Control`), or they would inherit the route's shared
+  window, Vercel's day on a rung route included ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
+- **Calendar, best-days and Parky's tip** (`…/calendar`, `…/best-days`, `…/parky-tip`): a day at
+  Vercel until the backend rings their tag, an hour at Cloudflare; below. The tip for today is kept
+  half an hour at each, its 204 five minutes everywhere.
+
+### Routes the backend rings
+
+`revalidateTag` reaches more than the Data Cache. Vercel's purge page
+([Vercel](https://vercel.com/docs/caching/cdn-cache/purge)) lists, for Next.js 16,
+`revalidateTag(tag)` as a method that deletes CDN cache entries by tag and
+`revalidateTag(tag, 'max')` as one that marks them stale, and names the `Vercel-Cache-Tag` response
+header as the way a Vercel Function assigns tags to its response. Next's own reference
+(`revalidateTag.md` in `node_modules/next/dist/docs`) says the one-argument form behaves like
+`{ expire: 0 }`, which is what `/api/revalidate` sends for a ring. A route handler's response is
+such an entry, so a relay can be kept at Vercel until the data behind it changes. It cannot be kept
+that way at Cloudflare, which no tag reaches between deploys. Each of these relays
+therefore sends two windows (`TagPurgedWindow`, `tagPurgedCacheHeaders` in
+`lib/api/cdn-cache-headers.ts`, the same constants in `next.config.ts`):
+
+| Header                     | Read by                                 | Calendar, best-days (`FORECAST_WINDOW`)        | Calendar holding today (`CALENDAR_TODAY_WINDOW`) | Tip (`PARKY_TIP_WINDOW`)                                  | Tip for today (`PARKY_TIP_TODAY_WINDOW`) |
+| -------------------------- | --------------------------------------- | ---------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------- | ---------------------------------------- |
+| `Vercel-CDN-Cache-Control` | Vercel only, not passed on              | `s-maxage=86400, stale-while-revalidate=86400` | `s-maxage=1800`                                  | the same as the calendar's                                | `s-maxage=1800`                          |
+| `Vercel-Cache-Tag`         | Vercel only                             | `park-calendar:<geo>` / `best-days:<slug>`     | `park-calendar:<geo>`                            | `park-calendar:<geo>`                                     | the same                                 |
+| `CDN-Cache-Control`        | Cloudflare (Vercel reads its own first) | `s-maxage=3600, stale-while-revalidate=600`    | `s-maxage=1800`                                  | `max-age=3600, s-maxage=3600, stale-while-revalidate=600` | `max-age=1800, s-maxage=1800`            |
+| `Cache-Control`            | the browser                             | as `CDN-Cache-Control`; no `max-age`           | the same, no `max-age`                           | an hour                                                   | half an hour                             |
+
+**A calendar range that holds the park's today** (a day the API marks `isToday`, in the park's
+zone: the current month of the grid and the day dialog, and the today panel's single day) carries
+„Heute bisher", the level so far, which moves during the day without a ring. It leaves with
+`CALENDAR_TODAY_WINDOW`, half an hour at Vercel and half an hour at Cloudflare, for the same reason
+and with the same arithmetic as the tip for today below. Every other range keeps `FORECAST_WINDOW`.
+The calendar's rule in `next.config.ts` is `CALENDAR_TODAY_WINDOW`, the shorter, since a rule cannot
+see which days a response holds.
+
+**The tip for today** (`date` equal to the request's `today`) says how busy the day has been so
+far, a level that moves during the day and that no ring announces, so it cannot wait at Vercel for
+one: half an hour at Vercel and half an hour at Cloudflare keep it at most an hour behind the API.
+The API's own copy of that level is its current calendar month, up to two hours old after a warmup
+and rebuilt by reads every 15 minutes after that, so a shorter window here would mostly ask again
+for a sentence that has not changed. Its key at the API moves with that level, so a new window
+after a move costs a model call per language asked. The ring still ends it early.
+
+**The tip's 204** („nothing to say") leaves with `PARKY_TIP_NONE_WINDOW`: five minutes at Vercel,
+at Cloudflare and in the browser (`PARKY_TIP_NONE_SECONDS`, the API's own window for it), still
+under the tag. What is left to answer 204 for passes within the day: a spent budget, a failed or
+refused call, Parky switched back on. A closed or unrated day is never asked; the dialog knows its
+level. The API answers a `today` that is not the park's with `no-store` (a browser clock past the
+park's midnight), and the relay keeps that 204 nowhere (`mayKeepNoTip`). The tip's rule in
+`next.config.ts` is this window, not `PARKY_TIP_WINDOW`: a rule can tell neither a 204 from a 200
+nor today's tip from another day's, and the shortest window is the safe one where the rule decides.
+So under `next start` a tip is asked again every five minutes (a Redis hit at the API, no model
+call); on Vercel the handler's windows stand. `pnpm test:edge-windows` checks that the rule is the
+204's window and never outlasts any of the three the handler sends, and that the tip for today
+stays at Vercel and Cloudflare an hour at most.
+
+The backend rings `park-calendar:` and `best-days:` after every forecast warmup with
+`"expire": 0`, and `park-calendar:` after the schedule sync. A Cloudflare miss is then a hit at
+Vercel and costs no function call; the first request after a ring is one function call and one
+API read. With `'max'` instead, that request would be served the old copy once more, and if it came
+from Cloudflare, which is where every request to Vercel comes from, Cloudflare would keep it for its
+hour. What a ring purges and costs, and which surfaces can still disagree:
+[one park-day on several surfaces](caching-strategy.md#one-park-day-on-several-surfaces).
+
+Cloudflare could be purged too: purge by tag is on every plan (the Free plan allows 5 requests a
+minute, 100 tags each), reading a `Cache-Tag` response header, with the token the deploy purge
+already holds. It is not built, because that purge has not been proven to work yet (PAR-1125); once
+it has, `/api/revalidate` can purge the same tags at Cloudflare and the hour can go back to a day.
+
+**Checking it** needs Vercel without Cloudflare in front, which keeps its own hour: on the
+deployment's own domain, ask a calendar relay URL twice (`x-vercel-cache: HIT`), ring its tag (the
+next warmup, or `vercel cache invalidate --tag park-calendar:<geo>`), and ask again:
+`x-vercel-cache: REVALIDATED` after an `"expire": 0` ring (in the runtime log the reason
+„Tag-based deletion"), `STALE` after a `'max'` one or `vercel cache invalidate` („Tag-based
+invalidation"; [cache status](https://vercel.com/docs/caching/cache-status)). That is what Vercel
+documents; whether park.fan's relays behave so has not been checked yet. Run the check on the
+deployment's own domain right after the frontend deploy that ships `PARKY_TIP_TODAY_WINDOW`, before
+the next warmup rings, and write down here what it showed.
 
 ## A deploy purges Cloudflare
 

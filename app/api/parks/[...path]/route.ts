@@ -1,6 +1,11 @@
 import geomagnetism from 'geomagnetism';
 import { NextRequest, NextResponse } from 'next/server';
-import { getIntegratedCalendar, getBestDaysSnapshotFresh } from '@/lib/api/integrated-calendar';
+import {
+  bestDaysCacheTag,
+  getIntegratedCalendar,
+  getBestDaysSnapshotFresh,
+  parkCalendarCacheTag,
+} from '@/lib/api/integrated-calendar';
 import {
   foreignForecastRequest,
   isKeylessRelayPath,
@@ -21,7 +26,16 @@ import {
   getCardObjectPosition,
   getParkBackgroundImage,
 } from '@/lib/utils/park-assets';
-import { cdnCacheHeaders, NO_STORE } from '@/lib/api/cdn-cache-headers';
+import {
+  cdnCacheHeaders,
+  FORECAST_WINDOW,
+  NO_STORE,
+  PARKY_TIP_NONE_WINDOW,
+  PARKY_TIP_TODAY_WINDOW,
+  CALENDAR_TODAY_WINDOW,
+  PARKY_TIP_WINDOW,
+  tagPurgedCacheHeaders,
+} from '@/lib/api/cdn-cache-headers';
 import {
   isServableCalendarRange,
   isServableHourlyDate,
@@ -36,7 +50,7 @@ import {
 import { isSlugPath } from '@/lib/utils/servable-route';
 import { pickRideFigures } from '@/lib/api/ride-figures';
 import { catchNonFatal, getApiBaseUrl, getServerApiHeaders } from '@/lib/api/client';
-import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip';
+import { isParkyDayTip, isServableTipRequest, mayKeepNoTip } from '@/lib/assistant/parky-tip';
 import { relayJsonWrite } from '@/lib/api/relay';
 import { ridesInWorksOn } from '@/lib/utils/works-period';
 import type { PlanDay, PlanDayRideInWorks, ParkWithAttractions } from '@/lib/api/types';
@@ -83,9 +97,6 @@ const RIDE_STATS_CACHE_CONTROL =
  */
 const LIVE_POLL_CACHE_CONTROL = 'public, max-age=0, s-maxage=30, stale-while-revalidate=30';
 
-/** Six hours, the API's own window for a tip; next.config.ts names the same. */
-const PARKY_TIP_CACHE_CONTROL =
-  'public, max-age=21600, s-maxage=21600, stale-while-revalidate=3600';
 /** A model call answers in a few seconds; a tip that takes longer is simply not shown. */
 const PARKY_TIP_TIMEOUT_MS = 12_000;
 
@@ -188,12 +199,17 @@ export async function GET(
         includeHourly: 'none',
       });
 
-      // A day: every field is a statement about a whole day. A schedule correction arrives through
-      // the park's cache tag (`sync-schedules-only` posts it to /api/revalidate), not through
-      // expiry. The stale window is a second day because the slow path is a per-day aggregation
-      // nobody should wait for.
+      // A day's forecast changes only when the forecast warmup or a schedule correction rewrites
+      // the month; both ring the calendar's tag, which ends Vercel's copy, and Cloudflare keeps its
+      // own an hour. Today's level so far moves without a ring, so a range that holds the park's
+      // today (the API marks it, in the park's zone) is kept half an hour.
+      const cacheWindow = data.days.some((day) => day.isToday)
+        ? CALENDAR_TODAY_WINDOW
+        : FORECAST_WINDOW;
       return NextResponse.json(data, {
-        headers: cdnCacheHeaders('public, s-maxage=86400, stale-while-revalidate=86400'),
+        headers: tagPurgedCacheHeaders(cacheWindow, [
+          parkCalendarCacheTag(continent, country, city, park),
+        ]),
       });
     } catch (error) {
       console.error('[Calendar API] Error:', error);
@@ -244,43 +260,61 @@ export async function GET(
     }
   }
 
-  // Parky's tip for one calendar day (`?date=&locale=`), written by the API's model and cached
-  // there for 12 h; the same six hours here as the API asks for. A 204 (closed, no forecast,
-  // Parky off) is cached too, so a closed day costs one request a window, not one per dialog.
+  // Parky's tip for one calendar day (`?date=&today=&locale=`), written by the API's model from
+  // the levels of the days around it. Under the calendar's tag, so it moves with the level the
+  // dialog shows next to it. `today` is the park's as the browser counts it, and part of the cache
+  // key, so the API checks it (`mayKeepNoTip`). Its other 204s are kept for minutes
+  // (`PARKY_TIP_NONE_WINDOW`): a spent budget or a failed call passes within the day and must not
+  // stand until the next ring. Nor may the tip for today itself, which says how busy the day has
+  // been so far (`PARKY_TIP_TODAY_WINDOW`).
   if (path && path.length === 5 && path[4] === 'parky-tip') {
     const [continent, country, city, park] = path;
     const date = request.nextUrl.searchParams.get('date');
+    const today = request.nextUrl.searchParams.get('today');
     const locale = request.nextUrl.searchParams.get('locale');
-    if (!isServableTipRequest(date, locale, Date.now())) {
+    if (!isServableTipRequest(date, today, locale, Date.now())) {
       return NextResponse.json(
-        { error: 'Missing or out-of-range query parameter: date or locale' },
+        { error: 'Missing or out-of-range query parameter: date, today or locale' },
         { status: 400, headers: NO_STORE }
       );
     }
     try {
       const response = await fetch(
-        `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${park}/parky-tip?date=${date}&locale=${locale}`,
+        `${getApiBaseUrl()}/v1/parks/${continent}/${country}/${city}/${park}/parky-tip?date=${date}&today=${today}&locale=${locale}`,
         {
           cache: 'no-store',
           headers: getServerApiHeaders(),
           signal: AbortSignal.timeout(PARKY_TIP_TIMEOUT_MS),
         }
       );
+      const tags = [parkCalendarCacheTag(continent, country, city, park)];
+      if (response.status === 204) {
+        return new NextResponse(null, {
+          status: 204,
+          headers: mayKeepNoTip(response.headers.get('cache-control'))
+            ? tagPurgedCacheHeaders(PARKY_TIP_NONE_WINDOW, tags)
+            : NO_STORE,
+        });
+      }
       const body: unknown = response.status === 200 ? await response.json() : null;
-      if (response.status !== 204 && !isParkyDayTip(body)) {
+      if (!isParkyDayTip(body)) {
         return new NextResponse(null, { status: 204, headers: NO_STORE });
       }
-      return response.status === 204
-        ? new NextResponse(null, { status: 204, headers: cdnCacheHeaders(PARKY_TIP_CACHE_CONTROL) })
-        : NextResponse.json(body, { headers: cdnCacheHeaders(PARKY_TIP_CACHE_CONTROL) });
+      return NextResponse.json(body, {
+        headers: tagPurgedCacheHeaders(
+          date === today ? PARKY_TIP_TODAY_WINDOW : PARKY_TIP_WINDOW,
+          tags
+        ),
+      });
     } catch (error) {
       console.error('[Parky tip API] Error:', error);
       return new NextResponse(null, { status: 204, headers: NO_STORE });
     }
   }
 
-  // The best-days snapshot for the next 90 days. The backend serves it precomputed, so this proxy
-  // only mirrors it behind a CDN window that collapses concurrent polls.
+  // The best-days snapshot for the next 90 days. The backend serves it precomputed and rings its
+  // tag after every forecast warmup, at the same moment as the calendar's, so „Prognose heute"
+  // and the day dialog under it move together.
   if (path && path.length === 5 && path[4] === 'best-days') {
     const [continent, country, city, park] = path;
 
@@ -288,7 +322,7 @@ export async function GET(
       const data = await getBestDaysSnapshotFresh(continent, country, city, park);
 
       return NextResponse.json(data, {
-        headers: cdnCacheHeaders('public, s-maxage=3600, stale-while-revalidate=86400'),
+        headers: tagPurgedCacheHeaders(FORECAST_WINDOW, [bestDaysCacheTag(park)]),
       });
     } catch (error) {
       console.error('[Best-Days API] Error:', error);

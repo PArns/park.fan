@@ -230,7 +230,7 @@ export function AssistantPanel({
     }
     // A stamp, a tip or an empty state on the page asked about what it shows.
     const asked = takeParkyAsk();
-    if (asked) void send(asked, 'context');
+    if (asked) void send(asked.question, 'context', undefined, undefined, undefined, asked.dayTip);
   }, [open, session.state, phase, send, t]);
 
   /** A receipt's undo goes through Parky's own, which leaves a plan the visitor changed since. */

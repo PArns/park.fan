@@ -572,3 +572,106 @@ write ISR entries nobody reads back, and there is no way to put those alone on `
 `force-dynamic`, drop its `generateStaticParams`, add it to `scripts/test-edge-windows.mjs` (both
 already have a window: the tag archive the `:section(blog|news)` rule, the city the
 `parks/:continent?/:country?/:city?` hub rule) and correct the rule's list of ISR routes.
+
+---
+
+## 2026-11-17 — ACCEPTED: the calendar relays end at Vercel by tag, and Cloudflare keeps them an hour
+
+**Lever:** invocations and bytes of `/api/parks/<geo>/{calendar,best-days,parky-tip}`.
+**Files:** `lib/api/cdn-cache-headers.ts` (`TagPurgedWindow`, `FORECAST_WINDOW`,
+`PARKY_TIP_WINDOW`), `app/api/parks/[...path]/route.ts`, `next.config.ts`,
+`lib/api/integrated-calendar.ts` (`parkCalendarCacheTag`); in the API the forecast ring.
+
+The calendar relay stood a day plus a stale day at both edges with no tag, best-days an hour plus a
+stale day, the tip six hours. After the forecast warmup they moved apart, and a page showed two
+levels for one day. Now Vercel keeps each until the backend rings `park-calendar:<geo>` or
+`best-days:<slug>` (`Vercel-Cache-Tag`, `Vercel-CDN-Cache-Control`, a day and a stale day without a
+ring), and Cloudflare, which no tag reaches, keeps an hour and ten stale minutes.
+
+**Estimated, not measured:** a ring ends on the order of 2,000 to 4,000 entries at Vercel and the
+Data Cache for about 200 parks, twice a day and once more 16 minutes later; only an entry asked
+for again is refilled, one function call and one Redis read at the API each. Against before, the
+calendar relay refills up to two or three times a day instead of once, the best-days relay two or
+three times instead of up to 24. The hour at Cloudflare costs up to 24 hits at Vercel a day per hot
+URL instead of one: about 29,000 edge requests and at most 1 GB uncompressed a day for three hot
+URLs per park in two Cloudflare tiers. The breakdown is in
+[one park-day on several surfaces](../architecture/caching-strategy.md#one-park-day-on-several-surfaces).
+
+**Cost shift:** function calls move from expiry to the ring; Cloudflare hit rate on these three
+routes falls, at no CPU.
+
+**Open:** measure invocations of the three routes before and after in Observability; purge the same
+tags at Cloudflare once the deploy purge is proven (PAR-1125), and the Cloudflare hour can go back
+to a day; a month URL's summary still stands in the page's seven-day HTML.
+
+---
+
+## 2026-11-17 — ACCEPTED: Parky's tip relay keeps „nothing to say" five minutes, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/parky-tip` answered 204.
+**Files:** `lib/api/cdn-cache-headers.ts` (`PARKY_TIP_NONE_WINDOW`, `PARKY_TIP_NONE_SECONDS`),
+`app/api/parks/[...path]/route.ts`, `next.config.ts`, `lib/hooks/use-parky-day-tip.ts`; in the API
+`TIP_NONE_CACHE_CONTROL`.
+
+A 204 took the tip's windows: a day at Vercel until the ring, an hour at Cloudflare and in the
+browser. The 204s left are a spent budget and a failed or refused call, which pass within the day,
+so a dialog stayed empty for hours after a tip could be written again. The dialog asks no closed or
+unrated day, so these are rare.
+
+**Estimated, not measured:** at most one function call and one API read (a Redis `MGET`, no model
+call) per 204 URL, Vercel region and five minutes while it is asked. The tip's `next.config.ts`
+rule carries the same five minutes, since a rule cannot tell a 204 from a 200; that only binds
+under `next start`, where a tip is then asked every five minutes.
+
+**Cost shift:** none on a 200.
+
+**Open:** count the relay's 204s in Observability after a day with a spent budget.
+
+---
+
+## 2026-11-17 — ACCEPTED: Parky's tip for today stands half an hour at Vercel and at Cloudflare, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/parky-tip` for the park's today.
+**Files:** `lib/api/cdn-cache-headers.ts` (`PARKY_TIP_TODAY_WINDOW`),
+`app/api/parks/[...path]/route.ts`, `scripts/test-edge-windows.mjs`; in the API `soFarToday` in
+`parky-tip-prompt.ts`.
+
+The tip for today says how busy the day has been so far, and that level moves during the day
+without a ring. With `PARKY_TIP_WINDOW` a „bisher ruhig" written in the morning stood at Vercel
+until the evening ring, and Cloudflare and the browser refilled from that copy every hour. The
+relay now sends half an hour at Vercel, at Cloudflare and in the browser when `date` is the
+request's `today` (reasoning in [cdn caching](../architecture/cdn-caching.md#routes-the-backend-rings)).
+
+**Estimated, not measured:** at most 48 function calls a day per today URL (park and language) and
+Vercel region while it is asked, each a Redis read at the API; a model call only where the level so
+far moved since, once per park and language. The API keeps that level out of the tips of the days
+around today, which before were written again in six languages with every move of it.
+
+**Cost shift:** none for the other days' tips.
+
+**Open:** count the relay's 200s for `date` equal to `today` in Observability against the other
+days' over a week.
+
+---
+
+## 2026-11-17 — ACCEPTED: a calendar range holding the park's today stands half an hour at Vercel and at Cloudflare, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/calendar` for the current month and the today panel's
+single day.
+**Files:** `lib/api/cdn-cache-headers.ts` (`CALENDAR_TODAY_WINDOW`), `app/api/parks/[...path]/route.ts`,
+`next.config.ts`, `scripts/test-edge-windows.mjs`.
+
+Since the calendar relay is kept at Vercel until the ring, „Heute bisher" in the grid, the day
+dialog and the today panel stood from one ring to the next (15:00 or 20:00 UTC), while the level so
+far moved, and Parky's tip for today, half an hour fresh, was hidden beside it as a mismatch. A
+range that holds a day the API marks `isToday` now gets half an hour at Vercel and at Cloudflare.
+
+**Estimated, not measured:** at most 48 function calls a day per such URL and Vercel region while it
+is asked, each a Redis read at the API (its current month is warm two hours after a warmup and then
+rebuilt by reads every 15 minutes, about 0.6 to 0.8 s cold in production). Two URLs per park are
+affected: the current month and today's single day. Every other month keeps `FORECAST_WINDOW`.
+
+**Cost shift:** none for months that do not hold today. Under `next start` every calendar range
+takes the half hour, since the rule cannot see the days.
+
+**Open:** count the relay's calls for current months in Observability against the week before.

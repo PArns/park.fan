@@ -28,8 +28,9 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`ask.ts`](../../lib/assistant/ask.ts)
 
 - `askParky` _function_: A Parky element on the page (a stamp, a tip, a post's callout, an empty state) asks him about what it shows: the question waits for the chat window, which sends it once its session is ready (`takeParkyAsk`), and the window opens with the …
-- `takeParkyAsk` _function_: The question an element handed over, once: reading it clears it.
+- `takeParkyAsk` _function_: The question an element handed over, with its day tip, once: reading it clears both.
 - `ASK_PATH` _const_: Stands in a question for the page's path, filled in when the visitor asks (`ParkyAskButton`): a server render that cannot know the path, the 404's, passes it as the path's value.
+- Types: `AskDayTip`, `ParkyAsk`
 
 ### [`cards.ts`](../../lib/assistant/cards.ts)
 
@@ -154,8 +155,11 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 
 ### [`parky-tip.ts`](../../lib/assistant/parky-tip.ts)
 
-- `isServableTipRequest` _function_: Whether the relay may ask for a tip on `date` in `locale`: both land in the CDN's cache key, so only a real day from yesterday (a park west of UTC) to the horizon, in one of the site's six languages.
-- `isParkyDayTip` _function_: Whether a relayed body is a tip this site can show.
+- `isServableTipRequest` _function_: Whether the relay may ask for a tip on `date` in `locale`, written for the park's `today`: all three land in the CDN's cache key, so only a real day from yesterday (a park west of UTC) to the horizon, a today within a day of UTC's, and one …
+- `mayKeepNoTip` _function_: Whether the relay may keep the API's 204 for its minutes, read off the API's `Cache-Control`.
+- `tipVerdictFor` _function_: The verdict the API gives a day rated `level`, or null where it writes no tip (`closed`, `unknown`, no level): nothing to ask for, and nothing a tip could contradict.
+- `tipAgreesWithLevel` _function_: Whether a tip may stand above the crowd panel that shows `level` for the same day, and on today `soFar`, the level so far the dialog shows beside it.
+- `isParkyDayTip` _function_: Whether a relayed body is a tip this site can show. A `crowdLevel`, where one is sent, must be a level with that verdict: a tip whose own two fields disagree is not shown.
 - Types: `ParkyTipVerdict`, `ParkyDayTip`
 
 ### [`parky/acts.ts`](../../lib/assistant/parky/acts.ts)
