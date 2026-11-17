@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Parc Astérix tanzen ab dem 19. Dezember Gallier und Wikinger für Kleopatra, als Lichtshow an der Fassade von OzIris. Mit dem Weihnachtsticket für 57 € kommst du an jedem Tag bis 3. Januar hinein.
+  Im Parc Astérix tanzen ab dem 19. Dezember Gallier und Wikinger für Kleopatra, als Lichtshow an der Fassade von OzIris. Das Weihnachtsticket für 57 € gilt an einem Tag deiner Wahl bis zum 3. Januar.
 tags:
   - news
   - parc-asterix
@@ -44,7 +44,7 @@ Im [Parc Astérix](ref:parc-asterix) bei Plailly läuft vom 19. Dezember 2026 bi
 
 ## Kleopatra feiert am Tempel von OzIris
 
-Sobald es dunkel wird, projiziert der Park Bilder auf den ägyptischen Tempel der Achterbahn. Dazu laufen Musik und Lichteffekte, Fontänen schießen hoch, und es knallt Pyrotechnik. In der Show lädt Kleopatra Gallier, Hispanier, Wikinger, Römer und Ägypter zu einem Fest, und jedes Volk tanzt ihr eine Choreografie vor, um sie zu beeindrucken. Die Ägypter erwischt das Fest kalt, und sie bauen ihren Palast in aller Eile zur Bühne um.
+Sobald es dunkel wird, projiziert der Park Bilder auf den ägyptischen Tempel der Achterbahn, mit Musik, Fontänen und Pyrotechnik. In der Show lädt Kleopatra Gallier, Hispanier, Wikinger, Römer und Ägypter zu einem Fest, und jedes Volk tanzt ihr eine Choreografie vor, um sie zu beeindrucken. Die Ägypter erwischt das Fest kalt, und sie bauen ihren Palast in aller Eile zur Bühne um.
 
 Die Show läuft im Bereich Ägypten, der 2026 eröffnet wurde. Du schaust im Stehen und unter freiem Himmel zu, Ende Dezember also besser mit Mütze. Eine Uhrzeit und eine Dauer hat der Park bisher nicht veröffentlicht.
 
@@ -52,15 +52,15 @@ Die Show läuft im Bereich Ägypten, der 2026 eröffnet wurde. Du schaust im Ste
 
 Im Wikingerbereich liegt die [Patinoire Viking](ref:parc-asterix/patinoire-viking), eine überdachte Eisbahn im Freien mit 500 Quadratmetern. Die Schlittschuhe leiht dir der Park umsonst. Auf dem Mont Gaulois ist [La Glissade d'Obélix](ref:parc-asterix/la-glissade-dobelix) zurück, eine Rutsche, die du auf einem Reifen hinunterfährst.
 
-[Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) sind ein Lichterweg durch Le Bois Enchanté, La Vallée Glacée und Le Village du Père Noël. Am Weg stehen Laternen, leuchtende Tiere und Bäume. Unterwegs triffst du mit etwas Glück den Père Noël Gaulois. Auf dem Marché de Noël gibt es in Holzhütten Süßes der Saison und Sachen französischer Handwerker, daneben singen und spielen die Darsteller von Chantons Noël eine halbe Stunde lang. Weihnachtlich geschmückt sind die Forêt d'Idéfix, das Village Gaulois, die Via Antica und das Empire Romain.
+[Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) sind ein Lichterweg mit Laternen und leuchtenden Tieren, der durch Le Bois Enchanté, La Vallée Glacée und Le Village du Père Noël führt. Unterwegs triffst du mit etwas Glück den Père Noël Gaulois. Auf dem Marché de Noël gibt es in Holzhütten Süßes der Saison und Sachen französischer Handwerker, daneben singen und spielen die Darsteller von Chantons Noël eine halbe Stunde lang. Weihnachtsschmuck hängt in vier Bereichen, vom Village Gaulois bis zum Empire Romain.
 
 ## Shows und Umzug
 
-Auf dem Eis spielt „Qui veut la peau du Père Noël ?“, 25 Minuten Akrobatik und Tanz in einer Spielzeugfabrik. „Quel Cirque !“ ist eine Akrobatikshow von 20 Minuten, „C'est du Délire !“ ein Musical ganz im gallischen Stil. Wenn es dunkel wird, zieht der Défilé Gaulois de Noël mit fünf Wagen durch den Park. Das Lied dazu heißt „Le Père Noël rêve de Potion“ und wird von Gwendal Marimoutou gesungen. Dass der Weihnachtsmann von Zaubertrank träumt, versteht in diesem Park jeder. Zum Schluss des Tages geht über dem See L'Île aux Vœux hoch, eine Nachtshow von acht Minuten mit Pyrotechnik.
+Auf dem Eis spielt „Qui veut la peau du Père Noël ?“, 25 Minuten Akrobatik und Tanz in einer Spielzeugfabrik. „Quel Cirque !“ ist eine Akrobatikshow von 20 Minuten, „C'est du Délire !“ ein Musical. Wenn es dunkel wird, zieht der Défilé Gaulois de Noël mit fünf Wagen durch den Park. Das Lied dazu heißt „Le Père Noël rêve de Potion“ und wird von Gwendal Marimoutou gesungen. Dass der Weihnachtsmann von Zaubertrank träumt, versteht in diesem Park jeder. Zum Schluss des Tages geht über dem See L'Île aux Vœux hoch, eine Nachtshow von acht Minuten mit Pyrotechnik.
 
 ## Öffnungszeiten
 
-Geöffnet ist von 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr. Welche Parks sonst im Winter geöffnet haben, zeigt unsere [Übersicht über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
+Geöffnet ist von 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr. Welche Parks sonst im Winter offen haben, steht in unserer [Übersicht über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=parc-asterix
 
@@ -70,9 +70,9 @@ Geöffnet ist von 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr. Welche
 
 Das Billet Noël kostet 57 €, für Erwachsene wie für Kinder. Es hat kein festes Datum, gilt auch am Wochenende und ist bis zum Vortag zu haben. Alle Attraktionen und Shows von Noël Gaulois sind damit bezahlt, Essen und die Abende an Weihnachten und Silvester kosten extra.
 
-Neu ist das Goûter du Père Noël im Buffet de Noël, das dafür zur geheimen Spielzeugfabrik wird. Die Wichtel und Saperlipopette lösen dort ein paar Pannen vor der großen Tour, danach gibt es heiße Schokolade und Süßes, und zum Schluss kommen der Père Noël Gaulois, Astérix, Obélix und das Wildschwein. Es kostet 18,90 € pro Person, auch für Kinder. Wer als Elternteil nur zuschaut, zahlt trotzdem den vollen Kakao. Es gibt zwei Termine, von 16:30 bis 17:30 Uhr und von 17:30 bis 18:30 Uhr. Buchen kannst du vorab, am selben Tag in der App oder vor Ort. Mittags isst du im Buffet de Noël im Bereich Ägypten Gerichte mit Produkten der Saison, für 37,90 € als Erwachsener und 12,90 € als Kind.
+Zum ersten Mal gibt es nachmittags das Goûter du Père Noël, und das Buffet de Noël wird dafür zur geheimen Spielzeugfabrik. Die Wichtel und Saperlipopette lösen dort ein paar Pannen vor der großen Tour, danach gibt es heiße Schokolade und Süßes, und zum Schluss kommen der Père Noël Gaulois, Astérix, Obélix und das Wildschwein. Es kostet 18,90 € pro Person, auch für Kinder. Wer als Elternteil nur zuschaut, zahlt trotzdem den vollen Kakao. Es gibt zwei Termine, von 16:30 bis 17:30 Uhr und von 17:30 bis 18:30 Uhr. Buchen kannst du vorab, am selben Tag in der App oder vor Ort. Mittags isst du im Buffet de Noël im Bereich Ägypten Gerichte mit Produkten der Saison, für 37,90 € als Erwachsener und 12,90 € als Kind.
 
-Auch die Comptoirs d'Épidemaïs sind dieses Jahr neu geschmückt und bieten an Silvester ein Festbuffet. Im Buffet de Noël läuft am 31. Dezember von 20 bis 2 Uhr ein Galaabend, erst Dinner-Show, dann Tanz, für 179 € und 69 € für Kinder. Die drei Hotels bieten an Heiligabend und Silvester Abendbuffets für 110 € und 49 € für Kinder, gefeiert wird dort bis 2 Uhr morgens.
+An Silvester gibt es in den Comptoirs d'Épidemaïs, die ebenfalls Weihnachtsschmuck tragen, ein Festbuffet. Im Buffet de Noël läuft am 31. Dezember von 20 bis 2 Uhr ein Galaabend, erst Dinner-Show, dann Tanz, für 179 € und 69 € für Kinder. Die drei Hotels bieten an Heiligabend und Silvester Abendbuffets für 110 € und 49 € für Kinder, gefeiert wird dort bis 2 Uhr morgens.
 
 ## Welche Bahnen fahren
 
@@ -80,7 +80,7 @@ Die Achterbahnen fahren nach Angaben des Parks in der Regel, bei schlechtem Wett
 
 ## Hotels mit frühem Einlass
 
-Die drei Hotels des Parks liegen im Wald und sind zu Fuß erreichbar: Les Quais de Lutèce mit vier Sternen und 150 Zimmern, La Cité Suspendue mit drei Sternen und ebenfalls 150 Zimmern und Les Trois Hiboux mit drei Sternen. Wer dort schläft, kommt jeden Morgen eine halbe Stunde vor der Öffnung zu einigen Attraktionen und trifft Figuren aus den Comics. Bei Noël Gaulois heißt das halb elf. Für einen frühen Einlass ist das eine gnädige Uhrzeit.
+Wer in einem der drei Hotels des Parks schläft, kommt jeden Morgen eine halbe Stunde vor der Öffnung zu einigen Attraktionen und trifft Figuren aus den Comics. Bei Noël Gaulois heißt das halb elf, für einen frühen Einlass eine gnädige Uhrzeit. Die Hotels liegen im Wald und sind zu Fuß erreichbar: Les Quais de Lutèce mit vier Sternen und 150 Zimmern, La Cité Suspendue mit drei Sternen und ebenfalls 150 Zimmern und Les Trois Hiboux mit drei Sternen.
 
 ## Anreise
 

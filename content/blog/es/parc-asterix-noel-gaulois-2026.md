@@ -44,7 +44,7 @@ El [Parc Astérix](ref:parc-asterix), en Plailly, abre su temporada de invierno,
 
 ## Una fiesta de Cleopatra en el templo de OzIris
 
-En cuanto oscurece, el parque proyecta imágenes sobre el templo egipcio de la montaña rusa, con música, efectos de luz, chorros de agua y pirotecnia. En la historia, Cleopatra invita a una fiesta a galos, hispanos, vikingos, romanos y egipcios, y cada pueblo le baila una coreografía para impresionarla. A los egipcios la fiesta los pilla desprevenidos, y convierten su palacio en escenario a toda prisa.
+En cuanto oscurece, el parque proyecta imágenes sobre el templo egipcio de la montaña rusa, con música, chorros de agua y pirotecnia. En la historia, Cleopatra invita a una fiesta a galos, hispanos, vikingos, romanos y egipcios, y cada pueblo le baila una coreografía para impresionarla. A los egipcios la fiesta los pilla desprevenidos, y convierten su palacio en escenario a toda prisa.
 
 El espectáculo está en la zona de Egipto, que abrió en 2026. No hay asientos: lo ves de pie y al aire libre, así que a finales de diciembre conviene llevar gorro. El parque aún no ha publicado la hora ni la duración.
 
@@ -52,11 +52,11 @@ El espectáculo está en la zona de Egipto, que abrió en 2026. No hay asientos:
 
 En la zona vikinga está la [Patinoire Viking](ref:parc-asterix/patinoire-viking), una pista de hielo de 500 metros cuadrados al aire libre, pero con techo. Los patines te los presta el parque gratis. En el Mont Gaulois vuelve [La Glissade d'Obélix](ref:parc-asterix/la-glissade-dobelix), un tobogán por el que bajas sentado en un flotador.
 
-[Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) es un paseo de luces por tres mundos, Le Bois Enchanté, La Vallée Glacée y Le Village du Père Noël, con farolillos, animales y árboles iluminados. Si tienes suerte, por el camino te cruzas con el Père Noël Gaulois. En el Marché de Noël, las casetas de madera venden dulces de temporada y productos de artesanos franceses, y al lado los artistas de Chantons Noël cantan y actúan durante media hora. La Forêt d'Idéfix, el Village Gaulois, la Via Antica y el Empire Romain también se visten de Navidad.
+[Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) es un paseo de luces con farolillos y animales iluminados que recorre Le Bois Enchanté, La Vallée Glacée y Le Village du Père Noël. Si tienes suerte, por el camino te cruzas con el Père Noël Gaulois. En el Marché de Noël, las casetas de madera venden dulces de temporada y productos de artesanos franceses, y al lado los artistas de Chantons Noël cantan y actúan durante media hora. La decoración navideña llega a cuatro zonas, del Village Gaulois al Empire Romain.
 
 ## Espectáculos y desfile
 
-Sobre el hielo se representa «Qui veut la peau du Père Noël ?», 25 minutos de acrobacias y baile en una fábrica de juguetes. «Quel Cirque !» es un espectáculo acrobático de 20 minutos y «C'est du Délire !», un musical de estilo muy galo. Al caer la noche, el Défilé Gaulois de Noël recorre el parque con cinco carrozas. Su canción se titula «Le Père Noël rêve de Potion» y la canta Gwendal Marimoutou. En este parque, ni Papá Noel se libra de soñar con la poción mágica. Para cerrar el día, sobre el lago se enciende L'Île aux Vœux, un espectáculo nocturno de ocho minutos con pirotecnia.
+Sobre el hielo se representa «Qui veut la peau du Père Noël ?», 25 minutos de acrobacias y baile en una fábrica de juguetes. «Quel Cirque !» es un espectáculo acrobático de 20 minutos y «C'est du Délire !», un musical. Al caer la noche, el Défilé Gaulois de Noël recorre el parque con cinco carrozas. Su canción se titula «Le Père Noël rêve de Potion» y la canta Gwendal Marimoutou. En este parque, ni Papá Noel se libra de soñar con la poción mágica. Para cerrar el día, sobre el lago se enciende L'Île aux Vœux, un espectáculo nocturno de ocho minutos con pirotecnia.
 
 ## Horarios
 
@@ -70,9 +70,9 @@ El parque abre de 11:00 a 20:00, y en Nochebuena y Nochevieja hasta las 19:00. Q
 
 El Billet Noël cuesta 57 €, el mismo precio para adultos y niños. No va ligado a una fecha, vale también en fin de semana y se puede comprar hasta el día anterior. Incluye todas las atracciones y espectáculos de Noël Gaulois. La comida y las cenas de Nochebuena y Nochevieja se pagan aparte.
 
-También es nuevo el Goûter du Père Noël, en el Buffet de Noël, que para la ocasión se convierte en la fábrica secreta de juguetes. Los duendes y Saperlipopette arreglan allí unos cuantos desastres antes del gran reparto, luego hay chocolate caliente y dulces, y al final llegan el Père Noël Gaulois, Astérix, Obélix y el jabalí. Cuesta 18,90 € por persona, niños incluidos, así que el padre que solo mira paga la taza entera. Hay dos turnos, de 16:30 a 17:30 y de 17:30 a 18:30. Puedes reservar con antelación, el mismo día en la app o en el propio parque. Para comer, el Buffet de Noël, en Egipto, sirve un bufé con productos de temporada por 37,90 € los adultos y 12,90 € los niños.
+Por primera vez se celebra por la tarde el Goûter du Père Noël, y el Buffet de Noël se convierte para la ocasión en la fábrica secreta de juguetes. Los duendes y Saperlipopette arreglan allí unos cuantos desastres antes del gran reparto, luego hay chocolate caliente y dulces, y al final llegan el Père Noël Gaulois, Astérix, Obélix y el jabalí. Cuesta 18,90 € por persona, niños incluidos, así que el padre que solo mira paga la taza entera. Hay dos turnos, de 16:30 a 17:30 y de 17:30 a 18:30. Puedes reservar con antelación, el mismo día en la app o en el propio parque. Para comer, el Buffet de Noël, en Egipto, sirve un bufé con productos de temporada por 37,90 € los adultos y 12,90 € los niños.
 
-Los Comptoirs d'Épidemaïs también estrenan decoración navideña, y en Nochevieja ofrecen un bufé de fiesta. En el Buffet de Noël, el 31 de diciembre hay una gala de 20:00 a 2:00, primero cena con espectáculo y después baile, por 179 € y 69 € los niños. Los tres hoteles organizan cenas de bufé en Nochebuena y Nochevieja por 110 € y 49 € los niños, con fiesta hasta las dos de la madrugada.
+En Nochevieja, los Comptoirs d'Épidemaïs, que también lucen decoración navideña, ofrecen un bufé de fiesta. En el Buffet de Noël, el 31 de diciembre hay una gala de 20:00 a 2:00, primero cena con espectáculo y después baile, por 179 € y 69 € los niños. Los tres hoteles organizan cenas de bufé en Nochebuena y Nochevieja por 110 € y 49 € los niños, con fiesta hasta las dos de la madrugada.
 
 ## Qué atracciones funcionan
 
@@ -80,7 +80,7 @@ Según el parque, las montañas rusas suelen funcionar, pero no cuando hace mal 
 
 ## Hoteles con entrada anticipada
 
-Los tres hoteles del parque están en el bosque y se llega a pie: Les Quais de Lutèce, de cuatro estrellas y 150 habitaciones; La Cité Suspendue, de tres estrellas y también 150 habitaciones, y Les Trois Hiboux, de tres estrellas. Si duermes allí, cada mañana entras media hora antes de la apertura en algunas atracciones y te encuentras con personajes de los cómics. En Noël Gaulois eso son las 10:30, una hora a la que no hace falta poner el despertador de madrugada.
+Si duermes en uno de los tres hoteles del parque, cada mañana entras media hora antes de la apertura en algunas atracciones y te encuentras con personajes de los cómics. En Noël Gaulois eso son las 10:30, una hora a la que no hace falta poner el despertador de madrugada. Los hoteles están en el bosque y se llega a pie: Les Quais de Lutèce, de cuatro estrellas y 150 habitaciones; La Cité Suspendue, de tres estrellas y también 150 habitaciones, y Les Trois Hiboux, de tres estrellas.
 
 ## Cómo llegar
 
