@@ -104,13 +104,13 @@ sends `best-days:<slug>` and `park-calendar:<geo>` (`parkCalendarCacheTag`,
 `lib/api/integrated-calendar.ts`) for each rebuilt park in one call with `"expire": 0`, and again 16
 minutes later. How far behind the ring a reader can still be:
 
-| Surface                                               | Reads                                                                         | Behind the ring, at most                                                                   |
-| ----------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Calendar grid, day dialog (also from the today panel) | `/api/parks/<geo>/calendar` (`useCalendarData`)                               | 70 min at Cloudflare (`FORECAST_WINDOW`), an hour more in a tab open across the ring       |
-| „Prognose heute", best-days section, weekday hover    | `/api/parks/<geo>/best-days` (`useParkBestDaysCalendar`)                      | the same 70 min, 30 min more in an open tab                                                |
-| Best-days and the crowd FAQ in the first HTML         | `getBestDaysCalendarSeed`, Data Cache                                         | the page's edge window: 2 h on a park page and the calendar hub, 7 days 1 h on a month URL |
-| Month summary                                         | `getCalendarMonthSeed`, Data Cache                                            | the page's edge window, as above                                                           |
-| Parky's day tip                                       | `/api/parks/<geo>/parky-tip` (`PARKY_TIP_WINDOW`), keyed by the days it reads | 70 min at Cloudflare, an hour in the browser; „nothing to say" five minutes                |
+| Surface                                               | Reads                                                                         | Behind the ring, at most                                                                         |
+| ----------------------------------------------------- | ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| Calendar grid, day dialog (also from the today panel) | `/api/parks/<geo>/calendar` (`useCalendarData`)                               | 70 min at Cloudflare (`FORECAST_WINDOW`), an hour more in a tab open across the ring             |
+| „Prognose heute", best-days section, weekday hover    | `/api/parks/<geo>/best-days` (`useParkBestDaysCalendar`)                      | the same 70 min, 30 min more in an open tab                                                      |
+| Best-days and the crowd FAQ in the first HTML         | `getBestDaysCalendarSeed`, Data Cache                                         | the page's edge window: 2 h on a park page and the calendar hub, 7 days 1 h on a month URL       |
+| Month summary                                         | `getCalendarMonthSeed`, Data Cache                                            | the page's edge window, as above                                                                 |
+| Parky's day tip                                       | `/api/parks/<geo>/parky-tip` (`PARKY_TIP_WINDOW`), keyed by the days it reads | 70 min at Cloudflare, an hour in the browser; today's tip an hour; „nothing to say" five minutes |
 
 What can still differ, and for how long:
 
@@ -128,7 +128,10 @@ What can still differ, and for how long:
 - **The day dialog's „bisher" on today.** `todayCrowdLevel` is the day so far when the copy was
   made, and nothing rings during the day, so it trails the live level by the copy's age: up to the
   next ring at Vercel. The live „Andrang jetzt" in the today panel is the live poll's and is never
-  compared with it ([crowd levels](../api/backend-integration.md#crowd-levels)).
+  compared with it ([crowd levels](../api/backend-integration.md#crowd-levels)). Parky's tip for
+  today reads the same level, but only the tip for today itself, and its relay keeps it an hour at
+  most (`PARKY_TIP_TODAY_WINDOW`), so later in the day the tip can say a busier or quieter morning
+  than the „bisher" beside it, which trails by more. The tip guard compares the forecast level only.
 - **The trip planner and the region hubs, by up to about three hours.** `/api/trip-regions/…` reads
   through the Data Cache under `trip-region:<region>`, which the forecast warmup does not ring,
   for `CACHE_TTL.tripRegionData` (1 h) on top of the API's own hour (`trip-regions:calendar:v2`,

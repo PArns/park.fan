@@ -965,10 +965,11 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=300, stale-while-revalidate=300'),
       },
       {
-        // Parky's day tip: its handler sends `PARKY_TIP_WINDOW` with a tip and the minutes of
-        // `PARKY_TIP_NONE_WINDOW` with a 204, and a rule cannot tell the two apart. It carries the
-        // shorter, so where the rule wins (`next start`) a tip is asked again sooner and a 204 is
-        // never kept for the tip's day; on Vercel the handler's own window stands.
+        // Parky's day tip: its handler sends `PARKY_TIP_WINDOW` with a tip, `PARKY_TIP_TODAY_WINDOW`
+        // with today's and the minutes of `PARKY_TIP_NONE_WINDOW` with a 204, and a rule can tell
+        // none of them apart. It carries the shortest, so where the rule wins (`next start`) a tip
+        // is asked again sooner and a 204 is never kept for the tip's day; on Vercel the handler's
+        // own window stands.
         source: '/api/parks/:continent/:country/:city/:park/parky-tip',
         headers: tagPurgedCacheRule(PARKY_TIP_NONE_WINDOW),
       },

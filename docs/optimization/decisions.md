@@ -626,3 +626,28 @@ under `next start`, where a tip is then asked every five minutes.
 **Cost shift:** none on a 200.
 
 **Open:** count the relay's 204s in Observability after a day with a spent budget.
+
+---
+
+## 2026-11-17 — ACCEPTED: Parky's tip for today stands half an hour at Vercel and at Cloudflare, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/parky-tip` for the park's today.
+**Files:** `lib/api/cdn-cache-headers.ts` (`PARKY_TIP_TODAY_WINDOW`),
+`app/api/parks/[...path]/route.ts`, `scripts/test-edge-windows.mjs`; in the API `soFarToday` in
+`parky-tip-prompt.ts`.
+
+The tip for today says how busy the day has been so far, and that level moves during the day
+without a ring. With `PARKY_TIP_WINDOW` a „bisher ruhig" written in the morning stood at Vercel
+until the evening ring, and Cloudflare and the browser refilled from that copy every hour. The
+relay now sends half an hour at Vercel, at Cloudflare and in the browser when `date` is the
+request's `today` (reasoning in [cdn caching](../architecture/cdn-caching.md#routes-the-backend-rings)).
+
+**Estimated, not measured:** at most 48 function calls a day per today URL (park and language) and
+Vercel region while it is asked, each a Redis read at the API; a model call only where the level so
+far moved since, once per park and language. The API keeps that level out of the tips of the days
+around today, which before were written again in six languages with every move of it.
+
+**Cost shift:** none for the other days' tips.
+
+**Open:** count the relay's 200s for `date` equal to `today` in Observability against the other
+days' over a week.
