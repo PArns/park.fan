@@ -56,7 +56,7 @@ Im Wikingerbereich liegt die [Patinoire Viking](ref:parc-asterix/patinoire-vikin
 
 ## Shows und Umzug
 
-Auf dem Eis spielt „Qui veut la peau du Père Noël ?“, 25 Minuten Akrobatik und Tanz in einer Spielzeugfabrik. „Quel Cirque !“ ist eine Akrobatikshow von 20 Minuten, „C'est du Délire !“ ein Musical. Wenn es dunkel wird, zieht der Défilé Gaulois de Noël mit fünf Wagen durch den Park. Dazu singt Gwendal Marimoutou „Le Père Noël rêve de Potion“, und warum der Weihnachtsmann von Zaubertrank träumt, muss hier niemandem erklärt werden. Zum Schluss des Tages geht über dem See L'Île aux Vœux hoch, eine Nachtshow von acht Minuten mit Pyrotechnik.
+Auf dem Eis spielt „Qui veut la peau du Père Noël ?“, 25 Minuten Akrobatik und Tanz in einer Spielzeugfabrik, und „Quel Cirque !“ ist eine Akrobatikshow von 20 Minuten. „C'est du Délire !“ ist ein Musical. Wenn es dunkel wird, zieht der Défilé Gaulois de Noël mit fünf Wagen durch den Park. Dazu singt Gwendal Marimoutou „Le Père Noël rêve de Potion“, und warum der Weihnachtsmann von Zaubertrank träumt, muss hier niemandem erklärt werden. Zum Schluss des Tages geht über dem See L'Île aux Vœux hoch, eine Nachtshow von acht Minuten mit Pyrotechnik.
 
 ## Öffnungszeiten
 
@@ -76,7 +76,7 @@ An Silvester tischen die Comptoirs d'Épidemaïs ein Festbuffet auf. Im Buffet d
 
 ## Welche Bahnen fahren
 
-Die Achterbahnen fahren nach Angaben des Parks in der Regel, bei schlechtem Wetter aber nicht, und bei Frost kann es auch andere Attraktionen treffen. Geschlossen bleiben [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d'Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) und [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Der [Petit Train](ref:parc-asterix/le-petit-train?bare) und [Enigmatix](ref:parc-asterix/enigmatix?bare) teilen sich den Tag: der Zug fährt von 11 bis 15:30 Uhr, Enigmatix von 15:30 Uhr bis Parkschluss.
+Die Achterbahnen fahren nach Angaben des Parks in der Regel, bei schlechtem Wetter aber nicht. Frost kann auch andere treffen. Geschlossen bleiben [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d'Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) und [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Der [Petit Train](ref:parc-asterix/le-petit-train?bare) und [Enigmatix](ref:parc-asterix/enigmatix?bare) teilen sich den Tag: der Zug fährt von 11 bis 15:30 Uhr, Enigmatix von 15:30 Uhr bis Parkschluss.
 
 ## Hotels mit frühem Einlass
 

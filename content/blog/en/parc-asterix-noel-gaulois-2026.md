@@ -76,7 +76,7 @@ On New Year's Eve the Comptoirs d'Épidemaïs put on a festive buffet. On 31 Dec
 
 ## Which rides are running
 
-According to the park, the coasters usually run, though not in bad weather, and a frost can shut other attractions too. [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d'Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) and [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare) stay closed. The [Petit Train](ref:parc-asterix/le-petit-train?bare) and [Enigmatix](ref:parc-asterix/enigmatix?bare) split the day between them: the train runs from 11 a.m. to 3:30 p.m., Enigmatix from 3:30 p.m. until the park closes.
+According to the park, the coasters usually run, except in bad weather, and a frost can shut other attractions too. [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d'Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) and [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare) stay closed. The [Petit Train](ref:parc-asterix/le-petit-train?bare) and [Enigmatix](ref:parc-asterix/enigmatix?bare) split the day between them: the train runs from 11 a.m. to 3:30 p.m., Enigmatix from 3:30 p.m. until the park closes.
 
 ## Hotels with early entry
 
