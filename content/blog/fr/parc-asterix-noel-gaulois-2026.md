@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Noël Gaulois 2026 au Parc Astérix : horaires et spectacle'
   description: >-
-    Parc Astérix à Noël : Noël Gaulois du 19/12/2026 au 3/1/2027, de 11 h à 20 h. Nouveau : Les Merveilles de Cléopâtre. Billet Noël 57 €.
+    Parc Astérix à Noël : Noël Gaulois du 19/12/2026 au 3/1/2027, en général de 11 h à 20 h. Nouveau : Les Merveilles de Cléopâtre. Billet Noël 57 €.
   keywords:
     - parc astérix noël
     - Parc Astérix Noël 2026
@@ -45,9 +45,9 @@ Le [Parc Astérix](ref:parc-asterix), à Plailly, ouvre pour Noël Gaulois du 19
 
 ## Cléopâtre fait la fête devant OzIris
 
-À la nuit tombée, le temple égyptien des montagnes russes devient un écran. Les projections s’accompagnent de musique et de jeux de lumière, les fontaines jaillissent et la pyrotechnie éclate. Dans l’histoire, Cléopâtre invite Gaulois, Hispaniques, Vikings, Romains et Égyptiens à une fête, et chaque peuple lui présente une chorégraphie pour l’impressionner. Les Égyptiens, qui reçoivent pourtant, sont pris de court et changent leur palais en scène à toute vitesse.
+À la nuit tombée, le temple égyptien des montagnes russes devient un écran. Les projections s’accompagnent de musique et de jeux de lumière, les fontaines jaillissent et la pyrotechnie éclate. Dans l’histoire, Cléopâtre invite Gaulois, Hispaniques, Vikings, Romains et Égyptiens à une fête, et chaque peuple lui présente une chorégraphie pour l’impressionner. Les Égyptiens, pris de court, changent leur palais en scène à toute vitesse.
 
-Le spectacle se joue dans l’Égypte, la zone que le parc a refaite pour 2026. Il n’y a pas de places assises : on regarde debout et en plein air, et fin décembre, le bonnet fait partie du billet, ou presque. Le parc n’a encore publié ni l’horaire ni la durée.
+Le spectacle se joue dans l’Égypte, la zone ouverte en 2026. Il n’y a pas de places assises : on regarde debout et en plein air, et fin décembre, le bonnet fait partie du billet, ou presque. Le parc n’a encore publié ni l’horaire ni la durée.
 
 ## Patinoire, bouée et parcours lumineux
 
@@ -57,7 +57,7 @@ Dans la zone viking, la [Patinoire Viking](ref:parc-asterix/patinoire-viking) es
 
 ## Spectacles et défilé
 
-Sur la glace, « Qui veut la peau du Père Noël ? » mêle acrobaties et danse pendant 25 minutes, dans une usine de jouets. « Quel Cirque ! » est un spectacle d’acrobatie de 20 minutes, « C’est du Délire ! » une comédie musicale qui joue la carte du rire. À la tombée du jour, le Défilé Gaulois de Noël traverse le parc avec cinq chars. Sa chanson, « Le Père Noël rêve de Potion », est interprétée par Gwendal Marimoutou, et à Plailly, personne ne demande de quelle potion il s’agit. Pour finir la journée, L’Île aux Vœux s’élève au-dessus du lac : huit minutes de spectacle nocturne avec pyrotechnie.
+Sur la glace, « Qui veut la peau du Père Noël ? » mêle acrobaties et danse pendant 25 minutes, dans une usine de jouets. « Quel Cirque ! » est un spectacle d’acrobatie de 20 minutes, « C’est du Délire ! » une comédie musicale résolument gauloise. À la tombée du jour, le Défilé Gaulois de Noël traverse le parc avec cinq chars. Sa chanson, « Le Père Noël rêve de Potion », est interprétée par Gwendal Marimoutou, et à Plailly, personne ne demande de quelle potion il s’agit. Pour finir la journée, L’Île aux Vœux s’élève au-dessus du lac : huit minutes de spectacle nocturne avec pyrotechnie.
 
 ## Horaires
 

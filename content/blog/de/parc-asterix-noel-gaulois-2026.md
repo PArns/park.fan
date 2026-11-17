@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Parc Astérix an Weihnachten 2026: Öffnungszeiten, neue Show'
   description: >-
-    Noël Gaulois im Parc Astérix vom 19.12.2026 bis 3.1.2027, täglich 11 bis 20 Uhr. Neu: die Abendshow Les Merveilles de Cléopâtre. Ticket 57 €.
+    Noël Gaulois im Parc Astérix vom 19.12.2026 bis 3.1.2027, meist 11 bis 20 Uhr. Neu: die Abendshow Les Merveilles de Cléopâtre. Ticket 57 €.
   keywords:
     - Parc Astérix Weihnachten
     - Parc Astérix Weihnachten 2026
@@ -44,9 +44,9 @@ Im [Parc Astérix](ref:parc-asterix) bei Plailly läuft vom 19. Dezember 2026 bi
 
 ## Kleopatra feiert am Tempel von OzIris
 
-Sobald es dunkel wird, projiziert der Park Bilder auf den ägyptischen Tempel der Achterbahn. Dazu laufen Musik und Lichteffekte, Fontänen schießen hoch, und es knallt Pyrotechnik. In der Show lädt Kleopatra Gallier, Hispanier, Wikinger, Römer und Ägypter zu einem Fest, und jedes Volk tanzt ihr eine Choreografie vor, um sie zu beeindrucken. Die Ägypter, eigentlich die Gastgeber, erwischt das Fest kalt, und sie bauen ihren Palast in aller Eile zur Bühne um.
+Sobald es dunkel wird, projiziert der Park Bilder auf den ägyptischen Tempel der Achterbahn. Dazu laufen Musik und Lichteffekte, Fontänen schießen hoch, und es knallt Pyrotechnik. In der Show lädt Kleopatra Gallier, Hispanier, Wikinger, Römer und Ägypter zu einem Fest, und jedes Volk tanzt ihr eine Choreografie vor, um sie zu beeindrucken. Die Ägypter erwischt das Fest kalt, und sie bauen ihren Palast in aller Eile zur Bühne um.
 
-Die Show steht im Bereich Ägypten, den der Park für 2026 neu gestaltet hat. Sitzplätze gibt es keine. Du schaust im Stehen und unter freiem Himmel zu, Ende Dezember also besser mit Mütze. Eine Uhrzeit und eine Dauer hat der Park bisher nicht veröffentlicht.
+Die Show steht im Bereich Ägypten, der 2026 eröffnet wurde. Sitzplätze gibt es keine. Du schaust im Stehen und unter freiem Himmel zu, Ende Dezember also besser mit Mütze. Eine Uhrzeit und eine Dauer hat der Park bisher nicht veröffentlicht.
 
 ## Eisbahn, Reifenrutsche und Lichterweg
 
@@ -56,7 +56,7 @@ Im Wikingerbereich liegt die [Patinoire Viking](ref:parc-asterix/patinoire-vikin
 
 ## Shows und Umzug
 
-Auf dem Eis spielt „Qui veut la peau du Père Noël ?“, 25 Minuten Akrobatik und Tanz in einer Spielzeugfabrik. „Quel Cirque !“ ist eine Akrobatikshow von 20 Minuten, „C'est du Délire !“ ein Musical mit Komik. Wenn es dunkel wird, zieht der Défilé Gaulois de Noël mit fünf Wagen durch den Park. Das Lied dazu heißt „Le Père Noël rêve de Potion“, gesungen von Gwendal Marimoutou, und dass der Weihnachtsmann von Zaubertrank träumt, versteht in diesem Park jeder. Zum Schluss des Tages geht über dem See L'Île aux Vœux hoch, eine Nachtshow von acht Minuten mit Pyrotechnik.
+Auf dem Eis spielt „Qui veut la peau du Père Noël ?“, 25 Minuten Akrobatik und Tanz in einer Spielzeugfabrik. „Quel Cirque !“ ist eine Akrobatikshow von 20 Minuten, „C'est du Délire !“ ein Musical ganz im gallischen Stil. Wenn es dunkel wird, zieht der Défilé Gaulois de Noël mit fünf Wagen durch den Park. Das Lied dazu heißt „Le Père Noël rêve de Potion“, gesungen von Gwendal Marimoutou, und dass der Weihnachtsmann von Zaubertrank träumt, versteht in diesem Park jeder. Zum Schluss des Tages geht über dem See L'Île aux Vœux hoch, eine Nachtshow von acht Minuten mit Pyrotechnik.
 
 ## Öffnungszeiten
 
@@ -70,7 +70,7 @@ Geöffnet ist von 11 bis 20 Uhr, an Heiligabend und Silvester bis 19 Uhr. Ab dem
 
 Das Billet Noël kostet 57 €, ein Einheitspreis ohne Kinderrabatt. Es hat kein festes Datum, gilt auch am Wochenende und ist bis zum Vortag zu haben. Alle Attraktionen und Shows von Noël Gaulois sind damit bezahlt, Essen und die Abende an Weihnachten und Silvester kosten extra.
 
-Neu ist das Goûter du Père Noël im Buffet de Noël, das dafür zur geheimen Spielzeugfabrik wird. Die Wichtel und Saperlipopette lösen dort ein paar Pannen vor der großen Tour, danach gibt es heiße Schokolade und Süßes, und zum Schluss kommen der Père Noël Gaulois, Astérix, Obélix und das Wildschwein. Es kostet 18,90 € pro Person, auch für Kinder. Der Park rechnet also damit, dass Eltern genauso viel Kakao trinken. Es gibt zwei Termine, von 16:30 bis 17:30 Uhr und von 17:30 bis 18:30 Uhr. Buchen kannst du vorab, am selben Tag in der App oder vor Ort. Mittags isst du im Buffet de Noël in Ägypten vom Buffet mit Produkten der Saison, für 37,90 € als Erwachsener und 12,90 € als Kind.
+Neu ist das Goûter du Père Noël im Buffet de Noël, das dafür zur geheimen Spielzeugfabrik wird. Die Wichtel und Saperlipopette lösen dort ein paar Pannen vor der großen Tour, danach gibt es heiße Schokolade und Süßes, und zum Schluss kommen der Père Noël Gaulois, Astérix, Obélix und das Wildschwein. Es kostet 18,90 € pro Person, auch für Kinder. Wer als Elternteil nur zuschaut, zahlt trotzdem den vollen Kakao. Es gibt zwei Termine, von 16:30 bis 17:30 Uhr und von 17:30 bis 18:30 Uhr. Buchen kannst du vorab, am selben Tag in der App oder vor Ort. Mittags isst du im Buffet de Noël in Ägypten vom Buffet mit Produkten der Saison, für 37,90 € als Erwachsener und 12,90 € als Kind.
 
 Neu im Weihnachtsschmuck sind auch die Comptoirs d'Épidemaïs, an Silvester mit einem Festbuffet. Im Buffet de Noël läuft am 31. Dezember von 20 bis 2 Uhr ein Galaabend, erst Dinner-Show, dann Tanz, für 179 € und 69 € für Kinder. Die drei Hotels bieten an Heiligabend und Silvester Abendbuffets für 110 € und 49 € für Kinder, gefeiert wird dort bis 2 Uhr morgens.
 
