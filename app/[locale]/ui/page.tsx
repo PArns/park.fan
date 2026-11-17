@@ -2615,6 +2615,7 @@ export default async function UiStyleGuidePage({ params }: UiPageProps) {
                     today={new Date().toISOString().slice(0, 10)}
                     dateLabel="heute"
                     crowdLevel={null}
+                    soFarLevel={null}
                     open
                   />
                 </div>

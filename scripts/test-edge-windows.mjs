@@ -25,6 +25,7 @@ import {
   FORECAST_WINDOW,
   NO_STORE,
   PARKY_TIP_NONE_WINDOW,
+  PARKY_TIP_TODAY_WINDOW,
   PARKY_TIP_WINDOW,
   tagPurgedCacheHeaders,
 } from '../lib/api/cdn-cache-headers.ts';
@@ -155,18 +156,24 @@ for (const region of LIVE_TRIP_REGIONS) {
 
 // The relays the backend rings by tag: under `next start` the rule decides, on Vercel the handler,
 // so the rule must send exactly the handler's windows, and Cloudflare must get the short one. The
-// tip's handler sends one window with a tip and another with a 204, which a path rule cannot tell
-// apart: its rule carries the 204's minutes, the shorter of the two.
+// tip's handler sends one window with a tip, another with today's and a third with a 204, which a
+// path rule cannot tell apart: its rule carries the 204's minutes, the shortest of the three, and
+// must never outlast any of them.
 const TAG = 'park-calendar:europe/germany/rust/europa-park';
 const RUNG_KEYS = ['Cache-Control', 'CDN-Cache-Control', 'Vercel-CDN-Cache-Control'];
 const RUNG_ROUTES = {
-  calendar: { window: FORECAST_WINDOW, rule: FORECAST_WINDOW },
-  'best-days': { window: FORECAST_WINDOW, rule: FORECAST_WINDOW },
-  'parky-tip': { window: PARKY_TIP_WINDOW, rule: PARKY_TIP_NONE_WINDOW },
+  calendar: { window: FORECAST_WINDOW, rule: FORECAST_WINDOW, sent: [FORECAST_WINDOW] },
+  'best-days': { window: FORECAST_WINDOW, rule: FORECAST_WINDOW, sent: [FORECAST_WINDOW] },
+  'parky-tip': {
+    window: PARKY_TIP_WINDOW,
+    rule: PARKY_TIP_NONE_WINDOW,
+    sent: [PARKY_TIP_WINDOW, PARKY_TIP_TODAY_WINDOW, PARKY_TIP_NONE_WINDOW],
+  },
 };
+const DIRECTIVES = ['max-age', 's-maxage', 'stale-while-revalidate'];
 const seconds = (value, directive) =>
   Number(new RegExp(`\\b${directive}=(\\d+)`).exec(value)?.[1] ?? 0);
-for (const [route, { window, rule }] of Object.entries(RUNG_ROUTES)) {
+for (const [route, { window, rule, sent }] of Object.entries(RUNG_ROUTES)) {
   const path = `/api/${PARK}/${route}`;
   const handler = tagPurgedCacheHeaders(window, [TAG]);
   const ruled = tagPurgedCacheHeaders(rule, [TAG]);
@@ -177,11 +184,14 @@ for (const [route, { window, rule }] of Object.entries(RUNG_ROUTES)) {
       ruled[key],
       `${path}: ${key} is "${value}", the handler sends "${ruled[key]}"`
     );
-    for (const directive of ['max-age', 's-maxage', 'stale-while-revalidate']) {
-      assert.ok(
-        seconds(value, directive) <= seconds(handler[key], directive),
-        `${path}: the rule's ${key} ${directive} outlasts the handler's`
-      );
+    for (const handled of sent) {
+      const sentValue = tagPurgedCacheHeaders(handled, [TAG])[key];
+      for (const directive of DIRECTIVES) {
+        assert.ok(
+          seconds(value, directive) <= seconds(sentValue, directive),
+          `${path}: the rule's ${key} ${directive} outlasts the handler's "${sentValue}"`
+        );
+      }
     }
     passed++;
   }
@@ -202,12 +212,31 @@ for (const [route, { window, rule }] of Object.entries(RUNG_ROUTES)) {
   );
 }
 
+// Today's tip says how busy the day has been so far, which moves during the day and no ring
+// announces: Vercel and Cloudflare together keep it an hour at most, and the browser no longer than
+// Cloudflare.
+const todayTip = tagPurgedCacheHeaders(PARKY_TIP_TODAY_WINDOW, [TAG]);
+const longest = (value) => seconds(value, 's-maxage') + seconds(value, 'stale-while-revalidate');
+assert.ok(
+  longest(todayTip['Vercel-CDN-Cache-Control']) + longest(todayTip['CDN-Cache-Control']) <= 3600,
+  'parky-tip today: Vercel and Cloudflare together keep it longer than an hour'
+);
+assert.ok(
+  seconds(todayTip['Cache-Control'], 'max-age') +
+    seconds(todayTip['Cache-Control'], 'stale-while-revalidate') <=
+    longest(todayTip['CDN-Cache-Control']),
+  'parky-tip today: the browser keeps it longer than Cloudflare'
+);
+assert.equal(todayTip['Vercel-Cache-Tag'], TAG);
+passed += 3;
+console.log('  ✓ /api/…/parky-tip for today: an hour at most at Vercel and Cloudflare together');
+
 // A tip relay's 204 is kept minutes everywhere, not until the ring: what the API has nothing to say
 // about now (a spent budget, a failed call) it may have in an hour.
 for (const key of RUNG_KEYS) {
   const value = tagPurgedCacheHeaders(PARKY_TIP_NONE_WINDOW, [TAG])[key];
   assert.ok(seconds(value, 's-maxage') > 0, `parky-tip 204: ${key} "${value}" keeps nothing`);
-  for (const directive of ['max-age', 's-maxage', 'stale-while-revalidate']) {
+  for (const directive of DIRECTIVES) {
     assert.ok(
       seconds(value, directive) <= 600,
       `parky-tip 204: ${key} keeps ${directive} longer than minutes`

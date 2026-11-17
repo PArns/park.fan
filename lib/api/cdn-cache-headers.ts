@@ -66,6 +66,19 @@ export const PARKY_TIP_WINDOW: TagPurgedWindow = {
 };
 
 /**
+ * Parky's tip for the park's today itself, which says how busy the day has been so far. That level
+ * moves during the day and no ring announces it, so the tip cannot wait for one: half an hour at
+ * Vercel and half an hour at Cloudflare keep the sentence at most an hour behind the API, whose
+ * current month (where the level so far comes from) is two hours old at most after a warmup and is
+ * rebuilt by reads every 15 minutes after that. Shorter would mostly re-read a sentence the API has
+ * not changed.
+ */
+export const PARKY_TIP_TODAY_WINDOW: TagPurgedWindow = {
+  vercel: 'public, s-maxage=1800',
+  edge: 'public, max-age=1800, s-maxage=1800',
+};
+
+/**
  * How long „nothing to say" from the tip relay is kept, in every cache including the tab's: the
  * API's own window for its 204. What is left to answer 204 for passes within the day (a spent
  * budget, a failed or refused call), and a ring a day away would keep the dialog empty until then.
@@ -74,7 +87,8 @@ export const PARKY_TIP_NONE_SECONDS = 300;
 
 /**
  * Parky's day tip when the API has nothing to say. Also the `next.config.ts` rule, which cannot tell
- * a 204 from a 200: under `next start` both take these minutes, never a 204 the 200's day.
+ * a 204 from a 200 nor today's tip from another day's: under `next start` all of them take these
+ * minutes, the shortest of the tip's windows, never a 204 the 200's day.
  */
 export const PARKY_TIP_NONE_WINDOW: TagPurgedWindow = {
   vercel: `public, s-maxage=${PARKY_TIP_NONE_SECONDS}`,

@@ -31,6 +31,7 @@ import {
   FORECAST_WINDOW,
   NO_STORE,
   PARKY_TIP_NONE_WINDOW,
+  PARKY_TIP_TODAY_WINDOW,
   PARKY_TIP_WINDOW,
   tagPurgedCacheHeaders,
 } from '@/lib/api/cdn-cache-headers';
@@ -259,7 +260,8 @@ export async function GET(
   // dialog shows next to it. `today` is the park's as the browser counts it, and part of the cache
   // key, so the API checks it (`mayKeepNoTip`). Its other 204s are kept for minutes
   // (`PARKY_TIP_NONE_WINDOW`): a spent budget or a failed call passes within the day and must not
-  // stand until the next ring.
+  // stand until the next ring. Nor may the tip for today itself, which says how busy the day has
+  // been so far (`PARKY_TIP_TODAY_WINDOW`).
   if (path && path.length === 5 && path[4] === 'parky-tip') {
     const [continent, country, city, park] = path;
     const date = request.nextUrl.searchParams.get('date');
@@ -293,7 +295,12 @@ export async function GET(
       if (!isParkyDayTip(body)) {
         return new NextResponse(null, { status: 204, headers: NO_STORE });
       }
-      return NextResponse.json(body, { headers: tagPurgedCacheHeaders(PARKY_TIP_WINDOW, tags) });
+      return NextResponse.json(body, {
+        headers: tagPurgedCacheHeaders(
+          date === today ? PARKY_TIP_TODAY_WINDOW : PARKY_TIP_WINDOW,
+          tags
+        ),
+      });
     } catch (error) {
       console.error('[Parky tip API] Error:', error);
       return new NextResponse(null, { status: 204, headers: NO_STORE });

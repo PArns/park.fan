@@ -30,7 +30,8 @@ const TIP_LABEL = 'text-primary block text-xs font-bold tracking-wider uppercase
  * API's model from the calendar around the day, and his verdict as a stamp. The whole card asks
  * him about the day (`askParky`, element `tip` with the verdict as its kind), so the chat picks up where the tip stops. Only
  * where Parky shows for this visitor; nothing at all for a day he has nothing to say about, or
- * when the tip was written for another crowd level than the dialog shows (`tipAgreesWithLevel`).
+ * when the tip was written for another crowd level, or on today another level so far, than the
+ * dialog shows (`tipAgreesWithLevel`).
  * While the model writes, the card shows him reading up on the day (`ParkyLogo`'s `looking` mood):
  * the sentence takes a few seconds on a day nobody asked about yet.
  */
@@ -42,6 +43,7 @@ export function ParkCalendarParkyTip({
   today,
   dateLabel,
   crowdLevel,
+  soFarLevel,
   open,
   onAsk,
 }: {
@@ -58,6 +60,11 @@ export function ParkCalendarParkyTip({
    * where no panel shows one (the UI showcase).
    */
   crowdLevel: CrowdLevel | 'closed' | null;
+  /**
+   * On today, the level so far the dialog has for the day („Heute bisher"), which a tip for today
+   * may not contradict either; null on other days, before today has one and in the UI showcase.
+   */
+  soFarLevel: CrowdLevel | null;
   open: boolean;
   /** Closes the dialog: Parky ducks under a modal one, and the chat would open unseen. */
   onAsk?: () => void;
@@ -77,7 +84,7 @@ export function ParkCalendarParkyTip({
     locale,
     enabled: open && gate === 'on' && rated,
   });
-  const tip = data && tipAgreesWithLevel(data, crowdLevel) ? data : null;
+  const tip = data && tipAgreesWithLevel(data, crowdLevel, soFarLevel) ? data : null;
   const seen = useParkyElementSeen(
     gate === 'on' && tip ? { element: 'tip', kind: tip.verdict } : undefined
   );

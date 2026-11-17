@@ -2314,6 +2314,34 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
     true,
     'tip: with its level, no panel'
   );
+  // Today's tip names the level so far it was written from; the dialog shows its own beside it.
+  const todayTip = { verdict: 'bad', crowdLevel: 'high', todayCrowdLevel: 'low' };
+  check(
+    tipAgreesWithLevel(todayTip, 'high', 'low'),
+    true,
+    'tip: today, the same level so far as „Heute bisher"'
+  );
+  check(
+    tipAgreesWithLevel(todayTip, 'high', 'very_high'),
+    false,
+    'tip: today, „bisher ruhig" beside „Heute bisher: sehr hoch"'
+  );
+  check(
+    tipAgreesWithLevel(todayTip, 'extreme', 'low'),
+    false,
+    'tip: today, the same level so far does not excuse another forecast'
+  );
+  check(
+    tipAgreesWithLevel({ verdict: 'bad', crowdLevel: 'high' }, 'high', 'low'),
+    true,
+    'tip: today, a tip without a level so far contradicts no „Heute bisher"'
+  );
+  check(
+    tipAgreesWithLevel(todayTip, 'high', null),
+    true,
+    'tip: today, a dialog without a level so far has nothing to contradict'
+  );
+  check(tipAgreesWithLevel(todayTip, 'high'), true, 'tip: no level so far passed at all');
   check(mayKeepNoTip('private, max-age=300'), true, 'tip: the API lets its 204 be kept');
   check(mayKeepNoTip('public, max-age=300, s-maxage=300'), true, 'tip: the shared 204 too');
   check(
