@@ -156,8 +156,8 @@ the chat with a question about it ([authoring guide](../../content/blog/README.m
     when that verdict matches the level of the crowd panel beneath it (`tipAgreesWithLevel`): the
     month comes from the calendar the CDN holds for a day, the tip from caches of its own, and
     after the forecast moves overnight one of them still has the old day. While the model still
-    writes the sentence, the same card shows him in the chat's `thinking` mood instead of a grey
-    placeholder.
+    writes the sentence, the same card shows him reading up on the day in the chat's `looking`
+    mood instead of a grey placeholder.
   - **No park card has one**: a very low crowd is what the card's crowd badge already says.
 
 - **Still, where a page has nothing to show** (`ParkyPose`, `parky-pose.tsx`): one picture with a

@@ -14,7 +14,7 @@ import type { CrowdLevel } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { cn } from '@/lib/utils';
 
-/** The card both states share, so the thinking Parky turns into the tip in the same frame. */
+/** The card both states share, so Parky reading up on the day turns into his tip in one frame. */
 const TIP_CARD =
   'border-primary/30 from-primary/10 flex shrink-0 items-start gap-3 rounded-xl border bg-linear-to-br to-[oklch(0.752_0.181_146.391)]/10 px-3 py-2.5 text-left';
 const TIP_LABEL = 'text-primary block text-xs font-bold tracking-wider uppercase';
@@ -25,8 +25,8 @@ const TIP_LABEL = 'text-primary block text-xs font-bold tracking-wider uppercase
  * him about the day (`askParky`, element `tip` with the verdict as its kind), so the chat picks up where the tip stops. Only
  * where Parky shows for this visitor; nothing at all for a day he has nothing to say about, or
  * when his verdict disagrees with the crowd level the dialog shows (`tipAgreesWithLevel`). While
- * the model writes, the card shows him thinking (`ParkyLogo`'s `thinking` mood): the sentence takes
- * a few seconds on a day nobody asked about yet.
+ * the model writes, the card shows him reading up on the day (`ParkyLogo`'s `looking` mood): the
+ * sentence takes a few seconds on a day nobody asked about yet.
  */
 export function ParkCalendarParkyTip({
   geo,
@@ -69,11 +69,11 @@ export function ParkCalendarParkyTip({
   if (isPending) {
     return (
       <div role="status" className={TIP_CARD}>
-        <ParkyLogo mood="thinking" framed className="mt-0.5 size-11 shrink-0" />
+        <ParkyLogo mood="looking" framed className="mt-0.5 size-11 shrink-0" />
         <span className="min-w-0 flex-1">
           <span className={TIP_LABEL}>{t('label')}</span>
           <span className="text-muted-foreground mt-1 block text-sm leading-snug">
-            {t('thinking')}
+            {t('looking')}
           </span>
         </span>
       </div>

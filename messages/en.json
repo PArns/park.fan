@@ -6420,7 +6420,7 @@
     },
     "tip": {
       "label": "Parky's tip",
-      "thinking": "Parky is thinking the day over…",
+      "looking": "Parky is taking a closer look at the day…",
       "good": "Great day!",
       "meh": "So-so",
       "bad": "Better not",
