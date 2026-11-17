@@ -149,9 +149,9 @@ is not listed. Both halves are needed because the two runtimes disagree: on Verc
 sources resolving in opposite directions is how the attraction detail served 600 s for months while
 the config said 300. Change one half, change the other. A rule matches a path, never a query string,
 so a response that needs its own window gets its own path (`…/calendar/hourly`, `…/ride-stats`).
-Nor does it match a status: where one path answers with two windows, the rule carries the shorter,
-so the runtime that follows the rule asks again sooner instead of keeping an answer too long.
-Parky's tip is the one such route (below).
+Nor does it match a status or what a response holds: where one path answers with two windows, the
+rule carries the shorter, so the runtime that follows the rule asks again sooner instead of keeping
+an answer too long. The calendar and Parky's tip are such routes (below).
 
 Windows with a reason worth knowing:
 
@@ -184,12 +184,20 @@ that way at Cloudflare, which no tag reaches between deploys. Each of these rela
 therefore sends two windows (`TagPurgedWindow`, `tagPurgedCacheHeaders` in
 `lib/api/cdn-cache-headers.ts`, the same constants in `next.config.ts`):
 
-| Header                     | Read by                                 | Calendar, best-days (`FORECAST_WINDOW`)        | Tip (`PARKY_TIP_WINDOW`)                                  | Tip for today (`PARKY_TIP_TODAY_WINDOW`) |
-| -------------------------- | --------------------------------------- | ---------------------------------------------- | --------------------------------------------------------- | ---------------------------------------- |
-| `Vercel-CDN-Cache-Control` | Vercel only, not passed on              | `s-maxage=86400, stale-while-revalidate=86400` | the same                                                  | `s-maxage=1800`                          |
-| `Vercel-Cache-Tag`         | Vercel only                             | `park-calendar:<geo>` / `best-days:<slug>`     | `park-calendar:<geo>`                                     | the same                                 |
-| `CDN-Cache-Control`        | Cloudflare (Vercel reads its own first) | `s-maxage=3600, stale-while-revalidate=600`    | `max-age=3600, s-maxage=3600, stale-while-revalidate=600` | `max-age=1800, s-maxage=1800`            |
-| `Cache-Control`            | the browser                             | as `CDN-Cache-Control`; no `max-age`           | an hour                                                   | half an hour                             |
+| Header                     | Read by                                 | Calendar, best-days (`FORECAST_WINDOW`)        | Calendar holding today (`CALENDAR_TODAY_WINDOW`) | Tip (`PARKY_TIP_WINDOW`)                                  | Tip for today (`PARKY_TIP_TODAY_WINDOW`) |
+| -------------------------- | --------------------------------------- | ---------------------------------------------- | ------------------------------------------------ | --------------------------------------------------------- | ---------------------------------------- |
+| `Vercel-CDN-Cache-Control` | Vercel only, not passed on              | `s-maxage=86400, stale-while-revalidate=86400` | `s-maxage=1800`                                  | the same as the calendar's                                | `s-maxage=1800`                          |
+| `Vercel-Cache-Tag`         | Vercel only                             | `park-calendar:<geo>` / `best-days:<slug>`     | `park-calendar:<geo>`                            | `park-calendar:<geo>`                                     | the same                                 |
+| `CDN-Cache-Control`        | Cloudflare (Vercel reads its own first) | `s-maxage=3600, stale-while-revalidate=600`    | `s-maxage=1800`                                  | `max-age=3600, s-maxage=3600, stale-while-revalidate=600` | `max-age=1800, s-maxage=1800`            |
+| `Cache-Control`            | the browser                             | as `CDN-Cache-Control`; no `max-age`           | the same, no `max-age`                           | an hour                                                   | half an hour                             |
+
+**A calendar range that holds the park's today** (a day the API marks `isToday`, in the park's
+zone: the current month of the grid and the day dialog, and the today panel's single day) carries
+„Heute bisher", the level so far, which moves during the day without a ring. It leaves with
+`CALENDAR_TODAY_WINDOW`, half an hour at Vercel and half an hour at Cloudflare, for the same reason
+and with the same arithmetic as the tip for today below. Every other range keeps `FORECAST_WINDOW`.
+The calendar's rule in `next.config.ts` is `CALENDAR_TODAY_WINDOW`, the shorter, since a rule cannot
+see which days a response holds.
 
 **The tip for today** (`date` equal to the request's `today`) says how busy the day has been so
 far, a level that moves during the day and that no ring announces, so it cannot wait at Vercel for

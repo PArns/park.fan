@@ -26,6 +26,7 @@ import {
   NO_STORE,
   PARKY_TIP_NONE_WINDOW,
   PARKY_TIP_TODAY_WINDOW,
+  CALENDAR_TODAY_WINDOW,
   PARKY_TIP_WINDOW,
   tagPurgedCacheHeaders,
 } from '../lib/api/cdn-cache-headers.ts';
@@ -155,14 +156,18 @@ for (const region of LIVE_TRIP_REGIONS) {
 }
 
 // The relays the backend rings by tag: under `next start` the rule decides, on Vercel the handler,
-// so the rule must send exactly the handler's windows, and Cloudflare must get the short one. The
-// tip's handler sends one window with a tip, another with today's and a third with a 204, which a
-// path rule cannot tell apart: its rule carries the 204's minutes, the shortest of the three, and
-// must never outlast any of them.
+// so the rule must send exactly the handler's windows, and Cloudflare must get the short one. Where
+// a handler sends more than one window, which a path rule cannot tell apart, the rule carries the
+// shortest and must never outlast any of them: the calendar's for a range holding the park's today,
+// the tip's for a 204.
 const TAG = 'park-calendar:europe/germany/rust/europa-park';
 const RUNG_KEYS = ['Cache-Control', 'CDN-Cache-Control', 'Vercel-CDN-Cache-Control'];
 const RUNG_ROUTES = {
-  calendar: { window: FORECAST_WINDOW, rule: FORECAST_WINDOW, sent: [FORECAST_WINDOW] },
+  calendar: {
+    window: FORECAST_WINDOW,
+    rule: CALENDAR_TODAY_WINDOW,
+    sent: [FORECAST_WINDOW, CALENDAR_TODAY_WINDOW],
+  },
   'best-days': { window: FORECAST_WINDOW, rule: FORECAST_WINDOW, sent: [FORECAST_WINDOW] },
   'parky-tip': {
     window: PARKY_TIP_WINDOW,
@@ -208,7 +213,7 @@ for (const [route, { window, rule, sent }] of Object.entries(RUNG_ROUTES)) {
   assert.equal(handler['Vercel-Cache-Tag'], TAG);
   passed += 3;
   console.log(
-    `  ✓ /api/…/${route}: ${rule === window ? 'rule and handler agree' : "the rule is the 204's window"}, Vercel until the ring, Cloudflare an hour`
+    `  ✓ /api/…/${route}: ${rule === window ? 'rule and handler agree' : 'the rule is the shortest window the handler sends'}, Vercel until the ring, Cloudflare an hour`
   );
 }
 
@@ -230,6 +235,21 @@ assert.ok(
 assert.equal(todayTip['Vercel-Cache-Tag'], TAG);
 passed += 3;
 console.log('  ✓ /api/…/parky-tip for today: an hour at most at Vercel and Cloudflare together');
+
+// A calendar range holding the park's today carries its level so far, which moves without a ring:
+// an hour at most at Vercel and Cloudflare together, and nothing in the browser's HTTP cache, as
+// for any other range.
+const todayCalendar = tagPurgedCacheHeaders(CALENDAR_TODAY_WINDOW, [TAG]);
+assert.ok(
+  longest(todayCalendar['Vercel-CDN-Cache-Control']) +
+    longest(todayCalendar['CDN-Cache-Control']) <=
+    3600,
+  'calendar today: Vercel and Cloudflare together keep it longer than an hour'
+);
+assert.equal(seconds(todayCalendar['Cache-Control'], 'max-age'), 0);
+assert.equal(todayCalendar['Vercel-Cache-Tag'], TAG);
+passed += 3;
+console.log('  ✓ /api/…/calendar holding today: an hour at most at Vercel and Cloudflare together');
 
 // A tip relay's 204 is kept minutes everywhere, not until the ring: what the API has nothing to say
 // about now (a spent budget, a failed call) it may have in an hour.

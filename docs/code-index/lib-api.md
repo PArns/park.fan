@@ -53,6 +53,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `FORECAST_WINDOW` _const_: The calendar month and the best-days snapshot: a ring reaches a reader at most 70 minutes late.
 - `PARKY_TIP_WINDOW` _const_: Parky's day tip: the forecast's window, and an hour in the browser, which is as long as the month the dialog shows it on stays fresh there (`CALENDAR_STALE_TIME_MS`).
 - `PARKY_TIP_TODAY_WINDOW` _const_: Parky's tip for the park's today itself, which says how busy the day has been so far.
+- `CALENDAR_TODAY_WINDOW` _const_: A calendar range that holds the park's today, whose „Heute bisher" is the level so far: the month the grid and the day dialog show, and the today panel's single day. No `max-age`, as for `FORECAST_WINDOW`: the tab's copy is TanStack's.
 - `PARKY_TIP_NONE_SECONDS` _const_: How long „nothing to say" from the tip relay is kept, in every cache including the tab's: the API's own window for its 204.
 - `PARKY_TIP_NONE_WINDOW` _const_: Parky's day tip when the API has nothing to say.
 - Types: `TagPurgedWindow`

@@ -4,6 +4,7 @@ import createNextIntlPlugin from 'next-intl/plugin';
 import withBundleAnalyzer from '@next/bundle-analyzer';
 import { HOMEPAGE_LINK_HEADER } from './lib/agents/api-catalog';
 import {
+  CALENDAR_TODAY_WINDOW,
   FORECAST_WINDOW,
   PARKY_TIP_NONE_WINDOW,
   tagPurgedCacheRule,
@@ -948,11 +949,13 @@ const nextConfig: NextConfig = {
         headers: sharedCache('public, s-maxage=86400, stale-while-revalidate=604800'),
       },
       {
-        // The handler's own windows, from the same constant, so the two halves cannot drift.
-        // Vercel keeps the month until the backend rings its tag, which only the handler can
-        // name; Cloudflare keeps it an hour (docs/architecture/cdn-caching.md#routes-the-backend-rings).
+        // The handler sends `FORECAST_WINDOW` (Vercel until the backend rings the tag, Cloudflare an
+        // hour) and `CALENDAR_TODAY_WINDOW` for a range holding the park's today, which a rule cannot
+        // see. It carries the shorter, so where the rule wins (`next start`) a month is asked again
+        // sooner; on Vercel the handler's own window stands
+        // (docs/architecture/cdn-caching.md#routes-the-backend-rings).
         source: '/api/parks/:continent/:country/:city/:park/calendar',
-        headers: tagPurgedCacheRule(FORECAST_WINDOW),
+        headers: tagPurgedCacheRule(CALENDAR_TODAY_WINDOW),
       },
       {
         // Five minutes, and it is the handler's own number — the day-detail dialog's hourly curve

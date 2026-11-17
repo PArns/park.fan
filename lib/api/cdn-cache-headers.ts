@@ -66,16 +66,29 @@ export const PARKY_TIP_WINDOW: TagPurgedWindow = {
 };
 
 /**
- * Parky's tip for the park's today itself, which says how busy the day has been so far. That level
- * moves during the day and no ring announces it, so the tip cannot wait for one: half an hour at
- * Vercel and half an hour at Cloudflare keep the sentence at most an hour behind the API, whose
- * current month (where the level so far comes from) is two hours old at most after a warmup and is
- * rebuilt by reads every 15 minutes after that. Shorter would mostly re-read a sentence the API has
- * not changed.
+ * How long Vercel, and then Cloudflare, keep an answer that holds the park's today: how busy the
+ * day has been so far moves during the day and no ring announces it. Half an hour at each keeps it
+ * at most an hour behind the API, whose current month (where the level so far comes from) is two
+ * hours old at most after a warmup and is rebuilt by reads every 15 minutes after that. Shorter
+ * would mostly re-read what the API has not changed.
  */
+const TODAY_SECONDS = 1800;
+
+/** Parky's tip for the park's today itself, which says how busy the day has been so far. */
 export const PARKY_TIP_TODAY_WINDOW: TagPurgedWindow = {
-  vercel: 'public, s-maxage=1800',
-  edge: 'public, max-age=1800, s-maxage=1800',
+  vercel: `public, s-maxage=${TODAY_SECONDS}`,
+  edge: `public, max-age=${TODAY_SECONDS}, s-maxage=${TODAY_SECONDS}`,
+};
+
+/**
+ * A calendar range that holds the park's today, whose „Heute bisher" is the level so far: the
+ * month the grid and the day dialog show, and the today panel's single day. No `max-age`, as for
+ * {@link FORECAST_WINDOW}: the tab's copy is TanStack's. Also the `next.config.ts` rule of the
+ * calendar relay, which cannot see which days a response holds.
+ */
+export const CALENDAR_TODAY_WINDOW: TagPurgedWindow = {
+  vercel: `public, s-maxage=${TODAY_SECONDS}`,
+  edge: `public, s-maxage=${TODAY_SECONDS}`,
 };
 
 /**

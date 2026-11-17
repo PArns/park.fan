@@ -125,15 +125,17 @@ What can still differ, and for how long:
   the ring renews only the Data Cache entry the next render reads. On the hub, which shows the
   current month, it is two hours. A `Vercel-Cache-Tag` on the page and a Cloudflare purge by tag
   would close it; neither is built.
-- **The day dialog's „bisher" on today.** `todayCrowdLevel` is the day so far when the copy was
-  made, and nothing rings during the day, so it trails the live level by the copy's age: up to the
-  next ring at Vercel. The live „Andrang jetzt" in the today panel is the live poll's and is never
-  compared with it ([crowd levels](../api/backend-integration.md#crowd-levels)). Parky's tip for
-  today reads the same level, and its relay keeps it an hour at most (`PARKY_TIP_TODAY_WINDOW`), so
-  later in the day it can be newer than the „Heute bisher" beside it. It names the level it was
-  written from (`todayCrowdLevel`), and `tipAgreesWithLevel` hides it where the dialog has another
-  one for today, as it does for another forecast level: no „bisher ruhig" over „Heute bisher: hoch".
-  The tip then shows again once the dialog's month and the tip name the same level.
+- **The day dialog's „bisher" on today, by up to about an hour.** `todayCrowdLevel` is the day so
+  far when the copy was made, and nothing rings during the day, so it trails the live level by the
+  copy's age. A calendar range holding the park's today is therefore kept half an hour at Vercel
+  and half an hour at Cloudflare (`CALENDAR_TODAY_WINDOW`), not until the ring. The live „Andrang
+  jetzt" in the today panel is the live poll's and is never compared with it
+  ([crowd levels](../api/backend-integration.md#crowd-levels)). Parky's tip for today reads the same
+  level with the same window (`PARKY_TIP_TODAY_WINDOW`), but the two copies are made at different
+  moments, so for a while one can be newer than the other. The tip names the level it was written
+  from (`todayCrowdLevel`), and `tipAgreesWithLevel` hides it where the dialog has another one for
+  today, as it does for another forecast level: no „bisher ruhig" over „Heute bisher: hoch". The tip
+  shows again once both copies name the same level, within the hour.
 - **The trip planner and the region hubs, by up to about three hours.** `/api/trip-regions/…` reads
   through the Data Cache under `trip-region:<region>`, which the forecast warmup does not ring,
   for `CACHE_TTL.tripRegionData` (1 h) on top of the API's own hour (`trip-regions:calendar:v2`,

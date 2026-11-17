@@ -651,3 +651,27 @@ around today, which before were written again in six languages with every move o
 
 **Open:** count the relay's 200s for `date` equal to `today` in Observability against the other
 days' over a week.
+
+---
+
+## 2026-11-17 — ACCEPTED: a calendar range holding the park's today stands half an hour at Vercel and at Cloudflare, not until the ring
+
+**Lever:** invocations of `/api/parks/<geo>/calendar` for the current month and the today panel's
+single day.
+**Files:** `lib/api/cdn-cache-headers.ts` (`CALENDAR_TODAY_WINDOW`), `app/api/parks/[...path]/route.ts`,
+`next.config.ts`, `scripts/test-edge-windows.mjs`.
+
+Since the calendar relay is kept at Vercel until the ring, „Heute bisher" in the grid, the day
+dialog and the today panel stood from one ring to the next (15:00 or 20:00 UTC), while the level so
+far moved, and Parky's tip for today, half an hour fresh, was hidden beside it as a mismatch. A
+range that holds a day the API marks `isToday` now gets half an hour at Vercel and at Cloudflare.
+
+**Estimated, not measured:** at most 48 function calls a day per such URL and Vercel region while it
+is asked, each a Redis read at the API (its current month is warm two hours after a warmup and then
+rebuilt by reads every 15 minutes, about 0.6 to 0.8 s cold in production). Two URLs per park are
+affected: the current month and today's single day. Every other month keeps `FORECAST_WINDOW`.
+
+**Cost shift:** none for months that do not hold today. Under `next start` every calendar range
+takes the half hour, since the rule cannot see the days.
+
+**Open:** count the relay's calls for current months in Observability against the week before.
