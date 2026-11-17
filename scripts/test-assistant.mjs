@@ -2230,6 +2230,21 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
   check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
   check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
+  check(
+    isParkyDayTip({ verdict: 'good', crowdLevel: 'very_low', text: 'Hin da!' }),
+    true,
+    'tip: with the level it was written for'
+  );
+  check(
+    isParkyDayTip({ verdict: 'good', crowdLevel: 'high', text: 'Hin da!' }),
+    false,
+    'tip: a level that disagrees with its own verdict'
+  );
+  check(
+    isParkyDayTip({ verdict: 'meh', crowdLevel: 'closed', text: 'Hm.' }),
+    false,
+    'tip: a level with no verdict'
+  );
   check(tipAgreesWithLevel('bad', 'very_low'), false, 'tip: "lieber nicht" over a quiet day');
   check(tipAgreesWithLevel('good', 'high'), false, 'tip: "hin da" over a busy day');
   check(tipAgreesWithLevel('good', 'low'), true, 'tip: low and very low share a verdict');

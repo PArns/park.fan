@@ -60,8 +60,9 @@ What `POST /api/revalidate` takes, and what the backend sends when, is in
 contract is in `app/api/revalidate/route.ts`: `Authorization: Bearer $REVALIDATE_SECRET`
 (**503** until the secret is set), at most 50 entries per array, **400** when neither
 `tags` nor `paths` has one. A park's own tag is `park:<continent>/<country>/<city>/<slug>`
-(`parkCacheTag`, `lib/api/park-live-projection.ts`), with a hand-written twin in the
-API — change both.
+(`parkCacheTag`, `lib/api/park-live-projection.ts`), its calendar's
+`park-calendar:<continent>/<country>/<city>/<slug>` (`parkCalendarCacheTag`,
+`lib/api/integrated-calendar.ts`); each has a hand-written twin in the API — change both.
 
 ## Favorites
 

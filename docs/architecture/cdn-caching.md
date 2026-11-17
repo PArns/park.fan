@@ -162,6 +162,43 @@ Windows with a reason worth knowing:
   `/api/analytics/*`, `/api/search`): 60 s; the same answer for everybody asking the same thing.
 - **Errors** answer `NO_STORE` (`lib/api/cdn-cache-headers.ts`, both `Cache-Control` and
   `CDN-Cache-Control`), or they would inherit the route's shared window ([the rule](../rules/an-api-route-passes-only-slugs-upstream.md)).
+- **Calendar, best-days and Parky's tip** (`…/calendar`, `…/best-days`, `…/parky-tip`): a day at
+  Vercel until the backend rings their tag, an hour at Cloudflare; below.
+
+### Routes the backend rings
+
+`revalidateTag` reaches more than the Data Cache: on Next 16, Vercel ends every CDN entry whose
+response named the tag in a `Vercel-Cache-Tag` header (`'max'` marks it stale, `{ expire: 0 }`
+deletes it; [Vercel](https://vercel.com/docs/caching/cdn-cache/purge)). A route handler's own
+response is such an entry, so a relay can be kept at Vercel until the data behind it changes. It
+cannot be kept that way at Cloudflare, which no tag reaches between deploys. Each of these relays
+therefore sends two windows (`TagPurgedWindow`, `tagPurgedCacheHeaders` in
+`lib/api/cdn-cache-headers.ts`, the same constants in `next.config.ts`):
+
+| Header                     | Read by                                 | Calendar, best-days (`FORECAST_WINDOW`)        | Tip (`PARKY_TIP_WINDOW`)                                  |
+| -------------------------- | --------------------------------------- | ---------------------------------------------- | --------------------------------------------------------- |
+| `Vercel-CDN-Cache-Control` | Vercel only, not passed on              | `s-maxage=86400, stale-while-revalidate=86400` | the same                                                  |
+| `Vercel-Cache-Tag`         | Vercel only                             | `park-calendar:<geo>` / `best-days:<slug>`     | `park-calendar:<geo>`                                     |
+| `CDN-Cache-Control`        | Cloudflare (Vercel reads its own first) | `s-maxage=3600, stale-while-revalidate=600`    | `max-age=3600, s-maxage=3600, stale-while-revalidate=600` |
+| `Cache-Control`            | the browser                             | as `CDN-Cache-Control`; no `max-age`           | an hour                                                   |
+
+The backend rings `park-calendar:` and `best-days:` after every forecast warmup with
+`"expire": 0`, and `park-calendar:` after the schedule sync. A Cloudflare miss is then a hit at
+Vercel and costs no function call; the first request after a ring is one function call and one
+API read. With `'max'` instead, that request would be served the old copy once more, and if it came
+from Cloudflare, which is where every request to Vercel comes from, Cloudflare would keep it for its
+hour. What a ring purges and costs, and which surfaces can still disagree:
+[one park-day on several surfaces](caching-strategy.md#one-park-day-on-several-surfaces).
+
+Cloudflare could be purged too: purge by tag is on every plan (the Free plan allows 5 requests a
+minute, 100 tags each), reading a `Cache-Tag` response header, with the token the deploy purge
+already holds. It is not built, because that purge has not been proven to work yet (PAR-1125); once
+it has, `/api/revalidate` can purge the same tags at Cloudflare and the hour can go back to a day.
+
+**Checking it** needs Vercel without Cloudflare in front, which keeps its own hour: on the
+deployment's own domain, ask a calendar relay URL twice (`x-vercel-cache: HIT`), ring its tag (the
+next warmup, or `vercel cache invalidate --tag park-calendar:<geo>`), and ask again: `MISS` after an
+`"expire": 0` ring, `STALE` after a `'max'` one. Not checked yet.
 
 ## A deploy purges Cloudflare
 

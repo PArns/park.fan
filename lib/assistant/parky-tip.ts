@@ -18,6 +18,11 @@ const VERDICT_BY_LEVEL: Partial<Record<CrowdLevel | 'closed', ParkyTipVerdict>> 
 export interface ParkyDayTip {
   date: string;
   verdict: ParkyTipVerdict;
+  /**
+   * The day's crowd level the sentence was written for; the API writes a new one when the forecast
+   * moves the day. Optional while an API without it may answer.
+   */
+  crowdLevel?: CrowdLevel;
   /** One sentence in Parky's voice, written for this park, day and language. */
   text: string;
   promptVersion: number;
@@ -83,13 +88,17 @@ export function tipAgreesWithLevel(
   return !shown || shown === verdict;
 }
 
-/** Whether a relayed body is a tip this site can show. */
+/**
+ * Whether a relayed body is a tip this site can show. A `crowdLevel`, where one is sent, must be a
+ * level with that verdict: a tip whose own two fields disagree is not shown.
+ */
 export function isParkyDayTip(value: unknown): value is ParkyDayTip {
   const tip = value as Partial<ParkyDayTip> | null;
   return (
     !!tip &&
     typeof tip.text === 'string' &&
     tip.text.trim().length > 0 &&
-    (tip.verdict === 'good' || tip.verdict === 'meh' || tip.verdict === 'bad')
+    (tip.verdict === 'good' || tip.verdict === 'meh' || tip.verdict === 'bad') &&
+    (tip.crowdLevel === undefined || tipVerdictFor(tip.crowdLevel) === tip.verdict)
   );
 }
