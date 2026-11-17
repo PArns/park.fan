@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Parc Astérix a Natale 2026: orari e il nuovo show serale'
   description: >-
-    Parc Astérix a Natale: Noël Gaulois dal 19/12/2026 al 3/1/2027, orari 11-20 ogni giorno. Nuovo show Les Merveilles de Cléopâtre. Biglietto 57 €.
+    Parc Astérix a Natale: Noël Gaulois dal 19/12/2026 al 3/1/2027, di norma ore 11-20. Nuovo show Les Merveilles de Cléopâtre. Biglietto 57 €.
   keywords:
     - parc astérix natale
     - Parc Astérix Natale 2026
@@ -44,9 +44,9 @@ Dal 19 dicembre 2026 al 3 gennaio 2027 il [Parc Astérix](ref:parc-asterix) di P
 
 ## La festa di Cleopatra davanti al tempio
 
-Quando fa buio, sul tempio egizio delle montagne russe partono le proiezioni. Le accompagnano musica, giochi di luce, getti d’acqua e fuochi pirotecnici. Nella storia Cleopatra invita a una festa Galli, Ispanici, Vichinghi, Romani ed Egizi, e ogni popolo si presenta con una coreografia per fare colpo su di lei. Gli Egizi, che in teoria sono i padroni di casa, vengono presi alla sprovvista e trasformano il palazzo in un palco all’ultimo minuto.
+Quando fa buio, sul tempio egizio delle montagne russe partono le proiezioni. Le accompagnano musica, giochi di luce, getti d’acqua e fuochi pirotecnici. Nella storia Cleopatra invita a una festa Galli, Ispanici, Vichinghi, Romani ed Egizi, e ogni popolo si presenta con una coreografia per fare colpo su di lei. Gli Egizi vengono presi alla sprovvista e trasformano il palazzo in un palco all’ultimo minuto.
 
-Lo spettacolo va in scena nell’area Égypte, che il parco ha rinnovato nel 2026. Posti a sedere non ce ne sono: si guarda in piedi e all’aperto, e a fine dicembre il cappello di lana fa più comodo di qualsiasi programma di sala. Orario e durata il parco non li ha ancora pubblicati.
+Lo spettacolo va in scena nell’area Égypte, aperta nel 2026. Posti a sedere non ce ne sono: si guarda in piedi e all’aperto, e a fine dicembre il cappello di lana fa più comodo di qualsiasi programma di sala. Orario e durata il parco non li ha ancora pubblicati.
 
 ## Pista di ghiaccio, scivolo e sentiero di luci
 
@@ -56,7 +56,7 @@ Nell’area dei Vichinghi c’è la [Patinoire Viking](ref:parc-asterix/patinoir
 
 ## Spettacoli e parata
 
-Sul ghiaccio va in scena “Qui veut la peau du Père Noël ?”, 25 minuti di acrobazie e danza in una fabbrica di giocattoli. “Quel Cirque !” è uno show acrobatico di 20 minuti, “C’est du Délire !” un musical comico. Al calar della sera il Défilé Gaulois de Noël attraversa il parco con cinque carri. La canzone della parata si intitola “Le Père Noël rêve de Potion” e la canta Gwendal Marimoutou: anche Babbo Natale, a quanto pare, vorrebbe un sorso di pozione magica. La giornata si chiude sul lago con L’Île aux Vœux, uno spettacolo notturno di otto minuti con fuochi pirotecnici.
+Sul ghiaccio va in scena “Qui veut la peau du Père Noël ?”, 25 minuti di acrobazie e danza in una fabbrica di giocattoli. “Quel Cirque !” è uno show acrobatico di 20 minuti, “C’est du Délire !” un musical decisamente gallico. Al calar della sera il Défilé Gaulois de Noël attraversa il parco con cinque carri. La canzone della parata si intitola “Le Père Noël rêve de Potion” e la canta Gwendal Marimoutou: anche Babbo Natale, a quanto pare, vorrebbe un sorso di pozione magica. La giornata si chiude sul lago con L’Île aux Vœux, uno spettacolo notturno di otto minuti con fuochi pirotecnici.
 
 ## Orari
 
