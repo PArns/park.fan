@@ -1,6 +1,7 @@
 'use client';
 
 import type { AssistantTripIdea } from './trip-idea';
+import type { AskDayTip } from './ask';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { API_ORIGIN } from '@/lib/api/client';
 import { readSse } from './sse';
@@ -204,7 +205,9 @@ export function useAssistantChat(
       /** A reply chip's place among the chips, 1 the first. */
       position?: number,
       /** The trip plan idea the question is about, drawn under the answer. */
-      tripIdea?: AssistantTripIdea
+      tripIdea?: AssistantTripIdea,
+      /** The day tip the question was asked from, on a chat's first question. */
+      dayTip?: AskDayTip
     ) => {
       const question = text.trim().slice(0, 1000);
       if (!question || phase !== 'idle' || !sessionToken) return;
@@ -280,6 +283,8 @@ export function useAssistantChat(
             interview: interviewStore.getSnapshot() ?? undefined,
             // The window's greeting, so an answer to it („ja“, „super!“) reads right.
             ...(opener && { opener: opener.slice(0, OPENER_MAX) }),
+            // The tapped day tip: the API reads the day's facts and hands Parky his sentence.
+            ...(dayTip && stored.messages.length === 0 && { dayTip }),
           }),
         });
         if (response.status === 401) {

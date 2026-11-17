@@ -26,6 +26,7 @@ import {
 import { readAssistantAction } from '@/lib/assistant/actions.ts';
 import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
+import { takeParkyAsk } from '@/lib/assistant/ask.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
 import {
@@ -671,6 +672,23 @@ check(localeSwitchPath('//evil.example/de', 'en', null), null, 'never a path off
   check(takeReopen(), false, 'once');
   reopenAfterSwitch();
   check(takeReopen(Date.now() + 60_000), false, 'a switch that never landed opens nothing later');
+  // A tapped day tip hands its day and sentence to the chat with the question, once.
+  const dayTip = {
+    park: 'europe/germany/bruehl/phantasialand',
+    date: '2026-11-18',
+    text: 'Ruhig!',
+  };
+  store.set('parkfan:assistant-ask', 'Wie holen wir das Beste raus?');
+  store.set('parkfan:assistant-ask-day-tip', JSON.stringify(dayTip));
+  check(takeParkyAsk(), { question: 'Wie holen wir das Beste raus?', dayTip }, 'ask: tip with day');
+  check(takeParkyAsk(), null, 'ask: once');
+  store.set('parkfan:assistant-ask', 'Und?');
+  store.set('parkfan:assistant-ask-day-tip', '{"park":1}');
+  check(
+    takeParkyAsk(),
+    { question: 'Und?' },
+    'ask: a broken day tip costs the tip, not the question'
+  );
   delete globalThis.window;
 }
 

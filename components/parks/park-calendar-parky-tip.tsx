@@ -102,10 +102,11 @@ export function ParkCalendarParkyTip({
       type="button"
       onClick={() => {
         onAsk?.();
-        askParky(t('question', { park: parkName, day: dateLabel, tip: tip.text }), {
-          element: 'tip',
-          kind: tip.verdict,
-        });
+        askParky(
+          t('question', { park: parkName, day: dateLabel, tip: tip.text }),
+          { element: 'tip', kind: tip.verdict },
+          { park: `${geo.continent}/${geo.country}/${geo.city}/${parkSlug}`, date, text: tip.text }
+        );
       }}
       className={cn(
         TIP_CARD,
