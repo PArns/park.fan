@@ -2246,8 +2246,12 @@ export interface PlanDaySlot {
   source?: PlanDayTier | null;
 }
 
-/** Which composer drew a composed ride's curve (API PAR-834). Diagnostic; nothing branches on it. */
-export type PlanDayComposer = 'h5' | 'h5_tft' | 'peak_scaled';
+/**
+ * Which composer drew a composed ride's curve (API PAR-834): `h5_season` is the H5 profile scaled
+ * by a running park season's level, the one the calendar shows for the day. Diagnostic; nothing
+ * branches on it.
+ */
+export type PlanDayComposer = 'h5' | 'h5_tft' | 'h5_season' | 'peak_scaled';
 
 /** One ride's planned day: an expected wait per open hour, with its uncertainty. */
 export interface PlanDayRide {
