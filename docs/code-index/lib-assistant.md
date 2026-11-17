@@ -155,6 +155,7 @@ Where Parky stands while his chat window is shut: in his corner, or in a slot on
 ### [`parky-tip.ts`](../../lib/assistant/parky-tip.ts)
 
 - `isServableTipRequest` _function_: Whether the relay may ask for a tip on `date` in `locale`: both land in the CDN's cache key, so only a real day from yesterday (a park west of UTC) to the horizon, in one of the site's six languages.
+- `tipAgreesWithLevel` _function_: Whether a tip may stand above the crowd panel that shows `level` for the same day.
 - `isParkyDayTip` _function_: Whether a relayed body is a tip this site can show.
 - Types: `ParkyTipVerdict`, `ParkyDayTip`
 

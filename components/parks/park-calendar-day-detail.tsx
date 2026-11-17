@@ -406,6 +406,7 @@ export function ParkCalendarDayDetail({
               parkName={planner.parkName}
               date={day.date}
               dateLabel={title}
+              crowdLevel={meaningLevel}
               open={open && !navigating}
               onAsk={() => onOpenChange(false)}
             />

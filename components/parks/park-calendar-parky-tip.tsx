@@ -8,6 +8,8 @@ import { askParky } from '@/lib/assistant/ask';
 import { useParkyElementSeen } from '@/lib/hooks/use-parky-element-seen';
 import { useAssistantGateStatus } from '@/lib/assistant/use-assistant-gate';
 import { useParkyDayTip } from '@/lib/hooks/use-parky-day-tip';
+import { tipAgreesWithLevel } from '@/lib/assistant/parky-tip';
+import type { CrowdLevel } from '@/lib/api/types';
 import type { PlannerGeo } from '@/lib/planner/types';
 import { Skeleton } from '@/components/ui/skeleton';
 
@@ -15,7 +17,8 @@ import { Skeleton } from '@/components/ui/skeleton';
  * Parky's tip for the day open in the calendar's dialog: his sentence about it, written by the
  * API's model from the calendar around the day, and his verdict as a stamp. The whole card asks
  * him about the day (`askParky`, element `tip` with the verdict as its kind), so the chat picks up where the tip stops. Only
- * where Parky shows for this visitor; nothing at all for a day he has nothing to say about.
+ * where Parky shows for this visitor; nothing at all for a day he has nothing to say about, or
+ * when his verdict disagrees with the crowd level the dialog shows (`tipAgreesWithLevel`).
  */
 export function ParkCalendarParkyTip({
   geo,
@@ -23,6 +26,7 @@ export function ParkCalendarParkyTip({
   parkName,
   date,
   dateLabel,
+  crowdLevel,
   open,
   onAsk,
 }: {
@@ -32,6 +36,8 @@ export function ParkCalendarParkyTip({
   date: string;
   /** The day as the dialog's title writes it, for the question. */
   dateLabel: string;
+  /** The level the dialog's crowd panel shows for the day, which the tip may not contradict. */
+  crowdLevel: CrowdLevel | 'closed' | null | undefined;
   open: boolean;
   /** Closes the dialog: Parky ducks under a modal one, and the chat would open unseen. */
   onAsk?: () => void;
@@ -40,13 +46,14 @@ export function ParkCalendarParkyTip({
   const locale = useLocale();
   const ground = useId();
   const gate = useAssistantGateStatus();
-  const { data: tip, isPending } = useParkyDayTip({
+  const { data, isPending } = useParkyDayTip({
     geo,
     parkSlug,
     date,
     locale,
     enabled: open && gate === 'on',
   });
+  const tip = data && tipAgreesWithLevel(data.verdict, crowdLevel) ? data : null;
   const seen = useParkyElementSeen(
     gate === 'on' && tip ? { element: 'tip', kind: tip.verdict } : undefined
   );

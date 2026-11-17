@@ -1,7 +1,18 @@
 import { routing } from '@/i18n/routing';
+import type { CrowdLevel } from '@/lib/api/types';
 
 /** Parky's verdict on a calendar day, from its crowd level (the API decides, not the model). */
 export type ParkyTipVerdict = 'good' | 'meh' | 'bad';
+
+/** The API's own table (`VERDICTS` in `src/assistant/parky-tip.service.ts`); the two move together. */
+const VERDICT_BY_LEVEL: Partial<Record<CrowdLevel | 'closed', ParkyTipVerdict>> = {
+  very_low: 'good',
+  low: 'good',
+  moderate: 'meh',
+  high: 'bad',
+  very_high: 'bad',
+  extreme: 'bad',
+};
 
 /** Parky's tip for one day of a park's crowd calendar: the API's `…/parky-tip`. */
 export interface ParkyDayTip {
@@ -33,6 +44,20 @@ export function isServableTipRequest(
   if (Number.isNaN(at) || new Date(at).toISOString().slice(0, 10) !== date) return false;
   const today = Math.floor(now / DAY_MS) * DAY_MS;
   return at >= today - DAY_MS && at <= today + HORIZON_DAYS * DAY_MS;
+}
+
+/**
+ * Whether a tip may stand above the crowd panel that shows `level` for the same day. The calendar
+ * month and the tip are cached for different windows, so once the forecast moves overnight one of
+ * them still has the old day: a „lieber nicht" over „sehr niedrig" is worse than no tip. A level
+ * without a verdict (`unknown`, none at all) contradicts nothing.
+ */
+export function tipAgreesWithLevel(
+  verdict: ParkyTipVerdict,
+  level: CrowdLevel | 'closed' | null | undefined
+): boolean {
+  const shown = level ? VERDICT_BY_LEVEL[level] : undefined;
+  return !shown || shown === verdict;
 }
 
 /** Whether a relayed body is a tip this site can show. */

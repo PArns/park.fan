@@ -28,7 +28,11 @@ import { localeSwitchPath } from '@/lib/assistant/switch-locale.ts';
 import { reopenAfterSwitch, takeReopen } from '@/lib/assistant/open.ts';
 import { localizedPath } from '@/lib/i18n/localized-path.ts';
 import { splitWaits } from '@/lib/assistant/wait-chips.ts';
-import { isParkyDayTip, isServableTipRequest } from '@/lib/assistant/parky-tip.ts';
+import {
+  isParkyDayTip,
+  isServableTipRequest,
+  tipAgreesWithLevel,
+} from '@/lib/assistant/parky-tip.ts';
 import {
   ASLEEP_AFTER_MS,
   BORED_AFTER_MS,
@@ -2213,6 +2217,13 @@ check([isRide('tower'), isRide('egg'), isRide(null)], [true, false, false], 'a r
   check(isParkyDayTip({ verdict: 'good', text: 'Hin da!' }), true, 'tip: a tip');
   check(isParkyDayTip({ verdict: 'great', text: 'Hin da!' }), false, 'tip: unknown verdict');
   check(isParkyDayTip({ verdict: 'bad', text: '  ' }), false, 'tip: empty text');
+  check(tipAgreesWithLevel('bad', 'very_low'), false, 'tip: "lieber nicht" over a quiet day');
+  check(tipAgreesWithLevel('good', 'high'), false, 'tip: "hin da" over a busy day');
+  check(tipAgreesWithLevel('good', 'low'), true, 'tip: low and very low share a verdict');
+  check(tipAgreesWithLevel('meh', 'moderate'), true, 'tip: moderate is meh');
+  check(tipAgreesWithLevel('bad', 'extreme'), true, 'tip: extreme is bad');
+  check(tipAgreesWithLevel('bad', 'unknown'), true, 'tip: an unrated day contradicts nothing');
+  check(tipAgreesWithLevel('good', undefined), true, 'tip: no level, nothing to contradict');
 }
 // Parky's stamp on a ride's live wait: only on a ride that usually queues, the walk-on first, then
 // half the usual or less.
