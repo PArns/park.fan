@@ -2,7 +2,7 @@
 title: 'Il Parc Astérix accende a Natale uno show su OzIris'
 translationKey: parc-asterix-noel-gaulois-2026
 date: '2026-11-17'
-time: '17:00'
+time: '18:22'
 author: patrick
 mode: published
 featured: false
@@ -52,15 +52,15 @@ Lo spettacolo va in scena nell’area Égypte, aperta nel 2026. Posti a sedere n
 
 Nell’area dei Vichinghi c’è la [Patinoire Viking](ref:parc-asterix/patinoire-viking), una pista di pattinaggio all’aperto ma coperta, di 500 metri quadrati. I pattini li presta il parco senza costi in più. Sul Mont Gaulois torna [La Glissade d’Obélix](ref:parc-asterix/la-glissade-dobelix), uno scivolo da fare seduti su una ciambella.
 
-[Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) sono un percorso illuminato con lanterne e animali luminosi che attraversa Le Bois Enchanté, La Vallée Glacée e Le Village du Père Noël. Con un po’ di fortuna lungo la strada incontri il Père Noël Gaulois. Al Marché de Noël le casette di legno vendono dolci di stagione e oggetti di artigiani francesi, e accanto gli artisti di Chantons Noël cantano e suonano per mezz’ora. Gli addobbi natalizi arrivano in quattro aree, dal Village Gaulois all’Empire Romain.
+[Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) sono un percorso illuminato con lanterne e animali luminosi che attraversa Le Bois Enchanté, La Vallée Glacée e Le Village du Père Noël. Con un po’ di fortuna lungo la strada incontri il Père Noël Gaulois. Al Marché de Noël le casette di legno vendono dolci di stagione e oggetti di artigiani francesi, e accanto gli artisti di Chantons Noël cantano e suonano per mezz’ora. Il parco ha addobbato quattro aree a tema, tra cui il Village Gaulois e l’Empire Romain.
 
 ## Spettacoli e parata
 
-Sul ghiaccio va in scena “Qui veut la peau du Père Noël ?”, 25 minuti di acrobazie e danza in una fabbrica di giocattoli. “Quel Cirque !” è uno show acrobatico di 20 minuti, “C’est du Délire !” un musical. Al calar della sera il Défilé Gaulois de Noël attraversa il parco con cinque carri. La canzone della parata si intitola “Le Père Noël rêve de Potion” e la canta Gwendal Marimoutou: anche Babbo Natale, a quanto pare, vorrebbe un sorso di pozione magica. La giornata si chiude sul lago con L’Île aux Vœux, uno spettacolo notturno di otto minuti con fuochi pirotecnici.
+Sul ghiaccio va in scena “Qui veut la peau du Père Noël ?”, 25 minuti di acrobazie e danza in una fabbrica di giocattoli, e “Quel Cirque !” è uno show acrobatico di 20 minuti. “C’est du Délire !” è un musical. Al calar della sera il Défilé Gaulois de Noël attraversa il parco con cinque carri. Gwendal Marimoutou canta “Le Père Noël rêve de Potion”, e perché Babbo Natale sogni la pozione magica, qui non serve spiegarlo a nessuno. La giornata si chiude sul lago con L’Île aux Vœux, uno spettacolo notturno di otto minuti con fuochi pirotecnici.
 
 ## Orari
 
-Il parco è aperto dalle 11 alle 20, la Vigilia di Natale e San Silvestro fino alle 19. Quali parchi restano aperti anche dopo il 3 gennaio lo trovi nella [panoramica sui parchi divertimento in inverno 2026/27](/blog/parchi-divertimenti-inverno-2026).
+Il parco è aperto dalle 11 alle 20, la Vigilia di Natale e San Silvestro fino alle 19. Se a Natale vuoi aggiungere un secondo parco, lo trovi nella nostra [panoramica sui parchi divertimento in inverno 2026/27](/blog/parchi-divertimenti-inverno-2026).
 
 ```best-days-widget slug=parc-asterix
 
@@ -70,23 +70,23 @@ Il parco è aperto dalle 11 alle 20, la Vigilia di Natale e San Silvestro fino a
 
 Il Billet Noël costa 57 €, prezzo unico senza sconto per i bambini. Non ha una data fissa, vale anche nel fine settimana e si compra fino al giorno prima. Copre tutte le attrazioni e gli spettacoli di Noël Gaulois. Il cibo e le serate di Natale e Capodanno si pagano a parte.
 
-Per la prima volta c’è il Goûter du Père Noël del pomeriggio, e per l’occasione il Buffet de Noël diventa la fabbrica segreta dei giocattoli. Gli elfi e Saperlipopette risolvono qualche guaio prima del grande giro, poi arrivano cioccolata calda e dolci, e alla fine si presentano il Père Noël Gaulois, Astérix, Obélix e il cinghiale. Costa 18,90 € a persona, bambini compresi, e anche il genitore che si limita a guardare paga la cioccolata intera. Ci sono due turni, dalle 16:30 alle 17:30 e dalle 17:30 alle 18:30. Si prenota in anticipo, nell’app il giorno stesso oppure sul posto. A pranzo il Buffet de Noël, nell’area Égypte, serve un buffet con prodotti di stagione a 37,90 € per gli adulti e 12,90 € per i bambini.
+Per la prima volta c’è il Goûter du Père Noël del pomeriggio, e per l’occasione il Buffet de Noël diventa la fabbrica segreta dei giocattoli. Gli elfi e Saperlipopette risolvono qualche guaio prima del grande giro, poi arrivano cioccolata calda e dolci, e alla fine si presentano il Père Noël Gaulois, Astérix, Obélix e il cinghiale. Costa 18,90 € a persona, bambini compresi, e anche il genitore che si limita a guardare paga la cioccolata intera. Ci sono due turni, dalle 16:30 alle 17:30 e dalle 17:30 alle 18:30. Si prenota in anticipo, nell’app il giorno stesso oppure sul posto. A pranzo il Buffet de Noël, nell’area Égypte, serve un buffet a 37,90 € per gli adulti e 12,90 € per i bambini.
 
-A San Silvestro i Comptoirs d’Épidemaïs, anche loro addobbati per Natale, propongono un buffet delle feste. Il 31 dicembre il Buffet de Noël ospita dalle 20 alle 2 una serata di gala, prima cena con spettacolo e poi ballo, a 179 € e 69 € per i bambini. I tre hotel offrono buffet serali la Vigilia di Natale e San Silvestro a 110 € e 49 € per i bambini, e lì si festeggia fino alle 2 di notte.
+A San Silvestro i Comptoirs d’Épidemaïs propongono un buffet delle feste. Il 31 dicembre il Buffet de Noël ospita dalle 20 alle 2 una serata di gala, prima cena con spettacolo e poi ballo, a 179 € e 69 € per i bambini. I tre hotel offrono buffet serali la Vigilia di Natale e San Silvestro a 110 € e 49 € per i bambini, e lì si festeggia fino alle 2 di notte.
 
 ## Quali attrazioni funzionano
 
-Secondo il parco, le montagne russe di norma girano, ma non con il maltempo. Restano chiuse [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d’Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) e [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Il [Petit Train](ref:parc-asterix/le-petit-train?bare) ed [Enigmatix](ref:parc-asterix/enigmatix?bare) si dividono la giornata: il trenino gira dalle 11 alle 15:30, Enigmatix dalle 15:30 alla chiusura del parco. Quando gela, il parco può chiudere anche altre attrazioni.
+Secondo il parco, le montagne russe di norma girano, ma non con il maltempo. Il gelo può fermare anche altre attrazioni. Restano chiuse [Romus et Rapidus](ref:parc-asterix/romus-et-rapidus?bare), [La Revanche des Pirates – Le Grand Splatch](ref:parc-asterix/la-revanche-des-pirates-le-grand-splatch?bare), [Menhir Express](ref:parc-asterix/menhir-express?bare), [La Rivière d’Élis](ref:parc-asterix/la-riviere-delis?bare), [Hydrolix](ref:parc-asterix/hydrolix?bare) e [Les Chaises volantes](ref:parc-asterix/les-chaises-volantes?bare). Il [Petit Train](ref:parc-asterix/le-petit-train?bare) ed [Enigmatix](ref:parc-asterix/enigmatix?bare) si dividono la giornata: il trenino gira dalle 11 alle 15:30, Enigmatix dalle 15:30 alla chiusura del parco.
 
 ## Hotel con ingresso anticipato
 
-Chi dorme in uno dei tre hotel del parco entra ogni mattina mezz’ora prima dell’apertura in alcune attrazioni e incontra i personaggi dei fumetti. Durante Noël Gaulois vuol dire alle 10:30, un orario che non richiede la sveglia all’alba. Gli hotel stanno nel bosco e si raggiungono a piedi: Les Quais de Lutèce, quattro stelle e 150 camere, La Cité Suspendue, tre stelle e anche lei 150 camere, e Les Trois Hiboux, tre stelle.
+Chi dorme in uno dei tre hotel del parco entra ogni mattina mezz’ora prima dell’apertura in alcune attrazioni e incontra i personaggi dei fumetti. Durante Noël Gaulois vuol dire alle 10:30, un orario che non richiede la sveglia all’alba. Tutti e tre stanno nel bosco e si raggiungono a piedi. Les Quais de Lutèce ha quattro stelle, La Cité Suspendue e Les Trois Hiboux ne hanno tre; i primi due hanno 150 camere ciascuno.
 
 ## Come arrivare
 
 Plailly si trova 35 chilometri a nord della Porte de la Chapelle, a Parigi. In auto si prende la A1 in direzione Lille: il parco ha un’uscita tutta sua tra la 7 e la 8, e ci vuole circa mezz’ora. Il parcheggio costa 25 € al giorno.
 
-Senza auto si va con la RER B fino alla stazione Aéroport Charles de Gaulle e da lì con la Navette per il parco. Passa ogni 15-30 minuti, impiega circa 25 minuti e costa 14 € andata e ritorno o 8 € solo andata, con data fissa. L’ultima riparte un’ora dopo la chiusura del parco, quindi la Vigilia di Natale e San Silvestro alle 20. Gli altri modi per arrivare, con il pullman a lunga percorrenza o la navetta dalla Torre Eiffel, e le attrazioni con le code più lunghe fuori dal periodo natalizio le trovi nella nostra [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli).
+Senza auto si va con la RER B fino alla stazione Aéroport Charles de Gaulle e da lì con la Navette per il parco. Passa ogni 15-30 minuti, impiega circa 25 minuti e costa 14 € andata e ritorno o 8 € solo andata, con data fissa. L’ultima riparte un’ora dopo la chiusura del parco, quindi la Vigilia di Natale e San Silvestro alle 20. Puoi arrivare anche con il pullman a lunga percorrenza o con la navetta dalla Torre Eiffel. La nostra [guida al Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli) descrive entrambi i percorsi, e lì trovi anche dove si fa più coda fuori dal periodo natalizio.
 
 [Parc Astérix](ref:parc-asterix?full)
 

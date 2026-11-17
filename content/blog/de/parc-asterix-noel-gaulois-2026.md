@@ -2,7 +2,7 @@
 title: 'Parc Astérix zeigt zu Weihnachten eine Lichtshow an OzIris'
 translationKey: parc-asterix-noel-gaulois-2026
 date: '2026-11-17'
-time: '17:00'
+time: '18:22'
 author: patrick
 mode: published
 featured: false
