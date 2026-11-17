@@ -44,7 +44,7 @@ El [Parc Astérix](ref:parc-asterix), en Plailly, abre su temporada de invierno,
 
 ## Una fiesta de Cleopatra en el templo de OzIris
 
-En cuanto oscurece, el parque proyecta imágenes sobre el templo egipcio de la montaña rusa, con música, chorros de agua y pirotecnia. En la historia, Cleopatra invita a una fiesta a galos, hispanos, vikingos, romanos y egipcios, y cada pueblo le baila una coreografía para impresionarla. A los egipcios la fiesta los pilla desprevenidos, y convierten su palacio en escenario a toda prisa.
+En cuanto oscurece, el parque proyecta imágenes sobre el templo egipcio de la montaña rusa, con música, chorros de agua y pirotecnia. En la historia, Cleopatra invita a una fiesta a galos, hispanos, vikingos, romanos y egipcios, y cada pueblo le baila una coreografía para impresionarla. A los egipcios la fiesta los pilla desprevenidos. Convierten su palacio en escenario a toda prisa.
 
 El espectáculo está en la zona de Egipto, que abrió en 2026. No hay asientos: lo ves de pie y al aire libre, así que a finales de diciembre conviene llevar gorro. El parque aún no ha publicado la hora ni la duración.
 

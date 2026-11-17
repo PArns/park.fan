@@ -44,7 +44,7 @@ In [Parc Astérix](ref:parc-asterix) bij Plailly draait van 19 december 2026 tot
 
 ## Cleopatra geeft een feest bij de tempel van OzIris
 
-Zodra het donker is, projecteert het park beelden op de Egyptische tempel van de achtbaan, met muziek, fonteinen en vuurwerk. In de show nodigt Cleopatra Galliërs, Hispaniërs, Vikingen, Romeinen en Egyptenaren uit voor een feest, en elk volk danst een choreografie voor haar om indruk te maken. De Egyptenaren worden door het feest overvallen en bouwen hun paleis in alle haast om tot podium.
+Zodra het donker is, projecteert het park beelden op de Egyptische tempel van de achtbaan, met muziek, fonteinen en vuurwerk. In de show nodigt Cleopatra Galliërs, Hispaniërs, Vikingen, Romeinen en Egyptenaren uit voor een feest, en elk volk danst een choreografie voor haar om indruk te maken. De Egyptenaren worden door het feest overvallen. Ze bouwen hun paleis in alle haast om tot podium.
 
 De show staat in het themagebied Egypte, dat in 2026 is geopend. Zitplaatsen zijn er niet. Je kijkt staand en in de open lucht, en eind december is een muts dan geen overbodige luxe. Hoe laat de show begint en hoe lang hij duurt, heeft het park nog niet bekendgemaakt.
 

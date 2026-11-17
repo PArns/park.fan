@@ -44,7 +44,7 @@ Dal 19 dicembre 2026 al 3 gennaio 2027 il [Parc Astérix](ref:parc-asterix) di P
 
 ## La festa di Cleopatra davanti al tempio
 
-Quando fa buio, sul tempio egizio delle montagne russe partono le proiezioni, con musica, getti d’acqua e fuochi pirotecnici. Nella storia Cleopatra invita a una festa Galli, Ispanici, Vichinghi, Romani ed Egizi, e ogni popolo si presenta con una coreografia per fare colpo su di lei. Gli Egizi vengono presi alla sprovvista e trasformano il palazzo in un palco all’ultimo minuto.
+Quando fa buio, sul tempio egizio delle montagne russe partono le proiezioni, con musica, getti d’acqua e fuochi pirotecnici. Nella storia Cleopatra invita a una festa Galli, Ispanici, Vichinghi, Romani ed Egizi, e ogni popolo si presenta con una coreografia per fare colpo su di lei. Gli Egizi vengono presi alla sprovvista. Trasformano il palazzo in un palco all’ultimo minuto.
 
 Lo spettacolo va in scena nell’area Égypte, aperta nel 2026. Posti a sedere non ce ne sono: si guarda in piedi e all’aperto, e a fine dicembre il cappello di lana fa più comodo di qualsiasi programma di sala. Orario e durata il parco non li ha ancora pubblicati.
 

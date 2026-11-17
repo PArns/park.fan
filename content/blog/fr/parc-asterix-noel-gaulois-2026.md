@@ -51,7 +51,7 @@ Le spectacle se joue dans l’Égypte, la zone ouverte en 2026. Il n’y a pas d
 
 ## Patinoire, glissade sur bouée et parcours lumineux
 
-Dans la zone viking, la [Patinoire Viking](ref:parc-asterix/patinoire-viking) est une patinoire extérieure couverte de 500 mètres carrés, et le parc prête les patins gratuitement. Sur le Mont Gaulois, [La Glissade d’Obélix](ref:parc-asterix/la-glissade-dobelix) est de retour : on dévale la pente assis sur une bouée.
+Dans la zone viking, la [Patinoire Viking](ref:parc-asterix/patinoire-viking) est une patinoire extérieure couverte de 500 mètres carrés. Les patins sont prêtés gratuitement. Sur le Mont Gaulois, [La Glissade d’Obélix](ref:parc-asterix/la-glissade-dobelix) est de retour : on dévale la pente assis sur une bouée.
 
 [Les Jardins Merveilleux du Père Noël](ref:parc-asterix/les-jardins-merveilleux-du-pere-noel) forment un parcours lumineux, avec ses lanternes et ses animaux qui brillent, à travers Le Bois Enchanté, La Vallée Glacée et Le Village du Père Noël. Avec un peu de chance, tu y croises le Père Noël Gaulois. Au Marché de Noël, des chalets en bois proposent des douceurs de saison et des créations d’artisans français, et la troupe de Chantons Noël chante et joue une demi-heure juste à côté. Les décorations de Noël s’étendent sur quatre zones, du Village Gaulois à l’Empire Romain.
 

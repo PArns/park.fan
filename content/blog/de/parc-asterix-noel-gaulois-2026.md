@@ -44,7 +44,7 @@ Im [Parc Astérix](ref:parc-asterix) bei Plailly läuft vom 19. Dezember 2026 bi
 
 ## Kleopatra feiert am Tempel von OzIris
 
-Sobald es dunkel wird, projiziert der Park Bilder auf den ägyptischen Tempel der Achterbahn, mit Musik, Fontänen und Pyrotechnik. In der Show lädt Kleopatra Gallier, Hispanier, Wikinger, Römer und Ägypter zu einem Fest, und jedes Volk tanzt ihr eine Choreografie vor, um sie zu beeindrucken. Die Ägypter erwischt das Fest kalt, und sie bauen ihren Palast in aller Eile zur Bühne um.
+Sobald es dunkel wird, projiziert der Park Bilder auf den ägyptischen Tempel der Achterbahn, mit Musik, Fontänen und Pyrotechnik. In der Show lädt Kleopatra Gallier, Hispanier, Wikinger, Römer und Ägypter zu einem Fest, und jedes Volk tanzt ihr eine Choreografie vor, um sie zu beeindrucken. Die Ägypter erwischt das Fest kalt. Sie bauen ihren Palast in aller Eile zur Bühne um.
 
 Die Show läuft im Bereich Ägypten, der 2026 eröffnet wurde. Du schaust im Stehen und unter freiem Himmel zu, Ende Dezember also besser mit Mütze. Eine Uhrzeit und eine Dauer hat der Park bisher nicht veröffentlicht.
 
