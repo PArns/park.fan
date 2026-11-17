@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Parc Astérix en Navidad 2026: horarios y espectáculo nuevo'
   description: >-
-    Horarios del Parc Astérix en Navidad: Noël Gaulois del 19/12/2026 al 3/1/2027, de 11:00 a 20:00. Nuevo show: Les Merveilles de Cléopâtre. 57 €.
+    Horarios del Parc Astérix en Navidad: Noël Gaulois del 19/12/2026 al 3/1/2027, casi siempre de 11:00 a 20:00. Nuevo: Les Merveilles de Cléopâtre. 57 €.
   keywords:
     - Parc Astérix Navidad
     - Parc Astérix Navidad 2026
@@ -44,9 +44,9 @@ El [Parc Astérix](ref:parc-asterix), en Plailly, abre su temporada de invierno,
 
 ## Una fiesta de Cleopatra en el templo de OzIris
 
-En cuanto oscurece, el parque proyecta imágenes sobre el templo egipcio de la montaña rusa, con música, efectos de luz, chorros de agua y pirotecnia. En la historia, Cleopatra invita a una fiesta a galos, hispanos, vikingos, romanos y egipcios, y cada pueblo le baila una coreografía para impresionarla. A los egipcios, que en teoría son los anfitriones, la fiesta los pilla desprevenidos, y convierten su palacio en escenario a toda prisa.
+En cuanto oscurece, el parque proyecta imágenes sobre el templo egipcio de la montaña rusa, con música, efectos de luz, chorros de agua y pirotecnia. En la historia, Cleopatra invita a una fiesta a galos, hispanos, vikingos, romanos y egipcios, y cada pueblo le baila una coreografía para impresionarla. A los egipcios la fiesta los pilla desprevenidos, y convierten su palacio en escenario a toda prisa.
 
-El espectáculo está en la zona de Egipto, que el parque ha renovado para 2026. No hay asientos: lo ves de pie y al aire libre, así que a finales de diciembre conviene llevar gorro y bufanda. El parque aún no ha publicado la hora ni la duración.
+El espectáculo está en la zona de Egipto, que abrió en 2026. No hay asientos: lo ves de pie y al aire libre, así que a finales de diciembre conviene llevar gorro y bufanda. El parque aún no ha publicado la hora ni la duración.
 
 ## Pista de hielo, tobogán con flotador y paseo de luces
 
@@ -56,7 +56,7 @@ En la zona vikinga está la [Patinoire Viking](ref:parc-asterix/patinoire-viking
 
 ## Espectáculos y desfile
 
-Sobre el hielo se representa «Qui veut la peau du Père Noël ?», 25 minutos de acrobacias y baile en una fábrica de juguetes. «Quel Cirque !» es un espectáculo acrobático de 20 minutos y «C'est du Délire !», un musical cómico. Al caer la noche, el Défilé Gaulois de Noël recorre el parque con cinco carrozas. Su canción se titula «Le Père Noël rêve de Potion» y la canta Gwendal Marimoutou. En este parque, ni Papá Noel se libra de soñar con la poción mágica. Para cerrar el día, sobre el lago se enciende L'Île aux Vœux, un espectáculo nocturno de ocho minutos con pirotecnia.
+Sobre el hielo se representa «Qui veut la peau du Père Noël ?», 25 minutos de acrobacias y baile en una fábrica de juguetes. «Quel Cirque !» es un espectáculo acrobático de 20 minutos y «C'est du Délire !», un musical de estilo muy galo. Al caer la noche, el Défilé Gaulois de Noël recorre el parque con cinco carrozas. Su canción se titula «Le Père Noël rêve de Potion» y la canta Gwendal Marimoutou. En este parque, ni Papá Noel se libra de soñar con la poción mágica. Para cerrar el día, sobre el lago se enciende L'Île aux Vœux, un espectáculo nocturno de ocho minutos con pirotecnia.
 
 ## Horarios
 

@@ -22,7 +22,7 @@ rideLinks:
 seo:
   title: 'Parc Astérix met kerst 2026: openingstijden en nieuwe show'
   description: >-
-    Parc Astérix openingstijden met kerst: Noël Gaulois van 19-12-2026 tot 3-1-2027, dagelijks 11 tot 20 uur, nieuwe avondshow op OzIris. Ticket € 57.
+    Parc Astérix openingstijden met kerst: Noël Gaulois van 19-12-2026 tot 3-1-2027, meestal 11 tot 20 uur, nieuwe avondshow op OzIris. Ticket € 57.
   keywords:
     - Parc Astérix kerst
     - Parc Astérix kerst 2026
@@ -44,9 +44,9 @@ In [Parc Astérix](ref:parc-asterix) bij Plailly draait van 19 december 2026 tot
 
 ## Cleopatra geeft een feest bij de tempel van OzIris
 
-Zodra het donker is, projecteert het park beelden op de Egyptische tempel van de achtbaan. Daar komen muziek en lichteffecten bij, fonteinen spuiten omhoog en er knalt vuurwerk. In de show nodigt Cleopatra Galliërs, Hispaniërs, Vikingen, Romeinen en Egyptenaren uit voor een feest, en elk volk danst een choreografie voor haar om indruk te maken. Uitgerekend de Egyptenaren, de gastheren, worden door het feest overvallen en bouwen hun paleis in alle haast om tot podium.
+Zodra het donker is, projecteert het park beelden op de Egyptische tempel van de achtbaan. Daar komen muziek en lichteffecten bij, fonteinen spuiten omhoog en er knalt vuurwerk. In de show nodigt Cleopatra Galliërs, Hispaniërs, Vikingen, Romeinen en Egyptenaren uit voor een feest, en elk volk danst een choreografie voor haar om indruk te maken. De Egyptenaren worden door het feest overvallen en bouwen hun paleis in alle haast om tot podium.
 
-De show staat in het themagebied Egypte, dat het park voor 2026 opnieuw heeft ingericht. Zitplaatsen zijn er niet. Je kijkt staand en in de open lucht, en eind december is een muts dan geen overbodige luxe. Hoe laat de show begint en hoe lang hij duurt, heeft het park nog niet bekendgemaakt.
+De show staat in het themagebied Egypte, dat in 2026 is geopend. Zitplaatsen zijn er niet. Je kijkt staand en in de open lucht, en eind december is een muts dan geen overbodige luxe. Hoe laat de show begint en hoe lang hij duurt, heeft het park nog niet bekendgemaakt.
 
 ## IJsbaan, bandenglijbaan en lichtjespad
 
@@ -56,7 +56,7 @@ In het Vikinggebied ligt de [Patinoire Viking](ref:parc-asterix/patinoire-viking
 
 ## Shows en optocht
 
-Op het ijs speelt “Qui veut la peau du Père Noël ?”, 25 minuten acrobatiek en dans in een speelgoedfabriek. “Quel Cirque !” is een acrobatiekshow van 20 minuten, “C'est du Délire !” een komische musical. Als het donker wordt, trekt de Défilé Gaulois de Noël met vijf praalwagens door het park. Het lied erbij heet “Le Père Noël rêve de Potion” en wordt gezongen door Gwendal Marimoutou. Een kerstman die van toverdrank droomt: in dit park hoeft niemand te vragen welke drank er bedoeld is. Aan het eind van de dag gaat boven het meer L'Île aux Vœux de lucht in, een nachtshow van acht minuten met vuurwerk.
+Op het ijs speelt “Qui veut la peau du Père Noël ?”, 25 minuten acrobatiek en dans in een speelgoedfabriek. “Quel Cirque !” is een acrobatiekshow van 20 minuten, “C'est du Délire !” een musical met een flinke Gallische inslag. Als het donker wordt, trekt de Défilé Gaulois de Noël met vijf praalwagens door het park. Het lied erbij heet “Le Père Noël rêve de Potion” en wordt gezongen door Gwendal Marimoutou. Een kerstman die van toverdrank droomt: in dit park hoeft niemand te vragen welke drank er bedoeld is. Aan het eind van de dag gaat boven het meer L'Île aux Vœux de lucht in, een nachtshow van acht minuten met vuurwerk.
 
 ## Openingstijden
 
