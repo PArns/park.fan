@@ -409,6 +409,9 @@ export function ParkCalendarDayDetail({
               today={todayInPark}
               dateLabel={title}
               crowdLevel={meaningLevel}
+              // The level so far even where it equals the forecast and the split row is hidden:
+              // the panel's level then says the same.
+              soFarLevel={day.isToday ? (day.todayCrowdLevel ?? null) : null}
               open={open && !navigating}
               onAsk={() => onOpenChange(false)}
             />

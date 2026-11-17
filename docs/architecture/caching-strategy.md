@@ -129,9 +129,11 @@ What can still differ, and for how long:
   made, and nothing rings during the day, so it trails the live level by the copy's age: up to the
   next ring at Vercel. The live „Andrang jetzt" in the today panel is the live poll's and is never
   compared with it ([crowd levels](../api/backend-integration.md#crowd-levels)). Parky's tip for
-  today reads the same level, but only the tip for today itself, and its relay keeps it an hour at
-  most (`PARKY_TIP_TODAY_WINDOW`), so later in the day the tip can say a busier or quieter morning
-  than the „bisher" beside it, which trails by more. The tip guard compares the forecast level only.
+  today reads the same level, and its relay keeps it an hour at most (`PARKY_TIP_TODAY_WINDOW`), so
+  later in the day it can be newer than the „Heute bisher" beside it. It names the level it was
+  written from (`todayCrowdLevel`), and `tipAgreesWithLevel` hides it where the dialog has another
+  one for today, as it does for another forecast level: no „bisher ruhig" over „Heute bisher: hoch".
+  The tip then shows again once the dialog's month and the tip name the same level.
 - **The trip planner and the region hubs, by up to about three hours.** `/api/trip-regions/…` reads
   through the Data Cache under `trip-region:<region>`, which the forecast warmup does not ring,
   for `CACHE_TTL.tripRegionData` (1 h) on top of the API's own hour (`trip-regions:calendar:v2`,

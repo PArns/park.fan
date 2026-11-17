@@ -23,6 +23,11 @@ export interface ParkyDayTip {
    * moves the day. Optional while an API without it may answer.
    */
   crowdLevel?: CrowdLevel;
+  /**
+   * On the tip for the park's today only, the level so far the sentence was written from („bisher
+   * ruhig"). Absent on other days, before today has one, and from an API without it.
+   */
+  todayCrowdLevel?: CrowdLevel;
   /** One sentence in Parky's voice, written for this park, day and language. */
   text: string;
   promptVersion: number;
@@ -87,16 +92,21 @@ export function tipVerdictFor(
 }
 
 /**
- * Whether a tip may stand above the crowd panel that shows `level` for the same day. The calendar
- * month and the tip are cached for different windows, so once the forecast moves overnight one of
- * them still has the old day: a „lieber nicht“ over „sehr niedrig“ is worse than no tip. A tip that
- * names the level it was written for must name the panel's: a sentence about a „hoch“ day reads
- * wrong over „extrem“ though both say „lieber nicht“. Without one, the verdicts must match.
+ * Whether a tip may stand above the crowd panel that shows `level` for the same day, and on today
+ * `soFar`, the level so far the dialog shows beside it. The calendar month and the tip are cached
+ * for different windows, so once the forecast moves overnight one of them still has the old day: a
+ * „lieber nicht“ over „sehr niedrig“ is worse than no tip. A tip that names the level it was written
+ * for must name the panel's: a sentence about a „hoch“ day reads wrong over „extrem“ though both say
+ * „lieber nicht“. Without one, the verdicts must match. Today's tip is kept a shorter time than the
+ * month, so its „bisher ruhig" can be newer than the „Heute bisher" beside it: where both name a
+ * level so far, they must be the same.
  */
 export function tipAgreesWithLevel(
-  tip: Pick<ParkyDayTip, 'verdict' | 'crowdLevel'>,
-  level: CrowdLevel | 'closed' | null | undefined
+  tip: Pick<ParkyDayTip, 'verdict' | 'crowdLevel' | 'todayCrowdLevel'>,
+  level: CrowdLevel | 'closed' | null | undefined,
+  soFar?: CrowdLevel | null
 ): boolean {
+  if (tip.todayCrowdLevel && soFar && tip.todayCrowdLevel !== soFar) return false;
   const shown = tipVerdictFor(level);
   if (!shown) return true;
   return tip.crowdLevel ? tip.crowdLevel === level : shown === tip.verdict;
