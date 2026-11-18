@@ -2,15 +2,13 @@
 title: 'Europa-Park: op welke dagen het het rustigst is'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-10-04'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   Geen park in Duitsland verkoopt meer tickets, en toch sta je in Rust korter
-  in de rij dan in het Phantasialand. Het leegst is het op zondag en donderdag in mei en juni, buiten de vakanties in
-  Baden-Württemberg, Zwitserland en de Elzas. De Euro-Mir rijdt tot 9 januari
-  2027 en wordt daarna afgebroken.
+  in de rij dan in het Phantasialand. Het leegst is het op zondag en donderdag in mei en juni, buiten de schoolvakanties.
 tags:
   - europa-park
   - voltron
@@ -51,6 +49,7 @@ seo:
     - Europa-Park fast pass
     - Europa-Park single rider
     - Europa-Park ticketprijzen 2026
+    - Europa-Park ticketprijzen 2027
     - Europa-Park openingstijden 2026
     - Europa-Park winter 2026
     - HALLOWinter Europa-Park
@@ -815,7 +814,7 @@ park HALLOWinter, en dan gaat het pas om 19 uur dicht, dus precies wanneer
 hiernaast het terrein opengaat. Wie voor een novemberdatum een Traumatica-ticket
 koopt, geeft daarmee het laatste parkuur weg.
 
-## Entreeprijzen 2026 en route
+## Entreeprijzen 2026 en 2027, route
 
 **Tickets.** De prijs hangt af van de datum, het park werkt met twee
 prijscategorieën. Online
@@ -826,17 +825,26 @@ komt er **10 € per ticket** bovenop, als boete voor het niet vooruit boeken. W
 in het resort overnacht, krijgt de beste prijs ongeacht de datum: 67 € voor één
 dag, 127 voor twee, 160 voor drie. Het goedkoopst wordt het in 2027 in de
 Pre-Opening Weeks van 7 tot 19 maart: 59,50 € door de week, 70 € in het weekend,
-maar nog niet met alle attracties. Tickets voor het zomerseizoen 2027 zijn er
-vanaf 10 november 2026.
+maar nog niet met alle attracties.
 
-De **ResortPass**, de jaarkaart, is in september 2026 niet te koop, dus voorlopig kun je hem alleen bewonderen. Hij bestaat in zilver, alleen geldig op vooraf vastgelegde dagen, en in goud, geldig op alle dagen en met twee dagen Rulantica. Voor de meeste gezinnen leveren twee dagen achter elkaar sowieso meer op.
+Bij de start van het zomerseizoen op **20 maart 2027** gaan de prijzen omhoog.
+Online betalen volwassenen dan **70 tot 79,50 €** per dag, kinderen en senioren
+**59 tot 68 €**; twee dagen kosten 132,50 tot 150 respectievelijk 109,50 tot
+124,50 €. Die prijzen gelden tot 9 januari 2028, Halloween en winter inbegrepen.
+De beste prijs voor wie in het resort overnacht, stijgt naar 70 € voor één dag,
+132,50 voor twee en 167 voor drie. Tickets voor het seizoen 2027 verkoopt het
+park sinds 10 november 2026; in ons bericht over de
+[prijsverhoging](/news/europa-park-prijzen-2027) staat een rekenvoorbeeld voor
+een gezin.
+
+De **ResortPass**, de jaarkaart, is in november 2026 niet te koop, omdat het contingent op is, en tot nader order komen er geen nieuwe kaarten bij. Voorlopig kun je hem dus alleen bewonderen. Hij bestaat in zilver vanaf 275 €, alleen geldig op vooraf vastgelegde dagen, en in goud vanaf 430 €, geldig op alle dagen en met twee dagen Rulantica. Voor de meeste gezinnen leveren twee dagen achter elkaar sowieso meer op.
 
 **Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**, en is van
 daaraf bewegwijzerd. Over de weg is het vanuit Freiburg zo’n 40 kilometer,
 vanuit Straatsburg zo’n 55, vanuit Bazel en vanuit Karlsruhe telkens zo’n 100,
 wegwerkzaamheden op de A5 niet meegerekend. Met de trein rijd je
 tot Ringsheim en van daar met de shuttlebus. **Parkeren kost 10 €** per dag,
-Rulantica heeft een eigen parkeerplaats voor dezelfde prijs.
+vanaf 20 maart 2027 is dat 12 €. Rulantica heeft een eigen parkeerplaats.
 
 **Eten.** Onze database telt **62 eetgelegenheden** in het park, en omdat elk
 themagebied een land is, kookt ook elk gebied iets anders. Twee adressen horen echter niet
@@ -889,11 +897,13 @@ opening naar binnen, in het HALLOWinter- en winterseizoen een uur. Alleen de
 VR-ritten kosten extra: Eurosat Coastiality 7 €, met een eigen station naast de
 Eurosat-rij, en de Alpenexpress Coastiality 4 €.
 
-### Wat kost de entree van het Europa-Park in 2026?
+### Wat kost de entree van het Europa-Park in 2026 en 2027?
 
-Online tussen **67 en 76 €** voor volwassenen en tussen 56,50 en 65 € voor
-kinderen van 4 tot 11 en senioren, afhankelijk van de datum. Kinderen onder de 4
-betalen niets. Aan de dagkassa komt er 10 € per ticket bij. Parkeren kost 10 €.
+Tot 9 januari 2027 online tussen **67 en 76 €** voor volwassenen en tussen 56,50
+en 65 € voor kinderen van 4 tot 11 en senioren, afhankelijk van de datum. Vanaf
+20 maart 2027 is het **70 tot 79,50 €** en 59 tot 68 €. Kinderen onder de 4
+betalen niets. Aan de dagkassa komt er 10 € per ticket bij. Parkeren kost 10 €,
+vanaf 20 maart 2027 12 €.
 
 ### Hoeveel achtbanen heeft het Europa-Park?
 
@@ -972,7 +982,7 @@ Als het regent, wordt de rij bij de Eurosat langer.
 - Seizoenstijden 2026/27, HALLOWinter, de winteropening, de laatste gewone dag op 9 januari 2027, de Pre-Opening Weeks en de seizoensstart 2027: [Openingstijden & seizoenen (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [HALLOWinter in het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/hallowinter-im-europa-park) · [Winterzauber in het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park) · [De Pre-Opening Weeks 2027 (officieel)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening)
 - Halloweenseizoen met 180.000 pompoenen, het Pumpkin Village en het dagdoolhof Tartaros: [“Halloween im Europa-Park Erlebnis-Resort” (MACK Gruppe)](https://mack.group/de/presse-medien/pressemitteilungen/halloween-im-europa-park-erlebnis-resort) · [Dagdoolhof “Tartaros” (officieel)](https://www.europapark.de/de/freizeitpark/attraktionen/tages-maze-tartaros)
 - Traumatica 2026: data, scare attractions, extra tickets, leeftijdsgrenzen, het terrein in het Griekse themagebied: [Traumatica (officieel)](https://www.europapark.de/nl/evenementen/traumatica) · [Scare Attractions (traumatica.com)](https://traumatica.com/en/scare-attractions/) · [Tickets (traumatica.com)](https://traumatica.com/en/tickets/) · [FAQ (traumatica.com)](https://traumatica.com/en/info/) · [ons nieuwsbericht over het jubileum](/blog/traumatica-tien-jaar-europa-park) · [onze Halloween-gids](/blog/halloween-pretparken-2026)
-- Prijzen 2026, twee prijscategorieën, beste prijs met overnachting, ResortPass (in september 2026 niet te koop), toeslag aan de kassa, Pre-Opening-prijzen 2027, combiticket Ride & Slide: [Tickets & aanbiedingen (officieel)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [De Pre-Opening Weeks 2027 (officieel)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening)
+- Prijzen 2026 en 2027, twee prijscategorieën, beste prijs met overnachting, toeslag aan de kassa, parkeren, Pre-Opening-prijzen 2027: [Tickets & prijzen (officieel)](https://www.europapark.de/de/tickets-preise) · ResortPass, contingent op: [ResortPass (officieel)](https://www.europapark.de/de/resortpass/europa-park-resortpass) · combiticket Ride & Slide: [Tickets & aanbiedingen (officieel)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [De Pre-Opening Weeks 2027 (officieel)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening)
 - Geen fast pass, single rider bij zes attracties, de gratis VirtualLine bij zeven, de vroege toegang voor hotelgasten (45 minuten in zomer en Halloween vanaf 8.15 uur, 60 minuten in HALLOWinter en winter vanaf 10 uur) en de toeslagen voor Coastiality: [Tips voor uw bezoek aan het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [VirtualLine in het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park) · [Overnachtingsaanbod (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Eurosat Coastiality (officieel)](https://www.europapark.de/de/freizeitpark/attraktionen/eurosat-coastiality) · [Alpenexpress Coastiality (officieel)](https://www.europapark.de/de/freizeitpark/attraktionen/alpenexpress-coastiality)
 - Het Ammolite met twee Michelinsterren sinds november 2014, Silver Lake City en de Riverside Western Lodge met 119 kamers, YULLBE GO in de blue fire Dome sinds 2020: [Ammolite – House of Light (officieel)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite) · [Silver Lake City (officieel)](https://www.europapark.de/de/uebernachten/silver-lake-city) · [Europa-Park Riverside Western Lodge (officieel)](https://www.europapark.de/de/uebernachten/riverside-western-lodge) · [YULLBE GO in de blue fire Dome (officieel)](https://www.europapark.de/de/freizeitpark/attraktionen/yullbe-go-im-blue-fire-dome)
 - Route via de A5, parkeertarieven, Rulantica, de Michelinster voor Eatrenalin in 2026: [Route naar het Europa-Park (officieel)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Route naar Rulantica (officieel)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/anreise-nach-rulantica) · [Nieuwtjes & nieuws (officieel)](https://www.europapark.de/de/freizeitpark/infos/europa-park-neuheiten-news) · [Eatrenalin op en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin); afstanden over de weg volgens OpenStreetMap-routing
