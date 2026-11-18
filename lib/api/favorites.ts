@@ -13,6 +13,8 @@ import type {
   LiveWaitTimes,
   AttractionKind,
   HourlyForecastItem,
+  PerformanceSchedule,
+  WorksPeriod,
 } from '@/lib/api/types';
 
 /** A favorite park as `/v1/favorites` returns it. */
@@ -135,6 +137,14 @@ export interface FavoriteAttraction {
    * the API ships it.
    */
   attractionKind?: AttractionKind | null;
+  /**
+   * The ride's performance start times; a blog ride reference carries them from the attraction
+   * detail, so its card shows the next start in place of a CLOSED between two performances.
+   */
+  performanceSchedules?: PerformanceSchedule[];
+  /** The curated works windows, carried alongside for the same card. */
+  worksPeriod?: WorksPeriod | null;
+  worksPeriods?: WorksPeriod[];
 }
 
 /** A favorite show as `/v1/favorites` returns it. */

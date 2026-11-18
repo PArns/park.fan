@@ -1,13 +1,18 @@
 'use client';
 
-import { Clock } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { Clock, Theater } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { BlogAttractionCardLive } from './blog-attraction-card-live';
 import { Badge } from '@/components/ui/badge';
 import { ParkStatusBadge } from '@/components/parks/park-status-badge';
-import { isNotOperating, waitTimeBadgeClass } from '@/lib/blog/live-display';
+import { PERFORMANCE_BADGE_CLASS } from '@/components/parks/performance-badge';
+import { inlinePerformanceSlot, isNotOperating, waitTimeBadgeClass } from '@/lib/blog/live-display';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { parkWallClock } from '@/lib/utils/park-day';
+import { formatPerformanceTime } from '@/lib/utils/performance-schedule';
+import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { cn } from '@/lib/utils';
 import { useLiveBlogRide } from '@/lib/blog/use-blog-live';
@@ -49,10 +54,15 @@ export function BlogAttractionLink({
 }: BlogAttractionLinkProps) {
   const tCommon = useTranslations('common');
   const tGeo = useTranslations('geo');
+  const tPerformance = useTranslations('attractions.performance');
+  const locale = useLocale();
   // A post stands at the edge for up to a day, so the resolved pair is a render-time snapshot;
   // refresh both in the browser (`useLiveBlogRide`). The hover card fetches the fuller payload once it opens.
   const { park, attraction } = useLiveBlogRide(resolvedPark, resolvedAttraction);
   const label = children ?? attraction?.attractionName ?? fallbackLabel;
+  // Only a ride with a programme reads the clock, so the other chips take no minute tick.
+  const schedules = attraction?.detail?.performanceSchedules;
+  const nowMs = useMinuteNow(!!schedules?.length);
   const bare = options?.has('bare') ?? false;
   // `chip`: the live badge without the "(Park, Country)" note, for prose that already names the park.
   const chipOnly = options?.has('chip') ?? false;
@@ -67,8 +77,34 @@ export function BlogAttractionLink({
   // the ride isn't running. Real badge components — not recoloured link text.
   // A ride that closed for good says that, whatever the live reading is.
   const closed = isNotOperating(attraction.status);
+  // A ride that starts at set times shows its next start: the feed reads it CLOSED between two
+  // performances, which is no closure.
+  const performanceSlot = inlinePerformanceSlot(
+    {
+      schedules,
+      worksPeriods: worksPeriodsOf(attraction.detail),
+      status: attraction.status ?? 'UNKNOWN',
+      parkStatus: park.status,
+    },
+    nowMs === null ? null : parkWallClock(nowMs, park.timezone)
+  );
   const liveBadge = attraction.closedPermanently ? (
     <ParkStatusBadge status="RETIRED" className={INLINE_BADGE} />
+  ) : performanceSlot ? (
+    <Badge title={tPerformance('hint')} className={cn(PERFORMANCE_BADGE_CLASS, INLINE_BADGE)}>
+      <Theater className="h-2.5 w-2.5" aria-hidden="true" />
+      {performanceSlot === 'pending' ? (
+        // Holds the chip's width until the park's clock is read.
+        <span className="invisible tabular-nums" aria-hidden="true">
+          00:00
+        </span>
+      ) : (
+        <>
+          <span className="sr-only">{tPerformance('next')}: </span>
+          <span className="tabular-nums">{formatPerformanceTime(performanceSlot, locale)}</span>
+        </>
+      )}
+    </Badge>
   ) : closed ? (
     <ParkStatusBadge status={attraction.status ?? 'CLOSED'} className={INLINE_BADGE} />
   ) : typeof attraction.currentWaitTime === 'number' ? (

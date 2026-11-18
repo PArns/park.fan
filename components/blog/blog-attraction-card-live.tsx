@@ -4,6 +4,8 @@ import { AttractionCard } from '@/components/parks/attraction-card';
 import { buildAttractionPayload } from '@/lib/blog/attraction-payload';
 import { useLiveBlogRide } from '@/lib/blog/use-blog-live';
 import { useActiveOnScreen } from '@/lib/hooks/use-active-on-screen';
+import { useMinuteNow } from '@/lib/hooks/use-minute-now';
+import { parkWallClock } from '@/lib/utils/park-day';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 
 interface BlogAttractionCardLiveProps {
@@ -42,6 +44,10 @@ export function BlogAttractionCardLive({
 
   const currentPark = livePark ?? park;
   const currentAttraction = liveAttraction ?? attraction;
+  // The park's day for the card's programme and works windows. A post is cached for up to a day,
+  // so the browser reads it rather than the render.
+  const nowMs = useMinuteNow(!!currentAttraction.detail?.performanceSchedules?.length);
+  const todayIso = nowMs === null ? undefined : parkWallClock(nowMs, currentPark.timezone).date;
 
   return (
     <div ref={ref} className={className}>
@@ -53,6 +59,7 @@ export function BlogAttractionCardLive({
         objectPosition={objectPosition}
         showParkName
         timezone={currentPark.timezone}
+        todayIso={todayIso}
         closedPermanently={currentAttraction.closedPermanently}
       />
     </div>

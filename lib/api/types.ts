@@ -1113,6 +1113,12 @@ export interface AttractionResponse {
    * attraction. Null or absent means nobody has judged it, never „it is a ride"; render nothing.
    */
   attractionKind?: AttractionKind | null;
+  /** The ride's performance start times, as on {@link ParkAttraction.performanceSchedules}. */
+  performanceSchedules?: PerformanceSchedule[];
+  /** The curated works window that matters today, as on {@link ParkAttraction.worksPeriod}. */
+  worksPeriod?: WorksPeriod | null;
+  /** Every curated works window, as on {@link ParkAttraction.worksPeriods}. */
+  worksPeriods?: WorksPeriod[];
   /**
    * Indoor, outdoor or outdoor with a roofed queue (see {@link IndoorOutdoor}). Curated and
    * day-stable, so it rides the server render, not the poll. Null or absent means unchecked,

@@ -645,6 +645,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`performance-badge.tsx`](../../components/parks/performance-badge.tsx)
 
 - `PerformanceBadge` _component_: „Feste Vorstellungen": stands where the status badge would on a ride that shows today's performance times instead of a wait. The feed reads such a ride CLOSED between two performances, and a red badge over a countdown would contradict it.
+- `PERFORMANCE_BADGE_CLASS` _const_: The badge colours of a ride that starts at set times: sky, the colour of a timetable rather than of a state. Shared with the blog's inline ride chip, which shows the next start in them.
 
 ### [`performance-countdown.tsx`](../../components/parks/performance-countdown.tsx)
 

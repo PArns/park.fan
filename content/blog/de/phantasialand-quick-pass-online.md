@@ -58,7 +58,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> Die 3 Mausketiere sind im Shop schon länger ausverkauft: Wie am 15. November stand ihr Quick Pass auch heute zum Verkaufsstart um 11 Uhr und um 11:30 Uhr auf „Derzeit ausverkauft“, ohne Preis. Auf der [Infoseite des Parks](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) steht er mit 5 €. Für Taron gibt es jetzt zwei verschiedene Quick Pässe für je 12 €: Taron Daylight gilt bis 16 Uhr, Taron After Dark ab 17 Uhr, und zwischen 16 und 17 Uhr gilt keiner der beiden. Neu im Shop ist außerdem Chiapas für 5 €, den Preis im Winter, während die Infoseite weiter 10 € nennt. Die übrigen Preise sind dieselben wie am 15. November, und Colorado Adventure steht inzwischen auch auf der Infoseite mit 7 €. Mit den 5 € für die Mausketiere kosten alle elf Einzelpässe zusammen 80 €, so viel wie der Ultimate, bei dem F.L.Y. noch dazukommt.
+> Taron hat jetzt zwei Quick Pässe für je 12 €, Daylight bis 16 Uhr und After Dark ab 17 Uhr. Im Ultimate sind beide Fahrten drin. Neu im Shop ist außerdem Chiapas, im Winter für 5 €.
 
 Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin, und dort hast du dich erst einmal angestellt, um später an einer Bahn weniger anzustehen.
 
