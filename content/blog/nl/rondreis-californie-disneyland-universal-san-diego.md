@@ -114,6 +114,9 @@ Buiten de zomer en de vakantieweken werkt Elmo alleen in het weekend. Van 8 sept
 
 SeaWorld San Diego viert van 13 november 2026 tot 3 januari 2027 elke dag de [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026), bij de gewone toegang inbegrepen. Howl-O-Scream met een eigen ticket liep in 2026 van 11 september tot 31 oktober, en voor 2027 noemt SeaWorld geselecteerde avonden van 10 september tot 31 oktober.
 
+> [!PARKY] Goede timing
+> Voor de kerstprogramma's gaan we tussen 30 november en 18 december: dan lopen ze in Disneyland, bij Universal, bij Knott's en in SeaWorld allemaal al, en hebben de scholen in Los Angeles geen vrije dagen. Vuurwerk bij sluitingstijd sla ik nooit over. Naar LEGOLAND gaan we dus op 5 of 12 december: op beide avonden is er vuurwerk bij de Christmas Bricktacular.
+
 ![Witte letters met SeaWorld San Diego op een geel afdak onder een grijze lucht. | Hier aan Mission Bay is SeaWorld in 1964 begonnen.](/media/seaworld-san-diego/sign.jpg)
 
 ## Waar je slaapt

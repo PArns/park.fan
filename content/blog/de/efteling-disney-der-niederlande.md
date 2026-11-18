@@ -545,6 +545,9 @@ Danach quer durchs Anderrijk zu [Danse Macabre](ref:efteling/danse-macabre) und
 Warteschlange von Mittag bis in den Nachmittag fast gleich lang und
 wird erst gegen Abend kürzer, die kannst du dir aufheben.
 
+> [!PARKY]
+> Für Danse Macabre stellen wir uns schon im Ruigrijk an, digital in der kostenlosen Efteling-App, und fahren Joris en de Draak, bis das Handy summt. Anstehen, ohne herumzustehen, so mag ich das. Den Rest des Tages legen wir vorher im [Tagesplaner](/trip-planner) Bahn für Bahn fest.
+
 **Mittags gehst du in den Märchenwald**, wenn an den Bahnen die Warteschlangen am
 längsten sind. Dort stehst du nirgends an. Nimm dir eine Stunde dafür, nicht zwanzig
 Minuten.
@@ -648,6 +651,9 @@ sonst übers Jahr hat. Wer die Wintersaison in Ruhe sehen will, nimmt
 einen Tag unter der Woche im November oder in der zweiten Januarhälfte, nicht die Woche
 zwischen den Jahren. Vorher lohnt ein Blick auf die Wartungsliste des Parks: 2026
 ist Droomvlucht vom 9. November bis 4. Dezember geschlossen, Joris en de Draak vom 30. November bis 18. Dezember.
+
+> [!PARKY] Januar gewinnt
+> Von den beiden ruhigeren Zeiten nehmen wir die zweite Januarhälfte, unter der Woche: Droomvlucht ist 2026 bis zum 4. Dezember zur Wartung geschlossen, Joris en de Draak bis zum 18., im Januar keine der beiden. Für Aquanura im Dunkeln zieh ich mir eine Mütze übers Riesenrad. Ob die Achterbahnen draußen fahren, entscheidet dann nur noch das Wetter.
 
 Meine Bilder hier sind alle an einem einzigen Winterabend entstanden.
 

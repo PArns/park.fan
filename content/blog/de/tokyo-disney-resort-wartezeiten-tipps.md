@@ -297,6 +297,9 @@ Wer erst später kommt, kauft einen von zwei kürzeren Pässen. Der **After 3 Pa
 
 Verkauft wird nur noch online, auf der Website und in der App, die Kassen am Eingang sind geschlossen. Gäste eines Disney-Hotels können auch im Hotel kaufen. Der Verkauf beginnt jeden Tag um 14 Uhr japanischer Zeit für den Tag zwei Monate später. In Deutschland ist das im Winter 6 Uhr morgens, im Sommer 7 Uhr. Pro Bestellung gehen bis zu zehn Tickets, eine Erstattung bei eigener Absage gibt es nicht. Zum Wiedereinlass am selben Tag sagt man beim Verlassen am Ausgang einem Mitarbeiter Bescheid und kommt später mit demselben Ticket wieder hinein.
 
+> [!PARKY]
+> Weil der Park schon beim Kauf feststeht, verteilen wir die beiden zuerst im [Reiseplaner](/japan#planner) auf deine Reisetage, und einen Samstag bekommt DisneySea: Dort macht der Wochentag kaum einen Unterschied, in Tokyo Disneyland ist der Samstag spürbar voller. Dann stellen wir den Wecker, im Winter auf 6 Uhr, so früh stehe ich sonst nur für Rope Drop auf, und kaufen jeden Tag, sobald er in den Verkauf geht.
+
 ## Anreise
 
 Der Bahnhof des Resorts ist **Maihama** an den JR-Linien Keiyō und Musashino. Von dort sind es etwa fünf Minuten zu Fuß bis zum Eingang von Tokyo Disneyland. Nach DisneySea fährt man mit der Disney Resort Line. Die Einschienenbahn fährt in rund 13 Minuten im Kreis an vier Stationen vorbei: Resort Gateway am Bahnhof Maihama, Tokyo Disneyland, Bayside mit den Hotels und Tokyo DisneySea. Bis DisneySea sind es zwei Minuten zu Fuß zur Station, neun Minuten Fahrt und eine Minute bis zum Tor. Eine Einzelfahrt kostet ab 12 Jahren 300 Yen, für Kinder 150 Yen, die Bahn fährt von 6:03 bis 23:30 Uhr.

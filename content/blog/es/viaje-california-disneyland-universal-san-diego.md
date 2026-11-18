@@ -114,6 +114,9 @@ Fuera del verano y de las semanas de vacaciones, Elmo solo trabaja los fines de 
 
 SeaWorld San Diego celebra a diario la [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) del 13 de noviembre de 2026 al 3 de enero de 2027, incluida en la entrada. Howl-O-Scream, con entrada propia, se celebró en 2026 del 11 de septiembre al 31 de octubre, y para 2027 SeaWorld indica noches seleccionadas del 10 de septiembre al 31 de octubre.
 
+> [!PARKY] Buen momento
+> Para los programas de Navidad vamos entre el 30 de noviembre y el 18 de diciembre: para entonces ya funcionan todos en Disneyland, Universal, Knott's y SeaWorld, y los colegios de Los Ángeles no tienen días libres. Unos fuegos artificiales al cierre no me los pierdo nunca. Así que a LEGOLAND vamos el 5 o el 12 de diciembre, las dos noches con fuegos artificiales de la Christmas Bricktacular.
+
 ![Letras blancas que dicen SeaWorld San Diego sobre una marquesina amarilla, con el cielo gris. | Aquí, en Mission Bay, empezó SeaWorld en 1964.](/media/seaworld-san-diego/sign.jpg)
 
 ## Dónde alojarse

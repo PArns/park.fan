@@ -406,6 +406,9 @@ in una giornata calda stanno bene nel pomeriggio, quando tanto sei già fradicio
 [Space Shot](ref:walibi-holland/space-shot) ed [Eat My Dust](ref:walibi-holland/eat-my-dust) li
 infili negli spazi vuoti.
 
+> [!PARKY]
+> Se arriviamo solo alle 14, facciamo il giro al contrario: prima Condor, poi Xpress, che a quell’ora ha la coda dimezzata, Goliath dopo le 16 e YOY THRILL nell’ultima ora. Solo la coda di Untamed non torna più corta come alle 10, ed è il prezzo per aver dormito di più. L’ordine lo prepariamo prima di partire nel [pianificatore della giornata](/trip-planner).
+
 In una giornata Bassa o Normale il Fast Lane non ti serve. In una giornata Alta, in una Fright Night
 e per YOY THRILL può valerne la pena.
 

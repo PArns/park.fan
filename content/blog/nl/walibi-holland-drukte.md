@@ -388,6 +388,9 @@ passen op een warme dag in de middag, als je toch al nat van het zweet bent.
 [Space Shot](ref:walibi-holland/space-shot) en [Eat My Dust](ref:walibi-holland/eat-my-dust)
 schuiven ertussen.
 
+> [!PARKY]
+> Komen we pas om 14 uur binnen, dan doen we de ronde achterstevoren: eerst Condor, dan Xpress, waar de rij nu nog maar half zo lang is, Goliath na 16 uur en YOY THRILL in het laatste uur. Alleen Untamed wordt niet meer zo kort als om 10 uur, dat is de prijs van uitslapen. De volgorde zetten we vooraf in de [dagplanner](/trip-planner).
+
 Een Fast Lane heb je op een Lage of Normale dag niet nodig. Op een Hoge dag, op een Fright Night en
 voor YOY THRILL kan hij lonen.
 

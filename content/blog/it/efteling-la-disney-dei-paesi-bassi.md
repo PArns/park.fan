@@ -546,6 +546,9 @@ A [Symbolica](ref:efteling/symbolica) la fila si muove appena da
 mezzogiorno a metà pomeriggio e si accorcia solo verso sera: quella puoi tenertela
 da parte.
 
+> [!PARKY]
+> Per Danse Macabre ci mettiamo in fila già dal Ruigrijk, in digitale nell’app gratuita di Efteling, e intanto facciamo Joris en de Draak finché il telefono non vibra. Fare la fila senza stare in fila: così mi piace. Il resto della giornata lo fissiamo prima di partire, attrazione per attrazione, nel [pianificatore della giornata](/trip-planner).
+
 **A metà giornata vai nel bosco delle fiabe**, quando le file alle attrazioni sono
 più lunghe. Lì non fai la fila da nessuna parte. Prenditi
 un’ora, non venti minuti.
@@ -647,6 +650,9 @@ prende un giorno in settimana a novembre o nella seconda metà di gennaio, non l
 settimana tra Natale e Capodanno. Prima conviene un’occhiata alla lista delle
 manutenzioni del parco: nel 2026 Droomvlucht è chiusa dal 9 novembre al 4 dicembre,
 Joris en de Draak dal 30 novembre al 18 dicembre.
+
+> [!PARKY] Vince gennaio
+> Dei due periodi più tranquilli scegliamo la seconda metà di gennaio, in settimana: nel 2026 Droomvlucht è chiusa per manutenzione fino al 4 dicembre e Joris en de Draak fino al 18, a gennaio nessuna delle due. Per Aquanura al buio mi calco un berretto sopra la mia ruota panoramica. Se gli ottovolanti all’aperto girano, a quel punto lo decide solo il meteo.
 
 Le mie foto qui sono tutte di una sola sera d’inverno.
 

@@ -388,6 +388,9 @@ suit a warm afternoon, when you’re soaked in sweat anyway.
 [Space Shot](ref:walibi-holland/space-shot) and [Eat My Dust](ref:walibi-holland/eat-my-dust) fit
 in between.
 
+> [!PARKY]
+> If we don’t get in until 14:00, we play the day backwards: Condor first, then Xpress, whose queue is down to half by then, Goliath after 16:00 and YOY THRILL in the last hour. Only Untamed never gets as short as at 10:00 again, and that’s the price of a lie-in. We put the order together in the [day planner](/trip-planner) before we go.
+
 You don’t need a Fast Lane on a Low or Normal day. On a High day, on a Fright Night and for YOY
 THRILL it can pay off.
 

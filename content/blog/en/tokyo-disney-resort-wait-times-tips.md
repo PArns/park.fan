@@ -298,6 +298,9 @@ If you're arriving later, you can buy one of two shorter passes. The **After 3 P
 
 Tickets are sold online only, on the website and in the app, and the ticket booths at the entrance are closed. Guests at a Disney hotel can also buy them at the hotel. Sales open every day at 2 pm Japan time for the day two months later, which is 6 am in Central Europe in winter and 7 am in summer. You can buy up to ten tickets per order, and there's no refund if you cancel. For re-entry on the same day, tell a staff member at the exit as you leave, and you can come back in later on the same ticket.
 
+> [!PARKY]
+> Since you pick the park when you buy, we first spread the two over your trip in the [trip planner](/japan#planner), and if there's a Saturday, DisneySea gets it: the day of the week hardly matters there, while Saturday is noticeably busier at Tokyo Disneyland. Then we set the alarm for 6 am Central European time in winter, an hour I'm normally only up for rope drop, and buy each day the morning it goes on sale.
+
 ## Getting there
 
 The resort's station is **Maihama**, on the JR Keiyō and Musashino lines. From there it's about a five-minute walk to the entrance of Tokyo Disneyland. For DisneySea you take the Disney Resort Line. The monorail loops past four stations in about 13 minutes, starting at Resort Gateway by Maihama station, then Tokyo Disneyland, Bayside with the hotels and Tokyo DisneySea. To get to DisneySea it's a two-minute walk to the station, nine minutes on the train and one minute to the gate. A single ride costs 300 yen from age 12 and 150 yen for children, and the line runs from 6:03 am to 11:30 pm.

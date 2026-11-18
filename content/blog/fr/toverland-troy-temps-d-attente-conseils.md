@@ -388,6 +388,9 @@ week-ends du 28 novembre au 16 décembre et du 6 au 17 janvier : avec une rése
 gratuite, tu ne paies que les tours, en tickets à 2 € pièce, et Troy en coûte
 trois. Les billets journée classiques restent en vente.
 
+> [!PARKY] Fais-toi plaisir
+> Un des jours d’hiver gratuits, on réserve à l’avance sans rien payer et on met la plupart des tickets dans Troy : trois à 2 € pièce, soit 6 € le tour. Au passage, je compte combien de fois on traverse la gare en trombe. On garde un tour pour la fin : si le parc ferme après le coucher du soleil, on fait Troy dans le noir, ce qui, en dehors de l’hiver, n’arrive que les soirs d’Halloween.
+
 ## Quand y aller
 
 **Par mois**, avril à juillet se tiennent de près, et ce qui dépasse, c’est

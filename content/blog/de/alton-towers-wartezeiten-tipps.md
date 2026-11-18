@@ -342,6 +342,9 @@ mehr. Die Jahreskarte nur für Alton Towers liegt bei **64 Pfund**, der Merlin E
 eigenes Ticket ab 29 Pfund, das an Wochenenden und in den Schulferien nicht gilt. Der Wasserpark
 kostet separat ab 23 Pfund.
 
+> [!PARKY] Zwei Tage lohnen
+> Für zwölf Pfund mehr nehmen wir den zweiten Tag, das Parken kostet online jeweils 13 Pfund. Dann haben wir zwei Morgen für Spinball Whizzer, Rita, TH13TEEN und Nemesis Reborn, die vier Bahnen, an denen der frühe Start am meisten spart, und bei zweimal Rope Drop hebe ich schon beim Gedanken kurz ab. Oblivion, The Smiler und den Wicker Man verteilen wir im [Tagesplaner](/trip-planner) auf die beiden Nachmittage.
+
 ### Parken
 
 Der Standardparkplatz kostet online **13 Pfund**, am Tag selbst 15 Pfund; von dort läuft man 15

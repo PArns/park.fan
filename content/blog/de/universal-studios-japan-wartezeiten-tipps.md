@@ -297,6 +297,9 @@ Yoshi's Adventure am meisten Zeit. Danach folgt Hollywood Dream: Backdrop.
 
 Am 9. Oktober 2026 war der Park von 8:00 bis 22:00 Uhr geöffnet.
 
+> [!PARKY]
+> Bevor wir zur Öffnung am Tor stehen, registrieren wir die Studio Pässe der ganzen Gruppe in der App: Ohne sie gibt es kein Zeitfenster für Super Nintendo World, und ist das Kontingent des Tages vergeben, bleibt nur das Standby Entry Ticket. Ohne einen Schuss aus der Fasskanone von Mine Cart Madness fahre ich nicht heim. Den Rest des Tages legen wir im [Tagesplaner](/trip-planner) fest.
+
 ## Wann du hinfahren solltest
 
 ```stats-widget slug=universal-studios-japan show=weekdays
@@ -376,6 +379,9 @@ Ticket am Besuchstag in der App holen. Das Paket „Race & Minecart Special“ e
 Mario Kart, Mine Cart Madness, Forbidden Journey, Villain-Con Minion Blast und The
 Flying Dinosaur. Bei Paketen mit Hollywood Dream oder der Dinosaurierbahn gilt
 eine Mindestgröße von 132 Zentimetern.
+
+> [!PARKY] Mit Zeitfenster
+> Wenn schon Express Pass, dann einer mit Zeitfenster für Super Nintendo World: „Race & JAWS“ und „Mine Cart & JAWS“ beginnen bei denselben 10.800 Yen wie „Backdrop & The Flying Dinosaur“, haben das Zeitfenster aber garantiert. Morgens um acht in der App ums Kontingent zittern, das sparen wir uns dann. Mit einem Kind unter 132 Zentimetern ist das ohnehin die Wahl, denn beim Paket mit Backdrop und dem Dinosaurier bleibt es draußen.
 
 Fällt eine Bahn des Passes aus, nutzt man laut Park die übrigen Bahnen des Passes,
 Bahnen mit festem Zeitpunkt ausgenommen. Auf dem Ticket steht je Bahn, ob ein

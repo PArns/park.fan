@@ -297,6 +297,9 @@ Kom je pas later op de dag, dan koop je een van de twee kortere passen. De **Aft
 
 Tickets worden alleen nog online verkocht, op de website en in de app, en de kassa's bij de ingang zijn dicht. Gasten van een Disneyhotel kunnen ook in het hotel kopen. De verkoop begint elke dag om 14.00 uur Japanse tijd, voor de dag twee maanden later. In Nederland en België is dat in de winter 6.00 uur 's ochtends en in de zomer 7.00 uur. Per bestelling kun je tot tien tickets kopen, en als je zelf afzegt, krijg je geen geld terug. Wil je op dezelfde dag opnieuw naar binnen, dan meld je dat bij het weggaan aan een medewerker bij de uitgang, en later kom je met hetzelfde ticket weer binnen.
 
+> [!PARKY]
+> Omdat je het park al bij het kopen vastlegt, verdelen we de twee eerst in de [reisplanner](/japan#planner) over je reisdagen, en een zaterdag krijgt DisneySea: daar maakt de dag van de week nauwelijks verschil, in Tokyo Disneyland is zaterdag merkbaar drukker. Daarna zetten we de wekker, in de winter op 6.00 uur, zo vroeg sta ik anders alleen voor rope drop op, en kopen we elke dag zodra die in de verkoop gaat.
+
 ## Reisinformatie
 
 Het station van het resort is **Maihama**, aan de JR-lijnen Keiyō en Musashino. Vandaar is het ongeveer vijf minuten lopen naar de ingang van Tokyo Disneyland. Naar DisneySea ga je met de Disney Resort Line. Deze monorail rijdt in zo’n 13 minuten een rondje langs vier stations, namelijk Resort Gateway bij station Maihama, Tokyo Disneyland, Bayside bij de hotels en Tokyo DisneySea. Naar DisneySea is het twee minuten lopen naar het station, negen minuten rijden en nog een minuut tot de poort. Een enkele rit kost vanaf 12 jaar 300 yen en voor kinderen 150 yen, en de monorail rijdt van 6.03 tot 23.30 uur.

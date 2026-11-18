@@ -348,6 +348,9 @@ le Merlin Essential Pass, valable dans plus de vingt attractions britanniques, �
 parents de tout-petits ont leur propre billet à partir de 29 livres, non valable le week-end et
 pendant les vacances scolaires. Le parc aquatique se paie à part, à partir de 23 livres.
 
+> [!PARKY] Ça vaut le coup
+> Pour douze livres de plus, on prend le deuxième jour, et le parking coûte 13 livres par jour en ligne. On a alors deux matins pour Spinball Whizzer, Rita, TH13TEEN et Nemesis Reborn, les quatre attractions où arriver tôt fait gagner le plus, et rien que l'idée de deux rope drops me fait décoller de mon siège. Oblivion, The Smiler et Wicker Man, on les répartit sur les deux après-midi dans le [planificateur de journée](/trip-planner).
+
 ### Parking
 
 Le parking standard coûte **13 livres** en ligne et 15 livres sur place. De là, comptez 15 à 25

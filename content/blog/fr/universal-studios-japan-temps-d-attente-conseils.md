@@ -152,6 +152,9 @@ Voici les dix attractions à la médiane la plus élevée sur les deux dernière
 
 Le 9 octobre 2026, le parc était ouvert de 8 h à 22 h.
 
+> [!PARKY]
+> Avant d’être au portail à l’ouverture, on enregistre dans l’appli les Studio Pass de tout le groupe : sans ça, pas de créneau pour Super Nintendo World, et une fois le contingent du jour épuisé, il ne reste que le Standby Entry Ticket. Je ne rentre pas sans m’être fait tirer du canon à tonneau de Mine Cart Madness. Le reste de la journée, on le règle dans le [planificateur de journée](/trip-planner).
+
 ## Quand y aller
 
 ```stats-widget slug=universal-studios-japan show=weekdays
@@ -202,6 +205,9 @@ Sur sa page de billets, le parc ne donne qu’un prix de départ, au 20 octobre 
 | Express Pass Premium Unlimited                              | toutes      | 99 000             | inclus                       |
 
 D’après la boutique, les forfaits marqués « inclus » dans la dernière colonne comprennent un Area Timed Entry Ticket garanti pour Super Nintendo World ; pour les autres, il faut le retirer dans l’appli le jour de la visite. Le forfait « Race & Minecart Special » comprend Mario Kart, Mine Cart Madness, Forbidden Journey, Villain-Con Minion Blast et The Flying Dinosaur. Pour les forfaits qui contiennent Hollywood Dream ou l’attraction aux dinosaures, la taille minimale est de 132 centimètres.
+
+> [!PARKY] Avec créneau
+> Si on prend un Express Pass, ce sera un avec le créneau pour Super Nintendo World : « Race & JAWS » et « Mine Cart & JAWS » partent des mêmes 10 800 yens que « Backdrop & The Flying Dinosaur », mais le créneau y est garanti. Pas besoin alors de guetter le contingent dans l’appli à huit heures du matin. Avec un enfant de moins de 132 centimètres, c’est de toute façon le bon choix, puisque le forfait avec Backdrop et le dinosaure lui est fermé.
 
 Quand une attraction du pass est à l’arrêt, le parc indique qu’on utilise les autres attractions du pass, à l’exception de celles à horaire fixe. Le billet précise, attraction par attraction, si un horaire s’applique. Il faut présenter l’écran entier avec le QR code, un billet modifié n’est pas accepté.
 

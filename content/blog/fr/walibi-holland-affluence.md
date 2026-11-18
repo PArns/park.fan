@@ -414,6 +414,9 @@ trouvent leur place l’après-midi par une journée chaude, quand tu es de tout
 sueur. [Space Shot](ref:walibi-holland/space-shot) et [Eat My Dust](ref:walibi-holland/eat-my-dust)
 se glissent entre les deux.
 
+> [!PARKY]
+> Si on n’arrive qu’à 14 h, on fait la tournée à l’envers : Condor d’abord, puis Xpress, dont la file ne fait plus que la moitié, Goliath après 16 h et YOY THRILL lors de la dernière heure. Seule la file d’Untamed ne redevient jamais aussi courte qu’à 10 h, c’est le prix de la grasse matinée. L’ordre, on le prépare avant de partir dans le [planificateur de journée](/trip-planner).
+
 Un Fast Lane ne te sert à rien un jour au niveau Faible ou Normal. Un jour au niveau Élevée, lors
 d’une Fright Night et pour YOY THRILL, il peut valoir le coup.
 

@@ -402,6 +402,9 @@ Warteschlange halb so lang. Bei [Speed of Sound](ref:walibi-holland/speed-of-sou
 ohnehin schon durchgeschwitzt bist. [Space Shot](ref:walibi-holland/space-shot) und
 [Eat My Dust](ref:walibi-holland/eat-my-dust) schiebst du dazwischen.
 
+> [!PARKY]
+> Kommen wir erst um 14 Uhr, fahren wir die Runde rückwärts: Condor zuerst, dann Xpress, deren Warteschlange jetzt nur noch halb so lang ist, Goliath nach 16 Uhr und YOY THRILL in der letzten Stunde. Nur Untamed wird nicht mehr so kurz wie um 10 Uhr, das ist der Preis fürs Ausschlafen. Die Reihenfolge stecken wir vorher im [Tagesplaner](/trip-planner) ab.
+
 Eine Fast Lane brauchst du an einem Tag auf Niedrig oder Normal nicht. An einem Tag auf Hoch, an
 einer Fright Night und für YOY THRILL kann sie sich lohnen.
 

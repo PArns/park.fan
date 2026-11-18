@@ -114,6 +114,9 @@ Outside summer and the holiday weeks, Elmo only works weekends. From September 8
 
 SeaWorld San Diego holds its [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) every day from November 13, 2026 to January 3, 2027, included in admission. Howl-O-Scream, with a ticket of its own, ran from September 11 to October 31 in 2026, and for 2027 SeaWorld lists select nights from September 10 to October 31.
 
+> [!PARKY] Good timing
+> For the Christmas events we go between November 30 and December 18: by then they're all running at Disneyland, Universal, Knott's and SeaWorld, and Los Angeles schools have no days off. I never skip fireworks at closing time. So our LEGOLAND day is December 5 or 12, both fireworks nights at the Christmas Bricktacular.
+
 ![White letters reading SeaWorld San Diego on a yellow canopy under a grey sky. | SeaWorld started here on Mission Bay in 1964.](/media/seaworld-san-diego/sign.jpg)
 
 ## Where to stay

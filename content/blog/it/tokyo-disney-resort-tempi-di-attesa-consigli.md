@@ -297,6 +297,9 @@ Chi arriva più tardi compra uno dei due pass ridotti. L’**After 3 Passport** 
 
 Si vende solo online, sul sito e nell’app, e le casse all’ingresso sono chiuse. Chi dorme in un hotel Disney può comprare anche in hotel. La vendita apre ogni giorno alle 14 ora giapponese per il giorno di due mesi dopo, cioè in Italia alle 6 del mattino d’inverno e alle 7 d’estate. In un ordine entrano fino a dieci biglietti, e se sei tu a rinunciare non c’è rimborso. Per rientrare lo stesso giorno basta avvisare un addetto all’uscita, e più tardi si torna dentro con lo stesso biglietto.
 
+> [!PARKY]
+> Visto che il parco si sceglie già all’acquisto, prima distribuiamo i due sui tuoi giorni di viaggio nel [pianificatore di viaggio](/giappone#planner), e un sabato lo diamo a DisneySea: lì il giorno della settimana conta poco, mentre a Tokyo Disneyland il sabato c’è molta più gente. Poi puntiamo la sveglia alle 6 d’inverno, un’ora in cui di solito mi alzo solo per il rope drop, e compriamo ogni giorno appena va in vendita.
+
 ## Come arrivare
 
 La stazione del resort è **Maihama**, sulle linee JR Keiyō e Musashino. Da lì all’ingresso di Tokyo Disneyland sono circa cinque minuti a piedi. Per DisneySea si prende la Disney Resort Line, una monorotaia che in circa 13 minuti fa il giro di quattro stazioni: Resort Gateway alla stazione di Maihama, Tokyo Disneyland, Bayside con gli hotel e Tokyo DisneySea. Fino a DisneySea sono due minuti a piedi fino alla stazione, nove di viaggio e uno fino al cancello. Una corsa singola costa 300 yen dai 12 anni in su e 150 yen per i bambini, e la monorotaia va dalle 6:03 alle 23:30.

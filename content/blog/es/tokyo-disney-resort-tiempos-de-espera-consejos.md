@@ -297,6 +297,9 @@ Si llegas más tarde, puedes comprar uno de dos pases más cortos. El **After 3 
 
 Solo se vende por internet, en la web y en la app, porque las taquillas de la entrada están cerradas. Quien se aloja en un hotel Disney puede comprar también en el hotel. La venta abre cada día a las 14:00, hora de Japón, para el día que cae dos meses después. En la España peninsular son las 6 de la mañana en invierno y las 7 en verano. Cada pedido admite hasta diez entradas, y si cancelas tú no hay reembolso. Para volver a entrar el mismo día, avisas a un empleado en la salida al irte y luego vuelves a pasar con la misma entrada.
 
+> [!PARKY]
+> Como el parque se elige al comprar, primero repartimos los dos entre tus días de viaje en el [planificador de viajes](/japon#planner), y si hay un sábado, se lo damos a DisneySea: allí el día de la semana apenas cambia nada, y en Tokyo Disneyland el sábado hay bastante más gente. Luego ponemos el despertador a las 6 en invierno, una hora a la que solo madrugo para el rope drop, y compramos cada día en cuanto sale a la venta.
+
 ## Cómo llegar
 
 La estación del resort es **Maihama**, en las líneas JR Keiyō y Musashino. Desde allí hay unos cinco minutos a pie hasta la entrada de Tokyo Disneyland. A DisneySea se va con la Disney Resort Line, un monorraíl que da la vuelta completa en unos 13 minutos y para en cuatro estaciones: Resort Gateway, junto a la estación de Maihama; Tokyo Disneyland; Bayside, la de los hoteles, y Tokyo DisneySea. Hasta DisneySea son dos minutos a pie a la estación, nueve de viaje y uno hasta la puerta. Un trayecto cuesta 300 yenes desde los 12 años y 150 yenes para niños, y el monorraíl circula de 6:03 a 23:30.

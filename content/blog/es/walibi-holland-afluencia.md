@@ -407,6 +407,9 @@ largo del día, y [El Rio Grande](ref:walibi-holland/el-rio-grande) y
 todos modos ya estás empapado de sudor. [Space Shot](ref:walibi-holland/space-shot) y
 [Eat My Dust](ref:walibi-holland/eat-my-dust) van entremedias.
 
+> [!PARKY]
+> Si no llegamos hasta las 14 h, hacemos la ronda al revés: primero Condor, luego Xpress, que a esa hora ya tiene la mitad de cola, Goliath después de las 16 h y YOY THRILL en la última hora. Solo la cola de Untamed ya no vuelve a ser tan corta como a las 10, y ese es el precio de dormir hasta tarde. El orden lo dejamos listo antes de ir en el [planificador del día](/trip-planner).
+
 En un día de afluencia Baja o Normal no necesitas Fast Lane. En un día de afluencia Alta, en una
 Fright Night y para YOY THRILL puede compensar.
 
