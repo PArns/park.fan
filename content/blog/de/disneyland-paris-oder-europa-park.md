@@ -203,6 +203,9 @@ Wann es in Paris voll wird, hängt an den französischen Schulferien. Die Weihna
 
 In allen drei Parks war der Januar bisher der ruhigste Monat. Zwischen den Wochentagen gibt es kaum Unterschiede, nur im Europa-Park ist der Samstag deutlich voller als die übrigen Tage. Vier seiner fünf vollsten Tage waren Samstage, der 2. Mai, der 22. August und der 19. und 26. September 2026. In den beiden Pariser Parks fielen die vollsten Tage dagegen oft auf Tage unter der Woche in den Ferien, etwa den 23. und 24. Februar 2026 in den Pariser Winterferien.
 
+> [!PARKY] Januar in Paris
+> Im Januar fahren wir nach Paris, und zwar erst nach dem 3., wenn die französischen Weihnachtsferien vorbei sind: In allen drei Parks war der Januar bisher der ruhigste Monat, und Rust hat nach dem 9. Januar ohnehin zu. Für so kurze Warteschlangen packe ich gern den dicken Schal ein. Welcher der beiden Pariser Parks an welchem Reisetag dran ist, legen wir im [Reiseplaner](/paris#planner) fest.
+
 ### Disneyland Park
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park

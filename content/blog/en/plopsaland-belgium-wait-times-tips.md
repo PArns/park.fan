@@ -407,6 +407,9 @@ Unlimited. Children 85 to 99 centimetres and seniors 70 and over pay about half.
 All three passes include 25 percent off tickets for friends and family (at most two
 tickets a year) and the preview of the Flying Cinema.
 
+> [!PARKY] Get the pass
+> Against undated tickets at €56, the Plopsaland Belgium Pass at €150 has paid for itself by the third visit, against €36 Wednesday tickets by the fifth. The pass also gets us into the Flying Cinema on selected days from 19 December, and I’ve never flown over Europe with a bee as my pilot. On a day ticket that has to wait until 13 March.
+
 ## Practical information
 
 Dogs aren’t allowed, except assistance dogs with an official vest. Children may

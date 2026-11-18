@@ -166,6 +166,9 @@ Sin coche de alquiler llegas a Universal, Disneyland y LEGOLAND en tren y autob�
 
 Disney cita seis aeropuertos para el Disneyland Resort, del más cercano al más lejano: John Wayne (SNA) en Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) y San Diego (SAN). Desde la estación del aeropuerto de Burbank, el Pacific Surfliner va sin transbordo hasta Anaheim, y el autobús lanzadera gratuito LOT D del aeropuerto te lleva a la estación. San Diego International está a algo menos de cinco kilómetros al noroeste del centro de San Diego y encaja con la parte sur del viaje: si llegas a Los Ángeles y vuelves desde San Diego, te ahorras cruzar de nuevo toda la región en coche.
 
+> [!PARKY] Mudarse una vez
+> Aterrizamos en Los Ángeles, dormimos en Harbor Boulevard para Disneyland, Knott's, Universal y Magic Mountain, y para los tres parques del sur nos mudamos al Gaslamp Quarter. Desde allí SeaWorld queda a 13 minutos en vez de 111, y más de cuatro horas de coche para un día en Sesame Place serían demasiada autopista para tan poco Elmo. Volvemos en avión desde San Diego, y en el [planificador de viajes](/california#planner) montamos las dos partes por separado.
+
 ## Entradas
 
 ### Disneyland Resort

@@ -559,6 +559,9 @@ bezahlte Lightning Lane). Du „stehst“ dabei digital an, während du isst, sh
 oder eine Show schaust. Die Wartezeit verschwindet nicht, aber sie frisst nicht mehr
 deinen Tag, und der Park verteilt die Nachfrage kontrollierter über die Stunden.
 
+> [!PARKY]
+> Mehr als ein VirtualLine-Zeitfenster gleichzeitig gibt es im Europa-Park nicht, also bekommt es bei uns Voltron: Die Bahn hat die längste mittlere Wartezeit im Park. Für Voltron steht dann mein Handy an, und ich hebe derweil auf Wodan ab. Weil die Plätze sehr begrenzt sind, buchen wir es in der App, sobald eins frei ist.
+
 Für alle, die lieber mit den Füßen anstehen als mit dem Daumen, schrauben die
 Parks parallel an der Station selbst:
 

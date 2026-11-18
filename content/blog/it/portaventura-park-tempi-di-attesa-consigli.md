@@ -237,6 +237,9 @@ I ragazzi dai 12 anni possono entrare nei parchi senza un adulto.
 
 Per Halloween c’è il codice SUSTO26, con fino al 30 per cento di sconto sui biglietti per le visite dal 19 settembre al 15 novembre, da usare entro il 15 novembre. Il codice ESCAPEPAW dà il 40 per cento sulle visite infrasettimanali, se acquisti entro il 14 ottobre e vieni entro il 4 dicembre.
 
+> [!PARKY] Meglio due giorni
+> Se non dormiamo in un hotel del resort, prendiamo subito due giorni di parco: 43 € online invece di 37 €, quindi il secondo giorno costa 6 €. Un’intera giornata di parco per meno di un solo accesso Express ONE, e solo a pensarci mi stacco un attimo dal sedile. In un hotel del resort quel giorno c’è comunque, perché lì una notte vale già due giorni di accesso al parco.
+
 ### Abbonamenti annuali
 
 I quattro abbonamenti annuali valgono 365 giorni dall’acquisto. Gli junior sono i bambini da 4 a 10 anni, i senior hanno almeno 60 anni, i bambini da 0 a 3 anni entrano gratis.

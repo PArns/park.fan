@@ -190,6 +190,9 @@ après la fermeture du parc, et le Flying Cinema demande alors un billet à part
 annonce, les films du soir ne seront pas ceux de la journée. Avec la Plaza, Plopsa veut atteindre
 deux millions de visiteurs par an.
 
+> [!PARKY]
+> Si on ne veut que le Flying Cinema un jour d’été, on vient le soir après la fermeture du parc : la Plaza est alors en accès libre, et on ne paie que le billet à part du Flying Cinema, pas l’entrée du parc. Venise et Paris en cinq minutes environ, et personne ne me demande mon passeport. Même si on a déjà volé dans la journée, la soirée vaut le détour, puisque d’après la première annonce, les films du soir ne sont pas ceux de la journée.
+
 ### La Bibliothèque des contes à l’Efteling
 
 Dans la forêt des contes de l’[Efteling](ref:efteling) prend forme le 32e conte, la Bibliothèque des

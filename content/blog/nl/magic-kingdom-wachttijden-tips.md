@@ -295,6 +295,9 @@ kostte op beide dagen 19 dollar, die voor Seven Dwarfs Mine Train op 30
 september 11 dollar. Die dag waren ze allebei niet te koop.
 Die voor TRON was op 30 september weer te koop voor de volgende dag.
 
+> [!PARKY] Mine Train kopen
+> Zonder Disney-hotel kopen we, als we al een Single Pass nemen, die voor Seven Dwarfs Mine Train en niet die voor TRON: TRON rijden we bij de opening, als de wachtrij daar het kortst is, terwijl het bij de Mine Train van het middaguur tot in de avond even druk blijft. Zeven dwergen zijn genoeg, ik hoef niet de hele middag als achtste mopperend in die rij te staan. Op 30 september kostte zijn pass 11 dollar, acht minder dan die voor TRON, en voor dezelfde dag was geen van beide meer te koop, dus kopen we hem van tevoren.
+
 ## Wanneer je het beste kunt gaan
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays

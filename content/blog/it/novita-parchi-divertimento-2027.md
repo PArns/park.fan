@@ -188,6 +188,9 @@ liberamente accessibile dopo la chiusura del parco, e in quelle ore il Flying Ci
 biglietto a parte. Stando al primo annuncio, la sera girano film diversi da quelli del giorno. Con la
 Plaza, Plopsa vuole arrivare a due milioni di visitatori l’anno.
 
+> [!PARKY]
+> Se d’estate ci interessa solo il Flying Cinema, arriviamo la sera dopo la chiusura del parco: la Plaza è liberamente accessibile e paghiamo solo il biglietto a parte del Flying Cinema, non l’ingresso al parco. Venezia e Parigi in circa cinque minuti, e nessuno mi chiede il passaporto. Anche se abbiamo già volato di giorno, la sera vale la pena, perché stando al primo annuncio girano film diversi da quelli del giorno.
+
 ### La Biblioteca delle fiabe all’Efteling
 
 Nel bosco delle fiabe dell’[Efteling](ref:efteling) sta nascendo la 32ª fiaba, la Biblioteca delle

@@ -237,6 +237,9 @@ Children aged 12 and over may enter the parks without an adult.
 
 For Halloween there's the code SUSTO26, with up to 30 percent off tickets for visits from 19 September to 15 November, which has to be redeemed by 15 November. The code ESCAPEPAW gives 40 percent off weekday visits if you buy by 14 October and come by 4 December.
 
+> [!PARKY] Take two days
+> If we're not staying in one of the resort's hotels, we buy two days for the park straight away: €43 online instead of €37, so the second day costs €6. That's a whole park day for less than a single Express ONE ride, and just thinking about it gives me a bit of airtime. In a resort hotel you get it anyway, since one night there already means two days of park access.
+
 ### Annual passes
 
 The four annual passes are valid for 365 days from purchase. Juniors are children aged 4 to 10, seniors are 60 and over, and children aged 0 to 3 are free.

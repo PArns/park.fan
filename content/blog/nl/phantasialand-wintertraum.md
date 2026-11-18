@@ -280,6 +280,9 @@ Het park heeft drie themahotels direct aan het terrein: Ling Bao in China Town, 
 
 Voor een korte wintervakantie adverteert het park met tot 45 % korting als je vroeg boekt. Ontbijt en parkeren bij het hotel zitten in de prijs, en via de hoteltuinen of een eigen poort loop je zo het park in. Na MAGIC SYMPHONY is dat de kortste weg naar je bed, terwijl alle anderen naar P1 en P2 lopen. Gasten van Matamba en Ling Bao krijgen per persoon per nacht één keer snellere toegang tot een van deze attracties: Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure, wel alleen met een geldig parkticket. Gasten van Charles Lindbergh krijgen als Explorer snellere toegang tot F.L.Y., en daar is ook een Explorer-arrangement met overnachting, driegangendiner, ontbijt en twee parkdagen. Het nieuwe zwembad en de wellness in Ling Bao zijn alleen voor gasten van dat hotel.
 
+> [!PARKY] Kies Chiapas
+> Slapen we in Matamba of Ling Bao, dan zetten we de snellere toegang van het hotel in bij Chiapas: daar kost een Quick Pass anders 10 € en is hij alleen bij de gastenservice te koop, bij de andere attracties op de lijst kost hij 5 of 7 € in de webshop. Met twee nachten gaan we zo twee keer, en die droge jas om te wisselen gaat dan dubbel in de tas. Een geldig parkticket hebben we er wel voor nodig.
+
 De oudejaarsarrangementen met overnachting zijn volgeboekt.
 
 ## Oud en nieuw in Phantasialand

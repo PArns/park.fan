@@ -415,6 +415,9 @@ dai 70 anni pagano circa la metà. Tutti e tre gli abbonamenti includono il 25 p
 cento di sconto sui biglietti per amici e famiglia (al massimo due biglietti
 all’anno) e l’anteprima del Flying Cinema.
 
+> [!PARKY] Abbonamento, sì
+> Con biglietti senza data da 56 €, il Plopsaland Belgium Pass da 150 € si ripaga alla terza visita, con quelli del mercoledì da 36 € alla quinta. Con l’abbonamento entriamo anche nel Flying Cinema in alcuni giorni dal 19 dicembre, e con un’ape come pilota sopra l’Europa non ho mai volato. Con il biglietto giornaliero bisogna aspettare il 13 marzo.
+
 ## Informazioni pratiche nel parco
 
 I cani non sono ammessi, tranne i cani di assistenza con la pettorina ufficiale. I

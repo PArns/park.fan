@@ -65,6 +65,9 @@ Anders als 2025 sind auf der Straße auch Hello Kitty und Kuromi von Sanrio unte
 
 Das Feuerwerk beginnt um 20 Uhr und läuft zu Musik von BTS, Resorts World Sentosa nennt es BTS THE CITY ARIRANG Fireworks. Eine genaue Stelle im Park hat Resorts World Sentosa nicht genannt, 2025 ging das Feuerwerk über dem Lake Hollywood hoch. Am Montag, dem 21. Dezember, sehen es nur Gäste mit Ticket für den BTS-Abend. Einen reservierten Platz zum Zuschauen bekommst du nur mit dem 2-Park Pass with Festive Perks, mit dem normalen Ticket suchst du dir selbst einen.
 
+> [!PARKY]
+> Für das Feuerwerk nehmen wir einen Abend vom 16. bis zum 25. Dezember, nur nicht den 21.: Dann hat der Park bis 21 Uhr offen, und wenn das Feuerwerk um 20 Uhr beginnt, bleibt uns bis zum Schluss noch eine Stunde. Für ein Feuerwerk zu BTS lerne ich sogar noch schnell die Texte. Vorher stehen wir um halb acht an der Fassade von Revenge of the Mummy, auf der dann Lightscape läuft.
+
 ## BTS im Park
 
 Am 21. Dezember schließt Universal Studios Singapore schon um 19 Uhr, von 20 bis 1 Uhr nachts läuft dort BTS THE CITY ARIRANG Night Out. Der Eintritt kostet 58 Singapur-Dollar pro Person.

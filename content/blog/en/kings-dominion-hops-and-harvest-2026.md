@@ -81,6 +81,9 @@ On all seven days the park is open from 11 a.m. to 7 p.m. The online price of a 
 
 Add a processing fee of up to $9.99 and tax. At the ticket booth, the same day costs $90. The festival is included in the regular day ticket, and children aged two and under don't need a ticket. Parking is $39 online, or $49 for Preferred Parking. The Soak City water park is closed in November.
 
+> [!PARKY] Make it Sunday
+> For Hops & Harvest we pick a Sunday: online the day costs $45 instead of $55 on a Saturday, and the musicians play at the same times on all seven days. I'm already putting the $10 difference into cinnamon donut holes. If only the Friday after Thanksgiving works for us, it's $49, and there are turkey legs that day too.
+
 ```best-days-widget slug=kings-dominion
 
 ```

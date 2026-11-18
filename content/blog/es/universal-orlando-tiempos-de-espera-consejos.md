@@ -467,6 +467,9 @@ Mummy desde 1,22 metros, VelociCoaster desde 1,30 metros, Doctor Doom's Fearfall
 desde 1,33 metros y el Hulk desde 1,38 metros. En la mayoría de estas atracciones
 hay antes del acceso un asiento de prueba en el que puedes comprobar si cabes.
 
+> [!PARKY]
+> Con un niño de 1,02 metros o más, en Epic Universe salimos todos juntos a la apertura: en Mine-Cart Madness y Battle at the Ministry, los dos «consejos fuertes» para llegar temprano, ya puede subir, con un acompañante hasta 1,22 metros. Así el peque está en el Ministerio de Magia antes de que los mayores se hayan terminado el segundo café. Mario Kart, Curse of the Werewolf y Hiccup's Wing Gliders tienen la misma altura mínima, así que en el [planificador del día](/trip-planner) van justo detrás.
+
 Seuss Landing, en Islands of Adventure, es la zona para los más pequeños. Según
 Universal, allí solo dos atracciones tienen altura mínima, las dos de 0,92
 metros. En los Studios, Minion Land y DreamWorks Land son

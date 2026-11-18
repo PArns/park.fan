@@ -370,6 +370,9 @@ Die Entfernungen sind Luftlinie zwischen den Eingängen.
 Von Europa-Park und Phantasialand an einem Wochenende rate ich ab. Die 288 Kilometer Luftlinie sind
 auf der A5 und der A61 gut vier Stunden Fahrt.
 
+> [!PARKY]
+> Phantasialand und Movie Park legen wir im Winter auf zwei Tage zwischen dem 27. November und Weihnachten: Erst ab dem 27. laufen Wintertraum und Hollywood Christmas beide, und um den Jahreswechsel ist in Brühl die vollste Zeit des Winters. Taron fahren wir dort im Dunkeln, und bei beiden Abschüssen hebe ich zwischen den Lichterketten kurz ab. Nach Bottrop kommen wir mit dem RE14 ab Essen, vom Bahnhof Feldhausen sind es rund 400 Meter bis zum Eingang.
+
 ## Welche Parks hier fehlen
 
 Tripsdrill, Fort Fun, der Skyline Park, Belantis und der Freizeitpark Plohn stehen noch nicht auf park.fan und fehlen deshalb in dieser Rangliste.

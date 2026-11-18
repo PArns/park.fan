@@ -183,6 +183,9 @@ aspettare insieme costano meno che aspettare e basta.
 Quello che l’ottimizzatore non tocca: la tua pausa pranzo, ogni attrazione che
 hai già spuntato e ogni blocco la cui ora è già cominciata.
 
+> [!PARKY]
+> Prima di premere «Ottimizza la giornata» nel [pianificatore della giornata](/trip-planner), spostiamo la pausa pranzo dove vogliamo davvero mangiare: la procedura guidata la mette alle 12:30, e quando si riordina resta dov’è. Il mio stomaco non si sposta con la stessa facilità di un blocco. Se più avanti il pianificatore propone sotto «Modifiche» di accorciare la pausa per far entrare un’attrazione in più, decidiamo noi che cosa preferire.
+
 E siccome una pressione può trasformare tre blocchi in undici, al risultato è
 abbinato un annulla. Un solo passo indietro.
 

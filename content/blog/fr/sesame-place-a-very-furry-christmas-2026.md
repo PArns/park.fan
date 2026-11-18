@@ -53,6 +53,9 @@ Près de l’Oscar’s Wacky Taxi Stage se dresse le 1-2-3 Christmas Tree, haut 
 
 On rencontre le Père Noël au Santa’s Furry Workshop, à côté du Sesame Street Theater. Cette année, plus besoin d’y faire la queue. On s’inscrit au Tinsel Tent devant l’atelier, on reçoit un SMS quand vient son tour, puis on a 20 minutes pour s’y rendre. Les enfants écrivent leur lettre au Père Noël pendant Letters to Santa, au Mr. Hooper’s Gift Shop. Le 24 décembre est le dernier jour avec le Père Noël, et la file virtuelle ferme alors à 14 h. Du 26 décembre au 3 janvier, c’est Santa Cookie Monster qui occupe l’atelier.
 
+> [!PARKY]
+> Au Tinsel Tent, on s’inscrit pour le Père Noël dès l’arrivée, puis on se réchauffe avec un chocolat chaud dans la Winter Warm-Up Lounge d’Elmo’s Pizza Kitchen. Une file d’attente où l’on peut s’asseoir avec un chocolat chaud, voilà qui me plaît. Quand le SMS arrive, on a 20 minutes pour rejoindre l’atelier à côté du Sesame Street Theater. Le 24 décembre, on s’inscrit avant 14 h, l’heure à laquelle la file virtuelle ferme.
+
 ## Jours et horaires d’ouverture
 
 Le parc ouvre en général le vendredi de 16 h à 20 h, le samedi de 11 h à 19 h et le dimanche de 13 h à 18 h, heure locale. Du lundi au jeudi, il reste fermé jusqu’au 17 décembre, y compris le jour de Thanksgiving, le 26 novembre. Exceptions :

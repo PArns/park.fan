@@ -404,6 +404,9 @@ Stardust Racers and Revenge of the Mummy from 1.22 m, VelociCoaster from 1.30 m,
 from 1.33 m and the Hulk from 1.38 m. At most of these rides there's a test seat before boarding where
 you can try whether you fit.
 
+> [!PARKY]
+> With a child of 1.02 m or taller, the whole family sets off together at opening in Epic Universe: Mine-Cart Madness and the Battle at the Ministry, the two strong rope-drop tips, already take them, with an escort up to 1.22 m. That puts the little one in the Ministry of Magic before the grown-ups have finished their second coffee. Mario Kart, Curse of the Werewolf and Hiccup's Wing Gliders start at the same height, so in the [day planner](/trip-planner) they go straight after.
+
 Seuss Landing in Islands of Adventure is the area for the youngest. According to Universal, only two
 rides there have a minimum height, both 0.92 m. In the Studios, Minion Land and DreamWorks
 Land belong to the kids, in Epic Universe the Isle of Berk with the Viking Training Camp.

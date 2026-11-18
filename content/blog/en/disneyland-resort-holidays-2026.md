@@ -98,6 +98,9 @@ Santa also drops in at the Disneyland Hotel, the Pixar Place Hotel and the Grand
 
 For nights from 11 October to 18 December, the hotels take up to 20 percent off if you stay at least three nights and book by 15 December. From 13 November, snow falls every evening at the "Downtown Disney LIVE!" stage at Downtown Disney, with bands and DJs playing.
 
+> [!PARKY] Three nights
+> If we're sleeping at one of the Disney hotels, we book at least three nights by 15 December, all of them before the 19th: that takes up to 20 percent off, and Santa is still in Toontown, where the cartoon dog sent him. Which park gets which day we sort out in the [trip planner](/california#planner), and then we get park reservations for exactly those days.
+
 Sources:
 [Holidays at the Disneyland Resort 2026 (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/holidays-at-the-disneyland-resort-returns-with-festival-favorites-and-classic-traditions-nov-13-2026-jan-6-2027/),
 [Haunted Mansion Holiday Fun Facts (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/haunted-mansion-holiday-fun-facts-3/),

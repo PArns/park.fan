@@ -118,6 +118,9 @@ Entre Tokyo, Nagoya et Osaka, tu prends le Tokaido Shinkansen. D’après les ho
 
 En plus du car, tu peux rejoindre Fuji-Q avec le Fuji Excursion, un train express qui quitte Shinjuku à 7 h 30 et s’arrête à la gare de Fujikyu-Highland à 9 h 26. L’entrée du parc est juste à la sortie des portiques. Le dernier Fuji Excursion du retour part de là à 17 h 44, donc pour rester jusqu’à la fermeture, il faut le car de 20 h 23.
 
+> [!PARKY]
+> Un jour de semaine en hiver, on part pour Fuji-Q avec le Fuji Excursion de 7 h 30 depuis Shinjuku. À 9 h 26, on descend juste devant l’entrée, et de toute façon le parc n’ouvre en général pas avant 10 h. Le car de 6 h 45, on le laisse filer : de décembre au 5 février, Fuji-Q ne vend pas d’entrée anticipée, et pour n’avoir aucune avance à l’entrée, même moi je ne me lève pas si tôt. Si le parc ferme à 17 h, on attrape encore le dernier train du retour à 17 h 44.
+
 Pour continuer vers l’ouest depuis Fuji-Q, pas besoin de repasser par Tokyo. Des cars rejoignent la gare de Mishima en un peu moins d’une heure et demie, et le Kodama pour Nagoya s’y arrête. Un car direct relie le lac Kawaguchi à la gare routière de Meitetsu, à Nagoya, en quatre heures et demie environ. Pour Osaka, il y a le car de nuit Fujiyama Liner, au départ de Fuji-Q à 21 h 01, à Kyoto à 5 h 57 et à Umeda à 6 h 53. La réservation ouvre deux mois avant, et tu arrives à Osaka avant le petit-déjeuner, mais aussi avant la grasse matinée.
 
 Pendant la Golden Week, Obon, la Silver Week et autour du Nouvel An, toutes les places du Nozomi sont réservées, en 2026-2027 du 25 décembre au 5 janvier. L’hiver 2026-2027 ajoute les longs week-ends du 9 au 11 janvier et du 20 au 22 mars. Sans réservation, tu voyages alors debout dans le couloir ou sur la plateforme entre deux voitures. Les Hikari et Kodama gardent des voitures non réservées ces jours-là aussi.

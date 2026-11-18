@@ -192,6 +192,9 @@ and the Flying Cinema then needs a ticket of its own. The first announcement sai
 would run in the evening than during the day. With the Plaza, Plopsa wants to reach two million
 visitors a year.
 
+> [!PARKY]
+> If all we want on a summer day is the Flying Cinema, we come in the evening after the park closes: the Plaza is open to anyone then, and we only pay for the ride's own ticket, not for park admission. Venice and Paris in about five minutes, and nobody asks for my passport. Even if we've already flown during the day, the evening's worth it, because the first announcement said different films would run then.
+
 ### The Fairytale Library at Efteling
 
 [Efteling](ref:efteling) is building its 32nd fairytale in the Fairytale Forest, the Fairytale

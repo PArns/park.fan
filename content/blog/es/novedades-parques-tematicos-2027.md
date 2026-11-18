@@ -187,6 +187,9 @@ plaza seguirá abierta sin entrada, y el Flying Cinema se pagará entonces apart
 anuncio, por la noche se proyectarán películas distintas de las del día. Con la plaza, Plopsa quiere
 llegar a dos millones de visitantes al año.
 
+> [!PARKY]
+> Si en verano solo queremos el Flying Cinema, vamos por la tarde, después del cierre del parque: la plaza sigue abierta sin entrada y solo pagamos el billete aparte del Flying Cinema, no la entrada al parque. Venecia y París en unos cinco minutos, y nadie me pide el pasaporte. Aunque ya hayamos volado de día, merece la pena volver, porque según el primer anuncio por la noche se proyectan otras películas.
+
 ### La Biblioteca de los Cuentos en el Efteling
 
 En el Bosque de los Cuentos del [Efteling](ref:efteling) se construye el cuento número 32, la

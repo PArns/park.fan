@@ -203,6 +203,9 @@ Wanneer het in Parijs druk wordt, hangt af van de Franse schoolvakanties. De ker
 
 Januari was tot nu toe in alle drie de parken de rustigste maand. Tussen de dagen van de week zit weinig verschil, behalve in het Europa-Park, waar het op zaterdag duidelijk drukker is dan op andere dagen. Vier van de vijf drukste dagen daar waren zaterdagen: 2 mei, 22 augustus en 19 en 26 september 2026. In de twee parken in Parijs vielen de drukste dagen juist vaak op werkdagen in de vakantie, zoals 23 en 24 februari 2026, in de Parijse wintervakantie.
 
+> [!PARKY] Januari in Parijs
+> In januari gaan we naar Parijs, en dan pas na de 3e, als de Franse kerstvakantie voorbij is: januari was tot nu toe in alle drie de parken de rustigste maand, en Rust gaat na 9 januari toch dicht. Voor zulke korte wachtrijen neem ik graag de dikke sjaal mee. Welk van de twee parken in Parijs op welke reisdag komt, leggen we vast in de [reisplanner](/paris#planner).
+
 ### Disneyland Park
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park

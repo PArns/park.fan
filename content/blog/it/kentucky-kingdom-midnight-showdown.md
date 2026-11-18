@@ -60,6 +60,9 @@ Con Gold e Diamond si ha il 50 per cento di sconto sul biglietto giornaliero int
 
 Il biglietto giornaliero online parte da 24,99 dollari se lo si compra per una data fissa con almeno 24 ore di anticipo; alla cassa costa 49,99 dollari. Due giorni consecutivi online partono da 34,99 dollari. Per chi verrebbe due volte e pagherebbe alla cassa, il Silver Pass costa già meno. Chi ha 15 anni o meno entra solo accompagnato da una persona di almeno 21 anni.
 
+> [!PARKY] Basta il Silver
+> Se veniamo per Christmas at Kentucky Kingdom e poi di nuovo in primavera per Midnight Showdown, prendiamo il Silver Pass: vale da subito per tutte e due le cose, e con lui nei giorni di apertura parcheggiamo gratis invece di pagare 15 dollari a macchina. Al primo rumore di zoccoli io sono già partito al galoppo, almeno con la testa. Gold o Diamond li prendiamo solo se in programma ci sono anche Dollywood o Silver Dollar City, perché è lì che danno il 50 per cento di sconto sul biglietto giornaliero intero.
+
 ## Natale al parco
 
 Christmas at Kentucky Kingdom si tiene in alcuni giorni dal 21 novembre al 2 gennaio ed è compreso nel biglietto giornaliero. Fino al 20 novembre il biglietto di Natale costa online 24,99 dollari per tutti dai quattro anni in su. Nel parco si accendono oltre 1,5 milioni di luci e ci sono più di 300 alberi di Natale. Sulla pista Blizzard Bluff si scende in ciambella su neve vera per 175 piedi, circa 53 metri, lungo una delle sei corsie. In inverno le attrazioni acquatiche e alcune altre restano chiuse.

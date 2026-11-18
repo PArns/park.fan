@@ -77,6 +77,9 @@ The cheapest days are 15, 20, 22 and 27 November, plus the Wednesdays and Thursd
 
 Without an Åkpass, you pay for each ride with coupons at SEK 25 each. [Balder](ref:liseberg/balder) takes four of them, so for more than two rides on Balder, the Åkpass comes out cheaper. The Lisebergspasset costs SEK 395 and covers entry for twelve months; the Guldpasset costs SEK 2,595 and covers entry and every ride for twelve months.
 
+> [!PARKY] Go midweek
+> In December we pick a Wednesday or Thursday up to the 17th: that's when it costs least, and 3 pm to 9 pm gives us six hours for Luma Celestia, the markets and the big rides. With an Åkpass I'll ride Balder more than twice anyway, and I'd rather not count coupons in the cold. We buy online, since the gate always costs more.
+
 ## Which rides run in winter
 
 Entry includes Tomtehuset with Santa, the ice rink, Barnens Paradis (from age four) and Blomsterkarusellen. The big rides need an Åkpass or coupons:

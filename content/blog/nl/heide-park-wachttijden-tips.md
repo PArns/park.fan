@@ -392,6 +392,9 @@ binnen, maar hebben een ticket van € 0 uit de onlineshop nodig.
 
 **Jaarkaart.** De Bronze Pass kost nieuw € 69 en € 59 bij verlenging, en is in 2026 op 45 dagen niet geldig, waaronder de meeste zaterdagen van april tot en met oktober en 1 tot en met 9 augustus. De Silber Pass voor € 89 (verlenging € 69) heeft geen uitsluitingsdagen. De Merlin Abenteuer-Pass voor € 139 (verlenging € 119) omvat parkeren en geldt ook in Legoland Deutschland, Peppa Pig Park Günzburg, de Duitse Sea Life-centra en Madame Tussauds Berlin, plus op maximaal twee opeenvolgende dagen in Legoland Billund en Gardaland. Wie met een Silber of Abenteuer-Pass op 31 oktober wil komen, heeft een gratis reserveringsticket nodig. Alle drie de kaarten zijn twaalf maanden geldig vanaf de aankoop.
 
+> [!PARKY]
+> De jaarkaart kopen we pas vlak voor ons eerste bezoek in 2027: hij is twaalf maanden geldig vanaf de aankoop, en tot eind maart rijdt er in Soltau niets. In december gekocht verliest hij maanden waarin ik alleen maar van Colossos kan dromen. Komen we ook op zaterdag, dan moet het de Silber Pass worden, want de Bronze Pass gold in 2026 op de meeste zaterdagen van april tot en met oktober niet.
+
 **Eten.** Onze parkpagina telt 21 horecazaken, van de
 Schmalzkuchen-Schmiede met Duitse oliebollen op het terras van Colossos tot het
 Wirtshaus des Admirals, een buffetrestaurant in de Bucht der Piraten. Pizza haal je bij Pizza Scream en Flammkuchen bij de Flammkuchen Factory, allebei in Transsilvanië, en Thüringer braadworst van de lavagrill bij de Heide Park Grill aan de ingang. Frau Mümmels Kiosk in Peppa Pig Land verkoopt bowls, en veel restaurants hebben plantaardige alternatieven.

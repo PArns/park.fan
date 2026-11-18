@@ -72,6 +72,9 @@ El parque espera mucha gente el 22, el 28 y el 29 de noviembre y el 5 y el 6 de 
 
 Según la fecha, una entrada de día cuesta entre 40 y 56 euros. El invierno pasado costaba de 38 a 53 euros. Los niños de hasta tres años incluidos entran gratis presentando un documento de identidad. Por ahora solo se pueden reservar días hasta el 31 de diciembre, y las entradas de enero saldrán a la venta más adelante. La fecha se puede cambiar en la cuenta de Efteling hasta un año después de la compra; si el nuevo día es más caro, se paga la diferencia.
 
+> [!PARKY]
+> Una hora antes de abrir, o sea, a las 9:00 hasta Nochevieja, miramos en la previsión de Efteling si funcionan las montañas rusas al aire libre. Por muy bien que patine, solo por la pista de hielo no hacemos el viaje. Si según la previsión ese día no funcionan, cambiamos la fecha en la cuenta de Efteling y, si el nuevo día es más caro, pagamos la diferencia.
+
 La nueva entrada de tarde cuesta 33 euros y vale del 21 de diciembre de 2026 al 3 de enero de 2027, cada día desde las 16:00 hasta el cierre, salvo el 31 de diciembre. Quien reserva el aparcamiento en el mismo pedido paga 10 euros por él, en lugar de los 15 euros habituales.
 
 ## Mantenimiento en invierno

@@ -203,6 +203,9 @@ When Paris gets busy depends on the French school holidays. The Christmas break 
 
 So far January has been the quietest month at all three parks. The weekdays barely differ from one another, except at Europa-Park, where Saturday is clearly busier than the rest. Four of its five busiest days were Saturdays: 2 May, 22 August, and 19 and 26 September 2026. At the two Paris parks the busiest days often fell on weekdays in the holidays instead, such as 23 and 24 February 2026, during the Paris winter break.
 
+> [!PARKY] January in Paris
+> In January we go to Paris, but only after the 3rd, once the French Christmas holidays are over: January has been the quietest month at all three parks so far, and Rust closes after 9 January anyway. For queues that short I'll happily pack the thick scarf. We sort out which Paris park gets which day of the trip in the [trip planner](/paris#planner).
+
 ### Disneyland Park
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park

@@ -284,6 +284,9 @@ why our readings for November and December are thin.
 If you're
 flexible, pick a Thursday or Friday outside the French school holidays.
 
+> [!PARKY] Sunday it is
+> Until 18 December the park only opens at weekends, so we go on the Sunday: Saturday is by far the busiest day of the week here, while Sunday has the shortest waits along with Thursday and Friday. We spend the Saturday looking forward to it, and that comes with no queue at all. After that the park is open every day until 3 January.
+
 ### Futuroween 2026
 
 Futuroween, Futuroscope's Halloween, runs from 17 October to 1 November 2026. The theme is

@@ -105,6 +105,9 @@ Für dieselben 69 Dollar verkauft der Park bis zum 30. November als Black-Friday
 
 Parken kostet ab 39 Dollar, Preferred Parking ab 55 Dollar, jeweils plus Gebühr und Steuern. Ins Navi gehört 2201 Road to Six Flags, Arlington, TX 76011.
 
+> [!PARKY] Pass statt Ticket
+> Kaufen wir bis zum 30. November, nehmen wir statt des Good Any Day Tickets den Silver Pass, der kostet dieselben 69 Dollar. Laut Eventseite gilt er schon zu Holiday in the Park, und das Parken, sonst ab 39 Dollar, ist dabei. Das Geld stecke ich lieber in Kakao als in einen Parkplatz. Mit dem Bring-A-Friend-Ticket nehmen wir gleich im Dezember jemanden mit, denn bis zum 5. Januar muss es eingelöst sein.
+
 ## Freier Eintritt ab 65
 
 Seit diesem Winter kommt kostenlos in den Park, wer am 31. Dezember 1961 oder früher geboren ist. Registrieren kannst du dich nur online. Freigeschaltet wird der Eintritt dann am Eingang, und bei jedem Besuch brauchst du einen Ausweis mit Geburtsdatum. Der erste Besuch muss bis zum 31. Dezember 2026 stattfinden. Auf der Ticketseite endet das Angebot mal am 31. Dezember 2026, mal am 5. Januar 2027, in den Fragen und Antworten am 5. Januar 2027.

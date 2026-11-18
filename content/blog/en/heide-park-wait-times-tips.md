@@ -382,6 +382,9 @@ but need a €0 ticket from the online shop.
 
 **Annual pass.** The Bronze Pass costs €69 new and €59 to renew, and is not valid on 45 days in 2026, including most Saturdays from April to October and 1 to 9 August. The Silver Pass for €89 (€69 to renew) has no blackout days. The Merlin Abenteuer-Pass for €139 (€119 to renew) includes parking and also covers Legoland Deutschland, Peppa Pig Park Günzburg, the German Sea Life centres and Madame Tussauds Berlin, plus up to two consecutive days at Legoland Billund and at Gardaland. Silver and Abenteuer-Pass holders who want to come on 31 October need a free reservation ticket. All three passes are valid for twelve months from purchase.
 
+> [!PARKY]
+> We don’t buy the annual pass until just before our first visit in 2027: it’s valid for twelve months from purchase, and nothing runs in Soltau until the end of March. Bought in December, it loses months in which all I can do is dream about Colossos. If we’re coming on Saturdays too, it has to be the Silver Pass, because in 2026 the Bronze Pass wasn’t valid on most Saturdays from April to October.
+
 **Food.** Our park page lists 21 food outlets, from the
 Schmalzkuchen-Schmiede doughnut stand on the Colossos terrace to the Wirtshaus
 des Admirals, a buffet restaurant in the Bucht der Piraten. There is pizza at Pizza Scream and tarte flambée at the Flammkuchen Factory, both in Transylvania, and Thuringian bratwurst from a lava grill at the Heide Park Grill by the entrance. Frau Mümmels Kiosk in Peppa Pig Land sells bowls, and many of the restaurants have plant-based options.

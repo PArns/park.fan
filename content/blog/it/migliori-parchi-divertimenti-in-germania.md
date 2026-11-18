@@ -375,6 +375,9 @@ Le distanze sono in linea d'aria tra gli ingressi.
 Sconsiglio Europa-Park e Phantasialand nello stesso fine settimana. I 288 chilometri in linea
 d'aria diventano sull'A5 e sull'A61 più di quattro ore di auto.
 
+> [!PARKY]
+> In inverno facciamo Phantasialand e Movie Park in due giorni fra il 27 novembre e Natale: solo dal 27 sono aperti insieme il Wintertraum e Hollywood Christmas, e intorno a Capodanno a Brühl c'è il periodo più pieno dell'inverno. Lì saliamo su Taron al buio, e a entrambi i lanci mi sollevo un attimo dal sedile fra le luci a festa. A Bottrop arriviamo con l'RE14 da Essen, e dalla stazione di Feldhausen restano circa 400 metri fino all'ingresso.
+
 ## Quali parchi mancano qui
 
 Tripsdrill, Fort Fun, lo Skyline Park, Belantis e il Freizeitpark Plohn non sono ancora su park.fan e per questo mancano in questa classifica.

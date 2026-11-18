@@ -190,6 +190,9 @@ déjà cochée, et tout bloc dont l’heure a déjà commencé. Qui appuie à
 quatorze heures est à quatorze heures dans une file, et celle-là, plus personne
 ne la déplace.
 
+> [!PARKY]
+> Avant d’appuyer sur « Optimiser la journée » dans le [planificateur de journée](/trip-planner), on fait glisser la pause déjeuner là où on veut vraiment manger : l’assistant la met à 12h30, et l’optimiseur ne la bouge plus. Mon estomac, lui, se déplace moins facilement qu’un bloc. Si le planificateur propose plus tard sous « Ajustements » de raccourcir la pause pour caser une attraction de plus, c’est nous qui décidons ce qu’on préfère.
+
 Et comme une pression peut transformer trois blocs en onze, il y a une annulation
 à côté du résultat. Un seul retour en arrière.
 

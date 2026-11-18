@@ -423,6 +423,9 @@ centimeter en senioren vanaf 70 betalen ongeveer de helft. Alle drie de kaarten
 bevatten 25 procent korting op tickets voor vrienden en familie (hooguit twee
 tickets per jaar) en de voorpremière van het Flying Cinema.
 
+> [!PARKY] Jaarkaart halen
+> Met ongedateerde tickets van € 56 heeft de Plopsaland Belgium Pass van € 150 zich bij het derde bezoek terugverdiend, met woensdagtickets van € 36 bij het vijfde. Met de kaart kunnen we vanaf 19 december op geselecteerde dagen ook al in het Flying Cinema, en met een bij als piloot heb ik nog nooit boven Europa gevlogen. Met een dagticket kan dat pas vanaf 13 maart.
+
 ## Praktisch in het park
 
 Honden zijn niet toegestaan, behalve assistentiehonden met een officieel vestje.

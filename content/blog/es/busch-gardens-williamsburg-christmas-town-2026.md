@@ -94,6 +94,9 @@ Alpengeist, Griffon, InvadR, Loch Ness Monster, Pantheon y Tempesto no figuran e
 
 Sin membresía, lo que compras es una entrada normal de un día para una fecha de Christmas Town. En taquilla cuesta 91,99 dólares esos días y 121,99 dólares el resto de la temporada. Ningún precio incluye impuestos ni tasas. El Christmas Town Any Day Ticket, que sirve para cualquier día hasta el 3 de enero, cuesta 56,99 dólares, o 101,99 dólares con All-Day Dining. Para quien piensa repetir está la Christmas Town Fun Card, de 89,99 dólares, válida todos los días del evento. El Christmas Bounce Ticket junta tres días de Christmas Town con Colonial Williamsburg, aparcamiento incluido. Cuesta 112,05 dólares desde los 13 años y 95,05 dólares de 6 a 12 años; los niños de cinco años o menos no pagan.
 
+> [!PARKY] Con Any Day basta
+> Para una noche en Christmas Town nos quedamos con el Christmas Town Any Day Ticket de 56,99 dólares en lugar de la entrada de un día, que en taquilla cuesta 91,99 dólares los días del evento. Así elegimos nosotros el día, hasta el 3 de enero, y con más de diez millones de luces yo voy a querer volver de todas formas. Si de verdad cae una segunda noche, la Fun Card de 89,99 dólares sale más barata que dos Any Day Tickets.
+
 Las membresías Basic, Unlimited, Premier y Platinum en vigor incluyen Christmas Town, y también el College Pass y el 2026 Military Pass. Con Unlimited, Premier y Platinum aparcas gratis y no tienes fechas bloqueadas. La Basic Membership tiene bloqueados el 21, 22, 28 y 29 de noviembre, el 5, 6, 12 y 13 de diciembre y del 19 al 26 de diciembre, o sea, casi todos los fines de semana y las fechas de Navidad.
 
 Aparcar cuesta desde 35 dólares al día comprando en línea, y el Multi-Day Parking, 65 dólares.

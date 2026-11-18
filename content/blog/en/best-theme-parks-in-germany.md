@@ -370,6 +370,9 @@ The distances are straight lines between the entrances.
 I’d advise against Europa-Park and Phantasialand in one weekend. The 288 kilometres as the crow
 flies mean a good four hours’ drive on the A5 and A61.
 
+> [!PARKY]
+> In winter we do Phantasialand and Movie Park on two days between 27 November and Christmas: only from the 27th are Wintertraum and Hollywood Christmas both running, and the turn of the year is the busiest time of winter in Brühl. We ride Taron there in the dark, and on both launches I float up off my seat between the fairy lights. We get to Bottrop on the RE14 from Essen, and from Feldhausen station it’s about 400 metres to the gate.
+
 ## The parks missing here
 
 Tripsdrill, Fort Fun, Skyline Park, Belantis and Freizeitpark Plohn aren’t on park.fan yet, so they’re not in this ranking.

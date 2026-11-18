@@ -397,6 +397,9 @@ entrano gratis, ma serve un biglietto da 0 € dal negozio online.
 
 **Abbonamento annuale.** Il Bronze Pass costa 69 € nuovo e 59 € al rinnovo, e nel 2026 non vale per 45 giorni, fra cui la maggior parte dei sabati da aprile a ottobre e dall’1 al 9 agosto. Il Silber Pass da 89 € (69 € al rinnovo) non ha giorni esclusi. Il Merlin Abenteuer-Pass da 139 € (119 € al rinnovo) comprende il parcheggio e vale anche al Legoland Deutschland, al Peppa Pig Park Günzburg, nei Sea Life tedeschi e da Madame Tussauds Berlino, più fino a due giorni consecutivi al Legoland Billund e a Gardaland. Chi ha il Silber Pass o l’Abenteuer-Pass e vuole venire il 31 ottobre deve prendere un biglietto di prenotazione gratuito. Tutti e tre valgono dodici mesi dall’acquisto.
 
+> [!PARKY]
+> L’abbonamento lo compriamo solo a ridosso della nostra prima visita del 2027: vale dodici mesi dall’acquisto, e a Soltau fino a fine marzo non gira niente. Comprato a dicembre, perderebbe mesi interi in cui io Colossos posso solo sognarlo. Se veniamo anche di sabato, ci vuole il Silber Pass, perché nel 2026 il Bronze Pass non valeva nella maggior parte dei sabati da aprile a ottobre.
+
 **Mangiare.** Sulla nostra pagina del parco ci sono 21 punti di ristoro, dalla Schmalzkuchen-Schmiede, un chiosco di frittelle sulla
 terrazza di Colossos, fino al Wirtshaus des Admirals, un ristorante a buffet nella Bucht der Piraten. La pizza si trova da Pizza Scream e la Flammkuchen alla Flammkuchen Factory, entrambi in Transilvania, e la salsiccia della Turingia alla griglia di lava all’Heide Park Grill, all’ingresso. Il Frau Mümmels Kiosk nel Peppa Pig Land vende bowl, e molti ristoranti hanno alternative vegetali.
 

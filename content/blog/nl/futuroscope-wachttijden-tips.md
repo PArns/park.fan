@@ -291,6 +291,9 @@ waarom onze meetwaarden voor november en december dun zijn.
 Wie
 flexibel is, kiest een donderdag of vrijdag buiten de Franse schoolvakanties.
 
+> [!PARKY] Zondag nemen
+> Tot 18 december is het park alleen in het weekend open, dus gaan we op zondag: de zaterdag is hier met duidelijke afstand de drukste dag van de week, en de zondag heeft samen met donderdag en vrijdag de kortste wachttijden. De zaterdag besteden we aan voorpret, en daarvoor hoef je nergens aan te schuiven. Daarna is het park tot 3 januari elke dag open.
+
 ### Futuroween 2026
 
 Van 17 oktober tot 1 november 2026 loopt Futuroween, de Halloween van Futuroscope. Het thema zijn

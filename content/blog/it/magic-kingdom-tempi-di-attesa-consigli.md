@@ -298,6 +298,9 @@ dollari il 30 settembre. Quel giorno non si potevano comprare né l’uno né
 l’altro. Il 30 settembre, però, quello di TRON si poteva già comprare di
 nuovo per il giorno successivo.
 
+> [!PARKY] Per il Mine Train
+> Senza hotel Disney, se prendiamo un Single Pass, è quello per il Seven Dwarfs Mine Train e non quello per TRON: TRON lo facciamo all’apertura, quando la coda è più corta, mentre il Mine Train resta pieno uguale da mezzogiorno fino a sera. I sette nani hanno già il loro Brontolo, non serve che io faccia l’ottavo in coda per tutto il pomeriggio. Il 30 settembre il suo pass costava 11 dollari, otto meno di quello per TRON, e per lo stesso giorno non ne restava nessuno dei due, quindi lo compriamo prima.
+
 ## Quando andarci
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays

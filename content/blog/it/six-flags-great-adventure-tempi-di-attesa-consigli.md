@@ -215,6 +215,9 @@ Finito Fright Fest, il parco apre senza programma speciale dal 5 all’8 novembr
 
 Durante l’evento Jersey Devil Coaster, El Toro, Runaway Train, Tango e il Bugs Bunny National Park restano fermi. Quali delle altre attrazioni funzionano lo decide Six Flags sera per sera, in base al tempo e alla temperatura.
 
+> [!PARKY]
+> Per Holiday in the Park compriamo il biglietto solo quando ci sono le previsioni per il nostro giorno: il tempo decide in parte quali attrazioni girano, e Six Flags non rimborsa nulla, né dà un altro giorno se piove. El Toro e il Jersey Devil Coaster restano comunque fermi per tutto l’evento, e già ci brontolo un po’ su. Se abbiamo il Gold Pass, il biglietto non ci serve proprio, perché Holiday in the Park è incluso.
+
 ```best-days-widget slug=six-flags-great-adventure
 
 ```

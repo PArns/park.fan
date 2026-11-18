@@ -409,6 +409,9 @@ höhere Grenze: Stardust Racers und Revenge of the Mummy ab 1,22 Metern, VelociC
 Doctor Doom's Fearfall ab 1,33 Metern und der Hulk ab 1,38 Metern. Bei den meisten dieser Bahnen steht
 vor dem Einstieg ein Testsitz, in dem du ausprobieren kannst, ob du hineinpasst.
 
+> [!PARKY]
+> Mit einem Kind ab 1,02 Metern laufen wir im Epic Universe zur Öffnung alle zusammen los: Mine-Cart Madness und das Battle at the Ministry, die beiden starken Tipps für den frühen Start, nehmen es schon mit, bis 1,22 Meter mit Begleitung. So steht der Nachwuchs noch vor dem zweiten Kaffee im Zaubereiministerium. Mario Kart, Curse of the Werewolf und Hiccup's Wing Gliders gelten ab derselben Größe, die setzen wir im [Tagesplaner](/trip-planner) gleich dahinter.
+
 Seuss Landing in den Islands of Adventure ist der Bereich für die Kleinsten. Laut Universal gilt dort
 nur an zwei Bahnen eine Mindestgröße, an beiden 0,92 Meter. In den Studios gehören Minion Land und DreamWorks Land
 den Kindern, im Epic Universe die Isle of Berk mit dem Viking Training Camp.

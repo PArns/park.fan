@@ -68,6 +68,9 @@ Voor de winter verkoopt het resort twee aanbiedingen. Wat ze kosten, heeft het n
 - Disney Dream Vacation – Winter Frostival Package: een nacht in het Shanghai Disneyland Hotel of het Toy Story Hotel, ontbijt- en dinerbuffet voor twee volwassenen, twee dagtickets op een vaste datum, eetbonnen voor het park en Disney Premier Access voor de Cavalcade voor twee personen
 - Dagticket met een tegoedbon van 88 yuan: geldig op een dag naar keuze tot en met 3 januari 2027, de bon geldt voor een combimenu rond etenstijd in een aantal snackrestaurants in het park
 
+> [!PARKY] Vrije datum
+> Van de twee winteraanbiedingen nemen we het dagticket met de tegoedbon van 88 yuan, omdat het geldt op een dag naar keuze tot en met 3 januari. Zo kiezen we de dag op het laatste moment, op basis van weer en luchtkwaliteit, want bij regen, wind, mist of onweer kan het resort de shows uitstellen of afgelasten. In de sneeuwbol van Mickey's Snow Magic sta ik liever zonder paraplu. De bon bewaren we voor het avondeten.
+
 Nieuw op de kaart staan loempia’s gevuld met wagyu-cheeseburger en youdunzi in de vorm van Mickey, die er alleen bij het ontbijt zijn. Tanghulu krijg je in de vorm van Mickey en co, tegen de kou is er warme chocolademelk en melkthee, en verder zijn er kerstkoekjes, muffins en suikerspinnen. De Royal Banquet Hall en Aurora hebben nieuwe feestmenu’s, en in het Shanghai Disneyland Hotel en het Toy Story Hotel staan de hele winter buffetten klaar voor het diner.
 
 ## Met de metro, in november zonder veerboot

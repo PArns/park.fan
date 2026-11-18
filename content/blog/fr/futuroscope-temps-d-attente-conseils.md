@@ -295,6 +295,9 @@ Cela explique que nos mesures de novembre et de décembre soient maigres.
 
 Qui est flexible choisit un jeudi ou un vendredi hors des vacances scolaires françaises.
 
+> [!PARKY] Va pour dimanche
+> Jusqu'au 18 décembre, le parc n'ouvre que le week-end, alors on y va le dimanche : le samedi est ici de loin le jour le plus chargé de la semaine, et le dimanche a, avec le jeudi et le vendredi, les attentes les plus courtes. Le samedi, on le passe à se réjouir d'avance, et ça se fait sans aucune file. Ensuite, le parc ouvre tous les jours jusqu'au 3 janvier.
+
 ### Futuroween 2026
 
 Du 17 octobre au 1er novembre 2026 a lieu Futuroween, le Halloween du Futuroscope. Le thème :

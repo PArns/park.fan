@@ -299,6 +299,9 @@ diciembre son escasos.
 Quien
 sea flexible elegirá un jueves o un viernes fuera de las vacaciones escolares francesas.
 
+> [!PARKY] Mejor el domingo
+> Hasta el 18 de diciembre el parque solo abre los fines de semana, así que vamos el domingo: el sábado es aquí, con mucha diferencia, el día con más gente de la semana, y el domingo tiene, junto con el jueves y el viernes, las esperas más cortas. El sábado lo pasamos con la ilusión del día siguiente, que no exige hacer ninguna cola. Después, el parque abre todos los días hasta el 3 de enero.
+
 ### Futuroween 2026
 
 Del 17 de octubre al 1 de noviembre de 2026 se celebra Futuroween, el Halloween del Futuroscope.

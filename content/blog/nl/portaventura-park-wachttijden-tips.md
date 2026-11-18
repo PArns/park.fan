@@ -237,6 +237,9 @@ Kinderen mogen vanaf 12 jaar zonder volwassene de parken in.
 
 Voor Halloween is er de code SUSTO26 met tot 30 procent korting op tickets voor bezoeken van 19 september tot 15 november, die uiterlijk 15 november moet worden ingewisseld. De code ESCAPEPAW geeft 40 procent op bezoeken doordeweeks, als je uiterlijk 14 oktober koopt en uiterlijk 4 december komt.
 
+> [!PARKY] Twee dagen nemen
+> Slapen we niet in een van de hotels van het resort, dan kopen we voor het park meteen twee dagen: online € 43 in plaats van € 37, de tweede dag kost dus € 6. Voor minder dan één toegang met Express ONE krijgen we een hele parkdag, en alleen al bij die gedachte kom ik even los van mijn stoel. In een resorthotel zit die dag er sowieso bij, daar levert één nacht al twee dagen toegang tot het park op.
+
 ### Jaarkaarten
 
 De vier jaarkaarten gelden 365 dagen vanaf aankoop. Junioren zijn kinderen van 4 tot 10 jaar, senioren zijn vanaf 60, kinderen van 0 tot 3 jaar zijn gratis.

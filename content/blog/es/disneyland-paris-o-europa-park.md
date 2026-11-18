@@ -203,6 +203,9 @@ Cuándo se llena París depende de las vacaciones escolares francesas. Las de Na
 
 En los tres parques, enero ha sido hasta ahora el mes más tranquilo. Entre los días de la semana apenas hay diferencia, salvo en el Europa-Park, donde el sábado está bastante más lleno que el resto. Cuatro de sus cinco días con más gente fueron sábados: el 2 de mayo, el 22 de agosto y el 19 y el 26 de septiembre de 2026. En los dos parques de París, en cambio, los días más llenos cayeron a menudo entre semana en periodo de vacaciones, como el 23 y el 24 de febrero de 2026, durante las vacaciones de invierno de París.
 
+> [!PARKY] Enero en París
+> En enero vamos a París, pero solo después del día 3, cuando se acaban las vacaciones de Navidad en Francia: en los tres parques, enero ha sido hasta ahora el mes más tranquilo, y Rust cierra de todos modos después del 9 de enero. Por colas tan cortas me llevo encantado la bufanda gorda. Qué parque de París va en cada día del viaje lo decidimos en el [planificador de viajes](/paris#planner).
+
 ### Disneyland Park
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park

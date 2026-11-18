@@ -555,6 +555,9 @@ era l’unico altro modo per entrare). Stai in
 coda digitalmente mentre mangi, fai shopping o guardi uno spettacolo. L’attesa non ti divora più la giornata. Il parco, intanto, distribuisce la domanda sulle ore in modo più
 controllato.
 
+> [!PARKY]
+> All’Europa-Park possiamo avere una sola fascia VirtualLine alla volta, e la nostra va a Voltron: è il coaster con l’attesa mediana più lunga del parco. Per Voltron fa la coda il mio telefono, e intanto io mi stacco dal sedile su Wodan. Visto che i posti sono molto limitati, la prenotiamo nell’app appena se ne libera una.
+
 Per chi preferisce fare la fila con i piedi anziché con il pollice, i parchi
 lavorano in parallelo sulla stazione stessa:
 

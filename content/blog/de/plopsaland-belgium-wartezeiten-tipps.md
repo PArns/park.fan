@@ -423,6 +423,9 @@ Unlimited. Kinder von 85 bis 99 Zentimetern und Senioren ab 70 zahlen etwa die
 Hälfte. Alle drei Karten enthalten 25 Prozent Rabatt auf Tickets für Freunde und
 Familie (höchstens zwei Tickets im Jahr) und die Vorpremiere des Flying Cinema.
 
+> [!PARKY] Jahreskarte holen
+> Mit undatierten Tickets für 56 Euro hat sich der Plopsaland Belgium Pass für 150 Euro beim dritten Besuch bezahlt gemacht, mit Mittwochstickets für 36 Euro beim fünften. Mit der Karte kommen wir außerdem ab dem 19. Dezember an ausgewählten Tagen ins Flying Cinema, und mit einer Biene als Pilotin bin ich noch nie über Europa geflogen. Mit dem Tagesticket geht das erst ab dem 13. März.
+
 ## Praktisches im Park
 
 Hunde sind nicht erlaubt, Assistenzhunde mit offizieller Weste ausgenommen. Kinder

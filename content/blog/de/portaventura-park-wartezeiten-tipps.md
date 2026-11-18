@@ -237,6 +237,9 @@ Kinder dürfen ab 12 Jahren ohne Erwachsenen in die Parks.
 
 Für Halloween gibt es den Code SUSTO26 mit bis zu 30 Prozent Rabatt auf Tickets für Besuche vom 19. September bis zum 15. November, der bis zum 15. November eingelöst werden muss. Der Code ESCAPEPAW gibt 40 Prozent auf Wochentagsbesuche, wenn du bis zum 14. Oktober kaufst und bis zum 4. Dezember kommst.
 
+> [!PARKY] Zwei Tage nehmen
+> Schlafen wir nicht in einem Hotel des Resorts, kaufen wir für den Park gleich zwei Tage: online 43 € statt 37 €, der zweite Tag kostet also 6 €. Für weniger als eine einzige Fahrt mit Express ONE bekommen wir einen ganzen Parktag, da hebe ich vor Freude kurz ab. Im Resort-Hotel ist er sowieso dabei, dort bringt schon eine Nacht zwei Tage Parkzugang.
+
 ### Jahreskarten
 
 Die vier Jahreskarten gelten 365 Tage ab Kauf. Junioren sind Kinder von 4 bis 10 Jahren, Senioren sind ab 60, Kinder von 0 bis 3 Jahren sind frei.

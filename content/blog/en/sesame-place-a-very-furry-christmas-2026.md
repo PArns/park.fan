@@ -53,6 +53,9 @@ The 1-2-3 Christmas Tree stands at Oscar's Wacky Taxi Stage, 30 feet tall, or a 
 
 You'll find Santa at Santa's Furry Workshop next to the Sesame Street Theater. This year you no longer have to stand in line there. You sign up at the Tinsel Tent outside the workshop, get a text when it's your turn and then have 20 minutes to get there. Kids write to Santa at Letters to Santa in Mr. Hooper's Gift Shop. Christmas Eve is Santa's last day, and the virtual queue closes at 2 pm that day. From December 26 to January 3, Santa Cookie Monster takes over the workshop.
 
+> [!PARKY]
+> We sign up for Santa at the Tinsel Tent as soon as we arrive, then thaw out with a hot chocolate in the Winter Warm-Up Lounge at Elmo's Pizza Kitchen. A line where I get to sit down with a hot chocolate is my kind of line. When the text comes, we have 20 minutes to get to the workshop next to the Sesame Street Theater. On Christmas Eve we sign up before 2 pm, when the virtual queue closes.
+
 ## Dates and hours
 
 The park is usually open Fridays from 4 pm to 8 pm, Saturdays from 11 am to 7 pm and Sundays from 1 pm to 6 pm local time. It stays closed Monday through Thursday until December 17, Thanksgiving on November 26 included. The exceptions:

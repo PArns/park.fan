@@ -368,6 +368,9 @@ De afstanden zijn hemelsbreed tussen de ingangen gemeten.
 Europa-Park en Phantasialand in één weekend raad ik af. De 288 kilometer hemelsbreed worden over de
 A5 en de A61 ruim vier uur rijden.
 
+> [!PARKY]
+> Phantasialand en Movie Park plannen we in de winter op twee dagen tussen 27 november en Kerstmis: pas vanaf de 27e lopen Wintertraum en Hollywood Christmas allebei, en rond de jaarwisseling is het in Brühl de drukste tijd van de winter. Taron rijden we daar in het donker, en bij allebei de lanceringen zweef ik tussen de lichtslingers even boven mijn stoel. Naar Bottrop gaan we met de RE14 vanaf Essen, en vanaf station Feldhausen is het zo’n 400 meter naar de ingang.
+
 ## Welke parken hier ontbreken
 
 Tripsdrill, Fort Fun, Skyline Park, Belantis en Freizeitpark Plohn staan nog niet op park.fan en ontbreken daarom in deze ranglijst.

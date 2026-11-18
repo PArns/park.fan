@@ -431,6 +431,9 @@ moitié. Les trois abonnements comprennent 25 pour cent de réduction sur les
 billets pour amis et famille (deux billets par an au maximum) et l’avant-première
 du Flying Cinema.
 
+> [!PARKY] L’abonnement, oui
+> Avec des billets non datés à 56 euros, le Plopsaland Belgium Pass à 150 euros est rentabilisé dès la troisième visite, avec des billets du mercredi à 36 euros dès la cinquième. L’abonnement nous ouvre aussi le Flying Cinema certains jours à partir du 19 décembre, et survoler l’Europe avec une abeille aux commandes, je ne l’ai encore jamais fait. Avec un billet à la journée, il faudra attendre le 13 mars.
+
 ## Pratique dans le parc
 
 Les chiens ne sont pas admis, sauf les chiens d’assistance portant un gilet

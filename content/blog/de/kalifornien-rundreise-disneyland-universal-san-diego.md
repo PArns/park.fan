@@ -166,6 +166,9 @@ Ohne Mietwagen erreichst du Universal, Disneyland und LEGOLAND mit Bahn und Bus.
 
 Disney nennt sechs Flughäfen für das Disneyland Resort, nach Entfernung geordnet: John Wayne (SNA) in Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) und San Diego (SAN). Vom Bahnhof am Flughafen Burbank fährt der Pacific Surfliner ohne Umsteigen bis Anaheim, und zum Bahnhof bringt dich der kostenlose Shuttlebus „LOT D“ des Flughafens. San Diego International liegt knapp fünf Kilometer nordwestlich der Innenstadt von San Diego und passt zum Teil der Reise im Süden, ein Gabelflug mit Ankunft in Los Angeles und Rückflug ab San Diego erspart dir die Rückfahrt durch die ganze Region.
 
+> [!PARKY] Einmal umziehen
+> Wir landen in Los Angeles, wohnen für Disneyland, Knott's, Universal und Magic Mountain am Harbor Boulevard und ziehen für die drei Parks im Süden ins Gaslamp Quarter um. Von dort sind es 13 Minuten bis SeaWorld statt 111, und über vier Stunden Auto an einem Sesame-Place-Tag wären mir zu viel Autobahn für zu wenig Elmo. Zurück fliegen wir ab San Diego, und im [Reiseplaner](/kalifornien#planner) legen wir die beiden Teile getrennt an.
+
 ## Tickets
 
 ### Disneyland Resort

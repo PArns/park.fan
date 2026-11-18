@@ -419,6 +419,9 @@ niños de 85 a 99 centímetros y los mayores de 70 pagan más o menos la mitad. 
 tres pases incluyen un 25 por ciento de descuento en entradas para amigos y
 familia (como máximo dos entradas al año) y el preestreno del Flying Cinema.
 
+> [!PARKY] Pase anual, sí
+> Con entradas sin fecha de 56 euros, el Plopsaland Belgium Pass de 150 euros se amortiza en la tercera visita, y con las del miércoles a 36 euros, en la quinta. Con el pase entramos además al Flying Cinema algunos días a partir del 19 de diciembre, y con una abeja de piloto nunca he volado sobre Europa. Con la entrada de un día, toca esperar al 13 de marzo.
+
 ## Práctico en el parque
 
 No se admiten perros, salvo perros de asistencia con chaleco oficial. Los niños

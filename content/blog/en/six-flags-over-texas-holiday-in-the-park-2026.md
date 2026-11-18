@@ -105,6 +105,9 @@ Until 30 November the park sells the Silver Pass for the same $69 as a Black Fri
 
 Parking starts at $39, Preferred Parking at $55, each plus a fee and tax. For the satnav: 2201 Road to Six Flags, Arlington, TX 76011.
 
+> [!PARKY] Take the pass
+> If we're buying by 30 November, we skip the Good Any Day ticket and take the Silver Pass for the same $69. The event page says it already covers Holiday in the Park, with parking included, which otherwise starts at $39. I'd rather spend that on cocoa than on a parking space. The Bring-A-Friend ticket goes on a December visit, since it has to be used by 5 January.
+
 ## Free admission at 65 and over
 
 Since this winter, anyone born on or before 31 December 1961 gets into the park free. You can only sign up online; the admission is then activated at the gate, and you need ID showing your date of birth on every visit. The first visit has to take place by 31 December 2026. The ticket page gives the offer's end as 31 December 2026 in one place and 5 January 2027 in another, and the offer's FAQ says 5 January 2027.

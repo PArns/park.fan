@@ -203,6 +203,9 @@ Quando Parigi si riempie dipende dalle vacanze scolastiche francesi. Quelle di N
 
 In tutti e tre i parchi finora il mese con meno gente è stato gennaio. Tra i giorni della settimana le differenze sono piccole, e solo all’Europa-Park il sabato è molto più affollato degli altri giorni. Quattro dei suoi cinque giorni più pieni sono stati sabati, il 2 maggio, il 22 agosto e il 19 e 26 settembre 2026. Nei due parchi di Parigi invece i giorni più pieni sono caduti spesso in settimana durante le vacanze, come il 23 e il 24 febbraio 2026, nelle vacanze invernali parigine.
 
+> [!PARKY] Gennaio a Parigi
+> A gennaio andiamo a Parigi, ma solo dopo il 3, quando in Francia finiscono le vacanze di Natale: in tutti e tre i parchi finora il mese con meno gente è stato gennaio, e Rust dopo il 9 gennaio chiude comunque. Per code così corte porto volentieri la sciarpa pesante. Quale dei due parchi di Parigi va in quale giorno del viaggio, lo decidiamo nel [pianificatore di viaggio](/paris#planner).
+
 ### Disneyland Park
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park

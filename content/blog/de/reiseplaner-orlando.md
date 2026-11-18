@@ -70,6 +70,9 @@ Eine Karte zeigt die Minuten: die Spitzenwartezeit an deinen Tagen und wie viel 
 
 Den Plan zeigen drei Ansichten: Tage, Woche und Monat. Einen Tag kannst du festhalten oder mit einem anderen tauschen, und vor dem Tausch siehst du, wie viele Minuten er dich kostet. Einzelne Tage oder die ganze Reise übernimmst du in den Tagesplaner, speicherst sie als Kalenderdatei in Orlando-Zeit oder schickst einen Link auf genau diesen Plan weiter.
 
+> [!PARKY]
+> Heißt es auf der Karte, dass die Reihenfolge wenig ändert, halten wir im [Reiseplaner](/orlando#planner) zuerst den Tag fest, der uns am wichtigsten ist, etwa das Magic Kingdom am Geburtstag, und tauschen die übrigen, wie es uns passt. Für weniger als drei Minuten pro Fahrt fange ich gar nicht erst an zu grummeln. Spart die Reihenfolge mehr, halten wir nur diesen einen Tag fest und lassen den Rest, wo der Planer ihn hingelegt hat.
+
 ## Wenn deine Reisedaten noch offen sind
 
 Unter dem Kalender der Reisedaten führt „Noch keine Daten? Beste Reisezeit finden“ zur Suche. Dort gibst du eine Reisedauer von 3 bis 21 Tagen an und einen Zeitraum: die nächsten zwölf Monate, ein Jahr, einen Frühling, Sommer oder Herbst oder eigene Daten. Zurück kommen die drei besten Zeiträume, jeder mit seiner Spitzenwartezeit und dem Abstand zum Schnitt des ganzen Zeitraums. Mit „Nur in meinen Schulferien“ bleiben nur Zeiträume übrig, die ganz in den Ferien deines Bundeslands oder deiner Region liegen, und du siehst dazu, wie weit unsere Ferientermine reichen. „Reise mit diesen Daten planen“ macht aus einem Zeitraum einen Plan.

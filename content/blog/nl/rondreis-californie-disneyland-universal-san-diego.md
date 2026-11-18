@@ -166,6 +166,9 @@ Zonder huurauto bereik je Universal, Disneyland en LEGOLAND met trein en bus. Va
 
 Disney noemt zes vliegvelden voor het Disneyland Resort, op volgorde van afstand: John Wayne (SNA) in Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) en San Diego (SAN). Vanaf het station bij het vliegveld van Burbank rijdt de Pacific Surfliner zonder overstap naar Anaheim, en de gratis shuttlebus LOT D van het vliegveld brengt je naar het station. San Diego International ligt bijna vijf kilometer ten noordwesten van het centrum van San Diego en past bij het zuidelijke deel van de reis: vlieg je heen naar Los Angeles en terug vanaf San Diego, dan hoef je niet meer door de hele regio terug te rijden.
 
+> [!PARKY] Eén keer verhuizen
+> We landen in Los Angeles, slapen voor Disneyland, Knott's, Universal en Magic Mountain aan Harbor Boulevard en verhuizen voor de drie parken in het zuiden naar het Gaslamp Quarter. Vandaar is SeaWorld 13 minuten rijden in plaats van 111, en meer dan vier uur in de auto op een dag in Sesame Place is me te veel snelweg voor te weinig Elmo. Terug vliegen we vanaf San Diego, en in de [reisplanner](/californie#planner) zetten we de twee delen apart neer.
+
 ## Tickets
 
 ### Disneyland Resort

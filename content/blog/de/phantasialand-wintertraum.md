@@ -286,6 +286,9 @@ Der Park hat drei Themenhotels direkt am Gelände: das Ling Bao in China Town, d
 
 Für den Winter-Kurzurlaub wirbt der Park mit bis zu 45 % Rabatt für frühe Buchungen. Frühstück und Parken am Hotel sind im Preis, und durch die Hotelgärten oder ein eigenes Tor kommst du direkt in den Park. Nach MAGIC SYMPHONY ist das der kürzeste Weg ins Bett, während alle anderen zu P1 und P2 laufen. Gäste im Matamba und im Ling Bao bekommen pro Person und Nacht einmal schnelleren Zugang zu einer dieser Bahnen: Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force oder Colorado Adventure, allerdings nur mit einem gültigen Parkticket. Gäste des Charles Lindbergh bekommen als Explorer schnelleren Zugang zu F.L.Y., dort gibt es außerdem ein Explorer-Paket mit Übernachtung, Drei-Gänge-Dinner, Frühstück und zwei Parktagen. Den neuen Pool- und Wellnessbereich im Ling Bao dürfen nur dessen Gäste nutzen.
 
+> [!PARKY] Für Chiapas
+> Schlafen wir im Matamba oder im Ling Bao, lösen wir den schnelleren Zugang aus dem Hotel an Chiapas ein: Dort kostet der Quick Pass sonst 10 € und ist nur am Gästeservice zu haben, an den anderen Bahnen der Liste kostet er 5 oder 7 € im Online-Shop. Bei zwei Nächten fahren wir so zweimal, und die trockene Jacke zum Wechseln packe ich dann gleich doppelt ein. Ein gültiges Parkticket brauchen wir dafür trotzdem.
+
 Die Silvester-Arrangements mit Übernachtung sind ausgebucht.
 
 ## Silvester im Phantasialand

@@ -282,6 +282,9 @@ Die Saison 2026 läuft nach dem Kalender der Carte Saison vom 7. Februar 2026 bi
 
 Wer flexibel ist, wählt einen Donnerstag oder Freitag außerhalb der französischen Schulferien.
 
+> [!PARKY] Sonntag nehmen
+> Bis zum 18. Dezember hat der Park nur an Wochenenden offen, also fahren wir am Sonntag: Der Samstag ist hier mit deutlichem Abstand der vollste Tag der Woche, der Sonntag hat mit Donnerstag und Freitag die kürzesten Wartezeiten. Den Samstag verbringen wir mit Vorfreude, die gibt es ganz ohne Warteschlange. Danach hat der Park bis zum 3. Januar jeden Tag offen.
+
 ### Futuroween 2026
 
 Vom 17. Oktober bis zum 1. November 2026 läuft Futuroween, das Halloween im Futuroscope. Das

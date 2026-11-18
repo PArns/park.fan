@@ -83,6 +83,9 @@ Mit der U-Bahn nimmst du die Bundang-Linie bis Giheung und wechselst dort in die
 
 Die Panda-Zwillinge sind voraussichtlich am 11. Dezember zum letzten Mal öffentlich zu sehen, in der dritten Dezemberwoche ziehen sie nach China. Seit dem 13. November sind sie im Panda Second House in Quarantäne und nur eingeschränkt im Innengehege zu sehen. Baum und Zwillinge an einem Tag gibt es damit drei Wochen lang, mit Parade nur noch vom 27. November bis zum 11. Dezember. Unser Beitrag zum [Abschied von Rui Bao und Hui Bao](/news/everland-pandas-ruibao-huibao-abschied) beschreibt, wie die Besuche bei den Pandas ablaufen.
 
+> [!PARKY]
+> Wir nehmen einen Tag zwischen dem 1. und dem 11. Dezember, lieber früher als später: Dann zahlen wir schon den Dezemberpreis, sehen Parade und Magic in the Sky und erwischen die Zwillinge noch, wenn auch nur eingeschränkt im Innengehege. Zwei Pandas, die nach China umziehen, winke ich lieber persönlich hinterher. Die Uhrzeiten von Parade und Show schauen wir vorher im Tagesplan auf everland.com nach.
+
 [Everland](ref:everland?full)
 
 Quellen:

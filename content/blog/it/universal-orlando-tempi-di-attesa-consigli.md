@@ -442,6 +442,9 @@ Revenge of the Mummy da 122 centimetri, VelociCoaster da 130, Doctor Doom's
 Fearfall da 133 e l’Hulk da 138. Per la maggior parte di queste, prima
 dell’imbarco c’è un sedile di prova in cui puoi vedere se ci stai.
 
+> [!PARKY]
+> Con un bambino da 102 centimetri in su, all’Epic Universe partiamo tutti insieme all’apertura: su Mine-Cart Madness e il Battle at the Ministry, i due «consigli forti» per chi arriva presto, può già salire, con un accompagnatore fino a 122 centimetri. Così il piccolo è al Ministero della Magia prima che i grandi abbiano finito il secondo caffè. Mario Kart, Curse of the Werewolf e Hiccup's Wing Gliders hanno la stessa altezza minima, quindi nel [pianificatore della giornata](/trip-planner) li mettiamo subito dopo.
+
 Seuss Landing alle Islands of Adventure è l’area per i più piccoli. Secondo
 Universal, lì solo due attrazioni hanno un’altezza minima, tutte e due di 92
 centimetri. Agli Studios Minion Land e DreamWorks Land

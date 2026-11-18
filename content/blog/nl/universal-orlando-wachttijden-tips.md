@@ -405,6 +405,9 @@ hogere grens: Stardust Racers en Revenge of the Mummy vanaf 1,22 meter, VelociCo
 Doctor Doom's Fearfall vanaf 1,33 meter en de Hulk vanaf 1,38 meter. Bij de meeste van deze attracties
 staat voor de instap een proefstoel waarin je kunt uitproberen of je erin past.
 
+> [!PARKY]
+> Met een kind vanaf 1,02 meter gaan we in Epic Universe bij de opening met z'n allen op pad: in Mine-Cart Madness en Battle at the Ministry, de twee sterke tips voor een vroege start, mag het al mee, tot 1,22 meter met een begeleider. Zo staat de kleine al in het Ministerie van Toverkunst voordat de ouders hun tweede koffie op hebben. Mario Kart, Curse of the Werewolf en Hiccup's Wing Gliders gelden vanaf dezelfde lengte, die zetten we in de [dagplanner](/trip-planner) er direct achter.
+
 Seuss Landing in Islands of Adventure is het gebied voor de kleinsten. Volgens Universal geldt daar maar
 bij twee attracties een minimale lengte, bij allebei 0,92 meter. In de Studios zijn Minion Land en
 DreamWorks Land van de kinderen, in Epic Universe de Isle of Berk met het Viking Training Camp.

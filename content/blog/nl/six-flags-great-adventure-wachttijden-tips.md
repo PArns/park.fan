@@ -215,6 +215,9 @@ Na Fright Fest gaat het park zonder programma open van 5 tot en met 8 november e
 
 Jersey Devil Coaster, El Toro, Runaway Train, Tango en het Bugs Bunny National Park draaien tijdens het evenement niet. Welke van de andere attracties rijden, beslist Six Flags op elke Holiday-avond op basis van weer en temperatuur.
 
+> [!PARKY]
+> Voor Holiday in the Park kopen we het ticket pas als de weersverwachting voor onze dag er is: het weer beslist mee welke attracties rijden, en Six Flags betaalt niets terug, een andere dag bij regen is er ook niet. El Toro en de Jersey Devil Coaster staan tijdens het hele evenement sowieso stil, en daar mopper ik nu al een beetje over. Hebben we de Gold Pass, dan hebben we helemaal geen ticket nodig, want Holiday in the Park zit erbij.
+
 ```best-days-widget slug=six-flags-great-adventure
 
 ```

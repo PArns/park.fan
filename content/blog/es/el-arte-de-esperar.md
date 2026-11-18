@@ -554,6 +554,9 @@ digitalmente mientras comes, vas de compras o ves un espectáculo. La espera no
 desaparece, pero deja de comerte el día, y el parque reparte la
 demanda de forma más controlada a lo largo de las horas.
 
+> [!PARKY]
+> En el Europa-Park solo podemos tener una franja de VirtualLine a la vez, y la nuestra es para Voltron: es la montaña rusa con la mediana de espera más larga del parque. Por Voltron hace cola mi móvil, y mientras tanto yo me despego del asiento en Wodan. Como las plazas son muy limitadas, la reservamos en la app en cuanto quede una libre.
+
 Para quien prefiere hacer cola con los pies y no con el pulgar, los parques
 trabajan a la vez en la propia estación:
 

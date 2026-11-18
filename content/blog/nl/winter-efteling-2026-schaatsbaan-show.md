@@ -72,6 +72,9 @@ Door evenementen verwacht het park veel drukte op 22, 28 en 29 november en op 5 
 
 Een dagticket kost afhankelijk van de datum 40 tot 56 euro; vorige winter was dat 38 tot 53 euro. Kinderen tot en met drie jaar mogen met een identiteitsbewijs gratis naar binnen. Voorlopig kun je dagen tot en met 31 december boeken, de tickets voor januari komen later in de verkoop. In je Efteling-account kun je de datum tot een jaar na aankoop wijzigen. Kies je een duurdere dag, dan betaal je het verschil bij.
 
+> [!PARKY]
+> Een uur voor opening, tot en met oudejaarsdag dus om 9.00 uur, kijken we in de verwachting van de Efteling of de achtbanen in de buitenlucht rijden. Hoe sierlijk ik ook schaats, alleen voor de schaatsbaan gaan we niet. Rijden ze volgens de verwachting op onze dag niet, dan wijzigen we de datum in ons Efteling-account en betalen we bij een duurdere dag het verschil bij.
+
 Het nieuwe avondticket kost 33 euro en geldt van 21 december 2026 tot en met 3 januari 2027, telkens van 16.00 uur tot sluitingstijd, behalve op 31 december. Boek je het parkeerticket er meteen bij, dan betaal je daarvoor 10 euro in plaats van de gebruikelijke 15 euro.
 
 ## Onderhoud in de winter

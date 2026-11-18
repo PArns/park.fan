@@ -225,6 +225,9 @@ After Fright Fest the park opens without an event on 5 to 8 and 14 and 15 Novemb
 
 Jersey Devil Coaster, El Toro, Runaway Train, Tango and Bugs Bunny National Park don't run during the event. Six Flags decides each holiday evening, by weather and temperature, which of the other rides run.
 
+> [!PARKY]
+> For Holiday in the Park we don't buy the ticket until the forecast for our day is out: the weather helps decide which rides run, and Six Flags doesn't refund tickets or give rain checks. El Toro and the Jersey Devil Coaster are off for the whole event anyway, and I'm already grumbling about it. If we've got the Gold Pass, we don't need a ticket at all, since Holiday in the Park is included.
+
 ```best-days-widget slug=six-flags-great-adventure
 
 ```

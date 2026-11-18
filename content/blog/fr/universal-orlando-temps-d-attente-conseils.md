@@ -287,6 +287,9 @@ Universal a rassemblé les tailles minimales sur une page par parc. Les plus bas
 
 Les enfants entre la taille minimale et 1,22 mètre ont besoin d’un accompagnateur. Les grandes attractions ont un seuil plus haut : Stardust Racers et Revenge of the Mummy dès 1,22 mètre, VelociCoaster dès 1,30 mètre, Doctor Doom’s Fearfall dès 1,33 mètre et le Hulk dès 1,38 mètre. Devant la plupart de ces attractions, un siège test permet d’essayer si on a la bonne taille.
 
+> [!PARKY]
+> Avec un enfant d’au moins 1,02 mètre, on part tous ensemble à l’ouverture d’Epic Universe : Mine-Cart Madness et le Battle at the Ministry, les deux « conseils forts » pour arriver tôt, l’acceptent déjà, avec un accompagnateur jusqu’à 1,22 mètre. Le petit se retrouve ainsi au ministère de la Magie avant que les parents aient fini leur deuxième café. Mario Kart, Curse of the Werewolf et Hiccup’s Wing Gliders ont le même seuil, alors dans le [planificateur de journée](/trip-planner), on les met juste après.
+
 Seuss Landing, à Islands of Adventure, est la zone des plus petits. Selon Universal, seules deux attractions y ont une taille minimale, de 0,92 mètre chacune. Aux Studios, Minion Land et DreamWorks Land appartiennent aux enfants, à Epic Universe l’Isle of Berk avec le Viking Training Camp.
 
 ## Accès, parking et hôtels

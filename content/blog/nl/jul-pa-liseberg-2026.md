@@ -77,6 +77,9 @@ Het goedkoopst zijn 15, 20, 22 en 27 november, en in december de woensdagen en d
 
 Zonder Åkpass betaal je elke rit met coupons van 25 kronen per stuk. [Balder](ref:liseberg/balder) kost er vier, dus wie er meer dan twee keer in wil, is met de Åkpass goedkoper uit. Het Lisebergspasset van 395 kronen geldt twaalf maanden als entreebewijs, het Guldpasset van 2.595 kronen twaalf maanden voor entree en alle attracties.
 
+> [!PARKY] Doordeweeks gaan
+> In december kiezen we een woensdag of donderdag tot en met de 17e: dan betalen we het minst en hebben we van 15.00 tot 21.00 uur zes uur voor Luma Celestia, de kerstmarkten en de grote attracties. Met een Åkpass ga ik toch vaker dan twee keer in Balder, en coupons tellen in de kou doe ik liever niet. De tickets kopen we online, aan de kassa betaal je altijd meer.
+
 ## Welke attracties in de winter draaien
 
 Bij de entree inbegrepen zijn het Tomtehuset met de kerstman, de ijsbaan, Barnens Paradis (vanaf vier jaar) en de Blomsterkarusellen. Voor de grote attracties heb je een Åkpass of coupons nodig:

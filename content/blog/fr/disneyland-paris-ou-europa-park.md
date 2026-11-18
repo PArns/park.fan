@@ -203,6 +203,9 @@ L’affluence à Paris dépend des vacances scolaires françaises. Celles de No�
 
 Dans les trois parcs, janvier a été jusqu’ici le mois le plus calme. D’un jour de la semaine à l’autre, les écarts sont faibles, sauf à l’Europa-Park, où le samedi est nettement plus chargé que les autres jours. Quatre de ses cinq journées les plus chargées étaient des samedis : le 2 mai, le 22 août, puis les 19 et 26 septembre 2026. Dans les deux parcs parisiens, les journées les plus chargées tombaient au contraire souvent en semaine pendant les vacances, par exemple les 23 et 24 février 2026, lors des vacances d’hiver de la zone parisienne.
 
+> [!PARKY] Janvier à Paris
+> En janvier, on va à Paris, mais seulement après le 3, une fois les vacances de Noël terminées : dans les trois parcs, janvier a été jusqu’ici le mois le plus calme, et Rust ferme de toute façon après le 9 janvier. Pour des files aussi courtes, je prends volontiers la grosse écharpe. Les deux parcs parisiens, on les répartit sur les jours du voyage dans le [planificateur de voyage](/paris#planner).
+
 ### Disneyland Park
 
 ```best-days-widget slug=/parks/europe/france/paris/disneyland-park

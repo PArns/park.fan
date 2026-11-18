@@ -117,6 +117,9 @@ Between Tokyo, Nagoya and Osaka you ride the Tokaido Shinkansen. On the timetabl
 
 Besides the bus, you can reach Fuji-Q on the Fuji Excursion, a limited express that leaves Shinjuku at 7:30 and stops at Fujikyu-Highland Station at 9:26. The park entrance is right outside the ticket gate. The last Fuji Excursion back leaves there at 17:44, so if you stay until closing, you take the 20:23 bus.
 
+> [!PARKY]
+> On a winter weekday we take the 7:30 Fuji Excursion from Shinjuku to Fuji-Q. At 9:26 we step off right outside the entrance, and the park usually doesn't open before 10:00 anyway. We let the 6:45 bus go: Fuji-Q doesn't sell early entry from December to 5 February, and without a head start at the gate even I won't get up that early. If the park closes at 17:00, we still make the last train back at 17:44.
+
 Heading west from Fuji-Q you don't need to go back through Tokyo. Buses take just under an hour and a half to Mishima Station, where the Kodama to Nagoya stops. A direct bus links Lake Kawaguchi with Meitetsu's bus centre in Nagoya in about four and a half hours. For Osaka there's the Fujiyama Liner night bus, leaving Fuji-Q at 21:01 and arriving in Kyoto at 5:57 and in Umeda at 6:53. Booking opens two months before the trip, and you'll be in Osaka before breakfast, though also before you've slept in.
 
 During Golden Week, Obon, Silver Week and over New Year, every seat on the Nozomi is reserved, in 2026–27 from 25 December to 5 January. In winter 2026–27 the long weekends of 9 to 11 January and 20 to 22 March are added. Without a reservation you'll stand in the aisle or on the deck between cars. Hikari and Kodama trains keep their unreserved cars on those days too.
