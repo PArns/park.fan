@@ -198,7 +198,7 @@ On the opening weekend the park was busy on Saturday, 14 November, and almost em
 
 With a Quick Pass you skip the queue once at one ride, through a separate entrance. Until now you first had to queue for it at Guest Service on the Kaiserplatz, one queue to save another. Now you can also buy it in the online shop from 11 am, which during Wintertraum is opening time, at your own pace on your phone, and show the QR code at the Quick Pass entrance.
 
-- Taron Daylight until 4 pm, Taron After Dark from 5 pm: €12 each
+- Taron Daylight until 4 pm and Taron After Dark from 5 pm: two different passes, €12 each, neither valid between 4 and 5 pm
 - Black Mamba: €10
 - Winja's Fear, Winja's Force, Colorado Adventure: €7 each
 - Maus au Chocolat, Mystery Castle, Talocan: €5 each

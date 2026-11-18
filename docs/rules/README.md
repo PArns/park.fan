@@ -103,7 +103,7 @@ _Open when you write a post, a news item or UI copy, or add an image._
 - [One photo can index two rides (`alsoRides`)](one-photo-can-index-two-rides-alsorides.md) — one file, the second slug in `alsoRides`, validated against the park
 - [Card photos are two layers](card-photos-are-two-layers.md) — frame against the strip between the panels (`CardPhotoFrame`); `pnpm check:card-framing`
 - [A news correction is shown, never silent](a-news-correction-is-shown-never-silent.md) — news only: a dated `> [!CORRECTION]` at the end, label `blog.correction`
-- [A news update opens the post](a-news-update-opens-the-post.md) — `> [!UPDATE] YYYY-MM-DD` at the top, `blog.updateOn`, `NewsUpdateBadge`; no signature
+- [A news update opens the post](a-news-update-opens-the-post.md) — `> [!UPDATE] YYYY-MM-DD` at the top, `blog.updateOn`, `NewsUpdateBadge`; a follow-up on the same subject stays in it, a new subject is a new post; no signature
 - [`updatedAt` is for new content](updated-at-is-for-new-content.md) — new dates, parks, figures or a corrected fact; never a wording pass; `lastTouched`
 - [A Parky box hands the reader one move](a-parky-box-hands-the-reader-one-move.md) — one per guide where a chapter ends in a decision, at most two a post; facts from the post; stamp ≤ 18 characters, no `!`; planner links; news only while the reader can act; `pnpm test:blog-parky`
 - [A quote names its source, and a legal claim names its side](a-quote-names-its-source.md) — `> [!QUOTE]` with a source line (`BlogQuote`); legal claims attributed

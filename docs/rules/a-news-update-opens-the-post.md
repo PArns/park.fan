@@ -23,7 +23,11 @@ locales in the same pull request:
   moves: news keeps its publication order, and it never gets an `updatedAt`.
 - **A wrong fact is not an update.** That is a `[!CORRECTION]` at the end
   ([a news correction is shown, never silent](a-news-correction-is-shown-never-silent.md)).
-- **A development big enough for its own headline is a new post**, not an update.
+- **A new subject is a new post**, not an update. A follow-up on the post's own subject stays in
+  its update box, even when it could carry a headline of its own: the check the post announced, new
+  prices, a pass or ticket added, gone or sold out. The Quick Pass news of 15 November took the shop
+  check of 18 November as its update (two Taron passes, Chiapas online, Die 3 Mausketiere still sold
+  out); a separate post would have split one product's prices across two pages.
 
 News posts carry no `— Patrick` signature. A news post is a report, not a column, and the
 signature line pushed the end-of-post notes away from the text they belonged to.

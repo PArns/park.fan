@@ -197,7 +197,7 @@ Le week-end d’ouverture, il y avait beaucoup de monde le samedi 14 novembre et
 
 Avec le Quick Pass, tu passes une fois devant la file d’une attraction, par une entrée à part. Jusqu’ici, il fallait d’abord faire la queue au service clients de la Kaiserplatz pour l’acheter, une file pour en éviter une autre. Désormais, tu l’achètes aussi dans la boutique en ligne, dès 11 h, donc dès l’ouverture du parc, tranquillement sur ton téléphone, et tu montres le QR code à l’entrée Quick Pass.
 
-- Taron Daylight jusqu’à 16 h, Taron After Dark à partir de 17 h : 12 € chacun
+- Taron Daylight jusqu’à 16 h et Taron After Dark à partir de 17 h : deux pass différents, 12 € chacun, aucun ne vaut entre 16 h et 17 h
 - Black Mamba : 10 €
 - Winja’s Fear, Winja’s Force, Colorado Adventure : 7 € chacun
 - Maus au Chocolat, Mystery Castle, Talocan : 5 € chacun
