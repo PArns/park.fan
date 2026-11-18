@@ -47,7 +47,7 @@ seo:
 
 ## Three rides from 1927
 
-On the [Racer](ref:kennywood/racer?bare), two trains race side by side, yet there's only one track. Board on the right in the station and you come back on the left. Kennywood says no other coaster in the US runs a single continuous track like this. John A. Miller designed it and Philadelphia Toboggan Coasters built it. The track is 4,500 feet (1,372 metres) long and 72.5 feet (22 metres) high at its highest point. The trains hit 40 mph (64 km/h). A lap takes 1 minute 32 seconds, and with three 24-seat trains on the circuit the Racer gets through 1,400 riders an hour. You need to be 46 inches (117 centimetres) tall to ride. An earlier coaster, opened in 1910, carried the name first.
+On the [Racer](ref:kennywood/racer?bare), two trains race side by side, yet there's only one track. Board on the right in the station and you come back on the left. Kennywood says no other coaster in the US runs a single continuous track like this. John A. Miller designed it and Philadelphia Toboggan Coasters built it. On a 4,500-foot (1,372-metre) track that peaks at 72.5 feet (22 metres), the trains hit 40 mph (64 km/h). A lap takes 1 minute 32 seconds, and with three 24-seat trains on the circuit the Racer carries 1,400 riders an hour. You need to be 46 inches (117 centimetres) tall to ride. An earlier coaster, opened in 1910, carried the name first.
 
 The [Turtle](ref:kennywood/turtle?bare) came to the park in 1927 as a Tumble Bug. Its cars look like turtles and run over hills and dips on a circular track. It's been the Turtle since Kennywood bought a sixth car in 1948, and the park says it's the last ride of its kind still running anywhere. In 1930 a stand called Lucky went up next to it. On its history page, the park jokes that someone must already have guessed which of the two would be the lucky one left standing. There's no minimum height. Children under 46 inches ride with a companion, and babies can't ride.
 
@@ -59,21 +59,21 @@ The [Merry-Go-Round](ref:kennywood/merry-go-round?bare) is the third carousel in
 
 ## Events from April to January
 
-The season starts with Celebrate Kennywood Weekends from April 17 to May 16. The park puts its old rides and its food at the centre of these weekends, along with souvenirs and memories of past visits, and a 100-year-old Racer should have collected a few of those. The park explicitly asks you to show up in matching Kennywood gear; nobody needs talking into the fries at Potato Patch.
+The season starts with Celebrate Kennywood Weekends from April 17 to May 16. The park puts its old rides and its food at the centre of these weekends, along with souvenirs and memories of past visits. The park explicitly asks you to show up in matching Kennywood gear; nobody needs talking into the fries at Potato Patch.
 
-The Bites and Pints Food & Drink Festival follows from May 28 to June 27, on Fridays, Saturdays and Sundays and on Memorial Day, May 31. The stands go up around the Lagoon and pour cocktails, craft beer and wine next to dishes from several countries, so ride the Racer first.
+The Bites and Pints Food & Drink Festival follows from May 28 to June 27, on Fridays, Saturdays and Sundays and on Memorial Day, May 31. If the Racer is still on your list, ride it before the stands around the Lagoon start pouring cocktails, craft beer and wine next to dishes from several countries.
 
-On July 4 the Independence Day fireworks go up over the Racer, right above one of the birthday rides. Every Friday and Saturday from July 9 to July 31, Kennywood puts on evening drone shows with designs of its own.
+On July 4 the Independence Day fireworks go up over the Racer. Every Friday and Saturday from July 9 to July 31, Kennywood puts on evening drone shows with designs of its own.
 
-From August 7 to August 22, the Fall Fantasy Parades run through the park every day, with hand-decorated floats and more than 130 local marching bands. Phantom Fall Fest, the Halloween event, runs on selected days from September 11 to October 31 and turns 25 itself in 2027; the park promises anniversary surprises without naming one yet. As in earlier years, the haunted houses and scare zones wait for dark before they open.
+From August 7 to August 22, the Fall Fantasy Parades run through the park every day, with hand-decorated floats and more than 130 local marching bands. Phantom Fall Fest, the Halloween event, runs on selected days from September 11 to October 31 and celebrates its 25th anniversary in 2027. As in earlier years, the haunted houses and scare zones open only after dark.
 
-Holiday Lights starts its 16th season on selected days from November 13, 2027 to January 2, 2028. More than three million lights go up, the park says its tree is the tallest in Pennsylvania, and Rudolph is there to meet.
+Holiday Lights starts its 16th season on selected days from November 13, 2027 to January 2, 2028. More than three million lights go up. Kennywood calls its tree the tallest in Pennsylvania, and you can meet Rudolph there.
 
 ## What 2027 season passes cost
 
 For Black Friday, Kennywood is already selling 2027 season passes online at a discount. The Gold Pass costs $124.99 instead of $169.99, or eight payments of under $16 each. It's valid on every operating day, Phantom Fall Fest and Holiday Lights included. It comes with parking in the Preferred and VIP lots, a souvenir cup with free refills, two 2027 guest tickets and 15% off most food, shopping and Speedy Pass.
 
-The Platinum Pass, $189.99 instead of $249.99, adds Sandcastle, Idlewild and SoakZone and Dutch Wonderland, with free parking at all four Pennsylvania parks, three guest tickets and 20% off. On top of that you get into Lake Compounce, Noah's Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash and Water Country.
+The Platinum Pass, $189.99 instead of $249.99, adds Sandcastle, Idlewild and SoakZone and Dutch Wonderland, with free parking at all four Pennsylvania parks, three guest tickets and 20% off. It also gets you into seven more parks: Lake Compounce, Noah's Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash and Water Country.
 
 Gold and Platinum bought now already cover Holiday Lights 2026, plus a Holiday Lights guest ticket valid until December 20, 2026.
 
