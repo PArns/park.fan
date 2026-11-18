@@ -55,11 +55,11 @@ Eigentümer ist Marek Goczał, dem unter anderem der Energydrink „Energy 2000�
 
 ## Die Bahnen nach Bereichen
 
-Sieben Themenbereiche hat der Park: die Little Kids Zone (polnisch Bajkolandia), die Family Zone (Strefa familijna), die Extreme Zone (Strefa ekstremalna), den Water Park, Aqualantis, die Dragon Zone (Smoczy Gród) und Sweet Valley. Mit Rokan kommt Volana als achter Bereich dazu. Im Winter öffnet der Park als Winter Kingdom, mit eigenen Attraktionen.
+Sieben Themenbereiche hat der Park: die Little Kids Zone (polnisch Bajkolandia), die Family Zone (Strefa familijna), die Extreme Zone (Strefa ekstremalna), den Water Park, Aqualantis, die Dragon Zone (Smoczy Gród) und Sweet Valley. Mit Rokan kommt Volana als achter Bereich dazu. Im Winter öffnet der Park als Winter Kingdom, dann mit Eisbahn, Snowtubing auf Hügeln für Erwachsene und Kinder und der neuen Kinderattraktion Artic Loop.
 
 ### Extreme Zone
 
-Die höchste Bahn im Park ist [Hyperion](ref:energylandia/pepsi-hyperion?bare), offiziell Pepsi Hyperion. Intamin hat den Mega Coaster gebaut, und am 14. Juli 2018, dem vierten Geburtstag des Parks, fuhr er zum ersten Mal. Der höchste Punkt liegt bei 77 Metern. Die erste Abfahrt geht laut RCDB 82 Meter tief und mit 85 Grad hinunter, der Park spricht von über 80 Metern. Unten fährt der Zug 141,9 km/h (beim Park 142). Auf den 1.450 Metern Strecke gibt es eine Inversion und bis zu 4,8 G. Zwei Züge mit je 28 Plätzen bringen 1.300 Fahrgäste pro Stunde über die Strecke. Zur Saison 2018 war Hyperion nach Angaben des Parks der höchste und schnellste Mega Coaster in Europa.
+Die höchste Bahn im Park ist [Hyperion](ref:energylandia/pepsi-hyperion?bare), offiziell Pepsi Hyperion. Intamin hat den Mega Coaster gebaut, und am 14. Juli 2018, dem vierten Geburtstag des Parks, fuhr er zum ersten Mal. Der höchste Punkt liegt bei 77 Metern. Die erste Abfahrt geht laut RCDB 82 Meter tief und mit 85 Grad hinunter, der Park spricht von über 80 Metern. Unten fährt der Zug laut RCDB 141,9 km/h, Energylandia rundet auf 142. Auf den 1.450 Metern Strecke gibt es eine Inversion und bis zu 4,8 G. Zwei Züge mit je 28 Plätzen bringen 1.300 Fahrgäste pro Stunde über die Strecke. Zur Saison 2018 war Hyperion nach Angaben des Parks der höchste und schnellste Mega Coaster in Europa.
 
 [Mayan Zero Limitów](ref:energylandia/mayan-zero-limitow?bare) ist ein Suspended Looping Coaster von Vekoma, das Standardmodell mit 689 Metern Strecke, eröffnet am 12. September 2015. Der Zug hängt unter der Schiene und fährt bis 33,3 Meter hinauf. Er erreicht 80 km/h, dreht sich fünfmal über Kopf, und der Park gibt bis zu 5 G an. Den Namenszusatz trägt die Bahn seit 2026, aus einer Zusammenarbeit mit Kanał Zero. Null Grenzen gelten dabei nur für den Namen, am Eingang bleibt es bei 140 Zentimetern.
 
@@ -67,7 +67,7 @@ Die höchste Bahn im Park ist [Hyperion](ref:energylandia/pepsi-hyperion?bare), 
 
 ```
 
-Den [Speed](ref:energylandia/speed-water-coaster?bare), mit vollem Namen Speed Water Coaster, hat Intamin gebaut, und er öffnete am 2. April 2018. Laut RCDB ist er 50 Meter hoch und 101 km/h schnell, Energylandia gibt über 60 Meter und rund 110 km/h an. Die 687 Meter lange Strecke kommt ohne Inversion aus, bei 3 G. Bei den European Star Awards 2025 kam Speed unter den Wasserattraktionen Europas auf Platz fünf. Wie viele Wasserbahnen im Park fährt er nur in der Sommersaison.
+Den [Speed](ref:energylandia/speed-water-coaster?bare), mit vollem Namen Speed Water Coaster, hat Intamin gebaut, und er öffnete am 2. April 2018. Laut RCDB ist er 50 Meter hoch und 101 km/h schnell, Energylandia gibt über 60 Meter und rund 110 km/h an. Die 687 Meter lange Strecke kommt ohne Inversion aus, bei 3 G.
 
 ```glossary-widget slug=water-coaster
 
@@ -83,57 +83,57 @@ Zur Extreme Zone gehören außerdem fünf Fahrgeschäfte ohne Achterbahnschiene:
 - Tsunami Drop von SBF Visa, ein Fallturm mit 40 Metern
 - Aztec Swing von SBF Visa, mit bis zu 4,5 G
 - Space Gun von SBF Visa, 16 Meter hoch, 50 km/h und 3 G
-- Apocalypto von der Fabbri Group, nur in der Sommersaison
+- Apocalypto von der Fabbri Group
 
 ### Dragon Zone (Smoczy Gród)
 
 Für [Zadra](ref:energylandia/zadra-made-in-malopolska?bare) baute Energylandia seinen fünften Bereich, Smoczy Gród. Er ist fünf Hektar groß und entstand in elf Monaten, von November 2018 bis August 2019. Die Bahn heißt mit vollem Namen Made in Małopolska Zadra und öffnete am 22. August 2019. Rocky Mountain Construction hat sie mit der IBox-Schiene gebaut, und die erste Abfahrt fällt mit 90 Grad senkrecht.
 
-Zadra ist laut RCDB 62,8 Meter hoch, der Park nennt für seine Bahn 63,8 und an anderer Stelle 63 Meter. Höher ist kein Hybrid Coaster der Welt, und Iron Gwazi in Tampa ist laut RCDB gleich hoch. Zadra fährt 121 km/h, auf 1.316 Metern dreht sich der Zug dreimal über Kopf, und nach 1:50 Minuten ist die Fahrt vorbei. Unter den Stahlachterbahnen Europas setzten die European Star Awards 2025 Zadra auf Platz vier.
+Zadra ist laut RCDB 62,8 Meter hoch, der Park nennt für seine Bahn 63,8 und an anderer Stelle 63 Meter. Höher ist kein Hybrid Coaster der Welt, und Iron Gwazi in Tampa ist laut RCDB gleich hoch. Zadra fährt 121 km/h, auf 1.316 Metern dreht sich der Zug dreimal über Kopf, und nach 1:50 Minuten ist die Fahrt vorbei.
 
 ```glossary-widget slug=hybrid-coaster
 
 ```
 
-Einen Monat vor Zadra, am 20. Juli 2019, öffneten im selben Bereich zwei Familienachterbahnen. [Frida](ref:energylandia/frida?bare) ist ein Junior Coaster von Vekoma, 13 Meter hoch und 247 Meter lang, mit 44,6 km/h. [Draken](ref:energylandia/draken?bare) stammt von Preston & Barbieri, ein Family Coaster mit 140 Metern Strecke und 7,3 Metern Höhe, der 34,4 km/h schnell fährt (beim Park 34,5).
+Einen Monat vor Zadra, am 20. Juli 2019, öffneten im selben Bereich zwei Familienachterbahnen. [Frida](ref:energylandia/frida?bare) ist ein Junior Coaster von Vekoma, 13 Meter hoch und 247 Meter lang, mit 44,6 km/h. [Draken](ref:energylandia/draken?bare) stammt von Preston & Barbieri, ein Family Coaster mit 140 Metern Strecke und 7,3 Metern Höhe. Die RCDB misst 34,4 km/h, der Park schreibt 34,5.
 
-Ebenfalls von Preston & Barbieri ist [Dragon Adventure](ref:energylandia/dragon-adventure?bare), eine 270 Meter lange Fahrt mit 3,5 km/h, also gemächlicher als mancher Spaziergang. Seit dem 28. Juni 2022 dreht sich in der Dragon Zone das [Wonder Wheel](ref:energylandia/wonder-wheel?bare), ein 53 Meter hohes Riesenrad. Auch [Fuego](ref:energylandia/fuego?bare) gehört zum Bereich.
+Ebenfalls von Preston & Barbieri ist [Dragon Adventure](ref:energylandia/dragon-adventure?bare), eine 270 Meter lange Fahrt mit 3,5 km/h, also gemächlicher als mancher Spaziergang. Seit dem 28. Juni 2022 dreht sich in der Dragon Zone das [Wonder Wheel](ref:energylandia/wonder-wheel?bare), ein 53 Meter hohes Riesenrad, und mit [Fuego](ref:energylandia/fuego?bare) hat der Bereich noch eine Attraktion.
 
 ### Aqualantis
 
 Am siebten Geburtstag, dem 14. Juli 2021, eröffnete Aqualantis, mit acht Food Courts und drei Shops. Die größte Bahn dort ist [Abyssus](ref:energylandia/abyssus?bare), ein Shockwave von Vekoma mit Abschuss über Linearmotoren. Die Strecke ist 1.316 Meter lang, auf den Meter so lang wie die von Zadra. Der höchste Punkt liegt bei 38,5 Metern, und der Zug erreicht 100 km/h. Die RCDB zählt vier Inversionen. Der Park nennt Abyssus einen „Double Coaster“ mit bis zu zwei Minuten Fahrzeit und 4,5 G.
 
-Am selben Tag öffnete [Ekipa Light Explorers](ref:energylandia/ekipa-light-explorers?bare), ein Family Boomerang von Vekoma, 24,2 Meter hoch, 238 Meter lang und 60 km/h schnell. Der [Tidal Wave Twister](ref:energylandia/tidal-wave-twister?bare) von Zamperla fährt auf 90 Metern mit 51 km/h. Als Achterbahn zählt ihn nur der Park, die RCDB lässt ihn aus, und Wikipedia führt ihn als Disk'O, also als Fahrgeschäft. Abyssus, Light Explorers und Tidal Wave Twister fahren nur in der Sommersaison.
+Am selben Tag öffnete [Ekipa Light Explorers](ref:energylandia/ekipa-light-explorers?bare), ein Family Boomerang von Vekoma, 24,2 Meter hoch, 238 Meter lang und 60 km/h schnell. Der [Tidal Wave Twister](ref:energylandia/tidal-wave-twister?bare) von Zamperla fährt auf 90 Metern mit 51 km/h. Als Achterbahn zählt ihn nur der Park, die RCDB lässt ihn aus, und Wikipedia führt ihn als Disk'O, also als Fahrgeschäft.
 
-Zu Aqualantis gehören außerdem die [Grotto Expedition](ref:energylandia/grotto-expedition?bare), [Submarine Dive](ref:energylandia/submarine-dive?bare), [Whirlpool Water Fight](ref:energylandia/whirlpool-water-fight?bare), [Magic Pump](ref:energylandia/magic-pump?bare), [Stormy Ship](ref:energylandia/stormy-ship?bare) und [Burning Engine](ref:energylandia/burning-engine?bare).
+Wer Abyssus auslässt, hat in Aqualantis noch die Wahl zwischen der [Grotto Expedition](ref:energylandia/grotto-expedition?bare), [Submarine Dive](ref:energylandia/submarine-dive?bare), [Whirlpool Water Fight](ref:energylandia/whirlpool-water-fight?bare), [Magic Pump](ref:energylandia/magic-pump?bare), [Stormy Ship](ref:energylandia/stormy-ship?bare) und [Burning Engine](ref:energylandia/burning-engine?bare).
 
 ### Family Zone
 
-In der Family Zone hängst du in [RMF Dragon](ref:energylandia/rmf-dragon?bare), einem Suspended Family Coaster von Vekoma, unter der Schiene. Die Bahn öffnete am 4. Juni 2015 und ist 19,3 Meter hoch (beim Park 20). Auf 453 Metern geht es mit 75,6 km/h und bis zu 3,5 G durch die Kurven.
+In der Family Zone hängst du in [RMF Dragon](ref:energylandia/rmf-dragon?bare), einem Suspended Family Coaster von Vekoma, unter der Schiene. Die Bahn öffnete am 4. Juni 2015 und ist laut RCDB 19,3 Meter hoch, nach Parkangabe 20. Auf 453 Metern geht es mit 75,6 km/h und bis zu 3,5 G durch die Kurven.
 
 ```glossary-widget slug=suspended-coaster
 
 ```
 
-Der [Boomerang](ref:energylandia/boomerang?bare) ist laut RCDB ein Family Boomerang von Vekoma, Modell Rebound, eröffnet am 29. April 2017. Auch die polnische Wikipedia nennt den April 2017. Die RCDB misst 205 Meter Strecke, 23 Meter Höhe und 60 km/h. Energylandia selbst gibt 2018 als Eröffnungsjahr an, dazu 200 Meter, 25 Meter und 70 km/h. Eine Fahrt dauert 1:36 Minuten, vorwärts und rückwärts durch dieselbe Strecke, und gefahren wird nur in der Sommersaison.
+Der [Boomerang](ref:energylandia/boomerang?bare) ist laut RCDB ein Family Boomerang von Vekoma, Modell Rebound, eröffnet am 29. April 2017. Auch die polnische Wikipedia nennt den April 2017. Die RCDB misst 205 Meter Strecke, 23 Meter Höhe und 60 km/h. Energylandia selbst gibt 2018 als Eröffnungsjahr an, dazu 200 Meter, 25 Meter und 70 km/h. Eine Fahrt dauert 1:36 Minuten, vorwärts und rückwärts durch dieselbe Strecke.
 
-Zwei Bahnen der Family Zone stammen noch aus dem ersten Jahr 2014, beide von SBF Visa. [Mars](ref:energylandia/mars?bare) ist eine Familienachterbahn vom Typ MX610, 150 Meter lang, 6 Meter hoch und 24,6 km/h schnell (beim Park 24,7). [Frutti Loop](ref:energylandia/frutti-loop?bare), eine Raupenbahn vom Typ Wacky Worm, kommt auf 90 Meter Strecke, 3,7 Meter Höhe und 20 km/h.
+Zwei Bahnen der Family Zone stammen noch aus dem ersten Jahr 2014, beide von SBF Visa. [Mars](ref:energylandia/mars?bare) ist eine Familienachterbahn vom Typ MX610, 150 Meter lang, 6 Meter hoch und laut RCDB 24,6 km/h schnell, der Park nennt 24,7. [Frutti Loop](ref:energylandia/frutti-loop?bare), eine Raupenbahn vom Typ Wacky Worm, kommt auf 90 Meter Strecke, 3,7 Meter Höhe und 20 km/h.
 
 Ohne Achterbahnschiene fahren in der Family Zone:
 
 - [Anaconda](ref:energylandia/anaconda?bare) von Intamin, 497 Meter, 55 km/h, soll 2027 öffnen
 - [Toffifee Kopalnia Złota](ref:energylandia/toffifee-kopalnia-zlota?bare) von SBF Visa, 180 Meter, 12 Meter hoch, 30 km/h, Kinder von 6 bis 13 nur mit Begleitung
-- [Jungle Adventure](ref:energylandia/jungle-adventure?bare) von Intamin, 486 Meter mit 20 km/h, nur in der Sommersaison
+- [Jungle Adventure](ref:energylandia/jungle-adventure?bare) von Intamin, 486 Meter mit 20 km/h
 
-Im Bereich liegen auch [Atlantis](ref:energylandia/atlantis?bare), [Splash Battle](ref:energylandia/splash-battle?bare), die [Swiss Water Cups](ref:energylandia/swiss-water-cups?bare), das [Formula Autodrom](ref:energylandia/formula-autodrom?bare), das Muertos House, The Planes Ride und der [Viking Ride](ref:energylandia/viking-ride?bare).
+Für Familien mit Kindern verschiedenen Alters hat die Family Zone noch [Atlantis](ref:energylandia/atlantis?bare), [Splash Battle](ref:energylandia/splash-battle?bare), die [Swiss Water Cups](ref:energylandia/swiss-water-cups?bare), das [Formula Autodrom](ref:energylandia/formula-autodrom?bare), das Muertos House, The Planes Ride und der [Viking Ride](ref:energylandia/viking-ride?bare).
 
 ### Little Kids Zone (Bajkolandia)
 
 Für Kinder von zwei bis sechs Jahren zählt der Park in der Little Kids Zone 20 Attraktionen und im ganzen Park 28. Die größte Achterbahn dort ist [Śmiejżelki Energuś](ref:energylandia/smiejzelki-energus?bare), ein Junior Coaster von Vekoma vom Mai 2015. Er ist 335 Meter lang, 13 Meter hoch und 45,9 km/h schnell, der Park rundet auf 45 und nennt 3 G.
 
-[Happy Loops](ref:energylandia/happy-loops?bare) und der [Circus Coaster](ref:energylandia/circus-coaster?bare) kamen 2017, beide von SBF Visa, die der Park als Visa Rides führt. Happy Loops ist eine Spinning-Achterbahn, 7 Meter hoch und 29,9 km/h schnell. Die Strecke misst laut RCDB 113 Meter, Energylandia gibt 90 an. Sie fährt nur in der Sommersaison. Der Circus Coaster öffnete am 17. April 2017, eine angetriebene Bahn ohne Lifthill mit 32 Metern Strecke und 12,1 km/h.
+[Happy Loops](ref:energylandia/happy-loops?bare) und der [Circus Coaster](ref:energylandia/circus-coaster?bare) kamen 2017, beide von SBF Visa, die der Park als Visa Rides führt. Happy Loops ist eine Spinning-Achterbahn, 7 Meter hoch und 29,9 km/h schnell. Die Strecke misst laut RCDB 113 Meter, Energylandia gibt 90 an. Der Circus Coaster öffnete am 17. April 2017, eine angetriebene Bahn ohne Lifthill mit 32 Metern Strecke und 12,1 km/h.
 
-Zur Little Kids Zone gehören auch der Autoscooter [WRC Auto Zderzaki](ref:energylandia/wrc-auto-zderzaki?bare), die [Jeep Safari](ref:energylandia/jeep-safari?bare), [Magic Fly](ref:energylandia/magic-fly?bare), die [Farma Krasnali](ref:energylandia/farma-krasnali?bare) und die [Wyspa Skarbów](ref:energylandia/wyspa-skarbow?bare).
+Für die ganz Kleinen, denen Energuś noch zu schnell ist, bleiben der Autoscooter [WRC Auto Zderzaki](ref:energylandia/wrc-auto-zderzaki?bare), die [Jeep Safari](ref:energylandia/jeep-safari?bare), [Magic Fly](ref:energylandia/magic-fly?bare), die [Farma Krasnali](ref:energylandia/farma-krasnali?bare) und die [Wyspa Skarbów](ref:energylandia/wyspa-skarbow?bare).
 
 ### Sweet Valley
 
@@ -143,15 +143,15 @@ Am 27. April 2024 eröffnete der siebte Bereich, Sweet Valley, vier Hektar groß
 
 ```
 
-Mit den beiden Achterbahnen teilen sich den Bereich der [Bon Bon Balloon](ref:energylandia/bon-bon-balloon?bare), das [Candy Carousel](ref:energylandia/candy-carousel?bare), [Mokate Twist](ref:energylandia/mokate-twist?bare), die [Candy Critters](ref:energylandia/candy-critters?bare), die [Bumble Boats](ref:energylandia/bumble-boats?bare), die [Crazy Barn](ref:energylandia/crazy-barn?bare) und die [Mini Track' Tour Ride](ref:energylandia/mini-track-tour-ride?bare).
+Zwischen zwei Runden Choco Chip Creek fährst du in Sweet Valley mit dem [Bon Bon Balloon](ref:energylandia/bon-bon-balloon?bare), das [Candy Carousel](ref:energylandia/candy-carousel?bare), [Mokate Twist](ref:energylandia/mokate-twist?bare), die [Candy Critters](ref:energylandia/candy-critters?bare), die [Bumble Boats](ref:energylandia/bumble-boats?bare), die [Crazy Barn](ref:energylandia/crazy-barn?bare) und die [Mini Track' Tour Ride](ref:energylandia/mini-track-tour-ride?bare).
 
 ### Water Park
 
-Den Water Park gibt es seit dem Sommer 2016. Er ist im Eintritt enthalten, ein eigenes Ticket nur für ihn verkauft Energylandia nicht. 2018 kam Tropical Fun mit 14 Rutschen und 150 Einzel- und Doppelreifen dazu. Seitdem ist der Water Park nach Angaben des Parks der größte offene Wasserpark Polens. 2021 folgte [Exotic Island](ref:energylandia/exotic-island?bare), am 28. Juni 2022 [Bamboo Bay](ref:energylandia/bamboo-bay?bare). Für Handy und Geldbeutel gibt es Schließfächer. Mitbringen solltest du Badesachen, ein Handtuch, Flip-Flops und Sonnencreme.
+Den Water Park gibt es seit dem Sommer 2016. Er ist im Eintritt enthalten, ein eigenes Ticket nur für ihn verkauft Energylandia nicht. 2018 kam Tropical Fun mit 14 Rutschen und 150 Einzel- und Doppelreifen dazu. Seitdem ist der Water Park nach Angaben des Parks der größte offene Wasserpark Polens. 2021 folgte [Exotic Island](ref:energylandia/exotic-island?bare), am 28. Juni 2022 [Bamboo Bay](ref:energylandia/bamboo-bay?bare). Für Handy und Geldbeutel gibt es Schließfächer. Weil der Water Park im Tagesticket steckt, packst du Badesachen, Handtuch, Flip-Flops und Sonnencreme schon morgens ein.
 
 ### Mindestgrößen
 
-Jede Attraktion hat eine Mindest- und eine Höchstgröße, angeschrieben am Eingang, auf dem Parkplan und auf der Website. Wo „mit Begleitung“ steht, dürfen Kinder im unteren Bereich nur mit einer erwachsenen Begleitperson fahren.
+Für jede Attraktion legt der Park eine Mindest- und eine Höchstgröße fest, an Hyperion und Speed etwa ist bei 195 cm Schluss. Wo „mit Begleitung“ steht, fahren Kinder zwischen den beiden genannten Größen nur mit einer erwachsenen Begleitperson.
 
 - ab 140 cm: Hyperion (bis 195 cm), Zadra, Mayan Zero Limitów, Speed (bis 195 cm), Viking (dazu ab 12 Jahren), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (4 bis 12 Jahre mit Begleitung), Rokan
 - 140 bis 195 cm: Space Booster, Space Gun, Aztec Swing, Apocalypto
@@ -169,7 +169,7 @@ Jede Attraktion hat eine Mindest- und eine Höchstgröße, angeschrieben am Eing
 
 ```
 
-Zur Öffnung würde ich zuerst zum Space Booster gehen. Nach unseren Messungen bringt ein früher Start dort am meisten, solange du ihn in der ersten halben Stunde fährst. Am Wochenende ist der Vorsprung etwas kleiner. An Abyssus und Speed ist der Vorteil kleiner und weniger sicher. Abyssus passt am besten etwa 45 Minuten nach der Öffnung, Speed etwa 75 Minuten danach. Einen großen Vorsprung holst du dir zur Öffnung an keiner Bahn heraus.
+Einen großen Vorsprung holst du dir zur Öffnung nach unseren Messungen an keiner Bahn heraus. Am meisten bringt ein früher Start am Space Booster, solange du ihn in der ersten halben Stunde fährst, unter der Woche noch ein wenig mehr als am Wochenende. An Abyssus und Speed ist der Vorsprung kleiner. Abyssus passt am besten etwa eine Dreiviertelstunde nach der Öffnung, Speed nach gut einer Stunde.
 
 ```glossary-widget slug=rope-drop
 
@@ -185,7 +185,7 @@ Zur Öffnung würde ich zuerst zum Space Booster gehen. Nach unseren Messungen b
 
 ```
 
-Die Saison läuft von April bis Ende Oktober, danach öffnet der Park im Winter an ausgewählten Tagen. 2026 begann sie am 16. April. Im Frühling und im September hatte Energylandia von 10 bis 18 Uhr offen. In der Hauptsaison, der „Holiday Time“ vom 27. Juni bis 31. August, ging es bis 20 Uhr, und an vier Samstagen im Juli und August blieb der Park als „Magic Night“ bis 23 Uhr offen.
+Die Saison läuft von April bis Ende Oktober, das Winter Kingdom dann von Ende November bis Ende Januar. 2026 begann sie am 16. April. Im Frühling und im September hatte Energylandia von 10 bis 18 Uhr offen. In der Hauptsaison, der „Holiday Time“ vom 27. Juni bis 31. August, ging es bis 20 Uhr, und an vier Samstagen im Juli und August blieb der Park als „Magic Night“ bis 23 Uhr offen.
 
 ```stats-widget slug=energylandia show=weekdays
 
@@ -215,15 +215,13 @@ Bis zum 27. November 2026 hat Energylandia geschlossen. Vom 28. November 2026 bi
 - im Dezember der 4. bis 6., 11. bis 13., 19. und 20. und 26. bis 30.
 - im Januar 2027 der 2. bis 6., 9. und 10., 16. und 17., 23. und 24. sowie 30. und 31.
 
-Vom 21. bis 25. Dezember und an Silvester und Neujahr bleibt der Park zu, der Weihnachtsmann hat an Heiligabend also frei. Im Winter Kingdom liegt nach Angaben von Energylandia der größte Lichtergarten Polens. Achterbahnen und Karussells fahren auch im Winter.
+Vom 21. bis 25. Dezember und an Silvester und Neujahr bleibt der Park zu, der Weihnachtsmann hat an Heiligabend also frei. Im Winter Kingdom liegt nach Angaben von Energylandia der größte Lichtergarten Polens. Von den Achterbahnen fahren im Winter Hyperion, Zadra, Mayan, Formuła, RMF Dragon, Choco Chip Creek und Energuś, dazu Space Booster und Aztec Swing. Abyssus, Speed, Viking, Boomerang, Happy Loops, Ekipa Light Explorers und Tidal Wave Twister fährt der Park nur in der Sommersaison, ebenso Apocalypto, Atlantis, Jungle Adventure und Toffifee Kopalnia Złota.
 
-Zum Winterprogramm gehören außerdem:
+Wer im Dezember mit Kindern kommt, die für Hyperion zu klein sind, hat dafür:
 
-- eine Eisbahn und Snowtubing auf Hügeln für Erwachsene und Kinder
 - ein Rentiergehege und Treffen mit dem Weihnachtsmann
 - Lebkuchenbacken und eine Schreibwerkstatt für Briefe an den Weihnachtsmann
 - ein Weihnachtsmarkt, eine Winterparade und ein Weihnachtsmenü
-- neu Artic Loop, eine Winterattraktion für Kinder
 
 Zum Anziehen empfiehlt der Park den Zwiebellook und Skikleidung. Wer bis zum 27. November online kauft, bekommt das zweite Winter-Kingdom-Ticket für die Hälfte, außer bei Nachmittagstickets und dem Energy Pass. Gültig ist es an jedem Öffnungstag bis zum 31. Januar.
 
@@ -277,7 +275,7 @@ Auf Hyperion und den anderen großen Bahnen sind Handys, Kameras, Essen und Alko
 
 ## Tickets
 
-Eine Reservierung brauchst du als Einzelgast nicht, und die Tageskarte gilt für alle Fahrgeschäfte und Shows. Extra kosten Essen, die Spielhallen, Fotobox, Kinderschminken, Tattoos und alles aus den Shops. Ein Ticket nur zum Spazierengehen gibt es nicht.
+Eine Reservierung brauchst du als Einzelgast nicht, und die Tageskarte gilt für alle Fahrgeschäfte und Shows, auch wer nur spazieren gehen will, kauft sie. Extra kosten Essen, die Spielhallen, Fotobox, Kinderschminken, Tattoos und alles aus den Shops.
 
 | Ticket              | Winter Kingdom | Frühling 2027  | Sommer 2027    |
 | ------------------- | -------------- | -------------- | -------------- |
@@ -290,11 +288,11 @@ Eine Reservierung brauchst du als Einzelgast nicht, und die Tageskarte gilt für
 
 Im Winter Kingdom gibt es ab 15 Uhr ein Nachmittagsticket für 84 zł (21 €), ermäßigt 74 zł (19 €). Frühling heißt vom 3. April bis 25. Juni 2027, Sommer vom 26. Juni bis 31. August. Im Herbst 2026 galten dieselben Preise wie im Frühling. Ein Mehrtagesticket gilt nur an Tagen direkt hintereinander.
 
-Den ermäßigten Preis zahlen außer Kindern unter 140 cm auch Senioren ab 65, Menschen mit Behinderung und Schwangere. Schwangere dürfen allerdings keine Fahrgeschäfte fahren, und ihr ermäßigtes Ticket gibt es nur an der Kasse gegen den Mutterpass. Kinder bis drei Jahre kosten 1 zł oder, wer auf Englisch bucht, 1 €, ein Wechselkurs, den sonst keine Bank anbietet. Das Alter weist du mit Ausweis oder Geburtsurkunde nach.
+Den ermäßigten Preis zahlen außer Kindern unter 140 cm auch Senioren ab 65, Menschen mit Behinderung und Schwangere, Begleitpersonen zahlen im Einzelangebot den vollen Preis. Schwangere dürfen allerdings keine Fahrgeschäfte fahren, und ihr ermäßigtes Ticket gibt es nur an der Kasse gegen den Mutterpass. Kinder bis drei Jahre kosten 1 zł oder, wer auf Englisch bucht, 1 €, ein Wechselkurs, den sonst keine Bank anbietet. Das Alter weist du mit Ausweis oder Geburtsurkunde nach.
 
 Die Jahreskarte kostet 999 zł, für Kinder unter 140 cm 849 zł, in jeder Saison gleich. Für die ermäßigte Jahreskarte misst der Park mit Schuhen. Online kaufst du dafür einen Gutschein, den du bis zum 31. Oktober 2027 an einer Parkkasse einlöst. Dort bekommst du eine Chipkarte mit Foto, die 365 Tage ab der Registrierung an allen Öffnungstagen gilt.
 
-Nur an der Kasse gibt es außer der Jahreskarte das Geburtstagsticket und das Brautpaar-Ticket. Mit dem darf ein Paar in Hochzeitskleidung samt höchstens zwei Fotografen zum Fotoshooting in den Park. Gruppen ab 15 Personen buchen über die Gruppenabteilung, unter +48 33 486 15 00 oder grupy@energylandia.pl. Einen Rabatt für Begleitpersonen gibt es im Einzelangebot nicht. Online verkauft Energylandia die Tickets im [Ticketshop](https://tickets.energylandia.pl/en/), dazu an den Kassen und bei Partnern.
+Nur an der Kasse gibt es außer der Jahreskarte das Geburtstagsticket und das Brautpaar-Ticket. Mit dem darf ein Paar in Hochzeitskleidung samt höchstens zwei Fotografen zum Fotoshooting in den Park. Gruppen ab 15 Personen buchen über die Gruppenabteilung, unter +48 33 486 15 00 oder grupy@energylandia.pl. Online verkauft Energylandia die Tickets im [Ticketshop](https://tickets.energylandia.pl/en/), dazu an den Kassen und bei Partnern.
 
 ## Parken
 
@@ -304,13 +302,13 @@ Der Parkplatz liegt vor dem Eingang und kostet 30 zł für den ganzen Tag, in Eu
 
 Die Adresse fürs Navi ist al. 3 Maja 2, 32-640 Zator. Mit dem Auto sind es nach Angaben des Parks von Katowice und von Krakau weniger als eine halbe Stunde. Von Warschau aus fährst du rund 335 Kilometer. Telefonisch erreichst du den Park unter +48 725 25 25 25, per E-Mail unter info@energylandia.pl.
 
-Der Bahnhof für den Park heißt Zator Park Rozrywki, Fahrpläne findest du bei KOLEO. Für das Winter Kingdom fährt vom 28. November bis 12. Dezember 2026 ein Zug um 9:18 Uhr ab Kraków Główny. Zurück geht es um 19:03 Uhr ab Zator Park Rozrywki. Am Bahnhof holt dich um 10:25 Uhr der „Cho Cho Train“ ab und bringt dich um 18:20 Uhr wieder hin. Im selben Zeitraum fährt auch ein Zug aus Oświęcim zum Winter Kingdom. Busse kommen aus Krakau und Katowice, und ein Taxi geht immer.
+Der Bahnhof für den Park heißt Zator Park Rozrywki, Fahrpläne findest du bei KOLEO. Für das Winter Kingdom fährt vom 28. November bis 12. Dezember 2026 ein Zug um 9:18 Uhr ab Kraków Główny. Zurück geht es um 19:03 Uhr ab Zator Park Rozrywki. Am Bahnhof holt dich um 10:25 Uhr der „Cho Cho Train“ ab und bringt dich um 18:20 Uhr wieder hin. Im selben Zeitraum fährt auch ein Zug aus Oświęcim zum Winter Kingdom. Busse fahren aus Krakau und Katowice nach Zator.
 
 ## Essen
 
 Zu den Restaurants und Ständen im Park gehören die Hall of Columns, der Palm Grill, Formula Pizza, The Sunken Burger, Octopus Crepe, Wacky Waffles, Sweet Shake und The Coffee Crab. Auf unserer Parkseite sind es 67 Restaurants und Stände, darunter eine Pierogarnia für Piroggen, ein Viking Kebab, das Kings Arthur Browar und die Restauracja Widokowa, ein Restaurant mit Aussicht.
 
-Alkohol darfst du nicht mitbringen. Im Park gekauften trinkst du nur an den Orten, die dafür vorgesehen sind. Rucksäcke sind erlaubt, und Energylandia rät, Wasser und Snacks einzupacken. In der Parkordnung steht nichts zu eigenem Essen.
+Alkohol darfst du nicht mitbringen. Im Park gekauften trinkst du nur an den Orten, die dafür vorgesehen sind. Rucksäcke sind erlaubt, und Energylandia rät, Wasser und Snacks einzupacken.
 
 ## Übernachten
 
@@ -325,23 +323,21 @@ Dazu empfiehlt Energylandia Partnerunterkünfte in der Nähe:
 
 ## Rokan, Volana und Anaconda
 
-[Rokan](ref:energylandia/rokan?bare) ist ein Wing Coaster von Bolliger & Mabillard und nach Angaben des Parks der höchste und längste in Europa. Er wird der erste seiner Art in Polen. Die Bahn wird 62 Meter hoch und 1.215 Meter lang, und die Züge sollen 115 km/h erreichen. Die RCDB zählt drei Inversionen, und eine Fahrt soll 141 Sekunden dauern. Drei Züge mit je acht Reihen zu vier Plätzen sind geplant. Angekündigt hat Energylandia Rokan am 15. Oktober 2026, nach einem Teaser auf der Website ab dem 8. Oktober. Eine Tabelle mit allen Wing Coastern von B&M in Europa hat unsere [Meldung zu Rokan](/news/energylandia-rokan-wing-coaster).
+[Rokan](ref:energylandia/rokan?bare) ist ein Wing Coaster von Bolliger & Mabillard und nach Angaben des Parks der höchste und längste in Europa. Er wird der erste seiner Art in Polen. Die Bahn wird 62 Meter hoch und 1.215 Meter lang, und die Züge sollen 115 km/h erreichen. Die RCDB zählt drei Inversionen, und eine Fahrt soll 141 Sekunden dauern. Drei Züge mit je acht Reihen zu vier Plätzen sind geplant. Angekündigt hat Energylandia Rokan am 15. Oktober 2026, nach einem Teaser auf der Website ab dem 8. Oktober. In unserer [Meldung zu Rokan](/news/energylandia-rokan-wing-coaster) stehen alle Wing Coaster von B&M in Europa in einer Tabelle.
 
 ```glossary-widget slug=wing-coaster
 
 ```
 
-Thema von Volana ist die Legende vom Tal der Monolithen, und Rokan ist darin der geflügelte Wächter des Tals. Bereich und Bahn öffnen am selben Tag. Energylandia spricht vom Frühjahr 2027, den Tag hat der Park noch nicht bekannt gegeben. Der Bau begann im ersten Quartal 2026, und am 21. August 2026 kamen die ersten Schienenteile von B&M auf die Baustelle.
-
-Anaconda in der Family Zone öffnet laut Park „next season“, also 2027.
+Thema von Volana ist die Legende vom Tal der Monolithen, und Rokan ist darin der geflügelte Wächter des Tals. Bereich und Bahn öffnen am selben Tag. Energylandia spricht vom Frühjahr 2027, den Tag hat der Park noch nicht bekannt gegeben. Der Bau begann im ersten Quartal 2026, und am 21. August 2026 kamen die ersten Schienenteile von B&M auf die Baustelle. Ebenfalls 2027 soll in der Family Zone Anaconda öffnen, eine 497 Meter lange Bahn von Intamin mit 55 km/h, die schon auf der Liste des Energy Pass steht.
 
 ## Geschichte
 
 Am 14. Juli 2014 öffnete Energylandia, und im Eröffnungsjahr fuhren drei Achterbahnen, Frutti Loop, Mars und Viking. Betrieben wird der Park von der Energylandia Goczał Family sp. k. Bis 2018 kam jedes Jahr mindestens eine neue Achterbahn dazu, 2015 gleich drei. Im Sommer 2016 öffnete der Water Park, und 2018 kamen mit Speed und Hyperion die beiden großen Bahnen von Intamin. Am 27. Oktober 2018 stellte Energylandia Pläne vor, das Gelände auf insgesamt 150 Hektar zu erweitern.
 
-Mit Smoczy Gród entstand 2019 der fünfte Bereich. Im Herbst 2019 kündigte der Park auch an, ab der Saison 2020 im Winter zu öffnen. Wegen COVID-19 musste er den Saisonstart 2020 dann verschieben und öffnete erst am 6. Juni. Aqualantis folgte 2021, das Wonder Wheel 2022. Ein Vertrag mit Vekoma über einen Tilt Coaster wurde im August 2023 aufgelöst. Sweet Valley kam 2024 als siebter Bereich dazu.
+Mit Smoczy Gród entstand 2019 der fünfte Bereich. Im Herbst 2019 kündigte der Park auch an, ab der Saison 2020 im Winter zu öffnen. Wegen COVID-19 musste er den Saisonstart 2020 dann verschieben und öffnete erst am 6. Juni. Aqualantis folgte 2021, das Wonder Wheel 2022. Im August 2023 endete ein Vertrag mit Vekoma über einen Tilt Coaster. Sweet Valley kam 2024 als siebter Bereich dazu.
 
-2025 kamen mehr als zwei Millionen Gäste, so viele wie nie zuvor, und den zweimillionsten begrüßte der Park am 18. Oktober. Die polnische Wikipedia nennt für 2025 2,1 Millionen. Nach Angaben des Parks waren es 2026 wieder mehr als zwei Millionen, und seit 2014 kamen zusammen 19 Millionen Gäste. In der Parkwertung der European Star Awards 2025 stand Energylandia auf Platz acht in Europa.
+2025 kamen mehr als zwei Millionen Gäste, so viele wie nie zuvor, und den zweimillionsten begrüßte der Park am 18. Oktober. Die polnische Wikipedia nennt für 2025 2,1 Millionen. Nach Angaben des Parks waren es 2026 wieder mehr als zwei Millionen, und seit 2014 kamen zusammen 19 Millionen Gäste. Bei den European Star Awards 2025 kam Energylandia unter den Parks Europas auf Platz acht, Zadra unter den Stahlachterbahnen auf Platz vier und Speed unter den Wasserattraktionen auf Platz fünf.
 
 ## Häufige Fragen zu Energylandia
 
