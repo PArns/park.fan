@@ -8,6 +8,8 @@ import {
 } from '@/lib/utils/park-assets';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
 import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
+import { cn } from '@/lib/utils';
 
 interface BlogAttractionWidgetProps {
   park: ResolvedPark | null;
@@ -56,7 +58,6 @@ export async function BlogAttractionWidget({
       }
     >
       <BlogWidgetLabel>{tBlog('widget.attractionSpotlight')}</BlogWidgetLabel>
-      {/* Row template belongs on the card, not on this wrapper — see BlogParkWidget. */}
       <BlogAttractionCardLive
         park={park}
         attraction={attraction}
@@ -69,7 +70,7 @@ export async function BlogAttractionWidget({
           { slug: park.slug, url: park.href },
           attraction.attractionSlug
         )}
-        className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+        className={cn(STANDALONE_CARD_ROWS_CLASS, 'h-full')}
       />
     </div>
   );

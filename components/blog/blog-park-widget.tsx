@@ -4,6 +4,8 @@ import { GlassCard } from '@/components/common/glass-card';
 import { getCardObjectPosition, getParkBackgroundImage } from '@/lib/utils/park-assets';
 import type { ResolvedPark } from '@/lib/blog/park-resolver';
 import { BlogWidgetLabel } from '@/components/blog/blog-widget-label';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
+import { cn } from '@/lib/utils';
 
 interface BlogParkWidgetProps {
   park: ResolvedPark | null;
@@ -42,18 +44,13 @@ export async function BlogParkWidget({ park, slug, inRow = false }: BlogParkWidg
       }
     >
       <BlogWidgetLabel>{tBlog('widget.parkSpotlight')}</BlogWidgetLabel>
-      {/*
-        The card's three sections inherit their row tracks via subgrid, so the template sits on the
-        card itself, never on this wrapper with the heading: `auto` tracks collapse against the
-        panels' `-mb-4`/`-mt-4` overlap and slice the name and wait time. `minmax(220px, 1fr)`
-        keeps image-less cards at full height; below `sm` the middle track absorbs the panels'
-        16 px overlap. See docs/rules/blog-spotlight-cards.md.
-      */}
+      {/* The row template sits on the card, never on this wrapper with the heading, where the
+          `auto` tracks collapse against the panels' overlap and slice the name and wait time. */}
       <BlogParkCardLive
         park={park}
         backgroundImage={getParkBackgroundImage({ slug: park.slug, url: park.href })}
         objectPosition={getCardObjectPosition({ slug: park.slug, url: park.href })}
-        className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+        className={cn(STANDALONE_CARD_ROWS_CLASS, 'h-full')}
       />
     </div>
   );

@@ -30,6 +30,7 @@ import {
   DEMO_TIMEZONE,
   parkLocalInstant,
 } from './_fixtures';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 
 /**
  * One production component per step of the park-page walk-through (chapter 06): every block
@@ -138,7 +139,7 @@ export async function AnatomyPurchasesDemo() {
 export async function AnatomyAttractionDemo() {
   const { taron } = buildDemoFixtures(await getServerNowMs());
   return (
-    <div className="grid [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
+    <div className={STANDALONE_CARD_ROWS_CLASS}>
       <AttractionCard
         attraction={taron}
         parkPath={PARK_PATH}
@@ -217,7 +218,7 @@ export function AnatomyBestDaysDemo({ locale }: { locale: Locale }) {
  */
 export function AnatomyNearbyDemo() {
   return (
-    <div className="grid [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
+    <div className={STANDALONE_CARD_ROWS_CLASS}>
       <ParkCard
         name="Attractiepark Toverland"
         slug="attractiepark-toverland"

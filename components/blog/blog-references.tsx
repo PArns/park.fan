@@ -18,15 +18,12 @@ import {
 import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/internal-link';
 import { cn } from '@/lib/utils';
 import type { BlogAttractionRef, BlogPost } from '@/lib/blog/types';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 
 interface BlogReferencesProps {
   post: BlogPost;
   className?: string;
 }
-
-/** The row template on each card's own wrapper, see docs/rules/blog-spotlight-cards.md. */
-const CARD_ROWS_CLASS =
-  'grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]';
 
 /**
  * The parks and rides of a post, right under its text: every park and attraction the article
@@ -115,7 +112,7 @@ export async function BlogReferences({ post, className }: BlogReferencesProps) {
                   park={park}
                   backgroundImage={getParkBackgroundImage({ slug: park.slug, url: park.href })}
                   objectPosition={getCardObjectPosition({ slug: park.slug, url: park.href })}
-                  className={CARD_ROWS_CLASS}
+                  className={STANDALONE_CARD_ROWS_CLASS}
                 />
               </div>
             ))}
@@ -151,7 +148,7 @@ export async function BlogReferences({ post, className }: BlogReferencesProps) {
                     { slug: park.slug, url: park.href },
                     attraction.attractionSlug
                   )}
-                  className={CARD_ROWS_CLASS}
+                  className={STANDALONE_CARD_ROWS_CLASS}
                 />
               </div>
             ))}

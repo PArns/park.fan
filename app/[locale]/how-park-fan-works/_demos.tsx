@@ -28,6 +28,7 @@ import {
   TARON_TYPICAL_WAITS,
   TARON_WAIT_NOW,
 } from './_fixtures';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 
 /**
  * Example UI for the guide: every block renders a production component with fixture props, the
@@ -137,7 +138,7 @@ export async function BareNumberVsCard({
         <div className="text-muted-foreground mb-3 text-[11px] font-semibold tracking-widest uppercase">
           {cardLabel}
         </div>
-        <div className="grid flex-1 [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]">
+        <div className={cn(STANDALONE_CARD_ROWS_CLASS, 'flex-1')}>
           <AttractionCard
             attraction={taron}
             parkPath={PARK_PATH}
@@ -182,10 +183,7 @@ export async function TwoRidesDemo() {
     // negative margins close over each other. Same shape as the blog widgets.
     <div className="not-prose grid gap-4 sm:grid-cols-2">
       {[taron, mamba].map((attraction) => (
-        <div
-          key={attraction.id}
-          className="grid h-full [grid-template-rows:auto_2rem_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
-        >
+        <div key={attraction.id} className={cn(STANDALONE_CARD_ROWS_CLASS, 'h-full')}>
           <AttractionCard
             attraction={attraction}
             parkPath={PARK_PATH}
