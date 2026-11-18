@@ -254,6 +254,9 @@ Stel dat je op een zomerdag bij de opening aan de ingang staat, Nitro weer rijdt
 
 Bij El Toro, THE JOKER, de Jersey Devil Coaster en THE FLASH mag je geen losse spullen mee de wachtrij in nemen, dus geen tassen en geen rugzakken. Fast Lane en tickets lopen via je telefoon, en om dat ook in de wachtrij te laten werken, heeft het park voor het seizoen 2026 meer dan 600 nieuwe wifi-toegangspunten geplaatst. Contant betalen kan niet, alleen met een kaart, Apple Pay of Google Pay. Wie contant geld bij zich heeft, wisselt dat bij een kiosk om voor een kaart. Vragen beantwoordt Guest Relations via livechat, elke dag van 8.00 tot 2.00 uur ’s nachts, Amerikaanse oostkusttijd.
 
+> [!PARKY]
+> De rugzak laten we die dag in de auto of in het hotel: El Toro, THE FLASH, de Jersey Devil Coaster en THE JOKER staan allemaal op ons lijstje, en bij geen van de vier mag een tas mee de wachtrij in. Mijn reuzenradhoed telt hopelijk niet mee. De volgorde voor jouw dag zetten we daarna in de [dagplanner](/trip-planner).
+
 ## Tickets
 
 Online kost een dagticket vanaf 45 dollar, maar dagtickets verkoopt het park ook aan de ingang. Op elke aankoop rekent Six Flags tot 9,99 dollar kosten plus belasting. Kinderen tot twee jaar mogen gratis het park en Hurricane Harbor in. Six Flags betaalt geen tickets terug en geeft bij regen geen bon voor een andere dag.

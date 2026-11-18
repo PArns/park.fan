@@ -240,6 +240,9 @@ On the Christmas Experience Days the programme centres on the Christmas tree in 
 
 No roller coasters run in December, so anyone who came for Mumbo Jumbo will have to make do with a steam train, a monorail and a ghost train. The Christmas page lists the Daktari Express, the Gallopers, the Helitoys, the Jungle Carousel, the Zoo Monorail, Mischief Mansion and the Muddy Duck Tractors, and says the list may change. With children under 1.07 metres you ride along on most of them.
 
+> [!PARKY]
+> For the tree lights we pick a day before Christmas Eve: 5, 6, 12 or 13 December, or any day from the 19th to the 23rd. There's no coaster running, but when the lights go on I'll float off the ground for a second anyway. We're in Muddy Duck Square for the Peter Rabbit show at 4:30pm, the switch-on is at 4:45pm, and that still leaves us three quarters of an hour before the park closes at 5:30pm.
+
 In December the Muddy Duck Cafe and the Spud Stop are open from 10am to 5:30pm, and there are doughnuts and Crumble Heaven too. The Coach House opens on Fridays from 4pm to 9pm, on Saturdays from 12pm to 9pm and on Sundays from 12pm to 6pm. It now does fish & chips to take away. The Street Food Kitchen is open from 6pm to 11pm. The Club, for resort guests only, opens on Fridays and Saturdays from 4pm to 11pm.
 
 Over Christmas you can stay in cottages and lodges from Friday to Sunday. Santa calls in person at the Lifestyle Lodge, the Mulberry Lodge, The Gatehouse and the Riverside Cottage. The package includes the zoo, the small children's rides on Muddy Duck Farm, the Splash Zone on Saturday and Sunday, and the Christmas Passport with the "PolarCoaster Express".
@@ -274,6 +277,9 @@ Say you're at the entrance at 10am on a peak season Saturday, with no VIP Ride P
 - to finish, the zoo with Lion Coast and the penguins at 3pm
 
 On Saturdays and Sundays Pirates of Zanzibar also plays at 3pm; on weekdays it's only at 11am. Peter Rabbit meets children at 11:40am and 1:45pm in Plaza Square. I'd leave the zoo until last, because on some days it stays open longer than the rides.
+
+> [!PARKY]
+> When we head back to Flamingo 1 for Velocity, we drive the electric cars while we're there: they fill up at weekends, and we're in that corner before lunch anyway. You have to be 1.30 metres to drive alone, which I'm not, so you take the wheel and I sit next to you. For your own day, we put the order together in the [day planner](/trip-planner).
 
 You can't bring alcohol into the park, it's taken off you at the entrance, and knives, weapons and fireworks are banned too. There may be bag checks and sniffer dogs at the entrance. The terms of admission say nothing about bringing your own food.
 

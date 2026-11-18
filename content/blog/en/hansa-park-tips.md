@@ -383,6 +383,9 @@ Holstein cash machine on the left by the Holstentor.
 until 24 March 2027 and €140 after that. Adults who buy it by 25 October 2026 park free in the main
 car park all through 2027; buy it by 24 March and parking is €1 a day.
 
+> [!PARKY] Get in early
+> If we're coming three times or more in 2027, we buy the season pass by 24 March: it's €120 instead of €140 then, and as adults we park for €1 a day instead of €7. Whatever's left over goes to Elins Vafflejern. Three day tickets for ages 12 and up already came to €159 in 2026.
+
 **Included in the ticket.** Every ride, show and hands-on attraction that's running. A few extras,
 such as the gold panning, cost separately.
 

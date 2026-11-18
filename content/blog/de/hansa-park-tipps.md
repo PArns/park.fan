@@ -415,6 +415,9 @@ Holstein gibt es links am Holstentor.
 zum 24. März 2027, danach 140 €. Wer volljährig ist und bis zum 25. Oktober 2026 kauft, parkt 2027
 auf dem Großparkplatz kostenlos, bei Kauf bis zum 24. März für 1 € pro Tag.
 
+> [!PARKY] Früh zugreifen
+> Kommen wir 2027 dreimal oder öfter, holen wir die Saisonkarte bis zum 24. März: Dann kostet sie 120 € statt 140 €, und als Erwachsene parken wir für 1 € am Tag statt für 7 €. Was dabei übrig bleibt, trage ich zu Elins Vafflejern. Drei Tagestickets ab 12 Jahren haben 2026 zusammen schon 159 € gekostet.
+
 **Im Eintritt enthalten.** Alle Fahrattraktionen, Shows und Mitmachattraktionen, die in Betrieb
 sind. Einzelne Angebote wie das Goldwaschen kosten extra.
 

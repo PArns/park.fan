@@ -237,6 +237,9 @@ Nei Christmas Experience Days il programma ruota intorno all’albero di Natale 
 
 A dicembre le montagne russe restano ferme, e ai fan di Mumbo Jumbo rimangono il treno a vapore, la monorotaia e la casa dei fantasmi. La pagina del Natale elenca Daktari Express, Gallopers, Helitoys, Jungle Carousel, Zoo Monorail, Mischief Mansion e Muddy Duck Tractors, con l’avvertenza che la lista può cambiare. Con bambini sotto 1,07 metri sulla maggior parte di queste sali insieme a loro.
 
+> [!PARKY]
+> Per le luci dell’albero veniamo in un giorno prima della vigilia: il 5, il 6, il 12 o il 13 dicembre, oppure tra il 19 e il 23. Montagne russe niente, ma quando si accendono le luci mi stacco lo stesso un attimo da terra. Alle 16:30 siamo sulla Muddy Duck Square per lo spettacolo con Peter Rabbit, e dopo l’accensione delle 16:45 ci restano tre quarti d’ora fino alla chiusura delle 17:30.
+
 A dicembre il Muddy Duck Cafe e lo Spud Stop sono aperti dalle 10 alle 17:30, e ci sono anche i donut e Crumble Heaven. The Coach House apre il venerdì dalle 16 alle 21, il sabato dalle 12 alle 21 e la domenica dalle 12 alle 18, e come novità vende fish & chips da asporto. La Street Food Kitchen è aperta dalle 18 alle 23. The Club, solo per gli ospiti del resort, apre il venerdì e il sabato dalle 16 alle 23.
 
 Per Natale puoi dormire in cottage e lodge dal venerdì alla domenica. Nella Lifestyle Lodge, nella Mulberry Lodge, al Gatehouse e nel Riverside Cottage passa Babbo Natale in persona. Il pacchetto comprende lo zoo, le piccole attrazioni per bambini della Muddy Duck Farm, la Splash Zone il sabato e la domenica e il Christmas Passport con il «PolarCoaster Express».
@@ -271,6 +274,9 @@ Mettiamo che tu sia all’ingresso alle 10 di un sabato di alta stagione, senza 
 - per finire lo zoo, con Lion Coast e i pinguini alle 15
 
 Il sabato e la domenica Pirates of Zanzibar va in scena anche alle 15, durante la settimana solo alle 11. Peter Rabbit incontra i bambini alle 11:40 e alle 13:45 sulla Plaza Square. Lo zoo lo lascerei alla fine, perché certi giorni resta aperto più a lungo delle attrazioni.
+
+> [!PARKY]
+> Quando torniamo a Flamingo 1 per Velocity, facciamo subito anche le auto elettriche: il sabato e la domenica si riempiono, e prima di pranzo siamo comunque da quelle parti. Per guidare da soli ci vuole 1,30 metri, e io non ci arrivo, quindi guidi tu e io mi siedo accanto. L’ordine della tua giornata lo mettiamo insieme nel [pianificatore della giornata](/trip-planner).
 
 Nel parco non puoi portare alcolici, che ti vengono tolti all’ingresso, e sono vietati anche coltelli, armi e fuochi d’artificio. All’ingresso ci possono essere controlli delle borse e cani da fiuto. Sul cibo portato da casa il regolamento del parco non scrive nulla.
 

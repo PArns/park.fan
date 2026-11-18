@@ -237,6 +237,9 @@ An den Christmas Experience Days steht das Programm um den Weihnachtsbaum auf de
 
 Achterbahnen fahren im Dezember keine, für Fans von Mumbo Jumbo bleiben Dampfzug, Monorail und Geisterbahn. Auf der Weihnachtsseite stehen der Daktari Express, die Gallopers, die Helitoys, das Jungle Carousel, die Zoo Monorail, Mischief Mansion und die Muddy Duck Tractors, mit dem Hinweis, dass sich die Liste ändern kann. Mit Kindern unter 1,07 Meter fährst du bei den meisten davon mit.
 
+> [!PARKY]
+> Für die Lichter am Weihnachtsbaum kommen wir an einem Tag vor Heiligabend, also am 5., 6., 12. oder 13. Dezember oder zwischen dem 19. und dem 23. Achterbahn fährt zwar keine, aber wenn die Lichter angehen, heb ich trotzdem kurz ab. Um 16:30 Uhr stehen wir zur Show mit Peter Rabbit auf dem Muddy Duck Square, und nach dem Einschalten um 16:45 Uhr bleibt uns bis 17:30 Uhr noch eine Dreiviertelstunde im Park.
+
 Im Dezember haben das Muddy Duck Cafe und der Spud Stop von 10 bis 17:30 Uhr geöffnet, dazu gibt es Donuts und Crumble Heaven. The Coach House hat freitags von 16 bis 21 Uhr, samstags von 12 bis 21 Uhr und sonntags von 12 bis 18 Uhr geöffnet und verkauft neu Fish & Chips zum Mitnehmen. Die Street Food Kitchen ist von 18 bis 23 Uhr offen. The Club, nur für Gäste des Resorts, öffnet freitags und samstags von 16 bis 23 Uhr.
 
 Übernachten kannst du über Weihnachten in Cottages und Lodges von Freitag bis Sonntag. In der Lifestyle Lodge, der Mulberry Lodge, The Gatehouse und dem Riverside Cottage schaut Santa persönlich vorbei. Im Paket sind der Zoo, die kleinen Kinderbahnen auf der Muddy Duck Farm, die Splash Zone am Samstag und Sonntag und der Christmas Passport mit dem „PolarCoaster Express“ enthalten.
@@ -271,6 +274,9 @@ Angenommen, du stehst an einem Samstag in der Hauptsaison um 10 Uhr am Eingang u
 - zum Schluss der Zoo mit Lion Coast und den Pinguinen um 15 Uhr
 
 Am Samstag und Sonntag gibt es Pirates of Zanzibar auch um 15 Uhr, unter der Woche nur um 11 Uhr. Peter Rabbit trifft Kinder um 11:40 Uhr und um 13:45 Uhr am Plaza Square. Den Zoo würde ich ans Ende legen, weil er an manchen Tagen länger offen hat als die Bahnen.
+
+> [!PARKY]
+> Wenn wir für Velocity zurück nach Flamingo 1 kommen, nehmen wir die Elektroautos gleich mit: Samstags und sonntags füllen die sich, und vor dem Mittag sind wir sowieso dort. Allein lenken darf man ab 1,30 Meter, so groß bin ich nicht, also fährst du und ich sitze daneben. Für deinen eigenen Tag legen wir die Reihenfolge im [Tagesplaner](/trip-planner) fest.
 
 In den Park darfst du keinen Alkohol mitbringen, er wird am Eingang abgenommen, und auch Messer, Waffen und Feuerwerk sind verboten. Am Eingang kann es Taschenkontrollen und Spürhunde geben. Zum eigenen Essen steht in der Parkordnung nichts.
 

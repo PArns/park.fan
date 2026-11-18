@@ -254,6 +254,9 @@ Mettiamo che in un giorno d’estate tu sia all’ingresso all’apertura, che N
 
 Su El Toro, THE JOKER, il Jersey Devil Coaster e THE FLASH in coda non si possono portare oggetti sciolti, quindi niente borse né zaini. Fast Lane e biglietti passano dal telefono, e perché funzionino anche in coda il parco prima della stagione 2026 ha installato più di 600 nuovi punti di accesso Wi-Fi. Si paga solo senza contanti, con carta, Apple Pay o Google Pay; chi ha con sé dei contanti li cambia in una carta ai chioschi. Alle domande risponde il Guest Relations via live chat, tutti i giorni dalle 8 alle 2 di notte, ora della costa orientale.
 
+> [!PARKY]
+> Quel giorno lo zaino resta in macchina o in albergo: El Toro, THE FLASH, il Jersey Devil Coaster e THE JOKER sono tutti sulla nostra lista, e in nessuno dei quattro si entra in coda con una borsa. Il mio cappello a ruota panoramica spero non conti. L’ordine per la tua giornata lo rifacciamo poi nel [pianificatore della giornata](/trip-planner).
+
 ## Biglietti
 
 Il biglietto giornaliero costa online da 45 $, e il parco vende biglietti giornalieri anche all’ingresso. Su ogni acquisto Six Flags aggiunge fino a 9,99 $ di commissione più le tasse. I bambini fino a due anni entrano gratis nel parco e a Hurricane Harbor. Six Flags non rimborsa i biglietti e in caso di pioggia non dà buoni per un altro giorno.

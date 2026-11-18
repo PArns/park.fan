@@ -411,6 +411,9 @@ Sparkasse Holstein se trouve à gauche de la Holstentor.
 se garent gratuitement sur le grand parking pendant toute l’année 2027 ; achetée d’ici le 24 mars,
 le stationnement revient à 1 € par jour.
 
+> [!PARKY] À prendre tôt
+> Si on vient trois fois ou plus en 2027, on prend la carte de saison d’ici le 24 mars : elle coûte alors 120 € au lieu de 140 €, et en tant qu’adultes, on se gare pour 1 € par jour au lieu de 7 €. Ce qu’on économise finit chez Elins Vafflejern. Trois billets à partir de 12 ans coûtaient déjà 159 € en 2026.
+
 **Compris dans le billet.** Toutes les attractions, tous les spectacles et toutes les activités
 participatives en service. Quelques prestations comme l’orpaillage sont payantes à part.
 

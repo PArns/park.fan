@@ -264,6 +264,9 @@ Say you're at the gate for opening on a summer day, Nitro is running again, and 
 
 On El Toro, THE JOKER, the Jersey Devil Coaster and THE FLASH, no loose items are allowed in the queue, so no bags and no backpacks. Fast Lane and tickets run on your phone, and so that this works in the queue too, the park installed more than 600 new Wi-Fi access points before the 2026 season. Payment is cashless only, by card, Apple Pay or Google Pay. If you've brought cash, you can swap it for a card at kiosks. Guest Relations answers questions by live chat every day from 8 a.m. to 2 a.m. Eastern Time.
 
+> [!PARKY]
+> We leave the backpack in the car or at the hotel that day: El Toro, THE FLASH, the Jersey Devil Coaster and THE JOKER are all on our list, and none of them lets a bag into the queue. I'm hoping my Ferris-wheel hat doesn't count. Then we rebuild the order for your day in the [day planner](/trip-planner).
+
 ## Tickets
 
 A day ticket costs from $45 online, and the park also sells day tickets at the gate. Six Flags adds a fee of up to $9.99 plus tax to every purchase. Children aged two and under get into the park and Hurricane Harbor free. Six Flags doesn't refund tickets and doesn't hand out rain checks for another day.

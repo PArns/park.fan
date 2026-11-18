@@ -254,6 +254,9 @@ Imaginons que tu sois à l’entrée à l’ouverture, un jour d’été, que Ni
 
 Sur El Toro, THE JOKER, le Jersey Devil Coaster et THE FLASH, aucun objet libre n’entre dans la file, donc ni sac ni sac à dos. La Fast Lane et les billets passent par le téléphone, et pour que cela marche aussi dans la file, le parc a installé avant la saison 2026 plus de 600 nouveaux points d’accès Wi-Fi. On paie uniquement sans espèces, par carte, Apple Pay ou Google Pay. Si tu as du liquide sur toi, des bornes le convertissent en carte. Le Guest Relations répond aux questions par chat en direct tous les jours de 8 h à 2 h du matin, heure de la côte Est.
 
+> [!PARKY]
+> Ce jour-là, le sac à dos reste dans la voiture ou à l’hôtel : El Toro, THE FLASH, le Jersey Devil Coaster et THE JOKER sont tous sur notre liste, et aucun ne laisse entrer un sac dans la file. Mon chapeau en grande roue ne compte pas, j’espère. L’ordre de ta journée, on le refait ensuite dans le [planificateur de journée](/trip-planner).
+
 ## Billets
 
 Le billet à la journée coûte à partir de 45 $ en ligne, et le parc en vend aussi à l’entrée. Six Flags ajoute à chaque achat jusqu’à 9,99 $ de frais, plus les taxes. Les enfants jusqu’à deux ans entrent gratuitement dans le parc et à Hurricane Harbor. Six Flags ne rembourse aucun billet et ne donne pas de bon pour un autre jour en cas de pluie.

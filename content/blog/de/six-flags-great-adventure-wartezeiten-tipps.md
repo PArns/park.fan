@@ -254,6 +254,9 @@ Angenommen, du stehst an einem Sommertag zur Öffnung am Eingang, Nitro fährt w
 
 Bei El Toro, THE JOKER, dem Jersey Devil Coaster und THE FLASH dürfen keine losen Gegenstände mit in die Warteschlange, also weder Taschen noch Rucksäcke. Fast Lane und die Tickets laufen über das Handy, und damit das auch in der Warteschlange klappt, hat der Park vor der Saison 2026 mehr als 600 neue WLAN-Zugangspunkte installiert. Bezahlt wird nur bargeldlos mit Karte, Apple Pay oder Google Pay. Wer Bargeld dabeihat, tauscht es an Kiosken in eine Karte um. Fragen beantwortet Guest Relations per Live-Chat täglich von 8 bis 2 Uhr nachts, Ostküstenzeit.
 
+> [!PARKY]
+> Den Rucksack lassen wir an diesem Tag im Auto oder im Hotel: El Toro, THE FLASH, der Jersey Devil Coaster und THE JOKER stehen alle auf unserer Liste, und an keiner darf eine Tasche mit in die Warteschlange. Mein Riesenrad-Hut zählt hoffentlich nicht dazu. Die Reihenfolge für deinen Tag bauen wir dann im [Tagesplaner](/trip-planner) nach.
+
 ## Tickets
 
 Online kostet das Tagesticket ab 45 $, Tagestickets verkauft der Park aber auch am Eingang. Auf jeden Kauf schlägt Six Flags bis zu 9,99 $ Gebühr plus Steuer auf. Kinder bis zwei Jahre kommen umsonst in den Park und nach Hurricane Harbor. Six Flags erstattet keine Tickets und gibt bei Regen keine Gutscheine für einen anderen Tag aus.

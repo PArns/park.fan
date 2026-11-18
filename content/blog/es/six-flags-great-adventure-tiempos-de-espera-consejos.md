@@ -254,6 +254,9 @@ Supongamos que un día de verano estás en la entrada a la hora de apertura, Nit
 
 En las colas de El Toro, THE JOKER, el Jersey Devil Coaster y THE FLASH no se puede entrar con objetos sueltos, ni bolsos ni mochilas. El Fast Lane y las entradas van por el móvil, y para que eso funcione también en la cola el parque instaló antes de la temporada 2026 más de 600 puntos de acceso wifi nuevos. Solo se paga sin efectivo, con tarjeta, Apple Pay o Google Pay; si llevas billetes, los cambias por una tarjeta en unos quioscos. Guest Relations responde por chat en directo todos los días de 8:00 a 2:00 de la madrugada, hora de la costa este.
 
+> [!PARKY]
+> Ese día la mochila se queda en el coche o en el hotel: El Toro, THE FLASH, el Jersey Devil Coaster y THE JOKER están todos en nuestra lista, y en ninguno se entra a la cola con bolsa. Espero que mi sombrero de noria no cuente. El orden para tu día lo montamos luego en el [planificador del día](/trip-planner).
+
 ## Entradas
 
 La entrada de un día cuesta desde 45 $ online, y el parque también vende entradas de un día en la taquilla. A cada compra Six Flags le suma hasta 9,99 $ de gastos, más impuestos. Los niños de hasta dos años entran gratis al parque y a Hurricane Harbor. Six Flags no devuelve el dinero de las entradas ni da vales para otro día si llueve.
