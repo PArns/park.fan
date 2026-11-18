@@ -47,7 +47,7 @@ seo:
 
 ## Three rides from 1927
 
-On the [Racer](ref:kennywood/racer?bare), two trains race side by side, yet there's only one track. Board on the right in the station and you come back on the left. Kennywood says no other coaster in the US runs a single continuous track like this. John A. Miller designed it and Philadelphia Toboggan Coasters built it. The track is 4,500 feet (1,372 metres) long and 72.5 feet (22 metres) high at its highest point. The trains hit 40 mph (64 km/h). A lap takes 1 minute 32 seconds. Three 24-seat trains carry 1,400 riders an hour. You need to be 46 inches (117 centimetres) tall to ride. An earlier coaster, opened in 1910, carried the name first.
+On the [Racer](ref:kennywood/racer?bare), two trains race side by side, yet there's only one track. Board on the right in the station and you come back on the left. Kennywood says no other coaster in the US runs a single continuous track like this. John A. Miller designed it and Philadelphia Toboggan Coasters built it. The track is 4,500 feet (1,372 metres) long and 72.5 feet (22 metres) high at its highest point. The trains hit 40 mph (64 km/h). A lap takes 1 minute 32 seconds, and with three 24-seat trains on the circuit the Racer gets through 1,400 riders an hour. You need to be 46 inches (117 centimetres) tall to ride. An earlier coaster, opened in 1910, carried the name first.
 
 The [Turtle](ref:kennywood/turtle?bare) came to the park in 1927 as a Tumble Bug. Its cars look like turtles and run over hills and dips on a circular track. It's been the Turtle since Kennywood bought a sixth car in 1948, and the park says it's the last ride of its kind still running anywhere. In 1930 a stand called Lucky went up next to it. On its history page, the park jokes that someone must already have guessed which of the two would be the lucky one left standing. There's no minimum height. Children under 46 inches ride with a companion, and babies can't ride.
 
@@ -59,15 +59,15 @@ The [Merry-Go-Round](ref:kennywood/merry-go-round?bare) is the third carousel in
 
 ## Events from April to January
 
-The season starts with Celebrate Kennywood Weekends from April 17 to May 16. These weekends are about the old rides, the park's food, souvenirs and memories of past visits. The park explicitly asks you to show up in matching Kennywood gear; nobody needs talking into the fries at Potato Patch.
+The season starts with Celebrate Kennywood Weekends from April 17 to May 16. The park puts its old rides and its food at the centre of these weekends, along with souvenirs and memories of past visits, and a 100-year-old Racer should have collected a few of those. The park explicitly asks you to show up in matching Kennywood gear; nobody needs talking into the fries at Potato Patch.
 
-The Bites and Pints Food & Drink Festival follows from May 28 to June 27, on Fridays, Saturdays and Sundays and on Memorial Day, May 31. Around the Lagoon you'll find dishes from several countries, cocktails, craft beer and wine.
+The Bites and Pints Food & Drink Festival follows from May 28 to June 27, on Fridays, Saturdays and Sundays and on Memorial Day, May 31. The stands go up around the Lagoon and pour cocktails, craft beer and wine next to dishes from several countries, so ride the Racer first.
 
-On July 4 the Independence Day fireworks go up over the Racer, right above one of the birthday rides. Every Friday and Saturday from July 9 to July 31, Kennywood puts on evening drone shows with designs made for the park.
+On July 4 the Independence Day fireworks go up over the Racer, right above one of the birthday rides. Every Friday and Saturday from July 9 to July 31, Kennywood puts on evening drone shows with designs of its own.
 
-From August 7 to August 22, the Fall Fantasy Parades run through the park every day, with hand-decorated floats and more than 130 local marching bands. Phantom Fall Fest, the Halloween event, runs on selected days from September 11 to October 31 and turns 25 itself in 2027. The park promises a few surprises for the anniversary. Once it's dark, the haunted houses and scare zones open as usual.
+From August 7 to August 22, the Fall Fantasy Parades run through the park every day, with hand-decorated floats and more than 130 local marching bands. Phantom Fall Fest, the Halloween event, runs on selected days from September 11 to October 31 and turns 25 itself in 2027; the park promises anniversary surprises without naming one yet. As in earlier years, the haunted houses and scare zones wait for dark before they open.
 
-Holiday Lights starts its 16th season on selected days from November 13, 2027 to January 2, 2028, with more than three million lights, what the park calls the tallest Christmas tree in Pennsylvania and visits with Rudolph.
+Holiday Lights starts its 16th season on selected days from November 13, 2027 to January 2, 2028. More than three million lights go up, the park says its tree is the tallest in Pennsylvania, and Rudolph is there to meet.
 
 ## What 2027 season passes cost
 
@@ -81,7 +81,7 @@ Right now the Gold Pass sells for the price of the summer-only Silver Pass. The 
 
 ## This winter Kennywood opens only for Holiday Lights
 
-Holiday Lights 2026 runs until January 3, 2027. Until Friday, November 20, an undated ticket costs $19.99 instead of $49.99 and works on any operating day through January 3, 2027. Dated tickets currently start at $24.99. More than 20 rides are running. If your visit gets rained out, the Rainy Day Guarantee gets you a free ticket for another day.
+Holiday Lights 2026 runs until January 3, 2027. Until Friday, November 20, an undated ticket costs $19.99 instead of $49.99 and works on any operating day this season. Dated tickets currently start at $24.99. More than 20 rides are running. If your visit gets rained out, the Rainy Day Guarantee gets you a free ticket for another day.
 
 ```best-days-widget slug=kennywood
 
