@@ -52,7 +52,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> De Quick Pass voor Die 3 Mausketiere staat in de shop ook vandaag als uitverkocht, bij de start van de verkoop om 11 uur en om 11.30 uur, en een prijs geeft de shop er niet bij. Op de [infopagina van het park](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) staat hij voor € 5. Nieuw in de shop zijn twee losse passes: Taron Daylight tot 16 uur voor € 12 en Chiapas voor € 5, waar de infopagina voor Chiapas nog € 10 noemt. De overige prijzen zijn dezelfde als op 15 november, en Colorado Adventure staat inmiddels ook op de infopagina voor € 7. Met € 5 voor Die 3 Mausketiere kosten alle elf losse passes samen € 80, evenveel als de Ultimate, waar F.L.Y. nog bij komt.
+> De Quick Pass voor Die 3 Mausketiere staat in de shop ook vandaag als uitverkocht, bij de start van de verkoop om 11 uur en om 11.30 uur, en een prijs geeft de shop er niet bij. Op de [infopagina van het park](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) staat hij voor € 5. Nieuw in de shop zijn twee losse passes: Taron Daylight tot 16 uur voor € 12 en Chiapas voor € 5, de prijs in de winter, terwijl de infopagina nog € 10 noemt. De overige prijzen zijn dezelfde als op 15 november, en Colorado Adventure staat inmiddels ook op de infopagina voor € 7. Met € 5 voor Die 3 Mausketiere kosten alle elf losse passes samen € 80, evenveel als de Ultimate, waar F.L.Y. nog bij komt.
 
 Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin, en daar stond je eerst in de rij om later bij een baan korter in de rij te staan.
 
@@ -93,13 +93,13 @@ Voor Colorado Adventure vraagt de shop € 7, terwijl de mijntrein op de infopag
 De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pass-ingang en kom je één keer sneller in [F.L.Y.](ref:phantasialand/fly), waarvoor geen losse pass bestaat. Bij Taron geldt de Ultimate volgens de shop voor “Daylight & After Dark”, dus overdag en 's avonds.
 
 > [!PARKY] Trakteer jezelf
-> De acht losse passes uit de tabel kosten samen € 58, de Ultimate € 22 meer, en daarvoor vliegen we één keer sneller in F.L.Y. en rijden we Taron ook overdag. Bij Talocan zitten we met een pass gegarandeerd aan de voorkant, en bij Taron vraag ik bij het instappen gewoon om een plek. Wilden we toch al bijna alles met een pass doen, dan nemen we de Ultimate.
+> De acht losse passes uit de tabel kosten samen € 58, de Ultimate € 22 meer, en daarvoor vliegen we één keer sneller in F.L.Y. en rijden we Taron ook overdag. Bij Talocan zitten we met een pass gegarandeerd aan de voorkant, en bij Taron vraag ik bij het instappen gewoon vriendelijk om een plek. Wilden we toch al bijna alles met een pass doen, dan nemen we de Ultimate.
 
 ## Wat je verder nodig hebt
 
 De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets verkoopt het park alleen online, een kassa bij de ingang heeft het niet, en voor de dag zelf koop je tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
 
-Bij Taron helpt het om bij het instappen naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant. De minimale lengte geldt met pass net zo goed, voor Taron 1,30 m.
+De medewerkers wijzen de plaatsen toe, maar bij Taron helpt het om hun bij het instappen vriendelijk naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant. De minimale lengte geldt met pass net zo goed, voor Taron 1,30 m.
 
 ## Als de ingang pauzeert of de baan stilstaat
 
@@ -127,4 +127,4 @@ Op een groene dag in de kalender heb je de Quick Pass volgens mij niet nodig als
 Bronnen: [Quick Pass in de webshop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass), [gebruiksvoorwaarden van de Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, onderdeel Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
 
 > [!CORRECTION]
-> 18 november 2026: in de eerste versie stond dat je ook met een Quick Pass je plek in de trein niet zelf kiest. Bij Taron helpt het om bij het instappen naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant.
+> 18 november 2026: in de eerste versie stond dat je ook met een Quick Pass je plek in de trein niet zelf kiest. De medewerkers wijzen de plaatsen toe, maar bij Taron helpt het om hun bij het instappen vriendelijk naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant.

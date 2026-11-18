@@ -53,7 +53,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> Anche oggi il negozio indica il Quick Pass per Die 3 Mausketiere come esaurito, sia all’apertura delle vendite alle 11 sia alle 11:30, e non ne mostra il prezzo. La [pagina informativa del parco](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) lo riporta a 5 €. Nel negozio ci sono due pass singoli nuovi: Taron Daylight fino alle 16 a 12 € e Chiapas a 5 €, che la pagina informativa riporta ancora a 10 €. Gli altri prezzi sono gli stessi del 15 novembre, e ora anche la pagina informativa riporta Colorado Adventure a 7 €. Contando 5 € per Die 3 Mausketiere, gli undici pass singoli costano in tutto 80 €, quanto l’Ultimate, che in più comprende F.L.Y.
+> Anche oggi il negozio indica il Quick Pass per Die 3 Mausketiere come esaurito, sia all’apertura delle vendite alle 11 sia alle 11:30, e non ne mostra il prezzo. La [pagina informativa del parco](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) lo riporta a 5 €. Nel negozio ci sono due pass singoli nuovi: Taron Daylight fino alle 16 a 12 € e Chiapas a 5 €, il prezzo invernale, mentre la pagina informativa riporta ancora 10 €. Gli altri prezzi sono gli stessi del 15 novembre, e ora anche la pagina informativa riporta Colorado Adventure a 7 €. Contando 5 € per Die 3 Mausketiere, gli undici pass singoli costano in tutto 80 €, quanto l’Ultimate, che in più comprende F.L.Y.
 
 Il Quick Pass del [Phantasialand](ref:phantasialand) adesso si compra nel [negozio online del parco](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Dopo il pagamento arriva per e-mail in formato PDF, e all’ingresso Quick Pass dell’attrazione basta mostrare sul telefono il codice QR che contiene. Finora lo vendeva soltanto il servizio ospiti sulla Kaiserplatz, nell’area tematica Berlin, e lì prima ti mettevi in coda per poi fare meno coda a un’attrazione.
 
@@ -94,13 +94,13 @@ Per Colorado Adventure il negozio chiede 7 €, mentre sulla pagina informativa 
 Il Quick Pass Ultimate costa 80 €. Ti fa passare una volta da ogni ingresso Quick Pass e ti dà una corsa veloce su [F.L.Y.](ref:phantasialand/fly), che non ha un pass singolo. Per Taron, secondo il negozio, l’Ultimate vale per «Daylight & After Dark», quindi sia di giorno sia di sera.
 
 > [!PARKY] Fatti un regalo
-> Gli otto pass singoli della tabella costano in tutto 58 €, l’Ultimate 22 € in più, e in cambio voliamo una volta più in fretta su F.L.Y. e facciamo Taron anche di giorno. Su Talocan il pass ci garantisce il lato anteriore, e su Taron chiedo semplicemente un posto all’imbarco. Se tanto volevamo un pass per quasi tutto, prendiamo l’Ultimate.
+> Gli otto pass singoli della tabella costano in tutto 58 €, l’Ultimate 22 € in più, e in cambio voliamo una volta più in fretta su F.L.Y. e facciamo Taron anche di giorno. Su Talocan il pass ci garantisce il lato anteriore, e su Taron chiedo gentilmente un posto all’imbarco. Se tanto volevamo un pass per quasi tutto, prendiamo l’Ultimate.
 
 ## Cos’altro serve
 
 Il Quick Pass si paga a parte e vale solo insieme a un biglietto giornaliero valido. Il parco vende i biglietti giornalieri solo online, una biglietteria all’ingresso non ce l’ha, e per il giorno stesso della visita il tuo lo compri fino alle 14. Chi si presenta al cancello alle due e mezza senza biglietto ha un problema più grosso della coda di Black Mamba.
 
-Su Taron aiuta chiedere un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore. L’altezza minima vale lo stesso anche con il pass: per Taron 1,30 m.
+I posti li assegna il personale, ma su Taron aiuta chiedere gentilmente un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore. L’altezza minima vale lo stesso anche con il pass: per Taron 1,30 m.
 
 ## Se l’ingresso si ferma o l’attrazione chiude
 
@@ -128,4 +128,4 @@ Per esperienza, in un giorno verde del calendario il Quick Pass non serve se sei
 Fonti: [Quick Pass nel negozio online del Phantasialand](https://shop.phantasialand.de/en/quick-pass), [Condizioni d’uso del Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informazioni e come arrivare, sezione Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prezzi e biglietti](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Orari di apertura](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
 
 > [!CORRECTION]
-> 18 novembre 2026: la prima versione diceva che il posto sul treno non lo scegli nemmeno con il pass. Su Taron aiuta chiedere un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore.
+> 18 novembre 2026: la prima versione diceva che il posto sul treno non lo scegli nemmeno con il pass. I posti li assegna il personale, ma su Taron aiuta chiedere gentilmente un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore.

@@ -2,7 +2,7 @@
 title: "Phantasialand's Wintertraum runs until 24 January"
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-16'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
@@ -198,11 +198,11 @@ On the opening weekend the park was busy on Saturday, 14 November, and almost em
 
 With a Quick Pass you skip the queue once at one ride, through a separate entrance. Until now you first had to queue for it at Guest Service on the Kaiserplatz, one queue to save another. Now you can also buy it in the online shop from 11 am, which during Wintertraum is opening time, at your own pace on your phone, and show the QR code at the Quick Pass entrance.
 
-- Taron After Dark, from 5 pm: €12 (online, it's the only single pass for Taron)
+- Taron Daylight until 4 pm, Taron After Dark from 5 pm: €12 each
 - Black Mamba: €10
 - Winja's Fear, Winja's Force, Colorado Adventure: €7 each
 - Maus au Chocolat, Mystery Castle, Talocan: €5 each
-- Chiapas: €10, only at Guest Service, according to the info page
+- Chiapas: €5 in winter
 - Quick Pass Ultimate: €80, once at every Quick Pass entrance and once at F.L.Y., which has no single pass
 
 Every Quick Pass is only valid on the day you book it, and the park sells a limited number per day. Booking step by step, from the basket that holds the passes for ten minutes to the PDF with the QR code, is in our [news item on the Quick Pass going online](/news/phantasialand-quick-pass-online).
@@ -280,8 +280,8 @@ The park has three themed hotels right next to it: Ling Bao in China Town, Matam
 
 For a short winter break there's up to 45 % off for early bookings. Breakfast and parking at the hotel are included, and you walk straight into the park through the hotel gardens or a gate of your own. After MAGIC SYMPHONY that's the shortest way to bed, while everyone else heads for P1 and P2. Guests at Matamba and Ling Bao get faster access once per person per night to one of these rides: Chiapas, Maus au Chocolat, Talocan, Winja's Fear & Force or Colorado Adventure, but only with a valid park ticket. Charles Lindbergh guests get faster access to F.L.Y. as Explorers, and the hotel also has an Explorer package with a night's stay, a three-course dinner, breakfast and two park days. The new pool and spa area at Ling Bao is for its own guests only.
 
-> [!PARKY] Chiapas it is
-> If we're staying at Matamba or Ling Bao, we spend the hotel's faster access on Chiapas: a Quick Pass there otherwise costs €10 and is only sold at Guest Service, while at the other rides on the list it's €5 or €7 in the online shop. Two nights get us two goes that way, so I'm packing the dry jacket to change into twice. We still need a valid park ticket for it.
+> [!PARKY]
+> If we're staying at Matamba or Ling Bao, we spend the hotel's faster access on Colorado Adventure or the Winja's: a Quick Pass there otherwise costs €7, while at Maus au Chocolat, Talocan and, in winter, Chiapas it's only €5. Two nights get us both that way, and I don't have to choose. We still need a valid park ticket for it.
 
 The New Year's Eve packages with an overnight stay are fully booked.
 
@@ -332,7 +332,7 @@ Monday to Friday in January, once the NRW Christmas holidays end on 6 January 20
 
 ### Is there a Quick Pass during Wintertraum?
 
-Yes, in the online shop from 11 am, when the park opens, on your phone and without queuing, or at Guest Service on the Kaiserplatz. Each pass is only valid on the day you book it. In the shop, Taron After Dark from 5 pm costs €12, Colorado Adventure €7 and the Ultimate with F.L.Y. €80. Chiapas is only sold at Guest Service.
+Yes, in the online shop from 11 am, when the park opens, on your phone and without queuing, or at Guest Service on the Kaiserplatz. Each pass is only valid on the day you book it. In the shop, Taron Daylight until 4 pm and Taron After Dark from 5 pm cost €12 each, Colorado Adventure €7, Chiapas €5 in winter and the Ultimate with F.L.Y. €80.
 
 — Patrick
 

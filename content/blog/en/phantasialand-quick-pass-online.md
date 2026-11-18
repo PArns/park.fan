@@ -53,7 +53,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> The shop still shows the Quick Pass for Die 3 Mausketiere as "Currently sold out" today, both when sales opened at 11 am and at 11:30, and gives no price for it. The [park's info page](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) lists it at €5. Two single passes are new in the shop: Taron Daylight until 4 pm for €12 and Chiapas for €5, which the info page still lists at €10. The other prices are the same as on 15 November, and the info page now lists Colorado Adventure at €7 too. With €5 for Die 3 Mausketiere, all eleven single passes come to €80 together, the price of the Ultimate, which adds F.L.Y. on top.
+> The shop still shows the Quick Pass for Die 3 Mausketiere as "Currently sold out" today, both when sales opened at 11 am and at 11:30, and gives no price for it. The [park's info page](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) lists it at €5. Two single passes are new in the shop: Taron Daylight until 4 pm for €12 and Chiapas for €5, its winter price, while the info page still lists €10. The other prices are the same as on 15 November, and the info page now lists Colorado Adventure at €7 too. With €5 for Die 3 Mausketiere, all eleven single passes come to €80 together, the price of the Ultimate, which adds F.L.Y. on top.
 
 [Phantasialand](ref:phantasialand) now sells its Quick Pass in the [park's online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Once you've paid, it arrives as a PDF by email, and at the ride's Quick Pass entrance you show the QR code from it on your phone. Until now you could only get one at Guest Services on the Kaiserplatz, in the Berlin area, which meant queuing first so you could queue less at a ride later.
 
@@ -94,13 +94,13 @@ For Colorado Adventure the shop charges €7, while the park's info page still l
 The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and once onto [F.L.Y.](ref:phantasialand/fly), which has no single pass of its own. For Taron, the shop says the Ultimate covers "Daylight & After Dark".
 
 > [!PARKY] Treat yourself
-> The eight single passes in the table add up to €58, the Ultimate costs €22 more, and for that we fly F.L.Y. once with a shorter wait and ride Taron by day too. At Talocan a pass guarantees us the front side, and at Taron I just ask for a seat at the platform. If we were going to buy a pass for nearly everything anyway, we get the Ultimate.
+> The eight single passes in the table add up to €58, the Ultimate costs €22 more, and for that we fly F.L.Y. once with a shorter wait and ride Taron by day too. At Talocan a pass guarantees us the front side, and at Taron I just ask nicely for a seat at the platform. If we were going to buy a pass for nearly everything anyway, we get the Ultimate.
 
 ## What else you need
 
 The Quick Pass costs extra and only works with a valid day ticket. Day tickets are sold online only, since there's no ticket office, and for the day itself the park sells them until 2 pm. Turn up at the gate at half past two without one and you have a bigger problem than the queue for Black Mamba.
 
-At Taron it helps to ask for a particular seat at the platform, and at Talocan the Quick Pass guarantees you the front side. The height limits apply with a pass too, 1.30 m for Taron.
+The staff assign the seats, but at Taron it helps to ask them nicely for a particular one at the platform, and at Talocan the Quick Pass guarantees you the front side. The height limits apply with a pass too, 1.30 m for Taron.
 
 ## When the entrance pauses or the ride is down
 
@@ -128,4 +128,4 @@ In my experience you don't need a Quick Pass on a green day in the calendar if y
 Sources: [Quick Pass in the Phantasialand online shop](https://shop.phantasialand.de/en/quick-pass), [Quick Pass terms of use](https://www.phantasialand.de/de/quick-pass/), [Information and directions, Quick Pass section](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prices and tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Opening hours](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
 
 > [!CORRECTION]
-> 18 November 2026: The first version said that even with a Quick Pass you don't get to pick your seat. At Taron it helps to ask for a particular seat at the platform, and at Talocan the Quick Pass guarantees you the front side.
+> 18 November 2026: The first version said that even with a Quick Pass you don't get to pick your seat. The staff assign the seats, but at Taron it helps to ask them nicely for a particular one at the platform, and at Talocan the Quick Pass guarantees you the front side.

@@ -2,7 +2,7 @@
 title: 'Le Wintertraum du Phantasialand dure jusqu’au 24 janvier'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-16'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
@@ -197,11 +197,11 @@ Le week-end d’ouverture, il y avait beaucoup de monde le samedi 14 novembre et
 
 Avec le Quick Pass, tu passes une fois devant la file d’une attraction, par une entrée à part. Jusqu’ici, il fallait d’abord faire la queue au service clients de la Kaiserplatz pour l’acheter, une file pour en éviter une autre. Désormais, tu l’achètes aussi dans la boutique en ligne, dès 11 h, donc dès l’ouverture du parc, tranquillement sur ton téléphone, et tu montres le QR code à l’entrée Quick Pass.
 
-- Taron After Dark, à partir de 17 h : 12 € (en ligne, c’est la seule formule pour Taron seul)
+- Taron Daylight jusqu’à 16 h, Taron After Dark à partir de 17 h : 12 € chacun
 - Black Mamba : 10 €
 - Winja’s Fear, Winja’s Force, Colorado Adventure : 7 € chacun
 - Maus au Chocolat, Mystery Castle, Talocan : 5 € chacun
-- Chiapas : 10 €, seulement au service clients, d’après la page d’informations
+- Chiapas : 5 € en hiver
 - Quick Pass Ultimate : 80 €, une fois à chaque entrée Quick Pass et une fois à F.L.Y., qui ne se vend pas seul
 
 Chaque Quick Pass ne vaut que pour le jour où tu le réserves, et le parc n’en vend qu’un nombre limité par jour. La réservation étape par étape, du panier qui garde les pass dix minutes jusqu’au PDF avec le QR code, est décrite dans notre [actualité sur le Quick Pass en ligne](/news/phantasialand-quick-pass-online).
@@ -279,8 +279,8 @@ Le parc a trois hôtels à thème au bord du site : le Ling Bao à China Town, 
 
 Pour un court séjour d’hiver, le parc annonce jusqu’à 45 % de réduction en réservant tôt. Le petit-déjeuner et le parking de l’hôtel sont compris, et tu entres directement dans le parc par les jardins de l’hôtel ou par un portail à part. Après MAGIC SYMPHONY, c’est le chemin le plus court jusqu’au lit, pendant que tous les autres repartent vers P1 et P2. Au Matamba et au Ling Bao, chaque client a droit, par nuit, à un accès plus rapide à l’une de ces attractions : Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force ou Colorado Adventure, mais seulement avec un billet d’entrée valable. Les clients du Charles Lindbergh ont, en tant qu’Explorer, un accès plus rapide à F.L.Y., et l’hôtel propose aussi un forfait Explorer avec nuit, dîner en trois plats, petit-déjeuner et deux jours de parc. Le nouvel espace piscine et bien-être du Ling Bao est réservé à ses propres clients.
 
-> [!PARKY] Va pour Chiapas
-> Si on dort au Matamba ou au Ling Bao, on garde l’accès plus rapide de l’hôtel pour Chiapas : le Quick Pass y coûte sinon 10 € et ne se vend qu’au service clients, alors qu’aux autres attractions de la liste, il est à 5 ou 7 € dans la boutique en ligne. Avec deux nuits, on y passe ainsi deux fois, et la veste sèche, j’en mets deux dans le sac. Il nous faut quand même un billet d’entrée valable.
+> [!PARKY]
+> Si on dort au Matamba ou au Ling Bao, on garde l’accès plus rapide de l’hôtel pour Colorado Adventure ou les Winja’s : le Quick Pass y coûte sinon 7 €, alors qu’à Maus au Chocolat, à Talocan et, en hiver, à Chiapas, il n’est qu’à 5 €. Avec deux nuits, on fait ainsi les deux, et je n’ai pas à choisir. Il nous faut quand même un billet d’entrée valable.
 
 Les forfaits de la Saint-Sylvestre avec nuitée sont complets.
 
@@ -331,7 +331,7 @@ Du lundi au vendredi en janvier, après les vacances de Noël. L’hiver dernier
 
 ### Y a-t-il un Quick Pass pendant le Wintertraum ?
 
-Oui, dans la boutique en ligne dès 11 h, donc dès l’ouverture du parc, sur ton téléphone et sans faire la queue, ou au service clients de la Kaiserplatz. Chaque pass ne vaut que le jour de la réservation. Dans la boutique, Taron After Dark à partir de 17 h coûte 12 €, Colorado Adventure 7 € et l’Ultimate avec F.L.Y. 80 €. Le Quick Pass pour Chiapas se vend uniquement au service clients.
+Oui, dans la boutique en ligne dès 11 h, donc dès l’ouverture du parc, sur ton téléphone et sans faire la queue, ou au service clients de la Kaiserplatz. Chaque pass ne vaut que le jour de la réservation. Dans la boutique, Taron Daylight jusqu’à 16 h et Taron After Dark à partir de 17 h coûtent 12 € chacun, Colorado Adventure 7 €, Chiapas 5 € en hiver et l’Ultimate avec F.L.Y. 80 €.
 
 — Patrick
 

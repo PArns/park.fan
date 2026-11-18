@@ -2,16 +2,12 @@
 title: 'Im Europa-Park stehst du kürzer an als im Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-11-15'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Mit einem Kind zwischen 1,00 und 1,30 Meter ist im Europa-Park mehr offen als
-  im Phantasialand. Nur im Phantasialand kannst du dir mit dem Quick Pass
-  eine kürzere Warteschlange kaufen. In den Sommerferien stand man dort fast
-  doppelt so lange an wie unter der Woche außerhalb der Ferien, im Europa-Park gut ein
-  Drittel länger.
+  Mit Kind zwischen 1,00 und 1,30 Meter ist im Europa-Park mehr offen. In den Sommerferien stand man im Phantasialand fast doppelt so lange an wie sonst unter der Woche, in Rust gut ein Drittel länger.
 tags:
   - europa-park
   - phantasialand
@@ -99,7 +95,7 @@ Mit dem Quick Pass kaufst du dich im Phantasialand an der regulären Warteschlan
 - 10 € auf Black Mamba oder Chiapas,
 - 12 € auf Taron.
 
-Für Colorado Adventure nennt die Infoseite des Parks noch 5 €, im Online-Shop kostet die Fahrt 7 €. River Quest steht im Moment auf keiner der beiden Listen. F.L.Y. gibt es nur im Quick Pass Ultimate, der für 80 € jede dieser zehn Bahnen einmal enthält und F.L.Y. dazu.
+Im Winter kostet Chiapas nur 5 €. River Quest steht im Moment weder auf der Infoseite des Parks noch im Online-Shop. F.L.Y. gibt es nur im Quick Pass Ultimate, der für 80 € jede dieser zehn Bahnen einmal enthält und F.L.Y. dazu.
 
 Kaufen kannst du ihn im Online-Shop des Parks, dann kommt er als PDF mit QR-Code per Mail, oder beim Gästeservice in der Themenwelt Berlin. Er gilt nur am Tag der Buchung, deshalb kaufst du ihn am Morgen deines Besuchstags und nicht schon am Abend davor. Das Kontingent ist begrenzt.
 

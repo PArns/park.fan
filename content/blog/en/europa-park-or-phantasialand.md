@@ -2,15 +2,12 @@
 title: 'You’ll queue less at Europa-Park than at Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-11-15'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  With a child between 1.00 and 1.30 metres, more is open to you at Europa-Park
-  than at Phantasialand. Only Phantasialand sells a shorter queue, the Quick
-  Pass. In the summer holidays its queues ran almost twice as long as on a
-  weekday outside the holidays, Europa-Park’s a good third longer.
+  With a child of 1.00 to 1.30 metres, more is open at Europa-Park. In the summer holidays Phantasialand’s queues ran almost twice as long as on a normal weekday, Europa-Park’s a good third longer.
 tags:
   - europa-park
   - phantasialand
@@ -98,7 +95,7 @@ Phantasialand’s Quick Pass lets you buy your way past the regular queue. For a
 - €10 on Black Mamba or Chiapas,
 - €12 on Taron.
 
-The park’s information page still lists Colorado Adventure at €5, while the online shop charges €7. River Quest isn’t on either list at the moment. F.L.Y. comes only with the Quick Pass Ultimate, which costs €80 and includes one go on each of those ten rides plus F.L.Y.
+In winter Chiapas costs only €5. River Quest is on neither the park’s information page nor the online shop at the moment. F.L.Y. comes only with the Quick Pass Ultimate, which costs €80 and includes one go on each of those ten rides plus F.L.Y.
 
 You can buy it in the park’s online shop, which emails it to you as a PDF with a QR code, or at Guest Services in the Berlin themed area. It’s only valid on the day you book it, so buy it on the morning of your visit, not the evening before. There are a limited number.
 
