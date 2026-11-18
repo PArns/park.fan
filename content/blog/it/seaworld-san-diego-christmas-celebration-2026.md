@@ -55,6 +55,9 @@ Al Sea Lion Stadium Clyde e Seamore ripropongono il loro Christmas Special, con 
 
 Sulla Holiday Plaza ogni sera si accende l'albero di Natale alto circa nove metri (30 piedi). Lo SkyTower diventa il Tree of Lights, alto circa 98 metri (320 piedi), e le palme sono illuminate come bastoncini di zucchero. Babbo Natale si incontra nella Santa's Cottage sul SkyTower Lawn; due delle sue renne stanno da Rentals, Rudolph nell'Holly Jolly Marketplace. I fuochi d'artificio A Christmas Wish ci sono soltanto due volte, sabato 12 dicembre e a San Silvestro.
 
+> [!PARKY] Il 12 dicembre
+> Se il nostro viaggio nella California del Sud cade a dicembre, SeaWorld San Diego da noi si prende sabato 12 dicembre: solo quella sera e a San Silvestro ci sono i fuochi d'artificio A Christmas Wish. Quando partono, spero di essermi già tolto Baby Shark dalla testa. Gli altri parchi li sistemiamo intorno a quel giorno nel [pianificatore di viaggio](/california#planner).
+
 ## Orari di novembre
 
 Venerdì 13 novembre c'è la Christmas Celebration Pass Member Preview per chi ha l'abbonamento annuale. Quel giorno il parco è aperto dalle 10 alle 21. Da sabato 14 novembre la Christmas Celebration segue i normali orari di apertura, in ora locale:

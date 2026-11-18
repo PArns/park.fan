@@ -76,6 +76,9 @@ Op Mary N. Bright Airfield zit de kerstman met alle negen rendieren klaar voor e
 
 Voor het kerstseizoen noemt het park 46 attracties, waaronder de achtbanen [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse en Jolly Rancher Remix, en verder Kissing Tower en Starship America. Een paar attracties sluiten al om 17.00 uur, zoals Monorail, Tea Cups, Music Express en Red Baron.
 
+> [!PARKY]
+> Willen de kinderen in Tea Cups, Monorail, Music Express of Red Baron, dan komen we op een dag waarop de Candylane om 12.00 uur opengaat, bijvoorbeeld een zaterdag, en beginnen we met die vier: ze sluiten al om 17.00 uur, en op vrijdag gaat het park pas dan open. Na de Tea Cups draait bij mij alles nog een tijdje door. Voor TREEville en Fire & Ice hebben we daarna de hele avond.
+
 Of een baan bij kou, wind of sneeuw op de rails rijdt, beslist het park samen met de fabrikant, en ook onderhoud kan een baan stilleggen. Volgens de Winter Weather Promise van het park krijg je bij Guest Services een gratis tegoedbon voor een volgend bezoek als de meeste grote banen van het seizoen door het weer langer dan 60 minuten van je bezoek stilstaan. De bon geldt op elke openingsdag tot en met 30 juni 2027.
 
 ## Fall Weekend op 7 en 8 november

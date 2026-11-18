@@ -68,6 +68,9 @@ Nei giorni dell'evento a novembre l'One-Day Dated Ticket costa 418 yuan dal lune
 
 Ogni biglietto è nominativo e vale solo con un documento d'identità. Fino alla mezzanotte di due giorni prima della visita si può annullare gratis oppure cambiare la data una volta. Dopo, fino alle 23.59 del giorno prima, l'annullamento costa 80 yuan, e il giorno stesso non si riceve più nulla. Universal Express parte da 190 yuan a seconda della data e della versione, ingresso escluso. La versione standard fa entrare una volta più in fretta in ogni attrazione aderente.
 
+> [!PARKY] In settimana
+> A novembre scegliamo un giorno dal lunedì al venerdì: l'One-Day Dated Ticket costa allora 418 yuan invece di 473, e nel fine settimana l'albero in fondo all'Hollywood Boulevard non è più alto. Possiamo prenotare presto senza pensieri, perché fino alla mezzanotte di due giorni prima della visita cambiamo la data una volta gratis. Il documento d'identità lo mettiamo in tasca, perché senza il biglietto non vale.
+
 ## Come arrivare e dove dormire
 
 Il resort si trova nel distretto pechinese di Tongzhou, sulla East 6th Ring Road. Alla Universal Resort Station fermano la linea 7 della metropolitana e la Batong Line, e dalle uscite B, C e D ci vogliono circa sette minuti a piedi fino ai controlli di sicurezza dell'Universal CityWalk Beijing. In autobus ci si arriva con le linee 589 e T116. In auto, un parcheggio normale costa 100 yuan se si entra entro le 14, 50 yuan entro le 18 e 25 yuan dopo, nei giorni senza Scares @ Universal.

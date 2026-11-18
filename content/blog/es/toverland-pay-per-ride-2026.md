@@ -84,6 +84,9 @@ Toverland sigue vendiendo la entrada de día normal en las jornadas de Pay per R
 
 La entrada de adulto de un miércoles cuesta lo mismo que 18,5 fichas, algo más de seis viajes en las atracciones grandes. En fin de semana son 21,5 fichas, algo más de siete. A partir del séptimo viaje grande un miércoles, y del octavo en fin de semana, la entrada de día sale más barata. El descuento por cantidad empieza en 25 fichas, es decir, en 47,50 €, y para entonces la entrada de día ya habría salido más barata.
 
+> [!PARKY] Entrada anticipada
+> Si vamos a repetir en las atracciones grandes, compramos la entrada de día con al menos siete días de antelación: con el descuento máximo de 7 €, a un adulto le sale más barata que las fichas un viaje grande antes, desde el sexto un miércoles y desde el séptimo en fin de semana. Troy, Fēnix y Booster Bike dos veces cada una ya son seis, y para mí dos veces es más bien el mínimo. Si nos basta con un viaje en cada una, nos quedamos con Pay per Ride.
+
 En un grupo se pueden mezclar entradas de día y Pay per Ride. Si acompañas a un niño que por su altura solo puede subir a una atracción con un adulto, tú también necesitas entrada de día o fichas. Las entradas de cumpleaños y de vuelta, así como las entradas de la promoción de primavera «2.ª visita gratis», siguen siendo entradas de día con todo incluido.
 
 Los Magic Members con abono vigente montan sin límite y sin pagar más también en los días de Pay per Ride, sin reserva ni fichas. El aparcamiento no va incluido en el abono; el abono de aparcamiento cuesta 50 € al año o 4,50 € al mes.

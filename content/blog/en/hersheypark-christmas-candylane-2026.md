@@ -76,6 +76,9 @@ At Mary N. Bright Airfield, Santa poses for photos with all nine reindeer, and y
 
 The park lists 46 rides for the holiday season, among them the coasters [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse and Jolly Rancher Remix, plus Kissing Tower and Starship America. Monorail, Tea Cups, Music Express and Red Baron close as early as 5 pm.
 
+> [!PARKY]
+> If the kids want Tea Cups, Monorail, Music Express or Red Baron, we come on a day when Candylane opens at noon, a Saturday for instance, and start with those four: they close as early as 5 pm, which is when Fridays only get going. After the Tea Cups, everything keeps spinning for me for a while. That leaves the whole evening for TREEville and Fire & Ice.
+
 Whether a ride runs in the cold, in wind or with snow on the track is decided by the park together with its manufacturer, and maintenance can take a ride out too. Under the park's Winter Weather Promise, Guest Services will give you a free voucher for another visit if weather keeps most of the season's major rides closed for more than 60 minutes of your visit. It's good on any operating day through June 30, 2027.
 
 ## Fall Weekend on November 7 and 8

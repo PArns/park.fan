@@ -76,6 +76,9 @@ Am Mary N. Bright Airfield sitzt der Weihnachtsmann mit allen neun Rentieren und
 
 Für die Weihnachtssaison nennt der Park 46 Fahrgeschäfte, unter ihnen die Achterbahnen [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse und Jolly Rancher Remix, außerdem Kissing Tower und Starship America. Einige Fahrgeschäfte schließen schon um 17 Uhr, etwa Monorail, Tea Cups, Music Express und Red Baron.
 
+> [!PARKY]
+> Wollen die Kinder Tea Cups, Monorail, Music Express oder Red Baron fahren, kommen wir an einem Tag, an dem die Candylane um 12 Uhr öffnet, etwa an einem Samstag, und fangen mit diesen vier an: Sie schließen schon um 17 Uhr, und freitags geht es erst um diese Uhrzeit los. Nach den Tea Cups dreht sich bei mir noch eine Weile alles. Für TREEville und Fire & Ice bleibt uns danach der ganze Abend.
+
 Ob eine Bahn bei Kälte, Wind oder Schnee auf den Schienen fährt, entscheidet der Park zusammen mit ihrem Hersteller, und auch die Wartung kann eine Bahn stilllegen. Nach der Winter Weather Promise des Parks bekommst du bei Guest Services einen kostenlosen Gutschein für einen weiteren Besuch, wenn wegen des Wetters die meisten großen Bahnen der Saison länger als 60 Minuten deines Besuchs stillstehen. Er gilt an jedem Betriebstag bis zum 30. Juni 2027.
 
 ## Fall Weekend am 7. und 8. November

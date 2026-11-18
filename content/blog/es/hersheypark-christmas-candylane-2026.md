@@ -76,6 +76,9 @@ En Mary N. Bright Airfield espera Papá Noel con sus nueve renos para hacerse fo
 
 Para la temporada navideña el parque anuncia 46 atracciones, entre ellas las montañas rusas [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat's Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese's Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse y Jolly Rancher Remix, además de Kissing Tower y Starship America. Algunas cierran ya a las 17:00, como Monorail, Tea Cups, Music Express y Red Baron.
 
+> [!PARKY]
+> Si los niños quieren subir a Tea Cups, Monorail, Music Express o Red Baron, venimos un día en que Candylane abre a las 12:00, un sábado por ejemplo, y empezamos por esas cuatro: cierran ya a las 17:00, justo la hora a la que abren los viernes. Después de las Tea Cups, a mí todo me sigue dando vueltas un rato. Para TREEville y Fire & Ice nos queda luego toda la noche.
+
 Si una atracción funciona con frío, viento o nieve en las vías lo decide el parque junto con su fabricante, y el mantenimiento también puede dejarla parada. Según la Winter Weather Promise del parque, en Guest Services te dan un vale gratuito para otra visita si por el tiempo la mayoría de las grandes atracciones de la temporada pasan más de 60 minutos cerradas durante tu visita. El vale sirve cualquier día de apertura hasta el 30 de junio de 2027.
 
 ## Fall Weekend el 7 y el 8 de noviembre

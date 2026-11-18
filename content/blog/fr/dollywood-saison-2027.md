@@ -68,6 +68,9 @@ Harvey's Boo Bash a eu lieu pour la première fois en 2026. Il faut un billet à
 
 Le pass Diamond donne accès aux deux parcs, Dollywood's Splash Country compris, avec le parking gratuit et quatre billets gratuits pour des accompagnants (Bring-A-Friend-Free). Avec Gold ou Diamond, tu as accès au TimeSaver, une file à part, sur certaines attractions pendant la première heure d’ouverture de chaque journée. [NightFlight Expedition](ref:dollywood/nightflight-expedition), ouverte en août 2026, et [Big Bear Mountain](ref:dollywood/big-bear-mountain) en font partie. Le pass Silver a des jours bloqués pour les adultes et les seniors, mais pas sa version enfant. Le Summer Fun Pass donne un accès illimité du 19 avril au 10 septembre 2027.
 
+> [!PARKY] Gold tout de suite
+> Si on va à Smoky Mountain Christmas après le 13 décembre et qu’on revient en 2027, on prend tout de suite le pass 2027 en Gold : le Silver n’est valable cette année que jusqu’au 13 décembre, le Gold jusqu’au 3 janvier. Un pass 2027 qui marche déjà sous le sapin de 2026, je trouve ça plutôt généreux. L’an prochain, il nous fait passer par le TimeSaver sur NightFlight Expedition et Big Bear Mountain pendant la première heure.
+
 Les enfants nés en 2022 ou en 2023 entrent gratuitement toute la saison avec le Pre-K Imagination Season Pass.
 
 Les prix ci-dessous ne valent que pour le renouvellement d’un pass saison 2026 jusqu’au 1er novembre, taxes en sus.
