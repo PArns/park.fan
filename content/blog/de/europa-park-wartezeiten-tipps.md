@@ -817,8 +817,7 @@ gibt damit die letzte Parkstunde her.
 
 ## Eintrittspreise 2026 und 2027, Anreise
 
-**Tickets.** Der Preis hängt vom Datum ab, der Park arbeitet mit zwei
-Preiskategorien. Online kostet der Tag für Erwachsene ab 12 Jahren **67 bis 76 Euro**, für Kinder von 4
+**Tickets.** Der Park teilt seine Öffnungstage in zwei Preiskategorien ein. Online kostet der Tag für Erwachsene ab 12 Jahren **67 bis 76 Euro**, für Kinder von 4
 bis 11 und Senioren ab 60 **56,50 bis 65 Euro**, Kinder unter 4 sind frei. Zwei
 Tage kosten 127 bis 143,50 beziehungsweise 105 bis 119 Euro. An der Kasse kommen
 **10 Euro pro Ticket** obendrauf, als Gebühr fürs Nicht-vorher-Buchen. Wer im
@@ -827,12 +826,11 @@ Tag, 127 für zwei, 160 für drei. Am günstigsten wird es 2027 in den
 Pre-Opening Weeks vom 7. bis 19. März: 59,50 Euro unter der Woche, 70 Euro am
 Wochenende, dafür noch nicht mit allen Attraktionen.
 
-Zum Start der Sommersaison am **20. März 2027** wird jeder Tag 2,50 bis 3,50 Euro teurer. Erwachsene zahlen online dann **70 bis 79,50 Euro**, Kinder und Senioren **59 bis 68 Euro**, für zwei Tage sind es 132,50 bis 150 und 109,50 bis 124,50 Euro. Das gilt bis zum 9. Januar 2028, Halloween und Winter eingeschlossen. Der Bestpreis für Übernachtungsgäste zieht mit und liegt dann bei 70 Euro für einen Tag und 167 für drei. Verkauft werden die Tickets für 2027 seit dem 10. November 2026. Für eine Familie haben wir die [Preiserhöhung](/news/europa-park-preise-2027) durchgerechnet.
+Zum Start der Sommersaison am **20. März 2027** wird jeder Tag 2,50 bis 3,50 Euro teurer. Erwachsene zahlen online dann **70 bis 79,50 Euro**, Kinder und Senioren **59 bis 68 Euro**, für zwei Tage sind es 132,50 bis 150 und 109,50 bis 124,50 Euro. Das gilt bis zum 9. Januar 2028, Halloween und Winter eingeschlossen. Der Bestpreis für Übernachtungsgäste zieht mit und liegt dann bei 70 Euro für einen Tag und 167 für drei. Verkauft werden die Tickets für 2027 seit dem 10. November 2026. Eine Familie mit zwei Erwachsenen und zwei Kindern zahlt online mit Parken 13 bis 15 Euro mehr am Tag als 2026, die ganze Rechnung steht in der [Meldung zur Preiserhöhung](/news/europa-park-preise-2027).
 
-Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park bis auf Weiteres nicht, das Kontingent ist erschöpft. Es gibt ihn in Silber, das nur an vorab festgelegten Tagen gilt, und in Gold für alle Tage und mit zwei Tagen Rulantica. Ohne Jahreskarte bleibt für einen längeren Besuch das Zwei-Tages-Ticket.
+Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park bis auf Weiteres nicht, das Kontingent ist erschöpft. Es gibt ihn in Silber, das nur an vorab festgelegten Tagen gilt, und in Gold für alle Tage und mit zwei Tagen Rulantica.
 
-**Anreise.** Der Park liegt direkt an der **A5**, Ausfahrt **57b Rust**, und ist
-ab dort ausgeschildert. Auf der Straße sind es von Freiburg rund 40 Kilometer,
+**Anreise.** Der Park liegt direkt an der **A5**, Ausfahrt **57b Rust**. Auf der Straße sind es von Freiburg rund 40 Kilometer,
 von Straßburg rund 55, von Basel und von Karlsruhe jeweils rund 100, die
 Baustellen auf der A5 nicht eingerechnet. Mit der Bahn fährst du bis
 Ringsheim und von dort mit dem Shuttlebus. **Parken kostet 10 Euro** pro Tag, in der Saison 2027 dann 12 Euro. Rulantica hat einen eigenen Parkplatz.
@@ -925,7 +923,7 @@ läuft im Park schon HALLOWinter, und der macht selbst erst um neunzehn Uhr zu.
 
 ### Schafft man den Europa-Park an einem Tag?
 
-An einem normalen Tag schaffst du zehn bis zwölf der großen Bahnen, alle 96 Attraktionen samt Shows und 62 Gastronomien schafft niemand. Viel spart man mit zwei Tagen nicht, das Zwei-Tages-Ticket kostet Erwachsene 127 bis 143,50 Euro, ab dem 20. März 2027 132,50 bis 150 Euro, der zweite Tag also rund 60 bis 70 Euro.
+An einem normalen Tag schaffst du zehn bis zwölf der großen Bahnen, alle 96 Attraktionen samt Shows und 62 Gastronomien schafft niemand. Das Zwei-Tages-Ticket kostet Erwachsene 127 bis 143,50 Euro, ab dem 20. März 2027 132,50 bis 150 Euro, und spart gegenüber zwei Einzeltagen nur 7 bis 9 Euro.
 
 ### Lohnt sich der Europa-Park im Winter?
 
