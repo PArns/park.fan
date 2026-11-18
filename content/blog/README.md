@@ -471,8 +471,10 @@ carries „Frag Parky dazu“ (`blog.parkyAsk`), which opens the chat with a que
 
 A few words after the marker, on its own line, are Parky's verdict on one concrete thing the post
 recommends: a pass, a ride, a time of day. The card is then labelled „Parkys Tipp“
-(`parkyStill.tip.label`, the same card as his tip in the park calendar) and the verdict is pressed at
-its foot as his green stamp (`ParkyStamp`), with Parky looking over its edge.
+(`parkyStill.tip.label`, the label of his tip in the park calendar) and opens with the verdict as
+his green stamp (`ParkyStamp`), top left, with Parky looking over its edge. He is already on the
+stamp, so the still Parky beside the text is left out and the tip runs the card's full width; „Frag
+Parky dazu“ sits under it.
 
 ```md
 > [!PARKY] Lohnt sich
