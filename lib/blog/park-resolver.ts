@@ -163,6 +163,11 @@ function leanDetailForBlogRef(detail: AttractionResponse): AttractionResponse {
     bestVisitTimes: detail.bestVisitTimes,
     // One enum value, and the card's transport badge has nothing else to read.
     attractionKind: detail.attractionKind ?? null,
+    // A few start times at most; the inline chip and the card show the next one in place of the
+    // CLOSED a feed reads between two performances.
+    performanceSchedules: detail.performanceSchedules,
+    worksPeriod: detail.worksPeriod,
+    worksPeriods: detail.worksPeriods,
   };
 }
 

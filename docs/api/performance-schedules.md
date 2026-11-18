@@ -31,19 +31,25 @@ began a minute ago is gone.
 
 ## Surfaces
 
-| Surface                            | With today's times                                                                                                                             |
-| ---------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AttractionCard`                   | `PerformanceBadge` („Feste Vorstellungen") instead of the status badge, no crowd badge, no opens-at note, the photo not dimmed                 |
-| `AttractionCard` bottom panel      | `PerformanceCountdown` `block`: „Nächste Vorstellung", the next start, „in 23 Min.", every start of the day, past ones struck through          |
-| `AttractionCard` phone row         | `PerformanceCountdown` `row`: the next start beside the name; nothing once the last has begun                                                  |
-| `RideNowPanel` („Wartezeit jetzt") | The first cell: badge, the next start with its countdown, the day's starts; no lastUpdated or typical-hour line                                |
-| `RideNavTiles`                     | „Wartezeiten heute" says „Nächste Vorstellung 13:00 Uhr", or „Heute keine Vorstellung mehr"                                                    |
-| `RideLiveHeader`                   | No wait in the tab title                                                                                                                       |
-| Best times to visit                | None on a day a schedule covers (`startsAtSetTimesOn`, PAR-1358): no „Beste Zeiten heute" column, plan-tile hint, day-chart marks or card line |
+| Surface                                   | With today's times                                                                                                                             |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AttractionCard`                          | `PerformanceBadge` („Feste Vorstellungen") instead of the status badge, no crowd badge, no opens-at note, the photo not dimmed                 |
+| `AttractionCard` bottom panel             | `PerformanceCountdown` `block`: „Nächste Vorstellung", the next start, „in 23 Min.", every start of the day, past ones struck through          |
+| `AttractionCard` phone row                | `PerformanceCountdown` `row`: the next start beside the name; nothing once the last has begun                                                  |
+| `RideNowPanel` („Wartezeit jetzt")        | The first cell: badge, the next start with its countdown, the day's starts; no lastUpdated or typical-hour line                                |
+| `RideNavTiles`                            | „Wartezeiten heute" says „Nächste Vorstellung 13:00 Uhr", or „Heute keine Vorstellung mehr"                                                    |
+| `RideLiveHeader`                          | No wait in the tab title                                                                                                                       |
+| Best times to visit                       | None on a day a schedule covers (`startsAtSetTimesOn`, PAR-1358): no „Beste Zeiten heute" column, plan-tile hint, day-chart marks or card line |
+| Blog ride chip (`BlogAttractionLink`)     | The next start in the badge's sky („🎭 14:00", `inlinePerformanceSlot`) instead of „Geschlossen"; the status as usual once the last has begun  |
+| Blog ride card (`BlogAttractionCardLive`) | `AttractionCard` as above, with the park's day from the minute clock, since a post is cached for up to a day                                   |
 
 The ride page ships `performanceSchedules` and `worksPeriods` in its shell (`RIDE_SHELL_FIELDS`),
 absent on nearly every ride. The countdown is a Client Component on the shared minute tick
 (`useMinuteNow`) and renders a skeleton of its figure until it has a reading.
+
+A blog post carries `performanceSchedules` and `worksPeriods` in the trimmed ride detail of each
+`ref:` (`leanDetailForBlogRef`), and its chip and card read the park's day from the minute clock
+rather than the render, because the page is cached. `pnpm test:blog-performance-chip` pins the chip.
 
 Not covered yet: the favorites list and other cross-park listings pass no park day, so a curated ride
 there reads as its live status says. The planner and Parky do not read the field.
