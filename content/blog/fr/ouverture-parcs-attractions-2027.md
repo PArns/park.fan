@@ -180,6 +180,9 @@ Pour le mois de mars à Europa-Park, nous avons quatorze jours mesurés au print
 
 Pour les Pre-Opening Weeks, cela ne dit pas grand-chose, puisque rien de comparable n’existait en 2026. Pendant les deux premières semaines de mars 2027, seul Hambourg est en vacances de Pâques ; tous les autres Länder ne le sont qu’à partir du 22 mars.
 
+> [!PARKY]
+> Pour les Pre-Opening Weeks, on prend un jour du 13 au 19 mars, sauf le 16 et le 17, où le parc est fermé. Quelles attractions font encore relâche, le parc ne le dit pas, alors en plus du bonnet, j’emporte un peu de patience. En échange, à partir du 13, les écoliers de Hambourg sont de retour en classe, et aucun Land n’est en vacances de Pâques.
+
 ### Flying Cinema à Plopsaland Belgium
 
 À La Panne, le Flying Cinema ouvre le **13 mars 2027** : un hall avec un écran en coupole sous lequel flottent les nacelles, construit par Mack Rides. Des avant-premières ont lieu dès le 19 décembre 2026, mais seulement pour les détenteurs d’un abonnement annuel Plopsa et pour les clients des hôtels et chalets du parc. Avec un billet journalier, vous n’entrez qu’à partir du 13 mars. Pour le reste, [Plopsaland Belgium](ref:plopsaland-belgium) n’a pas encore publié le jour où commence sa saison 2027 ; son planning s’arrête au 3 janvier.
