@@ -239,6 +239,9 @@ Wildfire in Kolmården is de snelste en hoogste achtbaan van Zweden. Het langste
 - Colossos, Heide Park: vanaf 1,40 m
 - Expedition GeForce, Plopsaland Deutschland: vanaf 1,40 m
 
+> [!PARKY]
+> Bij 1,20 meter begint de jacht op records: dan mag een kind met een volwassene in Wodan, qua snelheid en hoogte de nummer drie van de Europese houten achtbanen. Met 1,30 meter en acht jaar komt Voltron Nevera erbij, de achtbaan met de meeste inversies van Duitsland, en de streepjes op de deurpost worden opeens een stuk vaker gecontroleerd. Vanaf 1,40 meter wachten in Salou drie van de vier snelste achtbanen van Europa.
+
 ## Veelgestelde vragen
 
 ### Wat is de snelste achtbaan van Europa?

@@ -222,6 +222,9 @@ Tutte le montagne russe restano in funzione la sera, e il parco fa pubblicità a
 
 In ottobre e nella mezza stagione alcune attrazioni restano chiuse con vento, freddo o pioggia forte. I limiti del parco sono sulla sua pagina della Return Guarantee: Hyperia funziona fino a 47 mph di vento, Nemesis Inferno e SAW fino a 40 mph, Colossus e The Swarm fino a 35 mph, Stealth solo fino a 31 mph, Zodiac fino a 25 e Vortex fino a 23 mph. Il vento si misura in quota, quindi a terra può sembrare più calmo. Le montagne russe funzionano a partire da 5 gradi Celsius, e con pioggia forte Nemesis Inferno e SAW restano ferme. La Return Guarantee vale solo in alcuni giorni, con effetto retroattivo, quando il parco ha avuto disservizi per almeno un'ora. Nel 2026 sono stati il 4 aprile, il 25 maggio e il 13 agosto, utilizzabile fino al 30 settembre 2026.
 
+> [!PARKY]
+> Se per il pomeriggio è prevista pioggia forte, facciamo Nemesis Inferno e SAW subito dopo l'apertura, perché sono proprio quelle due a fermarsi. Quando viene giù a catinelle, saliamo su The Walking Dead, al coperto nel suo padiglione a piramide, e per un po' di pioggia a casa io non ci torno. Il resto della giornata lo sistemiamo attrazione per attrazione nel [pianificatore della giornata](/trip-planner).
+
 ## Biglietti, abbonamenti e prezzi
 
 Il parco pubblicizza i biglietti giornalieri con «da 32 sterline» se prenotati in anticipo. I prezzi dipendono dalla data. Durante le Fright Nights il biglietto alla cassa costa 66 sterline. Gli studenti hanno uno sconto se prenotano in anticipo.

@@ -192,6 +192,9 @@ desde las 16 h por 33 €, salvo en Nochevieja, cuando el parque cierra a las
 11 a 18 h de lunes a viernes y de 10 a 19 h los fines de semana. Las montañas
 rusas al aire libre funcionan mientras el tiempo lo permita.
 
+> [!PARKY] Date el gusto
+> Del 21 de diciembre al 3 de enero sacamos en Efteling la entrada de tarde por 33 €: de las 16 h al cierre a las 20 h son cuatro horas, y en diciembre a las cuatro y media ya es de noche. A Droomvlucht, Symbolica y Danse Macabre el tiempo les da igual, y a mí, bajo el paraguas, también. Solo en Nochevieja no hay entrada de tarde, porque el parque cierra a las 18 h.
+
 La noche del 31 de diciembre Efteling celebra Oud & Nieuw de 19 a 1 h, con
 fuegos artificiales. Las entradas de 62 € están agotadas, también las que llevan
 descuento para abonados, y para esa noche ya no quedan alojamientos

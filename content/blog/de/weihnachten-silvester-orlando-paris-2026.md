@@ -278,7 +278,7 @@ Carollers, einem Weihnachtschor. Mit Kindern, die
 ich die Disney Adventure World nicht nur für einen halben Tag einplanen.
 
 > [!PARKY]
-> Zwischen den Jahren bekommt die Disney Adventure World bei uns einen ganzen Tag: Ende 2025 war diese Woche dort ruhiger als jeder andere Monat des Jahres, und Arendelle feiert jetzt sein erstes Weihnachtsfest. Die Adventskränze will ich mit eigenen Augen sehen, und groß genug dafür sind sie ja. Welcher Park auf welchen Reisetag kommt, legen wir im [Reiseplaner](/paris#planner) fest.
+> Zwischen den Jahren bekommt die Disney Adventure World bei uns einen ganzen Tag: Ende 2025 war diese Woche dort ruhiger als jeder andere Monat des Jahres, und Arendelle feiert jetzt sein erstes Weihnachtsfest. Die Adventskränze will ich mit eigenen Augen sehen, und die sind dafür ja groß genug. Welcher Park auf welchen Reisetag kommt, legen wir im [Reiseplaner](/paris#planner) fest.
 
 Die Parade ist im Parkticket enthalten. Einen reservierten Platz dafür verkauft
 Disney separat, solange der Vorrat reicht.

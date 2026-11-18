@@ -557,6 +557,9 @@ Pour le pass lui-même :
   sur un coup de tête marche donc moins bien avec un pass qu’avec un billet
   journée.
 
+> [!PARKY] Plutôt Gold
+> Si on y va en voiture plus de deux fois en 2027, on prend Gold plutôt que Silber : Gold coûte 20 € de plus, mais la carte de stationnement de Silber coûte déjà 25 € à elle seule, et sans elle, c’est 9 € par visite. En plus, Gold donne droit à trois entrées gratuites à Bobbejaanland, c’est le genre de calcul que j’aime. Et Gold n’a aucun jour d’exclusion.
+
 **Accès.** L’adresse est **Warner-Allee 1, 46244 Bottrop**. En voiture par l’A31,
 et là par la sortie 39 Bottrop-Feldhausen, même si le GPS en propose une autre. Le
 parc le recommande expressément, ensuite tout est fléché. Depuis Essen, comptez une vingtaine

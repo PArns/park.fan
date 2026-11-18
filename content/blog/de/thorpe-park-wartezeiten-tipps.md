@@ -223,6 +223,9 @@ Alle Achterbahnen laufen abends weiter, und der Park wirbt mit Hyperia und SAW b
 
 Im Oktober und in der Übergangszeit bleiben bei Wind, Kälte oder starkem Regen einzelne Bahnen stehen. Die Grenzen des Parks stehen auf seiner Seite zur Return Guarantee: Hyperia läuft bis 47 mph Wind, Nemesis Inferno und SAW bis 40 mph, Colossus und The Swarm bis 35 mph, Stealth nur bis 31 mph, Zodiac bis 25 und Vortex bis 23 mph. Gemessen wird in der Höhe, es kann sich am Boden also windstiller anfühlen. Die Achterbahnen laufen ab 5 Grad Celsius, bei starkem Regen bleiben Nemesis Inferno und SAW stehen. Die Return Guarantee gibt es nur an einzelnen Tagen, rückwirkend, wenn der Park mindestens eine Stunde lang von Ausfällen betroffen war. 2026 waren das der 4. April, der 25. Mai und der 13. August, einlösbar bis zum 30. September 2026.
 
+> [!PARKY]
+> Ist für den Nachmittag starker Regen angesagt, fahren wir Nemesis Inferno und SAW gleich nach der Öffnung, denn genau diese beiden bleiben dann stehen. Wenn es schüttet, fahren wir The Walking Dead drinnen in der Halle, nach Hause gehe ich wegen Regen nämlich nicht. Den Rest des Tages legen wir im [Tagesplaner](/trip-planner) Bahn für Bahn zurecht.
+
 ## Tickets, Pässe und Preise
 
 Der Park wirbt für seine Tagestickets mit „ab 32 Pfund“ bei Buchung im Voraus. Die Preise hängen vom Datum ab. Während der Fright Nights kostet das Ticket an der Tageskasse 66 Pfund. Studierende bekommen bei Vorausbuchung einen Rabatt.

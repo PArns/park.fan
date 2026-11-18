@@ -387,6 +387,9 @@ raadt eigen handdoeken aan. Betaald wordt met de **RulaBand**, een
 transponderarmband die ook toegangskaart en kluissleutel is. Uitgaven worden op
 de band geboekt en bij het verlaten betaald. Wifi is gratis. De **ResortPass Gold** van het Europa-Park bevat twee Rulantica-dagtickets.
 
+> [!PARKY] De moeite waard
+> Slapen we toch al in een van de hotels van het Erlebnis-Resort, dan kopen we het Best-Preis-Ticket voor 28 tot 48 euro in plaats van het dagticket voor 38 tot 54. Als hotelgasten zijn we om 9:00 uur binnen, een half uur voor alle anderen, en in de valcabine stap ik met mijn ogen dicht, hoogtevrees of niet. Het kluisje zit er vanaf twaalf jaar ook al bij.
+
 Op zijn pagina noemt het park de Parkscout plus Award 2020 tot 2025 (“Europas
 bester Wasserpark”) en de EWA Professional Award 2025 voor innovatieve
 aanbodvormgeving. Snorri Snorkling VR kreeg in 2022 de Golden Wave Award van het

@@ -291,6 +291,9 @@ Stel dat je op een zaterdag in de zomer bij de opening aan de ingang staat en ge
 
 Voor een avond Holiday Lights in het weekend zou ik om 15.00 uur komen, eerst de Jack Rabbit nemen zolang het nog licht is en dan naar de vroege voorstelling van Finding Christmas gaan. Nadat de boom is aangegaan, past tussen twee rondes Holiday Reflections bij de Lagoon nog A Broadway Christmas.
 
+> [!PARKY]
+> Op een gewone vrijdag lukt deze avond niet: dan gaat Holiday Lights pas om 17.00 uur open, en Finding Christmas om 16.30 uur is er dan niet. Door de week kiezen we daarom een dag vanaf 19 december en nemen we de Jack Rabbit zolang het nog licht is, bij de double dip kom ik meteen twee keer los. Vanaf dan is het park elke dag van 15.00 tot 21.00 uur open, alleen op 24 en 25 december niet.
+
 Tassen mogen mee het park in tot 38 × 38 × 38 centimeter (15 inch per kant), en daarnaast luiertassen en medische tassen. Eigen eten en drinken mag niet, behalve een dichte fles water en eten voor een speciaal dieet. Bij de ingang wordt gecontroleerd op wapens. Contant betalen kan niet, alleen met een kaart, Apple Pay of Google Pay. Bij gratis automaten wissel je contant geld om voor een kaart.
 
 ## Tickets

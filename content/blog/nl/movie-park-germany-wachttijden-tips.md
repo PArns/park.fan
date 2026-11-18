@@ -536,6 +536,9 @@ Voor de pas zelf geldt:
   volgende boeking kan pas de dag na je bezoek. Spontaan gaan werkt met een pas
   dus slechter dan met een dagticket.
 
+> [!PARKY] Gold wint
+> Rijden we in 2027 vaker dan twee keer met de auto naartoe, dan nemen we Gold in plaats van Silber: Gold kost € 20 meer, de parkeerkaart voor Silber alleen al € 25, en zonder die kaart betaal je € 9 per bezoek. Bij Gold krijgen we er ook nog drie keer gratis entree in Bobbejaanland bij, zo reken ik graag. Gesloten dagen heeft Gold bovendien niet.
+
 **Route.** Het adres is **Warner-Allee 1, 46244 Bottrop**. Met de auto via de
 A31, en daar via afrit 39 Bottrop-Feldhausen, ook als je navigatie een andere
 voorstelt. Dat raadt het park uitdrukkelijk aan, daarna is alles bewegwijzerd. Vanuit Essen is het zo’n

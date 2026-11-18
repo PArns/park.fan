@@ -367,6 +367,9 @@ met vakantie van 17 juli tot 31 augustus. De weken waarin ze allebei vrij zijn, 
 augustus, kun je in Soltau beter mijden. Vanaf 1 september hebben alleen Beieren en Baden-Württemberg
 nog vakantie, en dat waren in 2026 de rustigste weken van de zomer.
 
+> [!PARKY] Op naar Soltau
+> Vanuit Nedersaksen gaan we in 2027 tussen 8 en 16 juli naar Heide Park, voordat op 17 juli de vakantie in NRW begint. Maandag 12 juli zet ik alvast met potlood in de agenda, want de parken hebben hun openingsdagen voor 2027 nog niet gepubliceerd. Maandag was in 2026 in Heide Park de rustigste vakantiewerkdag, 21 procent onder de andere vier.
+
 Rijnland-Palts heeft van 26 juni tot 8 augustus vrij, de overlap met NRW loopt dus van 17 juli tot
 8 augustus. Dat is ruim drie weken, net als in 2026, en volgens onze meting de periode waarin
 Plopsaland vol is. Hessen, Rijnland-Palts en Saarland beginnen eind juni,

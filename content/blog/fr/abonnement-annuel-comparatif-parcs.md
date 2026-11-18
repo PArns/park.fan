@@ -216,6 +216,9 @@ mois restant.
 
 Si tu achètes l’abonnement un jour de visite en payant à l’année, le parc rembourse l’entrée de ce jour. La liste des partenaires de mars 2026 compte entre autres Walibi Holland à 20 % sauf pendant les Halloween Fright Nights, Attractiepark Hellendoorn à 35 %, les parcs Plopsa à 40 % pour les visiteurs dès 1 m, Bobbejaanland à 20 % et Freizeit-Land Geiselwind à 40 %.
 
+> [!PARKY] Achat sur place
+> Pour le Magic Member, on prend un billet journée normal pour la première visite et on ne décide qu’une fois dans le parc : si on paie l’abonnement pour toute l’année le jour même, le Toverland rembourse l’entrée de ce jour. La première journée devient alors un essai gratuit, si on se lance. Acheté au guichet, l’abonnement court ensuite un an à partir de ce jour.
+
 ### Les conditions
 
 La page des tarifs ne mentionne aucun jour bloqué. Les conditions d’abonnement, version du 21 mars 2024,

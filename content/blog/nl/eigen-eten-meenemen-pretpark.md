@@ -200,6 +200,9 @@ Het parkreglement ligt bij de ingang en staat als download op de website.
 
 Drankjes krijg je in herbruikbare bekers met € 1,50 statiegeld. Bekers, flessen en blikjes lever je in bij statiegeldautomaten, die op vier plekken in het park staan.
 
+> [!PARKY]
+> In Toverland nemen we het middageten mee in een bakje en warmen het op in een van de twee gratis magnetrons, bij de Waldstube of bij Katara Plaza. Warm en tussen twee achtbanen door smaakt me dat bijna net zo goed als een churro. Tot de middag ligt het bakje in een kluisje bij Port Laguna of in Land van Toos, dat voor € 2 zo vaak open kan als je wilt.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) staat eigen eten en drinken uitdrukkelijk toe en wijst in het park picknickplaatsen

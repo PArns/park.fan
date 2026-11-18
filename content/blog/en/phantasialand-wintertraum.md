@@ -175,6 +175,9 @@ We measured last year's Wintertraum from 26 December 2025 to 25 January 2026. Du
 
 This winter the North Rhine-Westphalia Christmas holidays run from 23 December 2026 to 6 January 2027, and I'd plan the days between Christmas and New Year like a day in August. Those January weekdays are when I'd go, and on many of them the park charges €29, the lowest price in the calendar.
 
+> [!PARKY] That's our day
+> After the holidays we go on a Thursday or Friday in January, because from Monday to Wednesday one of the theatre shows has its day off. Last January there wasn't much going on during the week, so at least we don't freeze in the queue for long. And on those days the ticket calendar often asks just €29.
+
 On the opening weekend the park was busy on Saturday, 14 November, and almost empty on the drizzly Sunday. That's only one Sunday, but with the Wuze Town hall and the theatres I wouldn't call off a drizzly day. I expect Totensonntag on 22 November to be busy, because it falls on the second Wintertraum weekend and all seven shows are squeezed into two evening hours.
 
 ```best-days-widget slug=phantasialand

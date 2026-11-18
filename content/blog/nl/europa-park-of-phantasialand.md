@@ -179,6 +179,9 @@ Tien van de overdekte attracties in [Europa-Park](ref:europa-park?bare) zijn sta
 
 Tijdens Winterzauber heeft Europa-Park een kerstmarkt in het Historischer Schlosspark Balthasar, een ijsbaan, het reuzenrad Bellevue en een skischool voor kinderen met snowtubes. Voor de winter kondigt het park tot 23 uur showprogramma per dag aan, waaronder een kerstcircus. Vanaf november verkoopt het een avondticket dat vanaf 16 uur toegang geeft. Volwassenen betalen tot 22 december 41,50 € en daarna 47 €, kinderen 35 tot 40 €, en aan de kassa komt er niets bij. Op 10 januari is het park alleen nog open voor hotelgasten en genodigden.
 
+> [!PARKY] De avond loont
+> Tijdens Winterzauber nemen we het avondticket vanaf 16 uur, tot 22 december voor 41,50 €, en aan de kassa kost het niets meer. Het park is in de winter open tot minstens 19 uur, dus hebben we drie uur voor de kerstmarkt, het reuzenrad Bellevue en de ijsbaan, waar ik eerder rol dan glij. Een hele dag kost volwassenen online 67 tot 76 €, aan de kassa 10 € meer.
+
 Fjord-Rafting en de Tiroler Wildwasserbahn rijden in Europa-Park alleen tot het einde van het halloweenseizoen op 1 november, Atlantica SuperSplash tot het einde van HALLOWinter op 27 november. Poseidon staat in alle vier de seizoenen op het programma.
 
 ![Een verlichte zweefmolen draait, links een lichtboom. | Wintertraum, het winterseizoen van Phantasialand. | left](/media/phantasialand/background-4x3.jpg)

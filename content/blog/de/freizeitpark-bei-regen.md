@@ -232,6 +232,9 @@ der Tittle Tattle Tree haben keine Mindestgröße, wer unter 100 beziehungsweise
 110 Zentimetern ist, fährt dort mit einem Erwachsenen. Für sie gibt es in Berlin außerdem das
 Pferdekarussell, Die 3 Mausketiere und das Verrückte Hotel Tartüff.
 
+> [!PARKY]
+> Regnet es in Brühl, gehen wir zuerst nach Wuze Town: Winja's Fear, Winja's Force und Crazy Bats fahren dort in derselben Halle, drei Achterbahnen, ohne dass ein Tropfen auf uns fällt. Danach bringt uns Mystery Castle im Inneren seines Turms 65 Meter nach oben, und gegen den Regen hilft das Dach, gegen die Höhe leider nicht. Taron und Black Mamba heben wir uns für die Pausen zwischen den Schauern auf.
+
 ![Ein riesiger Tontopf mit offenem Deckel, daran lehnt eine Leiter | In der Halle von Winja's Fear & Force in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba und die anderen großen Achterbahnen fahren im Freien.

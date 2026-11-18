@@ -324,6 +324,9 @@ Warteschlangen ohnehin kurz.
 Wer sich den Pass sparen will, fährt Batman gegen 16 Uhr, wenn die Warteschlange
 ein paar Minuten kürzer ist als sonst.
 
+> [!PARKY] One-Pass reicht
+> Für Batman nehmen wir den One-Pass für 8 €, nicht Gold ab 45,90 €. Mehr als diese eine schnelle Fahrt brauchen wir nicht, an Superman, Venganza del Enigma und Coaster Express ist die Warteschlange so kurz, dass ich gar nicht erst zum Grummeln komme. Die 37,90 € Unterschied reichen für zwei Express-Menüs zu je 12,90 €.
+
 ## Wann du hinfahren solltest
 
 ```stats-widget slug=parque-warner-madrid show=months,weekdays

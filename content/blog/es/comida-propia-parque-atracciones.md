@@ -200,6 +200,9 @@ El reglamento del parque está a la vista en la entrada y se puede descargar en 
 
 Las bebidas se sirven en vasos reutilizables con 1,50 € de depósito. Vasos, botellas y latas se devuelven en máquinas de depósito, que hay en cuatro puntos del parque.
 
+> [!PARKY]
+> En Toverland llevamos la comida en un táper y la calentamos en uno de los dos microondas gratuitos, en la Waldstube o en Katara Plaza. Caliente y entre dos montañas rusas, me sabe casi tan bien como un churro. Hasta mediodía el táper espera en una taquilla de Port Laguna o de Land van Toos, que cuesta 2 € y se abre las veces que quieras.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) permite expresamente la comida y la bebida propias y señala zonas de picnic en el

@@ -323,6 +323,9 @@ de rijen toch al kort.
 Wie de pas wil overslaan, rijdt Batman rond 16 uur, als de rij een paar minuten
 korter is dan anders.
 
+> [!PARKY] One-Pass is genoeg
+> Voor Batman nemen we de One-Pass voor € 8, niet Gold vanaf € 45,90. Meer dan die ene snelle rit hebben we niet nodig: bij Superman, Venganza del Enigma en Coaster Express is de rij zo kort dat ik niet eens aan mopperen toekom. Van het verschil van € 37,90 betalen we twee Express-menu’s van € 12,90.
+
 ## Wanneer je moet gaan
 
 ```stats-widget slug=parque-warner-madrid show=months,weekdays

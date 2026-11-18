@@ -546,6 +546,9 @@ Per l’abbonamento stesso:
   d’impulso funziona quindi peggio con l’abbonamento che con il biglietto
   giornaliero.
 
+> [!PARKY] Meglio Gold
+> Se nel 2027 andiamo in macchina più di due volte, prendiamo Gold invece di Silber: Gold costa 20 € in più, ma la tessera per il parcheggio di Silber da sola costa 25 €, e senza tessera sono 9 € a visita. In più Gold dà tre ingressi gratuiti a Bobbejaanland, conti così mi piacciono. E Gold non ha giorni di blocco.
+
 **Come arrivare.** L’indirizzo è **Warner-Allee 1, 46244 Bottrop**. In auto per
 la A31, e lì all’uscita 39 Bottrop-Feldhausen, anche se il navigatore ne propone
 un’altra. Il parco lo raccomanda espressamente, e da lì è tutto segnalato. Da Essen sono una ventina di

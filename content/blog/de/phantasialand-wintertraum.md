@@ -181,6 +181,9 @@ Gemessen haben wir den letzten Wintertraum vom 26. Dezember 2025 bis zum 25. Jan
 
 Die NRW-Weihnachtsferien laufen in diesem Winter vom 23. Dezember 2026 bis zum 6. Januar 2027, und die Tage zwischen den Jahren würde ich wie einen Augusttag planen. Für die Tage von Montag bis Freitag nach den Ferien verlangt der Park oft nur 29 €, den niedrigsten Preis im Kalender.
 
+> [!PARKY] Da fahren wir hin
+> Nach den Ferien nehmen wir einen Donnerstag oder Freitag im Januar, denn montags bis mittwochs hat jeweils eine der Theatershows Ruhetag. Im letzten Januar war unter der Woche wenig los, da frieren wir in der Warteschlange wenigstens nicht lange. Und der Ticket-Kalender verlangt an diesen Tagen oft nur 29 €.
+
 Am Eröffnungswochenende war am Samstag, dem 14. November, viel los und am Sonntag bei Nieselregen sehr wenig. Das war nur ein Sonntag, aber bei solchem Wetter fahren die Winja’s in der Halle und die drei Theatershows laufen unter Dach, deshalb würde ich so einen Tag nicht absagen. Den Totensonntag am 22. November halte ich für einen vollen Tag, weil er am zweiten Wintertraum-Wochenende liegt und alle sieben Shows dann in zwei Abendstunden laufen.
 
 ```best-days-widget slug=phantasialand

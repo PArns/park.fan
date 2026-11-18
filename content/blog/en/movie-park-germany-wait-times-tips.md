@@ -533,6 +533,9 @@ For the pass itself:
   the next booking is only possible the day after your visit. So going on a whim
   works worse with a pass than with a day ticket.
 
+> [!PARKY] Gold over Silver
+> If we’re driving there more than twice in 2027, we get Gold rather than Silver: Gold costs €20 more, but the parking season ticket for Silver costs €25 on its own, and without it you pay €9 a visit. On top of that, Gold comes with three free entries at Bobbejaanland, which is my kind of maths. And Gold has no blackout dates.
+
 **Getting there.** The address is **Warner-Allee 1, 46244 Bottrop**. By car via
 the A31, and there via exit 39 Bottrop-Feldhausen, even if your satnav suggests
 another one. The park recommends that explicitly, and after it everything is

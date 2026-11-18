@@ -366,6 +366,9 @@ July to 31 August. The weeks with both together, 17 July to 18 August, are the o
 Soltau. From 1 September only Bavaria and Baden-Württemberg still have holidays, and in 2026
 those were the quietest weeks of the summer.
 
+> [!PARKY] Soltau it is
+> From Lower Saxony we go to Heide Park between 8 and 16 July 2027, before the NRW holidays start on the 17th. I'm pencilling in Monday 12 July already, since the parks haven't published their 2027 opening days yet. In 2026 Monday was the quietest holiday weekday at Heide Park, 21% below the other four.
+
 Rhineland-Palatinate is off from 26 June to 8 August, so the overlap with NRW runs from 17 July to
 8 August. That's a good three weeks, as in 2026, and by our measurement the time when Plopsaland
 is full. Hesse, Rhineland-Palatinate and Saarland break up at the end of

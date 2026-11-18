@@ -175,6 +175,9 @@ De vorige Wintertraum hebben we gemeten van 26 december 2025 tot 25 januari 2026
 
 De kerstvakantie in NRW loopt deze winter van 23 december 2026 tot en met 6 januari 2027, en de dagen tussen kerst en oud en nieuw zou ik plannen als een dag in augustus. Voor de dagen van maandag tot en met vrijdag na de vakantie vraagt het park vaak maar 29 €, de laagste prijs in de kalender.
 
+> [!PARKY] Daar gaan we heen
+> Na de vakantie nemen we een donderdag of vrijdag in januari, want van maandag tot en met woensdag heeft telkens een van de theatershows zijn rustdag. Afgelopen januari was het door de week niet druk, dus bevriezen we in de rij tenminste niet lang. En de ticketkalender vraagt op die dagen vaak maar 29 €.
+
 Op het openingsweekend was het op zaterdag 14 november druk en op zondag, met motregen, heel rustig. Dat was maar één zondag, maar met zulk weer rijden de Winja’s in de hal en spelen de drie theatershows onder een dak, dus zo'n dag zou ik niet afzeggen. Totensonntag op 22 november verwacht ik vol, omdat hij in het tweede Wintertraum-weekend valt en alle zeven shows dan in twee avonduren spelen.
 
 ```best-days-widget slug=phantasialand

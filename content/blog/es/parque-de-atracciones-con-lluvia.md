@@ -236,6 +236,9 @@ sube con un adulto. En
 Berlin tienen además el carrusel de caballos, Die 3 Mausketiere y el Verrückte
 Hotel Tartüff.
 
+> [!PARKY]
+> Si llueve en Brühl, vamos primero a Wuze Town: Winja's Fear, Winja's Force y Crazy Bats circulan en la misma nave, tres montañas rusas sin que nos caiga una gota. Después Mystery Castle nos sube 65 metros dentro de su torreón, y el techo nos libra de la lluvia, de la altura por desgracia no. Taron y Black Mamba los dejamos para los ratos sin lluvia.
+
 ![Una vasija de barro gigante con la tapa abierta y una escalera apoyada. | Dentro de la nave de Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba y las demás montañas rusas grandes van al aire libre.

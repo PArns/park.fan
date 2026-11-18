@@ -379,6 +379,9 @@ recommends bringing your own. You pay with the **RulaBand**, a transponder
 wristband that is also your entry card and locker key. Purchases are charged to
 the band and paid when you leave. Wi-Fi is free. Europa-Park's **ResortPass Gold** includes two Rulantica day tickets.
 
+> [!PARKY] Worth it
+> If we're sleeping at one of the Experience hotels anyway, we buy the Best Price ticket for €28 to €48 instead of the day ticket at €38 to €54. As hotel guests we're in at 9:00 a.m., half an hour before everyone else, and I step into the drop capsule with my eyes shut, fear of heights or not. The locker is already included from age twelve, too.
+
 On its site the park lists the Parkscout plus Award 2020 to 2025 ("Europe's best
 water park") and the EWA Professional Award 2025 for innovative offer design.
 Snorri Snorkling VR won the 2022 Golden Wave Award from the trade magazine

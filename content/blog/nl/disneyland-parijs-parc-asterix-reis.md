@@ -110,6 +110,9 @@ Filotomatix, de pass van Parc Astérix, geldt voor één persoon en één dag, e
 
 Op een doordeweekse dag buiten de Franse schoolvakanties zou ik het geld voor allebei houden en het doen met de volgorde uit onze gidsen over [Disneyland Paris](/blog/disneyland-paris-wachttijden-tips) en [Parc Astérix](/blog/parc-asterix-wachttijden-tips). Onze [vergelijking van de fast passes](/blog/fast-pass-pretparken-vergelijking) zet Premier Access en Filotomatix naast de passes van de andere grote parken in Europa.
 
+> [!PARKY] Wekker zetten
+> Bij Filotomatix zit Toutatis alleen in Illimité, maar gasten van de parkhotels mogen er met Early Entry al 30 minuten voor de officiële opening in. Blijven we twee dagen, dan gaan we de tweede ochtend daar als eerste heen, het ontbijt uit het hotelpakket kan wel even wachten. Op dagen met nocturnes van Peur sur le Parc en op speciale dagen vervalt de vroege toegang, en het weer moet ook meewerken.
+
 ## ’s Avonds: avondshows en Disney Village
 
 Beide Disney-parken hebben elke avond een avondshow. In Disneyland Park draait Disney Tales of Magic bij het kasteel, met drones, projecties, fonteinen en vuurwerk. In Disney Adventure World brengt Disney Cascade of Lights sinds 29 maart 2026 meer dan 380 drones de lucht in boven het nieuwe meer en op het water. Voor beide shows verkoopt Disney gereserveerde plaatsen tegen bijbetaling, maar kijken kan ook zonder.
@@ -187,6 +190,9 @@ Omdat de zones in februari en april telkens een week uit elkaar liggen, heeft in
 ### Feestdagen en brugdagen
 
 In mei 2027 vallen 1 en 8 mei op een zaterdag, dus de enige brugdag is die na Hemelvaart. Hemelvaartsdag is donderdag 6 mei, en de vrijdag erna zijn de scholen in heel Frankrijk vrij. Pinkstermaandag valt op 17 mei.
+
+> [!PARKY]
+> Voor een reis langs alle drie de parken buiten de Franse schoolvakanties kiezen we in 2027 mei of juni: van 3 april tot 2 mei heeft altijd wel een zone vrij, vanaf 3 juli allemaal, en in februari slaapt Parc Astérix nog. We mijden alleen Hemelvaartsdag op 6 mei met de vrije vrijdag erna en Pinkstermaandag op 17 mei. Met die data verdeelt de [reisplanner](/paris#planner) de drie parken over de dagen.
 
 ### Evenementen bij Disney
 

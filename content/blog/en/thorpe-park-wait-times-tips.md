@@ -222,6 +222,9 @@ All coasters keep running in the evening, and the park advertises Hyperia and SA
 
 In October and the shoulder season, some rides stay shut in wind, cold or heavy rain. The park's limits are on its Return Guarantee page: Hyperia runs in winds up to 47 mph, Nemesis Inferno and SAW up to 40 mph, Colossus and The Swarm up to 35 mph, Stealth only up to 31 mph, Zodiac up to 25 and Vortex up to 23 mph. Wind is measured at height, so it can feel calmer on the ground. The coasters run from 5 degrees Celsius, and in heavy rain Nemesis Inferno and SAW stay shut. The Return Guarantee applies on selected days only, retroactively, when the park was hit by closures for at least an hour. In 2026 those were 4 April, 25 May and 13 August, redeemable until 30 September 2026.
 
+> [!PARKY]
+> If heavy rain is forecast for the afternoon, we ride Nemesis Inferno and SAW right after opening, because those are exactly the two that stop. When it pours, we ride The Walking Dead inside its pyramid hall, because I'm not going home over a bit of rain. The rest of the day we lay out ride by ride in the [day planner](/trip-planner).
+
 ## Tickets, passes and prices
 
 The park advertises its day tickets as "from £32" when booked in advance. Prices depend on the date. During Fright Nights a ticket at the gate costs £66. Students get a discount when they book in advance.

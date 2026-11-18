@@ -200,6 +200,9 @@ Das Parkreglement liegt am Eingang aus und steht auf der Website als Download.
 
 Getränke bekommst du in Mehrwegbechern mit 1,50 € Pfand. Becher, Flaschen und Dosen gibst du an Pfandautomaten zurück, die an vier Stellen im Park stehen.
 
+> [!PARKY]
+> Im Toverland nehmen wir das Mittagessen in einer Dose mit und wärmen es in einer der beiden kostenlosen Mikrowellen auf, an der Waldstube oder an der Katara Plaza. Warm und zwischen zwei Achterbahnen schmeckt mir das fast so gut wie ein Churro. Bis mittags liegt die Dose im Schließfach in Port Laguna oder im Land van Toos, das für 2 € beliebig oft aufgeht.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) erlaubt eigenes Essen und Trinken ausdrücklich und weist im Park Picknickplätze aus.

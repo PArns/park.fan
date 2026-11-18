@@ -214,6 +214,9 @@ Jahreskarte hat. Wächst das Kind aus der Größenklasse, wird für jeden Restmo
 
 Kaufst du die Karte an einem Besuchstag und zahlst für das ganze Jahr, erstattet der Park den Eintritt dieses Tages. Auf der Partnerliste vom März 2026 stehen unter anderem Walibi Holland mit 20 % außer an den Halloween Fright Nights, der Attractiepark Hellendoorn mit 35 %, die Plopsa-Parks mit 40 % für Besucher ab 1 m, das Bobbejaanland mit 20 % und das Freizeit-Land Geiselwind mit 40 %.
 
+> [!PARKY] Im Park kaufen
+> Beim Magic Member nehmen wir für den ersten Besuch ein normales Tagesticket und entscheiden erst im Park: Zahlen wir die Karte noch am selben Tag fürs ganze Jahr, erstattet das Toverland den Eintritt. So ist der erste Tag eine Probefahrt, die nichts kostet, wenn wir zuschlagen. Am Schalter gekauft, gilt die Karte dann ein Jahr ab diesem Tag.
+
 ### Die Bedingungen
 
 Die Preisseite nennt keine Sperrtage. In den Abonnementbedingungen, Fassung vom 21. März 2024, steht: Die

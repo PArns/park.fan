@@ -239,6 +239,9 @@ Wildfire at Kolmården is Sweden's fastest and tallest roller coaster. Helix at 
 - Colossos, Heide Park: at least 1.40 m
 - Expedition GeForce, Plopsaland Deutschland: at least 1.40 m
 
+> [!PARKY]
+> At 1.20 m the record hunt begins: from then on a child can ride Wodan with an adult, Europe's number three wooden coaster for speed and height. At 1.30 m and age eight, Voltron Nevera joins the list, the coaster with the most inversions in Germany, and the pencil marks on the doorframe get checked a lot more often. From 1.40 m, three of Europe's four fastest coasters are waiting in Salou.
+
 ## Frequently asked questions
 
 ### What is the fastest roller coaster in Europe?

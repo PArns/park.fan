@@ -174,6 +174,9 @@ Nous avons mesuré le dernier Wintertraum du 26 décembre 2025 au 25 janvier 202
 
 Cet hiver, les vacances de Noël en NRW vont du 23 décembre 2026 au 6 janvier 2027, et je préparerais les jours entre Noël et le Nouvel An comme une journée d’août. Pour les jours du lundi au vendredi après les vacances, le parc ne demande souvent que 29 €, le prix le plus bas du calendrier.
 
+> [!PARKY] C’est notre jour
+> Après les vacances, on prend un jeudi ou un vendredi de janvier, parce que du lundi au mercredi, l’un des spectacles en salle fait relâche. En janvier dernier, il y avait peu de monde en semaine, alors au moins, on ne gèle pas longtemps dans la file. Et ces jours-là, le calendrier des billets ne demande souvent que 29 €.
+
 Le week-end d’ouverture, il y avait beaucoup de monde le samedi 14 novembre et très peu le dimanche, sous la bruine. Un seul dimanche ne prouve pas grand-chose. Mais par ce temps, les Winja’s tournent dans la halle et les trois spectacles en salle se jouent à l’abri, donc je n’annulerais pas une telle journée. Le Totensonntag du 22 novembre, je m’attends à du monde, parce qu’il tombe le deuxième week-end du Wintertraum et que les sept spectacles se serrent alors dans deux heures de soirée.
 
 ```best-days-widget slug=phantasialand

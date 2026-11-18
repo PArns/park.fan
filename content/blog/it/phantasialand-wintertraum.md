@@ -174,6 +174,9 @@ L’ultimo Wintertraum l’abbiamo misurato dal 26 dicembre 2025 al 25 gennaio 2
 
 Quest’inverno le vacanze di Natale della Renania Settentrionale-Vestfalia vanno dal 23 dicembre 2026 al 6 gennaio 2027, e i giorni fra Natale e Capodanno li organizzerei come una giornata d’agosto. Per i giorni dal lunedì al venerdì dopo le vacanze il parco chiede spesso solo 29 €, il prezzo più basso del calendario.
 
+> [!PARKY] È il nostro giorno
+> Dopo le vacanze scegliamo un giovedì o un venerdì di gennaio, perché dal lunedì al mercoledì uno degli spettacoli in teatro ha il suo giorno di riposo. Lo scorso gennaio in settimana c’era poca gente, così almeno in coda non ci congeliamo a lungo. E per quei giorni il calendario dei biglietti chiede spesso solo 29 €.
+
 Nel fine settimana d’apertura sabato 14 novembre c’era molta gente, la domenica, sotto una pioggerellina, pochissima. È una domenica sola, ma con un tempo così le Winja’s girano al coperto e i tre spettacoli in teatro hanno un tetto sopra, perciò un giorno del genere non lo annullerei. Il Totensonntag del 22 novembre invece me lo aspetto pieno: cade nel secondo fine settimana del Wintertraum, e tutti e sette gli spettacoli si concentrano in due ore di sera.
 
 ```best-days-widget slug=phantasialand

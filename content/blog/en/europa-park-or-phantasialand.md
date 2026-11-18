@@ -178,6 +178,9 @@ Ten of the covered attractions at [Europa-Park](ref:europa-park?bare) are statio
 
 During Winterzauber, Europa-Park has a Christmas market in the Historischer Schlosspark Balthasar, an ice rink, the Bellevue Ferris wheel and a children’s ski school with snow tubes. The park promises up to 23 hours of shows a day over the winter, a Christmas circus among them. From November it sells an evening ticket for entry from 4 pm. Adults pay €41.50 until 22 December and €47 after that, children €35 to €40, and there's no extra charge at the gate. On 10 January the park opens only to hotel guests and invited guests.
 
+> [!PARKY] Evenings pay off
+> During Winterzauber we take the evening ticket from 4 pm, €41.50 until 22 December, and it costs no more at the gate. The park’s open until at least 7 pm in winter, which leaves us three hours for the Christmas market, the Bellevue wheel and the ice rink, where I roll more than I glide. A whole day costs adults €67 to €76 online and €10 more at the gate.
+
 At Europa-Park, Fjord-Rafting and the Tiroler Wildwasserbahn run only until the end of the Halloween season on 1 November, and Atlantica SuperSplash until HALLOWinter ends on 27 November. Poseidon is on the schedule in all four seasons.
 
 ![A lit swing carousel turning, a light tree at the left. | Wintertraum, Phantasialand’s winter season. | left](/media/phantasialand/background-4x3.jpg)

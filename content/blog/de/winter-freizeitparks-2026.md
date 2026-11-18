@@ -187,6 +187,9 @@ Vom 1. bis 3. Januar ist von 10 bis 20 Uhr geöffnet, danach bis zum 31. Januar
 von Montag bis Freitag von 11 bis 18 Uhr und am Wochenende von 10 bis 19 Uhr.
 Die Achterbahnen im Freien fahren, solange das Wetter es zulässt.
 
+> [!PARKY] Gönn dir
+> Vom 21. Dezember bis zum 3. Januar nehmen wir im Efteling das Abendticket für 33 €: Ab 16 Uhr bleiben bis 20 Uhr vier Stunden, und im Dezember ist es ab halb fünf dunkel. Droomvlucht, Symbolica und Danse Macabre ist das Wetter egal, mir unter meinem Regenschirm übrigens auch. Nur an Silvester gibt es das Ticket nicht, da schließt der Park schon um 18 Uhr.
+
 Am Abend des 31. Dezember feiert das Efteling von 19 bis 1 Uhr Oud & Nieuw, mit
 Feuerwerk. Die Karten zu 62 € sind ausverkauft, auch die ermäßigten für
 Abo-Inhaber, und Unterkünfte gibt es für diese Nacht keine mehr

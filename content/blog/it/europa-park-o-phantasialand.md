@@ -179,6 +179,9 @@ Delle attrazioni al coperto dell’[Europa-Park](ref:europa-park?bare), dieci so
 
 Durante il Winterzauber l’Europa-Park ha un mercatino di Natale nello Historischer Schlosspark Balthasar, una pista di pattinaggio, la ruota panoramica Bellevue e una scuola di sci per bambini con gli snow tube. Per l’inverno il parco annuncia fino a 23 ore di spettacoli al giorno, tra cui un circo di Natale. Da novembre vende un biglietto serale con ingresso dalle 16: per gli adulti costa 41,50 € fino al 22 dicembre e poi 47 €, per i bambini da 35 a 40 €, e alla cassa non costa di più. Il 10 gennaio il parco apre ormai solo agli ospiti degli hotel e agli invitati.
 
+> [!PARKY] La sera conviene
+> Durante il Winterzauber prendiamo il biglietto serale dalle 16, a 41,50 € fino al 22 dicembre, e alla cassa non costa di più. D’inverno il parco resta aperto almeno fino alle 19, quindi ci restano tre ore per il mercatino di Natale, la ruota panoramica Bellevue e la pista di pattinaggio, dove io più che scivolare rotolo. Una giornata intera costa a un adulto da 67 a 76 € online, alla cassa 10 € in più.
+
 All’Europa-Park il Fjord-Rafting e la Tiroler Wildwasserbahn funzionano solo fino alla fine della stagione di Halloween, il 1° novembre, l’Atlantica SuperSplash fino alla fine dell’HALLOWinter, il 27 novembre. Poseidon è in programma in tutte e quattro le stagioni.
 
 ![Una giostra a catenelle illuminata gira, a sinistra un albero di luci. | Wintertraum, la stagione invernale di Phantasialand. | left](/media/phantasialand/background-4x3.jpg)

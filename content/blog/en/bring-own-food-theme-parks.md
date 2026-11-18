@@ -197,6 +197,9 @@ The park regulations are available at the entrance and as a download on the webs
 
 Drinks come in reusable cups with a €1.50 deposit. You return cups, bottles and cans at deposit machines in four places in the park.
 
+> [!PARKY]
+> At Toverland we bring lunch in a box and heat it up in one of the two free microwaves, at the Waldstube or at Katara Plaza. Warm, and between two coasters, it tastes almost as good as a churro to me. Until lunchtime the box waits in a locker at Port Laguna or Land van Toos, which costs €2 and opens as often as you like.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) explicitly allows your own food and drink and marks picnic areas in the park. Under

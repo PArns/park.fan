@@ -384,6 +384,9 @@ vacances ensemble, du 17 juillet au 18 août, sont celles à éviter à Soltau. 
 1er septembre, seules la Bavière et le Bade-Wurtemberg sont encore en vacances, et en 2026,
 c’étaient les semaines les plus calmes de l’été.
 
+> [!PARKY] Cap sur Soltau
+> Depuis la Basse-Saxe, on va à Heide Park entre le 8 et le 16 juillet 2027, avant que les vacances de la NRW commencent le 17. Le lundi 12 juillet, je le note déjà au crayon, parce que les parcs n’ont pas encore publié leurs jours d’ouverture 2027. En 2026, le lundi était le jour ouvré de vacances le plus calme à Heide Park, 21 % sous la moyenne des quatre autres.
+
 La Rhénanie-Palatinat est en vacances du 26 juin au 8 août, et le chevauchement avec la NRW va donc
 du 17 juillet au 8 août. Cela fait un peu plus de trois semaines, comme en 2026, et d’après notre
 mesure, c’est la période où le Plopsaland est plein. La Hesse, la Rhénanie-Palatinat et la Sarre commencent fin juin, la Basse-Saxe le 8 juillet.

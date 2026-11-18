@@ -88,6 +88,9 @@ Het zomerseizoen 2027 begint op 20 maart, en tickets daarvoor zijn er vanaf 10 n
 
 Online kun je op de dag van je bezoek nog tot 14.00 uur een ticket kopen. Elke prijs heeft per dag een beperkt aantal tickets, en de prijzen kunnen elke dag omhooggaan. Doordeweekse dagen in Wintertraum, vanaf half november, kosten € 35 tot € 39. Tickets zijn er voorlopig tot 23 december.
 
+> [!PARKY]
+> Onze doordeweekse dag in Wintertraum boeken we zodra hij vaststaat: elke prijs heeft per dag een beperkt aantal tickets, en zijn die van € 35 op, dan kost dezelfde dag meer. Spontaan ben ik graag bij de churrokraam, bij tickets liever niet. Online kopen kan nog tot 14.00 uur op de dag zelf, maar dan betalen we wat de dag inmiddels kost.
+
 Op parkeerterrein P1 en P2 kun je niet reserveren. Vanaf station Brühl en vanaf Brühl Mitte rijdt een pendelbus naar het park. Een retour kost € 6, kinderen tot 1 m rijden gratis mee. Een kaartje van het regionale openbaar vervoer geldt niet in die bus.
 
 ### Heide Park

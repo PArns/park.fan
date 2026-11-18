@@ -221,6 +221,9 @@ there with an adult.
 For them, Berlin also has the horse carousel, Die 3 Mausketiere and the
 Verrücktes Hotel Tartüff.
 
+> [!PARKY]
+> If it’s raining in Brühl, we head to Wuze Town first: Winja’s Fear, Winja’s Force and Crazy Bats all run in the same hall, three coasters without a drop landing on us. Then Mystery Castle takes us 65 metres up inside its building, and the roof helps with the rain, sadly not with the height. We save Taron and Black Mamba for the dry spells in between.
+
 ![A giant clay pot with its lid open, a ladder leaning against it. | Inside the Winja’s Fear & Force building in Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba and the other big coasters are outdoors.

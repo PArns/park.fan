@@ -275,7 +275,7 @@ met slingers, adventskransen en de Arendelle Carollers, een kerstkoor. Met kinde
 de Disney Adventure World niet als halve dag inplannen.
 
 > [!PARKY]
-> Tussen kerst en oud en nieuw krijgt de Disney Adventure World bij ons een hele dag: eind 2025 was die week daar rustiger dan elke andere maand van het jaar, en Arendelle viert nu zijn eerste Kerst. Die adventskransen wil ik met eigen ogen zien, en mijn ogen zijn daar groot genoeg voor. Welk park op welke reisdag komt, leggen we vast in de [reisplanner](/paris#planner).
+> Tussen Kerst en oud en nieuw krijgt de Disney Adventure World bij ons een hele dag: eind 2025 was die week daar rustiger dan elke andere maand van het jaar, en Arendelle viert nu zijn eerste Kerst. Die adventskransen wil ik met eigen ogen zien, en mijn ogen zijn daar groot genoeg voor. Welk park op welke reisdag komt, leggen we vast in de [reisplanner](/paris#planner).
 
 De parade zit in het parkticket. Een gereserveerde plek ervoor verkoopt Disney
 apart, zolang de voorraad strekt.

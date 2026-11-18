@@ -203,6 +203,9 @@ Le règlement du parc est disponible à l’entrée et en téléchargement sur l
 
 Les boissons sont servies dans des gobelets réutilisables consignés 1,50 €. Gobelets, bouteilles et canettes se rendent aux automates de consigne, installés à quatre endroits du parc.
 
+> [!PARKY]
+> À Toverland, on emporte le déjeuner dans une boîte et on le réchauffe dans l’un des deux micro-ondes gratuits, à la Waldstube ou à Katara Plaza. Chaud, entre deux montagnes russes, je le trouve presque aussi bon qu’un churro. Jusqu’à midi, la boîte attend dans un casier à Port Laguna ou dans le Land van Toos, à 2 € et qu’on ouvre autant de fois qu’on veut.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) autorise expressément la nourriture et les boissons apportées, et signale des aires

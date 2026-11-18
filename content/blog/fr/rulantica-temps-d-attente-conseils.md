@@ -398,6 +398,9 @@ avec le **RulaBand**, un bracelet à transpondeur qui fait aussi office de carte
 d’accès et de clé de casier. Les dépenses sont inscrites sur le bracelet et se
 règlent en partant. Le wifi est gratuit. Le **ResortPass Gold** de l’Europa-Park comprend deux billets journée Rulantica.
 
+> [!PARKY] Ça vaut le coup
+> Si on dort de toute façon dans un hôtel de l’Europa-Park Erlebnis-Resort, on prend le billet Meilleur prix, de 28 à 48 € au lieu de 38 à 54 € pour le billet journée. En clients de l’hôtel, on entre dès 9 h, une demi-heure avant tout le monde, et je monte dans la cabine à trappe les yeux fermés, vertige ou pas. Le casier est lui aussi inclus dès douze ans.
+
 Sur son site, le parc cite le Parkscout plus Award de 2020 à 2025 (« meilleur
 parc aquatique d’Europe ») et l’EWA Professional Award 2025 pour une offre
 innovante. Snorri Snorkling VR a reçu en 2022 le Golden Wave Award de la revue

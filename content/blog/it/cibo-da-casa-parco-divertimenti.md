@@ -200,6 +200,9 @@ Il regolamento del parco è disponibile all’ingresso e scaricabile dal sito.
 
 Le bevande arrivano in bicchieri riutilizzabili con 1,50 € di cauzione. Bicchieri, bottiglie e lattine si restituiscono alle macchine per il vuoto, presenti in quattro punti del parco.
 
+> [!PARKY]
+> A Toverland ci portiamo il pranzo in un contenitore e lo scaldiamo in uno dei due microonde gratuiti, alla Waldstube o a Katara Plaza. Caldo e tra due montagne russe, per me è buono quasi come un churro. Fino all’ora di pranzo il contenitore aspetta in un armadietto a Port Laguna o nel Land van Toos, che costa 2 € e si apre tutte le volte che vuoi.
+
 ### Walibi Holland
 
 [Walibi Holland](ref:walibi-holland) permette espressamente cibo e bevande da casa e segnala nel parco delle aree picnic.
