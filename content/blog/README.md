@@ -459,7 +459,8 @@ carries „Frag Parky dazu“ (`blog.parkyAsk`), which opens the chat with a que
 ```
 
 - **At most one or two a post**, where the tip helps most: after the passage it acts on, never as
-  an opener or a summary.
+  an opener or a summary. Where a box belongs and where it does not, news included:
+  [a Parky box hands the reader one move](../../docs/rules/a-parky-box-hands-the-reader-one-move.md).
 - **Facts first, then the joke.** One concrete move the reader can make, in a sentence or three.
   Every fact in it is one the post itself states or park.fan's data shows; Parky never invents one
   ([his character](../../docs/features/parky-character.md#his-voice)).
