@@ -72,7 +72,7 @@ Holiday Lights entame sa 16e saison certains jours du 13 novembre 2027 au 2 janv
 
 ## Le prix des pass saison 2027
 
-Pour le Black Friday, Kennywood vend dès maintenant ses pass saison 2027 moins cher en ligne. Le Gold Pass coûte 124,99 $ au lieu de 169,99 $, ou huit versements de moins de 16 $ chacun. Il vaut tous les jours d’ouverture, Phantom Fall Fest et Holiday Lights compris, et inclut le parking sur les places Preferred et VIP, un gobelet avec recharges gratuites, deux billets invités pour 2027 et 15 % de réduction sur la restauration, les boutiques et le Speedy Pass.
+Pour le Black Friday, Kennywood vend dès maintenant ses pass saison 2027 moins cher en ligne. Le Gold Pass coûte 124,99 $ au lieu de 169,99 $, ou huit versements de moins de 16 $ chacun. Il vaut tous les jours d’ouverture, Phantom Fall Fest et Holiday Lights compris, et inclut le parking sur les places Preferred et VIP, un gobelet avec recharges gratuites, deux billets invités pour 2027 et 15 % de réduction sur la plupart des repas, des achats en boutique et le Speedy Pass.
 
 Le Platinum Pass, à 189,99 $ au lieu de 249,99 $, vaut en plus à Sandcastle, Idlewild and SoakZone et Dutch Wonderland, avec le parking gratuit dans les quatre parcs de Pennsylvanie, trois billets invités et 20 % de réduction. Il ouvre aussi les portes de Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash et Water Country.
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 dure encore jusqu’au 3 janvier 2027. Jusqu’au vendredi 2
 
 ## Sandcastle dès le 29 mai
 
-Sandcastle, le parc aquatique au bord de la Monongahela, ouvre le samedi 29 mai. Le mercredi, du 7 juillet au 18 août, il organise des fêtes de la mousse. Du 23 au 25 juillet, il célèbre Christmas in July, et du 7 au 22 août, des DJ y passent le week-end la musique de plusieurs décennies. Le Platinum Pass y donne accès.
+Le parc aquatique Sandcastle ouvre le samedi 29 mai. Le mercredi, du 7 juillet au 18 août, il organise des fêtes de la mousse. Du 23 au 25 juillet, il célèbre Christmas in July, et du 7 au 22 août, des DJ y passent le week-end la musique de plusieurs décennies. Le Platinum Pass y donne accès.
 
 ## Accès
 

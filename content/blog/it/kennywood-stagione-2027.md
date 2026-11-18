@@ -72,7 +72,7 @@ Holiday Lights torna per la 16ª stagione in giorni scelti dal 13 novembre 2027 
 
 ## Quanto costano gli abbonamenti 2027
 
-Per il Black Friday Kennywood vende già adesso online gli abbonamenti 2027 a prezzo ridotto. Il Gold Pass costa 124,99 $ invece di 169,99 $, o meno di 16 $ a rata in otto rate. Vale in tutti i giorni di apertura, anche a Phantom Fall Fest e Holiday Lights, e comprende il parcheggio nelle aree Preferred e VIP, un bicchiere con ricariche gratuite, due biglietti ospite per il 2027 e il 15 % di sconto su cibo, acquisti e Speedy Pass.
+Per il Black Friday Kennywood vende già adesso online gli abbonamenti 2027 a prezzo ridotto. Il Gold Pass costa 124,99 $ invece di 169,99 $, o meno di 16 $ a rata in otto rate. Vale in tutti i giorni di apertura, anche a Phantom Fall Fest e Holiday Lights, e comprende il parcheggio nelle aree Preferred e VIP, un bicchiere con ricariche gratuite, due biglietti ospite per il 2027 e il 15 % di sconto sulla maggior parte di cibo, acquisti e Speedy Pass.
 
 Il Platinum Pass, a 189,99 $ invece di 249,99 $, vale anche a Sandcastle, Idlewild and SoakZone e Dutch Wonderland, con parcheggio gratuito in tutti e quattro i parchi della Pennsylvania, tre biglietti ospite e il 20 % di sconto. In più dà l’ingresso a Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash e Water Country.
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 va avanti fino al 3 gennaio 2027. Fino a venerdì 20 novembr
 
 ## Sandcastle dal 29 maggio
 
-Sandcastle, il parco acquatico sul fiume Monongahela, apre sabato 29 maggio. Dal 7 luglio al 18 agosto il mercoledì ci sono i foam party, dal 23 al 25 luglio Sandcastle festeggia Christmas in July e dal 7 al 22 agosto, nei fine settimana, i DJ mettono musica di più decenni. Con il Platinum Pass si entra.
+Il parco acquatico Sandcastle apre sabato 29 maggio. Dal 7 luglio al 18 agosto il mercoledì ci sono i foam party, dal 23 al 25 luglio Sandcastle festeggia Christmas in July e dal 7 al 22 agosto, nei fine settimana, i DJ mettono musica di più decenni. Con il Platinum Pass si entra.
 
 ## Come arrivare
 

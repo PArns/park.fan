@@ -72,7 +72,7 @@ Holiday Lights empieza su 16.ª temporada en días seleccionados del 13 de novie
 
 ## ¿Cuánto cuestan los pases de temporada 2027?
 
-Por el Black Friday, Kennywood ya vende online los pases de temporada de 2027 con descuento. El Gold Pass cuesta 124,99 $ en lugar de 169,99 $, o menos de 16 $ en cada uno de ocho plazos. Vale todos los días de apertura, también en Phantom Fall Fest y Holiday Lights, e incluye aparcamiento en las zonas Preferred y VIP, un vaso con recargas gratis, dos entradas de invitado para 2027 y un 15 % de descuento en comida, compras y el Speedy Pass.
+Por el Black Friday, Kennywood ya vende online los pases de temporada de 2027 con descuento. El Gold Pass cuesta 124,99 $ en lugar de 169,99 $, o menos de 16 $ en cada uno de ocho plazos. Vale todos los días de apertura, también en Phantom Fall Fest y Holiday Lights, e incluye aparcamiento en las zonas Preferred y VIP, un vaso con recargas gratis, dos entradas de invitado para 2027 y un 15 % de descuento en la mayoría de comidas y compras, y en el Speedy Pass.
 
 El Platinum Pass, por 189,99 $ en vez de 249,99 $, vale además en Sandcastle, Idlewild and SoakZone y Dutch Wonderland, con aparcamiento gratis en los cuatro parques de Pensilvania, tres entradas de invitado y un 20 % de descuento. A eso se suma la entrada a Lake Compounce, Noah's Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash y Water Country.
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 sigue hasta el 3 de enero de 2027. Hasta el viernes 20 de no
 
 ## Sandcastle, desde el 29 de mayo
 
-Sandcastle, el parque acuático a orillas del río Monongahela, abre el sábado 29 de mayo. Del 7 de julio al 18 de agosto hay fiestas de espuma los miércoles, del 23 al 25 de julio Sandcastle celebra Christmas in July, y del 7 al 22 de agosto pinchan los fines de semana DJ con música de varias décadas. El Platinum Pass te deja entrar.
+El parque acuático Sandcastle abre el sábado 29 de mayo. Del 7 de julio al 18 de agosto hay fiestas de espuma los miércoles, del 23 al 25 de julio Sandcastle celebra Christmas in July, y del 7 al 22 de agosto pinchan los fines de semana DJ con música de varias décadas. El Platinum Pass te deja entrar.
 
 ## Cómo llegar
 

@@ -49,7 +49,7 @@ seo:
 
 On the [Racer](ref:kennywood/racer?bare), two trains race side by side, yet there's only one track. Board on the right in the station and you come back on the left. Kennywood says no other coaster in the US runs a single continuous track like this. John A. Miller designed it and Philadelphia Toboggan Coasters built it. The track is 4,500 feet (1,372 metres) long, the highest point is 72.5 feet (22 metres), and the trains hit 40 mph (64 km/h). A lap takes 1 minute 32 seconds. Three 24-seat trains carry 1,400 riders an hour, and you need to be 46 inches (117 centimetres) tall. The name belonged to an earlier coaster first, which opened in 1910.
 
-The [Turtle](ref:kennywood/turtle?bare) came to the park in 1927 as a Tumble Bug. Its cars look like turtles and run over hills and dips on a circular track. It's been the Turtle since Kennywood bought a sixth car in 1948, and the park says it's the last ride of its kind still running anywhere. In 1930 a stand called Lucky went up next to it. On its own history page, the park guesses someone already had a hunch which one would outlast the other. There's no minimum height; children under 46 inches ride with a companion, and babies don't ride at all.
+The [Turtle](ref:kennywood/turtle?bare) came to the park in 1927 as a Tumble Bug. Its cars look like turtles and run over hills and dips on a circular track. It's been the Turtle since Kennywood bought a sixth car in 1948, and the park says it's the last ride of its kind still running anywhere. In 1930 a stand called Lucky went up next to it. On its own history page, the park guesses someone already had a hunch it would be a survivor. There's no minimum height; children under 46 inches ride with a companion, and babies don't ride at all.
 
 The [Merry-Go-Round](ref:kennywood/merry-go-round?bare) is the third carousel in the park's history, hand-carved in William Dentzel's workshop in Philadelphia. It carries 64 animals: 50 jumping and 12 standing horses, a lion and a tiger, with Dentzel's jesters and cherubs in between. Here too, children under 46 inches ride with a companion.
 
@@ -71,7 +71,7 @@ Holiday Lights starts its 16th season on selected days from November 13, 2027 to
 
 ## What 2027 season passes cost
 
-For Black Friday, Kennywood is already selling 2027 season passes online at a discount. The Gold Pass costs $124.99 instead of $169.99, or eight payments of under $16 each. It's valid on every operating day, Phantom Fall Fest and Holiday Lights included, and comes with parking in the Preferred and VIP lots, a refillable cup, two 2027 guest tickets and 15% off food, shopping and Speedy Pass.
+For Black Friday, Kennywood is already selling 2027 season passes online at a discount. The Gold Pass costs $124.99 instead of $169.99, or eight payments of under $16 each. It's valid on every operating day, Phantom Fall Fest and Holiday Lights included, and comes with parking in the Preferred and VIP lots, a souvenir cup with free refills, two 2027 guest tickets and 15% off most food, shopping and Speedy Pass.
 
 The Platinum Pass, $189.99 instead of $249.99, adds Sandcastle, Idlewild and SoakZone and Dutch Wonderland, with free parking at all four Pennsylvania parks, three guest tickets and 20% off. On top of that you get into Lake Compounce, Noah's Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash and Water Country.
 
@@ -89,7 +89,7 @@ Holiday Lights 2026 runs until January 3, 2027. Until Friday, November 20, an un
 
 ## Sandcastle from May 29
 
-Sandcastle, the water park on the Monongahela River, opens on Saturday, May 29. There are foam parties on Wednesdays from July 7 to August 18, Christmas in July from July 23 to 25, and from August 7 to 22 DJs play music from several decades at weekends. The Platinum Pass gets you in.
+The Sandcastle water park opens on Saturday, May 29. There are foam parties on Wednesdays from July 7 to August 18, Christmas in July from July 23 to 25, and from August 7 to 22 DJs play music from several decades at weekends. The Platinum Pass gets you in.
 
 ## Getting there
 

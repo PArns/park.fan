@@ -72,7 +72,7 @@ Holiday Lights geht an ausgewählten Tagen vom 13. November 2027 bis zum 2. Janu
 
 ## Was die Saisonkarten 2027 kosten
 
-Zum Black Friday verkauft Kennywood die Saisonkarten für 2027 online schon jetzt günstiger. Der Gold Pass kostet 124,99 $ statt 169,99 $, in acht Raten jeweils unter 16 $. Er gilt an allen Öffnungstagen, auch bei Phantom Fall Fest und Holiday Lights, und enthält das Parken auf den Plätzen Preferred und VIP, einen Becher mit Gratis-Refills, zwei Gästetickets für 2027 und 15 % Rabatt auf Essen, Einkäufe und den Speedy Pass.
+Zum Black Friday verkauft Kennywood die Saisonkarten für 2027 online schon jetzt günstiger. Der Gold Pass kostet 124,99 $ statt 169,99 $, in acht Raten jeweils unter 16 $. Er gilt an allen Öffnungstagen, auch bei Phantom Fall Fest und Holiday Lights, und enthält das Parken auf den Plätzen Preferred und VIP, einen Becher mit Gratis-Refills, zwei Gästetickets für 2027 und 15 % Rabatt auf die meisten Speisen, Einkäufe und den Speedy Pass.
 
 Der Platinum Pass für 189,99 $ statt 249,99 $ gilt zusätzlich in Sandcastle, Idlewild and SoakZone und Dutch Wonderland, mit freiem Parken in allen vier Parks in Pennsylvania, drei Gästetickets und 20 % Rabatt. Dazu kommt der Eintritt in Lake Compounce, Noah's Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash und Water Country.
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 läuft noch bis zum 3. Januar 2027. Bis Freitag, den 20. Nov
 
 ## Sandcastle ab dem 29. Mai
 
-Sandcastle, der Wasserpark am Monongahela River, öffnet am Samstag, dem 29. Mai. Mittwochs gibt es vom 7. Juli bis zum 18. August Schaumpartys, vom 23. bis zum 25. Juli feiert Sandcastle Christmas in July, und vom 7. bis zum 22. August legen an den Wochenenden DJs Musik aus mehreren Jahrzehnten auf. Mit dem Platinum Pass kommst du hinein.
+Der Wasserpark Sandcastle öffnet am Samstag, dem 29. Mai. Mittwochs gibt es vom 7. Juli bis zum 18. August Schaumpartys, vom 23. bis zum 25. Juli feiert Sandcastle Christmas in July, und vom 7. bis zum 22. August legen an den Wochenenden DJs Musik aus mehreren Jahrzehnten auf. Mit dem Platinum Pass kommst du hinein.
 
 ## Anreise
 

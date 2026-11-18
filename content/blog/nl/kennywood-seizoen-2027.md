@@ -22,7 +22,7 @@ rideLinks:
   - kennywood/turtle
   - kennywood/merry-go-round
 seo:
-  title: 'Wanneer opent Kennywood in 2027? Data, events, seizoenspassen'
+  title: 'Kennywood in 2027: openingsdagen, events en seizoenspassen'
   description: >-
     Kennywood seizoen 2027 vanaf 17 april: de data van de events, 100 jaar Racer, Turtle en draaimolen, seizoenspassen vanaf 99,99 dollar en wachttijden live.
   keywords:
@@ -72,7 +72,7 @@ Holiday Lights begint op geselecteerde dagen van 13 november 2027 tot 2 januari 
 
 ## Wat de seizoenspassen voor 2027 kosten
 
-Voor Black Friday verkoopt Kennywood de seizoenspassen voor 2027 nu al goedkoper online. De Gold Pass kost 124,99 in plaats van 169,99 dollar, in acht termijnen van elk minder dan 16 dollar. Hij geldt op alle openingsdagen, ook tijdens Phantom Fall Fest en Holiday Lights. Parkeren op de terreinen Preferred en VIP zit erbij, net als een beker met gratis refills, twee gastentickets voor 2027 en 15 % korting op eten, aankopen en de Speedy Pass.
+Voor Black Friday verkoopt Kennywood de seizoenspassen voor 2027 nu al goedkoper online. De Gold Pass kost 124,99 in plaats van 169,99 dollar, in acht termijnen van elk minder dan 16 dollar. Hij geldt op alle openingsdagen, ook tijdens Phantom Fall Fest en Holiday Lights. Parkeren op de terreinen Preferred en VIP zit erbij, net als een beker met gratis refills, twee gastentickets voor 2027 en 15 % korting op het meeste eten, de meeste aankopen en de Speedy Pass.
 
 De Platinum Pass voor 189,99 in plaats van 249,99 dollar geldt daarnaast in Sandcastle, Idlewild and SoakZone en Dutch Wonderland, met gratis parkeren in alle vier de parken in Pennsylvania, drie gastentickets en 20 % korting. Je komt er ook mee binnen in Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash en Water Country.
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 loopt nog tot 3 januari 2027. Tot en met vrijdag 20 november
 
 ## Sandcastle vanaf 29 mei
 
-Sandcastle, het waterpark aan de Monongahela River, gaat op zaterdag 29 mei open. Van 7 juli tot 18 augustus zijn er op woensdag schuimparty’s, van 23 tot 25 juli viert Sandcastle Christmas in July, en van 7 tot 22 augustus draaien dj’s in het weekend muziek uit meerdere decennia. Met de Platinum Pass kom je binnen.
+Waterpark Sandcastle gaat op zaterdag 29 mei open. Van 7 juli tot 18 augustus zijn er op woensdag schuimparty’s, van 23 tot 25 juli viert Sandcastle Christmas in July, en van 7 tot 22 augustus draaien dj’s in het weekend muziek uit meerdere decennia. Met de Platinum Pass kom je binnen.
 
 ## Bereikbaarheid
 
