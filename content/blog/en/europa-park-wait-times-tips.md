@@ -2,15 +2,14 @@
 title: 'Europa-Park: the days when it’s least busy'
 translationKey: europa-park-guide
 date: '2026-08-21'
-updatedAt: '2026-10-04'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
   No park in Germany sells more tickets, and yet you queue less in Rust than at
-  Phantasialand. It is quietest on Sundays and Thursdays in May and June,
-  outside the holidays in Baden-Württemberg, Switzerland and Alsace. Euro-Mir
-  runs until 9 January 2027 and then comes down.
+  Phantasialand. Europa-Park is quietest on Sundays and Thursdays in May and
+  June, outside the holidays.
 tags:
   - europa-park
   - voltron
@@ -51,6 +50,7 @@ seo:
     - Europa-Park fast pass
     - Europa-Park single rider
     - Europa-Park ticket prices 2026
+    - Europa-Park ticket prices 2027
     - Europa-Park opening hours 2026
     - Europa-Park winter 2026
     - HALLOWinter Europa-Park
@@ -806,27 +806,25 @@ HALLOWinter and doesn’t close until 7 p.m., exactly when the site next door
 unlocks its gates. Buy a Traumatica ticket for a November date and you’re
 giving up the last hour in the park.
 
-## 2026 ticket prices and getting there
+## 2026 and 2027 ticket prices, getting there
 
-**Tickets.** The price depends on the date, and the park works with two price
-categories. Online a
+**Tickets.** The park sorts its opening days into two price categories. Online a
 day costs **€67 to €76** for adults from 12 up, and **€56.50 to €65** for
 children aged 4 to 11 and seniors from 60; under-4s go free. Two days cost €127
 to €143.50 and €105 to €119 respectively. At the gate **€10 per ticket** is
 added on top, a fee for not booking ahead. Anyone staying at the resort gets
 the best price whatever the date: €67 for one day, €127 for two, €160 for three.
-The cheapest days come in 2027, in the Pre-Opening Weeks from 7 to 19 March: €59.50
-on weekdays, €70 at weekends, but not with every ride open yet. Tickets for the
-2027 summer season go on sale on 10 November 2026.
+In the Pre-Opening Weeks from 7 to 19 March 2027 a day costs €59.50 on weekdays and €70 at weekends.
 
-The **ResortPass**, the annual pass, isn’t on sale in September 2026, so for now you can only admire it. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica. For most families two days back to back are worth more anyway.
+When the summer season opens on **20 March 2027**, every day gets €2.50 to €3.50 dearer. Online, adults then pay **€70 to €79.50** and children and seniors **€59 to €68**, while two days come to €132.50 to €150 and €109.50 to €124.50. That holds until 9 January 2028, Halloween and winter included. The best price for resort guests moves up with it, to €70 for one day and €167 for three. Tickets for 2027 have been on sale since 10 November 2026. A family of two adults and two children pays €13 to €15 more a day online than in 2026, parking included. The [news on the price rise](/news/europa-park-prices-2027) adds it up ticket by ticket.
 
-**Getting there.** The park sits directly on the **A5**, exit **57b Rust**, and
-is signposted from there. By road it’s around 40 kilometres from Freiburg,
+The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica.
+
+**Getting there.** The park sits directly on the **A5**, exit **57b Rust**. By road it’s around 40 kilometres from Freiburg,
 around 55 from Strasbourg and around 100 each from Basel and Karlsruhe,
 roadworks on the A5 not included. By train
 you go to Ringsheim and take the shuttle bus from there. **Parking costs €10** a
-day, and Rulantica has its own car park at the same price.
+day, then €12 from 20 March 2027. Rulantica has its own car park.
 
 **Food.** Our database counts **62 places to eat** in the park, and because
 every themed area is a country, every one of them cooks something different.
@@ -878,11 +876,13 @@ Halloween seasons, and an hour in the HALLOWinter and winter seasons. Only the
 VR rides cost extra: Eurosat Coastiality at €7, with its own station beside the
 Eurosat queue, and the Alpenexpress Coastiality at €4.
 
-### What does admission to Europa-Park cost in 2026?
+### What does admission to Europa-Park cost in 2026 and 2027?
 
-Online between **€67 and €76** for adults and between €56.50 and €65 for
-children aged 4 to 11 and seniors, depending on the date. Under-4s pay nothing.
-At the gate €10 per ticket is added. Parking costs €10.
+Until 9 January 2027 it's between **€67 and €76** online for adults and between
+€56.50 and €65 for children aged 4 to 11 and seniors, depending on the date.
+From 20 March 2027 adults pay **€70 to €79.50**, children and seniors €59 to
+€68. Under-4s pay nothing.
+At the gate €10 per ticket is added. Parking costs €10, and €12 from 20 March 2027.
 
 ### How many roller coasters does Europa-Park have?
 
@@ -910,10 +910,7 @@ in HALLOWinter, which itself doesn’t close until seven.
 
 ### Can you do Europa-Park in one day?
 
-The ten or twelve most important attractions on a normal day: yes. The whole
-park with its 96 attractions, shows and 62 places to eat: no. Two days don’t
-save much: the two-day ticket costs adults €127 to €143.50, so the second day
-comes to around €60 to €67.50.
+Yes, if you came for the big rides, since on a normal day you'll manage ten to twelve of them. Nobody gets through all 96 attractions plus the shows and 62 places to eat. The two-day ticket costs adults €127 to €143.50, or €132.50 to €150 from 20 March 2027, barely less than two single days.
 
 ### Is Europa-Park worth it in winter?
 
@@ -960,7 +957,7 @@ When it rains, the queue at Eurosat gets longer.
 - Season dates 2026/27, HALLOWinter, the winter opening, the last regular day on 9 January 2027, the Pre-Opening Weeks and the 2027 season start: [Opening hours & seasons (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons) · [HALLOWinter at Europa-Park (official)](https://www.europapark.de/de/freizeitpark/hallowinter-im-europa-park) · [Winterzauber at Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park) · [The Pre-Opening Weeks 2027 (official)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening)
 - The Halloween season with 180,000 pumpkins, the Pumpkin Village and the Tartaros daytime maze: [“Halloween at the Europa-Park Resort” (MACK Group)](https://mack.group/de/presse-medien/pressemitteilungen/halloween-im-europa-park-erlebnis-resort) · [Daytime maze “Tartaros” (official)](https://www.europapark.de/de/freizeitpark/attraktionen/tages-maze-tartaros)
 - Traumatica 2026: dates, scare attractions, add-on tickets, age limits, the site in the Greek area: [Traumatica (official)](https://www.europapark.de/en/events/traumatica) · [Scare attractions (traumatica.com)](https://traumatica.com/en/scare-attractions/) · [Tickets (traumatica.com)](https://traumatica.com/en/tickets/) · [FAQ (traumatica.com)](https://traumatica.com/en/info/) · [our anniversary news piece](/blog/traumatica-ten-years-europa-park) · [our Halloween guide](/blog/halloween-theme-parks-2026)
-- 2026 prices, the two price categories, the best price with an overnight stay, the ResortPass (not on sale in September 2026), the surcharge at the gate, the 2027 Pre-Opening prices, the Ride & Slide combined ticket: [Tickets & offers (official)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [The Pre-Opening Weeks 2027 (official)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening)
+- 2026 and 2027 prices, the two price categories, the best price with an overnight stay, the surcharge at the gate, parking, the 2027 Pre-Opening prices: [Tickets & prices (official)](https://www.europapark.de/de/tickets-preise) · ResortPass, allocation used up: [ResortPass (official)](https://www.europapark.de/de/resortpass/europa-park-resortpass) · Ride & Slide combined ticket: [Tickets & offers (official)](https://www.europapark.de/de/freizeitpark/tickets-angebote) · [The Pre-Opening Weeks 2027 (official)](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening)
 - No fast pass, single rider at six attractions, the free VirtualLine at seven, early entry for hotel guests (45 minutes in summer and Halloween from 8:15 a.m., 60 minutes in HALLOWinter and winter from 10 a.m.) and the Coastiality surcharges: [Tips for your Europa-Park visit (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/tipps-fuer-ihren-besuch-im-europa-park) · [VirtualLine at Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/virtualline-im-europa-park) · [Overnight offers (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-europa-park-gaeste) · [Eurosat Coastiality (official)](https://www.europapark.de/de/freizeitpark/attraktionen/eurosat-coastiality) · [Alpenexpress Coastiality (official)](https://www.europapark.de/de/freizeitpark/attraktionen/alpenexpress-coastiality)
 - The Ammolite with two Michelin stars since November 2014, Silver Lake City and the Riverside Western Lodge with its 119 rooms, YULLBE GO in the blue fire dome since 2020: [Ammolite – House of Light (official)](https://www.europapark.de/de/uebernachten/gastronomie/ammolite) · [Silver Lake City (official)](https://www.europapark.de/de/uebernachten/silver-lake-city) · [Europa-Park Riverside Western Lodge (official)](https://www.europapark.de/de/uebernachten/riverside-western-lodge) · [YULLBE GO in the blue fire Dome (official)](https://www.europapark.de/de/freizeitpark/attraktionen/yullbe-go-im-blue-fire-dome)
 - Getting there via the A5, parking fees, Rulantica, the Eatrenalin’s Michelin star in 2026: [Getting to Europa-Park (official)](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/anreise-zum-europa-park) · [Getting to Rulantica (official)](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/anreise-nach-rulantica) · [News & novelties (official)](https://www.europapark.de/de/freizeitpark/infos/europa-park-neuheiten-news) · [Eatrenalin on en.wikipedia](https://en.wikipedia.org/wiki/Eatrenalin); road distances from OpenStreetMap routing
