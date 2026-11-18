@@ -32,20 +32,21 @@ export function BlogParkySays({
   children: ReactNode;
 }) {
   const ground = useId();
-  const askButton = <BlogParkyAsk label={ask.label} question={ask.question} />;
   if (stamp) {
     return (
       <aside data-callout="parky" className="not-prose clear-both my-6">
-        <GlassCard variant="medium" className={CARD_CLASS}>
+        <GlassCard variant="medium" className={`${CARD_CLASS} @container relative`}>
           {/* The room above the row is Parky's, who stands about his own height over the stamp. */}
           <div className="flex items-center gap-4 pt-11">
             <ParkyStamp tone="good" label={stamp} size="md" className="ml-1" />
             <span className={LABEL_CLASS}>{label}</span>
           </div>
           <div className={`${TEXT_CLASS} mt-3`}>{children}</div>
-          {/* Under the tip rather than beside the stamp, where a phone has no room for both. Its
-              row is held before the button decides to show, so the card does not grow then. */}
-          <div className="mt-4 flex min-h-7 items-center">{askButton}</div>
+          {/* In the top right corner, across from Parky's head: a phone has no room for it beside
+              the stamp, and placed out of the flow it moves nothing when it shows. */}
+          <div className="absolute top-4.5 right-3">
+            <BlogParkyAsk label={ask.label} question={ask.question} narrow />
+          </div>
         </GlassCard>
       </aside>
     );
@@ -57,7 +58,7 @@ export function BlogParkySays({
         <div className="min-w-0 flex-1">
           <div className="mb-1.5 flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
             <span className={LABEL_CLASS}>{label}</span>
-            {askButton}
+            <BlogParkyAsk label={ask.label} question={ask.question} />
           </div>
           <div className={TEXT_CLASS}>{children}</div>
         </div>

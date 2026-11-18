@@ -474,7 +474,7 @@ recommends: a pass, a ride, a time of day. The card is then labelled „Parkys T
 (`parkyStill.tip.label`, the label of his tip in the park calendar) and opens with the verdict as
 his green stamp (`ParkyStamp`), top left, with Parky looking over its edge. He is already on the
 stamp, so the still Parky beside the text is left out and the tip runs the card's full width; „Frag
-Parky dazu“ sits under it.
+Parky dazu“ sits in the top right corner, as a bare speech bubble on a phone under 390 px.
 
 ```md
 > [!PARKY] Lohnt sich
