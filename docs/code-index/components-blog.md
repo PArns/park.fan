@@ -119,7 +119,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`blog-parky-says.tsx`](../../components/blog/blog-parky-says.tsx)
 
-- `BlogParkySays` _component_: A post's `> [!PARKY]` callout: one tip in Parky's voice on a glass card, the still Parky beside it as the one who says it. The card is server-rendered; only `ask`, the button that hands Parky a question about the tip, is client code.
+- `BlogParkySays` _component_: A post's `> [!PARKY]` callout: one tip in Parky's voice on a glass card, the still Parky beside it as the one who says it.
 
 ### [`blog-post-banner.tsx`](../../components/blog/blog-post-banner.tsx)
 

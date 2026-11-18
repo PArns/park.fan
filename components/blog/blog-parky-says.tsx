@@ -1,21 +1,28 @@
 import { useId, type ReactNode } from 'react';
 import { GlassCard } from '@/components/common/glass-card';
 import { ParkyStill } from '@/components/assistant/parky/parky-still';
+import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
 import { BlogParkyAsk } from './blog-parky-ask';
 
 /**
  * A post's `> [!PARKY]` callout: one tip in Parky's voice on a glass card, the still Parky beside
  * it as the one who says it. The card is server-rendered; only `ask`, the button that hands Parky
- * a question about the tip, is client code. It sits in the label's row, so the card keeps its
- * height when the button appears.
+ * a question about the tip, and the stamp are client code. The button sits in the label's row, so
+ * the card keeps its height when it appears.
+ *
+ * With `stamp` (the verdict from the marker line, `[!PARKY] Lohnt sich`) the card is the same one
+ * as Parky's tip in the park calendar: the caller labels it „Parkys Tipp“, and the verdict is
+ * pressed at its foot in green, with the gap above left to Parky looking over the stamp's edge.
  */
 export function BlogParkySays({
   label,
   ask,
+  stamp,
   children,
 }: {
   label: string;
   ask: { label: string; question: string };
+  stamp?: string;
   children: ReactNode;
 }) {
   const ground = useId();
@@ -34,6 +41,11 @@ export function BlogParkySays({
           <div className="text-foreground/85 text-[0.95rem] leading-relaxed [&>p]:my-1.5">
             {children}
           </div>
+          {stamp && (
+            <div className="mt-12 mb-1 flex justify-end">
+              <ParkyStamp tone="good" label={stamp} size="md" className="mr-1" />
+            </div>
+          )}
         </div>
       </GlassCard>
     </aside>

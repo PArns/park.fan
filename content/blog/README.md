@@ -467,6 +467,27 @@ carries „Frag Parky dazu“ (`blog.parkyAsk`), which opens the chat with a que
   queue grumbling, airtime and churros are his flavour, at most one emoji. Each locale is written
   natively, not translated word for word.
 
+#### Parky's tip with a stamp
+
+A few words after the marker, on its own line, are Parky's verdict on one concrete thing the post
+recommends: a pass, a ride, a time of day. The card is then labelled „Parkys Tipp“
+(`parkyStill.tip.label`, the same card as his tip in the park calendar) and the verdict is pressed at
+its foot as his green stamp (`ParkyStamp`), with Parky looking over its edge.
+
+```md
+> [!PARKY] Lohnt sich
+> Den Pass für Taron After Dark holen wir schon um elf, weil das Kontingent begrenzt ist, und
+> fahren ihn erst, wenn es dunkel ist.
+```
+
+- **Two or three words**, at most 18 characters, written in the post's language („Lohnt sich“,
+  "Worth it"), and no exclamation mark: the stamp is part of the post's text and counts towards its
+  budget ([§4.5](../../docs/writing/4-typography.md#45-emoji-quotes-separators)). A longer marker line is read as the tip's first
+  sentence and the card stays „Parky sagt“.
+- **Always a yes.** The stamp is green; a tip that warns belongs in plain „Parky sagt“ or a
+  `[!WARNING]`.
+- The rules above still hold: at most one or two Parky cards a post, stamped or not.
+
 ### Quotes
 
 A sentence somebody else said or wrote is a `> [!QUOTE]` block whose **last paragraph is the

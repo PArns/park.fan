@@ -371,6 +371,8 @@ function hastText(node: unknown): string {
 export async function BlogContent({ markdown, locale, title }: BlogContentProps) {
   const { parkSlugs, attractions, parkGeoPaths, attractionGeoPaths } = extractInlineRefs(markdown);
   const tBlog = await getTranslations({ locale, namespace: 'blog' });
+  // A stamped Parky card is the calendar's „Parkys Tipp“, so it takes that card's label.
+  const tParkyTip = await getTranslations({ locale, namespace: 'parkyStill.tip' });
 
   // Pre-fetch glossary terms once so we can highlight them in headings and
   // paragraphs without making the renderer async. Dedupe is per text string,
@@ -787,10 +789,12 @@ export async function BlogContent({ markdown, locale, title }: BlogContentProps)
             {children}
           </BlogQuote>
         );
-      if (callout === 'parky')
+      if (callout === 'parky') {
+        const stamp = (rest as { 'data-callout-stamp'?: string })['data-callout-stamp'];
         return (
           <BlogParkySays
-            label={tBlog('parkySays')}
+            label={stamp ? tParkyTip('label') : tBlog('parkySays')}
+            stamp={stamp}
             ask={{
               label: tBlog('parkyAsk'),
               question: tBlog('parkyAskQuestion', { title, tip: clipTip(hastText(node)) }),
@@ -799,6 +803,7 @@ export async function BlogContent({ markdown, locale, title }: BlogContentProps)
             {injectGlossary(children)}
           </BlogParkySays>
         );
+      }
       if (callout && CALLOUT_META[callout]) {
         const meta = CALLOUT_META[callout];
         const Icon = meta.icon;

@@ -18,7 +18,9 @@ import { parseUpdateMarker } from './derive.mjs';
  *     >
  *     > Speaker, role, [where it was said](https://…), aus dem Englischen übersetzt
  *
- * `[!PARKY]` is one practical tip in Parky's voice, drawn with a still Parky beside it.
+ * `[!PARKY]` is one practical tip in Parky's voice, drawn with a still Parky beside it. A few words
+ * after the marker on its own line are his verdict, `[!PARKY] Lohnt sich`, and become
+ * `data-callout-stamp`: the card is then „Parkys Tipp“ with that verdict as his stamp.
  */
 
 export const CALLOUT_TYPES = [
@@ -39,6 +41,24 @@ export const CALLOUT_MARKER_RE = new RegExp(`^\\[!(${CALLOUT_TYPES.join('|').toU
 const MARKER_RE = new RegExp(`${CALLOUT_MARKER_RE.source}\\s*\\n?`);
 /** `[en]`, `[pt-BR]`: the language of a quote's original, at the start of its paragraph. */
 const ORIGINAL_RE = /^\[([a-z]{2}(?:-[A-Z]{2})?)\]\s*/;
+
+/**
+ * Longest verdict a Parky stamp carries. The stamp is one line in capitals; past this it would push
+ * out of a phone-wide card, so a longer marker line stays the tip's first sentence instead.
+ */
+export const PARKY_STAMP_MAX_CHARS = 18;
+
+/**
+ * The verdict on a `[!PARKY]` marker line (`[!PARKY] Lohnt sich` followed by the tip) and how many
+ * characters of `value` that line takes, or null when the line holds none. A marker line with no
+ * tip under it, or one longer than {@link PARKY_STAMP_MAX_CHARS}, is the tip itself, as before.
+ */
+export function parseParkyStamp(value: string): { label: string; length: number } | null {
+  const m = /^\[!PARKY\][ \t]+([^\n]+)\n(?=\s*\S)/.exec(value);
+  const label = m?.[1].trim();
+  if (!m || !label || label.length > PARKY_STAMP_MAX_CHARS) return null;
+  return { label, length: m[0].length };
+}
 
 /** Tags a `[en] …` paragraph as the quote's original and strips the marker; false if it is none. */
 function markOriginal(paragraph: MdNode): boolean {
@@ -92,9 +112,12 @@ export function remarkCallouts(): (tree: MdRoot) => void {
       // paragraph so no empty shell renders.
       const value = firstText.value ?? '';
       const update = type === 'update' ? parseUpdateMarker(value) : null;
+      const stamp = type === 'parky' ? parseParkyStamp(value) : null;
       const rest = update
         ? value.slice(update.length).replace(/^:?\s*/, '')
-        : value.slice(m[0].length);
+        : stamp
+          ? value.slice(stamp.length).trimStart()
+          : value.slice(m[0].length);
       if (rest) {
         firstText.value = rest;
       } else {
@@ -108,6 +131,7 @@ export function remarkCallouts(): (tree: MdRoot) => void {
         ...(node.data.hProperties ?? {}),
         'data-callout': type,
         ...(update ? { 'data-callout-date': update.date } : {}),
+        ...(stamp ? { 'data-callout-stamp': stamp.label } : {}),
       };
       if (type !== 'quote') return;
       // The original paragraphs are neither the words nor the source line.
