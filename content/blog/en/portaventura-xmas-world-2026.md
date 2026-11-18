@@ -44,31 +44,31 @@ seo:
     - PortAventura by train
 ---
 
-From Friday 20 November, Christmas at [PortAventura Park](ref:portaventura-park) in Salou goes by the name Xmas World. Until 6 January 2027, the park decorates its themed areas after Christmas traditions from Catalonia to Mexico, and Far West and México get two new musicals. This winter is the last outing for the lake show La Llegada de los Emisarios Reales, which the park will rework for next year. PortAventura announced all of this on 16 November.
+From Friday 20 November, Christmas at [PortAventura Park](ref:portaventura-park) in Salou goes by the name Xmas World. Until 6 January 2027, Mediterrània, China, México and Far West are each dressed for Christmas in their own way, and Far West and México get two new musicals. This winter is the last outing for the lake show La Llegada de los Emisarios Reales, which the park will rework for next year. PortAventura announced all of this on 16 November.
 
-## Christmas from Catalonia to Mexico
+## Decorations and street shows
 
 Mediterrània is dressed up as a Catalan village, with a giant Tió de Nadal. In the street show El Tió de Nadal, children sing and beat the huge log with sticks until surprises tumble out. In Catalan that's called "fer cagar el tió", and you'd better look up the verb before you put it on a Christmas card. China hangs red and gold lanterns that already point to Chinese New Year, and in Winter Imperial China a dragon and its dancers cross the Plaza Imperial.
 
 México is decked out with piñatas and papel picado. In México suena a Navidad, the villagers get a party ready for Woody Woodpecker. ¡Viva la Posada! passes in front of La Hacienda restaurant as a procession in the tradition of the posadas, where people go asking for shelter. It ends with a Christmas piñata being smashed.
 
-Far West gets the classic Christmas look, with garlands, lights and decorated trees. At 5:15 p.m. the characters on Penitence's main street count down in Christmas Lights, the big tree lights up and fake snow falls over the town. In What a Crazy Christmas, the Crazy Brothers are out with Holly and a troupe of dancers, though Santa Claus hasn't turned up yet. Each of these street shows runs for eight minutes. In SésamoAventura, Grover, Elmo and Ernie celebrate Christmas on stage in the theatre show Ya es Navidad en SésamoAventura.
+Far West looks like a Western town in a Christmas film, garlands and lights included, and at 5:15 p.m. the characters on Penitence's main street count down in Christmas Lights until the big tree lights up. Then fake snow falls over the town. The Crazy Brothers roam Far West with Holly and a troupe of dancers in What a Crazy Christmas, though Santa Claus hasn't turned up yet. Each of these street shows runs for eight minutes. Over in SésamoAventura's theatre, Grover, Elmo and Ernie have a Christmas show of their own, Ya es Navidad en SésamoAventura.
 
 ## Two new musicals with a minimum spend
 
-The saloon in Penitence puts on La Gran Rifa de Navidad. Pianist Sarah Joplin and Lilly Parsonn have been rigging the town's Christmas raffle for years, and this time the winning ticket lands with a penniless beggar. At La Cantina in México, Navidad a la Mexicana works through the country's customs up to Christmas Eve, with piñatas, villancicos and pastorelas.
+The saloon in Penitence puts on La Gran Rifa de Navidad. Pianist Sarah Joplin and Lilly Parsonn have been rigging the town's Christmas raffle for years, and this time the winning ticket lands with a penniless beggar. At La Cantina in México, Navidad a la Mexicana works through the country's customs up to Christmas Eve, with carols and pastorelas.
 
-Both last 20 to 30 minutes, and both come with a minimum spend, so you'll be ordering something to watch. In a saloon, that's at least in character. Shows you can see without buying anything include Circo de Navidad at the Gran Teatro Imperial in China, about a girl who dreams of the circus, and Bubble Magic Christmas at the Templo Mágico, where an alchemist blows soap bubbles. There's also Cuidemos el Planeta, and El Bosque Encantado, a path in front of Serpiente Emplumada in México that leads to Santa's house. Up to 25 December your photo there is with Santa Claus; from the 26th it's with one of the Three Kings.
+Both last 20 to 30 minutes, and both come with a minimum spend. In a saloon, at least, that's in character. Shows you can see without buying anything include Circo de Navidad at the Gran Teatro Imperial in China, about a girl who dreams of the circus, and Bubble Magic Christmas at the Templo Mágico, where an alchemist blows soap bubbles. There's also Cuidemos el Planeta, and El Bosque Encantado, a path in front of Serpiente Emplumada in México that leads to Santa's house. Up to 25 December your photo there is with Santa Claus; from the 26th it's with one of the Three Kings.
 
 ## The parade and the last lake show
 
-Towards the end of the day, the Christmas Parade brings floats and characters along the Paseo in Mediterrània. Then, in La Llegada de los Emisarios Reales, the envoys of the Three Kings land on the lake, with fireworks, flyboard stunts and dancing on the water. It's modelled on Spain's Cabalgata de Reyes.
+Towards the end of the day, the Christmas Parade brings floats and characters along the Paseo in Mediterrània. Then, in La Llegada de los Emisarios Reales, the envoys of the Three Kings land on the lake while fireworks go up overhead and performers dance on the water on flyboards. It's modelled on Spain's Cabalgata de Reyes.
 
 ## Opening and closing times
 
 From 20 November to 6 January the park opens every day at 10:30 a.m. and usually closes at 6 p.m. Closing time moves to 7 p.m. on 5, 6 and 7 December, from 27 to 30 December and from 1 to 4 January.
 
-The parade and the lake show don't run every day. The park's daily calendar lists them at 5:45 and 6 p.m. on Saturday 12 December, Christmas Eve, and 5 and 6 January. On Sunday 27 December they start at 6:45 and 7 p.m. Neither is listed for Wednesday 2 December, though Christmas Lights is. So far only four shows are on the calendar for opening day on Friday, none of them new, and there's no parade.
+The parade and the lake show don't run every day. The park's daily calendar lists them at 5:45 and 6 p.m. on Saturday 12 December, Christmas Eve, and 5 and 6 January. On Sunday 27 December they start at 6:45 and 7 p.m. Neither is listed for Wednesday 2 December, though Christmas Lights is. For opening day, Friday 20 November, the calendar so far shows only four shows, none of them new, and no parade.
 
 From 7 January the park is closed. According to the calendar it reopens on Friday 19 February, from 4 p.m. to 9 p.m. that day.
 
@@ -80,13 +80,13 @@ Reduced tickets for people with a disability of 33 percent or more are sold only
 
 ## Ferrari Land and Caribe in winter
 
-In November and early December, [Ferrari Land](ref:ferrari-land) opens only on Fridays, from 5 p.m. to 10 p.m., and at weekends, from 4:30 p.m. to 10 p.m. It also opens on 7 and 8 December. From 18 December to 5 January it opens daily, mostly from 4:30 p.m. to 10 p.m., and from 1 p.m. to 7 p.m. on Christmas Eve and New Year's Eve. The same 1 p.m. to 7 p.m. applies on 6 January, after which Ferrari Land closes too. PortAventura Park usually shuts at 6 p.m., while Ferrari Land stays open until 10 p.m. On days when both are open, that makes the one-day ticket for both parks worth it, from €55 or from €44 with the code. A day at Ferrari Land only costs from €19.
+In November and early December, [Ferrari Land](ref:ferrari-land) opens only on Fridays, from 5 p.m. to 10 p.m., and at weekends, from 4:30 p.m. to 10 p.m. It also opens on 7 and 8 December. From 18 December to 5 January it opens daily, mostly from 4:30 p.m. to 10 p.m., and from 1 p.m. to 7 p.m. on Christmas Eve and New Year's Eve. The same 1 p.m. to 7 p.m. applies on 6 January, after which Ferrari Land closes too. On days when both are open, you can walk over to Ferrari Land after PortAventura Park closes, which makes the one-day ticket for both parks worth it, from €55 or from €44 with the code. A day at Ferrari Land only costs from €19.
 
 Caribe Aquatic Park is closed in November, December and January.
 
 ## Which rides are running
 
-On Saturday 12 December and Sunday 27 December, the daily calendar lists 36 attractions, among them [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) and Hurakan Condor. On opening day, Friday 20 November, there are 23, without Stampida and Furius Baco. On 2 December there are 25. Tutuki Splash, Silver River Flume, Angkor and Sea Odyssey aren't listed on any of these days. Grand Canyon Rapids runs on 20 November and on 12 and 27 December, until 5 p.m. each time. PortAventura hasn't published a list of rides closed for the winter.
+On Saturday 12 December and Sunday 27 December, the daily calendar lists 36 attractions, among them [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) and Hurakan Condor. On 20 November there are 23, without Stampida and Furius Baco, and on 2 December 25. Tutuki Splash, Silver River Flume, Angkor and Sea Odyssey aren't listed on any of these days. Grand Canyon Rapids runs on 20 November and on 12 and 27 December, until 5 p.m. each time. Whether those four are shut all winter is guesswork. PortAventura hasn't put out a list of winter closures.
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days
 
@@ -106,7 +106,7 @@ By train, ride to the resort's own PortAventura World station, served by Rodalie
 
 Express passes get you past the queue: Express ONE from €7, Express Unlimited from €75 and Express Unlimited Plus from €135. Our [PortAventura Park guide](/blog/portaventura-park-wait-times-tips) covers when each ride's queue is shortest and how the passes work.
 
-## What's changed since 2024
+## New since 2024, and the Christmas menus
 
 In 2024, Christmas at PortAventura ran from 23 November to 6 January. Christmas Dream at the Gran Teatro Imperial, La Navidad de Woody in Polynesia and Christmas Time at the Long Branch Saloon appear in neither the 2026 press release nor the calendar, and the Gran Teatro Imperial now plays Circo de Navidad. Bubble Magic Christmas, Ya es Navidad en SésamoAventura, the parade and the lake show were already there in 2024.
 

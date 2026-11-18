@@ -42,31 +42,31 @@ seo:
     - cómo llegar a PortAventura en tren
 ---
 
-El [PortAventura Park](ref:portaventura-park), en Salou, celebra la Navidad a partir del viernes 20 de noviembre con el nombre de Xmas World. Hasta el 6 de enero de 2027, el parque decora sus zonas según tradiciones navideñas de Cataluña a México, y en el Far West y en México se estrenan dos musicales. Este invierno es el último del espectáculo del lago La Llegada de los Emisarios Reales, que el parque renovará el año que viene. PortAventura lo anunció el 16 de noviembre.
+El [PortAventura Park](ref:portaventura-park), en Salou, celebra la Navidad a partir del viernes 20 de noviembre con el nombre de Xmas World. Hasta el 6 de enero de 2027, Mediterrània, China, México y el Far West se decoran cada uno según sus propias costumbres navideñas, y en el Far West y en México se estrenan dos musicales. Este invierno es el último del espectáculo del lago La Llegada de los Emisarios Reales, que el parque renovará el año que viene. PortAventura lo anunció el 16 de noviembre.
 
-## Navidad de Cataluña a México
+## Zonas decoradas y espectáculos de calle
 
 Mediterrània se viste de pueblo catalán, con un Tió de Nadal enorme. En el espectáculo itinerante El Tió de Nadal, los niños cantan y le dan con palos al tronco gigante hasta que suelta sorpresas. En catalán se dice «fer cagar el tió», y sí, significa exactamente lo que parece. En China cuelgan farolillos rojos y dorados que ya anuncian el Año Nuevo chino, y en Winter Imperial China un dragón recorre la Plaza Imperial con bailarines.
 
 México se llena de piñatas y papel picado. En México suena a Navidad, los vecinos del pueblo preparan una fiesta para el Pájaro Loco, y ¡Viva la Posada! pasa en procesión delante del restaurante La Hacienda, siguiendo la tradición de las posadas, en la que se pide alojamiento. Al final se rompe una piñata navideña.
 
-Al Far West le toca la Navidad clásica: guirnaldas, luces y árboles decorados. A las 17:15, en la calle principal de Penitence, los personajes hacen la cuenta atrás de Christmas Lights, se enciende el gran árbol de Navidad y cae nieve artificial sobre el pueblo. En What a Crazy Christmas salen los Crazy Brothers con Holly y sus bailarines, aunque todavía les falta Santa Claus. Cada uno de estos espectáculos de calle dura ocho minutos. En SésamoAventura, Coco, Elmo y Epi celebran la Navidad en el teatro con Ya es Navidad en SésamoAventura.
+El Far West parece un pueblo del Oeste sacado de una película navideña, con guirnaldas y luces, y a las 17:15, en la calle principal de Penitence, los personajes hacen la cuenta atrás de Christmas Lights hasta que se enciende el gran árbol. Luego cae nieve artificial sobre el pueblo. Los Crazy Brothers recorren el Far West con Holly y unos cuantos bailarines en What a Crazy Christmas, aunque Santa Claus todavía no ha aparecido. Cada uno de estos espectáculos de calle dura ocho minutos. En el teatro de SésamoAventura, Coco, Elmo y Epi tienen su propio espectáculo navideño, Ya es Navidad en SésamoAventura.
 
 ## Dos musicales nuevos con consumición mínima
 
-En el Saloon de Penitence se representa La Gran Rifa de Navidad. La pianista Sarah Joplin y Lilly Parsonn llevan años amañando la rifa navideña del pueblo, y esta vez el boleto ganador acaba en manos de un mendigo sin un céntimo. En La Cantina, en México, Navidad a la Mexicana repasa las costumbres del país hasta Nochebuena, con piñatas, villancicos y pastorelas.
+En el Saloon de Penitence se representa La Gran Rifa de Navidad. La pianista Sarah Joplin y Lilly Parsonn llevan años amañando la rifa navideña del pueblo, y esta vez el boleto ganador acaba en manos de un mendigo sin un céntimo. En La Cantina, en México, Navidad a la Mexicana repasa las costumbres del país hasta Nochebuena, con villancicos y pastorelas.
 
-Los dos duran entre 20 y 30 minutos y tienen consumición mínima. Para verlos tendrás que pedir algo, y en un saloon eso al menos pega con el decorado. Sin consumición puedes ver Circo de Navidad en el Gran Teatro Imperial de China, donde una niña sueña con el circo, y Bubble Magic Christmas en el Templo Mágico, donde un alquimista hace pompas de jabón. Además están Cuidemos el Planeta y El Bosque Encantado, un camino que sale delante de la Serpiente Emplumada, en México, y lleva a la casa de Santa Claus. Allí la foto es con Santa Claus hasta el 25 de diciembre y con uno de los Reyes Magos a partir del 26.
+Los dos duran entre 20 y 30 minutos y tienen consumición mínima. En un saloon, al menos, eso pega con el decorado. Sin consumición puedes ver Circo de Navidad en el Gran Teatro Imperial de China, donde una niña sueña con el circo, y Bubble Magic Christmas en el Templo Mágico, donde un alquimista hace pompas de jabón. Además están Cuidemos el Planeta y El Bosque Encantado, un camino que sale delante de la Serpiente Emplumada, en México, y lleva a la casa de Santa Claus. Allí la foto es con Santa Claus hasta el 25 de diciembre y con uno de los Reyes Magos a partir del 26.
 
 ## El desfile y el último espectáculo del lago
 
-Hacia el final del día, la Christmas Parade recorre el Paseo de Mediterrània con carrozas y personajes. Después, en La Llegada de los Emisarios Reales, los emisarios de los Reyes Magos llegan por el lago entre fuegos artificiales, acrobacias con flyboard y baile sobre el agua. Se inspira en la cabalgata de Reyes.
+Hacia el final del día, la Christmas Parade recorre el Paseo de Mediterrània con carrozas y personajes. Después, en La Llegada de los Emisarios Reales, los emisarios de los Reyes Magos llegan por el lago mientras estallan fuegos artificiales sobre ellos y unos acróbatas bailan sobre el agua con flyboards. Se inspira en la cabalgata de Reyes.
 
 ## Horarios
 
 Del 20 de noviembre al 6 de enero, el parque abre todos los días a las 10:30 y casi siempre cierra a las 18:00. Cierra a las 19:00 el 5, 6 y 7 de diciembre, del 27 al 30 de diciembre y del 1 al 4 de enero.
 
-El desfile y el espectáculo del lago no se hacen todos los días. En el calendario diario del parque aparecen el sábado 12 de diciembre, en Nochebuena y el 5 y 6 de enero a las 17:45 y a las 18:00. El domingo 27 de diciembre empiezan a las 18:45 y a las 19:00. El miércoles 2 de diciembre no figura ninguno de los dos, pero Christmas Lights sí. Para el viernes de la inauguración, el calendario solo recoge de momento cuatro espectáculos, ninguno de los nuevos y sin desfile.
+El desfile y el espectáculo del lago no se hacen todos los días. En el calendario diario del parque aparecen el sábado 12 de diciembre, en Nochebuena y el 5 y 6 de enero a las 17:45 y a las 18:00. El domingo 27 de diciembre empiezan a las 18:45 y a las 19:00. El miércoles 2 de diciembre no figura ninguno de los dos, pero Christmas Lights sí. Para el día de la inauguración, el viernes 20 de noviembre, el calendario solo recoge de momento cuatro espectáculos, ninguno de los nuevos y sin desfile.
 
 A partir del 7 de enero el parque cierra. Según el calendario, vuelve a abrir el viernes 19 de febrero, ese día de 16:00 a 21:00.
 
@@ -78,13 +78,13 @@ Las entradas reducidas para personas con una discapacidad del 33 % o más solo s
 
 ## Ferrari Land y Caribe en invierno
 
-En noviembre y a principios de diciembre, [Ferrari Land](ref:ferrari-land) solo abre los viernes de 17:00 a 22:00 y los fines de semana de 16:30 a 22:00, además del 7 y el 8 de diciembre. Del 18 de diciembre al 5 de enero abre a diario, casi siempre de 16:30 a 22:00, y en Nochebuena y Nochevieja de 13:00 a 19:00. El 6 de enero abre igualmente de 13:00 a 19:00, y después cierra también Ferrari Land. El PortAventura Park suele cerrar a las 18:00 y Ferrari Land abre hasta las 22:00. Por eso, los días en que abren los dos compensa la entrada de un día para ambos parques, desde 55 €, o desde 44 € con el código. Un día solo en Ferrari Land cuesta desde 19 €.
+En noviembre y a principios de diciembre, [Ferrari Land](ref:ferrari-land) solo abre los viernes de 17:00 a 22:00 y los fines de semana de 16:30 a 22:00, además del 7 y el 8 de diciembre. Del 18 de diciembre al 5 de enero abre a diario, casi siempre de 16:30 a 22:00, y en Nochebuena y Nochevieja de 13:00 a 19:00. El 6 de enero abre igualmente de 13:00 a 19:00, y después cierra también Ferrari Land. Los días en que abren los dos, cuando cierra el parque puedes pasar a Ferrari Land, justo al lado, y para eso compensa la entrada de un día para ambos parques, desde 55 €, o desde 44 € con el código. Un día solo en Ferrari Land cuesta desde 19 €.
 
 El Caribe Aquatic Park está cerrado en noviembre, diciembre y enero.
 
 ## Qué atracciones funcionan
 
-El sábado 12 y el domingo 27 de diciembre, el calendario diario recoge 36 atracciones, entre ellas [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) y Hurakan Condor. El día de la inauguración, el viernes 20 de noviembre, son 23, sin Stampida ni Furius Baco. El 2 de diciembre son 25. Tutuki Splash, Silver River Flume, Angkor y Sea Odyssey no figuran en ninguno de esos días. Grand Canyon Rapids funciona el 20 de noviembre y el 12 y el 27 de diciembre, siempre hasta las 17:00. PortAventura no ha publicado una lista de las atracciones cerradas por el invierno.
+El sábado 12 y el domingo 27 de diciembre, el calendario diario recoge 36 atracciones, entre ellas [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) y Hurakan Condor. El 20 de noviembre son 23, sin Stampida ni Furius Baco, y el 2 de diciembre, 25. Tutuki Splash, Silver River Flume, Angkor y Sea Odyssey no figuran en ninguno de esos días. Grand Canyon Rapids funciona el 20 de noviembre y el 12 y el 27 de diciembre, siempre hasta las 17:00. Que esas cuatro estén paradas todo el invierno es solo una suposición. PortAventura no ha publicado una lista de las atracciones cerradas por el invierno.
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days
 
@@ -104,7 +104,7 @@ En tren se llega a la estación propia de PortAventura World, donde paran las l�
 
 Para saltarte la cola están los pases Express: el Express ONE desde 7 €, el Express Unlimited desde 75 € y el Express Unlimited Plus desde 135 €. Nuestra [guía del PortAventura Park](/blog/portaventura-park-tiempos-de-espera-consejos) explica cuándo tiene menos cola cada atracción y cómo funcionan los pases.
 
-## Qué cambia respecto a 2024
+## Novedades desde 2024 y menús navideños
 
 En 2024, la Navidad de PortAventura duró del 23 de noviembre al 6 de enero. Christmas Dream en el Gran Teatro Imperial, La Navidad de Woody en Polynesia y Christmas Time en el Long Branch Saloon no aparecen en 2026 ni en la nota de prensa ni en el calendario, y en el Gran Teatro Imperial ahora se representa Circo de Navidad. Bubble Magic Christmas, Ya es Navidad en SésamoAventura, el desfile y el espectáculo del lago ya estaban en 2024.
 
