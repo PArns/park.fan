@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Ningún parque de Alemania vende más entradas, y aun así en Rust haces menos
-  cola que en el Phantasialand. Está más vacío los domingos y jueves de mayo y junio, fuera de las vacaciones escolares.
+  cola que en el Phantasialand. El Europa-Park está más vacío los domingos y jueves de mayo y junio, fuera de vacaciones.
 tags:
   - europa-park
   - voltron
@@ -852,15 +852,15 @@ todavía no con todas las atracciones.
 
 Con el inicio de la temporada de verano, el **20 de marzo de 2027**, suben los
 precios. El día online costará entonces **de 70 a 79,50 €** para adultos y
-**de 59 a 68 €** para niños y mayores; dos días, de 132,50 a 150 y de 109,50 a
-124,50 € respectivamente. Estos precios valen hasta el 9 de enero de 2028,
+**de 59 a 68 €** para niños y mayores. Dos días costarán de 132,50 a 150 y de
+109,50 a 124,50 € respectivamente. Estos precios valen hasta el 9 de enero de 2028,
 Halloween e invierno incluidos. El mejor precio para quien se aloja en el resort
 sube a 70 € por un día, 132,50 por dos y 167 por tres. El parque vende las
-entradas de la temporada 2027 desde el 10 de noviembre de 2026; nuestra noticia
-sobre la [subida de precios](/news/europa-park-precios-2027) incluye un cálculo
-de ejemplo para una familia.
+entradas de la temporada 2027 desde el 10 de noviembre de 2026. Hemos calculado
+lo que supone la [subida de precios](/news/europa-park-precios-2027) para una
+familia.
 
-El **ResortPass**, el abono anual, no está a la venta en noviembre de 2026 porque se ha agotado el cupo, y hasta nuevo aviso no habrá abonos nuevos. Así que de momento solo se puede admirar. Existe en plata desde 275 €, que solo vale en fechas fijadas de antemano, y en oro desde 430 €, que vale todos los días y con dos días de Rulantica. Para la mayoría de las familias salen más a cuenta, de todos modos, dos días seguidos.
+El **ResortPass**, el abono anual, no está a la venta hasta nuevo aviso, el cupo se ha agotado. Así que de momento solo se puede admirar. Existe en plata, que solo vale en fechas fijadas de antemano, y en oro, que vale todos los días y con dos días de Rulantica. Para la mayoría de las familias salen más a cuenta, de todos modos, dos días seguidos.
 
 **Cómo llegar.** El parque está justo en la **A5**, salida **57b Rust**, y desde
 ahí está señalizado. Por carretera, desde Friburgo son unos 40 kilómetros;
@@ -929,7 +929,8 @@ la Eurosat, y el Alpenexpress Coastiality 4 €.
 
 Hasta el 9 de enero de 2027, online, entre **67 y 76 €** para adultos y entre
 56,50 y 65 € para niños de 4 a 11 y para mayores, según la fecha. Desde el 20 de
-marzo de 2027 son **de 70 a 79,50 €** y de 59 a 68 €. Los menores de 4 no pagan
+marzo de 2027 los adultos pagan **de 70 a 79,50 €**, y los niños y mayores, de
+59 a 68 €. Los menores de 4 no pagan
 nada. En la taquilla del día se suman 10 € por entrada. Aparcar cuesta 10 €, y
 12 € desde el 20 de marzo de 2027.
 
@@ -964,7 +965,8 @@ HALLOWinter, y ese no cierra hasta las diecinueve.
 Las diez o doce atracciones más importantes en un día normal: sí. El parque
 entero, con 96 atracciones, espectáculos y 62 locales de restauración: no. Con
 dos días no se ahorra mucho: la entrada de dos días le cuesta a un adulto de 127
-a 143,50 €, así que el segundo día sale por unos 60 a 67,50 €.
+a 143,50 €, así que el segundo día sale por unos 60 a 67,50 €. Desde el 20 de marzo de
+2027, dos días le cuestan a un adulto de 132,50 a 150 €.
 
 ### ¿Merece la pena el Europa-Park en invierno?
 

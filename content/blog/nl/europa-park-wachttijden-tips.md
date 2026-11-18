@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Geen park in Duitsland verkoopt meer tickets, en toch sta je in Rust korter
-  in de rij dan in het Phantasialand. Het leegst is het op zondag en donderdag in mei en juni, buiten de schoolvakanties.
+  in de rij dan in het Phantasialand. Het Europa-Park is het leegst op zondag en donderdag in mei en juni, buiten vakanties.
 tags:
   - europa-park
   - voltron
@@ -829,15 +829,14 @@ maar nog niet met alle attracties.
 
 Bij de start van het zomerseizoen op **20 maart 2027** gaan de prijzen omhoog.
 Online betalen volwassenen dan **70 tot 79,50 €** per dag, kinderen en senioren
-**59 tot 68 €**; twee dagen kosten 132,50 tot 150 respectievelijk 109,50 tot
+**59 tot 68 €**. Twee dagen kosten 132,50 tot 150 respectievelijk 109,50 tot
 124,50 €. Die prijzen gelden tot 9 januari 2028, Halloween en winter inbegrepen.
 De beste prijs voor wie in het resort overnacht, stijgt naar 70 € voor één dag,
 132,50 voor twee en 167 voor drie. Tickets voor het seizoen 2027 verkoopt het
-park sinds 10 november 2026; in ons bericht over de
-[prijsverhoging](/news/europa-park-prijzen-2027) staat een rekenvoorbeeld voor
-een gezin.
+park sinds 10 november 2026. Voor een gezin hebben we de
+[prijsverhoging](/news/europa-park-prijzen-2027) doorgerekend.
 
-De **ResortPass**, de jaarkaart, is in november 2026 niet te koop, omdat het contingent op is, en tot nader order komen er geen nieuwe kaarten bij. Voorlopig kun je hem dus alleen bewonderen. Hij bestaat in zilver vanaf 275 €, alleen geldig op vooraf vastgelegde dagen, en in goud vanaf 430 €, geldig op alle dagen en met twee dagen Rulantica. Voor de meeste gezinnen leveren twee dagen achter elkaar sowieso meer op.
+De **ResortPass**, de jaarkaart, is tot nader order niet te koop, het contingent is op. Voorlopig kun je hem dus alleen bewonderen. Hij bestaat in zilver, alleen geldig op vooraf vastgelegde dagen, en in goud, geldig op alle dagen en met twee dagen Rulantica. Voor de meeste gezinnen leveren twee dagen achter elkaar sowieso meer op.
 
 **Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**, en is van
 daaraf bewegwijzerd. Over de weg is het vanuit Freiburg zo’n 40 kilometer,
@@ -901,7 +900,8 @@ Eurosat-rij, en de Alpenexpress Coastiality 4 €.
 
 Tot 9 januari 2027 online tussen **67 en 76 €** voor volwassenen en tussen 56,50
 en 65 € voor kinderen van 4 tot 11 en senioren, afhankelijk van de datum. Vanaf
-20 maart 2027 is het **70 tot 79,50 €** en 59 tot 68 €. Kinderen onder de 4
+20 maart 2027 betalen volwassenen **70 tot 79,50 €**, kinderen en senioren 59
+tot 68 €. Kinderen onder de 4
 betalen niets. Aan de dagkassa komt er 10 € per ticket bij. Parkeren kost 10 €,
 vanaf 20 maart 2027 12 €.
 
@@ -935,7 +935,8 @@ gaat het park zelf pas om negentien uur dicht.
 De belangrijkste tien tot twaalf attracties op een gewone dag: ja. Het hele park
 met 96 attracties, shows en 62 eetgelegenheden: nee. Veel bespaar je met twee
 dagen niet: het tweedagenticket kost voor volwassenen 127 tot 143,50 €, de
-tweede dag dus zo’n 60 tot 67,50 €.
+tweede dag dus zo’n 60 tot 67,50 €. Vanaf 20 maart 2027 kosten twee dagen voor
+volwassenen 132,50 tot 150 €.
 
 ### Is het Europa-Park in de winter de moeite waard?
 

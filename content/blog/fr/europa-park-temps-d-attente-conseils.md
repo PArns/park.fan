@@ -8,7 +8,7 @@ mode: published
 featured: false
 excerpt: >-
   Aucun parc d’Allemagne ne vend plus de billets, et pourtant tu patientes
-  moins à Rust qu’au Phantasialand. Il est au plus vide le dimanche et le jeudi en mai et juin, hors vacances scolaires.
+  moins à Rust qu’au Phantasialand. L’Europa-Park est au plus vide le dimanche et le jeudi en mai et juin, hors vacances.
 tags:
   - europa-park
   - voltron
@@ -858,15 +858,14 @@ attractions.
 
 Les prix augmentent au lancement de la saison d’été, le **20 mars 2027**. En
 ligne, la journée coûtera alors **70 à 79,50 €** pour les adultes et **59 à
-68 €** pour les enfants et les seniors, deux jours 132,50 à 150 € et 109,50 à
-124,50 €. Ces tarifs valent jusqu’au 9 janvier 2028, Halloween et hiver compris.
+68 €** pour les enfants et les seniors. Deux jours coûteront 132,50 à 150 € et
+109,50 à 124,50 €. Ces tarifs valent jusqu’au 9 janvier 2028, Halloween et hiver compris.
 Le meilleur prix pour les clients du resort passe à 70 € pour un jour, 132,50
 pour deux et 167 pour trois. Le parc vend les billets de la saison 2027 depuis
-le 10 novembre 2026 ; notre article sur la
-[hausse des prix](/news/europa-park-prix-2027) propose un exemple chiffré pour
-une famille.
+le 10 novembre 2026. Nous avons calculé ce que la
+[hausse des prix](/news/europa-park-prix-2027) représente pour une famille.
 
-Le **ResortPass**, la carte annuelle, n’est pas en vente en novembre 2026, car le contingent est épuisé, et il n’y aura pas de nouvelles cartes jusqu’à nouvel ordre. Pour l’instant, on ne peut donc que l’admirer. Il existe en argent à partir de 275 €, valable seulement à des dates fixées à l’avance, et en or à partir de 430 €, valable tous les jours et avec deux journées à Rulantica. Pour la plupart des familles, deux jours d’affilée rapportent de toute façon davantage.
+Le **ResortPass**, la carte annuelle, n’est plus en vente jusqu’à nouvel ordre, le contingent est épuisé. Pour l’instant, on ne peut donc que l’admirer. Il existe en argent, valable seulement à des dates fixées à l’avance, et en or, valable tous les jours et avec deux journées à Rulantica. Pour la plupart des familles, deux jours d’affilée rapportent de toute façon davantage.
 
 **Accès.** Le parc se trouve directement sur l’**A5**, sortie **57b Rust**, et il
 est fléché à partir de là. Par la route, il y a environ 40 kilomètres depuis
@@ -937,7 +936,8 @@ d’Eurosat, et l’Alpenexpress Coastiality 4 €.
 
 Jusqu’au 9 janvier 2027, en ligne, entre **67 et 76 €** pour les adultes et
 entre 56,50 et 65 € pour les enfants de 4 à 11 ans et les seniors, selon la
-date. À partir du 20 mars 2027, c’est **70 à 79,50 €** et 59 à 68 €. Les moins
+date. À partir du 20 mars 2027, les adultes paient **70 à 79,50 €**, les enfants et les
+seniors 59 à 68 €. Les moins
 de 4 ans ne paient rien. À la caisse du jour, 10 € par billet s’ajoutent. Le
 stationnement coûte 10 €, puis 12 € à partir du 20 mars 2027.
 
@@ -973,7 +973,8 @@ Les dix à douze attractions les plus importantes un jour normal : oui. Tout le
 parc avec ses 96 attractions, ses spectacles et ses 62 points de restauration :
 non. Deux jours ne font pas faire de grosse économie : le billet deux jours coûte
 aux adultes 127 à 143,50 €, la deuxième journée revient donc à environ 60 à
-67,50 €.
+67,50 €. À partir du 20 mars 2027, deux jours coûtent 132,50 à 150 € pour un
+adulte.
 
 ### L’Europa-Park vaut-il le coup en hiver ?
 

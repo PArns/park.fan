@@ -8,8 +8,8 @@ mode: published
 featured: false
 excerpt: >-
   No park in Germany sells more tickets, and yet you queue less in Rust than at
-  Phantasialand. It is quietest on Sundays and Thursdays in May and June,
-  outside the school holidays.
+  Phantasialand. Europa-Park is quietest on Sundays and Thursdays in May and
+  June, outside the holidays.
 tags:
   - europa-park
   - voltron
@@ -817,14 +817,13 @@ on weekdays, €70 at weekends, but not with every ride open yet.
 
 Prices go up when the summer season opens on **20 March 2027**. Online a day
 then costs **€70 to €79.50** for adults and **€59 to €68** for children and
-seniors; two days cost €132.50 to €150 and €109.50 to €124.50 respectively.
+seniors. Two days cost €132.50 to €150 and €109.50 to €124.50 respectively.
 These prices hold until 9 January 2028, Halloween and winter included. The best
 price for resort guests rises to €70 for one day, €132.50 for two and €167 for
-three. The park has been selling tickets for the 2027 season since 10 November
-2026, and our report on the [price rise](/news/europa-park-prices-2027) includes
-a worked example for a family.
+three. The park has been selling tickets for the 2027 season since 10 November 2026. We've worked out what the [price rise](/news/europa-park-prices-2027)
+means for a family.
 
-The **ResortPass**, the annual pass, isn’t on sale in November 2026 because the allocation is used up, and there won’t be new passes until further notice. So for now you can only admire it. It comes in silver from €275, valid only on dates fixed in advance, and in gold from €430, valid on every day and with two days at Rulantica. For most families two days back to back are worth more anyway.
+The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. So for now you can only admire it. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica. For most families two days back to back are worth more anyway.
 
 **Getting there.** The park sits directly on the **A5**, exit **57b Rust**, and
 is signposted from there. By road it’s around 40 kilometres from Freiburg,
@@ -887,7 +886,8 @@ Eurosat queue, and the Alpenexpress Coastiality at €4.
 
 Until 9 January 2027 it's between **€67 and €76** online for adults and between
 €56.50 and €65 for children aged 4 to 11 and seniors, depending on the date.
-From 20 March 2027 it's **€70 to €79.50** and €59 to €68. Under-4s pay nothing.
+From 20 March 2027 adults pay **€70 to €79.50**, children and seniors €59 to
+€68. Under-4s pay nothing.
 At the gate €10 per ticket is added. Parking costs €10, and €12 from 20 March 2027.
 
 ### How many roller coasters does Europa-Park have?
@@ -919,7 +919,8 @@ in HALLOWinter, which itself doesn’t close until seven.
 The ten or twelve most important attractions on a normal day: yes. The whole
 park with its 96 attractions, shows and 62 places to eat: no. Two days don’t
 save much: the two-day ticket costs adults €127 to €143.50, so the second day
-comes to around €60 to €67.50.
+comes to around €60 to €67.50. From 20 March 2027 two days cost adults €132.50
+to €150.
 
 ### Is Europa-Park worth it in winter?
 
