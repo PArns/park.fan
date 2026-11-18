@@ -53,7 +53,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> Taron now has two Quick Passes at €12 each: Daylight until 4 pm and After Dark from 5 pm. Chiapas is new in the shop too, at its winter price of €5.
+> Taron now has two Quick Passes at €12 each, Daylight until 4 pm and After Dark from 5 pm. The Ultimate includes both rides. Also new in the shop is Chiapas, at €5 in winter.
 
 [Phantasialand](ref:phantasialand) now sells its Quick Pass in the [park's online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Once you've paid, it arrives as a PDF by email, and at the ride's Quick Pass entrance you show the QR code from it on your phone. Until now you could only get one at Guest Services on the Kaiserplatz, in the Berlin area, which meant queuing first so you could queue less at a ride later.
 

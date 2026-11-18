@@ -53,7 +53,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> Para Taron hay ahora dos Quick Pass de 12 € cada uno: Daylight hasta las 16:00 y After Dark desde las 17:00. También es nuevo en la tienda Chiapas, a su precio de invierno de 5 €.
+> Taron tiene ahora dos Quick Pass de 12 € cada uno, Daylight hasta las 16:00 y After Dark desde las 17:00. El Ultimate incluye los dos viajes. Además, Chiapas es nuevo en la tienda, a 5 € en invierno.
 
 El Quick Pass del [Phantasialand](ref:phantasialand) ya se puede comprar en la [tienda online del parque](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Una vez pagado, te llega por correo electrónico en un PDF, y en la entrada Quick Pass de cada atracción enseñas en el móvil el código QR que trae. Hasta ahora solo se vendía en el servicio de atención al visitante de la Kaiserplatz, en el área temática Berlin, donde primero te tocaba hacer cola para ahorrarte después otra en una atracción.
 
