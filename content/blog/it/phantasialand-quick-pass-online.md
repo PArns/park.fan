@@ -91,13 +91,13 @@ Per Colorado Adventure il negozio chiede 7 €, mentre sulla pagina informativa 
 Il Quick Pass Ultimate costa 80 €. Ti fa passare una volta da ogni ingresso Quick Pass e ti dà una corsa veloce su [F.L.Y.](ref:phantasialand/fly), che non ha un pass singolo. Per Taron, secondo il negozio, l’Ultimate vale per «Daylight & After Dark», quindi sia di giorno sia di sera.
 
 > [!PARKY] Fatti un regalo
-> Gli otto pass singoli della tabella costano in tutto 58 €, l’Ultimate 22 € in più, e in cambio voliamo una volta più in fretta su F.L.Y. e facciamo Taron anche di giorno. Il posto sul treno non lo scegliamo comunque, eppure l’ho chiesto. Se tanto volevamo un pass per quasi tutto, prendiamo l’Ultimate.
+> Gli otto pass singoli della tabella costano in tutto 58 €, l’Ultimate 22 € in più, e in cambio voliamo una volta più in fretta su F.L.Y. e facciamo Taron anche di giorno. Su Talocan il pass ci garantisce il lato anteriore, e su Taron chiedo semplicemente un posto all’imbarco. Se tanto volevamo un pass per quasi tutto, prendiamo l’Ultimate.
 
 ## Cos’altro serve
 
 Il Quick Pass si paga a parte e vale solo insieme a un biglietto giornaliero valido. Il parco vende i biglietti giornalieri solo online, una biglietteria all’ingresso non ce l’ha, e per il giorno stesso della visita il tuo lo compri fino alle 14. Chi si presenta al cancello alle due e mezza senza biglietto ha un problema più grosso della coda di Black Mamba.
 
-Il posto sul treno non lo scegli nemmeno con il pass, e l’altezza minima vale lo stesso: per Taron 1,30 m.
+Su Taron aiuta chiedere un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore. L’altezza minima vale lo stesso anche con il pass: per Taron 1,30 m.
 
 ## Se l’ingresso si ferma o l’attrazione chiude
 
@@ -123,3 +123,6 @@ Al servizio ospiti i pass erano in numero limitato. Al Wintertraum nei fine sett
 Per esperienza, in un giorno verde del calendario il Quick Pass non serve se sei al cancello all’apertura. In un sabato di vacanze tutto rosso, i 10 € per Black Mamba li spenderei prima di mettermi in coda a mezzogiorno. Senza pass faccio le attrazioni nell’ordine della [guida al Phantasialand](/blog/phantasialand-tempi-di-attesa-consigli).
 
 Fonti: [Quick Pass nel negozio online del Phantasialand](https://shop.phantasialand.de/en/quick-pass), [Condizioni d’uso del Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informazioni e come arrivare, sezione Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prezzi e biglietti](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Orari di apertura](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
+
+> [!CORRECTION]
+> 18 novembre 2026: la prima versione diceva che il posto sul treno non lo scegli nemmeno con il pass. Su Taron aiuta chiedere un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore.

@@ -91,13 +91,13 @@ For Colorado Adventure the shop charges €7, while the park's info page still l
 The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and once onto [F.L.Y.](ref:phantasialand/fly), which has no single pass of its own. For Taron, the shop says the Ultimate covers "Daylight & After Dark".
 
 > [!PARKY] Treat yourself
-> The eight single passes in the table add up to €58, the Ultimate costs €22 more, and for that we fly F.L.Y. once with a shorter wait and ride Taron by day too. It still doesn’t let us pick our seats, though I did ask. If we were going to buy a pass for nearly everything anyway, we get the Ultimate.
+> The eight single passes in the table add up to €58, the Ultimate costs €22 more, and for that we fly F.L.Y. once with a shorter wait and ride Taron by day too. At Talocan a pass guarantees us the front side, and at Taron I just ask for a seat at the platform. If we were going to buy a pass for nearly everything anyway, we get the Ultimate.
 
 ## What else you need
 
 The Quick Pass costs extra and only works with a valid day ticket. Day tickets are sold online only, since there's no ticket office, and for the day itself the park sells them until 2 pm. Turn up at the gate at half past two without one and you have a bigger problem than the queue for Black Mamba.
 
-Even with a pass you don't get to pick your seat on the train, and the height limits apply with a pass too, 1.30 m for Taron.
+At Taron it helps to ask for a particular seat at the platform, and at Talocan the Quick Pass guarantees you the front side. The height limits apply with a pass too, 1.30 m for Taron.
 
 ## When the entrance pauses or the ride is down
 
@@ -123,3 +123,6 @@ At Guest Services there were only so many, and at Wintertraum they were often go
 In my experience you don't need a Quick Pass on a green day in the calendar if you're at the gate when the park opens. On a deep-red Saturday in the school holidays I'd rather spend the €10 on Black Mamba than join its queue at midday. Without a pass I ride in the order from the [Phantasialand tips](/blog/phantasialand-wait-times-tips).
 
 Sources: [Quick Pass in the Phantasialand online shop](https://shop.phantasialand.de/en/quick-pass), [Quick Pass terms of use](https://www.phantasialand.de/de/quick-pass/), [Information and directions, Quick Pass section](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prices and tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Opening hours](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
+
+> [!CORRECTION]
+> 18 November 2026: The first version said that even with a Quick Pass you don't get to pick your seat. At Taron it helps to ask for a particular seat at the platform, and at Talocan the Quick Pass guarantees you the front side.

@@ -91,13 +91,13 @@ Por Colorado Adventure la tienda pide 7 €, mientras que la página informativa
 El Quick Pass Ultimate cuesta 80 €. Te da una pasada por cada entrada Quick Pass y un acceso rápido a [F.L.Y.](ref:phantasialand/fly), que no tiene pase suelto. Para Taron, según la tienda, el Ultimate vale para «Daylight & After Dark», o sea, de día y de noche.
 
 > [!PARKY] Date un capricho
-> Los ocho pases sueltos de la tabla suman 58 €, el Ultimate cuesta 22 € más, y a cambio volamos una vez más rápido en F.L.Y. y montamos en Taron también de día. El asiento en el tren tampoco lo elegimos, y mira que lo pregunté. Si de todos modos íbamos a comprar pase para casi todo, nos quedamos con el Ultimate.
+> Los ocho pases sueltos de la tabla suman 58 €, el Ultimate cuesta 22 € más, y a cambio volamos una vez más rápido en F.L.Y. y montamos en Taron también de día. En Talocan el pase nos garantiza el lado delantero, y en Taron yo pido sitio en el andén y listo. Si de todos modos íbamos a comprar pase para casi todo, nos quedamos con el Ultimate.
 
 ## Qué más necesitas
 
 El Quick Pass se paga aparte y solo vale junto con una entrada de día válida. El parque vende las entradas de día solo online, no tiene taquilla, y para el mismo día de la visita puedes comprar la tuya hasta las 14:00. Quien llegue a la puerta a las dos y media sin entrada tiene un problema mayor que la cola de Black Mamba.
 
-Con el pase tampoco eliges asiento en el tren, y la altura mínima se aplica igual: en Taron, 1,30 m.
+En Taron ayuda pedir un asiento concreto en el andén, y en Talocan el Quick Pass te garantiza el lado delantero. La altura mínima se aplica igual con el pase: en Taron, 1,30 m.
 
 ## Si pausan la entrada Quick Pass o se para la atracción
 
@@ -123,3 +123,6 @@ En atención al visitante los pases eran limitados. En el Wintertraum solían ag
 Por mi experiencia, en un día verde del calendario el Quick Pass no hace falta si estás en la puerta a la hora de apertura. En un sábado de vacaciones en rojo intenso, yo gastaría los 10 € en Black Mamba antes de meterme en su cola a mediodía. Sin pase, monto en el orden de los [consejos para el Phantasialand](/blog/phantasialand-tiempos-de-espera-consejos).
 
 Fuentes: [Quick Pass en la tienda online del Phantasialand](https://shop.phantasialand.de/en/quick-pass), [condiciones de uso del Quick Pass](https://www.phantasialand.de/de/quick-pass/), [información y cómo llegar, apartado Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [precios y entradas](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [horarios](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
+
+> [!CORRECTION]
+> 18 de noviembre de 2026: la primera versión decía que con el pase tampoco eliges asiento en el tren. En Taron ayuda pedir un asiento concreto en el andén, y en Talocan el Quick Pass te garantiza el lado delantero.
