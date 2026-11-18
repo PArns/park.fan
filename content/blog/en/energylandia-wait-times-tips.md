@@ -6,7 +6,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  At opening time in Zator, the Space Booster is the ride most worth heading for first. In Winter Kingdom, from 28 November, you can ride Hyperion and Zadra too.
+  At opening time in Zator, the Space Booster is the ride most worth heading for first. Winter Kingdom opens on 28 November, and Hyperion and Zadra run through the winter.
 tags:
   - energylandia
   - wait-times
@@ -59,7 +59,7 @@ The park has seven themed areas: the Little Kids Zone (Bajkolandia in Polish), t
 
 ### Extreme Zone
 
-The tallest ride in the park is [Hyperion](ref:energylandia/pepsi-hyperion?bare), officially Pepsi Hyperion. Intamin built the mega coaster, and it first ran on 14 July 2018, the park's fourth birthday. The top of the lift is at 77 metres. The first drop falls 82 metres (park figure: over 80) at an angle of 85 degrees, and at the bottom the train reaches 141.9 km/h (park figure: 142). The 1,450-metre track has one inversion and forces of up to 4.8 G. Two trains of 28 seats each carry 1,300 riders an hour. When it opened for the 2018 season, Hyperion was the tallest and fastest mega coaster in Europe, by Energylandia's account.
+The tallest ride in the park is [Hyperion](ref:energylandia/pepsi-hyperion?bare), officially Pepsi Hyperion. Intamin built the mega coaster, and it first ran on 14 July 2018, the park's fourth birthday. The top of the lift is at 77 metres. The first drop falls 82 metres according to the RCDB (park figure: over 80) at an angle of 85 degrees, and at the bottom the train reaches 141.9 km/h, again by the RCDB (park figure: 142). The 1,450-metre track has one inversion and forces of up to 4.8 G. Two trains of 28 seats each carry 1,300 riders an hour. When it opened for the 2018 season, Hyperion was the tallest and fastest mega coaster in Europe, by Energylandia's account.
 
 [Mayan Zero Limitów](ref:energylandia/mayan-zero-limitow?bare) is a Vekoma Suspended Looping Coaster, the standard 689-metre model, and it opened on 12 September 2015. You hang below the track, climb to 33.3 metres, reach 80 km/h and go upside down five times, and the park quotes up to 5 G. The suffix in the name dates from 2026 and comes from a tie-up with Kanał Zero. "Zero limits" applies to the name only. At the entrance you still need to be 140 centimetres tall.
 
@@ -67,15 +67,15 @@ The tallest ride in the park is [Hyperion](ref:energylandia/pepsi-hyperion?bare)
 
 ```
 
-Intamin also built [Speed](ref:energylandia/speed-water-coaster?bare), full name Speed Water Coaster, which opened on 2 April 2018. It's 50 metres tall (park figure: over 60) and reaches 101 km/h (park figure: around 110). Its 687 metres of track have no inversions, and you pull 3 G.
+Intamin also built [Speed](ref:energylandia/speed-water-coaster?bare), full name Speed Water Coaster, which opened on 2 April 2018. The RCDB lists it as 50 metres tall (park figure: over 60) with a top speed of 101 km/h (park figure: around 110). Its 687 metres of track have no inversions, and you pull 3 G.
 
 ```glossary-widget slug=water-coaster
 
 ```
 
-[Formuła](ref:energylandia/formula?bare) followed on 25 June 2016, a Vekoma Space Warp with a linear motor. The launch takes the train to 79.2 km/h in two seconds. Energylandia's figure is 100, which on a ride named after motor racing is maybe forgivable. It's 24.8 metres tall and 560 metres long, with three inversions and 3.8 G (park figure: 4.5).
+[Formuła](ref:energylandia/formula?bare), a Vekoma Space Warp launched by a linear motor, opened on 25 June 2016, two years before Speed. The launch takes the train to 79.2 km/h in two seconds according to the RCDB (park figure: 100), which on a ride named after motor racing is maybe forgivable. It's 24.8 metres tall according to the RCDB (park figure: 24.7) and 560 metres long, with three inversions and 3.8 G (park figure: 4.5).
 
-The oldest coaster in the area is [Viking](ref:energylandia/viking?bare), a spinning wild mouse by SBF Visa, model MX52, which was already running on opening day, 14 July 2014. It's 11 metres tall (park figure: 13) and 310 metres long (park figure: 320), with a top speed of 43 km/h.
+The oldest coaster in the area is [Viking](ref:energylandia/viking?bare), a spinning wild mouse by SBF Visa, model MX52, which was already running on opening day, 14 July 2014. In the RCDB it's 11 metres tall (park figure: 13) and 310 metres long (park figure: 320), with a top speed of 43 km/h.
 
 The Extreme Zone also has five rides that don't run on coaster track:
 
@@ -89,49 +89,49 @@ The Extreme Zone also has five rides that don't run on coaster track:
 
 Energylandia built its fifth area, Smoczy Gród, for [Zadra](ref:energylandia/zadra-made-in-malopolska?bare). It covers five hectares and took eleven months to build, from November 2018 to August 2019. The coaster's full name is Made in Małopolska Zadra, and it opened on 22 August 2019. Rocky Mountain Construction built it with its I-Box track, and the first drop is a vertical 90 degrees.
 
-Zadra is 62.8 metres tall (park figure: 63.8, and 63 elsewhere on its site). No hybrid coaster in the world is taller, and Iron Gwazi in Tampa matches it in the RCDB. Zadra reaches 121 km/h, goes upside down three times along 1,316 metres of track, and it's all over in 1 minute 50.
+Zadra is 62.8 metres tall according to the RCDB (park figure: 63.8, and 63 elsewhere on its site). No hybrid coaster in the world is taller, and Iron Gwazi in Tampa matches it in the RCDB. Zadra reaches 121 km/h, goes upside down three times along 1,316 metres of track, and it's all over in 1 minute 50.
 
 ```glossary-widget slug=hybrid-coaster
 
 ```
 
-A month before Zadra, on 20 July 2019, two family coasters opened in the same area. [Frida](ref:energylandia/frida?bare) is a Vekoma junior coaster, 13 metres tall and 247 metres long, with a top speed of 44.6 km/h. [Draken](ref:energylandia/draken?bare) comes from Preston & Barbieri, a family coaster with 140 metres of track and a height of 7.3 metres. It runs at 34.4 km/h (park figure: 34.5).
+A month before Zadra, on 20 July 2019, two family coasters opened in the same area. [Frida](ref:energylandia/frida?bare) is a Vekoma junior coaster, 13 metres tall and 247 metres long, with a top speed of 44.6 km/h. [Draken](ref:energylandia/draken?bare) comes from Preston & Barbieri, a family coaster with 140 metres of track and a height of 7.3 metres. It runs at 34.4 km/h according to the RCDB (park figure: 34.5).
 
-Preston & Barbieri also made [Dragon Adventure](ref:energylandia/dragon-adventure?bare), a 270-metre ride at 3.5 km/h, which is about the speed of a slow stroll. The [Wonder Wheel](ref:energylandia/wonder-wheel?bare), a 53-metre Ferris wheel, has been turning in the Dragon Zone since 28 June 2022. [Fuego](ref:energylandia/fuego?bare) is in the Dragon Zone as well.
+Preston & Barbieri also made [Dragon Adventure](ref:energylandia/dragon-adventure?bare), a 270-metre ride at 3.5 km/h, which is about the speed of a slow stroll. The [Wonder Wheel](ref:energylandia/wonder-wheel?bare), a 53-metre Ferris wheel, has been turning since 28 June 2022 in the Dragon Zone, which is also home to [Fuego](ref:energylandia/fuego?bare).
 
 ### Aqualantis
 
 Aqualantis opened on the park's seventh birthday, 14 July 2021, with eight food courts and three shops. Its biggest ride is [Abyssus](ref:energylandia/abyssus?bare), a Vekoma Shockwave launched by linear motors. The track is 1,316 metres long, exactly as long as Zadra's to the metre. The highest point is 38.5 metres, the train reaches 100 km/h, and the RCDB counts four inversions. On Energylandia's site Abyssus is a "Double Coaster" with a ride time of up to two minutes and 4.5 G.
 
-[Ekipa Light Explorers](ref:energylandia/ekipa-light-explorers?bare) opened the same day, a Vekoma Family Boomerang that's 24.2 metres tall, 238 metres long and reaches 60 km/h. The [Tidal Wave Twister](ref:energylandia/tidal-wave-twister?bare) by Zamperla covers 90 metres at 51 km/h. Only the park counts it as a roller coaster: the RCDB leaves it out, and Wikipedia lists it as a Disk'O, which makes it a flat ride.
+[Ekipa Light Explorers](ref:energylandia/ekipa-light-explorers?bare) opened the same day, a Vekoma Family Boomerang that's 24.2 metres tall, 238 metres long and reaches 60 km/h. The [Tidal Wave Twister](ref:energylandia/tidal-wave-twister?bare) by Zamperla covers 90 metres at 51 km/h. The park counts it among its 20 coasters. The RCDB leaves it out, and Wikipedia lists it as a Disk'O, a flat ride.
 
-Aqualantis also has the [Grotto Expedition](ref:energylandia/grotto-expedition?bare), [Submarine Dive](ref:energylandia/submarine-dive?bare), [Whirlpool Water Fight](ref:energylandia/whirlpool-water-fight?bare), [Magic Pump](ref:energylandia/magic-pump?bare), [Stormy Ship](ref:energylandia/stormy-ship?bare) and [Burning Engine](ref:energylandia/burning-engine?bare).
+The [Grotto Expedition](ref:energylandia/grotto-expedition?bare), [Submarine Dive](ref:energylandia/submarine-dive?bare), [Whirlpool Water Fight](ref:energylandia/whirlpool-water-fight?bare), [Magic Pump](ref:energylandia/magic-pump?bare), [Stormy Ship](ref:energylandia/stormy-ship?bare) and [Burning Engine](ref:energylandia/burning-engine?bare) complete the area.
 
 ### Family Zone
 
-In the Family Zone you hang beneath the track on [RMF Dragon](ref:energylandia/rmf-dragon?bare), a Vekoma Suspended Family Coaster. It opened on 4 June 2015 and is 19.3 metres tall (park figure: 20). Over 453 metres it takes the curves at up to 75.6 km/h and 3.5 G.
+In the Family Zone you hang beneath the track on [RMF Dragon](ref:energylandia/rmf-dragon?bare), a Vekoma Suspended Family Coaster. It opened on 4 June 2015 and is 19.3 metres tall according to the RCDB (park figure: 20). Over 453 metres it takes the curves at up to 75.6 km/h and 3.5 G.
 
 ```glossary-widget slug=suspended-coaster
 
 ```
 
-In the RCDB the [Boomerang](ref:energylandia/boomerang?bare) is a Vekoma Family Boomerang, Rebound model, opened on 29 April 2017. The Polish Wikipedia also gives April 2017, while Energylandia gives 2018 as the opening year. It has 205 metres of track (park figure: 200), a height of 23 metres (park figure: 25) and a top speed of 60 km/h (park figure: 70). A ride lasts 1 minute 36, forwards and then backwards along the same track.
+In the RCDB the [Boomerang](ref:energylandia/boomerang?bare) is a Vekoma Family Boomerang, Rebound model, opened on 29 April 2017. The Polish Wikipedia also gives April 2017, while Energylandia gives 2018 as the opening year. It has 205 metres of track according to the RCDB (park figure: 200), a height of 23 metres (park figure: 25) and a top speed of 60 km/h (park figure: 70). A ride lasts 1 minute 36, forwards and then backwards along the same track.
 
-Two coasters in the Family Zone date from the first year, 2014, and both are by SBF Visa. [Mars](ref:energylandia/mars?bare) is an MX610 family coaster, 150 metres long and 6 metres tall, with a top speed of 24.6 km/h (park figure: 24.7). [Frutti Loop](ref:energylandia/frutti-loop?bare), a Wacky Worm caterpillar ride, has 90 metres of track, a height of 3.7 metres and a top speed of 20 km/h.
+Two coasters in the Family Zone date from the first year, 2014, and both are by SBF Visa. [Mars](ref:energylandia/mars?bare) is an MX610 family coaster, 150 metres long and 6 metres tall, with a top speed of 24.6 km/h according to the RCDB (park figure: 24.7). [Frutti Loop](ref:energylandia/frutti-loop?bare), a Wacky Worm caterpillar ride, has 90 metres of track, a height of 3.7 metres and a top speed of 20 km/h.
 
-These Family Zone rides run without coaster track:
+In the Family Zone, Intamin and SBF Visa also built rides without coaster track:
 
 - [Anaconda](ref:energylandia/anaconda?bare) by Intamin, 497 metres, 55 km/h, due to open in 2027
 - [Toffifee Kopalnia Złota](ref:energylandia/toffifee-kopalnia-zlota?bare) by SBF Visa, 180 metres, 12 metres tall, 30 km/h, children aged 6 to 13 only with an adult
 - [Jungle Adventure](ref:energylandia/jungle-adventure?bare) by Intamin, 486 metres at 20 km/h
 
-The Family Zone also has [Atlantis](ref:energylandia/atlantis?bare), [Splash Battle](ref:energylandia/splash-battle?bare), the [Swiss Water Cups](ref:energylandia/swiss-water-cups?bare), the [Formula Autodrom](ref:energylandia/formula-autodrom?bare), the Muertos House, The Planes Ride and the [Viking Ride](ref:energylandia/viking-ride?bare).
+The park's list for the Family Zone goes on with [Atlantis](ref:energylandia/atlantis?bare), [Splash Battle](ref:energylandia/splash-battle?bare), the [Swiss Water Cups](ref:energylandia/swiss-water-cups?bare), the [Formula Autodrom](ref:energylandia/formula-autodrom?bare), the Muertos House, The Planes Ride and the [Viking Ride](ref:energylandia/viking-ride?bare).
 
 ### Little Kids Zone (Bajkolandia)
 
-For children aged two to six there are 20 attractions in the Little Kids Zone and 28 across the whole park, by Energylandia's count. The biggest coaster here is [Śmiejżelki Energuś](ref:energylandia/smiejzelki-energus?bare), a Vekoma junior coaster from May 2015. It's 335 metres long and 13 metres tall, reaches 45.9 km/h (park figure: 45), and Energylandia adds 3 G.
+For children aged two to six there are 20 attractions in the Little Kids Zone and 28 across the whole park, by Energylandia's count. The biggest coaster here is [Śmiejżelki Energuś](ref:energylandia/smiejzelki-energus?bare), a Vekoma junior coaster from May 2015. It's 335 metres long and 13 metres tall, reaches 45.9 km/h according to the RCDB (park figure: 45), and Energylandia adds 3 G.
 
-[Happy Loops](ref:energylandia/happy-loops?bare) and the [Circus Coaster](ref:energylandia/circus-coaster?bare) arrived in 2017, both from SBF Visa, which the park lists as Visa Rides. Happy Loops is a spinning coaster, 7 metres tall, with a top speed of 29.9 km/h (park figure: 30) and 113 metres of track (park figure: 90). The Circus Coaster opened on 17 April 2017. It's a powered coaster with no lift hill, 32 metres of track and a top speed of 12.1 km/h (park figure: 12).
+[Happy Loops](ref:energylandia/happy-loops?bare) and the [Circus Coaster](ref:energylandia/circus-coaster?bare) arrived in 2017, both from SBF Visa, which the park lists as Visa Rides. Happy Loops is a spinning coaster, 7 metres tall, with a top speed of 29.9 km/h according to the RCDB (park figure: 30) and 113 metres of track (park figure: 90). The Circus Coaster opened on 17 April 2017. It's a powered coaster with no lift hill, 32 metres of track and a top speed of 12.1 km/h according to the RCDB (park figure: 12).
 
 For the smallest children, who'll find even Energuś too fast, there's the [WRC Auto Zderzaki](ref:energylandia/wrc-auto-zderzaki?bare) bumper cars, the [Jeep Safari](ref:energylandia/jeep-safari?bare), [Magic Fly](ref:energylandia/magic-fly?bare), the [Farma Krasnali](ref:energylandia/farma-krasnali?bare) and the [Wyspa Skarbów](ref:energylandia/wyspa-skarbow?bare).
 
@@ -143,21 +143,21 @@ Sweet Valley, the seventh area, opened on 27 April 2024 and covers four hectares
 
 ```
 
-Sweet Valley also has the [Bon Bon Balloon](ref:energylandia/bon-bon-balloon?bare), the [Candy Carousel](ref:energylandia/candy-carousel?bare), [Mokate Twist](ref:energylandia/mokate-twist?bare), the [Candy Critters](ref:energylandia/candy-critters?bare), the [Bumble Boats](ref:energylandia/bumble-boats?bare), the [Crazy Barn](ref:energylandia/crazy-barn?bare) and the [Mini Track' Tour Ride](ref:energylandia/mini-track-tour-ride?bare).
+The rest of Sweet Valley is made up of the [Bon Bon Balloon](ref:energylandia/bon-bon-balloon?bare), the [Candy Carousel](ref:energylandia/candy-carousel?bare), [Mokate Twist](ref:energylandia/mokate-twist?bare), the [Candy Critters](ref:energylandia/candy-critters?bare), the [Bumble Boats](ref:energylandia/bumble-boats?bare), the [Crazy Barn](ref:energylandia/crazy-barn?bare) and the [Mini Track' Tour Ride](ref:energylandia/mini-track-tour-ride?bare).
 
 ### Water Park
 
-The Water Park has been open since summer 2016. It's included in admission, and Energylandia doesn't sell a separate ticket for it. In 2018 the park added Tropical Fun, with 14 slides and 150 single and double rings, and since then it says the Water Park is the largest outdoor water park in Poland. [Exotic Island](ref:energylandia/exotic-island?bare) followed in 2021 and [Bamboo Bay](ref:energylandia/bamboo-bay?bare) on 28 June 2022. There are lockers for your phone and wallet, so swimwear, a towel, flip-flops and sun cream can go in your bag in the morning.
+The Water Park has been open since summer 2016. It's included in admission, and Energylandia doesn't sell a separate ticket for it. In 2018 the park added Tropical Fun, with 14 slides and 150 single and double rings, and since then it says the Water Park is the largest outdoor water park in Poland. [Exotic Island](ref:energylandia/exotic-island?bare) followed in 2021 and [Bamboo Bay](ref:energylandia/bamboo-bay?bare) on 28 June 2022. Swimwear, a towel, flip-flops and sun cream go in your bag in the morning, and your phone and wallet can wait in a locker while you're on the slides.
 
 ### Height limits
 
 The park sets a minimum and a maximum height for every attraction; on Hyperion and Speed, for instance, the cut-off is 195 cm. Where it says "with an adult", children between the two heights given can only ride with an adult.
 
-- 140 cm and up: Hyperion (up to 195 cm), Zadra, Mayan Zero Limitów, Speed (up to 195 cm), Viking (also aged 12 and up), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (ages 4 to 12 with an adult), Rokan
+- 140 cm and up: Hyperion (up to 195 cm), Zadra, Mayan Zero Limitów (with an adult), Speed (up to 195 cm), Viking (also aged 12 and up), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (ages 4 to 12 with an adult), Rokan
 - 140 to 195 cm: Space Booster, Space Gun, Aztec Swing, Apocalypto
 - 130 to 195 cm: Tsunami Drop
 - 130 cm and up: Dragon Adventure (children aged 2 to 13 with an adult)
-- 120 cm and up: Formuła, Formula Autodrom, Draken (ages 4 to 13 with an adult), Mars, Frutti Loop and Happy Loops (each ages 4 to 12 with an adult), Circus Coaster (ages 2 to 13 with an adult)
+- 120 cm and up: Formuła (with an adult), Formula Autodrom, Draken (ages 4 to 13 with an adult), Mars, Frutti Loop and Happy Loops (each ages 4 to 12 with an adult), Circus Coaster (ages 2 to 13 with an adult)
 - 120 to 140 cm with an adult: Abyssus, Choco Chip Creek, Anaconda, Jungle Adventure
 - 120 to 130 cm with an adult: RMF Dragon
 - 100 to 120 cm with an adult: Ekipa Light Explorers, Frida, Boomerang, Śmiejżelki Energuś, Honey Harbour
@@ -343,7 +343,7 @@ The [Energylandia park page](ref:energylandia) on park.fan has the current wait 
 
 ### How busy is Energylandia, and is there a crowd calendar?
 
-The [wait-time calendar](ref:energylandia?calendar) shows the expected crowd level for every open day. We measure the longest queues at Zadra, Hyperion, Speed and RMF Dragon.
+The [wait-time calendar](ref:energylandia?calendar) shows the expected crowd level for every open day. The table under "How busy it gets" has the typical and the peak wait we've measured at individual rides.
 
 ### What are Energylandia's opening hours?
 
@@ -359,7 +359,7 @@ Energylandia says spring 2027 and hasn't given a date yet. Rokan opens together 
 
 ### Is Rokan the tallest wing coaster?
 
-In Europe it is, according to Energylandia: the Bolliger & Mabillard ride will be 62 metres tall and 1,215 metres long, which makes it the tallest and longest wing coaster on the continent.
+In Europe it is, going by Energylandia's figures, since no wing coaster on the continent is taller than 62 metres or longer than 1,215 metres.
 
 ### How many roller coasters does Energylandia have?
 

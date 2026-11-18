@@ -73,7 +73,7 @@ La atracción más alta del parque es [Hyperion](ref:energylandia/pepsi-hyperion
 
 ```
 
-El 25 de junio de 2016 se sumó [Formuła](ref:energylandia/formula?bare), un Space Warp de Vekoma con motor lineal. Según la RCDB, el lanzamiento pone el tren a 79,2 km/h en dos segundos. El parque dice 100, y con semejante nombre cuesta reprocharle que redondee hacia arriba. La atracción mide 24,8 metros de alto y 560 de largo y tiene tres inversiones. Según la RCDB se llega a 3,8 G (4,5 según el parque).
+El 25 de junio de 2016 se sumó [Formuła](ref:energylandia/formula?bare), un Space Warp de Vekoma con motor lineal. Según la RCDB, el lanzamiento pone el tren a 79,2 km/h en dos segundos; el parque da 100, y con semejante nombre cuesta reprocharle que redondee hacia arriba. La RCDB le da 24,8 metros de alto (24,7 según el parque) y 560 de largo, con tres inversiones y hasta 3,8 G (4,5 según el parque).
 
 La montaña rusa más antigua de la zona es [Viking](ref:energylandia/viking?bare), un ratón salvaje con coches giratorios de SBF Visa, modelo MX52. Ya funcionaba el día de la inauguración, el 14 de julio de 2014. Según la RCDB tiene 11 metros de altura (13 según el parque) y 310 metros de recorrido (320 según el parque), y va a 43 km/h.
 
@@ -153,11 +153,11 @@ El Water Park existe desde el verano de 2016. Está incluido en la entrada, y En
 
 El parque fija para cada atracción una estatura mínima y una máxima, y en Hyperion y Speed, por ejemplo, el tope está en 195 cm. Donde pone «acompañados», los niños que miden entre las dos cifras indicadas solo suben con un adulto.
 
-- desde 140 cm: Hyperion (hasta 195 cm), Zadra, Mayan Zero Limitów, Speed (hasta 195 cm), Viking (y desde 12 años), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (de 4 a 12 años, acompañados), Rokan
+- desde 140 cm: Hyperion (hasta 195 cm), Zadra, Mayan Zero Limitów (acompañados), Speed (hasta 195 cm), Viking (y desde 12 años), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (de 4 a 12 años, acompañados), Rokan
 - de 140 a 195 cm: Space Booster, Space Gun, Aztec Swing, Apocalypto
 - de 130 a 195 cm: Tsunami Drop
 - desde 130 cm: Dragon Adventure (niños de 2 a 13 años, acompañados)
-- desde 120 cm: Formuła, Formula Autodrom, Draken (de 4 a 13 años, acompañados), Mars, Frutti Loop y Happy Loops (en ambas, de 4 a 12 años acompañados), Circus Coaster (de 2 a 13 años, acompañados)
+- desde 120 cm: Formuła (acompañados), Formula Autodrom, Draken (de 4 a 13 años, acompañados), Mars, Frutti Loop y Happy Loops (en ambas, de 4 a 12 años acompañados), Circus Coaster (de 2 a 13 años, acompañados)
 - de 120 a 140 cm, acompañados: Abyssus, Choco Chip Creek, Anaconda, Jungle Adventure
 - de 120 a 130 cm, acompañados: RMF Dragon
 - de 100 a 120 cm, acompañados: Ekipa Light Explorers, Frida, Boomerang, Śmiejżelki Energuś, Honey Harbour
@@ -343,7 +343,7 @@ En la [página de Energylandia](ref:energylandia) en park.fan están los tiempos
 
 ### ¿Cuánta gente hay en Energylandia, y hay un calendario de afluencia?
 
-En el [calendario de tiempos de espera](ref:energylandia?calendar) aparece, para cada día de apertura, el nivel de afluencia previsto. Las colas más largas las medimos en Zadra, Hyperion, Speed y RMF Dragon.
+En el [calendario de tiempos de espera](ref:energylandia?calendar) aparece, para cada día de apertura, el nivel de afluencia previsto. La tabla del apartado «Cuánta gente hay» recoge, atracción por atracción, la espera habitual y la máxima que hemos medido.
 
 ### ¿Cuál es el horario de Energylandia?
 

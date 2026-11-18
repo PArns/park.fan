@@ -73,7 +73,7 @@ De hoogste baan in het park is [Hyperion](ref:energylandia/pepsi-hyperion?bare),
 
 ```
 
-Op 25 juni 2016 kwam [Formuła](ref:energylandia/formula?bare) erbij, een Space Warp van Vekoma met een lineaire motor. De lancering brengt de trein volgens de RCDB in twee seconden op 79,2 km/u (opgave van het park: 100); bij zo’n naam mag een baan misschien wat grootspraak hebben. Hij is 24,8 meter hoog, 560 meter lang en heeft drie inversies. Volgens de RCDB werkt er 3,8 G op je (opgave van het park: 4,5).
+Op 25 juni 2016 kwam [Formuła](ref:energylandia/formula?bare) erbij, een Space Warp van Vekoma met een lineaire motor. De lancering brengt de trein volgens de RCDB in twee seconden op 79,2 km/u (opgave van het park: 100); bij zo’n naam mag een baan misschien wat grootspraak hebben. Volgens de RCDB is hij 24,8 meter hoog (opgave van het park: 24,7) en 560 meter lang, heeft hij drie inversies en werkt er 3,8 G op je (opgave van het park: 4,5).
 
 De oudste achtbaan in dit gebied is de [Viking](ref:energylandia/viking?bare), een wilde muis met draaiende karretjes van SBF Visa, model MX52. Hij reed al op de openingsdag, 14 juli 2014. Volgens de RCDB is hij 11 meter hoog (opgave van het park: 13) en 310 meter lang (opgave van het park: 320), met 43 km/u.
 
@@ -153,11 +153,11 @@ Het Water Park bestaat sinds de zomer van 2016. Het zit bij de toegang inbegrepe
 
 Voor elke attractie legt het park een minimum- en een maximumlengte vast; bij Hyperion en Speed houdt het bijvoorbeeld op bij 195 cm. Waar “onder begeleiding” staat, mogen kinderen tussen de twee genoemde lengtes alleen mee met een volwassene.
 
-- vanaf 140 cm: Hyperion (tot 195 cm), Zadra, Mayan Zero Limitów, Speed (tot 195 cm), Viking (ook pas vanaf 12 jaar), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (4 tot 12 jaar onder begeleiding), Rokan
+- vanaf 140 cm: Hyperion (tot 195 cm), Zadra, Mayan Zero Limitów (onder begeleiding), Speed (tot 195 cm), Viking (ook pas vanaf 12 jaar), Tidal Wave Twister, Toffifee Kopalnia Złota, Atlantis (4 tot 12 jaar onder begeleiding), Rokan
 - 140 tot 195 cm: Space Booster, Space Gun, Aztec Swing, Apocalypto
 - 130 tot 195 cm: Tsunami Drop
 - vanaf 130 cm: Dragon Adventure (kinderen van 2 tot 13 jaar onder begeleiding)
-- vanaf 120 cm: Formuła, Formula Autodrom, Draken (4 tot 13 jaar onder begeleiding), Mars, Frutti Loop en Happy Loops (elk 4 tot 12 jaar onder begeleiding), Circus Coaster (2 tot 13 jaar onder begeleiding)
+- vanaf 120 cm: Formuła (onder begeleiding), Formula Autodrom, Draken (4 tot 13 jaar onder begeleiding), Mars, Frutti Loop en Happy Loops (elk 4 tot 12 jaar onder begeleiding), Circus Coaster (2 tot 13 jaar onder begeleiding)
 - 120 tot 140 cm onder begeleiding: Abyssus, Choco Chip Creek, Anaconda, Jungle Adventure
 - 120 tot 130 cm onder begeleiding: RMF Dragon
 - 100 tot 120 cm onder begeleiding: Ekipa Light Explorers, Frida, Boomerang, Śmiejżelki Energuś, Honey Harbour
@@ -343,7 +343,7 @@ Op de [parkpagina van Energylandia](ref:energylandia) op park.fan staan de actue
 
 ### Hoe druk is het in Energylandia, en is er een crowd calendar?
 
-In de [wachttijdenkalender](ref:energylandia?calendar) staat voor elke openingsdag het verwachte drukteniveau. De langste wachtrijen meten we bij Zadra, Hyperion, Speed en RMF Dragon.
+In de [wachttijdenkalender](ref:energylandia?calendar) staat voor elke openingsdag het verwachte drukteniveau. De gebruikelijke en de hoogste wachttijd die we bij afzonderlijke attracties hebben gemeten, staan in de tabel onder “Hoe druk het is”.
 
 ### Wanneer is Energylandia open?
 
