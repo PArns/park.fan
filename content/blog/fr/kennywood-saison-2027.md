@@ -2,7 +2,7 @@
 title: 'Kennywood ouvre sa saison 2027 le 17 avril'
 translationKey: kennywood-saison-2027
 date: '2026-11-18'
-time: '07:30'
+time: '08:01'
 author: patrick
 mode: published
 featured: false
@@ -48,7 +48,7 @@ seo:
 
 ## Trois classiques de 1927
 
-Sur le [Racer](ref:kennywood/racer?bare), deux trains font la course côte à côte, et pourtant un seul circuit traverse le parc. Si tu embarques à droite en gare, tu reviens à gauche. D’après Kennywood, aucune autre montagne russe des États-Unis n’a un circuit unique et continu de ce genre. Le Racer a été dessiné par John A. Miller et construit par Philadelphia Toboggan Coasters. Le parcours mesure 1 372 mètres (4 500 pieds), et son point le plus haut est à 22 mètres (72,5 pieds). Les trains atteignent 64 km/h (40 mph). Un tour dure une minute et 32 secondes. Trois trains de 24 places font passer 1 400 personnes à l’heure. Tu peux monter à partir de 117 centimètres (46 pouces). Le nom avait déjà servi à une autre attraction, ouverte en 1910.
+Sur le [Racer](ref:kennywood/racer?bare), deux trains font la course côte à côte, et pourtant un seul circuit traverse le parc. Si tu embarques à droite en gare, tu reviens à gauche. D’après Kennywood, aucune autre montagne russe des États-Unis n’a un circuit unique et continu de ce genre. Le Racer a été dessiné par John A. Miller et construit par Philadelphia Toboggan Coasters. Les trains atteignent 64 km/h (40 mph) sur un parcours de 1 372 mètres (4 500 pieds) qui culmine à 22 mètres (72,5 pieds). Un tour dure une minute et 32 secondes, et avec trois trains de 24 places, le Racer fait passer 1 400 personnes à l’heure. Tu peux monter à partir de 117 centimètres (46 pouces). Le nom avait déjà servi à une autre attraction, ouverte en 1910.
 
 La [Turtle](ref:kennywood/turtle?bare) est arrivée en 1927 sous le nom de Tumble Bug. Ses voitures en forme de tortue roulent sur un circuit rond, avec des bosses et des creux. Elle s’appelle Turtle depuis que Kennywood a acheté une sixième voiture en 1948, et d’après le parc, aucune autre attraction de ce type ne fonctionne encore dans le monde. En 1930, un stand baptisé Lucky s’est installé à côté d’elle. Sur sa page d’histoire, le parc plaisante : quelqu’un devinait sans doute déjà lequel des deux aurait de la chance et resterait. Il n’y a pas de taille minimale. Les enfants de moins de 117 centimètres montent avec un accompagnateur, les bébés ne montent pas du tout.
 
@@ -60,29 +60,29 @@ Le [Merry-Go-Round](ref:kennywood/merry-go-round?bare) est le troisième carrous
 
 ## Les événements, d’avril à janvier
 
-Du 17 avril au 16 mai, les Celebrate Kennywood Weekends tournent autour des vieilles attractions, de la cuisine du parc, des souvenirs à rapporter et de ceux des visites d’autrefois. Le parc invite expressément à venir assortis, en tenue Kennywood. Pour les frites du Potato Patch, il n’a besoin de convaincre personne.
+La saison commence du 17 avril au 16 mai avec les Celebrate Kennywood Weekends. Ces week-ends-là, Kennywood met ses vieilles attractions et sa cuisine au premier plan, avec des souvenirs à rapporter et ceux des visites d’autrefois. Le parc invite expressément à venir assortis, en tenue Kennywood. Pour les frites du Potato Patch, il n’a besoin de convaincre personne.
 
-Le Bites and Pints Food & Drink Festival suit du 28 mai au 27 juin, les vendredis, samedis et dimanches, ainsi que le 31 mai, jour du Memorial Day. Autour de la Lagoon, on y goûte des plats de différents pays, des cocktails, des bières artisanales et du vin.
+Le Bites and Pints Food & Drink Festival suit du 28 mai au 27 juin, les vendredis, samedis et dimanches, ainsi que le 31 mai, jour du Memorial Day. Si tu veux encore faire le Racer, fais-le avant : autour de la Lagoon, les stands servent des plats de plusieurs pays, mais aussi des cocktails, des bières artisanales et du vin.
 
-Le 4 juillet, le feu d’artifice de la fête de l’Indépendance éclate au-dessus du Racer, autrement dit juste au-dessus de l’un des centenaires. Chaque vendredi et samedi du 9 au 31 juillet, Kennywood présente le soir des spectacles de drones, avec des motifs conçus exprès pour le parc.
+Le 4 juillet, le feu d’artifice de la fête de l’Indépendance éclate au-dessus du Racer. Chaque vendredi et samedi du 9 au 31 juillet, Kennywood présente le soir des spectacles de drones avec ses propres motifs.
 
-Du 7 au 22 août, les Fall Fantasy Parades défilent tous les jours, avec des chars décorés à la main et plus de 130 fanfares de la région. Phantom Fall Fest, l’événement d’Halloween, a lieu certains jours du 11 septembre au 31 octobre et fête lui-même ses 25 ans en 2027. Le parc promet quelques surprises pour l’occasion. À la nuit tombée, les maisons hantées et les scare zones ouvrent comme d’habitude.
+Du 7 au 22 août, les Fall Fantasy Parades défilent tous les jours, avec des chars décorés à la main et plus de 130 fanfares de la région. Phantom Fall Fest, l’événement d’Halloween, a lieu certains jours du 11 septembre au 31 octobre et fête ses 25 ans en 2027. Comme les années précédentes, les maisons hantées et les scare zones n’ouvrent qu’à la nuit tombée.
 
-Holiday Lights entame sa 16e saison le 13 novembre 2027 et ouvre certains jours jusqu’au 2 janvier 2028. Au programme : plus de trois millions de lumières, le plus haut sapin de Noël de Pennsylvanie selon le parc, et des rencontres avec Rudolph.
+Holiday Lights entame sa 16e saison le 13 novembre 2027 et ouvre certains jours jusqu’au 2 janvier 2028. Plus de trois millions de lumières s’allument alors dans le parc. Kennywood présente son sapin de Noël comme le plus haut de Pennsylvanie, et tu peux rencontrer Rudolph juste à côté.
 
 ## Le prix des pass saison 2027
 
 Pour le Black Friday, Kennywood vend dès maintenant ses pass saison 2027 moins cher en ligne. Le Gold Pass coûte 124,99 $ au lieu de 169,99 $, ou huit versements de moins de 16 $ chacun. Il est valable tous les jours d’ouverture, Phantom Fall Fest et Holiday Lights compris. Il inclut le parking sur les places Preferred et VIP, un gobelet avec recharges gratuites, deux billets invités pour 2027 et 15 % de réduction sur la plupart des repas, des achats en boutique et le Speedy Pass.
 
-Le Platinum Pass, à 189,99 $ au lieu de 249,99 $, est valable en plus à Sandcastle, Idlewild and SoakZone et Dutch Wonderland. Il comprend le parking gratuit dans les quatre parcs de Pennsylvanie, trois billets invités et 20 % de réduction. Il ouvre aussi les portes de Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash et Water Country.
+Le Platinum Pass, à 189,99 $ au lieu de 249,99 $, est valable en plus à Sandcastle, Idlewild and SoakZone et Dutch Wonderland. Il comprend le parking gratuit dans les quatre parcs de Pennsylvanie, trois billets invités et 20 % de réduction. Il est aussi valable dans sept autres parcs : Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash et Water Country.
 
 Achetés maintenant, le Gold et le Platinum sont déjà valables pour Holiday Lights 2026, avec en prime un billet invité pour Holiday Lights, valable jusqu’au 20 décembre 2026.
 
-En ce moment, le Gold Pass se vend au prix du Silver Pass, qui n’est valable que l’été. Le Bronze Pass coûte 99,99 $ au lieu de 109,99 $ et il est valable la plupart des jours d’été. Il ne l’est pas les samedis 10, 17 et 24 juillet 2027, soit justement trois soirs de spectacle de drones. Aucun pass n’est remboursé.
+En ce moment, le Gold Pass se vend au prix du Silver Pass, qui n’est valable que l’été. Le Bronze Pass coûte 99,99 $ au lieu de 109,99 $ et il est valable la plupart des jours d’été. Sont exclus les samedis 10, 17 et 24 juillet 2027, trois des soirs de spectacle de drones. Aucun pass n’est remboursé.
 
 ## Cet hiver, Kennywood n’ouvre que pour Holiday Lights
 
-Holiday Lights 2026 dure encore jusqu’au 3 janvier 2027. Jusqu’au vendredi 20 novembre, un billet non daté coûte 19,99 $ au lieu de 49,99 $, et il est valable un jour d’ouverture au choix jusqu’au 3 janvier 2027. Les billets datés partent en ce moment de 24,99 $. Plus de 20 attractions tournent. Si ta visite tombe à l’eau, la Rainy Day Guarantee te donne un billet gratuit pour un autre jour.
+Holiday Lights 2026 dure encore jusqu’au 3 janvier 2027. Jusqu’au vendredi 20 novembre, un billet non daté coûte 19,99 $ au lieu de 49,99 $, et il est valable un jour d’ouverture au choix de cette saison. Les billets datés partent en ce moment de 24,99 $. Plus de 20 attractions tournent. Si ta visite tombe à l’eau, la Rainy Day Guarantee te donne un billet gratuit pour un autre jour.
 
 ```best-days-widget slug=kennywood
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 dure encore jusqu’au 3 janvier 2027. Jusqu’au vendredi 2
 
 ## Sandcastle dès le 29 mai
 
-Du 7 juillet au 18 août, Sandcastle organise des fêtes de la mousse le mercredi. Du 23 au 25 juillet, le parc aquatique célèbre Christmas in July, et du 7 au 22 août, des DJ y passent le week-end la musique de plusieurs décennies.
+Le mercredi, du 7 juillet au 18 août, Sandcastle organise des fêtes de la mousse. Le parc aquatique célèbre Christmas in July du 23 au 25 juillet, et les week-ends du 7 au 22 août, des DJ y passent la musique de plusieurs décennies.
 
 ## Accès
 

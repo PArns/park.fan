@@ -2,7 +2,7 @@
 title: 'Kennywood opens its 2027 season on April 17'
 translationKey: kennywood-saison-2027
 date: '2026-11-18'
-time: '07:30'
+time: '08:01'
 author: patrick
 mode: published
 featured: false

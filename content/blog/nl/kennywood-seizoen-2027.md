@@ -2,7 +2,7 @@
 title: 'Kennywood opent het seizoen 2027 op 17 april'
 translationKey: kennywood-saison-2027
 date: '2026-11-18'
-time: '07:30'
+time: '08:01'
 author: patrick
 mode: published
 featured: false
@@ -48,7 +48,7 @@ seo:
 
 ## Drie klassiekers uit 1927
 
-In de [Racer](ref:kennywood/racer?bare) rijden twee treinen naast elkaar een wedstrijd, terwijl er maar één baan ligt. Stap je in het station rechts in, dan kom je links weer aan. Volgens Kennywood heeft geen andere achtbaan in de VS zo’n enkele doorlopende baan. De Racer is ontworpen door John A. Miller en gebouwd door Philadelphia Toboggan Coasters. De baan is 1.372 meter (4.500 voet) lang en op het hoogste punt 22 meter (72,5 voet) hoog. De treinen halen 64 km/u (40 mph). Een rondje duurt 1 minuut en 32 seconden. Drie treinen van elk 24 plaatsen vervoeren 1.400 passagiers per uur. Je mag mee vanaf 117 centimeter (46 inch). De naam was al eerder in gebruik, voor een baan die in 1910 openging.
+In de [Racer](ref:kennywood/racer?bare) rijden twee treinen naast elkaar een wedstrijd, terwijl er maar één baan ligt. Stap je in het station rechts in, dan kom je links weer aan. Volgens Kennywood heeft geen andere achtbaan in de VS zo’n enkele doorlopende baan. De Racer is ontworpen door John A. Miller en gebouwd door Philadelphia Toboggan Coasters. Op de 1.372 meter (4.500 voet) lange baan, die op het hoogste punt 22 meter (72,5 voet) hoog is, halen de treinen 64 km/u (40 mph). Een rondje duurt 1 minuut en 32 seconden, en met drie treinen van elk 24 plaatsen vervoert de Racer 1.400 passagiers per uur. Je mag mee vanaf 117 centimeter (46 inch). De naam was al eerder in gebruik, voor een baan die in 1910 openging.
 
 De [Turtle](ref:kennywood/turtle?bare) kwam in 1927 als Tumble Bug naar het park. De wagens zien eruit als schildpadden en rijden over heuvels en dalen op een cirkelvormige baan. Sinds Kennywood in 1948 een zesde wagen kocht, heet hij Turtle, en volgens het park is het de laatste werkende attractie van dit type ter wereld. In 1930 kwam er naast de Turtle een kraampje met de naam Lucky. Op zijn geschiedenispagina grapt het park dat iemand toen al voorzag wie van de twee geluk zou hebben en zou overblijven. Er is geen minimumlengte. Kinderen onder 117 centimeter rijden mee met een begeleider, baby’s mogen helemaal niet mee.
 
@@ -60,29 +60,29 @@ De [Merry-Go-Round](ref:kennywood/merry-go-round?bare) is de derde draaimolen in
 
 ## Events van april tot januari
 
-Het seizoen begint van 17 april tot 16 mei met de Celebrate Kennywood Weekends. Die draaien om de oude attracties, het eten van het park, souvenirs en herinneringen aan eerdere bezoeken. Het park vraagt bezoekers uitdrukkelijk om in bijpassende Kennywood-kleding te komen. Voor de friet van de Potato Patch hoeft het niemand over te halen.
+Het seizoen begint van 17 april tot 16 mei met de Celebrate Kennywood Weekends. In die weekenden zet Kennywood zijn oude attracties en zijn eten centraal, samen met souvenirs en herinneringen aan eerdere bezoeken. Het park vraagt bezoekers uitdrukkelijk om in bijpassende Kennywood-kleding te komen. Voor de friet van de Potato Patch hoeft het niemand over te halen.
 
-Daarna volgt van 28 mei tot 27 juni het Bites and Pints Food & Drink Festival, op vrijdag, zaterdag en zondag en op Memorial Day, 31 mei. Rond de Lagoon staan dan gerechten uit keukens van verschillende landen, cocktails, craft beer en wijn.
+Daarna volgt van 28 mei tot 27 juni het Bites and Pints Food & Drink Festival, op vrijdag, zaterdag en zondag en op Memorial Day, 31 mei. Wil je nog in de Racer, doe dat dan eerst: bij de kramen rond de Lagoon krijg je naast gerechten uit de keukens van meerdere landen ook cocktails, craft beer en wijn.
 
-Op 4 juli gaat het vuurwerk voor Independence Day boven de Racer de lucht in, recht boven een van de jarigen dus. Elke vrijdag en zaterdag van 9 tot 31 juli laat Kennywood ’s avonds droneshows zien, met figuren die speciaal voor het park zijn ontworpen.
+Op 4 juli gaat het vuurwerk voor Independence Day boven de Racer de lucht in. Elke vrijdag en zaterdag van 9 tot 31 juli laat Kennywood ’s avonds droneshows met eigen figuren zien.
 
-Van 7 tot 22 augustus trekken elke dag de Fall Fantasy Parades door het park, met praalwagens die met de hand zijn versierd en meer dan 130 marching bands uit de omgeving. Phantom Fall Fest, het halloweenevent, draait op bepaalde dagen van 11 september tot 31 oktober en bestaat in 2027 zelf 25 jaar. Voor dat jubileum belooft het park een paar verrassingen. Zodra het donker is, gaan zoals altijd de haunted houses en scare zones open.
+Van 7 tot 22 augustus trekken elke dag de Fall Fantasy Parades door het park, met praalwagens die met de hand zijn versierd en meer dan 130 marching bands uit de omgeving. Phantom Fall Fest, het halloweenevent, draait op bepaalde dagen van 11 september tot 31 oktober en viert in 2027 zijn 25-jarig jubileum. De haunted houses en scare zones gaan net als in eerdere jaren pas open als het donker is.
 
-Holiday Lights begint op 13 november 2027 aan zijn 16e seizoen en loopt op bepaalde dagen tot 2 januari 2028. Er branden meer dan drie miljoen lampjes, er staat volgens het park de hoogste kerstboom van Pennsylvania en je kunt Rudolph ontmoeten.
+Holiday Lights begint op 13 november 2027 aan zijn 16e seizoen en loopt op bepaalde dagen tot 2 januari 2028. Dan hangen er meer dan drie miljoen lampjes in het park. Kennywood noemt zijn kerstboom de hoogste van Pennsylvania, en ernaast kun je Rudolph ontmoeten.
 
 ## Wat de seizoenspassen voor 2027 kosten
 
 Voor Black Friday verkoopt Kennywood de seizoenspassen voor 2027 nu al goedkoper online. De Gold Pass kost 124,99 in plaats van 169,99 dollar, of in acht termijnen van elk minder dan 16 dollar. Hij geldt op alle openingsdagen, ook tijdens Phantom Fall Fest en Holiday Lights. Parkeren op de terreinen Preferred en VIP zit erbij, net als een beker met gratis refills, twee gastentickets voor 2027 en 15 % korting op het meeste eten, de meeste aankopen en de Speedy Pass.
 
-De Platinum Pass kost 189,99 in plaats van 249,99 dollar en geldt daarnaast in Sandcastle, Idlewild and SoakZone en Dutch Wonderland. Je parkeert er in alle vier de parken in Pennsylvania gratis mee, en je krijgt drie gastentickets en 20 % korting. Je komt er ook mee binnen in Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash en Water Country.
+De Platinum Pass kost 189,99 in plaats van 249,99 dollar en geldt daarnaast in Sandcastle, Idlewild and SoakZone en Dutch Wonderland. Je parkeert er in alle vier de parken in Pennsylvania gratis mee, en je krijgt drie gastentickets en 20 % korting. Verder geldt hij in nog zeven parken: Lake Compounce, Noah’s Ark, Adventureland, Story Land, Living Shores Aquarium, Splish Splash en Water Country.
 
 Koop je Gold of Platinum nu, dan geldt de pas al voor Holiday Lights 2026, en je krijgt er een gastenticket voor Holiday Lights bij dat tot 20 december 2026 geldig is.
 
-Voor de prijs van de Silver Pass, die alleen in de zomer geldt, krijg je op dit moment de Gold Pass. De Bronze Pass kost 99,99 in plaats van 109,99 dollar en geldt op de meeste zomerdagen. Niet op de zaterdagen 10, 17 en 24 juli 2027, uitgerekend drie avonden met een droneshow. Je krijgt voor geen enkele pas geld terug.
+Voor de prijs van de Silver Pass, die alleen in de zomer geldt, krijg je op dit moment de Gold Pass. De Bronze Pass kost 99,99 in plaats van 109,99 dollar en geldt op de meeste zomerdagen. Uitgezonderd zijn de zaterdagen 10, 17 en 24 juli 2027, drie van de avonden met een droneshow. Je krijgt voor geen enkele pas geld terug.
 
 ## Deze winter opent Kennywood alleen voor Holiday Lights
 
-Holiday Lights 2026 loopt nog tot 3 januari 2027. Tot en met vrijdag 20 november kost een ticket zonder vaste datum 19,99 in plaats van 49,99 dollar, en dat geldt op een openingsdag naar keuze tot 3 januari 2027. Tickets voor een vaste dag zijn er op dit moment vanaf 24,99 dollar. Er draaien meer dan 20 attracties. Valt je bezoek in het water, dan krijg je met de Rainy Day Guarantee een gratis ticket voor een andere dag.
+Holiday Lights 2026 loopt nog tot 3 januari 2027. Tot en met vrijdag 20 november kost een ticket zonder vaste datum 19,99 in plaats van 49,99 dollar, en dat geldt op een openingsdag naar keuze in dit seizoen. Tickets voor een vaste dag zijn er op dit moment vanaf 24,99 dollar. Er draaien meer dan 20 attracties. Valt je bezoek in het water, dan krijg je met de Rainy Day Guarantee een gratis ticket voor een andere dag.
 
 ```best-days-widget slug=kennywood
 
@@ -90,7 +90,7 @@ Holiday Lights 2026 loopt nog tot 3 januari 2027. Tot en met vrijdag 20 november
 
 ## Sandcastle vanaf 29 mei
 
-Van 7 juli tot 18 augustus zijn er in Sandcastle op woensdag schuimparty’s. Van 23 tot 25 juli viert het waterpark Christmas in July, en van 7 tot 22 augustus draaien dj’s in het weekend muziek uit meerdere decennia.
+Op woensdag zijn er in Sandcastle van 7 juli tot 18 augustus schuimparty’s, Christmas in July viert het waterpark van 23 tot 25 juli, en in de weekenden van 7 tot 22 augustus draaien dj’s muziek uit meerdere decennia.
 
 ## Bereikbaarheid
 
