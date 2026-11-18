@@ -367,6 +367,9 @@ lunghe d’autunno questo non vale, perché le attrazioni acquatiche chiudono al
 calare del buio. **Scream** e il **Big Loop** sono i riempitivi fra due grandi
 attrazioni.
 
+> [!PARKY]
+> In una lunga giornata d’autunno il piano cambia: si gira solo dalle 12, e le attrazioni acquatiche chiudono verso le 17, quindi ci bagniamo prima delle cinque. Nei giorni di Halloween, verso le 16, aprono i tre maze, di cui prenotiamo prima le fasce orarie online, e tra un maze e l’altro mi aggrappo a una frittella. Quello che ci sta in mezzo lo sistemiamo nel [pianificatore della giornata](/trip-planner).
+
 ## Pratico: come arrivare, biglietti, orari
 
 **Come arrivare.** Heide Park 1, 29614 Soltau, sulla **A7** fra Amburgo e

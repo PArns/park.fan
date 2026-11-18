@@ -361,6 +361,9 @@ voor het warmste uur, ook al heeft de wildwaterbaan dan juist zijn langste rij. 
 dat, want dan sluiten de waterbanen met de schemering. **Scream** en de
 **Big Loop** zijn de vullers tussen twee grote banen.
 
+> [!PARKY]
+> Op een lange najaarsdag gaat het plan anders: de attracties draaien pas vanaf 12 uur, en de waterbanen sluiten vanaf ongeveer 17 uur, dus worden we vóór vijven nat. Op de Halloweendagen gaan vanaf ongeveer 16 uur de drie mazes open, waarvoor we de tijdslots vooraf online boeken, en tussen twee mazes klamp ik me vast aan een Duitse oliebol. Wat ertussen past, zetten we in de [dagplanner](/trip-planner).
+
 ## Praktisch: route, tickets, openingstijden
 
 **Route.** Heide Park 1, 29614 Soltau, aan de **A7** tussen Hamburg en

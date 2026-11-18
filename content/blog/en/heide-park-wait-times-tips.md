@@ -353,6 +353,9 @@ queue. On the long autumn days
 that plan falls away, because the water rides close at dusk. **Scream** and the
 **Big Loop** are the gap fillers between two big rides.
 
+> [!PARKY]
+> On a long autumn day the plan changes: the rides don’t start until noon, and the water rides close from around 5pm, so we get wet before five. On the Halloween days the three mazes open from around 4pm, with time slots we book online beforehand, and between two of them I cling to a Schmalzkuchen doughnut. Whatever fits in between goes into the [day planner](/trip-planner).
+
 ## Practical: getting there, tickets, opening hours
 
 **Getting there.** Heide Park 1, 29614 Soltau, on the **A7** between Hamburg

@@ -364,6 +364,9 @@ Herbsttagen fällt das weg, dann schließen die Wasserbahnen mit der Dämmerung.
 **Scream** und der **Big Loop** sind die Lückenfüller zwischen zwei großen
 Bahnen.
 
+> [!PARKY]
+> An einem langen Herbsttag geht der Plan anders: Gefahren wird erst ab 12 Uhr, und die Wasserbahnen schließen ab etwa 17 Uhr, also werden wir vor fünf nass. Ab etwa 16 Uhr öffnen an den Halloween-Tagen die drei Mazes, deren Zeitfenster wir vorher online buchen, und zwischen zweien halte ich mich an einem Schmalzkuchen fest. Was dazwischen passt, legen wir im [Tagesplaner](/trip-planner) fest.
+
 ## Praktisches: Anreise, Tickets, Öffnungszeiten
 
 **Anreise.** Heide Park 1, 29614 Soltau, an der **A7** zwischen Hamburg und

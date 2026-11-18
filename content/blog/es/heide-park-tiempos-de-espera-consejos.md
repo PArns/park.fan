@@ -362,6 +362,9 @@ larga. En los días largos de otoño eso
 no vale, porque las atracciones de agua cierran al anochecer. **Scream** y el
 **Big Loop** son el relleno entre dos grandes.
 
+> [!PARKY]
+> En un día largo de otoño el plan cambia: las atracciones no arrancan hasta las 12, y las de agua cierran hacia las 17 h, así que nos mojamos antes de las cinco. Los días de Halloween, hacia las 16 h, abren los tres mazes, cuyas franjas horarias reservamos antes por internet, y entre uno y otro me agarro fuerte a un buñuelo. Lo que encaje en medio lo colocamos en el [planificador del día](/trip-planner).
+
 ## Práctico: cómo llegar, entradas, horarios
 
 **Cómo llegar.** Heide Park 1, 29614 Soltau, en la **A7** entre Hamburgo y

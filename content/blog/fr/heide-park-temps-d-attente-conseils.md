@@ -368,6 +368,9 @@ conseil tombe, car les attractions aquatiques ferment à la tombée de la nuit.
 **Scream** et le **Big Loop** sont les bouche-trous entre deux grandes
 attractions.
 
+> [!PARKY]
+> Lors d’une longue journée d’automne, le plan change : les attractions ne tournent qu’à partir de midi, et les attractions aquatiques ferment vers 17 h, donc on se mouille avant cinq heures. Les jours d’Halloween, les trois mazes ouvrent vers 16 h, avec des créneaux qu’on réserve en ligne à l’avance, et entre deux, je me cramponne à un beignet. Le reste, on le cale dans le [planificateur de journée](/trip-planner).
+
 ## Pratique : accès, billets, horaires
 
 **Accès.** Heide Park 1, 29614 Soltau, sur l’**A7** entre Hambourg et Hanovre,
