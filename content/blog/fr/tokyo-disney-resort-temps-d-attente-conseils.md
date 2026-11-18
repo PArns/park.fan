@@ -299,7 +299,7 @@ Si tu arrives plus tard, deux passeports plus courts existent. L’**After 3 Pas
 La vente se fait uniquement en ligne, sur le site et dans l’appli, et les caisses à l’entrée sont fermées. Les clients d’un hôtel Disney peuvent aussi acheter à l’hôtel. Chaque jour à 14 h, heure du Japon, s’ouvre la vente pour le jour situé deux mois plus tard. En France, cela fait 6 h du matin en hiver et 7 h en été. Une commande peut compter jusqu’à dix billets, et si tu annules de ton côté, rien n’est remboursé. Pour ressortir et revenir le même jour, préviens un membre du personnel à la sortie, puis rentre plus tard avec le même billet.
 
 > [!PARKY]
-> Comme le parc se choisit à l’achat, on répartit d’abord les deux sur tes jours de voyage dans le [planificateur de voyage](/japon#planner), et s’il y a un samedi, il revient à DisneySea : là-bas, le jour de la semaine ne change presque rien, alors qu’à Tokyo Disneyland, le samedi est nettement plus chargé. Ensuite, on règle le réveil sur 6 h en hiver, une heure où je ne me lève d’habitude que pour le rope drop, et on achète chaque jour dès qu’il est mis en vente.
+> Comme le parc se choisit à l’achat, on répartit d’abord les deux sur tes jours de voyage dans le [planificateur de voyage](/japon#planner), et s’il y a un samedi, il revient à DisneySea : là-bas, le jour de la semaine ne change presque rien, alors qu’à Tokyo Disneyland, le samedi est nettement plus chargé. Ensuite, on règle le réveil sur 6 h en hiver, une heure où je ne me lève d’habitude que pour le rope drop, et on achète chaque jour dès qu’il est mis en vente.
 
 ## Venir au resort
 
