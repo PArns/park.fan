@@ -26,7 +26,7 @@ rideLinks:
 seo:
   title: 'Energylandia: Wartezeiten, Öffnungszeiten, Tipps, Tickets und Rokan'
   description: >-
-    Energylandia in Zator: Wartezeiten live, Öffnungszeiten im Winter Kingdom, Energy Pass, Tickets in zł und Rokan, der neue Wing Coaster für 2027.
+    Wann in Energylandia wenig los ist, was der Energy Pass kostet und wann das Winter Kingdom öffnet, dazu Tickets in Złoty und Rokan für 2027.
   keywords:
     - Energylandia
     - Energylandia Wartezeiten
