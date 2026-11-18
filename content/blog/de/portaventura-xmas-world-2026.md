@@ -42,9 +42,9 @@ seo:
     - PortAventura Anreise Zug
 ---
 
-Ab Freitag, 20. November, heißt Weihnachten im [PortAventura Park](ref:portaventura-park) in Salou Xmas World. Bis zum 6. Januar 2027 schmückt der Park jeden Themenbereich nach einer anderen Weihnachtstradition, und im Far West und in México laufen zwei neue Musicals. Die Seeshow La Llegada de los Emisarios Reales spielt PortAventura in diesem Winter zum letzten Mal, im nächsten Jahr wird sie erneuert. Angekündigt hat der Park das am 16. November.
+Ab Freitag, 20. November, heißt Weihnachten im [PortAventura Park](ref:portaventura-park) in Salou Xmas World. Bis zum 6. Januar 2027 schmückt der Park seine Themenbereiche nach Weihnachtstraditionen von Katalonien bis Mexiko, und im Far West und in México laufen zwei neue Musicals. Die Seeshow La Llegada de los Emisarios Reales spielt PortAventura in diesem Winter zum letzten Mal, im nächsten Jahr wird sie erneuert. Angekündigt hat der Park das am 16. November.
 
-## Weihnachten in jeder Welt
+## Weihnachten von Katalonien bis Mexiko
 
 Mediterrània ist als katalanisches Dorf geschmückt, mit einem großen Tió de Nadal. In der Straßenshow El Tió de Nadal singen die Kinder und klopfen mit Stöcken auf den riesigen Tió, bis Überraschungen herauskommen. Auf Katalanisch heißt das „fer cagar el tió“, was man besser nicht wörtlich auf eine Weihnachtskarte schreibt. In China hängen Laternen in Rot und Gold, die schon das chinesische Neujahr ankündigen, und auf der Plaza Imperial zieht in Winter Imperial China ein Drache mit Tänzern über den Platz.
 
@@ -68,7 +68,7 @@ Der Park hat vom 20. November bis zum 6. Januar jeden Tag ab 10:30 Uhr offen, me
 
 Parade und Seeshow laufen nicht jeden Tag. Im Tageskalender des Parks stehen sie am Samstag, 12. Dezember, an Heiligabend und am 5. und 6. Januar um 17:45 und 18 Uhr, am Sonntag, 27. Dezember, um 18:45 und 19 Uhr. Am Mittwoch, 2. Dezember, steht keine der beiden im Kalender, Christmas Lights um 17:15 Uhr aber schon. Für den Starttag am Freitag stehen dort bisher nur vier Shows, keine der neuen und keine Parade. Wer die Seeshow ein letztes Mal sehen will, nimmt einen der Tage, an denen sie im Kalender steht.
 
-Ab dem 7. Januar ist der Park geschlossen, auch den ganzen Februar, und die Winterpause dauert damit länger als Xmas World selbst. Laut Kalender öffnet er am 5. März wieder, an dem Tag von 16 bis 21 Uhr.
+Ab dem 7. Januar ist der Park geschlossen. Laut Kalender öffnet er am Freitag, 19. Februar, wieder, an dem Tag von 16 bis 21 Uhr.
 
 ## Eintritt
 
@@ -84,7 +84,7 @@ Der Caribe Aquatic Park hat im November, Dezember und Januar geschlossen.
 
 ## Welche Bahnen fahren
 
-Am Samstag, 12. Dezember, und am Sonntag, 27. Dezember, stehen 39 Attraktionen im Tageskalender, darunter [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) und Hurakan Condor. Am 20. November sind es 23, am 2. Dezember 25, und am Freitag fehlen etwa Stampida und Furius Baco. Tutuki Splash, Silver River Flume, Angkor und Sea Odyssey stehen an keinem dieser vier Tage im Kalender, Grand Canyon Rapids dagegen am 12. und 27. Dezember bis 17 Uhr. Eine Liste der Bahnen in Winterpause hat PortAventura nicht veröffentlicht.
+Am Samstag, 12. Dezember, und am Sonntag, 27. Dezember, stehen 36 Attraktionen im Tageskalender, darunter [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) und Hurakan Condor. Am 20. November sind es 23, am 2. Dezember 25, und am Starttag fehlen etwa Stampida und Furius Baco. Tutuki Splash, Silver River Flume, Angkor und Sea Odyssey stehen an keinem dieser vier Tage im Kalender, Grand Canyon Rapids dagegen am 20. November, 12. und 27. Dezember, jeweils bis 17 Uhr. Eine Liste der Bahnen in Winterpause hat PortAventura nicht veröffentlicht.
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days
 
@@ -102,7 +102,7 @@ Mit dem Zug fährst du bis zum eigenen Bahnhof PortAventura World, an dem die Ro
 
 ```
 
-An der Warteschlange vorbei kommst du mit den Express-Pässen, von Express ONE ab 7 € bis Express Unlimited ab 75 €. Wann welche Bahn am kürzesten ist und wie die Pässe funktionieren, haben wir im [Guide zum PortAventura Park](/blog/portaventura-park-wartezeiten-tipps) zusammengetragen.
+An der Warteschlange vorbei kommst du mit den Express-Pässen, von Express ONE ab 7 € über Express Unlimited ab 75 € bis Express Unlimited Plus ab 135 €. Wann welche Bahn am kürzesten ist und wie die Pässe funktionieren, haben wir im [Guide zum PortAventura Park](/blog/portaventura-park-wartezeiten-tipps) zusammengetragen.
 
 ## Was anders ist als 2024
 
@@ -119,6 +119,18 @@ Quellen:
 [Navidad a la Mexicana](https://www.portaventuraworld.com/en/christmas/shows/cantina-mexico),
 [La Llegada de los Emisarios Reales](https://www.portaventuraworld.com/en/christmas/shows/llegada-de-los-emisarios-reales),
 [El Bosque Encantado](https://www.portaventuraworld.com/en/christmas/shows/bosque-encantado),
+[Circo de Navidad](https://www.portaventuraworld.com/en/christmas/shows/circo-de-navidad),
+[Bubble Magic Christmas](https://www.portaventuraworld.com/en/christmas/shows/bubble-magic-christmas),
+[Ya es Navidad en SésamoAventura](https://www.portaventuraworld.com/en/christmas/shows/navidad-en-sesamoaventura),
+[Christmas Parade](https://www.portaventuraworld.com/en/christmas/shows/christmas-parade),
+[Cuidemos el Planeta](https://www.portaventuraworld.com/en/shows/cuidemos-el-planeta),
+[El Tió de Nadal](https://www.portaventuraworld.com/en/animation-tio-nadal),
+[Winter Imperial China](https://www.portaventuraworld.com/en/animation-winter-imperial-china),
+[Christmas Lights](https://www.portaventuraworld.com/en/animation-christmas-lights),
+[What a Crazy Christmas](https://www.portaventuraworld.com/en/animation-locura-navidad),
+[México suena a Navidad](https://www.portaventuraworld.com/en/animation-mexico-suena-navidad),
+[Viva la Posada](https://www.portaventuraworld.com/en/animation-viva-posada),
+[La Posada de los Gnomos](https://www.portaventuraworld.com/en/restaurants/posada-de-los-gnomos),
 [Öffnungskalender](https://www.portaventuraworld.com/en/dates-times),
 [Kalender Ferrari Land](https://www.portaventuraworld.com/en/dates-times/ferrari-land),
 [Kalender Caribe Aquatic Park](https://www.portaventuraworld.com/en/dates-times/aquatic-park),
