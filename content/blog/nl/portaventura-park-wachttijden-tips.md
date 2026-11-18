@@ -294,6 +294,9 @@ Met bediening eten kan bij Iron Horse in Far West (burgers, spareribs, steaks), 
 
 Kluisjes zijn er in drie maten: klein € 8, middel € 11 en groot € 15. Daarnaast zijn er kluisjes bij de banen, € 2 voor een rugzak, op vier plekken: tussen Shambhala en Dragon Khan, bij de ingang van Furius Baco, naast Tutuki Splash en bij de toegang tot Silver River Flume. Na het openen komen ze vrij voor de volgende gast, opnieuw openen kost weer geld.
 
+> [!PARKY]
+> De rugzak sluiten we op tussen Shambhala en Dragon Khan, en we rijden ze allebei voordat we het kluisje weer openen: zo betalen we de € 2 maar één keer. Met 134 km/u wil ik toch al niks op schoot hebben. In de [dagplanner](/trip-planner) zetten we de twee daarvoor direct achter elkaar.
+
 Een enkele kinderwagen kost € 12 huur plus € 12 borg, een dubbele € 18 plus € 12 borg, een rolstoel € 12 plus € 10. Gasten met een erkende beperking vanaf 33 procent en aangetoonde beperkte mobiliteit krijgen een pas voor de “Exclusive Access” bij banen en shows, met maximaal vier begeleiders bij de attracties.
 
 Het park sluit niet bij regen en betaalt tickets niet terug, maar afzonderlijke banen kunnen bij zware regen, wind of onweer om veiligheidsredenen dicht zijn.

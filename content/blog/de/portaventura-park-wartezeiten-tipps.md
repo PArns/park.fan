@@ -294,6 +294,9 @@ Mit Bedienung essen kannst du im Iron Horse im Far West (Burger, Rippchen, Steak
 
 Schließfächer gibt es in drei Größen: klein 8 €, mittel 11 € und groß 15 €. Dazu kommen Schließfächer an den Bahnen, 2 Euro für einen Rucksack, an vier Stellen: zwischen Shambhala und Dragon Khan, am Eingang von Furius Baco, neben Tutuki Splash und am Zugang von Silver River Flume. Sie sind nach dem Öffnen frei für den nächsten Gast, ein erneutes Öffnen kostet wieder.
 
+> [!PARKY]
+> Den Rucksack schließen wir zwischen Shambhala und Dragon Khan ein und fahren beide, bevor wir das Fach wieder öffnen, dann zahlen wir die 2 Euro nur einmal. Bei 134 km/h will ich sowieso nichts auf dem Schoß haben. Im [Tagesplaner](/trip-planner) legen wir die beiden dafür direkt hintereinander.
+
 Ein Einzelkinderwagen kostet 12 Euro Miete plus 12 Euro Pfand, ein Doppelwagen 18 Euro plus 12 Euro Pfand, ein Rollstuhl 12 Euro plus 10 Euro. Gäste mit anerkannter Behinderung ab 33 Prozent und nachgewiesener eingeschränkter Mobilität bekommen einen Ausweis für den „Exclusive Access“ an Bahnen und Shows, mit bis zu vier Begleitpersonen an den Fahrgeschäften.
 
 Der Park schließt bei Regen nicht und erstattet keine Tickets, einzelne Bahnen können bei Starkregen, Wind oder Gewitter aus Sicherheitsgründen zu sein.

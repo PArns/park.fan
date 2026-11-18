@@ -294,6 +294,9 @@ Con servizio al tavolo si mangia all’Iron Horse a Far West (hamburger, costine
 
 Gli armadietti esistono in tre misure: piccolo 8 €, medio 11 € e grande 15 €. Ci sono poi gli armadietti alle attrazioni, 2 euro per uno zaino, in quattro punti: fra Shambhala e Dragon Khan, all’ingresso di Furius Baco, accanto a Tutuki Splash e all’accesso di Silver River Flume. Dopo l’apertura si liberano per l’ospite successivo, e riaprirli costa di nuovo.
 
+> [!PARKY]
+> Lo zaino lo chiudiamo nell’armadietto fra Shambhala e Dragon Khan e facciamo tutte e due prima di riaprirlo: così i 2 euro li paghiamo una volta sola. A 134 km/h non voglio comunque niente in grembo. Nel [pianificatore della giornata](/trip-planner) le mettiamo una subito dopo l’altra.
+
 Un passeggino singolo costa 12 euro di noleggio più 12 euro di cauzione, uno doppio 18 euro più 12 euro di cauzione, una sedia a rotelle 12 euro più 10 euro. Gli ospiti con una disabilità riconosciuta dal 33 per cento in su e una mobilità ridotta documentata ricevono una tessera per l’«Exclusive Access» alle attrazioni e agli spettacoli, con fino a quattro accompagnatori sulle giostre.
 
 Il parco con la pioggia non chiude e non rimborsa i biglietti; singole attrazioni possono restare ferme per motivi di sicurezza in caso di pioggia forte, vento o temporale.

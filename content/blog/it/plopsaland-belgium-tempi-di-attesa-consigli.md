@@ -324,6 +324,9 @@ Il mercoledì il parco propone per ora il biglietto a 36 € invece di 56. Senza
 misurazioni conviene un giorno in settimana a settembre e a ottobre, oppure a febbraio
 e a marzo.
 
+> [!PARKY] Vada per mercoledì
+> Visto che da lunedì a venerdì i giorni quasi si equivalgono, scegliamo il mercoledì: per quel giorno il parco propone per ora il biglietto a 36 € invece di 56, e a 20 € in meno non ho mai detto di no. A marzo 2026 era addirittura l’unico giorno dal lunedì al venerdì in cui il parco apriva.
+
 In autunno la **Halloween Celebration** va dal 3 ottobre all’8 novembre e il parco è aperto tutti i giorni, tranne il 10 ottobre. Ci sono
 il Pumpkin King (uno spaventapasseri che lascia Pumpkin Island solo a Halloween),
 l’accademia Nachtwacht, le volpi Fox & Trot dal musical Pinocchio e la 25

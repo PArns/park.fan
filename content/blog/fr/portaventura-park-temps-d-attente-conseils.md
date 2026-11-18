@@ -295,6 +295,9 @@ Avec service à table, vous pouvez manger à l’Iron Horse à Far West (burgers
 
 Les casiers existent en trois tailles : petit 8 €, moyen 11 € et grand 15 €. S’y ajoutent des casiers près des attractions, 2 euros pour un sac à dos, à quatre endroits : entre Shambhala et Dragon Khan, à l’entrée de Furius Baco, à côté de Tutuki Splash et à l’accès de Silver River Flume. Une fois ouvert, le casier est libre pour le client suivant, et le rouvrir coûte de nouveau.
 
+> [!PARKY]
+> On enferme le sac à dos entre Shambhala et Dragon Khan, et on fait les deux avant de rouvrir le casier : on ne paie ainsi les 2 euros qu’une fois. À 134 km/h, je ne veux de toute façon rien sur les genoux. Dans le [planificateur de journée](/trip-planner), on les place l’une juste après l’autre.
+
 Une poussette simple coûte 12 euros de location plus 12 euros de caution, une poussette double 18 euros plus 12 euros de caution, un fauteuil roulant 12 euros plus 10 euros. Les visiteurs avec un handicap reconnu à partir de 33 % et une mobilité réduite justifiée reçoivent une carte pour l’« Exclusive Access » aux attractions et aux spectacles, avec jusqu’à quatre accompagnateurs sur les attractions.
 
 Le parc ne ferme pas sous la pluie et ne rembourse pas les billets ; certaines attractions peuvent être fermées par sécurité en cas de fortes pluies, de vent ou d’orage.

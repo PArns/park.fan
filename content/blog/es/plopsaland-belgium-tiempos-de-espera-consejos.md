@@ -327,6 +327,9 @@ Los miércoles el parque anuncia ahora la entrada a 36 euros en lugar de 56. Sin
 colegio, según las mediciones compensan los días entre semana de septiembre y
 octubre y los de febrero y marzo.
 
+> [!PARKY] Miércoles, claro
+> Como de lunes a viernes los días apenas se distinguen, nos quedamos con el miércoles: ese día el parque anuncia ahora la entrada a 36 euros en lugar de 56, y a 20 euros menos yo nunca les he dicho que no. En marzo de 2026 fue incluso el único día entre semana en que el parque abrió.
+
 En otoño, la **Halloween Celebration** va del 3 de octubre al 8 de noviembre y el parque abre todos los días salvo el 10 de octubre. Hay
 Pumpkin King (un espantapájaros que solo en Halloween sale de Pumpkin Island), la
 Nachtwacht-Akademie, los zorros Fox & Trot del musical Pinocchio y la 25

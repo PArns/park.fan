@@ -337,6 +337,9 @@ Le mercredi, le parc annonce actuellement le billet à 36 euros au lieu de 56. S
 enfants d’âge préscolaire, nos mesures désignent les jours de semaine de
 septembre et d’octobre, ainsi que février et mars.
 
+> [!PARKY] Vive le mercredi
+> Du lundi au vendredi, les jours se valent presque, alors on prend le mercredi : ce jour-là, le parc annonce actuellement le billet à 36 euros au lieu de 56, et 20 euros de moins, je n’ai jamais dit non. En mars 2026, c’était même le seul jour de semaine où le parc ouvrait.
+
 À l’automne, la **Halloween Celebration** a lieu du 3 octobre au 8 novembre, et le parc est alors ouvert tous les jours, sauf le 10
 octobre. On y voit le Pumpkin King (un épouvantail qui ne quitte Pumpkin Island
 qu’à Halloween), l’académie Nachtwacht, les renards Fox & Trot de la comédie

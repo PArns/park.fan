@@ -316,6 +316,9 @@ On Wednesdays the park is currently advertising the ticket at €36 instead of �
 weekdays in September and October and in February and March are worth it according
 to the measurements.
 
+> [!PARKY] Wednesday it is
+> Monday to Friday barely differ, so we pick Wednesday: that’s the day the park is currently advertising the ticket at €36 instead of €56, and I’ve never yet said no to €20 off. In March 2026 it was even the only weekday the park opened at all.
+
 In autumn the **Halloween Celebration** runs from 3 October to 8 November, and the
 park is open daily during it, except 10 October. You get the Pumpkin King (a scarecrow who leaves Pumpkin Island only at Halloween), the
 Nachtwacht Academy, the foxes Fox & Trot from the musical Pinocchio and the 25

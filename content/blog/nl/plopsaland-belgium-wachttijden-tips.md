@@ -329,6 +329,9 @@ Op woensdag adverteert het park momenteel met € 36 in plaats van € 56 voor h
 ticket. Zonder kinderen of met kleuters lonen volgens
 de metingen weekdagen in september en oktober en in februari en maart.
 
+> [!PARKY] Woensdag dus
+> Maandag tot en met vrijdag ontlopen elkaar nauwelijks, dus nemen we de woensdag: dan adverteert het park momenteel met € 36 in plaats van € 56, en € 20 korting heb ik nog nooit afgeslagen. In maart 2026 was het zelfs de enige doordeweekse dag waarop het park überhaupt open was.
+
 In de herfst loopt de **Halloween Celebration** van 3 oktober tot en met 8
 november, en het park is dan dagelijks open, behalve op 10 oktober. Je ziet de
 Pumpkin King (een vogelverschrikker die Pumpkin Island

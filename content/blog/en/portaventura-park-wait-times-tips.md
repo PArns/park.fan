@@ -294,6 +294,9 @@ For table service there's Iron Horse in Far West (burgers, ribs, steaks), Raco d
 
 Lockers come in three sizes: small €8, medium €11 and large €15. There are also lockers at the rides, €2 for a rucksack, at four spots: between Shambhala and Dragon Khan, at the entrance to Furius Baco, next to Tutuki Splash and at the approach to Silver River Flume. After opening they're free for the next guest, and opening one again costs again.
 
+> [!PARKY]
+> We lock the rucksack in between Shambhala and Dragon Khan and ride both before we open the locker again, so we only pay the €2 once. At 134 km/h I don't want anything on my lap anyway. In the [day planner](/trip-planner) we put the two back to back for it.
+
 A single stroller costs €12 to rent plus a €12 deposit, a double stroller €18 plus a €12 deposit, a wheelchair €12 plus €10. Guests with a recognised disability of 33 percent or more and proven reduced mobility get a pass for "Exclusive Access" to rides and shows, with up to four companions on the rides.
 
 The park doesn't close in rain and doesn't refund tickets, but individual rides can be shut for safety in heavy rain, wind or thunderstorms.

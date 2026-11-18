@@ -294,6 +294,9 @@ Con servicio en mesa se come en el Iron Horse de Far West (hamburguesas, costill
 
 Las taquillas vienen en tres tamaños: pequeña 8 €, mediana 11 € y grande 15 €. Además hay taquillas en las atracciones, a 2 euros por una mochila, en cuatro sitios: entre Shambhala y Dragon Khan, en la entrada de Furius Baco, junto a Tutuki Splash y en el acceso a Silver River Flume. Al abrirlas quedan libres para el siguiente visitante, y volver a abrir cuesta de nuevo.
 
+> [!PARKY]
+> La mochila la dejamos en la taquilla entre Shambhala y Dragon Khan y montamos en las dos antes de volver a abrirla: así pagamos los 2 euros una sola vez. A 134 km/h tampoco quiero nada encima de las rodillas. En el [planificador del día](/trip-planner) las ponemos una justo detrás de otra.
+
 Un cochecito individual cuesta 12 euros de alquiler más 12 euros de fianza, uno doble 18 euros más 12 euros de fianza, y una silla de ruedas 12 euros más 10 euros. Los visitantes con una discapacidad reconocida del 33 por ciento o más y movilidad reducida acreditada reciben una acreditación para el «Exclusive Access» a atracciones y espectáculos, con hasta cuatro acompañantes en las atracciones.
 
 El parque no cierra con lluvia ni devuelve las entradas, y algunas atracciones pueden quedar fuera de servicio por seguridad con lluvia fuerte, viento o tormenta.
