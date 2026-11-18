@@ -28,9 +28,10 @@ coverImage:
   caption: 'Taron dans le village de basalte de Klugheim, pour moi le plus beau coin du parc.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand : Quick Pass, jours calmes, temps d’attente'
+  title: 'Phantasialand : le Quick Pass vaut-il le coup ? Conseils'
   description: >-
-    Réduire l’attente au Phantasialand : le bon jour, le Quick Pass, vendu aussi en ligne, et le Wintertraum, par un habitué depuis plus de trente ans.
+    Un jour calme, pas besoin de Quick Pass au Phantasialand. Un jour de foule,
+    il sauve Taron pour 12 € et F.L.Y., inclus seulement dans l’Ultimate à 80 €.
   keywords:
     - Temps d’attente Phantasialand
     - Éviter les temps d’attente Phantasialand

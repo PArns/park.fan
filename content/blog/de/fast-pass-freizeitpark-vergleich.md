@@ -28,7 +28,7 @@ coverImage:
   caption: 'Talocan im Themenbereich Mexico, unter einer Tempelwand mit Totenkopf-Reliefs.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Fast Pass im Freizeitpark: Preise und Bahnen im Vergleich'
+  title: 'Fast-Pass-Preise: Quick Pass, Speedy Pass & Co. in 15 Parks'
   description: >-
     Quick Pass, Express, Fastrack und Premier Access in 15 Parks. Im Phantasialand kostet der
     Quick Pass, auch online, 5 bis 12 € je Fahrt, der Ultimate 80 €.

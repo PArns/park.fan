@@ -30,10 +30,10 @@ coverImage:
   caption: 'Sei settimane all’anno questo parco si chiama Horrorwood Studios, ed è anche quello che dice allora la scritta luminosa all’ingresso.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park: tempi di attesa e Halloween 2026, senza Batman'
+  title: 'Movie Park: quando c’è meno gente? Giorni, prezzi, consigli'
   description: >-
-    Movie Park con attese misurate: il giorno in cui i consigli sbagliano, gli
-    orari d’autunno, Halloween fino all’8/11 e come evitare il rincaro in cassa.
+    Al Movie Park le code sono più corte il venerdì, e la domenica c’è meno
+    gente del sabato. Hollywood Christmas dura dal 27 novembre al 5 gennaio.
   keywords:
     - Movie Park Germany
     - Movie Park tempi di attesa

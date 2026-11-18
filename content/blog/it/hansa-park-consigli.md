@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: orari, prezzi e coaster'
+  title: 'Orari Hansa-Park 2027: stagione, prezzi e coaster'
   description: >-
-    Hansa-Park 2026: aperto dal 26 marzo al 25 ottobre, senza un giorno di
-    chiusura. Stagione 2027 dal 25 marzo. Prezzi, parcheggio e gli otto coaster.
+    Hansa-Park prevede la stagione 2027 dal 25 marzo al 24 ottobre.
+    L’abbonamento stagionale 2027 costa 120 € fino al 24 marzo, poi 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park consigli

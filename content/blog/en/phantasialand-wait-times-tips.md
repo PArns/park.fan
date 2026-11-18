@@ -27,9 +27,10 @@ coverImage:
   caption: 'Taron in the basalt village of Klugheim, for me the most beautiful spot in the park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand tips: Quick Pass, quiet days, wait times'
+  title: 'Phantasialand tips: when is the Quick Pass worth it?'
   description: >-
-    Keep Phantasialand wait times down: the right day, the Quick Pass, now sold online too, and Wintertraum, from a regular of more than thirty years.
+    On a quiet day you don’t need a Quick Pass at Phantasialand. On a busy one
+    it saves Taron for €12 and F.L.Y., which only comes in the €80 Ultimate.
   keywords:
     - Phantasialand wait times
     - avoid Phantasialand wait times

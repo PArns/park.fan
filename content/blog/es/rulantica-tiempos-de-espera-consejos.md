@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026: toboganes, precios y los días más tranquilos'
+  title: 'Rulantica en invierno: toboganes, precios, días tranquilos'
   description: >-
     Rulantica en invierno: entradas desde 28 euros, alturas mínimas de 90 a 140
     centímetros y enero y marzo como meses más tranquilos.

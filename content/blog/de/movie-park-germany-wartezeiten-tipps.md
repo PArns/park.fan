@@ -31,11 +31,10 @@ coverImage:
   caption: 'Sechs Wochen im Jahr heißt der Park Horrorwood Studios, und so steht es dann auch in Leuchtschrift am Eingang.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park Wartezeiten & Halloween 2026, ohne Batman'
+  title: 'Movie Park: Wann ist am wenigsten los? Tage, Preise, Tipps'
   description: >-
-    Movie Park mit gemessenen Wartezeiten: der Wochentag, bei dem Ratgeber
-    irren, Herbst-Fahrplan, Halloween bis 8.11. und wie du den Kassenaufschlag
-    sparst.
+    Im Movie Park stehst du freitags am kürzesten an, und sonntags ist weniger
+    los als samstags. Hollywood Christmas läuft vom 27. November bis 5. Januar.
   keywords:
     - Movie Park Germany
     - Movie Park Wartezeiten

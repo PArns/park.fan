@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026 : toboggans, prix et jours les plus calmes'
+  title: 'Rulantica en hiver : toboggans, prix, jours calmes'
   description: >-
     Rulantica en hiver : billets dès 28 €, tailles minimales de 90 à 140 cm,
     et janvier et mars comme mois les plus calmes.

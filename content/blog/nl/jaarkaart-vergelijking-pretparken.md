@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica in de Efteling. Het Classic-abonnement is daar in 2027 op 68 dagen geblokkeerd.'
   credit: 'park.fan'
 seo:
-  title: 'Jaarkaarten 2026: Toverland € 160, Phantasialand geen meer'
+  title: 'Jaarkaarten vergeleken: Efteling, Toverland, Europa-Park'
   description: >-
     Bij de Efteling, Europa-Park en Toverland loont de goedkoopste jaarkaart na
     vier tot zes bezoeken. Phantasialand heeft sinds 2022 geen jaarkaart meer.
