@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park horarios 2027: temporada, precios, montañas rusas'
+  title: 'Horarios de Hansa-Park 2027 y precio del pase de temporada'
   description: >-
-    Hansa-Park prevé la temporada 2027 del 25 de marzo al 24 de octubre. El pase
-    de temporada 2027 cuesta 120 € hasta el 24 de marzo y luego 140 €.
+    Hansa-Park prevé la temporada 2027 del 25 de marzo al 24 de octubre. Antes
+    de la apertura, el pase de temporada cuesta 120 €; después, 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park consejos

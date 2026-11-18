@@ -25,7 +25,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica in de winter: glijbanen, prijzen, rustigste dagen'
+  title: 'Rulantica in de winter: rustigste dagen en ticketprijzen'
   description: >-
     Rulantica in de winter: tickets vanaf 28 euro, minimale lengtes van 90 tot
     140 centimeter en januari en maart als rustigste maanden.

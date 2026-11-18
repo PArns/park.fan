@@ -31,7 +31,7 @@ coverImage:
   caption: 'Six semaines par an, ce parc s’appelle Horrorwood Studios, et c’est aussi ce qu’affichent alors les lettres lumineuses à l’entrée.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park : quel jour y aller ? Affluence, prix, conseils'
+  title: 'Movie Park : quel jour y aller ? Affluence et prix'
   description: >-
     Au Movie Park, on attend le moins le vendredi, et le dimanche est plus calme
     que le samedi. Hollywood Christmas a lieu du 27 novembre au 5 janvier.

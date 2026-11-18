@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park opening hours 2027: season, prices, coasters'
+  title: 'Hansa-Park opening hours 2027 and the season pass price'
   description: >-
-    Hansa-Park plans its 2027 season from 25 March to 24 October. The 2027
-    season pass costs €120 until 24 March, then €140.
+    Hansa-Park plans its 2027 season from 25 March to 24 October. Bought before
+    opening day, the season pass costs €120, then €140.
   keywords:
     - Hansa-Park
     - Hansa-Park tips

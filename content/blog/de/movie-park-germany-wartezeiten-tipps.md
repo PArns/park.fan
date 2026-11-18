@@ -31,7 +31,7 @@ coverImage:
   caption: 'Sechs Wochen im Jahr heißt der Park Horrorwood Studios, und so steht es dann auch in Leuchtschrift am Eingang.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park: Wann ist am wenigsten los? Tage, Preise, Tipps'
+  title: 'Movie Park: Wann ist am wenigsten los? Beste Tage und Preise'
   description: >-
     Im Movie Park stehst du freitags am kürzesten an, und sonntags ist weniger
     los als samstags. Hollywood Christmas läuft vom 27. November bis 5. Januar.

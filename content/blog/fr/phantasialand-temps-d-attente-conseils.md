@@ -28,10 +28,11 @@ coverImage:
   caption: 'Taron dans le village de basalte de Klugheim, pour moi le plus beau coin du parc.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand : le Quick Pass vaut-il le coup ? Conseils'
+  title: 'Conseils pour Phantasialand : quand prendre le Quick Pass ?'
   description: >-
     Un jour calme, pas besoin de Quick Pass au Phantasialand. Un jour de foule,
-    il sauve Taron pour 12 € et F.L.Y., inclus seulement dans l’Ultimate à 80 €.
+    il vaut le coup pour Taron (12 €) et F.L.Y., seulement dans l’Ultimate (80
+    €).
   keywords:
     - Temps d’attente Phantasialand
     - Éviter les temps d’attente Phantasialand

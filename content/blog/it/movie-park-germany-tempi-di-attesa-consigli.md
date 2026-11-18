@@ -30,7 +30,7 @@ coverImage:
   caption: 'Sei settimane all’anno questo parco si chiama Horrorwood Studios, ed è anche quello che dice allora la scritta luminosa all’ingresso.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park: quando c’è meno gente? Giorni, prezzi, consigli'
+  title: 'Movie Park: quando c’è meno gente? Giorni migliori e prezzi'
   description: >-
     Al Movie Park le code sono più corte il venerdì, e la domenica c’è meno
     gente del sabato. Hollywood Christmas dura dal 27 novembre al 5 gennaio.

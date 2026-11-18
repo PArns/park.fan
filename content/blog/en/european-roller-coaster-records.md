@@ -24,7 +24,7 @@ coverImage:
   caption: 'When it opened in 2002, no steel coaster in Europe climbed higher than this lift hill.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Fastest and tallest roller coaster in Europe: the records'
+  title: 'Which is Europe’s fastest and tallest roller coaster?'
   description: >-
     Red Force hits 180 km/h and stands 112 metres tall, Big One has the longest track, The Smiler 14 inversions. Silver Star and Kärnan are Germany's fastest.
   keywords:

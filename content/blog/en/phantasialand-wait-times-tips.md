@@ -29,8 +29,8 @@ coverImage:
 seo:
   title: 'Phantasialand tips: when is the Quick Pass worth it?'
   description: >-
-    On a quiet day you don’t need a Quick Pass at Phantasialand. On a busy one
-    it saves Taron for €12 and F.L.Y., which only comes in the €80 Ultimate.
+    On a quiet day you don’t need a Quick Pass at Phantasialand. On a busy one,
+    buy it for Taron (€12) and F.L.Y., which only comes in the €80 Ultimate.
   keywords:
     - Phantasialand wait times
     - avoid Phantasialand wait times

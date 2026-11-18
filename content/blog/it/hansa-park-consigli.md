@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Orari Hansa-Park 2027: stagione, prezzi e coaster'
+  title: 'Orari Hansa-Park 2027 e prezzo dell’abbonamento stagionale'
   description: >-
-    Hansa-Park prevede la stagione 2027 dal 25 marzo al 24 ottobre.
-    L’abbonamento stagionale 2027 costa 120 € fino al 24 marzo, poi 140 €.
+    Hansa-Park prevede la stagione 2027 dal 25 marzo al 24 ottobre. Prima
+    dell’apertura l’abbonamento stagionale costa 120 €, poi 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park consigli

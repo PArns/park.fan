@@ -25,10 +25,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park openingstijden 2027: seizoen, prijzen, achtbanen'
+  title: 'Hansa-Park openingstijden 2027 en prijs van de seizoenkaart'
   description: >-
-    Hansa-Park plant het seizoen 2027 van 25 maart tot 24 oktober. De
-    seizoenkaart voor 2027 kost tot 24 maart € 120, daarna € 140.
+    Hansa-Park plant het seizoen 2027 van 25 maart tot 24 oktober. Voor de
+    seizoensstart kost de seizoenkaart € 120, daarna € 140.
   keywords:
     - Hansa-Park
     - Hansa-Park tips

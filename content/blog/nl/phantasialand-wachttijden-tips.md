@@ -31,8 +31,7 @@ seo:
   title: 'Phantasialand tips: wanneer loont de Quick Pass?'
   description: >-
     Op een rustige dag heb je in Phantasialand geen Quick Pass nodig. Op een
-    drukke redt hij Taron voor € 12 en F.L.Y., dat alleen in de Ultimate van €
-    80 zit.
+    drukke loont hij voor Taron (€ 12) en F.L.Y., alleen in de Ultimate (€ 80).
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden vermijden

@@ -25,7 +25,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica in winter: slides, prices and the quietest days'
+  title: 'Rulantica in winter: the quietest days and ticket prices'
   description: >-
     Rulantica in winter: tickets from €28, minimum heights of 90 to 140
     centimetres, and January and March as the quietest months.

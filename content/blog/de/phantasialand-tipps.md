@@ -30,7 +30,7 @@ seo:
   title: 'Phantasialand Tipps: Wann lohnt sich der Quick Pass?'
   description: >-
     An ruhigen Tagen brauchst du im Phantasialand keinen Quick Pass. An vollen
-    rettet er Taron für 12 € und F.L.Y., das nur im Ultimate für 80 € dabei ist.
+    lohnt er sich für Taron (12 €) und F.L.Y., nur im Ultimate für 80 €.
   keywords:
     - Phantasialand Wartezeiten
     - Phantasialand Wartezeiten vermeiden

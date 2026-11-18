@@ -38,17 +38,17 @@ seo:
     - Crazanity
 ---
 
-[Six Flags México](ref:six-flags-mexico) ligt aan de zuidrand van Mexico-Stad, in het stadsdeel Tlalpan, langs de weg die omhoog naar de Ajusco loopt. Het adres is Carretera Picacho-Ajusco km 1,5. Het park ging in 1982 open als Reino Aventura en heet sinds 14 april 2000 Six Flags México. Het beslaat zo’n 45 hectare, en sinds eind januari 2026 rijden er tien achtbanen.
+[Six Flags México](ref:six-flags-mexico) ligt aan de zuidrand van Mexico-Stad, in het stadsdeel Tlalpan, langs de weg die omhoog naar de Ajusco loopt. Het adres is Carretera Picacho-Ajusco km 1,5. Het park ging in 1982 open als Reino Aventura en heet sinds 14 april 2000 Six Flags México. Het beslaat zo’n 45 hectare, en sinds de Speedway Stunt Coaster op 31 januari 2026 openging, rijden er tien achtbanen.
 
-De wachtrijen in Six Flags México worden in de loop van de dag langer, tot ver in de avond. Wie om tien uur bij de ingang staat, rijdt de grote banen bijna zonder te wachten. Wie na de lunch binnenkomt, heeft het drukste deel van de dag nog voor de boeg.
+Bij de grote banen zijn de wachtrijen het kortst wanneer om tien uur de poort opengaat, en tot in de avond worden ze langer. Wie pas na de lunch komt, heeft het drukste deel van de dag nog voor de boeg.
 
 ## Openingstijden
 
-Six Flags México is het hele jaar open, alleen niet elke dag. Buiten de vakanties en evenementen slaat het park een paar dagen van de week over. Welke dat zijn, staat in de kalender op de website van Six Flags en in de [wachttijdenkalender](ref:six-flags-mexico?calendar) van park.fan. Meestal gaan de poorten om 10 uur open, de sluitingstijd hangt af van het evenement.
+Six Flags México is het hele jaar open, alleen niet elke dag. Buiten de vakanties en evenementen slaat het park een paar dagen van de week over. De openingsdagen staan in de kalender op de website van Six Flags en in onze [wachttijdenkalender](ref:six-flags-mexico?calendar). Meestal gaan de poorten om 10 uur open, de sluitingstijd hangt af van het evenement.
 
 ### Christmas in the Park 2026
 
-Christmas in the Park loopt op bepaalde dagen van 26 november 2026 tot en met 17 januari 2027. In de kalender van het park staan daarvoor deze tijden:
+Van 26 november 2026 tot en met 17 januari 2027 is het park voor Christmas in the Park op deze tijden open:
 
 - 26 tot en met 29 november: 10 tot 22 uur
 - 30 november en 1 december: gesloten
@@ -60,15 +60,15 @@ Christmas in the Park loopt op bepaalde dagen van 26 november 2026 tot en met 17
 - 1 januari 2027: 11 tot 23 uur
 - 2 tot en met 17 januari: 10 tot 22 uur, gesloten op 7 januari en van 11 tot en met 14 januari
 
-In december is het park dus bijna elke dag open. Christmas in the Park zit bij de gewone toegang en bij alle jaarabonnementen inbegrepen. Voor een paar attracties betaal je apart, onder andere voor die met sneeuw.
+Christmas in the Park zit bij de gewone toegang en bij alle jaarabonnementen inbegrepen. Voor een paar attracties betaal je apart, onder andere voor die met sneeuw.
 
 Voor het evenement begint, is het park in november nog open op de 20e en de 25e van 10 tot 18 uur en op de 21e en de 22e van 10 tot 20 uur.
 
 ### Festival del Terror
 
-Het halloweenevenement heet Festival del Terror en liep in 2026 van 3 september tot en met 16 november. Voor acht Atracciones de Terror betaal je extra, en dat geldt zonder uitzondering ook voor pashouders. Nieuw in 2026 waren JASON Blood Reign en THE STRANGERS No Escape, en THE CONJURING Universe werd verbouwd. Daarnaast waren er drie Zonas de Espanto, de parade Cortejo Siniestro en het Kids Boo Fest in het kindergebied. Six Flags raadt het festival aan vanaf 13 jaar, en wie ouder is dan twaalf, mag geen masker en geen kostuum dragen.
+Het halloweenevenement heet Festival del Terror en liep in 2026 van 3 september tot en met 16 november. Voor acht Atracciones de Terror betaal je extra, en dat geldt zonder uitzondering ook voor pashouders. Van die acht waren er in 2026 twee nieuw, JASON Blood Reign en THE STRANGERS No Escape, en THE CONJURING Universe kwam verbouwd terug. Zonder toeslag waren er drie Zonas de Espanto, de parade Cortejo Siniestro en voor kinderen het Kids Boo Fest. Six Flags raadt het festival aan vanaf 13 jaar, en wie ouder is dan twaalf, mag geen masker en geen kostuum dragen.
 
-Voor de wachtrijen is het Festival del Terror de drukste tijd van het jaar. De vijf drukste dagen die park.fan in Six Flags México heeft gemeten, vallen allemaal tussen 24 oktober en 16 november 2026.
+De vijf drukste dagen die we in Six Flags México hebben gemeten, vielen allemaal in het festival, tussen 24 oktober en 16 november 2026.
 
 ## Wanneer het minst druk is
 
@@ -76,13 +76,13 @@ Voor de wachtrijen is het Festival del Terror de drukste tijd van het jaar. De v
 
 ```
 
-Zaterdag is de drukste dag van de week, daarna komt zondag. Het kortst sta je op dinsdag in de rij, met maandag en woensdag vlak daarachter. Donderdag en vrijdag zijn drukker dan het begin van de week, maar een stuk rustiger dan het weekend. Heb je de keus, neem dan een dinsdag, en kijk vooraf in de kalender of het park die dag überhaupt open is.
+Het kortst sta je van maandag tot en met woensdag in de rij, op dinsdag nog iets korter dan op de andere twee. Het drukst is het in het weekend, op zaterdag meer dan op zondag, en donderdag en vrijdag zitten daartussen, dichter bij het begin van de week. Heb je de keus, neem dan een dinsdag, en kijk vooraf in de kalender of het park die dag überhaupt open is.
 
 ```stats-widget slug=six-flags-mexico show=months
 
 ```
 
-Over het hele jaar zijn september, februari en juni de maanden met de minste drukte. In oktober en november, tijdens het Festival del Terror, is het park het drukst, gevolgd door mei en januari. December heeft park.fan nog niet op genoeg dagen gemeten.
+Afgezien van december, waarin we nog te weinig dagen hebben gemeten, zijn september, februari en juni de maanden met de minste drukte. In oktober en november, tijdens het Festival del Terror, is het park het drukst, gevolgd door mei en januari.
 
 ### Vakanties en feestdagen
 
@@ -100,7 +100,7 @@ Lange weekenden ontstaan in 2027 door de wettelijke feestdagen op maandag 1 febr
 
 ### Regenseizoen
 
-In Mexico-Stad valt de meeste regen van mei tot oktober, het meest in juli en augustus, en in het zuiden van de stad, waar het park ligt, meer dan in het noorden. De onweersbuien komen meestal ’s middags. Bij onweer, regen of harde wind sluit Six Flags attracties, en daarvoor krijg je geen geld terug en ook geen vervangende dag. Van november tot april is het droge seizoen, en december is de droogste maand. ’s Ochtends is het bij de Ajusco dan wel fris, dus een jas voor de eerste ritten kan geen kwaad.
+In Mexico-Stad valt de meeste regen van mei tot oktober, het meest in juli en augustus, en in het zuiden van de stad, waar het park ligt, meer dan in het noorden. De onweersbuien komen meestal ’s middags. Gaan de attracties door onweer dicht, dan krijg je van Six Flags geen geld terug en ook geen vervangende dag. Van november tot april is het droge seizoen, en december is de droogste maand. ’s Ochtends is het bij de Ajusco dan wel fris, en zonder jas merk je dat als eerste op Superman El Último Escape, bij 120 km/u.
 
 ## Hoe druk het is, attractie voor attractie
 
@@ -108,7 +108,7 @@ In Mexico-Stad valt de meeste regen van mei tot oktober, het meest in juli en au
 
 ```
 
-Bovenaan staan Medusa Steel Coaster en Crazanity, daarna Superman El Último Escape. Bij die eerste twee loont het het meest om bij de opening meteen door te lopen. Batgirl Batarang, Superman El Último Escape, Batman The Ride, de Triple Torre Kilahuea, The Dark Knight Coaster en The Joker zijn in het eerste uur ook duidelijk rustiger dan later, alleen minder uitgesproken. In het weekend levert een vroege start veel meer op dan doordeweeks.
+Het langst sta je in de rij bij Medusa Steel Coaster en Crazanity, daarna bij Superman El Último Escape. Bij Medusa en Crazanity loont het het meest om bij de opening meteen door te lopen. Ook bij Superman, Batgirl Batarang, Batman The Ride, de Triple Torre Kilahuea, The Dark Knight Coaster en The Joker sta je in het eerste uur korter in de rij dan later, alleen is het verschil kleiner dan bij Medusa en Crazanity. In het weekend levert een vroege start veel meer op dan doordeweeks.
 
 ```glossary-widget slug=rope-drop
 
@@ -118,9 +118,9 @@ Bovenaan staan Medusa Steel Coaster en Crazanity, daarna Superman El Último Esc
 
 ```
 
-Bij Medusa schiet de wachtrij rond het middaguur omhoog en blijft daarna tot de avond bijna even lang. Crazanity wordt juist tot in de vroege avond steeds drukker. Bij de meeste attracties valt het drukste uur pas in de avond. Wie hoopt de headliners ’s avonds nog even in te halen, vindt in dit park dus geen rustig gaatje.
+Bij Medusa schiet de wachtrij rond het middaguur omhoog en blijft daarna tot de avond bijna even lang. Crazanity wordt juist tot in de vroege avond steeds drukker. Bij de meeste attracties valt het drukste uur pas in de avond. Medusa en Crazanity horen daarom in de ochtend thuis, ’s avonds sta je bij allebei minstens zo lang in de rij als rond het middaguur.
 
-Hoe lang de wachtrijen op dit moment zijn en welke attracties rijden, zie je live op de [parkpagina van Six Flags México](ref:six-flags-mexico).
+Op de [parkpagina van Six Flags México](ref:six-flags-mexico) zie je live of Superman na een onweersbui weer rijdt en hoe lang de wachtrij bij Medusa op dit moment is.
 
 ## Een dag in het park
 
@@ -131,21 +131,21 @@ Stel dat je op een zaterdag om tien uur bij de ingang staat en geen Flash Pass h
 - Dan Superman El Último Escape en Batgirl Batarang.
 - Batman The Ride, The Joker en The Dark Knight Coaster voor het middaguur.
 - Vroeg in de middag Río Salvaje, in het regenseizoen voordat het onweer komt.
-- ’s Avonds shows, eten en wat er nog op je lijstje staat.
+- ’s Avonds, als bijna alle wachtrijen op hun langst zijn, shows en avondeten.
 
-Losse spullen mag je in geen enkele attractie bij je hebben, dus geen telefoon, pet, camera of tas. Kleine dingen gaan in een zak met rits of in een heuptasje. Wat bij Superman El Último Escape, The Joker, Batman The Ride, Justice League, Wonder Woman, Batgirl, Superman Krypton, Tsunami, The Dark Knight en Medusa in het afgesloten gebied belandt, krijg je pas na sluitingstijd terug.
+Losse spullen mag je in geen enkele attractie bij je hebben, dus geen telefoon, pet, camera of tas. Kleine dingen gaan in een zak met rits of in een heuptasje. Laat je bij Justice League of bij een van de achtbanen, op de Speedway Stunt Coaster na, iets in het afgesloten gebied vallen, dan krijg je het pas na sluitingstijd terug.
 
 ## De achtbanen
 
 [Superman El Último Escape](ref:six-flags-mexico/superman-el-ultimo-escape?bare) is de hoogste, snelste en langste achtbaan van Mexico. D.H. Morgan Manufacturing bouwde hem, en hij ging op 19 november 2004 in gebruik, al noemt Six Flags zelf 2005. De trein wordt 67 meter omhooggetrokken, valt 62,5 meter onder een hoek van 60 graden en gaat beneden 120 km/u. Over de 1.700 meter baan, zonder één inversie, doet hij ruim drie minuten. Eigenlijk had de baan al in 2002 open moeten gaan, maar een conflict tussen Six Flags en de Mexicaanse regering legde de bouw twee jaar stil.
 
-[Medusa Steel Coaster](ref:six-flags-mexico/medusa-steel-coaster?bare) stond van 2000 tot 2013 als houten achtbaan van Custom Coasters International in het park. Rocky Mountain Construction bouwde haar om met de eigen IBox-rail, en sinds 14 juni 2014 rijdt ze als hybride achtbaan, volgens Six Flags de enige van staal en hout in Mexico. De RCDB noemt 29,9 meter hoogte, 914 meter baan, 93 km/u en drie inversies, Six Flags 36 meter en ongeveer een kilometer.
+[Medusa Steel Coaster](ref:six-flags-mexico/medusa-steel-coaster?bare) stond van 2000 tot 2013 als houten achtbaan van Custom Coasters International in het park. Rocky Mountain Construction bouwde haar om met de eigen IBox-rail, en sinds 14 juni 2014 rijdt ze als hybride achtbaan, volgens Six Flags de enige in Mexico. De RCDB noemt 29,9 meter hoogte, 914 meter baan, 93 km/u en drie inversies, Six Flags 36 meter en ongeveer een kilometer.
 
 ```glossary-widget slug=hybrid-coaster
 
 ```
 
-[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare) is een Suspended Looping Coaster van Vekoma en rijdt sinds 14 april 2000, de dag waarop het park als Six Flags México opnieuw openging. Onder de 33 meter hoge rail gaat het vijf keer over de kop, en meer inversies heeft geen achtbaan in Mexico. Met maximaal 80 km/u legt de trein 689 meter af in 1:36 minuten.
+[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare), een Suspended Looping Coaster van Vekoma, staat in het park sinds de heropening als Six Flags México. Onder de 33 meter hoge rail gaat het vijf keer over de kop, en meer inversies heeft geen achtbaan in Mexico. Met maximaal 80 km/u legt de trein 689 meter af in 1:36 minuten.
 
 [Batgirl Batarang](ref:six-flags-mexico/batgirl-batarang?bare) is een Boomerang van Vekoma, volgens de RCDB de allereerste die de fabrikant bouwde. Hij reed vanaf 1984 in Puebla en staat sinds 1988 in het park, waar hij eerst Boomerang heette, toen Escorpión en vanaf 2000 weer Boomerang. Sinds 2025 heet hij Batgirl Batarang, met een nieuwe trein en nieuwe remmen. De trein gaat 35,5 meter omhoog en met maximaal 76 km/u door een cobra roll en een looping, eerst vooruit en dan achteruit. Six Flags telt de heen- en de terugweg allebei mee en komt zo op zes inversies.
 
@@ -153,19 +153,19 @@ Losse spullen mag je in geen enkele attractie bij je hebben, dus geen telefoon, 
 
 ```
 
-De [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) is een 4D Free Spin van S&S Worldwide en rijdt sinds 1 juni 2018. De stoelen hangen aan de zijkant van de rail en slaan tijdens de rit over de kop. Een verticale kettinglift trekt de wagen 36,6 meter omhoog, de baan is 310 meter lang en de wagen haalt hooguit 61 km/u. Six Flags noemt hem de enige attractie van dit type in Latijns-Amerika.
+De [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) is een 4D Free Spin van S&S Worldwide en rijdt sinds 1 juni 2018. De stoelen hangen aan de zijkant van de rail en slaan tijdens de rit over de kop. Een verticale kettinglift trekt de wagen 36,6 meter omhoog, de baan is 310 meter lang en de wagen haalt hooguit 61 km/u. Wie in Latijns-Amerika een 4D Free Spin wil rijden, moet volgens Six Flags hierheen komen.
 
-[The Dark Knight Coaster](ref:six-flags-mexico/the-dark-knight-coaster?bare) is een wilde muis van Mack Rides, binnen in een hal. Hij stond tot 2008 in Six Flags New England en rijdt sinds 19 maart 2009 in Mexico-Stad, 370 meter in twee minuten.
+[The Dark Knight Coaster](ref:six-flags-mexico/the-dark-knight-coaster?bare) is een wilde muis van Mack Rides, binnen in een hal. Hij stond tot 2008 in Six Flags New England en rijdt sinds 19 maart 2009 in Mexico-Stad. Een rit over 370 meter duurt twee minuten.
 
-[The Joker](ref:six-flags-mexico/the-joker?bare) is een spinning coaster van Gerstlauer die van 2008 tot 2012 in Six Flags Discovery Kingdom reed, eerst als Tony Hawk’s Big Spin en daarna als Pandemonium. Sinds 6 maart 2013 tolt hij in Pueblo Francés rond, 16 meter hoog, 412 meter lang en tot 50 km/u snel. Voor je instapt, loop je door een spiegelpaleis.
+Ook [The Joker](ref:six-flags-mexico/the-joker?bare), een spinning coaster van Gerstlauer, is uit de VS verhuisd en reed van 2008 tot 2012 in Six Flags Discovery Kingdom, eerst als Tony Hawk’s Big Spin en daarna als Pandemonium. Sinds 6 maart 2013 tolt hij in Pueblo Francés rond, 16 meter hoog, 412 meter lang en tot 50 km/u snel. Voor je instapt, loop je door een spiegelpaleis.
 
 ```glossary-widget slug=spinning-coaster
 
 ```
 
-De [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) is de tiende en jongste achtbaan in het park en rijdt sinds 31 januari 2026. Het is een Family Boomerang van Vekoma met één trein voor 20 personen, die vooruit en achteruit rijdt. Six Flags noemt een afdaling van 23 meter, 60 km/u en meer dan 200 meter baan. Onder begeleiding mogen kinderen vanaf 95 centimeter mee.
+De [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) is de tiende en jongste achtbaan in het park en rijdt sinds 31 januari 2026. Het is een Family Boomerang van Vekoma met één trein voor 20 personen, die vooruit en achteruit rijdt. Hij valt 23 meter naar beneden, haalt 60 km/u en rijdt over ruim 200 meter baan.
 
-[Tsunami](ref:six-flags-mexico/tsunami?bare) is een familieachtbaan van Zierer die tot 2001 Catarina Voladora heette en volgens de RCDB al in 1981 is gebouwd. Hij is 8 meter hoog en 360 meter lang en rijdt hooguit 36 km/u. De [Superman Krypton Coaster](ref:six-flags-mexico/superman-krypton-coaster?bare) is een Junior Coaster van Vekoma uit 1993, vroeger Roller Skater, met 207 meter baan en 8,5 meter hoogte. De RCDB noemt 35 km/u, Six Flags 45 km/u. Kinderen mogen onder begeleiding al vanaf 90 centimeter mee.
+[Tsunami](ref:six-flags-mexico/tsunami?bare), een familieachtbaan van Zierer, is volgens de RCDB in 1981 gebouwd, een jaar voordat Reino Aventura openging, en heette tot 2001 Catarina Voladora. Hij is 8 meter hoog en 360 meter lang en rijdt hooguit 36 km/u. De [Superman Krypton Coaster](ref:six-flags-mexico/superman-krypton-coaster?bare) is een Junior Coaster van Vekoma uit 1993, vroeger Roller Skater, met 207 meter baan en 8,5 meter hoogte. Hij rijdt volgens de RCDB 35 km/u, volgens Six Flags 45.
 
 ### Torens, pendels en water
 
@@ -175,13 +175,13 @@ De [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) is
 
 ```
 
-De [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare) is een vrijevaltoren van S&S en staat sinds 2000 in het park. Six Flags geeft een hoogte van meer dan 60 meter op. [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare), tot 2018 SkyScreamer, is een zweefmolen van 74 meter hoog die met maximaal 64 km/u rondgaat.
+De [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare), een vrijevaltoren van S&S, staat net als Batman The Ride sinds de heropening in 2000 in het park. Hij is meer dan 60 meter hoog. In [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare) draai je met maximaal 64 km/u rond een 74 meter hoge toren. Wie oudere video’s zoekt, vindt de zweefmolen onder SkyScreamer, zo heette hij tot 2018.
 
 Nat word je in [Río Salvaje](ref:six-flags-mexico/rio-salvaje?bare), een wildwaterbaan die alleen in sommige seizoenen rijdt. In de hal van [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-mexico/justice-league-battle-for-metropolis?bare) schiet je sinds 2016 vanuit je wagen op schurken. Tegen betaling zijn er nog de SlingShot en de Skycoaster X-Flight.
 
 ## Minimumlengtes
 
-Six Flags México geeft de grenzen op in meters. Een begeleider moet minstens 1,37 meter lang en 14 jaar oud zijn.
+Een begeleider moet minstens 1,37 meter lang en 14 jaar oud zijn.
 
 - 1,40 m: Triple Torre Kilahuea
 - 1,32 m: Crazanity
@@ -196,7 +196,7 @@ Six Flags México geeft de grenzen op in meters. Een begeleider moet minstens 1,
 - 1,40 m alleen, 1,20 m onder begeleiding: Expreso Musical
 - tegen betaling: SlingShot vanaf 1,15 m, X-Flight vanaf 1,07 m, karts vanaf 1 m als passagier en vanaf 1,50 m achter het stuur
 
-Bij de ingang van Medusa staat een testzitje. Met het Programa de intercambio de niños wacht een volwassene met het kind dat niet meerijdt, en daarna rijdt hij zelf, zonder nog een keer in de rij te staan.
+Bij de ingang van Medusa staat een testzitje. De Rider Switch heet hier Programa de intercambio de niños.
 
 ```glossary-widget slug=rider-switch
 
@@ -211,7 +211,7 @@ Six Flags México verkoopt THE FLASH Pass, waarmee je via de Fila preferente naa
 
 De prijs hangt af van de dag, en online kan hij anders zijn dan in het park. Je koopt de pas in de souvenirwinkels en online, zolang de voorraad strekt. Hij geldt alleen op de dag waarvoor je hem koopt, staat op naam van één persoon en terugbrengen kan niet.
 
-De Flash Pass geldt bij Superman El Último Escape, Batman The Ride, Batgirl Batarang, Río Salvaje, Crazanity, Wonder Woman Coaster, Supergirl Sky Flight, The Dark Knight Coaster, The Joker, Tsunami, Medusa Steel Coaster en Justice League: Battle for Metropolis. Op de website zet Six Flags daarnaast ook de Triple Torre Kilahuea en de Speedway Stunt Coaster bij de Flash Pass.
+De Flash Pass geldt bij alle achtbanen behalve de Superman Krypton Coaster en de Speedway Stunt Coaster, en verder bij Crazanity, Supergirl Sky Flight, Río Salvaje en Justice League: Battle for Metropolis. Op de website staat de Flash Pass daarnaast ook bij de Triple Torre Kilahuea en de Speedway Stunt Coaster.
 
 ```glossary-widget slug=express-pass
 
@@ -227,14 +227,14 @@ Six Flags betaalt geen tickets terug en verzet ook geen datum. Wie het park uit 
 
 De Pases Anuales 2027 gelden vanaf de aankoop tot en met 31 december 2027 op alle gewone openingsdagen. Het Festival del Terror en Christmas in the Park zitten erbij, de attracties waarvoor je extra betaalt niet:
 
-- **Silver** voor 1.700 pesos: Six Flags México en Hurricane Harbor Oaxtepec, 10 procent korting op eten en souvenirs, geen parkeren
-- **Gold** voor 1.800 pesos: tien parken, naast Six Flags México en Hurricane Harbor Oaxtepec ook Six Flags Magic Mountain, Knott’s Berry Farm, California’s Great America, Six Flags Discovery Kingdom en vier waterparken in de VS, plus parkeren voor één auto per bezoek
-- **Prestige** voor 2.999 pesos: alle Six Flags-parken in Mexico, de VS en Canada, voorkeursparkeren, 15 procent korting, één rit met de Flash Pass per bezoek en het drankenplan
+- Silver voor 1.700 pesos: Six Flags México en Hurricane Harbor Oaxtepec, 10 procent korting op eten en souvenirs, geen parkeren
+- Gold voor 1.800 pesos: tien parken, naast Six Flags México en Hurricane Harbor Oaxtepec ook Six Flags Magic Mountain, Knott’s Berry Farm, California’s Great America, Six Flags Discovery Kingdom en vier waterparken in de VS, plus parkeren voor één auto per bezoek
+- Prestige voor 2.999 pesos: alle Six Flags-parken in Mexico, de VS en Canada, voorkeursparkeren, 15 procent korting, één rit met de Flash Pass per bezoek en het drankenplan
 
 Een dagticket vanaf 750 pesos kun je op dezelfde dag bij de Módulo de Servicio a Socios in Pueblo Mexicano laten omzetten in een jaarabonnement.
 
 > [!PARKY] Liever Gold
-> Gaan we met de auto, dan nemen we Gold: die kost maar 100 pesos meer dan Silver, en het parkeren, dat je bij Silver los betaalt, is bij het eerste bezoek al 300 pesos waard. Vanaf het tweede bezoek in een jaar zijn Silver en Gold goedkoper dan twee dagtickets, en die som maak ik het liefst bij de ingang, voordat ik in mijn eerste churro bijt.
+> Gaan we met de auto, dan nemen we Gold: die kost maar 100 pesos meer dan Silver, en het parkeren, dat je bij Silver los betaalt, is bij het eerste bezoek al 300 pesos waard. Vanaf het tweede bezoek in een jaar zijn Silver en Gold goedkoper dan twee dagtickets, en omdat je een dagticket nog op dezelfde dag kunt laten omzetten, mag de beslissing wachten tot na de eerste churro.
 
 ## Parkeren
 
@@ -258,11 +258,11 @@ Kluisjes staan in Pueblo Mexicano tegenover de theekopjes, in Pueblo Francés te
 
 ## Geschiedenis
 
-Reino Aventura ging open op 3 maart 1982. Bekend werd het park door een orka: Keiko woonde er vanaf 1985, in 1993 werd “Free Willy” in het park opgenomen, en in januari 1996 vloog Keiko naar het Oregon Coast Aquarium in de VS.
+Reino Aventura ging open op 3 maart 1982. Bekend werd het park door de orka Keiko, die er vanaf 1985 woonde. In 1993 werd “Free Willy” met hem in het park opgenomen, en in januari 1996 vloog hij naar het Oregon Coast Aquarium in de VS.
 
 Op 4 mei 1999 kocht Premier Parks, dat Six Flags sinds 1998 in handen had, het park voor 59 miljoen dollar. Volgens de koper trok het toen zo’n 1,7 miljoen bezoekers per jaar. Op 14 april 2000 ging het opnieuw open als Six Flags México, met Batman The Ride, de Triple Torre Kilahuea en de houten Medusa. De grond pacht Six Flags van de stad, tot 2034. Sinds de fusie met Cedar Fair op 1 juli 2024 hoort het park bij de Six Flags Entertainment Corporation. Toen Six Flags in maart 2026 zeven parken verkocht, zat Six Flags México daar niet bij.
 
-In de index van TEA en AECOM stond het park in 2019 met 2.803.000 bezoekers op de eerste plaats in Latijns-Amerika. Sinds 2023 staat Beto Carrero World in Brazilië bovenaan. In 2024 kwam Six Flags México op 2.051.000 bezoekers en in 2025, volgens de nieuwe index, op 2.082.000, allebei de keren goed voor de tweede plaats.
+In de index van TEA en AECOM stond het park in 2019 met 2.803.000 bezoekers op de eerste plaats in Latijns-Amerika. Sinds 2023 staat Beto Carrero World in Brazilië bovenaan. In 2024 en 2025 kwam Six Flags México op ruim twee miljoen bezoekers en beide keren op de tweede plaats.
 
 ## Veelgestelde vragen over Six Flags México
 
@@ -288,7 +288,7 @@ Online vanaf 1.149 pesos, afhankelijk van de datum. Aan de kassa betaalt iederee
 
 ### Wat kost de Flash Pass in Six Flags México?
 
-Vanaf 300 pesos voor de Regular met drie ritten en vanaf 700 pesos voor de Platino met tien ritten. De pas geldt alleen op de dag waarvoor je hem koopt, onder andere bij Medusa, Crazanity en Superman El Último Escape.
+Vanaf 300 pesos voor drie ritten met de Regular, vanaf 700 pesos voor tien met de Platino, afhankelijk van de dag. Gebruiken kun je hem alleen op de dag waarvoor je hem hebt gekocht, onder andere bij Medusa, Crazanity en Superman El Último Escape.
 
 ### Wat kost parkeren bij Six Flags México?
 
@@ -296,7 +296,7 @@ Vanaf 300 pesos voor de Regular met drie ritten en vanaf 700 pesos voor de Plati
 
 ### Mag je eten meenemen naar Six Flags México?
 
-Nee. Je mag per persoon één fles water tot 1,5 liter meenemen, plus babyvoeding en eten voor een dieet dat medisch nodig is. Een koelbox moet buiten blijven.
+Nee. Meenemen mag je alleen water, tot 1,5 liter per persoon in één fles, babyvoeding en eten dat je om medische redenen nodig hebt. Een koelbox moet buiten blijven.
 
 ### Hoe kom je zonder auto bij Six Flags México?
 
@@ -304,7 +304,7 @@ Met metrolijn 3 tot Universidad en vandaar met de bus of microbús naar het park
 
 ### Tot wanneer loopt Christmas in the Park 2026?
 
-Tot en met 17 januari 2027. Het evenement begint op 26 november 2026 en loopt op bepaalde dagen, meestal van 10 tot 22 uur. Gesloten is het park op 30 november, op 1 en 7 december, op 7 januari en van 11 tot en met 14 januari. Christmas in the Park zit bij de gewone toegang inbegrepen.
+Tot en met 17 januari 2027. Het evenement begint op 26 november 2026 en loopt meestal van 10 tot 22 uur. Gesloten is het park op 30 november, op 1 en 7 december, op 7 januari en van 11 tot en met 14 januari. Christmas in the Park zit bij de gewone toegang inbegrepen.
 
 — Patrick
 

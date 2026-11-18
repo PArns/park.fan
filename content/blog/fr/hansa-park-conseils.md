@@ -26,10 +26,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Horaires du Hansa-Park 2027 : saison, tarifs, coasters'
+  title: 'Horaires du Hansa-Park 2027 et prix de la carte de saison'
   description: >-
-    Le Hansa-Park prévoit sa saison 2027 du 25 mars au 24 octobre. La carte de
-    saison 2027 coûte 120 € jusqu’au 24 mars, puis 140 €.
+    Le Hansa-Park prévoit sa saison 2027 du 25 mars au 24 octobre. Achetée avant
+    l’ouverture, la carte de saison coûte 120 €, ensuite 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park conseils

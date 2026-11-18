@@ -40,17 +40,17 @@ seo:
     - Crazanity
 ---
 
-[Six Flags México](ref:six-flags-mexico) liegt am Südrand von Mexiko-Stadt, im Stadtbezirk Tlalpan, an der Straße, die hinauf zum Ajusco führt. Die Adresse ist Carretera Picacho-Ajusco km 1,5. Der Park hat 1982 als Reino Aventura eröffnet und heißt seit dem 14. April 2000 Six Flags México. Er belegt rund 45 Hektar, und seit Ende Januar 2026 fahren dort zehn Achterbahnen.
+[Six Flags México](ref:six-flags-mexico) liegt am Südrand von Mexiko-Stadt, im Stadtbezirk Tlalpan, an der Straße, die hinauf zum Ajusco führt. Die Adresse ist Carretera Picacho-Ajusco km 1,5. Der Park hat 1982 als Reino Aventura eröffnet und heißt seit dem 14. April 2000 Six Flags México. Er belegt rund 45 Hektar, und seit der Speedway Stunt Coaster am 31. Januar 2026 eröffnet hat, fahren dort zehn Achterbahnen.
 
-In Six Flags México werden die Warteschlangen über den Tag länger, bis in den Abend. Wer um zehn am Eingang steht, fährt die großen Bahnen fast ohne Anstehen. Wer nach dem Mittagessen kommt, hat den vollsten Teil des Tages noch vor sich.
+An den großen Bahnen sind die Warteschlangen am kürzesten, wenn um zehn das Tor aufgeht, und sie wachsen bis in den Abend. Wer erst nach dem Mittagessen kommt, hat den vollsten Teil des Tages noch vor sich.
 
 ## Öffnungszeiten
 
-Six Flags México hat das ganze Jahr über geöffnet, aber nicht jeden Tag. Außerhalb der Ferien und Events lässt der Park einzelne Wochentage aus, welche, steht im Kalender auf der Website von Six Flags und im [Wartezeiten-Kalender](ref:six-flags-mexico?calendar) bei park.fan. Meist öffnet der Park um 10 Uhr, die Schließzeit wechselt mit dem Event.
+Six Flags México hat das ganze Jahr über geöffnet, aber nicht jeden Tag. Außerhalb der Ferien und Events lässt der Park einzelne Wochentage aus. Die offenen Tage stehen im Kalender auf der Website von Six Flags und in unserem [Wartezeiten-Kalender](ref:six-flags-mexico?calendar). Meist öffnet der Park um 10 Uhr, die Schließzeit wechselt mit dem Event.
 
 ### Christmas in the Park 2026
 
-Christmas in the Park läuft vom 26. November 2026 bis zum 17. Januar 2027 an ausgewählten Tagen. Im Kalender des Parks stehen dafür diese Zeiten:
+Vom 26. November 2026 bis zum 17. Januar 2027 hat der Park zu Christmas in the Park so geöffnet:
 
 - 26. bis 29. November: 10 bis 22 Uhr
 - 30. November und 1. Dezember: geschlossen
@@ -62,15 +62,15 @@ Christmas in the Park läuft vom 26. November 2026 bis zum 17. Januar 2027 an au
 - 1. Januar 2027: 11 bis 23 Uhr
 - 2. bis 17. Januar: 10 bis 22 Uhr, geschlossen am 7. Januar und vom 11. bis 14. Januar
 
-Im Dezember hat der Park also fast jeden Tag offen. Christmas in the Park ist im normalen Eintritt und in allen Jahrespässen enthalten. Einzelne Attraktionen kosten extra, darunter die mit Schnee.
+Christmas in the Park ist im normalen Eintritt und in allen Jahrespässen enthalten. Einzelne Attraktionen kosten extra, darunter die mit Schnee.
 
 Vor dem Event öffnet der Park im November noch am 20. und 25. von 10 bis 18 Uhr und am 21. und 22. von 10 bis 20 Uhr.
 
 ### Festival del Terror
 
-Das Halloween-Event heißt Festival del Terror und lief 2026 vom 3. September bis zum 16. November. Acht Atracciones de Terror kosten extra, ohne Ausnahme auch für Passinhaber. 2026 waren JASON Blood Reign und THE STRANGERS No Escape neu, THE CONJURING Universe wurde umgebaut. Dazu kamen drei Zonas de Espanto, die Parade Cortejo Siniestro und der Kids Boo Fest im Kinderbereich. Six Flags empfiehlt das Festival ab 13 Jahren, und wer älter als zwölf ist, darf weder Maske noch Kostüm tragen.
+Das Halloween-Event heißt Festival del Terror und lief 2026 vom 3. September bis zum 16. November. Acht Atracciones de Terror kosten extra, ohne Ausnahme auch für Passinhaber. Unter den acht Häusern waren 2026 zwei neue, JASON Blood Reign und THE STRANGERS No Escape, und THE CONJURING Universe kam umgebaut zurück. Ohne Aufpreis liefen drei Zonas de Espanto, die Parade Cortejo Siniestro und für Kinder der Kids Boo Fest. Six Flags empfiehlt das Festival ab 13 Jahren, und wer älter als zwölf ist, darf weder Maske noch Kostüm tragen.
 
-Für die Warteschlangen ist das Festival del Terror die vollste Zeit des Jahres. Die fünf vollsten Tage, die park.fan in Six Flags México gemessen hat, liegen alle zwischen dem 24. Oktober und dem 16. November 2026.
+Die fünf vollsten Tage, die wir in Six Flags México gemessen haben, lagen alle im Festival, zwischen dem 24. Oktober und dem 16. November 2026.
 
 ## Wann am wenigsten los ist
 
@@ -78,13 +78,13 @@ Für die Warteschlangen ist das Festival del Terror die vollste Zeit des Jahres.
 
 ```
 
-Der Samstag ist der vollste Tag der Woche, danach kommt der Sonntag. Am kürzesten stehst du dienstags an, Montag und Mittwoch liegen knapp dahinter. Donnerstag und Freitag sind voller als der Wochenanfang, aber deutlich leerer als das Wochenende. Wenn du die Wahl hast, nimm einen Dienstag, und schau vorher im Kalender, ob der Park an dem Tag überhaupt offen hat.
+Am kürzesten stehst du von Montag bis Mittwoch an, dienstags noch etwas kürzer als an den beiden anderen. Am meisten los ist am Wochenende, samstags mehr als sonntags, und Donnerstag und Freitag liegen dazwischen, näher am Wochenanfang. Wenn du die Wahl hast, nimm einen Dienstag, und schau vorher im Kalender, ob der Park an dem Tag überhaupt offen hat.
 
 ```stats-widget slug=six-flags-mexico show=months
 
 ```
 
-Über das Jahr gesehen sind September, Februar und Juni die Monate mit dem wenigsten Andrang. Im Oktober und November, zum Festival del Terror, ist der Park am vollsten, danach folgen Mai und Januar. Den Dezember hat park.fan noch nicht an genug Tagen gemessen.
+Ohne den Dezember, den wir noch an zu wenigen Tagen gemessen haben, sind September, Februar und Juni die Monate mit dem wenigsten Andrang. Im Oktober und November, zum Festival del Terror, ist der Park am vollsten, danach folgen Mai und Januar.
 
 ### Ferien und Feiertage
 
@@ -102,7 +102,7 @@ Lange Wochenenden entstehen 2027 durch die gesetzlichen Feiertage am Montag, 1. 
 
 ### Regenzeit
 
-In Mexiko-Stadt regnet es vor allem von Mai bis Oktober, am meisten im Juli und August, und im Süden der Stadt, wo der Park liegt, mehr als im Norden. Die Gewitter kommen meist am Nachmittag. Bei Gewitter, Regen oder starkem Wind schließt Six Flags Bahnen, und Geld zurück oder einen Ersatztag gibt es dafür nicht. Von November bis April ist Trockenzeit, und der Dezember ist der trockenste Monat. Morgens ist es am Ajusco dann allerdings frisch, eine Jacke für die ersten Fahrten schadet nicht.
+In Mexiko-Stadt regnet es vor allem von Mai bis Oktober, am meisten im Juli und August, und im Süden der Stadt, wo der Park liegt, mehr als im Norden. Die Gewitter kommen meist am Nachmittag. Schließt ein Gewitter die Bahnen, gibt Six Flags weder Geld zurück noch einen Ersatztag. Von November bis April ist Trockenzeit, und der Dezember ist der trockenste Monat. Morgens ist es am Ajusco dann allerdings frisch, und ohne Jacke merkst du das auf Superman El Último Escape bei 120 km/h als Erstes.
 
 ## Wie voll es ist, Bahn für Bahn
 
@@ -110,7 +110,7 @@ In Mexiko-Stadt regnet es vor allem von Mai bis Oktober, am meisten im Juli und 
 
 ```
 
-An der Spitze stehen Medusa Steel Coaster und Crazanity, danach Superman El Último Escape. Am stärksten lohnt es sich bei diesen beiden, zur Öffnung hinzulaufen. Batgirl Batarang, Superman El Último Escape, Batman The Ride, die Triple Torre Kilahuea, The Dark Knight Coaster und The Joker sind in der ersten Stunde ebenfalls deutlich leerer als später, nur nicht ganz so stark. Am Wochenende bringt der frühe Start viel mehr als unter der Woche.
+Am längsten stehst du an Medusa Steel Coaster und Crazanity an, danach an Superman El Último Escape. Bei Medusa und Crazanity lohnt es sich am meisten, zur Öffnung hinzulaufen. Auch an Superman, Batgirl Batarang, Batman The Ride, der Triple Torre Kilahuea, The Dark Knight Coaster und The Joker stehst du in der ersten Stunde kürzer an als später, nur ist der Abstand kleiner als bei Medusa und Crazanity. Am Wochenende bringt der frühe Start viel mehr als unter der Woche.
 
 ```glossary-widget slug=rope-drop
 
@@ -120,9 +120,9 @@ An der Spitze stehen Medusa Steel Coaster und Crazanity, danach Superman El Últ
 
 ```
 
-Bei Medusa steigt die Warteschlange gegen Mittag sprunghaft an und bleibt dann bis zum Abend fast gleich lang. Crazanity wird dagegen bis in den frühen Abend immer voller. Bei den meisten Bahnen liegt die vollste Stunde erst am Abend. Die Abendstunden sind in diesem Park also keine Lücke, in der du die Headliner nachholst.
+Bei Medusa steigt die Warteschlange gegen Mittag sprunghaft an und bleibt dann bis zum Abend fast gleich lang. Crazanity wird dagegen bis in den frühen Abend immer voller. Bei den meisten Bahnen liegt die vollste Stunde erst am Abend. Medusa und Crazanity gehören deshalb in den Vormittag, abends stehst du an beiden mindestens so lange an wie mittags.
 
-Wie lang die Warteschlangen gerade sind und welche Bahnen fahren, siehst du live auf der [Parkseite von Six Flags México](ref:six-flags-mexico).
+Auf der [Parkseite von Six Flags México](ref:six-flags-mexico) siehst du live, ob Superman nach einem Gewitter wieder fährt und wie lang die Warteschlange an Medusa gerade ist.
 
 ## Ein Tag im Park
 
@@ -133,21 +133,21 @@ Angenommen, du stehst an einem Samstag um zehn am Eingang und hast keinen Flash 
 - Dann Superman El Último Escape und Batgirl Batarang.
 - Batman The Ride, The Joker und The Dark Knight Coaster vor dem Mittag.
 - Am frühen Nachmittag Río Salvaje, in der Regenzeit bevor die Gewitter kommen.
-- Am Abend Shows, Essen und was noch fehlt.
+- Am Abend, wenn fast alle Warteschlangen am längsten sind, Shows und Abendessen.
 
-Lose Gegenstände darfst du auf keiner Bahn dabeihaben, also weder Handy noch Kappe, Kamera oder Tasche. Kleines gehört in eine Tasche mit Reißverschluss oder eine Gürteltasche. Was bei Superman El Último Escape, The Joker, Batman The Ride, Justice League, Wonder Woman, Batgirl, Superman Krypton, Tsunami, The Dark Knight und Medusa in den Sperrbereich fällt, bekommst du erst nach Parkschluss zurück.
+Lose Gegenstände darfst du auf keiner Bahn dabeihaben, also weder Handy noch Kappe, Kamera oder Tasche. Kleines gehört in eine Tasche mit Reißverschluss oder eine Gürteltasche. Fällt dir auf einer der Achterbahnen außer dem Speedway Stunt Coaster oder in Justice League etwas in den Sperrbereich, bekommst du es erst nach Parkschluss zurück.
 
 ## Die Achterbahnen
 
 [Superman El Último Escape](ref:six-flags-mexico/superman-el-ultimo-escape?bare) ist die höchste, schnellste und längste Achterbahn Mexikos. Gebaut hat sie D.H. Morgan Manufacturing, in Betrieb ging sie am 19. November 2004, Six Flags selbst nennt 2005. Der Zug wird 67 Meter hochgezogen, fällt 62,5 Meter in einem Winkel von 60 Grad und ist unten 120 km/h schnell. Für die 1.700 Meter Strecke ohne einen Überschlag braucht er gut drei Minuten. Eröffnen sollte die Bahn schon 2002, doch ein Streit zwischen Six Flags und der mexikanischen Regierung hielt den Bau zwei Jahre lang auf.
 
-[Medusa Steel Coaster](ref:six-flags-mexico/medusa-steel-coaster?bare) stand von 2000 bis 2013 als Holzachterbahn von Custom Coasters International im Park. Rocky Mountain Construction hat sie mit ihrer IBox-Schiene umgebaut, und seit dem 14. Juni 2014 fährt sie als Hybrid-Achterbahn, nach Angaben von Six Flags die einzige aus Stahl und Holz in Mexiko. Die RCDB nennt 29,9 Meter Höhe, 914 Meter Strecke, 93 km/h und drei Überschläge, Six Flags 36 Meter und rund einen Kilometer.
+[Medusa Steel Coaster](ref:six-flags-mexico/medusa-steel-coaster?bare) stand von 2000 bis 2013 als Holzachterbahn von Custom Coasters International im Park. Rocky Mountain Construction hat sie mit ihrer IBox-Schiene umgebaut, und seit dem 14. Juni 2014 fährt sie als Hybrid-Achterbahn, nach Angaben von Six Flags die einzige in Mexiko. Die RCDB nennt 29,9 Meter Höhe, 914 Meter Strecke, 93 km/h und drei Überschläge, Six Flags 36 Meter und rund einen Kilometer.
 
 ```glossary-widget slug=hybrid-coaster
 
 ```
 
-[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare) ist ein Suspended Looping Coaster von Vekoma und fährt seit dem 14. April 2000, dem Tag, an dem der Park als Six Flags México wiedereröffnet hat. Unter der 33 Meter hohen Schiene geht es fünfmal über Kopf, mehr Überschläge hat keine Achterbahn in Mexiko. Mit bis zu 80 km/h legt der Zug 689 Meter in 1:36 Minuten zurück.
+[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare), ein Suspended Looping Coaster von Vekoma, gehört seit der Wiedereröffnung als Six Flags México zum Park. Unter der 33 Meter hohen Schiene geht es fünfmal über Kopf, mehr Überschläge hat keine Achterbahn in Mexiko. Mit bis zu 80 km/h legt der Zug 689 Meter in 1:36 Minuten zurück.
 
 [Batgirl Batarang](ref:six-flags-mexico/batgirl-batarang?bare) ist ein Boomerang von Vekoma, nach der RCDB der erste, den der Hersteller gebaut hat. Er fuhr ab 1984 in Puebla und steht seit 1988 im Park, wo er erst Boomerang, dann Escorpión und ab 2000 wieder Boomerang hieß. Seit 2025 trägt er den Namen Batgirl Batarang, mit neuem Zug und neuen Bremsen. Der Zug fährt 35,5 Meter hoch und mit bis zu 76 km/h durch einen Cobra Roll und einen Looping, erst vorwärts, dann rückwärts. Six Flags zählt beide Richtungen und kommt so auf sechs Überschläge.
 
@@ -155,19 +155,19 @@ Lose Gegenstände darfst du auf keiner Bahn dabeihaben, also weder Handy noch Ka
 
 ```
 
-Der [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) ist ein 4D Free Spin von S&S Worldwide und fährt seit dem 1. Juni 2018. Die Sitze hängen seitlich an der Schiene und überschlagen sich während der Fahrt. Ein senkrechter Kettenlift zieht den Wagen 36,6 Meter hoch, die Strecke ist 310 Meter lang und der Wagen höchstens 61 km/h schnell. Six Flags nennt ihn die einzige Bahn dieser Art in Lateinamerika.
+Der [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) ist ein 4D Free Spin von S&S Worldwide und fährt seit dem 1. Juni 2018. Die Sitze hängen seitlich an der Schiene und überschlagen sich während der Fahrt. Ein senkrechter Kettenlift zieht den Wagen 36,6 Meter hoch, die Strecke ist 310 Meter lang und der Wagen höchstens 61 km/h schnell. Wer in Lateinamerika einen 4D Free Spin fahren will, muss nach Angaben von Six Flags hierher.
 
-[The Dark Knight Coaster](ref:six-flags-mexico/the-dark-knight-coaster?bare) ist eine Wilde Maus von Mack Rides in einer Halle. Sie stand bis 2008 in Six Flags New England und fährt seit dem 19. März 2009 in Mexiko-Stadt, 370 Meter in zwei Minuten.
+[The Dark Knight Coaster](ref:six-flags-mexico/the-dark-knight-coaster?bare) ist eine Wilde Maus von Mack Rides in einer Halle. Sie stand bis 2008 in Six Flags New England und fährt seit dem 19. März 2009 in Mexiko-Stadt. Eine Runde über 370 Meter dauert zwei Minuten.
 
-[The Joker](ref:six-flags-mexico/the-joker?bare) ist ein Spinning Coaster von Gerstlauer, der von 2008 bis 2012 in Six Flags Discovery Kingdom fuhr, zuerst als Tony Hawk’s Big Spin, dann als Pandemonium. Seit dem 6. März 2013 dreht er sich in Pueblo Francés, 16 Meter hoch, 412 Meter lang und bis zu 50 km/h schnell. Vor dem Einstieg läufst du durch ein Spiegelkabinett.
+Auch [The Joker](ref:six-flags-mexico/the-joker?bare), ein Spinning Coaster von Gerstlauer, ist aus den USA umgezogen und fuhr von 2008 bis 2012 in Six Flags Discovery Kingdom, erst als Tony Hawk’s Big Spin, dann als Pandemonium. Seit dem 6. März 2013 dreht er sich in Pueblo Francés, 16 Meter hoch, 412 Meter lang und bis zu 50 km/h schnell. Vor dem Einstieg läufst du durch ein Spiegelkabinett.
 
 ```glossary-widget slug=spinning-coaster
 
 ```
 
-Der [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) ist die zehnte und jüngste Achterbahn im Park und fährt seit dem 31. Januar 2026. Er ist ein Family Boomerang von Vekoma mit einem Zug für 20 Personen, der vorwärts und rückwärts fährt. Six Flags nennt 23 Meter Abfahrt, 60 km/h und mehr als 200 Meter Strecke. In Begleitung dürfen Kinder ab 95 Zentimetern mit.
+Der [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) ist die zehnte und jüngste Achterbahn im Park und fährt seit dem 31. Januar 2026. Er ist ein Family Boomerang von Vekoma mit einem Zug für 20 Personen, der vorwärts und rückwärts fährt. Er fällt 23 Meter tief, wird 60 km/h schnell und fährt gut 200 Meter Strecke.
 
-[Tsunami](ref:six-flags-mexico/tsunami?bare) ist eine Familienachterbahn von Zierer, die bis 2001 Catarina Voladora hieß und nach der RCDB schon 1981 gebaut wurde. Sie ist 8 Meter hoch und 360 Meter lang und fährt höchstens 36 km/h. Der [Superman Krypton Coaster](ref:six-flags-mexico/superman-krypton-coaster?bare) ist ein Junior Coaster von Vekoma aus dem Jahr 1993, früher Roller Skater, mit 207 Metern Strecke und 8,5 Metern Höhe. Die RCDB nennt 35 km/h, Six Flags 45 km/h. Kinder fahren in Begleitung schon ab 90 Zentimetern mit.
+[Tsunami](ref:six-flags-mexico/tsunami?bare), eine Familienachterbahn von Zierer, ist nach der RCDB 1981 gebaut worden, ein Jahr bevor Reino Aventura eröffnete, und hieß bis 2001 Catarina Voladora. Sie ist 8 Meter hoch und 360 Meter lang und fährt höchstens 36 km/h. Der [Superman Krypton Coaster](ref:six-flags-mexico/superman-krypton-coaster?bare) ist ein Junior Coaster von Vekoma aus dem Jahr 1993, früher Roller Skater, mit 207 Metern Strecke und 8,5 Metern Höhe. Er fährt nach der RCDB 35 km/h, nach Six Flags 45.
 
 ### Türme, Pendel und Wasser
 
@@ -177,13 +177,13 @@ Der [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) i
 
 ```
 
-Die [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare) ist ein Freifallturm von S&S und steht seit 2000 im Park. Six Flags gibt mehr als 60 Meter Höhe an. [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare), bis 2018 SkyScreamer, ist ein Kettenkarussell von 74 Metern Höhe und dreht sich mit bis zu 64 km/h.
+Die [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare), ein Freifallturm von S&S, steht wie Batman The Ride seit der Wiedereröffnung im Jahr 2000 im Park. Er ist mehr als 60 Meter hoch. Am [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare) drehst du dich an einem 74 Meter hohen Turm mit bis zu 64 km/h im Kreis. Wer ältere Videos sucht, findet das Kettenkarussell unter SkyScreamer, so hieß es bis 2018.
 
 Nass wirst du auf [Río Salvaje](ref:six-flags-mexico/rio-salvaje?bare), einer Wildwasserbahn, die nur in manchen Jahreszeiten fährt. In der Halle von [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-mexico/justice-league-battle-for-metropolis?bare) schießt du seit 2016 im Wagen auf Schurken. Gegen Aufpreis gibt es den SlingShot und den Skycoaster X-Flight.
 
 ## Mindestgrößen
 
-Six Flags México gibt die Grenzen in Metern an. Eine Begleitperson muss mindestens 1,37 Meter groß und 14 Jahre alt sein.
+Eine Begleitperson muss mindestens 1,37 Meter groß und 14 Jahre alt sein.
 
 - 1,40 m: Triple Torre Kilahuea
 - 1,32 m: Crazanity
@@ -198,7 +198,7 @@ Six Flags México gibt die Grenzen in Metern an. Eine Begleitperson muss mindest
 - 1,40 m allein, 1,20 m in Begleitung: Expreso Musical
 - gegen Aufpreis: SlingShot ab 1,15 m, X-Flight ab 1,07 m, Go-Karts ab 1 m als Beifahrer und ab 1,50 m am Steuer
 
-Medusa hat am Eingang einen Testsitz. Mit dem Programa de intercambio de niños wartet ein Erwachsener mit dem Kind, das nicht mitfährt, und fährt danach, ohne noch einmal anzustehen.
+Medusa hat am Eingang einen Testsitz. Den Rider Switch gibt es hier unter dem Namen Programa de intercambio de niños.
 
 ```glossary-widget slug=rider-switch
 
@@ -211,9 +211,9 @@ Six Flags México verkauft THE FLASH Pass, mit dem du in die Fila preferente geh
 - Flash Pass Regular für drei Fahrten, ab 300 Pesos
 - Flash Pass Platino für zehn Fahrten, ab 700 Pesos
 
-Der Preis hängt vom Tag ab, und online kann er anders sein als im Park. Verkauft wird der Pass in den Souvenirläden und online, in begrenzter Zahl. Er gilt nur am gekauften Tag, ist an eine Person gebunden, und zurückgeben kannst du ihn nicht.
+Der Preis hängt vom Tag ab, und online kann er anders sein als im Park. Verkauft wird der Pass in den Souvenirläden und online, in begrenzter Zahl. Er gilt nur an dem Tag, für den du ihn kaufst, ist an eine Person gebunden, und zurückgeben kannst du ihn nicht.
 
-Der Flash Pass gilt an Superman El Último Escape, Batman The Ride, Batgirl Batarang, Río Salvaje, Crazanity, Wonder Woman Coaster, Supergirl Sky Flight, The Dark Knight Coaster, The Joker, Tsunami, Medusa Steel Coaster und Justice League: Battle for Metropolis. Auf der Website führt Six Flags außerdem die Triple Torre Kilahuea und den Speedway Stunt Coaster mit Flash Pass.
+Der Flash Pass gilt an allen Achterbahnen außer dem Superman Krypton Coaster und dem Speedway Stunt Coaster, dazu an Crazanity, Supergirl Sky Flight, Río Salvaje und Justice League: Battle for Metropolis. Auf der Website steht der Flash Pass außerdem bei der Triple Torre Kilahuea und beim Speedway Stunt Coaster.
 
 ```glossary-widget slug=express-pass
 
@@ -229,14 +229,14 @@ Six Flags erstattet keine Tickets und verschiebt kein Datum. Wer den Park verlä
 
 Die Pases Anuales 2027 gelten ab dem Kauf bis zum 31. Dezember 2027, an allen regulären Öffnungstagen, und schließen Festival del Terror und Christmas in the Park ein, die Attraktionen mit Aufpreis aber nicht:
 
-- **Silver** für 1.700 Pesos: Six Flags México und Hurricane Harbor Oaxtepec, 10 Prozent Rabatt auf Essen und Souvenirs, kein Parken
-- **Gold** für 1.800 Pesos: zehn Parks, neben Six Flags México und Hurricane Harbor Oaxtepec auch Six Flags Magic Mountain, Knott’s Berry Farm, California’s Great America, Six Flags Discovery Kingdom und vier Wasserparks in den USA, dazu Parken für ein Auto pro Besuch
-- **Prestige** für 2.999 Pesos: alle Six-Flags-Parks in Mexiko, den USA und Kanada, bevorzugtes Parken, 15 Prozent Rabatt, eine Flash-Pass-Fahrt pro Besuch und der Getränkeplan
+- Silver für 1.700 Pesos: Six Flags México und Hurricane Harbor Oaxtepec, 10 Prozent Rabatt auf Essen und Souvenirs, kein Parken
+- Gold für 1.800 Pesos: zehn Parks, neben Six Flags México und Hurricane Harbor Oaxtepec auch Six Flags Magic Mountain, Knott’s Berry Farm, California’s Great America, Six Flags Discovery Kingdom und vier Wasserparks in den USA, dazu Parken für ein Auto pro Besuch
+- Prestige für 2.999 Pesos: alle Six-Flags-Parks in Mexiko, den USA und Kanada, bevorzugtes Parken, 15 Prozent Rabatt, eine Flash-Pass-Fahrt pro Besuch und der Getränkeplan
 
 Ein Tagesticket ab 750 Pesos kannst du am selben Tag am Módulo de Servicio a Socios in Pueblo Mexicano in einen Jahrespass umwandeln.
 
 > [!PARKY] Gold statt Silver
-> Fahren wir mit dem Auto hin, nehmen wir Gold: Er kostet nur 100 Pesos mehr als Silver, und das Parken, das bei Silver extra kostet, ist schon beim ersten Besuch 300 Pesos wert. Ab dem zweiten Besuch im Jahr sind Silver und Gold billiger als zwei Tagestickets, und die Rechnung mache ich am liebsten am Eingang, bevor ich in den ersten Churro beiße.
+> Fahren wir mit dem Auto hin, nehmen wir Gold: Er kostet nur 100 Pesos mehr als Silver, und das Parken, das bei Silver extra kostet, ist schon beim ersten Besuch 300 Pesos wert. Ab dem zweiten Besuch im Jahr sind Silver und Gold billiger als zwei Tagestickets, und weil sich ein Tagesticket noch am selben Tag umwandeln lässt, darf die Entscheidung bis nach dem ersten Churro warten.
 
 ## Parken
 
@@ -260,11 +260,11 @@ Schließfächer stehen in Pueblo Mexicano gegenüber den Teetassen, in Pueblo Fr
 
 ## Geschichte
 
-Reino Aventura hat am 3. März 1982 eröffnet. Bekannt wurde der Park durch einen Schwertwal: Keiko lebte ab 1985 dort, 1993 wurde „Free Willy“ im Park gedreht, und im Januar 1996 flog Keiko ins Oregon Coast Aquarium in den USA.
+Reino Aventura hat am 3. März 1982 eröffnet. Bekannt wurde der Park durch den Schwertwal Keiko, der ab 1985 dort lebte. 1993 wurde „Free Willy“ mit ihm im Park gedreht, im Januar 1996 flog er ins Oregon Coast Aquarium in den USA.
 
 Am 4. Mai 1999 kaufte Premier Parks den Park für 59 Millionen Dollar, ein Jahr nachdem das Unternehmen Six Flags übernommen hatte. Damals zählte er nach Angaben des Käufers rund 1,7 Millionen Besucher im Jahr. Am 14. April 2000 öffnete er als Six Flags México wieder, mit Batman The Ride, der Triple Torre Kilahuea und der hölzernen Medusa. Das Gelände hat Six Flags von der Stadt gepachtet, bis 2034. Seit der Fusion mit Cedar Fair am 1. Juli 2024 gehört der Park zur Six Flags Entertainment Corporation. Als Six Flags im März 2026 sieben Parks verkaufte, war Six Flags México nicht darunter.
 
-Im Index von TEA und AECOM stand er 2019 mit 2.803.000 Besuchern auf Platz eins in Lateinamerika. Seit 2023 liegt Beto Carrero World in Brasilien vorn. 2024 kam Six Flags México auf 2.051.000 Besucher, 2025 nach dem neuen Index auf 2.082.000, beide Male Platz zwei.
+Im Index von TEA und AECOM stand er 2019 mit 2.803.000 Besuchern auf Platz eins in Lateinamerika. Seit 2023 liegt Beto Carrero World in Brasilien vorn. 2024 und 2025 kam Six Flags México auf gut zwei Millionen Besucher und jeweils Platz zwei.
 
 ## Häufige Fragen zu Six Flags México
 
@@ -290,7 +290,7 @@ Online ab 1.149 Pesos, je nach Datum. An der Kasse zahlen alle über 1,20 Meter 
 
 ### Was kostet der Flash Pass in Six Flags México?
 
-Der Flash Pass Regular für drei Fahrten kostet ab 300 Pesos, der Platino für zehn Fahrten ab 700 Pesos. Er gilt nur am gekauften Tag, unter anderem an Medusa, Crazanity und Superman El Último Escape.
+Ab 300 Pesos für drei Fahrten mit dem Regular, ab 700 Pesos für zehn mit dem Platino, je nach Tag. Einlösen kannst du ihn nur an dem Tag, für den du ihn gekauft hast, unter anderem an Medusa, Crazanity und Superman El Último Escape.
 
 ### Was kostet das Parken in Six Flags México?
 
@@ -298,7 +298,7 @@ Der Flash Pass Regular für drei Fahrten kostet ab 300 Pesos, der Platino für z
 
 ### Darf man Essen mit in Six Flags México nehmen?
 
-Nein, nur eine Flasche Wasser bis 1,5 Liter pro Person, Babynahrung und Essen für eine medizinisch nötige Diät. Kühlboxen sind nicht erlaubt.
+Nein. Erlaubt sind nur Wasser, bis 1,5 Liter pro Person in einer Flasche, Babynahrung und Essen, das du aus medizinischen Gründen brauchst. Kühlboxen sind nicht erlaubt.
 
 ### Wie komme ich ohne Auto zu Six Flags México?
 
@@ -306,7 +306,7 @@ Mit der Metro-Linie 3 bis Universidad und von dort mit dem Bus oder Microbús zu
 
 ### Wie lange läuft Christmas in the Park 2026?
 
-Vom 26. November 2026 bis zum 17. Januar 2027, an ausgewählten Tagen, meist von 10 bis 22 Uhr. Geschlossen ist am 30. November, am 1. und 7. Dezember, am 7. Januar und vom 11. bis 14. Januar. Das Event ist im normalen Eintritt enthalten.
+Vom 26. November 2026 bis zum 17. Januar 2027, meist von 10 bis 22 Uhr. Geschlossen ist am 30. November, am 1. und 7. Dezember, am 7. Januar und vom 11. bis 14. Januar. Das Event ist im normalen Eintritt enthalten.
 
 — Patrick
 

@@ -28,10 +28,10 @@ coverImage:
   caption: 'Taron en el pueblo de basalto de Klugheim, para mí, el rincón más bonito del parque.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand: ¿cuándo compensa el Quick Pass? Consejos'
+  title: 'Consejos para Phantasialand: ¿cuándo compensa el Quick Pass?'
   description: >-
-    Un día tranquilo no necesitas Quick Pass en Phantasialand. Un día lleno te
-    salva Taron por 12 € y F.L.Y., que solo entra en el Ultimate de 80 €.
+    Un día tranquilo no necesitas Quick Pass en Phantasialand. Un día lleno
+    compensa para Taron (12 €) y F.L.Y., que solo entra en el Ultimate de 80 €.
   keywords:
     - tiempos de espera Phantasialand
     - evitar tiempos de espera Phantasialand

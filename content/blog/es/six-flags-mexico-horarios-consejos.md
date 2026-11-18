@@ -42,17 +42,17 @@ seo:
     - Crazanity
 ---
 
-[Six Flags México](ref:six-flags-mexico) está en el extremo sur de la Ciudad de México, en la alcaldía Tlalpan, sobre la carretera que sube al Ajusco. La dirección es Carretera Picacho-Ajusco km 1,5. El parque abrió en 1982 como Reino Aventura y se llama Six Flags México desde el 14 de abril de 2000. Ocupa unas 45 hectáreas, y desde finales de enero de 2026 tiene diez montañas rusas.
+[Six Flags México](ref:six-flags-mexico) está en el extremo sur de la Ciudad de México, en la alcaldía Tlalpan, sobre la carretera que sube al Ajusco. La dirección es Carretera Picacho-Ajusco km 1,5. El parque abrió en 1982 como Reino Aventura y se llama Six Flags México desde el 14 de abril de 2000. Ocupa unas 45 hectáreas, y desde que el Speedway Stunt Coaster abrió el 31 de enero de 2026 tiene diez montañas rusas.
 
-Aquí las filas crecen a lo largo del día y no paran hasta entrada la noche. Si estás en la entrada a las diez, te subes a las montañas rusas grandes casi sin esperar. Si llegas después de comer, la parte más llena del día todavía te queda por delante.
+En las montañas rusas grandes, las filas son más cortas cuando se abren las puertas a las diez, y de ahí crecen hasta entrada la noche. Si llegas después de comer, la parte más llena del día todavía te queda por delante.
 
 ## Horarios de Six Flags México
 
-Six Flags México abre todo el año, pero no todos los días. Fuera de las vacaciones y de los eventos, el parque se salta algunos días de la semana; cuáles, lo indican el calendario del sitio de Six Flags y el [calendario de tiempos de espera](ref:six-flags-mexico?calendar) de park.fan. Casi siempre abre a las 10:00, y la hora de cierre cambia según el evento.
+Six Flags México abre todo el año, aunque fuera de las vacaciones y de los eventos se salta algunos días de la semana. Los días de apertura están en el calendario del sitio de Six Flags y en nuestro [calendario de tiempos de espera](ref:six-flags-mexico?calendar). Casi siempre abre a las 10:00, y la hora de cierre cambia según el evento.
 
 ### Christmas in the Park 2026
 
-Christmas in the Park va del 26 de noviembre de 2026 al 17 de enero de 2027, en días seleccionados. El calendario del parque marca estos horarios:
+Para Christmas in the Park, del 26 de noviembre de 2026 al 17 de enero de 2027, el parque abre con estos horarios:
 
 - del 26 al 29 de noviembre: de 10:00 a 22:00
 - 30 de noviembre y 1 de diciembre: cerrado
@@ -64,15 +64,15 @@ Christmas in the Park va del 26 de noviembre de 2026 al 17 de enero de 2027, en 
 - 1 de enero de 2027: de 11:00 a 23:00
 - del 2 al 17 de enero: de 10:00 a 22:00; cerrado el 7 de enero y del 11 al 14 de enero
 
-O sea, en diciembre el parque abre casi diario. Christmas in the Park va incluido en la entrada normal y en todos los pases anuales. Algunas atracciones se pagan aparte, entre ellas las de nieve.
+Christmas in the Park va incluido en la entrada normal y en todos los pases anuales. Algunas atracciones se pagan aparte, entre ellas las de nieve.
 
 Antes del evento, el parque todavía abre en noviembre el 20 y el 25, de 10:00 a 18:00, y el 21 y el 22, de 10:00 a 20:00.
 
 ### Festival del Terror
 
-El evento de Halloween se llama Festival del Terror, y en 2026 fue del 3 de septiembre al 16 de noviembre. Las ocho Atracciones de Terror se pagan aparte, sin excepción, aunque tengas pase anual. En 2026 se estrenaron JASON Blood Reign y THE STRANGERS No Escape, y THE CONJURING Universe se renovó. Además hubo tres Zonas de Espanto, el desfile Cortejo Siniestro y el Kids Boo Fest en la zona infantil. Six Flags recomienda el festival a partir de 13 años, y los mayores de doce no pueden entrar con máscara ni disfraz.
+El evento de Halloween se llama Festival del Terror, y en 2026 fue del 3 de septiembre al 16 de noviembre. Las ocho Atracciones de Terror se pagan aparte, sin excepción, aunque tengas pase anual. De las ocho, dos se estrenaron en 2026, JASON Blood Reign y THE STRANGERS No Escape, y THE CONJURING Universe regresó tras una remodelación. Sin costo extra había tres Zonas de Espanto, el desfile Cortejo Siniestro y, para los niños, el Kids Boo Fest. Six Flags recomienda el festival a partir de 13 años, y los mayores de doce no pueden entrar con máscara ni disfraz.
 
-Para las filas, el Festival del Terror es la época más llena del año. Los cinco días con más gente que park.fan ha medido en Six Flags México caen todos entre el 24 de octubre y el 16 de noviembre de 2026.
+Los cinco días con más gente que hemos medido en Six Flags México cayeron todos en el festival, entre el 24 de octubre y el 16 de noviembre de 2026.
 
 ## Qué días hay menos gente
 
@@ -80,13 +80,13 @@ Para las filas, el Festival del Terror es la época más llena del año. Los cin
 
 ```
 
-El sábado es el día con más gente de la semana, y después viene el domingo. Las filas más cortas te tocan los martes, con el lunes y el miércoles muy cerca. El jueves y el viernes hay más gente que a principio de semana, pero bastante menos que el fin de semana. Si puedes elegir, ve un martes, y antes revisa en el calendario que el parque abra ese día.
+De lunes a miércoles es cuando menos fila haces, y el martes todavía un poco menos que los otros dos días. El fin de semana hay más gente, el sábado más que el domingo, y el jueves y el viernes quedan en medio, más cerca del principio de la semana. Si puedes elegir, ve un martes, y antes revisa en el calendario que el parque abra ese día.
 
 ```stats-widget slug=six-flags-mexico show=months
 
 ```
 
-A lo largo del año, septiembre, febrero y junio son los meses con menos gente. En octubre y noviembre, con el Festival del Terror, el parque se llena más que nunca, y detrás vienen mayo y enero. Diciembre park.fan todavía no lo ha medido en suficientes días.
+Sin contar diciembre, que todavía hemos medido en muy pocos días, septiembre, febrero y junio son los meses con menos gente. En octubre y noviembre, con el Festival del Terror, el parque se llena más que nunca, y detrás vienen mayo y enero.
 
 ### Vacaciones y días feriados
 
@@ -104,7 +104,7 @@ En 2027 hay puente con los días de descanso obligatorio del lunes 1 de febrero 
 
 ### Temporada de lluvias
 
-En la Ciudad de México llueve sobre todo de mayo a octubre, más que nada en julio y agosto, y en el sur de la ciudad, donde está el parque, más que en el norte. Las tormentas suelen caer en la tarde. Con tormenta eléctrica, lluvia o viento fuerte, Six Flags cierra atracciones, y no por eso te devuelve el dinero ni te da otro día. De noviembre a abril es temporada seca, y diciembre es el mes más seco. Eso sí, en las mañanas hace fresco en el Ajusco, y una chamarra para las primeras vueltas no sobra.
+En la Ciudad de México llueve sobre todo de mayo a octubre, más que nada en julio y agosto, y en el sur de la ciudad, donde está el parque, más que en el norte. Las tormentas suelen caer en la tarde. Si una tormenta cierra las atracciones, Six Flags no te devuelve el dinero ni te da otro día. De noviembre a abril es temporada seca, y diciembre es el mes más seco. Eso sí, en las mañanas hace fresco en el Ajusco, y sin chamarra lo notas antes que nada en Superman El Último Escape, a 120 km/h.
 
 ## Cuánta gente hay, atracción por atracción
 
@@ -112,7 +112,7 @@ En la Ciudad de México llueve sobre todo de mayo a octubre, más que nada en ju
 
 ```
 
-Encabezan la lista Medusa Steel Coaster y Crazanity, y después viene Superman El Último Escape. En esas dos es donde más rinde ir directo en cuanto abre el parque. Batgirl Batarang, Superman El Último Escape, Batman The Ride, la Triple Torre Kilahuea, The Dark Knight Coaster y The Joker también tienen bastante menos fila en la primera hora que después, aunque la diferencia es menor. El fin de semana, llegar temprano te ahorra mucha más fila que entre semana.
+Donde más fila haces es en Medusa Steel Coaster y Crazanity, y después en Superman El Último Escape. Ir directo a Medusa y a Crazanity en cuanto abre el parque es lo que más rinde. En Superman, Batgirl Batarang, Batman The Ride, la Triple Torre Kilahuea, The Dark Knight Coaster y The Joker también haces menos fila en la primera hora que después, pero la diferencia es menor que en Medusa y Crazanity. El fin de semana, llegar temprano te ahorra mucha más fila que entre semana.
 
 ```glossary-widget slug=rope-drop
 
@@ -122,9 +122,9 @@ Encabezan la lista Medusa Steel Coaster y Crazanity, y después viene Superman E
 
 ```
 
-En Medusa la fila da un brinco hacia el mediodía y luego se queda casi igual hasta la noche. Crazanity, en cambio, se va llenando cada vez más hasta que empieza a oscurecer. En la mayoría de las atracciones, la hora con más fila cae ya de noche. Por eso, en este parque las últimas horas no sirven para ponerte al corriente con las atracciones estrella.
+En Medusa la fila da un brinco hacia el mediodía y luego se queda casi igual hasta la noche. Crazanity, en cambio, se va llenando cada vez más hasta que empieza a oscurecer. En la mayoría de las atracciones, la hora con más fila cae ya de noche. Por eso Medusa y Crazanity van en la mañana; en la noche, la fila en las dos es por lo menos igual de larga que al mediodía.
 
-Qué tan larga es la fila ahora mismo y qué atracciones están funcionando lo ves en vivo en la [página de Six Flags México](ref:six-flags-mexico).
+En la [página de Six Flags México](ref:six-flags-mexico) ves en vivo si Superman ya volvió a funcionar después de una tormenta y qué tan larga está la fila de Medusa.
 
 ## Un día en el parque
 
@@ -135,21 +135,21 @@ Supongamos que un sábado estás en la entrada a las diez y no tienes Flash Pass
 - Luego, Superman El Último Escape y Batgirl Batarang.
 - Batman The Ride, The Joker y The Dark Knight Coaster, antes del mediodía.
 - A primera hora de la tarde, Río Salvaje; en temporada de lluvias, antes de que lleguen las tormentas.
-- En la noche, shows, comida y lo que te falte.
+- En la noche, cuando casi todas las filas llegan a su máximo, shows y cena.
 
-En ninguna atracción puedes llevar objetos sueltos: ni celular, ni gorra, ni cámara, ni bolsa. Lo pequeño va en una bolsa con cierre o en una cangurera. Lo que se te caiga en la zona restringida de Superman El Último Escape, The Joker, Batman The Ride, Justice League, Wonder Woman, Batgirl, Superman Krypton, Tsunami, The Dark Knight y Medusa no lo recuperas hasta que cierra el parque.
+En ninguna atracción puedes llevar objetos sueltos: ni celular, ni gorra, ni cámara, ni bolsa. Lo pequeño va en una bolsa con cierre o en una cangurera. Si algo se te cae en la zona restringida de cualquier montaña rusa, salvo el Speedway Stunt Coaster, o de Justice League, no lo recuperas hasta que cierra el parque.
 
 ## Las montañas rusas
 
-[Superman El Último Escape](ref:six-flags-mexico/superman-el-ultimo-escape?bare) es la montaña rusa más alta, más rápida y más larga de México. La construyó D.H. Morgan Manufacturing y empezó a funcionar el 19 de noviembre de 2004, aunque Six Flags da 2005. El tren sube 67 metros, cae 62,5 metros con un ángulo de 60 grados y abajo va a 120 km/h. Para los 1700 metros de recorrido, sin una sola inversión, tarda poco más de tres minutos. Tenía que haber abierto en 2002, pero un conflicto entre Six Flags y el gobierno mexicano detuvo la obra dos años.
+[Superman El Último Escape](ref:six-flags-mexico/superman-el-ultimo-escape?bare) es la montaña rusa más alta, más rápida y más larga de México. La construyó D.H. Morgan Manufacturing y empezó a funcionar el 19 de noviembre de 2004, aunque Six Flags dice que fue en 2005. El tren sube 67 metros, cae 62,5 metros con un ángulo de 60 grados y abajo va a 120 km/h. Para los 1700 metros de recorrido, sin una sola inversión, tarda poco más de tres minutos. Tenía que haber abierto en 2002, pero un conflicto entre Six Flags y el gobierno mexicano detuvo la obra dos años.
 
-[Medusa Steel Coaster](ref:six-flags-mexico/medusa-steel-coaster?bare) estuvo en el parque de 2000 a 2013 como montaña rusa de madera de Custom Coasters International. Rocky Mountain Construction la transformó con su vía IBox, y desde el 14 de junio de 2014 funciona como montaña rusa híbrida, según Six Flags la única de acero y madera en México. La RCDB da 29,9 metros de altura, 914 metros de recorrido, 93 km/h y tres inversiones; Six Flags, 36 metros y alrededor de un kilómetro.
+[Medusa Steel Coaster](ref:six-flags-mexico/medusa-steel-coaster?bare) estuvo en el parque de 2000 a 2013 como montaña rusa de madera de Custom Coasters International. Rocky Mountain Construction la transformó con su vía IBox, y el 14 de junio de 2014 volvió a abrir como montaña rusa híbrida, según Six Flags la única en México. Según la RCDB mide 29,9 metros de altura y 914 metros de recorrido, llega a 93 km/h y tiene tres inversiones; según Six Flags, mide 36 metros de altura y alrededor de un kilómetro de recorrido.
 
 ```glossary-widget slug=hybrid-coaster
 
 ```
 
-[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare) es una Suspended Looping Coaster de Vekoma y funciona desde el 14 de abril de 2000, el día en que el parque reabrió como Six Flags México. Vas colgado de una vía de 33 metros de altura y pasas cinco veces de cabeza: ninguna montaña rusa de México tiene más inversiones. A un máximo de 80 km/h, el tren recorre 689 metros en 1:36 minutos.
+[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare), una Suspended Looping Coaster de Vekoma, forma parte del parque desde la reapertura como Six Flags México. Vas colgado de una vía de 33 metros de altura y pasas cinco veces de cabeza: ninguna montaña rusa de México tiene más inversiones. A un máximo de 80 km/h, el tren recorre 689 metros en 1:36 minutos.
 
 [Batgirl Batarang](ref:six-flags-mexico/batgirl-batarang?bare) es un Boomerang de Vekoma, y según la RCDB el primero que construyó el fabricante. Funcionó desde 1984 en Puebla y está en el parque desde 1988, donde primero se llamó Boomerang, luego Escorpión y a partir de 2000 otra vez Boomerang. Desde 2025 se llama Batgirl Batarang y tiene tren y frenos nuevos. El tren sube 35,5 metros y pasa a un máximo de 76 km/h por un cobra roll y un loop, primero hacia adelante y luego de reversa. Six Flags cuenta los dos sentidos y así llega a seis inversiones.
 
@@ -157,19 +157,19 @@ En ninguna atracción puedes llevar objetos sueltos: ni celular, ni gorra, ni c�
 
 ```
 
-El [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) es un 4D Free Spin de S&S Worldwide y funciona desde el 1 de junio de 2018. Los asientos van a los lados de la vía y dan vueltas sobre sí mismos durante el recorrido. Una cadena vertical sube el carro 36,6 metros, la vía mide 310 metros y el carro no pasa de 61 km/h. Six Flags dice que es la única atracción de este tipo en Latinoamérica.
+El [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) es un 4D Free Spin de S&S Worldwide y se inauguró el 1 de junio de 2018. Los asientos van a los lados de la vía y dan vueltas sobre sí mismos durante el recorrido. Una cadena vertical sube el carro 36,6 metros, la vía mide 310 metros y el carro no pasa de 61 km/h. Si quieres subirte a un 4D Free Spin en Latinoamérica, según Six Flags tienes que venir aquí.
 
-[The Dark Knight Coaster](ref:six-flags-mexico/the-dark-knight-coaster?bare) es un ratón salvaje de Mack Rides bajo techo. Estuvo hasta 2008 en Six Flags New England y desde el 19 de marzo de 2009 funciona en la Ciudad de México: 370 metros en dos minutos.
+[The Dark Knight Coaster](ref:six-flags-mexico/the-dark-knight-coaster?bare) es un ratón salvaje de Mack Rides bajo techo. Estuvo hasta 2008 en Six Flags New England, y en la Ciudad de México opera desde el 19 de marzo de 2009. El recorrido de 370 metros dura dos minutos.
 
-[The Joker](ref:six-flags-mexico/the-joker?bare) es una montaña rusa giratoria de Gerstlauer que de 2008 a 2012 estuvo en Six Flags Discovery Kingdom, primero como Tony Hawk’s Big Spin y luego como Pandemonium. Desde el 6 de marzo de 2013 da vueltas en Pueblo Francés, con 16 metros de altura, 412 metros de largo y hasta 50 km/h. Antes de subir pasas por un laberinto de espejos.
+[The Joker](ref:six-flags-mexico/the-joker?bare), una montaña rusa giratoria de Gerstlauer, también llegó de Estados Unidos, donde de 2008 a 2012 estuvo en Six Flags Discovery Kingdom, primero como Tony Hawk’s Big Spin y luego como Pandemonium. Desde el 6 de marzo de 2013 da vueltas en Pueblo Francés, con 16 metros de altura, 412 metros de largo y hasta 50 km/h. Antes de subir pasas por un laberinto de espejos.
 
 ```glossary-widget slug=spinning-coaster
 
 ```
 
-El [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) es la décima montaña rusa del parque, la más nueva, y funciona desde el 31 de enero de 2026. Es un Family Boomerang de Vekoma con un tren para 20 personas que va hacia adelante y de reversa. Six Flags da 23 metros de caída, 60 km/h y más de 200 metros de recorrido. Acompañados, los niños pueden subir desde 95 centímetros.
+El [Speedway Stunt Coaster](ref:six-flags-mexico/speedway-stunt-coaster?bare) es la décima montaña rusa del parque y la más nueva, en servicio desde el 31 de enero de 2026. Es un Family Boomerang de Vekoma con un tren para 20 personas que va hacia adelante y de reversa. Cae 23 metros, llega a 60 km/h y recorre más de 200 metros.
 
-[Tsunami](ref:six-flags-mexico/tsunami?bare) es una montaña rusa familiar de Zierer que hasta 2001 se llamaba Catarina Voladora y que, según la RCDB, se construyó ya en 1981. Mide 8 metros de alto y 360 de largo, y no pasa de 36 km/h. El [Superman Krypton Coaster](ref:six-flags-mexico/superman-krypton-coaster?bare) es un Junior Coaster de Vekoma de 1993, antes Roller Skater, con 207 metros de vía y 8,5 metros de altura. La RCDB da 35 km/h; Six Flags, 45 km/h. Acompañados, los niños suben ya desde 90 centímetros.
+[Tsunami](ref:six-flags-mexico/tsunami?bare), una montaña rusa familiar de Zierer, según la RCDB se construyó en 1981, un año antes de que abriera Reino Aventura, y hasta 2001 se llamaba Catarina Voladora. Mide 8 metros de alto y 360 de largo, y no pasa de 36 km/h. El [Superman Krypton Coaster](ref:six-flags-mexico/superman-krypton-coaster?bare) es un Junior Coaster de Vekoma de 1993, antes Roller Skater, con 207 metros de vía y 8,5 metros de altura. Según la RCDB va a 35 km/h, y según Six Flags, a 45.
 
 ### Torres, péndulo y agua
 
@@ -179,13 +179,13 @@ Según Six Flags, [Crazanity](ref:six-flags-mexico/crazanity?bare) es el péndul
 
 ```
 
-La [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare) es una torre de caída libre de S&S y está en el parque desde 2000. Six Flags le da más de 60 metros de altura. [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare), hasta 2018 SkyScreamer, es un carrusel de sillas voladoras de 74 metros de altura que gira a hasta 64 km/h.
+La [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare), una torre de caída libre de S&S, está en el parque desde la reapertura de 2000, igual que Batman The Ride. Mide más de 60 metros de altura. En [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare) das vueltas hasta a 64 km/h alrededor de una torre de 74 metros de altura. En videos más antiguos, este carrusel de sillas voladoras aparece como SkyScreamer, el nombre que tuvo hasta 2018.
 
 Para mojarte está [Río Salvaje](ref:six-flags-mexico/rio-salvaje?bare), una atracción de aguas bravas que solo funciona en algunas temporadas. Desde 2016, en el edificio de [JUSTICE LEAGUE: Battle for Metropolis](ref:six-flags-mexico/justice-league-battle-for-metropolis?bare), vas en un carro disparándoles a los villanos. Con costo extra están el SlingShot y el Skycoaster X-Flight.
 
 ## Estaturas mínimas
 
-Six Flags México da los límites en metros. Quien acompaña tiene que medir al menos 1,37 metros y tener al menos 14 años.
+Quien acompaña tiene que medir al menos 1,37 metros y tener al menos 14 años.
 
 - 1,40 m: Triple Torre Kilahuea
 - 1,32 m: Crazanity
@@ -200,7 +200,7 @@ Six Flags México da los límites en metros. Quien acompaña tiene que medir al 
 - 1,40 m solo, 1,20 m acompañado: Expreso Musical
 - con costo extra: SlingShot desde 1,15 m, X-Flight desde 1,07 m, Go-Karts desde 1 m de copiloto y desde 1,50 m al volante
 
-Medusa tiene un asiento de prueba en la entrada. Con el Programa de intercambio de niños, un adulto espera con el niño que no se sube y después se sube él sin volver a hacer fila.
+Medusa tiene un asiento de prueba en la entrada. El Rider Switch aquí se llama Programa de intercambio de niños.
 
 ```glossary-widget slug=rider-switch
 
@@ -215,7 +215,7 @@ Six Flags México vende THE FLASH Pass, con el que entras por la Fila preferente
 
 El precio depende del día, y en línea puede ser distinto que en el parque. Se vende en las tiendas de souvenirs y en línea, en cantidad limitada. Solo vale el día para el que lo compras, es personal y no se puede devolver.
 
-El Flash Pass vale en Superman El Último Escape, Batman The Ride, Batgirl Batarang, Río Salvaje, Crazanity, Wonder Woman Coaster, Supergirl Sky Flight, The Dark Knight Coaster, The Joker, Tsunami, Medusa Steel Coaster y Justice League: Battle for Metropolis. En su sitio, Six Flags pone además la Triple Torre Kilahuea y el Speedway Stunt Coaster con Flash Pass.
+El Flash Pass vale en todas las montañas rusas excepto el Superman Krypton Coaster y el Speedway Stunt Coaster, y además en Crazanity, Supergirl Sky Flight, Río Salvaje y Justice League: Battle for Metropolis. En el sitio web, el Flash Pass aparece también en la Triple Torre Kilahuea y en el Speedway Stunt Coaster.
 
 ```glossary-widget slug=express-pass
 
@@ -231,14 +231,14 @@ Six Flags no reembolsa boletos ni cambia la fecha. Si sales del parque, para vol
 
 Los Pases Anuales 2027 valen desde la compra hasta el 31 de diciembre de 2027, todos los días normales de apertura, e incluyen el Festival del Terror y Christmas in the Park, pero no las atracciones con costo extra:
 
-- **Silver** por 1700 pesos: Six Flags México y Hurricane Harbor Oaxtepec, 10 % de descuento en comida y souvenirs, sin estacionamiento
-- **Gold** por 1800 pesos: diez parques; además de Six Flags México y Hurricane Harbor Oaxtepec, Six Flags Magic Mountain, Knott’s Berry Farm, California’s Great America, Six Flags Discovery Kingdom y cuatro parques acuáticos en Estados Unidos, más estacionamiento para un auto en cada visita
-- **Prestige** por 2999 pesos: todos los parques Six Flags de México, Estados Unidos y Canadá, estacionamiento preferente, 15 % de descuento, un viaje con Flash Pass por visita y el plan de bebidas
+- Silver por 1700 pesos: Six Flags México y Hurricane Harbor Oaxtepec, 10 % de descuento en comida y souvenirs, sin estacionamiento
+- Gold por 1800 pesos: diez parques; además de Six Flags México y Hurricane Harbor Oaxtepec, Six Flags Magic Mountain, Knott’s Berry Farm, California’s Great America, Six Flags Discovery Kingdom y cuatro parques acuáticos en Estados Unidos, más estacionamiento para un auto en cada visita
+- Prestige por 2999 pesos: todos los parques Six Flags de México, Estados Unidos y Canadá, estacionamiento preferente, 15 % de descuento, un viaje con Flash Pass por visita y el plan de bebidas
 
 Un boleto de un día de 750 pesos o más lo puedes convertir el mismo día en pase anual en el Módulo de Servicio a Socios, en Pueblo Mexicano.
 
 > [!PARKY] Mejor Gold
-> Si vamos en auto, nos quedamos con el Gold: cuesta solo 100 pesos más que el Silver, y el estacionamiento, que con el Silver se paga aparte, ya vale 300 pesos en la primera visita. A partir de la segunda visita del año, Silver y Gold salen más baratos que dos boletos de un día, y esa cuenta me gusta sacarla en la entrada, antes de darle la primera mordida a un churro.
+> Si vamos en auto, nos quedamos con el Gold: cuesta solo 100 pesos más que el Silver, y el estacionamiento, que con el Silver se paga aparte, ya vale 300 pesos en la primera visita. A partir de la segunda visita del año, Silver y Gold salen más baratos que dos boletos de un día, y como el boleto de un día se puede convertir el mismo día, la decisión puede esperar hasta después del primer churro.
 
 ## Estacionamiento
 
@@ -248,7 +248,7 @@ El estacionamiento cuesta 30 pesos por hora para autos, o 300 pesos por todo el 
 
 En auto se llega por el Periférico Sur. Si vienes del norte, después del Hospital Ángeles tomas la salida hacia TV Azteca y Six Flags, das vuelta a la derecha en la Carretera Picacho-Ajusco y en el segundo semáforo a la izquierda. Si vienes del sur, pasas junto a Perisur hasta la salida Blvd. de la Luz–Picacho, cruzas por debajo del Periférico y también das vuelta a la izquierda en el segundo semáforo. Desde el Zócalo son unos 23 kilómetros.
 
-Sin auto, tomas la Línea 3 del Metro hasta la terminal Universidad; desde el Zócalo, con un transbordo de la Línea 2 en Hidalgo. En Universidad salen camiones y microbuses al parque, y el sitio de turismo de la ciudad calcula unos 40 minutos para el microbús «Cruz del Farol». En los letreros de los camiones que pasan por el parque se lee, entre otros, Sto. Tomás, Bosques, Cuchilla y Santa Teresa. Desde la terminal de autobuses Central del Sur sale el Trolebús DM3 hasta la esquina de Av. Copilco y Av. Universidad, y de ahí las rutas 87 y 125 paran en la entrada.
+Sin auto, tomas la Línea 3 del Metro hasta la terminal Universidad; desde el Zócalo, con un transbordo de la Línea 2 en Hidalgo. En Universidad salen camiones y microbuses al parque, y según el sitio de turismo de la ciudad, el microbús «Cruz del Farol» tarda unos 40 minutos. En los letreros de los camiones que pasan por el parque se lee, entre otros, Sto. Tomás, Bosques, Cuchilla y Santa Teresa. Desde la terminal de autobuses Central del Sur sale el Trolebús DM3 hasta la esquina de Av. Copilco y Av. Universidad, y de ahí las rutas 87 y 125 paran en la entrada.
 
 ## Comida y qué puedes llevar
 
@@ -262,11 +262,11 @@ Hay lockers en Pueblo Mexicano frente a las tazas, en Pueblo Francés frente al 
 
 ## Historia
 
-Reino Aventura abrió el 3 de marzo de 1982. Lo que lo hizo famoso fue una orca: Keiko vivió allí desde 1985, en 1993 se filmó en el parque «Liberen a Willy», y en enero de 1996 Keiko voló al Oregon Coast Aquarium, en Estados Unidos.
+Reino Aventura abrió el 3 de marzo de 1982. Se hizo famoso por la orca Keiko, que vivió allí desde 1985. En 1993 se filmó con ella en el parque «Liberen a Willy», y en enero de 1996 Keiko voló al Oregon Coast Aquarium, en Estados Unidos.
 
 El 4 de mayo de 1999, Premier Parks, dueña de Six Flags desde 1998, compró el parque por 59 millones de dólares. Según el comprador, entonces recibía alrededor de 1,7 millones de visitantes al año. El 14 de abril de 2000 reabrió como Six Flags México, con Batman The Ride, la Triple Torre Kilahuea y la Medusa de madera. Six Flags le renta el terreno a la ciudad hasta 2034. Desde la fusión con Cedar Fair, el 1 de julio de 2024, el parque pertenece a Six Flags Entertainment Corporation. Cuando Six Flags vendió siete parques en marzo de 2026, Six Flags México no estaba entre ellos.
 
-En el índice de TEA y AECOM de 2019 era el número uno de América Latina, con 2.803.000 visitantes. Desde 2023 va por delante Beto Carrero World, en Brasil. En 2024 Six Flags México tuvo 2.051.000 visitantes, y en 2025, según el nuevo índice, 2.082.000; las dos veces quedó en segundo lugar.
+En el índice de TEA y AECOM de 2019 era el número uno de América Latina, con 2.803.000 visitantes. Desde 2023 va por delante Beto Carrero World, en Brasil. En 2024 y en 2025, Six Flags México recibió poco más de dos millones de visitantes y quedó las dos veces en segundo lugar.
 
 ## Preguntas frecuentes sobre Six Flags México
 
@@ -292,7 +292,7 @@ Desde 1149 pesos en línea, según la fecha. En taquilla, todos los que miden m�
 
 ### ¿Cuánto cuesta el Flash Pass en Six Flags México?
 
-Desde 300 pesos el Flash Pass Regular, para tres viajes, y desde 700 pesos el Platino, para diez. Solo vale el día para el que lo compras y sirve, entre otras, en Medusa, Crazanity y Superman El Último Escape.
+El Regular cuesta desde 300 pesos por tres viajes, y el Platino, desde 700 pesos por diez, según el día. Solo puedes usarlo el día para el que lo compraste, por ejemplo en Medusa, Crazanity y Superman El Último Escape.
 
 ### ¿Cuánto cuesta el estacionamiento en Six Flags México?
 
@@ -300,7 +300,7 @@ Cuesta 30 pesos por hora, o 300 pesos por todo el día si pagas antes de las 14:
 
 ### ¿Se puede llevar comida a Six Flags México?
 
-No. Solo se permite una botella de agua de hasta 1,5 litros por persona, comida para bebés y comida para una dieta por motivos médicos. Las hieleras no están permitidas.
+No. Solo puedes entrar con agua, hasta 1,5 litros por persona en una botella, comida para bebés y la comida que necesites por motivos médicos. Las hieleras no están permitidas.
 
 ### ¿Cómo llegar a Six Flags México en transporte público?
 
@@ -308,7 +308,7 @@ En la Línea 3 del Metro hasta Universidad, y de ahí en camión o microbús has
 
 ### ¿Cuándo es Christmas in the Park 2026?
 
-Del 26 de noviembre de 2026 al 17 de enero de 2027, en días seleccionados, casi siempre de 10:00 a 22:00. Cierra el 30 de noviembre, el 1 y el 7 de diciembre, el 7 de enero y del 11 al 14 de enero. El evento va incluido en la entrada normal.
+Del 26 de noviembre de 2026 al 17 de enero de 2027, casi siempre de 10:00 a 22:00. Cierra el 30 de noviembre, el 1 y el 7 de diciembre, el 7 de enero y del 11 al 14 de enero. El evento va incluido en la entrada normal.
 
 — Patrick
 

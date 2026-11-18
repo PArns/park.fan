@@ -32,7 +32,7 @@ seo:
   title: 'Darf man Essen mitnehmen? Europa-Park, Movie Park & Co.'
   description: >-
     Im Europa-Park, Movie Park, Phantasialand und Heide Park darfst du Essen und
-    Getränke mitnehmen, Alkohol nicht überall. Was 15 Parks erlauben.
+    Getränke mitnehmen. Alkohol verbieten Phantasialand und Movie Park.
   keywords:
     - Freizeitpark Essen mitbringen erlaubt
     - Freizeitpark Getränke mitbringen
