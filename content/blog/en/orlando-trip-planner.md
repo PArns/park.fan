@@ -70,7 +70,7 @@ A card gives the minutes: the peak wait on your days, and how much shorter that 
 The plan comes in three views: days, week and month. You can pin a day or swap it with another one, and before you swap, you see how many minutes it costs you. Single days or the whole trip go into the day planner, into a calendar file in Orlando time, or out as a link to exactly this plan.
 
 > [!PARKY]
-> If the card says the order barely matters, we pin the day that matters most to us in the [trip planner](/orlando#planner), say Magic Kingdom on a birthday, and swap the rest around however suits us. Under three minutes a ride isn't worth a grumble from me. If the order saves more than that, we pin just that one day and leave the rest where the planner put it.
+> If all we're told is that the order barely matters, we pin the day we care about most in the [trip planner](/orlando#planner), say Magic Kingdom on a birthday, and swap the rest around however suits us. Under three minutes a ride isn't worth a grumble from me. If the order saves more than that, we pin just that one day and leave the rest where the planner put it.
 
 ## When your dates are still open
 

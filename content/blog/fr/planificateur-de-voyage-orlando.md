@@ -71,7 +71,7 @@ Une carte donne les minutes : l’attente de pointe à tes dates, et de combien
 Le plan a trois vues : jours, semaine et mois. Tu peux fixer un jour ou l’échanger avec un autre, et avant l’échange, tu vois combien de minutes ça te coûte. Des jours isolés ou tout le séjour passent dans le planificateur de journée, dans un fichier de calendrier à l’heure d’Orlando ou dans un lien vers exactement ce plan.
 
 > [!PARKY]
-> Si la carte dit que l’ordre change peu, on fixe d’abord dans le [planificateur de voyage](/orlando#planner) le jour qui compte le plus pour nous, par exemple le Magic Kingdom pour un anniversaire, et on échange les autres comme ça nous arrange. Pour moins de trois minutes par attraction, je ne prends même pas la peine de râler. Si l’ordre fait gagner davantage, on ne fixe que ce jour-là et on laisse le reste là où le planificateur l’a mis.
+> Si on lit sur la carte que l’ordre change peu, on fixe d’abord dans le [planificateur de voyage](/orlando#planner) le jour qui compte le plus pour nous, par exemple le Magic Kingdom pour un anniversaire, et on échange les autres comme ça nous arrange. Pour moins de trois minutes par attraction, je ne prends même pas la peine de râler. Si l’ordre fait gagner davantage, on ne fixe que ce jour-là et on laisse le reste là où le planificateur l’a mis.
 
 ## Quand tes dates ne sont pas encore fixées
 

@@ -71,7 +71,7 @@ Una tarjeta da los minutos: la espera punta en tus días y cuánto menos es que 
 El plan tiene tres vistas: días, semana y mes. Puedes fijar un día o cambiarlo por otro, y antes de cambiarlo ves cuántos minutos te cuesta. Días sueltos o el viaje entero los pasas al planificador del día, a un archivo de calendario en hora de Orlando o a un enlace a exactamente este plan.
 
 > [!PARKY]
-> Si la tarjeta dice que el orden cambia poco, en el [planificador de viajes](/orlando#planner) fijamos primero el día que más nos importa, por ejemplo Magic Kingdom en un cumpleaños, y cambiamos los demás como mejor nos venga. Por menos de tres minutos por atracción ni me molesto en refunfuñar. Si el orden ahorra más, fijamos solo ese día y dejamos el resto donde lo puso el planificador.
+> Si en la tarjeta pone que el orden cambia poco, en el [planificador de viajes](/orlando#planner) fijamos primero el día que más nos importa, por ejemplo Magic Kingdom en un cumpleaños, y cambiamos los demás como mejor nos venga. Por menos de tres minutos por atracción ni me molesto en refunfuñar. Si el orden ahorra más, fijamos solo ese día y dejamos el resto donde lo puso el planificador.
 
 ## Si todavía no tienes fechas
 
