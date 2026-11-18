@@ -94,6 +94,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CardPointerFx` _component_: Pointer depth on the cards: the photo drifts against the pointer while the glass panels stay put, and a soft highlight follows the pointer across the whole card.
 
+### [`card-rows.ts`](../../components/parks/card-rows.ts)
+
+- `STANDALONE_CARD_ROWS_CLASS` _const_: The row template for one `ParkCard` or `AttractionCard` on its own wrapper: a blog widget, a post's reference cards, a hover card, a demo.
+
 ### [`city-summary-section.tsx`](../../components/parks/city-summary-section.tsx)
 
 - `CitySummarySection` _component_: Intro paragraph of a city page: names the city and lists its parks, joined with the locale's own "and". Server Component; the sentence is indexable page copy.

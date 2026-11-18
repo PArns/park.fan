@@ -17,6 +17,7 @@ import { translateGeoSlug } from '@/lib/utils/geo-translate';
 import { cn } from '@/lib/utils';
 import { useLiveBlogRide } from '@/lib/blog/use-blog-live';
 import type { ResolvedAttraction, ResolvedPark } from '@/lib/blog/park-resolver';
+import { STANDALONE_CARD_ROWS_CLASS } from '@/components/parks/card-rows';
 
 /** Compact sizing so the live badges sit nicely inside running prose. */
 const INLINE_BADGE = 'h-[18px] gap-0.5 px-1.5 py-0 text-[10px] font-semibold no-underline';
@@ -141,15 +142,13 @@ export function BlogAttractionLink({
         align="start"
         className="w-[420px] border-none bg-transparent p-0 shadow-none backdrop-blur-none"
       >
-        {/* Row template as in BlogParkLink; the minmax floor keeps the image area open when there
-            is no background image. */}
         <BlogAttractionCardLive
           park={park}
           attraction={attraction}
           attractionBackgroundImage={attractionBackgroundImage}
           parkBackgroundImage={parkBackgroundImage}
           objectPosition={objectPosition}
-          className="grid [grid-template-rows:auto_0px_auto] sm:[grid-template-rows:auto_minmax(220px,1fr)_auto]"
+          className={STANDALONE_CARD_ROWS_CLASS}
         />
       </HoverCardContent>
     </HoverCard>
