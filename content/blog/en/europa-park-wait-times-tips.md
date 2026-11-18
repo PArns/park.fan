@@ -805,26 +805,23 @@ giving up the last hour in the park.
 
 ## 2026 and 2027 ticket prices, getting there
 
-**Tickets.** The price depends on the date, and the park works with two price
-categories. Online a
+**Tickets.** The park sorts its opening days into two price categories. Online a
 day costs **€67 to €76** for adults from 12 up, and **€56.50 to €65** for
 children aged 4 to 11 and seniors from 60; under-4s go free. Two days cost €127
 to €143.50 and €105 to €119 respectively. At the gate **€10 per ticket** is
 added on top, a fee for not booking ahead. Anyone staying at the resort gets
 the best price whatever the date: €67 for one day, €127 for two, €160 for three.
-The cheapest days come in 2027, in the Pre-Opening Weeks from 7 to 19 March: €59.50
-on weekdays, €70 at weekends, but not with every ride open yet.
+In the Pre-Opening Weeks from 7 to 19 March 2027 a day costs €59.50 on weekdays and €70 at weekends.
 
-When the summer season opens on **20 March 2027**, every day gets €2.50 to €3.50 dearer. Online, adults then pay **€70 to €79.50** and children and seniors **€59 to €68**, while two days come to €132.50 to €150 and €109.50 to €124.50. That holds until 9 January 2028, Halloween and winter included. The best price for resort guests moves up with it, to €70 for one day and €167 for three. Tickets for 2027 have been on sale since 10 November 2026. We've worked out what the [price rise](/news/europa-park-prices-2027) means for a family.
+When the summer season opens on **20 March 2027**, every day gets €2.50 to €3.50 dearer. Online, adults then pay **€70 to €79.50** and children and seniors **€59 to €68**, while two days come to €132.50 to €150 and €109.50 to €124.50. That holds until 9 January 2028, Halloween and winter included. The best price for resort guests moves up with it, to €70 for one day and €167 for three. Tickets for 2027 have been on sale since 10 November 2026. A family of two adults and two children pays €13 to €15 more a day online than in 2026, parking included, and the full sum is in our [news on the price rise](/news/europa-park-prices-2027).
 
-The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica. Without an annual pass, the two-day ticket is what's left for a longer visit.
+The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica.
 
-**Getting there.** The park sits directly on the **A5**, exit **57b Rust**, and
-is signposted from there. By road it’s around 40 kilometres from Freiburg,
+**Getting there.** The park sits directly on the **A5**, exit **57b Rust**. By road it’s around 40 kilometres from Freiburg,
 around 55 from Strasbourg and around 100 each from Basel and Karlsruhe,
 roadworks on the A5 not included. By train
 you go to Ringsheim and take the shuttle bus from there. **Parking costs €10** a
-day, then €12 in the 2027 season. Rulantica has its own car park.
+day, then €12 from 20 March 2027. Rulantica has its own car park.
 
 **Food.** Our database counts **62 places to eat** in the park, and because
 every themed area is a country, every one of them cooks something different.
@@ -910,7 +907,7 @@ in HALLOWinter, which itself doesn’t close until seven.
 
 ### Can you do Europa-Park in one day?
 
-On a normal day you'll manage ten to twelve of the big rides, but nobody gets through all 96 attractions plus the shows and 62 places to eat. Two days don’t save much: the two-day ticket costs adults €127 to €143.50, or €132.50 to €150 from 20 March 2027, so the second day comes to around €60 to €70.
+You'll manage ten to twelve of the big rides on a normal day, so yes for those, but nobody gets through all 96 attractions plus the shows and 62 places to eat. The two-day ticket costs adults €127 to €143.50, or €132.50 to €150 from 20 March 2027, and saves only €7 to €9 against two single days.
 
 ### Is Europa-Park worth it in winter?
 

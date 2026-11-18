@@ -816,27 +816,23 @@ koopt, geeft daarmee het laatste parkuur weg.
 
 ## Entreeprijzen 2026 en 2027, route
 
-**Tickets.** De prijs hangt af van de datum, het park werkt met twee
-prijscategorieën. Online
+**Tickets.** Het park deelt zijn openingsdagen in twee prijscategorieën in. Online
 kost een dag voor volwassenen vanaf 12 jaar **67 tot 76 €**, voor kinderen van 4
 tot 11 en senioren vanaf 60 **56,50 tot 65 €**, kinderen onder de 4 zijn gratis.
 Twee dagen kosten 127 tot 143,50 respectievelijk 105 tot 119 €. Aan de kassa
 komt er **10 € per ticket** bovenop, als boete voor het niet vooruit boeken. Wie
 in het resort overnacht, krijgt de beste prijs ongeacht de datum: 67 € voor één
-dag, 127 voor twee, 160 voor drie. Het goedkoopst wordt het in 2027 in de
-Pre-Opening Weeks van 7 tot 19 maart: 59,50 € door de week, 70 € in het weekend,
-maar nog niet met alle attracties.
+dag, 127 voor twee, 160 voor drie. In de Pre-Opening Weeks van 7 tot 19 maart 2027 kost een dag 59,50 € door de week en 70 € in het weekend.
 
-Bij de start van het zomerseizoen op **20 maart 2027** wordt elke dag 2,50 tot 3,50 € duurder. Volwassenen betalen online dan **70 tot 79,50 €**, kinderen en senioren **59 tot 68 €**, en voor twee dagen is dat 132,50 tot 150 en 109,50 tot 124,50 €. Dat geldt tot 9 januari 2028, Halloween en winter inbegrepen. De beste prijs voor wie in het resort overnacht, gaat mee omhoog naar 70 € voor één dag en 167 voor drie. De tickets voor 2027 zijn sinds 10 november 2026 te koop. Voor een gezin hebben we de [prijsverhoging](/news/europa-park-prijzen-2027) doorgerekend.
+Bij de start van het zomerseizoen op **20 maart 2027** wordt elke dag 2,50 tot 3,50 € duurder. Volwassenen betalen online dan **70 tot 79,50 €**, kinderen en senioren **59 tot 68 €**, en voor twee dagen is dat 132,50 tot 150 en 109,50 tot 124,50 €. Dat geldt tot 9 januari 2028, Halloween en winter inbegrepen. De beste prijs voor wie in het resort overnacht, gaat mee omhoog naar 70 € voor één dag en 167 voor drie. De tickets voor 2027 zijn sinds 10 november 2026 te koop. Een gezin met twee volwassenen en twee kinderen betaalt online met parkeren 13 tot 15 € per dag meer dan in 2026, de hele berekening staat in ons [bericht over de prijsverhoging](/news/europa-park-prijzen-2027).
 
-De **ResortPass**, de jaarkaart, is tot nader order niet te koop, het contingent is op. Hij bestaat in zilver, alleen geldig op vooraf vastgelegde dagen, en in goud, geldig op alle dagen en met twee dagen Rulantica. Zonder jaarkaart blijft voor een langer bezoek het tweedagenticket over.
+De **ResortPass**, de jaarkaart, is tot nader order niet te koop, het contingent is op. Hij bestaat in zilver, alleen geldig op vooraf vastgelegde dagen, en in goud, geldig op alle dagen en met twee dagen Rulantica.
 
-**Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**, en is van
-daaraf bewegwijzerd. Over de weg is het vanuit Freiburg zo’n 40 kilometer,
+**Route.** Het park ligt direct aan de **A5**, afrit **57b Rust**. Over de weg is het vanuit Freiburg zo’n 40 kilometer,
 vanuit Straatsburg zo’n 55, vanuit Bazel en vanuit Karlsruhe telkens zo’n 100,
 wegwerkzaamheden op de A5 niet meegerekend. Met de trein rijd je
 tot Ringsheim en van daar met de shuttlebus. **Parkeren kost 10 €** per dag,
-in het seizoen 2027 wordt dat 12 €. Rulantica heeft een eigen parkeerplaats.
+vanaf 20 maart 2027 wordt dat 12 €. Rulantica heeft een eigen parkeerplaats.
 
 **Eten.** Onze database telt **62 eetgelegenheden** in het park, en omdat elk
 themagebied een land is, kookt ook elk gebied iets anders. Twee adressen horen echter niet
@@ -925,7 +921,7 @@ gaat het park zelf pas om negentien uur dicht.
 
 ### Red je het Europa-Park in één dag?
 
-Op een gewone dag haal je tien tot twaalf van de grote attracties, maar alle 96 attracties met de shows en 62 eetgelegenheden haalt niemand. Veel bespaar je met twee dagen niet: het tweedagenticket kost volwassenen 127 tot 143,50 €, vanaf 20 maart 2027 132,50 tot 150 €, de tweede dag dus zo’n 60 tot 70 €.
+Op een gewone dag haal je tien tot twaalf van de grote attracties, dus daarvoor wel, maar alle 96 attracties met de shows en 62 eetgelegenheden haalt niemand. Het tweedagenticket kost volwassenen 127 tot 143,50 €, vanaf 20 maart 2027 132,50 tot 150 €, en scheelt tegenover twee losse dagen maar 7 tot 9 €.
 
 ### Is het Europa-Park in de winter de moeite waard?
 

@@ -816,26 +816,22 @@ rinuncia così all’ultima ora di parco.
 
 ## Prezzi 2026 e 2027, come arrivare
 
-**Biglietti.** Il prezzo dipende dalla data, e il parco lavora con due
-categorie di prezzo. Online la
+**Biglietti.** Il parco divide i suoi giorni di apertura in due categorie di prezzo. Online la
 giornata per gli adulti dai 12 anni costa **da 67 a 76 €**, per i bambini dai 4
 agli 11 e i senior dai 60 **da 56,50 a 65 €**; sotto i 4 anni non si paga. Due
 giorni costano da 127 a 143,50 € e rispettivamente da 105 a 119 €. In cassa si
 aggiungono **10 € a biglietto**, come multa per non aver prenotato prima. Chi
 pernotta nel resort ottiene il prezzo migliore indipendentemente dalla data: 67 €
-per un giorno, 127 per due, 160 per tre. Il prezzo più basso arriva nel 2027, nelle
-Pre-Opening Weeks dal 7 al 19 marzo: 59,50 € nei giorni feriali e 70 € nel fine
-settimana, anche se non ancora con tutte le attrazioni.
+per un giorno, 127 per due, 160 per tre. Nelle Pre-Opening Weeks, dal 7 al 19 marzo 2027, la giornata costa 59,50 € nei giorni feriali e 70 € nel fine settimana.
 
-Con l’avvio della stagione estiva, il **20 marzo 2027**, ogni giornata rincara da 2,50 a 3,50 €. Online gli adulti pagheranno **da 70 a 79,50 €**, bambini e senior **da 59 a 68 €**, e due giorni costeranno da 132,50 a 150 e da 109,50 a 124,50 €. Questi prezzi valgono fino al 9 gennaio 2028, Halloween e inverno compresi. Il prezzo migliore per chi dorme nel resort sale di pari passo: 70 € per un giorno e 167 per tre. I biglietti per il 2027 sono in vendita dal 10 novembre 2026. Per una famiglia abbiamo fatto i conti sull’[aumento dei prezzi](/news/europa-park-prezzi-2027).
+Con l’avvio della stagione estiva, il **20 marzo 2027**, ogni giornata rincara da 2,50 a 3,50 €. Online gli adulti pagheranno **da 70 a 79,50 €**, bambini e senior **da 59 a 68 €**, e due giorni costeranno da 132,50 a 150 e da 109,50 a 124,50 €. Questi prezzi valgono fino al 9 gennaio 2028, Halloween e inverno compresi. Il prezzo migliore per chi dorme nel resort sale di pari passo: 70 € per un giorno e 167 per tre. I biglietti per il 2027 sono in vendita dal 10 novembre 2026. Una famiglia con due adulti e due bambini paga online, parcheggio compreso, da 13 a 15 € in più al giorno rispetto al 2026, e il conto completo è nella nostra [notizia sull’aumento dei prezzi](/news/europa-park-prezzi-2027).
 
-Il **ResortPass**, l’abbonamento annuale, fino a nuovo avviso non è in vendita, il contingente è esaurito. Esiste in argento, valido solo in date fissate in anticipo, e in oro, valido tutti i giorni e con due giornate a Rulantica. Senza abbonamento, per una visita più lunga resta il biglietto di due giorni.
+Il **ResortPass**, l’abbonamento annuale, fino a nuovo avviso non è in vendita, il contingente è esaurito. Esiste in argento, valido solo in date fissate in anticipo, e in oro, valido tutti i giorni e con due giornate a Rulantica.
 
-**Come arrivare.** Il parco è direttamente sulla **A5**, uscita **57b Rust**, e da
-lì è segnalato. Su strada, da Friburgo sono circa 40 chilometri, da Strasburgo
+**Come arrivare.** Il parco è direttamente sulla **A5**, uscita **57b Rust**. Su strada, da Friburgo sono circa 40 chilometri, da Strasburgo
 circa 55, da Basilea e da Karlsruhe circa 100 ciascuna, cantieri sulla A5
 esclusi. In treno si arriva fino a Ringsheim e da
-lì si prende la navetta. **Il parcheggio costa 10 €** al giorno, 12 € nella stagione 2027. Rulantica ha
+lì si prende la navetta. **Il parcheggio costa 10 €** al giorno, 12 € dal 20 marzo 2027. Rulantica ha
 un parcheggio proprio.
 
 **Mangiare.** Il nostro database conta **62 punti di ristoro** nel parco, e
@@ -928,7 +924,7 @@ alle diciannove.
 
 ### Si riesce a fare l’Europa-Park in un giorno?
 
-In una giornata normale riesci a fare dieci o dodici delle grandi attrazioni, ma tutte le 96 attrazioni con spettacoli e 62 punti di ristoro non le fa nessuno. Con due giorni non si risparmia molto: il biglietto di due giorni per un adulto costa da 127 a 143,50 €, dal 20 marzo 2027 da 132,50 a 150 €, quindi il secondo giorno viene circa da 60 a 70 €.
+Per le grandi attrazioni sì, in una giornata normale riesci a farne dieci o dodici, ma tutte le 96 attrazioni con spettacoli e 62 punti di ristoro non le fa nessuno. Il biglietto di due giorni per un adulto costa da 127 a 143,50 €, dal 20 marzo 2027 da 132,50 a 150 €, e rispetto a due giornate singole fa risparmiare solo da 7 a 9 €.
 
 ### Vale la pena l’Europa-Park d’inverno?
 
