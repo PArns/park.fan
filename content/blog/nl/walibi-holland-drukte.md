@@ -266,6 +266,9 @@ In 2026 was het weekend waarin alle drie de regio's tegelijk herfstvakantie hadd
 het jaar. In 2027 is dat het weekend van 23 en 24 oktober. In de zomer van 2027 heeft Noord de
 eerste week, van 10 tot en met 16 juli, alleen.
 
+> [!PARKY] De eerste week
+> Moet het in de zomervakantie, dan gaan we in 2027 van 10 tot en met 16 juli, als alleen Noord vakantie heeft. In 2026 waren de eerste twee vakantieweken de rustigste van de hele zomer, met wachttijden bij de headliners zo kort als in mei en juni na de meivakantie, en korte rijen midden in de vakantie laat ik niet liggen. De twee weken daarvoor slaan we over: die waren in 2026 drukker dan elke week in de zomervakantie.
+
 ## Halloween Fright Nights
 
 > [!NOTE]

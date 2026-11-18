@@ -280,6 +280,9 @@ Un ejemplo para DisneySea en un día normal de otoño con apertura a las nueve:
 
 En Tokyo Disneyland vale el mismo esquema: por la mañana Big Thunder Mountain y Splash Mountain, y Enchanted Tale of Beauty and the Beast con Premier Access o a última hora.
 
+> [!PARKY] Mejor de noche
+> En Tokyo Disneyland nos ahorramos el Premier Access de Enchanted Tale of Beauty and the Beast: con 2.500 yenes, allí sale más caro que en cualquier otra atracción del parque. El propio resort prefiere mandar a la gente a última hora, porque entonces la cola suele ser más corta que por la mañana, así que en nuestro [planificador del día](/trip-planner) la Bella y la Bestia se quedan con el último baile. Antes miramos en el calendario del resort si ese día el parque está abierto hasta las 21:00 o cierra ya a las 18:30.
+
 ## Entradas y precios
 
 La entrada se llama **1-Day Passport**. El precio depende de la fecha, y cada día los dos parques cuestan lo mismo. A 3 de octubre de 2026, para fechas de octubre de 2026 a febrero de 2027:

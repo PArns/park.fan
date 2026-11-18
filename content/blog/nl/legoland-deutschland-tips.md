@@ -387,6 +387,9 @@ en met 13, 18 tot en met 23 en 26 tot en met 30 december en 2 tot en met 10 janu
 ijsbaan, er zijn curlingbanen en shows om het halfuur, en bij veel attracties staat “weersafhankelijk
 geopend”. Een vroegboekticket kost tot 15 november € 22 in plaats van € 36.
 
+> [!PARKY] Eerst de jaarkaart
+> Gaan we in 2027 toch al twee keer naar Legoland, dan kopen we de jaarkaart vanaf € 99 nog vóór de eerste WinterWonder-dag op 28 november: daarmee is de toegang tot WinterWonder gratis, zonder kost een ticket € 36. Blijft een attractie met “weersafhankelijk geopend” dan dicht, dan baal ik maar half zo erg, we komen in de zomer toch terug. Tel er twee zomerdagen tegen de online minimumprijs van € 39 bij op, en de kaart heeft zich terugverdiend.
+
 Legoland heeft verder het eerste LEGO Harry Potter Land ter wereld aangekondigd en het eerste
 verblijf met dat thema. Een openingsjaar noemt het park daarvoor niet.
 

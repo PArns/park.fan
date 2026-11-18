@@ -120,6 +120,9 @@ Eten, drinkflessen, koelboxen en glas staan niet op de lijst.
 
 In Restaurant Uhrwerk in Rookburgh kost de kipburger The Navigator met friet € 26,00 en een Coca-Cola van 0,2 liter € 3,30. De kinderburger van € 14,00 krijg je daar alleen samen met een gerecht voor volwassenen. In Rutmor’s Taverne kost de Vesperbrett-plank voor één persoon € 21,50.
 
+> [!PARKY]
+> Voor Phantasialand snijden we brood en fruit al thuis: messen en scharen staan op de lijst van verboden voorwerpen, dus het fruitmesje voor de picknick ook, en een appel eten we desnoods gewoon heel. Met z’n vieren zouden we in Uhrwerk met twee Navigator-burgers met friet en twee kinderburgers al op € 80 zitten, en dan staat er nog geen cola op tafel.
+
 Naast de gastenservice op de Kaiserplatz in Berlin is een voedingsruimte, en de medewerkers helpen met het opwarmen van babyvoeding.
 
 ### Heide Park

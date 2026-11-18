@@ -280,6 +280,9 @@ Ein Beispiel für DisneySea an einem gewöhnlichen Herbsttag mit Öffnung um neu
 
 In Tokyo Disneyland gilt dasselbe Muster: morgens Big Thunder Mountain und Splash Mountain, Enchanted Tale of Beauty and the Beast mit Premier Access oder am Abend.
 
+> [!PARKY] Abend statt Pass
+> In Tokyo Disneyland sparen wir uns Premier Access für Enchanted Tale of Beauty and the Beast: Mit 2.500 Yen ist er dort teurer als an jeder anderen Bahn im Park. Das Resort schickt die Gäste ohnehin lieber abends hin, weil die Warteschlange dann meist kürzer ist als am Morgen, und so bekommen die Schöne und das Biest in unserem [Tagesplaner](/trip-planner) den letzten Tanz. Vorher schauen wir im Kalender des Resorts nach, ob der Park an unserem Tag bis 21 Uhr offen hat oder schon um 18:30 Uhr schließt.
+
 ## Tickets und Preise
 
 Das Ticket heißt **1-Day Passport**. Der Preis richtet sich nach dem Datum, an jedem Tag kosten beide Parks gleich viel. Stand 3. Oktober 2026, für Termine von Oktober 2026 bis Februar 2027:

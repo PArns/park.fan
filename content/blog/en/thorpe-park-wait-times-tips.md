@@ -251,6 +251,9 @@ The **Thorpe Shark Cabins** are 90 rooms built from shipping containers, with a 
 
 The "Overnight Stay" package includes two days of park admission, breakfast, parking worth £12, Wi-Fi, ten percent off in the shops and the hour of Fastrack. Prices start at £77 per person, with four people in the room, on selected days from Monday to Thursday. The Fright Nights packages start at £109 per person. In the themed rooms for Hyperia, The Swarm, Nemesis Inferno, Stealth and Colossus, guests also get a Coasters Fastrack on the second day, with six rides across Colossus, Hyperia, Nemesis Inferno, SAW, Stealth and The Swarm.
 
+> [!PARKY] Stay the night
+> For 2027 we book the Shark Cabins for four, Monday to Thursday: that's two park days with breakfast and parking from £77 per person, when two day tickets bought in advance already cost from £64. We walk in through the shark's mouth, and the top bunk is mine. If we pick one of the themed rooms, a Coasters Fastrack with six rides comes on top on the second day, Hyperia included.
+
 ## What's new and what has closed
 
 On 12 March 2026 the park confirmed that the white water rapids ride Rumba Rapids won't reopen. It ran for 39 years, since 1987 as Intamin's Thunder River, and was one of the park's oldest attractions. The park doesn't say what will replace it. For 2026 about half of Amity Beach was also turned into The Launch Pad, a covered area with seating for resting and eating that's meant to be open all year. The smaller half of Amity Beach remains a swimming area for families with small children.

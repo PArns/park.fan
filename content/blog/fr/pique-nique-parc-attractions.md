@@ -121,6 +121,9 @@ La nourriture, les gourdes, les glacières et le verre ne figurent pas sur cette
 
 Au Restaurant Uhrwerk, à Rookburgh, le burger au poulet The Navigator avec frites coûte 26,00 € et un Coca-Cola de 0,2 litre 3,30 €. Le burger enfant à 14,00 € n’y est servi qu’avec un plat adulte. À la Rutmor’s Taverne, la planche Vesperbrett pour une personne coûte 21,50 €.
 
+> [!PARKY]
+> Pour Phantasialand, on coupe le pain et les fruits à la maison : couteaux et ciseaux figurent sur la liste des objets interdits, le petit couteau du pique-nique aussi, donc, et une pomme se croque très bien entière. À quatre, deux burgers The Navigator avec frites et deux burgers enfant au Restaurant Uhrwerk feraient déjà 80 €, avant le moindre Coca-Cola.
+
 À côté de l’accueil des visiteurs, sur la Kaiserplatz de Berlin, se trouve une salle d’allaitement, et le personnel aide à réchauffer les repas pour bébé.
 
 ### Heide Park

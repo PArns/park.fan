@@ -393,6 +393,9 @@ Le **WinterWonder LEGOLAND** se tient en 2026/27 certains jours : les 28 et 29 
 des pistes de curling et des spectacles toutes les demi-heures, et à de nombreuses attractions il est
 écrit « ouvert selon la météo ». Jusqu’au 15 novembre, un billet en prévente coûte 22 € au lieu de 36 €.
 
+> [!PARKY] Abonnement d’abord
+> Si on va de toute façon deux fois à Legoland en 2027, on prend l’abonnement annuel, à partir de 99 €, avant le premier jour du WinterWonder, le 28 novembre : avec lui, l’entrée au WinterWonder est gratuite, sans lui le billet coûte 36 €. Si une attraction « ouverte selon la météo » reste alors fermée, ça m’agace deux fois moins, puisqu’on revient l’été. Ajoute deux jours d’été au prix minimal en ligne de 39 €, et l’abonnement est rentabilisé.
+
 Legoland a aussi annoncé le premier LEGO Harry Potter Land au monde et le premier hébergement sur ce
 thème. Le parc ne donne pas d’année d’ouverture.
 

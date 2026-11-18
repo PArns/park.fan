@@ -281,6 +281,9 @@ Un exemple pour DisneySea, un jour d’automne ordinaire avec ouverture à 9 h 
 
 À Tokyo Disneyland, le schéma est le même : Big Thunder Mountain et Splash Mountain le matin, Enchanted Tale of Beauty and the Beast avec un Premier Access ou le soir.
 
+> [!PARKY] Plutôt le soir
+> À Tokyo Disneyland, on se passe du Premier Access pour Enchanted Tale of Beauty and the Beast : à 2 500 yens, il y coûte plus cher que pour n’importe quelle autre attraction du parc. Le resort lui-même envoie plutôt les visiteurs là-bas le soir, quand la file est en général plus courte que le matin, alors dans notre [planificateur de journée](/trip-planner), la Belle et la Bête ont droit à la dernière danse. Avant d’y aller, on vérifie dans le calendrier du resort si le parc reste ouvert jusqu’à 21 h ce jour-là ou s’il ferme dès 18 h 30.
+
 ## Billets et prix
 
 Le billet s’appelle **1-Day Passport**. Le prix dépend de la date, et un même jour les deux parcs coûtent la même chose. Au 3 octobre 2026, pour les visites d’octobre 2026 à février 2027 :

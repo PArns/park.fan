@@ -121,6 +121,9 @@ Essen, Trinkflaschen, Kühlboxen und Glas kommen auf der Liste nicht vor.
 
 Im Restaurant Uhrwerk in Rookburgh kostet der Hähnchen-Burger The Navigator mit Pommes frites 26,00 €, eine Coca-Cola mit 0,2 Litern 3,30 €. Den Kinderburger für 14,00 € gibt es dort nur zusammen mit einem Gericht für Erwachsene. In Rutmor's Taverne kostet das Vesperbrett für eine Person 21,50 €.
 
+> [!PARKY]
+> Fürs Phantasialand schneiden wir Brot und Obst schon zu Hause: Messer und Scheren stehen auf der Liste der verbotenen Gegenstände, das kleine Obstmesser fürs Picknick also auch, und ein Apfel geht zur Not am Stück. Zu viert kämen wir im Uhrwerk mit zwei Navigator-Burgern mit Pommes und zwei Kinderburgern auf 80 €, und da steht noch keine Cola auf dem Tisch.
+
 Neben dem Gästeservice am Kaiserplatz in Berlin liegt ein Stillraum, und die Mitarbeiter helfen beim Aufwärmen von Babynahrung.
 
 ### Heide Park

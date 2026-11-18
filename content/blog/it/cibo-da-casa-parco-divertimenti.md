@@ -120,6 +120,9 @@ Cibo, borracce, borse frigo e vetro nella lista non compaiono.
 
 Al Restaurant Uhrwerk di Rookburgh l’hamburger di pollo The Navigator con patatine costa 26,00 € e una Coca-Cola da 0,2 litri 3,30 €. L’hamburger per bambini da 14,00 € viene servito solo insieme a un piatto per adulti. Alla Rutmor’s Taverne il tagliere Vesperbrett per una persona costa 21,50 €.
 
+> [!PARKY]
+> Per Phantasialand tagliamo pane e frutta già a casa: coltelli e forbici sono nella lista degli oggetti vietati, quindi anche il coltellino del picnic, e una mela all’occorrenza si mangia intera. In quattro, al Restaurant Uhrwerk due hamburger The Navigator con patatine e due hamburger per bambini fanno già 80 €, e in tavola non c’è ancora nemmeno una Coca-Cola.
+
 Accanto all’accoglienza ospiti sulla Kaiserplatz, a Berlin, c’è una stanza per l’allattamento, e il personale aiuta a scaldare la pappa.
 
 ### Heide Park

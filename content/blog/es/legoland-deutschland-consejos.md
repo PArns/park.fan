@@ -391,6 +391,9 @@ El **WinterWonder LEGOLAND** se celebra en 2026/27 en días sueltos: 28 y 29 de 
 hielo, pistas de curling y espectáculos cada media hora, y en muchas atracciones pone «abierto según el
 tiempo». Hasta el 15 de noviembre, una entrada de venta anticipada cuesta 22 € en lugar de 36 €.
 
+> [!PARKY] Primero el pase
+> Si en 2027 vamos a ir dos veces a Legoland de todos modos, compramos el pase anual, desde 99 €, antes del primer día del WinterWonder, el 28 de noviembre: con él, la entrada al WinterWonder es gratis, y sin él cuesta 36 €. Si luego una atracción con el «abierto según el tiempo» se queda cerrada, me fastidia la mitad, porque en verano volvemos. Suma dos días de verano al precio mínimo en línea de 39 € y el pase ya está amortizado.
+
 Legoland también ha anunciado el primer LEGO Harry Potter Land del mundo y el primer alojamiento con esa
 temática. El parque no da año de apertura.
 

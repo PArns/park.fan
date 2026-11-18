@@ -121,6 +121,9 @@ La comida, las botellas de agua, las neveras y el vidrio no aparecen en esa list
 
 En el Restaurant Uhrwerk de Rookburgh, la hamburguesa de pollo The Navigator con patatas fritas cuesta 26,00 € y una Coca-Cola de 0,2 litros 3,30 €. La hamburguesa infantil de 14,00 € solo se sirve junto con un plato de adulto. En Rutmor’s Taverne, la tabla Vesperbrett para una persona cuesta 21,50 €.
 
+> [!PARKY]
+> Para Phantasialand cortamos el pan y la fruta en casa: los cuchillos y las tijeras están en la lista de objetos prohibidos, así que el cuchillito de la fruta para el picnic tampoco entra, y una manzana se come entera si hace falta. Entre cuatro, dos hamburguesas The Navigator con patatas fritas y dos infantiles en el Restaurant Uhrwerk ya suman 80 €, y aún no hay ni una Coca-Cola en la mesa.
+
 Junto a la atención al visitante de la Kaiserplatz, en Berlin, hay una sala de lactancia, y el personal ayuda a calentar la comida del bebé.
 
 ### Heide Park

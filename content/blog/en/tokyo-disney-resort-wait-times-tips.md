@@ -281,6 +281,9 @@ An example for DisneySea on an ordinary autumn day with a 9 am opening:
 
 Tokyo Disneyland works the same way, with Big Thunder Mountain and Splash Mountain in the morning and Enchanted Tale of Beauty and the Beast either with Premier Access or in the evening.
 
+> [!PARKY] Evening it is
+> At Tokyo Disneyland we skip Premier Access for Enchanted Tale of Beauty and the Beast: at 2,500 yen it costs more there than at any other ride in the park. The resort itself would rather send guests over in the evening, when the queue is usually shorter than in the morning, so Beauty and the Beast get the last dance in our [day planner](/trip-planner). Before we go, we check the resort's calendar to see whether the park is open until 9 pm that day or closes at 6:30 pm.
+
 ## Tickets and prices
 
 The ticket is called the **1-Day Passport**. The price depends on the date, and on any given day both parks cost the same. As of 3 October 2026, for dates from October 2026 to February 2027:

@@ -386,6 +386,9 @@ Das **WinterWonder LEGOLAND** läuft 2026/27 an einzelnen Tagen: 28. und 29. Nov
 Eisbahn, Eisstockbahnen und Shows im Halbstundentakt, und bei vielen Bahnen steht
 „witterungsabhängig geöffnet“. Ein Frühbucherticket kostet bis zum 15. November 22 € statt 36 €.
 
+> [!PARKY] Jahreskarte zuerst
+> Wollen wir 2027 ohnehin zweimal ins Legoland, kaufen wir die Jahreskarte ab 99 € schon vor dem ersten WinterWonder-Tag am 28. November: Mit ihr ist der Eintritt dort frei, ohne sie kostet er 36 €. Bleibt dann eine Bahn mit „witterungsabhängig geöffnet“ zu, ärgert mich das nur halb so sehr, wir kommen ja im Sommer wieder. Zwei Sommertage zum Online-Mindestpreis von 39 € dazu, und die Karte hat sich gerechnet.
+
 Angekündigt hat das Legoland außerdem das erste LEGO Harry Potter Land der Welt und die erste Unterkunft
 mit diesem Thema. Ein Eröffnungsjahr nennt der Park dafür nicht.
 

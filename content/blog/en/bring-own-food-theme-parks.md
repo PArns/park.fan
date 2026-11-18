@@ -119,6 +119,9 @@ Food, water bottles, coolers and glass aren't on the list.
 
 At Restaurant Uhrwerk in Rookburgh, The Navigator chicken burger with fries costs €26.00 and a 0.2-litre Coca-Cola €3.30. The €14.00 kids' burger is only sold together with an adult dish. At Rutmor's Taverne, the Vesperbrett platter for one costs €21.50.
 
+> [!PARKY]
+> For Phantasialand we slice the bread and fruit at home: knives and scissors are on the banned list, so the little picnic knife is out as well, and an apple can always be eaten whole. For the four of us, two Navigator burgers with fries and two kids' burgers at Uhrwerk would already come to €80, before anyone has ordered a Coke.
+
 Next to Guest Relations on Kaiserplatz in Berlin there is a nursing room, and staff help with warming up baby food.
 
 ### Heide Park

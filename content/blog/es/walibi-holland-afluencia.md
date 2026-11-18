@@ -280,6 +280,9 @@ En 2026, el fin de semana en que las tres regiones coincidieron en vacaciones de
 más gente del año. En 2027 será el fin de semana del 23 y el 24 de octubre. En el verano de 2027,
 Noord tendrá la primera semana, del 10 al 16 de julio, para ella sola.
 
+> [!PARKY] La primera semana
+> Si tiene que ser en vacaciones de verano, vamos en 2027 entre el 10 y el 16 de julio, cuando solo Noord está de vacaciones. En 2026, las dos primeras semanas de vacaciones fueron las más tranquilas de todo el verano, con esperas en las atracciones principales tan cortas como en mayo y junio después de las vacaciones de mayo, y colas cortas en plenas vacaciones no las dejo escapar. Las dos semanas anteriores nos las saltamos: en 2026 hubo en ellas más gente que en cualquier semana de las vacaciones de verano.
+
 ## Halloween Fright Nights
 
 > [!NOTE]

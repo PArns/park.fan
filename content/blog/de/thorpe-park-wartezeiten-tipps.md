@@ -252,6 +252,9 @@ Die **Thorpe Shark Cabins** sind 90 Zimmer, die aus Schiffscontainern gebaut sin
 
 Im Paket „Overnight Stay“ sind zwei Tage Parkeintritt, Frühstück, Parken im Wert von 12 Pfund, WLAN, zehn Prozent Rabatt in den Shops und die Stunde Fastrack enthalten. Die Preise beginnen bei 77 Pfund pro Person, bei vier Personen im Zimmer, an ausgewählten Tagen von Montag bis Donnerstag. Die Fright-Nights-Pakete beginnen bei 109 Pfund pro Person. In den Themenzimmern zu Hyperia, The Swarm, Nemesis Inferno, Stealth und Colossus bekommen Gäste am zweiten Tag zusätzlich einen Coasters Fastrack mit sechs Fahrten auf Colossus, Hyperia, Nemesis Inferno, SAW, Stealth und The Swarm.
 
+> [!PARKY] Mit Übernachtung
+> Für 2027 buchen wir die Shark Cabins zu viert, von Montag bis Donnerstag: Dann gibt es zwei Parktage mit Frühstück und Parken ab 77 Pfund pro Person, und schon zwei Tagestickets kosten im Voraus ab 64 Pfund. Hinein geht es durchs Haifischmaul, und das obere Etagenbett gehört mir. Nehmen wir eines der Themenzimmer, kommt am zweiten Tag noch ein Coasters Fastrack mit sechs Fahrten dazu, Hyperia eingeschlossen.
+
 ## Was neu ist und was geschlossen hat
 
 Am 12. März 2026 hat der Park bestätigt, dass die Wildwasserbahn Rumba Rapids nicht wieder öffnet. Sie lief 39 Jahre, seit 1987 als Thunder River von Intamin, und gehörte zu den ältesten Attraktionen des Parks. Der Park sagt nicht, was an ihre Stelle kommt. Für 2026 wurde außerdem etwa die Hälfte von Amity Beach zu The Launch Pad umgebaut, einem überdachten Bereich mit Sitzplätzen zum Ausruhen und Essen, der ganzjährig offen sein soll. Die kleinere Hälfte von Amity Beach bleibt Badebereich für Familien mit kleinen Kindern.

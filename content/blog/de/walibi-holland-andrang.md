@@ -276,6 +276,9 @@ Herbst- und Frühjahrsferien sind Empfehlungen, von denen eine Schule abweichen 
 des Jahres. 2027 ist das das Wochenende am 23. und 24. Oktober. Im Sommer 2027 hat Noord die erste
 Woche, vom 10. bis zum 16. Juli, für sich allein.
 
+> [!PARKY] Erste Ferienwoche
+> Geht es bei uns nur in den Sommerferien, fahren wir 2027 zwischen dem 10. und dem 16. Juli, wenn nur Noord frei hat. 2026 waren die ersten beiden Ferienwochen die leersten des ganzen Sommers, mit Wartezeiten an den Headlinern wie im Mai und Juni nach den Maiferien, und Ferien ohne Gedränge lasse ich mir nicht entgehen. Die zwei Wochen davor meiden wir: Die waren 2026 voller als jede Woche der Sommerferien.
+
 ## Halloween Fright Nights
 
 > [!NOTE]

@@ -267,6 +267,9 @@ In 2026 the weekend when all three regions had their autumn half-term at the sam
 busiest of the year. In 2027 that’s the weekend of 23 and 24 October. In the summer of 2027 Noord
 has the first week, 10 to 16 July, to itself.
 
+> [!PARKY] First holiday week
+> If it has to be the summer holidays, we go from 10 to 16 July 2027, while only Noord is off school. In 2026 the first two weeks of the holidays were the quietest of the whole summer, with headliner queues as short as in May and June after the May holiday, and I never say no to short queues in the school holidays. We steer clear of the two weeks before: in 2026 they were busier than any week of the summer holidays.
+
 ## Halloween Fright Nights
 
 > [!NOTE]

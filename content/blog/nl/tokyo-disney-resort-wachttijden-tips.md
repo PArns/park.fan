@@ -280,6 +280,9 @@ Een voorbeeld voor DisneySea op een gewone herfstdag met opening om negen uur:
 
 In Tokyo Disneyland werkt hetzelfde patroon, met 's ochtends Big Thunder Mountain en Splash Mountain, en Enchanted Tale of Beauty and the Beast met Premier Access of 's avonds.
 
+> [!PARKY] Liever 's avonds
+> In Tokyo Disneyland laten we Premier Access voor Enchanted Tale of Beauty and the Beast schieten: met 2.500 yen is die daar duurder dan bij elke andere attractie in het park. Het resort stuurt gasten er zelf liever 's avonds heen, omdat de rij dan meestal korter is dan 's ochtends, dus krijgen Belle en het Beest in onze [dagplanner](/trip-planner) de laatste dans. Vooraf kijken we in de kalender van het resort of het park die dag tot 21.00 uur open is of al om 18.30 uur sluit.
+
 ## Tickets en prijzen
 
 Het ticket heet **1-Day Passport**. De prijs hangt af van de datum, en op elke dag kosten beide parken hetzelfde. Stand van 3 oktober 2026, voor bezoeken van oktober 2026 tot en met februari 2027:

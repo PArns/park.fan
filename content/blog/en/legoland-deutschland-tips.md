@@ -385,6 +385,9 @@ to 23 and 26 to 30 December, and 2 to 10 January 2027. There's an ice rink, curl
 shows every half hour, and at many rides it says “open depending on weather”. An early-bird ticket
 costs €22 instead of €36 until 15 November.
 
+> [!PARKY] Annual pass first
+> If we're going to Legoland twice in 2027 anyway, we buy the annual pass, from €99, before the first WinterWonder day on 28 November: with it, WinterWonder entry is free, and without it a ticket costs €36. If a ride marked “open depending on weather” then stays shut, it only bugs me half as much, because we're back in summer. Add two summer days at the minimum online price of €39 and the pass has paid for itself.
+
 Legoland has also announced the world's first LEGO Harry Potter Land and the first accommodation with
 that theme. The park doesn't give an opening year.
 

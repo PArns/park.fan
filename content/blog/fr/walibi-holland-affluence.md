@@ -285,6 +285,9 @@ En 2026, le week-end où les trois régions étaient ensemble en vacances d’au
 chargé de l’année. En 2027, ce sera le week-end des 23 et 24 octobre. L’été 2027, la région Noord
 a la première semaine pour elle seule, du 10 au 16 juillet.
 
+> [!PARKY] Première semaine
+> S’il faut y aller pendant les vacances d’été, on vise 2027 entre le 10 et le 16 juillet, quand seule la région Noord est en vacances. En 2026, les deux premières semaines de vacances ont été les plus calmes de tout l’été, avec une attente aux attractions phares aussi courte qu’en mai et en juin après les vacances de mai, et des files courtes en pleines vacances, je ne dis jamais non. Les deux semaines d’avant, on les évite : en 2026, elles ont été plus chargées que n’importe quelle semaine des vacances d’été.
+
 ## Halloween Fright Nights
 
 > [!NOTE]
