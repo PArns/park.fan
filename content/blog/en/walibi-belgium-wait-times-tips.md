@@ -355,6 +355,9 @@ spans both. The Christmas holidays start on 21 December 2026 in both parts of
 the country and end on 1 January in Wallonia and Brussels and on 3 January 2027
 in Flanders, right in the middle of Walibi Winter.
 
+> [!PARKY]
+> For Walibi Winter we pick a day before 21 December: from then on both parts of the country are on Christmas holidays, and in Wavre it’s the school holidays that decide how busy it gets. Loup-Garou only runs until 3 January, and I’d rather say goodbye without the holiday crowds. The park page has the days it’s open.
+
 ## Planning the day
 
 At opening, go to **Kondaa** first, because in our measurements (since late December 2025) the first

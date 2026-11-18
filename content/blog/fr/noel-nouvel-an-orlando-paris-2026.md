@@ -284,6 +284,9 @@ guirlandes, couronnes de l'avent et les Arendelle Carollers, une chorale de Noë
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), je ne
 prévoirais pas Disney Adventure World pour une simple demi-journée.
 
+> [!PARKY]
+> Entre Noël et le Nouvel An, Disney Adventure World a droit à une journée entière avec nous : fin 2025, cette semaine-là y a été plus calme que tout autre mois de l'année, et Arendelle fête son tout premier Noël. Ces couronnes de l'avent, je veux les voir de mes propres yeux, et ils sont assez grands pour ça. Quel parc va sur quel jour du voyage, on le décide dans le [planificateur de voyage](/paris#planner).
+
 La parade est comprise dans le billet. Disney vend séparément une place réservée
 pour la voir, dans la limite des stocks.
 

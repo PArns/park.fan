@@ -315,6 +315,9 @@ Saturday is the busiest day at Europa-Park, Phantasialand, Heide Park and Legola
 it stands furthest above the rest of the week. There, Sunday is almost as busy; in Rust, Soltau
 and Bottrop it’s one of the quieter days. For families who can only go at the weekend, Sunday is the better day, except in Brühl. At Plopsaland every day is equally quiet, Saturday included.
 
+> [!PARKY]
+> If Saturday is our only option, we head to Plopsaland in Haßloch, where it’s no busier than the rest of the week. Kids from one metre ride the 100% Wolf family coaster with an adult, and my coaster count goes up by one. For the parents, Expedition GeForce is right next door from 140 cm.
+
 July and August are the busiest months at almost every park,
 and at Phantasialand by a long way. September is one of the quietest in Brühl, Soltau and Bottrop,
 because the summer holidays are over in most German states and the autumn holidays haven’t

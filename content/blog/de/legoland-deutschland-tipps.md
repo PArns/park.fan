@@ -333,6 +333,9 @@ Unter Dach liegen laut Park die **Tempel X-pedition**, **LEGO NINJAGO The Ride**
 Studios**, **LEGOLAND ATLANTIS by SEA LIFE** und die **LEGO Fabrik**. Atlantis hat nach Wikipedia über 2.000 Fische, und der Glastunnel dort ist acht Meter
 lang. Dazu kommt eine **Regen Rallye**, eine Rätselrunde für nasse Tage.
 
+> [!PARKY] Trotzdem hin
+> Steht Regen in der Vorhersage, bleiben wir nicht daheim: An Regentagen waren die Wartezeiten hier um 17 Prozent kürzer. Bei einem Schauer gehen wir in die LEGO Studios oder zu LEGO NINJAGO The Ride, und ich halte den Schirm und freu mich über jede kürzere Warteschlange. Hört es auf, sind wir als Erste wieder draußen.
+
 Zwischen dem 24. Dezember 2025 und dem 5. Oktober 2026 fielen im
 Legoland Deutschland an 18 Prozent der Öffnungstage mindestens zwei Millimeter Regen. Der Park selbst rät zu
 Regenschirm, Regenponcho, wasserfesten Schuhen und Wechselkleidung.

@@ -177,6 +177,9 @@ At Pirate Falls, Hydra's Challenge, The Dragon and Laser Raiders the queue is sh
 
 A sequence for children from seven: The Dragon and Hydra's Challenge first, and both should be done before half past eleven. Then Laser Raiders, by around half past eleven at the latest. At Pirate Falls the queue stays short the longest, and the ride can wait until about 1 pm. In October that's also the warmer time for wet clothes. Flight of the Sky Lion, Coastguard HQ and the other rides follow.
 
+> [!PARKY]
+> At LEGOLAND at Christmas, Pirate Falls and Hydra's Challenge are in their winter break, which leaves The Dragon and Laser Raiders of the four rides worth an early start. We head to those two at opening, and with no water rides in December I get to stay dry in a British winter, which suits me fine. In the [day planner](/trip-planner) we put both at the start.
+
 ## The three Fastrack packages and their rides
 
 **Fastrack** is the paid option that gives you a separate entrance with a shorter wait at many rides. The park sells three packages: Bronze with three rides, Silver with six and Gold for the whole day. Each package is valid for one person, is scanned only once every three minutes and includes no park admission. Fastrack is non-refundable and non-transferable.

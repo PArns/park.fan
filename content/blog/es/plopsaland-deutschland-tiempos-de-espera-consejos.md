@@ -120,6 +120,9 @@ un minuto y 30 segundos de viaje) y
 la única bajo techo: pertenece a la nave Holiday Indoor, abierta en 2018 sobre 5.000 metros
 cuadrados.
 
+> [!PARKY]
+> En marzo y en noviembre miramos la temperatura en Haßloch antes de salir. Por debajo de ocho grados, GeForce y Sky Scream se quedan paradas, y a las tres colinas de GeForce que nos levantan del asiento no renuncio a gusto. De las cuatro montañas rusas solo funcionan entonces 100% Wolf, que arranca ya a partir de cinco grados, y Tabaluga's Rollercoaster, en la nave. Si el pronóstico marca tan poco, preferimos buscar un día más templado.
+
 ## Atracciones de agua y torres
 
 La Free Fall Tower fue en 1997 la primera torre de caída de Alemania, un Giant Drop de Intamin,

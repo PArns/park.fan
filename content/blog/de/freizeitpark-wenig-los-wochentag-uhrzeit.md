@@ -372,6 +372,9 @@ ich das nicht.
 Am längsten stehst du gegen zwölf Uhr an, und bis in den frühen Abend bleibt die
 Wartezeit hoch. Am kürzesten ist sie in der letzten Stunde.
 
+> [!PARKY]
+> Für den Disneyland Park heißt das: Wir buchen die Reise, wann sie uns passt, denn die Ferien machen hier nur etwa 3 Prozent aus, und auch der Wochentag ändert kaum etwas. Kurze Warteschlangen holen wir uns über die Uhr und bleiben bis zur letzten Stunde, auch wenn ich um die Zeit schon gähne. Welcher Park an welchem Tag dran ist, legen wir im [Reiseplaner](/paris#planner) fest.
+
 Der Park hat am 12. April 1992 als Euro Disneyland eröffnet, seit März 2002
 heißt er Disneyland Park.
 

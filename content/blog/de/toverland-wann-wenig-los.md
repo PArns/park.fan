@@ -208,6 +208,9 @@ Der Sommer 2027 läuft damit anders als 2026. NRW fängt fünf Tage früher an a
 die Region Süd hört fünf Tage später auf. Von Mittwoch, 1. September, bis Sonntag, 5. September
 2027, sind in Limburg noch Ferien und in NRW schon Schule. Solche Tage gab es 2026 nicht. Am nächsten kommt ihnen die erste Woche der Sommerferien 2026, als nur die Regionen Süd und Nord frei hatten und der Park unter der Woche an vier Tagen auf Normal oder darunter stand.
 
+> [!PARKY] Beste Zeit
+> Unser Toverland-Tag 2027 liegt im September, ab Montag, dem 6., und am liebsten von Montag bis Mittwoch. Bis Sonntag, 5. September, hat die Region Süd noch Sommerferien, und die Samstage überlassen wir sowieso halb Limburg. 2026 standen 13 der 17 Septembertage von Montag bis Freitag auf Niedrig oder Sehr niedrig.
+
 ## Zählen die NRW-Ferien?
 
 Bei so kurzer Strecke zur Grenze liegt die Vermutung nahe. Um sie zu prüfen, haben wir nach Tagen

@@ -409,6 +409,9 @@ maze. El **31 de octubre** el parque abre hasta las 23, con fuegos
 artificiales, y es el único día del año en que también los adultos pueden ir
 disfrazados.
 
+> [!PARKY] Date un capricho
+> El disfraz lo guardamos para París: en Movie Park solo los niños de hasta 1,40 m pueden ir disfrazados, y en el Disneyland Park el 31 de octubre también los adultos. Yo iré de bocadillo de cómic, allí nadie se fijará. Esa noche el parque abre hasta las 23, con fuegos artificiales.
+
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers

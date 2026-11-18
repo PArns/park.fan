@@ -186,6 +186,9 @@ La página de entradas no da ese precio, solo «entradas desde 44 euros». Los
 cumpleañeros hasta el día de su 11.º cumpleaños entran gratis si reservaron antes
 online.
 
+> [!PARKY]
+> Una copia del documento de identidad o de la partida de nacimiento va directa a la bolsa de los pañales: sin prueba de edad, tu peque paga en Phantasialand el precio infantil de 4 a 11 años, que la página de entradas ni siquiera indica. Que justo el visitante más pequeño tenga que enseñar papeles me parece bastante tierno. Con la prueba, los niños de 0 a 3 años pasan sin reservar entrada.
+
 Junto al servicio de atención al visitante hay una sala de descanso y lactancia
 con cambiadores. El personal calienta los potitos. En el parque de invierno
 Wintertraum, el servicio de atención al visitante está en la Kaiserplatz, con su

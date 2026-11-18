@@ -163,6 +163,9 @@ Until the clocks change, the sun in Brühl sets after closing time. From Sunday,
 gone by around 5:20 p.m., and just before 6 p.m. it's dark. In the last half hour before closing
 the lights come on in Klugheim while Taron is still running.
 
+> [!PARKY]
+> On a weekday we save Taron for the afternoon: from 2 p.m. the queue's only about two thirds as long as in the morning. From 25 October we take the last ride in the half hour before closing, when the lights come on in Klugheim, and riding between the basalt rocks in the dark gives me goosebumps right up under my hat. We plan the rest of the day ride by ride in the [day planner](/trip-planner).
+
 ## How long the quiet days will last
 
 The Halloween nights at the neighbouring parks end between 1 November at Walibi Holland and 15

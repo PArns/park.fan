@@ -136,6 +136,9 @@ Ogni data va in vendita due mesi prima alle 14:00 ora del Giappone, e i giorni p
 
 USJ vende ogni Studio Pass per una data fissa: l’1 Day, il 2 Day per due giorni interi, l’1.5 Day con il primo giorno dalle 15:00 e il secondo dall’apertura, e il Twilight Pass dalle 15:00. Se esci dal parco, con lo Studio Pass non rientri. USJ non accetta biglietti comprati su siti di rivendita o di aste.
 
+> [!PARKY] Calza a pennello
+> Se nel giorno di cambio hotel arriviamo a Osaka solo nel pomeriggio, per USJ prendiamo l’1.5 Day Studio Pass: il primo giorno entriamo dalle 15:00, il secondo dall’apertura. Dei cinque parchi, USJ è quello dove arrivare presto rende di più, e per il rope drop mi alzo presto volentieri. Con lo Studio Pass non si può uscire e rientrare, quindi la prima sera restiamo fino alla chiusura.
+
 ### Fuji-Q Highland
 
 Fuji-Q vende il One Day Pass per tutte le attrazioni tranne quelle con biglietto a orario, a scelta con ingresso anticipato o con una coda virtuale nell’app del parco. In più ci sono l’Afternoon Pass dalle 13:00, il Sunset Night Pass dalle 16:00 nei giorni in cui il parco resta aperto dopo le 19:00, e il Thomas Land Pass per le dodici attrazioni di Thomas Land.

@@ -180,6 +180,9 @@ Im Winter halten beide Parks bis in den Abend offen. Der Europa-Park hat im Wint
 
 Wer erst nach dem Mittagessen losfährt, kommt in beiden Parks mit einem Abendticket ab 16 Uhr hinein. Im Europa-Park gilt es vom 2. November bis 9. Januar und kostet für Erwachsene 41,50 €, ab dem 23. Dezember 47 €. Das Efteling verkauft es vom 21. Dezember bis 3. Januar für 33 €, und wer dazu einen Parkschein kauft, zahlt 10 € statt 15 €.
 
+> [!PARKY] Lohnt sich
+> Fahren wir zwischen dem 21. Dezember und dem 3. Januar erst nach dem Mittagessen los, nehmen wir das Abendticket im Efteling: ab 16 Uhr für 33 €, und bis 20 Uhr bleiben uns außer an Silvester vier Stunden. Im Europa-Park kostet der Abend ab dem 23. Dezember 47 € und endet frühestens um 19 Uhr, da muss selbst ich nicht lange nachzählen. Den Parkschein kaufen wir gleich dazu, dann kostet er 10 statt 15 €.
+
 Eislaufen kannst du in beiden Parks, im Europa-Park dazu über einen Weihnachtsmarkt im Schlosspark Balthasar bummeln. Die Eisbahn im Efteling ist in diesem Winter teilweise überdacht. Am 1. Dezember öffnet dort außerdem Raveleijn wieder, mit einer neuen Show, die der Park mit dem französischen Puy du Fou entwickelt hat, und dem Rundfahrgeschäft Ravenring.
 
 Für Halloween kommt nur einer der beiden infrage, denn das Efteling feiert es nicht. Im Europa-Park läuft die Halloween-Saison 2026 noch bis zum 1. November. Abends gibt es dort bis zum 7. November außerdem [Traumatica](ref:traumatica), ein Gruselevent ab 16 Jahren von Freitag bis Sonntag und an einzelnen Donnerstagen, mit Tickets ab 45 €. Vom 2. bis 27. November folgt im Park der HALLOWinter, mit Öffnung von 11 bis mindestens 19 Uhr.

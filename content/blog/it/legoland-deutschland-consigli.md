@@ -337,6 +337,9 @@ Al coperto sono, secondo il parco, la **Tempel X-pedition**, **LEGO NINJAGO The 
 Studios**, **LEGOLAND ATLANTIS by SEA LIFE** e la **LEGO Fabrik**. Atlantis ha secondo Wikipedia più di 2.000 pesci, e il tunnel di vetro lì è lungo
 otto metri. In più c'è una **Regen Rallye**, un gioco a enigmi per i giorni di pioggia.
 
+> [!PARKY] Andiamo lo stesso
+> Se le previsioni dicono pioggia, non restiamo a casa: nei giorni di pioggia qui i tempi di attesa sono stati del 17 % più corti. Durante un acquazzone ci rifugiamo nei LEGO Studios o su LEGO NINJAGO The Ride, e io tengo l'ombrello e mi godo ogni coda più corta. Appena smette, siamo i primi a tornare fuori.
+
 Tra il 24 dicembre 2025 e il 5 ottobre 2026 al Legoland Deutschland sono caduti almeno due millimetri di pioggia nel 18 % dei giorni di apertura. Il parco stesso
 consiglia ombrello, poncho antipioggia, scarpe impermeabili e vestiti di ricambio.
 

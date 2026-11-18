@@ -352,6 +352,9 @@ dazwischen. Furius Baco im PortAventura Park hat ab dem frühen Nachmittag eine 
 Warteschlange wie am Vormittag. An Hyperia im Thorpe Park hilft keine Uhrzeit, von 10 bis 17 Uhr
 bleibt die Wartezeit fast gleich.
 
+> [!PARKY]
+> Premier Access One gibt es im Disneyland Paris ohnehin nur am Besuchstag, und auch dann kaufen wir ihn nicht schon beim Croissant: Morgens fahren wir die großen Bahnen ohne, und erst gegen Mittag sehen wir, welche uns noch fehlt. Ist das Kontingent an einem vollen Tag bis dahin verkauft, heben wir die Bahn für den späten Abend auf, wenn die Warteschlangen wieder kürzer sind.
+
 Mammut und Blue Tornado fährst du im Gardaland am besten nachmittags, gegen 11 Uhr sind ihre
 Warteschlangen am längsten. Für Pégase Express und Tonnerre 2 Zeus im Parc Astérix lohnt sich der Abend.
 Bei Walibi Belgium drehen Vampire und Loup-Garou den Tag um, ihre Warteschlange ist zur Öffnung am

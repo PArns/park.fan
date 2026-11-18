@@ -348,6 +348,9 @@ Furius Baco al PortAventura Park dal primo pomeriggio ha una coda lunga quasi la
 mattino. Su Hyperia al Thorpe Park nessun orario aiuta: dalle 10 alle 17 l’attesa resta quasi la
 stessa.
 
+> [!PARKY]
+> A Disneyland Paris Premier Access One si vende comunque solo il giorno stesso, e anche allora non lo compriamo già col cornetto: la mattina facciamo le grandi attrazioni senza, e solo verso mezzogiorno vediamo quale ci manca ancora. Se in una giornata piena a quell’ora il contingente è già esaurito, teniamo quell’attrazione per la sera tardi, quando le code tornano più corte.
+
 Mammut e Blue Tornado a Gardaland conviene farli il pomeriggio, le loro code sono più lunghe verso
 le 11. Per Pégase Express e Tonnerre 2 Zeus al Parc Astérix conviene la sera. A Walibi Belgium
 Vampire e Loup-Garou capovolgono la giornata, con la coda più lunga all’apertura e corta a

@@ -221,6 +221,9 @@ Quien solo quiera la noche compra una entrada Soirée (acceso desde las 17:00) o
 (desde las 20:00). Las dos incluyen el espectáculo nocturno y las atracciones que siguen abiertas
 por la noche.
 
+> [!PARKY]
+> Si solo venimos por la noche, cogemos la entrada Soirée y pagamos el aparcamiento con la tarifa desde las 14:00, 8 euros en vez de 13. La Clé des Songes va incluida en las dos entradas de noche y se celebra también con lluvia, y por imágenes sobre el agua con pirotecnia me quedo despierto hasta tarde con gusto. Antes montamos en las atracciones que siguen abiertas por la noche.
+
 ## Cuánto se espera aquí
 
 Hasta principios de octubre de 2026 hemos medido 228 días. El Futuroscope tiene muchos puntos del programa

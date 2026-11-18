@@ -279,6 +279,9 @@ con guirnaldas, coronas de adviento y los Arendelle Carollers, un coro navideño
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), yo no
 planearía Disney Adventure World como una simple media jornada.
 
+> [!PARKY]
+> Entre Navidad y Año Nuevo, Disney Adventure World se lleva un día entero con nosotros: a finales de 2025 esa semana fue allí más tranquila que cualquier otro mes del año, y Arendelle celebra su primera Navidad. Esas coronas de adviento quiero verlas con mis propios ojos, que para eso los tengo bien grandes. Qué parque va en qué día del viaje lo decidimos en el [planificador de viajes](/paris#planner).
+
 La cabalgata está incluida en la entrada. Disney vende aparte un sitio reservado
 para verla, hasta agotar existencias.
 

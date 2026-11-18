@@ -278,6 +278,9 @@ con ghirlande, corone d'avvento e gli Arendelle Carollers, un coro natalizio. Co
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), non
 programmerei Disney Adventure World per una mezza giornata soltanto.
 
+> [!PARKY]
+> Tra Natale e Capodanno, a Disney Adventure World diamo una giornata intera: a fine 2025 quella settimana lì è stata più tranquilla di qualsiasi altro mese dell'anno, e Arendelle festeggia il suo primo Natale. Quelle corone d'avvento le voglio vedere con i miei occhi, che per fortuna sono belli grandi. Quale parco va in quale giorno del viaggio lo decidiamo nel [pianificatore di viaggio](/paris#planner).
+
 La parata è compresa nel biglietto del parco. Un posto riservato per vederla
 Disney lo vende a parte, fino a esaurimento.
 

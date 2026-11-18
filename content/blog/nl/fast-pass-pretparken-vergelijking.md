@@ -346,6 +346,9 @@ uren daartussen. Furius Baco in PortAventura Park heeft vanaf het begin van de m
 bijna half zo lang is als in de ochtend. Bij Hyperia in Thorpe Park helpt geen enkel tijdstip,
 van 10 tot 17 uur blijft de wachttijd bijna gelijk.
 
+> [!PARKY]
+> Premier Access One is in Disneyland Paris sowieso alleen op de dag zelf te koop, en ook dan kopen we hem niet al bij het croissantje: in de ochtend rijden we de grote attracties zonder, en pas rond het middaguur zien we welke we nog missen. Is het aantal op een drukke dag dan al uitverkocht, dan bewaren we die attractie voor laat op de avond, als de rijen weer korter zijn.
+
 Mammut en Blue Tornado doe je in Gardaland het best 's middags, rond 11 uur zijn hun rijen het
 langst. Voor Pégase Express en Tonnerre 2 Zeus in Parc Astérix loont de avond. Bij Walibi Belgium
 draaien Vampire en Loup-Garou de dag om, hun rij is bij de opening het langst en rond het middaguur

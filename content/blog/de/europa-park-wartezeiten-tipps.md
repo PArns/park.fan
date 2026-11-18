@@ -609,6 +609,9 @@ darauf auf „sehr hoch“. Am Sonntag lag der Park wieder auf „niedrig“. Be
 Fronleichnam dasselbe Muster: Der Feiertag am 4. Juni stand auf „niedrig“, der
 Brückenfreitag am 5. auf „hoch“.
 
+> [!PARKY] Lieber Donnerstag
+> An Himmelfahrt und Fronleichnam fahren wir am Feiertag selbst und überlassen den Brückenfreitag der halben Republik. 2026 stand Fronleichnam auf „niedrig“ und Himmelfahrt auf „moderat“, die Freitage danach auf „hoch“ und „sehr hoch“. Haben wir das ganze lange Wochenende frei, ist der Sonntag unser zweiter Tag: Nach Himmelfahrt lag der Park da schon wieder auf „niedrig“.
+
 An beiden Brückenfreitagen war das Wetter mies. Am 15. Mai 2026 zog ein Gewitter durch, viel wärmer als zwölf Grad wurde es nicht, und
 für „sehr hoch“ reichte es trotzdem; am 5. Juni gewitterte es wieder. Der Kanal
 Parkfan95 fährt an genau diesen Freitagen hin und filmt das

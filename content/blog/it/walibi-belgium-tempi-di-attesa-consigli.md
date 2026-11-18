@@ -363,6 +363,9 @@ fiamminghe dal 2 all’8 novembre, e Ibilaw le copre entrambe. Le vacanze di
 Natale cominciano il 21 dicembre 2026 in entrambe le comunità e finiscono
 l’1 gennaio in Vallonia e a Bruxelles e il 3 gennaio 2027 nelle Fiandre, in pieno Walibi Winter.
 
+> [!PARKY]
+> Per Walibi Winter scegliamo un giorno prima del 21 dicembre: da lì in poi entrambe le comunità sono in vacanza di Natale, e a Wavre sono le vacanze scolastiche a decidere quanta gente ci sarà. Loup-Garou corre solo fino al 3 gennaio, e preferisco salutarlo senza la ressa delle vacanze. I giorni di apertura sono sulla pagina del parco.
+
 ## Una giornata a Wavre
 
 All’apertura prima di tutto a **Kondaa**, perché nelle nostre misurazioni (da fine dicembre 2025) la

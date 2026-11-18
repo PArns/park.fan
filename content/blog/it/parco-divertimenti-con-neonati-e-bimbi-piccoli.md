@@ -183,6 +183,9 @@ copia. Senza, vale il prezzo bambini da 4 a 11 anni. La pagina dei biglietti
 non riporta questo prezzo, c’è solo «biglietti da 44 euro». I festeggiati fino all’11° compleanno
 entrano gratis se hanno prenotato online in anticipo.
 
+> [!PARKY]
+> Una copia del documento o del certificato di nascita finisce subito nella borsa del cambio: senza prova dell’età, il tuo piccolo al Phantasialand paga il prezzo bambini da 4 a 11 anni, che la pagina dei biglietti non riporta nemmeno. Che proprio l’ospite più giovane debba mostrare i documenti lo trovo piuttosto tenero. Con la prova, i bambini da 0 a 3 anni entrano senza biglietto prenotato.
+
 Accanto al servizio ospiti c’è una sala di riposo e allattamento con fasciatoi.
 Il personale scalda gli omogeneizzati. Nel parco invernale Wintertraum il
 servizio ospiti si trova sulla Kaiserplatz, con un angolo per l’allattamento,

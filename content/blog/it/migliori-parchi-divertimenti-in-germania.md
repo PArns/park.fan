@@ -321,6 +321,9 @@ a Brühl con lo stacco più netto dal resto della settimana. Lì la domenica è 
 altrettanto, mentre a Rust, Soltau e Bottrop è uno dei giorni più tranquilli. Per le famiglie che possono andare solo nel fine settimana, la domenica è quindi il giorno migliore, tranne a Brühl. Al Plopsaland ogni giorno è tranquillo
 uguale, sabato compreso.
 
+> [!PARKY]
+> Se possiamo andare solo di sabato, puntiamo sul Plopsaland di Haßloch, perché lì il sabato non è più pieno del resto della settimana. Da un metro in su i bambini salgono con un adulto sul family coaster 100% Wolf, e il mio conto delle montagne russe sale ancora. Per i genitori, dai 140 centimetri, accanto c'è l'Expedition GeForce.
+
 Luglio e agosto sono i mesi più pieni in quasi tutti i parchi,
 al Phantasialand con grande distacco. Settembre a Brühl, Soltau e Bottrop è tra i più tranquilli,
 perché nella maggior parte dei Länder le vacanze estive sono finite e quelle d'autunno non sono

@@ -404,6 +404,9 @@ agosto y septiembre y en los Studios en mayo. De los días de la semana, el sáb
 es el de más gente en los Studios y en Islands of Adventure. En Epic
 Universe los días de la semana apenas se distinguen.
 
+> [!PARKY]
+> Si cae un sábado en nuestro viaje, se lo damos a Epic Universe: en los Studios y en Islands of Adventure el sábado es el día de más gente, y en Epic Universe los días de la semana apenas se distinguen. A ese parque le da casi igual el día, y a mí entonces también. Cuál de los otros dos va a qué día entre semana lo decidimos en el [planificador de viajes](/orlando#planner).
+
 En otoño, las noches de Halloween Horror Nights los Studios cierran antes para
 los visitantes normales. Todas las fechas, precios y casas están en nuestro
 resumen de [Halloween en Estados Unidos](/blog/halloween-estados-unidos-parques-2026).

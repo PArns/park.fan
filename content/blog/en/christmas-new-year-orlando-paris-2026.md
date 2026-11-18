@@ -269,6 +269,9 @@ advent wreaths and the Arendelle Carollers, a Christmas choir. With children who
 [Frozen Ever After](ref:disney-adventure-world/frozen-ever-after), I wouldn't
 plan Disney Adventure World as just a half day.
 
+> [!PARKY]
+> Between Christmas and New Year, Disney Adventure World gets a whole day from us: at the end of 2025 that week was quieter there than any other month of the year, and Arendelle is holding its first Christmas. I've got to see those advent wreaths with my own eyes, and mine are big enough for it. Which park goes on which day of the trip, we'll work out in the [trip planner](/paris#planner).
+
 The parade is included with the park ticket. Disney sells a reserved spot for it
 separately, while they last.
 

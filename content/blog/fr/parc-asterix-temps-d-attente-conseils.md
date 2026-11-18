@@ -472,6 +472,9 @@ d’Obélix, un défilé et un marché de Noël. Les montagnes russes sont « g
 ouvertes », dit le parc, les attractions aquatiques non. Un billet de Noël non
 daté coûte 57 euros.
 
+> [!PARKY] Bon choix
+> Le billet de Noël à 57 euros n’est pas daté, et on en profite : on ne choisit le jour qu’une fois la météo connue. Par temps de gel, le parc ferme d’autres attractions en plus des attractions aquatiques, et un jour pareil, même moi je me contenterais de pirouettes sur la Patinoire Viking. Les patins y sont gratuits.
+
 Du 9 novembre au 18 décembre 2026, le parc est fermé, et de nouveau du 4 janvier
 jusqu’au début de la saison au printemps. Depuis 2007, il reste ouvert jusqu’à
 la fin des vacances de la Toussaint ; avant, il fermait en septembre. Il a ouvert
@@ -535,6 +538,9 @@ climatisation ; La Cité Suspendue, de 2018, 150 chambres ; et Les Quais de
 Lutèce, de 2020, 149 chambres et quatre étoiles. Pour une nuit avec une journée
 au parc, le parc annonce à partir de 99, 102 et 111 euros par personne, sur la
 base de deux adultes et deux enfants en haute saison. Les hôtels sont à moins de dix minutes à pied du parc, le parking est gratuit et vous entrez une demi-heure plus tôt.
+
+> [!PARKY]
+> Pour un voyage à Paris, on ajoute dans le [planificateur de voyage](/paris#planner) une nuit dans un des hôtels du Parc Astérix. Les clients des hôtels entrent une demi-heure avant les autres dans les zones Toutatis et Égypte, j’en trépigne dès le petit-déjeuner, et ils se garent gratuitement au lieu de payer 25 euros par jour.
 
 Dans l’application, on peut réserver une table dans trois restaurants : Le
 Relais Gaulois (self-service, 28,90 euros, Astérix et Obélix passent entre les

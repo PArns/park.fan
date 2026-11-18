@@ -345,6 +345,9 @@ shorter just after opening than at midday. So start there and save Peter Pan for
 the evening. All eight rides in the hourly table
 have their longest queue between 12:00 and 14:00.
 
+> [!PARKY] This one, yes
+> If we're not staying for the last hour, Peter Pan gets our Premier Access One: it saves more time there than at Hyperspace Mountain, and on 25 September it cost just €1 more. For a flight to Neverland I'll happily spend the extra euro. We can only buy it in the app once we're inside the park, and we ride Hyperspace Mountain just after opening anyway.
+
 And if you're booking both parks, flip the usual order and start in Adventure
 World, where, according to our rope-drop analysis, Ratatouille and the Tower of
 Terror have the biggest payoff for an early start. Frozen Ever After is shortest in the evening and has a single rider line.

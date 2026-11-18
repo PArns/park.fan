@@ -337,6 +337,9 @@ Mickey's Once Upon a Christmastime Parade e lo spettacolo pirotecnico Minnie's
 Wonderful Christmastime Fireworks Show. Anche in queste sere il parco chiude
 prima per tutti gli altri.
 
+> [!PARKY]
+> Senza biglietto per la festa, mettiamo Magic Kingdom in un giorno senza festa: fino al 14 dicembre resta aperto fino alle 22 o alle 23 invece che fino alle 18, e la giornata finisce con Happily Ever After. Ai fuochi d’artificio a fine giornata non rinuncio. Quel giorno del viaggio lo scegliamo nel [pianificatore di viaggio](/orlando#planner).
+
 ## Cosa ha chiuso e cosa arriva
 
 Il 6 luglio 2025 l’area di Rivers of America, in Frontierland, ha aperto per

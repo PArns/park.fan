@@ -228,6 +228,9 @@ The shop advertises tickets from **€44**. You can still go on a whim, but only
 online and only until 2 p.m. on the day itself, at that day’s price and only if
 the day hasn’t sold out.
 
+> [!PARKY] Treat yourself
+> We book as soon as the date’s set. If we catch the €35 tier for October or November instead of the €59 one, that leaves €24, which is, and I checked twice, exactly two Quick Passes for Taron. We buy those on the morning of the visit.
+
 There are no more annual passes. Phantasialand took its Club-Karte off sale
 during the pandemic and never brought it back; the last ones expired in summer 2022. That makes it the exception among
 [Germany’s big parks](/blog/best-theme-parks-in-germany); Europa-Park, for one,

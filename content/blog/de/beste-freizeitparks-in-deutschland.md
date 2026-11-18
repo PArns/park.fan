@@ -316,6 +316,9 @@ Der Samstag ist im Europa-Park, im Phantasialand, im Heide Park und im Legoland 
 in Brühl mit dem größten Abstand zum Rest der Woche. Der Sonntag ist dort fast genauso voll, in
 Rust, Soltau und Bottrop dagegen einer der ruhigeren Tage. Für Familien, die nur am Wochenende können, ist der Sonntag also der bessere Tag, außer in Brühl. Im Plopsaland ist jeder Tag gleich ruhig, auch der Samstag.
 
+> [!PARKY]
+> Geht bei uns nur der Samstag, fahren wir ins Plopsaland nach Haßloch, denn dort ist er nicht voller als der Rest der Woche. Kinder ab einem Meter fahren mit einem Erwachsenen in der Familienachterbahn 100% Wolf mit, und meine Achterbahnliste wird wieder länger. Für die Eltern steht ab 140 Zentimetern die Expedition GeForce daneben.
+
 Juli und August sind in fast allen Parks die vollsten Monate, im
 Phantasialand mit großem Abstand. Der September ist in Brühl, Soltau und Bottrop einer der
 ruhigsten, weil die Sommerferien in den meisten Ländern vorbei sind und die Herbstferien noch nicht

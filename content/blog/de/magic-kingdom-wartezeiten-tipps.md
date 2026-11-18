@@ -302,6 +302,9 @@ Danach folgt Mickey's Very Merry Christmas Party an 25 Abenden vom 8. November b
 die Parade Mickey's Once Upon a Christmastime Parade und das Feuerwerk Minnie's Wonderful
 Christmastime Fireworks Show. Auch an diesen Abenden schließt der Park für alle anderen früher.
 
+> [!PARKY]
+> Ohne Partykarte legen wir das Magic Kingdom auf einen Tag ohne Party: Bis zum 14. Dezember hat es dann bis 22 oder 23 Uhr offen statt bis 18 Uhr, und zum Schluss läuft Happily Ever After. Ein Feuerwerk zum Parkschluss lasse ich mir nicht nehmen. Den passenden Tag deiner Reise suchen wir im [Reiseplaner](/orlando#planner) aus.
+
 ## Was geschlossen ist und was kommt
 
 Am 6. Juli 2025 hatte der Bereich Rivers of America in Frontierland zum letzten Mal geöffnet, seit

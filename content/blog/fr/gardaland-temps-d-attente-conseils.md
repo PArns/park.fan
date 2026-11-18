@@ -195,6 +195,9 @@ Gardaland appelle son coupe-file Gardaland Express. Il s’achète en plus de l�
 
 « Give me 5 » permet une fois chacune cinq attractions parmi 15 et coûte à partir de 27 € en ligne, 30 € au parc. « Epic 17 » donne une fois chacune 17 attractions, dont Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide et Jumanji – The Adventure, à partir de 57 € en ligne et 60 € au parc. « No Limits » permet des passages illimités sur ces 17 attractions, à partir de 87 € en ligne et 90 € au parc. Les trois donnent 20 % de réduction dans les boutiques du parc.
 
+> [!PARKY]
+> D’après nos mesures, Dragon Rush a la file la plus longue du parc, et il ne figure pourtant dans aucune des trois formules. Qu’on ne puisse pas acheter de passe-droit justement pour le dragon, je lui en veux presque. On se met donc dans la file vers midi, ensuite elle reste à peu près la même jusqu’au soir, et le reste de la journée, on le construit autour dans le [planificateur de journée](/trip-planner).
+
 La réservation passe par l’application « Gardaland Express ». Tu y importes le bon ou le billet avec un QR code, puis tu vois les temps d’attente estimés et tu te mets dans la file d’une attraction. Une notification (« C’est bientôt ton tour ») arrive environ cinq minutes avant le départ, puis un QR code apparaît, valable environ cinq minutes. Le pass s’achète en ligne ou aux Express Points du parc, et le nombre de pass par jour est limité.
 
 ## Billets et abonnement

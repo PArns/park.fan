@@ -121,6 +121,9 @@ eine Minute und 30 Sekunden Fahrt) und die
 einzige, die im Trockenen steht: Sie gehört zur Halle Holiday Indoor, die 2018 auf
 5.000 Quadratmetern eröffnet wurde.
 
+> [!PARKY]
+> Im März und im November schauen wir vor der Abfahrt auf die Temperatur in Haßloch. Unter acht Grad stehen GeForce und Sky Scream still, und auf die drei Hügel der GeForce, die uns aus dem Sitz heben, verzichte ich ungern. Von den vier Achterbahnen fahren dann nur 100% Wolf, die schon ab fünf Grad startet, und Tabalugas Achterbahn in der Halle. Zeigt die Vorhersage so wenig, nehmen wir lieber einen wärmeren Tag.
+
 ## Wasserbahnen und Türme
 
 Der Free Fall Tower war 1997 der erste Freifallturm Deutschlands, ein Giant Drop von Intamin,

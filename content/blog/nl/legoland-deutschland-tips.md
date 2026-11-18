@@ -334,6 +334,9 @@ Onder dak liggen volgens het park de **Tempel X-pedition**, **LEGO NINJAGO The R
 Studios**, **LEGOLAND ATLANTIS by SEA LIFE** en de **LEGO Fabrik**. Atlantis heeft volgens Wikipedia ruim 2.000 vissen, en de glazen tunnel daar is acht
 meter lang. Daarnaast is er een **Regen Rallye**, een puzzelronde voor natte dagen.
 
+> [!PARKY] Toch gaan
+> Staat er regen in de voorspelling, dan blijven we niet thuis: op regendagen waren de wachttijden hier 17 procent korter. Bij een bui duiken we de LEGO Studios in of gaan we naar LEGO NINJAGO The Ride, en ik hou de paraplu vast en geniet van elke kortere wachtrij. Houdt het op, dan staan we als eersten weer buiten.
+
 Tussen 24 december 2025 en 5 oktober 2026 viel in Legoland Deutschland
 op 18 procent van de openingsdagen minstens twee millimeter regen. Het park zelf raadt een
 paraplu, een regenponcho, waterdichte schoenen en droge kleren aan.

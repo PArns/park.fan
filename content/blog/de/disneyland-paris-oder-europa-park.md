@@ -170,6 +170,9 @@ Für Paris nennt Disney feste Preise nur für die Kasse am Eingang. Dort kosten 
 
 Den Preis für Premier Access One setzt Disney jeden Tag neu. Eine Fahrt an Frozen Ever After kann 23 Euro pro Person kosten, für die vierköpfige Familie also 92 Euro, an Big Thunder Mountain 18 und an Hyperspace Mountain 16 Euro. Premier Access One kaufst du erst im Park in der App und bekommst dafür ein Zeitfenster. Ohne Smartphone geht das in der City Hall im Disneyland Park oder bei Studio Services in Disney Adventure World. Ultimate gibt es auch vorab und ohne Zeitfenster, einen festen Preis nennt Disney dafür nicht. Jedes Premier Access gehört zu einem Ticket und lässt sich nicht weitergeben, die Familie braucht also eines pro Person. Nur Kinder unter drei Jahren brauchen kein eigenes, wenn ein Erwachsener eines hat.
 
+> [!PARKY]
+> Frozen Ever After fahren wir in Disney Adventure World gleich zur Öffnung, denn dort bringt ein früher Start mit am meisten, und im [Tagesplaner](/trip-planner) steht die Bootsfahrt bei uns deshalb ganz oben. Premier Access dafür kann eine vierköpfige Familie 92 Euro kosten, da friert sogar mir das Lächeln ein. Wer sich später am Tag von der Gruppe trennen mag, nimmt den Single Rider.
+
 Für mitgebrachtes Essen hat Paris einen Picknickplatz zwischen Parkplatz und Eingang. Mahlzeiten, für die du Kühlbox, Tisch oder sperrige Behälter brauchst, dürfen nicht mit in die Parks. Der Europa-Park hat Picknickplätze im Schlosspark Balthasar, im deutschen Themenbereich und neben Wodan.
 
 Mit Übernachtung bietet der Europa-Park in der Sommer- und Halloweensaison das Arrangement „Alles erleben“ ab 192 Euro pro Person im Fünfbettzimmer an, mit einem Tag im Park, einem Tag in Rulantica und Frühstück.

@@ -394,6 +394,9 @@ ook weer Dr. Facilier. Alles zit bij het gewone ticket, een maze is er niet. Op
 **31 oktober** blijft het park open tot 23 uur, met vuurwerk, en dat is de
 enige dag van het jaar waarop ook volwassenen verkleed mogen komen.
 
+> [!PARKY] Trakteer jezelf
+> Het kostuum bewaren we voor Parijs: in Movie Park mogen alleen kinderen tot 1,40 m zich verkleden, in het Disneyland Park op 31 oktober ook volwassenen. Ik ga gewoon als tekstballon, daar kijkt niemand van op. Die avond blijft het park open tot 23 uur, met vuurwerk.
+
 [Disneyland Park](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers

@@ -381,6 +381,9 @@ d’ingresso per Jul 2026 il parco non li ha ancora pubblicati. Il Paese dei Con
 nel 2026 ha aperto in 42 giorni aggiuntivi d’inverno, ogni fine settimana e nelle
 vacanze scolastiche.
 
+> [!PARKY] Meglio d’estate
+> Tutte le grandi attrazioni in un solo giorno le trovi solo d’estate: a Halloween Valkyria non funziona, a Jul nel 2025 Helix e la Lisebergbanan non c’erano, e AtmosFear funziona comunque solo d’estate. In salita chiudo gli occhi, ma la caduta libera di 90 metri non me la perdo. Per il mercatino di Natale torniamo volentieri, Balder e Valkyria nel 2025 giravano anche allora.
+
 ## Biglietti e prezzi
 
 Liseberg vende l’ingresso e il braccialetto per le attrazioni separatamente.

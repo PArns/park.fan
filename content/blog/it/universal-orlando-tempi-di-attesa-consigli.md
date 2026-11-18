@@ -382,6 +382,9 @@ all’Epic Universe ad agosto e a settembre e agli Studios a maggio. Fra i
 giorni della settimana, agli Studios e alle Islands of Adventure il più affollato
 è il sabato. All’Epic Universe i giorni della settimana differiscono appena.
 
+> [!PARKY]
+> Se nel viaggio cade un sabato, lo diamo all’Epic Universe: agli Studios e alle Islands of Adventure il sabato è il giorno più affollato, all’Epic Universe i giorni della settimana differiscono appena. A quel parco il giorno importa poco, e a quel punto anche a me. Quale degli altri due va in quale giorno dal lunedì al venerdì lo decidiamo nel [pianificatore di viaggio](/orlando#planner).
+
 In autunno gli Studios, nelle sere delle Halloween Horror Nights, chiudono prima
 per gli ospiti normali. Tutte le date, i prezzi e le case sono nella nostra
 panoramica su [Halloween negli Stati

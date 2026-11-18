@@ -316,6 +316,9 @@ Zaterdag is in Europa-Park, Phantasialand, Heide Park en Legoland de drukste dag
 grootste verschil met de rest van de week. Zondag is daar bijna net zo druk, in Rust, Soltau en
 Bottrop juist een van de rustigere dagen. Voor gezinnen die alleen in het weekend kunnen, is zondag dus de betere dag, behalve in Brühl. In Plopsaland is elke dag even rustig, zaterdag ook.
 
+> [!PARKY]
+> Kunnen we alleen op zaterdag, dan gaan we naar Plopsaland in Haßloch, want daar is het op zaterdag niet drukker dan de rest van de week. Kinderen vanaf een meter rijden met een volwassene mee in de familieachtbaan 100% Wolf, en mijn achtbaanteller tikt weer eentje verder. Voor de ouders staat er vanaf 140 centimeter Expedition GeForce naast.
+
 Juli en augustus zijn in bijna alle parken de drukste maanden,
 in Phantasialand met grote afstand. September is in Brühl, Soltau en Bottrop een van de rustigste,
 omdat de zomervakantie in de meeste deelstaten voorbij is en de herfstvakantie nog niet begonnen. De brugdagen na Hemelvaart en Sacramentsdag

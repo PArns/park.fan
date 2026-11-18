@@ -342,6 +342,9 @@ Incluye el desfile Mickey's Once Upon a Christmastime Parade y los fuegos
 artificiales Minnie's Wonderful Christmastime Fireworks Show. Esas noches el
 parque también cierra antes para todos los demás.
 
+> [!PARKY]
+> Sin entrada para la fiesta, ponemos Magic Kingdom en un día sin fiesta: hasta el 14 de diciembre abre entonces hasta las 22:00 o las 23:00 en vez de hasta las 18:00, y el día termina con Happily Ever After. Unos fuegos artificiales al cierre no me los quita nadie. Ese día de tu viaje lo buscamos en el [planificador de viajes](/orlando#planner).
+
 ## Lo que ha cerrado y lo que viene
 
 La zona de Rivers of America, en Frontierland, abrió por última vez el 6 de julio

@@ -385,6 +385,9 @@ toujours des vacances quelque part. Je ne peux pas le prouver.
 C’est vers midi que tu attends le plus longtemps, et l’attente reste longue
 jusqu’en début de soirée. Elle est la plus courte pendant la dernière heure.
 
+> [!PARKY]
+> Pour le Disneyland Park, ça veut dire qu’on réserve le voyage quand ça nous arrange : les vacances n’y ajoutent qu’environ 3 %, et le jour de la semaine ne change presque rien non plus. Les files courtes, on les gagne avec la montre, en restant jusqu’à la dernière heure, même si je bâille déjà à ce moment-là. Quel parc quel jour, on le fixe dans le [planificateur de voyage](/paris#planner).
+
 Le parc a ouvert le 12 avril 1992 sous le nom d’Euro Disneyland et s’appelle
 Disneyland Park depuis mars 2002.
 

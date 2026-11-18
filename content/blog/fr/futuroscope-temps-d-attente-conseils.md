@@ -219,6 +219,9 @@ pendant les vacances scolaires.
 Pour ne venir que le soir, on prend un billet Soirée (entrée dès 17 h) ou un billet Nocturne (dès
 20 h). Les deux comprennent le spectacle du soir et les attractions ouvertes en soirée.
 
+> [!PARKY]
+> Si on ne vient que le soir, on prend le billet Soirée et on paie le parking au tarif à partir de 14 h, 8 euros au lieu de 13. La Clé des Songes est comprise dans les deux billets du soir et a lieu aussi sous la pluie, et pour des images d'eau avec de la pyrotechnie, je veille volontiers tard. Avant, on fait les attractions ouvertes en soirée.
+
 ## Combien de temps on attend ici
 
 Jusqu'à début octobre 2026, nous avons mesuré sur 228 jours. Le Futuroscope compte beaucoup de

@@ -351,6 +351,9 @@ Islands of Adventure in september, in Epic Universe in augustus en september en 
 de dagen van de week is zaterdag in de Studios en Islands of Adventure het drukst. In Epic Universe
 verschillen de weekdagen nauwelijks.
 
+> [!PARKY]
+> Valt er een zaterdag in onze reis, dan krijgt Epic Universe die: in de Studios en Islands of Adventure is zaterdag de drukste dag, in Epic Universe verschillen de weekdagen nauwelijks. Dat park maakt de dag dus weinig uit, en mij dan ook niet. Welke van de andere twee op welke doordeweekse dag komt, puzzelen we uit in de [reisplanner](/orlando#planner).
+
 In de herfst gaan de Studios op de avonden van de Halloween Horror Nights voor gewone gasten eerder dicht.
 Alle data, prijzen en huizen staan in ons overzicht [Halloween in de VS](/blog/halloween-vs-pretparken-2026).
 Het feestseizoen loopt van 14 november tot 3 januari, meer daarover in [Kerst en oud en nieuw in Orlando en

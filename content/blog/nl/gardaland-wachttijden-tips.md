@@ -194,6 +194,9 @@ Gardaland noemt de fast pass Gardaland Express. Hij geldt bovenop de entree en g
 
 “Give me 5” geeft één rit op vijf attracties uit 15 en kost online vanaf 27 euro, in het park vanaf 30 euro. “Epic 17” geldt voor één rit op 17 attracties, waaronder Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide en Jumanji – The Adventure, online vanaf 57 euro, in het park vanaf 60 euro. “No Limits” geeft onbeperkt ritten op diezelfde 17 attracties en kost online vanaf 87 euro, in het park vanaf 90 euro. Alle drie geven 20 procent korting in de winkels van het park.
 
+> [!PARKY]
+> Dragon Rush heeft volgens onze metingen de langste wachtrij van het park en zit toch in geen van de drie pakketten. Dat je uitgerekend bij de draak geen voorrang kunt kopen, neem ik hem bijna kwalijk. We sluiten dus rond twaalf uur aan, daarna blijft de rij tot de avond ongeveer even lang, en de rest van de dag bouwen we eromheen in de [dagplanner](/trip-planner).
+
 De reservering loopt via de app “Gardaland Express”. Het voucher of ticket importeer je daar met een QR-code, daarna zie je de geschatte wachttijden en sluit je aan bij een attractie. Ongeveer vijf minuten voor de rit komt er een melding (“Je bent bijna aan de beurt”), dan verschijnt een QR-code die zo'n vijf minuten geldig blijft. Je koopt de pas online of bij de Express Points in het park, het aantal passen per dag is beperkt.
 
 ## Tickets en seizoenskaart

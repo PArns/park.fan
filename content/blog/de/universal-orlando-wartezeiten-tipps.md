@@ -353,6 +353,9 @@ Wartezeit in den Islands of Adventure im September, im Epic Universe im August u
 Studios im Mai. Unter den Wochentagen ist in den Studios und den Islands of Adventure der Samstag am
 vollsten. Im Epic Universe unterscheiden sich die Wochentage kaum.
 
+> [!PARKY]
+> Fällt ein Samstag in unsere Reise, bekommt ihn das Epic Universe: In den Studios und in den Islands of Adventure ist der Samstag der vollste Tag, im Epic Universe unterscheiden sich die Wochentage kaum. Dem Park ist der Samstag also fast egal, und mir dann auch. Welcher der beiden anderen auf welchen Tag unter der Woche kommt, sortieren wir im [Reiseplaner](/orlando#planner).
+
 Im Herbst sind die Studios an den Abenden der Halloween Horror Nights für normale Gäste früher zu. Alle
 Termine, Preise und Häuser stehen in unserem Überblick [Halloween in den
 USA](/blog/halloween-usa-freizeitparks-2026). Die Feiertagssaison läuft vom 14. November bis zum 3.

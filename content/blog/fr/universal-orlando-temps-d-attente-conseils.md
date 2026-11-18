@@ -253,6 +253,9 @@ Si tu as fait Mine-Cart Madness et le Battle at the Ministry à l’ouverture, t
 
 Dans les trois parcs, on attend le plus en décembre, mais nous n’avons mesuré que neuf jours de décembre. À Epic Universe, on attend tout aussi longtemps en janvier et en février. L’attente est la plus courte en septembre à Islands of Adventure, en août et en septembre à Epic Universe et en mai aux Studios. Parmi les jours de la semaine, le samedi est le plus chargé aux Studios et à Islands of Adventure. À Epic Universe, les jours de la semaine diffèrent à peine.
 
+> [!PARKY]
+> Si un samedi tombe pendant notre voyage, il revient à Epic Universe : aux Studios et à Islands of Adventure, le samedi est le jour le plus chargé, alors qu’à Epic Universe les jours de la semaine diffèrent à peine. Ce parc-là se moque donc un peu du jour, et moi aussi du coup. Lequel des deux autres va sur quel jour de semaine, on le règle dans le [planificateur de voyage](/orlando#planner).
+
 À l’automne, les soirs des Halloween Horror Nights, les Studios ferment plus tôt pour les visiteurs ordinaires. Toutes les dates, les prix et les maisons figurent dans notre tour d’horizon [Halloween aux États-Unis](/blog/halloween-etats-unis-parcs-2026). La saison des fêtes va du 14 novembre au 3 janvier, la suite est dans [Noël et Nouvel An à Orlando et à Paris](/blog/noel-nouvel-an-orlando-paris-2026). Epic Universe a sa propre soirée, Universal Nights, à partir de 179 dollars par personne. Les dates sont les 17 et 24 octobre ainsi que les 6 et 20 novembre.
 
 ```best-days-widget slug=universal-epic-universe

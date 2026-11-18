@@ -337,6 +337,9 @@ Selon le parc, la **Tempel X-pedition**, **LEGO NINJAGO The Ride**, les **LEGO S
 à l’abri. Selon Wikipédia, Atlantis compte plus de 2 000 poissons, et son tunnel de verre mesure huit
 mètres. S’y ajoute un **Regen Rallye**, un jeu d’énigmes pour les jours de pluie.
 
+> [!PARKY] On y va quand même
+> De la pluie annoncée ne nous fait pas rester à la maison : les jours de pluie, l’attente était ici 17 % plus courte. Pendant une averse, on file aux LEGO Studios ou sur LEGO NINJAGO The Ride, et moi, je tiens le parapluie en savourant chaque file raccourcie. Dès que ça s’arrête, on est les premiers dehors.
+
 Entre le 24 décembre 2025 et le 5 octobre 2026, il est tombé à Legoland Deutschland au moins deux millimètres de pluie sur 18 % des jours d’ouverture. Le parc conseille un parapluie, un poncho de pluie, des chaussures étanches et des vêtements de
 rechange.
 

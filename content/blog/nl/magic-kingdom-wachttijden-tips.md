@@ -333,6 +333,9 @@ dollar minder. Bij het feest horen de Mickey's Once Upon a Christmastime Parade
 en het vuurwerk Minnie's Wonderful Christmastime Fireworks Show. Ook op die
 avonden gaat het park voor alle anderen eerder dicht.
 
+> [!PARKY]
+> Zonder feestkaartje zetten we Magic Kingdom op een dag zonder feest: tot 14 december is het dan open tot 22 of 23 uur in plaats van 18 uur, en de dag eindigt met Happily Ever After. Vuurwerk bij sluitingstijd laat ik me niet afpakken. Die dag van je reis zoeken we uit in de [reisplanner](/orlando#planner).
+
 ## Wat dicht is en wat er komt
 
 Op 6 juli 2025 was Rivers of America in Frontierland voor het laatst open.

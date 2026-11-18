@@ -117,6 +117,9 @@ Der Single-Rider-Eingang lohnt sich in drei Fällen: Du bist allein im Park, dei
 trennen, oder du willst eine einzelne Bahn unbedingt haben und die normale Wartezeit ist dir zu lang.
 Im zweiten Fall teilt ihr euch auf, fahrt einzeln und trefft euch am Ausstieg.
 
+> [!PARKY]
+> Zu dritt an einer Bahn mit zwei Plätzen je Reihe, etwa WODAN, blue fire oder Taron, trennen wir uns nur halb: Zwei bleiben in der normalen Warteschlange und sitzen nebeneinander, der Dritte nimmt den Single-Rider-Eingang. Den Einzelplatz übernehme ich gern, neben Fremden hebe ich genauso ab. Am Ausstieg sind wir wieder zu dritt.
+
 Es lohnt sich nicht in diesen Fällen:
 
 - **Du fährst mit einem Kind, das eine Begleitung braucht.** Bei Eurosat im Europa-Park nennt die Seite

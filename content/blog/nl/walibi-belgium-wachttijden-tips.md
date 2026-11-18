@@ -362,6 +362,9 @@ Vlaamse van 2 tot 8 november, en Ibilaw loopt over allebei. De kerstvakantie
 begint in beide landsdelen op 21 december 2026 en eindigt in Wallonië en
 Brussel op 1 januari, in Vlaanderen op 3 januari 2027, dus midden in Walibi Winter.
 
+> [!PARKY]
+> Voor Walibi Winter kiezen we een dag vóór 21 december: daarna hebben beide landsdelen kerstvakantie, en in Waver bepalen de schoolvakanties hoe druk het wordt. Loup-Garou rijdt nog maar tot 3 januari, en afscheid neem ik liever zonder vakantiedrukte. Op welke dagen het park open is, staat op de parkpagina.
+
 ## De volgorde voor een dag
 
 Bij opening meteen naar **Kondaa**, omdat het eerste uur in onze metingen (sinds eind december 2025) de

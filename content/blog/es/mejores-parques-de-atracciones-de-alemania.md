@@ -325,6 +325,9 @@ Brühl es donde más se distancia del resto de la semana. Allí el domingo está
 mientras que en Rust, Soltau y Bottrop es uno de los días más tranquilos. Para las familias que solo pueden ir el fin de semana, el domingo es por tanto el mejor día, salvo en Brühl. En el Plopsaland todos los días están igual de tranquilos,
 también el sábado.
 
+> [!PARKY]
+> Si solo podemos ir en sábado, vamos al Plopsaland de Haßloch, porque allí ese día no hay más gente que el resto de la semana. Desde un metro, los niños se suben con un adulto a la montaña rusa familiar 100% Wolf, y mi lista de montañas rusas crece otra vez. Para los padres, al lado está la Expedition GeForce, desde 140 centímetros.
+
 Julio y agosto son los meses más llenos en casi todos los
 parques, en el Phantasialand con mucha diferencia. Septiembre es uno de los más tranquilos en
 Brühl, Soltau y Bottrop, porque en la mayoría de los estados federados las vacaciones de verano ya

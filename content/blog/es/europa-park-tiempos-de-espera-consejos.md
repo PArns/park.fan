@@ -627,6 +627,9 @@ siguiente, ese que media Alemania se toma libre para hacer puente. En nuestros d
 estar en «bajo». Con el Corpus Christi, el mismo patrón: el festivo del 4 de
 junio estaba en «bajo»; el viernes puente, el 5, en «alto».
 
+> [!PARKY] Mejor el jueves
+> En la Ascensión y el Corpus Christi vamos el propio festivo y le dejamos el viernes puente a media Alemania. En 2026 el Corpus estuvo en «bajo» y la Ascensión en «moderado»; los viernes siguientes, en «alto» y «muy alto». Si tenemos libre todo el fin de semana largo, el domingo es nuestro segundo día: tras la Ascensión el parque ya había vuelto a «bajo».
+
 Los dos viernes puente hizo un tiempo de perros. El 15 de mayo
 de 2026 pasó una tormenta, apenas se pasó de doce grados, y aun así dio para
 «muy alto»; el 5 de junio volvió a haber tormentas. El canal Parkfan95 va

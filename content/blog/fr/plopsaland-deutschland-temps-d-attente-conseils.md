@@ -124,6 +124,9 @@ une minute et 30 secondes de trajet),
 et la seule à l'abri : elle appartient au hall Holiday Indoor, ouvert en 2018 sur
 5 000 mètres carrés.
 
+> [!PARKY]
+> En mars et en novembre, on regarde la température à Haßloch avant de partir. En dessous de huit degrés, GeForce et Sky Scream restent à l'arrêt, et les trois bosses de GeForce qui nous décollent du siège, je n'aime pas m'en passer. Des quatre montagnes russes, seules 100% Wolf, qui roule dès cinq degrés, et Tabaluga's Rollercoaster, dans le hall, tournent alors. Si la météo annonce aussi peu, on choisit plutôt un jour plus doux.
+
 ## Attractions aquatiques et tours
 
 La Free Fall Tower a été en 1997 la première tour de chute d'Allemagne, un Giant Drop d'Intamin,

@@ -180,6 +180,9 @@ En hiver, les deux parcs restent ouverts jusqu’au soir. Pendant le Winterzaube
 
 Si tu pars après le déjeuner, les deux parcs vendent un billet du soir valable à partir de 16 h. À l’Europa-Park, il est proposé du 2 novembre au 9 janvier, à 41,50 € pour un adulte, puis à 47 € à partir du 23 décembre. L’Efteling le vend du 21 décembre au 3 janvier à 33 €, et le parking passe alors de 15 € à 10 €.
 
+> [!PARKY] Ça vaut le coup
+> Si on ne part qu’après le déjeuner entre le 21 décembre et le 3 janvier, on prend le billet du soir de l’Efteling : 33 € à partir de 16 h, et jusqu’à 20 h, ça nous laisse quatre heures, sauf le 31 décembre. À l’Europa-Park, la même soirée coûte 47 € à partir du 23 décembre et se termine au plus tôt à 19 h, et même moi, je n’ai pas besoin de compter longtemps. On prend le parking avec le billet, il passe alors de 15 € à 10 €.
+
 On patine dans les deux parcs, et l’Europa-Park ajoute un marché de Noël dans le parc du château de Balthasar. La patinoire de l’Efteling est en partie couverte cet hiver. Le 1er décembre, Raveleijn y rouvre aussi, avec le manège circulaire Ravenring et un nouveau spectacle que le parc a conçu avec le Puy du Fou.
 
 Pour Halloween, un seul des deux fait l’affaire, puisque l’Efteling ne le fête pas. À l’Europa-Park, la saison d’Halloween 2026 dure jusqu’au 1er novembre. Le soir, jusqu’au 7 novembre, le parc organise aussi [Traumatica](ref:traumatica), un événement d’épouvante réservé aux 16 ans et plus, du vendredi au dimanche et certains jeudis, avec des billets à partir de 45 €. Du 2 au 27 novembre vient ensuite le HALLOWinter, avec une ouverture de 11 h à 19 h au moins.

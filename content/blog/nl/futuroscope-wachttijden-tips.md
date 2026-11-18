@@ -215,6 +215,9 @@ Wie alleen de avond wil, koopt een Soirée-ticket (toegang vanaf 17.00 uur) of e
 Nocturne-ticket (vanaf 20.00 uur). Beide bevatten de avondshow en de attracties die 's avonds
 open zijn.
 
+> [!PARKY]
+> Komen we alleen voor de avond, dan nemen we het Soirée-ticket en betalen we voor het parkeren het tarief vanaf 14.00 uur, 8 in plaats van 13 euro. La Clé des Songes zit in beide avondtickets en gaat ook bij regen door, en voor waterbeelden met pyrotechniek blijf ik graag lang op. Daarvoor doen we de attracties die 's avonds open zijn.
+
 ## Hoe lang je hier aanschuift
 
 Tot begin oktober 2026 hebben we op 228 dagen gemeten. Futuroscope heeft veel programmaonderdelen zonder

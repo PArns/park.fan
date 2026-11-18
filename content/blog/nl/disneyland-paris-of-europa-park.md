@@ -170,6 +170,9 @@ Voor Parijs geeft Disney alleen vaste prijzen voor de kassa bij de ingang. Daar 
 
 Disney stelt de prijs van Premier Access One elke dag opnieuw vast. Een rit in Frozen Ever After kan € 23 per persoon kosten, voor een gezin van vier dus € 92, in Big Thunder Mountain € 18 en in Hyperspace Mountain € 16. Premier Access One koop je pas in het park, in de app, en je krijgt er een tijdslot bij. Zonder smartphone kan het in City Hall in het Disneyland Park of bij Studio Services in Disney Adventure World. Ultimate kun je ook vooraf kopen en heeft geen tijdslot; een vaste prijs geeft Disney daarvoor niet. Elke Premier Access hoort bij één ticket en is niet over te dragen, dus het gezin heeft er een per persoon nodig. Alleen kinderen onder de drie hebben geen eigen exemplaar nodig als een volwassene er een heeft.
 
+> [!PARKY]
+> Frozen Ever After doen we in Disney Adventure World meteen bij opening, want daar levert een vroege start het meest op, en in de [dagplanner](/trip-planner) staat de boottocht bij ons daarom helemaal bovenaan. Premier Access kan een gezin van vier daar € 92 kosten, en dan bevriest zelfs mijn glimlach. Wie later op de dag de groep even wil loslaten, neemt single rider.
+
 Voor eigen eten heeft Parijs een picknickplek tussen het parkeerterrein en de ingang. Maaltijden waarvoor je een koelbox, een tafel of grote bakken nodig hebt, mogen de parken niet in. Het Europa-Park heeft picknickplekken in het Schlosspark Balthasar, in het Duitse themagebied en naast Wodan.
 
 Met overnachting biedt het Europa-Park in het zomer- en halloweenseizoen het arrangement “Alles erleben” aan, vanaf € 192 per persoon in een vijfpersoonskamer, met een dag in het park, een dag in Rulantica en ontbijt.

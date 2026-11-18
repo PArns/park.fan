@@ -216,6 +216,9 @@ vacanze scolastiche.
 Chi vuole solo la sera compra un biglietto Soirée (ingresso dalle 17) o un biglietto Nocturne
 (dalle 20). Entrambi comprendono lo spettacolo serale e le attrazioni aperte di sera.
 
+> [!PARKY]
+> Se veniamo solo per la sera, prendiamo il biglietto Soirée e paghiamo il parcheggio con la tariffa dalle 14, 8 euro invece di 13. La Clé des Songes è compresa in entrambi i biglietti serali e si tiene anche con la pioggia, e per immagini d'acqua con la pirotecnica resto sveglio volentieri fino a tardi. Prima facciamo le attrazioni aperte di sera.
+
 ## Quanto si aspetta qui
 
 Fino a inizio ottobre 2026 abbiamo misurato in 228 giorni. Al Futuroscope molte proposte non hanno coda:

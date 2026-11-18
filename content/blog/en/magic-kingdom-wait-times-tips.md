@@ -328,6 +328,9 @@ pay $10 less. The party has its own parade, Mickey's Once Upon a Christmastime
 Parade, and its own fireworks, Minnie's Wonderful Christmastime Fireworks Show.
 On these nights, too, the park closes early for everyone else.
 
+> [!PARKY]
+> Without a party ticket, we put Magic Kingdom on a day with no party: until 14 December it's then open until 22:00 or 23:00 instead of 18:00, and the day ends with Happily Ever After. I'm not giving up fireworks at closing time. We pick that day of your trip in the [trip planner](/orlando#planner).
+
 ## What is closed, and what is coming
 
 The Rivers of America section of Frontierland opened for the last time on 6

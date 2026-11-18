@@ -599,6 +599,9 @@ rated “moderate” and the Friday after it “very high”. By Sunday the park
 to “low”. Corpus Christi follows the same pattern: the holiday on 4 June was rated
 “low”, the Friday after it, the 5th, “high”.
 
+> [!PARKY] Thursday it is
+> On Ascension Day and Corpus Christi we go on the holiday itself and leave the Friday to the half of Germany that takes it off. In 2026 Corpus Christi was rated “low” and Ascension Day “moderate”, the Fridays after them “high” and “very high”. If we’ve got the whole long weekend, Sunday is our second day: after Ascension the park was already back to “low”.
+
 Both Fridays had rotten weather. On 15 May 2026 a thunderstorm came
 through, it barely got above twelve degrees, and it still came to “very high”;
 on 5 June there were thunderstorms again. The Parkfan95 channel drives out on

@@ -177,6 +177,9 @@ Bij Pirate Falls, Hydra's Challenge, The Dragon en Laser Raiders is de wachtrij 
 
 Een route voor kinderen vanaf zeven: eerst The Dragon en Hydra's Challenge, beide liefst voor half twaalf. Dan de Laser Raiders, uiterlijk tegen half twaalf. Bij Pirate Falls blijft de wachtrij het langst kort, die attractie kun je tot ongeveer 13 uur uitstellen. In oktober is dat voor natte kleren ook het warmste moment. Daarna volgen Flight of the Sky Lion, Coastguard HQ en de overige attracties.
 
+> [!PARKY]
+> Bij LEGOLAND at Christmas zijn Pirate Falls en Hydra's Challenge in winterpauze, dus van de vier attracties waar vroeg komen loont, blijven The Dragon en de Laser Raiders over. Daar lopen we bij de opening heen, en zonder waterattracties in december blijf ik in een Britse winter lekker droog. In de [dagplanner](/trip-planner) zetten we ze allebei vooraan.
+
 ## De drie Fastrack-pakketten en hun attracties
 
 **Fastrack** heet het betaalde aanbod dat bij veel attracties een eigen ingang met een kortere wachtrij geeft. Het park verkoopt drie pakketten: Bronze met drie ritten, Silver met zes en Gold voor de hele dag. Elk pakket geldt voor één persoon, wordt maar eens per drie minuten gescand en bevat geen toegang tot het park. Fastrack kan niet worden terugbetaald en niet worden overgedragen.
