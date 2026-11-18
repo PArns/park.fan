@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Kein Park in Deutschland verkauft mehr Tickets, und trotzdem stehst du in Rust kürzer an als im Phantasialand. Am leersten ist er sonntags und donnerstags im Mai und Juni, außerhalb der Schulferien.
+  Kein Park in Deutschland verkauft mehr Tickets, trotzdem stehst du in Rust kürzer an als im Phantasialand. Am leersten ist der Europa-Park sonntags und donnerstags im Mai und Juni ohne Ferien.
 tags:
   - europa-park
   - voltron
@@ -829,15 +829,12 @@ Wochenende, dafür noch nicht mit allen Attraktionen.
 
 Zum Start der Sommersaison am **20. März 2027** steigen die Preise. Der Tag kostet
 online dann **70 bis 79,50 Euro** für Erwachsene und **59 bis 68 Euro** für
-Kinder und Senioren, zwei Tage 132,50 bis 150 beziehungsweise 109,50 bis 124,50
-Euro. Diese Preise gelten bis zum 9. Januar 2028, Halloween und Winter
+Kinder und Senioren. Zwei Tage kosten 132,50 bis 150 beziehungsweise 109,50 bis 124,50 Euro. Diese Preise gelten bis zum 9. Januar 2028, Halloween und Winter
 eingeschlossen. Der Bestpreis für Übernachtungsgäste steigt auf 70 Euro für
 einen Tag, 132,50 für zwei und 167 für drei. Tickets für die Saison 2027
-verkauft der Park seit dem 10. November 2026; den Bericht zur
-[Preiserhöhung](/news/europa-park-preise-2027) gibt es mit einer Beispielrechnung
-für eine Familie.
+verkauft der Park seit dem 10. November 2026. Für eine Familie haben wir die [Preiserhöhung](/news/europa-park-preise-2027) durchgerechnet.
 
-Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park im November 2026 nicht, weil das Kontingent erschöpft ist, und bis auf Weiteres gibt es keine neuen Karten. Du kannst ihn also gerade nur bewundern. Es gibt ihn in Silber ab 275 Euro, das nur an vorab festgelegten Tagen gilt, und in Gold ab 430 Euro für alle Tage und mit zwei Tagen Rulantica. Für die meisten Familien lohnen sich zwei Tage am Stück ohnehin mehr.
+Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park bis auf Weiteres nicht, das Kontingent ist erschöpft. Du kannst ihn also gerade nur bewundern. Es gibt ihn in Silber, das nur an vorab festgelegten Tagen gilt, und in Gold für alle Tage und mit zwei Tagen Rulantica. Für die meisten Familien lohnen sich zwei Tage am Stück ohnehin mehr.
 
 **Anreise.** Der Park liegt direkt an der **A5**, Ausfahrt **57b Rust**, und ist
 ab dort ausgeschildert. Auf der Straße sind es von Freiburg rund 40 Kilometer,
@@ -902,7 +899,7 @@ Alpenexpress Coastiality für 4 Euro.
 
 Bis zum 9. Januar 2027 online zwischen **67 und 76 Euro** für Erwachsene und
 zwischen 56,50 und 65 Euro für Kinder von 4 bis 11 und Senioren, je nach Datum.
-Ab dem 20. März 2027 sind es **70 bis 79,50 Euro** und 59 bis 68 Euro. Kinder
+Ab dem 20. März 2027 zahlen Erwachsene **70 bis 79,50 Euro**, Kinder und Senioren 59 bis 68 Euro. Kinder
 unter 4 zahlen nichts. An der Tageskasse kommen 10 Euro pro Ticket dazu. Parken
 kostet 10 Euro, ab dem 20. März 2027 12 Euro.
 
@@ -937,7 +934,7 @@ läuft im Park schon HALLOWinter, und der macht selbst erst um neunzehn Uhr zu.
 Die wichtigsten zehn bis zwölf Attraktionen an einem normalen Tag: ja. Den ganzen
 Park mit 96 Attraktionen, Shows und 62 Gastronomien: nein. Viel spart man mit
 zwei Tagen nicht, das Zwei-Tages-Ticket kostet für Erwachsene 127 bis 143,50
-Euro, der zweite Tag also rund 60 bis 67,50 Euro.
+Euro, der zweite Tag also rund 60 bis 67,50 Euro. Ab dem 20. März 2027 kosten zwei Tage für Erwachsene 132,50 bis 150 Euro.
 
 ### Lohnt sich der Europa-Park im Winter?
 
