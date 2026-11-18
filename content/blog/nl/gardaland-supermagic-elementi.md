@@ -59,7 +59,7 @@ Kinderen tot en met negen jaar, 65-plussers en mensen met een beperking krijgen 
 Magic Winter is een apart evenement. Het loopt van 5 december 2026 tot 6 januari 2027. Online kost een combiticket voor Magic Winter en Supermagic vanaf 48 euro. Daarmee kom je op één dag tussen 5 en 8 december het park en LEGO Miniland in en zie je dezelfde avond de show. SEA LIFE Aquarium bezoek je op die dag of de dag erna, en parkeren zit erbij. Voor de voorstelling van vrijdag 4 december bestaat het combiticket dus niet. Een dagticket met datum voor alleen Magic Winter kost vanaf 29 euro.
 
 > [!PARKY] Combiticket dus
-> Willen we overdag naar Magic Winter en 's avonds naar de show, dan nemen we het combiticket vanaf 48 euro voor een avond tussen 5 en 8 december: los kosten dagticket en showticket samen vanaf 53 euro, en bij het combiticket zit parkeren er al bij. Dat een goochelaar mij dat voordeel weer uit de zak tovert, geloof ik pas als ik het zie. SEA LIFE Aquarium bewaren we voor de dag erna, ook dat dekt het combiticket.
+> Willen we overdag naar Magic Winter en 's avonds naar de show, dan nemen we het combiticket vanaf 48 euro: los kosten dagticket en showticket samen vanaf 53 euro, en bij het combiticket zit parkeren er al bij. Dat een goochelaar mij dat voordeel weer uit de zak tovert, geloof ik pas als ik het zie. SEA LIFE Aquarium bewaren we voor de dag erna, ook dat dekt het combiticket.
 
 ## Diner in Aladino
 

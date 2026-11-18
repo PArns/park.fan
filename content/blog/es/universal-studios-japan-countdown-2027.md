@@ -51,7 +51,7 @@ Además del Party Pass, el parque ofrece sitios en zonas reservadas delante de l
 Un Studio Pass del 31 de diciembre solo vale hasta las 17:00, y lo mismo pasa con los pases anuales. De 17:00 a 19:00 el parque cierra para todo el mundo. Con una entrada normal del 1 de enero puedes entrar desde las 2:00 de la madrugada, cuando en España más de una fiesta de Nochevieja apenas se está animando.
 
 > [!PARKY]
-> Sin Party Pass, en el [planificador de viajes](/japan#planner) no ponemos USJ el 31 de diciembre: ese día el Studio Pass solo vale hasta las 17:00, y de los fuegos artificiales de Año Nuevo no veríamos nada. Mejor cogemos un día entre el 25 de noviembre y el 11 de enero y nos quedamos a los dos espectáculos nocturnos del Gramercy Park, donde la nieve cae con más fiabilidad que en cualquier previsión del tiempo. Un sitio en la zona reservada cuesta allí desde 1.700 yenes.
+> Sin Party Pass, en el [planificador de viajes](/japan#planner) no ponemos USJ el 31 de diciembre: ese día el Studio Pass caduca mucho antes de la cuenta atrás, y de los fuegos artificiales de Año Nuevo no veríamos nada. Mejor cogemos un día entre el 25 de noviembre y el 11 de enero y nos quedamos a los dos espectáculos nocturnos del Gramercy Park, donde la nieve cae con más fiabilidad que en cualquier previsión del tiempo. Un sitio en la zona reservada cuesta allí desde 1.700 yenes.
 
 ## El programa de la noche
 

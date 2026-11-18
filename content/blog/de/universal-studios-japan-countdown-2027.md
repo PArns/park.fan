@@ -51,7 +51,7 @@ Zum Party Pass bietet der Park Plätze in reservierten Bereichen vor den Shows a
 Ein Studio Pass für den 31. Dezember gilt nur bis 17 Uhr, Jahreskarten eingeschlossen. Von 17 bis 19 Uhr ist der Park für alle geschlossen. Mit einem normalen Ticket für den 1. Januar kommst du ab 2 Uhr nachts hinein, zu einer Uhrzeit, zu der man auf einer Silvesterparty eher die Jacke für den Heimweg sucht.
 
 > [!PARKY]
-> Ohne Party Pass legen wir USJ im [Reiseplaner](/japan#planner) nicht auf den 31. Dezember: Der Studio Pass gilt an dem Tag nur bis 17 Uhr, und vom Feuerwerk zum Jahreswechsel sehen wir nichts. Wir nehmen lieber einen Tag zwischen dem 25. November und dem 11. Januar und bleiben für die beiden Abendshows im Gramercy Park, bei denen der Schnee zuverlässiger fällt als in jedem Wetterbericht. Ein Platz im reservierten Bereich kostet dort ab 1.700 Yen.
+> Ohne Party Pass legen wir USJ im [Reiseplaner](/japan#planner) nicht auf den 31. Dezember: Der Studio Pass endet an dem Tag lange vor dem Countdown, und vom Feuerwerk zum Jahreswechsel sehen wir nichts. Wir nehmen lieber einen Tag zwischen dem 25. November und dem 11. Januar und bleiben für die beiden Abendshows im Gramercy Park, bei denen der Schnee zuverlässiger fällt als in jedem Wetterbericht. Ein Platz im reservierten Bereich kostet dort ab 1.700 Yen.
 
 ## Das Programm in der Nacht
 

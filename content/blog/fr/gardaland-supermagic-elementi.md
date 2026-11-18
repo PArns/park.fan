@@ -59,7 +59,7 @@ Les enfants jusqu’à neuf ans, les plus de 65 ans et les personnes en situatio
 Magic Winter, du 5 décembre 2026 au 6 janvier 2027, est un événement à part. Le billet combiné Magic Winter et Supermagic coûte à partir de 48 € en ligne. Il comprend une entrée au parc et au LEGO Miniland un jour entre le 5 et le 8 décembre, et le spectacle le soir même. Le SEA LIFE Aquarium est inclus le jour même ou le lendemain, tout comme le parking. Pour la représentation du vendredi 4 décembre, il n’y a donc pas de billet combiné. Un billet daté pour Magic Winter seul coûte à partir de 29 €.
 
 > [!PARKY] Le billet combiné
-> Si on veut Magic Winter en journée et le spectacle le soir, on prend le billet combiné à partir de 48 € pour un soir entre le 5 et le 8 décembre : séparément, le billet du jour et celui du spectacle coûtent au moins 53 € ensemble, et le combiné inclut déjà le parking. Qu’un magicien me fasse disparaître l’économie de la poche, je le croirai quand je le verrai. Le SEA LIFE Aquarium, on le garde pour le lendemain, le combiné le couvre aussi.
+> Si on veut Magic Winter en journée et le spectacle le soir, on prend le billet combiné à partir de 48 € : séparément, le billet du jour et celui du spectacle coûtent au moins 53 € ensemble, et le combiné inclut déjà le parking. Qu’un magicien me fasse disparaître l’économie de la poche, je le croirai quand je le verrai. Le SEA LIFE Aquarium, on le garde pour le lendemain, le combiné le couvre aussi.
 
 ## Dîner à l’Aladino
 

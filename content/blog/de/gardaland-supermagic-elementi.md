@@ -59,7 +59,7 @@ Ermäßigt zahlen Kinder bis neun Jahre, Gäste über 65 und Menschen mit Behind
 Magic Winter läuft vom 5. Dezember 2026 bis 6. Januar 2027 und ist eine eigene Veranstaltung. Das Kombiticket aus Magic Winter und Supermagic kostet online ab 48 Euro. Es gilt an einem Tag vom 5. bis 8. Dezember für den Park, das LEGO Miniland und die Show am selben Abend. Das SEA LIFE Aquarium kann man am selben oder am nächsten Tag besuchen, der Parkplatz ist inklusive. Für die Vorstellung am Freitag, 4. Dezember, gibt es das Kombiticket also nicht. Ein datiertes Tagesticket für Magic Winter allein kostet ab 29 Euro.
 
 > [!PARKY] Kombiticket nehmen
-> Wollen wir tagsüber in den Magic Winter und abends zur Show, nehmen wir das Kombiticket ab 48 Euro für einen Abend vom 5. bis 8. Dezember: Einzeln kosten Tagesticket und Showticket zusammen ab 53 Euro, und im Kombiticket ist der Parkplatz schon drin. Dass ein Zauberer mir die Ersparnis wieder aus der Tasche zieht, glaube ich erst, wenn ich es sehe. Das SEA LIFE Aquarium heben wir uns für den nächsten Tag auf, auch das deckt das Kombiticket.
+> Wollen wir tagsüber in den Magic Winter und abends zur Show, nehmen wir das Kombiticket ab 48 Euro: Einzeln kosten Tagesticket und Showticket zusammen ab 53 Euro, und im Kombiticket ist der Parkplatz schon drin. Dass ein Zauberer mir die Ersparnis wieder aus der Tasche zieht, glaube ich erst, wenn ich es sehe. Das SEA LIFE Aquarium heben wir uns für den nächsten Tag auf, auch das deckt das Kombiticket.
 
 ## Abendessen im Aladino
 

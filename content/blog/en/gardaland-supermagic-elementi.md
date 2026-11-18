@@ -59,7 +59,7 @@ Children up to nine, guests over 65 and people with disabilities pay a reduced p
 Magic Winter, a separate event, runs from 5 December 2026 to 6 January 2027. A combined Magic Winter and Supermagic ticket costs from €48 online. It covers the park, LEGO Miniland and that evening's show on one day between 5 and 8 December. The SEA LIFE Aquarium is included on the same day or the next, and so is parking. That means there's no combined ticket for the Friday performance on 4 December. A dated day ticket for Magic Winter alone costs from €29.
 
 > [!PARKY] Get the combo
-> If we want Magic Winter by day and the show in the evening, we take the combined ticket from €48 for an evening between 5 and 8 December: bought separately, the day ticket and the show ticket come to at least €53, and the combo already includes parking. I'll believe a magician can pull those savings back out of my pocket when I see it. We save the SEA LIFE Aquarium for the next day, which the combo covers too.
+> If we want Magic Winter by day and the show in the evening, we take the combined ticket from €48: bought separately, the day ticket and the show ticket come to at least €53, and the combo already includes parking. I'll believe a magician can pull those savings back out of my pocket when I see it. We save the SEA LIFE Aquarium for the next day, which the combo covers too.
 
 ## Dinner at Aladino
 
