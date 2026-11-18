@@ -136,7 +136,7 @@ On the 25 evenings of Mickey's Very Merry Christmas Party, anyone without a part
 The hours a party night takes from you are hours you can't spend on rides, and that's why a day in the calendar and the trip planner counts by the hours you get as a day guest. A party day weighs up to one and a half times as much as a full day with the same peak wait. On most party nights in November and December 2026, the ring goes to Animal Kingdom, even when Magic Kingdom has a slightly shorter peak wait that day. Animal Kingdom closes at 6 pm almost every day, so for that park it's a normal day.
 
 > [!PARKY]
-> If a party night falls on your trip, that's our Animal Kingdom day. Being shown out of Magic Kingdom at 6 pm while the party guests stroll in would sting too much. Magic Kingdom gets a day without a party, when it's usually open until 9 pm or later, and we pick that one in the [trip planner](/orlando#planner).
+> If a party night falls on your trip, that's our Animal Kingdom day. Being shown out of Magic Kingdom at 6 pm while the party guests get to stay would sting too much. Magic Kingdom gets a day without a party, when it's usually open until 9 pm or later, and we pick that one in the [trip planner](/orlando#planner).
 
 Disney After Hours also costs extra, but it starts after the normal close, on selected evenings from January to August 2027 at Magic Kingdom, EPCOT and Hollywood Studios. Since no day guest has to leave early, an After Hours evening doesn't count against the park in the calendar.
 

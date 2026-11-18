@@ -370,7 +370,7 @@ Minion Blast y The Flying Dinosaur. En los paquetes con Hollywood Dream o con la
 atracción del dinosaurio se aplica una altura mínima de 132 centímetros.
 
 > [!PARKY] Con franja horaria
-> Si compramos un Express Pass, que sea uno con franja para Super Nintendo World: «Race & JAWS» y «Mine Cart & JAWS» empiezan en los mismos 10.800 yenes que «Backdrop & The Flying Dinosaur», pero la franja va garantizada. Así no hay que pelearse con el cupo en la app a las ocho de la mañana. Con un niño de menos de 132 centímetros es la opción de todas formas, porque el paquete con Backdrop y el dinosaurio queda descartado.
+> Si compramos un Express Pass, que sea uno con franja para Super Nintendo World: «Race & JAWS» y «Mine Cart & JAWS» empiezan en los mismos 10.800 yenes que «Backdrop & The Flying Dinosaur», pero la franja va garantizada. Así no hay que pelearse con el cupo en la app a las ocho de la mañana. Con un niño de menos de 132 centímetros, el paquete con Backdrop y el dinosaurio queda descartado de todas formas.
 
 Si una atracción del pase no funciona, según el parque se usan las demás del
 pase, salvo las de hora fija. En la entrada consta, atracción por atracción, si

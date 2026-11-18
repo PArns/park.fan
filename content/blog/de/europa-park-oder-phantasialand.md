@@ -180,7 +180,7 @@ Von den überdachten Attraktionen im [Europa-Park](ref:europa-park?bare) sind ze
 Im Winterzauber gibt es im Europa-Park einen Weihnachtsmarkt im Historischen Schlosspark Balthasar, eine Eislaufbahn, das Riesenrad Bellevue und eine Kinderskischule mit Snow-Tubes. Für den Winter kündigt der Park bis zu 23 Stunden Showprogramm am Tag an, darunter einen Weihnachtszirkus. Von November an verkauft er ein Abendticket für den Eintritt ab 16 Uhr. Es kostet für Erwachsene bis zum 22. Dezember 41,50 € und danach 47 €, für Kinder 35 bis 40 €, und an der Kasse kommt kein Aufschlag dazu. Am 10. Januar öffnet der Park nur noch für Hotelgäste und geladene Gäste.
 
 > [!PARKY] Abends lohnt sich
-> Im Winterzauber nehmen wir das Abendticket ab 16 Uhr, bis zum 22. Dezember für 41,50 €, und an der Kasse kostet es nicht mehr. Der Park hat im Winter bis mindestens 19 Uhr offen, das sind drei Stunden für Weihnachtsmarkt, Riesenrad Bellevue und Eislaufbahn, auf der ich eher rolle als gleite. Ein ganzer Tag kostet Erwachsene online 67 bis 76 €, an der Kasse 10 € mehr.
+> Im Winterzauber nehmen wir das Abendticket ab 16 Uhr, bis zum 22. Dezember für 41,50 € pro Erwachsenem, und an der Kasse kostet es nicht mehr. Der Park hat im Winter bis mindestens 19 Uhr offen, das sind drei Stunden für Weihnachtsmarkt, Riesenrad Bellevue und Eislaufbahn, auf der ich eher rolle als gleite. Ein ganzer Tag kostet Erwachsene online 67 bis 76 €, an der Kasse 10 € mehr.
 
 Das Fjord-Rafting und die Tiroler Wildwasserbahn fahren im Europa-Park nur bis zum Ende der Halloweensaison am 1. November, Atlantica SuperSplash bis zum Ende des HALLOWinter am 27. November. Poseidon steht in allen vier Saisons im Plan.
 

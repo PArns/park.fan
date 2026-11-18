@@ -356,7 +356,7 @@ Blast e The Flying Dinosaur. Per i pacchetti con Hollywood Dream o con la
 montagna russa del dinosauro vale un’altezza minima di 132 centimetri.
 
 > [!PARKY] Con fascia oraria
-> Se prendiamo un Express Pass, che sia uno con la fascia oraria per Super Nintendo World: «Race & JAWS» e «Mine Cart & JAWS» partono dagli stessi 10.800 yen di «Backdrop & The Flying Dinosaur», ma la fascia è garantita. Così alle otto del mattino non stiamo a contenderci il contingente nell’app. Con un bambino sotto i 132 centimetri è comunque la scelta giusta, perché il pacchetto con Backdrop e il dinosauro per lui è escluso.
+> Se prendiamo un Express Pass, che sia uno con la fascia oraria per Super Nintendo World: «Race & JAWS» e «Mine Cart & JAWS» partono dagli stessi 10.800 yen di «Backdrop & The Flying Dinosaur», ma la fascia è garantita. Così alle otto del mattino non stiamo a contenderci il contingente nell’app. Con un bambino sotto i 132 centimetri, il pacchetto con Backdrop e il dinosauro è comunque escluso.
 
 Se un’attrazione del pass è fuori servizio, per il parco si usano le altre del
 pass, tranne quelle con orario fisso. Sul biglietto sta scritto, attrazione per

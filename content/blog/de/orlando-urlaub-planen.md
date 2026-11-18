@@ -136,7 +136,7 @@ An den 25 Abenden von Mickey's Very Merry Christmas Party muss im Magic Kingdom 
 Die Stunden, die dir ein Partyabend nimmt, fehlen für Fahrten, und deshalb zählt ein Tag im Kalender und im Reiseplaner nach den Stunden, die du als Tagesgast hast. Ein Partytag wiegt dadurch bis zu anderthalbmal so schwer wie ein voller Tag mit derselben Spitzenwartezeit. An den meisten Partyabenden im November und Dezember 2026 bekommt so das Animal Kingdom den Ring, auch wenn das Magic Kingdom an diesem Tag eine etwas kürzere Spitzenwartezeit hat. Das Animal Kingdom schließt fast jeden Tag um 18 Uhr, für diesen Park ist das ein normaler Tag.
 
 > [!PARKY]
-> Fällt ein Partyabend in deine Reise, ist das bei uns ein Tag fürs Animal Kingdom. Um sechs aus dem Magic Kingdom rauszumüssen, während die Partygäste reinkommen, wäre mir zu bitter. Das Magic Kingdom bekommt einen Tag ohne Party, an dem es meist bis 21 Uhr oder länger offen hat, und den suchen wir im [Reiseplaner](/orlando#planner) aus.
+> Fällt ein Partyabend in deine Reise, ist das bei uns ein Tag fürs Animal Kingdom. Um sechs aus dem Magic Kingdom rauszumüssen, während die Partygäste bleiben dürfen, wäre mir zu bitter. Das Magic Kingdom bekommt einen Tag ohne Party, an dem es meist bis 21 Uhr oder länger offen hat, und den suchen wir im [Reiseplaner](/orlando#planner) aus.
 
 Disney After Hours kostet ebenfalls extra, beginnt aber erst nach dem normalen Schluss, von Januar bis August 2027 an ausgewählten Abenden im Magic Kingdom, in EPCOT und in den Hollywood Studios. Weil dafür kein Tagesgast früher gehen muss, zählt so ein Abend im Kalender nicht gegen den Park.
 

@@ -381,7 +381,7 @@ Flying Dinosaur. Bei Paketen mit Hollywood Dream oder der Dinosaurierbahn gilt
 eine Mindestgröße von 132 Zentimetern.
 
 > [!PARKY] Mit Zeitfenster
-> Wenn schon Express Pass, dann einer mit Zeitfenster für Super Nintendo World: „Race & JAWS“ und „Mine Cart & JAWS“ beginnen bei denselben 10.800 Yen wie „Backdrop & The Flying Dinosaur“, haben das Zeitfenster aber garantiert. Morgens um acht in der App ums Kontingent zittern, das sparen wir uns dann. Mit einem Kind unter 132 Zentimetern ist das ohnehin die Wahl, denn beim Paket mit Backdrop und dem Dinosaurier bleibt es draußen.
+> Wenn schon Express Pass, dann einer mit Zeitfenster für Super Nintendo World: „Race & JAWS“ und „Mine Cart & JAWS“ beginnen bei denselben 10.800 Yen wie „Backdrop & The Flying Dinosaur“, haben das Zeitfenster aber garantiert. Morgens um acht in der App ums Kontingent zittern, das sparen wir uns dann. Mit einem Kind unter 132 Zentimetern fällt das Paket mit Backdrop und dem Dinosaurier ohnehin weg.
 
 Fällt eine Bahn des Passes aus, nutzt man laut Park die übrigen Bahnen des Passes,
 Bahnen mit festem Zeitpunkt ausgenommen. Auf dem Ticket steht je Bahn, ob ein

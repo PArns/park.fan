@@ -356,7 +356,7 @@ Journey, Villain-Con Minion Blast and The Flying Dinosaur. Packages with
 Hollywood Dream or the dinosaur ride have a height requirement of 132 cm.
 
 > [!PARKY] Get the time slot
-> If we're buying an Express Pass, it's one with the Super Nintendo World time slot: "Race & JAWS" and "Mine Cart & JAWS" start at the same 10,800 yen as "Backdrop & The Flying Dinosaur", but the slot is guaranteed. That spares us fretting over the allotment in the app at eight in the morning. With a child under 132 cm it's the pick anyway, since the Backdrop and dinosaur package is out for them.
+> If we're buying an Express Pass, it's one with the Super Nintendo World time slot: "Race & JAWS" and "Mine Cart & JAWS" start at the same 10,800 yen as "Backdrop & The Flying Dinosaur", but the slot is guaranteed. That spares us fretting over the allotment in the app at eight in the morning. With a child under 132 cm, the Backdrop and dinosaur package is out anyway.
 
 If one of the pass's rides is out of service, the park says you use the pass's
 other rides instead, except for rides with a fixed time. The ticket lists for

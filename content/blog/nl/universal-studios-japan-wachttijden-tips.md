@@ -359,7 +359,7 @@ Minion Blast en The Flying Dinosaur. Bij pakketten met Hollywood Dream of de
 dinosaurusattractie geldt een minimumlengte van 132 centimeter.
 
 > [!PARKY] Met tijdslot
-> Als we een Express Pass kopen, dan een met tijdslot voor Super Nintendo World: “Race & JAWS” en “Mine Cart & JAWS” beginnen bij dezelfde 10.800 yen als “Backdrop & The Flying Dinosaur”, maar het tijdslot is gegarandeerd. Dan hoeven we om acht uur ’s ochtends niet in de app op het contingent te azen. Met een kind onder de 132 centimeter is het sowieso de keuze, want het pakket met Backdrop en de dinosaurus valt dan af.
+> Als we een Express Pass kopen, dan een met tijdslot voor Super Nintendo World: “Race & JAWS” en “Mine Cart & JAWS” beginnen bij dezelfde 10.800 yen als “Backdrop & The Flying Dinosaur”, maar het tijdslot is gegarandeerd. Dan hoeven we om acht uur ’s ochtends niet in de app op het contingent te azen. Met een kind onder de 132 centimeter valt het pakket met Backdrop en de dinosaurus sowieso af.
 
 Valt een attractie van de pas uit, dan gebruik je volgens het park de overige
 attracties van de pas, behalve die met een vast tijdstip. Op het ticket staat per

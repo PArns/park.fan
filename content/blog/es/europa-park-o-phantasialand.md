@@ -179,7 +179,7 @@ De las atracciones cubiertas del [Europa-Park](ref:europa-park?bare), diez son e
 Durante el Winterzauber, el Europa-Park tiene un mercado navideño en el Historischer Schlosspark Balthasar, una pista de hielo, la noria Bellevue y una escuela de esquí infantil con snow tubes. Para el invierno el parque anuncia hasta 23 horas de espectáculos al día, entre ellos un circo navideño. Desde noviembre vende una entrada de tarde para entrar a partir de las 16 h. Para adultos cuesta 41,50 € hasta el 22 de diciembre y 47 € después, para niños de 35 a 40 €, y en taquilla no lleva recargo. El 10 de enero el parque abre solo para los huéspedes de sus hoteles y para invitados.
 
 > [!PARKY] La tarde compensa
-> Durante el Winterzauber cogemos la entrada de tarde desde las 16 h, a 41,50 € hasta el 22 de diciembre y sin recargo en taquilla. En invierno el parque abre hasta las 19 h como mínimo, así que quedan tres horas para el mercado navideño, la noria Bellevue y la pista de hielo, donde yo más que patinar ruedo. Un día entero le cuesta a un adulto de 67 a 76 € online, 10 € más en taquilla.
+> Durante el Winterzauber cogemos la entrada de tarde desde las 16 h, a 41,50 € por adulto hasta el 22 de diciembre y sin recargo en taquilla. En invierno el parque abre hasta las 19 h como mínimo, así que quedan tres horas para el mercado navideño, la noria Bellevue y la pista de hielo, donde yo más que patinar ruedo. Un día entero le cuesta a un adulto de 67 a 76 € online, 10 € más en taquilla.
 
 En el Europa-Park, el Fjord-Rafting y la Tiroler Wildwasserbahn funcionan solo hasta el final de la temporada de Halloween, el 1 de noviembre, y Atlantica SuperSplash hasta el final del HALLOWinter, el 27 de noviembre. Poseidon figura en el programa de las cuatro temporadas.
 

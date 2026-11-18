@@ -137,7 +137,7 @@ Nelle 25 serate di Mickey's Very Merry Christmas Party, chi non ha il biglietto 
 Le ore che una serata di festa ti toglie mancano per le attrazioni, e per questo una giornata conta, nel calendario e nel pianificatore, secondo le ore che hai con il biglietto giornaliero. Un giorno di festa pesa perciò fino a una volta e mezza più di una giornata piena con la stessa attesa di picco. Nella maggior parte delle serate di festa di novembre e dicembre 2026 l’anello va così ad Animal Kingdom, anche quando quel giorno Magic Kingdom ha un’attesa di picco un po’ più corta. Animal Kingdom chiude quasi ogni giorno alle 18, e per quel parco è una giornata normale.
 
 > [!PARKY]
-> Se una serata di festa cade durante il viaggio, quel giorno andiamo ad Animal Kingdom. Uscire da Magic Kingdom alle 18 mentre entrano gli ospiti della festa mi farebbe troppa rabbia. Magic Kingdom avrà un giorno senza festa, in cui di solito resta aperto fino alle 21 o più tardi, e quel giorno lo scegliamo nel [pianificatore di viaggio](/orlando#planner).
+> Se una serata di festa cade durante il viaggio, quel giorno andiamo ad Animal Kingdom. Uscire da Magic Kingdom alle 18 mentre gli ospiti della festa restano mi farebbe troppa rabbia. Magic Kingdom avrà un giorno senza festa, in cui di solito resta aperto fino alle 21 o più tardi, e quel giorno lo scegliamo nel [pianificatore di viaggio](/orlando#planner).
 
 Anche Disney After Hours si paga a parte, ma comincia solo dopo la chiusura normale, in alcune serate da gennaio ad agosto 2027 a Magic Kingdom, a EPCOT e agli Hollywood Studios. Siccome nessuno con il biglietto giornaliero deve uscire prima, una serata così non conta contro il parco nel calendario.
 

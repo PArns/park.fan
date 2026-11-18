@@ -207,7 +207,7 @@ Sur sa page de billets, le parc ne donne qu’un prix de départ, au 20 octobre 
 D’après la boutique, les forfaits marqués « inclus » dans la dernière colonne comprennent un Area Timed Entry Ticket garanti pour Super Nintendo World ; pour les autres, il faut le retirer dans l’appli le jour de la visite. Le forfait « Race & Minecart Special » comprend Mario Kart, Mine Cart Madness, Forbidden Journey, Villain-Con Minion Blast et The Flying Dinosaur. Pour les forfaits qui contiennent Hollywood Dream ou l’attraction aux dinosaures, la taille minimale est de 132 centimètres.
 
 > [!PARKY] Avec créneau
-> Si on prend un Express Pass, ce sera un avec le créneau pour Super Nintendo World : « Race & JAWS » et « Mine Cart & JAWS » partent des mêmes 10 800 yens que « Backdrop & The Flying Dinosaur », mais le créneau y est garanti. Pas besoin alors de guetter le contingent dans l’appli à huit heures du matin. Avec un enfant de moins de 132 centimètres, c’est de toute façon le bon choix, puisque le forfait avec Backdrop et le dinosaure lui est fermé.
+> Si on prend un Express Pass, ce sera un avec le créneau pour Super Nintendo World : « Race & JAWS » et « Mine Cart & JAWS » partent des mêmes 10 800 yens que « Backdrop & The Flying Dinosaur », mais le créneau y est garanti. Pas besoin alors de guetter le contingent dans l’appli à huit heures du matin. Avec un enfant de moins de 132 centimètres, le forfait avec Backdrop et le dinosaure est de toute façon exclu.
 
 Quand une attraction du pass est à l’arrêt, le parc indique qu’on utilise les autres attractions du pass, à l’exception de celles à horaire fixe. Le billet précise, attraction par attraction, si un horaire s’applique. Il faut présenter l’écran entier avec le QR code, un billet modifié n’est pas accepté.
 

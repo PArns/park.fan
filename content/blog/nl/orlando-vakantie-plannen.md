@@ -136,7 +136,7 @@ Op de 25 avonden van Mickey's Very Merry Christmas Party moet iedereen zonder fe
 De uren die een feestavond je afneemt, mis je voor attracties, en daarom telt een dag in de kalender en de reisplanner naar de uren die je als dagbezoeker hebt. Een feestdag weegt daardoor tot anderhalf keer zo zwaar als een volle dag met dezelfde piekwachttijd. Op de meeste feestavonden in november en december 2026 krijgt zo Animal Kingdom de ring, ook als Magic Kingdom die dag een iets kortere piekwachttijd heeft. Animal Kingdom sluit bijna elke dag om 18 uur, dus voor dat park is het een gewone dag.
 
 > [!PARKY]
-> Valt er een feestavond in je reis, dan is dat bij ons een Animal Kingdom-dag. Om 18 uur Magic Kingdom uit moeten terwijl de feestgasten naar binnen lopen, vind ik veel te zuur. Magic Kingdom krijgt een dag zonder feest, waarop het meestal tot 21 uur of later open is, en die zoeken we uit in de [reisplanner](/orlando#planner).
+> Valt er een feestavond in je reis, dan is dat bij ons een Animal Kingdom-dag. Om 18 uur Magic Kingdom uit moeten terwijl de feestgasten mogen blijven, vind ik veel te zuur. Magic Kingdom krijgt een dag zonder feest, waarop het meestal tot 21 uur of later open is, en die zoeken we uit in de [reisplanner](/orlando#planner).
 
 Disney After Hours kost ook extra, maar begint pas na de gewone sluiting, van januari tot augustus 2027 op geselecteerde avonden in Magic Kingdom, EPCOT en Hollywood Studios. Omdat geen dagbezoeker daarvoor eerder weg hoeft, telt zo’n avond in de kalender niet tegen het park.
 
