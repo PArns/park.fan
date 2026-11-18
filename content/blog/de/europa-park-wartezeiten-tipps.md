@@ -822,9 +822,7 @@ bis 11 und Senioren ab 60 **56,50 bis 65 Euro**, Kinder unter 4 sind frei. Zwei
 Tage kosten 127 bis 143,50 beziehungsweise 105 bis 119 Euro. An der Kasse kommen
 **10 Euro pro Ticket** obendrauf, als Gebühr fürs Nicht-vorher-Buchen. Wer im
 Resort übernachtet, bekommt den Bestpreis unabhängig vom Datum: 67 Euro für einen
-Tag, 127 für zwei, 160 für drei. Am günstigsten wird es 2027 in den
-Pre-Opening Weeks vom 7. bis 19. März: 59,50 Euro unter der Woche, 70 Euro am
-Wochenende, dafür noch nicht mit allen Attraktionen.
+Tag, 127 für zwei, 160 für drei. In den Pre-Opening Weeks vom 7. bis 19. März 2027 kostet der Tag 59,50 Euro unter der Woche und 70 Euro am Wochenende.
 
 Zum Start der Sommersaison am **20. März 2027** wird jeder Tag 2,50 bis 3,50 Euro teurer. Erwachsene zahlen online dann **70 bis 79,50 Euro**, Kinder und Senioren **59 bis 68 Euro**, für zwei Tage sind es 132,50 bis 150 und 109,50 bis 124,50 Euro. Das gilt bis zum 9. Januar 2028, Halloween und Winter eingeschlossen. Der Bestpreis für Übernachtungsgäste zieht mit und liegt dann bei 70 Euro für einen Tag und 167 für drei. Verkauft werden die Tickets für 2027 seit dem 10. November 2026. Eine Familie mit zwei Erwachsenen und zwei Kindern zahlt online mit Parken 13 bis 15 Euro mehr am Tag als 2026, die ganze Rechnung steht in der [Meldung zur Preiserhöhung](/news/europa-park-preise-2027).
 
@@ -833,7 +831,7 @@ Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park bis auf Weiteres n
 **Anreise.** Der Park liegt direkt an der **A5**, Ausfahrt **57b Rust**. Auf der Straße sind es von Freiburg rund 40 Kilometer,
 von Straßburg rund 55, von Basel und von Karlsruhe jeweils rund 100, die
 Baustellen auf der A5 nicht eingerechnet. Mit der Bahn fährst du bis
-Ringsheim und von dort mit dem Shuttlebus. **Parken kostet 10 Euro** pro Tag, in der Saison 2027 dann 12 Euro. Rulantica hat einen eigenen Parkplatz.
+Ringsheim und von dort mit dem Shuttlebus. **Parken kostet 10 Euro** pro Tag, ab dem 20. März 2027 dann 12 Euro. Rulantica hat einen eigenen Parkplatz.
 
 **Essen.** Unsere Datenbank zählt **62 Gastronomien** im Park, und
 weil jeder Themenbereich ein Land ist, kocht auch jeder etwas anderes. Zwei Adressen
