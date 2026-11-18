@@ -815,22 +815,16 @@ the best price whatever the date: €67 for one day, €127 for two, €160 for 
 The cheapest days come in 2027, in the Pre-Opening Weeks from 7 to 19 March: €59.50
 on weekdays, €70 at weekends, but not with every ride open yet.
 
-Prices go up when the summer season opens on **20 March 2027**. Online a day
-then costs **€70 to €79.50** for adults and **€59 to €68** for children and
-seniors. Two days cost €132.50 to €150 and €109.50 to €124.50 respectively.
-These prices hold until 9 January 2028, Halloween and winter included. The best
-price for resort guests rises to €70 for one day, €132.50 for two and €167 for
-three. The park has been selling tickets for the 2027 season since 10 November 2026. We've worked out what the [price rise](/news/europa-park-prices-2027)
-means for a family.
+When the summer season opens on **20 March 2027**, every day gets €2.50 to €3.50 dearer. Online, adults then pay **€70 to €79.50** and children and seniors **€59 to €68**, while two days come to €132.50 to €150 and €109.50 to €124.50. That holds until 9 January 2028, Halloween and winter included. The best price for resort guests moves up with it, to €70 for one day and €167 for three. Tickets for 2027 have been on sale since 10 November 2026. We've worked out what the [price rise](/news/europa-park-prices-2027) means for a family.
 
-The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. So for now you can only admire it. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica. For most families two days back to back are worth more anyway.
+The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica. Without an annual pass, the two-day ticket is what's left for a longer visit.
 
 **Getting there.** The park sits directly on the **A5**, exit **57b Rust**, and
 is signposted from there. By road it’s around 40 kilometres from Freiburg,
 around 55 from Strasbourg and around 100 each from Basel and Karlsruhe,
 roadworks on the A5 not included. By train
 you go to Ringsheim and take the shuttle bus from there. **Parking costs €10** a
-day, €12 from 20 March 2027. Rulantica has its own car park.
+day, then €12 in the 2027 season. Rulantica has its own car park.
 
 **Food.** Our database counts **62 places to eat** in the park, and because
 every themed area is a country, every one of them cooks something different.
@@ -916,11 +910,7 @@ in HALLOWinter, which itself doesn’t close until seven.
 
 ### Can you do Europa-Park in one day?
 
-The ten or twelve most important attractions on a normal day: yes. The whole
-park with its 96 attractions, shows and 62 places to eat: no. Two days don’t
-save much: the two-day ticket costs adults €127 to €143.50, so the second day
-comes to around €60 to €67.50. From 20 March 2027 two days cost adults €132.50
-to €150.
+On a normal day you'll manage ten to twelve of the big rides, but nobody gets through all 96 attractions plus the shows and 62 places to eat. Two days don’t save much: the two-day ticket costs adults €127 to €143.50, or €132.50 to €150 from 20 March 2027, so the second day comes to around €60 to €70.
 
 ### Is Europa-Park worth it in winter?
 

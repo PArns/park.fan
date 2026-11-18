@@ -850,24 +850,16 @@ resort consigue el mejor precio con independencia de la fecha: 67 € por un dí
 del 7 al 19 de marzo: 59,50 € entre semana y 70 € el fin de semana, aunque
 todavía no con todas las atracciones.
 
-Con el inicio de la temporada de verano, el **20 de marzo de 2027**, suben los
-precios. El día online costará entonces **de 70 a 79,50 €** para adultos y
-**de 59 a 68 €** para niños y mayores. Dos días costarán de 132,50 a 150 y de
-109,50 a 124,50 € respectivamente. Estos precios valen hasta el 9 de enero de 2028,
-Halloween e invierno incluidos. El mejor precio para quien se aloja en el resort
-sube a 70 € por un día, 132,50 por dos y 167 por tres. El parque vende las
-entradas de la temporada 2027 desde el 10 de noviembre de 2026. Hemos calculado
-lo que supone la [subida de precios](/news/europa-park-precios-2027) para una
-familia.
+Con el inicio de la temporada de verano, el **20 de marzo de 2027**, cada día sube entre 2,50 y 3,50 €. Online, los adultos pagarán entonces **de 70 a 79,50 €**, los niños y mayores **de 59 a 68 €**, y por dos días serán de 132,50 a 150 y de 109,50 a 124,50 €. Esto vale hasta el 9 de enero de 2028, Halloween e invierno incluidos. El mejor precio para quien se aloja en el resort sube a la par: 70 € por un día y 167 por tres. Las entradas de 2027 están a la venta desde el 10 de noviembre de 2026. Hemos calculado lo que supone la [subida de precios](/news/europa-park-precios-2027) para una familia.
 
-El **ResortPass**, el abono anual, no está a la venta hasta nuevo aviso, el cupo se ha agotado. Así que de momento solo se puede admirar. Existe en plata, que solo vale en fechas fijadas de antemano, y en oro, que vale todos los días y con dos días de Rulantica. Para la mayoría de las familias salen más a cuenta, de todos modos, dos días seguidos.
+El **ResortPass**, el abono anual, no está a la venta hasta nuevo aviso, el cupo se ha agotado. Existe en plata, que solo vale en fechas fijadas de antemano, y en oro, que vale todos los días y con dos días de Rulantica. Sin abono anual, para una visita más larga queda la entrada de dos días.
 
 **Cómo llegar.** El parque está justo en la **A5**, salida **57b Rust**, y desde
 ahí está señalizado. Por carretera, desde Friburgo son unos 40 kilómetros;
 desde Estrasburgo, unos 55; desde Basilea y desde Karlsruhe, unos 100 en cada
 caso, sin contar las obras de la A5. En tren se va hasta
 Ringsheim y desde allí en autobús lanzadera. **Aparcar cuesta 10 €** al día, y
-12 € desde el 20 de marzo de 2027. Rulantica tiene su propio aparcamiento.
+12 € en la temporada 2027. Rulantica tiene su propio aparcamiento.
 
 **Comer.** Nuestra base de datos cuenta **62 locales de restauración** en el
 parque, y como cada zona temática es un país, cada uno cocina algo distinto. Dos
@@ -962,11 +954,7 @@ HALLOWinter, y ese no cierra hasta las diecinueve.
 
 ### ¿Se puede ver el Europa-Park en un día?
 
-Las diez o doce atracciones más importantes en un día normal: sí. El parque
-entero, con 96 atracciones, espectáculos y 62 locales de restauración: no. Con
-dos días no se ahorra mucho: la entrada de dos días le cuesta a un adulto de 127
-a 143,50 €, así que el segundo día sale por unos 60 a 67,50 €. Desde el 20 de marzo de
-2027, dos días le cuestan a un adulto de 132,50 a 150 €.
+En un día normal te da tiempo a diez o doce de las grandes atracciones, pero las 96 atracciones con los espectáculos y los 62 locales de restauración no los termina nadie. Con dos días no se ahorra mucho: la entrada de dos días le cuesta a un adulto de 127 a 143,50 €, y desde el 20 de marzo de 2027 de 132,50 a 150 €, así que el segundo día sale por unos 60 a 70 €.
 
 ### ¿Merece la pena el Europa-Park en invierno?
 
