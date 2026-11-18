@@ -52,7 +52,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> Die 3 Mausketiere sont épuisés dans la boutique depuis un moment déjà : comme le 15 novembre, leur Quick Pass était affiché épuisé aujourd’hui à l’ouverture des ventes à 11 h comme à 11 h 30, sans prix. La [page d’informations du parc](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) l’indique à 5 €. Pour Taron, il existe désormais deux Quick Pass différents à 12 € chacun : Taron Daylight vaut jusqu’à 16 h, Taron After Dark à partir de 17 h, et entre 16 h et 17 h, aucun des deux ne vaut. Nouveau aussi dans la boutique : Chiapas pour 5 €, son prix en hiver, alors que la page d’informations indique toujours 10 €. Les autres prix sont les mêmes que le 15 novembre, et Colorado Adventure figure désormais à 7 € sur la page d’informations aussi. En comptant 5 € pour Die 3 Mausketiere, les onze pass individuels font 80 € ensemble, le prix de l’Ultimate, qui ajoute F.L.Y.
+> Taron a désormais deux Quick Pass à 12 € chacun : Daylight jusqu’à 16 h et After Dark à partir de 17 h. Chiapas est nouveau aussi dans la boutique, à son prix d’hiver de 5 €.
 
 Le Quick Pass du [Phantasialand](ref:phantasialand) s’achète désormais sur la [boutique en ligne du parc](https://shop.phantasialand.de/fr/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Une fois payé, il arrive par e-mail en PDF. À l’entrée Quick Pass de l’attraction, tu montres sur ton téléphone le QR code qu’il contient. Jusqu’ici, on ne pouvait l’acheter qu’au service des visiteurs, sur la Kaiserplatz, dans le quartier Berlin, et il fallait d’abord y faire la queue pour la faire moins longtemps plus tard devant une attraction.
 

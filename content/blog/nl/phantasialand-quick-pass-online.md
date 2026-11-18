@@ -52,7 +52,7 @@ seo:
 ---
 
 > [!UPDATE] 2026-11-18
-> Die 3 Mausketiere zijn in de shop al langer uitverkocht: net als op 15 november stond hun Quick Pass vandaag bij de start van de verkoop om 11 uur en om 11.30 uur op uitverkocht, zonder prijs. Op de [infopagina van het park](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) staat hij voor € 5. Voor Taron zijn er nu twee verschillende Quick Passes van elk € 12: Taron Daylight geldt tot 16 uur, Taron After Dark vanaf 17 uur, en tussen 16 en 17 uur geldt geen van beide. Nieuw in de shop is ook Chiapas voor € 5, de prijs in de winter, terwijl de infopagina nog € 10 noemt. De overige prijzen zijn dezelfde als op 15 november, en Colorado Adventure staat inmiddels ook op de infopagina voor € 7. Met € 5 voor Die 3 Mausketiere kosten alle elf losse passes samen € 80, evenveel als de Ultimate, waar F.L.Y. nog bij komt.
+> Voor Taron zijn er nu twee Quick Passes van elk € 12: Daylight tot 16 uur en After Dark vanaf 17 uur. Nieuw in de shop is ook Chiapas, voor de winterprijs van € 5.
 
 Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin, en daar stond je eerst in de rij om later bij een baan korter in de rij te staan.
 
