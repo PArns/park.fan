@@ -105,7 +105,7 @@ Aqualantis opened on the park's seventh birthday, 14 July 2021, with eight food 
 
 [Ekipa Light Explorers](ref:energylandia/ekipa-light-explorers?bare) opened the same day, a Vekoma Family Boomerang that's 24.2 metres tall, 238 metres long and reaches 60 km/h. The [Tidal Wave Twister](ref:energylandia/tidal-wave-twister?bare) by Zamperla covers 90 metres at 51 km/h. The park counts it among its 20 coasters. The RCDB leaves it out, and Wikipedia lists it as a Disk'O, a flat ride.
 
-The [Grotto Expedition](ref:energylandia/grotto-expedition?bare), [Submarine Dive](ref:energylandia/submarine-dive?bare), [Whirlpool Water Fight](ref:energylandia/whirlpool-water-fight?bare), [Magic Pump](ref:energylandia/magic-pump?bare), [Stormy Ship](ref:energylandia/stormy-ship?bare) and [Burning Engine](ref:energylandia/burning-engine?bare) complete the area.
+Aqualantis also has the [Grotto Expedition](ref:energylandia/grotto-expedition?bare), [Submarine Dive](ref:energylandia/submarine-dive?bare), [Whirlpool Water Fight](ref:energylandia/whirlpool-water-fight?bare), [Magic Pump](ref:energylandia/magic-pump?bare), [Stormy Ship](ref:energylandia/stormy-ship?bare) and [Burning Engine](ref:energylandia/burning-engine?bare).
 
 ### Family Zone
 
@@ -125,7 +125,7 @@ In the Family Zone, Intamin and SBF Visa also built rides without coaster track:
 - [Toffifee Kopalnia Złota](ref:energylandia/toffifee-kopalnia-zlota?bare) by SBF Visa, 180 metres, 12 metres tall, 30 km/h, children aged 6 to 13 only with an adult
 - [Jungle Adventure](ref:energylandia/jungle-adventure?bare) by Intamin, 486 metres at 20 km/h
 
-The park's list for the Family Zone goes on with [Atlantis](ref:energylandia/atlantis?bare), [Splash Battle](ref:energylandia/splash-battle?bare), the [Swiss Water Cups](ref:energylandia/swiss-water-cups?bare), the [Formula Autodrom](ref:energylandia/formula-autodrom?bare), the Muertos House, The Planes Ride and the [Viking Ride](ref:energylandia/viking-ride?bare).
+The Family Zone also has [Atlantis](ref:energylandia/atlantis?bare), [Splash Battle](ref:energylandia/splash-battle?bare), the [Swiss Water Cups](ref:energylandia/swiss-water-cups?bare), the [Formula Autodrom](ref:energylandia/formula-autodrom?bare), the Muertos House, The Planes Ride and the [Viking Ride](ref:energylandia/viking-ride?bare).
 
 ### Little Kids Zone (Bajkolandia)
 
@@ -143,11 +143,11 @@ Sweet Valley, the seventh area, opened on 27 April 2024 and covers four hectares
 
 ```
 
-The rest of Sweet Valley is made up of the [Bon Bon Balloon](ref:energylandia/bon-bon-balloon?bare), the [Candy Carousel](ref:energylandia/candy-carousel?bare), [Mokate Twist](ref:energylandia/mokate-twist?bare), the [Candy Critters](ref:energylandia/candy-critters?bare), the [Bumble Boats](ref:energylandia/bumble-boats?bare), the [Crazy Barn](ref:energylandia/crazy-barn?bare) and the [Mini Track' Tour Ride](ref:energylandia/mini-track-tour-ride?bare).
+Sweet Valley also has the [Bon Bon Balloon](ref:energylandia/bon-bon-balloon?bare), the [Candy Carousel](ref:energylandia/candy-carousel?bare), [Mokate Twist](ref:energylandia/mokate-twist?bare), the [Candy Critters](ref:energylandia/candy-critters?bare), the [Bumble Boats](ref:energylandia/bumble-boats?bare), the [Crazy Barn](ref:energylandia/crazy-barn?bare) and the [Mini Track' Tour Ride](ref:energylandia/mini-track-tour-ride?bare).
 
 ### Water Park
 
-The Water Park has been open since summer 2016. It's included in admission, and Energylandia doesn't sell a separate ticket for it. In 2018 the park added Tropical Fun, with 14 slides and 150 single and double rings, and since then it says the Water Park is the largest outdoor water park in Poland. [Exotic Island](ref:energylandia/exotic-island?bare) followed in 2021 and [Bamboo Bay](ref:energylandia/bamboo-bay?bare) on 28 June 2022. Swimwear, a towel, flip-flops and sun cream go in your bag in the morning, and your phone and wallet can wait in a locker while you're on the slides.
+The Water Park has been open since summer 2016. It's included in admission, and Energylandia doesn't sell a separate ticket for it. In 2018 the park added Tropical Fun, with 14 slides and 150 single and double rings, and since then it says the Water Park is the largest outdoor water park in Poland. [Exotic Island](ref:energylandia/exotic-island?bare) followed in 2021 and [Bamboo Bay](ref:energylandia/bamboo-bay?bare) on 28 June 2022. Because the Water Park comes with the day ticket, swimwear, a towel, flip-flops and sun cream are worth packing on any warm day, and your phone and wallet can wait in a locker while you're on the Tropical Fun slides.
 
 ### Height limits
 
@@ -319,7 +319,7 @@ Energylandia also recommends partner accommodation nearby:
 
 ## Rokan, Volana and Anaconda
 
-[Rokan](ref:energylandia/rokan?bare) is a Bolliger & Mabillard wing coaster and, according to the park, the tallest and longest in Europe. It will be the first of its kind in Poland. The ride will stand 62 metres tall with 1,215 metres of track, and the trains are due to hit 115 km/h. The RCDB counts three inversions, and a ride is set to last 141 seconds. Three trains are planned, each with eight rows of four seats. Energylandia announced Rokan on 15 October 2026, after a teaser had been on its website since 8 October. Our [news on Rokan](/news/energylandia-rokan-wing-coaster) has a table of every B&M wing coaster in Europe.
+[Rokan](ref:energylandia/rokan?bare) is a Bolliger & Mabillard wing coaster and, according to the park, the tallest and longest in Europe. Poland has no wing coaster yet, so Rokan will be the country's first. The ride will stand 62 metres tall with 1,215 metres of track, and the trains are due to hit 115 km/h. The RCDB counts three inversions, and a ride is set to last 141 seconds. Three trains are planned, each with eight rows of four seats. Energylandia announced Rokan on 15 October 2026, after a teaser had been on its website since 8 October. Our [news on Rokan](/news/energylandia-rokan-wing-coaster) has a table of every B&M wing coaster in Europe.
 
 ```glossary-widget slug=wing-coaster
 
