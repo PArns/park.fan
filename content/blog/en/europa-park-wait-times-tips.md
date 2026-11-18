@@ -813,7 +813,7 @@ added on top, a fee for not booking ahead. Anyone staying at the resort gets
 the best price whatever the date: €67 for one day, €127 for two, €160 for three.
 In the Pre-Opening Weeks from 7 to 19 March 2027 a day costs €59.50 on weekdays and €70 at weekends.
 
-When the summer season opens on **20 March 2027**, every day gets €2.50 to €3.50 dearer. Online, adults then pay **€70 to €79.50** and children and seniors **€59 to €68**, while two days come to €132.50 to €150 and €109.50 to €124.50. That holds until 9 January 2028, Halloween and winter included. The best price for resort guests moves up with it, to €70 for one day and €167 for three. Tickets for 2027 have been on sale since 10 November 2026. A family of two adults and two children pays €13 to €15 more a day online than in 2026, parking included, and the full sum is in our [news on the price rise](/news/europa-park-prices-2027).
+When the summer season opens on **20 March 2027**, every day gets €2.50 to €3.50 dearer. Online, adults then pay **€70 to €79.50** and children and seniors **€59 to €68**, while two days come to €132.50 to €150 and €109.50 to €124.50. That holds until 9 January 2028, Halloween and winter included. The best price for resort guests moves up with it, to €70 for one day and €167 for three. Tickets for 2027 have been on sale since 10 November 2026. A family of two adults and two children pays €13 to €15 more a day online than in 2026, parking included, and our [news on the price rise](/news/europa-park-prices-2027) has the full sum.
 
 The **ResortPass**, the annual pass, won’t be on sale until further notice, because the allocation is used up. It comes in silver, valid only on dates fixed in advance, and in gold, valid on every day and with two days at Rulantica.
 
