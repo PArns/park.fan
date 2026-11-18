@@ -27,6 +27,7 @@ import {
   DATA_API_KEYS_QUERY_KEY,
   DATA_API_KEY_USAGE_LABELS,
   apiStoresPermissions,
+  awaitsPickup,
   effectivePermissions,
   isLegacyKey,
   DEFAULT_ROTATION_GRACE_HOURS,
@@ -165,7 +166,7 @@ function KeyOverview({ items }: { items: DataApiKey[] }) {
     (key) => !key.revokedAt && (now === null || !hasPassed(key.expiresAt, now))
   );
   const fromRequests = live.filter((key) => key.ownerUserId).length;
-  const waiting = live.filter((key) => key.revealedAt === null).length;
+  const waiting = live.filter(awaitsPickup).length;
   const sum = (key: DataApiKey, field: 'requests' | 'limited') => keyDaysSum(key.stats, field);
   const limited = live.reduce((total, key) => total + sum(key, 'limited'), 0);
   const busiest = live
@@ -404,7 +405,7 @@ function KeyRow({
             {DATA_API_KEY_USAGE_LABELS[apiKey.usage]}
           </Chip>
           {apiKey.owner && <Chip tone="muted">Entwicklerkonto</Chip>}
-          {!revoked && apiKey.revealedAt === null && <Chip tone="warning">nicht abgeholt</Chip>}
+          {awaitsPickup(apiKey) && <Chip tone="warning">nicht abgeholt</Chip>}
           {revoked && <Chip tone="danger">widerrufen</Chip>}
           {expired && <Chip tone="danger">abgelaufen</Chip>}
         </p>

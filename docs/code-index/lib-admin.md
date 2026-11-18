@@ -12,6 +12,7 @@ The data API keys of `/admin/api-keys`: the keys that unlock park.fan's own data
 - `apiStoresPermissions` _function_: The API stores permissions: its key list carries the field. Until it does, a key opens what every key opens, and the dialogs send no permissions, which an API without them would refuse as an unknown field.
 - `effectivePermissions` _function_: What a key opens: its permissions, or for a key from before them everything.
 - `isLegacyKey` _function_: The key was issued before permissions and reads everything.
+- `awaitsPickup` _function_: The key waits on its developer's dashboard to be picked up. Only a key held by a developer account has a pickup: one the owner issued by hand was shown in clear the moment it was made, so its empty `revealedAt` means nothing.
 - `parseRequestsPerHour` _function_: The hourly allowance typed into a field: a whole number from 1, written plain or with German thousands points or spaces (`1.000`, `1 000`), or empty for no per-key limit.
 - `formatHourlyUsage` _function_: „12 von 1.000 in dieser Stunde“, or „12 in dieser Stunde, ohne eigenes Limit“.
 - `formatKeyUsage` _function_: „heute 120 · 30 Tage 3.456“, and „· 40 über dem Limit abgelehnt“ when the allowance refused any of them. „Heute“ is the UTC day the counters run on.

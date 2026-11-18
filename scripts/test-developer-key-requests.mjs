@@ -21,6 +21,7 @@ import {
 import { developerKeyState, usageTotals } from '../lib/developers/dashboard.ts';
 import {
   apiStoresPermissions,
+  awaitsPickup,
   createDataApiKeyBody,
   effectivePermissions,
   isLegacyKey,
@@ -299,6 +300,23 @@ const testCases = [
       developerKeyState(key({ revokedAt: '2026-11-15T00:00:00Z', revealedAt: null }), NOW),
     ],
     expected: ['pickup', 'active', 'expired', 'revoked'],
+  },
+  {
+    name: 'the admin marks only a developer account key as not picked up',
+    actual: () => {
+      const owner = '00000000-0000-4000-8000-0000000000aa';
+      return [
+        awaitsPickup(key({ ownerUserId: owner, revealedAt: null })),
+        awaitsPickup(key({ ownerUserId: owner })),
+        awaitsPickup(key({ ownerUserId: null, revealedAt: null })),
+        awaitsPickup(key({ revealedAt: null })),
+        awaitsPickup(key({ ownerUserId: owner, revealedAt: undefined })),
+        awaitsPickup(
+          key({ ownerUserId: owner, revealedAt: null, revokedAt: '2026-11-15T00:00:00Z' })
+        ),
+      ];
+    },
+    expected: [true, false, false, false, false, false],
   },
   {
     name: 'the dashboard sums live keys only',
