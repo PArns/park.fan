@@ -57,6 +57,9 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
+> [!UPDATE] 2026-11-18
+> Den Quick Pass für Die 3 Mausketiere zeigt der Shop auch heute als „Derzeit ausverkauft“, zum Verkaufsstart um 11 Uhr wie um 11:30 Uhr, und einen Preis nennt er dabei nicht. Auf der [Infoseite des Parks](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) steht er mit 5 €. Neu im Shop sind zwei Einzelpässe: Taron Daylight bis 16 Uhr für 12 € und Chiapas für 5 €, die Infoseite nennt für Chiapas weiter 10 €. Die übrigen Preise sind dieselben wie am 15. November, und Colorado Adventure steht inzwischen auch auf der Infoseite mit 7 €. Mit den 5 € für die Mausketiere kosten alle elf Einzelpässe zusammen 80 €, so viel wie der Ultimate, bei dem F.L.Y. noch dazukommt.
+
 Den Quick Pass fürs [Phantasialand](ref:phantasialand) kannst du jetzt im [Online-Shop des Parks](https://shop.phantasialand.de/de/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online) kaufen. Nach dem Bezahlen kommt er als PDF per E-Mail, und am Quick-Pass-Eingang der Bahn zeigst du den QR-Code daraus auf dem Handy. Bisher gab es ihn nur am Gästeservice am Kaiserplatz in der Themenwelt Berlin, und dort hast du dich erst einmal angestellt, um später an einer Bahn weniger anzustehen.
 
 Verkauft wird online ab 11 Uhr. Im Wintertraum öffnet dann auch der Park. Du gehst durchs Tor, bestellst den Pass in Ruhe auf dem Handy, während du schon Richtung Taron oder Black Mamba läufst. Vor elf meldet der Shop nur, dass der Verkauf noch nicht begonnen hat.

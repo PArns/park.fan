@@ -51,6 +51,9 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
+> [!UPDATE] 2026-11-18
+> De Quick Pass voor Die 3 Mausketiere staat in de shop ook vandaag als uitverkocht, bij de start van de verkoop om 11 uur en om 11.30 uur, en een prijs geeft de shop er niet bij. Op de [infopagina van het park](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) staat hij voor € 5. Nieuw in de shop zijn twee losse passes: Taron Daylight tot 16 uur voor € 12 en Chiapas voor € 5, waar de infopagina voor Chiapas nog € 10 noemt. De overige prijzen zijn dezelfde als op 15 november, en Colorado Adventure staat inmiddels ook op de infopagina voor € 7. Met € 5 voor Die 3 Mausketiere kosten alle elf losse passes samen € 80, evenveel als de Ultimate, waar F.L.Y. nog bij komt.
+
 Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin, en daar stond je eerst in de rij om later bij een baan korter in de rij te staan.
 
 Online verkoopt het park de pass vanaf 11 uur. Tijdens de Wintertraum gaat dan ook het park open. Je loopt door de poort en bestelt de pass rustig op je telefoon, terwijl je al op weg bent naar Taron of Black Mamba. Voor elven meldt de shop alleen dat de verkoop nog niet is begonnen.

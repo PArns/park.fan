@@ -52,6 +52,9 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
+> [!UPDATE] 2026-11-18
+> La tienda sigue mostrando hoy el Quick Pass de Die 3 Mausketiere como agotado, tanto al abrir la venta a las 11:00 como a las 11:30, y no indica su precio. La [página de información del parque](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) lo da por 5 €. En la tienda hay dos pases sueltos nuevos: Taron Daylight hasta las 16:00 por 12 € y Chiapas por 5 €, que la página de información sigue dando por 10 €. Los demás precios son los mismos que el 15 de noviembre, y Colorado Adventure ya figura también a 7 € en la página de información. Contando 5 € por Die 3 Mausketiere, los once pases sueltos suman 80 €, lo mismo que el Ultimate, que además incluye F.L.Y.
+
 El Quick Pass del [Phantasialand](ref:phantasialand) ya se puede comprar en la [tienda online del parque](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Una vez pagado, te llega por correo electrónico en un PDF, y en la entrada Quick Pass de cada atracción enseñas en el móvil el código QR que trae. Hasta ahora solo se vendía en el servicio de atención al visitante de la Kaiserplatz, en el área temática Berlin, donde primero te tocaba hacer cola para ahorrarte después otra en una atracción.
 
 La venta online empieza a las 11:00, que en el Wintertraum es también la hora a la que abre el parque. Cruzas la puerta y pides el pase con calma en el móvil mientras ya vas camino de Taron o de Black Mamba. Antes de las once, la tienda solo avisa de que la venta todavía no ha empezado.
