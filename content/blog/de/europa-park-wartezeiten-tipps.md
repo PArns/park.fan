@@ -827,21 +827,15 @@ Tag, 127 für zwei, 160 für drei. Am günstigsten wird es 2027 in den
 Pre-Opening Weeks vom 7. bis 19. März: 59,50 Euro unter der Woche, 70 Euro am
 Wochenende, dafür noch nicht mit allen Attraktionen.
 
-Zum Start der Sommersaison am **20. März 2027** steigen die Preise. Der Tag kostet
-online dann **70 bis 79,50 Euro** für Erwachsene und **59 bis 68 Euro** für
-Kinder und Senioren. Zwei Tage kosten 132,50 bis 150 beziehungsweise 109,50 bis 124,50 Euro. Diese Preise gelten bis zum 9. Januar 2028, Halloween und Winter
-eingeschlossen. Der Bestpreis für Übernachtungsgäste steigt auf 70 Euro für
-einen Tag, 132,50 für zwei und 167 für drei. Tickets für die Saison 2027
-verkauft der Park seit dem 10. November 2026. Für eine Familie haben wir die [Preiserhöhung](/news/europa-park-preise-2027) durchgerechnet.
+Zum Start der Sommersaison am **20. März 2027** wird jeder Tag 2,50 bis 3,50 Euro teurer. Erwachsene zahlen online dann **70 bis 79,50 Euro**, Kinder und Senioren **59 bis 68 Euro**, für zwei Tage sind es 132,50 bis 150 und 109,50 bis 124,50 Euro. Das gilt bis zum 9. Januar 2028, Halloween und Winter eingeschlossen. Der Bestpreis für Übernachtungsgäste zieht mit und liegt dann bei 70 Euro für einen Tag und 167 für drei. Verkauft werden die Tickets für 2027 seit dem 10. November 2026. Für eine Familie haben wir die [Preiserhöhung](/news/europa-park-preise-2027) durchgerechnet.
 
-Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park bis auf Weiteres nicht, das Kontingent ist erschöpft. Du kannst ihn also gerade nur bewundern. Es gibt ihn in Silber, das nur an vorab festgelegten Tagen gilt, und in Gold für alle Tage und mit zwei Tagen Rulantica. Für die meisten Familien lohnen sich zwei Tage am Stück ohnehin mehr.
+Den **ResortPass**, die Jahreskarte, verkauft der Europa-Park bis auf Weiteres nicht, das Kontingent ist erschöpft. Es gibt ihn in Silber, das nur an vorab festgelegten Tagen gilt, und in Gold für alle Tage und mit zwei Tagen Rulantica. Ohne Jahreskarte bleibt für einen längeren Besuch das Zwei-Tages-Ticket.
 
 **Anreise.** Der Park liegt direkt an der **A5**, Ausfahrt **57b Rust**, und ist
 ab dort ausgeschildert. Auf der Straße sind es von Freiburg rund 40 Kilometer,
 von Straßburg rund 55, von Basel und von Karlsruhe jeweils rund 100, die
 Baustellen auf der A5 nicht eingerechnet. Mit der Bahn fährst du bis
-Ringsheim und von dort mit dem Shuttlebus. **Parken kostet 10 Euro** pro Tag,
-ab dem 20. März 2027 sind es 12 Euro. Rulantica hat einen eigenen Parkplatz.
+Ringsheim und von dort mit dem Shuttlebus. **Parken kostet 10 Euro** pro Tag, in der Saison 2027 dann 12 Euro. Rulantica hat einen eigenen Parkplatz.
 
 **Essen.** Unsere Datenbank zählt **62 Gastronomien** im Park, und
 weil jeder Themenbereich ein Land ist, kocht auch jeder etwas anderes. Zwei Adressen
@@ -931,10 +925,7 @@ läuft im Park schon HALLOWinter, und der macht selbst erst um neunzehn Uhr zu.
 
 ### Schafft man den Europa-Park an einem Tag?
 
-Die wichtigsten zehn bis zwölf Attraktionen an einem normalen Tag: ja. Den ganzen
-Park mit 96 Attraktionen, Shows und 62 Gastronomien: nein. Viel spart man mit
-zwei Tagen nicht, das Zwei-Tages-Ticket kostet für Erwachsene 127 bis 143,50
-Euro, der zweite Tag also rund 60 bis 67,50 Euro. Ab dem 20. März 2027 kosten zwei Tage für Erwachsene 132,50 bis 150 Euro.
+An einem normalen Tag schaffst du zehn bis zwölf der großen Bahnen, alle 96 Attraktionen samt Shows und 62 Gastronomien schafft niemand. Viel spart man mit zwei Tagen nicht, das Zwei-Tages-Ticket kostet Erwachsene 127 bis 143,50 Euro, ab dem 20. März 2027 132,50 bis 150 Euro, der zweite Tag also rund 60 bis 70 Euro.
 
 ### Lohnt sich der Europa-Park im Winter?
 
