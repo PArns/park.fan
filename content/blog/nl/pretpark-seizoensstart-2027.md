@@ -180,6 +180,9 @@ Voor maart in het Europa-Park hebben we veertien meetdagen uit het voorjaar van 
 
 Voor de Pre-Opening Weeks zegt dat weinig, want in 2026 was er niets vergelijkbaars. In de eerste twee weken van maart 2027 heeft alleen Hamburg paasvakantie, alle andere deelstaten pas vanaf 22 maart.
 
+> [!PARKY]
+> Voor de Pre-Opening Weeks kiezen we een dag van 13 tot 19 maart, alleen niet 16 of 17 maart, want dan is het park dicht. Welke attracties dan nog rust houden, zegt het park niet, dus naast de muts neem ik ook wat geduld mee. Daar staat tegenover dat vanaf de 13e ook de Hamburgse kinderen weer naar school gaan en geen enkele deelstaat paasvakantie heeft.
+
 ### Flying Cinema in Plopsaland Belgium
 
 In De Panne opent op **13 maart 2027** het Flying Cinema, een hal met een koepelscherm waaronder de gondels zweven, gebouwd door Mack Rides. Voorpremières zijn er al vanaf 19 december 2026, maar alleen voor wie een Plopsa-jaarabonnement heeft of in de hotels en chalets van het park logeert. Met een dagticket kom je pas vanaf 13 maart binnen. Op welke dag [Plopsaland Belgium](ref:plopsaland-belgium) verder aan het seizoen 2027 begint, heeft het park nog niet bekendgemaakt; in het rooster staan de dagen tot 3 januari.

@@ -72,6 +72,9 @@ The park expects big crowds because of events on 22, 28 and 29 November and on 5
 
 A day ticket costs between €40 and €56 depending on the date, up from €38 to €53 last winter. Children up to and including three get in free with ID. So far you can book days up to 31 December; January tickets go on sale later. You can change the date in your Efteling account for up to a year after buying. If the new day costs more, you pay the difference.
 
+> [!PARKY]
+> An hour before opening, so at 9 am until New Year's Eve, we check Efteling's forecast before we set off to see which outdoor coasters are running that day. However elegant I am on skates, the ice rink alone isn't worth the trip. We still book our day early without a second thought: the date can be changed in the Efteling account for up to a year after purchase, and a pricier day only costs the difference.
+
 The new evening ticket costs €33. It's valid from 4 pm until closing on every day from 21 December 2026 to 3 January 2027, except 31 December. Book parking along with it and you pay €10 instead of the usual €15.
 
 ## Winter maintenance

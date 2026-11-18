@@ -180,6 +180,9 @@ Both parks stay open into the evening in winter. In Winterzauber, Europa-Park is
 
 If you set off after lunch, both parks sell an evening ticket from 4 pm. At Europa-Park it's on sale from 2 November to 9 January, at €41.50 for adults and €47 from 23 December. Efteling sells it from 21 December to 3 January for €33, and if you buy a parking ticket with it you pay €10 instead of €15.
 
+> [!PARKY] Worth it
+> If we only set off after lunch between 21 December and 3 January, we take Efteling's evening ticket: €33 from 4 pm, and apart from New Year's Eve that gives us four hours until 8 pm. At Europa-Park the same evening costs €47 from 23 December and ends at 7 pm at the earliest, and even I don't need long to count that one. We buy the parking ticket along with it, so it's €10 instead of €15.
+
 You can skate in both parks, and at Europa-Park there's a Christmas market in the Schlosspark Balthasar too. Efteling's ice rink is partly covered this winter. On 1 December Raveleijn reopens there as well, with a new show the park developed with France's Puy du Fou, and with the Ravenring, a ride that spins guests round in a circle.
 
 For Halloween only one of the two will do, because Efteling doesn't celebrate it. At Europa-Park the 2026 Halloween season runs until 1 November. Until 7 November there's also [Traumatica](ref:traumatica) in the evenings, a horror event for ages 16 and up, held Friday to Sunday and on some Thursdays, with tickets from €45. HALLOWinter follows from 2 to 27 November, with the park open from 11 am until at least 7 pm.

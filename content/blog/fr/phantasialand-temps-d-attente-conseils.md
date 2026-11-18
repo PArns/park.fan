@@ -240,6 +240,9 @@ même journée de parc. La boutique met en avant des billets dès **44 €**. On
 aussi venir sur un coup de tête, mais seulement en ligne et seulement jusqu’à 14 h
 le jour même, au prix du jour et à condition que la date ne soit pas complète.
 
+> [!PARKY] Fais-toi plaisir
+> On réserve dès que la date est fixée. Si on décroche le palier à 35 € au lieu de celui à 59 € pour octobre ou novembre, il reste 24 €, soit, j’ai recompté deux fois, exactement deux Quick Pass pour Taron. On les achète le matin même de la visite.
+
 Il n’y a plus de cartes annuelles. Le Phantasialand a retiré sa Club-Karte de
 la vente pendant la pandémie et ne l’a jamais remise en vente; les dernières ont
 expiré à l’été 2022. Parmi les

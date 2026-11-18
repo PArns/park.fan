@@ -344,6 +344,9 @@ Big Thunder Mountain, Hyperspace Mountain en Indiana Jones zijn daarentegen vlak
 na de opening veel korter dan rond het middaguur. Begin dus daar en bewaar Peter
 Pan voor de avond. Alle acht attracties in de uurtabel hebben hun langste rij tussen 12 en 14 uur.
 
+> [!PARKY] Hier wel
+> Blijven we niet tot het laatste uur, dan krijgt Peter Pan onze Premier Access One: daar scheelt de pas meer tijd dan bij Hyperspace Mountain, en op 25 september kostte hij maar 1 euro meer. Voor een vlucht naar Nooitgedachtland heb ik die euro graag over. Kopen kan pas in het park, in de app, en Hyperspace Mountain doen we toch al 's ochtends vlak na de opening.
+
 En boek je beide parken, draai dan de gebruikelijke volgorde om en begin in
 Adventure World, waar volgens onze rope-drop-analyse een vroege start bij
 Ratatouille en de Tower of Terror de meeste tijd scheelt. Frozen Ever After is 's avonds het kortst en heeft een single-riderrij.

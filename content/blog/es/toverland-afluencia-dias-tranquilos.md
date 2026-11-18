@@ -206,6 +206,9 @@ El verano de 2027 irá distinto que el de 2026. NRW empieza cinco días antes qu
 región sur sigue cinco días más. Del miércoles 1 al domingo 5 de septiembre de 2027, Limburgo seguirá
 de vacaciones y NRW ya habrá vuelto al colegio. Días así no los tuvimos en 2026. Lo más parecido es la primera semana de las vacaciones de verano de 2026, cuando solo tenían vacaciones las regiones sur y norte y el parque se quedó en Normal o menos cuatro días entre semana.
 
+> [!PARKY] El mejor momento
+> Nuestro día en Toverland de 2027 cae en septiembre, a partir del lunes 6, mejor de lunes a miércoles. Hasta el domingo 5 de septiembre la región sur sigue de vacaciones de verano, y los sábados se los dejamos de todos modos a medio Limburgo. En 2026, 13 de los 17 días de lunes a viernes de septiembre estuvieron en Baja o Muy baja.
+
 ## ¿Cuentan las vacaciones alemanas?
 
 Con la frontera tan cerca, es lo que uno espera. Para comprobarlo buscamos días en que solo NRW tenía

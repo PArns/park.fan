@@ -346,6 +346,9 @@ Indiana Jones, en cambio, tienen colas mucho más cortas justo después de abrir
 que a mediodía. Empieza por ahí y deja Peter Pan para la noche. Entre las 12:00 y las 14:00,
 las ocho atracciones de la tabla por horas tienen su cola más larga.
 
+> [!PARKY] Aquí sí
+> Si no nos quedamos hasta la última hora, nuestro Premier Access One es para Peter Pan: ahí ahorra más tiempo que en Hyperspace Mountain, y el 25 de septiembre solo costaba un euro más. Por un vuelo al País de Nunca Jamás, ese euro lo pago encantado. Solo se compra ya dentro del parque, en la app, y Hyperspace Mountain lo montamos de todos modos justo después de abrir.
+
 Y si reservas los dos parques, invierte el orden habitual y empieza en Adventure
 World, donde nuestro análisis de rope drop marca en Ratatouille y en la Tower of
 Terror el mayor ahorro por salir temprano. La cola de Frozen Ever After es más corta por la noche, y tiene fila de single rider.

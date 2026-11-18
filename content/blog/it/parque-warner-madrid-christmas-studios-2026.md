@@ -50,6 +50,9 @@ All’ingresso torna l’albero di Natale alto 22 metri. Lo accendono i Looney T
 
 Sui palchi si alternano il musical The Santa’s Magical Bell, il Looney Tunes Dance Festival nella Christmas Edition e, nella zona western, Una Navidad en Dodge City. Dal 5 dicembre sull’Hollywood Boulevard torna in scena “Happy Holiday!”, lo spettacolo di danza dell’anno scorso. A Christmas Town, un piccolo villaggio natalizio con elfi e renne, Babbo Natale mostra il suo laboratorio in El Taller de Papá Noel, pensato soprattutto per i più piccoli, a detta del parco. Lì ricevono visite anche i Re Magi. Bugs Bunny, Titti, Daffy Duck, i supereroi DC e Gizmo dei Gremlins si mettono in posa per le foto in abiti di festa. A fine giornata gli stessi personaggi ripassano ancora una volta sui carri nella Superstars of Christmas Parade, Babbo Natale e Re Magi compresi.
 
+> [!PARKY] Si va a dicembre
+> La nostra giornata la mettiamo a dicembre, dal 5 in poi: solo allora va in scena il nuovo spettacolo di bolle, e quando il mimo cerca un volontario per la sua lanterna, la mia mano è la prima ad alzarsi. Dal 5 torna anche lo spettacolo di danza dell’anno scorso sull’Hollywood Boulevard, e a dicembre il parco resta aperto fino alle 21 invece che fino alle 20.
+
 ## Giorni di apertura e orari
 
 Christmas Studios è aperto 29 giorni, sempre dalle 12:

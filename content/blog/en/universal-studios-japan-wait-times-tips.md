@@ -273,6 +273,9 @@ and on Yoshi's Adventure, going by our rope drop measurements. Hollywood Dream: 
 
 On 9 October 2026 the park was open from 8:00 am to 10:00 pm.
 
+> [!PARKY]
+> Before we're at the gate for opening, we register the whole group's Studio Passes in the app: without that there's no time slot for Super Nintendo World, and once the day's allotment is gone, all that's left is the Standby Entry Ticket. I'm not going home without getting fired out of the Mine Cart Madness barrel cannon. We'll plan the rest of the day in the [day planner](/trip-planner).
+
 ## When to go
 
 ```stats-widget slug=universal-studios-japan show=weekdays
@@ -351,6 +354,9 @@ the others you have to get the ticket in the app on the day. The "Race &
 Minecart Special" package includes Mario Kart, Mine Cart Madness, Forbidden
 Journey, Villain-Con Minion Blast and The Flying Dinosaur. Packages with
 Hollywood Dream or the dinosaur ride have a height requirement of 132 cm.
+
+> [!PARKY] Get the time slot
+> If we're buying an Express Pass, it's one with the Super Nintendo World time slot: "Race & JAWS" and "Mine Cart & JAWS" start at the same 10,800 yen as "Backdrop & The Flying Dinosaur", but the slot is guaranteed. That spares us fretting over the allotment in the app at eight in the morning. With a child under 132 cm, the Backdrop and dinosaur package is out anyway.
 
 If one of the pass's rides is out of service, the park says you use the pass's
 other rides instead, except for rides with a fixed time. The ticket lists for

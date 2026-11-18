@@ -68,6 +68,9 @@ A Natale le famiglie passano prima da Babbo Natale in «Santa's List – Naughty
 
 L’abbonamento Diamond vale in entrambi i parchi, compreso Dollywood's Splash Country, e include il parcheggio gratuito e quattro ingressi omaggio per accompagnatori (Bring-A-Friend-Free). Gold e Diamond danno accesso al TimeSaver, una corsia separata per alcune attrazioni, nella prima ora di apertura di ogni giorno. Tra quelle attrazioni ci sono [NightFlight Expedition](ref:dollywood/nightflight-expedition), aperta ad agosto 2026, e [Big Bear Mountain](ref:dollywood/big-bear-mountain). L’abbonamento Silver ha giorni di esclusione per adulti e senior, mentre la versione Silver per bambini non ne ha. Il Summer Fun Pass vale senza limiti dal 19 aprile al 10 settembre 2027.
 
+> [!PARKY] Subito Gold
+> Se andiamo a Smoky Mountain Christmas dopo il 13 dicembre e torniamo nel 2027, prendiamo subito l’abbonamento 2027 in versione Gold: il Silver quest’anno vale solo fino al 13 dicembre, il Gold fino al 3 gennaio. Un abbonamento 2027 che vale già sotto l’albero del 2026 mi sembra piuttosto generoso. L’anno prossimo ci porta con il TimeSaver su NightFlight Expedition e Big Bear Mountain nella prima ora.
+
 I bambini nati nel 2022 o nel 2023 entrano gratis per tutta la stagione con il Pre-K Imagination Season Pass.
 
 I prezzi qui sotto riguardano solo il rinnovo di un abbonamento 2026 entro il 1° novembre, tasse escluse.

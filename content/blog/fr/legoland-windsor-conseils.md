@@ -178,6 +178,9 @@ Pirate Falls et Hydra’s Challenge se remplissent dès le matin et atteignent l
 
 Un parcours pour des enfants à partir de sept ans : d’abord The Dragon et Hydra’s Challenge, à faire tous deux avant onze heures et demie. Ensuite les Laser Raiders, au plus tard vers onze heures et demie. À Pirate Falls, la file reste courte le plus longtemps, et on peut remettre l’attraction jusque vers 13 h. En octobre, c’est le moment le plus chaud pour des vêtements mouillés. Viennent ensuite Flight of the Sky Lion, Coastguard HQ et les autres attractions.
 
+> [!PARKY]
+> Pendant LEGOLAND at Christmas, Pirate Falls et Hydra’s Challenge sont en pause hivernale, donc des quatre attractions où arriver tôt paie, il reste The Dragon et les Laser Raiders. On y file à l’ouverture, et sans attraction aquatique en décembre, je reste au sec dans l’hiver britannique, ce qui me va très bien. Dans le [planificateur de journée](/trip-planner), on met les deux en tête.
+
 ## Les trois forfaits Fastrack et leurs attractions
 
 **Fastrack** désigne l’offre payante qui donne, à de nombreuses attractions, une entrée séparée avec une attente plus courte. Le parc vend trois forfaits : Bronze avec trois tours, Silver avec six et Gold pour toute la journée. Chaque forfait est valable pour une personne, n’est scanné qu’une fois toutes les trois minutes et ne comprend pas l’entrée du parc. Le Fastrack n’est ni remboursable ni transmissible.

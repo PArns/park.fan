@@ -373,6 +373,9 @@ hat, und NRW mit Ferien vom 17. Juli bis zum 31. August. Die Wochen mit beiden z
 Juli bis zum 18. August, sind die, die du in Soltau meiden solltest. Ab dem 1. September haben nur
 noch Bayern und Baden-Württemberg Ferien, und das waren 2026 die ruhigsten Wochen des Sommers.
 
+> [!PARKY] Ab nach Soltau
+> Aus Niedersachsen fahren wir 2027 zwischen dem 8. und dem 16. Juli in den Heide Park, bevor am 17. die Ferien in NRW anfangen. Den Montag, 12. Juli, trage ich mir schon mal mit Bleistift ein, denn die Parks haben ihre Öffnungstage für 2027 noch nicht veröffentlicht. Montag war 2026 im Heide Park der ruhigste Ferienwerktag, 21 Prozent unter den anderen vier.
+
 Rheinland-Pfalz hat vom 26. Juni bis zum 8. August frei, die Überschneidung mit NRW liegt also
 vom 17. Juli bis zum 8. August. Das sind gut drei Wochen wie 2026, und nach unserer Messung die
 Zeit, in der das Plopsaland voll ist. Hessen, Rheinland-Pfalz und das Saarland fangen Ende Juni

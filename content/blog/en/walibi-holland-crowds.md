@@ -267,6 +267,9 @@ In 2026 the weekend when all three regions had their autumn half-term at the sam
 busiest of the year. In 2027 that’s the weekend of 23 and 24 October. In the summer of 2027 Noord
 has the first week, 10 to 16 July, to itself.
 
+> [!PARKY] First holiday week
+> If it has to be the summer holidays, we go from 10 to 16 July 2027, while only Noord is off school. In 2026 the first two weeks of the holidays were the quietest of the whole summer, with headliner queues as short as in May and June after the May holiday, and I never say no to short queues in the school holidays. We steer clear of the two weeks before: in 2026 they were busier than any week of the summer holidays.
+
 ## Halloween Fright Nights
 
 > [!NOTE]
@@ -387,6 +390,9 @@ half as long. [Speed of Sound](ref:walibi-holland/speed-of-sound) barely changes
 suit a warm afternoon, when you’re soaked in sweat anyway.
 [Space Shot](ref:walibi-holland/space-shot) and [Eat My Dust](ref:walibi-holland/eat-my-dust) fit
 in between.
+
+> [!PARKY]
+> If we don’t get in until 14:00, we play the day backwards: Condor first, then Xpress, whose queue is down to half by then, Goliath after 16:00 and YOY THRILL in the last hour. Only Untamed never gets as short as at 10:00 again, and that’s the price of a lie-in. We put the order together in the [day planner](/trip-planner) before we go.
 
 You don’t need a Fast Lane on a Low or Normal day. On a High day, on a Fright Night and for YOY
 THRILL it can pay off.

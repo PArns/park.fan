@@ -332,6 +332,9 @@ Silver fa risparmiare un po’ di tempo su Superman, Venganza del Enigma e Coast
 Express, ma proprio lì le file sono comunque corte. Chi vuole risparmiarsi il pass va su Batman verso le 16, quando
 la fila è di qualche minuto più corta del solito.
 
+> [!PARKY] Basta l’One-Pass
+> Per Batman prendiamo l’One-Pass a 8 €, non il Gold da 45,90 €. Più di quel giro veloce non ci serve: su Superman, Venganza del Enigma e Coaster Express la fila è così corta che non faccio nemmeno in tempo a brontolare. I 37,90 € di differenza bastano per due menù Express da 12,90 €.
+
 ## Quando andarci
 
 ```stats-widget slug=parque-warner-madrid show=months,weekdays

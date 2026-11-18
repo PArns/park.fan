@@ -640,6 +640,9 @@ midday, and ride both tracks.
 **[Crazy River](ref:walibi-holland/crazy-river?bare)** fit into the midday heat, and **[Speed of Sound](ref:walibi-holland/speed-of-sound?bare)** fits in between. In the last hour, ride Untamed again, because it runs noticeably
 faster in the evening than in the morning.
 
+> [!PARKY]
+> In the [day planner](/trip-planner) we put lunch early, around half eleven at Flavors. From the waterside terrace we watch the trains on both YOY tracks, which already counts as half a ride in my book, and we only board ourselves towards evening, when the queue there gets a little shorter than at midday.
+
 ## Practical
 
 **Tickets.** Walibi runs **dynamic pricing**, so the day ticket costs different
@@ -670,6 +673,9 @@ amounts depending on the date.
 
 [Toverland](ref:attractiepark-toverland),
 a good hundred kilometres further south, sells no fast pass at all.
+
+> [!PARKY] Spot on
+> Our Walibi day is a Thursday in June outside the holidays, booked online and early. In 2026 every June Thursday sat at a low crowd level in our calendar, and for quiet days online prices start from about €25 depending on the date, against a €46 reference price at the gate. The difference goes on fries, and on a day like that we don’t need Fast Lane for Untamed.
 
 **Getting there.** The park is at Spijkweg 30 in **Biddinghuizen**, municipality
 of Dronten. From the Ruhr area it’s a good two hours depending on traffic, from

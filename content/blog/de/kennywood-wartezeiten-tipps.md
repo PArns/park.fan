@@ -291,6 +291,9 @@ Angenommen, du stehst an einem Sommersamstag zur Öffnung am Eingang und hast ke
 
 Für einen Abend bei Holiday Lights an einem Wochenende würde ich um 15 Uhr kommen, zuerst Jack Rabbit fahren, solange es noch hell ist, und dann die frühe Vorstellung von Finding Christmas sehen. Nach der Baumbeleuchtung passt zwischen zwei Durchgänge von Holiday Reflections an der Lagoon noch A Broadway Christmas.
 
+> [!PARKY]
+> An einem gewöhnlichen Freitag klappt dieser Abend nicht: Dann öffnet Holiday Lights erst um 17 Uhr, und Finding Christmas um 16:30 Uhr gibt es nicht. Unter der Woche nehmen wir deshalb einen Tag ab dem 19. Dezember und fahren Jack Rabbit noch im Hellen, beim Double Dip hebe ich gleich zweimal ab. Ab dann ist täglich von 15 bis 21 Uhr offen, nur am 24. und 25. Dezember nicht.
+
 In den Park darfst du Taschen bis 38 × 38 × 38 Zentimeter (15 Zoll je Seite) mitnehmen, dazu Wickel- und Arzttaschen. Eigenes Essen und Trinken ist nicht erlaubt, außer einer verschlossenen Flasche Wasser und Essen für besondere Ernährungsbedürfnisse. Am Eingang wird auf Waffen kontrolliert. Bezahlt wird nur bargeldlos mit Karte, Apple Pay oder Google Pay, und an kostenlosen Automaten tauschst du Bargeld in eine Karte um.
 
 ## Tickets

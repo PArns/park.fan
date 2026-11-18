@@ -76,6 +76,9 @@ Day tickets start at $35. Until 30 November, the park sells the Silver Pass as a
 
 The Gold Pass costs $79 and covers 2026 and 2027 at every Six Flags park on the East Coast, with parking, Fright Fest and Holiday in the Park included. If you already hold one, renewal is $69, and if you'd rather pay monthly, the Gold membership is $7 a month plus a $20 initiation fee. All of these carry a processing fee of up to $9.99 plus tax. Buy or renew a pass, or take out a new membership, by 30 November and you get a Bring-A-Friend ticket, which has to be used by 3 January 2027.
 
+> [!PARKY] One pass for two
+> With two of us, one buys the Silver Pass for $69 by 30 November and the other gets in on the Bring-A-Friend ticket that comes with every pass bought by then. Two day tickets already start at $70 together, and the pass saves the $39 for parking on top. After that it's good through Labor Day 2027, both water parks included.
+
 New this winter, Six Flags lets everyone 65 and over in free, to get the grandparents along, while the grandchildren still pay from $35. Register online and make your first visit by 3 January 2027, and you get in free until then. You'll need ID showing your date of birth at the gate every time.
 
 Without a pass, parking costs $39, or $49 for Preferred Parking, each plus a fee. For the satnav, the address is 275 Riverside Parkway, Austell, GA 30168.

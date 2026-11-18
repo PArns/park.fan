@@ -184,6 +184,9 @@ Fehlt er, gilt der Kinderpreis für 4 bis 11. Diesen Preis nennt die Ticketseite
 nicht, dort steht nur „Tickets ab 44 Euro“. Geburtstagskinder bis zum 11.
 Geburtstag sind frei, wenn sie vorab online reserviert haben.
 
+> [!PARKY]
+> Eine Kopie von Ausweis oder Geburtsurkunde stecken wir gleich in die Wickeltasche: Ohne Altersnachweis zahlt dein Kleines im Phantasialand den Kinderpreis für 4 bis 11, und den nennt die Ticketseite nicht einmal. Dass ausgerechnet der jüngste Gast Papiere braucht, finde ich ziemlich niedlich. Mit dem Nachweis kommen Kinder von 0 bis 3 Jahren ohne gebuchtes Ticket hinein.
+
 Neben dem Gästeservice gibt es einen Ruhe- und Stillraum mit Wickelräumen. Das
 Personal wärmt Babygläschen auf. Im Winterpark Wintertraum sitzt der
 Gästeservice am Kaiserplatz mit eigener Stillecke, Wickeltisch und Wasserkocher.

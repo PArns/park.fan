@@ -237,6 +237,9 @@ I ragazzi dai 12 anni possono entrare nei parchi senza un adulto.
 
 Per Halloween c’è il codice SUSTO26, con fino al 30 per cento di sconto sui biglietti per le visite dal 19 settembre al 15 novembre, da usare entro il 15 novembre. Il codice ESCAPEPAW dà il 40 per cento sulle visite infrasettimanali, se acquisti entro il 14 ottobre e vieni entro il 4 dicembre.
 
+> [!PARKY] Meglio due giorni
+> Se non dormiamo in un hotel del resort, prendiamo subito due giorni di parco: 43 € online invece di 37 €, quindi il secondo giorno costa 6 €. Un’intera giornata di parco per meno di un solo accesso Express ONE, e solo a pensarci mi stacco un attimo dal sedile. In un hotel del resort quel giorno c’è comunque, perché lì una notte vale già due giorni di accesso al parco.
+
 ### Abbonamenti annuali
 
 I quattro abbonamenti annuali valgono 365 giorni dall’acquisto. Gli junior sono i bambini da 4 a 10 anni, i senior hanno almeno 60 anni, i bambini da 0 a 3 anni entrano gratis.
@@ -293,6 +296,9 @@ Cibo e bevande non si possono portare nel parco. Davanti all’ingresso c’è u
 Con servizio al tavolo si mangia all’Iron Horse a Far West (hamburger, costine, bistecche), al Raco de Mar a Mediterrània (insalate e piatti di riso), alla Vinosfera con le tapas e all’Hacienda El Charro a México. Tra i self-service ci sono, fra gli altri, Bora Bora a Polynesia, La Cantina a México, Marco Polo a China (buffet) e Sichuan. A Ferrari Land la Trattoria Maranello serve al tavolo insalate, pizza, pasta, carne e pesce. Più veloce è il self-service Pit Lane, e ci sono anche Paddock, Finish Line, Ice Cream Box e Stop & Go.
 
 Gli armadietti esistono in tre misure: piccolo 8 €, medio 11 € e grande 15 €. Ci sono poi gli armadietti alle attrazioni, 2 euro per uno zaino, in quattro punti: fra Shambhala e Dragon Khan, all’ingresso di Furius Baco, accanto a Tutuki Splash e all’accesso di Silver River Flume. Dopo l’apertura si liberano per l’ospite successivo, e riaprirli costa di nuovo.
+
+> [!PARKY]
+> Lo zaino lo chiudiamo nell’armadietto fra Shambhala e Dragon Khan e facciamo tutte e due prima di riaprirlo: così i 2 euro li paghiamo una volta sola. A 134 km/h non voglio comunque niente in grembo. Nel [pianificatore della giornata](/trip-planner) le mettiamo una subito dopo l’altra.
 
 Un passeggino singolo costa 12 euro di noleggio più 12 euro di cauzione, uno doppio 18 euro più 12 euro di cauzione, una sedia a rotelle 12 euro più 10 euro. Gli ospiti con una disabilità riconosciuta dal 33 per cento in su e una mobilità ridotta documentata ricevono una tessera per l’«Exclusive Access» alle attrazioni e agli spettacoli, con fino a quattro accompagnatori sulle giostre.
 

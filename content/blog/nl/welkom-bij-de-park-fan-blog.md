@@ -257,6 +257,9 @@ tijdlijn zet, en wie wil, krijgt een pushbericht zodra de rij bij een attractie
 onder een zelfgekozen grens zakt. Er is geen paywall en geen reclame, en wie het
 bouwt, staat zelf ook in de rij.
 
+> [!PARKY]
+> In plaats van ons aan de reling bij Taron vast te houden, zetten we voor hem een pushbericht aan en jagen we intussen in Maus au Chocolat op muizen van 5000, en ik kaap er voor jouw neus geen enkele weg. Zodra de rij bij Taron onder onze grens zakt, laat de telefoon het weten en lopen we naar Klugheim.
+
 ## Wat deze blog moet worden
 
 Aan een wachttijd op zichzelf heb je bijna niets. Hetzelfde getal betekent iets

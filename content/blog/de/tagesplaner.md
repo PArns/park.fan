@@ -184,6 +184,9 @@ Deine Mittagspause, jede Bahn, die du schon abgehakt hast, und jeder Block,
 dessen Uhrzeit bereits angefangen hat, bleiben beim Sortieren, wo sie sind. Wer um 14 Uhr auf den Knopf drückt, steht um 14 Uhr in irgendeiner
 Warteschlange, und die verschiebt niemand mehr.
 
+> [!PARKY]
+> Bevor wir im [Tagesplaner](/trip-planner) auf „Tag optimieren“ drücken, ziehen wir die Mittagspause dorthin, wo wir wirklich essen wollen: Beim Einrichten landet sie auf 12:30, und beim Sortieren bleibt sie, wo sie ist. Mein Magen lässt sich nämlich nicht so leicht verschieben wie ein Block. Schlägt der Planer später unter „Stellschrauben“ vor, die Pause für eine Bahn mehr zu kürzen, entscheiden wir selbst, was uns lieber ist.
+
 Und weil so ein Knopfdruck aus drei Blöcken elf machen kann, gibt es zum
 Ergebnis genau ein Rückgängig.
 

@@ -269,6 +269,9 @@ standen in unseren Live-Daten 27 Dollar für den Multi Pass und 329 Dollar für 
 Tag darauf 23 und 299 Dollar. Der Single Pass für TRON kostete an beiden Tagen 19 Dollar, der für
 Seven Dwarfs Mine Train am 30. September 11 Dollar. Zu kaufen gab es beide an diesem Tag nicht. Den für TRON konnte man am 30. September schon wieder für den Folgetag kaufen.
 
+> [!PARKY] Mine Train kaufen
+> Ohne Disney-Hotel kaufen wir, wenn überhaupt, den Single Pass für den Seven Dwarfs Mine Train und nicht den für TRON: TRON fahren wir zur Öffnung, wenn seine Warteschlange am kürzesten ist, der Mine Train bleibt dagegen von mittags bis in den Abend gleich voll. Einen Brummbär haben die sieben Zwerge schon, den achten muss ich nicht den ganzen Nachmittag in der Warteschlange geben. Am 30. September kostete sein Pass 11 Dollar, acht weniger als der für TRON, und für denselben Tag war keiner der beiden mehr zu haben, also kaufen wir ihn vorher.
+
 ## Wann du hinfahren solltest
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays
@@ -301,6 +304,9 @@ Danach folgt Mickey's Very Merry Christmas Party an 25 Abenden vom 8. November b
 189 bis 229 Dollar plus Steuer, Kinder von drei bis neun zahlen zehn Dollar weniger. Dazu gehören
 die Parade Mickey's Once Upon a Christmastime Parade und das Feuerwerk Minnie's Wonderful
 Christmastime Fireworks Show. Auch an diesen Abenden schließt der Park für alle anderen früher.
+
+> [!PARKY]
+> Ohne Partykarte legen wir das Magic Kingdom auf einen Tag ohne Party: Bis zum 14. Dezember hat es dann bis 22 oder 23 Uhr offen statt bis 18 Uhr, und zum Schluss läuft Happily Ever After. Ein Feuerwerk zum Parkschluss lasse ich mir nicht nehmen. Den passenden Tag deiner Reise suchen wir im [Reiseplaner](/orlando#planner) aus.
 
 ## Was geschlossen ist und was kommt
 

@@ -237,6 +237,9 @@ Children aged 12 and over may enter the parks without an adult.
 
 For Halloween there's the code SUSTO26, with up to 30 percent off tickets for visits from 19 September to 15 November, which has to be redeemed by 15 November. The code ESCAPEPAW gives 40 percent off weekday visits if you buy by 14 October and come by 4 December.
 
+> [!PARKY] Take two days
+> If we're not staying in one of the resort's hotels, we buy two days for the park straight away: €43 online instead of €37, so the second day costs €6. That's a whole park day for less than a single Express ONE ride, and just thinking about it gives me a bit of airtime. In a resort hotel you get it anyway, since one night there already means two days of park access.
+
 ### Annual passes
 
 The four annual passes are valid for 365 days from purchase. Juniors are children aged 4 to 10, seniors are 60 and over, and children aged 0 to 3 are free.
@@ -293,6 +296,9 @@ You can't bring food and drinks into the park. There's a picnic area outside the
 For table service there's Iron Horse in Far West (burgers, ribs, steaks), Raco de Mar in Mediterrània (salads and rice dishes), the Vinosfera with tapas and the Hacienda El Charro in México. Self-service options include Bora Bora in Polynesia, La Cantina in México, Marco Polo in China (buffet) and Sichuan. In Ferrari Land, the Trattoria Maranello serves salads, pizza, pasta, meat and fish at the table. Pit Lane is quicker, with self-service, and there are also Paddock, Finish Line, Ice Cream Box and Stop & Go.
 
 Lockers come in three sizes: small €8, medium €11 and large €15. There are also lockers at the rides, €2 for a rucksack, at four spots: between Shambhala and Dragon Khan, at the entrance to Furius Baco, next to Tutuki Splash and at the approach to Silver River Flume. After opening they're free for the next guest, and opening one again costs again.
+
+> [!PARKY]
+> We lock the rucksack in between Shambhala and Dragon Khan and ride both before we open the locker again, so we only pay the €2 once. At 134 km/h I don't want anything on my lap anyway. In the [day planner](/trip-planner) we put the two back to back for it.
 
 A single stroller costs €12 to rent plus a €12 deposit, a double stroller €18 plus a €12 deposit, a wheelchair €12 plus €10. Guests with a recognised disability of 33 percent or more and proven reduced mobility get a pass for "Exclusive Access" to rides and shows, with up to four companions on the rides.
 

@@ -281,6 +281,9 @@ Un exemple pour DisneySea, un jour d’automne ordinaire avec ouverture à 9 h 
 
 À Tokyo Disneyland, le schéma est le même : Big Thunder Mountain et Splash Mountain le matin, Enchanted Tale of Beauty and the Beast avec un Premier Access ou le soir.
 
+> [!PARKY] Plutôt le soir
+> À Tokyo Disneyland, on se passe du Premier Access pour Enchanted Tale of Beauty and the Beast : à 2 500 yens, il y coûte plus cher que pour n’importe quelle autre attraction du parc. Le resort lui-même envoie plutôt les visiteurs là-bas le soir, quand la file est en général plus courte que le matin, alors dans notre [planificateur de journée](/trip-planner), la Belle et la Bête ont droit à la dernière danse. Avant d’y aller, on vérifie dans le calendrier du resort si le parc reste ouvert jusqu’à 21 h ce jour-là ou s’il ferme dès 18 h 30.
+
 ## Billets et prix
 
 Le billet s’appelle **1-Day Passport**. Le prix dépend de la date, et un même jour les deux parcs coûtent la même chose. Au 3 octobre 2026, pour les visites d’octobre 2026 à février 2027 :
@@ -297,6 +300,9 @@ Les enfants jusqu’à trois ans entrent gratuitement. En octobre et novembre 20
 Si tu arrives plus tard, deux passeports plus courts existent. L’**After 3 Passport** vaut les week-ends et jours fériés à partir de 15 h et coûte de 7 900 à 9 900 yens pour un adulte ; l’**After 5 Passport** vaut du lundi au vendredi hors jours fériés à partir de 17 h et coûte 6 000 ou 6 600 yens. Les visiteurs en situation de handicap et un accompagnateur ont leur propre 1-Day Passport, de 7 900 à 9 900 yens pour un adulte. La page billetterie du resort ne mentionne aucun abonnement annuel. Pour venir plusieurs jours, on achète un passeport pour chaque jour.
 
 La vente se fait uniquement en ligne, sur le site et dans l’appli, et les caisses à l’entrée sont fermées. Les clients d’un hôtel Disney peuvent aussi acheter à l’hôtel. Chaque jour à 14 h, heure du Japon, s’ouvre la vente pour le jour situé deux mois plus tard. En France, cela fait 6 h du matin en hiver et 7 h en été. Une commande peut compter jusqu’à dix billets, et si tu annules de ton côté, rien n’est remboursé. Pour ressortir et revenir le même jour, préviens un membre du personnel à la sortie, puis rentre plus tard avec le même billet.
+
+> [!PARKY]
+> Comme le parc se choisit à l’achat, on répartit d’abord les deux sur tes jours de voyage dans le [planificateur de voyage](/japon#planner), et s’il y a un samedi, il revient à DisneySea : là-bas, le jour de la semaine ne change presque rien, alors qu’à Tokyo Disneyland, le samedi est nettement plus chargé. Ensuite, on règle le réveil sur 6 h en hiver, une heure où je ne me lève d’habitude que pour le rope drop, et on achète chaque jour dès qu’il est mis en vente.
 
 ## Venir au resort
 

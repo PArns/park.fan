@@ -97,6 +97,9 @@ columns: peak,days
 
 Además de la entrada, para cada visita necesitas una reserva de parque para ese día concreto. Para dos días está el Non-stop 2-Day Fun Ticket, que cuesta HK$ 100 más que una entrada normal de un día. Los adultos pagan desde HK$ 769, y los niños de 3 a 11 años y las personas de 60 años o más, desde HK$ 599. Se puede comprar hasta el 31 de diciembre de 2026.
 
+> [!PARKY] Que sean dos días
+> Por HK$ 100 más sumamos un segundo día con el Non-stop 2-Day Fun Ticket, lo compramos como muy tarde el 31 de diciembre y reservamos ya los dos días de parque. Así no tengo que elegir entre Hyperspace Mountain y Olaf: el primer día hacemos las atracciones grandes en el orden del [planificador del día](/trip-planner), y el segundo es para Arendelle, con su mercado de invierno, y para el árbol de Navidad de Main Street, U.S.A.
+
 En MTR vas hasta Sunny Bay y allí cambias a la Disneyland Resort Line, que te deja en el mismo resort. Desde el aeropuerto, desde la estación de MTR de Kowloon o desde la Hong Kong Station, el trayecto ronda los 30 minutos.
 
 ```best-days-widget slug=hong-kong-disneyland-park

@@ -183,6 +183,9 @@ aperto dalle 10 alle 20, poi fino al 31 gennaio dalle 11 alle 18 dal lunedì al
 venerdì e dalle 10 alle 19 nel fine settimana. I coaster all’aperto girano
 finché il tempo lo permette.
 
+> [!PARKY] Fatti un regalo
+> Dal 21 dicembre al 3 gennaio all’Efteling prendiamo il biglietto serale a 33 €: dalle 16 alla chiusura delle 20 sono quattro ore, e a dicembre alle quattro e mezza è già buio. A Droomvlucht, Symbolica e Danse Macabre il meteo non importa, e a me sotto l’ombrello nemmeno. Solo a San Silvestro il biglietto serale non c’è, perché il parco chiude alle 18.
+
 La sera del 31 dicembre Efteling festeggia Oud & Nieuw dalle 19 all’1, con i
 fuochi d’artificio. I biglietti da 62 € sono esauriti, anche quelli scontati per
 gli abbonati, e per quella notte non ci sono più alloggi liberi

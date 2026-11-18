@@ -395,6 +395,9 @@ parkeert in 2027 gratis op de grote parkeerplaats; bij aankoop tot 24 maart beta
 **Inbegrepen bij het ticket.** Alle attracties, shows en doe-attracties die in bedrijf zijn. Losse
 onderdelen zoals het goudwassen kosten extra.
 
+> [!PARKY] Vroeg kopen loont
+> Gaan we in 2027 drie keer of vaker, dan halen we de seizoenkaart uiterlijk 24 maart: dan kost hij € 120 in plaats van € 140, en als volwassenen parkeren we voor € 1 per dag in plaats van € 7. Wat we overhouden, breng ik naar Elins Vafflejern. Drie dagtickets vanaf 12 jaar kostten in 2026 samen al € 159.
+
 ## Wat er in 2027 komt
 
 Voor de 50e verjaardag van het park komt de **Buddenbrook-Turm** in de Hansa-Garten: een

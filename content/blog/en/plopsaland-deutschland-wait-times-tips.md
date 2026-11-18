@@ -119,6 +119,9 @@ a ride of one minute and 30 seconds), and
 the only one under a roof, and it belongs to the Holiday Indoor hall, opened in 2018 across
 5,000 square metres.
 
+> [!PARKY]
+> In March and November we check the temperature in Haßloch before we set off. Below eight degrees GeForce and Sky Scream stand still, and I'd hate to miss the three GeForce hills that lift us out of our seats. Of the four coasters, only 100% Wolf, which starts from five degrees, and Tabaluga's Rollercoaster in the hall keep running then. If the forecast is that low, we'd rather pick a warmer day.
+
 ## Water rides and towers
 
 The Free Fall Tower was Germany's first drop tower when it opened in 1997, an Intamin Giant

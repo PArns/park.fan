@@ -118,6 +118,9 @@ minuto e 30 secondi di corsa) e
 l'unico al coperto: appartiene al padiglione Holiday Indoor, aperto nel 2018 su 5.000 metri
 quadrati.
 
+> [!PARKY]
+> A marzo e a novembre, prima di partire, guardiamo la temperatura a Haßloch. Sotto gli otto gradi GeForce e Sky Scream restano fermi, e alle tre collinette di GeForce che ci sollevano dal sedile rinuncio malvolentieri. Dei quattro ottovolanti funzionano allora solo 100% Wolf, che parte già dai 5 gradi, e Tabaluga's Rollercoaster nel padiglione. Se le previsioni dicono così poco, scegliamo piuttosto un giorno più mite.
+
 ## Attrazioni d'acqua e torri
 
 La Free Fall Tower è stata nel 1997 la prima torre di caduta della Germania, un Giant Drop di

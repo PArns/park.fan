@@ -381,6 +381,9 @@ si possono solo comprare, e il parco consiglia di portare i propri. Si paga con 
 chiave dell’armadietto. Le spese vengono addebitate sul braccialetto e saldate
 all’uscita. Il WiFi è gratuito. Il **ResortPass Gold** dell’Europa-Park comprende due biglietti giornalieri per Rulantica.
 
+> [!PARKY] Ne vale la pena
+> Se dormiamo comunque in uno degli hotel dell’Europa-Park Erlebnis-Resort, prendiamo il biglietto al prezzo migliore, da 28 a 48 €, invece del giornaliero da 38 a 54 €. Da ospiti dell’hotel entriamo alle 9:00, mezz’ora prima di tutti gli altri, e nella cabina a caduta salgo a occhi chiusi, vertigini o no. Anche l’armadietto, dai dodici anni, è già incluso.
+
 Sulla sua pagina il parco cita il Parkscout plus Award dal 2020 al 2025 (“il
 miglior parco acquatico d’Europa”) e l’EWA Professional Award 2025 per
 l’innovazione dell’offerta. Snorri Snorkling VR nel 2022 ha ricevuto il Golden

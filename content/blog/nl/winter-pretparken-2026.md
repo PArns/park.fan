@@ -188,6 +188,9 @@ met 3 januari is het park open van 10 tot 20 uur, daarna tot en met 31 januari
 van maandag tot en met vrijdag van 11 tot 18 uur en in het weekend van 10 tot
 19 uur. De buitenachtbanen rijden zolang het weer het toelaat.
 
+> [!PARKY] Gun het jezelf
+> Van 21 december tot en met 3 januari nemen we in de Efteling het avondticket van €33: van 16 tot 20 uur zijn dat vier uur, en in december is het vanaf half vijf donker. Droomvlucht, Symbolica en Danse Macabre trekken zich niets van het weer aan, en ik onder mijn paraplu evenmin. Alleen op oudejaarsdag is er geen avondticket, dan sluit het park al om 18 uur.
+
 Op de avond van 31 december viert de Efteling Oud & Nieuw, van 19 tot 1 uur, met
 vuurwerk. De tickets van €62 zijn uitverkocht, ook die met korting voor
 abonnementhouders, en voor die nacht zijn er geen accommodaties meer

@@ -355,6 +355,9 @@ November, und Ibilaw läuft über beide. Die Weihnachtsferien beginnen in beiden
 Landesteilen am 21. Dezember 2026 und enden in Wallonien und Brüssel am
 1. Januar, in Flandern am 3. Januar 2027, also mitten in Walibi Winter.
 
+> [!PARKY]
+> Für Walibi Winter suchen wir uns einen Tag vor dem 21. Dezember aus: Ab dann haben beide Landesteile Weihnachtsferien, und die Schulferien entscheiden in Wavre, wie voll es wird. Loup-Garou fährt nur noch bis zum 3. Januar, und ich verabschiede mich lieber ohne Ferienandrang. Welche Tage der Park offen hat, steht auf der Parkseite.
+
 ## Die Reihenfolge für einen Tag
 
 Bei Öffnung zuerst zu **Kondaa**, weil die erste Stunde in unseren Messungen (seit Ende

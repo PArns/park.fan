@@ -114,6 +114,9 @@ Fuori dall’estate e dalle settimane di vacanza, Elmo lavora solo nel fine sett
 
 SeaWorld San Diego festeggia ogni giorno la [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026) dal 13 novembre 2026 al 3 gennaio 2027, compresa nell’ingresso. Howl-O-Scream, con biglietto proprio, si è svolto nel 2026 dall’11 settembre al 31 ottobre, e per il 2027 SeaWorld indica serate selezionate dal 10 settembre al 31 ottobre.
 
+> [!PARKY] Il momento giusto
+> Per i programmi di Natale andiamo tra il 30 novembre e il 18 dicembre: a quel punto sono già tutti in corso a Disneyland, a Universal, da Knott’s e a SeaWorld, e le scuole di Los Angeles non hanno giorni liberi. I fuochi d’artificio alla chiusura non me li perdo mai. A LEGOLAND andiamo quindi il 5 o il 12 dicembre, le due sere con i fuochi della Christmas Bricktacular.
+
 ![Lettere bianche con la scritta SeaWorld San Diego su una pensilina gialla, sotto un cielo grigio. | Qui, sulla Mission Bay, SeaWorld è nato nel 1964.](/media/seaworld-san-diego/sign.jpg)
 
 ## Dove dormire
@@ -162,6 +165,9 @@ Senza auto a noleggio raggiungi Universal, Disneyland e LEGOLAND in treno e in a
 ### Aeroporti
 
 Disney indica sei aeroporti per il Disneyland Resort, dal più vicino al più lontano: John Wayne (SNA) a Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) e San Diego (SAN). Dalla stazione dell’aeroporto di Burbank il Pacific Surfliner va senza cambi fino ad Anaheim, e la navetta gratuita LOT D dell’aeroporto ti porta alla stazione. San Diego International si trova a poco meno di cinque chilometri a nord-ovest del centro di San Diego e si adatta alla parte sud del viaggio: arrivando a Los Angeles e ripartendo da San Diego eviti di riattraversare in auto tutta la regione.
+
+> [!PARKY] Un solo trasloco
+> Atterriamo a Los Angeles, dormiamo su Harbor Boulevard per Disneyland, Knott’s, Universal e Magic Mountain e per i tre parchi del sud ci spostiamo nel Gaslamp Quarter. Da lì SeaWorld è a 13 minuti invece di 111, e più di quattro ore d’auto per una giornata a Sesame Place sarebbero troppa autostrada per troppo poco Elmo. Torniamo in aereo da San Diego, e nel [pianificatore di viaggio](/california#planner) impostiamo le due parti separatamente.
 
 ## Biglietti
 

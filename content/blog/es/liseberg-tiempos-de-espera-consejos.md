@@ -384,6 +384,9 @@ entrada de Jul 2026 el parque todavía no los ha publicado. La Tierra de los
 Conejos abrió en 2026 en 42 días adicionales de invierno, todos los fines de
 semana y en las vacaciones escolares.
 
+> [!PARKY] Mejor en verano
+> Todas las grandes atracciones en un mismo día solo se consiguen en verano: en Halloween Valkyria no funciona, en Jul de 2025 Helix y la Lisebergbanan no estaban, y AtmosFear de todos modos solo funciona en verano. En la subida cierro los ojos, pero la caída libre de 90 metros no me la pierdo. Al mercado navideño volvemos encantados, que en 2025 Balder y Valkyria también funcionaban.
+
 ## Entradas y precios
 
 Liseberg vende por separado la entrada y la pulsera de atracciones. El

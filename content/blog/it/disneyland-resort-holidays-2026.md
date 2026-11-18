@@ -98,6 +98,9 @@ Al Disneyland Hotel, al Pixar Place Hotel e al Grand Californian Hotel & Spa Bab
 
 Per le notti dall'11 ottobre al 18 dicembre negli hotel paghi fino al 20 per cento in meno, se resti almeno tre notti e prenoti entro il 15 dicembre. A Downtown Disney, dal 13 novembre, ogni sera scende la neve davanti al palco «Downtown Disney LIVE!», con band e DJ.
 
+> [!PARKY] Tre notti
+> Se dormiamo in uno degli hotel Disney, prenotiamo entro il 15 dicembre almeno tre notti, tutte prima del 19: così paghiamo fino al 20 per cento in meno, e Babbo Natale sta ancora a Toontown, dove l'ha spedito il cane dei cartoni animati. Quale parco va in quale giorno lo decidiamo nel [pianificatore di viaggio](/california#planner), e poi prendiamo le prenotazioni dei parchi proprio per quei giorni.
+
 Fonti:
 [Holidays at the Disneyland Resort 2026 (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/holidays-at-the-disneyland-resort-returns-with-festival-favorites-and-classic-traditions-nov-13-2026-jan-6-2027/),
 [Haunted Mansion Holiday Fun Facts (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/haunted-mansion-holiday-fun-facts-3/),

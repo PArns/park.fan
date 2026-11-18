@@ -364,6 +364,9 @@ Herbsttagen fällt das weg, dann schließen die Wasserbahnen mit der Dämmerung.
 **Scream** und der **Big Loop** sind die Lückenfüller zwischen zwei großen
 Bahnen.
 
+> [!PARKY]
+> An einem langen Herbsttag geht der Plan anders: Gefahren wird erst ab 12 Uhr, und die Wasserbahnen schließen ab etwa 17 Uhr, also werden wir vor fünf nass. Ab etwa 16 Uhr öffnen an den Halloween-Tagen die drei Mazes, deren Zeitfenster wir vorher online buchen, und zwischen zweien halte ich mich an einem Schmalzkuchen fest. Was dazwischen passt, legen wir im [Tagesplaner](/trip-planner) fest.
+
 ## Praktisches: Anreise, Tickets, Öffnungszeiten
 
 **Anreise.** Heide Park 1, 29614 Soltau, an der **A7** zwischen Hamburg und
@@ -393,6 +396,9 @@ kostenlos rein, brauchen aber ein 0-€-Ticket aus dem Online-Shop.
 
 **Essen.** 21 gastronomische Betriebe führt unsere Parkseite, von der Schmalzkuchen-Schmiede auf der Colossos-Terrasse bis zum
 Wirtshaus des Admirals, einem Buffet-Restaurant in der Bucht der Piraten. Pizza gibt es bei Pizza Scream, Flammkuchen in der Flammkuchen Factory, beide in Transsilvanien, und Thüringer Rostbratwurst vom Lavagrill am Heide Park Grill im Eingangsbereich. Frau Mümmels Kiosk im Peppa Pig Land verkauft Bowls, und viele Restaurants haben pflanzliche Alternativen.
+
+> [!PARKY]
+> Die Jahreskarte kaufen wir erst kurz vor dem ersten Besuch 2027: Sie gilt zwölf Monate ab dem Kauf, und bis Ende März fährt in Soltau nichts. Im Dezember gekauft, verliert sie Monate, in denen ich von Colossos nur träumen kann. Kommen wir auch samstags, muss es der Silber Pass sein, denn Bronze galt 2026 an den meisten Samstagen von April bis Oktober nicht.
 
 ## Häufige Fragen zum Heide Park
 

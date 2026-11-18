@@ -414,6 +414,9 @@ le stationnement revient à 1 € par jour.
 **Compris dans le billet.** Toutes les attractions, tous les spectacles et toutes les activités
 participatives en service. Quelques prestations comme l’orpaillage sont payantes à part.
 
+> [!PARKY] À prendre tôt
+> Si on vient trois fois ou plus en 2027, on prend la carte de saison d’ici le 24 mars : elle coûte alors 120 € au lieu de 140 €, et en tant qu’adultes, on se gare pour 1 € par jour au lieu de 7 €. Ce qu’on économise finit chez Elins Vafflejern. Trois billets à partir de 12 ans coûtaient déjà 159 € en 2026.
+
 ## Ce qui arrive en 2027
 
 Pour les 50 ans du parc arrive la **Buddenbrook-Turm** dans le Hansa-Garten : une tour

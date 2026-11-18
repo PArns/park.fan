@@ -65,6 +65,9 @@ A differenza del 2025, lungo la strada passeggiano anche Hello Kitty e Kuromi di
 
 I fuochi partono alle 20 e vanno a tempo con la musica dei BTS. Resorts World Sentosa li chiama BTS THE CITY ARIRANG Fireworks, ma non ha indicato da quale punto del parco vengono lanciati. Nel 2025 si sono alzati sopra il Lake Hollywood. Lunedì 21 dicembre li vede solo chi ha il biglietto per la serata BTS. Un posto riservato per guardarli lo ottieni solo con il 2-Park Pass with Festive Perks; con il biglietto normale te lo cerchi da solo.
 
+> [!PARKY]
+> Per i fuochi scegliamo una sera tra il 16 e il 25 dicembre, tranne il 21: il parco è aperto fino alle 21, e quando i fuochi partono alle 20 ci resta ancora un'ora prima della chiusura. Per dei fuochi sulla musica dei BTS imparo perfino i testi in fretta. Prima, alle 19.30, ci mettiamo davanti alla facciata di Revenge of the Mummy per Lightscape.
+
 ## I BTS nel parco
 
 Il 21 dicembre Universal Studios Singapore chiude già alle 19, e dalle 20 all'una di notte lì si tiene BTS THE CITY ARIRANG Night Out. L'ingresso costa 58 dollari di Singapore a persona.

@@ -115,6 +115,9 @@ L’ingresso single rider conviene in tre casi: sei da solo nel parco, il tuo gr
 oppure vuoi a tutti i costi quella attrazione e l’attesa normale è troppo lunga. Nel secondo caso vi
 dividete, salite uno alla volta e vi ritrovate all’uscita.
 
+> [!PARKY]
+> In tre su un’attrazione con due posti per fila, come WODAN, blue fire o Taron, ci dividiamo solo a metà: due restano nella coda normale e siedono vicini, il terzo prende l’ingresso single rider. Il posto singolo lo prendo volentieri io, accanto a sconosciuti mi stacco dal sedile lo stesso. All’uscita siamo di nuovo in tre.
+
 Non conviene in questi casi:
 
 - **Sali con un bambino che ha bisogno di un accompagnatore.** Per Eurosat all’Europa-Park la pagina

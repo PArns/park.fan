@@ -68,6 +68,9 @@ Für den Winter verkauft das Resort zwei Angebote, deren Preise es nicht genannt
 - Disney Dream Vacation – Winter Frostival Package: eine Nacht im Shanghai Disneyland Hotel oder im Toy Story Hotel, Frühstücks- und Abendbuffet für zwei Erwachsene, zwei Tagestickets mit festem Datum, Verzehrgutscheine für den Park und Disney Premier Access für die Cavalcade für zwei Personen
 - Tagesticket mit Gutschein über 88 Yuan: gilt an einem Tag deiner Wahl bis zum 3. Januar 2027, der Gutschein gilt für ein Kombi-Menü zur Abendessenszeit in ausgewählten Schnellrestaurants im Park
 
+> [!PARKY] Ticket ohne Datum
+> Von den beiden Winterangeboten nehmen wir das Tagesticket mit dem Gutschein über 88 Yuan, weil es an einem Tag unserer Wahl bis zum 3. Januar gilt. Den Tag legen wir dann kurzfristig nach Wetter und Luftqualität fest, denn bei Regen, Wind, Nebel oder Gewitter kann das Resort die Shows verschieben oder absagen. In der Schneekugel von Mickey's Snow Magic stehe ich lieber ohne Regenschirm. Den Gutschein heben wir uns fürs Abendessen auf.
+
 Neu auf der Karte stehen Frühlingsrollen mit Wagyu-Cheeseburger-Füllung und Youdunzi in Mickey-Form, die es nur zum Frühstück gibt. Tanghulu gibt es im Look von Mickey und Co., gegen die Kälte heiße Schokolade und Milchtee, dazu Weihnachtskekse, Muffins und Zuckerwatte. Die Royal Banquet Hall und das Aurora haben neue Festmenüs, im Shanghai Disneyland Hotel und im Toy Story Hotel gibt es den Winter über Abendbuffets.
 
 ## Anreise mit der Metro, im November ohne Fähre

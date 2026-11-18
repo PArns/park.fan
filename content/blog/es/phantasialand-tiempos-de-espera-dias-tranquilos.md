@@ -169,6 +169,9 @@ domingo 25 de octubre se va hacia las 17:20, y poco antes de las 18:00 ya es de 
 última media hora antes del cierre se encienden las luces de Klugheim mientras Taron sigue
 funcionando.
 
+> [!PARKY]
+> Entre semana dejamos Taron para la tarde: a partir de las 14:00 la cola mide solo unos dos tercios de la de la mañana. Desde el 25 de octubre hacemos la última vuelta en la media hora antes del cierre, cuando se encienden las luces de Klugheim, y entre las rocas de basalto a oscuras se me pone la piel de gallina hasta debajo del sombrero. El resto del día lo planificamos atracción por atracción en el [planificador del día](/trip-planner).
+
 ## Cuánto durarán todavía los días vacíos
 
 Las noches de Halloween de los parques vecinos terminan entre el 1 de noviembre, en Walibi

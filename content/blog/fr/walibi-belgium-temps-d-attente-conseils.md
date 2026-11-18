@@ -361,6 +361,9 @@ Bruxelles ont leur congé d’automne du 19 au 30 octobre, les écoles flamandes
 21 décembre 2026 dans les deux communautés et se terminent le 1er janvier en
 Wallonie et à Bruxelles, le 3 janvier 2027 en Flandre, en plein Walibi Winter.
 
+> [!PARKY]
+> Pour Walibi Winter, on choisit un jour avant le 21 décembre : à partir de là, les deux communautés sont en vacances de Noël, et à Wavre, ce sont les vacances scolaires qui décident de l’affluence. Le Loup-Garou ne roule plus que jusqu’au 3 janvier, et je préfère lui dire au revoir sans la foule des vacances. Les jours d’ouverture sont sur la page du parc.
+
 ## L’ordre de la journée
 
 À l’ouverture, direction **Kondaa** en premier, parce que, dans nos mesures (depuis fin

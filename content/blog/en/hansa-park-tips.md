@@ -386,6 +386,9 @@ car park all through 2027; buy it by 24 March and parking is €1 a day.
 **Included in the ticket.** Every ride, show and hands-on attraction that's running. A few extras,
 such as the gold panning, cost separately.
 
+> [!PARKY] Get in early
+> If we're coming three times or more in 2027, we buy the season pass by 24 March: it's €120 instead of €140 then, and as adults we park for €1 a day instead of €7. Whatever's left over goes to Elins Vafflejern. Three day tickets for ages 12 and up already came to €159 in 2026.
+
 ## What comes in 2027
 
 For the park's 50th birthday, the **Buddenbrook-Turm** goes up in the Hansa-Garten: an 86-metre

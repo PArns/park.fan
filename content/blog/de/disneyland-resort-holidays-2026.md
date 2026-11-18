@@ -98,6 +98,9 @@ Im Disneyland Hotel, im Pixar Place Hotel und im Grand Californian Hotel & Spa s
 
 Für Nächte vom 11. Oktober bis zum 18. Dezember zahlst du in den Hotels bis zu 20 Prozent weniger, wenn du mindestens drei Nächte bleibst und bis zum 15. Dezember buchst. In Downtown Disney fällt ab dem 13. November jeden Abend an der Bühne „Downtown Disney LIVE!“ Schnee, dazu spielen Bands und DJs.
 
+> [!PARKY] Drei Nächte
+> Schlafen wir in einem der Disney-Hotels, buchen wir bis zum 15. Dezember mindestens drei Nächte, die alle vor dem 19. liegen: Dann zahlen wir bis zu 20 Prozent weniger, und der Weihnachtsmann sitzt noch in Toontown, wohin ihn der Zeichentrickhund vertrieben hat. Welcher Park an welchem Tag dran ist, legen wir im [Reiseplaner](/california#planner) fest, und für genau diese Tage holen wir uns dann die Parkreservierungen.
+
 Quellen:
 [Holidays at the Disneyland Resort 2026 (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/holidays-at-the-disneyland-resort-returns-with-festival-favorites-and-classic-traditions-nov-13-2026-jan-6-2027/),
 [Haunted Mansion Holiday Fun Facts (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/haunted-mansion-holiday-fun-facts-3/),

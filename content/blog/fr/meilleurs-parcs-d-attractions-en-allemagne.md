@@ -328,6 +328,9 @@ aussi plein, alors qu’à Rust, Soltau et Bottrop, c’est l’un des jours les
 enfants qui ne peuvent que le week-end, mieux vaut donc le dimanche que le samedi, sauf à Brühl. Au Plopsaland, tous les jours sont aussi
 calmes les uns que les autres, samedi compris.
 
+> [!PARKY]
+> Si on ne peut y aller que le samedi, on file au Plopsaland, à Haßloch : là-bas, ce jour-là n’est pas plus chargé que le reste de la semaine. Dès un mètre, les enfants montent avec un adulte dans 100% Wolf, les montagnes russes familiales, et mon compteur de coasters prend un tour de plus. Pour les parents, l’Expedition GeForce attend juste à côté, à partir de 140 centimètres.
+
 Juillet et août sont les mois les plus chargés dans presque tous
 les parcs, au Phantasialand avec une large avance. Septembre est l’un des plus calmes à Brühl, à
 Soltau et à Bottrop, parce que les vacances d’été sont terminées dans la plupart des Länder et que
@@ -381,6 +384,9 @@ Les distances sont à vol d’oiseau entre les entrées.
 
 Je déconseille Europa-Park et Phantasialand sur un même week-end. Les 288 kilomètres à vol
 d’oiseau font plus de quatre heures de route par l’A5 et l’A61.
+
+> [!PARKY]
+> En hiver, on enchaîne le Phantasialand et le Movie Park sur deux jours entre le 27 novembre et Noël : ce n’est qu’à partir du 27 que le Wintertraum et Hollywood Christmas tournent tous les deux, et autour du Nouvel An, c’est la période la plus chargée de l’hiver à Brühl. Là-bas, on fait Taron de nuit, et à chacun des deux lancements je flotte un instant au-dessus de mon siège entre les guirlandes lumineuses. Pour Bottrop, on prend le RE14 depuis Essen, et de la gare de Feldhausen il reste environ 400 mètres jusqu’à l’entrée.
 
 ## Les parcs qui manquent ici
 

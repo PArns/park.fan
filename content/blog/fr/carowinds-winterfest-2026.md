@@ -88,6 +88,9 @@ Un billet pour une date fixe coûte à partir de 50 dollars en ligne. Le Good An
 
 Jusqu’au 30 novembre, Carowinds vend le Silver Pass 2027 à 69 dollars, soit le prix d’un Good Any Day Ticket. Il donne accès au parc et à Carolina Harbor jusqu’au Labor Day 2027, parking compris. Il est accompagné d’un billet Bring-A-Friend, à utiliser au plus tard le 3 janvier 2027. Avec un plan repas et boissons, il coûte 159 dollars ; Carowinds indique 287 dollars comme prix normal. Il vaut déjà pour la fin de 2026, donc pour le WinterFest : qui vient le week-end avant Noël avec ce pass a l’été 2027 offert en prime. Le Gold Pass, à 105 dollars, vaut en 2026 et 2027 dans tous les parcs Six Flags de la côte Est.
 
+> [!PARKY]
+> Si on y va à deux, l’un de nous achète le Silver Pass à 69 dollars d’ici le 30 novembre, et l’autre entre avec le billet Bring-A-Friend, à utiliser au plus tard le 3 janvier. Deux billets à date fixe coûtent ensemble au moins 100 dollars en ligne, frais en sus, et ce qu’on économise, moi, je le bois en chocolat chaud dans un gobelet souvenir. Avec le pass, le parking est de toute façon gratuit.
+
 ## Entrée gratuite dès 65 ans
 
 Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Carowinds jusqu’au 3 janvier 2027. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée est activée lors de la première visite. À chaque passage, on montre à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc choisi à l’inscription, et pas dans les parcs aquatiques. Le parking reste à votre charge. L’entrée gratuite ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass, et les accompagnants ont besoin d’un billet d’entrée normal. Six Flags propose cette gratuité pour la première fois cet hiver.

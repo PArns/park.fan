@@ -68,6 +68,9 @@ Pour l’hiver, le resort vend deux offres dont il n’a pas communiqué les pri
 - Disney Dream Vacation – Winter Frostival Package : une nuit au Shanghai Disneyland Hotel ou au Toy Story Hotel, buffet du petit-déjeuner et du dîner pour deux adultes, deux billets d’une journée à date fixe, des bons de restauration pour le parc et le Disney Premier Access pour la Cavalcade pour deux personnes
 - billet d’une journée avec un bon de 88 yuans : valable un jour au choix jusqu’au 3 janvier 2027, le bon donne droit à un menu combiné à l’heure du dîner dans certains restaurants rapides du parc
 
+> [!PARKY] Billet sans date
+> Des deux offres d’hiver, on prend le billet d’une journée avec le bon de 88 yuans, parce qu’il est valable un jour au choix jusqu’au 3 janvier. On fixe donc le jour au dernier moment, selon la météo et la qualité de l’air, puisque le resort peut décaler ou annuler les spectacles en cas de pluie, de vent, de brouillard ou d’orage. Dans la boule à neige de Mickey’s Snow Magic, je préfère être sans parapluie. Le bon, on le garde pour le dîner.
+
 À la carte, on trouve de nouveaux rouleaux de printemps fourrés façon cheeseburger au wagyu et des youdunzi en forme de Mickey, servis seulement au petit-déjeuner. Les tanghulu prennent l’allure de Mickey et sa bande, chocolat chaud et thé au lait sont là contre le froid, et on trouve aussi des biscuits de Noël, des muffins et de la barbe à papa. La Royal Banquet Hall et l’Aurora proposent de nouveaux menus de fête, et le Shanghai Disneyland Hotel comme le Toy Story Hotel servent des buffets le soir tout l’hiver.
 
 ## En métro, et sans ferry en novembre

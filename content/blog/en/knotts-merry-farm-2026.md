@@ -44,6 +44,9 @@ A vocal quartet sings Christmas standards, and a line of Follies dancers high-ki
 
 Six Flags can't quite settle on the name: the press release of 4 November calls it "Snoopy's Christmas Follies", while the park's event guide says "Snoopy's Merry Christmas Follies". Snoopy has skated at Merry Farm in earlier winters too, for instance in "Snoopy's Night Before Christmas".
 
+> [!PARKY]
+> First thing in the morning we check the Six Flags app for that day's ice show times, since yesterday's schedule is no use. For a beagle on skates I'm happy to push a coaster back. Then we fit the rides around the show in the [day planner](/trip-planner).
+
 ## Lights, shows and Santa
 
 Thousands of lights hang between garlands and big snowflakes. The Holiday Lighting Moment happens every evening across the park. The lights on Main Street and Schoolhouse Road in Ghost Town dance to Christmas music during Snow and Glow, while snow falls. In Calico Park, the Christmas tree is switched on during the "'Tis the Season Tree Lighting Ceremony".

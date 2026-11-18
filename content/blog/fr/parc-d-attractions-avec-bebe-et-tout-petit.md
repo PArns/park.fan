@@ -192,6 +192,9 @@ dont
 c’est l’anniversaire, jusqu’à leurs 11 ans, entrent gratuitement s’ils ont
 réservé en ligne à l’avance.
 
+> [!PARKY]
+> Une copie de la pièce d’identité ou de l’acte de naissance file directement dans le sac à langer : sans justificatif d’âge, ton tout-petit paie au Phantasialand le tarif enfant des 4 à 11 ans, que la billetterie n’indique même pas. Que ce soit justement le plus jeune visiteur qui doive montrer ses papiers, je trouve ça plutôt mignon. Avec le justificatif, les enfants de 0 à 3 ans entrent sans billet réservé.
+
 À côté du service clients se trouve une salle de repos et d’allaitement avec des
 salles de change. Le personnel réchauffe les petits pots. Dans le parc d’hiver
 Wintertraum, le service clients est sur la Kaiserplatz, avec son coin d’allaitement,

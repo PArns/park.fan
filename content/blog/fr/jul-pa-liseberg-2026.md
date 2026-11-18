@@ -77,6 +77,9 @@ Les jours les moins chers sont les 15, 20, 22 et 27 novembre, puis en décembre 
 
 Sans Åkpass, chaque tour se paie en coupons de 25 couronnes. Il en faut quatre pour [Balder](ref:liseberg/balder) : au-delà de deux tours, l’Åkpass revient donc moins cher. Le Lisebergspasset, à 395 couronnes, donne l’entrée pendant douze mois, le Guldpasset, à 2 595 couronnes, l’entrée et toutes les attractions pendant douze mois.
 
+> [!PARKY] En semaine
+> En décembre, on prend un mercredi ou un jeudi jusqu’au 17 : c’est là que ça coûte le moins, et de 15 h à 21 h, on a six heures pour Luma Celestia, les marchés et les grandes attractions. Avec l’Åkpass, je fais de toute façon Balder plus de deux fois, et compter des coupons dans le froid, très peu pour moi. On achète en ligne, aux caisses c’est toujours plus cher.
+
 ## Les attractions ouvertes en hiver
 
 L’entrée donne accès au Tomtehuset et à son père Noël, à la patinoire, à Barnens Paradis (dès quatre ans) et aux Blomsterkarusellen. Les grandes attractions demandent l’Åkpass ou des coupons :

@@ -609,6 +609,9 @@ successivo su “molto alto”. La domenica il parco era di nuovo su “basso”
 Corpus Domini lo stesso schema: il giorno di festa, il 4 giugno, stava su
 “basso”, il venerdì del ponte, il 5, su “alto”.
 
+> [!PARKY] Meglio il giovedì
+> All’Ascensione e al Corpus Domini andiamo il giorno di festa stesso e lasciamo il venerdì di ponte a mezza Germania. Nel 2026 il Corpus Domini stava su “basso” e l’Ascensione su “moderato”, i venerdì successivi su “alto” e “molto alto”. Se abbiamo libero tutto il ponte lungo, la domenica diventa il nostro secondo giorno: dopo l’Ascensione il parco era già tornato su “basso”.
+
 Entrambi i venerdì di ponte hanno fatto un tempo da cani.
 Il 15 maggio 2026 è passato un temporale, il termometro è arrivato a malapena a
 dodici gradi, e nonostante questo è bastato per “molto alto”; il 5 giugno di

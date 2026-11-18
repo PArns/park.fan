@@ -149,6 +149,9 @@ In Parc Astérix hebben we op zomeravonden tot 21 uur gemeten, en in het laatste
 
 Het Parque de Atracciones de Madrid in de Casa de Campo gaat pas rond het middaguur open, en daar is het eerste uur het rustigst. Het langst sta je daar vroeg in de avond in de rij. Wie voor Blackpool Pleasure Beach uitslaapt, mist niets, want de wachttijd bij de grote attracties blijft daar de hele dag bijna gelijk.
 
+> [!PARKY]
+> Rope drop is me heilig, maar weggooien doe ik hem niet: in Thorpe Park lopen we bij de opening niet eerst naar Hyperia, want daar blijft de rij de hele dag bijna even lang. In PortAventura bewaren we Uncharted voor de avond, omdat daar het eerste uur het langste van de dag is, en in de [dagplanner](/trip-planner) zetten we hem meteen achteraan.
+
 ## Wat regen uitmaakte
 
 Op regendagen stonden mensen in alle twaalf parken van onze [regenvergelijking](/blog/pretpark-bij-regen) korter in de rij dan op droge dagen in dezelfde maand, in Movie Park Germany bijna een derde korter. Als regendag telt daar een dag met minstens twee millimeter neerslag. Een regenvoorspelling voor zaterdag is dus eerder een reden om te gaan, vooral naar Movie Park, zolang er geen onweer wordt verwacht.

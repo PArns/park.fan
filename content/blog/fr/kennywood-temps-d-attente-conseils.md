@@ -291,6 +291,9 @@ Imaginons que tu sois à l’entrée à l’ouverture, un samedi d’été, sans
 
 Pour une soirée de Holiday Lights un week-end, j’arriverais à 15 h, je ferais d’abord le Jack Rabbit tant qu’il fait jour, puis j’irais voir la première représentation de Finding Christmas. Après l’illumination du sapin, il reste le temps de caser A Broadway Christmas entre deux passages de Holiday Reflections sur la Lagoon.
 
+> [!PARKY]
+> Un vendredi ordinaire, cette soirée ne marche pas : Holiday Lights n’ouvre qu’à 17 h, et il n’y a pas de Finding Christmas à 16 h 30. En semaine, on prend donc un jour à partir du 19 décembre et on fait le Jack Rabbit tant qu’il fait jour, et sur le double dip, je décolle deux fois. À partir de là, le parc ouvre tous les jours de 15 h à 21 h, sauf les 24 et 25 décembre.
+
 Les sacs sont admis dans le parc jusqu’à 38 × 38 × 38 centimètres (15 pouces de côté), tout comme les sacs à langer et les sacoches médicales. Nourriture et boissons apportées de l’extérieur sont interdites, sauf une bouteille d’eau fermée et les aliments pour régimes particuliers. À l’entrée, un contrôle vise les armes. On paie uniquement sans espèces, par carte, Apple Pay ou Google Pay, et des bornes gratuites convertissent le liquide en carte.
 
 ## Billets

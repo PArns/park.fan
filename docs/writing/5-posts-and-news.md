@@ -108,7 +108,10 @@ finding a friend would want first:
 `Taron im Dunkeln fahre ich am liebsten, und im Wintertraum geht das bis zum 24. Januar jeden Abend
 ab etwa fünf.` A sentence that could stand unchanged in the park's press release is not an
 excerpt. `check:prose` warns (`excerpt-length`) on a post dated or updated from 2026-11-16 on; an
-older post keeps its excerpt until it is next updated.
+older post keeps its excerpt until it is next updated. The pull request that moves its `updatedAt`
+shortens the excerpt to the rule in all six locales, keeping the one or two findings a reader wants
+first: a price fix in „Europa-Park oder Phantasialand“ (18 November 2026) took its excerpt from
+three sentences and up to 345 characters to two.
 
 No count sentence, no word from our database (`API`, `Einträge`, `führt einen Wert`, §2.19), no
 three facts chained with commas and `und`, and no sentence the reader cannot say in one breath:

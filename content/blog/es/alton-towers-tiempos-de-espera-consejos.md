@@ -346,6 +346,9 @@ veinte atracciones británicas, 139 libras. Para padres con niños pequeños hay
 desde 29 libras, que no vale los fines de semana ni en vacaciones escolares. El parque acuático se
 paga aparte, desde 23 libras.
 
+> [!PARKY] Merece la pena
+> Por doce libras más nos quedamos el segundo día, y el aparcamiento cuesta 13 libras al día en línea. Así tenemos dos mañanas para Spinball Whizzer, Rita, TH13TEEN y Nemesis Reborn, las cuatro atracciones donde más ahorra llegar temprano, y solo de pensar en dos rope drops ya me despego del asiento. Oblivion, The Smiler y Wicker Man los repartimos entre las dos tardes en el [planificador del día](/trip-planner).
+
 ### Aparcamiento
 
 El aparcamiento estándar cuesta **13 libras** en línea y 15 libras el mismo día. Desde allí se

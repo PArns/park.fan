@@ -68,6 +68,9 @@ Das One-Day Dated Ticket kostet an den Eventtagen im November montags bis freita
 
 Jedes Ticket ist auf einen Namen ausgestellt und gilt nur mit Ausweis. Bis 0 Uhr zwei Tage vor dem Besuch kannst du kostenlos stornieren oder einmal das Datum tauschen. Danach kostet die Stornierung bis 23.59 Uhr am Vortag 80 Yuan, am Besuchstag gibt es nichts mehr zurück. Universal Express gibt es je nach Datum und Variante ab 190 Yuan, ohne Eintritt. Die Standardvariante bringt dich an jeder teilnehmenden Attraktion einmal schneller hinein.
 
+> [!PARKY] Unter der Woche
+> Im November nehmen wir einen Tag von Montag bis Freitag: Dann kostet das One-Day Dated Ticket 418 statt 473 Yuan, und am Wochenende ist der Baum am Hollywood Boulevard auch nicht höher. Buchen können wir ruhig früh, denn bis 0 Uhr zwei Tage vor dem Besuch tauschen wir das Datum einmal kostenlos. Den Ausweis stecken wir ein, ohne ihn gilt das Ticket nicht.
+
 ## Anreise und Hotels
 
 Das Resort liegt im Pekinger Bezirk Tongzhou an der East 6th Ring Road. An der Universal Resort Station halten die Metrolinie 7 und die Batong Line, und von den Ausgängen B, C und D gehst du etwa sieben Minuten bis zur Sicherheitskontrolle von Universal CityWalk Beijing. Mit dem Bus kommst du über die Linien 589 und T116 hin. Wer mit dem Auto kommt, zahlt auf einem normalen Parkplatz an Tagen ohne Scares @ Universal 100 Yuan bei Einfahrt bis 14 Uhr, 50 Yuan bis 18 Uhr und danach 25 Yuan.

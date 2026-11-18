@@ -86,6 +86,9 @@ Expedition GeForce, Sky Scream e le altre grandi attrazioni della nostra [guida 
 
 Dal 4 dicembre Babbo Natale riceve i bambini nell'Indoor Theater in ogni giorno di apertura. Gli si può consegnare la letterina, e ogni bambino riceve una cioccolata della cioccolateria Wawi. Sabato 5 dicembre, al Platz der Fontänen, si corre per la seconda volta il Plopsa Nikolauslauf, con percorsi per bambini e adulti. Il parco aprirà le iscrizioni a breve. Dal 4 al 10 febbraio 2027 il Plopsa Indoor festeggia il Carnevale con una discoteca per bambini. Chi compie gli anni d'inverno può prenotare il pacchetto «Majas Geburtstagszauber», con una visita di Maia compresa nel prezzo.
 
+> [!PARKY] Venerdì d'Avvento
+> Per Babbo Natale scegliamo un venerdì dal 4 dicembre in poi, quindi il 4, l'11 o il 18: a quel punto è già nell'Indoor Theater, e online il biglietto con data fissa costa 16 € invece di 27 o 29 € nel fine settimana. La letterina la mettiamo in borsa prima di partire, e sulla mia c'è solo una ruota panoramica di ricambio per il cappello. Lo spettacolo di Maia alle 13 o alle 16 va in scena nello stesso teatro ed è compreso nel biglietto d'ingresso.
+
 ## Cosa cambia rispetto all'inverno scorso
 
 Nell'inverno 2025/26 questa parte del parco si chiamava ancora Majaland Pfalz. Allora era aperta dal 7 novembre al 22 marzo, quest'anno invece si chiude già il 14 marzo, e il biglietto più economico costava 20 € contro i 16 € di adesso. Il nome Holiday Park il parco l'aveva già abbandonato a fine giugno 2025. Le novità di allora erano lo spettacolo di Maia e la prima stagione invernale de L'Avventura dei Puffi.

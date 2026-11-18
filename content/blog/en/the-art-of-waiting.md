@@ -544,6 +544,9 @@ purely on **boarding groups** from its opening in December 2019 until September
 the only other way in). You queue digitally
 while you eat, shop or watch a show. It no longer eats your day, and the park spreads demand across the hours in a more controlled way.
 
+> [!PARKY]
+> Europa-Park only lets us hold one VirtualLine slot at a time, so ours goes to Voltron: it has the longest median wait in the park. My phone does the queueing for Voltron while I’m off getting airtime on Wodan. Places are very limited, so we book it in the app as soon as one comes free.
+
 For those who’d rather queue with their feet than their thumbs, parks are
 tinkering with the station itself at the same time:
 

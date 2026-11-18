@@ -409,6 +409,9 @@ octubre de 2026 aparcan gratis en el aparcamiento grande durante todo 2027; si l
 **Incluido en la entrada.** Todas las atracciones, espectáculos y actividades participativas que
 estén en servicio. Algunas ofertas sueltas, como el lavado de oro, se pagan aparte.
 
+> [!PARKY] Cómpralo pronto
+> Si vamos tres veces o más en 2027, compramos el pase de temporada hasta el 24 de marzo: entonces cuesta 120 € en lugar de 140 €, y como adultos aparcamos por 1 € al día en vez de 7 €. Lo que sobre me lo gasto en Elins Vafflejern. Tres entradas a partir de 12 años ya sumaban 159 € en 2026.
+
 ## Qué llega en 2027
 
 Para el 50 cumpleaños del parque llega la **Buddenbrook-Turm** al Hansa-Garten: una torre mirador de

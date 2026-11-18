@@ -83,6 +83,9 @@ Con la metropolitana si prende la linea Bundang fino a Giheung, dove si cambia p
 
 Le gemelle panda dovrebbero farsi vedere dal pubblico per l'ultima volta l'11 dicembre, poi nella terza settimana di dicembre si trasferiscono in Cina. Dal 13 novembre sono in quarantena al Panda Second House e si possono vedere solo nel recinto interno, con delle limitazioni. Albero e gemelle nella stessa giornata restano quindi possibili per tre settimane, con la parata in più solo dal 27 novembre all'11 dicembre. Come si svolgono le visite ai panda lo spieghiamo nel post sull'[addio a Rui Bao e Hui Bao](/news/everland-pandas-ruibao-huibao-addio).
 
+> [!PARKY]
+> Noi scegliamo un giorno tra il 1° e l'11 dicembre, meglio all'inizio: paghiamo già il prezzo di dicembre, vediamo la parata e Magic in the Sky e troviamo ancora le gemelle, anche se solo con delle limitazioni nel recinto interno. A due panda che si trasferiscono in Cina preferisco dire ciao di persona. Gli orari di parata e spettacolo li controlliamo prima nel programma del giorno su everland.com.
+
 [Everland](ref:everland?full)
 
 Fonti:

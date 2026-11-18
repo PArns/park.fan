@@ -195,6 +195,9 @@ Gardaland nennt den Fast Pass Gardaland Express. Er gilt zusätzlich zum Eintrit
 
 „Give me 5“ erlaubt je eine Fahrt auf fünf Attraktionen aus 15 und kostet online ab 27 Euro, im Park ab 30 Euro. „Epic 17“ gilt für je eine Fahrt auf 17 Attraktionen, darunter Blue Tornado, Oblivion, Raptor, Mammut, Fuga da Atlantide und Jumanji – The Adventure, online ab 57 Euro, im Park ab 60 Euro. „No Limits“ erlaubt unbegrenzte Fahrten an diesen 17 Attraktionen und kostet online ab 87 Euro, im Park ab 90 Euro. Alle drei geben 20 Prozent Rabatt in den Läden des Parks.
 
+> [!PARKY]
+> Dragon Rush hat nach unseren Messungen die längste Warteschlange im Park und steckt trotzdem in keinem der drei Pakete. Dass man sich ausgerechnet am Drachen nicht vorbeikaufen kann, nehme ich ihm fast übel. Wir stellen uns also gegen zwölf Uhr an, danach bleibt seine Warteschlange bis zum Abend ungefähr gleich lang, und den Rest des Tages bauen wir im [Tagesplaner](/trip-planner) drumherum.
+
 Die Reservierung läuft über die App „Gardaland Express“. Der Gutschein oder das Ticket wird dort per QR-Code importiert, danach siehst du die geschätzten Wartezeiten und reihst dich bei einer Bahn ein. Eine Benachrichtigung („Du bist bald an der Reihe“) kommt etwa fünf Minuten vor Fahrtbeginn, dann erscheint ein QR-Code, der rund fünf Minuten gültig bleibt. Den Express-Pass kaufst du online oder an den Express Points im Park, die Zahl der Pässe pro Tag ist begrenzt.
 
 ## Tickets und Saisonkarte

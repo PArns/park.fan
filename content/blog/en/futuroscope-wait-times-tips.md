@@ -211,6 +211,9 @@ designed.
 If you only want the evening, buy a Soirée ticket (entry from 5 pm) or a Nocturne ticket (from
 8 pm). Both include the evening show and the attractions that are open in the evening.
 
+> [!PARKY]
+> If we're only coming for the evening, we take the Soirée ticket and pay the parking rate from 2 pm, 8 euros instead of 13. La Clé des Songes is included in both evening tickets and goes ahead in the rain too, and for water images with pyrotechnics I'm happy to stay up late. Before that we ride the attractions that are open in the evening.
+
 ## How long you queue here
 
 Up to early October 2026 we measured on 228 days. Futuroscope has plenty of things with no queue at all:
@@ -280,6 +283,9 @@ why our readings for November and December are thin.
 
 If you're
 flexible, pick a Thursday or Friday outside the French school holidays.
+
+> [!PARKY] Sunday it is
+> Until 18 December the park only opens at weekends, so we go on the Sunday: Saturday is by far the busiest day of the week here, while Sunday has the shortest waits along with Thursday and Friday. We spend the Saturday looking forward to it, and that comes with no queue at all. After that the park is open every day until 3 January.
 
 ### Futuroween 2026
 

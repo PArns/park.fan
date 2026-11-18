@@ -177,6 +177,9 @@ En Pirate Falls, Hydra's Challenge, The Dragon y Laser Raiders, según nuestras 
 
 Un orden para niños desde los siete años: primero The Dragon y Hydra's Challenge, las dos antes de las once y media. Después Laser Raiders, a más tardar hacia las once y media. En Pirate Falls la cola se mantiene corta más tiempo, y se puede dejar hasta las 13:00 aproximadamente. En octubre esa es la hora más cálida para la ropa mojada. Luego vienen Flight of the Sky Lion, Coastguard HQ y las demás atracciones.
 
+> [!PARKY]
+> En LEGOLAND at Christmas, Pirate Falls y Hydra's Challenge están en su pausa de invierno, así que de las cuatro atracciones en las que compensa llegar temprano quedan The Dragon y Laser Raiders. A esas dos vamos al abrir, y sin atracciones de agua en diciembre me quedo seco en pleno invierno británico, cosa que agradezco. En el [planificador del día](/trip-planner) las ponemos las dos al principio.
+
 ## Los tres paquetes Fastrack y sus atracciones
 
 **Fastrack** es la oferta de pago que da en muchas atracciones una entrada propia con menos espera. El parque vende tres paquetes: Bronze con tres viajes, Silver con seis y Gold para todo el día. Cada paquete vale para una persona, solo se escanea una vez cada tres minutos y no incluye la entrada al parque. El Fastrack no es reembolsable ni transferible.

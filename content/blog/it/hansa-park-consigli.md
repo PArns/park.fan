@@ -401,6 +401,9 @@ parcheggio costa 1 € al giorno.
 **Compreso nel biglietto.** Tutte le attrazioni, gli spettacoli e le attività interattive in
 funzione. Alcune offerte singole, come la ricerca dell’oro, si pagano a parte.
 
+> [!PARKY] Prendilo presto
+> Se nel 2027 veniamo tre volte o più, prendiamo l’abbonamento stagionale entro il 24 marzo: costa 120 € invece di 140 €, e da maggiorenni parcheggiamo a 1 € al giorno invece di 7 €. Quello che risparmiamo lo porto da Elins Vafflejern. Tre biglietti dai 12 anni in su costavano già 159 € nel 2026.
+
 ## Cosa arriva nel 2027
 
 Per i 50 anni del parco arriva la **Buddenbrook-Turm** nell’Hansa-Garten: una torre panoramica di

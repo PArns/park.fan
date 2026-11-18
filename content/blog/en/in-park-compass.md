@@ -147,6 +147,9 @@ way to a ride behind a wall often starts in the opposite direction, and no
 compass changes that. The arrow also points at the one spot our data has for a
 ride. The queue entrance isn't in our data.
 
+> [!PARKY]
+> If the arrow at Phantasialand points at a wall, we tap the ride to pin it and follow the path instead of the straight line. As long as the distance in the bar keeps shrinking, we're on the right track, even while the arrow points backwards, because not even I can get through rocks and facades. Which ride comes next is already in our [day planner](/trip-planner).
+
 For the rest, it says on screen how far to trust the arrows.
 
 - If your location is only good to more than 40 metres, the circle carries a

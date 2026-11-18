@@ -238,6 +238,9 @@ Pendant les Christmas Experience Days, tout se passe autour du sapin du Muddy Du
 
 Aucune montagne russe ne roule en décembre, et les fans de Mumbo Jumbo devront se contenter du train à vapeur, du monorail et du train fantôme. La page de Noël cite le Daktari Express, les Gallopers, les Helitoys, le Jungle Carousel, la Zoo Monorail, Mischief Mansion et les Muddy Duck Tractors, en précisant que la liste peut changer. Sur la plupart d’entre eux, tu montes avec tes enfants s’ils mesurent moins de 1,07 mètre.
 
+> [!PARKY]
+> Pour l’illumination du sapin, on vient un jour avant le 24 : le 5, le 6, le 12 ou le 13 décembre, ou entre le 19 et le 23. Pas de montagnes russes, mais quand les lumières s’allument, je décolle quand même un instant. À 16 h 30, on est sur le Muddy Duck Square pour le spectacle avec Peter Rabbit, et après l’illumination de 16 h 45, il nous reste trois quarts d’heure jusqu’à la fermeture à 17 h 30.
+
 En décembre, le Muddy Duck Cafe et le Spud Stop sont ouverts de 10 h à 17 h 30, et il y a en plus des donuts et Crumble Heaven. The Coach House ouvre le vendredi de 16 h à 21 h, le samedi de 12 h à 21 h et le dimanche de 12 h à 18 h, et vend désormais du fish & chips à emporter. La Street Food Kitchen est ouverte de 18 h à 23 h. The Club, réservé aux clients du resort, ouvre le vendredi et le samedi de 16 h à 23 h.
 
 Pour dormir sur place à Noël, les cottages et les lodges se louent du vendredi au dimanche. Dans la Lifestyle Lodge, la Mulberry Lodge, The Gatehouse et le Riverside Cottage, le Père Noël passe en personne. Le forfait comprend le zoo, les petits manèges pour enfants de la Muddy Duck Farm, la Splash Zone le samedi et le dimanche, et le Christmas Passport avec le « PolarCoaster Express ».
@@ -272,6 +275,9 @@ Admettons que tu sois à l’entrée à 10 h un samedi de haute saison, sans VIP
 - pour finir, le zoo avec Lion Coast et les manchots à 15 h
 
 Le samedi et le dimanche, Pirates of Zanzibar se joue aussi à 15 h, en semaine seulement à 11 h. Peter Rabbit rencontre les enfants à 11 h 40 et à 13 h 45 sur la Plaza Square. Je garderais le zoo pour la fin, parce que certains jours il reste ouvert plus longtemps que les attractions.
+
+> [!PARKY]
+> Quand on repasse par Flamingo 1 pour Velocity, on enchaîne avec les voitures électriques : le samedi et le dimanche, elles se remplissent, et avant midi on est de toute façon dans le coin. Pour conduire seul, il faut 1,30 mètre, je ne les ai pas, alors tu prends le volant et je m’assois à côté. L’ordre de ta propre journée, on le cale ensemble dans le [planificateur de journée](/trip-planner).
 
 L’alcool est interdit dans le parc et confisqué à l’entrée, tout comme les couteaux, les armes et les feux d’artifice. À l’entrée, il peut y avoir des fouilles de sacs et des chiens renifleurs. Sur la nourriture apportée de l’extérieur, le règlement du parc ne dit rien.
 

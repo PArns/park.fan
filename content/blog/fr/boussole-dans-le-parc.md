@@ -153,6 +153,9 @@ l’autre sens, et aucune boussole n’y change rien. La flèche vise aussi le s
 point que nous avons pour une attraction, et l’entrée de la file n’est pas dans
 nos données.
 
+> [!PARKY]
+> Si la flèche pointe sur un mur au Phantasialand, on touche l’attraction pour l’épingler et on suit le chemin plutôt que la ligne droite. Tant que la distance dans la barre diminue, on est sur la bonne voie, même si la flèche pointe un moment derrière nous, car même moi, je ne passe pas à travers les rochers et les façades. L’attraction suivante, on l’a déjà choisie dans le [planificateur de journée](/trip-planner).
+
 Pour le reste, la boussole affiche elle-même à quel point tu peux lui faire
 confiance.
 

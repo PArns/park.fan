@@ -60,6 +60,9 @@ Con Gold y Diamond tienes un 50 % de descuento en una entrada normal de un día 
 
 La entrada de un día cuesta desde 24,99 dólares por internet si la compras con al menos 24 horas de antelación y para una fecha fija; en taquilla, 49,99. Dos días seguidos salen por internet desde 34,99 dólares. Si vas a ir dos veces y pagar en taquilla, el pase Silver ya sale más barato. Los menores de 16 años solo pueden entrar acompañados de alguien de 21 años o más.
 
+> [!PARKY] Basta con Silver
+> Si vamos a Christmas at Kentucky Kingdom y otra vez en primavera por Midnight Showdown, nos quedamos con el pase Silver: vale desde ya para las dos cosas, y con él aparcamos gratis los días que abre el parque en vez de pagar 15 dólares por coche. Con el primer ruido de cascos, yo ya habré salido al galope por dentro. Gold o Diamond solo los cogemos si Dollywood o Silver Dollar City también están en la lista, porque es allí donde dan un 50 % de descuento en una entrada normal de un día.
+
 ## Navidad en el parque
 
 Christmas at Kentucky Kingdom se celebra en días concretos entre el 21 de noviembre y el 2 de enero, y está incluida en la entrada de un día. Hasta el 20 de noviembre, la entrada de Navidad cuesta 24,99 dólares por internet para cualquier persona a partir de cuatro años. En el parque brillan más de 1,5 millones de luces y hay más de 300 árboles de Navidad. En la pista de nieve Blizzard Bluff se baja en flotador por nieve de verdad a lo largo de 175 pies, unos 53 metros, por una de sus seis calles. Las atracciones de agua y algunas otras cierran en invierno.

@@ -324,6 +324,9 @@ little time at Superman, Venganza del Enigma and Coaster Express, but those are
 exactly the places where the queues are short anyway. If you’d rather save the pass money, ride Batman
 around 4pm, when the queue is a few minutes shorter than usual.
 
+> [!PARKY] One-Pass will do
+> For Batman we buy the One-Pass at €8, not Gold from €45.90. We don’t need more than that one fast ride: at Superman, Venganza del Enigma and Coaster Express the queue is so short I don’t even get to grumble. The €37.90 difference covers two Express menus at €12.90 each.
+
 ## When to go
 
 ```stats-widget slug=parque-warner-madrid show=months,weekdays

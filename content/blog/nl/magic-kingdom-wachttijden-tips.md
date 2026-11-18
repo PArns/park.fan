@@ -295,6 +295,9 @@ kostte op beide dagen 19 dollar, die voor Seven Dwarfs Mine Train op 30
 september 11 dollar. Die dag waren ze allebei niet te koop.
 Die voor TRON was op 30 september weer te koop voor de volgende dag.
 
+> [!PARKY] Mine Train kopen
+> Zonder Disney-hotel kopen we, als we al een Single Pass nemen, die voor Seven Dwarfs Mine Train en niet die voor TRON: TRON rijden we bij de opening, als de wachtrij daar het kortst is, terwijl het bij de Mine Train van het middaguur tot in de avond even druk blijft. Zeven dwergen zijn genoeg, ik hoef niet de hele middag als achtste mopperend in die rij te staan. Op 30 september kostte zijn pass 11 dollar, acht minder dan die voor TRON, en voor dezelfde dag was geen van beide meer te koop, dus kopen we hem van tevoren.
+
 ## Wanneer je het beste kunt gaan
 
 ```stats-widget slug=magic-kingdom-park show=months,weekdays
@@ -332,6 +335,9 @@ mag vanaf 16 uur naar binnen. Een kaartje kost afhankelijk van de avond 189 tot
 dollar minder. Bij het feest horen de Mickey's Once Upon a Christmastime Parade
 en het vuurwerk Minnie's Wonderful Christmastime Fireworks Show. Ook op die
 avonden gaat het park voor alle anderen eerder dicht.
+
+> [!PARKY]
+> Zonder feestkaartje zetten we Magic Kingdom op een dag zonder feest: tot 14 december is het dan open tot 22 of 23 uur in plaats van 18 uur, en de dag eindigt met Happily Ever After. Vuurwerk bij sluitingstijd laat ik me niet afpakken. Die dag van je reis zoeken we uit in de [reisplanner](/orlando#planner).
 
 ## Wat dicht is en wat er komt
 

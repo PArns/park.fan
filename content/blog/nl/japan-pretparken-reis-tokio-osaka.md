@@ -118,6 +118,9 @@ Tussen Tokio, Nagoya en Osaka neem je de Tokaido-Shinkansen. Volgens de dienstre
 
 Behalve met de bus kom je bij Fuji-Q met de Fuji Excursion, een sneltrein die om 7.30 uur uit Shinjuku vertrekt en om 9.26 uur stopt op station Fujikyu-Highland. De ingang van het park is direct achter de poortjes. De laatste Fuji Excursion terug vertrekt daar om 17.44 uur, dus wie tot sluitingstijd blijft, neemt de bus van 20.23 uur.
 
+> [!PARKY]
+> Op een doordeweekse winterdag nemen we naar Fuji-Q de Fuji Excursion van 7.30 uur uit Shinjuku. Om 9.26 uur stappen we vlak voor de ingang uit, en voor 10.00 uur gaat het park dan meestal toch niet open. De bus van 6.45 uur laten we gaan: van december tot 5 februari verkoopt Fuji-Q geen eerdere toegang, en zonder voorsprong bij de poort sta zelfs ik niet zo vroeg op. Sluit het park om 17.00 uur, dan halen we nog de laatste trein terug om 17.44 uur.
+
 Vanaf Fuji-Q verder naar het westen hoef je niet terug via Tokio. Bussen rijden in net geen anderhalf uur naar station Mishima, waar de Kodama naar Nagoya stopt. Een directe bus verbindt het Kawaguchiko-meer met het busstation van Meitetsu in Nagoya, in ongeveer vierenhalf uur. Naar Osaka rijdt de nachtbus Fujiyama Liner, om 21.01 uur weg bij Fuji-Q, om 5.57 uur in Kyoto en om 6.53 uur in Umeda. Boeken kan vanaf twee maanden voor de rit, en de volgende ochtend ben je voor het ontbijt in Osaka, maar ook voor het uitslapen.
 
 Tijdens de Golden Week, Obon, de Silver Week en rond de jaarwisseling zijn alle stoelen in de Nozomi gereserveerd, in 2026–27 van 25 december tot 5 januari. In de winter van 2026–27 komen de lange weekenden van 9 tot 11 januari en van 20 tot 22 maart erbij. Zonder reservering sta je dan in het gangpad of op het balkon tussen de rijtuigen. Hikari en Kodama houden ook op die dagen rijtuigen zonder reservering.
@@ -135,6 +138,9 @@ Elke datum gaat twee maanden vooraf om 14.00 uur Japanse tijd in de verkoop, en 
 ### Universal Studios Japan
 
 USJ verkoopt elke Studio Pass voor een vaste datum: de 1 Day, de 2 Day voor twee hele dagen, de 1.5 Day met de eerste dag vanaf 15.00 uur en de tweede vanaf de opening, en de Twilight Pass vanaf 15.00 uur. Wie het park verlaat, komt met de Studio Pass niet meer binnen. Kaarten van doorverkoop- en veilingsites accepteert USJ niet.
+
+> [!PARKY] Past precies
+> Komen we op de verhuisdag pas 's middags in Osaka aan, dan nemen we voor USJ de 1.5 Day Studio Pass: de eerste dag zijn we er vanaf 15.00 uur, de tweede vanaf de opening. Van de vijf parken levert een vroege start in USJ het meeste op, en voor rope drop sta ik graag vroeg op. Even naar buiten en weer naar binnen kan met de Studio Pass niet, dus de eerste avond blijven we tot sluitingstijd.
 
 ### Fuji-Q Highland
 

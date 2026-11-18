@@ -316,6 +316,9 @@ Zaterdag is in Europa-Park, Phantasialand, Heide Park en Legoland de drukste dag
 grootste verschil met de rest van de week. Zondag is daar bijna net zo druk, in Rust, Soltau en
 Bottrop juist een van de rustigere dagen. Voor gezinnen die alleen in het weekend kunnen, is zondag dus de betere dag, behalve in Brühl. In Plopsaland is elke dag even rustig, zaterdag ook.
 
+> [!PARKY]
+> Kunnen we alleen op zaterdag, dan gaan we naar Plopsaland in Haßloch, want daar is het op zaterdag niet drukker dan de rest van de week. Kinderen vanaf een meter rijden met een volwassene mee in de familieachtbaan 100% Wolf, en mijn achtbaanteller tikt weer eentje verder. Voor de ouders staat er vanaf 140 centimeter Expedition GeForce naast.
+
 Juli en augustus zijn in bijna alle parken de drukste maanden,
 in Phantasialand met grote afstand. September is in Brühl, Soltau en Bottrop een van de rustigste,
 omdat de zomervakantie in de meeste deelstaten voorbij is en de herfstvakantie nog niet begonnen. De brugdagen na Hemelvaart en Sacramentsdag
@@ -364,6 +367,9 @@ De afstanden zijn hemelsbreed tussen de ingangen gemeten.
 
 Europa-Park en Phantasialand in één weekend raad ik af. De 288 kilometer hemelsbreed worden over de
 A5 en de A61 ruim vier uur rijden.
+
+> [!PARKY]
+> Phantasialand en Movie Park plannen we in de winter op twee dagen tussen 27 november en Kerstmis: pas vanaf de 27e lopen Wintertraum en Hollywood Christmas allebei, en rond de jaarwisseling is het in Brühl de drukste tijd van de winter. Taron rijden we daar in het donker, en bij allebei de lanceringen zweef ik tussen de lichtslingers even boven mijn stoel. Naar Bottrop gaan we met de RE14 vanaf Essen, en vanaf station Feldhausen is het zo’n 400 meter naar de ingang.
 
 ## Welke parken hier ontbreken
 

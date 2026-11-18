@@ -2,7 +2,7 @@
 title: 'Wintertraum in Phantasialand loopt tot 24 januari'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-16'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
@@ -175,6 +175,9 @@ De vorige Wintertraum hebben we gemeten van 26 december 2025 tot 25 januari 2026
 
 De kerstvakantie in NRW loopt deze winter van 23 december 2026 tot en met 6 januari 2027, en de dagen tussen kerst en oud en nieuw zou ik plannen als een dag in augustus. Voor de dagen van maandag tot en met vrijdag na de vakantie vraagt het park vaak maar 29 €, de laagste prijs in de kalender.
 
+> [!PARKY] Daar gaan we heen
+> Na de vakantie nemen we een donderdag of vrijdag in januari, want van maandag tot en met woensdag heeft telkens een van de theatershows zijn rustdag. Afgelopen januari was het door de week niet druk, dus bevriezen we in de rij tenminste niet lang. En de ticketkalender vraagt op die dagen vaak maar 29 €.
+
 Op het openingsweekend was het op zaterdag 14 november druk en op zondag, met motregen, heel rustig. Dat was maar één zondag, maar met zulk weer rijden de Winja’s in de hal en spelen de drie theatershows onder een dak, dus zo'n dag zou ik niet afzeggen. Totensonntag op 22 november verwacht ik vol, omdat hij in het tweede Wintertraum-weekend valt en alle zeven shows dan in twee avonduren spelen.
 
 ```best-days-widget slug=phantasialand
@@ -195,11 +198,11 @@ Op het openingsweekend was het op zaterdag 14 november druk en op zondag, met mo
 
 Met de Quick Pass ga je bij een attractie één keer via een eigen ingang langs de wachtrij. Tot nu toe stond je daarvoor eerst in de rij bij de gastenservice op de Kaiserplatz, dus in de ene wachtrij om een andere over te slaan. Nu koop je hem ook in de webshop, vanaf 11 uur en dus vanaf de opening van het park, rustig op je telefoon, en bij de Quick Pass-ingang laat je de QR-code zien.
 
-- Taron After Dark, vanaf 17 uur: 12 € (online is Taron alleen zo los te koop)
+- Taron Daylight tot 16 uur en Taron After Dark vanaf 17 uur: twee verschillende passes, elk 12 €, tussen 16 en 17 uur geldt geen van beide
 - Black Mamba: 10 €
 - Winja’s Fear, Winja’s Force, Colorado Adventure: elk 7 €
 - Maus au Chocolat, Mystery Castle, Talocan: elk 5 €
-- Chiapas: 10 €, volgens de infopagina alleen bij de gastenservice
+- Chiapas: in de winter 5 €
 - Quick Pass Ultimate: 80 €, één keer bij elke Quick Pass-ingang en één keer bij F.L.Y., dat je los niet kunt kopen
 
 Elke Quick Pass geldt alleen op de dag waarop je hem boekt, en het park verkoopt er per dag maar een beperkt aantal. Het boeken stap voor stap, van het winkelmandje dat de passes tien minuten vasthoudt tot de pdf met de QR-code, staat in ons [nieuwsbericht over de Quick Pass online](/news/phantasialand-quick-pass-online).
@@ -277,6 +280,9 @@ Het park heeft drie themahotels direct aan het terrein: Ling Bao in China Town, 
 
 Voor een korte wintervakantie adverteert het park met tot 45 % korting als je vroeg boekt. Ontbijt en parkeren bij het hotel zitten in de prijs, en via de hoteltuinen of een eigen poort loop je zo het park in. Na MAGIC SYMPHONY is dat de kortste weg naar je bed, terwijl alle anderen naar P1 en P2 lopen. Gasten van Matamba en Ling Bao krijgen per persoon per nacht één keer snellere toegang tot een van deze attracties: Chiapas, Maus au Chocolat, Talocan, Winja’s Fear & Force of Colorado Adventure, wel alleen met een geldig parkticket. Gasten van Charles Lindbergh krijgen als Explorer snellere toegang tot F.L.Y., en daar is ook een Explorer-arrangement met overnachting, driegangendiner, ontbijt en twee parkdagen. Het nieuwe zwembad en de wellness in Ling Bao zijn alleen voor gasten van dat hotel.
 
+> [!PARKY]
+> Slapen we in Matamba of Ling Bao, dan zetten we de snellere toegang van het hotel in bij Colorado Adventure of de Winja’s: daar kost een Quick Pass anders 7 €, bij Maus au Chocolat, Talocan en in de winter ook bij Chiapas maar 5 €. Met twee nachten doen we zo allebei, en hoef ik niet te kiezen. Een geldig parkticket hebben we er wel voor nodig.
+
 De oudejaarsarrangementen met overnachting zijn volgeboekt.
 
 ## Oud en nieuw in Phantasialand
@@ -326,7 +332,7 @@ Van maandag tot en met vrijdag in januari, na de kerstvakantie. Vorige winter wa
 
 ### Is er een Quick Pass tijdens de Wintertraum?
 
-Ja, in de webshop vanaf 11 uur, dus vanaf de opening van het park, op je telefoon en zonder in de rij te staan, of bij de gastenservice op de Kaiserplatz. Elke pass geldt alleen op de dag van boeking. In de shop kost Taron After Dark vanaf 17 uur 12 €, Colorado Adventure 7 € en de Ultimate met F.L.Y. 80 €. Chiapas koop je alleen bij de gastenservice.
+Ja, in de webshop vanaf 11 uur, dus vanaf de opening van het park, op je telefoon en zonder in de rij te staan, of bij de gastenservice op de Kaiserplatz. Elke pass geldt alleen op de dag van boeking. In de shop kosten Taron Daylight tot 16 uur en Taron After Dark vanaf 17 uur elk 12 €, Colorado Adventure 7 €, Chiapas in de winter 5 € en de Ultimate met F.L.Y. 80 €.
 
 — Patrick
 

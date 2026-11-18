@@ -84,6 +84,9 @@ Nei giorni del Pay per Ride Toverland continua a vendere il biglietto giornalier
 
 Il mercoledì un biglietto giornaliero per adulti costa quanto 18,5 strisce, cioè poco più di sei giri sulle attrazioni grandi. Nel fine settimana corrisponde a 21,5 strisce, poco più di sette giri grandi. Dal settimo giro grande di mercoledì, e dall’ottavo nel fine settimana, il biglietto giornaliero costa meno. Lo sconto sulla quantità parte da 25 strisce, cioè da 47,50 €, e a quel punto il biglietto giornaliero sarebbe già costato meno.
 
+> [!PARKY] Giornaliero prima
+> Se vogliamo rifare più volte le attrazioni grandi, compriamo il biglietto giornaliero almeno sette giorni prima: con lo sconto pieno di 7 €, per un adulto conviene rispetto alle strisce già un giro grande prima, dal sesto di mercoledì e dal settimo nel fine settimana. Troy, Fēnix e Booster Bike due volte ciascuna fanno già sei, e per me due volte è piuttosto il minimo. Se ci basta un giro su ciascuna, restiamo al Pay per Ride.
+
 In un gruppo biglietto giornaliero e Pay per Ride si possono mescolare. Se accompagni un bambino che per l’altezza minima può salire su un’attrazione solo con un adulto, anche a te serve un biglietto giornaliero o delle strisce. I biglietti di compleanno e di ritorno e i biglietti dell’iniziativa primaverile «2ª visita gratis» restano biglietti giornalieri all inclusive.
 
 I Magic Member con abbonamento valido salgono senza limiti e senza supplemento anche nei giorni del Pay per Ride, e non hanno bisogno né di prenotazione né di strisce. Il parcheggio non è compreso nell’abbonamento. L’abbonamento al parcheggio costa 50 € l’anno oppure 4,50 € al mese.

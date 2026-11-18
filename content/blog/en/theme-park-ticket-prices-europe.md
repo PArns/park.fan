@@ -88,6 +88,9 @@ The 2027 summer season starts on 20 March, and tickets for it go on sale on 10 N
 
 You can buy a ticket online up until 2 pm on the day of your visit. Each price comes with a daily allocation, and prices can go up on any day. Weekdays during Wintertraum, from mid-November, cost €35 to €39. So far tickets are on sale up to 23 December.
 
+> [!PARKY]
+> We book our Wintertraum weekday as soon as it's fixed: each price has a daily allocation, and once the €35 ones are gone, the same day costs more. I'm all for spontaneity at the churro stand, less so with tickets. You can still buy online until 2 pm on the day, but then we pay whatever the day has climbed to.
+
 Parking areas P1 and P2 can't be reserved. A shuttle bus runs to the park from Brühl station and from Brühl Mitte for €6 return, and children up to 1 m ride free. Public transport tickets aren't valid on the shuttle.
 
 ### Heide Park

@@ -93,6 +93,9 @@ The Gold Pass costs $155 and covers 2026 and 2027 at every Six Flags park on the
 
 Parking starts at $42 for General Parking and $62 for Preferred Parking, each plus tax. A spot by the main entrance (Front Gate) starts at $77, which is nearly what the day ticket costs. For the satnav, the address is 26101 Magic Mountain Pkwy, Valencia, CA 91355.
 
+> [!PARKY] Pass, not ticket
+> If Magic Mountain is on our California trip in 2027, we buy the Silver Pass by 30 November rather than a Good Any Day ticket, even for a single visit: both cost $79, but the pass includes General Parking, which otherwise starts at $42 plus tax. The parking money buys me a decent pile of churros. We then pick the day in the [trip planner](/california#planner).
+
 ## Other Six Flags parks and Thrill Glider
 
 This winter Six Flags has reworked Holiday in the Park at [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) and at [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm, where the Gold Pass also works, turns into [Knott's Merry Farm](/news/knotts-merry-farm-2026). At Magic Mountain itself, the next big addition is [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), a Vekoma coaster due to open in 2027.

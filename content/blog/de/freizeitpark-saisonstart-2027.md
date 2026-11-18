@@ -180,6 +180,9 @@ Für den März im Europa-Park haben wir aus dem Frühjahr 2026 vierzehn Messtage
 
 Für die Pre-Opening Weeks heißt das wenig, weil es 2026 nichts Vergleichbares gab. In den ersten beiden Märzwochen 2027 hat nur Hamburg Osterferien, alle anderen Bundesländer erst ab dem 22. März.
 
+> [!PARKY]
+> Für die Pre-Opening Weeks nehmen wir einen Tag vom 13. bis 19. März, nur nicht den 16. oder 17., an denen der Park zu ist. Welche Bahnen dann noch Pause machen, sagt der Park nicht, ich packe also neben der Mütze auch etwas Geduld ein. Dafür sind ab dem 13. auch die Hamburger wieder in der Schule, und kein Bundesland hat Osterferien.
+
 ### Flying Cinema im Plopsaland Belgium
 
 In De Panne öffnet am **13. März 2027** das Flying Cinema, eine Halle mit Kuppelleinwand, unter der die Gondeln schweben, gebaut von Mack Rides. Vorpremieren gibt es schon ab dem 19. Dezember 2026, aber nur für Inhaber einer Plopsa-Jahreskarte und für Gäste der Hotels und Chalets des Parks. Mit einer Tageskarte kommst du erst ab dem 13. März hinein. An welchem Tag [Plopsaland Belgium](ref:plopsaland-belgium) seine Saison 2027 sonst beginnt, hat der Park noch nicht veröffentlicht, im Fahrplan stehen die Tage bis zum 3. Januar.

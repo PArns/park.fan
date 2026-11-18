@@ -222,6 +222,9 @@ Tutte le montagne russe restano in funzione la sera, e il parco fa pubblicità a
 
 In ottobre e nella mezza stagione alcune attrazioni restano chiuse con vento, freddo o pioggia forte. I limiti del parco sono sulla sua pagina della Return Guarantee: Hyperia funziona fino a 47 mph di vento, Nemesis Inferno e SAW fino a 40 mph, Colossus e The Swarm fino a 35 mph, Stealth solo fino a 31 mph, Zodiac fino a 25 e Vortex fino a 23 mph. Il vento si misura in quota, quindi a terra può sembrare più calmo. Le montagne russe funzionano a partire da 5 gradi Celsius, e con pioggia forte Nemesis Inferno e SAW restano ferme. La Return Guarantee vale solo in alcuni giorni, con effetto retroattivo, quando il parco ha avuto disservizi per almeno un'ora. Nel 2026 sono stati il 4 aprile, il 25 maggio e il 13 agosto, utilizzabile fino al 30 settembre 2026.
 
+> [!PARKY]
+> Se per il pomeriggio è prevista pioggia forte, facciamo Nemesis Inferno e SAW subito dopo l'apertura, perché sono proprio quelle due a fermarsi. Quando viene giù a catinelle, saliamo su The Walking Dead, al coperto nel suo padiglione a piramide, e per un po' di pioggia a casa io non ci torno. Il resto della giornata lo sistemiamo attrazione per attrazione nel [pianificatore della giornata](/trip-planner).
+
 ## Biglietti, abbonamenti e prezzi
 
 Il parco pubblicizza i biglietti giornalieri con «da 32 sterline» se prenotati in anticipo. I prezzi dipendono dalla data. Durante le Fright Nights il biglietto alla cassa costa 66 sterline. Gli studenti hanno uno sconto se prenotano in anticipo.
@@ -247,6 +250,9 @@ Sulla pagina del parco compaiono tra l'altro Vibes Bar & Kitchen nel Dome, Plane
 Le **Thorpe Shark Cabins** sono 90 camere ricavate da container navali, con la bocca di uno squalo come ingresso. Sono state aperte nel 2013 come The Crash Pad dalla società Snoozebox, nel 2014 il parco le ha comprate e ribattezzate. Un hotel fisso da 250 posti letto era già stato autorizzato nel 2011, ma non è mai stato costruito. Ogni camera ha un letto matrimoniale, un letto a castello e un bagno con doccia a filo pavimento. Il check-in è dalle 15, e il buffet della colazione si trova al Vibes Bar & Kitchen. Per il 2026 c'è una camera nuova a tema Fright Nights.
 
 Il pacchetto Overnight Stay comprende due giorni di ingresso al parco, la colazione, il parcheggio del valore di 12 sterline, il Wi-Fi, il dieci per cento di sconto nei negozi e l'ora di Fastrack. I prezzi partono da 77 sterline a persona, con quattro persone in camera, in giorni selezionati dal lunedì al giovedì. I pacchetti Fright Nights partono da 109 sterline a persona. Nelle camere a tema Hyperia, The Swarm, Nemesis Inferno, Stealth e Colossus gli ospiti ricevono il secondo giorno anche un Coasters Fastrack con sei corse su Colossus, Hyperia, Nemesis Inferno, SAW, Stealth e The Swarm.
+
+> [!PARKY] Restiamo a dormire
+> Per il 2027 prenotiamo le Shark Cabins in quattro, dal lunedì al giovedì: due giorni di parco con colazione e parcheggio da 77 sterline a persona, quando due biglietti giornalieri presi in anticipo costano già da 64 sterline. Si entra dalla bocca dello squalo, e il letto di sopra del castello è mio. Se prendiamo una delle camere a tema, il secondo giorno si aggiunge un Coasters Fastrack con sei corse, Hyperia compresa.
 
 ## Cosa c'è di nuovo e cosa ha chiuso
 

@@ -626,6 +626,9 @@ remplit, celui que la moitié de l’Allemagne prend pour faire le pont. Dans no
 retombé à « faible ». À la Fête-Dieu, même schéma : le jour férié du 4 juin
 était à « faible », le vendredi de pont du 5 à « élevé ».
 
+> [!PARKY] Plutôt le jeudi
+> À l’Ascension et à la Fête-Dieu, on y va le jour férié lui-même et on laisse le vendredi de pont à la moitié de l’Allemagne. En 2026, la Fête-Dieu était à « faible » et l’Ascension à « modéré », les vendredis suivants à « élevé » et « très élevé ». Si on a tout le long week-end, le dimanche devient notre deuxième jour : après l’Ascension, le parc était déjà retombé à « faible ».
+
 Les deux vendredis de pont, il a fait un temps de chien. Le 15 mai 2026, un orage est passé, il a à peine fait plus de douze
 degrés, et ça a quand même suffi pour « très élevé » ; le 5 juin, rebelote avec
 des orages. La chaîne Parkfan95 se rend précisément ces vendredis-là à Rust et filme le résultat. La vidéo de 2026 s’intitule « Le jour

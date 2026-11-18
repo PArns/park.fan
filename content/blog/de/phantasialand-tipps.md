@@ -235,6 +235,9 @@ Parktag. Der Shop wirbt mit Tickets ab **44 €**. Spontan geht auch, aber nur
 online und nur bis 14 Uhr am Besuchstag, zum dann gültigen Tagespreis und nur,
 solange der Tag nicht ausverkauft ist.
 
+> [!PARKY] Gönn dir
+> Wir buchen, sobald das Datum steht. Erwischen wir für Oktober oder November die Stufe für 35 € statt der für 59 €, bleiben 24 € übrig, und das sind, ich hab’s zweimal nachgerechnet, genau zwei Quick Pässe für Taron. Die kaufen wir dann am Morgen des Besuchstags.
+
 Jahreskarten gibt es keine mehr. Das Phantasialand hat seine Club-Karte in
 der Pandemie aus dem Verkauf genommen und nie zurückgebracht, die letzten liefen
 im Sommer 2022 aus. Unter den

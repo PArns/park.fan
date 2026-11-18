@@ -88,6 +88,9 @@ Plailly liegt 35 Kilometer nördlich der Porte de la Chapelle in Paris. Mit dem 
 
 Ohne Auto nimmst du die RER B bis zur Station Aéroport Charles de Gaulle und steigst dort in die Navette zum Park. Sie fährt alle 15 bis 30 Minuten, braucht etwa 25 Minuten und kostet hin und zurück 14 €, einfach 8 €, mit festem Datum. Die letzte fährt eine Stunde nach Parkschluss zurück, an Heiligabend und Silvester also um 20 Uhr. Hinkommen kannst du auch mit dem Fernbus oder dem Shuttle ab dem Eiffelturm. Unser [Guide zum Parc Astérix](/blog/parc-asterix-wartezeiten-tipps) beschreibt beide Wege, und dort steht auch, wo du außerhalb der Weihnachtszeit am längsten anstehst.
 
+> [!PARKY]
+> Fahren wir mit RER B und Navette, kaufen wir das Navette-Ticket erst, wenn unser Tag feststeht, denn anders als das Billet Noël gilt es nur an einem festen Datum. Zurück geht es erst nach L'Île aux Vœux, die letzte Navette fährt ja eine Stunde nach Parkschluss, und acht Minuten Pyrotechnik über dem See tausche ich gegen keinen früheren Bus. An Heiligabend und Silvester fährt sie um 20 Uhr.
+
 [Parc Astérix](ref:parc-asterix?full)
 
 Quellen:

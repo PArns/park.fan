@@ -55,6 +55,9 @@ Clyde und Seamore spielen im Sea Lion Stadium wieder ihr Christmas Special, mit 
 
 Auf der Holiday Plaza geht jeden Abend der rund neun Meter (30 Fuß) hohe Weihnachtsbaum an. Der SkyTower wird zum rund 98 Meter (320 Fuß) hohen Tree of Lights, und die Palmen sind wie Zuckerstangen beleuchtet. Den Weihnachtsmann triffst du in Santa's Cottage auf dem SkyTower Lawn, zwei seiner Rentiere stehen bei Rentals, Rudolph im Holly Jolly Marketplace. Das Feuerwerk A Christmas Wish gibt es nur zweimal, am Samstag, 12. Dezember, und an Silvester.
 
+> [!PARKY] Am 12. Dezember
+> Fällt unsere Reise nach Südkalifornien in den Dezember, bekommt SeaWorld San Diego bei uns Samstag, den 12. Dezember: Nur an diesem Abend und an Silvester gibt es das Feuerwerk A Christmas Wish. Bis es losgeht, habe ich Baby Shark hoffentlich wieder aus dem Kopf. Die übrigen Parks verteilen wir im [Reiseplaner](/california#planner) um diesen Tag herum.
+
 ## Öffnungszeiten im November
 
 Am Freitag, 13. November, ist die Christmas Celebration Pass Member Preview für Inhaber einer Jahreskarte. Der Park hat dann von 10 bis 21 Uhr offen. Ab Samstag, 14. November, läuft die Christmas Celebration zu den normalen Öffnungszeiten, Ortszeit:

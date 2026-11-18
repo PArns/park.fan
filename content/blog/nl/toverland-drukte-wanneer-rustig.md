@@ -203,6 +203,9 @@ Zomer 2027 wordt daarmee anders dan 2026. NRW begint vijf dagen eerder dan regio
 zuid gaat vijf dagen langer door. Van woensdag 1 tot en met zondag 5 september 2027 is het in Limburg
 nog vakantie en in NRW al school. Zulke dagen hadden we in 2026 niet. Het dichtst erbij komt de eerste week van de zomervakantie 2026, toen alleen regio zuid en noord vrij waren en het park doordeweeks vier dagen op Normaal of lager stond.
 
+> [!PARKY] Beste tijd
+> Onze Toverland-dag in 2027 valt in september, vanaf maandag de 6e, het liefst van maandag tot en met woensdag. Tot en met zondag 5 september heeft regio zuid nog zomervakantie, en de zaterdagen laten we sowieso aan heel Limburg. In 2026 stonden 13 van de 17 werkdagen in september op Laag of Zeer laag.
+
 ## Doen de Duitse vakanties ertoe?
 
 Met de grens zo dichtbij ligt het voor de hand. Om het te toetsen, hebben we gezocht naar dagen waarop alleen NRW vakantie had en de Nederlandse scholen open waren. In 2026 waren dat zeven werkdagen, vier rond Pasen en drie eind oktober.

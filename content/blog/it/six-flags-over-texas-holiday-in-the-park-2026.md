@@ -105,6 +105,9 @@ Allo stesso prezzo di 69 dollari, fino al 30 novembre, il parco vende per il Bla
 
 Il parcheggio parte da 39 dollari, il Preferred Parking da 55 dollari, in entrambi i casi più commissione e tasse. Nel navigatore va inserito 2201 Road to Six Flags, Arlington, TX 76011.
 
+> [!PARKY] Meglio il pass
+> Se compriamo entro il 30 novembre, invece del Good Any Day Ticket prendiamo il Silver Pass, allo stesso prezzo di 69 dollari. Secondo la pagina dell'evento vale già per Holiday in the Park e comprende il parcheggio, che altrimenti parte da 39 dollari. Quei soldi preferisco spenderli in cioccolata calda piuttosto che in un posto auto. Con il biglietto Bring-A-Friend portiamo qualcuno già a dicembre, perché va usato entro il 5 gennaio.
+
 ## Ingresso gratuito dai 65 anni
 
 Da quest'inverno entra gratis nel parco chi è nato il 31 dicembre 1961 o prima. Ci si registra solo online. L'ingresso si attiva poi all'entrata del parco, e a ogni visita serve un documento con la data di nascita. La prima visita va fatta entro il 31 dicembre 2026. Sulla pagina dei biglietti l'offerta termina a volte il 31 dicembre 2026 e a volte il 5 gennaio 2027, nelle domande frequenti il 5 gennaio 2027.

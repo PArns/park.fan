@@ -114,6 +114,9 @@ Buiten de zomer en de vakantieweken werkt Elmo alleen in het weekend. Van 8 sept
 
 SeaWorld San Diego viert van 13 november 2026 tot 3 januari 2027 elke dag de [Christmas Celebration](/news/seaworld-san-diego-christmas-celebration-2026), bij de gewone toegang inbegrepen. Howl-O-Scream met een eigen ticket liep in 2026 van 11 september tot 31 oktober, en voor 2027 noemt SeaWorld geselecteerde avonden van 10 september tot 31 oktober.
 
+> [!PARKY] Goede timing
+> Voor de kerstprogramma's gaan we tussen 30 november en 18 december: dan lopen ze in Disneyland, bij Universal, bij Knott's en in SeaWorld allemaal al, en hebben de scholen in Los Angeles geen vrije dagen. Vuurwerk bij sluitingstijd sla ik nooit over. Naar LEGOLAND gaan we dus op 5 of 12 december: op beide avonden is er vuurwerk bij de Christmas Bricktacular.
+
 ![Witte letters met SeaWorld San Diego op een geel afdak onder een grijze lucht. | Hier aan Mission Bay is SeaWorld in 1964 begonnen.](/media/seaworld-san-diego/sign.jpg)
 
 ## Waar je slaapt
@@ -162,6 +165,9 @@ Zonder huurauto bereik je Universal, Disneyland en LEGOLAND met trein en bus. Va
 ### Vliegvelden
 
 Disney noemt zes vliegvelden voor het Disneyland Resort, op volgorde van afstand: John Wayne (SNA) in Santa Ana, Long Beach (LGB), Los Angeles International (LAX), Ontario (ONT), Hollywood Burbank (BUR) en San Diego (SAN). Vanaf het station bij het vliegveld van Burbank rijdt de Pacific Surfliner zonder overstap naar Anaheim, en de gratis shuttlebus LOT D van het vliegveld brengt je naar het station. San Diego International ligt bijna vijf kilometer ten noordwesten van het centrum van San Diego en past bij het zuidelijke deel van de reis: vlieg je heen naar Los Angeles en terug vanaf San Diego, dan hoef je niet meer door de hele regio terug te rijden.
+
+> [!PARKY] Eén keer verhuizen
+> We landen in Los Angeles, slapen voor Disneyland, Knott's, Universal en Magic Mountain aan Harbor Boulevard en verhuizen voor de drie parken in het zuiden naar het Gaslamp Quarter. Vandaar is SeaWorld 13 minuten rijden in plaats van 111, en meer dan vier uur in de auto op een dag in Sesame Place is me te veel snelweg voor te weinig Elmo. Terug vliegen we vanaf San Diego, en in de [reisplanner](/californie#planner) zetten we de twee delen apart neer.
 
 ## Tickets
 

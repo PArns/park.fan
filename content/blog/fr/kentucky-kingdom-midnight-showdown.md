@@ -60,6 +60,9 @@ Avec le Gold et le Diamond, tu as 50 % de réduction sur un billet journée au 
 
 Le billet journée coûte en ligne à partir de 24,99 $ si tu l’achètes au moins 24 heures à l’avance pour une date fixe, et 49,99 $ à la caisse. Deux jours de suite reviennent à 34,99 $ minimum en ligne. Si tu viens deux fois en payant à la caisse, le pass Silver revient déjà moins cher. Les moins de 16 ans n’entrent dans le parc qu’accompagnés d’une personne d’au moins 21 ans.
 
+> [!PARKY] Le Silver suffit
+> Si on vient pour Christmas at Kentucky Kingdom puis au printemps pour Midnight Showdown, on prend le pass Silver : il vaut dès maintenant pour les deux, et avec lui, on se gare gratuitement les jours d’ouverture au lieu de payer 15 $ par voiture. Au premier bruit de sabots, je suis déjà parti au galop dans ma tête. On ne prend Gold ou Diamond que si Dollywood ou Silver Dollar City sont aussi au programme, car c’est là qu’ils donnent 50 % de réduction sur un billet journée au tarif normal.
+
 ## Noël au parc
 
 Christmas at Kentucky Kingdom a lieu certains jours du 21 novembre au 2 janvier, et l’entrée est comprise dans le billet journée. Jusqu’au 20 novembre, un billet de Noël coûte 24,99 $ en ligne pour tous dès quatre ans. Le parc accroche plus de 1,5 million de lumières et dresse plus de 300 sapins. Sur la pente enneigée Blizzard Bluff, on dévale en bouée 175 pieds de vraie neige, environ 53 mètres, sur l’une des six pistes. Les attractions aquatiques et quelques autres restent fermées en hiver.

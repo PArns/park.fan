@@ -121,6 +121,9 @@ La comida, las botellas de agua, las neveras y el vidrio no aparecen en esa list
 
 En el Restaurant Uhrwerk de Rookburgh, la hamburguesa de pollo The Navigator con patatas fritas cuesta 26,00 € y una Coca-Cola de 0,2 litros 3,30 €. La hamburguesa infantil de 14,00 € solo se sirve junto con un plato de adulto. En Rutmor’s Taverne, la tabla Vesperbrett para una persona cuesta 21,50 €.
 
+> [!PARKY]
+> Para Phantasialand cortamos el pan y la fruta en casa: los cuchillos y las tijeras están en la lista de objetos prohibidos, así que el cuchillito de la fruta para el picnic tampoco entra, y una manzana se come entera si hace falta. Entre cuatro, dos hamburguesas The Navigator con patatas fritas y dos infantiles en el Restaurant Uhrwerk ya suman 80 €, y aún no hay ni una Coca-Cola en la mesa.
+
 Junto a la atención al visitante de la Kaiserplatz, en Berlin, hay una sala de lactancia, y el personal ayuda a calentar la comida del bebé.
 
 ### Heide Park
@@ -199,6 +202,9 @@ en Katara Plaza. El parque los menciona también para calentar biberones.
 El reglamento del parque está a la vista en la entrada y se puede descargar en su web.
 
 Las bebidas se sirven en vasos reutilizables con 1,50 € de depósito. Vasos, botellas y latas se devuelven en máquinas de depósito, que hay en cuatro puntos del parque.
+
+> [!PARKY]
+> En Toverland llevamos la comida en un táper y la calentamos en uno de los dos microondas gratuitos, en la Waldstube o en Katara Plaza. Caliente y entre dos montañas rusas, me sabe casi tan bien como un churro. Hasta mediodía el táper espera en una taquilla de Port Laguna o de Land van Toos, que cuesta 2 € y se abre las veces que quieras.
 
 ### Walibi Holland
 

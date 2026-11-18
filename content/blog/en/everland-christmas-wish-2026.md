@@ -83,6 +83,9 @@ By metro, take the Bundang Line to Giheung and change to the EverLine, which run
 
 The panda twins are expected to make their last public appearance on 11 December, and in the third week of December they move to China. Since 13 November they've been in quarantine in the Panda Second House, where you can see them only on a limited basis in the indoor enclosure. That leaves three weeks in which you get the tree and the twins on the same day, and only 27 November to 11 December if you want the parade too. Our post on [Rui Bao and Hui Bao's farewell](/news/everland-pandas-ruibao-huibao-farewell) explains how the panda visits work.
 
+> [!PARKY]
+> We'd pick a day between 1 and 11 December, sooner rather than later: by then we pay the December price, catch the parade and Magic in the Sky, and still see the twins, even if only on a limited basis in the indoor enclosure. Two pandas moving to China deserve a wave goodbye in person. We'll check the parade and show times in the daily schedule on everland.com beforehand.
+
 [Everland](ref:everland?full)
 
 Sources:

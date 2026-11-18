@@ -81,6 +81,9 @@ Het park is op alle zeven dagen open van 11.00 tot 19.00 uur. De prijs van een d
 
 Daar komen nog tot 9,99 dollar servicekosten en belasting bij. Aan de kassa betaal je voor dezelfde dag 90 dollar. Het feest zit bij het gewone dagticket inbegrepen, en kinderen tot twee jaar hebben geen ticket nodig. Parkeren kost online 39 dollar, een plek op Preferred Parking 49 dollar. Waterpark Soak City is in november dicht.
 
+> [!PARKY] Neem de zondag
+> Voor Hops & Harvest nemen we een zondag: online kost de dag dan 45 dollar in plaats van 55 op zaterdag, en de muzikanten spelen op alle zeven dagen op dezelfde tijden. Die tien dollar verschil zet ik alvast om in Cinnamon Donut Holes. Kunnen we alleen op de vrijdag na Thanksgiving, dan is het 49 dollar, en ook dan zijn er kalkoenpoten.
+
 ```best-days-widget slug=kings-dominion
 
 ```

@@ -337,6 +337,9 @@ Le mercredi, le parc annonce actuellement le billet à 36 euros au lieu de 56. S
 enfants d’âge préscolaire, nos mesures désignent les jours de semaine de
 septembre et d’octobre, ainsi que février et mars.
 
+> [!PARKY] Vive le mercredi
+> Du lundi au vendredi, les jours se valent presque, alors on prend le mercredi : ce jour-là, le parc annonce actuellement le billet à 36 euros au lieu de 56, et 20 euros de moins, je n’ai jamais dit non. En mars 2026, c’était même le seul jour de semaine où le parc ouvrait.
+
 À l’automne, la **Halloween Celebration** a lieu du 3 octobre au 8 novembre, et le parc est alors ouvert tous les jours, sauf le 10
 octobre. On y voit le Pumpkin King (un épouvantail qui ne quitte Pumpkin Island
 qu’à Halloween), l’académie Nachtwacht, les renards Fox & Trot de la comédie
@@ -427,6 +430,9 @@ Les enfants de 85 à 99 centimètres et les seniors dès 70 ans paient environ l
 moitié. Les trois abonnements comprennent 25 pour cent de réduction sur les
 billets pour amis et famille (deux billets par an au maximum) et l’avant-première
 du Flying Cinema.
+
+> [!PARKY] L’abonnement, oui
+> Avec des billets non datés à 56 euros, le Plopsaland Belgium Pass à 150 euros est rentabilisé dès la troisième visite, avec des billets du mercredi à 36 euros dès la cinquième. L’abonnement nous ouvre aussi le Flying Cinema certains jours à partir du 19 décembre, et survoler l’Europe avec une abeille aux commandes, je ne l’ai encore jamais fait. Avec un billet à la journée, il faudra attendre le 13 mars.
 
 ## Pratique dans le parc
 

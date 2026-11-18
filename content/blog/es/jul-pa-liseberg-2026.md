@@ -77,6 +77,9 @@ Los días más baratos son el 15, 20, 22 y 27 de noviembre y, en diciembre, los 
 
 Sin Åkpass, cada viaje se paga con cupones de 25 coronas. [Balder](ref:liseberg/balder) pide cuatro, así que a partir de la tercera vuelta ya compensa el Åkpass. El Lisebergspasset, por 395 coronas, sirve de entrada durante doce meses; el Guldpasset, por 2595 coronas, cubre doce meses de entrada y todas las atracciones.
 
+> [!PARKY] Entre semana
+> En diciembre elegimos un miércoles o un jueves hasta el 17: es cuando menos se paga, y de 15:00 a 21:00 tenemos seis horas para Luma Celestia, los mercados y las atracciones grandes. Con Åkpass, a Balder me subo más de dos veces de todas formas, y contar cupones con frío no me apetece. Compramos en línea, que en taquilla siempre sale más caro.
+
 ## Qué atracciones funcionan en invierno
 
 La entrada incluye el Tomtehuset con Papá Noel, la pista de hielo, Barnens Paradis (desde cuatro años) y el Blomsterkarusellen. Para las grandes hace falta el Åkpass o cupones:

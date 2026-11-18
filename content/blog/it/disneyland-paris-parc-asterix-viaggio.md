@@ -110,6 +110,9 @@ Filotomatix, il pass del Parc Astérix, vale per una persona e un giorno e si us
 
 In un giorno infrasettimanale fuori dalle vacanze scolastiche francesi mi terrei i soldi per tutti e due e mi arrangerei con l’ordine delle attrazioni delle nostre guide a [Disneyland Paris](/blog/disneyland-paris-tempi-di-attesa-consigli) e al [Parc Astérix](/blog/parc-asterix-tempi-di-attesa-consigli). Il nostro [confronto dei fast pass](/blog/fast-pass-parchi-divertimento-confronto) mette Premier Access e Filotomatix accanto ai pass degli altri grandi parchi d’Europa.
 
+> [!PARKY] Sveglia presto
+> Con il Filotomatix, Toutatis rientra solo nell’Illimité, ma gli ospiti degli hotel del parco ci salgono con l’Early Entry, 30 minuti prima dell’apertura ufficiale. Se restiamo due giorni, la seconda mattina andiamo lì per prima cosa, e la colazione del pacchetto può aspettare. Nei giorni delle notturne di Peur sur le Parc e nelle giornate speciali l’ingresso anticipato salta, e deve collaborare anche il meteo.
+
 ## La sera: spettacoli notturni e Disney Village
 
 Entrambi i parchi Disney hanno ogni sera uno spettacolo notturno. A Disneyland Park c’è Disney Tales of Magic davanti al castello, con droni, proiezioni, fontane e fuochi d’artificio. A Disney Adventure World, dal 29 marzo 2026, Disney Cascade of Lights porta più di 380 droni in volo sopra il nuovo lago e sulla sua acqua. Per entrambi gli spettacoli Disney vende posti riservati a pagamento, ma si possono guardare anche senza.
@@ -187,6 +190,9 @@ Siccome a febbraio e ad aprile le zone sono sfalsate di una settimana, nel 2027 
 ### Festivi e ponti
 
 A maggio 2027 il 1° e l’8 maggio cadono di sabato, quindi l’unico ponte è quello dopo l’Ascensione. L’Ascensione è giovedì 6 maggio, e il venerdì dopo le scuole sono chiuse in tutta la Francia. Il lunedì di Pentecoste è il 17 maggio.
+
+> [!PARKY]
+> Per un viaggio in tutti e tre i parchi fuori dalle vacanze scolastiche francesi scegliamo maggio o giugno 2027: dal 3 aprile al 2 maggio c’è sempre qualche zona in vacanza, dal 3 luglio tutte, e a febbraio il Parc Astérix dorme ancora. Evitiamo solo l’Ascensione il 6 maggio, con il venerdì senza scuola che segue, e il lunedì di Pentecoste il 17 maggio. Con queste date il [pianificatore di viaggio](/paris#planner) distribuisce i tre parchi sui giorni.
 
 ### Gli eventi Disney
 

@@ -239,6 +239,9 @@ Wildfire, à Kolmården, est la montagne russe la plus rapide et la plus haute d
 - Colossos, Heide Park : à partir de 1,40 m
 - Expedition GeForce, Plopsaland Deutschland : à partir de 1,40 m
 
+> [!PARKY]
+> À 1,20 m, la chasse aux records commence : un enfant peut alors monter sur Wodan avec un adulte, numéro trois des montagnes russes en bois d’Europe pour la vitesse et la hauteur. À 1,30 m et huit ans s’ajoute Voltron Nevera, celle qui compte le plus d’inversions en Allemagne, et les traits de crayon sur le chambranle se vérifient bien plus souvent. Dès 1,40 m, trois des quatre montagnes russes les plus rapides d’Europe attendent à Salou.
+
 ## Questions fréquentes
 
 ### Quelle est la montagne russe la plus rapide d’Europe ?

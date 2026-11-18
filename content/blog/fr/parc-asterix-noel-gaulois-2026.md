@@ -89,6 +89,9 @@ Plailly se trouve à 35 kilomètres au nord de la porte de la Chapelle, à Paris
 
 Sans voiture, prends le RER B jusqu’à la gare Aéroport Charles de Gaulle, puis la navette du parc. Elle passe toutes les 15 à 30 minutes, met environ 25 minutes et coûte 14 € l’aller-retour ou 8 € l’aller simple, à date fixe. La dernière repart une heure après la fermeture, donc à 20 h les 24 et 31 décembre. Tu peux aussi venir en autocar ou avec la navette depuis la tour Eiffel. Notre [guide du Parc Astérix](/blog/parc-asterix-temps-d-attente-conseils) décrit ces deux trajets, et tu y verras aussi où l’on attend le plus en dehors des fêtes.
 
+> [!PARKY]
+> Si on vient en RER B puis en navette, on n’achète le billet de navette qu’une fois notre jour fixé : contrairement au Billet Noël, il est à date fixe. On ne repart qu’après L’Île aux Vœux, la dernière navette part de toute façon une heure après la fermeture, et huit minutes de pyrotechnie au-dessus du lac, je ne les échange pas contre un bus plus tôt. Les 24 et 31 décembre, elle part à 20 h.
+
 [Parc Astérix](ref:parc-asterix?full)
 
 Sources :

@@ -222,6 +222,9 @@ All coasters keep running in the evening, and the park advertises Hyperia and SA
 
 In October and the shoulder season, some rides stay shut in wind, cold or heavy rain. The park's limits are on its Return Guarantee page: Hyperia runs in winds up to 47 mph, Nemesis Inferno and SAW up to 40 mph, Colossus and The Swarm up to 35 mph, Stealth only up to 31 mph, Zodiac up to 25 and Vortex up to 23 mph. Wind is measured at height, so it can feel calmer on the ground. The coasters run from 5 degrees Celsius, and in heavy rain Nemesis Inferno and SAW stay shut. The Return Guarantee applies on selected days only, retroactively, when the park was hit by closures for at least an hour. In 2026 those were 4 April, 25 May and 13 August, redeemable until 30 September 2026.
 
+> [!PARKY]
+> If heavy rain is forecast for the afternoon, we ride Nemesis Inferno and SAW right after opening, because those are exactly the two that stop. When it pours, we ride The Walking Dead inside its pyramid hall, because I'm not going home over a bit of rain. The rest of the day we lay out ride by ride in the [day planner](/trip-planner).
+
 ## Tickets, passes and prices
 
 The park advertises its day tickets as "from £32" when booked in advance. Prices depend on the date. During Fright Nights a ticket at the gate costs £66. Students get a discount when they book in advance.
@@ -247,6 +250,9 @@ The park's website lists Vibes Bar & Kitchen in the Dome, Planet Doughnut, Camde
 The **Thorpe Shark Cabins** are 90 rooms built from shipping containers, with a shark's mouth as the entrance. They opened in 2013 as "The Crash Pad" by the provider Snoozebox, and the park bought and renamed them in 2014. A permanent 250-bed hotel was approved as early as 2011 but never built. Each room has a double bed, a bunk bed and a bathroom with a walk-in shower. Check-in is from 3 pm, and the breakfast buffet is in Vibes Bar & Kitchen. New for 2026 is a Fright Nights themed room.
 
 The "Overnight Stay" package includes two days of park admission, breakfast, parking worth £12, Wi-Fi, ten percent off in the shops and the hour of Fastrack. Prices start at £77 per person, with four people in the room, on selected days from Monday to Thursday. The Fright Nights packages start at £109 per person. In the themed rooms for Hyperia, The Swarm, Nemesis Inferno, Stealth and Colossus, guests also get a Coasters Fastrack on the second day, with six rides across Colossus, Hyperia, Nemesis Inferno, SAW, Stealth and The Swarm.
+
+> [!PARKY] Stay the night
+> For 2027 we book the Shark Cabins for four, Monday to Thursday: that's two park days with breakfast and parking from £77 per person, when two day tickets bought in advance already cost from £64. We walk in through the shark's mouth, and the top bunk is mine. If we pick one of the themed rooms, a Coasters Fastrack with six rides comes on top on the second day, Hyperia included.
 
 ## What's new and what has closed
 

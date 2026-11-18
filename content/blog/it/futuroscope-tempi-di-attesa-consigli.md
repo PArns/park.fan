@@ -216,6 +216,9 @@ vacanze scolastiche.
 Chi vuole solo la sera compra un biglietto Soirée (ingresso dalle 17) o un biglietto Nocturne
 (dalle 20). Entrambi comprendono lo spettacolo serale e le attrazioni aperte di sera.
 
+> [!PARKY]
+> Se veniamo solo per la sera, prendiamo il biglietto Soirée e paghiamo il parcheggio con la tariffa dalle 14, 8 euro invece di 13. La Clé des Songes è compresa in entrambi i biglietti serali e si tiene anche con la pioggia, e per immagini d'acqua con la pirotecnica resto sveglio volentieri fino a tardi. Prima facciamo le attrazioni aperte di sera.
+
 ## Quanto si aspetta qui
 
 Fino a inizio ottobre 2026 abbiamo misurato in 228 giorni. Al Futuroscope molte proposte non hanno coda:
@@ -289,6 +292,9 @@ Per questo i nostri valori di novembre e dicembre sono scarsi.
 
 Chi è
 flessibile sceglie un giovedì o un venerdì fuori dalle vacanze scolastiche francesi.
+
+> [!PARKY] Meglio la domenica
+> Fino al 18 dicembre il parco apre solo nei fine settimana, quindi ci andiamo di domenica: il sabato qui è di gran lunga il giorno più affollato della settimana, mentre la domenica ha, insieme a giovedì e venerdì, le attese più brevi. Il sabato lo passiamo a pregustarci la gita, e per quello non serve nessuna coda. Dopo, il parco è aperto tutti i giorni fino al 3 gennaio.
 
 ### Futuroween 2026
 

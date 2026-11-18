@@ -88,6 +88,9 @@ Plailly is 35 kilometres north of Porte de la Chapelle in Paris. By car, take th
 
 By train, take RER B to Aéroport Charles de Gaulle and change to the park's shuttle there. It runs every 15 to 30 minutes, takes about 25 minutes and costs €14 return or €8 one way, for a fixed date. The last one leaves the park an hour after closing, so at 8 p.m. on Christmas Eve and New Year's Eve. You can also come by long-distance coach or on the shuttle from the Eiffel Tower; our [Parc Astérix guide](/blog/parc-asterix-wait-times-tips) covers both, and where the queues are longest outside Christmas.
 
+> [!PARKY]
+> If we're coming by RER B and shuttle, we buy the shuttle ticket only once our day is settled: unlike the Billet Noël, it's good on a fixed date only. We head back after L'Île aux Vœux, since the last shuttle leaves an hour after closing, and in my book eight minutes of pyrotechnics over the lake beat any earlier bus. On Christmas Eve and New Year's Eve, that last one goes at 8 p.m.
+
 [Parc Astérix](ref:parc-asterix?full)
 
 Sources:

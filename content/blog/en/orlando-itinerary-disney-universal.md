@@ -135,6 +135,9 @@ On the 25 evenings of Mickey's Very Merry Christmas Party, anyone without a part
 
 The hours a party night takes from you are hours you can't spend on rides, and that's why a day in the calendar and the trip planner counts by the hours you get as a day guest. A party day weighs up to one and a half times as much as a full day with the same peak wait. On most party nights in November and December 2026, the ring goes to Animal Kingdom, even when Magic Kingdom has a slightly shorter peak wait that day. Animal Kingdom closes at 6 pm almost every day, so for that park it's a normal day.
 
+> [!PARKY]
+> If a party night falls on your trip, that's our Animal Kingdom day. Being shown out of Magic Kingdom at 6 pm while the party guests get to stay would sting too much. Magic Kingdom gets a day without a party, when it's usually open until 9 pm or later, and we pick that one in the [trip planner](/orlando#planner).
+
 Disney After Hours also costs extra, but it starts after the normal close, on selected evenings from January to August 2027 at Magic Kingdom, EPCOT and Hollywood Studios. Since no day guest has to leave early, an After Hours evening doesn't count against the park in the calendar.
 
 At Universal it's the autumn evenings that are short. On Halloween Horror Nights evenings in 2026, Universal Studios closed to day guests at 5 pm, on 49 evenings between 28 August and 1 November. The Halloween party at Magic Kingdom ran on 38 evenings from 7 August to 31 October 2026. Neither series is set for 2027 yet, and until the parks publish the evenings, the calendar shows no early close.
@@ -237,6 +240,9 @@ With **Park Hopper** you switch to a second park on the same day, any time after
 ### Universal Orlando
 
 At Universal you buy one to five days, and the period starts on the date you choose: two days within four, three days within five and five days within seven. Tickets of three days or more get you into Epic Universe. With one or two days you need a separate Epic Universe ticket for that, or the package of one day at the Studios or Islands of Adventure and one day at Epic Universe. You'll find the prices of the tickets and of Express Pass in our [Universal guide](/blog/universal-orlando-wait-times-tips). With **park-to-park** you switch between the parks on the same day and ride the Hogwarts Express.
+
+> [!PARKY] Three days, please
+> If Epic Universe is on our list, we buy three days at Universal straight away, since that's the shortest ticket that gets us in. Paying extra for the park where we queue longest would make me grumble twice. That way the Studios, Islands of Adventure and Epic Universe each get a day of their own, all three within five days.
 
 ### SeaWorld, Busch Gardens and LEGOLAND
 

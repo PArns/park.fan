@@ -180,6 +180,9 @@ Per marzo all’Europa-Park abbiamo quattordici giorni misurati della primavera 
 
 Per le Pre-Opening Weeks questo dice poco, perché nel 2026 non c’era niente di simile. Nelle prime due settimane di marzo 2027 è in vacanza solo Amburgo, tutti gli altri Länder lo sono dal 22 marzo.
 
+> [!PARKY]
+> Per le Pre-Opening Weeks scegliamo un giorno dal 13 al 19 marzo, tranne il 16 e il 17, quando il parco è chiuso. Quali attrazioni siano ancora a riposo il parco non lo dice, quindi oltre al berretto di lana mi porto anche un po’ di pazienza. In cambio, dal 13 anche i ragazzi di Amburgo sono tornati a scuola e nessun Land è in vacanza per Pasqua.
+
 ### Flying Cinema al Plopsaland Belgium
 
 A De Panne il **13 marzo 2027** apre il Flying Cinema, un capannone con uno schermo a cupola sotto cui fluttuano le navicelle, costruito da Mack Rides. Le anteprime partono già dal 19 dicembre 2026, ma solo per chi ha un abbonamento annuale Plopsa e per gli ospiti degli hotel e degli chalet del parco. Con un biglietto giornaliero entri solo dal 13 marzo. In che giorno il [Plopsaland Belgium](ref:plopsaland-belgium) cominci per il resto la stagione 2027, il parco non l’ha ancora pubblicato; nell’orario ci sono i giorni fino al 3 gennaio.

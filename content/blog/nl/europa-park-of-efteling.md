@@ -180,6 +180,9 @@ In de winter blijven beide parken tot in de avond open. Het Europa-Park is tijde
 
 Wie pas na de lunch vertrekt, kan in beide parken met een avondticket vanaf 16.00 uur naar binnen. In het Europa-Park geldt het van 2 november tot 9 januari en kost het voor volwassenen 41,50 €, vanaf 23 december 47 €. De Efteling verkoopt het van 21 december tot 3 januari voor 33 €, en wie daar een parkeerkaart bij koopt, betaalt 10 € in plaats van 15 €.
 
+> [!PARKY] De moeite waard
+> Vertrekken we tussen 21 december en 3 januari pas na de lunch, dan nemen we het avondticket van de Efteling: vanaf 16.00 uur voor 33 €, en tot 20.00 uur hebben we behalve op oudejaarsdag vier uur. In het Europa-Park kost dezelfde avond vanaf 23 december 47 € en is het op zijn vroegst om 19.00 uur afgelopen, dat reken zelfs ik snel uit. De parkeerkaart kopen we er meteen bij, dan kost die 10 € in plaats van 15 €.
+
 Schaatsen kan in beide parken, en in het Europa-Park is er ook een kerstmarkt in het Schlosspark Balthasar. De ijsbaan van de Efteling is deze winter deels overdekt. Op 1 december gaat daar ook Raveleijn weer open, met een nieuwe show die het park samen met het Franse Puy du Fou heeft gemaakt, en met de rondrit-attractie Ravenring.
 
 Voor Halloween blijft er maar één van de twee over, want de Efteling viert het niet. In het Europa-Park loopt het Halloweenseizoen 2026 nog tot 1 november. ’s Avonds is daar tot 7 november ook [Traumatica](ref:traumatica), een griezelevent vanaf 16 jaar op vrijdag tot en met zondag en op een paar donderdagen, met tickets vanaf 45 €. Van 2 tot 27 november volgt in het park HALLOWinter, open van 11.00 tot minstens 19.00 uur.

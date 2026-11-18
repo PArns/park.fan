@@ -459,13 +459,37 @@ carries „Frag Parky dazu“ (`blog.parkyAsk`), which opens the chat with a que
 ```
 
 - **At most one or two a post**, where the tip helps most: after the passage it acts on, never as
-  an opener or a summary.
+  an opener or a summary. Where a box belongs and where it does not, news included:
+  [a Parky box hands the reader one move](../../docs/rules/a-parky-box-hands-the-reader-one-move.md).
 - **Facts first, then the joke.** One concrete move the reader can make, in a sentence or three.
   Every fact in it is one the post itself states or park.fan's data shows; Parky never invents one
   ([his character](../../docs/features/parky-character.md#his-voice)).
 - **His voice**: „wir“ and „du“, a buddy who comes along, never an assistant; funny about once,
   queue grumbling, airtime and churros are his flavour, at most one emoji. Each locale is written
   natively, not translated word for word.
+
+#### Parky's tip with a stamp
+
+A few words after the marker, on its own line, are Parky's verdict on one concrete thing the post
+recommends: a pass, a ride, a time of day. The card is then labelled „Parkys Tipp“
+(`parkyStill.tip.label`, the label of his tip in the park calendar) and opens with the verdict as
+his green stamp (`ParkyStamp`), top left, with Parky looking over its edge. He is already on the
+stamp, so the still Parky beside the text is left out and the tip runs the card's full width; „Frag
+Parky dazu“ sits in the top right corner, as a bare speech bubble on a phone under 390 px.
+
+```md
+> [!PARKY] Lohnt sich
+> Den Pass für Taron After Dark holen wir schon um elf, weil das Kontingent begrenzt ist, und
+> fahren ihn erst, wenn es dunkel ist.
+```
+
+- **Two or three words**, at most 18 characters, written in the post's language („Lohnt sich“,
+  "Worth it"), and no exclamation mark: the stamp is part of the post's text and counts towards its
+  budget ([§4.5](../../docs/writing/4-typography.md#45-emoji-quotes-separators)). A longer marker line is read as the tip's first
+  sentence and the card stays „Parky sagt“.
+- **Always a yes.** The stamp is green; a tip that warns belongs in plain „Parky sagt“ or a
+  `[!WARNING]`.
+- The rules above still hold: at most one or two Parky cards a post, stamped or not.
 
 ### Quotes
 

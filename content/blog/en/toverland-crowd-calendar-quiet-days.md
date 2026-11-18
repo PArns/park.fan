@@ -200,6 +200,9 @@ Summer 2027 will run differently from 2026. NRW starts five days before the sout
 south region carries on five days longer. From Wednesday 1 to Sunday 5 September 2027 Limburg is
 still on holiday while NRW is back at school. We didn't have days like that in 2026. The closest is the first week of the 2026 summer holidays, when only the south and north regions were off and four weekdays stayed at Normal or below.
 
+> [!PARKY] Best time
+> Our Toverland day in 2027 falls in September, from Monday the 6th, ideally Monday to Wednesday. The south region is on summer holiday until Sunday 5 September, and we leave the Saturdays to half of Limburg anyway. In 2026, 13 of the 17 September weekdays were Low or Very Low.
+
 ## Do German school holidays matter?
 
 With the border this close, you'd expect so. To test it, we looked for days when only NRW was on

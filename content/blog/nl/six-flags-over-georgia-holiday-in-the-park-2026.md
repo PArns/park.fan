@@ -76,6 +76,9 @@ Een dagticket kost vanaf $35. Tot en met 30 november verkoopt het park bij wijze
 
 De Gold Pass kost $79 en geldt in 2026 en 2027 in alle Six Flags-parken aan de oostkust, inclusief parkeren, Fright Fest en Holiday in the Park. Heb je al een Gold Pass, dan verleng je voor $69, en wie liever per maand betaalt, neemt de Gold-membership voor $7 per maand plus $20 inschrijfkosten. Op alles komt nog tot $9,99 aan administratiekosten en belasting. Wie tot en met 30 november een pass koopt of verlengt of een nieuwe membership afsluit, krijgt er een Bring-A-Friend-ticket bij, dat uiterlijk op 3 januari 2027 gebruikt moet zijn.
 
+> [!PARKY] Eén pass voor twee
+> Met z'n tweeën koopt een van ons tot en met 30 november de Silver Pass voor $69, en de ander komt binnen met het Bring-A-Friend-ticket dat je tot dan bij elke pass krijgt. Twee dagtickets kosten samen al vanaf $70, en de $39 voor het parkeren bespaart de pass er nog bij. Daarna geldt hij nog tot Labor Day 2027, beide waterparken inbegrepen.
+
 Nieuw is dat Six Flags iedereen van 65 en ouder gratis binnenlaat, om ook de grootouders mee naar het park te krijgen, terwijl de kleinkinderen gewoon vanaf $35 betalen. Wie zich online registreert en uiterlijk op 3 januari 2027 voor het eerst komt, kan tot die datum gratis naar binnen. Neem bij de ingang elke keer een identiteitsbewijs met geboortedatum mee.
 
 Parkeren kost zonder pass $39, Preferred Parking $49, telkens plus kosten. Het adres voor de navigatie is 275 Riverside Parkway, Austell, GA 30168.

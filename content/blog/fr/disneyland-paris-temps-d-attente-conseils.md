@@ -347,6 +347,9 @@ plus courts juste après l’ouverture qu’à midi. Commence donc par là et ga
 Peter Pan pour le soir. Les huit attractions du tableau horaire ont toutes leur plus longue file entre 12 h
 et 14 h.
 
+> [!PARKY] Là, oui
+> Si on ne reste pas jusqu’à la dernière heure, c’est Peter Pan qui a droit à notre Premier Access One : il y fait gagner plus de temps que sur Hyperspace Mountain, et le 25 septembre il ne coûtait qu’un euro de plus. Pour un vol vers le Pays imaginaire, cet euro-là, je le donne volontiers. On ne peut l’acheter qu’une fois dans le parc, dans l’application, et Hyperspace Mountain, on le fait de toute façon juste après l’ouverture.
+
 Si tu réserves les deux parcs, inverse l’ordre habituel et commence par
 Adventure World, où, d’après notre analyse du rope drop, démarrer tôt fait
 gagner le plus sur Ratatouille et sur le Tower of Terror. La file de Frozen Ever After est la plus courte le soir, et l’attraction a une file single rider.

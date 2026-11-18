@@ -88,6 +88,9 @@ La stagione estiva 2027 comincia il 20 marzo, e i biglietti si comprano dal 10 n
 
 Online il biglietto si compra fino alle 14 del giorno stesso della visita. Ogni prezzo ha un contingente al giorno, e i prezzi possono salire da un giorno all’altro. I giorni infrasettimanali del Wintertraum, da metà novembre, costano da 35 a 39 €. Per ora sono in vendita biglietti fino al 23 dicembre.
 
+> [!PARKY]
+> Il nostro giorno infrasettimanale al Wintertraum lo prenotiamo appena è deciso: ogni prezzo ha un contingente al giorno, e finiti i biglietti da 35 €, lo stesso giorno costa di più. Spontaneo lo sono volentieri al chiosco dei churros, con i biglietti meno. Online si compra fino alle 14 del giorno stesso, ma a quel punto paghiamo quello che il giorno costa nel frattempo.
+
 I parcheggi P1 e P2 non si prenotano. Dalla stazione di Brühl e da Brühl Mitte una navetta porta al parco per 6 € andata e ritorno, e i bambini fino a 1 m viaggiano gratis. Il biglietto del trasporto pubblico regionale sulla navetta non vale.
 
 ### Heide Park

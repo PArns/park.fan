@@ -330,6 +330,9 @@ und Jahreskarten nicht gelten.
 Mittwochs wirbt der Park derzeit mit 36 statt 56 Euro für das Ticket. Ohne Kinder oder mit Vorschulkindern lohnen sich nach den
 Messungen Wochentage im September und Oktober sowie Februar und März.
 
+> [!PARKY] Mittwoch, klar
+> Weil sich Montag bis Freitag kaum unterscheiden, nehmen wir den Mittwoch: Für den wirbt der Park derzeit mit 36 statt 56 Euro, und 20 Euro weniger hab ich noch nie abgelehnt. Im März 2026 war er sogar der einzige Tag von Montag bis Freitag, an dem der Park überhaupt geöffnet hatte.
+
 Im Herbst läuft die **Halloween Celebration** vom 3. Oktober bis zum 8. November,
 und der Park ist dabei täglich geöffnet, bis auf den 10.
 Oktober. Zu sehen sind der Pumpkin King (eine Vogelscheuche, die nur zu Halloween
@@ -419,6 +422,9 @@ ein, dazu einen Parkplatz und 5 Euro Rabatt auf den Express Pass Classic oder
 Unlimited. Kinder von 85 bis 99 Zentimetern und Senioren ab 70 zahlen etwa die
 Hälfte. Alle drei Karten enthalten 25 Prozent Rabatt auf Tickets für Freunde und
 Familie (höchstens zwei Tickets im Jahr) und die Vorpremiere des Flying Cinema.
+
+> [!PARKY] Jahreskarte holen
+> Mit undatierten Tickets für 56 Euro hat sich der Plopsaland Belgium Pass für 150 Euro beim dritten Besuch bezahlt gemacht, mit Mittwochstickets für 36 Euro beim fünften. Mit der Karte kommen wir außerdem ab dem 19. Dezember an ausgewählten Tagen ins Flying Cinema, und mit einer Biene als Pilotin bin ich noch nie über Europa geflogen. Mit dem Tagesticket geht das erst ab dem 13. März.
 
 ## Praktisches im Park
 

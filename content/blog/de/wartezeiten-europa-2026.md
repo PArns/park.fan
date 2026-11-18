@@ -149,6 +149,9 @@ Im Parc Astérix haben wir an Sommerabenden bis 21 Uhr gemessen, und in der letz
 
 Der Parque de Atracciones de Madrid in der Casa de Campo öffnet erst mittags, und dort ist die erste Stunde die ruhigste, am längsten stehst du am frühen Abend an. Wer in Blackpool Pleasure Beach ausschläft, verpasst nichts, denn die Wartezeit an den großen Bahnen bleibt dort den ganzen Tag fast gleich.
 
+> [!PARKY]
+> Rope Drop ist mir heilig, verschenken will ich ihn trotzdem nicht: Im Thorpe Park laufen wir zur Öffnung nicht zuerst zu Hyperia, denn dort bleibt die Warteschlange den ganzen Tag fast gleich lang. In PortAventura heben wir uns Uncharted für den Abend auf, weil dort die erste Stunde die längste des Tages ist, und im [Tagesplaner](/trip-planner) legen wir die Bahn gleich ans Ende.
+
 ## Was Regen ausgemacht hat
 
 An Regentagen standen die Leute in allen zwölf Parks unseres [Regen-Vergleichs](/blog/freizeitpark-bei-regen) kürzer an als an trockenen Tagen im selben Monat, im Movie Park Germany um fast ein Drittel. Als Regentag zählt dort ein Tag mit mindestens zwei Millimetern Niederschlag. Eine Regenvorhersage für den Samstag ist also eher ein Grund zu fahren, vor allem in den Movie Park, solange kein Gewitter angesagt ist.

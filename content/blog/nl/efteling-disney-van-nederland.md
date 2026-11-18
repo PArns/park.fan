@@ -534,6 +534,9 @@ Bij [Symbolica](ref:efteling/symbolica) blijft de rij van het middaguur
 tot in de namiddag vrijwel even lang en wordt pas tegen de avond korter, die kun je
 bewaren.
 
+> [!PARKY]
+> Voor Danse Macabre sluiten we al in het Ruigrijk aan, digitaal in de gratis Efteling-app, en intussen rijden we Joris en de Draak tot de telefoon zoemt. In de rij staan zonder in de rij te staan, zo heb ik het graag. De rest van de dag zetten we vooraf attractie voor attractie in de [dagplanner](/trip-planner).
+
 **Ga ’s middags naar het Sprookjesbos**, als de rijen bij de attracties het
 langst zijn. Daar sta je nergens in de rij. Neem er een uur voor, geen twintig minuten.
 
@@ -636,6 +639,9 @@ november of in de tweede helft van januari, niet de week tussen kerst en nieuwja
 Kijk vooraf even op de onderhoudslijst van het park: in 2026 is Droomvlucht dicht
 van 9 november tot en met 4 december, Joris en de Draak van 30 november tot en met
 18 december.
+
+> [!PARKY] Januari wint
+> Van de twee rustigere periodes kiezen we de tweede helft van januari, doordeweeks: Droomvlucht is in 2026 tot en met 4 december dicht voor onderhoud, Joris en de Draak tot en met 18 december, en in januari geen van beide. Voor Aquanura in het donker trek ik een muts over mijn reuzenrad. Of de achtbanen buiten rijden, hangt dan alleen nog van het weer af.
 
 Mijn foto’s hier zijn allemaal op één winteravond gemaakt.
 

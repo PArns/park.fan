@@ -83,6 +83,9 @@ Met de metro neem je de Bundang-lijn tot Giheung en stap je daar over op de Ever
 
 De pandatweeling is naar verwachting op 11 december voor het laatst te zien, in de derde week van december verhuizen de twee naar China. Sinds 13 november zitten ze in quarantaine in het Panda Second House en zijn ze maar beperkt te zien, in het binnenverblijf. Boom en tweeling op één dag kan dus drie weken lang, met de parade erbij alleen van 27 november tot en met 11 december. Hoe een bezoek aan de panda's verloopt, lees je in ons stuk over het [afscheid van Rui Bao en Hui Bao](/news/everland-pandas-ruibao-huibao-afscheid).
 
+> [!PARKY]
+> Wij kiezen een dag tussen 1 en 11 december, liever vroeg dan laat: dan betalen we al de decemberprijs, zien we de parade en Magic in the Sky en treffen we de tweeling nog, al is het maar beperkt in het binnenverblijf. Twee panda's die naar China verhuizen, zwaai ik liever persoonlijk uit. De tijden van parade en show zoeken we vooraf op in de dagplanning op everland.com.
+
 [Everland](ref:everland?full)
 
 Bronnen:

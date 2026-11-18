@@ -215,6 +215,9 @@ Na Fright Fest gaat het park zonder programma open van 5 tot en met 8 november e
 
 Jersey Devil Coaster, El Toro, Runaway Train, Tango en het Bugs Bunny National Park draaien tijdens het evenement niet. Welke van de andere attracties rijden, beslist Six Flags op elke Holiday-avond op basis van weer en temperatuur.
 
+> [!PARKY]
+> Voor Holiday in the Park kopen we het ticket pas als de weersverwachting voor onze dag er is: het weer beslist mee welke attracties rijden, en Six Flags betaalt niets terug, een andere dag bij regen is er ook niet. El Toro en de Jersey Devil Coaster staan tijdens het hele evenement sowieso stil, en daar mopper ik nu al een beetje over. Hebben we de Gold Pass, dan hebben we helemaal geen ticket nodig, want Holiday in the Park zit erbij.
+
 ```best-days-widget slug=six-flags-great-adventure
 
 ```
@@ -253,6 +256,9 @@ Stel dat je op een zomerdag bij de opening aan de ingang staat, Nitro weer rijdt
 - Tot slot de Shoreline Pier, op zomeravonden met de Boardwalk Nights.
 
 Bij El Toro, THE JOKER, de Jersey Devil Coaster en THE FLASH mag je geen losse spullen mee de wachtrij in nemen, dus geen tassen en geen rugzakken. Fast Lane en tickets lopen via je telefoon, en om dat ook in de wachtrij te laten werken, heeft het park voor het seizoen 2026 meer dan 600 nieuwe wifi-toegangspunten geplaatst. Contant betalen kan niet, alleen met een kaart, Apple Pay of Google Pay. Wie contant geld bij zich heeft, wisselt dat bij een kiosk om voor een kaart. Vragen beantwoordt Guest Relations via livechat, elke dag van 8.00 tot 2.00 uur ’s nachts, Amerikaanse oostkusttijd.
+
+> [!PARKY]
+> De rugzak laten we die dag in de auto of in het hotel: El Toro, THE FLASH, de Jersey Devil Coaster en THE JOKER staan allemaal op ons lijstje, en bij geen van de vier mag een tas mee de wachtrij in. Mijn reuzenradhoed telt hopelijk niet mee. De volgorde voor jouw dag zetten we daarna in de [dagplanner](/trip-planner).
 
 ## Tickets
 

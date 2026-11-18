@@ -44,6 +44,9 @@ Un quatuor vocal reprend les classiques de Noël, et une ligne de danseuses faç
 
 Sur le nom, Six Flags ne s’accorde pas avec lui-même : le communiqué du 4 novembre parle de « Snoopy's Christmas Follies », le guide de l’événement publié par le parc de « Snoopy's Merry Christmas Follies ». Les hivers précédents, Snoopy était déjà monté sur la glace pendant la Merry Farm, par exemple dans « Snoopy's Night Before Christmas ».
 
+> [!PARKY]
+> Le matin, on regarde d’abord dans l’appli Six Flags à quelle heure passe le spectacle sur glace ce jour-là, car le programme de la veille ne nous sert à rien. Pour un beagle en patins, je veux bien décaler une montagne russe. Ensuite, on cale les attractions autour de la représentation dans le [planificateur de journée](/trip-planner).
+
 ## Lumières, spectacles et père Noël
 
 Des milliers de lumières pendent entre les guirlandes et les grands flocons. Le Holiday Lighting Moment a lieu chaque soir dans tout le parc. Pendant Snow and Glow, les lumières de Main Street et de Schoolhouse Road, à Ghost Town, dansent sur des chansons de Noël sous la neige. Au Calico Park, le sapin s’allume pendant la « 'Tis the Season Tree Lighting Ceremony ».

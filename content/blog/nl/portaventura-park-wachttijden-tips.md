@@ -237,6 +237,9 @@ Kinderen mogen vanaf 12 jaar zonder volwassene de parken in.
 
 Voor Halloween is er de code SUSTO26 met tot 30 procent korting op tickets voor bezoeken van 19 september tot 15 november, die uiterlijk 15 november moet worden ingewisseld. De code ESCAPEPAW geeft 40 procent op bezoeken doordeweeks, als je uiterlijk 14 oktober koopt en uiterlijk 4 december komt.
 
+> [!PARKY] Twee dagen nemen
+> Slapen we niet in een van de hotels van het resort, dan kopen we voor het park meteen twee dagen: online € 43 in plaats van € 37, de tweede dag kost dus € 6. Voor minder dan één toegang met Express ONE krijgen we een hele parkdag, en alleen al bij die gedachte kom ik even los van mijn stoel. In een resorthotel zit die dag er sowieso bij, daar levert één nacht al twee dagen toegang tot het park op.
+
 ### Jaarkaarten
 
 De vier jaarkaarten gelden 365 dagen vanaf aankoop. Junioren zijn kinderen van 4 tot 10 jaar, senioren zijn vanaf 60, kinderen van 0 tot 3 jaar zijn gratis.
@@ -293,6 +296,9 @@ Eten en drinken mag je niet het park in nemen. Voor de ingang ligt een picknickp
 Met bediening eten kan bij Iron Horse in Far West (burgers, spareribs, steaks), bij Raco de Mar in Mediterrània (salades en rijstgerechten), bij Vinosfera met tapas en bij Hacienda El Charro in México. Zelfbediening is er onder meer bij Bora Bora in Polynesia, La Cantina in México, Marco Polo in China (buffet) en Sichuan. In Ferrari Land serveert Trattoria Maranello salades, pizza, pasta, vlees en vis aan tafel. Sneller gaat het bij Pit Lane met zelfbediening, daarnaast zijn er Paddock, Finish Line, Ice Cream Box en Stop & Go.
 
 Kluisjes zijn er in drie maten: klein € 8, middel € 11 en groot € 15. Daarnaast zijn er kluisjes bij de banen, € 2 voor een rugzak, op vier plekken: tussen Shambhala en Dragon Khan, bij de ingang van Furius Baco, naast Tutuki Splash en bij de toegang tot Silver River Flume. Na het openen komen ze vrij voor de volgende gast, opnieuw openen kost weer geld.
+
+> [!PARKY]
+> De rugzak sluiten we op tussen Shambhala en Dragon Khan, en we rijden ze allebei voordat we het kluisje weer openen: zo betalen we de € 2 maar één keer. Met 134 km/u wil ik toch al niks op schoot hebben. In de [dagplanner](/trip-planner) zetten we de twee daarvoor direct achter elkaar.
 
 Een enkele kinderwagen kost € 12 huur plus € 12 borg, een dubbele € 18 plus € 12 borg, een rolstoel € 12 plus € 10. Gasten met een erkende beperking vanaf 33 procent en aangetoonde beperkte mobiliteit krijgen een pas voor de “Exclusive Access” bij banen en shows, met maximaal vier begeleiders bij de attracties.
 

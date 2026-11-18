@@ -231,6 +231,9 @@ parkdag. De shop adverteert met tickets vanaf **44 €**. Spontaan kan ook, maar
 alleen online en alleen tot 14 uur op de bezoekdag zelf, tegen de dan geldende
 dagprijs en alleen als de dag niet is uitverkocht.
 
+> [!PARKY] Trakteer jezelf
+> We boeken zodra de datum vaststaat. Pakken we voor oktober of november de prijsstap van 35 € in plaats van die van 59 €, dan houden we 24 € over, en dat zijn, ik heb het twee keer nagerekend, precies twee Quick Passes voor Taron. Die kopen we op de ochtend van de bezoekdag.
+
 Jaarkaarten zijn er niet meer. Het Phantasialand haalde zijn Club-Karte in de
 pandemie uit de verkoop en bracht hem nooit terug; de laatste liepen in de zomer
 van 2022 af. Onder de [grote Duitse parken](/blog/beste-pretparken-in-duitsland)

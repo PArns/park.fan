@@ -351,6 +351,9 @@ of Adventure in September, in Epic Universe in August and September, and in the 
 days of the week, Saturday is the busiest in the Studios and Islands of Adventure. In Epic Universe the
 weekdays barely differ.
 
+> [!PARKY]
+> If a Saturday falls in our trip, Epic Universe gets it: in the Studios and Islands of Adventure Saturday is the busiest day, while in Epic Universe the days of the week barely differ. That park hardly cares what day it is, so neither do I. Which of the other two goes on which weekday, we'll sort out in the [trip planner](/orlando#planner).
+
 In autumn the Studios close earlier for regular guests on the evenings of Halloween Horror Nights. All
 dates, prices and houses are in our overview [Halloween in the US](/blog/halloween-usa-theme-parks-2026).
 The holiday season runs from 14 November to 3 January, more on that in [Christmas and New Year in
@@ -400,6 +403,9 @@ Children between the minimum height and 1.22 m need an escort. The big rides hav
 Stardust Racers and Revenge of the Mummy from 1.22 m, VelociCoaster from 1.30 m, Doctor Doom's Fearfall
 from 1.33 m and the Hulk from 1.38 m. At most of these rides there's a test seat before boarding where
 you can try whether you fit.
+
+> [!PARKY]
+> With a child of 1.02 m or taller, the whole family sets off together at opening in Epic Universe: Mine-Cart Madness and the Battle at the Ministry, the two strong rope-drop tips, already take them, with an escort up to 1.22 m. That puts the little one in the Ministry of Magic before the grown-ups have finished their second coffee. Mario Kart, Curse of the Werewolf and Hiccup's Wing Gliders start at the same height, so in the [day planner](/trip-planner) they go straight after.
 
 Seuss Landing in Islands of Adventure is the area for the youngest. According to Universal, only two
 rides there have a minimum height, both 0.92 m. In the Studios, Minion Land and DreamWorks

@@ -80,6 +80,9 @@ The 2027 season passes are already valid, and Platinum, Gold and Silver include 
 
 The Santa Experience costs extra: €5 for adults, €3 for children aged 4 to 11. It's open from 1 p.m. to 4:30 p.m., on Fridays only from 3 p.m. Every seat on the train needs a ticket, and children under four ride free on a lap. Children under eight only get in with an adult. The ice slide costs extra as well, but the park hasn't announced the price yet.
 
+> [!PARKY]
+> Since the online ticket costs the same on all 21 days, we skip the Fridays: on the other event days we're in from noon instead of 2 p.m., and even S.A.D., the grumpy clapperboard, couldn't complain about two extra hours for the same money. With kids it counts double, because the Santa Experience then opens at 1 p.m. instead of 3.
+
 ## Ice rink, shows and lights
 
 The more than a million lights hang in four areas, Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza and Wild West Christmas; last year there were just over 800,000. From last year, the covered 360-square-metre ice rink stays, and so do the curling, the mapping show and the American food.

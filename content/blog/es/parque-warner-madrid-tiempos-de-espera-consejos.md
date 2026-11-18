@@ -331,6 +331,9 @@ El Silver ahorra algo de tiempo en Superman, La Venganza del Enigma y Coaster
 Express, pero justo ahí las colas ya son cortas. Quien quiera ahorrarse el pase sube a Batman hacia las 16 h,
 cuando la cola es unos minutos más corta que de costumbre.
 
+> [!PARKY] Basta el One-Pass
+> Para Batman cogemos el One-Pass por 8 €, no el Gold desde 45,90 €. No necesitamos más que ese viaje rápido: en Superman, La Venganza del Enigma y Coaster Express la cola es tan corta que ni me da tiempo a refunfuñar. Los 37,90 € de diferencia dan para dos menús exprés de 12,90 €.
+
 ## Cuándo ir
 
 ```stats-widget slug=parque-warner-madrid show=months,weekdays

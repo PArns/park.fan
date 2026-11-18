@@ -334,6 +334,9 @@ Onder dak liggen volgens het park de **Tempel X-pedition**, **LEGO NINJAGO The R
 Studios**, **LEGOLAND ATLANTIS by SEA LIFE** en de **LEGO Fabrik**. Atlantis heeft volgens Wikipedia ruim 2.000 vissen, en de glazen tunnel daar is acht
 meter lang. Daarnaast is er een **Regen Rallye**, een puzzelronde voor natte dagen.
 
+> [!PARKY] Toch gaan
+> Staat er regen in de voorspelling, dan blijven we niet thuis: op regendagen waren de wachttijden hier 17 procent korter. Bij een bui duiken we de LEGO Studios in of gaan we naar LEGO NINJAGO The Ride, en ik hou de paraplu vast en geniet van elke kortere wachtrij. Houdt het op, dan staan we als eersten weer buiten.
+
 Tussen 24 december 2025 en 5 oktober 2026 viel in Legoland Deutschland
 op 18 procent van de openingsdagen minstens twee millimeter regen. Het park zelf raadt een
 paraplu, een regenponcho, waterdichte schoenen en droge kleren aan.
@@ -383,6 +386,9 @@ Het **WinterWonder LEGOLAND** loopt in 2026/27 op losse dagen: 28 en 29 november
 en met 13, 18 tot en met 23 en 26 tot en met 30 december en 2 tot en met 10 januari 2027. Er is een
 ijsbaan, er zijn curlingbanen en shows om het halfuur, en bij veel attracties staat “weersafhankelijk
 geopend”. Een vroegboekticket kost tot 15 november € 22 in plaats van € 36.
+
+> [!PARKY] Eerst de jaarkaart
+> Gaan we in 2027 toch al twee keer naar Legoland, dan kopen we de jaarkaart vanaf € 99 nog vóór de eerste WinterWonder-dag op 28 november: daarmee is de toegang tot WinterWonder gratis, zonder kost een ticket € 36. Blijft een attractie met “weersafhankelijk geopend” dan dicht, dan baal ik maar half zo erg, we komen in de zomer toch terug. Tel er twee zomerdagen tegen de online minimumprijs van € 39 bij op, en de kaart heeft zich terugverdiend.
 
 Legoland heeft verder het eerste LEGO Harry Potter Land ter wereld aangekondigd en het eerste
 verblijf met dat thema. Een openingsjaar noemt het park daarvoor niet.

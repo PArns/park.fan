@@ -555,6 +555,9 @@ En [Symbolica](ref:efteling/symbolica) la cola apenas se mueve
 desde el mediodía hasta media tarde y solo se acorta hacia la noche; esa te la
 puedes guardar.
 
+> [!PARKY]
+> Para Danse Macabre nos ponemos en cola ya desde el Ruigrijk, de forma digital en la app gratuita de Efteling, y mientras tanto montamos en Joris en de Draak hasta que vibre el móvil. Hacer cola sin estar plantado en la cola: así me gusta. El resto del día lo dejamos planificado antes de ir, atracción por atracción, en el [planificador del día](/trip-planner).
+
 **A mediodía, ve al bosque de los cuentos**, cuando las colas de las atracciones
 son más largas. Ahí no haces cola en ningún sitio. Dedícale una hora, no veinte minutos.
 
@@ -659,6 +662,9 @@ Quien quiera ver la temporada de invierno con calma coge un día entre semana de
 Antes conviene mirar la lista de mantenimiento del parque: en 2026 Droomvlucht
 cierra del 9 de noviembre al 4 de diciembre, Joris en de Draak del 30 de
 noviembre al 18 de diciembre.
+
+> [!PARKY] Gana enero
+> De los dos periodos más tranquilos nos quedamos con la segunda mitad de enero, entre semana: en 2026 Droomvlucht cierra por mantenimiento hasta el 4 de diciembre y Joris en de Draak hasta el 18, y en enero ninguna de las dos. Para Aquanura a oscuras me calo un gorro encima de mi noria. Que las montañas rusas al aire libre funcionen o no ya solo depende del tiempo.
 
 Mis fotos aquí son todas de una sola tarde de invierno.
 

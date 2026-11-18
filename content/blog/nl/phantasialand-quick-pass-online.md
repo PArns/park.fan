@@ -51,6 +51,9 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
+> [!UPDATE] 2026-11-18
+> Die 3 Mausketiere zijn in de shop al langer uitverkocht: net als op 15 november stond hun Quick Pass vandaag bij de start van de verkoop om 11 uur en om 11.30 uur op uitverkocht, zonder prijs. Op de [infopagina van het park](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) staat hij voor € 5. Voor Taron zijn er nu twee verschillende Quick Passes van elk € 12: Taron Daylight geldt tot 16 uur, Taron After Dark vanaf 17 uur, en tussen 16 en 17 uur geldt geen van beide. Nieuw in de shop is ook Chiapas voor € 5, de prijs in de winter, terwijl de infopagina nog € 10 noemt. De overige prijzen zijn dezelfde als op 15 november, en Colorado Adventure staat inmiddels ook op de infopagina voor € 7. Met € 5 voor Die 3 Mausketiere kosten alle elf losse passes samen € 80, evenveel als de Ultimate, waar F.L.Y. nog bij komt.
+
 Het [Phantasialand](ref:phantasialand) verkoopt de Quick Pass nu ook in de [webshop van het park](https://shop.phantasialand.de/nl/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Na het betalen krijg je hem als pdf per e-mail, en bij de Quick-Pass-ingang van de baan laat je de QR-code daaruit op je telefoon zien. Tot nu toe kon je hem alleen kopen bij de gastenservice aan de Kaiserplatz in themawereld Berlin, en daar stond je eerst in de rij om later bij een baan korter in de rij te staan.
 
 Online verkoopt het park de pass vanaf 11 uur. Tijdens de Wintertraum gaat dan ook het park open. Je loopt door de poort en bestelt de pass rustig op je telefoon, terwijl je al op weg bent naar Taron of Black Mamba. Voor elven meldt de shop alleen dat de verkoop nog niet is begonnen.
@@ -89,11 +92,14 @@ Voor Colorado Adventure vraagt de shop € 7, terwijl de mijntrein op de infopag
 
 De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pass-ingang en kom je één keer sneller in [F.L.Y.](ref:phantasialand/fly), waarvoor geen losse pass bestaat. Bij Taron geldt de Ultimate volgens de shop voor “Daylight & After Dark”, dus overdag en 's avonds.
 
+> [!PARKY] Trakteer jezelf
+> De acht losse passes uit de tabel kosten samen € 58, de Ultimate € 22 meer, en daarvoor vliegen we één keer sneller in F.L.Y. en rijden we Taron ook overdag. Bij Talocan zitten we met een pass gegarandeerd aan de voorkant, en bij Taron vraag ik bij het instappen gewoon vriendelijk om een plek. Wilden we toch al bijna alles met een pass doen, dan nemen we de Ultimate.
+
 ## Wat je verder nodig hebt
 
 De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets verkoopt het park alleen online, een kassa bij de ingang heeft het niet, en voor de dag zelf koop je tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
 
-Een plaats in de trein kies je ook met pass niet zelf uit, en de minimale lengte geldt met pass net zo goed, voor Taron 1,30 m.
+De medewerkers wijzen de plaatsen toe, maar bij Taron helpt het om hun bij het instappen vriendelijk naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant. De minimale lengte geldt met pass net zo goed, voor Taron 1,30 m.
 
 ## Als de ingang pauzeert of de baan stilstaat
 
@@ -104,6 +110,9 @@ Met de Quick Pass sta je korter in de rij, al sta je er nog steeds, en de Quick-
 De Wintertraum loopt sinds 14 november tot en met 24 januari 2027, elke dag van 11 tot 20 uur, met vijf sluitingsdagen rond kerst, nieuwjaar en half januari.
 
 De losse pass voor Taron After Dark geldt vanaf 17 uur, en in de Wintertraum is het dan al lang donker. Op oudejaarsdag sluit het park al om 18 uur, en dan loont de pass voor Taron After Dark alleen als je om vijf uur al bij de baan staat.
+
+> [!PARKY] De moeite waard
+> De pass voor Taron After Dark halen we al om elf uur, want het aantal is beperkt, en we rijden pas als het donker is. Tot dan sparen we de batterij alsof de hele avond van die QR-code afhangt. Tussen vijf uur en sluitingstijd om acht hebben we er drie uur voor.
 
 ```best-days-widget slug=phantasialand
 
@@ -116,3 +125,6 @@ Bij de gastenservice was het aantal beperkt. In de Wintertraum waren de passes d
 Op een groene dag in de kalender heb je de Quick Pass volgens mij niet nodig als je bij de opening aan de poort staat. Op een dieprode zaterdag in de vakantie zou ik de € 10 voor Black Mamba uitgeven voordat ik 's middags in de rij ervoor ga staan. Zonder pass rijd ik de banen af in de volgorde uit de [Phantasialand-tips](/blog/phantasialand-wachttijden-tips).
 
 Bronnen: [Quick Pass in de webshop van Phantasialand](https://shop.phantasialand.de/nl/quick-pass), [gebruiksvoorwaarden van de Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, onderdeel Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
+
+> [!CORRECTION]
+> 18 november 2026: in de eerste versie stond dat je ook met een Quick Pass je plek in de trein niet zelf kiest. De medewerkers wijzen de plaatsen toe, maar bij Taron helpt het om hun bij het instappen vriendelijk naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant.

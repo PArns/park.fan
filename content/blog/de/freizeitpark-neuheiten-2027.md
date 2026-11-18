@@ -196,6 +196,9 @@ frei zugänglich, das Flying Cinema kostet dann ein eigenes Ticket. Abends laufe
 Ankündigung andere Filme als tagsüber. Plopsa will mit der Plaza auf zwei Millionen Besucher im Jahr
 kommen.
 
+> [!PARKY]
+> Wollen wir im Sommer nur ins Flying Cinema, kommen wir abends nach Parkschluss: Dann ist die Plaza frei zugänglich, und wir zahlen allein das eigene Ticket fürs Flying Cinema, keinen Eintritt in den Park. Venedig und Paris in etwa fünf Minuten, und niemand will meinen Ausweis sehen. Kennen wir den Flug vom Tag schon, lohnt sich der Abend trotzdem, denn nach der ersten Ankündigung laufen dann andere Filme.
+
 ### Die Märchenbibliothek im Efteling
 
 Im Märchenwald des [Efteling](ref:efteling) entsteht das 32. Märchen, die Märchenbibliothek. Sie

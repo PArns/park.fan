@@ -215,6 +215,9 @@ Después de Fright Fest, el parque abre sin programa especial del 5 al 8 y el 14
 
 Durante el evento no funcionan el Jersey Devil Coaster, El Toro, el Runaway Train, Tango ni el Bugs Bunny National Park. Cuáles de las demás atracciones funcionan lo decide Six Flags cada noche de Holiday según el tiempo y la temperatura.
 
+> [!PARKY]
+> Para Holiday in the Park no compramos la entrada hasta tener la previsión del tiempo para nuestro día: el tiempo decide en parte qué atracciones funcionan, y Six Flags no devuelve el dinero ni da otro día si llueve. El Toro y el Jersey Devil Coaster están parados durante todo el evento de todos modos, y eso ya me tiene un poco gruñón. Si tenemos el Gold Pass, no nos hace falta entrada, porque Holiday in the Park va incluido.
+
 ```best-days-widget slug=six-flags-great-adventure
 
 ```
@@ -253,6 +256,9 @@ Supongamos que un día de verano estás en la entrada a la hora de apertura, Nit
 - Para terminar, el Shoreline Pier, que en las noches de verano tiene las Boardwalk Nights.
 
 En las colas de El Toro, THE JOKER, el Jersey Devil Coaster y THE FLASH no se puede entrar con objetos sueltos, ni bolsos ni mochilas. El Fast Lane y las entradas van por el móvil, y para que eso funcione también en la cola el parque instaló antes de la temporada 2026 más de 600 puntos de acceso wifi nuevos. Solo se paga sin efectivo, con tarjeta, Apple Pay o Google Pay; si llevas billetes, los cambias por una tarjeta en unos quioscos. Guest Relations responde por chat en directo todos los días de 8:00 a 2:00 de la madrugada, hora de la costa este.
+
+> [!PARKY]
+> Ese día la mochila se queda en el coche o en el hotel: El Toro, THE FLASH, el Jersey Devil Coaster y THE JOKER están todos en nuestra lista, y en ninguno se entra a la cola con bolsa. Espero que mi sombrero de noria no cuente. El orden para tu día lo montamos luego en el [planificador del día](/trip-planner).
 
 ## Entradas
 

@@ -50,6 +50,7 @@
     "test:blog-editor-frontmatter": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-editor-frontmatter.mjs",
     "test:guards": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-guards.mjs",
     "test:og-parky": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-og-parky.mjs",
+    "test:blog-parky": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-blog-parky.mjs",
     "test:calendar": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-utils.mjs",
     "test:calendar-month": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-calendar-month.mjs",
     "test:orlando-hub": "node --experimental-strip-types --import ./scripts/register-path-alias.mjs scripts/test-orlando-hub.mjs",

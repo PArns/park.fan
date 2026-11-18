@@ -81,6 +81,9 @@ Los siete días el parque abre de 11:00 a 19:00. Lo que cuesta la entrada de un 
 
 A eso se suman una tasa de gestión de hasta 9,99 dólares y los impuestos. En taquilla, el mismo día cuesta 90 dólares. La fiesta va incluida en la entrada normal, y los niños de hasta dos años no necesitan entrada. El aparcamiento cuesta 39 dólares por internet, o 49 en el Preferred Parking. El parque acuático Soak City está cerrado en noviembre.
 
+> [!PARKY] Mejor en domingo
+> Para Hops & Harvest elegimos un domingo: por internet el día cuesta entonces 45 dólares en vez de los 55 del sábado, y los músicos tocan a las mismas horas los siete días. Los diez dólares de diferencia ya los tengo invertidos en Cinnamon Donut Holes. Si solo nos va bien el viernes después de Acción de Gracias, son 49 dólares, y ese día también hay muslos de pavo.
+
 ```best-days-widget slug=kings-dominion
 
 ```

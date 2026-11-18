@@ -169,6 +169,9 @@ Fino al cambio dell’ora a Brühl il sole tramonta dopo la chiusura. Da domenic
 sparito verso le 17:20, e poco prima delle 18 è buio. Nell’ultima mezz’ora prima della chiusura a
 Klugheim si accendono le luci, mentre il Taron gira ancora.
 
+> [!PARKY]
+> Nei giorni feriali teniamo il Taron per il pomeriggio: dalle 14 la coda è lunga solo circa due terzi di quella del mattino. Dal 25 ottobre facciamo l’ultimo giro nella mezz’ora prima della chiusura, quando a Klugheim si accendono le luci, e tra le rocce di basalto al buio mi viene la pelle d’oca fin sotto il cappello. Il resto della giornata lo pianifichiamo attrazione per attrazione nel [pianificatore della giornata](/trip-planner).
+
 ## Quanto durano ancora i giorni tranquilli
 
 Le serate di Halloween nei parchi vicini finiscono tra il 1° novembre a Walibi Holland e il 15

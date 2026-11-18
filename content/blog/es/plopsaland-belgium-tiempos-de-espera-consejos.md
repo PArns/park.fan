@@ -327,6 +327,9 @@ Los miércoles el parque anuncia ahora la entrada a 36 euros en lugar de 56. Sin
 colegio, según las mediciones compensan los días entre semana de septiembre y
 octubre y los de febrero y marzo.
 
+> [!PARKY] Miércoles, claro
+> Como de lunes a viernes los días apenas se distinguen, nos quedamos con el miércoles: ese día el parque anuncia ahora la entrada a 36 euros en lugar de 56, y a 20 euros menos yo nunca les he dicho que no. En marzo de 2026 fue incluso el único día entre semana en que el parque abrió.
+
 En otoño, la **Halloween Celebration** va del 3 de octubre al 8 de noviembre y el parque abre todos los días salvo el 10 de octubre. Hay
 Pumpkin King (un espantapájaros que solo en Halloween sale de Pumpkin Island), la
 Nachtwacht-Akademie, los zorros Fox & Trot del musical Pinocchio y la 25
@@ -415,6 +418,9 @@ aparcamiento y 5 euros de descuento en el Express Pass Classic o Unlimited. Los
 niños de 85 a 99 centímetros y los mayores de 70 pagan más o menos la mitad. Los
 tres pases incluyen un 25 por ciento de descuento en entradas para amigos y
 familia (como máximo dos entradas al año) y el preestreno del Flying Cinema.
+
+> [!PARKY] Pase anual, sí
+> Con entradas sin fecha de 56 euros, el Plopsaland Belgium Pass de 150 euros se amortiza en la tercera visita, y con las del miércoles a 36 euros, en la quinta. Con el pase entramos además al Flying Cinema algunos días a partir del 19 de diciembre, y con una abeja de piloto nunca he volado sobre Europa. Con la entrada de un día, toca esperar al 13 de marzo.
 
 ## Práctico en el parque
 

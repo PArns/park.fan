@@ -209,6 +209,9 @@ L’été 2027 se déroulera autrement qu’en 2026. NRW commence cinq jours ava
 région Sud continue cinq jours de plus. Du mercredi 1er au dimanche 5 septembre 2027, le Limbourg
 sera encore en vacances et NRW déjà à l’école. Nous n’avons pas eu de tels jours en 2026. Le plus proche est la première semaine des vacances d’été 2026, quand seules les régions Sud et Nord étaient en congé et que le parc est resté sur Normal ou moins quatre jours de semaine.
 
+> [!PARKY] Le bon moment
+> Notre journée à Toverland en 2027 tombe en septembre, à partir du lundi 6, de préférence du lundi au mercredi. Jusqu’au dimanche 5 septembre, la région Sud est encore en vacances d’été, et les samedis, on les laisse de toute façon à la moitié du Limbourg. En 2026, 13 des 17 jours de semaine de septembre étaient sur Faible ou Très faible.
+
 ## Les vacances allemandes comptent-elles ?
 
 Avec la frontière si proche, on s’y attend. Pour le vérifier, nous avons cherché des jours où seule

@@ -333,6 +333,9 @@ is **£64**, and the Merlin Essential Pass, valid at more than twenty UK attract
 with toddlers get their own ticket from £29, which isn't valid at weekends or in the school holidays.
 The waterpark costs extra, from £23.
 
+> [!PARKY] Worth the £12
+> For £12 more we take the second day, and parking is £13 a day online. That gives us two mornings for Spinball Whizzer, Rita, TH13TEEN and Nemesis Reborn, the four rides where an early start saves the most, and the thought of two rope drops alone lifts me off my seat. Oblivion, The Smiler and Wicker Man we spread over the two afternoons in the [day planner](/trip-planner).
+
 ### Parking
 
 Standard parking costs **£13** online and £15 on the day; from there it's a 15 to 25 minute walk,

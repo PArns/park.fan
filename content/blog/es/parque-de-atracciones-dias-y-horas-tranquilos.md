@@ -377,6 +377,9 @@ siempre hay vacaciones. No puedo demostrarlo.
 Hacia las doce es cuando más esperas, y la espera sigue siendo larga hasta
 primera hora de la tarde-noche. Es más corta en la última hora.
 
+> [!PARKY]
+> Para Disneyland Park eso significa que reservamos el viaje cuando nos venga bien: las vacaciones aquí solo suman alrededor de un 3 %, y el día de la semana tampoco cambia casi nada. Las colas cortas las conseguimos con el reloj y nos quedamos hasta la última hora, aunque a esas alturas yo ya esté bostezando. Qué parque toca qué día lo decidimos en el [planificador de viajes](/paris#planner).
+
 El parque abrió el 12 de abril de 1992 como Euro Disneyland y se llama Disneyland
 Park desde marzo de 2002.
 

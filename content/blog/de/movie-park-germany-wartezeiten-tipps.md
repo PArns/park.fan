@@ -541,6 +541,9 @@ Für den Pass selbst gilt:
   und die nächste Buchung geht erst am Tag nach deinem Besuch. Spontan hinfahren
   geht mit Pass also schlechter als mit Tagesticket.
 
+> [!PARKY] Gold statt Silber
+> Fahren wir 2027 mehr als zweimal mit dem Auto hin, nehmen wir Gold statt Silber: Gold kostet 20 € mehr, die Parkkarte für Silber allein schon 25 €, und ohne Karte wären es 9 € pro Besuch. Dazu gibt es mit Gold dreimal freien Eintritt im Bobbejaanland, so rechne ich gern. Sperrtage hat Gold außerdem keine.
+
 **Anreise.** Die Adresse ist **Warner-Allee 1, 46244 Bottrop**. Mit dem Auto
 über die A31 und dort über die Ausfahrt 39 Bottrop-Feldhausen, auch wenn das Navi
 eine andere vorschlägt. So empfiehlt es der Park ausdrücklich, danach ist alles

@@ -76,6 +76,9 @@ TREEville a grandi et se trouve à The Shore. On y marche entre des arbres déco
 
 Pour la saison de Noël, le parc annonce 46 attractions, dont les montagnes russes [Candymonium](ref:hersheypark/candymonium?bare), [Wildcat’s Revenge](ref:hersheypark/wildcats-revenge?bare), [Twizzlers Twisted Gravity](ref:hersheypark/twizzlers-twisted-gravity-now-open?bare), [Reese’s Cupfusion](ref:hersheypark/reeses-cupfusion?bare), Wild Mouse et Jolly Rancher Remix, ainsi que Kissing Tower et Starship America. Certaines ferment dès 17 h, comme Monorail, Tea Cups, Music Express et Red Baron.
 
+> [!PARKY]
+> Si les enfants veulent faire Tea Cups, Monorail, Music Express ou Red Baron, on vient un jour où la Candylane ouvre à midi, un samedi par exemple, et on commence par ces quatre-là : elles ferment dès 17 h, l’heure à laquelle le vendredi commence à peine. Après les Tea Cups, tout continue de tourner un moment autour de moi. Il nous reste ensuite toute la soirée pour TREEville et Fire & Ice.
+
 C’est le parc qui décide, avec le constructeur de chaque attraction, si elle tourne par grand froid, dans le vent ou avec de la neige sur les rails, et la maintenance peut aussi en arrêter une. Selon la Winter Weather Promise du parc, les Guest Services vous remettent un bon gratuit pour une autre visite si la météo garde la plupart des grandes attractions de la saison fermées pendant plus de 60 minutes de votre visite. Ce bon vaut pour chaque jour d’ouverture jusqu’au 30 juin 2027.
 
 ## Fall Weekend les 7 et 8 novembre

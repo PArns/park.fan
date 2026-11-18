@@ -561,6 +561,9 @@ Ensuite, traversez l’Anderrijk vers
 midi jusqu’en milieu d’après-midi et ne raccourcit que vers le soir : celle-là,
 gardez-la.
 
+> [!PARKY]
+> Pour Danse Macabre, on se met en file dès le Ruigrijk, virtuellement dans l’appli gratuite d’Efteling, et on fait Joris en de Draak en attendant que le téléphone vibre. Faire la queue sans faire le pied de grue, c’est comme ça que je l’aime. Le reste de la journée, on le cale avant de partir, attraction par attraction, dans le [planificateur de journée](/trip-planner).
+
 **À midi, allez dans la forêt des contes**, quand les files des attractions sont
 les plus longues. Vous n’y faites la queue nulle part. Prévoyez-y une heure, pas vingt minutes.
 
@@ -666,6 +669,9 @@ la saison d’hiver au calme, prenez un jour de semaine en novembre ou dans la
 seconde moitié de janvier, pas la semaine entre Noël et le Nouvel An. Jetez avant
 un œil à la liste de maintenance du parc : en 2026, Droomvlucht est fermée du
 9 novembre au 4 décembre, Joris en de Draak du 30 novembre au 18 décembre.
+
+> [!PARKY] Va pour janvier
+> Des deux périodes plus calmes, on prend la seconde moitié de janvier, en semaine : en 2026, Droomvlucht est fermée pour maintenance jusqu’au 4 décembre et Joris en de Draak jusqu’au 18, et en janvier, aucune des deux. Pour Aquanura dans le noir, j’enfile un bonnet par-dessus ma grande roue. Que les montagnes russes en plein air roulent ou non, ça ne dépend plus que de la météo.
 
 Mes photos ici ont toutes été prises un seul soir d’hiver.
 

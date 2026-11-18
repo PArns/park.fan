@@ -541,6 +541,9 @@ digitaal aan te schuiven terwijl je eet, winkelt of een show kijkt. De
 wachttijd verdwijnt niet, maar hij vreet niet langer je dag op, en het park
 spreidt de vraag gecontroleerder over de uren.
 
+> [!PARKY]
+> Meer dan één VirtualLine-tijdvak tegelijk krijgen we in het Europa-Park niet, dus dat ene gaat bij ons naar Voltron: die heeft de langste mediane wachttijd van het park. Voor Voltron staat dan mijn telefoon in de rij, en ik kom intussen los van mijn stoel in Wodan. De plaatsen zijn zeer beperkt, dus we boeken in de app zodra er een vrij is.
+
 Voor wie liever met de voeten in de rij staat dan met de duim, sleutelen de
 parken tegelijk aan het station zelf:
 

@@ -185,6 +185,9 @@ afgevinkt en elk blok waarvan de tijd al is begonnen. Wie om twee uur op
 de knop drukt, staat om twee uur in een of andere rij, en die verschuift
 niemand meer.
 
+> [!PARKY]
+> Voordat we in de [dagplanner](/trip-planner) op “Dag optimaliseren” drukken, schuiven we de lunchpauze naar het moment waarop we echt willen eten: de wizard zet hem op 12:30, en bij het sorteren blijft hij staan waar hij staat. Mijn maag laat zich nu eenmaal minder makkelijk verschuiven dan een blok. Stelt de planner onder “Aanpassingen” later een kortere pauze voor om er een attractie bij te krijgen, dan beslissen we zelf wat we liever hebben.
+
 En omdat zo’n druk op de knop van drie blokken elf kan maken, hoort er bij de
 uitkomst een ongedaan maken. Eén stap terug.
 

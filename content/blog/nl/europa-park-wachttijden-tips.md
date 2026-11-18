@@ -607,6 +607,9 @@ donderdag 14 mei 2026 op “matig” en de vrijdag erop op “zeer hoog”. Op z
 het park weer op “laag”. Bij Sacramentsdag hetzelfde patroon: de feestdag op
 4 juni stond op “laag”, de brugvrijdag op de 5e op “hoog”.
 
+> [!PARKY] Liever donderdag
+> Met Hemelvaartsdag en Sacramentsdag gaan we op de feestdag zelf en laten we de brugvrijdag aan half Duitsland. In 2026 stond Sacramentsdag op “laag” en Hemelvaartsdag op “matig”, de vrijdagen erna op “hoog” en “zeer hoog”. Hebben we het hele lange weekend vrij, dan is de zondag onze tweede dag: na Hemelvaart lag het park toen alweer op “laag”.
+
 Op beide brugvrijdagen was het weer beroerd. Op 15 mei
 2026 trok er een onweersbui over, veel warmer dan twaalf graden werd het niet,
 en toch was het genoeg voor “zeer hoog”; op 5 juni onweerde het opnieuw. Het

@@ -212,6 +212,9 @@ difference is payable for each remaining month.
 
 When the pass is bought on a visit day and paid for the whole year, the park refunds that day's admission. The partner list of March 2026 includes Walibi Holland at 20% except during Halloween Fright Nights, Attractiepark Hellendoorn at 35%, the Plopsa parks at 40% for visitors from 1 m, Bobbejaanland at 20% and Freizeit-Land Geiselwind at 40%.
 
+> [!PARKY] Buy it in the park
+> For Magic Member we take an ordinary day ticket for the first visit and only decide once we're in the park: if we pay for the pass for the whole year that same day, Toverland refunds the day's admission. That turns the first day into a free test ride, if we sign up. Bought at the counter, the pass then runs for a year from that day.
+
 ### The terms
 
 The price page lists no blocked days. The pass terms, version of 21 March 2024, say: the pass entitles you

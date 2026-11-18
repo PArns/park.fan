@@ -83,6 +83,9 @@ En metro, vas en la línea Bundang hasta Giheung y allí cambias a la EverLine, 
 
 Si nada cambia, el 11 de diciembre será el último día en que el público pueda ver a las gemelas panda, que en la tercera semana de diciembre se mudan a China. Desde el 13 de noviembre están en cuarentena en el Panda Second House y solo se las ve, con limitaciones, en el recinto interior. El árbol y las gemelas coinciden, por tanto, tres semanas, y con desfile incluido solo del 27 de noviembre al 11 de diciembre. Cómo funcionan las visitas a los pandas lo contamos en nuestro artículo sobre la [despedida de Rui Bao y Hui Bao](/news/everland-pandas-ruibao-huibao-despedida).
 
+> [!PARKY]
+> Nosotros elegimos un día entre el 1 y el 11 de diciembre, mejor al principio: ya pagamos el precio de diciembre, vemos el desfile y Magic in the Sky y aún pillamos a las gemelas, aunque solo con limitaciones en el recinto interior. A dos pandas que se mudan a China prefiero decirles adiós en persona. Los horarios del desfile y del espectáculo los miramos antes en el plan del día de everland.com.
+
 [Everland](ref:everland?full)
 
 Fuentes:

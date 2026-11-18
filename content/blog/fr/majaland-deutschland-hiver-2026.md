@@ -86,6 +86,9 @@ Expedition GeForce, Sky Scream et les autres grandes attractions présentées da
 
 À partir du 4 décembre, le père Noël s’installe à l’Indoor Theater chaque jour d’ouverture. Les enfants peuvent lui remettre leur liste, et chacun reçoit un chocolat de la chocolaterie Wawi. Le samedi 5 décembre, la place des Fontaines accueille la deuxième édition du Plopsa Nikolauslauf, une course de la Saint-Nicolas avec des parcours pour enfants et pour adultes. Le parc ouvrira les inscriptions sous peu. Du 4 au 10 février 2027, Plopsa Indoor fête le carnaval avec une disco pour enfants. Pour un anniversaire en hiver, la formule « Majas Geburtstagszauber » comprend une visite de Maya.
 
+> [!PARKY] Vendredi, banco
+> Pour le père Noël, on choisit un vendredi à partir du 4 décembre, donc le 4, le 11 ou le 18 : il est alors déjà à l’Indoor Theater, et le billet daté coûte 16 € en ligne au lieu de 27 ou 29 € le week-end. On glisse la liste dans le sac avant de partir, et sur la mienne, il n’y a qu’une grande roue de rechange pour mon chapeau. Le spectacle de Maya, à 13 h ou 16 h, se joue dans le même théâtre et il est compris dans l’entrée.
+
 ## Ce qui change par rapport à l’hiver dernier
 
 L’hiver 2025/26, cette partie du parc s’appelait encore Majaland Pfalz. Elle ouvrait à l’époque du 7 novembre au 22 mars, tandis que cette saison s’arrête dès le 14 mars, et le billet le moins cher coûtait 20 €, contre 16 € aujourd’hui. Le parc avait abandonné le nom de Holiday Park dès la fin juin 2025. Les nouveautés étaient alors le spectacle de Maya et le premier hiver de Die Schlümpfe Abenteuer.

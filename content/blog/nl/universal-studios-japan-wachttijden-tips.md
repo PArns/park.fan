@@ -276,6 +276,9 @@ Yoshi's Adventure de meeste tijd. Daarna volgt Hollywood Dream: Backdrop.
 
 Op 9 oktober 2026 was het park open van 8:00 tot 22:00 uur.
 
+> [!PARKY]
+> Voordat we bij de opening aan de poort staan, registreren we de Studio Passes van de hele groep in de app: zonder dat geen tijdslot voor Super Nintendo World, en is het contingent van de dag op, dan blijft alleen het Standby Entry Ticket over. Zonder één keer uit het vatkanon van Mine Cart Madness geschoten te worden, ga ik niet naar huis. De rest van de dag zetten we in de [dagplanner](/trip-planner).
+
 ## Wanneer je moet gaan
 
 ```stats-widget slug=universal-studios-japan show=weekdays
@@ -354,6 +357,9 @@ haal je dat ticket op de bezoekdag in de app. Het pakket “Race & Minecart
 Special” bevat Mario Kart, Mine Cart Madness, Forbidden Journey, Villain-Con
 Minion Blast en The Flying Dinosaur. Bij pakketten met Hollywood Dream of de
 dinosaurusattractie geldt een minimumlengte van 132 centimeter.
+
+> [!PARKY] Met tijdslot
+> Als we een Express Pass kopen, dan een met tijdslot voor Super Nintendo World: “Race & JAWS” en “Mine Cart & JAWS” beginnen bij dezelfde 10.800 yen als “Backdrop & The Flying Dinosaur”, maar het tijdslot is gegarandeerd. Dan hoeven we om acht uur ’s ochtends niet in de app op het contingent te azen. Met een kind onder de 132 centimeter valt het pakket met Backdrop en de dinosaurus sowieso af.
 
 Valt een attractie van de pas uit, dan gebruik je volgens het park de overige
 attracties van de pas, behalve die met een vast tijdstip. Op het ticket staat per

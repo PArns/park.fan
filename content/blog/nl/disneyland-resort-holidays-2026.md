@@ -98,6 +98,9 @@ In het Disneyland Hotel, het Pixar Place Hotel en het Grand Californian Hotel & 
 
 Voor nachten van 11 oktober tot en met 18 december betaal je in de hotels tot 20 procent minder als je minstens drie nachten blijft en uiterlijk 15 december boekt. In Downtown Disney valt er vanaf 13 november elke avond sneeuw bij het podium “Downtown Disney LIVE!”, waar bands en dj's spelen.
 
+> [!PARKY] Drie nachten
+> Slapen we in een van de Disney-hotels, dan boeken we uiterlijk 15 december minstens drie nachten, allemaal vóór de 19e: dan betalen we tot 20 procent minder, en de kerstman zit nog in Toontown, waar die tekenfilmhond hem naartoe heeft gejaagd. Welk park op welke dag komt, leggen we vast in de [reisplanner](/california#planner), en voor precies die dagen halen we daarna de parkreserveringen.
+
 Bronnen:
 [Holidays at the Disneyland Resort 2026 (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/holidays-at-the-disneyland-resort-returns-with-festival-favorites-and-classic-traditions-nov-13-2026-jan-6-2027/),
 [Haunted Mansion Holiday Fun Facts (Disneyland News)](https://disneyexperiences.com/disneyland-press/release/haunted-mansion-holiday-fun-facts-3/),

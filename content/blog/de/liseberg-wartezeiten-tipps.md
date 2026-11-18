@@ -376,6 +376,9 @@ aber nicht auf Helix und der Lisebergbanan. Die Preise für den Eintritt zu Jul
 2026 hat der Park noch nicht veröffentlicht. Das Kaninchenland hat 2026 an 42
 zusätzlichen Tagen im Winter geöffnet, an jedem Wochenende und in den Schulferien.
 
+> [!PARKY] Sommer lohnt sich
+> Alle großen Bahnen an einem Tag gibt es nur im Sommer: Zu Halloween fährt Valkyria nicht, zu Jul waren 2025 Helix und die Lisebergbanan nicht dabei, und AtmosFear läuft ohnehin nur im Sommer. Auf dem Weg nach oben mach ich die Augen zu, die 90 Meter freien Fall nehme ich trotzdem mit. Zum Weihnachtsmarkt kommen wir gern noch einmal, Balder und Valkyria fuhren 2025 auch da.
+
 ## Tickets und Preise
 
 Liseberg verkauft den Eintritt und das Fahrbändchen getrennt. Der **Åkpass**

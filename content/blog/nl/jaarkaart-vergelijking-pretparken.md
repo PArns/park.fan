@@ -214,6 +214,9 @@ jaarkaart heeft. Groeit het kind uit zijn lengteklasse, dan wordt voor elke rest
 
 Koop je het abonnement op een bezoekdag en betaal je per jaar, dan betaalt het park de entree van die dag terug. Op de partnerlijst van maart 2026 staan onder meer Walibi Holland met 20% behalve tijdens de Halloween Fright Nights, Attractiepark Hellendoorn met 35%, de Plopsa-parken met 40% voor bezoekers vanaf 1 m, Bobbejaanland met 20% en Freizeit-Land Geiselwind met 40%.
 
+> [!PARKY] In het park kopen
+> Voor Magic Member nemen we bij het eerste bezoek een gewoon dagticket en beslissen we pas in het park: betalen we het abonnement nog dezelfde dag voor het hele jaar, dan betaalt Toverland de entree van die dag terug. Zo is de eerste dag een gratis proefrit, als we toehappen. Aan de balie gekocht loopt het abonnement dan een jaar vanaf die dag.
+
 ### De voorwaarden
 
 De prijspagina noemt geen geblokkeerde dagen. In de abonnementsvoorwaarden, versie van 21 maart 2024,

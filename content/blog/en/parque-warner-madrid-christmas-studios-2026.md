@@ -50,6 +50,9 @@ The 22-metre Christmas tree is back at the entrance. The Looney Tunes switch it 
 
 On stage there's the musical The Santa's Magical Bell, the Looney Tunes Dance Festival in its Christmas Edition and, in the Western area, Una Navidad en Dodge City. From 5 December "Happy Holiday!", last year's dance show, is back on Hollywood Boulevard. In Christmas Town, a small Christmas village with elves and reindeer, Santa shows off his workshop in El Taller de Papá Noel, which the park pitches at the youngest visitors. The Three Kings receive visitors there too. Bugs Bunny, Tweety, Daffy Duck, the DC superheroes and Gizmo from Gremlins pose for photos in festive outfits. The day ends with the Superstars of Christmas Parade, where the same characters ride past once more on floats, Santa and the Three Kings included.
 
+> [!PARKY] December it is
+> We put our day in December, from the 5th: that's the only time the new bubble show runs, and when the mime looks for a volunteer for his lantern, my hand's the first one up. From the 5th, last year's dance show is back on Hollywood Boulevard too, and in December the park stays open until 9 p.m. instead of 8.
+
 ## Dates and opening hours
 
 Christmas Studios is open on 29 days, always from noon:

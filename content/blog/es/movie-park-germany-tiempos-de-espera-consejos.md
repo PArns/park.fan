@@ -553,6 +553,9 @@ Para el pase en sí:
   reserva no se puede hacer hasta el día después de tu visita. Ir de forma
   espontánea funciona por tanto peor con pase que con entrada de día.
 
+> [!PARKY] Mejor Gold
+> Si vamos en coche más de dos veces en 2027, cogemos Gold en vez de Silber: Gold cuesta 20 € más, pero la tarjeta de aparcamiento de Silber ya cuesta 25 € por sí sola, y sin ella son 9 € por visita. Además, con Gold tenemos tres entradas gratis en Bobbejaanland, así me gusta hacer cuentas. Y Gold no tiene días bloqueados.
+
 **Cómo llegar.** La dirección es **Warner-Allee 1, 46244 Bottrop**. En coche por
 la A31, y allí por la salida 39 Bottrop-Feldhausen, aunque el navegador proponga
 otra. El parque lo recomienda expresamente, y a partir de ahí todo está

@@ -1,14 +1,20 @@
 /**
  * Parky on the share images and in a post: `oklchToHex` lands on the brand's own hex values,
- * `forSatori` calls components through and leaves no `oklch()` behind, and the `[!PARKY]` marker
- * is one of the callouts the posts and the admin editor read.
+ * `forSatori` calls components through and leaves no `oklch()` behind, the `[!PARKY]` marker
+ * is one of the callouts the posts and the admin editor read, and a verdict on its marker line
+ * becomes the card's stamp.
  *
  * Run: pnpm test:og-parky
  */
 import { createElement, Fragment } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { forSatori, oklchToHex } from '../lib/og/satori-svg.ts';
-import { CALLOUT_MARKER_RE, CALLOUT_TYPES } from '../lib/blog/remark-callouts.ts';
+import {
+  CALLOUT_MARKER_RE,
+  CALLOUT_TYPES,
+  parseParkyStamp,
+  remarkCallouts,
+} from '../lib/blog/remark-callouts.ts';
 
 let failed = 0;
 function check(name, ok) {
@@ -42,6 +48,33 @@ check('no oklch left', !markup.includes('oklch'));
 check('parky is a callout type', CALLOUT_TYPES.includes('parky'));
 check('marker reads [!PARKY]', CALLOUT_MARKER_RE.exec('[!PARKY] tip')?.[1] === 'PARKY');
 check('marker still reads [!NOTE]', CALLOUT_MARKER_RE.test('[!NOTE]'));
+
+check(
+  'verdict on the marker line',
+  parseParkyStamp('[!PARKY] Lohnt sich!\nTaron ab 17 Uhr.')?.label === 'Lohnt sich!'
+);
+check('bare marker has no stamp', parseParkyStamp('[!PARKY]\nTaron ab 17 Uhr.') === null);
+check('one-line tip stays the tip', parseParkyStamp('[!PARKY] Taron ab 17 Uhr.') === null);
+check(
+  'a long marker line stays the tip',
+  parseParkyStamp('[!PARKY] Taron fahren wir erst nach fünf\nweil es dann dunkel ist.') === null
+);
+
+/** One `> [!PARKY]` blockquote as remark parses it, run through the plugin. */
+function parky(text) {
+  const quote = {
+    type: 'blockquote',
+    children: [{ type: 'paragraph', children: [{ type: 'text', value: text }] }],
+  };
+  remarkCallouts()({ children: [quote] });
+  return { props: quote.data?.hProperties ?? {}, text: quote.children[0]?.children[0]?.value };
+}
+const stamped = parky('[!PARKY] Lohnt sich!\nTaron ab 17 Uhr.');
+check('stamp lands on the callout', stamped.props['data-callout-stamp'] === 'Lohnt sich!');
+check('stamp leaves the tip', stamped.text === 'Taron ab 17 Uhr.');
+const plain = parky('[!PARKY]\nTaron ab 17 Uhr.');
+check('plain card has no stamp', !('data-callout-stamp' in plain.props));
+check('plain card keeps its tip', plain.text === 'Taron ab 17 Uhr.');
 
 if (failed) process.exit(1);
 console.log('✅ og-parky: all checks passed');

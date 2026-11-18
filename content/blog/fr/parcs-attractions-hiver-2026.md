@@ -188,6 +188,9 @@ le 31 décembre, où le parc ferme à 18 h. Du 1er au 3 janvier, il est ouvert d
 10 h à 19 h le week-end. Les coasters en plein air tournent tant que la météo le
 permet.
 
+> [!PARKY] Fais-toi plaisir
+> Du 21 décembre au 3 janvier, on prend à Efteling le billet du soir à 33 € : de 16 h à la fermeture à 20 h, ça fait quatre heures, et en décembre, la nuit tombe dès seize heures trente. Droomvlucht, Symbolica et Danse Macabre se moquent de la météo, et moi aussi, sous mon parapluie. Seul le 31 décembre, il n’y a pas de billet du soir, le parc ferme alors à 18 h.
+
 Le soir du 31 décembre, Efteling fête le Nouvel An, Oud & Nieuw, de 19 h à 1 h,
 avec un feu d’artifice. Les billets à 62 € sont épuisés, ceux à prix réduit pour
 les abonnés aussi, et il n’y a plus d’hébergement pour cette nuit-là

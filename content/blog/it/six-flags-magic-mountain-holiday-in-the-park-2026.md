@@ -93,6 +93,9 @@ Il Gold Pass costa 155 dollari e vale per il 2026 e il 2027 in tutti i parchi Si
 
 Il parcheggio parte da 42 dollari per il General Parking e da 62 dollari per il Preferred Parking, tasse escluse. Il posto vicino all'ingresso principale (Front Gate) parte da 77 dollari, poco meno di quanto costa entrare nel parco. Nel navigatore va inserito 26101 Magic Mountain Pkwy, Valencia, CA 91355.
 
+> [!PARKY] Il pass conviene
+> Se nel 2027 Magic Mountain rientra nel nostro viaggio in California, entro il 30 novembre compriamo il Silver Pass invece di un Good Any Day Ticket, anche per una sola visita: costano entrambi 79 dollari, ma il pass comprende il General Parking, che altrimenti parte da 42 dollari più tasse. Con i soldi del parcheggio mi compro una bella montagna di churros. Il giorno lo fissiamo poi nel [pianificatore di viaggio](/california#planner).
+
 ## Gli altri parchi Six Flags e Thrill Glider
 
 Quest'inverno Six Flags ha rinnovato Holiday in the Park a [Great Adventure](/news/six-flags-great-adventure-holiday-in-the-park-2026) e a [Over Georgia](/news/six-flags-over-georgia-holiday-in-the-park-2026). Knott's Berry Farm, dove vale anche il Gold Pass, diventa [Knott's Merry Farm](/news/knotts-merry-farm-2026). A Magic Mountain la prossima grande novità è [Thrill Glider](/news/thrill-glider-six-flags-magic-mountain), montagne russe di Vekoma che dovrebbero aprire nel 2027.

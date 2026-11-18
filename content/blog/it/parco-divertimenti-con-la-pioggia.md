@@ -233,6 +233,9 @@ minima, e chi è sotto i 100 o i 110 centimetri rispettivamente sale con un
 adulto. A Berlin hanno in
 più la giostra dei cavalli, Die 3 Mausketiere e il Verrückte Hotel Tartüff.
 
+> [!PARKY]
+> Se piove a Brühl, andiamo prima a Wuze Town: Winja's Fear, Winja's Force e Crazy Bats corrono nello stesso padiglione, tre montagne russe senza che ci cada addosso una goccia. Poi Mystery Castle ci porta a 65 metri all’interno della sua torre, e il tetto ci ripara dalla pioggia, dall’altezza purtroppo no. Taron e Black Mamba li teniamo per le pause tra un rovescio e l’altro.
+
 ![Un enorme vaso di terracotta col coperchio aperto e una scala appoggiata. | Nella sala di Winja’s Fear & Force, Wuze Town. | left](/media/phantasialand/winjas-fear.jpg)
 
 Taron, Black Mamba e le altre grandi montagne russe sono all’aperto.

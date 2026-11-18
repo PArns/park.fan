@@ -240,6 +240,9 @@ por el mismo día de parque. La tienda anuncia entradas desde **44 €**. Tambi�
 puede ir sobre la marcha, pero solo online y solo hasta las 14 h del mismo día, al
 precio que tenga ese día y siempre que no se haya agotado.
 
+> [!PARKY] Date el gusto
+> Reservamos en cuanto está la fecha. Si para octubre o noviembre pillamos el tramo de 35 € en vez del de 59 €, nos sobran 24 €, que son, lo he contado dos veces, justo dos Quick Pass para Taron. Esos los compramos la misma mañana de la visita.
+
 Ya no hay abonos anuales. El Phantasialand retiró su Club-Karte de la venta
 durante la pandemia y nunca la recuperó; las últimas caducaron en el verano de 2022. Entre los
 [grandes parques alemanes](/blog/mejores-parques-de-atracciones-de-alemania) es

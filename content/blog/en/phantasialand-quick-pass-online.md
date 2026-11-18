@@ -52,6 +52,9 @@ seo:
     - Phantasialand Wintertraum 2026/27
 ---
 
+> [!UPDATE] 2026-11-18
+> Die 3 Mausketiere have been sold out in the shop for a while: as on 15 November, their Quick Pass showed "Currently sold out" today when sales opened at 11 am and again at 11:30, with no price. The [park's info page](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/) lists it at €5. Taron now has two different Quick Passes at €12 each: Taron Daylight is valid until 4 pm and Taron After Dark from 5 pm, so neither works between 4 and 5 pm. Also new in the shop is Chiapas for €5, its winter price, while the info page still lists €10. The other prices are the same as on 15 November, and the info page now lists Colorado Adventure at €7 too. With €5 for Die 3 Mausketiere, all eleven single passes come to €80 together, the price of the Ultimate, which adds F.L.Y. on top.
+
 [Phantasialand](ref:phantasialand) now sells its Quick Pass in the [park's online shop](https://shop.phantasialand.de/en/quick-pass?utm_source=park.fan&utm_medium=referral&utm_campaign=quick-pass-online). Once you've paid, it arrives as a PDF by email, and at the ride's Quick Pass entrance you show the QR code from it on your phone. Until now you could only get one at Guest Services on the Kaiserplatz, in the Berlin area, which meant queuing first so you could queue less at a ride later.
 
 Online sales start at 11 am, the minute the Wintertraum gates open, so you order on your phone at your own pace while you're already heading for Taron or Black Mamba. Before eleven the shop only tells you that sales haven't started yet.
@@ -90,11 +93,14 @@ For Colorado Adventure the shop charges €7, while the park's info page still l
 
 The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entrance once, and once onto [F.L.Y.](ref:phantasialand/fly), which has no single pass of its own. For Taron, the shop says the Ultimate covers "Daylight & After Dark".
 
+> [!PARKY] Treat yourself
+> The eight single passes in the table add up to €58, the Ultimate costs €22 more, and for that we fly F.L.Y. once with a shorter wait and ride Taron by day too. At Talocan a pass guarantees us the front side, and at Taron I just ask nicely for a seat at the platform. If we were going to buy a pass for nearly everything anyway, we get the Ultimate.
+
 ## What else you need
 
 The Quick Pass costs extra and only works with a valid day ticket. Day tickets are sold online only, since there's no ticket office, and for the day itself the park sells them until 2 pm. Turn up at the gate at half past two without one and you have a bigger problem than the queue for Black Mamba.
 
-Even with a pass you don't get to pick your seat on the train, and the height limits apply with a pass too, 1.30 m for Taron.
+The staff assign the seats, but at Taron it helps to ask them nicely for a particular one at the platform, and at Talocan the Quick Pass guarantees you the front side. The height limits apply with a pass too, 1.30 m for Taron.
 
 ## When the entrance pauses or the ride is down
 
@@ -105,6 +111,9 @@ The Quick Pass entrance has a short queue of its own, and it may pause for a whi
 Wintertraum has been running since 14 November and goes on until 24 January 2027, daily from 11 am to 8 pm, with five closed days at Christmas, New Year and in mid-January.
 
 The single pass for Taron After Dark is valid from 5 pm, and during Wintertraum it's dark by then. On New Year's Eve the park closes at 6 pm, and the Taron After Dark pass is then only worth it if you're at the ride by five.
+
+> [!PARKY] Worth it
+> We grab the Taron After Dark pass at eleven, because there are only so many, and ride it once it’s dark. Until then we guard the battery as if the whole evening depended on that QR code. Between five and closing at eight we’ve got three hours for it.
 
 ```best-days-widget slug=phantasialand
 
@@ -117,3 +126,6 @@ At Guest Services there were only so many, and at Wintertraum they were often go
 In my experience you don't need a Quick Pass on a green day in the calendar if you're at the gate when the park opens. On a deep-red Saturday in the school holidays I'd rather spend the €10 on Black Mamba than join its queue at midday. Without a pass I ride in the order from the [Phantasialand tips](/blog/phantasialand-wait-times-tips).
 
 Sources: [Quick Pass in the Phantasialand online shop](https://shop.phantasialand.de/en/quick-pass), [Quick Pass terms of use](https://www.phantasialand.de/de/quick-pass/), [Information and directions, Quick Pass section](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Prices and tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Opening hours](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
+
+> [!CORRECTION]
+> 18 November 2026: The first version said that even with a Quick Pass you don't get to pick your seat. The staff assign the seats, but at Taron it helps to ask them nicely for a particular one at the platform, and at Talocan the Quick Pass guarantees you the front side.

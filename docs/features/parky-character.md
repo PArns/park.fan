@@ -98,6 +98,9 @@ server-rendered with no client code. He signs every share image beside the park.
 the hero of his own page's card ([OG images](og-images.md#rendering-and-assets)), and he says the
 tip in a post's „Parky sagt“ card (`> [!PARKY]`, `BlogParkySays`), whose „Frag Parky dazu“ opens
 the chat with a question about it ([authoring guide](../../content/blog/README.md#parky-says)).
+With a verdict on the marker line (`> [!PARKY] Lohnt sich`) the card is „Parkys Tipp“, as his tip
+in the park calendar is labelled, and opens with the verdict as his green stamp, top left. He looks
+over the stamp's edge there, so the card draws no still Parky beside the text.
 
 - **On holiday** he stands at a lake in Florida with his park map held low (`ParkyMap still`), a
   suitcase beside him, a flamingo in the shallows, a coaster on the far shore and a launch from the

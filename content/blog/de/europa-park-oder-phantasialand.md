@@ -2,16 +2,12 @@
 title: 'Im Europa-Park stehst du kürzer an als im Phantasialand'
 translationKey: europa-park-or-phantasialand
 date: '2026-10-22'
-updatedAt: '2026-11-15'
+updatedAt: '2026-11-18'
 author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Mit einem Kind zwischen 1,00 und 1,30 Meter ist im Europa-Park mehr offen als
-  im Phantasialand. Nur im Phantasialand kannst du dir mit dem Quick Pass
-  eine kürzere Warteschlange kaufen. In den Sommerferien stand man dort fast
-  doppelt so lange an wie unter der Woche außerhalb der Ferien, im Europa-Park gut ein
-  Drittel länger.
+  Mit Kind zwischen 1,00 und 1,30 Meter ist im Europa-Park mehr offen. In den Sommerferien stand man im Phantasialand fast doppelt so lange an wie sonst unter der Woche, in Rust gut ein Drittel länger.
 tags:
   - europa-park
   - phantasialand
@@ -99,7 +95,7 @@ Mit dem Quick Pass kaufst du dich im Phantasialand an der regulären Warteschlan
 - 10 € auf Black Mamba oder Chiapas,
 - 12 € auf Taron.
 
-Für Colorado Adventure nennt die Infoseite des Parks noch 5 €, im Online-Shop kostet die Fahrt 7 €. River Quest steht im Moment auf keiner der beiden Listen. F.L.Y. gibt es nur im Quick Pass Ultimate, der für 80 € jede dieser zehn Bahnen einmal enthält und F.L.Y. dazu.
+Im Winter kostet Chiapas nur 5 €. River Quest steht im Moment weder auf der Infoseite des Parks noch im Online-Shop. F.L.Y. gibt es nur im Quick Pass Ultimate, der für 80 € jede dieser zehn Bahnen einmal enthält und F.L.Y. dazu.
 
 Kaufen kannst du ihn im Online-Shop des Parks, dann kommt er als PDF mit QR-Code per Mail, oder beim Gästeservice in der Themenwelt Berlin. Er gilt nur am Tag der Buchung, deshalb kaufst du ihn am Morgen deines Besuchstags und nicht schon am Abend davor. Das Kontingent ist begrenzt.
 
@@ -178,6 +174,9 @@ Von den überdachten Attraktionen im [Europa-Park](ref:europa-park?bare) sind ze
 ## Im Winter
 
 Im Winterzauber gibt es im Europa-Park einen Weihnachtsmarkt im Historischen Schlosspark Balthasar, eine Eislaufbahn, das Riesenrad Bellevue und eine Kinderskischule mit Snow-Tubes. Für den Winter kündigt der Park bis zu 23 Stunden Showprogramm am Tag an, darunter einen Weihnachtszirkus. Von November an verkauft er ein Abendticket für den Eintritt ab 16 Uhr. Es kostet für Erwachsene bis zum 22. Dezember 41,50 € und danach 47 €, für Kinder 35 bis 40 €, und an der Kasse kommt kein Aufschlag dazu. Am 10. Januar öffnet der Park nur noch für Hotelgäste und geladene Gäste.
+
+> [!PARKY] Abends lohnt sich
+> Im Winterzauber nehmen wir das Abendticket ab 16 Uhr, bis zum 22. Dezember für 41,50 € pro Erwachsenem, und an der Kasse kostet es nicht mehr. Der Park hat im Winter bis mindestens 19 Uhr offen, das sind drei Stunden für Weihnachtsmarkt, Riesenrad Bellevue und Eislaufbahn, auf der ich eher rolle als gleite. Ein ganzer Tag kostet Erwachsene online 67 bis 76 €, an der Kasse 10 € mehr.
 
 Das Fjord-Rafting und die Tiroler Wildwasserbahn fahren im Europa-Park nur bis zum Ende der Halloweensaison am 1. November, Atlantica SuperSplash bis zum Ende des HALLOWinter am 27. November. Poseidon steht in allen vier Saisons im Plan.
 

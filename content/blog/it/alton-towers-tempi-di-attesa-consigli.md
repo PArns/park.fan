@@ -339,6 +339,9 @@ Merlin Essential Pass per oltre venti attrazioni britanniche 139 sterline. Per i
 bambini piccoli c'è un biglietto apposito da 29 sterline, non valido nei fine settimana e durante le
 vacanze scolastiche. Il parco acquatico si paga a parte, da 23 sterline.
 
+> [!PARKY] Ne vale la pena
+> Con dodici sterline in più prendiamo il secondo giorno, e il parcheggio online costa 13 sterline al giorno. Così abbiamo due mattine per Spinball Whizzer, Rita, TH13TEEN e Nemesis Reborn, le quattro attrazioni dove arrivare presto fa risparmiare di più, e solo all'idea di due rope drop mi stacco già dal sedile. Oblivion, The Smiler e Wicker Man li distribuiamo sui due pomeriggi nel [pianificatore della giornata](/trip-planner).
+
 ### Parcheggio
 
 Il parcheggio standard costa **13 sterline** online e 15 sterline il giorno stesso. Da lì si cammina

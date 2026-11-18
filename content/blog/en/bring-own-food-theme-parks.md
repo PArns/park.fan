@@ -119,6 +119,9 @@ Food, water bottles, coolers and glass aren't on the list.
 
 At Restaurant Uhrwerk in Rookburgh, The Navigator chicken burger with fries costs €26.00 and a 0.2-litre Coca-Cola €3.30. The €14.00 kids' burger is only sold together with an adult dish. At Rutmor's Taverne, the Vesperbrett platter for one costs €21.50.
 
+> [!PARKY]
+> For Phantasialand we slice the bread and fruit at home: knives and scissors are on the banned list, so the little picnic knife is out as well, and an apple can always be eaten whole. For the four of us, two Navigator burgers with fries and two kids' burgers at Uhrwerk would already come to €80, before anyone has ordered a Coke.
+
 Next to Guest Relations on Kaiserplatz in Berlin there is a nursing room, and staff help with warming up baby food.
 
 ### Heide Park
@@ -196,6 +199,9 @@ Waldstube and at Katara Plaza. The park mentions them for warming baby bottles t
 The park regulations are available at the entrance and as a download on the website.
 
 Drinks come in reusable cups with a €1.50 deposit. You return cups, bottles and cans at deposit machines in four places in the park.
+
+> [!PARKY]
+> At Toverland we bring lunch in a box and heat it up in one of the two free microwaves, at the Waldstube or at Katara Plaza. Warm, and between two coasters, it tastes almost as good as a churro to me. Until lunchtime the box waits in a locker at Port Laguna or Land van Toos, which costs €2 and opens as often as you like.
 
 ### Walibi Holland
 

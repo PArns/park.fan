@@ -409,6 +409,9 @@ maze. Le **31 octobre**, le parc reste ouvert jusqu’à 23 h, avec un feu
 d’artifice, et c’est le seul jour de l’année où les adultes aussi peuvent venir
 déguisés.
 
+> [!PARKY] Ça vaut le coup
+> Le déguisement, on le garde pour Paris : au Movie Park, seuls les enfants jusqu’à 1,40 m ont le droit de se déguiser, au Parc Disneyland, le 31 octobre, les adultes aussi. Moi, j’irai en bulle de BD, ça passera inaperçu. Ce soir-là, le parc reste ouvert jusqu’à 23 h, avec un feu d’artifice.
+
 [Parc Disneyland](ref:/parks/europe/france/paris/disneyland-park?full)
 
 ### Alton Towers

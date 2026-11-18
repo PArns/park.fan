@@ -170,6 +170,9 @@ For Paris, Disney publishes fixed prices only for the ticket desks at the entran
 
 Disney sets the price of Premier Access One afresh every day. A ride on Frozen Ever After can cost €23 per person, so €92 for a family of four, €18 at Big Thunder Mountain and €16 at Hyperspace Mountain. You buy Premier Access One in the app once you're in the park and get a time slot with it. Without a smartphone you can buy it at City Hall in Disneyland Park or at Studio Services in Disney Adventure World. Ultimate can also be bought in advance and comes without a time slot; Disney doesn't give a fixed price for it. Each Premier Access belongs to one ticket and can't be passed on, so the family needs one per person. Only children under three don't need their own, as long as an adult has one.
 
+> [!PARKY]
+> We ride Frozen Ever After in Disney Adventure World right at opening, because that's where an early start pays off most, so in the [day planner](/trip-planner) the boat ride goes straight to the top. Premier Access for it can cost a family of four €92, which is enough to freeze even my smile. Anyone happy to split from the group later in the day takes the single rider line.
+
 If you bring food, Paris has a picnic area between the car park and the entrance. Meals that need a cool box, a table or bulky containers aren't allowed into the parks. Europa-Park has picnic spots in the Schlosspark Balthasar, in the German themed area and next to Wodan.
 
 With an overnight stay, Europa-Park offers the "Alles erleben" package in the summer and Halloween seasons from €192 per person in a five-bed room, with a day in the park, a day at Rulantica and breakfast.
@@ -199,6 +202,9 @@ Halloween ends at both resorts on 1 November. In Paris, Disney Enchanted Christm
 When Paris gets busy depends on the French school holidays. The Christmas break runs nationwide from 19 December 2026 to 3 January 2027. Winter and spring holidays are staggered across three zones: for Paris (zone C) they run from 6 to 21 February and from 3 to 18 April 2027, for Alsace and Strasbourg (zone B) from 20 February to 7 March and from 17 April to 2 May.
 
 So far January has been the quietest month at all three parks. The weekdays barely differ from one another, except at Europa-Park, where Saturday is clearly busier than the rest. Four of its five busiest days were Saturdays: 2 May, 22 August, and 19 and 26 September 2026. At the two Paris parks the busiest days often fell on weekdays in the holidays instead, such as 23 and 24 February 2026, during the Paris winter break.
+
+> [!PARKY] January in Paris
+> In January we go to Paris, but only after the 3rd, once the French Christmas holidays are over: January has been the quietest month at all three parks so far, and Rust closes after 9 January anyway. For queues that short I'll happily pack the thick scarf. We sort out which Paris park gets which day of the trip in the [trip planner](/paris#planner).
 
 ### Disneyland Park
 

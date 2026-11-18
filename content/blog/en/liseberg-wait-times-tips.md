@@ -376,6 +376,9 @@ Valkyria, Loke and Mechanica, but not Helix and the Lisebergbanan. The park
 hasn’t yet published the admission prices for Jul 2026. In 2026 Rabbit Land is
 open on 42 additional days in winter, every weekend and in the school holidays.
 
+> [!PARKY] Go in summer
+> You only get all the big rides in one day in summer: Valkyria doesn’t run at Halloween, Helix and the Lisebergbanan weren’t part of Jul in 2025, and AtmosFear only runs in summer anyway. I keep my eyes shut on the way up, but I’m not missing the 90-metre free fall. We’re happy to come back for the Christmas market too, as Balder and Valkyria were running then in 2025.
+
 ## Tickets and prices
 
 Liseberg sells admission and the ride wristband separately. The **Åkpass**

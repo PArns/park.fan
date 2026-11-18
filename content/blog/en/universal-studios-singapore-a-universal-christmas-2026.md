@@ -65,6 +65,9 @@ Unlike in 2025, Hello Kitty and Kuromi from Sanrio are out on the street too, wi
 
 The fireworks start at 8 pm and are set to music by BTS; Resorts World Sentosa calls them BTS THE CITY ARIRANG Fireworks. It hasn't announced where in the park they go up. In 2025 they were launched over Lake Hollywood. On Monday, December 21, only guests with a ticket for the BTS night get to see them. A reserved viewing spot comes only with the 2-Park Pass with Festive Perks; with a regular ticket you find your own.
 
+> [!PARKY]
+> For the fireworks we pick an evening between December 16 and 25, just not the 21st: the park's open until 9 pm then, so when the fireworks start at 8 we still have an hour before closing. For fireworks set to BTS I'll even learn the lyrics. Before that, at 7:30, we're at the facade of Revenge of the Mummy, where Lightscape is projected.
+
 ## BTS in the park
 
 On December 21 Universal Studios Singapore closes at 7 pm, and BTS THE CITY ARIRANG Night Out runs there from 8 pm to 1 am. Entry is S$58 per person.

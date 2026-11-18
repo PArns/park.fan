@@ -239,6 +239,9 @@ Wildfire, en Kolmården, es la montaña rusa más rápida y más alta de Suecia.
 - Colossos, Heide Park: desde 1,40 m
 - Expedition GeForce, Plopsaland Deutschland: desde 1,40 m
 
+> [!PARKY]
+> Con 1,20 metros empieza la caza de récords: un niño ya puede subir a Wodan con un adulto, la número tres de madera de Europa en velocidad y altura. Con 1,30 metros y ocho años se suma Voltron Nevera, la montaña rusa con más inversiones de Alemania, y las rayitas del marco de la puerta se revisan mucho más a menudo. Desde 1,40 metros esperan en Salou tres de las cuatro montañas rusas más rápidas de Europa.
+
 ## Preguntas frecuentes
 
 ### ¿Cuál es la montaña rusa más rápida de Europa?

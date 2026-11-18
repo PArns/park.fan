@@ -181,6 +181,9 @@ Lo que el optimizador no toca: tu rato para comer, cualquier atracción que ya
 hayas marcado, y cualquier bloque cuya hora ya haya empezado. Quien pulsa a las dos está a las dos en
 alguna cola, y esa ya no la mueve nadie.
 
+> [!PARKY]
+> Antes de pulsar «Optimizar el día» en el [planificador del día](/trip-planner), arrastramos el rato para comer a la hora en que de verdad tenemos hambre: el asistente lo pone a las 12:30, y al ordenar se queda donde está. Mi estómago no se deja mover tan fácil como un bloque. Si luego el planificador propone en «Ajustes» acortar ese rato para meter una atracción más, decidimos nosotros qué preferimos.
+
 Y como una pulsación puede convertir tres bloques en once, el resultado trae un
 deshacer. Un solo paso atrás.
 

@@ -384,6 +384,9 @@ Park empfiehlt eigene. Bezahlt wird mit dem **RulaBand**, einem Transponder-Armb
 das auch Zutrittskarte und Schließfachschlüssel ist. Ausgaben werden auf das Band
 gebucht und beim Verlassen bezahlt. WLAN ist kostenlos. Der **ResortPass Gold** des Europa-Parks enthält zwei Rulantica-Tagestickets.
 
+> [!PARKY] Lohnt sich
+> Schlafen wir ohnehin in einem der Erlebnishotels, kaufen wir das Best-Preis-Ticket für 28 bis 48 Euro statt des Tagestickets für 38 bis 54. Als Hotelgäste sind wir um 9 Uhr drin, eine halbe Stunde vor allen anderen, und in die Fallkabine steige ich dann mit geschlossenen Augen, Höhenangst hin oder her. Das Schließfach ist ab zwölf Jahren auch schon inklusive.
+
 Auf seiner Seite nennt der Park den Parkscout plus Award 2020 bis 2025 („Europas
 bester Wasserpark“) und den EWA Professional Award 2025 für innovative
 Angebotsgestaltung. Snorri Snorkling VR bekam 2022 den Golden Wave Award der

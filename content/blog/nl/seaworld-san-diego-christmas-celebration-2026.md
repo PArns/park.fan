@@ -55,6 +55,9 @@ Clyde en Seamore spelen in het Sea Lion Stadium weer hun Christmas Special, met 
 
 Op de Holiday Plaza gaat elke avond de ongeveer negen meter (30 voet) hoge kerstboom aan. De SkyTower wordt de zo'n 98 meter (320 voet) hoge Tree of Lights, en de palmbomen zijn verlicht als zuurstokken. De kerstman vind je in Santa's Cottage op de SkyTower Lawn. Twee van zijn rendieren staan bij Rentals, Rudolph in de Holly Jolly Marketplace. Het vuurwerk A Christmas Wish is er maar twee keer: op zaterdag 12 december en op oudejaarsavond.
 
+> [!PARKY] Op 12 december
+> Valt onze reis naar Zuid-Californië in december, dan krijgt SeaWorld San Diego bij ons zaterdag 12 december: alleen die avond en op oudejaarsavond is er het vuurwerk A Christmas Wish. Tegen de tijd dat het begint, zit Baby Shark hopelijk niet meer in mijn hoofd. De andere parken verdelen we in de [reisplanner](/california#planner) rond die dag.
+
 ## Openingstijden in november
 
 Op vrijdag 13 november is de Christmas Celebration Pass Member Preview voor wie een jaarkaart heeft. Het park is dan open van 10.00 tot 21.00 uur. Vanaf zaterdag 14 november loopt de Christmas Celebration tijdens de gewone openingstijden, in lokale tijd:
