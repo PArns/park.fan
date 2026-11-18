@@ -89,6 +89,9 @@ Voor Colorado Adventure vraagt de shop € 7, terwijl de mijntrein op de infopag
 
 De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pass-ingang en kom je één keer sneller in [F.L.Y.](ref:phantasialand/fly), waarvoor geen losse pass bestaat. Bij Taron geldt de Ultimate volgens de shop voor “Daylight & After Dark”, dus overdag en 's avonds.
 
+> [!PARKY] Trakteer jezelf
+> De acht losse passes uit de tabel kosten samen € 58, de Ultimate € 22 meer, en daarvoor vliegen we één keer sneller in F.L.Y. en rijden we Taron ook overdag. Een plekje in de trein kiezen we er ook niet mee uit, al heb ik het wel gevraagd. Wilden we toch al bijna alles met een pass doen, dan nemen we de Ultimate.
+
 ## Wat je verder nodig hebt
 
 De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets verkoopt het park alleen online, een kassa bij de ingang heeft het niet, en voor de dag zelf koop je tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
@@ -104,6 +107,9 @@ Met de Quick Pass sta je korter in de rij, al sta je er nog steeds, en de Quick-
 De Wintertraum loopt sinds 14 november tot en met 24 januari 2027, elke dag van 11 tot 20 uur, met vijf sluitingsdagen rond kerst, nieuwjaar en half januari.
 
 De losse pass voor Taron After Dark geldt vanaf 17 uur, en in de Wintertraum is het dan al lang donker. Op oudejaarsdag sluit het park al om 18 uur, en dan loont de pass voor Taron After Dark alleen als je om vijf uur al bij de baan staat.
+
+> [!PARKY] De moeite waard
+> De pass voor Taron After Dark halen we al om elf uur, want het aantal is beperkt, en we rijden pas als het donker is. Tot dan sparen we de batterij alsof de hele avond van die QR-code afhangt. Tussen vijf uur en sluitingstijd om acht hebben we er drie uur voor.
 
 ```best-days-widget slug=phantasialand
 

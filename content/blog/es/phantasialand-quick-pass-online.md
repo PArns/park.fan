@@ -90,6 +90,9 @@ Por Colorado Adventure la tienda pide 7 €, mientras que la página informativa
 
 El Quick Pass Ultimate cuesta 80 €. Te da una pasada por cada entrada Quick Pass y un acceso rápido a [F.L.Y.](ref:phantasialand/fly), que no tiene pase suelto. Para Taron, según la tienda, el Ultimate vale para «Daylight & After Dark», o sea, de día y de noche.
 
+> [!PARKY] Date un capricho
+> Los ocho pases sueltos de la tabla suman 58 €, el Ultimate cuesta 22 € más, y a cambio volamos una vez más rápido en F.L.Y. y montamos en Taron también de día. El asiento en el tren tampoco lo elegimos, y mira que lo pregunté. Si de todos modos íbamos a comprar pase para casi todo, nos quedamos con el Ultimate.
+
 ## Qué más necesitas
 
 El Quick Pass se paga aparte y solo vale junto con una entrada de día válida. El parque vende las entradas de día solo online, no tiene taquilla, y para el mismo día de la visita puedes comprar la tuya hasta las 14:00. Quien llegue a la puerta a las dos y media sin entrada tiene un problema mayor que la cola de Black Mamba.
@@ -105,6 +108,9 @@ Con el Quick Pass haces menos cola, pero algo de cola haces, y si la capacidad d
 El Wintertraum empezó el 14 de noviembre y dura hasta el 24 de enero de 2027 incluido, todos los días de 11:00 a 20:00, con cinco días de cierre en Navidad, Año Nuevo y a mediados de enero.
 
 El pase suelto de Taron After Dark vale desde las 17:00, cuando en el Wintertraum ya hace rato que es de noche. En Nochevieja el parque cierra ya a las 18:00, y entonces el pase de Taron After Dark solo compensa si a las cinco ya estás en la atracción.
+
+> [!PARKY] Merece la pena
+> El pase de Taron After Dark lo compramos ya a las once, porque el cupo es limitado, y no lo usamos hasta que es de noche. Mientras tanto cuidamos la batería como si toda la noche dependiera de ese código QR. Entre las cinco y el cierre a las ocho nos quedan tres horas para usarlo.
 
 ```best-days-widget slug=phantasialand
 
