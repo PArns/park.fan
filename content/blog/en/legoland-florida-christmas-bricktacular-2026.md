@@ -51,6 +51,9 @@ The show is called LEGO Santa's Holiday Light Spectacular. It premieres on Satur
 
 It starts once it's dark. LEGOLAND hasn't announced a start time or the best place to watch from yet, and even the show dates are subject to change. On show nights the park closes at 7 pm like on any other event day, so the show has to fit between nightfall and closing time.
 
+> [!PARKY]
+> If one of those nights falls during your Orlando trip, that's the day LEGOLAND gets in the [trip planner](/orlando#planner): December 5 or 12, or any day from the 19th to the 30th. We then stay until closing at 7 pm, since the drones only go up once it's dark, and with fireworks made of drones nobody has to cover their ears. We buy the tickets online beforehand, from $69 instead of $129 at the gate.
+
 ## Event days and hours
 
 In November and until mid-December, Christmas Bricktacular runs on weekends only, plus the Friday after Thanksgiving. From December 18 it's on every day until the end:

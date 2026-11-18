@@ -50,6 +50,9 @@ Bij de Party Pass verkoopt het park ook plaatsen in gereserveerde vakken voor de
 
 Een Studio Pass voor 31 december geldt maar tot 17.00 uur, en dat geldt ook voor jaarabonnementen. Tussen 17.00 en 19.00 uur is het park voor iedereen dicht. Met een gewoon ticket voor 1 januari mag je er vanaf 2.00 uur 's nachts in, het uur waarop op veel oudejaarsfeesten de jassen van de kapstok gaan.
 
+> [!PARKY]
+> Zonder Party Pass zetten we USJ in de [reisplanner](/japan#planner) niet op 31 december: de Studio Pass geldt die dag maar tot 17.00 uur, en van het vuurwerk rond de jaarwisseling zien we dan niets. We nemen liever een dag tussen 25 november en 11 januari en blijven voor de twee avondshows in Gramercy Park, waar de sneeuw betrouwbaarder valt dan in welk weerbericht ook. Een plek in het gereserveerde vak kost daar vanaf 1.700 yen.
+
 ## Het programma in de nacht
 
 In Gramercy Park in de New York Area staat van 31 december 19.05 uur tot 0.20 uur de Countdown Special Stage. Op het podium staan de artiesten van de parade voor de 25e verjaardag, de Blues Brothers en de straatshow van Sesamstraat, plus shows uit het zomerfeest en uit Halloween in een speciale versie. Een dj-show draait muziek van Zedd, die van januari tot augustus 2026 ook de muziek in Space Fantasy – The Ride verzorgde.

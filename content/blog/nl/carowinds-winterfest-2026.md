@@ -88,6 +88,9 @@ Een parkticket voor een vaste dag kost online vanaf 50 dollar, het Good Any Day 
 
 Tot en met 30 november verkoopt Carowinds de Silver Pass 2027 voor 69 dollar, evenveel als een Good Any Day Ticket. Je kunt ermee naar het park en naar Carolina Harbor tot Labor Day 2027, parkeren inbegrepen. Je krijgt er een Bring-A-Friend-ticket bij dat uiterlijk 3 januari 2027 gebruikt moet zijn. Met eet- en drinkplan kost hij 159 dollar; als normale prijs noemt Carowinds 287 dollar. Hij geldt bovendien al voor de rest van 2026 en dus ook op het WinterFest: wie in het weekend voor kerst komt, krijgt de zomer van 2027 er gratis bij. De Gold Pass van 105 dollar geldt in 2026 en 2027 in alle Six Flags-parken aan de oostkust.
 
+> [!PARKY]
+> Gaan we met z'n tweeën, dan koopt een van ons tot en met 30 november de Silver Pass voor 69 dollar en komt de ander binnen met het Bring-A-Friend-ticket, dat uiterlijk 3 januari gebruikt moet zijn. Twee tickets voor een vaste dag kosten online samen vanaf 100 dollar plus kosten, en wat we besparen, gaat bij mij op aan warme chocolademelk in een souvenirbeker. Parkeren is met de pass toch al gratis.
+
 ## Gratis vanaf 65
 
 Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met 3 januari 2027 gratis in Carowinds. Aanmelden kan alleen online en niet bij het park, en de toegang wordt bij je eerste bezoek geactiveerd. Bij de ingang laat je elke keer een identiteitsbewijs met je geboortedatum zien. Het aanbod geldt alleen in het park waarvoor je je hebt aangemeld en niet in de waterparken. Parkeren betaal je zelf. Kortingen, Bring-A-Friend-tickets en Season Pass-voordelen krijg je bij de gratis toegang niet, en wie met je meegaat, heeft een gewoon parkticket nodig. Six Flags biedt de gratis toegang deze winter voor het eerst aan.

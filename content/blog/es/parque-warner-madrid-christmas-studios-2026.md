@@ -50,6 +50,9 @@ En la entrada vuelve a estar el árbol de Navidad de 22 metros. Lo encienden los
 
 En los escenarios están el musical The Santa's Magical Bell, el Looney Tunes Dance Festival en su Christmas Edition y, en el Old West Territory, Una Navidad en Dodge City. Desde el 5 de diciembre vuelve al Hollywood Boulevard «Happy Holiday!», el espectáculo de baile del año pasado. En Christmas Town, una pequeña villa navideña con duendes y renos, Papá Noel enseña su taller en El Taller de Papá Noel, pensado sobre todo para los más pequeños, según el parque. Allí reciben visitas también los Reyes Magos. Bugs Bunny, Piolín, el Pato Lucas, los superhéroes de DC y Gizmo, el de los Gremlins, posan para las fotos con ropa de fiesta. Para cerrar el día, los mismos personajes vuelven a recorrer el parque subidos a carrozas en el Superstars of Christmas Parade, Papá Noel y los Reyes Magos incluidos.
 
+> [!PARKY] Mejor diciembre
+> Nuestro día lo ponemos en diciembre, a partir del 5: solo entonces se representa el nuevo espectáculo de pompas, y cuando el mimo busca un voluntario para su farol, mi mano es la primera en subir. Desde el 5 vuelve también al Hollywood Boulevard el espectáculo de baile del año pasado, y en diciembre el parque abre hasta las 21:00 en vez de hasta las 20:00.
+
 ## Días y horarios
 
 Christmas Studios abre 29 días, siempre a las 12:00:

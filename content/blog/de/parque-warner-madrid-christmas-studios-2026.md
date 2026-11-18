@@ -50,6 +50,9 @@ Am Eingang steht wieder der 22 Meter hohe Weihnachtsbaum. Angeschaltet wird er i
 
 Auf den Bühnen laufen das Musical The Santa's Magical Bell, das Looney Tunes Dance Festival in der Christmas Edition und im Westernteil Una Navidad en Dodge City. Ab dem 5. Dezember tanzt am Hollywood Boulevard wieder „Happy Holiday!“, die Tanzshow aus dem Vorjahr. In Christmas Town, einem kleinen Weihnachtsdorf mit Elfen und Rentieren, zeigt der Weihnachtsmann in El Taller de Papá Noel seine Werkstatt, nach Angabe des Parks vor allem für die Kleinsten. Auch die Heiligen Drei Könige empfangen dort Besuch. Bugs Bunny, Tweety, Daffy Duck, die DC-Superhelden und Gizmo aus den Gremlins stehen in festlicher Kleidung für Fotos bereit. Zum Schluss des Tages fahren dieselben Figuren in der Superstars of Christmas Parade noch einmal auf Wagen durch den Park, Weihnachtsmann und drei Könige eingeschlossen.
 
+> [!PARKY] Dezember nehmen
+> Unseren Tag legen wir in den Dezember, ab dem 5.: Nur dann läuft die neue Seifenblasen-Show, und wenn der Pantomime für seine Laterne einen Freiwilligen sucht, geht meine Hand als erste hoch. Ab dem 5. ist auch die Tanzshow aus dem Vorjahr am Hollywood Boulevard zurück, und im Dezember hat der Park bis 21 statt bis 20 Uhr offen.
+
 ## Öffnungstage und Uhrzeiten
 
 Christmas Studios hat an 29 Tagen geöffnet, immer ab 12 Uhr:

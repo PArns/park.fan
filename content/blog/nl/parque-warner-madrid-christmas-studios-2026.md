@@ -50,6 +50,9 @@ Bij de ingang staat weer de kerstboom van 22 meter. Die gaat aan in een eigen sh
 
 Op de podia staan de musical The Santa's Magical Bell, het Looney Tunes Dance Festival in een Christmas Edition en in het westerngebied Una Navidad en Dodge City. Vanaf 5 december staat “Happy Holiday!”, de dansshow van vorig jaar, weer op de Hollywood Boulevard. In Christmas Town, een klein kerstdorp met elfen en rendieren, laat de kerstman in El Taller de Papá Noel zijn werkplaats zien, volgens het park vooral voor de allerkleinsten. De Drie Koningen ontvangen daar ook bezoek. Bugs Bunny, Tweety, Daffy Duck, de superhelden van DC en Gizmo uit Gremlins staan in feestkleding klaar voor de foto. Aan het eind van de dag rijden dezelfde figuren in de Superstars of Christmas Parade nog één keer op praalwagens door het park, de kerstman en de Drie Koningen incluis.
 
+> [!PARKY] Kies december
+> Onze dag leggen we in december, vanaf de 5e: alleen dan draait de nieuwe zeepbellenshow, en als de mime een vrijwilliger zoekt voor zijn lantaarn, gaat mijn hand als eerste omhoog. Vanaf 5 december is ook de dansshow van vorig jaar terug op de Hollywood Boulevard, en in december is het park tot 21 uur open in plaats van tot 20 uur.
+
 ## Openingsdagen en tijden
 
 Christmas Studios is 29 dagen open, steeds vanaf 12 uur:

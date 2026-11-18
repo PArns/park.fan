@@ -51,6 +51,9 @@ Il s’appelle LEGO Santa’s Holiday Light Spectacular. La première a lieu le 
 
 Le spectacle commence à la tombée de la nuit. L’heure de départ et le meilleur endroit pour regarder, LEGOLAND ne les a pas encore communiqués, et même les dates du spectacle restent sous réserve. Les soirs de drones, le parc ferme à 19 h comme tous les jours de l’événement, si bien que le spectacle doit se caser entre l’obscurité et l’heure de fermeture.
 
+> [!PARKY]
+> Si l’un de ces soirs tombe pendant ton voyage à Orlando, c’est ce jour-là qu’on donne à LEGOLAND dans le [planificateur de voyage](/orlando#planner) : le 5 ou le 12 décembre, ou un jour entre le 19 et le 30. On reste alors jusqu’à la fermeture à 19 h, puisque les drones ne décollent qu’à la nuit tombée, et avec un feu d’artifice de drones, personne n’a besoin de se boucher les oreilles. Les billets, on les achète avant en ligne, à partir de 69 $ au lieu de 129 $ au guichet.
+
 ## Jours de l’événement et horaires
 
 En novembre et jusqu’à la mi-décembre, Christmas Bricktacular n’a lieu que le week-end, plus le vendredi qui suit Thanksgiving. À partir du 18 décembre, c’est tous les jours jusqu’à la fin :

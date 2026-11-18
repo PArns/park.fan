@@ -256,6 +256,9 @@ against the forecast, and if you like, a push notification tells you when the
 queue at a ride drops below a mark you set. park.fan has no paywall and no ads,
 and the man who builds it queues up himself.
 
+> [!PARKY]
+> Rather than clinging to the handrail at Taron, we set a push notification for it and hunt 5000-point mice in Maus au Chocolat in the meantime, and I won’t snatch a single one from you. As soon as the queue at Taron drops below our mark, the phone lets us know and we head for Klugheim.
+
 ## What this blog is meant to be
 
 The same wait time means something completely different depending on the ride

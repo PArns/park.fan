@@ -73,7 +73,7 @@ Des événements ont lieu les 22, 28 et 29 novembre et les 5 et 6 décembre, et 
 Le billet à la journée coûte de 40 à 56 euros selon la date, contre 38 à 53 euros l’hiver dernier. Les enfants de trois ans et moins entrent gratuitement sur présentation d’une pièce d’identité. Pour l’instant, on ne peut réserver que jusqu’au 31 décembre ; les billets de janvier seront mis en vente plus tard. Dans son compte Efteling, on peut changer la date jusqu’à un an après l’achat, en payant la différence si le nouveau jour est plus cher.
 
 > [!PARKY]
-> Une heure avant l’ouverture, donc à 9 h jusqu’au 31 décembre, on consulte la prévision de l’Efteling pour savoir si les montagnes russes en plein air tournent. Si élégant que je sois sur des patins, la patinoire seule ne justifie pas le trajet. Si elles ne tournent pas ce jour-là d’après la prévision, on change la date dans notre compte Efteling, en payant la différence si le nouveau jour coûte plus cher.
+> Une heure avant l’ouverture, donc à 9 h jusqu’au 31 décembre, on consulte avant de partir la prévision de l’Efteling pour savoir quelles montagnes russes en plein air tournent ce jour-là. Si élégant que je sois sur des patins, la patinoire seule ne justifie pas le trajet. On réserve quand même notre jour tôt, sans crainte : la date se change dans le compte Efteling jusqu’à un an après l’achat, et pour un jour plus cher on ne paie que la différence.
 
 Le nouveau billet du soir coûte 33 euros. Il est valable du 21 décembre 2026 au 3 janvier 2027, de 16 h à la fermeture, sauf le 31 décembre. Réservé en même temps, le parking revient à 10 euros au lieu des 15 euros habituels.
 

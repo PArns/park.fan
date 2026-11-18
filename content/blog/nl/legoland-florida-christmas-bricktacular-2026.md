@@ -51,6 +51,9 @@ De show heet LEGO Santa's Holiday Light Spectacular. De eerste is op zaterdag 5 
 
 De show begint als het donker wordt. Hoe laat precies en waar je het best staat, heeft LEGOLAND nog niet bekendgemaakt, en ook de showdata zijn onder voorbehoud. Op showavonden gaat het park net als op elke evenementdag om 19.00 uur dicht, dus de show moet passen tussen het donker worden en sluitingstijd.
 
+> [!PARKY]
+> Valt een van die avonden in je reis naar Orlando, dan krijgt LEGOLAND in de [reisplanner](/orlando#planner) precies die dag: 5 of 12 december, of een dag tussen 19 en 30 december. We blijven dan tot sluitingstijd om 19.00 uur, want de drones gaan pas de lucht in als het donker is, en bij vuurwerk van drones hoeft niemand z'n oren dicht te houden. Het ticket kopen we vooraf online, vanaf 69 dollar in plaats van 129 dollar aan de kassa.
+
 ## Evenementdagen en openingstijden
 
 In november en tot half december is Christmas Bricktacular er alleen in het weekend, plus de vrijdag na Thanksgiving. Vanaf 18 december loopt het elke dag tot het einde:

@@ -80,6 +80,9 @@ De seizoenspassen voor 2027 zijn nu al geldig, en Platin, Gold en Silber gelden 
 
 Voor de Santa Experience betaal je apart: € 5 voor volwassenen, € 3 voor kinderen van 4 tot en met 11 jaar. Die is open van 13 tot 16.30 uur, op vrijdag pas vanaf 15 uur. Elke zitplaats in de trein heeft een ticket nodig; kinderen onder de vier zitten gratis op schoot. Kinderen onder de acht mogen alleen met een volwassene naar binnen. Ook de ijsglijbaan kost een toeslag, maar het bedrag heeft het park nog niet bekendgemaakt.
 
+> [!PARKY]
+> Omdat het online ticket op alle 21 dagen hetzelfde kost, nemen we geen vrijdag: op de andere evenementdagen zijn we er al om 12 uur in plaats van om 14 uur, en over twee uur extra voor hetzelfde geld kan zelfs de chagrijnige filmklapper S.A.D. niet klagen. Met kinderen telt dat dubbel, want de Santa Experience gaat dan al om 13 uur open in plaats van om 15 uur.
+
 ## IJsbaan, shows en lichtjes
 
 De meer dan een miljoen lampjes hangen in vier gebieden: Christmas Boulevard USA, Nickelodeon HoHoHoliday Land, Rockefeller Plaza en Wild West Christmas. Vorig jaar waren het er ruim 800.000. Van vorig jaar blijven de overdekte ijsbaan van 360 vierkante meter, het eisstockschieten (een soort curling), de mappingshow en het Amerikaanse eten.

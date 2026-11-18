@@ -50,6 +50,9 @@ Insieme al Party Pass il parco vende posti in aree riservate davanti agli spetta
 
 Uno Studio Pass per il 31 dicembre vale solo fino alle 17, e lo stesso vale per gli abbonamenti annuali. Dalle 17 alle 19 il parco è chiuso per tutti. Con un biglietto normale per il 1° gennaio entri dalle 2 di notte, a un'ora in cui da noi c'è chi sta ancora cercando il proprio cappotto nel mucchio sul letto.
 
+> [!PARKY]
+> Senza Party Pass, nel [pianificatore di viaggio](/japan#planner) non mettiamo USJ il 31 dicembre: quel giorno lo Studio Pass vale solo fino alle 17, e dei fuochi d'artificio di Capodanno non vedremmo niente. Prendiamo piuttosto un giorno tra il 25 novembre e l'11 gennaio e restiamo per i due spettacoli serali al Gramercy Park, dove la neve cade più puntuale che in qualsiasi previsione del tempo. Un posto nell'area riservata costa lì da 1.700 yen.
+
 ## Il programma della notte
 
 Al Gramercy Park, nella New York Area, dalle 19:05 del 31 dicembre fino alle 0:20 va in scena la Countdown Special Stage. Sul palco salgono gli artisti della parata dei 25 anni, i Blues Brothers e lo spettacolo di strada di Sesame Street, più alcuni show della festa estiva e di Halloween in versione speciale. Uno show con DJ suona la musica di Zedd, lo stesso che da gennaio ad agosto 2026 ha firmato anche la colonna sonora di Space Fantasy – The Ride.

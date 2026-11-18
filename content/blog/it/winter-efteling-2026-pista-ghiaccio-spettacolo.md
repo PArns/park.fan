@@ -73,7 +73,7 @@ Il parco prevede molta affluenza il 22, il 28 e il 29 novembre e il 5 e il 6 dic
 A seconda della data il biglietto giornaliero costa da 40 a 56 euro, contro i 38–53 euro dello scorso inverno. I bambini fino a tre anni inclusi entrano gratis mostrando un documento. Per ora si prenotano i giorni fino al 31 dicembre, mentre i biglietti di gennaio saranno messi in vendita più avanti. La data si può cambiare nell’account Efteling fino a un anno dopo l’acquisto, e per un giorno più caro si paga la differenza.
 
 > [!PARKY]
-> Un’ora prima dell’apertura, quindi fino al 31 dicembre alle 9, guardiamo nella previsione di Efteling se le montagne russe all’aperto funzionano. Per quanto io sia elegante sui pattini, solo per la pista di pattinaggio non facciamo il viaggio. Se secondo la previsione quel giorno non funzionano, cambiamo la data nell’account Efteling e, se il nuovo giorno costa di più, paghiamo la differenza.
+> Un’ora prima dell’apertura, quindi fino al 31 dicembre alle 9, prima di partire guardiamo nella previsione di Efteling quali montagne russe all’aperto funzionano quel giorno. Per quanto io sia elegante sui pattini, solo per la pista di pattinaggio non facciamo il viaggio. Il giorno lo prenotiamo comunque presto e senza pensieri: la data si può cambiare nell’account Efteling fino a un anno dopo l’acquisto, e per un giorno più caro paghiamo solo la differenza.
 
 Il nuovo biglietto serale costa 33 euro e vale dal 21 dicembre 2026 al 3 gennaio 2027, ogni giorno dalle 16 alla chiusura, tranne il 31 dicembre. Chi aggiunge subito il parcheggio lo paga 10 euro invece dei soliti 15.
 

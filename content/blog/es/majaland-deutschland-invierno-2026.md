@@ -86,6 +86,9 @@ Expedition GeForce, Sky Scream y el resto de las grandes atracciones de nuestra 
 
 Desde el 4 de diciembre, Papá Noel recibe a los niños en el Indoor Theater cada día de apertura. Se le puede dar la carta, y cada niño se lleva un chocolate de la chocolatería Wawi. El sábado 5 de diciembre se corre por segunda vez la Plopsa Nikolauslauf, la carrera de San Nicolás, en la Platz der Fontänen, con recorridos para niños y para adultos. El parque abrirá las inscripciones en breve. Del 4 al 10 de febrero de 2027, Plopsa Indoor celebra el carnaval con una discoteca infantil. Quien cumpla años en invierno puede reservar el paquete «Majas Geburtstagszauber», con visita de Maya incluida en el precio.
 
+> [!PARKY] Toca viernes
+> Para Papá Noel elegimos un viernes a partir del 4 de diciembre, es decir, el 4, el 11 o el 18: ya estará en el Indoor Theater, y la entrada con fecha fija cuesta en la web 16 € en vez de 27 o 29 € el fin de semana. La carta la metemos antes en la mochila; en la mía solo pido una noria de repuesto para el sombrero. El espectáculo de Maya, a las 13 o a las 16 h, es en el mismo teatro y está incluido en la entrada.
+
 ## Qué cambia respecto al invierno pasado
 
 En el invierno 2025/26, esta misma parte del parque se llamaba Majaland Pfalz. Entonces abrió del 7 de noviembre al 22 de marzo, mientras que esta temporada termina ya el 14 de marzo, y la entrada más barata costaba 20 €, frente a los 16 € de ahora. El parque ya había dejado de llamarse Holiday Park a finales de junio de 2025. Las novedades de aquella temporada eran el espectáculo de Maya y el primer invierno de La Aventura de los Pitufos.

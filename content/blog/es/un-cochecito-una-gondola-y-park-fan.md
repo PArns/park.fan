@@ -264,6 +264,9 @@ una línea de tiempo frente a la previsión, y si quieres, una notificación pus
 avisa cuando la cola de una atracción baja de un límite que tú eliges. No hay
 muro de pago ni publicidad, y lo hace alguien que también hace cola.
 
+> [!PARKY]
+> En vez de quedarnos agarrados a la barandilla de Taron, le ponemos una notificación push y mientras tanto cazamos ratones de 5000 en Maus au Chocolat, y no te quito ni uno. En cuanto la cola de Taron baja de nuestro límite, el móvil avisa y nos vamos a Klugheim.
+
 ## Qué quiere ser este blog
 
 Un tiempo de espera por sí solo sirve de poco. La misma cifra significa algo

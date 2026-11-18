@@ -96,6 +96,9 @@ En la preventa de Black Friday, la entrada de un día cuesta desde 71,99 dólare
 
 Una entrada para Busch Gardens y SeaWorld Orlando cuesta desde 93,99 dólares en total, y las dos visitas tienen que caer dentro de los seis meses siguientes a la compra. En SeaWorld Orlando, la [Christmas Celebration recupera el espectáculo de orcas Miracles](/news/seaworld-orlando-christmas-celebration-2026).
 
+> [!PARKY]
+> Si SeaWorld Orlando ya está en nuestra lista, cogemos la entrada para los dos parques desde 93,99 dólares, solo 22 dólares más que la entrada de un día más barata de aquí en la preventa de Black Friday. Un segundo parque por la diferencia me hace dar saltitos, pero solo la compramos cuando los dos días de parque caben en los seis meses siguientes a la compra. En el [planificador de viajes](/orlando#planner) repartimos luego los dos parques en dos días.
+
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
 Fuentes:

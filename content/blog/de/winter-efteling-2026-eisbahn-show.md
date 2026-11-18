@@ -73,7 +73,7 @@ Großen Andrang erwartet der Park wegen Veranstaltungen am 22., 28. und 29. Nove
 Ein Tagesticket kostet je nach Datum 40 bis 56 Euro, im vorigen Winter waren es 38 bis 53 Euro. Kinder bis einschließlich drei Jahre kommen mit Ausweis kostenlos in den Park. Buchen lassen sich bisher Tage bis 31. Dezember, die Januartickets kommen später in den Verkauf. Das Datum lässt sich bis ein Jahr nach dem Kauf im Efteling-Konto ändern, für einen teureren Tag zahlt man die Differenz.
 
 > [!PARKY]
-> Eine Stunde vor der Öffnung, bis Silvester also um neun, schauen wir in die Prognose des Efteling, ob die Achterbahnen im Freien fahren. So elegant ich auf Kufen auch bin, nur für die Eisbahn fahren wir nicht hin. Fahren sie laut Prognose an unserem Tag nicht, ändern wir das Datum im Efteling-Konto, und ist der neue Tag teurer, zahlen wir die Differenz.
+> Eine Stunde vor der Öffnung, bis Silvester also um neun, schauen wir noch vor der Abfahrt in die Prognose des Efteling, welche Achterbahnen im Freien an diesem Tag fahren. So elegant ich auf Kufen auch bin, nur für die Eisbahn fahren wir nicht hin. Den Tag buchen wir trotzdem ohne Bauchweh früh: Das Datum lässt sich bis ein Jahr nach dem Kauf im Efteling-Konto ändern, und für einen teureren Tag zahlen wir nur die Differenz.
 
 Das neue Abendticket kostet 33 Euro und gilt vom 21. Dezember 2026 bis 3. Januar 2027 jeweils von 16 Uhr bis Parkschluss, außer am 31. Dezember. Wer den Parkschein gleich dazu bucht, zahlt dafür 10 Euro statt der üblichen 15 Euro.
 

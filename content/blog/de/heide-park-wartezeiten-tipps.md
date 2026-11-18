@@ -394,11 +394,11 @@ kostenlos rein, brauchen aber ein 0-€-Ticket aus dem Online-Shop.
 
 **Jahreskarte.** Der Bronze Pass kostet neu 69 €, verlängert 59 €, und gilt 2026 an 45 Tagen nicht, darunter die meisten Samstage von April bis Oktober und der 1. bis 9. August. Der Silber Pass für 89 € (Verlängerung 69 €) hat keine Ausschlusstage. Der Merlin Abenteuer-Pass für 139 € (Verlängerung 119 €) enthält das Parken und gilt auch im Legoland Deutschland, im Peppa Pig Park Günzburg, in den deutschen Sea Life Centern und bei Madame Tussauds Berlin, dazu an bis zu zwei Tagen hintereinander im Legoland Billund und in Gardaland. Wer mit Silber oder Abenteuer-Pass am 31. Oktober kommen will, braucht ein kostenloses Reservierungsticket. Alle drei Karten gelten zwölf Monate ab dem Kauf.
 
-> [!PARKY]
-> Die Jahreskarte kaufen wir erst kurz vor dem ersten Besuch 2027: Sie gilt zwölf Monate ab dem Kauf, und bis Ende März fährt in Soltau nichts. Im Dezember gekauft, verliert sie Monate, in denen ich von Colossos nur träumen kann. Kommen wir auch samstags, muss es der Silber Pass sein, denn Bronze galt 2026 an den meisten Samstagen von April bis Oktober nicht.
-
 **Essen.** 21 gastronomische Betriebe führt unsere Parkseite, von der Schmalzkuchen-Schmiede auf der Colossos-Terrasse bis zum
 Wirtshaus des Admirals, einem Buffet-Restaurant in der Bucht der Piraten. Pizza gibt es bei Pizza Scream, Flammkuchen in der Flammkuchen Factory, beide in Transsilvanien, und Thüringer Rostbratwurst vom Lavagrill am Heide Park Grill im Eingangsbereich. Frau Mümmels Kiosk im Peppa Pig Land verkauft Bowls, und viele Restaurants haben pflanzliche Alternativen.
+
+> [!PARKY]
+> Die Jahreskarte kaufen wir erst kurz vor dem ersten Besuch 2027: Sie gilt zwölf Monate ab dem Kauf, und bis Ende März fährt in Soltau nichts. Im Dezember gekauft, verliert sie Monate, in denen ich von Colossos nur träumen kann. Kommen wir auch samstags, muss es der Silber Pass sein, denn Bronze galt 2026 an den meisten Samstagen von April bis Oktober nicht.
 
 ## Häufige Fragen zum Heide Park
 

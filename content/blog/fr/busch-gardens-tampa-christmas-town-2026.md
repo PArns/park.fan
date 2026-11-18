@@ -96,6 +96,9 @@ Pendant la prévente du Black Friday, le billet d’une journée coûte à parti
 
 Un billet deux parcs pour Busch Gardens et SeaWorld Orlando coûte à partir de 93,99 $, à condition de faire les deux visites dans les six mois suivant l’achat. À SeaWorld Orlando, la [Christmas Celebration marque le retour du spectacle d’orques Miracles](/news/seaworld-orlando-christmas-celebration-2026).
 
+> [!PARKY]
+> Si SeaWorld Orlando est de toute façon sur notre liste, on prend le billet deux parcs à partir de 93,99 $, à peine 22 $ de plus que le billet d’une journée le moins cher d’ici en prévente du Black Friday. Un deuxième parc pour la différence, j’en sautille, mais on n’achète que quand les deux journées tiennent dans les six mois suivant l’achat. Dans le [planificateur de voyage](/orlando#planner), on répartit ensuite les deux parcs sur deux jours.
+
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
 Sources :

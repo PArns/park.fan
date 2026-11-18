@@ -265,6 +265,9 @@ quando la coda di un’attrazione scende sotto una soglia che scegli tu. park.fa
 non appartiene a nessun gruppo, non ha paywall né pubblicità, e lo costruisce
 uno che in coda ci sta di persona.
 
+> [!PARKY]
+> Invece di restare aggrappati al corrimano del Taron, gli impostiamo una notifica push e intanto diamo la caccia ai topi da 5000 in Maus au Chocolat, e non te ne soffio nemmeno uno. Appena la coda del Taron scende sotto la nostra soglia, il telefono ci avvisa e andiamo verso Klugheim.
+
 ## Cosa vuole diventare questo blog
 
 Da solo, un tempo di attesa serve a poco. Lo stesso numero significa

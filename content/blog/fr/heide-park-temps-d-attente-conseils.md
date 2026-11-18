@@ -399,11 +399,11 @@ enfants de moins de 90 cm entrent gratuitement, mais ont besoin d’un billet à
 
 **Pass annuel.** Le Bronze Pass coûte 69 € à l’achat et 59 € en renouvellement, et n’est pas valable 45 jours en 2026, dont la plupart des samedis d’avril à octobre et du 1er au 9 août. Le Silber Pass à 89 € (69 € en renouvellement) n’a aucun jour d’exclusion. Le Merlin Abenteuer-Pass à 139 € (119 € en renouvellement) inclut le parking et vaut aussi pour le Legoland Deutschland, le Peppa Pig Park Günzburg, les Sea Life allemands et Madame Tussauds Berlin, ainsi que pour deux jours consécutifs au plus au Legoland Billund et à Gardaland. Les titulaires du Silber Pass ou de l’Abenteuer-Pass qui veulent venir le 31 octobre ont besoin d’un billet de réservation gratuit. Les trois pass sont valables douze mois à partir de l’achat.
 
-> [!PARKY]
-> Le pass annuel, on ne l’achète que juste avant notre première visite de 2027 : il vaut douze mois à partir de l’achat, et rien ne tourne à Soltau avant fin mars. Acheté en décembre, il perdrait des mois entiers pendant lesquels je ne pourrais que rêver de Colossos. Si on vient aussi le samedi, ce sera le Silber Pass, car en 2026 le Bronze Pass n’était pas valable la plupart des samedis d’avril à octobre.
-
 **Restauration.** Notre page parc recense 21 points de restauration, de la Schmalzkuchen-Schmiede, stand de beignets sur la
 terrasse de Colossos, jusqu’au Wirtshaus des Admirals, un restaurant-buffet dans la Bucht der Piraten. On trouve des pizzas chez Pizza Scream et des tartes flambées à la Flammkuchen Factory, tous deux en Transylvanie, et des saucisses de Thuringe grillées sur pierre de lave au Heide Park Grill, à l’entrée. Frau Mümmels Kiosk, dans le Peppa Pig Land, vend des bowls, et beaucoup de restaurants proposent des plats végétaux.
+
+> [!PARKY]
+> Le pass annuel, on ne l’achète que juste avant notre première visite de 2027 : il vaut douze mois à partir de l’achat, et rien ne tourne à Soltau avant fin mars. Acheté en décembre, il perdrait des mois entiers pendant lesquels je ne pourrais que rêver de Colossos. Si on vient aussi le samedi, ce sera le Silber Pass, car en 2026 le Bronze Pass n’était pas valable la plupart des samedis d’avril à octobre.
 
 ## Questions fréquentes sur le Heide Park
 

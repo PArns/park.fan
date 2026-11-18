@@ -149,6 +149,9 @@ nessuna bussola ci può fare niente. Inoltre la freccia indica l’unico punto c
 abbiamo per un’attrazione, e dove sia l’ingresso della coda nei nostri dati
 non c’è.
 
+> [!PARKY]
+> Se al Phantasialand la freccia punta contro un muro, tocchiamo l’attrazione per fissarla e seguiamo il percorso invece della linea d’aria. Finché la distanza nella barra cala, siamo sulla strada giusta, anche se per un po’ la freccia punta all’indietro, perché nemmeno io passo attraverso rocce e facciate. Quale attrazione viene dopo, l’abbiamo già deciso nel [pianificatore della giornata](/trip-planner).
+
 Per il resto, quanto fidarti sta scritto sulla bussola stessa.
 
 - Se la tua posizione ha un margine di più di 40 metri, sopra il cerchio c’è

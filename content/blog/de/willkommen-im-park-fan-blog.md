@@ -270,6 +270,9 @@ sobald die Warteschlange an einer Bahn unter eine selbst gewählte Marke fällt.
 Es gibt keine Paywall und keine Werbung, und gebaut hat das alles jemand, der
 selbst ansteht.
 
+> [!PARKY]
+> Statt am Geländer vor Taron auszuharren, stellen wir uns für ihn eine Push-Nachricht ein und jagen derweil in der Maus au Chocolat 5000er-Mäuse, wobei ich dir keine einzige wegschnappe. Sobald die Warteschlange an Taron unter unsere Marke fällt, meldet sich das Handy, und wir machen uns auf den Weg nach Klugheim.
+
 ## Was dieser Blog werden soll
 
 An einer Wartezeit allein lässt sich fast nichts ablesen. Dieselbe Zahl bedeutet je nach Bahn und
