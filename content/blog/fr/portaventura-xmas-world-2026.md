@@ -2,7 +2,7 @@
 title: 'À PortAventura, Noël s’appelle désormais Xmas World'
 translationKey: portaventura-xmas-world-2026
 date: '2026-11-18'
-time: '17:50'
+time: '18:29'
 author: patrick
 mode: published
 featured: false
@@ -46,9 +46,9 @@ seo:
 
 ## Décorations et spectacles de rue
 
-Mediterrània prend l’allure d’un village catalan, avec un grand Tió de Nadal. Dans le spectacle de rue El Tió de Nadal, les enfants chantent et tapent avec des bâtons sur ce tronc géant jusqu’à ce qu’il libère des surprises. En catalan, on dit « fer cagar el tió », et mieux vaut ne pas traduire l’expression mot à mot sur une carte de vœux. En China, des lanternes rouge et or annoncent déjà le Nouvel An chinois, et dans Winter Imperial China, un dragon traverse la Plaza Imperial avec des danseurs.
+Mediterrània prend l’allure d’un village catalan, avec un grand Tió de Nadal. Dans le spectacle de rue El Tió de Nadal, les enfants chantent et tapent avec des bâtons sur ce tronc géant jusqu’à ce qu’il libère des surprises. En catalan, on dit « fer cagar el tió », et mieux vaut ne pas traduire l’expression mot à mot sur une carte de vœux. En China, les lanternes rouge et or du Nouvel An chinois sont déjà accrochées, et dans Winter Imperial China, un dragon traverse la Plaza Imperial avec des danseurs.
 
-Au México, les décorations sont faites de piñatas et de papel picado. Dans México suena a Navidad, les habitants du village préparent une fête pour Woody Woodpecker. ¡Viva la Posada! est une procession qui passe devant le restaurant La Hacienda, inspirée des Posadas, la tradition où l’on demande l’hospitalité. À la fin, on casse une piñata de Noël.
+Au México, des piñatas et du papel picado pendent au-dessus des allées. Dans México suena a Navidad, les habitants du village préparent une fête pour Woody Woodpecker. ¡Viva la Posada! est une procession qui passe devant le restaurant La Hacienda, inspirée des Posadas, la tradition où l’on demande l’hospitalité. À la fin, on casse une piñata de Noël.
 
 Le Far West a l’air d’une ville western sortie d’un film de Noël, avec guirlandes et lumières, et à 17 h 15, dans Christmas Lights, les personnages font le compte à rebours dans la rue principale de Penitence jusqu’à ce que le grand sapin s’allume. Une neige artificielle tombe alors sur la ville. Les Crazy Brothers parcourent le Far West avec Holly et quelques danseurs dans What a Crazy Christmas, mais le Père Noël n’a pas encore fait son apparition. Chacun de ces spectacles de rue dure huit minutes. Au théâtre de SésamoAventura, Grover, Elmo et Ernie ont leur propre spectacle de Noël, Ya es Navidad en SésamoAventura.
 
@@ -56,35 +56,35 @@ Le Far West a l’air d’une ville western sortie d’un film de Noël, avec gu
 
 Au saloon de Penitence se joue La Gran Rifa de Navidad. Depuis des années, la pianiste Sarah Joplin et Lilly Parsonn truquent la tombola de Noël du village, et cette fois, le billet gagnant tombe entre les mains d’un pauvre mendiant. À La Cantina, au México, Navidad a la Mexicana passe en revue les coutumes de Noël du pays jusqu’au réveillon, avec des chants de Noël et des pastorelas.
 
-Les deux durent de 20 à 30 minutes, avec une consommation minimum. Au saloon, ça a au moins le mérite d’aller avec le décor. Sans consommation, tu peux voir Circo de Navidad au Gran Teatro Imperial, en China, l’histoire d’une petite fille qui rêve de cirque, et Bubble Magic Christmas au Templo Mágico, où un alchimiste fabrique des bulles de savon. S’y ajoutent Cuidemos el Planeta et El Bosque Encantado, un chemin qui part devant la Serpiente Emplumada, au México, et mène à la maison du Père Noël. Jusqu’au 25 décembre, la photo s’y fait avec le Père Noël, et à partir du 26, avec l’un des Rois mages.
+Les deux durent de 20 à 30 minutes, avec une consommation minimum. Au saloon, ça a au moins le mérite d’aller avec le décor. Sans consommation, tu peux voir Circo de Navidad au Gran Teatro Imperial, en China, l’histoire d’une petite fille qui rêve de cirque, et Bubble Magic Christmas au Templo Mágico, où un alchimiste fabrique des bulles de savon. Cuidemos el Planeta se voit lui aussi sans consommation. El Bosque Encantado est un chemin qui part devant la Serpiente Emplumada, au México, et mène à la maison du Père Noël. Jusqu’au 25 décembre, la photo s’y fait avec le Père Noël, et à partir du 26, avec l’un des Rois mages.
 
 ## La parade et le dernier spectacle du lac
 
-En fin de journée, la Christmas Parade défile avec ses chars et ses personnages sur le Paseo de Mediterrània. Ensuite, dans La Llegada de los Emisarios Reales, les émissaires des Rois mages accostent sur le lac, pendant qu’un feu d’artifice éclate au-dessus d’eux et que des acrobates dansent sur l’eau en flyboard. Le spectacle s’inspire de la Cabalgata de Reyes espagnole.
+En fin de journée, la Christmas Parade défile sur le Paseo de Mediterrània. Ensuite, dans La Llegada de los Emisarios Reales, les émissaires des Rois mages accostent sur le lac, pendant qu’un feu d’artifice éclate au-dessus d’eux et que des acrobates dansent sur l’eau en flyboard. Le spectacle s’inspire de la Cabalgata de Reyes espagnole.
 
 ## Horaires
 
 Du 20 novembre au 6 janvier, le parc ouvre tous les jours à 10 h 30 et ferme le plus souvent à 18 h. Il reste ouvert jusqu’à 19 h les 5, 6 et 7 décembre, du 27 au 30 décembre et du 1er au 4 janvier.
 
-La parade et le spectacle du lac n’ont pas lieu tous les jours. Le calendrier du parc les indique à 17 h 45 et 18 h le samedi 12 décembre, le 24 décembre et les 5 et 6 janvier. Le dimanche 27 décembre, ils commencent à 18 h 45 et 19 h. Le mercredi 2 décembre, aucun des deux n’y figure, alors que Christmas Lights est bien prévu. Pour le jour de l’ouverture, vendredi 20 novembre, le calendrier ne liste pour l’instant que quatre spectacles, sans aucune des nouveautés et sans parade.
+La parade et le spectacle du lac n’ont pas lieu tous les jours. Le calendrier du parc les indique à 17 h 45 et 18 h le samedi 12 décembre, le 24 décembre et les 5 et 6 janvier. Le dimanche 27 décembre, ils commencent à 18 h 45 et 19 h. Un mercredi comme le 2 décembre, aucun des deux n’y figure, alors que Christmas Lights est bien prévu. Pour le jour de l’ouverture, vendredi 20 novembre, le calendrier ne liste pour l’instant que quatre spectacles, sans aucune des nouveautés et sans parade.
 
 À partir du 7 janvier, le parc est fermé. D’après le calendrier, il rouvre le vendredi 19 février, ce jour-là de 16 h à 21 h.
 
 ## Billets
 
-La billetterie ne propose pas de billet spécial Noël : tu achètes le billet normal du parc. En ligne, une journée coûte à partir de 43 € pour les adultes de 11 à 59 ans et à partir de 39 € pour les enfants de 4 à 10 ans et les visiteurs de 60 ans et plus. Avec le code promo REGALAPAW, c’est à partir de 37 € et de 33 €. Le code ne vaut que pour un achat sur le site, pour un achat et une visite jusqu’au 6 janvier, et pour 1 000 billets au total. Deux jours au parc coûtent à partir de 75 €, ou à partir de 41 € avec le code. Tous les prix dépendent du jour de visite. Un billet daté s’annule jusqu’à trois jours avant.
+La billetterie ne propose pas de billet spécial Noël : tu achètes le billet normal du parc. En ligne, une journée coûte selon la date à partir de 43 € pour les adultes de 11 à 59 ans et à partir de 39 € pour les enfants de 4 à 10 ans et les visiteurs de 60 ans et plus. Avec le code promo REGALAPAW, c’est à partir de 37 € et de 33 €. Le code ne vaut que pour un achat sur le site, pour un achat et une visite jusqu’au 6 janvier, et pour 1 000 billets au total. Deux jours au parc coûtent à partir de 75 €, ou à partir de 41 € avec le code. Un billet daté s’annule jusqu’à trois jours avant.
 
 Les billets à tarif réduit pour les personnes ayant un handicap d’au moins 33 % ne se vendent qu’aux caisses et au Guest Service Office.
 
 ## Ferrari Land et Caribe en hiver
 
-En novembre et début décembre, [Ferrari Land](ref:ferrari-land) n’ouvre que le vendredi de 17 h à 22 h et le week-end de 16 h 30 à 22 h, plus les 7 et 8 décembre. Du 18 décembre au 5 janvier, il ouvre tous les jours, en général de 16 h 30 à 22 h, et de 13 h à 19 h le 24 et le 31 décembre. Le 6 janvier, c’est aussi de 13 h à 19 h, puis Ferrari Land ferme à son tour. Les jours où les deux sont ouverts, tu passes à Ferrari Land, juste à côté, après la fermeture du parc, et pour ça, le billet d’une journée pour les deux parcs vaut le coup, à partir de 55 €, ou à partir de 44 € avec le code. Une journée à Ferrari Land seul coûte à partir de 19 €.
+En novembre et début décembre, [Ferrari Land](ref:ferrari-land) n’ouvre que le vendredi de 17 h à 22 h et le week-end de 16 h 30 à 22 h, plus les 7 et 8 décembre. Du 18 décembre au 5 janvier, il ouvre tous les jours, en général de 16 h 30 à 22 h, et de 13 h à 19 h le 24 et le 31 décembre. Le 6 janvier, c’est aussi de 13 h à 19 h, puis Ferrari Land ferme à son tour. Les jours où les deux sont ouverts, tu passes à Ferrari Land, juste à côté, après la fermeture du parc. C’est là que le billet d’une journée pour les deux parcs vaut le coup : à partir de 55 €, ou à partir de 44 € avec le code. Une journée à Ferrari Land seul coûte à partir de 19 €.
 
 Le Caribe Aquatic Park est fermé en novembre, décembre et janvier.
 
 ## Quelles attractions tournent
 
-Le samedi 12 décembre et le dimanche 27 décembre, le calendrier du jour affiche 36 attractions, dont [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) et Hurakan Condor. Le 20 novembre, il y en a 23, sans Stampida ni Furius Baco, et le 2 décembre, 25. Tutuki Splash, Silver River Flume, Angkor et Sea Odyssey ne figurent à aucune de ces dates. Grand Canyon Rapids tourne le 20 novembre et les 12 et 27 décembre, chaque fois jusqu’à 17 h. Que ces quatre-là restent fermées tout l’hiver, on ne peut que le supposer. PortAventura n’a pas publié de liste des attractions en pause hivernale.
+Le samedi 12 décembre et le dimanche 27 décembre, le calendrier du jour affiche 36 attractions, dont [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) et Hurakan Condor. Le jour de l’ouverture, vendredi 20 novembre, le calendrier affiche 23 attractions, sans Stampida ni Furius Baco. Le mercredi 2 décembre, il en affiche 25. Tutuki Splash, Silver River Flume, Angkor et Sea Odyssey ne figurent à aucune de ces dates. Grand Canyon Rapids tourne le 20 novembre et les 12 et 27 décembre, chaque fois jusqu’à 17 h. PortAventura n’a pas publié de liste des attractions en pause hivernale.
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days
 
@@ -106,9 +106,9 @@ Pour éviter la file, il y a les pass Express, de l’Express ONE à partir de 7
 
 ## Nouveautés depuis 2024 et menus de Noël
 
-En 2024, Noël à PortAventura durait du 23 novembre au 6 janvier. Christmas Dream au Gran Teatro Imperial, La Navidad de Woody en Polynesia et Christmas Time au Long Branch Saloon ne figurent en 2026 ni dans le communiqué ni au calendrier, et c’est désormais Circo de Navidad qui se joue au Gran Teatro Imperial. Bubble Magic Christmas, Ya es Navidad en SésamoAventura, la parade et le spectacle du lac existaient déjà en 2024.
+En 2024, Noël à PortAventura durait du 23 novembre au 6 janvier. Au Gran Teatro Imperial, Circo de Navidad a remplacé Christmas Dream, et La Navidad de Woody en Polynesia et Christmas Time au Long Branch Saloon ne figurent en 2026 ni dans le communiqué ni au calendrier. Bubble Magic Christmas, Ya es Navidad en SésamoAventura, la parade et le spectacle du lac existaient déjà en 2024.
 
-La Posada de los Gnomos, au Far West, à côté du restaurant The Iron Horse, n’ouvre qu’à la période de Noël, comme en 2024. Cette fois, elle sert un menu avec crème de fruits de mer, meloso de ternera et tronco de Navidad. Au Racó de Mar, à Mediterrània, il y a des canelones et de la sopa de Navidad, à La Cantina et à la Taquería La Catrina des esquites et des tacos de cochinita pibil, et à Cantón des tanghulu, la friandise du Nouvel An chinois. La saison 2024 comptait une Cabalgata de Reyes dans le resort le 5 janvier. PortAventura n’a pas encore annoncé s’il y en aura une le 5 janvier 2027.
+La Posada de los Gnomos, au Far West, à côté du restaurant The Iron Horse, n’ouvre qu’à la période de Noël, comme en 2024. Cette fois, elle sert un menu avec crème de fruits de mer, meloso de ternera et tronco de Navidad. Au Racó de Mar, à Mediterrània, il y a des canelones et de la sopa de Navidad, à La Cantina et à la Taquería La Catrina des esquites et des tacos de cochinita pibil, et à Cantón des tanghulu, la friandise du Nouvel An chinois. La saison 2024 comptait une Cabalgata de Reyes dans le resort le 5 janvier. Pour le 5 janvier 2027, elle ne figure pas encore au calendrier.
 
 [PortAventura Park](ref:portaventura-park?full)
 

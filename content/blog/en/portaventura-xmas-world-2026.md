@@ -2,7 +2,7 @@
 title: 'Christmas at PortAventura is now called Xmas World'
 translationKey: portaventura-xmas-world-2026
 date: '2026-11-18'
-time: '17:50'
+time: '18:29'
 author: patrick
 mode: published
 featured: false
@@ -48,9 +48,9 @@ From Friday 20 November, Christmas at [PortAventura Park](ref:portaventura-park)
 
 ## Decorations and street shows
 
-Mediterrània is dressed up as a Catalan village, with a giant Tió de Nadal. In the street show El Tió de Nadal, children sing and beat the huge log with sticks until surprises tumble out. In Catalan that's called "fer cagar el tió", and you'd better look up the verb before you put it on a Christmas card. China hangs red and gold lanterns that already point to Chinese New Year, and in Winter Imperial China a dragon and its dancers cross the Plaza Imperial.
+Mediterrània is dressed up as a Catalan village, with a giant Tió de Nadal. In the street show El Tió de Nadal, children sing and beat the huge log with sticks until surprises tumble out. In Catalan that's called "fer cagar el tió", and you'd better look up the verb before you put it on a Christmas card. In China, the red and gold lanterns of Chinese New Year are already up, and in Winter Imperial China a dragon and its dancers cross the Plaza Imperial.
 
-México is decked out with piñatas and papel picado. In México suena a Navidad, the villagers get a party ready for Woody Woodpecker. ¡Viva la Posada! passes in front of La Hacienda restaurant as a procession in the tradition of the posadas, where people go asking for shelter. It ends with a Christmas piñata being smashed.
+Piñatas and papel picado hang over the paths in México. In México suena a Navidad, the villagers get a party ready for Woody Woodpecker. ¡Viva la Posada! passes in front of La Hacienda restaurant as a procession in the tradition of the posadas, where people go asking for shelter. It ends with a Christmas piñata being smashed.
 
 Far West looks like a Western town in a Christmas film, garlands and lights included, and at 5:15 p.m. the characters on Penitence's main street count down in Christmas Lights until the big tree lights up. Then fake snow falls over the town. The Crazy Brothers roam Far West with Holly and a troupe of dancers in What a Crazy Christmas, though Santa Claus hasn't turned up yet. Each of these street shows runs for eight minutes. Over in SésamoAventura's theatre, Grover, Elmo and Ernie have a Christmas show of their own, Ya es Navidad en SésamoAventura.
 
@@ -58,35 +58,35 @@ Far West looks like a Western town in a Christmas film, garlands and lights incl
 
 The saloon in Penitence puts on La Gran Rifa de Navidad. Pianist Sarah Joplin and Lilly Parsonn have been rigging the town's Christmas raffle for years, and this time the winning ticket lands with a penniless beggar. At La Cantina in México, Navidad a la Mexicana works through the country's customs up to Christmas Eve, with carols and pastorelas.
 
-Both last 20 to 30 minutes, and both come with a minimum spend. In a saloon, at least, that's in character. Shows you can see without buying anything include Circo de Navidad at the Gran Teatro Imperial in China, about a girl who dreams of the circus, and Bubble Magic Christmas at the Templo Mágico, where an alchemist blows soap bubbles. There's also Cuidemos el Planeta, and El Bosque Encantado, a path in front of Serpiente Emplumada in México that leads to Santa's house. Up to 25 December your photo there is with Santa Claus; from the 26th it's with one of the Three Kings.
+Both last 20 to 30 minutes, and both come with a minimum spend. In a saloon, at least, that's in character. Shows you can see without buying anything include Circo de Navidad at the Gran Teatro Imperial in China, about a girl who dreams of the circus, and Bubble Magic Christmas at the Templo Mágico, where an alchemist blows soap bubbles. Cuidemos el Planeta has no minimum spend either. El Bosque Encantado is a path in front of Serpiente Emplumada in México that leads to Santa's house. Up to 25 December your photo there is with Santa Claus; from the 26th it's with one of the Three Kings.
 
 ## The parade and the last lake show
 
-Towards the end of the day, the Christmas Parade brings floats and characters along the Paseo in Mediterrània. Then, in La Llegada de los Emisarios Reales, the envoys of the Three Kings land on the lake while fireworks go up overhead and performers dance on the water on flyboards. It's modelled on Spain's Cabalgata de Reyes.
+Towards the end of the day, the Christmas Parade comes along the Paseo in Mediterrània. Then, in La Llegada de los Emisarios Reales, the envoys of the Three Kings land on the lake while fireworks go up overhead and performers dance on the water on flyboards. It's modelled on Spain's Cabalgata de Reyes.
 
 ## Opening and closing times
 
 From 20 November to 6 January the park opens every day at 10:30 a.m. and usually closes at 6 p.m. Closing time moves to 7 p.m. on 5, 6 and 7 December, from 27 to 30 December and from 1 to 4 January.
 
-The parade and the lake show don't run every day. The park's daily calendar lists them at 5:45 and 6 p.m. on Saturday 12 December, Christmas Eve, and 5 and 6 January. On Sunday 27 December they start at 6:45 and 7 p.m. Neither is listed for Wednesday 2 December, though Christmas Lights is. For opening day, Friday 20 November, the calendar so far shows only four shows, none of them new, and no parade.
+The parade and the lake show don't run every day. The park's daily calendar lists them at 5:45 and 6 p.m. on Saturday 12 December, Christmas Eve, and 5 and 6 January. On Sunday 27 December they start at 6:45 and 7 p.m. On a Wednesday like 2 December neither is listed, though Christmas Lights is. For opening day, Friday 20 November, the calendar so far shows only four shows, none of them new, and no parade.
 
 From 7 January the park is closed. According to the calendar it reopens on Friday 19 February, from 4 p.m. to 9 p.m. that day.
 
 ## Tickets
 
-There's no separate Christmas ticket on the ticket page; you buy the regular park ticket. Online, a day costs from €43 for adults aged 11 to 59 and from €39 for children aged 4 to 10 and visitors 60 and over. With the promo code REGALAPAW, that drops to €37 and €33. The code only works when you buy on the website, for purchases and visits up to 6 January, and for 1,000 tickets in total. Two days in the park cost from €75, or from €41 with the code. All prices depend on the day you visit. You can cancel a dated ticket up to three days ahead.
+There's no separate Christmas ticket on the ticket page; you buy the regular park ticket. Online, depending on the date, a day costs from €43 for adults aged 11 to 59 and from €39 for children aged 4 to 10 and visitors 60 and over. With the promo code REGALAPAW, that drops to €37 and €33. The code only works when you buy on the website, for purchases and visits up to 6 January, and for 1,000 tickets in total. Two days in the park cost from €75, or from €41 with the code. You can cancel a dated ticket up to three days ahead.
 
 Reduced tickets for people with a disability of 33 percent or more are sold only at the ticket office and the Guest Service Office.
 
 ## Ferrari Land and Caribe in winter
 
-In November and early December, [Ferrari Land](ref:ferrari-land) opens only on Fridays, from 5 p.m. to 10 p.m., and at weekends, from 4:30 p.m. to 10 p.m. It also opens on 7 and 8 December. From 18 December to 5 January it opens daily, mostly from 4:30 p.m. to 10 p.m., and from 1 p.m. to 7 p.m. on Christmas Eve and New Year's Eve. The same 1 p.m. to 7 p.m. applies on 6 January, after which Ferrari Land closes too. On days when both are open, you can walk over to Ferrari Land after PortAventura Park closes, which makes the one-day ticket for both parks worth it, from €55 or from €44 with the code. A day at Ferrari Land only costs from €19.
+In November and early December, [Ferrari Land](ref:ferrari-land) opens only on Fridays, from 5 p.m. to 10 p.m., and at weekends, from 4:30 p.m. to 10 p.m. It also opens on 7 and 8 December. From 18 December to 5 January it opens daily, mostly from 4:30 p.m. to 10 p.m., and from 1 p.m. to 7 p.m. on Christmas Eve and New Year's Eve. The same 1 p.m. to 7 p.m. applies on 6 January, after which Ferrari Land closes too. On days when both are open, you can walk over to Ferrari Land after PortAventura Park closes. That's when the ticket for both parks pays off: from €55, or from €44 with the code. A day at Ferrari Land only costs from €19.
 
 Caribe Aquatic Park is closed in November, December and January.
 
 ## Which rides are running
 
-On Saturday 12 December and Sunday 27 December, the daily calendar lists 36 attractions, among them [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) and Hurakan Condor. On 20 November there are 23, without Stampida and Furius Baco, and on 2 December 25. Tutuki Splash, Silver River Flume, Angkor and Sea Odyssey aren't listed on any of these days. Grand Canyon Rapids runs on 20 November and on 12 and 27 December, until 5 p.m. each time. Whether those four are shut all winter is guesswork. PortAventura hasn't put out a list of winter closures.
+On Saturday 12 December and Sunday 27 December, the daily calendar lists 36 attractions, among them [Shambhala](ref:portaventura-park/shambhala?bare), [Dragon Khan](ref:portaventura-park/dragon-khan?bare), [Furius Baco](ref:portaventura-park/furius-baco?bare), Stampida, [Uncharted](ref:portaventura-park/uncharted?bare) and Hurakan Condor. On opening day, Friday 20 November, the calendar lists 23 attractions, without Stampida and Furius Baco. On Wednesday 2 December it lists 25. Tutuki Splash, Silver River Flume, Angkor and Sea Odyssey aren't listed on any of these days. Grand Canyon Rapids runs on 20 November and on 12 and 27 December, until 5 p.m. each time. PortAventura hasn't published a list of rides closed for the winter.
 
 ```ride-waits-widget park=portaventura-park top=8 columns=land,peak,days
 
@@ -108,9 +108,9 @@ Express passes get you past the queue: Express ONE from €7, Express Unlimited 
 
 ## New since 2024, and the Christmas menus
 
-In 2024, Christmas at PortAventura ran from 23 November to 6 January. Christmas Dream at the Gran Teatro Imperial, La Navidad de Woody in Polynesia and Christmas Time at the Long Branch Saloon appear in neither the 2026 press release nor the calendar, and the Gran Teatro Imperial now plays Circo de Navidad. Bubble Magic Christmas, Ya es Navidad en SésamoAventura, the parade and the lake show were already there in 2024.
+In 2024, Christmas at PortAventura ran from 23 November to 6 January. Circo de Navidad has replaced Christmas Dream at the Gran Teatro Imperial, and La Navidad de Woody in Polynesia and Christmas Time at the Long Branch Saloon appear in neither the 2026 press release nor the calendar. Bubble Magic Christmas, Ya es Navidad en SésamoAventura, the parade and the lake show were already there in 2024.
 
-La Posada de los Gnomos in Far West, next to The Iron Horse restaurant, opens only at Christmas, as it did in 2024. This time it serves a menu of seafood cream soup, meloso de ternera and tronco de Navidad. Racó de Mar in Mediterrània has canelones and sopa de Navidad, La Cantina and Taquería La Catrina serve esquites and tacos de cochinita pibil, and Cantón has tanghulu, the Chinese New Year sweet. The 2024 season included a Cabalgata de Reyes in the resort on 5 January. PortAventura hasn't announced whether there'll be one on 5 January 2027.
+La Posada de los Gnomos in Far West, next to The Iron Horse restaurant, opens only at Christmas, as it did in 2024. This time it serves a menu of seafood cream soup, meloso de ternera and tronco de Navidad. Racó de Mar in Mediterrània has canelones and sopa de Navidad, La Cantina and Taquería La Catrina serve esquites and tacos de cochinita pibil, and Cantón has tanghulu, the Chinese New Year sweet. The 2024 season included a Cabalgata de Reyes in the resort on 5 January. It isn't on the calendar for 5 January 2027 so far.
 
 [PortAventura Park](ref:portaventura-park?full)
 
