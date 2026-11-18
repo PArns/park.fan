@@ -192,7 +192,7 @@ Comme les zones sont décalées d’une semaine en février et en avril, une par
 En mai 2027, le 1er et le 8 mai tombent un samedi, et le seul pont est donc celui de l’Ascension. L’Ascension tombe le jeudi 6 mai, et le vendredi qui suit, les écoles sont fermées dans toute la France. Le lundi de Pentecôte est le 17 mai.
 
 > [!PARKY]
-> Pour un séjour dans les trois parcs hors vacances scolaires, on choisit mai ou juin 2027 : du 3 avril au 2 mai, il y a toujours une zone en vacances, à partir du 3 juillet toutes, et en février, le Parc Astérix dort encore. On évite seulement l’Ascension, le 6 mai, avec le vendredi sans école qui suit, et le lundi de Pentecôte, le 17 mai. Avec ces dates, le [planificateur de voyage](/paris#planner) répartit les trois parcs sur les jours.
+> Pour un séjour dans les trois parcs hors vacances scolaires, on choisit mai ou juin 2027 : du 3 avril au 2 mai, il y a toujours une zone en vacances, à partir du 3 juillet toutes, et en février, le Parc Astérix dort encore. On évite seulement l’Ascension, le 6 mai, avec le vendredi sans école qui suit, et le lundi de Pentecôte, le 17 mai. Avec ces dates, le [planificateur de séjour](/paris#planner) répartit les trois parcs sur les jours.
 
 ### Les événements Disney
 

@@ -191,7 +191,7 @@ Como las zonas van separadas una semana en febrero y en abril, en 2027 alguna pa
 En mayo de 2027, el 1 y el 8 de mayo caen en sábado, así que el único puente es el de la Ascensión. La Ascensión es el jueves 6 de mayo, y el viernes siguiente no hay colegio en toda Francia. El lunes de Pentecostés es el 17 de mayo.
 
 > [!PARKY]
-> Para un viaje a los tres parques fuera de las vacaciones escolares francesas, elegimos mayo o junio de 2027: del 3 de abril al 2 de mayo siempre hay alguna zona de vacaciones, desde el 3 de julio todas, y en febrero el Parc Astérix todavía duerme. Solo evitamos la Ascensión, el 6 de mayo, con el viernes sin colegio que la sigue, y el lunes de Pentecostés, el 17 de mayo. Con esas fechas, el [planificador de viajes](/paris#planner) reparte los tres parques entre los días.
+> Para un viaje a los tres parques fuera de las vacaciones escolares francesas, elegimos mayo o junio de 2027: del 3 de abril al 2 de mayo siempre hay alguna zona de vacaciones, desde el 3 de julio todas, y en febrero el Parc Astérix todavía duerme. Solo evitamos la Ascensión, el 6 de mayo, con el viernes sin colegio que la sigue, y el lunes de Pentecostés, el 17 de mayo. Con esas fechas, el [planificador de viaje](/paris#planner) reparte los tres parques entre los días.
 
 ### Eventos de Disney
 
