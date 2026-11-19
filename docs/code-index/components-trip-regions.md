@@ -69,8 +69,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-how-it-works.tsx`](../../components/trip-regions/hub/hub-how-it-works.tsx)
 
-- `HubHowItWorks` _component_: Chapter 01 of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to plan it with him in the chat, whose button opens him.
-- `HUB_STEPS` _const_: The planner's four steps as chapter 01 names them, in the order of `TripHub.howItWorks`.
+- `HubHowItWorks` _component_: Chapter 02 of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to plan it with him in the chat, whose button opens him.
+- `HUB_STEPS` _const_: The planner's four steps as chapter 02 names them, in the order of `TripHub.howItWorks`.
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
@@ -88,7 +88,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub/hub-trip-state.tsx`](../../components/trip-regions/hub/hub-trip-state.tsx)
 
 - `HubTripProvider` _component_: The hub's state for everything below it: the trip the planner shows, or null for the landing page.
-- `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 01 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
+- `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 02 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
@@ -104,7 +104,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)
 
-- `PlannerChapterSlot` _component_: Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ and the …
+- `PlannerChapterSlot` _component_: Chapter 02 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ and the …
 
 ### [`hub/trip-region-hub-page.tsx`](../../components/trip-regions/hub/trip-region-hub-page.tsx)
 
