@@ -2809,6 +2809,10 @@
             "title": "Verlauf",
             "description": "Gemessene Wartezeiten im Rückblick: Parkstatistik, Stundenprofil, Tageskurve und Verlauf einer Attraktion, typische Wartezeiten, Rope Drop, Ausfälle."
           },
+          "typical-waits": {
+            "title": "Typische Wartezeiten",
+            "description": "Die typischen Wartezeiten jeder Attraktion und welche Attraktionen die Headliner des Parks sind, in den Details von Park und Attraktion. Der Verlauf enthält sie auch."
+          },
           "platform": {
             "title": "Plattformzahlen",
             "description": "Live-Summen über alle Parks, der Ticker und die besten Besuchszeiten insgesamt."

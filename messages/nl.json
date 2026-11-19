@@ -2809,6 +2809,10 @@
             "title": "Historie",
             "description": "Gemeten wachttijden achteraf: parkstatistieken, uurprofiel, de dagcurve en historie van een attractie, gebruikelijke wachttijden, rope drop, storingen."
           },
+          "typical-waits": {
+            "title": "Gebruikelijke wachttijden",
+            "description": "De gebruikelijke wachttijden van elke attractie en welke attracties de headliners van het park zijn, in het detail van park en attractie. De historie bevat ze ook."
+          },
           "platform": {
             "title": "Platformcijfers",
             "description": "Live totalen over alle parken, de ticker en de beste bezoektijden in het algemeen."
