@@ -11,8 +11,9 @@ import {
   type RefObject,
 } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronDown, ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
 import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/calendar-day-tile';
+import { CalendarIcon } from '@/components/parks/calendar-icon-sprite';
 import { useSeasonLabel } from '@/components/parks/season-headline';
 import { cn } from '@/lib/utils';
 import { HubFilterChip as FilterChip } from './hub-filter-chip';
@@ -531,7 +532,8 @@ function QuietestNote({
               className
             )}
           >
-            <Star
+            <CalendarIcon
+              name="star"
               role="img"
               aria-label={t('quietest')}
               className="mr-1 inline size-3 fill-current align-[-2px]"
