@@ -149,11 +149,25 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
     };
   }, [apply, keys]);
 
+  // An untouched trip is planned with the headliners its days hold, so Parky is handed those parks
+  // by name: without them his tools would plan all of the region's headliners.
+  const published = useMemo(() => {
+    if (state.parks && state.parks.length > 0) return state;
+    const started = headlinersForTrip(headliners, state);
+    return started === headliners
+      ? state
+      : { ...state, parks: started.map((slug) => ({ slug, visits: null })) };
+  }, [state, headliners]);
   // Parky reads the plan on screen and changes it through `update`, as a press would; his changes
   // are counted as his.
   useEffect(
-    () => connectPlannerBridge(region.slug, state, updateByParky, keys, { edit, undo, clear }),
-    [region.slug, state, updateByParky, keys, edit, undo, clear]
+    () =>
+      connectPlannerBridge(region.slug, state, published, updateByParky, keys, {
+        edit,
+        undo,
+        clear,
+      }),
+    [region.slug, state, published, updateByParky, keys, edit, undo, clear]
   );
   // Only a query the planner did not write is news; the first one counts, since a link opened it.
   const reported = useRef<string | null>(null);

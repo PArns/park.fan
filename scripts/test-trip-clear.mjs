@@ -70,7 +70,7 @@ onSiteEvent((name, props) => events.push({ name, props }));
 function mountPlanner(query) {
   const planner = { state: readPlanQuery(new URLSearchParams(query)), history: ['pin'] };
   const connect = () =>
-    connectPlannerBridge('orlando', planner.state, () => undefined, undefined, {
+    connectPlannerBridge('orlando', planner.state, planner.state, () => undefined, undefined, {
       edit: () => undefined,
       undo: () => false,
       clear: () => {
@@ -157,6 +157,7 @@ seed();
 interviewStore.set({ ...interview, region: 'japan' });
 connectPlannerBridge(
   'japan',
+  readPlanQuery(new URLSearchParams(JAPAN)),
   readPlanQuery(new URLSearchParams(JAPAN)),
   () => undefined,
   undefined,

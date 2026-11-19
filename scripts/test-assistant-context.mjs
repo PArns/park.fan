@@ -759,6 +759,7 @@ const writes = [];
 let disconnect = connectPlannerBridge(
   'orlando',
   tripState,
+  tripState,
   (recipe) => {
     tripState = recipe(tripState);
     writes.push(tripState);
@@ -806,6 +807,7 @@ disconnect();
 disconnect = connectPlannerBridge(
   'orlando',
   tripState,
+  tripState,
   (recipe) => (tripState = recipe(tripState)),
   undefined,
   { edit: () => undefined, undo: () => false }
@@ -819,7 +821,7 @@ check(takeTripUndo('orlando'), 'none', 'and only once');
 rememberTripChange('orlando', 'from=2027-10-14&to=2027-10-21', tripPlannerBridge.current().query);
 disconnect();
 tripState = readPlanQuery(new URLSearchParams('from=2027-10-16&to=2027-10-23'));
-disconnect = connectPlannerBridge('orlando', tripState, () => undefined, undefined, {
+disconnect = connectPlannerBridge('orlando', tripState, tripState, () => undefined, undefined, {
   edit: () => undefined,
   undo: () => false,
 });
@@ -833,7 +835,7 @@ let ideaUndos = 0;
 tripState = readPlanQuery(
   new URLSearchParams('from=2027-10-14&to=2027-10-21&lock=epcot@2027-10-15')
 );
-disconnect = connectPlannerBridge('orlando', tripState, () => undefined, undefined, {
+disconnect = connectPlannerBridge('orlando', tripState, tripState, () => undefined, undefined, {
   edit: (recipe, change, by) => {
     tripState = recipe(tripState);
     ideaEdits.push({ kind: change.kind, by });
