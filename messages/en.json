@@ -4616,7 +4616,7 @@
       "hub": {
         "title": "Orlando Crowd Calendar",
         "monthTitle": "Orlando Crowd Calendar {month}",
-        "metaTitle": "Orlando Crowd Calendar {years} & Trip Planner",
+        "metaTitle": "Disney World & Universal Orlando Crowd Calendar {years}",
         "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
         "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
         "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
@@ -4645,9 +4645,7 @@
         "when": {
           "kicker": "Disney World and Universal",
           "title": "Best time to visit Orlando in {year}",
-          "titleNoYear": "Best time to visit Orlando",
-          "pageLink": "Best time to visit Orlando in {year}",
-          "pageLinkNoYear": "Best time to visit Orlando"
+          "pageLink": "Best time to visit Orlando in {year}"
         },
         "faq": {
           "title": "Questions about Orlando crowds",
@@ -5016,9 +5014,7 @@
         "when": {
           "kicker": "Disneyland and Universal",
           "title": "Best time to visit Disneyland & Universal Hollywood in {year}",
-          "titleNoYear": "Best time to visit Disneyland & Universal Hollywood",
-          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}",
-          "pageLinkNoYear": "Best time to visit Disneyland & Universal Hollywood"
+          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}"
         },
         "reasons": {
           "school_break": "during Los Angeles school holidays"
@@ -5305,9 +5301,7 @@
         "when": {
           "kicker": "Tokyo Disney and USJ",
           "title": "Best time to visit Tokyo Disney and USJ in {year}",
-          "titleNoYear": "Best time to visit Tokyo Disney and USJ",
-          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}",
-          "pageLinkNoYear": "Best time to visit Tokyo Disney and USJ"
+          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}"
         },
         "reasons": {
           "school_break": "during Japanese school holidays"
@@ -5635,9 +5629,7 @@
         "when": {
           "kicker": "Trips with all three parks",
           "title": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
-          "titleNoYear": "Best time to visit Disneyland Paris & Parc Astérix",
-          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
-          "pageLinkNoYear": "Best time to visit Disneyland Paris & Parc Astérix"
+          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}"
         },
         "reasons": {
           "school_break": "Paris school holidays"

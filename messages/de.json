@@ -4616,7 +4616,7 @@
       "hub": {
         "title": "Orlando Andrang-Kalender",
         "monthTitle": "Orlando Andrang-Kalender {month}",
-        "metaTitle": "Orlando Andrang-Kalender {years} & Reiseplaner",
+        "metaTitle": "Orlando Andrang-Kalender {years}: Disney World & Universal",
         "metaTitleMonth": "Orlando im {month}: Andrang bei Disney & Universal",
         "metaTitleMonthShort": "Orlando Andrang-Kalender {month}",
         "metaDescription": "Welcher Park in Orlando an welchem Tag, mit Epic Universe. Am ruhigsten in den nächsten 30 Tagen: {verdict}.",
@@ -4645,9 +4645,7 @@
         "when": {
           "kicker": "Disney World und Universal",
           "title": "Beste Reisezeit für Orlando {year}",
-          "titleNoYear": "Beste Reisezeit für Orlando",
-          "pageLink": "Beste Reisezeit für Orlando {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Orlando"
+          "pageLink": "Beste Reisezeit für Orlando {year}"
         },
         "faq": {
           "title": "Fragen zum Andrang in Orlando",
@@ -5016,9 +5014,7 @@
         "when": {
           "kicker": "Disneyland und Universal",
           "title": "Beste Reisezeit für Disneyland & Universal Hollywood {year}",
-          "titleNoYear": "Beste Reisezeit für Disneyland & Universal Hollywood",
-          "pageLink": "Beste Reisezeit für Disneyland & Universal Hollywood {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Disneyland & Universal Hollywood"
+          "pageLink": "Beste Reisezeit für Disneyland & Universal Hollywood {year}"
         },
         "reasons": {
           "school_break": "in den Schulferien in Los Angeles"
@@ -5305,9 +5301,7 @@
         "when": {
           "kicker": "Tokyo Disney und USJ",
           "title": "Beste Reisezeit für Tokyo Disney & USJ {year}",
-          "titleNoYear": "Beste Reisezeit für Tokyo Disney & USJ",
-          "pageLink": "Beste Reisezeit für Tokyo Disney & USJ {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Tokyo Disney & USJ"
+          "pageLink": "Beste Reisezeit für Tokyo Disney & USJ {year}"
         },
         "reasons": {
           "school_break": "in den japanischen Schulferien"
@@ -5635,9 +5629,7 @@
         "when": {
           "kicker": "Reisen mit allen drei Parks",
           "title": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
-          "titleNoYear": "Beste Reisezeit für Disneyland Paris & Parc Astérix",
-          "pageLink": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}",
-          "pageLinkNoYear": "Beste Reisezeit für Disneyland Paris & Parc Astérix"
+          "pageLink": "Beste Reisezeit für Disneyland Paris & Parc Astérix {year}"
         },
         "reasons": {
           "school_break": "Schulferien in Paris"

@@ -4616,7 +4616,7 @@
       "hub": {
         "title": "Orlando drukte-kalender",
         "monthTitle": "Orlando drukte-kalender {month}",
-        "metaTitle": "Orlando drukte-kalender {years} & reisplanner",
+        "metaTitle": "Orlando drukte-kalender {years}: Disney World en Universal",
         "metaTitleMonth": "Orlando in {month}: drukte bij Disney en Universal",
         "metaTitleMonthShort": "Orlando drukte-kalender {month}",
         "metaDescription": "Welk park in Orlando op welke dag, met Epic Universe. Het rustigst in de komende 30 dagen: {verdict}.",
@@ -4645,9 +4645,7 @@
         "when": {
           "kicker": "Disney World en Universal",
           "title": "Beste reistijd voor Orlando in {year}",
-          "titleNoYear": "Beste reistijd voor Orlando",
-          "pageLink": "Beste reistijd voor Orlando in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Orlando"
+          "pageLink": "Beste reistijd voor Orlando in {year}"
         },
         "faq": {
           "title": "Vragen over de drukte in Orlando",
@@ -5016,9 +5014,7 @@
         "when": {
           "kicker": "Disneyland en Universal",
           "title": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
-          "titleNoYear": "Beste reistijd voor Disneyland en Universal Hollywood",
-          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
-          "pageLinkNoYear": "Beste reistijd voor Disneyland en Universal Hollywood"
+          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}"
         },
         "reasons": {
           "school_break": "in de schoolvakantie in Los Angeles"
@@ -5305,9 +5301,7 @@
         "when": {
           "kicker": "Tokyo Disney en USJ",
           "title": "Beste reistijd voor Tokyo Disney en USJ in {year}",
-          "titleNoYear": "Beste reistijd voor Tokyo Disney en USJ",
-          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Tokyo Disney en USJ"
+          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}"
         },
         "reasons": {
           "school_break": "in de Japanse schoolvakantie"
@@ -5635,9 +5629,7 @@
         "when": {
           "kicker": "Reizen met alle drie de parken",
           "title": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
-          "titleNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix",
-          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix"
+          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}"
         },
         "reasons": {
           "school_break": "schoolvakantie Parijs"

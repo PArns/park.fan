@@ -4616,7 +4616,7 @@
       "hub": {
         "title": "Calendrier d’affluence Orlando",
         "monthTitle": "Calendrier d’affluence Orlando {month}",
-        "metaTitle": "Calendrier d’affluence Orlando {years} et planificateur",
+        "metaTitle": "Calendrier d’affluence : Disney World et Universal {years}",
         "metaTitleMonth": "Affluence à Orlando en {month} : Disney et Universal",
         "metaTitleMonthShort": "Calendrier d’affluence Orlando {month}",
         "metaDescription": "Quel parc d’Orlando quel jour, Epic Universe compris. Le plus calme sur 30 jours : {verdict}.",
@@ -4645,9 +4645,7 @@
         "when": {
           "kicker": "Disney World et Universal",
           "title": "Meilleure période pour aller à Orlando en {year}",
-          "titleNoYear": "Meilleure période pour aller à Orlando",
-          "pageLink": "Meilleure période pour aller à Orlando en {year}",
-          "pageLinkNoYear": "Meilleure période pour aller à Orlando"
+          "pageLink": "Meilleure période pour aller à Orlando en {year}"
         },
         "faq": {
           "title": "Questions sur l’affluence à Orlando",
@@ -5016,9 +5014,7 @@
         "when": {
           "kicker": "Disneyland et Universal",
           "title": "Quand aller à Disneyland et Universal Hollywood en {year}",
-          "titleNoYear": "Quand aller à Disneyland et Universal Hollywood",
-          "pageLink": "Quand aller à Disneyland et Universal Hollywood en {year}",
-          "pageLinkNoYear": "Quand aller à Disneyland et Universal Hollywood"
+          "pageLink": "Quand aller à Disneyland et Universal Hollywood en {year}"
         },
         "reasons": {
           "school_break": "pendant les vacances scolaires de Los Angeles"
@@ -5305,9 +5301,7 @@
         "when": {
           "kicker": "Tokyo Disney et USJ",
           "title": "Quand aller à Tokyo Disney et Universal Japan en {year}",
-          "titleNoYear": "Quand aller à Tokyo Disney et Universal Japan",
-          "pageLink": "Quand aller à Tokyo Disney et Universal Japan en {year}",
-          "pageLinkNoYear": "Quand aller à Tokyo Disney et Universal Japan"
+          "pageLink": "Quand aller à Tokyo Disney et Universal Japan en {year}"
         },
         "reasons": {
           "school_break": "pendant les vacances scolaires japonaises"
@@ -5635,9 +5629,7 @@
         "when": {
           "kicker": "Séjours avec les trois parcs",
           "title": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
-          "titleNoYear": "Quand aller à Disneyland Paris et au Parc Astérix",
-          "pageLink": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
-          "pageLinkNoYear": "Quand aller à Disneyland Paris et au Parc Astérix"
+          "pageLink": "Quand aller à Disneyland Paris et au Parc Astérix en {year}"
         },
         "reasons": {
           "school_break": "vacances scolaires zone C"
