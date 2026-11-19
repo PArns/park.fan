@@ -88,24 +88,30 @@ WebSite JSON-LD's name against the homepage's title.
 
 ### The German park title says „Auslastung heute“, not the city
 
-„phantasialand wartezeiten“ had 11,971 impressions at position 6.9 and 0.2 % of clicks in the four
-weeks to 17 November 2026, under „Phantasialand Wartezeiten LIVE – Brühl“: the city spent eight
-characters on a word nobody searched with it. The German park title is now „{park}: Wartezeiten
-LIVE & Auslastung heute“ (`seo.parks.titleTemplate`, the same for `titleTemplateNoCity`), since
-„<park> auslastung“ is the park page's second query (Phantasialand 664 impressions). The park page
-links its calendar under the intro with „<park>: Andrangskalender & Auslastung der nächsten Tage“
-(`ParkCalendarLink`), and the calendar links back with „<park>: Wartezeiten live“
-(`ParkLiveLink`): Google answers „auslastung“ with the live page, and the link names the page for
-the days after today. The other languages keep their titles; nothing in their data asked for it.
+„<park> auslastung“ reaches the park page about 1,100 times in four weeks (to 17 November 2026,
+Phantasialand: „phantasialand auslastung“ 651, „auslastung phantasialand“ 347, „… heute“ 127) and
+its title did not say the word, so the German park title is now „{park}: Wartezeiten LIVE &
+Auslastung heute“ (`seo.parks.titleTemplate`, the same for `titleTemplateNoCity`) instead of
+„… – Brühl“. That is the change the data backs. It is not shown to lift „<park> wartezeiten“: that
+query sits at 0.2–0.4 % of clicks at position 6–7 for Phantasialand (11,801 impressions) and for
+Heide Park alike, while Hansa-Park, with its town in the title too, gets 27 % at 3.5, so the
+position and the results page around it (the park's own site and app, Google's busy times) weigh
+more than the title. The park page links its calendar under the intro with „<park>:
+Andrangskalender & Auslastung der nächsten Tage“ (`ParkCalendarLink`), and the calendar links back
+with „<park>: Wartezeiten live“ (`ParkLiveLink`): Google answers „auslastung“ with the live page,
+and the link names the page for the days after today. The other languages keep their titles.
 
 ### A park calendar's hub names the years ahead, a month page its month
 
 The calendar without a month (and the current month's URL, canonical to it) is titled for the
 months ahead: „Thorpe Park Crowd Calendar 2026–2027: Best Days to Visit“, „Europa-Park:
 Andrangskalender & Auslastung 2026–2027“ (`parks.calendarPage.yearTitle`, `…Short`, `…Bare`), and
-its H1 says the same (`h1SuffixYears`). Before, it named the current month, so in November 2026
-Thorpe Park, in its winter break, stood at position 3.9 for „thorpe park crowd calendar“ with 1.4 %
-of clicks, and Europa-Park at 5.0 for „andrangskalender europa park“ with 0.8 %. A month page keeps
+its H1 says the same (`h1SuffixYears`). The calendars with the fewest clicks for their main query
+at a good position were Thorpe Park (3.9, 1.4 %) and Europa-Park („andrangskalender europa park“,
+4.9, 0.8 %), but the data does not show the month as the cause: Thorpe Park's page was as low in
+October (0.6–1.0 % a week, its title naming an open month), and Europa-Park's other queries get
+6–21 % at similar positions with the same title. No query to these pages named a month, so the hub
+loses nothing it ranked for; the years are a test of what the title promises. A month page keeps
 its month, since „… december 2026“ is searched by its name. Park titles never carry the resort's
 or the city's name, so a park calendar and its region's hub (`/fr/paris`) stay two answers.
 
