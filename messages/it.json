@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "Il giorno più tranquillo di ogni settimana per tutti i {count} parchi {inRegion}, secondo la previsione dell’attesa di picco",
-      "question": "In che giorno c’è meno folla a {resort}?"
+      "question": "In che giorno c’è meno folla a {resort}?",
+      "calendarResort": "Calendario dell’affluenza {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park}: tempi di attesa in diretta",
+    "calendarLink": "{park}: calendario dell’affluenza dei prossimi giorni",
     "liveFreshness": {
       "asOf": "Aggiornato",
       "outdated": "Non aggiornato",

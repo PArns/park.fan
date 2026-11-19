@@ -185,7 +185,9 @@ export async function TripPlannerTile({
                 ),
               })}
             >
-              {words.calendar}
+              {/* A park's resort names the hub link, so its pages hand the hub the resort's own
+                  query („Universal Orlando crowd calendar“), not only the region's. */}
+              {resort ? tTile('calendarResort', { resort }) : words.calendar}
               <ArrowRight aria-hidden="true" />
             </Link>
             <Link

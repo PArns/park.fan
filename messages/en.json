@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "The quietest day of each week for all {count} parks {inRegion}, from the peak-wait forecast",
-      "question": "Which day is quietest at {resort}?"
+      "question": "Which day is quietest at {resort}?",
+      "calendarResort": "{resort} Crowd Calendar"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park}: live wait times",
+    "calendarLink": "{park} crowd calendar: the quietest days ahead",
     "liveFreshness": {
       "asOf": "As of",
       "outdated": "Not up to date",

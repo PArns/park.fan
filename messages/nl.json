@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "De rustigste dag van elke week voor alle {count} parken {inRegion}, volgens de prognose van de piekwachttijd",
-      "question": "Op welke dag is het in {resort} het rustigst?"
+      "question": "Op welke dag is het in {resort} het rustigst?",
+      "calendarResort": "Druktekalender {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park}: live wachttijden",
+    "calendarLink": "{park}: druktekalender voor de komende dagen",
     "liveFreshness": {
       "asOf": "Bijgewerkt",
       "outdated": "Niet actueel",

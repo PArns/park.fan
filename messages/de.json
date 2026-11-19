@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "Der ruhigste Tag jeder Woche für alle {count} Parks {inRegion}, nach der Prognose der Spitzenwartezeit",
-      "question": "Wann ist es in {resort} am ruhigsten?"
+      "question": "Wann ist es in {resort} am ruhigsten?",
+      "calendarResort": "Andrang-Kalender {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park}: Wartezeiten live",
+    "calendarLink": "{park}: Andrangskalender & Auslastung der nächsten Tage",
     "liveFreshness": {
       "asOf": "Stand",
       "outdated": "Nicht aktuell",
@@ -2036,8 +2038,8 @@
       "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender {forPark} in {city}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} Wartezeiten LIVE – {city}",
-      "titleTemplateNoCity": "{park} – Wartezeiten LIVE & beste Tage",
+      "titleTemplate": "{park}: Wartezeiten LIVE & Auslastung heute",
+      "titleTemplateNoCity": "{park}: Wartezeiten LIVE & Auslastung heute",
       "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender {forPark}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "metaDescriptionFacts": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu Crowd-Kalender, Prognose & Öffnungszeiten.",
       "metaDescriptionFactsShort": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu der Crowd-Kalender.",

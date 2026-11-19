@@ -518,6 +518,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`park-live-link.tsx`](../../components/parks/park-live-link.tsx)
 
 - `ParkLiveLink` _component_: The link from a park's sub-page (statistics, crowd calendar) to the park page, worded "&lt;park&gt;: Wartezeiten live".
+- `ParkCalendarLink` _component_: The park page's link to its crowd calendar, worded "&lt;park&gt;: Andrangskalender & Auslastung der nächsten Tage" (`parks.calendarLink`): Google showed the park page for "&lt;park&gt; auslastung", which it answers for today, and the calendar for the …
 
 ### [`park-location-line.tsx`](../../components/parks/park-location-line.tsx)
 

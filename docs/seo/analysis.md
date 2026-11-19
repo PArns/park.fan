@@ -86,6 +86,18 @@ planner followed with PAR-1402. The brand stays where it is the subject: the hom
 park.fan works“, the changelog, the blog's index and the legal pages, because Google checks the
 WebSite JSON-LD's name against the homepage's title.
 
+### The German park title says „Auslastung heute“, not the city
+
+„phantasialand wartezeiten“ had 11,971 impressions at position 6.9 and 0.2 % of clicks in the four
+weeks to 17 November 2026, under „Phantasialand Wartezeiten LIVE – Brühl“: the city spent eight
+characters on a word nobody searched with it. The German park title is now „{park}: Wartezeiten
+LIVE & Auslastung heute“ (`seo.parks.titleTemplate`, the same for `titleTemplateNoCity`), since
+„<park> auslastung“ is the park page's second query (Phantasialand 664 impressions). The park page
+links its calendar under the intro with „<park>: Andrangskalender & Auslastung der nächsten Tage“
+(`ParkCalendarLink`), and the calendar links back with „<park>: Wartezeiten live“
+(`ParkLiveLink`): Google answers „auslastung“ with the live page, and the link names the page for
+the days after today. The other languages keep their titles; nothing in their data asked for it.
+
 ### A park calendar's hub names the years ahead, a month page its month
 
 The calendar without a month (and the current month's URL, canonical to it) is titled for the

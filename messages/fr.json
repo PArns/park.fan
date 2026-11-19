@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "Le jour le plus calme de chaque semaine pour les {count} parcs {inRegion}, d’après la prévision de l’attente de pointe",
-      "question": "Quel jour y a-t-il le moins de monde à {resort} ?"
+      "question": "Quel jour y a-t-il le moins de monde à {resort} ?",
+      "calendarResort": "Calendrier d’affluence {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park} : temps d’attente en direct",
+    "calendarLink": "{park} : calendrier d’affluence des prochains jours",
     "liveFreshness": {
       "asOf": "Mis à jour",
       "outdated": "Pas à jour",

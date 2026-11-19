@@ -45,6 +45,8 @@ import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { ParkCalendarLink } from '@/components/parks/park-live-link';
+import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
@@ -584,7 +586,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             note={
               headerNews ? <ParkNewsBand locale={locale as Locale} news={headerNews} /> : undefined
             }
-          />
+          >
+            <ParkCalendarLink
+              href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+              park={parkName}
+              locale={locale as Locale}
+            />
+          </ParkTitleHeader>
         }
       >
         {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks
