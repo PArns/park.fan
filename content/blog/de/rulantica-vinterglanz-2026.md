@@ -2,7 +2,7 @@
 title: 'Rulantica bekommt mit Vinterglanz erstmals eine Winterzeit'
 translationKey: rulantica-vinterglanz-2026
 date: '2026-11-19'
-time: '18:00'
+time: '18:27'
 author: patrick
 mode: published
 featured: false
@@ -54,23 +54,24 @@ Wer schon immer in Badehose unter einem Weihnachtsbaum stehen wollte, findet ein
 
 Die beste Sicht hast du laut Park aus dem Wellenbecken, für eine Weihnachtsgeschichte ein eher seltener Platz im Publikum. Über die rote Absperrung im Becken darfst du dabei nicht hinaus. Es blitzt stark, es knallt laut, und es gibt Nebel und Wasser, für lichtempfindliche oder schreckhafte Kinder also eher nichts.
 
-Für die Mitternachtsparty kündigt Rulantica die „letzte Abendshow“ an, die Show könnte also mehrmals am Abend laufen. Die Uhrzeiten hat Rulantica noch nicht veröffentlicht, auch nicht für das Programm am Tag. Erst damit lässt sich sagen, ob das Moonlight-Ticket ab 19 Uhr für die Show reicht.
+Für die Mitternachtsparty kündigt Rulantica die „letzte Abendshow“ an, die Show könnte also mehrmals am Abend laufen. Die Uhrzeiten hat Rulantica noch nicht veröffentlicht, auch nicht für das Programm am Tag. Bis die Zeiten da sind, ist das Abendticket ab 17 Uhr der sicherere Weg zur Show.
 
 ## Programm über den Tag
 
-Das meiste findet am Skip Strand statt. Im Vinter-Kalender öffnen Kinder mit Snorri und der nordischen Winterfee jeden Tag ein Türchen. Dazu kommen fünf kurze Programmpunkte von je einer Viertelstunde:
+Das meiste findet am Skip Strand statt. Im Vinter-Kalender öffnen Kinder mit Snorri und der nordischen Winterfee jeden Tag ein Türchen. Je eine Viertelstunde dauern:
 
 - Bubbas Christmas Presents
 - Snorri in a Christmas Bubble, eine Seifenblasenshow
 - „Die Wikinger & das Geheimnis der Weihnacht“
 - die Kinderdisco Jingle Beats
 - der Vinter-Circus, bei dem die Talent Academy Artistik zum Mitmachen zeigt
+- die Schatzsuche „Die Wikinger & die verzauberten Sterne“, von Lumåfals einmal um den Skip Strand
 
-Kinder von 4 bis 11 können außerdem das Snorri-Rutschabzeichen machen. Bei der Schatzsuche „Die Wikinger & die verzauberten Sterne“ ziehen Kinder von Lumåfals aus einmal rund um den Skip Strand. Im Bereich Frigg Tempel, beim Wasserkarussell Tønnevirvel, basteln Kinder in Snorris Sterne-Werkstatt eine Stunde lang rund um den Heimatstern. Am beheizten Außenbecken Frigg Tempel laufen bei Rulantica Vibes von 17 bis 22 Uhr Musik und Cocktails, sonntags von 13 bis 18 Uhr.
+Kinder von 4 bis 11 können außerdem das Snorri-Rutschabzeichen machen. In Snorris Sterne-Werkstatt beim Tønnevirvel im Bereich Frigg Tempel wird eine Stunde lang rund um den Heimatstern gebastelt. Am beheizten Außenbecken Frigg Tempel laufen bei Rulantica Vibes von 17 bis 22 Uhr Musik und Cocktails, sonntags von 13 bis 18 Uhr.
 
 ## Vikingløp und Tønnevirvel
 
-[Vikingløp](ref:rulantica/vikinglop) hat acht Röhren im 30 Meter hohen Turm Nordiskturn, der Park nennt sie die größte Speed-Rutsche Europas. Seit 2023 steht sie im Park, und am 5. Dezember läuft auf ihr die Rutsch-Challenge der Mitternachtsparty. Rutschen darfst du ab 10 Jahren und 110 Zentimetern. Das Wasserkarussell [Tønnevirvel](ref:rulantica/tonnevirvel) steht in der Halle, fährt also auch im Dezember. Neun Boote mit bis zu sechs Plätzen drehen drei Minuten lang ihre Runden. Mitfahren darfst du ab drei Jahren und 90 Zentimetern, unter 120 Zentimetern nur mit einem Erwachsenen. Für die übrigen Rutschen findest du die Mindestgrößen in unserem [Rulantica-Guide](/blog/rulantica-wartezeiten-tipps).
+[Vikingløp](ref:rulantica/vikinglop) hat acht Röhren im 30 Meter hohen Turm Nordiskturn, der Park nennt sie die größte Speed-Rutsche Europas. Vikingløp kam 2023 dazu. Rutschen darfst du ab 10 Jahren und 110 Zentimetern. Das Wasserkarussell [Tønnevirvel](ref:rulantica/tonnevirvel) steht in der Halle, fährt also auch im Dezember. Neun Boote mit bis zu sechs Plätzen drehen drei Minuten lang ihre Runden. Mitfahren darfst du ab drei Jahren und 90 Zentimetern, unter 120 Zentimetern nur mit einem Erwachsenen. Für die übrigen Rutschen findest du die Mindestgrößen in unserem [Rulantica-Guide](/blog/rulantica-wartezeiten-tipps).
 
 ```ride-waits-widget rides=rulantica/vikinglop|Vikingløp;rulantica/tonnevirvel|Tønnevirvel columns=peak,days
 
@@ -91,13 +92,13 @@ Für einen bestimmten Tag findest du den Preis nur im Kalender des Ticketshops.
 
 Jedes Ticket gilt für ein Datum. Der Park rät zur Online-Buchung, an der Tageskasse gibt es Karten nur bei freier Kapazität und mit 6 € Aufpreis. Ein Schließfach kostet 1 € am Tag, und die Winterjacke kommt mit hinein, denn drinnen hat die Luft 30 bis 34 Grad, das Wasser 27 bis 32.
 
-Für einen [Tag im Winterzauber nebenan](/blog/europa-park-wartezeiten-tipps) und den Abend in Rulantica gibt es das Kombiticket Ride & Slide. Es gilt montags bis freitags und kostet vom 30. November bis zum 22. Dezember ab 75 € pro Person.
+Für einen [Tag im Winterzauber nebenan](/blog/europa-park-wartezeiten-tipps) und den Abend in Rulantica gibt es das Kombiticket Ride & Slide. Es gilt montags bis freitags und kostet vom 30. November bis zum 22. Dezember ab 75 € pro Person. Der Winterzauber läuft vom 28. November bis 9. Januar (Hotelgäste bis 10. Januar), täglich ab 11 bis mindestens 19 Uhr, und hat an Heiligabend und am ersten Weihnachtstag ebenfalls zu.
 
 ## Öffnungszeiten, Geburtstag und Mitternachtsparty
 
 Rulantica hat jeden Tag von 9:30 bis 22 Uhr offen, Hotelgäste und Gäste mit Abenteuerticket kommen ab 9 Uhr rein. An Heiligabend und am ersten Weihnachtstag bleibt die Wasserwelt zu, an Silvester schließt sie um 19 Uhr.
 
-Der erste Tag von Vinterglanz ist zugleich der siebte Geburtstag von Rulantica, das 2019 eröffnet hat. Von 10 bis 16 Uhr gibt es jede Stunde eine kleine Snorri-Party in Lumåfals an der Guest Relation, um 16:30 Uhr eine Geburtstagsdisco mit Snorri am Skip Strand. Airbrush-Tattoos gibt es von 10 bis 18 Uhr, und den ganzen Tag steht ein Fotopunkt mit dem Heimatstern bereit. Unter allen, die das Foto mit @rulantica und #Vinterglanz teilen, verlost der Park zwei Eintrittskarten und einen Plüsch-Snorri.
+Der erste Tag von Vinterglanz ist zugleich der siebte Geburtstag von Rulantica, das 2019 eröffnet hat. Von 10 bis 16 Uhr gibt es jede Stunde eine kleine Snorri-Party in Lumåfals an der Guest Relation, um 16:30 Uhr eine Geburtstagsdisco mit Snorri am Skip Strand. Airbrush-Tattoos gibt es von 10 bis 18 Uhr. Wer sich am Fotopunkt vor den Heimatstern stellt und das Bild mit @rulantica und #Vinterglanz teilt, kann zwei Eintrittskarten und einen Plüsch-Snorri gewinnen.
 
 Am Samstag, 5. Dezember, bleibt Rulantica zur Mitternachtsparty bis 0 Uhr offen. Die Show eröffnet den Abend, danach legt ein DJ auf, und auf Vikingløp läuft eine Late-Night-Rutsch-Challenge mit Siegerehrung. Wer nach der Challenge lieber liegt als rutscht, bekommt in Hyggedal Aufgüsse, Peelings und Gesichtsmasken. Die Party ist im Eintritt enthalten. Ob Abend- und Moonlight-Ticket an diesem Tag bis Mitternacht gelten, hat der Park noch nicht bekannt gegeben.
 
@@ -105,7 +106,7 @@ Am Samstag, 5. Dezember, bleibt Rulantica zur Mitternachtsparty bis 0 Uhr offen.
 
 Draußen schwimmen kannst du im Winter im beheizten Außenbecken Svømmepøl, das 2025 dazukam, im Frigg Tempel und im Vildstrøm. Svømmepøl ist im Winter teilweise überdacht, die Svømme-Bar darin ganz. Glühwein bekommst du auch im Becken, also warm von innen und von außen. Svalgurok mit zehn Rutschen, Snorri Strand, Dynstrønd und der Food Court Strand Kök öffnen erst am 1. Mai 2027 wieder.
 
-Neu auf der Karte sind frische Pasta, Bowl-Salate, eine Poutine mit Champignons und ein paar heiße Getränke.
+Wer nach dem Außenbecken Hunger hat, findet neu auf der Karte frische Pasta, Bowl-Salate, eine Poutine mit Champignons und heiße Getränke.
 
 ## Anreise
 
@@ -117,13 +118,17 @@ Rulantica liegt am Roland-Mack-Ring 1 in Rust, direkt gegenüber dem Hotel Krøn
 
 ```
 
-Von Januar bis März verkauft Rulantica in einzelnen Wochen ein Nebensaison-Special, zum Beispiel das Tagesticket für Erwachsene für 41 €. Es gilt vom 11. bis 15., vom 18. bis 22. und vom 25. bis 29. Januar, vom 1. bis 4. Februar und vom 1. bis 5., 8. bis 12. und 15. bis 18. März 2027.
+Von Januar bis März verkauft Rulantica in einzelnen Wochen ein Nebensaison-Special, zum Beispiel das Tagesticket für Erwachsene für 41 €. Es gilt 2027 in diesen Wochen:
+
+- Januar: 11. bis 15., 18. bis 22. und 25. bis 29.
+- Februar: 1. bis 4.
+- März: 1. bis 5., 8. bis 12. und 15. bis 18.
 
 ## Der letzte Winter und was nach Vinterglanz kommt
 
-Im Winter 2025/26 hatte Rulantica dieselben Öffnungszeiten wie jetzt, aber kein Weihnachtsprogramm. Der Europa-Park nebenan hat seit 25 Jahren eine Wintersaison, Rulantica bekommt jetzt zum ersten Mal eine eigene. Der Winterzauber läuft in diesem Jahr vom 28. November bis zum 9. Januar, für Hotelgäste bis zum 10. Januar, täglich ab 11 Uhr bis mindestens 19 Uhr. An Heiligabend und am ersten Weihnachtstag ist auch der Europa-Park zu. Für den nächsten Winter steht Vinterglanz schon im Kalender, vom 27. November 2027 bis zum 9. Januar 2028.
+Im Winter 2025/26 hatte Rulantica dieselben Öffnungszeiten wie jetzt, aber kein Weihnachtsprogramm. Der Europa-Park nebenan hat schon seit 25 Jahren eine Wintersaison. Für den nächsten Winter steht Vinterglanz bereits im Kalender, vom 27. November 2027 bis zum 9. Januar 2028.
 
-Rulantica geht am 11. Januar direkt ins Nordlyfest über, das bis zum 19. März läuft und im Eintritt enthalten ist. Dazu gehören Lichtinstallationen, ein Leuchtfeuer am Frigg Tempel und eine Abendshow am Surf Fjørd mit Luftakrobatik über dem Wasser. Der Europa-Park öffnet nach dem Winterzauber erst wieder mit den [Pre-Opening Weeks ab dem 7. März 2027](/news/europa-park-pre-opening-weeks-2027), die Saison beginnt am 20. März. Welche Parks sonst im Winter offen haben, steht im [Winter-Guide 2026](/blog/winter-freizeitparks-2026).
+Rulantica geht am 11. Januar direkt ins Nordlyfest über, das bis zum 19. März läuft und im Eintritt enthalten ist. Dazu gehören Lichtinstallationen, ein Leuchtfeuer am Frigg Tempel und eine Abendshow am Surf Fjørd mit Luftakrobatik über dem Wasser. Der Europa-Park öffnet nach dem Winterzauber erst wieder mit den [Pre-Opening Weeks ab dem 7. März 2027](/news/europa-park-pre-opening-weeks-2027), die Saison beginnt am 20. März. Die anderen Parks, die im Winter offen haben, habe ich im [Winter-Guide 2026](/blog/winter-freizeitparks-2026) gesammelt.
 
 [Rulantica](ref:rulantica?full)
 
