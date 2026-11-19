@@ -3858,7 +3858,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Arrivo a {city}",
-      "departureFrom": "Partenza da {city}"
+      "departureFrom": "Partenza da {city}",
+      "share": "Condividi"
     },
     "spare": {
       "day": "giorno libero",
@@ -4121,7 +4122,6 @@
     "keep": {
       "addAll": "Copia nel pianificatore della giornata",
       "ics": "Aggiungi al calendario (.ics)",
-      "copy": "Copia link",
       "copied": "Link copiato",
       "added": "{count, plural, =1 {1 giorno di parco è} other {# giorni di parco sono}} nel pianificatore della giornata, prima {park} il {date}.",
       "openPlanner": "Apri il primo giorno",
@@ -4168,7 +4168,10 @@
       "stripLegend": "Altezza: l’attesa di picco dei tuoi parchi quella settimana. I segni sotto indicano le tue proposte.",
       "sketch": "Giorno per giorno",
       "rankedLower": "classificato più in basso: {reasons}",
-      "stormPeak": "{season}: classificato più in basso per il rischio di tempeste, anche con attese brevi."
+      "stormPeak": "{season}: classificato più in basso per il rischio di tempeste, anche con attese brevi.",
+      "picked": "{rank, select, 1 {I {days} giorni più tranquilli del tuo periodo} other {Proposta {rank} della tua ricerca}}: {range}",
+      "others": "Altre date",
+      "compare": "Confrontale tutte"
     },
     "evening": {
       "plus": "+ serata: {name}",
@@ -4383,7 +4386,8 @@
         "hopping": "{hopper} incluso"
       },
       "later": "Hai già i biglietti?",
-      "enter": "Inseriscili"
+      "enter": "Inseriscili",
+      "line": "Biglietti per {count, plural, =1 {1 giorno al parco} other {# giorni al parco}}"
     },
     "move": {
       "mode": {
@@ -4588,7 +4592,8 @@
       "ask": "Cosa ne pensi di questa idea per il mio piano: {idea}?",
       "applied": "Nel piano: {idea}.",
       "inPlan": "Aggiungi al piano",
-      "otherDay": "Un altro giorno"
+      "otherDay": "Un altro giorno",
+      "dismiss": "Nascondi questa idea"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 giorno di parco caldo} other {# giorni di parco caldi}}",

@@ -3858,7 +3858,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Llegada a {city}",
-      "departureFrom": "Salida desde {city}"
+      "departureFrom": "Salida desde {city}",
+      "share": "Compartir"
     },
     "spare": {
       "day": "día libre",
@@ -4121,7 +4122,6 @@
     "keep": {
       "addAll": "Pasar al planificador del día",
       "ics": "Añadir al calendario (.ics)",
-      "copy": "Copiar enlace",
       "copied": "Enlace copiado",
       "added": "{count, plural, =1 {1 día de parque está} other {# días de parque están}} en el planificador del día, primero {park} el {date}.",
       "openPlanner": "Abrir el primer día",
@@ -4168,7 +4168,10 @@
       "stripLegend": "Altura: la espera punta de tus parques esa semana. Las marcas de debajo muestran tus propuestas.",
       "sketch": "Día a día",
       "rankedLower": "peor clasificado: {reasons}",
-      "stormPeak": "{season}: peor clasificado por el riesgo de tormentas, incluso con esperas cortas."
+      "stormPeak": "{season}: peor clasificado por el riesgo de tormentas, incluso con esperas cortas.",
+      "picked": "{rank, select, 1 {Los {days} días más tranquilos de tu periodo} other {Propuesta {rank} de tu búsqueda}}: {range}",
+      "others": "Otras fechas",
+      "compare": "Compararlas todas"
     },
     "evening": {
       "plus": "+ noche: {name}",
@@ -4383,7 +4386,8 @@
         "hopping": "{hopper} incluido"
       },
       "later": "¿Ya tienes entradas?",
-      "enter": "Añadirlas"
+      "enter": "Añadirlas",
+      "line": "Entradas para {count, plural, =1 {1 día de parque} other {# días de parque}}"
     },
     "move": {
       "mode": {
@@ -4588,7 +4592,8 @@
       "ask": "¿Qué te parece esta idea para mi plan: {idea}?",
       "applied": "En el plan: {idea}.",
       "inPlan": "Añadir al plan",
-      "otherDay": "Otro día"
+      "otherDay": "Otro día",
+      "dismiss": "Ocultar esta idea"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 día de parque caluroso} other {# días de parque calurosos}}",

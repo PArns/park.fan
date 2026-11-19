@@ -110,6 +110,9 @@ import {
 } from '../lib/trip-regions/date-facts.ts';
 import { formatGridHours } from '../lib/planner/park-time.ts';
 import {
+  backToSearch,
+  foundWindows,
+  pickedWindow,
   holidayRegionsFor,
   percentBelowAverage,
   rankedLower,
@@ -3387,6 +3390,42 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
     'without bases only the travel days drop out',
     usableAlternatives(alternatives, 'tokyo-disneyland', days, undefined).map((a) => a.date),
     ['2027-01-16', '2027-01-18', '2027-01-19']
+  );
+}
+
+// ── A search's best window planned at once, the others kept ─────────────────
+{
+  const search = {
+    ...DEFAULT_PLAN_STATE,
+    when: { from: '2027-01-01', to: '2027-03-31' },
+    days: 7,
+    within: 'DE-NW',
+  };
+  const found = foundWindows(search, [
+    { rank: 2, from: '2027-02-06', to: '2027-02-12' },
+    { rank: 1, from: '2027-01-09', to: '2027-01-15' },
+  ]);
+  test(
+    'foundWindows: the windows by rank, the search as the address had it',
+    found && [found.windows.map((w) => w.rank), found.search.within, found.search.days],
+    [[1, 2], 'DE-NW', 7]
+  );
+  test('foundWindows: no windows, nothing to keep', foundWindows(search, []), null);
+  const planned = planWindow(search, found.windows[0]);
+  test('pickedWindow: the plan of rank 1 is rank 1', pickedWindow(found, planned)?.rank, 1);
+  test(
+    'pickedWindow: other dates are no found window',
+    pickedWindow(found, { ...planned, to: '2027-01-16' }),
+    null
+  );
+  const back = backToSearch(
+    { ...planned, locks: [{ target: 'epcot', date: '2027-01-10' }] },
+    found
+  );
+  test(
+    'backToSearch: the search again, without dates or pins',
+    [back.when, back.within, back.from, back.to, back.locks.length],
+    [search.when, 'DE-NW', null, null, 0]
   );
 }
 

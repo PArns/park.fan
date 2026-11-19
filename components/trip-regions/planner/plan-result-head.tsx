@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import { Fragment, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import { PlaneLanding, PlaneTakeoff, ThermometerSun } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -24,9 +24,17 @@ import { MoveIcon, StayMarker } from './plan-stay-band';
  * and on a trip across cities the route strip: the arrival, each stay with its number, city and
  * nights, the mode of each move between them, the departure. The strip is a picture of the line
  * read out before it. Under the figures, the weather band where heat or a storm season touches the
- * trip (`PlanWeatherBand`).
+ * trip (`PlanWeatherBand`). `actions` stand beside the dates, `tickets` right under the figures.
  */
-export function PlanResultHead({ plan }: { plan: TripPlan }) {
+export function PlanResultHead({
+  plan,
+  actions,
+  tickets,
+}: {
+  plan: TripPlan;
+  actions?: ReactNode;
+  tickets?: ReactNode;
+}) {
   const t = useTranslations('tripPlanner');
   const { locale } = usePlanContext();
   const baseName = useBaseName();
@@ -44,14 +52,20 @@ export function PlanResultHead({ plan }: { plan: TripPlan }) {
 
   return (
     <div className="flex flex-col gap-2" data-plan-head="">
-      <h3 className="text-xl font-semibold tracking-tight lg:text-2xl">
-        {formatParkDayRange(locale, plan.meta.from, plan.meta.to, {
-          weekday: 'short',
-          day: 'numeric',
-          month: 'short',
-        })}
-      </h3>
-      <p className="text-muted-foreground text-sm">{figures.join(' · ')}</p>
+      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-3">
+        <div className="flex min-w-0 flex-col gap-2">
+          <h3 className="text-xl font-semibold tracking-tight lg:text-2xl">
+            {formatParkDayRange(locale, plan.meta.from, plan.meta.to, {
+              weekday: 'short',
+              day: 'numeric',
+              month: 'short',
+            })}
+          </h3>
+          <p className="text-muted-foreground text-sm">{figures.join(' · ')}</p>
+        </div>
+        {actions && <div className="flex shrink-0 gap-2">{actions}</div>}
+      </div>
+      {tickets}
       <PlanWeatherBand plan={plan} />
       {stays.length > 1 && (
         <div className="border-border/60 bg-card flex items-center gap-2 rounded-full border px-3 py-2">

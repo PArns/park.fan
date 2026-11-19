@@ -231,16 +231,18 @@ export async function checkOrlandoTickets({ browser, base, check }) {
     await page.keyboard.press('Escape');
     await page.locator(WIZARD).waitFor({ state: 'detached' });
 
-    // A day's own edits: the pin is a pressed toggle, the status band says it, Undo takes it back.
+    // A day's own edits wait in its „More“: the pin is a pressed toggle there, the status band
+    // says it, Undo takes it back.
     const card = page.locator('[data-plan-day-card="park"]').first();
     await card.waitFor({ timeout: PLAN_TIMEOUT });
-    const pin = card.locator('[data-plan-day-actions] button[aria-pressed]');
-    await pin.click();
+    const dayMore = () =>
+      page.locator('[data-plan-day-card="park"]').first().locator('[data-plan-day-actions] button');
+    await dayMore().click();
+    await page.getByRole('dialog').getByRole('button', { name: /^Pin/ }).click();
     await page.locator('[data-plan-edit-status="pin"]').waitFor({ timeout: 10_000 });
     check(
-      'Orlando · „Pin“ an der Tageskarte hält den Tag fest und sagt es im Statusband',
-      (await pin.getAttribute('aria-pressed')) === 'true' &&
-        (query(page).get('lock') ?? '').includes('@') &&
+      'Orlando · „Pin“ im „More“ der Tageskarte hält den Tag fest und sagt es im Statusband',
+      (query(page).get('lock') ?? '').includes('@') &&
         (await events(page, 'trip_day_pinned')).at(-1)?.pinned === true,
       await page.locator('[data-plan-edit-status]').innerText()
     );
@@ -254,10 +256,9 @@ export async function checkOrlandoTickets({ browser, base, check }) {
       undo.length === 1 && undo[0].what === 'pin',
       JSON.stringify(undo)
     );
+    await dayMore().click();
     await page
-      .locator('[data-plan-day-card="park"]')
-      .first()
-      .locator('[data-plan-day-actions]')
+      .getByRole('dialog')
       .getByRole('button', { name: /^Swap / })
       .click();
     const swap = page.locator('[data-plan-swap-mode]');

@@ -3858,7 +3858,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Aankomst in {city}",
-      "departureFrom": "Vertrek uit {city}"
+      "departureFrom": "Vertrek uit {city}",
+      "share": "Delen"
     },
     "spare": {
       "day": "vrije dag",
@@ -4121,7 +4122,6 @@
     "keep": {
       "addAll": "Naar de dagplanner",
       "ics": "In de agenda (.ics)",
-      "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
       "added": "{count, plural, =1 {1 parkdag staat} other {# parkdagen staan}} in de dagplanner, eerst {park} op {date}.",
       "openPlanner": "Eerste dag openen",
@@ -4168,7 +4168,10 @@
       "stripLegend": "Hoogte: de piekwachttijd van je parken die week. De streepjes eronder tonen je voorstellen.",
       "sketch": "Dag voor dag",
       "rankedLower": "lager gerangschikt: {reasons}",
-      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden."
+      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden.",
+      "picked": "{rank, select, 1 {De rustigste {days} dagen in je periode} other {Voorstel {rank} van je zoekopdracht}}: {range}",
+      "others": "Andere periodes",
+      "compare": "Alles vergelijken"
     },
     "evening": {
       "plus": "+ avond: {name}",
@@ -4383,7 +4386,8 @@
         "hopping": "{hopper} inbegrepen"
       },
       "later": "Al tickets?",
-      "enter": "Invullen"
+      "enter": "Invullen",
+      "line": "Tickets voor {count, plural, =1 {1 parkdag} other {# parkdagen}}"
     },
     "move": {
       "mode": {
@@ -4588,7 +4592,8 @@
       "ask": "Wat vind je van dit idee voor mijn plan: {idea}?",
       "applied": "In het plan: {idea}.",
       "inPlan": "In het plan",
-      "otherDay": "Andere dag"
+      "otherDay": "Andere dag",
+      "dismiss": "Idee verbergen"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 hete parkdag} other {# hete parkdagen}}",

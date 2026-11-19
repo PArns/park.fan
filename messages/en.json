@@ -3858,7 +3858,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Arrival in {city}",
-      "departureFrom": "Departure from {city}"
+      "departureFrom": "Departure from {city}",
+      "share": "Share"
     },
     "spare": {
       "day": "free day",
@@ -4121,7 +4122,6 @@
     "keep": {
       "addAll": "Copy to the day planner",
       "ics": "Add to calendar (.ics)",
-      "copy": "Copy link",
       "copied": "Link copied",
       "added": "{count, plural, =1 {1 park day is} other {# park days are}} in the day planner, starting with {park} on {date}.",
       "openPlanner": "Open the first day",
@@ -4168,7 +4168,10 @@
       "stripLegend": "Height: your parks’ peak wait that week. The marks underneath show your options.",
       "sketch": "Day by day",
       "rankedLower": "ranked lower: {reasons}",
-      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits."
+      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits.",
+      "picked": "{rank, select, 1 {The quietest {days} days in your period} other {Option {rank} of your search}}: {range}",
+      "others": "Other dates",
+      "compare": "Compare all"
     },
     "evening": {
       "plus": "+ evening: {name}",
@@ -4383,7 +4386,8 @@
         "hopping": "{hopper} included"
       },
       "later": "Already have tickets?",
-      "enter": "Add them"
+      "enter": "Add them",
+      "line": "Tickets for {count, plural, =1 {1 park day} other {# park days}}"
     },
     "move": {
       "mode": {
@@ -4588,7 +4592,8 @@
       "ask": "What do you think of this idea for my plan: {idea}?",
       "applied": "In the plan: {idea}.",
       "inPlan": "Add to the plan",
-      "otherDay": "Another day"
+      "otherDay": "Another day",
+      "dismiss": "Hide this idea"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 hot park day} other {# hot park days}}",

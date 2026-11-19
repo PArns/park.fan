@@ -535,7 +535,8 @@ export interface SiteEventMap {
   trip_tickets_answered: TripEvent<{ answer: 'not_yet' | 'yes' | 'skipped' }>;
   /**
    * The ticket step opened, every time: from "Already have tickets?" (`ask`), the card's "Change"
-   * (`card`), a ticket problem or a day outside a ticket; `first` the first time in this browser.
+   * (`card`), the line under the result's head (`head`), a ticket problem or a day outside a
+   * ticket; `first` the first time in this browser.
    */
   trip_tickets_opened: TripEvent<{ from: TripTicketsFrom; first: boolean }>;
   /**
@@ -612,8 +613,12 @@ export interface SiteEventMap {
     stays?: number;
     windows?: number;
   }>;
-  /** "Plan these dates" on a window the search found, by its rank. */
-  trip_window_planned: TripEvent<{ rank: number }>;
+  /**
+   * A window the search found, planned by its rank: the best one as soon as the search answers
+   * (`auto`), another from the row over that plan (`chip`), or "Plan these dates" on a window's
+   * card or sheet (`card`).
+   */
+  trip_window_planned: TripEvent<{ rank: number; via: 'auto' | 'chip' | 'card' }>;
   /** "How the ticket works" opened on a suggested ticket, by its resort. */
   trip_ticket_details_opened: TripEvent<{ resort: string }>;
   /** "Show the plan with Park Hopper" for one resort, and its way back. */
@@ -655,8 +660,11 @@ export interface SiteEventMap {
   trip_days_saved: TripEvent<{ days: number }>;
   /** The trip as an `.ics` file, with its park days. */
   trip_ics_exported: TripEvent<{ days: number }>;
-  /** "Copy link" of the plan. */
-  trip_link_copied: TripEvent;
+  /**
+   * "Share" in the result's head: the system share sheet on a phone that has one (`share`), the
+   * link copied otherwise (`copy`).
+   */
+  trip_link_copied: TripEvent<{ method: 'share' | 'copy' }>;
   /** An evening venue's own page opened from a day's evening. */
   trip_evening_link_clicked: TripEvent;
   /** A day outside its ticket's window, and the way out the visitor chose. */
@@ -692,9 +700,12 @@ export type TripTileLink = 'plan' | 'calendar';
 /** Where „Reise löschen“ was confirmed, as `trip_deleted` names it. */
 export type TripDeleteFrom = 'head' | 'result';
 
-/** Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already". */
+/**
+ * Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already", `head`
+ * the line under the result's head.
+ */
 export type TripTicketsFrom =
-  'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket' | 'wizard';
+  'ask' | 'card' | 'head' | 'adopt' | 'ticket_problem' | 'outside_ticket' | 'wizard';
 
 /** A screen of the trip planner's assistant, its finale included. */
 export type TripWizardStepName = TripWizardStepKey | 'finale';

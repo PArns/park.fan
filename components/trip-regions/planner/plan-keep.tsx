@@ -2,46 +2,123 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { CalendarArrowDown, CalendarPlus, Check, Link2 } from 'lucide-react';
+import { CalendarArrowDown, CalendarPlus, Check, Share2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Popover, PopoverAnchor, PopoverContent } from '@/components/ui/popover';
 import { plannerStore } from '@/lib/planner/store';
 import { reserveDays, setActive } from '@/lib/planner/actions';
 import { plannerUi } from '@/lib/planner/ui-store';
 import { formatParkDay } from '@/lib/utils/park-day';
-import { planHref, reserveTripDays, type TripPlan } from '@/lib/trip-regions/plan';
+import { canShareNatively, shareNatively } from '@/lib/utils/native-share';
+import {
+  planHref,
+  reserveTripDays,
+  type TripPlan,
+  type TripPlanState,
+} from '@/lib/trip-regions/plan';
 import { primaryReason } from '@/lib/trip-regions/plan-copy';
 import { buildTripIcs, type TripIcsEvent } from '@/lib/trip-regions/plan-ics';
 import { calendarCell, shownDayWait } from '@/lib/trip-regions/plan-week';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
+import { ActionRow } from './plan-day-actions';
 import { dayGuestClose, useDayParks } from './plan-day-bits';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
 import { oneFullStop } from '@/lib/utils/metadata';
 
-/** A keep action's button: as tall as its label needs once that wraps. */
-const KEEP_BUTTON = 'h-auto min-h-9 whitespace-normal text-balance max-sm:h-auto max-sm:min-h-11';
+/** The link to this plan: the page's own address, since the plan lives in the query. */
+function planLink(state: TripPlanState): string {
+  return `${window.location.origin}${planHref(window.location.pathname, state, TRIP_PLANNER_ID)}`;
+}
+
+/** The trip's name, „Reise nach Orlando 14.–22. Feb. 2027“: the calendar's and the share sheet's. */
+function useTripTitle(plan: TripPlan): string {
+  const t = useTranslations('tripPlanner');
+  const tRegion = useTranslations('tripRegion.planner');
+  const { region, locale } = usePlanContext();
+  return regionOrShared(tRegion, t, 'ics.calendarName', {
+    region: region.name,
+    range: `${formatParkDay(locale, plan.meta.from, { day: 'numeric', month: 'short' })}–${formatParkDay(locale, plan.meta.to, { day: 'numeric', month: 'short', year: 'numeric' })}`,
+  });
+}
 
 /**
- * Keeping the plan: every park day into the day planner as a reserved day in one write (the
- * store's `reserveDays`, which Parky's trip action uses too; a day that already holds a plan stays
- * as it is), the trip as an `.ics` file built here in Orlando time, and the link to this plan,
- * which is the page's own address because the plan lives in the query.
+ * „Teilen“ in the result's head: the system share sheet on a phone that has one, the link copied
+ * at a desk, where a share sheet is the operating system's and rarely what a visitor expects. A
+ * clipboard that refuses shows the link to copy by hand.
+ */
+export function PlanShare({ plan }: { plan: TripPlan }) {
+  const t = useTranslations('tripPlanner');
+  const { state } = usePlanContext();
+  const track = useTripEvents();
+  const title = useTripTitle(plan);
+  const [link, setLink] = useState<'idle' | 'copied' | { manual: string }>('idle');
+
+  const share = async () => {
+    const url = planLink(state);
+    const sheet = window.matchMedia('(pointer: coarse)').matches && canShareNatively();
+    track('trip_link_copied', { method: sheet ? 'share' : 'copy' });
+    if (sheet && (await shareNatively({ title, url })) !== 'unavailable') return;
+    try {
+      await navigator.clipboard.writeText(url);
+      setLink('copied');
+      setTimeout(() => setLink('idle'), 2000);
+    } catch {
+      setLink({ manual: url });
+    }
+  };
+
+  const copied = link === 'copied';
+  return (
+    <Popover open={typeof link === 'object'} onOpenChange={(open) => !open && setLink('idle')}>
+      <PopoverAnchor asChild>
+        <Button variant="outline" onClick={() => void share()} data-plan-share="">
+          {copied ? <Check aria-hidden="true" /> : <Share2 aria-hidden="true" />}
+          <span aria-live="polite">{copied ? t('keep.copied') : t('result.share')}</span>
+        </Button>
+      </PopoverAnchor>
+      <PopoverContent align="end" className="w-72">
+        {typeof link === 'object' && (
+          <label className="flex flex-col gap-1 text-xs">
+            {t('keep.manual')}
+            <input
+              type="text"
+              readOnly
+              value={link.manual}
+              onFocus={(e) => e.currentTarget.select()}
+              className="border-border bg-background h-11 rounded-md border px-2 font-mono text-xs"
+            />
+          </label>
+        )}
+      </PopoverContent>
+    </Popover>
+  );
+}
+
+/**
+ * Keeping the plan, as entries of the result's „Mehr“: every park day into the day planner as a
+ * reserved day in one write (the store's `reserveDays`, which Parky's trip action uses too; a day
+ * that already holds a plan stays as it is), and the trip as an `.ics` file built here in the
+ * region's time. List items, for the sheet's list.
  */
 export function PlanKeep({
   plan,
   calendar,
+  onLeave,
 }: {
   plan: TripPlan;
   calendar: TripCalendar | undefined;
+  /** Closes what holds these entries before the day planner opens over the page. */
+  onLeave: () => void;
 }) {
   const t = useTranslations('tripPlanner');
   const tRegion = useTranslations('tripRegion.planner');
   const { region, config, state, locale, parkName } = usePlanContext();
   const track = useTripEvents();
   const parksOf = useDayParks();
+  const calendarName = useTripTitle(plan);
   const [added, setAdded] = useState<{ count: number; park: string; date: string } | null>(null);
-  const [link, setLink] = useState<'idle' | 'copied' | { manual: string }>('idle');
 
   const addAll = () => {
     const days = reserveTripDays(plan, region.parks);
@@ -51,11 +128,8 @@ export function PlanKeep({
     setAdded({ count: days.length, park: days[0].park.slug, date: days[0].date });
   };
 
-  const shareUrl = () =>
-    `${window.location.origin}${planHref(window.location.pathname, state, TRIP_PLANNER_ID)}`;
-
   const download = () => {
-    const url = shareUrl();
+    const url = planLink(state);
     const events: TripIcsEvent[] = plan.days
       .filter((d) => d.kind === 'park' || d.kind === 'hop')
       .map((day) => {
@@ -82,14 +156,7 @@ export function PlanKeep({
         };
       });
     track('trip_ics_exported', { days: events.length });
-    const file = buildTripIcs(events, {
-      now: Date.now(),
-      timeZone: config.timezone,
-      calendarName: regionOrShared(tRegion, t, 'ics.calendarName', {
-        region: region.name,
-        range: `${formatParkDay(locale, plan.meta.from, { day: 'numeric', month: 'short' })}–${formatParkDay(locale, plan.meta.to, { day: 'numeric', month: 'short', year: 'numeric' })}`,
-      }),
-    });
+    const file = buildTripIcs(events, { now: Date.now(), timeZone: config.timezone, calendarName });
     const blob = new Blob([file], { type: 'text/calendar;charset=utf-8' });
     const href = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -101,39 +168,14 @@ export function PlanKeep({
     URL.revokeObjectURL(href);
   };
 
-  const copy = async () => {
-    const url = shareUrl();
-    track('trip_link_copied');
-    try {
-      await navigator.clipboard.writeText(url);
-      setLink('copied');
-      setTimeout(() => setLink('idle'), 2000);
-    } catch {
-      // The clipboard refused: the link is shown so it can be copied by hand.
-      setLink({ manual: url });
-    }
-  };
-
   return (
-    // Laid out by its own width: at a desk it sits in the result's 340 px column, where the three
-    // stack, and a long label (French, Italian) wraps inside its button instead of spilling.
-    <div className="@container flex flex-col gap-2">
-      <div className="grid gap-2 @2xl:grid-cols-3">
-        <Button variant="outline" onClick={addAll} className={KEEP_BUTTON}>
-          <CalendarPlus aria-hidden="true" />
-          {t('keep.addAll')}
-        </Button>
-        <Button variant="outline" onClick={download} className={KEEP_BUTTON}>
-          <CalendarArrowDown aria-hidden="true" />
-          {t('keep.ics')}
-        </Button>
-        <Button variant="outline" onClick={() => void copy()} className={KEEP_BUTTON}>
-          {link === 'copied' ? <Check aria-hidden="true" /> : <Link2 aria-hidden="true" />}
-          <span aria-live="polite">{link === 'copied' ? t('keep.copied') : t('keep.copy')}</span>
-        </Button>
-      </div>
+    <>
+      <ActionRow icon={CalendarPlus} title={t('keep.addAll')} onClick={addAll} />
       {added !== null && (
-        <p className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm" aria-live="polite">
+        <li
+          className="flex flex-wrap items-center gap-x-3 gap-y-1 px-2 pl-13 text-sm transition-opacity duration-200 starting:opacity-0"
+          aria-live="polite"
+        >
           {oneFullStop(
             t('keep.added', {
               count: added.count,
@@ -150,26 +192,16 @@ export function PlanKeep({
             onClick={() => {
               // The day planner opens on the trip's first filed day, not on the last one it showed.
               plannerStore.update((s) => setActive(s, added.park, added.date));
+              onLeave();
               plannerUi.requestOpen(`${region.slug}-trip-first`);
             }}
             className="text-primary-ink min-h-11 font-medium underline-offset-4 hover:underline"
           >
             {t('keep.openPlanner')}
           </button>
-        </p>
+        </li>
       )}
-      {typeof link === 'object' && (
-        <label className="flex flex-col gap-1 text-xs">
-          {t('keep.manual')}
-          <input
-            type="text"
-            readOnly
-            value={link.manual}
-            onFocus={(e) => e.currentTarget.select()}
-            className="border-border bg-background h-11 rounded-md border px-2 font-mono text-xs"
-          />
-        </label>
-      )}
-    </div>
+      <ActionRow icon={CalendarArrowDown} title={t('keep.ics')} onClick={download} />
+    </>
   );
 }

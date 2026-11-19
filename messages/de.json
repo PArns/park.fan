@@ -3858,7 +3858,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Anreise, Ankunft in {city}",
-      "departureFrom": "Abreise ab {city}"
+      "departureFrom": "Abreise ab {city}",
+      "share": "Teilen"
     },
     "spare": {
       "day": "freier Tag",
@@ -4121,7 +4122,6 @@
     "keep": {
       "addAll": "In den Tagesplaner übernehmen",
       "ics": "In den Kalender (.ics)",
-      "copy": "Link kopieren",
       "copied": "Link kopiert",
       "added": "{count, plural, =1 {1 Parktag steht} other {# Parktage stehen}} im Tagesplaner, zuerst {park} am {date}.",
       "openPlanner": "Ersten Tag öffnen",
@@ -4168,7 +4168,10 @@
       "stripLegend": "Höhe: die Spitzenwartezeit deiner Parks in dieser Woche. Die Marken darunter zeigen deine Vorschläge.",
       "sketch": "Tag für Tag",
       "rankedLower": "weiter hinten eingeordnet: {reasons}",
-      "stormPeak": "{season}: wegen der Sturmgefahr weiter hinten eingeordnet, auch bei kurzen Wartezeiten."
+      "stormPeak": "{season}: wegen der Sturmgefahr weiter hinten eingeordnet, auch bei kurzen Wartezeiten.",
+      "picked": "{rank, select, 1 {Die ruhigsten {days} Tage im gewählten Zeitraum} other {Vorschlag {rank} deiner Suche}}: {range}",
+      "others": "Weitere Zeiträume",
+      "compare": "Alle vergleichen"
     },
     "evening": {
       "plus": "+ Abend: {name}",
@@ -4383,7 +4386,8 @@
         "hopping": "{hopper} inklusive"
       },
       "later": "Schon Tickets?",
-      "enter": "Eintragen"
+      "enter": "Eintragen",
+      "line": "Tickets für {count, plural, =1 {1 Parktag} other {# Parktage}}"
     },
     "move": {
       "mode": {
@@ -4588,7 +4592,8 @@
       "ask": "Was hältst du von dieser Idee für meinen Plan: {idea}?",
       "applied": "Im Plan: {idea}.",
       "inPlan": "In den Plan",
-      "otherDay": "Anderen Tag"
+      "otherDay": "Anderen Tag",
+      "dismiss": "Idee ausblenden"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 heißer Parktag} other {# heiße Parktage}}",

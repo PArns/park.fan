@@ -949,7 +949,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_tickets_opened: {
     label: 'Ticket-Schritt geöffnet',
-    when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), „Ja, schon gekauft“ im Assistenten (wizard), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
+    when: 'Jedes Öffnen: „Schon Tickets? Eintragen“ (ask), „Ändern“ an der Ticketkarte (card), die Ticketzeile unter dem Kopf des Plans (head), „Ja, schon gekauft“ im Assistenten (wizard), ein Ticketproblem oder ein Tag außerhalb des Tickets; first beim ersten Mal in diesem Browser.',
   },
   trip_edit_opened: {
     label: 'Änderung geöffnet (bis 2.21)',
@@ -1022,7 +1022,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_window_planned: {
     label: 'Reisezeitraum geplant',
-    when: '„Diese Daten planen“ auf einem gefundenen Zeitraum; mit seinem Rang.',
+    when: 'Ein gefundener Zeitraum geplant, mit seinem Rang: der beste, sobald die Suche antwortet (auto), ein anderer aus der Zeile über diesem Plan (chip) oder „Diese Daten planen“ an einer Karte (card).',
   },
   trip_ticket_details_opened: {
     label: 'Ticket-Regeln geöffnet',
@@ -1094,7 +1094,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Reise als Kalender',
     when: 'Die .ics-Datei der Reise; mit der Zahl der Parktage.',
   },
-  trip_link_copied: { label: 'Reise-Link kopiert', when: '„Link kopieren“ unter dem Plan.' },
+  trip_link_copied: {
+    label: 'Reise geteilt',
+    when: '„Teilen“ im Kopf des Plans: das Teilen-Menü des Handys (share) oder der Link in die Zwischenablage (copy).',
+  },
   trip_evening_link_clicked: {
     label: 'Abend-Ort geöffnet',
     when: 'Die offizielle Seite eines Abend-Orts aus dem Blatt eines Reisetags.',

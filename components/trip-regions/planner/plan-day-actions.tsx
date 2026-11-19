@@ -28,15 +28,8 @@ import { usePlanContext } from './plan-context';
 import { PLAN_FOCUS } from './plan-controls';
 import { PlanSheetContent } from './plan-sheet';
 
-/** What a park day's controls do; the result makes each one an edit with its undo. */
-export interface PlanDayEdits {
-  onPin: (day: PlanDay) => void;
-  onSwap: (day: PlanDay) => void;
-  onMore: (day: PlanDay) => void;
-}
-
 const ACTION =
-  'text-muted-foreground hover:text-foreground hover:bg-accent/50 flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-2 text-xs font-medium transition-colors lg:min-h-9 aria-pressed:text-primary-ink';
+  'text-muted-foreground hover:text-foreground hover:bg-accent/50 flex min-h-11 items-center justify-center gap-1.5 rounded-lg px-3 text-xs font-medium transition-colors lg:min-h-9';
 
 /** A park day's name and date as its controls' labels say them: „Tokyo DisneySea am Di., 19. Jan.“ */
 function useDayWords(day: PlanDay) {
@@ -48,41 +41,29 @@ function useDayWords(day: PlanDay) {
 }
 
 /**
- * The row under a park day's card: Festhalten (a toggle, pressed while the day is pinned), Tauschen
- * (the swap mode) and Mehr (the day's other edits in a sheet). Each names the park and the date.
- * Nothing for a day without one park to pin, a hop day.
+ * „Mehr“ under a park day's card, named with the park and the date: the day's edits (pin, swap,
+ * a free day, take the park out) wait in its sheet, since few visitors use them. Nothing for a day
+ * without one park, a hop day.
  */
-export function PlanDayActions({ day, onPin, onSwap, onMore }: { day: PlanDay } & PlanDayEdits) {
+export function PlanDayActions({
+  day,
+  open,
+  onMore,
+}: {
+  day: PlanDay;
+  /** Whether this day's sheet is open. */
+  open: boolean;
+  onMore: (day: PlanDay) => void;
+}) {
   const t = useTranslations('tripPlanner.edit');
-  const { state } = usePlanContext();
   const words = useDayWords(day);
   if (day.kind !== 'park' || !day.parks[0]) return null;
-  const pinned = lockOn(state, day.date) !== null;
-  const PinIcon = pinned ? Lock : LockOpen;
   return (
-    <div className="grid grid-cols-3 gap-1" data-plan-day-actions="">
-      <button
-        type="button"
-        aria-pressed={pinned}
-        aria-label={t('pinLabel', words)}
-        onClick={() => onPin(day)}
-        className={cn(ACTION, PLAN_FOCUS)}
-      >
-        <PinIcon className="size-3.5" aria-hidden="true" />
-        {t('pin')}
-      </button>
-      <button
-        type="button"
-        aria-label={t('swapLabel', words)}
-        onClick={() => onSwap(day)}
-        className={cn(ACTION, PLAN_FOCUS)}
-      >
-        <ArrowLeftRight className="size-3.5" aria-hidden="true" />
-        {t('swap')}
-      </button>
+    <div className="flex justify-end" data-plan-day-actions="">
       <button
         type="button"
         aria-haspopup="dialog"
+        aria-expanded={open}
         aria-label={t('moreLabel', words)}
         onClick={() => onMore(day)}
         className={cn(ACTION, PLAN_FOCUS)}
@@ -260,18 +241,27 @@ function DayActionList({
   );
 }
 
-function ActionRow({
+/**
+ * One entry of a planner sheet's menu, as a list item: an icon in its square, the action and a
+ * line under it. `pressed` makes it a toggle, `expanded` a disclosure.
+ */
+export function ActionRow({
   icon: Icon,
   title,
   hint,
   pressed,
+  expanded,
+  controls,
   disabled = false,
   onClick,
 }: {
   icon: ComponentType<{ className?: string; 'aria-hidden'?: boolean }>;
   title: ReactNode;
-  hint: ReactNode;
+  hint?: ReactNode;
   pressed?: boolean;
+  expanded?: boolean;
+  /** The id of what a disclosure opens. */
+  controls?: string;
   disabled?: boolean;
   onClick: () => void;
 }) {
@@ -280,6 +270,8 @@ function ActionRow({
       <button
         type="button"
         aria-pressed={pressed}
+        aria-expanded={expanded}
+        aria-controls={controls}
         disabled={disabled}
         onClick={onClick}
         className={cn(
@@ -290,9 +282,9 @@ function ActionRow({
         <span className="bg-muted flex size-8 shrink-0 items-center justify-center rounded-lg">
           <Icon className="size-4" aria-hidden />
         </span>
-        <span className="flex min-w-0 flex-col gap-0.5">
+        <span className="flex min-w-0 flex-col gap-0.5 self-center">
           <span className="text-sm font-medium">{title}</span>
-          <span className="text-muted-foreground text-xs">{hint}</span>
+          {hint && <span className="text-muted-foreground text-xs">{hint}</span>}
         </span>
       </button>
     </li>
