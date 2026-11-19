@@ -1,0 +1,92 @@
+---
+title: 'Mit dem ResortPass darf ein Freund gratis in den Europa-Park'
+translationKey: europa-park-bring-your-friend-2026
+date: '2026-11-19'
+time: '18:00'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Hast du einen ResortPass, nimmst du bis 18. Dezember montags bis freitags einen Freund gratis mit in den Europa-Park. Mit Silber geht das einmal, mit Gold zweimal.
+tags:
+  - news
+  - europa-park
+  - jahreskarte
+  - tickets
+  - winter
+category: news
+parkLinks:
+  - europa-park
+rideLinks: false
+coverImage:
+  src: /media/europa-park/arthur.jpg
+  alt: 'Ein Pilzhaus in der Halle von Arthur, über allem die Schiene der Bahn.'
+  caption: 'Arthur fährt zum Teil in der Halle und zum Teil draußen durch das Königreich der Minimoys.'
+  credit: 'Patrick Arns'
+seo:
+  title: 'Bring Your Friend im Europa-Park: mit dem ResortPass gratis'
+  description: >-
+    Europa-Park ResortPass: Bis 18.12.2026 nimmst du montags bis freitags einen Freund gratis mit, mit Silber einmal, mit Gold zweimal. Tickets im Portal.
+  keywords:
+    - bring your friend europa park
+    - Bring Your Friend Europa-Park 2026
+    - europa park resortpass
+    - Europa-Park ResortPass Aktion
+    - ResortPass Silber
+    - ResortPass Gold
+    - ResortPass Portal
+    - Europa-Park Begleitperson kostenlos
+    - Europa-Park Freikarte
+    - europa park wartezeiten
+    - Europa-Park Winterzauber 2026
+    - Europa-Park HALLOWinter
+    - Europa-Park Tagesticket Preis
+---
+
+Wer einen ResortPass hat, kann bis zum 18. Dezember montags bis freitags eine Begleitperson kostenlos mit in den [Europa-Park](ref:europa-park) nehmen. Die Aktion heißt „Bring Your Friend“, mit dem ResortPass Silber geht das einmal, mit Gold zweimal. Angekündigt hat der Park sie am Donnerstagabend, dem 19. November, in seiner Facebook-Gruppe „Europa-Park Resort Freunde“. Sie gilt ab sofort.
+
+## Die Freikarte gibt es im ResortPass-Portal
+
+Das Ticket für den Freund holst du dir im ResortPass-Portal unter resort-pass.de, wo du dich mit deinem MackOne Account anmeldest. Auf der Grafik zur Ankündigung steht es als Ticket „Für Freunde“ für 0,00 €. Die Aktionstickets sind pro Tag limitiert und können an einzelnen Tagen schon ausverkauft sein, und wer mit seinem Freund an einem ganz bestimmten Tag kommen will, etwa am letzten Aktionstag, dem 18. Dezember, bucht dessen Ticket lieber heute als in der Woche davor.
+
+Deinen eigenen Besuch reservierst du wie immer im Portal, denn als Tagesgast braucht jeder Besuch mit dem ResortPass eine Reservierung. Bis zu fünf Tage kannst du gleichzeitig reservieren, auch tagesaktuell am Besuchstag, solange es Plätze gibt. Ist ein Tag ausgebucht, geht weder am Telefon noch vor Ort etwas. Eine Reservierung, die du nicht nutzt, stornierst du. Wohnst du in einem der Hotels des Resorts oder in der Silver Lake City, steckt deine eigene Reservierung schon in der Hotelbuchung.
+
+## 21 Tage zur Auswahl
+
+Der Park hat bis Weihnachten jeden Tag geöffnet. Bis zum 27. November läuft HALLOWinter, ab dem 28. November der Winterzauber, beide Male von 11 Uhr bis mindestens 19 Uhr. Hotelgäste dürfen früher hinein. Weil die Ankündigung erst gegen Parkschluss kam, ist Freitag, der 20. November, der erste volle Aktionstag. Bis Freitag, den 18. Dezember, bleiben 21 Tage von Montag bis Freitag: sechs im HALLOWinter und 15 im Winterzauber.
+
+Für Silber ist keiner dieser Tage gesperrt. Die Ausschlusstage von Silber liegen in diesem Winter erst zwischen dem 26. und dem 31. Dezember und am 2. Januar, da ist die Aktion schon vorbei. Gold hat ohnehin keine Sperrtage.
+
+## Was der Freund sonst zahlen würde
+
+An allen Aktionstagen gilt die günstigere der beiden Preiskategorien. Ein Online-Tagesticket kostet dann für Erwachsene 67 €, für Kinder von 4 bis 11 Jahren und für Senioren ab 60 ab 56,50 €. An der Tageskasse kommen 10 € dazu. Ein Kind unter vier Jahren mitzunehmen verschenkt die Aktion, es kommt ohnehin gratis hinein. Mit Gold sparen zwei erwachsene Begleitpersonen zusammen 134 €, und die Ausrede mit dem Eintrittspreis hat bis zum 18. Dezember keiner deiner Freunde mehr.
+
+## Im Park bis zum 18. Dezember
+
+Im HALLOWinter stehen Kürbisse von Halloween und Tannenbäume für den Winter nebeneinander im Park. Ab dem 28. November gibt es im Winterzauber den Weihnachtsmarkt im Historischen Schlosspark Balthasar, die Eislaufbahn, das Riesenrad Bellevue, den Weihnachtszirkus und die Eurosat Mapping Show im französischen Themenbereich. Damit steht der Europa-Park auch in unserem [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026). Für Kinder kommen die Skischule „Alpin“ mit Snow-Tubes und der Kinderskilanglauf Skitty World Nordic dazu, neu ist die Ausstellung „Monaco im Europa-Park“. Das Showprogramm für den Winter 2026 hat der Park noch nicht veröffentlicht.
+
+```best-days-widget slug=europa-park
+
+```
+
+Bei Eis, Schnee, Wind oder zu niedrigen Temperaturen kann der Park in beiden Saisons Attraktionen kurzfristig schließen. Welche Bahnen du an einem Wintertag zuerst ansteuerst, gehen wir im [Guide zu den Wartezeiten im Europa-Park](/blog/europa-park-wartezeiten-tipps) durch. Arthur, die Themenfahrt durch das Königreich der Minimoys, fährt im HALLOWinter und im Winterzauber, ab 100 Zentimetern und unter 120 nur mit einem Erwachsenen.
+
+## Den ResortPass gibt es derzeit nicht zu kaufen
+
+Die Aktion ist für Leute, die schon einen ResortPass haben. Neu kaufen kannst du die Jahreskarte bis auf Weiteres nicht, weil das Kontingent erschöpft ist, auch nicht am Telefon, per E-Mail oder vor Ort. Wer einen hat, bekommt vor dem Ablauf Bescheid und kann ihn in den letzten 14 Tagen im Portal verlängern.
+
+Ab wie vielen Besuchen sich die beiden Karten lohnen, steht in unserem [Vergleich der Jahreskarten](/blog/jahreskarte-vergleich-freizeitparks). Silber gilt für Tagesgäste an über 230 vorab festgelegten Tagen im Jahr. Gold gilt an allen Öffnungstagen, dazu kommen zwei Tagestickets für [Rulantica](/news/rulantica-vinterglanz-2026), die du ebenfalls im Portal reservierst.
+
+[Europa-Park](ref:europa-park?full)
+
+Quellen:
+[Beitrag des Europa-Parks in der Facebook-Gruppe Europa-Park Resort Freunde](https://www.facebook.com/groups/EuropaParkFreunde.Official),
+[Öffnungszeiten und Saisons](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/europa-park-oeffnungszeiten-saisons),
+[HALLOWinter](https://www.europapark.de/de/freizeitpark/hallowinter-im-europa-park),
+[Winterzauber](https://www.europapark.de/de/freizeitpark/infos/planen-sie-ihren-besuch/winterzauber-im-europa-park),
+[Tickets und Angebote](https://www.europapark.de/de/freizeitpark/europa-park-tickets-angebote),
+[ResortPass](https://www.europapark.de/de/resortpass/europa-park-resortpass),
+[ResortPass Silver](https://www.europapark.de/de/resortpass/europa-park-resortpass-silver),
+[ResortPass Gold](https://www.europapark.de/de/resortpass/europa-park-resortpass-gold),
+[ResortPass FAQ](https://www.europapark.de/de/resortpass/faq),
+[ARTHUR](https://www.europapark.de/de/freizeitpark/attraktionen/arthur).
