@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import { HelpCircle } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/config';
+import { SectionMark } from '@/components/analytics/section-mark';
+import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import { FaqList } from '@/components/marketing/editorial-ui';
 import { HOWTO_SEGMENTS } from '@/lib/howto/segments';
@@ -496,6 +498,9 @@ export async function HubFaq({
   const answered = items.map((item) => ({ ...item, answer: oneFullStop(item.answer) }));
   return (
     <section className="scroll-mt-24" id="faq">
+      {/* The chapter streams in after the page's tracker may have looked, so it brings its own. */}
+      <SectionMark section="hub_faq" />
+      <SectionSeenTracker />
       <ChapterHeading
         index={index}
         icon={HelpCircle}

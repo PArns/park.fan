@@ -494,11 +494,12 @@ export interface SiteEventMap {
   trip_tile_clicked: TripEvent<{ link: TripTileLink }>;
   /**
    * The trip planner started: the hub's hero, its own start button, a link with a plan, the
-   * landing's "Reise planen" (`landing`), "Start again" (`restart`), or (`dates`) the first dates
-   * picked in a page load where nothing else started it.
+   * landing's "Reise planen" (`landing`), "Start again" (`restart`), a day of the hub calendar
+   * as the arrival („Reise ab diesem Tag planen“, `day`), or (`dates`) the first dates picked in a
+   * page load where nothing else started it.
    */
   trip_planner_started: TripEvent<{
-    source: 'hero' | 'button' | 'link' | 'dates' | 'landing' | 'restart';
+    source: 'hero' | 'button' | 'link' | 'dates' | 'landing' | 'restart' | 'day';
   }>;
   /**
    * A step of the trip planner's assistant on screen, and how the visitor got there: Next, Skip,
@@ -523,6 +524,16 @@ export interface SiteEventMap {
   trip_deleted: TripEvent<{ from: TripDeleteFrom }>;
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
   trip_hub_filter: TripEvent<{ resort: string }>;
+  /**
+   * A day of the hub calendar opened in its sheet, from the table (from `lg`) or the phone's week.
+   * Which day is never sent; the hit's page type tells the hub from a month.
+   */
+  trip_hub_day_opened: TripEvent<{ layout: 'table' | 'phone' }>;
+  /**
+   * The hub calendar paged to another week: how, and the week now shown (1 is the window's first).
+   * On a change only, so a press at either end counts nothing.
+   */
+  trip_hub_week_paged: TripEvent<{ how: HubWeekPaging; week: number }>;
   /**
    * The hub's best-time teaser switched to other parks or another trip length; on a change only.
    * `scope` is the best-time page's id, `days` the length now shown.
@@ -688,6 +699,12 @@ type TripEvent<Props extends object = object> = { region: string } & Props;
 
 /** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
 export type TripTileLink = 'plan' | 'calendar';
+
+/**
+ * How the hub calendar went to another week: ‹ or › (`arrow`), a week's chip, the arrow keys, Home
+ * or End (`keys`), or the „Nächste Woche“ button under the grid (`next_link`).
+ */
+export type HubWeekPaging = 'arrow' | 'chip' | 'keys' | 'next_link';
 
 /** Where „Reise löschen“ was confirmed, as `trip_deleted` names it. */
 export type TripDeleteFrom = 'head' | 'result';

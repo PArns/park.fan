@@ -49,6 +49,7 @@ import {
 } from '@/lib/trip-regions/hub-data';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
+import type { HubWeekPaging } from '@/lib/analytics/site-analytics';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
 import { TRIP_CALENDAR_ID } from '@/lib/trip-regions/paths';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
@@ -112,13 +113,20 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
   const opener = useRef<HTMLElement | null>(null);
   // The open sheet holds a history entry of its own, so a phone's Back closes it and a second Back
   // leaves the page, the way a visitor expects a sheet to behave.
-  const openDay = useCallback((date: string) => {
-    opener.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
-    setOpenDate(date);
-    if (!globalThis.history.state?.[SHEET_ENTRY]) {
-      globalThis.history.pushState({ ...globalThis.history.state, [SHEET_ENTRY]: true }, '');
-    }
-  }, []);
+  const openDay = useCallback(
+    (date: string, layout: 'table' | 'phone') => {
+      opener.current =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setOpenDate(date);
+      if (!globalThis.history.state?.[SHEET_ENTRY]) {
+        globalThis.history.pushState({ ...globalThis.history.state, [SHEET_ENTRY]: true }, '');
+      }
+      trackTripEvent(region.slug, 'trip_hub_day_opened', { layout });
+    },
+    [region.slug]
+  );
+  const openFromPhone = useCallback((date: string) => openDay(date, 'phone'), [openDay]);
+  const openFromTable = useCallback((date: string) => openDay(date, 'table'), [openDay]);
   const closeDay = useCallback(() => {
     setOpenDate(null);
     if (globalThis.history.state?.[SHEET_ENTRY]) globalThis.history.back();
@@ -152,10 +160,11 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
   }, [weeks]);
 
   /** Shows a week and names it in the address bar, so a reload or a shared link keeps it. */
-  const showWeek = (next: number): number => {
+  const showWeek = (next: number, how: HubWeekPaging): number => {
     const to = Math.max(0, Math.min(weeks.length - 1, next));
     if (to === week) return to;
     setChosen(to);
+    trackTripEvent(region.slug, 'trip_hub_week_paged', { how, week: to + 1 });
     const { pathname, search } = window.location;
     // `null` state, so Next's patched `replaceState` carries its own entry over and moves the
     // router's URL along (as the park calendar's day fragment does).
@@ -246,7 +255,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           todayIso={todayIso}
           locale={locale}
           timezone={timezone}
-          onOpen={openDay}
+          onOpen={openFromPhone}
         />
       </div>
 
@@ -263,7 +272,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           todayIso={todayIso}
           locale={locale}
           timezone={timezone}
-          onOpen={openDay}
+          onOpen={openFromTable}
         />
       </div>
 
@@ -272,7 +281,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
         <button
           type="button"
           onClick={() => {
-            showWeek(week + 1);
+            showWeek(week + 1, 'next_link');
             navRef.current?.scrollIntoView({ block: 'start' });
           }}
           className="border-border/60 hover:bg-muted/50 text-foreground flex min-h-11 w-full items-center justify-center gap-1.5 rounded-lg border text-sm font-medium"
@@ -371,7 +380,7 @@ function WeekNav({
   week: number;
   locale: string;
   /** Shows a week, clamped to the window, and returns the one it showed. */
-  onWeek: (week: number) => number;
+  onWeek: (week: number, how: HubWeekPaging) => number;
   navRef: RefObject<HTMLDivElement | null>;
 }) {
   const t = useTranslations('tripHub.calendar');
@@ -388,7 +397,7 @@ function WeekNav({
     };
     if (!(event.key in keys)) return;
     event.preventDefault();
-    const shown = onWeek(keys[event.key]);
+    const shown = onWeek(keys[event.key], 'keys');
     if (event.target instanceof HTMLElement && event.target.dataset.hubWeekChip !== undefined) {
       navRef.current?.querySelector<HTMLElement>(`[data-hub-week-chip="${shown}"]`)?.focus();
     }
@@ -408,7 +417,7 @@ function WeekNav({
         data-hub-week-prev=""
         aria-label={t('weekPrev')}
         aria-disabled={week === 0}
-        onClick={() => onWeek(week - 1)}
+        onClick={() => onWeek(week - 1, 'arrow')}
         className={arrow}
       >
         <ChevronLeft aria-hidden className="size-5" />
@@ -424,7 +433,7 @@ function WeekNav({
         data-hub-week-next=""
         aria-label={t('weekNext')}
         aria-disabled={week === last}
-        onClick={() => onWeek(week + 1)}
+        onClick={() => onWeek(week + 1, 'arrow')}
         className={arrow}
       >
         <ChevronRight aria-hidden className="size-5" />
@@ -434,7 +443,7 @@ function WeekNav({
           <FilterChip
             key={w.from}
             pressed={i === week}
-            onClick={() => onWeek(i)}
+            onClick={() => onWeek(i, 'chip')}
             data-hub-week-chip={i}
           >
             {formatDateRange(w.from, w.to, locale)}

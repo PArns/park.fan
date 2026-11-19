@@ -7,6 +7,7 @@ import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { daysBetween } from '@/lib/utils/park-day';
@@ -118,7 +119,8 @@ function YearLine({
  * why it stands above a trip with a shorter wait (`aheadForWeather`), the storm season or heat
  * as chips
  * and "Plan this trip", which opens the planner on those dates and parks. The link under the
- * cards goes to the chosen parks' best-time page.
+ * cards goes to the chosen parks' best-time page. A click on either counts as
+ * `internal_link_clicked` from the block `trip_when`, told apart by where it leads.
  */
 export function HubWhenTeaser({
   region,
@@ -188,7 +190,7 @@ export function HubWhenTeaser({
   const ahead = aheadForWeather(windows);
 
   return (
-    <div className="space-y-5">
+    <div {...linkBlockAttributes('trip_when')} className="space-y-5">
       <div className="space-y-3">
         {scopes.length > 1 && (
           <div

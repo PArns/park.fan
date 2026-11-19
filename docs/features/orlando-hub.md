@@ -325,16 +325,27 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 
 ## Analytics
 
-What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
-for the head's two ways in (`plan`, `calendar`, on the hub or a month) and for the landing's
-„Reise planen“ in chapter 01 (`plan`); `trip_planner_started` tells them apart by
-its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for „Reise löschen“ in the
-head, `internal_link_clicked`
-from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts'
-park links), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
-`trip_accuracy_opened {surface: hub}` for the accuracy line, and `faq_opened` with the question's
-message `key` beside its place, since the questions shown depend on the data. Page types for hub,
-month and best-time pages are the analytics core's (`sitePageTypeOf`).
+What the hub counts (the events in [analytics](../development/analytics.md)):
+
+- **The ways in.** `trip_hub_action` for the head's two ways in (`plan`, `calendar`, on the hub or
+  a month) and for the landing's „Reise planen“ in chapter 01 (`plan`); `trip_planner_started`
+  tells them apart by its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for
+  „Reise löschen“ in the head.
+- **The calendar.** `trip_hub_filter` when a resort chip changes it, `trip_hub_week_paged` when it
+  shows another week (`how`: `arrow`, `chip`, `keys`, `next_link`; `week`, the one now shown),
+  `trip_hub_day_opened` when a day opens its sheet (`layout`: `table` from `lg`, `phone` below;
+  never which day), `trip_accuracy_opened {surface: hub}` for the accuracy line.
+- **Links**, as `internal_link_clicked` from marked blocks, with no client code of their own:
+  `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts' park links), each
+  with the park as entity, `trip_months` (the month index) and `trip_when` (the best-time teaser,
+  its cards' „Diese Reise planen“ and the link to the best-time page, told apart by `dest`).
+- **The questions**: `faq_opened` with the question's message `key` beside its place, since the
+  questions shown depend on the data.
+- **How far down**: `section_seen` where each chapter begins (`hub_planner`, `hub_calendar`,
+  `hub_resorts`, `hub_best_time`, `hub_faq`), once per view, on the hub and the month pages; the
+  hit's page type tells them apart.
+
+Page types for hub, month and best-time pages are the analytics core's (`sitePageTypeOf`).
 
 ## Ways in
 
