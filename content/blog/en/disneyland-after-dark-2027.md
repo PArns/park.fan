@@ -68,7 +68,7 @@ The announcement doesn't give a price. A ticket is valid only on the date you bo
 
 ## Tickets for Sweethearts' Nite
 
-Sales run through Disneyland.com, and for now only Sweethearts' Nite is on sale. On Tuesday, 8 December, from 9 a.m. California time, Inspire Key holders can buy from a small allocation; on Wednesday, 9 December, every holder of a Magic Key, the resort's annual pass. General sale opens on Thursday, 10 December, at 9 a.m. Pacific, which is 6 p.m. CET. Disney plans to announce on-sale dates and details for Disneylandia Nite and Star Wars Nite in early 2027, and for Pride Nite in the spring.
+Sales run through Disneyland.com, and for now only Sweethearts' Nite is on sale. On Tuesday, 8 December, from 9 a.m. California time, Inspire Key holders can buy from a small allocation; on Wednesday, 9 December, every Magic Key holder, also from a limited allocation. General sale opens on Thursday, 10 December, at 9 a.m. Pacific, which is 6 p.m. CET. Disney plans to announce on-sale dates and details for Disneylandia Nite and Star Wars Nite in early 2027, and for Pride Nite in the spring.
 
 ## Sweethearts' Nite
 
@@ -84,7 +84,7 @@ New on the menus are fries with chicken and za'atar, at Galactic Grill among oth
 
 Disneylandia Nite celebrates Hispanic and Latin American cultures, with characters from "Coco" and "Encanto". It sits on almost the same April dates as Disney Channel Nite did in 2026, which is missing from Disney's 2027 list.
 
-Star Wars Nite in 2027 marks 50 years of Star Wars; the first film reached cinemas in 1977. One of its four nights is 4 May, which fans treat as their holiday anyway because of "May the Fourth be with you". Disney asks guests to come in Star Wars-style costumes, within the park's costume rules.
+Star Wars Nite in 2027 marks 50 years of Star Wars, and one of its four nights falls on 4 May. Disney asks guests to come in Star Wars-style costumes, within the park's costume rules.
 
 Pride Nite on 17 June celebrates the LGBTQIA+ community, with rainbow projections around the park. It started in 2023, ran on two nights in 2026 and has one in 2027.
 
@@ -92,7 +92,7 @@ Pride Nite on 17 June celebrates the LGBTQIA+ community, with rainbow projection
 
 Disneyland held five After Dark parties in 2026. "70 Years of Favorites" was new in March, on two nights, and Disney Channel Nite ran in April. Neither is on the 2027 calendar; Disneylandia Nite takes their place.
 
-With a regular day ticket you have to leave Disneyland before 9 p.m. on each of these 18 nights. If you're planning a trip around Southern California, the [California itinerary guide](/blog/california-itinerary-disneyland-universal-san-diego) puts the party nights at Disneyland, Universal, Knott's and SeaWorld San Diego side by side, with the time day guests have to leave at each.
+If you're planning a trip around Southern California, the [California itinerary guide](/blog/california-itinerary-disneyland-universal-san-diego) puts the party nights at Disneyland, Universal, Knott's and SeaWorld San Diego side by side, with the time day guests have to leave at each.
 
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park?full)
 

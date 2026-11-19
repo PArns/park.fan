@@ -68,7 +68,7 @@ L’annonce de Disney ne donne aucun prix. Le billet n’est valable que pour la
 
 ## Billets pour la Sweethearts' Nite
 
-La vente a lieu sur Disneyland.com, et pour l’instant uniquement pour la Sweethearts' Nite. Le mardi 8 décembre, à partir de 9 h heure de Californie, les détenteurs de l’Inspire Key peuvent acheter dans un petit contingent. Le mercredi 9 décembre, c’est au tour de tous les détenteurs d’un Magic Key, le pass annuel du resort. La vente pour tous ouvre le jeudi 10 décembre à 9 h en Californie, soit 18 h à Paris. Disney communiquera début 2027 la date de vente et les détails de la Disneylandia Nite et de la Star Wars Nite, et au printemps ceux de la Pride Nite.
+La vente a lieu sur Disneyland.com, et pour l’instant uniquement pour la Sweethearts' Nite. Le mardi 8 décembre, à partir de 9 h heure de Californie, les détenteurs de l’Inspire Key peuvent acheter dans un petit contingent. Le mercredi 9 décembre, c’est au tour de tous les détenteurs d’un Magic Key, eux aussi dans un contingent limité. La vente pour tous ouvre le jeudi 10 décembre à 9 h en Californie, soit 18 h à Paris. Disney communiquera début 2027 la date de vente et les détails de la Disneylandia Nite et de la Star Wars Nite, et au printemps ceux de la Pride Nite.
 
 ## La Sweethearts' Nite
 
@@ -84,7 +84,7 @@ Nouveaux à la carte : des frites au poulet et au za’atar, notamment au Galac
 
 La Disneylandia Nite célèbre les cultures hispaniques et latino-américaines, avec des personnages de « Coco » et d’« Encanto ». Elle occupe presque les mêmes jours d’avril que la Disney Channel Nite de 2026, absente de la liste de Disney pour 2027.
 
-En 2027, la Star Wars Nite fête les 50 ans de Star Wars, dont le premier film est sorti en salles en 1977. L’une des quatre soirées tombe le 4 mai, que les fans tiennent de toute façon pour leur fête, à cause du jeu de mots « May the Fourth be with you ». Disney invite à venir costumé dans l’esprit Star Wars, dans le respect du règlement du parc sur les costumes.
+En 2027, la Star Wars Nite fête les 50 ans de Star Wars, et l’une des quatre soirées tombe le 4 mai. Disney invite à venir costumé dans l’esprit Star Wars, dans le respect du règlement du parc sur les costumes.
 
 La Pride Nite du 17 juin célèbre la communauté LGBTQIA+, avec des projections arc-en-ciel dans le parc. Elle a eu lieu pour la première fois en 2023, puis sur deux soirs en 2026, et n’en compte plus qu’un en 2027.
 
@@ -92,7 +92,7 @@ La Pride Nite du 17 juin célèbre la communauté LGBTQIA+, avec des projections
 
 En 2026, Disneyland comptait cinq soirées After Dark. La nouvelle « 70 Years of Favorites » a occupé deux soirs en mars, la Disney Channel Nite est venue en avril. Ni l’une ni l’autre ne figure au calendrier 2027, où la Disneylandia Nite fait son apparition.
 
-Avec un billet à la journée ordinaire, vous devez quitter Disneyland avant 21 h lors de chacune de ces 18 soirées. Si vous préparez un voyage dans le sud de la Californie, notre [guide du road trip en Californie](/blog/road-trip-californie-disneyland-universal-san-diego) réunit les soirées spéciales de Disneyland, d’Universal, de Knott's et de SeaWorld San Diego, avec l’heure à laquelle les visiteurs de la journée doivent partir.
+Si vous préparez un voyage dans le sud de la Californie, notre [guide du road trip en Californie](/blog/road-trip-californie-disneyland-universal-san-diego) réunit les soirées spéciales de Disneyland, d’Universal, de Knott's et de SeaWorld San Diego, avec l’heure à laquelle les visiteurs de la journée doivent partir.
 
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park?full)
 

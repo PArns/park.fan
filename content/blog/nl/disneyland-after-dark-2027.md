@@ -68,7 +68,7 @@ Een prijs staat niet in de aankondiging. Het ticket geldt alleen op de geboekte 
 
 ## Kaarten voor Sweethearts' Nite
 
-De verkoop loopt via Disneyland.com en geldt voorlopig alleen voor Sweethearts' Nite. Op dinsdag 8 december mogen houders van een Inspire Key vanaf 9.00 uur Californische tijd kopen uit een kleine voorraad. Op woensdag 9 december zijn alle houders van een Magic Key aan de beurt, het jaarabonnement van het resort. De vrije verkoop begint op donderdag 10 december om 9.00 uur in Californië, dat is 18.00 uur in Nederland en België. Wanneer de verkoop voor Disneylandia Nite en Star Wars Nite begint en wat er dan te doen is, maakt Disney begin 2027 bekend. Voor Pride Nite volgt dat in het voorjaar.
+De verkoop loopt via Disneyland.com en geldt voorlopig alleen voor Sweethearts' Nite. Op dinsdag 8 december mogen houders van een Inspire Key vanaf 9.00 uur Californische tijd kopen uit een kleine voorraad. Op woensdag 9 december zijn alle houders van een Magic Key aan de beurt, ook uit een beperkte voorraad. De vrije verkoop begint op donderdag 10 december om 9.00 uur in Californië, dat is 18.00 uur in Nederland en België. Wanneer de verkoop voor Disneylandia Nite en Star Wars Nite begint en wat er dan te doen is, maakt Disney begin 2027 bekend. Voor Pride Nite volgt dat in het voorjaar.
 
 ## Sweethearts' Nite
 
@@ -84,7 +84,7 @@ Nieuw op de kaart zijn friet met kip en za'atar, onder meer bij Galactic Grill, 
 
 Disneylandia Nite viert de Spaanstalige en Latijns-Amerikaanse culturen, met figuren uit “Coco” en “Encanto”. Het feest valt op bijna dezelfde dagen in april als Disney Channel Nite in 2026, dat in Disneys lijst voor 2027 ontbreekt.
 
-Star Wars Nite staat in 2027 in het teken van 50 jaar Star Wars: de eerste film draaide in 1977 in de bioscoop. Een van de vier avonden is 4 mei, voor fans toch al hun feestdag vanwege “May the Fourth be with you”. Disney vraagt je om in Star Wars-kostuum te komen, binnen de kledingregels van het park.
+Star Wars Nite staat in 2027 in het teken van 50 jaar Star Wars, en een van de vier avonden valt op 4 mei. Disney vraagt je om in Star Wars-kostuum te komen, binnen de kledingregels van het park.
 
 Pride Nite op 17 juni viert de LGBTQIA+-gemeenschap, met regenboogprojecties in het park. Het feest bestaat sinds 2023, had in 2026 twee avonden en heeft er in 2027 één.
 
@@ -92,7 +92,7 @@ Pride Nite op 17 juni viert de LGBTQIA+-gemeenschap, met regenboogprojecties in 
 
 In 2026 had Disneyland vijf After Dark-feesten. In maart was er voor het eerst “70 Years of Favorites” op twee avonden, in april Disney Channel Nite. Die twee staan in 2027 niet meer op de kalender, Disneylandia Nite komt ervoor in de plaats.
 
-Met een gewoon dagticket moet je op elk van deze 18 avonden voor 21.00 uur Disneyland uit. Plan je een reis door Zuid-Californië, dan zet de [gids voor een rondreis door Californië](/blog/rondreis-californie-disneyland-universal-san-diego) de feestavonden van Disneyland, Universal, Knott's en SeaWorld San Diego naast elkaar, met het tijdstip waarop dagbezoekers telkens weg moeten.
+Plan je een reis door Zuid-Californië, dan zet de [gids voor een rondreis door Californië](/blog/rondreis-californie-disneyland-universal-san-diego) de feestavonden van Disneyland, Universal, Knott's en SeaWorld San Diego naast elkaar, met het tijdstip waarop dagbezoekers telkens weg moeten.
 
 [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park?full)
 
