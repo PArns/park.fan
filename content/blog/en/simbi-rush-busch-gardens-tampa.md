@@ -56,7 +56,7 @@ The park is planning Simbi Rush as a family ride, but it hasn't set a height req
 
 ## Who rides first and what it costs
 
-2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. In the Black Friday sale, the Silver pass costs $198 instead of $279, Gold $222 instead of $315 and Platinum $351 instead of $549, all three with free parking. The cheaper 2027 Fun Card is $94.99 instead of $148.99 and gets you unlimited visits to Busch Gardens and the Adventure Island water park across the street, starting now and running through December 31, 2027. Parking isn't included and starts at $32 plus tax, and the park hasn't said whether the Fun Card gets you into the preview. It does get you in this winter, though: [Christmas Town with its drone show](/news/busch-gardens-tampa-christmas-town-2026) runs on select evenings until January 4.
+2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. In the Black Friday sale, the Silver pass costs $198 instead of $279, Gold $222 instead of $315 and Platinum $351 instead of $549, all three with free parking. The cheaper 2027 Fun Card is $94.99 instead of $148.99 and gets you unlimited visits to Busch Gardens and the Adventure Island water park across the street, starting now and running through December 31, 2027. Parking isn't included and starts at $32 plus tax, and the park hasn't announced whether the Fun Card gets you into the preview. It does get you in this winter, though: [Christmas Town with its drone show](/news/busch-gardens-tampa-christmas-town-2026) runs on select evenings until January 4.
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -68,9 +68,9 @@ If you don't have a car, the Mears Destination Services shuttle takes you from t
 
 ## What else is changing in the park
 
-Simbi Rush is the centerpiece of a five-year plan that has Busch Gardens Tampa Bay putting $200 million into the park. The first part of it opened on July 25: Lion & Hyena Ridge, a 38,000-square-foot habitat (about 3,500 square meters) for five lions and two spotted hyenas. Lions and hyenas are rivals in the wild, so they take turns in the different parts of the habitat, like two siblings sharing one game console.
+Simbi Rush is the biggest piece of a five-year plan that has Busch Gardens Tampa Bay putting $200 million into the park. The first part of it opened on July 25: Lion & Hyena Ridge, a 38,000-square-foot habitat (about 3,500 square meters) for five lions and two spotted hyenas. Lions and hyenas are rivals in the wild, so they take turns in the different parts of the habitat, like two siblings sharing one game console.
 
-Stanley Falls Flume, the log flume that had run since the park opened in 1973, closed on September 7, 2025, after 52 years to make room for a new attraction. Busch Gardens hasn't said whether Simbi Rush is going in its place. Kumba also ran for the last time on August 2, 2026: the 1993 Bolliger & Mabillard coaster stood 143 feet (44 m) tall, reached 60 mph (97 km/h) and had seven inversions. The park has announced Kumba's Revenge as its successor, so far without a layout or an opening date.
+Stanley Falls Flume, the log flume that had run since the park opened in 1973, closed on September 7, 2025, after 52 years to make room for a new attraction. Busch Gardens hasn't announced whether Simbi Rush is going in its place. Kumba also ran for the last time on August 2, 2026: the 1993 Bolliger & Mabillard coaster stood 143 feet (44 m) tall, reached 60 mph (97 km/h) and had seven inversions. The park has announced Kumba's Revenge as its successor, so far without a layout or an opening date.
 
 ## Other Mack Rides water coasters
 

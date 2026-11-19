@@ -58,7 +58,7 @@ El parque la concibe expresamente como atracción familiar, aunque todavía no h
 
 ## Quién sube primero y cuánto cuesta
 
-Antes de la apertura al público la prueban los titulares de un pase anual 2027, aunque todavía no hay fechas. En la venta del Black Friday, el pase anual Silver cuesta 198 $ en vez de 279 $, el Gold 222 $ en vez de 315 $ y el Platinum 351 $ en vez de 549 $, los tres con aparcamiento gratis. La Fun Card 2027, más barata, sale por 94,99 $ en vez de 148,99 $ y vale desde hoy hasta el 31 de diciembre de 2027 para entrar las veces que quieras en Busch Gardens y en Adventure Island, el parque acuático de enfrente. El aparcamiento no va incluido y cuesta desde 32 $ más impuestos. Si la Fun Card da acceso al preestreno, el parque no lo ha dicho. Lo que sí te permite es entrar ya este invierno: hasta el 4 de enero, en noches concretas, a [Christmas Town con su espectáculo de drones](/news/busch-gardens-tampa-christmas-town-2026).
+Antes de la apertura al público la prueban los titulares de un pase anual 2027, aunque todavía no hay fechas. En la venta del Black Friday, el pase anual Silver cuesta 198 $ en vez de 279 $, el Gold 222 $ en vez de 315 $ y el Platinum 351 $ en vez de 549 $, los tres con aparcamiento gratis. La Fun Card 2027, más barata, sale por 94,99 $ en vez de 148,99 $ y vale desde hoy hasta el 31 de diciembre de 2027 para entrar las veces que quieras en Busch Gardens y en Adventure Island, el parque acuático de enfrente. El aparcamiento no va incluido y cuesta desde 32 $ más impuestos. Si la Fun Card da acceso al preestreno, el parque no lo ha dado a conocer. Lo que sí te permite es entrar ya este invierno: hasta el 4 de enero, en noches concretas, a [Christmas Town con su espectáculo de drones](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -72,7 +72,7 @@ Sin coche, el shuttle de Mears Destination Services te lleva desde la zona de Or
 
 Simbi Rush es la pieza central de un plan con el que Busch Gardens Tampa Bay quiere invertir 200 millones de dólares en cinco años. De ese plan ya abrió el 25 de julio Lion & Hyena Ridge, un recinto de 38.000 pies cuadrados (unos 3.500 metros cuadrados) para cinco leones y dos hienas manchadas. Como en libertad leones y hienas son rivales, se turnan las distintas partes del recinto, igual que dos hermanos que comparten una consola.
 
-Stanley Falls Flume, la atracción de troncos que funcionaba desde la apertura del parque en 1973, cerró el 7 de septiembre de 2025, tras 52 años, para dejar sitio a una atracción nueva. Busch Gardens no ha dicho si Simbi Rush ocupará su lugar. Además, el 2 de agosto de 2026 hizo su último viaje Kumba, la montaña rusa de Bolliger & Mabillard de 1993, con 44 metros de altura, 97 km/h y siete inversiones. Como sucesora, el parque ha anunciado Kumba's Revenge, por ahora sin trazado ni fecha.
+Stanley Falls Flume, la atracción de troncos que funcionaba desde la apertura del parque en 1973, cerró el 7 de septiembre de 2025, tras 52 años, para dejar sitio a una atracción nueva. Busch Gardens no ha dado a conocer si Simbi Rush ocupará su lugar. Además, el 2 de agosto de 2026 hizo su último viaje Kumba, la montaña rusa de Bolliger & Mabillard de 1993, con 44 metros de altura, 97 km/h y siete inversiones. Como sucesora, el parque ha anunciado Kumba's Revenge, por ahora sin trazado ni fecha.
 
 ## Otras montañas rusas acuáticas de Mack Rides
 
