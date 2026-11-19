@@ -484,6 +484,7 @@
       "ridesNone": "No ride figures for this day.",
       "ridesHint": "Each ride at its busiest time of day.",
       "planDay": "Open in the day planner",
+      "planTrip": "Plan a trip from this day",
       "noHoursFigure": "No hours published yet. The figure is the forecast; hours are not counted.",
       "ahead": "Ranked above {park}, where day guests must leave at {time}."
     },
@@ -517,7 +518,8 @@
       "open": "Open the trip planner"
     },
     "tile": {
-      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day"
+      "line": "The quietest day of each week for all {count} parks {inRegion}, from the peak-wait forecast",
+      "question": "Which day is quietest at {resort}?"
     },
     "faq": {
       "parks": {

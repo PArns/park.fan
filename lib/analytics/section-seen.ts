@@ -4,13 +4,14 @@
  * time a mark comes on screen. So the counts read as how far readers got, not as views of the
  * chapter: a park without posts still has the place where they would stand. Two marks stand only
  * where their block is, and so do count its views: the planner tile on a region park's pages
- * (`trip_tile`) and the planner band on a post, a listing or `/search` (`trip_band`).
+ * (`trip_tile`) and the planner band on a post, a listing or `/search` (`trip_band`). The homepage
+ * and a trip region's hub mark where each of their chapters begins the same way.
  */
 
 /**
  * The places a park page marks, top to bottom, then the band no park page has, then the
- * homepage's stops: the closed list of the event's `section`. The tile stands above „Heute im
- * Park" or under the calendar's header.
+ * homepage's stops, then a trip region hub's chapters: the closed list of the event's `section`.
+ * The tile stands above „Heute im Park" or under the calendar's header.
  */
 const SEEN_SECTIONS = [
   'trip_tile',
@@ -30,6 +31,11 @@ const SEEN_SECTIONS = [
   'home_popular',
   'home_faq',
   'home_end',
+  'hub_planner',
+  'hub_calendar',
+  'hub_resorts',
+  'hub_best_time',
+  'hub_faq',
 ] as const;
 
 /** One of {@link SEEN_SECTIONS}. */
@@ -54,6 +60,18 @@ export const HOME_SEEN_SECTIONS: readonly SeenSection[] = [
   'home_popular',
   'home_faq',
   'home_end',
+];
+
+/**
+ * A trip region hub's and its month pages' marks, one where each chapter begins: the planner, the
+ * calendar, the resorts, the best time to go and the questions.
+ */
+export const HUB_SEEN_SECTIONS: readonly SeenSection[] = [
+  'hub_planner',
+  'hub_calendar',
+  'hub_resorts',
+  'hub_best_time',
+  'hub_faq',
 ];
 
 /** The attribute that makes an element a mark and names its place. */

@@ -484,6 +484,7 @@
       "ridesNone": "Für diesen Tag gibt es keine Werte für einzelne Bahnen.",
       "ridesHint": "Jede Bahn zu ihrer vollsten Tageszeit.",
       "planDay": "Im Tagesplaner öffnen",
+      "planTrip": "Reise ab diesem Tag planen",
       "noHoursFigure": "Noch keine Öffnungszeiten. Der Wert ist die Prognose; die Öffnungszeiten zählen nicht mit.",
       "ahead": "Steht vor {park}, weil Tagesgäste dort um {time} gehen müssen."
     },
@@ -517,7 +518,8 @@
       "open": "Reiseplaner öffnen"
     },
     "tile": {
-      "line": "Du nennst deine Reisetage, der Planer sagt dir, welcher der {count} Parks an welchem Tag am leersten ist"
+      "line": "Der ruhigste Tag jeder Woche für alle {count} Parks {inRegion}, nach der Prognose der Spitzenwartezeit",
+      "question": "Wann ist es in {resort} am ruhigsten?"
     },
     "faq": {
       "parks": {

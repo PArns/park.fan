@@ -2839,12 +2839,14 @@ const keys = { parks: new Set(ORDER), areas: new Set(['disney', 'universal']) };
         slug: 'magic-kingdom-park',
         name: 'Magic Kingdom Park',
         path: '/parks/north-america/united-states/orlando/magic-kingdom-park',
+        resort: 'Walt Disney World',
       },
       {
         id: 'id-epcot',
         slug: 'epcot',
         name: 'EPCOT',
         path: '/parks/north-america/united-states/orlando/epcot',
+        resort: 'Walt Disney World',
       },
       {
         id: 'id-bg',

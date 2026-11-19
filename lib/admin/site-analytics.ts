@@ -11,6 +11,7 @@ import type { LinkBlock } from '@/lib/analytics/internal-link';
 import {
   BLOCK_SEEN_SECTIONS,
   HOME_SEEN_SECTIONS,
+  HUB_SEEN_SECTIONS,
   type SeenSection,
 } from '@/lib/analytics/section-seen';
 import type { PlannerOpenedSource } from '@/lib/planner/ui-store';
@@ -929,7 +930,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_planner_started: {
     label: 'Reiseplaner gestartet',
-    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers, „Reise planen“ der Landing (landing), „Neu starten“ (restart), einen Link mit einem Plan oder (dates) die ersten gewählten Daten eines Seitenaufrufs ohne anderen Start; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
+    when: 'Über den Knopf im Hub-Kopf, den Startknopf des Planers, „Reise planen“ der Landing (landing), „Neu starten“ (restart), „Reise ab diesem Tag planen“ im Tagesblatt des Hub-Kalenders (day), einen Link mit einem Plan oder (dates) die ersten gewählten Daten eines Seitenaufrufs ohne anderen Start; wie jedes Ereignis des Reiseplaners mit der Region („orlando“).',
   },
   trip_wizard_step: {
     label: 'Assistent: Schritt',
@@ -994,6 +995,14 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   trip_hub_filter: {
     label: 'Hub-Kalender gefiltert',
     when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',
+  },
+  trip_hub_day_opened: {
+    label: 'Hub-Kalender: Tag geöffnet',
+    when: 'Ein Tag im Hub-Kalender öffnet sein Tagesblatt, aus der Tabelle (table, ab lg) oder der Woche auf dem Handy (phone); nie welcher Tag. Hub oder Monat sagt die Seitenart.',
+  },
+  trip_hub_week_paged: {
+    label: 'Hub-Kalender: Woche gewechselt',
+    when: 'Der Hub-Kalender zeigt eine andere Woche: über ‹ › (arrow), einen Wochen-Chip (chip), die Pfeiltasten, Pos1 oder Ende (keys) oder „Nächste Woche“ unter dem Raster (next_link); mit der Woche, die jetzt steht (1 ist die erste).',
   },
   trip_best_time_switch: {
     label: 'Beste Reisezeit umgeschaltet',
@@ -1124,7 +1133,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   section_seen: {
     label: 'Stelle der Parkseite erreicht',
-    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat. Die Reiseplaner-Kachel und das Reiseplaner-Band zählen so, wie oft sie im Bild waren.',
+    when: 'Eine markierte Stelle einer Parkseite kommt ins Bild, einmal je Seitenaufruf; zählt auch, wo der Park das Kapitel nicht hat. Die Reiseplaner-Kachel und das Reiseplaner-Band zählen so, wie oft sie im Bild waren; die Startseite und der Hub einer Reiseregion markieren so den Anfang jedes Kapitels.',
   },
   nav_menu_opened: {
     label: 'Menü geöffnet',
@@ -1218,6 +1227,8 @@ export const LINK_BLOCK_LABEL: Record<LinkBlock, string> = {
   trip_tile: 'Reiseplaner-Kachel',
   trip_answer: 'Antwort im Hub-Kopf',
   trip_parks: 'Andrang-Kalender je Park im Hub',
+  trip_months: 'Monate im Hub-Kalender',
+  trip_when: 'Beste Reisezeit im Hub',
   trip_home: 'Reise-Region auf der Startseite',
   day_home: 'Tagesplaner auf der Startseite',
   nav: 'Vorheriger, nächster Beitrag',
@@ -1257,6 +1268,11 @@ export const SECTION_LABEL: Record<SeenSection, string> = {
   home_popular: 'Startseite: Beliebte Parks',
   home_faq: 'Startseite: FAQ',
   home_end: 'Startseite: Seitenende',
+  hub_planner: 'Hub: Reiseplaner',
+  hub_calendar: 'Hub: Kalender',
+  hub_resorts: 'Hub: Resorts',
+  hub_best_time: 'Hub: Beste Reisezeit',
+  hub_faq: 'Hub: Fragen',
 };
 
 /** The places in the order the page has them. */
@@ -1264,11 +1280,14 @@ export const SEEN_SECTION_ORDER = Object.keys(SECTION_LABEL) as SeenSection[];
 
 /**
  * The places that say how far down a park page was read, every one listed in the reach table; a
- * block's own mark (the planner tile) is a row there only once it was seen, and the homepage's
- * marks are not a park page's.
+ * block's own mark (the planner tile) is a row there only once it was seen, and the homepage's and
+ * the hubs' marks are not a park page's.
  */
 const DEPTH_SECTION_ORDER = SEEN_SECTION_ORDER.filter(
-  (section) => !BLOCK_SEEN_SECTIONS.includes(section) && !HOME_SEEN_SECTIONS.includes(section)
+  (section) =>
+    !BLOCK_SEEN_SECTIONS.includes(section) &&
+    !HOME_SEEN_SECTIONS.includes(section) &&
+    !HUB_SEEN_SECTIONS.includes(section)
 );
 
 /** The header's menus in German. */

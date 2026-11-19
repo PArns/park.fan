@@ -99,8 +99,12 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 | 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                   |
 
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
-welchem Tag?“ as its big one), the lead, the two buttons and the answer; the calendar's first day
-starts just under it (905 px at 390 × 844, German). The answer names its day ("Sat, Nov 14, Orlando time"),
+welchem Tag?“ as its big one), the lead, the two buttons and the answer. Chapter 01, the planner,
+comes next, so the calendar's first week is a scroll away, not on the first screen: at 390 × 844
+the head ends at 660 to 750 px, chapter 01 takes 500 to 770 px, and the week's dates start at
+1607 to 1937 px, its first day at 1733 to 2035 px, over the four regions in all six languages
+(`next dev`, 19 November 2026; German Orlando 1807 and 1933). „Zum Kalender“ in the head is the
+way there. The answer names its day ("Sat, Nov 14, Orlando time"),
 never "today", because a cached copy outlives midnight. After every pick has closed it is about
 tomorrow (`glanceDay`). It names each group with a headliner park (`glanceLines`): a resort of one
 park is answered by that park (Universal Studios Hollywood), a group without a headliner (SeaWorld
@@ -133,11 +137,18 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 - **The planner's inline view shows only with something to show** (dates or a `when=` search,
   `HubPlannerOnly`): the assistant is a dialog outside that box, and its empty state would repeat
   the four steps.
-- **Every start goes through one place**, `startPlanner` in `hub-hero-action.tsx`:
+- **Every start goes through one place**, `startTripPlanner` in `hub-hero-action.tsx`:
   `tripPlannerUi.openStart(source)` with `hero` (the head), `landing` (chapter 01, the closing
-  band) or `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
-  clearing „Reise löschen“ uses, without its undo). Each counts as `trip_hub_action`; the clear
-  counts no `trip_option_changed`.
+  band), `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
+  clearing „Reise löschen“ uses, without its undo) or `day` (the day sheet's „Reise ab diesem Tag
+  planen“, with the day as the arrival). The head's and the landing's buttons count as
+  `trip_hub_action`, the day sheet's does not; the clear counts no `trip_option_changed`.
+- **A day of the calendar starts a trip.** The day sheet's one primary button, „Reise ab diesem
+  Tag planen“, closes the sheet and starts the assistant on its dates with that day already pressed
+  as the arrival (`openStart('day', date)`, read by the date grid through `usePresetArrival`), so
+  Parky's first question is the departure; the other answers stay as they were. It waits for the
+  sheet's Back to land, since the assistant's own history entry would otherwise be the one that
+  Back takes away. Each park's „Im Tagesplaner öffnen“ stays the sheet's quieter outline button.
 - **A trip can be deleted** from the head's line and from the result („Reise löschen“, asked in
   place, with „Rückgängig“ for a few seconds after). It clears every store of the region's trip on
   this device and puts the hub back on its landing page; the stores and the undo are
@@ -209,7 +220,8 @@ Each chapter opens with its heading and then the thing itself.
    The resort filter and the week are urgent, the grid follows through `useDeferredValue`. The
    events sit under it as one closed `<details>` row over the whole window. A tap opens
    `HubDaySheet` (bottom sheet on a phone, side panel on a desktop); it holds a history entry of
-   its own, so a phone's Back closes it. Under the calendar: the forecast's date and the travel
+   its own, so a phone's Back closes it, and its primary button plans a trip from that day
+   ([two states](#two-states)). Under the calendar: the forecast's date and the travel
    times' credit; on the hub the accuracy line (`HubAccuracy`, PAR-1316): „Unsere Prognose der
    Spitzenwartezeit, eine Woche im Voraus, lag in den letzten 30 Tagen im Schnitt 16 Min.
    daneben.“, the lead and the days from the open `GET /v1/trip-regions/:region/accuracy`, the
@@ -344,16 +356,27 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 
 ## Analytics
 
-What the hub counts (the events in [analytics](../development/analytics.md)): `trip_hub_action`
-for the head's two ways in (`plan`, `calendar`, on the hub or a month) and for the landing's
-„Reise planen“ in chapter 01 (`plan`); `trip_planner_started` tells them apart by
-its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for „Reise löschen“ in the
-head, `internal_link_clicked`
-from the blocks `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts'
-park links), each with the park as entity, `trip_hub_filter` when a resort chip changes the calendar,
-`trip_accuracy_opened {surface: hub}` for the accuracy line, and `faq_opened` with the question's
-message `key` beside its place, since the questions shown depend on the data. Page types for hub,
-month and best-time pages are the analytics core's (`sitePageTypeOf`).
+What the hub counts (the events in [analytics](../development/analytics.md)):
+
+- **The ways in.** `trip_hub_action` for the head's two ways in (`plan`, `calendar`, on the hub or
+  a month) and for the landing's „Reise planen“ in chapter 01 (`plan`); `trip_planner_started`
+  tells them apart by its `source` (`hero`, `landing`, `restart`), `trip_deleted {from: head}` for
+  „Reise löschen“ in the head.
+- **The calendar.** `trip_hub_filter` when a resort chip changes it, `trip_hub_week_paged` when it
+  shows another week (`how`: `arrow`, `chip`, `keys`, `next_link`; `week`, the one now shown),
+  `trip_hub_day_opened` when a day opens its sheet (`layout`: `table` from `lg`, `phone` below;
+  never which day), `trip_accuracy_opened {surface: hub}` for the accuracy line.
+- **Links**, as `internal_link_clicked` from marked blocks, with no client code of their own:
+  `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts' park links), each
+  with the park as entity, `trip_months` (the month index) and `trip_when` (the best-time teaser,
+  its cards' „Diese Reise planen“ and the link to the best-time page, told apart by `dest`).
+- **The questions**: `faq_opened` with the question's message `key` beside its place, since the
+  questions shown depend on the data.
+- **How far down**: `section_seen` where each chapter begins (`hub_planner`, `hub_calendar`,
+  `hub_resorts`, `hub_best_time`, `hub_faq`), once per view, on the hub and the month pages; the
+  hit's page type tells them apart.
+
+Page types for hub, month and best-time pages are the analytics core's (`sitePageTypeOf`).
 
 ## Ways in
 
@@ -372,7 +395,8 @@ month and best-time pages are the analytics core's (`sitePageTypeOf`).
   | the band, `post`   | the end of a post about region parks        | one park as on the tile, several preselected under „Reiseplaner öffnen"; one band per region                                      |
   | the band, `search` | `/search` for a query that names the region | the bare chapter, as the palette's first row                                                                                      |
 
-  Each also links the bare hub by its name (`nav.calendar`), a followed link. A month
+  Each also links the bare hub by its name (`nav.calendar`), a followed link; the tile leads with
+  it, as its one primary action under „Wann ist es in Walt Disney World am ruhigsten?“. A month
   page of a park calendar sends its month as the When mode's search (`monthSearchRange`: from the
   park's today, at most a year ahead, nothing where the rest of the month is shorter than the
   ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched

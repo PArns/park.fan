@@ -19,13 +19,26 @@ import { useHubTrip } from './hub-trip-state';
 type HubPage = 'hub' | 'month';
 
 /**
- * Start the trip planner from the hub: the one place every "plan your trip" button of the page goes
- * through. It asks the mounted planner to open the assistant on its first step
- * (`tripPlannerUi.openStart`), with where the start came from: the head (`hero`), chapter 01 and
- * the closing band (`landing`), or „Neue Reise planen“ (`restart`), which first clears the trip
- * as „Reise löschen“ does (`clearTrip`, with no undo), so the assistant starts with no answers and
- * a reload brings back no old trip. Counted as `trip_hub_action`, the clear as no option changed;
- * a modified click keeps the link's own way to `#planner`.
+ * Start the trip planner from the hub: the one place every start on the page goes through. It asks
+ * the mounted planner to open the assistant on its first step (`tripPlannerUi.openStart`), with
+ * where the start came from: the head (`hero`), chapter 01 and the closing band (`landing`), „Neue
+ * Reise planen“ (`restart`), which first clears the trip as „Reise löschen“ does (`clearTrip`, with
+ * no undo), so the assistant starts with no answers and a reload brings back no old trip, or a day
+ * of the calendar (`day`), whose date the assistant holds as the arrival. The clear counts as no
+ * option changed.
+ */
+export function startTripPlanner(
+  region: string,
+  source: TripPlannerStartSource,
+  arrival: string | null = null
+): void {
+  if (source === 'restart') clearTrip(region).drop();
+  tripPlannerUi.openStart(source, arrival);
+}
+
+/**
+ * A "plan your trip" link of the hub pressed: counted as `trip_hub_action`, then the planner starts
+ * (`startTripPlanner`); a modified click keeps the link's own way to `#planner`.
  */
 function startPlanner(
   event: MouseEvent<HTMLAnchorElement>,
@@ -36,13 +49,12 @@ function startPlanner(
   trackTripEvent(region, 'trip_hub_action', { action: 'plan', page });
   if (!isPlainPrimaryClick(event)) return;
   event.preventDefault();
-  if (source === 'restart') clearTrip(region).drop();
-  tripPlannerUi.openStart(source);
+  startTripPlanner(region, source);
 }
 
 /**
  * A "plan your trip" button of the hub: a link to `#planner` that starts the planner
- * (`startPlanner`, as `source`), so a modified click and a page without script still reach the
+ * (`startTripPlanner`, as `source`), so a modified click and a page without script still reach the
  * chapter.
  * `landingAction` marks the head's one primary action (`data-landing-action`); the same button in
  * chapter 01 and the closing band carries none.

@@ -484,6 +484,7 @@
       "ridesNone": "Nessun dato per attrazione per questo giorno.",
       "ridesHint": "Ogni attrazione nella sua ora di punta.",
       "planDay": "Apri nel pianificatore della giornata",
+      "planTrip": "Pianifica un viaggio da questo giorno",
       "noHoursFigure": "Orari non ancora pubblicati. Il dato è la previsione; gli orari non contano.",
       "ahead": "Viene prima di {park}, dove i visitatori giornalieri devono uscire alle {time}."
     },
@@ -517,7 +518,8 @@
       "open": "Apri il pianificatore di viaggio"
     },
     "tile": {
-      "line": "Tu indichi le date, il pianificatore ti dice quale dei {count} parchi è il più tranquillo in ogni giorno"
+      "line": "Il giorno più tranquillo di ogni settimana per tutti i {count} parchi {inRegion}, secondo la previsione dell’attesa di picco",
+      "question": "In che giorno c’è meno folla a {resort}?"
     },
     "faq": {
       "parks": {

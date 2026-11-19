@@ -46,6 +46,7 @@ import { dayGuestClose, shortGroupName } from '@/lib/trip-regions/hub-data';
 import type { TripCalendarDay, TripRegionPark } from '@/lib/trip-regions/types';
 import { holidaySignals, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { sentenceCase } from '@/lib/utils/sentence-case';
+import { usePresetArrival } from '@/lib/trip-regions/planner-ui';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
@@ -152,10 +153,12 @@ export function PlanDates({
   const seasonName = useSeasonName();
   const stormKeys = useStormKeys();
 
-  const [pendingFrom, setPendingFrom] = useState<string | null>(null);
+  // A start from a day of the hub's calendar brings its date as the arrival.
+  const presetArrival = usePresetArrival();
+  const [pendingFrom, setPendingFrom] = useState<string | null>(presetArrival);
   const pending = pendingFrom !== null;
   useEffect(() => onPending?.(pending), [onPending, pending]);
-  const [month, setMonth] = useState<string | null>(null);
+  const [month, setMonth] = useState<string | null>(presetArrival && monthOf(presetArrival));
   // Dates set from outside the grid (Parky, a shared link, undo) take the grid to their month; a
   // range picked here records its own arrival first, so the grid stays where the departure was.
   const [seenFrom, setSeenFrom] = useState(state.from);

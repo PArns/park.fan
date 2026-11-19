@@ -106,7 +106,8 @@ open, the offer is Toverland.
 `TripWizard` (`components/trip-regions/wizard/trip-wizard.tsx`) asks the hub's trip planner one
 question a screen. It is a dialog: the whole height of a phone, a stage of at most 768 px in the
 middle of a desk. „Reise planen“ in the planner chapter and the hub (`tripPlannerUi.openStart`)
-open it on the dates; the result's ways back in (`PlanEdit`, and the answer chips through
+open it on the dates, and the hub calendar's „Reise ab diesem Tag planen“ opens it there with that
+day pressed as the arrival (`usePresetArrival`, read once by the date grid); the result's ways back in (`PlanEdit`, and the answer chips through
 `tripPlannerUi.openStep`) open it on their step. The phone's Back button closes it, as it closed the
 sheets before. Every answer writes the planner's state, the address, through `usePlanContext`, so
 the assistant is a view on the plan: shared links, Parky and „Teilen“ keep working, and leaving

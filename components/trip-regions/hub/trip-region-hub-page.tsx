@@ -2,6 +2,8 @@ import { Suspense } from 'react';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { BookOpen, CalendarDays, CalendarPlus, Sun } from 'lucide-react';
+import { SectionMark } from '@/components/analytics/section-mark';
+import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 import { ChapterHeading } from '@/components/common/chapter-heading';
 import {
   HERO_FLOW_INTO_PULL,
@@ -115,7 +117,8 @@ export interface TripRegionHubPageProps {
  * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
  * address bar or remembered in this browser, chapter 01 is the plan and the head's buttons lead to
  * it. Every other chapter is open in both states, with no fold. A block without the region's words
- * draws nothing. Every sentence and every day of the window are in the served HTML.
+ * draws nothing. Every sentence and every day of the window are in the served HTML. Where each
+ * chapter begins is marked for `section_seen` (`hub_planner` … `hub_faq`).
  */
 export async function TripRegionHubPage({
   locale,
@@ -237,9 +240,12 @@ export async function TripRegionHubPage({
           HERO_FLOW_INTO_PULL
         )}
       >
+        {/* Before the chapters' list, not in it: a first child of `space-y` would pass its gap up. */}
+        <SectionMark section="hub_planner" />
         <div className="space-y-16 sm:space-y-24">
           {planner}
 
+          <SectionMark section="hub_calendar" />
           <section id={TRIP_CALENDAR_ID} className="scroll-mt-24">
             <ChapterHeading
               index="02"
@@ -300,6 +306,7 @@ export async function TripRegionHubPage({
             />
           </section>
 
+          <SectionMark section="hub_resorts" />
           <HubResorts
             index="03"
             region={region}
@@ -308,6 +315,7 @@ export async function TripRegionHubPage({
             locale={locale}
           />
 
+          {whenTitle && <SectionMark section="hub_best_time" />}
           {whenTitle && (
             <section className="scroll-mt-24" id="best-time">
               <ChapterHeading
@@ -400,6 +408,7 @@ export async function TripRegionHubPage({
           ] as Parameters<typeof LandingNextSteps>[0]['destinations']
         }
       />
+      <SectionSeenTracker />
     </HubTripProvider>
   );
 }

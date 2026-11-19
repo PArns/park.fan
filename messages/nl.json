@@ -484,6 +484,7 @@
       "ridesNone": "Geen cijfers per attractie voor deze dag.",
       "ridesHint": "Elke attractie op haar drukste moment van de dag.",
       "planDay": "Openen in de dagplanner",
+      "planTrip": "Reis vanaf deze dag plannen",
       "noHoursFigure": "Nog geen openingstijden. Het cijfer is de voorspelling; openingstijden tellen niet mee.",
       "ahead": "Staat boven {park}, waar dagbezoekers om {time} moeten vertrekken."
     },
@@ -517,7 +518,8 @@
       "open": "Reisplanner openen"
     },
     "tile": {
-      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is"
+      "line": "De rustigste dag van elke week voor alle {count} parken {inRegion}, volgens de prognose van de piekwachttijd",
+      "question": "Op welke dag is het in {resort} het rustigst?"
     },
     "faq": {
       "parks": {
