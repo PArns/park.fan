@@ -21,7 +21,7 @@ type HubPage = 'hub' | 'month';
 /**
  * Start the trip planner from the hub: the one place every start on the page goes through. It asks
  * the mounted planner to open the assistant on its first step (`tripPlannerUi.openStart`), with
- * where the start came from: the head (`hero`), chapter 01 and the closing band (`landing`), „Neue
+ * where the start came from: the head (`hero`), chapter 02 and the closing band (`landing`), „Neue
  * Reise planen“ (`restart`), which first clears the trip as „Reise löschen“ does (`clearTrip`, with
  * no undo), so the assistant starts with no answers and a reload brings back no old trip, or a day
  * of the calendar (`day`), whose date the assistant holds as the arrival. The clear counts as no
@@ -57,7 +57,7 @@ function startPlanner(
  * (`startTripPlanner`, as `source`), so a modified click and a page without script still reach the
  * chapter.
  * `landingAction` marks the head's one primary action (`data-landing-action`); the same button in
- * chapter 01 and the closing band carries none.
+ * chapter 02 and the closing band carries none.
  */
 export function HubPlanAction({
   href,
@@ -123,7 +123,7 @@ export function HubCalendarAction({
 /**
  * The head's two ways in and the line under them, by the hub's state. Landing page (and the served
  * HTML): „Reise planen“, „Zum Kalender“ and what the planner asks. With a plan: „Zu deinem Plan“
- * (a jump to chapter 01, still the head's one primary action), „Neue Reise planen“, the trip's
+ * (a jump to chapter 02, still the head's one primary action), „Neue Reise planen“, the trip's
  * dates and „Reise löschen“ at the end of that line (`PlanDelete`), whose undo stands in the
  * line's cell (`PlanDeleteStatus`). The boxes keep their size, so the swap after hydration moves
  * nothing below them.

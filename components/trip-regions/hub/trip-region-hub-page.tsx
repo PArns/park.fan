@@ -115,10 +115,10 @@ export interface TripRegionHubPageProps {
  * is served.
  *
  * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
- * address bar or remembered in this browser, chapter 01 is the plan and the head's buttons lead to
+ * address bar or remembered in this browser, chapter 02 is the plan and the head's buttons lead to
  * it. Every other chapter is open in both states, with no fold. A block without the region's words
  * draws nothing. Every sentence and every day of the window are in the served HTML. Where each
- * chapter begins is marked for `section_seen` (`hub_planner` … `hub_faq`).
+ * chapter begins is marked for `section_seen` (`hub_calendar` … `hub_faq`).
  */
 export async function TripRegionHubPage({
   locale,
@@ -210,7 +210,7 @@ export async function TripRegionHubPage({
 
   const planner = (
     <PlannerChapterSlot
-      index="01"
+      index="02"
       region={region}
       locale={locale}
       defaultMonth={month ? monthKey(month) : undefined}
@@ -241,14 +241,11 @@ export async function TripRegionHubPage({
         )}
       >
         {/* Before the chapters' list, not in it: a first child of `space-y` would pass its gap up. */}
-        <SectionMark section="hub_planner" />
+        <SectionMark section="hub_calendar" />
         <div className="space-y-16 sm:space-y-24">
-          {planner}
-
-          <SectionMark section="hub_calendar" />
           <section id={TRIP_CALENDAR_ID} className="scroll-mt-24">
             <ChapterHeading
-              index="02"
+              index="01"
               icon={CalendarDays}
               kicker={
                 calendar
@@ -305,6 +302,9 @@ export async function TripRegionHubPage({
               className="mt-8"
             />
           </section>
+
+          <SectionMark section="hub_planner" />
+          {planner}
 
           <SectionMark section="hub_resorts" />
           <HubResorts

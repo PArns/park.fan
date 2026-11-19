@@ -19,7 +19,7 @@ import { HubLandingOnly, HubPlannerOnly, HubStateSwitch } from './hub-trip-state
 const CATALOG_TIMEOUT_MS = 1500;
 
 /**
- * Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
+ * Chapter 02 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
  * page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with
  * a plan „Deine Reise“ and the plan. Under the landing's steps stands „Schon Tickets? Eintragen“,
  * which starts the assistant on its Tickets step, since bought tickets may set the dates. The
