@@ -432,11 +432,14 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `weekInWindow` _function_: Whether a week overlaps a window, for marking the window on the strip.
 - `holidayRegionsFor` _function_: The holiday data's regions grouped by country, the locale's own country first, each country's regions in the order the data lists them. Only what the data has: a region it lacks is not offered.
 - `rankedLower` _function_: Why a window ranks lower than its plain minutes say: the season terms `/when` added (`penalties`, minutes per park day). "ranked lower: hurricane season" beside an unchanged figure.
+- `foundWindows` _function_: What a search's answer keeps for the plan of its best window; `null` where it found none.
+- `pickedWindow` _function_: The found window the plan on screen covers, while its dates are exactly one; `null` otherwise.
+- `backToSearch` _function_: The state back on the search the windows came from: no dates, no pins.
 - `WHEN_LIMIT` _const_: Windows the result asks for: the three cards of Level 0.
 - `WHEN_REASON_ORDER` _const_: The reasons a window can carry, most telling first; the card shows the first.
 - `WHEN_WARNING_ORDER` _const_: The warnings a window can carry, most consequential first. `estimate_last_year` is none: after the forecast's days nearly every window has it, and the answer says once from when.
 - `WHEN_HOLIDAY_COUNTRIES` _const_: The countries the picker asks the holiday data for: where park.fan's visitors live, one per locale.
-- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenWeatherTerm`, `WhenHolidayCountry`
+- Types: `WhenPeriodKey`, `WhenPeriod`, `WhenReasonCode`, `WhenWarningCode`, `WhenWeatherTerm`, `WhenHolidayCountry`, `FoundWindows`
 
 ### [`plan.ts`](../../lib/trip-regions/plan.ts)
 

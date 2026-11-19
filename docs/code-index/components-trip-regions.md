@@ -148,9 +148,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-day-actions.tsx`](../../components/trip-regions/planner/plan-day-actions.tsx)
 
-- `PlanDayActions` _component_: The row under a park day's card: Festhalten (a toggle, pressed while the day is pinned), Tauschen (the swap mode) and Mehr (the day's other edits in a sheet). Each names the park and the date.
+- `PlanDayActions` _component_: „Mehr“ under a park day's card, named with the park and the date: the day's edits (pin, swap, a free day, take the park out) wait in its sheet, since few visitors use them. Nothing for a day without one park, a hop day.
 - `DayActionsSheet` _component_: „Mehr“ for a park day, in the planner's sheet: pin it, swap it, put it on the quietest free day of its city (with the figure, or honestly „no free day is quieter“), make it a free day, take the park out of the trip, or open the day in the …
-- Types: `PlanDayEdits`
+- `ActionRow` _component_: One entry of a planner sheet's menu, as a list item: an icon in its square, the action and a line under it. `pressed` makes it a toggle, `expanded` a disclosure.
 
 ### [`planner/plan-day-bits.tsx`](../../components/trip-regions/planner/plan-day-bits.tsx)
 
@@ -195,8 +195,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-ideas.tsx`](../../components/trip-regions/planner/plan-ideas.tsx)
 
-- `IdeasStrip` _component_: „Parky hat 3 Ideen für deinen Plan“ over the days: a card per idea, to swipe on a phone and in a grid at a desk. Nothing without ideas.
-- `IdeaCard` _component_: One idea over the plan: its line, its figure, the verb that applies it and „Im Chat“.
+- `IdeaNote` _component_: One idea over the plan, as a quiet note, so the plan keeps the first screen: the API's best one the visitor has not hidden. The others stay under the days they change (`DayHint`). Nothing without ideas.
 - `DayHint` _component_: The idea about one day, under its card: Parky's face, the line and the button that applies it.
 - `useShownIdeas` _hook_: Parky's ideas for the plan on screen, as the planner shows them: the API's best single edits (`usePlanIdeas`) less those that would overrule an answer the visitor gave in the assistant (`shownIdeas`).
 - `useIdeaWords` _hook_: An idea in words: its line („DisneySea am Mo., 25. Jan. statt am Fr., 22. Jan.“) and its figure.
@@ -205,7 +204,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-keep.tsx`](../../components/trip-regions/planner/plan-keep.tsx)
 
-- `PlanKeep` _component_: Keeping the plan: every park day into the day planner as a reserved day in one write (the store's `reserveDays`, which Parky's trip action uses too; a day that already holds a plan stays as it is), the trip as an `.ics` file built here in …
+- `PlanShare` _component_: „Teilen“ in the result's head: the system share sheet on a phone that has one, the link copied at a desk, where a share sheet is the operating system's and rarely what a visitor expects.
+- `PlanKeep` _component_: Keeping the plan, as entries of the result's „Mehr“: every park day into the day planner as a reserved day in one write (the store's `reserveDays`, which Parky's trip action uses too; a day that already holds a plan stays as it is), and …
 
 ### [`planner/plan-month-grid.tsx`](../../components/trip-regions/planner/plan-month-grid.tsx)
 
@@ -217,13 +217,19 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `PlanMonthView` _component_: The Month view: the trip in its calendar, whole weeks from Monday, drawn as a park's crowd calendar (`ParkCalendarDay`, `ParkCalendarLegend`).
 
+### [`planner/plan-more.tsx`](../../components/trip-regions/planner/plan-more.tsx)
+
+- `PlanMore` _component_: „Mehr“ in the result's head: the tools few visitors use, in the planner's sheet. The view (Tage, Woche, Monat), the days into the day planner, the `.ics` file and „Wie genau ist das?“. A day's own edits are in that day's „Mehr“.
+- `usePlanView` _hook_: The result's view: the one this browser chose (`plan-view.ts`), else the Week in a wide window and the Days on a phone.
+
 ### [`planner/plan-move-card.tsx`](../../components/trip-regions/planner/plan-move-card.tsx)
 
 - `PlanMoveCard` _component_: A day that is only the move to the next city (`travel`), as the Days view's card in the move's dashed primary ink: the date and „Reisetag“ with the typical times, the two cities on the line with the mode between them, the service and its …
 
 ### [`planner/plan-peak-card.tsx`](../../components/trip-regions/planner/plan-peak-card.tsx)
 
-- `PlanPeakCard` _component_: The peak wait on the planned days as a card: the figure large, how much less it is than the average of the trip's days (or that the order barely matters), the two as bars in primary blue (never crowd colours, which mean something else), …
+- `PlanPeakCard` _component_: The peak wait on the planned days as a card: the figure large, how much less it is than the average of the trip's days (or that the order barely matters), the two as bars in primary blue (never crowd colours, which mean something else) and …
+- `PlanAccuracy` _component_: „Wie genau ist das?“ as an entry of the result's „Mehr“: opens on the average day and the forecast's error in sentences. Nothing where the plan has no figures.
 
 ### [`planner/plan-place-words.tsx`](../../components/trip-regions/planner/plan-place-words.tsx)
 
@@ -276,6 +282,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-tickets-card.tsx`](../../components/trip-regions/planner/plan-tickets-card.tsx)
 
 - `PlanTicketsCard` _component_: The tickets at Level 0, after the saving and before the day lines, and under the assistant's "Not yet".
+- `PlanTicketsLine` _component_: „Tickets für 5 Parktage“ under the result's head: a plain row into the assistant's Tickets step, worded as a fact about the plan so it does not read as an advertisement. The one place the head opens that step from (`edit.tickets('head')`).
 - `TicketsAsk` _component_: "Already have tickets? Add them": the way to the assistant's Tickets step, under the plan's tickets (`onAsk`, the result's `edit.tickets`) and on the hub's landing without one, where it starts the assistant there …
 - Types: `PlanEdit`
 
@@ -291,7 +298,9 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-when-result.tsx`](../../components/trip-regions/planner/plan-when-result.tsx)
 
-- `PlanWhenResult` _component_: The When mode's answer, simple first. Level 0: the three best windows as cards, each with its dates, the big rides' wait, how far below the period's average it lies and one reason; one line under the title says from which week the figures …
+- `PlanWhenResult` _component_: The When mode's answer once the visitor asks to compare the windows (a search's best window is planned at once, `PlanWhenPicked`), simple first.
+- `PlanWhenPicked` _component_: Over the plan of a window the search found: why these dates, the other windows as chips that plan theirs instead, and „Alle vergleichen“ back to the search's cards and year strip.
+- `usePickedLine` _hook_: The line over the plan of a window the search found, „Die ruhigsten 7 Tage im gewählten Zeitraum: 9.–15. Jan.“, also for the live region that announces it.
 
 ### [`planner/trip-region-planner.tsx`](../../components/trip-regions/planner/trip-region-planner.tsx)
 
