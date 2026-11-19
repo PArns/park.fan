@@ -29,7 +29,7 @@ coverImage:
 seo:
   title: 'Disneyland After Dark 2027: fechas y entradas'
   description: >-
-    Disneyland Anaheim: Sweethearts Nite 2027 desde el 24/1, entradas desde el 10/12 a las 18:00 en España. Nueva Disneylandia Nite, más Star Wars y Pride Nite.
+    Disneyland Anaheim: Sweethearts Nite 2027 desde el 24/1, entradas el 10/12 a las 18:00 en España. Nueva Disneylandia Nite, más Star Wars y Pride Nite.
   keywords:
     - Disneyland After Dark 2027
     - Sweethearts Nite 2027

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Disneyland in Anaheim holds four After Dark parties in 2027, and Disneylandia Nite is new in April. Sweethearts' Nite tickets go on sale on 10 December at 9 a.m. Pacific (6 p.m. CET).
+  Disneyland in Anaheim holds four After Dark parties in 2027, and Disneylandia Nite is new in April. Sweethearts' Nite tickets go on sale on 10 December at 9:00 Pacific time, 18:00 CET.
 tags:
   - news
   - disneyland-resort

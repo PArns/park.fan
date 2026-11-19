@@ -29,7 +29,7 @@ coverImage:
 seo:
   title: 'Disneyland After Dark 2027: alle data en tickets'
   description: >-
-    Disneyland Anaheim: Sweethearts Nite 2027 vanaf 24-1, tickets vanaf 10-12 om 18.00 uur (MET). Nieuw is Disneylandia Nite, plus Star Wars Nite en Pride Nite.
+    Disneyland Anaheim: Sweethearts Nite 2027 vanaf 24-1, tickets vanaf 10-12 om 18.00 uur (MET). Nieuw: Disneylandia Nite, plus Star Wars Nite en Pride Nite.
   keywords:
     - Disneyland After Dark 2027
     - Sweethearts Nite 2027
