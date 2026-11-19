@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { getListFormat } from '@/lib/utils/intl-format';
 import {
@@ -16,6 +17,17 @@ import { requireTripRegion } from '@/lib/trip-regions/registry';
 import type { TripRegion, TripWhen } from '@/lib/trip-regions/types';
 import { HubWhenTeaser, type HubWhenScope } from './hub-when-teaser';
 
+/** The teaser with its served answer, once `/when` has given one. */
+async function HubWhenAnswer({
+  when,
+  ...teaser
+}: Omit<Parameters<typeof HubWhenTeaser>[0], 'initial'> & { when: Promise<TripWhen | null> }) {
+  const answer = await when;
+  return (
+    <HubWhenTeaser {...teaser} initial={(answer?.windows ?? []).slice(0, BEST_TIME_WINDOWS)} />
+  );
+}
+
 /**
  * The best-time chapter's body, the teaser of the region's best-time pages (`HubWhenTeaser`),
  * with what only the server knows: a choice per best-time page of the region (its resorts by
@@ -23,7 +35,9 @@ import { HubWhenTeaser, type HubWhenScope } from './hub-when-teaser';
  * region's words for why a window was picked, and the served answer, the region's own page at
  * its own length, which is the query that page sends. One figure and no second baseline; where a
  * figure comes from is the questions' and the best-time page's to say. The page draws the chapter
- * only for a region with best-time pages and its words for them.
+ * only for a region with best-time pages and its words for them. The answer streams in its own
+ * `<Suspense>`, a cold `/when` taking seconds; until then the switches stand and the cards' place
+ * is held.
  */
 export async function HubWhen({
   region,
@@ -34,7 +48,7 @@ export async function HubWhen({
 }: {
   region: TripRegion;
   /** The region's own page's `/when`; `null` when it gave no answer. */
-  when: TripWhen | null;
+  when: Promise<TripWhen | null>;
   /** The days every choice searches. */
   range: { from: string; to: string };
   /** The page the planner is on: the hub or the month page. */
@@ -69,15 +83,10 @@ export async function HubWhen({
   const reasons = Object.fromEntries(
     WHEN_REASON_ORDER.map((code) => [code, regionOrShared(tWhenOwn, tWhen, `reason.${code}`)])
   ) as Record<WhenReasonCode, string>;
+  const teaser = { region: region.slug, scopes, range, reasons, pagePath, locale };
   return (
-    <HubWhenTeaser
-      region={region.slug}
-      scopes={scopes}
-      initial={(when?.windows ?? []).slice(0, BEST_TIME_WINDOWS)}
-      range={range}
-      reasons={reasons}
-      pagePath={pagePath}
-      locale={locale}
-    />
+    <Suspense fallback={<HubWhenTeaser {...teaser} initial={null} />}>
+      <HubWhenAnswer {...teaser} when={when} />
+    </Suspense>
   );
 }
