@@ -1,5 +1,5 @@
 ---
-title: 'Lake Compounce festeggia i cento anni della Wildcat'
+title: 'Lake Compounce festeggia nel 2027 i cento anni della Wildcat'
 translationKey: lake-compounce-wildcat-100
 date: '2026-11-19'
 time: '18:00'
@@ -43,11 +43,11 @@ seo:
     - Boulder Dash 5k
 ---
 
-Sabato 8 maggio 2027 [Lake Compounce](ref:lake-compounce), a Bristol in Connecticut, apre la stagione e per tutta l’estate festeggia il centesimo compleanno delle sue montagne russe in legno Wildcat. Il parco ha annunciato la data d’apertura e il calendario degli eventi del 2027 il 16 novembre. Il parco acquatico Crocodile Cove apre tre settimane dopo, sabato 29 maggio.
+Nel 2027 [Lake Compounce](ref:lake-compounce), a Bristol in Connecticut, festeggia per tutta la stagione il centesimo compleanno delle sue montagne russe in legno Wildcat. La stagione si apre sabato 8 maggio. Il parco ha annunciato questa data e il calendario degli eventi del 2027 il 16 novembre. Il parco acquatico Crocodile Cove apre tre settimane dopo, sabato 29 maggio.
 
 ## Che cosa è previsto per il compleanno della Wildcat
 
-Si parte a maggio con i Wildcat Weekends. La novità è la Wildcat Dance Party, dove balla anche la mascotte Ryder the Wildcat, e nel corso della stagione sono annunciate altre iniziative per l’anniversario. Le date non sono ancora note, nemmeno quelle dei Wildcat Weekends. Chi ha un abbonamento riceve un regalo il giorno dell’apertura.
+Si parte a maggio con i Wildcat Weekends. La novità è la Wildcat Dance Party, dove balla anche la mascotte Ryder the Wildcat, e nel corso della stagione sono annunciate altre iniziative per l’anniversario. Lake Compounce non ha ancora comunicato le date, nemmeno quelle dei Wildcat Weekends. Chi ha un abbonamento riceve un regalo il giorno dell’apertura.
 
 > [!QUOTE]
 > Mentre la Wildcat compie cento anni, rendiamo omaggio alla storia e alle esperienze che negli anni hanno fatto di Lake Compounce una parte di tante famiglie.
@@ -62,41 +62,41 @@ LLanas dirige il parco da agosto 2026. Prima era Director of Admissions all’Aq
 
 La [Wildcat](ref:lake-compounce/wildcat?bare) ha aperto nel 1927. L’ha costruita Philadelphia Toboggan Coasters, come sessantunesimo impianto dell’azienda, su progetto di Herbert Paul Schmeck. Nel 1986 Charlie Dinn e Curtis D. Summers l’hanno ricostruita. Il tracciato è lungo 837 metri (2.746 piedi) e nel punto più alto arriva a 26 metri (85 piedi). La prima discesa è di 24 metri (78 piedi), e con i suoi 77 km/h (48 mph) la Wildcat va sorprendentemente veloce per avere cento anni. Non ha inversioni, e un giro dura un minuto e 15 secondi.
 
-Per la stagione 2026 la Wildcat è tornata dopo lavori durati diversi anni. Il parco ha rifatto tutti i binari con la tecnologia di Gravity Group, con rotaie a strati verticali, perché il giro sia più morbido senza perdere il suo carattere classico. Da allora gira di nuovo un secondo treno, così la coda si accorcia. Entrambi i treni sono di Great Coasters International e hanno ciascuno sette vetture, con 14 posti in tutto. Si sale da 122 centimetri (48 pollici) e non c’è un limite massimo. L’attrazione è accessibile in sedia a rotelle, e lo Speedy Pass vale anche qui.
+Per la stagione 2026 la Wildcat è tornata dopo lavori durati diversi anni. Il parco ha montato su tutto il tracciato le rotaie a strati verticali di Gravity Group, perché il giro sia più morbido. Da allora gira di nuovo un secondo treno, così la coda si accorcia. Entrambi i treni sono di Great Coasters International e hanno ciascuno sette vetture, con 14 posti in tutto. Puoi salire da 122 centimetri (48 pollici), e non c’è un limite massimo. L’attrazione è accessibile in sedia a rotelle, e lo Speedy Pass vale anche qui.
 
 ```ride-waits-widget rides=lake-compounce/wildcat|Wildcat|Legno;lake-compounce/boulder-dash|Boulder Dash|Legno;lake-compounce/phobia-phear-coaster|Phobia Phear Coaster|Acciaio, lancio;lake-compounce/zoomerang|Zoomerang|Acciaio, Boomerang columns=type,peak,days highlight=lake-compounce/wildcat
 
 ```
 
-Lake Compounce ha cinque montagne russe. [Boulder Dash](ref:lake-compounce/boulder-dash?bare) è in funzione dal 21 maggio 2000: è un terrain coaster in legno che segue l’andamento del terreno. L’ha costruita Custom Coasters International su progetto di Larry Bill. Il percorso misura 1.440 metri (4.725 piedi), la prima discesa è di 35 metri (115 piedi), e a 97 km/h (60 mph) un giro dura due minuti e mezzo. Il [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), uno Sky Rocket II di Premier Rides, ha aperto il 7 maggio 2016. È alto 46 metri (150 piedi), lancia il treno più volte con motori lineari, raggiunge i 100 km/h (62 mph) e fa un’inversione. Si sale da 137 centimetri (54 pollici), con un accompagnatore da 132 (52 pollici). [Zoomerang](ref:lake-compounce/zoomerang?bare) è un Boomerang di Vekoma del 1997 con tre inversioni. Per i più piccoli c’è poi il Kiddie Coaster.
+La seconda montagna russa in legno del parco, [Boulder Dash](ref:lake-compounce/boulder-dash?bare), è in funzione dal 21 maggio 2000. È un terrain coaster che segue l’andamento del terreno. L’ha costruita Custom Coasters International su progetto di Larry Bill. Il percorso misura 1.440 metri (4.725 piedi) e la prima discesa è di 35 metri (115 piedi). La velocità arriva a 97 km/h (60 mph), e un giro dura due minuti e mezzo. Il [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), uno Sky Rocket II di Premier Rides, ha aperto il 7 maggio 2016. È alto 46 metri (150 piedi), lancia il treno più volte con motori lineari, raggiunge i 100 km/h (62 mph) e fa un’inversione. Puoi salire da 137 centimetri (54 pollici), con un accompagnatore da 132 (52 pollici). [Zoomerang](ref:lake-compounce/zoomerang?bare) è un Boomerang di Vekoma del 1997 con tre inversioni. Con il Kiddie Coaster per i più piccoli, le montagne russe sono cinque.
 
 ## Gli eventi da maggio a ottobre
 
-Sempre a maggio si corre per la prima volta la Boulder Dash 5k, una corsa di cinque chilometri che il parco organizza con la Hartford Marathon Foundation e Special Olympics Connecticut. Prende il nome dalle montagne russe in legno. Il ricavato va a una raccolta fondi di Special Olympics Connecticut, che così paga la sua prima sede propria in un nuovo campus a Bristol, in apertura nel 2027. Il giorno di maggio in cui si corre non è ancora fissato.
+Sempre a maggio si corre per la prima volta la Boulder Dash 5k, una corsa di cinque chilometri che il parco organizza con la Hartford Marathon Foundation e Special Olympics Connecticut. Il ricavato va alla raccolta fondi di Special Olympics Connecticut per la sua prima sede propria. Sorgerà in un nuovo campus a Bristol, in apertura nel 2027. Il giorno di maggio in cui si corre non è ancora fissato.
 
 Nei fine settimana dal 5 al 27 giugno c’è il Kids Fest, con Daniel Tiger e altri personaggi da incontrare, spettacoli di magia e i nuovi foam party. Il Kids Fest è compreso in tutti gli abbonamenti 2027.
 
-Nel fine settimana del 4 luglio ci sono i fuochi d’artificio sul lago, poi ogni fine settimana di luglio nuovi spettacoli di droni e laser con motivi presi dal parco. Prima di ogni spettacolo suona musica dal vivo. Chi si iscrive alla newsletter può votare una delle figure dello spettacolo di droni. Lake Compounce non ha ancora pubblicato le singole serate, e nemmeno i giorni del Summer Beach Bash di agosto.
+Nel fine settimana del 4 luglio ci sono i fuochi d’artificio sul lago, poi ogni fine settimana di luglio nuovi spettacoli di droni e laser con motivi presi dal parco. Prima di ogni spettacolo suona musica dal vivo. Chi si iscrive alla newsletter può votare una delle figure dello spettacolo di droni. Ad agosto segue il Summer Beach Bash. Lake Compounce non ha ancora pubblicato le date degli spettacoli né quelle del Beach Bash.
 
-Una novità sono gli Harvest Days, nei fine settimana dal 4 al 26 settembre, con musica, cibo, bevande e tradizioni del New England. Segue Phantom Fall Fest, l’evento di Halloween, in alcune date dal 24 settembre al 31 ottobre. Di giorno c’è un programma per le famiglie, la sera aprono le Haunted Attractions. Quando finisca la stagione 2027, il parco non l’ha ancora comunicato.
+Una novità sono gli Harvest Days, nei fine settimana dal 4 al 26 settembre, con musica, cibo, bevande e tradizioni del New England. Segue Phantom Fall Fest, l’evento di Halloween, in alcune date dal 24 settembre al 31 ottobre. Di giorno c’è un programma per le famiglie, la sera aprono le Haunted Attractions.
 
 Fino all’apertura Lake Compounce resta chiuso. La stagione 2026 si è conclusa il 1° novembre con Phantom Fall Fest, e Holiday Lights si è tenuto per l’ultima volta nell’inverno 2025.
 
 ## Abbonamenti e biglietti per il 2027
 
-Per il Black Friday Lake Compounce vende gli abbonamenti 2027 a prezzo ridotto, fino a 80 $ in meno del prezzo normale. Fino a quando duri l’offerta, il parco non l’ha detto.
+Per il Black Friday Lake Compounce vende gli abbonamenti 2027 a prezzo ridotto. Il parco non ha ancora comunicato fino a quando dura l’offerta.
 
-Il Gold Pass costa 89,99 $ invece di 169,99 $. Vale anche a Crocodile Cove e a Phantom Fall Fest, e comprende il General Parking. Con la bottiglia stagionale le bibite sono gratis, e in più ci sono il 15 % di sconto su cibo, acquisti e Speedy Pass e il 20 % sulle cabanas. In offerta anche il Silver Pass costa 89,99 $, invece di 139,99 $, e vale anch’esso nel parco acquatico e a Phantom Fall Fest, ma dà solo il 10 % di sconto e niente parcheggio. Visto che al momento allo stesso prezzo si ha il Gold Pass, per ora il Silver è poco più di una riga nel listino.
+Il Gold Pass costa 89,99 $ invece di 169,99 $. Vale anche a Crocodile Cove e a Phantom Fall Fest, e comprende il General Parking. Con la bottiglia stagionale le bibite sono gratis, e in più ci sono il 15 % di sconto su cibo, acquisti e Speedy Pass e il 20 % sulle cabanas. In offerta anche il Silver Pass costa 89,99 $, invece di 139,99 $. Vale anch’esso nel parco acquatico e a Phantom Fall Fest, ma dà solo il 10 % di sconto e niente parcheggio. Visto che adesso il Gold Pass costa uguale, per ora il Silver è poco più di una riga nel listino.
 
-Il Platinum Pass costa 169,99 $ invece di 209,99 $. Il Preferred Parking è gratuito finché ci sono posti, lo sconto è del 20 %, sulle cabanas del 30 %. Vale inoltre in altri parchi negli Stati Uniti, tra cui Kennywood, Dutch Wonderland, Story Land e Splish Splash. Anche a Kennywood, vicino a Pittsburgh, nel 2027 compiono gli anni tre attrazioni del 1927, tra cui le montagne russe in legno Racer. Ne parliamo nel nostro [articolo sulla stagione 2027 di Kennywood](/news/kennywood-stagione-2027).
+Il Platinum Pass costa 169,99 $ invece di 209,99 $. Il Preferred Parking è gratuito finché ci sono posti, lo sconto è del 20 %, sulle cabanas del 30 %. Vale inoltre in altri parchi negli Stati Uniti, tra cui Kennywood, Dutch Wonderland, Story Land e Splish Splash. Anche a [Kennywood, vicino a Pittsburgh](/news/kennywood-stagione-2027), nel 2027 compiono gli anni tre attrazioni del 1927, tra cui le montagne russe in legno Racer.
 
-Chi compra adesso un Gold o un Platinum riceve un biglietto gratuito per un amico per ogni giorno di maggio 2027, salvo i giorni esclusi. Ogni abbonamento include due ingressi al Carousel Museum. Senza abbonamento, online si compra l’Any Day Ticket a 59,99 $ invece di 65,99 $, valido in un giorno qualsiasi della stagione estiva 2027, anche a Crocodile Cove. Dai 65 anni c’è uno sconto.
+Se compri adesso un Gold o un Platinum, a maggio 2027 porti gratis un amico in qualsiasi giorno, salvo i giorni esclusi. Ogni abbonamento include due ingressi al Carousel Museum. Senza abbonamento, l’Any Day Ticket costa online 59,99 $ invece di 65,99 $. Vale in un giorno a tua scelta della stagione estiva 2027, anche a Crocodile Cove. Dai 65 anni c’è uno sconto.
 
 Martedì 1° dicembre è il Giving Tuesday. Per ogni abbonamento venduto quel giorno, Lake Compounce regala un biglietto giornaliero 2027 al Boys & Girls Club of Bristol.
 
 ## Crocodile Cove dal 29 maggio
 
-Il parco presenta Crocodile Cove come il più grande parco acquatico del Connecticut. Ci sono più di 15 scivoli, un lazy river e due piscine a onde. All’apertura del 29 maggio sono pronti, tra gli altri, Bayou Bay, [Storm Surge](ref:lake-compounce/storm-surge?bare) e [Croc-O-Nile](ref:lake-compounce/croc-o-nile?bare), insieme alle cabanas e al chiosco di Nathan’s.
+Il parco presenta Crocodile Cove come il più grande parco acquatico del Connecticut. Ci sono più di 15 scivoli, un lazy river e due piscine a onde. All’apertura sono pronti, tra gli altri, Bayou Bay, [Storm Surge](ref:lake-compounce/storm-surge?bare) e [Croc-O-Nile](ref:lake-compounce/croc-o-nile?bare), insieme alle cabanas e al chiosco di Nathan’s.
 
 ## Quando c’è meno gente
 
@@ -106,9 +106,9 @@ Il parco presenta Crocodile Cove come il più grande parco acquatico del Connect
 
 ## Come arrivare e dove parcheggiare
 
-Il parco si trova al 185 di Enterprise Drive, a Bristol. Dalla I-84 si prende l’uscita 31 e poi si percorrono circa tre chilometri (due miglia) verso nord sulla Route 229. Il General Parking costa 28 $, il Preferred Parking 45 $ finché c’è posto. Lake Compounce non accetta contanti, neanche per delle montagne russe del 1927. Si paga con carta, Apple Pay o Google Pay, e alle macchinette le banconote si cambiano in una carta prepagata. Nell’area del parco c’è il Lake Compounce Campground, con casette e piazzole per camper e tende, che apre all’inizio di maggio.
+Il parco si trova al 185 di Enterprise Drive, a Bristol. Dalla I-84 prendi l’uscita 31 e poi percorri circa tre chilometri (due miglia) verso nord sulla Route 229. Il General Parking costa 28 $, il Preferred Parking 45 $ finché c’è posto. Lake Compounce non accetta contanti, neanche per delle montagne russe del 1927. Paghi con carta, Apple Pay o Google Pay, e alle macchinette cambi le banconote con una carta prepagata. Nell’area del parco c’è il Lake Compounce Campground, con casette e piazzole per camper e tende. Apre all’inizio di maggio.
 
-## Dalla storia del parco
+## Un po’ di storia
 
 Lake Compounce è nato nel 1846 come parco per i picnic, voluto da Gad Norton, e si definisce «America’s First Amusement Park». Secondo il conto del parco, quella del 2027 è la 181ª stagione. Ancora più vecchia delle montagne russe è la giostra, costruita nel 1898 e a Lake Compounce dal Memorial Day del 1911. Dal 1986 al 1987 il parco si chiamava Hershey Lake Compounce, dal 1988 al 1995 Lake Compounce Festival Park. Dal 2026 il Legacy Corner, vicino a Down Time, espone foto e ricordi della storia del parco. Oggi Lake Compounce appartiene a Herschend.
 
