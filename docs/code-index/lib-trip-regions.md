@@ -9,7 +9,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `tripRegionCacheTag` _function_: The Data Cache tag on every read of a region, for the API's revalidation webhook.
 - `tripTicketsCacheTag` _function_: The Data Cache tag of a region's ticket catalog, which the API revalidates after every edit.
-- `tripRegionApiUrl` _function_: The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this deploy as `v`.
+- `tripRegionApiUrl` _function_: The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with `TRIP_API_VERSION` as `v`; the API's routes take `v` and read nothing from it (docs/features/trip-regions.md#data).
 - `getTripRegionTickets` _function_: The ticket catalog as the admin keeps it (`/tickets`): open, five minutes at the edge, and revalidated by tag on every edit. The region route's own `tickets` is the fallback while this route is missing or failing.
 - `getTripRegion` _function_: The region: its parks, groups, hotel areas and travel legs. Open, curated in code.
 - `getTripRegionLinks` _function_: The live regions a page can link into, for the bands on park, calendar, city, country and post pages and `/search`.
@@ -20,6 +20,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `getTripRegionSchoolBreaks` _function_: The school-holiday regions the holiday data knows in `countries` (`DE,NL,GB`), each with its breaks in the range and the day its data ends. Open: the data key stays home.
 - `getTripRegionAccuracy` _function_: How far the region's forecast was off lately (`/accuracy`), open like `/school-breaks`, an hour in the Data Cache as the API asks the browser.
 - `TRIP_REGIONS_CACHE_TAG` _const_: The Data Cache tag of the list of regions (`GET /v1/trip-regions`).
+- `TRIP_API_VERSION` _const_: The version of the trip-region routes this frontend reads, sent as `v` on every read.
+- `TRIP_API_TYPES_HASH` _const_: The first 12 hex digits of the SHA-256 of `lib/trip-regions/types.ts` when `TRIP_API_VERSION` was last weighed against it.
 - Types: `TripWindow`, `TripRegionNavFacts`
 
 ### [`best-time.ts`](../../lib/trip-regions/best-time.ts)

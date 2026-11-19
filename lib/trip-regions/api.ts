@@ -40,20 +40,28 @@ export function tripTicketsCacheTag(region: string): string {
 export const TRIP_REGIONS_CACHE_TAG = 'trip-regions';
 
 /**
- * This deploy's commit, which every trip-region read sends as `v`; `dev` outside Vercel. Read from
- * the environment rather than `build-info.json`, which the node test scripts that load this module
- * run without.
+ * The version of the trip-region routes this frontend reads, sent as `v` on every read. Raise it in
+ * the pull request that first reads a field the API has just added: Cloudflare keeps a region route
+ * a day and two hours, the API cannot purge it, and only a new `v` reaches the new answer before
+ * then. Between such changes a deploy keeps the edge copies and the Data Cache entries it finds,
+ * where the commit it replaced emptied both on every deploy.
  */
-const TRIP_REGION_READ_VERSION = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 12) || 'dev';
+export const TRIP_API_VERSION = '2026-11-19';
 
 /**
- * The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with this
- * deploy as `v`. The API cannot purge Cloudflare, which keeps the region route a day and two hours
- * stale, so each deploy reads its own edge copy; the API's routes take `v` and read nothing from it
+ * The first 12 hex digits of the SHA-256 of `lib/trip-regions/types.ts` when `TRIP_API_VERSION` was
+ * last weighed against it. `pnpm test:trip-regions` fails when the types change without it, so a
+ * change to the answers' shape always asks whether the version has to go up.
+ */
+export const TRIP_API_TYPES_HASH = '41aa7919dac1';
+
+/**
+ * The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with
+ * {@link TRIP_API_VERSION} as `v`; the API's routes take `v` and read nothing from it
  * (docs/features/trip-regions.md#data).
  */
 export function tripRegionApiUrl(apiPath: string): string {
-  const v = encodeURIComponent(TRIP_REGION_READ_VERSION);
+  const v = encodeURIComponent(TRIP_API_VERSION);
   return `${getApiBaseUrl()}${apiPath}${apiPath.includes('?') ? '&' : '?'}v=${v}`;
 }
 
