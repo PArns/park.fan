@@ -9,6 +9,7 @@ import {
 } from './plan';
 import type { ClimateChip } from './plan-copy';
 import { tripMonthRange } from './paths';
+import { searchFromToday } from './trip-dates';
 import type { TripMonth, TripSchoolBreaks, TripWhenWeek, TripWhenWindow } from './types';
 
 /**
@@ -92,13 +93,19 @@ export function whenPeriodOf(
 
 /**
  * The `/when` request's query: the search, the length, the holiday region, the three windows the
- * cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode.
+ * cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode and
+ * before the region's `today` is known; a period that began before it searches from it
+ * (`searchFromToday`), since the API answers a past one with a 400.
  */
-export function whenRequestQuery(state: TripPlanState): Record<string, string> | null {
-  if (!state.when) return null;
+export function whenRequestQuery(
+  state: TripPlanState,
+  today: string | null
+): Record<string, string> | null {
+  if (!state.when || !today) return null;
+  const range = searchFromToday(state.when, state.days, today);
   const query: Record<string, string> = {
-    from: state.when.from,
-    to: state.when.to,
+    from: range.from,
+    to: range.to,
     days: String(state.days),
   };
   // The API's default length is left out, so the hub's own `/when` and this one are one query.
@@ -297,4 +304,42 @@ export function rankedLower(
   }
   if ((p.heat ?? 0) > 0) out.push('extreme_heat');
   return out;
+}
+
+/**
+ * A search's windows, kept once its best one is planned: the row of other windows over that plan
+ * switches between them, and „Alle vergleichen“ goes back to the search (`backToSearch`).
+ */
+export interface FoundWindows {
+  /** The search as the address had it. */
+  search: { when: PlanSearchRange; days: number; within: string | null };
+  windows: { rank: number; from: string; to: string }[];
+}
+
+/** What a search's answer keeps for the plan of its best window; `null` where it found none. */
+export function foundWindows(
+  state: Pick<TripPlanState, 'when' | 'days' | 'within'>,
+  windows: readonly Pick<TripWhenWindow, 'rank' | 'from' | 'to'>[]
+): FoundWindows | null {
+  if (!state.when || windows.length === 0) return null;
+  return {
+    search: { when: state.when, days: state.days, within: state.within },
+    windows: [...windows]
+      .sort((a, b) => a.rank - b.rank)
+      .map(({ rank, from, to }) => ({ rank, from, to })),
+  };
+}
+
+/** The found window the plan on screen covers, while its dates are exactly one; `null` otherwise. */
+export function pickedWindow(
+  found: FoundWindows | null,
+  state: Pick<TripPlanState, 'from' | 'to' | 'when'>
+): FoundWindows['windows'][number] | null {
+  if (!found || state.when) return null;
+  return found.windows.find((w) => w.from === state.from && w.to === state.to) ?? null;
+}
+
+/** The state back on the search the windows came from: no dates, no pins. */
+export function backToSearch(state: TripPlanState, found: FoundWindows): TripPlanState {
+  return { ...state, ...found.search, from: null, to: null, locks: [] };
 }

@@ -70,7 +70,7 @@ function tripState(
  */
 export function ParksStep({ merged, askId }: WizardStepProps) {
   const t = useTranslations('tripPlanner');
-  const { region, headliners, state, groupByKey } = usePlanContext();
+  const { region, headliners, allHeadliners, state, groupByKey } = usePlanContext();
   const [extrasOpen, setExtrasOpen] = useState(false);
   const extrasId = useId();
   const picks = effectiveParks(state, headliners);
@@ -84,13 +84,20 @@ export function ParksStep({ merged, askId }: WizardStepProps) {
   const main = groups((p) => p.headliner);
   const extras = region.parks.filter((p) => !p.headliner);
   const folded = extras.length > OPEN_EXTRAS;
-  const extrasChosen = picks.filter((p) => !headliners.includes(p.slug)).length;
+  const extrasChosen = picks.filter((p) => !allHeadliners.includes(p.slug)).length;
+  // The trip's days hold fewer parks than the region's headliners (`headlinersForTrip`).
+  const fitted = state.parks === null && headliners.length < allHeadliners.length;
   const grid = 'grid grid-cols-2 gap-2.5 sm:grid-cols-4';
 
   return (
     <div className="flex flex-col gap-5">
       <LeftOutQuestion askId={askId} />
       {!merged && <p className="text-muted-foreground text-sm">{t('wizard.parks.lead')}</p>}
+      {fitted && (
+        <p className="text-muted-foreground text-sm" data-wizard-parks-fitted="">
+          {t('wizard.parks.fitted', { days: tripDates(state).length, parks: headliners.length })}
+        </p>
+      )}
       {main.map(({ group, parks }) => (
         <section key={group.key} aria-label={group.name} className="flex flex-col gap-2">
           <h3 className="text-muted-foreground text-xs font-semibold tracking-wide uppercase">

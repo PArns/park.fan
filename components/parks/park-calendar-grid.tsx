@@ -34,6 +34,7 @@ import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
 import type { SeasonDays } from '@/lib/parks/park-season-days';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import { ParkCalendarComparison } from './park-calendar-comparison';
+import { CalendarIconSprite } from './calendar-icon-sprite';
 import { ParkCalendarDay } from './park-calendar-day';
 import { ParkCalendarDayDetail } from './park-calendar-day-detail';
 
@@ -346,7 +347,7 @@ export function ParkCalendarGrid({
      * The card lives in `ParkCalendarPanel`: the month stepper has to sit inside it and be
      * server-rendered so a crawler can reach the other months, and this grid is `ssr: false`.
      */
-    <>
+    <CalendarIconSprite>
       <div ref={gridRef} className="scroll-mt-20 space-y-4">
         {/* What comparison mode is doing, right above the tiles. The switch itself is in the card's
             heading band because it is server-rendered there. Rendered only while the mode is on, so
@@ -529,7 +530,7 @@ export function ParkCalendarGrid({
         }}
         planner={{ parkSlug, parkName: park.name, geo: { continent, country, city } }}
       />
-    </>
+    </CalendarIconSprite>
   );
 }
 

@@ -38,8 +38,13 @@ export interface PlanContextValue {
   /** The region's evening venues by key. */
   venueByKey: ReadonlyMap<string, TripVenue>;
   groupByKey: ReadonlyMap<string, TripRegionGroup>;
-  /** The default pick, the region's headliners, in the region's order. */
+  /**
+   * The default pick while the visitor has chosen no parks: the region's headliners in its order,
+   * as many as the trip's days hold (`headlinersForTrip`). Every pick and edit reads this one.
+   */
   headliners: readonly string[];
+  /** Every headliner of the region in its order, the API's own default: the tint of a date. */
+  allHeadliners: readonly string[];
   /** Every park slug in the region's order, which lists and the URL keep. */
   regionOrder: readonly string[];
   areaKeys: ReadonlySet<string>;

@@ -943,6 +943,50 @@
   --pk-text-3: rgba(255, 255, 255, 0.38);
 }
 
+/*
+ * The crowd calendar's day tile (`CalendarDayTile`): what every tile of a density shares, written
+ * once here rather than on each of the hundreds of tiles a hub or a month puts in its HTML. The
+ * tint, the marks and a caller's classes stay utilities, a later layer, so they still win.
+ */
+@layer components {
+  .calendar-tile-mini {
+    @apply text-card-foreground relative flex h-11 flex-col items-center justify-center gap-0 overflow-hidden rounded-md border p-0 shadow-sm backdrop-blur-none;
+  }
+
+  .calendar-tile-compact {
+    @apply text-card-foreground relative flex h-15 flex-col gap-0 overflow-hidden rounded-lg border px-2 py-1.5 shadow-sm backdrop-blur-none;
+  }
+
+  .calendar-tile-full {
+    @apply text-card-foreground relative flex h-full min-h-[92px] flex-col gap-0 overflow-hidden rounded-xl border p-[10px] shadow-sm backdrop-blur-md lg:min-h-[150px] lg:p-3;
+  }
+
+  /* The focus ring's colour stays a utility at the tile, so it beats a mark's ring. */
+  .calendar-tile-press {
+    @apply cursor-pointer transition hover:-translate-y-0.5 hover:shadow-md focus-visible:ring-2 focus-visible:outline-none;
+  }
+
+  .calendar-tile-mini-wait {
+    @apply text-sm leading-none font-bold tabular-nums;
+  }
+
+  .calendar-tile-head {
+    @apply flex min-h-[15px] items-center justify-between gap-1;
+  }
+
+  .calendar-tile-wait {
+    @apply text-[15px] leading-none font-bold whitespace-nowrap tabular-nums;
+  }
+
+  .calendar-tile-status {
+    @apply mt-1 flex items-center gap-1 text-[9.5px] leading-tight font-bold tracking-wider uppercase;
+  }
+
+  .calendar-tile-floor {
+    @apply text-muted-foreground mt-auto flex min-w-0 items-center pt-0.5 text-[10.5px] leading-tight;
+  }
+}
+
 @layer utilities {
   .glass-light {
     @apply bg-background/40 border-border/30 border backdrop-blur-sm;

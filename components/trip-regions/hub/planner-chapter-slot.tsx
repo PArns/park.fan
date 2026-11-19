@@ -19,7 +19,7 @@ import { HubLandingOnly, HubPlannerOnly, HubStateSwitch } from './hub-trip-state
 const CATALOG_TIMEOUT_MS = 1500;
 
 /**
- * Chapter 01 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
+ * The planner chapter around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing
  * page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with
  * a plan „Deine Reise“ and the plan. Under the landing's steps stands „Schon Tickets? Eintragen“,
  * which starts the assistant on its Tickets step, since bought tickets may set the dates. The
@@ -29,14 +29,11 @@ const CATALOG_TIMEOUT_MS = 1500;
  * edits revalidate by tag, else from the region's `tickets`, without the notes only the server reads.
  */
 export async function PlannerChapterSlot({
-  index,
   region,
   locale,
   defaultMonth,
   landing,
 }: {
-  /** The chapter's number on the page. */
-  index: string;
   /** What the chapter shows before the planner on the landing page (`HubHowItWorks`). */
   landing?: ReactNode;
   region: TripRegion;
@@ -61,7 +58,6 @@ export async function PlannerChapterSlot({
       data-default-month={defaultMonth}
     >
       <ChapterHeading
-        index={index}
         icon={Route}
         title={
           <HubStateSwitch

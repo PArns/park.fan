@@ -1,19 +1,10 @@
 'use client';
 
-import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  useSyncExternalStore,
-  type ReactNode,
-  type Ref,
-} from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode, type Ref } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { CalendarDays, Info, LayoutList, Rows3 } from 'lucide-react';
+import { Info } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { useMediaQuery } from '@/lib/hooks/use-media-query';
 import { plannerPagePark, type PlannerPagePark } from '@/lib/planner/page-park';
 import { plannerPageDay } from '@/lib/planner/page-day';
 import { plannerUi } from '@/lib/planner/ui-store';
@@ -33,7 +24,7 @@ import {
   moveVisit,
   parkDaysAvailable,
   planProblem,
-  planRequestQuery,
+  planWindow,
   plannerParkOf,
   removePark,
   setBaseNights,
@@ -44,6 +35,7 @@ import {
   tripDates,
   type PlanDay,
   type TripPlan,
+  type TripPlanState,
 } from '@/lib/trip-regions/plan';
 import { ideaOnDay, type PlanIdea } from '@/lib/trip-regions/plan-ideas';
 import {
@@ -57,7 +49,13 @@ import {
 } from '@/lib/trip-regions/plan-copy';
 import type { SpareSuggestion } from '@/lib/trip-regions/plan-week';
 import { PlanRequestError } from '@/lib/trip-regions/plan-fetch';
-import { whenRequestQuery } from '@/lib/trip-regions/plan-when';
+import {
+  backToSearch,
+  foundWindows,
+  pickedWindow,
+  whenRequestQuery,
+  type FoundWindows,
+} from '@/lib/trip-regions/plan-when';
 import { readTickets } from '@/lib/trip-regions/plan-query';
 import {
   asksForTickets,
@@ -67,27 +65,33 @@ import {
   ticketWindow,
   type TicketProblem,
 } from '@/lib/trip-regions/plan-tickets';
-import { tripPlanView, PLAN_VIEWS, type PlanView } from '@/lib/trip-regions/plan-view';
 import { connectPlannerSwap } from '@/lib/trip-regions/planner-bridge';
 import type { TripCalendar } from '@/lib/trip-regions/types';
 import { usePlanContext, useTripEvents } from './plan-context';
-import { PLAN_FOCUS, PLAN_WIDE_QUERY } from './plan-controls';
 import { PlanAgendaView, type PlanDaySlots } from './plan-agenda-view';
 import { DayActionsSheet, PlanDayActions } from './plan-day-actions';
 import { PlanEditStatus } from './plan-edit-status';
 import { PlanGlowProvider, usePlanGlow } from './plan-day-glow';
-import { DayHint, IdeasStrip, useIdeaCardBridge, useShownIdeas } from './plan-ideas';
+import { DayHint, IdeaNote, useIdeaCardBridge, useShownIdeas } from './plan-ideas';
 import { PlanSwapMode } from './plan-swap-mode';
 import { PlanDaySheet } from './plan-day-sheet';
 import { PlanDelete } from './plan-delete';
-import { PlanKeep } from './plan-keep';
+import { PlanShare } from './plan-keep';
+import { PlanMore, usePlanView } from './plan-more';
 import { PlanMonthView } from './plan-month-view';
 import { PlanPeakCard } from './plan-peak-card';
 import { PlanResultHead } from './plan-result-head';
 import { PlanWeekView } from './plan-week-view';
-import { PlanWhenResult } from './plan-when-result';
-import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
-import { PlanTicketsCard, TicketsAsk, type PlanEdit } from './plan-tickets-card';
+import { PlanWhenPicked, PlanWhenResult, usePickedLine } from './plan-when-result';
+import {
+  usePlanRequestQuery,
+  useStatePlan,
+  useTripCalendar,
+  useTripWhen,
+  useUnpinnedPlan,
+} from './use-trip-plan';
+import { PlanPastNotice, usePastTrip } from './plan-past-notice';
+import { PlanTicketsCard, PlanTicketsLine, TicketsAsk, type PlanEdit } from './plan-tickets-card';
 import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
 import {
@@ -101,8 +105,6 @@ import {
 import { oneFullStop } from '@/lib/utils/metadata';
 import { useResortWord, useTicketName } from './plan-ticket-words';
 import { regionOrShared } from '@/lib/trip-regions/region-words';
-
-const VIEW_ICON = { agenda: LayoutList, week: Rows3, month: CalendarDays } as const;
 
 /** The band over the answer that offers one change to the plan and the button that makes it. */
 const ACTION_BAND =
@@ -126,7 +128,11 @@ export function PlanResult({
   answers: ReactNode;
 }) {
   const t = useTranslations('tripPlanner');
-  const { state, headliners } = usePlanContext();
+  const { state, headliners, update } = usePlanContext();
+  // A search's windows once its best one is planned, and the search the visitor asked to compare.
+  const [found, setFound] = useState<FoundWindows | null>(null);
+  const [listed, setListed] = useState<string | null>(null);
+  const picked = pickedWindow(found, state);
 
   return (
     <section
@@ -135,8 +141,22 @@ export function PlanResult({
       aria-label={t('result.label')}
       className="flex scroll-mt-16 flex-col gap-5 outline-none"
     >
+      <p className="sr-only" aria-live="polite">
+        {found && picked && <PickedLine found={found} picked={picked} />}
+      </p>
+      {found && picked && (
+        <PlanWhenPicked
+          found={found}
+          picked={picked}
+          onList={() => {
+            const back = backToSearch(state, found);
+            setListed(searchKey(back));
+            update(() => back);
+          }}
+        />
+      )}
       {state.when ? (
-        <WhenAnswer />
+        <WhenAnswer listed={listed} onFound={setFound} />
       ) : planProblem(state, headliners) === 'no_dates' ? (
         <div className="border-border/60 flex min-h-40 flex-col items-start justify-center gap-3 rounded-2xl border border-dashed p-5">
           <p className="text-sm">{t('result.empty')}</p>
@@ -148,20 +168,62 @@ export function PlanResult({
   );
 }
 
-function WhenAnswer() {
+/** A search by its query, so the one the visitor asked to compare is not planned over again. */
+function searchKey(state: TripPlanState): string {
+  // The search's own start as "today" leaves its range unshifted, so the key is the same tomorrow.
+  return JSON.stringify(whenRequestQuery(state, state.when?.from ?? null));
+}
+
+/** The picked window's line, for the live region that announces a plan the search made. */
+function PickedLine({
+  found,
+  picked,
+}: {
+  found: FoundWindows;
+  picked: FoundWindows['windows'][number];
+}) {
+  return <>{usePickedLine(found, picked)}</>;
+}
+
+/**
+ * The search's answer: its best window planned as soon as it is on screen (`onFound` keeps the
+ * others for the row over that plan), or, for the search the visitor asked to compare (`listed`)
+ * and one that found nothing, the cards and the year strip.
+ */
+function WhenAnswer({
+  listed,
+  onFound,
+}: {
+  listed: string | null;
+  onFound: (found: FoundWindows) => void;
+}) {
   const t = useTranslations('tripPlanner');
-  const { state, update } = usePlanContext();
-  const query = whenRequestQuery(state);
+  const { state, update, today } = usePlanContext();
+  const track = useTripEvents();
+  const query = whenRequestQuery(state, today);
   const when = useTripWhen(query);
+  const settled = when.data && !when.isPlaceholderData && !when.isFetching ? when.data : null;
   usePlanEvents(
     when.asked,
     'when',
-    when.data && !when.isPlaceholderData && !when.isFetching
-      ? tripWhenShownProps(when.data)
+    settled
+      ? tripWhenShownProps(settled)
       : when.isError && !when.isFetching
         ? tripPlanFailedProps(statusOf(when.error), 'when')
         : null
   );
+  const key = searchKey(state);
+  const auto = settled && key !== listed ? foundWindows(state, settled.windows) : null;
+  const planned = useRef<string | null>(null);
+  useEffect(() => {
+    const best = auto?.windows[0];
+    if (!auto || !best || planned.current === key) return;
+    planned.current = key;
+    onFound(auto);
+    track('trip_window_planned', { rank: best.rank, via: 'auto' });
+    update((s) => planWindow(s, best));
+  }, [auto, key, onFound, track, update]);
+  if (auto) return <Loading text={t('result.loading')} />;
   if (!when.data) {
     return when.isError ? (
       <Failure error={when.error} onRetry={() => void when.refetch()} />
@@ -223,7 +285,8 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
   const track = useTripEvents();
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
-  const query = planRequestQuery(state, headliners, missed !== null);
+  const past = usePastTrip();
+  const query = usePlanRequestQuery();
   const plan = useStatePlan();
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
@@ -298,6 +361,7 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
     [track, edit, regionOrder, headliners]
   );
 
+  if (past) return <PlanPastNotice past={past} onNewDates={() => editSteps.dates('past_trip')} />;
   if (problem) {
     return (
       <div className="border-border/60 flex flex-col gap-2 rounded-2xl border p-5" role="status">
@@ -385,7 +449,7 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
     setMoreDate(d.date);
   };
   const slots: PlanDaySlots = {
-    dayActions: (d) => <PlanDayActions day={d} onPin={pin} onSwap={startSwap} onMore={openMore} />,
+    dayActions: (d) => <PlanDayActions day={d} open={moreDate === d.date} onMore={openMore} />,
     dayHint: (d) => {
       const idea = ideaOnDay(ideas, d.date);
       return idea ? <DayHint idea={idea} /> : null;
@@ -584,11 +648,20 @@ function PlanAnswer({
       <div className="lg:col-start-1 lg:row-start-1">{answers}</div>
 
       <div className="flex min-w-0 flex-col gap-5 lg:col-start-2 lg:row-span-2 lg:row-start-1">
-        <PlanResultHead plan={plan} />
+        <PlanResultHead
+          plan={plan}
+          actions={
+            <>
+              <PlanShare plan={plan} />
+              <PlanMore plan={plan} calendar={calendar} />
+            </>
+          }
+          tickets={ticketsAsked ? <PlanTicketsLine plan={plan} edit={edit} /> : null}
+        />
         <PlanPeakCard plan={plan} calendar={calendar} className="lg:hidden" />
         <LeftOut plan={plan} edit={edit} />
         <StaySuggestion plan={plan} />
-        <IdeasStrip ideas={ideas} />
+        <IdeaNote ideas={ideas} />
 
         {lastYear && (
           <p className="text-muted-foreground flex gap-2 text-sm" role="note">
@@ -649,7 +722,6 @@ function PlanAnswer({
             ) : null
           }
         />
-        <PlanKeep plan={plan} calendar={calendar} />
         <PlanDelete region={region.slug} from="result" className="text-sm" />
       </div>
     </div>
@@ -783,8 +855,8 @@ function StaySuggestion({ plan }: { plan: TripPlan }) {
 }
 
 /**
- * Level 1, behind a switch: Agenda, Week or Month. The choice is this browser's (`plan-view.ts`);
- * until one is made a wide window opens on the Week and a phone on the Agenda.
+ * Level 1: Agenda, Week or Month, as chosen in the head's „Mehr“ (`usePlanView`); until a choice
+ * a wide window opens on the Week and a phone on the Agenda.
  */
 function PlanViews({
   plan,
@@ -802,50 +874,11 @@ function PlanViews({
   slots: PlanDaySlots;
 }) {
   const t = useTranslations('tripPlanner.views');
-  const track = useTripEvents();
-  const wide = useMediaQuery(PLAN_WIDE_QUERY);
-  const choice = tripPlanView(usePlanContext().region.slug);
-  const chosen = useSyncExternalStore(
-    choice.subscribe,
-    choice.getSnapshot,
-    choice.getServerSnapshot
-  );
-  const view: PlanView = chosen ?? (wide ? 'week' : 'agenda');
+  const view = usePlanView();
   const onOpenDay = (date: string) => openDay(date, view);
 
   return (
-    <section className="flex flex-col gap-3" aria-label={t('label')}>
-      <div
-        role="radiogroup"
-        aria-label={t('label')}
-        className="bg-muted/50 inline-flex gap-1 self-start rounded-xl p-1"
-      >
-        {PLAN_VIEWS.map((key) => {
-          const Icon = VIEW_ICON[key];
-          return (
-            <button
-              key={key}
-              type="button"
-              role="radio"
-              aria-checked={view === key}
-              onClick={() => {
-                if (key !== view) track('trip_view_changed', { view: key });
-                choice.set(key);
-              }}
-              className={cn(
-                'flex min-h-11 items-center gap-1.5 rounded-lg px-3 text-sm font-medium transition-colors lg:min-h-9',
-                view === key
-                  ? 'bg-background shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground',
-                PLAN_FOCUS
-              )}
-            >
-              <Icon className="size-4" aria-hidden="true" />
-              {t(key)}
-            </button>
-          );
-        })}
-      </div>
+    <section className="flex flex-col gap-3" aria-label={`${t('label')}: ${t(view)}`}>
       {view === 'week' && (
         <PlanWeekView
           plan={plan}

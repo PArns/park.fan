@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useTranslations } from 'next-intl';
-import { CalendarPlus, ChevronDown } from 'lucide-react';
+import { CalendarPlus, ChevronDown, Sparkles } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { Sheet, SheetContent, SheetDescription, SheetTitle } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
@@ -32,6 +32,8 @@ import { shownWait } from '@/lib/trip-regions/plan-week';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import { cleanBreakName } from '@/lib/trip-regions/best-time';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
+import { addDays } from '@/lib/utils/park-day';
+import { MAX_DAYS_AHEAD } from '@/lib/trip-regions/plan-query';
 import type {
   TripCalendar,
   TripCalendarDay,
@@ -51,7 +53,9 @@ const BIG_RIDES = 5;
  * each with its hours, the hotel guests' early slot, the evening event and when the day guests
  * leave, the seasons, the drive from the chosen hotel area and, on request, its five big rides.
  * The same figure as the square, and no hourly curve: the day planner owns that. A bottom sheet on
- * a phone, a side panel on a desktop; Radix returns focus to the square that opened it.
+ * a phone, a side panel on a desktop; Radix returns focus to the square that opened it. Its one
+ * primary action, „Reise ab diesem Tag planen“, starts the trip planner with the day as the
+ * arrival (`onPlanTrip`); each park's „Im Tagesplaner öffnen“ stays the quieter outline button.
  */
 export function HubDaySheet({
   day,
@@ -61,6 +65,7 @@ export function HubDaySheet({
   todayIso,
   returnFocus,
   onClose,
+  onPlanTrip,
 }: {
   day: TripCalendarDay | null;
   /** The control that opened the sheet; focus goes back to it when the sheet closes. */
@@ -70,6 +75,8 @@ export function HubDaySheet({
   locale: string;
   todayIso: string;
   onClose: () => void;
+  /** Starts the trip planner with this day as the arrival; without it the sheet offers no trip. */
+  onPlanTrip?: (date: string) => void;
 }) {
   const t = useTranslations('tripHub.sheet');
   const tRegion = useTranslations('tripRegion.hub.sheet');
@@ -79,6 +86,11 @@ export function HubDaySheet({
   const groups = regionGroups(region);
   const lines = day ? shortestLines(day, region) : [];
   const areaName = region.hotelAreas.find((a) => a.key === area)?.name ?? '';
+  // The planner's date grid offers no arrival before today or past its last day.
+  const arrival =
+    onPlanTrip && day && day.date >= todayIso && day.date < addDays(todayIso, MAX_DAYS_AHEAD)
+      ? day.date
+      : null;
 
   return (
     <Sheet open={day !== null} onOpenChange={(open) => !open && onClose()}>
@@ -114,6 +126,16 @@ export function HubDaySheet({
                     ),
                   ].join(' · ')}
                 </p>
+              )}
+              {arrival && (
+                <Button
+                  type="button"
+                  onClick={() => onPlanTrip?.(arrival)}
+                  className="mt-3 h-11 w-full"
+                >
+                  <Sparkles aria-hidden />
+                  {t('planTrip')}
+                </Button>
               )}
               <label className="mt-3 flex items-center gap-2 text-sm">
                 <span className="text-muted-foreground shrink-0">{t('stayingAt')}</span>

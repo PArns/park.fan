@@ -70,13 +70,22 @@ export function useTripPlan(query: Record<string, string> | null) {
 }
 
 /**
+ * The `/plan` query of the planner's own state (`planRequestQuery` with the planner's scope): the
+ * trip's own headliners named while no park is chosen, nothing while a ticket or the region's
+ * today holds the request back. The plan, its ideas and the unpinned plan all ask this one.
+ */
+export function usePlanRequestQuery(): Record<string, string> | null {
+  const { state, headliners, allHeadliners, tickets: catalog, today } = usePlanContext();
+  const blocked = ticketProblem(state, catalog) !== null;
+  return planRequestQuery(state, headliners, blocked, { today, allHeadliners });
+}
+
+/**
  * The plan for the planner's own state, the one the answer shows: also read by the setup's Route,
  * which lists the plan's stays. One request either way, the cache's.
  */
 export function useStatePlan() {
-  const { state, headliners, tickets: catalog } = usePlanContext();
-  const blocked = ticketProblem(state, catalog) !== null;
-  return useTripPlan(planRequestQuery(state, headliners, blocked));
+  return useTripPlan(usePlanRequestQuery());
 }
 
 /**
@@ -85,10 +94,10 @@ export function useStatePlan() {
  * apart from the plan, as the planner does.
  */
 export function usePlanIdeas() {
-  const { state, tickets: catalog, region } = usePlanContext();
+  const { region } = usePlanContext();
   const plan = useStatePlan();
-  const blocked = ticketProblem(state, catalog) !== null;
-  const shown = plan.current && !plan.waiting && plan.data !== undefined && !blocked;
+  // `current` is false while the request is held back (a ticket the dates miss, a past trip).
+  const shown = plan.current && !plan.waiting && plan.data !== undefined;
   const asked = shown ? plan.asked : null;
   const query = asked === null ? {} : Object.fromEntries(new URLSearchParams(asked));
   return useQuery({
@@ -118,10 +127,15 @@ export function useUnpinnedPlan(query: Record<string, string> | null) {
 
 /**
  * A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons
- * and per-day figures the plan does not carry. `null` dates leave it idle.
+ * and per-day figures the plan does not carry. `null` dates leave it idle, and so does the region's
+ * unread today; days before it are not asked for, as the API refuses a window in the past.
  */
-export function useTripCalendar(from: string | null, to: string | null) {
-  const region = usePlanContext().region.slug;
+export function useTripCalendar(asFrom: string | null, asTo: string | null) {
+  const { region: own, today } = usePlanContext();
+  const region = own.slug;
+  const start = asFrom && today ? (asFrom < today ? today : asFrom) : null;
+  const from = start && asTo && start <= asTo ? start : null;
+  const to = from ? asTo : null;
   return useQuery({
     queryKey: calendarQueryKey(region, from ?? '', to ?? ''),
     queryFn: ({ signal }) => fetchTripCalendar(region, from as string, to as string, signal),

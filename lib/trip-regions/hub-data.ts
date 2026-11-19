@@ -709,31 +709,89 @@ export function parkCalendarHref(park: TripRegionPark, locale: string): string {
     : park.path;
 }
 
-/** The calendar trimmed to a window of its days, with the seasons that run in it. */
+/** The fields of `object` named in `keys` that it carries, so an absent one stays absent. */
+function picked<T extends object, K extends keyof T>(object: T, keys: readonly K[]): Pick<T, K> {
+  const out = {} as Pick<T, K>;
+  for (const key of keys) if (object[key] !== undefined) out[key] = object[key];
+  return out;
+}
+
+/**
+ * What the hub's tiles and day sheet read of a park's day. An allow-list, so a field the API adds
+ * stays on the server.
+ */
+const HUB_PARK_DAY_FIELDS = [
+  'status',
+  'hoursPublished',
+  'opensAt',
+  'closesAt',
+  'early',
+  'evening',
+  'crowdLevel',
+  'headlinerWait',
+  'basis',
+  'forecastWait',
+  'seasons',
+  'closedBy',
+  'closesEarly',
+  'dayGuestCloseAt',
+] as const satisfies readonly (keyof TripParkDay)[];
+
+/** What the hub's calendar reads of a day besides its parks. */
+const HUB_DAY_FIELDS = [
+  'date',
+  'isHoliday',
+  'isSchoolVacation',
+  'holidays',
+  'best',
+  'bestWhy',
+] as const satisfies readonly (keyof TripCalendarDay)[];
+
+/**
+ * The calendar trimmed to a window of its days, with the seasons that run in it, each day as far
+ * as the hub's client part draws it: everything it passes is in the page's RSC payload, a park's
+ * day per tile (docs/rules/the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md).
+ */
 export function sliceCalendar(calendar: TripCalendar, days: TripCalendarDay[]): TripCalendar {
   const from = days[0]?.date ?? calendar.meta.from;
   const to = days[days.length - 1]?.date ?? calendar.meta.to;
   return {
     ...calendar,
     meta: { ...calendar.meta, from, to },
-    days,
+    days: days.map((day) => ({
+      ...picked(day, HUB_DAY_FIELDS),
+      parks: Object.fromEntries(
+        Object.entries(day.parks).map(([slug, park]) => [slug, picked(park, HUB_PARK_DAY_FIELDS)])
+      ),
+    })),
     seasons: calendar.seasons.filter((s) => s.endDate >= from && s.startDate <= to),
   };
 }
 
+/** What the day sheet reads of a leg: where it goes, how long, by what, and the transfer. */
+const HUB_LEG_FIELDS = [
+  'from',
+  'to',
+  'minutes',
+  'mode',
+  'via',
+  'transferMinutes',
+] as const satisfies readonly (keyof TripLeg)[];
+
 /**
- * The region as the hub's client part needs it: the parks, groups and hotel areas, and only the
- * legs from a hotel area to a park, which the day sheet's travel line reads. The park-to-park legs
- * are the planner's, and most of the matrix's weight.
+ * The region as the hub's client part needs it, an allow-list: the parks, groups, hotel areas and
+ * storm season, and only the legs from a hotel area to a park, which the day sheet's travel line
+ * reads. The park-to-park legs, the tickets, venues and hotels are the planner's, which gets the
+ * region whole.
  */
 export function slimRegion(region: TripRegion): TripRegion {
   return {
-    ...region,
+    ...picked(region, ['slug', 'name', 'timezone', 'groups', 'parks', 'hotelAreas', 'weather']),
     travel: {
       ...region.travel,
-      legs: region.travel.legs.filter(
-        (l) => l.from.startsWith('hotel:') || l.to.startsWith('hotel:')
-      ),
+      legs: region.travel.legs
+        .filter((l) => l.from.startsWith('hotel:') || l.to.startsWith('hotel:'))
+        .map((l) => picked(l, HUB_LEG_FIELDS)),
     },
   };
 }

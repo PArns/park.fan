@@ -100,11 +100,12 @@ Where an outbound link goes, the closed list of the event's `target`.
 
 ### [`section-seen.ts`](../../lib/analytics/section-seen.ts)
 
-The places a park page marks, top to bottom, then the band no park page has, then the homepage's stops: the closed list of the event's `section`. The tile stands above „Heute im Park" or under the calendar's header.
+The places a park page marks, top to bottom, then the band no park page has, then the homepage's stops, then a trip region hub's chapters: the closed list of the event's `section`.
 
 - `isSeenSection` _function_: Whether a string read off the DOM is a place the event knows.
 - `BLOCK_SEEN_SECTIONS` _const_: The marks that stand only where their block is: they count the block's views, and say nothing about how far down a page was read.
 - `HOME_SEEN_SECTIONS` _const_: The homepage's marks, one where each stop begins, so the homepage says how far down it was read the way a park page does; they stand wherever the stops do.
+- `HUB_SEEN_SECTIONS` _const_: A trip region hub's and its month pages' marks, one where each chapter begins: the planner, the calendar, the resorts, the best time to go and the questions.
 - `SECTION_SEEN_ATTRIBUTE` _const_: The attribute that makes an element a mark and names its place.
 - Types: `SeenSection`
 
@@ -119,13 +120,13 @@ The places a park page marks, top to bottom, then the band no park page has, the
 - `markPageNotFound` _function_: Declares the page in the address bar a "not found" page, which only that page knows: its pageview becomes `not_found`, whether it was queued already or comes after.
 - `onSiteEvent` _function_: Hears every event the page reports, counted or not (a visitor who opted out, a bot), for what answers what a visitor does: Parky reacts to a few of them.
 - `trackSiteEvent` _function_: Counts one event on the current page. A name in `SiteEventMap` is checked against its properties; any other name (lower case, digits and underscores, two to 48 characters) goes through with any properties of `SiteEventProps`.
-- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchQueryLength`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantGreetingKind`, `AssistantPlannerKind`, `AssistantInterviewStepName`, `AssistantPlanChange`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `TripTileLink`, `TripDeleteFrom`, `TripTicketsFrom`, `TripWizardStepName`, `TripWizardVia`, `TripEditPanel`, `TripEditFrom`, `TripEditKind`, `TripIdeaKind`, `TripIdeaPlace`, `TripOption`, `TripDaysBucket`, `TicketLinkKind`, `TicketLinkSurface`, `TicketMode`, `SiteEventName`, `AttractionFilterName`, `SiteEventListener`
+- Types: `SitePageType`, `SearchSurface`, `SearchResultKind`, `SearchPosition`, `SearchQueryLength`, `NavMenuId`, `SearchBrowseItem`, `PlannerWizardStep`, `PlanItemKind`, `PlanItemAddSource`, `PlanItemRemoveSource`, `PlanOptimizeMode`, `PlannerFitSource`, `PlannerFitLever`, `PlannerUndoSource`, `SharedPlanResult`, `AssistantQuestionKind`, `AssistantGreetingKind`, `AssistantPlannerKind`, `AssistantInterviewStepName`, `AssistantPlanChange`, `AssistantOpenSource`, `AssistantLineKind`, `AssistantAnswerResult`, `SiteEventMap`, `TripTileLink`, `HubWeekPaging`, `TripDeleteFrom`, `TripTicketsFrom`, `TripWizardStepName`, `TripWizardVia`, `TripEditPanel`, `TripEditFrom`, `TripEditKind`, `TripIdeaKind`, `TripIdeaPlace`, `TripOption`, `TripDaysBucket`, `TicketLinkKind`, `TicketLinkSurface`, `TicketMode`, `SiteEventName`, `AttractionFilterName`, `SiteEventListener`
 
 ### [`trip-tile.ts`](../../lib/analytics/trip-tile.ts)
 
 - `tripTileAttributes` _function_: The attributes to spread onto the tile's root.
 - `tripTileLinkAttributes` _function_: The attribute to spread onto one of the tile's links.
-- `tripTileClickOf` _function_: The `trip_tile_clicked` a click on `target` makes, or `null`: a click on one of a tile's links. The tile's whole card is the plan link's cover, so a click anywhere on it but the calendar link counts as `plan`.
+- `tripTileClickOf` _function_: The `trip_tile_clicked` a click on `target` makes, or `null`: a click on one of a tile's links. The tile's whole card is the calendar link's cover, so a click anywhere on it but the plan link counts as `calendar`.
 - `TRIP_TILE_ATTRIBUTE` _const_: The attribute on the tile's root that names its region by slug.
 - `TRIP_TILE_LINK_ATTRIBUTE` _const_: The attribute on each of the tile's links that says which one it is.
 - Types: `TripTileClick`

@@ -675,3 +675,64 @@ affected: the current month and today's single day. Every other month keeps `FOR
 takes the half hour, since the rule cannot see the days.
 
 **Open:** count the relay's calls for current months in Observability against the week before.
+
+---
+
+## 2026-11-19 — ACCEPTED: the trip hub streams its `/when`, and its calendar writes each tile's classes and icons once
+
+**Lever:** time to first byte of the region hubs and their month pages, and bytes per invocation.
+**Files:** `app/[locale]/trip-regions/[region]/[[...date]]/page.tsx`,
+`components/trip-regions/hub/` (`trip-region-hub-page.tsx`, `hub-when.tsx`, `hub-when-teaser.tsx`,
+`hub-calendar.tsx`), `components/parks/calendar-day-tile.tsx`,
+`components/parks/calendar-icon-sprite.tsx`, `components/parks/park-calendar-grid.tsx`,
+`app/globals.css` (`calendar-tile-*`), `lib/trip-regions/hub-data.ts` (`slimRegion`,
+`sliceCalendar`).
+
+`/en/orlando` was 1.95 MB of HTML in production, and its first byte waited for `/when` after the
+region, the calendar and the best days: 6.7 s cold after a deploy against 0.18 s warm. The API
+builds Orlando's teaser shape (ten days, seven parks) in 10.7 s p50, 15 s p90, 48 s at most, and
+every deploy asks with a new `v`, so each starts cold. Three changes:
+
+- **`/when` streams.** The route asks it as soon as the region is known, and only the best-time
+  teaser awaits it, in its own `<Suspense>`; the fallback is the teaser without an answer, holding
+  the cards' place per breakpoint. No timer: the answer stays in the served HTML, a cold one just
+  arrives later in the stream. The chapter's year comes from today (`bestTimeYear`), as on the
+  best-time pages, so `when.titleNoYear` and `when.pageLinkNoYear` went from all six languages.
+- **A tile's shared classes are one class per density** in `app/globals.css`, in
+  `@layer components` so the tint, the marks and a caller's classes, all utilities, still win; the
+  tile is a `<div>`, not a `Card` whose defaults it overrode on every tile. The star and the season
+  icons are `<use>`s of one `CalendarIconSprite` around the hub calendar and the park calendar's
+  grid; outside one, `CalendarIcon` draws the lucide icon inline.
+- **The hub calendar's props are allow-lists:** `slimRegion` drops the tickets, venues, hotels and
+  every leg field the day sheet does not read (its region in the RSC payload 66.5 → 15.5 kB raw),
+  `sliceCalendar` keeps the day fields the tiles and the sheet read.
+
+Measured against `pnpm build && pnpm start`, one build each, the same Data Cache entries (one `v`
+for both), 19 Nov 2026:
+
+| Page                                 | HTML raw               | gzip                  |
+| ------------------------------------ | ---------------------- | --------------------- |
+| `/en/orlando`                        | 1,932 → 1,450 kB −25 % | 139.6 → 131.2 kB −6 % |
+| `/fr/paris`                          | 837 → 722 kB −14 %     | 102.3 → 99.4 kB −3 %  |
+| `/en/orlando/2026/12`                | 1,889 → 1,419 kB −25 % | 135.5 → 126.1 kB −7 % |
+| Magic Kingdom's `wait-time-calendar` | 872 → 873 kB           | 111.9 → 112.3 kB      |
+
+Inside `/en/orlando`: the `#calendar` section 1,139 → 707 kB, its class attributes 623 → 386 kB,
+inline SVG on the page 334 → 140 kB, the RSC payload 554 → 501 kB; brotli q4 of the whole page
+107.5 → 104.1 kB. The park calendar's served HTML does not change: its grid is `ssr: false`, so the
+tiles there are lighter in the DOM, not on the wire. Screenshots of the calendar chapter, the
+best-time chapter and the park calendar's grid, phone (390 × 844) and desktop, light and dark,
+are byte-identical before and after. With JS off on a cold render, the best-time chapter's fallback
+is within 10 px of the resolved chapter on a phone and from `sm` to `md`, and equal from `lg`.
+
+**Cold TTFB not reproduced locally:** with a new `v` and an empty Data Cache, `/en/orlando` took
+1.51 s before and 1.86 s after, both dominated by the first request's route load and the other cold
+reads; the API answered the teaser's `/when` from its own cache in 0.4 s here. What changed is
+which reads the first byte waits for; re-measure the first request after the next deploy.
+
+**Cost shift:** none on the wire. A cold `/when` now holds the stream open instead of the first
+byte, so the function's wall time is the same; the client never asks the relay for the served
+answer.
+
+**Open:** the week classes (`HUB_WEEK_CELL`, `HUB_WEEK_ITEM`) are 44 kB of the calendar's
+remaining class bytes; the planner chapter's region (68 kB of the payload) is the planner's.

@@ -67,10 +67,6 @@ export const JAPAN: TripRegionConfig = {
     })),
   hub: {
     // Mermaid Lagoon at Tokyo DisneySea, then Cinderella Castle seen from World Bazaar.
-    heroPhotos: [
-      '/media/tokyo-disneysea/mermaid-lagoon.jpg',
-      '/media/tokyo-disneyland/cinderella-castle-world-bazaar.jpg',
-    ],
     // Between the two Disney parks, where most trips start.
     defaultArea: 'maihama',
     // Three questions a trip across cities raises, answered in the region's words.

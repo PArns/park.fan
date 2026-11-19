@@ -135,20 +135,22 @@ export const tripPlannerBridge = {
 
 /**
  * Publish the planner's state and how to set it; returns the disconnect. Called on every change of
- * the state, which also remembers the trip once it holds dates or a search.
+ * the state, which also remembers the trip once it holds dates or a search. `published` is the
+ * state as the plan on screen was asked for: Parky plans from it, the remembered trip keeps
+ * `state`'s spelling.
  */
 export function connectPlannerBridge(
   region: string,
   state: TripPlanState,
+  published: TripPlanState,
   update: (recipe: (state: TripPlanState) => TripPlanState) => void,
   keys: PlanRegionKeys,
   edits: PlannerEdits
 ): () => void {
-  const query = writePlanQuery(state);
-  rememberTrip(region, query);
+  rememberTrip(region, writePlanQuery(state));
   const own: Connected = {
     region,
-    query,
+    query: writePlanQuery(published),
     apply: (next) => update(() => readPlanQuery(new URLSearchParams(next), keys)),
     applyChange: (next, changes) =>
       edits.edit(

@@ -133,12 +133,10 @@ export interface TripHubResort {
 
 /** What the hub shows of the region beside the API's answers. */
 export interface TripHub {
-  /** The hero photos as media sources, the first the catalog still has wins. */
-  heroPhotos: readonly string[];
   /** The hotel area the day sheet's drive times start from before the reader picks one. */
   defaultArea?: string;
   faq: TripHubFaq;
-  /** The planner's four steps as screenshots, chapter 01 of the hub without a plan. */
+  /** The planner's four steps as screenshots, the hub's planner chapter without a plan. */
   howItWorks: TripHubShots;
   /** The resorts chapter's cards, in the order they stand; a group not listed has no card. */
   resorts: readonly TripHubResort[];

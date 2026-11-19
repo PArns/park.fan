@@ -39,7 +39,7 @@ export function tripRegionGuidePath(
   return slug ? `/blog/${slug}` : null;
 }
 
-/** The anchor of chapter 01, the calendar, for the park bands and the homepage teaser. */
+/** The anchor of the calendar chapter, for the park bands and the homepage teaser. */
 export const TRIP_CALENDAR_ID = 'calendar';
 
 /** The anchor of the hub's question on how far and how well the forecast reaches. */

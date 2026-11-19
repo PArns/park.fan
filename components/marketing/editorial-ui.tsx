@@ -469,7 +469,8 @@ export function SectionShell({
   children,
 }: {
   id: string;
-  index: string;
+  /** Leave it out where the icon stands in for a number (the trip regions' pages). */
+  index?: string;
   kicker?: string;
   title: string;
   icon?: LucideIcon;

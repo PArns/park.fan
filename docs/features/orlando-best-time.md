@@ -33,10 +33,10 @@ shows. The anatomy is a hub's ([a landing page has one anatomy](../rules/a-landi
   (`bestTimeParks`, the region's `bestTime` pages).
 - **`/when`** (`getTripRegionWhen`) once, for those parks, `days` a day per park, a day between two resorts, arrival and departure (`bestTimePageDays`: all seven Orlando parks 10, Disney World's four 6, Universal's three 5; Japan's region page one more for Tokyo to Osaka, 7), `gap` the same, `limit=3`, over the **title's
   year**: from today at the earliest, never past the year ahead the API accepts (`bestTimeRange`).
-  The year is the coming one from September on (`bestTimeYear`). Its `months[]` feed chapter 02.
+  The year is the coming one from September on (`bestTimeYear`). Its `months[]` feed the months chapter.
 - **`/school-breaks`** (`getTripRegionSchoolBreaks`), open and a day in the Data Cache, for DE, NL and
   GB over the same range. Its region codes are the ones `within` accepts and are never written
-  into the code; a failed read drops chapter 04 and the European cells.
+  into the code; a failed read drops the school-holidays chapter and the European cells.
 
 The contract is the API's `docs/frontend/trip-regions-when.md`. Every comparison is by the big
 rides' wait at their busiest (`headlinerWait`), never by a crowd level.
@@ -53,7 +53,7 @@ All of it is in the first HTML; nothing mounts on a click.
   kicker is „park.fan · <the region's name>“. The photo is the page's `photo` in the registry; an
   id the media database does not hold yet gives the gradient head, not a picture that does not
   load.
-- **Level 1**: chapter 01's week strip and chapter 02's month rows.
+- **Level 1**: the year chapter's week strip and the months chapter's month rows. Like the hub's, each chapter opens with its icon rather than a number (`SectionShell` without `index`).
 - **Level 2**: `<details>` under each card (all reasons, warnings, events) and each month (season
   dates, each European region's breaks, the climate period and nights).
 

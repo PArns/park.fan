@@ -7,10 +7,11 @@ import { Link } from '@/i18n/navigation';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { buttonLinkProps } from '@/components/ui/button';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { cn } from '@/lib/utils';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { daysBetween } from '@/lib/utils/park-day';
-import { whenQueryFor } from '@/lib/trip-regions/best-time';
+import { BEST_TIME_WINDOWS, whenQueryFor } from '@/lib/trip-regions/best-time';
 import { formatWindow, yearLine } from '@/lib/trip-regions/hub-data';
 import { fetchTripWhen } from '@/lib/trip-regions/plan-fetch';
 import { plannerHrefOn } from '@/lib/trip-regions/plan-query';
@@ -46,6 +47,12 @@ export interface HubWhenScope {
 
 /** What the teaser shows for one choice: its windows, or that the read failed. */
 type Answer = readonly TripWhenWindow[] | 'failed';
+
+/**
+ * The place of the year line and the three cards while the served answer streams in, per
+ * breakpoint, as Orlando's answer draws them (docs/features/orlando-hub.md).
+ */
+const PENDING_ANSWER = 'h-[924px] sm:h-[492px] md:h-[444px] lg:h-[386px]';
 
 /**
  * The year line over the teaser's cards: the months of the searched range as a ruled track and
@@ -118,7 +125,10 @@ function YearLine({
  * why it stands above a trip with a shorter wait (`aheadForWeather`), the storm season or heat
  * as chips
  * and "Plan this trip", which opens the planner on those dates and parks. The link under the
- * cards goes to the chosen parks' best-time page.
+ * cards goes to the chosen parks' best-time page. A click on either counts as
+ * `internal_link_clicked` from the block `trip_when`, told apart by where it leads. Without
+ * `initial` it is the chapter's `<Suspense>` fallback: the switches and the link, and the cards'
+ * place held.
  */
 export function HubWhenTeaser({
   region,
@@ -132,8 +142,8 @@ export function HubWhenTeaser({
   region: string;
   /** The choices of the first switch, the region's own page first; never empty. */
   scopes: readonly HubWhenScope[];
-  /** The served answer: the first scope at its own length. */
-  initial: readonly TripWhenWindow[];
+  /** The served answer: the first scope at its own length; `null` while it streams in. */
+  initial: readonly TripWhenWindow[] | null;
   /** The days `/when` searches. */
   range: { from: string; to: string };
   /** Why a window was picked, in the region's words, by the API's code. */
@@ -153,7 +163,10 @@ export function HubWhenTeaser({
     held: firstKey,
   });
   const key = `${choice.scope}:${choice.days}`;
-  const [answers, setAnswers] = useState<Record<string, Answer>>({ [firstKey]: initial });
+  const [answers, setAnswers] = useState<Record<string, Answer>>(
+    initial ? { [firstKey]: initial } : {}
+  );
+  const pending = initial === null;
   const scope = scopes.find((s) => s.id === choice.scope) ?? scopes[0];
   const answer = answers[key];
   const pick = (scopeId: string, days: number) => {
@@ -167,20 +180,23 @@ export function HubWhenTeaser({
   };
 
   useEffect(() => {
-    if (answer) return;
+    if (answer || pending) return;
     const controller = new AbortController();
     fetchTripWhen(region, whenQueryFor(scope.parks, range, choice.days), controller.signal)
       .then((when) =>
-        setAnswers((all) => ({ ...all, [key]: when.windows.slice(0, initial.length || 3) }))
+        setAnswers((all) => ({
+          ...all,
+          [key]: when.windows.slice(0, initial?.length || BEST_TIME_WINDOWS),
+        }))
       )
       .catch((error: unknown) => {
         if ((error as Error)?.name === 'AbortError') return;
         setAnswers((all) => ({ ...all, [key]: 'failed' }));
       });
     return () => controller.abort();
-  }, [answer, choice.days, initial.length, key, range, region, scope.parks]);
+  }, [answer, pending, choice.days, initial?.length, key, range, region, scope.parks]);
 
-  const shown = answer ?? answers[choice.held] ?? initial;
+  const shown = answer ?? answers[choice.held] ?? initial ?? [];
   const windows = shown === 'failed' ? [] : shown;
   const loading = !answer;
   // One reason on every card is a line said three times; it stands only where the cards differ.
@@ -188,7 +204,7 @@ export function HubWhenTeaser({
   const ahead = aheadForWeather(windows);
 
   return (
-    <div className="space-y-5">
+    <div {...linkBlockAttributes('trip_when')} className="space-y-5">
       <div className="space-y-3">
         {scopes.length > 1 && (
           <div
@@ -234,7 +250,9 @@ export function HubWhenTeaser({
           loading && 'opacity-50 motion-reduce:opacity-100'
         )}
       >
-        {windows.length === 0 ? (
+        {pending ? (
+          <div className={PENDING_ANSWER} />
+        ) : windows.length === 0 ? (
           <p className="text-muted-foreground">{t('none')}</p>
         ) : (
           <>

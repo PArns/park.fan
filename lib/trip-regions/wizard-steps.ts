@@ -80,7 +80,18 @@ export interface TripWizardStep {
   questions: readonly TripWizardQuestion[];
   /** The steps whose one question it took over, drawn after its own body. */
   merged: readonly TripWizardStepKey[];
+  /**
+   * Not asked on the way to the first plan (`LATER_STEPS`): reached from the result's answers, and
+   * walked only by an opening that landed on it ({@link wizardPass}).
+   */
+  later: boolean;
 }
+
+/**
+ * The steps the first pass leaves out: hardly anybody answers them before seeing a plan, and each
+ * screen before it loses visitors. The figures: docs/features/trip-planner/wizard.md#the-steps-1.
+ */
+export const LATER_STEPS: ReadonlySet<TripWizardStepKey> = new Set(['evenings', 'tickets']);
 
 /**
  * A hotel change needs a night on each side and a night to change on: with fewer the trip sleeps in
@@ -156,6 +167,7 @@ export function tripWizardSteps(facts: TripWizardFacts): TripWizardStep[] {
   const steps: TripWizardStep[] = wizardQuestions(facts).map((step) => ({
     ...step,
     merged: [],
+    later: LATER_STEPS.has(step.key),
   }));
   const option = (step: TripWizardStep | undefined) =>
     step !== undefined && !FIXED_STEPS.has(step.key);
@@ -230,6 +242,19 @@ export const QUESTION_STEP: Readonly<Record<TripWizardQuestion, TripWizardStepKe
   hop: 'evenings',
   tickets: 'tickets',
 };
+
+/**
+ * The steps one opening of the assistant walks: the first pass, and of the later steps only those
+ * it was opened on (`opened`), in their place, so the result's answer "Evenings" leads from Tempo
+ * to the Evenings and on to the finale. The steps as `tripWizardSteps` lists them; a later step's
+ * question merged into a first-pass step (Japan's evening question in Tempo) is asked there.
+ */
+export function wizardPass(
+  steps: readonly TripWizardStep[],
+  opened: readonly TripWizardStepKey[]
+): TripWizardStep[] {
+  return steps.filter((step) => !step.later || opened.includes(step.key));
+}
 
 /** The questions of one step's body inside a drawn step: the host's own, or a merged step's. */
 export function stepQuestions(step: TripWizardStep, key: TripWizardStepKey): TripWizardQuestion[] {

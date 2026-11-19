@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useSyncExternalStore } from 'react';
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
-import { MessagesSquare } from 'lucide-react';
+import { MessagesSquare, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ParkyLogo } from '@/components/assistant/parky/parky-logo';
 import { cn } from '@/lib/utils';
@@ -153,66 +153,55 @@ function useIdea(idea: PlanIdea, place: TripIdeaPlace) {
 }
 
 /**
- * „Parky hat 3 Ideen für deinen Plan“ over the days: a card per idea, to swipe on a phone and in a
- * grid at a desk. Nothing without ideas.
+ * One idea over the plan, as a quiet note, so the plan keeps the first screen: the API's best one
+ * the visitor has not hidden. The others stay under the days they change (`DayHint`). Nothing
+ * without ideas.
  */
-export function IdeasStrip({ ideas }: { ideas: readonly PlanIdea[] }) {
+export function IdeaNote({ ideas }: { ideas: readonly PlanIdea[] }) {
   const t = useTranslations('tripPlanner.ideas');
-  if (ideas.length === 0) return null;
+  const [hidden, setHidden] = useState<ReadonlySet<string>>(() => new Set());
+  const idea = ideas.find((i) => !hidden.has(ideaKey(i)));
+  if (!idea) return null;
   return (
-    <section className="flex flex-col gap-2" aria-label={t('label')} data-plan-ideas="">
-      <p className="flex items-center gap-2 text-sm font-semibold">
-        <ParkyLogo className="size-6 shrink-0" calm framed />
-        {t('title', { count: ideas.length })}
-      </p>
-      <ul className="-mx-4 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:overflow-visible sm:px-0 xl:grid-cols-3">
-        {ideas.map((idea) => (
-          <li key={ideaKey(idea)} className="w-[85%] shrink-0 snap-start sm:w-auto">
-            <IdeaCard idea={idea} />
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-/** One idea over the plan: its line, its figure, the verb that applies it and „Im Chat“. */
-export function IdeaCard({ idea }: { idea: PlanIdea }) {
-  const t = useTranslations('tripPlanner.ideas');
-  const { title, figure, verb, apply, chat } = useIdea(idea, 'header');
-  return (
-    <div
-      className="bg-card border-border/60 flex h-full flex-col gap-3 rounded-2xl border p-3.5 shadow-xs"
-      data-plan-idea={idea.kind}
+    <aside
+      aria-label={t('label')}
+      className="border-border/60 rounded-xl border py-1.5 ps-3 pe-1 transition-opacity duration-200 starting:opacity-0"
+      data-plan-ideas=""
     >
-      <div className="flex gap-2.5">
-        <ParkyLogo className="size-9 shrink-0" calm framed />
-        <div className="flex min-w-0 flex-col gap-0.5">
-          <p className="text-sm font-medium">{title}</p>
-          {figure && <p className="text-muted-foreground text-xs tabular-nums">{figure}</p>}
-        </div>
-      </div>
-      <div className="mt-auto flex flex-wrap gap-2">
-        <Button size="sm" onClick={apply}>
-          {verb}
-        </Button>
-        {chat && (
-          <Button size="sm" variant="ghost" onClick={chat}>
-            <MessagesSquare aria-hidden="true" />
-            {t('chat')}
-          </Button>
-        )}
-      </div>
-    </div>
+      <IdeaLine
+        key={ideaKey(idea)}
+        idea={idea}
+        place="header"
+        onDismiss={() => setHidden((set) => new Set(set).add(ideaKey(idea)))}
+      />
+    </aside>
   );
 }
 
 /** The idea about one day, under its card: Parky's face, the line and the button that applies it. */
 export function DayHint({ idea, className }: { idea: PlanIdea; className?: string }) {
+  return <IdeaLine idea={idea} place="day" className={className} />;
+}
+
+/** An idea in one line: Parky's face, the idea and its figure, apply, „Im Chat“ and a dismiss. */
+function IdeaLine({
+  idea,
+  place,
+  onDismiss,
+  className,
+}: {
+  idea: PlanIdea;
+  place: TripIdeaPlace;
+  onDismiss?: () => void;
+  className?: string;
+}) {
   const t = useTranslations('tripPlanner.ideas');
-  const { title, figure, verb, apply, chat } = useIdea(idea, 'day');
+  const { title, figure, verb, apply, chat } = useIdea(idea, place);
   return (
-    <div className={cn('flex flex-wrap items-center gap-x-3 gap-y-1.5', className)}>
+    <div
+      className={cn('flex flex-wrap items-center gap-x-3 gap-y-1.5', className)}
+      data-plan-idea={idea.kind}
+    >
       <ParkyLogo className="size-6 shrink-0" calm framed />
       <p className="min-w-0 flex-1 text-xs">
         {title}
@@ -225,6 +214,11 @@ export function DayHint({ idea, className }: { idea: PlanIdea; className?: strin
         {chat && (
           <Button size="sm" variant="ghost" onClick={chat} aria-label={`${t('chat')}: ${title}`}>
             <MessagesSquare aria-hidden="true" />
+          </Button>
+        )}
+        {onDismiss && (
+          <Button size="icon-sm" variant="ghost" onClick={onDismiss} aria-label={t('dismiss')}>
+            <X aria-hidden="true" />
           </Button>
         )}
       </div>

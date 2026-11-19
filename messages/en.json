@@ -484,6 +484,7 @@
       "ridesNone": "No ride figures for this day.",
       "ridesHint": "Each ride at its busiest time of day.",
       "planDay": "Open in the day planner",
+      "planTrip": "Plan a trip from this day",
       "noHoursFigure": "No hours published yet. The figure is the forecast; hours are not counted.",
       "ahead": "Ranked above {park}, where day guests must leave at {time}."
     },
@@ -517,7 +518,8 @@
       "open": "Open the trip planner"
     },
     "tile": {
-      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day"
+      "line": "The quietest day of each week for all {count} parks {inRegion}, from the peak-wait forecast",
+      "question": "Which day is quietest at {resort}?"
     },
     "faq": {
       "parks": {
@@ -3858,7 +3860,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Arrival in {city}",
-      "departureFrom": "Departure from {city}"
+      "departureFrom": "Departure from {city}",
+      "share": "Share"
     },
     "spare": {
       "day": "free day",
@@ -4121,7 +4124,6 @@
     "keep": {
       "addAll": "Copy to the day planner",
       "ics": "Add to calendar (.ics)",
-      "copy": "Copy link",
       "copied": "Link copied",
       "added": "{count, plural, =1 {1 park day is} other {# park days are}} in the day planner, starting with {park} on {date}.",
       "openPlanner": "Open the first day",
@@ -4168,7 +4170,10 @@
       "stripLegend": "Height: your parks’ peak wait that week. The marks underneath show your options.",
       "sketch": "Day by day",
       "rankedLower": "ranked lower: {reasons}",
-      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits."
+      "stormPeak": "{season}: ranked lower for the storm risk, even with short waits.",
+      "picked": "{rank, select, 1 {The quietest {days} days in your period} other {Option {rank} of your search}}: {range}",
+      "others": "Other dates",
+      "compare": "Compare all"
     },
     "evening": {
       "plus": "+ evening: {name}",
@@ -4383,7 +4388,8 @@
         "hopping": "{hopper} included"
       },
       "later": "Already have tickets?",
-      "enter": "Add them"
+      "enter": "Add them",
+      "line": "Tickets for {count, plural, =1 {1 park day} other {# park days}}"
     },
     "move": {
       "mode": {
@@ -4521,7 +4527,12 @@
         "show": "Show the plan now"
       },
       "dates": {
-        "months": "Month"
+        "months": "Month",
+        "mode": "Your dates",
+        "known": "I know my dates",
+        "find": "Find dates",
+        "quiet": "Next quiet week: {range}",
+        "quietTake": "Use these dates"
       },
       "parks": {
         "lead": "The big ones are chosen already, and a tap on a picture adds a park or takes it out",
@@ -4537,7 +4548,8 @@
         "weather": {
           "label": "Avoid extreme weather",
           "hint": "Theme parks on the cooler days, water parks on the hottest{storm, select, hurricane {; the peak of hurricane season counts for more} typhoon {; the peak of typhoon season counts for more} other {}}"
-        }
+        },
+        "fitted": "For {days, plural, one {# day} other {# days}}, {parks, plural, one {# park is} other {# parks are}} picked to start with. You can add more."
       },
       "spare": {
         "title": "{count, plural, =1 {1 day without a park} other {# days without a park}}",
@@ -4588,7 +4600,8 @@
       "ask": "What do you think of this idea for my plan: {idea}?",
       "applied": "In the plan: {idea}.",
       "inPlan": "Add to the plan",
-      "otherDay": "Another day"
+      "otherDay": "Another day",
+      "dismiss": "Hide this idea"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 hot park day} other {# hot park days}}",
@@ -4602,6 +4615,12 @@
       "noCooler": "No cooler day fitted the plan",
       "keyHeat": "Hot park day",
       "keyHeatNormal": "Hot park day; Ø is the average of past years"
+    },
+    "past": {
+      "started": "This trip started on {date}.",
+      "ended": "This trip started on {date} and is already over.",
+      "fromToday": "Plan from today",
+      "newDates": "Choose new dates"
     }
   },
   "tripRegions": {
@@ -4616,7 +4635,7 @@
       "hub": {
         "title": "Orlando Crowd Calendar",
         "monthTitle": "Orlando Crowd Calendar {month}",
-        "metaTitle": "Orlando Crowd Calendar {years} & Trip Planner",
+        "metaTitle": "Disney World & Universal Orlando Crowd Calendar {years}",
         "metaTitleMonth": "Orlando Crowd Calendar {month}: Disney & Universal",
         "metaTitleMonthShort": "Orlando Crowd Calendar {month}",
         "metaDescription": "Which Orlando park on which day, Epic Universe included. Quietest in the next 30 days: {verdict}.",
@@ -4645,9 +4664,7 @@
         "when": {
           "kicker": "Disney World and Universal",
           "title": "Best time to visit Orlando in {year}",
-          "titleNoYear": "Best time to visit Orlando",
-          "pageLink": "Best time to visit Orlando in {year}",
-          "pageLinkNoYear": "Best time to visit Orlando"
+          "pageLink": "Best time to visit Orlando in {year}"
         },
         "faq": {
           "title": "Questions about Orlando crowds",
@@ -5016,9 +5033,7 @@
         "when": {
           "kicker": "Disneyland and Universal",
           "title": "Best time to visit Disneyland & Universal Hollywood in {year}",
-          "titleNoYear": "Best time to visit Disneyland & Universal Hollywood",
-          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}",
-          "pageLinkNoYear": "Best time to visit Disneyland & Universal Hollywood"
+          "pageLink": "Best time to visit Disneyland & Universal Hollywood in {year}"
         },
         "reasons": {
           "school_break": "during Los Angeles school holidays"
@@ -5305,9 +5320,7 @@
         "when": {
           "kicker": "Tokyo Disney and USJ",
           "title": "Best time to visit Tokyo Disney and USJ in {year}",
-          "titleNoYear": "Best time to visit Tokyo Disney and USJ",
-          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}",
-          "pageLinkNoYear": "Best time to visit Tokyo Disney and USJ"
+          "pageLink": "Best time to visit Tokyo Disney and USJ in {year}"
         },
         "reasons": {
           "school_break": "during Japanese school holidays"
@@ -5635,9 +5648,7 @@
         "when": {
           "kicker": "Trips with all three parks",
           "title": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
-          "titleNoYear": "Best time to visit Disneyland Paris & Parc Astérix",
-          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}",
-          "pageLinkNoYear": "Best time to visit Disneyland Paris & Parc Astérix"
+          "pageLink": "Best time to visit Disneyland Paris & Parc Astérix in {year}"
         },
         "reasons": {
           "school_break": "Paris school holidays"

@@ -2,7 +2,16 @@
 
 import { useState, useSyncExternalStore, type ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronDown, CircleAlert, ExternalLink, Info, Moon, Ticket } from 'lucide-react';
+import {
+  ChevronDown,
+  ChevronRight,
+  CircleAlert,
+  ExternalLink,
+  Info,
+  Moon,
+  Ticket,
+} from 'lucide-react';
+import { tripCounts } from '@/lib/trip-regions/plan-copy';
 import { cn } from '@/lib/utils';
 import { formatParkDayRange, formatParkDay } from '@/lib/utils/park-day';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -1560,6 +1569,31 @@ function PartnerWord() {
     >
       {t('label')}
     </span>
+  );
+}
+
+/**
+ * „Tickets für 5 Parktage“ under the result's head: a plain row into the assistant's Tickets step,
+ * worded as a fact about the plan so it does not read as an advertisement. The one place the head
+ * opens that step from (`edit.tickets('head')`).
+ */
+export function PlanTicketsLine({ plan, edit }: { plan: TripPlan; edit: PlanEdit }) {
+  const t = useTranslations('tripPlanner.tickets');
+  return (
+    <button
+      type="button"
+      aria-haspopup="dialog"
+      onClick={() => edit.tickets('head')}
+      className={cn(
+        'hover:bg-accent/50 -mx-2 flex min-h-11 items-center gap-2 rounded-lg px-2 text-left text-sm transition-colors',
+        PLAN_FOCUS
+      )}
+      data-plan-tickets-line=""
+    >
+      <Ticket className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+      <span className="min-w-0 flex-1">{t('line', { count: tripCounts(plan).parkDays })}</span>
+      <ChevronRight className="text-muted-foreground size-4 shrink-0" aria-hidden="true" />
+    </button>
   );
 }
 

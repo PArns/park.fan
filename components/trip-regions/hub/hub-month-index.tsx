@@ -1,4 +1,5 @@
 import { ParkCalendarMonthIndexChip } from '@/components/parks/park-calendar-month-index-chip';
+import { linkBlockAttributes } from '@/lib/analytics/internal-link';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 import { isSameMonth, tripRegionMonthHref, tripRegionMonths } from '@/lib/trip-regions/paths';
@@ -8,7 +9,8 @@ import type { TripMonth } from '@/lib/trip-regions/types';
 /**
  * Every month the hub serves, as links, on the hub and on every month page, so each month is one
  * hop from every other. Navigation, not a chapter: a labelled `<nav>` with no heading, as the park
- * calendar's month index. The chips are the park calendar's own.
+ * calendar's month index. The chips are the park calendar's own. A click counts as
+ * `internal_link_clicked` from the block `trip_months`.
  */
 export async function HubMonthIndex({
   region,
@@ -28,7 +30,11 @@ export async function HubMonthIndex({
   const t = await getRegionTranslations(region, 'hub');
   const format = getDateTimeFormat(locale, { month: 'short', year: 'numeric', timeZone: 'UTC' });
   return (
-    <nav aria-label={t('monthIndexLabel')} className={cn(className)}>
+    <nav
+      aria-label={t('monthIndexLabel')}
+      {...linkBlockAttributes('trip_months')}
+      className={cn(className)}
+    >
       <p className="text-muted-foreground mb-3 text-xs font-medium tracking-wide uppercase">
         {t('monthIndexLabel')}
       </p>

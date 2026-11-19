@@ -339,7 +339,7 @@ export function europeanBreaks(
 }
 
 /**
- * A region's breaks long enough for a trip of `days`, cut to `range`: what chapter 04 links the
+ * A region's breaks long enough for a trip of `days`, cut to `range`: what the school-holidays chapter links the
  * planner's When mode to.
  */
 export function tripLongBreaks(
@@ -376,7 +376,7 @@ export function bestAndWorstWeeks(
   return { best, worst };
 }
 
-/** What a week of the strip or chapter 03 has going on, for its one-line reason. */
+/** What a week of the strip or the weeks chapter has going on, for its one-line reason. */
 export interface WeekFacts {
   breaks: BreakRun[];
   seasons: TripSeason[];

@@ -6,9 +6,10 @@ import { PlanDatesStep } from '../../planner/plan-find';
 import { useWizardAsk, useWizardFrame, type WizardStepProps } from '../wizard-step';
 
 /**
- * Step 1, the dates, the one answer the plan needs: the planner's date grid with month chips over
- * it, and "No dates yet? Find the best time" under it. Once the arrival is pressed Parky asks for
- * the way home, so the second press is not a guess.
+ * Step 1, the dates, the one answer the plan needs: „Ich kenne meine Daten“ or „Daten finden“ as
+ * equals, then the planner's date grid with month chips and the quietest week ahead over it, or the
+ * search (`PlanDatesStep`). Once the arrival is pressed Parky asks for the way home, so the second
+ * press is not a guess.
  */
 export function DatesStep(_: WizardStepProps) {
   const t = useTranslations('tripPlanner.wizard.ask');

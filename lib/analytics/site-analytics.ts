@@ -494,11 +494,12 @@ export interface SiteEventMap {
   trip_tile_clicked: TripEvent<{ link: TripTileLink }>;
   /**
    * The trip planner started: the hub's hero, its own start button, a link with a plan, the
-   * landing's "Reise planen" (`landing`), "Start again" (`restart`), or (`dates`) the first dates
-   * picked in a page load where nothing else started it.
+   * landing's "Reise planen" (`landing`), "Start again" (`restart`), a day of the hub calendar
+   * as the arrival („Reise ab diesem Tag planen“, `day`), or (`dates`) the first dates picked in a
+   * page load where nothing else started it.
    */
   trip_planner_started: TripEvent<{
-    source: 'hero' | 'button' | 'link' | 'dates' | 'landing' | 'restart';
+    source: 'hero' | 'button' | 'link' | 'dates' | 'landing' | 'restart' | 'day';
   }>;
   /**
    * A step of the trip planner's assistant on screen, and how the visitor got there: Next, Skip,
@@ -524,6 +525,16 @@ export interface SiteEventMap {
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
   trip_hub_filter: TripEvent<{ resort: string }>;
   /**
+   * A day of the hub calendar opened in its sheet, from the table (from `lg`) or the phone's week.
+   * Which day is never sent; the hit's page type tells the hub from a month.
+   */
+  trip_hub_day_opened: TripEvent<{ layout: 'table' | 'phone' }>;
+  /**
+   * The hub calendar paged to another week: how, and the week now shown (1 is the window's first).
+   * On a change only, so a press at either end counts nothing.
+   */
+  trip_hub_week_paged: TripEvent<{ how: HubWeekPaging; week: number }>;
+  /**
    * The hub's best-time teaser switched to other parks or another trip length; on a change only.
    * `scope` is the best-time page's id, `days` the length now shown.
    */
@@ -535,7 +546,8 @@ export interface SiteEventMap {
   trip_tickets_answered: TripEvent<{ answer: 'not_yet' | 'yes' | 'skipped' }>;
   /**
    * The ticket step opened, every time: from "Already have tickets?" (`ask`), the card's "Change"
-   * (`card`), a ticket problem or a day outside a ticket; `first` the first time in this browser.
+   * (`card`), the line under the result's head (`head`), a ticket problem or a day outside a
+   * ticket; `first` the first time in this browser.
    */
   trip_tickets_opened: TripEvent<{ from: TripTicketsFrom; first: boolean }>;
   /**
@@ -559,8 +571,10 @@ export interface SiteEventMap {
     fix: 'travel_days' | 'parks' | 'longer';
     left_out: '1' | '2' | '3+';
   }>;
-  /** "No dates yet? Find the best time" and its way back. */
+  /** The dates step's choice between dates of one's own and a search for them. */
   trip_find_toggled: TripEvent<{ to: 'find' | 'known' }>;
+  /** The dates step's suggestion of the quietest week ahead taken as the trip's dates. */
+  trip_quiet_week_taken: TripEvent;
   /**
    * The search's period chosen, and whether it keeps to school holidays. Never which holidays:
    * a holiday region says where the visitor lives.
@@ -612,8 +626,12 @@ export interface SiteEventMap {
     stays?: number;
     windows?: number;
   }>;
-  /** "Plan these dates" on a window the search found, by its rank. */
-  trip_window_planned: TripEvent<{ rank: number }>;
+  /**
+   * A window the search found, planned by its rank: the best one as soon as the search answers
+   * (`auto`), another from the row over that plan (`chip`), or "Plan these dates" on a window's
+   * card or sheet (`card`).
+   */
+  trip_window_planned: TripEvent<{ rank: number; via: 'auto' | 'chip' | 'card' }>;
   /** "How the ticket works" opened on a suggested ticket, by its resort. */
   trip_ticket_details_opened: TripEvent<{ resort: string }>;
   /** "Show the plan with Park Hopper" for one resort, and its way back. */
@@ -655,8 +673,11 @@ export interface SiteEventMap {
   trip_days_saved: TripEvent<{ days: number }>;
   /** The trip as an `.ics` file, with its park days. */
   trip_ics_exported: TripEvent<{ days: number }>;
-  /** "Copy link" of the plan. */
-  trip_link_copied: TripEvent;
+  /**
+   * "Share" in the result's head: the system share sheet on a phone that has one (`share`), the
+   * link copied otherwise (`copy`).
+   */
+  trip_link_copied: TripEvent<{ method: 'share' | 'copy' }>;
   /** An evening venue's own page opened from a day's evening. */
   trip_evening_link_clicked: TripEvent;
   /** A day outside its ticket's window, and the way out the visitor chose. */
@@ -689,12 +710,21 @@ type TripEvent<Props extends object = object> = { region: string } & Props;
 /** Which of the planner tile's two links: into the planner, or to the region's crowd calendar. */
 export type TripTileLink = 'plan' | 'calendar';
 
+/**
+ * How the hub calendar went to another week: ‹ or › (`arrow`), a week's chip, the arrow keys, Home
+ * or End (`keys`), or the „Nächste Woche“ button under the grid (`next_link`).
+ */
+export type HubWeekPaging = 'arrow' | 'chip' | 'keys' | 'next_link';
+
 /** Where „Reise löschen“ was confirmed, as `trip_deleted` names it. */
 export type TripDeleteFrom = 'head' | 'result';
 
-/** Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already". */
+/**
+ * Where the ticket step was opened from; `wizard` is the assistant's "Yes, bought already", `head`
+ * the line under the result's head.
+ */
 export type TripTicketsFrom =
-  'ask' | 'card' | 'adopt' | 'ticket_problem' | 'outside_ticket' | 'wizard';
+  'ask' | 'card' | 'head' | 'adopt' | 'ticket_problem' | 'outside_ticket' | 'wizard';
 
 /** A screen of the trip planner's assistant, its finale included. */
 export type TripWizardStepName = TripWizardStepKey | 'finale';
@@ -709,7 +739,7 @@ export type TripEditPanel = 'dates' | 'parks' | 'route' | 'options';
  * Where the result opens the assistant on the Parks or Dates step besides the answers: the parks
  * left out, a ticket problem, or the ticket card (a ticket that covers none of the planned parks).
  */
-export type TripEditFrom = 'left_out' | 'ticket_problem' | 'ticket_card';
+export type TripEditFrom = 'left_out' | 'ticket_problem' | 'ticket_card' | 'past_trip';
 
 /** An edit of the plan from the result, as `trip_undo` names it (`PlanEditChange`'s kinds). */
 export type TripEditKind =

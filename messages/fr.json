@@ -484,6 +484,7 @@
       "ridesNone": "Pas de chiffres par attraction pour ce jour.",
       "ridesHint": "Chaque attraction au moment le plus chargé de sa journée.",
       "planDay": "Ouvrir dans le planificateur de journée",
+      "planTrip": "Planifier un voyage à partir de ce jour",
       "noHoursFigure": "Pas encore d’horaires. Le chiffre est la prévision ; les horaires ne comptent pas.",
       "ahead": "Passe devant {park}, où les visiteurs du jour doivent partir à {time}."
     },
@@ -517,7 +518,8 @@
       "open": "Ouvrir le planificateur de voyage"
     },
     "tile": {
-      "line": "Tu donnes tes dates, le planificateur te dit lequel des {count} parcs est le plus calme chaque jour"
+      "line": "Le jour le plus calme de chaque semaine pour les {count} parcs {inRegion}, d’après la prévision de l’attente de pointe",
+      "question": "Quel jour y a-t-il le moins de monde à {resort} ?"
     },
     "faq": {
       "parks": {
@@ -3858,7 +3860,8 @@
         "hotel": "Hôtel : {area}"
       },
       "arrivalIn": "Arrivée à {city}",
-      "departureFrom": "Départ de {city}"
+      "departureFrom": "Départ de {city}",
+      "share": "Partager"
     },
     "spare": {
       "day": "jour libre",
@@ -4121,7 +4124,6 @@
     "keep": {
       "addAll": "Copier dans le planificateur de journée",
       "ics": "Ajouter au calendrier (.ics)",
-      "copy": "Copier le lien",
       "copied": "Lien copié",
       "added": "{count, plural, =1 {1 jour de parc est} other {# jours de parc sont}} dans le planificateur de journée, d’abord {park} le {date}.",
       "openPlanner": "Ouvrir le premier jour",
@@ -4168,7 +4170,10 @@
       "stripLegend": "Hauteur : l’attente de pointe de tes parcs cette semaine-là. Les repères dessous montrent tes propositions.",
       "sketch": "Jour par jour",
       "rankedLower": "classé plus bas : {reasons}",
-      "stormPeak": "{season} : classé plus bas à cause du risque de tempête, même avec des attentes courtes."
+      "stormPeak": "{season} : classé plus bas à cause du risque de tempête, même avec des attentes courtes.",
+      "picked": "{rank, select, 1 {Les {days} jours les plus calmes de ta période} other {Proposition {rank} de ta recherche}} : {range}",
+      "others": "Autres dates",
+      "compare": "Tout comparer"
     },
     "evening": {
       "plus": "+ soirée : {name}",
@@ -4383,7 +4388,8 @@
         "hopping": "{hopper} inclus"
       },
       "later": "Déjà des billets ?",
-      "enter": "Les ajouter"
+      "enter": "Les ajouter",
+      "line": "Billets pour {count, plural, =1 {1 jour de parc} other {# jours de parc}}"
     },
     "move": {
       "mode": {
@@ -4521,7 +4527,12 @@
         "show": "Voir le plan maintenant"
       },
       "dates": {
-        "months": "Mois"
+        "months": "Mois",
+        "mode": "Tes dates",
+        "known": "Je connais mes dates",
+        "find": "Trouver des dates",
+        "quiet": "Prochaine semaine calme : {range}",
+        "quietTake": "Choisir ces dates"
       },
       "parks": {
         "lead": "Les grands parcs sont déjà choisis, et une touche sur une photo ajoute un parc ou le retire",
@@ -4537,7 +4548,8 @@
         "weather": {
           "label": "Éviter la météo extrême",
           "hint": "Les parcs à thème les jours plus frais, les parcs aquatiques les plus chauds{storm, select, hurricane { ; le pic de la saison des ouragans compte davantage} typhoon { ; le pic de la saison des typhons compte davantage} other {}}"
-        }
+        },
+        "fitted": "Pour {days, plural, one {# jour} other {# jours}}, {parks, plural, one {# parc est présélectionné} other {# parcs sont présélectionnés}}. Tu peux en ajouter d’autres."
       },
       "spare": {
         "title": "{count, plural, =1 {1 jour sans parc} other {# jours sans parc}}",
@@ -4588,7 +4600,8 @@
       "ask": "Que penses-tu de cette idée pour mon plan : {idea} ?",
       "applied": "Dans le plan : {idea}.",
       "inPlan": "Ajouter au plan",
-      "otherDay": "Un autre jour"
+      "otherDay": "Un autre jour",
+      "dismiss": "Masquer cette idée"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 jour de parc chaud} other {# jours de parc chauds}}",
@@ -4602,6 +4615,12 @@
       "noCooler": "Aucun jour plus frais ne rentrait dans le plan",
       "keyHeat": "Jour de parc chaud",
       "keyHeatNormal": "Jour de parc chaud ; Ø est la moyenne des années passées"
+    },
+    "past": {
+      "started": "Ce voyage a commencé le {date}.",
+      "ended": "Ce voyage a commencé le {date} et il est déjà terminé.",
+      "fromToday": "Planifier à partir d’aujourd’hui",
+      "newDates": "Choisir d’autres dates"
     }
   },
   "tripRegions": {
@@ -4616,7 +4635,7 @@
       "hub": {
         "title": "Calendrier d’affluence Orlando",
         "monthTitle": "Calendrier d’affluence Orlando {month}",
-        "metaTitle": "Calendrier d’affluence Orlando {years} et planificateur",
+        "metaTitle": "Affluence à Orlando {years} : Disney World et Universal",
         "metaTitleMonth": "Affluence à Orlando en {month} : Disney et Universal",
         "metaTitleMonthShort": "Calendrier d’affluence Orlando {month}",
         "metaDescription": "Quel parc d’Orlando quel jour, Epic Universe compris. Le plus calme sur 30 jours : {verdict}.",
@@ -4645,9 +4664,7 @@
         "when": {
           "kicker": "Disney World et Universal",
           "title": "Meilleure période pour aller à Orlando en {year}",
-          "titleNoYear": "Meilleure période pour aller à Orlando",
-          "pageLink": "Meilleure période pour aller à Orlando en {year}",
-          "pageLinkNoYear": "Meilleure période pour aller à Orlando"
+          "pageLink": "Meilleure période pour aller à Orlando en {year}"
         },
         "faq": {
           "title": "Questions sur l’affluence à Orlando",
@@ -5016,9 +5033,7 @@
         "when": {
           "kicker": "Disneyland et Universal",
           "title": "Quand aller à Disneyland et Universal Hollywood en {year}",
-          "titleNoYear": "Quand aller à Disneyland et Universal Hollywood",
-          "pageLink": "Quand aller à Disneyland et Universal Hollywood en {year}",
-          "pageLinkNoYear": "Quand aller à Disneyland et Universal Hollywood"
+          "pageLink": "Quand aller à Disneyland et Universal Hollywood en {year}"
         },
         "reasons": {
           "school_break": "pendant les vacances scolaires de Los Angeles"
@@ -5305,9 +5320,7 @@
         "when": {
           "kicker": "Tokyo Disney et USJ",
           "title": "Quand aller à Tokyo Disney et Universal Japan en {year}",
-          "titleNoYear": "Quand aller à Tokyo Disney et Universal Japan",
-          "pageLink": "Quand aller à Tokyo Disney et Universal Japan en {year}",
-          "pageLinkNoYear": "Quand aller à Tokyo Disney et Universal Japan"
+          "pageLink": "Quand aller à Tokyo Disney et Universal Japan en {year}"
         },
         "reasons": {
           "school_break": "pendant les vacances scolaires japonaises"
@@ -5603,7 +5616,7 @@
       "hub": {
         "title": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
         "monthTitle": "Calendrier d’affluence Disneyland Paris et Parc Astérix, {month}",
-        "metaTitle": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
+        "metaTitle": "Calendrier d’affluence Disneyland Paris {years}",
         "metaTitleMonth": "Affluence Disneyland Paris et Parc Astérix en {month}",
         "metaTitleMonthShort": "Affluence Disneyland Paris en {month}",
         "metaDescription": "Disneyland Paris et le Parc Astérix jour par jour, avec un planificateur de séjour. Le plus calme sur 30 jours : {verdict}.",
@@ -5635,9 +5648,7 @@
         "when": {
           "kicker": "Séjours avec les trois parcs",
           "title": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
-          "titleNoYear": "Quand aller à Disneyland Paris et au Parc Astérix",
-          "pageLink": "Quand aller à Disneyland Paris et au Parc Astérix en {year}",
-          "pageLinkNoYear": "Quand aller à Disneyland Paris et au Parc Astérix"
+          "pageLink": "Quand aller à Disneyland Paris et au Parc Astérix en {year}"
         },
         "reasons": {
           "school_break": "vacances scolaires zone C"

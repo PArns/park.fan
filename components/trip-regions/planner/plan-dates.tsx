@@ -46,6 +46,7 @@ import { dayGuestClose, shortGroupName } from '@/lib/trip-regions/hub-data';
 import type { TripCalendarDay, TripRegionPark } from '@/lib/trip-regions/types';
 import { holidaySignals, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { sentenceCase } from '@/lib/utils/sentence-case';
+import { usePresetArrival } from '@/lib/trip-regions/planner-ui';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { usePlanContext, useTripEvents } from './plan-context';
 import { useTripCalendar } from './use-trip-plan';
@@ -142,7 +143,7 @@ export function PlanDates({
     region,
     config,
     parkName,
-    headliners,
+    allHeadliners,
     live,
     tickets: catalog,
   } = usePlanContext();
@@ -152,10 +153,12 @@ export function PlanDates({
   const seasonName = useSeasonName();
   const stormKeys = useStormKeys();
 
-  const [pendingFrom, setPendingFrom] = useState<string | null>(null);
+  // A start from a day of the hub's calendar brings its date as the arrival.
+  const presetArrival = usePresetArrival();
+  const [pendingFrom, setPendingFrom] = useState<string | null>(presetArrival);
   const pending = pendingFrom !== null;
   useEffect(() => onPending?.(pending), [onPending, pending]);
-  const [month, setMonth] = useState<string | null>(null);
+  const [month, setMonth] = useState<string | null>(presetArrival && monthOf(presetArrival));
   // Dates set from outside the grid (Parky, a shared link, undo) take the grid to their month; a
   // range picked here records its own arrival first, so the grid stays where the departure was.
   const [seenFrom, setSeenFrom] = useState(state.from);
@@ -242,11 +245,11 @@ export function PlanDates({
     [parkBy, tight]
   );
   const considered = useMemo(() => {
-    const parks = state.parks?.map((p) => p.slug) ?? [...headliners];
+    const parks = state.parks?.map((p) => p.slug) ?? [...allHeadliners];
     return gridMode === 'all'
       ? parks
       : parks.filter((slug) => parkBy.get(slug)?.group === gridMode);
-  }, [state.parks, headliners, gridMode, parkBy]);
+  }, [state.parks, allHeadliners, gridMode, parkBy]);
   const events = useMemo(
     () => (calendar.data && shown ? monthEvents(calendar.data, shown, considered) : []),
     [calendar.data, shown, considered]
@@ -278,7 +281,9 @@ export function PlanDates({
   const anyParty = inMonth.some(({ view }) => view.cellParty);
   const anyNye = inMonth.some(({ fact }) => fact.nye);
   const anyUnpublished = inMonth.some(({ view }) => view.pick?.hoursUnpublished);
-  const anyTint = inMonth.some(({ fact, view }) => !view.pick && dateLevel(fact.day, headliners));
+  const anyTint = inMonth.some(
+    ({ fact, view }) => !view.pick && dateLevel(fact.day, allHeadliners)
+  );
   const storms = inMonth.flatMap(({ fact }) => (fact.storm ? [fact.storm] : []));
 
   const start = pendingFrom ?? state.from;
@@ -308,9 +313,9 @@ export function PlanDates({
   const length = tripDates(state).length;
   const lastYear = lastYearStart(
     (calendar.data?.days ?? []).filter((d) =>
-      headliners.some((s) => (d.parks[s]?.basis ?? 'none') !== 'none')
+      allHeadliners.some((s) => (d.parks[s]?.basis ?? 'none') !== 'none')
     ),
-    (d) => headliners.some((s) => d.parks[s]?.basis === 'last_year')
+    (d) => allHeadliners.some((s) => d.parks[s]?.basis === 'last_year')
   );
   const shortRange = (from: string, to: string) =>
     formatParkDayRange(locale, from, to, { day: 'numeric', month: 'short' });
@@ -412,8 +417,8 @@ export function PlanDates({
           const pick = view?.pick ?? null;
           // The pick carries the colour where there is one: a region tint behind it would be a
           // second, flatter answer to the same question.
-          const level = pick ? null : dateLevel(day, headliners);
-          const lastYearDay = headliners.some((s) => day?.parks[s]?.basis === 'last_year');
+          const level = pick ? null : dateLevel(day, allHeadliners);
+          const lastYearDay = allHeadliners.some((s) => day?.parks[s]?.basis === 'last_year');
           const isStart = date === start;
           const isEnd = !isStart && date === end;
           const inRange = Boolean(start && end && date > start && date < end);

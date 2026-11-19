@@ -484,6 +484,7 @@
       "ridesNone": "Geen cijfers per attractie voor deze dag.",
       "ridesHint": "Elke attractie op haar drukste moment van de dag.",
       "planDay": "Openen in de dagplanner",
+      "planTrip": "Reis vanaf deze dag plannen",
       "noHoursFigure": "Nog geen openingstijden. Het cijfer is de voorspelling; openingstijden tellen niet mee.",
       "ahead": "Staat boven {park}, waar dagbezoekers om {time} moeten vertrekken."
     },
@@ -517,7 +518,8 @@
       "open": "Reisplanner openen"
     },
     "tile": {
-      "line": "Jij geeft je reisdagen op, de planner zegt welk van de {count} parken op welke dag het rustigst is"
+      "line": "De rustigste dag van elke week voor alle {count} parken {inRegion}, volgens de prognose van de piekwachttijd",
+      "question": "Op welke dag is het in {resort} het rustigst?"
     },
     "faq": {
       "parks": {
@@ -3858,7 +3860,8 @@
         "hotel": "Hotel: {area}"
       },
       "arrivalIn": "Aankomst in {city}",
-      "departureFrom": "Vertrek uit {city}"
+      "departureFrom": "Vertrek uit {city}",
+      "share": "Delen"
     },
     "spare": {
       "day": "vrije dag",
@@ -4121,7 +4124,6 @@
     "keep": {
       "addAll": "Naar de dagplanner",
       "ics": "In de agenda (.ics)",
-      "copy": "Link kopiëren",
       "copied": "Link gekopieerd",
       "added": "{count, plural, =1 {1 parkdag staat} other {# parkdagen staan}} in de dagplanner, eerst {park} op {date}.",
       "openPlanner": "Eerste dag openen",
@@ -4168,7 +4170,10 @@
       "stripLegend": "Hoogte: de piekwachttijd van je parken die week. De streepjes eronder tonen je voorstellen.",
       "sketch": "Dag voor dag",
       "rankedLower": "lager gerangschikt: {reasons}",
-      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden."
+      "stormPeak": "{season}: lager gerangschikt vanwege het stormrisico, ook bij korte wachttijden.",
+      "picked": "{rank, select, 1 {De rustigste {days} dagen in je periode} other {Voorstel {rank} van je zoekopdracht}}: {range}",
+      "others": "Andere periodes",
+      "compare": "Alles vergelijken"
     },
     "evening": {
       "plus": "+ avond: {name}",
@@ -4383,7 +4388,8 @@
         "hopping": "{hopper} inbegrepen"
       },
       "later": "Al tickets?",
-      "enter": "Invullen"
+      "enter": "Invullen",
+      "line": "Tickets voor {count, plural, =1 {1 parkdag} other {# parkdagen}}"
     },
     "move": {
       "mode": {
@@ -4521,7 +4527,12 @@
         "show": "Plan nu tonen"
       },
       "dates": {
-        "months": "Maand"
+        "months": "Maand",
+        "mode": "Je reisdata",
+        "known": "Ik weet mijn data",
+        "find": "Data zoeken",
+        "quiet": "Volgende rustige week: {range}",
+        "quietTake": "Overnemen"
       },
       "parks": {
         "lead": "De grote parken zijn al gekozen, en met een tik op een foto voeg je een park toe of haal je het weg",
@@ -4537,7 +4548,8 @@
         "weather": {
           "label": "Extreem weer vermijden",
           "hint": "Pretparken op de koelere dagen, waterparken op de heetste{storm, select, hurricane {; de piek van het orkaanseizoen telt zwaarder} typhoon {; de piek van het tyfoonseizoen telt zwaarder} other {}}"
-        }
+        },
+        "fitted": "Voor {days, plural, one {# dag} other {# dagen}} {parks, plural, one {is # park} other {zijn # parken}} alvast gekozen. Je kunt er meer bij nemen."
       },
       "spare": {
         "title": "{count, plural, =1 {1 dag zonder park} other {# dagen zonder park}}",
@@ -4588,7 +4600,8 @@
       "ask": "Wat vind je van dit idee voor mijn plan: {idea}?",
       "applied": "In het plan: {idea}.",
       "inPlan": "In het plan",
-      "otherDay": "Andere dag"
+      "otherDay": "Andere dag",
+      "dismiss": "Idee verbergen"
     },
     "weather": {
       "heatDays": "{count, plural, =1 {1 hete parkdag} other {# hete parkdagen}}",
@@ -4602,6 +4615,12 @@
       "noCooler": "Er paste geen koelere dag in het plan",
       "keyHeat": "Hete parkdag",
       "keyHeatNormal": "Hete parkdag; Ø is het gemiddelde van eerdere jaren"
+    },
+    "past": {
+      "started": "Deze reis is op {date} begonnen.",
+      "ended": "Deze reis is op {date} begonnen en is al voorbij.",
+      "fromToday": "Vanaf vandaag plannen",
+      "newDates": "Nieuwe data kiezen"
     }
   },
   "tripRegions": {
@@ -4616,7 +4635,7 @@
       "hub": {
         "title": "Orlando drukte-kalender",
         "monthTitle": "Orlando drukte-kalender {month}",
-        "metaTitle": "Orlando drukte-kalender {years} & reisplanner",
+        "metaTitle": "Orlando drukte-kalender {years}: Disney World en Universal",
         "metaTitleMonth": "Orlando in {month}: drukte bij Disney en Universal",
         "metaTitleMonthShort": "Orlando drukte-kalender {month}",
         "metaDescription": "Welk park in Orlando op welke dag, met Epic Universe. Het rustigst in de komende 30 dagen: {verdict}.",
@@ -4645,9 +4664,7 @@
         "when": {
           "kicker": "Disney World en Universal",
           "title": "Beste reistijd voor Orlando in {year}",
-          "titleNoYear": "Beste reistijd voor Orlando",
-          "pageLink": "Beste reistijd voor Orlando in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Orlando"
+          "pageLink": "Beste reistijd voor Orlando in {year}"
         },
         "faq": {
           "title": "Vragen over de drukte in Orlando",
@@ -5016,9 +5033,7 @@
         "when": {
           "kicker": "Disneyland en Universal",
           "title": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
-          "titleNoYear": "Beste reistijd voor Disneyland en Universal Hollywood",
-          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}",
-          "pageLinkNoYear": "Beste reistijd voor Disneyland en Universal Hollywood"
+          "pageLink": "Beste reistijd voor Disneyland en Universal Hollywood {year}"
         },
         "reasons": {
           "school_break": "in de schoolvakantie in Los Angeles"
@@ -5305,9 +5320,7 @@
         "when": {
           "kicker": "Tokyo Disney en USJ",
           "title": "Beste reistijd voor Tokyo Disney en USJ in {year}",
-          "titleNoYear": "Beste reistijd voor Tokyo Disney en USJ",
-          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Tokyo Disney en USJ"
+          "pageLink": "Beste reistijd voor Tokyo Disney en USJ in {year}"
         },
         "reasons": {
           "school_break": "in de Japanse schoolvakantie"
@@ -5635,9 +5648,7 @@
         "when": {
           "kicker": "Reizen met alle drie de parken",
           "title": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
-          "titleNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix",
-          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}",
-          "pageLinkNoYear": "Beste reistijd voor Disneyland Paris & Parc Astérix"
+          "pageLink": "Beste reistijd voor Disneyland Paris & Parc Astérix in {year}"
         },
         "reasons": {
           "school_break": "schoolvakantie Parijs"
