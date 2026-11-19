@@ -157,13 +157,19 @@ Italian. The API's `name` is English and only a search matches it. The browser a
 
 ## The planner tile on a park's pages
 
-`TripPlannerTile` (`components/trip-regions/trip-planner-tile.tsx`) is the region's planner on the
-page of each of its parks and on that park's crowd calendar: the region's scene, „Reiseplaner",
-„Mehrere Tage in Orlando", one line with the region's park count, „Magic Kingdom einplanen" into
-the planner with the park chosen (on a calendar month page that month as the dates to search) and
-the hub by its name (`nav.calendar`, "Orlando Crowd Calendar") to the bare hub. The whole card is the plan link, which carries a state
-and so is `nofollow` (`plannerLinkRel`); the hub's link stands above that cover and is the followed
-one, with the hub's name as its anchor, so a region's strongest park pages pass the hub a link.
+`TripPlannerTile` (`components/trip-regions/trip-planner-tile.tsx`) is the region's crowd calendar
+and planner on the page of each of its parks and on that park's crowd calendar. It leads with the
+question a reader of one park's waits brings to the hub, which day is quietest: the region's scene,
+its name („Orlando"), „Wann ist es in Walt Disney World am ruhigsten?" (`tripHub.tile.question`
+with the park's resort, `resort` on `TripRegionLinkPark`; a day-trip park gets the hub's own
+„Welcher Park an welchem Tag?"), one line on what the calendar marks with the region's park count,
+the hub by its name (`nav.calendar`, "Orlando Crowd Calendar") as the one primary action, and under
+it „Magic Kingdom einplanen" into the planner with the park chosen (on a calendar month page that
+month as the dates to search) as a plain link. The whole card is the hub's link, the followed one,
+with the hub's name as its anchor, so a region's strongest park pages pass the hub a link; the plan
+link stands above that cover, carries a state and so is `nofollow` (`plannerLinkRel`). Before
+November 2026 the planner led („Mehrere Tage in Orlando", the plan as the pill): 609 views in a
+week, 4 clicks, 2 to each link.
 A view is `section_seen` with `trip_tile`, once when the tile's top comes on screen; a click is
 `internal_link_clicked` with the block `trip_tile` and the park as entity, and `trip_tile_clicked`
 with the region and which link (`plan`, `calendar`), since both links lead to the hub's page and the
@@ -174,12 +180,15 @@ first event counts them as one place ([analytics](../development/analytics.md)).
 | park page           | right above „Heute im Park", under the title card (`phone="row"`) | the owner's call, so more readers pass it; measured for two weeks with `section_seen` and `trip_tile_clicked` from November 2026 |
 | park crowd calendar | right under the header card, before „Beste Reisezeit"             | a reader of a crowd calendar is choosing days, which is the planner's job for a whole trip                                       |
 
-On the park page a phone gets the compact row (`phone="row"`): the kicker, the heading, the plan
-pill and the hub's link beside a 96 px cut of the scene, 135 px tall against the banner's 436, and
-the line under the heading only from `sm`. With the banner, „Heute im Park" on Tokyo DisneySea would
-start at 934 px, below a 390 × 844 screen; with the row it starts at 651 (482 without the tile). On
+On the park page a phone gets the compact row (`phone="row"`): the kicker, the heading, the hub's
+pill and the plan link beside a 96 px cut of the scene, 163 px tall against the banner's 436 (the
+question takes two lines where „Mehrere Tage in Orlando" took one, 135 px), and the line under the
+heading only from `sm`. With the banner, „Heute im Park" on Tokyo DisneySea would start at 934 px,
+below a 390 × 844 screen; with the row it starts at 651 (482 without the tile). On
 Magic Kingdom the title card and the Lightning Lane prices already fill the first screen, so
-„Heute im Park" moves from 918 to 1068 either way. At 1440 the tile adds its 240 px and 16 px of
+„Heute im Park" moves from 918 to 1068 either way. The question added 28 to 31 px (`next dev`,
+19 November 2026): „Hoy en el parque" on Tokyo DisneySea 697 → 728, still on the first screen,
+„Heute im Park" on Magic Kingdom 1106 → 1134. At 1440 the tile adds its 240 px and 16 px of
 gap: Tokyo DisneySea 432 → 688, still on a 900 px screen, Magic Kingdom 794 → 1050, below it.
 Measured on a production build with network and CPU throttling, three loads each, the tile changes
 neither the LCP element (the `<h1>` on Magic Kingdom, the background photo on Tokyo DisneySea) nor

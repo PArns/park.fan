@@ -518,7 +518,8 @@
       "open": "Ouvrir le planificateur de voyage"
     },
     "tile": {
-      "line": "Tu donnes tes dates, le planificateur te dit lequel des {count} parcs est le plus calme chaque jour"
+      "line": "Le jour le plus calme de chaque semaine pour les {count} parcs {inRegion}, d’après la prévision de l’attente de pointe",
+      "question": "Quel jour y a-t-il le moins de monde à {resort} ?"
     },
     "faq": {
       "parks": {

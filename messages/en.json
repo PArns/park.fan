@@ -518,7 +518,8 @@
       "open": "Open the trip planner"
     },
     "tile": {
-      "line": "You give your dates, and the planner tells you which of the {count} parks is quietest on which day"
+      "line": "The quietest day of each week for all {count} parks {inRegion}, from the peak-wait forecast",
+      "question": "Which day is quietest at {resort}?"
     },
     "faq": {
       "parks": {

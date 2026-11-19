@@ -518,7 +518,8 @@
       "open": "Apri il pianificatore di viaggio"
     },
     "tile": {
-      "line": "Tu indichi le date, il pianificatore ti dice quale dei {count} parchi è il più tranquillo in ogni giorno"
+      "line": "Il giorno più tranquillo di ogni settimana per tutti i {count} parchi {inRegion}, secondo la previsione dell’attesa di picco",
+      "question": "In che giorno c’è meno folla a {resort}?"
     },
     "faq": {
       "parks": {

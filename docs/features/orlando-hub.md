@@ -372,7 +372,8 @@ Page types for hub, month and best-time pages are the analytics core's (`sitePag
   | the band, `post`   | the end of a post about region parks        | one park as on the tile, several preselected under „Reiseplaner öffnen"; one band per region                                      |
   | the band, `search` | `/search` for a query that names the region | the bare chapter, as the palette's first row                                                                                      |
 
-  Each also links the bare hub by its name (`nav.calendar`), a followed link. A month
+  Each also links the bare hub by its name (`nav.calendar`), a followed link; the tile leads with
+  it, as its one primary action under „Wann ist es in Walt Disney World am ruhigsten?“. A month
   page of a park calendar sends its month as the When mode's search (`monthSearchRange`: from the
   park's today, at most a year ahead, nothing where the rest of the month is shorter than the
   ten-day trip). A link that carries a plan is `rel="nofollow"` and not prefetched

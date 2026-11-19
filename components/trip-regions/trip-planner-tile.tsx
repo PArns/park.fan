@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from 'next-intl/server';
-import { ArrowRight, CalendarDays } from 'lucide-react';
+import { ArrowRight, CalendarPlus } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { buttonLinkProps } from '@/components/ui/button';
 import { RegionSceneInView } from '@/components/layout/planner-region-art';
@@ -52,7 +52,7 @@ const SCENE_BOX =
 /**
  * The phone's half of each layout: a 2 : 1 banner that fades out at its foot, or a 96 px cut at
  * the row's height (`xMaxYMid slice` keeps Parky in it) that fades in from its left, narrow enough
- * that „Tokyo DisneySea einplanen" stays one line beside it at 390 px.
+ * to leave the pill with the hub's name a column of its own at 390 px.
  */
 const PHONE = {
   banner: {
@@ -63,8 +63,8 @@ const PHONE = {
     heading: 'text-2xl',
     line: '',
     links: 'mt-2 flex-row flex-wrap items-center gap-x-5 gap-y-2',
-    plan: 'min-h-11 px-4 py-2',
-    calendar: 'min-h-11 text-sm',
+    pill: 'min-h-11 px-4 py-2',
+    textLink: 'min-h-11 text-sm',
   },
   row: {
     card: 'flex-row-reverse',
@@ -74,19 +74,21 @@ const PHONE = {
     line: 'max-sm:hidden',
     links:
       'mt-1 flex-col items-start gap-1.5 sm:mt-2 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-5 sm:gap-y-2',
-    // The whole card is the plan's target, so the pill keeps a 32 px box on a phone rather than
-    // the button scale's 44, and the calendar link reaches 44 px through `PHONE_HIT_AREA`.
-    plan: 'min-h-8 px-3 py-1.5 text-[13px] max-sm:h-auto sm:px-4 sm:py-2 sm:text-sm',
-    calendar: cn(PHONE_HIT_AREA, 'text-xs sm:text-sm'),
+    // The whole card is the calendar's target, so the pill keeps a 32 px box on a phone rather
+    // than the button scale's 44, and the plan link reaches 44 px through `PHONE_HIT_AREA`.
+    pill: 'min-h-8 px-3 py-1.5 text-[13px] max-sm:h-auto sm:px-4 sm:py-2 sm:text-sm',
+    textLink: cn(PHONE_HIT_AREA, 'text-xs sm:text-sm'),
   },
 } satisfies Record<TilePhoneLayout, Record<string, string>>;
 
 /**
- * A trip region's planner on the pages of one of its parks: the region's Parky scene, "Mehrere
- * Tage in Orlando", what the planner does in one line, „Magic Kingdom einplanen" into the planner
- * with the park chosen (and on a calendar month that month as the dates to search), and the hub by
- * its name (`nav.calendar`, "Orlando Crowd Calendar") as a plain link. The card is the planner's link; the hub's
- * stands above that cover.
+ * A trip region's crowd calendar and planner on the pages of one of its parks, led by the question
+ * a reader of the park's waits brings: the region's Parky scene and name, „Wann ist es in Walt
+ * Disney World am ruhigsten?“ (the park's resort, else the hub's own question), one line on what
+ * the hub's calendar marks, the hub by its name (`nav.calendar`, "Orlando Crowd Calendar") as the
+ * one primary action, and under it „Magic Kingdom einplanen“ into the planner with the park chosen
+ * (on a calendar month that month as the dates to search) as a plain link. The card is the hub's
+ * link; the planner's stands above that cover.
  *
  * The plan link carries a state, one of endless URLs that canonical to the hub, so it is
  * `nofollow` and not prefetched, as the hub's own "Plan these dates"; the hub's link is the
@@ -109,13 +111,14 @@ export async function TripPlannerTile({
   const found = findTripRegion(await getTripRegionLinks(), [park]);
   if (!found) return null;
   const { region, parks } = found;
-  const [t, tTile, tNav, words, locale] = await Promise.all([
+  const [t, tTile, tHub, words, locale] = await Promise.all([
     getTranslations('tripHub.band'),
     getTranslations('tripHub.tile'),
-    getTranslations('navigation'),
+    getTranslations('tripHub'),
     getTripRegionWords(region.slug),
     getLocale(),
   ]);
+  const resort = parks[0].resort;
 
   const when = month && today ? monthSearchRange(month, today) : null;
   const href = tripPlannerHref(region.slug, locale, {
@@ -150,7 +153,7 @@ export async function TripPlannerTile({
             layout.text
           )}
         >
-          <p className={REGION_KICKER}>{tNav('tripPlanner')}</p>
+          <p className={REGION_KICKER}>{words.name}</p>
           <h2
             id={headingId}
             className={cn(
@@ -158,7 +161,7 @@ export async function TripPlannerTile({
               layout.heading
             )}
           >
-            {t('title', { inRegion: words.inRegion })}
+            {resort ? tTile('question', { resort }) : tHub('question')}
           </h2>
           <p
             className={cn(
@@ -166,37 +169,37 @@ export async function TripPlannerTile({
               layout.line
             )}
           >
-            {tTile('line', { count: region.parks.length })}
+            {tTile('line', { count: region.parks.length, inRegion: words.inRegion })}
           </p>
           <div className={cn('flex', layout.links)}>
             <Link
-              href={href}
-              rel={plannerLinkRel(href)}
+              href={tripRegionPath(region.slug, locale)}
               prefetch={false}
-              {...tripTileLinkAttributes('plan')}
+              {...tripTileLinkAttributes('calendar')}
               {...buttonLinkProps({
                 withIcon: true,
                 className: cn(
                   REGION_PILL,
                   'h-auto whitespace-normal shadow-md after:absolute after:inset-0 sm:min-h-9',
-                  layout.plan
+                  layout.pill
                 ),
               })}
             >
-              {t('planPark', { park: shortParkName(parks[0].name) })}
+              {words.calendar}
               <ArrowRight aria-hidden="true" />
             </Link>
             <Link
-              href={tripRegionPath(region.slug, locale)}
+              href={href}
+              rel={plannerLinkRel(href)}
               prefetch={false}
-              {...tripTileLinkAttributes('calendar')}
+              {...tripTileLinkAttributes('plan')}
               className={cn(
                 'text-primary-ink relative z-10 inline-flex items-center gap-1.5 font-semibold underline-offset-4 hover:underline sm:min-h-0',
-                layout.calendar
+                layout.textLink
               )}
             >
-              <CalendarDays aria-hidden="true" className="size-4 shrink-0" />
-              {words.calendar}
+              <CalendarPlus aria-hidden="true" className="size-4 shrink-0" />
+              {t('planPark', { park: shortParkName(parks[0].name) })}
             </Link>
           </div>
         </div>

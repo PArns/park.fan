@@ -518,7 +518,8 @@
       "open": "Reiseplaner öffnen"
     },
     "tile": {
-      "line": "Du nennst deine Reisetage, der Planer sagt dir, welcher der {count} Parks an welchem Tag am leersten ist"
+      "line": "Der ruhigste Tag jeder Woche für alle {count} Parks {inRegion}, nach der Prognose der Spitzenwartezeit",
+      "question": "Wann ist es in {resort} am ruhigsten?"
     },
     "faq": {
       "parks": {

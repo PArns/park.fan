@@ -39,8 +39,8 @@ export interface TripTileClick {
 
 /**
  * The `trip_tile_clicked` a click on `target` makes, or `null`: a click on one of a tile's links.
- * The tile's whole card is the plan link's cover, so a click anywhere on it but the calendar link
- * counts as `plan`.
+ * The tile's whole card is the calendar link's cover, so a click anywhere on it but the plan link
+ * counts as `calendar`.
  */
 export function tripTileClickOf(target: EventTarget | null): TripTileClick | null {
   if (!(target instanceof Element)) return null;

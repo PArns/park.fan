@@ -518,7 +518,8 @@
       "open": "Abrir el planificador de viajes"
     },
     "tile": {
-      "line": "Tú das las fechas y el planificador te dice cuál de los {count} parques tiene menos gente cada día"
+      "line": "El día más tranquilo de cada semana para los {count} parques {inRegion}, según la previsión de la espera punta",
+      "question": "¿Qué día hay menos gente en {resort}?"
     },
     "faq": {
       "parks": {
