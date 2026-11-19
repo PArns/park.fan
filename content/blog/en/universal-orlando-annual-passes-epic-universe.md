@@ -28,7 +28,7 @@ parkLinks:
   - universal-volcano-bay
 rideLinks: false
 seo:
-  title: 'Epic Universe annual pass: new Universal Orlando passes'
+  title: 'Epic Universe annual pass from December: prices, bookings'
   description: >-
     Universal Orlando sells annual passes with Epic Universe from December, from $449.99 for Florida residents. Reservations required from January 4, 2027.
   keywords:
@@ -48,29 +48,29 @@ seo:
 
 In December, Universal Orlando starts selling the first annual and seasonal passes that include [Epic Universe](ref:universal-epic-universe). If you want to use one of them at the new park, you'll have to reserve each visit in advance. The first day you can book is January 4, 2027. The resort announced the overhaul of its pass program on November 19.
 
-Until now, no annual pass covered Epic Universe. From October 24, 2024, passholders could buy a separate day ticket for it before everyone else, and they got 10% off the park's Darkmoor Monster Makeup Experience. Epic Universe opened at around 8 a.m. on May 22, 2025, with five worlds: Celestial Park, The Wizarding World of Harry Potter – Ministry of Magic, SUPER NINTENDO WORLD, How to Train Your Dragon – Isle of Berk and Dark Universe. Universal's reason for the new passes is that the resort has had four theme parks since then. The other three are [Universal Studios Florida](ref:universal-studios-florida), [Islands of Adventure](ref:universal-islands-of-adventure) and the [Volcano Bay](ref:universal-volcano-bay) water park.
+Until now, no annual pass covered Epic Universe. From October 24, 2024, passholders could buy a separate day ticket for it before everyone else, with 10% off the Darkmoor Monster Makeup Experience thrown in, which as an annual pass perk was more of a consolation prize. Since Epic Universe opened on May 22, 2025, the resort has had four theme parks, and that's Universal's reason for the new passes. The other three are [Universal Studios Florida](ref:universal-studios-florida), [Islands of Adventure](ref:universal-islands-of-adventure) and the [Volcano Bay](ref:universal-volcano-bay) water park.
 
 ## Who gets to upgrade first
 
-Current passholders go first. Their own upgrade window opens in the coming weeks. They can then switch to a pass with Epic Universe, as long as their pass is active and, in Universal's words, "in good standing". The window runs in phases by tier, and Epic Universe reservations should already be bookable in each phase. Universal plans to publish the dates in early December.
+Current passholders get their own upgrade window in the coming weeks, before general sales start. They can then switch to a pass with Epic Universe, as long as their pass is active and, in Universal's words, "in good standing". The window runs in phases by tier, and Epic Universe reservations should already be bookable in each phase. Universal plans to publish the dates in early December.
 
-What an upgrade costs depends on when your current pass expires. If you're already in your renewal window, you pay a difference of $125 to $410, depending on the tier, and renew straight into a pass with Epic Universe. Everyone else gets a special price based on their tier and the unused value left on their pass. Universal hasn't published which difference goes with which tier yet.
+What an upgrade costs depends on when your current pass expires. If you're already in your renewal window, you pay a difference of $125 to $410, depending on the tier, and renew straight into a pass with Epic Universe. Which amount goes with which tier is still to come. Everyone else gets a special price based on their tier and the unused value left on their pass.
 
-General sales start later in December, once every phase is over. There's no exact date for that yet.
+General sales start later in December, once every phase is over.
 
 ## Prices and the new tiers
 
 Florida residents pay from $329.99 for the new passes and from $449.99 for one with Epic Universe, plus tax. Universal will announce prices for everyone else and for each tier from December.
 
-Every tier gets a new name. Premier becomes Platinum, Preferred becomes Gold, Power becomes Silver, and the Seasonal pass will be called Bronze. Each tier keeps its own set of benefits, as it does now, and you combine it with the parks you want on the pass. Universal hasn't announced yet what Platinum, Gold, Silver and Bronze get you for parking, Express or discounts, or whether Volcano Bay will be one of the parks you can pick. The water park doesn't reopen after its winter break until April 1, 2027 anyway.
+Every tier gets a new name. Premier becomes Platinum, Preferred becomes Gold, Power becomes Silver, and the Seasonal pass will be called Bronze. Each tier keeps its own set of benefits, as it does now, and you combine it with the parks you want on the pass. Universal hasn't announced yet what the four tiers get you for parking, Express Pass and discounts, or whether Volcano Bay is one of the parks you can pick. The water park doesn't reopen after its winter break until April 1, 2027 anyway.
 
-The UOAP Lounge, passholder-only sweepstakes and Passholder Appreciation Days stay. What's new is that every pass goes digital: entry and benefits run through the digital pass, and Universal will phase out the plastic cards over time, without giving a date. Passholders also become Pass Members, as they already are at Universal's other US parks.
+The UOAP Lounge, passholder-only sweepstakes and Passholder Appreciation Days stay. The plastic card is being phased out bit by bit, and entry and benefits will run through a digital pass. Passholders also become Pass Members, as they already are at Universal's other US parks.
 
-## No reservation, no Epic Universe
+## Two reservations at a time
 
-Universal uses the reservations to control how many people come into Epic Universe. You can't hold more than two reservations at once, so stockpiling a whole month of Epic days won't work. Spots are limited, go to whoever books first and depend on your pass's blockout dates. Universal hasn't published which days are blocked out yet. It's also still open whether the Bronze seasonal pass will get the same Epic days as the annual passes.
+Universal uses the reservations to control how many people come into Epic Universe. You can hold two reservations at most, and you can only book a third Epic day once one of them frees up. Spots are limited, go to whoever books first and depend on your pass's blockout dates. Universal hasn't published which days are blocked out, or whether the Bronze seasonal pass gets the same Epic days as the annual passes.
 
-I'd put those two reservations on days when Epic Universe is quieter.
+Since you only ever get two at a time, I wouldn't waste either of them on a day when half of Florida has booked Epic too.
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -78,7 +78,7 @@ I'd put those two reservations on days when Epic Universe is quieter.
 
 ## Who the pass is for
 
-For now, the pass mainly suits people from Florida who come several times a year and can live with the reservations. For a holiday from Europe, I'd wait to do the maths until Universal publishes the remaining prices. What a day at Epic Universe and Express Pass cost is in our [Universal Orlando guide](/blog/universal-orlando-wait-times-tips). Our [annual pass comparison](/blog/theme-park-annual-pass-comparison) is about how many visits it takes for a theme park annual pass to pay off at all. If you want to fit Universal and Disney World into one trip, read on in [planning Disney World and Universal Orlando in one holiday](/blog/orlando-itinerary-disney-universal).
+For now, only the Florida resident price is out, so the pass is for people from Florida first: those who come several times a year and can get by with two Epic days at a time. For a holiday from Europe, I'd stick with day tickets until Universal publishes the remaining prices. The prices for an Epic day ticket and Express Pass, to hold the $449.99 up against, are in our [Universal Orlando guide](/blog/universal-orlando-wait-times-tips). In the [annual pass comparison](/blog/theme-park-annual-pass-comparison), I work out from which visit on an annual pass costs less than day tickets.
 
 [Universal Epic Universe](ref:universal-epic-universe?full)
 

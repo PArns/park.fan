@@ -28,7 +28,7 @@ parkLinks:
   - universal-volcano-bay
 rideLinks: false
 seo:
-  title: 'Epic Universe Jahreskarte: neue Annual Passes ab Dezember'
+  title: 'Epic Universe Jahreskarte ab Dezember: Preise, Reservierung'
   description: >-
     Universal Orlando verkauft ab Dezember Jahreskarten mit Epic Universe, für Floridianer ab 449,99 $. Ab 4. Januar 2027 nur mit Reservierung.
   keywords:
@@ -48,29 +48,29 @@ seo:
 
 Universal Orlando verkauft ab Dezember die ersten Jahres- und Saisonkarten, die das [Epic Universe](ref:universal-epic-universe) einschließen. Wer mit so einer Karte in den neuen Park will, reserviert jeden Besuch vorher. Der erste Tag, den du buchen kannst, ist der 4. Januar 2027. Angekündigt hat das Resort den Umbau seines Jahreskartenprogramms am 19. November.
 
-Bisher steckte das Epic Universe in keiner Jahreskarte. Inhaber konnten ab dem 24. Oktober 2024 vor allen anderen ein eigenes Tagesticket dafür kaufen und bekamen 10 Prozent Rabatt auf die Darkmoor Monster Makeup Experience im Park. Eröffnet hat das Epic Universe am 22. Mai 2025 gegen acht Uhr morgens, mit fünf Welten: Celestial Park, The Wizarding World of Harry Potter – Ministry of Magic, SUPER NINTENDO WORLD, How to Train Your Dragon – Isle of Berk und Dark Universe. Universal begründet die neuen Karten damit, dass das Resort seitdem vier Themenparks hat. Die anderen drei sind [Universal Studios Florida](ref:universal-studios-florida), [Islands of Adventure](ref:universal-islands-of-adventure) und der Wasserpark [Volcano Bay](ref:universal-volcano-bay).
+Bisher steckte das Epic Universe in keiner Jahreskarte. Inhaber konnten ab dem 24. Oktober 2024 vor allen anderen ein eigenes Tagesticket dafür kaufen, dazu gab es 10 Prozent aufs Monster-Make-up im Darkmoor, als Jahreskarten-Vorteil eher ein Trostpflaster. Seit das Epic Universe am 22. Mai 2025 eröffnet hat, hat das Resort vier Themenparks, und genau damit begründet Universal die neuen Karten. Die anderen drei sind [Universal Studios Florida](ref:universal-studios-florida), [Islands of Adventure](ref:universal-islands-of-adventure) und der Wasserpark [Volcano Bay](ref:universal-volcano-bay).
 
 ## Wer zuerst upgraden darf
 
-Zuerst sind die bisherigen Inhaber dran. Für sie beginnt in den kommenden Wochen ein eigener Upgrade-Zeitraum. Dann können sie auf eine Karte mit Epic Universe wechseln, sofern ihre Karte aktiv und nach Universals Worten „in good standing“ ist. Der Zeitraum läuft in Phasen, getrennt nach Stufe, und in jeder Phase sollen sich schon Reservierungen fürs Epic Universe buchen lassen. Die Termine will Universal Anfang Dezember bekannt geben.
+Für die bisherigen Inhaber öffnet in den kommenden Wochen ein eigener Upgrade-Zeitraum, bevor der allgemeine Verkauf beginnt. Dann können sie auf eine Karte mit Epic Universe wechseln, sofern ihre Karte aktiv und nach Universals Worten „in good standing“ ist. Der Zeitraum läuft in Phasen, getrennt nach Stufe, und in jeder Phase sollen sich schon Reservierungen fürs Epic Universe buchen lassen. Die Termine will Universal Anfang Dezember bekannt geben.
 
-Wie viel ein Upgrade kostet, hängt davon ab, wann die alte Karte ausläuft. Wer schon im Verlängerungszeitraum ist, zahlt je nach Stufe 125 bis 410 $ Differenz und bekommt mit der Verlängerung gleich eine Karte mit Epic Universe. Alle anderen zahlen einen Sonderpreis, der sich nach Stufe und dem ungenutzten Restwert ihrer Karte richtet. Welche Differenz zu welcher Stufe gehört, hat Universal noch nicht veröffentlicht.
+Wie viel ein Upgrade kostet, hängt davon ab, wann die alte Karte ausläuft. Wer schon im Verlängerungszeitraum ist, zahlt je nach Stufe 125 bis 410 $ Differenz und bekommt mit der Verlängerung gleich eine Karte mit Epic Universe. Welcher Betrag zu welcher Stufe gehört, steht noch aus. Alle anderen zahlen einen Sonderpreis, der sich nach Stufe und dem ungenutzten Restwert ihrer Karte richtet.
 
-Der allgemeine Verkauf beginnt später im Dezember, wenn alle Phasen vorbei sind. Ein genaues Datum gibt es dafür noch nicht.
+Der allgemeine Verkauf beginnt später im Dezember, wenn alle Phasen vorbei sind.
 
 ## Preise und die neuen Stufen
 
 Wer in Florida wohnt, zahlt für die neuen Karten ab 329,99 $ und mit Epic Universe ab 449,99 $, jeweils zuzüglich Steuer. Die Preise für alle anderen und für die einzelnen Stufen will Universal ab Dezember nennen.
 
-Alle Stufen bekommen neue Namen. Aus Premier wird Platinum, aus Preferred wird Gold, aus Power wird Silver, und die Saisonkarte Seasonal heißt künftig Bronze. Jede Stufe behält wie bisher ihre eigenen Leistungen, und die kombinierst du mit den Parks, die in der Karte stecken sollen. Was Platinum, Gold, Silver und Bronze beim Parken, beim Express und bei den Rabatten bringen, hat Universal noch nicht bekannt gegeben, auch nicht, ob Volcano Bay als Park wählbar ist. Der Wasserpark öffnet nach der Winterpause ohnehin erst am 1. April 2027 wieder.
+Alle Stufen bekommen neue Namen. Aus Premier wird Platinum, aus Preferred wird Gold, aus Power wird Silver, und die Saisonkarte Seasonal heißt künftig Bronze. Jede Stufe behält wie bisher ihre eigenen Leistungen, und die kombinierst du mit den Parks, die in der Karte stecken sollen. Was die vier Stufen beim Parken, beim Express Pass und bei den Rabatten bringen und ob Volcano Bay zur Wahl steht, hat Universal noch nicht bekannt gegeben. Der Wasserpark öffnet nach der Winterpause ohnehin erst am 1. April 2027 wieder.
 
-Die UOAP Lounge, Verlosungen nur für Inhaber und die Passholder Appreciation Days bleiben. Neu ist, dass alle Karten digital werden: Einlass und Vorteile laufen über die digitale Karte, und die Plastikkarten schafft Universal nach und nach ab, ohne ein Datum dafür. Aus den Passholders werden außerdem Pass Members, so wie in den anderen US-Parks von Universal.
+Die UOAP Lounge, Verlosungen nur für Inhaber und die Passholder Appreciation Days bleiben. Die Plastikkarte verschwindet nach und nach, Einlass und Vorteile laufen künftig über eine digitale Karte. Aus den Passholders werden außerdem Pass Members, so wie in den anderen US-Parks von Universal.
 
-## Ohne Reservierung kein Epic Universe
+## Höchstens zwei Reservierungen auf einmal
 
-Mit der Reservierung will Universal steuern, wie viele Besucher ins Epic Universe kommen. Mehr als zwei Reservierungen kannst du nicht gleichzeitig halten, einen ganzen Monat Epic-Tage auf Vorrat zu sammeln klappt also nicht. Die Plätze sind begrenzt, werden in der Reihenfolge der Buchungen vergeben und hängen von den Sperrtagen deiner Karte ab. Welche Tage gesperrt sind, hat Universal noch nicht veröffentlicht. Offen ist auch, ob die Saisonkarte Bronze dieselben Epic-Tage bekommt wie die Jahreskarten.
+Mit der Reservierung will Universal steuern, wie viele Besucher ins Epic Universe kommen. Du kannst höchstens zwei Reservierungen gleichzeitig halten, einen dritten Epic-Tag buchst du erst, wenn einer der beiden frei wird. Die Plätze sind begrenzt, werden in der Reihenfolge der Buchungen vergeben und hängen von den Sperrtagen deiner Karte ab. Welche Tage gesperrt sind und ob die Saisonkarte Bronze dieselben Epic-Tage bekommt wie die Jahreskarten, hat Universal noch nicht veröffentlicht.
 
-Die zwei Reservierungen würde ich auf Tage legen, an denen im Epic Universe weniger los ist.
+Weil immer nur zwei gleichzeitig gehen, würde ich keine davon an einen Tag verschenken, an dem halb Florida auch Epic gebucht hat.
 
 ```best-days-widget slug=universal-epic-universe
 
@@ -78,7 +78,7 @@ Die zwei Reservierungen würde ich auf Tage legen, an denen im Epic Universe wen
 
 ## Für wen die Karte etwas ist
 
-Vorerst ist die Karte vor allem etwas für Leute aus Florida, die mehrmals im Jahr kommen und mit der Reservierung leben können. Für einen Urlaub aus Europa würde ich erst nachrechnen, wenn Universal die übrigen Preise nennt. Was ein Tag im Epic Universe und der Express Pass kosten, steht in unserem [Guide zu Universal Orlando](/blog/universal-orlando-wartezeiten-tipps). Im [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks) geht es darum, ab wie vielen Besuchen sich eine Jahreskarte im Freizeitpark überhaupt rechnet. Wer Universal und Disney World in eine Reise packen will, liest weiter bei [Disney World und Universal Orlando in einem Urlaub planen](/blog/orlando-urlaub-planen).
+Vorerst steht nur der Preis für Floridianer fest, die Karte ist also zunächst etwas für Leute aus Florida, die mehrmals im Jahr kommen und mit zwei Epic-Tagen auf einmal auskommen. Für einen Urlaub aus Europa würde ich beim Tagesticket bleiben, bis Universal die übrigen Preise nennt. Die Preise für ein Epic-Tagesticket und den Express Pass, gegen die du die 449,99 $ halten kannst, stehen im [Guide zu Universal Orlando](/blog/universal-orlando-wartezeiten-tipps). Im [Jahreskarten-Vergleich](/blog/jahreskarte-vergleich-freizeitparks) rechne ich vor, ab dem wievielten Besuch eine Jahreskarte günstiger ist als Tagestickets.
 
 [Universal Epic Universe](ref:universal-epic-universe?full)
 
