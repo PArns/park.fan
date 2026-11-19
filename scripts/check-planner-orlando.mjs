@@ -132,8 +132,8 @@ export async function checkOrlandoTickets({ browser, base, check }) {
         (await page.locator(`${WIZARD} [data-plan-date]`).count()) > 0
     );
     check(
-      'Orlando · Tickets sind ein Schritt des Assistenten, nicht vor den Daten',
-      (await page.getByRole('button', { name: /^Step \d+, Tickets$/ }).count()) === 1 &&
+      'Orlando · Abende und Tickets stehen nicht im ersten Durchgang des Assistenten',
+      (await page.getByRole('button', { name: /^Step \d+, (Tickets|Evenings)$/ }).count()) === 0 &&
         (await page.locator(`${WIZARD} [data-wizard-tickets]`).count()) === 0
     );
     const started = await events(page, 'trip_planner_started');

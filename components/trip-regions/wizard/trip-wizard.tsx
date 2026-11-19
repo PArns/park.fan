@@ -26,6 +26,7 @@ import {
   stepQuestions,
   tripWizardFacts,
   tripWizardSteps,
+  wizardPass,
   wizardStepIndex,
   type TripWizardStep,
   type TripWizardStepKey,
@@ -54,8 +55,8 @@ export interface TripWizardAt {
 
 /**
  * The assistant's steps for the planner's region and trip (`tripWizardSteps`), only those with a
- * body in `WIZARD_STEP_BODIES`. The list follows the trip's nights, so a Paris weekend's hotel goes
- * into the Route once its dates are chosen.
+ * body in `WIZARD_STEP_BODIES`, the later ones included. The list follows the trip's nights, so a
+ * Paris weekend's hotel goes into the Route once its dates are chosen.
  */
 export function useWizardSteps(): TripWizardStep[] {
   const { region, config, state, tickets } = usePlanContext();
@@ -74,7 +75,8 @@ export function useWizardSteps(): TripWizardStep[] {
  * (`PlanRibbon`) once the trip has dates. A dialog over the whole height of a phone and a stage in
  * the middle of a desk. Only the dates are required; every step after them can be skipped, the rail
  * jumps to any of them, and "Show the plan now" leaves for the result at any point. The finale
- * follows the last step. Every answer writes the planner's state, the address, as the rest of the
+ * follows the last step of the first pass, which leaves the evenings and the tickets to the
+ * result's answers (`wizardPass`). Every answer writes the planner's state, the address, as the rest of the
  * planner does, so the assistant is a view on the plan and not a form of its own.
  * docs/features/trip-planner/wizard.md#the-trip-planners-assistant.
  */
@@ -102,7 +104,7 @@ export function TripWizard({
   const tNav = useTranslations('tripRegion.nav');
   const { region, state, locale } = usePlanContext();
   const track = useTripEvents();
-  const steps = useWizardSteps();
+  const all = useWizardSteps();
   const askId = useId();
   const askRef = useRef<HTMLHeadingElement>(null);
   const bodyRef = useRef<HTMLDivElement>(null);
@@ -114,6 +116,19 @@ export function TripWizard({
   const open = at !== null;
   const screen = at?.screen ?? 'dates';
   const finale = screen === 'finale';
+  // A later step this opening landed on stays in its walk until it closes, so Back and the rail
+  // can return to it (`wizardPass`).
+  const [later, setLater] = useState<readonly TripWizardStepKey[]>([]);
+  const stepKey = screen === 'finale' ? null : screen;
+  const landed = stepKey
+    ? all.find((s) => s.later && (s.key === stepKey || s.merged.includes(stepKey)))?.key
+    : undefined;
+  const walked = useMemo(
+    () => (landed && !later.includes(landed) ? [...later, landed] : later),
+    [landed, later]
+  );
+  if (open && walked !== later) setLater(walked);
+  const steps = useMemo(() => wizardPass(all, walked), [all, walked]);
   const index = finale ? steps.length : Math.max(0, wizardStepIndex(steps, screen));
   const step: TripWizardStep | undefined = finale ? undefined : steps[index];
   const dated = Boolean(state.from && state.to);
@@ -124,6 +139,7 @@ export function TripWizard({
   const [opened, setOpened] = useState(open);
   if (open !== opened) {
     setOpened(open);
+    setLater(open && landed ? [landed] : []);
     if (open) {
       setSkipped(0);
       setFurthest(index);
