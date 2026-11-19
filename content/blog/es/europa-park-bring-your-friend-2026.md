@@ -43,39 +43,39 @@ seo:
     - Europa-Park precio entrada de un día
 ---
 
-Hasta el 18 de diciembre, quien tenga un ResortPass puede llevarse gratis a un acompañante al [Europa-Park](ref:europa-park) de lunes a viernes. La promoción se llama «Bring Your Friend»: con el ResortPass Silver la puedes usar una vez, con el Gold dos. El parque la anunció el jueves 19 de noviembre por la tarde en su grupo de Facebook «Europa-Park Resort Freunde». Vale desde ya.
+Hasta el 18 de diciembre, quien tenga un ResortPass puede llevarse gratis a un acompañante al [Europa-Park](ref:europa-park) de lunes a viernes. La promoción se llama «Bring Your Friend». Con el ResortPass Silver la puedes usar una vez, con el Gold, dos. El parque la anunció el jueves 19 de noviembre por la tarde en su grupo de Facebook «Europa-Park Resort Freunde». Vale desde ya.
 
 ## La entrada gratis se saca en el portal del ResortPass
 
-La entrada de tu amigo la consigues en el portal del ResortPass, en resort-pass.de, donde entras con tu cuenta MackOne. En la imagen del anuncio aparece como entrada «Für Freunde» (para amigos) a 0,00 €. Hay un número limitado por día y algunos días pueden agotarse antes que otros, así que si quieres ir con tu amigo una fecha concreta, por ejemplo el 18 de diciembre, último día de la promoción, mejor resérvale la entrada hoy que la semana de antes.
+La entrada de tu amigo la consigues en el portal del ResortPass, en resort-pass.de, donde entras con tu cuenta MackOne. En la imagen del anuncio aparece como entrada «Für Freunde» (para amigos) a 0,00 €. Hay un número limitado de entradas por día, y algunos días pueden estar ya agotadas. Si quieres ir con tu amigo una fecha concreta, por ejemplo el 18 de diciembre, último día de la promoción, mejor resérvale la entrada cuanto antes y no la semana de antes.
 
-Tu propia visita la reservas en el portal como siempre, porque como visitante de un día cada entrada con el ResortPass necesita reserva. Puedes tener hasta cinco días reservados a la vez, también el mismo día de la visita mientras queden plazas. Si un día está completo, no hay nada que hacer, ni por teléfono ni en la taquilla. Una reserva que no vayas a usar, cancélala. Si te alojas en uno de los hoteles del resort o en Silver Lake City, tu propia reserva ya va incluida en la del hotel.
+Tu propia visita la reservas en el portal como siempre, porque como visitante de un día necesitas una reserva para cada visita con el ResortPass. Puedes tener hasta cinco días reservados a la vez, también el mismo día de la visita mientras queden plazas. Si un día está completo, no hay nada que hacer, ni por teléfono ni en la taquilla. Una reserva que no vayas a usar, cancélala. Si te alojas en uno de los hoteles del resort o en Silver Lake City, tu propia reserva ya va incluida en la del hotel.
 
 ## 21 días para elegir
 
-El parque abre todos los días hasta Navidad. HALLOWinter dura hasta el 27 de noviembre y Winterzauber empieza el 28, en ambos casos de 11:00 a 19:00 como mínimo. Los huéspedes de los hoteles pueden entrar antes. Como el anuncio llegó casi a la hora de cierre, el primer día completo de la promoción es el viernes 20 de noviembre. Hasta el viernes 18 de diciembre quedan 21 días entre semana: seis en HALLOWinter y 15 en Winterzauber.
+El parque abre todos los días hasta el 23 de diciembre. HALLOWinter dura hasta el 27 de noviembre y Winterzauber empieza el 28, en ambos casos de 11:00 a 19:00 como mínimo. Los huéspedes de los hoteles pueden entrar antes. Como el anuncio llegó casi a la hora de cierre, el primer día completo de la promoción es el viernes 20 de noviembre. Hasta el viernes 18 de diciembre quedan 21 días entre semana: seis en HALLOWinter y 15 en Winterzauber.
 
-Con el Silver no hay ninguno de esos días bloqueado. Este invierno, los días excluidos del Silver caen entre el 26 y el 31 de diciembre y el 2 de enero, cuando la promoción ya ha terminado. El Gold, por su parte, no tiene ninguno.
+Con el Silver no hay ninguno de esos días bloqueado. Sus días excluidos caen este invierno entre el 26 y el 31 de diciembre y el 2 de enero, cuando la promoción ya ha terminado. El Gold, por su parte, no tiene ninguno.
 
 ## Lo que pagaría tu amigo sin la promoción
 
-Todos los días de la promoción tienen la más barata de las dos tarifas. Una entrada de un día comprada online cuesta entonces 67 € para adultos, y desde 56,50 € para niños de 4 a 11 años y mayores de 60. En la taquilla son 10 € más. Gastar la promoción en un niño de menos de cuatro años es tirarla, porque ese entra gratis igualmente. Con el Gold, dos adultos se ahorran 134 € entre los dos, y hasta el 18 de diciembre a tus amigos se les acaba la excusa del precio de la entrada.
+Todos los días de la promoción tienen la más barata de las dos tarifas, y una entrada de un día comprada online cuesta entonces 67 € para adultos, y 56,50 € para niños de 4 a 11 años y mayores de 60. En la taquilla son 10 € más. Gastar la promoción en un niño de menos de cuatro años es tirarla, porque ese entra gratis igualmente. Con el Gold, dos adultos se ahorran 134 € entre los dos. A uno o dos amigos se les acaba así la excusa del precio de la entrada.
 
-## Qué hay en el parque hasta el 18 de diciembre
+## HALLOWinter y Winterzauber
 
-En HALLOWinter conviven por el parque las calabazas de Halloween y los abetos del invierno. Desde el 28 de noviembre, Winterzauber trae el mercado navideño en el Historischer Schlosspark Balthasar, la pista de hielo, la noria Bellevue, el circo de Navidad y el Eurosat Mapping Show en la zona francesa. Por eso el Europa-Park también aparece en nuestro [repaso de los parques en invierno 2026/27](/blog/parques-atracciones-invierno-2026). Para los niños están además la escuela de esquí «Alpin» con snow tubes y el esquí de fondo infantil Skitty World Nordic, y la novedad es la exposición «Monaco im Europa-Park». El programa de espectáculos del invierno 2026 todavía no se ha publicado.
+En HALLOWinter conviven por el parque las calabazas de Halloween y los abetos del invierno. Winterzauber trae el mercado navideño en el Historischer Schlosspark Balthasar, la pista de hielo, la noria Bellevue, el circo de Navidad y el Eurosat Mapping Show en la zona francesa. Para los niños están además la escuela de esquí infantil «Alpin» con snow tubes y el esquí de fondo infantil Skitty World Nordic. La novedad es la exposición «Monaco im Europa-Park». Qué otros parques abren en invierno lo cuenta nuestro [repaso de los parques en invierno 2026/27](/blog/parques-atracciones-invierno-2026).
 
 ```best-days-widget slug=europa-park
 
 ```
 
-Con hielo, nieve, viento o temperaturas demasiado bajas, el parque puede cerrar atracciones sin previo aviso en las dos temporadas. A qué atracciones ir primero un día de invierno lo contamos en nuestra [guía de los tiempos de espera del Europa-Park](/blog/europa-park-tiempos-de-espera-consejos). Arthur, el recorrido temático por el reino de los Minimoys, funciona en HALLOWinter y en Winterzauber; se sube desde 100 centímetros, y por debajo de 120 solo con un adulto.
+Con hielo, nieve, viento o frío, el parque también cierra algunas atracciones sin previo aviso, tanto en HALLOWinter como en Winterzauber. Las atracciones a las que conviene ir primero un día de invierno están en nuestra [guía de los tiempos de espera del Europa-Park](/blog/europa-park-tiempos-de-espera-consejos). Arthur, el recorrido temático por el reino de los Minimoys, funciona en HALLOWinter y en Winterzauber. Se puede subir desde 100 centímetros, y por debajo de 120 solo con un adulto.
 
 ## Ahora mismo no se puede comprar el ResortPass
 
-La promoción es para quien ya tiene un ResortPass. El pase anual no se vende hasta nuevo aviso porque el cupo está agotado, tampoco por teléfono, por correo electrónico ni en el parque. Quien lo tiene recibe un aviso antes de que caduque y puede renovarlo en el portal durante los últimos 14 días.
+El ResortPass no se vende hasta nuevo aviso porque el cupo está agotado, tampoco por teléfono, por correo electrónico ni en el parque. Quien lo tiene recibe un aviso antes de que caduque y puede renovarlo en el portal durante los últimos 14 días.
 
-A partir de cuántas visitas sale a cuenta cada pase lo explicamos en nuestra [comparativa de pases anuales](/blog/pase-anual-comparativa-parques). El Silver vale para visitantes de un día en más de 230 fechas fijadas de antemano al año. El Gold vale todos los días de apertura e incluye además dos entradas de un día para [Rulantica](/news/rulantica-vinterglanz-2026), que también se reservan en el portal.
+En nuestra [comparativa de pases anuales](/blog/pase-anual-comparativa-parques) hemos calculado a partir de cuántas visitas sale a cuenta cada pase. El Silver vale para visitantes de un día en más de 230 fechas fijadas de antemano al año. El Gold incluye además dos entradas de un día para [Rulantica](/news/rulantica-vinterglanz-2026), que también se reservan en el portal.
 
 [Europa-Park](ref:europa-park?full)
 

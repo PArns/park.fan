@@ -43,39 +43,39 @@ seo:
     - Europa-Park day ticket price
 ---
 
-If you have a ResortPass, you can take a companion into [Europa-Park](ref:europa-park) for free on any weekday until 18 December. The offer is called "Bring Your Friend": ResortPass Silver gets you one free ticket, Gold gets you two. The park announced it on the evening of Thursday 19 November in its Facebook group "Europa-Park Resort Freunde", and it's valid straight away.
+If you have a ResortPass, you can take a companion into [Europa-Park](ref:europa-park) for free on any weekday until 18 December. The offer is called "Bring Your Friend". ResortPass Silver lets you do it once, Gold twice. The park announced it on the evening of Thursday 19 November in its Facebook group "Europa-Park Resort Freunde", and it's valid straight away.
 
 ## The free ticket is in the ResortPass portal
 
-Your friend's ticket comes from the ResortPass portal at resort-pass.de. Log in with your MackOne account. The graphic that came with the announcement lists it as a "For friends" ticket at €0.00. There's a daily limit on these tickets, and some days may already be sold out. Got one particular day in mind, say 18 December, the last day of the offer? Book your friend's ticket today rather than the week before.
+Your friend's ticket comes from the ResortPass portal at resort-pass.de. Log in with your MackOne account. The graphic that came with the announcement lists it as a "For friends" ticket at €0.00. There's a daily limit on these tickets, and some days may already be sold out. If you want to come with your friend on one particular day, say 18 December, the last day of the offer, book their ticket now rather than the week before.
 
-You book your own visit in the portal as usual: as a day guest, every ResortPass visit needs a reservation. You can hold up to five days at once, and you can even book on the day itself while places are left. Once a day is fully booked, neither the phone line nor the gate can help you. If you won't use a reservation, cancel it. Staying in one of the resort's hotels or at Silver Lake City? Then your own reservation is already part of the hotel booking.
+You book your own visit in the portal as usual, because as a day guest you need a reservation for every visit with the ResortPass. You can hold up to five days at once, and you can even book on the day itself while places are left. Once a day is fully booked, neither the phone line nor the gate can help you. If you won't use a reservation, cancel it. If you're staying in one of the resort's hotels or at Silver Lake City, your own reservation is already part of the hotel booking.
 
 ## 21 days to choose from
 
-The park is open every day until Christmas. HALLOWinter runs until 27 November and Winterzauber starts on 28 November, both from 11 am until at least 7 pm. Hotel guests go in earlier. Because the announcement came out around closing time, Friday 20 November is the first full day of the offer. That leaves 21 weekdays up to Friday 18 December: six during HALLOWinter and 15 during Winterzauber.
+The park is open every day until 23 December. HALLOWinter runs until 27 November and Winterzauber starts on 28 November, both from 11 am until at least 7 pm. Hotel guests go in earlier. Because the announcement came out around closing time, Friday 20 November is the first full day of the offer. That leaves 21 weekdays up to Friday 18 December: six during HALLOWinter and 15 during Winterzauber.
 
-None of them is blocked for Silver. This winter, Silver's blackout dates don't start until 26 to 31 December and 2 January, after the offer has ended. Gold has no blackout dates at all.
+None of these days is blocked for Silver. Its blackout dates this winter fall between 26 and 31 December and on 2 January, when the offer is already over. Gold has no blackout dates at all.
 
 ## What your friend would pay otherwise
 
-Every day of the offer falls in the cheaper of the two price categories, where an online day ticket costs €67 for adults and €56.50 for children aged 4 to 11 and for seniors from 60. At the ticket desk, add €10. Bringing a child under four wastes the offer, since they get in free anyway. With Gold, two adult companions save €134 between them, and until 18 December one or two of your friends lose the ticket price as an excuse.
+Every day of the offer falls in the cheaper of the two price categories, where an online day ticket costs €67 for adults and €56.50 for children aged 4 to 11 and for seniors aged 60 and over. At the ticket desk, add €10. Bringing a child under four wastes the offer, since they get in free anyway. With Gold, two adult companions save €134 between them. That leaves one or two of your friends without the ticket price as an excuse.
 
-## In the park until 18 December
+## HALLOWinter and Winterzauber
 
-During HALLOWinter, Halloween pumpkins and Christmas trees share the park. From 28 November, Winterzauber brings the Christmas market in the Historic Balthasar Castle Park, the ice rink, the Bellevue Ferris wheel, the Christmas circus and the Eurosat mapping show in the French area. That's why Europa-Park is also in our [overview of theme parks in winter 2026/27](/blog/winter-theme-parks-2026). For children there's the "Alpin" children's ski school with snow tubes and Skitty World Nordic, a cross-country skiing area for kids, and the exhibition "Monaco im Europa-Park" is new. The park hasn't published its winter 2026 show programme yet.
+During HALLOWinter, Halloween pumpkins and Christmas trees share the park. Winterzauber brings the Christmas market in the Historic Balthasar Castle Park, the ice rink, the Bellevue Ferris wheel, the Christmas circus and the Eurosat mapping show in the French area. For children there's the "Alpin" children's ski school with snow tubes and Skitty World Nordic, a cross-country skiing area for kids. The exhibition "Monaco im Europa-Park" is new. Our [overview of theme parks in winter 2026/27](/blog/winter-theme-parks-2026) shows which other parks open in winter.
 
 ```best-days-widget slug=europa-park
 
 ```
 
-In both seasons, ice, snow, wind or temperatures that drop too low can close rides at short notice. Our [Europa-Park wait times guide](/blog/europa-park-wait-times-tips) goes through the rides to head for first on a winter day. Arthur, the themed ride through the Kingdom of the Minimoys, runs during HALLOWinter and Winterzauber. You need to be 100 centimetres tall, and anyone under 120 rides with an adult.
+Ice, snow, wind or cold can also make the park close individual rides at short notice, during HALLOWinter as well as Winterzauber. The rides to head for first on a winter day are in our [Europa-Park wait times guide](/blog/europa-park-wait-times-tips). Arthur, the themed ride through the Kingdom of the Minimoys, runs during HALLOWinter and Winterzauber. Riders must be at least 100 centimetres tall, and anyone under 120 rides with an adult.
 
 ## You can't buy a ResortPass right now
 
-The offer is for people who already have a ResortPass. The annual pass is off sale until further notice because the allocation has run out, and that goes for phone, email and the park itself too. If you have one, you'll be told before it expires and can renew it in the portal during the last 14 days.
+You can't buy a new ResortPass until further notice because the allocation has run out, and that goes for phone, email and the park itself too. If you have one, you'll be told before it expires and can renew it in the portal during the last 14 days.
 
-Our [annual pass comparison](/blog/theme-park-annual-pass-comparison) works out after how many visits each pass pays off. Silver is valid for day guests on more than 230 set days a year. Gold is valid on every operating day and adds two day tickets for [Rulantica](/news/rulantica-vinterglanz-2026), which you also reserve in the portal.
+In our [annual pass comparison](/blog/theme-park-annual-pass-comparison) we work out how many visits each pass needs to pay off. Silver is valid for day guests on more than 230 set days a year. Gold also comes with two day tickets for [Rulantica](/news/rulantica-vinterglanz-2026), which you reserve in the portal as well.
 
 [Europa-Park](ref:europa-park?full)
 
