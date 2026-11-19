@@ -46,6 +46,8 @@ import { tripRegionRedirect } from '../lib/trip-regions/redirects.ts';
 import { flatStretch } from '../lib/trip-regions/best-time.ts';
 import { breakFacts, isoWeekday, usualHours, weekdayFacts } from '../lib/trip-regions/hub-facts.ts';
 import { hubTripOf, restorableTrip } from '../lib/trip-regions/hub-trip.ts';
+import { pastTrip, planFromToday } from '../lib/trip-regions/trip-dates.ts';
+import { DEFAULT_PLAN_STATE, planRequestQuery } from '../lib/trip-regions/plan.ts';
 import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
 import { HUB_WEEK_CELL, HUB_WEEK_ITEM } from '../components/trip-regions/hub/hub-cell-styles.ts';
 import { addDays } from '../lib/utils/park-day.ts';
@@ -460,6 +462,18 @@ test('a remembered trip comes back on a bare visit, before it has ended', () => 
   assert.equal(restorableTrip('parks=epcot', kept, '2026-11-14'), null);
   assert.equal(restorableTrip('', 'when=10', '2026-11-14'), null);
   assert.equal(restorableTrip('', null, '2026-11-14'), null);
+});
+
+test('a trip under way comes back, and the planner says so instead of planning it', () => {
+  const kept = 'from=2026-12-06&to=2026-12-13';
+  const today = '2026-12-07';
+  assert.equal(restorableTrip('', kept, today), kept);
+  const trip = hubTripOf(kept);
+  assert.equal(pastTrip(trip, today), 'started');
+  const state = { ...DEFAULT_PLAN_STATE, ...trip };
+  const allHeadliners = ['magic-kingdom-park'];
+  assert.equal(planRequestQuery(state, allHeadliners, false, { today, allHeadliners }), null);
+  assert.equal(planFromToday(state, today).from, today);
 });
 
 /** `n` dates from `from`, as the calendar's days carry them. */

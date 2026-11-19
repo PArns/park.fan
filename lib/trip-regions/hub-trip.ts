@@ -26,7 +26,9 @@ export function hubTripOf(query: string): HubTripDates | null {
 /**
  * The remembered query the hub puts back into the address bar, or null. Only on a bare visit (no
  * query at all: a link with `parks=` or a search came with its own intent) and only for a trip that
- * has not ended in the region's today, so a past holiday does not come back as "your plan".
+ * has not ended in the region's today, so a past holiday does not come back as "your plan". A trip
+ * under way comes back, and the planner says so where the plan would stand, with a plan from today
+ * or new dates (`PlanPastNotice`), never planning the days already past.
  */
 export function restorableTrip(
   search: string,

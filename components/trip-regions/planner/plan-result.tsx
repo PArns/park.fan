@@ -33,7 +33,6 @@ import {
   moveVisit,
   parkDaysAvailable,
   planProblem,
-  planRequestQuery,
   plannerParkOf,
   removePark,
   setBaseNights,
@@ -86,7 +85,14 @@ import { PlanPeakCard } from './plan-peak-card';
 import { PlanResultHead } from './plan-result-head';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenResult } from './plan-when-result';
-import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
+import {
+  usePlanRequestQuery,
+  useStatePlan,
+  useTripCalendar,
+  useTripWhen,
+  useUnpinnedPlan,
+} from './use-trip-plan';
+import { PlanPastNotice, usePastTrip } from './plan-past-notice';
 import { PlanTicketsCard, TicketsAsk, type PlanEdit } from './plan-tickets-card';
 import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
@@ -150,8 +156,8 @@ export function PlanResult({
 
 function WhenAnswer() {
   const t = useTranslations('tripPlanner');
-  const { state, update } = usePlanContext();
-  const query = whenRequestQuery(state);
+  const { state, update, today } = usePlanContext();
+  const query = whenRequestQuery(state, today);
   const when = useTripWhen(query);
   usePlanEvents(
     when.asked,
@@ -223,7 +229,8 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
   const track = useTripEvents();
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
-  const query = planRequestQuery(state, headliners, missed !== null);
+  const past = usePastTrip();
+  const query = usePlanRequestQuery();
   const plan = useStatePlan();
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
@@ -298,6 +305,7 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
     [track, edit, regionOrder, headliners]
   );
 
+  if (past) return <PlanPastNotice past={past} onNewDates={() => editSteps.dates('past_trip')} />;
   if (problem) {
     return (
       <div className="border-border/60 flex flex-col gap-2 rounded-2xl border p-5" role="status">

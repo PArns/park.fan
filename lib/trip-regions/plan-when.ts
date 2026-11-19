@@ -9,6 +9,7 @@ import {
 } from './plan';
 import type { ClimateChip } from './plan-copy';
 import { tripMonthRange } from './paths';
+import { searchFromToday } from './trip-dates';
 import type { TripMonth, TripSchoolBreaks, TripWhenWeek, TripWhenWindow } from './types';
 
 /**
@@ -92,13 +93,19 @@ export function whenPeriodOf(
 
 /**
  * The `/when` request's query: the search, the length, the holiday region, the three windows the
- * cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode.
+ * cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode and
+ * before the region's `today` is known; a period that began before it searches from it
+ * (`searchFromToday`), since the API answers a past one with a 400.
  */
-export function whenRequestQuery(state: TripPlanState): Record<string, string> | null {
-  if (!state.when) return null;
+export function whenRequestQuery(
+  state: TripPlanState,
+  today: string | null
+): Record<string, string> | null {
+  if (!state.when || !today) return null;
+  const range = searchFromToday(state.when, state.days, today);
   const query: Record<string, string> = {
-    from: state.when.from,
-    to: state.when.to,
+    from: range.from,
+    to: range.to,
     days: String(state.days),
   };
   // The API's default length is left out, so the hub's own `/when` and this one are one query.

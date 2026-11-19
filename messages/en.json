@@ -4521,7 +4521,12 @@
         "show": "Show the plan now"
       },
       "dates": {
-        "months": "Month"
+        "months": "Month",
+        "mode": "Your dates",
+        "known": "I know my dates",
+        "find": "Find dates",
+        "quiet": "Next quiet week: {range}",
+        "quietTake": "Use these dates"
       },
       "parks": {
         "lead": "The big ones are chosen already, and a tap on a picture adds a park or takes it out",
@@ -4537,7 +4542,8 @@
         "weather": {
           "label": "Avoid extreme weather",
           "hint": "Theme parks on the cooler days, water parks on the hottest{storm, select, hurricane {; the peak of hurricane season counts for more} typhoon {; the peak of typhoon season counts for more} other {}}"
-        }
+        },
+        "fitted": "For {days, plural, one {# day} other {# days}}, {parks, plural, one {# park is} other {# parks are}} picked to start with. You can add more."
       },
       "spare": {
         "title": "{count, plural, =1 {1 day without a park} other {# days without a park}}",
@@ -4602,6 +4608,12 @@
       "noCooler": "No cooler day fitted the plan",
       "keyHeat": "Hot park day",
       "keyHeatNormal": "Hot park day; Ø is the average of past years"
+    },
+    "past": {
+      "started": "This trip started on {date}.",
+      "ended": "This trip started on {date} and is already over.",
+      "fromToday": "Plan from today",
+      "newDates": "Choose new dates"
     }
   },
   "tripRegions": {
