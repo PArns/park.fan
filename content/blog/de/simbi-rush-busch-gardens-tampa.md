@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Sommer 2027 schießt Simbi Rush dich in Busch Gardens Tampa Bay zweimal ab, mit bis zu 64 km/h über einen See im Bereich Congo. Mit der Jahreskarte 2027 fährst du vor allen anderen.
+  Im Sommer 2027 schießt Simbi Rush dich in Busch Gardens Tampa Bay zweimal ab, mit bis zu 64 km/h durch den Bereich Congo. Mit der Jahreskarte 2027 fährst du vor allen anderen.
 tags:
   - news
   - busch-gardens-tampa
@@ -47,7 +47,7 @@ Den Namen hat die Bahn von Simbi, einem Schutzgeist von Wasser und Natur aus Zen
 
 ## Für wen sie gedacht ist
 
-Der Park plant Simbi Rush ausdrücklich als Familienattraktion, eine Mindestgröße gibt es aber noch nicht. Zum Vergleich: In die beiden Bahnen, die heute im Bereich Congo stehen, die Wildwasserbahn [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) und den Autoscooter [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), darfst du ab 42 Zoll (107 Zentimeter). Wo genau im Bereich die neue Strecke liegt, zeigt der Park noch auf keinem Plan.
+Der Park plant Simbi Rush ausdrücklich als Familienattraktion, eine Mindestgröße gibt es aber noch nicht. Zum Vergleich: In die beiden Bahnen, die im Bereich Congo heute fahren, die Wildwasserbahn [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) und den Autoscooter [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), darfst du ab 42 Zoll (107 Zentimeter). Wo genau die Strecke im Bereich Congo verläuft, hat der Park noch nicht bekannt gegeben.
 
 > [!QUOTE]
 > Unsere Gäste haben uns gesagt, dass sie mehr Möglichkeiten wollen, Spaß zu haben und sich abzukühlen, und Simbi Rush wird genau das tun und noch mehr. Diese Fahrt ist anders als alles, was wir bisher gemacht haben. Sie ist schnell, sie macht Spaß und sie erfrischt.
@@ -58,7 +58,7 @@ Der Park plant Simbi Rush ausdrücklich als Familienattraktion, eine Mindestgrö
 
 ## Wer zuerst fährt und was es kostet
 
-Vor der öffentlichen Eröffnung fahren die Inhaber einer Jahreskarte 2027, Termine dafür gibt es noch keine. Im Black-Friday-Verkauf kostet die Silver-Jahreskarte 198 $ statt 279 $, Gold 222 $ statt 315 $ und Platinum 351 $ statt 549 $, alle drei mit kostenlosem Parken. Die günstigere Fun Card 2027 kostet 94,99 $ statt 148,99 $ und gilt ab sofort bis zum 31. Dezember 2027 unbegrenzt in Busch Gardens und im Wasserpark Adventure Island gegenüber. Parken ist bei ihr nicht dabei und kostet ab 32 $ plus Steuer, und ob sie auch für die Vorpremiere reicht, hat der Park nicht bekannt gegeben. Mit der Fun Card bist du allerdings schon in diesem Winter drin, bis zum 4. Januar an ausgewählten Abenden bei [Christmas Town mit der Drohnenshow](/news/busch-gardens-tampa-christmas-town-2026).
+Vor der öffentlichen Eröffnung fahren die Inhaber einer Jahreskarte 2027, Termine dafür gibt es noch keine. Im Black-Friday-Verkauf kostet die Silver-Jahreskarte 198 $ statt 279 $, Gold 222 $ statt 315 $ und Platinum 351 $ statt 549 $, alle drei mit kostenlosem Parken. Die günstigere Fun Card 2027 kostet 94,99 $ statt 148,99 $ und gilt ab sofort bis zum 31. Dezember 2027 außer an Sperrtagen unbegrenzt in Busch Gardens und im Wasserpark Adventure Island. Parken ist bei ihr nicht dabei und kostet ab 32 $ plus Steuer, und ob sie auch für die Vorpremiere reicht, hat der Park nicht bekannt gegeben. Mit der Fun Card bist du allerdings schon in diesem Winter drin, bis zum 4. Januar an ausgewählten Abenden bei [Christmas Town mit der Drohnenshow](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -85,6 +85,7 @@ Quellen:
 [Simbi Rush](https://buschgardens.com/tampa/roller-coasters/simbi-rush/),
 [Simbi Rush bei RCDB](https://rcdb.com/24715.htm),
 [Congo River Rapids](https://buschgardens.com/tampa/rides/congo-river-rapids/),
+[Ubanga-Banga Bumper Cars](https://buschgardens.com/tampa/rides/ubanga-banga-bumper-cars/),
 [Fahrgeschäfte](https://buschgardens.com/tampa/rides/),
 [Fun Card und Jahreskarten](https://buschgardens.com/tampa/tickets/fun-card/),
 [FAQ mit Parken und Shuttle](https://buschgardens.com/tampa/faq/),

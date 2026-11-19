@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  En verano de 2027, Simbi Rush te lanzará dos veces a hasta 64 km/h sobre un lago de la zona Congo de Busch Gardens Tampa Bay. Con el pase anual 2027 la pruebas antes que nadie.
+  En verano de 2027, Simbi Rush te lanzará dos veces a hasta 64 km/h por la zona Congo de Busch Gardens Tampa Bay. Con el pase anual 2027 la pruebas antes que nadie.
 tags:
   - news
   - busch-gardens-tampa
@@ -47,7 +47,7 @@ El nombre viene de Simbi, un espíritu protector del agua y la naturaleza de Áf
 
 ## ¿Para quién es?
 
-El parque la concibe expresamente como atracción familiar, aunque todavía no ha fijado una altura mínima. Como referencia, en las dos atracciones que hay hoy en la zona Congo, los rápidos [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) y los coches de choque [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), puedes subir desde 42 pulgadas (107 centímetros). Dónde irá exactamente el nuevo recorrido dentro de la zona no lo muestra todavía ningún plano del parque.
+El parque la concibe expresamente como atracción familiar, aunque todavía no ha fijado una altura mínima. Como referencia, en las dos atracciones que funcionan hoy en la zona Congo, los rápidos [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) y los coches de choque [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), puedes subir desde 42 pulgadas (107 centímetros). El parque todavía no ha anunciado por dónde pasará exactamente el recorrido dentro de la zona Congo.
 
 > [!QUOTE]
 > Nuestros visitantes nos han dicho que quieren más maneras de divertirse y refrescarse, y Simbi Rush hará justo eso y más. Esta atracción no se parece a nada de lo que hemos hecho hasta ahora. Es rápida, es divertida y refresca.
@@ -58,7 +58,7 @@ El parque la concibe expresamente como atracción familiar, aunque todavía no h
 
 ## Quién sube primero y cuánto cuesta
 
-Antes de la apertura al público la prueban los titulares de un pase anual 2027, aunque todavía no hay fechas. En la venta del Black Friday, el pase anual Silver cuesta 198 $ en vez de 279 $, el Gold 222 $ en vez de 315 $ y el Platinum 351 $ en vez de 549 $, los tres con aparcamiento gratis. La Fun Card 2027, más barata, sale por 94,99 $ en vez de 148,99 $ y vale desde hoy hasta el 31 de diciembre de 2027 para entrar las veces que quieras en Busch Gardens y en Adventure Island, el parque acuático de enfrente. El aparcamiento no va incluido y cuesta desde 32 $ más impuestos. Si la Fun Card da acceso al preestreno, el parque no lo ha dado a conocer. Lo que sí te permite es entrar ya este invierno: hasta el 4 de enero, en noches concretas, a [Christmas Town con su espectáculo de drones](/news/busch-gardens-tampa-christmas-town-2026).
+Antes de la apertura al público la prueban los titulares de un pase anual 2027, aunque todavía no hay fechas. En la venta del Black Friday, el pase anual Silver cuesta 198 $ en vez de 279 $, el Gold 222 $ en vez de 315 $ y el Platinum 351 $ en vez de 549 $, los tres con aparcamiento gratis. La Fun Card 2027, más barata, sale por 94,99 $ en vez de 148,99 $ y vale desde hoy hasta el 31 de diciembre de 2027 para entrar las veces que quieras en Busch Gardens y en el parque acuático Adventure Island, salvo en los días bloqueados. El aparcamiento no va incluido y cuesta desde 32 $ más impuestos. Si la Fun Card da acceso al preestreno, el parque no lo ha dado a conocer. Lo que sí te permite es entrar ya este invierno: hasta el 4 de enero, en noches concretas, a [Christmas Town con su espectáculo de drones](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -85,6 +85,7 @@ Fuentes:
 [Simbi Rush](https://buschgardens.com/tampa/roller-coasters/simbi-rush/),
 [Simbi Rush en RCDB](https://rcdb.com/24715.htm),
 [Congo River Rapids](https://buschgardens.com/tampa/rides/congo-river-rapids/),
+[Ubanga-Banga Bumper Cars](https://buschgardens.com/tampa/rides/ubanga-banga-bumper-cars/),
 [atracciones](https://buschgardens.com/tampa/rides/),
 [Fun Card y pases anuales](https://buschgardens.com/tampa/tickets/fun-card/),
 [preguntas frecuentes sobre aparcamiento y shuttle](https://buschgardens.com/tampa/faq/),

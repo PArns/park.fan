@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  In summer 2027, Simbi Rush launches you twice at Busch Gardens Tampa Bay, at up to 40 mph across a lake in the Congo area. With a 2027 annual pass, you ride before everyone else.
+  In summer 2027, Simbi Rush launches you twice at Busch Gardens Tampa Bay, at up to 40 mph through the Congo area. With a 2027 annual pass, you ride before everyone else.
 tags:
   - news
   - busch-gardens-tampa
@@ -47,7 +47,7 @@ The name comes from Simbi, a Central African guardian spirit of water and nature
 
 ## Who it's for
 
-The park is planning Simbi Rush as a family ride, but it hasn't set a height requirement yet. For comparison, the two rides in the Congo area today, the [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) raft ride and the [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), take riders from 42 inches (107 cm). No park map shows yet where in the area the new track will run.
+The park is planning Simbi Rush as a family ride, but it hasn't set a height requirement yet. For comparison, the two rides operating in the Congo area today, the [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) raft ride and the [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), take riders from 42 inches (107 cm). The park hasn't announced yet exactly where in the Congo area the track will run.
 
 > [!QUOTE]
 > Our guests have told us they want more ways to have fun and stay cool, and Simbi Rush will do just that and more. This ride is unlike anything we have ever done before. It's fast, it's fun and refreshing.
@@ -56,7 +56,7 @@ The park is planning Simbi Rush as a family ride, but it hasn't set a height req
 
 ## Who rides first and what it costs
 
-2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. In the Black Friday sale, the Silver pass costs $198 instead of $279, Gold $222 instead of $315 and Platinum $351 instead of $549, all three with free parking. The cheaper 2027 Fun Card is $94.99 instead of $148.99 and gets you unlimited visits to Busch Gardens and the Adventure Island water park across the street, starting now and running through December 31, 2027. Parking isn't included and starts at $32 plus tax, and the park hasn't announced whether the Fun Card gets you into the preview. It does get you in this winter, though: [Christmas Town with its drone show](/news/busch-gardens-tampa-christmas-town-2026) runs on select evenings until January 4.
+2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. In the Black Friday sale, the Silver pass costs $198 instead of $279, Gold $222 instead of $315 and Platinum $351 instead of $549, all three with free parking. The cheaper 2027 Fun Card is $94.99 instead of $148.99 and gets you unlimited visits to Busch Gardens and the Adventure Island water park, except on blockout dates, from now through December 31, 2027. Parking isn't included and starts at $32 plus tax, and the park hasn't announced whether the Fun Card gets you into the preview. It does get you in this winter, though: [Christmas Town with its drone show](/news/busch-gardens-tampa-christmas-town-2026) runs on select evenings until January 4.
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -74,7 +74,7 @@ Stanley Falls Flume, the log flume that had run since the park opened in 1973, c
 
 ## Other Mack Rides water coasters
 
-The two Mack water coasters at [Europa-Park](ref:europa-park) are faster than Simbi Rush: [Poseidon](ref:europa-park/water-rollercoaster-poseidon) has run at 43 mph (70 km/h) since 2000, and [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) at 50 mph (80 km/h) since 2005. Both pull their boats up on chain lifts, though, so Tampa's record only holds among launched rides. The closest match is Dønnervind at Freizeitpark Plohn in Saxony, open since June 2026, with eight-seat cars like Tampa's and two launches as well, but a top speed of 33 mph (53 km/h). In October, Dønnervind was [out of service with a technical problem](/news/doennervind-plohn-out-of-service). What other parks are opening in 2027 is collected in our [overview of new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
+The two Mack water coasters at [Europa-Park](ref:europa-park) are faster than Simbi Rush: [Poseidon](ref:europa-park/water-rollercoaster-poseidon) has run at 44 mph (70 km/h) since 2000, and [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) at 50 mph (80 km/h) since 2005. Both pull their boats up on chain lifts, though, so Tampa's record only holds among launched rides. The closest match is Dønnervind at Freizeitpark Plohn in Saxony, open since June 2026, with eight-seat cars like Tampa's and two launches as well, but a top speed of 33 mph (53 km/h). In October, Dønnervind was [out of service with a technical problem](/news/doennervind-plohn-out-of-service). What other parks are opening in 2027 is collected in our [overview of new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
@@ -83,6 +83,7 @@ Sources:
 [Simbi Rush](https://buschgardens.com/tampa/roller-coasters/simbi-rush/),
 [Simbi Rush on RCDB](https://rcdb.com/24715.htm),
 [Congo River Rapids](https://buschgardens.com/tampa/rides/congo-river-rapids/),
+[Ubanga-Banga Bumper Cars](https://buschgardens.com/tampa/rides/ubanga-banga-bumper-cars/),
 [Rides](https://buschgardens.com/tampa/rides/),
 [Fun Card and annual passes](https://buschgardens.com/tampa/tickets/fun-card/),
 [FAQ on parking and the shuttle](https://buschgardens.com/tampa/faq/),

@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf de zomer van 2027 lanceert Simbi Rush je in Busch Gardens Tampa Bay twee keer, tot 64 km/u over een meer in Congo. Met een jaarkaart 2027 rijd je eerder dan de rest.
+  Vanaf de zomer van 2027 lanceert Simbi Rush je in Busch Gardens Tampa Bay twee keer, met tot 64 km/u door het themagebied Congo. Met een jaarkaart 2027 rijd je eerder dan de rest.
 tags:
   - nieuws
   - busch-gardens-tampa
@@ -47,7 +47,7 @@ De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrik
 
 ## Voor wie hij bedoeld is
 
-Het park ziet Simbi Rush uitdrukkelijk als gezinsattractie, maar een minimale lengte is er nog niet. Ter vergelijking: in de twee attracties die nu in Congo staan, de wildwaterbaan [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) en de botsauto's van [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), mag je vanaf 42 inch (107 centimeter). Waar in het themagebied de nieuwe baan precies komt, laat het park nog op geen enkele plattegrond zien.
+Het park ziet Simbi Rush uitdrukkelijk als gezinsattractie, maar een minimale lengte is er nog niet. Ter vergelijking: in de twee attracties die nu in Congo draaien, de wildwaterbaan [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) en de botsauto's van [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), mag je vanaf 42 inch (107 centimeter). Waar de baan precies door Congo loopt, heeft het park nog niet bekendgemaakt.
 
 > [!QUOTE]
 > Onze gasten hebben ons laten weten dat ze meer manieren willen om plezier te maken en af te koelen, en Simbi Rush gaat precies dat doen, en meer. Deze rit is anders dan alles wat we ooit hebben gedaan. Hij is snel, leuk en verfrissend.
@@ -58,7 +58,7 @@ Het park ziet Simbi Rush uitdrukkelijk als gezinsattractie, maar een minimale le
 
 ## Wie het eerst mag en wat het kost
 
-Voor de officiële opening zijn de houders van een jaarkaart 2027 aan de beurt. Data daarvoor zijn er nog niet. In de Black Friday-actie kost de Silver-jaarkaart 198 dollar in plaats van 279, Gold 222 in plaats van 315 en Platinum 351 in plaats van 549 dollar, alle drie met gratis parkeren. De goedkopere Fun Card 2027 kost 94,99 dollar in plaats van 148,99 dollar en geeft vanaf nu tot en met 31 december 2027 onbeperkt toegang tot Busch Gardens en tot waterpark Adventure Island aan de overkant. Parkeren zit er niet bij en kost vanaf 32 dollar plus belasting. Of je met de Fun Card ook bij de preview mag, heeft het park niet bekendgemaakt. Deze winter kom je er in elk geval al mee binnen, tot 4 januari op bepaalde avonden bij [Christmas Town met de droneshow](/news/busch-gardens-tampa-christmas-town-2026).
+Voor de officiële opening zijn de houders van een jaarkaart 2027 aan de beurt. Data daarvoor zijn er nog niet. In de Black Friday-actie kost de Silver-jaarkaart 198 dollar in plaats van 279, Gold 222 in plaats van 315 en Platinum 351 in plaats van 549 dollar, alle drie met gratis parkeren. De goedkopere Fun Card 2027 kost 94,99 dollar in plaats van 148,99 dollar en geeft vanaf nu tot en met 31 december 2027 onbeperkt toegang tot Busch Gardens en tot waterpark Adventure Island, behalve op uitgesloten dagen. Parkeren zit er niet bij en kost vanaf 32 dollar plus belasting. Of je met de Fun Card ook bij de preview mag, heeft het park niet bekendgemaakt. Deze winter kom je er in elk geval al mee binnen, tot 4 januari op bepaalde avonden bij [Christmas Town met de droneshow](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -85,6 +85,7 @@ Bronnen:
 [Simbi Rush](https://buschgardens.com/tampa/roller-coasters/simbi-rush/),
 [Simbi Rush op RCDB](https://rcdb.com/24715.htm),
 [Congo River Rapids](https://buschgardens.com/tampa/rides/congo-river-rapids/),
+[Ubanga-Banga Bumper Cars](https://buschgardens.com/tampa/rides/ubanga-banga-bumper-cars/),
 [Attracties](https://buschgardens.com/tampa/rides/),
 [Fun Card en jaarkaarten](https://buschgardens.com/tampa/tickets/fun-card/),
 [FAQ over parkeren en shuttle](https://buschgardens.com/tampa/faq/),
