@@ -93,8 +93,12 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 | 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                   |
 
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
-welchem Tag?“ as its big one), the lead, the two buttons and the answer; the calendar's first day
-starts just under it (905 px at 390 × 844, German). The answer names its day ("Sat, Nov 14, Orlando time"),
+welchem Tag?“ as its big one), the lead, the two buttons and the answer. Chapter 01, the planner,
+comes next, so the calendar's first week is a scroll away, not on the first screen: at 390 × 844
+the head ends at 660 to 750 px, chapter 01 takes 500 to 770 px, and the week's dates start at
+1607 to 1937 px, its first day at 1733 to 2035 px, over the four regions in all six languages
+(`next dev`, 19 November 2026; German Orlando 1807 and 1933). „Zum Kalender“ in the head is the
+way there. The answer names its day ("Sat, Nov 14, Orlando time"),
 never "today", because a cached copy outlives midnight. After every pick has closed it is about
 tomorrow (`glanceDay`). It names each group with a headliner park (`glanceLines`): a resort of one
 park is answered by that park (Universal Studios Hollywood), a group without a headliner (SeaWorld
