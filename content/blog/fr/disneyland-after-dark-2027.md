@@ -56,7 +56,7 @@ Les 18 soirées tombent toutes un dimanche, un mardi ou un jeudi. Disney a laiss
 
 ## Horaires et contenu du billet
 
-La fête dure de 21 h à 1 h, heure locale, une fois le parc fermé aux visiteurs de la journée. Le billet de la soirée permet pourtant d’entrer dès 18 h, et jusqu’à 21 h vous partagez le parc avec les visiteurs de la journée. Au total, cela fait sept heures sur place, de quoi remplir une journée de travail avec un simple billet du soir.
+La fête dure de 21 h à 1 h, heure locale, une fois le parc fermé aux visiteurs de la journée. Le billet de la soirée permet pourtant d’entrer dès 18 h, sept heures avant la fin, et jusqu’à 21 h vous partagez le parc avec les visiteurs de la journée.
 
 Le billet comprend toutes les photos numériques Disney PhotoPass prises de vous pendant la soirée, sans limite. Pour les récupérer, vous scannez le QR code de votre bracelet dans l’application Disneyland. Vous recevez aussi un plan du parc spécial soirée, plus fait pour l’album photo que pour la poche. Seules certaines attractions restent ouvertes, et Disney y promet souvent des temps d’attente plus courts. Disney n’a pas encore annoncé lesquelles ouvriront en 2027, ni le prix du billet.
 
@@ -64,25 +64,25 @@ Le billet comprend toutes les photos numériques Disney PhotoPass prises de vous
 
 ```
 
-Le billet n’est valable que pour la date réservée et les heures de la soirée, et le nombre de places par soir est limité.
+Le billet n’est valable que le soir réservé, et comme Disney n’en vend qu’un nombre limité par soirée, mieux vaut être sur Disneyland.com dès le 10 décembre à 18 h.
 
 ## Billets pour la Sweethearts' Nite
 
-La vente a lieu sur Disneyland.com. Le mardi 8 décembre, à partir de 9 h heure de Californie, les détenteurs de l’Inspire Key peuvent acheter dans un petit contingent. Le mercredi 9 décembre, c’est au tour de tous les détenteurs d’un Magic Key, eux aussi dans un contingent limité. La vente pour tous ouvre le jeudi 10 décembre à 9 h en Californie, soit 18 h à Paris. Disney communiquera début 2027 la date de vente et les détails de la Disneylandia Nite et de la Star Wars Nite, et au printemps ceux de la Pride Nite.
+La vente a lieu sur Disneyland.com. Le mardi 8 décembre, à partir de 9 h heure de Californie, les détenteurs de l’Inspire Key peuvent acheter dans un petit contingent. Le lendemain, c’est au tour de tous les détenteurs d’un Magic Key, eux aussi dans un contingent limité. La vente pour tous ouvre le jeudi 10 décembre à 9 h en Californie, soit 18 h à Paris. Disney communiquera début 2027 la date de vente et les détails de la Disneylandia Nite et de la Star Wars Nite, et au printemps ceux de la Pride Nite.
 
 ## La Sweethearts' Nite
 
 Disney pense aux couples, mais précise que la soirée vaut aussi pour sortir avec sa meilleure amie ou en famille. Reviennent la « Celebrate Love Cavalcade », où Mickey, Minnie et leurs amis défilent sur Main Street, U.S.A., et, devant le château de la Belle au bois dormant, « Once Upon a Dream », où des chanteuses et des chanteurs interprètent en direct des chansons d’amour des films Disney. Vous pouvez ensuite y rencontrer des couples royaux.
 
-Pour chanter vous-même, direction le Golden Horseshoe, à Frontierland, où le karaoké « Disney Duets » se fait à deux. Un DJ anime la Valentine's Dance Party à la Tomorrowland Terrace, et des personnages Disney rejoignent la piste. Si vous préférez rester assis, montez à bord du bateau à aubes [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare) : devenu le Lou-Ray Jazz Club, il navigue de nuit sur les Rivers of America au son du jazz. WALL-E et EVE, le couple de robots de la soirée, apparaissent en projection sur la façade de [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare). Pour les photos, Disney installe des décors tirés de quatre films, dont « La Belle et le Clochard ».
+Pour chanter vous-même, direction le Golden Horseshoe, à Frontierland, où le karaoké « Disney Duets » se fait à deux. Un DJ anime la Valentine's Dance Party à la Tomorrowland Terrace, et des personnages Disney rejoignent la piste. Si vous préférez rester assis, montez à bord du bateau à aubes [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare) : devenu le Lou-Ray Jazz Club, il navigue de nuit sur les Rivers of America au son du jazz. Des décors photo reprennent quatre films, dont « La Belle et le Clochard », et WALL-E et EVE, le couple de robots de la soirée, apparaissent en projection sur la façade de [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare).
 
-La collection de la soirée se vend, comme par hasard, à côté d’un vaisseau de contrebandiers, le [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare) de Star Wars: Galaxy's Edge. Parmi les articles figure un serre-tête orné d’un nœud comme celui de Minnie.
+Disney vend la collection de la soirée, comme par hasard, dans Star Wars: Galaxy's Edge, à côté du [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare), dont un serre-tête avec un nœud façon Minnie.
 
-Nouveaux à la carte : des frites au poulet et au za’atar, notamment au Galactic Grill, et des Hawaiian Rolls frits au Little Red Wagon. Le Blue Bayou, la River Belle Terrace et le Carnation Café proposent des plats propres à la soirée. Disney y conseille de réserver, ce qui deviendra possible en ligne à l’approche des dates. Les spécialités des restaurants rapides se commandent avant même le début de la fête, par Mobile Order dans l’application.
+Côté nouveautés, le Galactic Grill, entre autres, sert des frites au poulet et au za’atar, et le Little Red Wagon des Hawaiian Rolls frits. Le Blue Bayou, la River Belle Terrace et le Carnation Café proposent des plats propres à la soirée. Disney y conseille de réserver, ce qui deviendra possible en ligne à l’approche des dates. Les spécialités des restaurants rapides se commandent avant même le début de la fête, par Mobile Order dans l’application.
 
-## Disneylandia Nite et les 50 ans de Star Wars
+## Disneylandia Nite, Star Wars Nite et Pride Nite
 
-La Disneylandia Nite célèbre les cultures hispaniques et latino-américaines, avec des personnages de « Coco » et d’« Encanto ». Elle occupe presque les mêmes jours d’avril que la Disney Channel Nite de 2026.
+La Disneylandia Nite célèbre les cultures hispaniques et latino-américaines, avec des personnages de « Coco » et d’« Encanto ». Elle occupe presque les mêmes jours d’avril que la Disney Channel Nite de 2026, absente du calendrier 2027.
 
 En 2027, la Star Wars Nite fête les 50 ans de Star Wars, et l’une des quatre soirées tombe le 4 mai. Disney invite à venir costumé dans l’esprit Star Wars, dans le respect du règlement du parc sur les costumes.
 
@@ -90,7 +90,7 @@ En 2027, la Star Wars Nite fête les 50 ans de Star Wars, et l’une des quatre 
 
 ## Moins de soirées qu’en 2026
 
-En 2026, Disneyland comptait cinq soirées After Dark. La nouvelle « 70 Years of Favorites » a occupé deux soirs en mars, la Disney Channel Nite est venue en avril. Ni l’une ni l’autre ne figure au calendrier 2027.
+En 2026, Disneyland comptait cinq soirées After Dark. En plus de la Disney Channel Nite, la nouvelle « 70 Years of Favorites » a occupé deux soirs en mars, et elle non plus ne figure pas au calendrier 2027.
 
 Si vous préparez un voyage dans le sud de la Californie, notre [guide du road trip en Californie](/blog/road-trip-californie-disneyland-universal-san-diego) réunit les soirées spéciales de Disneyland, d’Universal, de Knott's et de SeaWorld San Diego, avec l’heure à laquelle les visiteurs de la journée doivent partir.
 
