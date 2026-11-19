@@ -47,7 +47,7 @@ seo:
 
 ## What's planned for the Wildcat's birthday
 
-The anniversary opens with Wildcat Weekends in May, and like the rest of the birthday program they have no dates yet. New this year is the Wildcat Dance Party, where Ryder the Wildcat, the park's mascot, joins in on the dance floor, and more anniversary activities are promised across the season. Season pass holders get a gift on opening day.
+The anniversary opens with Wildcat Weekends in May; the park will name the exact days later. New this year is the Wildcat Dance Party, where Ryder the Wildcat, the park's mascot, joins in on the dance floor. Season pass holders get a gift on opening day.
 
 > [!QUOTE]
 > As Wildcat celebrates 100 years, we're honoring the history and experiences that have made Lake Compounce a part of so many families over the years.
@@ -66,25 +66,25 @@ The Wildcat came back for the 2026 season after a renovation that took several y
 
 ```
 
-The park's second wooden coaster, [Boulder Dash](ref:lake-compounce/boulder-dash?bare), has run since May 21, 2000, a terrain coaster that follows the lie of the land. Custom Coasters International built it to plans by Larry Bill. At 4,725 feet (1,440 meters), its track is more than one and a half times as long as the Wildcat's, and at 60 mph (97 km/h) it runs 12 mph faster. The [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), a Premier Rides Sky Rocket II, opened on May 7, 2016. It stands 150 feet (46 meters) tall, launches its train several times by linear motor, reaches 62 mph (100 km/h) and goes upside down once. Anyone just tall enough for the Wildcat needs six more inches for Phobia, or four with a companion. [Zoomerang](ref:lake-compounce/zoomerang?bare) is a 1997 Vekoma Boomerang with three inversions. Add the Kiddie Coaster for the youngest riders and that makes five coasters.
+[Boulder Dash](ref:lake-compounce/boulder-dash?bare), the park's second wooden coaster, is a terrain coaster that follows the lie of the land, and it has run since May 21, 2000. Custom Coasters International built it to plans by Larry Bill. At 4,725 feet (1,440 meters), its track is more than one and a half times as long as the Wildcat's, and at 60 mph (97 km/h) it's the faster of the two wooden coasters. The [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), a Premier Rides Sky Rocket II, opened on May 7, 2016. It stands 150 feet (46 meters) tall, launches its train several times by linear motor, reaches 62 mph (100 km/h) and goes upside down once. For Phobia you need to be 54 inches (137 centimeters) tall, or 52 inches (132 centimeters) with an adult, a good hand's breadth more than for the Wildcat. [Zoomerang](ref:lake-compounce/zoomerang?bare) is a 1997 Vekoma Boomerang with three inversions. There's also the Kiddie Coaster for the youngest riders.
 
 ## Events from May to October
 
-May also brings the first Boulder Dash 5k, on a day still to be named, a five-kilometer run the park is organizing with the Hartford Marathon Foundation and Special Olympics Connecticut. The money raised goes to the Special Olympics Connecticut campaign for the organization's first permanent home. It'll be on a new campus in Bristol that opens in 2027.
+The first Boulder Dash 5k also runs in May, on a day still to be named, a five-kilometer run the park is organizing with the Hartford Marathon Foundation and Special Olympics Connecticut. The money raised goes to the Special Olympics Connecticut campaign for the organization's first permanent home. It'll be on a new campus in Bristol that opens in 2027.
 
 Kids Fest runs on weekends from June 5 to June 27, with Daniel Tiger and other characters to meet, magic shows and new foam parties. It's included in every 2027 season pass.
 
-Fireworks go up over the lake on the weekend around July 4, followed by new drone and laser shows every weekend in July, with designs taken from the park. Live music plays before each show. Newsletter subscribers get to vote on one of the drone show formations. The Summer Beach Bash follows in August, and like the shows it has no published dates yet.
+Fireworks go up over the lake on the weekend around July 4, followed by new drone and laser shows every weekend in July. Live music plays before each show. Newsletter subscribers get to vote on one of the drone show formations. The Summer Beach Bash follows in August, and it has no dates yet.
 
-Harvest Days are new, on weekends from September 4 to September 26, with music, food, drinks and New England traditions. Phantom Fall Fest, the Halloween event, follows on selected days from September 24 to October 31. During the day there's a family program, and at night the haunted attractions open.
+Harvest Days are new, on weekends from September 4 to September 26, with music, food, drinks and New England traditions. Phantom Fall Fest, the Halloween event, follows on selected days from September 24 to October 31, with a family program until evening and the haunted attractions after that.
 
-Holiday Lights last ran in winter 2025, so the park stays closed until May 8. The 2026 season ended on November 1 with Phantom Fall Fest.
+Holiday Lights last ran in winter 2025, and this time the park doesn't open at all over the winter. The 2026 season ended on November 1 with Phantom Fall Fest.
 
 ## 2027 season passes and tickets
 
 For Black Friday, Lake Compounce is selling 2027 season passes at a discount. The park hasn't announced an end date for the sale.
 
-The Gold Pass costs $89.99 instead of $169.99. It's also valid at Crocodile Cove and Phantom Fall Fest, and General Parking is included. The season bottle gets you free soft drinks, and you get 15% off food, shopping and Speedy Pass, plus 20% off cabanas. The Silver Pass is also $89.99 in the sale, down from $139.99, and covers the water park and Phantom Fall Fest too, but it only gives 10% off and no parking. Buy Silver in the sale anyway and you pay the same, get five percentage points less off and pay $28 to park on every visit.
+The Gold Pass costs $89.99 instead of $169.99. It's also valid at Crocodile Cove and Phantom Fall Fest, and General Parking is included. The season bottle gets you free soft drinks, and you get 15% off food, shopping and Speedy Pass, plus 20% off cabanas. The Silver Pass is also $89.99 in the sale, down from $139.99, and covers the water park and Phantom Fall Fest too, but it only gives 10% off and no parking. Pick Silver in the sale and by your first parking ticket you've already spent $28 more than with Gold.
 
 The Platinum Pass costs $169.99 instead of $209.99. Preferred Parking is free while spaces last, the discount is 20%, or 30% on cabanas. It also gets you into other parks in the US, among them Kennywood, Dutch Wonderland, Story Land and Splish Splash. At [Kennywood near Pittsburgh](/news/kennywood-2027-season), three rides from 1927 also turn 100 in 2027, including the wooden Racer.
 

@@ -47,7 +47,7 @@ Nel 2027 [Lake Compounce](ref:lake-compounce), a Bristol in Connecticut, festegg
 
 ## Che cosa è previsto per il compleanno della Wildcat
 
-Si parte a maggio con i Wildcat Weekends, in giorni che il parco, come per il resto del programma dell’anniversario, non ha ancora indicato. La novità è la Wildcat Dance Party, dove balla anche la mascotte Ryder the Wildcat, e nel corso della stagione sono annunciate altre iniziative per l’anniversario. Chi ha un abbonamento riceve un regalo il giorno dell’apertura.
+Si parte a maggio con i Wildcat Weekends; i giorni precisi il parco li indicherà più avanti. La novità è la Wildcat Dance Party, dove balla anche la mascotte Ryder the Wildcat. Gli abbonati ricevono un regalo il giorno dell’apertura.
 
 > [!QUOTE]
 > Mentre la Wildcat compie cento anni, rendiamo omaggio alla storia e alle esperienze che negli anni hanno fatto di Lake Compounce una parte di tante famiglie.
@@ -68,7 +68,7 @@ Per la stagione 2026 la Wildcat è tornata dopo lavori durati diversi anni. Il p
 
 ```
 
-La seconda montagna russa in legno del parco, [Boulder Dash](ref:lake-compounce/boulder-dash?bare), è in funzione dal 21 maggio 2000. È un terrain coaster che segue l’andamento del terreno. L’ha costruita Custom Coasters International su progetto di Larry Bill. Con 1.440 metri (4.725 piedi) il suo percorso è più di una volta e mezza quello della Wildcat, e a 97 km/h (60 mph) va 20 km/h più veloce. Il [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), uno Sky Rocket II di Premier Rides, ha aperto il 7 maggio 2016. È alto 46 metri (150 piedi), lancia il treno più volte con motori lineari, raggiunge i 100 km/h (62 mph) e fa un’inversione. Chi con 122 centimetri ci sta giusto per la Wildcat, per Phobia ne deve avere 15 in più, dieci se è accompagnato. [Zoomerang](ref:lake-compounce/zoomerang?bare) è un Boomerang di Vekoma del 1997 con tre inversioni. Con il Kiddie Coaster per i più piccoli, le montagne russe sono cinque.
+La seconda montagna russa in legno del parco, [Boulder Dash](ref:lake-compounce/boulder-dash?bare), è in funzione dal 21 maggio 2000. È un terrain coaster che segue l’andamento del terreno. L’ha costruita Custom Coasters International su progetto di Larry Bill. Con 1.440 metri (4.725 piedi) il suo percorso è più di una volta e mezza quello della Wildcat, e a 97 km/h (60 mph) è la più veloce delle due montagne russe in legno. Il [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), uno Sky Rocket II di Premier Rides, ha aperto il 7 maggio 2016. È alto 46 metri (150 piedi), lancia il treno più volte con motori lineari, raggiunge i 100 km/h (62 mph) e fa un’inversione. Per Phobia servono 137 centimetri (54 pollici), 132 (52 pollici) se si è accompagnati da un adulto, cioè un buon palmo in più che per la Wildcat. [Zoomerang](ref:lake-compounce/zoomerang?bare) è un Boomerang di Vekoma del 1997 con tre inversioni. Per i più piccoli c’è anche il Kiddie Coaster.
 
 ## Gli eventi da maggio a ottobre
 
@@ -76,17 +76,17 @@ Sempre a maggio, in un giorno ancora da stabilire, si corre per la prima volta l
 
 Nei fine settimana dal 5 al 27 giugno c’è il Kids Fest, con Daniel Tiger e altri personaggi da incontrare, spettacoli di magia e i nuovi foam party. Il Kids Fest è compreso in tutti gli abbonamenti 2027.
 
-Nel fine settimana del 4 luglio ci sono i fuochi d’artificio sul lago, poi ogni fine settimana di luglio nuovi spettacoli di droni e laser con motivi presi dal parco. Prima di ogni spettacolo suona musica dal vivo. Chi si iscrive alla newsletter può votare una delle figure dello spettacolo di droni. Per il Summer Beach Bash di agosto, come per gli spettacoli, le date non sono ancora fissate.
+Nel fine settimana del 4 luglio ci sono i fuochi d’artificio sul lago, poi ogni fine settimana di luglio nuovi spettacoli di droni e laser. Prima di ogni spettacolo suona musica dal vivo. Gli iscritti alla newsletter possono votare una delle figure dello spettacolo di droni. Ad agosto segue il Summer Beach Bash, per cui non ci sono ancora date.
 
-Una novità sono gli Harvest Days, nei fine settimana dal 4 al 26 settembre, con musica, cibo, bevande e tradizioni del New England. Segue Phantom Fall Fest, l’evento di Halloween, in alcune date dal 24 settembre al 31 ottobre. Di giorno c’è un programma per le famiglie, la sera aprono le Haunted Attractions.
+Una novità sono gli Harvest Days, nei fine settimana dal 4 al 26 settembre, con musica, cibo, bevande e tradizioni del New England. Segue Phantom Fall Fest, l’evento di Halloween, in alcune date dal 24 settembre al 31 ottobre, con un programma per le famiglie fino a sera e poi le Haunted Attractions.
 
-Holiday Lights si è tenuto per l’ultima volta nell’inverno 2025, quindi il parco resta chiuso fino all’8 maggio. La stagione 2026 si è conclusa il 1° novembre con Phantom Fall Fest.
+Holiday Lights si è tenuto per l’ultima volta nell’inverno 2025, e questa volta in inverno il parco non apre affatto. La stagione 2026 si è conclusa il 1° novembre con Phantom Fall Fest.
 
 ## Abbonamenti e biglietti per il 2027
 
 Per il Black Friday Lake Compounce vende gli abbonamenti 2027 a prezzo ridotto. Il parco non ha ancora comunicato fino a quando dura l’offerta.
 
-Il Gold Pass costa 89,99 $ invece di 169,99 $. Vale anche a Crocodile Cove e a Phantom Fall Fest, e comprende il General Parking. Con la bottiglia stagionale le bibite sono gratis, e in più ci sono il 15 % di sconto su cibo, acquisti e Speedy Pass e il 20 % sulle cabanas. In offerta anche il Silver Pass costa 89,99 $, invece di 139,99 $. Vale anch’esso nel parco acquatico e a Phantom Fall Fest, ma dà solo il 10 % di sconto e niente parcheggio. Chi in offerta compra comunque il Silver paga lo stesso, ha cinque punti di sconto in meno e paga 28 $ di parcheggio a ogni visita.
+Il Gold Pass costa 89,99 $ invece di 169,99 $. Vale anche a Crocodile Cove e a Phantom Fall Fest, e comprende il General Parking. Con la bottiglia stagionale le bibite sono gratis, e in più ci sono il 15 % di sconto su cibo, acquisti e Speedy Pass e il 20 % sulle cabanas. In offerta anche il Silver Pass costa 89,99 $, invece di 139,99 $. Vale anch’esso nel parco acquatico e a Phantom Fall Fest, ma dà solo il 10 % di sconto e niente parcheggio. Con il Silver in offerta, al primo parcheggio hai già speso 28 $ in più che con il Gold.
 
 Il Platinum Pass costa 169,99 $ invece di 209,99 $. Il Preferred Parking è gratuito finché ci sono posti, lo sconto è del 20 %, sulle cabanas del 30 %. Vale inoltre in altri parchi negli Stati Uniti, tra cui Kennywood, Dutch Wonderland, Story Land e Splish Splash. Anche a [Kennywood, vicino a Pittsburgh](/news/kennywood-stagione-2027), nel 2027 compiono gli anni tre attrazioni del 1927, tra cui le montagne russe in legno Racer.
 

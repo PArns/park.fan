@@ -47,7 +47,7 @@ seo:
 
 ## Het programma voor de verjaardag van de Wildcat
 
-Het feest begint in mei met de Wildcat Weekends, op dagen die het park net als voor de rest van het jubileumprogramma nog niet heeft genoemd. Nieuw is de Wildcat Dance Party, waar mascotte Ryder the Wildcat meedanst, en verspreid over het seizoen moeten er meer acties rond het jubileum komen. Wie een seizoenspas heeft, krijgt op de openingsdag een cadeautje.
+Het feest begint in mei met de Wildcat Weekends; de precieze dagen maakt het park later bekend. Nieuw is de Wildcat Dance Party, waar mascotte Ryder the Wildcat meedanst. Seizoenspashouders krijgen op de openingsdag een cadeautje.
 
 > [!QUOTE]
 > Nu de Wildcat 100 jaar wordt, eren we de geschiedenis en de belevenissen waardoor Lake Compounce in de loop der jaren een deel van zoveel families is geworden.
@@ -68,7 +68,7 @@ In het seizoen 2026 kwam de Wildcat terug na een verbouwing van meerdere jaren. 
 
 ```
 
-De tweede houten achtbaan van het park, [Boulder Dash](ref:lake-compounce/boulder-dash?bare), rijdt sinds 21 mei 2000 als terrain coaster, die het verloop van de helling volgt. Custom Coasters International bouwde hem naar plannen van Larry Bill. Met 1.440 meter (4.725 voet) is zijn baan ruim anderhalf keer zo lang als die van de Wildcat, en met 97 km/u (60 mph) gaat hij 20 km/u harder. De [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), een Sky Rocket II van Premier Rides, opende op 7 mei 2016. Hij is 46 meter (150 voet) hoog, lanceert zijn trein meerdere keren met een lineaire motor, haalt 100 km/u (62 mph) en heeft één inversie. Ben je met 122 centimeter net lang genoeg voor de Wildcat, dan heb je voor Phobia 15 centimeter meer nodig, onder begeleiding tien. [Zoomerang](ref:lake-compounce/zoomerang?bare) is een Boomerang van Vekoma uit 1997 met drie inversies. Met de Kiddie Coaster voor de kleinsten erbij zijn het er vijf.
+De tweede houten achtbaan van het park, [Boulder Dash](ref:lake-compounce/boulder-dash?bare), rijdt sinds 21 mei 2000 als terrain coaster, die het verloop van de helling volgt. Custom Coasters International bouwde hem naar plannen van Larry Bill. Met 1.440 meter (4.725 voet) is zijn baan ruim anderhalf keer zo lang als die van de Wildcat, en met 97 km/u (60 mph) is hij de snelste van de twee houten achtbanen. De [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), een Sky Rocket II van Premier Rides, opende op 7 mei 2016. Hij is 46 meter (150 voet) hoog, lanceert zijn trein meerdere keren met een lineaire motor, haalt 100 km/u (62 mph) en heeft één inversie. Voor Phobia moet je 137 centimeter (54 inch) lang zijn, onder begeleiding van een volwassene 132 (52 inch), dus een flinke handbreedte meer dan voor de Wildcat. [Zoomerang](ref:lake-compounce/zoomerang?bare) is een Boomerang van Vekoma uit 1997 met drie inversies. Voor de kleinsten rijdt er ook nog de Kiddie Coaster.
 
 ## Events van mei tot oktober
 
@@ -76,17 +76,17 @@ Ook in mei, op een dag die nog openstaat, loopt voor het eerst de Boulder Dash 5
 
 In de weekenden van 5 tot 27 juni is het Kids Fest, met Daniel Tiger en andere figuren die je kunt ontmoeten, goochelshows en nieuwe schuimparty’s. Kids Fest zit bij elke seizoenspas voor 2027 inbegrepen.
 
-In het weekend rond 4 juli is er vuurwerk boven het meer, en daarna elk weekend in juli nieuwe drone- en lasershows met figuren uit het park. Voor elke show speelt er livemuziek. Wie zich op de nieuwsbrief abonneert, mag stemmen over een formatie van de droneshow. Voor de Summer Beach Bash in augustus liggen, net als voor de shows, nog geen data vast.
+In het weekend rond 4 juli is er vuurwerk boven het meer, en daarna elk weekend in juli nieuwe drone- en lasershows. Voor elke show speelt er livemuziek. Abonnees van de nieuwsbrief mogen stemmen over een formatie van de droneshow. In augustus volgt de Summer Beach Bash, waarvoor nog geen data vastliggen.
 
-Nieuw zijn de Harvest Days in de weekenden van 4 tot 26 september, met muziek, eten, drinken en tradities uit New England. Het halloweenevent Phantom Fall Fest volgt op bepaalde dagen van 24 september tot 31 oktober. Overdag is er een programma voor gezinnen, ’s avonds gaan de Haunted Attractions open.
+Nieuw zijn de Harvest Days in de weekenden van 4 tot 26 september, met muziek, eten, drinken en tradities uit New England. Het halloweenevent Phantom Fall Fest volgt op bepaalde dagen van 24 september tot 31 oktober, tot de avond met een programma voor gezinnen, daarna met de Haunted Attractions.
 
-Holiday Lights was er in de winter van 2025 voor het laatst, dus het park blijft dicht tot 8 mei. Het seizoen 2026 eindigde op 1 november met Phantom Fall Fest.
+Holiday Lights was er in de winter van 2025 voor het laatst, en deze winter gaat het park helemaal niet open. Het seizoen 2026 eindigde op 1 november met Phantom Fall Fest.
 
 ## Seizoenspassen en tickets voor 2027
 
 Rond Black Friday verkoopt Lake Compounce de seizoenspassen voor 2027 goedkoper. Tot wanneer de actie loopt, heeft het park niet bekendgemaakt.
 
-De Gold Pass kost 89,99 in plaats van 169,99 dollar. Hij geldt ook in Crocodile Cove en tijdens Phantom Fall Fest, en General Parking zit erbij. Met de seizoensfles drink je gratis frisdrank, en je krijgt 15 % korting op eten, aankopen en de Speedy Pass en 20 % op cabana’s. De Silver Pass kost in de actie ook 89,99 dollar, in plaats van 139,99. Hij geldt ook in het waterpark en tijdens Phantom Fall Fest, maar geeft maar 10 % korting en geen parkeren. Wie in de actie toch Silver koopt, betaalt hetzelfde, krijgt vijf procentpunt minder korting en betaalt bij elk bezoek 28 dollar om te parkeren.
+De Gold Pass kost 89,99 in plaats van 169,99 dollar. Hij geldt ook in Crocodile Cove en tijdens Phantom Fall Fest, en General Parking zit erbij. Met de seizoensfles drink je gratis frisdrank, en je krijgt 15 % korting op eten, aankopen en de Speedy Pass en 20 % op cabana’s. De Silver Pass kost in de actie ook 89,99 dollar, in plaats van 139,99. Hij geldt ook in het waterpark en tijdens Phantom Fall Fest, maar geeft maar 10 % korting en geen parkeren. Wie in de actie voor Silver kiest, is na het eerste parkeerticket al 28 dollar meer kwijt dan met Gold.
 
 De Platinum Pass kost 169,99 in plaats van 209,99 dollar. Preferred Parking is gratis zolang er plek is, de korting is 20 %, of 30 % op cabana’s. Daarnaast geldt hij in andere parken in de VS, waaronder Kennywood, Dutch Wonderland, Story Land en Splish Splash. In [Kennywood bij Pittsburgh](/news/kennywood-seizoen-2027) worden in 2027 ook drie attracties uit 1927 gevierd, waaronder de houten achtbaan Racer.
 
