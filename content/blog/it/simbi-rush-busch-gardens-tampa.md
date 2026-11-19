@@ -37,17 +37,17 @@ seo:
     - Busch Gardens navetta da Orlando
 ---
 
-Per l’estate 2027 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa), in Florida, costruisce Simbi Rush, montagne russe acquatiche di Mack Rides che lanciano le barche due volte e arrivano a 40 mph, circa 64 km/h. Il percorso attraversa l’area Congo. Il parco ha presentato l’attrazione il 18 novembre alla IAAPA Expo di Orlando, definendola il primo water coaster con lancio del Nord America e il più veloce del suo genere al mondo.
+Per l’estate 2027 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa), in Florida, costruisce Simbi Rush, montagne russe acquatiche di Mack Rides che lanciano le barche due volte e arrivano a 40 mph, circa 64 km/h. Il percorso attraversa l’area Congo. Il parco ha presentato l’attrazione il 18 novembre alla IAAPA Expo di Orlando. Secondo il parco è il primo water coaster con lancio del Nord America e il più veloce del suo genere al mondo.
 
 ## Che cos’è Simbi Rush
 
-Un water coaster con lancio accelera le barche come un ottovolante e le spinge anche in salita, mentre il tracciato, l’acqua e l’ammaraggio funzionano come in uno scivolo d’acqua. Ogni vettura porta otto passeggeri, in quattro file da due, e ognuno ha la sua barra idraulica sulle gambe. Altezza, lunghezza del percorso e capacità oraria Busch Gardens non le ha ancora pubblicate.
+Un water coaster con lancio accelera le barche come un ottovolante e le spinge anche in salita. Il tracciato, l’acqua e l’ammaraggio funzionano invece come in uno scivolo d’acqua. Ogni vettura porta otto passeggeri, in quattro file da due, e ognuno ha la sua barra idraulica sulle gambe. Busch Gardens non ha ancora pubblicato altezza, lunghezza del percorso e capacità oraria.
 
 Il nome viene da Simbi, uno spirito protettore dell’acqua e della natura dell’Africa centrale. Il giro parte come una tranquilla gita su un lago sacro, finché l’acqua non afferra la barca. Se sia l’ira dello spirito o uno scherzo del lago, lo decide chi è a bordo, e in tutti e due i casi scende bagnato.
 
 ## A chi è rivolta
 
-Il parco pensa Simbi Rush espressamente come attrazione per famiglie, ma un’altezza minima non c’è ancora. Per avere un termine di paragone: sulle due attrazioni che oggi funzionano nell’area Congo, il rafting [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) e gli autoscontri [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), si sale da 42 pollici (107 centimetri). Il parco non ha ancora annunciato dove passerà esattamente il percorso nell’area Congo.
+Il parco ha concepito Simbi Rush espressamente come attrazione per famiglie, ma un’altezza minima non c’è ancora. Nell’area Congo oggi funzionano il rafting [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) e gli autoscontri [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), e su tutti e due si sale da 42 pollici (107 centimetri).
 
 > [!QUOTE]
 > I nostri ospiti ci hanno detto che vogliono più modi per divertirsi e rinfrescarsi, e Simbi Rush farà proprio questo, e anche di più. Questa attrazione non somiglia a nulla di ciò che abbiamo fatto finora. È veloce, è divertente e rinfresca.
@@ -58,7 +58,7 @@ Il parco pensa Simbi Rush espressamente come attrazione per famiglie, ma un’al
 
 ## Chi sale per primo e quanto costa
 
-Prima dell’apertura al pubblico tocca a chi ha un abbonamento annuale 2027, e le date non ci sono ancora. Nei saldi del Black Friday l’abbonamento Silver costa 198 dollari invece di 279, il Gold 222 invece di 315 e il Platinum 351 invece di 549, tutti e tre con il parcheggio gratuito. La Fun Card 2027, più economica, costa 94,99 dollari invece di 148,99 e vale da subito fino al 31 dicembre 2027, senza limiti tranne nei giorni di esclusione, a Busch Gardens e nel parco acquatico Adventure Island. Il parcheggio non è compreso e costa da 32 dollari più tasse, e il parco non ha reso noto se la Fun Card basti anche per l’anteprima. In compenso con la Fun Card entri già quest’inverno, in alcune sere fino al 4 gennaio, per [Christmas Town con lo show di droni](/news/busch-gardens-tampa-christmas-town-2026).
+Prima dell’apertura al pubblico tocca a chi ha un abbonamento annuale 2027, e le date non ci sono ancora. Nei saldi del Black Friday l’abbonamento Silver costa 198 dollari invece di 279, il Gold 222 invece di 315 e il Platinum 351 invece di 549, tutti e tre con il parcheggio gratuito. La Fun Card 2027, più economica, costa 94,99 dollari invece di 148,99. Da subito e fino al 31 dicembre 2027 ti fa entrare senza limiti a Busch Gardens e nel parco acquatico Adventure Island, tranne nei giorni di esclusione. Il parcheggio non è compreso e costa da 32 dollari più tasse. Il parco non ha reso noto se la Fun Card basti anche per l’anteprima. In compenso con la Fun Card entri già quest’inverno, in alcune sere fino al 4 gennaio, per [Christmas Town con lo show di droni](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -72,7 +72,7 @@ Senza auto, dalla zona di Orlando arrivi a Tampa con la navetta di Mears Destina
 
 Simbi Rush è il pezzo forte di un piano da 200 milioni di dollari in cinque anni per Busch Gardens Tampa Bay. Di questo piano fa già parte Lion & Hyena Ridge, aperto il 25 luglio: un recinto di 38.000 piedi quadrati (circa 3.500 metri quadrati) per cinque leoni e due iene maculate. In natura leoni e iene sono rivali, perciò si danno il cambio nelle varie parti del recinto, come due fratelli con una sola console.
 
-Il percorso con i tronchi Stanley Falls Flume, in funzione dall’apertura del parco nel 1973, ha chiuso il 7 settembre 2025 dopo 52 anni, per fare posto a una nuova attrazione. Busch Gardens non ha reso noto se Simbi Rush sorgerà al suo posto. Il 2 agosto 2026 ha fatto inoltre l’ultimo giro Kumba, l’ottovolante di Bolliger & Mabillard del 1993, alto 44 metri, veloce 97 km/h, con sette inversioni. Come erede il parco ha annunciato Kumba’s Revenge, finora senza tracciato e senza data.
+Il percorso con i tronchi Stanley Falls Flume, in funzione dall’apertura del parco nel 1973, ha chiuso il 7 settembre 2025 per fare posto a una nuova attrazione. Busch Gardens non ha reso noto dove passerà esattamente il tracciato di Simbi Rush nell’area Congo, né se l’attrazione sorgerà dove c’era Stanley Falls Flume. Il 2 agosto 2026 ha fatto inoltre l’ultimo giro Kumba, l’ottovolante di Bolliger & Mabillard del 1993, alto 44 metri, veloce 97 km/h, con sette inversioni. Come erede il parco ha annunciato Kumba’s Revenge, finora senza tracciato e senza data.
 
 ## Altri water coaster di Mack Rides
 

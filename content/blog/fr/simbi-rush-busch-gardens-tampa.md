@@ -22,7 +22,7 @@ rideLinks:
   - busch-gardens-tampa/congo-river-rapids
   - busch-gardens-tampa/ubanga-banga-bumper-cars
 seo:
-  title: 'Simbi Rush : montagnes russes aquatiques à Busch Gardens Tampa'
+  title: 'Simbi Rush : le water coaster de Busch Gardens Tampa en 2027'
   description: >-
     Simbi Rush, nouvelle attraction 2027 de Busch Gardens Tampa : des montagnes russes aquatiques Mack Rides à deux lancements, jusqu’à 64 km/h.
   keywords:
@@ -37,7 +37,7 @@ seo:
     - navette Orlando Busch Gardens
 ---
 
-Pour l’été 2027, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Floride, construit Simbi Rush, des montagnes russes aquatiques signées Mack Rides. Les bateaux y sont lancés deux fois et atteignent 40 mph, soit environ 64 km/h, sur un parcours qui traverse la zone Congo. Le parc a présenté l’attraction le 18 novembre au salon IAAPA Expo d’Orlando. Il la décrit comme le premier water coaster à lancement d’Amérique du Nord et le plus rapide du genre au monde.
+Pour l’été 2027, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa), en Floride, construit Simbi Rush, un water coaster signé Mack Rides. Les bateaux y sont lancés deux fois et atteignent 40 mph, soit environ 64 km/h, sur un parcours qui traverse la zone Congo. Le parc a présenté l’attraction le 18 novembre au salon IAAPA Expo d’Orlando. Il la décrit comme le premier water coaster à lancement d’Amérique du Nord et le plus rapide du genre au monde.
 
 ## Le principe de Simbi Rush
 
@@ -47,7 +47,7 @@ Le nom vient de Simbi, esprit protecteur de l’eau et de la nature en Afrique c
 
 ## Pour quel public
 
-Le parc conçoit Simbi Rush comme une attraction familiale, mais aucune taille minimale n’est encore fixée. Pour comparer, les deux attractions qui fonctionnent aujourd’hui dans la zone Congo, la rivière rapide [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) et les autos tamponneuses [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), sont accessibles à partir de 42 pouces (107 centimètres). Le parc n’a pas encore annoncé par où passera exactement le parcours dans la zone Congo.
+Le parc conçoit Simbi Rush comme une attraction familiale, mais aucune taille minimale n’est encore fixée. La zone Congo compte aujourd’hui deux attractions, la rivière rapide [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) et les autos tamponneuses [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), toutes deux accessibles à partir de 42 pouces (107 centimètres).
 
 > [!QUOTE]
 > Nos visiteurs nous ont dit qu’ils voulaient plus de façons de s’amuser et de se rafraîchir, et Simbi Rush fera exactement cela, et même plus. Cette attraction ne ressemble à rien de ce que nous avons fait jusqu’ici. Elle est rapide, amusante et rafraîchissante.
@@ -66,13 +66,13 @@ Les détenteurs d’un pass annuel 2027 essaieront Simbi Rush avant l’ouvertur
 
 ## Venir depuis Orlando
 
-Sans voiture, la navette de Mears Destination Services relie la région d’Orlando à Tampa. L’aller-retour est gratuit avec tout billet Busch Gardens payant. Réserve tôt, car le car se remplit. Il fait jusqu’à trois arrêts en route et n’arrive parfois au parc que vers 11 h 30, donc pas forcément à l’ouverture.
+Sans voiture, la navette de Mears Destination Services relie la région d’Orlando à Tampa. L’aller-retour est gratuit avec tout billet Busch Gardens payant. Réserve tôt, parce que le car se remplit. Il fait jusqu’à trois arrêts en route et n’arrive parfois au parc que vers 11 h 30, donc pas forcément à l’ouverture.
 
 ## Les autres changements dans le parc
 
 Simbi Rush est la pièce maîtresse d’un plan de 200 millions de dollars que Busch Gardens Tampa Bay veut investir sur cinq ans. Une première étape de ce plan, Lion & Hyena Ridge, a ouvert le 25 juillet : un enclos de 38 000 pieds carrés (environ 3 500 mètres carrés) pour cinq lions et deux hyènes tachetées. Comme lions et hyènes sont rivaux dans la nature, ils occupent les parties de l’enclos à tour de rôle, un peu comme deux enfants qui n’ont qu’une manette pour la même console.
 
-Le Stanley Falls Flume, une rivière à bûches en service depuis l’ouverture du parc en 1973, a fermé le 7 septembre 2025 après 52 ans pour libérer de la place pour une nouvelle attraction. Busch Gardens n’a pas annoncé si Simbi Rush prendra sa place. Le 2 août 2026, Kumba a aussi fait son dernier tour : ces montagnes russes de Bolliger & Mabillard, ouvertes en 1993, culminaient à 44 mètres, filaient à 97 km/h et comptaient sept inversions. Le parc a annoncé Kumba’s Revenge pour lui succéder, sans tracé ni date pour l’instant.
+Le Stanley Falls Flume, une rivière à bûches en service depuis l’ouverture du parc en 1973, a fermé le 7 septembre 2025 pour faire place à une nouvelle attraction. Busch Gardens n’a pas annoncé par où passera exactement Simbi Rush dans la zone Congo, ni si l’attraction prendra la place de la rivière à bûches. Le 2 août 2026, Kumba a aussi fait son dernier tour : ces montagnes russes de Bolliger & Mabillard, ouvertes en 1993, culminaient à 44 mètres, filaient à 97 km/h et comptaient sept inversions. Le parc a annoncé Kumba’s Revenge pour lui succéder, sans tracé ni date pour l’instant.
 
 ## D’autres water coasters de Mack Rides
 

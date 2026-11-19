@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Vanaf de zomer van 2027 lanceert Simbi Rush je in Busch Gardens Tampa Bay twee keer, met tot 64 km/u door het themagebied Congo. Met een jaarkaart 2027 rijd je eerder dan de rest.
+  Vanaf de zomer van 2027 lanceert Simbi Rush je in Busch Gardens Tampa Bay twee keer, met maximaal 64 km/u door het themagebied Congo. Met een jaarkaart 2027 rijd je eerder dan de rest.
 tags:
   - nieuws
   - busch-gardens-tampa
@@ -37,7 +37,7 @@ seo:
     - Busch Gardens shuttle Orlando
 ---
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida bouwt voor de zomer van 2027 Simbi Rush, een waterachtbaan van Mack Rides die de boten twee keer lanceert, tot 40 mph, zo'n 64 km/u. De baan loopt door het themagebied Congo. Het park presenteerde de attractie op 18 november op de IAAPA Expo in Orlando en noemt haar de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van haar soort ter wereld.
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) in Florida bouwt voor de zomer van 2027 Simbi Rush, een waterachtbaan van Mack Rides die de boten twee keer lanceert en tot 40 mph haalt, zo'n 64 km/u. De baan loopt door het themagebied Congo. Het park presenteerde de attractie op 18 november op de IAAPA Expo in Orlando. Het noemt haar de eerste gelanceerde waterachtbaan van Noord-Amerika en de snelste van haar soort ter wereld.
 
 ## Wat Simbi Rush is
 
@@ -47,7 +47,7 @@ De naam komt van Simbi, een beschermgeest van water en natuur uit Centraal-Afrik
 
 ## Voor wie hij bedoeld is
 
-Het park ziet Simbi Rush uitdrukkelijk als gezinsattractie, maar een minimale lengte is er nog niet. Ter vergelijking: in de twee attracties die nu in Congo draaien, de wildwaterbaan [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) en de botsauto's van [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), mag je vanaf 42 inch (107 centimeter). Waar de baan precies door Congo loopt, heeft het park nog niet bekendgemaakt.
+Het park ziet Simbi Rush uitdrukkelijk als gezinsattractie, maar een minimale lengte is er nog niet. In Congo draaien nu de wildwaterbaan [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) en de botsauto's van [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), en in allebei mag je vanaf 42 inch (107 centimeter).
 
 > [!QUOTE]
 > Onze gasten hebben ons laten weten dat ze meer manieren willen om plezier te maken en af te koelen, en Simbi Rush gaat precies dat doen, en meer. Deze rit is anders dan alles wat we ooit hebben gedaan. Hij is snel, leuk en verfrissend.
@@ -58,7 +58,7 @@ Het park ziet Simbi Rush uitdrukkelijk als gezinsattractie, maar een minimale le
 
 ## Wie het eerst mag en wat het kost
 
-Voor de officiële opening zijn de houders van een jaarkaart 2027 aan de beurt. Data daarvoor zijn er nog niet. In de Black Friday-actie kost de Silver-jaarkaart 198 dollar in plaats van 279, Gold 222 in plaats van 315 en Platinum 351 in plaats van 549 dollar, alle drie met gratis parkeren. De goedkopere Fun Card 2027 kost 94,99 dollar in plaats van 148,99 dollar en geeft vanaf nu tot en met 31 december 2027 onbeperkt toegang tot Busch Gardens en tot waterpark Adventure Island, behalve op uitgesloten dagen. Parkeren zit er niet bij en kost vanaf 32 dollar plus belasting. Of je met de Fun Card ook bij de preview mag, heeft het park niet bekendgemaakt. Deze winter kom je er in elk geval al mee binnen, tot 4 januari op bepaalde avonden bij [Christmas Town met de droneshow](/news/busch-gardens-tampa-christmas-town-2026).
+Voor de officiële opening zijn de houders van een jaarkaart 2027 aan de beurt. Data daarvoor zijn er nog niet. In de Black Friday-actie kost de Silver-jaarkaart 198 dollar in plaats van 279, Gold 222 in plaats van 315 en Platinum 351 in plaats van 549 dollar, alle drie met gratis parkeren. De goedkopere Fun Card 2027 kost 94,99 dollar in plaats van 148,99 dollar. Je komt er vanaf nu tot en met 31 december 2027 onbeperkt mee in Busch Gardens en in waterpark Adventure Island, behalve op uitgesloten dagen. Parkeren zit er niet bij en kost vanaf 32 dollar plus belasting. Of je met de Fun Card ook bij de preview mag, heeft het park niet bekendgemaakt. Deze winter kom je er in elk geval al mee binnen, tot 4 januari op bepaalde avonden bij [Christmas Town met de droneshow](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -70,13 +70,13 @@ Heb je geen auto, dan brengt de shuttle van Mears Destination Services je vanuit
 
 ## Wat er verder verandert in het park
 
-Simbi Rush is het middelpunt van een plan waarin Busch Gardens Tampa Bay in vijf jaar 200 miljoen dollar wil steken. Daaruit is op 25 juli al Lion & Hyena Ridge opengegaan, een verblijf van 38.000 vierkante voet (zo'n 3500 vierkante meter) voor vijf leeuwen en twee gevlekte hyena's. In het wild zijn leeuwen en hyena's rivalen, dus gebruiken ze de delen van het verblijf om de beurt, zoals twee zusjes met één spelcomputer.
+Simbi Rush is het middelpunt van een plan waarin Busch Gardens Tampa Bay in vijf jaar 200 miljoen dollar wil steken. Als eerste deel daarvan opende op 25 juli Lion & Hyena Ridge, een verblijf van 38.000 vierkante voet (zo'n 3500 vierkante meter) voor vijf leeuwen en twee gevlekte hyena's. In het wild zijn leeuwen en hyena's rivalen, dus gebruiken ze de delen van het verblijf om de beurt, zoals twee zusjes met één spelcomputer.
 
-De boomstamattractie Stanley Falls Flume, in bedrijf sinds de opening van het park in 1973, ging op 7 september 2025 na 52 jaar dicht om plaats te maken voor een nieuwe attractie. Of Simbi Rush op die plek komt, heeft Busch Gardens niet bekendgemaakt. Op 2 augustus 2026 reed bovendien Kumba voor het laatst, de achtbaan van Bolliger & Mabillard uit 1993: 44 meter hoog, 97 km/u snel, met zeven inversies. Als opvolger heeft het park Kumba's Revenge aangekondigd, nog zonder baanontwerp en zonder datum.
+De boomstamattractie Stanley Falls Flume draaide sinds de opening van het park in 1973 en ging op 7 september 2025 dicht om plaats te maken voor een nieuwe attractie. Waar de baan van Simbi Rush precies door Congo loopt en of ze op de plek van de boomstamattractie komt, heeft Busch Gardens niet bekendgemaakt. Bovendien reed Kumba op 2 augustus 2026 voor het laatst. De achtbaan van Bolliger & Mabillard uit 1993 was 44 meter hoog, haalde 97 km/u en had zeven inversies. Als opvolger heeft het park Kumba's Revenge aangekondigd, nog zonder baanontwerp en zonder datum.
 
 ## Andere waterachtbanen van Mack Rides
 
-Sneller dan Simbi Rush zijn de twee waterachtbanen van Mack in [Europa-Park](ref:europa-park): [Poseidon](ref:europa-park/water-rollercoaster-poseidon) haalt sinds 2000 70 km/u, [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) sinds 2005 80 km/u. Beide trekken hun boten wel met een kettinglift omhoog, dus het record uit Tampa geldt alleen voor banen met een lancering. Het dichtst in de buurt komt Dønnervind in Freizeitpark Plohn in Saksen, open sinds juni 2026, met wagens voor acht personen zoals in Tampa en ook twee lanceringen, maar hooguit 53 km/u. In oktober stond Dønnervind [stil door een technisch probleem](/news/doennervind-plohn-buiten-gebruik). Wat er in 2027 in andere parken nieuw is, zetten we op een rij in het [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
+Sneller dan Simbi Rush zijn de twee waterachtbanen van Mack in [Europa-Park](ref:europa-park): [Poseidon](ref:europa-park/water-rollercoaster-poseidon) rijdt sinds 2000 met 70 km/u, [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) sinds 2005 met 80 km/u. Beide trekken hun boten wel met een kettinglift omhoog, dus het record uit Tampa geldt alleen voor banen met een lancering. Het dichtst in de buurt komt Dønnervind in Freizeitpark Plohn in Saksen, open sinds juni 2026. Ook daar zitten acht personen in een wagen en wordt de boot twee keer gelanceerd, maar de baan haalt hooguit 53 km/u. In oktober stond Dønnervind [stil door een technisch probleem](/news/doennervind-plohn-buiten-gebruik). Wat er in 2027 in andere parken nieuw is, zetten we op een rij in het [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
