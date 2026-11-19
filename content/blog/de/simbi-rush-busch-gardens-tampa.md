@@ -58,7 +58,7 @@ Der Park plant Simbi Rush ausdrücklich als Familienattraktion, eine Mindestgrö
 
 ## Wer zuerst fährt und was es kostet
 
-Vor der öffentlichen Eröffnung fahren die Inhaber einer Jahreskarte 2027, Termine dafür gibt es noch keine. Im Black-Friday-Verkauf kostet die Silver-Jahreskarte 198 $ statt 279 $, Gold 222 $ statt 315 $ und Platinum 351 $ statt 549 $, alle drei mit kostenlosem Parken. Die günstigere Fun Card 2027 kostet 94,99 $ statt 148,99 $. Sie gilt ab sofort bis zum 31. Dezember 2027 unbegrenzt in Busch Gardens und im Wasserpark Adventure Island, außer an Sperrtagen. Parken ist bei ihr nicht dabei und kostet ab 32 $ plus Steuer. Ob sie auch für die Vorpremiere reicht, hat der Park nicht bekannt gegeben. Mit der Fun Card bist du allerdings schon in diesem Winter drin, bis zum 4. Januar an ausgewählten Abenden bei [Christmas Town mit der Drohnenshow](/news/busch-gardens-tampa-christmas-town-2026).
+Vor der öffentlichen Eröffnung fahren die Inhaber einer Jahreskarte 2027, Termine dafür gibt es noch keine. Im Black-Friday-Verkauf kostet die Silver-Jahreskarte 198 $ statt 279 $, Gold 222 $ statt 315 $ und Platinum 351 $ statt 549 $, alle drei mit kostenlosem Parken. Die günstigere Fun Card 2027 kostet 94,99 $ statt 148,99 $. Sie gilt ab sofort bis zum 31. Dezember 2027 unbegrenzt in Busch Gardens und im Wasserpark Adventure Island, außer an Sperrtagen. Parken ist bei ihr nicht dabei und kostet ab 32 $ plus Steuer. Ob sie auch für die Vorpremiere reicht, hat der Park nicht bekannt gegeben. Mit der Fun Card kommst du allerdings schon in diesem Winter zu [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), an ausgewählten Tagen bis zum 4. Januar.
 
 ```best-days-widget slug=busch-gardens-tampa
 

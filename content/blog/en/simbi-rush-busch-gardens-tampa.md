@@ -56,7 +56,7 @@ The park is planning Simbi Rush as a family ride, but it hasn't set a height req
 
 ## Who rides first and what it costs
 
-2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. In the Black Friday sale, the Silver pass costs $198 instead of $279, Gold $222 instead of $315 and Platinum $351 instead of $549, all three with free parking. The cheaper 2027 Fun Card is $94.99 instead of $148.99. It gets you unlimited visits to Busch Gardens and the Adventure Island water park from now through December 31, 2027, except on blockout dates. Parking isn't included and starts at $32 plus tax. The park hasn't announced whether the Fun Card gets you into the preview. It does get you into [Christmas Town with its drone show](/news/busch-gardens-tampa-christmas-town-2026) this winter, though, on select evenings until January 4.
+2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. In the Black Friday sale, the Silver pass costs $198 instead of $279, Gold $222 instead of $315 and Platinum $351 instead of $549, all three with free parking. The cheaper 2027 Fun Card is $94.99 instead of $148.99. It gets you unlimited visits to Busch Gardens and the Adventure Island water park from now through December 31, 2027, except on blockout dates. Parking isn't included and starts at $32 plus tax. The park hasn't announced whether the Fun Card gets you into the preview. It does get you into [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026) this winter, though, on select days until January 4.
 
 ```best-days-widget slug=busch-gardens-tampa
 
