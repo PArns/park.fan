@@ -2809,6 +2809,10 @@
             "title": "Historique",
             "description": "Les temps d’attente mesurés, en rétrospective : statistiques du parc, profil horaire, courbe du jour et historique d’une attraction, attentes habituelles, rope drop, pannes."
           },
+          "typical-waits": {
+            "title": "Attentes habituelles",
+            "description": "Les attentes habituelles de chaque attraction et les attractions phares du parc, dans le détail du parc et de l’attraction. L’historique les inclut aussi."
+          },
           "platform": {
             "title": "Chiffres de la plateforme",
             "description": "Totaux en direct sur tous les parcs, le ticker et les meilleurs moments de visite en général."

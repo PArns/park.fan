@@ -2809,6 +2809,10 @@
             "title": "History",
             "description": "Measured wait times looking back: park statistics, hourly profile, a ride's day curve and history, typical waits, rope drop, outages."
           },
+          "typical-waits": {
+            "title": "Typical waits",
+            "description": "Each ride's typical wait times and which rides are the park's headliners, in the park and ride detail. History includes them."
+          },
           "platform": {
             "title": "Platform figures",
             "description": "Live totals across all parks, the ticker and the best times to visit overall."

@@ -49,8 +49,9 @@ The endpoints that answer most questions:
 
 ¹ The park detail leaves out what the key has no permission for: weather (`live.weather`),
 opening hours (`live.schedule`), seasons (`parks.seasons`), ride facts such as height, minimum
-height and URL (`rides.details`), ride profiles (`rides.profiles`) and live statistics
-(`stats.live`). Its forecast field, each ride's `bestVisitTimes`, comes only with
+height and URL (`rides.details`), ride profiles (`rides.profiles`), live statistics
+(`stats.live`), and each ride's typical waits and headliner mark (`stats.typical-waits`, which
+`stats.history` includes). Its forecast field, each ride's `bestVisitTimes`, comes only with
 `?forecast=true` and `forecasts.waits`. Without a key a route answers 401; a key without the
 permission gets 403 `api-key-permission-missing` with `requiredPermission`. A key has an hourly
 allowance, counted from each full hour and reported in `X-API-Key-Hourly-Limit`, `-Remaining` and
