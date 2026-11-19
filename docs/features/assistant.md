@@ -223,7 +223,8 @@ nothing ever opens a hub that answers 404. The API's side is its `docs/frontend/
 (`bases`), the city an airport serves (`startBase`, `endBase`), the hotel-change buffer and the
 plan's stay suggestion; the widget applies the query like any other, and the receipt says
 „Reiseplaner: Route geändert“ (kind `route`) or „Zeit für Hotelwechsel eingestellt“ (`buffer`).
-A date search arrives as `when=…&days=…`, which the planner opens in its finder.
+A date search arrives as `when=…&days=…`, which the planner answers with the plan of the best
+window and the others as chips over it ([the When mode](orlando-planner.md#the-when-mode)).
 
 Reminders (`lib/assistant/alerts-context.ts`, `alert-writes.ts`) carry the ids the push endpoints
 take: `alert_ride_set` the ride's UUID as `rideId`, a `kind` (`wait_below` with

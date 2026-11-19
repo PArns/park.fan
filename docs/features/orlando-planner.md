@@ -41,7 +41,7 @@ plus `#planner`, and in the When mode `when=<from>_<to>&days=<n>[&within=<region
 `from`/`to`. A change is written with `history.replaceState`, which Next's router follows, so
 `useSearchParams` sees it and the page does not remount; a query the planner did not write (Parky's
 `router.push`, the back button) re-plans the same way and, with `#planner`, scrolls to the chapter
-and moves the focus into it. "Copy link" copies the address. Every other page that links into the
+and moves the focus into it. "Share" hands on the address. Every other page that links into the
 planner builds the href with `plannerHrefOn`, the one serializer. The mounted planner also publishes its state to
 Parky (`lib/trip-regions/planner-bridge.ts`), whose changes go through the same `update`, and keeps
 the last trip per region in this browser (`lib/trip-regions/remembered-trip.ts`); see
@@ -92,19 +92,31 @@ night never makes a date look quiet (`dateFigure`).
   "1–2" until the visitor sets a number (`visitSteps`: 1 → 1–2 → 2 → 3).
 - **Level 0, the answer** (`plan-result.tsx`). On a phone, top to bottom: the visitor's answers
   („Deine Antworten“, `WizardAnswers`: a chip per step of the assistant, from its own step list, that opens it on that step), the head (`PlanResultHead`: the dates, „17 Tage · 6 Parktage · 8 Tage frei ·
-  2 Städte“, and across cities the route strip with each stay's number, city and nights and the
-  mode of each move), the peak card (`PlanPeakCard`: the peak wait on the planned days large, how
-  much less it is than the average of the trip's days or that the order barely matters, the two as
-  bars in primary blue, never in crowd colours, the forecast's error per ride and day and „Wie
-  genau ist das?“; the figures stay `shownTotals` and `planSavings`), the parks the trip has no day
-  for with their three ways out, the stay suggestion, last year's line once, then the days in the
-  chosen view, the parks the split gave a second day and the notes, the tickets and Keep. At `lg`
-  the answers, the peak card, the tickets and Keep are a sticky column of 340 px on the left and
-  the head and the days take the rest; Keep's three buttons stack there and stand in a row only
-  where their own box is 42rem wide (a container query), so a long label never spills. The figure is the peak wait everywhere (Spitzenwartezeit,
+  2 Städte“ and, beside them, „Teilen“ and „Mehr“; under the figures the ticket line, then across
+  cities the route strip with each stay's number, city and nights and the mode of each move), the
+  peak card (`PlanPeakCard`: the peak wait on the planned days large, how much less it is than
+  the average of the trip's days or that the order barely matters, the two as bars in primary
+  blue, never in crowd colours, and the forecast's error per ride and day; the figures stay
+  `shownTotals` and `planSavings`), the parks the trip has no day for with their three ways out,
+  the stay suggestion, one of Parky's ideas, last year's line once, then the days in the chosen
+  view, the parks the split gave a second day and the notes, the tickets and „Reise löschen“. At
+  `lg` the answers, the peak card and the tickets are a sticky column of 340 px on the left and the
+  head and the days take the rest. The figure is the peak wait everywhere (Spitzenwartezeit,
   piekwachttijd, attente de pointe, espera punta, attesa di picco). The edit bar sits above the
   answer.
-- **Level 1, the views,** behind Tage | Woche | Monat. The choice is the browser's; before one,
+  - **The head's two buttons** stand to the right of the dates, under them on a phone. „Teilen“
+    (`PlanShare`, `plan-keep.tsx`) opens the phone's share sheet with the plan's address where the
+    pointer is coarse and the browser has one (`shareNatively`), and copies the address at a desk;
+    a clipboard that refuses shows the link to copy by hand. „Mehr“ (`PlanMore`, `plan-more.tsx`)
+    opens the planner's sheet with what few visitors use: the view (Tage, Woche, Monat; a choice
+    closes the sheet), „In den Tagesplaner übernehmen“, „In den Kalender (.ics)“ and „Wie genau
+    ist das?“ (`PlanAccuracy`). The site statistic of 13–19 Nov 2026 (166 plans shown) counted
+    no keep action at the end of the result, 4 view switches and 3 accuracy notes.
+  - **The ticket line** (`PlanTicketsLine`, in `plan-tickets-card.tsx`), „Tickets für 5
+    Parktage“ with a ticket and a chevron, a plain row, never a coloured button: it opens the
+    assistant's Tickets step, as „Schon Tickets? Eintragen“ does, and is drawn only in a region with
+    a ticket step. Its `edit.tickets('head')` is the head's one way into that step.
+- **Level 1, the views,** chosen in the head's „Mehr“. The choice is the browser's; before one,
   the Week at `lg` and the Days below. Last year's figures are no marker and no dashed tile: after
   the forecast's 60 days every day has them, so the answer says once from which date
   (`lastYearStart`).
@@ -217,7 +229,8 @@ Built for a first-time visitor who wants to know which park on which day (PAR-13
    line on the peak wait.
 4. **Changes on request** over it: „Deine Antworten“, a chip per step of the assistant that opens
    it on that step.
-5. **Tickets after the plan**, from the ticket card's "Already have tickets? Add them"; a shared
+5. **Tickets after the plan**, from the ticket line under the head or the ticket card's "Already
+   have tickets? Add them"; a shared
    link is never asked. A visitor whose bought tickets set the dates finds the same line on the
    hub's landing, under „Reise planen“: it starts the assistant on its Tickets step with the ticket
    step open (`tripPlannerUi.openTickets`, `trip_planner_started` with `landing`), and the tickets'
@@ -234,11 +247,14 @@ and a `hopper` idea where they answered hopping (`shownIdeas`; the answers are
 `tripWizardAnswered`, per tab: a step left with "Next" answers its questions, a skipped one does
 not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-ideas`.
 
-- **Over the plan** (`IdeasStrip` in `planner/plan-ideas.tsx`), between the stay suggestion and
-  last year's line: "Parky has 3 ideas for your plan", a card each with the idea in one line
-  ("Tokyo Disneyland on Thu, Jan 28 instead of Fri, Jan 22"), the park's own figure ("about 55
-  instead of 60 min"), the verb that applies it (Add, Swap, Plan it this way) and "In the chat".
-  To swipe on a phone, a grid at a desk. A travel-day idea names the travel day beside the park's
+- **Over the plan** (`IdeaNote` in `planner/plan-ideas.tsx`), between the stay suggestion and
+  last year's line: one idea at a time, the API's best the visitor has not hidden, as a quiet
+  note in a hairline frame, never a banner: Parky's face, the idea in one line ("Tokyo Disneyland
+  on Thu, Jan 28 instead of Fri, Jan 22"), the park's own figure ("about 55 instead of 60 min"),
+  the verb that applies it (Add, Swap, Plan it this way), "In the chat" and × („Idee
+  ausblenden“), which shows the next one. Hidden ideas come back with the next page load. A row of
+  three cards took a phone's first screen and was applied twice in 62 showings (13–19 Nov 2026).
+  A travel-day idea names the travel day beside the park's
   own day ("Departure day (Sun, May 9) as a park day: Disney Adventure World on Fri, May 7"): the
   API's `to` is the park's day, and opening the travel day often moves another park onto it
   (`ideaTravelDay`).
@@ -292,7 +308,8 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
 
 ## Tickets
 
-Tickets come after the plan: "Already have tickets? Add them" under the plan's tickets opens the
+Tickets come after the plan: the ticket line under the result's head („Tickets für 5 Parktage“,
+`PlanTicketsLine`) and "Already have tickets? Add them" under the plan's tickets open the
 assistant's Tickets step (`TicketsAsk`). Before any dates the same line stands on the hub's landing
 and starts the assistant there ([the flow](#the-flow-simple-first)). The step itself lists the
 resorts against the ticket catalog the admin keeps
@@ -427,7 +444,7 @@ admin MCP's `trip_planner_report` reads exactly these names):
 | 3. shown     | `trip_plan_shown`                                                                | the answer to that request on screen, once                                                                    |
 | 4. changed   | `trip_wizard_step` with `via: answers`, `trip_option_changed` with `by: visitor` | the assistant opened again on a step from the result, or an option of the plan changed                        |
 | 5. tickets   | `trip_tickets_opened`                                                            | the ticket step opened, every time, from wherever it was pressed                                              |
-| 6. kept      | `trip_days_saved`, `trip_ics_exported`, `trip_link_copied`                       | the days copied to the day planner, the `.ics` file, the link                                                 |
+| 6. kept      | `trip_days_saved`, `trip_ics_exported`, `trip_link_copied`                       | the days copied to the day planner, the `.ics` file (both in „Mehr“), „Teilen“ in the head                    |
 
 Steps 4 and 5 are optional: a plan that suits needs neither, so the report reads them as shares of
 step 3, not as a drop-off. `trip_tickets_answered` (the question before the plan) is no longer sent.
@@ -445,21 +462,22 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_wizard_step`, `trip_wizard_finished`, `trip_wizard_closed`, `trip_spare_choice` | the assistant's own, in [the assistant](trip-planner/wizard.md#what-it-counts)                                                                                                                                                     |
 | `trip_option_changed`                                                                 | `option`: hotel, area, arrival, departure, rest, split, evenings, hop, blocks, fireworks, parks, visits, cities, nights, stay_area, start_base, end_base, move_buffer; `value` (below); `by`: visitor, parky                       |
 | `trip_left_out_fix`                                                                   | `fix`: travel_days, parks, longer; `left_out`: 1, 2, 3+                                                                                                                                                                            |
-| `trip_tickets_opened`                                                                 | `from`: ask, card, adopt, ticket_problem, outside_ticket; `first` (true the first time in this browser)                                                                                                                            |
+| `trip_tickets_opened`                                                                 | `from`: ask, card, head (the ticket line under the result's head), adopt, ticket_problem, outside_ticket, wizard; `first` (true the first time in this browser)                                                                    |
 | `trip_find_toggled`                                                                   | `to`: find, known                                                                                                                                                                                                                  |
 | `trip_find_period`                                                                    | `period`: next12, year, spring, summer, autumn, custom; `school_breaks` (true, false). Never which holidays                                                                                                                        |
 | `trip_calendar_mode`                                                                  | `mode`: all or a resort key of the region; `from_default` (true when it left the default view)                                                                                                                                     |
 | `trip_view_changed`                                                                   | `view`: agenda (the list), week, month                                                                                                                                                                                             |
 | `trip_accuracy_opened`                                                                | `surface`: plan                                                                                                                                                                                                                    |
 | `trip_stay_suggestion`                                                                | `action`: shown (once per suggestion on screen), applied                                                                                                                                                                           |
-| `trip_window_planned`                                                                 | `rank` of the window a search found                                                                                                                                                                                                |
+| `trip_window_planned`                                                                 | `rank` of the window a search found; `via`: auto (rank 1, planned as the search answers), chip (another window from the row over the plan), card (a card or its sheet after „Alle vergleichen“)                                    |
 | `trip_day_opened`                                                                     | `kind` (arrival, park, hop, rest, departure, travel), `view` (list, agenda, week, month)                                                                                                                                           |
 | `trip_day_pinned`                                                                     | `pinned`                                                                                                                                                                                                                           |
-| `trip_day_swapped`, `trip_day_sent`, `trip_evening_link_clicked`, `trip_link_copied`  | none                                                                                                                                                                                                                               |
+| `trip_link_copied`                                                                    | `method`: share (the phone's share sheet), copy (the clipboard); counted on the press of „Teilen“                                                                                                                                  |
+| `trip_day_swapped`, `trip_day_sent`, `trip_evening_link_clicked`                      | none                                                                                                                                                                                                                               |
 | `trip_spare_filled`                                                                   | `from`: card (the Days view and a free day's sheet), week (the Week view's panel); idea and chat once Parky offers parks                                                                                                           |
 | `trip_day_moved`, `trip_day_freed`, `trip_park_removed`                               | none: a day put on a free day, a day made free, a park taken out, from a day's „More“                                                                                                                                              |
 | `trip_undo`                                                                           | `what`: pin, swap, move, free, remove, add, release, idea, parky                                                                                                                                                                   |
-| `trip_deleted`                                                                        | `from`: head (the hub's head), result (under the keep actions); sent on the confirm, an undo after it included                                                                                                                     |
+| `trip_deleted`                                                                        | `from`: head (the hub's head), result (at the end of the result); sent on the confirm, an undo after it included                                                                                                                   |
 | `trip_idea_shown`                                                                     | `kind` (move, swap, add, travel_day, hopper, avoid_party), `place` (header, day, chat); once per idea and place                                                                                                                    |
 | `trip_idea_applied`                                                                   | `kind`, `place`                                                                                                                                                                                                                    |
 | `trip_idea_chat`                                                                      | `kind`                                                                                                                                                                                                                             |
@@ -503,9 +521,10 @@ the answers in the assistant, or a link from outside, starts the history afresh.
 are in `lib/trip-regions/plan.ts`: `toggleLock`, `swapLocks`, `moveVisit`, `freeDay`,
 `removePark`, `addParkOnDate`, and `PlanEditChange` for what each one did.
 
-- **The day card's row** (`plan-day-actions.tsx`): **Pin** is a toggle (`aria-pressed`), **Swap**
-  opens the swap mode, **More** a sheet (`DayActionsSheet`). Each names the park and the date in
-  its label ("Pin Tokyo DisneySea on Tue, Jan 19").
+- **The day card's „Mehr“** (`PlanDayActions`, `plan-day-actions.tsx`), one button under a park
+  day's card, named with the park and the date ("More for Tokyo DisneySea on Tue, Jan 19"),
+  opens the day's sheet (`DayActionsSheet`) with every edit below. Pin and Swap stood on the card
+  as buttons of their own until a week counted one pin and no swap (13–19 Nov 2026).
 - **Pin** writes `slug@date` (or `rest@date`) to `lock=` and re-plans around it.
 - **Swap** (`plan-swap-mode.tsx`) takes the views' place: a band ("Swap Tokyo DisneySea. Pick a
   day. The figure is the peak wait at DisneySea on that day."), the day as it is, and every day of
@@ -515,7 +534,7 @@ are in `lib/trip-regions/plan.ts`: `toggleLock`, `swapLocks`, `moveVisit`, `free
   for a free day "The free day moves to Tue." Never the plan's mean. The quietest is marked, a
   short day carries its closing time, the same park and a closed day cannot be picked. The press
   pins both days the other way round and re-plans. A day's sheet opens the same mode.
-- **More**: pin, swap, put the park on the quietest free day of its city ("Tue, Jan 20: about 90
+- **The day's sheet**: pin (a toggle, `aria-pressed`), swap, put the park on the quietest free day of its city ("Tue, Jan 20: about 90
   instead of 100 min", or "No free day is quieter"), make the day free (`rest@date`), take the
   park out of the trip ("Both days become free."), or open the day in the day planner.
 - **The status band** (`plan-edit-status.tsx`, `role="status"`) replaces the edit bar. After each
@@ -549,6 +568,17 @@ holidays of a region. The regions are exactly those the holiday data has, read f
 first; nothing is hard-coded, and the picker says how far the stored holidays reach ("School holiday
 data runs to 3 Jul 2027"). Parks and Fine-tune stay as they are.
 
+**The best window is planned at once.** As soon as a search answers, the planner plans its rank-1
+window (`planWindow`, written to the address like any change, so a reload and a shared link are
+that plan) and keeps the search's windows (`foundWindows`, in the result's memory). Over the plan,
+while its dates are one of them (`pickedWindow`, `PlanWhenPicked`): one line why, „Die ruhigsten 7
+Tage im gewählten Zeitraum: 9.–15. Jan.“ („Vorschlag 2 deiner Suche“ for another), and „Weitere
+Zeiträume“ with the other windows as chips that plan theirs instead. A live region announces the
+line. „Alle vergleichen“ goes back to the search (`backToSearch`), and that search is shown as
+below instead of planned again. A link with `when=` (the best-time pages', Parky's) lands on a
+plan the same way. The week of 13–19 Nov 2026 had 30 searches answered and none of their windows
+planned.
+
 - **Level 0:** the three best windows as cards: the dates, "Peak wait about 38 min", how far below
   the period's average, one reason, and the parks the window has no day for. A window in the storm
   season's peak says why it ranks lower ("Peak hurricane season: ranked lower for the storm risk,
@@ -567,14 +597,16 @@ A window with no school-holiday period long enough says so and lists the region'
 
 ## Keeping a plan
 
-"Copy to the day planner" files every park day as a reserved day in one store write
-(`reserveDays`, the write Parky's `planner_reserve_trip` uses; a day that already holds a plan stays
-as it is), and "Open the first day" opens the day planner on the first of them
-(`setActive`). "Add to calendar (.ics)" builds the file in the browser: one event per park day, timed
-with `TZID=America/New_York` and a `VTIMEZONE` where the hours are known, all-day where not, with
-the minutes, the reason and the link. "Copy link" copies the address.
+„Teilen“ in the result's head hands on the address: the phone's share sheet, else the clipboard
+([Level 0](#from-simple-to-detailed)). The other two stand in the head's „Mehr“ (`PlanKeep`, as
+entries of its list). "Copy to the day planner" files every park day as a reserved day in one
+store write (`reserveDays`, the write Parky's `planner_reserve_trip` uses; a day that already holds
+a plan stays as it is), and "Open the first day" closes the sheet and opens the day planner on the
+first of them (`setActive`). "Add to calendar (.ics)" builds the file in the browser: one event per
+park day, timed with `TZID=America/New_York` and a `VTIMEZONE` where the hours are known, all-day
+where not, with the minutes, the reason and the link.
 
-**Deleting the trip.** „Reise löschen“ stands under the keep actions and at the end of the hub
+**Deleting the trip.** „Reise löschen“ stands at the end of the result and at the end of the hub
 head's „Dein Plan für … ist in diesem Browser gespeichert.“ (`PlanDelete`,
 `components/trip-regions/planner/plan-delete.tsx`). A press asks in place of the line („Diese Reise
 löschen? Deine Daten, Parks und Änderungen werden auf diesem Gerät entfernt.“, „Löschen“,

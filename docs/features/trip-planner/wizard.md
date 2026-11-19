@@ -109,7 +109,7 @@ middle of a desk. „Reise planen“ in the planner chapter and the hub (`tripPl
 open it on the dates; the result's ways back in (`PlanEdit`, and the answer chips through
 `tripPlannerUi.openStep`) open it on their step. The phone's Back button closes it, as it closed the
 sheets before. Every answer writes the planner's state, the address, through `usePlanContext`, so
-the assistant is a view on the plan: shared links, Parky and „Copy link“ keep working, and leaving
+the assistant is a view on the plan: shared links, Parky and „Teilen“ keep working, and leaving
 in the middle keeps every answer given.
 
 ### The steps
