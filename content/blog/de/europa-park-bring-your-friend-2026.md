@@ -2,7 +2,7 @@
 title: 'Mit ResortPass kommt ein Freund gratis in den Europa-Park'
 translationKey: europa-park-bring-your-friend-2026
 date: '2026-11-19'
-time: '18:00'
+time: '21:30'
 author: patrick
 mode: published
 featured: false
@@ -43,19 +43,19 @@ seo:
     - Europa-Park Tagesticket Preis
 ---
 
-Wer einen ResortPass hat, kann bis zum 18. Dezember montags bis freitags eine Begleitperson kostenlos mit in den [Europa-Park](ref:europa-park) nehmen. Die Aktion heißt „Bring Your Friend“. Mit dem ResortPass Silber geht das einmal, mit Gold zweimal. Angekündigt hat der Park sie am Donnerstagabend, dem 19. November, in seiner Facebook-Gruppe „Europa-Park Resort Freunde“. Sie gilt ab sofort.
+Am Donnerstagabend, dem 19. November, hat der Europa-Park in seiner Facebook-Gruppe „Europa-Park Resort Freunde“ die Aktion „Bring Your Friend“ angekündigt, und sie gilt ab sofort. Bis zum 18. Dezember nimmst du an jedem Tag von Montag bis Freitag einen Freund kostenlos mit in den [Europa-Park](ref:europa-park), mit Silber einmal, mit Gold zweimal.
 
 ## Die Freikarte gibt es im ResortPass-Portal
 
-Das Ticket für den Freund holst du dir im ResortPass-Portal unter resort-pass.de, wo du dich mit deinem MackOne Account anmeldest. Auf der Grafik zur Ankündigung steht es als Ticket „Für Freunde“ für 0,00 €. Die Aktionstickets sind pro Tag limitiert, an einzelnen Tagen können sie schon ausverkauft sein. Willst du mit deinem Freund an einem bestimmten Tag kommen, etwa am letzten Aktionstag, dem 18. Dezember, buchst du sein Ticket besser gleich als erst in der Woche davor.
+Das Ticket für den Freund holst du dir im ResortPass-Portal unter resort-pass.de, wo du dich mit deinem MackOne Account anmeldest. Auf der Grafik zur Ankündigung steht es als Ticket „Für Freunde“ für 0,00 €. Die Aktionstickets sind pro Tag limitiert, an einzelnen Tagen können sie schon ausverkauft sein. Für einen festen Tag, etwa den letzten Aktionstag am 18. Dezember, buchst du das Ticket deines Freundes besser gleich und nicht erst in der Woche davor.
 
-Deinen eigenen Besuch reservierst du wie immer im Portal, denn als Tagesgast brauchst du für jeden Besuch mit dem ResortPass eine Reservierung. Bis zu fünf Tage kannst du gleichzeitig reservieren, auch noch am Besuchstag selbst, solange es Plätze gibt, und einen Tag, an dem du doch nicht kommst, stornierst du wieder. Ist ein Tag ausgebucht, geht weder am Telefon noch vor Ort etwas. Wohnst du in einem der Hotels des Resorts oder in der Silver Lake City, steckt deine eigene Reservierung schon in der Hotelbuchung.
+Deinen eigenen Besuch reservierst du wie immer im Portal, denn als Tagesgast brauchst du für jeden Besuch mit dem ResortPass eine Reservierung. Bis zu fünf Tage kannst du gleichzeitig reservieren, auch noch am Besuchstag selbst, solange es Plätze gibt, und einen Tag, an dem du doch nicht kommst, stornierst du wieder. Ist ein Tag ausgebucht, bringt dich weder am Telefon noch an der Kasse jemand hinein. Hotelgäste des Resorts und der Silver Lake City haben ihre eigene Reservierung schon mit der Hotelbuchung.
 
 ## 21 Tage zur Auswahl
 
-Der Park hat bis zum 23. Dezember jeden Tag geöffnet. Bis zum 27. November läuft HALLOWinter, ab dem 28. November der Winterzauber, beide Male von 11 Uhr bis mindestens 19 Uhr. Hotelgäste dürfen früher hinein. Weil die Ankündigung erst gegen Parkschluss kam, ist Freitag, der 20. November, der erste volle Aktionstag. Bis Freitag, den 18. Dezember, bleiben 21 Tage von Montag bis Freitag: sechs im HALLOWinter und 15 im Winterzauber.
+In der ganzen Aktionszeit hat der Park jeden Tag geöffnet. Bis zum 27. November läuft HALLOWinter, ab dem 28. November der Winterzauber, beide Male von 11 Uhr bis mindestens 19 Uhr. Hotelgäste dürfen früher hinein. Weil die Ankündigung erst gegen Parkschluss kam, ist Freitag, der 20. November, der erste volle Aktionstag. Bis Freitag, den 18. Dezember, bleiben 21 Tage von Montag bis Freitag: sechs im HALLOWinter und 15 im Winterzauber.
 
-Silber ist an keinem der 21 Tage gesperrt, seine Sperrtage beginnen erst am 26. Dezember, nach dem letzten Aktionstag, und Gold hat ohnehin keine.
+Mit beiden Karten kommst du an allen 21 Tagen hinein, denn Silber hat erst ab dem 26. Dezember Sperrtage und Gold gar keine.
 
 ## Was der Freund sonst zahlen würde
 
@@ -71,20 +71,21 @@ Im HALLOWinter stehen Kürbisse von Halloween und Tannenbäume für den Winter n
 - Weihnachtszirkus
 - Eurosat Mapping Show im französischen Themenbereich
 - Kinderskischule „Alpin“ mit Snow-Tubes und Kinderskilanglauf Skitty World Nordic
+- Ausstellung „Monaco im Europa-Park“, neu in diesem Winter
 
-Neu ist die Ausstellung „Monaco im Europa-Park“. Reicht euch ein Park nicht, findest du die anderen, die diesen Winter öffnen, im [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
+Welche anderen Parks diesen Winter öffnen, steht im [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=europa-park
 
 ```
 
-Mit welchen Bahnen ich an einem Wintertag anfangen würde, steht in unserem [Guide zu den Wartezeiten im Europa-Park](/blog/europa-park-wartezeiten-tipps). Kommt dein Freund mit Kindern, fährt Arthur den ganzen Winter, ab 100 Zentimetern, unter 120 nur mit einem Erwachsenen.
+Meine Reihenfolge für einen Wintertag steht im [Guide zu den Wartezeiten im Europa-Park](/blog/europa-park-wartezeiten-tipps). Arthur fährt den ganzen Winter, und bringt dein Freund Kinder mit, dürfen sie ab 100 Zentimetern einsteigen, unter 120 nur zusammen mit einem Erwachsenen.
 
 ## Den ResortPass gibt es derzeit nicht zu kaufen
 
 Das Kontingent ist erschöpft, deshalb verkauft der Park bis auf Weiteres keine neuen Pässe, auch nicht per Telefon, E-Mail oder an der Kasse. Wer einen hat, bekommt vor dem Ablauf Bescheid und kann ihn in den letzten 14 Tagen im Portal verlängern.
 
-Ab wie vielen Besuchen sich welche Karte lohnt, haben wir im [Vergleich der Jahreskarten](/blog/jahreskarte-vergleich-freizeitparks) nachgerechnet. Silber gilt für Tagesgäste an über 230 vorab festgelegten Tagen im Jahr. Zu Gold gehören außerdem zwei Tagestickets für [Rulantica](/news/rulantica-vinterglanz-2026), die du ebenfalls im Portal reservierst.
+Silber gilt für Tagesgäste an über 230 festgelegten Tagen im Jahr, Gold an jedem Öffnungstag, und zu Gold gehören zwei Tagestickets für [Rulantica](/news/rulantica-vinterglanz-2026), die du ebenfalls im Portal reservierst. Ob sich beim Verlängern die teurere Karte für dich lohnt, haben wir im [Vergleich der Jahreskarten](/blog/jahreskarte-vergleich-freizeitparks) nachgerechnet.
 
 [Europa-Park](ref:europa-park?full)
 

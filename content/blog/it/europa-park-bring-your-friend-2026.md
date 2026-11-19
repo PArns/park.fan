@@ -2,7 +2,7 @@
 title: 'Con il ResortPass un amico entra gratis all’Europa-Park'
 translationKey: europa-park-bring-your-friend-2026
 date: '2026-11-19'
-time: '18:00'
+time: '21:30'
 author: patrick
 mode: published
 featured: false
@@ -43,19 +43,19 @@ seo:
     - Europa-Park prezzo biglietto giornaliero
 ---
 
-Chi ha un ResortPass, fino al 18 dicembre può portare gratis un accompagnatore all’[Europa-Park](ref:europa-park), dal lunedì al venerdì. L’iniziativa si chiama «Bring Your Friend». Con il ResortPass Silver vale una volta, con il Gold due. Il parco l’ha annunciata giovedì sera, 19 novembre, nel suo gruppo Facebook «Europa-Park Resort Freunde». Vale da subito.
+Giovedì sera, 19 novembre, l’Europa-Park ha annunciato nel suo gruppo Facebook «Europa-Park Resort Freunde» l’iniziativa «Bring Your Friend», che vale da subito. Fino al 18 dicembre porti gratis un amico all’[Europa-Park](ref:europa-park) in qualsiasi giorno dal lunedì al venerdì, una volta con il Silver, due con il Gold.
 
 ## Il biglietto gratuito si prende nel portale ResortPass
 
-Il biglietto per l’amico lo prendi nel portale ResortPass su resort-pass.de, dove accedi con il tuo account MackOne. Nella grafica dell’annuncio compare come biglietto «Für Freunde» («per gli amici») a 0,00 €. I biglietti dell’iniziativa sono contingentati giorno per giorno, in certe date possono essere già esauriti. Se con il tuo amico vuoi venire in un giorno preciso, per esempio l’ultimo, il 18 dicembre, il suo biglietto conviene prenotarlo subito e non la settimana prima.
+Il biglietto per l’amico lo prendi nel portale ResortPass su resort-pass.de, dove accedi con il tuo account MackOne. Nella grafica dell’annuncio compare come biglietto «Für Freunde» («per gli amici») a 0,00 €. I biglietti dell’iniziativa sono contingentati giorno per giorno, in certe date possono essere già esauriti. Per una data fissa, come il 18 dicembre, ultimo giorno dell’iniziativa, il biglietto del tuo amico conviene prenotarlo subito e non la settimana prima.
 
-La tua visita la prenoti come sempre nel portale, perché da ospite giornaliero ti serve una prenotazione per ogni visita con il ResortPass. Puoi tenere fino a cinque giorni prenotati contemporaneamente, anche il giorno stesso finché ci sono posti, e quello in cui alla fine non vieni lo cancelli. Quando un giorno è al completo non c’è niente da fare, né al telefono né sul posto. Se dormi in uno degli hotel del resort o alla Silver Lake City, la tua prenotazione è già compresa in quella dell’hotel.
+La tua visita la prenoti come sempre nel portale, perché da ospite giornaliero ti serve una prenotazione per ogni visita con il ResortPass. Puoi tenere fino a cinque giorni prenotati contemporaneamente, anche il giorno stesso finché ci sono posti, e quello in cui alla fine non vieni lo cancelli. Quando un giorno è al completo, nessuno ti fa più entrare, né al telefono né alla cassa. Gli ospiti degli hotel del resort e della Silver Lake City hanno già la loro prenotazione con quella dell’hotel.
 
 ## 21 giorni tra cui scegliere
 
-Fino al 23 dicembre il parco è aperto tutti i giorni. Fino al 27 novembre c’è HALLOWinter, dal 28 novembre il Winterzauber, in entrambi i casi dalle 11 ad almeno le 19. Chi dorme in hotel entra prima. L’annuncio è arrivato verso l’orario di chiusura, quindi il primo giorno pieno dell’iniziativa è venerdì 20 novembre. Fino a venerdì 18 dicembre restano 21 giorni feriali, dal lunedì al venerdì: sei durante HALLOWinter e 15 durante il Winterzauber.
+Per tutta la durata dell’iniziativa il parco è aperto tutti i giorni. Fino al 27 novembre c’è HALLOWinter, dal 28 novembre il Winterzauber, in entrambi i casi dalle 11 ad almeno le 19. Chi dorme in hotel entra prima. L’annuncio è arrivato verso l’orario di chiusura, quindi il primo giorno pieno dell’iniziativa è venerdì 20 novembre. Fino a venerdì 18 dicembre restano 21 giorni feriali, dal lunedì al venerdì: sei durante HALLOWinter e 15 durante il Winterzauber.
 
-Con il Silver nessuno dei 21 giorni è escluso, perché i suoi giorni di esclusione cominciano solo il 26 dicembre, dopo l’ultimo giorno dell’iniziativa. Il Gold comunque non ne ha.
+Con tutte e due le tessere entri in tutti i 21 giorni, perché il Silver ha giorni di esclusione solo dal 26 dicembre e il Gold non ne ha affatto.
 
 ## Quanto pagherebbe l’amico altrimenti
 
@@ -71,20 +71,21 @@ Durante HALLOWinter le zucche di Halloween stanno nel parco accanto agli abeti d
 - il circo di Natale
 - l’Eurosat Mapping Show nell’area tematica francese
 - la scuola di sci per bambini «Alpin» con gli snow tube e la pista di fondo per bambini Skitty World Nordic
+- la mostra «Monaco im Europa-Park», nuova quest’inverno
 
-La novità è la mostra «Monaco im Europa-Park». Se un parco solo non ti basta, gli altri che aprono quest’inverno li trovi nella [panoramica sui parchi divertimento nell’inverno 2026/27](/blog/parchi-divertimenti-inverno-2026).
+Quali altri parchi aprono quest’inverno lo trovi nella [panoramica sui parchi divertimento nell’inverno 2026/27](/blog/parchi-divertimenti-inverno-2026).
 
 ```best-days-widget slug=europa-park
 
 ```
 
-Le attrazioni da cui partirei in una giornata d’inverno sono nella nostra [guida ai tempi di attesa dell’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Se il tuo amico viene con dei bambini, Arthur funziona tutto l’inverno, da 100 centimetri, e sotto i 120 solo con un adulto.
+Il mio ordine per una giornata d’inverno è nella [guida ai tempi di attesa dell’Europa-Park](/blog/europa-park-tempi-di-attesa-consigli). Arthur funziona tutto l’inverno, e se il tuo amico porta dei bambini, possono salire da 100 centimetri, sotto i 120 solo insieme a un adulto.
 
 ## Il ResortPass per ora non si può comprare
 
 Il contingente è esaurito, quindi il parco per ora non vende nuovi pass, nemmeno per telefono, via e-mail o alla cassa. Chi ne ha uno riceve un avviso prima della scadenza e può rinnovarlo nel portale negli ultimi 14 giorni.
 
-Dopo quante visite conviene ciascuna tessera l’abbiamo calcolato nel nostro [confronto degli abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi). Il Silver vale per gli ospiti giornalieri in oltre 230 giorni all’anno fissati in anticipo. Al Gold si aggiungono due biglietti giornalieri per [Rulantica](/news/rulantica-vinterglanz-2026), che prenoti anche questi nel portale.
+Il Silver vale per gli ospiti giornalieri in oltre 230 giorni fissi all’anno, il Gold in ogni giorno di apertura, e con il Gold arrivano due biglietti giornalieri per [Rulantica](/news/rulantica-vinterglanz-2026), che prenoti anche questi nel portale. Se al rinnovo ti conviene la tessera più cara l’abbiamo calcolato nel [confronto degli abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi).
 
 [Europa-Park](ref:europa-park?full)
 

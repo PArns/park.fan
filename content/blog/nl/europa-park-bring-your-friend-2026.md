@@ -2,7 +2,7 @@
 title: 'Met de ResortPass komt een vriend gratis in Europa-Park'
 translationKey: europa-park-bring-your-friend-2026
 date: '2026-11-19'
-time: '18:00'
+time: '21:30'
 author: patrick
 mode: published
 featured: false
@@ -43,19 +43,19 @@ seo:
     - Europa-Park dagticket prijs
 ---
 
-Heb je een ResortPass, dan mag je tot 18 december van maandag tot en met vrijdag iemand gratis meenemen naar [Europa-Park](ref:europa-park). De actie heet “Bring Your Friend”. Met de ResortPass Silver kan dat één keer, met Gold twee keer. Het park maakte de actie donderdagavond 19 november bekend in zijn Facebookgroep “Europa-Park Resort Freunde”. Ze geldt meteen.
+Donderdagavond 19 november maakte Europa-Park in zijn Facebookgroep “Europa-Park Resort Freunde” de actie “Bring Your Friend” bekend, en die geldt meteen. Tot 18 december neem je elke dag van maandag tot en met vrijdag een vriend gratis mee naar [Europa-Park](ref:europa-park), met Silver één keer, met Gold twee keer.
 
 ## Het gratis ticket haal je in het ResortPass-portaal
 
-Het ticket voor je vriend vraag je aan in het ResortPass-portaal op resort-pass.de, waar je inlogt met je MackOne-account. Op de afbeelding bij de aankondiging staat het als ticket “Für Freunde” voor € 0,00. Er is per dag maar een beperkt aantal actietickets, op sommige dagen kunnen ze al op zijn. Wil je met je vriend op een bepaalde dag komen, bijvoorbeeld op de laatste actiedag, 18 december, boek zijn ticket dan meteen en niet pas de week ervoor.
+Het ticket voor je vriend vraag je aan in het ResortPass-portaal op resort-pass.de, waar je inlogt met je MackOne-account. Op de afbeelding bij de aankondiging staat het als ticket “Für Freunde” voor € 0,00. Er is per dag maar een beperkt aantal actietickets, op sommige dagen kunnen ze al op zijn. Voor een vaste dag, zoals de laatste actiedag op 18 december, boek je het ticket van je vriend beter meteen en niet pas de week ervoor.
 
-Je eigen bezoek reserveer je zoals altijd in het portaal: als dagbezoeker heb je met de ResortPass voor elk bezoek een reservering nodig. Je kunt tot vijf dagen tegelijk reserveren, zelfs nog op de dag zelf zolang er plek is, en een dag waarop je toch niet komt, annuleer je weer. Is een dag vol, dan lukt het telefonisch of aan de kassa ook niet meer. Slaap je in een van de hotels van het resort of in Silver Lake City, dan zit je eigen reservering al in je hotelboeking.
+Je eigen bezoek reserveer je zoals altijd in het portaal: als dagbezoeker heb je met de ResortPass voor elk bezoek een reservering nodig. Je kunt tot vijf dagen tegelijk reserveren, zelfs nog op de dag zelf zolang er plek is, en een dag waarop je toch niet komt, annuleer je weer. Is een dag vol, dan krijgt niemand je er telefonisch of aan de kassa nog in. Hotelgasten van het resort en van Silver Lake City hebben hun eigen reservering al bij de hotelboeking.
 
 ## 21 dagen om uit te kiezen
 
-Tot en met 23 december is het park elke dag open. Tot 27 november loopt HALLOWinter, vanaf 28 november Winterzauber, allebei van 11 uur tot minstens 19 uur. Hotelgasten mogen eerder naar binnen. Omdat de aankondiging pas tegen sluitingstijd kwam, is vrijdag 20 november de eerste volle actiedag. Tot en met vrijdag 18 december blijven er dan 21 werkdagen over: zes tijdens HALLOWinter en 15 tijdens Winterzauber.
+Tijdens de hele actie is het park elke dag open. Tot 27 november loopt HALLOWinter, vanaf 28 november Winterzauber, allebei van 11 uur tot minstens 19 uur. Hotelgasten mogen eerder naar binnen. Omdat de aankondiging pas tegen sluitingstijd kwam, is vrijdag 20 november de eerste volle actiedag. Tot en met vrijdag 18 december blijven er dan 21 werkdagen over: zes tijdens HALLOWinter en 15 tijdens Winterzauber.
 
-Silver is op geen van de 21 dagen geblokkeerd, want de uitsluitingsdagen beginnen pas op 26 december, na de laatste actiedag. Gold heeft er sowieso geen.
+Met allebei de passen kom je op alle 21 dagen binnen: Silver heeft pas vanaf 26 december uitsluitingsdagen en Gold helemaal geen.
 
 ## Wat je vriend anders zou betalen
 
@@ -71,20 +71,21 @@ Tijdens HALLOWinter staan pompoenen van Halloween en kerstbomen voor de winter n
 - het kerstcircus
 - de Eurosat Mapping Show in het Franse themagebied
 - de kinderskischool “Alpin” met snowtubes en het langlaufen voor kinderen in Skitty World Nordic
+- de tentoonstelling “Monaco im Europa-Park”, nieuw deze winter
 
-Nieuw is de tentoonstelling “Monaco im Europa-Park”. Is één park je niet genoeg, dan vind je de andere parken die deze winter opengaan in het [overzicht van de pretparken in de winter 2026/27](/blog/winter-pretparken-2026).
+Welke andere parken deze winter opengaan, staat in het [overzicht van de pretparken in de winter 2026/27](/blog/winter-pretparken-2026).
 
 ```best-days-widget slug=europa-park
 
 ```
 
-Met welke attracties ik op een winterdag zou beginnen, staat in onze [gids over de wachttijden in Europa-Park](/blog/europa-park-wachttijden-tips). Komt je vriend met kinderen, dan rijdt Arthur de hele winter, vanaf 100 centimeter, onder 120 alleen met een volwassene.
+Mijn volgorde voor een winterdag staat in de [gids over de wachttijden in Europa-Park](/blog/europa-park-wachttijden-tips). Arthur rijdt de hele winter, en neemt je vriend kinderen mee, dan mogen ze vanaf 100 centimeter instappen, onder 120 alleen samen met een volwassene.
 
 ## De ResortPass is op dit moment niet te koop
 
 Het contingent is op, daarom verkoopt het park tot nader order geen nieuwe passen, ook niet telefonisch, per e-mail of aan de kassa. Wie er een heeft, krijgt een bericht voordat hij afloopt en kan hem in de laatste 14 dagen in het portaal verlengen.
 
-Vanaf hoeveel bezoeken welke kaart zich terugverdient, hebben we in onze [vergelijking van de jaarkaarten](/blog/jaarkaart-vergelijking-pretparken) uitgerekend. Silver geldt voor dagbezoekers op meer dan 230 vooraf vastgelegde dagen per jaar. Bij Gold horen bovendien twee dagtickets voor [Rulantica](/news/rulantica-vinterglanz-2026) bij, die je ook in het portaal reserveert.
+Silver geldt voor dagbezoekers op meer dan 230 vastgelegde dagen per jaar, Gold op elke openingsdag, en bij Gold horen twee dagtickets voor [Rulantica](/news/rulantica-vinterglanz-2026), die je ook in het portaal reserveert. Of de duurdere pas bij het verlengen voor jou de moeite waard is, hebben we in de [vergelijking van de jaarkaarten](/blog/jaarkaart-vergelijking-pretparken) uitgerekend.
 
 [Europa-Park](ref:europa-park?full)
 
