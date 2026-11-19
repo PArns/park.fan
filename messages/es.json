@@ -4635,7 +4635,7 @@
       "hub": {
         "title": "Calendario de afluencia de Orlando",
         "monthTitle": "Calendario de afluencia de Orlando {month}",
-        "metaTitle": "Calendario de afluencia: Disney World y Universal {years}",
+        "metaTitle": "Afluencia en Orlando {years}: Disney World y Universal",
         "metaTitleMonth": "Afluencia en Orlando en {month}: Disney y Universal",
         "metaTitleMonthShort": "Afluencia en Orlando en {month}",
         "metaDescription": "Qué parque de Orlando qué día, con Epic Universe. Lo más tranquilo en los próximos 30 días: {verdict}.",

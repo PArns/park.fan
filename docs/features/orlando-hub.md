@@ -326,8 +326,10 @@ written into the copy; a change to the region or a new matrix is a reason to re-
   position 12 for "universal orlando crowd calendar" while its title said neither), and the years
   its month index spans (`{years}`, `tripRegionYears`, one year from January), read per request in
   park time: "Disney World & Universal Orlando Crowd Calendar 2026–2027", „Orlando Andrang-Kalender
-  2026–2027: Disney World & Universal“, „Calendrier d’affluence : Disney World et Universal
-  2026–2027“. With both years it stays within `MAX_TITLE_LENGTH`, which `pnpm test:trip-regions`
+  2026–2027: Disney World & Universal“, „Affluence à Orlando 2026–2027 : Disney World et
+  Universal“. Every language keeps „Orlando“, the word the searches start from; where both brands
+  and the calendar word do not fit, the calendar word goes (French, Spanish) or „World“ does
+  (Italian). With both years it stays within `MAX_TITLE_LENGTH`, which `pnpm test:trip-regions`
   checks in all six. A month's title names its month, in German with „Andrang“ („Orlando im
   Dezember 2026: Andrang bei Disney & Universal“), the word German searches use. German calls the
   calendar „Andrang-Kalender“ everywhere. The description carries the verdict, each resort's
