@@ -38,7 +38,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
 - `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
 - `europeanBreaks` _function_: Each country's regions with a real break in a month, in `countries`' order.
-- `tripLongBreaks` _function_: A region's breaks long enough for a trip of `days`, cut to `range`: what chapter 04 links the planner's When mode to.
+- `tripLongBreaks` _function_: A region's breaks long enough for a trip of `days`, cut to `range`: what the school-holidays chapter links the planner's When mode to.
 - `isWholeWeek` _function_: Whether a week lies wholly inside a range, so its figure is a whole week's.
 - `bestAndWorstWeeks` _function_: The quietest and busiest whole weeks, `count` each, quietest and busiest first.
 - `seasonsOn` _function_: The seasons that run on a day range, one per name, cancelled and closures left out.

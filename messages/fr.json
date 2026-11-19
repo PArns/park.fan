@@ -5616,7 +5616,7 @@
       "hub": {
         "title": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
         "monthTitle": "Calendrier d’affluence Disneyland Paris et Parc Astérix, {month}",
-        "metaTitle": "Calendrier d’affluence Disneyland Paris et Parc Astérix",
+        "metaTitle": "Calendrier d’affluence Disneyland Paris {years}",
         "metaTitleMonth": "Affluence Disneyland Paris et Parc Astérix en {month}",
         "metaTitleMonthShort": "Affluence Disneyland Paris en {month}",
         "metaDescription": "Disneyland Paris et le Parc Astérix jour par jour, avec un planificateur de séjour. Le plus calme sur 30 jours : {verdict}.",

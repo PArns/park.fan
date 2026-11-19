@@ -8,10 +8,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`best-time/best-time-chapters.tsx`](../../components/trip-regions/best-time/best-time-chapters.tsx)
 
 - `WindowCards` _component_: Level 0: the three windows as cards, each with its details and a link into the planner.
-- `YearStrip` _component_: Chapter 01: a bar per week over a real `<table>`. The bars are a picture of the table, hidden from assistive technology; the table, with its caption, is what a crawler and a screen reader read, folded under the bars.
-- `MonthRows` _component_: Chapter 02: a row per month, each with its facts and a fold with the dates.
-- `BestWorstWeeks` _component_: Chapter 03: the three quietest and busiest whole weeks, each with one line on why.
-- `SchoolHolidayLinks` _component_: Chapter 04: each school-holiday region the API knows, with every break a trip of `days` fits into, linked to the planner's When mode inside that break. The locale's own country opens.
+- `YearStrip` _component_: The year chapter: a bar per week over a real `<table>`. The bars are a picture of the table, hidden from assistive technology; the table, with its caption, is what a crawler and a screen reader read, folded under the bars.
+- `MonthRows` _component_: The months chapter: a row per month, each with its facts and a fold with the dates.
+- `BestWorstWeeks` _component_: The weeks chapter: the three quietest and busiest whole weeks, each with one line on why.
+- `SchoolHolidayLinks` _component_: The school-holidays chapter: each school-holiday region the API knows, with every break a trip of `days` fits into, linked to the planner's When mode inside that break. The locale's own country opens.
 - `bestTimeLabels` _function_: The labels every chapter needs, read once by the page.
 - `climatePeriod` _function_: The climate normal's years as a range, `2015–2024`; the API spells them with a hyphen.
 
