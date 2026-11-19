@@ -76,7 +76,7 @@ Ebenfalls im Mai läuft zum ersten Mal der Boulder Dash 5k, ein Fünf-Kilometer-
 
 An den Wochenenden vom 5. bis zum 27. Juni ist Kids Fest, mit Daniel Tiger und anderen Figuren, die du treffen kannst, mit Zaubershows und neuen Schaumpartys. Kids Fest ist in jeder Saisonkarte 2027 enthalten.
 
-Im Juli gibt es Feuerwerk über dem See und neue Drohnen- und Lasershows, deren Motive aus dem Park stammen. Vor jeder Show spielt Live-Musik. Wer den Newsletter abonniert, darf über eine Formation der Drohnenshow abstimmen. Die genauen Abende hat Lake Compounce noch nicht veröffentlicht, ebenso wenig die Tage des Summer Beach Bash im August.
+Am Wochenende um den 4. Juli gibt es Feuerwerk über dem See, danach an jedem Wochenende im Juli neue Drohnen- und Lasershows, deren Motive aus dem Park stammen. Vor jeder Show spielt Live-Musik. Wer den Newsletter abonniert, darf über eine Formation der Drohnenshow abstimmen. Die einzelnen Abende hat Lake Compounce noch nicht veröffentlicht, ebenso wenig die Tage des Summer Beach Bash im August.
 
 Neu sind die Harvest Days an den Wochenenden vom 4. bis zum 26. September, mit Musik, Essen, Getränken und Bräuchen aus Neuengland. Das Halloween-Event Phantom Fall Fest folgt an ausgewählten Tagen vom 24. September bis zum 31. Oktober. Tagsüber gibt es ein Programm für Familien, abends öffnen die Haunted Attractions. Wann die Saison 2027 endet, hat der Park noch nicht bekannt gegeben.
 
@@ -88,7 +88,7 @@ Zum Black Friday verkauft Lake Compounce die Saisonkarten für 2027 günstiger, 
 
 Der Gold Pass kostet 89,99 $ statt 169,99 $. Er gilt auch in Crocodile Cove und bei Phantom Fall Fest, und das General Parking ist inklusive. Mit der Saisonflasche gibt es Softdrinks gratis, dazu 15 % Rabatt auf Essen, Einkäufe und den Speedy Pass und 20 % auf Cabanas. Der Silver Pass kostet im Sale ebenfalls 89,99 $ statt 139,99 $, gilt auch im Wasserpark und bei Phantom Fall Fest, bringt aber nur 10 % Rabatt und kein Parken. Weil du derzeit zum Silver-Preis den Gold Pass bekommst, ist Silver im Moment eher ein Eintrag in der Preisliste.
 
-Der Platinum Pass kostet 169,99 $ statt 209,99 $. Preferred Parking kostet nichts, solange dort Plätze frei sind, der Rabatt liegt bei 20 %, auf Cabanas bei 30 %. Dazu gilt er in zehn weiteren Parks in den USA, darunter Kennywood, Dutch Wonderland, Story Land und Splish Splash. In Kennywood bei Pittsburgh feiern 2027 ebenfalls drei Bahnen aus dem Jahr 1927 Geburtstag, darunter die Holzachterbahn Racer, die wie die Wildcat Philadelphia Toboggan Coasters gebaut hat. Mehr dazu steht in unserem [Beitrag zur Saison 2027 in Kennywood](/news/kennywood-saison-2027).
+Der Platinum Pass kostet 169,99 $ statt 209,99 $. Preferred Parking kostet nichts, solange dort Plätze frei sind, der Rabatt liegt bei 20 %, auf Cabanas bei 30 %. Dazu gilt er in weiteren Parks in den USA, darunter Kennywood, Dutch Wonderland, Story Land und Splish Splash. In Kennywood bei Pittsburgh feiern 2027 ebenfalls drei Bahnen aus dem Jahr 1927 Geburtstag, darunter die Holzachterbahn Racer. Mehr dazu steht in unserem [Beitrag zur Saison 2027 in Kennywood](/news/kennywood-saison-2027).
 
 Wer jetzt Gold oder Platinum kauft, bekommt für jeden Tag im Mai 2027 eine Freikarte für einen Freund, ausgenommen die Sperrtage. Zu jeder Saisonkarte gehören zwei Eintrittskarten fürs Carousel Museum. Ohne Saisonkarte kaufst du online das Any Day Ticket für 59,99 $ statt 65,99 $, das an einem beliebigen Tag der Sommersaison 2027 gilt, auch in Crocodile Cove. Ab 65 Jahren gibt es Rabatt.
 
@@ -130,6 +130,7 @@ Quellen:
 [Pressemitteilung Eventprogramm 2026](https://www.lakecompounce.com/press/opening-day-and-seasonal-event-lineup/),
 [Wildcat](https://www.lakecompounce.com/discover-the-park/attractions/wildcat/),
 [Wildcat in der RCDB](https://rcdb.com/420.htm),
+[Racer in der RCDB](https://rcdb.com/121.htm),
 [Boulder Dash in der RCDB](https://rcdb.com/602.htm),
 [Phobia Phear Coaster in der RCDB](https://rcdb.com/12897.htm),
 [Phobia Phear Coaster](https://www.lakecompounce.com/discover-the-park/attractions/phobia-phear-coaster/),

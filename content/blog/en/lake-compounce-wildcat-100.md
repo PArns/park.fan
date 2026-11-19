@@ -1,0 +1,143 @@
+---
+title: 'Lake Compounce celebrates 100 years of Wildcat in 2027'
+translationKey: lake-compounce-wildcat-100
+date: '2026-11-19'
+time: '18:00'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  The Wildcat wooden coaster turns 100 in 2027, and Lake Compounce celebrates from opening day on May 8. For Black Friday, the Gold Pass costs the same as Silver.
+tags:
+  - news
+  - lake-compounce
+  - usa
+  - connecticut
+  - season-2027
+category: news
+parkLinks:
+  - lake-compounce
+rideLinks:
+  - lake-compounce/wildcat
+  - lake-compounce/boulder-dash
+  - lake-compounce/phobia-phear-coaster
+  - lake-compounce/zoomerang
+seo:
+  title: 'Lake Compounce 2027: opening day and the Wildcat turns 100'
+  description: >-
+    Lake Compounce opens May 8, 2027 and celebrates 100 years of the Wildcat. Black Friday deals on the 2027 season pass start at $89.99.
+  keywords:
+    - Lake Compounce 2027
+    - Lake Compounce 2027 season
+    - Lake Compounce opening day 2027
+    - when does Lake Compounce open 2027
+    - Lake Compounce Wildcat
+    - Wildcat 100 years
+    - Wildcat wooden roller coaster
+    - Lake Compounce season pass
+    - Lake Compounce season pass 2027
+    - Lake Compounce Black Friday
+    - Lake Compounce wait times
+    - Crocodile Cove 2027
+    - Phantom Fall Fest 2027
+    - Boulder Dash 5k
+---
+
+[Lake Compounce](ref:lake-compounce) in Bristol, Connecticut, opens on Saturday, May 8, 2027, and spends the whole season celebrating the 100th birthday of its Wildcat wooden coaster. The park announced opening day and its 2027 event lineup on November 16. Crocodile Cove, the water park, follows three weeks later on Saturday, May 29.
+
+## What's planned for the Wildcat's birthday
+
+Things kick off in May with Wildcat Weekends. New this year is the Wildcat Dance Party, where Ryder the Wildcat, the park's mascot, joins in on the dance floor, and more anniversary activities are promised across the season. Lake Compounce hasn't given dates for any of them yet, the Wildcat Weekends included. Season pass holders get a gift on opening day.
+
+> [!QUOTE]
+> As Wildcat celebrates 100 years, we're honoring the history and experiences that have made Lake Compounce a part of so many families over the years.
+>
+> Daniel LLanas, general manager of Lake Compounce, in the [press release of November 16, 2026](https://www.lakecompounce.com/press/2027-opening-day-and-seasonal-event-lineup/)
+
+LLanas has run the park since August 2026. Before that he was director of admissions at Aquaventure World at Atlantis The Palm in Dubai, and he spent more than ten years with SeaWorld Parks & Entertainment.
+
+## The Wildcat since 1927
+
+The [Wildcat](ref:lake-compounce/wildcat?bare) opened in 1927. Philadelphia Toboggan Coasters built it as the company's coaster number 61 to a design by Herbert Paul Schmeck, and Charlie Dinn and Curtis D. Summers rebuilt it in 1986. The track is 2,746 feet (837 metres) long and 85 feet (26 metres) tall at its highest point. The first drop falls 78 feet (24 metres), and at 48 mph (77 km/h) it's surprisingly quick for a centenarian. There are no inversions, and a ride lasts one minute 15 seconds.
+
+The Wildcat came back for the 2026 season after a renovation that took several years. The park re-tracked the whole ride with Gravity Group technology, using vertically stacked rails to smooth out the ride while keeping it a classic. Since then a second train has been back in service, so you'll spend less time in line. Both trains come from Great Coasters International, each with seven cars and 14 seats in total. You need to be 48 inches (122 centimetres) tall to ride, and there's no upper limit. The coaster is wheelchair accessible, and Speedy Pass works here too.
+
+```ride-waits-widget rides=lake-compounce/wildcat|Wildcat|Wooden;lake-compounce/boulder-dash|Boulder Dash|Wooden;lake-compounce/phobia-phear-coaster|Phobia Phear Coaster|Steel, launched;lake-compounce/zoomerang|Zoomerang|Steel, boomerang columns=type,peak,days highlight=lake-compounce/wildcat
+
+```
+
+Lake Compounce has five coasters. [Boulder Dash](ref:lake-compounce/boulder-dash?bare) has run since May 21, 2000, a wooden terrain coaster that follows the lie of the land. Custom Coasters International built it to plans by Larry Bill. The track is 4,725 feet (1,440 metres) long, the first drop 115 feet (35 metres) deep, and at 60 mph (97 km/h) a lap takes two and a half minutes. The [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), a Premier Rides Sky Rocket II, opened on May 7, 2016. It stands 150 feet (46 metres) tall, launches its train several times by linear motor, reaches 62 mph (100 km/h) and goes upside down once. Riders need to be 54 inches (137 centimetres) tall, or 52 inches (132 centimetres) with a companion. [Zoomerang](ref:lake-compounce/zoomerang?bare) is a 1997 Vekoma Boomerang with three inversions. The Kiddie Coaster rounds things off for the youngest riders.
+
+## Events from May to October
+
+May also brings the first Boulder Dash 5k, a five-kilometre run the park is organising with the Hartford Marathon Foundation and Special Olympics Connecticut. It takes its name from the wooden coaster. The money raised goes to a Special Olympics Connecticut fundraising campaign that pays for the organisation's first permanent home, on a new campus in Bristol opening in 2027. The date in May hasn't been set yet.
+
+Kids Fest runs on weekends from June 5 to June 27, with Daniel Tiger and other characters to meet, magic shows and new foam parties. It's included in every 2027 season pass.
+
+Fireworks go up over the lake on the weekend around July 4, followed by new drone and laser shows every weekend in July, with designs taken from the park. Live music plays before each show. Newsletter subscribers get to vote on one of the drone show formations. Lake Compounce hasn't published the individual nights yet, and the same goes for the days of the Summer Beach Bash in August.
+
+Harvest Days are new, on weekends from September 4 to September 26, with music, food, drinks and New England traditions. Phantom Fall Fest, the Halloween event, follows on selected days from September 24 to October 31. During the day there's a family program, and at night the haunted attractions open. The park hasn't announced when the 2027 season ends.
+
+Lake Compounce stays closed until opening day. The 2026 season ended on November 1 with Phantom Fall Fest, and Holiday Lights last ran in winter 2025.
+
+## 2027 season passes and tickets
+
+For Black Friday, Lake Compounce is selling 2027 season passes at a discount, up to $80 below the regular price. The park hasn't announced an end date for the sale.
+
+The Gold Pass costs $89.99 instead of $169.99. It's also valid at Crocodile Cove and Phantom Fall Fest, and General Parking is included. The season bottle gets you free soft drinks, and you get 15% off food, shopping and Speedy Pass, plus 20% off cabanas. The Silver Pass is also $89.99 in the sale, down from $139.99, and covers the water park and Phantom Fall Fest too, but it only gives 10% off and no parking. Since Gold currently sells at the Silver price, Silver is mostly just a line on the price list right now.
+
+The Platinum Pass costs $169.99 instead of $209.99. Preferred Parking is free while spaces last, the discount is 20%, and 30% on cabanas. It also gets you into other parks in the US, among them Kennywood, Dutch Wonderland, Story Land and Splish Splash. At Kennywood near Pittsburgh, three rides from 1927 also turn 100 in 2027, including the wooden Racer. There's more in our [post on Kennywood's 2027 season](/news/kennywood-2027-season).
+
+Buy Gold or Platinum now and you get a free ticket for a friend on any day in May 2027, blackout dates excepted. Every season pass comes with two tickets to the Carousel Museum. Without a pass, the Any Day Ticket costs $59.99 online instead of $65.99 and works on any day of the 2027 summer season, Crocodile Cove included. Visitors aged 65 and over get a discount.
+
+Tuesday, December 1, is Giving Tuesday. For every season pass sold that day, Lake Compounce donates a 2027 day ticket to the Boys & Girls Club of Bristol.
+
+## Crocodile Cove from May 29
+
+The park calls Crocodile Cove the largest water park in Connecticut. It has more than 15 water slides, a lazy river and two wave pools. When it opens on May 29, Bayou Bay, [Storm Surge](ref:lake-compounce/storm-surge?bare) and [Croc-O-Nile](ref:lake-compounce/croc-o-nile?bare) are among the attractions running, along with the cabanas and the Nathan's food stand.
+
+## When it's quieter
+
+```stats-widget slug=lake-compounce show=months,weekdays
+
+```
+
+## Getting there and parking
+
+The park is at 185 Enterprise Drive in Bristol. From I-84, take exit 31, then head north on Route 229 for about two miles (three kilometres). General Parking costs $28, Preferred Parking $45 while spaces last. Lake Compounce doesn't take cash, not even for a coaster from 1927. You pay by card, Apple Pay or Google Pay, and machines swap bills for a payment card. The Lake Compounce Campground, with cabins, RV sites and tent sites, sits on the grounds and opens in early May.
+
+## From the park's history
+
+Lake Compounce started out in 1846 as a picnic park built by Gad Norton, and calls itself "America's First Amusement Park". By the park's own count, 2027 is its 181st season. The carousel is even older than the coaster: built in 1898, it's been at Lake Compounce since Memorial Day 1911. From 1986 to 1987 the park was called Hershey Lake Compounce, and from 1988 to 1995 Lake Compounce Festival Park. Since 2026, Legacy Corner near Down Time has displayed photos and memorabilia from the park's history. Today Lake Compounce belongs to Herschend.
+
+[Lake Compounce](ref:lake-compounce?full)
+
+Sources:
+[2027 season press release](https://www.lakecompounce.com/press/2027-opening-day-and-seasonal-event-lineup/),
+[Events & Shows](https://www.lakecompounce.com/discover-the-park/events-shows/),
+[Wildcat Roller Coaster Turns 100](https://www.lakecompounce.com/discover-the-park/events-shows/wildcat-roller-coaster-turns-100/),
+[Opening Weekend](https://www.lakecompounce.com/discover-the-park/events-shows/opening-weekend/),
+[Boulder Dash 5k](https://www.lakecompounce.com/discover-the-park/events-shows/boulder-dash-5k/),
+[Kids Fest](https://www.lakecompounce.com/discover-the-park/events-shows/kids-fest/),
+[Drone Spectacular](https://www.lakecompounce.com/discover-the-park/events-shows/drone-spectacular/),
+[Summer Beach Bash](https://www.lakecompounce.com/discover-the-park/events-shows/summer-beach-bash/),
+[Harvest Days](https://www.lakecompounce.com/discover-the-park/events-shows/harvest-days/),
+[Crocodile Cove Opening Weekend](https://www.lakecompounce.com/discover-the-park/events-shows/crocodile-cove-opening-weekend/),
+[New general manager](https://www.lakecompounce.com/press/lake-compounce-welcomes-new-general-manager-daniel-llanas/),
+[2026 season press release](https://www.lakecompounce.com/press/180-days-of-thrills/),
+[2026 event lineup press release](https://www.lakecompounce.com/press/opening-day-and-seasonal-event-lineup/),
+[Wildcat](https://www.lakecompounce.com/discover-the-park/attractions/wildcat/),
+[Wildcat on RCDB](https://rcdb.com/420.htm),
+[Racer on RCDB](https://rcdb.com/121.htm),
+[Boulder Dash on RCDB](https://rcdb.com/602.htm),
+[Phobia Phear Coaster on RCDB](https://rcdb.com/12897.htm),
+[Phobia Phear Coaster](https://www.lakecompounce.com/discover-the-park/attractions/phobia-phear-coaster/),
+[Zoomerang on RCDB](https://rcdb.com/432.htm),
+[Lake Compounce on RCDB](https://rcdb.com/qs.htm?qs=Lake+Compounce),
+[Attractions](https://www.lakecompounce.com/discover-the-park/attractions/),
+[Discover the Park](https://www.lakecompounce.com/discover-the-park/),
+[What's New](https://www.lakecompounce.com/discover-the-park/whats-new/),
+[Season Passes](https://www.lakecompounce.com/buy-tickets/season-passes/),
+[Tickets](https://www.lakecompounce.com/buy-tickets/),
+[Directions](https://www.lakecompounce.com/plan-your-visit/directions/),
+[FAQ](https://www.lakecompounce.com/plan-your-visit/faqs/).
