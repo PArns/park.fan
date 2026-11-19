@@ -3574,6 +3574,274 @@ no('cta-echo', cta('Ein Pass pro Person und Bahn.'), 'de', [
   ['excerpt', 'Den Pass kaufst du ab 11 Uhr am Handy.'],
 ]);
 
+// The critic reads of 2026-11-18 (Six Flags México guide in German and Spanish, the new titles).
+
+// 125 type-maker-opener: four ride paragraphs opened on name, type and maker
+const typeMaker = [
+  '[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare) ist ein Suspended Looping Coaster von Vekoma und fährt seit 2000.',
+  '[Batgirl Batarang](ref:six-flags-mexico/batgirl-batarang?bare) ist ein Boomerang von Vekoma.',
+  'Der [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) ist ein 4D Free Spin von S&S Worldwide.',
+  '[The Joker](ref:six-flags-mexico/the-joker?bare) ist ein Spinning Coaster von Gerstlauer.',
+];
+yes('type-maker-opener', lines(...typeMaker));
+no('type-maker-opener', lines(...typeMaker.slice(0, 3)));
+no(
+  'type-maker-opener',
+  lines(
+    '[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare), ein Suspended Looping Coaster von Vekoma, gehört seit 2000 zum Park.',
+    'Auch [The Joker](ref:six-flags-mexico/the-joker?bare), ein Spinning Coaster von Gerstlauer, ist aus den USA umgezogen.',
+    'Am [Supergirl Sky Flight](ref:six-flags-mexico/supergirl-sky-flight?bare) drehst du dich um einen Turm.',
+    'Die [Triple Torre Kilahuea](ref:six-flags-mexico/triple-torre-kilahuea?bare), ein Freifallturm von S&S, steht seit 2000.'
+  )
+);
+yes(
+  'type-maker-opener',
+  lines(
+    '[Batman The Ride](ref:six-flags-mexico/batman-the-ride?bare) es un Suspended Looping Coaster de Vekoma.',
+    '[Batgirl Batarang](ref:six-flags-mexico/batgirl-batarang?bare) es un Boomerang de Vekoma.',
+    'El [Wonder Woman Coaster](ref:six-flags-mexico/wonder-woman-coaster?bare) es un 4D Free Spin de S&S Worldwide.',
+    '[The Joker](ref:six-flags-mexico/the-joker?bare) es una montaña rusa giratoria de Gerstlauer.'
+  ),
+  'es'
+);
+
+// 126 site-as-measurer: the site measured, under a byline
+yes(
+  'site-as-measurer',
+  'Die fünf vollsten Tage, die park.fan in Six Flags México gemessen hat, lagen alle im Festival.'
+);
+yes('site-as-measurer', 'Diciembre park.fan todavía no lo ha medido en suficientes días.', 'es');
+no(
+  'site-as-measurer',
+  'Die fünf vollsten Tage, die wir in Six Flags México gemessen haben, lagen alle im Festival.'
+);
+// The present says which parks the site covers.
+no(
+  'site-as-measurer',
+  'In Japan liegen die fünf Parks, deren Wartezeiten park.fan misst, in vier Städten.'
+);
+no(
+  'site-as-measurer',
+  '---\ncategory: park-fan\n---\n\nSeit Dezember hat park.fan 12 Millionen Wartezeiten gemessen.'
+);
+
+// 127 ride-name-roll: ten linked rides read out in one sentence
+const rollRides = [
+  'Superman El Último Escape',
+  'Batman The Ride',
+  'Batgirl Batarang',
+  'Río Salvaje',
+  'Crazanity',
+  'Wonder Woman Coaster',
+  'Supergirl Sky Flight',
+  'The Dark Knight Coaster',
+  'The Joker',
+  'Tsunami',
+  'Medusa Steel Coaster',
+];
+// The rides are linked in a list, which is no running text, so only the sentence below counts.
+const rollLinks = rollRides
+  .map((r) => `- [${r}](ref:six-flags-mexico/${r.toLowerCase().replace(/[^a-z]+/g, '-')}?bare)`)
+  .join('\n');
+yes(
+  'ride-name-roll',
+  lines(
+    rollLinks,
+    `Der Flash Pass gilt an ${rollRides.slice(0, -1).join(', ')} und ${rollRides.at(-1)}.`
+  )
+);
+no(
+  'ride-name-roll',
+  lines(
+    rollLinks,
+    'Der Flash Pass gilt an allen Achterbahnen außer dem Superman Krypton Coaster, dazu an Crazanity und Río Salvaje.'
+  )
+);
+
+// 128 bold-term-list: every item a bold term and a colon (§4.2)
+yes(
+  'bold-term-list',
+  '- **Silver** für 1.700 Pesos: zwei Parks\n- **Gold** für 1.800 Pesos: zehn Parks\n- **Prestige** für 2.999 Pesos: alle Parks'
+);
+no(
+  'bold-term-list',
+  '- Silver für 1.700 Pesos: zwei Parks\n- Gold für 1.800 Pesos: zehn Parks\n- Prestige für 2.999 Pesos: alle Parks'
+);
+no(
+  'bold-term-list',
+  '- **Silver** für 1.700 Pesos: zwei Parks\n- Gold für 1.800 Pesos: zehn Parks\n- Prestige für 2.999 Pesos: alle Parks'
+);
+
+// 129 title-trailing-word: a search word behind the question of the seo.title
+const seoTitle = (v) => [['title', v, true]];
+yes(
+  'title-trailing-word',
+  'Text.',
+  'es',
+  seoTitle('Phantasialand: ¿cuándo compensa el Quick Pass? Consejos')
+);
+no(
+  'title-trailing-word',
+  'Text.',
+  'es',
+  seoTitle('Consejos para Phantasialand: ¿cuándo compensa el Quick Pass?')
+);
+// The H1 is not the title tag.
+no('title-trailing-word', 'Text.', 'es', [
+  ['title', 'Phantasialand: ¿cuándo compensa? Consejos', false],
+]);
+
+// 130 title-filler-triple: three items after the colon, two of them filler
+yes(
+  'title-filler-triple',
+  'Text.',
+  'de',
+  seoTitle('Movie Park: Wann ist am wenigsten los? Tage, Preise, Tipps')
+);
+yes(
+  'title-filler-triple',
+  'Text.',
+  'en',
+  seoTitle('Kings Dominion Hops & Harvest 2026: Dates, Prices, Rides')
+);
+no(
+  'title-filler-triple',
+  'Text.',
+  'de',
+  seoTitle('Movie Park: Wann ist am wenigsten los? Beste Tage und Preise')
+);
+no(
+  'title-filler-triple',
+  'Text.',
+  'de',
+  seoTitle('Hansa-Park Öffnungszeiten 2027: Saison, Rabatte, Schließtage')
+);
+
+// 131 snippet-question-fragment: the table of contents in the snippet (§5.4)
+const snippet = (v) => [['description', v, true]];
+yes(
+  'snippet-question-fragment',
+  'Text.',
+  'de',
+  snippet('Im Heide Park ist Essen erlaubt. Was 15 Parks erlauben.')
+);
+yes(
+  'snippet-question-fragment',
+  'Text.',
+  'fr',
+  snippet('Au Parc Astérix, oui. Ce que permettent 15 parcs.')
+);
+no(
+  'snippet-question-fragment',
+  'Text.',
+  'de',
+  snippet('Im Heide Park ist Essen erlaubt. Alkohol verbieten Phantasialand und Movie Park.')
+);
+no('snippet-question-fragment', 'Text.', 'en', snippet("Which way you're facing, it doesn't."));
+
+// 132 excerpt-intro-echo: the intro says the excerpt again
+const echoPost = (intro) =>
+  `---\nexcerpt: >-\n  Si estás en la entrada a las diez, te subes a Medusa y a Crazanity casi sin fila.\n---\n\n${intro}\n\nOtro párrafo.`;
+yes(
+  'excerpt-intro-echo',
+  echoPost('Si estás en la entrada a las diez, te subes a Medusa y a Crazanity casi sin esperar.'),
+  'es',
+  [['excerpt', 'Si estás en la entrada a las diez, te subes a Medusa y a Crazanity casi sin fila.']]
+);
+no(
+  'excerpt-intro-echo',
+  echoPost(
+    'Six Flags México está en el extremo sur de la Ciudad de México, en la alcaldía Tlalpan.'
+  ),
+  'es',
+  [['excerpt', 'Si estás en la entrada a las diez, te subes a Medusa y a Crazanity casi sin fila.']]
+);
+// News opens on its lead.
+no(
+  'excerpt-intro-echo',
+  `---\ncategory: news\n---\n\nDas Efteling verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember.`,
+  'de',
+  [['excerpt', 'Das Efteling verkauft jetzt Karten für seinen Silvesterabend am 31. Dezember.']]
+);
+
+// Spanish, since the critic read of the Spanish guide: 8, 14, 70, 71, 73, 119
+yes(
+  'catalog-connector-series',
+  lines(
+    'Además hay tres zonas. Además hubo un desfile. También hay un show.',
+    'Y después viene el domingo. Detrás vienen mayo y enero. Le sigue el lunes.'
+  ),
+  'es'
+);
+no(
+  'catalog-connector-series',
+  lines('Además hay tres zonas.', 'El domingo hay menos gente.', 'Mayo y enero están más llenos.'),
+  'es'
+);
+yes(
+  'data-caveat-close',
+  'Medimos el parque en 9 días de diciembre. Nueve días medidos no bastan para demostrar una diferencia.',
+  'es'
+);
+no('data-caveat-close', 'Medimos el parque en 90 días. El martes es el día con menos gente.', 'es');
+yes(
+  'name-history-series',
+  lines(
+    'El Supergirl Sky Flight, hasta 2018 SkyScreamer, gira a 64 km/h.',
+    'El Superman Krypton Coaster, antes Roller Skater, mide 207 metros.',
+    'The Joker estuvo en California, primero como Tony Hawk’s Big Spin y luego como Pandemonium.'
+  ),
+  'es'
+);
+no(
+  'name-history-series',
+  lines('El Supergirl Sky Flight gira a 64 km/h.', 'El Superman Krypton Coaster mide 207 metros.'),
+  'es'
+);
+yes(
+  'since-template',
+  lines(
+    'Batman The Ride funciona desde el 14 de abril de 2000.',
+    'Medusa funciona desde 2014.',
+    'Wonder Woman funciona desde el 1 de junio de 2018.',
+    'El Speedway Stunt Coaster funciona desde el 31 de enero de 2026.'
+  ),
+  'es'
+);
+no(
+  'since-template',
+  lines(
+    'Batman The Ride volvió con la reapertura de 2000.',
+    'Medusa se inauguró en 2014.',
+    'Wonder Woman abrió el 1 de junio de 2018.',
+    'El Speedway Stunt Coaster es la más nueva.'
+  ),
+  'es'
+);
+yes(
+  'calls-it-superlative',
+  lines(
+    'Funciona como montaña rusa híbrida, según Six Flags la única de México.',
+    'Six Flags dice que es la única atracción de este tipo en Latinoamérica.'
+  ),
+  'es'
+);
+no(
+  'calls-it-superlative',
+  lines('Funciona como montaña rusa híbrida.', 'Según la RCDB, mide 29,9 metros.'),
+  'es'
+);
+const daFormula = [
+  'Six Flags da 23 metros de caída.',
+  'Six Flags le da más de 60 metros de altura.',
+  'La RCDB da 35 km/h.',
+  'Six Flags da 45 km/h.',
+  'El parque da 36 metros.',
+  'Six Flags da 120 km/h.',
+];
+yes('attribution-density', lines(...daFormula), 'es');
+no('attribution-density', lines(...daFormula.slice(0, 5)), 'es');
+
 // old-orthography: an error on every surface, German only
 cases += 4;
 assert.equal(oldSpellings('Er sagt, daß der Fluß hoch ist.').length, 2);
