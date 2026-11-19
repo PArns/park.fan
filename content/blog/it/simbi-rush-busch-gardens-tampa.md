@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dall’estate 2027 Simbi Rush ti lancia due volte attraverso l’area Congo di Busch Gardens Tampa Bay, fino a 64 km/h. Con l’abbonamento annuale 2027 sali a bordo prima di tutti gli altri.
+  Nell’estate 2027 Busch Gardens Tampa Bay apre Simbi Rush, water coaster con due lanci e 64 km/h. Prima dell’apertura salgono gli abbonati 2027, e nei saldi del Black Friday l’abbonamento annuale parte da 198 dollari.
 tags:
   - notizie
   - busch-gardens-tampa
@@ -41,24 +41,32 @@ Per l’estate 2027 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa), in Flori
 
 ## Che cos’è Simbi Rush
 
-Un water coaster con lancio accelera le barche come un ottovolante e le spinge anche in salita. Il tracciato, l’acqua e l’ammaraggio funzionano invece come in uno scivolo d’acqua. Ogni vettura porta otto passeggeri, in quattro file da due, e ognuno ha la sua barra idraulica sulle gambe. Busch Gardens non ha ancora pubblicato altezza, lunghezza del percorso e capacità oraria.
+Un water coaster con lancio accelera le barche come un ottovolante e le spinge anche in salita. Tra un lancio e l’altro, e quando tocca l’acqua, la barca si comporta come su uno scivolo d’acqua. Ogni vettura porta otto passeggeri, in quattro file da due, e ognuno ha la sua barra idraulica sulle gambe. Busch Gardens non ha ancora pubblicato altezza, lunghezza del percorso e capacità oraria.
 
-Il nome viene da Simbi, uno spirito protettore dell’acqua e della natura dell’Africa centrale. Il giro parte come una tranquilla gita su un lago sacro, finché l’acqua non afferra la barca. Se sia l’ira dello spirito o uno scherzo del lago, lo decide chi è a bordo, e in tutti e due i casi scende bagnato.
+Il nome viene da Simbi, uno spirito protettore dell’acqua e della natura dell’Africa centrale. Nella storia che racconta il parco, la barca scivola prima tranquilla su un lago sacro, finché non viene afferrata dall’acqua. Se sia l’ira dello spirito o uno scherzo del lago, lo decide chi è a bordo, e in tutti e due i casi scende bagnato.
 
 ## A chi è rivolta
 
-Il parco ha concepito Simbi Rush espressamente come attrazione per famiglie, ma un’altezza minima non c’è ancora. Nell’area Congo oggi funzionano il rafting [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) e gli autoscontri [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), e su tutti e due si sale da 42 pollici (107 centimetri).
+Il parco ha concepito Simbi Rush espressamente come attrazione per famiglie, ma un’altezza minima non c’è ancora. Per confronto, le due vicine nell’area Congo, il rafting [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) e gli autoscontri [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), fanno salire i bambini da 42 pollici (107 centimetri).
 
 > [!QUOTE]
-> I nostri ospiti ci hanno detto che vogliono più modi per divertirsi e rinfrescarsi, e Simbi Rush farà proprio questo, e anche di più. Questa attrazione non somiglia a nulla di ciò che abbiamo fatto finora. È veloce, è divertente e rinfresca.
+> I nostri ospiti ci hanno detto che vogliono più modi per divertirsi e rinfrescarsi, e Simbi Rush farà proprio questo, e anche di più.
 >
-> [en] Our guests have told us they want more ways to have fun and stay cool, and Simbi Rush will do just that and more. This ride is unlike anything we have ever done before. It's fast, it's fun and refreshing.
+> [en] Our guests have told us they want more ways to have fun and stay cool, and Simbi Rush will do just that and more.
 >
 > Brian Bacica, presidente di Busch Gardens Tampa Bay e Adventure Island, nel [comunicato stampa del 18 novembre 2026](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), tradotto dall’inglese
 
 ## Chi sale per primo e quanto costa
 
-Prima dell’apertura al pubblico tocca a chi ha un abbonamento annuale 2027, e le date non ci sono ancora. Nei saldi del Black Friday l’abbonamento Silver costa 198 dollari invece di 279, il Gold 222 invece di 315 e il Platinum 351 invece di 549, tutti e tre con il parcheggio gratuito. La Fun Card 2027, più economica, costa 94,99 dollari invece di 148,99. Da subito e fino al 31 dicembre 2027 ti fa entrare senza limiti a Busch Gardens e nel parco acquatico Adventure Island, tranne nei giorni di esclusione. Il parcheggio non è compreso e costa da 32 dollari più tasse. Il parco non ha reso noto se la Fun Card basti anche per l’anteprima. In compenso con la Fun Card entri già quest’inverno, in alcuni giorni fino al 4 gennaio, per [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026).
+Prima dell’apertura al pubblico tocca a chi ha un abbonamento annuale 2027, e le date non ci sono ancora. Il modo più economico per avere di sicuro l’anteprima è l’abbonamento Silver, che nei saldi del Black Friday costa 198 dollari invece di 279.
+
+| Abbonamento annuale | Black Friday | Prezzo pieno |
+| ------------------- | ------------ | ------------ |
+| Silver              | 198 dollari  | 279 dollari  |
+| Gold                | 222 dollari  | 315 dollari  |
+| Platinum            | 351 dollari  | 549 dollari  |
+
+Con tutti e tre il parcheggio è gratuito. La Fun Card 2027, più economica, costa 94,99 dollari invece di 148,99. Da subito e fino al 31 dicembre 2027 ti fa entrare senza limiti a Busch Gardens e nel parco acquatico Adventure Island, tranne nei giorni di esclusione. Il parcheggio non è compreso e costa da 32 dollari più tasse. Il parco non ha reso noto se la Fun Card basti anche per l’anteprima. In compenso con la Fun Card entri già quest’inverno, in alcuni giorni fino al 4 gennaio, per [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -70,13 +78,13 @@ Senza auto, dalla zona di Orlando arrivi a Tampa con la navetta di Mears Destina
 
 ## Cos’altro cambia nel parco
 
-Simbi Rush è il pezzo forte di un piano da 200 milioni di dollari in cinque anni per Busch Gardens Tampa Bay. Di questo piano fa già parte Lion & Hyena Ridge, aperto il 25 luglio: un recinto di 38.000 piedi quadrati (circa 3.500 metri quadrati) per cinque leoni e due iene maculate. In natura leoni e iene sono rivali, perciò si danno il cambio nelle varie parti del recinto, come due fratelli con una sola console.
+Simbi Rush fa parte di un piano quinquennale con cui Busch Gardens Tampa Bay vuole spendere 200 milioni di dollari. Di questo piano fa già parte Lion & Hyena Ridge, aperto il 25 luglio: un recinto di 38.000 piedi quadrati (circa 3.500 metri quadrati) per cinque leoni e due iene maculate. In natura leoni e iene sono rivali, perciò si danno il cambio nelle varie parti del recinto, come due fratelli con una sola console.
 
-Il percorso con i tronchi Stanley Falls Flume, in funzione dall’apertura del parco nel 1973, ha chiuso il 7 settembre 2025 per fare posto a una nuova attrazione. Busch Gardens non ha reso noto dove passerà esattamente il tracciato di Simbi Rush nell’area Congo, né se l’attrazione sorgerà dove c’era Stanley Falls Flume. Il 2 agosto 2026 ha fatto inoltre l’ultimo giro Kumba, l’ottovolante di Bolliger & Mabillard del 1993, alto 44 metri, veloce 97 km/h, con sette inversioni. Come erede il parco ha annunciato Kumba’s Revenge, finora senza tracciato e senza data.
+Il percorso con i tronchi Stanley Falls Flume, in funzione dall’apertura del parco nel 1973, ha chiuso il 7 settembre 2025 per fare posto a una nuova attrazione. Se Simbi Rush sorgerà al suo posto, Busch Gardens non l’ha reso noto. Il 2 agosto 2026 ha fatto inoltre l’ultimo giro Kumba, l’ottovolante di Bolliger & Mabillard del 1993 con sette inversioni e 97 km/h di velocità massima. Come erede il parco ha annunciato Kumba’s Revenge, finora senza tracciato e senza data.
 
 ## Altri water coaster di Mack Rides
 
-Più veloci di Simbi Rush sono i due water coaster di Mack all’[Europa-Park](ref:europa-park): [Poseidon](ref:europa-park/water-rollercoaster-poseidon) viaggia dal 2000 a 70 km/h, [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) dal 2005 a 80 km/h. Entrambi però tirano su le barche con una catena, quindi il primato di Tampa vale solo per le attrazioni con lancio. La più simile è Dønnervind, al Freizeitpark Plohn in Sassonia, in funzione da giugno 2026: vetture da otto posti come a Tampa e anche qui due lanci, ma al massimo 53 km/h. A ottobre Dønnervind è rimasto [fermo per un problema tecnico](/news/doennervind-plohn-fuori-servizio). Che cosa c’è di nuovo nel 2027 negli altri parchi lo trovi nella nostra [panoramica delle novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
+Più veloci di Simbi Rush sono i due water coaster di Mack all’[Europa-Park](ref:europa-park): [Poseidon](ref:europa-park/water-rollercoaster-poseidon) viaggia dal 2000 a 70 km/h, [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) dal 2005 a 80 km/h. Entrambi però tirano su le barche con una catena, quindi il primato di Tampa vale solo per le attrazioni con lancio. La più simile è Dønnervind, al Freizeitpark Plohn in Sassonia, in funzione da giugno 2026: vetture da otto posti come a Tampa e anche qui due lanci, ma al massimo 53 km/h, e a ottobre è rimasta per un po’ [ferma per un problema tecnico](/news/doennervind-plohn-fuori-servizio). Le altre novità del 2027, tra cui altre attrazioni di Mack Rides e nuove aree tematiche, sono nella nostra [panoramica delle novità dei parchi divertimento 2027](/blog/novita-parchi-divertimento-2027).
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
