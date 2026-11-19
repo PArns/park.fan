@@ -77,6 +77,26 @@ meta description ([parks without wait times](../api/parks-without-wait-times.md)
 numbers: the share of those visits that leave at once, once the site statistic has a season of
 Hansa-Park traffic.
 
+### A title carries no „park.fan“, except where park.fan is the subject
+
+Google prints the site name from the WebSite JSON-LD and `og:site_name`, so a „ | park.fan“ at the
+end of a title only spends characters of the 60 (`MAX_TITLE_LENGTH`). Blog posts dropped it with
+PAR-1399; glossary, the best-time pages, fancast, blog categories, tags and authors and the day
+planner followed with PAR-1402. The brand stays where it is the subject: the homepage, „How
+park.fan works“, the changelog, the blog's index and the legal pages, because Google checks the
+WebSite JSON-LD's name against the homepage's title.
+
+### A park calendar's hub names the years ahead, a month page its month
+
+The calendar without a month (and the current month's URL, canonical to it) is titled for the
+months ahead: „Thorpe Park Crowd Calendar 2026–2027: Best Days to Visit“, „Europa-Park:
+Andrangskalender & Auslastung 2026–2027“ (`parks.calendarPage.yearTitle`, `…Short`, `…Bare`), and
+its H1 says the same (`h1SuffixYears`). Before, it named the current month, so in November 2026
+Thorpe Park, in its winter break, stood at position 3.9 for „thorpe park crowd calendar“ with 1.4 %
+of clicks, and Europa-Park at 5.0 for „andrangskalender europa park“ with 0.8 %. A month page keeps
+its month, since „… december 2026“ is searched by its name. Park titles never carry the resort's
+or the city's name, so a park calendar and its region's hub (`/fr/paris`) stay two answers.
+
 ## Resolved, and kept resolved
 
 Each of these was a real incident. The fix lives in code; the reason is here so nobody undoes it.

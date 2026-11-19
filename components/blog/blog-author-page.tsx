@@ -44,7 +44,7 @@ export async function buildAuthorMetadata(
   if (!entry) return {};
   const t = await getTranslations({ locale, namespace: 'blog' });
   const ogImageUrl = getOgImageUrl([locale, 'blog', 'author', author]);
-  const fullTitle = `${pagedTitle(entry.name, page, t('pagination.pageLabel', { page }))} · park.fan`;
+  const fullTitle = pagedTitle(entry.name, page, t('pagination.pageLabel', { page }));
   const description = entry.bio ?? t('author.description', { name: entry.name });
   const path = pagedPath(authorPath(author), page);
 
