@@ -133,7 +133,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `PlanSelect` _component_: A native select in `PLAN_FIELD`'s style with a chevron of its own, inside the field: the browser's marker sat against the right border and kept the light theme's look.
 - `PlanSheetClose` _component_: The × in the head of one of the planner's sheets, a 44 px target.
 - `PlanCheckRow` _component_: A checkbox with its label and an optional line under it, the whole row the target: at least 44 px on a phone, as the planner's sheet requires of every target (docs/features/trip-planner/phone.md).
-- `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Reisedaten | Beste Reisedaten finden“ draws it, 44 px tall on a phone.
+- `PlanSegmented` _component_: A few short choices side by side, one pressed: the planner's segmented control, as the Dates step's „Ich kenne meine Daten | Daten finden“ draws it, 44 px tall on a phone.
 - `PlanStepper` _component_: − value +, with 44 px buttons on a phone and 32 px at a desk. The value is an `<output>`, so a screen reader hears the new count after a press.
 - `PlanChip` _component_: A pill to press, on or off (`aria-pressed`, or `aria-expanded` for one that opens more): the When mode's periods, a ticket's days, its hopper and its variant, and the ticket question's two answers. 44 px on a phone, 36 at a desk.
 - `PLAN_WIDE_QUERY` _const_: `lg`, where the planner's panels are drawn inline and the result has its two columns; below it, sheets.
@@ -189,9 +189,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`planner/plan-find.tsx`](../../components/trip-regions/planner/plan-find.tsx)
 
-- `PlanDatesStep` _component_: Step 1, the dates: the range calendar, and under it one quiet way to the other question, "No dates yet? Find the best time" (a period, a trip length, and if wanted only the school holidays of a region), with its way back.
+- `PlanDatesStep` _component_: Step 1, the dates, its two answers side by side as equals: „Ich kenne meine Daten“, the range calendar with the quietest week ahead offered over it (`QuietWeekCard`), or „Daten finden“, the search (a period, a trip length, and if wanted …
 - `PlanFind` _component_: The When mode's inputs: the period chips (the next twelve months, next year and its seasons, or a range of the visitor's own), the trip length (3–21 days, 10 to start), and "only in our school holidays" with a region in the holiday data's …
-- `defaultSearchRange` _function_: The search the When mode opens on: the next twelve months.
 
 ### [`planner/plan-ideas.tsx`](../../components/trip-regions/planner/plan-ideas.tsx)
 
@@ -225,6 +224,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/plan-move-card.tsx`](../../components/trip-regions/planner/plan-move-card.tsx)
 
 - `PlanMoveCard` _component_: A day that is only the move to the next city (`travel`), as the Days view's card in the move's dashed primary ink: the date and „Reisetag“ with the typical times, the two cities on the line with the mode between them, the service and its …
+
+### [`planner/plan-past-notice.tsx`](../../components/trip-regions/planner/plan-past-notice.tsx)
+
+- `PlanPastNotice` _component_: Where the plan would stand, for a trip that began before the region's today (a remembered trip put back, an old link): no request goes out, since the API answers it with a 400.
+- `usePastTrip` _hook_: Whether the planner's trip began before the region's today; `null` for a trip ahead.
 
 ### [`planner/plan-peak-card.tsx`](../../components/trip-regions/planner/plan-peak-card.tsx)
 
@@ -321,10 +325,11 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`planner/use-trip-plan.ts`](../../components/trip-regions/planner/use-trip-plan.ts)
 
 - `useTripPlan` _hook_: The plan for a request query, asked once the controls have been still for `PLAN_DEBOUNCE_MS`.
+- `usePlanRequestQuery` _hook_: The `/plan` query of the planner's own state (`planRequestQuery` with the planner's scope): the trip's own headliners named while no park is chosen, nothing while a ticket or the region's today holds the request back.
 - `useStatePlan` _hook_: The plan for the planner's own state, the one the answer shows: also read by the setup's Route, which lists the plan's stays. One request either way, the cache's.
 - `usePlanIdeas` _hook_: Parky's ideas for the plan on screen, asked once that plan answers the query asked last, so they never hold up the plan and never describe the one before it. The API caches them an hour apart from the plan, as the planner does.
 - `useUnpinnedPlan` _hook_: The plan without the visitor's pins, for the edit bar's "best order" figure: the same query minus `lock`, which is usually the plan the visitor started from and still in the cache.
-- `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry. `null` dates leave it idle.
+- `useTripCalendar` _hook_: A window of the region calendar (at most 92 days) through the relay: the hours, slots, seasons and per-day figures the plan does not carry.
 - `useTripWhen` _hook_: The When search for a request query, debounced like the plan; the previous answer stays on screen while the next is asked. The API keeps an answer six hours, the planner a quarter.
 - `useSchoolBreaks` _hook_: The school-holiday regions the When mode's picker offers, read once when the picker is shown. The data changes a few times a year; the relay keeps it a day.
 
@@ -363,7 +368,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`wizard/steps/dates-step.tsx`](../../components/trip-regions/wizard/steps/dates-step.tsx)
 
-- `DatesStep` _component_: Step 1, the dates, the one answer the plan needs: the planner's date grid with month chips over it, and "No dates yet? Find the best time" under it.
+- `DatesStep` _component_: Step 1, the dates, the one answer the plan needs: „Ich kenne meine Daten“ or „Daten finden“ as equals, then the planner's date grid with month chips and the quietest week ahead over it, or the search (`PlanDatesStep`).
 
 ### [`wizard/steps/evenings-step.tsx`](../../components/trip-regions/wizard/steps/evenings-step.tsx)
 
@@ -408,7 +413,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`wizard/trip-wizard.tsx`](../../components/trip-regions/wizard/trip-wizard.tsx)
 
 - `TripWizard` _component_: The trip planner's assistant: one question a screen, asked by Parky from the region's scene (`WizardGuideBand`), the step rail, the step's cards, and a footer with the plan as a ribbon (`PlanRibbon`) once the trip has dates.
-- `useWizardSteps` _hook_: The assistant's steps for the planner's region and trip (`tripWizardSteps`), only those with a body in `WIZARD_STEP_BODIES`. The list follows the trip's nights, so a Paris weekend's hotel goes into the Route once its dates are chosen.
+- `useWizardSteps` _hook_: The assistant's steps for the planner's region and trip (`tripWizardSteps`), only those with a body in `WIZARD_STEP_BODIES`, the later ones included.
 - Types: `TripWizardScreen`, `TripWizardAt`
 
 ### [`wizard/wizard-answers.tsx`](../../components/trip-regions/wizard/wizard-answers.tsx)

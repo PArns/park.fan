@@ -423,7 +423,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `clipSearchRange` _function_: A search range cut to what the API searches, from `today` to a year ahead, or `null` where fewer than `days` days are left in it, which `/when` would answer with a 400.
 - `monthSearchRange` _function_: A crowd-calendar month as the When mode's search: the trip of the default length found inside that month, from `today` on. `null` where the rest of the month is shorter than the trip.
 - `whenPeriodOf` _function_: Which chip a search range is: one of `whenPeriods`, else `custom`.
-- `whenRequestQuery` _function_: The `/when` request's query: the search, the length, the holiday region, the three windows the cards show, and the trip options `/plan` takes, pins aside. `null` outside the When mode.
+- `whenRequestQuery` _function_: The `/when` request's query: the search, the length, the holiday region, the three windows the cards show, and the trip options `/plan` takes, pins aside.
 - `windowReasons` _function_: A window's reasons this client can say, in order.
 - `windowWarnings` _function_: A window's warnings this client can say, in order.
 - `aheadForWeather` _function_: Why a window stands above one with a shorter wait: the ranking adds minutes for heat and the storm season, so a trip can lose its place to a longer wait in better weather.
@@ -482,7 +482,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `reserveTripDays` _function_: Every park day of the plan as `reserveDays` takes it, a hop day's two parks on one date, each park and date once, in trip order.
 - `setFindMode` _function_: Switch between the two ways in: the visitor knows the dates, or the planner finds them. Finding starts on `range` with the length of the dates chosen so far (or `DEFAULT_FIND_DAYS`); knowing drops the search.
 - `planWindow` _function_: Level 3 of the When mode: plan a found window, which leaves the search for the plan itself.
-- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanDayWeather`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
+- Types: `PlanDayKind`, `PlanMove`, `PlanStay`, `PlanStaySuggestion`, `PlanTravel`, `PlanDayWeather`, `PlanParkVisit`, `PlanDay`, `PlanHopperDay`, `PlanHopperVerdict`, `PlanOwnedTicket`, `PlanTicketAlternative`, `PlanTicketSuggestion`, `PlanEveningHighlight`, `PlanEvening`, `PlanAlternative`, `PlanParkSummary`, `PlanTotals`, `PlanMeta`, `TripPlan`, `PlanSpareDayPark`, `PlanRequestScope`, `PlanProblem`, `PlanEditChange`, `PlanEditKind`, `PlanDayEntry`, `PlanReservePark`
 - Re-exports: `./plan-query`
 
 ### [`planner-bridge.ts`](../../lib/trip-regions/planner-bridge.ts)
@@ -591,6 +591,24 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `clearTrip` _function_: Clear every place this device keeps one region's trip in, the same for „Reise löschen“ and „Neue Reise planen“, and keep what it cleared in memory only:
 - Types: `ClearedTrip`
 
+### [`trip-dates.ts`](../../lib/trip-regions/trip-dates.ts)
+
+- `pastTrip` _function_: Whether a trip began before `today`, and whether it is over; `null` for a trip ahead.
+- `planFromToday` _function_: The rest of a trip under way, from today to its last day, with every other answer kept; pins before today go. A trip that is over or still ahead stays as it is.
+- `defaultSearchRange` _function_: The search the When mode opens on: the next twelve months.
+- `searchFromToday` _function_: A When search as it can still be asked: a period that began before today starts today, and one whose rest is shorter than the trip searches the next twelve months, as a new search does.
+- `quietWeekWindow` _function_: The calendar window the suggestion reads: every day of every week it weighs.
+- `quietWeek` _function_: The quietest week ahead for `parks`: of the `QUIET_WEEK_DAYS`-day stretches the calendar covers from `from` on, the one whose days have the lowest mean figure, the earliest of equals.
+- `QUIET_WEEK_DAYS` _const_: The suggested week, arrival and departure included.
+- `QUIET_WEEK_STARTS` _const_: How many first days the suggestion weighs, from tomorrow: eight weeks.
+- Types: `PastTrip`
+
+### [`trip-fit.ts`](../../lib/trip-regions/trip-fit.ts)
+
+- `parkDaysHeld` _function_: The park days a trip holds as the planner counts them: its days less a free arrival and a free departure day (`parkDaysAvailable`), less the rest days the rest rule puts between them (`rest=auto` no more than four park days in a row, …
+- `headlinersForTrip` _function_: The headliners a trip starts with while the visitor has chosen no parks: the region's, in its order, as many as the trip's park days hold (`parkDaysHeld`), at least one, a pinned one always.
+- Types: `TripFitState`
+
 ### [`trip-links.ts`](../../lib/trip-regions/trip-links.ts)
 
 - `tripRegionLinks` _function_: A region answer reduced to its links, or `null` for a region the registry does not list as live (one the API curates before its hub exists), whose links would lead nowhere.
@@ -630,9 +648,11 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `wizardQuestions` _function_: The questions of every step for a region, before any merging, in the order of the steps.
 - `tripWizardSteps` _function_: The assistant's steps for a region: a step with one question goes into its neighbour, the option step before it, else the one after (Japan's evening question sits in Tempo, Paris' hotel for a weekend in the Route).
 - `tripWizardFacts` _function_: The facts of a region and a trip, as `tripWizardSteps` reads them: the API's region, the registry's entry, the ticket catalog and the trip's dates.
+- `wizardPass` _function_: The steps one opening of the assistant walks: the first pass, and of the later steps only those it was opened on (`opened`), in their place, so the result's answer "Evenings" leads from Tempo to the Evenings and on to the finale.
 - `stepQuestions` _function_: The questions of one step's body inside a drawn step: the host's own, or a merged step's.
 - `wizardStepIndex` _function_: Where a step sits in the list: its own index, the index of the step it went into, or where the region has no such step, the first step after it (`hotel` in Japan opens the Route). `-1` only past the last.
 - `TRIP_WIZARD_STEPS` _const_: A step of the assistant, in the order it is asked. The finale is no step: it follows the last.
+- `LATER_STEPS` _const_: The steps the first pass leaves out: hardly anybody answers them before seeing a plan, and each screen before it loses visitors. The figures: docs/features/trip-planner/wizard.md#the-steps-1.
 - `MIN_NIGHTS_FOR_A_MOVE` _const_: A hotel change needs a night on each side and a night to change on: with fewer the trip sleeps in one city, so the change's buffer is not asked.
 - `QUESTION_STEP` _const_: The step each question belongs to, wherever it is drawn.
 - Types: `TripWizardStepKey`, `TripWizardQuestion`, `TripWizardFacts`, `TripWizardStep`
