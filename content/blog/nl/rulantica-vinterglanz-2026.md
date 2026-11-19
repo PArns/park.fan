@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Rulantica in de winter: Vinterglanz en wachttijden'
   description: >-
-    Van 28-11-2026 tot 10-1-2027 viert Rulantica voor het eerst Vinterglanz, met een avondshow bij het golfslagbad. Tickets vanaf 41 euro, wachttijden live.
+    Van 28-11-2026 tot 10-1-2027 viert Rulantica voor het eerst Vinterglanz, met een avondshow bij het golfslagbad. Dagticket vanaf 41 euro, wachttijden live.
   keywords:
     - Rulantica winter
     - Rulantica winter 2026
@@ -54,13 +54,13 @@ Daarna staat er in de lobby een grote kerstboom, en in de hallen hangen slingers
 
 Volgens het park heb je het beste zicht vanuit het golfslagbad, voor een kerstverhaal een nogal ongewone plek in de zaal. Verder dan het rode afzetlint in het bad mag je niet. Het park waarschuwt vooraf dat de show werkt met felle lichteffecten, harde geluiden, rook en water.
 
-Er is ’s avonds meer dan één voorstelling: op de pagina over het middernachtfeest staat de “laatste avondshow”. De tijden heeft Rulantica nog niet gepubliceerd, ook niet voor het programma overdag. Pas dan weet je of het Moonlight-ticket vanaf 19 uur genoeg is voor de show.
+Op de pagina over het middernachtfeest staat de “laatste avondshow”, dus ’s avonds kan er meer dan één voorstelling zijn. De tijden heeft Rulantica nog niet gepubliceerd, ook niet voor het programma overdag. Pas dan weet je of het Moonlight-ticket vanaf 19 uur genoeg is voor de show.
 
 ## Het programma overdag
 
 Het meeste gebeurt op Skip Strand. In de Vinter-kalender openen kinderen elke dag samen met Snorri en de Noordse winterfee een deurtje, wat elf minuten duurt. Zestien minuten elk duren Bubbas Christmas Presents, de bellenblaasshow Snorri in a Christmas Bubble, “Die Wikinger & das Geheimnis der Weihnacht” (de Vikingen en het geheim van Kerstmis), de kinderdisco Jingle Beats en het Vinter-Circus, waar de Talent Academy acrobatiek laat zien waar kinderen aan mee kunnen doen. Voor het Snorri-glijbaandiploma, voor kinderen van 4 tot 11 jaar, staat 20 minuten.
 
-De speurtocht “Die Wikinger & die verzauberten Sterne” (de Vikingen en de betoverde sterren) staat met 16 minuten bij Lumåfals in het programma en loopt rond Skip Strand. Bij de Frigg Tempel, een verwarmd buitenbad, knutselen kinderen een uur lang in Snorri’s Sterrenwerkplaats rond de thuisster. Daar draait Rulantica Vibes vijf uur lang muziek en cocktails; de knutselclub mag alleen meeluisteren.
+De speurtocht “Die Wikinger & die verzauberten Sterne” (de Vikingen en de betoverde sterren) staat met 16 minuten bij Lumåfals in het programma en loopt rond Skip Strand. In het gebied rond de Frigg Tempel, bij de waterdraaimolen Tønnevirvel, knutselen kinderen een uur lang in Snorri’s Sterrenwerkplaats rond de thuisster. Bij het verwarmde buitenbad Frigg Tempel draait Rulantica Vibes vanaf 17 uur vijf uur lang muziek en cocktails, op zondag van 13 tot 18 uur.
 
 ## Vikingløp en Tønnevirvel
 
@@ -72,7 +72,7 @@ De speurtocht “Die Wikinger & die verzauberten Sterne” (de Vikingen en de be
 
 ## Toegang en tickets
 
-De show en het programma zitten bij de gewone toegang inbegrepen. Een dagticket kost afhankelijk van de dag 41 tot 54 euro voor volwassenen vanaf 12 jaar en 38 tot 51 euro voor kinderen van 4 tot 11 en 60-plussers. Kinderen tot en met drie jaar mogen gratis naar binnen. Vanaf 17 uur geldt het avondticket voor 37,50 tot 46,50 euro, met korting 35 tot 43,50 euro. Het Moonlight-ticket vanaf 19 uur kost 28 tot 34 euro voor iedereen vanaf vier jaar. Met de sauna Hyggedal erbij kost een dag 55 tot 68 euro, voor 60-plussers 52 tot 65 euro. De prijs voor één bepaalde dag vind je alleen in de kalender van de ticketshop.
+Een dagticket kost afhankelijk van de dag 41 tot 54 euro voor volwassenen vanaf 12 jaar en 38 tot 51 euro voor kinderen van 4 tot 11 en 60-plussers. Kinderen tot en met drie jaar mogen gratis naar binnen. Vanaf 17 uur geldt het avondticket voor 37,50 tot 46,50 euro, met korting 35 tot 43,50 euro. Het Moonlight-ticket vanaf 19 uur kost 28 tot 34 euro voor iedereen vanaf vier jaar. Met de sauna Hyggedal erbij kost een dag 55 tot 68 euro, voor 60-plussers 52 tot 65 euro. De prijs voor één bepaalde dag vind je alleen in de kalender van de ticketshop.
 
 Elk ticket geldt voor één datum. Het park raadt aan online te boeken: aan de kassa krijg je alleen een kaartje als er nog plek is, en dan betaal je 6 euro extra. Een kluisje kost 1 euro per dag, en je winterjas past erin. Die heb je binnen ook niet nodig, want de lucht is daar 30 tot 34 graden en het water 27 tot 32.
 
@@ -84,7 +84,7 @@ Rulantica is elke dag open van 9.30 tot 22 uur. Hotelgasten en wie een Abenteuer
 
 De eerste dag van Vinterglanz is meteen de zevende verjaardag van Rulantica, dat in 2019 openging. Van 10 tot 16 uur is er elk uur een klein Snorri-feestje in Lumåfals bij de Guest Relation, en om 16.30 uur een verjaardagsdisco met Snorri op Skip Strand. Airbrushtattoos zijn er van 10 tot 18 uur, en de hele dag staat er een fotoplek met de thuisster. Deel je die foto met @rulantica en #Vinterglanz, dan maak je kans op twee toegangskaarten en een knuffel-Snorri. Een dagticket kost die zaterdag vanaf 41 euro, voor kinderen en 60-plussers vanaf 38 euro.
 
-Op zaterdag 5 december blijft Rulantica voor het middernachtfeest open tot 0 uur, ruim 14 uur dus. De show opent de avond, daarna draait een dj, en op Vikingløp loopt een late-night-glijwedstrijd met prijsuitreiking. In Hyggedal zijn er opgietingen, scrubs en gezichtsmaskers. Het feest zit bij de toegang inbegrepen. Die dag kost het dagticket 48 euro, voor kinderen 45 euro, het avondticket 44 euro, voor kinderen 41 euro, en het Moonlight-ticket 32 euro voor iedereen. Of avond- en Moonlight-ticket die dag tot middernacht gelden, heeft het park nog niet gezegd.
+Op zaterdag 5 december blijft Rulantica voor het middernachtfeest open tot 0 uur, ruim 14 uur dus. De show opent de avond, daarna draait een dj, en op Vikingløp loopt een late-night-glijwedstrijd met prijsuitreiking. In Hyggedal zijn er opgietingen, scrubs en gezichtsmaskers. Het feest zit bij de toegang inbegrepen. Die dag kost het dagticket 48 euro, voor kinderen 45 euro, het avondticket 44 euro, voor kinderen 41 euro, en het Moonlight-ticket 32 euro voor iedereen. Of avond- en Moonlight-ticket die dag tot middernacht gelden, heeft het park nog niet bekendgemaakt.
 
 ## Buiten zwemmen in december
 
@@ -108,7 +108,7 @@ Van januari tot maart verkoopt Rulantica in bepaalde weken een laagseizoensaanbi
 
 In de winter van 2025/26 had Rulantica geen eigen seizoensnaam en geen kerstprogramma. De Mack-groep maakte toen reclame met de glijbanen, het golfslagbad, Vikingløp en het nieuwe Svømmepøl, en de openingstijden waren dezelfde als nu. Het Europa-Park heeft al 25 jaar een winterseizoen. De Winterzauber loopt dit jaar van 28 november tot 9 januari, voor hotelgasten tot 10 januari, elke dag vanaf 11 uur tot minstens 19 uur. Op kerstavond en eerste kerstdag is ook het Europa-Park dicht. Vinterglanz staat voor volgende winter al in de agenda, van 27 november 2027 tot 9 januari 2028.
 
-Op 11 januari gaat Rulantica meteen over in het Nordlyfest, dat tot 19 maart duurt en bij de toegang inbegrepen is. Dat Noordse lichtfeest bestond al onder een andere naam. Deze keer horen er lichtinstallaties bij, een vuurbaken bij de Frigg Tempel en een avondshow bij Surf Fjørd met luchtacrobatiek boven het water. Welke andere parken deze winter open zijn, staat in onze [wintergids 2026](/blog/winter-pretparken-2026). Het Europa-Park gaat na de Winterzauber pas op 20 maart 2027 weer open.
+Op 11 januari gaat Rulantica meteen over in het Nordlyfest, dat tot 19 maart duurt en bij de toegang inbegrepen is. Dat Noordse lichtfeest bestond al onder een andere naam. Deze keer horen er lichtinstallaties bij, een vuurbaken bij de Frigg Tempel en een avondshow bij Surf Fjørd met luchtacrobatiek boven het water. Welke andere parken deze winter open zijn, staat in onze [wintergids 2026](/blog/winter-pretparken-2026). Het Europa-Park gaat na de Winterzauber pas weer open met de [Pre-Opening Weeks vanaf 7 maart 2027](/news/europa-park-pre-opening-weeks-2027), het seizoen begint op 20 maart.
 
 [Rulantica](ref:rulantica?full)
 
@@ -136,4 +136,5 @@ Bronnen:
 [Overnachten](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-rulantica-gaeste),
 [Geschiedenis van de Mack-groep](https://mack.group/de/ueber-uns/geschichte-und-meilensteine),
 [Persbericht winter 2025/26](https://mack.group/en/press-media/press-releases/2025-11-27/the-winter-season-to-celebrate-the-anniversary-year),
-[Factsheet winter 2025/26](https://mack.group/en/press-media/press-releases/2025-11-27/fact-sheet-winter).
+[Factsheet winter 2025/26](https://mack.group/en/press-media/press-releases/2025-11-27/fact-sheet-winter),
+[Pre-Opening Weeks in het Europa-Park](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening).

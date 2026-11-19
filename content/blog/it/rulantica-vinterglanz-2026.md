@@ -24,7 +24,7 @@ rideLinks:
 seo:
   title: 'Rulantica in inverno: Vinterglanz e tempi di attesa'
   description: >-
-    Dal 28/11/2026 al 10/1/2027 Rulantica festeggia per la prima volta Vinterglanz, con show serale nella piscina a onde. Biglietti da 41 €, attese live.
+    Dal 28/11/2026 al 10/1/2027 Rulantica festeggia per la prima volta Vinterglanz, con show serale nella piscina a onde. Biglietto giornaliero da 41 €, attese live.
   keywords:
     - rulantica inverno
     - Rulantica inverno 2026
@@ -54,13 +54,13 @@ Nella lobby ci sarà un grande albero di Natale, mentre tra gli abeti decorati d
 
 Secondo il parco la vista migliore si ha dall’acqua della piscina a onde: per una storia di Natale non capita spesso di stare in platea a mollo. Non si può però andare oltre la transenna rossa nella vasca. Il parco avverte in anticipo che lo spettacolo usa luci intense, effetti sonori forti, nebbia e acqua.
 
-Le repliche serali sono più di una, visto che la pagina della festa di mezzanotte parla dell’«ultimo spettacolo serale». Rulantica non ha ancora pubblicato gli orari, nemmeno quelli del programma di giorno. Solo allora si saprà se il biglietto Moonlight, valido dalle 19, basta per vedere lo spettacolo.
+La pagina della festa di mezzanotte parla dell’«ultimo spettacolo serale», quindi la sera le repliche potrebbero essere più di una. Rulantica non ha ancora pubblicato gli orari, nemmeno quelli del programma di giorno. Solo allora si saprà se il biglietto Moonlight, valido dalle 19, basta per vedere lo spettacolo.
 
 ## Il programma durante il giorno
 
 Quasi tutto si svolge allo Skip Strand. Nel Vinter-Kalender i bambini aprono ogni giorno una finestrella insieme a Snorri e alla fata nordica dell’inverno, in undici minuti. Durano 16 minuti ciascuno Bubbas Christmas Presents, lo spettacolo di bolle di sapone Snorri in a Christmas Bubble, «Die Wikinger & das Geheimnis der Weihnacht», la baby dance Jingle Beats e il Vinter-Circus, dove la Talent Academy fa provare ai bambini qualche numero di circo. Per il distintivo di scivolo di Snorri, aperto ai bambini dai 4 agli 11 anni, sono previsti 20 minuti.
 
-La caccia al tesoro «Die Wikinger & die verzauberten Sterne» è in programma a Lumåfals, dura 16 minuti e si muove intorno allo Skip Strand. Al Frigg Tempel, una vasca esterna riscaldata, nel laboratorio delle stelle di Snorri i bambini passano un’ora a creare lavoretti a tema stella. Sempre lì, con Rulantica Vibes, vanno avanti per cinque ore musica e cocktail, ma ai piccoli del laboratorio tocca solo la musica.
+La caccia al tesoro «Die Wikinger & die verzauberten Sterne» è in programma a Lumåfals, dura 16 minuti e si muove intorno allo Skip Strand. Nella zona del Frigg Tempel, vicino alla giostra acquatica Tønnevirvel, nel laboratorio delle stelle di Snorri i bambini passano un’ora a creare lavoretti a tema stella. Alla vasca esterna riscaldata Frigg Tempel, con Rulantica Vibes, dalle 17 vanno avanti per cinque ore musica e cocktail, la domenica dalle 13 alle 18.
 
 ## Vikingløp e Tønnevirvel
 
@@ -72,7 +72,7 @@ La caccia al tesoro «Die Wikinger & die verzauberten Sterne» è in programma a
 
 ## Ingresso e biglietti
 
-Spettacolo e programma sono compresi nel normale biglietto d’ingresso. Il biglietto giornaliero costa, a seconda del giorno, da 41 a 54 € per gli adulti dai 12 anni e da 38 a 51 € per i bambini dai 4 agli 11 anni e gli over 60; fino a tre anni si entra gratis. Dalle 17 vale il biglietto serale, da 37,50 a 46,50 €, ridotto da 35 a 43,50 €. Il biglietto Moonlight, dalle 19, costa da 28 a 34 € per tutti dai quattro anni in su. Con la sauna Hyggedal la giornata costa da 55 a 68 €, per gli over 60 da 52 a 65 €. Il prezzo di un giorno preciso si trova solo nel calendario del negozio online.
+Il biglietto giornaliero costa, a seconda del giorno, da 41 a 54 € per gli adulti dai 12 anni e da 38 a 51 € per i bambini dai 4 agli 11 anni e gli over 60; fino a tre anni si entra gratis. Dalle 17 vale il biglietto serale, da 37,50 a 46,50 €, ridotto da 35 a 43,50 €. Il biglietto Moonlight, dalle 19, costa da 28 a 34 € per tutti dai quattro anni in su. Con la sauna Hyggedal la giornata costa da 55 a 68 €, per gli over 60 da 52 a 65 €. Il prezzo di un giorno preciso si trova solo nel calendario del negozio online.
 
 Ogni biglietto vale per una data. Il parco consiglia di comprarlo online: alla cassa si trovano biglietti solo se c’è ancora posto, e con 6 € in più. Un armadietto costa 1 € al giorno e ci entra anche il giaccone, perché dentro l’aria è tra 30 e 34 gradi e l’acqua tra 27 e 32.
 
@@ -108,7 +108,7 @@ Da gennaio a marzo, in alcune settimane, Rulantica vende un’offerta di bassa s
 
 Nell’inverno 2025/26 Rulantica non aveva un nome per la stagione né un programma natalizio. Allora il gruppo Mack puntava sugli scivoli, sulla piscina a onde, su Vikingløp e sul nuovo Svømmepøl, con gli stessi orari di oggi. L’Europa-Park ha la sua stagione invernale da 25 anni. Quest’anno il suo Winterzauber va dal 28 novembre al 9 gennaio, per gli ospiti degli hotel fino al 10 gennaio, tutti i giorni dalle 11 fino almeno alle 19. La vigilia e il giorno di Natale anche l’Europa-Park è chiuso. Vinterglanz è già in calendario per il prossimo inverno, dal 27 novembre 2027 al 9 gennaio 2028.
 
-L’11 gennaio Rulantica passa direttamente al Nordlyfest, che dura fino al 19 marzo ed è compreso nell’ingresso. La festa nordica delle luci c’era già, con un altro nome. Stavolta ci sono installazioni luminose, un falò al Frigg Tempel e uno spettacolo serale al Surf Fjørd con acrobazie aeree sopra l’acqua. Gli altri parchi aperti quest’inverno sono nella nostra [guida all’inverno 2026](/blog/parchi-divertimenti-inverno-2026). Dopo il Winterzauber l’Europa-Park riapre solo il 20 marzo 2027.
+L’11 gennaio Rulantica passa direttamente al Nordlyfest, che dura fino al 19 marzo ed è compreso nell’ingresso. La festa nordica delle luci c’era già, con un altro nome. Stavolta ci sono installazioni luminose, un falò al Frigg Tempel e uno spettacolo serale al Surf Fjørd con acrobazie aeree sopra l’acqua. Gli altri parchi aperti quest’inverno sono nella nostra [guida all’inverno 2026](/blog/parchi-divertimenti-inverno-2026). Dopo il Winterzauber l’Europa-Park riapre solo con le [Pre-Opening Weeks dal 7 marzo 2027](/news/europa-park-pre-opening-weeks-2027), mentre la stagione comincia il 20 marzo.
 
 [Rulantica](ref:rulantica?full)
 
@@ -136,4 +136,5 @@ Fonti:
 [Pernottamento](https://www.europapark.de/de/rulantica/infos/planen-sie-ihren-besuch/uebernachtungsangebote-fuer-rulantica-gaeste),
 [Storia del gruppo Mack](https://mack.group/de/ueber-uns/geschichte-und-meilensteine),
 [Comunicato stampa inverno 2025/26](https://mack.group/en/press-media/press-releases/2025-11-27/the-winter-season-to-celebrate-the-anniversary-year),
-[Scheda informativa inverno 2025/26](https://mack.group/en/press-media/press-releases/2025-11-27/fact-sheet-winter).
+[Scheda informativa inverno 2025/26](https://mack.group/en/press-media/press-releases/2025-11-27/fact-sheet-winter),
+[Pre-Opening Weeks all’Europa-Park](https://www.europapark.de/de/freizeitpark/europa-park-pre-opening).
