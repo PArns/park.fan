@@ -9,6 +9,7 @@ import {
   LandingNextSteps,
 } from '@/components/marketing/editorial-ui';
 import { buttonLinkProps } from '@/components/ui/button';
+import { CalendarIconSprite } from '@/components/parks/calendar-icon-sprite';
 import type { Locale } from '@/i18n/config';
 import { Link } from '@/i18n/navigation';
 import { resolveEntryForLocale } from '@/lib/blog/listing';
@@ -86,8 +87,11 @@ export interface TripRegionHubPageProps {
   region: TripRegion;
   calendar: TripCalendar | null;
   bestDays: TripBestDays | null;
-  /** The quietest trip windows of the next twelve months, for the best-time teaser. */
-  when: TripWhen | null;
+  /**
+   * The quietest trip windows of the next twelve months, for the best-time teaser: a read the
+   * route started, awaited only inside the teaser's `<Suspense>`.
+   */
+  when: Promise<TripWhen | null>;
   /** The region's today and the render's clock, for the first answer. */
   todayIso: string;
   nowMs: number;
@@ -180,17 +184,12 @@ export async function TripRegionHubPage({
     />
   );
 
-  const whenYear = when ? bestTimeYear(when.meta.from) : null;
+  // The best-time pages' own year, so the title stands before `/when` answers.
+  const whenYear = bestTimeYear(todayIso);
   // The best-time chapter needs the region's pages and its words for them; without, it is left out.
   const whenTitle =
-    config.bestTime.length > 0
-      ? whenYear
-        ? ownWords(tRegion, 'when.title', { year: whenYear })
-        : ownWords(tRegion, 'when.titleNoYear')
-      : null;
-  const bestTimeLabel = whenYear
-    ? ownWords(tRegion, 'when.pageLink', { year: whenYear })
-    : ownWords(tRegion, 'when.pageLinkNoYear');
+    config.bestTime.length > 0 ? ownWords(tRegion, 'when.title', { year: whenYear }) : null;
+  const bestTimeLabel = ownWords(tRegion, 'when.pageLink', { year: whenYear });
   const attribution = region.travel.attribution?.trim();
   const sources = calendar
     ? [
@@ -272,15 +271,17 @@ export async function TripRegionHubPage({
               </p>
             )}
             {calendar && windowDays.length > 0 ? (
-              <HubCalendar
-                region={slimRegion(region)}
-                // The whole window from today, the hub's 30 days or the month: a week shows at a
-                // time, and the others stay in the served HTML for a reader without script.
-                calendar={sliceCalendar(calendar, windowDays)}
-                todayIso={todayIso}
-                locale={locale}
-                legend={<HubLegend />}
-              />
+              <CalendarIconSprite>
+                <HubCalendar
+                  region={slimRegion(region)}
+                  // The whole window from today, the hub's 30 days or the month: a week shows at a
+                  // time, and the others stay in the served HTML for a reader without script.
+                  calendar={sliceCalendar(calendar, windowDays)}
+                  todayIso={todayIso}
+                  locale={locale}
+                  legend={<HubLegend />}
+                />
+              </CalendarIconSprite>
             ) : (
               <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
             )}

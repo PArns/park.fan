@@ -38,6 +38,11 @@ export function knownSeasonKind(kind: string): ParkSeasonKind {
   return kind in SEASON_KIND_ICON ? (kind as ParkSeasonKind) : 'special_event';
 }
 
+/** The classes of a season kind's icon: its size and its colour, then the caller's. */
+export function seasonIconClass(kind: ParkSeasonKind, className?: string): string {
+  return cn('size-3 shrink-0', SEASON_KIND_ICON[knownSeasonKind(kind)].tone, className);
+}
+
 /**
  * A season kind's icon in its colour. With a `label` it is an image of that name; without one it
  * is decoration beside a name the reader already has.
@@ -51,10 +56,10 @@ export function SeasonKindIcon({
   label?: string;
   className?: string;
 }) {
-  const { icon: Icon, tone } = SEASON_KIND_ICON[knownSeasonKind(kind)];
+  const { icon: Icon } = SEASON_KIND_ICON[knownSeasonKind(kind)];
   return (
     <Icon
-      className={cn('size-3 shrink-0', tone, className)}
+      className={seasonIconClass(kind, className)}
       {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': true })}
     />
   );
