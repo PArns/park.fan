@@ -135,6 +135,7 @@ export const ORLANDO: TripRegionConfig = {
       { group: 'day-trips' },
     ],
     scene: 'reiseplaner/parky-orlando-tag',
+    eveningScene: 'reiseplaner/parky-orlando-abend',
   },
   bestTime: [
     {

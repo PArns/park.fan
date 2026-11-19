@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Japan, Abend",
+  "tags": ["diagram", "night"],
+  "alt": {
+    "de": "Parky mit einer kleinen Laterne unter einem blühenden Kirschbaum am Abend, über ihm leuchten Papierlaternen, der Mond steht über dem verschneiten Fuji, dahinter ein Schnellzug mit erleuchteten Fenstern auf einem Viadukt.",
+    "en": "Parky holding a small lantern under a cherry tree in bloom in the evening, paper lanterns glowing above him, the moon over snowy Mount Fuji and a bullet train with lit windows on a viaduct behind.",
+    "nl": "Parky met een lantaarntje onder een bloeiende kersenboom in de avond, boven hem gloeien papieren lantaarns, de maan staat boven de besneeuwde Fuji en achter hem rijdt een hogesnelheidstrein met verlichte ramen over een viaduct.",
+    "fr": "Parky tient une petite lanterne sous un cerisier en fleurs le soir, des lanternes en papier brillent au-dessus de lui, la lune se pose sur le mont Fuji enneigé et un train à grande vitesse aux fenêtres éclairées passe sur un viaduc.",
+    "es": "Parky con un pequeño farolillo bajo un cerezo en flor al anochecer, farolillos de papel encendidos sobre él, la luna sobre el Fuji nevado y un tren bala con las ventanas iluminadas en un viaducto al fondo.",
+    "it": "Parky con una piccola lanterna sotto un ciliegio in fiore la sera, lanterne di carta accese sopra di lui, la luna sul Fuji innevato e un treno ad alta velocità con i finestrini illuminati su un viadotto."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.45,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-19"
+}

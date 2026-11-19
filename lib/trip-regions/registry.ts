@@ -141,10 +141,13 @@ export interface TripHub {
   /** The resorts chapter's cards, in the order they stand; a group not listed has no card. */
   resorts: readonly TripHubResort[];
   /**
-   * The region's Parky scene as a picture (a media id), for the closing band: the drawn scene
+   * The region's Parky scene by day as a picture (a media id), the hub's head: the drawn scene
    * carries gradient ids, so it may stand on a page only once.
    */
   scene: string;
+  /** The same scene in the evening (a media id), for the closing band, so the page ends on a
+   * picture of its own and not on the head's again. */
+  eveningScene: string;
 }
 
 /** A kind of hotel the planner offers, and the hotel area such a stay is usually in. */

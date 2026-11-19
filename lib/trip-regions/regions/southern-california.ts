@@ -105,6 +105,7 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
       { group: 'day-trips', photo: 'knotts-berry-farm/hangtime' },
     ],
     scene: 'reiseplaner/parky-kalifornien-tag',
+    eveningScene: 'reiseplaner/parky-kalifornien-abend',
   },
   // One page: a Disneyland page of its own needs its words under
   // `tripRegions.southern-california.bestTime` in all six languages first.

@@ -84,6 +84,7 @@ export const JAPAN: TripRegionConfig = {
       { group: 'legoland-japan' },
     ],
     scene: 'reiseplaner/parky-japan-tag',
+    eveningScene: 'reiseplaner/parky-japan-abend',
   },
   bestTime: [
     {
