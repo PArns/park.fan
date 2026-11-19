@@ -100,7 +100,9 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 
 The head stands on Parky's picture of the region (`hub.scene`, `/media/reiseplaner/parky-<region>-tag.webp`),
 the one the header's planner band, the park pages' tile and the blog's head show, not on a park
-photo: the hub is the planner's page and the calendar's, for every park of the region.
+photo: the hub is the planner's page and the calendar's, for every park of the region. The closing band
+shows the same scene in the evening (`hub.eveningScene`, `parky-<region>-abend.webp`), so the
+page does not end on the picture it began with.
 
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
 welchem Tag?“ as its big one), the lead, the two buttons and the answer. The calendar is the first chapter and starts where the head ends (660 to 750 px at 390 × 844), because it is what visitors come for: between 13 and 19 November 2026 „Zum Kalender“ got 100 clicks and „Reise planen“ 30. With the planner first, its chapter (500 to 770 px) had pushed the calendar's first week down to 1607–1937 px. The answer names its day ("Sat, Nov 14, Orlando time"),

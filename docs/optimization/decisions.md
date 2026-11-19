@@ -736,3 +736,19 @@ answer.
 
 **Open:** the week classes (`HUB_WEEK_CELL`, `HUB_WEEK_ITEM`) are 44 kB of the calendar's
 remaining class bytes; the planner chapter's region (68 kB of the payload) is the planner's.
+
+## 2026-11-19 — ACCEPTED: trip-region reads send the routes' version as `v`, not the deploy's commit
+
+**Lever:** Cloudflare hits on `/v1/trip-regions/…` and Data Cache hits on the hubs after a deploy.
+**Files:** `lib/trip-regions/api.ts` (`TRIP_API_VERSION`, `TRIP_API_TYPES_HASH`),
+`scripts/test-trip-regions.mjs`.
+
+Every trip-region read carried the first 12 characters of `VERCEL_GIT_COMMIT_SHA` as `v`, so each
+production deploy (three on 19 November) started with an empty Cloudflare copy of every region
+route and an empty Data Cache entry for every hub read, and the first request to each of the ~380
+trip URLs waited on cold API answers. `v` existed for one case: a deploy that reads a field the API
+has just added must not read a 26-hour-old edge copy. That case now raises `TRIP_API_VERSION` in the
+same pull request, and `pnpm test:trip-regions` fails when `lib/trip-regions/types.ts` changes
+without `TRIP_API_TYPES_HASH`, so the question cannot be skipped. Not measured yet: the check is the
+API's `trip_planner_ops` answer-cache hit rate and the hubs' cold time to first byte over the next
+deploys, against the 14–22 % best-days hit rate of 19 November.

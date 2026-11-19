@@ -122,6 +122,7 @@ export async function TripRegionHubPage({
   // Parky's picture of the region, the one the header's planner band and the park pages' tile
   // show, is the hub's head, so the page reads as the planner's and not as one park's.
   const scene = hubPhoto(config.hub.scene, locale);
+  const evening = hubPhoto(config.hub.eveningScene, locale);
 
   const summaries = calendar ? resortMonthSummaries(region, calendar, bestDays) : [];
   const firstFrom = calendar?.days.find((d) => d.date >= todayIso)?.date ?? todayIso;
@@ -326,15 +327,15 @@ export async function TripRegionHubPage({
         title={bandTitle}
         body={t('next.body')}
         picture={
-          scene && (
+          evening && (
             <Image
-              src={scene.src}
+              src={evening.src}
               alt=""
-              width={scene.width}
-              height={scene.height}
+              width={evening.width}
+              height={evening.height}
               sizes="(max-width: 768px) 92vw, 384px"
               className="aspect-[2/1] size-full object-cover"
-              style={{ objectPosition: scene.position }}
+              style={{ objectPosition: evening.position }}
             />
           )
         }

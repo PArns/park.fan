@@ -53,6 +53,7 @@ export const PARIS: TripRegionConfig = {
       { group: 'parc-asterix' },
     ],
     scene: 'reiseplaner/parky-paris-tag',
+    eveningScene: 'reiseplaner/parky-paris-abend',
   },
   bestTime: [
     {

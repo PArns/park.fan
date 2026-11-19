@@ -1,0 +1,25 @@
+{
+  "title": "Parky-Szene Südkalifornien, Abend",
+  "tags": ["diagram", "night"],
+  "alt": {
+    "de": "Parky mit Muschelkette und Surfbrett am Strand in der Abenddämmerung, die Sonne steht halb im Pazifik, dahinter Palmen und ein beleuchteter Pier mit kleinem Riesenrad.",
+    "en": "Parky with his shell necklace and surfboard on the beach at dusk, the sun half sunk in the Pacific, palms and a lit pier with a small Ferris wheel behind him.",
+    "nl": "Parky met schelpenketting en surfplank op het strand in de schemering, de zon half in de Stille Oceaan, achter hem palmen en een verlichte pier met een klein reuzenrad.",
+    "fr": "Parky avec son collier de coquillages et sa planche de surf sur la plage au crépuscule, le soleil à moitié dans le Pacifique, derrière lui des palmiers et une jetée éclairée avec une petite grande roue.",
+    "es": "Parky con su collar de conchas y su tabla de surf en la playa al atardecer, el sol medio hundido en el Pacífico, detrás palmeras y un muelle iluminado con una pequeña noria.",
+    "it": "Parky con la collana di conchiglie e la tavola da surf sulla spiaggia al tramonto, il sole a metà nel Pacifico, dietro palme e un pontile illuminato con una piccola ruota panoramica."
+  },
+  "credit": {
+    "author": "park.fan",
+    "license": "all-rights-reserved"
+  },
+  "focus": {
+    "x": 0.89,
+    "y": 0.55
+  },
+  "bannerFocus": {
+    "x": 0.42,
+    "y": 0.55
+  },
+  "shotAt": "2026-11-19"
+}

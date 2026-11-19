@@ -8,6 +8,7 @@
  * Run: pnpm test:trip-regions
  */
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readdirSync, readFileSync } from 'node:fs';
 import { getPathMatch } from 'next/dist/shared/lib/router/utils/path-match.js';
 import { locales } from '../i18n/config.ts';
@@ -22,6 +23,11 @@ import {
   tripRegionSegment,
   tripRegionTitle,
 } from '../lib/trip-regions/registry.ts';
+import {
+  TRIP_API_TYPES_HASH,
+  TRIP_API_VERSION,
+  tripRegionApiUrl,
+} from '../lib/trip-regions/api.ts';
 import {
   tripRegionFolder,
   tripRegionHeaders,
@@ -361,6 +367,22 @@ test("a park's place word is dropped, every region's", () => {
   assert.equal(shortParkName('SeaWorld Orlando'), 'SeaWorld');
   assert.equal(shortParkName('Busch Gardens Tampa Bay'), 'Busch Gardens');
   assert.equal(shortParkName("Disney's Animal Kingdom Theme Park"), 'Animal Kingdom');
+});
+
+test('every trip-region read carries the API version, and a change of the types asks for it', () => {
+  assert.ok(tripRegionApiUrl('/v1/trip-regions/orlando').endsWith(`?v=${TRIP_API_VERSION}`));
+  assert.ok(
+    tripRegionApiUrl('/v1/trip-regions/orlando/plan?from=x').endsWith(`&v=${TRIP_API_VERSION}`)
+  );
+  const hash = createHash('sha256')
+    .update(readFileSync(new URL('../lib/trip-regions/types.ts', import.meta.url)))
+    .digest('hex')
+    .slice(0, 12);
+  assert.equal(
+    hash,
+    TRIP_API_TYPES_HASH,
+    `lib/trip-regions/types.ts changed. If this frontend now reads a field the API has just added, raise TRIP_API_VERSION in lib/trip-regions/api.ts; either way set TRIP_API_TYPES_HASH to '${hash}'.`
+  );
 });
 
 console.log(`\n${passed} passed`);
