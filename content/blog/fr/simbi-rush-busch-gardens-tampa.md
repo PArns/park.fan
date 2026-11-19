@@ -58,7 +58,7 @@ Le parc conçoit Simbi Rush comme une attraction familiale, mais aucune taille m
 
 ## Les premiers à bord et les tarifs
 
-Les détenteurs d’un pass annuel 2027 essaieront Simbi Rush avant l’ouverture au public, à des dates encore inconnues. Pendant les soldes du Black Friday, le pass Silver coûte 198 $ au lieu de 279 $, le Gold 222 $ au lieu de 315 $ et le Platinum 351 $ au lieu de 549 $, parking gratuit compris pour les trois. La Fun Card 2027, moins chère, passe de 148,99 $ à 94,99 $. Elle donne un accès illimité à Busch Gardens et au parc aquatique Adventure Island dès maintenant et jusqu’au 31 décembre 2027, sauf les jours d’exclusion. Le parking n’y est pas inclus et coûte à partir de 32 $, taxes en sus. Le parc n’a pas dit si elle ouvre aussi l’avant-première. Elle te fait en revanche entrer dès cet hiver, jusqu’au 4 janvier certains soirs, à [Christmas Town et son spectacle de drones](/news/busch-gardens-tampa-christmas-town-2026).
+Les détenteurs d’un pass annuel 2027 essaieront Simbi Rush avant l’ouverture au public, à des dates encore inconnues. Pendant les soldes du Black Friday, le pass Silver coûte 198 $ au lieu de 279 $, le Gold 222 $ au lieu de 315 $ et le Platinum 351 $ au lieu de 549 $, parking gratuit compris pour les trois. La Fun Card 2027, moins chère, passe de 148,99 $ à 94,99 $. Elle donne un accès illimité à Busch Gardens et au parc aquatique Adventure Island dès maintenant et jusqu’au 31 décembre 2027, sauf les jours d’exclusion. Le parking n’y est pas inclus et coûte à partir de 32 $, taxes en sus. Le parc n’a pas annoncé si elle ouvre aussi l’avant-première. Elle te fait en revanche entrer dès cet hiver, jusqu’au 4 janvier certains soirs, à [Christmas Town et son spectacle de drones](/news/busch-gardens-tampa-christmas-town-2026).
 
 ```best-days-widget slug=busch-gardens-tampa
 
@@ -72,7 +72,7 @@ Sans voiture, la navette de Mears Destination Services relie la région d’Orla
 
 Simbi Rush est la pièce maîtresse d’un plan de 200 millions de dollars que Busch Gardens Tampa Bay veut investir sur cinq ans. Une première étape de ce plan, Lion & Hyena Ridge, a ouvert le 25 juillet : un enclos de 38 000 pieds carrés (environ 3 500 mètres carrés) pour cinq lions et deux hyènes tachetées. Comme lions et hyènes sont rivaux dans la nature, ils occupent les parties de l’enclos à tour de rôle, un peu comme deux enfants qui n’ont qu’une manette pour la même console.
 
-Le Stanley Falls Flume, une rivière à bûches en service depuis l’ouverture du parc en 1973, a fermé le 7 septembre 2025 après 52 ans pour libérer de la place pour une nouvelle attraction. Busch Gardens n’a pas dit si Simbi Rush prendra sa place. Le 2 août 2026, Kumba a aussi fait son dernier tour : ces montagnes russes de Bolliger & Mabillard, ouvertes en 1993, culminaient à 44 mètres, filaient à 97 km/h et comptaient sept inversions. Le parc a annoncé Kumba’s Revenge pour lui succéder, sans tracé ni date pour l’instant.
+Le Stanley Falls Flume, une rivière à bûches en service depuis l’ouverture du parc en 1973, a fermé le 7 septembre 2025 après 52 ans pour libérer de la place pour une nouvelle attraction. Busch Gardens n’a pas annoncé si Simbi Rush prendra sa place. Le 2 août 2026, Kumba a aussi fait son dernier tour : ces montagnes russes de Bolliger & Mabillard, ouvertes en 1993, culminaient à 44 mètres, filaient à 97 km/h et comptaient sept inversions. Le parc a annoncé Kumba’s Revenge pour lui succéder, sans tracé ni date pour l’instant.
 
 ## D’autres water coasters de Mack Rides
 
