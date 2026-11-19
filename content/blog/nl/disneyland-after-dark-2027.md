@@ -29,7 +29,7 @@ coverImage:
 seo:
   title: 'Disneyland After Dark 2027: alle data en tickets'
   description: >-
-    Disneyland Anaheim: Sweethearts Nite 2027 vanaf 24-1, tickets vanaf 10-12 om 18.00 uur (MET). Nieuw: Disneylandia Nite, plus Star Wars Nite en Pride Nite.
+    Disneyland Anaheim: Sweethearts' Nite 2027 vanaf 24-1, tickets vanaf 10-12 om 18.00 uur (MET). Nieuw: Disneylandia Nite, plus Star Wars Nite en Pride Nite.
   keywords:
     - Disneyland After Dark 2027
     - Sweethearts Nite 2027
@@ -43,7 +43,7 @@ seo:
     - Disneyland After Dark tickets
 ---
 
-Disneyland in Anaheim heeft op 18 november de data van Disneyland After Dark 2027 bekendgemaakt: vier feesten met een eigen ticket, tussen januari en juni in [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park). Sweethearts' Nite, Star Wars Nite en Pride Nite keren terug, en in april komt Disneylandia Nite er als nieuw feest bij. Sweethearts' Nite gaat als eerste in de verkoop, vanaf 10 december voor iedereen. Disney kondigde het aan op de Disney Parks Blog.
+Disneyland in Anaheim heeft op 18 november op de Disney Parks Blog de data van Disneyland After Dark 2027 bekendgemaakt. Tussen januari en juni zijn er in [Disneyland Park](ref:/parks/north-america/united-states/anaheim/disneyland-park) vier feesten met een eigen ticket. Sweethearts' Nite, Star Wars Nite en Pride Nite keren terug, en in april komt Disneylandia Nite er als nieuw feest bij. Sweethearts' Nite gaat als eerste in de verkoop, vanaf 10 december voor iedereen.
 
 ## De avonden
 
@@ -68,21 +68,21 @@ Een prijs staat niet in de aankondiging. Het ticket geldt alleen op de geboekte 
 
 ## Kaarten voor Sweethearts' Nite
 
-De verkoop loopt via Disneyland.com en geldt voorlopig alleen voor Sweethearts' Nite. Op dinsdag 8 december mogen houders van een Inspire Key vanaf 9.00 uur Californische tijd kopen uit een kleine voorraad. Op woensdag 9 december zijn alle houders van een Magic Key aan de beurt, ook uit een beperkte voorraad. De vrije verkoop begint op donderdag 10 december om 9.00 uur in Californië, dat is 18.00 uur in Nederland en België. Wanneer de verkoop voor Disneylandia Nite en Star Wars Nite begint en wat er dan te doen is, maakt Disney begin 2027 bekend. Voor Pride Nite volgt dat in het voorjaar.
+De verkoop loopt via Disneyland.com. Op dinsdag 8 december mogen houders van een Inspire Key vanaf 9.00 uur Californische tijd kopen uit een kleine voorraad. Op woensdag 9 december zijn alle houders van een Magic Key aan de beurt, ook uit een beperkte voorraad. De vrije verkoop begint op donderdag 10 december om 9.00 uur in Californië, dat is 18.00 uur in Nederland en België. Disney maakt begin 2027 bekend wanneer de verkoop voor Disneylandia Nite en Star Wars Nite begint en wat er dan te doen is. Voor Pride Nite volgt dat in het voorjaar.
 
 ## Sweethearts' Nite
 
 Disney denkt bij dit feest aan stellen, maar uitdrukkelijk ook aan je beste vriendin of je familie. Over Main Street, U.S.A. trekt de “Celebrate Love Cavalcade” voorbij met Mickey, Minnie en hun vrienden. Voor het Doornroosjekasteel zingen zangers in “Once Upon a Dream” live liefdesliedjes uit Disneyfilms, en daarna kun je er koninklijke paren ontmoeten. Allebei komen ze terug.
 
-Zelf zingen kan in de Golden Horseshoe in Frontierland, waar je met z'n tweeën karaoke doet bij “Disney Duets”. Op de Tomorrowland Terrace draait een dj voor de Valentine's Dance Party, en Disneyfiguren dansen mee. Zit je liever, stap dan aan boord van de raderboot [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare), die als Lou-Ray Jazz Club met jazzmuziek in het donker over de Rivers of America vaart. Op de gevel van [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare) projecteert Disney WALL-E en EVE, en voor foto's staan er in het park decors uit “Aladdin”, “De Aristokatten”, “Rapunzel” en “Lady en de Vagebond”.
+Zelf zingen kan in de Golden Horseshoe in Frontierland, waar je met z'n tweeën karaoke doet bij “Disney Duets”. Op de Tomorrowland Terrace draait een dj voor de Valentine's Dance Party, en Disneyfiguren dansen mee. Zit je liever, stap dan aan boord van de raderboot [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare), die als Lou-Ray Jazz Club met jazzmuziek in het donker over de Rivers of America vaart. Op de gevel van [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare) projecteert Disney WALL-E en EVE. Voor foto's staan er in het park decors uit “Aladdin”, “De Aristokatten”, “Rapunzel” en “Lady en de Vagebond”.
 
-De merchandise van het feest, onder meer een hoodie, een diadeem met een strik zoals die van Minnie en een beker, ligt uitgerekend naast een smokkelschip. Je koopt alles in Star Wars: Galaxy's Edge bij de [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare).
+De merchandise van het feest ligt uitgerekend naast een smokkelschip, de [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare) in Star Wars: Galaxy's Edge. Er zit onder meer een hoodie bij, een diadeem met een strik zoals die van Minnie en een beker.
 
 Nieuw op de kaart zijn friet met kip en za'atar, onder meer bij Galactic Grill, en gefrituurde Hawaiian Rolls bij Little Red Wagon. Blue Bayou, River Belle Terrace en Carnation Café serveren eigen gerechten voor het feest. Disney raadt daar een reservering aan, en die kan online zodra de data dichterbij komen. Specialiteiten van de snelrestaurants bestel je al voordat het feest begint, met Mobile Order in de app.
 
 ## Disneylandia Nite en 50 jaar Star Wars
 
-Disneylandia Nite viert de Spaanstalige en Latijns-Amerikaanse culturen, met figuren uit “Coco” en “Encanto”. Het feest valt op bijna dezelfde dagen in april als Disney Channel Nite in 2026, dat in Disneys lijst voor 2027 ontbreekt.
+Disneylandia Nite viert de Spaanstalige en Latijns-Amerikaanse culturen, met figuren uit “Coco” en “Encanto”. Het feest valt op bijna dezelfde dagen in april als Disney Channel Nite in 2026.
 
 Star Wars Nite staat in 2027 in het teken van 50 jaar Star Wars, en een van de vier avonden valt op 4 mei. Disney vraagt je om in Star Wars-kostuum te komen, binnen de kledingregels van het park.
 
