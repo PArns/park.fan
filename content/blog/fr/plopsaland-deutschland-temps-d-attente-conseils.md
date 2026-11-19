@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: "Plopsaland Deutschland 2026 : temps d'attente, prix, meilleurs jours"
+  title: 'Plopsaland Deutschland (Holiday Park) : quels jours y aller'
   description: >-
     À l'ancien Holiday Park de Haßloch, on n'attend que quelques minutes à la
     plupart des attractions. Hors Halloween, le vendredi est le jour le plus

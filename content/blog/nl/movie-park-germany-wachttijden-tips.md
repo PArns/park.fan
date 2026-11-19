@@ -30,10 +30,10 @@ coverImage:
   caption: 'Zes weken per jaar heet dit park Horrorwood Studios, en zo staat het dan ook in lichtletters bij de ingang.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park wachttijden & Halloween 2026, zonder Batman'
+  title: 'Movie Park: wanneer is het rustig? Beste dagen en tips'
   description: >-
-    Movie Park met gemeten wachttijden: de weekdag waar tipsites naast zitten,
-    het najaarsrooster, Halloween tot 8/11 en hoe je de kassatoeslag ontloopt.
+    In Movie Park sta je op vrijdag het kortst in de rij, en zondag is rustiger
+    dan zaterdag. Hollywood Christmas loopt van 27 november tot 5 januari.
   keywords:
     - Movie Park Germany
     - Movie Park wachttijden

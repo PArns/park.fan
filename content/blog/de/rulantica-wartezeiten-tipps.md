@@ -25,7 +25,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026: Rutschen, Preise und die ruhigsten Tage'
+  title: 'Rulantica im Winter: ruhigste Tage und Eintrittspreise'
   description: >-
     Rulantica im Winter: Tickets ab 28 Euro, Mindestgrößen von 90 bis 140
     Zentimetern und die ruhigsten Monate Januar und März.

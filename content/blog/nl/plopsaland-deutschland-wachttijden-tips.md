@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: wachttijden, prijzen, beste dagen'
+  title: 'Plopsaland Deutschland (Holiday Park): tips en beste dagen'
   description: >-
     In het vroegere Holiday Park in Haßloch wacht je bij de meeste attracties
     maar een paar minuten. Het rustigst is het op vrijdag, behalve met

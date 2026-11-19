@@ -29,9 +29,10 @@ coverImage:
   caption: 'Picknicktisch über dem Strand am Santa Cruz Beach Boardwalk in Kalifornien, hinten der Giant Dipper.'
   credit: 'Polina Lavor / Unsplash'
 seo:
-  title: 'Essen mitbringen: Movie Park, Europa-Park, Phantasialand'
+  title: 'Darf man Essen mitnehmen? Europa-Park, Movie Park & Co.'
   description: >-
-    Movie Park, Europa-Park, Phantasialand, Heide Park: Essen und Getränke darfst du mitbringen, Alkohol nicht überall. Was 15 Parks erlauben.
+    Im Europa-Park, Movie Park, Phantasialand und Heide Park darfst du Essen und
+    Getränke mitnehmen. Alkohol verbieten Phantasialand und Movie Park.
   keywords:
     - Freizeitpark Essen mitbringen erlaubt
     - Freizeitpark Getränke mitbringen

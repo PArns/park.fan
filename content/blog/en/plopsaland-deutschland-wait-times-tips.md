@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: wait times, prices, best days'
+  title: 'Plopsaland Deutschland (Holiday Park): tips and best days'
   description: >-
     At the former Holiday Park in Haßloch, you'll queue only a few minutes for
     most rides. Fridays are quietest, except for the Halloween Fridays in

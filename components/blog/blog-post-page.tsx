@@ -38,7 +38,7 @@ import { BlogReferences } from '@/components/blog/blog-references';
 import { PageBottomSections } from '@/components/common/page-bottom-sections';
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import { fitWithin, MAX_TITLE_LENGTH, buildOpenGraphMetadata } from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata } from '@/lib/utils/metadata';
 import { versionedPath } from '@/lib/media/focus';
 import { BlogPostingStructuredData } from '@/components/seo/blog-structured-data';
 import { BreadcrumbNav } from '@/components/common/breadcrumb-nav';
@@ -84,20 +84,14 @@ export async function buildPostMetadata(
   const { frontmatter, translationKey } = post;
   const isNews = section === 'news';
   // The section a post is filed under, by name: "Blog" for an article, the news label for a news
-  // post. It names the title's suffix and `article:section`.
+  // post, for `article:section`.
   const sectionName = isNews
     ? resolveCategoryLabel(NEWS_CATEGORY, locale as Locale, 'News')
     : t('title');
-  const title = frontmatter.seo?.title ?? frontmatter.title;
+  // The bare title, without a brand suffix: Google prints the site name from the WebSite JSON-LD
+  // above the result, and a suffix would take characters from the words people search for.
+  const fullTitle = frontmatter.seo?.title ?? frontmatter.title;
   const description = frontmatter.seo?.description ?? frontmatter.excerpt;
-  // Google shows about 60 characters, so the title falls back as the park pages' does: the full
-  // template, then the brand only, then the bare title, which the frontmatter keeps short.
-  const fullTitle = fitWithin(
-    MAX_TITLE_LENGTH,
-    `${title} | ${sectionName} · park.fan`,
-    `${title} · park.fan`,
-    title
-  );
   // Only locales with a real translation — fallback locales serve the EN
   // content and must not advertise themselves as translations.
   const alternates = buildPostAlternates(translationKey);

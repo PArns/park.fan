@@ -70,8 +70,8 @@ whatever its age.
   title from `news.metaTitle`, description `news.metaDescription`, OG card `/api/og/<locale>/news`,
   canonical the page's own URL whatever `?park=` says. It used to borrow the blog category's, which
   asked for an OG card at a post slug that does not exist.
-- **A news post names its section as News** in the title suffix and `article:section`
-  (`buildPostMetadata`).
+- **A news post names its section as News** in `article:section` (`buildPostMetadata`). Its
+  `<title>` is the bare `seo.title` or `title`, like an article's, without a brand suffix.
 - **Structured data**: a news post sends `NewsArticle` (headline ≤ 110 characters, Berlin-offset
   dates, one image at least 1200 px wide, the OG card added when the cover is narrower); the overview
   a `CollectionPage` with an `ItemList` of the same references (`NewsListingStructuredData`). The

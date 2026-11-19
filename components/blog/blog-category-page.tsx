@@ -42,7 +42,7 @@ export async function buildCategoryMetadata(locale: string, path: string[]): Pro
   const label = resolveCategoryLabel(fullPath, locale as Locale, lastSegment);
   const t = await getTranslations({ locale, namespace: 'blog' });
   const ogImageUrl = getOgImageUrl([locale, 'blog', ...segments]);
-  const fullTitle = `${pagedTitle(label, page, t('pagination.pageLabel', { page }))} | ${t('title')} · park.fan`;
+  const fullTitle = `${pagedTitle(label, page, t('pagination.pageLabel', { page }))} · park.fan`;
   const description = t('category.description', { category: label });
   const categorySegments = parseCategoryPath(fullPath);
 
