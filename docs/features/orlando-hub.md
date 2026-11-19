@@ -98,6 +98,10 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 | 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides                               |
 | 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                   |
 
+The head stands on Parky's picture of the region (`hub.scene`, `/media/reiseplaner/parky-<region>-tag.webp`),
+the one the header's planner band, the park pages' tile and the blog's head show, not on a park
+photo: the hub is the planner's page and the calendar's, for every park of the region.
+
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
 welchem Tag?“ as its big one), the lead, the two buttons and the answer. The calendar is the first chapter and starts where the head ends (660 to 750 px at 390 × 844), because it is what visitors come for: between 13 and 19 November 2026 „Zum Kalender“ got 100 clicks and „Reise planen“ 30. With the planner first, its chapter (500 to 770 px) had pushed the calendar's first week down to 1607–1937 px. The answer names its day ("Sat, Nov 14, Orlando time"),
 never "today", because a cached copy outlives midnight. After every pick has closed it is about

@@ -133,8 +133,6 @@ export interface TripHubResort {
 
 /** What the hub shows of the region beside the API's answers. */
 export interface TripHub {
-  /** The hero photos as media sources, the first the catalog still has wins. */
-  heroPhotos: readonly string[];
   /** The hotel area the day sheet's drive times start from before the reader picks one. */
   defaultArea?: string;
   faq: TripHubFaq;

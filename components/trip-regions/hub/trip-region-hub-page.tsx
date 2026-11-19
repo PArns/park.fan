@@ -16,9 +16,6 @@ import type { Locale } from '@/i18n/config';
 import { Link } from '@/i18n/navigation';
 import { resolveEntryForLocale } from '@/lib/blog/listing';
 import { postPath } from '@/lib/blog/paths';
-import { getMediaImageBySrc } from '@/lib/media';
-import { getMediaAlt } from '@/lib/media/text';
-import { versionedSrc } from '@/lib/media/focus';
 import { cn } from '@/lib/utils';
 import {
   dayBasis,
@@ -63,21 +60,6 @@ import { HubHeroActions, HubPlanAction } from './hub-hero-action';
 import { HubHowItWorks } from './hub-how-it-works';
 import { HubResorts } from './hub-resorts';
 import { HubStateSwitch, HubTripProvider } from './hub-trip-state';
-
-/**
- * The hero photo: the first of the region's `hub.heroPhotos` the media database still has, with
- * its credit and alt from there. Without one the head draws the brand gradient.
- */
-function heroPhoto(
-  sources: readonly string[],
-  locale: string
-): { src: string; alt: string } | null {
-  for (const src of sources) {
-    const image = getMediaImageBySrc(src);
-    if (image) return { src: versionedSrc(image), alt: getMediaAlt(image.id, locale) ?? '' };
-  }
-  return null;
-}
 
 /** What the route resolved and read, handed to the page body. */
 export interface TripRegionHubPageProps {
@@ -137,7 +119,8 @@ export async function TripRegionHubPage({
   const tNav = await getRegionTranslations(region.slug, 'nav');
   const config = requireTripRegion(region.slug);
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;
-  const hero = heroPhoto(config.hub.heroPhotos, locale);
+  // Parky's picture of the region, the one the header's planner band and the park pages' tile
+  // show, is the hub's head, so the page reads as the planner's and not as one park's.
   const scene = hubPhoto(config.hub.scene, locale);
 
   const summaries = calendar ? resortMonthSummaries(region, calendar, bestDays) : [];
@@ -226,8 +209,8 @@ export async function TripRegionHubPage({
         tagline={tagline ?? undefined}
         answer={answer}
         actionElement={actions}
-        imageSrc={hero?.src}
-        imageAlt={hero?.alt}
+        imageSrc={scene?.src}
+        imageAlt={scene?.alt}
         flowInto
         short
       />

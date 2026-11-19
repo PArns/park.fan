@@ -35,7 +35,6 @@ export const PARIS: TripRegionConfig = {
     })),
   hub: {
     // Sleeping Beauty's castle at Disneyland Park.
-    heroPhotos: ['/media/disneyland-park/background.jpg'],
     // The API's default area of the Disneyland Paris base.
     defaultArea: 'disney_lake',
     faq: {

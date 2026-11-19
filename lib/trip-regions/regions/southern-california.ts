@@ -77,11 +77,6 @@ export const SOUTHERN_CALIFORNIA: TripRegionConfig = {
   hub: {
     // Sleeping Beauty Castle in Anaheim, then Pixar Pier at Disney California Adventure, then
     // Universal.
-    heroPhotos: [
-      '/media/disneyland-anaheim/sleeping-beauty-castle.jpg',
-      '/media/disney-california-adventure-park/pixar-pier.jpg',
-      '/media/universal-studios-hollywood/fast-and-furious-hollywood-drift-2-806327.jpg',
-    ],
     // No default area: the day sheet's line says "by car" for every leg, and the legs from the
     // Disneyland hotels and Harbor Boulevard to the two parks are walks.
     faq: {

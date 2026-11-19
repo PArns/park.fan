@@ -10,12 +10,12 @@ the same pages from the same code.
 
 ## A region is config, messages and a scene
 
-| Part     | Where                                                           | What                                                                                                                                                                                   |
-| -------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (hero photos, the FAQ's parks and questions), hotels, ticket step, storm season |
-| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`                                                                                                                            |
-| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the region's card in the header band and of its planner tile on a park's pages, built on `HolidayParky` (`holiday-parky.tsx`)                                     |
-| API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                         |
+| Part     | Where                                                           | What                                                                                                                                                                                              |
+| -------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Config   | `lib/trip-regions/registry.ts`, `lib/trip-regions/regions/*.ts` | `TRIP_REGIONS`: slug, `live`, URL segment per locale, zone, centre, photo, scene, best-time pages, hub (the head's Parky scene, the FAQ's parks and questions), hotels, ticket step, storm season |
+| Messages | `tripRegions.<slug>` in `messages/*.json`                       | the region's own words: `nav`, `hub`, `bestTime`, `planner`                                                                                                                                       |
+| Scene    | `components/assistant/parky/<slug>-scene.tsx`                   | the Parky picture of the region's card in the header band and of its planner tile on a park's pages, built on `HolidayParky` (`holiday-parky.tsx`)                                                |
+| API      | `/v1/trip-regions/<slug>` and its routes                        | parks, groups, hotel areas, travel, calendar, plan, tickets: everything the code does not hold                                                                                                    |
 
 Nothing outside `lib/trip-regions/registry.ts` and `lib/trip-regions/regions/` names a region. The
 rest of the code reads the registry: `LIVE_TRIP_REGIONS` for what a reader may see,
@@ -230,7 +230,7 @@ built on `HolidayParky`, and its entry's `scene` loads it.
 1. Write its entry in `lib/trip-regions/regions/<slug>.ts` with `live: false`, register it in
    `registry.ts`, and start with its segments, zone and centre.
 2. Fill in what the region has: `bestTime` (the region's page `region` first, then its resorts),
-   `hub` (hero photos, the FAQ's parks and fixed questions), `hotels`, `parkNameSuffixes`,
+   `hub` (`scene`, the Parky picture that heads the hub and closes it, the FAQ's parks and fixed questions), `hotels`, `parkNameSuffixes`,
    `parkShortNames` (where a park's derived two letters say little: Southern California's USH, DCA,
    SFMM), `resortWords`, `stormSeason`, `blockResorts`, `fireworks`, and a `tickets` step where it
    sells tickets the step should ask for. A ticket catalog is the admin's (`/admin/tickets?region=`).
