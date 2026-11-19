@@ -123,6 +123,23 @@ hopper, sits in Tempo, and a Paris trip of two nights or fewer has no hotel chan
 city sits in the Route (`MIN_NIGHTS_FOR_A_MOVE`). A region without a ticket catalog has no ticket
 step. `pnpm test:wizard-steps` pins the four regions' lists.
 
+**The first pass ends on Tempo.** Evenings and Tickets are later steps (`LATER_STEPS`, a step's
+`later`): a start walks dates, parks, Hotel or Route and Hotels, and Tempo, then the finale.
+Both stay steps of the list, so „Deine Antworten“ has a chip for each, and an opening on one of them
+(the chip, the result's ticket entry) walks it in its place after Tempo (`wizardPass`): the rail
+gains that step, Back leads to Tempo, Next to the finale. Japan's evening question, drawn in Tempo,
+stays on the first pass. Why: in the week of 13 to 19 November 2026 the assistant was started 33
+times, 19 starts reached the parks step, the evenings step was reached 9 times and the tickets step
+11; `trip_ticket_added` stayed at 0 and a ticket purchase link was clicked once. Each screen before
+the plan costs visitors, and these two were the ones answered least.
+
+**Opening the ticket step from the result.** `tripPlannerUi.openStep('tickets')` opens the
+assistant on Tickets with „Noch nicht“ and „Ja, schon gekauft“ (counted `trip_wizard_step` with
+`via: answers`); inside the result, `edit.tickets(from)` (`PlanEdit`) opens it with the ticket entry
+already open and counts `trip_tickets_opened` with `from`. A region without a ticket catalog has no
+Tickets step: there `openStep('tickets')` opens on the dates, so an entry draws only where
+`useWizardSteps()` lists `tickets`.
+
 A step body is a component under `components/trip-regions/wizard/steps/`, registered in
 `WIZARD_STEP_BODIES` (`steps/index.tsx`); a step without a body is left out. It receives
 `WizardStepProps` (`wizard-step.tsx`): its `questions`, `merged` when it is drawn inside another
@@ -147,8 +164,9 @@ it is open, so it moves for exactly as long as somebody sees it.
 
 ### The frame
 
-- **Rail:** the step's labels („Daten, Parks, Route, Hotels, Tempo, Tickets“), walked steps as
-  buttons, and once the dates are chosen every step.
+- **Rail:** the labels of the steps this opening walks („Daten, Parks, Route, Hotels, Tempo“, and
+  „Tickets“ after them when it was opened there), walked steps as buttons, and once the dates are
+  chosen every step.
 - **Footer:** the plan ribbon once the trip has dates, then Back, Skip and Next: Back an `outline`
   button, Skip a `ghost` in the text colour, Next the solid primary, so only Next is filled and both
   others read at more than 15 : 1 in either theme. The first step has
@@ -174,9 +192,20 @@ answered, not on each press.
 
 ### Dates and parks
 
-The dates step is the planner's date grid (`PlanDatesStep`) with a row of month chips over it
-(`monthChips`): a trip three months out is one press, not three. Once the arrival is pressed, Parky
-asks „Und wann fliegst du zurück?“ (`onPending`).
+The dates step (`PlanDatesStep`) opens on two answers of equal weight, „Ich kenne meine Daten“ and
+„Daten finden“ (`PlanSegmented`, counted as `trip_find_toggled`); „Daten finden“ is off while a
+ticket's first day fixes the trip. It replaced a link under the calendar, „Noch keine Daten? Beste
+Reisezeit finden“, which nobody pressed in a week of 33 starts (`trip_find_toggled` 0, 13 to 19
+November 2026), while 7 visitors closed the assistant on the dates. Under „Ich kenne meine Daten“
+the planner's date grid with a row of month chips over it (`monthChips`): a trip three months out is
+one press, not three. Over the grid, while the trip has no dates and no ticket fixes them, one card
+offers the quietest week ahead („Nächste ruhige Woche: 3.–9. Dez.“ with „Übernehmen“,
+`QuietWeekCard`): of the seven-day stretches starting in the next eight weeks, the one whose days have
+the lowest mean `headlinerWait` of the trip's parks (`quietWeek`, from the region calendar). It is
+never chosen for the visitor: the address changes on the press alone, counted as
+`trip_quiet_week_taken`, and the grid moves to its month so the dates can be changed after. The
+card's box is held while the calendar loads. Once the arrival is pressed, Parky asks „Und wann
+fliegst du zurück?“ (`onPending`) and the card goes.
 
 The parks step draws a card per park, by resort: the photo (`tripPlannerPhotos`) or a tinted field
 with the park's code, the card itself a checkbox, and a chosen card's stepper („Tage − 2 +“, the
@@ -184,6 +213,21 @@ with the park's code, the card itself a checkbox, and a chosen card's stepper (�
 or from the nearest city of a region with bases („Etwa 110 Min. mit dem Fernbus ab Tokio“); a park
 closed on every day of the trip says so before anyone chooses it. More than four parks outside the
 headliners fold behind one row.
+
+**The parks a trip starts with.** Until the visitor touches a park, the chosen ones are the
+region's headliners in its order, as many as the trip's days hold (`headlinersForTrip` in
+`lib/trip-regions/trip-fit.ts`): the trip's days less a free arrival and departure day, less the
+rest days the rest rule puts between them (`parkDaysHeld`: with `rest=auto` no more than four park
+days in a row), at least one, a pinned park always. A five-day Orlando trip starts with three of the
+seven; ten days hold all seven. Every headliner keeps its card, the ones that did not fit unchecked,
+and one muted line above the cards says it („Für 5 Tage sind 3 Parks vorgewählt. Du kannst weitere
+dazunehmen.“). The address still leaves `parks` out, so a link and Parky's links keep meaning „the
+default for these dates“, and only the request names the trip's headliners
+(`planRequestQuery` with the planner's scope); the first press writes the list, and from then on
+it is the visitor's and no date change trims it. Why: in that week 71 of 191 plan requests used the
+default (Orlando's seven), 67 were trips of seven days or fewer, the most frequent change after a
+plan was a park taken out (27, 18 in Orlando), and in the 30 days to 19 November the API left a
+park out of 30 % of Orlando plans (`no_day_left`) and loosened the rest rule in 27 %.
 
 Where the plan left chosen parks out (`parksLeftOut`, until the API names the conflict with a code),
 Parky says which, and up to three cards make room, each counted as `trip_left_out_fix`: a park on
@@ -215,7 +259,9 @@ was asked for, and the figures stay those of that plan while the step is open.
 
 ### Tickets and the finale
 
-The tickets step has two big answers: „Noch nicht“, with the plan's ticket card under it
+The tickets step, reached from the result and from the landing's „Already have tickets?“, not on
+the first pass ([the steps](#the-steps-1)), has two big answers: „Noch nicht“, with the plan's
+ticket card under it
 (`PlanTicketsCard`, the result's), and „Ja, schon gekauft“, which opens the planner's ticket step
 (`PlanTickets`, counted as `trip_tickets_opened` with `from: wizard`). Back to „Noch nicht“ takes the
 tickets entered there out of the plan.
