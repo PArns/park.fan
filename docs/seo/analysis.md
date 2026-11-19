@@ -80,7 +80,7 @@ Hansa-Park traffic.
 ### A title carries no „park.fan“, except where park.fan is the subject
 
 Google prints the site name from the WebSite JSON-LD and `og:site_name`, so a „ | park.fan“ at the
-end of a title only spends characters of the 60 (`MAX_TITLE_LENGTH`). Blog posts dropped it with
+end of a title only spends width of the 600 px Google shows (`MAX_TITLE_WIDTH_PX`). Blog posts dropped it with
 PAR-1399; glossary, the best-time pages, fancast, blog categories, tags and authors and the day
 planner followed with PAR-1402. The brand stays where it is the subject: the homepage, „How
 park.fan works“, the changelog, the blog's index and the legal pages, because Google checks the
@@ -178,8 +178,9 @@ node (no rich result without ratings) and a stamped `lastModified`.
   answers 3xx ([crawl budget](crawl-budget.md)).
 - Structured data passes the Rich Results Test, describes only what the page renders
   (`FAQPage` only beside a rendered `FaqList`), and a cross-`<script>` reference carries `@type`.
-- Titles under 60 characters (`MAX_TITLE_LENGTH`), descriptions about 150–160 (`seo.*` in
-  `messages/*.json`). Templated titles go through `fitWithin(MAX_TITLE_LENGTH, full, short)`
-  (`lib/utils/metadata.ts`) with a `titleTemplateShort` fallback key.
+- Titles within 600 px of 20 px Arial (`MAX_TITLE_WIDTH_PX`, estimated by `titleWidth`), not a
+  count of characters: lower case is narrow, Title Case and digits wide. Descriptions about 150–160
+  characters (`seo.*` in `messages/*.json`). Templated titles go through `fitTitle(full, short)`
+  (`lib/utils/metadata.ts`) with a `titleTemplateShort` fallback key, and no brand suffix.
 - Don't block crawlable assets in `app/robots.txt/route.ts` (`/api/og/`, `/_next/`).
 - The markup rules: [the markup says what each part is](../rules/the-markup-says-what-each-part-is.md).

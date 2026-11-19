@@ -22,12 +22,7 @@ import { NewsListingStructuredData } from '@/components/seo/blog-structured-data
 import { BreadcrumbStructuredData } from '@/components/seo/structured-data';
 import { blogFeedAlternates } from '@/lib/blog/feed';
 import { getOgImageUrl } from '@/lib/utils/og-image';
-import {
-  fitWithin,
-  MAX_TITLE_LENGTH,
-  buildOpenGraphMetadata,
-  alternateLanguages,
-} from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, alternateLanguages, fitTitle } from '@/lib/utils/metadata';
 import { hasPage, paginate, pagedPath, pagedTitle } from '@/lib/blog/pagination';
 
 /**
@@ -42,7 +37,7 @@ export async function buildNewsIndexMetadata(locale: string, page: number): Prom
     getTranslations({ locale, namespace: 'blog' }),
   ]);
   const name = pagedTitle(t('metaTitle'), page, tBlog('pagination.pageLabel', { page }));
-  const title = fitWithin(MAX_TITLE_LENGTH, `${name} | park.fan`, name);
+  const title = fitTitle(`${name} | park.fan`, name);
   const description = t('metaDescription');
   const path = pagedPath(NEWS_INDEX_PATH, page);
   const url = `${SITE_URL}/${locale}${path}`;

@@ -46,9 +46,9 @@ import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,
-  MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getServerToday } from '@/lib/utils/server-time';
@@ -154,14 +154,12 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
   // `fitWithin` takes the limit, then candidates longest-preferred: each shorter title is the
   // fallback for a park name that pushes the one before it past 60 characters.
   const title = onHub
-    ? fitWithin(
-        MAX_TITLE_LENGTH,
+    ? fitTitle(
         t('yearTitle', { park: parkName, years }),
         t('yearTitleShort', { park: parkName, years }),
         t('yearTitleBare', { park: parkName, years })
       )
-    : fitWithin(
-        MAX_TITLE_LENGTH,
+    : fitTitle(
         t('metaTitle', { park: parkName, month: label }),
         t('metaTitleShort', { park: parkName, month: label }),
         t('metaTitleBare', { park: parkName, month: label })

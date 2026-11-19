@@ -267,13 +267,15 @@ Cached `Intl` formatter factories. Constructing a formatter costs far more than 
 
 ### [`metadata.ts`](../../lib/utils/metadata.ts)
 
+- `titleWidth` _function_: The estimated width of a title in px on Google's desktop result page (20 px Arial). Accents add nothing to their letter; a character Arial's table here does not list counts as a digit, a CJK or other full-width one as a full em.
+- `fitTitle` _function_: The first title candidate whose estimated width fits `MAX_TITLE_WIDTH_PX`, else the narrowest; never truncates mid-word. Pass candidates richest-first.
 - `oneFullStop` _function_: A date that ends a sentence on its abbreviation („16. Nov.“, „7–16 sept.“) prints two full stops with the sentence's own; one stays. Run it on each candidate before `fitWithin`, so the length is the printed one.
 - `fitWithin` _function_: Picks the first candidate that fits, else the shortest; never truncates mid-word. Pass candidates richest-first. When even the shortest overruns, it still wins: a clipped bare name costs less than a clipped template.
 - `fitSentences` _function_: A description of at most `limit` characters cut from running text: as many whole sentences as fit, else the first sentence cut at a word boundary with an ellipsis, so a snippet never ends mid-clause.
 - `buildOpenGraphMetadata` _function_: Builds the openGraph and twitter metadata that are the same on every page. `type` is the page's Open Graph type; a post adds its `article` facts.
 - `alternateLanguages` _function_: The hreflang set of a page: the absolute URL in every locale `pathFor` names a path for (the path after the locale, `''` for the locale's home), in the order of `locales`, then `x-default` on the English one.
 - `buildAlternates` _function_: `alternates` of a page that exists in every locale: its canonical in `locale` and the hreflang set (`alternateLanguages`), both from one `pathFor`, so the two cannot disagree.
-- `MAX_TITLE_LENGTH` _const_: Google truncates the SERP title around 60 characters, and a keyword past that disappears behind an ellipsis. Templates fit typical names; a long name pushes them over on its own.
+- `MAX_TITLE_WIDTH_PX` _const_: Google cuts a result's title by its width, the 600 px of a desktop result's column in 20 px Arial, not by a count of characters, and a keyword past the cut disappears behind an ellipsis.
 - `MAX_DESCRIPTION_LENGTH` _const_: Google's snippet length, past which the description is cut.
 
 ### [`native-share.ts`](../../lib/utils/native-share.ts)

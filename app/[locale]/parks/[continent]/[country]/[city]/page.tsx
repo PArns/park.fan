@@ -1,11 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { locales, SITE_URL } from '@/i18n/config';
-import {
-  buildOpenGraphMetadata,
-  fitWithin,
-  MAX_TITLE_LENGTH,
-  buildAlternates,
-} from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, buildAlternates, fitTitle } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import { assertServableRoute, isServableRoute } from '@/lib/utils/route-guards';
@@ -45,8 +40,7 @@ export async function generateMetadata({ params }: CityPageProps): Promise<Metad
 
   // City + country + template overruns the SERP cutoff for long pairs; the short form keeps
   // the city (the term people search) and drops the country.
-  const title = fitWithin(
-    MAX_TITLE_LENGTH,
+  const title = fitTitle(
     t('titleTemplate', { city: cityName, country: countryName }),
     t('titleTemplateShort', { city: cityName })
   );

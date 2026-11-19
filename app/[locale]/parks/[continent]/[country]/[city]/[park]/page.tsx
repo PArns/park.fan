@@ -5,9 +5,9 @@ import { SITE_URL } from '@/i18n/config';
 import {
   buildOpenGraphMetadata,
   fitWithin,
-  MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -157,8 +157,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   // bare "<park> Wait Times LIVE" form, and to the city-less copy for the snippet.
   const title =
     closedCopy?.title ??
-    fitWithin(
-      MAX_TITLE_LENGTH,
+    fitTitle(
       cityInParkName
         ? t(titleKey, { park: parkName })
         : t(titleKey, { park: parkName, city: cityName }),

@@ -3,12 +3,7 @@ import { notFound } from 'next/navigation';
 import { MapPin } from 'lucide-react';
 import type { Metadata } from 'next';
 import { SITE_URL } from '@/i18n/config';
-import {
-  buildOpenGraphMetadata,
-  fitWithin,
-  MAX_TITLE_LENGTH,
-  buildAlternates,
-} from '@/lib/utils/metadata';
+import { buildOpenGraphMetadata, buildAlternates, fitTitle } from '@/lib/utils/metadata';
 import { isServableRoute } from '@/lib/utils/route-guards';
 import { translateCountry } from '@/lib/i18n/helpers';
 import { getGeoStructure } from '@/lib/api/discovery';
@@ -53,7 +48,7 @@ export async function brandPageMetadata(
   const countries = await catchNonFatal(readCountries(brand));
   const count = countries ? parkCount(countries) : 0;
   const title = count
-    ? fitWithin(MAX_TITLE_LENGTH, t('metaTitle', { count }), t('metaTitleShort'))
+    ? fitTitle(t('metaTitle', { count }), t('metaTitleShort'))
     : t('metaTitleShort');
   const description = t('metaDescription');
 
