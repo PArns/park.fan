@@ -28,7 +28,7 @@ coverImage:
   caption: 'Symbolica en el Efteling. El pase Classic está bloqueado allí 68 días en 2027.'
   credit: 'park.fan'
 seo:
-  title: 'Pases anuales 2026: Toverland 160 €, Phantasialand ninguno'
+  title: 'Pases anuales comparados: Europa-Park, Efteling, Toverland'
   description: >-
     En el Efteling, Europa-Park y Toverland, el pase anual más barato se
     amortiza con cuatro a seis visitas. Phantasialand no tiene pase anual desde

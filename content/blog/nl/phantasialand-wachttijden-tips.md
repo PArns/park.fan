@@ -28,9 +28,10 @@ coverImage:
   caption: 'Taron in het basaltdorp Klugheim, voor mij de mooiste plek van het park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand tips: Quick Pass, rustige dagen, wachttijden'
+  title: 'Phantasialand tips: wanneer loont de Quick Pass?'
   description: >-
-    Phantasialand-wachttijden klein houden: de juiste dag, de Quick Pass, nu ook online, en Wintertraum, van iemand die er al ruim dertig jaar komt.
+    Op een rustige dag heb je in Phantasialand geen Quick Pass nodig. Op een
+    drukke loont hij voor Taron (€ 12) en F.L.Y., alleen in de Ultimate (€ 80).
   keywords:
     - Phantasialand wachttijden
     - Phantasialand wachttijden vermijden

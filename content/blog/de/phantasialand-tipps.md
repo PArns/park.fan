@@ -27,9 +27,10 @@ coverImage:
   caption: 'Taron im Basaltdorf Klugheim, für mich der schönste Fleck im Park.'
   credit: 'park.fan'
 seo:
-  title: 'Phantasialand Tipps: Quick Pass, leere Tage, Wartezeiten'
+  title: 'Phantasialand Tipps: Wann lohnt sich der Quick Pass?'
   description: >-
-    Phantasialand-Wartezeiten kleinhalten: der richtige Tag, der Quick Pass, jetzt auch online, und der Wintertraum, vom Stammgast seit über dreißig Jahren.
+    An ruhigen Tagen brauchst du im Phantasialand keinen Quick Pass. An vollen
+    lohnt er sich für Taron (12 €) und F.L.Y., nur im Ultimate für 80 €.
   keywords:
     - Phantasialand Wartezeiten
     - Phantasialand Wartezeiten vermeiden

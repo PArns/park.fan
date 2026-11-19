@@ -25,7 +25,7 @@ parkLinks:
 rideLinks:
   - rulantica/*
 seo:
-  title: 'Rulantica 2026: scivoli, prezzi e i giorni più tranquilli'
+  title: 'Rulantica in inverno: giorni più tranquilli e prezzi'
   description: >-
     Rulantica in inverno: biglietti da 28 €, altezze minime da 90 a 140 cm e i
     mesi più tranquilli, gennaio e marzo.

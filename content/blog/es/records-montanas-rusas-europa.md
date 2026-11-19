@@ -24,7 +24,7 @@ coverImage:
   caption: 'Cuando abrió en 2002, ninguna montaña rusa de acero de Europa subía más alto que esta rampa.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Las montañas rusas más rápidas, altas y largas de Europa'
+  title: '¿Cuál es la montaña rusa más alta y más rápida de Europa?'
   description: >-
     Red Force va a 180 km/h y mide 112 metros, Big One es la más larga y The Smiler tiene 14 inversiones. Silver Star y Kärnan, las más rápidas de Alemania.
   keywords:

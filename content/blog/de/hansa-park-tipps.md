@@ -24,11 +24,10 @@ parkLinks:
 rideLinks:
   - hansa-park/*
 seo:
-  title: 'Hansa-Park 2026: Öffnungszeiten, Preise, Achterbahnen'
+  title: 'Hansa-Park Öffnungszeiten 2027 und Preis der Saisonkarte'
   description: >-
-    Hansa-Park 2026: offen vom 26. März bis 25. Oktober, kein einziger
-    Schließtag. Saison 2027 ab 25. März. Dazu Preise, Parken und alle acht
-    Achterbahnen.
+    Der Hansa-Park plant die Saison 2027 vom 25. März bis 24. Oktober. Vor dem
+    Saisonstart kostet die Saisonkarte 120 €, danach 140 €.
   keywords:
     - Hansa-Park
     - Hansa-Park Tipps
