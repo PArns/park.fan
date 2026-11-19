@@ -87,7 +87,7 @@ interface Item {
 const keyed = (key: string, item: Item | null): Item | null => item && { ...item, key };
 
 /**
- * Chapter 04's questions, answered from the data the page shows. The hub asks ten: the region's
+ * The questions chapter, answered from the data the page shows. The hub asks ten: the region's
  * data questions first (the quietest and busiest days per resort, the events of the window, a park
  * on a party night, a park on weekends, the drive between the resorts, the hotels' early slots,
  * the region's questions with a fixed answer, then the weekdays, the breaks and the hours where
@@ -102,7 +102,6 @@ const keyed = (key: string, item: Item | null): Item | null => item && { ...item
  * same array; without a question there is no chapter and no `FAQPage`.
  */
 export async function HubFaq({
-  index,
   region,
   calendar,
   summaries,
@@ -110,8 +109,6 @@ export async function HubFaq({
   accuracy,
   locale,
 }: {
-  /** The chapter's number: 04 after the best-time chapter, 03 where a region has none. */
-  index: string;
   region: TripRegion;
   calendar: TripCalendar | null;
   summaries: ResortMonthSummary[];
@@ -501,11 +498,7 @@ export async function HubFaq({
       {/* The chapter streams in after the page's tracker may have looked, so it brings its own. */}
       <SectionMark section="hub_faq" />
       <SectionSeenTracker />
-      <ChapterHeading
-        index={index}
-        icon={HelpCircle}
-        title={ownWords(t, 'title') ?? shared('title')}
-      />
+      <ChapterHeading icon={HelpCircle} title={ownWords(t, 'title') ?? shared('title')} />
       <FaqList items={answered} />
       <p className="mt-6 text-sm">
         {shared.rich('links', {

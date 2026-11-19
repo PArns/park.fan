@@ -108,14 +108,14 @@ export interface TripRegionHubPageProps {
  * A region's hub and its month pages, one anatomy (docs/product/landing-pages.md), a landing page
  * around the trip planner. The head asks the visitor's question, says in one line what the page
  * holds, and offers the planner and the calendar, with the answer under them: the best park per
- * resort and the quietest days ahead. Then 01 how the planner plans a trip (its four steps) and the
- * planner, 02 the calendar with its key and the month index, 03 the resorts with each park's
- * calendar, 04 the best time to go (where the region has best-time pages), 05 the questions and
- * the band, the page's one closing call, which ends on the region's travel guide while that post
+ * resort and the quietest days ahead. Then the chapters, each opened by its icon rather than a
+ * number: the calendar with its key and the month index, how the planner plans a trip (its four
+ * steps) and the planner, the resorts with each park's calendar, the best time to go (where the
+ * region has best-time pages), the questions, and the band, the page's one closing call, which ends on the region's travel guide while that post
  * is served.
  *
  * Two states (`HubTripProvider`): the served HTML is always the landing page; with a plan in the
- * address bar or remembered in this browser, chapter 02 is the plan and the head's buttons lead to
+ * address bar or remembered in this browser, the planner chapter is the plan and the head's buttons lead to
  * it. Every other chapter is open in both states, with no fold. A block without the region's words
  * draws nothing. Every sentence and every day of the window are in the served HTML. Where each
  * chapter begins is marked for `section_seen` (`hub_calendar` … `hub_faq`).
@@ -210,7 +210,6 @@ export async function TripRegionHubPage({
 
   const planner = (
     <PlannerChapterSlot
-      index="02"
       region={region}
       locale={locale}
       defaultMonth={month ? monthKey(month) : undefined}
@@ -245,7 +244,6 @@ export async function TripRegionHubPage({
         <div className="space-y-16 sm:space-y-24">
           <section id={TRIP_CALENDAR_ID} className="scroll-mt-24">
             <ChapterHeading
-              index="01"
               icon={CalendarDays}
               kicker={
                 calendar
@@ -307,19 +305,12 @@ export async function TripRegionHubPage({
           {planner}
 
           <SectionMark section="hub_resorts" />
-          <HubResorts
-            index="03"
-            region={region}
-            hub={config.hub}
-            bestDays={bestDays}
-            locale={locale}
-          />
+          <HubResorts region={region} hub={config.hub} bestDays={bestDays} locale={locale} />
 
           {whenTitle && <SectionMark section="hub_best_time" />}
           {whenTitle && (
             <section className="scroll-mt-24" id="best-time">
               <ChapterHeading
-                index="04"
                 icon={Sun}
                 kicker={ownWords(tRegion, 'when.kicker') ?? undefined}
                 title={whenTitle}
@@ -337,7 +328,6 @@ export async function TripRegionHubPage({
           {/* The questions wait for the measured error, bounded; the page above never does. */}
           <Suspense fallback={null}>
             <HubFaq
-              index={whenTitle ? '05' : '04'}
               region={region}
               calendar={calendar}
               summaries={summaries}

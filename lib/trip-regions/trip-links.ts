@@ -40,7 +40,7 @@ export interface TripRegionWords {
 
 /** One trip region, reduced to what its links need. */
 export interface TripRegionLinks {
-  /** The registry's slug, whose hub (`tripRegionPath`) holds the planner as chapter 03. */
+  /** The registry's slug, whose hub (`tripRegionPath`) holds the planner chapter. */
   slug: string;
   /** The API's name, in English: what a search matches; a link shows `words`. */
   name: string;

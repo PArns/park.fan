@@ -1,7 +1,7 @@
 # The trip planner
 
 Which park on which day of a trip of up to 21 days in one region, from the API's `/plan`, or which
-dates to travel at all, from `/when`. Orlando is its first region, as chapter 01 of the
+dates to travel at all, from `/when`. Orlando is its first region, as a chapter of the
 [Orlando hub](orlando-hub.md); Southern California, Japan and Paris follow from the same code, each
 with its own entry in the registry ([trip regions](trip-regions.md)). The region's own rules (its
 hotels, its ticket step, the fireworks question, keeping Disney and Universal days together) are

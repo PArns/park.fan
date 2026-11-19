@@ -22,7 +22,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-accuracy-link.tsx`](../../components/trip-regions/hub/hub-accuracy-link.tsx)
 
-- `HubAccuracyLink` _component_: The accuracy line's link to its question in chapter 04, counted as `trip_accuracy_opened`.
+- `HubAccuracyLink` _component_: The accuracy line's link to its question in the questions chapter, counted as `trip_accuracy_opened`.
 
 ### [`hub/hub-accuracy.tsx`](../../components/trip-regions/hub/hub-accuracy.tsx)
 
@@ -49,7 +49,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-faq.tsx`](../../components/trip-regions/hub/hub-faq.tsx)
 
-- `HubFaq` _component_: Chapter 04's questions, answered from the data the page shows.
+- `HubFaq` _component_: The questions chapter, answered from the data the page shows.
 
 ### [`hub/hub-filter-chip.tsx`](../../components/trip-regions/hub/hub-filter-chip.tsx)
 
@@ -69,8 +69,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-how-it-works.tsx`](../../components/trip-regions/hub/hub-how-it-works.tsx)
 
-- `HubHowItWorks` _component_: Chapter 02 of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to plan it with him in the chat, whose button opens him.
-- `HUB_STEPS` _const_: The planner's four steps as chapter 02 names them, in the order of `TripHub.howItWorks`.
+- `HubHowItWorks` _component_: The planner chapter of the landing page: how the trip planner plans a trip, in four steps with a screenshot each (the region's `hub.howItWorks`, in the page's language), then Parky's offer to plan it with him in the chat, whose button …
+- `HUB_STEPS` _const_: The planner's four steps as the planner chapter names them, in the order of `TripHub.howItWorks`.
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
@@ -82,13 +82,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-resorts.tsx`](../../components/trip-regions/hub/hub-resorts.tsx)
 
-- `HubResorts` _component_: Chapter 03, the resorts: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on a tinted panel with its name, never on a picture another …
+- `HubResorts` _component_: The resorts chapter: one card per API group in the order the region lists them (`hub.resorts`; a group it does not list follows), with its photo (a group without one opens on a tinted panel with its name, never on a picture another card …
 - `calendarParks` _function_: The parks whose crowd calendar the hub links: every park the window has quiet days for (a water park out of season has none), or, without `/best-days`, every headliner, so a failed read never takes the links away.
 
 ### [`hub/hub-trip-state.tsx`](../../components/trip-regions/hub/hub-trip-state.tsx)
 
 - `HubTripProvider` _component_: The hub's state for everything below it: the trip the planner shows, or null for the landing page.
-- `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page chapter 02 is the four steps, and the planner is the assistant's dialog, which renders outside this box.
+- `HubPlannerOnly` _component_: The planner's inline view (its result, a date search), shown only while it has one: on the landing page the planner chapter is the four steps, and the planner is the assistant's dialog, which renders outside this box.
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
@@ -104,7 +104,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/planner-chapter-slot.tsx`](../../components/trip-regions/hub/planner-chapter-slot.tsx)
 
-- `PlannerChapterSlot` _component_: Chapter 02 around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ and the …
+- `PlannerChapterSlot` _component_: The planner chapter around the trip planner (`TripRegionPlanner`), in the hub's two states: on the landing page „So plant der Reiseplaner deine Tage in Orlando“ with `landing` (the four steps) above the planner, with a plan „Deine Reise“ …
 
 ### [`hub/trip-region-hub-page.tsx`](../../components/trip-regions/hub/trip-region-hub-page.tsx)
 

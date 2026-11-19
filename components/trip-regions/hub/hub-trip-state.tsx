@@ -65,7 +65,7 @@ export function useHubTrip(): HubTripDates | null {
 
 /**
  * The planner's inline view (its result, a date search), shown only while it has one: on the
- * landing page chapter 02 is the four steps, and the planner is the assistant's dialog, which
+ * landing page the planner chapter is the four steps, and the planner is the assistant's dialog, which
  * renders outside this box. Hidden in the served HTML, which is the landing page.
  */
 export function HubPlannerOnly({ children }: { children: ReactNode }) {

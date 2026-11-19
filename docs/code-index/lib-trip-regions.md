@@ -170,7 +170,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `monthOfDate` _function_: The month a `YYYY-MM-DD` date, or a `YYYY-MM` key, falls in.
 - `tripRegionRelayUrl` _function_: Where a page asks for one of a region's keyed routes: the same-origin relay (`app/api/trip-regions/[...path]/route.ts`), which adds the site's data key. The query names are the API's own.
 - `TRIP_PLANNER_ID` _const_: The anchor of the hub's planner chapter, which the hero's action and Parky's links open.
-- `TRIP_CALENDAR_ID` _const_: The anchor of chapter 01, the calendar, for the park bands and the homepage teaser.
+- `TRIP_CALENDAR_ID` _const_: The anchor of the calendar chapter, for the park bands and the homepage teaser.
 - `TRIP_ACCURACY_ID` _const_: The anchor of the hub's question on how far and how well the forecast reaches.
 - `TRIP_REGION_MONTH_COUNT` _const_: How many months a hub serves: the current month (the hub itself) and the eleven after it, in the region's time. Past `forecastUntil` a month reads last year's measured days with a banner.
 - Types: `TripRelayRoute`
