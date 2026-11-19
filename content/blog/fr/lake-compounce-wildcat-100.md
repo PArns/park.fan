@@ -47,7 +47,7 @@ seo:
 
 ## Ce que le parc prépare pour l’anniversaire
 
-Les Wildcat Weekends lancent la fête en mai. La Wildcat Dance Party est nouvelle cette année, et la mascotte Ryder the Wildcat y danse aussi. D’autres animations autour de l’anniversaire doivent s’étaler sur la saison. Lake Compounce n’a encore donné aucune date, ni pour elles, ni pour les Wildcat Weekends. Les détenteurs d’un pass saison reçoivent un cadeau le jour de l’ouverture.
+Les Wildcat Weekends lancent la fête en mai, à des dates que le parc n’a pas encore données, pas plus que pour le reste du programme d’anniversaire. La Wildcat Dance Party est nouvelle cette année, et la mascotte Ryder the Wildcat y danse aussi. D’autres animations autour de l’anniversaire doivent s’étaler sur la saison. Les détenteurs d’un pass saison reçoivent un cadeau le jour de l’ouverture.
 
 > [!QUOTE]
 > Alors que Wildcat fête ses 100 ans, nous rendons hommage à l’histoire et aux expériences qui ont fait de Lake Compounce une partie de tant de familles au fil des années.
@@ -58,35 +58,35 @@ Les Wildcat Weekends lancent la fête en mai. La Wildcat Dance Party est nouvell
 
 LLanas dirige le parc depuis août 2026. Avant cela, il était Director of Admissions à l’Aquaventure World de l’Atlantis The Palm, à Dubaï, et il a passé plus de dix ans chez SeaWorld Parks & Entertainment.
 
-## Wildcat, depuis 1927
+## Wildcat et les quatre autres montagnes russes
 
 [Wildcat](ref:lake-compounce/wildcat?bare) a ouvert en 1927. Philadelphia Toboggan Coasters l’a construite comme son 61e circuit, sur des plans de Herbert Paul Schmeck. En 1986, Charlie Dinn et Curtis D. Summers l’ont reconstruite. Le parcours mesure 837 mètres (2 746 pieds) et culmine à 26 mètres (85 pieds). La première descente plonge de 24 mètres (78 pieds), et le train file à 77 km/h (48 mph), ce qui reste vif pour une centenaire. Pas d’inversion, et un tour dure une minute et 15 secondes.
 
-Wildcat est revenue pour la saison 2026 après des travaux qui ont duré plusieurs années. Le parc a posé sur tout le parcours les rails en couches verticales de Gravity Group, pour que le trajet soit plus doux. Depuis, le parc fait de nouveau rouler un deuxième train pour que tu attendes moins. Les deux trains viennent de Great Coasters International et comptent chacun sept wagons, soit 14 places. Tu peux monter à partir de 122 centimètres (48 pouces), sans taille maximale. L’attraction est accessible en fauteuil roulant, et le Speedy Pass y est valable.
+Wildcat est revenue pour la saison 2026 après des travaux qui ont duré plusieurs années. Le parc a posé sur tout le parcours les rails en couches verticales de Gravity Group, pour que le trajet soit plus doux. Depuis, un deuxième train roule de nouveau. Les deux trains viennent de Great Coasters International et comptent chacun sept wagons, soit 14 places. Tu peux monter à partir de 122 centimètres (48 pouces), sans taille maximale. L’attraction est accessible en fauteuil roulant, et le Speedy Pass y est valable.
 
 ```ride-waits-widget rides=lake-compounce/wildcat|Wildcat|bois;lake-compounce/boulder-dash|Boulder Dash|bois;lake-compounce/phobia-phear-coaster|Phobia Phear Coaster|acier, lancé;lake-compounce/zoomerang|Zoomerang|acier, boomerang columns=type,peak,days highlight=lake-compounce/wildcat
 
 ```
 
-Deuxième circuit en bois du parc, [Boulder Dash](ref:lake-compounce/boulder-dash?bare) roule depuis le 21 mai 2000. C’est un terrain coaster qui épouse le relief de la colline. Custom Coasters International l’a construit d’après les plans de Larry Bill. Le circuit fait 1 440 mètres (4 725 pieds) et la première descente 35 mètres (115 pieds). Le train atteint 97 km/h (60 mph), et un tour dure deux minutes et demie. Le [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), un Sky Rocket II de Premier Rides, a ouvert le 7 mai 2016. Haut de 46 mètres (150 pieds), il lance son train plusieurs fois par moteur linéaire, atteint 100 km/h (62 mph) et fait une inversion. Il faut 137 centimètres (54 pouces), ou 132 (52 pouces) avec un accompagnateur. [Zoomerang](ref:lake-compounce/zoomerang?bare) est un Boomerang de Vekoma de 1997, avec trois inversions. Avec le Kiddie Coaster pour les plus petits, le parc en compte cinq.
+Deuxième circuit en bois du parc, [Boulder Dash](ref:lake-compounce/boulder-dash?bare) roule depuis le 21 mai 2000. C’est un terrain coaster qui épouse le relief de la colline. Custom Coasters International l’a construit d’après les plans de Larry Bill. Avec 1 440 mètres (4 725 pieds), son circuit est plus d’une fois et demie plus long que celui de Wildcat, et à 97 km/h (60 mph), il va 20 km/h plus vite. Le [Phobia Phear Coaster](ref:lake-compounce/phobia-phear-coaster?bare), un Sky Rocket II de Premier Rides, a ouvert le 7 mai 2016. Haut de 46 mètres (150 pieds), il lance son train plusieurs fois par moteur linéaire, atteint 100 km/h (62 mph) et fait une inversion. Si tu mesures tout juste les 122 centimètres de Wildcat, il t’en faut 15 de plus pour Phobia, ou dix avec un accompagnateur. [Zoomerang](ref:lake-compounce/zoomerang?bare) est un Boomerang de Vekoma de 1997, avec trois inversions. Avec le Kiddie Coaster pour les plus petits, le parc en compte cinq.
 
 ## Les événements, de mai à octobre
 
-En mai a aussi lieu le premier Boulder Dash 5k, une course de cinq kilomètres que le parc organise avec la Hartford Marathon Foundation et Special Olympics Connecticut. Les recettes vont à la collecte de Special Olympics Connecticut pour son premier siège en propre. Il sera installé sur un nouveau campus de Bristol qui ouvre en 2027. Le jour de la course en mai n’est pas encore fixé.
+En mai, à une date encore ouverte, a aussi lieu le premier Boulder Dash 5k, une course de cinq kilomètres que le parc organise avec la Hartford Marathon Foundation et Special Olympics Connecticut. Les recettes vont à la collecte de Special Olympics Connecticut pour son premier siège en propre. Il sera installé sur un nouveau campus de Bristol qui ouvre en 2027.
 
 Les week-ends du 5 au 27 juin, c’est Kids Fest : Daniel Tiger et d’autres personnages à rencontrer, des spectacles de magie et de nouvelles fêtes de la mousse. Kids Fest est compris dans tous les pass saison 2027.
 
-Le week-end du 4 juillet, un feu d’artifice éclate au-dessus du lac, puis chaque week-end de juillet, de nouveaux spectacles de drones et de lasers reprennent des motifs du parc. Des musiciens jouent en live avant chaque spectacle. Les abonnés à la newsletter peuvent voter pour l’une des figures du spectacle de drones. En août suit le Summer Beach Bash. Lake Compounce n’a pas encore publié les dates des spectacles ni celles du Beach Bash.
+Le week-end du 4 juillet, un feu d’artifice éclate au-dessus du lac, puis chaque week-end de juillet, de nouveaux spectacles de drones et de lasers reprennent des motifs du parc. Des musiciens jouent en live avant chaque spectacle. Les abonnés à la newsletter peuvent voter pour l’une des figures du spectacle de drones. Pour le Summer Beach Bash en août, comme pour les spectacles, aucune date n’est encore fixée.
 
 Les Harvest Days, nouveaux en 2027, ont lieu les week-ends du 4 au 26 septembre, avec de la musique, de la cuisine, des boissons et des traditions de la Nouvelle-Angleterre. Phantom Fall Fest, l’événement d’Halloween, prend la suite certains jours du 24 septembre au 31 octobre. En journée, le programme vise les familles, et le soir, les Haunted Attractions ouvrent.
 
-D’ici l’ouverture, Lake Compounce reste fermé. La saison 2026 s’est terminée le 1er novembre avec Phantom Fall Fest, et Holiday Lights a eu lieu pour la dernière fois l’hiver 2025.
+Holiday Lights a eu lieu pour la dernière fois l’hiver 2025, le parc reste donc fermé jusqu’au 8 mai. La saison 2026 s’est terminée le 1er novembre avec Phantom Fall Fest.
 
 ## Pass saison et billets 2027
 
 Pour le Black Friday, Lake Compounce vend ses pass saison 2027 moins cher. Le parc n’a pas annoncé jusqu’à quand dure l’offre.
 
-Le Gold Pass coûte 89,99 $ au lieu de 169,99 $. Il donne aussi accès à Crocodile Cove et à Phantom Fall Fest, et le General Parking est compris. Avec la bouteille de saison, les sodas sont gratuits, et tu as 15 % de réduction sur les repas, les achats et le Speedy Pass, 20 % sur les cabanas. Le Silver Pass est lui aussi à 89,99 $ pendant l’offre, au lieu de 139,99 $. Il vaut aussi pour le parc aquatique et Phantom Fall Fest, mais il n’offre que 10 % de réduction et pas de parking. Comme le Gold Pass se vend en ce moment au prix du Silver, le Silver ne sert plus guère qu’à remplir une ligne de la grille tarifaire.
+Le Gold Pass coûte 89,99 $ au lieu de 169,99 $. Il donne aussi accès à Crocodile Cove et à Phantom Fall Fest, et le General Parking est compris. Avec la bouteille de saison, les sodas sont gratuits, et tu as 15 % de réduction sur les repas, les achats et le Speedy Pass, 20 % sur les cabanas. Le Silver Pass est lui aussi à 89,99 $ pendant l’offre, au lieu de 139,99 $. Il vaut aussi pour le parc aquatique et Phantom Fall Fest, mais il n’offre que 10 % de réduction et pas de parking. Qui achète quand même le Silver pendant l’offre paie le même prix, a cinq points de réduction en moins et paie 28 $ de parking à chaque visite.
 
 Le Platinum Pass coûte 169,99 $ au lieu de 209,99 $. Le Preferred Parking est gratuit tant qu’il reste des places, la réduction monte à 20 %, ou 30 % sur les cabanas. Il est en plus valable dans d’autres parcs américains, dont Kennywood, Dutch Wonderland, Story Land et Splish Splash. À [Kennywood, près de Pittsburgh](/news/kennywood-saison-2027), trois attractions de 1927 fêtent aussi leurs 100 ans en 2027, dont les montagnes russes en bois Racer.
 
