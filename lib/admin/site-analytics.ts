@@ -965,7 +965,11 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_find_toggled: {
     label: 'Beste Reisezeit umgeschaltet',
-    when: '„Noch keine Daten? Beste Reisezeit finden“ und zurück zu den eigenen Daten.',
+    when: 'Im Schritt Daten zwischen „Ich kenne meine Daten“ und „Daten finden“ gewechselt.',
+  },
+  trip_quiet_week_taken: {
+    label: 'Ruhige Woche übernommen',
+    when: 'Im Schritt Daten den Vorschlag „Nächste ruhige Woche“ als Reisedaten übernommen.',
   },
   trip_find_period: {
     label: 'Zeitraum der Suche gewählt',

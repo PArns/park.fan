@@ -7,6 +7,7 @@ import { useBrowserNow } from '@/lib/hooks/use-mounted';
 import { parkToday } from '@/lib/planner/park-time';
 import { DEFAULT_PLAN_STATE, tripHotelKinds, type TripPlanState } from '@/lib/trip-regions/plan';
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
+import { headlinersForTrip } from '@/lib/trip-regions/trip-fit';
 import { tripPlannerUi, type TripPlannerStartSource } from '@/lib/trip-regions/planner-ui';
 import type { TripWizardStepKey } from '@/lib/trip-regions/wizard-steps';
 import { requireTripRegion, type TripTicketStep } from '@/lib/trip-regions/registry';
@@ -152,6 +153,12 @@ function PlannerFrame({
   const now = useBrowserNow(live);
   const today = now ? parkToday(region.timezone, now.getTime()) : null;
 
+  const allHeadliners = useMemo(
+    () => region.parks.filter((p) => p.headliner).map((p) => p.slug),
+    [region.parks]
+  );
+  const headliners = useMemo(() => headlinersForTrip(allHeadliners, state), [allHeadliners, state]);
+
   const context = useMemo<PlanContextValue>(() => {
     const parkBySlug = new Map(region.parks.map((p) => [p.slug, p]));
     const config = requireTripRegion(region.slug);
@@ -169,7 +176,8 @@ function PlannerFrame({
       },
       venueByKey: new Map((region.venues ?? []).map((v) => [v.key, v])),
       groupByKey: new Map(region.groups.map((g) => [g.key, g])),
-      headliners: region.parks.filter((p) => p.headliner).map((p) => p.slug),
+      headliners,
+      allHeadliners,
       regionOrder: region.parks.map((p) => p.slug),
       areaKeys: new Set(region.hotelAreas.map((a) => a.key)),
       tickets: ticketCatalog(region.tickets),
@@ -182,7 +190,20 @@ function PlannerFrame({
       photos: photos ?? NO_PHOTOS,
       live,
     };
-  }, [region, locale, state, update, edit, undo, edits, today, photos, live]);
+  }, [
+    region,
+    locale,
+    state,
+    update,
+    edit,
+    undo,
+    edits,
+    today,
+    photos,
+    live,
+    headliners,
+    allHeadliners,
+  ]);
 
   return (
     <PlanContextProvider value={context}>

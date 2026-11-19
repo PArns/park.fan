@@ -50,7 +50,9 @@ the last trip per region in this browser (`lib/trip-regions/remembered-trip.ts`)
 - **Defaults stay out of the URL:** `fireworks=any`, `split=auto`, `rest=auto`, `hop=0`,
   `arrival`/`departure=free`, and `blocks` until the visitor sets it (absent, the API keeps resorts
   together on plan first and mixes owned tickets' resorts only where that saves 3 min a ride). `parks` is written once the visitor touches it; until then
-  the API's default, the headliners, is asked for.
+  the address leaves it out and the plan starts with the region's headliners, as many as the
+  trip's days hold (`headlinersForTrip`): the API's default where all of them fit, else the
+  request alone names them ([the parks a trip starts with](trip-planner/wizard.md#dates-and-parks)).
 - **A link is read leniently,** one parameter at a time, so one bad value costs only itself. Parky's
   older `parties=avoid|allow|prefer` reads as `fireworks=any` and is never written. `tickets` is
   read one item at a time against the region's catalog: an unknown product or a length it does not
@@ -71,7 +73,8 @@ range with different spaces, which cost the planner its hydration once.
 
 The owner's rule for the whole chapter: a visitor is never buried in numbers, and the flow goes
 from simple to advanced. The first screen asks only for what a plan cannot do without: the dates,
-and the parks, which start chosen (the region's headliners). Once the departure date is picked
+and the parks, which start chosen (the region's headliners, as many as the trip's days hold). Once
+the departure date is picked
 the plan is there, and everything else is a change to it. The hub's hero action calls
 `tripPlannerUi.openStart()` (`lib/trip-regions/planner-ui.ts`): the Dates sheet on a phone, the
 dates panel scrolled to and focused at a desk. The flow and why, step by step, is in
@@ -221,14 +224,16 @@ sleeps in more than one place. The visitor gives the ends, the plan gives the mi
 
 Built for a first-time visitor who wants to know which park on which day (PAR-1309):
 
-1. **Dates.** The only question before a plan: the parks start chosen and are shown beside the
-   dates, not asked. "No dates yet? Find the best time" is one line under the calendar.
-2. **The plan at once.** The departure date closes the sheet, the answer scrolls into view and
-   takes the focus: four taps and one sheet on a phone instead of seven taps and three.
+1. **Dates.** The only required answer: „Ich kenne meine Daten“ or „Daten finden“ as two equal
+   answers, and over the calendar the quietest week ahead, taken with one press. The parks start
+   chosen, as many headliners as the dates hold.
+2. **The first pass:** dates, parks, Hotel (or Route and Hotels), Tempo, then the finale and the
+   plan. Evenings and tickets are not on the way to it
+   ([why](trip-planner/wizard.md#the-steps-1)).
 3. **The answer:** what did not fit with its three ways out, the days once in the chosen view, one
    line on the peak wait.
 4. **Changes on request** over it: „Deine Antworten“, a chip per step of the assistant that opens
-   it on that step.
+   it on that step, Evenings and Tickets included.
 5. **Tickets after the plan**, from the ticket line under the head or the ticket card's "Already
    have tickets? Add them"; a shared
    link is never asked. A visitor whose bought tickets set the dates finds the same line on the
@@ -448,6 +453,9 @@ admin MCP's `trip_planner_report` reads exactly these names):
 
 Steps 4 and 5 are optional: a plan that suits needs neither, so the report reads them as shares of
 step 3, not as a drop-off. `trip_tickets_answered` (the question before the plan) is no longer sent.
+Since the first pass ends on Tempo, the Evenings and Tickets steps are reached only from the
+result, so a visit to them is step 4 (`trip_wizard_step` with `via: answers`) and opening the
+ticket entry is step 5.
 
 ### Every `trip_*` event and its properties
 
@@ -464,6 +472,7 @@ Each carries `region` besides these. A value is one of the listed, never free te
 | `trip_left_out_fix`                                                                   | `fix`: travel_days, parks, longer; `left_out`: 1, 2, 3+                                                                                                                                                                            |
 | `trip_tickets_opened`                                                                 | `from`: ask, card, head (the ticket line under the result's head), adopt, ticket_problem, outside_ticket, wizard; `first` (true the first time in this browser)                                                                    |
 | `trip_find_toggled`                                                                   | `to`: find, known                                                                                                                                                                                                                  |
+| `trip_quiet_week_taken`                                                               | none: the dates step's quietest week ahead taken as the trip's dates                                                                                                                                                               |
 | `trip_find_period`                                                                    | `period`: next12, year, spring, summer, autumn, custom; `school_breaks` (true, false). Never which holidays                                                                                                                        |
 | `trip_calendar_mode`                                                                  | `mode`: all or a resort key of the region; `from_default` (true when it left the default view)                                                                                                                                     |
 | `trip_view_changed`                                                                   | `view`: agenda (the list), week, month                                                                                                                                                                                             |
@@ -560,7 +569,9 @@ day guest really gets; the planner shows it everywhere a day is: the Week block'
 
 ## The When mode
 
-"No dates yet? Find the best time" under the calendar switches to it, and "I know my dates" back. Finding takes a period (the next
+"Find dates", one of the dates step's two answers, switches to it, and "I know my dates" back. A
+period that began before the region's today is searched from today, and one whose rest is shorter
+than the trip as the next twelve months (`searchFromToday`), since the API answers a past one with a 400. Finding takes a period (the next
 twelve months, next year, its spring, summer or autumn, or a range of one's own, each clipped to the
 year the API looks ahead), a trip length of 3–21 days (10 to start) and, if wanted, only the school
 holidays of a region. The regions are exactly those the holiday data has, read from the open route
@@ -639,7 +650,19 @@ Nothing is planned until dates are chosen; the empty chapter says so and is neve
 too short for the chosen parks is planned with what fits, and the parks left out are named
 (`parksLeftOut`). A problem the API would answer with a 400 (repeat visits the visitor pinned that
 outnumber the days, a trip over 21 days, more fixed nights than the trip has) is caught before the
-request and said in a sentence with the way out. The API ranks every day after the
+request and said in a sentence with the way out.
+
+**A trip that began before today** (`pastTrip` in `lib/trip-regions/trip-dates.ts`, against the
+region's today, never the server's or the browser's clock) asks nothing: no plan, no ideas, no
+calendar days before today. Where the plan would stand, `PlanPastNotice` names the first day („Diese
+Reise hat am 12. Nov. begonnen.“) with „Ab heute planen“, the same trip from today with every other
+answer and the pins still ahead (`planFromToday`), and „Neue Daten wählen“, which opens the dates
+step; a trip that is over gets only the second. A remembered trip under way still comes back on a
+bare visit (`restorableTrip`), and this notice is what it says. Why: 15 of the 16 API errors in the
+30 days to 19 November 2026 were `400 window_in_past` (8 from `/plan`, 4 from `/when`, 3 from
+`/plan/ideas`); a remembered trip put back after its first day and an old link both lead there.
+
+The API ranks every day after the
 forecast's 60 days on the same weekday a year back as measured, so the answer says once from which
 date the plan does ("From 12 January, the plan uses last year's measured waits on the same
 weekday"), or that all of it does, with the reason: that far ahead the long-range forecast barely

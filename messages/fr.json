@@ -4525,7 +4525,12 @@
         "show": "Voir le plan maintenant"
       },
       "dates": {
-        "months": "Mois"
+        "months": "Mois",
+        "mode": "Tes dates",
+        "known": "Je connais mes dates",
+        "find": "Trouver des dates",
+        "quiet": "Prochaine semaine calme : {range}",
+        "quietTake": "Choisir ces dates"
       },
       "parks": {
         "lead": "Les grands parcs sont déjà choisis, et une touche sur une photo ajoute un parc ou le retire",
@@ -4541,7 +4546,8 @@
         "weather": {
           "label": "Éviter la météo extrême",
           "hint": "Les parcs à thème les jours plus frais, les parcs aquatiques les plus chauds{storm, select, hurricane { ; le pic de la saison des ouragans compte davantage} typhoon { ; le pic de la saison des typhons compte davantage} other {}}"
-        }
+        },
+        "fitted": "Pour {days, plural, one {# jour} other {# jours}}, {parks, plural, one {# parc est présélectionné} other {# parcs sont présélectionnés}}. Tu peux en ajouter d’autres."
       },
       "spare": {
         "title": "{count, plural, =1 {1 jour sans parc} other {# jours sans parc}}",
@@ -4607,6 +4613,12 @@
       "noCooler": "Aucun jour plus frais ne rentrait dans le plan",
       "keyHeat": "Jour de parc chaud",
       "keyHeatNormal": "Jour de parc chaud ; Ø est la moyenne des années passées"
+    },
+    "past": {
+      "started": "Ce voyage a commencé le {date}.",
+      "ended": "Ce voyage a commencé le {date} et il est déjà terminé.",
+      "fromToday": "Planifier à partir d’aujourd’hui",
+      "newDates": "Choisir d’autres dates"
     }
   },
   "tripRegions": {

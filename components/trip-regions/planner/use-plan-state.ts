@@ -14,6 +14,7 @@ import {
 import { TRIP_PLANNER_ID } from '@/lib/trip-regions/paths';
 import { connectPlannerBridge } from '@/lib/trip-regions/planner-bridge';
 import { trackTripEvent, tripOptionChanges } from '@/lib/trip-regions/plan-analytics';
+import { headlinersForTrip } from '@/lib/trip-regions/trip-fit';
 import type { TripRegion } from '@/lib/trip-regions/types';
 
 /**
@@ -89,7 +90,9 @@ export function usePlanState(region: TripRegion, onExternal?: () => void) {
         record([...history.current, { before, change }], { change, undone: false, canUndo: true });
       }
       if (by) {
-        for (const change of tripOptionChanges(before, next, headliners)) {
+        // The parks the untouched trip started with, so a first pick counts what it changed.
+        const started = headlinersForTrip(headliners, before);
+        for (const change of tripOptionChanges(before, next, started)) {
           trackTripEvent(slug, 'trip_option_changed', { ...change, by });
         }
       }

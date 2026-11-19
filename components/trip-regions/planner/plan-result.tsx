@@ -24,7 +24,6 @@ import {
   moveVisit,
   parkDaysAvailable,
   planProblem,
-  planRequestQuery,
   planWindow,
   plannerParkOf,
   removePark,
@@ -84,7 +83,14 @@ import { PlanPeakCard } from './plan-peak-card';
 import { PlanResultHead } from './plan-result-head';
 import { PlanWeekView } from './plan-week-view';
 import { PlanWhenPicked, PlanWhenResult, usePickedLine } from './plan-when-result';
-import { useStatePlan, useTripCalendar, useTripWhen, useUnpinnedPlan } from './use-trip-plan';
+import {
+  usePlanRequestQuery,
+  useStatePlan,
+  useTripCalendar,
+  useTripWhen,
+  useUnpinnedPlan,
+} from './use-trip-plan';
+import { PlanPastNotice, usePastTrip } from './plan-past-notice';
 import { PlanTicketsCard, PlanTicketsLine, TicketsAsk, type PlanEdit } from './plan-tickets-card';
 import { useBaseName } from './plan-place-words';
 import type { SiteEventMap } from '@/lib/analytics/site-analytics';
@@ -164,7 +170,8 @@ export function PlanResult({
 
 /** A search by its query, so the one the visitor asked to compare is not planned over again. */
 function searchKey(state: TripPlanState): string {
-  return JSON.stringify(whenRequestQuery(state));
+  // The search's own start as "today" leaves its range unshifted, so the key is the same tomorrow.
+  return JSON.stringify(whenRequestQuery(state, state.when?.from ?? null));
 }
 
 /** The picked window's line, for the live region that announces a plan the search made. */
@@ -191,9 +198,9 @@ function WhenAnswer({
   onFound: (found: FoundWindows) => void;
 }) {
   const t = useTranslations('tripPlanner');
-  const { state, update } = usePlanContext();
+  const { state, update, today } = usePlanContext();
   const track = useTripEvents();
-  const query = whenRequestQuery(state);
+  const query = whenRequestQuery(state, today);
   const when = useTripWhen(query);
   const settled = when.data && !when.isPlaceholderData && !when.isFetching ? when.data : null;
   usePlanEvents(
@@ -278,7 +285,8 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
   const track = useTripEvents();
   const problem = planProblem(state, headliners);
   const missed = ticketProblem(state, catalog);
-  const query = planRequestQuery(state, headliners, missed !== null);
+  const past = usePastTrip();
+  const query = usePlanRequestQuery();
   const plan = useStatePlan();
   const unpinned = useUnpinnedPlan(query);
   const calendar = useTripCalendar(state.from, state.to);
@@ -353,6 +361,7 @@ function PlanAnswerSection({ edit: editSteps, answers }: { edit: PlanEdit; answe
     [track, edit, regionOrder, headliners]
   );
 
+  if (past) return <PlanPastNotice past={past} onNewDates={() => editSteps.dates('past_trip')} />;
   if (problem) {
     return (
       <div className="border-border/60 flex flex-col gap-2 rounded-2xl border p-5" role="status">

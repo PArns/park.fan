@@ -560,8 +560,10 @@ export interface SiteEventMap {
     fix: 'travel_days' | 'parks' | 'longer';
     left_out: '1' | '2' | '3+';
   }>;
-  /** "No dates yet? Find the best time" and its way back. */
+  /** The dates step's choice between dates of one's own and a search for them. */
   trip_find_toggled: TripEvent<{ to: 'find' | 'known' }>;
+  /** The dates step's suggestion of the quietest week ahead taken as the trip's dates. */
+  trip_quiet_week_taken: TripEvent;
   /**
    * The search's period chosen, and whether it keeps to school holidays. Never which holidays:
    * a holiday region says where the visitor lives.
@@ -720,7 +722,7 @@ export type TripEditPanel = 'dates' | 'parks' | 'route' | 'options';
  * Where the result opens the assistant on the Parks or Dates step besides the answers: the parks
  * left out, a ticket problem, or the ticket card (a ticket that covers none of the planned parks).
  */
-export type TripEditFrom = 'left_out' | 'ticket_problem' | 'ticket_card';
+export type TripEditFrom = 'left_out' | 'ticket_problem' | 'ticket_card' | 'past_trip';
 
 /** An edit of the plan from the result, as `trip_undo` names it (`PlanEditChange`'s kinds). */
 export type TripEditKind =

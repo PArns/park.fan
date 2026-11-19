@@ -4525,7 +4525,12 @@
         "show": "Plan jetzt zeigen"
       },
       "dates": {
-        "months": "Monat"
+        "months": "Monat",
+        "mode": "Deine Reisedaten",
+        "known": "Ich kenne meine Daten",
+        "find": "Daten finden",
+        "quiet": "Nächste ruhige Woche: {range}",
+        "quietTake": "Übernehmen"
       },
       "parks": {
         "lead": "Die großen sind schon gewählt, und mit einem Tipp auf ein Bild nimmst du einen Park dazu oder wählst ihn ab",
@@ -4541,7 +4546,8 @@
         "weather": {
           "label": "Extremes Wetter vermeiden",
           "hint": "Themenparks auf die kühleren Tage, Wasserparks auf die heißesten{storm, select, hurricane {; die Hochphase der Hurrikansaison zählt mehr} typhoon {; die Hochphase der Taifunsaison zählt mehr} other {}}"
-        }
+        },
+        "fitted": "Für {days, plural, one {# Tag} other {# Tage}} {parks, plural, one {ist # Park} other {sind # Parks}} vorgewählt. Du kannst weitere dazunehmen."
       },
       "spare": {
         "title": "{count, plural, =1 {1 Tag ohne Park} other {# Tage ohne Park}}",
@@ -4607,6 +4613,12 @@
       "noCooler": "Kein kühlerer Tag passte in den Plan",
       "keyHeat": "Heißer Parktag",
       "keyHeatNormal": "Heißer Parktag; Ø ist der Schnitt vergangener Jahre"
+    },
+    "past": {
+      "started": "Diese Reise hat am {date} begonnen.",
+      "ended": "Diese Reise hat am {date} begonnen und ist schon vorbei.",
+      "fromToday": "Ab heute planen",
+      "newDates": "Neue Daten wählen"
     }
   },
   "tripRegions": {

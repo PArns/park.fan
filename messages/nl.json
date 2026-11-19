@@ -4525,7 +4525,12 @@
         "show": "Plan nu tonen"
       },
       "dates": {
-        "months": "Maand"
+        "months": "Maand",
+        "mode": "Je reisdata",
+        "known": "Ik weet mijn data",
+        "find": "Data zoeken",
+        "quiet": "Volgende rustige week: {range}",
+        "quietTake": "Overnemen"
       },
       "parks": {
         "lead": "De grote parken zijn al gekozen, en met een tik op een foto voeg je een park toe of haal je het weg",
@@ -4541,7 +4546,8 @@
         "weather": {
           "label": "Extreem weer vermijden",
           "hint": "Pretparken op de koelere dagen, waterparken op de heetste{storm, select, hurricane {; de piek van het orkaanseizoen telt zwaarder} typhoon {; de piek van het tyfoonseizoen telt zwaarder} other {}}"
-        }
+        },
+        "fitted": "Voor {days, plural, one {# dag} other {# dagen}} {parks, plural, one {is # park} other {zijn # parken}} alvast gekozen. Je kunt er meer bij nemen."
       },
       "spare": {
         "title": "{count, plural, =1 {1 dag zonder park} other {# dagen zonder park}}",
@@ -4607,6 +4613,12 @@
       "noCooler": "Er paste geen koelere dag in het plan",
       "keyHeat": "Hete parkdag",
       "keyHeatNormal": "Hete parkdag; Ø is het gemiddelde van eerdere jaren"
+    },
+    "past": {
+      "started": "Deze reis is op {date} begonnen.",
+      "ended": "Deze reis is op {date} begonnen en is al voorbij.",
+      "fromToday": "Vanaf vandaag plannen",
+      "newDates": "Nieuwe data kiezen"
     }
   },
   "tripRegions": {
