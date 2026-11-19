@@ -86,6 +86,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `CalendarHashRedirect` _component_: Forwards an old `#calendar` / `#calendar-YYYY-MM` deep link to the calendar PAGE before the park page hydrates.
 
+### [`calendar-icon-sprite.tsx`](../../components/parks/calendar-icon-sprite.tsx)
+
+- `CalendarIconSprite` _component_: Each calendar icon once, as a `<symbol>`, for the tiles below it to `<use>`: a hub's thirty days or a park's month carries one copy of each path instead of one per tile.
+- `CalendarIcon` _component_: A calendar icon: a `<use>` of its symbol inside `CalendarIconSprite`, else the lucide icon itself, with the same attributes either way, so the two draw the same pixels.
+- `CalendarSeasonIcon` _component_: `CalendarIcon` for a season kind, in its colour: decoration beside a name the reader has.
+- Types: `CalendarIconName`
+
 ### [`card-photo.tsx`](../../components/parks/card-photo.tsx)
 
 - `CardPhotoFrame` _component_: The card photo, cropped to the strip between the card's two glass panels and mirrored above and below it, so each panel blurs a continuation of exactly what is seen and the seam has nothing to show.
@@ -769,6 +776,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `SeasonKindIcon` _component_: A season kind's icon in its colour. With a `label` it is an image of that name; without one it is decoration beside a name the reader already has.
 - `knownSeasonKind` _function_: The kind a season is drawn and named as: its own, or `special_event` for a kind the API added after this build, which then reads as an event rather than as a missing translation.
+- `seasonIconClass` _function_: The classes of a season kind's icon: its size and its colour, then the caller's.
 - `SEASON_KIND_ICON` _const_: The icon and colour of every season kind, in one place for every surface that draws a season. A maintenance window wears the works icon, since it is the same fact about a ride.
 - `SEASON_ICON_QUIET_CLASS` _const_: A quiet season icon: bare, in the colour of the text around it, faded.
 
