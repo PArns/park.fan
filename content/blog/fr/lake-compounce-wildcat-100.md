@@ -76,7 +76,7 @@ En mai a aussi lieu le premier Boulder Dash 5k, une course de cinq kilomètres q
 
 Les week-ends du 5 au 27 juin, c’est Kids Fest : Daniel Tiger et d’autres personnages à rencontrer, des spectacles de magie et de nouvelles fêtes de la mousse. Kids Fest est compris dans tous les pass saison 2027.
 
-En juillet, un feu d’artifice éclate au-dessus du lac, et de nouveaux spectacles de drones et de lasers reprennent des motifs du parc. Des musiciens jouent en live avant chaque spectacle. Les abonnés à la newsletter peuvent voter pour l’une des figures du spectacle de drones. Lake Compounce n’a pas encore publié les soirs exacts, pas plus que les jours du Summer Beach Bash en août.
+Le week-end du 4 juillet, un feu d’artifice éclate au-dessus du lac, puis chaque week-end de juillet, de nouveaux spectacles de drones et de lasers reprennent des motifs du parc. Des musiciens jouent en live avant chaque spectacle. Les abonnés à la newsletter peuvent voter pour l’une des figures du spectacle de drones. Lake Compounce n’a pas encore publié les soirs exacts, pas plus que les jours du Summer Beach Bash en août.
 
 Les Harvest Days sont nouveaux : les week-ends du 4 au 26 septembre, ils mettent à l’honneur la musique, la cuisine, les boissons et les traditions de la Nouvelle-Angleterre. Phantom Fall Fest, l’événement d’Halloween, prend la suite certains jours du 24 septembre au 31 octobre. En journée, le programme vise les familles, et le soir, les Haunted Attractions ouvrent. Le parc n’a pas encore annoncé la fin de la saison 2027.
 
@@ -88,7 +88,7 @@ Pour le Black Friday, Lake Compounce vend ses pass saison 2027 moins cher, jusqu
 
 Le Gold Pass coûte 89,99 $ au lieu de 169,99 $. Il donne aussi accès à Crocodile Cove et à Phantom Fall Fest, et le General Parking est compris. Avec la bouteille de saison, les sodas sont gratuits, et tu as 15 % de réduction sur les repas, les achats et le Speedy Pass, 20 % sur les cabanas. Le Silver Pass est lui aussi à 89,99 $ pendant l’offre, au lieu de 139,99 $. Il vaut aussi pour le parc aquatique et Phantom Fall Fest, mais il n’offre que 10 % de réduction et pas de parking. Comme le Gold Pass se vend en ce moment au prix du Silver, le Silver ne sert plus guère qu’à remplir une ligne de la grille tarifaire.
 
-Le Platinum Pass coûte 169,99 $ au lieu de 209,99 $. Le Preferred Parking est gratuit tant qu’il reste des places, la réduction monte à 20 %, et à 30 % sur les cabanas. Il est en plus valable dans dix autres parcs américains, dont Kennywood, Dutch Wonderland, Story Land et Splish Splash. À Kennywood, près de Pittsburgh, trois attractions de 1927 fêtent aussi leurs 100 ans en 2027, dont le Racer, des montagnes russes en bois construites elles aussi par Philadelphia Toboggan Coasters. On en parle dans notre [article sur la saison 2027 de Kennywood](/news/kennywood-saison-2027).
+Le Platinum Pass coûte 169,99 $ au lieu de 209,99 $. Le Preferred Parking est gratuit tant qu’il reste des places, la réduction monte à 20 %, et à 30 % sur les cabanas. Il est en plus valable dans d’autres parcs américains, dont Kennywood, Dutch Wonderland, Story Land et Splish Splash. À Kennywood, près de Pittsburgh, trois attractions de 1927 fêtent aussi leurs 100 ans en 2027, dont les montagnes russes en bois Racer. On en parle dans notre [article sur la saison 2027 de Kennywood](/news/kennywood-saison-2027).
 
 Si tu achètes un Gold ou un Platinum maintenant, tu reçois un billet gratuit pour un ami, valable n’importe quel jour de mai 2027 hors jours exclus. Chaque pass saison comprend deux entrées pour le Carousel Museum. Sans pass, l’Any Day Ticket coûte 59,99 $ en ligne au lieu de 65,99 $. Il est valable un jour au choix de la saison d’été 2027, Crocodile Cove compris. Les 65 ans et plus ont droit à une réduction.
 
@@ -130,6 +130,7 @@ Sources :
 [Communiqué sur les événements 2026](https://www.lakecompounce.com/press/opening-day-and-seasonal-event-lineup/),
 [Wildcat](https://www.lakecompounce.com/discover-the-park/attractions/wildcat/),
 [Wildcat dans la RCDB](https://rcdb.com/420.htm),
+[Racer dans la RCDB](https://rcdb.com/121.htm),
 [Boulder Dash dans la RCDB](https://rcdb.com/602.htm),
 [Phobia Phear Coaster dans la RCDB](https://rcdb.com/12897.htm),
 [Phobia Phear Coaster](https://www.lakecompounce.com/discover-the-park/attractions/phobia-phear-coaster/),

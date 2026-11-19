@@ -76,7 +76,7 @@ Ook in mei loopt voor het eerst de Boulder Dash 5k, een loop van vijf kilometer 
 
 In de weekenden van 5 tot 27 juni is het Kids Fest, met Daniel Tiger en andere figuren die je kunt ontmoeten, goochelshows en nieuwe schuimparty’s. Kids Fest zit bij elke seizoenspas voor 2027 inbegrepen.
 
-In juli is er vuurwerk boven het meer, en er komen nieuwe drone- en lasershows met figuren uit het park. Voor elke show speelt er livemuziek. Wie zich op de nieuwsbrief abonneert, mag stemmen over een formatie van de droneshow. Op welke avonden precies heeft Lake Compounce nog niet bekendgemaakt, en ook de dagen van de Summer Beach Bash in augustus zijn nog niet bekend.
+In het weekend rond 4 juli is er vuurwerk boven het meer, en daarna elk weekend in juli nieuwe drone- en lasershows met figuren uit het park. Voor elke show speelt er livemuziek. Wie zich op de nieuwsbrief abonneert, mag stemmen over een formatie van de droneshow. Op welke avonden precies heeft Lake Compounce nog niet bekendgemaakt, en ook de dagen van de Summer Beach Bash in augustus zijn nog niet bekend.
 
 Nieuw zijn de Harvest Days in de weekenden van 4 tot 26 september, met muziek, eten, drinken en tradities uit New England. Het halloweenevent Phantom Fall Fest volgt op bepaalde dagen van 24 september tot 31 oktober. Overdag is er een programma voor gezinnen, ’s avonds gaan de Haunted Attractions open. Wanneer het seizoen 2027 eindigt, heeft het park nog niet bekendgemaakt.
 
@@ -88,7 +88,7 @@ Rond Black Friday verkoopt Lake Compounce de seizoenspassen voor 2027 goedkoper,
 
 De Gold Pass kost 89,99 in plaats van 169,99 dollar. Hij geldt ook in Crocodile Cove en tijdens Phantom Fall Fest, en General Parking zit erbij. Met de seizoensfles drink je gratis frisdrank, en je krijgt 15 % korting op eten, aankopen en de Speedy Pass en 20 % op cabana’s. De Silver Pass kost in de actie ook 89,99 dollar, in plaats van 139,99, geldt ook in het waterpark en tijdens Phantom Fall Fest, maar geeft maar 10 % korting en geen parkeren. Omdat je nu voor de prijs van Silver de Gold Pass krijgt, is Silver op dit moment vooral een regel in de prijslijst.
 
-De Platinum Pass kost 169,99 in plaats van 209,99 dollar. Preferred Parking is gratis zolang er plek is, de korting is 20 %, op cabana’s 30 %. Daarnaast geldt hij in tien andere parken in de VS, waaronder Kennywood, Dutch Wonderland, Story Land en Splish Splash. In Kennywood bij Pittsburgh worden in 2027 ook drie attracties uit 1927 gevierd, waaronder de houten achtbaan Racer, die net als de Wildcat door Philadelphia Toboggan Coasters is gebouwd. Meer daarover lees je in ons [bericht over het seizoen 2027 in Kennywood](/news/kennywood-seizoen-2027).
+De Platinum Pass kost 169,99 in plaats van 209,99 dollar. Preferred Parking is gratis zolang er plek is, de korting is 20 %, op cabana’s 30 %. Daarnaast geldt hij in andere parken in de VS, waaronder Kennywood, Dutch Wonderland, Story Land en Splish Splash. In Kennywood bij Pittsburgh worden in 2027 ook drie attracties uit 1927 gevierd, waaronder de houten achtbaan Racer. Meer daarover lees je in ons [bericht over het seizoen 2027 in Kennywood](/news/kennywood-seizoen-2027).
 
 Wie nu Gold of Platinum koopt, krijgt voor elke dag in mei 2027 een gratis ticket voor een vriend, behalve op de blokkeerdagen. Bij elke seizoenspas horen twee toegangskaarten voor het Carousel Museum. Zonder seizoenspas koop je online het Any Day Ticket voor 59,99 in plaats van 65,99 dollar. Dat geldt op een dag naar keuze in het zomerseizoen 2027, ook in Crocodile Cove. Vanaf 65 jaar krijg je korting.
 
@@ -130,6 +130,7 @@ Bronnen:
 [Persbericht over het evenementenprogramma 2026](https://www.lakecompounce.com/press/opening-day-and-seasonal-event-lineup/),
 [Wildcat](https://www.lakecompounce.com/discover-the-park/attractions/wildcat/),
 [Wildcat in de RCDB](https://rcdb.com/420.htm),
+[Racer in de RCDB](https://rcdb.com/121.htm),
 [Boulder Dash in de RCDB](https://rcdb.com/602.htm),
 [Phobia Phear Coaster in de RCDB](https://rcdb.com/12897.htm),
 [Phobia Phear Coaster](https://www.lakecompounce.com/discover-the-park/attractions/phobia-phear-coaster/),
