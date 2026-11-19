@@ -48,27 +48,25 @@ seo:
 
 Da dicembre Universal Orlando mette in vendita i primi abbonamenti annuali e stagionali che comprendono [Epic Universe](ref:universal-epic-universe). Chi entra nel nuovo parco con uno di questi pass deve prenotare ogni visita in anticipo. Il primo giorno prenotabile è il 4 gennaio 2027. Il resort ha annunciato il 19 novembre come cambia il suo programma di abbonamenti.
 
-Finora Epic Universe non rientrava in nessun abbonamento. Dal 24 ottobre 2024 gli abbonati potevano comprare prima di tutti un biglietto giornaliero a parte, con in più il 10 per cento di sconto sulla Darkmoor Monster Makeup Experience nel parco: come vantaggio da abbonati, più che altro un contentino. Da quando Epic Universe ha aperto, il 22 maggio 2025, il resort conta quattro parchi a tema, ed è proprio così che Universal motiva i nuovi pass. Gli altri tre sono [Universal Studios Florida](ref:universal-studios-florida), [Islands of Adventure](ref:universal-islands-of-adventure) e il parco acquatico [Volcano Bay](ref:universal-volcano-bay).
+Finora Epic Universe non rientrava in nessun abbonamento. Dal 24 ottobre 2024 gli abbonati potevano comprare prima di tutti un biglietto giornaliero a parte, con in più il 10 per cento di sconto sulla Darkmoor Monster Makeup Experience nel parco. Come vantaggio da abbonati era un contentino. Universal motiva i nuovi pass con il fatto che dall’apertura di Epic Universe, il 22 maggio 2025, il resort conta quattro parchi a tema. Gli altri tre sono [Universal Studios Florida](ref:universal-studios-florida), [Islands of Adventure](ref:universal-islands-of-adventure) e il parco acquatico [Volcano Bay](ref:universal-volcano-bay).
 
 ## Chi può fare l’upgrade per primo
 
-Per gli attuali abbonati si apre nelle prossime settimane un periodo di upgrade riservato, prima che cominci la vendita aperta a tutti. A quel punto potranno passare a un pass con Epic Universe se il loro abbonamento è attivo e, come dice Universal, «in good standing». Il periodo è diviso in fasi secondo il livello, e in ogni fase dovrebbe essere già possibile prenotare le visite a Epic Universe. Universal intende comunicare le date all’inizio di dicembre.
+Prima che più avanti a dicembre cominci la vendita aperta a tutti, gli attuali abbonati avranno nelle prossime settimane un periodo di upgrade riservato. A quel punto potranno passare a un pass con Epic Universe se il loro abbonamento è attivo e, come dice Universal, «in good standing». Il periodo è diviso in fasi secondo il livello, e in ogni fase dovrebbe essere già possibile prenotare le visite a Epic Universe. Universal intende comunicare le date all’inizio di dicembre.
 
-Il prezzo dell’upgrade dipende da quando scade il vecchio abbonamento. Chi è già nel periodo di rinnovo paga una differenza tra 125 e 410 $, a seconda del livello, e con il rinnovo ottiene subito un pass con Epic Universe. Quale importo spetti a ciascun livello si saprà più avanti. Tutti gli altri pagano un prezzo speciale calcolato sul livello e sul valore non ancora usato.
-
-La vendita aperta a tutti comincia più avanti a dicembre, quando le fasi saranno finite.
+Il prezzo dell’upgrade dipende da quando scade il vecchio abbonamento. Chi è già nel periodo di rinnovo paga una differenza da 125 a 410 $, a seconda del livello, e con il rinnovo ottiene subito un pass con Epic Universe. Universal non ha ancora abbinato gli importi ai singoli livelli. Tutti gli altri pagano un prezzo speciale calcolato sul livello e sul valore non ancora usato.
 
 ## Prezzi e nuovi livelli
 
-Per chi vive in Florida i nuovi pass partono da 329,99 $, e da 449,99 $ con Epic Universe, tasse escluse in entrambi i casi. Universal intende comunicare da dicembre i prezzi per tutti gli altri e quelli dei singoli livelli.
+I residenti in Florida pagano i nuovi pass da 329,99 $, e da 449,99 $ con Epic Universe, tasse escluse in entrambi i casi. Universal intende comunicare da dicembre i prezzi per tutti gli altri e quelli dei singoli livelli.
 
-Tutti i livelli cambiano nome. Premier diventa Platinum, Preferred diventa Gold, Power diventa Silver e lo stagionale Seasonal si chiamerà Bronze. Ogni livello conserva come finora i suoi vantaggi, e tu li abbini ai parchi da includere nel pass. Universal non ha ancora comunicato che cosa offrano i quattro livelli per parcheggio, Express Pass e sconti, né se Volcano Bay sarà tra i parchi da scegliere. Tanto il parco acquatico riapre dopo la pausa invernale solo il 1° aprile 2027.
+Premier diventa Platinum, Preferred diventa Gold, Power diventa Silver e lo stagionale Seasonal si chiamerà Bronze. Ogni livello conserva come finora i suoi vantaggi, e tu li abbini ai parchi da includere nel pass. Universal non ha ancora comunicato che cosa offrano i quattro livelli per parcheggio, Express Pass e sconti, né se Volcano Bay sarà tra i parchi da scegliere. Tanto il parco acquatico riapre dopo la pausa invernale solo il 1° aprile 2027.
 
 Restano la UOAP Lounge, le estrazioni a premi per soli abbonati e i Passholder Appreciation Days. La tessera di plastica sparirà poco alla volta, e ingresso e vantaggi passeranno da un pass digitale. In più i Passholders diventano Pass Members, come negli altri parchi Universal negli Stati Uniti.
 
 ## Al massimo due prenotazioni alla volta
 
-Con la prenotazione Universal vuole regolare quante persone entrano a Epic Universe. Puoi tenere al massimo due prenotazioni alla volta, e un terzo giorno a Epic Universe lo prenoti solo quando una delle due si libera. I posti sono limitati, vengono assegnati in ordine di prenotazione e dipendono dai giorni bloccati del tuo pass. Universal non ha ancora pubblicato quali giorni saranno bloccati, né se lo stagionale Bronze avrà gli stessi giorni a Epic Universe degli abbonamenti annuali.
+Con la prenotazione Universal vuole regolare quante persone entrano a Epic Universe. Puoi tenere al massimo due prenotazioni alla volta, e un terzo giorno a Epic Universe lo prenoti solo quando una delle due si libera. I posti sono limitati, vengono assegnati in ordine di prenotazione e dipendono dai giorni bloccati del tuo pass. Restano da sapere i giorni bloccati e se lo stagionale Bronze avrà gli stessi giorni a Epic Universe degli abbonamenti annuali.
 
 Visto che se ne possono avere solo due alla volta, non ne sprecherei nessuna per un giorno in cui mezza Florida ha prenotato Epic come te.
 
@@ -78,7 +76,7 @@ Visto che se ne possono avere solo due alla volta, non ne sprecherei nessuna per
 
 ## Per chi ha senso
 
-Per ora è noto solo il prezzo per chi vive in Florida, quindi il pass interessa prima di tutto a chi abita lì, va al parco più volte l’anno e se la cava con due giorni a Epic Universe alla volta. Per una vacanza dall’Europa resterei al biglietto giornaliero finché Universal non annuncia gli altri prezzi. I prezzi di un biglietto giornaliero per Epic e dell’Express Pass, da mettere a confronto con i 449,99 $, sono nella nostra [guida a Universal Orlando](/blog/universal-orlando-tempi-di-attesa-consigli). Nel [confronto tra abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi) calcolo da quale visita in poi un abbonamento annuale costa meno dei biglietti giornalieri.
+Per ora il pass interessa soprattutto a chi vive in Florida, va al parco più volte l’anno e se la cava con due giorni a Epic Universe alla volta. Per una vacanza dall’Europa resterei al biglietto giornaliero finché Universal non annuncia gli altri prezzi. I 449,99 $ conviene confrontarli con un biglietto giornaliero per Epic e con l’Express Pass, i cui prezzi sono nella nostra [guida a Universal Orlando](/blog/universal-orlando-tempi-di-attesa-consigli). Nel [confronto tra abbonamenti annuali](/blog/abbonamento-annuale-confronto-parchi) calcolo da quale visita in poi un abbonamento annuale costa meno dei biglietti giornalieri.
 
 [Universal Epic Universe](ref:universal-epic-universe?full)
 
