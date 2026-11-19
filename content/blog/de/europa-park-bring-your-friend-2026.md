@@ -59,11 +59,11 @@ Für Silber ist keiner dieser Tage gesperrt. Die Ausschlusstage von Silber liege
 
 ## Was der Freund sonst zahlen würde
 
-An allen Aktionstagen gilt die günstigere der beiden Preiskategorien. Ein Online-Tagesticket kostet dann für Erwachsene 67 €, für Kinder von 4 bis 11 Jahren und für Senioren ab 60 ab 56,50 €. An der Tageskasse kommen 10 € dazu. Ein Kind unter vier Jahren mitzunehmen verschenkt die Aktion, es kommt ohnehin gratis hinein. Mit Gold sparen zwei erwachsene Begleitpersonen zusammen 134 €, und die Ausrede mit dem Eintrittspreis hat bis zum 18. Dezember keiner deiner Freunde mehr.
+An allen Aktionstagen gilt die günstigere der beiden Preiskategorien. Ein Online-Tagesticket kostet dann für Erwachsene 67 €, für Kinder von 4 bis 11 Jahren und für Senioren ab 60 56,50 €. An der Tageskasse kommen 10 € dazu. Ein Kind unter vier Jahren mitzunehmen verschenkt die Aktion, es kommt ohnehin gratis hinein. Mit Gold sparen zwei erwachsene Begleitpersonen zusammen 134 €, und für ein, zwei Freunde fällt bis zum 18. Dezember die Ausrede mit dem Eintrittspreis weg.
 
 ## Im Park bis zum 18. Dezember
 
-Im HALLOWinter stehen Kürbisse von Halloween und Tannenbäume für den Winter nebeneinander im Park. Ab dem 28. November gibt es im Winterzauber den Weihnachtsmarkt im Historischen Schlosspark Balthasar, die Eislaufbahn, das Riesenrad Bellevue, den Weihnachtszirkus und die Eurosat Mapping Show im französischen Themenbereich. Damit steht der Europa-Park auch in unserem [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026). Für Kinder kommen die Skischule „Alpin“ mit Snow-Tubes und der Kinderskilanglauf Skitty World Nordic dazu, neu ist die Ausstellung „Monaco im Europa-Park“. Das Showprogramm für den Winter 2026 hat der Park noch nicht veröffentlicht.
+Im HALLOWinter stehen Kürbisse von Halloween und Tannenbäume für den Winter nebeneinander im Park. Ab dem 28. November gibt es im Winterzauber den Weihnachtsmarkt im Historischen Schlosspark Balthasar, die Eislaufbahn, das Riesenrad Bellevue, den Weihnachtszirkus und die Eurosat Mapping Show im französischen Themenbereich. Damit steht der Europa-Park auch in unserem [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026). Für Kinder kommen die Kinderskischule „Alpin“ mit Snow-Tubes und der Kinderskilanglauf Skitty World Nordic dazu, neu ist die Ausstellung „Monaco im Europa-Park“. Das Showprogramm für den Winter 2026 hat der Park noch nicht veröffentlicht.
 
 ```best-days-widget slug=europa-park
 
