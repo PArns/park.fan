@@ -78,7 +78,7 @@ If you don't have a car, the Mears Destination Services shuttle takes you from t
 
 Simbi Rush is part of a five-year plan in which Busch Gardens Tampa Bay intends to spend $200 million on the park. Lion & Hyena Ridge opened on July 25 as the first part of the plan, a 38,000-square-foot habitat (about 3,500 square meters) for five lions and two spotted hyenas. Lions and hyenas are rivals in the wild, so they take turns in the different parts of the habitat, like two siblings sharing one game console.
 
-Stanley Falls Flume, the log flume that had run since the park opened in 1973, closed on September 7, 2025, to make room for a new attraction. Busch Gardens hasn't said whether Simbi Rush is going in its place. Kumba also ran for the last time on August 2, 2026, the 1993 Bolliger & Mabillard coaster with seven inversions and a top speed of 60 mph (97 km/h). The park has announced Kumba's Revenge as its successor, so far without a layout or an opening date.
+Stanley Falls Flume, the log flume that had run since the park opened in 1973, closed on September 7, 2025, to make room for a new attraction. Busch Gardens hasn't announced whether Simbi Rush is going in its place. Kumba also ran for the last time on August 2, 2026, the 1993 Bolliger & Mabillard coaster with seven inversions and a top speed of 60 mph (97 km/h). The park has announced Kumba's Revenge as its successor, so far without a layout or an opening date.
 
 ## Other Mack Rides water coasters
 
