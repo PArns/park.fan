@@ -61,6 +61,7 @@ import type {
 } from '@/lib/trip-regions/types';
 import { EARLY_CLOSE_CORNER, HUB_CELL_BEST, HUB_WEEK_CELL, HUB_WEEK_ITEM } from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
+import { startTripPlanner } from './hub-hero-action';
 
 /** The history state key of an open day sheet, which Back closes. */
 const SHEET_ENTRY = 'hubDaySheet';
@@ -131,6 +132,20 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     setOpenDate(null);
     if (globalThis.history.state?.[SHEET_ENTRY]) globalThis.history.back();
   }, []);
+  // The sheet's Back lands before the planner starts: the assistant pushes an entry of its own,
+  // which that Back would otherwise take away, closing it again. The focus stays with the
+  // assistant, not the day that opened the sheet.
+  const planFrom = useCallback(
+    (date: string) => {
+      const start = () => startTripPlanner(region.slug, 'day', date);
+      const sheetEntry = Boolean(globalThis.history.state?.[SHEET_ENTRY]);
+      if (sheetEntry) globalThis.addEventListener('popstate', start, { once: true });
+      opener.current = null;
+      closeDay();
+      if (!sheetEntry) start();
+    },
+    [closeDay, region.slug]
+  );
   useEffect(() => {
     const onPop = () => {
       if (!globalThis.history.state?.[SHEET_ENTRY]) setOpenDate(null);
@@ -301,6 +316,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
         locale={locale}
         todayIso={todayIso}
         onClose={closeDay}
+        onPlanTrip={planFrom}
       />
     </div>
   );

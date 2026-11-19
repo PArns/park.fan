@@ -127,11 +127,18 @@ The hub is a landing page until it has a plan (`HubTripProvider`,
 - **The planner's inline view shows only with something to show** (dates or a `when=` search,
   `HubPlannerOnly`): the assistant is a dialog outside that box, and its empty state would repeat
   the four steps.
-- **Every start goes through one place**, `startPlanner` in `hub-hero-action.tsx`:
+- **Every start goes through one place**, `startTripPlanner` in `hub-hero-action.tsx`:
   `tripPlannerUi.openStart(source)` with `hero` (the head), `landing` (chapter 01, the closing
-  band) or `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
-  clearing „Reise löschen“ uses, without its undo). Each counts as `trip_hub_action`; the clear
-  counts no `trip_option_changed`.
+  band), `restart` („Neue Reise planen“, which first clears the trip with `clearTrip`, the
+  clearing „Reise löschen“ uses, without its undo) or `day` (the day sheet's „Reise ab diesem Tag
+  planen“, with the day as the arrival). The head's and the landing's buttons count as
+  `trip_hub_action`, the day sheet's does not; the clear counts no `trip_option_changed`.
+- **A day of the calendar starts a trip.** The day sheet's one primary button, „Reise ab diesem
+  Tag planen“, closes the sheet and starts the assistant on its dates with that day already pressed
+  as the arrival (`openStart('day', date)`, read by the date grid through `usePresetArrival`), so
+  Parky's first question is the departure; the other answers stay as they were. It waits for the
+  sheet's Back to land, since the assistant's own history entry would otherwise be the one that
+  Back takes away. Each park's „Im Tagesplaner öffnen“ stays the sheet's quieter outline button.
 - **A trip can be deleted** from the head's line and from the result („Reise löschen“, asked in
   place, with „Rückgängig“ for a few seconds after). It clears every store of the region's trip on
   this device and puts the hub back on its landing page; the stores and the undo are
@@ -200,7 +207,8 @@ Each chapter opens with its heading and then the thing itself.
    The resort filter and the week are urgent, the grid follows through `useDeferredValue`. The
    events sit under it as one closed `<details>` row over the whole window. A tap opens
    `HubDaySheet` (bottom sheet on a phone, side panel on a desktop); it holds a history entry of
-   its own, so a phone's Back closes it. Under the calendar: the forecast's date and the travel
+   its own, so a phone's Back closes it, and its primary button plans a trip from that day
+   ([two states](#two-states)). Under the calendar: the forecast's date and the travel
    times' credit; on the hub the accuracy line (`HubAccuracy`, PAR-1316): „Unsere Prognose der
    Spitzenwartezeit, eine Woche im Voraus, lag in den letzten 30 Tagen im Schnitt 16 Min.
    daneben.“, the lead and the days from the open `GET /v1/trip-regions/:region/accuracy`, the

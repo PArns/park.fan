@@ -484,6 +484,7 @@
       "ridesNone": "Pas de chiffres par attraction pour ce jour.",
       "ridesHint": "Chaque attraction au moment le plus chargé de sa journée.",
       "planDay": "Ouvrir dans le planificateur de journée",
+      "planTrip": "Planifier un voyage à partir de ce jour",
       "noHoursFigure": "Pas encore d’horaires. Le chiffre est la prévision ; les horaires ne comptent pas.",
       "ahead": "Passe devant {park}, où les visiteurs du jour doivent partir à {time}."
     },

@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import type { TripWizardQuestion, TripWizardStepKey } from './wizard-steps';
 
 /**
@@ -11,7 +12,7 @@ import type { TripWizardQuestion, TripWizardStepKey } from './wizard-steps';
 type Listener = () => void;
 
 /** Where a start came from, as `trip_planner_started` counts it. */
-export type TripPlannerStartSource = 'hero' | 'landing' | 'restart';
+export type TripPlannerStartSource = 'hero' | 'landing' | 'restart' | 'day';
 
 /**
  * A request to open the assistant: on its first step with the start's source, on its Tickets step
@@ -25,9 +26,12 @@ export type TripPlannerRequest =
 
 let pending: TripPlannerRequest | null = null;
 const listeners = new Set<Listener>();
+/** The arrival a start brought along, kept until the date grid it is meant for has mounted. */
+let presetArrival: string | null = null;
 
-function ask(request: TripPlannerRequest): void {
+function ask(request: TripPlannerRequest, arrival: string | null = null): void {
   pending = request;
+  presetArrival = arrival;
   for (const listener of listeners) listener();
 }
 
@@ -35,10 +39,12 @@ function ask(request: TripPlannerRequest): void {
 export const tripPlannerUi = {
   /**
    * Open the assistant on its first step: the hub's hero (`hero`), the landing's "Reise planen"
-   * (`landing`), or "Neu starten" once the answers are cleared (`restart`).
+   * (`landing`), "Neu starten" once the answers are cleared (`restart`), or a day of the hub
+   * calendar (`day`) with its date as the arrival, which the date grid reads with
+   * {@link usePresetArrival}.
    */
-  openStart(source: TripPlannerStartSource = 'hero'): void {
-    ask({ kind: 'start', source });
+  openStart(source: TripPlannerStartSource = 'hero', arrival: string | null = null): void {
+    ask({ kind: 'start', source }, arrival);
   },
   /**
    * Open the assistant on its Tickets step with the ticket step open, from the landing's "Already
@@ -155,3 +161,16 @@ export const tripWizardAnswered = {
     return () => answeredListeners.delete(listener);
   },
 };
+
+/**
+ * The arrival the last start handed in (`tripPlannerUi.openStart` with a date), for the date grid
+ * that start opens: read when the grid mounts and then forgotten, so a grid shown again later
+ * starts from the plan's own dates. `null` for any other start. Client only.
+ */
+export function usePresetArrival(): string | null {
+  const [arrival] = useState(() => presetArrival);
+  useEffect(() => {
+    presetArrival = null;
+  }, []);
+  return arrival;
+}

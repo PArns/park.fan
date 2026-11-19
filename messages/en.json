@@ -484,6 +484,7 @@
       "ridesNone": "No ride figures for this day.",
       "ridesHint": "Each ride at its busiest time of day.",
       "planDay": "Open in the day planner",
+      "planTrip": "Plan a trip from this day",
       "noHoursFigure": "No hours published yet. The figure is the forecast; hours are not counted.",
       "ahead": "Ranked above {park}, where day guests must leave at {time}."
     },
