@@ -46,25 +46,31 @@ seo:
 
 [Rulantica](ref:rulantica), the indoor water park at the Europa-Park resort in Rust, is holding a winter season of its own for the first time, from 28 November to 10 January 2027. It's called Vinterglanz, and in the evenings a 20-minute Christmas show plays at the Surf Fjørd wave pool. The Mack group announced it on 19 November. Until 27 November the water park is closed for maintenance.
 
-Once it reopens, a big Christmas tree stands in the lobby and garlands hang between decorated fir trees across the water park. The Hyggedal sauna area, with its three saunas and a steam room, gets the Christmas treatment too.
+If you've always wanted to stand under a Christmas tree in your swimming trunks, there's a big one in the lobby. Garlands hang between the decorated fir trees in the hall, and the decorations reach all the way into the Hyggedal sauna area, with its three saunas and a steam room.
 
 ## The evening show at the Surf Fjørd
 
 "VINTERGLANZ – das Leuchten des Heimatsterns" (roughly "the glow of the home star") is a Christmas story starring Snorri and Bubba, and Svalgur turns up in it as well. It's told with acrobatics and puppets. At the end of every show, a child from the audience makes the home star light up, and Junior Club members can book a part in the ensemble for 750 club stars.
 
-The park says the best view is from inside the wave pool, which is not where most people sit for a Christmas story. You can't go past the red barrier in the pool, though. The show uses strong light effects, loud sound effects, fog and water.
+The park says the best view is from inside the wave pool, which is not where most people sit for a Christmas story. You can't go past the red barrier in the pool, though. There are strong flashes, loud bangs, fog and water, so it's not really one for children who are sensitive to light or easily startled.
 
 For the midnight party, Rulantica announces the "last evening show", so the show may run more than once an evening. Rulantica hasn't published the times yet, for the show or for the daytime programme. Until it does, nobody can say whether the Moonlight ticket from 7 pm gets you in early enough.
 
 ## The daytime programme
 
-Most of it happens at Skip Strand. In the Vinter calendar, children open a door each day with Snorri and the Nordic winter fairy, which takes eleven minutes. Five items last 16 minutes each: Bubba's Christmas Presents, the bubble show Snorri in a Christmas Bubble, "Die Wikinger & das Geheimnis der Weihnacht" (the Vikings and the secret of Christmas), the kids' disco Jingle Beats and the Vinter-Circus, where the Talent Academy runs acrobatics you can join in with. The Snorri slide badge, open to children aged 4 to 11, is scheduled for 20 minutes.
+Most of it happens at Skip Strand. In the Vinter calendar, children open a door each day with Snorri and the Nordic winter fairy. On top of that there are five short items of a quarter of an hour each:
 
-The treasure hunt "Die Wikinger & die verzauberten Sterne" (the Vikings and the enchanted stars) belongs to the Lumåfals area, lasts 16 minutes and goes round Skip Strand. In the Frigg Tempel area, by the Tønnevirvel water carousel, children spend an hour making things around the home star in Snorri's star workshop. At Frigg Tempel, the heated outdoor pool, Rulantica Vibes has music and cocktails from 5 pm to 10 pm, on Sundays from 1 pm to 6 pm instead.
+- Bubba's Christmas Presents
+- Snorri in a Christmas Bubble, a bubble show
+- "Die Wikinger & das Geheimnis der Weihnacht" (the Vikings and the secret of Christmas)
+- the kids' disco Jingle Beats
+- the Vinter-Circus, where the Talent Academy runs acrobatics you can join in with
+
+Children aged 4 to 11 can also earn the Snorri slide badge. On the treasure hunt "Die Wikinger & die verzauberten Sterne" (the Vikings and the enchanted stars), children set off from Lumåfals and go once round Skip Strand. In the Frigg Tempel area, by the Tønnevirvel water carousel, children spend an hour making things around the home star in Snorri's star workshop. At Frigg Tempel, the heated outdoor pool, Rulantica Vibes has music and cocktails from 5 pm to 10 pm, on Sundays from 1 pm to 6 pm instead.
 
 ## Vikingløp and Tønnevirvel
 
-[Vikingløp](ref:rulantica/vikinglop) has eight tubes in the 30-metre Nordiskturn tower, and the park calls it the biggest speed slide in Europe. It opened in 2023 and handles 600 people an hour. You can ride from the age of 10 and 110 centimetres. The water carousel [Tønnevirvel](ref:rulantica/tonnevirvel) is now indoors. Nine boats with up to six seats spin for three minutes. Riders must be three and 90 centimetres, and anyone under 120 centimetres rides with an adult. You'll find the minimum heights for the other slides in our [Rulantica guide](/blog/rulantica-wait-times-tips).
+[Vikingløp](ref:rulantica/vikinglop) has eight tubes in the 30-metre Nordiskturn tower, and the park calls it the biggest speed slide in Europe. It's been in the park since 2023, and on 5 December the midnight party's slide challenge runs on it. You can ride from the age of 10 and 110 centimetres. The water carousel [Tønnevirvel](ref:rulantica/tonnevirvel) is inside the hall, so it runs in December too. Nine boats with up to six seats spin for three minutes. Riders must be at least three years old and 90 centimetres tall, and anyone under 120 centimetres rides with an adult. You'll find the minimum heights for the other slides in our [Rulantica guide](/blog/rulantica-wait-times-tips).
 
 ```ride-waits-widget rides=rulantica/vikinglop|Vikingløp;rulantica/tonnevirvel|Tønnevirvel columns=peak,days
 
@@ -72,7 +78,16 @@ The treasure hunt "Die Wikinger & die verzauberten Sterne" (the Vikings and the 
 
 ## Admission and tickets
 
-A day ticket costs €41 to €54 for adults aged 12 and up, depending on the day. Children aged 4 to 11 and seniors from 60 pay the reduced price of €38 to €51. Children up to three get in free. From 5 pm the evening ticket costs €37.50 to €46.50, or €35 to €43.50 reduced. The Moonlight ticket from 7 pm is €28 to €34 for everyone aged four and up. A day with the Hyggedal sauna costs €55 to €68, or €52 to €65 for seniors. The price for a specific day only shows up in the ticket shop's calendar.
+Adults pay the full price from the age of 12, and children aged 4 to 11 and seniors from 60 pay the reduced one. Children up to three get in free. Prices depend on the day you visit:
+
+| Ticket                      | Full price       | Reduced                         | On 5 December    |
+| --------------------------- | ---------------- | ------------------------------- | ---------------- |
+| Day ticket                  | €41 to €54       | €38 to €51                      | €48, reduced €45 |
+| Evening ticket from 5 pm    | €37.50 to €46.50 | €35 to €43.50                   | €44, reduced €41 |
+| Moonlight ticket from 7 pm  | €28 to €34       | same price, everyone from age 4 | €32              |
+| Day with the Hyggedal sauna | €55 to €68       | seniors: €52 to €65             | not given        |
+
+The price for a specific day only shows up in the ticket shop's calendar.
 
 Every ticket is for one date. The park recommends booking online: the ticket desk only sells on the day when there's capacity left, and charges €6 extra. A locker costs €1 a day, and your winter coat goes in it too, since the air inside is 30 to 34 degrees and the water 27 to 32.
 
@@ -82,15 +97,15 @@ For a [day at Winterzauber next door](/blog/europa-park-wait-times-tips) and the
 
 Rulantica opens every day from 9:30 am to 10 pm, and hotel guests and Adventure ticket holders get in from 9 am. It's closed on Christmas Eve and Christmas Day, and on New Year's Eve it closes at 7 pm.
 
-The first day of Vinterglanz is also Rulantica's seventh birthday; it opened in 2019. From 10 am to 4 pm there's a small Snorri party every hour at Guest Relations in Lumåfals, and at 4:30 pm a birthday disco with Snorri at Skip Strand. Airbrush tattoos run from 10 am to 6 pm, and a photo spot with the home star is set up all day. Share the photo with @rulantica and #Vinterglanz and you could win two tickets and a plush Snorri.
+The first day of Vinterglanz is also Rulantica's seventh birthday; it opened in 2019. From 10 am to 4 pm there's a small Snorri party every hour at Guest Relations in Lumåfals, and at 4:30 pm a birthday disco with Snorri at Skip Strand. Airbrush tattoos run from 10 am to 6 pm, and a photo spot with the home star is set up all day. The park is raffling two tickets and a plush Snorri among everyone who shares the photo with @rulantica and #Vinterglanz.
 
-On Saturday 5 December, Rulantica stays open until midnight for the midnight party. The show opens the evening, then a DJ takes over, and Vikingløp hosts a late-night slide challenge with a prize-giving. Hyggedal offers sauna infusions, scrubs and face masks. The party is included in admission. That day a day ticket costs €48, or €45 reduced. The evening ticket is €44, or €41 reduced, and the Moonlight ticket €32. The park hasn't announced yet whether the evening and Moonlight tickets are valid until midnight that day.
+On Saturday 5 December, Rulantica stays open until midnight for the midnight party. The show opens the evening, then a DJ takes over, and on Vikingløp there's a late-night slide challenge with a prize-giving. If you'd rather lie down than slide after the challenge, Hyggedal has sauna infusions, scrubs and face masks. The party is included in admission. The park hasn't announced yet whether the evening and Moonlight tickets are valid until midnight that day.
 
 ## Swimming outdoors in December
 
-Open in winter are the heated outdoor pool Svømmepøl, added in 2025, Frigg Tempel and Vildstrøm. Svømmepøl is partly roofed over in winter, and its Svømme bar fully. You can get mulled wine in the pool too, so you're warm inside and out. Svalgurok with its ten slides, Snorri Strand, Dynstrønd and the Strand Kök food court don't reopen until 1 May 2027.
+In winter you can still swim outside in Svømmepøl, the heated pool added in 2025, in Frigg Tempel and in Vildstrøm. Svømmepøl is partly roofed over in winter, and its Svømme bar fully. You can get mulled wine in the pool too, so you're warm inside and out. Svalgurok with its ten slides, Snorri Strand, Dynstrønd and the Strand Kök food court don't reopen until 1 May 2027.
 
-New on the menu this winter are fresh pasta, bowl salads, a mushroom poutine and wintry hot drinks.
+This winter's menu adds fresh pasta, bowl salads, a mushroom poutine and a few hot drinks.
 
 ## Getting there
 
@@ -106,9 +121,9 @@ From January to March, Rulantica sells an off-season special in certain weeks, f
 
 ## Last winter and what comes after Vinterglanz
 
-In winter 2025/26 Rulantica had the same opening hours as now, but no Christmas programme. Europa-Park has had a winter season for 25 years. This year its Winterzauber runs from 28 November to 9 January, to 10 January for hotel guests, every day from 11 am until at least 7 pm. Europa-Park is closed on Christmas Eve and Christmas Day too. Vinterglanz is already in the calendar for next winter, from 27 November 2027 to 9 January 2028.
+In winter 2025/26 Rulantica had the same opening hours as now, but no Christmas programme. Europa-Park next door has had a winter season for 25 years, and Rulantica is getting one of its own for the first time. This year Winterzauber runs from 28 November to 9 January, to 10 January for hotel guests, every day from 11 am until at least 7 pm. Europa-Park is closed on Christmas Eve and Christmas Day too. Vinterglanz is already in the calendar for next winter, from 27 November 2027 to 9 January 2028.
 
-On 11 January Rulantica moves straight on to Nordlyfest, which runs until 19 March and is included in admission. The Nordic festival of lights has run before under another name. This time it has light installations, a beacon at Frigg Tempel and an evening show at the Surf Fjørd with aerial acrobatics above the water. The other parks open this winter are in our [winter guide 2026](/blog/winter-theme-parks-2026). After Winterzauber, Europa-Park doesn't reopen until the [Pre-Opening Weeks from 7 March 2027](/news/europa-park-pre-opening-weeks-2027), and the season starts on 20 March.
+On 11 January Rulantica moves straight on to Nordlyfest, which runs until 19 March and is included in admission. It has light installations, a beacon at Frigg Tempel and an evening show at the Surf Fjørd with aerial acrobatics above the water. After Winterzauber, Europa-Park doesn't reopen until the [Pre-Opening Weeks from 7 March 2027](/news/europa-park-pre-opening-weeks-2027), and the season starts on 20 March. Our [winter guide 2026](/blog/winter-theme-parks-2026) lists the other parks that open in winter.
 
 [Rulantica](ref:rulantica?full)
 

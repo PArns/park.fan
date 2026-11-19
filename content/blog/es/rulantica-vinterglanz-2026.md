@@ -47,25 +47,31 @@ seo:
 
 [Rulantica](ref:rulantica), el parque acuático del resort del Europa-Park en Rust, tendrá del 28 de noviembre al 10 de enero de 2027 su primera temporada de invierno propia. Se llama Vinterglanz, y por las noches la piscina de olas Surf Fjørd acoge un espectáculo navideño de 20 minutos. Lo anunció el grupo Mack el 19 de noviembre. Hasta el 27 de noviembre el parque está cerrado por revisión.
 
-A partir de entonces, en el vestíbulo habrá un gran árbol de Navidad, y dentro cuelgan guirnaldas entre abetos decorados. La zona de saunas Hyggedal, con sus tres saunas y el baño de vapor, también se viste de Navidad.
+Si siempre has querido estar en bañador bajo un árbol de Navidad, en el vestíbulo habrá uno grande. Entre los abetos decorados del pabellón cuelgan guirnaldas, y la decoración llega hasta la zona de saunas Hyggedal, con sus tres saunas y el baño de vapor.
 
 ## El espectáculo nocturno en el Surf Fjørd
 
 "VINTERGLANZ – das Leuchten des Heimatsterns" (algo así como "el brillo de la estrella del hogar") es un cuento de Navidad con Snorri y Bubba en el que también aparece Svalgur. Lo cuentan con acrobacias y marionetas. Al final, cada día un niño del público enciende la estrella, y quien esté en el Junior-Club puede reservar por 750 estrellas del club una actuación con el elenco.
 
-Según el parque, donde mejor se ve es desde dentro de la piscina de olas, un sitio poco habitual para escuchar un cuento de Navidad. Eso sí, no se puede pasar de la barrera roja que hay en el agua. El espectáculo usa luces intensas, efectos de sonido fuertes, niebla y agua.
+Según el parque, donde mejor se ve es desde dentro de la piscina de olas, un sitio poco habitual para escuchar un cuento de Navidad. Eso sí, no se puede pasar de la barrera roja que hay en el agua. Hay destellos fuertes, estruendos, niebla y agua, así que no es muy recomendable para niños sensibles a la luz o que se asustan con facilidad.
 
 Para la fiesta de medianoche, Rulantica anuncia la "última función de la noche", así que el espectáculo podría repetirse varias veces cada noche. Rulantica todavía no ha publicado los horarios, ni de las funciones ni del programa de día. Hasta entonces no se puede saber si la entrada Moonlight, válida desde las 19:00, llega a tiempo para el espectáculo.
 
 ## El programa durante el día
 
-Casi todo pasa en el Skip Strand. En el Vinter-Kalender, los niños abren cada día una casilla del calendario de Adviento con Snorri y el hada nórdica del invierno, y tardan once minutos. Cinco actividades duran 16 minutos cada una: Bubbas Christmas Presents, el espectáculo de pompas de jabón Snorri in a Christmas Bubble, "Die Wikinger & das Geheimnis der Weihnacht", la discoteca infantil Jingle Beats y el Vinter-Circus, en el que la Talent Academy enseña acrobacias para que el público participe. Para la insignia de toboganes de Snorri, que pueden sacarse niños de 4 a 11 años, hay 20 minutos previstos.
+Casi todo pasa en el Skip Strand. En el Vinter-Kalender, los niños abren cada día una casilla del calendario de Adviento con Snorri y el hada nórdica del invierno. A eso se suman cinco actividades cortas de un cuarto de hora cada una:
 
-La búsqueda del tesoro "Die Wikinger & die verzauberten Sterne" pertenece a la zona de Lumåfals, dura 16 minutos y recorre los alrededores del Skip Strand. En la zona del Frigg Tempel, junto al carrusel acuático Tønnevirvel, los niños pasan una hora en el taller de estrellas de Snorri haciendo manualidades sobre la estrella del hogar. En la piscina exterior climatizada Frigg Tempel, Rulantica Vibes pone música y cócteles de 17:00 a 22:00; los domingos, de 13:00 a 18:00.
+- Bubbas Christmas Presents
+- Snorri in a Christmas Bubble, un espectáculo de pompas de jabón
+- "Die Wikinger & das Geheimnis der Weihnacht"
+- la discoteca infantil Jingle Beats
+- el Vinter-Circus, en el que la Talent Academy enseña acrobacias para que el público participe
+
+Los niños de 4 a 11 años también pueden sacarse la insignia de toboganes de Snorri. En la búsqueda del tesoro "Die Wikinger & die verzauberten Sterne", los niños salen de Lumåfals y dan una vuelta entera al Skip Strand. En la zona del Frigg Tempel, junto al carrusel acuático Tønnevirvel, los niños pasan una hora en el taller de estrellas de Snorri haciendo manualidades sobre la estrella del hogar. En la piscina exterior climatizada Frigg Tempel, Rulantica Vibes pone música y cócteles de 17:00 a 22:00; los domingos, de 13:00 a 18:00.
 
 ## Vikingløp y Tønnevirvel
 
-[Vikingløp](ref:rulantica/vikinglop) tiene ocho tubos en la torre Nordiskturn, de 30 metros, y el parque lo presenta como el tobogán de velocidad más grande de Europa. Abrió en 2023 y mueve a 600 personas por hora. Puedes tirarte a partir de 10 años y 110 centímetros. El carrusel acuático [Tønnevirvel](ref:rulantica/tonnevirvel) ya está bajo techo. Nueve barcas de hasta seis plazas dan vueltas durante tres minutos. Puedes subir desde los tres años y 90 centímetros, y por debajo de 120 centímetros solo con un adulto. Las alturas mínimas del resto de toboganes las tienes en nuestra [guía de Rulantica](/blog/rulantica-tiempos-de-espera-consejos).
+[Vikingløp](ref:rulantica/vikinglop) tiene ocho tubos en la torre Nordiskturn, de 30 metros, y el parque lo presenta como el tobogán de velocidad más grande de Europa. Está en el parque desde 2023, y el 5 de diciembre acoge el desafío de toboganes de la fiesta de medianoche. Puedes tirarte a partir de 10 años y 110 centímetros. El carrusel acuático [Tønnevirvel](ref:rulantica/tonnevirvel) está dentro del pabellón, así que también funciona en diciembre. Nueve barcas de hasta seis plazas dan vueltas durante tres minutos. Puedes subir desde los tres años y 90 centímetros, y por debajo de 120 centímetros solo con un adulto. Las alturas mínimas del resto de toboganes las tienes en nuestra [guía de Rulantica](/blog/rulantica-tiempos-de-espera-consejos).
 
 ```ride-waits-widget rides=rulantica/vikinglop|Vikingløp;rulantica/tonnevirvel|Tønnevirvel columns=peak,days
 
@@ -73,7 +79,16 @@ La búsqueda del tesoro "Die Wikinger & die verzauberten Sterne" pertenece a la 
 
 ## Entradas y precios
 
-La entrada de día cuesta, según la fecha, de 41 a 54 euros para adultos desde 12 años. Los niños de 4 a 11 años y los mayores de 60 pagan la entrada reducida, de 38 a 51 euros. Hasta los tres años se entra gratis. Desde las 17:00 vale la entrada de tarde, de 37,50 a 46,50 euros, o de 35 a 43,50 euros la reducida. La entrada Moonlight, desde las 19:00, cuesta de 28 a 34 euros para todos a partir de cuatro años. Con la sauna Hyggedal, el día sale por 55 a 68 euros, y por 52 a 65 euros para mayores. El precio de un día concreto solo aparece en el calendario de la tienda online.
+Los adultos pagan la tarifa completa desde los 12 años; los niños de 4 a 11 y los mayores de 60, la reducida. Hasta los tres años se entra gratis. Los precios dependen del día:
+
+| Entrada                            | Normal                 | Reducida                              | El 5 de diciembre     |
+| ---------------------------------- | ---------------------- | ------------------------------------- | --------------------- |
+| Entrada de día                     | de 41 a 54 euros       | de 38 a 51 euros                      | 48 euros, reducida 45 |
+| Entrada de tarde, desde las 17:00  | de 37,50 a 46,50 euros | de 35 a 43,50 euros                   | 44 euros, reducida 41 |
+| Entrada Moonlight, desde las 19:00 | de 28 a 34 euros       | mismo precio, para todos desde 4 años | 32 euros              |
+| Día con la sauna Hyggedal          | de 55 a 68 euros       | mayores: de 52 a 65 euros             | sin datos             |
+
+El precio de un día concreto solo aparece en el calendario de la tienda online.
 
 Cada entrada vale para una fecha. El parque recomienda comprar online: en taquilla solo se venden si queda aforo, y con un recargo de 6 euros. Una consigna cuesta 1 euro al día, y el abrigo cabe dentro, porque en el interior el aire está entre 30 y 34 grados y el agua entre 27 y 32.
 
@@ -83,15 +98,15 @@ Para pasar [un día en el Winterzauber del Europa-Park](/blog/europa-park-tiempo
 
 Rulantica abre todos los días de 9:30 a 22:00; los clientes de los hoteles y quienes tengan la entrada Abenteuer pueden entrar desde las 9:00. En Nochebuena y el día de Navidad está cerrado, y en Nochevieja cierra a las 19:00.
 
-El primer día de Vinterglanz coincide con el séptimo cumpleaños de Rulantica, que abrió en 2019. De 10:00 a 16:00 hay cada hora una pequeña fiesta con Snorri en Lumåfals, junto a Guest Relations, y a las 16:30 una discoteca de cumpleaños con Snorri en el Skip Strand. Hay tatuajes de aerógrafo de 10:00 a 18:00, y todo el día un photocall con la estrella del hogar. Quien comparta la foto con @rulantica y #Vinterglanz puede ganar dos entradas y un Snorri de peluche.
+El primer día de Vinterglanz coincide con el séptimo cumpleaños de Rulantica, que abrió en 2019. De 10:00 a 16:00 hay cada hora una pequeña fiesta con Snorri en Lumåfals, junto a Guest Relations, y a las 16:30 una discoteca de cumpleaños con Snorri en el Skip Strand. Hay tatuajes de aerógrafo de 10:00 a 18:00, y todo el día un photocall con la estrella del hogar. Entre quienes compartan la foto con @rulantica y #Vinterglanz, el parque sortea dos entradas y un Snorri de peluche.
 
-El sábado 5 de diciembre, Rulantica abre hasta las 0:00 para la fiesta de medianoche. El espectáculo abre la noche, después pincha un DJ y en Vikingløp se celebra un desafío nocturno de toboganes con entrega de premios. En Hyggedal hay sesiones de vapor, exfoliaciones y mascarillas faciales. La fiesta está incluida en la entrada. Ese día la entrada de día cuesta 48 euros, o 45 la reducida. La de tarde cuesta 44 euros, o 41 la reducida, y la Moonlight 32 euros. El parque todavía no ha anunciado si las entradas de tarde y Moonlight valen ese día hasta medianoche.
+El sábado 5 de diciembre, Rulantica abre hasta las 0:00 para la fiesta de medianoche. El espectáculo abre la noche, después pincha un DJ y en Vikingløp se celebra un desafío nocturno de toboganes con entrega de premios. Quien después del desafío prefiera tumbarse a tirarse por un tobogán tiene en Hyggedal sesiones de vapor, exfoliaciones y mascarillas faciales. La fiesta está incluida en la entrada. El parque todavía no ha anunciado si las entradas de tarde y Moonlight valen ese día hasta medianoche.
 
 ## Bañarse al aire libre en diciembre
 
-En invierno abren la piscina exterior climatizada Svømmepøl, inaugurada en 2025, el Frigg Tempel y el Vildstrøm. La Svømmepøl está cubierta en parte durante el invierno, y el Svømme-Bar que hay dentro, del todo. El vino caliente también te lo sirven en la piscina, así que te calienta por dentro y por fuera. Svalgurok, con sus diez toboganes, el Snorri Strand, el Dynstrønd y la zona de restauración Strand Kök no vuelven a abrir hasta el 1 de mayo de 2027.
+En invierno todavía puedes nadar al aire libre en la Svømmepøl, la piscina climatizada inaugurada en 2025, en el Frigg Tempel y en el Vildstrøm. La Svømmepøl está cubierta en parte durante el invierno, y el Svømme-Bar que hay dentro, del todo. El vino caliente también te lo sirven en la piscina, así que te calienta por dentro y por fuera. Svalgurok, con sus diez toboganes, el Snorri Strand, el Dynstrønd y la zona de restauración Strand Kök no vuelven a abrir hasta el 1 de mayo de 2027.
 
-Este invierno la carta estrena pasta fresca, ensaladas en bowl, una poutine de champiñones y bebidas calientes de temporada.
+Como novedad, la carta trae pasta fresca, ensaladas en bowl, una poutine de champiñones y algunas bebidas calientes.
 
 ## Cómo llegar
 
@@ -107,9 +122,9 @@ De enero a marzo, Rulantica vende en algunas semanas una oferta de temporada baj
 
 ## El invierno pasado y lo que viene después de Vinterglanz
 
-En el invierno 2025/26, Rulantica tuvo el mismo horario que ahora, pero ningún programa navideño. El Europa-Park lleva 25 años con temporada de invierno. Este año su Winterzauber va del 28 de noviembre al 9 de enero (hasta el 10 de enero para los clientes de los hoteles), todos los días desde las 11:00 hasta al menos las 19:00. En Nochebuena y el día de Navidad el Europa-Park también cierra. Vinterglanz ya tiene fechas para el invierno que viene: del 27 de noviembre de 2027 al 9 de enero de 2028.
+En el invierno 2025/26, Rulantica tuvo el mismo horario que ahora, pero ningún programa navideño. El Europa-Park, al lado, lleva 25 años con temporada de invierno; Rulantica estrena ahora la suya. Este año el Winterzauber va del 28 de noviembre al 9 de enero (hasta el 10 de enero para los clientes de los hoteles), todos los días desde las 11:00 hasta al menos las 19:00. En Nochebuena y el día de Navidad el Europa-Park también cierra. Vinterglanz ya tiene fechas para el invierno que viene: del 27 de noviembre de 2027 al 9 de enero de 2028.
 
-El 11 de enero, Rulantica pasa directamente al Nordlyfest, que dura hasta el 19 de marzo y está incluido en la entrada. Esta fiesta nórdica de las luces ya existía con otro nombre. Esta vez trae instalaciones de luz, una hoguera en el Frigg Tempel y un espectáculo nocturno en el Surf Fjørd con acrobacias aéreas sobre el agua. Los demás parques que abren este invierno están en nuestra [guía de invierno 2026](/blog/parques-atracciones-invierno-2026). Después del Winterzauber, el Europa-Park no vuelve a abrir hasta las [Pre-Opening Weeks, desde el 7 de marzo de 2027](/news/europa-park-pre-opening-weeks-2027), y la temporada empieza el 20 de marzo.
+El 11 de enero, Rulantica pasa directamente al Nordlyfest, que dura hasta el 19 de marzo y está incluido en la entrada. Trae instalaciones de luz, una hoguera en el Frigg Tempel y un espectáculo nocturno en el Surf Fjørd con acrobacias aéreas sobre el agua. Después del Winterzauber, el Europa-Park no vuelve a abrir hasta las [Pre-Opening Weeks, desde el 7 de marzo de 2027](/news/europa-park-pre-opening-weeks-2027), y la temporada empieza el 20 de marzo. Qué otros parques abren en invierno lo tienes en nuestra [guía de invierno 2026](/blog/parques-atracciones-invierno-2026).
 
 [Rulantica](ref:rulantica?full)
 
