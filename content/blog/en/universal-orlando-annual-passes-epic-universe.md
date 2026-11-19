@@ -2,7 +2,7 @@
 title: 'Annual passes with Epic Universe go on sale in December'
 translationKey: universal-orlando-jahreskarten-epic-universe
 date: '2026-11-19'
-time: '18:00'
+time: '18:28'
 author: patrick
 mode: published
 featured: false

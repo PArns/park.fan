@@ -2,7 +2,7 @@
 title: 'Da dicembre arrivano gli abbonamenti con Epic Universe'
 translationKey: universal-orlando-jahreskarten-epic-universe
 date: '2026-11-19'
-time: '18:00'
+time: '18:28'
 author: patrick
 mode: published
 featured: false
