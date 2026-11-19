@@ -41,24 +41,19 @@ seo:
 
 ## ¿Qué es Simbi Rush?
 
-Una montaña rusa acuática con lanzamiento acelera las barcas como cualquier montaña rusa y también las sube por cuestas. Entre un lanzamiento y otro, y al caer al agua, la barca se comporta como en un tobogán acuático. En cada vagón van ocho pasajeros, de dos en dos en cuatro filas, y cada uno lleva su propia barra hidráulica sobre las piernas. Busch Gardens aún no ha publicado la altura, la longitud del recorrido ni la capacidad.
+Una montaña rusa acuática con lanzamiento acelera las barcas como cualquier montaña rusa y también las sube por cuestas. Entre un lanzamiento y otro, y al caer al agua, la barca se comporta como en un tobogán acuático. En cada vagón van ocho pasajeros, de dos en dos en cuatro filas, y cada uno lleva su propia barra hidráulica sobre las piernas. Busch Gardens aún no ha publicado qué altura y longitud tendrá el recorrido, cuántos pasajeros podrá llevar por hora ni a partir de qué estatura podrán subir los niños.
 
 El nombre viene de Simbi, un espíritu protector del agua y la naturaleza de África central. En la historia que cuenta el parque, la barca flota primero tranquila por un lago sagrado, hasta que el agua la atrapa. ¿Es la ira del espíritu o una trampa del lago? Eso lo decide cada pasajero, y responda lo que responda, se baja mojado.
 
 ## ¿Para quién es?
 
-El parque la concibe expresamente como atracción familiar, aunque todavía no ha fijado una altura mínima. Como referencia, sus dos vecinas de la zona Congo, los rápidos [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) y los coches de choque [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), admiten niños desde 42 pulgadas (107 centímetros).
+El parque concibe Simbi Rush expresamente como atracción familiar. Como referencia, sus dos vecinas de la zona Congo, los rápidos [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) y los coches de choque [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), admiten niños desde 42 pulgadas (107 centímetros).
 
-> [!QUOTE]
-> Nuestros visitantes nos han dicho que quieren más maneras de divertirse y refrescarse, y Simbi Rush hará justo eso y más.
->
-> [en] Our guests have told us they want more ways to have fun and stay cool, and Simbi Rush will do just that and more.
->
-> Brian Bacica, presidente de Busch Gardens Tampa Bay y Adventure Island, en el [comunicado de prensa del 18 de noviembre de 2026](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html), traducido del inglés
+Según el parque, sus visitantes le han pedido más formas de refrescarse.
 
 ## Quién sube primero y cuánto cuesta
 
-Antes de la apertura al público la prueban los titulares de un pase anual 2027, aunque todavía no hay fechas. La forma más barata de asegurarte el preestreno es el pase Silver, que en la venta del Black Friday cuesta 198 $ en vez de 279 $.
+Antes de la apertura al público la prueban los titulares de un pase anual 2027, aunque todavía no hay fechas. La forma más barata de asegurarte el preestreno es el pase Silver.
 
 | Pase anual | Black Friday | Precio normal |
 | ---------- | ------------ | ------------- |
@@ -74,17 +69,17 @@ Con los tres pases el aparcamiento es gratis. La Fun Card 2027, más barata, sal
 
 ## Cómo llegar desde Orlando
 
-Sin coche, el shuttle de Mears Destination Services te lleva desde la zona de Orlando hasta Tampa, con ida y vuelta gratis para cualquiera que tenga una entrada de pago de Busch Gardens. Reserva con tiempo, porque el autobús se llena. Para hasta tres veces por el camino y a veces no llega al parque hasta eso de las 11:30, así que no cuentes con estar allí a la hora de apertura.
+Si quieres subir a Simbi Rush durante unas vacaciones en Orlando y no tienes coche, toma el shuttle de Mears Destination Services hasta Tampa, gratis ida y vuelta con cualquier entrada de pago de Busch Gardens. Reserva con tiempo, porque el autobús se llena. Para hasta tres veces por el camino y a veces no llega al parque hasta eso de las 11:30.
 
 ## Qué más cambia en el parque
 
-Simbi Rush forma parte de un plan de cinco años en el que Busch Gardens Tampa Bay quiere gastar 200 millones de dólares. La primera parte del plan, Lion & Hyena Ridge, abrió ya el 25 de julio: un recinto de 38.000 pies cuadrados (unos 3.500 metros cuadrados) para cinco leones y dos hienas manchadas. Como en libertad leones y hienas son rivales, se turnan las distintas partes del recinto, igual que dos hermanos que comparten una consola.
+Simbi Rush forma parte de un plan de cinco años en el que Busch Gardens Tampa Bay quiere gastar 200 millones de dólares. La primera parte del plan, Lion & Hyena Ridge, abrió el 25 de julio: un recinto de 38.000 pies cuadrados (unos 3.500 metros cuadrados) para cinco leones y dos hienas manchadas. Como en libertad leones y hienas son rivales, se turnan las distintas partes del recinto, igual que dos hermanos que comparten una consola.
 
-Stanley Falls Flume, la atracción de troncos que funcionaba desde la apertura del parque en 1973, cerró el 7 de septiembre de 2025 para dejar sitio a una atracción nueva. Si Simbi Rush ocupará su lugar, Busch Gardens no lo ha dado a conocer. Además, el 2 de agosto de 2026 hizo su último viaje Kumba, la montaña rusa de Bolliger & Mabillard de 1993, con siete inversiones y 97 km/h. Como sucesora, el parque ha anunciado Kumba's Revenge, por ahora sin trazado ni fecha.
+Stanley Falls Flume, la atracción de troncos que funcionaba desde la apertura del parque en 1973, cerró el 7 de septiembre de 2025 para dejar sitio a una atracción nueva. Si Simbi Rush ocupará su lugar, Busch Gardens no lo ha dado a conocer. Kumba, la montaña rusa de Bolliger & Mabillard de 1993, con siete inversiones y 97 km/h, hizo su último viaje el 2 de agosto de 2026. Como sucesora, el parque ha presentado Kumba's Revenge, pero aún no ha anunciado el trazado ni la fecha.
 
 ## Otras montañas rusas acuáticas de Mack Rides
 
-Las dos montañas rusas acuáticas de Mack en el [Europa-Park](ref:europa-park) van más rápido que Simbi Rush: [Poseidon](ref:europa-park/water-rollercoaster-poseidon) circula desde 2000 a 70 km/h y [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) desde 2005 a 80 km/h. Eso sí, ambas suben sus barcas con lifts de cadena, de modo que el récord de Tampa solo cuenta entre las que tienen lanzamiento. La más parecida es Dønnervind, en el Freizeitpark Plohn (Sajonia), abierta desde junio de 2026: también tiene vagones para ocho personas y dos lanzamientos, pero no pasa de 53 km/h, y en octubre estuvo un tiempo [parada por un problema técnico](/news/doennervind-plohn-fuera-de-servicio). Las demás novedades de 2027, entre ellas más atracciones de Mack Rides y nuevas zonas temáticas, están en nuestro [resumen de novedades de los parques en 2027](/blog/novedades-parques-tematicos-2027).
+Las dos montañas rusas acuáticas de Mack en el [Europa-Park](ref:europa-park) van más rápido que Simbi Rush: [Poseidon](ref:europa-park/water-rollercoaster-poseidon) circula desde 2000 a 70 km/h y [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) desde 2005 a 80 km/h. Eso sí, ambas suben sus barcas con lifts de cadena, de modo que el récord de Tampa solo cuenta entre las que tienen lanzamiento. La más parecida es Dønnervind, en el Freizeitpark Plohn (Sajonia), abierta desde junio de 2026: también tiene vagones para ocho personas y dos lanzamientos, pero no pasa de 53 km/h, y en octubre estuvo un tiempo [parada por un problema técnico](/news/doennervind-plohn-fuera-de-servicio). Todas las demás novedades de 2027 las hemos reunido en nuestro [resumen de novedades de los parques en 2027](/blog/novedades-parques-tematicos-2027).
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 

@@ -41,22 +41,19 @@ seo:
 
 ## What Simbi Rush is
 
-A launched water coaster speeds its boats up the way a roller coaster does and can send them uphill. Between the launches and on the splashdown, the boats behave like they're on a water slide. Each car seats eight, two across in four rows, and every rider gets their own hydraulic lap bar. Busch Gardens hasn't released the height, the track length or the capacity yet.
+A launched water coaster speeds its boats up the way a roller coaster does and can send them uphill. Between the launches and on the splashdown, the boats behave like they're on a water slide. Each car seats eight, two across in four rows, and every rider gets their own hydraulic lap bar. Busch Gardens hasn't released how tall and how long the track will be, how many riders it can carry per hour or how tall kids must be to ride.
 
 The name comes from Simbi, a Central African guardian spirit of water and nature. In the story the park tells, the boat drifts calmly across a sacred lake until the water grabs hold of it. Whether that's the spirit's anger or a trick of the lake is up to the riders, and they get wet whichever answer they pick.
 
 ## Who it's for
 
-The park is planning Simbi Rush as a family ride, but it hasn't set a height requirement yet. For comparison, its two neighbors in the Congo area, the [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) raft ride and the [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), let kids on from 42 inches (107 cm).
+The park is planning Simbi Rush as a family ride. For comparison, its two neighbors in the Congo area, the [Congo River Rapids](ref:busch-gardens-tampa/congo-river-rapids) raft ride and the [Ubanga-Banga Bumper Cars](ref:busch-gardens-tampa/ubanga-banga-bumper-cars), let kids on from 42 inches (107 cm).
 
-> [!QUOTE]
-> Our guests have told us they want more ways to have fun and stay cool, and Simbi Rush will do just that and more.
->
-> Brian Bacica, park president of Busch Gardens Tampa Bay and Adventure Island, in the [press release of November 18, 2026](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html)
+The park says its guests have asked for more ways to stay cool.
 
 ## Who rides first and what it costs
 
-2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. The cheapest sure way into the preview is the Silver pass, $198 instead of $279 in the Black Friday sale.
+2027 annual pass holders get to ride before the public opening, though there are no dates for that yet. The cheapest sure way into the preview is the Silver pass.
 
 | Annual pass | Black Friday | Regular price |
 | ----------- | ------------ | ------------- |
@@ -72,17 +69,17 @@ Parking is free with all three passes. The cheaper 2027 Fun Card is $94.99 inste
 
 ## Getting there from Orlando
 
-If you don't have a car, the Mears Destination Services shuttle takes you from the Orlando area to Tampa, free both ways with any paid Busch Gardens ticket. Book early, because the bus fills up. It makes up to three stops on the way and sometimes doesn't pull up at the park until around 11:30 am, so you may not be there for opening.
+If you want to ride Simbi Rush during an Orlando vacation and don't have a car, take the Mears Destination Services shuttle to Tampa, free both ways with any paid Busch Gardens ticket. Book early, because the bus fills up. It makes up to three stops on the way and sometimes doesn't pull up at the park until around 11:30 am.
 
 ## What else is changing in the park
 
 Simbi Rush is part of a five-year plan in which Busch Gardens Tampa Bay intends to spend $200 million on the park. Lion & Hyena Ridge opened on July 25 as the first part of the plan, a 38,000-square-foot habitat (about 3,500 square meters) for five lions and two spotted hyenas. Lions and hyenas are rivals in the wild, so they take turns in the different parts of the habitat, like two siblings sharing one game console.
 
-Stanley Falls Flume, the log flume that had run since the park opened in 1973, closed on September 7, 2025, to make room for a new attraction. Busch Gardens hasn't announced whether Simbi Rush is going in its place. Kumba also ran for the last time on August 2, 2026, the 1993 Bolliger & Mabillard coaster with seven inversions and a top speed of 60 mph (97 km/h). The park has announced Kumba's Revenge as its successor, so far without a layout or an opening date.
+Stanley Falls Flume, the log flume that had run since the park opened in 1973, closed on September 7, 2025, to make room for a new attraction. Busch Gardens hasn't announced whether Simbi Rush is going in its place. Kumba, the 1993 Bolliger & Mabillard coaster with seven inversions and a top speed of 60 mph (97 km/h), made its last run on August 2, 2026. The park has named Kumba's Revenge as its successor but hasn't announced the layout or the opening date yet.
 
 ## Other Mack Rides water coasters
 
-The two Mack water coasters at [Europa-Park](ref:europa-park) are faster than Simbi Rush: [Poseidon](ref:europa-park/water-rollercoaster-poseidon) has run at 44 mph (70 km/h) since 2000, and [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) at 50 mph (80 km/h) since 2005. Both pull their boats up on chain lifts, though, so Tampa's record only holds among launched rides. The closest match is Dønnervind at Freizeitpark Plohn in Saxony, open since June 2026. Like Simbi Rush, it has eight-seat cars and two launches, but it tops out at 33 mph (53 km/h), and in October it was down for a while [with a technical problem](/news/doennervind-plohn-out-of-service). The other new attractions for 2027, including more rides by Mack Rides and new themed areas, are in our [overview of new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
+The two Mack water coasters at [Europa-Park](ref:europa-park) are faster than Simbi Rush: [Poseidon](ref:europa-park/water-rollercoaster-poseidon) has run at 44 mph (70 km/h) since 2000, and [Atlantica SuperSplash](ref:europa-park/atlantica-supersplash) at 50 mph (80 km/h) since 2005. Both pull their boats up on chain lifts, though, so Tampa's record only holds among launched rides. The closest match is Dønnervind at Freizeitpark Plohn in Saxony, open since June 2026. Like Simbi Rush, it has eight-seat cars and two launches, but it tops out at 33 mph (53 km/h), and in October it was down for a while [with a technical problem](/news/doennervind-plohn-out-of-service). We've gathered all the other new attractions for 2027 in our [overview of new theme park attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
