@@ -49,31 +49,40 @@ Wer einen ResortPass hat, kann bis zum 18. Dezember montags bis freitags eine Be
 
 Das Ticket für den Freund holst du dir im ResortPass-Portal unter resort-pass.de, wo du dich mit deinem MackOne Account anmeldest. Auf der Grafik zur Ankündigung steht es als Ticket „Für Freunde“ für 0,00 €. Die Aktionstickets sind pro Tag limitiert, an einzelnen Tagen können sie schon ausverkauft sein. Willst du mit deinem Freund an einem bestimmten Tag kommen, etwa am letzten Aktionstag, dem 18. Dezember, buchst du sein Ticket besser gleich als erst in der Woche davor.
 
-Deinen eigenen Besuch reservierst du wie immer im Portal, denn als Tagesgast brauchst du für jeden Besuch mit dem ResortPass eine Reservierung. Bis zu fünf Tage kannst du gleichzeitig reservieren, auch tagesaktuell am Besuchstag, solange es Plätze gibt. Ist ein Tag ausgebucht, geht weder am Telefon noch vor Ort etwas. Eine Reservierung, die du nicht nutzt, stornierst du. Wohnst du in einem der Hotels des Resorts oder in der Silver Lake City, steckt deine eigene Reservierung schon in der Hotelbuchung.
+Deinen eigenen Besuch reservierst du wie immer im Portal, denn als Tagesgast brauchst du für jeden Besuch mit dem ResortPass eine Reservierung. Bis zu fünf Tage kannst du gleichzeitig reservieren, auch noch am Besuchstag selbst, solange es Plätze gibt, und einen Tag, an dem du doch nicht kommst, stornierst du wieder. Ist ein Tag ausgebucht, geht weder am Telefon noch vor Ort etwas. Wohnst du in einem der Hotels des Resorts oder in der Silver Lake City, steckt deine eigene Reservierung schon in der Hotelbuchung.
 
 ## 21 Tage zur Auswahl
 
 Der Park hat bis zum 23. Dezember jeden Tag geöffnet. Bis zum 27. November läuft HALLOWinter, ab dem 28. November der Winterzauber, beide Male von 11 Uhr bis mindestens 19 Uhr. Hotelgäste dürfen früher hinein. Weil die Ankündigung erst gegen Parkschluss kam, ist Freitag, der 20. November, der erste volle Aktionstag. Bis Freitag, den 18. Dezember, bleiben 21 Tage von Montag bis Freitag: sechs im HALLOWinter und 15 im Winterzauber.
 
-Für Silber ist keiner dieser Tage gesperrt. Seine Sperrtage liegen in diesem Winter zwischen dem 26. und dem 31. Dezember und am 2. Januar, wenn die Aktion schon vorbei ist. Gold hat ohnehin keine Sperrtage.
+Silber ist an keinem der 21 Tage gesperrt, seine Sperrtage beginnen erst am 26. Dezember, nach dem letzten Aktionstag, und Gold hat ohnehin keine.
 
 ## Was der Freund sonst zahlen würde
 
-An allen Aktionstagen gilt die günstigere der beiden Preiskategorien. Ein Online-Tagesticket kostet dann für Erwachsene 67 €, für Kinder von 4 bis 11 Jahren und für Senioren ab 60 Jahren 56,50 €. An der Tageskasse kommen 10 € dazu. Ein Kind unter vier Jahren mitzunehmen verschenkt die Aktion, es kommt ohnehin gratis hinein. Mit Gold sparen zwei erwachsene Begleitpersonen zusammen 134 €. Für ein, zwei Freunde fällt damit die Ausrede mit dem Eintrittspreis weg.
+An allen Aktionstagen gilt die günstigere der beiden Preiskategorien. Ein Online-Tagesticket kostet dann für Erwachsene 67 €, für Kinder von 4 bis 11 Jahren und für Senioren ab 60 Jahren 56,50 €. An der Tageskasse kommen 10 € dazu. Mit Gold sparen zwei erwachsene Freunde zusammen 134 €, da wird die Ausrede mit dem Eintrittspreis dünn. Ein Kind unter vier mitzunehmen verschenkt die Aktion dagegen, es kommt ohnehin gratis hinein.
 
 ## HALLOWinter und Winterzauber
 
-Im HALLOWinter stehen Kürbisse von Halloween und Tannenbäume für den Winter nebeneinander im Park. Im Winterzauber gibt es den Weihnachtsmarkt im Historischen Schlosspark Balthasar, die Eislaufbahn, das Riesenrad Bellevue, den Weihnachtszirkus und die Eurosat Mapping Show im französischen Themenbereich. Für Kinder kommen die Kinderskischule „Alpin“ mit Snow-Tubes und der Kinderskilanglauf Skitty World Nordic dazu. Neu ist die Ausstellung „Monaco im Europa-Park“. Welche Parks sonst noch im Winter öffnen, steht in unserem [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
+Im HALLOWinter stehen Kürbisse von Halloween und Tannenbäume für den Winter nebeneinander im Park. Ab dem 28. November kommt im Winterzauber dazu:
+
+- Weihnachtsmarkt im Historischen Schlosspark Balthasar
+- Eislaufbahn
+- Riesenrad Bellevue
+- Weihnachtszirkus
+- Eurosat Mapping Show im französischen Themenbereich
+- Kinderskischule „Alpin“ mit Snow-Tubes und Kinderskilanglauf Skitty World Nordic
+
+Neu ist die Ausstellung „Monaco im Europa-Park“. Reicht euch ein Park nicht, findest du die anderen, die diesen Winter öffnen, im [Überblick über die Freizeitparks im Winter 2026/27](/blog/winter-freizeitparks-2026).
 
 ```best-days-widget slug=europa-park
 
 ```
 
-Bei Eis, Schnee, Wind oder Kälte schließt der Park einzelne Bahnen auch kurzfristig, im HALLOWinter wie im Winterzauber. Die Bahnen, die du an einem Wintertag zuerst ansteuern solltest, stehen im [Guide zu den Wartezeiten im Europa-Park](/blog/europa-park-wartezeiten-tipps). Arthur, die Themenfahrt durch das Königreich der Minimoys, fährt im HALLOWinter und im Winterzauber. Mitfahren darf man ab 100 Zentimetern, unter 120 nur mit einem Erwachsenen.
+Mit welchen Bahnen ich an einem Wintertag anfangen würde, steht in unserem [Guide zu den Wartezeiten im Europa-Park](/blog/europa-park-wartezeiten-tipps). Kommt dein Freund mit Kindern, fährt Arthur den ganzen Winter, ab 100 Zentimetern, unter 120 nur mit einem Erwachsenen.
 
 ## Den ResortPass gibt es derzeit nicht zu kaufen
 
-Neu kaufen kannst du den ResortPass bis auf Weiteres nicht, weil das Kontingent erschöpft ist, auch nicht am Telefon, per E-Mail oder vor Ort. Wer einen hat, bekommt vor dem Ablauf Bescheid und kann ihn in den letzten 14 Tagen im Portal verlängern.
+Das Kontingent ist erschöpft, deshalb verkauft der Park bis auf Weiteres keine neuen Pässe, auch nicht per Telefon, E-Mail oder an der Kasse. Wer einen hat, bekommt vor dem Ablauf Bescheid und kann ihn in den letzten 14 Tagen im Portal verlängern.
 
 Ab wie vielen Besuchen sich welche Karte lohnt, haben wir im [Vergleich der Jahreskarten](/blog/jahreskarte-vergleich-freizeitparks) nachgerechnet. Silber gilt für Tagesgäste an über 230 vorab festgelegten Tagen im Jahr. Zu Gold gehören außerdem zwei Tagestickets für [Rulantica](/news/rulantica-vinterglanz-2026), die du ebenfalls im Portal reservierst.
 
