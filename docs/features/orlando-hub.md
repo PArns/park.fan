@@ -35,7 +35,13 @@ locale, page?)`, the one function both branches link through.
 ## Data
 
 `lib/trip-regions/api.ts` reads the region (a day), `/calendar`, `/best-days` and `/when` (an hour) on
-the server with the site's data key, through the Data Cache under `trip-region:orlando`. The browser
+the server with the site's data key, through the Data Cache under `trip-region:orlando`. The route
+asks them at once, `/when` as soon as the region is known, and only the best-time teaser waits for
+`/when` (chapter 04), because a cold one builds for seconds and every deploy reads a cold one (its
+`v`). What crosses to the client is an allow-list, since it is in the RSC payload of every request:
+`slimRegion` (the parks, groups, hotel areas and storm season, the legs from a hotel area with the
+fields the day sheet reads; no tickets, venues or hotels) and `sliceCalendar` (the day fields the
+tiles and the sheet read). The browser
 asks the keyed routes through `app/api/trip-regions/[...path]/route.ts`, which answers this site's
 pages only and forwards each route's own query names (`lib/trip-regions/relay.ts`). The shapes are
 `lib/trip-regions/types.ts`; everything derived from them is `lib/trip-regions/hub-data.ts`.
@@ -177,7 +183,10 @@ Each chapter opens with its heading and then the thing itself.
      level, the wait (`shownWait`), the level in words (none for a figure without a level, never
      „Keine Prognose“ beside a forecast), the day guest's hours with an early close in bold under
      the folded corner, „Zeiten folgen“ without published hours, the season icons (quiet for a
-     season most of the window runs in, `quietSeasons`), „Geschlossen“.
+     season most of the window runs in, `quietSeasons`), „Geschlossen“. The served HTML holds every
+     day twice (the table and the phone's week), so what a density's tiles share is one class in
+     `app/globals.css` (`calendar-tile-mini`, `-compact`, `-full`), and the star and the season
+     icons are `<use>`s of one `CalendarIconSprite` around the calendar.
    - **Each park's quietest day of the week** (`quietestDay`: the lowest printed wait, `shownWait`,
      a tie to the lower `headlinerWait`, then the longer day, then the earlier date; one for every
      park with an open day, never a last-year day) is ringed in the text colour (`HUB_CELL_BEST`)
@@ -236,7 +245,12 @@ Each chapter opens with its heading and then the thing itself.
      (`bestTimeTripLengths`). Picking other parks puts the length back to theirs.
 
    The served HTML holds the region's own page at its own length, the query that best-time page
-   sends (`bestTimeWhenQuery`), so both read one cached answer. Another choice is read once
+   sends (`bestTimeWhenQuery`), so both read one cached answer. That answer streams: the teaser
+   awaits it in its own `<Suspense>`, whose fallback is the teaser without an answer, the switches
+   and the link with the place of the year line and the cards held per breakpoint
+   (`PENDING_ANSWER`, Orlando's answer measured in English and German). The chapter's title takes
+   its year from the region's today (`bestTimeYear`), as the best-time pages do, so it stands before
+   `/when` answers. Another choice is read once
    through the relay with the same function's query (`whenQueryFor`) and kept; the cards of the
    last answer stay, dimmed, while it loads. Then a year line (`yearLine` in `hub-data.ts`): the
    months of the searched range as a ruled track and each window as a bar under its numbered dot,
@@ -290,17 +304,22 @@ written into the copy; a change to the region or a new matrix is a reason to re-
 
 ## SEO
 
-- Title and H1 carry each locale's term ("Orlando Crowd Calendar", „Orlando Andrang-Kalender“,
+- The H1 carries each locale's term ("Orlando Crowd Calendar", „Orlando Andrang-Kalender“,
   "Orlando drukte-kalender", "Calendrier d'affluence Orlando", "Calendario de afluencia de Orlando",
-  "Calendario affluenza Orlando"): in the H1 as its first line, inside the element, with the
+  "Calendario affluenza Orlando") as its first line, inside the element, with the
   question („Welcher Park an welchem Tag?“) as its second (`LandingHero question`). A month page asks
   the same question; its month is in the first line, and a second mention read twice in the H1
-  („… Dezember 2026: Welcher Park an welchem Tag im Dezember 2026?“). The hub's `<title>` carries
-  the years its month index spans (`{years}`, `tripRegionYears`: „Orlando Andrang-Kalender
-  2026–2027 & Reiseplaner“, one year from January), read per request in park time; a month's
-  title names its month, in German with „Andrang“ („Orlando im Dezember 2026: Andrang bei Disney &
-  Universal“), the word German searches use. German calls the calendar „Andrang-Kalender“
-  everywhere. The description carries the verdict, each resort's quietest date.
+  („… Dezember 2026: Welcher Park an welchem Tag im Dezember 2026?“). The hub's `<title>` names
+  Disney World and Universal, which searchers name (in November 2026 Google showed the hub at
+  position 12 for "universal orlando crowd calendar" while its title said neither), and the years
+  its month index spans (`{years}`, `tripRegionYears`, one year from January), read per request in
+  park time: "Disney World & Universal Orlando Crowd Calendar 2026–2027", „Orlando Andrang-Kalender
+  2026–2027: Disney World & Universal“, „Calendrier d’affluence : Disney World et Universal
+  2026–2027“. With both years it stays within `MAX_TITLE_LENGTH`, which `pnpm test:trip-regions`
+  checks in all six. A month's title names its month, in German with „Andrang“ („Orlando im
+  Dezember 2026: Andrang bei Disney & Universal“), the word German searches use. German calls the
+  calendar „Andrang-Kalender“ everywhere. The description carries the verdict, each resort's
+  quietest date.
 - Structured data: `BreadcrumbList`, a `Dataset` for the window (`ParkDatasetStructuredData` with
   Orlando's centre), `FAQPage` only from `FaqList`. No `Event` for festivals: they are third-party
   events without offers, and an `expected` season is no announcement
