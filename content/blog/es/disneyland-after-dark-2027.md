@@ -52,19 +52,19 @@ Disneyland, en Anaheim, publicó el 18 de noviembre en el Disney Parks Blog las 
 - Star Wars Nite: 27 y 29 de abril; 4 y 6 de mayo
 - Pride Nite: 17 de junio
 
-Las 18 noches caen en domingo, martes o jueves. San Valentín se queda fuera, aunque el 14 de febrero de 2027 es domingo. Quien quiera pasar ese día en el parque con su pareja necesita una entrada normal, y la última Sweethearts' Nite llega dos días después.
+Las 18 noches caen en domingo, martes o jueves. San Valentín se queda fuera, aunque el 14 de febrero de 2027 es domingo. Quien quiera pasar ese día en el parque con su pareja necesita una entrada normal, o puede trasladar San Valentín al martes 16, la última Sweethearts' Nite.
 
 ## Horario y qué incluye la entrada
 
-Cada fiesta va de las 21:00 a la 1:00, hora local, cuando el parque ya ha cerrado para los visitantes del día. Con la entrada de la fiesta, sin embargo, puedes entrar desde las 18:00. Hasta el final son siete horas en el parque, una jornada entera para una entrada de noche. Las tres primeras coinciden todavía con el horario normal.
+Cada fiesta va de las 21:00 a la 1:00, hora local, cuando el parque ya ha cerrado para los visitantes del día. Con la entrada de la fiesta, sin embargo, puedes entrar desde las 18:00, y hasta las 21:00 compartes el parque con los visitantes del día. En total son siete horas dentro, una jornada entera para una entrada de noche.
 
-La entrada incluye todas las fotos digitales de Disney PhotoPass que te hagan durante la fiesta, sin límite. Para descargarlas escaneas en la app de Disneyland el código QR de tu pulsera. Además te dan un mapa del parque de la fiesta, pensado como recuerdo. Solo funcionan algunas atracciones, y en ellas Disney suele prometer esperas más cortas. Disney todavía no ha anunciado cuáles serán en 2027.
+La entrada incluye todas las fotos digitales de Disney PhotoPass que te hagan durante la fiesta, sin límite. Para descargarlas escaneas en la app de Disneyland el código QR de tu pulsera. Además te dan un mapa propio de la fiesta, más para el álbum de fotos que para el bolsillo. Solo funcionan algunas atracciones, y en ellas Disney suele prometer esperas más cortas. Disney todavía no ha anunciado cuáles serán en 2027 ni cuánto cuesta la entrada.
 
 ```hourly-profile-widget slug=/parks/north-america/united-states/anaheim/disneyland-park top=8
 
 ```
 
-En el anuncio Disney no da ningún precio. La entrada vale solo para la fecha reservada y las horas de la fiesta, y el número de entradas por noche es limitado.
+La entrada vale solo para la fecha reservada y las horas de la fiesta, y el número de entradas por noche es limitado.
 
 ## Entradas para la Sweethearts' Nite
 
@@ -72,11 +72,11 @@ Se venden en Disneyland.com. El martes 8 de diciembre, a partir de las 9:00 hora
 
 ## La Sweethearts' Nite
 
-Disney piensa en parejas, pero también, lo dice expresamente, en ir con la mejor amiga o con la familia. Por Main Street, U.S.A. pasa la «Celebrate Love Cavalcade» con Mickey, Minnie y sus amigos. Delante del castillo de la Bella Durmiente, cantantes en directo interpretan canciones de amor de películas Disney en «Once Upon a Dream», y después puedes saludar allí a parejas de la realeza. Las dos vuelven.
+Disney piensa en parejas, pero también, lo dice expresamente, en ir con la mejor amiga o con la familia. Vuelven la «Celebrate Love Cavalcade», con la que Mickey, Minnie y sus amigos recorren Main Street, U.S.A., y, delante del castillo de la Bella Durmiente, «Once Upon a Dream», donde cantantes en directo interpretan canciones de amor de películas Disney. Después puedes saludar allí a parejas de la realeza.
 
-Para cantar tú mismo, en el Golden Horseshoe de Frontierland hay karaoke a dúo, «Disney Duets». En la Tomorrowland Terrace pincha un DJ en la Valentine's Dance Party, y los personajes Disney bailan con el público. Si prefieres ir sentado, súbete al barco de vapor [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare), que se convierte en el Lou-Ray Jazz Club y navega de noche por los Rivers of America con música de jazz. Sobre la fachada de [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare) Disney proyecta a WALL-E y EVA. Por el parque hay decorados para fotos de «Aladdín», «Los Aristogatos», «Enredados» y «La dama y el vagabundo».
+Para cantar tú mismo, en el Golden Horseshoe de Frontierland hay karaoke a dúo, «Disney Duets». Un DJ pincha en la Valentine's Dance Party de la Tomorrowland Terrace, y los personajes Disney bailan con el público. Si prefieres ir sentado, súbete al barco de vapor [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare), que se convierte en el Lou-Ray Jazz Club y navega de noche por los Rivers of America con música de jazz. WALL-E y EVA, la pareja de robots de la noche, aparecen proyectados sobre la fachada de [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare). Para las fotos, Disney monta decorados de cuatro películas, entre ellas «La dama y el vagabundo».
 
-La colección de la fiesta se vende justo al lado de una nave de contrabandistas, el [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare) de Star Wars: Galaxy's Edge. Incluye, entre otras cosas, una sudadera con capucha, una diadema con un lazo como el de Minnie y un vaso.
+La colección de la fiesta se vende justo al lado de una nave de contrabandistas, el [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare) de Star Wars: Galaxy's Edge. Entre los artículos hay una diadema con un lazo como el de Minnie.
 
 En las cartas hay novedades como patatas fritas con pollo y za'atar, por ejemplo en el Galactic Grill, y Hawaiian Rolls fritos en el Little Red Wagon. El Blue Bayou, la River Belle Terrace y el Carnation Café sirven platos propios de la fiesta. Allí Disney recomienda reservar, algo que se podrá hacer por internet cuando se acerquen las fechas. Las especialidades de los restaurantes de comida rápida se piden ya antes de que empiece la fiesta, con Mobile Order en la app.
 
@@ -86,11 +86,11 @@ La Disneylandia Nite celebra las culturas hispanas y latinoamericanas, con perso
 
 La Star Wars Nite de 2027 gira en torno a los 50 años de Star Wars, y una de las cuatro noches cae el 4 de mayo. Disney pide disfraces al estilo de Star Wars, siempre dentro de las normas de vestuario del parque.
 
-La Pride Nite del 17 de junio celebra a la comunidad LGBTQIA+, con proyecciones de arcoíris en el parque. Se celebró por primera vez en 2023; en 2026 hubo dos noches y en 2027 habrá una.
+En la Pride Nite del 17 de junio, proyecciones de arcoíris iluminan el parque para la comunidad LGBTQIA+. Existe desde 2023, y en 2027 tendrá una sola noche, frente a las dos de 2026.
 
 ## Menos fiestas que en 2026
 
-En 2026 Disneyland tuvo cinco fiestas After Dark. En marzo se estrenó «70 Years of Favorites», con dos noches, y en abril llegó la Disney Channel Nite. Ninguna de las dos está en el calendario de 2027; en su lugar llega la Disneylandia Nite.
+En 2026 Disneyland tuvo cinco fiestas After Dark. En marzo se estrenó «70 Years of Favorites», con dos noches, y en abril llegó la Disney Channel Nite. Ninguna de las dos está en el calendario de 2027.
 
 Si planeas un viaje por el sur de California, la [guía del viaje por California](/blog/viaje-california-disneyland-universal-san-diego) pone juntas las noches de fiesta de Disneyland, Universal, Knott's y SeaWorld San Diego, con la hora a la que deben irse los visitantes del día en cada parque.
 

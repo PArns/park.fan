@@ -52,19 +52,19 @@ Le 18 novembre, le Disneyland d’Anaheim a publié sur le Disney Parks Blog le 
 - Star Wars Nite : 27 et 29 avril, 4 et 6 mai
 - Pride Nite : 17 juin
 
-Les 18 soirées tombent toutes un dimanche, un mardi ou un jeudi. Disney a laissé de côté la Saint-Valentin, alors que le 14 février 2027 est un dimanche. Pour passer ce jour-là au parc en amoureux, il faut un billet ordinaire à la journée. La dernière Sweethearts' Nite a lieu deux jours plus tard.
+Les 18 soirées tombent toutes un dimanche, un mardi ou un jeudi. Disney a laissé de côté la Saint-Valentin, alors que le 14 février 2027 est un dimanche. Pour passer ce jour-là au parc en amoureux, il faut un billet ordinaire à la journée, à moins de fêter la Saint-Valentin le mardi 16, jour de la dernière Sweethearts' Nite.
 
 ## Horaires et contenu du billet
 
-La fête dure de 21 h à 1 h, heure locale, une fois le parc fermé aux visiteurs de la journée. Le billet de la soirée permet pourtant d’entrer dès 18 h. Jusqu’à la fin, cela fait sept heures dans le parc, de quoi remplir une journée de travail avec un simple billet du soir. Pendant les trois premières, le parc fonctionne encore normalement.
+La fête dure de 21 h à 1 h, heure locale, une fois le parc fermé aux visiteurs de la journée. Le billet de la soirée permet pourtant d’entrer dès 18 h, et jusqu’à 21 h vous partagez le parc avec les visiteurs de la journée. Au total, cela fait sept heures sur place, de quoi remplir une journée de travail avec un simple billet du soir.
 
-Le billet comprend toutes les photos numériques Disney PhotoPass prises de vous pendant la soirée, sans limite. Pour les récupérer, vous scannez le QR code de votre bracelet dans l’application Disneyland. Vous recevez aussi un plan du parc spécial soirée, conçu comme souvenir. Seules certaines attractions restent ouvertes, et Disney y promet souvent des temps d’attente plus courts. Disney n’a pas encore annoncé lesquelles ouvriront en 2027.
+Le billet comprend toutes les photos numériques Disney PhotoPass prises de vous pendant la soirée, sans limite. Pour les récupérer, vous scannez le QR code de votre bracelet dans l’application Disneyland. Vous recevez aussi un plan du parc spécial soirée, plus fait pour l’album photo que pour la poche. Seules certaines attractions restent ouvertes, et Disney y promet souvent des temps d’attente plus courts. Disney n’a pas encore annoncé lesquelles ouvriront en 2027, ni le prix du billet.
 
 ```hourly-profile-widget slug=/parks/north-america/united-states/anaheim/disneyland-park top=8
 
 ```
 
-L’annonce de Disney ne donne aucun prix. Le billet n’est valable que pour la date réservée et les heures de la soirée, et le nombre de places par soir est limité.
+Le billet n’est valable que pour la date réservée et les heures de la soirée, et le nombre de places par soir est limité.
 
 ## Billets pour la Sweethearts' Nite
 
@@ -72,11 +72,11 @@ La vente a lieu sur Disneyland.com. Le mardi 8 décembre, à partir de 9 h heur
 
 ## La Sweethearts' Nite
 
-Disney pense aux couples, mais précise que la soirée vaut aussi pour sortir avec sa meilleure amie ou en famille. Sur Main Street, U.S.A., la « Celebrate Love Cavalcade » défile avec Mickey, Minnie et leurs amis. Devant le château de la Belle au bois dormant, des chanteuses et des chanteurs interprètent en direct des chansons d’amour des films Disney dans « Once Upon a Dream », et vous pouvez ensuite y rencontrer des couples royaux. Ces deux rendez-vous sont de retour.
+Disney pense aux couples, mais précise que la soirée vaut aussi pour sortir avec sa meilleure amie ou en famille. Reviennent la « Celebrate Love Cavalcade », où Mickey, Minnie et leurs amis défilent sur Main Street, U.S.A., et, devant le château de la Belle au bois dormant, « Once Upon a Dream », où des chanteuses et des chanteurs interprètent en direct des chansons d’amour des films Disney. Vous pouvez ensuite y rencontrer des couples royaux.
 
-Pour chanter vous-même, direction le Golden Horseshoe, à Frontierland, où le karaoké « Disney Duets » se fait à deux. À la Tomorrowland Terrace, un DJ anime la Valentine's Dance Party, et des personnages Disney rejoignent la piste. Si vous préférez rester assis, montez à bord du bateau à aubes [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare) : devenu le Lou-Ray Jazz Club, il navigue de nuit sur les Rivers of America au son du jazz. Disney projette WALL-E et EVE sur la façade de [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare). Des décors tirés d’« Aladdin », des « Aristochats », de « Raiponce » et de « La Belle et le Clochard » attendent les photographes dans le parc.
+Pour chanter vous-même, direction le Golden Horseshoe, à Frontierland, où le karaoké « Disney Duets » se fait à deux. Un DJ anime la Valentine's Dance Party à la Tomorrowland Terrace, et des personnages Disney rejoignent la piste. Si vous préférez rester assis, montez à bord du bateau à aubes [Mark Twain](ref:/parks/north-america/united-states/anaheim/disneyland-park/mark-twain-riverboat?bare) : devenu le Lou-Ray Jazz Club, il navigue de nuit sur les Rivers of America au son du jazz. WALL-E et EVE, le couple de robots de la soirée, apparaissent en projection sur la façade de [Space Mountain](ref:/parks/north-america/united-states/anaheim/disneyland-park/space-mountain?bare). Pour les photos, Disney installe des décors tirés de quatre films, dont « La Belle et le Clochard ».
 
-La collection de la soirée se vend, comme par hasard, à côté d’un vaisseau de contrebandiers, le [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare) de Star Wars: Galaxy's Edge. On y trouve entre autres un sweat à capuche, un serre-tête orné d’un nœud comme celui de Minnie et un mug.
+La collection de la soirée se vend, comme par hasard, à côté d’un vaisseau de contrebandiers, le [Millennium Falcon](ref:/parks/north-america/united-states/anaheim/disneyland-park/millennium-falcon-smugglers-run?bare) de Star Wars: Galaxy's Edge. Parmi les articles figure un serre-tête orné d’un nœud comme celui de Minnie.
 
 Nouveaux à la carte : des frites au poulet et au za’atar, notamment au Galactic Grill, et des Hawaiian Rolls frits au Little Red Wagon. Le Blue Bayou, la River Belle Terrace et le Carnation Café proposent des plats propres à la soirée. Disney y conseille de réserver, ce qui deviendra possible en ligne à l’approche des dates. Les spécialités des restaurants rapides se commandent avant même le début de la fête, par Mobile Order dans l’application.
 
@@ -86,11 +86,11 @@ La Disneylandia Nite célèbre les cultures hispaniques et latino-américaines, 
 
 En 2027, la Star Wars Nite fête les 50 ans de Star Wars, et l’une des quatre soirées tombe le 4 mai. Disney invite à venir costumé dans l’esprit Star Wars, dans le respect du règlement du parc sur les costumes.
 
-La Pride Nite du 17 juin célèbre la communauté LGBTQIA+, avec des projections arc-en-ciel dans le parc. Elle a eu lieu pour la première fois en 2023, puis sur deux soirs en 2026, et n’en compte plus qu’un en 2027.
+À la Pride Nite du 17 juin, des projections arc-en-ciel illuminent le parc pour la communauté LGBTQIA+. Elle existe depuis 2023 et ne compte plus qu’un soir en 2027, contre deux en 2026.
 
 ## Moins de soirées qu’en 2026
 
-En 2026, Disneyland comptait cinq soirées After Dark. La nouvelle « 70 Years of Favorites » a occupé deux soirs en mars, la Disney Channel Nite est venue en avril. Ni l’une ni l’autre ne figure au calendrier 2027, où la Disneylandia Nite fait son apparition.
+En 2026, Disneyland comptait cinq soirées After Dark. La nouvelle « 70 Years of Favorites » a occupé deux soirs en mars, la Disney Channel Nite est venue en avril. Ni l’une ni l’autre ne figure au calendrier 2027.
 
 Si vous préparez un voyage dans le sud de la Californie, notre [guide du road trip en Californie](/blog/road-trip-californie-disneyland-universal-san-diego) réunit les soirées spéciales de Disneyland, d’Universal, de Knott's et de SeaWorld San Diego, avec l’heure à laquelle les visiteurs de la journée doivent partir.
 
