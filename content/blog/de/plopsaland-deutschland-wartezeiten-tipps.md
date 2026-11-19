@@ -26,7 +26,7 @@ parkLinks:
 rideLinks:
   - plopsaland-deutschland/*
 seo:
-  title: 'Plopsaland Deutschland 2026: Wartezeiten, Preise, beste Tage'
+  title: 'Plopsaland Deutschland (Holiday Park): Tipps und beste Tage'
   description: >-
     Im früheren Holiday Park in Haßloch stehst du an den meisten Bahnen nur
     wenige Minuten an. Am wenigsten los ist freitags, außer an den

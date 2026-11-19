@@ -24,7 +24,7 @@ coverImage:
   caption: 'À son ouverture en 2002, aucun coaster en acier d’Europe ne montait plus haut que ce lift.'
   credit: 'Patrick Arns'
 seo:
-  title: 'Les montagnes russes les plus rapides, hautes et longues d’Europe'
+  title: 'Attraction la plus rapide d’Europe : le top 10 des coasters'
   description: >-
     Red Force fait 180 km/h et 112 mètres, Big One a le plus long parcours, The Smiler 14 inversions. Silver Star et Kärnan sont les plus rapides d’Allemagne.
   keywords:

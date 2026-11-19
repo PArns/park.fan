@@ -30,11 +30,10 @@ coverImage:
   caption: 'For six weeks a year this park is called Horrorwood Studios, and that’s what the illuminated lettering at the entrance says too.'
   credit: 'park.fan'
 seo:
-  title: 'Movie Park Wait Times & Halloween 2026, minus Batman'
+  title: 'Movie Park Germany: when is it least busy? Best days, tips'
   description: >-
-    Measured wait times at Movie Park: the weekday the tip sheets get wrong, the
-    autumn timetable, Halloween until 8 November and how to dodge the gate
-    price.
+    At Movie Park the queues are shortest on Fridays, and Sunday is quieter than
+    Saturday. Hollywood Christmas runs from 27 November to 5 January.
   keywords:
     - Movie Park Germany
     - Movie Park wait times
