@@ -2,7 +2,7 @@
 title: 'Lake Compounce feiert 2027 die hundertjährige Wildcat'
 translationKey: lake-compounce-wildcat-100
 date: '2026-11-19'
-time: '18:00'
+time: '18:26'
 author: patrick
 mode: published
 featured: false
