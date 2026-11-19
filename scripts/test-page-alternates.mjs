@@ -79,7 +79,7 @@ test('a listing names only the locales it exists in, and x-default only with an 
 
 const card = {
   locale: 'de',
-  title: 'Fancast | park.fan',
+  title: 'Fancast',
   description: 'Wie sicher die Prognosen sind.',
   url: `${SITE}/de/fancast`,
   ogImageUrl: `${SITE}/api/og/de/fancast`,

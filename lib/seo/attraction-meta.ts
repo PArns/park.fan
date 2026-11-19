@@ -1,4 +1,4 @@
-import { fitWithin, MAX_TITLE_LENGTH, MAX_DESCRIPTION_LENGTH } from '@/lib/utils/metadata';
+import { fitWithin, MAX_DESCRIPTION_LENGTH, fitTitle } from '@/lib/utils/metadata';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import type { Locale } from '@/i18n/config';
 import {
@@ -83,8 +83,7 @@ export function buildAttractionTitle(
         parkSubject: parkName,
         inParkLeading: parkName,
       };
-  return fitWithin(
-    MAX_TITLE_LENGTH,
+  return fitTitle(
     t('titleTemplate', { attraction: attractionName, ...park }),
     t('titleTemplateShort', { attraction: attractionName, ...park }),
     t('titleTemplateBare', { attraction: attractionName })
@@ -143,8 +142,7 @@ export function buildClosedRideTitle(
   phrase: { locale: Locale; articleDe?: string | null }
 ): string {
   const park = parkArgs(phrase.locale, parkName, phrase.articleDe);
-  return fitWithin(
-    MAX_TITLE_LENGTH,
+  return fitTitle(
     t('retiredTitleTemplate', { attraction: attractionName, ...park }),
     t('retiredTitleTemplateBare', { attraction: attractionName })
   );

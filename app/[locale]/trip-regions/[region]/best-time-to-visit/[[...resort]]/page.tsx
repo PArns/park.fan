@@ -8,7 +8,6 @@ import {
   fitWithin,
   oneFullStop,
   MAX_DESCRIPTION_LENGTH,
-  MAX_TITLE_LENGTH,
   buildAlternates,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
@@ -105,11 +104,7 @@ export async function generateMetadata({ params }: BestTimeRouteProps): Promise<
     parks: tOwn(`resort.${page}`),
     windows: windowList(windows, locale),
   };
-  const title = fitWithin(
-    MAX_TITLE_LENGTH,
-    `${tOwn(`title.${page}`, { year })} | park.fan`,
-    tOwn(`title.${page}`, { year })
-  );
+  const title = tOwn(`title.${page}`, { year });
   const description = fitWithin(
     MAX_DESCRIPTION_LENGTH,
     ...(windows.length

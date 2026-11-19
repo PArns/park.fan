@@ -9,9 +9,9 @@ import {
   buildOpenGraphMetadata,
   fitWithin,
   MAX_DESCRIPTION_LENGTH,
-  MAX_TITLE_LENGTH,
   oneFullStop,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getListFormat } from '@/lib/utils/intl-format';
@@ -131,8 +131,7 @@ export async function generateMetadata({
   const monthLabel = month ? formatHubMonth(month.year, month.month, locale) : null;
   const found = verdict(config, region, bestDays, locale);
   const title = monthLabel
-    ? fitWithin(
-        MAX_TITLE_LENGTH,
+    ? fitTitle(
         t('metaTitleMonth', { month: monthLabel }),
         t('metaTitleMonthShort', { month: monthLabel })
       )

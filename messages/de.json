@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "Der ruhigste Tag jeder Woche für alle {count} Parks {inRegion}, nach der Prognose der Spitzenwartezeit",
-      "question": "Wann ist es in {resort} am ruhigsten?"
+      "question": "Wann ist es in {resort} am ruhigsten?",
+      "calendarResort": "Andrang-Kalender {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park}: Wartezeiten live",
+    "calendarLink": "{park}: Andrangskalender & Auslastung der nächsten Tage",
     "liveFreshness": {
       "asOf": "Stand",
       "outdated": "Nicht aktuell",
@@ -1292,6 +1294,10 @@
       "metaTitle": "{park}: Andrangskalender & Auslastung {month}",
       "metaTitleShort": "{park}: Andrangskalender {month}",
       "metaTitleBare": "{park}: {month}",
+      "yearTitle": "{park}: Andrangskalender & Auslastung {years}",
+      "yearTitleShort": "{park}: Andrangskalender {years}",
+      "yearTitleBare": "{park}: Andrangskalender {years}",
+      "h1SuffixYears": "Andrangskalender {years}",
       "metaDescription": "Wann ist es {inPark} in {city} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "metaDescriptionNoCity": "Wann ist es {inPark} leer? Andrangskalender mit KI-Prognose der Auslastung pro Tag, dazu Öffnungszeiten, Ferien und Wetter.",
       "intro": "Für jeden Tag der nächsten Monate: erwarteter Andrang, Öffnungszeiten, Ferien und Feiertage, die {inPark} zählen. Tippe auf einen Tag für die Details.",
@@ -2032,8 +2038,8 @@
       "title": "Freizeitparks weltweit: Wartezeiten, Karte & Übersicht",
       "description": "Vergleiche aktuelle Wartezeiten, Betriebsstatus und Besucherandrang für Top-Freizeitparks wie Europa-Park, Phantasialand, Disney und Universal.",
       "metaDescriptionTemplate": "Live-Wartezeiten & Crowd-Kalender {forPark} in {city}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
-      "titleTemplate": "{park} Wartezeiten LIVE – {city}",
-      "titleTemplateNoCity": "{park} – Wartezeiten LIVE & beste Tage",
+      "titleTemplate": "{park}: Wartezeiten LIVE & Auslastung heute",
+      "titleTemplateNoCity": "{park}: Wartezeiten LIVE & Auslastung heute",
       "metaDescriptionTemplateNoCity": "Live-Wartezeiten & Crowd-Kalender {forPark}. Prognose für heute, beste Besuchstage & Öffnungszeiten auf einen Blick.",
       "metaDescriptionFacts": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu Crowd-Kalender, Prognose & Öffnungszeiten.",
       "metaDescriptionFactsShort": "Live-Wartezeiten {forPark}, alle 5 Minuten neu. Ruhigste Tage: {quietDays}. Dazu der Crowd-Kalender.",
@@ -3546,7 +3552,7 @@
     "page": {
       "title": "Deinen Parktag Bahn für Bahn planen",
       "lead": "Leg fest, welche Bahnen du fahren willst. Mit den vorhergesagten Wartezeiten siehst du, ob alle vor Parkschluss drankommen. Der Tagesplaner kostet nichts, liegt in deinem Browser und braucht kein Konto.",
-      "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen | park.fan",
+      "metaTitle": "Freizeitpark-Tag planen: Wartezeiten einrechnen",
       "metaDescription": "Plane deinen Freizeitpark-Tag mit den vorhergesagten Wartezeiten: Bahnen auf eine Zeitleiste, Shows und Pausen dazwischen, Hinweis, wo dein Kind zu klein ist.",
       "yourPlans": "{count, plural, one {Ein geplanter Tag} other {# geplante Tage}}",
       "introTitle": "Noch nichts geplant",

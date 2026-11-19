@@ -5,9 +5,9 @@ import { SITE_URL } from '@/i18n/config';
 import {
   buildOpenGraphMetadata,
   fitWithin,
-  MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { translateCountry, translateContinent } from '@/lib/i18n/helpers';
 import { notFound, permanentRedirect } from 'next/navigation';
@@ -45,6 +45,8 @@ import type { Locale } from '@/i18n/config';
 import { ParkPageShell } from '@/components/parks/park-page-shell';
 import { TripPlannerTile } from '@/components/trip-regions/trip-planner-tile';
 import { ParkTitleHeader } from '@/components/parks/park-title-header';
+import { ParkCalendarLink } from '@/components/parks/park-live-link';
+import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { ParkTodayPanel } from '@/components/parks/park-today-panel';
 import { eventSeasonsNearToday } from '@/lib/parks/park-season-days';
 import { ParkBreakPanel } from '@/components/parks/park-break-panel';
@@ -155,8 +157,7 @@ export async function generateMetadata({ params }: ParkPageProps): Promise<Metad
   // bare "<park> Wait Times LIVE" form, and to the city-less copy for the snippet.
   const title =
     closedCopy?.title ??
-    fitWithin(
-      MAX_TITLE_LENGTH,
+    fitTitle(
       cityInParkName
         ? t(titleKey, { park: parkName })
         : t(titleKey, { park: parkName, city: cityName }),
@@ -584,7 +585,13 @@ export default async function ParkPage({ params, searchParams }: ParkPageProps) 
             note={
               headerNews ? <ParkNewsBand locale={locale as Locale} news={headerNews} /> : undefined
             }
-          />
+          >
+            <ParkCalendarLink
+              href={parkCalendarPath(locale, continent, country, city, parkSlug)}
+              park={parkName}
+              locale={locale as Locale}
+            />
+          </ParkTitleHeader>
         }
       >
         {/* Paid skip-the-line day prices (schedule purchases) — renders nothing for parks

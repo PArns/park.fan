@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "Le jour le plus calme de chaque semaine pour les {count} parcs {inRegion}, d’après la prévision de l’attente de pointe",
-      "question": "Quel jour y a-t-il le moins de monde à {resort} ?"
+      "question": "Quel jour y a-t-il le moins de monde à {resort} ?",
+      "calendarResort": "Calendrier d’affluence {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park} : temps d’attente en direct",
+    "calendarLink": "{park} : calendrier d’affluence des prochains jours",
     "liveFreshness": {
       "asOf": "Mis à jour",
       "outdated": "Pas à jour",
@@ -1292,6 +1294,10 @@
       "metaTitle": "{park} : calendrier d’affluence en {month}",
       "metaTitleShort": "{park} : affluence en {month}",
       "metaTitleBare": "{park} : {month}",
+      "yearTitle": "{park} : calendrier d’affluence {years}",
+      "yearTitleShort": "{park} : affluence {years}",
+      "yearTitleBare": "{park} : affluence {years}",
+      "h1SuffixYears": "Calendrier d’affluence {years}",
       "metaDescription": "Quand {park} à {city} est-il calme ? Affluence jour par jour, horaires, vacances scolaires et météo pour les mois à venir, avec prévision IA.",
       "metaDescriptionNoCity": "Quand {park} est-il calme ? Affluence attendue par jour, horaires, vacances scolaires et météo pour les mois à venir.",
       "intro": "Pour chaque jour des prochains mois : affluence attendue, horaires et les vacances scolaires et les jours fériés qui pèsent sur {park}. Touche un jour pour le détail.",
@@ -3546,7 +3552,7 @@
     "page": {
       "title": "Planifier sa journée au parc attraction par attraction",
       "lead": "Indiquez les attractions que vous voulez faire. Avec les temps d’attente prévus, vous voyez si elles passent toutes avant la fermeture du parc. Le planificateur est gratuit, reste dans votre navigateur et ne demande pas de compte.",
-      "metaTitle": "Planifier sa journée au parc d’attractions | park.fan",
+      "metaTitle": "Planifier sa journée au parc d’attractions",
       "metaDescription": "Organisez votre journée au parc avec les attentes prévues : attractions sur une frise, spectacles et pauses, et un repère là où votre enfant est trop petit.",
       "yourPlans": "{count, plural, one {Une journée planifiée} other {# journées planifiées}}",
       "introTitle": "Rien de planifié pour l’instant",

@@ -27,9 +27,9 @@ import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,
-  MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { parkArgs } from '@/lib/i18n/park-phrase';
@@ -86,8 +86,7 @@ export async function generateMetadata({ params }: ParkKidsPageProps): Promise<M
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
   const parkPhrases = parkArgs(locale as Locale, parkName, park.nameArticleDe);
 
-  const title = fitWithin(
-    MAX_TITLE_LENGTH,
+  const title = fitTitle(
     t('metaTitle', { park: parkName }),
     t('metaTitleShort', { park: parkName })
   );

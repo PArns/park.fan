@@ -77,6 +77,44 @@ meta description ([parks without wait times](../api/parks-without-wait-times.md)
 numbers: the share of those visits that leave at once, once the site statistic has a season of
 Hansa-Park traffic.
 
+### A title carries no „park.fan“, except where park.fan is the subject
+
+Google prints the site name from the WebSite JSON-LD and `og:site_name`, so a „ | park.fan“ at the
+end of a title only spends width of the 600 px Google shows (`MAX_TITLE_WIDTH_PX`). Blog posts dropped it with
+PAR-1399; glossary, the best-time pages, fancast, blog categories, tags and authors and the day
+planner followed with PAR-1402. The brand stays where it is the subject: the homepage, „How
+park.fan works“, the changelog, the blog's index and the legal pages, because Google checks the
+WebSite JSON-LD's name against the homepage's title.
+
+### The German park title says „Auslastung heute“, not the city
+
+„<park> auslastung“ reaches the park page about 1,100 times in four weeks (to 17 November 2026,
+Phantasialand: „phantasialand auslastung“ 651, „auslastung phantasialand“ 347, „… heute“ 127) and
+its title did not say the word, so the German park title is now „{park}: Wartezeiten LIVE &
+Auslastung heute“ (`seo.parks.titleTemplate`, the same for `titleTemplateNoCity`) instead of
+„… – Brühl“. That is the change the data backs. It is not shown to lift „<park> wartezeiten“: that
+query sits at 0.2–0.4 % of clicks at position 6–7 for Phantasialand (11,801 impressions) and for
+Heide Park alike, while Hansa-Park, with its town in the title too, gets 27 % at 3.5, so the
+position and the results page around it (the park's own site and app, Google's busy times) weigh
+more than the title. The park page links its calendar under the intro with „<park>:
+Andrangskalender & Auslastung der nächsten Tage“ (`ParkCalendarLink`), and the calendar links back
+with „<park>: Wartezeiten live“ (`ParkLiveLink`): Google answers „auslastung“ with the live page,
+and the link names the page for the days after today. The other languages keep their titles.
+
+### A park calendar's hub names the years ahead, a month page its month
+
+The calendar without a month (and the current month's URL, canonical to it) is titled for the
+months ahead: „Thorpe Park Crowd Calendar 2026–2027: Best Days to Visit“, „Europa-Park:
+Andrangskalender & Auslastung 2026–2027“ (`parks.calendarPage.yearTitle`, `…Short`, `…Bare`), and
+its H1 says the same (`h1SuffixYears`). The calendars with the fewest clicks for their main query
+at a good position were Thorpe Park (3.9, 1.4 %) and Europa-Park („andrangskalender europa park“,
+4.9, 0.8 %), but the data does not show the month as the cause: Thorpe Park's page was as low in
+October (0.6–1.0 % a week, its title naming an open month), and Europa-Park's other queries get
+6–21 % at similar positions with the same title. No query to these pages named a month, so the hub
+loses nothing it ranked for; the years are a test of what the title promises. A month page keeps
+its month, since „… december 2026“ is searched by its name. Park titles never carry the resort's
+or the city's name, so a park calendar and its region's hub (`/fr/paris`) stay two answers.
+
 ## Resolved, and kept resolved
 
 Each of these was a real incident. The fix lives in code; the reason is here so nobody undoes it.
@@ -140,8 +178,9 @@ node (no rich result without ratings) and a stamped `lastModified`.
   answers 3xx ([crawl budget](crawl-budget.md)).
 - Structured data passes the Rich Results Test, describes only what the page renders
   (`FAQPage` only beside a rendered `FaqList`), and a cross-`<script>` reference carries `@type`.
-- Titles under 60 characters (`MAX_TITLE_LENGTH`), descriptions about 150–160 (`seo.*` in
-  `messages/*.json`). Templated titles go through `fitWithin(MAX_TITLE_LENGTH, full, short)`
-  (`lib/utils/metadata.ts`) with a `titleTemplateShort` fallback key.
+- Titles within 600 px of 20 px Arial (`MAX_TITLE_WIDTH_PX`, estimated by `titleWidth`), not a
+  count of characters: lower case is narrow, Title Case and digits wide. Descriptions about 150–160
+  characters (`seo.*` in `messages/*.json`). Templated titles go through `fitTitle(full, short)`
+  (`lib/utils/metadata.ts`) with a `titleTemplateShort` fallback key, and no brand suffix.
 - Don't block crawlable assets in `app/robots.txt/route.ts` (`/api/og/`, `/_next/`).
 - The markup rules: [the markup says what each part is](../rules/the-markup-says-what-each-part-is.md).

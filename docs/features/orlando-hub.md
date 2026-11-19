@@ -332,7 +332,7 @@ written into the copy; a change to the region or a new matrix is a reason to re-
   2026–2027: Disney World & Universal“, „Affluence à Orlando 2026–2027 : Disney World et
   Universal“. Every language keeps „Orlando“, the word the searches start from; where both brands
   and the calendar word do not fit, the calendar word goes (French, Spanish) or „World“ does
-  (Italian). With both years it stays within `MAX_TITLE_LENGTH`, which `pnpm test:trip-regions`
+  (Italian). With both years it stays within `MAX_TITLE_WIDTH_PX`, which `pnpm test:trip-regions`
   checks in all six. A month's title names its month, in German with „Andrang“ („Orlando im
   Dezember 2026: Andrang bei Disney & Universal“), the word German searches use. German calls the
   calendar „Andrang-Kalender“ everywhere. The description carries the verdict, each resort's

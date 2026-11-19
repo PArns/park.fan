@@ -165,7 +165,10 @@ question a reader of one park's waits brings to the hub, which day is quietest: 
 its name („Orlando"), „Wann ist es in Walt Disney World am ruhigsten?" (`tripHub.tile.question`
 with the park's resort, `resort` on `TripRegionLinkPark`; a day-trip park gets the hub's own
 „Welcher Park an welchem Tag?"), one line on what the calendar marks with the region's park count,
-the hub by its name (`nav.calendar`, "Orlando Crowd Calendar") as the one primary action, and under
+the hub as the one primary action, named by the park's resort where it has one („Universal Orlando
+Crowd Calendar", `tripHub.tile.calendarResort`; else `nav.calendar`, "Orlando Crowd Calendar"), so
+a resort's park pages hand the hub the resort's own query, which Google split between the hub and a
+month page in November 2026 („universal orlando crowd calendar"), and under
 it „Magic Kingdom einplanen" into the planner with the park chosen (on a calendar month page that
 month as the dates to search) as a plain link. The whole card is the hub's link, the followed one,
 with the hub's name as its anchor, so a region's strongest park pages pass the hub a link; the plan

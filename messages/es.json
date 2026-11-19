@@ -519,7 +519,8 @@
     },
     "tile": {
       "line": "El día más tranquilo de cada semana para los {count} parques {inRegion}, según la previsión de la espera punta",
-      "question": "¿Qué día hay menos gente en {resort}?"
+      "question": "¿Qué día hay menos gente en {resort}?",
+      "calendarResort": "Calendario de afluencia {resort}"
     },
     "faq": {
       "parks": {
@@ -648,6 +649,7 @@
   },
   "parks": {
     "liveLink": "{park}: tiempos de espera en vivo",
+    "calendarLink": "{park}: calendario de afluencia de los próximos días",
     "liveFreshness": {
       "asOf": "Actualizado",
       "outdated": "Desactualizado",
@@ -1292,6 +1294,10 @@
       "metaTitle": "{park}: calendario de afluencia en {month}",
       "metaTitleShort": "{park}: afluencia en {month}",
       "metaTitleBare": "{park}: {month}",
+      "yearTitle": "{park}: calendario de afluencia {years}",
+      "yearTitleShort": "{park}: afluencia {years}",
+      "yearTitleBare": "{park}: afluencia {years}",
+      "h1SuffixYears": "Calendario de afluencia {years}",
       "metaDescription": "¿Cuándo está tranquilo {park} en {city}? Afluencia día a día, horarios, vacaciones escolares y tiempo para los próximos meses, con previsión de IA diaria.",
       "metaDescriptionNoCity": "¿Cuándo hay menos gente en {park}? Afluencia prevista por día, horarios, vacaciones escolares y tiempo para los próximos meses.",
       "intro": "Para cada día de los próximos meses: afluencia prevista, horarios y las vacaciones escolares y los días festivos que afectan a {park}. Toca un día para ver el detalle.",
@@ -3546,7 +3552,7 @@
     "page": {
       "title": "Planifica tu día en el parque atracción por atracción",
       "lead": "Di qué atracciones quieres. Con los tiempos de espera previstos ves si te da tiempo a todas antes del cierre. El planificador es gratis, se queda en tu navegador y no pide cuenta.",
-      "metaTitle": "Planificar el día en el parque de atracciones | park.fan",
+      "metaTitle": "Planificar el día en el parque de atracciones",
       "metaDescription": "Organiza tu día de parque con las esperas previstas: atracciones en una línea de tiempo, espectáculos y pausas, y un aviso donde tu peque no llega a la altura.",
       "yourPlans": "{count, plural, one {Un día planificado} other {# días planificados}}",
       "introTitle": "Todavía no hay nada planificado",

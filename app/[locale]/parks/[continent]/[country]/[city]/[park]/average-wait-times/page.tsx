@@ -34,9 +34,9 @@ import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,
-  MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { parkArgs } from '@/lib/i18n/park-phrase';
@@ -102,8 +102,7 @@ export async function generateMetadata({ params }: ParkStatsPageProps): Promise<
 
   // Two candidates, longest-preferred, for the same reason the calendar has two: the catalogue's
   // longest park name is 41 characters and the title has to survive it.
-  const title = fitWithin(
-    MAX_TITLE_LENGTH,
+  const title = fitTitle(
     t('metaTitle', { park: parkName }),
     t('metaTitleShort', { park: parkName })
   );

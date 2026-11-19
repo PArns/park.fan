@@ -147,7 +147,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'bestTime' });
   const ogImageUrl = getOgImageUrl([locale, BEST_TIME_SEGMENTS.en]);
-  const fullTitle = `${t('title')} | park.fan`;
+  const fullTitle = t('title');
   const url = urlFor(locale as Locale);
 
   return {

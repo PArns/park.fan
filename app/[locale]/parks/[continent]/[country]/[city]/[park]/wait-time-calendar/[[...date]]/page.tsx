@@ -16,6 +16,7 @@ import { getBestDaysCalendarSeed, getCalendarMonthSeed } from '@/lib/api/integra
 import { hasParkStatsPage } from '@/lib/api/stats';
 import type { BestDaysSnapshot } from '@/lib/api/integrated-calendar';
 import { summarizeCalendarMonth } from '@/lib/parks/calendar-month-summary';
+import { tripRegionYears } from '@/lib/trip-regions/paths';
 import {
   eventSeasonsNearToday,
   seasonDaysOfMonth,
@@ -45,9 +46,9 @@ import { stripNewPrefix } from '@/lib/utils';
 import {
   buildOpenGraphMetadata,
   fitWithin,
-  MAX_TITLE_LENGTH,
   MAX_DESCRIPTION_LENGTH,
   buildAlternates,
+  fitTitle,
 } from '@/lib/utils/metadata';
 import { getOgImageUrl } from '@/lib/utils/og-image';
 import { getServerToday } from '@/lib/utils/server-time';
@@ -143,20 +144,26 @@ export async function generateMetadata({ params }: ParkCalendarPageProps): Promi
 
   const parkName = stripNewPrefix(park.name);
   const cityName = park.city || city.charAt(0).toUpperCase() + city.slice(1).replace(/-/g, ' ');
-  // The hub is canonical for the current month (`/2026/8` points at it in August), so its title
-  // names that month: the label is the month the page shows either way.
+  // The hub (and the current month's URL, which is canonical to it) is the calendar for the months
+  // ahead, so its title names their years: „November 2026“ told a search in a park's winter break
+  // about the month it is closed. Every other month is searched by its name and keeps it.
+  const onHub = !month || (month.year === nowInPark.year && month.month === nowInPark.month);
   const label = monthLabel(locale, month ?? nowInPark);
+  const years = tripRegionYears(nowInPark);
 
   // `fitWithin` takes the limit, then candidates longest-preferred: each shorter title is the
-  // fallback for a park name that pushes the one before it past 60 characters. The first two name
-  // the words the month is searched with (crowds, opening hours), the bare one keeps a long park
-  // name inside the limit. One set for the hub and every month, because they are one kind of page.
-  const title = fitWithin(
-    MAX_TITLE_LENGTH,
-    t('metaTitle', { park: parkName, month: label }),
-    t('metaTitleShort', { park: parkName, month: label }),
-    t('metaTitleBare', { park: parkName, month: label })
-  );
+  // fallback for a park name that pushes the one before it past 60 characters.
+  const title = onHub
+    ? fitTitle(
+        t('yearTitle', { park: parkName, years }),
+        t('yearTitleShort', { park: parkName, years }),
+        t('yearTitleBare', { park: parkName, years })
+      )
+    : fitTitle(
+        t('metaTitle', { park: parkName, month: label }),
+        t('metaTitleShort', { park: parkName, month: label }),
+        t('metaTitleBare', { park: parkName, month: label })
+      );
   // Two candidates: with the longest park and city names in the catalogue, the description runs
   // past the 160 characters Google renders. The city goes, since it is already in the URL, the
   // breadcrumb and the H1's address line. The park phrases are inflected once for all four
@@ -474,8 +481,12 @@ export default async function ParkCalendarPage({ params }: ParkCalendarPageProps
             trail={parkBreadcrumbs}
             locale={locale}
             // The H1 must differ between the hub and each of its months, or the pages share a
-            // heading; it names the month the page shows, today's on the hub.
-            suffix={t('h1Suffix', { month: monthName ?? monthLabel(locale, nowMonth) })}
+            // heading; a month names its month, the hub the years its title names.
+            suffix={
+              monthName
+                ? t('h1Suffix', { month: monthName })
+                : t('h1SuffixYears', { years: tripRegionYears(nowMonth) })
+            }
             intro={
               monthName
                 ? t('monthIntro', {
