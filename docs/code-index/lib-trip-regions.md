@@ -495,6 +495,7 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 
 ### [`planner-ui.ts`](../../lib/trip-regions/planner-ui.ts)
 
+- `usePresetArrival` _hook_: The arrival the last start handed in (`tripPlannerUi.openStart` with a date), for the date grid that start opens: read when the grid mounts and then forgotten, so a grid shown again later starts from the plan's own dates.
 - `tripPlannerUi` _const_: The trip planner's open signal.
 - `tripWizardAnswered` _const_: The questions the visitor answered in the assistant, per region, for this tab: a step left with "Next" answers its questions, a skipped one does not.
 - Types: `TripPlannerStartSource`, `TripPlannerRequest`

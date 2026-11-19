@@ -62,9 +62,10 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-hero-action.tsx`](../../components/trip-regions/hub/hub-hero-action.tsx)
 
-- `HubPlanAction` _component_: A "plan your trip" button of the hub: a link to `#planner` that starts the planner (`startPlanner`, as `source`), so a modified click and a page without script still reach the chapter.
+- `HubPlanAction` _component_: A "plan your trip" button of the hub: a link to `#planner` that starts the planner (`startTripPlanner`, as `source`), so a modified click and a page without script still reach the chapter.
 - `HubCalendarAction` _component_: The head's second way in ("Zum Kalender"), the same size as the first and never its primary action: a link to the calendar chapter that counts as `trip_hub_action`.
 - `HubHeroActions` _component_: The head's two ways in and the line under them, by the hub's state. Landing page (and the served HTML): „Reise planen“, „Zum Kalender“ and what the planner asks.
+- `startTripPlanner` _function_: Start the trip planner from the hub: the one place every start on the page goes through.
 
 ### [`hub/hub-how-it-works.tsx`](../../components/trip-regions/hub/hub-how-it-works.tsx)
 
@@ -345,7 +346,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`trip-planner-tile.tsx`](../../components/trip-regions/trip-planner-tile.tsx)
 
-- `TripPlannerTile` _component_: A trip region's planner on the pages of one of its parks: the region's Parky scene, "Mehrere Tage in Orlando", what the planner does in one line, „Magic Kingdom einplanen" into the planner with the park chosen (and on a calendar month that …
+- `TripPlannerTile` _component_: A trip region's crowd calendar and planner on the pages of one of its parks, led by the question a reader of the park's waits brings: the region's Parky scene and name, „Wann ist es in Walt Disney World am ruhigsten?“ (the park's resort, …
 
 ### [`trip-region-home-stop.tsx`](../../components/trip-regions/trip-region-home-stop.tsx)
 
