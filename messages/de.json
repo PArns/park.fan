@@ -464,10 +464,12 @@
       "titleMonth": "Tag für Tag im {month}"
     },
     "lanes": {
-      "summaryLabel": "Events",
-      "nights": "{name}: {count, plural, =1 {# Abend} other {# Abende}}",
       "expected": "Termine erwartet",
-      "allDays": "jeden Tag"
+      "dayGuestsUntil": "Tagesgäste bis {time}",
+      "separateTicket": "Abend-Event, eigenes Ticket",
+      "from": "ab {date}",
+      "until": "bis {date}",
+      "allWeek": "Die ganze Woche: {names}"
     },
     "sheet": {
       "intro": "Pro Resort steht der beste Park oben; ein früher Schluss zählt mit",
@@ -4659,8 +4661,7 @@
         },
         "lanes": {
           "break": "US-Schulferien: {name}, {dates}",
-          "unnamedBreak": "US-Schulferien",
-          "none": "In diesen Tagen gibt es keine Events und keine US-Schulferien."
+          "unnamedBreak": "US-Schulferien"
         },
         "sheet": {
           "kicker": "Orlando · ein Tag",
@@ -5032,8 +5033,7 @@
         },
         "lanes": {
           "break": "Schulferien in Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Schulferien in Los Angeles",
-          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Los Angeles."
+          "unnamedBreak": "Schulferien in Los Angeles"
         },
         "sheet": {
           "kicker": "Südkalifornien · ein Tag",
@@ -5316,8 +5316,7 @@
         },
         "lanes": {
           "break": "Japanische Schulferien: {name}, {dates}",
-          "unnamedBreak": "Japanische Schulferien",
-          "none": "Keine Events in diesen Tagen."
+          "unnamedBreak": "Japanische Schulferien"
         },
         "sheet": {
           "kicker": "Japan · ein Tag",
@@ -5643,8 +5642,7 @@
         },
         "lanes": {
           "break": "Schulferien in Paris (Zone C): {name}, {dates}",
-          "unnamedBreak": "Schulferien in Paris (Zone C)",
-          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Paris."
+          "unnamedBreak": "Schulferien in Paris (Zone C)"
         },
         "sheet": {
           "kicker": "Paris · ein Tag",

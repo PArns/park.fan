@@ -40,6 +40,9 @@ by hand: change the comment in the code and re-run the script. -->
 - `EARLY_CLOSE_CORNER` _const_: The early-close mark: a small folded corner, top right, where a ticketed evening sends the day guests out early; the tile's closing time is bold below it. A shape, not an icon, so it never reads as a season's.
 - `HUB_WEEK_CELL` _const_: Which page of the calendar a column (`HUB_WEEK_CELL`) or a day of the phone's list (`HUB_WEEK_ITEM`) is on, shown by the `data-week` of the `group/week` around it.
 - `HUB_WEEK_ITEM` _const_: `HUB_WEEK_CELL` for a day of the phone's list.
+- `HUB_WEEK_LAYER` _const_: `HUB_WEEK_CELL` for a layer that keeps its place while hidden: every week's events under a park stack in one grid cell, so the cell is as tall as the busiest week and turning a week moves nothing below it.
+- `HUB_EVENT_BAR` _const_: An event's bar under a park's tiles, on the days it runs: the text colour, faded. Never a crowd tint, which would read as a level under the tinted tiles, and never a colour per event, since a week can hold eight.
+- `HUB_EVENT_BAR_EXPECTED` _const_: `HUB_EVENT_BAR` for an event only expected from last year's pattern: dashed.
 
 ### [`hub/hub-day-sheet.tsx`](../../components/trip-regions/hub/hub-day-sheet.tsx)
 

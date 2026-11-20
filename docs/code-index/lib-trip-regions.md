@@ -37,8 +37,6 @@ by hand: change the comment in the code and re-run the script. -->
 - `bestTimeWhenQuery` _function_: The one `/when` query a best-time page and the hub's teaser send for a page's parks at its own length (`bestTimePageDays`), so both read one cached answer and never print two figures for one window.
 - `noWhenAnswer` _function_: The page's `/when` when the route did not answer (a revoked data key, the API down): no window, week or month, so the page says it has no figures yet ("No 10-day trip in 2027 has figures yet") instead of failing, as every page does without …
 - `monthRows` _function_: The month table: every month of the title's year from the current one on, each with `/when`'s figures where its range reaches, a mark where it is among the quietest or the busiest months (within `SAME_WAIT_MINUTES` of the lowest or the …
-- `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
-- `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
 - `europeanBreaks` _function_: Each country's regions with a real break in a month, in `countries`' order.
 - `tripLongBreaks` _function_: A region's breaks long enough for a trip of `days`, cut to `range`: what the school-holidays chapter links the planner's When mode to.
 - `isWholeWeek` _function_: Whether a week lies wholly inside a range, so its figure is a whole week's.
@@ -58,7 +56,13 @@ by hand: change the comment in the code and re-run the script. -->
 - `REGION_BEST_TIME_PAGE` _const_: The id of a region's own best-time page; a resort's page is its segment.
 - `BEST_TIME_WINDOWS` _const_: The windows the first answer names.
 - `EUROPEAN_BREAK_MIN_DAYS` _const_: A European break counts in a month only when it runs at least this many days, weekends included: a bridge day (Maundy Thursday, Ascension) is not a family's trip.
-- Types: `BestTimePageId`, `BestTimeWhenQuery`, `MonthHours`, `MonthMark`, `BestTimeMonthRow`, `BreakRun`, `CountryBreaks`, `WeekFacts`
+- Types: `BestTimePageId`, `BestTimeWhenQuery`, `MonthHours`, `MonthMark`, `BestTimeMonthRow`, `CountryBreaks`, `WeekFacts`
+
+### [`break-runs.ts`](../../lib/trip-regions/break-runs.ts)
+
+- `cleanBreakName` _function_: A school break's name without the district and the day's other holidays: "Spring break (Orange County Public Schools)" → "Spring break", "Winter break (…), New Year's Day" → "Winter break".
+- `breakRuns` _function_: Consecutive break days as runs: the weekends `/when` lists without a name join the break they border, so "13–15 Feb" reads as Presidents' Day, not as two blanks and a holiday.
+- Types: `BreakRun`
 
 ### [`date-facts.ts`](../../lib/trip-regions/date-facts.ts)
 
@@ -99,8 +103,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `formatHubMonth` _function_: A month's name with its year, "December 2026", in the reader's language.
 - `dayBasis` _function_: The basis most of a day's parks share, so a column can say "last year" once.
 - `factDays` _function_: The forecast's days of a calendar; a month past day 60 reads last year's measured days instead, and says so. Never both at once: a mean over both would set an unscaled forecast beside a measured day.
-- `quietSeasons` _function_: The seasons a tile draws quietly, bare and faded: one that runs on more than half of the window's days, where an icon on every tile would drown the crowd colours, or one only `expected`.
-- `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
+- `eventLanes` _function_: The window's events: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one per name even where several parks run it, then the school breaks as the planner's runs …
+- `parkWeekEvents` _function_: A park's events in one week of the calendar, for the bars under its tiles.
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
 - `sheetLeg` _function_: The way from a hotel area to a park that the hub's day sheet prints for one day; none while the park is closed, because nobody goes there that day.
 - `sheetShowsDrive` _function_: Whether the hub's day sheet prints a drive for any park on the day. The drive times' source credit stands under the list only then: a day of closed parks, or of walks only, has no drive time to credit.
@@ -124,7 +128,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `yearLine` _function_: The year line of the hub's best-time teaser: each month of `range` and each trip window as a share of the range's days, so three trips can be drawn where they lie in the year.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
 - `HUB_WEEK_DAYS` _const_: How many days a page of the hub's calendar shows.
-- Types: `HubWeek`, `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLane`, `ResortMonthSummary`, `YearLineSpan`
+- Types: `HubWeek`, `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLaneRun`, `EventLane`, `WeekTrackCell`, `WeekTrack`, `ParkWeekEvents`, `ResortMonthSummary`, `YearLineSpan`
 
 ### [`hub-facts.ts`](../../lib/trip-regions/hub-facts.ts)
 

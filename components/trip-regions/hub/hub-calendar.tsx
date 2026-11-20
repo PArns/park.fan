@@ -1,6 +1,7 @@
 'use client';
 
 import {
+  Fragment,
   memo,
   useCallback,
   useDeferredValue,
@@ -11,10 +12,10 @@ import {
   type RefObject,
 } from 'react';
 import { useTranslations } from 'next-intl';
-import { ChevronDown, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/calendar-day-tile';
-import { CalendarIcon } from '@/components/parks/calendar-icon-sprite';
-import { useSeasonLabel } from '@/components/parks/season-headline';
+import { CalendarIcon, CalendarSeasonIcon } from '@/components/parks/calendar-icon-sprite';
+import { SEASON_ICON_QUIET_CLASS } from '@/components/parks/season-kind-icon';
 import { cn } from '@/lib/utils';
 import { HubFilterChip as FilterChip } from './hub-filter-chip';
 import { useLocationHash } from '@/lib/hooks/use-location-hash';
@@ -22,8 +23,7 @@ import { DAY_SIGNAL_CLASS, STORM_SIGNAL_CLASS } from '@/lib/utils/day-signal-sty
 import { formatClockTime, formatHoursRange } from '@/lib/utils/intl-format';
 import { addDays } from '@/lib/utils/park-day';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
-import { isSeasonEvent, seasonMarks } from '@/lib/parks/park-season-days';
-import { cleanBreakName } from '@/lib/trip-regions/best-time';
+import { cleanBreakName } from '@/lib/trip-regions/break-runs';
 import {
   closesEarly,
   dayBasis,
@@ -38,15 +38,17 @@ import {
   hubWeeks,
   isRankable,
   isWeekend,
+  parkWeekEvents,
   quietestDay,
-  quietSeasons,
   regionGroups,
   shortGroupName,
   shortParkName,
   tintLevel,
   type EventLane,
   type HubWeek,
+  type ParkWeekEvents,
   type RegionGroup,
+  type WeekTrack,
 } from '@/lib/trip-regions/hub-data';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
@@ -60,7 +62,15 @@ import type {
   TripParkDay,
   TripRegion,
 } from '@/lib/trip-regions/types';
-import { EARLY_CLOSE_CORNER, HUB_CELL_BEST, HUB_WEEK_CELL, HUB_WEEK_ITEM } from './hub-cell-styles';
+import {
+  EARLY_CLOSE_CORNER,
+  HUB_CELL_BEST,
+  HUB_EVENT_BAR,
+  HUB_EVENT_BAR_EXPECTED,
+  HUB_WEEK_CELL,
+  HUB_WEEK_ITEM,
+  HUB_WEEK_LAYER,
+} from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 import { startTripPlanner } from './hub-hero-action';
 
@@ -70,7 +80,7 @@ const SHEET_ENTRY = 'hubDaySheet';
 /** What a park's tile shows on a day; the ring and the star are the week's. */
 type HubTile = Pick<
   CalendarDayTileProps,
-  'level' | 'closed' | 'wait' | 'status' | 'seasons' | 'hours' | 'overlay'
+  'level' | 'closed' | 'wait' | 'status' | 'hours' | 'overlay'
 >;
 
 /** Each park's tiles, by its slug, one per day of the window. */
@@ -81,6 +91,12 @@ type HubQuiet = ReadonlyMap<string, readonly (string | null)[]>;
 
 /** The days a park's ring and star stand on, as `<slug>:<date>`. */
 type HubStars = ReadonlySet<string>;
+
+/** Each park's events per week of the calendar (`parkWeekEvents`), by its slug. */
+type HubEvents = ReadonlyMap<string, readonly ParkWeekEvents[]>;
+
+/** A park without an entry in {@link HubEvents}: one empty list, so a memoised row keeps its props. */
+const NO_EVENTS: readonly ParkWeekEvents[] = [];
 
 /** The hub's calendar section: the props the server hands over. */
 export interface HubCalendarProps {
@@ -192,7 +208,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     return to;
   };
 
-  const tileOf = useHubTile(calendar, locale, timezone);
+  const tileOf = useHubTile(locale, timezone);
   const tiles = useMemo<HubTiles>(
     () =>
       new Map(region.parks.map((park) => [park.slug, days.map((d) => tileOf(d.parks[park.slug]))])),
@@ -218,6 +234,24 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     [quiet]
   );
   const storm = useStormDays(days, region.weather);
+  const lanes = useMemo(
+    () =>
+      eventLanes(
+        calendar,
+        region.parks.map((p) => p.slug)
+      ),
+    [calendar, region.parks]
+  );
+  const events = useMemo<HubEvents>(
+    () =>
+      new Map(
+        region.parks.map((park) => [
+          park.slug,
+          weeks.map((w) => parkWeekEvents(lanes, days, w, park.slug)),
+        ])
+      ),
+    [region.parks, weeks, lanes, days]
+  );
   const visibleGroups = useMemo(
     () => (deferredOnly ? groups.filter((g) => g.key === deferredOnly) : groups),
     [groups, deferredOnly]
@@ -264,6 +298,9 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           days={days}
           storm={storm}
           groups={visibleGroups}
+          lanes={lanes}
+          weeks={weeks}
+          events={events}
           tiles={tiles}
           stars={stars}
           quiet={quiet}
@@ -280,6 +317,8 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           days={days}
           storm={storm}
           groups={visibleGroups}
+          lanes={lanes}
+          events={events}
           tiles={tiles}
           stars={stars}
           quiet={quiet}
@@ -307,8 +346,6 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
         </button>
       )}
 
-      <EventLanes calendar={calendar} region={region} locale={locale} />
-
       <HubDaySheet
         day={sheetDay}
         returnFocus={opener}
@@ -326,19 +363,13 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
 /**
  * A park's day as the crowd calendar's compact tile: the tint and the level in words where the day
  * has a figure, the wait it prints (`shownWait`), the day guest's hours with an early close in bold
- * under the folded corner, „Zeiten folgen" for a figure without published hours, and the season
- * icons, quiet for a season most of the window runs in (`quietSeasons`).
+ * under the folded corner, „Zeiten folgen" for a figure without published hours. No season icon:
+ * the park's events are bars under its tiles, named there.
  */
-function useHubTile(calendar: TripCalendar, locale: string, timezone: string) {
+function useHubTile(locale: string, timezone: string) {
   const t = useTranslations('tripHub.calendar');
   const tLevel = useTranslations('parks.crowdLevels');
   const tCommon = useTranslations('common');
-  const seasonLabel = useSeasonLabel();
-  const seasons = useMemo(
-    () => new Map(calendar.seasons.map((season) => [season.id, season])),
-    [calendar.seasons]
-  );
-  const quiet = useMemo(() => quietSeasons(calendar), [calendar]);
   return useCallback(
     (day: TripParkDay | undefined): HubTile => {
       if (day?.status === 'CLOSED') {
@@ -358,30 +389,17 @@ function useHubTile(calendar: TripCalendar, locale: string, timezone: string) {
         ) : !day || day.status === 'UNKNOWN' ? (
           <span className="truncate">{t('hoursLater')}</span>
         ) : null;
-      const marks = seasonMarks(
-        (day?.seasons ?? []).flatMap((id) => {
-          const season = seasons.get(id);
-          return season && isSeasonEvent(season)
-            ? [{ ...season, name: season.name ?? null, quiet: quiet.has(id) }]
-            : [];
-        })
-      ).map((mark) => ({
-        kind: mark.kind,
-        quiet: mark.quiet,
-        label: mark.seasons.map((s) => seasonLabel(s, true)).join(', '),
-      }));
       return {
         level,
         closed: false,
         wait: isRankable(day) ? shownWait(day)! : null,
         // A figure without a level has no word: „Keine Prognose" beside a forecast would be wrong.
         status: level ? tLevel(level) : isRankable(day) ? '' : tLevel('unknown'),
-        seasons: marks,
         hours,
         overlay: early ? <span aria-hidden className={EARLY_CLOSE_CORNER} /> : undefined,
       };
     },
-    [locale, timezone, t, tLevel, tCommon, seasonLabel, seasons, quiet]
+    [locale, timezone, t, tLevel, tCommon]
   );
 }
 
@@ -472,20 +490,33 @@ function WeekNav({
 }
 
 /**
- * The accessible name of a tile: who, when, how long, how busy for that park, the hours and the
- * marks.
+ * The accessible name of a tile: who, when, how long, how busy for that park, the hours, the marks
+ * and the park's events that day, which the bars under the tiles show.
  */
-function useCellLabel(locale: string, timezone: string) {
+function useCellLabel(locale: string, timezone: string, lanes: readonly EventLane[]) {
   const t = useTranslations('tripHub.calendar');
   const tLevel = useTranslations('parks.crowdLevels');
   return useCallback(
-    (parkName: string, date: string, day: TripParkDay | undefined, quietest: boolean) => {
+    (
+      slug: string,
+      parkName: string,
+      date: string,
+      day: TripParkDay | undefined,
+      quietest: boolean
+    ) => {
       const when = formatHubDate(date, locale);
       if (day?.status === 'CLOSED') return t('cellClosed', { park: parkName, date: when });
+      const events = lanes
+        .filter((lane) => lane.name && lane.byPark[slug]?.dates.includes(date))
+        .sort((a, b) => Number(a.kind !== 'party') - Number(b.kind !== 'party'))
+        .map((lane) => lane.name!);
       if (!isRankable(day)) {
-        return day?.status === 'OPERATING'
-          ? t('cellOpen', { park: parkName, date: when })
-          : t('cellUnknown', { park: parkName, date: when });
+        return [
+          day?.status === 'OPERATING'
+            ? t('cellOpen', { park: parkName, date: when })
+            : t('cellUnknown', { park: parkName, date: when }),
+          ...events,
+        ].join(', ');
       }
       const level = tintLevel(day.crowdLevel);
       const parts = [
@@ -506,9 +537,9 @@ function useCellLabel(locale: string, timezone: string) {
       }
       if (hoursUnpublished(day)) parts.push(t('cellNoHours'));
       if (day.basis === 'last_year') parts.push(t('lastYear'));
-      return parts.join(', ');
+      return [...parts, ...events].join(', ');
     },
-    [locale, t, tLevel, timezone]
+    [locale, t, tLevel, timezone, lanes]
   );
 }
 
@@ -583,15 +614,22 @@ function PhoneWeek({
   storm,
   groups,
   week,
+  lanes,
+  weeks,
   ...card
-}: Omit<PhoneGroupProps, 'group'> & { groups: RegionGroup[]; week: number }) {
+}: Omit<PhoneGroupProps, 'group'> & {
+  groups: RegionGroup[];
+  week: number;
+  weeks: readonly HubWeek[];
+}) {
   const t = useTranslations('tripHub.calendar');
   return (
     <div data-week={week} className="group/week space-y-3">
       {storm && <StormKey storm={storm} className="text-muted-foreground text-xs" />}
+      <BreakKey lanes={lanes} weeks={weeks} locale={card.locale} />
       <ul aria-label={t('listLabel')} className="space-y-3">
         {groups.map((group) => (
-          <PhoneGroup key={group.key} group={group} storm={storm} {...card} />
+          <PhoneGroup key={group.key} group={group} storm={storm} lanes={lanes} {...card} />
         ))}
       </ul>
     </div>
@@ -606,6 +644,8 @@ interface PhoneGroupProps {
   tiles: HubTiles;
   stars: HubStars;
   quiet: HubQuiet;
+  lanes: readonly EventLane[];
+  events: HubEvents;
   todayIso: string;
   locale: string;
   timezone: string;
@@ -620,6 +660,8 @@ const PhoneGroup = memo(function PhoneGroup({
   tiles,
   stars,
   quiet,
+  lanes,
+  events,
   todayIso,
   locale,
   timezone,
@@ -627,7 +669,7 @@ const PhoneGroup = memo(function PhoneGroup({
 }: PhoneGroupProps) {
   const t = useTranslations('tripHub.calendar');
   const tClimate = useTranslations('tripPlanner.climate');
-  const label = useCellLabel(locale, timezone);
+  const label = useCellLabel(locale, timezone, lanes);
   const pageOf = (index: number) => HUB_WEEK_ITEM[Math.floor(index / HUB_WEEK_DAYS)];
   return (
     <li className="border-border/60 bg-card/60 rounded-xl border p-3">
@@ -724,12 +766,21 @@ const PhoneGroup = memo(function PhoneGroup({
                           className={cn(star && HUB_CELL_BEST)}
                           onSelect={() => onOpen(day.date)}
                           aria-haspopup="dialog"
-                          aria-label={label(name, day.date, day.parks[park.slug], star)}
+                          aria-label={label(park.slug, name, day.date, day.parks[park.slug], star)}
                         />
                       </div>
                     );
                   })}
                 </div>
+              )}
+              {!state && (
+                <ParkEvents
+                  slug={park.slug}
+                  weeks={events.get(park.slug) ?? NO_EVENTS}
+                  days={days}
+                  locale={locale}
+                  timezone={timezone}
+                />
               )}
             </div>
           );
@@ -816,6 +867,8 @@ const Matrix = memo(function Matrix({
   days,
   storm,
   groups,
+  lanes,
+  events,
   tiles,
   stars,
   quiet,
@@ -829,6 +882,8 @@ const Matrix = memo(function Matrix({
   days: readonly TripCalendarDay[];
   storm: ReadonlyMap<string, StormCode> | null;
   groups: RegionGroup[];
+  lanes: readonly EventLane[];
+  events: HubEvents;
   tiles: HubTiles;
   stars: HubStars;
   quiet: HubQuiet;
@@ -841,7 +896,7 @@ const Matrix = memo(function Matrix({
 }) {
   const t = useTranslations('tripHub.calendar');
   const tRegion = useTranslations('tripRegion.hub.calendar');
-  const label = useCellLabel(locale, timezone);
+  const label = useCellLabel(locale, timezone, lanes);
   const tableRef = useRef<HTMLTableElement>(null);
   const [focus, setFocus] = useState<{ r: number; c: number }>({ r: 0, c: 0 });
   const slots = useMemo<Slot[]>(
@@ -946,22 +1001,32 @@ const Matrix = memo(function Matrix({
                   weeks={weeks}
                 />
               ) : (
-                <ParkRow
-                  key={park.slug}
-                  slug={park.slug}
-                  name={shortParkName(park.name)}
-                  r={r}
-                  days={days}
-                  slots={slots}
-                  tiles={tiles}
-                  stars={stars}
-                  quietest={quiet.get(park.slug) ?? []}
-                  tabCol={tab.r === r ? tab.c : null}
-                  label={label}
-                  locale={locale}
-                  onOpen={onOpen}
-                  onFocusCell={setFocus}
-                />
+                <Fragment key={park.slug}>
+                  <ParkRow
+                    slug={park.slug}
+                    name={shortParkName(park.name)}
+                    r={r}
+                    days={days}
+                    slots={slots}
+                    tiles={tiles}
+                    stars={stars}
+                    quietest={quiet.get(park.slug) ?? []}
+                    tabCol={tab.r === r ? tab.c : null}
+                    label={label}
+                    locale={locale}
+                    onOpen={onOpen}
+                    onFocusCell={setFocus}
+                  />
+                  <ParkEventRows
+                    slug={park.slug}
+                    weeks={weeks}
+                    events={events.get(park.slug) ?? NO_EVENTS}
+                    slots={slots}
+                    days={days}
+                    locale={locale}
+                    timezone={timezone}
+                  />
+                </Fragment>
               );
             })}
           </tbody>
@@ -1143,7 +1208,7 @@ const ParkRow = memo(function ParkRow({
               data-cell={`${r}:${c}`}
               onFocus={() => onFocusCell({ r, c })}
               aria-haspopup="dialog"
-              aria-label={label(name, day.date, day.parks[slug], star)}
+              aria-label={label(slug, name, day.date, day.parks[slug], star)}
             />
           </td>
         );
@@ -1199,121 +1264,271 @@ function parkState(
 }
 
 /**
- * The events under the calendar, closed to one summary row ("Mickey's Very Merry Christmas Party:
- * 12 nights · Festival of the Holidays · Thanksgiving break 21–29 Nov"); opened, a lane per event
- * with the days it runs on. A `<details>`, so the lanes are in the served HTML.
+ * How a park's event is named under its bar: its name, then what a visitor plans around. A party
+ * says until when the day guests stay (the tile's folded corner on the same column), or that it
+ * is a separately ticketed evening where its nights close at different times or have no hours; a
+ * festival says on which day it starts or ends inside the week; an expected one says so.
  */
-function EventLanes({
-  calendar,
-  region,
+function useTrackWords(days: readonly TripCalendarDay[], locale: string, timezone: string) {
+  const t = useTranslations('tripHub.lanes');
+  return useCallback(
+    (track: WeekTrack, slug: string): string => {
+      const parts: string[] = [];
+      if (track.lane.kind === 'party') {
+        const closes = new Set(
+          track.dates.map((date) => {
+            const day = days.find((d) => d.date === date)?.parks[slug];
+            const close = day?.status === 'OPERATING' ? dayGuestClose(day) : undefined;
+            return close ? formatClockTime(close, locale, timezone) : '';
+          })
+        );
+        const [time] = closes;
+        parts.push(closes.size === 1 && time ? t('dayGuestsUntil', { time }) : t('separateTicket'));
+      } else if (track.startsOn && track.endsOn) {
+        parts.push(formatDateRange(track.startsOn, track.endsOn, locale));
+      } else if (track.startsOn) {
+        parts.push(t('from', { date: formatHubDate(track.startsOn, locale) }));
+      } else if (track.endsOn) {
+        parts.push(t('until', { date: formatHubDate(track.endsOn, locale) }));
+      }
+      if (track.lane.status === 'expected') parts.push(t('expected'));
+      return parts.join(' · ');
+    },
+    [days, locale, timezone, t]
+  );
+}
+
+/**
+ * One day's piece of an event's bar: round where the event starts or ends, reaching across the
+ * column gap to the next day where it goes on, flat at the week's edge where it ran before or runs
+ * after, the way a wall calendar draws a stay.
+ */
+function TrackCell({ track, index }: { track: WeekTrack; index: number }) {
+  const cell = track.cells[index];
+  if (!cell) return <span />;
+  return (
+    <span
+      className={cn(
+        track.lane.status === 'expected' ? HUB_EVENT_BAR_EXPECTED : HUB_EVENT_BAR,
+        'block',
+        cell.start && 'rounded-l-full',
+        cell.end ? 'rounded-r-full' : 'w-[calc(100%+0.25rem)]'
+      )}
+    />
+  );
+}
+
+/** An event's name with its icon, cut before the words after it, which always stay whole. */
+function TrackName({ lane, words }: { lane: EventLane; words: string }) {
+  return (
+    <>
+      {lane.seasonKind && <CalendarSeasonIcon kind={lane.seasonKind} className="size-3 shrink-0" />}
+      <span className="min-w-0 truncate font-medium">{lane.name}</span>
+      {words && <span className="text-muted-foreground shrink-0 whitespace-nowrap">· {words}</span>}
+    </>
+  );
+}
+
+/**
+ * A park's events under its tiles on a phone: per week a bar on the days' columns for each party
+ * and each festival of some days, its name under it, then one line for the festivals of every day.
+ * The weeks stack in one grid cell and only the shown one is visible, so the park is as tall in
+ * every week and paging moves nothing below. A reader hears each event with its dates; the bars
+ * only repeat them.
+ */
+function ParkEvents({
+  slug,
+  weeks,
+  days,
   locale,
+  timezone,
 }: {
-  calendar: TripCalendar;
-  region: TripRegion;
+  slug: string;
+  weeks: readonly ParkWeekEvents[];
+  days: readonly TripCalendarDay[];
   locale: string;
+  timezone: string;
 }) {
   const t = useTranslations('tripHub.lanes');
-  const tRegion = useTranslations('tripRegion.hub.lanes');
-  // A school-holiday lane says whose holidays they are in the region's own words; a region that
-  // has not written them gets no such lane rather than a key path.
-  const breaksNamed = tRegion.has('break') && tRegion.has('unnamedBreak');
-  // The storm season is on the timeline above (`StormKey`), where a date is picked.
-  const lanes = useMemo<EventLane[]>(
-    () =>
-      eventLanes(
-        calendar,
-        region.parks.map((p) => p.slug)
-      ).filter((lane) => lane.kind !== 'break' || breaksNamed),
-    [calendar, region, breaksNamed]
-  );
-  const nameOf = (lane: EventLane) =>
-    lane.kind === 'break'
-      ? lane.name
-        ? translateHolidayName(cleanBreakName(lane.name), locale)
-        : tRegion('unnamedBreak')
-      : (lane.name ?? '');
-  const parkNames = (lane: EventLane) =>
-    lane.parkSlugs
-      .map((slug) => region.parks.find((p) => p.slug === slug))
-      .filter((p) => p !== undefined)
-      .map((p) => shortParkName(p.name))
-      .join(', ');
-  const summary = (lane: EventLane) =>
-    lane.kind === 'party'
-      ? t('nights', { name: nameOf(lane), count: lane.dates.length })
-      : lane.kind === 'break'
-        ? tRegion('break', {
-            name: nameOf(lane),
-            dates: formatDateRange(lane.dates[0], lane.dates[lane.dates.length - 1], locale),
-          })
-        : nameOf(lane);
-  if (lanes.length === 0) {
-    return tRegion.has('none') ? (
-      <p className="text-muted-foreground text-sm">{tRegion('none')}</p>
-    ) : null;
-  }
-  const first = calendar.days[0]?.date;
-  const span = calendar.days.length;
+  const words = useTrackWords(days, locale, timezone);
+  if (weeks.every((w) => w.tracks.length === 0 && w.allWeek.length === 0)) return null;
   return (
-    <details className="group border-border/60 rounded-xl border">
-      <summary className="hover:bg-muted/40 flex min-h-11 cursor-pointer list-none items-center gap-2 rounded-xl px-3 py-2 text-sm">
-        <span className="text-muted-foreground shrink-0 text-xs font-semibold tracking-wide uppercase">
-          {t('summaryLabel')}
-        </span>
-        <span className="min-w-0 flex-1 truncate">{lanes.map(summary).join(' · ')}</span>
-        <ChevronDown
-          aria-hidden
-          className="text-muted-foreground size-4 shrink-0 transition-transform group-open:rotate-180"
-        />
-      </summary>
-      <ul className="space-y-2 px-3 pb-3">
-        {lanes.map((lane) => (
-          <li
-            key={lane.id}
-            className="grid gap-1 sm:grid-cols-[14rem_minmax(0,1fr)] sm:items-center"
-          >
-            <span className="text-sm">
-              <span className="font-medium">{nameOf(lane)}</span>
-              {(lane.parkSlugs.length > 0 || lane.status === 'expected') && (
-                <span className="text-muted-foreground block text-xs">
-                  {[parkNames(lane), lane.status === 'expected' ? t('expected') : null]
-                    .filter(Boolean)
-                    .join(' · ')}
+    <div className="mt-1.5 grid grid-cols-1">
+      {weeks.map((week, w) => (
+        <div key={w} className={cn('col-start-1 row-start-1 space-y-1.5', HUB_WEEK_LAYER[w])}>
+          {week.tracks.map((track) => (
+            <div key={track.lane.id}>
+              <div aria-hidden className="grid h-1.5 grid-cols-7 gap-1">
+                {track.cells.map((_, i) => (
+                  <TrackCell key={i} track={track} index={i} />
+                ))}
+              </div>
+              <p className="mt-1 flex h-4 items-center gap-1 text-[11px] leading-4">
+                <TrackName lane={track.lane} words={words(track, slug)} />
+                <span className="sr-only">: {summarizeDates(track.dates, locale)}</span>
+              </p>
+            </div>
+          ))}
+          {week.allWeek.length > 0 && (
+            <p className="text-muted-foreground flex h-4 items-center gap-1 text-[11px] leading-4">
+              {week.allWeek[0].seasonKind && (
+                <CalendarSeasonIcon
+                  kind={week.allWeek[0].seasonKind}
+                  className={cn('size-3 shrink-0', SEASON_ICON_QUIET_CLASS)}
+                />
+              )}
+              <span className="min-w-0 truncate">
+                {t('allWeek', { names: week.allWeek.map((l) => l.name).join(' · ') })}
+              </span>
+            </p>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/**
+ * A park's events in the desktop grid: under its row of tiles one row per bar of its busiest week,
+ * the event's name and words in the first column and the bar on the days' columns, then one line
+ * across the week for the festivals of every day. Every week has as many rows, empty where it has
+ * fewer events, so turning a week moves no park. Hidden from a reader, whose tile already names
+ * the day's events: a row without grid cells would break the grid.
+ */
+const ParkEventRows = memo(function ParkEventRows({
+  slug,
+  weeks,
+  events,
+  slots,
+  days,
+  locale,
+  timezone,
+}: {
+  slug: string;
+  weeks: readonly HubWeek[];
+  events: readonly ParkWeekEvents[];
+  slots: readonly Slot[];
+  days: readonly TripCalendarDay[];
+  locale: string;
+  timezone: string;
+}) {
+  const t = useTranslations('tripHub.lanes');
+  const words = useTrackWords(days, locale, timezone);
+  const rows = Math.max(0, ...events.map((e) => e.tracks.length));
+  const allWeek = events.some((e) => e.allWeek.length > 0);
+  const label = 'text-[11px] leading-tight';
+  return (
+    <>
+      {Array.from({ length: rows }, (_, k) => (
+        <tr key={k} aria-hidden>
+          <td className="px-2 pl-4 align-middle">
+            {events.map((week, w) => {
+              const track = week.tracks[k];
+              return track ? (
+                <span
+                  key={w}
+                  title={track.lane.name ?? undefined}
+                  className={cn(HUB_WEEK_ITEM[w], label)}
+                >
+                  <span className="flex min-w-0 items-center gap-1">
+                    <TrackName lane={track.lane} words="" />
+                  </span>
+                  <span className="text-muted-foreground block truncate">{words(track, slug)}</span>
+                </span>
+              ) : null;
+            })}
+          </td>
+          {slots.map((slot, i) => {
+            const track = events[slot.week]?.tracks[k];
+            return (
+              <td key={i} className={cn('h-8 p-0 align-middle', HUB_WEEK_CELL[slot.week])}>
+                {track && slot.index !== null && (
+                  <TrackCell track={track} index={slot.index - weeks[slot.week].start} />
+                )}
+              </td>
+            );
+          })}
+        </tr>
+      ))}
+      {allWeek && (
+        <tr aria-hidden>
+          <td />
+          {events.map((week, w) => (
+            <td
+              key={w}
+              colSpan={HUB_WEEK_DAYS}
+              className={cn('text-muted-foreground px-1 pb-1', label, HUB_WEEK_CELL[w])}
+            >
+              {week.allWeek.length > 0 && (
+                <span className="flex min-w-0 items-center gap-1">
+                  {week.allWeek[0].seasonKind && (
+                    <CalendarSeasonIcon
+                      kind={week.allWeek[0].seasonKind}
+                      className={cn('size-3 shrink-0', SEASON_ICON_QUIET_CLASS)}
+                    />
+                  )}
+                  <span className="truncate">
+                    {t('allWeek', { names: week.allWeek.map((l) => l.name).join(' · ') })}
+                  </span>
                 </span>
               )}
+            </td>
+          ))}
+        </tr>
+      )}
+    </>
+  );
+});
+
+/**
+ * The school breaks of the week shown, above the phone's cards, in the region's words („US-Schulferien:
+ * Thanksgiving Break, 21.–29. Nov.") beside the dot each of their dates carries. They belong to no
+ * park, so they have no bar. Every week's line stacks in one cell, so paging moves nothing.
+ */
+function BreakKey({
+  lanes,
+  weeks,
+  locale,
+}: {
+  lanes: readonly EventLane[];
+  weeks: readonly HubWeek[];
+  locale: string;
+}) {
+  const tRegion = useTranslations('tripRegion.hub.lanes');
+  // A region that has not said whose holidays they are gets no line rather than a key path.
+  if (!tRegion.has('break') || !tRegion.has('unnamedBreak')) return null;
+  const breaks = lanes.filter((lane) => lane.kind === 'break');
+  const perWeek = weeks.map((w) =>
+    breaks.filter((lane) => lane.dates.some((date) => date >= w.from && date <= w.to))
+  );
+  if (perWeek.every((b) => b.length === 0)) return null;
+  return (
+    <div className="grid grid-cols-1">
+      {perWeek.map((list, w) => (
+        <p
+          key={w}
+          className={cn(
+            'text-muted-foreground col-start-1 row-start-1 space-y-0.5 text-xs',
+            HUB_WEEK_LAYER[w]
+          )}
+        >
+          {list.map((lane) => (
+            <span key={lane.id} className="flex items-center gap-1.5">
+              <span
+                aria-hidden
+                className={cn('size-1.5 shrink-0 rounded-full', DAY_SIGNAL_CLASS.school)}
+              />
+              {tRegion('break', {
+                name: lane.name
+                  ? translateHolidayName(cleanBreakName(lane.name), locale)
+                  : tRegion('unnamedBreak'),
+                dates: formatDateRange(lane.dates[0], lane.dates[lane.dates.length - 1], locale),
+              })}
             </span>
-            {/* The lane: one notch per day of the window, filled where the event runs. Read as the
-                dates beside it by a screen reader, which the notches would only repeat. */}
-            <span className="flex flex-col gap-1">
-              <span aria-hidden className="flex h-2.5 gap-px overflow-hidden rounded-full">
-                {calendar.days.map((day) => (
-                  <span
-                    key={day.date}
-                    className={cn(
-                      'flex-1',
-                      lane.dates.includes(day.date)
-                        ? lane.kind === 'break'
-                          ? 'bg-amber-500/70'
-                          : lane.status === 'expected'
-                            ? 'bg-primary/30'
-                            : 'bg-primary/70'
-                        : 'bg-muted/40'
-                    )}
-                  />
-                ))}
-              </span>
-              <span className="text-muted-foreground text-xs">
-                {lane.kind === 'party' || lane.dates.length < span
-                  ? summarizeDates(lane.dates, locale)
-                  : first
-                    ? t('allDays')
-                    : ''}
-              </span>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </details>
+          ))}
+        </p>
+      ))}
+    </div>
   );
 }
 

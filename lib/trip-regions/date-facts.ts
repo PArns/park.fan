@@ -1,4 +1,4 @@
-import { breakRuns } from './best-time';
+import { breakRuns } from './break-runs';
 import {
   dayGuestClose,
   eventLanes,

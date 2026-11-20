@@ -464,10 +464,12 @@
       "titleMonth": "Jour par jour en {month}"
     },
     "lanes": {
-      "summaryLabel": "Événements",
-      "nights": "{name} : {count, plural, =1 {# soirée} other {# soirées}}",
       "expected": "dates attendues",
-      "allDays": "tous les jours"
+      "dayGuestsUntil": "visiteurs du jour jusqu’à {time}",
+      "separateTicket": "soirée spéciale, billet à part",
+      "from": "dès le {date}",
+      "until": "jusqu’au {date}",
+      "allWeek": "Toute la semaine : {names}"
     },
     "sheet": {
       "intro": "Dans chaque resort, le meilleur parc vient en tête ; une fermeture anticipée compte",
@@ -4659,8 +4661,7 @@
         },
         "lanes": {
           "break": "Vacances scolaires américaines : {name}, {dates}",
-          "unnamedBreak": "Vacances scolaires américaines",
-          "none": "Pas d’événements ni de vacances scolaires américaines ces jours-là."
+          "unnamedBreak": "Vacances scolaires américaines"
         },
         "sheet": {
           "kicker": "Orlando · une journée",
@@ -5032,8 +5033,7 @@
         },
         "lanes": {
           "break": "Vacances scolaires de Los Angeles : {name}, {dates}",
-          "unnamedBreak": "Vacances scolaires de Los Angeles",
-          "none": "Ni événement ni vacances scolaires de Los Angeles ces jours-là."
+          "unnamedBreak": "Vacances scolaires de Los Angeles"
         },
         "sheet": {
           "kicker": "Californie du Sud · une journée",
@@ -5316,8 +5316,7 @@
         },
         "lanes": {
           "break": "Vacances scolaires japonaises : {name}, {dates}",
-          "unnamedBreak": "Vacances scolaires japonaises",
-          "none": "Aucun événement ces jours-là."
+          "unnamedBreak": "Vacances scolaires japonaises"
         },
         "sheet": {
           "kicker": "Japon · une journée",
@@ -5643,8 +5642,7 @@
         },
         "lanes": {
           "break": "Vacances scolaires zone C (Paris) : {name}, {dates}",
-          "unnamedBreak": "Vacances scolaires zone C (Paris)",
-          "none": "Ni événement ni vacances scolaires de la zone C ces jours-là."
+          "unnamedBreak": "Vacances scolaires zone C (Paris)"
         },
         "sheet": {
           "kicker": "Paris · une journée",

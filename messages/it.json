@@ -464,10 +464,12 @@
       "titleMonth": "Giorno per giorno a {month}"
     },
     "lanes": {
-      "summaryLabel": "Eventi",
-      "nights": "{name}: {count, plural, =1 {# serata} other {# serate}}",
       "expected": "date previste",
-      "allDays": "ogni giorno"
+      "dayGuestsUntil": "ospiti di giorno fino alle {time}",
+      "separateTicket": "evento serale, biglietto a parte",
+      "from": "dal {date}",
+      "until": "fino al {date}",
+      "allWeek": "Tutta la settimana: {names}"
     },
     "sheet": {
       "intro": "In ogni resort prima il parco migliore; una chiusura anticipata conta",
@@ -4659,8 +4661,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche USA: {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche USA",
-          "none": "Nessun evento e nessuna vacanza scolastica USA in questi giorni."
+          "unnamedBreak": "Vacanze scolastiche USA"
         },
         "sheet": {
           "kicker": "Orlando · un giorno",
@@ -5032,8 +5033,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche di Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche di Los Angeles",
-          "none": "In questi giorni non ci sono eventi né vacanze scolastiche a Los Angeles."
+          "unnamedBreak": "Vacanze scolastiche di Los Angeles"
         },
         "sheet": {
           "kicker": "California del Sud · un giorno",
@@ -5316,8 +5316,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche giapponesi: {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche giapponesi",
-          "none": "Nessun evento in questi giorni."
+          "unnamedBreak": "Vacanze scolastiche giapponesi"
         },
         "sheet": {
           "kicker": "Giappone · un giorno",
@@ -5643,8 +5642,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche di Parigi (zona C): {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche di Parigi (zona C)",
-          "none": "In questi giorni non ci sono eventi né vacanze scolastiche a Parigi."
+          "unnamedBreak": "Vacanze scolastiche di Parigi (zona C)"
         },
         "sheet": {
           "kicker": "Parigi · un giorno",

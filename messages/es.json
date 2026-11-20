@@ -464,10 +464,12 @@
       "titleMonth": "Día a día en {month}"
     },
     "lanes": {
-      "summaryLabel": "Eventos",
-      "nights": "{name}: {count, plural, =1 {# noche} other {# noches}}",
       "expected": "fechas previstas",
-      "allDays": "todos los días"
+      "dayGuestsUntil": "visitantes de día hasta las {time}",
+      "separateTicket": "evento nocturno, entrada aparte",
+      "from": "desde el {date}",
+      "until": "hasta el {date}",
+      "allWeek": "Toda la semana: {names}"
     },
     "sheet": {
       "intro": "En cada resort, primero el mejor parque; un cierre anticipado cuenta",
@@ -4659,8 +4661,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares de EE. UU.: {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares de EE. UU.",
-          "none": "No hay eventos ni vacaciones escolares de EE. UU. en estos días."
+          "unnamedBreak": "Vacaciones escolares de EE. UU."
         },
         "sheet": {
           "kicker": "Orlando · un día",
@@ -5032,8 +5033,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares de Los Ángeles: {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares de Los Ángeles",
-          "none": "En estos días no hay eventos ni vacaciones escolares en Los Ángeles."
+          "unnamedBreak": "Vacaciones escolares de Los Ángeles"
         },
         "sheet": {
           "kicker": "California del Sur · un día",
@@ -5316,8 +5316,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares japonesas: {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares japonesas",
-          "none": "No hay eventos en estos días."
+          "unnamedBreak": "Vacaciones escolares japonesas"
         },
         "sheet": {
           "kicker": "Japón · un día",
@@ -5643,8 +5642,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares de París (zona C): {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares de París (zona C)",
-          "none": "En estos días no hay eventos ni vacaciones escolares en París."
+          "unnamedBreak": "Vacaciones escolares de París (zona C)"
         },
         "sheet": {
           "kicker": "París · un día",

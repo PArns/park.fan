@@ -464,10 +464,12 @@
       "titleMonth": "Dag voor dag in {month}"
     },
     "lanes": {
-      "summaryLabel": "Evenementen",
-      "nights": "{name}: {count, plural, =1 {# avond} other {# avonden}}",
       "expected": "data verwacht",
-      "allDays": "elke dag"
+      "dayGuestsUntil": "daggasten tot {time}",
+      "separateTicket": "avondevenement, eigen ticket",
+      "from": "vanaf {date}",
+      "until": "tot {date}",
+      "allWeek": "De hele week: {names}"
     },
     "sheet": {
       "intro": "Per resort staat het beste park bovenaan; een vroege sluiting telt mee",
@@ -4659,8 +4661,7 @@
         },
         "lanes": {
           "break": "Amerikaanse schoolvakantie: {name}, {dates}",
-          "unnamedBreak": "Amerikaanse schoolvakantie",
-          "none": "Geen evenementen of Amerikaanse schoolvakanties in deze dagen."
+          "unnamedBreak": "Amerikaanse schoolvakantie"
         },
         "sheet": {
           "kicker": "Orlando · één dag",
@@ -5032,8 +5033,7 @@
         },
         "lanes": {
           "break": "Schoolvakantie in Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Schoolvakantie in Los Angeles",
-          "none": "Deze dagen zijn er geen evenementen en geen schoolvakanties in Los Angeles."
+          "unnamedBreak": "Schoolvakantie in Los Angeles"
         },
         "sheet": {
           "kicker": "Zuid-Californië · één dag",
@@ -5316,8 +5316,7 @@
         },
         "lanes": {
           "break": "Japanse schoolvakanties: {name}, {dates}",
-          "unnamedBreak": "Japanse schoolvakanties",
-          "none": "Geen evenementen in deze dagen."
+          "unnamedBreak": "Japanse schoolvakanties"
         },
         "sheet": {
           "kicker": "Japan · één dag",
@@ -5643,8 +5642,7 @@
         },
         "lanes": {
           "break": "Schoolvakantie Parijs (zone C): {name}, {dates}",
-          "unnamedBreak": "Schoolvakantie Parijs (zone C)",
-          "none": "Geen evenementen en geen schoolvakantie in Parijs in deze dagen."
+          "unnamedBreak": "Schoolvakantie Parijs (zone C)"
         },
         "sheet": {
           "kicker": "Parijs · één dag",

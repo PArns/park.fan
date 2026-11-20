@@ -464,10 +464,12 @@
       "titleMonth": "Day by day in {month}"
     },
     "lanes": {
-      "summaryLabel": "Events",
-      "nights": "{name}: {count, plural, =1 {# night} other {# nights}}",
       "expected": "dates expected",
-      "allDays": "every day"
+      "dayGuestsUntil": "day guests until {time}",
+      "separateTicket": "evening event, separate ticket",
+      "from": "from {date}",
+      "until": "until {date}",
+      "allWeek": "All week: {names}"
     },
     "sheet": {
       "intro": "Each resort’s best park comes first; an early close counts against it",
@@ -4659,8 +4661,7 @@
         },
         "lanes": {
           "break": "US school holidays: {name}, {dates}",
-          "unnamedBreak": "US school holidays",
-          "none": "No events or US school holidays in these days."
+          "unnamedBreak": "US school holidays"
         },
         "sheet": {
           "kicker": "Orlando · one day",
@@ -5032,8 +5033,7 @@
         },
         "lanes": {
           "break": "Los Angeles school holidays: {name}, {dates}",
-          "unnamedBreak": "Los Angeles school holidays",
-          "none": "No events or Los Angeles school holidays in these days."
+          "unnamedBreak": "Los Angeles school holidays"
         },
         "sheet": {
           "kicker": "Southern California · one day",
@@ -5316,8 +5316,7 @@
         },
         "lanes": {
           "break": "Japanese school holidays: {name}, {dates}",
-          "unnamedBreak": "Japanese school holidays",
-          "none": "No events in these days."
+          "unnamedBreak": "Japanese school holidays"
         },
         "sheet": {
           "kicker": "Japan · one day",
@@ -5643,8 +5642,7 @@
         },
         "lanes": {
           "break": "Paris school holidays (zone C): {name}, {dates}",
-          "unnamedBreak": "Paris school holidays (zone C)",
-          "none": "No events and no Paris school holidays in these days."
+          "unnamedBreak": "Paris school holidays (zone C)"
         },
         "sheet": {
           "kicker": "Paris · one day",
