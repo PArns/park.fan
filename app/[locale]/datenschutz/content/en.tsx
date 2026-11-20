@@ -9,7 +9,7 @@ export function DatenschutzEN() {
   return (
     <>
       <h1 className="mb-2 text-4xl font-bold">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-8 text-sm">Last updated: 15 November 2026</p>
+      <p className="text-muted-foreground mb-8 text-sm">Last updated: 20 November 2026</p>
 
       <div className="space-y-4 text-base leading-7">
         <LegalH2>1. Controller</LegalH2>
@@ -111,10 +111,11 @@ export function DatenschutzEN() {
         <p>
           In your browser's local storage we keep settings such as the color scheme, your day plan,
           the trip you last planned in the trip planner for each region together with what you told
-          Parky about your group, the park your last chat with Parky was about, your notifications,
-          your choices on location access and on statistics, and cached results. This data stays on
-          your device. The sections on the day planner, on Parky and on push notifications say which
-          parts of it go to our server.
+          Parky about your group, the parks you ticked off as visited in a region's calendar, the
+          park your last chat with Parky was about, your notifications, your choices on location
+          access and on statistics, and cached results. This data stays on your device. The sections
+          on the day planner, on Parky and on push notifications say which parts of it go to our
+          server.
         </p>
         <p>
           These cookies and entries need no consent, because they are strictly necessary for the

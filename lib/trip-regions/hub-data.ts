@@ -8,8 +8,10 @@ import {
 } from '@/lib/utils/park-day';
 import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
-import { isSeasonEvent } from '@/lib/parks/park-season-days';
+import { isSeasonEvent, type SeasonEventKind } from '@/lib/parks/park-season-days';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
+import { breakRuns } from './break-runs';
 import { shownWait, shownWaitOn } from './plan-week';
 import { TRIP_CALENDAR_ID } from './paths';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
@@ -409,44 +411,41 @@ export function factDays(calendar: TripCalendar): FactDays {
   return { days: calendar.days.filter((d) => dayBasis(d) === 'last_year'), lastYear: true };
 }
 
-/**
- * The seasons a tile draws quietly, bare and faded: one that runs on more than half of the
- * window's days, where an icon on every tile would drown the crowd colours, or one only
- * `expected`. The park calendar's rule for its month (`seasonDaysOfMonth`), over the hub's window.
- */
-export function quietSeasons(calendar: TripCalendar): Set<string> {
-  const runs = new Map<string, number>();
-  for (const day of calendar.days) {
-    for (const id of new Set(Object.values(day.parks).flatMap((p) => p.seasons ?? []))) {
-      runs.set(id, (runs.get(id) ?? 0) + 1);
-    }
-  }
-  return new Set(
-    calendar.seasons
-      .filter((s) => s.status === 'expected' || (runs.get(s.id) ?? 0) > calendar.days.length / 2)
-      .map((s) => s.id)
-  );
+/** Where one park runs an event: its days in the window and the season's own bounds. */
+export interface EventLaneRun {
+  /** The window's days it runs on at this park, sorted. */
+  dates: string[];
+  /** The season's first and last day, which can lie outside the window. */
+  from: string;
+  to: string;
+  /** The season's own list of days where it names them (party nights), else `null`: every day of its range. */
+  listed: readonly string[] | null;
 }
 
-/** One lane under the matrix: a season or a run of school-break days. */
+/** One event of the window: a season, or a run of school-break days. */
 export interface EventLane {
   id: string;
   /** `party` for a separately ticketed evening, `festival` for a season inside the day, `break`. */
   kind: 'party' | 'festival' | 'break';
+  /** The season's kind, for its icon; `null` for a school break. */
+  seasonKind: SeasonEventKind | null;
   /** The season's own name, or the break's; `null` when the API sends none. */
   name: string | null;
   /** The parks it runs at, in the region's order; none for a school break. */
   parkSlugs: string[];
   /** `expected` is last year's pattern: drawn dashed, never counted as a date. */
   status: 'confirmed' | 'announced' | 'expected' | 'none';
-  /** The window's days it runs on, sorted. */
+  /** The window's days it runs on at any of its parks, sorted. */
   dates: string[];
+  /** Each park's own days, since one name can run on different days at two parks. */
+  byPark: Record<string, EventLaneRun>;
 }
 
 /**
- * The lanes under the matrix: each curated season that runs on a day of the window (party nights,
- * festivals, Universal's holidays as `expected`), one lane per name even where several parks run
- * it, then the school breaks as runs of days. A cancelled season stays out.
+ * The window's events: each curated season that runs on a day of the window (party nights,
+ * festivals, Universal's holidays as `expected`), one per name even where several parks run it,
+ * then the school breaks as the planner's runs (`breakRuns`: consecutive days, an unnamed weekend
+ * joining the break it borders, a run without any name left out). A cancelled season stays out.
  */
 export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] = []): EventLane[] {
   const lanes = new Map<string, EventLane>();
@@ -467,18 +466,30 @@ export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] 
     const kind = season.separateTicket ? 'party' : 'festival';
     const key = `${kind}:${season.name ?? season.id}`;
     const lane = lanes.get(key);
+    const run: EventLaneRun = {
+      dates,
+      from: season.startDate,
+      to: season.endDate,
+      listed: season.dates && season.dates.length > 0 ? season.dates : null,
+    };
     if (lane) {
       lane.dates = [...new Set([...lane.dates, ...dates])].sort();
       if (!lane.parkSlugs.includes(season.parkSlug)) lane.parkSlugs.push(season.parkSlug);
       if (lane.status === 'expected' && season.status !== 'expected') lane.status = season.status;
+      const known = lane.byPark[season.parkSlug];
+      lane.byPark[season.parkSlug] = known
+        ? { ...known, dates: [...new Set([...known.dates, ...dates])].sort() }
+        : run;
     } else {
       lanes.set(key, {
         id: season.id,
         kind,
+        seasonKind: season.kind,
         name: season.name ?? null,
         parkSlugs: [season.parkSlug],
         status: season.status,
         dates,
+        byPark: { [season.parkSlug]: run },
       });
     }
   }
@@ -489,21 +500,102 @@ export function eventLanes(calendar: TripCalendar, parkOrder: readonly string[] 
   const seasons = [...lanes.values()]
     .map((lane) => ({ ...lane, parkSlugs: [...lane.parkSlugs].sort((a, b) => rank(a) - rank(b)) }))
     .sort((a, b) => rank(a.parkSlugs[0]) - rank(b.parkSlugs[0]) || (a.kind === 'party' ? -1 : 1));
-  const breaks = new Map<string, string[]>();
-  for (const day of calendar.days) {
-    if (!day.isSchoolVacation) continue;
-    const name = day.holidays?.[day.holidays.length - 1] ?? '';
-    breaks.set(name, [...(breaks.get(name) ?? []), day.date]);
-  }
-  const breakLanes: EventLane[] = [...breaks].map(([name, dates]) => ({
-    id: `break:${name}`,
+  const breakDays = calendar.days
+    .filter((day) => day.isSchoolVacation)
+    .map((day) => ({ date: day.date, name: day.holidays?.[0] ?? '' }));
+  const breakLanes: EventLane[] = breakRuns(breakDays).map((run) => ({
+    id: `break:${run.from}`,
     kind: 'break',
-    name: name || null,
+    seasonKind: null,
+    name: run.name,
     parkSlugs: [],
     status: 'none',
-    dates,
+    dates: calendar.days.map((d) => d.date).filter((date) => date >= run.from && date <= run.to),
+    byPark: {},
   }));
   return [...seasons, ...breakLanes];
+}
+
+/** One day of a week under a park's tiles: whether its event's bar is drawn there, and its ends. */
+export interface WeekTrackCell {
+  /** The bar starts on this day: round on the left. Flat where the event ran the day before. */
+  start: boolean;
+  /** The bar ends on this day: round on the right. Flat where it runs on the next day too. */
+  end: boolean;
+}
+
+/** An event drawn as a bar under one park's tiles in one week of the calendar. */
+export interface WeekTrack {
+  lane: EventLane;
+  /** The week's days it runs on at the park. */
+  dates: string[];
+  /** One per day of the week, `null` where it does not run. */
+  cells: (WeekTrackCell | null)[];
+  /** Its first day, where it starts inside the week; a festival's "from", never a party's. */
+  startsOn: string | null;
+  /** Its last day, where it ends inside the week. */
+  endsOn: string | null;
+}
+
+/** What one park's week says about its events, under its tiles. */
+export interface ParkWeekEvents {
+  /** Party nights and festivals on some of the week's days, each a bar on the days' columns. */
+  tracks: WeekTrack[];
+  /** Festivals on every day the park opens that week: one quiet line, no bar. */
+  allWeek: EventLane[];
+}
+
+/**
+ * A park's events in one week of the calendar, for the bars under its tiles. A party is always a
+ * bar, even every night of the week, since it is the one that sends the day guests out early; a
+ * festival on every day the park opens is a line of its name instead, because a full bar under
+ * every week of a two-month season said nothing about any day. A school break has no park and
+ * stays out.
+ */
+export function parkWeekEvents(
+  lanes: readonly EventLane[],
+  days: readonly TripCalendarDay[],
+  week: HubWeek,
+  slug: string
+): ParkWeekEvents {
+  const weekDays = days.slice(week.start, week.start + week.length);
+  const open = weekDays.filter((d) => d.parks[slug]?.status !== 'CLOSED').map((d) => d.date);
+  const tracks: WeekTrack[] = [];
+  const allWeek: EventLane[] = [];
+  for (const lane of lanes) {
+    const run = lane.byPark[slug];
+    if (!run) continue;
+    const on = new Set(run.dates.filter((date) => date >= week.from && date <= week.to));
+    if (on.size === 0) continue;
+    if (lane.kind === 'festival' && open.length > 0 && open.every((date) => on.has(date))) {
+      allWeek.push(lane);
+      continue;
+    }
+    // Past the window's edge only the season itself knows whether it ran.
+    const runsOn = (date: string) =>
+      on.has(date) ||
+      (date < days[0].date || date > days[days.length - 1].date
+        ? run.listed
+          ? run.listed.includes(date)
+          : run.from <= date && date <= run.to
+        : run.dates.includes(date));
+    const cells = weekDays.map((d): WeekTrackCell | null =>
+      on.has(d.date)
+        ? { start: !runsOn(addDays(d.date, -1)), end: !runsOn(addDays(d.date, 1)) }
+        : null
+    );
+    const dates = [...on].sort();
+    const ranged = lane.kind === 'festival' && run.listed === null;
+    tracks.push({
+      lane,
+      dates,
+      cells,
+      startsOn: ranged && run.from >= week.from && run.from <= week.to ? run.from : null,
+      endsOn: ranged && run.to >= week.from && run.to <= week.to ? run.to : null,
+    });
+  }
+  tracks.sort((a, b) => Number(a.lane.kind !== 'party') - Number(b.lane.kind !== 'party'));
+  return { tracks, allWeek };
 }
 
 /**
@@ -712,21 +804,66 @@ export function parkGeo(
   return parks === 'parks' && continent && country && city ? { continent, country, city } : null;
 }
 
+/** No park ticked off as visited: the default of the picks that skip them. */
+const NOT_VISITED: ReadonlySet<string> = new Set();
+
 /**
  * The best park per group the first answer names: every group with a headliner park, by the API's
  * pick, or by its one park with a figure where it has nothing to choose between (Universal Studios
- * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out.
+ * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out. A park the
+ * visitor has ticked off (`visited`) gives way to the group's next headliner in the day sheet's
+ * order (`rankGroupParks`); a group whose headliners are all ticked off stays out.
  */
-export function glanceLines(day: TripCalendarDay, region: TripRegion): ShortestLine[] {
+export function glanceLines(
+  day: TripCalendarDay,
+  region: TripRegion,
+  visited: ReadonlySet<string> = NOT_VISITED
+): ShortestLine[] {
   const picks = new Map(shortestLines(day, region).map((line) => [line.group.key, line]));
   return headlinerGroups(region).flatMap((group): ShortestLine[] => {
     const pick = picks.get(group.key);
-    if (pick) return [pick];
-    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]));
+    if (pick && !visited.has(pick.park.slug)) return [pick];
+    if (pick) {
+      const left = group.parks.filter((p) => p.headliner && !visited.has(p.slug));
+      const next = rankGroupParks(day, left, group.key).find((r) => isRankable(r.day));
+      return next && isRankable(next.day) ? [{ group, park: next.park, day: next.day }] : [];
+    }
+    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]) && !visited.has(p.slug));
     const only = open.length === 1 ? open[0] : undefined;
     const onlyDay = only ? day.parks[only.slug] : undefined;
     return only && isRankable(onlyDay) ? [{ group, park: only, day: onlyDay }] : [];
   });
+}
+
+/**
+ * The one park of a day across the region: among the resorts' own picks (`glanceLines`), the
+ * headliner park that is quietest against its own normal day (the API's crowd level), then a full
+ * day over an early close, then the shorter wait, then the longer day. Minutes alone would hand
+ * the day to whichever park is always quiet (SeaWorld at 20 min, LEGOLAND at 10), which is no tip
+ * for somebody choosing between Disney and Universal; a non-headliner and a last-year figure never
+ * win. A park ticked off as visited (`visited`) is passed over for one not seen yet. `null` when
+ * no resort has a pick left.
+ */
+export function dayPick(
+  day: TripCalendarDay,
+  region: TripRegion,
+  visited: ReadonlySet<string> = NOT_VISITED
+): ShortestLine | null {
+  const levelRank = (line: ShortestLine) => {
+    const level = tintLevel(line.day.crowdLevel);
+    return level ? CROWD_LEVEL_ORDER.indexOf(level) : CROWD_LEVEL_ORDER.length;
+  };
+  const candidates = glanceLines(day, region, visited).filter(
+    (line) => line.park.headliner && line.day.basis !== 'last_year'
+  );
+  candidates.sort(
+    (a, b) =>
+      levelRank(a) - levelRank(b) ||
+      Number(closesEarly(a.day)) - Number(closesEarly(b.day)) ||
+      shownWait(a.day)! - shownWait(b.day)! ||
+      dayGuestMinutes(b.day) - dayGuestMinutes(a.day)
+  );
+  return candidates[0] ?? null;
 }
 
 /** A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for. */

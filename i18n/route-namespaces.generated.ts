@@ -205,6 +205,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'tripHub.howItWorks.hero',
     'tripHub.lanes',
     'tripHub.sheet',
+    'tripHub.visited',
     'tripHub.when',
     'tripPlanner',
     'tripRegion.hub.calendar',

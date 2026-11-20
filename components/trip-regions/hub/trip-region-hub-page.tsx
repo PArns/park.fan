@@ -127,6 +127,13 @@ export async function TripRegionHubPage({
   const summaries = calendar ? resortMonthSummaries(region, calendar, bestDays) : [];
   const firstFrom = calendar?.days.find((d) => d.date >= todayIso)?.date ?? todayIso;
   const windowDays = calendar?.days.filter((d) => d.date >= firstFrom) ?? [];
+  // What the calendar's client part gets, made once: the first answer hands the same region and
+  // day to its client rows, so the page's payload carries them once.
+  const clientRegion = slimRegion(region);
+  const clientCalendar =
+    calendar && windowDays.length > 0 ? sliceCalendar(calendar, windowDays) : null;
+  const answerDate = calendar ? glanceDay(calendar, region, todayIso, nowMs)?.date : undefined;
+  const answerDay = clientCalendar?.days.find((d) => d.date === answerDate) ?? null;
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];
   const lastYear = !!calendar && lastYearDays.length > calendar.days.length / 2;
   const lastYearFrom = calendar
@@ -151,10 +158,11 @@ export async function TripRegionHubPage({
     />
   ) : (
     <HubGlance
-      day={calendar ? glanceDay(calendar, region, todayIso, nowMs) : null}
-      region={region}
+      day={answerDay}
+      region={clientRegion}
       summaries={summaries}
       windowTo={calendar?.meta.to ?? todayIso}
+      todayIso={todayIso}
       locale={locale}
     />
   );
@@ -255,13 +263,13 @@ export async function TripRegionHubPage({
                 })}
               </p>
             )}
-            {calendar && windowDays.length > 0 ? (
+            {clientCalendar ? (
               <CalendarIconSprite>
                 <HubCalendar
-                  region={slimRegion(region)}
+                  region={clientRegion}
                   // The whole window from today, the hub's 30 days or the month: a week shows at a
                   // time, and the others stay in the served HTML for a reader without script.
-                  calendar={sliceCalendar(calendar, windowDays)}
+                  calendar={clientCalendar}
                   todayIso={todayIso}
                   locale={locale}
                   legend={<HubLegend />}

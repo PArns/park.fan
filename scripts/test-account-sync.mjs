@@ -6,15 +6,19 @@ const A = '00000000-0000-4000-8000-00000000000a';
 const B = '00000000-0000-4000-8000-00000000000b';
 const C = '00000000-0000-4000-8000-00000000000c';
 
-/** A state with the given park favorites, ridden rides and unit. */
-function state(parks, ridden = [], unit = null, updatedAt = null) {
+/** A state with the given park favorites, ridden rides, unit and visited parks. */
+function state(parks, ridden = [], unit = null, updatedAt = null, visited = []) {
   return {
     favorites: { parks, attractions: [], shows: [], restaurants: [] },
     riddenRides: ridden,
+    visitedParks: visited,
     temperatureUnit: unit,
     updatedAt,
   };
 }
+
+/** A park ticked off in Orlando on a date. */
+const visit = (park, date) => ({ region: 'orlando', park, date });
 
 const testCases = [
   {
@@ -27,6 +31,46 @@ const testCases = [
       [A, B, C],
       [C, A],
     ],
+  },
+  {
+    name: 'the first merge keeps the visited parks of both sides, a park on both with its later date',
+    actual: () =>
+      mergeAccountState(
+        state([], [], null, null, [
+          visit('epcot', '2026-11-18'),
+          visit('magic-kingdom-park', '2026-11-19'),
+        ]),
+        state([], [], null, null, [
+          visit('epcot', '2026-11-20'),
+          visit('universal-studios-florida', '2026-11-17'),
+        ])
+      ).visitedParks,
+    expected: [
+      visit('epcot', '2026-11-20'),
+      visit('magic-kingdom-park', '2026-11-19'),
+      visit('universal-studios-florida', '2026-11-17'),
+    ],
+  },
+  {
+    name: 'a park ticked on another date, or not at all, makes two states different',
+    actual: () => [
+      sameAccountState(
+        state([], [], null, null, [
+          visit('epcot', '2026-11-20'),
+          visit('magic-kingdom-park', '2026-11-19'),
+        ]),
+        state([], [], null, null, [
+          visit('magic-kingdom-park', '2026-11-19'),
+          visit('epcot', '2026-11-20'),
+        ])
+      ),
+      sameAccountState(
+        state([], [], null, null, [visit('epcot', '2026-11-20')]),
+        state([], [], null, null, [visit('epcot', '2026-11-19')])
+      ),
+      sameAccountState(state([], [], null, null, [visit('epcot', '2026-11-20')]), state([])),
+    ],
+    expected: [true, false, false],
   },
   {
     name: 'a unit picked here wins, the account fills one in when there is none',

@@ -420,7 +420,18 @@
       "monthTitleLastYear": "I giorni più tranquilli di {month} l’anno scorso",
       "quietPark": "({park}, circa {minutes} min)",
       "quietestTo": "Il più tranquillo fino al {date}",
-      "best": "Miglior parco per resort, <time>{date}</time>"
+      "best": "Miglior parco per resort, <time>{date}</time>",
+      "pick": "Consiglio per il <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {molto più tranquillo di un giorno normale lì} low {più tranquillo di un giorno normale lì} moderate {un giorno normale lì} other {più affollato di un giorno normale lì}}"
+    },
+    "visited": {
+      "ask": "Parchi già visitati",
+      "count": "{count, plural, one {# parco visitato} other {# parchi visitati}} su {total}",
+      "allDone": "Tutti i {count} parchi sono visitati. Per una seconda visita:",
+      "toggle": "{park}: già visitato",
+      "tick": "Segna {park} come visitato",
+      "untick": "Togli {park} dai visitati"
     },
     "legend": {
       "minutes": "Attesa di picco alle grandi attrazioni, in minuti",
@@ -461,10 +472,12 @@
       "titleMonth": "Giorno per giorno a {month}"
     },
     "lanes": {
-      "summaryLabel": "Eventi",
-      "nights": "{name}: {count, plural, =1 {# serata} other {# serate}}",
       "expected": "date previste",
-      "allDays": "ogni giorno"
+      "dayGuestsUntil": "ospiti di giorno fino alle {time}",
+      "separateTicket": "evento serale, biglietto a parte",
+      "from": "dal {date}",
+      "until": "fino al {date}",
+      "allWeek": "Tutta la settimana: {names}"
     },
     "sheet": {
       "intro": "In ogni resort prima il parco migliore; una chiusura anticipata conta",
@@ -4656,8 +4669,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche USA: {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche USA",
-          "none": "Nessun evento e nessuna vacanza scolastica USA in questi giorni."
+          "unnamedBreak": "Vacanze scolastiche USA"
         },
         "sheet": {
           "kicker": "Orlando · un giorno",
@@ -5029,8 +5041,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche di Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche di Los Angeles",
-          "none": "In questi giorni non ci sono eventi né vacanze scolastiche a Los Angeles."
+          "unnamedBreak": "Vacanze scolastiche di Los Angeles"
         },
         "sheet": {
           "kicker": "California del Sud · un giorno",
@@ -5313,8 +5324,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche giapponesi: {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche giapponesi",
-          "none": "Nessun evento in questi giorni."
+          "unnamedBreak": "Vacanze scolastiche giapponesi"
         },
         "sheet": {
           "kicker": "Giappone · un giorno",
@@ -5640,8 +5650,7 @@
         },
         "lanes": {
           "break": "Vacanze scolastiche di Parigi (zona C): {name}, {dates}",
-          "unnamedBreak": "Vacanze scolastiche di Parigi (zona C)",
-          "none": "In questi giorni non ci sono eventi né vacanze scolastiche a Parigi."
+          "unnamedBreak": "Vacanze scolastiche di Parigi (zona C)"
         },
         "sheet": {
           "kicker": "Parigi · un giorno",
@@ -6486,7 +6495,7 @@
     "syncNow": "Sincronizza ora",
     "syncedAt": "Ultima sincronizzazione: {when}",
     "neverSynced": "Non ancora sincronizzato",
-    "whatSyncs": "Vengono sincronizzati i preferiti, le attrazioni già provate e °C o °F. Il piano della giornata e gli avvisi restano sul dispositivo in cui li hai creati.",
+    "whatSyncs": "Vengono sincronizzati i preferiti, le attrazioni già provate, i parchi già visitati durante un viaggio e °C o °F. Il piano della giornata e gli avvisi restano sul dispositivo in cui li hai creati.",
     "auth": {
       "registerTitle": "Crea un account",
       "registerLead": "I tuoi preferiti e le attrazioni provate su ogni dispositivo. Gratis, senza pubblicità.",

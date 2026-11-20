@@ -420,7 +420,18 @@
       "monthTitleLastYear": "Los días más tranquilos de {month} el año pasado",
       "quietPark": "({park}, unos {minutes} min)",
       "quietestTo": "Lo más tranquilo hasta el {date}",
-      "best": "Mejor parque por resort, <time>{date}</time>"
+      "best": "Mejor parque por resort, <time>{date}</time>",
+      "pick": "Consejo para el <time>{date}</time>",
+      "perResort": "Por resort",
+      "pickLevel": "{level, select, very_low {mucho más tranquilo que un día normal allí} low {más tranquilo que un día normal allí} moderate {un día normal allí} other {más lleno que un día normal allí}}"
+    },
+    "visited": {
+      "ask": "Parques ya visitados",
+      "count": "{count} de {total} parques visitados",
+      "allDone": "Los {count} parques ya están visitados. Para una segunda visita:",
+      "toggle": "{park}: ya visitado",
+      "tick": "Marcar {park} como visitado",
+      "untick": "Quitar {park} de los visitados"
     },
     "legend": {
       "minutes": "Espera punta en las grandes atracciones, en minutos",
@@ -461,10 +472,12 @@
       "titleMonth": "Día a día en {month}"
     },
     "lanes": {
-      "summaryLabel": "Eventos",
-      "nights": "{name}: {count, plural, =1 {# noche} other {# noches}}",
       "expected": "fechas previstas",
-      "allDays": "todos los días"
+      "dayGuestsUntil": "visitantes de día hasta las {time}",
+      "separateTicket": "evento nocturno, entrada aparte",
+      "from": "desde el {date}",
+      "until": "hasta el {date}",
+      "allWeek": "Toda la semana: {names}"
     },
     "sheet": {
       "intro": "En cada resort, primero el mejor parque; un cierre anticipado cuenta",
@@ -4656,8 +4669,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares de EE. UU.: {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares de EE. UU.",
-          "none": "No hay eventos ni vacaciones escolares de EE. UU. en estos días."
+          "unnamedBreak": "Vacaciones escolares de EE. UU."
         },
         "sheet": {
           "kicker": "Orlando · un día",
@@ -5029,8 +5041,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares de Los Ángeles: {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares de Los Ángeles",
-          "none": "En estos días no hay eventos ni vacaciones escolares en Los Ángeles."
+          "unnamedBreak": "Vacaciones escolares de Los Ángeles"
         },
         "sheet": {
           "kicker": "California del Sur · un día",
@@ -5313,8 +5324,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares japonesas: {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares japonesas",
-          "none": "No hay eventos en estos días."
+          "unnamedBreak": "Vacaciones escolares japonesas"
         },
         "sheet": {
           "kicker": "Japón · un día",
@@ -5640,8 +5650,7 @@
         },
         "lanes": {
           "break": "Vacaciones escolares de París (zona C): {name}, {dates}",
-          "unnamedBreak": "Vacaciones escolares de París (zona C)",
-          "none": "En estos días no hay eventos ni vacaciones escolares en París."
+          "unnamedBreak": "Vacaciones escolares de París (zona C)"
         },
         "sheet": {
           "kicker": "París · un día",
@@ -6486,7 +6495,7 @@
     "syncNow": "Sincronizar ahora",
     "syncedAt": "Última sincronización: {when}",
     "neverSynced": "Aún sin sincronizar",
-    "whatSyncs": "Se sincronizan los favoritos, las atracciones en las que ya montaste y °C o °F. Tu plan del día y tus avisos se quedan en el dispositivo donde los creaste.",
+    "whatSyncs": "Se sincronizan los favoritos, las atracciones en las que ya montaste, los parques ya visitados en un viaje y °C o °F. Tu plan del día y tus avisos se quedan en el dispositivo donde los creaste.",
     "auth": {
       "registerTitle": "Crear una cuenta",
       "registerLead": "Tus favoritos y atracciones montadas en todos tus dispositivos. Gratis y sin anuncios.",

@@ -420,7 +420,18 @@
       "monthTitleLastYear": "Die ruhigsten Tage im {month} im Vorjahr",
       "quietPark": "({park}, etwa {minutes} Min.)",
       "quietestTo": "Am leersten bis {date}",
-      "best": "Bester Park je Resort, <time>{date}</time>"
+      "best": "Bester Park je Resort, <time>{date}</time>",
+      "pick": "Tipp für <time>{date}</time>",
+      "perResort": "Je Resort",
+      "pickLevel": "{level, select, very_low {viel ruhiger als an einem normalen Tag dort} low {ruhiger als an einem normalen Tag dort} moderate {ein normaler Tag dort} other {voller als an einem normalen Tag dort}}"
+    },
+    "visited": {
+      "ask": "Schon dort gewesen? Abhaken",
+      "count": "{count} von {total} Parks abgehakt",
+      "allDone": "Alle {count} Parks abgehakt. Für einen zweiten Besuch:",
+      "toggle": "{park}: schon dort gewesen",
+      "tick": "{park} als besucht abhaken",
+      "untick": "Haken bei {park} entfernen"
     },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
@@ -461,10 +472,12 @@
       "titleMonth": "Tag für Tag im {month}"
     },
     "lanes": {
-      "summaryLabel": "Events",
-      "nights": "{name}: {count, plural, =1 {# Abend} other {# Abende}}",
       "expected": "Termine erwartet",
-      "allDays": "jeden Tag"
+      "dayGuestsUntil": "Tagesgäste bis {time}",
+      "separateTicket": "Abend-Event, eigenes Ticket",
+      "from": "ab {date}",
+      "until": "bis {date}",
+      "allWeek": "Die ganze Woche: {names}"
     },
     "sheet": {
       "intro": "Pro Resort steht der beste Park oben; ein früher Schluss zählt mit",
@@ -4656,8 +4669,7 @@
         },
         "lanes": {
           "break": "US-Schulferien: {name}, {dates}",
-          "unnamedBreak": "US-Schulferien",
-          "none": "In diesen Tagen gibt es keine Events und keine US-Schulferien."
+          "unnamedBreak": "US-Schulferien"
         },
         "sheet": {
           "kicker": "Orlando · ein Tag",
@@ -5029,8 +5041,7 @@
         },
         "lanes": {
           "break": "Schulferien in Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Schulferien in Los Angeles",
-          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Los Angeles."
+          "unnamedBreak": "Schulferien in Los Angeles"
         },
         "sheet": {
           "kicker": "Südkalifornien · ein Tag",
@@ -5313,8 +5324,7 @@
         },
         "lanes": {
           "break": "Japanische Schulferien: {name}, {dates}",
-          "unnamedBreak": "Japanische Schulferien",
-          "none": "Keine Events in diesen Tagen."
+          "unnamedBreak": "Japanische Schulferien"
         },
         "sheet": {
           "kicker": "Japan · ein Tag",
@@ -5640,8 +5650,7 @@
         },
         "lanes": {
           "break": "Schulferien in Paris (Zone C): {name}, {dates}",
-          "unnamedBreak": "Schulferien in Paris (Zone C)",
-          "none": "In diesen Tagen gibt es keine Events und keine Schulferien in Paris."
+          "unnamedBreak": "Schulferien in Paris (Zone C)"
         },
         "sheet": {
           "kicker": "Paris · ein Tag",
@@ -6486,7 +6495,7 @@
     "syncNow": "Jetzt abgleichen",
     "syncedAt": "Zuletzt abgeglichen: {when}",
     "neverSynced": "Noch nicht abgeglichen",
-    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
+    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen, die auf einer Reise abgehakten Parks und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
     "auth": {
       "registerTitle": "Konto anlegen",
       "registerLead": "Deine Favoriten und gefahrenen Attraktionen auf jedem Gerät. Kostenlos, ohne Werbung.",

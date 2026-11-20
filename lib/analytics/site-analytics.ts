@@ -535,6 +535,11 @@ export interface SiteEventMap {
    */
   trip_hub_week_paged: TripEvent<{ how: HubWeekPaging; week: number }>;
   /**
+   * A park of the hub ticked off as visited, or the tick taken away: from the first answer's chips
+   * or beside its name in the calendar. Which park is never sent.
+   */
+  trip_hub_visited: TripEvent<{ from: 'answer' | 'calendar'; visited: boolean }>;
+  /**
    * The hub's best-time teaser switched to other parks or another trip length; on a change only.
    * `scope` is the best-time page's id, `days` the length now shown.
    */
