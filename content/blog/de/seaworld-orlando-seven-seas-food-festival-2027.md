@@ -1,0 +1,146 @@
+---
+title: 'SeaWorld Orlando holt 29 Konzerte zum Seven Seas Festival'
+translationKey: seaworld-orlando-seven-seas-food-festival-2027
+date: '2026-11-20'
+time: '18:41'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Zum Seven Seas Food Festival gibt es in SeaWorld Orlando bis Mitte Mai an jedem Wochenende Konzerte, zuerst Flo Rida am 30. Januar. Zuhören kostet nur den Eintritt, ein reservierter Platz ab 9,99 $.
+tags:
+  - news
+  - seaworld-orlando
+  - festival
+  - konzerte
+  - orlando
+  - usa
+  - saison-2027
+category: news
+parkLinks:
+  - seaworld-orlando
+rideLinks: false
+seo:
+  title: 'Seven Seas Food Festival 2027: Konzerte in SeaWorld Orlando'
+  description: >-
+    SeaWorld Orlando: 29 Konzerte zum Seven Seas Food Festival 2027, vom 30.1. bis 16.5. am Wochenende um 19 Uhr, im Eintritt. Reservierte Plätze ab 9,99 $.
+  keywords:
+    - Seven Seas Food Festival 2027
+    - Seven Seas Food Festival Konzerte
+    - Seven Seas Food Festival Line-up
+    - SeaWorld Orlando Konzerte 2027
+    - SeaWorld Orlando Seven Seas Food Festival
+    - SeaWorld Orlando Bayside Stadium
+    - SeaWorld Reserved Concert Access
+    - SeaWorld Orlando Fun Card 2027
+    - SeaWorld Orlando Sperrtage Bronze
+    - Flo Rida SeaWorld Orlando
+---
+
+[SeaWorld Orlando](ref:seaworld-orlando) holt zum Seven Seas Food Festival 2027 vom 30. Januar bis zum 16. Mai 29 Konzerte ins Bayside Stadium. Gespielt wird an jedem Samstag und an den meisten Sonntagen, immer um 19 Uhr. Die Konzerte sind im Parkeintritt enthalten, für einen reservierten Platz zahlst du ab 9,99 $ dazu. Das Programm hat der Park am 19. November veröffentlicht, und wie schon 2026 eröffnet Flo Rida die Reihe.
+
+## Festival und Konzerte im Kalender
+
+Das Festival selbst beginnt einen Tag vor dem ersten Konzert, am Freitag, 29. Januar, und endet am Sonntag, 16. Mai. SeaWorld spricht von „Select Dates“, die Stände öffnen also nicht an jedem Tag dazwischen. Welche Tage es 2027 sind, hat der Park noch nicht veröffentlicht; 2026 hatten die Stände von Donnerstag bis Sonntag geöffnet. Am Eröffnungsfreitag schließt der Park schon um 18 Uhr, ein Konzert gibt es da nicht.
+
+Am ersten Konzertwochenende hat SeaWorld von 9 bis 21 Uhr offen. Ein Auftritt dauert in der Regel 60 bis 75 Minuten, du musst also nicht während der Zugabe zum Ausgang sprinten, um vor Parkschluss draußen zu sein. Die Öffnungszeiten ab Februar stehen noch nicht im Kalender des Parks.
+
+Am Super-Bowl-Sonntag, 14. Februar, am Ostersonntag, 28. März, und am Muttertag, 9. Mai, bleibt die Bühne leer, gegen Football und Mütter tritt SeaWorld lieber nicht an. So kommen 16 Konzerte an Samstagen und 13 an Sonntagen ins Programm.
+
+Zum Festival gehören außerdem Mardi Gras am 9. Februar, der St. Patrick's Day am 17. März, Cinco de Mayo am 5. Mai und Viva La Música an ausgewählten Tagen im Mai.
+
+```best-days-widget slug=seaworld-orlando
+
+```
+
+## Wer an welchem Abend spielt
+
+SeaWorld mischt Country, Hip-Hop, Rock, R&B, Reggae, Reggaeton, Pop und K-Pop, und an manchen Wochenenden liegen die Genres weit auseinander: Am Samstag, 20. März, tritt die K-Pop-Gruppe EVERGLOW auf, am Sonntag darauf JoJo Siwa, eine Woche später Blue Öyster Cult. Für den 1. und den 8. Mai kündigt SeaWorld Überraschungskünstler an, deren Namen noch nicht feststehen.
+
+| Datum           | Konzert                                             |
+| --------------- | --------------------------------------------------- |
+| Sa, 30. Januar  | Flo Rida                                            |
+| So, 31. Januar  | Lonestar                                            |
+| Sa, 6. Februar  | Justin Quiles                                       |
+| So, 7. Februar  | Great White und Quiet Riot                          |
+| Sa, 13. Februar | Don Felder, früher bei den Eagles                   |
+| Sa, 20. Februar | Proyecto Uno                                        |
+| So, 21. Februar | The Red Jumpsuit Apparatus und Puddle of Mudd       |
+| Sa, 27. Februar | Lee Brice                                           |
+| So, 28. Februar | Skillet                                             |
+| Sa, 6. März     | Shaggy                                              |
+| So, 7. März     | Ginuwine                                            |
+| Sa, 13. März    | Daya (Sperrtag für Bronze und Fun Card)             |
+| So, 14. März    | Vengaboys                                           |
+| Sa, 20. März    | EVERGLOW (Sperrtag für Bronze und Fun Card)         |
+| So, 21. März    | JoJo Siwa                                           |
+| Sa, 27. März    | Blue Öyster Cult (Sperrtag für Bronze und Fun Card) |
+| Sa, 3. April    | Lil Jon (Sperrtag für Bronze und Fun Card)          |
+| So, 4. April    | Gavin DeGraw                                        |
+| Sa, 10. April   | Justin Moore                                        |
+| So, 11. April   | Dru Hill, The History of R&B                        |
+| Sa, 17. April   | Nicky Jam                                           |
+| So, 18. April   | Hot Chelle Rae und Echosmith                        |
+| Sa, 24. April   | Taking Back Sunday                                  |
+| So, 25. April   | Soulja Boy                                          |
+| Sa, 1. Mai      | Überraschungskünstler                               |
+| So, 2. Mai      | Scotty McCreery                                     |
+| Sa, 8. Mai      | Überraschungskünstler                               |
+| Sa, 15. Mai     | Luísa Sonza                                         |
+| So, 16. Mai     | Grupo Manía                                         |
+
+## Freie und reservierte Plätze
+
+Für die Konzerte reicht ein Parkticket oder eine Jahreskarte. Die freien Plätze im Stadion bekommt, wer zuerst da ist, und ist es voll, kann der Einlass schließen. Sicher hinein kommst du mit Reserved Concert Access, den du zusätzlich zum Parkticket kaufst, in drei Stufen:
+
+- Standard ab 9,99 $, ein Sitzplatz im mittleren Unterrang
+- Up-Close ab 14,99 $, der zweite Bereich auf dem Floor hinter Stagefront, mit Zugang zur Floor Bar
+- Stagefront ab 24,99 $, der vorderste Bereich auf dem Floor direkt vor der Bühne, ebenfalls mit Floor Bar
+
+Die Zahl der reservierten Plätze ist je Konzert begrenzt. Alle drei Stufen haben einen eigenen Check-in links der Bühne nahe Pipeline: The Surf Coaster, der um 14 Uhr öffnet. Nummeriert sind die Plätze nicht, innerhalb deines Bereichs gilt wieder, wer zuerst kommt. Bei 13 Konzerten, darunter Flo Rida, Shaggy, Lil Jon und Luísa Sonza, sind Stagefront und Up-Close Stehbereiche ohne Stühle, was bei diesem Programm kaum jemanden stören dürfte. Getränke an der Floor Bar zahlst du extra.
+
+Regen allein beendet kein Konzert. Zieht ein Gewitter auf, wird es unterbrochen, verschoben oder in eine Halle wie das kleinere Nautilus Theater verlegt, und dort haben die reservierten Plätze garantierten Einlass. Einen reservierten Platz enthält auch die Seven Seas VIP Tour, mit einem Probier-Lanyard für fünf Gerichte und bevorzugtem Zugang zu den Fahrgeschäften. Sie kostete 2026 ab 199,99 $, den Preis für 2027 gibt es noch nicht.
+
+## Tickets, Jahreskarten und Sperrtage
+
+Ein Tagesticket kostet im Black-Friday-Angebot online ab 61,99 $ statt 151,99 $ und gilt ab drei Jahren. Die Fun Card 2027 kostet 104,99 $ statt 151,99 $, weniger als zwei Tagestickets, und gilt außer an Sperrtagen. Bei den Jahreskarten zahlst du für Bronze 171 $ im Jahr, für Silver 198 $, für Gold 222 $ und für Platinum 351 $, auf Wunsch auch in Monatsraten ab 14,25 $.
+
+Für Bronze und Fun Card sind im Festivalzeitraum vier Konzertsamstage gesperrt, der 13., 20. und 27. März und der 3. April. Wer mit Bronze-Karte bei Blue Öyster Cult mehr Cowbell hören will, braucht dafür ein Tagesticket oder gleich Silver, denn ab Silver gibt es 2027 keine Sperrtage. Auf Essen und Getränke bekommst du mit Silver 5 Prozent Rabatt, mit Gold 10 und mit Platinum 15 Prozent, mit Bronze keinen.
+
+Parken kostet ab 35 $, wer an der Einfahrt zahlt, kann das nicht bar tun. Der Park liegt am 7007 Sea World Drive und ist von der I-4 über den Central Florida Parkway zu erreichen, die Lynx-Buslinie 50 hält in der Nähe. Wie du SeaWorld mit Disney und Universal in einen Urlaub packst und welche Kombitickets es gibt, steht in unserem Guide [Disney World und Universal Orlando in einem Urlaub planen](/blog/orlando-urlaub-planen).
+
+## Was gegenüber 2026 anders ist
+
+2026 standen 32 Termine im Programm, fünf davon mit Überraschungsgast, und an fünf Freitagen wurde ebenfalls gespielt. 2027 bleibt es beim Wochenende. Neben Flo Rida sind Grupo Manía, Proyecto Uno und Soulja Boy zum zweiten Mal dabei. Die reservierten Plätze hießen 2026 Reserved Seating und kosteten auch ab 9,99 $, die Floor Bar gab es noch nicht.
+
+Beim Essen hat SeaWorld für 2027 bisher nur angekündigt, dass einige Gerichte von der Musik inspiriert sein sollen, so Parkchef Brad Gilmour. Die Stände, ihre Länder und die Menüs will der Park gesondert vorstellen, und auch den Preis des Probier-Lanyards gibt es noch nicht. 2026 waren es 29 Stände, acht davon neu, mit mehr als 200 Speisen und Getränken.
+
+## Konzerte in San Diego und San Antonio, SEAQuest in Orlando
+
+Zusammen mit den Schwesterparks kommt die Konzertreihe 2027 auf mehr als 50 Shows. In [SeaWorld San Diego](ref:seaworld-san-diego) wird vom 20. März bis zum 28. August samstags um 18 Uhr im Bayside Amphitheater gespielt, reservierte Plätze kosten dort ab 69,99 $. [SeaWorld San Antonio](ref:seaworld-san-antonio) hat vom 11. April bis zum 15. Mai sieben Termine im Nautilus Amphitheater, ebenfalls im Eintritt.
+
+In Orlando soll 2027 außerdem SEAQuest: Legends of the Deep eröffnen, eine hängende Dark Ride in einem erweiterten Parkbereich, bisher ohne Datum. Pass Members, die zwischen dem 18. November und dem 31. Dezember dreimal kommen, bekommen über Passport to Thrills ein einmaliges Quick Queue dafür. Bis zum 4. Januar läuft in SeaWorld Orlando noch die [Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026) mit der Orca-Show Miracles.
+
+[SeaWorld Orlando](ref:seaworld-orlando?full)
+
+Quellen:
+[Pressemitteilung zu den Konzerten 2027 (PDF)](<https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo_2026-1119_pr-ssff-artist-announcement-(1).pdf>),
+[Seven Seas Food Festival](https://seaworld.com/orlando/events/seven-seas-food-festival/),
+[Concert Series](https://seaworld.com/orlando/events/concert-series/),
+[Reserved Concert Access](https://seaworld.com/orlando/events/concert-series/reserved-concert-access/),
+[Tickets fürs Festival](https://seaworld.com/orlando/events/seven-seas-food-festival/buy-tickets/),
+[Öffnungszeiten](https://seaworld.com/orlando/park-info/theme-park-hours/),
+[Angebote](https://seaworld.com/orlando/limited-time-offers/),
+[Leistungen der Jahreskarte](https://seaworld.com/orlando/annual-pass/benefits/),
+[Sperrtage](https://seaworld.com/orlando/annual-pass/blockout-dates/),
+[Pressemitteilung zu den Jahreskarten 2027 (PDF)](https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo20260929pr-2027-annual-pass-launch-final-40-2.pdf),
+[Parken und Upgrades](https://seaworld.com/orlando/upgrades/),
+[FAQ](https://seaworld.com/orlando/faq/),
+[Anfahrt](https://seaworld.com/orlando/park-info/directions/),
+[Menüs 2026](https://seaworld.com/orlando/events/seven-seas-food-festival/menus/),
+[Pressemitteilung zum Festival 2026 (PDF)](https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo_2026-0126_pr-ssff-event-details-final.pdf),
+[Pressemitteilung zu den Konzerten 2026 (PDF)](<https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo_2026-0114_ssff-artist-lineup-announcement-final-(1).pdf>),
+[Konzerte in SeaWorld San Diego](https://seaworld.com/san-diego/events/concert-series/),
+[Konzerte in SeaWorld San Antonio](https://seaworld.com/san-antonio/events/concert-series/),
+[SEAQuest](https://seaworld.com/orlando/rides/sea-quest/),
+[Christmas Celebration](https://seaworld.com/orlando/events/christmas-celebration/).
