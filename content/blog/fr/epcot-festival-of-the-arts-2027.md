@@ -39,7 +39,7 @@ seo:
     - festival Walt Disney World 2027
 ---
 
-Le Festival of the Arts d’[EPCOT](ref:epcot) se tient en 2027 du 15 janvier au 1er mars, et le dernier jour tombe un lundi. Avec 46 jours, il dure une semaine de plus qu’en 2026, où il allait du 16 janvier au 23 février. Le jeu de cartes à collectionner Disney Lorcana le présente pour la deuxième fois.
+Le Festival of the Arts d’[EPCOT](ref:epcot) se tient en 2027 du 15 janvier au lundi 1er mars. Avec 46 jours, il dure une semaine de plus qu’en 2026, où il allait du 16 janvier au 23 février. Le jeu de cartes à collectionner Disney Lorcana le présente pour la deuxième fois.
 
 ## Collectionner les cartes Lorcana
 
@@ -47,11 +47,11 @@ Le livret des quêtes est gratuit et se retire au Creations Shop, dans la limite
 
 Disney vend la Curator's Collection uniquement au festival : six cartes en série limitée. L’une d’elles montre Figment, sa toute première carte Lorcana. Avec un Illumineer's Trove de l’édition Hyperia City, vous recevez la carte « Alice – Tea Alchemist », une par achat. L’offre vaut seulement en boutique : chez Disney Traders, au Souk-al-Magreb du Maroc et au Disney Lorcana TCG Festival Market. Disney n’a pas encore communiqué le prix de la Curator's Collection ni celui du Trove.
 
-Des artistes de Lorcana et les deux concepteurs du jeu viennent au festival à douze dates, de 11 h 30 à 17 h, du 20 janvier avec Cristian Romero au 24 février avec Malia Ewart. Le jour de leur venue, les artistes dédicacent les cartes qu’ils ont dessinées.
+Des artistes de Lorcana et les deux concepteurs du jeu viennent au festival à douze dates entre le 20 janvier et le 24 février, chaque fois de 11 h 30 à 17 h. Pour faire dédicacer une carte par la personne qui l’a dessinée, la [page des artistes de Walt Disney World](https://disneyworld.disney.go.com/events-tours/epcot/epcot-international-festival-of-the-arts-artists/) indique son jour de présence.
 
 ## Les concerts de Broadway à l’America Gardens Theatre
 
-Les concerts ont lieu tous les soirs à 17 h 15, 18 h 30 et 19 h 45 à l’America Gardens Theatre, à côté du pavillon The American Adventure, et sont compris dans l’entrée du parc. En 2026, c’était le cas de tout le festival ; pour 2027, Disney ne l’a annoncé pour l’instant que pour les concerts. Les places vont aux premiers arrivés. Six duos se relaient presque d’un jour à l’autre :
+Les concerts ont lieu tous les soirs à 17 h 15, 18 h 30 et 19 h 45 à l’America Gardens Theatre, à côté du pavillon The American Adventure, et sont compris dans l’entrée du parc. En 2026, tout le festival était inclus ; pour 2027, Disney ne l’a confirmé pour l’instant que pour les concerts. Les places vont aux premiers arrivés. Six duos se relaient presque d’un jour à l’autre :
 
 - Michael James Scott et Marisha Wallace : 15, 17, 18, 21, 22, 25 et 26 janvier
 - Ashley Brown et Josh Strickland : 16, 19, 20, 23, 24, 27 et 28 janvier
@@ -59,17 +59,17 @@ Les concerts ont lieu tous les soirs à 17 h 15, 18 h 30 et 19 h 45 à l�
 - Sierra Boggess et Norm Lewis : 30 janvier, 2, 3, 6, 7, 10 et 11 février
 - Kara Lindsay et Mason Reeves : 12, 14, 15, 18, 19, 22 et 25 février
 - Caissie Levy et Ryan McCartan : 13, 16, 17, 20, 21, 23, 24 et 26 février
-- Final « Seize the Day! A Newsies Celebration » : 27 et 28 février, puis 1er mars
+- Final « Seize the Day! A Newsies Celebration » : 27 et 28 février, puis 1er mars, distribution pas encore annoncée
 
-Wallace, Pascal, Sherie Rene Scott, Lewis, Reeves et McCartan montent sur cette scène pour la première fois. Brown et Strickland célèbrent les 20 ans de « Mary Poppins » et de « Tarzan » à Broadway. Michael James Scott a joué le Génie à Broadway plus longtemps que quiconque. Disney n’a pas encore annoncé qui chante au final de Newsies.
+Marisha Wallace, Adam Pascal, Sherie Rene Scott, Norm Lewis, Mason Reeves et Ryan McCartan chantent pour la première fois à l’America Gardens Theatre. Brown et Strickland célèbrent les 20 ans de « Mary Poppins » et de « Tarzan » à Broadway. Michael James Scott a joué le Génie à Broadway plus longtemps que quiconque.
 
-À la CommuniCore Hall, Disney installe l’exposition « Once Upon A Stage: The Music of Disney on Broadway ». En 2026, une exposition au nom presque identique portait sur la magie et non sur la musique. Dans la salle, on trouve aussi pour la première fois des produits Disney on Broadway autour de « Hercule », « Aladdin », « Le Roi lion » et « La Belle et la Bête ».
+À la CommuniCore Hall, Disney installe l’exposition « Once Upon A Stage: The Music of Disney on Broadway ». Ceux qui sont venus en 2026 connaissent presque le titre : l’exposition s’appelait alors « Once Upon A Stage: The Magic of Disney on Broadway », et cette fois, place aux chansons. Dans la salle, on trouve aussi pour la première fois des produits Disney on Broadway autour de « Hercule », « Aladdin », « Le Roi lion » et « La Belle et la Bête ».
 
 ## Des Dining Packages avec place garantie
 
 Les Dining Packages sont réservables à partir du 3 décembre 2026, deux semaines plus tôt que l’an dernier. Un repas dans l’un des 14 restaurants participants s’accompagne d’une place garantie à un concert le même jour, avec une file d’attente réservée. Le badge qui indique la date et l’heure de la représentation vous est remis au restaurant. Le forfait comprend un plat principal avec dessert ou un buffet, et une boisson, alcoolisée à partir de 21 ans.
 
-Les adultes à partir de dix ans paient de 38 $ au Regal Eagle Smokehouse à 104 $ chez Le Cellier Steakhouse. Pour les enfants de trois à neuf ans, c’est de 23 à 52 $, taxes et pourboire toujours en sus. Le Regal Eagle ne se réserve que le jour même. L’entrée du parc n’est pas comprise dans le forfait. Une carte bancaire est demandée à la réservation.
+Les adultes à partir de dix ans paient de 38 $ au Regal Eagle Smokehouse à 104 $ chez Le Cellier Steakhouse. Pour les enfants de trois à neuf ans, c’est de 23 à 52 $, taxes et pourboire toujours en sus. Le Regal Eagle n’accepte que les réservations pour le jour même, et l’entrée du parc se paie en plus. Une carte bancaire est demandée à la réservation.
 
 ```best-days-widget slug=epcot
 
@@ -77,11 +77,11 @@ Les adultes à partir de dix ans paient de 38 $ au Regal Eagle Smokehouse à 10
 
 ## Peinture, craie et 19 Food Studios
 
-Haley Talton, Nicky Nicotera et Robert Post exposent pour la première fois au festival. Darren Wilson revient, et Stephanie Laberis et William Silvers exposent aussi. À l’Animation Academy de l’America Gardens Theatre, des dessinateurs de Disney donnent des cours de dessin. Dans l’Expression Section, vous participez à une peinture par numéros sur cinq fresques, dont l’une reprend un motif de Lorcana.
+Haley Talton, Nicky Nicotera et Robert Post font leurs débuts, Darren Wilson revient, et Stephanie Laberis et William Silvers exposent aussi. À l’Animation Academy de l’America Gardens Theatre, des dessinateurs de Disney donnent des cours de dessin. Dans l’Expression Section, vous participez à une peinture par numéros sur cinq fresques, dont l’une reprend un motif de Lorcana.
 
-Le festival existe depuis 2017. Pour son dixième anniversaire, deux nouveaux décors photo Lorcana, « Champion Card Collage » et « Merlin's Shop and Smithy », prennent place sur le pont qui mène au World Showcase. Juste à côté se trouvent les Chalk Art Galleries. Les 19 Food Studios servent des plats autour du festival ; Disney dévoilera leurs menus plus tard.
+Pour le dixième anniversaire du festival, qui existe depuis 2017, deux nouveaux décors photo Lorcana, « Champion Card Collage » et « Merlin's Shop and Smithy », prennent place sur le pont qui mène au World Showcase. Juste à côté se trouvent les Chalk Art Galleries et leurs dessins à la craie. On mange dans 19 Food Studios, dont les menus restent à venir.
 
-Les vacances, les jours fériés et les autres événements de ces semaines sont réunis dans notre guide pour [préparer un séjour à Orlando](/blog/sejour-orlando-disney-universal), avec les billets Disney et Universal.
+Notre guide pour [préparer un séjour à Orlando](/blog/sejour-orlando-disney-universal) indique les vacances scolaires et les jours fériés qui tombent pendant le festival, ce qui se passe d’autre à Orlando et les billets que vendent Disney et Universal.
 
 [EPCOT](ref:epcot?full)
 
