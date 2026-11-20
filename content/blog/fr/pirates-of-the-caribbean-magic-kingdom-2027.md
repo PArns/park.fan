@@ -27,7 +27,7 @@ rideLinks:
 seo:
   title: 'Pirates of the Caribbean fermé au Magic Kingdom en 2027'
   description: >-
-    Pirates of the Caribbean ferme le 11 janvier 2027 au Magic Kingdom. L’attraction doit revenir vers la fin 2027, avec de nouveaux effets dans Dead Man's Cove.
+    Pirates of the Caribbean ferme le 11 janvier 2027 au Magic Kingdom. Retour prévu vers la fin 2027, avec de nouveaux effets dans Dead Man's Cove.
   keywords:
     - Pirates of the Caribbean fermé
     - Pirates of the Caribbean Magic Kingdom
