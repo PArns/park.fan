@@ -1,0 +1,148 @@
+---
+title: 'Seven Seas Food Festival brengt 29 concerten naar SeaWorld'
+translationKey: seaworld-orlando-seven-seas-food-festival-2027
+date: '2026-11-20'
+time: '18:41'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Op het Seven Seas Food Festival in SeaWorld Orlando speelt tot half mei elk weekend een concert, vanaf 30 januari met Flo Rida. Luisteren zit in de entree, een vaste plek kost vanaf 9,99 dollar.
+tags:
+  - nieuws
+  - seaworld-orlando
+  - festival
+  - concerten
+  - orlando
+  - usa
+  - seizoen-2027
+category: news
+parkLinks:
+  - seaworld-orlando
+rideLinks: false
+seo:
+  title: 'Seven Seas Food Festival 2027: concerten in SeaWorld Orlando'
+  description: >-
+    SeaWorld Orlando: 29 concerten op het Seven Seas Food Festival 2027, 30-1 tot 16-5, weekends om 19.00 uur, in de entree. Vaste plek vanaf 9,99 dollar.
+  keywords:
+    - Seven Seas Food Festival 2027
+    - Seven Seas Food Festival concerten
+    - Seven Seas Food Festival line-up
+    - SeaWorld Orlando concerten 2027
+    - SeaWorld Orlando Seven Seas Food Festival
+    - SeaWorld Orlando Bayside Stadium
+    - SeaWorld Reserved Concert Access
+    - SeaWorld Orlando Fun Card 2027
+    - SeaWorld Orlando blokkadedagen Bronze
+    - Flo Rida SeaWorld Orlando
+---
+
+Van 30 januari tot 16 mei 2027 staan er tijdens het Seven Seas Food Festival 29 concerten in het Bayside Stadium van [SeaWorld Orlando](ref:seaworld-orlando). Er wordt elke zaterdag en op de meeste zondagen gespeeld, steeds om 19.00 uur. Met je parkticket kun je gewoon gaan kijken, en wie een gereserveerde plek wil, betaalt vanaf 9,99 dollar extra. Het park maakte het programma op 19 november bekend; Flo Rida trapt de reeks af.
+
+## Festival en concerten in de kalender
+
+Het festival zelf begint een dag voor het eerste concert, op vrijdag 29 januari, en loopt tot zondag 16 mei. De eetkraampjes zijn alleen op bepaalde dagen open. Welke dagen dat in 2027 worden, heeft het park nog niet bekendgemaakt; in 2026 waren ze van donderdag tot en met zondag open. Op de openingsvrijdag gaat het park al om 18.00 uur dicht.
+
+In het eerste concertweekend is SeaWorld open van 9.00 tot 21.00 uur. Een optreden duurt meestal 60 tot 75 minuten. Volgens de kalender sluit het park op de meeste concertavonden in februari en maart om 21.00 uur, op de zondagen in maart om 22.00 uur. Voor 13 en 27 februari staat er 19.00 uur als sluitingstijd, voor 27 maart 20.00 uur. Ook op die avonden begint het concert om 19.00 uur.
+
+Op Super Bowl-zondag (14 februari), eerste paasdag (28 maart) en Moederdag (9 mei) is er geen concert. Zo komt het programma op 16 concerten op zaterdag en 13 op zondag.
+
+Verder horen Mardi Gras op 9 februari, St. Patrick's Day op 17 maart, Cinco de Mayo op 5 mei en Viva La Música op bepaalde dagen in mei bij het festival.
+
+```best-days-widget slug=seaworld-orlando
+
+```
+
+## Wie er op welke avond speelt
+
+SeaWorld haalt country, hiphop, rock, R&B, reggae, reggaeton, pop en K-pop naar het park, en sommige weekenden liggen de genres ver uit elkaar. Op zaterdag 20 maart staat de K-popgroep EVERGLOW op het podium, een week later Blue Öyster Cult.
+
+| Datum          | Concert                                                |
+| -------------- | ------------------------------------------------------ |
+| za 30 januari  | Flo Rida                                               |
+| zo 31 januari  | Lonestar                                               |
+| za 6 februari  | Justin Quiles                                          |
+| zo 7 februari  | Great White en Quiet Riot                              |
+| za 13 februari | Don Felder, voorheen bij de Eagles                     |
+| za 20 februari | Proyecto Uno                                           |
+| zo 21 februari | The Red Jumpsuit Apparatus en Puddle of Mudd           |
+| za 27 februari | Lee Brice                                              |
+| zo 28 februari | Skillet                                                |
+| za 6 maart     | Shaggy                                                 |
+| zo 7 maart     | Ginuwine                                               |
+| za 13 maart    | Daya (blokkadedag voor Bronze en Fun Card)             |
+| zo 14 maart    | Vengaboys                                              |
+| za 20 maart    | EVERGLOW (blokkadedag voor Bronze en Fun Card)         |
+| zo 21 maart    | JoJo Siwa                                              |
+| za 27 maart    | Blue Öyster Cult (blokkadedag voor Bronze en Fun Card) |
+| za 3 april     | Lil Jon (blokkadedag voor Bronze en Fun Card)          |
+| zo 4 april     | Gavin DeGraw                                           |
+| za 10 april    | Justin Moore                                           |
+| zo 11 april    | Dru Hill, The History of R&B                           |
+| za 17 april    | Nicky Jam                                              |
+| zo 18 april    | Hot Chelle Rae en Echosmith                            |
+| za 24 april    | Taking Back Sunday                                     |
+| zo 25 april    | Soulja Boy                                             |
+| za 1 mei       | verrassingsartiest                                     |
+| zo 2 mei       | Scotty McCreery                                        |
+| za 8 mei       | verrassingsartiest                                     |
+| za 15 mei      | Luísa Sonza                                            |
+| zo 16 mei      | Grupo Manía                                            |
+
+## Vrije en gereserveerde plekken
+
+Voor de concerten heb je genoeg aan een parkticket of een jaarkaart. De vrije plaatsen in het stadion gaan naar wie het eerst komt, en zit het vol, dan kan de ingang dichtgaan. Zeker van een plek ben je met Reserved Concert Access, dat je bovenop je parkticket koopt, in drie niveaus:
+
+- Standard vanaf 9,99 dollar: een zitplaats in het midden van de onderste ring
+- Up-Close vanaf 14,99 dollar: het tweede vak op de vloer, achter Stagefront, met toegang tot de Floor Bar
+- Stagefront vanaf 24,99 dollar: het voorste vak op de vloer, vlak voor het podium, ook met Floor Bar
+
+Per concert is er een beperkt aantal gereserveerde plekken. Inchecken doe je voor alle drie de niveaus links van het podium, bij Pipeline: The Surf Coaster, vanaf 14.00 uur. De plaatsen zijn niet genummerd, dus binnen je vak geldt weer: wie het eerst komt. Bij 13 concerten, waaronder Flo Rida, Shaggy, Lil Jon en Luísa Sonza, zijn Stagefront en Up-Close staanplaatsen zonder stoelen. Drankjes aan de Floor Bar betaal je apart.
+
+Regen alleen is geen reden om een concert te stoppen. Komt er onweer aan, dan wordt het onderbroken, uitgesteld of naar binnen verplaatst, bijvoorbeeld naar het Nautilus Theater. Daar is soms minder plek, maar wie een gereserveerde plaats heeft, komt gegarandeerd binnen.
+
+Bij de Seven Seas VIP Tour van 2026 hoorde ook een gereserveerde plek, plus een proeflanyard voor vijf proeverijen en voorrang bij de attracties. Daarmee kon je zowel gerechten als drankjes proeven. De tour kostte vanaf 199,99 dollar; de prijs voor 2027 is nog niet bekend.
+
+## Tickets, jaarkaarten en blokkadedagen
+
+In de Black Friday-actie kost een dagticket online vanaf 61,99 dollar in plaats van 151,99 dollar, voor iedereen vanaf drie jaar. De Fun Card 2027 kost 104,99 dollar in plaats van 151,99 dollar, minder dan twee dagtickets, en geldt behalve op blokkadedagen. Voor de jaarkaarten betaal je 171 dollar per jaar voor Bronze, 198 voor Silver, 222 voor Gold en 351 voor Platinum. In maandtermijnen kan het vanaf 14,25 dollar.
+
+Met Bronze en de Fun Card kom je tijdens het festival op vier concertzaterdagen in maart en april niet binnen: 13, 20 en 27 maart en 3 april. Wil je met een Bronze-kaart naar Blue Öyster Cult, dan heb je een dagticket nodig of meteen Silver, want vanaf Silver zijn er in 2027 geen blokkadedagen. Op eten en drinken krijg je met Silver 5 procent korting, met Gold 10 en met Platinum 15 procent; met Bronze niets.
+
+Parkeren kost vanaf 35 dollar, en wie bij de slagboom betaalt, kan dat niet contant doen. Het park ligt aan 7007 Sea World Drive; vanaf de I-4 rijd je er via de Central Florida Parkway naartoe. In de buurt stopt buslijn 50 van Lynx. Hoe je SeaWorld met Disney en Universal in één vakantie combineert en welke combitickets er zijn, lees je in onze gids [Disney World en Universal Orlando in één reis plannen](/blog/orlando-vakantie-plannen).
+
+## Wat er anders is dan in 2026
+
+In 2026 stonden er 32 data op het programma, vijf daarvan met een verrassingsgast, en ook op zeven vrijdagen werd er gespeeld. In 2027 blijft het bij het weekend. Naast Flo Rida zijn ook Grupo Manía, Proyecto Uno en Soulja Boy net als in 2026 weer van de partij. De gereserveerde plekken heetten in 2026 Reserved Seating en kostten toen ook vanaf 9,99 dollar.
+
+Volgens parkdirecteur Brad Gilmour zijn in 2027 een paar gerechten door de muziek geïnspireerd. De kraampjes en menu's voor 2027 moet SeaWorld nog presenteren. Vorig jaar waren er meer dan 200 gerechten en drankjes, verdeeld over 29 kraampjes, waarvan acht nieuw.
+
+## Concerten in San Diego en San Antonio, SEAQuest in Orlando
+
+Samen met de zusterparken komt de concertreeks in 2027 op meer dan 50 shows. In [SeaWorld San Diego](ref:seaworld-san-diego) wordt van 20 maart tot 28 augustus op zaterdag om 18.00 uur gespeeld in het Bayside Amphitheater; gereserveerde plekken kosten daar vanaf 69,99 dollar. [SeaWorld San Antonio](ref:seaworld-san-antonio) heeft van 11 april tot 23 mei zeven data op zaterdag en zondag in het Nautilus Amphitheater, ook inbegrepen in de entree.
+
+In Orlando moet in 2027 ook SEAQuest: Legends of the Deep opengaan, een hangende darkride in een uitgebreid deel van het park, nog zonder datum. Via Passport to Thrills krijgen Pass Members eenmalig een Quick Queue voor SEAQuest als ze tussen 18 november en 31 december drie keer naar het park komen. Tot 4 januari loopt in SeaWorld Orlando nog de [Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026) met de orkashow Miracles.
+
+[SeaWorld Orlando](ref:seaworld-orlando?full)
+
+Bronnen:
+[Persbericht over de concerten van 2027 (pdf)](<https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo_2026-1119_pr-ssff-artist-announcement-(1).pdf>),
+[Seven Seas Food Festival](https://seaworld.com/orlando/events/seven-seas-food-festival/),
+[Concert Series](https://seaworld.com/orlando/events/concert-series/),
+[Reserved Concert Access](https://seaworld.com/orlando/events/concert-series/reserved-concert-access/),
+[Tickets voor het festival](https://seaworld.com/orlando/events/seven-seas-food-festival/buy-tickets/),
+[Openingstijden](https://seaworld.com/orlando/park-info/theme-park-hours/),
+[Aanbiedingen](https://seaworld.com/orlando/limited-time-offers/),
+[Voordelen van de jaarkaart](https://seaworld.com/orlando/annual-pass/benefits/),
+[Blokkadedagen](https://seaworld.com/orlando/annual-pass/blockout-dates/),
+[Persbericht over de jaarkaarten van 2027 (pdf)](https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo20260929pr-2027-annual-pass-launch-final-40-2.pdf),
+[Parkeren en upgrades](https://seaworld.com/orlando/upgrades/),
+[FAQ](https://seaworld.com/orlando/faq/),
+[Route](https://seaworld.com/orlando/park-info/directions/),
+[Menu's 2026](https://seaworld.com/orlando/events/seven-seas-food-festival/menus/),
+[Persbericht over het festival van 2026 (pdf)](https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo_2026-0126_pr-ssff-event-details-final.pdf),
+[Persbericht over de concerten van 2026 (pdf)](<https://seaworld.com/orlando/-/media/commercial/seaworld-orlando/files/pdfs/press-releases/swo_2026-0114_ssff-artist-lineup-announcement-final-(1).pdf>),
+[Concerten in SeaWorld San Diego](https://seaworld.com/san-diego/events/concert-series/),
+[Concerten in SeaWorld San Antonio](https://seaworld.com/san-antonio/events/concert-series/),
+[SEAQuest](https://seaworld.com/orlando/rides/sea-quest/),
+[Christmas Celebration](https://seaworld.com/orlando/events/christmas-celebration/).
