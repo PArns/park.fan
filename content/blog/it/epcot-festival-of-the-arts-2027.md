@@ -2,7 +2,7 @@
 title: 'EPCOT allunga di una settimana il Festival of the Arts 2027'
 translationKey: epcot-festival-of-the-arts-2027
 date: '2026-11-20'
-time: '18:40'
+time: '18:23'
 author: patrick
 mode: published
 featured: false
@@ -63,7 +63,7 @@ I concerti vanno in scena ogni sera alle 17:15, alle 18:30 e alle 19:45 all'Amer
 
 Marisha Wallace, Adam Pascal, Sherie Rene Scott, Norm Lewis, Mason Reeves e Ryan McCartan cantano per la prima volta all'America Gardens Theatre. Brown e Strickland festeggiano i 20 anni di «Mary Poppins» e «Tarzan» a Broadway. Michael James Scott ha fatto il Genio a Broadway più a lungo di chiunque altro.
 
-Nella CommuniCore Hall Disney allestisce la mostra «Once Upon A Stage: The Music of Disney on Broadway». Chi c'era nel 2026 il titolo lo conosce quasi: la mostra di allora si chiamava «Once Upon A Stage: The Magic of Disney on Broadway», questa volta si parla di canzoni. Nella sala c'è anche, per la prima volta, merchandise Disney on Broadway di «Hercules», «Aladdin», «Il re leone» e «La bella e la bestia».
+Nella CommuniCore Hall Disney allestisce la mostra «Once Upon A Stage: The Music of Disney on Broadway». Nel 2026 si chiamava «Once Upon A Stage: The Magic of Disney on Broadway». Disney ha cambiato una sola parola, e questa volta si parla di canzoni. Nella sala c'è anche, per la prima volta, merchandise Disney on Broadway di «Hercules», «Aladdin», «Il re leone» e «La bella e la bestia».
 
 ## Dining Package con posto garantito
 
@@ -75,13 +75,13 @@ Per gli adulti dai dieci anni in su si va dai 38 dollari del Regal Eagle Smokeho
 
 ```
 
-## Pittura, gessetti e 19 Food Studios
+## Arte da guardare e da fare
 
-Haley Talton, Nicky Nicotera e Robert Post debuttano, torna Darren Wilson, e ci sono anche Stephanie Laberis e William Silvers. All'Animation Academy, nell'America Gardens Theatre, i disegnatori Disney tengono lezioni di disegno. Nella Expression Section dipingi con i numeri su cinque murales, e uno di questi ha un soggetto di Lorcana.
+Tra gli artisti che espongono al festival, Haley Talton, Nicky Nicotera e Robert Post sono nuovi, torna Darren Wilson, e ci sono anche Stephanie Laberis e William Silvers. All'Animation Academy, nell'America Gardens Theatre, i disegnatori Disney ti mostrano come nasce un personaggio. Nella Expression Section dipingi con i numeri su cinque murales, e uno di questi ha un soggetto di Lorcana.
 
-Per il decimo compleanno del festival, che esiste dal 2017, sul ponte verso il World Showcase ci sono due nuovi set fotografici a tema Lorcana, «Champion Card Collage» e «Merlin's Shop and Smithy». Subito accanto si trovano le Chalk Art Galleries, con disegni fatti con i gessetti. Si mangia in 19 Food Studios, i cui menu devono ancora arrivare.
+Il festival compie dieci anni, e per festeggiare sul ponte verso il World Showcase ci sono due nuovi set fotografici a tema Lorcana, «Champion Card Collage» e «Merlin's Shop and Smithy». Subito accanto si trovano le Chalk Art Galleries, con disegni fatti con i gessetti. Si mangia in 19 Food Studios, i cui menu devono ancora arrivare.
 
-Nella guida per il tuo [viaggio a Orlando](/blog/viaggio-orlando-disney-universal) trovi quali vacanze scolastiche e festività cadono nelle settimane del festival, cos'altro succede a Orlando e quali biglietti vendono Disney e Universal.
+Nella guida per il tuo [viaggio a Orlando](/blog/viaggio-orlando-disney-universal) ti spieghiamo quali vacanze cadono nelle settimane del festival e quali biglietti ti servono per Disney e Universal.
 
 [EPCOT](ref:epcot?full)
 

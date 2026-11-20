@@ -2,7 +2,7 @@
 title: "EPCOT's Festival of the Arts runs a week longer in 2027"
 translationKey: epcot-festival-of-the-arts-2027
 date: '2026-11-20'
-time: '18:40'
+time: '18:23'
 author: patrick
 mode: published
 featured: false
@@ -63,7 +63,7 @@ The concerts run every evening at 5:15, 6:30 and 7:45 p.m. at the America Garden
 
 Marisha Wallace, Adam Pascal, Sherie Rene Scott, Norm Lewis, Mason Reeves and Ryan McCartan are singing at the America Gardens Theatre for the first time. Brown and Strickland mark 20 years of "Mary Poppins" and "Tarzan" on Broadway. Michael James Scott has played the Genie on Broadway longer than anyone else.
 
-At CommuniCore Hall, Disney shows the exhibition "Once Upon A Stage: The Music of Disney on Broadway". If you went in 2026, the title will sound familiar: that year's exhibition was "Once Upon A Stage: The Magic of Disney on Broadway", and this time it's about the songs. The hall also has Disney on Broadway merchandise for the first time, from "Hercules", "Aladdin", "The Lion King" and "Beauty and the Beast".
+At CommuniCore Hall, Disney shows the exhibition "Once Upon A Stage: The Music of Disney on Broadway". In 2026 it was "Once Upon A Stage: The Magic of Disney on Broadway", so Disney swapped one word, and this time it's about the songs. The hall also has Disney on Broadway merchandise for the first time, from "Hercules", "Aladdin", "The Lion King" and "Beauty and the Beast".
 
 ## Dining packages with a guaranteed seat
 
@@ -75,13 +75,13 @@ Adults aged ten and up pay from $38 at Regal Eagle Smokehouse to $104 at Le Cell
 
 ```
 
-## Painting, chalk and 19 Food Studios
+## Art to look at and join in
 
-Haley Talton, Nicky Nicotera and Robert Post are new this year, Darren Wilson is back, and Stephanie Laberis and William Silvers are exhibiting too. At the Animation Academy in the America Gardens Theatre, Disney artists teach drawing classes. In the Expression Section you help paint by numbers on five murals, one of them with a Lorcana motif.
+Among the artists exhibiting at the festival, Haley Talton, Nicky Nicotera and Robert Post are new, Darren Wilson is back, and Stephanie Laberis and William Silvers are exhibiting too. At the Animation Academy in the America Gardens Theatre, Disney artists show you how a character comes together on paper. In the Expression Section you help paint by numbers on five murals, one of them with a Lorcana motif.
 
-For the tenth birthday of the festival, which has been running since 2017, the bridge to World Showcase gets two new Lorcana photo backdrops, "Champion Card Collage" and "Merlin's Shop and Smithy". Right next to them are the Chalk Art Galleries, full of pictures in pavement chalk. Festival food comes from 19 Food Studios, whose menus are still to come.
+The festival turns ten, and for the occasion the bridge to World Showcase gets two new Lorcana photo backdrops, "Champion Card Collage" and "Merlin's Shop and Smithy". Right next to them are the Chalk Art Galleries, full of pictures in pavement chalk. Festival food comes from 19 Food Studios, whose menus are still to come.
 
-Our [Orlando itinerary guide](/blog/orlando-itinerary-disney-universal) covers which school and public holidays fall in the festival weeks, what else is on in Orlando, and which tickets Disney and Universal sell.
+Our [Orlando itinerary guide](/blog/orlando-itinerary-disney-universal) lists the school holidays in the festival weeks and the tickets you'll need for Disney and Universal.
 
 [EPCOT](ref:epcot?full)
 

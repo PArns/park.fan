@@ -2,7 +2,7 @@
 title: 'Festival of the Arts in EPCOT duurt in 2027 een week langer'
 translationKey: epcot-festival-of-the-arts-2027
 date: '2026-11-20'
-time: '18:40'
+time: '18:23'
 author: patrick
 mode: published
 featured: false
@@ -63,7 +63,7 @@ De concerten zijn elke avond om 17.15, 18.30 en 19.45 uur in het America Gardens
 
 Marisha Wallace, Adam Pascal, Sherie Rene Scott, Norm Lewis, Mason Reeves en Ryan McCartan zingen voor het eerst in het America Gardens Theatre. Brown en Strickland vieren twintig jaar “Mary Poppins” en “Tarzan” op Broadway. Michael James Scott speelde de Geest op Broadway langer dan wie ook.
 
-In de CommuniCore Hall staat de tentoonstelling “Once Upon A Stage: The Music of Disney on Broadway”. Wie er in 2026 was, kent de titel bijna: de tentoonstelling heette toen “Once Upon A Stage: The Magic of Disney on Broadway”, nu draait het om de liedjes. In de hal ligt ook voor het eerst merchandise van Disney on Broadway rond “Hercules”, “Aladdin”, “De Leeuwenkoning” en “Belle en het Beest”.
+In de CommuniCore Hall staat de tentoonstelling “Once Upon A Stage: The Music of Disney on Broadway”. In 2026 heette ze nog “Once Upon A Stage: The Magic of Disney on Broadway”. Disney heeft één woord verwisseld, en deze keer draait het om de liedjes. In de hal ligt ook voor het eerst merchandise van Disney on Broadway rond “Hercules”, “Aladdin”, “De Leeuwenkoning” en “Belle en het Beest”.
 
 ## Dining Packages met een gegarandeerde zitplaats
 
@@ -75,13 +75,13 @@ Volwassenen vanaf tien jaar betalen van 38 dollar in het Regal Eagle Smokehouse 
 
 ```
 
-## Schilderen, krijt en 19 Food Studios
+## Kunst om te bekijken en zelf te maken
 
-Haley Talton, Nicky Nicotera en Robert Post zijn nieuw, Darren Wilson is er weer, en ook Stephanie Laberis en William Silvers stellen tentoon. In de Animation Academy in het America Gardens Theatre geven tekenaars van Disney tekenles. In de Expression Section schilder je op nummer mee aan vijf muurschilderingen, waarvan één een motief uit Lorcana toont.
+Onder de kunstenaars die op het festival exposeren, zijn Haley Talton, Nicky Nicotera en Robert Post nieuw, Darren Wilson is er weer, en ook Stephanie Laberis en William Silvers stellen tentoon. In de Animation Academy in het America Gardens Theatre laten tekenaars van Disney je zien hoe een personage ontstaat. In de Expression Section schilder je op nummer mee aan vijf muurschilderingen, waarvan één een motief uit Lorcana toont.
 
-Voor de tiende verjaardag van het festival, dat sinds 2017 bestaat, staan op de brug naar World Showcase twee nieuwe Lorcana-fotodecors, “Champion Card Collage” en “Merlin's Shop and Smithy”. Vlak ernaast liggen de Chalk Art Galleries, met tekeningen in stoepkrijt. Festivaleten haal je bij 19 Food Studios, waarvan de menukaarten nog moeten komen.
+Het festival wordt tien, en voor die verjaardag staan op de brug naar World Showcase twee nieuwe Lorcana-fotodecors, “Champion Card Collage” en “Merlin's Shop and Smithy”. Vlak ernaast liggen de Chalk Art Galleries, met tekeningen in stoepkrijt. Festivaleten haal je bij 19 Food Studios, waarvan de menukaarten nog moeten komen.
 
-In onze gids voor je [vakantie in Orlando](/blog/orlando-vakantie-plannen) lees je welke schoolvakanties en feestdagen in de festivalweken vallen, wat er verder in Orlando te doen is en welke tickets Disney en Universal verkopen.
+Welke vakanties in de festivalweken vallen en welke tickets je voor Disney en Universal nodig hebt, lees je in onze gids voor je [vakantie in Orlando](/blog/orlando-vakantie-plannen).
 
 [EPCOT](ref:epcot?full)
 
