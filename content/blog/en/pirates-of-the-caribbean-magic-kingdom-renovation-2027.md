@@ -2,7 +2,7 @@
 title: 'Magic Kingdom closes Pirates for most of 2027'
 translationKey: pirates-of-the-caribbean-magic-kingdom-renovierung-2027
 date: '2026-11-20'
-time: '07:30'
+time: '07:53'
 author: patrick
 mode: published
 featured: false

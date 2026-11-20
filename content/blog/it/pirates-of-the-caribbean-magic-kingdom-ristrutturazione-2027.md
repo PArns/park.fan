@@ -2,7 +2,7 @@
 title: 'Pirates al Magic Kingdom resta chiusa quasi tutto il 2027'
 translationKey: pirates-of-the-caribbean-magic-kingdom-renovierung-2027
 date: '2026-11-20'
-time: '07:30'
+time: '07:53'
 author: patrick
 mode: published
 featured: false
@@ -39,7 +39,7 @@ L'11 gennaio 2027 [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-t
 
 ## L'ultimo giorno per salire è il 10 gennaio
 
-A Natale, a Capodanno e nella prima settimana di gennaio l'attrazione gira ancora. Le serate di Disney After Hours, con un biglietto a parte, partono al Magic Kingdom proprio l'11 gennaio, il primo giorno di licenza dei pirati. Qualunque serata tu prenoti tra le date scelte fino al 19 luglio, Pirates non ci sarà.
+A Natale, a Capodanno e nella prima settimana di gennaio l'attrazione gira ancora. Le serate di Disney After Hours, con un biglietto a parte, partono al Magic Kingdom proprio l'11 gennaio, il primo giorno di licenza dei pirati, e vanno avanti in serate scelte fino al 19 luglio, tutte senza Pirates.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -51,13 +51,13 @@ In primavera, oltre a Pirates, manca anche il Carousel of Progress di Tomorrowla
 
 ```
 
-## Cosa cambia e chi ci perde di più
+## Cosa dice Disney degli effetti e chi ci perde di più
 
 Il Parks Blog la chiama una pausa di routine, e sugli effetti dice solo che «partiranno dalla storia dell'attrazione». Per una storia fatta di cannonate e di una città in fiamme, lascia aperte parecchie strade.
 
-Ci perdono soprattutto le famiglie, perché Pirates non ha un'altezza minima. In barca giri per circa otto minuti e mezzo tra i porti caraibici del Seicento: passi davanti a una baia di fantasmi, scivoli tra un forte e un galeone che si prendono a cannonate e attraversi una città in fiamme. Capitan Jack Sparrow, quello dei film, compare in tre scene. A un certo punto la barca scende di poco più di quattro metri. Il giro comincia già in coda, che passa dentro il Castillo del Morro, un forte modellato sulla fortezza di San Juan, a Porto Rico. All'uscita ti porti via gratis anche «Yo Ho, Yo Ho (A Pirate's Life for Me)», che resta in testa più a lungo di qualsiasi souvenir.
+Ci perdono soprattutto le famiglie, perché Pirates non ha un'altezza minima. In barca giri per circa otto minuti e mezzo tra i porti caraibici del Seicento: passi davanti a una baia di fantasmi, scivoli tra un forte e un galeone che si prendono a cannonate e attraversi una città in fiamme. Capitan Jack Sparrow, quello dei film, compare in tre scene. A un certo punto la barca scende di poco più di quattro metri. La coda si fa dentro il Castillo del Morro, un forte modellato sulla fortezza di San Juan, a Porto Rico. Lungo il percorso canti anche tu la canzone dei pirati «Yo Ho, Yo Ho (A Pirate's Life for Me)».
 
-Anche per una vacanza nell'autunno 2027 non conterei su Pirates, perché «verso la fine del 2027» arriva fino a San Silvestro. Il tempo che avresti passato in coda per i pirati quel giorno va alle [attrazioni con le code più lunghe](/blog/magic-kingdom-tempi-di-attesa-consigli). Se a dicembre 2027 speri ancora nei pirati, metti la giornata al Magic Kingdom alla fine del viaggio. In che ordine fare prima Universal e gli altri parchi Disney lo spiega la guida al [viaggio a Orlando tra Disney World e Universal](/blog/viaggio-orlando-disney-universal).
+Anche per una vacanza nell'autunno 2027 non conterei su Pirates, perché «verso la fine del 2027» arriva fino a San Silvestro. Il tempo della coda per i pirati mettilo in una delle [attrazioni con le code più lunghe](/blog/magic-kingdom-tempi-di-attesa-consigli). Se a dicembre 2027 speri ancora nei pirati, metti la giornata al Magic Kingdom alla fine del viaggio. Universal e gli altri parchi Disney vengono prima, nell'ordine che trovi nella guida al [viaggio a Orlando tra Disney World e Universal](/blog/viaggio-orlando-disney-universal).
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -65,7 +65,7 @@ Anche per una vacanza nell'autunno 2027 non conterei su Pirates, perché «verso
 
 ## In Adventureland i pirati restano lo stesso
 
-In Adventureland rimane aperta The Beak and Barrel, la taverna dei pirati inaugurata il 29 agosto 2025. Secondo la storia del locale l'hanno fondata la contrabbandiera di rum Captain Meridian «Merry» Goldwyn e il suo primo ufficiale Rummy, che somiglia al Barker Bird che una volta stava all'ingresso di Pirates. Possono entrare anche i bambini, e due dei drink sono analcolici. Si può prenotare un tavolo. Maglietta e pappagallo di peluche li vende il negozio accanto, il Plaza del Sol Caribe Bazaar.
+In Adventureland rimane aperta The Beak and Barrel, la taverna dei pirati inaugurata il 29 agosto 2025. Secondo la storia del locale l'hanno fondata la contrabbandiera di rum Captain Meridian «Merry» Goldwyn e il suo primo ufficiale Rummy, che somiglia al Barker Bird che una volta stava all'ingresso di Pirates. Possono entrare anche i bambini, due dei drink sono analcolici e un tavolo si può prenotare in anticipo. Magliette e pappagalli di peluche li vende il negozio accanto, il Plaza del Sol Caribe Bazaar.
 
 ## Un'attrazione che in Florida all'inizio non doveva esserci
 
@@ -73,7 +73,7 @@ La prima Pirates ha aperto nel 1967 a Disneyland, in California. È stata una de
 
 Per il Magic Kingdom, aperto nel 1971, Disney in un primo momento non aveva previsto pirati, perché un giro nei Caraibi a due passi dai Caraibi veri non avrebbe avuto lo stesso fascino che in California. Sulla recinzione del cantiere c'era scritto «Opening Christmas 1973», e il 15 dicembre 1973 sono partite le prime barche. Nel 2006 Disney ha aggiunto Jack Sparrow, e nel 2018 l'attrazione ha avuto una nuova scena dell'asta, in cui i pirati mettono all'incanto il bottino invece di una sposa.
 
-Disney racconta come è nata Pirates nella puntata «Storytelling» della serie video «We Call It Imagineering», sul canale YouTube di Walt Disney Imagineering e poi anche su Disney+. Per il Magic Kingdom, in quella puntata conta soprattutto Piston Peak National Park, l'area di Cars che sta nascendo su una parte di quella che era Frontierland. C'è anche la nuova storia di Indiana Jones, «Indiana Jones and the Myth of the Jade Serpent».
+Disney racconta come è nata Pirates nella puntata «Storytelling» della serie video «We Call It Imagineering», sul canale YouTube di Walt Disney Imagineering e poi anche su Disney+. La stessa puntata mostra anche Piston Peak National Park, l'area di Cars che sta nascendo su una parte di quella che era Frontierland, e la nuova storia di Indiana Jones, «Indiana Jones and the Myth of the Jade Serpent».
 
 Fonti:
 [Pirates of the Caribbean su disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),

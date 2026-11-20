@@ -2,7 +2,7 @@
 title: 'Pirates im Magic Kingdom pausiert 2027 fast ein Jahr'
 translationKey: pirates-of-the-caribbean-magic-kingdom-renovierung-2027
 date: '2026-11-20'
-time: '07:30'
+time: '07:53'
 author: patrick
 mode: published
 featured: false
