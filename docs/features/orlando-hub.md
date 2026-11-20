@@ -143,16 +143,17 @@ visitor ticks off where they have been, and the tip moves on to a park not seen 
 - **The look.** An empty ring while a park is ahead, a filled circle with a check in the site's
   "open" green once it is done, the ridden rides' colour (`VisitedMark`). A tick springs once when
   pressed (`visited-pop`, `motion-safe`), never when the ticks arrive after hydration.
-- **Where it lives.** localStorage only (`parkfan_<region>_visited`: each park's slug with the
-  region's date it was ticked), never the server; the privacy policy names it. A tick older than
+- **Where it lives.** localStorage (`parkfan_<region>_visited`: each park's slug with the
+  region's date it was ticked), which the privacy policy names; only a signed-in visitor's account
+  keeps a copy. A tick older than
   the longest trip the planner plans (`MAX_TRIP_DAYS`, 21 days) counts no more, so last year's
   visit says nothing about this one. „Reise löschen“ and „Neue Reise planen“ drop the region's
   ticks with the rest of the trip (`clearTrip`), and „Rückgängig“ brings them back. The served
   page has nothing ticked, so it is the same for everybody, and the ticks arrive in one batch
   after hydration.
-- **No account sync yet.** The visitor account carries favorites and ridden rides across devices
-  (`lib/account/state.ts`); ticks of visited parks would need a field of their own in the API's
-  account data.
+- **On every device of a signed-in visitor.** The visitor account carries the ticks like the
+  ridden rides ([visitor accounts](visitor-accounts.md#how-the-sync-works)), as the API's
+  `visitedParks` (`{ region, park, date }`); a park ticked on two devices keeps the later date.
 
 ## Two states
 

@@ -6495,7 +6495,7 @@
     "syncNow": "Jetzt abgleichen",
     "syncedAt": "Zuletzt abgeglichen: {when}",
     "neverSynced": "Noch nicht abgeglichen",
-    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
+    "whatSyncs": "Abgeglichen werden Favoriten, gefahrene Attraktionen, die auf einer Reise abgehakten Parks und °C oder °F. Dein Tagesplan und deine Erinnerungen bleiben auf dem Gerät, auf dem du sie angelegt hast.",
     "auth": {
       "registerTitle": "Konto anlegen",
       "registerLead": "Deine Favoriten und gefahrenen Attraktionen auf jedem Gerät. Kostenlos, ohne Werbung.",

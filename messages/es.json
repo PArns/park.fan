@@ -6495,7 +6495,7 @@
     "syncNow": "Sincronizar ahora",
     "syncedAt": "Última sincronización: {when}",
     "neverSynced": "Aún sin sincronizar",
-    "whatSyncs": "Se sincronizan los favoritos, las atracciones en las que ya montaste y °C o °F. Tu plan del día y tus avisos se quedan en el dispositivo donde los creaste.",
+    "whatSyncs": "Se sincronizan los favoritos, las atracciones en las que ya montaste, los parques ya visitados en un viaje y °C o °F. Tu plan del día y tus avisos se quedan en el dispositivo donde los creaste.",
     "auth": {
       "registerTitle": "Crear una cuenta",
       "registerLead": "Tus favoritos y atracciones montadas en todos tus dispositivos. Gratis y sin anuncios.",

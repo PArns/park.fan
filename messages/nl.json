@@ -6495,7 +6495,7 @@
     "syncNow": "Nu synchroniseren",
     "syncedAt": "Laatst gesynchroniseerd: {when}",
     "neverSynced": "Nog niet gesynchroniseerd",
-    "whatSyncs": "Favorieten, attracties waarin je zat en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
+    "whatSyncs": "Favorieten, attracties waarin je zat, de parken die je op een reis hebt afgevinkt en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
     "auth": {
       "registerTitle": "Account aanmaken",
       "registerLead": "Je favorieten en attracties op elk apparaat. Gratis, zonder reclame.",

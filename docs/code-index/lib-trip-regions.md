@@ -640,7 +640,10 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 - `parseVisited` _function_: A stored value read leniently: a hand-edited or broken entry costs only itself.
 - `visitedOn` _function_: The parks that count as visited on the region's `today`: a tick older than the longest trip the planner plans (`MAX_TRIP_DAYS`) was made on an earlier trip, and last year's visit says nothing about where to go this time.
 - `visitedParks` _function_: The `VisitedParks` of a region, one per region and page.
-- Types: `VisitedRecord`, `VisitedParks`
+- `readAllVisited` _function_: Every tick of this browser, in every region, for the visitor account's sync.
+- `replaceAllVisited` _function_: Puts the account's ticks in place of this browser's, in every region either side knows.
+- `subscribeToAnyVisited` _function_: Calls `listener` when a park is ticked in any region, here or in another tab.
+- Types: `VisitedRecord`, `VisitedPark`, `VisitedParks`
 
 ### [`wizard-choices.ts`](../../lib/trip-regions/wizard-choices.ts)
 

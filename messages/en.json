@@ -6495,7 +6495,7 @@
     "syncNow": "Sync now",
     "syncedAt": "Last synced: {when}",
     "neverSynced": "Not synced yet",
-    "whatSyncs": "Favorites, ridden rides and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
+    "whatSyncs": "Favorites, ridden rides, the parks ticked off on a trip and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
     "auth": {
       "registerTitle": "Create an account",
       "registerLead": "Your favorites and ridden rides on every device. Free, without ads.",

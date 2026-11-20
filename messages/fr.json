@@ -6495,7 +6495,7 @@
     "syncNow": "Synchroniser",
     "syncedAt": "Dernière synchronisation : {when}",
     "neverSynced": "Pas encore synchronisé",
-    "whatSyncs": "Les favoris, les attractions déjà faites et °C ou °F sont synchronisés. Votre planning de journée et vos alertes restent sur l’appareil où vous les avez créés.",
+    "whatSyncs": "Les favoris, les attractions déjà faites, les parcs déjà visités lors d’un voyage et °C ou °F sont synchronisés. Votre planning de journée et vos alertes restent sur l’appareil où vous les avez créés.",
     "auth": {
       "registerTitle": "Créer un compte",
       "registerLead": "Vos favoris et attractions faites sur tous vos appareils. Gratuit, sans publicité.",

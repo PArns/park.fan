@@ -23,6 +23,10 @@ const storage = () => {
     getItem: (k) => (map.has(k) ? map.get(k) : null),
     setItem: (k, v) => map.set(k, String(v)),
     removeItem: (k) => map.delete(k),
+    key: (i) => [...map.keys()][i] ?? null,
+    get length() {
+      return map.size;
+    },
   };
 };
 const ORIGIN = 'https://park.fan';
@@ -48,7 +52,8 @@ const { rememberParty, rememberTrip, rememberedTrip } =
   await import('@/lib/trip-regions/remembered-trip.ts');
 const { tripWizardAnswered } = await import('@/lib/trip-regions/planner-ui.ts');
 const { tripTicketAnswer } = await import('@/lib/trip-regions/ticket-answer.ts');
-const { visitedParks } = await import('@/lib/trip-regions/visited-parks.ts');
+const { readAllVisited, replaceAllVisited, visitedParks } =
+  await import('@/lib/trip-regions/visited-parks.ts');
 const { interviewStore } = await import('@/lib/assistant/interview.ts');
 const { rememberTripChange, takeTripUndo } = await import('@/lib/assistant/trip-context.ts');
 const { onSiteEvent } = await import('@/lib/analytics/site-analytics.ts');
@@ -103,8 +108,8 @@ function seed() {
   tripWizardAnswered.mark('japan', ['route']);
   tripTicketAnswer('orlando').set('no');
   tripTicketAnswer('japan').set('yes');
-  visitedParks('orlando').toggle('epcot', '2027-10-15');
-  visitedParks('japan').toggle('tokyo-disneyland', '2027-04-02');
+  visitedParks('orlando').replace({ epcot: '2027-10-15' });
+  visitedParks('japan').replace({ 'tokyo-disneyland': '2027-04-02' });
   interviewStore.set(interview);
   rememberTripChange('orlando', '', TRIP);
 }
@@ -184,5 +189,33 @@ check(href(), '/de/orlando', "the address bar's query goes all the same");
 check(interviewStore.getSnapshot()?.region, 'japan', "another region's interview runs on");
 cleared.restore();
 check(href(), `/de/orlando?${TRIP}#calendar-2027-10-16`, 'and the undo puts it back as it was');
+
+console.log('\nThe ticks of every region, as the visitor account syncs them');
+const byRegion = (visits) =>
+  [...visits].sort((a, b) => `${a.region}${a.park}`.localeCompare(`${b.region}${b.park}`));
+check(
+  byRegion(readAllVisited()),
+  [
+    { region: 'japan', park: 'tokyo-disneyland', date: '2027-04-02' },
+    { region: 'orlando', park: 'epcot', date: '2027-10-15' },
+  ],
+  "every region's ticks are read"
+);
+replaceAllVisited([
+  { region: 'orlando', park: 'magic-kingdom-park', date: '2027-10-16' },
+  { region: 'orlando', park: 'Bad Slug', date: '2027-10-16' },
+]);
+check(
+  visitedParks('orlando').getSnapshot(),
+  { 'magic-kingdom-park': '2027-10-16' },
+  "the account's copy replaces this browser's, a broken entry left out"
+);
+check(visitedParks('japan').getSnapshot(), {}, 'a region the account has no ticks for is emptied');
+visitedParks('orlando').toggle('epcot', '2027-11-20');
+check(
+  visitedParks('orlando').getSnapshot(),
+  { epcot: '2027-11-20' },
+  'a tick drops the ones of an earlier trip, so the account never collects them'
+);
 
 console.log(`\n${passed} passed`);

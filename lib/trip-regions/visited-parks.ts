@@ -3,15 +3,22 @@ import { MAX_TRIP_DAYS } from './plan-query';
 
 /*
  * The parks a visitor has ticked off in a region's hub as already visited, so the day's tip and
- * each resort's park move on to one not seen yet. Kept per region in localStorage, never on the
- * server, as each park's slug with the region's date it was ticked; „Reise löschen“ drops it with
- * the rest of the trip (`clearTrip`). The server and hydration read none
- * (`getServerSnapshot`), so the served page is the same for every visitor and the ticks arrive
- * in one batch after hydration.
+ * each resort's park move on to one not seen yet. Kept per region in localStorage, as each park's
+ * slug with the region's date it was ticked; „Reise löschen“ drops it with the rest of the trip
+ * (`clearTrip`). Only a signed-in visitor's account carries a copy to their other devices
+ * (`lib/account/sync.ts`). The server render and hydration read none (`getServerSnapshot`), so
+ * the served page is the same for every visitor and the ticks arrive in one batch after hydration.
  */
 
 /** Each ticked park's slug with the region's date it was ticked (`YYYY-MM-DD`). */
 export type VisitedRecord = Readonly<Record<string, string>>;
+
+/** A park ticked off in a region, as the visitor account carries it across devices. */
+export interface VisitedPark {
+  region: string;
+  park: string;
+  date: string;
+}
 
 const NONE: VisitedRecord = Object.freeze({});
 const NO_PARKS: ReadonlySet<string> = new Set();
@@ -20,6 +27,12 @@ const DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 /** Where a region's ticks live. */
 export const visitedKey = (region: string) => `parkfan_${region}_visited`;
+
+/** A key {@link visitedKey} wrote, with its region. */
+const VISITED_KEY = /^parkfan_([a-z0-9-]{1,40})_visited$/;
+
+/** Who hears a tick in any region: the visitor account's sync. */
+const anyListeners = new Set<() => void>();
 
 /** A stored value read leniently: a hand-edited or broken entry costs only itself. */
 export function parseVisited(raw: string | null): VisitedRecord {
@@ -61,6 +74,8 @@ export interface VisitedParks {
   toggle(slug: string, today: string): boolean;
   /** Drops every tick of the region and returns how to put them back. */
   forget(): () => void;
+  /** Takes the account's copy of the region's ticks, replacing this browser's. */
+  replace(record: VisitedRecord): void;
 }
 
 const stores = new Map<string, VisitedParks>();
@@ -100,6 +115,7 @@ export function visitedParks(region: string): VisitedParks {
       cached = next;
     }
     for (const listener of listeners) listener();
+    for (const listener of anyListeners) listener();
   };
 
   store = {
@@ -117,8 +133,13 @@ export function visitedParks(region: string): VisitedParks {
     getSnapshot,
     getServerSnapshot: () => NONE,
     toggle(slug, today) {
-      const next: Record<string, string> = { ...getSnapshot() };
-      const ticked = !visitedOn(next, today).has(slug);
+      // Ticks of an earlier trip go with the next write, so neither the browser nor the account
+      // collects them.
+      const active = visitedOn(getSnapshot(), today);
+      const next: Record<string, string> = Object.fromEntries(
+        Object.entries(getSnapshot()).filter(([park]) => active.has(park))
+      );
+      const ticked = !active.has(slug);
       if (ticked) next[slug] = today;
       else delete next[slug];
       write(Object.freeze(next));
@@ -130,7 +151,60 @@ export function visitedParks(region: string): VisitedParks {
       write(NONE);
       return () => write(kept);
     },
+    replace(record) {
+      write(Object.keys(record).length > 0 ? Object.freeze({ ...record }) : NONE);
+    },
   };
   stores.set(region, store);
   return store;
+}
+
+/** The regions this browser keeps ticks for. */
+function storedRegions(): string[] {
+  const regions: string[] = [];
+  try {
+    for (let i = 0; i < window.localStorage.length; i++) {
+      const region = VISITED_KEY.exec(window.localStorage.key(i) ?? '')?.[1];
+      if (region) regions.push(region);
+    }
+  } catch {
+    // Blocked storage: no ticks here.
+  }
+  return regions;
+}
+
+/** Every tick of this browser, in every region, for the visitor account's sync. */
+export function readAllVisited(): VisitedPark[] {
+  return storedRegions().flatMap((region) =>
+    Object.entries(visitedParks(region).getSnapshot()).map(([park, date]) => ({
+      region,
+      park,
+      date,
+    }))
+  );
+}
+
+/** Puts the account's ticks in place of this browser's, in every region either side knows. */
+export function replaceAllVisited(visits: readonly VisitedPark[]): void {
+  const byRegion = new Map<string, Record<string, string>>();
+  for (const { region, park, date } of visits) {
+    if (!SLUG.test(region) || !SLUG.test(park) || !DATE.test(date)) continue;
+    byRegion.set(region, { ...byRegion.get(region), [park]: date });
+  }
+  for (const region of new Set([...storedRegions(), ...byRegion.keys()])) {
+    visitedParks(region).replace(byRegion.get(region) ?? NONE);
+  }
+}
+
+/** Calls `listener` when a park is ticked in any region, here or in another tab. */
+export function subscribeToAnyVisited(listener: () => void): () => void {
+  anyListeners.add(listener);
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === null || VISITED_KEY.test(event.key)) listener();
+  };
+  window.addEventListener('storage', onStorage);
+  return () => {
+    anyListeners.delete(listener);
+    window.removeEventListener('storage', onStorage);
+  };
 }
