@@ -6,12 +6,14 @@ import { linkBlockAttributes, linkEntityAttributes } from '@/lib/analytics/inter
 import {
   closesEarly,
   dayGuestClose,
+  dayPick,
   formatHubDate,
   glanceLines,
   headlinerGroups,
   parkCalendarHref,
   shortGroupName,
   shortParkName,
+  tintLevel,
   type ResortMonthSummary,
 } from '@/lib/trip-regions/hub-data';
 import { shownWait } from '@/lib/trip-regions/plan-week';
@@ -28,11 +30,12 @@ const GLANCE_BOX =
 const ROW = 'grid gap-x-4 gap-y-0.5 sm:grid-cols-[minmax(0,11rem)_1fr]';
 
 /**
- * The hub's first answer, under its two buttons: the best park of each group with a headliner on
- * one day, by its date in the region's time and never as "today", because a cached copy outlives
- * midnight there; then the quietest days of the window, a date said once where the resorts share
- * it. Minutes only, no crowd badge: the badge compares a park with its own normal day, and beside
- * "best park" it read as a contradiction.
+ * The hub's first answer, under its two buttons: the day's one tip (`dayPick`) with how its day
+ * compares to a normal one there, then the best park of each group with a headliner on that day,
+ * by its date in the region's time and never as "today", because a cached copy outlives midnight
+ * there; then the quietest days of the window, a date said once where the resorts share it. The
+ * level is said in words beside the tip, which was picked on it, and nowhere else: a badge "high"
+ * beside each resort's best park read as a contradiction.
  */
 export async function HubGlance({
   day,
@@ -52,6 +55,8 @@ export async function HubGlance({
   const tRegion = await getRegionTranslations(region.slug, 'hub.glance');
   const { timezone } = requireTripRegion(region.slug);
   const lines = day ? glanceLines(day, region) : [];
+  const pick = day ? dayPick(day, region) : null;
+  const pickLevel = pick ? tintLevel(pick.day.crowdLevel) : null;
   const zone = ownWords(tRegion, 'zone');
   const named = new Set(headlinerGroups(region).map((g) => g.key));
   const quiet = summaries
@@ -70,19 +75,53 @@ export async function HubGlance({
   const minutes = (value: number) => (
     <span className="tabular-nums">{t('minutes', { minutes: value })}</span>
   );
+  const dated = (key: 'best' | 'pick') => (
+    <>
+      {t.rich(key, {
+        date: formatHubDate(day.date, locale),
+        time: (chunks) => <time dateTime={day.date}>{chunks}</time>,
+      })}
+      {zone ? `, ${zone}` : ''}
+    </>
+  );
   return (
     <dl
       className={cn(GLANCE_BOX, 'space-y-2 text-base')}
       data-trip-glance=""
       {...linkBlockAttributes('trip_answer')}
     >
+      {pick && (
+        <div className={ROW} data-trip-day-pick="">
+          <dt className="text-muted-foreground pt-0.5 text-sm">{dated('pick')}</dt>
+          <dd>
+            <Link
+              href={parkCalendarHref(pick.park, locale)}
+              prefetch={false}
+              className="text-foreground font-semibold underline-offset-4 hover:underline"
+              {...linkEntityAttributes(pick.park.id)}
+            >
+              {shortParkName(pick.park.name)}
+            </Link>{' '}
+            {minutes(shownWait(pick.day)!)}
+            {pickLevel && (
+              <span className="text-muted-foreground text-sm">
+                , {t('pickLevel', { level: pickLevel })}
+              </span>
+            )}
+            {closesEarly(pick.day) && dayGuestClose(pick.day) && (
+              <span className="text-muted-foreground text-sm">
+                {' '}
+                {t('closesEarly', {
+                  time: formatClockTime(dayGuestClose(pick.day)!, locale, timezone),
+                })}
+              </span>
+            )}
+          </dd>
+        </div>
+      )}
       <div className={ROW}>
         <dt className="text-muted-foreground pt-0.5 text-sm">
-          {t.rich('best', {
-            date: formatHubDate(day.date, locale),
-            time: (chunks) => <time dateTime={day.date}>{chunks}</time>,
-          })}
-          {zone ? `, ${zone}` : ''}
+          {pick ? t('perResort') : dated('best')}
         </dt>
         <dd className="flex flex-wrap gap-x-3 gap-y-0.5">
           {lines.map(({ group, park, day: parkDay, earlyElsewhere }) => (

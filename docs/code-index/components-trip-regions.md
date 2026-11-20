@@ -57,7 +57,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
-- `HubGlance` _component_: The hub's first answer, under its two buttons: the best park of each group with a headliner on one day, by its date in the region's time and never as "today", because a cached copy outlives midnight there; then the quietest days of the …
+- `HubGlance` _component_: The hub's first answer, under its two buttons: the day's one tip (`dayPick`) with how its day compares to a normal one there, then the best park of each group with a headliner on that day, by its date in the region's time and never as …
 - `MonthGlance` _component_: A month page's first answer: each resort's quietest dates that month, and the park with the shortest lines on the first of them. On a month past the forecast the dates are last year's, said so in the title and never offered as picks.
 
 ### [`hub/hub-hero-action.tsx`](../../components/trip-regions/hub/hub-hero-action.tsx)

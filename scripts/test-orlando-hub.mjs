@@ -20,6 +20,7 @@ import {
   hubWeeks,
   yearLine,
   isRankable,
+  dayPick,
   glanceDay,
   glanceLines,
   quietestDay,
@@ -262,6 +263,45 @@ test('a headliner group of one park is answered by that park', () => {
   const line = glanceLines(day, lone).find((l) => l.group.key === 'lone');
   assert.equal(line?.park.slug, 'busch-gardens-tampa');
   assert.equal(line?.day.headlinerWait, 25);
+});
+
+test('the day pick is never a park that is always quiet', () => {
+  const day = structuredClone(calendar.days[0]);
+  // SeaWorld, LEGOLAND and Busch Gardens have the shortest lines and the lowest level on the day.
+  for (const slug of ['seaworld-orlando', 'legoland-florida', 'busch-gardens-tampa']) {
+    assert.equal(day.parks[slug].crowdLevel, 'very_low');
+  }
+  const pick = dayPick(day, region);
+  assert.ok(pick, 'a day with resort picks has a day pick');
+  assert.ok(pick.park.headliner, `${pick.park.slug} is a headliner`);
+  assert.ok(['walt-disney-world', 'universal-orlando'].includes(pick.group.key));
+});
+
+test('the day pick weighs each park against its own normal day before its minutes', () => {
+  const day = structuredClone(calendar.days[0]);
+  day.best = {
+    'walt-disney-world': 'magic-kingdom-park',
+    'universal-orlando': 'universal-studios-florida',
+  };
+  Object.assign(day.parks['magic-kingdom-park'], { headlinerWait: 50, crowdLevel: 'very_low' });
+  delete day.parks['magic-kingdom-park'].evening;
+  Object.assign(day.parks['universal-studios-florida'], {
+    headlinerWait: 35,
+    crowdLevel: 'moderate',
+  });
+  assert.equal(dayPick(day, region)?.park.slug, 'magic-kingdom-park');
+  // On the same level the shorter wait wins, and an early close loses to a full day.
+  day.parks['universal-studios-florida'].crowdLevel = 'very_low';
+  assert.equal(dayPick(day, region)?.park.slug, 'universal-studios-florida');
+  day.parks['universal-studios-florida'].closesEarly = true;
+  assert.equal(dayPick(day, region)?.park.slug, 'magic-kingdom-park');
+});
+
+test('the day pick offers no last-year day and no pick at all without one', () => {
+  const day = structuredClone(calendar.days[0]);
+  for (const park of Object.values(day.parks)) park.basis = 'last_year';
+  assert.equal(dayPick(day, region), null);
+  assert.equal(dayPick({ ...calendar.days[0], best: {}, parks: {} }, region), null);
 });
 
 test('after every pick has closed, the answer is about tomorrow', () => {

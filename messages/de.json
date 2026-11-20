@@ -420,7 +420,10 @@
       "monthTitleLastYear": "Die ruhigsten Tage im {month} im Vorjahr",
       "quietPark": "({park}, etwa {minutes} Min.)",
       "quietestTo": "Am leersten bis {date}",
-      "best": "Bester Park je Resort, <time>{date}</time>"
+      "best": "Bester Park je Resort, <time>{date}</time>",
+      "pick": "Tipp für <time>{date}</time>",
+      "perResort": "Je Resort",
+      "pickLevel": "{level, select, very_low {viel ruhiger als an einem normalen Tag dort} low {ruhiger als an einem normalen Tag dort} moderate {ein normaler Tag dort} other {voller als an einem normalen Tag dort}}"
     },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",

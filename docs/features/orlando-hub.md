@@ -93,7 +93,7 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 | Level | What                        | Where                                                                                                          |
 | ----- | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
 | 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks                     |
-| 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead                          |
+| 0     | the answer                  | under the buttons: the day's tip, the best park per resort on one named day, the quietest days ahead           |
 | 1     | the overview                | a week: tiles with wait, level, hours, season icons; each park's quietest day ringed and starred; lanes closed |
 | 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides                               |
 | 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                   |
@@ -107,10 +107,17 @@ page does not end on the picture it began with.
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
 welchem Tag?“ as its big one), the lead, the two buttons and the answer. The calendar is the first chapter and starts where the head ends (660 to 750 px at 390 × 844), because it is what visitors come for: between 13 and 19 November 2026 „Zum Kalender“ got 100 clicks and „Reise planen“ 30. With the planner first, its chapter (500 to 770 px) had pushed the calendar's first week down to 1607–1937 px. The answer names its day ("Sat, Nov 14, Orlando time"),
 never "today", because a cached copy outlives midnight. After every pick has closed it is about
-tomorrow (`glanceDay`). It names each group with a headliner park (`glanceLines`): a resort of one
-park is answered by that park (Universal Studios Hollywood), a group without a headliner (SeaWorld
-Orlando, the day trips) stays out. No crowd badge: beside "best park" it read as a contradiction.
-Its second row is each of those groups' quietest day in the window, a date said once where they
+tomorrow (`glanceDay`). Its first row is the day's one tip („Tipp für Fr., 20. Nov.: Universal
+Studios 30 Min., ruhiger als an einem normalen Tag dort“, `dayPick`): of the resorts' own picks, the
+headliner park that is quietest against its own normal day (the API's crowd level), then a full day
+over an early close, then the shorter wait, then the longer day. Minutes first would hand the tip to
+the park that is always quiet: on 20 November 2026 SeaWorld at 20 min against its usual 30, on the
+24th Busch Gardens at 10. A non-headliner and a last-year day never win, which `pnpm test:orlando-hub`
+pins. The second row names each group with a headliner park (`glanceLines`) under „Je Resort“: a
+resort of one park is answered by that park (Universal Studios Hollywood), a group without a
+headliner (SeaWorld Orlando, the day trips) stays out. The level is said in words beside the tip
+only, the thing it was picked on; a badge beside each resort's best park read as a contradiction.
+The third row is each of those groups' quietest day in the window, a date said once where they
 share it.
 
 ## Two states

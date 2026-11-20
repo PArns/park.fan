@@ -10,6 +10,7 @@ import { getDateTimeFormat } from '@/lib/utils/intl-format';
 import { parkCalendarPath } from '@/lib/parks/calendar-segments';
 import { isSeasonEvent } from '@/lib/parks/park-season-days';
 import { roundWaitTo5 } from '@/lib/utils/wait-time';
+import { CROWD_LEVEL_ORDER } from '@/lib/utils/crowd-level-styles';
 import { shownWait, shownWaitOn } from './plan-week';
 import { TRIP_CALENDAR_ID } from './paths';
 import { PARK_NAME_SUFFIXES, requireTripRegion } from './registry';
@@ -727,6 +728,32 @@ export function glanceLines(day: TripCalendarDay, region: TripRegion): ShortestL
     const onlyDay = only ? day.parks[only.slug] : undefined;
     return only && isRankable(onlyDay) ? [{ group, park: only, day: onlyDay }] : [];
   });
+}
+
+/**
+ * The one park of a day across the region: among the resorts' own picks (`glanceLines`), the
+ * headliner park that is quietest against its own normal day (the API's crowd level), then a full
+ * day over an early close, then the shorter wait, then the longer day. Minutes alone would hand
+ * the day to whichever park is always quiet (SeaWorld at 20 min, LEGOLAND at 10), which is no tip
+ * for somebody choosing between Disney and Universal; a non-headliner and a last-year figure never
+ * win. `null` when no resort has a pick.
+ */
+export function dayPick(day: TripCalendarDay, region: TripRegion): ShortestLine | null {
+  const levelRank = (line: ShortestLine) => {
+    const level = tintLevel(line.day.crowdLevel);
+    return level ? CROWD_LEVEL_ORDER.indexOf(level) : CROWD_LEVEL_ORDER.length;
+  };
+  const candidates = glanceLines(day, region).filter(
+    (line) => line.park.headliner && line.day.basis !== 'last_year'
+  );
+  candidates.sort(
+    (a, b) =>
+      levelRank(a) - levelRank(b) ||
+      Number(closesEarly(a.day)) - Number(closesEarly(b.day)) ||
+      shownWait(a.day)! - shownWait(b.day)! ||
+      dayGuestMinutes(b.day) - dayGuestMinutes(a.day)
+  );
+  return candidates[0] ?? null;
 }
 
 /** A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for. */

@@ -420,7 +420,10 @@
       "monthTitleLastYear": "Los días más tranquilos de {month} el año pasado",
       "quietPark": "({park}, unos {minutes} min)",
       "quietestTo": "Lo más tranquilo hasta el {date}",
-      "best": "Mejor parque por resort, <time>{date}</time>"
+      "best": "Mejor parque por resort, <time>{date}</time>",
+      "pick": "Consejo para el <time>{date}</time>",
+      "perResort": "Por resort",
+      "pickLevel": "{level, select, very_low {mucho más tranquilo que un día normal allí} low {más tranquilo que un día normal allí} moderate {un día normal allí} other {más lleno que un día normal allí}}"
     },
     "legend": {
       "minutes": "Espera punta en las grandes atracciones, en minutos",

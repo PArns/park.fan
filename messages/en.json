@@ -420,7 +420,10 @@
       "monthTitleLastYear": "Quietest days in {month} last year",
       "quietPark": "({park}, about {minutes} min)",
       "quietestTo": "Quietest to {date}",
-      "best": "Best park per resort, <time>{date}</time>"
+      "best": "Best park per resort, <time>{date}</time>",
+      "pick": "Tip for <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {much quieter than a normal day there} low {quieter than a normal day there} moderate {a normal day there} other {busier than a normal day there}}"
     },
     "legend": {
       "minutes": "Peak wait at the big rides, in minutes",

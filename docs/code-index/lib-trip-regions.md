@@ -115,6 +115,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `shortGroupName` _function_: A resort's name without "Resort": "Walt Disney World", "Universal Orlando".
 - `parkGeo` _function_: The geo segments of a region park's path (`/parks/<continent>/<country>/<city>/<slug>`).
 - `glanceLines` _function_: The best park per group the first answer names: every group with a headliner park, by the API's pick, or by its one park with a figure where it has nothing to choose between (Universal Studios Hollywood).
+- `dayPick` _function_: The one park of a day across the region: among the resorts' own picks (`glanceLines`), the headliner park that is quietest against its own normal day (the API's crowd level), then a full day over an early close, then the shorter wait, then …
 - `parkCalendarHref` _function_: A park's crowd calendar, with "Crowd Calendar" in the anchor: the query that page ranks for.
 - `sliceCalendar` _function_: The calendar trimmed to a window of its days, with the seasons that run in it, each day as far as the hub's client part draws it: everything it passes is in the page's RSC payload, a park's day per tile …
 - `slimRegion` _function_: The region as the hub's client part needs it, an allow-list: the parks, groups, hotel areas and storm season, and only the legs from a hotel area to a park, which the day sheet's travel line reads.

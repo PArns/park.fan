@@ -420,7 +420,10 @@
       "monthTitleLastYear": "De rustigste dagen in {month} vorig jaar",
       "quietPark": "({park}, ongeveer {minutes} min)",
       "quietestTo": "Het rustigst tot {date}",
-      "best": "Beste park per resort, <time>{date}</time>"
+      "best": "Beste park per resort, <time>{date}</time>",
+      "pick": "Tip voor <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {veel rustiger dan een normale dag daar} low {rustiger dan een normale dag daar} moderate {een normale dag daar} other {drukker dan een normale dag daar}}"
     },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
