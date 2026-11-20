@@ -71,9 +71,9 @@ In Adventureland bleibt die Piratenkneipe The Beak and Barrel offen, die am 29. 
 
 Die erste Pirates-Bahn hat 1967 im Disneyland in Kalifornien eröffnet. Es war eine der letzten Attraktionen, deren Entstehung Walt Disney in den 1960er-Jahren selbst begleitet hat. Gedacht war sie zuerst als Wachsfigurenkabinett, gebaut wurde sie dann mit Audio-Animatronics.
 
-Für das Magic Kingdom, das 1971 eröffnete, plante Disney zunächst ohne Piraten, weil eine Karibik-Bahn so nah an der echten Karibik nicht denselben Reiz hätte wie in Kalifornien. Vorgesehen war stattdessen die Western River Expedition. Gebaut wurde am Ende doch Pirates, am Bauzaun stand „Opening Christmas 1973“, und am 15. Dezember 1973 legten die ersten Boote ab. 2006 baute Disney Jack Sparrow ein, und 2018 bekam die Bahn eine neue Auktionsszene, in der die Piraten Beute versteigern statt einer Braut.
+Für das Magic Kingdom, das 1971 eröffnete, plante Disney zunächst ohne Piraten, weil eine Karibik-Bahn so nah an der echten Karibik nicht denselben Reiz hätte wie in Kalifornien. Gebaut wurde am Ende doch Pirates, am Bauzaun stand „Opening Christmas 1973“, und am 15. Dezember 1973 legten die ersten Boote ab. 2006 baute Disney Jack Sparrow ein, und 2018 bekam die Bahn eine neue Auktionsszene, in der die Piraten Beute versteigern statt einer Braut.
 
-Wie Pirates geschrieben wurde, zeigt Disney in der Folge „Storytelling“ der Videoreihe „We Call It Imagineering“ auf dem YouTube-Kanal von Walt Disney Imagineering, später auch auf Disney+. In derselben Folge geht es um Indiana Jones and the Myth of the Jade Serpent im Animal Kingdom und um Piston Peak National Park, den Cars-Bereich, der im Magic Kingdom auf einem Teil des früheren Frontierland entsteht.
+Wie Pirates geschrieben wurde, zeigt Disney in der Folge „Storytelling“ der Videoreihe „We Call It Imagineering“ auf dem YouTube-Kanal von Walt Disney Imagineering, später auch auf Disney+. In derselben Folge geht es um die neue Indiana-Jones-Geschichte „Indiana Jones and the Myth of the Jade Serpent“ und um Piston Peak National Park, den Cars-Bereich, der im Magic Kingdom auf einem Teil des früheren Frontierland entsteht.
 
 Quellen:
 [Pirates of the Caribbean auf disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),
