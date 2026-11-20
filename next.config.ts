@@ -658,6 +658,35 @@ const nextConfig: NextConfig = {
       );
     }
 
+    // 12b. News posts removed as duplicates of another post on the same story. The
+    // removed slug was the same in every locale, the surviving post has one per
+    // locale, so each locale gets its own pair (news path and blog path). The bare
+    // form is left to the proxy, which picks the reader's locale first.
+    const removedDuplicateNews: Array<[string, Record<string, string>]> = [
+      [
+        'pirates-of-the-caribbean-magic-kingdom-2027',
+        {
+          de: 'pirates-of-the-caribbean-magic-kingdom-renovierung-2027',
+          en: 'pirates-of-the-caribbean-magic-kingdom-renovation-2027',
+          fr: 'pirates-of-the-caribbean-magic-kingdom-renovation-2027',
+          nl: 'pirates-of-the-caribbean-magic-kingdom-renovatie-2027',
+          es: 'pirates-of-the-caribbean-magic-kingdom-renovacion-2027',
+          it: 'pirates-of-the-caribbean-magic-kingdom-ristrutturazione-2027',
+        },
+      ],
+    ];
+    for (const [oldSlug, targets] of removedDuplicateNews) {
+      for (const [locale, newSlug] of Object.entries(targets)) {
+        for (const section of ['news', 'blog']) {
+          rules.push({
+            source: `/${locale}/${section}/${oldSlug}`,
+            destination: `/${locale}/news/${newSlug}`,
+            permanent: true,
+          });
+        }
+      }
+    }
+
     // 13. The changelog exists in English only, so every other spelling of its
     // URL points at the one page that exists. Without these the proxy would
     // treat `/changelog` like any other unprefixed path and send a German
