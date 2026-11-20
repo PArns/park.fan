@@ -425,6 +425,14 @@
       "perResort": "Per resort",
       "pickLevel": "{level, select, very_low {much quieter than a normal day there} low {quieter than a normal day there} moderate {a normal day there} other {busier than a normal day there}}"
     },
+    "visited": {
+      "ask": "Been there already? Tick it off",
+      "count": "{count} of {total} parks ticked off",
+      "allDone": "All {count} parks ticked off. For a second visit:",
+      "toggle": "{park}: been there",
+      "tick": "Tick off {park} as visited",
+      "untick": "Take the tick off {park}"
+    },
     "legend": {
       "minutes": "Peak wait at the big rides, in minutes",
       "quietest": "quietest day of the week at that park",

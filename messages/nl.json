@@ -425,6 +425,14 @@
       "perResort": "Per resort",
       "pickLevel": "{level, select, very_low {veel rustiger dan een normale dag daar} low {rustiger dan een normale dag daar} moderate {een normale dag daar} other {drukker dan een normale dag daar}}"
     },
+    "visited": {
+      "ask": "Al geweest? Vink af",
+      "count": "{count} van {total} parken afgevinkt",
+      "allDone": "Alle {count} parken afgevinkt. Voor een tweede bezoek:",
+      "toggle": "{park}: al geweest",
+      "tick": "{park} afvinken als bezocht",
+      "untick": "Vinkje bij {park} weghalen"
+    },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
       "quietest": "rustigste dag van de week in dat park",

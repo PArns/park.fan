@@ -425,6 +425,14 @@
       "perResort": "Par resort",
       "pickLevel": "{level, select, very_low {bien plus calme qu’un jour normal sur place} low {plus calme qu’un jour normal sur place} moderate {un jour normal sur place} other {plus chargé qu’un jour normal sur place}}"
     },
+    "visited": {
+      "ask": "Parcs déjà visités",
+      "count": "{count, plural, one {# parc visité} other {# parcs visités}} sur {total}",
+      "allDone": "Les {count} parcs sont visités. Pour une deuxième visite :",
+      "toggle": "{park} : déjà visité",
+      "tick": "Marquer {park} comme visité",
+      "untick": "Retirer {park} des parcs visités"
+    },
     "legend": {
       "minutes": "Attente de pointe aux grandes attractions, en minutes",
       "quietest": "jour le plus calme de la semaine dans ce parc",

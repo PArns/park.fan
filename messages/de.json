@@ -425,6 +425,14 @@
       "perResort": "Je Resort",
       "pickLevel": "{level, select, very_low {viel ruhiger als an einem normalen Tag dort} low {ruhiger als an einem normalen Tag dort} moderate {ein normaler Tag dort} other {voller als an einem normalen Tag dort}}"
     },
+    "visited": {
+      "ask": "Schon dort gewesen? Abhaken",
+      "count": "{count} von {total} Parks abgehakt",
+      "allDone": "Alle {count} Parks abgehakt. Für einen zweiten Besuch:",
+      "toggle": "{park}: schon dort gewesen",
+      "tick": "{park} als besucht abhaken",
+      "untick": "Haken bei {park} entfernen"
+    },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
       "quietest": "ruhigster Tag der Woche in diesem Park",

@@ -804,17 +804,31 @@ export function parkGeo(
   return parks === 'parks' && continent && country && city ? { continent, country, city } : null;
 }
 
+/** No park ticked off as visited: the default of the picks that skip them. */
+const NOT_VISITED: ReadonlySet<string> = new Set();
+
 /**
  * The best park per group the first answer names: every group with a headliner park, by the API's
  * pick, or by its one park with a figure where it has nothing to choose between (Universal Studios
- * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out.
+ * Hollywood). A group without a headliner (SeaWorld Orlando, the day trips) stays out. A park the
+ * visitor has ticked off (`visited`) gives way to the group's next headliner in the day sheet's
+ * order (`rankGroupParks`); a group whose headliners are all ticked off stays out.
  */
-export function glanceLines(day: TripCalendarDay, region: TripRegion): ShortestLine[] {
+export function glanceLines(
+  day: TripCalendarDay,
+  region: TripRegion,
+  visited: ReadonlySet<string> = NOT_VISITED
+): ShortestLine[] {
   const picks = new Map(shortestLines(day, region).map((line) => [line.group.key, line]));
   return headlinerGroups(region).flatMap((group): ShortestLine[] => {
     const pick = picks.get(group.key);
-    if (pick) return [pick];
-    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]));
+    if (pick && !visited.has(pick.park.slug)) return [pick];
+    if (pick) {
+      const left = group.parks.filter((p) => p.headliner && !visited.has(p.slug));
+      const next = rankGroupParks(day, left, group.key).find((r) => isRankable(r.day));
+      return next && isRankable(next.day) ? [{ group, park: next.park, day: next.day }] : [];
+    }
+    const open = group.parks.filter((p) => isRankable(day.parks[p.slug]) && !visited.has(p.slug));
     const only = open.length === 1 ? open[0] : undefined;
     const onlyDay = only ? day.parks[only.slug] : undefined;
     return only && isRankable(onlyDay) ? [{ group, park: only, day: onlyDay }] : [];
@@ -827,14 +841,19 @@ export function glanceLines(day: TripCalendarDay, region: TripRegion): ShortestL
  * day over an early close, then the shorter wait, then the longer day. Minutes alone would hand
  * the day to whichever park is always quiet (SeaWorld at 20 min, LEGOLAND at 10), which is no tip
  * for somebody choosing between Disney and Universal; a non-headliner and a last-year figure never
- * win. `null` when no resort has a pick.
+ * win. A park ticked off as visited (`visited`) is passed over for one not seen yet. `null` when
+ * no resort has a pick left.
  */
-export function dayPick(day: TripCalendarDay, region: TripRegion): ShortestLine | null {
+export function dayPick(
+  day: TripCalendarDay,
+  region: TripRegion,
+  visited: ReadonlySet<string> = NOT_VISITED
+): ShortestLine | null {
   const levelRank = (line: ShortestLine) => {
     const level = tintLevel(line.day.crowdLevel);
     return level ? CROWD_LEVEL_ORDER.indexOf(level) : CROWD_LEVEL_ORDER.length;
   };
-  const candidates = glanceLines(day, region).filter(
+  const candidates = glanceLines(day, region, visited).filter(
     (line) => line.park.headliner && line.day.basis !== 'last_year'
   );
   candidates.sort(

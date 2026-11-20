@@ -634,6 +634,14 @@ Whether a region's hub shows a plan: the hub has two states (docs/features/orlan
 
 - Types: `TripParkType`, `TripRegionGroup`, `TripRegionPark`, `TripEarlyKind`, `TripPerk`, `TripHotel`, `TripTicketMarkets`, `TripStormSeason`, `TripWeather`, `TripHotelArea`, `TripTransportMode`, `TripTransportAlternative`, `TripLeg`, `TripTravel`, `TripVenue`, `TicketHopping`, `TicketStore`, `TicketLink`, `TicketProduct`, `TripTicketCatalog`, `TripGateway`, `TripBasePark`, `TripBase`, `TripBaseLegNote`, `TripBaseLeg`, `TripStayRules`, `TripRegion`, `TripDayStatus`, `TripBasis`, `TripCrowdLevel`, `TripSlot`, `TripEveningKind`, `TripParkDay`, `TripBestWhy`, `TripCalendarDay`, `TripSeason`, `TripCalendarMeta`, `TripCalendar`, `TripBestDayReason`, `TripBestDay`, `TripParkBestDays`, `TripGroupBestDays`, `TripBestDays`, `TripWhenReason`, `TripWhenWarning`, `TripWhenWindow`, `TripWhenWeek`, `TripWhen`, `TripForecastAccuracy`, `TripMonth`, `TripMonthClimate`, `TripWhenMonth`, `TripWhenWithMonths`, `TripSchoolBreakRegion`, `TripSchoolBreaks`
 
+### [`visited-parks.ts`](../../lib/trip-regions/visited-parks.ts)
+
+- `visitedKey` _function_: Where a region's ticks live.
+- `parseVisited` _function_: A stored value read leniently: a hand-edited or broken entry costs only itself.
+- `visitedOn` _function_: The parks that count as visited on the region's `today`: a tick older than the longest trip the planner plans (`MAX_TRIP_DAYS`) was made on an earlier trip, and last year's visit says nothing about where to go this time.
+- `visitedParks` _function_: The `VisitedParks` of a region, one per region and page.
+- Types: `VisitedRecord`, `VisitedParks`
+
 ### [`wizard-choices.ts`](../../lib/trip-regions/wizard-choices.ts)
 
 - `hotelEarlyAccess` _function_: What the Hotel step says of getting in early, from the region's `hotels[].perks`: the lead promises an earlier start only where some hotel has an early slot, and a card without one says so itself, so the two read the same data and cannot …

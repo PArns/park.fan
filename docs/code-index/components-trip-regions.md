@@ -50,6 +50,10 @@ by hand: change the comment in the code and re-run the script. -->
 - `TripPlanDayButton` _component_: "Plan this day": the single-day planner's wizard on this park and date, the hand-off the homepage hero and the park calendar use.
 - `clearTripPagePark` _function_: Forgets the park a "Plan this day" named, when the hub unmounts: the page is about no one park and must not keep claiming one on the next route.
 
+### [`hub/hub-day-tip.tsx`](../../components/trip-regions/hub/hub-day-tip.tsx)
+
+- `HubDayTip` _component_: The first answer's rows about one day, in the browser because they follow the parks the visitor has ticked off: the day's one tip (`dayPick`) with how its day compares to a normal one there, then a chip per headliner park to tick off where …
+
 ### [`hub/hub-faq.tsx`](../../components/trip-regions/hub/hub-faq.tsx)
 
 - `HubFaq` _component_: The questions chapter, answered from the data the page shows.
@@ -58,9 +62,13 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `HubFilterChip` _component_: A toggle of the hub's switches (the calendar's resorts, the best-time teaser's parks and trip lengths): a pill that says whether it is pressed, 44 px high on a phone.
 
+### [`hub/hub-glance-styles.ts`](../../components/trip-regions/hub/hub-glance-styles.ts)
+
+- `GLANCE_ROW` _const_: One row of the hub's first answer, shared by its server part (`HubGlance`) and the rows that follow the visitor's ticks (`HubDayTip`): its label over the parks on a phone, beside them from `sm`.
+
 ### [`hub/hub-glance.tsx`](../../components/trip-regions/hub/hub-glance.tsx)
 
-- `HubGlance` _component_: The hub's first answer, under its two buttons: the day's one tip (`dayPick`) with how its day compares to a normal one there, then the best park of each group with a headliner on that day, by its date in the region's time and never as …
+- `HubGlance` _component_: The hub's first answer, under its two buttons: the rows about one day (`HubDayTip`: the day's tip, the parks to tick off, each resort's best park), by its date in the region's time and never as "today", because a cached copy outlives …
 - `MonthGlance` _component_: A month page's first answer: each resort's quietest dates that month, and the park with the shortest lines on the first of them. On a month past the forecast the dates are last year's, said so in the title and never offered as picks.
 
 ### [`hub/hub-hero-action.tsx`](../../components/trip-regions/hub/hub-hero-action.tsx)
@@ -95,6 +103,17 @@ by hand: change the comment in the code and re-run the script. -->
 - `HubStateSwitch` _component_: One of two server-rendered nodes by the hub's state: `landing` without a plan (and in the served HTML), `plan` with one. For a title or a line whose words change with the state.
 - `HubLandingOnly` _component_: What only the landing page shows (the four steps): hidden while the hub shows a plan, never unmounted, so the server's markup stays the same tree.
 - `useHubTrip` _hook_: The trip the hub shows (its dates), or null while it is the landing page.
+
+### [`hub/hub-visited.tsx`](../../components/trip-regions/hub/hub-visited.tsx)
+
+- `VisitedMark` _component_: The tick itself: an empty ring while the park is still ahead, a filled circle with a check in the site's "open" green once it is done, the colour the ridden rides' check uses.
+- `VisitedToggle` _component_: The tick beside a park's name in the calendar: a button around `VisitedMark`, 44 px to the touch, that names the park and says whether it is ticked.
+- `VisitedDim` _component_: A park's days in the calendar, faded once it is ticked off: still readable, for a second visit, but no longer what the eye goes to. Only this wrapper reads the tick; the tiles it holds are its parent's elements and do not render again.
+- `VisitedRow` _component_: `VisitedDim` for a row of the desktop grid: its day cells fade once the park is ticked off, the row's name and tick stay as they are.
+- `useVisitedParks` _hook_: The parks of a region ticked off as visited on its `today`; none on the server.
+- `useParkVisited` _hook_: Whether one park is ticked off: a boolean snapshot, so a tick re-renders only its own marks.
+- `toggleVisited` _function_: Ticks a park off or takes the tick away, and counts it.
+- Types: `VisitedFrom`
 
 ### [`hub/hub-when-teaser.tsx`](../../components/trip-regions/hub/hub-when-teaser.tsx)
 

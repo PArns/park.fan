@@ -2,8 +2,9 @@
  * Unit tests for `clearTrip` (`lib/trip-regions/trip-clear.ts`), the one clearing behind „Reise
  * löschen“ and „Neue Reise planen“: every store of one region's trip on this device emptied (the
  * planner on screen, the address bar, the remembered trip, the assistant's answers, the ticket
- * answer, Parky's interview and his last change), another region's trip left alone, and the copy
- * in memory put back whole, or let go with the interview counted as left.
+ * answer, the parks ticked off as visited, Parky's interview and his last change), another
+ * region's trip left alone, and the copy in memory put back whole, or let go with the interview
+ * counted as left.
  *
  * Run: pnpm test:trip-clear
  */
@@ -47,6 +48,7 @@ const { rememberParty, rememberTrip, rememberedTrip } =
   await import('@/lib/trip-regions/remembered-trip.ts');
 const { tripWizardAnswered } = await import('@/lib/trip-regions/planner-ui.ts');
 const { tripTicketAnswer } = await import('@/lib/trip-regions/ticket-answer.ts');
+const { visitedParks } = await import('@/lib/trip-regions/visited-parks.ts');
 const { interviewStore } = await import('@/lib/assistant/interview.ts');
 const { rememberTripChange, takeTripUndo } = await import('@/lib/assistant/trip-context.ts');
 const { onSiteEvent } = await import('@/lib/analytics/site-analytics.ts');
@@ -101,6 +103,8 @@ function seed() {
   tripWizardAnswered.mark('japan', ['route']);
   tripTicketAnswer('orlando').set('no');
   tripTicketAnswer('japan').set('yes');
+  visitedParks('orlando').toggle('epcot', '2027-10-15');
+  visitedParks('japan').toggle('tokyo-disneyland', '2027-04-02');
   interviewStore.set(interview);
   rememberTripChange('orlando', '', TRIP);
 }
@@ -120,6 +124,12 @@ check([...tripWizardAnswered.get('orlando')], [], "the assistant's answers are f
 check([...tripWizardAnswered.get('japan')], ['route'], "another region's answers stay");
 check(tripTicketAnswer('orlando').getSnapshot(), null, 'the ticket question will be asked again');
 check(tripTicketAnswer('japan').getSnapshot(), 'yes', "another region's ticket answer stays");
+check(visitedParks('orlando').getSnapshot(), {}, 'no park is ticked off as visited any more');
+check(
+  visitedParks('japan').getSnapshot(),
+  { 'tokyo-disneyland': '2027-04-02' },
+  "another region's ticks stay"
+);
 check(interviewStore.getSnapshot(), null, "Parky's interview for the trip ends");
 
 cleared.restore();
@@ -129,6 +139,7 @@ check(planner.history, ['pin'], 'and its edit history');
 check(rememberedTrip('orlando'), keptOrlando, 'the remembered trip comes back, party and all');
 check([...tripWizardAnswered.get('orlando')], ['hotel', 'pace'], 'the answers come back');
 check(tripTicketAnswer('orlando').getSnapshot(), 'no', 'the ticket answer comes back');
+check(visitedParks('orlando').getSnapshot(), { epcot: '2027-10-15' }, 'and so do the ticks');
 check(interviewStore.getSnapshot(), interview, 'the interview comes back where it stood');
 check(
   events.filter((e) => e.name === 'assistant_interview_ended'),

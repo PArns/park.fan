@@ -58,6 +58,7 @@ import {
   HUB_WEEK_LAYER,
 } from '../components/trip-regions/hub/hub-cell-styles.ts';
 import { addDays } from '../lib/utils/park-day.ts';
+import { parseVisited, visitedOn } from '../lib/trip-regions/visited-parks.ts';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
@@ -306,6 +307,35 @@ test('the day pick offers no last-year day and no pick at all without one', () =
   for (const park of Object.values(day.parks)) park.basis = 'last_year';
   assert.equal(dayPick(day, region), null);
   assert.equal(dayPick({ ...calendar.days[0], best: {}, parks: {} }, region), null);
+});
+
+test('a park ticked off as visited gives way to one not seen yet', () => {
+  const day = structuredClone(calendar.days[0]);
+  const first = dayPick(day, region);
+  assert.ok(first);
+  const next = dayPick(day, region, new Set([first.park.slug]));
+  assert.ok(next && next.park.slug !== first.park.slug, 'the tip moves on');
+  assert.ok(next.park.headliner, 'and stays a headliner');
+  // In the resort row, the group's next headliner takes the ticked park's place.
+  const disney = glanceLines(day, region, new Set([day.best['walt-disney-world']])).find(
+    (l) => l.group.key === 'walt-disney-world'
+  );
+  assert.ok(disney && disney.park.slug !== day.best['walt-disney-world']);
+  assert.ok(disney.park.headliner);
+  // Every headliner ticked off: no tip left, and no resort row.
+  const all = new Set(region.parks.filter((p) => p.headliner).map((p) => p.slug));
+  assert.equal(dayPick(day, region, all), null);
+  assert.deepEqual(glanceLines(day, region, all), []);
+});
+
+test('a tick lasts as long as a trip, and a broken one costs only itself', () => {
+  const record = parseVisited(
+    JSON.stringify({ epcot: '2026-11-18', 'magic-kingdom-park': '2026-10-01', 'bad slug!': 'x' })
+  );
+  assert.deepEqual(Object.keys(record), ['epcot', 'magic-kingdom-park']);
+  assert.deepEqual([...visitedOn(record, '2026-11-20')], ['epcot']);
+  assert.deepEqual(parseVisited('not json'), {});
+  assert.deepEqual(parseVisited('["epcot"]'), {});
 });
 
 test('after every pick has closed, the answer is about tomorrow', () => {

@@ -73,6 +73,7 @@ import {
 } from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 import { startTripPlanner } from './hub-hero-action';
+import { VisitedDim, VisitedRow, VisitedToggle } from './hub-visited';
 
 /** The history state key of an open day sheet, which Back closes. */
 const SHEET_ENTRY = 'hubDaySheet';
@@ -295,6 +296,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
 
       <div className="lg:hidden">
         <PhoneWeek
+          region={region.slug}
           days={days}
           storm={storm}
           groups={visibleGroups}
@@ -314,6 +316,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
 
       <div className="hidden lg:block">
         <Matrix
+          region={region.slug}
           days={days}
           storm={storm}
           groups={visibleGroups}
@@ -639,6 +642,8 @@ function PhoneWeek({
 /** What a resort's card on a phone needs; none of it changes with the week shown. */
 interface PhoneGroupProps {
   group: RegionGroup;
+  /** The region's slug, whose ticked-off parks fade. */
+  region: string;
   days: readonly TripCalendarDay[];
   storm: ReadonlyMap<string, StormCode> | null;
   tiles: HubTiles;
@@ -655,6 +660,7 @@ interface PhoneGroupProps {
 /** One resort's card of the phone's week; memoised, so a week press skips it. */
 const PhoneGroup = memo(function PhoneGroup({
   group,
+  region,
   days,
   storm,
   tiles,
@@ -737,8 +743,13 @@ const PhoneGroup = memo(function PhoneGroup({
           const own = tiles.get(park.slug) ?? [];
           return (
             <div key={park.slug}>
-              <div className="flex items-baseline justify-between gap-2">
-                <p className="min-w-0 truncate text-sm font-medium">{name}</p>
+              <div className="flex items-center justify-between gap-2">
+                <p className="flex min-w-0 items-center gap-2 text-sm font-medium">
+                  {!state && (
+                    <VisitedToggle region={region} slug={park.slug} name={name} today={todayIso} />
+                  )}
+                  <span className="truncate">{name}</span>
+                </p>
                 {!state && (
                   <QuietestNote
                     slug={park.slug}
@@ -754,33 +765,39 @@ const PhoneGroup = memo(function PhoneGroup({
                   {t(state)}
                 </p>
               ) : (
-                <div className="mt-1 grid grid-cols-7 gap-1">
-                  {days.map((day, index) => {
-                    const star = stars.has(`${park.slug}:${day.date}`);
-                    return (
-                      <div key={day.date} className={pageOf(index)}>
-                        <CalendarDayTile
-                          density="mini"
-                          {...own[index]}
-                          best={star ? t('quietest') : null}
-                          className={cn(star && HUB_CELL_BEST)}
-                          onSelect={() => onOpen(day.date)}
-                          aria-haspopup="dialog"
-                          aria-label={label(park.slug, name, day.date, day.parks[park.slug], star)}
-                        />
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-              {!state && (
-                <ParkEvents
-                  slug={park.slug}
-                  weeks={events.get(park.slug) ?? NO_EVENTS}
-                  days={days}
-                  locale={locale}
-                  timezone={timezone}
-                />
+                <VisitedDim region={region} slug={park.slug} today={todayIso}>
+                  <div className="mt-1 grid grid-cols-7 gap-1">
+                    {days.map((day, index) => {
+                      const star = stars.has(`${park.slug}:${day.date}`);
+                      return (
+                        <div key={day.date} className={pageOf(index)}>
+                          <CalendarDayTile
+                            density="mini"
+                            {...own[index]}
+                            best={star ? t('quietest') : null}
+                            className={cn(star && HUB_CELL_BEST)}
+                            onSelect={() => onOpen(day.date)}
+                            aria-haspopup="dialog"
+                            aria-label={label(
+                              park.slug,
+                              name,
+                              day.date,
+                              day.parks[park.slug],
+                              star
+                            )}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <ParkEvents
+                    slug={park.slug}
+                    weeks={events.get(park.slug) ?? NO_EVENTS}
+                    days={days}
+                    locale={locale}
+                    timezone={timezone}
+                  />
+                </VisitedDim>
               )}
             </div>
           );
@@ -864,6 +881,7 @@ interface Slot {
  * `tabIndex`). Memoised, so the urgent render of a week press skips it.
  */
 const Matrix = memo(function Matrix({
+  region,
   days,
   storm,
   groups,
@@ -879,6 +897,8 @@ const Matrix = memo(function Matrix({
   timezone,
   onOpen,
 }: {
+  /** The region's slug, whose ticked-off parks fade. */
+  region: string;
   days: readonly TripCalendarDay[];
   storm: ReadonlyMap<string, StormCode> | null;
   groups: RegionGroup[];
@@ -1003,6 +1023,8 @@ const Matrix = memo(function Matrix({
               ) : (
                 <Fragment key={park.slug}>
                   <ParkRow
+                    region={region}
+                    todayIso={todayIso}
                     slug={park.slug}
                     name={shortParkName(park.name)}
                     r={r}
@@ -1018,6 +1040,8 @@ const Matrix = memo(function Matrix({
                     onFocusCell={setFocus}
                   />
                   <ParkEventRows
+                    region={region}
+                    todayIso={todayIso}
                     slug={park.slug}
                     weeks={weeks}
                     events={events.get(park.slug) ?? NO_EVENTS}
@@ -1151,6 +1175,8 @@ const MatrixHead = memo(function MatrixHead({
  * the tab stop, so paging skips it.
  */
 const ParkRow = memo(function ParkRow({
+  region,
+  todayIso,
   slug,
   name,
   r,
@@ -1165,6 +1191,9 @@ const ParkRow = memo(function ParkRow({
   onOpen,
   onFocusCell,
 }: {
+  /** The region's slug, whose ticked-off parks fade. */
+  region: string;
+  todayIso: string;
   slug: string;
   name: string;
   r: number;
@@ -1184,9 +1213,12 @@ const ParkRow = memo(function ParkRow({
   const t = useTranslations('tripHub.calendar');
   const own = tiles.get(slug) ?? [];
   return (
-    <tr>
+    <VisitedRow region={region} slug={slug} today={todayIso}>
       <th scope="row" className="px-2 text-left align-middle font-medium">
-        <span className="block truncate text-sm">{name}</span>
+        <span className="flex min-w-0 items-center gap-2 text-sm">
+          <VisitedToggle region={region} slug={slug} name={name} today={todayIso} />
+          <span className="truncate">{name}</span>
+        </span>
         <QuietestNote slug={slug} dates={quietest} days={days} locale={locale} />
       </th>
       {slots.map((slot, i) => {
@@ -1213,7 +1245,7 @@ const ParkRow = memo(function ParkRow({
           </td>
         );
       })}
-    </tr>
+    </VisitedRow>
   );
 });
 
@@ -1396,6 +1428,8 @@ function ParkEvents({
  * the day's events: a row without grid cells would break the grid.
  */
 const ParkEventRows = memo(function ParkEventRows({
+  region,
+  todayIso,
   slug,
   weeks,
   events,
@@ -1404,6 +1438,9 @@ const ParkEventRows = memo(function ParkEventRows({
   locale,
   timezone,
 }: {
+  /** The region's slug, whose ticked-off parks fade. */
+  region: string;
+  todayIso: string;
   slug: string;
   weeks: readonly HubWeek[];
   events: readonly ParkWeekEvents[];
@@ -1420,7 +1457,7 @@ const ParkEventRows = memo(function ParkEventRows({
   return (
     <>
       {Array.from({ length: rows }, (_, k) => (
-        <tr key={k} aria-hidden>
+        <VisitedRow key={k} region={region} slug={slug} today={todayIso} aria-hidden>
           <td className="px-2 pl-4 align-middle">
             {events.map((week, w) => {
               const track = week.tracks[k];
@@ -1448,10 +1485,10 @@ const ParkEventRows = memo(function ParkEventRows({
               </td>
             );
           })}
-        </tr>
+        </VisitedRow>
       ))}
       {allWeek && (
-        <tr aria-hidden>
+        <VisitedRow region={region} slug={slug} today={todayIso} aria-hidden>
           <td />
           {events.map((week, w) => (
             <td
@@ -1474,7 +1511,7 @@ const ParkEventRows = memo(function ParkEventRows({
               )}
             </td>
           ))}
-        </tr>
+        </VisitedRow>
       )}
     </>
   );
