@@ -25,7 +25,7 @@ rideLinks: false
 seo:
   title: 'EPCOT Festival of the Arts 2027 : dates, Lorcana, Broadway'
   description: >-
-    Festival of the Arts 2027 à EPCOT du 15 janvier au 1er mars, cartes Lorcana et concerts de Broadway dans l’entrée. Dining Packages dès le 3 décembre.
+    EPCOT Festival of the Arts 2027 du 15 janvier au 1er mars, quêtes Lorcana et concerts de Broadway compris dans l’entrée. Dining Packages dès le 3 décembre.
   keywords:
     - EPCOT Festival of the Arts 2027
     - Festival of the Arts 2027
@@ -43,15 +43,15 @@ Le Festival of the Arts d’[EPCOT](ref:epcot) se tient en 2027 du 15 janvier au
 
 ## Collectionner les cartes Lorcana
 
-Le livret des quêtes est gratuit et se retire au Creations Shop, dans la limite des stocks. La Collection Quest demande quatre cartes, qu’il faut obtenir en échangeant avec d’autres joueurs dans le parc, donc en abordant des inconnus. La collection complète vous rapporte la carte « Minnie Mouse – Musical Artist ». L’échange se fait à l’Illumineer's Lounge, dans le pavillon du Maroc, ou à la Figment's Inspiration Station, dans The Odyssey. Pour l’Ink & Find Scavenger Hunt, vous cherchez dans le parc des cartes géantes aux couleurs du festival, et vous recevez en échange « Belle – Reflective Writer » au format habituel.
+Le livret des quêtes est gratuit et se retire au Creations Shop, dans la limite des stocks. La Collection Quest demande quatre cartes, qu’il faut obtenir en échangeant avec d’autres joueurs dans le parc, donc en abordant des inconnus. La collection complète s’échange contre la carte « Minnie Mouse – Musical Artist » à l’Illumineer's Lounge, dans le pavillon du Maroc, ou à la Figment's Inspiration Station, dans The Odyssey. Pour l’Ink & Find Scavenger Hunt, vous cherchez dans le parc des cartes géantes aux couleurs du festival, et vous recevez en échange « Belle – Reflective Writer » au format habituel.
 
-Seul article vendu uniquement au festival, la Curator's Collection réunit six cartes en série limitée, dont une avec Figment, la toute première carte Lorcana à son effigie. Avec un Illumineer's Trove de l’édition Hyperia City, vous recevez la carte « Alice – Tea Alchemist », une par achat. L’offre vaut seulement en boutique : chez Disney Traders, au Souk-al-Magreb du Maroc et au Disney Lorcana TCG Festival Market. Disney n’a pas encore communiqué le prix de la collection ni celui du Trove.
+Disney vend la Curator's Collection uniquement au festival : six cartes en série limitée. L’une d’elles montre Figment, sa toute première carte Lorcana. Avec un Illumineer's Trove de l’édition Hyperia City, vous recevez la carte « Alice – Tea Alchemist », une par achat. L’offre vaut seulement en boutique : chez Disney Traders, au Souk-al-Magreb du Maroc et au Disney Lorcana TCG Festival Market. Disney n’a pas encore communiqué le prix de la Curator's Collection ni celui du Trove.
 
-Pendant douze jours, entre le 20 janvier (Cristian Romero) et le 24 février (Malia Ewart), des artistes de Lorcana et les deux concepteurs du jeu viennent au festival de 11 h 30 à 17 h. Le jour de leur venue, les artistes dédicacent les cartes qu’ils ont dessinées.
+Des artistes de Lorcana et les deux concepteurs du jeu viennent au festival à douze dates, de 11 h 30 à 17 h, du 20 janvier avec Cristian Romero au 24 février avec Malia Ewart. Le jour de leur venue, les artistes dédicacent les cartes qu’ils ont dessinées.
 
 ## Les concerts de Broadway à l’America Gardens Theatre
 
-Les concerts sont compris dans l’entrée du parc et ont lieu tous les soirs à 17 h 15, 18 h 30 et 19 h 45 à l’America Gardens Theatre, à côté du pavillon The American Adventure. Les places vont aux premiers arrivés. Six duos se relaient presque d’un jour à l’autre :
+Les concerts ont lieu tous les soirs à 17 h 15, 18 h 30 et 19 h 45 à l’America Gardens Theatre, à côté du pavillon The American Adventure, et sont compris dans l’entrée du parc. En 2026, c’était le cas de tout le festival ; pour 2027, Disney ne l’a annoncé pour l’instant que pour les concerts. Les places vont aux premiers arrivés. Six duos se relaient presque d’un jour à l’autre :
 
 - Michael James Scott et Marisha Wallace : 15, 17, 18, 21, 22, 25 et 26 janvier
 - Ashley Brown et Josh Strickland : 16, 19, 20, 23, 24, 27 et 28 janvier
@@ -61,15 +61,15 @@ Les concerts sont compris dans l’entrée du parc et ont lieu tous les soirs à
 - Caissie Levy et Ryan McCartan : 13, 16, 17, 20, 21, 23, 24 et 26 février
 - Final « Seize the Day! A Newsies Celebration » : 27 et 28 février, puis 1er mars
 
-Wallace, Pascal, Sherie Rene Scott, Lewis, Reeves et McCartan montent sur cette scène pour la première fois. Brown et Strickland célèbrent les 20 ans de « Mary Poppins » et de « Tarzan » à Broadway. Michael James Scott a joué le Génie à Broadway plus longtemps que quiconque. La distribution du final Newsies n’est pas encore fixée.
+Wallace, Pascal, Sherie Rene Scott, Lewis, Reeves et McCartan montent sur cette scène pour la première fois. Brown et Strickland célèbrent les 20 ans de « Mary Poppins » et de « Tarzan » à Broadway. Michael James Scott a joué le Génie à Broadway plus longtemps que quiconque. Disney n’a pas encore annoncé qui chante au final de Newsies.
 
 À la CommuniCore Hall, Disney installe l’exposition « Once Upon A Stage: The Music of Disney on Broadway ». En 2026, une exposition au nom presque identique portait sur la magie et non sur la musique. Dans la salle, on trouve aussi pour la première fois des produits Disney on Broadway autour de « Hercule », « Aladdin », « Le Roi lion » et « La Belle et la Bête ».
 
 ## Des Dining Packages avec place garantie
 
-Les Dining Packages sont réservables à partir du 3 décembre 2026, deux semaines plus tôt que l’an dernier. Un repas dans l’un des 14 restaurants participants s’accompagne d’une place garantie à un concert le même jour, avec une file d’attente réservée. Le badge qui indique la date et l’heure de la représentation vous est remis au restaurant. Le forfait comprend un plat avec dessert ou un buffet, et une boisson, alcoolisée à partir de 21 ans.
+Les Dining Packages sont réservables à partir du 3 décembre 2026, deux semaines plus tôt que l’an dernier. Un repas dans l’un des 14 restaurants participants s’accompagne d’une place garantie à un concert le même jour, avec une file d’attente réservée. Le badge qui indique la date et l’heure de la représentation vous est remis au restaurant. Le forfait comprend un plat principal avec dessert ou un buffet, et une boisson, alcoolisée à partir de 21 ans.
 
-Les adultes à partir de dix ans paient de 38 $ au Regal Eagle Smokehouse à 104 $ chez Le Cellier Steakhouse. Pour les enfants de trois à neuf ans, c’est de 23 à 52 $, taxes et pourboire toujours en sus. Le Regal Eagle ne se réserve que le jour même. L’entrée du parc n’est pas comprise dans le forfait, et une carte bancaire est demandée à la réservation. En 2026, tout le festival était compris dans l’entrée. Pour 2027, Disney ne l’a annoncé pour l’instant que pour les concerts.
+Les adultes à partir de dix ans paient de 38 $ au Regal Eagle Smokehouse à 104 $ chez Le Cellier Steakhouse. Pour les enfants de trois à neuf ans, c’est de 23 à 52 $, taxes et pourboire toujours en sus. Le Regal Eagle ne se réserve que le jour même. L’entrée du parc n’est pas comprise dans le forfait. Une carte bancaire est demandée à la réservation.
 
 ```best-days-widget slug=epcot
 
@@ -77,9 +77,9 @@ Les adultes à partir de dix ans paient de 38 $ au Regal Eagle Smokehouse à 10
 
 ## Peinture, craie et 19 Food Studios
 
-Haley Talton, Nicky Nicotera et Robert Post font leurs débuts. Darren Wilson revient, et Stephanie Laberis et William Silvers exposent aussi. À l’Animation Academy de l’America Gardens Theatre, des dessinateurs de Disney donnent des cours de dessin. Dans l’Expression Section, vous participez à une peinture au numéro sur cinq fresques, dont l’une reprend un motif de Lorcana.
+Haley Talton, Nicky Nicotera et Robert Post exposent pour la première fois au festival. Darren Wilson revient, et Stephanie Laberis et William Silvers exposent aussi. À l’Animation Academy de l’America Gardens Theatre, des dessinateurs de Disney donnent des cours de dessin. Dans l’Expression Section, vous participez à une peinture par numéros sur cinq fresques, dont l’une reprend un motif de Lorcana.
 
-Le festival existe depuis 2017. Pour son dixième anniversaire, deux nouveaux décors photo Lorcana, « Champion Card Collage » et « Merlin's Shop and Smithy », prennent place sur le pont qui mène au World Showcase. Juste à côté, les Chalk Art Galleries exposent leurs dessins à la craie. Les 19 Food Studios proposent des plats autour du festival, les menus et les prix suivront.
+Le festival existe depuis 2017. Pour son dixième anniversaire, deux nouveaux décors photo Lorcana, « Champion Card Collage » et « Merlin's Shop and Smithy », prennent place sur le pont qui mène au World Showcase. Juste à côté se trouvent les Chalk Art Galleries. Les 19 Food Studios servent des plats autour du festival ; Disney dévoilera leurs menus plus tard.
 
 Les vacances, les jours fériés et les autres événements de ces semaines sont réunis dans notre guide pour [préparer un séjour à Orlando](/blog/sejour-orlando-disney-universal), avec les billets Disney et Universal.
 
