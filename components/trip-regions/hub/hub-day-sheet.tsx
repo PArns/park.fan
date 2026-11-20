@@ -17,13 +17,14 @@ import { plannerUi } from '@/lib/planner/ui-store';
 import {
   closesEarly,
   dayGuestClose,
-  findLeg,
   formatHubDate,
   isRankable,
   legMinutes,
   parkGeo,
   rankGroupParks,
   regionGroups,
+  sheetLeg,
+  sheetShowsDrive,
   shortestLines,
   shortParkName,
   tintLevel,
@@ -80,6 +81,7 @@ export function HubDaySheet({
 }) {
   const t = useTranslations('tripHub.sheet');
   const tRegion = useTranslations('tripRegion.hub.sheet');
+  const tParks = useTranslations('tripPlanner.parks');
   const isDesktop = useMediaQuery('(min-width: 1024px)');
   // Drive times start from the region's usual hotel area until the reader picks one.
   const [area, setArea] = useState(requireTripRegion(region.slug).hub.defaultArea ?? '');
@@ -193,8 +195,10 @@ export function HubDaySheet({
                   </ol>
                 </section>
               ))}
-              {region.travel.attribution && (
-                <p className="text-muted-foreground text-xs">{region.travel.attribution}</p>
+              {region.travel.attribution && sheetShowsDrive(day, region, area) && (
+                <p className="text-muted-foreground text-xs">
+                  {tParks('driveSource', { source: region.travel.attribution })}
+                </p>
               )}
             </div>
           </div>
@@ -248,7 +252,7 @@ function SheetPark({
   const closure = parkDay?.closedBy
     ? calendar.seasons.find((s) => s.id === parkDay.closedBy)
     : undefined;
-  const leg = findLeg(region.travel.legs, `hotel:${area}`, park.slug);
+  const leg = sheetLeg(region, area, park.slug, parkDay);
   const level = tintLevel(parkDay?.crowdLevel);
 
   const status =
@@ -335,7 +339,7 @@ function SheetPark({
                   {s.status === 'expected' ? ` · ${tLanes('expected')}` : ''}
                 </li>
               ))}
-            {leg && parkDay?.status !== 'CLOSED' && (
+            {leg && (
               <li className="text-muted-foreground">
                 {leg.transferMinutes && tRegion.has('travelTransfer')
                   ? tRegion('travelTransfer', {
