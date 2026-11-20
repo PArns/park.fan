@@ -71,9 +71,9 @@ In Adventureland, the pirate tavern The Beak and Barrel stays open. It opened on
 
 The first Pirates ride opened at Disneyland in California in 1967. It was one of the last attractions whose development Walt Disney followed himself in the 1960s. It started life as a wax museum idea and ended up being built with Audio-Animatronics.
 
-For Magic Kingdom, which opened in 1971, Disney first planned without pirates, reasoning that a Caribbean ride so close to the real Caribbean wouldn't have the same appeal as it did in California. The Western River Expedition was meant to go there instead. Pirates got built after all, the construction wall read "Opening Christmas 1973", and the first boats set off on 15 December 1973. Disney added Jack Sparrow in 2006, and in 2018 the ride got a new auction scene where the pirates sell off loot rather than a bride.
+For Magic Kingdom, which opened in 1971, Disney first planned without pirates, reasoning that a Caribbean ride so close to the real Caribbean wouldn't have the same appeal as it did in California. Pirates got built after all, the construction wall read "Opening Christmas 1973", and the first boats set off on 15 December 1973. Disney added Jack Sparrow in 2006, and in 2018 the ride got a new auction scene where the pirates sell off loot rather than a bride.
 
-Disney shows how Pirates was written in the "Storytelling" episode of the video series "We Call It Imagineering" on Walt Disney Imagineering's YouTube channel, and later on Disney+ as well. The same episode covers Indiana Jones and the Myth of the Jade Serpent at Animal Kingdom and Piston Peak National Park, the Cars area going up at Magic Kingdom on part of what used to be Frontierland.
+Disney shows how Pirates was written in the "Storytelling" episode of the video series "We Call It Imagineering" on Walt Disney Imagineering's YouTube channel, and later on Disney+ as well. The same episode covers the new Indiana Jones story "Indiana Jones and the Myth of the Jade Serpent" and Piston Peak National Park, the Cars area going up at Magic Kingdom on part of what used to be Frontierland.
 
 Sources:
 [Pirates of the Caribbean on disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),
