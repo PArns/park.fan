@@ -39,7 +39,7 @@ seo:
 
 ## Dernière traversée le 10 janvier
 
-L’attraction tourne encore à Noël, au Nouvel An et pendant la première semaine de janvier. Le 11 janvier, premier jour de congé des pirates, le Magic Kingdom lance ses soirées Disney After Hours, avec un billet à part, à certaines dates jusqu’au 19 juillet.
+L’attraction tourne encore à Noël, au Nouvel An et pendant la première semaine de janvier. Les soirées Disney After Hours, avec leur billet à part, démarrent au Magic Kingdom justement le 11 janvier, premier jour de congé des pirates. Quelle que soit la soirée que vous réservez parmi les dates prévues jusqu’au 19 juillet, Pirates n’en fera pas partie.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -53,11 +53,11 @@ Au printemps, en plus de Pirates, le Carousel of Progress manque aussi à Tomorr
 
 ## Ce qui change et qui la pause pénalise
 
-Disney n’a pas encore montré à quoi ressembleront les nouveaux effets dans ces deux scènes. Le Parks Blog parle d’une pause de routine et explique que les nouveaux effets prolongeront l’histoire que raconte déjà l’attraction.
+Le Parks Blog parle d’une pause de routine et, sur les effets, se contente de dire qu’ils « s’appuieront sur l’histoire de l’attraction ». Pour une histoire faite de coups de canon et d’une ville en flammes, la formule laisse beaucoup de champ.
 
-Ce sont les familles qui y perdent le plus. Pirates n’impose aucune taille minimum. En bateau, pendant environ huit minutes et demie, vous traversez des ports des Caraïbes du XVIIe siècle, longez une crique hantée, passez entre un fort et un galion qui se canonnent et finissez dans une ville en flammes. Le Jack Sparrow des films apparaît dans trois scènes. Le parcours comporte une descente d’un peu plus de quatre mètres. La file d’attente serpente dans le Castillo del Morro, un fort inspiré de la forteresse de San Juan, à Porto Rico. Quant à la chanson « Yo Ho, Yo Ho (A Pirate’s Life for Me) », elle vous accompagne jusqu’à l’hôtel, et aucun guichet ne la reprend.
+Ce sont les familles qui y perdent le plus. Pirates n’impose aucune taille minimum. En bateau, pendant environ huit minutes et demie, vous traversez des ports des Caraïbes du XVIIe siècle, longez une crique hantée, passez entre un fort et un galion qui se canonnent et finissez dans une ville en flammes. Le Jack Sparrow des films apparaît dans trois scènes. Le parcours comporte une descente d’un peu plus de quatre mètres. Le voyage commence dès la file d’attente, qui serpente dans le Castillo del Morro, un fort inspiré de la forteresse de San Juan, à Porto Rico. Quant à la chanson « Yo Ho, Yo Ho (A Pirate’s Life for Me) », elle vous accompagne jusqu’à l’hôtel, et aucun guichet ne la reprend.
 
-Pour des vacances à Orlando en 2027, je ne compterais de nouveau sur Pirates qu’une fois que Disney aura annoncé la date de réouverture. Sans les pirates, le mieux est d’organiser la journée autour des [attractions où la file d’attente est la plus longue](/blog/magic-kingdom-temps-d-attente-conseils). Si Universal et les autres parcs Disney sont aussi au programme, le guide pour [organiser un séjour à Orlando entre Disney World et Universal](/blog/sejour-orlando-disney-universal) vous aide à choisir l’ordre des journées.
+Même pour des vacances à l’automne 2027, je ne compterais pas sur Pirates, car « vers la fin de 2027 » court jusqu’à la Saint-Sylvestre. Le temps que vous auriez passé dans la file des pirates revient ce jour-là aux [attractions où la file d’attente est la plus longue](/blog/magic-kingdom-temps-d-attente-conseils). Si vous espérez encore voir les pirates en décembre 2027, gardez la journée au Magic Kingdom pour la fin du séjour. Le guide pour [organiser un séjour à Orlando entre Disney World et Universal](/blog/sejour-orlando-disney-universal) explique dans quel ordre placer avant elle Universal et les autres parcs Disney.
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -71,9 +71,9 @@ Pour des vacances à Orlando en 2027, je ne compterais de nouveau sur Pirates qu
 
 La première attraction Pirates a ouvert en 1967 à Disneyland, en Californie. C’est l’une des dernières dont Walt Disney a encore suivi lui-même la conception. Elle devait d’abord être un musée de cire, puis elle a été construite avec des Audio-Animatronics.
 
-Pour le Magic Kingdom, ouvert en 1971, Disney n’avait au départ prévu aucun pirate, parce qu’une attraction sur les Caraïbes, si près des vraies Caraïbes, n’aurait pas eu le même attrait qu’en Californie. Disney a finalement construit Pirates, la palissade du chantier annonçait « Opening Christmas 1973 », et les premiers bateaux sont partis le 15 décembre 1973. Disney a ajouté Jack Sparrow en 2006, et en 2018, l’attraction a reçu une nouvelle scène de vente aux enchères, où les pirates mettent en vente leur butin et non plus une mariée.
+Pour le Magic Kingdom, ouvert en 1971, Disney n’avait au départ prévu aucun pirate, parce qu’une attraction sur les Caraïbes, si près des vraies Caraïbes, n’aurait pas eu le même attrait qu’en Californie. La palissade du chantier annonçait « Opening Christmas 1973 », et les premiers bateaux sont partis le 15 décembre 1973. Disney a ajouté Jack Sparrow en 2006, et en 2018, l’attraction a reçu une nouvelle scène de vente aux enchères, où les pirates mettent en vente leur butin et non plus une mariée.
 
-Disney raconte la naissance de Pirates dans l’épisode « Storytelling » de la série vidéo « We Call It Imagineering », sur la chaîne YouTube de Walt Disney Imagineering, puis sur Disney+. Le même épisode parle de la nouvelle histoire d’Indiana Jones, « Indiana Jones and the Myth of the Jade Serpent », et de Piston Peak National Park, le quartier Cars qui prend place au Magic Kingdom sur une partie de l’ancien Frontierland.
+Disney raconte la naissance de Pirates dans l’épisode « Storytelling » de la série vidéo « We Call It Imagineering », sur la chaîne YouTube de Walt Disney Imagineering, puis sur Disney+. Pour le Magic Kingdom, ce qui compte surtout dans cet épisode, c’est Piston Peak National Park, le quartier Cars qui prend place sur une partie de l’ancien Frontierland. La nouvelle histoire d’Indiana Jones, « Indiana Jones and the Myth of the Jade Serpent », y figure aussi.
 
 Sources :
 [Pirates of the Caribbean sur disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),

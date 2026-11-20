@@ -39,7 +39,7 @@ Op 11 januari 2027 gaat [Pirates of the Caribbean](ref:magic-kingdom-park/pirate
 
 ## Op 10 januari vaar je voor het laatst
 
-Met kerst, oud en nieuw en in de eerste week van januari vaart de attractie nog. Precies op 11 januari, de eerste vrije dag van de piraten, beginnen in Magic Kingdom de avonden van Disney After Hours. Daarvoor heb je een apart ticket nodig, en ze lopen op geselecteerde dagen tot 19 juli.
+Met kerst, oud en nieuw en in de eerste week van januari vaart de attractie nog. Disney After Hours, de avonden met een apart ticket, begint in Magic Kingdom uitgerekend op 11 januari, de eerste vrije dag van de piraten. Welke van de geselecteerde avonden tot 19 juli je ook boekt, Pirates zit er nooit bij.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -53,11 +53,11 @@ In het voorjaar ontbreekt naast Pirates ook het Carousel of Progress in Tomorrow
 
 ## Wat er nieuw wordt en wie het merkt
 
-Hoe de nieuwe effecten in de twee scènes eruitzien, heeft Disney nog niet laten zien. De Parks Blog spreekt van een routinematige pauze, en de nieuwe effecten moeten voortbouwen op het verhaal van de attractie.
+De Parks Blog noemt de sluiting een routinematige pauze, en over de effecten staat er alleen dat ze “voortbouwen op het verhaal van de attractie”. Bij een verhaal met kanonnen en een brandende stad laat dat nogal wat open.
 
-Gezinnen merken het het meest. Pirates heeft geen minimale lengte. Je zit zo'n achtenhalve minuut in een boot en vaart door Caribische havenstadjes uit de zeventiende eeuw, langs een spookbaai, tussen een fort en een galjoen door die elkaar onder vuur nemen, en door een stad die in brand staat. Captain Jack Sparrow uit de films duikt in drie scènes op. Onderweg gaat het één keer ruim vier meter naar beneden. In de rij sta je in het Castillo del Morro, een fort naar het voorbeeld van de vesting van San Juan in Puerto Rico. Het liedje “Yo Ho, Yo Ho (A Pirate's Life for Me)” zit na afloop in je hoofd, of je nu wilt of niet.
+Gezinnen merken het het meest. Pirates heeft geen minimale lengte. Je zit zo'n achtenhalve minuut in een boot en vaart door Caribische havenstadjes uit de zeventiende eeuw, langs een spookbaai, tussen een fort en een galjoen door die elkaar onder vuur nemen, en door een stad die in brand staat. Captain Jack Sparrow uit de films duikt in drie scènes op. Onderweg gaat het één keer ruim vier meter naar beneden. De rit begint al in de rij, die door het Castillo del Morro loopt, een fort naar het voorbeeld van de vesting van San Juan in Puerto Rico. Het liedje “Yo Ho, Yo Ho (A Pirate's Life for Me)” zit na afloop in je hoofd, of je nu wilt of niet.
 
-Voor een vakantie in Orlando in 2027 zou ik pas weer op Pirates rekenen als Disney de datum van de heropening noemt. Een parkdag zonder piraten bouw je het best rond de [attracties met de langste rijen](/blog/magic-kingdom-wachttijden-tips). Komen Universal en de andere Disney-parken erbij, dan helpt de gids voor een [vakantie in Orlando met Disney World en Universal](/blog/orlando-vakantie-plannen) bij de volgorde van de dagen.
+Ook voor een vakantie in het najaar van 2027 zou ik niet vast op Pirates rekenen, want “tegen het eind van 2027” loopt door tot oudejaarsavond. De tijd die je anders in de rij bij de piraten had gestaan, gaat die dag naar de [attracties met de langste rijen](/blog/magic-kingdom-wachttijden-tips). Hoop je in december 2027 nog op de piraten, zet je dag in Magic Kingdom dan aan het eind van de reis. In welke volgorde je Universal en de andere Disney-parken daarvoor doet, staat in de gids voor een [vakantie in Orlando met Disney World en Universal](/blog/orlando-vakantie-plannen).
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -71,9 +71,9 @@ In Adventureland blijft The Beak and Barrel open, de piratenkroeg die op 29 augu
 
 De eerste Pirates-attractie opende in 1967 in Disneyland in Californië. Het was een van de laatste attracties waarvan Walt Disney het ontstaan nog zelf volgde. Eerst was er een wassenbeeldenmuseum bedacht, gebouwd werd het uiteindelijk met Audio-Animatronics.
 
-Voor Magic Kingdom, dat in 1971 openging, rekende Disney aanvankelijk niet op piraten. Een Caribische attractie zo dicht bij het echte Caribisch gebied zou niet dezelfde aantrekkingskracht hebben als in Californië, was de gedachte. Uiteindelijk kwam Pirates er toch. Op de bouwschutting stond “Opening Christmas 1973”, en op 15 december 1973 voeren de eerste boten uit. In 2006 bouwde Disney Jack Sparrow erin, en in 2018 kreeg de attractie een nieuwe veilingscène, waarin de piraten buit veilen in plaats van een bruid.
+Voor Magic Kingdom, dat in 1971 openging, rekende Disney aanvankelijk niet op piraten. Een Caribische attractie zo dicht bij het echte Caribisch gebied zou niet dezelfde aantrekkingskracht hebben als in Californië, was de gedachte. Op de bouwschutting stond “Opening Christmas 1973”, en op 15 december 1973 voeren de eerste boten uit. In 2006 bouwde Disney Jack Sparrow erin, en in 2018 kreeg de attractie een nieuwe veilingscène, waarin de piraten buit veilen in plaats van een bruid.
 
-Over het ontstaan van Pirates vertelt Disney in de aflevering “Storytelling” van de videoserie “We Call It Imagineering” op het YouTube-kanaal van Walt Disney Imagineering, later ook op Disney+. Dezelfde aflevering gaat over het nieuwe Indiana Jones-verhaal “Indiana Jones and the Myth of the Jade Serpent” en over Piston Peak National Park, het Cars-gebied dat in Magic Kingdom op een deel van het vroegere Frontierland verrijst.
+Over het ontstaan van Pirates vertelt Disney in de aflevering “Storytelling” van de videoserie “We Call It Imagineering” op het YouTube-kanaal van Walt Disney Imagineering, later ook op Disney+. Voor Magic Kingdom draait het in die aflevering vooral om Piston Peak National Park, het Cars-gebied dat op een deel van het vroegere Frontierland verrijst. Het nieuwe Indiana Jones-verhaal “Indiana Jones and the Myth of the Jade Serpent” komt er ook in voor.
 
 Bronnen:
 [Pirates of the Caribbean op disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),
