@@ -73,8 +73,9 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
   their content.
 - **A resort's busiest days** are the highest mean over its parks with a figure, never the
   hours-weighted pick, so a day most of its parks call quiet is never one of its busiest.
-- **School holidays are US ones, and say so.** Lanes, reasons and the best-time pages name "US
-  school holidays"; break names go through `translateHolidayName(cleanBreakName(…))`.
+- **School holidays are US ones, and say so.** The calendar's break line, reasons and the best-time pages name "US
+  school holidays"; break names go through `translateHolidayName(cleanBreakName(…))`
+  (`lib/trip-regions/break-runs.ts`).
 - **Past 60 days, last year, said once.** Every ranking reads last year's measured day past 60
   days, so on a month that far out nearly every day is `last_year`. The tiles look like the
   rest; one line above the calendar says „Ab dem 13. Jan.: Werte aus dem Vorjahr …“ from the first
@@ -90,13 +91,13 @@ pages only and forwards each route's own query names (`lib/trip-regions/relay.ts
 
 ## Simple first, more on request
 
-| Level | What                        | Where                                                                                                          |
-| ----- | --------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks                     |
-| 0     | the answer                  | under the buttons: the best park per resort on one named day, the quietest days ahead                          |
-| 1     | the overview                | a week: tiles with wait, level, hours, season icons; each park's quietest day ringed and starred; lanes closed |
-| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides                               |
-| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                   |
+| Level | What                        | Where                                                                                                           |
+| ----- | --------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| 0     | what the page is for        | the head: the question, one line, „Reise planen“, „Zum Kalender“ and what the planner asks                      |
+| 0     | the answer                  | under the buttons: the day's tip, the best park per resort on one named day, the quietest days ahead            |
+| 1     | the overview                | a week: tiles with wait, level, hours; each park's quietest day ringed and starred, its events as bars under it |
+| 2     | everything else about a day | the day sheet: ranked parks, hours, perks, evenings, seasons, travel, five rides                                |
+| 3     | the day itself              | „Im Tagesplaner öffnen“ opens the day planner's wizard on that park and date                                    |
 
 The head stands on Parky's picture of the region (`hub.scene`, `/media/reiseplaner/parky-<region>-tag.webp`),
 the one the header's planner band, the park pages' tile and the blog's head show, not on a park
@@ -107,11 +108,52 @@ page does not end on the picture it began with.
 The first phone screen holds the H1 (the search term as its small first line, „Welcher Park an
 welchem Tag?“ as its big one), the lead, the two buttons and the answer. The calendar is the first chapter and starts where the head ends (660 to 750 px at 390 × 844), because it is what visitors come for: between 13 and 19 November 2026 „Zum Kalender“ got 100 clicks and „Reise planen“ 30. With the planner first, its chapter (500 to 770 px) had pushed the calendar's first week down to 1607–1937 px. The answer names its day ("Sat, Nov 14, Orlando time"),
 never "today", because a cached copy outlives midnight. After every pick has closed it is about
-tomorrow (`glanceDay`). It names each group with a headliner park (`glanceLines`): a resort of one
+tomorrow (`glanceDay`). Its first row is the day's one tip („Tipp für Fr., 20. Nov.: Universal
+Studios 30 Min., ruhiger als an einem normalen Tag dort“, `dayPick`): of the resorts' own picks, the
+headliner park that is quietest against its own normal day (the API's crowd level), then a full day
+over an early close, then the shorter wait, then the longer day. Minutes first would hand the tip to
+the park that is always quiet: on 20 November 2026 SeaWorld at 20 min against its usual 30, on the
+24th Busch Gardens at 10. A non-headliner and a last-year day never win, which `pnpm test:orlando-hub`
+pins. The second row is the headliner parks to tick off ([parks already visited](#parks-already-visited)).
+The third names each group with a headliner park (`glanceLines`) under „Je Resort“: a resort of one
 park is answered by that park (Universal Studios Hollywood), a group without a headliner (SeaWorld
-Orlando, the day trips) stays out. No crowd badge: beside "best park" it read as a contradiction.
-Its second row is each of those groups' quietest day in the window, a date said once where they
-share it.
+Orlando, the day trips) stays out. The level is said in words beside the tip only, the thing it
+was picked on; a badge beside each resort's best park read as a contradiction. The last row is
+each of those groups' quietest day in the window, a date said once where they share it. The rows
+about the day are `HubDayTip`, in the browser; the box and the quietest days are `HubGlance`, on
+the server, and both get the calendar's own day and region objects, so the payload carries them
+once.
+
+## Parks already visited
+
+On a trip the question is not only which park is quiet today but which one is still ahead. A
+visitor ticks off where they have been, and the tip moves on to a park not seen yet.
+
+- **Two places to tick, one store.** In the first answer a chip per headliner park („Schon dort
+  gewesen? Abhaken“, then „3 von 7 Parks abgehakt“), sideways on a phone like the resort filter; in
+  the calendar a ring before each park's name (`VisitedToggle`, 44 px to the touch, on the phone
+  and in the table). Both write `visitedParks(region)` (`lib/trip-regions/visited-parks.ts`), and
+  every mark reads it, so a tick in one place shows in the other at once.
+- **What a tick does.** The tip (`dayPick(day, region, visited)`) and each resort's park
+  (`glanceLines`) pass over a ticked park for the group's next headliner in the day sheet's order
+  (`rankGroupParks`); the new tip fades in where the old one stood. With every headliner ticked
+  off, the tip says so and names the best park for a second visit. In the calendar a ticked park's
+  days fade to 40 % (`VisitedDim`, `VisitedRow`), still readable for a second visit, no longer what
+  the eye goes to.
+- **The look.** An empty ring while a park is ahead, a filled circle with a check in the site's
+  "open" green once it is done, the ridden rides' colour (`VisitedMark`). A tick springs once when
+  pressed (`visited-pop`, `motion-safe`), never when the ticks arrive after hydration.
+- **Where it lives.** localStorage (`parkfan_<region>_visited`: each park's slug with the
+  region's date it was ticked), which the privacy policy names; only a signed-in visitor's account
+  keeps a copy. A tick older than
+  the longest trip the planner plans (`MAX_TRIP_DAYS`, 21 days) counts no more, so last year's
+  visit says nothing about this one. „Reise löschen“ and „Neue Reise planen“ drop the region's
+  ticks with the rest of the trip (`clearTrip`), and „Rückgängig“ brings them back. The served
+  page has nothing ticked, so it is the same for everybody, and the ticks arrive in one batch
+  after hydration.
+- **On every device of a signed-in visitor.** The visitor account carries the ticks like the
+  ridden rides ([visitor accounts](visitor-accounts.md#how-the-sync-works)), as the API's
+  `visitedParks` (`{ region, park, date }`); a park ticked on two devices keeps the later date.
 
 ## Two states
 
@@ -184,10 +226,10 @@ reads as what the chapter is about, where „01“ said only where it stands.
      calendar's `ParkCalendarDay` draws the same component at full size): tinted by the park's
      level, the wait (`shownWait`), the level in words (none for a figure without a level, never
      „Keine Prognose“ beside a forecast), the day guest's hours with an early close in bold under
-     the folded corner, „Zeiten folgen“ without published hours, the season icons (quiet for a
-     season most of the window runs in, `quietSeasons`), „Geschlossen“. The served HTML holds every
-     day twice (the table and the phone's week), so what a density's tiles share is one class in
-     `app/globals.css` (`calendar-tile-mini`, `-compact`, `-full`), and the star and the season
+     the folded corner, „Zeiten folgen“ without published hours, „Geschlossen“. No season icon:
+     the park's events are bars under its tiles, named there. The served HTML holds every day
+     twice (the table and the phone's week), so what a density's tiles share is one class in
+     `app/globals.css` (`calendar-tile-mini`, `-compact`, `-full`), and the star and the events'
      icons are `<use>`s of one `CalendarIconSprite` around the calendar.
    - **Each park's quietest day of the week** (`quietestDay`: the lowest printed wait, `shownWait`,
      a tie to the lower `headlinerWait`, then the longer day, then the earlier date; one for every
@@ -206,10 +248,29 @@ reads as what the chapter is about, where „01“ said only where it stands.
      dates (a button each, the storm bar, a dot for a holiday), then each park's name with its
      quietest day and its seven days as 44 px tiles (`CalendarDayTile`, `density="mini"`: the wait
      without its unit, the star in the corner, the rest in the tile's accessible name and the day
-     sheet).
+     sheet). Above the cards, the week's US school breaks in one line each („US-Schulferien:
+     Thanksgiving-Ferien, 21.–29. Nov.“, `BreakKey`), the planner's runs (`breakRuns`), beside
+     the dot their dates carry.
+   - **Each park's events go under its tiles, on the same seven columns** (`parkWeekEvents`, a
+     week of one park). Under the old design a lane of 30 notches without dates sat below the
+     whole grid, and a visitor in November 2026 could not tell which day a party fell on. Now:
+     - a party, every night it runs, and a festival on some of the week's days are a bar on their
+       days (`HUB_EVENT_BAR`, the text colour faded, never a crowd tint or a colour per event),
+       round where the event starts or ends, flat at the week's edge where it goes on, dashed
+       while only expected. Under the bar its name and what a visitor plans around: „Tagesgäste
+       bis 18:00“ for a party, the time the tile's folded corner stands for (else „Abend-Event,
+       eigenes Ticket“), „ab“ or „bis“ a day for a festival that starts or ends inside the week;
+     - a festival on every day the park opens that week is one quiet line, „Die ganze Woche:
+       Holidays at Walt Disney World Resort“, since a full bar under every week said nothing;
+     - a school break has no park and stays out (`BreakKey` names it).
 
-   The resort filter and the week are urgent, the grid follows through `useDeferredValue`. The
-   events sit under it as one closed `<details>` row over the whole window. A tap opens
+     Every week's events stack in one grid cell on the phone (`HUB_WEEK_LAYER`, `invisible`
+     where not shown), and the table gives each park as many rows as its busiest week, so turning
+     a week moves nothing below. A tile's accessible name ends with that day's events; on the
+     phone each event is read with its dates, and the table's event rows are `aria-hidden`,
+     since a row without grid cells would break the grid.
+
+   The resort filter and the week are urgent, the grid follows through `useDeferredValue`. A tap opens
    `HubDaySheet` (bottom sheet on a phone, side panel on a desktop); it holds a history entry of
    its own, so a phone's Back closes it, and its primary button plans a trip from that day
    ([two states](#two-states)). Under the calendar: the forecast's date and the travel
@@ -308,7 +369,7 @@ nights, its weekdays, its breaks and holidays, Epic Universe on its weekends and
 within 500 words (`MONTH_WORDS_MAX`); where that stays under 250 (a month with no events and no
 breaks), each park's mean and the closed days follow. A month past the forecast says once, in its
 first answer, that its figures are last year's measured days. The four questions on the figure
-stay on the hub, so twelve month pages never repeat one block of answers. With the events lane and
+stay on the hub, so twelve month pages never repeat one block of answers. With the events under the tiles and
 the answer box under the head, that is what makes one month's HTML differ from the next.
 
 The hub's lead says what the page holds („Ein Kalender für alle 16 Parks rund um Orlando und ein
@@ -370,7 +431,9 @@ What the hub counts (the events in [analytics](../development/analytics.md)):
 - **The calendar.** `trip_hub_filter` when a resort chip changes it, `trip_hub_week_paged` when it
   shows another week (`how`: `arrow`, `chip`, `keys`, `next_link`; `week`, the one now shown),
   `trip_hub_day_opened` when a day opens its sheet (`layout`: `table` from `lg`, `phone` below;
-  never which day), `trip_accuracy_opened {surface: hub}` for the accuracy line.
+  never which day), `trip_accuracy_opened {surface: hub}` for the accuracy line,
+  `trip_hub_visited` when a park is ticked off or the tick taken away (`from`: `answer`,
+  `calendar`; `visited`; never which park).
 - **Links**, as `internal_link_clicked` from marked blocks, with no client code of their own:
   `trip_answer` (the first answer's park calendars) and `trip_parks` (the resorts' park links), each
   with the park as entity, `trip_months` (the month index) and `trip_when` (the best-time teaser,
@@ -422,7 +485,8 @@ Page types for hub, month and best-time pages are the analytics core's (`sitePag
 ## Checks
 
 `pnpm test:orlando-hub` (window, redirects, relay allow-list, the pick and its clause, tomorrow
-after close, lanes, summaries, ranges, the calendar's weeks and fragment, each park's quietest
-day, the quiet seasons), `pnpm test:trip-clear`, `pnpm test:edge-windows`, and against a running build
-`pnpm check:landing-pages` and `pnpm check:semantic-html`, which list `/de/orlando`, `/en/orlando`
-and next month's page.
+after close, the day's tip and how a visited park gives way, how long a tick lasts, the events and
+the school breaks, each park's week of events, summaries, ranges, the calendar's weeks and
+fragment, each park's quietest day), `pnpm test:trip-clear` (the ticks go with the trip),
+`pnpm test:edge-windows`, and against a running build `pnpm check:landing-pages` and
+`pnpm check:semantic-html`, which list `/de/orlando`, `/en/orlando` and next month's page.

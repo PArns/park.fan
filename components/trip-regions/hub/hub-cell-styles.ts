@@ -48,3 +48,28 @@ export const HUB_WEEK_ITEM = [
   'hidden group-data-[week=4]/week:block',
   'hidden group-data-[week=5]/week:block',
 ] as const;
+
+/**
+ * {@link HUB_WEEK_CELL} for a layer that keeps its place while hidden: every week's events under a
+ * park stack in one grid cell, so the cell is as tall as the busiest week and turning a week moves
+ * nothing below it.
+ */
+export const HUB_WEEK_LAYER = [
+  'invisible group-data-[week=0]/week:visible',
+  'invisible group-data-[week=1]/week:visible',
+  'invisible group-data-[week=2]/week:visible',
+  'invisible group-data-[week=3]/week:visible',
+  'invisible group-data-[week=4]/week:visible',
+  'invisible group-data-[week=5]/week:visible',
+] as const;
+
+/**
+ * An event's bar under a park's tiles, on the days it runs: the text colour, faded. Never a crowd
+ * tint, which would read as a level under the tinted tiles, and never a colour per event, since a
+ * week can hold eight.
+ */
+export const HUB_EVENT_BAR = 'h-1.5 bg-foreground/45';
+
+/** {@link HUB_EVENT_BAR} for an event only expected from last year's pattern: dashed. */
+export const HUB_EVENT_BAR_EXPECTED =
+  'h-1.5 bg-[repeating-linear-gradient(90deg,color-mix(in_oklab,var(--foreground)_45%,transparent)_0_4px,transparent_4px_6px)]';

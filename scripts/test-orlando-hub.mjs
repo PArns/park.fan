@@ -18,12 +18,13 @@ import {
   hubWeekFragment,
   hubWeekFromFragment,
   hubWeeks,
+  parkWeekEvents,
   yearLine,
   isRankable,
+  dayPick,
   glanceDay,
   glanceLines,
   quietestDay,
-  quietSeasons,
   rankGroupParks,
   regionResorts,
   sheetLeg,
@@ -51,8 +52,13 @@ import { hubTripOf, restorableTrip } from '../lib/trip-regions/hub-trip.ts';
 import { pastTrip, planFromToday } from '../lib/trip-regions/trip-dates.ts';
 import { DEFAULT_PLAN_STATE, planRequestQuery } from '../lib/trip-regions/plan.ts';
 import { TRIP_REGION_CACHE_CONTROL, tripRegionRelayTarget } from '../lib/trip-regions/relay.ts';
-import { HUB_WEEK_CELL, HUB_WEEK_ITEM } from '../components/trip-regions/hub/hub-cell-styles.ts';
+import {
+  HUB_WEEK_CELL,
+  HUB_WEEK_ITEM,
+  HUB_WEEK_LAYER,
+} from '../components/trip-regions/hub/hub-cell-styles.ts';
 import { addDays } from '../lib/utils/park-day.ts';
+import { parseVisited, visitedOn } from '../lib/trip-regions/visited-parks.ts';
 
 const fixture = (name) =>
   JSON.parse(readFileSync(new URL(`./fixtures/orlando/${name}.json`, import.meta.url), 'utf8'));
@@ -264,6 +270,74 @@ test('a headliner group of one park is answered by that park', () => {
   assert.equal(line?.day.headlinerWait, 25);
 });
 
+test('the day pick is never a park that is always quiet', () => {
+  const day = structuredClone(calendar.days[0]);
+  // SeaWorld, LEGOLAND and Busch Gardens have the shortest lines and the lowest level on the day.
+  for (const slug of ['seaworld-orlando', 'legoland-florida', 'busch-gardens-tampa']) {
+    assert.equal(day.parks[slug].crowdLevel, 'very_low');
+  }
+  const pick = dayPick(day, region);
+  assert.ok(pick, 'a day with resort picks has a day pick');
+  assert.ok(pick.park.headliner, `${pick.park.slug} is a headliner`);
+  assert.ok(['walt-disney-world', 'universal-orlando'].includes(pick.group.key));
+});
+
+test('the day pick weighs each park against its own normal day before its minutes', () => {
+  const day = structuredClone(calendar.days[0]);
+  day.best = {
+    'walt-disney-world': 'magic-kingdom-park',
+    'universal-orlando': 'universal-studios-florida',
+  };
+  Object.assign(day.parks['magic-kingdom-park'], { headlinerWait: 50, crowdLevel: 'very_low' });
+  delete day.parks['magic-kingdom-park'].evening;
+  Object.assign(day.parks['universal-studios-florida'], {
+    headlinerWait: 35,
+    crowdLevel: 'moderate',
+  });
+  assert.equal(dayPick(day, region)?.park.slug, 'magic-kingdom-park');
+  // On the same level the shorter wait wins, and an early close loses to a full day.
+  day.parks['universal-studios-florida'].crowdLevel = 'very_low';
+  assert.equal(dayPick(day, region)?.park.slug, 'universal-studios-florida');
+  day.parks['universal-studios-florida'].closesEarly = true;
+  assert.equal(dayPick(day, region)?.park.slug, 'magic-kingdom-park');
+});
+
+test('the day pick offers no last-year day and no pick at all without one', () => {
+  const day = structuredClone(calendar.days[0]);
+  for (const park of Object.values(day.parks)) park.basis = 'last_year';
+  assert.equal(dayPick(day, region), null);
+  assert.equal(dayPick({ ...calendar.days[0], best: {}, parks: {} }, region), null);
+});
+
+test('a park ticked off as visited gives way to one not seen yet', () => {
+  const day = structuredClone(calendar.days[0]);
+  const first = dayPick(day, region);
+  assert.ok(first);
+  const next = dayPick(day, region, new Set([first.park.slug]));
+  assert.ok(next && next.park.slug !== first.park.slug, 'the tip moves on');
+  assert.ok(next.park.headliner, 'and stays a headliner');
+  // In the resort row, the group's next headliner takes the ticked park's place.
+  const disney = glanceLines(day, region, new Set([day.best['walt-disney-world']])).find(
+    (l) => l.group.key === 'walt-disney-world'
+  );
+  assert.ok(disney && disney.park.slug !== day.best['walt-disney-world']);
+  assert.ok(disney.park.headliner);
+  // Every headliner ticked off: no tip left, and no resort row.
+  const all = new Set(region.parks.filter((p) => p.headliner).map((p) => p.slug));
+  assert.equal(dayPick(day, region, all), null);
+  assert.deepEqual(glanceLines(day, region, all), []);
+});
+
+test('a tick lasts as long as a trip, and a broken one costs only itself', () => {
+  const record = parseVisited(
+    JSON.stringify({ epcot: '2026-11-18', 'magic-kingdom-park': '2026-10-01', 'bad slug!': 'x' })
+  );
+  assert.deepEqual(Object.keys(record), ['epcot', 'magic-kingdom-park']);
+  assert.deepEqual([...visitedOn(record, '2026-11-20')], ['epcot']);
+  assert.deepEqual(parseVisited('not json'), {});
+  assert.deepEqual(parseVisited('["epcot"]'), {});
+});
+
 test('after every pick has closed, the answer is about tomorrow', () => {
   const today = calendar.days[0].date;
   const morning = Date.parse(`${today}T08:00:00-05:00`);
@@ -282,6 +356,71 @@ test('a season several parks run is one lane, and a closure is none', () => {
   assert.ok(lanes.every((l) => !/refurbishment/i.test(l.name ?? '')));
   const party = lanes.find((l) => l.kind === 'party' && l.parkSlugs.includes('magic-kingdom-park'));
   assert.ok(party && party.dates.length > 0);
+});
+
+test("a park's week draws a party night as a bar on its own columns", () => {
+  const lanes = eventLanes(calendar);
+  const [first] = hubWeeks(calendar.days);
+  const { tracks } = parkWeekEvents(lanes, calendar.days, first, 'magic-kingdom-park');
+  const party = tracks[0];
+  assert.equal(party.lane.kind, 'party', 'a party comes first');
+  assert.deepEqual(party.dates, ['2026-11-12', '2026-11-13', '2026-11-15', '2026-11-17']);
+  assert.deepEqual(party.cells.slice(0, 3), [
+    { start: true, end: false },
+    { start: false, end: true },
+    null,
+  ]);
+  assert.equal(party.startsOn, null, 'a party names its nights, not a first day');
+  const holidays = tracks.find((t) => t.lane.name === 'Holidays at Walt Disney World Resort');
+  assert.equal(holidays?.startsOn, '2026-11-13');
+  assert.equal(holidays.cells[0], null);
+});
+
+test('a festival on every open day of the week is one line, and its last week a bar to its end', () => {
+  const lanes = eventLanes(calendar);
+  const [first, second] = hubWeeks(calendar.days);
+  const foodAndWine = 'EPCOT International Food & Wine Festival';
+  const week1 = parkWeekEvents(lanes, calendar.days, first, 'epcot');
+  assert.deepEqual(
+    week1.allWeek.map((l) => l.name),
+    [foodAndWine]
+  );
+  assert.equal(week1.tracks.length, 0);
+  const week2 = parkWeekEvents(lanes, calendar.days, second, 'epcot');
+  const track = week2.tracks.find((t) => t.lane.name === foodAndWine);
+  assert.equal(track?.endsOn, '2026-11-21');
+  // It ran the day before the week began, so its bar enters flat.
+  assert.deepEqual(track.cells[0], { start: false, end: false });
+  assert.deepEqual(track.cells[2], { start: false, end: true });
+  assert.equal(track.cells[3], null);
+  // A school break belongs to no park.
+  assert.ok(
+    lanes.filter((l) => l.kind === 'break').every((l) => Object.keys(l.byPark).length === 0)
+  );
+});
+
+test('a school break is one run of days under its name, and a nameless weekend is none', () => {
+  const day = (date, holidays) => ({ date, isSchoolVacation: true, parks: {}, holidays });
+  const thanksgiving = ['Thanksgiving break (Orange County Public Schools)', 'Thanksgiving Day'];
+  const lanes = eventLanes({
+    seasons: [],
+    days: [
+      day('2026-11-21'),
+      day('2026-11-22'),
+      day('2026-11-23', thanksgiving.slice(0, 1)),
+      day('2026-11-26', thanksgiving),
+      { date: '2026-12-01', isSchoolVacation: false, parks: {} },
+      day('2026-12-19'),
+      day('2026-12-20'),
+    ],
+  });
+  assert.deepEqual(
+    lanes.map((l) => [l.kind, l.name, l.dates[0], l.dates.at(-1)]),
+    [
+      ['break', 'Thanksgiving break', '2026-11-21', '2026-11-23'],
+      ['break', 'Thanksgiving break', '2026-11-26', '2026-11-26'],
+    ]
+  );
 });
 
 test('each resort gets its quiet dates from /best-days and its busiest from the calendar', () => {
@@ -518,10 +657,16 @@ test('the calendar pages the window in weeks from its first day, the last one sh
   // Every page has its show class: the hub's 31 days and a month's 31.
   for (const n of [HUB_WINDOW_DAYS + 1, 31]) {
     const pages = Math.ceil(n / HUB_WEEK_DAYS);
-    assert.ok(pages <= HUB_WEEK_CELL.length && pages <= HUB_WEEK_ITEM.length, `${n} days`);
+    assert.ok(
+      pages <= HUB_WEEK_CELL.length &&
+        pages <= HUB_WEEK_ITEM.length &&
+        pages <= HUB_WEEK_LAYER.length,
+      `${n} days`
+    );
   }
   HUB_WEEK_CELL.forEach((cls, i) => assert.ok(cls.includes(`[week=${i}]`)));
   HUB_WEEK_ITEM.forEach((cls, i) => assert.ok(cls.includes(`[week=${i}]`)));
+  HUB_WEEK_LAYER.forEach((cls, i) => assert.ok(cls.includes(`[week=${i}]`)));
 });
 
 test('a week fragment names its first date and finds the week that holds a date', () => {
@@ -586,21 +731,6 @@ test("a park's star is its quietest day of the week, one for every park with an 
   // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
   assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');
   assert.equal(quietestDay(calendar.days.slice(7), 'magic-kingdom-park'), '2026-11-19');
-});
-
-test('a season most of the window runs in, or only expected, is drawn quietly', () => {
-  const quiet = quietSeasons(calendar);
-  assert.ok(quiet.has('dev-season-2'), 'Magic Kingdom christmas, 13 of 14 days');
-  assert.ok(quiet.has('dev-season-1'), 'the party, 8 of 14 nights');
-  assert.ok(!quiet.has('dev-season-20'), 'the Hollywood Studios party, 4 nights');
-  assert.ok(!quiet.has('dev-season-31'), 'one night at Epic Universe');
-  const expected = {
-    ...calendar,
-    seasons: calendar.seasons.map((s) =>
-      s.id === 'dev-season-31' ? { ...s, status: 'expected' } : s
-    ),
-  };
-  assert.ok(quietSeasons(expected).has('dev-season-31'));
 });
 
 console.log(`\n${passed} passed`);

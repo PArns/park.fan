@@ -1,15 +1,20 @@
 import type { FavoritesData } from '@/lib/utils/favorites';
 import type { TemperatureUnit } from '@/lib/utils/temperature';
+import type { VisitedPark } from '@/lib/trip-regions/visited-parks';
 
 /**
  * What a visitor account carries across devices, and how two copies of it become one. Pure, so
  * `pnpm test:account-sync` pins it; the browser side is `lib/account/sync.ts`.
  */
 
-/** The synced state: favorites by kind, rides marked as ridden, the temperature unit. */
+/**
+ * The synced state: favorites by kind, rides marked as ridden, the parks ticked off as visited on
+ * a trip, the temperature unit.
+ */
 export interface AccountState {
   favorites: FavoritesData;
   riddenRides: string[];
+  visitedParks: VisitedPark[];
   temperatureUnit: TemperatureUnit | null;
 }
 
@@ -29,9 +34,20 @@ function union(first: readonly string[], second: readonly string[]): string[] {
   return [...new Set([...first, ...second])];
 }
 
+/** Each region's park once, with the later date: the trip that tick belongs to. */
+function latestVisits(visits: readonly VisitedPark[]): VisitedPark[] {
+  const kept = new Map<string, VisitedPark>();
+  for (const { region, park, date } of visits) {
+    const known = kept.get(`${region}:${park}`);
+    if (!known || date > known.date) kept.set(`${region}:${park}`, { region, park, date });
+  }
+  return [...kept.values()];
+}
+
 /**
- * The first sync of a browser with an account: nothing is lost, so the favorites and ridden rides
- * of both sides are kept, and a unit picked here wins over the account's.
+ * The first sync of a browser with an account: nothing is lost, so the favorites, ridden rides and
+ * visited parks of both sides are kept (a park ticked on both, with the later date), and a unit
+ * picked here wins over the account's.
  */
 export function mergeAccountState(local: AccountState, server: AccountState): AccountState {
   return {
@@ -42,11 +58,15 @@ export function mergeAccountState(local: AccountState, server: AccountState): Ac
       restaurants: union(local.favorites.restaurants, server.favorites.restaurants),
     },
     riddenRides: union(local.riddenRides, server.riddenRides),
+    visitedParks: latestVisits([...local.visitedParks, ...server.visitedParks]),
     temperatureUnit: local.temperatureUnit ?? server.temperatureUnit,
   };
 }
 
-/** Both hold the same ids and unit, whatever the order. */
+/** A visit as one comparable string. */
+const visitKey = (visit: VisitedPark) => `${visit.region}:${visit.park}:${visit.date}`;
+
+/** Both hold the same ids, visits and unit, whatever the order. */
 export function sameAccountState(a: AccountState, b: AccountState): boolean {
   const same = (x: readonly string[], y: readonly string[]) =>
     x.length === y.length && x.every((id) => y.includes(id));
@@ -56,6 +76,7 @@ export function sameAccountState(a: AccountState, b: AccountState): boolean {
     same(a.favorites.shows, b.favorites.shows) &&
     same(a.favorites.restaurants, b.favorites.restaurants) &&
     same(a.riddenRides, b.riddenRides) &&
+    same(a.visitedParks.map(visitKey), b.visitedParks.map(visitKey)) &&
     a.temperatureUnit === b.temperatureUnit
   );
 }

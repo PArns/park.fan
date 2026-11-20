@@ -474,6 +474,21 @@
 }
 
 /*
+ * The tick of a park the visitor has just been to (`VisitedMark`): a short spring on the press,
+ * never when the ticks arrive after hydration. `motion-safe` only.
+ */
+@keyframes visited-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.35);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+/*
  * The countdown's digits (`FlipClock`): the new value rises in from below while the old one leaves
  * upward. The fade-only pair is what `prefers-reduced-motion` gets.
  */

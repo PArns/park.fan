@@ -5,6 +5,11 @@ import {
 } from '@/lib/utils/favorites';
 import { getRiddenSnapshot, replaceRidden, subscribeToRidden } from '@/lib/utils/ridden-rides';
 import {
+  readAllVisited,
+  replaceAllVisited,
+  subscribeToAnyVisited,
+} from '@/lib/trip-regions/visited-parks';
+import {
   readChosenTemperatureUnit,
   subscribeToTemperatureUnit,
   writeUnit,
@@ -22,7 +27,7 @@ import {
 /**
  * A signed-in visitor's sync between this browser and the account, loaded only when the account
  * marker is set (`AccountSyncGate`). On start it merges, pulls or pushes (`accountSyncStep`); after
- * that, every change to favorites, ridden rides or the unit goes up a second later.
+ * that, every change to favorites, ridden rides, visited parks or the unit goes up a second later.
  */
 
 /** Where this browser keeps its last agreement with the account. */
@@ -72,8 +77,14 @@ function readLocalAccountState(): AccountState {
       restaurants: [...favorites.restaurants],
     },
     riddenRides: [...getRiddenSnapshot()],
+    visitedParks: readAllVisited(),
     temperatureUnit: readChosenTemperatureUnit(),
   };
+}
+
+/** The account's state with every field there, so an answer without one reads as empty. */
+function fullState(data: AccountServerState): AccountServerState {
+  return { ...data, visitedParks: data.visitedParks ?? [] };
 }
 
 let applying = false;
@@ -84,6 +95,7 @@ function applyLocally(state: AccountState): void {
   try {
     replaceFavorites(state.favorites);
     replaceRidden(state.riddenRides);
+    replaceAllVisited(state.visitedParks);
     if (state.temperatureUnit) writeUnit(state.temperatureUnit);
   } finally {
     applying = false;
@@ -91,8 +103,9 @@ function applyLocally(state: AccountState): void {
 }
 
 /** The account and its synced state. */
-function fetchAccount(): Promise<AccountOverview> {
-  return sessionCall<AccountOverview>('/api/account');
+async function fetchAccount(): Promise<AccountOverview> {
+  const overview = await sessionCall<AccountOverview>('/api/account');
+  return { ...overview, data: fullState(overview.data) };
 }
 
 async function push(email: string, state: AccountState): Promise<AccountServerState> {
@@ -101,11 +114,12 @@ async function push(email: string, state: AccountState): Promise<AccountServerSt
     body: {
       favorites: state.favorites,
       riddenRides: state.riddenRides,
+      visitedParks: state.visitedParks,
       ...(state.temperatureUnit && { temperatureUnit: state.temperatureUnit }),
     },
   });
   writeRecord({ email, syncedAt: data.updatedAt });
-  return data;
+  return fullState(data);
 }
 
 /** The session is gone: the marker goes too, so no page tries again. */
@@ -182,6 +196,7 @@ export function startAccountSync(): void {
   const unsubscribe = [
     subscribeToFavorites(schedule),
     subscribeToRidden(schedule),
+    subscribeToAnyVisited(schedule),
     subscribeToTemperatureUnit(schedule),
   ];
   stop = () => {

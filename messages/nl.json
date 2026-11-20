@@ -420,7 +420,18 @@
       "monthTitleLastYear": "De rustigste dagen in {month} vorig jaar",
       "quietPark": "({park}, ongeveer {minutes} min)",
       "quietestTo": "Het rustigst tot {date}",
-      "best": "Beste park per resort, <time>{date}</time>"
+      "best": "Beste park per resort, <time>{date}</time>",
+      "pick": "Tip voor <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {veel rustiger dan een normale dag daar} low {rustiger dan een normale dag daar} moderate {een normale dag daar} other {drukker dan een normale dag daar}}"
+    },
+    "visited": {
+      "ask": "Al geweest? Vink af",
+      "count": "{count} van {total} parken afgevinkt",
+      "allDone": "Alle {count} parken afgevinkt. Voor een tweede bezoek:",
+      "toggle": "{park}: al geweest",
+      "tick": "{park} afvinken als bezocht",
+      "untick": "Vinkje bij {park} weghalen"
     },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
@@ -461,10 +472,12 @@
       "titleMonth": "Dag voor dag in {month}"
     },
     "lanes": {
-      "summaryLabel": "Evenementen",
-      "nights": "{name}: {count, plural, =1 {# avond} other {# avonden}}",
       "expected": "data verwacht",
-      "allDays": "elke dag"
+      "dayGuestsUntil": "daggasten tot {time}",
+      "separateTicket": "avondevenement, eigen ticket",
+      "from": "vanaf {date}",
+      "until": "tot {date}",
+      "allWeek": "De hele week: {names}"
     },
     "sheet": {
       "intro": "Per resort staat het beste park bovenaan; een vroege sluiting telt mee",
@@ -4656,8 +4669,7 @@
         },
         "lanes": {
           "break": "Amerikaanse schoolvakantie: {name}, {dates}",
-          "unnamedBreak": "Amerikaanse schoolvakantie",
-          "none": "Geen evenementen of Amerikaanse schoolvakanties in deze dagen."
+          "unnamedBreak": "Amerikaanse schoolvakantie"
         },
         "sheet": {
           "kicker": "Orlando · één dag",
@@ -5029,8 +5041,7 @@
         },
         "lanes": {
           "break": "Schoolvakantie in Los Angeles: {name}, {dates}",
-          "unnamedBreak": "Schoolvakantie in Los Angeles",
-          "none": "Deze dagen zijn er geen evenementen en geen schoolvakanties in Los Angeles."
+          "unnamedBreak": "Schoolvakantie in Los Angeles"
         },
         "sheet": {
           "kicker": "Zuid-Californië · één dag",
@@ -5313,8 +5324,7 @@
         },
         "lanes": {
           "break": "Japanse schoolvakanties: {name}, {dates}",
-          "unnamedBreak": "Japanse schoolvakanties",
-          "none": "Geen evenementen in deze dagen."
+          "unnamedBreak": "Japanse schoolvakanties"
         },
         "sheet": {
           "kicker": "Japan · één dag",
@@ -5640,8 +5650,7 @@
         },
         "lanes": {
           "break": "Schoolvakantie Parijs (zone C): {name}, {dates}",
-          "unnamedBreak": "Schoolvakantie Parijs (zone C)",
-          "none": "Geen evenementen en geen schoolvakantie in Parijs in deze dagen."
+          "unnamedBreak": "Schoolvakantie Parijs (zone C)"
         },
         "sheet": {
           "kicker": "Parijs · één dag",
@@ -6486,7 +6495,7 @@
     "syncNow": "Nu synchroniseren",
     "syncedAt": "Laatst gesynchroniseerd: {when}",
     "neverSynced": "Nog niet gesynchroniseerd",
-    "whatSyncs": "Favorieten, attracties waarin je zat en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
+    "whatSyncs": "Favorieten, attracties waarin je zat, de parken die je op een reis hebt afgevinkt en °C of °F worden gesynchroniseerd. Je dagplanning en je meldingen blijven op het apparaat waar je ze hebt ingesteld.",
     "auth": {
       "registerTitle": "Account aanmaken",
       "registerLead": "Je favorieten en attracties op elk apparaat. Gratis, zonder reclame.",

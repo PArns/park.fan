@@ -34,8 +34,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`state.ts`](../../lib/account/state.ts)
 
-- `mergeAccountState` _function_: The first sync of a browser with an account: nothing is lost, so the favorites and ridden rides of both sides are kept, and a unit picked here wins over the account's.
-- `sameAccountState` _function_: Both hold the same ids and unit, whatever the order.
+- `mergeAccountState` _function_: The first sync of a browser with an account: nothing is lost, so the favorites, ridden rides and visited parks of both sides are kept (a park ticked on both, with the later date), and a unit picked here wins over the account's.
+- `sameAccountState` _function_: Both hold the same ids, visits and unit, whatever the order.
 - `accountSyncStep` _function_: Decides between merging, taking the account's copy and sending this browser's: a browser that never synced with this account merges; one whose account changed since its last sync, on another device, takes the account's copy; otherwise this …
 - Types: `AccountState`, `AccountServerState`, `AccountSyncRecord`, `AccountSyncStep`
 

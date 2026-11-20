@@ -1004,6 +1004,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
     label: 'Hub-Kalender: Woche gewechselt',
     when: 'Der Hub-Kalender zeigt eine andere Woche: über ‹ › (arrow), einen Wochen-Chip (chip), die Pfeiltasten, Pos1 oder Ende (keys) oder „Nächste Woche“ unter dem Raster (next_link); mit der Woche, die jetzt steht (1 ist die erste).',
   },
+  trip_hub_visited: {
+    label: 'Hub: Park abgehakt',
+    when: 'Ein Park im Hub als besucht abgehakt (visited true) oder der Haken entfernt (false), über die Chips in der ersten Antwort (answer) oder den Haken am Parknamen im Kalender (calendar); nie welcher Park.',
+  },
   trip_best_time_switch: {
     label: 'Beste Reisezeit umgeschaltet',
     when: 'Ein Chip über den drei Reisen in Kapitel 04 des Hubs, nur wenn er die Auswahl ändert: andere Parks (parks) oder eine andere Reiselänge (days); mit der Bestzeit-Seite der Wahl und den Tagen.',

@@ -420,7 +420,18 @@
       "monthTitleLastYear": "Quietest days in {month} last year",
       "quietPark": "({park}, about {minutes} min)",
       "quietestTo": "Quietest to {date}",
-      "best": "Best park per resort, <time>{date}</time>"
+      "best": "Best park per resort, <time>{date}</time>",
+      "pick": "Tip for <time>{date}</time>",
+      "perResort": "Per resort",
+      "pickLevel": "{level, select, very_low {much quieter than a normal day there} low {quieter than a normal day there} moderate {a normal day there} other {busier than a normal day there}}"
+    },
+    "visited": {
+      "ask": "Been there already? Tick it off",
+      "count": "{count} of {total} parks ticked off",
+      "allDone": "All {count} parks ticked off. For a second visit:",
+      "toggle": "{park}: been there",
+      "tick": "Tick off {park} as visited",
+      "untick": "Take the tick off {park}"
     },
     "legend": {
       "minutes": "Peak wait at the big rides, in minutes",
@@ -461,10 +472,12 @@
       "titleMonth": "Day by day in {month}"
     },
     "lanes": {
-      "summaryLabel": "Events",
-      "nights": "{name}: {count, plural, =1 {# night} other {# nights}}",
       "expected": "dates expected",
-      "allDays": "every day"
+      "dayGuestsUntil": "day guests until {time}",
+      "separateTicket": "evening event, separate ticket",
+      "from": "from {date}",
+      "until": "until {date}",
+      "allWeek": "All week: {names}"
     },
     "sheet": {
       "intro": "Each resort’s best park comes first; an early close counts against it",
@@ -4656,8 +4669,7 @@
         },
         "lanes": {
           "break": "US school holidays: {name}, {dates}",
-          "unnamedBreak": "US school holidays",
-          "none": "No events or US school holidays in these days."
+          "unnamedBreak": "US school holidays"
         },
         "sheet": {
           "kicker": "Orlando · one day",
@@ -5029,8 +5041,7 @@
         },
         "lanes": {
           "break": "Los Angeles school holidays: {name}, {dates}",
-          "unnamedBreak": "Los Angeles school holidays",
-          "none": "No events or Los Angeles school holidays in these days."
+          "unnamedBreak": "Los Angeles school holidays"
         },
         "sheet": {
           "kicker": "Southern California · one day",
@@ -5313,8 +5324,7 @@
         },
         "lanes": {
           "break": "Japanese school holidays: {name}, {dates}",
-          "unnamedBreak": "Japanese school holidays",
-          "none": "No events in these days."
+          "unnamedBreak": "Japanese school holidays"
         },
         "sheet": {
           "kicker": "Japan · one day",
@@ -5640,8 +5650,7 @@
         },
         "lanes": {
           "break": "Paris school holidays (zone C): {name}, {dates}",
-          "unnamedBreak": "Paris school holidays (zone C)",
-          "none": "No events and no Paris school holidays in these days."
+          "unnamedBreak": "Paris school holidays (zone C)"
         },
         "sheet": {
           "kicker": "Paris · one day",
@@ -6486,7 +6495,7 @@
     "syncNow": "Sync now",
     "syncedAt": "Last synced: {when}",
     "neverSynced": "Not synced yet",
-    "whatSyncs": "Favorites, ridden rides and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
+    "whatSyncs": "Favorites, ridden rides, the parks ticked off on a trip and °C or °F are synced. Your day plan and your alerts stay on the device where you set them up.",
     "auth": {
       "registerTitle": "Create an account",
       "registerLead": "Your favorites and ridden rides on every device. Free, without ads.",

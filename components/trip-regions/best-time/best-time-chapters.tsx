@@ -28,8 +28,6 @@ import {
 } from '@/lib/trip-regions/plan-when';
 import {
   bestAndWorstWeeks,
-  breakRuns,
-  cleanBreakName,
   europeanBreaks,
   lastYearFrom,
   monthBreakDays,
@@ -40,6 +38,7 @@ import {
   type BestTimeMonthRow,
   type CountryBreaks,
 } from '@/lib/trip-regions/best-time';
+import { breakRuns, cleanBreakName } from '@/lib/trip-regions/break-runs';
 import type {
   TripMonth,
   TripSchoolBreakRegion,
