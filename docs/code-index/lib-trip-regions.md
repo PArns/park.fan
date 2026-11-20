@@ -102,6 +102,8 @@ by hand: change the comment in the code and re-run the script. -->
 - `quietSeasons` _function_: The seasons a tile draws quietly, bare and faded: one that runs on more than half of the window's days, where an icon on every tile would drown the crowd colours, or one only `expected`.
 - `eventLanes` _function_: The lanes under the matrix: each curated season that runs on a day of the window (party nights, festivals, Universal's holidays as `expected`), one lane per name even where several parks run it, then the school breaks as runs of days.
 - `findLeg` _function_: The leg between two points of the region (park slugs or `hotel:<key>`). The matrix stores each pair once, both directions averaged, so either order finds it.
+- `sheetLeg` _function_: The way from a hotel area to a park that the hub's day sheet prints for one day; none while the park is closed, because nobody goes there that day.
+- `sheetShowsDrive` _function_: Whether the hub's day sheet prints a drive for any park on the day. The drive times' source credit stands under the list only then: a day of closed parks, or of walks only, has no drive time to credit.
 - `legMinutes` _function_: The door-to-door minutes of a drive: to the car park, then the curated rest of the way.
 - `meanWait` _function_: The mean of some waits, rounded to five like every wait the site prints; `null` for none.
 - `weekendAgainstWeekday` _function_: A park's figures on weekends against weekdays across the window, last-year days left out.

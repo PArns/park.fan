@@ -26,6 +26,8 @@ import {
   quietSeasons,
   rankGroupParks,
   regionResorts,
+  sheetLeg,
+  sheetShowsDrive,
   resortMonthSummaries,
   shortGroupName,
   shortParkName,
@@ -296,6 +298,26 @@ test('the client gets only the legs from a hotel', () => {
   assert.ok(
     slim.travel.legs.every((l) => l.from.startsWith('hotel:') || l.to.startsWith('hotel:'))
   );
+});
+
+test('the day sheet credits the drive times only on a day it prints one', () => {
+  const day = calendar.days.find((d) => d.parks['universal-volcano-bay']?.status === 'CLOSED');
+  assert.equal(
+    sheetLeg(region, 'disney', 'universal-volcano-bay', day.parks['universal-volcano-bay']),
+    null
+  );
+  assert.equal(sheetLeg(region, 'disney', 'epcot', { status: 'OPERATING' })?.mode, 'drive');
+  assert.equal(sheetShowsDrive(day, region, 'disney'), true);
+  const allClosed = {
+    ...day,
+    parks: Object.fromEntries(Object.keys(day.parks).map((slug) => [slug, { status: 'CLOSED' }])),
+  };
+  assert.equal(sheetShowsDrive(allClosed, region, 'disney'), false);
+  const walksOnly = {
+    ...region,
+    travel: { ...region.travel, legs: region.travel.legs.map((l) => ({ ...l, mode: 'walk' })) },
+  };
+  assert.equal(sheetShowsDrive(day, walksOnly, 'disney'), false);
 });
 
 test('a trip window prints as one short range', () => {

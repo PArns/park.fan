@@ -518,6 +518,34 @@ export function findLeg<L extends { from: string; to: string }>(
   return legs.find((l) => (l.from === a && l.to === b) || (l.from === b && l.to === a)) ?? null;
 }
 
+/**
+ * The way from a hotel area to a park that the hub's day sheet prints for one day; none while the
+ * park is closed, because nobody goes there that day.
+ */
+export function sheetLeg(
+  region: Pick<TripRegion, 'travel'>,
+  area: string,
+  slug: string,
+  parkDay: TripParkDay | undefined
+): TripLeg | null {
+  return parkDay?.status === 'CLOSED' ? null : findLeg(region.travel.legs, `hotel:${area}`, slug);
+}
+
+/**
+ * Whether the hub's day sheet prints a drive for any park on the day. The drive times' source
+ * credit stands under the list only then: a day of closed parks, or of walks only, has no drive
+ * time to credit.
+ */
+export function sheetShowsDrive(
+  day: TripCalendarDay,
+  region: Pick<TripRegion, 'travel' | 'parks'>,
+  area: string
+): boolean {
+  return region.parks.some(
+    (park) => sheetLeg(region, area, park.slug, day.parks[park.slug])?.mode === 'drive'
+  );
+}
+
 /** The door-to-door minutes of a drive: to the car park, then the curated rest of the way. */
 export function legMinutes(leg: TripLeg): number {
   return leg.minutes + (leg.transferMinutes ?? 0);
