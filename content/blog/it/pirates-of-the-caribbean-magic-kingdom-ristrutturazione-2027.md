@@ -21,7 +21,7 @@ parkLinks:
 rideLinks:
   - /parks/north-america/united-states/orlando/magic-kingdom-park/pirates-of-the-caribbean
 seo:
-  title: 'Magic Kingdom 2027: Pirates of the Caribbean chiude'
+  title: 'Pirates of the Caribbean al Magic Kingdom chiude a gennaio'
   description: >-
     Pirates of the Caribbean al Magic Kingdom Park di Orlando chiude dall'11 gennaio 2027 e torna verso la fine del 2027 con effetti nuovi.
   keywords:
@@ -35,7 +35,7 @@ seo:
     - The Beak and Barrel
 ---
 
-L'11 gennaio 2027 [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) chiude per una ristrutturazione al [Magic Kingdom](ref:magic-kingdom-park), e le barche tornano in acqua solo verso la fine del 2027. Lo riporta la pagina dell'attrazione sul sito di Disney. Il 19 novembre il Disney Parks Blog ha aggiunto che durante la pausa gli Imagineers monteranno effetti nuovi, tra l'altro nelle scene di Dead Man's Cove e Hurricane Lagoon. Una data per la riapertura Disney non l'ha ancora comunicata.
+L'11 gennaio 2027 [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) chiude per una ristrutturazione al [Magic Kingdom](ref:magic-kingdom-park), e le barche tornano in acqua solo verso la fine del 2027. Lo riporta la pagina dell'attrazione sul sito di Disney. Il 19 novembre il Disney Parks Blog ha aggiunto che durante la pausa gli Imagineers monteranno effetti nuovi. Arriveranno tra l'altro nelle scene di Dead Man's Cove e Hurricane Lagoon. Una data per la riapertura Disney non l'ha ancora comunicata.
 
 ## L'ultimo giorno per salire è il 10 gennaio
 
@@ -71,7 +71,7 @@ In Adventureland rimane aperta The Beak and Barrel, la taverna dei pirati inaugu
 
 La prima Pirates ha aperto nel 1967 a Disneyland, in California. È stata una delle ultime attrazioni che Walt Disney ha seguito di persona negli anni Sessanta. All'inizio doveva essere un museo delle cere, poi è stata costruita con gli Audio-Animatronics.
 
-Per il Magic Kingdom, aperto nel 1971, Disney in un primo momento non aveva previsto pirati: un giro nei Caraibi a due passi dai Caraibi veri non avrebbe avuto lo stesso fascino che in California. Alla fine si costruì comunque Pirates, sulla recinzione del cantiere c'era scritto «Opening Christmas 1973», e il 15 dicembre 1973 sono partite le prime barche. Nel 2006 Disney ha aggiunto Jack Sparrow, e nel 2018 l'attrazione ha avuto una nuova scena dell'asta, in cui i pirati mettono all'incanto il bottino invece di una sposa.
+Per il Magic Kingdom, aperto nel 1971, Disney in un primo momento non aveva previsto pirati, perché un giro nei Caraibi a due passi dai Caraibi veri non avrebbe avuto lo stesso fascino che in California. Alla fine si costruì comunque Pirates, sulla recinzione del cantiere c'era scritto «Opening Christmas 1973», e il 15 dicembre 1973 sono partite le prime barche. Nel 2006 Disney ha aggiunto Jack Sparrow, e nel 2018 l'attrazione ha avuto una nuova scena dell'asta, in cui i pirati mettono all'incanto il bottino invece di una sposa.
 
 Come è nata la storia di Pirates lo racconta Disney nella puntata «Storytelling» della serie video «We Call It Imagineering», sul canale YouTube di Walt Disney Imagineering e poi anche su Disney+. La stessa puntata parla della nuova storia di Indiana Jones «Indiana Jones and the Myth of the Jade Serpent» e di Piston Peak National Park, l'area di Cars che sta nascendo al Magic Kingdom su una parte di quella che era Frontierland.
 

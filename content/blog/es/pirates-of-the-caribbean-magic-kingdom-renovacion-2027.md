@@ -21,7 +21,7 @@ parkLinks:
 rideLinks:
   - /parks/north-america/united-states/orlando/magic-kingdom-park/pirates-of-the-caribbean
 seo:
-  title: 'Pirates of the Caribbean del Magic Kingdom cierra en 2027'
+  title: 'Pirates of the Caribbean del Magic Kingdom cierra en enero'
   description: >-
     Pirates of the Caribbean, en el Magic Kingdom Park de Orlando, cierra el 11 de enero de 2027 y vuelve hacia finales de 2027 con efectos nuevos.
   keywords:
@@ -35,7 +35,7 @@ seo:
     - The Beak and Barrel
 ---
 
-[Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean), en el [Magic Kingdom](ref:magic-kingdom-park), cierra el 11 de enero de 2027 por renovación y no volverá a funcionar hasta finales de 2027. Así figura en la página de la atracción en la web de Disney, y el 19 de noviembre el Disney Parks Blog añadió que los Imagineers aprovecharán el parón para instalar efectos nuevos, entre otros en las escenas de Dead Man's Cove y Hurricane Lagoon. Disney todavía no ha dado una fecha de reapertura.
+[Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean), en el [Magic Kingdom](ref:magic-kingdom-park), cierra el 11 de enero de 2027 por renovación y no volverá a funcionar hasta finales de 2027. Así figura en la página de la atracción en la web de Disney. El 19 de noviembre, el Disney Parks Blog añadió que los Imagineers aprovecharán el parón para instalar efectos nuevos, entre otros en las escenas de Dead Man's Cove y Hurricane Lagoon. Disney todavía no ha dado una fecha de reapertura.
 
 ## El último día para subir es el 10 de enero
 
@@ -55,7 +55,7 @@ En primavera el parque se queda así sin dos clásicos a la vez. El Carousel of 
 
 Disney aún no ha enseñado qué cambiará exactamente en Dead Man's Cove y Hurricane Lagoon. El Parks Blog habla de una pausa rutinaria, y los efectos nuevos tienen que encajar con la historia que ya cuenta la atracción.
 
-A quien más afecta es a las familias. Pirates no tiene altura mínima: durante unos ocho minutos y medio recorres en barca puertos caribeños del siglo XVII, pasas junto a una cala fantasma, navegas entre un fuerte y un galeón que se cañonean y atraviesas una ciudad en llamas. El capitán Jack Sparrow de las películas aparece en tres escenas, y por el camino hay una bajada de algo más de cuatro metros. La cola pasa por el Castillo del Morro, un fuerte inspirado en la fortaleza de San Juan de Puerto Rico, y la canción «Yo Ho, Yo Ho (A Pirate's Life for Me)» se te queda en la cabeza quieras o no.
+A quien más afecta es a las familias. Pirates no tiene altura mínima. Durante unos ocho minutos y medio recorres en barca puertos caribeños del siglo XVII, pasas junto a una cala fantasma, navegas entre un fuerte y un galeón que se cañonean y atraviesas una ciudad en llamas. El capitán Jack Sparrow de las películas aparece en tres escenas, y por el camino hay una bajada de algo más de cuatro metros. La cola pasa por el Castillo del Morro, un fuerte inspirado en la fortaleza de San Juan de Puerto Rico, y la canción «Yo Ho, Yo Ho (A Pirate's Life for Me)» se te queda en la cabeza quieras o no.
 
 Si viajas a Orlando en 2027, yo planearía sin Pirates a partir del 10 de enero y no contaría con ella hasta que Disney anuncie una fecha. El día en el parque sin los piratas conviene organizarlo alrededor de las atracciones con las colas más largas, y para eso está nuestra [guía de tiempos de espera del Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos). Si además vas a Universal y a los otros parques Disney, la guía para [organizar un viaje a Orlando con Disney World y Universal](/blog/viaje-orlando-disney-universal) te ayuda con el orden de los días.
 
@@ -71,7 +71,7 @@ En Adventureland sigue abierta The Beak and Barrel, la taberna pirata que abrió
 
 El primer Pirates abrió en 1967 en Disneyland, en California. Fue una de las últimas atracciones cuyo desarrollo siguió el propio Walt Disney en los años sesenta. Al principio se pensó como museo de cera, pero se construyó con Audio-Animatronics.
 
-Para el Magic Kingdom, que abrió en 1971, Disney planeó al principio un parque sin piratas: una atracción caribeña tan cerca del Caribe de verdad no tendría el mismo atractivo que en California. Al final se construyó Pirates, en la valla de obra se leía «Opening Christmas 1973», y el 15 de diciembre de 1973 zarparon las primeras barcas. En 2006 Disney añadió a Jack Sparrow, y en 2018 la atracción estrenó una escena de subasta nueva en la que los piratas venden su botín al mejor postor, y ya no a una novia.
+Para el Magic Kingdom, que abrió en 1971, Disney planeó al principio un parque sin piratas, porque una atracción caribeña tan cerca del Caribe de verdad no tendría el mismo atractivo que en California. Al final se construyó Pirates, en la valla de obra se leía «Opening Christmas 1973», y el 15 de diciembre de 1973 zarparon las primeras barcas. En 2006 Disney añadió a Jack Sparrow, y en 2018 la atracción estrenó una escena de subasta nueva en la que los piratas venden su botín al mejor postor, y ya no a una novia.
 
 Cómo se escribió Pirates lo cuenta Disney en el episodio «Storytelling» de la serie de vídeos «We Call It Imagineering», en el canal de YouTube de Walt Disney Imagineering y más tarde también en Disney+. El mismo episodio trata la nueva historia de Indiana Jones «Indiana Jones and the Myth of the Jade Serpent» y Piston Peak National Park, la zona de Cars que se está construyendo en el Magic Kingdom sobre una parte del antiguo Frontierland.
 

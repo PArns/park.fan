@@ -21,7 +21,7 @@ parkLinks:
 rideLinks:
   - /parks/north-america/united-states/orlando/magic-kingdom-park/pirates-of-the-caribbean
 seo:
-  title: 'Pirates of the Caribbean in Magic Kingdom vanaf januari dicht'
+  title: 'Pirates of the Caribbean in Magic Kingdom per januari dicht'
   description: >-
     Pirates of the Caribbean in Magic Kingdom Park in Orlando is vanaf 11 januari 2027 dicht en komt eind 2027 terug met nieuwe effecten.
   keywords:
@@ -35,7 +35,7 @@ seo:
     - The Beak and Barrel
 ---
 
-Op 11 januari 2027 gaat [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) in [Magic Kingdom](ref:magic-kingdom-park) dicht voor een renovatie, en pas tegen het eind van 2027 varen de boten weer. Dat staat op Disneys eigen pagina van de attractie. Op 19 november liet Disney in de Disney Parks Blog weten dat de Imagineers de sluiting gebruiken om nieuwe effecten in te bouwen, onder meer in de scènes Dead Man's Cove en Hurricane Lagoon. Een datum voor de heropening heeft Disney nog niet genoemd.
+Op 11 januari 2027 gaat [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) in [Magic Kingdom](ref:magic-kingdom-park) dicht voor een renovatie, en pas tegen het eind van 2027 varen de boten weer. Dat staat op Disneys eigen pagina van de attractie. Op 19 november liet Disney in de Disney Parks Blog weten dat de Imagineers de sluiting gebruiken om nieuwe effecten in te bouwen. Die komen onder meer in de scènes Dead Man's Cove en Hurricane Lagoon. Een datum voor de heropening heeft Disney nog niet genoemd.
 
 ## Op 10 januari vaar je voor het laatst
 
@@ -63,7 +63,7 @@ Voor een vakantie in Orlando in 2027 zou ik na 10 januari zonder Pirates plannen
 
 ```
 
-## Piraten in Adventureland zijn er toch
+## In Adventureland zijn er toch nog piraten
 
 In Adventureland blijft The Beak and Barrel open, de piratenkroeg die op 29 augustus 2025 openging. Volgens het verhaal is hij opgericht door rumsmokkelaar Captain Meridian “Merry” Goldwyn en haar eerste stuurman Rummy, die lijkt op de Barker Bird die vroeger bij de ingang van Pirates zat. Gasten van elke leeftijd zijn welkom, en twee van de drankjes zijn zonder alcohol. Je kunt een plek reserveren, en een T-shirt of een pluchen papegaai koop je in de winkel ernaast, de Plaza del Sol Caribe Bazaar.
 
@@ -71,7 +71,7 @@ In Adventureland blijft The Beak and Barrel open, de piratenkroeg die op 29 augu
 
 De eerste Pirates-attractie opende in 1967 in Disneyland in Californië. Het was een van de laatste attracties waarvan Walt Disney in de jaren zestig zelf het ontstaan volgde. Eerst was er een wassenbeeldenmuseum bedacht, gebouwd werd het uiteindelijk met Audio-Animatronics.
 
-Voor Magic Kingdom, dat in 1971 openging, rekende Disney aanvankelijk niet op piraten. Een Caribische attractie zo dicht bij het echte Caribisch gebied zou niet dezelfde aantrekkingskracht hebben als in Californië, was de gedachte. Uiteindelijk kwam Pirates er toch: op de bouwschutting stond “Opening Christmas 1973”, en op 15 december 1973 voeren de eerste boten uit. In 2006 bouwde Disney Jack Sparrow erin, en in 2018 kreeg de attractie een nieuwe veilingscène, waarin de piraten buit veilen in plaats van een bruid.
+Voor Magic Kingdom, dat in 1971 openging, rekende Disney aanvankelijk niet op piraten. Een Caribische attractie zo dicht bij het echte Caribisch gebied zou niet dezelfde aantrekkingskracht hebben als in Californië, was de gedachte. Uiteindelijk kwam Pirates er toch. Op de bouwschutting stond “Opening Christmas 1973”, en op 15 december 1973 voeren de eerste boten uit. In 2006 bouwde Disney Jack Sparrow erin, en in 2018 kreeg de attractie een nieuwe veilingscène, waarin de piraten buit veilen in plaats van een bruid.
 
 Hoe Pirates is geschreven, laat Disney zien in de aflevering “Storytelling” van de videoserie “We Call It Imagineering” op het YouTube-kanaal van Walt Disney Imagineering, later ook op Disney+. Dezelfde aflevering gaat over het nieuwe Indiana Jones-verhaal “Indiana Jones and the Myth of the Jade Serpent” en over Piston Peak National Park, het Cars-gebied dat in Magic Kingdom op een deel van het vroegere Frontierland verrijst.
 
