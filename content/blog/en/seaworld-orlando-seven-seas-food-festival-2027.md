@@ -2,7 +2,7 @@
 title: 'SeaWorld Orlando books Flo Rida and Shaggy for Seven Seas'
 translationKey: seaworld-orlando-seven-seas-food-festival-2027
 date: '2026-11-20'
-time: '18:41'
+time: '18:40'
 author: patrick
 mode: published
 featured: false
@@ -41,13 +41,13 @@ seo:
 
 ## Festival and concert dates
 
-The festival itself starts the day before the first concert, on Friday, January 29, and runs until Sunday, May 16. The food booths are only open on selected days. The festival page doesn't list the 2027 days yet. In 2026 the booths opened Thursday through Sunday. On the opening Friday, the park closes at 6 pm.
+The festival itself starts the day before the first concert, on Friday, January 29, and runs until Sunday, May 16. The food booths open only on selected days, Thursday through Sunday in 2026, and SeaWorld hasn't published the 2027 list yet. The park closes at 6 pm on the opening Friday.
 
-On the first concert weekend, SeaWorld opens at 9 am. A set usually runs 60 to 75 minutes. That weekend and on most concert nights in February and March, the park stays open until 9 pm afterwards, and until 10 pm on the Sundays in March. On February 13 and 27 it closes at 7 pm, just as the concert starts, and on March 27 at 8 pm. If you want to ride anything on those nights, do it before the show.
+A set usually runs 60 to 75 minutes. After that, the park stays open until 9 pm on the first concert weekend and most concert nights in February and March, and until 10 pm on the Sundays in March. February 13 and 27 are shorter: SeaWorld closes at 7 pm, just as the concert starts, and at 8 pm on March 27.
 
-There's no show on Super Bowl Sunday (February 14), Easter Sunday (March 28) or Mother's Day (May 9). SeaWorld knows better than to take on football or Mom.
+SeaWorld knows better than to book against football, the Easter Bunny or Mom, so there's no show on Super Bowl Sunday (February 14), Easter Sunday (March 28) or Mother's Day (May 9).
 
-The festival marks Mardi Gras (Tuesday, February 9), St. Patrick's Day (Wednesday, March 17) and Cinco de Mayo (Wednesday, May 5) midweek, on days without a concert. Viva La Música joins on selected days in May.
+The festival marks Mardi Gras (Tuesday, February 9), St. Patrick's Day (Wednesday, March 17) and Cinco de Mayo (Wednesday, May 5) midweek, on days without a concert. Viva La Música adds a few days in May.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -91,7 +91,7 @@ Saturday, March 20, belongs to the K-pop group EVERGLOW and the following Saturd
 
 ## Open and reserved seating
 
-With a park ticket or an annual pass, you can sit in the stadium's open seats if you get there early enough. Once it's full, entry can close. To be sure of getting in, you can buy Reserved Concert Access on top of your park ticket, in three tiers:
+With a park ticket or an annual pass, you can sit in the stadium's open seats if you get there early enough. Once it's full, entry can close. Reserved Concert Access is sold on top of your park ticket, in three tiers:
 
 - Standard from $9.99, a seat in the middle of the lower bowl
 - Up-Close from $14.99, the second section on the floor behind Stagefront, with access to the Floor Bar
@@ -105,9 +105,9 @@ The Seven Seas VIP Tour also comes with a reserved spot, plus a lanyard good for
 
 ## Tickets, annual passes and blockout dates
 
-In the Black Friday sale, a single-day ticket costs from $61.99 online instead of $151.99, for anyone three and older. The 2027 Fun Card costs $104.99 instead of $151.99 and is valid on every day except blockout dates. Two day tickets bought online already cost more.
+In the Black Friday sale, a single-day ticket costs from $61.99 online instead of $151.99, for anyone three and older. The 2027 Fun Card costs $104.99 instead of $151.99 and is valid on every day except blockout dates. Two day tickets cost $123.98 online, so the card pays off from the second visit.
 
-Among the annual passes, what matters for the festival is the gap between Bronze at $171 (or $14.25 a month), which has blockout dates, and Silver at $198, which doesn't. Gold costs $222 and Platinum $351. During the festival, Bronze and the Fun Card are blocked out on the four concert Saturdays from March 13 to April 3. If you hold Bronze and need more cowbell from Blue Öyster Cult, you'll need a day ticket that night, or Silver. Food and drink discounts are 5 percent with Silver, 10 with Gold and 15 percent with Platinum, and none with Bronze.
+Among the annual passes, what matters for the festival is the gap between Bronze at $171 (or $14.25 a month), which has blockout dates, and Silver at $198, which doesn't. During the festival, Bronze and the Fun Card are blocked out on the four concert Saturdays from March 13 to April 3. If you hold Bronze and need more cowbell from Blue Öyster Cult, you'll need a day ticket that night, or Silver. Food and drink discounts are 5 percent with Silver, 10 with Gold ($222) and 15 percent with Platinum ($351), and none with Bronze.
 
 Parking costs from $35, and the entrance booths don't take cash. From I-4, Central Florida Parkway takes you to 7007 Sea World Drive, and without a car, Lynx bus route 50 stops nearby. Our guide [Planning Disney World and Universal Orlando in one trip](/blog/orlando-itinerary-disney-universal) covers combo tickets and how to fit SeaWorld in alongside Disney and Universal.
 

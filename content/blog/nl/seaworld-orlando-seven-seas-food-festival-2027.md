@@ -2,7 +2,7 @@
 title: 'SeaWorld Orlando haalt Flo Rida en Shaggy naar foodfestival'
 translationKey: seaworld-orlando-seven-seas-food-festival-2027
 date: '2026-11-20'
-time: '18:41'
+time: '18:40'
 author: patrick
 mode: published
 featured: false
@@ -41,13 +41,13 @@ Van 30 januari tot 16 mei 2027 staan er tijdens het Seven Seas Food Festival 29 
 
 ## Festival en concerten in de kalender
 
-Het festival zelf begint een dag voor het eerste concert, op vrijdag 29 januari, en loopt tot zondag 16 mei. De eetkraampjes zijn alleen op bepaalde dagen open. Op de festivalpagina staan die dagen voor 2027 nog niet. In 2026 waren ze van donderdag tot en met zondag open. Op de openingsvrijdag gaat het park al om 18.00 uur dicht.
+Het festival zelf begint een dag voor het eerste concert, op vrijdag 29 januari, en loopt tot zondag 16 mei. De eetkraampjes zijn alleen op bepaalde dagen open, in 2026 van donderdag tot en met zondag, en de lijst voor 2027 heeft SeaWorld nog niet gepubliceerd. Het park gaat op de openingsvrijdag al om 18.00 uur dicht.
 
-In het eerste concertweekend gaat SeaWorld om 9.00 uur open. Een optreden duurt meestal 60 tot 75 minuten. Dat weekend en op de meeste concertavonden in februari en maart blijft het park daarna open tot 21.00 uur, op de zondagen in maart tot 22.00 uur. Op 13 en 27 februari gaat het om 19.00 uur dicht, precies als het concert begint, en op 27 maart om 20.00 uur. Wil je op die avonden nog in een attractie, doe dat dan vóór het concert.
+Een optreden duurt meestal 60 tot 75 minuten. Daarna blijft het park in het eerste concertweekend en op de meeste concertavonden in februari en maart open tot 21.00 uur, op de zondagen in maart tot 22.00 uur. Korter is het op 13 en 27 februari, dan gaat SeaWorld om 19.00 uur dicht, precies als het concert begint, en op 27 maart om 20.00 uur.
 
-Op Super Bowl-zondag (14 februari), eerste paasdag (28 maart) en Moederdag (9 mei) is er geen concert. Tegen American football en moeders neemt SeaWorld het liever niet op.
+Tegen American football, de paashaas en moeders neemt SeaWorld het liever niet op, dus op Super Bowl-zondag (14 februari), eerste paasdag (28 maart) en Moederdag (9 mei) is er geen concert.
 
-Mardi Gras (dinsdag 9 februari), St. Patrick's Day (woensdag 17 maart) en Cinco de Mayo (woensdag 5 mei) viert het festival doordeweeks, op dagen zonder concert. Op bepaalde dagen in mei komt daar Viva La Música bij.
+Mardi Gras (dinsdag 9 februari), St. Patrick's Day (woensdag 17 maart) en Cinco de Mayo (woensdag 5 mei) viert het festival doordeweeks, op dagen zonder concert. In mei komt er op een paar dagen nog Viva La Música bij.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -55,7 +55,7 @@ Mardi Gras (dinsdag 9 februari), St. Patrick's Day (woensdag 17 maart) en Cinco 
 
 ## Wie er op welke avond speelt
 
-Op zaterdag 20 maart staat de K-popgroep EVERGLOW op het podium, een week later Blue Öyster Cult. Het publiek wordt in zeven dagen zo'n generatie ouder.
+Op zaterdag 20 maart staat de K-popgroep EVERGLOW op het podium, een week later Blue Öyster Cult, en het publiek wordt in zeven dagen een flinke generatie ouder.
 
 | Datum          | Concert                                                |
 | -------------- | ------------------------------------------------------ |
@@ -91,7 +91,7 @@ Op zaterdag 20 maart staat de K-popgroep EVERGLOW op het podium, een week later 
 
 ## Vrije en gereserveerde plekken
 
-Met een parkticket of een jaarkaart zit je op de vrije plekken in het stadion, als je op tijd bent. Zit het vol, dan kan de ingang dichtgaan. Zeker van een plek ben je met Reserved Concert Access, dat je bovenop je parkticket koopt, in drie niveaus:
+Met een parkticket of een jaarkaart zit je op de vrije plekken in het stadion, als je op tijd bent. Zit het vol, dan kan de ingang dichtgaan. Reserved Concert Access koop je bovenop je parkticket, in drie niveaus:
 
 - Standard vanaf 9,99 dollar: een zitplaats in het midden van de onderste ring
 - Up-Close vanaf 14,99 dollar: het tweede vak op de vloer, achter Stagefront, met toegang tot de Floor Bar
@@ -105,9 +105,9 @@ Bij de Seven Seas VIP Tour hoort ook een gereserveerde plek, plus een lanyard vo
 
 ## Tickets, jaarkaarten en blokkadedagen
 
-In de Black Friday-actie kost een dagticket online vanaf 61,99 dollar in plaats van 151,99 dollar, voor iedereen vanaf drie jaar. De Fun Card 2027 kost 104,99 dollar in plaats van 151,99 dollar en geldt op alle dagen behalve de blokkadedagen. Twee dagtickets kosten online al meer.
+In de Black Friday-actie kost een dagticket online vanaf 61,99 dollar in plaats van 151,99 dollar, voor iedereen vanaf drie jaar. De Fun Card 2027 kost 104,99 dollar in plaats van 151,99 dollar en geldt op alle dagen behalve de blokkadedagen. Twee dagtickets kosten online 123,98 dollar, dus de kaart is vanaf het tweede bezoek voordeliger.
 
-Bij de jaarkaarten telt voor het festival vooral het verschil tussen Bronze voor 171 dollar (of 14,25 dollar per maand), met blokkadedagen, en Silver voor 198 dollar, zonder. Gold kost 222 dollar, Platinum 351 dollar. Met Bronze en de Fun Card kom je tijdens het festival op de vier concertzaterdagen van 13 maart tot en met 3 april niet binnen. Wil je met een Bronze-kaart naar Blue Öyster Cult, dan heb je die avond een dagticket nodig of meteen Silver. Op eten en drinken krijg je met Silver 5 procent korting, met Gold 10 en met Platinum 15 procent; met Bronze niets.
+Bij de jaarkaarten telt voor het festival vooral het verschil tussen Bronze voor 171 dollar (of 14,25 dollar per maand), met blokkadedagen, en Silver voor 198 dollar, zonder. Met Bronze en de Fun Card kom je tijdens het festival op de vier concertzaterdagen van 13 maart tot en met 3 april niet binnen. Wil je met een Bronze-kaart naar Blue Öyster Cult, dan heb je die avond een dagticket nodig of meteen Silver. Op eten en drinken krijg je met Silver 5 procent korting, met Gold (222 dollar) 10 en met Platinum (351 dollar) 15 procent, met Bronze niets.
 
 Parkeren kost vanaf 35 dollar, en bij de slagboom betaal je alleen elektronisch. Vanaf de I-4 rijd je via de Central Florida Parkway naar 7007 Sea World Drive, zonder auto neem je buslijn 50 van Lynx, die vlak bij het park stopt. Over combitickets en hoe je SeaWorld naast Disney en Universal inplant, gaat onze gids [Disney World en Universal Orlando in één reis plannen](/blog/orlando-vakantie-plannen).
 

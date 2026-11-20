@@ -2,7 +2,7 @@
 title: 'Flo Rida e Shaggy suonano al festival di SeaWorld Orlando'
 translationKey: seaworld-orlando-seven-seas-food-festival-2027
 date: '2026-11-20'
-time: '18:41'
+time: '18:40'
 author: patrick
 mode: published
 featured: false
@@ -41,13 +41,13 @@ Per il Seven Seas Food Festival, [SeaWorld Orlando](ref:seaworld-orlando) porta 
 
 ## Il calendario del festival e dei concerti
 
-Il festival in sé parte un giorno prima del primo concerto, venerdì 29 gennaio, e si chiude domenica 16 maggio. Gli stand sono aperti solo in giorni scelti. Per il 2027 la pagina del festival non li indica ancora. Nel 2026 erano aperti dal giovedì alla domenica. Il venerdì dell'apertura il parco chiude già alle 18.
+Il festival in sé parte un giorno prima del primo concerto, venerdì 29 gennaio, e si chiude domenica 16 maggio. Gli stand sono aperti solo in giorni scelti, nel 2026 dal giovedì alla domenica, e l'elenco per il 2027 SeaWorld non l'ha ancora pubblicato. Il parco chiude già alle 18 il venerdì dell'apertura.
 
-Nel primo fine settimana di concerti SeaWorld apre alle 9. Di solito un concerto dura dai 60 ai 75 minuti. Quel fine settimana e nella maggior parte delle serate di concerto di febbraio e marzo, dopo il concerto il parco resta aperto fino alle 21, le domeniche di marzo fino alle 22. Il 13 e il 27 febbraio chiude alle 19, quando comincia il concerto, il 27 marzo alle 20. Chi in quelle sere vuole ancora salire su un'attrazione deve farlo prima del concerto.
+Di solito un concerto dura dai 60 ai 75 minuti. Dopo, il parco resta aperto fino alle 21 nel primo fine settimana di concerti e nella maggior parte delle serate di concerto di febbraio e marzo, le domeniche di marzo fino alle 22. Il 13 e il 27 febbraio la serata è più corta: SeaWorld chiude alle 19, quando comincia il concerto, e il 27 marzo alle 20.
 
-Niente musica la domenica del Super Bowl (14 febbraio), a Pasqua (28 marzo) e per la festa della mamma americana (9 maggio). Contro il football americano e le mamme SeaWorld preferisce non giocarsela.
+Contro il football americano, il coniglio pasquale e le mamme SeaWorld preferisce non giocarsela, quindi niente musica la domenica del Super Bowl (14 febbraio), a Pasqua (28 marzo) e per la festa della mamma americana (9 maggio).
 
-Il festival festeggia il Mardi Gras (martedì 9 febbraio), San Patrizio (mercoledì 17 marzo) e il Cinco de Mayo (mercoledì 5 maggio) in settimana, in giorni senza concerto. In alcuni giorni di maggio si aggiunge Viva La Música.
+Il festival festeggia il Mardi Gras (martedì 9 febbraio), San Patrizio (mercoledì 17 marzo) e il Cinco de Mayo (mercoledì 5 maggio) in settimana, in giorni senza concerto. A maggio, in alcuni giorni, si aggiunge anche Viva La Música.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -55,7 +55,7 @@ Il festival festeggia il Mardi Gras (martedì 9 febbraio), San Patrizio (mercole
 
 ## Chi suona e in quale sera
 
-Sabato 20 marzo sale sul palco il gruppo K-pop EVERGLOW, il sabato dopo tocca ai Blue Öyster Cult. Tra un pubblico e l'altro passa più o meno una generazione, in sette giorni.
+Sabato 20 marzo sale sul palco il gruppo K-pop EVERGLOW, il sabato dopo tocca ai Blue Öyster Cult, e in sette giorni il pubblico invecchia di una buona generazione.
 
 | Data            | Concerto                                                  |
 | --------------- | --------------------------------------------------------- |
@@ -91,7 +91,7 @@ Sabato 20 marzo sale sul palco il gruppo K-pop EVERGLOW, il sabato dopo tocca ai
 
 ## Posti liberi e posti riservati
 
-Con un biglietto del parco o un abbonamento annuale ti siedi sui posti liberi dello stadio, se arrivi abbastanza presto. Quando è pieno, l'ingresso può chiudere. Per essere sicuro di entrare c'è il Reserved Concert Access, che si compra in aggiunta al biglietto, in tre livelli:
+Con un biglietto del parco o un abbonamento annuale ti siedi sui posti liberi dello stadio, se arrivi abbastanza presto. Quando è pieno, l'ingresso può chiudere. Il Reserved Concert Access si compra in aggiunta al biglietto, in tre livelli:
 
 - Standard da 9,99 $, un posto a sedere nella parte centrale delle tribune basse
 - Up-Close da 14,99 $, il secondo settore sul parterre dietro lo Stagefront, con accesso al Floor Bar
@@ -105,9 +105,9 @@ Anche la Seven Seas VIP Tour include un posto riservato, più un lanyard per cin
 
 ## Biglietti, abbonamenti e date di blackout
 
-Con l'offerta del Black Friday un biglietto giornaliero online parte da 61,99 $ invece di 151,99 $ e serve dai tre anni in su. La Fun Card 2027 costa 104,99 $ invece di 151,99 $ e vale in tutti i giorni tranne le date di blackout. Due biglietti giornalieri online costano già di più.
+Con l'offerta del Black Friday un biglietto giornaliero online parte da 61,99 $ invece di 151,99 $ e serve dai tre anni in su. La Fun Card 2027 costa 104,99 $ invece di 151,99 $ e vale in tutti i giorni tranne le date di blackout. Due biglietti giornalieri online costano 123,98 $, quindi la carta conviene dalla seconda visita.
 
-Tra gli abbonamenti annuali, per il festival conta soprattutto la differenza tra il Bronze da 171 $ (o 14,25 $ al mese), con date di blackout, e il Silver da 198 $, senza. Il Gold costa 222 $, il Platinum 351 $. Nel periodo del festival, Bronze e Fun Card non valgono nei quattro sabati di concerto dal 13 marzo al 3 aprile. Chi ha il Bronze e vuole vedere i Blue Öyster Cult quella sera deve prendere un biglietto giornaliero o passare direttamente al Silver. Su cibo e bevande il Silver dà il 5 per cento di sconto, il Gold il 10 e il Platinum il 15; il Bronze nessuno.
+Tra gli abbonamenti annuali, per il festival conta soprattutto la differenza tra il Bronze da 171 $ (o 14,25 $ al mese), con date di blackout, e il Silver da 198 $, senza. Nel periodo del festival, Bronze e Fun Card non valgono nei quattro sabati di concerto dal 13 marzo al 3 aprile. Chi ha il Bronze e vuole vedere i Blue Öyster Cult quella sera deve prendere un biglietto giornaliero o passare direttamente al Silver. Su cibo e bevande il Silver dà il 5 per cento di sconto, il Gold (222 $) il 10 e il Platinum (351 $) il 15, il Bronze nessuno.
 
 Il parcheggio costa da 35 $, e all'ingresso non si paga in contanti. Dalla I-4 si arriva al 7007 di Sea World Drive dal Central Florida Parkway, senz'auto con la linea 50 degli autobus Lynx, che ferma nelle vicinanze. Come incastrare SeaWorld in una vacanza con Disney e Universal, e quali biglietti combinati esistono, lo spieghiamo nella guida [Disney World e Universal Orlando in un solo viaggio](/blog/viaggio-orlando-disney-universal).
 

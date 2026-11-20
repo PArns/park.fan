@@ -2,7 +2,7 @@
 title: 'SeaWorld Orlando holt Flo Rida und Shaggy zum Food Festival'
 translationKey: seaworld-orlando-seven-seas-food-festival-2027
 date: '2026-11-20'
-time: '18:41'
+time: '18:40'
 author: patrick
 mode: published
 featured: false
@@ -41,13 +41,13 @@ seo:
 
 ## Festival und Konzerte im Kalender
 
-Das Festival selbst beginnt einen Tag vor dem ersten Konzert, am Freitag, 29. Januar, und endet am Sonntag, 16. Mai. Die Stände öffnen nur an ausgewählten Tagen. Die Festivalseite listet diese Tage für 2027 noch nicht. 2026 hatten die Stände von Donnerstag bis Sonntag geöffnet. Am Eröffnungsfreitag schließt der Park schon um 18 Uhr.
+Das Festival selbst beginnt einen Tag vor dem ersten Konzert, am Freitag, 29. Januar, und endet am Sonntag, 16. Mai. Die Stände öffnen nur an ausgewählten Tagen, 2026 waren es Donnerstag bis Sonntag, und die Liste für 2027 hat SeaWorld noch nicht veröffentlicht. Der Park schließt am Eröffnungsfreitag schon um 18 Uhr.
 
-Am ersten Konzertwochenende öffnet SeaWorld um 9 Uhr. Ein Auftritt dauert meist 60 bis 75 Minuten. An diesem Wochenende und an den meisten Konzertabenden im Februar und März hat der Park danach noch bis 21 Uhr offen, an den Sonntagen im März bis 22 Uhr. Am 13. und 27. Februar schließt er um 19 Uhr, wenn das Konzert anfängt, am 27. März um 20 Uhr. Wer an diesen Abenden noch fahren will, tut das vor dem Konzert.
+Ein Auftritt dauert meist 60 bis 75 Minuten. Danach hat der Park am ersten Konzertwochenende und an den meisten Konzertabenden im Februar und März noch bis 21 Uhr offen, an den Sonntagen im März bis 22 Uhr. Kürzer ist es am 13. und 27. Februar, da schließt SeaWorld um 19 Uhr, wenn das Konzert anfängt, und am 27. März um 20 Uhr.
 
-Am Super-Bowl-Sonntag (14. Februar), am Ostersonntag (28. März) und am Muttertag (9. Mai) bleibt die Bühne leer. Gegen Football und Mütter tritt SeaWorld lieber nicht an.
+Gegen Football, den Osterhasen und Mütter tritt SeaWorld lieber nicht an: Am Super-Bowl-Sonntag (14. Februar), am Ostersonntag (28. März) und am Muttertag (9. Mai) bleibt die Bühne leer.
 
-Mardi Gras (Dienstag, 9. Februar), St. Patrick's Day (Mittwoch, 17. März) und Cinco de Mayo (Mittwoch, 5. Mai) feiert das Festival unter der Woche, an Tagen ohne Konzert. Viva La Música kommt an ausgewählten Tagen im Mai dazu.
+Mardi Gras (Dienstag, 9. Februar), St. Patrick's Day (Mittwoch, 17. März) und Cinco de Mayo (Mittwoch, 5. Mai) feiert das Festival unter der Woche, an Tagen ohne Konzert. Im Mai kommt an einzelnen Tagen noch Viva La Música dazu.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -55,7 +55,7 @@ Mardi Gras (Dienstag, 9. Februar), St. Patrick's Day (Mittwoch, 17. März) und C
 
 ## Wer an welchem Abend spielt
 
-Am Samstag, 20. März, spielt die K-Pop-Gruppe EVERGLOW, eine Woche später Blue Öyster Cult, ein Abstand von gut einer Generation in sieben Tagen.
+Am Samstag, 20. März, spielt die K-Pop-Gruppe EVERGLOW, eine Woche später Blue Öyster Cult, und das Publikum altert in sieben Tagen um gut eine Generation.
 
 | Datum           | Konzert                                             |
 | --------------- | --------------------------------------------------- |
@@ -91,7 +91,7 @@ Am Samstag, 20. März, spielt die K-Pop-Gruppe EVERGLOW, eine Woche später Blue
 
 ## Freie und reservierte Plätze
 
-Mit Parkticket oder Jahreskarte sitzt du auf den freien Plätzen im Stadion, wenn du früh genug kommst. Ist es voll, kann der Einlass schließen. Sicher hinein kommst du mit Reserved Concert Access, den du zusätzlich zum Parkticket kaufst, in drei Stufen:
+Mit Parkticket oder Jahreskarte sitzt du auf den freien Plätzen im Stadion, wenn du früh genug kommst. Ist es voll, kann der Einlass schließen. Reserved Concert Access kaufst du zusätzlich zum Parkticket, in drei Stufen:
 
 - Standard ab 9,99 $, ein Sitzplatz im mittleren Unterrang
 - Up-Close ab 14,99 $, der zweite Bereich auf dem Floor hinter Stagefront, mit Zugang zur Floor Bar
@@ -105,9 +105,9 @@ Auch die Seven Seas VIP Tour enthält einen reservierten Platz, dazu ein Lanyard
 
 ## Tickets, Jahreskarten und Sperrtage
 
-Ein Tagesticket kostet im Black-Friday-Angebot online ab 61,99 $ statt 151,99 $, nötig ist es für alle ab drei Jahren. Die Fun Card 2027 kostet 104,99 $ statt 151,99 $ und gilt an allen Tagen außer den Sperrtagen. Schon zwei Tagestickets kosten online mehr.
+Ein Tagesticket kostet im Black-Friday-Angebot online ab 61,99 $ statt 151,99 $, nötig ist es für alle ab drei Jahren. Die Fun Card 2027 kostet 104,99 $ statt 151,99 $ und gilt an allen Tagen außer den Sperrtagen. Zwei Tagestickets kosten online 123,98 $, die Karte lohnt sich also ab dem zweiten Besuch.
 
-Bei den Jahreskarten zählt fürs Festival vor allem der Unterschied zwischen Bronze für 171 $ (oder 14,25 $ im Monat) mit Sperrtagen und Silver für 198 $ ohne. Gold kostet 222 $, Platinum 351 $. Für Bronze und Fun Card sind im Festivalzeitraum die vier Konzertsamstage vom 13. März bis zum 3. April gesperrt. Wer mit Bronze-Karte bei Blue Öyster Cult mehr Cowbell hören will, braucht an dem Abend ein Tagesticket oder gleich Silver. Auf Essen und Getränke bekommst du mit Silver 5 Prozent Rabatt, mit Gold 10 und mit Platinum 15 Prozent, mit Bronze keinen.
+Bei den Jahreskarten zählt fürs Festival vor allem der Unterschied zwischen Bronze für 171 $ (oder 14,25 $ im Monat) mit Sperrtagen und Silver für 198 $ ohne. Für Bronze und Fun Card sind im Festivalzeitraum die vier Konzertsamstage vom 13. März bis zum 3. April gesperrt. Wer mit Bronze-Karte bei Blue Öyster Cult mehr Cowbell hören will, braucht an dem Abend ein Tagesticket oder gleich Silver. Auf Essen und Getränke bekommst du mit Silver 5 Prozent Rabatt, mit Gold (222 $) 10 und mit Platinum (351 $) 15 Prozent, mit Bronze keinen.
 
 Parken kostet ab 35 $, an der Einfahrt zahlst du nur bargeldlos. Von der I-4 fährst du über den Central Florida Parkway zum 7007 Sea World Drive, ohne Auto mit der Lynx-Linie 50. Wie du SeaWorld mit Disney und Universal in einen Urlaub packst und welche Kombitickets es gibt, erklären wir in [Disney World und Universal Orlando in einem Urlaub planen](/blog/orlando-urlaub-planen).
 
