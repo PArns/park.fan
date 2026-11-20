@@ -27,7 +27,7 @@ rideLinks:
 seo:
   title: 'Pirates of the Caribbean chiusa nel 2027 al Magic Kingdom'
   description: >-
-    Al Magic Kingdom di Orlando Pirates of the Caribbean chiude l'11 gennaio 2027. Riapre verso fine anno, con effetti nuovi in Dead Man's Cove.
+    Al Magic Kingdom di Orlando Pirates of the Caribbean chiude l'11 gennaio 2027. Dovrebbe riaprire verso fine anno, con effetti nuovi in Dead Man's Cove.
   keywords:
     - Pirates of the Caribbean chiusa
     - Pirates of the Caribbean Magic Kingdom

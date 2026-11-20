@@ -53,7 +53,7 @@ Si ton vol pour Orlando tombe entre la mi-janvier et l’automne 2027, organise 
 
 ## Ce que Disney modifie
 
-D’après Disney, les nouveaux effets doivent s’appuyer sur ce que l’attraction possède déjà. Dead Man's Cove, c’est la baie du début, celle qui serait hantée. Disney n’a pas encore dit si les personnages, la musique ou l’ordre des scènes changeront.
+D’après Disney, les nouveaux effets doivent s’appuyer sur ce que l’attraction possède déjà. Dead Man's Cove, c’est la baie du début, celle qui serait hantée. Disney n’a pas encore annoncé si les personnages, la musique ou l’ordre des scènes changeront.
 
 Tu prends place dans une vieille barque et tu remontes jusqu’au XVIIe siècle, à l’époque où les pirates pillaient les ports des Caraïbes. Passé la baie hantée, tu te retrouves pris entre un fort et un galion armé de douze canons qui se canardent. Plus loin, un village du bord de mer part en flammes pendant que les pirates entonnent  « Yo Ho, Yo Ho ». Le capitaine Jack Sparrow se cache quelque part au milieu de tout ça. Aucune taille minimum n’est exigée. Le tour dure environ huit minutes et demie et ne compte qu’une seule descente, d’un peu plus de quatre mètres (14 pieds).
 
