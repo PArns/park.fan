@@ -52,7 +52,7 @@ Si viajas a Orlando entre el 11 de enero y el otoño de 2027, organiza el día e
 
 ## Qué cambia Disney y cómo es el recorrido hoy
 
-Según Disney, los efectos nuevos se apoyarán en lo que la atracción ya tiene. Dead Man's Cove es una bahía donde se supone que hay fantasmas. Disney todavía no ha dicho si cambiarán los personajes, la música o el orden de las escenas.
+Según Disney, los efectos nuevos se apoyarán en lo que la atracción ya tiene. Dead Man's Cove es una bahía donde se supone que hay fantasmas. Disney todavía no ha anunciado si cambiarán los personajes, la música o el orden de las escenas.
 
 Te subes a una barca vieja y viajas al siglo XVII, cuando los piratas asaltaban los puertos del Caribe. Por el camino quedas en medio de un cañoneo entre un fuerte y un galeón de doce cañones. Después arde un pueblo junto al mar mientras los piratas cantan «Yo Ho, Yo Ho». En algún rincón se esconde el capitán Jack Sparrow. No hay altura mínima. El recorrido dura unos ocho minutos y medio y tiene una sola bajada, de algo más de cuatro metros (14 pies).
 

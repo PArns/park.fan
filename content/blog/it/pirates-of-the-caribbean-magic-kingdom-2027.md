@@ -52,7 +52,7 @@ Se voli a Orlando tra l'11 gennaio e l'autunno 2027, organizza la giornata al Ma
 
 ## Cosa cambia e com'è il giro oggi
 
-Gli effetti nuovi, secondo Disney, si aggiungono a quello che il giro ha già. Dead Man's Cove è una baia dove si dice che ci siano i fantasmi. Disney non ha ancora detto se cambieranno anche personaggi, musica o ordine delle scene.
+Gli effetti nuovi, secondo Disney, si aggiungono a quello che il giro ha già. Dead Man's Cove è una baia dove si dice che ci siano i fantasmi. Disney non ha ancora annunciato se cambieranno anche personaggi, musica o ordine delle scene.
 
 Sali su una vecchia barca e torni nel Seicento, quando i pirati assaltavano le città portuali dei Caraibi. Lungo il percorso passi in mezzo al fuoco incrociato tra un forte e un galeone con dodici cannoni. Poi brucia un villaggio sul mare, e i pirati intanto cantano «Yo Ho, Yo Ho». Da qualche parte lì in mezzo si nasconde Capitan Jack Sparrow. Non c'è un'altezza minima. Il giro dura circa otto minuti e mezzo, con una sola discesa di poco più di quattro metri (14 piedi).
 
