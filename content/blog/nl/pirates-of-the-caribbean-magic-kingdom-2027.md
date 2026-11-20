@@ -46,15 +46,15 @@ seo:
 
 ## Hoelang de attractie dicht is
 
-Zondag 10 januari 2027 is de laatste dag dat je kunt varen. Wanneer de attractie terugkomt, heeft Disney nog niet bekendgemaakt. Op de pagina van de attractie staat alleen dat de piraten tegen het eind van het jaar terugkeren, met “a little bit of new magic”. Op de Parks Blog heet het een gewone onderhoudsbeurt, al neemt die gewone beurt deze keer het grootste deel van een jaar in beslag.
+Zondag 10 januari 2027 is de laatste dag dat je kunt varen. Disney heeft nog geen datum voor de heropening bekendgemaakt. Op de pagina van de attractie staat alleen dat de piraten tegen het eind van het jaar terugkeren, met “a little bit of new magic”. Op de Parks Blog heet het een gewone onderhoudsbeurt, al neemt die gewone beurt deze keer het grootste deel van een jaar in beslag.
 
-Vlieg je tussen 11 januari en de herfst van 2027 naar Orlando, reken dan in Magic Kingdom niet op de piraten. Of ze er bij een reis in november of december 2027 alweer zijn, is nog open. Met kerst en oud en nieuw vaar je nog gewoon mee. De eerste Disney After Hours-avond van het jaar in Magic Kingdom, op 11 januari, mist de attractie op één dag na.
+Vlieg je tussen 11 januari en de herfst van 2027 naar Orlando, reken dan in Magic Kingdom niet op de piraten. Bij een reis in november of december 2027 is het nog afwachten of ze er alweer zijn. Met kerst en oud en nieuw vaar je nog gewoon mee. De attractie mist de eerste Disney After Hours-avond van het jaar in Magic Kingdom, op 11 januari, op één dag na.
 
 ## Wat Disney verandert en hoe de rit nu verloopt
 
 De nieuwe effecten moeten volgens Disney voortbouwen op wat de attractie al heeft. Dead Man's Cove is een baai waar het zou spoken. Of er iets verandert aan de figuren, de muziek of de volgorde van de scènes, heeft Disney nog niet bekendgemaakt.
 
-Je zit in een oude boot en vaart terug naar de 17e eeuw, toen piraten de havensteden in het Caribisch gebied overvielen. Onderweg kom je tussen een fort en een galjoen met twaalf kanonnen terecht die op elkaar schieten. Daarna staat een dorp aan zee in brand, en de piraten zingen er “Yo Ho, Yo Ho” bij. Ergens daartussen houdt Captain Jack Sparrow zich schuil. Er is geen minimumlengte. Een vaart duurt ongeveer achtenhalve minuut en heeft één afdaling van ruim vier meter (14 voet).
+Je zit in een oude boot en vaart terug naar de 17e eeuw, toen piraten de havensteden in het Caribisch gebied overvielen. Onderweg beschieten een fort en een galjoen met twaalf kanonnen elkaar, en jij zit er middenin. Daarna staat een dorp aan zee in brand, en de piraten zingen er “Yo Ho, Yo Ho” bij. Ergens daartussen houdt Captain Jack Sparrow zich schuil. Er is geen minimumlengte. Een vaart duurt ongeveer achtenhalve minuut en heeft één afdaling van ruim vier meter (14 voet).
 
 In dezelfde aflevering van de videoserie laat Disney ook Piston Peak National Park zien, het gebied rond de “Cars”-films dat in een verbouwd deel van Frontierland in Magic Kingdom verrijst.
 
@@ -66,7 +66,7 @@ Ook een paar andere klassiekers in Adventureland hebben geen minimumlengte. De J
 
 ```
 
-Het Carousel of Progress in Tomorrowland is begin 2027 ook nog dicht. Disney sloot het op 6 juli 2026 voor een nieuwe versie van de show en verwacht dat het laat in het voorjaar van 2027 weer opengaat. Op welk uur de rij bij de klassiekers het kortst is, lopen we attractie voor attractie langs in de [gids voor Magic Kingdom](/blog/magic-kingdom-wachttijden-tips).
+Het Carousel of Progress in Tomorrowland is begin 2027 ook nog dicht. Disney sloot het op 6 juli 2026 voor een nieuwe versie van de show en verwacht dat het laat in het voorjaar van 2027 weer opengaat. In de [gids voor Magic Kingdom](/blog/magic-kingdom-wachttijden-tips) lopen we de klassiekers attractie voor attractie langs, met het uur waarop de wachtrij het kortst is.
 
 ## Sinds 1973 in Florida
 

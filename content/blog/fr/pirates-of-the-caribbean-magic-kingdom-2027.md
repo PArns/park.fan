@@ -47,9 +47,9 @@ Au [Magic Kingdom](ref:magic-kingdom-park), [Pirates of the Caribbean](ref:magic
 
 ## Combien de temps l’attraction reste fermée
 
-Les bateaux circulent une dernière fois le dimanche 10 janvier 2027. Pour la réouverture, Disney n’a pas encore donné de date. La page de l’attraction se contente d’annoncer le retour des pirates vers la fin de l’année, avec « a little bit of new magic ». Sur le Parks Blog, Disney parle d’un arrêt de maintenance de routine. Une routine qui, cette fois, occupe l’essentiel du calendrier.
+Les bateaux circulent une dernière fois le dimanche 10 janvier 2027. Pour la réouverture, Disney n’a pas encore donné de date. La page de l’attraction se contente d’annoncer le retour des pirates vers la fin de l’année, avec « a little bit of new magic ». Sur le Parks Blog, Disney parle d’un arrêt de maintenance de routine, une routine qui occupe cette fois l’essentiel de l’année.
 
-Si ton vol pour Orlando tombe entre le 11 janvier et l’automne 2027, organise ta journée au Magic Kingdom sans cette attraction. Pour un voyage en novembre ou en décembre 2027, personne ne sait encore si elle aura rouvert. Pendant Noël et le Nouvel An, en revanche, elle tourne encore. La première soirée Disney After Hours de l’année au Magic Kingdom, le 11 janvier, la rate d’un jour pile.
+Si ton vol pour Orlando tombe entre le 11 janvier et l’automne 2027, organise ta journée au Magic Kingdom sans cette attraction. Pour un voyage en novembre ou en décembre 2027, personne ne sait encore si elle aura rouvert. Pendant Noël et le Nouvel An, en revanche, elle tourne encore. Elle rate d’un jour pile la première soirée Disney After Hours de l’année au Magic Kingdom, le 11 janvier.
 
 ## Ce que Disney modifie et à quoi ressemble le tour aujourd’hui
 
@@ -67,11 +67,11 @@ Quelques autres classiques d’Adventureland n’exigent pas de taille minimum n
 
 ```
 
-À Tomorrowland, le Carousel of Progress est lui aussi encore fermé début 2027. Disney l’a fermé le 6 juillet 2026 pour une nouvelle version du spectacle et prévoit de le rouvrir vers la fin du printemps 2027. À quelle heure les files d’attente sont les plus courtes devant ces classiques, notre [guide du Magic Kingdom](/blog/magic-kingdom-temps-d-attente-conseils) le détaille attraction par attraction.
+À Tomorrowland, le Carousel of Progress est lui aussi encore fermé début 2027. Disney l’a fermé le 6 juillet 2026 pour une nouvelle version du spectacle et prévoit de le rouvrir vers la fin du printemps 2027. Notre [guide du Magic Kingdom](/blog/magic-kingdom-temps-d-attente-conseils) passe ces classiques en revue attraction par attraction, avec l’heure où la file d’attente est la plus courte.
 
 ## En Floride depuis 1973
 
-L’original a ouvert le 18 mars 1967 à Disneyland, en Californie. C’est la dernière attraction à la conception de laquelle Walt Disney a lui-même participé. Il est mort trois mois avant l’ouverture. Quand le Magic Kingdom a ouvert en 1971, les pirates n’y étaient pas. Chez Disney, on pensait alors qu’un thème caribéen plairait moins en Floride qu’en Californie, alors que la Floride est quand même nettement plus près des Caraïbes. La version floridienne est finalement arrivée le 15 décembre 1973.
+L’original a ouvert le 18 mars 1967 à Disneyland, en Californie. C’est la dernière attraction que Walt Disney a lui-même aidé à concevoir. Il est mort trois mois avant l’ouverture. Quand le Magic Kingdom a ouvert en 1971, les pirates n’y étaient pas. Chez Disney, on pensait alors qu’un thème caribéen plairait moins en Floride qu’en Californie, alors que la Floride est quand même nettement plus près des Caraïbes. La version floridienne est finalement arrivée le 15 décembre 1973.
 
 Depuis, elle a été remaniée plusieurs fois. En 1997, Disney a modifié la scène de poursuite, et depuis, les pirates ne pourchassent plus les femmes que pour leur chiper à manger. Depuis 2006, l’année du deuxième film, Jack Sparrow et Barbossa sont à bord, tels qu’on les voit au cinéma. En mars 2018, le Magic Kingdom a reçu une nouvelle scène de vente aux enchères, où la femme rousse, devenue pirate, prête main-forte au commissaire-priseur.
 

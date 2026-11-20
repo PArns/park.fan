@@ -41,7 +41,7 @@ seo:
     - Walt Disney World 2027
 ---
 
-[Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) at [Magic Kingdom](ref:magic-kingdom-park) closes on 11 January 2027 and isn't due to reopen until late in the year. Disney announced the break on the Parks Blog on 19 November. The post came with "Storytelling", an episode of its video series "We Call It Imagineering". While the ride is down, the Imagineers are adding new effects, among other places in the Dead Man's Cove and Hurricane Lagoon scenes.
+[Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) at [Magic Kingdom](ref:magic-kingdom-park) closes on 11 January 2027 and isn't due to reopen until late in the year. Disney announced the break on the Parks Blog on 19 November. The post came with "Storytelling", an episode of its video series "We Call It Imagineering". While the ride is down, the Imagineers are adding new effects, including in the Dead Man's Cove and Hurricane Lagoon scenes.
 
 ## How long it's closed
 
@@ -53,7 +53,7 @@ If you're flying to Orlando between 11 January and the autumn of 2027, plan your
 
 According to Disney, the new effects will build on what the ride already has. Dead Man's Cove is a bay that's meant to be haunted. Disney hasn't announced yet whether the characters, the music or the order of the scenes will change.
 
-You board an old boat and sail into the 17th century, when pirates raided the port towns of the Caribbean. Along the way you end up between a fort and a galleon with twelve cannons, firing at each other. After that a seaside village burns while the pirates sing "Yo Ho, Yo Ho". Captain Jack Sparrow is hiding somewhere along the way. There's no height requirement. The ride lasts about eight and a half minutes and has a single drop of 14 feet, a little over four metres.
+You board an old boat and sail into the 17th century, when pirates raided the port towns of the Caribbean. Along the way you end up between a fort and a galleon with twelve cannons as they fire at each other. After that a seaside village burns while the pirates sing "Yo Ho, Yo Ho". Captain Jack Sparrow is hiding somewhere in between. There's no height requirement. The ride lasts about eight and a half minutes and has a single drop of 14 feet, a little over four metres.
 
 The same episode of the video series also shows Piston Peak National Park, the "Cars" area going up in a rebuilt section of Frontierland at Magic Kingdom.
 

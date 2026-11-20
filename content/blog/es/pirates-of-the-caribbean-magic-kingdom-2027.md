@@ -46,13 +46,13 @@ seo:
 
 ## ¿Cuánto tiempo estará cerrada?
 
-El último día con barcas es el domingo 10 de enero de 2027. Disney todavía no ha dado fecha de reapertura. En la página de la atracción solo dice que los piratas regresarán hacia finales de año con «a little bit of new magic». En el Parks Blog lo llama una pausa de mantenimiento rutinaria, aunque esta rutina se come casi un año entero.
+El último día con barcas es el domingo 10 de enero de 2027. Disney todavía no ha dado fecha de reapertura. La página de la atracción solo dice que los piratas regresarán hacia finales de año con «a little bit of new magic». En el Parks Blog, Disney lo llama una pausa de mantenimiento rutinaria, aunque esta rutina se come casi un año entero.
 
-Si viajas a Orlando entre el 11 de enero y el otoño de 2027, organiza el día en Magic Kingdom sin esta atracción. Para un viaje en noviembre o diciembre de 2027 no se sabe aún si ya habrá reabierto. En Navidad y Año Nuevo sigue funcionando. La primera noche Disney After Hours del año en Magic Kingdom, el 11 de enero, se la pierde por un solo día.
+Si viajas a Orlando entre el 11 de enero y el otoño de 2027, organiza el día en Magic Kingdom sin esta atracción. Para un viaje en noviembre o diciembre de 2027 no se sabe aún si ya habrá reabierto. En Navidad y Año Nuevo sigue funcionando. Por un solo día se pierde la primera noche Disney After Hours del año en Magic Kingdom, el 11 de enero.
 
 ## Qué cambia Disney y cómo es el recorrido hoy
 
-Según Disney, los efectos nuevos se apoyarán en lo que la atracción ya tiene. Dead Man's Cove es una bahía donde se supone que hay fantasmas. Si cambian los personajes, la música o el orden de las escenas, Disney no lo ha dicho todavía.
+Según Disney, los efectos nuevos se apoyarán en lo que la atracción ya tiene. Dead Man's Cove es una bahía donde se supone que hay fantasmas. Disney todavía no ha dicho si cambiarán los personajes, la música o el orden de las escenas.
 
 Te subes a una barca vieja y viajas al siglo XVII, cuando los piratas asaltaban los puertos del Caribe. Por el camino quedas en medio de un cañoneo entre un fuerte y un galeón de doce cañones. Después arde un pueblo junto al mar mientras los piratas cantan «Yo Ho, Yo Ho». En algún rincón se esconde el capitán Jack Sparrow. No hay altura mínima. El recorrido dura unos ocho minutos y medio y tiene una sola bajada, de algo más de cuatro metros (14 pies).
 
@@ -72,7 +72,7 @@ El Carousel of Progress de Tomorrowland también sigue cerrado a principios de 2
 
 La original se estrenó el 18 de marzo de 1967 en Disneyland, en California. Fue la última atracción en cuyo diseño participó el propio Walt Disney. Murió tres meses antes de la inauguración. Cuando Magic Kingdom abrió en 1971, no tenía piratas. En Disney pensaban entonces que un tema caribeño gustaría menos en Florida que en California, por mucho que el Caribe quede bastante más cerca de Florida. Al final, la versión de Florida llegó el 15 de diciembre de 1973.
 
-Desde entonces la han reformado varias veces. En 1997 Disney cambió la escena de la persecución, y desde entonces los piratas ya solo persiguen a las mujeres para quitarles la comida. Desde 2006, el año de la segunda película, Jack Sparrow y Barbossa van a bordo. En marzo de 2018 Magic Kingdom estrenó una nueva escena de la subasta, en la que la pelirroja, ahora pirata, ayuda al subastador.
+Desde entonces la han reformado varias veces. En 1997 Disney cambió la escena de la persecución, y desde ese año los piratas ya solo persiguen a las mujeres para quitarles la comida. Desde 2006, el año de la segunda película, Jack Sparrow y Barbossa van a bordo. En marzo de 2018 Magic Kingdom estrenó una nueva escena de la subasta, en la que la pelirroja, ahora pirata, ayuda al subastador.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 

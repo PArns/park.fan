@@ -42,17 +42,17 @@ seo:
     - Walt Disney World 2027
 ---
 
-L'11 gennaio 2027 [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) chiude al [Magic Kingdom](ref:magic-kingdom-park), e le barche dovrebbero tornare in acqua solo verso la fine dell'anno. Disney ha annunciato la pausa il 19 novembre sul Parks Blog. Lì è uscita anche la puntata «Storytelling» della serie video «We Call It Imagineering». Durante la chiusura gli Imagineer montano effetti nuovi, tra l'altro nelle scene di Dead Man's Cove e Hurricane Lagoon.
+L'11 gennaio 2027 [Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) chiude al [Magic Kingdom](ref:magic-kingdom-park), e le barche dovrebbero tornare in acqua solo verso la fine dell'anno. Disney ha annunciato la pausa il 19 novembre sul Parks Blog. Lì è uscita anche la puntata «Storytelling» della serie video «We Call It Imagineering». Durante la chiusura gli Imagineer montano effetti nuovi, per esempio nelle scene di Dead Man's Cove e Hurricane Lagoon.
 
 ## Per quanto resta chiusa
 
-L'ultimo giorno per salirci è domenica 10 gennaio 2027. Una data di riapertura Disney non l'ha ancora comunicata. La pagina dell'attrazione dice soltanto che i pirati torneranno verso fine anno con «a little bit of new magic». Sul Parks Blog Disney parla di una normale pausa di manutenzione: normale sì, ma stavolta si mangia quasi un anno intero.
+L'ultimo giorno per salirci è domenica 10 gennaio 2027. Disney non ha ancora comunicato una data di riapertura. La pagina dell'attrazione dice soltanto che i pirati torneranno verso fine anno con «a little bit of new magic». Sul Parks Blog Disney parla di una normale pausa di manutenzione: normale sì, ma stavolta si mangia quasi un anno intero.
 
-Se voli a Orlando tra l'11 gennaio e l'autunno 2027, organizza la giornata al Magic Kingdom senza questa attrazione. Per un viaggio a novembre o dicembre 2027 non si sa ancora se sarà già ripartita. A Natale e Capodanno invece è aperta. La prima serata Disney After Hours dell'anno al Magic Kingdom, l'11 gennaio, la perde per un giorno esatto.
+Se voli a Orlando tra l'11 gennaio e l'autunno 2027, organizza la giornata al Magic Kingdom senza questa attrazione. Per un viaggio a novembre o dicembre 2027 non si sa ancora se sarà già ripartita. A Natale e Capodanno invece è aperta. Manca per un giorno esatto la prima serata Disney After Hours dell'anno al Magic Kingdom, l'11 gennaio.
 
 ## Cosa cambia e com'è il giro oggi
 
-Gli effetti nuovi, secondo Disney, si aggiungono a quello che il giro ha già. Dead Man's Cove è una baia dove si dice che ci siano i fantasmi. Se cambieranno anche personaggi, musica o ordine delle scene, Disney non l'ha ancora detto.
+Gli effetti nuovi, secondo Disney, si aggiungono a quello che il giro ha già. Dead Man's Cove è una baia dove si dice che ci siano i fantasmi. Disney non ha ancora detto se cambieranno anche personaggi, musica o ordine delle scene.
 
 Sali su una vecchia barca e torni nel Seicento, quando i pirati assaltavano le città portuali dei Caraibi. Lungo il percorso passi in mezzo al fuoco incrociato tra un forte e un galeone con dodici cannoni. Poi brucia un villaggio sul mare, e i pirati intanto cantano «Yo Ho, Yo Ho». Da qualche parte lì in mezzo si nasconde Capitan Jack Sparrow. Non c'è un'altezza minima. Il giro dura circa otto minuti e mezzo, con una sola discesa di poco più di quattro metri (14 piedi).
 
@@ -66,11 +66,11 @@ Anche altri classici di Adventureland non hanno un'altezza minima. Il Jungle Cru
 
 ```
 
-A inizio 2027 è ancora chiuso anche il Carousel of Progress, in Tomorrowland. Disney l'ha fermato il 6 luglio 2026 per una nuova versione dello spettacolo e conta di riaprirlo a fine primavera 2027. A che ora le code dei classici sono più corte lo vediamo attrazione per attrazione nella [guida al Magic Kingdom](/blog/magic-kingdom-tempi-di-attesa-consigli).
+A inizio 2027 è ancora chiuso anche il Carousel of Progress, in Tomorrowland. Disney l'ha fermato il 6 luglio 2026 per una nuova versione dello spettacolo e conta di riaprirlo a fine primavera 2027. Nella [guida al Magic Kingdom](/blog/magic-kingdom-tempi-di-attesa-consigli) vediamo attrazione per attrazione a che ora le code dei classici sono più corte.
 
 ## In Florida dal 1973
 
-L'originale aprì il 18 marzo 1967 a Disneyland, in California. Fu l'ultima attrazione alla cui ideazione Walt Disney partecipò ancora di persona. Morì tre mesi prima dell'inaugurazione. Quando nel 1971 aprì il Magic Kingdom, i pirati non c'erano. Alla Disney si pensava che un tema caraibico in Florida avrebbe avuto meno successo che in California, anche se dalla Florida ai Caraibi la strada è parecchio più corta. Il 15 dicembre 1973 la versione della Florida arrivò comunque.
+L'originale aprì il 18 marzo 1967 a Disneyland, in California. Fu l'ultima attrazione che Walt Disney contribuì a ideare di persona. Morì tre mesi prima dell'inaugurazione. Quando nel 1971 aprì il Magic Kingdom, i pirati non c'erano. Alla Disney si pensava che un tema caraibico in Florida avrebbe avuto meno successo che in California, anche se dalla Florida ai Caraibi la strada è parecchio più corta. Il 15 dicembre 1973 la versione della Florida arrivò comunque.
 
 Da allora è stata rimaneggiata più volte. Nel 1997 Disney cambiò la scena dell'inseguimento, e da quel momento i pirati inseguono le donne solo per il cibo che portano. Dal 2006, l'anno del secondo film, a bordo ci sono Jack Sparrow e Barbossa. A marzo 2018 il Magic Kingdom ha avuto una nuova scena dell'asta, in cui la donna dai capelli rossi, diventata piratessa, dà una mano al banditore.
 
