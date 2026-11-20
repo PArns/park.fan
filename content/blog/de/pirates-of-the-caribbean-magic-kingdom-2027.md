@@ -64,13 +64,13 @@ Ohne Mindestgröße kommen in Adventureland auch die Nachbarn der Piraten aus. D
 
 ```
 
-Auch das Carousel of Progress in Tomorrowland ist Anfang 2027 noch zu. Disney hat es am 6. Juli 2026 für eine neue Fassung der Show geschlossen, und Disney erwartet die Wiedereröffnung im späten Frühjahr 2027. Welche Klassiker im Magic Kingdom ohne Mindestgröße auskommen und zu welcher Stunde die Warteschlangen dort am kürzesten sind, gehen wir im [Guide zum Magic Kingdom](/blog/magic-kingdom-wartezeiten-tipps) Bahn für Bahn durch.
+Auch das Carousel of Progress in Tomorrowland ist Anfang 2027 noch zu. Disney hat es am 6. Juli 2026 für eine neue Fassung der Show geschlossen und erwartet die Wiedereröffnung im späten Frühjahr 2027. Welche Klassiker im Magic Kingdom ohne Mindestgröße auskommen und zu welcher Stunde die Warteschlangen dort am kürzesten sind, gehen wir im [Guide zum Magic Kingdom](/blog/magic-kingdom-wartezeiten-tipps) Bahn für Bahn durch.
 
 ## Seit 1973 in Florida
 
 Das Original eröffnete am 18. März 1967 in Disneyland in Kalifornien. Es war die letzte Bahn, deren Bau Walt Disney noch selbst begleitet hat, er starb drei Monate vor der Eröffnung. Als das Magic Kingdom 1971 eröffnete, fehlten die Piraten. Bei Disney glaubte man damals, ein Karibik-Thema käme in Florida nicht so gut an wie in Kalifornien, obwohl Florida der Karibik ein gutes Stück näher liegt. Am 15. Dezember 1973 kam die Florida-Version dann doch.
 
-Umgebaut wurde sie seitdem mehrmals. 1997 änderte Disney die Verfolgungsszene, seitdem jagen die Piraten den Frauen nur noch das Essen hinterher. Seit 2006 sind Jack Sparrow und Barbossa aus den Filmen an Bord, in der Höhle erschien dazu das Gesicht von Davy Jones als Projektion. Im März 2018 bekam das Magic Kingdom eine neue Auktionsszene, in der die rothaarige Frau als Piratin dem Auktionator hilft.
+Umgebaut wurde sie seitdem mehrmals. 1997 änderte Disney die Verfolgungsszene, seitdem jagen die Piraten den Frauen nur noch das Essen hinterher. Seit 2006, dem Jahr des zweiten Kinofilms, sind Jack Sparrow und Barbossa aus den Filmen an Bord. Im März 2018 bekam das Magic Kingdom eine neue Auktionsszene, in der die rothaarige Frau als Piratin dem Auktionator hilft.
 
 In derselben Folge der Videoreihe zeigt Disney auch Piston Peak National Park, den Bereich zu den „Cars“-Filmen, der im umgebauten Frontierland des Magic Kingdom entsteht.
 
