@@ -1,5 +1,5 @@
 ---
-title: 'Le Seven Seas Food Festival amène 29 concerts à SeaWorld'
+title: 'SeaWorld Orlando invite Flo Rida et Shaggy à son festival'
 translationKey: seaworld-orlando-seven-seas-food-festival-2027
 date: '2026-11-20'
 time: '18:41'
@@ -37,17 +37,17 @@ seo:
     - Flo Rida SeaWorld Orlando
 ---
 
-[SeaWorld Orlando](ref:seaworld-orlando) fait venir 29 concerts au Bayside Stadium pour le Seven Seas Food Festival, du 30 janvier au 16 mai 2027. On joue chaque samedi et la plupart des dimanches, toujours à 19 h. Les concerts sont compris dans l’entrée du parc, et une place réservée coûte en plus à partir de 9,99 $. Flo Rida ouvre la série, que SeaWorld a dévoilée le 19 novembre.
+[SeaWorld Orlando](ref:seaworld-orlando) fait venir 29 concerts au Bayside Stadium pour le Seven Seas Food Festival, du 30 janvier au 16 mai 2027. On joue chaque samedi et la plupart des dimanches, toujours à 19 h. Les concerts sont compris dans l’entrée du parc, mais seule une réservation te garantit une place. Flo Rida ouvre la série, que SeaWorld a dévoilée le 19 novembre.
 
 ## Le festival et les concerts au calendrier
 
-Le festival commence la veille du premier concert, le vendredi 29 janvier, et se termine le dimanche 16 mai. Les stands n’ouvrent que certains jours. SeaWorld n’a pas encore publié lesquels pour 2027. En 2026, ils étaient ouverts du jeudi au dimanche. Le vendredi de l’ouverture, le parc ferme dès 18 h.
+Le festival commence la veille du premier concert, le vendredi 29 janvier, et se termine le dimanche 16 mai. Les stands n’ouvrent que certains jours. La page du festival ne les donne pas encore pour 2027. En 2026, ils étaient ouverts du jeudi au dimanche. Le vendredi de l’ouverture, le parc ferme dès 18 h.
 
-Pour le premier week-end de concerts, SeaWorld ouvre de 9 h à 21 h. Un concert dure en général de 60 à 75 minutes. La plupart des soirs de concert de février et de mars, le parc ferme à 21 h, et les dimanches de mars à 22 h. Les 13 et 27 février, il ferme dès 19 h, à l’heure où le concert commence, et le 27 mars à 20 h.
+Pour le premier week-end de concerts, SeaWorld ouvre à 9 h. Un concert dure en général de 60 à 75 minutes. Ce week-end-là et la plupart des soirs de concert de février et de mars, le parc reste ouvert ensuite jusqu’à 21 h, et jusqu’à 22 h les dimanches de mars. Les 13 et 27 février, il ferme à 19 h, à l’heure où le concert commence, et le 27 mars à 20 h. Ces soirs-là, fais tes attractions avant le concert.
 
-La scène reste vide le dimanche du Super Bowl (14 février), le dimanche de Pâques (28 mars) et le jour de la fête des mères américaine (9 mai). SeaWorld préfère ne pas faire concurrence au football américain ni aux mamans. Le programme compte ainsi 16 concerts le samedi et 13 le dimanche.
+La scène reste vide le dimanche du Super Bowl (14 février), le dimanche de Pâques (28 mars) et le jour de la fête des mères américaine (9 mai). SeaWorld préfère ne pas faire concurrence au football américain ni aux mamans.
 
-Le festival comprend aussi Mardi Gras le 9 février, la Saint-Patrick le 17 mars, Cinco de Mayo le 5 mai et Viva La Música certains jours de mai.
+Le festival fête aussi Mardi Gras (mardi 9 février), la Saint-Patrick (mercredi 17 mars) et Cinco de Mayo (mercredi 5 mai), en semaine, des jours sans concert. Viva La Música s’y ajoute certains jours de mai.
 
 ```best-days-widget slug=seaworld-orlando
 
@@ -55,7 +55,7 @@ Le festival comprend aussi Mardi Gras le 9 février, la Saint-Patrick le 17 mars
 
 ## Qui joue quel soir
 
-SeaWorld mélange country, hip-hop, rock, R&B, reggae, reggaeton, pop et K-pop. Le samedi 20 mars, le groupe de K-pop EVERGLOW monte sur scène, et une semaine plus tard, Blue Öyster Cult.
+Le samedi 20 mars, le groupe de K-pop EVERGLOW monte sur scène, et le samedi suivant, Blue Öyster Cult. Le public prend une génération en une semaine.
 
 | Date            | Concert                                                        |
 | --------------- | -------------------------------------------------------------- |
@@ -97,31 +97,31 @@ Avec un billet du parc ou un abonnement annuel, tu t’assois sur les places lib
 - Up-Close dès 14,99 $, la deuxième zone du Floor, derrière Stagefront, avec accès au Floor Bar
 - Stagefront dès 24,99 $, la zone la plus avancée du Floor, juste devant la scène, elle aussi avec le Floor Bar
 
-Le nombre de places réservées est limité pour chaque concert. Le check-in des trois niveaux se trouve à gauche de la scène, près de Pipeline: The Surf Coaster, et ouvre à 14 h. Les places ne sont pas numérotées, et dans ta zone, c’est de nouveau le premier arrivé qui choisit. Pour 13 concerts, dont Flo Rida, Shaggy, Lil Jon et Luísa Sonza, Stagefront et Up-Close sont des zones debout, sans chaises. Les boissons du Floor Bar se paient à part.
+Quand le contingent d’une soirée est épuisé, il ne reste que les places libres, tant que l’accès est ouvert. Le check-in des trois niveaux se trouve à gauche de la scène, près de Pipeline: The Surf Coaster, et ouvre à 14 h. Les places ne sont pas numérotées, et dans ta zone, c’est de nouveau le premier arrivé qui choisit. Pour 13 concerts, dont Flo Rida, Shaggy, Lil Jon et Luísa Sonza, Stagefront et Up-Close sont des zones debout, sans chaises. Les boissons du Floor Bar se paient à part.
 
 La pluie seule n’arrête pas un concert. Si un orage approche, il est interrompu, reporté ou déplacé en salle, par exemple au Nautilus Theater. La salle peut être plus serrée, mais avec une place réservée, tu entres à coup sûr.
 
-La Seven Seas VIP Tour 2026 comprenait elle aussi une place réservée, ainsi qu’un lanyard pour cinq dégustations, plats ou boissons, et un accès prioritaire aux attractions. La VIP Tour coûtait à partir de 199,99 $. SeaWorld n’a pas encore publié son prix pour 2027.
+La Seven Seas VIP Tour comprend elle aussi une place réservée, ainsi qu’un lanyard pour cinq dégustations du festival, plats ou boissons, et un accès prioritaire illimité aux attractions. Aucun prix n’est encore annoncé pour 2027, et en 2026, la VIP Tour coûtait à partir de 199,99 $.
 
 ## Billets, abonnements annuels et dates d’exclusion
 
-En promotion Black Friday, le billet d’une journée acheté en ligne coûte dès 61,99 $ au lieu de 151,99 $. Il faut un billet dès 3 ans. La Fun Card 2027 coûte 104,99 $ au lieu de 151,99 $, soit moins que deux billets à la journée, et elle est valable sauf aux dates d’exclusion. Pour les abonnements annuels, compte 171 $ par an ou 14,25 $ par mois pour Bronze, 198 $ pour Silver, 222 $ pour Gold et 351 $ pour Platinum.
+En promotion Black Friday, le billet d’une journée acheté en ligne coûte dès 61,99 $ au lieu de 151,99 $. Il faut un billet dès 3 ans. La Fun Card 2027 coûte 104,99 $ au lieu de 151,99 $ et elle est valable tous les jours, sauf aux dates d’exclusion. Deux billets à la journée achetés en ligne coûtent déjà plus cher.
 
-Pendant le festival, les quatre samedis de concert du 13 mars au 3 avril sont exclus pour Bronze et la Fun Card. Pour voir Blue Öyster Cult avec une carte Bronze, il te faut donc un billet à la journée, ou passer directement à Silver, puisque Silver et les niveaux au-dessus n’ont aucune date d’exclusion en 2027. Sur la nourriture et les boissons, Silver donne 5 % de réduction, Gold 10 % et Platinum 15 %, Bronze rien.
+Côté abonnements annuels, ce qui compte pour le festival, c’est l’écart entre Bronze à 171 $ (ou 14,25 $ par mois), avec dates d’exclusion, et Silver à 198 $, sans. Gold coûte 222 $, Platinum 351 $. Pendant le festival, les quatre samedis de concert du 13 mars au 3 avril sont exclus pour Bronze et la Fun Card. Pour voir Blue Öyster Cult avec une carte Bronze, il te faut donc ce soir-là un billet à la journée, ou passer directement à Silver. Sur la nourriture et les boissons, Silver donne 5 % de réduction, Gold 10 % et Platinum 15 %, Bronze rien.
 
-Le parking coûte à partir de 35 $. À l’entrée, SeaWorld n’accepte pas les espèces. Le parc se trouve au 7007 Sea World Drive. Depuis la I-4, on y arrive par le Central Florida Parkway. La ligne de bus Lynx 50 s’arrête à proximité. Notre guide [Organiser un séjour à Orlando avec Disney World et Universal](/blog/sejour-orlando-disney-universal) présente les billets combinés et la façon de caser SeaWorld entre Disney et Universal.
+Le parking coûte à partir de 35 $, et à l’entrée, on ne paie pas en espèces. Depuis la I-4, le Central Florida Parkway mène au 7007 Sea World Drive, et sans voiture, la ligne de bus Lynx 50 s’arrête à proximité. Notre guide [Organiser un séjour à Orlando avec Disney World et Universal](/blog/sejour-orlando-disney-universal) présente les billets combinés et la façon de caser SeaWorld entre Disney et Universal.
 
 ## Ce qui change par rapport à 2026
 
 En 2026, le programme comptait 32 dates, dont cinq avec un invité surprise, et on jouait aussi sept vendredis. En 2027, les concerts restent le week-end. Outre Flo Rida, Grupo Manía, Proyecto Uno et Soulja Boy, déjà là en 2026, reviennent. Les places réservées s’appelaient Reserved Seating en 2026 et coûtaient déjà à partir de 9,99 $.
 
-D’après Brad Gilmour, le directeur du parc, certains plats de 2027 s’inspireront de la musique. Les stands et les menus de 2027 restent à dévoiler. En 2026, plus de 200 plats et boissons étaient répartis sur 29 stands, dont huit nouveaux.
+D’après Brad Gilmour, le directeur du parc, certains plats de 2027 s’inspireront de la musique. SeaWorld présentera à part les stands et les menus de 2027. En 2026, plus de 200 plats et boissons étaient répartis sur 29 stands, dont huit nouveaux.
 
 ## Concerts à San Diego et San Antonio, SEAQuest à Orlando
 
 Avec les deux autres SeaWorld, la série 2027 dépasse les 50 concerts. À [SeaWorld San Diego](ref:seaworld-san-diego), on joue le samedi à 18 h au Bayside Amphitheater, du 20 mars au 28 août. Les places réservées y coûtent dès 69,99 $. [SeaWorld San Antonio](ref:seaworld-san-antonio) propose sept dates du 11 avril au 23 mai, le samedi et le dimanche, au Nautilus Amphitheater, comprises dans l’entrée comme à Orlando.
 
-Orlando doit aussi accueillir en 2027 SEAQuest: Legends of the Deep, un dark ride suspendu dans une zone agrandie du parc. Aucune date d’ouverture n’est encore fixée. Avec Passport to Thrills, les Pass Members obtiennent un Quick Queue valable une fois pour SEAQuest s’ils viennent trois fois au parc entre le 18 novembre et le 31 décembre. Jusqu’au 4 janvier, SeaWorld Orlando présente encore la [Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026) avec le spectacle d’orques Miracles.
+Orlando doit aussi accueillir en 2027 SEAQuest: Legends of the Deep, un dark ride suspendu dans une zone agrandie du parc. Avec Passport to Thrills, les Pass Members obtiennent un Quick Queue valable une fois pour SEAQuest s’ils viennent trois fois au parc entre le 18 novembre et le 31 décembre. Si tu fais ces trois visites en décembre, tu verras aussi la [Christmas Celebration](/news/seaworld-orlando-christmas-celebration-2026) et le spectacle d’orques Miracles, à l’affiche jusqu’au 4 janvier.
 
 [SeaWorld Orlando](ref:seaworld-orlando?full)
 
