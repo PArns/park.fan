@@ -39,7 +39,7 @@ seo:
 
 ## The last boats leave on 10 January
 
-The ride is still running over Christmas, New Year's Eve and the first week of January. On 11 January, the pirates' first day off, Disney After Hours starts at Magic Kingdom: evenings on a separate ticket, on selected dates until 19 July.
+The ride is still running over Christmas, New Year's Eve and the first week of January. Disney After Hours, the evenings on a separate ticket, starts at Magic Kingdom on 11 January, the pirates' first day off. Whichever of the selected evenings up to 19 July you book, Pirates won't be part of it.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -53,11 +53,11 @@ In spring, Carousel of Progress in Tomorrowland is missing too. It's been closed
 
 ## What's changing, and who'll miss it
 
-Disney hasn't shown yet what the new effects in the two scenes will look like. The Parks Blog calls the closure a routine break and says the new effects will build on the ride's story.
+The Parks Blog calls it a routine break, and all it says about the effects is that they'll "build on the ride's story". For a story with cannon fire and a burning town, that leaves plenty of room.
 
-Families lose the most here, because Pirates has no minimum height. The boat ride lasts about eight and a half minutes and goes through 17th-century Caribbean port towns, past a haunted cove, between a fort and a galleon trading cannon fire, and through a town in flames. Captain Jack Sparrow from the films turns up in three scenes. Along the way there's one drop of just over four metres. The queue runs through Castillo del Morro, a fort modelled on the fortress in San Juan, Puerto Rico. "Yo Ho, Yo Ho (A Pirate's Life for Me)" follows you back to the hotel without needing a ticket of its own.
+Families lose the most here, because Pirates has no minimum height. The boat ride lasts about eight and a half minutes and goes through 17th-century Caribbean port towns, past a haunted cove, between a fort and a galleon trading cannon fire, and through a town in flames. Captain Jack Sparrow from the films turns up in three scenes. Along the way there's one drop of just over four metres. The ride starts in the queue, which winds through Castillo del Morro, a fort modelled on the fortress in San Juan, Puerto Rico. "Yo Ho, Yo Ho (A Pirate's Life for Me)" follows you back to the hotel without needing a ticket of its own.
 
-For an Orlando trip in 2027 I'd only count on Pirates again once Disney gives a reopening date. A day without the pirates works best when you build it around the [rides with the longest queues](/blog/magic-kingdom-wait-times-tips). If Universal and the other Disney parks are on the list too, the [Orlando itinerary for Disney World and Universal](/blog/orlando-itinerary-disney-universal) helps you put the days in order.
+Even for an autumn 2027 trip I wouldn't count on Pirates, because "late 2027" runs right up to New Year's Eve. The time you'd have spent in the pirates' queue goes to the [rides with the longest queues](/blog/magic-kingdom-wait-times-tips) that day. If you're still hoping for the pirates in December 2027, put your Magic Kingdom day at the end of the trip. The [Orlando itinerary for Disney World and Universal](/blog/orlando-itinerary-disney-universal) has the order for the parks before it.
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -71,9 +71,9 @@ In Adventureland, the pirate tavern The Beak and Barrel stays open. It opened on
 
 The first Pirates ride opened at Disneyland in California in 1967. It was one of the last attractions whose development Walt Disney still followed himself. It started life as a wax museum idea and ended up being built with Audio-Animatronics.
 
-For Magic Kingdom, which opened in 1971, Disney first planned without pirates, because it thought a Caribbean ride so close to the real Caribbean wouldn't have the same appeal as it did in California. Pirates came after all. The construction wall read "Opening Christmas 1973", and the first boats set off on 15 December 1973. Disney added Jack Sparrow in 2006, and in 2018 the ride got a new auction scene where the pirates sell off loot rather than a bride.
+For Magic Kingdom, which opened in 1971, Disney first planned without pirates, because it thought a Caribbean ride so close to the real Caribbean wouldn't have the same appeal as it did in California. The construction wall read "Opening Christmas 1973", and the first boats set off on 15 December 1973. Disney added Jack Sparrow in 2006, and in 2018 the ride got a new auction scene where the pirates sell off loot rather than a bride.
 
-Disney shows how Pirates was written in the "Storytelling" episode of the video series "We Call It Imagineering" on Walt Disney Imagineering's YouTube channel, and later on Disney+ as well. The same episode covers the new Indiana Jones story "Indiana Jones and the Myth of the Jade Serpent" and Piston Peak National Park, the Cars area going up at Magic Kingdom on part of what used to be Frontierland.
+Disney shows how Pirates was written in the "Storytelling" episode of the video series "We Call It Imagineering" on Walt Disney Imagineering's YouTube channel, and later on Disney+ as well. For Magic Kingdom, the part of that episode worth watching is Piston Peak National Park, the Cars area going up on part of what used to be Frontierland. The new Indiana Jones story, "Indiana Jones and the Myth of the Jade Serpent", is in there too.
 
 Sources:
 [Pirates of the Caribbean on disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),
