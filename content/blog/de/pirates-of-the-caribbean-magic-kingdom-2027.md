@@ -1,0 +1,88 @@
+---
+title: 'Pirates of the Caribbean im Magic Kingdom pausiert 2027'
+translationKey: pirates-of-the-caribbean-magic-kingdom-2027
+date: '2026-11-20'
+time: '09:00'
+author: patrick
+mode: published
+featured: false
+excerpt: >-
+  Pirates of the Caribbean im Magic Kingdom schließt am 11. Januar 2027 und soll erst gegen Ende des Jahres wieder fahren. Im Frühjahr und Sommer planst du Orlando ohne die Piraten.
+tags:
+  - news
+  - magic-kingdom
+  - walt-disney-world
+  - disney
+  - orlando
+  - florida
+  - usa
+  - renovierung
+  - saison-2027
+category: news
+parkLinks:
+  - magic-kingdom-park
+rideLinks:
+  - magic-kingdom-park/pirates-of-the-caribbean
+  - magic-kingdom-park/the-magic-carpets-of-aladdin
+seo:
+  title: 'Pirates of the Caribbean im Magic Kingdom 2027 geschlossen'
+  description: >-
+    Pirates of the Caribbean im Magic Kingdom schließt am 11. Januar 2027. Zurück soll die Bahn gegen Ende 2027 sein, mit neuen Effekten in Dead Man's Cove.
+  keywords:
+    - Pirates of the Caribbean geschlossen
+    - Pirates of the Caribbean Magic Kingdom
+    - Pirates of the Caribbean Renovierung 2027
+    - Pirates of the Caribbean refurbishment 2027
+    - Magic Kingdom Renovierung 2027
+    - Magic Kingdom Schließungen 2027
+    - Magic Kingdom Wartezeiten
+    - magic kingdom wait times
+    - Magic Kingdom Park Orlando
+    - Adventureland Magic Kingdom
+    - Walt Disney World 2027
+---
+
+[Pirates of the Caribbean](ref:magic-kingdom-park/pirates-of-the-caribbean) im [Magic Kingdom](ref:magic-kingdom-park) schließt am 11. Januar 2027 und soll erst gegen Ende des Jahres wieder fahren. Angekündigt hat Disney die Pause am 19. November im Disney Parks Blog, in der Folge „Storytelling“ der Videoreihe „We Call It Imagineering“. Während der Schließung bauen die Imagineers neue Effekte ein, unter anderem in den Szenen Dead Man's Cove und Hurricane Lagoon.
+
+## Wie lange die Bahn zu ist
+
+Der letzte Fahrtag ist Sonntag, der 10. Januar 2027. Ein Datum für die Rückkehr hat Disney noch nicht bekannt gegeben. Auf der Seite der Attraktion heißt es nur, die Piraten kämen gegen Ende des Jahres mit „a little bit of new magic“ zurück. Im Parks Blog nennt Disney das Ganze eine routinemäßige Wartungspause, und routinemäßig dauert sie diesmal den größten Teil eines Jahres.
+
+Fliegst du zwischen Mitte Januar und dem Herbst 2027 nach Orlando, plane den Tag im Magic Kingdom ohne die Bahn. Für eine Reise im November oder Dezember 2027 ist offen, ob sie schon wieder fährt. Über Weihnachten und Neujahr fährt sie noch, und die erste Disney-After-Hours-Nacht des Jahres im Magic Kingdom, am 11. Januar, verpasst sie um genau einen Tag.
+
+## Was Disney ändert
+
+Die neuen Effekte sollen auf dem aufbauen, was die Fahrt schon hat, so formuliert es Disney. Dead Man's Cove ist die Bucht am Anfang, in der es spuken soll. Ob Figuren, Musik oder die Reihenfolge der Szenen sich ändern, hat Disney noch nicht bekannt gegeben.
+
+Bei der Fahrt sitzt du in einem alten Boot und fährst ins 17. Jahrhundert, als Piraten die Hafenstädte der Karibik überfielen. Hinter der Spukbucht gerätst du zwischen ein Fort und eine Galeone mit zwölf Kanonen, die sich beschießen, danach brennt ein Dorf am Meer, und die Piraten singen dazu „Yo Ho, Yo Ho“. Irgendwo dazwischen versteckt sich Captain Jack Sparrow. Eine Mindestgröße gibt es nicht. Die Fahrt dauert rund achteinhalb Minuten und hat ein einziges Gefälle von gut vier Metern (14 Fuß).
+
+## Was in Adventureland weiterfährt
+
+Ohne Mindestgröße kommen in Adventureland auch die Nachbarn der Piraten aus. Die Jungle Cruise fährt bis ins neue Jahr als Jingle Cruise in Weihnachtsdekoration, daneben drehen sich [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare). Ins Swiss Family Treehouse steigst du über 116 Stufen hinauf, und in Walt Disney's Enchanted Tiki Room singen Audio-Animatronics-Figuren, während das Publikum im Rund sitzt.
+
+```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
+
+```
+
+Auch das Carousel of Progress in Tomorrowland ist Anfang 2027 noch zu. Disney hat es am 6. Juli 2026 für eine neue Fassung der Show geschlossen, und Disney erwartet die Wiedereröffnung im späten Frühjahr 2027. Welche Klassiker im Magic Kingdom ohne Mindestgröße auskommen und zu welcher Stunde die Warteschlangen dort am kürzesten sind, gehen wir im [Guide zum Magic Kingdom](/blog/magic-kingdom-wartezeiten-tipps) Bahn für Bahn durch.
+
+## Seit 1973 in Florida
+
+Das Original eröffnete am 18. März 1967 in Disneyland in Kalifornien. Es war die letzte Bahn, deren Bau Walt Disney noch selbst begleitet hat, er starb drei Monate vor der Eröffnung. Als das Magic Kingdom 1971 eröffnete, fehlten die Piraten. Bei Disney glaubte man damals, ein Karibik-Thema käme in Florida nicht so gut an wie in Kalifornien, obwohl Florida der Karibik ein gutes Stück näher liegt. Am 15. Dezember 1973 kam die Florida-Version dann doch.
+
+Umgebaut wurde sie seitdem mehrmals. 1997 änderte Disney die Verfolgungsszene, seitdem jagen die Piraten den Frauen nur noch das Essen hinterher. Seit 2006 sind Jack Sparrow und Barbossa aus den Filmen an Bord, in der Höhle erschien dazu das Gesicht von Davy Jones als Projektion. Im März 2018 bekam das Magic Kingdom eine neue Auktionsszene, in der die rothaarige Frau als Piratin dem Auktionator hilft.
+
+In derselben Folge der Videoreihe zeigt Disney auch Piston Peak National Park, den Bereich zu den „Cars“-Filmen, der im umgebauten Frontierland des Magic Kingdom entsteht.
+
+[Magic Kingdom](ref:magic-kingdom-park?full)
+
+Quellen:
+[Pirates of the Caribbean (Walt Disney World)](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),
+[We Call It Imagineering (Disney Parks Blog)](https://disneyparksblog.com/disney-experiences/go-behind-the-scenes-in-imagineering-video-series/),
+[Disney After Hours 2027 (Disney Parks Blog)](https://disneyparksblog.com/wdw/disney-after-hours-dates-tickets-tips/),
+[Jungle Cruise (Walt Disney World)](https://disneyworld.disney.go.com/attractions/magic-kingdom/jungle-cruise/),
+[The Magic Carpets of Aladdin (Walt Disney World)](https://disneyworld.disney.go.com/attractions/magic-kingdom/magic-carpets-of-aladdin/),
+[Swiss Family Treehouse (Walt Disney World)](https://disneyworld.disney.go.com/attractions/magic-kingdom/swiss-family-treehouse/),
+[Walt Disney's Enchanted Tiki Room (Walt Disney World)](https://disneyworld.disney.go.com/attractions/magic-kingdom/enchanted-tiki-room/),
+[Walt Disney's Carousel of Progress (Walt Disney World)](https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-carousel-of-progress/),
+[Pirates of the Caribbean auf Wikipedia (EN)](<https://en.wikipedia.org/wiki/Pirates_of_the_Caribbean_(attraction)>).
