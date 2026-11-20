@@ -2,7 +2,7 @@
 title: 'Pirates of the Caribbean im Magic Kingdom pausiert 2027'
 translationKey: pirates-of-the-caribbean-magic-kingdom-2027
 date: '2026-11-20'
-time: '09:00'
+time: '07:58'
 author: patrick
 mode: published
 featured: false
@@ -46,13 +46,13 @@ seo:
 
 ## Wie lange die Bahn zu ist
 
-Der letzte Fahrtag ist Sonntag, der 10. Januar 2027. Ein Datum für die Rückkehr hat Disney noch nicht bekannt gegeben. Auf der Seite der Attraktion heißt es nur, die Piraten kämen gegen Ende des Jahres mit „a little bit of new magic“ zurück. Im Parks Blog nennt Disney das Ganze eine routinemäßige Wartungspause, und routinemäßig dauert sie diesmal den größten Teil eines Jahres.
+Der letzte Fahrtag ist Sonntag, der 10. Januar 2027. Ein Datum für die Rückkehr hat Disney noch nicht bekannt gegeben. Wer im November oder Dezember 2027 fliegt, bucht die Piraten also auf Verdacht. Auf der Seite der Attraktion heißt es nur, die Piraten kämen gegen Ende des Jahres mit „a little bit of new magic“ zurück. Im Parks Blog nennt Disney das Ganze eine routinemäßige Wartungspause, und routinemäßig dauert sie diesmal den größten Teil eines Jahres.
 
-Zwischen dem 11. Januar und dem Herbst 2027 teilen sich in Adventureland die anderen Attraktionen die Zeit, die du sonst bei den Piraten verbracht hättest. Für eine Reise im November oder Dezember 2027 ist offen, ob die Bahn schon wieder fährt. Wer über Weihnachten und Silvester 2026 dort ist, fährt noch mit. Mit einem Ticket für die erste Disney-After-Hours-Nacht des Jahres im Magic Kingdom am 11. Januar kommst du dagegen schon einen Tag zu spät.
+Bis zum Herbst 2027 fällt in Adventureland damit eine Bootsfahrt von achteinhalb Minuten weg. Wer über Weihnachten und Silvester 2026 dort ist, fährt noch mit. Mit einem Ticket für die erste Disney-After-Hours-Nacht des Jahres im Magic Kingdom am 11. Januar kommst du dagegen schon einen Tag zu spät.
 
 ## Neue Effekte und die Fahrt heute
 
-Laut Disney kommen die neuen Effekte zu den bestehenden Szenen dazu. Dead Man's Cove ist eine Bucht, in der es spuken soll. Ob sich an Figuren oder Musik etwas ändert, steht in der Ankündigung nicht.
+Die Szenen selbst bleiben, Disney baut die Effekte in sie hinein. Dead Man's Cove ist eine Bucht, in der es spuken soll.
 
 Bei der Fahrt sitzt du in einem alten Boot und fährst ins 17. Jahrhundert, als Piraten die Hafenstädte der Karibik überfielen. Unterwegs gerätst du zwischen ein Fort und eine Galeone mit zwölf Kanonen, die sich beschießen. Danach brennt ein Dorf am Meer, und die Piraten singen dazu „Yo Ho, Yo Ho“. Irgendwo dazwischen versteckt sich Captain Jack Sparrow. Eine Mindestgröße gibt es nicht. Die Fahrt dauert rund achteinhalb Minuten und hat ein einziges Gefälle von gut vier Metern (14 Fuß).
 
@@ -60,19 +60,21 @@ In derselben Folge der Videoreihe zeigt Disney auch Piston Peak National Park, d
 
 ## Adventureland und das Carousel of Progress Anfang 2027
 
-Ohne Mindestgröße fährt in Adventureland auch die Jungle Cruise, bis ins neue Jahr als Jingle Cruise in Weihnachtsdekoration, und ebenso drehen sich [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) weiter. Ins Swiss Family Treehouse steigst du über 116 Stufen hinauf. In Walt Disney's Enchanted Tiki Room darfst du sitzen, im Kreis, und das Singen übernehmen die Audio-Animatronics-Figuren.
+Ohne Mindestgröße fährt in Adventureland auch die Jungle Cruise, bis ins neue Jahr als Jingle Cruise in Weihnachtsdekoration. Auch [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) drehen sich weiter, ebenfalls ohne Mindestgröße. Ins Swiss Family Treehouse steigst du über 116 Stufen hinauf. In Walt Disney's Enchanted Tiki Room darfst du sitzen, im Kreis, und das Singen übernehmen die Audio-Animatronics-Figuren.
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
 
 ```
 
-Auch das Carousel of Progress in Tomorrowland ist Anfang 2027 noch zu. Disney hat es am 6. Juli 2026 für eine neue Fassung der Show geschlossen und erwartet die Wiedereröffnung im späten Frühjahr 2027. Zu welcher Stunde die Warteschlangen an den Klassikern am kürzesten sind, gehen wir im [Guide zum Magic Kingdom](/blog/magic-kingdom-wartezeiten-tipps) Bahn für Bahn durch.
+Im [Guide zum Magic Kingdom](/blog/magic-kingdom-wartezeiten-tipps) gehen wir die Klassiker Bahn für Bahn durch, mit der Stunde, in der die Warteschlange jeweils am kürzesten ist.
+
+Auch das Carousel of Progress in Tomorrowland ist Anfang 2027 noch zu. Disney hat es am 6. Juli 2026 für eine neue Fassung der Show geschlossen und erwartet die Wiedereröffnung im späten Frühjahr 2027.
 
 ## Seit 1973 in Florida
 
 Das Original eröffnete am 18. März 1967 in Disneyland in Kalifornien. Es war die letzte Bahn, an deren Gestaltung Walt Disney noch selbst mitgearbeitet hat. Er starb drei Monate vor der Eröffnung. Als das Magic Kingdom 1971 eröffnete, fehlten die Piraten. Bei Disney glaubte man damals, ein Karibik-Thema käme in Florida nicht so gut an wie in Kalifornien, obwohl Florida der Karibik ein gutes Stück näher liegt. Am 15. Dezember 1973 kam die Florida-Version dann doch.
 
-1997 änderte Disney die Verfolgungsszene, seitdem jagen die Piraten den Frauen nur noch das Essen hinterher. Seit 2006, dem Jahr des zweiten Kinofilms, sind Jack Sparrow und Barbossa aus den Filmen an Bord. Im März 2018 bekam das Magic Kingdom eine neue Auktionsszene, in der die rothaarige Frau als Piratin dem Auktionator hilft.
+1997 änderte Disney die Verfolgungsszene, seitdem jagen die Piraten den Frauen nur noch das Essen hinterher. Jack Sparrow und Barbossa aus den Filmen kamen 2006 an Bord, im Jahr des zweiten Kinofilms. Im März 2018 bekam das Magic Kingdom eine neue Auktionsszene, in der die rothaarige Frau als Piratin dem Auktionator hilft.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 

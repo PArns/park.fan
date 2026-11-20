@@ -2,7 +2,7 @@
 title: 'Pirates of the Caribbean at Magic Kingdom closes in January'
 translationKey: pirates-of-the-caribbean-magic-kingdom-2027
 date: '2026-11-20'
-time: '09:00'
+time: '07:58'
 author: patrick
 mode: published
 featured: false
@@ -45,13 +45,13 @@ seo:
 
 ## How long it's closed
 
-The last day to ride is Sunday, 10 January 2027. Disney hasn't announced a reopening date. The attraction page only says the pirates will be back late in the year with "a little bit of new magic". The Parks Blog calls the closure routine maintenance, and this time the routine eats most of 2027.
+The last day to ride is Sunday, 10 January 2027. Disney hasn't announced a reopening date. If you're flying in November or December 2027, the pirates are a gamble. The attraction page only says the pirates will be back late in the year with "a little bit of new magic". The Parks Blog calls the closure routine maintenance, and this time the routine eats most of 2027.
 
-Between 11 January and the autumn of 2027, the time you'd have spent with the pirates goes to the other attractions in Adventureland. For a trip in November or December 2027, it isn't known yet whether the ride will be back. If you're there over Christmas and New Year 2026, you can still ride it. A ticket for the year's first Disney After Hours night at Magic Kingdom, on 11 January, gets you in one day too late.
+Until the autumn of 2027, that takes an eight-and-a-half-minute boat ride out of Adventureland. If you're there over Christmas and New Year 2026, you can still ride it. A ticket for the year's first Disney After Hours night at Magic Kingdom, on 11 January, gets you in one day too late.
 
 ## New effects and the ride today
 
-Disney says the new effects are being added to the scenes that are already there. Dead Man's Cove is a bay that's meant to be haunted. The announcement doesn't mention new characters or different music.
+The scenes themselves stay, and Disney is building the effects into them. Dead Man's Cove is a bay that's meant to be haunted.
 
 You board an old boat and sail into the 17th century, when pirates raided the port towns of the Caribbean. Along the way you end up between a fort and a galleon with twelve cannons as they fire at each other. After that a seaside village burns while the pirates sing "Yo Ho, Yo Ho". Captain Jack Sparrow is hiding somewhere in between. There's no height requirement. The ride lasts about eight and a half minutes and has a single drop of 14 feet, a little over four metres.
 
@@ -59,19 +59,21 @@ The same episode of the video series also shows Piston Peak National Park, the "
 
 ## Adventureland and the Carousel of Progress in early 2027
 
-Jungle Cruise in Adventureland has no height requirement either and runs into the new year as the Jingle Cruise, in its Christmas decorations, and the same goes for [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare), which keep spinning. You climb 116 steps up into the Swiss Family Treehouse. In Walt Disney's Enchanted Tiki Room you get to sit down, in a ring, and the Audio-Animatronics figures do the singing.
+Jungle Cruise in Adventureland has no height requirement either and runs into the new year as the Jingle Cruise, in its Christmas decorations. [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) keep spinning too, also with no height requirement. You climb 116 steps up into the Swiss Family Treehouse. In Walt Disney's Enchanted Tiki Room you get to sit down, in a ring, and the Audio-Animatronics figures do the singing.
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
 
 ```
 
-Over in Tomorrowland, the Carousel of Progress is still closed in early 2027 as well. Disney shut it on 6 July 2026 for a new version of the show and expects it to reopen in late spring 2027. Our [Magic Kingdom guide](/blog/magic-kingdom-wait-times-tips) goes through the classics ride by ride, with the hour when each queue is shortest.
+In our [Magic Kingdom guide](/blog/magic-kingdom-wait-times-tips) we go through the classics ride by ride, with the hour each queue is shortest.
+
+Over in Tomorrowland, the Carousel of Progress is still closed in early 2027 as well. Disney shut it on 6 July 2026 for a new version of the show and expects it to reopen in late spring 2027.
 
 ## In Florida since 1973
 
 The original opened at Disneyland in California on 18 March 1967. It was the last ride Walt Disney helped design himself. He died three months before it opened. When Magic Kingdom opened in 1971, the pirates weren't there. Disney thought back then that a Caribbean theme wouldn't go down as well in Florida as in California, though Orlando is a lot closer to the Caribbean than Anaheim is. The Florida version arrived after all on 15 December 1973.
 
-In 1997 Disney changed the chase scene, and the pirates have only chased the women for their food ever since. Since 2006, the year of the second film, Jack Sparrow and Barbossa from the movies have been on board. In March 2018 Magic Kingdom got a new auction scene, in which the redhead is a pirate herself and helps the auctioneer.
+In 1997 Disney changed the chase scene, and the pirates have only chased the women for their food ever since. Jack Sparrow and Barbossa from the films came aboard in 2006, the year of the second film. In March 2018 Magic Kingdom got a new auction scene, in which the redhead is a pirate herself and helps the auctioneer.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 

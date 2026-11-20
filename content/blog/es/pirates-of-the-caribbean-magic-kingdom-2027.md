@@ -2,7 +2,7 @@
 title: 'Pirates of the Caribbean cierra en Magic Kingdom en 2027'
 translationKey: pirates-of-the-caribbean-magic-kingdom-2027
 date: '2026-11-20'
-time: '09:00'
+time: '07:58'
 author: patrick
 mode: published
 featured: false
@@ -46,13 +46,13 @@ seo:
 
 ## ¿Cuánto tiempo estará cerrada?
 
-El último día con barcas es el domingo 10 de enero de 2027. Disney todavía no ha dado fecha de reapertura. La página de la atracción solo dice que los piratas regresarán hacia finales de año con «a little bit of new magic». En el Parks Blog, Disney lo llama una pausa de mantenimiento rutinaria, aunque esta rutina se come casi un año entero.
+El último día con barcas es el domingo 10 de enero de 2027. Disney todavía no ha dado fecha de reapertura. Si vuelas en noviembre o diciembre de 2027, cuentas con los piratas a ciegas. La página de la atracción solo dice que los piratas regresarán hacia finales de año con «a little bit of new magic». En el Parks Blog, Disney lo llama una pausa de mantenimiento rutinaria, aunque esta rutina se come casi un año entero.
 
-Entre el 11 de enero y el otoño de 2027, el tiempo que habrías pasado con los piratas se lo quedan las demás atracciones de Adventureland. Para un viaje en noviembre o diciembre de 2027 no se sabe aún si los piratas habrán vuelto. Si estás allí en Navidad y Año Nuevo de 2026, todavía puedes subir. Con una entrada para la primera noche Disney After Hours del año en Magic Kingdom, el 11 de enero, llegas ya un día tarde.
+Hasta el otoño de 2027, Adventureland se queda así sin un paseo en barca de ocho minutos y medio. Si estás allí en Navidad y Año Nuevo de 2026, todavía puedes subir. Con una entrada para la primera noche Disney After Hours del año en Magic Kingdom, el 11 de enero, llegas ya un día tarde.
 
 ## Los efectos nuevos y el recorrido hoy
 
-Según Disney, los efectos nuevos se suman a las escenas que ya existen. Dead Man's Cove es una bahía donde se supone que hay fantasmas. El anuncio no menciona personajes nuevos ni otra música.
+Las escenas en sí se mantienen, y Disney integra los efectos en ellas. Dead Man's Cove es una bahía donde se supone que hay fantasmas.
 
 Te subes a una barca vieja y viajas al siglo XVII, cuando los piratas asaltaban los puertos del Caribe. Por el camino quedas en medio de un cañoneo entre un fuerte y un galeón de doce cañones. Después arde un pueblo junto al mar mientras los piratas cantan «Yo Ho, Yo Ho». En algún rincón se esconde el capitán Jack Sparrow. No hay altura mínima. El recorrido dura unos ocho minutos y medio y tiene una sola bajada, de algo más de cuatro metros (14 pies).
 
@@ -60,19 +60,21 @@ En el mismo episodio de la serie, Disney enseña también Piston Peak National P
 
 ## Adventureland y el Carousel of Progress a principios de 2027
 
-La Jungle Cruise de Adventureland tampoco pide altura mínima y navega hasta entrado el año nuevo como Jingle Cruise, con decoración navideña, y lo mismo vale para [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare), que siguen girando. Al Swiss Family Treehouse se sube por 116 escalones. En Walt Disney's Enchanted Tiki Room puedes sentarte, en círculo, y del canto se encargan las figuras Audio-Animatronics.
+La Jungle Cruise de Adventureland tampoco pide altura mínima y navega hasta entrado el año nuevo como Jingle Cruise, con decoración navideña. [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) también siguen girando, y tampoco piden altura mínima. Al Swiss Family Treehouse se sube por 116 escalones. En Walt Disney's Enchanted Tiki Room puedes sentarte, en círculo, y del canto se encargan las figuras Audio-Animatronics.
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
 
 ```
 
-El Carousel of Progress de Tomorrowland también sigue cerrado a principios de 2027. Disney lo cerró el 6 de julio de 2026 para estrenar una versión nueva del espectáculo y espera reabrirlo a finales de la primavera de 2027. En la [guía de Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos) repasamos atracción por atracción a qué hora tienen los clásicos las colas más cortas.
+En la [guía de Magic Kingdom](/blog/magic-kingdom-tiempos-de-espera-consejos) repasamos los clásicos atracción por atracción, con la hora en que cada cola es más corta.
+
+El Carousel of Progress de Tomorrowland también sigue cerrado a principios de 2027. Disney lo cerró el 6 de julio de 2026 para estrenar una versión nueva del espectáculo y espera reabrirlo a finales de la primavera de 2027.
 
 ## En Florida desde 1973
 
 La original se estrenó el 18 de marzo de 1967 en Disneyland, en California. Fue la última atracción en cuyo diseño participó el propio Walt Disney. Murió tres meses antes de la inauguración. Cuando Magic Kingdom abrió en 1971, no tenía piratas. En Disney pensaban entonces que un tema caribeño gustaría menos en Florida que en California, por mucho que el Caribe quede bastante más cerca de Florida. Al final, la versión de Florida llegó el 15 de diciembre de 1973.
 
-En 1997 Disney cambió la escena de la persecución, y desde ese año los piratas ya solo persiguen a las mujeres para quitarles la comida. Desde 2006, el año de la segunda película, Jack Sparrow y Barbossa van a bordo. En marzo de 2018 Magic Kingdom estrenó una nueva escena de la subasta, en la que la pelirroja, ahora pirata, ayuda al subastador.
+En 1997 Disney cambió la escena de la persecución, y desde ese año los piratas ya solo persiguen a las mujeres para quitarles la comida. Jack Sparrow y Barbossa, los de las películas, subieron a bordo en 2006, el año de la segunda película. En marzo de 2018 Magic Kingdom estrenó una nueva escena de la subasta, en la que la pelirroja, ahora pirata, ayuda al subastador.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 
