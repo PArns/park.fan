@@ -39,7 +39,7 @@ seo:
 
 ## Der letzte Fahrtag ist der 10. Januar
 
-Über Weihnachten, Silvester und die erste Januarwoche fährt die Bahn noch. Disney After Hours, die Abende mit eigenem Ticket, beginnen im Magic Kingdom ausgerechnet am 11. Januar, dem ersten freien Tag der Piraten. Wer für einen der ausgewählten Abende bis zum 19. Juli ein Ticket kauft, bekommt die Bahn also an keinem davon.
+Über Weihnachten, Silvester und die erste Januarwoche fährt die Bahn noch. Disney After Hours, die Abende mit eigenem Ticket, beginnen im Magic Kingdom ausgerechnet am 11. Januar, dem ersten freien Tag der Piraten, und laufen an ausgewählten Abenden bis zum 19. Juli, alle ohne Pirates.
 
 ```hourly-profile-widget slug=magic-kingdom-park top=8
 
@@ -51,13 +51,13 @@ Im Frühjahr fehlt neben Pirates auch das Carousel of Progress in Tomorrowland. 
 
 ```
 
-## Was neu wird und wen die Pause trifft
+## Was Disney zu den Effekten sagt und wen die Pause trifft
 
 Im Parks Blog heißt die Schließung eine routinemäßige Pause, und über die Effekte steht dort nur, dass sie „auf der Geschichte der Bahn aufbauen“. Bei einer Geschichte mit Kanonen und brennender Stadt lässt das ziemlich viel offen.
 
-Am meisten trifft das Familien, denn Pirates hat keine Mindestgröße. Im Boot fährst du rund achteinhalb Minuten durch karibische Hafenstädte des 17. Jahrhunderts, an einer Geisterbucht vorbei, zwischen einem Fort und einer Galeone hindurch, die sich mit Kanonen beschießen, und durch eine brennende Stadt. Captain Jack Sparrow aus den Filmen taucht in drei Szenen auf. Unterwegs geht es einmal gut vier Meter abwärts. Die Fahrt beginnt schon in der Warteschlange, die durch das Castillo del Morro führt, ein Fort nach dem Vorbild der Festung von San Juan in Puerto Rico. Den Ohrwurm „Yo Ho, Yo Ho (A Pirate's Life for Me)“ nimmst du ungefragt mit nach Hause.
+Am meisten trifft das Familien, denn Pirates hat keine Mindestgröße. Im Boot fährst du rund achteinhalb Minuten durch karibische Hafenstädte des 17. Jahrhunderts, an einer Geisterbucht vorbei, zwischen einem Fort und einer Galeone hindurch, die sich mit Kanonen beschießen, und durch eine brennende Stadt. Captain Jack Sparrow aus den Filmen taucht in drei Szenen auf. Unterwegs geht es einmal gut vier Meter abwärts. Angestanden wird im Castillo del Morro, einem Fort nach dem Vorbild der Festung von San Juan in Puerto Rico. Unterwegs singst du beim Piratenlied „Yo Ho, Yo Ho (A Pirate's Life for Me)“ mit.
 
-Auch für einen Urlaub im Herbst 2027 würde ich Pirates nicht fest einplanen, denn „gegen Ende 2027“ reicht bis Silvester. Die Zeit, die du sonst bei den Piraten angestanden hättest, gehört an dem Tag den [Bahnen mit den längsten Warteschlangen](/blog/magic-kingdom-wartezeiten-tipps). Wer im Dezember 2027 noch auf die Piraten hofft, legt den Tag im Magic Kingdom ans Ende der Reise. Wie du Universal und die anderen Disney-Parks davor ordnest, steht im Guide zum [Orlando-Urlaub mit Disney World und Universal](/blog/orlando-urlaub-planen).
+Auch für einen Urlaub im Herbst 2027 würde ich Pirates nicht fest einplanen, denn „gegen Ende 2027“ reicht bis Silvester. Die Zeit aus der Piratenschlange steckst du in eine der [Bahnen mit den längsten Warteschlangen](/blog/magic-kingdom-wartezeiten-tipps). Wer im Dezember 2027 noch auf die Piraten hofft, legt den Tag im Magic Kingdom ans Ende der Reise. Universal und die anderen Disney-Parks kommen dann vorher dran, in der Reihenfolge aus dem Guide zum [Orlando-Urlaub mit Disney World und Universal](/blog/orlando-urlaub-planen).
 
 ```best-days-widget slug=magic-kingdom-park
 
@@ -65,7 +65,7 @@ Auch für einen Urlaub im Herbst 2027 würde ich Pirates nicht fest einplanen, d
 
 ## Piraten in Adventureland gibt es trotzdem
 
-In Adventureland bleibt die Piratenkneipe The Beak and Barrel offen, die am 29. August 2025 eröffnet hat. Gegründet haben sie, so will es die Geschichte, die Rumschmugglerin Captain Meridian „Merry“ Goldwyn und ihr erster Maat Rummy, der dem Barker Bird ähnelt, der früher am Eingang von Pirates saß. Kinder dürfen mit hinein, und zwei der Getränke sind alkoholfrei. Plätze kannst du reservieren. T-Shirt und Plüschpapagei gibt es nebenan im Plaza del Sol Caribe Bazaar.
+In Adventureland bleibt die Piratenkneipe The Beak and Barrel offen, die am 29. August 2025 eröffnet hat. Gegründet haben sie, so will es die Geschichte, die Rumschmugglerin Captain Meridian „Merry“ Goldwyn und ihr erster Maat Rummy, der dem Barker Bird ähnelt, der früher am Eingang von Pirates saß. Kinder dürfen mit hinein, zwei der Getränke sind alkoholfrei, und einen Platz kannst du vorab reservieren. T-Shirt und Plüschpapagei gibt es nebenan im Plaza del Sol Caribe Bazaar.
 
 ## Eine Bahn, die in Florida erst nicht kommen sollte
 
@@ -73,7 +73,7 @@ Die erste Pirates-Bahn hat 1967 im Disneyland in Kalifornien eröffnet. Es war e
 
 Für das Magic Kingdom, das 1971 eröffnete, plante Disney zunächst ohne Piraten, weil eine Karibik-Bahn so nah an der echten Karibik nicht denselben Reiz hätte wie in Kalifornien. Am Bauzaun stand „Opening Christmas 1973“, und am 15. Dezember 1973 legten die ersten Boote ab. 2006 baute Disney Jack Sparrow ein, und 2018 bekam die Bahn eine neue Auktionsszene, in der die Piraten Beute versteigern statt einer Braut.
 
-Disney erzählt die Entstehung von Pirates in der Folge „Storytelling“ der Videoreihe „We Call It Imagineering“ auf dem YouTube-Kanal von Walt Disney Imagineering, später auch auf Disney+. Für das Magic Kingdom zählt aus derselben Folge vor allem Piston Peak National Park, der Cars-Bereich, der auf einem Teil des früheren Frontierland entsteht. Die neue Indiana-Jones-Geschichte „Indiana Jones and the Myth of the Jade Serpent“ kommt darin auch vor.
+Disney erzählt die Entstehung von Pirates in der Folge „Storytelling“ der Videoreihe „We Call It Imagineering“ auf dem YouTube-Kanal von Walt Disney Imagineering, später auch auf Disney+. Dieselbe Folge zeigt auch Piston Peak National Park, den Cars-Bereich, der auf einem Teil des früheren Frontierland entsteht, und die neue Indiana-Jones-Geschichte „Indiana Jones and the Myth of the Jade Serpent“.
 
 Quellen:
 [Pirates of the Caribbean auf disneyworld.disney.go.com](https://disneyworld.disney.go.com/attractions/magic-kingdom/pirates-of-the-caribbean/),
