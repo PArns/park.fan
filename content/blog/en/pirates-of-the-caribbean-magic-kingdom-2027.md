@@ -47,19 +47,19 @@ seo:
 
 The last day to ride is Sunday, 10 January 2027. Disney hasn't announced a reopening date. The attraction page only says the pirates will be back late in the year with "a little bit of new magic". The Parks Blog calls the closure routine maintenance, and this time the routine eats most of 2027.
 
-If you're flying to Orlando between 11 January and the autumn of 2027, plan your Magic Kingdom day without the ride. For a trip in November or December 2027, nobody can say yet whether it'll be back. It keeps running over Christmas and New Year. It misses the year's first Disney After Hours night at Magic Kingdom, on 11 January, by exactly one day.
+Between 11 January and the autumn of 2027, the time you'd have spent with the pirates goes to the other attractions in Adventureland. For a trip in November or December 2027, it isn't known yet whether the ride will be back. If you're there over Christmas and New Year 2026, you can still ride it. A ticket for the year's first Disney After Hours night at Magic Kingdom, on 11 January, gets you in one day too late.
 
-## What Disney is changing, and what the ride is like now
+## New effects and the ride today
 
-According to Disney, the new effects will build on what the ride already has. Dead Man's Cove is a bay that's meant to be haunted. Disney hasn't announced yet whether the characters, the music or the order of the scenes will change.
+Disney says the new effects are being added to the scenes that are already there. Dead Man's Cove is a bay that's meant to be haunted. The announcement doesn't mention new characters or different music.
 
 You board an old boat and sail into the 17th century, when pirates raided the port towns of the Caribbean. Along the way you end up between a fort and a galleon with twelve cannons as they fire at each other. After that a seaside village burns while the pirates sing "Yo Ho, Yo Ho". Captain Jack Sparrow is hiding somewhere in between. There's no height requirement. The ride lasts about eight and a half minutes and has a single drop of 14 feet, a little over four metres.
 
 The same episode of the video series also shows Piston Peak National Park, the "Cars" area going up in a rebuilt section of Frontierland at Magic Kingdom.
 
-## What's open at Magic Kingdom in early 2027, and what isn't
+## Adventureland and the Carousel of Progress in early 2027
 
-A few other Adventureland classics don't have a height requirement either. Jungle Cruise runs into the new year as the Jingle Cruise, in its Christmas decorations, and [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) keep spinning too. You climb 116 steps up into the Swiss Family Treehouse. In Walt Disney's Enchanted Tiki Room, the Audio-Animatronics figures sing while the audience sits in a ring around them.
+Jungle Cruise in Adventureland has no height requirement either and runs into the new year as the Jingle Cruise, in its Christmas decorations, and the same goes for [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare), which keep spinning. You climb 116 steps up into the Swiss Family Treehouse. In Walt Disney's Enchanted Tiki Room you get to sit down, in a ring, and the Audio-Animatronics figures do the singing.
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
 
@@ -71,7 +71,7 @@ Over in Tomorrowland, the Carousel of Progress is still closed in early 2027 as 
 
 The original opened at Disneyland in California on 18 March 1967. It was the last ride Walt Disney helped design himself. He died three months before it opened. When Magic Kingdom opened in 1971, the pirates weren't there. Disney thought back then that a Caribbean theme wouldn't go down as well in Florida as in California, though Orlando is a lot closer to the Caribbean than Anaheim is. The Florida version arrived after all on 15 December 1973.
 
-It's been reworked several times since. In 1997 Disney changed the chase scene, and the pirates have only chased the women for their food ever since. Since 2006, the year of the second film, Jack Sparrow and Barbossa from the movies have been on board. In March 2018 Magic Kingdom got a new auction scene, in which the redhead is a pirate herself and helps the auctioneer.
+In 1997 Disney changed the chase scene, and the pirates have only chased the women for their food ever since. Since 2006, the year of the second film, Jack Sparrow and Barbossa from the movies have been on board. In March 2018 Magic Kingdom got a new auction scene, in which the redhead is a pirate herself and helps the auctioneer.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 

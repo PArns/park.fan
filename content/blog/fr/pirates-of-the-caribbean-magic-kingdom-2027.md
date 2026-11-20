@@ -49,19 +49,19 @@ Au [Magic Kingdom](ref:magic-kingdom-park), [Pirates of the Caribbean](ref:magic
 
 Les bateaux circulent une dernière fois le dimanche 10 janvier 2027. Pour la réouverture, Disney n’a pas encore donné de date. La page de l’attraction se contente d’annoncer le retour des pirates vers la fin de l’année, avec « a little bit of new magic ». Sur le Parks Blog, Disney parle d’un arrêt de maintenance de routine, une routine qui occupe cette fois l’essentiel de l’année.
 
-Si ton vol pour Orlando tombe entre le 11 janvier et l’automne 2027, organise ta journée au Magic Kingdom sans cette attraction. Pour un voyage en novembre ou en décembre 2027, personne ne sait encore si elle aura rouvert. Pendant Noël et le Nouvel An, en revanche, elle tourne encore. Elle rate d’un jour pile la première soirée Disney After Hours de l’année au Magic Kingdom, le 11 janvier.
+Entre le 11 janvier et l’automne 2027, le temps que tu aurais passé avec les pirates revient aux autres attractions d’Adventureland. Pour un voyage en novembre ou en décembre 2027, on ne sait pas encore si les pirates seront de retour. Si tu y es pour Noël et le Nouvel An 2026, tu peux encore embarquer. Avec un billet pour la première soirée Disney After Hours de l’année au Magic Kingdom, le 11 janvier, tu arrives en revanche un jour trop tard.
 
-## Ce que Disney modifie et à quoi ressemble le tour aujourd’hui
+## Les nouveaux effets et le tour aujourd’hui
 
-D’après Disney, les nouveaux effets doivent s’appuyer sur ce que l’attraction possède déjà. Dead Man's Cove, c’est une baie qui serait hantée. Disney n’a pas encore annoncé si les personnages, la musique ou l’ordre des scènes changeront.
+D’après Disney, les nouveaux effets viennent s’ajouter aux scènes existantes. Dead Man's Cove, c’est une baie qui serait hantée. L’annonce ne dit rien de nouveaux personnages ni d’une autre musique.
 
 Tu prends place dans une vieille barque et tu remontes jusqu’au XVIIe siècle, à l’époque où les pirates pillaient les ports des Caraïbes. En chemin, tu te retrouves pris entre un fort et un galion armé de douze canons qui se canardent. Plus loin, un village du bord de mer part en flammes pendant que les pirates entonnent « Yo Ho, Yo Ho ». Le capitaine Jack Sparrow se cache quelque part au milieu de tout ça. Aucune taille minimum n’est exigée. Le tour dure environ huit minutes et demie et ne compte qu’une seule descente, d’un peu plus de quatre mètres (14 pieds).
 
 Dans le même épisode de la série, Disney montre aussi Piston Peak National Park, la zone consacrée aux films « Cars » qui prend forme dans une partie transformée de Frontierland, au Magic Kingdom.
 
-## Ce qui est ouvert au Magic Kingdom début 2027, et ce qui ne l’est pas
+## Adventureland et le Carousel of Progress début 2027
 
-Quelques autres classiques d’Adventureland n’exigent pas de taille minimum non plus. La Jungle Cruise navigue jusqu’à l’année prochaine sous le nom de Jingle Cruise, avec sa décoration de Noël, et [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) continuent eux aussi de tourner. Au Swiss Family Treehouse, il faut grimper 116 marches. Dans le Walt Disney's Enchanted Tiki Room, ce sont des personnages Audio-Animatronics qui chantent pendant que le public est assis en cercle.
+La Jungle Cruise d’Adventureland n’exige pas non plus de taille minimum et navigue jusqu’à l’année prochaine sous le nom de Jingle Cruise, avec sa décoration de Noël, et c’est pareil pour [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare), qui continuent de tourner. Au Swiss Family Treehouse, il faut grimper 116 marches. Dans le Walt Disney's Enchanted Tiki Room, tu as le droit de t’asseoir, en cercle, et ce sont les personnages Audio-Animatronics qui se chargent de chanter.
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
 
@@ -73,7 +73,7 @@ Quelques autres classiques d’Adventureland n’exigent pas de taille minimum n
 
 L’original a ouvert le 18 mars 1967 à Disneyland, en Californie. C’est la dernière attraction que Walt Disney a lui-même aidé à concevoir. Il est mort trois mois avant l’ouverture. Quand le Magic Kingdom a ouvert en 1971, les pirates n’y étaient pas. Chez Disney, on pensait alors qu’un thème caribéen plairait moins en Floride qu’en Californie, alors que la Floride est quand même nettement plus près des Caraïbes. La version floridienne est finalement arrivée le 15 décembre 1973.
 
-Depuis, elle a été remaniée plusieurs fois. En 1997, Disney a modifié la scène de poursuite, et depuis, les pirates ne pourchassent plus les femmes que pour leur chiper à manger. Depuis 2006, l’année du deuxième film, Jack Sparrow et Barbossa sont à bord, tels qu’on les voit au cinéma. En mars 2018, le Magic Kingdom a reçu une nouvelle scène de vente aux enchères, où la femme rousse, devenue pirate, prête main-forte au commissaire-priseur.
+En 1997, Disney a modifié la scène de poursuite, et depuis, les pirates ne pourchassent plus les femmes que pour leur chiper à manger. Depuis 2006, l’année du deuxième film, Jack Sparrow et Barbossa sont à bord, tels qu’on les voit au cinéma. En mars 2018, le Magic Kingdom a reçu une nouvelle scène de vente aux enchères, où la femme rousse, devenue pirate, prête main-forte au commissaire-priseur.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 

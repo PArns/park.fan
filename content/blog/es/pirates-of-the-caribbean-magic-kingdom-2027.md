@@ -48,19 +48,19 @@ seo:
 
 El último día con barcas es el domingo 10 de enero de 2027. Disney todavía no ha dado fecha de reapertura. La página de la atracción solo dice que los piratas regresarán hacia finales de año con «a little bit of new magic». En el Parks Blog, Disney lo llama una pausa de mantenimiento rutinaria, aunque esta rutina se come casi un año entero.
 
-Si viajas a Orlando entre el 11 de enero y el otoño de 2027, organiza el día en Magic Kingdom sin esta atracción. Para un viaje en noviembre o diciembre de 2027 no se sabe aún si ya habrá reabierto. En Navidad y Año Nuevo sigue funcionando. Por un solo día se pierde la primera noche Disney After Hours del año en Magic Kingdom, el 11 de enero.
+Entre el 11 de enero y el otoño de 2027, el tiempo que habrías pasado con los piratas se lo quedan las demás atracciones de Adventureland. Para un viaje en noviembre o diciembre de 2027 no se sabe aún si los piratas habrán vuelto. Si estás allí en Navidad y Año Nuevo de 2026, todavía puedes subir. Con una entrada para la primera noche Disney After Hours del año en Magic Kingdom, el 11 de enero, llegas ya un día tarde.
 
-## Qué cambia Disney y cómo es el recorrido hoy
+## Los efectos nuevos y el recorrido hoy
 
-Según Disney, los efectos nuevos se apoyarán en lo que la atracción ya tiene. Dead Man's Cove es una bahía donde se supone que hay fantasmas. Disney todavía no ha anunciado si cambiarán los personajes, la música o el orden de las escenas.
+Según Disney, los efectos nuevos se suman a las escenas que ya existen. Dead Man's Cove es una bahía donde se supone que hay fantasmas. El anuncio no menciona personajes nuevos ni otra música.
 
 Te subes a una barca vieja y viajas al siglo XVII, cuando los piratas asaltaban los puertos del Caribe. Por el camino quedas en medio de un cañoneo entre un fuerte y un galeón de doce cañones. Después arde un pueblo junto al mar mientras los piratas cantan «Yo Ho, Yo Ho». En algún rincón se esconde el capitán Jack Sparrow. No hay altura mínima. El recorrido dura unos ocho minutos y medio y tiene una sola bajada, de algo más de cuatro metros (14 pies).
 
 En el mismo episodio de la serie, Disney enseña también Piston Peak National Park, la zona dedicada a las películas de «Cars» que se construye en una parte reformada de Frontierland, en Magic Kingdom.
 
-## Qué está abierto en Magic Kingdom a principios de 2027 y qué no
+## Adventureland y el Carousel of Progress a principios de 2027
 
-Algunos otros clásicos de Adventureland tampoco piden altura mínima. La Jungle Cruise navega hasta entrado el año nuevo como Jingle Cruise, con decoración navideña, y [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare) también siguen girando. Al Swiss Family Treehouse se sube por 116 escalones. En Walt Disney's Enchanted Tiki Room cantan figuras Audio-Animatronics mientras el público se sienta alrededor.
+La Jungle Cruise de Adventureland tampoco pide altura mínima y navega hasta entrado el año nuevo como Jingle Cruise, con decoración navideña, y lo mismo vale para [The Magic Carpets of Aladdin](ref:magic-kingdom-park/the-magic-carpets-of-aladdin?bare), que siguen girando. Al Swiss Family Treehouse se sube por 116 escalones. En Walt Disney's Enchanted Tiki Room puedes sentarte, en círculo, y del canto se encargan las figuras Audio-Animatronics.
 
 ```ride-waits-widget park=magic-kingdom-park top=10 columns=land,peak,days highlight=pirates-of-the-caribbean
 
@@ -72,7 +72,7 @@ El Carousel of Progress de Tomorrowland también sigue cerrado a principios de 2
 
 La original se estrenó el 18 de marzo de 1967 en Disneyland, en California. Fue la última atracción en cuyo diseño participó el propio Walt Disney. Murió tres meses antes de la inauguración. Cuando Magic Kingdom abrió en 1971, no tenía piratas. En Disney pensaban entonces que un tema caribeño gustaría menos en Florida que en California, por mucho que el Caribe quede bastante más cerca de Florida. Al final, la versión de Florida llegó el 15 de diciembre de 1973.
 
-Desde entonces la han reformado varias veces. En 1997 Disney cambió la escena de la persecución, y desde ese año los piratas ya solo persiguen a las mujeres para quitarles la comida. Desde 2006, el año de la segunda película, Jack Sparrow y Barbossa van a bordo. En marzo de 2018 Magic Kingdom estrenó una nueva escena de la subasta, en la que la pelirroja, ahora pirata, ayuda al subastador.
+En 1997 Disney cambió la escena de la persecución, y desde ese año los piratas ya solo persiguen a las mujeres para quitarles la comida. Desde 2006, el año de la segunda película, Jack Sparrow y Barbossa van a bordo. En marzo de 2018 Magic Kingdom estrenó una nueva escena de la subasta, en la que la pelirroja, ahora pirata, ayuda al subastador.
 
 [Magic Kingdom](ref:magic-kingdom-park?full)
 
