@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Cedar Point opens on May 1, 2027. Buy the Silver Pass by November 27 and the whole summer through Labor Day costs you $89, what a single day costs otherwise.
+  Cedar Point opens on May 1, 2027. Buy the Silver Pass by November 27 and the whole summer through Labor Day costs you $89, the price of a single day ticket.
 tags:
   - news
   - cedar-point
@@ -23,7 +23,7 @@ rideLinks:
 seo:
   title: 'Cedar Point opens May 1, 2027, with an $89 Silver Pass'
   description: >-
-    Cedar Point opens its 2027 season on May 1. Until November 27 the Silver Pass costs $89, the price of one day ticket. Dates, passes, wait times.
+    Cedar Point opens its 2027 season on May 1. Until November 27 the Silver Pass costs $89, the price of one day ticket. The water park follows on May 29.
   keywords:
     - Cedar Point 2027
     - Cedar Point 2027 season
@@ -41,7 +41,7 @@ seo:
     - Cedar Point crowds
 ---
 
-[Cedar Point](ref:cedar-point) in Sandusky, Ohio, opens its 2027 season on Saturday, May 1. Until November 27, a Silver Pass for the whole summer costs $89, the same as one day ticket. In 2026 the gates didn't open until May 9. For opening day the park names four coasters: [Siren's Curse](ref:cedar-point/sirens-curse), [Millennium Force](ref:cedar-point/millennium-force), [Steel Vengeance](ref:cedar-point/steel-vengeance) and [Top Thrill 2](ref:cedar-point/top-thrill-2).
+[Cedar Point](ref:cedar-point) in Sandusky, Ohio, opens its 2027 season on Saturday, May 1. Until November 27, a Silver Pass for the whole summer costs $89, the same as one day ticket. In 2026 the gates didn't open until May 9. For opening day, Cedar Point has announced four coasters: [Siren's Curse](ref:cedar-point/sirens-curse), [Millennium Force](ref:cedar-point/millennium-force), [Steel Vengeance](ref:cedar-point/steel-vengeance) and [Top Thrill 2](ref:cedar-point/top-thrill-2).
 
 ## When the park is open in 2027
 
@@ -50,11 +50,16 @@ May starts with long weekends only. The park is open on these days:
 - May 1 to 3, Saturday to Monday
 - May 6 to 10, Thursday to Monday
 - May 13 to 17, Thursday to Monday
-- every day from Thursday, May 20
+- every day from Thursday, May 20, through Labor Day, Monday, September 6
 
-Through May 19, it stays closed on Tuesdays and Wednesdays. From then on it's open daily until Labor Day, Monday, September 6. After that Cedar Point runs Thursday or Friday to Sunday only: in September on the 10th to 12th, 16th to 19th, 23rd to 26th and on the 30th, and in October from Thursday to Sunday through the 31st. In May the park mostly opens from 10am to 8pm, in July mostly until 10pm and on some nights until 11pm. In October most days run until midnight. Cedar Point Shores hasn't published its hours yet.
+After Labor Day, Cedar Point only opens Thursday or Friday to Sunday:
 
-The [Cedar Point Shores](ref:cedar-point-shores) water park opens four weeks later, on Saturday, May 29. It has a wave pool, a lazy river and Lemmy's Lagoon for kids.
+- in September on the 10th to 12th, 16th to 19th, 23rd to 26th and on the 30th
+- in October from Thursday to Sunday through the 31st
+
+In May the park mostly opens from 10am to 8pm, in July mostly until 10pm and on some nights until 11pm. In October most days run until midnight.
+
+The [Cedar Point Shores](ref:cedar-point-shores) water park opens four weeks later, on Saturday, May 29. It has a wave pool, a lazy river and Lemmy's Lagoon for kids. Cedar Point Shores hasn't published its hours yet.
 
 ## Events from June to October
 
@@ -66,9 +71,9 @@ Cedar Point lists every date as subject to change:
 - Happy Friar's Fresh-Cut Fries Fest, September 10 to 12
 - HalloWeekends, on selected days from September 16 to October 31
 
-The fries festival's name doesn't leave much to guess. HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th anniversary under the motto "30 Years of Fears". Daytime belongs to families, with trick-or-treating, pumpkins and hay bale mazes; after dark come the mazes, scare zones and shows. Cedar Point hasn't announced which houses it will run, only that "some familiar legends" may come back. How 2026 went, with the Diablo maze and the Haunted Attractions Pass, is in our post on [HalloWeekends 2026](/blog/cedar-point-halloweekends-2026).
+The fries festival's name doesn't leave much to guess. HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th anniversary under the motto "30 Years of Fears". During the day, families get trick-or-treating, pumpkins and hay bale mazes. After dark the haunted mazes and scare zones open, and there are shows. Cedar Point hasn't announced which houses it will run, only that "some familiar legends" may come back. In 2026 the [Diablo maze](/blog/cedar-point-halloweekends-2026) was new.
 
-## What the Silver Pass costs and covers
+## What the passes cost for 2027
 
 | Offer                        | Price                 | Valid for                               |
 | ---------------------------- | --------------------- | --------------------------------------- |
@@ -80,15 +85,21 @@ The fries festival's name doesn't leave much to guess. HalloWeekends has been ru
 
 Every price adds a processing fee of up to $9.99, plus tax.
 
-The Silver Pass gets you in on every operating day through September 6, with no blockout dates, and parking in General Parking is free. You get 10% off food and souvenirs, and you can buy cheaper Bring-a-Friend tickets. It's good at Cedar Point only. Cedar Point Shores isn't included, and neither is HalloWeekends, so for the fall you either pay extra or go straight for Gold. If you were planning one summer day in Sandusky anyway, the Silver Pass throws in every other visit until September for free.
+Through September 6 the Silver Pass has no blockout dates, and parking in General Parking is free. You get 10% off food and souvenirs, and you can buy cheaper Bring-a-Friend tickets. It's only good at Cedar Point, not at Cedar Point Shores and not for HalloWeekends. For the fall you either pay extra or go straight for Gold.
 
-Buy the Silver Pass by November 30 and you also get a free Bring-a-Friend ticket, good through May 31, 2027. The $89 price, though, only lasts until Friday, November 27. Six Flags hasn't said what the pass costs from November 28 to 30. If you want both, buy by the 27th.
+Buy the Silver Pass by November 30 and you also get a free Bring-a-Friend ticket, good through May 31, 2027. The $89, though, only applies until Friday the 27th. Six Flags hasn't published what the pass costs from November 28 to 30. If you want both, buy by the 27th.
 
 ## Gold, Prestige and Fast Lane
 
-The Gold Pass is valid for the rest of 2026 and then for 2027, at every Six Flags park in the Midwest, Cedar Point Shores and Kings Island among them. HalloWeekends is included, along with parking and 10% off. In 2026 you still needed the Haunted Attractions Pass for the haunted houses, Gold or not.
+The Gold Pass is valid for the rest of 2026 and then for 2027, at Cedar Point Shores and Kings Island too. HalloWeekends is included, along with parking and 10% off. In 2026 the haunted houses still took a Haunted Attractions Pass on top, even with Gold.
 
-Prestige covers every Six Flags park in North America. New this time: free fountain drinks on every visit. On top of that come Preferred Parking while spaces last, two Bring-a-Friend tickets a year, 15% off, a VIP entrance and a VIP lounge, and one Fast Lane ride per visit.
+The Prestige Pass now comes with free fountain drinks on every visit. It also includes:
+
+- Preferred Parking while spaces last
+- two Bring-a-Friend tickets a year
+- 15% off
+- a VIP entrance and a VIP lounge
+- one Fast Lane ride per visit
 
 The one-day Fast Lane isn't on sale yet. The All Season Fast Lane costs $1,999, a bit more than 22 Silver Passes.
 
@@ -98,19 +109,21 @@ The one-day Fast Lane isn't on sale yet. The All Season Fast Lane costs $1,999, 
 
 ```
 
-## Three hotel nights, the third one free
+## Three hotel nights for the price of two
 
-For stays from May 1 to June 30, 2027, you book three nights and pay for two on selected dates. The deal covers Hotel Breakers, Castaway Bay, Sawmill Creek, the Express Hotel and Lighthouse Point, and you have to book by November 30, 2026. It saves you up to $359.
+For stays from May 1 to June 30, 2027, you pay for only two of three nights on selected dates, at Hotel Breakers, Castaway Bay, Sawmill Creek, the Express Hotel and Lighthouse Point. You have to book by November 30, 2026. It saves you up to $359.
 
-## No new coaster for 2027
+You'll find the park at 1 Cedar Point Drive in Sandusky, on the shore of Lake Erie.
 
-Cedar Point opened in 1870. Of the amusement parks still operating in the US, only Lake Compounce is older. Until July 1, 2024 it was Cedar Fair's flagship; since the merger it's been part of Six Flags. In May 2025 the park had 18 roller coasters.
+## On Lake Erie since 1870
 
-Cedar Point hasn't announced a new ride for 2027. What other parks are building for 2027 is in our [roundup of new attractions for 2027](/blog/new-theme-park-attractions-2027).
+Cedar Point hasn't announced a new ride for 2027.
 
 In 2000, Millennium Force became the first complete-circuit coaster taller than 300 feet (91 metres). Rocky Mountain Construction rebuilt the wooden Mean Streak into Steel Vengeance in 2018. Top Thrill 2 stands 420 feet (128 metres) tall and launches its trains to 120 mph (193 km/h). Siren's Curse, a Vekoma tilt coaster, opened in 2025 and is the youngest of the four.
 
-You'll find the park at 1 Cedar Point Drive in Sandusky, on the shore of Lake Erie.
+Cedar Point opened in 1870. Of the amusement parks still operating in the US, only Lake Compounce is older. Until July 1, 2024 it was Cedar Fair's flagship; since the merger it's been part of Six Flags. In May 2025 the park had 18 roller coasters.
+
+Other parks' new rides for 2027 are in our [roundup of new attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 [Cedar Point](ref:cedar-point?full)
 

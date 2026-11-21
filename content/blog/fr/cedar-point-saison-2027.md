@@ -21,9 +21,9 @@ parkLinks:
 rideLinks:
   - cedar-point/*
 seo:
-  title: 'Cedar Point 2027 : ouverture le 1er mai, Silver Pass à 89 $'
+  title: 'Cedar Point ouvre le 1er mai 2027, Silver Pass à 89 $'
   description: >-
-    Cedar Point ouvre sa saison 2027 le 1er mai. Jusqu’au 27 novembre, le Silver Pass coûte 89 $, le prix d’un billet. Dates, pass, parc aquatique.
+    Cedar Point ouvre sa saison 2027 le 1er mai. Jusqu’au 27 novembre, le Silver Pass coûte 89 $, le prix d’un billet. Le parc aquatique suit le 29 mai.
   keywords:
     - Cedar Point 2027
     - Cedar Point saison 2027
@@ -40,7 +40,7 @@ seo:
     - how busy is Cedar Point today
 ---
 
-[Cedar Point](ref:cedar-point), à Sandusky dans l’Ohio, ouvre sa saison 2027 le samedi 1er mai. Jusqu’au 27 novembre, le Silver Pass pour tout l’été coûte 89 dollars, exactement le prix d’un billet pour une journée. En 2026, le parc n’avait ouvert que le 9 mai. Pour l’ouverture, il cite quatre montagnes russes : [Siren's Curse](ref:cedar-point/sirens-curse), [Millennium Force](ref:cedar-point/millennium-force), [Steel Vengeance](ref:cedar-point/steel-vengeance) et [Top Thrill 2](ref:cedar-point/top-thrill-2).
+[Cedar Point](ref:cedar-point), à Sandusky dans l’Ohio, ouvre sa saison 2027 le samedi 1er mai. Jusqu’au 27 novembre, le Silver Pass pour tout l’été coûte 89 dollars, exactement le prix d’un billet pour une journée. En 2026, le parc n’avait ouvert que le 9 mai. Pour le jour d’ouverture, Cedar Point annonce quatre montagnes russes : [Siren's Curse](ref:cedar-point/sirens-curse), [Millennium Force](ref:cedar-point/millennium-force), [Steel Vengeance](ref:cedar-point/steel-vengeance) et [Top Thrill 2](ref:cedar-point/top-thrill-2).
 
 ## Les jours d’ouverture en 2027
 
@@ -49,11 +49,16 @@ En mai, Cedar Point commence par de longs week-ends. Le parc est ouvert :
 - du samedi 1er au lundi 3 mai
 - du jeudi 6 au lundi 10 mai
 - du jeudi 13 au lundi 17 mai
-- tous les jours à partir du jeudi 20 mai
+- tous les jours du jeudi 20 mai au Labor Day, le lundi 6 septembre
 
-Jusqu’au 19 mai inclus, il reste fermé le mardi et le mercredi. Ensuite, il ouvre chaque jour jusqu’au Labor Day, le lundi 6 septembre. Après cette date, on ne vient plus que du jeudi ou du vendredi au dimanche : en septembre les 10 à 12, 16 à 19 et 23 à 26, puis le 30, et en octobre du jeudi au dimanche jusqu’au 31. En mai, le parc ouvre le plus souvent de 10 h à 20 h ; en juillet, en général jusqu’à 22 h, certains soirs jusqu’à 23 h. En octobre, la plupart des jours, il ferme à minuit. Les horaires de Cedar Point Shores ne sont pas encore publiés.
+Après le Labor Day, le parc n’ouvre plus que du jeudi ou du vendredi au dimanche :
 
-Le parc aquatique [Cedar Point Shores](ref:cedar-point-shores) ouvre quatre semaines plus tard, le samedi 29 mai. On y trouve une piscine à vagues, une rivière lente et l’espace pour enfants Lemmy's Lagoon.
+- en septembre les 10 à 12, 16 à 19 et 23 à 26, puis le 30
+- en octobre du jeudi au dimanche jusqu’au 31
+
+En mai, le parc ouvre le plus souvent de 10 h à 20 h, en juillet en général jusqu’à 22 h et certains soirs jusqu’à 23 h. En octobre, la plupart des jours, il ferme à minuit.
+
+Le parc aquatique [Cedar Point Shores](ref:cedar-point-shores) ouvre quatre semaines plus tard, le samedi 29 mai. On y trouve une piscine à vagues, une rivière lente et l’espace pour enfants Lemmy's Lagoon. Cedar Point Shores n’a pas encore publié ses horaires.
 
 ## Les événements, de juin à octobre
 
@@ -65,9 +70,9 @@ Cedar Point annonce toutes ces dates sous réserve :
 - Happy Friar's Fresh-Cut Fries Fest, du 10 au 12 septembre
 - HalloWeekends, certains jours du 16 septembre au 31 octobre
 
-Le festival des frites ne laisse pas beaucoup de suspense sur le menu. HalloWeekends existe depuis 1997 et fête en 2027 son 30th Anniversary, avec le thème « 30 Years of Fears ». La journée appartient aux familles, avec Trick-or-Treat, citrouilles et labyrinthes de bottes de foin, et le soir arrivent les mazes, les scare zones et les spectacles. Cedar Point n’a pas encore annoncé quelles maisons hantées seront de la partie, seulement que « some familiar legends » pourraient revenir. L’édition 2026, avec le labyrinthe Diablo et le Haunted Attractions Pass, est racontée dans notre article sur les [HalloWeekends 2026](/blog/cedar-point-halloweekends-2026).
+Le festival des frites ne laisse pas beaucoup de suspense sur le menu. HalloWeekends existe depuis 1997 et fête ses 30 ans en 2027, avec le thème « 30 Years of Fears ». En journée, les familles ont droit au Trick-or-Treat, aux citrouilles et aux labyrinthes de bottes de foin. Le soir, les mazes d’horreur et les scare zones ouvrent, et des spectacles s’y ajoutent. Cedar Point n’a pas encore annoncé quelles maisons hantées seront de la partie, seulement que quelques personnages connus des années précédentes pourraient réapparaître. En 2026, la nouveauté était le [labyrinthe Diablo](/blog/cedar-point-halloweekends-2026).
 
-## Ce que coûte le Silver Pass et ce qu’il comprend
+## Ce que coûtent les pass pour 2027
 
 | Offre                        | Prix                        | Valable                                     |
 | ---------------------------- | --------------------------- | ------------------------------------------- |
@@ -79,15 +84,21 @@ Le festival des frites ne laisse pas beaucoup de suspense sur le menu. HalloWeek
 
 Chaque prix s’entend hors taxes, avec en plus des frais de dossier pouvant aller jusqu’à 9,99 $.
 
-Le Silver Pass t’ouvre le parc chaque jour d’ouverture jusqu’au 6 septembre, sans date d’exclusion, et le General Parking est gratuit. Tu as 10 % de réduction sur les repas et les souvenirs, et tu peux acheter pour tes amis des billets Bring-a-Friend moins chers. Il n’est valable qu’à Cedar Point : ni Cedar Point Shores ni HalloWeekends ne sont compris. Pour l’automne, tu paies donc en plus, ou tu prends directement le Gold. Si tu comptais de toute façon passer une journée à Sandusky cet été, le Silver Pass t’offre toutes les visites suivantes jusqu’en septembre.
+Le Silver Pass te donne accès au parc sans aucune date d’exclusion jusqu’au 6 septembre, et le General Parking est gratuit. Tu as 10 % de réduction sur les repas et les souvenirs, et tu peux acheter pour tes amis des billets Bring-a-Friend moins chers. Il n’est valable qu’à Cedar Point, sans Cedar Point Shores ni HalloWeekends. Pour l’automne, tu paies donc en plus, ou tu prends directement le Gold.
 
-Pour un Silver Pass acheté d’ici au 30 novembre, un billet Bring-a-Friend est offert, à utiliser avant le 31 mai 2027. Le prix de 89 dollars, lui, ne tient que jusqu’au vendredi 27 novembre. Six Flags ne dit pas combien coûtera le pass du 28 au 30 novembre. Pour avoir les deux à coup sûr, achète avant le 27.
+Pour un Silver Pass acheté au plus tard le 30 novembre, un billet Bring-a-Friend est offert, à utiliser jusqu’au 31 mai 2027. Les 89 dollars, eux, ne valent que jusqu’au vendredi 27. Six Flags n’a pas publié le prix du pass du 28 au 30 novembre. Pour avoir les deux à coup sûr, achète au plus tard le 27.
 
 ## Gold, Prestige et Fast Lane
 
-Le Gold Pass vaut déjà pour la fin de 2026, puis pour 2027, dans tous les parcs Six Flags du Midwest, dont Cedar Point Shores et Kings Island. HalloWeekends est compris, ainsi que le parking et 10 % de réduction. En 2026, il fallait malgré tout le Haunted Attractions Pass pour entrer dans les maisons hantées.
+Le Gold Pass vaut déjà pour la fin de 2026, puis pour 2027, y compris à Cedar Point Shores et à Kings Island. HalloWeekends est compris, ainsi que le parking et 10 % de réduction. En 2026, même avec le Gold Pass, il fallait en plus le Haunted Attractions Pass pour entrer dans les maisons hantées.
 
-Le Prestige est valable dans tous les parcs Six Flags d’Amérique du Nord. Nouveauté : les sodas à la pression sont gratuits à chaque visite. S’y ajoutent le Preferred Parking dans la limite des places, deux billets Bring-a-Friend par an, 15 % de réduction, une entrée et un espace VIP et, à chaque visite, un passage unique en Fast Lane.
+Le Prestige Pass donne désormais droit aux sodas à la pression gratuits à chaque visite. Il comprend aussi :
+
+- le Preferred Parking dans la limite des places
+- deux billets Bring-a-Friend par an
+- 15 % de réduction
+- une entrée VIP et un espace VIP
+- un passage en Fast Lane par visite
 
 La Fast Lane pour une journée n’est pas encore en vente. La All Season Fast Lane coûte 1 999 $, de quoi s’offrir un peu plus de 22 Silver Pass.
 
@@ -97,19 +108,21 @@ La Fast Lane pour une journée n’est pas encore en vente. La All Season Fast L
 
 ```
 
-## Trois nuits à l’hôtel, la troisième offerte
+## Trois nuits d’hôtel pour le prix de deux
 
-Pour un séjour entre le 1er mai et le 30 juin 2027, certaines nuits, on réserve trois nuits et on en paie deux. L’offre vaut au Hotel Breakers, à Castaway Bay, à Sawmill Creek, à l’Express Hotel et à Lighthouse Point, pour une réservation faite avant le 30 novembre 2026. L’économie peut atteindre 359 $.
+Pour un séjour entre le 1er mai et le 30 juin 2027, à certaines dates, on réserve trois nuits et on n’en paie que deux, au Hotel Breakers, à Castaway Bay, à Sawmill Creek, à l’Express Hotel et à Lighthouse Point. L’offre vaut pour une réservation faite au plus tard le 30 novembre 2026. L’économie peut atteindre 359 $.
 
-## Pas de nouvelles montagnes russes pour 2027
+L’adresse : 1 Cedar Point Drive, Sandusky, sur la rive du lac Érié.
+
+## Au bord du lac Érié depuis 1870
+
+Cedar Point n’a annoncé aucune nouvelle montagne russe pour 2027.
+
+En 2000, Millennium Force a été la première montagne russe à circuit complet à dépasser 300 pieds (91 mètres). Steel Vengeance est l’ancienne montagne russe en bois Mean Streak, transformée en 2018 par Rocky Mountain Construction. Top Thrill 2 culmine à 420 pieds (128 mètres) et lance ses trains à 120 mph (193 km/h). Siren's Curse, un tilt coaster de Vekoma, est depuis 2025 la plus récente des quatre.
 
 Cedar Point a ouvert en 1870. Parmi les parcs d’attractions américains encore en activité, seul Lake Compounce est plus ancien. Jusqu’au 1er juillet 2024, c’était le vaisseau amiral de Cedar Fair ; depuis la fusion, il appartient à Six Flags. En mai 2025, le parc comptait 18 montagnes russes.
 
-Cedar Point n’a annoncé aucun nouveau coaster pour 2027. Ce que les autres parcs construisent pour 2027 se trouve dans notre [tour d’horizon des nouveautés 2027](/blog/nouveautes-parcs-attractions-2027).
-
-Millennium Force a été en 2000 la première montagne russe complète à dépasser 300 pieds (91 mètres). Steel Vengeance est l’ancien coaster en bois Mean Streak, transformé en 2018 par Rocky Mountain Construction. Top Thrill 2 culmine à 420 pieds (128 mètres) et lance ses trains à 193 km/h (120 mph). Siren's Curse, un tilt coaster de Vekoma, est depuis 2025 la plus récente des quatre.
-
-L’adresse : 1 Cedar Point Drive, Sandusky, au bord du lac Érié.
+Les nouveautés des autres parcs sont dans notre [tour d’horizon de 2027](/blog/nouveautes-parcs-attractions-2027).
 
 [Cedar Point](ref:cedar-point?full)
 

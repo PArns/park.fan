@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Cedar Point gaat in 2027 al op 1 mei open. Koop je de Silver Pass uiterlijk 27 november, dan kost de hele zomer tot Labor Day je 89 dollar, net zoveel als één dag.
+  Cedar Point gaat in 2027 al op 1 mei open. Koop je de Silver Pass uiterlijk 27 november, dan betaal je voor de hele zomer tot Labor Day 89 dollar, net zoveel als voor één dag.
 tags:
   - nieuws
   - cedar-point
@@ -21,9 +21,9 @@ parkLinks:
 rideLinks:
   - cedar-point/*
 seo:
-  title: 'Cedar Point 2027: open vanaf 1 mei, Silver Pass 89 dollar'
+  title: 'Cedar Point opent op 1 mei 2027, Silver Pass kost 89 dollar'
   description: >-
-    Cedar Point opent het seizoen 2027 op 1 mei. Tot 27 november kost de Silver Pass 89 dollar, net zoveel als een dagticket. Data, passen, waterpark.
+    Cedar Point opent het seizoen 2027 op 1 mei. Tot 27 november kost de Silver Pass 89 dollar, net zoveel als een dagticket. Het waterpark volgt op 29 mei.
   keywords:
     - Cedar Point 2027
     - Cedar Point seizoen 2027
@@ -40,7 +40,7 @@ seo:
     - how busy is Cedar Point today
 ---
 
-[Cedar Point](ref:cedar-point) in Sandusky, Ohio, begint het seizoen 2027 op zaterdag 1 mei. Tot 27 november kost de Silver Pass, waarmee je de hele zomer binnenkomt, 89 dollar, net zoveel als één los dagticket. In 2026 ging het park pas op 9 mei open. Voor de opening noemt Cedar Point vier achtbanen: [Siren's Curse](ref:cedar-point/sirens-curse), [Millennium Force](ref:cedar-point/millennium-force), [Steel Vengeance](ref:cedar-point/steel-vengeance) en [Top Thrill 2](ref:cedar-point/top-thrill-2).
+[Cedar Point](ref:cedar-point) in Sandusky, Ohio, begint het seizoen 2027 op zaterdag 1 mei. Tot 27 november kost de Silver Pass voor de hele zomer 89 dollar, net zoveel als één los dagticket. In 2026 ging het park pas op 9 mei open. Voor de openingsdag kondigt Cedar Point vier achtbanen aan: [Siren's Curse](ref:cedar-point/sirens-curse), [Millennium Force](ref:cedar-point/millennium-force), [Steel Vengeance](ref:cedar-point/steel-vengeance) en [Top Thrill 2](ref:cedar-point/top-thrill-2).
 
 ## Wanneer het park in 2027 open is
 
@@ -49,11 +49,16 @@ In mei houdt Cedar Point het eerst bij lange weekenden. Open is het op deze dage
 - 1 tot en met 3 mei, zaterdag tot en met maandag
 - 6 tot en met 10 mei, donderdag tot en met maandag
 - 13 tot en met 17 mei, donderdag tot en met maandag
-- vanaf donderdag 20 mei elke dag
+- vanaf donderdag 20 mei elke dag tot Labor Day, maandag 6 september
 
-Tot en met 19 mei blijft het park op dinsdag en woensdag dicht. Daarna kun je er elke dag terecht tot Labor Day, maandag 6 september. Vanaf dan gaat Cedar Point alleen nog van donderdag of vrijdag tot en met zondag open: in september op 10 tot en met 12, 16 tot en met 19, 23 tot en met 26 en op 30 september, in oktober van donderdag tot en met zondag tot 31 oktober. In mei is het park meestal van 10 tot 20 uur open, in juli meestal tot 22 uur en op sommige avonden tot 23 uur. In oktober blijft het de meeste dagen open tot middernacht. De tijden van Cedar Point Shores zijn nog niet bekend.
+Na Labor Day gaat Cedar Point alleen nog van donderdag of vrijdag tot en met zondag open:
 
-Waterpark [Cedar Point Shores](ref:cedar-point-shores) volgt vier weken later, op zaterdag 29 mei. Daar vind je een golfslagbad, een lazy river en het kindergebied Lemmy's Lagoon.
+- in september op 10 tot en met 12, 16 tot en met 19, 23 tot en met 26 en op 30 september
+- in oktober van donderdag tot en met zondag tot 31 oktober
+
+In mei is het park meestal van 10 tot 20 uur open, in juli meestal tot 22 uur en op sommige avonden tot 23 uur. In oktober blijft het de meeste dagen open tot middernacht.
+
+Waterpark [Cedar Point Shores](ref:cedar-point-shores) volgt vier weken later, op zaterdag 29 mei. Daar vind je een golfslagbad, een lazy river en het kindergebied Lemmy's Lagoon. Openingstijden heeft Cedar Point Shores nog niet gepubliceerd.
 
 ## Events van juni tot oktober
 
@@ -65,9 +70,9 @@ Cedar Point houdt bij alle data een slag om de arm:
 - Happy Friar's Fresh-Cut Fries Fest, 10 tot en met 12 september
 - HalloWeekends, op bepaalde dagen van 16 september tot en met 31 oktober
 
-Wat er bij het Fries Fest in de bakjes zit, hoef je na die naam niet meer te raden. HalloWeekends bestaat sinds 1997 en draait in 2027 als 30th Anniversary onder het motto “30 Years of Fears”. Overdag zijn de gezinnen aan de beurt, met trick-or-treat, pompoenen en doolhoven van strobalen, ’s avonds komen de mazes, scare zones en shows. Welke huizen er komen, heeft Cedar Point nog niet bekendgemaakt, alleen dat “some familiar legends” zouden kunnen terugkeren. Hoe het in 2026 ging, met het Diablo-doolhof en de Haunted Attractions Pass, lees je in ons stuk over [HalloWeekends 2026](/blog/cedar-point-halloweekends-2026).
+Wat er bij het Fries Fest in de bakjes zit, hoef je na die naam niet meer te raden. HalloWeekends bestaat sinds 1997 en viert in 2027 zijn dertigjarig jubileum onder het motto “30 Years of Fears”. Overdag zijn er voor gezinnen trick-or-treat, pompoenen en doolhoven van strobalen. ’s Avonds gaan de horrormazes en scare zones open, en er zijn shows. Welke huizen er komen, heeft Cedar Point nog niet bekendgemaakt, alleen dat er misschien een paar bekende figuren uit eerdere jaren opduiken. In 2026 was het [Diablo-doolhof](/blog/cedar-point-halloweekends-2026) nieuw.
 
-## Wat de Silver Pass kost en waar hij geldt
+## Wat de passen voor 2027 kosten
 
 | Aanbod                      | Prijs                             | Geldt voor                              |
 | --------------------------- | --------------------------------- | --------------------------------------- |
@@ -79,15 +84,21 @@ Wat er bij het Fries Fest in de bakjes zit, hoef je na die naam niet meer te rad
 
 Op elke prijs komen nog tot 9,99 dollar administratiekosten en de belasting.
 
-Met de Silver Pass kom je tot 6 september op elke openingsdag binnen, zonder uitgesloten dagen, en parkeer je gratis op General Parking. Op eten en souvenirs krijg je 10 procent korting, en voor vrienden koop je goedkopere Bring-a-Friend-tickets. De pas geldt alleen in Cedar Point. Cedar Point Shores zit er niet bij, en HalloWeekends evenmin. Wil je in de herfst terug, dan betaal je bij of neem je meteen Gold. Was je toch al van plan om deze zomer een dag naar Sandusky te gaan, dan krijg je met de Silver Pass elk volgend bezoek tot september er gratis bij.
+Tot 6 september heeft de Silver Pass geen uitgesloten dagen, en op General Parking parkeer je gratis. Op eten en souvenirs krijg je 10 procent korting, en voor vrienden koop je goedkopere Bring-a-Friend-tickets. De pas geldt alleen in Cedar Point, zonder Cedar Point Shores en zonder HalloWeekends. Wil je in de herfst terug, dan betaal je bij of neem je meteen Gold.
 
-Koop je de Silver Pass uiterlijk 30 november, dan krijg je er een gratis Bring-a-Friend-ticket bij, in te wisselen tot en met 31 mei 2027. De prijs van 89 dollar geldt alleen tot en met vrijdag 27 november. Wat de pas van 28 tot en met 30 november kost, noemt Six Flags niet. Wil je allebei zeker hebben, koop dan uiterlijk op de 27e.
+Koop je de Silver Pass uiterlijk 30 november, dan krijg je er een gratis Bring-a-Friend-ticket bij, in te wisselen tot en met 31 mei 2027. De 89 dollar geldt alleen tot en met vrijdag de 27e. Wat de pas van 28 tot en met 30 november kost, heeft Six Flags niet gepubliceerd. Wil je allebei zeker hebben, koop dan uiterlijk op de 27e.
 
 ## Gold, Prestige en Fast Lane
 
-De Gold Pass geldt al voor de rest van 2026 en daarna voor 2027, in alle Six Flags-parken in het Middenwesten, waaronder Cedar Point Shores en Kings Island. HalloWeekends zit erbij, net als parkeren en 10 procent korting. In 2026 had je voor de horrorhuizen alsnog de Haunted Attractions Pass nodig.
+De Gold Pass geldt al voor de rest van 2026 en daarna voor 2027, ook in Cedar Point Shores en Kings Island. HalloWeekends zit erbij, net als parkeren en 10 procent korting. Voor de horrorhuizen had je in 2026 ook met de Gold Pass nog een Haunted Attractions Pass nodig.
 
-Prestige geldt in alle Six Flags-parken in Noord-Amerika. Nieuw is gratis frisdrank van de tap bij elk bezoek. Verder krijg je Preferred Parking zolang er plek is, twee Bring-a-Friend-tickets per jaar, 15 procent korting, een VIP-ingang en een VIP-ruimte en bij elk bezoek één keer een rit via Fast Lane.
+Nieuw bij de Prestige Pass is gratis frisdrank van de tap bij elk bezoek. Verder zit erin:
+
+- Preferred Parking zolang er plek is
+- twee Bring-a-Friend-tickets per jaar
+- 15 procent korting
+- een VIP-ingang en een VIP-ruimte
+- één rit via Fast Lane per bezoek
 
 Fast Lane voor één dag is nog niet te koop. De All Season Fast Lane kost 1.999 dollar, het bedrag van ruim 22 Silver Passes.
 
@@ -97,19 +108,21 @@ Fast Lane voor één dag is nog niet te koop. De All Season Fast Lane kost 1.999
 
 ```
 
-## Drie nachten in het hotel, de derde gratis
+## Drie hotelnachten voor de prijs van twee
 
-Voor verblijven van 1 mei tot en met 30 juni 2027 boek je op bepaalde nachten drie nachten en betaal je er twee. Dat geldt in Hotel Breakers, Castaway Bay, Sawmill Creek, het Express Hotel en Lighthouse Point, en je moet uiterlijk 30 november 2026 boeken. Je bespaart er tot 359 dollar mee.
-
-## Zonder nieuwe achtbaan naar 2027
-
-Cedar Point opende in 1870 en is na Lake Compounce het op een na oudste pretpark van de VS dat nog in bedrijf is. Tot 1 juli 2024 was het het vlaggenschip van Cedar Fair, sinds de fusie hoort het bij Six Flags. In mei 2025 stonden er 18 achtbanen in het park.
-
-Een nieuwe baan voor 2027 heeft Cedar Point niet aangekondigd. Wat andere parken in 2027 bouwen, zie je in ons [overzicht van de nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
-
-Millennium Force was in 2000 de eerste complete achtbaan boven de 300 voet (91 meter). Steel Vengeance is in 2018 door Rocky Mountain Construction omgebouwd uit de houten achtbaan Mean Streak. Top Thrill 2 is 128 meter (420 voet) hoog en versnelt de treinen tot 193 km/u (120 mph). Siren's Curse, een tilt coaster van Vekoma, is sinds 2025 de jongste van de vier.
+Voor verblijven van 1 mei tot en met 30 juni 2027 betaal je op bepaalde data maar twee van de drie nachten, in Hotel Breakers, Castaway Bay, Sawmill Creek, het Express Hotel en Lighthouse Point. Boeken moet uiterlijk 30 november 2026. Je bespaart er tot 359 dollar mee.
 
 Het adres is 1 Cedar Point Drive in Sandusky, aan de oever van het Eriemeer.
+
+## Sinds 1870 aan het Eriemeer
+
+Een nieuwe baan voor 2027 heeft Cedar Point niet aangekondigd.
+
+Millennium Force was in 2000 de eerste achtbaan met een volledig circuit boven de 300 voet (91 meter). Steel Vengeance is in 2018 door Rocky Mountain Construction omgebouwd uit de houten achtbaan Mean Streak. Top Thrill 2 is 420 voet (128 meter) hoog en versnelt de treinen tot 120 mph (193 km/u). Siren's Curse, een tilt coaster van Vekoma, is sinds 2025 de jongste van de vier.
+
+Cedar Point opende in 1870 en is na Lake Compounce het op een na oudste pretpark van de VS dat nog in bedrijf is. Tot 1 juli 2024 was Cedar Point het vlaggenschip van Cedar Fair, sinds de fusie hoort het bij Six Flags. In mei 2025 stonden er 18 achtbanen in het park.
+
+De nieuwe attracties van andere parken staan in ons [overzicht van 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 [Cedar Point](ref:cedar-point?full)
 
