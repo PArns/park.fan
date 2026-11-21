@@ -36,11 +36,11 @@ seo:
     - Trace Adkins Busch Gardens
 ---
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) presentó el 19 de noviembre el programa del Food & Wine Music Festival 2027. Del 20 de febrero al 23 de mayo hay concierto en el Festival Field Stage todos los sábados del festival y la mayoría de los domingos. El primero lo da el cantante de country Trace Adkins. Cada actuación dura al menos una hora, y solo pagas aparte si quieres un sitio reservado delante del escenario. Busch Gardens presenta sus más de 30 conciertos en Tampa y Williamsburg como la serie más grande de su historia.
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) presentó el 19 de noviembre el programa del Food & Wine Music Festival 2027. Del 20 de febrero al 23 de mayo hay concierto en el Festival Field Stage todos los sábados del festival y la mayoría de los domingos. El primero lo da el cantante de country Trace Adkins. Cada actuación dura al menos una hora, y el concierto en sí solo te cuesta un extra si quieres un sitio reservado delante del escenario. En 2026 los dos parques Busch Gardens anunciaron algo más de 25 conciertos en total; en 2027 son más de 30 entre Tampa y Williamsburg.
 
 ## Días y horarios del festival
 
-Los fines de semana del festival, los puestos abren a las 12:00 y siguen abiertos hasta el cierre del parque. La comida y la bebida se pagan aparte, y el alcohol solo se sirve a partir de los 21 años. El parque habla de más de 100 platos y bebidas, más de lo que cabe en el estómago en una noche de concierto.
+Los fines de semana del festival, los puestos abren a las 12:00 y siguen abiertos hasta el cierre del parque. La comida y la bebida se pagan aparte, y el alcohol solo se sirve a partir de los 21 años. El parque habla de más de 100 platos y bebidas, y como los puestos abren a las 12:00 y los conciertos del sábado suelen empezar a las 19:00, tienes siete horas para recorrer la carta.
 
 El Domingo de Resurrección (28 de marzo) y el Día de la Madre estadounidense (9 de mayo) no hay concierto. Se toca también con lluvia, aunque una tormenta puede obligar a suspender una actuación.
 
@@ -50,7 +50,7 @@ El Domingo de Resurrección (28 de marzo) y el Día de la Madre estadounidense (
 
 ## Quién toca cada día
 
-El sábado 24 de abril, a partir de las 17:00, suben al escenario White Lion, Great White y Warrant, tres bandas de rock de los ochenta. Al día siguiente, en el mismo escenario, actúa JoJo Siwa. En un solo fin de semana caben así «Cherry Pie» y «Boomerang».
+El sábado 24 de abril, a partir de las 17:00, suben al escenario White Lion, Great White y Warrant, tres bandas de rock de los ochenta. Al día siguiente, en el mismo escenario, actúa JoJo Siwa. Quien vaya los dos días tiene en un solo fin de semana glam metal y pop infantil.
 
 | Fecha                 | Artistas                                 | Hora          |
 | --------------------- | ---------------------------------------- | ------------- |
@@ -91,7 +91,7 @@ En la zona general, los mejores sitios son para quien llega antes. Busch Gardens
 - Up-Close, desde 14,99 $: la segunda, nada más pasar Stagefront
 - Standard, desde 9,99 $: la zona central detrás de Up-Close, con el escenario de frente
 
-Los tres incluyen un check-in propio y una cola propia en la Field Bar. El bar está abierto a todo el mundo; con la reserva solo llegas antes a la cerveza. Que estés sentado o de pie depende del concierto. Los sitios no van numerados, así que dentro de tu zona también elige quien llega primero. Busch Gardens recomienda estar allí unos 30 minutos antes del inicio. Cuando una zona se llena, deja de venderse y te quedan los sitios de la zona general. Si un fin de semana del festival ya estás en Orlando, en SeaWorld Orlando también hay conciertos, allí durante el [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
+Los tres incluyen un check-in propio y una cola propia en la Field Bar. El bar está abierto a todo el mundo; con la reserva solo llegas antes a la cerveza. En algunos conciertos hay sillas en las zonas reservadas; en los demás, también con reserva te toca estar de pie. Los sitios no van numerados, así que dentro de tu zona también elige quien llega primero. Busch Gardens recomienda estar allí unos 30 minutos antes del inicio. Cuando una zona se llena, deja de venderse y te quedan los sitios de la zona general.
 
 ## Fun Card, pases anuales y días bloqueados
 
@@ -99,11 +99,11 @@ Con la oferta de Black Friday, la entrada de un día cuesta en línea desde 71,9
 
 Busch Gardens Tampa tiene ocho días bloqueados para la Fun Card y el pase Bronze de 2027. Dos caen en el festival: el viernes 12 de marzo y el sábado 27 de marzo. Ese sábado toca Dev, y con la Fun Card te quedas fuera del parque. El pase Silver no tiene días bloqueados y cuesta en oferta 198 $, o 16,50 $ al mes, con aparcamiento y tres entradas para invitados.
 
-Si compras ahora la Fun Card, ya te sirve para [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), que abre algunas noches hasta el 4 de enero. Este invierno, las Fun Cards no valen el 24, el 26 y el 27 de diciembre. Para el resto de la semana, con Disney y Universal, escribimos [Disney World y Universal Orlando en un solo viaje](/blog/viaje-orlando-disney-universal).
+Si compras ahora la Fun Card, ya te sirve para [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), que abre algunas noches hasta el 4 de enero. Este invierno, las Fun Cards no valen el 24, el 26 y el 27 de diciembre. SeaWorld Orlando también tiene conciertos los fines de semana de su propio festival, el [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027). Si Disney World y Universal entran en el mismo viaje, en [Disney World y Universal Orlando en un solo viaje](/blog/viaje-orlando-disney-universal) tienes el orden de los días de parque.
 
 ## Qué cambia respecto a 2026
 
-En 2026 el festival todavía se llamaba Food, Wine & Garden Festival, y el primer concierto lo dio Walker Hayes el 7 de marzo. Ahora empieza dos semanas antes, el 20 de febrero. En 2026 la serie se acabó el 9 de mayo con Pop 2000, después de 20 fechas. El 16 y el 17 de mayo hubo además un fin de semana aparte, Glory in the Gardens, con Chris Tomlin y Danny Gokey. Ya no hay fin de semana aparte, y la artista de gospel Tasha Cobbs Leonard canta el 22 de mayo dentro del programa normal, que sigue hasta el 23 de mayo.
+En 2026 el festival todavía se llamaba Food, Wine & Garden Festival, y el primer concierto lo dio Walker Hayes el 7 de marzo, dos semanas más tarde que Trace Adkins en 2027. En 2026 la serie se acabó el 9 de mayo con Pop 2000, después de 20 fechas. El 16 y el 17 de mayo hubo además un fin de semana aparte, Glory in the Gardens, con Chris Tomlin y Danny Gokey. En 2027 no hay fin de semana aparte: la cantante de gospel Tasha Cobbs Leonard canta el 22 de mayo dentro del programa normal, que dura hasta el 23 de mayo.
 
 Flo Rida, Air Supply, Skillet, Grupo Mania y Ying Yang Twins ya estuvieron en 2026. Air Supply cumplen en 2026 cincuenta años juntos y tocan el 8 de mayo, la víspera del Día de la Madre estadounidense.
 
@@ -118,7 +118,7 @@ Flo Rida, Air Supply, Skillet, Grupo Mania y Ying Yang Twins ya estuvieron en 20
 - 28 de agosto: Relient K
 - 4 de septiembre: Taking Back Sunday
 
-Si te pierdes a Skillet en Tampa, tienes otra ocasión el 5 de junio en Williamsburg. Soulja Boy y Ying Yang Twins comparten escenario allí el 21 de agosto, mientras que en Tampa tocan en dos fines de semana separados por un mes.
+Skillet, Vertical Horizon, Soulja Boy y Ying Yang Twins tocan en los dos parques. En Williamsburg, Soulja Boy y Ying Yang Twins comparten noche; en Tampa tocan el 6 de marzo y el 4 de abril.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
