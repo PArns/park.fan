@@ -44,7 +44,7 @@ seo:
 
 ## Wann der Park 2027 offen hat
 
-Im Mai öffnet Cedar Point zuerst nur an langen Wochenenden. Offen ist an diesen Tagen:
+Im Mai öffnet Cedar Point nur an langen Wochenenden, ab dem 20. dann jeden Tag:
 
 - 1. bis 3. Mai, Samstag bis Montag
 - 6. bis 10. Mai, Donnerstag bis Montag
@@ -58,7 +58,7 @@ Nach Labor Day öffnet Cedar Point nur noch donnerstags oder freitags bis sonnta
 
 Im Mai hat der Park meist von 10 bis 20 Uhr offen, im Juli meist bis 22 Uhr und an einigen Abenden bis 23 Uhr. Im Oktober geht es an den meisten Tagen bis Mitternacht.
 
-Der Wasserpark [Cedar Point Shores](ref:cedar-point-shores) macht vier Wochen später auf, am Samstag, dem 29. Mai. Dort gibt es ein Wellenbad, einen Lazy River und den Kinderbereich Lemmy's Lagoon. Öffnungszeiten hat Cedar Point Shores noch nicht veröffentlicht.
+Der Wasserpark [Cedar Point Shores](ref:cedar-point-shores) macht vier Wochen später auf, am Samstag, dem 29. Mai. Kinder planschen dort in Lemmy's Lagoon, alle anderen im Wellenbad oder treibend auf dem Lazy River. Öffnungszeiten hat Cedar Point Shores noch nicht veröffentlicht.
 
 ## Events von Juni bis Oktober
 
@@ -67,10 +67,10 @@ Alle Termine stehen bei Cedar Point unter Vorbehalt:
 - Barrels & Bites, 4. bis 27. Juni: Craft Beer, Bourbon, Wein, Gerichte und Livemusik am Frontier Trail. Alkohol gibt es ab 21.
 - Light Up the Point, 3. und 4. Juli, mit dem Feuerwerk am 4. Juli über dem Eriesee
 - Boardwalk Nights, 16. Juli bis 15. August, außer dienstags: Livemusik, Akrobatik, Spiele und Essen am Boardwalk und am Strand
-- Happy Friar's Fresh-Cut Fries Fest, 10. bis 12. September
+- Happy Friar's Fresh-Cut Fries Fest, 10. bis 12. September; was auf den Teller kommt, verrät der Name
 - HalloWeekends, an ausgewählten Tagen vom 16. September bis zum 31. Oktober
 
-Was es beim Pommes-Festival gibt, muss man nach dem Namen nicht mehr fragen. HalloWeekends läuft seit 1997, und 2027 feiert es sein 30-jähriges Jubiläum unter dem Motto „30 Years of Fears“. Tagsüber gibt es für Familien Trick-or-Treat, Kürbisse und Labyrinthe aus Heuballen. Abends öffnen die Horror-Mazes und Scare Zones, dazu laufen Shows. Welche Häuser es gibt, hat Cedar Point noch nicht bekannt gegeben, nur dass einige bekannte Figuren aus früheren Jahren auftauchen könnten. 2026 kam das [Diablo-Labyrinth](/blog/cedar-point-halloweekends-2026) neu dazu.
+HalloWeekends läuft seit 1997, und 2027 feiert es sein 30-jähriges Jubiläum unter dem Motto „30 Years of Fears“. Bis es dunkel wird, gehört der Park den Familien, mit Trick-or-Treat, Kürbissen und Heuballen-Labyrinthen; danach übernehmen die Horror-Mazes und Scare Zones, und zwischendurch laufen Shows. Welche Häuser es gibt, hat Cedar Point noch nicht bekannt gegeben, nur dass einige bekannte Figuren aus früheren Jahren auftauchen könnten. 2026 kam das [Diablo-Labyrinth](/blog/cedar-point-halloweekends-2026) neu dazu.
 
 ## Was die Pässe für 2027 kosten
 
@@ -84,9 +84,9 @@ Was es beim Pommes-Festival gibt, muss man nach dem Namen nicht mehr fragen. Hal
 
 Zu jedem Preis kommen eine Bearbeitungsgebühr von bis zu 9,99 $ und die Steuer.
 
-Bis zum 6. September hat der Silver Pass keine Sperrtage, und auf dem General Parking parkst du umsonst. Auf Essen und Souvenirs gibt es 10 Prozent, und für Freunde kannst du günstigere Bring-a-Friend-Tickets kaufen. Er gilt nur in Cedar Point, ohne Cedar Point Shores und ohne HalloWeekends. Für den Herbst zahlst du also extra oder nimmst gleich Gold.
+Sperrtage hat der Silver Pass bis Labor Day keine, und auf dem General Parking parkst du umsonst. Auf Essen und Souvenirs gibt es 10 Prozent, und für Freunde kannst du günstigere Bring-a-Friend-Tickets kaufen. Er gilt nur in Cedar Point, ohne Cedar Point Shores und ohne HalloWeekends. Für HalloWeekends brauchst du also ein eigenes Ticket, oder du nimmst gleich den Gold Pass, der 46 $ mehr kostet.
 
-Kaufst du den Silver Pass bis zum 30. November, bekommst du ein Bring-a-Friend-Ticket gratis dazu, einzulösen bis zum 31. Mai 2027. Die 89 Dollar gelten aber nur bis Freitag, den 27. Was der Pass vom 28. bis zum 30. November kostet, hat Six Flags nicht veröffentlicht. Wer beides sicher haben will, kauft bis zum 27.
+Kaufst du den Silver Pass bis zum 30. November, bekommst du ein Bring-a-Friend-Ticket gratis dazu, einzulösen bis zum 31. Mai 2027. Was der Pass vom 28. bis zum 30. November kostet, hat Six Flags nicht veröffentlicht. Den Pass für 89 Dollar und das Freundesticket bekommst du also nur bis Freitag, den 27., sicher zusammen.
 
 ## Gold, Prestige und Fast Lane
 
@@ -110,17 +110,13 @@ Die Fast Lane für einen Tag ist noch nicht im Verkauf. Die All Season Fast Lane
 
 ## Drei Hotelnächte zum Preis von zwei
 
-Für Aufenthalte vom 1. Mai bis zum 30. Juni 2027 zahlst du an ausgewählten Terminen nur zwei von drei Nächten, im Hotel Breakers, in Castaway Bay, im Sawmill Creek, im Express Hotel und in Lighthouse Point. Buchen musst du bis zum 30. November 2026. Sparen kannst du so bis zu 359 $.
-
-Die Adresse ist 1 Cedar Point Drive in Sandusky, am Ufer des Eriesees.
+Für Aufenthalte vom 1. Mai bis zum 30. Juni 2027 zahlst du an ausgewählten Terminen nur zwei von drei Nächten, im Hotel Breakers, in Castaway Bay, im Sawmill Creek, im Express Hotel und in Lighthouse Point. Buchen musst du bis zum 30. November 2026. Die dritte Nacht, die du nicht bezahlst, ist bis zu 359 $ wert.
 
 ## Seit 1870 am Eriesee
 
-Eine neue Bahn hat Cedar Point für 2027 nicht angekündigt.
+Eine neue Bahn hat Cedar Point für 2027 nicht angekündigt; die vier Achterbahnen vom Eröffnungstag stehen alle schon länger: Millennium Force war 2000 die erste Achterbahn mit geschlossener Strecke über 300 Fuß (91 Meter). Rocky Mountain Construction hat 2018 die Holzachterbahn Mean Streak zu Steel Vengeance umgebaut. Top Thrill 2 ist 420 Fuß (128 Meter) hoch und beschleunigt die Züge auf 120 mph (193 km/h). Die jüngste der vier ist Siren's Curse, ein Tilt-Coaster von Vekoma, der 2025 dazukam.
 
-Millennium Force war 2000 die erste Achterbahn mit geschlossener Strecke über 300 Fuß (91 Meter). Steel Vengeance hat Rocky Mountain Construction 2018 aus der Holzachterbahn Mean Streak umgebaut. Top Thrill 2 ist 420 Fuß (128 Meter) hoch und beschleunigt die Züge auf 120 mph (193 km/h). Siren's Curse, ein Tilt-Coaster von Vekoma, ist seit 2025 die jüngste der vier.
-
-Cedar Point hat 1870 eröffnet und ist nach Lake Compounce der zweitälteste Freizeitpark der USA, der noch in Betrieb ist. Bis zum 1. Juli 2024 war er das Flaggschiff von Cedar Fair, seit der Fusion gehört er zu Six Flags. Im Mai 2025 standen im Park 18 Achterbahnen.
+Cedar Point hat 1870 am Ufer des Eriesees eröffnet, an der heutigen Adresse 1 Cedar Point Drive in Sandusky, und ist nach Lake Compounce der zweitälteste Freizeitpark der USA, der noch in Betrieb ist. Bis zum 1. Juli 2024 war er das Flaggschiff von Cedar Fair, seit der Fusion gehört er zu Six Flags. Im Mai 2025 standen im Park 18 Achterbahnen.
 
 Die Neuheiten der anderen Parks stehen in unserem [Überblick zu 2027](/blog/freizeitpark-neuheiten-2027).
 

@@ -45,7 +45,7 @@ seo:
 
 ## When the park is open in 2027
 
-May starts with long weekends only. The park is open on these days:
+May starts with long weekends only, then from the 20th the park opens every day:
 
 - May 1 to 3, Saturday to Monday
 - May 6 to 10, Thursday to Monday
@@ -59,7 +59,7 @@ After Labor Day, Cedar Point only opens Thursday or Friday to Sunday:
 
 In May the park mostly opens from 10am to 8pm, in July mostly until 10pm and on some nights until 11pm. In October most days run until midnight.
 
-The [Cedar Point Shores](ref:cedar-point-shores) water park opens four weeks later, on Saturday, May 29. It has a wave pool, a lazy river and Lemmy's Lagoon for kids. Cedar Point Shores hasn't published its hours yet.
+The [Cedar Point Shores](ref:cedar-point-shores) water park opens four weeks later, on Saturday, May 29. Kids get Lemmy's Lagoon; everyone else gets the wave pool or a slow float down the lazy river. Cedar Point Shores hasn't published its hours yet.
 
 ## Events from June to October
 
@@ -68,10 +68,10 @@ Cedar Point lists every date as subject to change:
 - Barrels & Bites, June 4 to 27: craft beer, bourbon, wine, food and live music on the Frontier Trail. You have to be 21 to drink.
 - Light Up the Point, July 3 and 4, with fireworks over Lake Erie on the Fourth
 - Boardwalk Nights, July 16 to August 15, except Tuesdays: live music, acrobats, games and food on the boardwalk and the beach
-- Happy Friar's Fresh-Cut Fries Fest, September 10 to 12
+- Happy Friar's Fresh-Cut Fries Fest, September 10 to 12; the name tells you what's on the menu
 - HalloWeekends, on selected days from September 16 to October 31
 
-The fries festival's name doesn't leave much to guess. HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th anniversary under the motto "30 Years of Fears". During the day, families get trick-or-treating, pumpkins and hay bale mazes. After dark the haunted mazes and scare zones open, and there are shows. Cedar Point hasn't announced which houses it will run, only that "some familiar legends" may come back. In 2026 the [Diablo maze](/blog/cedar-point-halloweekends-2026) was new.
+HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th anniversary under the motto "30 Years of Fears". Until dusk the park belongs to families, with trick-or-treating, pumpkins and hay bale mazes; then the haunted mazes and scare zones take over, with shows in between. Cedar Point hasn't announced which houses it will run, only that "some familiar legends" may come back. In 2026 the [Diablo maze](/blog/cedar-point-halloweekends-2026) was new.
 
 ## What the passes cost for 2027
 
@@ -85,9 +85,9 @@ The fries festival's name doesn't leave much to guess. HalloWeekends has been ru
 
 Every price adds a processing fee of up to $9.99, plus tax.
 
-Through September 6 the Silver Pass has no blockout dates, and parking in General Parking is free. You get 10% off food and souvenirs, and you can buy cheaper Bring-a-Friend tickets. It's only good at Cedar Point, not at Cedar Point Shores and not for HalloWeekends. For the fall you either pay extra or go straight for Gold.
+The Silver Pass has no blockout dates through Labor Day, and parking in General Parking is free. You get 10% off food and souvenirs, and you can buy cheaper Bring-a-Friend tickets. It's only good at Cedar Point, not at Cedar Point Shores and not for HalloWeekends. For HalloWeekends you either buy a separate ticket or go straight for Gold, which costs $46 more.
 
-Buy the Silver Pass by November 30 and you also get a free Bring-a-Friend ticket, good through May 31, 2027. The $89, though, only applies until Friday the 27th. Six Flags hasn't published what the pass costs from November 28 to 30. If you want both, buy by the 27th.
+Buy the Silver Pass by November 30 and you also get a free Bring-a-Friend ticket, good through May 31, 2027. Six Flags hasn't published what the pass costs from November 28 to 30. So the $89 price and the free friend ticket are only guaranteed together through Friday the 27th.
 
 ## Gold, Prestige and Fast Lane
 
@@ -111,19 +111,15 @@ The one-day Fast Lane isn't on sale yet. The All Season Fast Lane costs $1,999, 
 
 ## Three hotel nights for the price of two
 
-For stays from May 1 to June 30, 2027, you pay for only two of three nights on selected dates, at Hotel Breakers, Castaway Bay, Sawmill Creek, the Express Hotel and Lighthouse Point. You have to book by November 30, 2026. It saves you up to $359.
-
-You'll find the park at 1 Cedar Point Drive in Sandusky, on the shore of Lake Erie.
+For stays from May 1 to June 30, 2027, you pay for only two of three nights on selected dates, at Hotel Breakers, Castaway Bay, Sawmill Creek, the Express Hotel and Lighthouse Point. You have to book by November 30, 2026. The night you don't pay for is worth up to $359.
 
 ## On Lake Erie since 1870
 
-Cedar Point hasn't announced a new ride for 2027.
+Cedar Point hasn't announced a new ride for 2027, and the four opening-day coasters all have a few seasons behind them: in 2000, Millennium Force became the first complete-circuit coaster taller than 300 feet (91 metres). Rocky Mountain Construction rebuilt the wooden Mean Streak into Steel Vengeance in 2018. Top Thrill 2 stands 420 feet (128 metres) tall and launches its trains to 120 mph (193 km/h). The youngest of the four is Siren's Curse, a Vekoma tilt coaster that arrived in 2025.
 
-In 2000, Millennium Force became the first complete-circuit coaster taller than 300 feet (91 metres). Rocky Mountain Construction rebuilt the wooden Mean Streak into Steel Vengeance in 2018. Top Thrill 2 stands 420 feet (128 metres) tall and launches its trains to 120 mph (193 km/h). Siren's Curse, a Vekoma tilt coaster, opened in 2025 and is the youngest of the four.
+Cedar Point opened in 1870 on the shore of Lake Erie, at what is now 1 Cedar Point Drive in Sandusky. Of the amusement parks still operating in the US, only Lake Compounce is older. Until July 1, 2024 it was Cedar Fair's flagship; since the merger it's been part of Six Flags. In May 2025 the park had 18 roller coasters.
 
-Cedar Point opened in 1870. Of the amusement parks still operating in the US, only Lake Compounce is older. Until July 1, 2024 it was Cedar Fair's flagship; since the merger it's been part of Six Flags. In May 2025 the park had 18 roller coasters.
-
-Other parks' new rides for 2027 are in our [roundup of new attractions for 2027](/blog/new-theme-park-attractions-2027).
+What the other parks are building for 2027 is in our [roundup of new attractions](/blog/new-theme-park-attractions-2027).
 
 [Cedar Point](ref:cedar-point?full)
 
