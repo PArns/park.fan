@@ -103,7 +103,7 @@ Der Quick Pass Ultimate kostet 80 €. Mit ihm kommst du einmal durch jeden Quic
 
 ## Was du außerdem brauchst
 
-Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets verkauft der Park nur online, eine Tageskasse hat er nicht, und für den Besuchstag selbst kaufst du bis 14 Uhr. Wer um halb drei ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
+Der Quick Pass kostet extra und gilt nur zusammen mit einem gültigen Tagesticket. Tagestickets verkauft der Park nur online, eine Tageskasse hat er nicht, und für den Besuchstag selbst kaufst du im Wintertraum bis 16 Uhr, sonst bis 14 Uhr. Wer um halb fünf ohne Ticket am Tor steht, hat ein größeres Problem als die Warteschlange an Black Mamba.
 
 Die Plätze teilen die Mitarbeitenden zu, bei Taron hilft es aber, sie am Einstieg nett nach einem bestimmten Platz zu fragen, und bei Talocan bringt dich der Quick Pass garantiert auf die vordere Seite. Die Mindestgröße gilt mit Pass genauso, für Taron 1,30 m.
 
@@ -133,3 +133,5 @@ An einem grünen Tag im Kalender brauchst du den Quick Pass nach meiner Erfahrun
 Quellen: [Quick Pass im Online-Shop des Phantasialand](https://shop.phantasialand.de/de/quick-pass), [Nutzungsbedingungen zum Quick Pass](https://www.phantasialand.de/de/quick-pass/), [Informationen und Anreise, Abschnitt Quick Pass](https://www.phantasialand.de/de/themenpark/informationen-und-anreise/), [Preise und Tickets](https://www.phantasialand.de/de/themenpark/preise-und-tickets/), [Öffnungszeiten](https://www.phantasialand.de/de/themenpark/oeffnungszeiten/).
 
 > [!CORRECTION] 18. November 2026: In der ersten Fassung stand, dass du dir auch mit Quick Pass keinen Platz im Zug aussuchst. Die Plätze teilen zwar die Mitarbeitenden zu, bei Taron hilft es aber, sie am Einstieg nett nach einem bestimmten Platz zu fragen, und bei Talocan bringt dich der Quick Pass garantiert auf die vordere Seite.
+
+> [!CORRECTION] 21. November 2026: In der ersten Fassung stand, dass du Tagestickets für den Besuchstag bis 14 Uhr kaufst. Im Wintertraum geht das bis 16 Uhr, sonst bis 14 Uhr.

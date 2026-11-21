@@ -2,7 +2,7 @@
 title: 'Der Wintertraum im Phantasialand läuft bis zum 24. Januar'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-18'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -227,30 +227,22 @@ Um 18:50 Uhr gehst du nach Berlin, holst dir am Stand den letzten Glühwein und 
 
 ## Tickets und Preise
 
-Tickets gibt es nur online im Shop des Phantasialands, eine Tageskasse am Eingang hat der Park nicht, und jedes Ticket gilt für einen festen Tag. Am Besuchstag selbst kannst du bis 14 Uhr noch eins kaufen, zum dann gültigen Preis und solange der Tag nicht ausverkauft ist. Umbuchen oder stornieren lässt sich ein Ticket nicht.
+Tickets gibt es nur online im Shop des Phantasialands, eine Tageskasse am Eingang hat der Park nicht, und jedes Ticket gilt für einen festen Tag. Am Besuchstag selbst kannst du im Wintertraum bis 16 Uhr noch eins kaufen, zum dann gültigen Preis und solange der Tag nicht ausverkauft ist. Umbuchen oder stornieren lässt sich ein Ticket nicht.
 
-Der Preis hängt vom Tag ab und kann jederzeit steigen, weil jede Preisstufe pro Tag ein begrenztes Kontingent hat. Bis Montag, den 16. November, wirbt der Park mit einem Eröffnungsrabatt, die Tickets kosten dann ab 30 €, sonst bis zu 78 €.
+Der Preis hängt vom Tag ab und kann jederzeit steigen, weil jede Preisstufe pro Tag ein begrenztes Kontingent hat. Seit dem 21. November läuft der [Black Deal](/news/phantasialand-black-deal-wintertraum): Im Dezember und Januar kostet jeder offene Tag 29 € von Montag bis Freitag und 33 € am Wochenende und in den Weihnachtsferien. Ein Enddatum nennt der Park nicht, ohne Angebot verlangt er bis zu 78 €.
 
-Preise für Erwachsene ab 12 Jahren im Ticket-Kalender, Stand 15. November 2026:
+Preise für Erwachsene ab 12 Jahren im Ticket-Kalender, Stand 21. November 2026:
 
-| Tag                            | Tagesticket Erwachsene |
-| ------------------------------ | ---------------------- |
-| Montag bis Freitag, 16.–20.11. | 36 €                   |
-| Samstag, 21. November          | 42 €                   |
-| Sonntag, 22. November          | 38 €                   |
-| Montag, 23. November           | 29 €                   |
-| Samstag, 28. November          | 42 €                   |
-| Mittwoch, 2. Dezember          | 30 €                   |
-| Samstag, 5. Dezember           | 39 €                   |
-| Samstag, 12. Dezember          | ausverkauft            |
-| Montag, 14. Dezember           | 30 €                   |
-| Samstag, 26. Dezember          | 39 €                   |
-| Sonntag, 27. Dezember          | 42 €                   |
-| Donnerstag, 31. Dezember       | 37 €                   |
-| Mittwoch, 6. Januar            | 29 €                   |
-| Samstag, 9. Januar             | 38 €                   |
-| Montag, 11. Januar             | 29 €                   |
-| Sonntag, 24. Januar            | 35 €                   |
+| Tage                                         | Tagesticket Erwachsene |
+| -------------------------------------------- | ---------------------- |
+| November, Montag bis Freitag ab dem 23.11.   | 35 bis 42 €            |
+| November, Samstag und Sonntag                | 39 bis 69 €            |
+| Dezember bis zum 22.12., Montag bis Freitag  | 29 €                   |
+| Dezember, Samstag und Sonntag                | 33 €                   |
+| Weihnachtsferien, 23.12. und 26.12. bis 5.1. | 33 €                   |
+| Januar ab dem 6.1., Montag bis Freitag       | 29 €                   |
+| Januar, Samstag und Sonntag                  | 33 €                   |
+| Samstag, 12. Dezember                        | ausverkauft            |
 
 Kinder von 4 bis 11 Jahren zahlen einen eigenen, niedrigeren Tagespreis. Sie und Gäste ab 60 brauchen am Einlass einen Altersnachweis.
 
@@ -330,7 +322,7 @@ River Quest, Wakobato und Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Ch
 
 ### Was kostet der Phantasialand Wintertraum?
 
-Ein Tagesticket für Erwachsene kostet je nach Tag zwischen 29 € an Tagen unter der Woche im Januar und 42 € an einzelnen Wochenendtagen wie dem 27. Dezember. Tickets gibt es nur online, am Besuchstag bis 14 Uhr. Kinder bis drei Jahre sind frei.
+Im Black Deal kostet ein Tagesticket für Erwachsene im Dezember und Januar 29 € von Montag bis Freitag und 33 € am Wochenende und in den Weihnachtsferien, im November je nach Tag 35 bis 69 €. Tickets gibt es nur online, am Besuchstag im Wintertraum bis 16 Uhr. Kinder bis drei Jahre sind frei.
 
 ### Wann ist im Wintertraum am wenigsten los?
 
