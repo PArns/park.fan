@@ -51,7 +51,7 @@ In mei houdt Cedar Point het eerst bij lange weekenden. Open is het op deze dage
 - 13 tot en met 17 mei, donderdag tot en met maandag
 - vanaf donderdag 20 mei elke dag
 
-Tot en met 19 mei blijft het park op dinsdag en woensdag dicht. Daarna kun je er elke dag terecht tot Labor Day, maandag 6 september. Vanaf dan gaat Cedar Point alleen nog van donderdag of vrijdag tot en met zondag open: in september op 10 tot en met 12, 16 tot en met 19, 23 tot en met 26 en op 30 september, in oktober van donderdag tot en met zondag tot 31 oktober. De openingstijden voor 2027 heeft Six Flags nog niet gepubliceerd.
+Tot en met 19 mei blijft het park op dinsdag en woensdag dicht. Daarna kun je er elke dag terecht tot Labor Day, maandag 6 september. Vanaf dan gaat Cedar Point alleen nog van donderdag of vrijdag tot en met zondag open: in september op 10 tot en met 12, 16 tot en met 19, 23 tot en met 26 en op 30 september, in oktober van donderdag tot en met zondag tot 31 oktober. In mei is het park meestal van 10 tot 20 uur open, in juli meestal tot 22 uur en op sommige avonden tot 23 uur. In oktober blijft het de meeste dagen open tot middernacht. De tijden van Cedar Point Shores zijn nog niet bekend.
 
 Waterpark [Cedar Point Shores](ref:cedar-point-shores) volgt vier weken later, op zaterdag 29 mei. Daar vind je een golfslagbad, een lazy river en het kindergebied Lemmy's Lagoon.
 
@@ -87,7 +87,7 @@ Koop je de Silver Pass uiterlijk 30 november, dan krijg je er een gratis Bring-a
 
 De Gold Pass geldt al voor de rest van 2026 en daarna voor 2027, in alle Six Flags-parken in het Middenwesten, waaronder Cedar Point Shores en Kings Island. HalloWeekends zit erbij, net als parkeren en 10 procent korting. In 2026 had je voor de horrorhuizen alsnog de Haunted Attractions Pass nodig.
 
-Prestige geldt in alle Six Flags-parken in Noord-Amerika. Nieuw is gratis frisdrank van de tap bij elk bezoek. Verder krijg je Preferred Parking zolang er plek is, twee Bring-a-Friend-tickets per jaar, 15 procent korting, een VIP-ingang en een VIP-ruimte, korting in het hotel en bij elk bezoek één keer een rit via Fast Lane.
+Prestige geldt in alle Six Flags-parken in Noord-Amerika. Nieuw is gratis frisdrank van de tap bij elk bezoek. Verder krijg je Preferred Parking zolang er plek is, twee Bring-a-Friend-tickets per jaar, 15 procent korting, een VIP-ingang en een VIP-ruimte en bij elk bezoek één keer een rit via Fast Lane.
 
 Fast Lane voor één dag is nog niet te koop. De All Season Fast Lane kost 1.999 dollar, het bedrag van ruim 22 Silver Passes.
 
@@ -105,7 +105,7 @@ Voor verblijven van 1 mei tot en met 30 juni 2027 boek je op bepaalde nachten dr
 
 Cedar Point opende in 1870 en is na Lake Compounce het op een na oudste pretpark van de VS dat nog in bedrijf is. Tot 1 juli 2024 was het het vlaggenschip van Cedar Fair, sinds de fusie hoort het bij Six Flags. In mei 2025 stonden er 18 achtbanen in het park.
 
-Een nieuwe baan voor 2027 heeft Cedar Point niet aangekondigd. Over een nieuwe achtbaan gaat tot nu toe alleen één bericht op X. Wat andere parken in 2027 bouwen, zie je in ons [overzicht van de nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
+Een nieuwe baan voor 2027 heeft Cedar Point niet aangekondigd. Wat andere parken in 2027 bouwen, zie je in ons [overzicht van de nieuwe attracties voor 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 Millennium Force was in 2000 de eerste complete achtbaan boven de 300 voet (91 meter). Steel Vengeance is in 2018 door Rocky Mountain Construction omgebouwd uit de houten achtbaan Mean Streak. Top Thrill 2 is 128 meter (420 voet) hoog en versnelt de treinen tot 193 km/u (120 mph). Siren's Curse, een tilt coaster van Vekoma, is sinds 2025 de jongste van de vier.
 
