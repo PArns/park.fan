@@ -86,12 +86,12 @@ text: Das E-Ticket kommt per E-Mail.
 
 ## Wann es weniger voll ist
 
-Nach unseren Wartezeit-Messungen im letzten Wintertraum standen die Leute in den Weihnachtsferien so lange an wie in den Sommerferien im August, und an den Januarwochenenden war sehr viel los. Von Montag bis Freitag nach den Ferien war wenig los. Für den günstigsten Tag mit wenig Andrang würde ich deshalb einen Werktag zwischen dem 14. und 22. Januar nehmen. Wird es nass, fahren [Winja’s Fear](ref:phantasialand/winjas-fear) und Winja’s Force unter Dach weiter.
+Nach unseren Wartezeit-Messungen im letzten Wintertraum standen die Leute in den Weihnachtsferien so lange an wie in den Sommerferien im August, und an den Januarwochenenden war sehr viel los. Von Montag bis Freitag nach den Ferien war wenig los. Für den günstigsten Tag mit wenig Andrang würde ich deshalb einen Tag von Montag bis Freitag zwischen dem 14. und 22. Januar nehmen, die Prognose für jeden Wintertraum-Tag steht im [Andrang-Kalender des Phantasialands](ref:phantasialand?calendar). Wird es nass, fahren [Winja’s Fear](ref:phantasialand/winjas-fear) und Winja’s Force unter Dach weiter.
 
 ```best-days-widget slug=phantasialand
 
 ```
 
-Die Prognose für jeden Wintertraum-Tag findest du im [Andrang-Kalender des Phantasialands](ref:phantasialand?calendar). Welche Shows wann laufen und welche Bahnen im Winter fahren, steht in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum).
+Welche Shows wann laufen und welche Bahnen im Winter fahren, steht in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum).
 
 Quellen: [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Ticket-Kalender November 2026](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-11), [Ticket-Kalender Dezember 2026](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-12), [Ticket-Kalender Januar 2027](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2027-01), [Ferienordnung NRW (Schulministerium)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30).
