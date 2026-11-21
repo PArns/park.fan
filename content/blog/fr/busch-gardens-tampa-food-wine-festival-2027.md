@@ -36,11 +36,11 @@ seo:
     - Trace Adkins Busch Gardens
 ---
 
-Le 19 novembre, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) a dévoilé la programmation du Food & Wine Music Festival 2027. Du 20 février au 23 mai, un concert a lieu sur la Festival Field Stage chaque samedi du festival et la plupart des dimanches. Le chanteur de country Trace Adkins ouvre la série. Chaque concert dure au moins une heure et se regarde sans supplément, quel que soit le billet d’entrée. Avec plus de 30 concerts à Tampa et à Williamsburg, Busch Gardens annonce la plus grande série de concerts de son histoire.
+Le 19 novembre, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) a dévoilé la programmation du Food & Wine Music Festival 2027. Du 20 février au 23 mai, un concert a lieu sur la Festival Field Stage chaque samedi du festival et la plupart des dimanches. Le chanteur de country Trace Adkins ouvre la série. Chaque concert dure au moins une heure, et tu ne paies en plus que si tu veux une place réservée devant la scène. Avec plus de 30 concerts à Tampa et à Williamsburg, Busch Gardens annonce la plus grande série de concerts de son histoire.
 
 ## Jours et horaires du festival
 
-Les week-ends du festival, les stands ouvrent à midi et restent ouverts jusqu’à la fermeture du parc. La nourriture et les boissons se paient à part, et l’alcool n’est servi qu’à partir de 21 ans. Le parc annonce plus de 100 plats et boissons, des classiques comme des nouveautés.
+Les week-ends du festival, les stands ouvrent à midi et restent ouverts jusqu’à la fermeture du parc. La nourriture et les boissons se paient à part, et l’alcool n’est servi qu’à partir de 21 ans. Le parc annonce plus de 100 plats et boissons, de quoi nourrir bien plus d’une soirée de concert.
 
 Pas de concert le dimanche de Pâques (28 mars) ni le jour de la fête des mères américaine (9 mai). La pluie n’annule rien, un orage peut en revanche faire annuler un concert.
 
@@ -91,19 +91,19 @@ En placement libre, les meilleures places reviennent aux premiers arrivés. Si t
 - Up-Close dès 14,99 $, la deuxième zone, directement derrière Stagefront
 - Standard dès 9,99 $, la zone centrale derrière Up-Close, face à la scène
 
-Les trois niveaux ont leur propre check-in et leur propre file au Field Bar. Le bar est ouvert à tout le monde, la réservation fait seulement gagner du temps pour avoir sa bière. Selon le concert, on est assis ou debout. Les places ne sont pas numérotées, et dans ta zone, c’est à nouveau le premier arrivé qui choisit. Busch Gardens conseille d’arriver environ 30 minutes avant le début. Chaque zone est vendue jusqu’à ce qu’elle soit complète. SeaWorld Orlando, parc du même groupe, programme lui aussi des concerts le week-end pendant le [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
+Les trois niveaux ont leur propre check-in et leur propre file au Field Bar. Le bar est ouvert à tout le monde, la réservation fait seulement gagner du temps pour avoir sa bière. Selon le concert, on est assis ou debout. Les places ne sont pas numérotées, et dans ta zone, c’est à nouveau le premier arrivé qui choisit. Busch Gardens conseille d’arriver environ 30 minutes avant le début. Une fois une zone complète, elle n’est plus en vente et il te reste le placement libre. Si tu es de toute façon à Orlando un week-end de festival, SeaWorld Orlando propose lui aussi des concerts, cette fois pendant le [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, abonnements annuels et dates d’exclusion
 
-En promotion Black Friday, le billet d’une journée coûte en ligne à partir de 71,99 $. Dans la même promotion, la Fun Card 2027 pour Busch Gardens coûte 94,99 $ au lieu de 148,99 $, soit moins que deux billets à la journée. Avec le parc aquatique Adventure Island, elle revient à 118,99 $ au lieu de 210,99 $. La carte est valable dès maintenant et jusqu’au 31 décembre 2027, donc aussi l’été, quand ouvriront les montagnes russes aquatiques [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). Le parking n’est pas compris dans la Fun Card et coûte à partir de 34 $.
+En promotion Black Friday, le billet d’une journée coûte en ligne à partir de 71,99 $. Dans la même promotion, la Fun Card 2027 pour Busch Gardens coûte 94,99 $ au lieu de 148,99 $, soit moins que deux billets à la journée. Avec le parc aquatique Adventure Island, elle revient à 118,99 $. La carte est valable dès maintenant et jusqu’au 31 décembre 2027, donc aussi l’été, quand ouvriront les montagnes russes aquatiques [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). Le parking n’est pas compris dans la Fun Card et coûte à partir de 34 $.
 
-Pour la Fun Card et l’abonnement Bronze 2027, Busch Gardens Tampa compte huit dates d’exclusion. Deux d’entre elles tombent pendant le festival, le vendredi 12 mars et le samedi 27 mars. Ce samedi-là, c’est Dev qui joue, et « Bass Down Low » se jouera sans les détenteurs d’une Fun Card. L’abonnement Silver n’a aucune date d’exclusion et coûte en promotion 198 $ au lieu de 279 $, ou 16,50 $ par mois, avec le parking et trois billets invités.
+Pour la Fun Card et l’abonnement Bronze 2027, Busch Gardens Tampa compte huit dates d’exclusion. Deux d’entre elles tombent pendant le festival, le vendredi 12 mars et le samedi 27 mars. Ce samedi-là, c’est Dev qui joue, et « Bass Down Low » se jouera sans les détenteurs d’une Fun Card. L’abonnement Silver n’a aucune date d’exclusion et coûte en promotion 198 $, ou 16,50 $ par mois, avec le parking et trois billets invités.
 
-Une Fun Card achetée maintenant sert déjà pour [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), certains soirs jusqu’au 4 janvier. Cet hiver, les Fun Cards sont exclues les 24, 26 et 27 décembre. Pour caser une journée à Tampa dans un voyage avec Disney et Universal, voir notre guide [Organiser un séjour à Orlando avec Disney World et Universal](/blog/sejour-orlando-disney-universal).
+Une Fun Card achetée maintenant sert déjà pour [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), certains soirs jusqu’au 4 janvier. Cet hiver, les Fun Cards sont exclues les 24, 26 et 27 décembre. Pour le reste de la semaine, avec Disney et Universal, nous avons écrit [Organiser un séjour à Orlando avec Disney World et Universal](/blog/sejour-orlando-disney-universal).
 
 ## Ce qui change par rapport à 2026
 
-En 2026, le festival s’appelait encore Food, Wine & Garden Festival, et Walker Hayes avait donné le premier concert le 7 mars. Dans le nouveau nom, Music a pris la place de Garden, et la série commence deux semaines plus tôt en 2027. En 2026, elle s’était arrêtée le 9 mai avec Pop 2000, après 20 dates. Un week-end à part, Glory in the Gardens, avait encore suivi les 16 et 17 mai avec Chris Tomlin et Danny Gokey. En 2027, la série se poursuit sans week-end séparé jusqu’au 23 mai, avec la chanteuse de gospel Tasha Cobbs Leonard le 22 mai.
+En 2026, le festival s’appelait encore Food, Wine & Garden Festival, et Walker Hayes avait donné le premier concert le 7 mars. Cette fois, tout commence deux semaines plus tôt, le 20 février. En 2026, la série s’était arrêtée le 9 mai avec Pop 2000, après 20 dates. Un week-end à part, Glory in the Gardens, avait encore suivi les 16 et 17 mai avec Chris Tomlin et Danny Gokey. Il n’y a plus de week-end à part, mais la chanteuse de gospel Tasha Cobbs Leonard chante le 22 mai dans le programme normal, qui continue jusqu’au 23 mai.
 
 Flo Rida, Air Supply, Skillet, Grupo Mania et les Ying Yang Twins étaient déjà là en 2026. Air Supply fête en 2026 ses cinquante ans et joue le 8 mai, la veille de la fête des mères.
 
@@ -118,7 +118,7 @@ Flo Rida, Air Supply, Skillet, Grupo Mania et les Ying Yang Twins étaient déj�
 - 28 août : Relient K
 - 4 septembre : Taking Back Sunday
 
-Skillet, Vertical Horizon, Soulja Boy et les Ying Yang Twins jouent dans les deux parcs, Skillet à Williamsburg sept semaines après Tampa.
+Si tu rates Skillet à Tampa, tu as une deuxième chance le 5 juin à Williamsburg. Soulja Boy et les Ying Yang Twins y partagent la scène le 21 août, alors qu’à Tampa, ils jouent à un mois d’écart.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
