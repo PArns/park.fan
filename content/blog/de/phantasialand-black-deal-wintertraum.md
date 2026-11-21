@@ -42,9 +42,9 @@ seo:
     - phantasialand wartezeiten
 ---
 
-Im Black Deal kostet ein Wintertraum-Tagesticket fürs [Phantasialand](ref:phantasialand) von Montag bis Freitag 29 €, am Wochenende und in den Weihnachtsferien 33 €. Das gilt an jedem offenen Tag im Dezember und Januar, die restlichen Novembertage sind ausgenommen. Angekündigt hat das Phantasialand den Black Deal heute in seinem Newsletter, und im Ticket-Kalender stehen die neuen Preise schon. Ein Enddatum für das Angebot nennt der Park nicht. Laut Shop können die Preise jederzeit steigen, und jeder Tag hat nur ein begrenztes Kontingent.
+Im Black Deal kostet ein Wintertraum-Tagesticket fürs [Phantasialand](ref:phantasialand) von Montag bis Freitag 29 €, am Wochenende und in den Weihnachtsferien 33 €. Das gilt an jedem offenen Tag im Dezember und Januar, die restlichen Novembertage sind ausgenommen. Angekündigt hat das Phantasialand den Black Deal heute in seinem Newsletter, und im Ticket-Kalender stehen die neuen Preise schon. Ein Enddatum für das Angebot nennt der Park nicht. Laut Shop können die Preise jederzeit steigen, und jeder Tag hat ein Kontingent, das für Samstag, den 12. Dezember, schon aufgebraucht ist.
 
-Der Wintertraum selbst läuft bis zum 24. Januar 2027, an jedem offenen Tag von 11 bis 20 Uhr, an Silvester nur bis 18 Uhr. Zum Schluss steigt über dem Kaiserplatz in Berlin das Feuerwerk von MAGIC SYMPHONY. Bei starkem Wind oder schlechtem Wetter kann es aus Sicherheitsgründen ausfallen, dann gibt es den Good Night Wish aus Musik und Licht.
+Der Wintertraum selbst läuft bis zum 24. Januar 2027, geöffnet ist von 11 bis 20 Uhr, an Silvester nur bis 18 Uhr. Zum Schluss steigt über dem Kaiserplatz in Berlin das Feuerwerk von MAGIC SYMPHONY. Bei starkem Wind oder schlechtem Wetter kann es aus Sicherheitsgründen ausfallen, dann gibt es den Good Night Wish aus Musik und Licht.
 
 ## Welcher Tag was kostet
 
@@ -68,15 +68,15 @@ Heute, am Samstag, kostet der Tag 69 €, also mehr als zwei Samstage im Dezembe
 
 ## Was der Black Deal gegenüber dem 15. November spart
 
-Sonntag, der 27. Dezember, kostete am 15. November noch 42 €, jetzt sind es 33 €. Silvester lag bei 37 €, Samstag, der 9. Januar, bei 38 €, beide stehen jetzt bei 33 €. Unter der Woche ändert sich wenig: Mittwoch, der 2. Dezember, kostete 30 € und kostet jetzt 29 €.
+Am weitesten fällt der Preis am Wochenende und in den Ferien. Sonntag, der 27. Dezember, kostete am 15. November noch 42 € und steht jetzt bei 33 €, genau wie Silvester (vorher 37 €) und Samstag, der 9. Januar (vorher 38 €). Unter der Woche ist es ein Euro, der Mittwoch, 2. Dezember, kostete 30 € und kostet jetzt 29 €.
 
 ## So kaufst du das Ticket
 
-Das Phantasialand verkauft Tickets nur online, an der Kasse gibt es keine, und jedes gilt verbindlich für den Tag, den du im Kalender wählst. Für den Besuchstag selbst kaufst du bis 16 Uhr im Online-Shop, zum dann gültigen Preis und nur, solange der Tag nicht ausverkauft ist. Das reicht auch noch, wenn dir um Viertel vor vier auf der A553 einfällt, dass niemand ein Ticket gekauft hat. Am Eingang zeigst du das Ticket auf dem Smartphone, einen Drucker brauchst du nicht.
+Das Phantasialand verkauft Tickets nur online, und jedes gilt verbindlich für den Tag, den du im Kalender wählst. Für den Besuchstag selbst kaufst du bis 16 Uhr im Online-Shop, zum dann gültigen Preis und nur, solange der Tag nicht ausverkauft ist. Das reicht auch noch, wenn dir um Viertel vor vier auf der A553 einfällt, dass niemand ein Ticket gekauft hat. Am Eingang zeigst du das Ticket auf dem Smartphone, einen Drucker brauchst du nicht.
 
-Den [Quick Pass kaufst du inzwischen ebenfalls online](/news/phantasialand-quick-pass-online), am Besuchstag ab 11 Uhr und ohne Anstehen am Gästeservice. Er kostet extra und gilt nur zusammen mit dem Tagesticket.
+Den [Quick Pass kaufst du inzwischen ebenfalls online](/news/phantasialand-quick-pass-online), am Besuchstag ab 11 Uhr und ohne Anstehen am Gästeservice. Er kommt zum Tagesticket dazu und kostet je nach Bahn ab 5 €, der Ultimate mit je einer Fahrt durch jeden Quick-Pass-Eingang 80 €.
 
-Kinder von 4 bis 11 Jahren zahlen weniger, am Donnerstag, dem 14. Januar, zum Beispiel 27 €. Ihr Preis erscheint im Kalender erst, wenn du einen Tag anklickst. Kinder bis drei Jahre kommen umsonst rein, mit Ausweis oder Geburtsurkunde. Geburtstagskinder bis elf Jahre sind an ihrem Geburtstag ebenfalls frei, wenn du den Besuch vorher online reservierst und einen Ausweis mitbringst.
+Kinder von 4 bis 11 Jahren zahlen weniger, am Donnerstag, dem 14. Januar, zum Beispiel 27 €. Ihr Preis erscheint im Kalender erst, wenn du einen Tag anklickst. Kinder bis drei Jahre kommen umsonst rein, mit Ausweis oder Geburtsurkunde. Kinder bis elf Jahre kommen an ihrem Geburtstag ebenfalls umsonst rein, wenn du den Besuch vorher online reservierst und einen Ausweis mitbringst.
 
 ```cta-widget
 href: https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-12?utm_source=park.fan&utm_medium=referral&utm_campaign=black-deal-wintertraum
@@ -86,12 +86,12 @@ text: Das E-Ticket kommt per E-Mail.
 
 ## Wann es weniger voll ist
 
-Nach unseren Wartezeit-Messungen im letzten Wintertraum standen die Leute in den Weihnachtsferien so lange an wie in den Sommerferien im August, und an den Januarwochenenden war sehr viel los. Von Montag bis Freitag nach den Ferien war wenig los. Für den günstigsten Tag mit wenig Andrang würde ich deshalb einen Tag von Montag bis Freitag zwischen dem 14. und 22. Januar nehmen, die Prognose für jeden Wintertraum-Tag steht im [Andrang-Kalender des Phantasialands](ref:phantasialand?calendar). Wird es nass, fahren [Winja’s Fear](ref:phantasialand/winjas-fear) und Winja’s Force unter Dach weiter.
+Nach unseren Wartezeit-Messungen im letzten Wintertraum standen die Leute in den Weihnachtsferien so lange an wie in den Sommerferien im August, und an den Januarwochenenden war sehr viel los. Unter der Woche nach dem Dreikönigstag ging der Andrang dann deutlich zurück. Für den günstigsten Tag mit wenig Andrang würde ich deshalb einen Tag von Montag bis Freitag zwischen dem 14. und 22. Januar nehmen, die Prognose für jeden Wintertraum-Tag steht im [Andrang-Kalender des Phantasialands](ref:phantasialand?calendar). Regnet es an deinem Januartag, kannst du in der Halle immer noch [Winja’s Fear](ref:phantasialand/winjas-fear) und Winja’s Force fahren.
 
 ```best-days-widget slug=phantasialand
 
 ```
 
-Welche Shows wann laufen und welche Bahnen im Winter fahren, steht in unserem [Guide zum Wintertraum](/blog/phantasialand-wintertraum).
+Das Showprogramm des Winters und die Bahnen, die dann fahren, findest du im [Guide zum Wintertraum](/blog/phantasialand-wintertraum).
 
 Quellen: [Wintertraum (Phantasialand)](https://www.phantasialand.de/de/themenpark/wintertraum/), [Ticket-Kalender November 2026](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-11), [Ticket-Kalender Dezember 2026](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-12), [Ticket-Kalender Januar 2027](https://shop.phantasialand.de/de/produkte/themenpark-tickets/2027-01), [Ferienordnung NRW (Schulministerium)](https://www.schulministerium.nrw/service/ferienordnung-nrw-bis-2029-30).
