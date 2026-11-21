@@ -63,15 +63,13 @@ The [Cedar Point Shores](ref:cedar-point-shores) water park opens four weeks lat
 
 ## Events from June to October
 
-Cedar Point lists every date as subject to change:
-
 - Barrels & Bites, June 4 to 27: craft beer, bourbon, wine, food and live music on the Frontier Trail. You have to be 21 to drink.
 - Light Up the Point, July 3 and 4, with fireworks over Lake Erie on the Fourth
 - Boardwalk Nights, July 16 to August 15, except Tuesdays: live music, acrobats, games and food on the boardwalk and the beach
 - Happy Friar's Fresh-Cut Fries Fest, September 10 to 12; the name tells you what's on the menu
 - HalloWeekends, on selected days from September 16 to October 31
 
-HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th anniversary under the motto "30 Years of Fears". Until dusk the park belongs to families, with trick-or-treating, pumpkins and hay bale mazes; then the haunted mazes and scare zones take over, with shows in between. Cedar Point hasn't announced which houses it will run, only that "some familiar legends" may come back. In 2026 the [Diablo maze](/blog/cedar-point-halloweekends-2026) was new.
+HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th anniversary under the motto "30 Years of Fears". By day HalloWeekends is a family event with trick-or-treating, pumpkins and hay bale mazes. In the evening the haunted mazes and scare zones open, and there are shows. For the anniversary, Cedar Point has so far only promised that "some familiar legends" may return. The list of houses isn't out yet. In 2026 the [Diablo maze](/blog/cedar-point-halloweekends-2026) was new.
 
 ## What the passes cost for 2027
 
@@ -85,9 +83,9 @@ HalloWeekends has been running since 1997, and in 2027 it celebrates its 30th an
 
 Every price adds a processing fee of up to $9.99, plus tax.
 
-The Silver Pass has no blockout dates through Labor Day, and parking in General Parking is free. You get 10% off food and souvenirs, and you can buy cheaper Bring-a-Friend tickets. It's only good at Cedar Point, not at Cedar Point Shores and not for HalloWeekends. For HalloWeekends you either buy a separate ticket or go straight for Gold, which costs $46 more.
+The Silver Pass has no blockout dates through Labor Day, and parking in General Parking is free. You get 10% off food and souvenirs, and you can buy cheaper Bring-a-Friend tickets. It's only good at Cedar Point, not at Cedar Point Shores and not for HalloWeekends. For the fall mazes you buy a separate ticket or go straight for Gold.
 
-Buy the Silver Pass by November 30 and you also get a free Bring-a-Friend ticket, good through May 31, 2027. Six Flags hasn't published what the pass costs from November 28 to 30. So the $89 price and the free friend ticket are only guaranteed together through Friday the 27th.
+Buy the Silver Pass by November 30 and you also get a free Bring-a-Friend ticket, good through May 31, 2027. Six Flags hasn't published what the pass costs from November 28 to 30. If you want both, the $89 price and the free friend ticket, buy by Friday, November 27.
 
 ## Gold, Prestige and Fast Lane
 
@@ -115,11 +113,11 @@ For stays from May 1 to June 30, 2027, you pay for only two of three nights on s
 
 ## On Lake Erie since 1870
 
-Cedar Point hasn't announced a new ride for 2027, and the four opening-day coasters all have a few seasons behind them: in 2000, Millennium Force became the first complete-circuit coaster taller than 300 feet (91 metres). Rocky Mountain Construction rebuilt the wooden Mean Streak into Steel Vengeance in 2018. Top Thrill 2 stands 420 feet (128 metres) tall and launches its trains to 120 mph (193 km/h). The youngest of the four is Siren's Curse, a Vekoma tilt coaster that arrived in 2025.
+Cedar Point hasn't announced a new ride for 2027. The oldest of the four opening-day coasters is Millennium Force, which in 2000 became the first complete-circuit coaster taller than 300 feet (91 metres). Rocky Mountain Construction rebuilt the wooden Mean Streak into Steel Vengeance in 2018. Top Thrill 2 stands 420 feet (128 metres) tall and launches its trains to 120 mph (193 km/h). The youngest of the four is Siren's Curse, a Vekoma tilt coaster that arrived in 2025.
 
-Cedar Point opened in 1870 on the shore of Lake Erie, at what is now 1 Cedar Point Drive in Sandusky. Of the amusement parks still operating in the US, only Lake Compounce is older. Until July 1, 2024 it was Cedar Fair's flagship; since the merger it's been part of Six Flags. In May 2025 the park had 18 roller coasters.
+Cedar Point opened in 1870 on the shore of Lake Erie, at what is now 1 Cedar Point Drive in Sandusky. Of the amusement parks still operating in the US, only Lake Compounce is older. Until July 1, 2024 it was Cedar Fair's flagship; since the merger it's been part of Six Flags.
 
-What the other parks are building for 2027 is in our [roundup of new attractions](/blog/new-theme-park-attractions-2027).
+If you want a new ride in 2027, our [roundup of new attractions](/blog/new-theme-park-attractions-2027) has them, just not in Sandusky.
 
 [Cedar Point](ref:cedar-point?full)
 

@@ -62,15 +62,13 @@ Il parco acquatico [Cedar Point Shores](ref:cedar-point-shores) apre quattro set
 
 ## Gli eventi da giugno a ottobre
 
-Tutte le date, avverte Cedar Point, possono ancora cambiare:
-
 - Barrels & Bites, dal 4 al 27 giugno: birra artigianale, bourbon, vino, piatti e musica dal vivo lungo il Frontier Trail. Gli alcolici si servono dai 21 anni.
 - Light Up the Point, 3 e 4 luglio, con i fuochi d’artificio del 4 luglio sopra il lago Erie
 - Boardwalk Nights, dal 16 luglio al 15 agosto, martedì esclusi: musica dal vivo, acrobati, giochi e cibo sul Boardwalk e in spiaggia
 - Happy Friar's Fresh-Cut Fries Fest, dal 10 al 12 settembre; cosa c’è nel piatto lo dice già il nome
 - HalloWeekends, in alcune date dal 16 settembre al 31 ottobre
 
-HalloWeekends esiste dal 1997 e nel 2027 festeggia i suoi 30 anni con il motto «30 Years of Fears». Finché non fa buio il parco è delle famiglie, con dolcetto o scherzetto, zucche e labirinti di balle di fieno; poi subentrano i maze horror e le scare zone, con spettacoli nel mezzo. Quali case ci saranno, Cedar Point non l’ha ancora annunciato: ha detto solo che potrebbero tornare alcuni personaggi noti degli anni passati. Nel 2026 la novità era il [labirinto di Diablo](/blog/cedar-point-halloweekends-2026).
+HalloWeekends esiste dal 1997 e nel 2027 festeggia i suoi 30 anni con il motto «30 Years of Fears». Di giorno HalloWeekends è una festa per famiglie, con dolcetto o scherzetto, zucche e labirinti di balle di fieno. La sera aprono i maze horror e le scare zone, e ci sono spettacoli. Per l’anniversario Cedar Point finora annuncia solo che potrebbero tornare alcuni personaggi noti degli anni passati. L’elenco delle case non è ancora uscito. Nel 2026 la novità era il [labirinto di Diablo](/blog/cedar-point-halloweekends-2026).
 
 ## Quanto costano i pass per il 2027
 
@@ -84,9 +82,9 @@ HalloWeekends esiste dal 1997 e nel 2027 festeggia i suoi 30 anni con il motto �
 
 A ogni prezzo vanno aggiunte una commissione fino a 9,99 $ e le tasse.
 
-Il Silver Pass non ha date escluse fino al Labor Day, e nel General Parking parcheggi gratis. Hai il 10 % di sconto su cibo e souvenir e per gli amici puoi comprare biglietti Bring-a-Friend a prezzo ridotto. Vale solo a Cedar Point e non comprende né Cedar Point Shores né HalloWeekends. Per HalloWeekends serve quindi un biglietto a parte, a meno di prendere subito il Gold Pass, che costa 46 $ in più.
+Il Silver Pass non ha date escluse fino al Labor Day, e nel General Parking parcheggi gratis. Hai il 10 % di sconto su cibo e souvenir e per gli amici puoi comprare biglietti Bring-a-Friend a prezzo ridotto. Vale solo a Cedar Point, non a Cedar Point Shores e non per HalloWeekends. Per i maze d’autunno compri un biglietto a parte o prendi subito il Gold Pass.
 
-Chi compra il Silver Pass entro il 30 novembre riceve in omaggio un biglietto Bring-a-Friend, da usare entro il 31 maggio 2027. Quanto costi il pass dal 28 al 30 novembre, Six Flags non l’ha ancora comunicato. Il pass a 89 dollari e il biglietto omaggio per l’amico, quindi, sono garantiti insieme solo fino a venerdì 27.
+Chi compra il Silver Pass entro il 30 novembre riceve in omaggio un biglietto Bring-a-Friend, da usare entro il 31 maggio 2027. Quanto costi il pass dal 28 al 30 novembre, Six Flags non l’ha ancora comunicato. Se vuoi tutti e due, il pass a 89 dollari e il biglietto omaggio per l’amico, compra entro venerdì 27 novembre.
 
 ## Gold, Prestige e Fast Lane
 
@@ -114,11 +112,11 @@ Per i soggiorni dal 1° maggio al 30 giugno 2027, in date selezionate si prenota
 
 ## Sul lago Erie dal 1870
 
-Per il 2027 Cedar Point non ha annunciato nessuna attrazione nuova, e le quattro montagne russe del giorno d’apertura hanno tutte già qualche stagione alle spalle: nel 2000 Millennium Force è stato il primo coaster a circuito completo oltre i 300 piedi (91 metri). Rocky Mountain Construction ha ricostruito nel 2018 le montagne russe in legno Mean Streak, trasformandole in Steel Vengeance. Top Thrill 2 è alto 420 piedi (128 metri) e lancia i treni a 120 mph (193 km/h). La più giovane delle quattro è Siren's Curse, tilt coaster di Vekoma arrivato nel 2025.
+Per il 2027 Cedar Point non ha annunciato nessuna attrazione nuova. La più vecchia delle quattro montagne russe del giorno d’apertura è Millennium Force, che nel 2000 è diventata la prima montagna russa a circuito completo oltre i 300 piedi (91 metri). Rocky Mountain Construction ha ricostruito nel 2018 le montagne russe in legno Mean Streak, trasformandole in Steel Vengeance. Top Thrill 2 è alto 420 piedi (128 metri) e lancia i treni a 120 mph (193 km/h). La più giovane delle quattro è Siren's Curse, tilt coaster di Vekoma arrivato nel 2025.
 
-Cedar Point ha aperto nel 1870 sulla riva del lago Erie, all’attuale 1 Cedar Point Drive di Sandusky. Dopo Lake Compounce è il secondo parco divertimenti più antico ancora in attività negli Stati Uniti. Fino al 1° luglio 2024 era il parco di punta di Cedar Fair; con la fusione è passato a Six Flags. A maggio 2025 il parco contava 18 montagne russe.
+Cedar Point ha aperto nel 1870 sulla riva del lago Erie, all’attuale 1 Cedar Point Drive di Sandusky. Dopo Lake Compounce è il secondo parco divertimenti più antico ancora in attività negli Stati Uniti. Fino al 1° luglio 2024 era il parco di punta di Cedar Fair; con la fusione è passato a Six Flags.
 
-Le novità degli altri parchi sono nella nostra [panoramica del 2027](/blog/novita-parchi-divertimento-2027).
+Se nel 2027 vuoi provare un’attrazione nuova, la trovi nella nostra [panoramica del 2027](/blog/novita-parchi-divertimento-2027), ma non a Sandusky.
 
 [Cedar Point](ref:cedar-point?full)
 
