@@ -2,7 +2,7 @@
 title: 'Phantasialand Wintertraum costs from €29 in the Black Deal'
 translationKey: phantasialand-black-deal-wintertraum
 date: '2026-11-21'
-time: '08:45'
+time: '08:46'
 author: patrick
 mode: published
 featured: false

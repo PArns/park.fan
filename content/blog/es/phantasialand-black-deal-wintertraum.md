@@ -2,7 +2,7 @@
 title: 'Phantasialand vende el Wintertraum desde 29 € con Black Deal'
 translationKey: phantasialand-black-deal-wintertraum
 date: '2026-11-21'
-time: '08:45'
+time: '08:46'
 author: patrick
 mode: published
 featured: false
