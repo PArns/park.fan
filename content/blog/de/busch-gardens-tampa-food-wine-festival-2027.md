@@ -2,7 +2,7 @@
 title: 'Trace Adkins eröffnet die Konzerte in Busch Gardens Tampa'
 translationKey: busch-gardens-tampa-food-wine-festival-2027
 date: '2026-11-21'
-time: '08:30'
+time: '08:45'
 author: patrick
 mode: published
 featured: false
