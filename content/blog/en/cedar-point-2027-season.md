@@ -23,7 +23,7 @@ rideLinks:
 seo:
   title: 'Cedar Point opens May 1, 2027, with an $89 Silver Pass'
   description: >-
-    Cedar Point opens its 2027 season on May 1. Until November 27 the Silver Pass costs $89, the price of one day ticket. Dates, passes, live wait times.
+    Cedar Point opens its 2027 season on May 1. Until November 27 the Silver Pass costs $89, the price of one day ticket. Dates, passes, wait times.
   keywords:
     - Cedar Point 2027
     - Cedar Point 2027 season
