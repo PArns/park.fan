@@ -2,7 +2,7 @@
 title: 'Cedar Point sells its 2027 Silver Pass for $89'
 translationKey: cedar-point-saison-2027
 date: '2026-11-21'
-time: '18:30'
+time: '18:21'
 author: patrick
 mode: published
 featured: false
