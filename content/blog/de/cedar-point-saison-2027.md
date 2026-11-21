@@ -51,7 +51,7 @@ Im Mai öffnet Cedar Point zuerst nur an langen Wochenenden. Offen ist an diesen
 - 13. bis 17. Mai, Donnerstag bis Montag
 - ab Donnerstag, dem 20. Mai, jeden Tag
 
-Dienstags und mittwochs bleibt der Park bis einschließlich 19. Mai zu. Bis Labor Day, Montag, dem 6. September, ist dann jeden Tag offen. Danach öffnet Cedar Point nur noch donnerstags oder freitags bis sonntags, im September am 10. bis 12., 16. bis 19., 23. bis 26. und am 30., im Oktober donnerstags bis sonntags bis zum 31. Die Öffnungszeiten für 2027 hat Six Flags noch nicht veröffentlicht.
+Dienstags und mittwochs bleibt der Park bis einschließlich 19. Mai zu. Bis Labor Day, Montag, dem 6. September, ist dann jeden Tag offen. Danach öffnet Cedar Point nur noch donnerstags oder freitags bis sonntags, im September am 10. bis 12., 16. bis 19., 23. bis 26. und am 30., im Oktober donnerstags bis sonntags bis zum 31. Im Mai hat der Park meist von 10 bis 20 Uhr offen, im Juli meist bis 22 Uhr und an einigen Abenden bis 23 Uhr. Im Oktober geht es an den meisten Tagen bis Mitternacht. Die Zeiten von Cedar Point Shores stehen noch aus.
 
 Der Wasserpark [Cedar Point Shores](ref:cedar-point-shores) macht vier Wochen später auf, am Samstag, dem 29. Mai. Dort gibt es ein Wellenbad, einen Lazy River und den Kinderbereich Lemmy's Lagoon.
 
@@ -87,7 +87,7 @@ Kaufst du den Silver Pass bis zum 30. November, bekommst du ein Bring-a-Friend-T
 
 Der Gold Pass gilt schon für den Rest von 2026 und dann für 2027, in allen Six-Flags-Parks im Mittleren Westen, darunter Cedar Point Shores und Kings Island. HalloWeekends ist eingeschlossen, dazu Parken und 10 Prozent Rabatt. 2026 brauchte man für die Horrorhäuser trotzdem noch den Haunted Attractions Pass.
 
-Prestige gilt in allen Six-Flags-Parks in Nordamerika. Neu sind kostenlose Softdrinks vom Zapfhahn bei jedem Besuch. Dazu kommen Preferred Parking, solange Plätze frei sind, zwei Bring-a-Friend-Tickets im Jahr, 15 Prozent Rabatt, ein VIP-Eingang und ein VIP-Bereich, Rabatt im Hotel und bei jedem Besuch eine einmalige Fast-Lane-Fahrt.
+Prestige gilt in allen Six-Flags-Parks in Nordamerika. Neu sind kostenlose Softdrinks vom Zapfhahn bei jedem Besuch. Dazu kommen Preferred Parking, solange Plätze frei sind, zwei Bring-a-Friend-Tickets im Jahr, 15 Prozent Rabatt, ein VIP-Eingang und ein VIP-Bereich und bei jedem Besuch eine einmalige Fast-Lane-Fahrt.
 
 Die Fast Lane für einen Tag ist noch nicht im Verkauf. Die All Season Fast Lane kostet 1.999 $, so viel wie gut 22 Silver Passes.
 
@@ -105,7 +105,7 @@ Für Aufenthalte vom 1. Mai bis zum 30. Juni 2027 bucht man an ausgewählten Nä
 
 Cedar Point hat 1870 eröffnet und ist nach Lake Compounce der zweitälteste Freizeitpark der USA, der noch in Betrieb ist. Bis zum 1. Juli 2024 war er das Flaggschiff von Cedar Fair, seit der Fusion gehört er zu Six Flags. Im Mai 2025 standen im Park 18 Achterbahnen.
 
-Eine neue Bahn hat Cedar Point für 2027 nicht angekündigt. Von einer neuen Achterbahn ist bisher nur in einem einzelnen Beitrag auf X die Rede. Was andere Parks 2027 bauen, steht in unserem [Überblick zu den Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
+Eine neue Bahn hat Cedar Point für 2027 nicht angekündigt. Was andere Parks 2027 bauen, steht in unserem [Überblick zu den Neuheiten 2027](/blog/freizeitpark-neuheiten-2027).
 
 Millennium Force kam 2000 als erste komplette Achterbahn über 300 Fuß (91 Meter). Steel Vengeance hat Rocky Mountain Construction 2018 aus der Holzachterbahn Mean Streak umgebaut. Top Thrill 2 ist 420 Fuß (128 Meter) hoch und beschleunigt die Züge auf 120 mph (193 km/h). Siren's Curse, ein Tilt-Coaster von Vekoma, ist seit 2025 die jüngste der vier.
 
