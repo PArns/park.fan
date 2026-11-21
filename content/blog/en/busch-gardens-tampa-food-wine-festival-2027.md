@@ -23,7 +23,7 @@ rideLinks: false
 seo:
   title: 'Busch Gardens Tampa: Food & Wine Festival 2027 lineup'
   description: >-
-    Busch Gardens Tampa: Food & Wine Festival 2027, Feb 20 to May 23, concerts by Trace Adkins, Boyz II Men and Flo Rida included with admission. Spots from $9.99.
+    Busch Gardens Tampa: Food & Wine Festival 2027, Feb 20 to May 23, Trace Adkins, Boyz II Men and Flo Rida free with admission. Spots from $9.99.
   keywords:
     - Busch Gardens Tampa
     - Busch Gardens Tampa Food & Wine Festival 2027
@@ -50,7 +50,7 @@ There's no concert on Easter Sunday (March 28) or Mother's Day (May 9). Shows go
 
 ## Who plays which day
 
-On Saturday, April 24, three eighties hard rock bands take the stage one after another from 5 p.m.: White Lion, Great White and Warrant. JoJo Siwa plays the same stage the next day, so one weekend covers both "Cherry Pie" and "Boomerang".
+On Saturday, April 24, White Lion, Great White and Warrant, three eighties rock bands, take the stage from 5 p.m. JoJo Siwa plays the same stage the next day, so one weekend covers both "Cherry Pie" and "Boomerang".
 
 | Date             | Artist                                     | Start     |
 | ---------------- | ------------------------------------------ | --------- |
@@ -91,11 +91,11 @@ General admission costs nothing extra, and the best spots go to whoever gets the
 - Up-Close from $14.99, the second section just behind Stagefront
 - Standard from $9.99, the middle section behind Up-Close, facing the stage head-on
 
-All three include a separate check-in and their own line at the Field Bar. The bar itself is open to everyone; a reservation just gets you served faster. Whether you sit or stand depends on the concert. Spots aren't numbered, so inside your section it's first come, first served again, and Busch Gardens suggests arriving about 30 minutes before the start. Each section is sold until it's full. Sister park SeaWorld Orlando sells the same three tiers at the same prices for its weekend concerts during the [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
+All three include a separate check-in and their own line at the Field Bar. The bar itself is open to everyone; a reservation just gets you served faster. Whether you sit or stand depends on the concert. Spots aren't numbered, so inside your section it's first come, first served again, and Busch Gardens suggests arriving about 30 minutes before the start. Each section is sold until it's full. Sister park SeaWorld Orlando also puts on weekend concerts during its [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, annual passes and blockout dates
 
-In the Black Friday sale, a single-day ticket costs from $71.99 online. The 2027 Fun Card is $94.99 there instead of $148.99, less than two day tickets. It's valid from now until December 31, 2027, at Busch Gardens and at the Adventure Island water park, so it also covers the summer, when the [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) water coaster opens. Parking isn't included with the Fun Card and costs from $34.
+In the Black Friday sale, a single-day ticket costs from $71.99 online. The 2027 Fun Card for Busch Gardens is $94.99 there instead of $148.99, less than two day tickets, or $118.99 instead of $210.99 with the Adventure Island water park. It's valid from now until December 31, 2027, so it also covers the summer, when the [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) water coaster opens. Parking isn't included with the Fun Card and costs from $34.
 
 The Fun Card and the 2027 Bronze pass are blocked out on eight days at Busch Gardens Tampa. Two of them fall during the festival: Friday, March 12, and Saturday, March 27. Dev plays that Saturday, and a Fun Card won't get you in to hear "Bass Down Low". The blockout dates apply to those two only. The Silver pass is on sale for $198 instead of $279, or $16.50 a month, and comes with parking and three guest tickets.
 
@@ -130,4 +130,5 @@ Sources:
 [Blockout dates](https://buschgardens.com/tampa/annual-pass/blockout-dates),
 [Fun Card and annual passes](https://buschgardens.com/tampa/tickets/fun-card/),
 [Tickets](https://buschgardens.com/tampa/tickets),
+[Press release on Simbi Rush](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html),
 [Press release on the 2026 concerts](https://www.prnewswire.com/news-releases/busch-gardens-unveils-a-thrilling-live-music-series-for-2026-featuring-the-strongest-lineup-in-series-history-with-over-25-concerts-302670720.html).

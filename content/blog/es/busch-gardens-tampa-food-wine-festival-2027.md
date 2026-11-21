@@ -50,7 +50,7 @@ El Domingo de Resurrección (28 de marzo) y el Día de la Madre (9 de mayo) no h
 
 ## Quién toca cada día
 
-El sábado 24 de abril, a partir de las 17:00, suben al escenario uno tras otro White Lion, Great White y Warrant, tres bandas de hard rock con éxitos de los ochenta. Al día siguiente, en el mismo escenario, actúa JoJo Siwa. En un solo fin de semana caben así «Cherry Pie» y «Boomerang».
+El sábado 24 de abril, a partir de las 17:00, suben al escenario White Lion, Great White y Warrant, tres bandas de rock de los ochenta. Al día siguiente, en el mismo escenario, actúa JoJo Siwa. En un solo fin de semana caben así «Cherry Pie» y «Boomerang».
 
 | Fecha                 | Artistas                                                  | Hora     |
 | --------------------- | --------------------------------------------------------- | -------- |
@@ -91,11 +91,11 @@ Sin pagar más, escuchas el concierto desde la zona general, y los mejores sitio
 - Up-Close, desde 14,99 $: la segunda, nada más pasar Stagefront
 - Standard, desde 9,99 $: la zona central detrás de Up-Close, con el escenario de frente
 
-Los tres incluyen un check-in propio y una cola propia en la Field Bar. El bar está abierto a todo el mundo; con la reserva solo llegas antes a la cerveza. Que estés sentado o de pie depende del concierto. Los sitios no van numerados, así que dentro de tu zona también elige quien llega primero, y Busch Gardens recomienda estar allí unos 30 minutos antes del inicio. Cada zona se vende hasta que se llena. Los mismos tres niveles, a los mismos precios, existen en el parque hermano SeaWorld Orlando, que durante el [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027) también tiene conciertos los fines de semana.
+Los tres incluyen un check-in propio y una cola propia en la Field Bar. El bar está abierto a todo el mundo; con la reserva solo llegas antes a la cerveza. Que estés sentado o de pie depende del concierto. Los sitios no van numerados, así que dentro de tu zona también elige quien llega primero, y Busch Gardens recomienda estar allí unos 30 minutos antes del inicio. Cada zona se vende hasta que se llena. El parque hermano SeaWorld Orlando también tiene conciertos los fines de semana durante el [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, pase anual y días bloqueados
 
-Con la oferta de Black Friday, la entrada de un día cuesta en línea desde 71,99 $. La Fun Card 2027 baja ahí de 148,99 $ a 94,99 $, menos de lo que cuestan dos entradas de un día. Vale desde ya hasta el 31 de diciembre de 2027 en Busch Gardens y en el parque acuático Adventure Island, así que también en verano, cuando abra la montaña rusa acuática [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). El aparcamiento no entra en la Fun Card y cuesta desde 34 $.
+Con la oferta de Black Friday, la entrada de un día cuesta en línea desde 71,99 $. La Fun Card 2027 de Busch Gardens baja ahí de 148,99 $ a 94,99 $, menos de lo que cuestan dos entradas de un día, y con el parque acuático Adventure Island de 210,99 $ a 118,99 $. Vale desde ya hasta el 31 de diciembre de 2027, así que también en verano, cuando abra la montaña rusa acuática [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). El aparcamiento no entra en la Fun Card y cuesta desde 34 $.
 
 Para la Fun Card y el pase Bronze de 2027, Busch Gardens Tampa tiene ocho días bloqueados, y dos caen en el festival: el viernes 12 de marzo y el sábado 27 de marzo. Ese sábado toca Dev, y con la Fun Card te quedas fuera: ese día no da acceso al parque. Los bloqueos solo afectan a esas dos tarjetas. El pase Silver cuesta en oferta 198 $ en lugar de 279 $, o 16,50 $ al mes, e incluye aparcamiento y tres entradas para invitados.
 
@@ -130,4 +130,5 @@ Fuentes:
 [Días bloqueados](https://buschgardens.com/tampa/annual-pass/blockout-dates),
 [Fun Card y pases anuales](https://buschgardens.com/tampa/tickets/fun-card/),
 [Entradas](https://buschgardens.com/tampa/tickets),
+[Nota de prensa sobre Simbi Rush](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html),
 [Nota de prensa sobre los conciertos de 2026](https://www.prnewswire.com/news-releases/busch-gardens-unveils-a-thrilling-live-music-series-for-2026-featuring-the-strongest-lineup-in-series-history-with-over-25-concerts-302670720.html).

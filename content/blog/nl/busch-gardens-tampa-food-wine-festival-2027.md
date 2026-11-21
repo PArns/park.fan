@@ -23,7 +23,7 @@ rideLinks: false
 seo:
   title: 'Line-up Food & Wine Festival 2027 in Busch Gardens Tampa'
   description: >-
-    Food & Wine Festival 2027 in Busch Gardens Tampa van 20-2 tot 23-5, concerten van Trace Adkins, Boyz II Men en Flo Rida bij de entree inbegrepen. Plekken vanaf 9,99 dollar.
+    Food & Wine Festival 2027 in Busch Gardens Tampa, 20-2 tot 23-5: concerten van Trace Adkins, Boyz II Men en Flo Rida in de entree. Plekken vanaf 9,99 $.
   keywords:
     - Busch Gardens Tampa
     - Busch Gardens Tampa Food & Wine Festival 2027
@@ -50,7 +50,7 @@ Op eerste paasdag (28 maart) en Moederdag (9 mei) blijft het podium leeg. Regen 
 
 ## Wie er op welke dag speelt
 
-Op zaterdag 24 april spelen vanaf 17.00 uur White Lion, Great White en Warrant na elkaar, drie hardrockbands met hits uit de jaren tachtig. Een dag later staat JoJo Siwa op hetzelfde podium, voor een heel ander publiek, al zal een enkele ouder beide dagen komen.
+Op zaterdag 24 april spelen vanaf 17.00 uur White Lion, Great White en Warrant, drie rockbands uit de jaren tachtig. Een dag later staat JoJo Siwa op hetzelfde podium, voor een heel ander publiek, al zal een enkele ouder beide dagen komen.
 
 | Datum          | Artiest                                               | Begin     |
 | -------------- | ----------------------------------------------------- | --------- |
@@ -91,11 +91,11 @@ Zonder toeslag luister je vanaf de vrije plekken, en wie er het eerst is, staat 
 - Up-Close vanaf 14,99 dollar: het tweede vak, direct achter Stagefront
 - Standard vanaf 9,99 dollar: het middelste vak achter Up-Close, recht tegenover het podium
 
-Bij alle drie hoort een eigen check-in en een eigen rij aan de Field Bar. Die bar is voor iedereen open, met een reservering sta je er alleen korter. Of je zit of staat, hangt af van het concert. De plekken zijn niet genummerd, binnen je vak gaat wie het eerst komt weer voor, en Busch Gardens raadt aan om zo'n 30 minuten voor het begin aanwezig te zijn. Een vak wordt verkocht tot het vol is. Dezelfde drie niveaus voor dezelfde prijzen heeft zusterpark SeaWorld Orlando, dat tijdens het [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027) ook in de weekends concerten heeft.
+Bij alle drie hoort een eigen check-in en een eigen rij aan de Field Bar. Die bar is voor iedereen open, met een reservering sta je er alleen korter. Of je zit of staat, hangt af van het concert. De plekken zijn niet genummerd, binnen je vak gaat wie het eerst komt weer voor, en Busch Gardens raadt aan om zo'n 30 minuten voor het begin aanwezig te zijn. Een vak wordt verkocht tot het vol is. Ook zusterpark SeaWorld Orlando heeft tijdens het [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027) in de weekends concerten.
 
 ## Fun Card, jaarkaart en blokkadedagen
 
-Een dagticket kost in de Black Friday-aanbieding online vanaf 71,99 dollar. De Fun Card 2027 kost daar 94,99 dollar in plaats van 148,99 dollar, minder dan twee dagtickets. Hij geldt vanaf nu tot 31 december 2027 in Busch Gardens en in waterpark Adventure Island, dus ook in de zomer, als de waterachtbaan [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) opengaat. Parkeren zit niet bij de Fun Card in en kost vanaf 34 dollar.
+Een dagticket kost in de Black Friday-aanbieding online vanaf 71,99 dollar. De Fun Card 2027 voor Busch Gardens kost daar 94,99 dollar in plaats van 148,99 dollar, minder dan twee dagtickets, met waterpark Adventure Island erbij 118,99 dollar in plaats van 210,99 dollar. Hij geldt vanaf nu tot 31 december 2027, dus ook in de zomer, als de waterachtbaan [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) opengaat. Parkeren zit niet bij de Fun Card in en kost vanaf 34 dollar.
 
 Voor de Fun Card en de Bronze-kaart 2027 heeft Busch Gardens Tampa acht blokkadedagen, waarvan twee in de festivalperiode: vrijdag 12 maart en zaterdag 27 maart. Op die zaterdag speelt Dev, en met een Fun Card kom je die dag het park niet in. De blokkadedagen gelden alleen voor deze twee kaarten. De Silver-kaart kost in de aanbieding 198 dollar in plaats van 279 dollar, of 16,50 dollar per maand, met parkeren en drie gastentickets.
 
@@ -130,4 +130,5 @@ Bronnen:
 [Blokkadedagen](https://buschgardens.com/tampa/annual-pass/blockout-dates),
 [Fun Card en jaarkaarten](https://buschgardens.com/tampa/tickets/fun-card/),
 [Tickets](https://buschgardens.com/tampa/tickets),
+[Persbericht over Simbi Rush](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html),
 [Persbericht over de concerten van 2026](https://www.prnewswire.com/news-releases/busch-gardens-unveils-a-thrilling-live-music-series-for-2026-featuring-the-strongest-lineup-in-series-history-with-over-25-concerts-302670720.html).

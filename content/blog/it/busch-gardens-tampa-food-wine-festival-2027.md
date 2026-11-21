@@ -50,7 +50,7 @@ La domenica di Pasqua (28 marzo) e la festa della mamma (9 maggio) il palco rest
 
 ## Chi suona e in quale giorno
 
-Sabato 24 aprile, dalle 17, si alternano sul palco White Lion, Great White e Warrant, tre band hard rock con i loro successi degli anni Ottanta. La domenica dopo, sullo stesso palco, c'è JoJo Siwa: in un solo fine settimana si passa da «Cherry Pie» a «Boomerang».
+Sabato 24 aprile, dalle 17, salgono sul palco White Lion, Great White e Warrant, tre band rock degli anni Ottanta. La domenica dopo, sullo stesso palco, c'è JoJo Siwa: in un solo fine settimana si passa da «Cherry Pie» a «Boomerang».
 
 | Data            | Artista                                                        | Inizio      |
 | --------------- | -------------------------------------------------------------- | ----------- |
@@ -91,11 +91,11 @@ Senza supplemento ascolti dai posti liberi, e i migliori vanno a chi arriva per 
 - Up-Close da 14,99 $, il secondo settore, subito dietro lo Stagefront
 - Standard da 9,99 $, il settore centrale dietro l'Up-Close, con il palco di fronte
 
-Tutti e tre hanno un check-in a parte e una fila riservata al Field Bar. Il bar resta aperto a tutti: la prenotazione ti fa solo arrivare prima alla birra. Se si sta seduti o in piedi dipende dal concerto. I posti non sono numerati, dentro il tuo settore conta di nuovo l'ordine di arrivo, e Busch Gardens consiglia di presentarsi una mezz'ora prima dell'inizio. Ogni settore si vende fino a esaurimento. Gli stessi tre livelli, agli stessi prezzi, ci sono anche a SeaWorld Orlando, il parco gemello, che per il [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027) organizza a sua volta concerti nel fine settimana.
+Tutti e tre hanno un check-in a parte e una fila riservata al Field Bar. Il bar resta aperto a tutti: la prenotazione ti fa solo arrivare prima alla birra. Se si sta seduti o in piedi dipende dal concerto. I posti non sono numerati, dentro il tuo settore conta di nuovo l'ordine di arrivo, e Busch Gardens consiglia di presentarsi una mezz'ora prima dell'inizio. Ogni settore si vende fino a esaurimento. Anche SeaWorld Orlando, il parco gemello, organizza concerti nel fine settimana per il [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, abbonamento annuale e date di blackout
 
-Con l'offerta del Black Friday un biglietto giornaliero online parte da 71,99 $. La Fun Card 2027 costa 94,99 $ invece di 148,99 $, meno di due biglietti giornalieri. Vale da subito fino al 31 dicembre 2027 a Busch Gardens e nel parco acquatico Adventure Island, quindi anche in estate, quando apre il water coaster [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). Il parcheggio non è compreso nella Fun Card e costa da 34 $.
+Con l'offerta del Black Friday un biglietto giornaliero online parte da 71,99 $. La Fun Card 2027 per Busch Gardens costa 94,99 $ invece di 148,99 $, meno di due biglietti giornalieri, con il parco acquatico Adventure Island 118,99 $ invece di 210,99 $. Vale da subito fino al 31 dicembre 2027, quindi anche in estate, quando apre il water coaster [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). Il parcheggio non è compreso nella Fun Card e costa da 34 $.
 
 A Busch Gardens Tampa la Fun Card e l'abbonamento Bronze 2027 non valgono in otto giorni, e nel periodo del festival sono venerdì 12 marzo e sabato 27 marzo. Quel sabato suona Dev, e per «Bass Down Low» la Fun Card non basta. Le date di blackout riguardano solo queste due tessere. Il Silver in offerta costa 198 $ invece di 279 $, o 16,50 $ al mese, con parcheggio e tre biglietti per ospiti.
 
@@ -130,4 +130,5 @@ Fonti:
 [Date di blackout](https://buschgardens.com/tampa/annual-pass/blockout-dates),
 [Fun Card e abbonamenti annuali](https://buschgardens.com/tampa/tickets/fun-card/),
 [Biglietti](https://buschgardens.com/tampa/tickets),
+[Comunicato stampa su Simbi Rush](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html),
 [Comunicato stampa sui concerti 2026](https://www.prnewswire.com/news-releases/busch-gardens-unveils-a-thrilling-live-music-series-for-2026-featuring-the-strongest-lineup-in-series-history-with-over-25-concerts-302670720.html).

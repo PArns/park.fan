@@ -23,7 +23,7 @@ rideLinks: false
 seo:
   title: 'Concerts du Food & Wine Festival 2027 à Busch Gardens Tampa'
   description: >-
-    Busch Gardens Tampa : Food & Wine Festival 2027 du 20/2 au 23/5, concerts de Trace Adkins, Boyz II Men et Flo Rida compris dans l’entrée. Places dès 9,99 $.
+    Busch Gardens Tampa : Food & Wine Festival 2027 du 20/2 au 23/5, avec Trace Adkins, Boyz II Men et Flo Rida compris dans l’entrée. Places dès 9,99 $.
   keywords:
     - Busch Gardens Tampa
     - Busch Gardens Tampa Food & Wine Festival 2027
@@ -50,7 +50,7 @@ Pas de concert le dimanche de Pâques (28 mars) ni le jour de la fête des mère
 
 ## Qui joue quel jour
 
-Le samedi 24 avril, à partir de 17 h, White Lion, Great White et Warrant se succèdent, trois groupes de hard rock qui ont eu leurs tubes dans les années 1980. Le lendemain, la même scène appartient à JoJo Siwa, et qui vient les deux jours passe en un week-end de « Cherry Pie » à « Boomerang ».
+Le samedi 24 avril, à partir de 17 h, jouent White Lion, Great White et Warrant, trois groupes de rock des années 1980. Le lendemain, la même scène appartient à JoJo Siwa, et qui vient les deux jours passe en un week-end de « Cherry Pie » à « Boomerang ».
 
 | Date            | Artistes                                             | Début      |
 | --------------- | ---------------------------------------------------- | ---------- |
@@ -91,11 +91,11 @@ Sans payer plus, tu écoutes depuis les places libres, et les meilleures revienn
 - Up-Close dès 14,99 $, la deuxième zone, directement derrière Stagefront
 - Standard dès 9,99 $, la zone centrale derrière Up-Close, face à la scène
 
-Les trois niveaux ont leur propre check-in et leur propre file au Field Bar. Le bar est ouvert à tout le monde, la réservation fait seulement gagner du temps pour avoir sa bière. Selon le concert, on est assis ou debout. Les places ne sont pas numérotées, dans ta zone le premier arrivé choisit, et Busch Gardens conseille d’arriver environ 30 minutes avant le début. Chaque zone est vendue jusqu’à ce qu’elle soit complète. Les trois mêmes niveaux, aux mêmes prix, existent aussi chez le parc frère SeaWorld Orlando, qui programme lui aussi des concerts le week-end pendant le [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
+Les trois niveaux ont leur propre check-in et leur propre file au Field Bar. Le bar est ouvert à tout le monde, la réservation fait seulement gagner du temps pour avoir sa bière. Selon le concert, on est assis ou debout. Les places ne sont pas numérotées, dans ta zone le premier arrivé choisit, et Busch Gardens conseille d’arriver environ 30 minutes avant le début. Chaque zone est vendue jusqu’à ce qu’elle soit complète. Le parc frère SeaWorld Orlando programme lui aussi des concerts le week-end pendant le [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, abonnement annuel et dates d’exclusion
 
-En promotion Black Friday, le billet d’une journée coûte en ligne à partir de 71,99 $. La Fun Card 2027 y est à 94,99 $ au lieu de 148,99 $, soit moins que deux billets à la journée. Elle est valable dès maintenant et jusqu’au 31 décembre 2027 à Busch Gardens et au parc aquatique Adventure Island, donc aussi l’été, quand ouvriront les montagnes russes aquatiques [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). Le parking n’est pas compris dans la Fun Card et coûte à partir de 34 $.
+En promotion Black Friday, le billet d’une journée coûte en ligne à partir de 71,99 $. La Fun Card 2027 pour Busch Gardens y est à 94,99 $ au lieu de 148,99 $, soit moins que deux billets à la journée, et à 118,99 $ au lieu de 210,99 $ avec le parc aquatique Adventure Island. Elle est valable dès maintenant et jusqu’au 31 décembre 2027, donc aussi l’été, quand ouvriront les montagnes russes aquatiques [Simbi Rush](/news/simbi-rush-busch-gardens-tampa). Le parking n’est pas compris dans la Fun Card et coûte à partir de 34 $.
 
 Pour la Fun Card et l’abonnement Bronze 2027, huit jours sont exclus à Busch Gardens Tampa, dont deux pendant le festival : le vendredi 12 mars et le samedi 27 mars. Ce samedi-là, c’est Dev qui joue, et pour les détenteurs d’une Fun Card, « Bass Down Low » se jouera sans eux. Ces dates d’exclusion ne concernent que ces deux cartes. L’abonnement Silver coûte en promotion 198 $ au lieu de 279 $, ou 16,50 $ par mois, avec le parking et trois billets invités.
 
@@ -130,4 +130,5 @@ Sources :
 [Dates d’exclusion](https://buschgardens.com/tampa/annual-pass/blockout-dates),
 [Fun Card et abonnements annuels](https://buschgardens.com/tampa/tickets/fun-card/),
 [Billets](https://buschgardens.com/tampa/tickets),
+[Communiqué sur Simbi Rush](https://www.prnewswire.com/news-releases/splash-down-busch-gardens-tampa-bay-to-debut-exhilarating-new-water-ride--north-americas-first-and-worlds-fastest-launched-water-coaster-302944131.html),
 [Communiqué sur les concerts 2026](https://www.prnewswire.com/news-releases/busch-gardens-unveils-a-thrilling-live-music-series-for-2026-featuring-the-strongest-lineup-in-series-history-with-over-25-concerts-302670720.html).
