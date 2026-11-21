@@ -97,7 +97,7 @@ De Quick Pass Ultimate kost € 80. Daarmee ga je één keer door elke Quick-Pas
 
 ## Wat je verder nodig hebt
 
-De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets verkoopt het park alleen online, een kassa bij de ingang heeft het niet, en voor de dag zelf koop je tot 14 uur. Wie om half drie zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
+De Quick Pass kost extra en geldt alleen samen met een geldig dagticket. Dagtickets verkoopt het park alleen online, een kassa bij de ingang heeft het niet, en voor de dag zelf koop je tijdens de Wintertraum tot 16 uur, anders tot 14 uur. Wie om half vijf zonder ticket bij de poort staat, heeft een groter probleem dan de rij bij Black Mamba.
 
 De medewerkers wijzen de plaatsen toe, maar bij Taron helpt het om hun bij het instappen vriendelijk naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant. De minimale lengte geldt met pass net zo goed, voor Taron 1,30 m.
 
@@ -128,3 +128,6 @@ Bronnen: [Quick Pass in de webshop van Phantasialand](https://shop.phantasialand
 
 > [!CORRECTION]
 > 18 november 2026: in de eerste versie stond dat je ook met een Quick Pass je plek in de trein niet zelf kiest. De medewerkers wijzen de plaatsen toe, maar bij Taron helpt het om hun bij het instappen vriendelijk naar een bepaalde plek te vragen, en bij Talocan garandeert de Quick Pass je een plek aan de voorkant.
+
+> [!CORRECTION]
+> 21 november 2026: in de eerste versie stond dat je tickets voor dezelfde dag tot 14 uur koopt. Tijdens de Wintertraum kan dat tot 16 uur, anders tot 14 uur.

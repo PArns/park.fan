@@ -98,7 +98,7 @@ The Quick Pass Ultimate costs €80. It gets you through every Quick Pass entran
 
 ## What else you need
 
-The Quick Pass costs extra and only works with a valid day ticket. Day tickets are sold online only, since there's no ticket office, and for the day itself the park sells them until 2 pm. Turn up at the gate at half past two without one and you have a bigger problem than the queue for Black Mamba.
+The Quick Pass costs extra and only works with a valid day ticket. Day tickets are sold online only, since there's no ticket office, and for the day itself the park sells them until 4 pm during Wintertraum, otherwise until 2 pm. Turn up at the gate at half past four without one and you have a bigger problem than the queue for Black Mamba.
 
 The staff assign the seats, but at Taron it helps to ask them nicely for a particular one at the platform, and at Talocan the Quick Pass guarantees you the front side. The height limits apply with a pass too, 1.30 m for Taron.
 
@@ -129,3 +129,6 @@ Sources: [Quick Pass in the Phantasialand online shop](https://shop.phantasialan
 
 > [!CORRECTION]
 > 18 November 2026: The first version said that even with a Quick Pass you don't get to pick your seat. The staff assign the seats, but at Taron it helps to ask them nicely for a particular one at the platform, and at Talocan the Quick Pass guarantees you the front side.
+
+> [!CORRECTION]
+> 21 November 2026: The first version said that tickets for the same day are on sale until 2 pm. During Wintertraum you can buy them until 4 pm, otherwise until 2 pm.

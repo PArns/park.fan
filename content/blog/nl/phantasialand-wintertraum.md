@@ -2,7 +2,7 @@
 title: 'Wintertraum in Phantasialand loopt tot 24 januari'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-18'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -221,30 +221,22 @@ Om 18.50 uur ga je naar Berlin, haal je bij een kraampje de laatste glühwein en
 
 ## Tickets en prijzen
 
-Tickets koop je alleen online in de webshop van Phantasialand, want een kassa bij de ingang heeft het park niet, en elk ticket geldt voor een vaste dag. Op de dag van je bezoek kun je er tot 14 uur nog een kopen, tegen de prijs van dat moment en zolang de dag niet is uitverkocht. Omboeken of annuleren kan niet.
+Tickets koop je alleen online in de webshop van Phantasialand, want een kassa bij de ingang heeft het park niet, en elk ticket geldt voor een vaste dag. Op de dag van je bezoek kun je er tijdens de Wintertraum tot 16 uur nog een kopen, tegen de prijs van dat moment en zolang de dag niet is uitverkocht. Omboeken of annuleren kan niet.
 
-De prijs hangt af van de dag en kan op elk moment stijgen, omdat elke prijsklasse per dag een beperkt aantal tickets heeft. Tot en met maandag 16 november adverteert het park met een openingskorting, en dan kosten tickets vanaf 30 €, anders tot 78 €.
+De prijs hangt af van de dag en kan op elk moment stijgen, omdat elke prijsklasse per dag een beperkt aantal tickets heeft. Sinds 21 november loopt de [Black Deal](/news/phantasialand-black-deal-wintertraum): in december en januari betaal je voor elke open dag 29 € van maandag tot en met vrijdag en 33 € in het weekend en in de kerstvakantie. Tot wanneer de actie loopt, zegt het park niet; zonder aanbieding vraagt het tot 78 €.
 
-Prijzen voor volwassenen vanaf 12 jaar in de ticketkalender, stand 15 november 2026:
+Prijzen voor volwassenen vanaf 12 jaar in de ticketkalender, stand 21 november 2026:
 
-| Dag                            | Dagticket volwassenen |
-| ------------------------------ | --------------------- |
-| Maandag t/m vrijdag 16–20 nov. | 36 €                  |
-| Zaterdag 21 november           | 42 €                  |
-| Zondag 22 november             | 38 €                  |
-| Maandag 23 november            | 29 €                  |
-| Zaterdag 28 november           | 42 €                  |
-| Woensdag 2 december            | 30 €                  |
-| Zaterdag 5 december            | 39 €                  |
-| Zaterdag 12 december           | uitverkocht           |
-| Maandag 14 december            | 30 €                  |
-| Zaterdag 26 december           | 39 €                  |
-| Zondag 27 december             | 42 €                  |
-| Donderdag 31 december          | 37 €                  |
-| Woensdag 6 januari             | 29 €                  |
-| Zaterdag 9 januari             | 38 €                  |
-| Maandag 11 januari             | 29 €                  |
-| Zondag 24 januari              | 35 €                  |
+| Dagen                                        | Dagticket volwassenen |
+| -------------------------------------------- | --------------------- |
+| November, maandag t/m vrijdag vanaf 23 nov.  | 35 tot 42 €           |
+| November, zaterdag en zondag                 | 39 tot 69 €           |
+| December t/m 22 dec., maandag t/m vrijdag    | 29 €                  |
+| December, zaterdag en zondag                 | 33 €                  |
+| Kerstvakantie, 23 dec. en 26 dec. t/m 5 jan. | 33 €                  |
+| Januari vanaf 6 jan., maandag t/m vrijdag    | 29 €                  |
+| Januari, zaterdag en zondag                  | 33 €                  |
+| Zaterdag 12 december                         | uitverkocht           |
 
 Kinderen van 4 tot en met 11 jaar betalen een eigen, lagere dagprijs. Zij en gasten vanaf 60 jaar moeten bij de ingang hun leeftijd kunnen aantonen.
 
@@ -324,7 +316,7 @@ River Quest, Wakobato en Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Chi
 
 ### Wat kost de Phantasialand Wintertraum?
 
-Een dagticket voor volwassenen kost per dag tussen 29 € op doordeweekse dagen in januari en 42 € op sommige weekenddagen, zoals 27 december. Tickets zijn er alleen online, op de dag zelf tot 14 uur. Kinderen tot en met drie jaar zijn gratis.
+Met de Black Deal kost een dagticket voor volwassenen in december en januari 29 € van maandag tot en met vrijdag en 33 € in het weekend en in de kerstvakantie. In november betaal je per dag tussen 35 en 69 €. Tickets zijn er alleen online, op de dag zelf tijdens de Wintertraum tot 16 uur. Kinderen tot en met drie jaar zijn gratis.
 
 ### Wanneer is het het rustigst tijdens de Wintertraum?
 

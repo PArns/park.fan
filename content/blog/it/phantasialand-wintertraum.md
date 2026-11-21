@@ -2,7 +2,7 @@
 title: 'Il Wintertraum del Phantasialand dura fino al 24 gennaio'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-18'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -220,30 +220,22 @@ Alle 18:50 ti sposti verso Berlin, prendi l’ultimo vin brulé alla bancarella 
 
 ## Biglietti e prezzi
 
-I biglietti si vendono solo online, nel negozio del Phantasialand: all’ingresso non c’è una cassa, e ogni biglietto vale per un giorno preciso. Il giorno stesso della visita lo puoi ancora comprare fino alle 14, al prezzo in vigore in quel momento e finché la giornata non è esaurita. Un biglietto non si può spostare né annullare.
+I biglietti si vendono solo online, nel negozio del Phantasialand: all’ingresso non c’è una cassa, e ogni biglietto vale per un giorno preciso. Durante il Wintertraum lo puoi ancora comprare il giorno stesso della visita fino alle 16, al prezzo in vigore in quel momento e finché la giornata non è esaurita. Un biglietto non si può spostare né annullare.
 
-Il prezzo dipende dal giorno e può salire in qualsiasi momento, perché ogni fascia di prezzo ha un contingente limitato per giornata. Fino a lunedì 16 novembre il parco pubblicizza uno sconto di apertura con biglietti da 30 €, altrimenti si arriva fino a 78 €.
+Il prezzo dipende dal giorno e può salire in qualsiasi momento, perché ogni fascia di prezzo ha un contingente limitato per giornata. Dal 21 novembre c’è il [Black Deal](/news/phantasialand-black-deal-wintertraum): a dicembre e gennaio ogni giorno di apertura costa 29 € dal lunedì al venerdì e 33 € nel fine settimana e nelle vacanze di Natale. Fino a quando dura l’offerta il parco non lo dice, e senza si arriva fino a 78 €.
 
-Prezzi per adulti dai 12 anni nel calendario dei biglietti, aggiornati al 15 novembre 2026:
+Prezzi per adulti dai 12 anni nel calendario dei biglietti, aggiornati al 21 novembre 2026:
 
-| Giorno                              | Biglietto giornaliero adulti |
-| ----------------------------------- | ---------------------------- |
-| da lunedì a venerdì, 16–20 novembre | 36 €                         |
-| sabato 21 novembre                  | 42 €                         |
-| domenica 22 novembre                | 38 €                         |
-| lunedì 23 novembre                  | 29 €                         |
-| sabato 28 novembre                  | 42 €                         |
-| mercoledì 2 dicembre                | 30 €                         |
-| sabato 5 dicembre                   | 39 €                         |
-| sabato 12 dicembre                  | esaurito                     |
-| lunedì 14 dicembre                  | 30 €                         |
-| sabato 26 dicembre                  | 39 €                         |
-| domenica 27 dicembre                | 42 €                         |
-| giovedì 31 dicembre                 | 37 €                         |
-| mercoledì 6 gennaio                 | 29 €                         |
-| sabato 9 gennaio                    | 38 €                         |
-| lunedì 11 gennaio                   | 29 €                         |
-| domenica 24 gennaio                 | 35 €                         |
+| Giorni                                               | Biglietto giornaliero adulti |
+| ---------------------------------------------------- | ---------------------------- |
+| novembre, da lunedì a venerdì dal 23                 | da 35 a 42 €                 |
+| novembre, sabato e domenica                          | da 39 a 69 €                 |
+| dicembre fino al 22, da lunedì a venerdì             | 29 €                         |
+| dicembre, sabato e domenica                          | 33 €                         |
+| vacanze di Natale, 23 e dal 26 dicembre al 5 gennaio | 33 €                         |
+| gennaio dal 6, da lunedì a venerdì                   | 29 €                         |
+| gennaio, sabato e domenica                           | 33 €                         |
+| sabato 12 dicembre                                   | esaurito                     |
 
 I bambini dai 4 agli 11 anni pagano un prezzo giornaliero a parte, più basso. Loro e gli ospiti dai 60 anni in su all’ingresso devono dimostrare l’età.
 
@@ -323,7 +315,7 @@ River Quest, Wakobato e Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Chia
 
 ### Quanto costa il Wintertraum del Phantasialand?
 
-Un biglietto giornaliero per adulti costa, a seconda del giorno, fra i 29 € di molti giorni dal lunedì al venerdì a gennaio e i 42 € di alcuni giorni del fine settimana come il 27 dicembre. I biglietti si comprano solo online, il giorno della visita fino alle 14. I bambini fino a tre anni entrano gratis.
+Col Black Deal un biglietto giornaliero per adulti costa a dicembre e gennaio 29 € dal lunedì al venerdì e 33 € nel fine settimana e nelle vacanze di Natale, a novembre da 35 a 69 € a seconda del giorno. I biglietti si comprano solo online, e durante il Wintertraum il giorno della visita fino alle 16. I bambini fino a tre anni entrano gratis.
 
 ### Quando c’è meno gente al Wintertraum?
 

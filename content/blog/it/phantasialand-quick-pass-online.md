@@ -98,7 +98,7 @@ Il Quick Pass Ultimate costa 80 €. Ti fa passare una volta da ogni ingresso Qu
 
 ## Cos’altro serve
 
-Il Quick Pass si paga a parte e vale solo insieme a un biglietto giornaliero valido. Il parco vende i biglietti giornalieri solo online, una biglietteria all’ingresso non ce l’ha, e per il giorno stesso della visita il tuo lo compri fino alle 14. Chi si presenta al cancello alle due e mezza senza biglietto ha un problema più grosso della coda di Black Mamba.
+Il Quick Pass si paga a parte e vale solo insieme a un biglietto giornaliero valido. Il parco vende i biglietti giornalieri solo online, una biglietteria all’ingresso non ce l’ha, e per il giorno stesso della visita il tuo lo compri fino alle 16 durante il Wintertraum, altrimenti fino alle 14. Chi si presenta al cancello alle quattro e mezza senza biglietto ha un problema più grosso della coda di Black Mamba.
 
 I posti li assegna il personale, ma su Taron aiuta chiedere gentilmente un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore. L’altezza minima vale lo stesso anche con il pass: per Taron 1,30 m.
 
@@ -129,3 +129,6 @@ Fonti: [Quick Pass nel negozio online del Phantasialand](https://shop.phantasial
 
 > [!CORRECTION]
 > 18 novembre 2026: la prima versione diceva che il posto sul treno non lo scegli nemmeno con il pass. I posti li assegna il personale, ma su Taron aiuta chiedere gentilmente un posto preciso all’imbarco, e su Talocan il Quick Pass ti garantisce il lato anteriore.
+
+> [!CORRECTION]
+> 21 novembre 2026: la prima versione diceva che i biglietti per il giorno stesso si comprano fino alle 14. Durante il Wintertraum si può fino alle 16, altrimenti fino alle 14.
