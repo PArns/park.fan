@@ -36,11 +36,11 @@ seo:
     - Trace Adkins Busch Gardens
 ---
 
-On November 19, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) announced the lineup for its Food & Wine Music Festival 2027. From February 20 to May 23, there's a concert on the Festival Field Stage every festival Saturday and on most Sundays. Country singer Trace Adkins goes first. Every set runs at least an hour, and any park ticket lets you listen at no extra charge. Busch Gardens calls its more than 30 concerts in Tampa and Williamsburg the biggest concert series in its history.
+On November 19, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) announced the lineup for its Food & Wine Music Festival 2027. From February 20 to May 23, there's a concert on the Festival Field Stage every festival Saturday and on most Sundays. Country singer Trace Adkins goes first. Every set runs at least an hour, and the only thing you pay extra for is a reserved spot near the stage. Busch Gardens calls its more than 30 concerts in Tampa and Williamsburg the biggest concert series in its history.
 
 ## Festival days and hours
 
-On festival weekends the booths open at noon and stay open until the park closes. Food and drink cost extra, and you have to be 21 to buy alcohol. The park says the booths will serve more than 100 dishes and drinks, a mix of old favorites and new ones.
+On festival weekends the booths open at noon and stay open until the park closes. Food and drink cost extra, and you have to be 21 to buy alcohol. The park says the booths will serve more than 100 dishes and drinks, more than one evening in front of the stage has room for.
 
 There's no concert on Easter Sunday (March 28) or Mother's Day (May 9). Shows go on in the rain, though a storm can cancel one.
 
@@ -91,19 +91,19 @@ In general admission, the best spots go to whoever gets there first. If you want
 - Up-Close from $14.99, the second section just behind Stagefront
 - Standard from $9.99, the middle section behind Up-Close, facing the stage head-on
 
-All three include a separate check-in and their own line at the Field Bar. The bar itself is open to everyone; a reservation just gets you served faster. Whether you sit or stand depends on the concert. Spots aren't numbered, so inside your section it's first come, first served again. Busch Gardens suggests arriving about 30 minutes before the start. Each section is sold until it's full. Sister park SeaWorld Orlando also puts on weekend concerts during its [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
+All three include a separate check-in and their own line at the Field Bar. The bar itself is open to everyone; a reservation just gets you served faster. Whether you sit or stand depends on the concert. Spots aren't numbered, so inside your section it's first come, first served again. Busch Gardens suggests arriving about 30 minutes before the start. Once a section is full, it's off sale and you're back in general admission. If you're in Orlando on a festival weekend anyway, SeaWorld Orlando has weekend concerts too, during its [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, annual passes and blockout dates
 
-In the Black Friday sale, a single-day ticket costs from $71.99 online. In the same sale, the 2027 Fun Card for Busch Gardens is $94.99 instead of $148.99, less than two day tickets. With the Adventure Island water park it's $118.99 instead of $210.99. It's valid from now until December 31, 2027, so it also covers the summer, when the [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) water coaster opens. Parking isn't included with the Fun Card and costs from $34.
+In the Black Friday sale, a single-day ticket costs from $71.99 online. In the same sale, the 2027 Fun Card for Busch Gardens is $94.99 instead of $148.99, less than two day tickets. With the Adventure Island water park it's $118.99. It's valid from now until December 31, 2027, so it also covers the summer, when the [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) water coaster opens. Parking isn't included with the Fun Card and costs from $34.
 
-Busch Gardens Tampa has eight blockout dates for the Fun Card and the 2027 Bronze pass. Two of them fall during the festival: Friday, March 12, and Saturday, March 27. Dev plays that Saturday, and a Fun Card won't get you in to hear "Bass Down Low". The Silver pass has no blockout dates and is on sale for $198 instead of $279, or $16.50 a month, with parking and three guest tickets.
+Busch Gardens Tampa has eight blockout dates for the Fun Card and the 2027 Bronze pass. Two of them fall during the festival: Friday, March 12, and Saturday, March 27. Dev plays that Saturday, and a Fun Card won't get you in to hear "Bass Down Low". The Silver pass has no blockout dates and is on sale for $198, or $16.50 a month, with parking and three guest tickets.
 
-Buy the Fun Card now and you can already use it at [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), which runs on select nights until January 4. This winter, Fun Cards are blocked out on December 24, 26 and 27. To fit a day in Tampa into a trip with Disney and Universal, see our guide [Planning Disney World and Universal Orlando in one trip](/blog/orlando-itinerary-disney-universal).
+Buy the Fun Card now and you can already use it at [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), which runs on select nights until January 4. This winter, Fun Cards are blocked out on December 24, 26 and 27. For the rest of the week, with Disney and Universal, we wrote [Planning Disney World and Universal Orlando in one trip](/blog/orlando-itinerary-disney-universal).
 
 ## What's changed since 2026
 
-In 2026 the event was still the Food, Wine & Garden Festival, and Walker Hayes played the first concert on March 7. The new name swaps Garden for Music, and the 2027 series starts two weeks earlier. The 2026 run ended after 20 concert dates with Pop 2000 on May 9. A separate weekend called Glory in the Gardens followed on May 16 and 17, with Chris Tomlin and Danny Gokey. In 2027 the series runs straight through to May 23 without a separate weekend, with gospel singer Tasha Cobbs Leonard on May 22.
+In 2026 the event was still the Food, Wine & Garden Festival, and Walker Hayes played the first concert on March 7. The series also starts two weeks earlier, on February 20. The 2026 run ended after 20 concert dates with Pop 2000 on May 9. A separate weekend called Glory in the Gardens followed on May 16 and 17, with Chris Tomlin and Danny Gokey. There's no separate weekend this time, and gospel singer Tasha Cobbs Leonard plays May 22 as part of the regular series, which runs through May 23.
 
 Flo Rida, Air Supply, Skillet, Grupo Mania and the Ying Yang Twins all played in 2026 too. Air Supply mark fifty years together in 2026 and play on May 8, the night before Mother's Day.
 
@@ -118,7 +118,7 @@ Flo Rida, Air Supply, Skillet, Grupo Mania and the Ying Yang Twins all played in
 - August 28: Relient K
 - September 4: Taking Back Sunday
 
-Skillet, Vertical Horizon, Soulja Boy and the Ying Yang Twins play both parks, Skillet in Williamsburg seven weeks after Tampa.
+Miss Skillet in Tampa and you get another chance in Williamsburg on June 5. Soulja Boy and the Ying Yang Twins share a night there on August 21, while Tampa has them a month apart.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 

@@ -36,11 +36,11 @@ seo:
     - Trace Adkins Busch Gardens
 ---
 
-[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) hat am 19. November das Programm des Food & Wine Music Festival 2027 vorgestellt. Vom 20. Februar bis zum 23. Mai spielt an jedem Festivalsamstag und an den meisten Sonntagen ein Konzert auf der Festival Field Stage. Den Anfang macht der Countrysänger Trace Adkins. Jeder Auftritt dauert mindestens eine Stunde, und zuhören kannst du mit jedem Parkticket ohne Aufpreis. Busch Gardens nennt seine mehr als 30 Konzerte in Tampa und Williamsburg das größte Konzertprogramm seiner Geschichte.
+[Busch Gardens Tampa Bay](ref:busch-gardens-tampa) hat am 19. November das Programm des Food & Wine Music Festival 2027 vorgestellt. Vom 20. Februar bis zum 23. Mai spielt an jedem Festivalsamstag und an den meisten Sonntagen ein Konzert auf der Festival Field Stage. Den Anfang macht der Countrysänger Trace Adkins. Jeder Auftritt dauert mindestens eine Stunde, und zahlen musst du nur, wenn du einen reservierten Platz vor der Bühne willst. Busch Gardens nennt seine mehr als 30 Konzerte in Tampa und Williamsburg das größte Konzertprogramm seiner Geschichte.
 
 ## Festivaltage und Uhrzeiten
 
-An den Festivalwochenenden öffnen die Stände um 12 Uhr und bleiben bis Parkschluss offen. Essen und Trinken zahlst du extra, Alkohol gibt es ab 21. An den Ständen gibt es nach Angaben des Parks mehr als 100 Gerichte und Getränke, alte Favoriten und neue.
+An den Festivalwochenenden öffnen die Stände um 12 Uhr und bleiben bis Parkschluss offen. Essen und Trinken zahlst du extra, Alkohol gibt es ab 21. Nach Angaben des Parks kommen an den Ständen mehr als 100 Gerichte und Getränke zusammen, mehr, als ein Abend vor der Bühne Magen hat.
 
 Am Ostersonntag (28. März) und am Muttertag (9. Mai) bleibt die Bühne leer. Gespielt wird auch bei Regen, ein Unwetter kann ein Konzert aber ausfallen lassen.
 
@@ -91,19 +91,19 @@ Auf den allgemeinen Plätzen bekommt die besten, wer zuerst da ist. Einen sicher
 - Up-Close ab 14,99 $, der zweite Bereich gleich hinter Stagefront
 - Standard ab 9,99 $, der mittlere Bereich hinter Up-Close, mit Blick gerade auf die Bühne
 
-Zu allen drei gehören ein eigener Check-in und eine eigene Warteschlange an der Field Bar. Die Bar selbst ist für alle offen, mit Reservierung kommst du dort nur schneller an dein Bier. Ob du sitzt oder stehst, hängt vom Konzert ab. Nummeriert sind die Plätze nicht, innerhalb deines Bereichs gilt wieder, wer zuerst kommt. Busch Gardens rät, etwa 30 Minuten vor Beginn da zu sein. Ein Bereich wird verkauft, bis er voll ist. Auch der Schwesterpark SeaWorld Orlando spielt zum [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027) an den Wochenenden Konzerte.
+Zu allen drei gehören ein eigener Check-in und eine eigene Warteschlange an der Field Bar. Die Bar selbst ist für alle offen, mit Reservierung kommst du dort nur schneller an dein Bier. Ob du sitzt oder stehst, hängt vom Konzert ab. Nummeriert sind die Plätze nicht, innerhalb deines Bereichs gilt wieder, wer zuerst kommt. Busch Gardens rät, etwa 30 Minuten vor Beginn da zu sein. Ist ein Bereich voll, verkauft Busch Gardens dafür nichts mehr, und dir bleiben die allgemeinen Plätze. Wer an einem Festivalwochenende ohnehin in Orlando ist, hört auch in SeaWorld Orlando Konzerte, dort zum [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, Jahreskarten und Sperrtage
 
-Ein Tagesticket kostet im Black-Friday-Angebot online ab 71,99 $. Im selben Angebot kostet die Fun Card 2027 für Busch Gardens 94,99 $ statt 148,99 $, also weniger als zwei Tagestickets. Mit dem Wasserpark Adventure Island sind es 118,99 $ statt 210,99 $. Sie gilt ab sofort bis zum 31. Dezember 2027, damit auch im Sommer, wenn die Wasserachterbahn [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) eröffnet. Parken ist bei der Fun Card nicht dabei und kostet ab 34 $.
+Ein Tagesticket kostet im Black-Friday-Angebot online ab 71,99 $. Im selben Angebot kostet die Fun Card 2027 für Busch Gardens 94,99 $ statt 148,99 $, also weniger als zwei Tagestickets. Mit dem Wasserpark Adventure Island kostet sie 118,99 $. Sie gilt ab sofort bis zum 31. Dezember 2027, damit auch im Sommer, wenn die Wasserachterbahn [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) eröffnet. Parken ist bei der Fun Card nicht dabei und kostet ab 34 $.
 
-Für Fun Card und Bronze-Karte 2027 hat Busch Gardens Tampa acht Sperrtage. Zwei davon fallen ins Festival, Freitag, 12. März, und Samstag, 27. März. An diesem Samstag spielt Dev, und mit der Fun Card kommst du zu „Bass Down Low“ nicht in den Park. Die Silver-Karte hat keine Sperrtage und kostet im Angebot 198 $ statt 279 $ oder 16,50 $ im Monat, mit Parken und drei Gästetickets.
+Für Fun Card und Bronze-Karte 2027 hat Busch Gardens Tampa acht Sperrtage. Zwei davon fallen ins Festival, Freitag, 12. März, und Samstag, 27. März. An diesem Samstag spielt Dev, und mit der Fun Card kommst du zu „Bass Down Low“ nicht in den Park. Die Silver-Karte hat keine Sperrtage und kostet im Angebot 198 $ oder 16,50 $ im Monat, mit Parken und drei Gästetickets.
 
-Wer die Fun Card jetzt kauft, kann sie schon in [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026) nutzen, das an ausgewählten Abenden bis zum 4. Januar läuft. Gesperrt sind für Fun Cards in diesem Winter der 24., 26. und 27. Dezember. Wie du einen Tag in Tampa in einen Urlaub mit Disney und Universal einplanst, beschreiben wir in [Disney World und Universal Orlando in einem Urlaub planen](/blog/orlando-urlaub-planen).
+Wer die Fun Card jetzt kauft, kann sie schon in [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026) nutzen, das an ausgewählten Abenden bis zum 4. Januar läuft. Gesperrt sind für Fun Cards in diesem Winter der 24., 26. und 27. Dezember. Für den Rest der Woche, mit Disney und Universal, haben wir [Disney World und Universal Orlando in einem Urlaub planen](/blog/orlando-urlaub-planen) geschrieben.
 
 ## Was gegenüber 2026 anders ist
 
-2026 hieß das Festival noch Food, Wine & Garden Festival, und das erste Konzert spielte Walker Hayes am 7. März. Im neuen Namen steht Music, wo vorher Garden stand, und die Reihe beginnt 2027 zwei Wochen früher. 2026 war nach 20 Konzertterminen am 9. Mai mit Pop 2000 Schluss. Am 16. und 17. Mai folgte noch ein eigenes Wochenende namens Glory in the Gardens mit Chris Tomlin und Danny Gokey. 2027 läuft die Reihe ohne eigenes Wochenende bis zum 23. Mai durch, am 22. Mai mit der Gospelsängerin Tasha Cobbs Leonard.
+2026 hieß das Festival noch Food, Wine & Garden Festival, und das erste Konzert spielte Walker Hayes am 7. März. Los geht es zwei Wochen früher, am 20. Februar. 2026 war nach 20 Konzertterminen am 9. Mai mit Pop 2000 Schluss. Am 16. und 17. Mai folgte noch ein eigenes Wochenende namens Glory in the Gardens mit Chris Tomlin und Danny Gokey. Ein eigenes Wochenende gibt es nicht mehr, dafür singt Tasha Cobbs Leonard am 22. Mai im regulären Programm, das bis zum 23. Mai durchläuft.
 
 Flo Rida, Air Supply, Skillet, Grupo Mania und die Ying Yang Twins waren schon 2026 dabei. Air Supply feiern 2026 fünfzig gemeinsame Jahre und spielen am 8. Mai, am Abend vor dem Muttertag.
 
@@ -118,7 +118,7 @@ Auch [Busch Gardens Williamsburg](ref:busch-gardens-williamsburg) hat Konzerte z
 - 28. August: Relient K
 - 4. September: Taking Back Sunday
 
-In beiden Parks spielen Skillet, Vertical Horizon, Soulja Boy und die Ying Yang Twins, Skillet in Williamsburg sieben Wochen nach Tampa.
+Wer Skillet in Tampa verpasst, hat am 5. Juni in Williamsburg die nächste Gelegenheit, und Soulja Boy und die Ying Yang Twins stehen dort am 21. August gemeinsam auf der Bühne, in Tampa an zwei Wochenenden einen Monat auseinander.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
