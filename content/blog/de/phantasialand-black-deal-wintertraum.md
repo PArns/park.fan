@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Im Dezember und Januar kostet dich der Wintertraum im Phantasialand an jedem offenen Tag nur noch 29 oder 33 €. Am günstigsten und leersten war letzten Winter ein Januartag nach den Ferien.
+  Im Dezember und Januar kostet der Wintertraum im Phantasialand an jedem offenen Tag 29 oder 33 €. Am wenigsten los war letzten Winter unter der Woche im Januar, und diese Tage kosten jetzt 29 €.
 tags:
   - news
   - phantasialand
@@ -44,7 +44,7 @@ seo:
 
 Mit dem Black Deal kostet ein Tagesticket für den Wintertraum im [Phantasialand](ref:phantasialand) an jedem offenen Tag im Dezember und Januar 29 € von Montag bis Freitag und 33 € am Wochenende und in den Weihnachtsferien. Die restlichen Novembertage sind davon ausgenommen. Der Newsletter des Parks mit dem Angebot kam heute bei mir an, und im Ticket-Shop stehen die neuen Preise schon im Kalender. Ein Ende des Angebots nennt der Park nicht, laut Shop können sie jederzeit steigen, und jeder Termin hat nur ein begrenztes Kontingent.
 
-Der Wintertraum selbst läuft bis zum 24. Januar 2027, täglich von 11 bis 20 Uhr. Zum Schluss steigt über Berlin das Feuerwerk von MAGIC SYMPHONY, bei schlechtem Wetter fällt es aus Sicherheitsgründen aus.
+Der Wintertraum selbst läuft bis zum 24. Januar 2027, täglich von 11 bis 20 Uhr, an Silvester nur bis 18 Uhr. Zum Schluss steigt über dem Kaiserplatz in Berlin das Feuerwerk von MAGIC SYMPHONY. Bei starkem Wind oder schlechtem Wetter kann es aus Sicherheitsgründen ausfallen, dann gibt es den Good Night Wish aus Musik und Licht.
 
 ## Welcher Tag was kostet
 
@@ -76,12 +76,12 @@ Tickets gibt es nur online, eine Tageskasse hat das Phantasialand nicht, und jed
 
 Den [Quick Pass kaufst du inzwischen ebenfalls online](/news/phantasialand-quick-pass-online), am Besuchstag ab 11 Uhr und ohne Anstehen am Gästeservice. Er kostet extra und gilt nur zusammen mit dem Tagesticket.
 
-Kinder von 4 bis 11 Jahren zahlen einen eigenen, niedrigeren Preis, der im Kalender erst erscheint, wenn du einen Tag anklickst. Kinder bis drei Jahre kommen umsonst rein, mit Ausweis oder Geburtsurkunde. Geburtstagskinder bis elf Jahre sind an ihrem Geburtstag ebenfalls frei, wenn du den Besuch vorher reservierst.
+Kinder von 4 bis 11 Jahren zahlen einen eigenen, niedrigeren Preis, der im Kalender erst erscheint, wenn du einen Tag anklickst, am Donnerstag, dem 14. Januar, zum Beispiel 27 €. Kinder bis drei Jahre kommen umsonst rein, mit Ausweis oder Geburtsurkunde. Geburtstagskinder bis elf Jahre sind an ihrem Geburtstag ebenfalls frei, wenn du den Besuch vorher online reservierst und einen Ausweis mitbringst.
 
 ```cta-widget
 href: https://shop.phantasialand.de/de/produkte/themenpark-tickets/2026-12?utm_source=park.fan&utm_medium=referral&utm_campaign=black-deal-wintertraum
 label: Wintertraum-Tag im Ticket-Kalender wählen
-text: Das Ticket gilt nur für den gewählten Tag und kommt aufs Smartphone.
+text: Das E-Ticket kommt per E-Mail und gilt nur für den gewählten Tag.
 ```
 
 ## Wann es weniger voll ist
