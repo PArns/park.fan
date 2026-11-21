@@ -2,7 +2,7 @@
 title: 'Le Wintertraum du Phantasialand dure jusqu’au 24 janvier'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-18'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -220,30 +220,22 @@ Vers 17 h, il fait nuit. C’est le moment de refaire Taron, dans la brume écla
 
 ## Billets et prix
 
-Les billets se vendent uniquement en ligne, dans la boutique du Phantasialand. Le parc n’a pas de caisse à l’entrée, et chaque billet vaut pour un jour précis. Le jour même, tu peux encore en acheter un jusqu’à 14 h, au prix du moment et tant que la journée n’est pas complète. Un billet ne s’échange pas et ne s’annule pas.
+Les billets se vendent uniquement en ligne, dans la boutique du Phantasialand. Le parc n’a pas de caisse à l’entrée, et chaque billet vaut pour un jour précis. Pendant le Wintertraum, tu peux encore en acheter un le jour même jusqu’à 16 h, au prix du moment et tant que la journée n’est pas complète. Un billet ne s’échange pas et ne s’annule pas.
 
-Le prix dépend du jour et peut monter à tout moment, parce que chaque palier de prix a un contingent limité par jour. Jusqu’au lundi 16 novembre, le parc fait une offre d’ouverture, avec des billets dès 30 €, sinon ils vont jusqu’à 78 €.
+Le prix dépend du jour et peut monter à tout moment, parce que chaque palier de prix a un contingent limité par jour. Depuis le 21 novembre, le parc propose le [Black Deal](/news/phantasialand-black-deal-wintertraum) : en décembre et en janvier, chaque jour d’ouverture coûte 29 € du lundi au vendredi et 33 € le week-end et pendant les vacances de Noël. Le parc ne dit pas jusqu’à quand court l’offre ; sans elle, le billet monte jusqu’à 78 €.
 
-Prix adulte (dès 12 ans) dans le calendrier des billets, au 15 novembre 2026 :
+Prix adulte (dès 12 ans) dans le calendrier des billets, au 21 novembre 2026 :
 
-| Jour                           | Billet journée adulte |
-| ------------------------------ | --------------------- |
-| du lundi au vendredi, 16–20/11 | 36 €                  |
-| samedi 21 novembre             | 42 €                  |
-| dimanche 22 novembre           | 38 €                  |
-| lundi 23 novembre              | 29 €                  |
-| samedi 28 novembre             | 42 €                  |
-| mercredi 2 décembre            | 30 €                  |
-| samedi 5 décembre              | 39 €                  |
-| samedi 12 décembre             | complet               |
-| lundi 14 décembre              | 30 €                  |
-| samedi 26 décembre             | 39 €                  |
-| dimanche 27 décembre           | 42 €                  |
-| jeudi 31 décembre              | 37 €                  |
-| mercredi 6 janvier             | 29 €                  |
-| samedi 9 janvier               | 38 €                  |
-| lundi 11 janvier               | 29 €                  |
-| dimanche 24 janvier            | 35 €                  |
+| Jours                                            | Billet journée adulte |
+| ------------------------------------------------ | --------------------- |
+| novembre, du lundi au vendredi à partir du 23/11 | 35 à 42 €             |
+| novembre, samedi et dimanche                     | 39 à 69 €             |
+| décembre jusqu’au 22/12, du lundi au vendredi    | 29 €                  |
+| décembre, samedi et dimanche                     | 33 €                  |
+| vacances de Noël, 23/12 et du 26/12 au 5/1       | 33 €                  |
+| janvier à partir du 6/1, du lundi au vendredi    | 29 €                  |
+| janvier, samedi et dimanche                      | 33 €                  |
+| samedi 12 décembre                               | complet               |
 
 Les enfants de 4 à 11 ans paient leur propre tarif journalier, plus bas. Eux et les visiteurs de 60 ans et plus doivent prouver leur âge à l’entrée.
 
@@ -323,7 +315,7 @@ River Quest, Wakobato et Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Chi
 
 ### Combien coûte le Wintertraum du Phantasialand ?
 
-Un billet journée adulte coûte, selon le jour, entre 29 € en semaine en janvier et 42 € certains jours de week-end comme le 27 décembre. Les billets se vendent uniquement en ligne, le jour même jusqu’à 14 h. Les enfants jusqu’à trois ans entrent gratuitement.
+Avec le Black Deal, un billet journée adulte coûte en décembre et en janvier 29 € du lundi au vendredi et 33 € le week-end et pendant les vacances de Noël. En novembre, compte 35 à 69 € selon le jour. Les billets se vendent uniquement en ligne, et pendant le Wintertraum, le jour même jusqu’à 16 h. Les enfants jusqu’à trois ans entrent gratuitement.
 
 ### Quand y a-t-il le moins de monde pendant le Wintertraum ?
 

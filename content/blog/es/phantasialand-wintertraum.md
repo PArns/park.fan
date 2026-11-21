@@ -2,7 +2,7 @@
 title: 'El Wintertraum del Phantasialand dura hasta el 24 de enero'
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-18'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -220,30 +220,22 @@ A las 18:50 vas hacia Berlin, compras en el puesto el último vino caliente y a 
 
 ## Entradas y precios
 
-Las entradas se venden solo online en la tienda del Phantasialand. No hay taquilla en la puerta, y cada entrada vale para un día concreto. El mismo día de la visita aún puedes comprar una hasta las 14:00, al precio que rija en ese momento y siempre que el día no esté agotado. No se puede cambiar de fecha ni cancelar.
+Las entradas se venden solo online en la tienda del Phantasialand. No hay taquilla en la puerta, y cada entrada vale para un día concreto. Durante el Wintertraum, el mismo día de la visita aún puedes comprar una hasta las 16:00, al precio que rija en ese momento y siempre que el día no esté agotado. No se puede cambiar de fecha ni cancelar.
 
-El precio depende del día y puede subir en cualquier momento, porque cada tramo de precio tiene un cupo limitado por día. Hasta el lunes 16 de noviembre el parque anuncia un descuento de apertura con entradas desde 30 €; fuera de esa oferta llegan a 78 €.
+El precio depende del día y puede subir en cualquier momento, porque cada tramo de precio tiene un cupo limitado por día. Desde el 21 de noviembre está en marcha el [Black Deal](/news/phantasialand-black-deal-wintertraum): en diciembre y enero, cualquier día abierto cuesta 29 € de lunes a viernes y 33 € el fin de semana y en las vacaciones de Navidad. El parque no dice cuándo termina la oferta; sin ella, la entrada llega a 78 €.
 
-Precios para adultos a partir de 12 años en el calendario de entradas, a 15 de noviembre de 2026:
+Precios para adultos a partir de 12 años en el calendario de entradas, a 21 de noviembre de 2026:
 
-| Día                            | Entrada de día, adulto |
-| ------------------------------ | ---------------------- |
-| De lunes a viernes, 16-20 nov. | 36 €                   |
-| Sábado 21 de noviembre         | 42 €                   |
-| Domingo 22 de noviembre        | 38 €                   |
-| Lunes 23 de noviembre          | 29 €                   |
-| Sábado 28 de noviembre         | 42 €                   |
-| Miércoles 2 de diciembre       | 30 €                   |
-| Sábado 5 de diciembre          | 39 €                   |
-| Sábado 12 de diciembre         | agotado                |
-| Lunes 14 de diciembre          | 30 €                   |
-| Sábado 26 de diciembre         | 39 €                   |
-| Domingo 27 de diciembre        | 42 €                   |
-| Jueves 31 de diciembre         | 37 €                   |
-| Miércoles 6 de enero           | 29 €                   |
-| Sábado 9 de enero              | 38 €                   |
-| Lunes 11 de enero              | 29 €                   |
-| Domingo 24 de enero            | 35 €                   |
+| Días                                                   | Entrada de día, adulto |
+| ------------------------------------------------------ | ---------------------- |
+| Noviembre, de lunes a viernes desde el 23              | 35 a 42 €              |
+| Noviembre, sábado y domingo                            | 39 a 69 €              |
+| Diciembre hasta el 22, de lunes a viernes              | 29 €                   |
+| Diciembre, sábado y domingo                            | 33 €                   |
+| Vacaciones de Navidad, 23 dic. y del 26 dic. al 5 ene. | 33 €                   |
+| Enero desde el 6, de lunes a viernes                   | 29 €                   |
+| Enero, sábado y domingo                                | 33 €                   |
+| Sábado 12 de diciembre                                 | agotado                |
 
 Los niños de 4 a 11 años pagan un precio de día propio, más bajo. Ellos y los mayores de 60 tienen que acreditar la edad en la entrada.
 
@@ -323,7 +315,7 @@ River Quest, Wakobato y Wözl’s Wassertreter. Taron, F.L.Y., Black Mamba, Chia
 
 ### ¿Cuánto cuesta el Wintertraum del Phantasialand?
 
-La entrada de día para adultos cuesta, según el día, entre 29 € los días laborables de enero y 42 € algunos días de fin de semana, como el 27 de diciembre. Las entradas se venden solo online, el mismo día hasta las 14:00. Los niños de hasta tres años entran gratis.
+Con el Black Deal, la entrada de día para adultos cuesta en diciembre y enero 29 € de lunes a viernes y 33 € el fin de semana y en las vacaciones de Navidad; en noviembre, entre 35 y 69 € según el día. Las entradas se venden solo online, y durante el Wintertraum puedes comprarla el mismo día hasta las 16:00. Los niños de hasta tres años entran gratis.
 
 ### ¿Cuándo hay menos gente en el Wintertraum?
 

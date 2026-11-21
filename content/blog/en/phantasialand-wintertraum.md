@@ -2,7 +2,7 @@
 title: "Phantasialand's Wintertraum runs until 24 January"
 translationKey: phantasialand-wintertraum
 date: '2026-11-15'
-updatedAt: '2026-11-18'
+updatedAt: '2026-11-21'
 author: patrick
 mode: published
 featured: false
@@ -221,30 +221,22 @@ At 6:50 pm head to Berlin, get your last mulled wine from a stall and be on the 
 
 ## Tickets and prices
 
-Phantasialand sells tickets only in its online shop. There's no ticket office at the gate, and every ticket is for a fixed date. On the day of your visit you can still buy one until 2 pm, at that day's price and as long as the day isn't sold out. Tickets can't be changed or cancelled.
+Phantasialand sells tickets only in its online shop. There's no ticket office at the gate, and every ticket is for a fixed date. During Wintertraum you can still buy one on the day of your visit until 4 pm, at that day's price and as long as the day isn't sold out. Tickets can't be changed or cancelled.
 
-The price depends on the day and can go up at any time, because each price tier has a limited allocation per day. Until Monday, 16 November, the park is running an opening discount with tickets from €30, otherwise up to €78.
+The price depends on the day and can go up at any time, because each price tier has a limited allocation per day. Since 21 November the park has been running the [Black Deal](/news/phantasialand-black-deal-wintertraum): every open day in December and January costs €29 from Monday to Friday and €33 at weekends and in the Christmas holidays. The park gives no end date for the offer, and without it a ticket costs up to €78.
 
-Adult prices (age 12 and up) in the ticket calendar, as of 15 November 2026:
+Adult prices (age 12 and up) in the ticket calendar, as of 21 November 2026:
 
-| Day                         | Adult day ticket |
-| --------------------------- | ---------------- |
-| Monday to Friday, 16–20 Nov | €36              |
-| Saturday, 21 November       | €42              |
-| Sunday, 22 November         | €38              |
-| Monday, 23 November         | €29              |
-| Saturday, 28 November       | €42              |
-| Wednesday, 2 December       | €30              |
-| Saturday, 5 December        | €39              |
-| Saturday, 12 December       | sold out         |
-| Monday, 14 December         | €30              |
-| Saturday, 26 December       | €39              |
-| Sunday, 27 December         | €42              |
-| Thursday, 31 December       | €37              |
-| Wednesday, 6 January        | €29              |
-| Saturday, 9 January         | €38              |
-| Monday, 11 January          | €29              |
-| Sunday, 24 January          | €35              |
+| Days                                           | Adult day ticket |
+| ---------------------------------------------- | ---------------- |
+| November, Monday to Friday from 23 Nov         | €35 to €42       |
+| November, Saturday and Sunday                  | €39 to €69       |
+| December up to 22 Dec, Monday to Friday        | €29              |
+| December, Saturday and Sunday                  | €33              |
+| Christmas holidays, 23 Dec and 26 Dec to 5 Jan | €33              |
+| January from 6 Jan, Monday to Friday           | €29              |
+| January, Saturday and Sunday                   | €33              |
+| Saturday, 12 December                          | sold out         |
 
 Children aged 4 to 11 pay a lower price of their own, which also changes by day. They and guests aged 60 and over need proof of age at the gate.
 
@@ -324,7 +316,7 @@ River Quest, Wakobato and Wözl's Wassertreter. Everything else runs; Black Mamb
 
 ### How much does Phantasialand Wintertraum cost?
 
-An adult day ticket costs between €29 on weekdays in January and €42 on some weekend days such as 27 December, depending on the date. Tickets are sold online only, until 2 pm on the day. Children up to three get in free.
+In the Black Deal, an adult day ticket for December and January costs €29 from Monday to Friday and €33 at weekends and in the Christmas holidays. In November it's €35 to €69, depending on the day. Tickets are sold online only, and during Wintertraum you can buy one on the day until 4 pm. Children up to three get in free.
 
 ### When is Wintertraum quietest?
 
