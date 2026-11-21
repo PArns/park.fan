@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Busch Gardens Tampa's Food & Wine Music Festival 2027 has a concert every Saturday and on most Sundays, starting with Trace Adkins on February 20. Any park ticket gets you in.
+  Busch Gardens Tampa's Food & Wine Music Festival 2027 has a concert every Saturday and on most Sundays. Trace Adkins plays first, on February 20, and any park ticket covers the show.
 tags:
   - news
   - busch-gardens-tampa
@@ -21,9 +21,9 @@ parkLinks:
   - busch-gardens-tampa
 rideLinks: false
 seo:
-  title: 'Busch Gardens Tampa: Food & Wine Festival 2027 lineup'
+  title: 'Busch Gardens Tampa: Food & Wine Music Festival 2027 concerts'
   description: >-
-    Busch Gardens Tampa: Food & Wine Festival 2027, Feb 20 to May 23, Trace Adkins, Boyz II Men and Flo Rida free with admission. Spots from $9.99.
+    Busch Gardens Tampa: Food & Wine Music Festival 2027, Feb 20 to May 23, Trace Adkins, Boyz II Men and Flo Rida free with entry. Reserved spots from $9.99.
   keywords:
     - Busch Gardens Tampa
     - Busch Gardens Tampa Food & Wine Festival 2027
@@ -36,11 +36,11 @@ seo:
     - Trace Adkins Busch Gardens
 ---
 
-On November 19, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) announced the lineup for its Food & Wine Music Festival 2027. From February 20 to May 23, there's a concert on the Festival Field Stage every festival Saturday and on most Sundays, and country singer Trace Adkins goes first. Every set runs at least an hour, and any kind of park admission covers it at no extra charge. The park calls it the biggest concert series in its history.
+On November 19, [Busch Gardens Tampa Bay](ref:busch-gardens-tampa) announced the lineup for its Food & Wine Music Festival 2027. From February 20 to May 23, there's a concert on the Festival Field Stage every festival Saturday and on most Sundays. Country singer Trace Adkins goes first. Every set runs at least an hour, and any park ticket lets you listen at no extra charge. Busch Gardens calls its more than 30 concerts in Tampa and Williamsburg the biggest concert series in its history.
 
 ## Festival days and hours
 
-The festival runs on weekends between February 20 and May 23. The booths open at noon and stay open until the park closes. Food and drink cost extra, and you have to be 21 to buy alcohol. The park says the booths will serve more than 100 dishes and drinks, a mix of old favorites and new ones.
+On festival weekends the booths open at noon and stay open until the park closes. Food and drink cost extra, and you have to be 21 to buy alcohol. The park says the booths will serve more than 100 dishes and drinks, a mix of old favorites and new ones.
 
 There's no concert on Easter Sunday (March 28) or Mother's Day (May 9). Shows go on in the rain, though a storm can cancel one.
 
@@ -50,66 +50,66 @@ There's no concert on Easter Sunday (March 28) or Mother's Day (May 9). Shows go
 
 ## Who plays which day
 
-On Saturday, April 24, White Lion, Great White and Warrant, three eighties rock bands, take the stage from 5 p.m. JoJo Siwa plays the same stage the next day, so one weekend covers both "Cherry Pie" and "Boomerang".
+Three eighties rock bands, White Lion, Great White and Warrant, play from 5 p.m. on Saturday, April 24. JoJo Siwa plays the same stage the next day, so one weekend covers both "Cherry Pie" and "Boomerang".
 
-| Date             | Artist                                     | Start     |
-| ---------------- | ------------------------------------------ | --------- |
-| Sat, February 20 | Trace Adkins                               | 7 p.m.    |
-| Sun, February 21 | JET                                        | 6 p.m.    |
-| Sat, February 27 | Toad The Wet Sprocket and Vertical Horizon | 5:30 p.m. |
-| Sun, February 28 | The Red Jumpsuit Apparatus                 | 6 p.m.    |
-| Sat, March 6     | Soulja Boy                                 | 7 p.m.    |
-| Sun, March 7     | Switchfoot                                 | 6 p.m.    |
-| Sat, March 13    | Scotty McCreery                            | 7 p.m.    |
-| Sun, March 14    | Grupo Mania                                | 6 p.m.    |
-| Sat, March 20    | Loud Luxury                                | 7 p.m.    |
-| Sun, March 21    | Shontelle                                  | 6 p.m.    |
-| Sat, March 27    | Dev                                        | 7 p.m.    |
-| Sat, April 3     | Flo Rida                                   | 7 p.m.    |
-| Sun, April 4     | Ying Yang Twins                            | 6 p.m.    |
-| Sat, April 10    | Boyz II Men                                | 7 p.m.    |
-| Sun, April 11    | Ginuwine (event page), TBA (press release) | 6 p.m.    |
-| Sat, April 17    | Skillet                                    | 7 p.m.    |
-| Sun, April 18    | Elvis Crespo                               | 6 p.m.    |
-| Sat, April 24    | White Lion, Great White and Warrant        | 5 p.m.    |
-| Sun, April 25    | JoJo Siwa                                  | 6 p.m.    |
-| Sat, May 1       | Chris Young                                | 7 p.m.    |
-| Sun, May 2       | Alien Ant Farm and Finger Eleven           | 4:30 p.m. |
-| Sat, May 8       | Air Supply                                 | 7 p.m.    |
-| Sat, May 15      | Jesse McCartney                            | 7 p.m.    |
-| Sun, May 16      | TBA (event page), Ginuwine (press release) | TBA       |
-| Sat, May 22      | Tasha Cobbs Leonard                        | 7 p.m.    |
-| Sun, May 23      | Flyleaf with Lacey Sturm                   | 6 p.m.    |
+| Date             | Artist                                     | Start         |
+| ---------------- | ------------------------------------------ | ------------- |
+| Sat, February 20 | Trace Adkins                               | 7 p.m.        |
+| Sun, February 21 | JET                                        | 6 p.m.        |
+| Sat, February 27 | Toad The Wet Sprocket and Vertical Horizon | 5:30 p.m.     |
+| Sun, February 28 | The Red Jumpsuit Apparatus                 | 6 p.m.        |
+| Sat, March 6     | Soulja Boy                                 | 7 p.m.        |
+| Sun, March 7     | Switchfoot                                 | 6 p.m.        |
+| Sat, March 13    | Scotty McCreery                            | 7 p.m.        |
+| Sun, March 14    | Grupo Mania                                | 6 p.m.        |
+| Sat, March 20    | Loud Luxury                                | 7 p.m.        |
+| Sun, March 21    | Shontelle                                  | 6 p.m.        |
+| Sat, March 27    | Dev                                        | 7 p.m.        |
+| Sat, April 3     | Flo Rida                                   | 7 p.m.        |
+| Sun, April 4     | Ying Yang Twins                            | 6 p.m.        |
+| Sat, April 10    | Boyz II Men                                | 7 p.m.        |
+| Sun, April 11    | Ginuwine or not announced                  | 6 p.m.        |
+| Sat, April 17    | Skillet                                    | 7 p.m.        |
+| Sun, April 18    | Elvis Crespo                               | 6 p.m.        |
+| Sat, April 24    | White Lion, Great White and Warrant        | 5 p.m.        |
+| Sun, April 25    | JoJo Siwa                                  | 6 p.m.        |
+| Sat, May 1       | Chris Young                                | 7 p.m.        |
+| Sun, May 2       | Alien Ant Farm and Finger Eleven           | 4:30 p.m.     |
+| Sat, May 8       | Air Supply                                 | 7 p.m.        |
+| Sat, May 15      | Jesse McCartney                            | 7 p.m.        |
+| Sun, May 16      | Ginuwine or not announced                  | not announced |
+| Sat, May 22      | Tasha Cobbs Leonard                        | 7 p.m.        |
+| Sun, May 23      | Flyleaf with Lacey Sturm                   | 6 p.m.        |
 
-The press release and the event page put Ginuwine on different Sundays: the event page says April 11, the press release May 16. Neither names an artist for the other Sunday yet.
+Busch Gardens lists Ginuwine for April 11 on its event page and for May 16 in the press release. It hasn't announced an artist for the other Sunday yet. The event page puts Skillet in the Event Center, not on the Festival Field Stage.
 
 ## General admission and reserved spots
 
-General admission costs nothing extra, and the best spots go to whoever gets there first. If you want a guaranteed place closer to the stage, Busch Gardens sells Reserved Concert Access on top of your park ticket, in three tiers:
+In general admission, the best spots go to whoever gets there first. If you want a guaranteed place closer to the stage, Busch Gardens sells Reserved Concert Access on top of your park ticket:
 
 - Stagefront from $24.99, the first section right in front of the stage
 - Up-Close from $14.99, the second section just behind Stagefront
 - Standard from $9.99, the middle section behind Up-Close, facing the stage head-on
 
-All three include a separate check-in and their own line at the Field Bar. The bar itself is open to everyone; a reservation just gets you served faster. Whether you sit or stand depends on the concert. Spots aren't numbered, so inside your section it's first come, first served again, and Busch Gardens suggests arriving about 30 minutes before the start. Each section is sold until it's full. Sister park SeaWorld Orlando also puts on weekend concerts during its [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
+All three include a separate check-in and their own line at the Field Bar. The bar itself is open to everyone; a reservation just gets you served faster. Whether you sit or stand depends on the concert. Spots aren't numbered, so inside your section it's first come, first served again. Busch Gardens suggests arriving about 30 minutes before the start. Each section is sold until it's full. Sister park SeaWorld Orlando also puts on weekend concerts during its [Seven Seas Food Festival](/news/seaworld-orlando-seven-seas-food-festival-2027).
 
 ## Fun Card, annual passes and blockout dates
 
-In the Black Friday sale, a single-day ticket costs from $71.99 online. The 2027 Fun Card for Busch Gardens is $94.99 there instead of $148.99, less than two day tickets, or $118.99 instead of $210.99 with the Adventure Island water park. It's valid from now until December 31, 2027, so it also covers the summer, when the [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) water coaster opens. Parking isn't included with the Fun Card and costs from $34.
+In the Black Friday sale, a single-day ticket costs from $71.99 online. In the same sale, the 2027 Fun Card for Busch Gardens is $94.99 instead of $148.99, less than two day tickets. With the Adventure Island water park it's $118.99 instead of $210.99. It's valid from now until December 31, 2027, so it also covers the summer, when the [Simbi Rush](/news/simbi-rush-busch-gardens-tampa) water coaster opens. Parking isn't included with the Fun Card and costs from $34.
 
-The Fun Card and the 2027 Bronze pass are blocked out on eight days at Busch Gardens Tampa. Two of them fall during the festival: Friday, March 12, and Saturday, March 27. Dev plays that Saturday, and a Fun Card won't get you in to hear "Bass Down Low". The blockout dates apply to those two only. The Silver pass is on sale for $198 instead of $279, or $16.50 a month, and comes with parking and three guest tickets.
+Busch Gardens Tampa has eight blockout dates for the Fun Card and the 2027 Bronze pass. Two of them fall during the festival: Friday, March 12, and Saturday, March 27. Dev plays that Saturday, and a Fun Card won't get you in to hear "Bass Down Low". The Silver pass has no blockout dates and is on sale for $198 instead of $279, or $16.50 a month, with parking and three guest tickets.
 
 Buy the Fun Card now and you can already use it at [Christmas Town](/news/busch-gardens-tampa-christmas-town-2026), which runs on select nights until January 4. This winter, Fun Cards are blocked out on December 24, 26 and 27. To fit a day in Tampa into a trip with Disney and Universal, see our guide [Planning Disney World and Universal Orlando in one trip](/blog/orlando-itinerary-disney-universal).
 
 ## What's changed since 2026
 
-In 2026 the event was still the Food, Wine & Garden Festival, and Walker Hayes played the first concert on March 7. The new name swaps Garden for Music, and the 2027 series starts two weeks earlier. The 2026 run ended after 20 concert dates with Pop 2000 on May 9, followed by a separate weekend called Glory in the Gardens on May 16 and 17, with Chris Tomlin and Danny Gokey. In 2027 those weekends are part of the regular series, with gospel singer Tasha Cobbs Leonard on May 22.
+In 2026 the event was still the Food, Wine & Garden Festival, and Walker Hayes played the first concert on March 7. The new name swaps Garden for Music, and the 2027 series starts two weeks earlier. The 2026 run ended after 20 concert dates with Pop 2000 on May 9. A separate weekend called Glory in the Gardens followed on May 16 and 17, with Chris Tomlin and Danny Gokey. In 2027 the series runs straight through to May 23 without a separate weekend, with gospel singer Tasha Cobbs Leonard on May 22.
 
 Flo Rida, Air Supply, Skillet, Grupo Mania and the Ying Yang Twins all played in 2026 too. Air Supply mark fifty years together in 2026 and play on May 8, the night before Mother's Day.
 
 ## Concerts at Busch Gardens Williamsburg
 
-[Busch Gardens Williamsburg](ref:busch-gardens-williamsburg) has also announced concerts for its Food & Wine Festival, there starting in May and always on Saturdays. The park hasn't said yet when the Williamsburg festival begins.
+[Busch Gardens Williamsburg](ref:busch-gardens-williamsburg) has also announced concerts for its own Food & Wine Festival, starting in May and always on a Saturday. Busch Gardens Williamsburg hasn't announced when its festival begins.
 
 - May 8: Better Than Ezra and Vertical Horizon
 - June 5: Skillet
@@ -118,7 +118,7 @@ Flo Rida, Air Supply, Skillet, Grupo Mania and the Ying Yang Twins all played in
 - August 28: Relient K
 - September 4: Taking Back Sunday
 
-That puts Skillet in both parks, in Tampa on April 17 and in Williamsburg seven weeks later.
+Skillet, Vertical Horizon, Soulja Boy and the Ying Yang Twins play both parks, Skillet in Williamsburg seven weeks after Tampa.
 
 [Busch Gardens Tampa Bay](ref:busch-gardens-tampa?full)
 
