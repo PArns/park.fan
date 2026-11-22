@@ -2,7 +2,7 @@
 title: 'Le WinterFest de Kings Island finit sur un feu d’artifice'
 translationKey: kings-island-winterfest-2026
 date: '2026-11-22'
-time: '08:30'
+time: '08:35'
 author: patrick
 mode: published
 featured: false
@@ -52,15 +52,26 @@ seo:
     - Six Flags entrée gratuite 65 ans
 ---
 
-[Kings Island](ref:kings-island), à Mason dans l’Ohio, ouvert depuis 1972 et étendu sur 147 hectares, fête le WinterFest du 27 novembre jusqu’au soir du Nouvel An, en semaine de 17 h à 22 h. Le dernier soir, le jeudi 31 décembre, le parc reste ouvert jusqu’à minuit et tire un feu d’artifice au douzième coup. Inutile de chercher un billet spécial pour le réveillon : le billet d’entrée et les Season Passes comprennent les spectacles, les illuminations et la plupart des attractions.
+[Kings Island](ref:kings-island), à Mason dans l’Ohio, ouvert depuis 1972 et étendu sur 147 hectares, fête le WinterFest du 27 novembre jusqu’au soir du Nouvel An, en semaine de 17 h à 22 h. Le dernier soir, le jeudi 31 décembre, le parc est ouvert de 17 h jusqu’au feu d’artifice de minuit. Inutile de chercher un billet spécial pour le réveillon : le billet d’entrée et les Season Passes comprennent les spectacles, les illuminations et la plupart des attractions.
 
 ## Spectacles, illuminations et patinage
 
-Tout se passe autour de l’International Street et de la tour Eiffel d’environ 91 mètres (300 pieds), que Six Flags présente comme un sapin de Noël. L’[Eiffel Tower](ref:kings-island/eiffel-tower) reste fermée tous les jours du WinterFest, et ce sapin-là s’admire donc d’en bas, la tête renversée en arrière. Pour que les millions de lumières dont parle Kings Island s’allument toutes le 27 novembre, les équipes des illuminations passent des mois à vérifier et réparer les guirlandes avant d’en accrocher des milliers. Des centaines d’employés travaillent à l’ensemble du montage.
+Tout se passe autour de l’International Street et de la tour Eiffel d’environ 91 mètres (300 pieds), que Six Flags présente comme un sapin de Noël. L’[Eiffel Tower](ref:kings-island/eiffel-tower) reste fermée tous les jours du WinterFest, et ce sapin-là s’admire donc d’en bas, la tête renversée en arrière. Kings Island parle de millions de lumières. Pour que chaque guirlande s’allume le 27 novembre, les équipes des illuminations passent des mois à les vérifier et à les réparer avant d’en accrocher des milliers, et des centaines d’employés montent la fête.
 
-Lors de la Tree Lighting Ceremony, sur l’International Street, ce sont les Kings Island Holiday Singers qui chantent. Chaque soir, la WinterFest Wonderland Parade traverse le parc. Sur la Tinsel Town Stage, le trio The Mistletones reprend des chansons à la manière des années cinquante, tandis qu’au Festhaus, un big band joue Swinging Into Christmas comme dans les années quarante.
+Lors de la Tree Lighting Ceremony, sur l’International Street, ce sont les Kings Island Holiday Singers qui chantent. Chaque soir, la WinterFest Wonderland Parade traverse le parc.
 
-Les Yuletide Follies sont une revue musicale avec un quatuor vocal, des danseuses et des danseurs. Tinker's Jingle Bell Ball réunit Tinker, Mrs. Claus et les lutins, et au PEANUTS Showplace, What the Dickens raconte une histoire de Dickens à laquelle le public prend part. Charlie, Lucy et Linus font chanter la salle dans It's Christmas, Charlie Brown!, et tous les soirs, les chanteurs de Jingle Jazz montent sur scène en costumes de l’époque de Dickens pour des chants de Noël, comme s’ils s’étaient échappés de What the Dickens. Jack Frost et la Sugar Plum Fairy se passent de scène : on les croise au détour de Midway Merriment. Songs of the Nativity s’accompagne d’une crèche, et sur Enrique's Patio, Holly Holiday mène son String-A-Long. Les horaires des spectacles ne figurent que dans l’application de Kings Island et dans celle de Six Flags.
+- The Mistletones (Tinsel Town Stage) : un trio chante des chansons à la manière des années cinquante
+- Swinging Into Christmas (Festhaus) : un big band joue comme dans les années quarante
+- Yuletide Follies : une revue musicale avec un quatuor vocal, des danseuses et des danseurs
+- Tinker's Jingle Bell Ball : Tinker, Mrs. Claus et les lutins sur scène
+- What the Dickens (PEANUTS Showplace) : une histoire de Dickens à laquelle le public prend part
+- It's Christmas, Charlie Brown! : Charlie, Lucy et Linus font chanter la salle
+- Jingle Jazz : tous les soirs, des chanteurs en costumes de l’époque de Dickens interprètent des chants de Noël, comme s’ils s’étaient échappés de What the Dickens
+- Midway Merriment : Jack Frost et la Sugar Plum Fairy se passent de scène, on les croise en chemin
+- Songs of the Nativity : devant une crèche
+- Holly Holiday's String-A-Long : sur Enrique's Patio
+
+Les horaires des spectacles ne figurent que dans l’application de Kings Island et dans celle de Six Flags.
 
 La patinoire [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) occupe la Royal Fountain, la fontaine de l’International Street, et n’est montée qu’une fois la saison normale terminée. Le patinage est payant, environ 22 dollars en ligne le 27 novembre, et il faut d’abord signer une décharge de responsabilité. Ne coûtent rien le Charlie Brown's Christmas Tree Lot, le North Pole Post Office, où l’on écrit une carte postale au père Noël, et Artisan Alley, avec ses stands d’artisans de la région. Au Sally's Christmas Crafts, les enfants jusqu’à douze ans font du bricolage.
 
@@ -68,7 +79,7 @@ La patinoire [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) occ
 
 Les jours du WinterFest, 32 attractions tournent, patinoire comprise, et 29 le 23 décembre. Côté montagnes russes, on trouve [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) sur ses deux voies, la bleue et la [rouge](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) et le [Woodstock Express](ref:kings-island/woodstock-express). Pour les enfants, il y a entre autres [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies). Les attractions fonctionnent de l’ouverture du parc jusqu’à 22 h. Le week-end, l’espace enfants Beagle Scout Acres n’ouvre qu’à 17 h, et le train [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) ne part de Rivertown Station qu’à partir de 17 h 30.
 
-[The Beast](ref:kings-island/the-beast), [Orion](ref:kings-island/orion) et [Diamondback](ref:kings-island/diamondback) hibernent pendant tout le WinterFest. Le 23 décembre, le Woodstock Express, les [Woodstock Whirlybirds](ref:kings-island/woodstock-whirlybirds) et le [Kite Eating Tree](ref:kings-island/kite-eating-tree) manquent aussi à l’appel. Autour de zéro degré, certaines attractions s’arrêtent selon les consignes de leurs constructeurs, et des spectacles peuvent aussi être annulés.
+[The Beast](ref:kings-island/the-beast), [Orion](ref:kings-island/orion) et [Diamondback](ref:kings-island/diamondback) hibernent pendant tout le WinterFest. Le 23 décembre, le Woodstock Express, les [Woodstock Whirlybirds](ref:kings-island/woodstock-whirlybirds) et le [Kite Eating Tree](ref:kings-island/kite-eating-tree) manquent aussi à l’appel. Par temps de gel, certaines attractions restent à l’arrêt un soir de WinterFest, parce que leurs constructeurs l’imposent, et des spectacles peuvent aussi être annulés.
 
 ## Dates et horaires
 
@@ -98,15 +109,15 @@ Le billet le moins cher, à date fixe et acheté en ligne, coûte 35 dollars du 
 
 Le parking coûte 35 dollars, autant qu’un billet pour le mardi 15 décembre. Pour 45 dollars, le Preferred Parking vous gare juste à côté de l’entrée principale. Sur place, le parking se paie uniquement par carte, pas en espèces.
 
-Le supplément le plus cher est un igloo du Jack Frost's Igloo Village, à 349 dollars le 27 novembre pour huit personnes au plus, avec repas, boissons et concierge. Pour le reste, repas, boissons, souvenirs et photos avec le père Noël se paient à part, comme en été. Patinage et igloos se réservent uniquement en ligne, pour une date fixe, frais et taxes en sus, et l’entrée au parc n’est pas comprise. La décoration de biscuits dans Mrs. Claus' Kitchen coûte 19,99 dollars. Le gobelet souvenir du WinterFest coûte 12,99 dollars. Le premier jour de visite, on le remplit gratuitement toutes les 15 minutes, soit jusqu’à 20 fois sur une soirée de 17 h à 22 h, à condition de régler un réveil. Une baguette à bulles en forme de casse-noisette coûte 29,99 dollars, presque autant que l’entrée les quatre jours les moins chers. Les photos avec le père Noël sont faites par St. Nick's Pics, où les réductions du forfait photo FunPix ne s’appliquent pas.
+Le supplément le plus cher est un igloo du Jack Frost's Igloo Village, à 349 dollars le 27 novembre pour huit personnes au plus, avec repas, boissons et concierge. Repas, boissons et souvenirs se paient à part, comme en été, les photos avec le père Noël chez St. Nick's Pics aussi, et le forfait photo FunPix n’y donne aucune réduction. Patinage et igloos se réservent uniquement en ligne, pour une date fixe, frais et taxes en sus, et l’entrée au parc n’est pas comprise. La décoration de biscuits dans Mrs. Claus' Kitchen coûte 19,99 dollars. Le gobelet souvenir du WinterFest coûte 12,99 dollars. Le premier jour de visite, on le remplit gratuitement toutes les 15 minutes, soit jusqu’à 20 fois sur une soirée de 17 h à 22 h, à condition de régler un réveil. Pour 29,99 dollars, on trouve une baguette à bulles en forme de casse-noisette.
 
 ## Le Silver Pass 2027 pour le Black Friday
 
-Pour le Black Friday, Kings Island vend le Silver Pass 2027 à 99 dollars, le prix d’un billet Good Any Day. D’après les pages du parc, ce prix est garanti jusqu’au 27 novembre ; le communiqué de Six Flags parle du 30. Le pass donne un accès illimité à Kings Island et au parc aquatique Soak City jusqu’au Labor Day 2027, parking compris. Il vaut déjà pour le WinterFest 2026, et qui l’achète maintenant reçoit un billet Bring-A-Friend valable n’importe quel jour d’ouverture jusqu’au 31 décembre. Avec le plan repas et boissons, l’ensemble coûte 199 dollars au lieu de 348. Le Gold Pass coûte 135 dollars, le Prestige Pass 299 dollars, et tous deux valent pour 2026 et 2027. [Cedar Point](/news/cedar-point-saison-2027) vend lui aussi déjà un Silver Pass pour 2027.
+Pour le Black Friday, Kings Island vend le Silver Pass 2027 à 99 dollars, le prix d’un billet Good Any Day. D’après les pages du parc, ce prix est garanti jusqu’au 27 novembre ; le communiqué de Six Flags parle du 30. Le pass donne un accès illimité à Kings Island et au parc aquatique Soak City jusqu’au Labor Day 2027, parking compris. Il vaut déjà pour le WinterFest 2026, et qui l’achète maintenant reçoit un billet Bring-A-Friend valable n’importe quel jour d’ouverture jusqu’au 31 décembre. Avec le plan repas et boissons, l’ensemble coûte 199 dollars au lieu de 348. Le Gold Pass coûte 135 dollars, le Prestige Pass 299 dollars, et tous deux valent pour 2026 et 2027. [Cedar Point](/news/cedar-point-saison-2027), l’autre grand parc Six Flags de l’Ohio, vend lui aussi déjà son Silver Pass 2027.
 
 ## Entrée gratuite dès 65 ans
 
-Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Kings Island jusqu’au soir du Nouvel An. Six Flags propose cette offre pour la première fois cet hiver. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée gratuite est activée lors de la première visite. À chaque passage, on présente à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc d’attractions choisi à l’inscription. Le parking reste à votre charge, et l’offre ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass.
+Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Kings Island jusqu’au soir du Nouvel An. Six Flags propose cette offre pour la première fois cet hiver. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée gratuite est activée lors de la première visite. À chaque passage, on présente à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc d’attractions choisi à l’inscription. L’entrée gratuite ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass, et le parking reste à votre charge.
 
 ## Accès
 
