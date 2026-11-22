@@ -36,10 +36,10 @@ function placeLinks(root: HTMLElement, panel: HTMLElement): AbovePlacement | nul
 
 /**
  * „Mehr ›" beside the planner in the park's title card: the park's outbound links (website,
- * tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on focus
- * or on a tap, so the row holds one call to action instead of a dozen buttons. They close when the
- * pointer leaves the whole title card, not the button: a strip that shut as the mouse crossed to it
- * was the annoying part. The links float over the layout rather than joining
+ * tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on
+ * keyboard focus or on a tap, so the row holds one call to action instead of a dozen buttons. They
+ * close when the pointer leaves the whole title card, not the button: a strip that shut as the
+ * mouse crossed to it was the annoying part. The links float over the layout rather than joining
  * the row: a hover is no input that excuses a layout shift, and a row that wrapped would be one.
  * Where they do not fit beside the button inside the row it stands in (its parent, as wide as the
  * title card's text), they open over the row on an opaque panel, so they never reach the guide's
@@ -104,7 +104,9 @@ export function ParkLinksFlyout({
     <div
       ref={rootRef}
       className={cn('relative', className)}
-      onFocus={() => toggle(true)}
+      // Keyboard focus only: a tap focuses the button in Chromium before its click, so opening on
+      // that focus let the click close the links again in the same tap.
+      onFocus={(event) => event.target.matches(':focus-visible') && toggle(true)}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) toggle(false);
       }}
