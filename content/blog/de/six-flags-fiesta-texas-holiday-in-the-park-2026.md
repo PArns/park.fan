@@ -27,7 +27,7 @@ rideLinks:
 seo:
   title: 'Six Flags Fiesta Texas Holiday in the Park bis 4.1. mit Feuerwerk'
   description: >-
-    Holiday in the Park in Six Flags Fiesta Texas, San Antonio, bis 4.1.2027: Feuerwerk vom 26. bis 31.12., Shows, Öffnungszeiten, Tickets ab 45 Dollar.
+    Holiday in the Park in Six Flags Fiesta Texas, San Antonio, bis 4.1.2027: Feuerwerk vom 26. bis 30.12. und an Silvester, Shows, Öffnungszeiten, Tickets ab 45 Dollar.
   keywords:
     - Six Flags Fiesta Texas Holiday in the Park
     - Six Flags Fiesta Texas Feuerwerk Silvester
@@ -40,38 +40,38 @@ seo:
     - Six Flags freier Eintritt ab 65
 ---
 
-Seit Samstag, dem 21. November, feiert [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio Holiday in the Park, und vom 26. bis 30. Dezember endet dort jeder Abend mit einem Feuerwerk. An Silvester folgt die New Year's 360 Fireworks Celebration, bei der Tausende Raketen oben von den Steinbruchwänden starten, die den Park umgeben, sodass es von allen Seiten knallt. Das Fest läuft an 28 Tagen bis zum 4. Januar 2027. Shows, Lichter und die meisten Bahnen sind im normalen Parkticket enthalten.
+Seit Samstag, dem 21. November, feiert [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio Holiday in the Park. Vom 26. bis 30. Dezember endet dort jeder Abend mit einem Feuerwerk. An Silvester folgt die New Year's 360 Fireworks Celebration. Tausende Raketen starten dann von den Steinbruchwänden rund um den Park und knallen von allen Seiten. Bis zum 4. Januar 2027 hat der Park an 28 Tagen geöffnet. Shows, Lichter und die meisten Bahnen sind im normalen Parkticket enthalten.
 
 ## Feuerwerk nach Weihnachten und an Silvester
 
-Die fünf Abende vom 26. bis 30. Dezember laufen unter dem Namen Countdown to New Year's, mit Lichtern, Essen der Saison und dem Feuerwerk, sofern das Wetter mitspielt. Eine Uhrzeit dafür hat Fiesta Texas noch nicht veröffentlicht. Am 26. Dezember schließt der Park um 21 Uhr, vom 27. bis 30. Dezember schon um 20 Uhr.
+Die fünf Abende vom 26. bis 30. Dezember laufen unter dem Namen Countdown to New Year's, mit Lichtern, Essen der Saison und dem Feuerwerk, sofern das Wetter mitspielt.
 
-An Silvester hat der Park von 12 bis 22 Uhr Ortszeit geöffnet, im Kalender heißt der Tag Rockin' New Years Celebration. Six Flags nennt das Feuerwerk eine 360-Grad-Show, und das Publikum steht mittendrin. Wann die Raketen starten und ob der Abend ein eigenes Ticket braucht, hat der Park bisher nicht bekannt gegeben. Beim Parkschluss um 22 Uhr ist es in Deutschland schon 5 Uhr am Neujahrsmorgen, während San Antonio noch zwei Stunden im alten Jahr vor sich hat.
+An Silvester heißt der Tag im Parkkalender Rockin' New Years Celebration. Um 22 Uhr Ortszeit schließt der Park, in Deutschland ist es dann schon 5 Uhr am Neujahrsmorgen. Das Feuerwerk steigt also vor Mitternacht, San Antonio hat beim Parkschluss noch zwei Stunden im alten Jahr vor sich. Wann die Raketen an den sechs Abenden starten und ob Silvester ein eigenes Ticket braucht, hat Fiesta Texas noch nicht bekannt gegeben.
 
-Silvesterabende kündigt Six Flags in diesem Winter in fünf Parks an, außer in Fiesta Texas in [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm und [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
+Silvesterabende kündigt Six Flags in diesem Winter in fünf Parks an, neben Fiesta Texas in [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm und [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, Baum und Lichter
 
-Bis zum 23. Dezember geht jeden Abend um 18 Uhr in Rockville die Beleuchtung am Weihnachtsbaum an, und der misst 70 Fuß, gut 21 Meter. Danach laufen dort ohne Pause die Holiday Illuminations, Lichter, die im Takt von Weihnachtsliedern schalten. Bei der H2Ho Ho Ho Holiday Fountain spielen Fontänen und Licht zu Musik, und bei den Singing Saps singst du mit einer ganzen Christbaumfamilie Weihnachtslieder. Im Santa's Cottage nimmt der Weihnachtsmann Wunschzettel entgegen, die Fotopakete kosten extra. Die Looney Tunes und die Helden und Schurken von DC stehen zu festen Zeiten für Fotos bereit.
+Bis zum 23. Dezember gehen an jedem Eventabend um 18 Uhr in Rockville die Lichter am 70 Fuß (gut 21 Meter) hohen Weihnachtsbaum an. Danach laufen dort ohne Pause die Holiday Illuminations, Lichter, die im Takt bekannter Lieder schalten, von Klassikern bis zu neuen Hits. Bei der H2Ho Ho Ho Holiday Fountain spielen Fontänen und Licht zu Musik, und bei den Singing Saps singst du mit einer ganzen Christbaumfamilie Weihnachtslieder. Im Santa's Cottage nimmt der Weihnachtsmann Wunschzettel entgegen, die Fotopakete kosten extra. Die Looney Tunes und die Helden und Schurken von DC stehen zu festen Zeiten für Fotos bereit.
 
-| Show                                      | Was läuft                                                             | Uhrzeiten                   |
-| ----------------------------------------- | --------------------------------------------------------------------- | --------------------------- |
-| The Majesty of Christmas                  | die Weihnachtsgeschichte als große Bühnenshow, mit Tieren             | 17 und 20 Uhr               |
-| A Christmas Carol                         | ein eigenes Musical des Parks nach Charles Dickens                    | 15:30 und 18:30 Uhr         |
-| Have Yourself a Looney Tunes Christmas    | die Looney Tunes singen und tanzen zu Weihnachtsliedern               | 14:30, 19:30 und 20:30 Uhr  |
-| Tinker Belles & March of the Toy Soldiers | Spieldosen-Tänzerinnen mit Zinnsoldaten                               | 14, 16 und 19 Uhr           |
-| The Christmas Presence                    | eine Band mit Weihnachtsliedern                                       | 16, 18:30 und 20 Uhr        |
-| Sing Christmas                            | Elfen in Ausbildung singen vor dem Baum in Rockville mit dem Publikum | 15, 17:45 und 19:30 Uhr     |
-| Feliz Navidad with Mariachi Los Soberanos | Weihnachtslieder als Mariachi, nicht an jedem Tag                     | 15:30 und 16:30 Uhr         |
-| Weihnachtssänger a cappella               | im Kalender als Dickens Carolers und Crackaxle Carolers               | 14:45, 16, 17:30, 19:15 Uhr |
+| Show                                      | Was läuft                                                             | Uhrzeiten                      |
+| ----------------------------------------- | --------------------------------------------------------------------- | ------------------------------ |
+| The Majesty of Christmas                  | die Weihnachtsgeschichte als große Bühnenshow, mit Tieren             | 17 und 20 Uhr                  |
+| A Christmas Carol                         | ein eigenes Musical des Parks nach Charles Dickens                    | 15:30 und 18:30 Uhr            |
+| Have Yourself a Looney Tunes Christmas    | die Looney Tunes singen und tanzen zu Weihnachtsliedern               | 14:30, 19:30 und 20:30 Uhr     |
+| Tinker Belles & March of the Toy Soldiers | Spieldosen-Tänzerinnen mit Zinnsoldaten                               | 14, 16 und 19 Uhr              |
+| The Christmas Presence                    | eine Band mit Weihnachtsliedern                                       | 16, 18:30 und 20 Uhr           |
+| Sing Christmas                            | Elfen in Ausbildung singen vor dem Baum in Rockville mit dem Publikum | 15, 17:45 und 19:30 Uhr        |
+| Feliz Navidad with Mariachi Los Soberanos | Weihnachtslieder als Mariachi, nicht an jedem Tag                     | 15:30 und 16:30 Uhr            |
+| Dickens Carolers und Crackaxle Carolers   | Weihnachtslieder a cappella                                           | 14:45, 16, 17:30 und 19:15 Uhr |
 
-Spielzeiten trägt der Parkkalender nur bis zum 23. Dezember ein. Ab dem 26. Dezember steht dort bei keiner Show eine Uhrzeit, und Fiesta Texas schreibt selbst, dass das Programm je nach Tag wechselt. Für die vier Tage im Januar nennt der Park nur noch Lichter und Essen.
+Die Uhrzeiten gelten bis zum 23. Dezember. Ab dem 26. wechselt das Programm laut Fiesta Texas von Tag zu Tag, feste Zeiten gibt es noch nicht. Für die vier Tage im Januar nennt der Park nur noch Lichter und Essen.
 
 ## Termine und Öffnungszeiten
 
-Der Park öffnet an allen Eventtagen um 12 Uhr.
+Der Park öffnet an allen Tagen bis zum 4. Januar um 12 Uhr.
 
-- Samstag, 21., bis Mittwoch, 25. November: bis 21 Uhr, wobei die Bahnen von Montag bis Mittwoch laut Kalender erst um 14 Uhr starten
+- Samstag, 21., bis Mittwoch, 25. November: bis 21 Uhr (Montag bis Mittwoch fahren die Bahnen erst ab 14 Uhr)
 - Thanksgiving, Donnerstag, 26. November: geschlossen
 - Freitag, 27., bis Sonntag, 29. November: bis 21 Uhr
 - an den Wochenenden 5./6. und 12./13. Dezember: bis 21 Uhr
@@ -80,9 +80,12 @@ Der Park öffnet an allen Eventtagen um 12 Uhr.
 - Samstag, 26. Dezember: bis 21 Uhr
 - Sonntag, 27., bis Mittwoch, 30. Dezember: bis 20 Uhr
 - Silvester: bis 22 Uhr
-- Neujahr bis 20 Uhr, Samstag, 2. Januar, bis 21 Uhr, Sonntag, 3. Januar, bis 19 Uhr und Montag, 4. Januar, bis 18 Uhr
+- Freitag, 1. Januar (Neujahr): bis 20 Uhr
+- Samstag, 2. Januar: bis 21 Uhr
+- Sonntag, 3. Januar: bis 19 Uhr
+- Montag, 4. Januar: bis 18 Uhr
 
-An allen anderen Tagen bleibt der Park zu. Der Wasserpark Hurricane Harbor San Antonio ist im Winter geschlossen, die Badehose kann also im Koffer bleiben.
+An allen anderen Tagen bleibt der Park zu. Der Wasserpark Hurricane Harbor San Antonio ist im Winter geschlossen. Die Badehose bleibt im Koffer.
 
 ```best-days-widget slug=six-flags-fiesta-texas
 
@@ -90,7 +93,7 @@ An allen anderen Tagen bleibt der Park zu. Der Wasserpark Hurricane Harbor San A
 
 ## Welche Bahnen fahren
 
-Für die Eventtage im November und Dezember hat der Kalender Fahrzeiten für 38 Bahnen, mit dabei [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), der [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), der [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride und Poltergeist. Für Familien nennt Fiesta Texas auf der Eventseite [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Die Eisenbahn Fiesta Texas Railroad hat Fahrzeiten, die Fiesta Texas Railroad - Western keine. Gully Washer und Bugs' White Water Rapids stehen zu Holiday in the Park still, nass wird an diesen Abenden also höchstens, wer sich am Kakao verschluckt. Welche Bahnen vom 1. bis 4. Januar fahren, steht noch nicht im Kalender.
+An den Eventtagen im November und Dezember fahren 38 Bahnen, mit dabei [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), der [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), der [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride und Poltergeist. Für Familien empfiehlt Fiesta Texas [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Von den beiden Eisenbahnen fährt nur die Fiesta Texas Railroad. Gully Washer und Bugs' White Water Rapids stehen zu Holiday in the Park still, nass wird an diesen Abenden also höchstens, wer sich am Kakao verschluckt. Welche Bahnen vom 1. bis 4. Januar fahren, hat Fiesta Texas noch nicht veröffentlicht.
 
 ```ride-waits-widget park=six-flags-fiesta-texas top=8
 
@@ -98,23 +101,23 @@ Für die Eventtage im November und Dezember hat der Kalender Fahrzeiten für 38 
 
 ## Tickets, Parken und Anfahrt
 
-Das Parkticket gibt es nur online, ab 45 Dollar, und an den Eventtagen ist Holiday in the Park darin enthalten. Das Good Any Day Ticket für einen beliebigen Tag kostet 69 Dollar. Auf beide kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. Parken kostet am Tag ab 39 Dollar, Preferred Parking ab 49 und Valet ab 55 Dollar, ebenfalls plus Gebühr und Steuern. Ins Navi gehört 17000 IH-10 West, San Antonio, TX 78257.
+Das Parkticket gibt es nur online, ab 45 Dollar. Das Good Any Day Ticket für einen beliebigen Tag kostet 69 Dollar. Auf beide kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. Parken kostet am Tag ab 39 Dollar, Preferred Parking ab 49 und Valet ab 55 Dollar, ebenfalls plus Gebühr und Steuern. Ins Navi gehört 17000 IH-10 West, San Antonio, TX 78257.
 
-Essen, Getränke und Souvenirs kosten extra, ebenso einige Weihnachtsangebote. Dazu gehören die S'mores am offenen Feuer, der Kakao im Sammelbecher und ein Seifenblasenstab, die der Park auch online verkauft, ohne dort einen festen Preis zu nennen. Auf der Karte für die Saison stehen ein Festessen mit Truthahn, Honigschinken, Füllung und einer Beilage, eine Truthahnkeule mit Ananasring, Bao mit koreanischem Brathähnchen und Parfaits aus Zuckerplätzchen oder Lebkuchen. Die Holiday Hand Pies sind Empanadas mit Truthahn, Füllung und Soße, dazu ein Cranberry-Dip, also Thanksgiving zum Mitnehmen. Für Erwachsene gibt es Cocktails.
+Essen, Getränke und Souvenirs kosten extra, ebenso einige Weihnachtsangebote. Dazu gehören die S'mores am offenen Feuer, der Kakao im Sammelbecher und ein Seifenblasenstab; alle drei gibt es auch online, einen Preis nennt der Park nicht. Auf der Karte für die Saison stehen ein Festessen mit Truthahn, Honigschinken, Füllung und einer Beilage, eine Truthahnkeule mit Ananasring, Bao mit koreanischem Brathähnchen und Parfaits aus Zuckerplätzchen oder Lebkuchen. Die Holiday Hand Pies sind Empanadas mit Truthahn, Füllung und Soße, dazu ein Cranberry-Dip, Thanksgiving zum Mitnehmen. Für Erwachsene gibt es Cocktails.
 
-## Black Friday: Silver Pass 2027 zum Preis eines Tagestickets
+## Black Friday: Silver Pass 2027 zum Preis des Good Any Day Tickets
 
-Bis zum 27. November verkauft Fiesta Texas den Silver Pass 2027 für 69 Dollar, also für den Preis des Good Any Day Tickets. In der Pressemitteilung von Six Flags läuft das Angebot bis zum 30. November. Laut Parkseite gilt der Pass für beliebig viele Besuche im ganzen Jahr 2027, mit Parken und dem Eintritt in Hurricane Harbor, aber nur in Fiesta Texas. Besuche in diesem Dezember nennt die Seite beim Silver Pass nicht. Die Pressemitteilung spricht dagegen von der Frühjahrs- und Sommersaison 2027. Wer ihn im Black-Friday-Angebot kauft, bekommt ein Bring-A-Friend-Ticket dazu, das bis zum 4. Januar 2027 eingelöst sein muss und damit noch für Holiday in the Park reicht. Mit Ess- und Getränkeplan kostet das Paket 159 statt 287 Dollar.
+Bis zum 27. November verkauft Fiesta Texas den Silver Pass 2027 für 69 Dollar. Er gilt für beliebig viele Besuche, mit Parken und dem Eintritt in Hurricane Harbor, aber nur in Fiesta Texas. Six Flags nennt dafür mal das ganze Jahr 2027, mal Frühjahr und Sommer. Besuche in diesem Dezember erwähnt die Parkseite beim Silver Pass nicht. Wer ihn im Black-Friday-Angebot kauft, bekommt ein Bring-A-Friend-Ticket dazu, das bis zum 4. Januar 2027 eingelöst sein muss und damit noch für Holiday in the Park reicht. Mit Ess- und Getränkeplan kostet das Paket 159 statt 287 Dollar.
 
-Schon in diesem Winter gilt der Gold Pass für 99 Dollar, er läuft 2026 und 2027 in allen Six-Flags-Parks in Texas und Oklahoma, also auch zu Holiday in the Park in [Six Flags Over Texas](/news/six-flags-over-texas-holiday-in-the-park-2026) in Arlington.
+Der Gold Pass für 99 Dollar gilt schon in diesem Winter und 2027 in allen Six-Flags-Parks in Texas und Oklahoma, damit auch zu Holiday in the Park in [Six Flags Over Texas](/news/six-flags-over-texas-holiday-in-the-park-2026) in Arlington.
 
 ## Freier Eintritt ab 65
 
-Wer am 31. Dezember 1961 oder früher geboren ist, kommt bis zum 4. Januar 2027 kostenlos nach Fiesta Texas. Registrieren kannst du dich nur online, nicht am Park, und der erste Besuch muss bis zum 4. Januar stattfinden. Am Eingang zeigst du jedes Mal einen Ausweis mit Geburtsdatum. Der freie Eintritt gilt nur in dem Park, für den du dich angemeldet hast, und nicht im Wasserpark. Parken zahlst du selbst, und Rabatte, Bring-A-Friend-Tickets oder Vorteile eines Season Pass gibt es dazu nicht. Wer dich begleitet, braucht ein eigenes Ticket, Kinder bis zwei Jahre ausgenommen. Six Flags bietet den freien Eintritt in diesem Winter zum ersten Mal an.
+Bist du am 31. Dezember 1961 oder früher geboren, kommst du bis zum 4. Januar 2027 so oft du willst kostenlos nach Fiesta Texas. Anmelden kannst du dich nur online, nicht am Park, freigeschaltet wird der Eintritt bei deinem ersten Besuch. Am Eingang zeigst du jedes Mal einen Ausweis mit Geburtsdatum. Der freie Eintritt gilt nur in dem Park, für den du dich angemeldet hast, und nicht im Wasserpark. Parken zahlst du selbst, und Rabatte, Bring-A-Friend-Tickets oder Vorteile eines Season Pass gibt es dazu nicht. Wer dich begleitet, braucht ein eigenes Ticket, Kinder bis zwei Jahre ausgenommen. Six Flags bietet den freien Eintritt in diesem Winter zum ersten Mal an.
 
 ## Nach dem 4. Januar
 
-Am Samstag, 9. Januar 2027, öffnet Fiesta Texas wieder, von 11 bis 19 Uhr, danach im Januar an den Wochenenden und am Montag, dem 18. Januar. Vom 6. Februar bis 15. März läuft an ausgewählten Tagen das Mardi Gras Festival. Für 2027 baut der Park Werewolf Gorge, eine Familienachterbahn mit Abschuss und 1.256 Metern Strecke, die Six Flags die längste der Welt nennt. Einen Eröffnungstermin hat der Park noch nicht genannt, mehr dazu steht in unseren [Neuheiten für 2027](/blog/freizeitpark-neuheiten-2027).
+Am Samstag, 9. Januar 2027, öffnet Fiesta Texas wieder, von 11 bis 19 Uhr, danach im Januar an den Wochenenden und am Montag, dem 18. Januar. Vom 6. Februar bis 15. März läuft an ausgewählten Tagen das Mardi Gras Festival. Für 2027 baut der Park Werewolf Gorge, laut Six Flags die längste Familienachterbahn mit Abschuss der Welt, mit 1.256 Metern Strecke. Einen Eröffnungstermin hat der Park noch nicht genannt. Mehr dazu steht in unseren [Neuheiten für 2027](/blog/freizeitpark-neuheiten-2027).
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?full)
 
