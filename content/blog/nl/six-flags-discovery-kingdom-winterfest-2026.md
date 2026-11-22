@@ -63,7 +63,7 @@ De poort gaat om 12.00 uur open, het WinterFest begint om 14.00 uur. Op de lijst
 
 Het park is dicht op Thanksgiving (26 november) en op eerste kerstdag. Op kerstavond en van 1 tot en met 3 januari is het park volgens de kalender ook open, maar WinterFest en tijden voor de attracties staan er voor die dagen niet in. Op de evenementenpagina en in het persbericht van Six Flags loopt het WinterFest toch tot en met 3 januari. Bij slecht weer kan het park eerder sluiten of helemaal niet opengaan, en daarvoor krijg je geen rain check of terugbetaling.
 
-Oudejaarsavond is in Vallejo een gewone WinterFest-dag, zonder vuurwerk en zonder feest, en om 20.00 uur is het zoals altijd afgelopen. In [Kings Island](/news/kings-island-winterfest-2026) gaat het vuurwerk om middernacht af, in [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) al vanaf 26 december elke avond, en ook Carowinds, Knott's Berry Farm en Magic Mountain vieren oud en nieuw. Sluit in Vallejo om 20.00 uur de poort, dan is 2027 in Nederland en België al vijf uur oud.
+Oudejaarsavond is in Vallejo een gewone WinterFest-dag, zonder vuurwerk en zonder feest. In [Kings Island](/news/kings-island-winterfest-2026) gaat het vuurwerk om middernacht af, in [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) al vanaf 26 december elke avond, en ook Carowinds, Knott's Berry Farm en Magic Mountain vieren oud en nieuw. Sluit in Vallejo om 20.00 uur de poort, dan is 2027 in Nederland en België al vijf uur oud.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 

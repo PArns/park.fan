@@ -63,7 +63,7 @@ I cancelli aprono alle 12, il WinterFest comincia alle 14. Nell'elenco del parco
 
 Il parco resta chiuso a Thanksgiving (26 novembre) e il giorno di Natale. Secondo il calendario è aperto anche alla vigilia di Natale e dall'1 al 3 gennaio, ma per questi giorni non riporta né il WinterFest né orari per le attrazioni. Sulla pagina dell'evento e nel comunicato stampa di Six Flags il WinterFest dura comunque fino al 3 gennaio. Con il maltempo il parco può chiudere prima o non aprire affatto, e in quel caso non ci sono rain check né rimborsi.
 
-A Vallejo San Silvestro è un normale giorno di WinterFest, senza fuochi d'artificio e senza festa, e alle 20 si chiude come sempre. A [Kings Island](/news/kings-island-winterfest-2026) i fuochi partono a mezzanotte, a [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) ogni sera già dal 26 dicembre, e anche Carowinds, Knott's Berry Farm e Magic Mountain festeggiano San Silvestro. Quando a Vallejo si chiudono i cancelli alle 20, in Italia l'anno nuovo ha già cinque ore.
+A Vallejo San Silvestro è un normale giorno di WinterFest, senza fuochi d'artificio e senza festa. A [Kings Island](/news/kings-island-winterfest-2026) i fuochi partono a mezzanotte, a [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) ogni sera già dal 26 dicembre, e anche Carowinds, Knott's Berry Farm e Magic Mountain festeggiano San Silvestro. Quando a Vallejo si chiudono i cancelli alle 20, in Italia l'anno nuovo ha già cinque ore.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 

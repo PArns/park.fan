@@ -63,7 +63,7 @@ Das Tor geht um 12 Uhr auf, das WinterFest beginnt um 14 Uhr. In der Liste des P
 
 Zu bleibt der Park an Thanksgiving (26. November) und am ersten Weihnachtstag. An Heiligabend und vom 1. bis 3. Januar ist der Park laut Kalender ebenfalls offen, WinterFest und Zeiten für die Bahnen stehen für diese Tage aber nicht darin. Auf der Veranstaltungsseite und in der Pressemitteilung von Six Flags läuft das WinterFest trotzdem bis zum 3. Januar. Bei schlechtem Wetter kann der Park früher schließen oder gar nicht öffnen, Rain Checks oder Erstattungen gibt es dafür nicht.
 
-Silvester ist in Vallejo ein gewöhnlicher WinterFest-Tag ohne Feuerwerk und ohne Feier, um 20 Uhr ist wie immer Schluss. In [Kings Island](/news/kings-island-winterfest-2026) knallt es um Mitternacht, in [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) schon vom 26. Dezember an jeden Abend, und auch Carowinds, Knott's Berry Farm und Magic Mountain feiern Silvester. Wenn in Vallejo um 20 Uhr das Tor zugeht, ist das neue Jahr in Deutschland schon fünf Stunden alt.
+Silvester ist in Vallejo ein gewöhnlicher WinterFest-Tag ohne Feuerwerk und ohne Feier. In [Kings Island](/news/kings-island-winterfest-2026) knallt es um Mitternacht, in [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) schon vom 26. Dezember an jeden Abend, und auch Carowinds, Knott's Berry Farm und Magic Mountain feiern Silvester. Wenn in Vallejo um 20 Uhr das Tor zugeht, ist das neue Jahr in Deutschland schon fünf Stunden alt.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 

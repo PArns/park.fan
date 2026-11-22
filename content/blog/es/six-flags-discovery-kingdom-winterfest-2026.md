@@ -63,7 +63,7 @@ Las puertas se abren a las 12:00 y el WinterFest empieza a las 14:00. En la list
 
 Cierra el día de Acción de Gracias (26 de noviembre) y el día de Navidad. En Nochebuena y del 1 al 3 de enero el parque también abre según el calendario, pero para esos días no figuran ni el WinterFest ni horarios de atracciones. Aun así, en la página del evento y en la nota de prensa de Six Flags el WinterFest dura hasta el 3 de enero. Si hace mal tiempo, el parque puede cerrar antes o no abrir, y en ese caso no hay rain checks ni reembolsos.
 
-En Vallejo, Nochevieja es un día de WinterFest como cualquier otro, sin fuegos artificiales ni fiesta, y el parque cierra a las 20:00 como siempre. En [Kings Island](/news/kings-island-winterfest-2026) hay fuegos a medianoche, en [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026), todas las noches desde el 26 de diciembre, y Carowinds, Knott's Berry Farm y Magic Mountain también celebran la Nochevieja. Cuando a las 20:00 se cierran las puertas en Vallejo, en la España peninsular ya son las cinco de la mañana del día de Año Nuevo, y las uvas llevan horas digeridas.
+En Vallejo, Nochevieja es un día de WinterFest como cualquier otro, sin fuegos artificiales ni fiesta. En [Kings Island](/news/kings-island-winterfest-2026) hay fuegos a medianoche, en [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026), todas las noches desde el 26 de diciembre, y Carowinds, Knott's Berry Farm y Magic Mountain también celebran la Nochevieja. Cuando a las 20:00 se cierran las puertas en Vallejo, en la España peninsular ya son las cinco de la mañana del día de Año Nuevo, y las uvas llevan horas digeridas.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 

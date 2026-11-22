@@ -63,7 +63,7 @@ The gates open at noon and WinterFest starts at 2 p.m. The park's list gives 2 p
 
 The park is closed on Thanksgiving (26 November) and on Christmas Day. The calendar has it open on Christmas Eve and from 1 to 3 January as well, but lists neither WinterFest nor ride times for those days. The Six Flags event page and press release still run WinterFest until 3 January. If the weather closes the park early or keeps it shut all day, Six Flags gives no rain checks or refunds.
 
-New Year's Eve in Vallejo is an ordinary WinterFest day, with no fireworks and no party, and the gates shut at 8 as usual. [Kings Island](/news/kings-island-winterfest-2026) lets the rockets off at midnight, [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) has fireworks every evening from 26 December, and Carowinds, Knott's Berry Farm and Magic Mountain throw New Year's Eve parties too. By the time the gates shut in Vallejo at 8 p.m., the new year in Germany is already five hours old.
+New Year's Eve in Vallejo is an ordinary WinterFest day, with no fireworks and no party. [Kings Island](/news/kings-island-winterfest-2026) lets the rockets off at midnight, [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) has fireworks every evening from 26 December, and Carowinds, Knott's Berry Farm and Magic Mountain throw New Year's Eve parties too. By the time the gates shut in Vallejo at 8 p.m., the new year in Germany is already five hours old.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 
