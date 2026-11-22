@@ -513,7 +513,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-links-flyout.tsx`](../../components/parks/park-links-flyout.tsx)
 
-- `ParkLinksFlyout` _component_: „Mehr ›" beside the planner in the park's title card: the park's outbound links (website, tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on focus or on a tap, so the row holds one call to action …
+- `ParkLinksFlyout` _component_: „Mehr ›" beside the planner in the park's title card: the park's outbound links (website, tickets, Wikipedia, socials) slide out to its right when the pointer reaches the button, on keyboard focus or on a tap, so the row holds one call to …
 
 ### [`park-live-link.tsx`](../../components/parks/park-live-link.tsx)
 
