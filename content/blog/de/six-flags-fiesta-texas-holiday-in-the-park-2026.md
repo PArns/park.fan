@@ -27,7 +27,7 @@ rideLinks:
 seo:
   title: 'Six Flags Fiesta Texas Holiday in the Park bis 4.1. mit Feuerwerk'
   description: >-
-    Holiday in the Park in Six Flags Fiesta Texas, San Antonio, bis 4.1.2027: Feuerwerk vom 26. bis 30.12. und an Silvester, Shows, Öffnungszeiten, Tickets ab 45 Dollar.
+    Holiday in the Park in Six Flags Fiesta Texas bis 4.1.2027: Feuerwerk vom 26. bis 30.12. und an Silvester, Shows, Öffnungszeiten, Tickets ab 45 Dollar.
   keywords:
     - Six Flags Fiesta Texas Holiday in the Park
     - Six Flags Fiesta Texas Feuerwerk Silvester
