@@ -44,15 +44,15 @@ Sinds zaterdag 21 november is het Holiday in the Park in [Six Flags Fiesta Texas
 
 ## Vuurwerk na kerst en op oudejaarsavond
 
-De vijf avonden tussen kerst en oudejaarsdag heten Countdown to New Year's. Er zijn lichtjes, seizoensgerechten en vuurwerk, als het weer meewerkt.
+De vijf avonden tussen kerst en oudejaarsdag noemt Six Flags Countdown to New Year's, en het vuurwerk belooft het park alleen als het weer meewerkt.
 
-Op 31 december staat de dag als Rockin' New Years Celebration in de parkkalender. Het park sluit om 22.00 uur plaatselijke tijd, en dan is het in Nederland al 5.00 uur 's ochtends op nieuwjaarsdag. Het vuurwerk gaat dus voor middernacht af: bij sluitingstijd heeft San Antonio nog twee uur van het oude jaar te gaan. Hoe laat de pijlen op die zes avonden opstijgen en of je voor oudejaarsavond een apart ticket nodig hebt, heeft Fiesta Texas nog niet bekendgemaakt.
+Op 31 december staat de dag als Rockin' New Years Celebration in de parkkalender. Het park sluit om 22.00 uur plaatselijke tijd, en dan is het in Nederland al 5.00 uur 's ochtends op nieuwjaarsdag. Middernacht maakt in San Antonio dus niemand in het park mee; de pijlen gaan uiterlijk twee uur eerder de lucht in. Hoe laat de pijlen op die zes avonden opstijgen en of je voor oudejaarsavond een apart ticket nodig hebt, heeft Fiesta Texas nog niet bekendgemaakt.
 
 Six Flags kondigt deze winter in vijf parken een oudejaarsavond aan: naast Fiesta Texas ook in [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm en [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, kerstboom en lichtjes
 
-Tot en met 23 december gaan op elke evenementavond om 18.00 uur in Rockville de lichtjes aan in de 70 voet (ruim 21 meter) hoge kerstboom. Daarna lopen daar zonder pauze de Holiday Illuminations, lichtjes die meeknipperen op bekende liedjes, van klassiekers tot nieuwe hits. Bij de H2Ho Ho Ho Holiday Fountain dansen fonteinen en licht op muziek, en bij de Singing Saps zing je kerstliedjes met een complete familie kerstbomen. In Santa's Cottage neemt de kerstman verlanglijstjes in ontvangst; de fotopakketten betaal je apart. De Looney Tunes en de helden en schurken van DC staan op vaste tijden klaar voor een foto.
+Tot en met 23 december gaan op elke evenementavond om 18.00 uur in Rockville de lichtjes aan in de 70 voet (ruim 21 meter) hoge kerstboom. Daarna knipperen daar zonder pauze de lichtjes van de Holiday Illuminations op de maat van de muziek. Bij de H2Ho Ho Ho Holiday Fountain dansen fonteinen en licht op muziek, en bij de Singing Saps zing je kerstliedjes met een complete familie kerstbomen. In Santa's Cottage neemt de kerstman verlanglijstjes in ontvangst; de fotopakketten betaal je apart. De Looney Tunes en de helden en schurken van DC staan op vaste tijden klaar voor een foto.
 
 | Show                                      | Wat er te zien is                                                   | Tijden                           |
 | ----------------------------------------- | ------------------------------------------------------------------- | -------------------------------- |
@@ -69,14 +69,12 @@ Deze tijden gelden tot en met 23 december. Vanaf de 26e wisselt het programma vo
 
 ## Data en openingstijden
 
-Op alle dagen tot en met 4 januari gaat het park om 12.00 uur open.
+Op de dagen in deze lijst gaat het park om 12.00 uur open, op alle andere dagen blijft het dicht.
 
 - zaterdag 21 tot en met woensdag 25 november: tot 21.00 uur (maandag tot en met woensdag rijden de attracties pas vanaf 14.00 uur)
-- donderdag 26 november, Thanksgiving: gesloten
 - vrijdag 27 tot en met zondag 29 november: tot 21.00 uur
 - de weekenden van 5 en 6 en van 12 en 13 december: tot 21.00 uur
 - vrijdag 18 tot en met woensdag 23 december: tot 21.00 uur
-- 24 en 25 december: gesloten
 - zaterdag 26 december: tot 21.00 uur
 - zondag 27 tot en met woensdag 30 december: tot 20.00 uur
 - oudejaarsdag: tot 22.00 uur
@@ -85,7 +83,7 @@ Op alle dagen tot en met 4 januari gaat het park om 12.00 uur open.
 - zondag 3 januari: tot 19.00 uur
 - maandag 4 januari: tot 18.00 uur
 
-Op alle andere dagen is het park dicht. Waterpark Hurricane Harbor San Antonio is in de winter gesloten, dus de zwembroek mag thuisblijven.
+Waterpark Hurricane Harbor San Antonio is in de winter gesloten.
 
 ```best-days-widget slug=six-flags-fiesta-texas
 
@@ -93,7 +91,7 @@ Op alle andere dagen is het park dicht. Waterpark Hurricane Harbor San Antonio i
 
 ## Welke attracties draaien
 
-Op de evenementdagen in november en december draaien 38 attracties, waaronder [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), de [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), de [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride en Poltergeist. Voor gezinnen raadt Fiesta Texas [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority) aan. Van de twee treinen rijdt alleen de Fiesta Texas Railroad. Gully Washer en Bugs' White Water Rapids staan tijdens Holiday in the Park stil; nat word je op deze avonden alleen als je chocolademelk morst. Welke attracties van 1 tot en met 4 januari draaien, heeft Fiesta Texas nog niet gepubliceerd.
+Op de evenementdagen in november en december draaien 38 attracties (de lijst voor januari ontbreekt nog), waaronder [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), de [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), de [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride en Poltergeist. Voor gezinnen raadt Fiesta Texas [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority) aan. Van de twee treinen rijdt alleen de Fiesta Texas Railroad. Gully Washer en Bugs' White Water Rapids staan tijdens Holiday in the Park stil; nat word je op deze avonden alleen als je chocolademelk morst.
 
 ```ride-waits-widget park=six-flags-fiesta-texas top=8
 
@@ -103,7 +101,7 @@ Op de evenementdagen in november en december draaien 38 attracties, waaronder [I
 
 Het parkticket koop je alleen online, vanaf $45. Een Good Any Day Ticket, geldig op een dag naar keuze, kost $69. Bij allebei komen nog maximaal $9,99 administratiekosten en belasting. Parkeren kost vanaf $39 per dag, Preferred Parking vanaf $49 en valet vanaf $55, ook telkens plus kosten en belasting. Het adres voor de navigatie is 17000 IH-10 West, San Antonio, TX 78257.
 
-Eten, drinken en souvenirs betaal je apart, net als een paar kerstextra's: s'mores boven het open vuur, chocolademelk in een verzamelbeker en een bellenblaasstaf. Die drie zijn ook online te koop, maar een prijs geeft het park niet. Op de seizoenskaart staan een feestmaal met kalkoen, honingham, vulling en een bijgerecht, een kalkoenbout met een ananasring, bao met Koreaanse gefrituurde kip en parfaits van suikerkoekjes of peperkoek. De Holiday Hand Pies zijn empanadas met kalkoen, vulling en jus, met een cranberrydip erbij: Thanksgiving om mee te nemen. Volwassenen kunnen cocktails bestellen.
+Een paar kerstextra's betaal je apart: s'mores boven het open vuur, chocolademelk in een verzamelbeker en een bellenblaasstaf. Die drie zijn ook online te koop, maar een prijs geeft het park niet. Op de seizoenskaart staan een feestmaal met kalkoen, honingham, vulling en een bijgerecht, een kalkoenbout met een ananasring, bao met Koreaanse gefrituurde kip en parfaits van suikerkoekjes of peperkoek. De Holiday Hand Pies zijn empanadas met kalkoen, vulling en jus, met een cranberrydip erbij: Thanksgiving om mee te nemen. Volwassenen kunnen cocktails bestellen.
 
 ## Black Friday: Silver Pass 2027 voor de prijs van een Good Any Day Ticket
 
@@ -117,7 +115,7 @@ Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met 4 januari 20
 
 ## Na 4 januari
 
-Op zaterdag 9 januari 2027 gaat Fiesta Texas weer open, van 11.00 tot 19.00 uur. Daarna is het park in januari in de weekenden open en op maandag 18 januari. Van 6 februari tot en met 15 maart loopt op een aantal dagen het Mardi Gras Festival. Voor 2027 bouwt het park Werewolf Gorge, volgens Six Flags de langste family launch coaster ter wereld, met een baan van 1.256 meter. Een openingsdatum heeft het park nog niet genoemd. Meer daarover lees je in ons [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
+Op zaterdag 9 januari 2027 gaat Fiesta Texas weer open, van 11.00 tot 19.00 uur. Daarna is het park in januari in de weekenden open en op maandag 18 januari. Van 6 februari tot en met 15 maart loopt op een aantal dagen het Mardi Gras Festival. Voor 2027 bouwt het park Werewolf Gorge, volgens Six Flags de langste family launch coaster ter wereld, met een baan van 1.256 meter en nog zonder openingsdatum. Meer daarover lees je in ons [overzicht van de nieuwe attracties in 2027](/blog/nieuwe-attracties-pretparken-2027).
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?full)
 

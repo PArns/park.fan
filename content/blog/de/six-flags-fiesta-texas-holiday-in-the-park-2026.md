@@ -44,15 +44,15 @@ Seit Samstag, dem 21. November, feiert [Six Flags Fiesta Texas](ref:six-flags-fi
 
 ## Feuerwerk nach Weihnachten und an Silvester
 
-Die fünf Abende vom 26. bis 30. Dezember laufen unter dem Namen Countdown to New Year's, mit Lichtern, Essen der Saison und dem Feuerwerk, sofern das Wetter mitspielt.
+Die fünf Abende vom 26. bis 30. Dezember nennt Six Flags Countdown to New Year's und sagt das Feuerwerk nur zu, wenn das Wetter mitspielt.
 
-An Silvester heißt der Tag im Parkkalender Rockin' New Years Celebration. Um 22 Uhr Ortszeit schließt der Park, in Deutschland ist es dann schon 5 Uhr am Neujahrsmorgen. Das Feuerwerk steigt also vor Mitternacht, San Antonio hat beim Parkschluss noch zwei Stunden im alten Jahr vor sich. Wann die Raketen an den sechs Abenden starten und ob Silvester ein eigenes Ticket braucht, hat Fiesta Texas noch nicht bekannt gegeben.
+An Silvester heißt der Tag im Parkkalender Rockin' New Years Celebration. Um 22 Uhr Ortszeit schließt der Park, in Deutschland ist es dann schon 5 Uhr am Neujahrsmorgen. Mitternacht erlebt in San Antonio also niemand im Park, die Raketen fliegen spätestens zwei Stunden vorher. Wann die Raketen an den sechs Abenden starten und ob Silvester ein eigenes Ticket braucht, hat Fiesta Texas noch nicht bekannt gegeben.
 
 Silvesterabende kündigt Six Flags in diesem Winter in fünf Parks an, neben Fiesta Texas in [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm und [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, Baum und Lichter
 
-Bis zum 23. Dezember gehen an jedem Eventabend um 18 Uhr in Rockville die Lichter am 70 Fuß (gut 21 Meter) hohen Weihnachtsbaum an. Danach laufen dort ohne Pause die Holiday Illuminations, Lichter, die im Takt bekannter Lieder schalten, von Klassikern bis zu neuen Hits. Bei der H2Ho Ho Ho Holiday Fountain spielen Fontänen und Licht zu Musik, und bei den Singing Saps singst du mit einer ganzen Christbaumfamilie Weihnachtslieder. Im Santa's Cottage nimmt der Weihnachtsmann Wunschzettel entgegen, die Fotopakete kosten extra. Die Looney Tunes und die Helden und Schurken von DC stehen zu festen Zeiten für Fotos bereit.
+Bis zum 23. Dezember gehen an jedem Eventabend um 18 Uhr in Rockville die Lichter am 70 Fuß (gut 21 Meter) hohen Weihnachtsbaum an. Danach schalten dort ohne Pause die Lichter der Holiday Illuminations im Takt der Musik. Bei der H2Ho Ho Ho Holiday Fountain spielen Fontänen und Licht zu Musik, und bei den Singing Saps singst du mit einer ganzen Christbaumfamilie Weihnachtslieder. Im Santa's Cottage nimmt der Weihnachtsmann Wunschzettel entgegen, die Fotopakete kosten extra. Die Looney Tunes und die Helden und Schurken von DC stehen zu festen Zeiten für Fotos bereit.
 
 | Show                                      | Was läuft                                                             | Uhrzeiten                      |
 | ----------------------------------------- | --------------------------------------------------------------------- | ------------------------------ |
@@ -69,14 +69,12 @@ Die Uhrzeiten gelten bis zum 23. Dezember. Ab dem 26. wechselt das Programm laut
 
 ## Termine und Öffnungszeiten
 
-Der Park öffnet an allen Tagen bis zum 4. Januar um 12 Uhr.
+An den Tagen in dieser Liste öffnet der Park um 12 Uhr, an allen anderen bleibt er zu.
 
 - Samstag, 21., bis Mittwoch, 25. November: bis 21 Uhr (Montag bis Mittwoch fahren die Bahnen erst ab 14 Uhr)
-- Thanksgiving, Donnerstag, 26. November: geschlossen
 - Freitag, 27., bis Sonntag, 29. November: bis 21 Uhr
 - an den Wochenenden 5./6. und 12./13. Dezember: bis 21 Uhr
 - Freitag, 18., bis Mittwoch, 23. Dezember: bis 21 Uhr
-- Heiligabend und erster Weihnachtstag: geschlossen
 - Samstag, 26. Dezember: bis 21 Uhr
 - Sonntag, 27., bis Mittwoch, 30. Dezember: bis 20 Uhr
 - Silvester: bis 22 Uhr
@@ -85,7 +83,7 @@ Der Park öffnet an allen Tagen bis zum 4. Januar um 12 Uhr.
 - Sonntag, 3. Januar: bis 19 Uhr
 - Montag, 4. Januar: bis 18 Uhr
 
-An allen anderen Tagen bleibt der Park zu. Der Wasserpark Hurricane Harbor San Antonio ist im Winter geschlossen. Die Badehose bleibt im Koffer.
+Der Wasserpark Hurricane Harbor San Antonio ist im Winter geschlossen.
 
 ```best-days-widget slug=six-flags-fiesta-texas
 
@@ -93,7 +91,7 @@ An allen anderen Tagen bleibt der Park zu. Der Wasserpark Hurricane Harbor San A
 
 ## Welche Bahnen fahren
 
-An den Eventtagen im November und Dezember fahren 38 Bahnen, mit dabei [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), der [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), der [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride und Poltergeist. Für Familien empfiehlt Fiesta Texas [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Von den beiden Eisenbahnen fährt nur die Fiesta Texas Railroad. Gully Washer und Bugs' White Water Rapids stehen zu Holiday in the Park still, nass wird an diesen Abenden also höchstens, wer sich am Kakao verschluckt. Welche Bahnen vom 1. bis 4. Januar fahren, hat Fiesta Texas noch nicht veröffentlicht.
+An den Eventtagen im November und Dezember fahren 38 Bahnen (für Januar fehlt die Liste noch), mit dabei [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), der [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), der [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride und Poltergeist. Für Familien empfiehlt Fiesta Texas [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Von den beiden Eisenbahnen fährt nur die Fiesta Texas Railroad. Gully Washer und Bugs' White Water Rapids stehen zu Holiday in the Park still, nass wird an diesen Abenden also höchstens, wer sich am Kakao verschluckt.
 
 ```ride-waits-widget park=six-flags-fiesta-texas top=8
 
@@ -103,7 +101,7 @@ An den Eventtagen im November und Dezember fahren 38 Bahnen, mit dabei [Iron Rat
 
 Das Parkticket gibt es nur online, ab 45 Dollar. Das Good Any Day Ticket für einen beliebigen Tag kostet 69 Dollar. Auf beide kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. Parken kostet am Tag ab 39 Dollar, Preferred Parking ab 49 und Valet ab 55 Dollar, ebenfalls plus Gebühr und Steuern. Ins Navi gehört 17000 IH-10 West, San Antonio, TX 78257.
 
-Essen, Getränke und Souvenirs kosten extra, ebenso einige Weihnachtsangebote. Dazu gehören die S'mores am offenen Feuer, der Kakao im Sammelbecher und ein Seifenblasenstab; alle drei gibt es auch online, einen Preis nennt der Park nicht. Auf der Karte für die Saison stehen ein Festessen mit Truthahn, Honigschinken, Füllung und einer Beilage, eine Truthahnkeule mit Ananasring, Bao mit koreanischem Brathähnchen und Parfaits aus Zuckerplätzchen oder Lebkuchen. Die Holiday Hand Pies sind Empanadas mit Truthahn, Füllung und Soße, dazu ein Cranberry-Dip, Thanksgiving zum Mitnehmen. Für Erwachsene gibt es Cocktails.
+Einige Weihnachtsangebote kosten extra: die S'mores am offenen Feuer, der Kakao im Sammelbecher und ein Seifenblasenstab; alle drei gibt es auch online, einen Preis nennt der Park nicht. Auf der Karte für die Saison stehen ein Festessen mit Truthahn, Honigschinken, Füllung und einer Beilage, eine Truthahnkeule mit Ananasring, Bao mit koreanischem Brathähnchen und Parfaits aus Zuckerplätzchen oder Lebkuchen. Die Holiday Hand Pies sind Empanadas mit Truthahn, Füllung und Soße, dazu ein Cranberry-Dip, Thanksgiving zum Mitnehmen. Für Erwachsene gibt es Cocktails.
 
 ## Black Friday: Silver Pass 2027 zum Preis des Good Any Day Tickets
 
@@ -117,7 +115,7 @@ Bist du am 31. Dezember 1961 oder früher geboren, kommst du bis zum 4. Januar 2
 
 ## Nach dem 4. Januar
 
-Am Samstag, 9. Januar 2027, öffnet Fiesta Texas wieder, von 11 bis 19 Uhr, danach im Januar an den Wochenenden und am Montag, dem 18. Januar. Vom 6. Februar bis 15. März läuft an ausgewählten Tagen das Mardi Gras Festival. Für 2027 baut der Park Werewolf Gorge, laut Six Flags die längste Familienachterbahn mit Abschuss der Welt, mit 1.256 Metern Strecke. Einen Eröffnungstermin hat der Park noch nicht genannt. Mehr dazu steht in unseren [Neuheiten für 2027](/blog/freizeitpark-neuheiten-2027).
+Am Samstag, 9. Januar 2027, öffnet Fiesta Texas wieder, von 11 bis 19 Uhr, danach im Januar an den Wochenenden und am Montag, dem 18. Januar. Vom 6. Februar bis 15. März läuft an ausgewählten Tagen das Mardi Gras Festival. Für 2027 baut der Park Werewolf Gorge, laut Six Flags die längste Familienachterbahn mit Abschuss der Welt, mit 1.256 Metern Strecke, bisher ohne Eröffnungsdatum. Mehr dazu steht in unseren [Neuheiten für 2027](/blog/freizeitpark-neuheiten-2027).
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?full)
 

@@ -44,15 +44,15 @@ Depuis le samedi 21 novembre, [Six Flags Fiesta Texas](ref:six-flags-fiesta-texa
 
 ## Feux d’artifice après Noël et pour le Nouvel An
 
-Les cinq soirées du 26 au 30 décembre s’appellent Countdown to New Year's, avec des illuminations, une cuisine de saison et le feu d’artifice, si la météo le permet.
+Six Flags baptise les cinq soirées du 26 au 30 décembre Countdown to New Year's et ne promet le feu d’artifice que si la météo le permet.
 
-Le 31 décembre, le calendrier du parc parle de Rockin' New Years Celebration. Le parc ferme à 22 h, heure locale ; en France, on en est déjà à 5 h du matin, le 1er janvier. Le feu d’artifice est donc tiré avant minuit, puisqu’à la fermeture, San Antonio a encore deux heures à passer dans la vieille année. Fiesta Texas n’a pas encore annoncé à quelle heure décollent les fusées lors de ces six soirées, ni si le 31 demande un billet à part.
+Le 31 décembre, le calendrier du parc parle de Rockin' New Years Celebration. Le parc ferme à 22 h, heure locale ; en France, on en est déjà à 5 h du matin, le 1er janvier. Personne ne fête donc minuit dans le parc, et les fusées partent au plus tard deux heures avant. Fiesta Texas n’a pas encore annoncé à quelle heure décollent les fusées lors de ces six soirées, ni si le 31 demande un billet à part.
 
 Cet hiver, Six Flags annonce une soirée du Nouvel An dans cinq parcs : Fiesta Texas, [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm et [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Spectacles, sapin et illuminations
 
-Jusqu’au 23 décembre, chaque soir d’événement à 18 h, le grand sapin de Rockville s’allume, haut de 70 pieds (un peu plus de 21 mètres). Les Holiday Illuminations prennent ensuite le relais sans interruption : des lumières qui changent au rythme de chansons connues, des classiques aux tubes récents. À la H2Ho Ho Ho Holiday Fountain, les jets d’eau et la lumière suivent la musique, et chez les Singing Saps, tu entonnes des chants de Noël avec toute une famille de sapins. Au Santa's Cottage, le père Noël recueille les lettres des enfants, et les formules photo se paient à part. Les Looney Tunes ainsi que les héros et les méchants de DC posent pour les photos à heures fixes.
+Jusqu’au 23 décembre, chaque soir d’événement à 18 h, le grand sapin de Rockville s’allume, haut de 70 pieds (un peu plus de 21 mètres). Ensuite, sans interruption, les lumières des Holiday Illuminations changent au rythme de la musique. À la H2Ho Ho Ho Holiday Fountain, les jets d’eau et la lumière suivent la musique, et chez les Singing Saps, tu entonnes des chants de Noël avec toute une famille de sapins. Au Santa's Cottage, le père Noël recueille les lettres des enfants, et les formules photo se paient à part. Les Looney Tunes ainsi que les héros et les méchants de DC posent pour les photos à heures fixes.
 
 | Spectacle                                 | Au programme                                                                 | Horaires                          |
 | ----------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------- |
@@ -69,14 +69,12 @@ Ces horaires valent jusqu’au 23 décembre. À partir du 26, le programme chang
 
 ## Dates et horaires
 
-Tous les jours jusqu’au 4 janvier, le parc ouvre à midi.
+Les jours de cette liste, le parc ouvre à midi ; les autres jours, il reste fermé.
 
 - du samedi 21 au mercredi 25 novembre : jusqu’à 21 h (du lundi au mercredi, les attractions ne démarrent qu’à 14 h)
-- Thanksgiving, jeudi 26 novembre : fermé
 - du vendredi 27 au dimanche 29 novembre : jusqu’à 21 h
 - les week-ends des 5 et 6 et des 12 et 13 décembre : jusqu’à 21 h
 - du vendredi 18 au mercredi 23 décembre : jusqu’à 21 h
-- 24 et 25 décembre : fermé
 - samedi 26 décembre : jusqu’à 21 h
 - du dimanche 27 au mercredi 30 décembre : jusqu’à 20 h
 - 31 décembre : jusqu’à 22 h
@@ -85,7 +83,7 @@ Tous les jours jusqu’au 4 janvier, le parc ouvre à midi.
 - dimanche 3 janvier : jusqu’à 19 h
 - lundi 4 janvier : jusqu’à 18 h
 
-Les autres jours, le parc reste fermé. Le parc aquatique Hurricane Harbor San Antonio ferme pour l’hiver, alors le maillot de bain peut rester au fond de la valise.
+Le parc aquatique Hurricane Harbor San Antonio ferme pour l’hiver.
 
 ```best-days-widget slug=six-flags-fiesta-texas
 
@@ -93,7 +91,7 @@ Les autres jours, le parc reste fermé. Le parc aquatique Hurricane Harbor San A
 
 ## Les attractions ouvertes
 
-Les jours d’événement de novembre et de décembre, 38 attractions tournent, dont [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), le [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), le [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride et Poltergeist. Pour les familles, Fiesta Texas recommande [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Des deux trains du parc, seul le Fiesta Texas Railroad circule. Gully Washer et Bugs' White Water Rapids restent à l’arrêt pendant Holiday in the Park, si bien que ces soirs-là, on ne se mouille qu’en avalant son chocolat chaud de travers. Fiesta Texas n’a pas encore publié la liste des attractions ouvertes du 1er au 4 janvier.
+Les jours d’événement de novembre et de décembre, 38 attractions tournent (la liste de janvier manque encore), dont [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), le [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), le [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride et Poltergeist. Pour les familles, Fiesta Texas recommande [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Des deux trains du parc, seul le Fiesta Texas Railroad circule. Gully Washer et Bugs' White Water Rapids restent à l’arrêt pendant Holiday in the Park, si bien que ces soirs-là, on ne se mouille qu’en avalant son chocolat chaud de travers.
 
 ```ride-waits-widget park=six-flags-fiesta-texas top=8
 
@@ -103,7 +101,7 @@ Les jours d’événement de novembre et de décembre, 38 attractions tournent, 
 
 Le billet d’entrée se vend uniquement en ligne, dès 45 dollars. Le billet Good Any Day, valable le jour de ton choix, coûte 69 dollars. Dans les deux cas s’ajoutent jusqu’à 9,99 dollars de frais de traitement et les taxes. Le parking coûte dès 39 dollars la journée, le Preferred Parking dès 49 dollars et le voiturier dès 55 dollars, là aussi frais et taxes en sus. L’adresse pour le GPS est 17000 IH-10 West, San Antonio, TX 78257.
 
-Repas, boissons et souvenirs sont payants, tout comme certaines offres de Noël : les s’mores grillés sur un feu ouvert, le chocolat chaud dans un gobelet de collection et une baguette à bulles de savon. Les trois se vendent aussi en ligne, mais le parc n’en indique pas le prix. La carte de saison propose un repas de fête avec dinde, jambon au miel, farce et un accompagnement, une cuisse de dinde avec une rondelle d’ananas, des bao au poulet frit coréen et des parfaits aux biscuits au sucre ou au pain d’épices. Les Holiday Hand Pies sont des empanadas garnis de dinde, de farce et de sauce, avec une sauce aux canneberges pour les tremper : Thanksgiving à emporter, en somme. Les adultes ont aussi droit à des cocktails.
+Certaines offres de Noël sont payantes : les s’mores grillés sur un feu ouvert, le chocolat chaud dans un gobelet de collection et une baguette à bulles de savon. Les trois se vendent aussi en ligne, mais le parc n’en indique pas le prix. La carte de saison propose un repas de fête avec dinde, jambon au miel, farce et un accompagnement, une cuisse de dinde avec une rondelle d’ananas, des bao au poulet frit coréen et des parfaits aux biscuits au sucre ou au pain d’épices. Les Holiday Hand Pies sont des empanadas garnis de dinde, de farce et de sauce, avec une sauce aux canneberges pour les tremper : Thanksgiving à emporter, en somme. Les adultes ont aussi droit à des cocktails.
 
 ## Black Friday : le Silver Pass 2027 au prix du billet Good Any Day
 
@@ -117,7 +115,7 @@ Si tu es né le 31 décembre 1961 ou avant, tu entres gratuitement à Fiesta Tex
 
 ## Après le 4 janvier
 
-Fiesta Texas rouvre le samedi 9 janvier 2027, de 11 h à 19 h, puis les week-ends de janvier et le lundi 18 janvier. Du 6 février au 15 mars, le Mardi Gras Festival a lieu certains jours. Pour 2027, le parc construit Werewolf Gorge, selon Six Flags les montagnes russes familiales à lancement les plus longues du monde, avec un parcours de 1 256 mètres. Le parc n’a pas encore donné de date d’ouverture. Tous les détails sont dans nos [nouveautés 2027](/blog/nouveautes-parcs-attractions-2027).
+Fiesta Texas rouvre le samedi 9 janvier 2027, de 11 h à 19 h, puis les week-ends de janvier et le lundi 18 janvier. Du 6 février au 15 mars, le Mardi Gras Festival a lieu certains jours. Pour 2027, le parc construit Werewolf Gorge, selon Six Flags les montagnes russes familiales à lancement les plus longues du monde, avec un parcours de 1 256 mètres, encore sans date d’ouverture. Tous les détails sont dans nos [nouveautés 2027](/blog/nouveautes-parcs-attractions-2027).
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?full)
 

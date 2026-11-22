@@ -39,19 +39,19 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio has been running Holiday in the Park since Saturday, 21 November. From 26 to 30 December, every evening there ends with fireworks. New Year's Eve brings the New Year's 360 Fireworks Celebration: thousands of rockets go up from the quarry walls that ring the park, so the bangs come from every side. The park is open on 28 days through 4 January 2027, and regular admission covers the shows, the lights and most of the rides.
+[Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio has been running Holiday in the Park since Saturday, 21 November. From 26 to 30 December, every evening there ends with fireworks. On New Year's Eve the New Year's 360 Fireworks Celebration sends thousands of rockets up from the quarry walls that ring the park, so the bangs come from every side. The park is open on 28 days through 4 January 2027, and regular admission covers the shows, the lights and most of the rides.
 
 ## Fireworks after Christmas and on New Year's Eve
 
-The five evenings from 26 to 30 December go by the name Countdown to New Year's: lights, seasonal food and fireworks, weather permitting.
+Six Flags calls the five evenings from 26 to 30 December Countdown to New Year's and only promises the fireworks if the weather plays along.
 
-In the park calendar, New Year's Eve is listed as the Rockin' New Years Celebration. The park closes at 10 p.m. local time, when it's already 5 a.m. on New Year's Day in Germany. So the fireworks go off before midnight, and San Antonio still has two hours of the old year left when the gates shut. Fiesta Texas hasn't said yet what time the rockets start on any of the six evenings, or whether New Year's Eve needs a separate ticket.
+In the park calendar, New Year's Eve is listed as the Rockin' New Years Celebration. The park closes at 10 p.m. local time, when it's already 5 a.m. on New Year's Day in Germany. So nobody sees midnight in San Antonio from inside the park, and the rockets go up two hours before it at the latest. Fiesta Texas hasn't said yet what time the rockets start on any of the six evenings, or whether New Year's Eve needs a separate ticket.
 
 This winter Six Flags is announcing New Year's Eve evenings at five parks: Fiesta Texas, [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm and [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, the tree and the lights
 
-Until 23 December, the 70-foot (just over 21-metre) Christmas tree in Rockville lights up at 6 p.m. on every event evening. After that the Holiday Illuminations run there without a break, lights switching in time to well-known songs, from the classics to newer hits. At the H2Ho Ho Ho Holiday Fountain, jets of water and light play to music, and the Singing Saps get you singing carols with an entire family of Christmas trees. Santa takes wish lists at Santa's Cottage, with photo packages at extra cost. The Looney Tunes and DC's heroes and villains pose for photos at set times.
+Until 23 December, the 70-foot (just over 21-metre) Christmas tree in Rockville lights up at 6 p.m. on every event evening. After that the lights of the Holiday Illuminations switch in time to the music there, without a break. At the H2Ho Ho Ho Holiday Fountain, jets of water and light play to music, and the Singing Saps get you singing carols with an entire family of Christmas trees. Santa takes wish lists at Santa's Cottage, with photo packages at extra cost. The Looney Tunes and DC's heroes and villains pose for photos at set times.
 
 | Show                                      | What's on                                                 | Times                       |
 | ----------------------------------------- | --------------------------------------------------------- | --------------------------- |
@@ -68,14 +68,12 @@ These times apply until 23 December. From the 26th, Fiesta Texas says the line-u
 
 ## Dates and opening hours
 
-On every day through 4 January the park opens at noon.
+On the days in this list the park opens at noon, and on every other day it stays shut.
 
 - Saturday, 21, to Wednesday, 25 November: until 9 p.m. (Monday to Wednesday the rides don't start until 2 p.m.)
-- Thanksgiving, Thursday, 26 November: closed
 - Friday, 27, to Sunday, 29 November: until 9 p.m.
 - the weekends of 5 and 6 and of 12 and 13 December: until 9 p.m.
 - Friday, 18, to Wednesday, 23 December: until 9 p.m.
-- Christmas Eve and Christmas Day: closed
 - Saturday, 26 December: until 9 p.m.
 - Sunday, 27, to Wednesday, 30 December: until 8 p.m.
 - New Year's Eve: until 10 p.m.
@@ -84,7 +82,7 @@ On every day through 4 January the park opens at noon.
 - Sunday, 3 January: until 7 p.m.
 - Monday, 4 January: until 6 p.m.
 
-On every other day the park stays shut. The Hurricane Harbor San Antonio water park is closed for the winter, so the swimsuit can stay in the suitcase.
+The Hurricane Harbor San Antonio water park is closed for the winter.
 
 ```best-days-widget slug=six-flags-fiesta-texas
 
@@ -92,7 +90,7 @@ On every other day the park stays shut. The Hurricane Harbor San Antonio water p
 
 ## Which rides are running
 
-On the event days in November and December, 38 rides are running, among them [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), the [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), the [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride and Poltergeist. For families, Fiesta Texas recommends [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Of the two railways, only the Fiesta Texas Railroad runs. Gully Washer and Bugs' White Water Rapids sit out Holiday in the Park, so on these evenings the only way to get soaked is a cocoa that goes down the wrong way. Fiesta Texas hasn't published which rides run from 1 to 4 January.
+On the event days in November and December, 38 rides are running (the January list isn't out yet), among them [Iron Rattler](ref:six-flags-fiesta-texas/iron-rattler), the [Superman Krypton Coaster](ref:six-flags-fiesta-texas/superman-krypton-coaster), the [Wonder Woman Golden Lasso Coaster](ref:six-flags-fiesta-texas/wonder-woman-golden-lasso-coaster), Batman The Ride and Poltergeist. For families, Fiesta Texas recommends [METROPOLIS Transit Authority](ref:six-flags-fiesta-texas/metropolis-transit-authority). Of the two railways, only the Fiesta Texas Railroad runs. Gully Washer and Bugs' White Water Rapids sit out Holiday in the Park, so on these evenings the only way to get soaked is a cocoa that goes down the wrong way.
 
 ```ride-waits-widget park=six-flags-fiesta-texas top=8
 
@@ -102,7 +100,7 @@ On the event days in November and December, 38 rides are running, among them [Ir
 
 Park tickets are sold online only, from $45. The Good Any Day ticket, valid on any day you like, is $69. Both come with a processing fee of up to $9.99 plus tax. Parking starts at $39 a day, Preferred Parking at $49 and valet at $55, again plus a fee and tax. For the satnav: 17000 IH-10 West, San Antonio, TX 78257.
 
-Food, drinks and souvenirs cost extra, and so do some of the holiday add-ons: s'mores over an open fire, cocoa in a souvenir mug and a bubble wand. All three can be bought online too, though the park doesn't give a price. The seasonal menu has a holiday feast with turkey, honey ham, stuffing and one side, a turkey leg with a pineapple ring, Korean fried chicken bao, and sugar cookie or gingerbread parfaits. The Holiday Hand Pies are empanadas filled with turkey, stuffing and gravy, served with a cranberry dip: Thanksgiving you can carry around. Adults can get cocktails.
+Some holiday add-ons cost extra: s'mores over an open fire, cocoa in a souvenir mug and a bubble wand. All three can be bought online too, though the park doesn't give a price. The seasonal menu has a holiday feast with turkey, honey ham, stuffing and one side, a turkey leg with a pineapple ring, Korean fried chicken bao, and sugar cookie or gingerbread parfaits. The Holiday Hand Pies are empanadas filled with turkey, stuffing and gravy, served with a cranberry dip: Thanksgiving you can carry around. Adults can get cocktails.
 
 ## Black Friday: the 2027 Silver Pass for the price of a Good Any Day ticket
 
@@ -116,7 +114,7 @@ If you were born on or before 31 December 1961, you can visit Fiesta Texas free 
 
 ## After 4 January
 
-Fiesta Texas reopens on Saturday, 9 January 2027, from 11 a.m. to 7 p.m., and after that on the January weekends and on Monday, 18 January. The Mardi Gras Festival runs on selected days from 6 February to 15 March. For 2027 the park is building Werewolf Gorge, which Six Flags calls the world's longest launched family coaster, with 1,256 metres of track. The park hasn't named an opening date yet. There's more in our roundup of [new attractions for 2027](/blog/new-theme-park-attractions-2027).
+Fiesta Texas reopens on Saturday, 9 January 2027, from 11 a.m. to 7 p.m., and after that on the January weekends and on Monday, 18 January. The Mardi Gras Festival runs on selected days from 6 February to 15 March. For 2027 the park is building Werewolf Gorge, which Six Flags calls the world's longest launched family coaster, with 1,256 metres of track and no opening date so far. There's more in our roundup of [new attractions for 2027](/blog/new-theme-park-attractions-2027).
 
 [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas?full)
 
