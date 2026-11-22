@@ -2,7 +2,7 @@
 title: 'Fiesta Texas zeigt vor Silvester an fünf Abenden Feuerwerk'
 translationKey: six-flags-fiesta-texas-holiday-in-the-park-2026
 date: '2026-11-22'
-time: '08:31'
+time: '08:34'
 author: patrick
 mode: published
 featured: false
