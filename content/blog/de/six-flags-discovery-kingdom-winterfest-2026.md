@@ -33,7 +33,7 @@ rideLinks:
   - six-flags-discovery-kingdom/white-water-safari
   - six-flags-discovery-kingdom/monsoon-falls
 seo:
-  title: 'Six Flags Discovery Kingdom WinterFest 2026: Öffnungszeiten'
+  title: 'Öffnungszeiten zum WinterFest 2026 in Discovery Kingdom'
   description: >-
     Discovery Kingdom in Vallejo hat zum WinterFest 2026 an 22 Tagen offen, vom 27.11. bis 3.1. jeweils 12 bis 20 Uhr, auch Silvester. Tickets ab 45 Dollar.
   keywords:
