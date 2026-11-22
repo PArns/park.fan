@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  À partir du 27 novembre, Discovery Kingdom fait tourner ses montagnes russes jusqu’à 20 h pour le WinterFest, les dix à partir du 5 décembre. Pas de feu d’artifice annoncé, et le 31 aussi finit à 20 h.
+  Dès le 27 novembre, tu fais des montagnes russes jusqu’à 20 h au WinterFest de Discovery Kingdom, sur les dix dès le 5 décembre. Pas de feu d’artifice annoncé : le 31 décembre aussi finit à 20 h.
 tags:
   - actualites
   - six-flags-discovery-kingdom
@@ -35,7 +35,7 @@ rideLinks:
 seo:
   title: 'Six Flags Discovery Kingdom WinterFest 2026 : horaires'
   description: >-
-    WinterFest 2026 à Six Flags Discovery Kingdom (Vallejo) : 22 jours du 27/11 au 3/1, de 12 h à 20 h, billet dès 45 dollars, 31/12 aussi jusqu’à 20 h.
+    Discovery Kingdom, à Vallejo, ouvre 22 jours pour le WinterFest 2026, du 27/11 au 3/1, de 12 h à 20 h, 31/12 compris. Billets dès 45 $.
   keywords:
     - Six Flags Discovery Kingdom WinterFest
     - WinterFest 2026
@@ -49,7 +49,7 @@ seo:
     - Six Flags entrée gratuite 65 ans
 ---
 
-Du 27 novembre au 3 janvier, [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom), à Vallejo en Californie, organise son deuxième WinterFest. Le parc ouvre 22 jours sur cette période, les week-ends et pendant les semaines autour de Noël et du Nouvel An, et ferme chaque fois à 20 h. Les illuminations, les spectacles et la plupart des attractions sont compris dans le billet d’entrée normal.
+Du 27 novembre au 3 janvier, [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom), à Vallejo en Californie, organise son deuxième WinterFest. Le parc ouvre 22 jours sur cette période, les week-ends et pendant les semaines autour de Noël et du Nouvel An. Chacun de ces jours se termine à 20 h. Les illuminations, les spectacles et la plupart des attractions sont compris dans le billet d’entrée normal.
 
 ## Dates et horaires
 
@@ -61,9 +61,9 @@ Les grilles ouvrent à 12 h, le WinterFest commence à 14 h. Dans la liste du pa
 - du samedi 26 au jeudi 31 décembre
 - du vendredi 1er au dimanche 3 janvier
 
-Le parc reste fermé à Thanksgiving (26 novembre), le lundi 30 novembre, en semaine jusqu’au 18 décembre et le 25 décembre. Pour le 24 décembre et les trois jours de janvier, le calendrier du parc donne bien des horaires de 12 h à 20 h, mais aucune entrée WinterFest et aucun horaire d’attraction. La page de l’événement et le communiqué de Six Flags, eux, font du 3 janvier le dernier jour du WinterFest. Si la météo se gâte, le parc peut fermer plus tôt ou ne pas ouvrir du tout, et dans ce cas il n’y a pas de Rain Check, ni de remboursement.
+Le parc reste fermé à Thanksgiving (26 novembre) et le jour de Noël. Le 24 décembre et du 1er au 3 janvier, il est aussi ouvert selon le calendrier, mais celui-ci n’indique pour ces jours ni WinterFest ni horaires d’attractions. Sur la page de l’événement et dans le communiqué de Six Flags, le WinterFest dure pourtant jusqu’au 3 janvier. Si la météo se gâte, le parc peut fermer plus tôt ou ne pas ouvrir du tout, et dans ce cas il n’y a pas de Rain Check, ni de remboursement.
 
-À Vallejo, le 31 décembre est un jour de WinterFest comme les autres, de 12 h à 20 h. Aucune page du parc ne parle de feu d’artifice ni de fête du Nouvel An, et Discovery Kingdom manque au communiqué qui annonce des soirées du réveillon à Carowinds, Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas et Six Flags Magic Mountain. À [Kings Island](/news/kings-island-winterfest-2026), les fusées partent à minuit, à [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) chaque soir dès le 26 décembre. Quand les grilles de Vallejo se ferment à 20 h, la nouvelle année a déjà cinq heures en France.
+À Vallejo, le 31 décembre est un jour de WinterFest comme les autres. Six Flags a annoncé des soirées du réveillon à Carowinds, Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas et Six Flags Magic Mountain. Pour Discovery Kingdom, Six Flags n’annonce ni feu d’artifice ni fête. À [Kings Island](/news/kings-island-winterfest-2026), les fusées partent à minuit, à [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) chaque soir dès le 26 décembre. Quand les grilles de Vallejo se ferment à 20 h, la nouvelle année a déjà cinq heures en France.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 
@@ -71,28 +71,28 @@ Le parc reste fermé à Thanksgiving (26 novembre), le lundi 30 novembre, en sem
 
 ## Spectacles, illuminations et père Noël
 
-La soirée commence par la Tree Lighting Ceremony sur le Hometown Square, où les Holiday Singers du parc allument un grand sapin de Noël en chantant et en dansant. Les horaires des spectacles ne figurent que dans l’application Six Flags et peuvent changer. Le guide du WinterFest publié par le parc liste ces spectacles :
+La soirée commence par la Tree Lighting Ceremony sur le Hometown Square, où les Holiday Singers du parc allument un grand sapin de Noël en chantant et en dansant. Les horaires des spectacles ne figurent que dans l’application Six Flags et peuvent changer. Il y a aussi ces spectacles :
 
 - Jingle Jazz : des chanteurs en costumes de l’époque de Dickens, tous les soirs sur le Hometown Square
 - Mistletones : un trio chante sur la Candy Cane Stage des chansons à la manière des années cinquante
 - Reindeer Roundup : des rennes animatroniques entonnent les classiques de Noël en quatuor barbershop, eux aussi sur le Hometown Square
-- Midway Merriment : la Sugar Plum Fairy et Mr. Twister se promènent entre Santa's Village et Candy Cane Lane, on les croise en chemin
+- Midway Merriment : la Sugar Plum Fairy et Mr. Twister se promènent entre Santa's Village et Candy Cane Lane, tu les croises en chemin
 - World of Celebration : un spectacle de Noël avec les Looney Tunes, sur la Looney Tunes Stage
 - Happy Flippin Holidays! : le spectacle des dauphins au Dolphin Harbor, avec DJ Holiday
 
-Les photos avec le père Noël se font chez St. Nick's Pics, sur le Hometown Square, jusqu’au 23 décembre seulement, et la photo comme les tirages se paient à part. À Santa's Village se trouve le North Pole Craft Depot and Post Office : les enfants jusqu’à douze ans y bricolent et écrivent leur lettre au père Noël, qu’ils glissent eux-mêmes dans sa boîte aux lettres. On décore quatre grands biscuits au sucre dans un coin qui s’appelle Christmas Cookie Corner sur la page de l’événement et Mrs. Claus' Cookie Corner dans le guide. Les biscuits s’achètent en ligne ou sur place, en supplément.
+Les photos avec le père Noël se font chez St. Nick's Pics, sur le Hometown Square, jusqu’au 23 décembre seulement, et la photo comme les tirages se paient à part. À Santa's Village se trouve le North Pole Craft Depot and Post Office : les enfants jusqu’à douze ans y bricolent et écrivent leur lettre au père Noël, qu’ils glissent eux-mêmes dans sa boîte aux lettres. Tu décores quatre grands biscuits au sucre au Christmas Cookie Corner, que le guide du WinterFest appelle Mrs. Claus' Cookie Corner. Tu achètes les biscuits en ligne ou sur place, en supplément.
 
 ## À manger et à boire
 
-Le WinterFest a ses propres plats : un French Onion Dip Burger au Swiss Cheese et aux oignons caramélisés chez Big Belly Burger, un chili à la poitrine de bœuf et au Monterey Jack servi dans une miche de pain, une poutine à la dinde et aux cheese curds, des OREO frits avec glace à l’italienne et sucre à la menthe poivrée, et un pain à effeuiller à la cannelle. Au JB's Sports Bar, on prend de la dinde ou du jambon avec deux accompagnements, purée ou mac & cheese par exemple. La Humbug Hot Chocolate est un chocolat blanc à la menthe poivrée servi dans un gobelet souvenir. Aux foyers de Santa's Village et du Hometown Square, on fait griller des s'mores, et pour trois kits achetés, le quatrième est offert. Avec le gobelet Unlimited Hot Chocolate, chaque recharge coûte 1,99 dollar tout l’hiver. Les cocktails comme le Gingerbread Old Fashioned sont servis à partir de 21 ans, sur présentation d’une pièce d’identité.
+Pour le WinterFest, Big Belly Burger sert un French Onion Dip Burger au Swiss Cheese et aux oignons caramélisés. La carte du WinterFest propose aussi un chili à la poitrine de bœuf et au Monterey Jack servi dans une miche de pain, une poutine à la dinde et aux cheese curds, un pain à effeuiller à la cannelle et des OREO frits avec glace à l’italienne et sucre à la menthe poivrée. Au JB's Sports Bar, tu prends de la dinde ou du jambon avec deux accompagnements, purée ou mac & cheese par exemple. La Humbug Hot Chocolate est un chocolat blanc à la menthe poivrée servi dans un gobelet souvenir. Aux foyers de Santa's Village et du Hometown Square, tu fais griller des s'mores, et pour trois kits achetés, le quatrième est offert. Avec le gobelet Unlimited Hot Chocolate, chaque recharge coûte 1,99 dollar tout l’hiver. Les cocktails comme le Gingerbread Old Fashioned sont servis à partir de 21 ans, sur présentation d’une pièce d’identité.
 
 ## Les attractions ouvertes
 
-À partir du 5 décembre, les dix montagnes russes du parc tournent. Le premier week-end, il en manque deux, le [Boomerang](ref:six-flags-discovery-kingdom/boomerang-coast-to-coaster) et [The Flash: Vertical Velocity](ref:six-flags-discovery-kingdom/the-flash-vertical-velocity). Au total, le planning du parc compte 31 attractions du 27 au 29 novembre et 35 à partir du 5 décembre, toutes de 14 h à 20 h et seulement si la météo et les conditions le permettent. À partir de cette date, la descente en bouées [White Water Safari](ref:six-flags-discovery-kingdom/white-water-safari) fonctionne aussi, pour qui a prévu des vêtements de rechange. [Monsoon Falls](ref:six-flags-discovery-kingdom/monsoon-falls) et le mur d’escalade ne figurent au planning d’aucun jour du WinterFest.
+Du 5 au 31 décembre, sauf le 24, les dix montagnes russes du parc tournent. Le premier week-end, il en manque deux, le [Boomerang](ref:six-flags-discovery-kingdom/boomerang-coast-to-coaster) et [The Flash: Vertical Velocity](ref:six-flags-discovery-kingdom/the-flash-vertical-velocity). Le planning du parc compte 31 attractions du 27 au 29 novembre et 35 à partir du 5 décembre. Elles tournent de 14 h à 20 h, et seulement si la météo et les conditions le permettent. Dès le 5 décembre, la descente en bouées [White Water Safari](ref:six-flags-discovery-kingdom/white-water-safari) fonctionne aussi, pour qui a prévu des vêtements de rechange. [Monsoon Falls](ref:six-flags-discovery-kingdom/monsoon-falls) et le mur d’escalade ne figurent au planning d’aucun jour du WinterFest.
 
-La plus longue est [Medusa](ref:six-flags-discovery-kingdom/medusa), un floorless coaster de Bolliger & Mabillard de 2000 : 46 mètres de haut, 105 km/h et sept inversions. [Superman Ultimate Flight](ref:six-flags-discovery-kingdom/superman-ultimate-flight) monte aussi haut, tout comme The Flash, un Impulse Coaster d’Intamin qui atteint 105 km/h comme Medusa et qui est resté à l’arrêt de janvier 2024 à juillet 2025. S’y ajoutent [The Joker](ref:six-flags-discovery-kingdom/the-joker) de Rocky Mountain Construction, [Batman The Ride](ref:six-flags-discovery-kingdom/batman-the-ride) avec ses sièges qui tournent librement, et [Kong](ref:six-flags-discovery-kingdom/kong), un Suspended Looping Coaster qui roulait auparavant sous le nom de Hangman à Opryland USA. Plus petites : [Cobra](ref:six-flags-discovery-kingdom/cobra), [Sidewinder Safari](ref:six-flags-discovery-kingdom/sidewinder-safari) et le [Road Runner Express](ref:six-flags-discovery-kingdom/road-runner-express).
+La plus longue est [Medusa](ref:six-flags-discovery-kingdom/medusa), un floorless coaster de Bolliger & Mabillard de 2000 : 46 mètres de haut, 105 km/h et sept inversions. [Superman Ultimate Flight](ref:six-flags-discovery-kingdom/superman-ultimate-flight) et The Flash, un Impulse Coaster d’Intamin qui atteint 105 km/h comme Medusa, montent aussi haut. S’y ajoutent [The Joker](ref:six-flags-discovery-kingdom/the-joker) de Rocky Mountain Coasters, [Batman The Ride](ref:six-flags-discovery-kingdom/batman-the-ride) avec ses sièges qui tournent librement, et [Kong](ref:six-flags-discovery-kingdom/kong), un Suspended Looping Coaster qui roulait auparavant sous le nom de Hangman à Opryland USA. [Cobra](ref:six-flags-discovery-kingdom/cobra), [Sidewinder Safari](ref:six-flags-discovery-kingdom/sidewinder-safari) et le [Road Runner Express](ref:six-flags-discovery-kingdom/road-runner-express) sont plus petites.
 
-Les zones animalières font aussi partie du programme, mais sans horaires. La page des animaux indique que le côté des animaux terrestres ferme à 17 h : mieux vaut donc rendre visite aux tigres et aux girafes avant le premier chocolat chaud.
+Les zones animalières font aussi partie du programme, mais sans horaires. La zone des animaux terrestres ferme à 17 h, alors va voir les animaux terrestres avant ton premier chocolat chaud.
 
 ```ride-waits-widget park=six-flags-discovery-kingdom top=8
 
@@ -100,23 +100,23 @@ Les zones animalières font aussi partie du programme, mais sans horaires. La pa
 
 ## Billets, pass et parking
 
-Le billet d’entrée coûte à partir de 45 dollars, taxes éventuelles en sus. Il se vend aussi à l’entrée, mais certaines offres, comme les billets Bring-A-Friend, n’existent qu’en ligne. Les enfants de moins de trois ans n’ont pas besoin de billet. Le parking coûte 39 dollars la journée, le Preferred Parking 49 dollars, et un tram relie le parking à l’entrée principale. Le Fast Lane coûte à partir de 39 dollars par visite. Six Flags n’a pas indiqué s’il vaut aussi pendant les soirées du WinterFest.
+Le billet d’entrée coûte à partir de 45 dollars, taxes éventuelles en sus. Il se vend aussi à l’entrée, mais certaines offres, comme les billets Bring-A-Friend, n’existent qu’en ligne. Les enfants de moins de trois ans n’ont pas besoin de billet. Le parking coûte 39 dollars la journée, le Preferred Parking 49 dollars, et un tram fait l’aller-retour jusqu’à l’entrée principale. Le Fast Lane coûte à partir de 39 dollars par visite. Six Flags n’a pas indiqué s’il vaut aussi pendant les soirées du WinterFest.
 
-Pour le Black Friday, le parc vend le Silver Pass 2027 à 59 dollars, le prix d’un billet Good Any Day. Il donne un accès illimité à Discovery Kingdom et au parc aquatique Hurricane Harbor Concord jusqu’au Labor Day 2027, parking compris. Sur la fin de l’offre, les pages du parc ne disent pas la même chose : la page d’accueil et celle du pass affichent un compte à rebours jusqu’au 27 novembre, la page des billets, celle des offres et le communiqué parlent du 30 novembre. Le pass s’accompagne d’un billet Bring-A-Friend à utiliser avant le 3 janvier, de quoi emmener quelqu’un au WinterFest. Reste à savoir si le Silver Pass 2027 vaut déjà pour ce WinterFest : le tableau comparatif coche bien la case WinterFest, mais le texte ne décrit le pass que jusqu’au Labor Day 2027. Avec le plan repas et boissons, l’ensemble coûte 149 dollars au lieu de 243.
+Pour le Black Friday, le parc vend le Silver Pass 2027 à 59 dollars, le prix d’un billet Good Any Day. Il donne un accès illimité à Discovery Kingdom et au parc aquatique Hurricane Harbor Concord jusqu’au Labor Day 2027, parking compris. Tu l’as à coup sûr jusqu’au 27 novembre, la date de fin du compte à rebours sur la page d’accueil et celle du pass. La page des billets, celle des offres et le communiqué parlent du 30 novembre. Le pass s’accompagne d’un billet Bring-A-Friend à utiliser avant le 3 janvier, de quoi emmener quelqu’un au WinterFest. Six Flags ne dit pas si le Silver Pass 2027 vaut déjà pour ce WinterFest : le tableau comparatif coche bien la case WinterFest, mais le texte ne décrit le pass que jusqu’au Labor Day 2027. Avec le plan repas et boissons, l’ensemble coûte 149 dollars au lieu de 243.
 
-Le Gold Pass, à 79 dollars, vaut explicitement pour 2026 et 2027, dans tous les parcs Six Flags de Californie, d’Arizona et du Mexique. Pour 169 dollars, le Prestige Pass ouvre tous les parcs Six Flags, avec Preferred Parking, boissons et un passage Fast Lane par visite.
+Vendu 79 dollars comme pass de Discovery Kingdom, le Gold Pass vaut explicitement pour 2026 et 2027, dans tous les parcs Six Flags de Californie, d’Arizona et du Mexique. Pour 169 dollars, le Prestige Pass ouvre tous les parcs Six Flags, avec Preferred Parking, boissons et un passage Fast Lane par visite.
 
 ## Entrée gratuite dès 65 ans
 
-Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement au WinterFest. Six Flags propose cette offre pour la première fois cet hiver. La page de l’offre la donne valable jusqu’au 3 janvier 2027, le texte de la page des billets jusqu’au 31 décembre. L’inscription se fait uniquement en ligne, l’entrée gratuite est activée lors de la première visite, et à chaque passage on présente à l’entrée une pièce d’identité avec la date de naissance. Elle ne vaut qu’à Discovery Kingdom, pas au parc aquatique. Le parking reste à votre charge, elle ne donne droit ni aux réductions ni aux billets Bring-A-Friend, et les accompagnateurs de moins de 65 ans paient leur propre billet, sauf les enfants jusqu’à deux ans.
+Si tu es né le 31 décembre 1961 ou avant, tu entres gratuitement au WinterFest. Six Flags propose cette offre pour la première fois cet hiver. La page de l’offre donne le 3 janvier 2027 comme dernier jour, la page des billets le 31 décembre. Tu t’inscris uniquement en ligne, et l’entrée gratuite est activée lors de ta première visite. À chaque passage, tu présentes à l’entrée une pièce d’identité avec ta date de naissance. Elle ne vaut qu’à Discovery Kingdom, pas au parc aquatique. Le parking reste à ta charge, et l’offre ne donne droit ni aux réductions ni aux billets Bring-A-Friend. Les accompagnateurs de moins de 65 ans paient leur propre billet, sauf les enfants de moins de trois ans.
 
-## De Marine World à Six Flags
+## Histoire et accès
 
-Six Flags avait présenté le WinterFest de Vallejo comme une nouveauté en novembre 2025, alors du 28 novembre au 4 janvier. Cet hiver, il s’arrête un jour plus tôt. Le communiqué de 2026 n’annonce aucune nouveauté pour Discovery Kingdom.
+Six Flags avait présenté le WinterFest de Vallejo comme une nouveauté en novembre 2025, alors du 28 novembre au 4 janvier. Cet hiver, il s’arrête un jour plus tôt. Pour 2026, Six Flags n’a annoncé aucune nouveauté propre à Discovery Kingdom.
 
-Le parc a ouvert en 1968 sous le nom de Marine World, à Redwood, s’est appelé Marine World Africa USA à partir de 1972 et a déménagé à Vallejo après la saison 1985 ; il s’y trouve depuis 1986. Premier Parks l’a racheté en 1996, et en 1998 Kong et le Boomerang sont devenus ses premières attractions mécaniques : jusque-là, Marine World n’en avait aucune. De 1999 à 2006, le parc s’appelait Six Flags Marine World. L’autre parc Six Flags de la baie de San Francisco, [California's Great America](/news/great-america-ferme-2027) à Santa Clara, vivra en 2027 sa dernière saison.
+Le parc a ouvert en 1968 sous le nom de Marine World, à Redwood, s’est appelé Marine World Africa USA à partir de 1972 et a déménagé après la saison 1985 à Vallejo, où il se trouve depuis 1986. Premier Parks l’a racheté en 1996, et en 1998 sont arrivées ses toutes premières attractions, dont les montagnes russes Kong et Boomerang. De 1999 à 2006, le parc s’appelait Six Flags Marine World. L’autre parc Six Flags de la baie de San Francisco, [California's Great America](/news/great-america-ferme-2027) à Santa Clara, vivra en 2027 sa dernière saison.
 
-Pour le GPS, l’adresse est 1001 Fairgrounds Drive, Vallejo, CA 94589. Sans voiture, le San Francisco Bay Ferry relie le centre de San Francisco à Vallejo en une heure environ. Sur sa page d’accès, Six Flags ne décrit pas le trajet entre l’embarcadère et le parc.
+Pour le GPS, l’adresse est 1001 Fairgrounds Drive, Vallejo, CA 94589. Sans voiture, le San Francisco Bay Ferry relie le centre de San Francisco à Vallejo en une heure environ. Six Flags n’a pas décrit le trajet entre l’embarcadère et le parc.
 
 [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom?full)
 
@@ -134,12 +134,16 @@ Sources :
 [Offres](https://www.sixflags.com/discoverykingdom/special-offers),
 [Season Passes et Memberships](https://www.sixflags.com/discoverykingdom/memberships-and-season-passes),
 [Parking](https://www.sixflags.com/discoverykingdom/parking),
+[Accès](https://www.sixflags.com/discoverykingdom/directions),
 [Fast Lane](https://www.sixflags.com/discoverykingdom/fast-lane),
 [Entrée gratuite dès 65 ans](https://www.sixflags.com/senior-admission),
 [Six Flags Discovery Kingdom](https://www.sixflags.com/discoverykingdom),
 [Media Center](https://www.sixflags.com/discoverykingdom/media-center),
 [Communiqué sur les événements d’hiver 2026 (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/04/SFEC-2026-Winter-Press-Release.pdf),
 [Communiqué sur les événements d’hiver 2025 (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_presentations/2025/11/SFEC-2025-Winter-Press-Release-Nov-13-2025.pdf),
+[Communiqué sur California's Great America (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/06/FINAL-CGA-Announcement-Press-Release-11-6-26.pdf),
+[Réveillon à Kings Island](https://www.sixflags.com/kingsisland/events/new-years-eve-celebration),
+[Countdown to New Year's à Fiesta Texas](https://www.sixflags.com/fiestatexas/events/countdown-to-new-years),
 [Ferry de Vallejo (San Francisco Bay Ferry)](https://www.sfbayferry.com/routes-schedules/vallejo/),
 [Six Flags Discovery Kingdom (RCDB)](https://rcdb.com/4711.htm),
 [Medusa (RCDB)](https://rcdb.com/617.htm),
@@ -147,4 +151,5 @@ Sources :
 [The Flash: Vertical Velocity (RCDB)](https://rcdb.com/1143.htm),
 [Joker (RCDB)](https://rcdb.com/13422.htm),
 [Batman The Ride (RCDB)](https://rcdb.com/16587.htm),
-[Kong (RCDB)](https://rcdb.com/163.htm).
+[Kong (RCDB)](https://rcdb.com/163.htm),
+[Boomerang (RCDB)](https://rcdb.com/357.htm).

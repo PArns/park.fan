@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  From 27 November you ride coasters at Discovery Kingdom's WinterFest until 8 p.m., all ten from 5 December. The park mentions no fireworks, and New Year's Eve closes at 8 like any other day.
+  From 27 November you ride coasters at Discovery Kingdom's WinterFest until 8 p.m., all ten from 5 December. The park mentions no fireworks and closes at 8 on New Year's Eve like any other day.
 tags:
   - news
   - six-flags-discovery-kingdom
@@ -35,7 +35,7 @@ rideLinks:
 seo:
   title: 'Six Flags Discovery Kingdom WinterFest 2026: Vallejo hours'
   description: >-
-    Six Flags Discovery Kingdom WinterFest 2026 in Vallejo: 22 days from 27 Nov to 3 Jan, hours noon to 8 p.m., tickets from $45, New Year's Eve until 8 p.m.
+    Discovery Kingdom in Vallejo is open on 22 days for WinterFest 2026, 27 Nov to 3 Jan, noon to 8 p.m. each day, New Year's Eve too. Tickets from $45.
   keywords:
     - Six Flags Discovery Kingdom WinterFest
     - WinterFest 2026
@@ -49,7 +49,7 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo, California, is holding WinterFest for the second time, from 27 November to 3 January. The park opens on 22 days in that stretch, at weekends and in the weeks around Christmas and New Year, and closes at 8 p.m. on every one of them. Lights, shows and most of the rides come with a regular park ticket.
+[Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom) in Vallejo, California, is holding WinterFest for the second time, from 27 November to 3 January. The park opens on 22 days in that stretch, at weekends and in the weeks around Christmas and New Year. Every one of them ends at 8 p.m. Lights, shows and most of the rides come with a regular park ticket.
 
 ## Dates and opening hours
 
@@ -61,9 +61,9 @@ The gates open at noon and WinterFest starts at 2 p.m. The park's list gives 2 p
 - Saturday 26 to Thursday 31 December
 - Friday 1 to Sunday 3 January
 
-It's closed on Thanksgiving (26 November), on Monday 30 November, on weekdays until 18 December and on Christmas Day. For Christmas Eve and the three January days the park lists hours of noon to 8 p.m., but no WinterFest entry and no ride times. The Six Flags event page and press release, on the other hand, give 3 January as the last day of WinterFest. If the weather closes the park early or keeps it shut all day, Six Flags gives no rain checks or refunds.
+The park is closed on Thanksgiving (26 November) and on Christmas Day. The calendar has it open on Christmas Eve and from 1 to 3 January as well, but lists neither WinterFest nor ride times for those days. The Six Flags event page and press release still run WinterFest until 3 January. If the weather closes the park early or keeps it shut all day, Six Flags gives no rain checks or refunds.
 
-New Year's Eve in Vallejo is an ordinary WinterFest day, noon to 8 p.m. None of the park's pages mentions fireworks or a party, and the press release that announces New Year's Eve celebrations at Carowinds, Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas and Six Flags Magic Mountain leaves Discovery Kingdom out. [Kings Island](/news/kings-island-winterfest-2026) lets the rockets off at midnight, and [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) has fireworks every evening from 26 December. By the time the gates shut in Vallejo at 8 p.m., the new year in Germany is already five hours old.
+New Year's Eve in Vallejo is an ordinary WinterFest day. Six Flags has announced New Year's Eve celebrations at Carowinds, Kings Island, Knott's Berry Farm, Six Flags Fiesta Texas and Six Flags Magic Mountain. For Discovery Kingdom it announces neither fireworks nor a party. [Kings Island](/news/kings-island-winterfest-2026) lets the rockets off at midnight, and [Fiesta Texas](/news/six-flags-fiesta-texas-holiday-in-the-park-2026) has fireworks every evening from 26 December. By the time the gates shut in Vallejo at 8 p.m., the new year in Germany is already five hours old.
 
 ```best-days-widget slug=six-flags-discovery-kingdom
 
@@ -71,7 +71,7 @@ New Year's Eve in Vallejo is an ordinary WinterFest day, noon to 8 p.m. None of 
 
 ## Shows, lights and Santa
 
-Each evening starts with the Tree Lighting Ceremony on Hometown Square, where the park's Holiday Singers switch on a tall Christmas tree with music and dancing. Show times are only in the Six Flags app and can change. The park's WinterFest guide lists these shows:
+Each evening starts with the Tree Lighting Ceremony on Hometown Square, where the park's Holiday Singers switch on a tall Christmas tree with music and dancing. Show times are only in the Six Flags app and can change. There are also these shows:
 
 - Jingle Jazz: singers in Dickens costumes, every evening on Hometown Square
 - Mistletones: a trio sings fifties-style songs on the Candy Cane Stage
@@ -80,19 +80,19 @@ Each evening starts with the Tree Lighting Ceremony on Hometown Square, where th
 - World of Celebration: a Christmas show with the Looney Tunes on the Looney Tunes Stage
 - Happy Flippin Holidays!: the dolphin show at Dolphin Harbor, with DJ Holiday
 
-St. Nick's Pics on Hometown Square takes photos with Santa until 23 December only, and the picture and prints cost extra. The North Pole Craft Depot and Post Office is in Santa's Village: kids up to 12 make crafts there and write a wish list, which they drop into Santa's mailbox themselves. You can decorate four big sugar cookies at a cookie corner that the event page calls the Christmas Cookie Corner and the guide calls Mrs. Claus' Cookie Corner. The cookies are bought online or at the park and cost extra.
+St. Nick's Pics on Hometown Square takes photos with Santa until 23 December only, and the picture and prints cost extra. The North Pole Craft Depot and Post Office is in Santa's Village: kids up to 12 make crafts there and write a wish list, which they drop into Santa's mailbox themselves. You decorate four big sugar cookies at the Christmas Cookie Corner, which the WinterFest guide calls Mrs. Claus' Cookie Corner. You buy the cookies online or at the park, and they cost extra.
 
 ## Food and drink
 
-WinterFest has its own menu: a French Onion Dip Burger with Swiss cheese and caramelized onions at Big Belly Burger, brisket chili with Monterey Jack in a bread bowl, a turkey poutine with cheese curds, fried OREOs with soft serve and peppermint sugar, and cinnamon pull-apart bread. JB's Sports Bar serves turkey or ham with two sides, mashed potatoes or mac and cheese among them. The Humbug Hot Chocolate is white chocolate with peppermint in a souvenir cup, and at the fire pits in Santa's Village and on Hometown Square you toast s'mores, with a fourth set free when you buy three. With the Unlimited Hot Chocolate cup, every refill costs $1.99 all winter. Cocktails such as the Gingerbread Old Fashioned are for over-21s with ID.
+For WinterFest, Big Belly Burger has a French Onion Dip Burger with Swiss cheese and caramelized onions. The WinterFest menu also has brisket chili with Monterey Jack in a bread bowl, a turkey poutine with cheese curds, cinnamon pull-apart bread, and fried OREOs with soft serve and peppermint sugar. JB's Sports Bar serves turkey or ham with two sides, mashed potatoes or mac and cheese among them. The Humbug Hot Chocolate is white chocolate with peppermint in a souvenir cup. At the fire pits in Santa's Village and on Hometown Square you toast s'mores, with a fourth set free when you buy three. With the Unlimited Hot Chocolate cup, every refill costs $1.99 all winter. Cocktails such as the Gingerbread Old Fashioned are for over-21s with ID.
 
 ## Which rides are running
 
-From 5 December all ten of the park's coasters run. On the first weekend the [Boomerang](ref:six-flags-discovery-kingdom/boomerang-coast-to-coaster) and [The Flash: Vertical Velocity](ref:six-flags-discovery-kingdom/the-flash-vertical-velocity) are still missing. The park's schedule has 31 rides from 27 to 29 November and 35 from 5 December, all from 2 to 8 p.m. and only when weather and conditions allow. From then on the [White Water Safari](ref:six-flags-discovery-kingdom/white-water-safari) rapids ride runs too, for anyone who packed a change of clothes. [Monsoon Falls](ref:six-flags-discovery-kingdom/monsoon-falls) and the climbing wall aren't on the schedule for any WinterFest day.
+From 5 to 31 December all ten of the park's coasters run, except on Christmas Eve. On the first weekend the [Boomerang](ref:six-flags-discovery-kingdom/boomerang-coast-to-coaster) and [The Flash: Vertical Velocity](ref:six-flags-discovery-kingdom/the-flash-vertical-velocity) are still missing. The park's schedule has 31 rides from 27 to 29 November and 35 from 5 December. They run from 2 to 8 p.m. and only when weather and conditions allow. From 5 December the [White Water Safari](ref:six-flags-discovery-kingdom/white-water-safari) rapids ride runs too, for anyone who packed a change of clothes. [Monsoon Falls](ref:six-flags-discovery-kingdom/monsoon-falls) and the climbing wall aren't on the schedule for any WinterFest day.
 
-The longest coaster is [Medusa](ref:six-flags-discovery-kingdom/medusa), a Bolliger & Mabillard floorless coaster from 2000, 150 feet (46 metres) tall, with a top speed of 65 mph (105 km/h) and seven inversions. [Superman Ultimate Flight](ref:six-flags-discovery-kingdom/superman-ultimate-flight) is just as tall, and so is The Flash, an Intamin Impulse coaster that hits the same 65 mph as Medusa and stood still from January 2024 to July 2025. Then there's [The Joker](ref:six-flags-discovery-kingdom/the-joker) by Rocky Mountain Construction, [Batman The Ride](ref:six-flags-discovery-kingdom/batman-the-ride) with its free-spinning seats and [Kong](ref:six-flags-discovery-kingdom/kong), a suspended looping coaster that used to run as Hangman at Opryland USA. The smaller ones are [Cobra](ref:six-flags-discovery-kingdom/cobra), [Sidewinder Safari](ref:six-flags-discovery-kingdom/sidewinder-safari) and the [Road Runner Express](ref:six-flags-discovery-kingdom/road-runner-express).
+The longest coaster is [Medusa](ref:six-flags-discovery-kingdom/medusa), a Bolliger & Mabillard floorless coaster from 2000, 150 feet (46 metres) tall, with a top speed of 65 mph (105 km/h) and seven inversions. [Superman Ultimate Flight](ref:six-flags-discovery-kingdom/superman-ultimate-flight) is just as tall, and so is The Flash, an Intamin Impulse coaster that hits the same 65 mph as Medusa. Then there's [The Joker](ref:six-flags-discovery-kingdom/the-joker) by Rocky Mountain Coasters, [Batman The Ride](ref:six-flags-discovery-kingdom/batman-the-ride) with its free-spinning seats and [Kong](ref:six-flags-discovery-kingdom/kong), a suspended looping coaster that used to run as Hangman at Opryland USA. The smaller ones are [Cobra](ref:six-flags-discovery-kingdom/cobra), [Sidewinder Safari](ref:six-flags-discovery-kingdom/sidewinder-safari) and the [Road Runner Express](ref:six-flags-discovery-kingdom/road-runner-express).
 
-The animal areas are on the programme as well, but without times. The animal page says the land-animal side closes at 5 p.m., so see the tigers and giraffes before your first hot chocolate.
+The animal areas are on the programme as well, but without times. The land-animal area closes at 5 p.m., so see the land animals before your first hot chocolate.
 
 ```ride-waits-widget park=six-flags-discovery-kingdom top=8
 
@@ -100,23 +100,23 @@ The animal areas are on the programme as well, but without times. The animal pag
 
 ## Tickets, passes and parking
 
-A park ticket starts at $45, and tax may come on top. You can buy one at the gate too, but some deals, such as the Bring-A-Friend tickets, are online only. Kids under three don't need a ticket. Parking is $39 a day, Preferred Parking $49, and a tram runs from the lot to the main entrance. Fast Lane starts at $39 for one visit. Six Flags hasn't announced whether it's valid on WinterFest evenings.
+A park ticket starts at $45, and tax may come on top. You can buy one at the gate too, but some deals, such as the Bring-A-Friend tickets, are online only. Kids under three don't need a ticket. Parking is $39 a day, Preferred Parking $49, and a tram runs to the main gate and back. Fast Lane starts at $39 for one visit. Six Flags hasn't announced whether it's valid on WinterFest evenings.
 
-For Black Friday the park is selling the 2027 Silver Pass for $59, the price of a Good Any Day ticket. It's good for as many visits as you like at Discovery Kingdom and the Hurricane Harbor Concord water park until Labor Day 2027, with free parking. The park's pages disagree on when the deal ends. The home page and the pass page count down to 27 November, while the ticket page, the deals page and the press release say 30 November. The pass comes with a Bring-A-Friend ticket that has to be used by 3 January, so your friend still gets to WinterFest. Whether the 2027 Silver Pass itself already covers this WinterFest is unclear: the comparison table puts a tick next to WinterFest, but the pass is only described up to Labor Day 2027. With the dining plan the bundle costs $149 instead of $243.
+For Black Friday the park is selling the 2027 Silver Pass for $59, the price of a Good Any Day ticket. It's good for as many visits as you like at Discovery Kingdom and the Hurricane Harbor Concord water park until Labor Day 2027, with free parking. You can count on it until 27 November, which is where the home page and the pass page count down to. The ticket page, the deals page and the press release say 30 November. The pass comes with a Bring-A-Friend ticket that has to be used by 3 January, so your friend still gets to WinterFest. Whether the 2027 Silver Pass itself already covers this WinterFest, Six Flags leaves open: the comparison table puts a tick next to WinterFest, but the pass is only described up to Labor Day 2027. With the dining plan the bundle costs $149 instead of $243.
 
-The $79 Gold Pass is explicitly valid in 2026 and 2027, at every Six Flags park in California, Arizona and Mexico. For $169 the Prestige Pass covers every Six Flags park, with Preferred Parking, drinks and one Fast Lane ride per visit.
+The Gold Pass costs $79 as a Discovery Kingdom pass and is explicitly valid in 2026 and 2027, at every Six Flags park in California, Arizona and Mexico. For $169 the Prestige Pass covers every Six Flags park, with Preferred Parking, drinks and one Fast Lane ride per visit.
 
 ## Free entry from 65
 
-If you were born on or before 31 December 1961, you get into WinterFest for free. This is the first winter Six Flags has offered it. The offer's own page says it runs until 3 January 2027, the text on the ticket page says 31 December. You can only sign up online, free entry is activated on your first visit, and at the gate you show ID with your date of birth every time. It covers Discovery Kingdom only, not the water park. You pay for parking yourself, there are no discounts or Bring-A-Friend tickets with it, and companions under 65 need their own ticket, except kids up to two.
+If you were born on or before 31 December 1961, you get into WinterFest for free. This is the first winter Six Flags has offered it. The offer's own page gives 3 January 2027 as the last day, the ticket page 31 December. You can only sign up online, free entry is activated on your first visit. At the gate you show ID with your date of birth every time. It covers Discovery Kingdom only, not the water park. You pay for parking yourself, there are no discounts or Bring-A-Friend tickets with it. Companions under 65 need their own ticket, except kids under three.
 
-## From Marine World to Six Flags
+## History and getting there
 
-Six Flags announced WinterFest in Vallejo as new in November 2025, running from 28 November to 4 January back then. This winter it finishes a day earlier. The 2026 press release doesn't name anything new for Discovery Kingdom.
+Six Flags announced WinterFest in Vallejo as new in November 2025, running from 28 November to 4 January back then. This winter it finishes a day earlier. Six Flags hasn't announced anything new just for Discovery Kingdom in 2026.
 
-The park opened in 1968 as Marine World in Redwood, became Marine World Africa USA in 1972 and moved to Vallejo after the 1985 season, opening there in 1986. Premier Parks bought it in 1996, and in 1998 Kong and the Boomerang arrived as its first rides; until then Marine World didn't have a single one. From 1999 to 2006 it was called Six Flags Marine World. The other Six Flags park in the Bay Area, [California's Great America](/news/great-america-closing-2027) in Santa Clara, is heading into its last season in 2027.
+The park opened in 1968 as Marine World in Redwood, became Marine World Africa USA in 1972 and moved to Vallejo after the 1985 season, opening there in 1986. Premier Parks bought it in 1996, and in 1998 the park got its first rides of any kind, the Kong and Boomerang coasters among them. From 1999 to 2006 it was called Six Flags Marine World. The other Six Flags park in the Bay Area, [California's Great America](/news/great-america-closing-2027) in Santa Clara, is heading into its last season in 2027.
 
-The address for your sat nav is 1001 Fairgrounds Drive, Vallejo, CA 94589. Without a car, the San Francisco Bay Ferry takes about an hour from downtown San Francisco to Vallejo. Six Flags doesn't describe the way from the ferry terminal to the park on its directions page.
+The address for your sat nav is 1001 Fairgrounds Drive, Vallejo, CA 94589. Without a car, the San Francisco Bay Ferry takes about an hour from downtown San Francisco to Vallejo. Six Flags hasn't described how to get from the ferry terminal to the park.
 
 [Six Flags Discovery Kingdom](ref:six-flags-discovery-kingdom?full)
 
@@ -134,12 +134,16 @@ Sources:
 [Special offers](https://www.sixflags.com/discoverykingdom/special-offers),
 [Season passes and memberships](https://www.sixflags.com/discoverykingdom/memberships-and-season-passes),
 [Parking](https://www.sixflags.com/discoverykingdom/parking),
+[Directions](https://www.sixflags.com/discoverykingdom/directions),
 [Fast Lane](https://www.sixflags.com/discoverykingdom/fast-lane),
 [Free admission from 65](https://www.sixflags.com/senior-admission),
 [Six Flags Discovery Kingdom](https://www.sixflags.com/discoverykingdom),
 [Media Center](https://www.sixflags.com/discoverykingdom/media-center),
 [2026 winter events press release (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/04/SFEC-2026-Winter-Press-Release.pdf),
 [2025 winter events press release (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_presentations/2025/11/SFEC-2025-Winter-Press-Release-Nov-13-2025.pdf),
+[California's Great America press release (Six Flags, PDF)](https://s204.q4cdn.com/155295784/files/doc_news/2026/Nov/06/FINAL-CGA-Announcement-Press-Release-11-6-26.pdf),
+[New Year's Eve at Kings Island](https://www.sixflags.com/kingsisland/events/new-years-eve-celebration),
+[Countdown to New Year's at Fiesta Texas](https://www.sixflags.com/fiestatexas/events/countdown-to-new-years),
 [Vallejo ferry (San Francisco Bay Ferry)](https://www.sfbayferry.com/routes-schedules/vallejo/),
 [Six Flags Discovery Kingdom (RCDB)](https://rcdb.com/4711.htm),
 [Medusa (RCDB)](https://rcdb.com/617.htm),
@@ -147,4 +151,5 @@ Sources:
 [The Flash: Vertical Velocity (RCDB)](https://rcdb.com/1143.htm),
 [Joker (RCDB)](https://rcdb.com/13422.htm),
 [Batman The Ride (RCDB)](https://rcdb.com/16587.htm),
-[Kong (RCDB)](https://rcdb.com/163.htm).
+[Kong (RCDB)](https://rcdb.com/163.htm),
+[Boomerang (RCDB)](https://rcdb.com/357.htm).
