@@ -46,13 +46,13 @@ Da sabato 21 novembre [Six Flags Fiesta Texas](ref:six-flags-fiesta-texas), a Sa
 
 Six Flags chiama le cinque sere tra il 26 e il 30 dicembre Countdown to New Year's e promette i fuochi d'artificio solo se il tempo lo permette.
 
-Nel calendario del parco il 31 dicembre porta il nome di Rockin' New Years Celebration. Il parco chiude alle 22 ora locale, quando in Italia sono già le 5 del mattino di Capodanno. La mezzanotte, a San Antonio, nel parco non la vede nessuno: i razzi partono al più tardi due ore prima. Fiesta Texas non ha ancora comunicato a che ora partono i razzi nelle sei serate, né se per il 31 serve un biglietto a parte.
+Nel calendario del parco il 31 dicembre porta il nome di Rockin' New Years Celebration. Il parco chiude alle 22 ora locale, quindi i fuochi finiscono al più tardi due ore prima di mezzanotte, e chi vuole fare il conto alla rovescia per l'anno nuovo lo fa sulla IH-10. In Italia a quell'ora sono già le 5 del mattino di Capodanno. Fiesta Texas non ha ancora comunicato a che ora partono i razzi nelle sei serate, né se per il 31 serve un biglietto a parte.
 
 Quest'inverno Six Flags annuncia serate di Capodanno in cinque parchi: oltre a Fiesta Texas ci sono [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm e [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Spettacoli, albero e luci
 
-Fino al 23 dicembre, in ogni serata dell'evento, alle 18 a Rockville si accende l'albero di Natale, alto 70 piedi (poco più di 21 metri). Subito dopo, senza pause, le luci delle Holiday Illuminations cambiano a tempo di musica. Alla H2Ho Ho Ho Holiday Fountain getti d'acqua e luci seguono la musica, mentre con i Singing Saps si cantano canzoni natalizie insieme a un'intera famiglia di abeti. Nel Santa's Cottage Babbo Natale ritira le letterine; i pacchetti foto si pagano a parte. I Looney Tunes e gli eroi e i cattivi DC si fanno fotografare a orari fissi.
+Fino al 23 dicembre, in ogni serata dell'evento, alle 18 a Rockville si accende l'albero di Natale, alto 70 piedi (poco più di 21 metri). Subito dopo, senza pause, le luci delle Holiday Illuminations cambiano a tempo di musica. La H2Ho Ho Ho Holiday Fountain fa lo stesso con i getti d'acqua, mentre con i Singing Saps si cantano canzoni natalizie insieme a un'intera famiglia di abeti. Nel Santa's Cottage Babbo Natale ritira le letterine; i pacchetti foto si pagano a parte. I Looney Tunes e gli eroi e i cattivi DC si fanno fotografare a orari fissi.
 
 | Spettacolo                                | Di cosa si tratta                                                        | Orari                    |
 | ----------------------------------------- | ------------------------------------------------------------------------ | ------------------------ |
@@ -101,7 +101,7 @@ Nei giorni dell'evento di novembre e dicembre funzionano 38 attrazioni (l'elenco
 
 Il biglietto d'ingresso si compra solo online e parte da 45 dollari. Il Good Any Day Ticket, valido in un giorno a scelta, costa 69 dollari. In entrambi i casi si aggiungono fino a 9,99 dollari di commissione e le tasse. Il parcheggio costa da 39 dollari al giorno, il Preferred Parking da 49 e il Valet da 55 dollari, anche qui più commissione e tasse. Nel navigatore va inserito 17000 IH-10 West, San Antonio, TX 78257.
 
-Alcune proposte natalizie si pagano a parte: gli s'mores sul fuoco, la cioccolata calda nel bicchiere da collezione e una bacchetta per bolle di sapone. Tutte e tre si comprano anche online, ma il parco non indica il prezzo. Il menu della stagione prevede un pranzo delle feste con tacchino, prosciutto al miele, ripieno e un contorno, una coscia di tacchino con anello d'ananas, bao con pollo fritto alla coreana e parfait ai biscotti di zucchero o al pan di zenzero. Gli Holiday Hand Pies sono empanadas con tacchino, ripieno e salsa, accompagnate da una salsa ai mirtilli rossi: il Ringraziamento in versione da passeggio. Per gli adulti ci sono i cocktail.
+Alcune proposte natalizie si pagano a parte: gli s'mores sul fuoco, la cioccolata calda nel bicchiere da collezione e una bacchetta per bolle di sapone. Tutte e tre si comprano anche online, ma il parco non indica il prezzo. Il menu della stagione resta fedele al tacchino, come pranzo delle feste con prosciutto al miele, ripieno e un contorno o come coscia con anello d'ananas. Chi ne ha abbastanza prende bao con pollo fritto alla coreana o un parfait ai biscotti di zucchero o al pan di zenzero, e gli adulti ci aggiungono un cocktail. Gli Holiday Hand Pies fanno stare il Ringraziamento in un'empanada da passeggio, con tacchino, ripieno e salsa dentro e una salsa ai mirtilli rossi a parte.
 
 ## Black Friday: il Silver Pass 2027 al prezzo del Good Any Day Ticket
 

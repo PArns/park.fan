@@ -45,13 +45,13 @@ seo:
 
 Six Flags calls the five evenings from 26 to 30 December Countdown to New Year's and only promises the fireworks if the weather plays along.
 
-In the park calendar, New Year's Eve is listed as the Rockin' New Years Celebration. The park closes at 10 p.m. local time, when it's already 5 a.m. on New Year's Day in Germany. So nobody sees midnight in San Antonio from inside the park, and the rockets go up two hours before it at the latest. Fiesta Texas hasn't said yet what time the rockets start on any of the six evenings, or whether New Year's Eve needs a separate ticket.
+In the park calendar, New Year's Eve is listed as the Rockin' New Years Celebration. The park closes at 10 p.m. local time, so the fireworks are over at least two hours before midnight, and anyone who wants to count into the new year does it on IH-10. In Germany it's already 5 a.m. on New Year's Day by then. Fiesta Texas hasn't announced yet what time the rockets start on any of the six evenings, or whether New Year's Eve needs a separate ticket.
 
 This winter Six Flags is announcing New Year's Eve evenings at five parks: Fiesta Texas, [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm and [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, the tree and the lights
 
-Until 23 December, the 70-foot (just over 21-metre) Christmas tree in Rockville lights up at 6 p.m. on every event evening. After that the lights of the Holiday Illuminations switch in time to the music there, without a break. At the H2Ho Ho Ho Holiday Fountain, jets of water and light play to music, and the Singing Saps get you singing carols with an entire family of Christmas trees. Santa takes wish lists at Santa's Cottage, with photo packages at extra cost. The Looney Tunes and DC's heroes and villains pose for photos at set times.
+Until 23 December, the 70-foot (just over 21-metre) Christmas tree in Rockville lights up at 6 p.m. on every event evening. After that the lights of the Holiday Illuminations switch in time to the music there, without a break. The H2Ho Ho Ho Holiday Fountain does the same with jets of water, and the Singing Saps get you singing carols with an entire family of Christmas trees. Santa takes wish lists at Santa's Cottage, with photo packages at extra cost. The Looney Tunes and DC's heroes and villains pose for photos at set times.
 
 | Show                                      | What's on                                                 | Times                       |
 | ----------------------------------------- | --------------------------------------------------------- | --------------------------- |
@@ -100,7 +100,7 @@ On the event days in November and December, 38 rides are running (the January li
 
 Park tickets are sold online only, from $45. The Good Any Day ticket, valid on any day you like, is $69. Both come with a processing fee of up to $9.99 plus tax. Parking starts at $39 a day, Preferred Parking at $49 and valet at $55, again plus a fee and tax. For the satnav: 17000 IH-10 West, San Antonio, TX 78257.
 
-Some holiday add-ons cost extra: s'mores over an open fire, cocoa in a souvenir mug and a bubble wand. All three can be bought online too, though the park doesn't give a price. The seasonal menu has a holiday feast with turkey, honey ham, stuffing and one side, a turkey leg with a pineapple ring, Korean fried chicken bao, and sugar cookie or gingerbread parfaits. The Holiday Hand Pies are empanadas filled with turkey, stuffing and gravy, served with a cranberry dip: Thanksgiving you can carry around. Adults can get cocktails.
+Some holiday add-ons cost extra: s'mores over an open fire, cocoa in a souvenir mug and a bubble wand. All three can be bought online too, though the park doesn't give a price. The seasonal menu sticks with turkey, as a holiday feast with honey ham, stuffing and one side or as a turkey leg with a pineapple ring. If you've had enough of that, there's Korean fried chicken bao or a sugar cookie or gingerbread parfait, and adults can order a cocktail with it. The Holiday Hand Pies fit Thanksgiving into an empanada you can carry around, with turkey, stuffing and gravy inside and a cranberry dip on the side.
 
 ## Black Friday: the 2027 Silver Pass for the price of a Good Any Day ticket
 

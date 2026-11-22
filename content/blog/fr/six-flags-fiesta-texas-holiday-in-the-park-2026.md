@@ -46,13 +46,13 @@ Depuis le samedi 21 novembre, [Six Flags Fiesta Texas](ref:six-flags-fiesta-texa
 
 Six Flags baptise les cinq soirées du 26 au 30 décembre Countdown to New Year's et ne promet le feu d’artifice que si la météo le permet.
 
-Le 31 décembre, le calendrier du parc parle de Rockin' New Years Celebration. Le parc ferme à 22 h, heure locale ; en France, on en est déjà à 5 h du matin, le 1er janvier. Personne ne fête donc minuit dans le parc, et les fusées partent au plus tard deux heures avant. Fiesta Texas n’a pas encore annoncé à quelle heure décollent les fusées lors de ces six soirées, ni si le 31 demande un billet à part.
+Le 31 décembre, le calendrier du parc parle de Rockin' New Years Celebration. Le parc ferme à 22 h, heure locale, le feu d’artifice est donc terminé au plus tard deux heures avant minuit, et qui veut compter jusqu’à la nouvelle année le fera sur l’IH-10. En France, il est alors déjà 5 h du matin, le 1er janvier. Fiesta Texas n’a pas encore annoncé à quelle heure décollent les fusées lors de ces six soirées, ni si le 31 demande un billet à part.
 
 Cet hiver, Six Flags annonce une soirée du Nouvel An dans cinq parcs : Fiesta Texas, [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm et [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Spectacles, sapin et illuminations
 
-Jusqu’au 23 décembre, chaque soir d’événement à 18 h, le grand sapin de Rockville s’allume, haut de 70 pieds (un peu plus de 21 mètres). Ensuite, sans interruption, les lumières des Holiday Illuminations changent au rythme de la musique. À la H2Ho Ho Ho Holiday Fountain, les jets d’eau et la lumière suivent la musique, et chez les Singing Saps, tu entonnes des chants de Noël avec toute une famille de sapins. Au Santa's Cottage, le père Noël recueille les lettres des enfants, et les formules photo se paient à part. Les Looney Tunes ainsi que les héros et les méchants de DC posent pour les photos à heures fixes.
+Jusqu’au 23 décembre, chaque soir d’événement à 18 h, le grand sapin de Rockville s’allume, haut de 70 pieds (un peu plus de 21 mètres). Ensuite, sans interruption, les lumières des Holiday Illuminations changent au rythme de la musique. La H2Ho Ho Ho Holiday Fountain fait de même avec des jets d’eau, et chez les Singing Saps, tu entonnes des chants de Noël avec toute une famille de sapins. Au Santa's Cottage, le père Noël recueille les lettres des enfants, et les formules photo se paient à part. Les Looney Tunes ainsi que les héros et les méchants de DC posent pour les photos à heures fixes.
 
 | Spectacle                                 | Au programme                                                                 | Horaires                          |
 | ----------------------------------------- | ---------------------------------------------------------------------------- | --------------------------------- |
@@ -101,7 +101,7 @@ Les jours d’événement de novembre et de décembre, 38 attractions tournent (
 
 Le billet d’entrée se vend uniquement en ligne, dès 45 dollars. Le billet Good Any Day, valable le jour de ton choix, coûte 69 dollars. Dans les deux cas s’ajoutent jusqu’à 9,99 dollars de frais de traitement et les taxes. Le parking coûte dès 39 dollars la journée, le Preferred Parking dès 49 dollars et le voiturier dès 55 dollars, là aussi frais et taxes en sus. L’adresse pour le GPS est 17000 IH-10 West, San Antonio, TX 78257.
 
-Certaines offres de Noël sont payantes : les s’mores grillés sur un feu ouvert, le chocolat chaud dans un gobelet de collection et une baguette à bulles de savon. Les trois se vendent aussi en ligne, mais le parc n’en indique pas le prix. La carte de saison propose un repas de fête avec dinde, jambon au miel, farce et un accompagnement, une cuisse de dinde avec une rondelle d’ananas, des bao au poulet frit coréen et des parfaits aux biscuits au sucre ou au pain d’épices. Les Holiday Hand Pies sont des empanadas garnis de dinde, de farce et de sauce, avec une sauce aux canneberges pour les tremper : Thanksgiving à emporter, en somme. Les adultes ont aussi droit à des cocktails.
+Certaines offres de Noël sont payantes : les s’mores grillés sur un feu ouvert, le chocolat chaud dans un gobelet de collection et une baguette à bulles de savon. Les trois se vendent aussi en ligne, mais le parc n’en indique pas le prix. La carte de saison reste fidèle à la dinde, en repas de fête avec jambon au miel, farce et un accompagnement, ou en cuisse avec une rondelle d’ananas. Si tu en as assez, tu prends des bao au poulet frit coréen ou un parfait aux biscuits au sucre ou au pain d’épices, et les adultes commandent un cocktail avec. Les Holiday Hand Pies font tenir Thanksgiving dans une empanada à emporter, garnie de dinde, de farce et de sauce, avec une sauce aux canneberges à côté.
 
 ## Black Friday : le Silver Pass 2027 au prix du billet Good Any Day
 

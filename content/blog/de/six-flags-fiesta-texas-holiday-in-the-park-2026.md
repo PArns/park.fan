@@ -46,13 +46,13 @@ Seit Samstag, dem 21. November, feiert [Six Flags Fiesta Texas](ref:six-flags-fi
 
 Die fünf Abende vom 26. bis 30. Dezember nennt Six Flags Countdown to New Year's und sagt das Feuerwerk nur zu, wenn das Wetter mitspielt.
 
-An Silvester heißt der Tag im Parkkalender Rockin' New Years Celebration. Um 22 Uhr Ortszeit schließt der Park, in Deutschland ist es dann schon 5 Uhr am Neujahrsmorgen. Mitternacht erlebt in San Antonio also niemand im Park, die Raketen fliegen spätestens zwei Stunden vorher. Wann die Raketen an den sechs Abenden starten und ob Silvester ein eigenes Ticket braucht, hat Fiesta Texas noch nicht bekannt gegeben.
+An Silvester heißt der Tag im Parkkalender Rockin' New Years Celebration. Um 22 Uhr Ortszeit schließt der Park, das Feuerwerk ist also spätestens zwei Stunden vor Mitternacht vorbei, und wer ins neue Jahr zählen will, tut das auf der IH-10. In Deutschland ist es dann schon 5 Uhr am Neujahrsmorgen. Wann die Raketen an den sechs Abenden starten und ob Silvester ein eigenes Ticket braucht, hat Fiesta Texas noch nicht bekannt gegeben.
 
 Silvesterabende kündigt Six Flags in diesem Winter in fünf Parks an, neben Fiesta Texas in [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm und [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, Baum und Lichter
 
-Bis zum 23. Dezember gehen an jedem Eventabend um 18 Uhr in Rockville die Lichter am 70 Fuß (gut 21 Meter) hohen Weihnachtsbaum an. Danach schalten dort ohne Pause die Lichter der Holiday Illuminations im Takt der Musik. Bei der H2Ho Ho Ho Holiday Fountain spielen Fontänen und Licht zu Musik, und bei den Singing Saps singst du mit einer ganzen Christbaumfamilie Weihnachtslieder. Im Santa's Cottage nimmt der Weihnachtsmann Wunschzettel entgegen, die Fotopakete kosten extra. Die Looney Tunes und die Helden und Schurken von DC stehen zu festen Zeiten für Fotos bereit.
+Bis zum 23. Dezember gehen an jedem Eventabend um 18 Uhr in Rockville die Lichter am 70 Fuß (gut 21 Meter) hohen Weihnachtsbaum an. Danach schalten dort ohne Pause die Lichter der Holiday Illuminations im Takt der Musik. Die H2Ho Ho Ho Holiday Fountain macht dasselbe mit Wasserfontänen, und bei den Singing Saps singst du mit einer ganzen Christbaumfamilie Weihnachtslieder. Im Santa's Cottage nimmt der Weihnachtsmann Wunschzettel entgegen, die Fotopakete kosten extra. Die Looney Tunes und die Helden und Schurken von DC stehen zu festen Zeiten für Fotos bereit.
 
 | Show                                      | Was läuft                                                             | Uhrzeiten                      |
 | ----------------------------------------- | --------------------------------------------------------------------- | ------------------------------ |
@@ -101,7 +101,7 @@ An den Eventtagen im November und Dezember fahren 38 Bahnen (für Januar fehlt d
 
 Das Parkticket gibt es nur online, ab 45 Dollar. Das Good Any Day Ticket für einen beliebigen Tag kostet 69 Dollar. Auf beide kommen eine Bearbeitungsgebühr von bis zu 9,99 Dollar und Steuern. Parken kostet am Tag ab 39 Dollar, Preferred Parking ab 49 und Valet ab 55 Dollar, ebenfalls plus Gebühr und Steuern. Ins Navi gehört 17000 IH-10 West, San Antonio, TX 78257.
 
-Einige Weihnachtsangebote kosten extra: die S'mores am offenen Feuer, der Kakao im Sammelbecher und ein Seifenblasenstab; alle drei gibt es auch online, einen Preis nennt der Park nicht. Auf der Karte für die Saison stehen ein Festessen mit Truthahn, Honigschinken, Füllung und einer Beilage, eine Truthahnkeule mit Ananasring, Bao mit koreanischem Brathähnchen und Parfaits aus Zuckerplätzchen oder Lebkuchen. Die Holiday Hand Pies sind Empanadas mit Truthahn, Füllung und Soße, dazu ein Cranberry-Dip, Thanksgiving zum Mitnehmen. Für Erwachsene gibt es Cocktails.
+Einige Weihnachtsangebote kosten extra: die S'mores am offenen Feuer, der Kakao im Sammelbecher und ein Seifenblasenstab; alle drei gibt es auch online, einen Preis nennt der Park nicht. Die Saisonkarte bleibt beim Truthahn, als Festessen mit Honigschinken, Füllung und einer Beilage oder als Keule mit Ananasring. Wer davon genug hat, nimmt Bao mit koreanischem Brathähnchen oder ein Parfait aus Zuckerplätzchen oder Lebkuchen, und Erwachsene bestellen dazu einen Cocktail. In den Holiday Hand Pies steckt Thanksgiving zum Mitnehmen: Truthahn, Füllung und Soße in einer Empanada, mit Cranberry-Dip dazu.
 
 ## Black Friday: Silver Pass 2027 zum Preis des Good Any Day Tickets
 

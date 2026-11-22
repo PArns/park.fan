@@ -46,13 +46,13 @@ Sinds zaterdag 21 november is het Holiday in the Park in [Six Flags Fiesta Texas
 
 De vijf avonden tussen kerst en oudejaarsdag noemt Six Flags Countdown to New Year's, en het vuurwerk belooft het park alleen als het weer meewerkt.
 
-Op 31 december staat de dag als Rockin' New Years Celebration in de parkkalender. Het park sluit om 22.00 uur plaatselijke tijd, en dan is het in Nederland al 5.00 uur 's ochtends op nieuwjaarsdag. Middernacht maakt in San Antonio dus niemand in het park mee; de pijlen gaan uiterlijk twee uur eerder de lucht in. Hoe laat de pijlen op die zes avonden opstijgen en of je voor oudejaarsavond een apart ticket nodig hebt, heeft Fiesta Texas nog niet bekendgemaakt.
+Op 31 december staat de dag als Rockin' New Years Celebration in de parkkalender. Het park sluit om 22.00 uur plaatselijke tijd, dus het vuurwerk is uiterlijk twee uur voor middernacht voorbij, en wie het nieuwe jaar wil aftellen, doet dat op de IH-10. In Nederland is het dan al 5.00 uur 's ochtends op nieuwjaarsdag. Hoe laat de pijlen op die zes avonden opstijgen en of je voor oudejaarsavond een apart ticket nodig hebt, heeft Fiesta Texas nog niet bekendgemaakt.
 
 Six Flags kondigt deze winter in vijf parken een oudejaarsavond aan: naast Fiesta Texas ook in [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm en [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
 ## Shows, kerstboom en lichtjes
 
-Tot en met 23 december gaan op elke evenementavond om 18.00 uur in Rockville de lichtjes aan in de 70 voet (ruim 21 meter) hoge kerstboom. Daarna knipperen daar zonder pauze de lichtjes van de Holiday Illuminations op de maat van de muziek. Bij de H2Ho Ho Ho Holiday Fountain dansen fonteinen en licht op muziek, en bij de Singing Saps zing je kerstliedjes met een complete familie kerstbomen. In Santa's Cottage neemt de kerstman verlanglijstjes in ontvangst; de fotopakketten betaal je apart. De Looney Tunes en de helden en schurken van DC staan op vaste tijden klaar voor een foto.
+Tot en met 23 december gaan op elke evenementavond om 18.00 uur in Rockville de lichtjes aan in de 70 voet (ruim 21 meter) hoge kerstboom. Daarna knipperen daar zonder pauze de lichtjes van de Holiday Illuminations op de maat van de muziek. De H2Ho Ho Ho Holiday Fountain doet hetzelfde met waterfonteinen, en bij de Singing Saps zing je kerstliedjes met een complete familie kerstbomen. In Santa's Cottage neemt de kerstman verlanglijstjes in ontvangst; de fotopakketten betaal je apart. De Looney Tunes en de helden en schurken van DC staan op vaste tijden klaar voor een foto.
 
 | Show                                      | Wat er te zien is                                                   | Tijden                           |
 | ----------------------------------------- | ------------------------------------------------------------------- | -------------------------------- |
@@ -101,7 +101,7 @@ Op de evenementdagen in november en december draaien 38 attracties (de lijst voo
 
 Het parkticket koop je alleen online, vanaf $45. Een Good Any Day Ticket, geldig op een dag naar keuze, kost $69. Bij allebei komen nog maximaal $9,99 administratiekosten en belasting. Parkeren kost vanaf $39 per dag, Preferred Parking vanaf $49 en valet vanaf $55, ook telkens plus kosten en belasting. Het adres voor de navigatie is 17000 IH-10 West, San Antonio, TX 78257.
 
-Een paar kerstextra's betaal je apart: s'mores boven het open vuur, chocolademelk in een verzamelbeker en een bellenblaasstaf. Die drie zijn ook online te koop, maar een prijs geeft het park niet. Op de seizoenskaart staan een feestmaal met kalkoen, honingham, vulling en een bijgerecht, een kalkoenbout met een ananasring, bao met Koreaanse gefrituurde kip en parfaits van suikerkoekjes of peperkoek. De Holiday Hand Pies zijn empanadas met kalkoen, vulling en jus, met een cranberrydip erbij: Thanksgiving om mee te nemen. Volwassenen kunnen cocktails bestellen.
+Een paar kerstextra's betaal je apart: s'mores boven het open vuur, chocolademelk in een verzamelbeker en een bellenblaasstaf. Die drie zijn ook online te koop, maar een prijs geeft het park niet. De seizoenskaart houdt het bij kalkoen, als feestmaal met honingham, vulling en een bijgerecht of als bout met een ananasring. Wie daar genoeg van heeft, neemt bao met Koreaanse gefrituurde kip of een parfait van suikerkoekjes of peperkoek, en volwassenen bestellen er een cocktail bij. In de Holiday Hand Pies zit Thanksgiving om mee te nemen, met kalkoen, vulling en jus in een empanada en een cranberrydip erbij.
 
 ## Black Friday: Silver Pass 2027 voor de prijs van een Good Any Day Ticket
 
