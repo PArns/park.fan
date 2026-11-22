@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Kings Island runs WinterFest from 27 November to New Year's Eve, with weekday gates opening at 5 in the evening. On 31 December it stays open until midnight for fireworks, on a regular park ticket.
+  Kings Island runs WinterFest from 27 November to New Year's Eve, with weekday gates opening at 5 in the evening. On 31 December it stays open until midnight for fireworks, and a park ticket will do.
 tags:
   - news
   - kings-island
@@ -52,11 +52,11 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-From 27 November until New Year's Eve, [Kings Island](ref:kings-island) in Mason, Ohio, runs WinterFest, on weekday evenings from 5 to 10 p.m. On the last night, Thursday 31 December, the park stays open until midnight and sees the new year in with fireworks. You don't need a special New Year's Eve ticket: shows, lights and most of the rides come with the park ticket and the season passes.
+[Kings Island](ref:kings-island) in Mason, Ohio, runs WinterFest from 27 November until New Year's Eve, on weekday evenings from 5 to 10 p.m. On the last night, Thursday 31 December, the park stays open until midnight and sees the new year in with fireworks. You don't need a special New Year's Eve ticket: shows, lights and most of the rides come with the park ticket and the season passes.
 
 ## Shows, lights and skating
 
-The event is built around International Street and the Eiffel Tower, about 300 feet (91 metres) tall, which Six Flags calls a Christmas tree. Nobody rides up it in winter, because the [Eiffel Tower](ref:kings-island/eiffel-tower) is closed on every WinterFest day, so this is a tree you admire from the bottom. Kings Island talks of millions of lights. Hundreds of staff get the event ready, and the lighting crews spend months testing and fixing the strings before they hang thousands of them.
+The event is built around International Street and the Eiffel Tower, about 300 feet (91 metres) tall, which Six Flags calls a Christmas tree. Nobody rides up it in winter, because the [Eiffel Tower](ref:kings-island/eiffel-tower) is closed on every WinterFest day. It's a tree you admire from the bottom. Kings Island talks of millions of lights. Hundreds of staff get the event ready, and the lighting crews spend months testing and fixing the strings before they hang thousands of them.
 
 The Kings Island Holiday Singers perform at the Tree Lighting Ceremony on International Street, and the WinterFest Wonderland Parade winds through the park every evening. On the Tinsel Town Stage a trio called The Mistletones sings fifties-style songs, while in the Festhaus a big band plays Swinging Into Christmas the way it was done in the forties.
 
@@ -66,7 +66,7 @@ The [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) rink sits in
 
 ## Which rides are running
 
-On WinterFest days 32 attractions run, the ice rink included, and on 23 December 29. The coasters include [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) on both tracks, blue and [red](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) and the [Woodstock Express](ref:kings-island/woodstock-express). For kids there's [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies), among others. Rides run from opening until 10 p.m., except that the Beagle Scout Acres kids' area doesn't start until 5 p.m. at weekends, and the [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) leaves Rivertown Station only from 5:30 p.m.
+On WinterFest days 32 attractions run, the ice rink included, but only 29 on 23 December. The coasters include [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) on both tracks, blue and [red](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) and the [Woodstock Express](ref:kings-island/woodstock-express). For kids there's [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies), among others. Rides run from opening until 10 p.m. At weekends the Beagle Scout Acres kids' area doesn't start until 5 p.m., and the [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) leaves Rivertown Station only from 5:30 p.m.
 
 [The Beast](ref:kings-island/the-beast), [Orion](ref:kings-island/orion) and [Diamondback](ref:kings-island/diamondback) are hibernating on every WinterFest day. On 23 December the Woodstock Express, the [Woodstock Whirlybirds](ref:kings-island/woodstock-whirlybirds) and the [Kite Eating Tree](ref:kings-island/kite-eating-tree) are missing as well. Around freezing, some rides stay shut under their manufacturers' rules, and shows can be called off too.
 
@@ -98,7 +98,7 @@ The cheapest way in is a set-date park ticket bought online for Monday 14 to Thu
 
 Parking costs $35, as much as a ticket for Tuesday 15 December. For $45 you get Preferred Parking right next to the main entrance. At the park, parking is paid by card only, not cash.
 
-Food, drinks and souvenirs cost extra, and so do the igloos, skating, cookie decorating and photos with Santa. An igloo in Jack Frost's Igloo Village costs $349 on 27 November, for up to eight people, with food, drinks and a concierge. Skating and igloos are booked online only, for a set date, plus fees and tax, and park admission isn't included. Cookie decorating in Mrs. Claus' Kitchen costs $19.99. The WinterFest souvenir mug is $12.99, and on the day of your first visit it gets a free refill every 15 minutes, so up to 20 on an evening from 5 to 10 p.m. if you set an alarm. A bubble wand shaped like a nutcracker costs $29.99. Photos with Santa are taken by St. Nick's Pics, where the FunPix photo package discounts don't apply.
+Food, drinks and souvenirs cost extra, and so do the igloos, skating, cookie decorating and photos with Santa. An igloo in Jack Frost's Igloo Village costs $349 on 27 November, for up to eight people, with food, drinks and a concierge. Skating and igloos are booked online only, for a set date, plus fees and tax. Park admission isn't included. Cookie decorating in Mrs. Claus' Kitchen costs $19.99. The WinterFest souvenir mug is $12.99. On the day of your first visit it gets a free refill every 15 minutes, so up to 20 on an evening from 5 to 10 p.m. if you set an alarm. A bubble wand shaped like a nutcracker costs $29.99. Photos with Santa are taken by St. Nick's Pics, where the FunPix photo package discounts don't apply.
 
 ## The 2027 Silver Pass for Black Friday
 

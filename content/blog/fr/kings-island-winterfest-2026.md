@@ -94,7 +94,7 @@ Cet hiver, Six Flags annonce aussi des soirées du Nouvel An à [Carowinds](/new
 
 ## Prix, parking et extras
 
-Le billet le moins cher, à date fixe et acheté en ligne, coûte 35 dollars du lundi 14 au jeudi 17 décembre. Les 19, 20 et 26 décembre, il passe à 49 dollars. La page des billets affiche « à partir de 39 dollars », alors que la billetterie en ligne propose déjà ces quatre jours à 35. Au guichet, le billet coûte 59 dollars. En ligne s’ajoutent des frais de traitement pouvant aller jusqu’à 9,99 dollars. Tout le monde a besoin d’un billet à partir de trois ans. Avec All Day Dining, le billet coûte à partir de 63 dollars, avec Fast Lane à partir de 65 dollars.
+Le billet le moins cher, à date fixe et acheté en ligne, coûte 35 dollars du lundi 14 au jeudi 17 décembre. Les 19, 20 et 26 décembre, il passe à 49 dollars. La page des billets affiche « à partir de 39 dollars », alors que la billetterie en ligne propose déjà ces quatre jours à 35. Au guichet, le billet coûte 59 dollars. En ligne s’ajoutent des frais de traitement pouvant aller jusqu’à 9,99 dollars. Le billet est obligatoire dès trois ans. Avec All Day Dining, le billet coûte à partir de 63 dollars, avec Fast Lane à partir de 65 dollars.
 
 Le parking coûte 35 dollars, autant qu’un billet pour le mardi 15 décembre. Pour 45 dollars, le Preferred Parking vous gare juste à côté de l’entrée principale. Sur place, le parking se paie uniquement par carte, pas en espèces.
 
@@ -106,7 +106,7 @@ Pour le Black Friday, Kings Island vend le Silver Pass 2027 à 99 dollars, le pr
 
 ## Entrée gratuite dès 65 ans
 
-Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Kings Island jusqu’au soir du Nouvel An. Six Flags propose cette offre pour la première fois cet hiver. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée gratuite est activée lors de la première visite. À chaque passage, on présente à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc d’attractions choisi à l’inscription. Le parking reste à votre charge, et elle ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass.
+Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Kings Island jusqu’au soir du Nouvel An. Six Flags propose cette offre pour la première fois cet hiver. L’inscription se fait uniquement en ligne, pas au parc, et l’entrée gratuite est activée lors de la première visite. À chaque passage, on présente à l’entrée une pièce d’identité avec la date de naissance. L’offre ne vaut que dans le parc d’attractions choisi à l’inscription. Le parking reste à votre charge, et l’offre ne donne droit ni aux réductions, ni aux billets Bring-A-Friend, ni aux avantages d’un Season Pass.
 
 ## Accès
 

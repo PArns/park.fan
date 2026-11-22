@@ -66,7 +66,7 @@ La pista di pattinaggio [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-s
 
 ## Quali attrazioni funzionano
 
-Nei giorni del WinterFest girano 32 attrazioni, pista di pattinaggio compresa, il 23 dicembre 29. Tra le montagne russe ci sono [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) con entrambi i tracciati, il blu e il [rosso](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) e il [Woodstock Express](ref:kings-island/woodstock-express). Per i bambini c'è tra l'altro [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies). Le attrazioni funzionano dall'apertura del parco fino alle 22, ma nel fine settimana l'area bambini Beagle Scout Acres apre solo alle 17 e il treno [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) parte dalla Rivertown Station solo dalle 17:30.
+Nei giorni del WinterFest girano 32 attrazioni, pista di pattinaggio compresa, e il 23 dicembre 29. Tra le montagne russe ci sono [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) con entrambi i tracciati, il blu e il [rosso](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) e il [Woodstock Express](ref:kings-island/woodstock-express). Per i bambini c'è tra l'altro [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies). Le attrazioni funzionano dall'apertura del parco fino alle 22, ma nel fine settimana l'area bambini Beagle Scout Acres apre solo alle 17 e il treno [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) parte dalla Rivertown Station solo dalle 17:30.
 
 [The Beast](ref:kings-island/the-beast), [Orion](ref:kings-island/orion) e [Diamondback](ref:kings-island/diamondback) vanno in letargo per tutto il WinterFest. Il 23 dicembre mancano anche il Woodstock Express, i [Woodstock Whirlybirds](ref:kings-island/woodstock-whirlybirds) e il [Kite Eating Tree](ref:kings-island/kite-eating-tree). Quando la temperatura scende intorno allo zero, alcune attrazioni si fermano secondo le regole dei costruttori, e possono saltare anche gli spettacoli.
 
@@ -88,7 +88,7 @@ Il parco resta chiuso lunedì 30 novembre, dal 1° al 3 e dal 7 al 10 dicembre, 
 
 ## Capodanno fino a mezzanotte
 
-Per le famiglie a San Silvestro ci sono già in prima serata diversi countdown, prima che a mezzanotte partano i fuochi, e in programma c'è anche Tinker's Early New Year's Extravaganza. Gli orari di questi appuntamenti il parco non li ha ancora pubblicati. Le attrazioni quella sera chiudono alle 22, solo il Kite Eating Tree può mangiare aquiloni un'ora in più, fino alle 23. Online un biglietto per il 31 dicembre costa 39 dollari, come il 29 e il 30.
+Per le famiglie a San Silvestro ci sono già in prima serata diversi countdown, prima che a mezzanotte partano i fuochi, e in programma c'è anche Tinker's Early New Year's Extravaganza. Gli orari di questi appuntamenti il parco non li ha ancora pubblicati. Le attrazioni quella sera chiudono alle 22; solo il Kite Eating Tree può mangiare aquiloni un'ora in più, fino alle 23. Online un biglietto per il 31 dicembre costa 39 dollari, come il 29 e il 30.
 
 Quest'inverno Six Flags annuncia serate di Capodanno anche a [Carowinds](/news/carowinds-winterfest-2026), Knott's Berry Farm, Six Flags Fiesta Texas e Six Flags Magic Mountain.
 
@@ -102,11 +102,11 @@ A parte si pagano cibo, bevande e souvenir, e poi igloo, pattinaggio, decorazion
 
 ## Silver Pass 2027 per il Black Friday
 
-Per il Black Friday Kings Island vende il Silver Pass 2027 a 99 dollari, quanto un Good Any Day Ticket. Sul sito del parco il prezzo è garantito fino al 27 novembre, mentre nel comunicato stampa Six Flags indica il 30. Il pass vale fino al Labor Day 2027 senza limiti a Kings Island e nel parco acquatico Soak City, con parcheggio gratuito. Il WinterFest 2026 è già compreso, e chi lo compra adesso riceve un biglietto Bring-A-Friend valido in qualsiasi giorno di apertura fino al 31 dicembre. Con il piano pasti e bevande il pacchetto costa 199 dollari invece di 348. Il Gold Pass costa 135 dollari, il Prestige Pass 299, ed entrambi valgono nel 2026 e nel 2027. Un Silver Pass per il 2027 lo vende già anche [Cedar Point](/news/cedar-point-stagione-2027).
+Per il Black Friday Kings Island vende il Silver Pass 2027 a 99 dollari, quanto un Good Any Day Ticket. Sul sito del parco il prezzo è garantito fino al 27 novembre, mentre nel comunicato stampa Six Flags indica il 30. Il pass vale fino al Labor Day 2027 senza limiti a Kings Island e nel parco acquatico Soak City, con parcheggio gratuito. Il WinterFest 2026 è già compreso, e chi compra il pass adesso riceve un biglietto Bring-A-Friend valido in qualsiasi giorno di apertura fino al 31 dicembre. Con il piano pasti e bevande il pacchetto costa 199 dollari invece di 348. Il Gold Pass costa 135 dollari, il Prestige Pass 299, ed entrambi valgono nel 2026 e nel 2027. Un Silver Pass per il 2027 lo vende già anche [Cedar Point](/news/cedar-point-stagione-2027).
 
 ## Ingresso gratuito dai 65 anni
 
-Chi è nato il 31 dicembre 1961 o prima entra gratis a Kings Island fino a San Silvestro. È il primo inverno in cui Six Flags lo offre. Ci si registra solo online, non al parco, e l'ingresso si attiva alla prima visita. All'entrata si mostra ogni volta un documento con la data di nascita. L'ingresso gratuito vale solo nel parco per cui ci si è registrati. Il parcheggio si paga a parte, e l'ingresso gratuito non dà diritto a sconti, biglietti Bring-A-Friend o vantaggi del Season Pass.
+Chi è nato il 31 dicembre 1961 o prima entra gratis a Kings Island fino a San Silvestro. È il primo inverno in cui Six Flags lo offre. Ci si registra solo online, non al parco, e l'ingresso si attiva alla prima visita. All'entrata si mostra ogni volta un documento con la data di nascita. L'ingresso gratuito vale solo nel parco per cui ci si è registrati. Il parcheggio si paga a parte, e l'offerta non dà diritto a sconti, biglietti Bring-A-Friend o vantaggi del Season Pass.
 
 ## Come arrivare
 

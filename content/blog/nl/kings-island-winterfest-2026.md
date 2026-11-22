@@ -52,7 +52,7 @@ seo:
     - Six Flags gratis toegang vanaf 65
 ---
 
-Van 27 november tot en met oudejaarsavond viert [Kings Island](ref:kings-island) in Mason, Ohio, WinterFest. Door de week is het park dan 's avonds open, van 17.00 tot 22.00 uur. Op de laatste avond, donderdag 31 december, gaan de poorten pas om middernacht dicht, en klokslag twaalf begint het vuurwerk. Een apart ticket voor oudejaarsavond heb je niet nodig: de shows, de verlichting en de meeste attracties zitten bij het parkticket en de Season Passes inbegrepen.
+Van 27 november tot en met oudejaarsavond viert [Kings Island](ref:kings-island) in Mason, Ohio, WinterFest. Door de week is het park dan 's avonds open, van 17.00 tot 22.00 uur. Op de laatste avond, donderdag 31 december, gaan de poorten pas om middernacht dicht, en klokslag twaalf begint het vuurwerk. Een apart ticket voor oudejaarsavond heb je niet nodig: de shows, de verlichting en de meeste attracties zitten bij het parkticket en de Season Passes in de prijs.
 
 ## Shows, lichtjes en schaatsen
 
@@ -72,7 +72,7 @@ Op de WinterFest-dagen draaien 32 attracties, de ijsbaan meegeteld, op 23 decemb
 
 ## Data en openingstijden
 
-Van maandag tot en met vrijdag is Kings Island open van 17.00 tot 22.00 uur, op zaterdag en zondag van 12.00 tot 22.00 uur. Gaan in Ohio om 17.00 uur de poorten open, dan is het in Nederland en België 23.00 uur. Het WinterFest loopt op 25 dagen:
+Van maandag tot en met vrijdag is Kings Island open van 17.00 tot 22.00 uur, op zaterdag en zondag van 12.00 tot 22.00 uur. Gaan in Ohio om 17.00 uur de poorten open, dan is het in Nederland en België 23.00 uur. Het WinterFest duurt 25 dagen:
 
 - vrijdag 27 tot en met zondag 29 november
 - vrijdag 4 tot en met zondag 6 december
