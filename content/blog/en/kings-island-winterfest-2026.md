@@ -52,15 +52,15 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Kings Island](ref:kings-island) in Mason, Ohio, runs WinterFest from 27 November until New Year's Eve, on weekday evenings from 5 to 10 p.m. On the last night, Thursday 31 December, the park stays open until midnight and sees the new year in with fireworks. You don't need a special New Year's Eve ticket: shows, lights and most of the rides come with the park ticket and the season passes.
+[Kings Island](ref:kings-island) in Mason, Ohio, open since 1972 and spread over 364 acres, runs WinterFest from 27 November until New Year's Eve, on weekday evenings from 5 to 10 p.m. On the last night, Thursday 31 December, the park stays open until midnight and sees the new year in with fireworks. Shows, lights and most of the rides come with the park ticket and the season passes, so there's no special New Year's Eve ticket to buy.
 
 ## Shows, lights and skating
 
-The event is built around International Street and the Eiffel Tower, about 300 feet (91 metres) tall, which Six Flags calls a Christmas tree. Nobody rides up it in winter, because the [Eiffel Tower](ref:kings-island/eiffel-tower) is closed on every WinterFest day. It's a tree you admire from the bottom. Kings Island talks of millions of lights. Hundreds of staff get the event ready, and the lighting crews spend months testing and fixing the strings before they hang thousands of them.
+The event is built around International Street and the Eiffel Tower, about 300 feet (91 metres) tall, which Six Flags calls a Christmas tree. The [Eiffel Tower](ref:kings-island/eiffel-tower) is closed on every WinterFest day, so this is a tree you admire with your head tipped back. To have every one of the millions of lights Kings Island talks about working on 27 November, the lighting crews spend months testing and fixing the strings before they hang thousands of them. Hundreds of staff work on the whole build.
 
 The Kings Island Holiday Singers perform at the Tree Lighting Ceremony on International Street, and the WinterFest Wonderland Parade winds through the park every evening. On the Tinsel Town Stage a trio called The Mistletones sings fifties-style songs, while in the Festhaus a big band plays Swinging Into Christmas the way it was done in the forties.
 
-Yuletide Follies is a musical revue with a vocal quartet and dancers. Tinker, Mrs. Claus and the elves turn up at Tinker's Jingle Bell Ball, and in the PEANUTS Showplace What the Dickens retells a Dickens story with the audience playing along. At It's Christmas, Charlie Brown! Charlie, Lucy and Linus get the crowd singing, and every evening Jingle Jazz brings out singers in Dickens costumes with Christmas songs. There's also Songs of the Nativity, with a nativity scene, Holly Holiday's String-A-Long on Enrique's Patio, and characters like Jack Frost and the Sugar Plum Fairy at Midway Merriment. Show times are only in the Kings Island app and the Six Flags app.
+Yuletide Follies is a musical revue with a vocal quartet and dancers. Tinker, Mrs. Claus and the elves turn up at Tinker's Jingle Bell Ball, and in the PEANUTS Showplace What the Dickens retells a Dickens story with the audience playing along. Charlie, Lucy and Linus get the crowd singing in It's Christmas, Charlie Brown!, and every evening the Jingle Jazz singers take the stage in Dickens costumes with Christmas songs, as if they'd sneaked over from What the Dickens. Jack Frost and the Sugar Plum Fairy manage without a stage at all and cross your path at Midway Merriment. Songs of the Nativity comes with a manger scene, and on Enrique's Patio Holly Holiday plays her String-A-Long. Show times are only in the Kings Island app and the Six Flags app.
 
 The [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) rink sits in the Royal Fountain on International Street and only goes in once the regular season is over. Skating costs extra, about $22 online on 27 November, and you sign a liability waiver first. Charlie Brown's Christmas Tree Lot is free, and so are the North Pole Post Office, where you write a postcard to Santa, and Artisan Alley, with stalls from local craftspeople. Kids up to 12 can make things at Sally's Christmas Crafts.
 
@@ -72,7 +72,7 @@ On WinterFest days 32 attractions run, the ice rink included, but only 29 on 23 
 
 ## Dates and opening hours
 
-Monday to Friday, Kings Island is open from 5 to 10 p.m., and on Saturdays and Sundays from noon to 10 p.m. When the gates open at 5 p.m. in Ohio, it's already 11 p.m. in Germany. WinterFest runs on 25 days:
+Monday to Friday, Kings Island is open from 5 to 10 p.m., and on Saturdays and Sundays from noon to 10 p.m. When the gates open at 5 p.m. in Ohio, it's already 10 p.m. in London, so if you follow the wait times from home, the first ones of the evening come in just before bed. WinterFest runs on 25 days:
 
 - Friday 27 to Sunday 29 November
 - Friday 4 to Sunday 6 December
@@ -80,7 +80,7 @@ Monday to Friday, Kings Island is open from 5 to 10 p.m., and on Saturdays and S
 - Saturday 26 to Wednesday 30 December
 - Thursday 31 December: 5 p.m. to midnight
 
-The park is closed on Monday 30 November, from 1 to 3 and from 7 to 10 December, and on Christmas Eve and Christmas Day.
+On 24 and 25 December the park stays shut; even the elves spend Christmas Eve at home.
 
 ```best-days-widget slug=kings-island
 
@@ -98,7 +98,7 @@ The cheapest way in is a set-date park ticket bought online for Monday 14 to Thu
 
 Parking costs $35, as much as a ticket for Tuesday 15 December. For $45 you get Preferred Parking right next to the main entrance. At the park, parking is paid by card only, not cash.
 
-Food, drinks and souvenirs cost extra, and so do the igloos, skating, cookie decorating and photos with Santa. An igloo in Jack Frost's Igloo Village costs $349 on 27 November, for up to eight people, with food, drinks and a concierge. Skating and igloos are booked online only, for a set date, plus fees and tax. Park admission isn't included. Cookie decorating in Mrs. Claus' Kitchen costs $19.99. The WinterFest souvenir mug is $12.99. On the day of your first visit it gets a free refill every 15 minutes, so up to 20 on an evening from 5 to 10 p.m. if you set an alarm. A bubble wand shaped like a nutcracker costs $29.99. Photos with Santa are taken by St. Nick's Pics, where the FunPix photo package discounts don't apply.
+The priciest extra is an igloo in Jack Frost's Igloo Village, at $349 on 27 November for up to eight people, with food, drinks and a concierge. Otherwise food, drinks, souvenirs and photos with Santa cost extra, just as they do in summer. Skating and igloos are booked online only, for a set date, plus fees and tax. Park admission isn't included. Cookie decorating in Mrs. Claus' Kitchen costs $19.99. The WinterFest souvenir mug is $12.99. On the day of your first visit it gets a free refill every 15 minutes, so up to 20 on an evening from 5 to 10 p.m. if you set an alarm. A bubble wand shaped like a nutcracker costs $29.99, nearly as much as admission on the four cheapest days. Photos with Santa are taken by St. Nick's Pics, where the FunPix photo package discounts don't apply.
 
 ## The 2027 Silver Pass for Black Friday
 
@@ -110,7 +110,7 @@ Anyone born on or before 31 December 1961 gets into Kings Island for free until 
 
 ## Getting there
 
-The address is 6300 Kings Island Drive, Kings Island, OH 45034. Sat navs also find the park at 6300 Kings Island Dr, Mason, OH 45040. Kings Island has been open since 1972 and covers 364 acres, about 147 hectares.
+The address is 6300 Kings Island Drive, Kings Island, OH 45034. Sat navs also find the park at 6300 Kings Island Dr, Mason, OH 45040.
 
 [Kings Island](ref:kings-island?full)
 

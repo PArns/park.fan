@@ -52,15 +52,15 @@ seo:
     - Six Flags gratis toegang vanaf 65
 ---
 
-Van 27 november tot en met oudejaarsavond viert [Kings Island](ref:kings-island) in Mason, Ohio, WinterFest. Door de week is het park dan 's avonds open, van 17.00 tot 22.00 uur. Op de laatste avond, donderdag 31 december, gaan de poorten pas om middernacht dicht, en klokslag twaalf begint het vuurwerk. Een apart ticket voor oudejaarsavond heb je niet nodig: de shows, de verlichting en de meeste attracties zitten bij het parkticket en de Season Passes in de prijs.
+Van 27 november tot en met oudejaarsavond viert [Kings Island](ref:kings-island) in Mason, Ohio, open sinds 1972 en 147 hectare groot, WinterFest. Door de week is het park dan 's avonds open, van 17.00 tot 22.00 uur. Op de laatste avond, donderdag 31 december, gaan de poorten pas om middernacht dicht, en klokslag twaalf begint het vuurwerk. Een apart ticket voor oudejaarsavond heb je niet nodig: de shows, de verlichting en de meeste attracties zitten bij het parkticket en de Season Passes in de prijs.
 
 ## Shows, lichtjes en schaatsen
 
-Het hart van het feest is de International Street met de Eiffeltoren van zo'n 91 meter (300 voet), die Six Flags tot kerstboom heeft gebombardeerd. Naar boven gaat in de winter niemand: de [Eiffel Tower](ref:kings-island/eiffel-tower) blijft op alle WinterFest-dagen dicht, dus de boom bewonder je vanaf de grond, zoals bij elke kerstboom. Kings Island heeft het over miljoenen lampjes. Honderden medewerkers bereiden het feest voor, en lichtploegen zijn maandenlang bezig met het testen en repareren van de lichtsnoeren, waarvan ze er duizenden ophangen.
+Het hart van het feest is de International Street met de Eiffeltoren van zo'n 91 meter (300 voet), die Six Flags tot kerstboom heeft gebombardeerd. De [Eiffel Tower](ref:kings-island/eiffel-tower) blijft op alle WinterFest-dagen dicht, dus deze boom bewonder je met je hoofd in je nek vanaf de grond. Zodat op 27 november ook alle miljoenen lampjes branden waar Kings Island het over heeft, testen en repareren lichtploegen de snoeren maandenlang, voordat ze er duizenden van ophangen. Aan de hele opbouw werken honderden medewerkers.
 
 Tijdens de Tree Lighting Ceremony op de International Street zingen de Kings Island Holiday Singers. Elke avond trekt de WinterFest Wonderland Parade door het park. Op de Tinsel Town Stage brengt het trio The Mistletones liedjes in de stijl van de jaren vijftig, en in het Festhaus speelt bij Swinging Into Christmas een bigband zoals in de jaren veertig.
 
-De Yuletide Follies zijn een muzikale revue met een zangkwartet en dansers. Bij Tinker's Jingle Bell Ball staan Tinker, Mrs. Claus en de elfjes op het podium, en in de PEANUTS Showplace speelt What the Dickens een verhaal van Dickens na, waarbij het publiek meedoet. Bij It's Christmas, Charlie Brown! zingen Charlie, Lucy en Linus samen met de zaal, en bij Jingle Jazz staan elke avond zangers in Dickens-kostuums met kerstliedjes. Verder zijn er Songs of the Nativity met een kerststal, Holly Holiday's String-A-Long op Enrique's Patio en figuren als Jack Frost en de Sugar Plum Fairy bij Midway Merriment. Hoe laat de shows beginnen, staat alleen in de app van Kings Island en in die van Six Flags.
+De Yuletide Follies zijn een muzikale revue met een zangkwartet en dansers. Tinker's Jingle Bell Ball zet Tinker, Mrs. Claus en de elfjes op het podium, en in de PEANUTS Showplace speelt What the Dickens een verhaal van Dickens na, waarbij het publiek meedoet. Charlie, Lucy en Linus krijgen in It's Christmas, Charlie Brown! de hele zaal aan het zingen, en de zangers van Jingle Jazz staan elke avond in Dickens-kostuums met kerstliedjes op het podium, alsof ze stiekem uit What the Dickens zijn overgelopen. Jack Frost en de Sugar Plum Fairy hebben helemaal geen podium nodig, die kom je gewoon tegen bij Midway Merriment. Bij Songs of the Nativity staat een kerststal, en op Enrique's Patio speelt Holly Holiday haar String-A-Long. Hoe laat de shows beginnen, staat alleen in de app van Kings Island en in die van Six Flags.
 
 De ijsbaan [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) ligt in de Royal Fountain, de fontein op de International Street, en wordt pas opgebouwd als het gewone seizoen voorbij is. Schaatsen betaal je apart, op 27 november online ongeveer 22 dollar, en eerst teken je een verklaring dat het park niet aansprakelijk is. Gratis zijn Charlie Brown's Christmas Tree Lot, het North Pole Post Office, waar je een kaartje aan de kerstman schrijft, en Artisan Alley met kraampjes van ambachtslieden uit de buurt. Bij Sally's Christmas Crafts knutselen kinderen tot twaalf jaar.
 
@@ -72,7 +72,7 @@ Op de WinterFest-dagen draaien 32 attracties, de ijsbaan meegeteld, op 23 decemb
 
 ## Data en openingstijden
 
-Van maandag tot en met vrijdag is Kings Island open van 17.00 tot 22.00 uur, op zaterdag en zondag van 12.00 tot 22.00 uur. Gaan in Ohio om 17.00 uur de poorten open, dan is het in Nederland en België 23.00 uur. Het WinterFest duurt 25 dagen:
+Van maandag tot en met vrijdag is Kings Island open van 17.00 tot 22.00 uur, op zaterdag en zondag van 12.00 tot 22.00 uur. Gaan in Ohio om 17.00 uur de poorten open, dan is het in Nederland en België 23.00 uur. Wie de wachttijden thuis volgt, ziet de eerste van de avond dus vlak voor het slapengaan. Het WinterFest duurt 25 dagen:
 
 - vrijdag 27 tot en met zondag 29 november
 - vrijdag 4 tot en met zondag 6 december
@@ -80,7 +80,7 @@ Van maandag tot en met vrijdag is Kings Island open van 17.00 tot 22.00 uur, op 
 - zaterdag 26 tot en met woensdag 30 december
 - donderdag 31 december: 17.00 tot 24.00 uur
 
-Dicht is het park op maandag 30 november, van 1 tot en met 3 en van 7 tot en met 10 december, en op kerstavond en eerste kerstdag.
+Op 24 en 25 december blijft het park dicht, want kerstavond vieren ook de elfjes thuis.
 
 ```best-days-widget slug=kings-island
 
@@ -98,7 +98,7 @@ Het goedkoopst is een parkticket voor een vaste dag online van maandag 14 tot en
 
 Parkeren kost 35 dollar, net zoveel als een ticket voor dinsdag 15 december. Voor 45 dollar sta je op Preferred Parking, direct naast de hoofdingang. Bij het park betaal je het parkeren alleen met een kaart, contant gaat niet.
 
-Apart betaal je voor eten, drinken en souvenirs, en voor iglo's, schaatsen, koekjes versieren en de foto's met de kerstman. Een iglo in Jack Frost's Igloo Village kost op 27 november 349 dollar, voor maximaal acht personen, met eten, drinken en een concierge. Schaatsen en iglo's boek je alleen online voor een vaste datum, plus kosten en belasting, en de toegang tot het park zit er niet bij. Koekjes versieren in Mrs. Claus' Kitchen kost 19,99 dollar. De WinterFest-souvenirbeker kost 12,99 dollar en mag je op je eerste bezoekdag elk kwartier gratis laten bijvullen. Op een avond van 17.00 tot 22.00 uur kom je zo op twintig keer, als je een wekker zet. Een bellenblaasstaf in de vorm van een notenkraker kost 29,99 dollar. De foto's met de kerstman maakt St. Nick's Pics, en kortingen van het FunPix-fotopakket gelden daar niet.
+Het duurst is een iglo in Jack Frost's Igloo Village, op 27 november 349 dollar voor maximaal acht personen, met eten, drinken en een concierge. Voor eten, drinken, souvenirs en de foto's met de kerstman betaal je verder net als in de zomer apart. Schaatsen en iglo's boek je alleen online voor een vaste datum, plus kosten en belasting, en de toegang tot het park zit er niet bij. Koekjes versieren in Mrs. Claus' Kitchen kost 19,99 dollar. De WinterFest-souvenirbeker kost 12,99 dollar en mag je op je eerste bezoekdag elk kwartier gratis laten bijvullen. Op een avond van 17.00 tot 22.00 uur kom je zo op twintig keer, als je een wekker zet. Een bellenblaasstaf in de vorm van een notenkraker kost 29,99 dollar, bijna zoveel als de toegang op de vier goedkoopste dagen. De foto's met de kerstman maakt St. Nick's Pics, en kortingen van het FunPix-fotopakket gelden daar niet.
 
 ## Silver Pass 2027 voor Black Friday
 
@@ -110,7 +110,7 @@ Ben je op of vóór 31 december 1961 geboren, dan kom je tot en met oudejaarsavo
 
 ## Bereikbaarheid
 
-Het adres is 6300 Kings Island Drive, Kings Island, OH 45034. In de navigatie vind je het park ook onder 6300 Kings Island Dr, Mason, OH 45040. Kings Island is open sinds 1972 en beslaat 364 acres, ongeveer 147 hectare.
+Het adres is 6300 Kings Island Drive, Kings Island, OH 45034. In de navigatie vind je het park ook onder 6300 Kings Island Dr, Mason, OH 45040.
 
 [Kings Island](ref:kings-island?full)
 

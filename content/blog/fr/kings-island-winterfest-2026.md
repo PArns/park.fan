@@ -52,15 +52,15 @@ seo:
     - Six Flags entrée gratuite 65 ans
 ---
 
-[Kings Island](ref:kings-island), à Mason dans l’Ohio, fête le WinterFest du 27 novembre jusqu’au soir du Nouvel An, en semaine de 17 h à 22 h. Le dernier soir, le jeudi 31 décembre, le parc reste ouvert jusqu’à minuit et tire un feu d’artifice au douzième coup. Inutile de chercher un billet spécial pour le réveillon : le billet d’entrée et les Season Passes comprennent les spectacles, les illuminations et la plupart des attractions.
+[Kings Island](ref:kings-island), à Mason dans l’Ohio, ouvert depuis 1972 et étendu sur 147 hectares, fête le WinterFest du 27 novembre jusqu’au soir du Nouvel An, en semaine de 17 h à 22 h. Le dernier soir, le jeudi 31 décembre, le parc reste ouvert jusqu’à minuit et tire un feu d’artifice au douzième coup. Inutile de chercher un billet spécial pour le réveillon : le billet d’entrée et les Season Passes comprennent les spectacles, les illuminations et la plupart des attractions.
 
 ## Spectacles, illuminations et patinage
 
-Tout se passe autour de l’International Street et de la tour Eiffel d’environ 91 mètres (300 pieds), que Six Flags présente comme un sapin de Noël. En hiver, personne n’y monte : l’[Eiffel Tower](ref:kings-island/eiffel-tower) reste fermée tous les jours du WinterFest, et ce sapin-là s’admire donc d’en bas. Kings Island parle de millions de lumières. Des centaines d’employés préparent la fête, et pendant des mois, les équipes des illuminations vérifient et réparent les guirlandes avant d’en accrocher des milliers.
+Tout se passe autour de l’International Street et de la tour Eiffel d’environ 91 mètres (300 pieds), que Six Flags présente comme un sapin de Noël. L’[Eiffel Tower](ref:kings-island/eiffel-tower) reste fermée tous les jours du WinterFest, et ce sapin-là s’admire donc d’en bas, la tête renversée en arrière. Pour que les millions de lumières dont parle Kings Island s’allument toutes le 27 novembre, les équipes des illuminations passent des mois à vérifier et réparer les guirlandes avant d’en accrocher des milliers. Des centaines d’employés travaillent à l’ensemble du montage.
 
 Lors de la Tree Lighting Ceremony, sur l’International Street, ce sont les Kings Island Holiday Singers qui chantent. Chaque soir, la WinterFest Wonderland Parade traverse le parc. Sur la Tinsel Town Stage, le trio The Mistletones reprend des chansons à la manière des années cinquante, tandis qu’au Festhaus, un big band joue Swinging Into Christmas comme dans les années quarante.
 
-Les Yuletide Follies sont une revue musicale avec un quatuor vocal, des danseuses et des danseurs. Tinker's Jingle Bell Ball réunit Tinker, Mrs. Claus et les lutins, et au PEANUTS Showplace, What the Dickens raconte une histoire de Dickens à laquelle le public prend part. Dans It's Christmas, Charlie Brown!, Charlie, Lucy et Linus chantent avec les spectateurs, et tous les soirs, Jingle Jazz fait monter sur scène des chanteurs en costumes de l’époque de Dickens pour des chants de Noël. S’y ajoutent Songs of the Nativity, avec une crèche, Holly Holiday's String-A-Long sur Enrique's Patio et des personnages comme Jack Frost et la Sugar Plum Fairy à Midway Merriment. Les horaires des spectacles ne figurent que dans l’application de Kings Island et dans celle de Six Flags.
+Les Yuletide Follies sont une revue musicale avec un quatuor vocal, des danseuses et des danseurs. Tinker's Jingle Bell Ball réunit Tinker, Mrs. Claus et les lutins, et au PEANUTS Showplace, What the Dickens raconte une histoire de Dickens à laquelle le public prend part. Charlie, Lucy et Linus font chanter la salle dans It's Christmas, Charlie Brown!, et tous les soirs, les chanteurs de Jingle Jazz montent sur scène en costumes de l’époque de Dickens pour des chants de Noël, comme s’ils s’étaient échappés de What the Dickens. Jack Frost et la Sugar Plum Fairy se passent de scène : on les croise au détour de Midway Merriment. Songs of the Nativity s’accompagne d’une crèche, et sur Enrique's Patio, Holly Holiday mène son String-A-Long. Les horaires des spectacles ne figurent que dans l’application de Kings Island et dans celle de Six Flags.
 
 La patinoire [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) occupe la Royal Fountain, la fontaine de l’International Street, et n’est montée qu’une fois la saison normale terminée. Le patinage est payant, environ 22 dollars en ligne le 27 novembre, et il faut d’abord signer une décharge de responsabilité. Ne coûtent rien le Charlie Brown's Christmas Tree Lot, le North Pole Post Office, où l’on écrit une carte postale au père Noël, et Artisan Alley, avec ses stands d’artisans de la région. Au Sally's Christmas Crafts, les enfants jusqu’à douze ans font du bricolage.
 
@@ -72,7 +72,7 @@ Les jours du WinterFest, 32 attractions tournent, patinoire comprise, et 29 le 2
 
 ## Dates et horaires
 
-Du lundi au vendredi, Kings Island ouvre de 17 h à 22 h, le samedi et le dimanche de 12 h à 22 h. Quand les grilles s’ouvrent à 17 h dans l’Ohio, il est 23 h en France. Le WinterFest compte 25 jours :
+Du lundi au vendredi, Kings Island ouvre de 17 h à 22 h, le samedi et le dimanche de 12 h à 22 h. Quand les grilles s’ouvrent à 17 h dans l’Ohio, il est 23 h en France, et qui suit les temps d’attente depuis chez soi voit arriver les premiers de la soirée juste avant d’aller se coucher. Le WinterFest compte 25 jours :
 
 - du vendredi 27 au dimanche 29 novembre
 - du vendredi 4 au dimanche 6 décembre
@@ -80,7 +80,7 @@ Du lundi au vendredi, Kings Island ouvre de 17 h à 22 h, le samedi et le dimanc
 - du samedi 26 au mercredi 30 décembre
 - jeudi 31 décembre : de 17 h à minuit
 
-Le parc reste fermé le lundi 30 novembre, du 1er au 3 et du 7 au 10 décembre, ainsi que la veille et le jour de Noël.
+Les 24 et 25 décembre, le parc reste fermé : même les lutins passent le réveillon de Noël chez eux.
 
 ```best-days-widget slug=kings-island
 
@@ -98,7 +98,7 @@ Le billet le moins cher, à date fixe et acheté en ligne, coûte 35 dollars du 
 
 Le parking coûte 35 dollars, autant qu’un billet pour le mardi 15 décembre. Pour 45 dollars, le Preferred Parking vous gare juste à côté de l’entrée principale. Sur place, le parking se paie uniquement par carte, pas en espèces.
 
-Les repas, les boissons et les souvenirs se paient à part, tout comme les igloos, le patinage, la décoration de biscuits et les photos avec le père Noël. Un igloo du Jack Frost's Igloo Village coûte 349 dollars le 27 novembre, pour huit personnes au plus, avec repas, boissons et concierge. Patinage et igloos se réservent uniquement en ligne, pour une date fixe, frais et taxes en sus, et l’entrée au parc n’est pas comprise. La décoration de biscuits dans Mrs. Claus' Kitchen coûte 19,99 dollars. Le gobelet souvenir du WinterFest coûte 12,99 dollars. Le premier jour de visite, on le remplit gratuitement toutes les 15 minutes, soit jusqu’à 20 fois sur une soirée de 17 h à 22 h, à condition de régler un réveil. Une baguette à bulles en forme de casse-noisette coûte 29,99 dollars. Les photos avec le père Noël sont faites par St. Nick's Pics, où les réductions du forfait photo FunPix ne s’appliquent pas.
+Le supplément le plus cher est un igloo du Jack Frost's Igloo Village, à 349 dollars le 27 novembre pour huit personnes au plus, avec repas, boissons et concierge. Pour le reste, repas, boissons, souvenirs et photos avec le père Noël se paient à part, comme en été. Patinage et igloos se réservent uniquement en ligne, pour une date fixe, frais et taxes en sus, et l’entrée au parc n’est pas comprise. La décoration de biscuits dans Mrs. Claus' Kitchen coûte 19,99 dollars. Le gobelet souvenir du WinterFest coûte 12,99 dollars. Le premier jour de visite, on le remplit gratuitement toutes les 15 minutes, soit jusqu’à 20 fois sur une soirée de 17 h à 22 h, à condition de régler un réveil. Une baguette à bulles en forme de casse-noisette coûte 29,99 dollars, presque autant que l’entrée les quatre jours les moins chers. Les photos avec le père Noël sont faites par St. Nick's Pics, où les réductions du forfait photo FunPix ne s’appliquent pas.
 
 ## Le Silver Pass 2027 pour le Black Friday
 
@@ -110,7 +110,7 @@ Les personnes nées le 31 décembre 1961 ou avant entrent gratuitement à Kings 
 
 ## Accès
 
-L’adresse est 6300 Kings Island Drive, Kings Island, OH 45034. Dans un GPS, le parc se trouve aussi sous 6300 Kings Island Dr, Mason, OH 45040. Kings Island est ouvert depuis 1972 et s’étend sur 364 acres, soit environ 147 hectares.
+L’adresse est 6300 Kings Island Drive, Kings Island, OH 45034. Dans un GPS, le parc se trouve aussi sous 6300 Kings Island Dr, Mason, OH 45040.
 
 [Kings Island](ref:kings-island?full)
 
