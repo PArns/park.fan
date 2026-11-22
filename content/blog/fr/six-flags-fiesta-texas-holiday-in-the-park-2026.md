@@ -46,7 +46,7 @@ Depuis le samedi 21 novembre, [Six Flags Fiesta Texas](ref:six-flags-fiesta-texa
 
 Les cinq soirées du 26 au 30 décembre s’appellent Countdown to New Year's, avec des illuminations, une cuisine de saison et le feu d’artifice, si la météo le permet.
 
-Le 31 décembre, le calendrier du parc parle de Rockin' New Years Celebration. Le parc ferme à 22 h, heure locale ; en France, on en est déjà à 5 h du matin, le 1er janvier. Le feu d’artifice part donc avant minuit, puisqu’à la fermeture, San Antonio a encore deux heures à passer dans la vieille année. Fiesta Texas n’a pas encore annoncé à quelle heure les fusées partent lors de ces six soirées, ni si le 31 demande un billet à part.
+Le 31 décembre, le calendrier du parc parle de Rockin' New Years Celebration. Le parc ferme à 22 h, heure locale ; en France, on en est déjà à 5 h du matin, le 1er janvier. Le feu d’artifice est donc tiré avant minuit, puisqu’à la fermeture, San Antonio a encore deux heures à passer dans la vieille année. Fiesta Texas n’a pas encore annoncé à quelle heure décollent les fusées lors de ces six soirées, ni si le 31 demande un billet à part.
 
 Cet hiver, Six Flags annonce une soirée du Nouvel An dans cinq parcs : Fiesta Texas, [Carowinds](/news/carowinds-winterfest-2026), Kings Island, Knott's Berry Farm et [Magic Mountain](/news/six-flags-magic-mountain-holiday-in-the-park-2026).
 
@@ -107,7 +107,7 @@ Repas, boissons et souvenirs sont payants, tout comme certaines offres de Noël�
 
 ## Black Friday : le Silver Pass 2027 au prix du billet Good Any Day
 
-Jusqu’au 27 novembre, Fiesta Texas vend le Silver Pass 2027 à 69 dollars. Il donne droit à des visites illimitées, parking et entrée à Hurricane Harbor compris, mais uniquement à Fiesta Texas. Six Flags le dit valable tantôt toute l’année 2027, tantôt au printemps et en été. Sur la page du parc consacrée au Silver Pass, les visites de ce mois de décembre ne sont pas mentionnées. Acheté avec l’offre Black Friday, il s’accompagne d’un billet Bring-A-Friend à utiliser au plus tard le 4 janvier 2027, ce qui laisse encore le temps de profiter de Holiday in the Park. Avec le plan repas et boissons, la formule coûte 159 dollars au lieu de 287.
+Jusqu’au 27 novembre, Fiesta Texas vend le Silver Pass 2027 à 69 dollars. Il donne droit à des visites illimitées, parking et entrée à Hurricane Harbor compris, mais uniquement à Fiesta Texas. Six Flags le dit valable tantôt toute l’année 2027, tantôt au printemps et en été. La page du parc consacrée au Silver Pass ne dit rien des visites de ce mois de décembre. Acheté avec l’offre Black Friday, il s’accompagne d’un billet Bring-A-Friend à utiliser au plus tard le 4 janvier 2027, ce qui laisse encore le temps de profiter de Holiday in the Park. Avec le plan repas et boissons, la formule coûte 159 dollars au lieu de 287.
 
 Le Gold Pass à 99 dollars vaut dès cet hiver et en 2027 dans tous les parcs Six Flags du Texas et de l’Oklahoma, donc aussi pour Holiday in the Park à [Six Flags Over Texas](/news/six-flags-over-texas-holiday-in-the-park-2026), à Arlington.
 

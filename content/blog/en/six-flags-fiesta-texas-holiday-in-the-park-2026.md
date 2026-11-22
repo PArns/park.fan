@@ -39,7 +39,7 @@ seo:
     - Six Flags free admission 65 and over
 ---
 
-[Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio has been running Holiday in the Park since Saturday, 21 November, and from 26 to 30 December every evening there finishes with fireworks. New Year's Eve brings the New Year's 360 Fireworks Celebration, with thousands of rockets launched from the quarry walls that ring the park, so the bangs come from every side. The park is open on 28 days through 4 January 2027, and regular admission covers the shows, the lights and most of the rides.
+[Six Flags Fiesta Texas](ref:six-flags-fiesta-texas) in San Antonio has been running Holiday in the Park since Saturday, 21 November. From 26 to 30 December, every evening there ends with fireworks. New Year's Eve brings the New Year's 360 Fireworks Celebration: thousands of rockets go up from the quarry walls that ring the park, so the bangs come from every side. The park is open on 28 days through 4 January 2027, and regular admission covers the shows, the lights and most of the rides.
 
 ## Fireworks after Christmas and on New Year's Eve
 

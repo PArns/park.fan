@@ -44,7 +44,7 @@ Sinds zaterdag 21 november is het Holiday in the Park in [Six Flags Fiesta Texas
 
 ## Vuurwerk na kerst en op oudejaarsavond
 
-De vijf avonden tussen kerst en oudejaarsdag heten Countdown to New Year's. Er zijn lichtjes, er is eten van het seizoen en er is vuurwerk, als het weer meewerkt.
+De vijf avonden tussen kerst en oudejaarsdag heten Countdown to New Year's. Er zijn lichtjes, seizoensgerechten en vuurwerk, als het weer meewerkt.
 
 Op 31 december staat de dag als Rockin' New Years Celebration in de parkkalender. Het park sluit om 22.00 uur plaatselijke tijd, en dan is het in Nederland al 5.00 uur 's ochtends op nieuwjaarsdag. Het vuurwerk gaat dus voor middernacht af: bij sluitingstijd heeft San Antonio nog twee uur van het oude jaar te gaan. Hoe laat de pijlen op die zes avonden opstijgen en of je voor oudejaarsavond een apart ticket nodig hebt, heeft Fiesta Texas nog niet bekendgemaakt.
 

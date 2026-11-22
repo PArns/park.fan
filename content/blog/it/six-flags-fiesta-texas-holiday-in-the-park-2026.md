@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Dal 26 al 30 dicembre ogni sera a Six Flags Fiesta Texas si chiude con i fuochi d'artificio. A Capodanno i razzi partono dalle pareti della vecchia cava che circonda il parco.
+  Dal 26 al 30 dicembre ogni sera a Six Flags Fiesta Texas si chiude con i fuochi d'artificio. A Capodanno i razzi partono dalle pareti della cava che circonda il parco.
 tags:
   - notizie
   - six-flags-fiesta-texas
@@ -113,7 +113,7 @@ Il Gold Pass da 99 dollari vale già quest'inverno e nel 2027 in tutti i parchi 
 
 ## Ingresso gratuito dai 65 anni
 
-Chi è nato il 31 dicembre 1961 o prima entra gratis a Fiesta Texas tutte le volte che vuole fino al 4 gennaio 2027. Ci si registra solo online, non al parco, e l'ingresso si attiva alla prima visita. A ogni visita all'entrata si mostra un documento con la data di nascita. L'ingresso gratuito vale solo nel parco per cui ti sei registrato e non nel parco acquatico. Il parcheggio lo paghi tu, e l'offerta non include sconti, biglietti Bring-A-Friend né i vantaggi di un Season Pass. Chi ti accompagna ha bisogno di un biglietto proprio, tranne i bambini fino a due anni. Six Flags offre l'ingresso gratuito per la prima volta quest'inverno.
+Se sei nato il 31 dicembre 1961 o prima, entri gratis a Fiesta Texas tutte le volte che vuoi fino al 4 gennaio 2027. Ti registri solo online, non al parco, e l'ingresso si attiva alla prima visita. A ogni visita mostri all'entrata un documento con la data di nascita. L'ingresso gratuito vale solo nel parco per cui ti sei registrato e non nel parco acquatico. Il parcheggio lo paghi tu, e l'offerta non include sconti, biglietti Bring-A-Friend né i vantaggi di un Season Pass. Chi ti accompagna ha bisogno di un biglietto proprio, tranne i bambini fino a due anni. Six Flags offre l'ingresso gratuito per la prima volta quest'inverno.
 
 ## Dopo il 4 gennaio
 

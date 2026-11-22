@@ -40,7 +40,7 @@ seo:
     - Six Flags entrada gratis mayores de 65
 ---
 
-[Six Flags Fiesta Texas](ref:six-flags-fiesta-texas), en San Antonio, celebra Holiday in the Park desde el sábado 21 de noviembre. Del 26 al 30 de diciembre, cada noche termina con fuegos artificiales, y en Nochevieja llega la New Year's 360 Fireworks Celebration: miles de cohetes despegan de las paredes de la cantera que rodea el parque y estallan por todos lados. Hasta el 4 de enero de 2027 el parque abre 28 días, y los espectáculos, las luces y la mayoría de las atracciones entran en la entrada normal.
+[Six Flags Fiesta Texas](ref:six-flags-fiesta-texas), en San Antonio, celebra Holiday in the Park desde el sábado 21 de noviembre. Del 26 al 30 de diciembre, cada noche termina con fuegos artificiales. En Nochevieja llega la New Year's 360 Fireworks Celebration: miles de cohetes despegan de las paredes de la cantera que rodea el parque y estallan por todos lados. Hasta el 4 de enero de 2027 el parque abre 28 días, y los espectáculos, las luces y la mayoría de las atracciones están incluidos en la entrada normal.
 
 ## Fuegos después de Navidad y en Nochevieja
 
@@ -113,7 +113,7 @@ El Gold Pass, por 99 $, vale ya este invierno y durante 2027 en todos los parque
 
 ## Entrada gratis desde los 65
 
-Si naciste el 31 de diciembre de 1961 o antes, entras gratis en Fiesta Texas todas las veces que quieras hasta el 4 de enero de 2027. El registro solo se hace en línea, no en el parque, y la entrada se activa en tu primera visita. En la puerta enseñas cada vez un documento con la fecha de nacimiento. La entrada gratis vale solo en el parque en el que te registraste y no en el parque acuático. El aparcamiento corre de tu cuenta, y no incluye descuentos, entradas Bring-A-Friend ni ventajas de un Season Pass. Quien te acompañe necesita su propia entrada, salvo los niños de hasta dos años. Es el primer invierno en que Six Flags ofrece esta entrada gratis.
+Si naciste el 31 de diciembre de 1961 o antes, entras gratis en Fiesta Texas todas las veces que quieras hasta el 4 de enero de 2027. El registro solo se hace en línea, no en el parque, y la entrada se activa en tu primera visita. En la puerta enseñas cada vez un documento con la fecha de nacimiento. La entrada gratis vale solo en el parque en el que te registraste y no en el parque acuático. El aparcamiento lo pagas tú, y la entrada gratis no incluye descuentos, entradas Bring-A-Friend ni ventajas de un Season Pass. Quien te acompañe necesita su propia entrada, salvo los niños de hasta dos años. Es el primer invierno en que Six Flags ofrece esta entrada gratis.
 
 ## Después del 4 de enero
 
