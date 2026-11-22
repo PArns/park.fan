@@ -7,7 +7,7 @@ author: patrick
 mode: published
 featured: false
 excerpt: >-
-  Kings Island öffnet zum WinterFest bis Silvester, unter der Woche abends ab 17 Uhr. Am 31. Dezember zählst du um Mitternacht mit Feuerwerk ins neue Jahr, mit dem normalen Parkticket.
+  Kings Island feiert vom 27. November bis Silvester WinterFest, unter der Woche ab 17 Uhr. Am 31. Dezember bleibt der Park bis Mitternacht offen, mit Feuerwerk, und dein normales Parkticket reicht.
 tags:
   - news
   - kings-island
@@ -52,23 +52,23 @@ seo:
     - Six Flags freier Eintritt ab 65
 ---
 
-[Kings Island](ref:kings-island) in Mason, Ohio, feiert vom 27. November bis Silvester WinterFest, unter der Woche abends von 17 bis 22 Uhr. Am letzten Abend, Donnerstag, dem 31. Dezember, bleibt der Park bis Mitternacht offen und zählt mit einem Feuerwerk ins neue Jahr, ein eigenes Silvesterticket gibt es nicht. Shows, Lichter und die meisten Bahnen sind im Parkticket und in den Season Passes enthalten.
+[Kings Island](ref:kings-island) in Mason, Ohio, feiert vom 27. November bis Silvester WinterFest, unter der Woche abends von 17 bis 22 Uhr. Am letzten Abend, Donnerstag, dem 31. Dezember, bleibt der Park bis Mitternacht offen, um Mitternacht gibt es ein Feuerwerk. Ein eigenes Silvesterticket brauchst du nicht. Shows, Lichter und die meisten Bahnen sind im Parkticket und in den Season Passes enthalten.
 
 ## Shows, Lichter und Eislaufen
 
-Das Fest dreht sich um die International Street und den rund 91 Meter (300 Fuß) hohen Eiffelturm, den Six Flags einen Weihnachtsbaum nennt. Hinauf fährt im Winter niemand, denn der [Eiffel Tower](ref:kings-island/eiffel-tower) hat an keinem WinterFest-Tag Betriebszeiten, den Baum gibt es also nur von unten. Wie viele Lichter im Park hängen, beziffert Kings Island nur mit „Millionen“. Hunderte Mitarbeiter bereiten das Fest vor, Lichtteams prüfen und reparieren die Lichterketten über Monate und hängen Tausende davon auf.
+Das Fest dreht sich um die International Street und den rund 91 Meter (300 Fuß) hohen Eiffelturm, den Six Flags einen Weihnachtsbaum nennt. Hinauf fährt im Winter niemand, der [Eiffel Tower](ref:kings-island/eiffel-tower) bleibt an allen WinterFest-Tagen zu. Den Baum gibt es also nur von unten. Kings Island spricht von Millionen Lichtern. Hunderte Mitarbeiter bereiten das Fest vor, Lichtteams prüfen und reparieren die Lichterketten über Monate und hängen Tausende davon auf.
 
 Bei der Tree Lighting Ceremony auf der International Street singen die Kings Island Holiday Singers. Jeden Abend zieht die WinterFest Wonderland Parade durch den Park. Auf der Tinsel Town Stage singt das Trio The Mistletones Lieder im Stil der Fünfzigerjahre, im Festhaus spielt bei Swinging Into Christmas eine Big Band wie in den Vierzigern.
 
-Die Yuletide Follies sind eine Musikrevue mit einem Gesangsquartett und Tänzerinnen und Tänzern. Bei Tinker's Jingle Bell Ball treten Tinker, Mrs. Claus und die Elfen auf, im PEANUTS Showplace erzählt What the Dickens eine Geschichte von Dickens zum Mitspielen nach. Bei It's Christmas, Charlie Brown! singen Charlie, Lucy und Linus mit dem Publikum, und bei Jingle Jazz singen jeden Abend Sänger wie aus einem Roman von Dickens Weihnachtslieder. Dazu kommen Songs of the Nativity mit einer Krippe, Holly Holiday's String-A-Long auf Enrique's Patio und Figuren wie Jack Frost und die Sugar Plum Fairy bei Midway Merriment. Wann welche Show beginnt, veröffentlicht Kings Island nur in der App von Six Flags.
+Die Yuletide Follies sind eine Musikrevue mit einem Gesangsquartett und Tänzerinnen und Tänzern. Bei Tinker's Jingle Bell Ball treten Tinker, Mrs. Claus und die Elfen auf, im PEANUTS Showplace erzählt What the Dickens eine Geschichte von Dickens zum Mitspielen nach. Bei It's Christmas, Charlie Brown! singen Charlie, Lucy und Linus mit dem Publikum, und bei Jingle Jazz treten jeden Abend Sänger in Dickens-Kostümen mit Weihnachtsliedern auf. Dazu kommen Songs of the Nativity mit einer Krippe, Holly Holiday's String-A-Long auf Enrique's Patio und Figuren wie Jack Frost und die Sugar Plum Fairy bei Midway Merriment. Die Anfangszeiten der Shows stehen nur in der App von Kings Island und in der von Six Flags.
 
-Die Eisbahn [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) liegt im Royal Fountain, dem Brunnen auf der International Street, und wird erst nach dem Ende der regulären Saison aufgebaut. Eislaufen kostet extra, am 27. November zum Beispiel 22 Dollar online, und vorher unterschreibst du einen Haftungsverzicht. Kostenlos sind Charlie Brown's Christmas Tree Lot, das North Pole Post Office, wo du eine Postkarte an den Weihnachtsmann schreibst, und Artisan Alley mit Ständen von Kunsthandwerkern aus der Region. Bei Sally's Christmas Crafts basteln Kinder bis zwölf Jahre.
+Die Eisbahn [Snow Flake Lake](ref:kings-island/snow-flake-lake-ice-skating) liegt im Royal Fountain, dem Brunnen auf der International Street, und wird erst nach dem Ende der regulären Saison aufgebaut. Eislaufen kostet extra, am 27. November etwa 22 Dollar online. Vorher unterschreibst du einen Haftungsverzicht. Kostenlos sind Charlie Brown's Christmas Tree Lot, das North Pole Post Office, wo du eine Postkarte an den Weihnachtsmann schreibst, und Artisan Alley mit Ständen von Kunsthandwerkern aus der Region. Bei Sally's Christmas Crafts basteln Kinder bis zwölf Jahre.
 
 ## Welche Bahnen fahren
 
-An den WinterFest-Tagen fahren 32 Attraktionen, die Eisbahn mitgezählt. Unter den Achterbahnen sind [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) mit beiden Strecken, Blau und [Rot](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) und der [Woodstock Express](ref:kings-island/woodstock-express). Mystic Timbers und [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies) nennt der Park selbst als WinterFest-Attraktionen. Die Bahnen fahren ab Parköffnung bis 22 Uhr, die Eisenbahn [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) ab Rivertown Station erst ab 17:30 Uhr.
+An den WinterFest-Tagen fahren 32 Attraktionen, die Eisbahn mitgezählt, am 23. Dezember 29. Unter den Achterbahnen sind [Mystic Timbers](ref:kings-island/mystic-timbers), [Flight of Fear](ref:kings-island/flight-of-fear), [The Racer](ref:kings-island/the-racer-blue) mit beiden Strecken, Blau und [Rot](ref:kings-island/the-racer-red), [The Great Pumpkin Coaster](ref:kings-island/great-pumpkin-coaster) und der [Woodstock Express](ref:kings-island/woodstock-express). Für Kinder fahren unter anderem [Snoopy's Space Buggies](ref:kings-island/snoopys-space-buggies). Die Bahnen fahren ab Parköffnung bis 22 Uhr, der Kinderbereich Beagle Scout Acres am Wochenende erst ab 17 Uhr und die Eisenbahn [K.I. & Miami Valley Railroad](ref:kings-island/ki-and-miami-valley-railroad-rivertown-station) ab Rivertown Station erst ab 17:30 Uhr.
 
-[The Beast](ref:kings-island/the-beast), [Orion](ref:kings-island/orion) und [Diamondback](ref:kings-island/diamondback) stehen an allen WinterFest-Tagen still und halten Winterschlaf bis zur nächsten Saison. Am 23. Dezember fehlen außerdem der Woodstock Express, die [Woodstock Whirlybirds](ref:kings-island/woodstock-whirlybirds) und der [Kite Eating Tree](ref:kings-island/kite-eating-tree). Sinkt die Temperatur gegen den Gefrierpunkt, dürfen manche Bahnen nach den Vorgaben ihrer Hersteller nicht fahren, und auch die Shows können betroffen sein.
+[The Beast](ref:kings-island/the-beast), [Orion](ref:kings-island/orion) und [Diamondback](ref:kings-island/diamondback) halten an allen WinterFest-Tagen Winterschlaf. Am 23. Dezember fehlen der Woodstock Express, die [Woodstock Whirlybirds](ref:kings-island/woodstock-whirlybirds) und der [Kite Eating Tree](ref:kings-island/kite-eating-tree). Um den Gefrierpunkt bleiben manche Bahnen nach den Vorgaben ihrer Hersteller stehen, und auch Shows können ausfallen.
 
 ## Termine und Öffnungszeiten
 
@@ -76,13 +76,11 @@ Von Montag bis Freitag hat Kings Island von 17 bis 22 Uhr geöffnet, samstags un
 
 - Freitag, 27., bis Sonntag, 29. November
 - Freitag, 4., bis Sonntag, 6. Dezember
-- Freitag, 11., bis Sonntag, 13. Dezember
-- Montag, 14., bis Mittwoch, 23. Dezember, jeden Tag
-- Heiligabend und erster Weihnachtstag: geschlossen
+- Freitag, 11., bis Mittwoch, 23. Dezember, jeden Tag
 - Samstag, 26., bis Mittwoch, 30. Dezember
 - Donnerstag, 31. Dezember: 17 bis 24 Uhr
 
-Geschlossen ist der Park am Montag, dem 30. November, vom 1. bis 3. Dezember und vom 7. bis 10. Dezember.
+Geschlossen ist der Park am Montag, dem 30. November, vom 1. bis 3. und vom 7. bis 10. Dezember sowie an Heiligabend und am ersten Weihnachtstag.
 
 ```best-days-widget slug=kings-island
 
@@ -90,29 +88,29 @@ Geschlossen ist der Park am Montag, dem 30. November, vom 1. bis 3. Dezember und
 
 ## Silvester bis Mitternacht
 
-An Silvester öffnet Kings Island um 17 Uhr und schließt um Mitternacht, nach dem Countdown und dem Feuerwerk. Für Familien gibt es schon am frühen Abend mehrere Countdowns, im Programm steht außerdem Tinker's Early New Year's Extravaganza. Die Uhrzeiten dafür hat der Park bisher nicht veröffentlicht. Die Bahnen schließen an diesem Abend um 22 Uhr, nur der Kite Eating Tree darf eine Stunde länger Drachen fressen, bis 23 Uhr. Ein Ticket für den 31. Dezember kostet online 39 Dollar, so viel wie am 29. und 30. Dezember.
+Für Familien gibt es an Silvester schon am frühen Abend mehrere Countdowns, bevor um Mitternacht das Feuerwerk startet, im Programm steht außerdem Tinker's Early New Year's Extravaganza. Die Uhrzeiten dafür hat der Park bisher nicht veröffentlicht. Die Bahnen schließen an diesem Abend um 22 Uhr, nur der Kite Eating Tree darf eine Stunde länger Drachen fressen, bis 23 Uhr. Ein Ticket für den 31. Dezember kostet online 39 Dollar, so viel wie am 29. und 30. Dezember.
 
-Silvesterabende kündigt Six Flags in diesem Winter außerdem in [Carowinds](/news/carowinds-winterfest-2026), Knott's Berry Farm, Six Flags Fiesta Texas und Six Flags Magic Mountain an.
+Silvesterabende kündigt Six Flags in diesem Winter auch in [Carowinds](/news/carowinds-winterfest-2026), Knott's Berry Farm, Six Flags Fiesta Texas und Six Flags Magic Mountain an.
 
 ## Preise, Parken und Extras
 
-Im Ticketshop von Kings Island ist ein Parkticket für einen festen Tag online von Montag, dem 14., bis Donnerstag, dem 17. Dezember, mit 35 Dollar am günstigsten, am 19., 20. und 26. Dezember kostet es 49 Dollar. Die Ticketseite des Parks wirbt mit „ab 39 Dollar“. An der Tageskasse zahlst du 59 Dollar. Online kommt eine Bearbeitungsgebühr von bis zu 9,99 Dollar dazu, ein Ticket braucht jeder ab drei Jahren. Mit All Day Dining kostet das Ticket ab 63 Dollar, mit Fast Lane ab 65 Dollar.
+Am günstigsten ist ein Parkticket für einen festen Tag online von Montag, dem 14., bis Donnerstag, dem 17. Dezember, mit 35 Dollar. Am 19., 20. und 26. Dezember kostet es 49 Dollar. Auf der Ticketseite steht „ab 39 Dollar“, im Ticketshop gibt es diese vier Tage schon für 35. An der Tageskasse zahlst du 59 Dollar. Online kommt eine Bearbeitungsgebühr von bis zu 9,99 Dollar dazu. Ein Ticket braucht jeder ab drei Jahren. Mit All Day Dining kostet das Ticket ab 63 Dollar, mit Fast Lane ab 65 Dollar.
 
 Parken kostet 35 Dollar, so viel wie ein Ticket für Dienstag, den 15. Dezember. Für 45 Dollar stehst du auf dem Preferred Parking direkt neben dem Haupteingang. Am Park zahlst du das Parken nur mit Karte, nicht bar.
 
-Essen, Getränke und Souvenirs zahlst du extra, genau wie einige der Weihnachtsangebote. Ein Iglu in Jack Frost's Igloo Village kostet am 27. November 349 Dollar, für bis zu acht Personen, mit Essen, Getränken und Concierge. Eislaufen und Iglus sind an ein Datum gebunden, es gibt sie nur online, dazu kommen bis zu 9,99 Dollar Gebühr und Steuern, und der Parkeintritt ist nicht enthalten. Plätzchenverzieren in Mrs. Claus' Kitchen kostet 19,99 Dollar. Der WinterFest-Souvenirbecher kostet 12,99 Dollar. Am ersten Besuchstag füllst du ihn alle 15 Minuten kostenlos nach, an einem Abend von 17 bis 22 Uhr also bis zu 20 Mal, wenn du dir einen Wecker stellst. Ein Seifenblasenstab in Form eines Nussknackers kostet 29,99 Dollar. Fotos mit dem Weihnachtsmann macht St. Nick's Pics, die Fotopakete kosten extra, und Rabatte von FunPix gelten dafür nicht.
+Extra zahlst du Essen, Getränke und Souvenirs, dazu Iglus, Eislaufen, Plätzchenverzieren und die Fotos mit dem Weihnachtsmann. Ein Iglu in Jack Frost's Igloo Village kostet am 27. November 349 Dollar, für bis zu acht Personen, mit Essen, Getränken und Concierge. Eislaufen und Iglus buchst du nur online für ein festes Datum, plus Gebühr und Steuern. Der Parkeintritt ist nicht enthalten. Plätzchenverzieren in Mrs. Claus' Kitchen kostet 19,99 Dollar. Der WinterFest-Souvenirbecher kostet 12,99 Dollar. Am ersten Besuchstag füllst du ihn alle 15 Minuten kostenlos nach, an einem Abend von 17 bis 22 Uhr also bis zu 20 Mal, wenn du dir einen Wecker stellst. Ein Seifenblasenstab in Form eines Nussknackers kostet 29,99 Dollar. Fotos mit dem Weihnachtsmann macht St. Nick's Pics. Rabatte aus dem FunPix-Fotopaket gelten dort nicht.
 
 ## Silver Pass 2027 zum Black Friday
 
-Zum Black Friday verkauft Kings Island den Silver Pass 2027 für 99 Dollar, zum Preis eines Good Any Day Tickets. Auf den Seiten des Parks endet das Angebot am 27. November, die Pressemitteilung von Six Flags nennt den 30. November. Der Pass gilt bis Labor Day 2027 beliebig oft in Kings Island und im Wasserpark Soak City, mit freiem Parken. Das WinterFest 2026 ist schon dabei, und wer den Pass jetzt kauft, bekommt ein Bring-A-Friend-Ticket, das an jedem Öffnungstag bis zum 31. Dezember gilt. Mit Ess- und Getränkeplan kostet das Paket 199 Dollar statt 348 Dollar. Der Gold Pass kostet 135 Dollar, der Prestige Pass 299 Dollar, beide gelten in den Jahren 2026 und 2027. Einen Silver Pass für 2027 verkauft auch [Cedar Point](/news/cedar-point-saison-2027) schon jetzt.
+Zum Black Friday verkauft Kings Island den Silver Pass 2027 für 99 Dollar, zum Preis eines Good Any Day Tickets. Sicher bekommst du den Preis bis zum 27. November, so steht es auf den Seiten des Parks. Six Flags nennt in der Pressemitteilung den 30. Der Pass gilt bis Labor Day 2027 beliebig oft in Kings Island und im Wasserpark Soak City, mit freiem Parken. Das WinterFest 2026 ist schon dabei, und wer den Pass jetzt kauft, bekommt ein Bring-A-Friend-Ticket, das an jedem Öffnungstag bis zum 31. Dezember gilt. Mit Ess- und Getränkeplan kostet das Paket 199 Dollar statt 348 Dollar. Der Gold Pass kostet 135 Dollar, der Prestige Pass 299 Dollar, beide gelten in den Jahren 2026 und 2027. Einen Silver Pass für 2027 verkauft auch [Cedar Point](/news/cedar-point-saison-2027) schon jetzt.
 
 ## Freier Eintritt ab 65
 
-Wer am oder vor dem 31. Dezember 1961 geboren ist, kommt bis Silvester kostenlos nach Kings Island. Six Flags bietet das in diesem Winter zum ersten Mal an. Anmelden kannst du dich nur online, nicht am Park, und freigeschaltet wird der Eintritt bei deinem ersten Besuch. Am Eingang zeigst du jedes Mal einen Ausweis mit Geburtsdatum. Der freie Eintritt gilt nur im Freizeitpark, für den du dich angemeldet hast, das Parken zahlst du selbst, und Rabatte, Bring-A-Friend-Tickets oder Season-Pass-Vorteile gibt es dazu keine.
+Wer am oder vor dem 31. Dezember 1961 geboren ist, kommt bis Silvester kostenlos nach Kings Island. Six Flags bietet das in diesem Winter zum ersten Mal an. Anmelden kannst du dich nur online, nicht am Park, und freigeschaltet wird der Eintritt bei deinem ersten Besuch. Am Eingang zeigst du jedes Mal einen Ausweis mit Geburtsdatum. Der freie Eintritt gilt nur im Freizeitpark, für den du dich angemeldet hast. Das Parken zahlst du selbst, und Rabatte, Bring-A-Friend-Tickets oder Season-Pass-Vorteile gibt es dazu keine.
 
 ## Anreise
 
-Die Adresse ist 6300 Kings Island Drive, Kings Island, OH 45034. Der Link zur Routenplanung auf der Anfahrtsseite führt dagegen zu Mason, OH 45040. Kings Island ist seit 1972 geöffnet und 364 Acres groß, rund 147 Hektar.
+Die Adresse ist 6300 Kings Island Drive, Kings Island, OH 45034. Im Navi findest du den Park auch unter 6300 Kings Island Dr, Mason, OH 45040. Kings Island ist seit 1972 geöffnet und 364 Acres groß, rund 147 Hektar.
 
 [Kings Island](ref:kings-island?full)
 
