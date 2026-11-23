@@ -2652,6 +2652,26 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Transfer Track'],
   },
   {
+    id: 'drop',
+    name: 'Drop',
+    shortDefinition:
+      'Any descent after the first one, on a coaster or a water ride with several lifts and drops.',
+    definition:
+      'A drop is a descent in the layout. The first one after the lift hill or launch has its own term, the first drop; every later one is simply a drop. Rides with more than one lift have several: a log flume often climbs twice and falls twice, and each fall ends in water.\n\nWhich drop is the biggest varies. On [Chiapas](/en/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) at Phantasialand the last of three drops is the highest, at over 15 metres and 53 degrees.',
+    relatedTermIds: ['first-drop', 'lifthill', 'splashdown'],
+    aliases: ['drops'],
+  },
+  {
+    id: 'backwards-drop',
+    name: 'Backwards Drop',
+    shortDefinition:
+      'A drop taken in reverse, usually after a switch track has turned the train or boat round.',
+    definition:
+      'A backwards drop sends the train or boat down a slope rear first. Riders cannot see what is coming, so a modest height feels bigger. To get there, the ride stops the vehicle on a switch track or a dead end and sends it back the way it came.\n\nOn [Chiapas](/en/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) at Phantasialand the boat runs into a temple that turns out to be a dead end, and then drops almost ten metres backwards out of it. A second switch at the bottom puts it facing forwards again.',
+    relatedTermIds: ['switch-track', 'drop', 'first-drop'],
+    aliases: ['backward drop', 'reverse drop'],
+  },
+  {
     id: 'turntable',
     name: 'Turntable',
     shortDefinition:

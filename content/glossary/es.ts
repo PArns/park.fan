@@ -2788,6 +2788,25 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Switch Track'],
   },
   {
+    id: 'drop',
+    name: 'Bajada',
+    shortDefinition:
+      'Cualquier bajada después de la primera, en una montaña rusa o atracción acuática con varios lifts.',
+    definition:
+      'Una bajada es una pendiente del recorrido. La primera después del lift o del lanzamiento tiene su propio término, el first drop; cada una de las siguientes es simplemente una bajada. Las atracciones con más de un lift tienen varias: un log flume suele subir dos veces y bajar dos veces, y cada bajada acaba en el agua.\n\nLa más grande no siempre es la primera. En [Chiapas](/es/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) de Phantasialand, la última de tres bajadas es la más alta, más de 15 metros con 53 grados.',
+    relatedTermIds: ['first-drop', 'lifthill', 'splashdown'],
+    aliases: ['bajadas'],
+  },
+  {
+    id: 'backwards-drop',
+    name: 'Bajada hacia atrás',
+    shortDefinition:
+      'Una bajada que se hace marcha atrás, normalmente después de que un cambio de vía haya devuelto el tren o la barca.',
+    definition:
+      'En una bajada hacia atrás, el tren o la barca baja la pendiente de espaldas. Los pasajeros no ven lo que viene, y una altura media parece mayor. Para llegar ahí, la atracción detiene el vehículo en un cambio de vía o en un callejón sin salida y lo devuelve por donde vino.\n\nEn [Chiapas](/es/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) de Phantasialand, la barca entra en un templo que resulta ser un callejón sin salida y sale de él con una bajada de casi diez metros hacia atrás. Un segundo cambio de vía abajo la vuelve a poner de frente.',
+    relatedTermIds: ['switch-track', 'drop', 'first-drop'],
+  },
+  {
     id: 'turntable',
     name: 'Plataforma giratoria',
     shortDefinition:

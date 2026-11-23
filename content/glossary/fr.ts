@@ -2700,6 +2700,26 @@ const translations: GlossaryTermTranslation[] = [
     alternateNames: ['Switch Track'],
   },
   {
+    id: 'drop',
+    name: 'Descente',
+    shortDefinition:
+      'Toute descente après la première, sur un coaster ou une attraction aquatique à plusieurs lifts.',
+    definition:
+      "Une descente est une pente du parcours. La première après le lift ou le lancement a son propre terme, le first drop ; chacune des suivantes est simplement une descente. Les attractions à plusieurs lifts en ont plusieurs : un log flume monte souvent deux fois et descend deux fois, et chaque descente finit dans l'eau.\n\nLa plus grande n'est pas toujours la première. Sur [Chiapas](/fr/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) à Phantasialand, la dernière des trois descentes est la plus haute, plus de 15 mètres à 53 degrés.",
+    relatedTermIds: ['first-drop', 'lifthill', 'splashdown'],
+    aliases: ['descentes'],
+  },
+  {
+    id: 'backwards-drop',
+    name: 'Descente en arrière',
+    shortDefinition:
+      "Une descente prise à reculons, en général après qu'un aiguillage a renvoyé le train ou le bateau en arrière.",
+    definition:
+      "Dans une descente en arrière, le train ou le bateau descend la pente à reculons. Les passagers ne voient pas ce qui arrive, et une hauteur moyenne paraît plus grande. Pour y arriver, l'attraction arrête le véhicule sur un aiguillage ou dans une impasse et le renvoie par où il est venu.\n\nSur [Chiapas](/fr/parks/europe/germany/bruehl/phantasialand/chiapas-die-wasserbahn) à Phantasialand, le bateau entre dans un temple qui se révèle être une impasse, puis en ressort par une descente de près de dix mètres en arrière. Un second aiguillage en bas le remet dans le bon sens.",
+    relatedTermIds: ['switch-track', 'drop', 'first-drop'],
+    aliases: ['chute en arrière'],
+  },
+  {
     id: 'turntable',
     name: 'Plaque tournante',
     shortDefinition:
