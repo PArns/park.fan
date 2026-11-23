@@ -2,7 +2,7 @@
 title: 'Walibi Belgium vende il suo pass a 100,75 € fino a domenica'
 translationKey: walibi-belgium-black-week-2026
 date: '2026-11-23'
-time: '12:00'
+time: '13:57'
 author: patrick
 mode: published
 featured: false
