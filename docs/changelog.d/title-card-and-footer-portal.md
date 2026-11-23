@@ -20,7 +20,7 @@ von unten. Auf der Park- und der Ride-Seite von Phantasialand und Taron sind es 
 bleibt das Fenster, wie es war. Der Titel war mit `line-clamp-3` gemeint, aber `block` hob die
 Begrenzung auf; ohne `block` greift sie jetzt.
 
-#### Der Footer: Icons vor jedem Link, das Entwicklerportal unter „Inhalte“
+#### Der Footer: Icons vor jedem Link, Flaggen über den Ländern, das Entwicklerportal unter „Inhalte“
 
 Die Linkgruppen „Inhalte“, „Werkzeuge“ und „Rechtliches“ in `components/layout/footer.tsx` waren
 reine Textlisten, nur der Feed trug ein Icon. Jetzt steht vor jedem Link ein Icon in `text-primary`
@@ -38,6 +38,10 @@ Gruppe mit neun Links las sich bei 44 px wie eine Liste von Lücken. Die Zeilen 
 untereinander, die Tippflächen grenzen also aneinander, ohne sich zu überlappen.
 [Touch targets](../design/touch-targets.md#the-target-grows-the-box-does-not) nennt den Footer
 jetzt neben den Kreisen der Ride-Karten als zweite Stelle unter 44 px.
+
+Die vier Länderspalten der beliebten Parks tragen vor ihrer Überschrift die Flagge des Landes
+(`CountryFlag`, wie im Parks-Menü). `MenuSectionHeading` hat dafür einen optionalen Platz `lead` vor
+dem Label, innerhalb desselben Links.
 
 Der Link zum Entwicklerportal stand als eigene Zeile in der Markenspalte unter dem Google-Button.
 Jetzt steht er in „Inhalte“ hinter dem Changelog, und die Markenspalte endet mit den Buttons.

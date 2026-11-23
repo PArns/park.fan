@@ -1,7 +1,7 @@
 /**
  * Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the
  * caller. Used by the locale switcher, the language banners, the OG images and, through
- * `CountryFlag`, the parks menu.
+ * `CountryFlag`, the parks menu and the footer's country columns.
  */
 import React from 'react';
 
