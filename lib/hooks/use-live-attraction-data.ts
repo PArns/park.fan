@@ -66,6 +66,7 @@ export function useLiveAttractionData({
           // Same rule as `outage`, one line up: always the key, never a `??`
           // onto the day-cached shell.
           notRunToday: detail.notRunToday ?? null,
+          weatherClosure: detail.weatherClosure ?? null,
           queues: detail.queues ?? shellAttraction.queues,
           statistics: detail.statistics ?? shellAttraction.statistics,
           trend: detail.trend ?? shellAttraction.trend,

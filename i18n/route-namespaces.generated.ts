@@ -142,6 +142,7 @@ export const ROUTE_MESSAGE_NAMESPACES = {
     'parks.seasonal',
     'parks.seasons',
     'parks.transportSystem',
+    'parks.weatherClosure',
     'parks.worksPeriod',
     'parkyStill.stamp',
     'planner',

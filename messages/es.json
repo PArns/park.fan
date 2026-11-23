@@ -1006,6 +1006,13 @@
       "title": "Hoy aún no ha funcionado",
       "lastRun": "Funcionó por última vez: {when}"
     },
+    "weatherClosure": {
+      "cold": "Probablemente cerrada por el frío ({temp})",
+      "snow": "Probablemente cerrada por la nieve ({temp})",
+      "opensAt": "Suele abrir a partir de {threshold}; según la previsión, hacia las {time}",
+      "closedToday": "Suele abrir a partir de {threshold}, y la previsión de hoy se queda por debajo",
+      "threshold": "Suele abrir a partir de {threshold}"
+    },
     "rideOpensAt": {
       "approx": "Abre sobre las {time}",
       "firm": "Abre a las {time}",

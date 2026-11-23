@@ -46,6 +46,7 @@ import { PerformanceBadge } from './performance-badge';
 import { PerformanceCountdown } from './performance-countdown';
 import { performanceTimesShown, startsAtSetTimesOn } from '@/lib/utils/performance-schedule';
 import { RideOpensAtNote } from './ride-opens-at-note';
+import { WeatherClosureNote } from './weather-closure-note';
 import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
 
 interface AttractionCardProps {
@@ -650,6 +651,17 @@ export function AttractionCard({
                   variant="compact"
                 />
               )}
+            {/* The likely cause of either line above; never under an open badge. */}
+            {(status === 'CLOSED' || status === 'DOWN') && (
+              <WeatherClosureNote
+                weatherClosure={
+                  'weatherClosure' in attraction ? attraction.weatherClosure : undefined
+                }
+                timezone={effectiveTimezone}
+                variant="compact"
+                className="not-first:mt-1.5"
+              />
+            )}
           </div>
         </div>
 

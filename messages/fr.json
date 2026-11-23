@@ -1006,6 +1006,13 @@
       "title": "Pas encore en service aujourd'hui",
       "lastRun": "En service pour la dernière fois : {when}"
     },
+    "weatherClosure": {
+      "cold": "Probablement fermée à cause du froid ({temp})",
+      "snow": "Probablement fermée à cause de la neige ({temp})",
+      "opensAt": "Ouvre en général à partir de {threshold}, atteints vers {time} selon les prévisions",
+      "closedToday": "Ouvre en général à partir de {threshold}, et les prévisions restent en dessous aujourd'hui",
+      "threshold": "Ouvre en général à partir de {threshold}"
+    },
     "rideOpensAt": {
       "approx": "Ouvre vers {time}",
       "firm": "Ouvre à {time}",

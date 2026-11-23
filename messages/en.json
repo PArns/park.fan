@@ -1006,6 +1006,13 @@
       "title": "Not running yet today",
       "lastRun": "Last ran {when}"
     },
+    "weatherClosure": {
+      "cold": "Probably closed for the cold ({temp})",
+      "snow": "Probably closed for snow ({temp})",
+      "opensAt": "Usually opens from {threshold}, forecast to get there around {time}",
+      "closedToday": "Usually opens from {threshold}, and the forecast stays below that today",
+      "threshold": "Usually opens from {threshold}"
+    },
     "rideOpensAt": {
       "approx": "Opens around {time}",
       "firm": "Opens at {time}",
