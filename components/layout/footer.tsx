@@ -344,7 +344,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                   prefetch={false}
                   className="hover:text-foreground inline-flex items-center gap-1 transition-colors max-sm:min-h-11"
                 >
-                  {t('api')}
+                  {t('developerPortal')}
                 </Link>
               </li>
               <li className="flex items-center gap-1.5">
