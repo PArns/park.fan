@@ -119,6 +119,17 @@ or the city's name, so a park calendar and its region's hub (`/fr/paris`) stay t
 
 Each of these was a real incident. The fix lives in code; the reason is here so nobody undoes it.
 
+### The homepage's description names no park
+
+From 15 November 2026 the German `seo.home.description` opened with „Wie voll ist es heute im
+Europa-Park oder Phantasialand?“. Google then showed the homepage for Europa-Park's own queries:
+from 16 to 21 November about 3,300 of its 4,478 impressions came from „europapark wartezeiten“ and
+its variants, at position 5 and with 7 clicks, while the park page sat at 9.7 for the same
+queries. „freizeitpark wartezeiten“ stayed at 3.5. A park named on the homepage pulls that park's
+queries away from the park page, so the description speaks of theme parks in general in every
+language. The tour's screenshot links Europa-Park (`TOUR_PARK`) with „Wartezeiten live“ for the
+same reason: to hand the query on.
+
 ### A renamed park must revalidate the `geo` tag
 
 Nothing used to revalidate `geo`, so the sitemaps listed 546 redirecting ride URLs for three
