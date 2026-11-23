@@ -1,8 +1,27 @@
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { ExternalLink, Rss } from 'lucide-react';
+import {
+  Bell,
+  BookOpen,
+  CalendarClock,
+  CalendarDays,
+  CalendarRange,
+  CodeXml,
+  Compass,
+  ExternalLink,
+  History,
+  LineChart,
+  Megaphone,
+  MessageCircle,
+  Newspaper,
+  Rss,
+  Scale,
+  Shield,
+  Star,
+  type LucideIcon,
+} from 'lucide-react';
 import Image from 'next/image';
-import type { ComponentType, ReactNode } from 'react';
+import type { ComponentType } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
 import { FooterLinkGroup } from '@/components/layout/footer-link-group';
@@ -34,6 +53,9 @@ const DATA_SOURCES: { href: string; label: string; prefix?: string }[] = [
 ];
 
 const SOURCE_LINK_PROPS = { target: '_blank', rel: 'noopener noreferrer' } as const;
+
+/** The accent glyph before a link's muted label, as `MoreMenuLinks` draws its row. */
+const FOOTER_LINK_ICON = 'text-primary size-3.5 shrink-0';
 
 /** The name and the mark the follow row draws for a profile on each network. */
 const NETWORK_MARKS: Record<
@@ -70,8 +92,11 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
   const tNav = await getTranslations({ locale, namespace: 'navigation' });
   const currentYear = await getCurrentYear();
 
+  // 28 px on a phone as on a desk, not the button scale's 44: an opened group of nine links at 44
+  // read as a list of gaps. The rows stack without a gap, so their targets meet and do not overlap
+  // (docs/design/touch-targets.md#the-target-grows-the-box-does-not).
   const footerLinkClass =
-    'hover:text-foreground inline-flex items-center gap-1 py-1 text-sm transition-colors max-sm:min-h-11';
+    'hover:text-foreground inline-flex items-center gap-1.5 py-1 text-sm transition-colors';
 
   /**
    * The four countries of the popular-parks columns, in the order their columns stand, each with
@@ -180,7 +205,8 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
       href: string;
       label: string;
       plain?: boolean;
-      icon?: ReactNode;
+      /** The destination's mark wherever the site links it: the header, its menus, the sheet. */
+      Icon: LucideIcon;
       /** The target's language, where it is not the page's own. */
       hrefLang?: string;
     }[];
@@ -191,8 +217,10 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
       items: [
         ...(showBlog
           ? [
-              { key: 'blog', href: '/blog', label: t('blog') },
-              ...(newsLabel ? [{ key: 'news', href: NEWS_INDEX_PATH, label: newsLabel }] : []),
+              { key: 'blog', href: '/blog', label: t('blog'), Icon: Newspaper },
+              ...(newsLabel
+                ? [{ key: 'news', href: NEWS_INDEX_PATH, label: newsLabel, Icon: Megaphone }]
+                : []),
               /*
                 The feed's only visible link on the site. A plain <a>, not the i18n `Link`: the
                 target is a route handler, and a client navigation to it fetches an RSC payload
@@ -204,11 +232,11 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                 href: `/${locale}/blog/feed.xml`,
                 label: t('feed'),
                 plain: true,
-                icon: <Rss className="size-3.5" aria-hidden="true" />,
+                Icon: Rss,
               },
             ]
           : []),
-        { key: 'glossary', href: glossaryPath, label: t('glossaryLink') },
+        { key: 'glossary', href: glossaryPath, label: t('glossaryLink'), Icon: BookOpen },
         /*
           The changelog exists at `/en/changelog` only (`app/[locale]/changelog/page.tsx`), so
           every locale links the English page, and the five other labels say so in their own
@@ -221,6 +249,13 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
           label: t('changelog'),
           plain: true,
           hrefLang: 'en',
+          Icon: History,
+        },
+        {
+          key: 'developerPortal',
+          href: DEVELOPERS_PATH,
+          label: t('developerPortal'),
+          Icon: CodeXml,
         },
       ],
     },
@@ -228,11 +263,11 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
       key: 'tools',
       heading: t('sections.tools'),
       items: [
-        { key: 'fancast', href: '/fancast', label: t('fancast') },
-        { key: 'parky', href: '/parky', label: t('parky') },
-        { key: 'bestTime', href: bestTimePath, label: t('bestTime') },
-        { key: 'howto', href: howtoPath, label: t('howto') },
-        { key: 'planner', href: plannerPath, label: t('planner') },
+        { key: 'fancast', href: '/fancast', label: t('fancast'), Icon: LineChart },
+        { key: 'parky', href: '/parky', label: t('parky'), Icon: MessageCircle },
+        { key: 'bestTime', href: bestTimePath, label: t('bestTime'), Icon: CalendarRange },
+        { key: 'howto', href: howtoPath, label: t('howto'), Icon: Compass },
+        { key: 'planner', href: plannerPath, label: t('planner'), Icon: CalendarClock },
         /*
           The trip planner by its generic name, beside the day planner: the first live region's
           planner, from the registry, so no region read is spent on every page.
@@ -241,22 +276,22 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
           key: 'tripPlanner',
           href: `${tripRegionPath(region.slug, locale)}#${TRIP_PLANNER_ID}`,
           label: t('tripPlanner'),
+          Icon: CalendarDays,
         })),
         /*
           `/favorites` and `/alerts` report this browser's own state; both are `noindex` and in no
           sitemap, so this list is what links them from every page.
         */
-        { key: 'favorites', href: '/favorites', label: t('favorites') },
-        { key: 'alerts', href: '/alerts', label: t('alerts') },
-        { key: 'developerPortal', href: DEVELOPERS_PATH, label: t('developerPortal') },
+        { key: 'favorites', href: '/favorites', label: t('favorites'), Icon: Star },
+        { key: 'alerts', href: '/alerts', label: t('alerts'), Icon: Bell },
       ],
     },
     {
       key: 'legal',
       heading: t('sections.legal'),
       items: [
-        { key: 'impressum', href: '/impressum', label: t('impressum') },
-        { key: 'datenschutz', href: '/datenschutz', label: t('datenschutz') },
+        { key: 'impressum', href: '/impressum', label: t('impressum'), Icon: Scale },
+        { key: 'datenschutz', href: '/datenschutz', label: t('datenschutz'), Icon: Shield },
       ],
     },
   ];
@@ -374,9 +409,8 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
           <div className="flex w-full flex-col gap-6 md:col-span-4">
             {/* Named columns, so no `•` is left at the end of a line and the grid decides
                 where groups break: two by two until `xl`, where four fit beside the brand. Each heading is `MenuSectionHeading` without `href`: a group
-                here is not a hub page. Every link keeps `max-sm:min-h-11`, the button scale's
-                phone tier. Below `sm` each column folds into one 44 px row (`FooterLinkGroup`),
-                with the links still in the HTML. */}
+                here is not a hub page. Below `sm` each column folds into one 44 px row
+                (`FooterLinkGroup`), with the links still in the HTML. */}
             <nav
               className="grid w-full sm:grid-cols-2 sm:gap-x-8 sm:gap-y-6 xl:grid-cols-4"
               aria-label={t('siteSections')}
@@ -391,7 +425,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                         hrefLang={item.hrefLang}
                         className={footerLinkClass}
                       >
-                        {item.icon}
+                        <item.Icon className={FOOTER_LINK_ICON} aria-hidden="true" />
                         {item.label}
                       </a>
                     ) : (
@@ -401,7 +435,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                         prefetch={false}
                         className={footerLinkClass}
                       >
-                        {item.icon}
+                        <item.Icon className={FOOTER_LINK_ICON} aria-hidden="true" />
                         {item.label}
                       </Link>
                     )
@@ -416,7 +450,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     key={source.href}
                     href={source.href}
                     {...SOURCE_LINK_PROPS}
-                    className="hover:text-foreground py-1 text-sm transition-colors max-sm:flex max-sm:min-h-11 max-sm:items-center"
+                    className="hover:text-foreground py-1 text-sm transition-colors max-sm:flex max-sm:items-center"
                   >
                     {/* One child, so the flex row below `sm` cannot swallow the space after
                         the prefix. */}
@@ -433,7 +467,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
                     <span className="sr-only"> ({t('opensInNewTab')})</span>
                   </a>
                 ))}
-                <span className="inline-flex flex-wrap items-center gap-x-1 py-1 text-sm max-sm:min-h-11">
+                <span className="inline-flex flex-wrap items-center gap-x-1 py-1 text-sm">
                   <a
                     href="https://open-meteo.com/"
                     {...SOURCE_LINK_PROPS}

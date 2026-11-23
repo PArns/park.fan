@@ -1,4 +1,4 @@
-### Titelkarte und Footer: Kalender-Link, Guide-Fenster auf dem Handy, Entwicklerportal
+### Titelkarte und Footer: Kalender-Link, Guide-Fenster auf dem Handy, Icons im Footer
 
 #### Der Kalender-Link liegt nicht mehr auf der News-Leiste
 
@@ -20,12 +20,29 @@ von unten. Auf der Park- und der Ride-Seite von Phantasialand und Taron sind es 
 bleibt das Fenster, wie es war. Der Titel war mit `line-clamp-3` gemeint, aber `block` hob die
 Begrenzung auf; ohne `block` greift sie jetzt.
 
-#### Das Entwicklerportal steht im Footer unter „Werkzeuge“
+#### Der Footer: Icons vor jedem Link, das Entwicklerportal unter „Inhalte“
 
-`components/layout/footer.tsx` führte den Link als eigene Zeile in der Markenspalte, unter dem
-Google-Button. Jetzt ist er der letzte Eintrag der Gruppe „Werkzeuge“, mit derselben Linkklasse wie
-die anderen, und die Markenspalte endet mit den Buttons.
+Die Linkgruppen „Inhalte“, „Werkzeuge“ und „Rechtliches“ in `components/layout/footer.tsx` waren
+reine Textlisten, nur der Feed trug ein Icon. Jetzt steht vor jedem Link ein Icon in `text-primary`
+vor dem gedämpften Label, wie in der Linkzeile des „Mehr“-Menüs (`MoreMenuLinks`). Jedes Ziel trägt
+das Icon, das es in Header, Menüs und Sheet schon hat: Blog `Newspaper`, News `Megaphone`,
+Wörterbuch `BookOpen`, Beste Reisezeit `CalendarRange`, Wartezeiten verstehen `Compass`, Fancast
+`LineChart`, Tagesplaner `CalendarClock`, Reiseplaner `CalendarDays`, Favoriten `Star`, Alarme
+`Bell`. Neu gewählt sind Parky `MessageCircle` (wie die Aktion auf `/parky`), Changelog `History`,
+Entwicklerportal `CodeXml`, Impressum `Scale` und Datenschutz `Shield`. Die Parks und die
+Datenquellen bleiben ohne Icon: Bei den Parks hätte jeder Eintrag dasselbe, und die Datenquellen
+tragen schon das Zeichen für externe Links.
+
+Unter `sm` ist jeder Footer-Link so hoch wie am Desktop, 28 px statt 44 px: Eine aufgeklappte
+Gruppe mit neun Links las sich bei 44 px wie eine Liste von Lücken. Die Zeilen stehen ohne Abstand
+untereinander, die Tippflächen grenzen also aneinander, ohne sich zu überlappen.
+[Touch targets](../design/touch-targets.md#the-target-grows-the-box-does-not) nennt den Footer
+jetzt neben den Kreisen der Ride-Karten als zweite Stelle unter 44 px.
+
+Der Link zum Entwicklerportal stand als eigene Zeile in der Markenspalte unter dem Google-Button.
+Jetzt steht er in „Inhalte“ hinter dem Changelog, und die Markenspalte endet mit den Buttons.
 
 Geprüft mit `next dev` bei 1440 px und 390 px, hell und dunkel, auf Phantasialand und Taron: Der
 Kalender-Link steht unter dem Planer-Button, das Fenster reicht bis an die Leiste, und die Leiste
-schließt die Karte ab. Den Footer bei 1440 px.
+schließt die Karte ab. Der Footer bei 1440 px hell und dunkel und bei 390 px mit aufgeklappten
+Gruppen.
