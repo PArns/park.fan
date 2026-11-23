@@ -1009,9 +1009,9 @@
     "weatherClosure": {
       "cold": "Probablement fermée à cause du froid ({temp})",
       "snow": "Probablement fermée à cause de la neige ({temp})",
-      "opensAt": "Ouvre en général à partir de {threshold}, atteints vers {time} selon les prévisions",
-      "closedToday": "Ouvre en général à partir de {threshold}, et les prévisions restent en dessous aujourd'hui",
-      "threshold": "Ouvre en général à partir de {threshold}"
+      "opensAt": "Ouvre en général dès {threshold}, ce que la météo prévoit vers {time}",
+      "closedToday": "Ouvre en général dès {threshold}, la météo prévoit moins jusqu'à la fermeture",
+      "threshold": "Ouvre en général dès {threshold}"
     },
     "rideOpensAt": {
       "approx": "Ouvre vers {time}",

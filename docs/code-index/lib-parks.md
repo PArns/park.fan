@@ -216,6 +216,7 @@ Which two days of a park's calendar are being compared, across a change of month
 ### [`weather-closure.ts`](../../lib/parks/weather-closure.ts)
 
 - `weatherClosureLine` _function_: The parts of the weather-closure line, or `null` when the field says nothing this page can state.
+- `weatherClosureTemps` _function_: The current temperature and the threshold as the line prints them, in the reader's unit.
 - Types: `WeatherClosureLine`
 
 ### [`weekday-forecast.ts`](../../lib/parks/weekday-forecast.ts)

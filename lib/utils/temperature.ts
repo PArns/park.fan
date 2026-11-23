@@ -32,7 +32,7 @@ export function detectDefaultUnit(): TemperatureUnit {
 }
 
 /** Convert a Celsius value into the user's chosen unit. */
-function convertTemp(celsius: number, unit: TemperatureUnit): number {
+export function convertTemp(celsius: number, unit: TemperatureUnit): number {
   return unit === 'F' ? (celsius * 9) / 5 + 32 : celsius;
 }
 

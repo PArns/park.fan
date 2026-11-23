@@ -1,14 +1,16 @@
 /**
  * Unit tests for the weather-closure line's decision (`lib/parks/weather-closure.ts`).
  *
- * An unknown cause or an unreadable temperature says nothing; snow gets its title alone; for cold
- * the outlook picks the sentence, and an outlook that promises a time without sending one falls
- * back to naming the threshold only.
+ * An unknown cause or an unreadable temperature says nothing; snow gets its title (with the
+ * temperature) and no second line; for cold the outlook picks the sentence, and an outlook that
+ * promises a time without sending one falls back to naming the threshold only. The threshold rounds
+ * up, and a current temperature that would round to it keeps a decimal, so the line never names the
+ * same figure twice.
  *
  * Run: pnpm test:weather-closure
  */
 
-import { weatherClosureLine } from '../lib/parks/weather-closure.ts';
+import { weatherClosureLine, weatherClosureTemps } from '../lib/parks/weather-closure.ts';
 
 const base = {
   cause: 'cold',
@@ -71,6 +73,38 @@ test(
   'snow never promises a clock, even if one is sent',
   () => weatherClosureLine({ ...base, cause: 'snow' }),
   JSON.stringify({ title: 'snow', detail: null, expectedOpenAt: null })
+);
+
+const temps = weatherClosureTemps;
+test(
+  'a whole degree below the threshold stays whole',
+  () => temps(1.4, 3, 'C', 'de'),
+  JSON.stringify({ temp: '1 °C', threshold: '3 °C' })
+);
+test(
+  'a reading that would round to the threshold keeps a decimal',
+  () => temps(3.6, 4, 'C', 'de'),
+  JSON.stringify({ temp: '3,6 °C', threshold: '4 °C' })
+);
+test(
+  'the decimal rounds down, so it never reaches the threshold',
+  () => temps(3.96, 4, 'C', 'en'),
+  JSON.stringify({ temp: '3.9 °C', threshold: '4 °C' })
+);
+test(
+  'a negative threshold rounds up',
+  () => temps(-4, -1.5, 'C', 'de'),
+  JSON.stringify({ temp: '-4 °C', threshold: '-1 °C' })
+);
+test(
+  'the threshold rounds up in °F too',
+  () => temps(1.4, 3, 'F', 'en'),
+  JSON.stringify({ temp: '35 °F', threshold: '38 °F' })
+);
+test(
+  'snow has no threshold',
+  () => temps(-1.2, null, 'C', 'de'),
+  JSON.stringify({ temp: '-1 °C', threshold: null })
 );
 
 let passed = 0;

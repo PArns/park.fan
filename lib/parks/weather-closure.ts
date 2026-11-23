@@ -1,4 +1,5 @@
 import type { WeatherClosure } from '@/lib/api/types';
+import { convertTemp, type TemperatureUnit } from '@/lib/utils/temperature';
 
 /** The parts of the weather-closure line, each a message of `parks.weatherClosure`. */
 export interface WeatherClosureLine {
@@ -30,4 +31,32 @@ export function weatherClosureLine(
     return { title: 'cold', detail: 'closedToday', expectedOpenAt: null };
   }
   return { title: 'cold', detail: 'threshold', expectedOpenAt: null };
+}
+
+/**
+ * The current temperature and the threshold as the line prints them, in the reader's unit.
+ *
+ * Whole degrees could print „(4 °C) · öffnet meist ab 4 °C" for 3.6 against 4.0, a reason that
+ * reads as no reason. So the threshold rounds up, and where the rounded current temperature would
+ * not sit below it, the current one keeps a decimal, rounded down.
+ */
+export function weatherClosureTemps(
+  temperatureC: number,
+  thresholdC: number | null,
+  unit: TemperatureUnit,
+  locale: string
+): { temp: string; threshold: string | null } {
+  const now = convertTemp(temperatureC, unit);
+  if (thresholdC === null || !Number.isFinite(thresholdC)) {
+    return { temp: `${Math.round(now)} °${unit}`, threshold: null };
+  }
+  const threshold = Math.ceil(convertTemp(thresholdC, unit));
+  const temp =
+    Math.round(now) < threshold
+      ? String(Math.round(now))
+      : new Intl.NumberFormat(locale, {
+          minimumFractionDigits: 1,
+          maximumFractionDigits: 1,
+        }).format(Math.floor(now * 10) / 10);
+  return { temp: `${temp} °${unit}`, threshold: `${threshold} °${unit}` };
 }

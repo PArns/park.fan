@@ -888,7 +888,7 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 
 ### [`weather-closure-note.tsx`](../../components/parks/weather-closure-note.tsx)
 
-- `WeatherClosureNote` _component_: „Vermutlich wegen Kälte geschlossen (1 °C)" — and whether the forecast gets warm enough today; or „Vermutlich wegen Schnee geschlossen", which promises no clock.
+- `WeatherClosureNote` _component_: „Vermutlich wegen Kälte geschlossen (1 °C)" — and whether the forecast gets warm enough today; or „Vermutlich wegen Schnee geschlossen (−1 °C)", the title with its temperature and no second line, since snow promises no clock.
 
 ### [`weather-forecast-strip.tsx`](../../components/parks/weather-forecast-strip.tsx)
 

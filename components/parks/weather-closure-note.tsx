@@ -4,14 +4,14 @@ import { useLocale, useTranslations } from 'next-intl';
 import { Snowflake, ThermometerSnowflake } from 'lucide-react';
 import type { WeatherClosure } from '@/lib/api/types';
 import { useTemperatureUnit } from '@/lib/contexts/temperature-unit-context';
-import { weatherClosureLine } from '@/lib/parks/weather-closure';
+import { weatherClosureLine, weatherClosureTemps } from '@/lib/parks/weather-closure';
 import { formatShowClock } from '@/lib/push/show-clock';
-import { formatTempWithUnit } from '@/lib/utils/temperature';
 import { RideStatusBlock } from './ride-status-block';
 
 /**
  * „Vermutlich wegen Kälte geschlossen (1 °C)" — and whether the forecast gets warm enough today; or
- * „Vermutlich wegen Schnee geschlossen", which promises no clock.
+ * „Vermutlich wegen Schnee geschlossen (−1 °C)", the title with its temperature and no second line,
+ * since snow promises no clock.
  *
  * It explains the outage or not-run-today line beside it rather than replacing it, so it sits in the
  * same block family in the neutral tone: it states a likely cause, not a fault. The time is the
@@ -35,12 +35,17 @@ export function WeatherClosureNote({
 
   const line = weatherClosureLine(weatherClosure);
   if (!line || !weatherClosure) return null;
-  const threshold = formatTempWithUnit(weatherClosure.thresholdC ?? 0, unit);
+  const { temp, threshold } = weatherClosureTemps(
+    weatherClosure.temperatureC,
+    weatherClosure.thresholdC,
+    unit,
+    locale
+  );
   const time = line.expectedOpenAt
     ? formatShowClock(line.expectedOpenAt, timezone ?? null, locale)
     : null;
   const detail =
-    line.detail === null
+    line.detail === null || threshold === null
       ? null
       : line.detail === 'opensAt' && time !== null
         ? t('opensAt', { threshold, time })
@@ -50,7 +55,7 @@ export function WeatherClosureNote({
     <RideStatusBlock
       icon={line.title === 'snow' ? Snowflake : ThermometerSnowflake}
       tone="idle"
-      title={t(line.title, { temp: formatTempWithUnit(weatherClosure.temperatureC, unit) })}
+      title={t(line.title, { temp })}
       detail={detail}
       variant={variant}
       className={className}
