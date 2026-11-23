@@ -16,11 +16,11 @@ import { cn } from '@/lib/utils';
  */
 
 /**
- * The window's photo fades into the glass instead of meeting it at an edge: towards the left from
- * `lg`, where it stands beside the text, towards the top below, where it stands under it.
+ * The window's photo behind its text. From `lg`, beside the card's text, it fades into the glass
+ * towards the left instead of meeting it at an edge; below `lg` it fills the row under the text.
  */
-const WINDOW_EDGE_MASK =
-  '[mask-image:linear-gradient(to_bottom,transparent,black_30%)] lg:[mask-image:linear-gradient(to_right,transparent,black_22%)]';
+const WINDOW_PHOTO_BOX =
+  'absolute inset-0 -z-10 overflow-hidden lg:[mask-image:linear-gradient(to_right,transparent,black_22%)]';
 
 /** What „the window" of a title card shows: the post it leads to, else a photo. */
 export interface TitleCardWindow {
@@ -60,7 +60,7 @@ export function TitleCardWindowSplit({
       <div className="min-w-0 lg:pr-8">{children}</div>
       <div
         className={cn(
-          '-mx-6 mt-6 -mb-6 overflow-hidden lg:-mt-6 lg:-mr-6 lg:ml-0 lg:flex lg:rounded-tr-xl',
+          'border-foreground/10 -mx-6 mt-6 -mb-6 overflow-hidden border-t lg:-mt-6 lg:-mr-6 lg:ml-0 lg:flex lg:rounded-tr-xl lg:border-t-0',
           pane.guide ? 'flex' : 'hidden',
           !hasRail && 'rounded-b-xl lg:rounded-bl-none'
         )}
@@ -75,7 +75,8 @@ export function TitleCardWindowSplit({
  * „The window": a pane cut into the title card's glass, edge to edge. With a guide it shows the
  * guide's cover with its title over it, as the blog's own cards do; without one, the photo sharp
  * where the rest of the card blurs it. From `lg` its height is the grid row's, so nothing in it can
- * move the card; under the text on a phone it is lower, because there it adds to the card's height.
+ * move the card. Below `lg` it is a row as high as its text, because there every pixel of it adds
+ * to the card's height in front of the ride list; the shade runs from the left, behind the title.
  */
 async function ParkHeaderWindow({ guide, photo, label }: TitleCardWindow) {
   const [t, tBlog] = await Promise.all([
@@ -87,7 +88,7 @@ async function ParkHeaderWindow({ guide, photo, label }: TitleCardWindow) {
   const pane = (
     <>
       {cover && (
-        <div className={`absolute inset-0 -z-10 overflow-hidden ${WINDOW_EDGE_MASK}`}>
+        <div className={WINDOW_PHOTO_BOX}>
           {/* Lazy: below the title on a phone, and never the page's LCP on a desktop. */}
           <Image
             src={cover}
@@ -97,15 +98,15 @@ async function ParkHeaderWindow({ guide, photo, label }: TitleCardWindow) {
             className="pk-photo-zoom object-cover"
             style={{ objectPosition: objectPositionForSrc(cover, '50% 50%') }}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/15 lg:bg-gradient-to-t lg:from-black/90 lg:via-black/45 lg:to-transparent" />
         </div>
       )}
       {guide && (
-        <div className="p-6 pt-16 lg:pt-24 lg:pl-16">
+        <div className="py-5 pr-12 pl-6 lg:p-6 lg:pt-24 lg:pl-16">
           <span className="block text-xs font-medium tracking-wider text-white/70 uppercase">
             {label ?? t('label')}
           </span>
-          <span className="mt-1 line-clamp-3 block text-lg leading-snug font-semibold text-balance">
+          <span className="mt-1 line-clamp-3 text-base leading-snug font-semibold text-balance lg:text-lg">
             {guide.frontmatter.title}
           </span>
           <span className="text-primary mt-1.5 block text-sm font-medium">
@@ -116,7 +117,7 @@ async function ParkHeaderWindow({ guide, photo, label }: TitleCardWindow) {
       )}
     </>
   );
-  const frame = 'group relative isolate flex min-h-48 w-full flex-col justify-end lg:min-h-72';
+  const frame = 'group relative isolate flex w-full flex-col justify-end lg:min-h-72';
 
   // With a guide the whole pane is its link, photo included.
   return guide ? (
