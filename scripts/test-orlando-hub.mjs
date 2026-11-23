@@ -40,7 +40,7 @@ import {
   withGroupNames,
   factDays,
 } from '../lib/trip-regions/hub-data.ts';
-import { parseHubPicks, pickHubDay } from '../lib/trip-regions/hub-picks.ts';
+import { parseHubPicks, pickHubDay, picksPlanQuery } from '../lib/trip-regions/hub-picks.ts';
 import { weatherRuns } from '../lib/utils/day-weather.ts';
 import {
   isTripRegionMonthInRange,
@@ -747,22 +747,26 @@ const parksDay = (date, waits) => ({
   ),
 });
 
-test('a press plans a park on a day, a second takes it back, one day per park and week', () => {
+test('a press switches a day for a park: several days a park, a second press takes one back', () => {
   const week = ['2026-11-23', '2026-11-24', '2026-11-25'];
   const today = '2026-11-23';
-  let picks = pickHubDay({}, 'dl', week[0], week, today);
+  let picks = pickHubDay({}, 'dl', week[0], today);
   assert.deepEqual(picks, { [week[0]]: 'dl' });
-  // Another day of the same park and week moves the pick.
-  picks = pickHubDay(picks, 'dl', week[1], week, today);
-  assert.deepEqual(picks, { [week[1]]: 'dl' });
-  // Another park takes the date over.
-  picks = pickHubDay(picks, 'dca', week[1], week, today);
-  assert.deepEqual(picks, { [week[1]]: 'dca' });
-  // A park's pick of another week stays; a past date goes with the write.
-  picks = pickHubDay({ '2026-11-20': 'dl', '2026-12-01': 'dl' }, 'dl', week[2], week, today);
-  assert.deepEqual(picks, { '2026-12-01': 'dl', [week[2]]: 'dl' });
-  // The picked day pressed again: no pick left.
-  assert.deepEqual(pickHubDay({ [week[2]]: 'dl' }, 'dl', week[2], week, today), {});
+  // Another day of the same park adds it: two days at Disneyland.
+  picks = pickHubDay(picks, 'dl', week[1], today);
+  assert.deepEqual(picks, { [week[0]]: 'dl', [week[1]]: 'dl' });
+  // Another park takes a date over, the park keeps its other day.
+  picks = pickHubDay(picks, 'dca', week[1], today);
+  assert.deepEqual(picks, { [week[0]]: 'dl', [week[1]]: 'dca' });
+  // A picked day pressed again goes; a past date goes with the write.
+  picks = pickHubDay(
+    { '2026-11-20': 'dl', [week[0]]: 'dl', [week[2]]: 'dl' },
+    'dl',
+    week[2],
+    today
+  );
+  assert.deepEqual(picks, { [week[0]]: 'dl' });
+  assert.deepEqual(pickHubDay({ [week[2]]: 'dl' }, 'dl', week[2], today), {});
   // A broken stored value costs only itself.
   assert.deepEqual(parseHubPicks('{"2026-11-23":"dl","x":"dl","2026-11-24":"Bad Slug"}'), {
     '2026-11-23': 'dl',
@@ -770,7 +774,7 @@ test('a press plans a park on a day, a second takes it back, one day per park an
   assert.deepEqual(parseHubPicks('nope'), {});
 });
 
-test('a picked day spreads the other parks over the free days, one park a day', () => {
+test('a picked day spreads the other parks over the free days, a planned park keeps its star', () => {
   const dates = ['2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26'];
   // Every park is quietest on the 24th.
   const days = [
@@ -784,40 +788,76 @@ test('a picked day spreads the other parks over the free days, one park a day', 
     Object.fromEntries(
       [...weekMarks(days, weeks, ['a', 'b', 'c'], picks, skip)].map(([slug, [m]]) => [slug, m])
     );
+  const mark = (picked, star) => ({ picked, star });
   // Without a pick every star is the park's own quietest day, shared or not.
   assert.deepEqual(marks({}), {
-    a: { date: dates[1], picked: false },
-    b: { date: dates[1], picked: false },
-    c: { date: dates[1], picked: false },
+    a: mark([], dates[1]),
+    b: mark([], dates[1]),
+    c: mark([], dates[1]),
   });
-  // `a` on the 23rd: `b` and `c` each get a day of their own, the least above their best.
+  // `a` on the 23rd: `b` and `c` each get a day of their own, the least above their best; `a`
+  // keeps its star on its best free day, where a second visit would be quietest.
   assert.deepEqual(marks({ [dates[0]]: 'a' }), {
-    a: { date: dates[0], picked: true },
-    b: { date: dates[1], picked: false },
-    c: { date: dates[2], picked: false },
+    a: mark([dates[0]], dates[1]),
+    b: mark([], dates[1]),
+    c: mark([], dates[2]),
   });
-  // The pick on the shared quietest day: each moves to its own quietest free day, the 26th and 25th.
+  // The pick on the shared quietest day: each moves to its own quietest free day.
   assert.deepEqual(marks({ [dates[1]]: 'a' }), {
-    a: { date: dates[1], picked: true },
-    b: { date: dates[3], picked: false },
-    c: { date: dates[2], picked: false },
+    a: mark([dates[1]], dates[2]),
+    b: mark([], dates[3]),
+    c: mark([], dates[2]),
   });
   // A park ticked off as visited claims no day and keeps its quietest free one.
   assert.deepEqual(marks({ [dates[0]]: 'a' }, new Set(['c'])), {
-    a: { date: dates[0], picked: true },
-    b: { date: dates[1], picked: false },
-    c: { date: dates[1], picked: false },
+    a: mark([dates[0]], dates[1]),
+    b: mark([], dates[1]),
+    c: mark([], dates[1]),
+  });
+  // `a` planned twice: both its days are taken, the others spread over what is left.
+  assert.deepEqual(marks({ [dates[0]]: 'a', [dates[1]]: 'a' }), {
+    a: mark([dates[0], dates[1]], dates[2]),
+    b: mark([], dates[3]),
+    c: mark([], dates[2]),
   });
   // More parks than free days: the one left over keeps its quietest free day.
   const two = days.slice(0, 2);
   const left = weekMarks(two, hubWeeks(two), ['a', 'b', 'c'], { [dates[0]]: 'a' });
   assert.deepEqual(
     ['b', 'c'].map((slug) => left.get(slug)[0]),
-    [
-      { date: dates[1], picked: false },
-      { date: dates[1], picked: false },
-    ]
+    [mark([], dates[1]), mark([], dates[1])]
   );
+});
+
+test('the picks go to the trip planner as a plan: dates, visits and locked days', () => {
+  const parks = new Set(['magic-kingdom-park', 'epcot', 'hollywood-studios']);
+  const query = picksPlanQuery(
+    {
+      '2026-11-20': 'epcot', // before today
+      '2026-11-24': 'magic-kingdom-park',
+      '2026-11-26': 'epcot',
+      '2026-11-27': 'magic-kingdom-park',
+      '2026-11-28': 'universal-studios-florida', // not a park of the region
+    },
+    parks,
+    '2026-11-23'
+  );
+  const q = new URLSearchParams(query);
+  assert.equal(q.get('from'), '2026-11-24');
+  assert.equal(q.get('to'), '2026-11-27');
+  assert.equal(
+    q.get('lock'),
+    'magic-kingdom-park@2026-11-24,epcot@2026-11-26,magic-kingdom-park@2026-11-27'
+  );
+  assert.match(q.get('parks'), /magic-kingdom-park/);
+  assert.match(q.get('parks'), /epcot/);
+  assert.doesNotMatch(q.get('parks'), /hollywood/);
+  assert.equal(picksPlanQuery({}, parks, '2026-11-23'), null);
+  // A trip runs at most three weeks: a pick past that stays out.
+  const long = new URLSearchParams(
+    picksPlanQuery({ '2026-11-24': 'epcot', '2026-12-20': 'epcot' }, parks, '2026-11-23')
+  );
+  assert.equal(long.get('to'), '2026-11-24');
 });
 
 test("a resort's weather is its first park's, a day trip's each park's own", () => {

@@ -95,7 +95,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
 - `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest figure the tile prints (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then to the earlier date.
-- `weekMarks` _function_: Each park's mark for each week around the visitor's picks (`picks`, date → park), by its slug. A week without a pick: every park's quietest day (`quietestDay`), the stars as they were.
+- `weekMarks` _function_: Each park's marks for each week around the visitor's picks (`picks`, date → park), by its slug. A week without a pick: every park's star on its quietest day (`quietestDay`).
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
@@ -155,7 +155,8 @@ by hand: change the comment in the code and re-run the script. -->
 
 - `hubPicksKey` _function_: Where a region's picks live.
 - `parseHubPicks` _function_: A stored value read leniently: a hand-edited or broken entry costs only itself.
-- `pickHubDay` _function_: The picks after a press on `slug`'s tile of `date`. A press on the park's picked day takes the pick back.
+- `pickHubDay` _function_: The picks after a press on `slug`'s tile of `date`: a switch per day.
+- `picksPlanQuery` _function_: The trip planner's query for the picks of a region: from the first picked day to the last, at most a trip's length (`MAX_TRIP_DAYS`) from the first, both ends park days; each picked park with as many visits as it has days (at most …
 - `hubPicks` _function_: The `HubPicksStore` of a region, one per region and page.
 - Types: `HubPicks`, `HubPicksStore`
 

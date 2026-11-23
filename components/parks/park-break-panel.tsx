@@ -45,7 +45,7 @@ interface ParkBreakPanelProps {
  *
  * Below `sm` the picture is a framed banner over the text; from `sm` it reaches the panel's top,
  * right and bottom edge and fades into the glass to its left, like the guide in a title card
- * (`WINDOW_EDGE_MASK`).
+ * (`WINDOW_PHOTO_BOX`).
  */
 export async function ParkBreakPanel({
   park,

@@ -437,8 +437,7 @@
       "minutes": "Attente de pointe aux grandes attractions, en minutes",
       "quietest": "jour le plus calme de la semaine dans ce parc",
       "early": "ferme plus tôt pour les visiteurs du jour",
-      "howTo": "Comment lire ceci",
-      "colour": "Couleur : le jour comparé à un jour ordinaire de ce parc",
+      "colour": "Couleur : plus ou moins chargé qu’un jour ordinaire dans ce parc",
       "picked": "prévu par toi"
     },
     "calendar": {
@@ -472,14 +471,15 @@
       "sourcesTravel": "Trajets : {attribution}",
       "titleMonth": "Jour par jour en {month}",
       "picked": "prévu par toi",
-      "quietestFree": "jour libre suggéré",
+      "quietestFree": "meilleur jour encore libre",
       "cellTaken": "déjà prévu pour {park}",
-      "pickHint": "Choisis un jour pour un parc pour le prévoir. Les autres parcs reçoivent alors chacun leur propre jour libre, le plus calme possible.",
+      "pickHint": "Choisis un jour pour y prévoir le parc ; choisis-le à nouveau pour le retirer. Plusieurs jours par parc sont possibles.",
       "picksCount": "{count, plural, one {# jour prévu} other {# jours prévus}}",
-      "picksNote": "Les étoiles donnent à chaque autre parc son propre jour libre, le plus calme possible.",
+      "picksNote": "Les étoiles montrent, pour chaque parc, le meilleur jour encore libre.",
       "picksReset": "Effacer le choix",
       "pickedAnnounce": "{park} prévu le {date}",
-      "unpickedAnnounce": "{park} n’est plus prévu le {date}"
+      "unpickedAnnounce": "{park} n’est plus prévu le {date}",
+      "picksApply": "Reprendre dans le planificateur"
     },
     "lanes": {
       "expected": "dates attendues",
@@ -490,13 +490,13 @@
       "allWeek": "Toute la semaine : {names}"
     },
     "sheet": {
-      "intro": "Dans chaque resort, le meilleur parc vient en tête ; une fermeture anticipée compte",
+      "intro": "Dans chaque resort, le parc à l’attente la plus courte vient en tête. Une fermeture anticipée compte aussi.",
       "stayingAt": "Hôtel",
       "minutes": "{minutes} min",
       "noForecast": "ouvert, pas de prévision",
       "closedFor": "Fermé : {name}",
-      "lastYear": "Valeur de l’an dernier : le même jour de la semaine, tel que nous l’avons mesuré.",
-      "outlook": "Tendance : une marge d’erreur plus large que la prévision.",
+      "lastYear": "Valeur de l’an dernier, mesurée le même jour de la semaine.",
+      "outlook": "Tendance : moins précise que la prévision.",
       "ticketedEvening": "{name} dès {time} : les visiteurs du jour partent à {leave}",
       "eveningEvent": "Soirée spéciale",
       "shorterDay": "Journée plus courte : les visiteurs du jour partent à {leave}",
@@ -508,12 +508,12 @@
       "ridesHint": "Chaque attraction au moment le plus chargé de sa journée.",
       "planDay": "Ouvrir dans le planificateur de journée",
       "planTrip": "Planifier un voyage à partir de ce jour",
-      "noHoursFigure": "Pas encore d’horaires. Le chiffre est la prévision ; les horaires ne comptent pas.",
+      "noHoursFigure": "Pas encore d’horaires. L’attente est tout de même prévue.",
       "ahead": "Passe devant {park}, où les visiteurs du jour doivent partir à {time}."
     },
     "when": {
       "none": "Les voyages les plus calmes de l’année n’ont pas pu être chargés.",
-      "lastYearNote": "Les dates à plus de 60 jours sont classées sur les jours mesurés l’an dernier.",
+      "lastYearNote": "Pour les dates à plus de 60 jours, nous utilisons les mesures de l’an dernier.",
       "rank": "N° {rank}",
       "plan": "Planifier ce voyage",
       "allWeeks": "Comparer toutes les semaines de l’année",
@@ -541,7 +541,7 @@
       "open": "Ouvrir le planificateur de voyage"
     },
     "tile": {
-      "line": "Le jour le plus calme de chaque semaine pour les {count} parcs {inRegion}, d’après la prévision de l’attente de pointe",
+      "line": "Pour les {count} parcs {inRegion} : le jour le plus calme de chaque semaine, selon notre prévision de l’attente de pointe",
       "question": "Quel jour y a-t-il le moins de monde à {resort} ?",
       "calendarResort": "Calendrier d’affluence {resort}"
     },
@@ -553,11 +553,11 @@
         "qMonth": "Quel parc est le plus calme en {month} ?"
       },
       "accuracy": {
-        "planner": "Plus le jour est lointain, plus l’erreur est grande. C’est la même mesure que « Quelle précision ? » dans le planificateur, qui l’indique pour chaque plan.",
+        "planner": "Plus le jour est lointain, plus l’erreur est grande. Le planificateur l’indique pour chaque plan sous « Quelle précision ? ».",
         "plannerNoFigure": "Plus le jour est lointain, plus l’erreur est grande ; le planificateur l’indique en minutes pour chaque plan, sous « Quelle précision ? ».",
         "q": "Jusqu’où va la prévision, et quelle est sa précision ?",
-        "horizon": "La prévision va jusqu’à 60 jours. Au-delà, un jour montre le même jour de la semaine l’an dernier, tel que nous l’avons mesuré, et le planificateur classe aussi ces jours sur l’an dernier : la prévision à long terme était nettement trop basse et presque plate pour eux, les jours mesurés de l’an dernier s’en approchent mieux.",
-        "figure": "Sur les {days} derniers jours, notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, s’est trompée de {minutes} min en moyenne, mesurée dans {parks} parcs.",
+        "horizon": "La prévision va jusqu’à 60 jours. Pour les jours plus lointains, nous montrons la mesure du même jour de la semaine l’an dernier, et le planificateur l’utilise aussi. La prévision à long terme était nettement trop basse et presque plate pour ces jours ; l’an dernier est plus proche.",
+        "figure": "Faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, notre prévision de l’attente de pointe s’est trompée de {minutes} min en moyenne sur les {days} derniers jours. Mesuré dans {parks} parcs.",
         "rounding": "Des jours à moins de cinq minutes d’écart se valent."
       },
       "breaks": {
@@ -570,7 +570,7 @@
       "title": "Questions fréquentes",
       "events": {
         "party": "{name} ({parks}, {count, plural, =1 {# soirée} other {# soirées}}, billet à part)",
-        "partyNote": "Un soir à billet séparé, le parc ferme plus tôt pour les visiteurs à la journée ; dans le calendrier, ce jour porte un coin.",
+        "partyNote": "Un soir à billet séparé, le parc ferme plus tôt pour les visiteurs à la journée. Dans le calendrier, ce jour a un coin plié en haut à droite.",
         "q": "Quels événements ont lieu dans les semaines à venir ?",
         "aMonth": "En {month} : {list}.",
         "qMonth": "Quels événements ont lieu en {month} ?",
@@ -610,7 +610,7 @@
       "links": "Le modèle derrière : <fancast>Fancast</fancast>. Tout le reste : <howto>comment fonctionne park.fan</howto>.",
       "hours": {
         "q": "Combien de temps les parcs sont-ils ouverts dans les semaines à venir ?",
-        "early": "Au moins un grand parc ferme plus tôt que d’habitude pour les visiteurs à la journée {count, plural, =1 {un jour} other {# jours}} sur la période ; dans le calendrier, ce jour porte un coin.",
+        "early": "{count, plural, =1 {Un jour} other {# jours}}, au moins un grand parc ferme plus tôt que d’habitude pour les visiteurs à la journée. Dans le calendrier, ces jours ont un coin plié en haut à droite.",
         "park": "{park} {hours}",
         "qMonth": "Combien de temps les parcs sont-ils ouverts en {month} ?",
         "a": "Les horaires les plus fréquents des grands parcs : {parks}."
@@ -623,12 +623,12 @@
       "link": "Calendrier d’affluence {park}"
     },
     "accuracy": {
-      "line": "Notre prévision de l’attente de pointe, faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, <link>s’est trompée de {minutes} min en moyenne</link> sur les {days} derniers jours."
+      "line": "Faite {lead, plural, =1 {un jour} =7 {une semaine} other {# jours}} à l’avance, notre prévision <link>s’est trompée de {minutes} min en moyenne</link> sur les {days} derniers jours."
     },
     "question": "Quel parc, quel jour ?",
     "nextTitle": "Planificateur de voyage {region}",
     "regionGuide": "Guide de voyage {region}",
-    "lastYearFrom": "À partir du {date} : valeurs de l’an dernier, chaque fois le même jour de la semaine, tel que nous l’avons mesuré.",
+    "lastYearFrom": "À partir du {date}, nous montrons les mesures de l’an dernier, chaque fois du même jour de la semaine.",
     "howItWorks": {
       "title": "Comment le planificateur organise tes journées {inRegion}",
       "planTitle": "Ton voyage",
@@ -3995,7 +3995,7 @@
       "bandAxis": "Barre de {from} à {to}"
     },
     "details": {
-      "minutesCaption": "L’attente de pointe : l’attente aux grandes attractions au moment le plus chargé, le chiffre avec lequel le plan compare les jours. La couleur compare le jour avec un jour habituel de ce parc.",
+      "minutesCaption": "Attente de pointe : le temps d’attente aux grandes attractions au moment le plus chargé. Le plan s’en sert pour comparer les jours. La couleur montre si le jour est plus ou moins chargé que d’habitude pour ce parc.",
       "hours": "Ouvert {range}",
       "noHours": "Aucun horaire publié pour ce jour pour l’instant.",
       "earlyYours": {
@@ -6602,7 +6602,7 @@
     "typicalHigh": "En journée, en général <range></range>",
     "typicalLow": "la nuit, en général <range></range>",
     "wetDays": "{count, plural, =0 {rarement de pluie} =1 {pluie 1 jour sur 10} other {pluie # jours sur 10}}",
-    "detailNote": "Moyenne {period} pour cette date ; la moitié de ces jours se situait dans cette fourchette. Les prévisions portent sur 16 jours environ.",
+    "detailNote": "Moyenne {period} pour cette date. La moitié de ces jours se situait dans cette fourchette. Une prévision n’existe qu’environ 16 jours à l’avance.",
     "keyForecast": "Prévision",
     "normalSpan": "Moyenne des années passées pour ces {count} jours, pas une prévision",
     "rowLabel": "Météo à {park}"

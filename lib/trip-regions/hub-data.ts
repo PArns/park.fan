@@ -262,10 +262,15 @@ export function quietestDay(days: readonly TripCalendarDay[], slug: string): str
   return rankedDays(days, slug)[0]?.date ?? null;
 }
 
-/** A park's day of a week in the hub: the one the visitor picked, or else its suggested day. */
+/**
+ * A park's marks in a week of the hub: the days the visitor picked for it, and the star, its best
+ * day still free, so a planned park still shows where a further visit would be quietest.
+ */
 export interface HubWeekMark {
-  date: string;
-  picked: boolean;
+  /** The days picked for the park that week, in date order; empty for none. */
+  picked: readonly string[];
+  /** The star's day: its quietest free day, or the day the spread gives it; `null` for none. */
+  star: string | null;
 }
 
 /**
@@ -318,12 +323,12 @@ function spreadParks(free: readonly TripCalendarDay[], slugs: readonly string[])
 }
 
 /**
- * Each park's mark for each week around the visitor's picks (`picks`, date → park), by its slug.
- * A week without a pick: every park's quietest day ({@link quietestDay}), the stars as they were.
- * A week with one: the parks picked keep their day, and the others are spread over the dates no
- * park is picked on, one park a day where the days suffice ({@link spreadParks}), so a day planned
- * for one park moves the others to days of their own. A park in `skip` (ticked off as visited)
- * claims no day and keeps its quietest free one. `null` for a week without either.
+ * Each park's marks for each week around the visitor's picks (`picks`, date → park), by its slug.
+ * A week without a pick: every park's star on its quietest day ({@link quietestDay}). A week with
+ * one: the picked days are taken; every park with none is spread over the free days, one park a day
+ * where the days suffice ({@link spreadParks}), so a day planned for one park moves the others to
+ * days of their own; a park with picks, or one in `skip` (ticked off as visited), keeps its star on
+ * its quietest free day and claims none. `null` for a week without a pick or a star.
  */
 export function weekMarks(
   days: readonly TripCalendarDay[],
@@ -342,9 +347,9 @@ export function weekMarks(
     );
     const spread = planned ? spreadParks(free, open) : new Map<string, string>();
     for (const slug of slugs) {
-      const picked = own.find((d) => picks[d.date] === slug);
-      const date = picked?.date ?? spread.get(slug) ?? quietestDay(free, slug);
-      marks.get(slug)!.push(date ? { date, picked: Boolean(picked) } : null);
+      const picked = own.filter((d) => picks[d.date] === slug).map((d) => d.date);
+      const star = spread.get(slug) ?? quietestDay(free, slug);
+      marks.get(slug)!.push(picked.length > 0 || star ? { picked, star } : null);
     }
   }
   return marks;

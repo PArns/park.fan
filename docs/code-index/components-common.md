@@ -149,7 +149,7 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 
 ### [`icons/flags.tsx`](../../components/common/icons/flags.tsx)
 
-Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the caller. Used by the locale switcher, the language banners, the OG images and, through `CountryFlag`, the parks menu.
+Inline SVG flags, one component per country (`FlagDE` … `FlagBR`), `aria-hidden` and sized by the caller.
 
 - `FlagDE` _component_
 - `FlagGB` _component_
