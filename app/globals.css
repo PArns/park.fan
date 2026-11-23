@@ -217,6 +217,7 @@
   --color-crowd-ink-extreme: var(--crowd-ink-extreme);
   --color-signal-storm: var(--signal-storm);
   --color-signal-heat: var(--signal-heat);
+  --color-signal-pick: var(--signal-pick);
   --color-element-launch: var(--element-launch);
   --color-element-airtime: var(--element-airtime);
   --color-element-inversion: var(--element-inversion);
@@ -823,6 +824,10 @@
   /* A park day's extreme heat: magenta, the top of the US National Weather Service's HeatRisk
      scale, apart from every crowd tier and the storm violet (docs/design/tokens.md#heat). */
   --signal-heat: oklch(0.52 0.22 350);
+  /* A day the visitor picked in the trip hub's calendar (`TILE_PICKED_RING`, `PICK_BADGE`):
+     fuchsia, apart from the brand blue of the star's suggestion, every crowd tier and the storm
+     violet (docs/design/tokens.md#pick). */
+  --signal-pick: oklch(0.6 0.24 325);
 
   /* 0.53, not 0.55: at 0.55 this green is 4.39:1 on white and small text in it misses AA; 0.53
      is 4.74:1 and visually the same green. */
@@ -918,6 +923,7 @@
 
   --signal-storm: oklch(0.72 0.17 295);
   --signal-heat: oklch(0.74 0.17 350);
+  --signal-pick: oklch(0.74 0.18 330);
 
   /* Status Colors - Brighter for dark mode */
   --status-operating: oklch(0.792 0.209 151.711);

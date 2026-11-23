@@ -994,7 +994,7 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_hub_filter: {
     label: 'Hub-Kalender gefiltert',
-    when: 'Ein Resort-Chip über dem Hub-Kalender, nur wenn er die Auswahl ändert; mit dem Resort oder „all“.',
+    when: 'Eine Resort-Checkbox über dem Hub-Kalender an- oder abgehakt (on), oder „Alle Parks“ gedrückt (resort all), das die Haken löscht; nur wenn sich die Auswahl ändert.',
   },
   trip_hub_day_opened: {
     label: 'Hub-Kalender: Tag geöffnet',
@@ -1003,6 +1003,10 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   trip_hub_day_picked: {
     label: 'Hub-Kalender: Tag eingeplant',
     when: 'Eine Park-Kachel im Hub-Kalender gedrückt: der Park ist an dem Tag eingeplant (picked true) oder die Wahl zurückgenommen (false), aus der Tabelle (table, ab lg) oder der Woche auf dem Handy (phone); nie welcher Park oder Tag. Die Sterne der anderen Parks rücken auf ihren ruhigsten freien Tag.',
+  },
+  trip_hub_picks_applied: {
+    label: 'Hub-Kalender: Auswahl in den Planer',
+    when: '„In den Reiseplaner übernehmen“ über dem Hub-Kalender: die eingeplanten Tage als Plan, mit Parks, Besuchen und festen Tagen; days ist die Zahl der Tage.',
   },
   trip_hub_picks_cleared: {
     label: 'Hub-Kalender: Auswahl zurückgesetzt',

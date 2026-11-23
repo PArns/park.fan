@@ -1,10 +1,11 @@
 import { getTranslations } from 'next-intl/server';
-import { Check, ChevronDown, Star } from 'lucide-react';
+import { Check, Star } from 'lucide-react';
 import { CROWD_TILE_CLASS, CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { WeatherKey } from '@/components/common/day-weather';
 import { DaySignalKey } from '@/components/parks/day-signal-key';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
+import { PICK_BADGE } from '@/components/parks/calendar-tile-marks';
 import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, HUB_CELL_PICKED } from './hub-cell-styles';
 
 /** The size a key's small tile is drawn at. */
@@ -24,13 +25,14 @@ function Key({ children, label }: { children: React.ReactNode; label: string }) 
 }
 
 /**
- * How to read the calendar, at the top of its chapter. In view: the wait, the ring with the star
- * (each park's quietest day of the week), the ring with the tick (a day the visitor picked), the
- * signal bar's school break and public holiday as the park calendar keys them (the storm season is
- * keyed beside the grid, where a region has one), one line that says what the colour means (a day against the park's own normal day, the crowd
- * level and nothing else) and the weather's two tokens, forecast and average (`WeatherKey`). Under „So liest du den Kalender“ the rarer mark, the early close. A
- * tile says closed, the level and „Zeiten folgen" in words, so none of them needs a key; what the
- * figure is and how far the forecast reaches are the chapter's questions.
+ * How to read the calendar, at the top of its chapter, every key in one list: the wait, the ring
+ * with the star (each park's quietest day of the week), the ring with the tick (a day the visitor
+ * picked), what the colour means (a day against the park's own normal day, the crowd level and
+ * nothing else), the signal bar's school break and public holiday as the park calendar keys them
+ * (the storm season is keyed beside the grid, where a region has one), the early close's folded
+ * corner and the weather's two tokens (`WeatherKey`). The early close sat alone behind a
+ * disclosure, a click for one key. A tile says closed, the level and „Zeiten folgen“ in words, so
+ * none of them needs a key.
  */
 export async function HubLegend() {
   const t = await getTranslations('tripHub.legend');
@@ -70,7 +72,7 @@ export async function HubLegend() {
           >
             <span
               aria-hidden
-              className="bg-primary text-primary-foreground flex size-3.5 items-center justify-center rounded-full"
+              className={cn(PICK_BADGE, 'flex size-3.5 items-center justify-center rounded-full')}
             >
               <Check className="size-2.5" strokeWidth={3.5} />
             </span>
@@ -85,32 +87,24 @@ export async function HubLegend() {
           <DaySignalKey className={DAY_SIGNAL_CLASS.school} label={tSignals('schoolVacation')} />
           <DaySignalKey className={DAY_SIGNAL_CLASS.holiday} label={tSignals('holiday')} />
         </li>
+        <Key label={t('early')}>
+          <span
+            className={cn(
+              HUB_CELL,
+              SWATCH,
+              'relative',
+              CROWD_TILE_CLASS.very_low,
+              CROWD_TEXT_CLASS.very_low
+            )}
+          >
+            30
+            <span aria-hidden className={EARLY_CLOSE_CORNER} />
+          </span>
+        </Key>
         <li>
           <WeatherKey />
         </li>
       </ul>
-      <details className="group">
-        <summary className="text-primary-ink flex min-h-11 cursor-pointer list-none items-center gap-1.5 text-sm font-medium sm:min-h-0">
-          {t('howTo')}
-          <ChevronDown aria-hidden className="size-4 transition-transform group-open:rotate-180" />
-        </summary>
-        <ul className={cn(row, 'mt-2')}>
-          <Key label={t('early')}>
-            <span
-              className={cn(
-                HUB_CELL,
-                SWATCH,
-                'relative',
-                CROWD_TILE_CLASS.very_low,
-                CROWD_TEXT_CLASS.very_low
-              )}
-            >
-              30
-              <span aria-hidden className={EARLY_CLOSE_CORNER} />
-            </span>
-          </Key>
-        </ul>
-      </details>
     </div>
   );
 }

@@ -19,6 +19,7 @@ import { CalendarDayTile, type CalendarDayTileProps } from '@/components/parks/c
 import { CalendarIcon, CalendarSeasonIcon } from '@/components/parks/calendar-icon-sprite';
 import { SEASON_ICON_QUIET_CLASS } from '@/components/parks/season-kind-icon';
 import { SignalBar, type SignalSegment } from '@/components/parks/signal-bar';
+import { PICK_BADGE } from '@/components/parks/calendar-tile-marks';
 import { cn } from '@/lib/utils';
 import { HubFilterChip as FilterChip } from './hub-filter-chip';
 import { useLocationHash } from '@/lib/hooks/use-location-hash';
@@ -55,12 +56,15 @@ import {
   splitsWeather,
   weekMarks,
 } from '@/lib/trip-regions/hub-data';
-import { hubPicks, pickHubDay, type HubPicks } from '@/lib/trip-regions/hub-picks';
+import { hubPicks, pickHubDay, picksPlanQuery, type HubPicks } from '@/lib/trip-regions/hub-picks';
+import { tripPlannerBridge } from '@/lib/trip-regions/planner-bridge';
+import { localizedPath } from '@/lib/i18n/localized-path';
+import { useRouter } from 'next/navigation';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import type { HubWeekPaging } from '@/lib/analytics/site-analytics';
 import { trackTripEvent } from '@/lib/trip-regions/plan-analytics';
-import { TRIP_CALENDAR_ID } from '@/lib/trip-regions/paths';
+import { TRIP_CALENDAR_ID, TRIP_PLANNER_ID, tripRegionPath } from '@/lib/trip-regions/paths';
 import { requireTripRegion } from '@/lib/trip-regions/registry';
 import type {
   TripCalendar,
@@ -127,6 +131,30 @@ function pickStateOf(
 /** Each park's events per week of the calendar (`parkWeekEvents`), by its slug. */
 type HubEvents = ReadonlyMap<string, readonly ParkWeekEvents[]>;
 
+/** No resort ticked in the filter: every park shows. */
+const NO_GROUPS: ReadonlySet<string> = new Set();
+
+/**
+ * How many days of the window a park is planned on, beside its name: „2×“ in the pick's colour,
+ * nothing before the first; the days of the week shown are in the note under the name.
+ */
+function PlannedCount({ count }: { count: number }) {
+  const t = useTranslations('tripHub.calendar');
+  if (count === 0) return null;
+  return (
+    <span
+      role="img"
+      aria-label={t('picksCount', { count })}
+      className={cn(
+        PICK_BADGE,
+        'shrink-0 rounded-full px-1.5 text-[10px] leading-4 font-bold tabular-nums'
+      )}
+    >
+      {count}×
+    </span>
+  );
+}
+
 /** A park without an entry in {@link HubEvents}: one empty list, so a memoised row keeps its props. */
 const NO_EVENTS: readonly ParkWeekEvents[] = [];
 
@@ -156,10 +184,11 @@ export interface HubCalendarProps {
 export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubCalendarProps) {
   const t = useTranslations('tripHub.calendar');
   const groups = useMemo(() => regionGroups(region), [region]);
-  const [only, setOnly] = useState<string | null>(null);
+  // The resorts ticked in the filter; none ticked shows every park („Alle Parks“).
+  const [selected, setSelected] = useState<ReadonlySet<string>>(NO_GROUPS);
   // The filter and the week are urgent; the grid they rebuild is not (an interaction may not
   // rebuild the grid in its own commit).
-  const deferredOnly = useDeferredValue(only);
+  const deferredSelected = useDeferredValue(selected);
   const [openDate, setOpenDate] = useState<string | null>(null);
   // The control that opened the sheet, so closing it puts focus back where the reader was.
   const opener = useRef<HTMLElement | null>(null);
@@ -257,11 +286,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
   const pick = useCallback(
     (slug: string, date: string, layout: 'table' | 'phone') => {
       const store = hubPicks(region.slug);
-      const own = weeks.find((w) => w.from <= date && date <= w.to);
-      const weekDates = own
-        ? days.slice(own.start, own.start + own.length).map((d) => d.date)
-        : [date];
-      const next = pickHubDay(store.getSnapshot(), slug, date, weekDates, todayIso);
+      const next = pickHubDay(store.getSnapshot(), slug, date, todayIso);
       store.set(next);
       const picked = next[date] === slug;
       trackTripEvent(region.slug, 'trip_hub_day_picked', { layout, picked });
@@ -272,7 +297,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
         })
       );
     },
-    [region.slug, weeks, days, todayIso, t, names, locale]
+    [region.slug, todayIso, t, names, locale]
   );
   const pickFromPhone = useCallback(
     (slug: string, date: string) => pick(slug, date, 'phone'),
@@ -283,10 +308,29 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     [pick]
   );
   // Only the picks this window shows and of parks the region has count.
-  const pickedDays = useMemo(
-    () => days.filter((d) => names.has(picks[d.date] ?? '')).length,
-    [days, picks, names]
-  );
+  const planned = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const d of days) {
+      const slug = picks[d.date];
+      if (slug && names.has(slug)) counts.set(slug, (counts.get(slug) ?? 0) + 1);
+    }
+    return counts;
+  }, [days, picks, names]);
+  const pickedDays = [...planned.values()].reduce((a, b) => a + b, 0);
+  const router = useRouter();
+  // The picks into the trip planner: through the planner on screen, else the hub opens with them.
+  const applyPicks = useCallback(() => {
+    const query = picksPlanQuery(picks, new Set(names.keys()), todayIso);
+    if (!query) return;
+    trackTripEvent(region.slug, 'trip_hub_picks_applied', { days: pickedDays });
+    if (tripPlannerBridge.apply(region.slug, query)) {
+      document.getElementById(TRIP_PLANNER_ID)?.scrollIntoView({ block: 'start' });
+      return;
+    }
+    router.push(
+      localizedPath(`${tripRegionPath(region.slug, locale)}?${query}#${TRIP_PLANNER_ID}`, locale)
+    );
+  }, [picks, names, todayIso, region.slug, pickedDays, router, locale]);
 
   const tileOf = useHubTile(locale, timezone);
   const tiles = useMemo<HubTiles>(
@@ -321,7 +365,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     () =>
       new Set(
         [...quiet].flatMap(([slug, marks]) =>
-          marks.flatMap((mark) => (mark && !mark.picked ? [`${slug}:${mark.date}`] : []))
+          marks.flatMap((mark) => (mark?.star ? [`${slug}:${mark.star}`] : []))
         )
       ),
     [quiet]
@@ -346,14 +390,24 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     [region.parks, weeks, lanes, days]
   );
   const visibleGroups = useMemo(
-    () => (deferredOnly ? groups.filter((g) => g.key === deferredOnly) : groups),
-    [groups, deferredOnly]
+    () => (deferredSelected.size > 0 ? groups.filter((g) => deferredSelected.has(g.key)) : groups),
+    [groups, deferredSelected]
   );
-  // A chip that changes the selection counts; pressing the one already chosen does not.
-  const filter = (next: string | null) => {
-    if (next === only) return;
-    setOnly(next);
-    trackTripEvent(region.slug, 'trip_hub_filter', { resort: next ?? 'all' });
+  // A resort's chip ticks it on or off, several at once; „Alle Parks“ clears the ticks, and every
+  // resort ticked reads as all of them. A press that changes nothing counts nothing.
+  const filter = (key: string | null) => {
+    if (key === null) {
+      if (selected.size === 0) return;
+      setSelected(NO_GROUPS);
+      trackTripEvent(region.slug, 'trip_hub_filter', { resort: 'all' });
+      return;
+    }
+    const next = new Set(selected);
+    const on = !next.has(key);
+    if (on) next.add(key);
+    else next.delete(key);
+    setSelected(next.size === groups.length ? NO_GROUPS : next);
+    trackTripEvent(region.slug, 'trip_hub_filter', { resort: key, on });
   };
   const sheetDay = days.find((d) => d.date === openDate) ?? null;
   const nextWeek = weeks[week + 1];
@@ -366,14 +420,15 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
         aria-label={t('filterLabel')}
         className="-mr-4 flex [scrollbar-width:none] items-center gap-2 overflow-x-auto pr-4 sm:mr-0 sm:flex-wrap sm:overflow-visible sm:pr-0"
       >
-        <FilterChip pressed={only === null} onClick={() => filter(null)}>
+        <FilterChip pressed={selected.size === 0} onClick={() => filter(null)}>
           {t('filterAll')}
         </FilterChip>
         {groups.map((group) => (
           <FilterChip
             key={group.key}
-            pressed={only === group.key}
-            onClick={() => filter(only === group.key ? null : group.key)}
+            pressed={selected.has(group.key)}
+            check
+            onClick={() => filter(group.key)}
           >
             {shortGroupName(group.name)}
           </FilterChip>
@@ -385,6 +440,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
       <HubPickLine
         count={pickedDays}
         announced={announced}
+        onApply={applyPicks}
         onReset={() => {
           hubPicks(region.slug).set({});
           trackTripEvent(region.slug, 'trip_hub_picks_cleared');
@@ -410,6 +466,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           quiet={quiet}
           picks={picks}
           names={names}
+          planned={planned}
           starWords={starWords}
           week={shownWeek}
           todayIso={todayIso}
@@ -433,6 +490,7 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           quiet={quiet}
           picks={picks}
           names={names}
+          planned={planned}
           starWords={starWords}
           weeks={weeks}
           week={shownWeek}
@@ -682,10 +740,9 @@ function holidayNames(day: TripCalendarDay, locale: string): string {
 }
 
 /**
- * A park's day of each week beside its name, one per week, so paging shows the week's: the tick
- * and the day the visitor picked for it, or the star and its quietest free day, each with the wait
- * its tile prints. Nothing in a week without one (no open day with a forecast); a picked day
- * without a forecast still names its date.
+ * A park's marks of each week beside its name, one note per week, so paging shows the week's: the
+ * tick and the days the visitor picked for it that week, then the star and its best free day with
+ * the wait its tile prints. Nothing in a week without either.
  */
 function QuietestNote({
   slug,
@@ -696,7 +753,7 @@ function QuietestNote({
   className,
 }: {
   slug: string;
-  /** The park's day per week (`HubQuiet`). */
+  /** The park's marks per week (`HubQuiet`). */
   marks: readonly (HubWeekMark | null)[];
   days: readonly TripCalendarDay[];
   locale: string;
@@ -710,40 +767,41 @@ function QuietestNote({
     <>
       {marks.map((mark, w) => {
         if (!mark) return null;
-        const park = days.find((d) => d.date === mark.date)?.parks[slug];
+        const park = mark.star ? days.find((d) => d.date === mark.star)?.parks[slug] : undefined;
         const minutes = park ? shownWait(park) : null;
-        if (!mark.picked && minutes == null) return null;
+        const star = mark.star && minutes != null ? mark.star : null;
+        if (mark.picked.length === 0 && !star) return null;
+        const line = 'text-[11px] font-semibold tabular-nums';
         return (
           <span
-            key={mark.date}
-            className={cn(
-              HUB_WEEK_ITEM[w],
-              'text-foreground items-center text-[11px] font-semibold whitespace-nowrap tabular-nums',
-              className
-            )}
+            key={mark.picked[0] ?? star}
+            className={cn(HUB_WEEK_ITEM[w], 'text-foreground space-y-0.5', className)}
           >
-            {mark.picked ? (
-              <span
-                role="img"
-                aria-label={t('picked')}
-                className="bg-primary text-primary-foreground mr-1 inline-flex size-3.5 items-center justify-center rounded-full align-[-3px]"
-              >
-                <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
+            {mark.picked.length > 0 && (
+              <span className={cn(line, 'block')}>
+                <span
+                  role="img"
+                  aria-label={t('picked')}
+                  className={cn(
+                    PICK_BADGE,
+                    'mr-1 inline-flex size-3.5 items-center justify-center rounded-full align-[-3px]'
+                  )}
+                >
+                  <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
+                </span>
+                {mark.picked.map((date) => formatHubDate(date, locale, 'weekdayDay')).join(' · ')}
               </span>
-            ) : (
-              <CalendarIcon
-                name="star"
-                role="img"
-                aria-label={starWords[w]}
-                className="text-primary mr-1 inline size-3 fill-current align-[-2px]"
-              />
             )}
-            {formatHubDate(mark.date, locale, 'weekdayDay')}
-            {minutes != null && (
-              <>
-                {' '}
-                · {minutes} {tCommon('min')}
-              </>
+            {star && (
+              <span className={cn(line, 'block whitespace-nowrap')}>
+                <CalendarIcon
+                  name="star"
+                  role="img"
+                  aria-label={starWords[w]}
+                  className="text-primary mr-1 inline size-3 fill-current align-[-2px]"
+                />
+                {formatHubDate(star, locale, 'weekdayDay')} · {minutes} {tCommon('min')}
+              </span>
             )}
           </span>
         );
@@ -801,6 +859,8 @@ interface PhoneGroupProps {
   picks: HubPicks;
   /** Each park's short name by its slug, for the tile that says which park took its date. */
   names: ReadonlyMap<string, string>;
+  /** How many days of the window each park is planned on, by its slug. */
+  planned: ReadonlyMap<string, number>;
   /** What the star means, per week (`quietest` or `quietestFree`). */
   starWords: readonly string[];
   lanes: readonly EventLane[];
@@ -809,7 +869,7 @@ interface PhoneGroupProps {
   locale: string;
   timezone: string;
   onOpen: (date: string) => void;
-  /** Plans the park on the date, or takes the pick back (`pickHubDay`). */
+  /** Plans the park on the date too, or takes that day back (`pickHubDay`). */
   onPick: (slug: string, date: string) => void;
 }
 
@@ -824,6 +884,7 @@ const PhoneGroup = memo(function PhoneGroup({
   quiet,
   picks,
   names,
+  planned,
   starWords,
   lanes,
   events,
@@ -896,6 +957,7 @@ const PhoneGroup = memo(function PhoneGroup({
                     <VisitedToggle region={region} slug={park.slug} name={name} today={todayIso} />
                   )}
                   <span className="truncate">{name}</span>
+                  <PlannedCount count={planned.get(park.slug) ?? 0} />
                 </p>
                 {!state && (
                   <QuietestNote
@@ -1125,6 +1187,7 @@ const Matrix = memo(function Matrix({
   quiet,
   picks,
   names,
+  planned,
   starWords,
   weeks,
   week,
@@ -1148,6 +1211,8 @@ const Matrix = memo(function Matrix({
   picks: HubPicks;
   /** Each park's short name by its slug. */
   names: ReadonlyMap<string, string>;
+  /** How many days of the window each park is planned on, by its slug. */
+  planned: ReadonlyMap<string, number>;
   /** What the star means, per week (`quietest` or `quietestFree`). */
   starWords: readonly string[];
   weeks: readonly HubWeek[];
@@ -1279,6 +1344,7 @@ const Matrix = memo(function Matrix({
                     quietest={quiet.get(park.slug) ?? []}
                     picks={picks}
                     names={names}
+                    count={planned.get(park.slug) ?? 0}
                     starWords={starWords}
                     tabCol={tab.r === r ? tab.c : null}
                     label={label}
@@ -1558,6 +1624,7 @@ const ParkRow = memo(function ParkRow({
   quietest,
   picks,
   names,
+  count,
   starWords,
   tabCol,
   label,
@@ -1579,6 +1646,8 @@ const ParkRow = memo(function ParkRow({
   quietest: readonly (HubWeekMark | null)[];
   picks: HubPicks;
   names: ReadonlyMap<string, string>;
+  /** How many days of the window the park is planned on. */
+  count: number;
   starWords: readonly string[];
   /** The column holding the grid's tab stop, when it is in this row. */
   tabCol: number | null;
@@ -1595,6 +1664,7 @@ const ParkRow = memo(function ParkRow({
         <span className="flex min-w-0 items-center gap-2 text-sm">
           <VisitedToggle region={region} slug={slug} name={name} today={todayIso} />
           <span className="truncate">{name}</span>
+          <PlannedCount count={count} />
         </span>
         <QuietestNote
           slug={slug}

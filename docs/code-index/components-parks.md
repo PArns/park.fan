@@ -96,7 +96,8 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`calendar-tile-marks.ts`](../../components/parks/calendar-tile-marks.ts)
 
 - `TILE_BEST_RING` _const_: The quietest day of a week, beside the star.
-- `TILE_PICKED_RING` _const_: A day the visitor picked (the hub's tick): the same ring, a pixel stronger.
+- `TILE_PICKED_RING` _const_: A day the visitor picked (the hub's tick): a ring a pixel stronger in the pick's own colour (`--signal-pick`, fuchsia), so a choice never reads as the star's suggestion beside it.
+- `PICK_BADGE` _const_: The round badge behind the pick's tick, wherever it stands: the tile, the note beside the park, the key and the line above the grid.
 
 ### [`card-photo.tsx`](../../components/parks/card-photo.tsx)
 

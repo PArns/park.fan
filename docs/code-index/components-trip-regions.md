@@ -89,7 +89,7 @@ The class strings of the hub calendar's marks, shared by the week grid, the phon
 
 ### [`hub/hub-legend.tsx`](../../components/trip-regions/hub/hub-legend.tsx)
 
-- `HubLegend` _component_: How to read the calendar, at the top of its chapter.
+- `HubLegend` _component_: How to read the calendar, at the top of its chapter, every key in one list: the wait, the ring with the star (each park's quietest day of the week), the ring with the tick (a day the visitor picked), what the colour means (a day against …
 
 ### [`hub/hub-month-index.tsx`](../../components/trip-regions/hub/hub-month-index.tsx)
 
