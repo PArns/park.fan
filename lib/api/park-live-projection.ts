@@ -48,6 +48,8 @@ export interface LiveAttractionSnapshot {
   outage?: ParkAttraction['outage'] | null;
   /** Volatile the same way `outage` is, and on the wire as `null` for the same reason. */
   notRunToday?: ParkAttraction['notRunToday'];
+  /** Volatile the same way `outage` is, and on the wire as `null` for the same reason. */
+  weatherClosure?: ParkAttraction['weatherClosure'];
   queues?: ParkAttraction['queues'];
   statistics?: ParkAttraction['statistics'];
   bestVisitTimes?: ParkAttraction['bestVisitTimes'];
@@ -130,6 +132,7 @@ export function leanParkForLivePoll(
       outage: a.outage ?? null,
       // The same rule, so a ride that has run since the render loses its „noch nicht" line.
       notRunToday: a.notRunToday ?? null,
+      weatherClosure: a.weatherClosure ?? null,
       queues: a.queues,
       statistics: a.statistics,
       bestVisitTimes: a.bestVisitTimes,
@@ -282,6 +285,7 @@ const RIDE_SHELL_FIELDS = [
   'typicalWaits',
   'outage',
   'notRunToday',
+  'weatherClosure',
   'runsOnWeekdays',
   'performanceSchedules',
   'worksPeriods',

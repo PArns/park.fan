@@ -546,6 +546,7 @@ The earliest showtime of `show` that is still ahead of `nowMs`, in epoch ms, or 
 ### [`temperature.ts`](../../lib/utils/temperature.ts)
 
 - `detectDefaultUnit` _function_: The default unit from the region of the browser's _primary_ language (`en-US` → `US`). The rest of `navigator.languages` is ignored, since it produces false positives. `'C'` on the server.
+- `convertTemp` _function_: Convert a Celsius value into the user's chosen unit.
 - `formatTemp` _function_: Format a Celsius value as a rounded "15°" / "59°" string in the chosen unit.
 - `formatTempWithUnit` _function_: Format a Celsius value as a rounded "15 °C" / "59 °F" string, for text that names the scale.
 - `convertWindSpeed` _function_: Convert km/h into the unit-system pairing (km/h for metric, mph for imperial).

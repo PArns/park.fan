@@ -886,6 +886,10 @@ Static demo fixtures for the weather card showcase on the /ui style guide.
 
 - `WeatherCard` _component_: Park page weather card on an animated weather scene: current conditions (live nowcast when the park has one), the hour-by-hour chart for today against the opening hours, and the forecast strip. Renders nothing without current weather.
 
+### [`weather-closure-note.tsx`](../../components/parks/weather-closure-note.tsx)
+
+- `WeatherClosureNote` _component_: „Vermutlich wegen Kälte geschlossen (1 °C)" — and whether the forecast gets warm enough today; or „Vermutlich wegen Schnee geschlossen (−1 °C)", the title with its temperature and no second line, since snow promises no clock.
+
 ### [`weather-forecast-strip.tsx`](../../components/parks/weather-forecast-strip.tsx)
 
 - `WeatherForecastStrip` _component_: Horizontally scrolling row of forecast days: weekday, weather icon, high and low, rain, and a warning triangle for severe weather or heat, and the park's opening hours (or „Closed") when the schedule covers the days.

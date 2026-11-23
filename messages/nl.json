@@ -1006,6 +1006,13 @@
       "title": "Vandaag nog niet in bedrijf",
       "lastRun": "Laatst in bedrijf: {when}"
     },
+    "weatherClosure": {
+      "cold": "Waarschijnlijk gesloten vanwege de kou ({temp})",
+      "snow": "Waarschijnlijk gesloten vanwege sneeuw ({temp})",
+      "opensAt": "Gaat meestal open vanaf {threshold}, volgens de verwachting rond {time}",
+      "closedToday": "Gaat meestal open vanaf {threshold}, volgens de verwachting blijft het daar vandaag onder",
+      "threshold": "Gaat meestal open vanaf {threshold}"
+    },
     "rideOpensAt": {
       "approx": "Opent rond {time}",
       "firm": "Opent om {time}",

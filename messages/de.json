@@ -752,6 +752,13 @@
       "title": "Heute noch nicht in Betrieb",
       "lastRun": "Zuletzt in Betrieb: {when}"
     },
+    "weatherClosure": {
+      "cold": "Vermutlich wegen Kälte geschlossen ({temp})",
+      "snow": "Vermutlich wegen Schnee geschlossen ({temp})",
+      "opensAt": "Öffnet meist ab {threshold}, laut Prognose gegen {time} Uhr",
+      "closedToday": "Öffnet meist ab {threshold}, laut Prognose bleibt es heute darunter",
+      "threshold": "Öffnet meist ab {threshold}"
+    },
     "rideOpensAt": {
       "approx": "Öffnet ca. {time} Uhr",
       "firm": "Öffnet um {time} Uhr",

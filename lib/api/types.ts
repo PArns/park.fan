@@ -569,6 +569,27 @@ export interface NotRunToday {
 }
 
 /**
+ * Why a ride that is closed during opening hours probably is: the cold, or snow. The API sends it
+ * only while the weather explains the closure with at least 90 % probability, and next to
+ * `notRunToday` or `outage` rather than instead of them. Absent says nothing about the weather.
+ */
+export interface WeatherClosure {
+  /** `cold` or `snow`; any other value is read as absent. */
+  cause: string;
+  /** 0..1, how likely the weather is the reason. */
+  probability: number;
+  /** The park's temperature now. */
+  temperatureC: number;
+  /** The temperature from which the ride usually runs, learned from its history; null for snow. */
+  thresholdC: number | null;
+  /** `opens_when_warmer` or `likely_closed_today`: whether today's forecast reaches `thresholdC`
+   *  before the park closes; null for snow, which promises no clock. */
+  outlook: string | null;
+  /** ISO 8601 UTC, the first forecast hour at or above the threshold; null when there is none. */
+  expectedOpenAt: string | null;
+}
+
+/**
  * When a ride that is down right now was first reported down. `startedAt` is a clock time only;
  * the duration shown beside it is `estimate.elapsedMinutes` (operating minutes), never
  * `now - startedAt`, which overstates long outages. `outageElapsedMinutes` is the only reader.
@@ -737,6 +758,8 @@ export interface ParkAttraction {
    * last did. The poll sends `null` for every other ride (see `LiveAttractionSnapshot.outage`).
    */
   notRunToday?: NotRunToday | null;
+  /** Live like `notRunToday`, and sent as `null` by the poll for the same reason. */
+  weatherClosure?: WeatherClosure | null;
   /**
    * The same weekday pattern `plan/day` sends (`PlanDayRide.runsOnWeekdays`), present only where it
    * leaves out a day. Day-stable, so it rides the server render and not the poll: it lets a card say
@@ -1151,6 +1174,8 @@ export interface AttractionResponse {
   outage?: AttractionOutage;
   /** Same field as on the park's ride list, overlaid by `useLiveAttractionData`. */
   notRunToday?: NotRunToday | null;
+  /** Same field as on the park's ride list, overlaid by `useLiveAttractionData`. */
+  weatherClosure?: WeatherClosure | null;
   /**
    * When the ride stopped operating for good (ISO 8601), or absent while it runs. Only this
    * endpoint carries a retired ride, so a ride page missing from the park payload asks here before

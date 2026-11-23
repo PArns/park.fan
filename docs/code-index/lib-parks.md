@@ -213,6 +213,12 @@ Which two days of a park's calendar are being compared, across a change of month
 - `VIEWED_PARKS_ASK_FOR` _const_: The parks asked of the API per locale, its most. A country column in the footer takes the country's parks among them, so the cut has to reach past the few parks every language reads.
 - Types: `ViewedPark`
 
+### [`weather-closure.ts`](../../lib/parks/weather-closure.ts)
+
+- `weatherClosureLine` _function_: The parts of the weather-closure line, or `null` when the field says nothing this page can state.
+- `weatherClosureTemps` _function_: The current temperature and the threshold as the line prints them, in the reader's unit.
+- Types: `WeatherClosureLine`
+
 ### [`weekday-forecast.ts`](../../lib/parks/weekday-forecast.ts)
 
 - `upcomingWeekdayForecast` _function_: The next `limit` dates of `weekday` (`0` = Sunday) from the park's today on, out of the `/best-days` snapshot (today plus 90 days). A snapshot fetched yesterday still starts yesterday, so `todayIso` is the cut, not the first entry.

@@ -8,6 +8,7 @@ import { ParkStatusBadge } from '@/components/parks/park-status-badge';
 import { TrendPill } from '@/components/parks/trend-pill';
 import { OutageNote } from '@/components/parks/outage-note';
 import { RideOpensAtNote } from '@/components/parks/ride-opens-at-note';
+import { WeatherClosureNote } from '@/components/parks/weather-closure-note';
 import { PerformanceBadge } from '@/components/parks/performance-badge';
 import { PerformanceCountdown } from '@/components/parks/performance-countdown';
 import { ParkyStamp } from '@/components/assistant/parky/parky-stamp';
@@ -290,6 +291,14 @@ export function RideNowPanel({
                     slug={attraction.slug}
                     notRunToday={attraction.notRunToday}
                     runsOnWeekdays={attraction.runsOnWeekdays}
+                    timezone={timezone}
+                    variant="full"
+                    className="my-1.5"
+                  />
+                )}
+                {(status === 'CLOSED' || status === 'DOWN') && (
+                  <WeatherClosureNote
+                    weatherClosure={attraction.weatherClosure}
                     timezone={timezone}
                     variant="full"
                     className="my-1.5"
