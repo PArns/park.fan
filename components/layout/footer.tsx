@@ -24,6 +24,7 @@ import Image from 'next/image';
 import type { ComponentType } from 'react';
 import { Separator } from '@/components/ui/separator';
 import { MenuSectionHeading } from '@/components/layout/menu-section-heading';
+import { CountryFlag } from '@/components/common/icons/flags';
 import { FooterLinkGroup } from '@/components/layout/footer-link-group';
 import { BuildInfo } from '@/components/common/build-info';
 import { FacebookIcon, InstagramIcon } from '@/components/common/brand-icons';
@@ -105,12 +106,15 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
    */
   const curatedParks: {
     key: string;
+    /** ISO code, for the flag before the column's heading. */
+    code: string;
     label: string;
     href: string;
     parks: { href: string; label: string }[];
   }[] = [
     {
       key: 'germany',
+      code: 'DE',
       label: t('sections.germany'),
       href: '/parks/europe/germany',
       parks: [
@@ -123,6 +127,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
     },
     {
       key: 'usa',
+      code: 'US',
       label: t('sections.usa'),
       href: '/parks/north-america/united-states',
       parks: [
@@ -150,6 +155,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
     },
     {
       key: 'france',
+      code: 'FR',
       label: tGeo('countries.france'),
       href: '/parks/europe/france',
       parks: [
@@ -168,6 +174,7 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
     },
     {
       key: 'japan',
+      code: 'JP',
       label: tGeo('countries.japan'),
       href: '/parks/asia/japan',
       parks: [
@@ -378,7 +385,11 @@ export async function Footer({ locale, showBlog = true, newsLabel }: FooterProps
           >
             {popularParks.map((country) => (
               <div key={country.key}>
-                <MenuSectionHeading label={country.label} href={country.href} />
+                <MenuSectionHeading
+                  label={country.label}
+                  href={country.href}
+                  lead={<CountryFlag code={country.code} />}
+                />
                 <ul className="flex flex-col" aria-label={country.label}>
                   {country.parks.map((park) => (
                     <li key={park.href} className="flex flex-col">
