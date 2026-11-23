@@ -425,19 +425,21 @@
       "pickLevel": "{level, select, very_low {veel rustiger dan een normale dag daar} low {rustiger dan een normale dag daar} moderate {een normale dag daar} other {drukker dan een normale dag daar}}"
     },
     "visited": {
-      "ask": "Al geweest? Vink af",
+      "ask": "Al bezocht? Vink af",
       "count": "{count} van {total} parken afgevinkt",
       "allDone": "Alle {count} parken afgevinkt. Voor een tweede bezoek:",
-      "toggle": "{park}: al geweest",
+      "toggle": "{park}: al bezocht",
       "tick": "{park} afvinken als bezocht",
-      "untick": "Vinkje bij {park} weghalen"
+      "untick": "Vinkje bij {park} weghalen",
+      "column": "Al bezocht?"
     },
     "legend": {
       "minutes": "Piekwachttijd bij de grote attracties, in minuten",
       "quietest": "rustigste dag van de week in dat park",
       "early": "sluit eerder voor dagbezoekers",
       "howTo": "Zo lees je dit",
-      "colour": "Kleur: de dag vergeleken met een gewone dag in dat park"
+      "colour": "Kleur: de dag vergeleken met een gewone dag in dat park",
+      "picked": "door jou ingepland"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -468,7 +470,16 @@
       "stateOpen": "Open, geen voorspelling",
       "cellNoHours": "openingstijden nog niet gepubliceerd",
       "sourcesTravel": "Reistijden: {attribution}",
-      "titleMonth": "Dag voor dag in {month}"
+      "titleMonth": "Dag voor dag in {month}",
+      "picked": "door jou ingepland",
+      "quietestFree": "voorgestelde vrije dag",
+      "cellTaken": "al ingepland voor {park}",
+      "pickHint": "Kies bij een park een dag om die in te plannen. De andere parken krijgen dan elk een eigen vrije dag, zo rustig mogelijk.",
+      "picksCount": "{count, plural, one {# dag ingepland} other {# dagen ingepland}}",
+      "picksNote": "De sterren geven elk ander park een eigen vrije dag, zo rustig mogelijk.",
+      "picksReset": "Keuze wissen",
+      "pickedAnnounce": "{park} ingepland op {date}",
+      "unpickedAnnounce": "{park} niet meer ingepland op {date}"
     },
     "lanes": {
       "expected": "data verwacht",
@@ -867,7 +878,7 @@
     "calendarLegend": "Legenda",
     "calendarLegendGroups": {
       "crowd": "Drukte",
-      "signals": "Signalen"
+      "signals": "Vakanties & feestdagen"
     },
     "eventTypesLabel": "Event types",
     "crowdLevelsLabel": "Drukteniveaus",
@@ -875,6 +886,10 @@
     "specialDaysLabel": "Speciale dagen",
     "schoolVacation": "Schoolvakantie",
     "bestDay": "Aanbevolen",
+    "calendarMarks": {
+      "quietestOfWeek": "rustigste dag van de week",
+      "localTimes": "Tijden in de lokale tijd van het park"
+    },
     "bridgeDay": "Brugdag",
     "holiday": "Feestdag",
     "eventTypes": {
@@ -6579,5 +6594,17 @@
       "export": "Gegevens downloaden",
       "failed": "Het downloaden lukte niet. Probeer het opnieuw."
     }
+  },
+  "dayWeather": {
+    "normal": "Gemiddelde van eerdere jaren voor deze datum, geen voorspelling",
+    "keyNoPeriod": "Ø gemiddelde van eerdere jaren, geen voorspelling",
+    "detailTitle": "Weer gemiddeld",
+    "typicalHigh": "Overdag meestal <range></range>",
+    "typicalLow": "'s nachts meestal <range></range>",
+    "wetDays": "{count, plural, =0 {zelden regen} =1 {regen op 1 van de 10 dagen} other {regen op # van de 10 dagen}}",
+    "detailNote": "Gemiddelde van {period} voor deze datum; op de helft van die dagen lag de waarde binnen de marge. Voorspellingen zijn er zo’n 16 dagen vooruit.",
+    "keyForecast": "Voorspelling",
+    "normalSpan": "Gemiddelde van eerdere jaren voor deze {count} dagen, geen voorspelling",
+    "rowLabel": "Weer in {park}"
   }
 }

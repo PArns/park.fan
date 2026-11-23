@@ -1,5 +1,6 @@
 'use client';
 
+import { ClimateNormalDetail } from '@/components/common/day-weather';
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
 import {
@@ -556,7 +557,8 @@ function MoveSection({
 
 /**
  * The big rides of the day, by name only, and the weather, from the day planner's `/plan/day` for
- * that park and date, asked only when the sheet is open. No per-ride minutes: they come from
+ * that park and date, asked only when the sheet is open: the forecast, past its reach the date's
+ * average over past years with its range (`ClimateNormalDetail`). No per-ride minutes: they come from
  * another model than the day's figure, and two numbers for one wait on one sheet read as one wrong; the planner's own cache entry, so "Plan this day" then
  * opens on an answer already there.
  */
@@ -578,6 +580,7 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
     .sort((a, b) => b.dayPeak - a.dayPeak)
     .slice(0, BIG_RIDES);
   const weather = data?.context.weather ?? null;
+  const normal = data?.context.climateNormal ?? null;
 
   return (
     <div className="flex flex-col gap-3">
@@ -593,6 +596,8 @@ function DayRides({ slug, date }: { slug: string; date: string }) {
                 <> · {t('rain', { mm: Math.round(weather.precipitationMm) })}</>
               )}
             </>
+          ) : normal ? (
+            <ClimateNormalDetail weather={normal} period={normal.normalPeriod} />
           ) : (
             <span className="text-muted-foreground">{t('noWeather')}</span>
           )}

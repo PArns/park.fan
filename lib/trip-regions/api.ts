@@ -46,14 +46,14 @@ export const TRIP_REGIONS_CACHE_TAG = 'trip-regions';
  * then. Between such changes a deploy keeps the edge copies and the Data Cache entries it finds,
  * where the commit it replaced emptied both on every deploy.
  */
-export const TRIP_API_VERSION = '2026-11-19';
+export const TRIP_API_VERSION = '2026-11-23';
 
 /**
  * The first 12 hex digits of the SHA-256 of `lib/trip-regions/types.ts` when `TRIP_API_VERSION` was
  * last weighed against it. `pnpm test:trip-regions` fails when the types change without it, so a
  * change to the answers' shape always asks whether the version has to go up.
  */
-export const TRIP_API_TYPES_HASH = '41aa7919dac1';
+export const TRIP_API_TYPES_HASH = 'f8ca8cee5508';
 
 /**
  * The API URL of a trip-region path (`/v1/trip-regions/…`, with or without a query), with

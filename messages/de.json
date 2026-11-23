@@ -425,19 +425,21 @@
       "pickLevel": "{level, select, very_low {viel ruhiger als an einem normalen Tag dort} low {ruhiger als an einem normalen Tag dort} moderate {ein normaler Tag dort} other {voller als an einem normalen Tag dort}}"
     },
     "visited": {
-      "ask": "Schon dort gewesen? Abhaken",
+      "ask": "Bereits besucht? Abhaken",
       "count": "{count} von {total} Parks abgehakt",
       "allDone": "Alle {count} Parks abgehakt. Für einen zweiten Besuch:",
-      "toggle": "{park}: schon dort gewesen",
+      "toggle": "{park}: bereits besucht",
       "tick": "{park} als besucht abhaken",
-      "untick": "Haken bei {park} entfernen"
+      "untick": "Haken bei {park} entfernen",
+      "column": "Bereits besucht?"
     },
     "legend": {
       "minutes": "Spitzenwartezeit der großen Bahnen, in Minuten",
       "quietest": "ruhigster Tag der Woche in diesem Park",
       "early": "schließt früher für Tagesgäste",
       "howTo": "So liest du den Kalender",
-      "colour": "Farbe: der Tag im Vergleich zu einem normalen Tag dieses Parks"
+      "colour": "Farbe: der Tag im Vergleich zu einem normalen Tag dieses Parks",
+      "picked": "von dir eingeplant"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -468,7 +470,16 @@
       "stateOpen": "Geöffnet, keine Prognose",
       "cellNoHours": "Öffnungszeiten noch nicht veröffentlicht",
       "sourcesTravel": "Fahrzeiten: {attribution}",
-      "titleMonth": "Tag für Tag im {month}"
+      "titleMonth": "Tag für Tag im {month}",
+      "picked": "von dir eingeplant",
+      "quietestFree": "vorgeschlagener freier Tag",
+      "cellTaken": "schon für {park} eingeplant",
+      "pickHint": "Wähl bei einem Park einen Tag, um ihn einzuplanen. Die anderen Parks bekommen dann je einen eigenen freien Tag, so ruhig wie möglich.",
+      "picksCount": "{count, plural, one {# Tag eingeplant} other {# Tage eingeplant}}",
+      "picksNote": "Die Sterne geben jedem anderen Park einen eigenen freien Tag, so ruhig wie möglich.",
+      "picksReset": "Auswahl zurücksetzen",
+      "pickedAnnounce": "{park} am {date} eingeplant",
+      "unpickedAnnounce": "{park} am {date} nicht mehr eingeplant"
     },
     "lanes": {
       "expected": "Termine erwartet",
@@ -990,7 +1001,7 @@
     "calendarLegend": "Legende",
     "calendarLegendGroups": {
       "crowd": "Andrang",
-      "signals": "Signalleiste"
+      "signals": "Ferien & Feiertage"
     },
     "eventTypesLabel": "Event-Typen",
     "crowdLevelsLabel": "Auslastungsstufen",
@@ -998,6 +1009,10 @@
     "specialDaysLabel": "Besondere Tage",
     "schoolVacation": "Schulferien",
     "bestDay": "Empfohlen",
+    "calendarMarks": {
+      "quietestOfWeek": "ruhigster Tag der Woche",
+      "localTimes": "Zeiten in Ortszeit des Parks"
+    },
     "bridgeDay": "Brückentag",
     "holiday": "Feiertag",
     "eventTypes": {
@@ -6579,5 +6594,17 @@
       "export": "Daten herunterladen",
       "failed": "Der Download hat nicht geklappt. Versuch es noch einmal."
     }
+  },
+  "dayWeather": {
+    "normal": "Durchschnitt vergangener Jahre für dieses Datum, keine Vorhersage",
+    "keyNoPeriod": "Ø Durchschnitt vergangener Jahre, keine Vorhersage",
+    "detailTitle": "Wetter im Schnitt",
+    "typicalHigh": "Tagsüber meist <range></range>",
+    "typicalLow": "nachts meist <range></range>",
+    "wetDays": "{count, plural, =0 {selten Regen} =1 {Regen an 1 von 10 Tagen} other {Regen an # von 10 Tagen}}",
+    "detailNote": "Schnitt der Jahre {period} für dieses Datum; an der Hälfte dieser Tage lag der Wert in der Spanne. Vorhersagen gibt es etwa 16 Tage im Voraus.",
+    "keyForecast": "Vorhersage",
+    "normalSpan": "Durchschnitt vergangener Jahre für diese {count} Tage, keine Vorhersage",
+    "rowLabel": "Wetter in {park}"
   }
 }

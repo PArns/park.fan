@@ -1877,6 +1877,21 @@ export interface WeatherSummary {
   humidity?: number;
   /** Apparent („feels like") temperature, when available (today). */
   apparentTemp?: number;
+  /**
+   * `climate_normal` past the forecast's reach: the date's average over `normalPeriod`, never this
+   * day's forecast. Absent on older payloads, read as a forecast.
+   */
+  basis?: 'forecast' | 'climate_normal';
+  /** The years a `climate_normal` averages, `2015-2024`. */
+  normalPeriod?: string;
+  /** A `climate_normal` only: the range half of such days' highs fell in (25th–75th percentile). */
+  tempMaxP25?: number;
+  tempMaxP75?: number;
+  /** The same for the lows. */
+  tempMinP25?: number;
+  tempMinP75?: number;
+  /** A `climate_normal` only: the chance of a day with at least 1 mm of rain, in percent. */
+  wetDayPercent?: number;
 }
 
 /** A named event or holiday on a calendar day. */
@@ -2367,6 +2382,11 @@ export interface PlanDayContext {
    * missing value must not read as „no rain expected".
    */
   weather?: WeatherSummary | null;
+  /**
+   * Past the forecast's reach, the date's average over past years (`basis: 'climate_normal'`) with
+   * its range; it moves no bar. Absent while `weather` is set and from an API before PAR-1411.
+   */
+  climateNormal?: WeatherSummary;
   isHoliday: boolean;
   isBridgeDay: boolean;
   isSchoolVacation: boolean;

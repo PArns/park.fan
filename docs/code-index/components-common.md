@@ -75,6 +75,14 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 
 - `CompactNumberWithTooltip` _component_: Renders a compact number (e.g. 4.9M, 4,9 Mio.) with a tooltip showing the full locale-formatted value and a suffix.
 
+### [`day-weather.tsx`](../../components/common/day-weather.tsx)
+
+- `TempRange` _component_: Two temperatures as one range, „15–19°“, or one figure where both round alike in the reader's unit; `null` when either is missing.
+- `DayWeather` _component_: A day's weather in one short line, the same token in every calendar. A forecast: its condition icon and the low–high („9–18°“) in the foreground ink.
+- `WeatherSpan` _component_: Several days' average over past years as one label across them, drawn as a dimension line: a tick, a rule, „Ø 8–12°“, a rule, a tick (`weatherRuns` gives the envelope of the days' ranges). One day is the plain `DayWeather`.
+- `ClimateNormalDetail` _component_: A climate normal spelled out for a day's detail: „Tagsüber meist 15–19°, nachts meist 7–11°“, how often such a day brings rain, and what the figures are (`period`, the years averaged).
+- `WeatherKey` _component_: The weather key of a calendar, the two tokens as the cells draw them: a forecast's icon with „Vorhersage“, and „Ø“ with „Durchschnitt vergangener Jahre, keine Vorhersage“.
+
 ### [`dialog-hero.tsx`](../../components/common/dialog-hero.tsx)
 
 - `DialogHeroClose` _component_: The close button of a band that brings its own (the dialog then passes `showCloseButton={false}`), shared by `DialogHero` and `PushDialogHero`.
@@ -115,6 +123,7 @@ Brand marks in one place, as plain paths since lucide-react dropped its brand se
 - `GlassCard` _component_: Glass card for headers and content cards over a photo. `heavy` is the homepage hero's glass, lighter in light mode and markedly darker in dark mode, so a panel over the hero photo reads as one pane.
 - `HEAVY_GLASS` _const_: The `heavy` recipe as a bare class string, for surfaces that are not a `GlassCard`: the park page's stacked title card and „Heute im Park" panel take one material because they are one object.
 - `TILE_GLASS` _const_: The same glass one grade more solid, for the entry tiles.
+- `TILE_GLASS_LG` _const_: `TILE_GLASS` from `lg` only, for a card whose phone layout is cards of its own: the trip hub's calendar, whose 44 px day tiles have no width to spare for a frame around them.
 - `GLASS_BUTTON` _const_: A secondary button on a title card's glass: „Mehr", the ride's RCDB link and its figures. Quiet beside the filled call to action, but a button and not a chip.
 - `HAIRLINE_FILL` _const_: The fill of a hairline or a slider track on `TILE_GLASS`. The foreground at a low opacity rather than the `--border` token: in the dark theme that token is white at 10 %, so any opacity modifier on it composites to nothing.
 - `PHOTO_GLASS_FILL` _const_: `TILE_GLASS`'s fill without its blur, for a panel that blurs its own photograph instead of the backdrop: the homepage compass, whose moving arrows would make a `backdrop-filter` flicker. 75 % for the tile's reason, since its list is small …

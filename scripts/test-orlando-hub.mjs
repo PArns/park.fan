@@ -2,7 +2,8 @@
  * Unit tests for the Orlando hub's pure logic (`lib/trip-regions/*`): the month window and its proxy
  * redirects, the relay's allow-list and the region links' cache window, the shortest-line pick with
  * its early-close clause, the "today or tomorrow" answer, the event lanes, the month summaries, the
- * calendar's weeks with their fragment and each park's quietest day, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
+ * calendar's weeks with their fragment, each park's quietest day and the spread around a picked
+ * day, and the best-time helpers. Fixtures are recorded answers of the API in `scripts/fixtures/orlando/`.
  *
  * Run: `pnpm test:orlando-hub`
  */
@@ -33,9 +34,14 @@ import {
   shortGroupName,
   shortParkName,
   slimRegion,
+  sliceCalendar,
+  weatherParks,
+  weekMarks,
   withGroupNames,
   factDays,
 } from '../lib/trip-regions/hub-data.ts';
+import { parseHubPicks, pickHubDay } from '../lib/trip-regions/hub-picks.ts';
+import { weatherRuns } from '../lib/utils/day-weather.ts';
 import {
   isTripRegionMonthInRange,
   parseTripRegionMonth,
@@ -731,6 +737,176 @@ test("a park's star is its quietest day of the week, one for every park with an 
   // The fixture's Magic Kingdom: 40 on six days, the 16th the longest of them (09:00–23:00).
   assert.equal(quietestDay(calendar.days.slice(0, 7), 'magic-kingdom-park'), '2026-11-16');
   assert.equal(quietestDay(calendar.days.slice(7), 'magic-kingdom-park'), '2026-11-19');
+});
+
+/** A day of several parks for the spread: each slug's figure, every park open 09:00–21:00. */
+const parksDay = (date, waits) => ({
+  date,
+  parks: Object.fromEntries(
+    Object.entries(waits).map(([slug, wait]) => [slug, parkDay(date, wait).parks.p])
+  ),
+});
+
+test('a press plans a park on a day, a second takes it back, one day per park and week', () => {
+  const week = ['2026-11-23', '2026-11-24', '2026-11-25'];
+  const today = '2026-11-23';
+  let picks = pickHubDay({}, 'dl', week[0], week, today);
+  assert.deepEqual(picks, { [week[0]]: 'dl' });
+  // Another day of the same park and week moves the pick.
+  picks = pickHubDay(picks, 'dl', week[1], week, today);
+  assert.deepEqual(picks, { [week[1]]: 'dl' });
+  // Another park takes the date over.
+  picks = pickHubDay(picks, 'dca', week[1], week, today);
+  assert.deepEqual(picks, { [week[1]]: 'dca' });
+  // A park's pick of another week stays; a past date goes with the write.
+  picks = pickHubDay({ '2026-11-20': 'dl', '2026-12-01': 'dl' }, 'dl', week[2], week, today);
+  assert.deepEqual(picks, { '2026-12-01': 'dl', [week[2]]: 'dl' });
+  // The picked day pressed again: no pick left.
+  assert.deepEqual(pickHubDay({ [week[2]]: 'dl' }, 'dl', week[2], week, today), {});
+  // A broken stored value costs only itself.
+  assert.deepEqual(parseHubPicks('{"2026-11-23":"dl","x":"dl","2026-11-24":"Bad Slug"}'), {
+    '2026-11-23': 'dl',
+  });
+  assert.deepEqual(parseHubPicks('nope'), {});
+});
+
+test('a picked day spreads the other parks over the free days, one park a day', () => {
+  const dates = ['2026-11-23', '2026-11-24', '2026-11-25', '2026-11-26'];
+  // Every park is quietest on the 24th.
+  const days = [
+    parksDay(dates[0], { a: 30, b: 40, c: 35 }),
+    parksDay(dates[1], { a: 20, b: 20, c: 20 }),
+    parksDay(dates[2], { a: 25, b: 40, c: 25 }),
+    parksDay(dates[3], { a: 40, b: 25, c: 45 }),
+  ];
+  const weeks = hubWeeks(days);
+  const marks = (picks, skip) =>
+    Object.fromEntries(
+      [...weekMarks(days, weeks, ['a', 'b', 'c'], picks, skip)].map(([slug, [m]]) => [slug, m])
+    );
+  // Without a pick every star is the park's own quietest day, shared or not.
+  assert.deepEqual(marks({}), {
+    a: { date: dates[1], picked: false },
+    b: { date: dates[1], picked: false },
+    c: { date: dates[1], picked: false },
+  });
+  // `a` on the 23rd: `b` and `c` each get a day of their own, the least above their best.
+  assert.deepEqual(marks({ [dates[0]]: 'a' }), {
+    a: { date: dates[0], picked: true },
+    b: { date: dates[1], picked: false },
+    c: { date: dates[2], picked: false },
+  });
+  // The pick on the shared quietest day: each moves to its own quietest free day, the 26th and 25th.
+  assert.deepEqual(marks({ [dates[1]]: 'a' }), {
+    a: { date: dates[1], picked: true },
+    b: { date: dates[3], picked: false },
+    c: { date: dates[2], picked: false },
+  });
+  // A park ticked off as visited claims no day and keeps its quietest free one.
+  assert.deepEqual(marks({ [dates[0]]: 'a' }, new Set(['c'])), {
+    a: { date: dates[0], picked: true },
+    b: { date: dates[1], picked: false },
+    c: { date: dates[1], picked: false },
+  });
+  // More parks than free days: the one left over keeps its quietest free day.
+  const two = days.slice(0, 2);
+  const left = weekMarks(two, hubWeeks(two), ['a', 'b', 'c'], { [dates[0]]: 'a' });
+  assert.deepEqual(
+    ['b', 'c'].map((slug) => left.get(slug)[0]),
+    [
+      { date: dates[1], picked: false },
+      { date: dates[1], picked: false },
+    ]
+  );
+});
+
+test("a resort's weather is its first park's, a day trip's each park's own", () => {
+  const parks = weatherParks(region);
+  assert.ok(parks.has('magic-kingdom-park'));
+  assert.ok(!parks.has('epcot'));
+  for (const slug of ['legoland-florida', 'busch-gardens-tampa', 'adventure-island-tampa']) {
+    assert.ok(parks.has(slug), slug);
+  }
+});
+
+test('the slice keeps the weather of those parks only, and of it the drawn fields', () => {
+  const weather = {
+    tempMax: 24.2,
+    tempMin: 13.1,
+    icon: 3,
+    basis: 'climate_normal',
+    tempMaxP25: 22.4,
+    tempMaxP75: 26.1,
+    wetDayPercent: 20,
+    precipitationMm: 2,
+  };
+  const day = {
+    ...calendar.days[0],
+    parks: Object.fromEntries(
+      Object.entries(calendar.days[0].parks).map(([slug, p]) => [slug, { ...p, weather }])
+    ),
+  };
+  const sliced = sliceCalendar(calendar, [day], weatherParks(region)).days[0].parks;
+  // An average keeps what its cell draws: no icon, no low.
+  assert.deepEqual(sliced['magic-kingdom-park'].weather, {
+    basis: 'climate_normal',
+    tempMax: 24.2,
+    tempMaxP25: 22.4,
+    tempMaxP75: 26.1,
+  });
+  assert.equal(sliced.epcot.weather, undefined);
+  assert.ok(sliced['busch-gardens-tampa'].weather);
+  assert.equal(
+    sliceCalendar(calendar, [day]).days[0].parks['magic-kingdom-park'].weather,
+    undefined
+  );
+});
+
+test("a week's averages share one cell with their envelope; a forecast and a week break never join", () => {
+  const normal = (p25, p75) => ({
+    basis: 'climate_normal',
+    tempMax: (p25 + p75) / 2,
+    tempMaxP25: p25,
+    tempMaxP75: p75,
+  });
+  const forecast = { basis: 'forecast', tempMax: 20, tempMin: 10, icon: 1 };
+  const runs = weatherRuns([
+    forecast,
+    forecast,
+    normal(8.2, 12.1),
+    normal(7.9, 11.8),
+    normal(7.4, 11.6),
+    undefined,
+    normal(7.4, 11.6),
+  ]);
+  assert.deepEqual(
+    runs.map((r) => [r.start, r.length]),
+    [
+      [0, 1],
+      [1, 1],
+      [2, 3],
+      [5, 1],
+      [6, 1],
+    ]
+  );
+  // The joined cell says the envelope: the lowest lower quartile to the highest upper one.
+  assert.equal(runs[2].weather.tempMaxP25, 7.4);
+  assert.equal(runs[2].weather.tempMaxP75, 12.1);
+  assert.equal(runs[0].weather, forecast);
+  // Seven averages split where the row pages to the next week.
+  const week = Array.from({ length: 7 }, () => normal(8, 12));
+  assert.deepEqual(
+    weatherRuns(week, (i) => i === 4).map((r) => r.length),
+    [4, 3]
+  );
+  // Without a range the envelope runs from the lowest to the highest mean high.
+  const [plain] = weatherRuns([
+    { basis: 'climate_normal', tempMax: 17.2 },
+    { basis: 'climate_normal', tempMax: 15.9 },
+  ]);
+  assert.equal(plain.length, 2);
+  assert.equal(plain.weather.tempMaxP25, 15.9);
+  assert.equal(plain.weather.tempMaxP75, 17.2);
 });
 
 console.log(`\n${passed} passed`);

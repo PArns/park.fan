@@ -425,19 +425,21 @@
       "pickLevel": "{level, select, very_low {much quieter than a normal day there} low {quieter than a normal day there} moderate {a normal day there} other {busier than a normal day there}}"
     },
     "visited": {
-      "ask": "Been there already? Tick it off",
+      "ask": "Already visited? Tick it off",
       "count": "{count} of {total} parks ticked off",
       "allDone": "All {count} parks ticked off. For a second visit:",
-      "toggle": "{park}: been there",
+      "toggle": "{park}: already visited",
       "tick": "Tick off {park} as visited",
-      "untick": "Take the tick off {park}"
+      "untick": "Take the tick off {park}",
+      "column": "Already visited?"
     },
     "legend": {
       "minutes": "Peak wait at the big rides, in minutes",
       "quietest": "quietest day of the week at that park",
       "early": "closes early for day guests",
       "howTo": "How to read this",
-      "colour": "Colour: the day against a normal day at that park"
+      "colour": "Colour: the day against a normal day at that park",
+      "picked": "planned by you"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -468,7 +470,16 @@
       "stateOpen": "Open, no forecast",
       "cellNoHours": "hours not published yet",
       "sourcesTravel": "Travel times: {attribution}",
-      "titleMonth": "Day by day in {month}"
+      "titleMonth": "Day by day in {month}",
+      "picked": "planned by you",
+      "quietestFree": "suggested free day",
+      "cellTaken": "already planned for {park}",
+      "pickHint": "Pick a day at a park to plan it. The other parks then each get a free day of their own, as quiet as possible.",
+      "picksCount": "{count, plural, one {# day planned} other {# days planned}}",
+      "picksNote": "The stars give every other park a free day of its own, as quiet as possible.",
+      "picksReset": "Clear picks",
+      "pickedAnnounce": "{park} planned for {date}",
+      "unpickedAnnounce": "{park} no longer planned for {date}"
     },
     "lanes": {
       "expected": "dates expected",
@@ -867,7 +878,7 @@
     "calendarLegend": "Legend",
     "calendarLegendGroups": {
       "crowd": "Crowds",
-      "signals": "Signals"
+      "signals": "Holidays & breaks"
     },
     "eventTypesLabel": "Event Types",
     "crowdLevelsLabel": "Crowd Levels",
@@ -875,6 +886,10 @@
     "specialDaysLabel": "Special Days",
     "schoolVacation": "School Vacation",
     "bestDay": "Recommended",
+    "calendarMarks": {
+      "quietestOfWeek": "quietest day of the week",
+      "localTimes": "Times in the park's local time"
+    },
     "bridgeDay": "Bridge Day",
     "holiday": "Holiday",
     "eventTypes": {
@@ -6579,5 +6594,17 @@
       "export": "Download data",
       "failed": "The download did not work. Please try again."
     }
+  },
+  "dayWeather": {
+    "normal": "Average of past years for this date, not a forecast",
+    "keyNoPeriod": "Ø average of past years, not a forecast",
+    "detailTitle": "Typical weather",
+    "typicalHigh": "Daytime usually <range></range>",
+    "typicalLow": "at night usually <range></range>",
+    "wetDays": "{count, plural, =0 {rarely rain} =1 {rain on 1 day in 10} other {rain on # days in 10}}",
+    "detailNote": "Average of {period} for this date; on half of those days the value fell within the range. Forecasts reach about 16 days ahead.",
+    "keyForecast": "Forecast",
+    "normalSpan": "Average of past years for these {count} days, not a forecast",
+    "rowLabel": "Weather in {park}"
   }
 }

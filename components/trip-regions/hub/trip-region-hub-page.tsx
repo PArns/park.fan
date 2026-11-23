@@ -5,6 +5,7 @@ import { BookOpen, CalendarDays, CalendarPlus, Sun } from 'lucide-react';
 import { SectionMark } from '@/components/analytics/section-mark';
 import { SectionSeenTracker } from '@/components/analytics/section-seen-tracker';
 import { ChapterHeading } from '@/components/common/chapter-heading';
+import { TILE_GLASS_LG } from '@/components/common/glass-card';
 import {
   HERO_FLOW_INTO_PULL,
   LandingHero,
@@ -25,6 +26,7 @@ import {
   HUB_WINDOW_DAYS,
   resortMonthSummaries,
   sliceCalendar,
+  weatherParks,
   slimRegion,
 } from '@/lib/trip-regions/hub-data';
 import { hubPhoto } from '@/lib/trip-regions/hub-media';
@@ -131,7 +133,9 @@ export async function TripRegionHubPage({
   // day to its client rows, so the page's payload carries them once.
   const clientRegion = slimRegion(region);
   const clientCalendar =
-    calendar && windowDays.length > 0 ? sliceCalendar(calendar, windowDays) : null;
+    calendar && windowDays.length > 0
+      ? sliceCalendar(calendar, windowDays, weatherParks(region))
+      : null;
   const answerDate = calendar ? glanceDay(calendar, region, todayIso, nowMs)?.date : undefined;
   const answerDay = clientCalendar?.days.find((d) => d.date === answerDate) ?? null;
   const lastYearDays = calendar?.days.filter((d) => dayBasis(d) === 'last_year') ?? [];
@@ -251,46 +255,58 @@ export async function TripRegionHubPage({
                   : t('calendar.title', { days: HUB_WINDOW_DAYS })
               }
               hint={t('howItWorks.calendarLead')}
+              frosted
+              className="mb-4 lg:mb-0 lg:rounded-b-none"
             />
-            {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
-            {lastYearFrom && (
-              <p
-                role="note"
-                className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
-              >
-                {t('lastYearFrom', {
-                  date: formatHubDate(lastYearFrom.from, locale, 'dayMonth'),
-                })}
-              </p>
-            )}
-            {clientCalendar ? (
-              <CalendarIconSprite>
-                <HubCalendar
-                  region={clientRegion}
-                  // The whole window from today, the hub's 30 days or the month: a week shows at a
-                  // time, and the others stay in the served HTML for a reader without script.
-                  calendar={clientCalendar}
-                  todayIso={todayIso}
-                  locale={locale}
-                  legend={<HubLegend />}
-                />
-              </CalendarIconSprite>
-            ) : (
-              <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
-            )}
-            {sources && (
-              <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
-            )}
-            <Suspense fallback={null}>
-              <HubAccuracy region={region.slug} accuracy={accuracy} />
-            </Suspense>
-            <HubMonthIndex
-              region={region.slug}
-              current={current}
-              active={month}
-              locale={locale}
-              className="mt-8"
-            />
+            {/* From `lg` heading and calendar are one box, the park calendar's: the card takes
+                `rounded-t-none border-t-0`, so the band's `rounded-t-xl` and `border-b` become its
+                lid and first rule. A phone keeps its resort cards without a frame around them. */}
+            <div
+              className={cn(
+                TILE_GLASS_LG,
+                'lg:border-border/50 lg:rounded-b-xl lg:border lg:border-t-0 lg:p-6'
+              )}
+            >
+              {/* Past 60 days a day reads last year's measured figure: said once, not on each square. */}
+              {lastYearFrom && (
+                <p
+                  role="note"
+                  className="border-border/60 bg-muted/40 mb-4 max-w-3xl rounded-xl border px-4 py-3 text-sm leading-relaxed"
+                >
+                  {t('lastYearFrom', {
+                    date: formatHubDate(lastYearFrom.from, locale, 'dayMonth'),
+                  })}
+                </p>
+              )}
+              {clientCalendar ? (
+                <CalendarIconSprite>
+                  <HubCalendar
+                    region={clientRegion}
+                    // The whole window from today, the hub's 30 days or the month: a week shows at a
+                    // time, and the others stay in the served HTML for a reader without script.
+                    calendar={clientCalendar}
+                    todayIso={todayIso}
+                    locale={locale}
+                    legend={<HubLegend />}
+                  />
+                </CalendarIconSprite>
+              ) : (
+                <p className="text-muted-foreground">{t('calendar.unavailable')}</p>
+              )}
+              {sources && (
+                <p className="text-muted-foreground mt-4 text-xs leading-relaxed">{sources}</p>
+              )}
+              <Suspense fallback={null}>
+                <HubAccuracy region={region.slug} accuracy={accuracy} />
+              </Suspense>
+              <HubMonthIndex
+                region={region.slug}
+                current={current}
+                active={month}
+                locale={locale}
+                className="mt-8"
+              />
+            </div>
           </section>
 
           <SectionMark section="hub_planner" />

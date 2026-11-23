@@ -35,8 +35,12 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`hub/hub-cell-styles.ts`](../../components/trip-regions/hub/hub-cell-styles.ts)
 
+The class strings of the hub calendar's marks, shared by the week grid, the phone's week and the legend, so the key draws exactly what the grid draws. The tile itself is the crowd calendar's (`CalendarDayTile`).
+
 - `HUB_CELL` _const_: The legend's small tile: a fixed box with the minutes centred, in the tile's own tint.
-- `HUB_CELL_BEST` _const_: A park's quietest day of the week, beside the star: a ring in the text colour inside the tile, so it stands out on every crowd tint in both themes and the grid never shifts.
+- `HUB_CELL_BEST` _const_: A park's quietest day of the week, beside the star: the tile's own ring, for the legend.
+- `HUB_CELL_PICKED` _const_: A day the visitor picked for the park, beside the tick: the tile's own ring, for the legend.
+- `HUB_CELL_TAKEN` _const_: Another park's tile on a day the visitor picked for a park: faded, so the column reads as taken and the stars that moved off it make sense. Still a button, which moves the pick to this park.
 - `EARLY_CLOSE_CORNER` _const_: The early-close mark: a small folded corner, top right, where a ticketed evening sends the day guests out early; the tile's closing time is bold below it. A shape, not an icon, so it never reads as a season's.
 - `HUB_WEEK_CELL` _const_: Which page of the calendar a column (`HUB_WEEK_CELL`) or a day of the phone's list (`HUB_WEEK_ITEM`) is on, shown by the `data-week` of the `group/week` around it.
 - `HUB_WEEK_ITEM` _const_: `HUB_WEEK_CELL` for a day of the phone's list.
@@ -90,6 +94,10 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hub/hub-month-index.tsx`](../../components/trip-regions/hub/hub-month-index.tsx)
 
 - `HubMonthIndex` _component_: Every month the hub serves, as links, on the hub and on every month page, so each month is one hop from every other. Navigation, not a chapter: a labelled `<nav>` with no heading, as the park calendar's month index.
+
+### [`hub/hub-pick-line.tsx`](../../components/trip-regions/hub/hub-pick-line.tsx)
+
+- `HubPickLine` _component_: The line above the hub calendar's grid that says what a press on a tile does. Without a pick: pick a day at a park and the other parks show their quietest free day.
 
 ### [`hub/hub-resorts.tsx`](../../components/trip-regions/hub/hub-resorts.tsx)
 

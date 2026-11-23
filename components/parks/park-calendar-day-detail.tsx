@@ -20,6 +20,7 @@ import {
   Droplets,
   Snowflake,
   Ticket,
+  History,
 } from 'lucide-react';
 import type { CalendarDay, CrowdLevel } from '@/lib/api/types';
 import { PlanDayButtonLazy } from '@/components/planner/plan-day-button-lazy';
@@ -41,6 +42,8 @@ import { CrowdLevelBadge } from '@/components/parks/crowd-level-badge';
 import { ParkCalendarParkyTip } from '@/components/parks/park-calendar-parky-tip';
 import { ParkTimeRange } from '@/components/common/park-time';
 import { Precip, Temp, Wind as WindValue } from '@/components/common/unit-display';
+import { ClimateNormalDetail } from '@/components/common/day-weather';
+import { isClimateNormal } from '@/lib/utils/day-weather';
 import { getRegionLabel, getCountryName, countryFlagEmoji } from '@/lib/utils/region-names';
 import { translateHolidayName } from '@/lib/utils/holiday-names';
 import { parkDayOf } from '@/lib/utils/park-day';
@@ -119,6 +122,7 @@ export function ParkCalendarDayDetail({
   const tWorks = useTranslations('parks.worksPeriod');
   const tSeasons = useTranslations('parks.seasons');
   const tCommon = useTranslations('common');
+  const tDayWeather = useTranslations('dayWeather');
   const locale = useLocale();
 
   // Keep the last non-null day so a nav step (the target day is briefly null) dims the open dialog
@@ -649,7 +653,17 @@ export function ParkCalendarDayDetail({
             </section>
           )}
 
-          {day.weather && (
+          {day.weather && isClimateNormal(day.weather) && (
+            <section className="flex flex-col gap-2" data-weather-basis="climate_normal">
+              <h3 className="text-muted-foreground flex items-center gap-1.5 text-xs font-semibold tracking-[0.06em] uppercase">
+                <History className="size-3.5" aria-hidden="true" />
+                {tDayWeather('detailTitle')}
+              </h3>
+              <ClimateNormalDetail weather={day.weather} period={day.weather.normalPeriod} />
+            </section>
+          )}
+
+          {day.weather && !isClimateNormal(day.weather) && (
             <section className="flex flex-col gap-2">
               <h3 className="text-muted-foreground text-xs font-semibold tracking-[0.06em] uppercase">
                 {t('calendarView.details.weather.title')}

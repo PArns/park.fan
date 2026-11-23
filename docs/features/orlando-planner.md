@@ -173,7 +173,9 @@ night never makes a date look quiet (`dateFigure`).
   the runner-up day and what it costs, hours with the hotel's perks, why a short day is short and
   how many hours it loses against the park's usual day in the window, the day's events with their
   status, the drive from the hotel area ("without traffic", the OSRM attribution, the TTC leg to
-  Magic Kingdom), the weather where a forecast reaches, and the big rides of that day by name.
+  Magic Kingdom), the weather where a forecast reaches and past it the date's average over past
+  years with its range (`ClimateNormalDetail`, from `/plan/day`'s `climateNormal`), and the big
+  rides of that day by name.
   A free day's sheet is titled „freier Tag“ and lists what it could take, with „Dazu“
   (`PlanSpareSuggestions`).
   The rides come from the day planner's `/plan/day`, asked only when the sheet opens; their minutes
@@ -298,9 +300,15 @@ not). Pure logic in `lib/trip-regions/plan-ideas.ts`, tested by `pnpm test:plan-
   a climate normal, a plain figure only for a forecast. The trip head's weather band
   (`PlanWeatherBand`) gives the hot park days by basis („1 heißer Parktag, typisch 32 °C“,
   `tripHeat`) and the season as one chip (`tripStorm`), over a ruler of the trip's days on the
-  plan ribbon's grid. The Week view adds a weather row to every column header where the page has a
-  hot day or a season date: the day's pill and the season's band, run through the gaps as one; its
-  key names both. A day card carries the pill beside its date and the season as its top edge, both
+  plan ribbon's grid. The Week view adds a weather row to every column header where the page has
+  weather, a hot day or a season date: the day's pill, else its weather (`dayWeatherOf`: the
+  forecast's high, past its reach the date's usual range from the plan day's `climate`, „Ø 15–19°“,
+  compact on a phone), and the season's band, run through the gaps as one; its key names both. A
+  day card carries the pill beside its date, a day that is not hot its weather the same way, and the
+  arrival, departure and rest rows theirs at the end. The line under the Dates grid gives the
+  pointed date's weather at the region's climate park. A When window's card gives the window's
+  typical weather („Ø 20–24°“) and its sheet the range, the lows and the rain days. A day card
+  carries the pill beside its date and the season as its top edge, both
   inside a `dark` wrapper because the photo's scrim is dark in either theme; with „Extremes Wetter
   vermeiden“ on, a hot card says no cooler day fitted. The day's sheet says under its figure that
   a normal and a season are no forecast. A card whose ranking the season's terms

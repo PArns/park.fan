@@ -124,6 +124,12 @@ Covered rides: where a visitor can go when the nowcast says rain is coming. The 
 - `STORM_CHIP_CLASS` _const_: A storm code as a chip: the season's tint and ink.
 - Types: `DaySignal`, `StormSignal`
 
+### [`day-weather.ts`](../../lib/utils/day-weather.ts)
+
+- `isClimateNormal` _function_: Whether a day's weather is the date's average over past years rather than its forecast.
+- `weatherRuns` _function_: The cells a row of days draws. Past the forecast the average over past years changes by a degree in weeks, so a row of seven „Ø 8°–12°“ says one thing seven times: consecutive days of averages share one cell, labelled with their envelope.
+- Types: `DayWeatherData`, `ClimateSpreadData`, `WeatherRun`
+
 ### [`distance-utils.ts`](../../lib/utils/distance-utils.ts)
 
 - `calculateDistance` _function_: Great-circle (haversine) distance between two GPS coordinates, in metres.

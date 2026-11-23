@@ -23,6 +23,7 @@ import type {
   TripCrowdLevel,
   TripLeg,
   TripParkDay,
+  TripDayWeather,
   TripRegion,
   TripRegionGroup,
   TripRegionPark,
@@ -234,15 +235,9 @@ export function rankGroupParks(
     .map(({ park, day: d }) => ({ park, day: d }));
 }
 
-/**
- * A park's quietest day among some days, the star on its tile: the lowest figure the tile prints
- * (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then
- * to the earlier date. The API rounds `headlinerWait` to 5 min, so a tie on it alone is common; a
- * park with an open day always gets its one star, and the star never sits on a higher printed
- * figure than another day's. Never a last-year day, which is never offered as a pick.
- */
-export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
-  const [first] = days
+/** A park's rankable days among some days, quietest first, by {@link quietestDay}'s order. */
+function rankedDays(days: readonly TripCalendarDay[], slug: string) {
+  return days
     .flatMap((d) => {
       const park = d.parks[slug];
       return isRankable(park) && park.basis !== 'last_year' ? [{ date: d.date, park }] : [];
@@ -254,7 +249,105 @@ export function quietestDay(days: readonly TripCalendarDay[], slug: string): str
         dayGuestMinutes(b.park) - dayGuestMinutes(a.park) ||
         a.date.localeCompare(b.date)
     );
-  return first?.date ?? null;
+}
+
+/**
+ * A park's quietest day among some days, the star on its tile: the lowest figure the tile prints
+ * (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then
+ * to the earlier date. The API rounds `headlinerWait` to 5 min, so a tie on it alone is common; a
+ * park with an open day always gets its one star, and the star never sits on a higher printed
+ * figure than another day's. Never a last-year day, which is never offered as a pick.
+ */
+export function quietestDay(days: readonly TripCalendarDay[], slug: string): string | null {
+  return rankedDays(days, slug)[0]?.date ?? null;
+}
+
+/** A park's day of a week in the hub: the one the visitor picked, or else its suggested day. */
+export interface HubWeekMark {
+  date: string;
+  picked: boolean;
+}
+
+/**
+ * The other parks of a week with a pick, spread over the free days: as many parks as there are
+ * free days each get a day of their own, and among those spreads the one whose days lie the least
+ * above each park's quietest free day, in printed minutes (a tie to the park's own order of its
+ * days). A park left over, with more parks than free days, gets its quietest free day all the same.
+ * Exact, by the days left free as a bit mask: seven days are 128 masks, whatever the park count.
+ */
+function spreadParks(free: readonly TripCalendarDay[], slugs: readonly string[]) {
+  const options = slugs.map((slug) => {
+    const ranked = rankedDays(free, slug);
+    const best = ranked.length > 0 ? shownWait(ranked[0].park)! : 0;
+    return ranked.map((entry, rank) => ({
+      day: free.findIndex((d) => d.date === entry.date),
+      cost: (shownWait(entry.park)! - best) * 100 + rank,
+    }));
+  });
+  const masks = 1 << free.length;
+  // From park `i` on with the days in `mask` taken: the most parks placed, then the least cost.
+  const memo = new Map<number, { placed: number; cost: number; day: number }>();
+  const solve = (i: number, mask: number): { placed: number; cost: number; day: number } => {
+    if (i === slugs.length) return { placed: 0, cost: 0, day: -1 };
+    const key = i * masks + mask;
+    const known = memo.get(key);
+    if (known) return known;
+    const skip = solve(i + 1, mask);
+    let best = { placed: skip.placed, cost: skip.cost, day: -1 };
+    for (const { day, cost } of options[i]) {
+      if (mask & (1 << day)) continue;
+      const rest = solve(i + 1, mask | (1 << day));
+      const placed = rest.placed + 1;
+      const total = rest.cost + cost;
+      if (placed > best.placed || (placed === best.placed && total < best.cost)) {
+        best = { placed, cost: total, day };
+      }
+    }
+    memo.set(key, best);
+    return best;
+  };
+  const days = new Map<string, string>();
+  let mask = 0;
+  slugs.forEach((slug, i) => {
+    const { day } = solve(i, mask);
+    if (day < 0) return;
+    days.set(slug, free[day].date);
+    mask |= 1 << day;
+  });
+  return days;
+}
+
+/**
+ * Each park's mark for each week around the visitor's picks (`picks`, date → park), by its slug.
+ * A week without a pick: every park's quietest day ({@link quietestDay}), the stars as they were.
+ * A week with one: the parks picked keep their day, and the others are spread over the dates no
+ * park is picked on, one park a day where the days suffice ({@link spreadParks}), so a day planned
+ * for one park moves the others to days of their own. A park in `skip` (ticked off as visited)
+ * claims no day and keeps its quietest free one. `null` for a week without either.
+ */
+export function weekMarks(
+  days: readonly TripCalendarDay[],
+  weeks: readonly HubWeek[],
+  slugs: readonly string[],
+  picks: Readonly<Record<string, string>>,
+  skip: ReadonlySet<string> = new Set()
+): Map<string, (HubWeekMark | null)[]> {
+  const marks = new Map<string, (HubWeekMark | null)[]>(slugs.map((slug) => [slug, []]));
+  for (const week of weeks) {
+    const own = days.slice(week.start, week.start + week.length);
+    const free = own.filter((d) => !picks[d.date]);
+    const planned = free.length < own.length;
+    const open = slugs.filter(
+      (slug) => !skip.has(slug) && !own.some((d) => picks[d.date] === slug)
+    );
+    const spread = planned ? spreadParks(free, open) : new Map<string, string>();
+    for (const slug of slugs) {
+      const picked = own.find((d) => picks[d.date] === slug);
+      const date = picked?.date ?? spread.get(slug) ?? quietestDay(free, slug);
+      marks.get(slug)!.push(date ? { date, picked: Boolean(picked) } : null);
+    }
+  }
+  return marks;
 }
 
 /** A resort's pick on a day, as the hub names it. */
@@ -902,6 +995,46 @@ const HUB_PARK_DAY_FIELDS = [
   'dayGuestCloseAt',
 ] as const satisfies readonly (keyof TripParkDay)[];
 
+/** What the hub's resort rows draw of a day's weather (`DayWeather`). */
+const HUB_WEATHER_FIELDS = [
+  'basis',
+  'icon',
+  'tempMin',
+  'tempMax',
+  'tempMaxP25',
+  'tempMaxP75',
+] as const satisfies readonly (keyof TripDayWeather)[];
+
+/** What an average over past years draws of those: no cell shows its icon or its low. */
+const HUB_NORMAL_FIELDS = [
+  'basis',
+  'tempMax',
+  'tempMaxP25',
+  'tempMaxP75',
+] as const satisfies readonly (keyof TripDayWeather)[];
+
+/**
+ * Whether a group's parks show their weather each on its own: day trips of several parks, which lie
+ * apart (Knott's, Six Flags Magic Mountain inland, SeaWorld San Diego). A resort is one place, and
+ * so is a day trip of one park: their heading carries one weather for all.
+ */
+export function splitsWeather(group: RegionGroup): boolean {
+  return group.kind === 'day_trip' && group.parks.length > 1;
+}
+
+/**
+ * The parks whose weather the hub's calendar draws: a resort's first, which stands for the resort's
+ * place, and every park of the day trips, which lie apart (Knott's in Buena Park, SeaWorld in San
+ * Diego, Six Flags Magic Mountain inland). `sliceCalendar` keeps the weather of these alone.
+ */
+export function weatherParks(region: TripRegion): ReadonlySet<string> {
+  return new Set(
+    regionGroups(region).flatMap((group) =>
+      splitsWeather(group) ? group.parks.map((p) => p.slug) : [group.parks[0].slug]
+    )
+  );
+}
+
 /** What the hub's calendar reads of a day besides its parks. */
 const HUB_DAY_FIELDS = [
   'date',
@@ -917,7 +1050,11 @@ const HUB_DAY_FIELDS = [
  * as the hub's client part draws it: everything it passes is in the page's RSC payload, a park's
  * day per tile (docs/rules/the-page-render-is-the-bigger-half-of-the-api-budget-and-it.md).
  */
-export function sliceCalendar(calendar: TripCalendar, days: TripCalendarDay[]): TripCalendar {
+export function sliceCalendar(
+  calendar: TripCalendar,
+  days: TripCalendarDay[],
+  weatherParks: ReadonlySet<string> = new Set()
+): TripCalendar {
   const from = days[0]?.date ?? calendar.meta.from;
   const to = days[days.length - 1]?.date ?? calendar.meta.to;
   return {
@@ -926,7 +1063,19 @@ export function sliceCalendar(calendar: TripCalendar, days: TripCalendarDay[]): 
     days: days.map((day) => ({
       ...picked(day, HUB_DAY_FIELDS),
       parks: Object.fromEntries(
-        Object.entries(day.parks).map(([slug, park]) => [slug, picked(park, HUB_PARK_DAY_FIELDS)])
+        Object.entries(day.parks).map(([slug, park]) => [
+          slug,
+          {
+            ...picked(park, HUB_PARK_DAY_FIELDS),
+            ...(park.weather &&
+              weatherParks.has(slug) && {
+                weather: picked(
+                  park.weather,
+                  park.weather.basis === 'climate_normal' ? HUB_NORMAL_FIELDS : HUB_WEATHER_FIELDS
+                ),
+              }),
+          },
+        ])
       ),
     })),
     seasons: calendar.seasons.filter((s) => s.endDate >= from && s.startDate <= to),

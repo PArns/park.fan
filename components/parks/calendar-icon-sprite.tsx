@@ -1,20 +1,24 @@
 'use client';
 
 import { createContext, useContext, type ComponentProps, type ReactNode } from 'react';
-import { Star, type LucideIcon } from 'lucide-react';
+import { Check, Star, type LucideIcon } from 'lucide-react';
 import type { ParkSeasonKind } from '@/lib/api/types';
 import { knownSeasonKind, SEASON_KIND_ICON, seasonIconClass } from './season-kind-icon';
 
-/** The icons a crowd calendar draws on hundreds of tiles: the star and every season kind's. */
+/**
+ * The icons a crowd calendar draws on hundreds of tiles: the star, the hub's tick on a picked day and
+ * every season kind's.
+ */
 const SPRITE_ICONS: Record<string, LucideIcon> = {
   star: Star,
+  check: Check,
   ...Object.fromEntries(
     Object.entries(SEASON_KIND_ICON).map(([kind, { icon }]) => [`season-${kind}`, icon])
   ),
 };
 
 /** A name in {@link CalendarIconSprite}. */
-export type CalendarIconName = 'star' | `season-${ParkSeasonKind}`;
+export type CalendarIconName = 'star' | 'check' | `season-${ParkSeasonKind}`;
 
 const spriteId = (name: CalendarIconName) => `calendar-icon-${name}`;
 

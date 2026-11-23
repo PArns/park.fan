@@ -25,13 +25,18 @@ import { parkCalendarPath, type ParkCalendarMonth } from '@/lib/parks/calendar-s
 import { calendarGridReservation } from '@/lib/parks/calendar-grid-geometry';
 import { ParkCalendarLegend } from '@/components/parks/park-calendar-legend';
 import { dayComparisonStore } from '@/lib/parks/day-comparison-store';
-import { seasonKindsIn, type SeasonDays } from '@/lib/parks/park-season-days';
+import { quietSeasonRuns, seasonKindsIn, type SeasonDays } from '@/lib/parks/park-season-days';
+import { formatParkDayRange } from '@/lib/utils/park-day';
+import { CalendarSeasonIcon } from '@/components/parks/calendar-icon-sprite';
+import { SEASON_ICON_QUIET_CLASS } from '@/components/parks/season-kind-icon';
 import type { ParkWithAttractions } from '@/lib/api/types';
 import { parkArgs } from '@/lib/i18n/park-phrase';
 import { worksPeriodsOf } from '@/lib/utils/works-period';
 import { trackSiteEvent } from '@/lib/analytics/site-analytics';
 import type { Locale } from '@/i18n/config';
 
+/** A season's dates above the grid, „1.–31. Dez.“. */
+const SHORT_DAY: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'short' };
 /**
  * `ParkCalendarGrid` is `ssr: false`: it formats every cell against the browser clock and picks its
  * layout from the live viewport. The loading box is the grid's own height from
@@ -96,6 +101,7 @@ export function ParkCalendarPanel({
   // The month the grid will draw — on the hub that is today's, which is what it opens on.
   const reservation = calendarGridReservation(month ?? currentMonth);
   const seasonKinds = useMemo(() => (seasonDays ? seasonKindsIn(seasonDays) : []), [seasonDays]);
+  const quietSeasons = useMemo(() => (seasonDays ? quietSeasonRuns(seasonDays) : []), [seasonDays]);
   /**
    * The URL for a month, and the hub's URL for the current month: `/wartezeiten-kalender` and
    * `/wartezeiten-kalender/2026/8` render the same grid in August, and the app should not mint the
@@ -210,7 +216,28 @@ export function ParkCalendarPanel({
         <ParkCalendarLegend
           showWorks={(park.attractions ?? []).some((ride) => worksPeriodsOf(ride).length > 0)}
           seasonKinds={seasonKinds}
+          showBestKey
+          showClimateKey
+          showLocalTimes
         />
+
+        {/* The month's quiet seasons by name, once, with their dates: their tiles keep only the
+            icon (`CalendarDayTile`). Server-rendered with the legend, from the same season days. */}
+        {quietSeasons.length > 0 && (
+          <ul className="text-muted-foreground -mt-1 flex flex-wrap gap-x-4 gap-y-1 text-[11px]">
+            {quietSeasons.map(({ season, from, to }) => (
+              <li key={season.id} className="flex min-w-0 items-center gap-1">
+                <CalendarSeasonIcon
+                  kind={season.kind}
+                  className={cn('size-3 shrink-0', SEASON_ICON_QUIET_CLASS)}
+                />
+                <span className="truncate">
+                  {season.name} · {formatParkDayRange(locale, from, to, SHORT_DAY)}
+                </span>
+              </li>
+            ))}
+          </ul>
+        )}
 
         {/* The reservation travels as three custom properties, not classes, because Tailwind cannot
             see a computed class name. Set on the month the grid will show, which on the hub is the

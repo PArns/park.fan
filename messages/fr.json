@@ -430,14 +430,16 @@
       "allDone": "Les {count} parcs sont visités. Pour une deuxième visite :",
       "toggle": "{park} : déjà visité",
       "tick": "Marquer {park} comme visité",
-      "untick": "Retirer {park} des parcs visités"
+      "untick": "Retirer {park} des parcs visités",
+      "column": "Déjà visité ?"
     },
     "legend": {
       "minutes": "Attente de pointe aux grandes attractions, en minutes",
       "quietest": "jour le plus calme de la semaine dans ce parc",
       "early": "ferme plus tôt pour les visiteurs du jour",
       "howTo": "Comment lire ceci",
-      "colour": "Couleur : le jour comparé à un jour ordinaire de ce parc"
+      "colour": "Couleur : le jour comparé à un jour ordinaire de ce parc",
+      "picked": "prévu par toi"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -468,7 +470,16 @@
       "stateOpen": "Ouvert, pas de prévision",
       "cellNoHours": "horaires pas encore publiés",
       "sourcesTravel": "Trajets : {attribution}",
-      "titleMonth": "Jour par jour en {month}"
+      "titleMonth": "Jour par jour en {month}",
+      "picked": "prévu par toi",
+      "quietestFree": "jour libre suggéré",
+      "cellTaken": "déjà prévu pour {park}",
+      "pickHint": "Choisis un jour pour un parc pour le prévoir. Les autres parcs reçoivent alors chacun leur propre jour libre, le plus calme possible.",
+      "picksCount": "{count, plural, one {# jour prévu} other {# jours prévus}}",
+      "picksNote": "Les étoiles donnent à chaque autre parc son propre jour libre, le plus calme possible.",
+      "picksReset": "Effacer le choix",
+      "pickedAnnounce": "{park} prévu le {date}",
+      "unpickedAnnounce": "{park} n’est plus prévu le {date}"
     },
     "lanes": {
       "expected": "dates attendues",
@@ -867,7 +878,7 @@
     "calendarLegend": "Légende",
     "calendarLegendGroups": {
       "crowd": "Affluence",
-      "signals": "Signaux"
+      "signals": "Vacances & jours fériés"
     },
     "eventTypesLabel": "Types d’événements",
     "crowdLevelsLabel": "Niveaux d’affluence",
@@ -875,6 +886,10 @@
     "specialDaysLabel": "Jours spéciaux",
     "schoolVacation": "Vacances scolaires",
     "bestDay": "Recommandé",
+    "calendarMarks": {
+      "quietestOfWeek": "jour le plus calme de la semaine",
+      "localTimes": "Horaires à l’heure locale du parc"
+    },
     "bridgeDay": "Pont",
     "holiday": "Jours fériés",
     "eventTypes": {
@@ -6579,5 +6594,17 @@
       "export": "Télécharger les données",
       "failed": "Le téléchargement n’a pas fonctionné. Veuillez réessayer."
     }
+  },
+  "dayWeather": {
+    "normal": "Moyenne des années passées pour cette date, pas une prévision",
+    "keyNoPeriod": "Ø moyenne des années passées, pas une prévision",
+    "detailTitle": "Météo en moyenne",
+    "typicalHigh": "En journée, en général <range></range>",
+    "typicalLow": "la nuit, en général <range></range>",
+    "wetDays": "{count, plural, =0 {rarement de pluie} =1 {pluie 1 jour sur 10} other {pluie # jours sur 10}}",
+    "detailNote": "Moyenne {period} pour cette date ; la moitié de ces jours se situait dans cette fourchette. Les prévisions portent sur 16 jours environ.",
+    "keyForecast": "Prévision",
+    "normalSpan": "Moyenne des années passées pour ces {count} jours, pas une prévision",
+    "rowLabel": "Météo à {park}"
   }
 }

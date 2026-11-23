@@ -998,7 +998,15 @@ export const EVENT_INFO: Record<SiteEventName, EventInfo> = {
   },
   trip_hub_day_opened: {
     label: 'Hub-Kalender: Tag geöffnet',
-    when: 'Ein Tag im Hub-Kalender öffnet sein Tagesblatt, aus der Tabelle (table, ab lg) oder der Woche auf dem Handy (phone); nie welcher Tag. Hub oder Monat sagt die Seitenart.',
+    when: 'Ein Datum im Hub-Kalender öffnet sein Tagesblatt, aus dem Kopf der Tabelle (table, ab lg) oder der Datumszeile auf dem Handy (phone); nie welcher Tag. Hub oder Monat sagt die Seitenart. Eine Park-Kachel plant seit PAR-1411 den Tag ein (trip_hub_day_picked).',
+  },
+  trip_hub_day_picked: {
+    label: 'Hub-Kalender: Tag eingeplant',
+    when: 'Eine Park-Kachel im Hub-Kalender gedrückt: der Park ist an dem Tag eingeplant (picked true) oder die Wahl zurückgenommen (false), aus der Tabelle (table, ab lg) oder der Woche auf dem Handy (phone); nie welcher Park oder Tag. Die Sterne der anderen Parks rücken auf ihren ruhigsten freien Tag.',
+  },
+  trip_hub_picks_cleared: {
+    label: 'Hub-Kalender: Auswahl zurückgesetzt',
+    when: '„Auswahl zurücksetzen“ über dem Hub-Kalender: alle eingeplanten Tage der Region entfernt.',
   },
   trip_hub_week_paged: {
     label: 'Hub-Kalender: Woche gewechselt',
