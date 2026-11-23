@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import type { SeasonEventKind } from '@/lib/parks/park-season-days';
 import { cn } from '@/lib/utils';
+import { TILE_BEST_RING, TILE_PICKED_RING } from './calendar-tile-marks';
 import {
   CROWD_TEXT_CLASS,
   CROWD_TILE_CLASS,
@@ -43,8 +44,16 @@ export interface CalendarDayTileProps extends Omit<ComponentProps<'div'>, 'onSel
   wait: number | null;
   /** The level in words, or why there is none. */
   status: string;
-  /** The star and its name: the park calendar's recommended day, the hub's quietest of a week. */
+  /**
+   * The star and its name, with the accent ring (`TILE_BEST_RING`): the quietest day of a week, in
+   * the park calendar's rows and the hub's parks alike.
+   */
   best?: string | null;
+  /**
+   * The tick and its name, in the star's place, with the stronger ring (`TILE_PICKED_RING`): the
+   * hub's day the visitor picked for the park. A picked day carries no star.
+   */
+  picked?: string | null;
   seasons?: readonly TileSeasonMark[];
   /** The bar along the top edge, one segment per signal (holidays, school breaks). */
   signals?: readonly { key: string; className: string }[];
@@ -75,6 +84,7 @@ export function CalendarDayTile({
   wait,
   status,
   best,
+  picked = null,
   seasons = [],
   signals = [],
   chips,
@@ -92,6 +102,16 @@ export function CalendarDayTile({
   const isToday = density === 'full' && !!date?.today;
   const tint = level ? CROWD_TILE_CLASS[level] : 'bg-muted/25 border-border/60';
   const pressable = onSelect && 'calendar-tile-press focus-visible:ring-primary';
+  // The mark's ring, drawn here so every calendar rings a tile alike; a day picked for the
+  // comparison wears that ring instead, since two rings on one box are one box-shadow.
+  const markRing =
+    selectionIndex !== null
+      ? null
+      : picked
+        ? TILE_PICKED_RING
+        : best && !closed
+          ? TILE_BEST_RING
+          : null;
   const selectable = onSelect
     ? {
         role: 'button' as const,
@@ -109,16 +129,26 @@ export function CalendarDayTile({
   if (density === 'mini') {
     return (
       <div
-        className={cn('calendar-tile-mini', tint, pressable, className)}
+        className={cn('calendar-tile-mini', tint, markRing, pressable, className)}
         {...selectable}
         {...props}
       >
-        {best && !closed && (
-          <CalendarIcon
-            name="star"
+        {picked ? (
+          <span
             aria-hidden
-            className="absolute top-0.5 left-0.5 size-2.5 fill-current"
-          />
+            className="bg-primary text-primary-foreground absolute top-0.5 left-0.5 flex size-3.5 items-center justify-center rounded-full"
+          >
+            <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
+          </span>
+        ) : (
+          best &&
+          !closed && (
+            <CalendarIcon
+              name="star"
+              aria-hidden
+              className="text-primary absolute top-0.5 left-0.5 size-2.5 fill-current"
+            />
+          )
         )}
         <span className={cn('calendar-tile-mini-wait', closed ? 'text-status-closed' : ink)}>
           {closed || wait === null ? '–' : wait}
@@ -128,7 +158,9 @@ export function CalendarDayTile({
     );
   }
 
-  // At full size from `lg` the season's name has a line of its own, which carries the icon instead.
+  const named = seasons.filter((mark) => !mark.quiet);
+  // At full size from `lg` a season that stands out has a line of its own, which carries its icon
+  // instead; a quiet one keeps the icon here, its name is above the grid.
   const marks = seasons.map((mark) => (
     <span
       key={mark.kind}
@@ -137,9 +169,8 @@ export function CalendarDayTile({
       title={mark.label}
       data-calendar-season={mark.kind}
       className={cn(
-        compact
-          ? 'inline-flex shrink-0 items-center'
-          : 'inline-flex shrink-0 items-center lg:hidden',
+        'inline-flex shrink-0 items-center',
+        !compact && !mark.quiet && 'lg:hidden',
         !mark.quiet && SEASON_CHIP_CLASS
       )}
     >
@@ -160,6 +191,7 @@ export function CalendarDayTile({
       className={cn(
         compact ? 'calendar-tile-compact' : 'calendar-tile-full',
         tint,
+        markRing,
         isToday && 'border-primary border-2',
         // The picked state is a ring, not a border colour: the crowd tile and „heute" already own
         // the border, and a ring outside the box keeps the day's crowd level readable.
@@ -238,19 +270,31 @@ export function CalendarDayTile({
           closed ? 'text-status-closed' : ink
         )}
       >
-        {best && !closed && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <CalendarIcon
-                name="star"
-                className="h-3 w-3 shrink-0 fill-current"
-                aria-label={best}
-              />
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>{best}</p>
-            </TooltipContent>
-          </Tooltip>
+        {picked ? (
+          <span
+            role="img"
+            aria-label={picked}
+            title={picked}
+            className="bg-primary text-primary-foreground flex size-3.5 shrink-0 items-center justify-center rounded-full"
+          >
+            <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
+          </span>
+        ) : (
+          best &&
+          !closed && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <CalendarIcon
+                  name="star"
+                  className="text-primary h-3 w-3 shrink-0 fill-current"
+                  aria-label={best}
+                />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{best}</p>
+              </TooltipContent>
+            </Tooltip>
+          )
         )}
         {/* The season's kind, beside the star: a chip on the page's own surface like the works one,
             or, for a season most of the window runs in or one only expected, the bare icon in the
@@ -263,11 +307,11 @@ export function CalendarDayTile({
 
       {/* The season by name, where the week grid's tile has the height for a line between the
           crowd level and the floor; the two-column list below `lg` and the compact tile keep the
-          icon alone. Quiet like the icon: a month of Wintertraum is a month of this line, in the
-          floor's grey. */}
-      {!compact && seasons.length > 0 && (
+          icon alone. Only a season that stands out: a quiet one (most of the month, or only
+          expected) is named once above the grid (`quietSeasonRuns`), not on thirty tiles. */}
+      {!compact && named.length > 0 && (
         <div className="mt-1.5 hidden min-w-0 flex-col items-start gap-0.5 text-[10.5px] lg:flex">
-          {seasons.map((mark) => (
+          {named.map((mark) => (
             <span
               key={mark.kind}
               data-calendar-season-name={mark.kind}

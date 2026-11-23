@@ -16,6 +16,7 @@ import {
 import { Info } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCalendarData } from '@/lib/hooks/use-calendar-data';
+import { cn } from '@/lib/utils';
 import { useLocationHash } from '@/lib/hooks/use-location-hash';
 import { extremeCandidates, rankOf } from '@/lib/parks/calendar-month-summary';
 import type { CalendarDay } from '@/lib/api/types';
@@ -302,44 +303,31 @@ export function ParkCalendarGrid({
   );
 
   /**
-   * How far below the month's median a day must rank before it gets a star, in `rankOf` units (1.0
-   * is one crowd bucket). Half a bucket: below that the badge marks noise, and a month of `low`
-   * days that differ by five minutes of queue would have half of itself recommended.
-   */
-  const BEST_DAY_MARGIN = 0.5;
-
-  /**
-   * The days that get the „Empfohlen" star: the ones that stand out, not the ones that tie. The
-   * same ranking as `summarizeCalendarMonth`, from the same `rankOf` (crowd bucket, headliner wait
-   * as the tie-break, since the API sends no `crowdScore`), so the grid and the summary above it
-   * never disagree.
-   *
-   * A day has to beat the median by `BEST_DAY_MARGIN`, not merely beat it: on a flat month the
-   * lowest bucket is the whole month, and a recommendation that applies to most of it recommends
-   * nothing. "Below the median" already caps the count at half the month.
+   * The days that get the star and the accent ring: each week row's quietest open day, by the same
+   * `rankOf` as `summarizeCalendarMonth` (crowd bucket, headliner wait as the tie-break, since the
+   * API sends no `crowdScore`), a tie to the earlier date. The trip hub's rule (`quietestDay`), so a
+   * star means the same in both calendars: one per week, where a trip is decided, and not every day
+   * below the month's median, which on a quiet month starred half of it and repeated the level's
+   * word. The candidates are the summary sentence's (`extremeCandidates`): no day already past in
+   * the current month.
    */
   const bestDayDates = useMemo(() => {
-    // The same candidate set the summary sentence uses, `extremeCandidates`, so both medians are
-    // taken over the same days. A quiet Whit Monday is still the month's quietest day.
     const all = Array.from(calendarMap.values()) as CalendarDay[];
     const lastDate = all.reduce((acc, d) => (d.date > acc ? d.date : acc), all[0]?.date ?? '');
     const monthIsPast = !!lastDate && lastDate < todayStr;
-    const ranked = extremeCandidates(all, todayStr, monthIsPast).map((d) => ({
-      date: d.date,
-      rank: rankOf(
+    const best = new Map<string, { date: string; rank: number }>();
+    for (const d of extremeCandidates(all, todayStr, monthIsPast)) {
+      const week = format(startOfWeek(parseISO(d.date), { weekStartsOn: 1 }), 'yyyy-MM-dd');
+      const rank = rankOf(
         d,
         CROWD_LEVEL_ORDER.indexOf(d.crowdLevel as (typeof CROWD_LEVEL_ORDER)[number])
-      ),
-    }));
-    if (ranked.length < 4) return new Set<string>();
-
-    const sorted = ranked.map((d) => d.rank).sort((a, b) => a - b);
-    const mid = Math.floor(sorted.length / 2);
-    const median = sorted.length % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid];
-
-    return new Set<string>(
-      ranked.filter((d) => d.rank <= median - BEST_DAY_MARGIN).map((d) => d.date)
-    );
+      );
+      const held = best.get(week);
+      if (!held || rank < held.rank || (rank === held.rank && d.date < held.date)) {
+        best.set(week, { date: d.date, rank });
+      }
+    }
+    return new Set([...best.values()].map((b) => b.date));
   }, [calendarMap, todayStr]);
 
   return (
@@ -416,7 +404,14 @@ export function ParkCalendarGrid({
             <div className="inline-block min-w-full">
               <div className="mb-2 hidden grid-cols-7 gap-2 lg:grid">
                 {weekdayHeaders.map((header, idx) => (
-                  <div key={idx} className="text-muted-foreground text-center text-sm font-medium">
+                  <div
+                    key={idx}
+                    className={cn(
+                      'text-muted-foreground rounded-md text-center text-sm font-medium',
+                      // Saturday and Sunday, as the hub tints them: the weeks start on Monday.
+                      idx >= 5 && 'bg-muted/40'
+                    )}
+                  >
                     {header}
                   </div>
                 ))}

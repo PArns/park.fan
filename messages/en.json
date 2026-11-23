@@ -439,7 +439,8 @@
       "quietest": "quietest day of the week at that park",
       "early": "closes early for day guests",
       "howTo": "How to read this",
-      "colour": "Colour: the day against a normal day at that park"
+      "colour": "Colour: the day against a normal day at that park",
+      "picked": "planned by you"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -470,7 +471,16 @@
       "stateOpen": "Open, no forecast",
       "cellNoHours": "hours not published yet",
       "sourcesTravel": "Travel times: {attribution}",
-      "titleMonth": "Day by day in {month}"
+      "titleMonth": "Day by day in {month}",
+      "picked": "planned by you",
+      "quietestFree": "suggested free day",
+      "cellTaken": "already planned for {park}",
+      "pickHint": "Pick a day at a park to plan it. The other parks then each get a free day of their own, as quiet as possible.",
+      "picksCount": "{count, plural, one {# day planned} other {# days planned}}",
+      "picksNote": "The stars give every other park a free day of its own, as quiet as possible.",
+      "picksReset": "Clear picks",
+      "pickedAnnounce": "{park} planned for {date}",
+      "unpickedAnnounce": "{park} no longer planned for {date}"
     },
     "lanes": {
       "expected": "dates expected",
@@ -877,6 +887,10 @@
     "specialDaysLabel": "Special Days",
     "schoolVacation": "School Vacation",
     "bestDay": "Recommended",
+    "calendarMarks": {
+      "quietestOfWeek": "quietest day of the week",
+      "localTimes": "Times in the park's local time"
+    },
     "bridgeDay": "Bridge Day",
     "holiday": "Holiday",
     "eventTypes": {

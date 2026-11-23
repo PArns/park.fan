@@ -525,10 +525,18 @@ export interface SiteEventMap {
   /** The hub calendar narrowed to one resort (its group key) or back to all; on a change only. */
   trip_hub_filter: TripEvent<{ resort: string }>;
   /**
-   * A day of the hub calendar opened in its sheet, from the table (from `lg`) or the phone's week.
-   * Which day is never sent; the hit's page type tells the hub from a month.
+   * A date of the hub calendar opened in its sheet, from the table's head (from `lg`) or the phone's
+   * row of dates. Which day is never sent; the hit's page type tells the hub from a month.
    */
   trip_hub_day_opened: TripEvent<{ layout: 'table' | 'phone' }>;
+  /**
+   * A park's tile of the hub calendar pressed, which plans the park on that day (`picked` true) or
+   * takes the pick back (false), from the table (from `lg`) or the phone's week. Which park and day
+   * are never sent.
+   */
+  trip_hub_day_picked: TripEvent<{ layout: 'table' | 'phone'; picked: boolean }>;
+  /** „Auswahl zurücksetzen“ above the hub calendar: every picked day of the region dropped. */
+  trip_hub_picks_cleared: TripEvent;
   /**
    * The hub calendar paged to another week: how, and the week now shown (1 is the window's first).
    * On a change only, so a press at either end counts nothing.

@@ -6,15 +6,23 @@
  * maps a level to a colour.
  */
 
+import { TILE_BEST_RING, TILE_PICKED_RING } from '@/components/parks/calendar-tile-marks';
+
 /** The legend's small tile: a fixed box with the minutes centred, in the tile's own tint. */
 export const HUB_CELL =
   'inline-flex items-center justify-center rounded-md border font-semibold tabular-nums leading-none';
 
+/** A park's quietest day of the week, beside the star: the tile's own ring, for the legend. */
+export const HUB_CELL_BEST = TILE_BEST_RING;
+
+/** A day the visitor picked for the park, beside the tick: the tile's own ring, for the legend. */
+export const HUB_CELL_PICKED = TILE_PICKED_RING;
+
 /**
- * A park's quietest day of the week, beside the star: a ring in the text colour inside the tile,
- * so it stands out on every crowd tint in both themes and the grid never shifts.
+ * Another park's tile on a day the visitor picked for a park: faded, so the column reads as taken
+ * and the stars that moved off it make sense. Still a button, which moves the pick to this park.
  */
-export const HUB_CELL_BEST = 'ring-foreground ring-2 ring-inset';
+export const HUB_CELL_TAKEN = 'opacity-45';
 
 /**
  * The early-close mark: a small folded corner, top right, where a ticketed evening sends the day

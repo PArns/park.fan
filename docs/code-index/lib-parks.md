@@ -140,10 +140,11 @@ Which two days of a park's calendar are being compared, across a change of month
 - `seasonsNeedDayStatus` _function_: Whether a month's day statuses decide anything: only a season in it without single dates, which skips the closed days, needs them. The calendar page waits for them only then.
 - `seasonDaysOfMonth` _function_: The event seasons of one month, per day, a season without single dates only on the `calendarDays` not `CLOSED`.
 - `seasonsInMonth` _function_: The seasons a month's days carry, each once, in the order they first appear.
+- `quietSeasonRuns` _function_: The month's quiet seasons (`quiet`: most of the month, or only expected), each once with its first and last date in the month, in the order they first appear.
 - `seasonKindsIn` _function_: The kinds a month's days show, in `SEASON_EVENT_KINDS` order: what its legend keys.
 - `seasonMarks` _function_: A day's seasons as the tile marks them: one icon per kind, in `SEASON_EVENT_KINDS` order, quiet only when every season of that kind is.
 - `SEASON_EVENT_KINDS` _const_: The season kinds a day marks: the events a visitor picks a day for.
-- Types: `SeasonEventKind`, `TodaySeason`, `SeasonsNearToday`, `SeasonOnDay`, `SeasonDays`
+- Types: `SeasonEventKind`, `TodaySeason`, `SeasonsNearToday`, `SeasonOnDay`, `SeasonDays`, `QuietSeasonRun`
 
 ### [`park-simulation.ts`](../../lib/parks/park-simulation.ts)
 

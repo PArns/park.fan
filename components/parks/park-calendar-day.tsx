@@ -17,15 +17,19 @@ import { roundWaitTo5 } from '@/lib/utils/wait-time';
 import type { ColoredCrowdLevel } from '@/lib/utils/crowd-level-styles';
 import { DAY_SIGNAL_CLASS } from '@/lib/utils/day-signal-styles';
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
-import { ParkTimeRange } from '@/components/common/park-time';
+import { formatHoursRange } from '@/lib/utils/intl-format';
 import { cn } from '@/lib/utils';
 
 /** Props of one crowd-calendar day cell. */
 export interface ParkCalendarDayProps {
   day: CalendarDay;
-  /** Park IANA timezone — opening hours render in park time (browser-time tooltip on hover). */
+  /** Park IANA timezone: opening hours print in park time (the legend says so once). */
   parkTimezone: string;
   isToday: boolean;
+  /**
+   * Whether the grid stars this day as its week's quietest (with the accent ring); without it the
+   * API's `recommendation` decides and the star says „Empfohlen“.
+   */
   isBest?: boolean;
   /**
    * Opens the day-detail panel for `day.date`; when set, the whole card is a button, which also
@@ -174,7 +178,9 @@ function ParkCalendarDayComponent({
       date={{ day: dayOfMonth, weekday: dayOfWeek, today: isToday }}
       wait={wait}
       status={statusLabel}
-      best={isBestDay ? t('bestDay') : null}
+      // The grid's star is its week's quietest day; the API's recommendation, read where no grid
+      // says (the demos), keeps its own word.
+      best={isBestDay ? t(isBest === undefined ? 'bestDay' : 'calendarMarks.quietestOfWeek') : null}
       seasons={marks.map((mark) => ({
         kind: mark.kind,
         quiet: mark.quiet,
@@ -227,12 +233,10 @@ function ParkCalendarDayComponent({
         day.status === 'OPERATING' &&
         day.hours && (
           <span className="flex items-center gap-1 tabular-nums">
-            <ParkTimeRange
-              openingTime={day.hours.openingTime}
-              closingTime={day.hours.closingTime}
-              parkTimezone={parkTimezone}
-              locale={locale}
-            />
+            {/* Plain park time, as the hub prints it: a dotted, hoverable time on thirty tiles was
+                noise, the legend says once whose clock it is, and the day's dialog keeps the
+                visitor's own time on hover. */}
+            {formatHoursRange(day.hours.openingTime, day.hours.closingTime, locale, parkTimezone)}
             {(day.isEstimated || day.hours.isInferred) && (
               <Tooltip>
                 <TooltipTrigger asChild>

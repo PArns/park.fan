@@ -1,9 +1,9 @@
 import { getTranslations } from 'next-intl/server';
-import { ChevronDown, Star } from 'lucide-react';
+import { Check, ChevronDown, Star } from 'lucide-react';
 import { CROWD_TILE_CLASS, CROWD_TEXT_CLASS } from '@/lib/utils/crowd-level-styles';
 import { cn } from '@/lib/utils';
 import { WeatherKey } from '@/components/common/day-weather';
-import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST } from './hub-cell-styles';
+import { EARLY_CLOSE_CORNER, HUB_CELL, HUB_CELL_BEST, HUB_CELL_PICKED } from './hub-cell-styles';
 
 /** The size a key's small tile is drawn at. */
 const SWATCH = 'h-6 w-8 text-[11px]';
@@ -20,7 +20,7 @@ function Key({ children, label }: { children: React.ReactNode; label: string }) 
 
 /**
  * How to read the calendar, at the top of its chapter. In view: the wait, the ring with the star
- * (each park's quietest day of the week), one line that says what the colour means (a day against the park's own normal day, the crowd
+ * (each park's quietest day of the week), the ring with the tick (a day the visitor picked), one line that says what the colour means (a day against the park's own normal day, the crowd
  * level and nothing else) and the weather's two tokens, forecast and average (`WeatherKey`). Under „So liest du den Kalender“ the rarer mark, the early close. A
  * tile says closed, the level and „Zeiten folgen" in words, so none of them needs a key; what the
  * figure is and how far the forecast reaches are the chapter's questions.
@@ -47,8 +47,28 @@ export async function HubLegend() {
               CROWD_TEXT_CLASS.low
             )}
           >
-            <Star aria-hidden className="size-2.5 fill-current" />
+            <Star aria-hidden className="text-primary size-2.5 fill-current" />
             35
+          </span>
+        </Key>
+        <Key label={t('picked')}>
+          <span
+            className={cn(
+              HUB_CELL,
+              SWATCH,
+              'gap-0.5',
+              HUB_CELL_PICKED,
+              CROWD_TILE_CLASS.low,
+              CROWD_TEXT_CLASS.low
+            )}
+          >
+            <span
+              aria-hidden
+              className="bg-primary text-primary-foreground flex size-3 items-center justify-center rounded-full"
+            >
+              <Check className="size-2" strokeWidth={3.5} />
+            </span>
+            45
           </span>
         </Key>
         <Key label={t('colour')}>

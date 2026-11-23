@@ -9,6 +9,7 @@ import {
   useMemo,
   useRef,
   useState,
+  useSyncExternalStore,
   type RefObject,
 } from 'react';
 import { useTranslations } from 'next-intl';
@@ -39,18 +40,20 @@ import {
   isRankable,
   isWeekend,
   parkWeekEvents,
-  quietestDay,
   regionGroups,
   shortGroupName,
   shortParkName,
   tintLevel,
   type EventLane,
   type HubWeek,
+  type HubWeekMark,
   type ParkWeekEvents,
   type RegionGroup,
   type WeekTrack,
   splitsWeather,
+  weekMarks,
 } from '@/lib/trip-regions/hub-data';
+import { hubPicks, pickHubDay, type HubPicks } from '@/lib/trip-regions/hub-picks';
 import { shownWait } from '@/lib/trip-regions/plan-week';
 import { stormCodeOn, stormSignal, type StormCode } from '@/lib/trip-regions/date-facts';
 import type { HubWeekPaging } from '@/lib/analytics/site-analytics';
@@ -65,7 +68,7 @@ import type {
 } from '@/lib/trip-regions/types';
 import {
   EARLY_CLOSE_CORNER,
-  HUB_CELL_BEST,
+  HUB_CELL_TAKEN,
   HUB_EVENT_BAR,
   HUB_EVENT_BAR_EXPECTED,
   HUB_WEEK_CELL,
@@ -74,7 +77,8 @@ import {
 } from './hub-cell-styles';
 import { clearTripPagePark, HubDaySheet } from './hub-day-sheet';
 import { startTripPlanner } from './hub-hero-action';
-import { VisitedDim, VisitedMark, VisitedRow, VisitedToggle } from './hub-visited';
+import { useVisitedParks, VisitedDim, VisitedMark, VisitedRow, VisitedToggle } from './hub-visited';
+import { HubPickLine } from './hub-pick-line';
 import { DayWeather, WeatherSpan } from '@/components/common/day-weather';
 import { weatherRuns } from '@/lib/utils/day-weather';
 
@@ -90,11 +94,33 @@ type HubTile = Pick<
 /** Each park's tiles, by its slug, one per day of the window. */
 type HubTiles = ReadonlyMap<string, readonly HubTile[]>;
 
-/** Each park's quietest day of each week (`quietestDay`), by its slug: a date or `null` per week. */
-type HubQuiet = ReadonlyMap<string, readonly (string | null)[]>;
+/**
+ * Each park's day of each week around the visitor's picks (`weekMarks`), by its slug: its picked
+ * day or its quietest free one, or `null`.
+ */
+type HubQuiet = ReadonlyMap<string, readonly (HubWeekMark | null)[]>;
 
 /** The days a park's ring and star stand on, as `<slug>:<date>`. */
 type HubStars = ReadonlySet<string>;
+
+/** How a park's tile stands to the visitor's picks: its own pick, another park's, or neither. */
+interface PickState {
+  picked: boolean;
+  /** The short name of the park picked on the date instead, if another one is. */
+  takenBy: string | null;
+}
+
+/** A tile's {@link PickState} from the picks and the parks' short names. */
+function pickStateOf(
+  picks: HubPicks,
+  names: ReadonlyMap<string, string>,
+  slug: string,
+  date: string
+): PickState {
+  const by = picks[date];
+  if (by === slug) return { picked: true, takenBy: null };
+  return { picked: false, takenBy: by ? (names.get(by) ?? null) : null };
+}
 
 /** Each park's events per week of the calendar (`parkWeekEvents`), by its slug. */
 type HubEvents = ReadonlyMap<string, readonly ParkWeekEvents[]>;
@@ -121,7 +147,9 @@ export interface HubCalendarProps {
  * (`CalendarDayTile`) per day with the holidays above, on a phone a 44 px tile per day under the
  * park's name. Every day of the window is in the served HTML; the week buttons and the fragment
  * (`#calendar-2026-11-21`) only change which seven a `data-week` shows, so paging asks nothing and
- * moves nothing below the grid. A tap on a day opens the day sheet.
+ * moves nothing below the grid. A press on a park's tile plans that park on that day (`hubPicks`):
+ * the tile gets the tick, the other parks' tiles of the date fade, and every other park's star moves
+ * to its quietest day still free (`weekMarks`). A press on a date opens the day sheet.
  */
 export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubCalendarProps) {
   const t = useTranslations('tripHub.calendar');
@@ -212,27 +240,86 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
     return to;
   };
 
+  const pickStore = hubPicks(region.slug);
+  const picks = useSyncExternalStore(
+    pickStore.subscribe,
+    pickStore.getSnapshot,
+    pickStore.getServerSnapshot
+  );
+  const names = useMemo(
+    () => new Map(region.parks.map((p) => [p.slug, shortParkName(p.name)])),
+    [region.parks]
+  );
+  // What a press changed, for a screen reader; the tiles say it to the eye.
+  const [announced, setAnnounced] = useState('');
+  const pick = useCallback(
+    (slug: string, date: string, layout: 'table' | 'phone') => {
+      const store = hubPicks(region.slug);
+      const own = weeks.find((w) => w.from <= date && date <= w.to);
+      const weekDates = own
+        ? days.slice(own.start, own.start + own.length).map((d) => d.date)
+        : [date];
+      const next = pickHubDay(store.getSnapshot(), slug, date, weekDates, todayIso);
+      store.set(next);
+      const picked = next[date] === slug;
+      trackTripEvent(region.slug, 'trip_hub_day_picked', { layout, picked });
+      setAnnounced(
+        t(picked ? 'pickedAnnounce' : 'unpickedAnnounce', {
+          park: names.get(slug) ?? slug,
+          date: formatHubDate(date, locale, 'long'),
+        })
+      );
+    },
+    [region.slug, weeks, days, todayIso, t, names, locale]
+  );
+  const pickFromPhone = useCallback(
+    (slug: string, date: string) => pick(slug, date, 'phone'),
+    [pick]
+  );
+  const pickFromTable = useCallback(
+    (slug: string, date: string) => pick(slug, date, 'table'),
+    [pick]
+  );
+  // Only the picks this window shows and of parks the region has count.
+  const pickedDays = useMemo(
+    () => days.filter((d) => names.has(picks[d.date] ?? '')).length,
+    [days, picks, names]
+  );
+
   const tileOf = useHubTile(locale, timezone);
   const tiles = useMemo<HubTiles>(
     () =>
       new Map(region.parks.map((park) => [park.slug, days.map((d) => tileOf(d.parks[park.slug]))])),
     [region.parks, days, tileOf]
   );
+  const visited = useVisitedParks(region.slug, todayIso);
   const quiet = useMemo<HubQuiet>(
     () =>
-      new Map(
-        region.parks.map((park) => [
-          park.slug,
-          weeks.map((w) => quietestDay(days.slice(w.start, w.start + w.length), park.slug)),
-        ])
+      weekMarks(
+        days,
+        weeks,
+        region.parks.map((p) => p.slug),
+        picks,
+        visited
       ),
-    [weeks, region.parks, days]
+    [weeks, region.parks, days, picks, visited]
+  );
+  // What a star means, per week: the park's quietest day, or in a week with a pick the free day
+  // the spread suggests for it.
+  const starWords = useMemo(
+    () =>
+      weeks.map((w) =>
+        days.slice(w.start, w.start + w.length).some((d) => picks[d.date])
+          ? t('quietestFree')
+          : t('quietest')
+      ),
+    [weeks, days, picks, t]
   );
   const stars = useMemo<HubStars>(
     () =>
       new Set(
-        [...quiet].flatMap(([slug, dates]) =>
-          dates.flatMap((date) => (date ? [`${slug}:${date}`] : []))
+        [...quiet].flatMap(([slug, marks]) =>
+          marks.flatMap((mark) => (mark && !mark.picked ? [`${slug}:${mark.date}`] : []))
         )
       ),
     [quiet]
@@ -293,6 +380,16 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
 
       {legend}
 
+      <HubPickLine
+        count={pickedDays}
+        announced={announced}
+        onReset={() => {
+          hubPicks(region.slug).set({});
+          trackTripEvent(region.slug, 'trip_hub_picks_cleared');
+          setAnnounced('');
+        }}
+      />
+
       {weeks.length > 1 && (
         <WeekNav weeks={weeks} week={week} locale={locale} onWeek={showWeek} navRef={navRef} />
       )}
@@ -309,11 +406,15 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           tiles={tiles}
           stars={stars}
           quiet={quiet}
+          picks={picks}
+          names={names}
+          starWords={starWords}
           week={shownWeek}
           todayIso={todayIso}
           locale={locale}
           timezone={timezone}
           onOpen={openFromPhone}
+          onPick={pickFromPhone}
         />
       </div>
 
@@ -328,12 +429,16 @@ export function HubCalendar({ region, calendar, todayIso, locale, legend }: HubC
           tiles={tiles}
           stars={stars}
           quiet={quiet}
+          picks={picks}
+          names={names}
+          starWords={starWords}
           weeks={weeks}
           week={shownWeek}
           todayIso={todayIso}
           locale={locale}
           timezone={timezone}
           onOpen={openFromTable}
+          onPick={pickFromTable}
         />
       </div>
 
@@ -508,10 +613,16 @@ function useCellLabel(locale: string, timezone: string, lanes: readonly EventLan
       parkName: string,
       date: string,
       day: TripParkDay | undefined,
-      quietest: boolean
+      star: string | null,
+      pick: PickState
     ) => {
       const when = formatHubDate(date, locale);
       if (day?.status === 'CLOSED') return t('cellClosed', { park: parkName, date: when });
+      const picked = pick.picked
+        ? [t('picked')]
+        : pick.takenBy
+          ? [t('cellTaken', { park: pick.takenBy })]
+          : [];
       const events = lanes
         .filter((lane) => lane.name && lane.byPark[slug]?.dates.includes(date))
         .sort((a, b) => Number(a.kind !== 'party') - Number(b.kind !== 'party'))
@@ -521,6 +632,7 @@ function useCellLabel(locale: string, timezone: string, lanes: readonly EventLan
           day?.status === 'OPERATING'
             ? t('cellOpen', { park: parkName, date: when })
             : t('cellUnknown', { park: parkName, date: when }),
+          ...picked,
           ...events,
         ].join(', ');
       }
@@ -537,7 +649,8 @@ function useCellLabel(locale: string, timezone: string, lanes: readonly EventLan
       if (day.status === 'OPERATING' && day.opensAt && close) {
         parts.push(formatHoursRange(day.opensAt, close, locale, timezone));
       }
-      if (quietest) parts.push(t('quietest'));
+      parts.push(...picked);
+      if (star) parts.push(star);
       if (closesEarly(day) && close) {
         parts.push(t('cellEarly', { time: formatClockTime(close, locale, timezone) }));
       }
@@ -559,48 +672,69 @@ function holidayNames(day: TripCalendarDay, locale: string): string {
 }
 
 /**
- * A park's quietest day of each week beside its name: the star, the date and the wait its tile
- * prints, one per week, so paging shows the week's. Nothing in a week without one (no open day
- * with a forecast).
+ * A park's day of each week beside its name, one per week, so paging shows the week's: the tick
+ * and the day the visitor picked for it, or the star and its quietest free day, each with the wait
+ * its tile prints. Nothing in a week without one (no open day with a forecast); a picked day
+ * without a forecast still names its date.
  */
 function QuietestNote({
   slug,
-  dates,
+  marks,
   days,
   locale,
+  starWords,
   className,
 }: {
   slug: string;
-  /** The park's quietest day per week (`HubQuiet`). */
-  dates: readonly (string | null)[];
+  /** The park's day per week (`HubQuiet`). */
+  marks: readonly (HubWeekMark | null)[];
   days: readonly TripCalendarDay[];
   locale: string;
+  /** What the star means, per week: the week's quietest day, or the free day suggested. */
+  starWords: readonly string[];
   className?: string;
 }) {
   const t = useTranslations('tripHub.calendar');
   const tCommon = useTranslations('common');
   return (
     <>
-      {dates.map((date, w) => {
-        const park = date ? days.find((d) => d.date === date)?.parks[slug] : undefined;
+      {marks.map((mark, w) => {
+        if (!mark) return null;
+        const park = days.find((d) => d.date === mark.date)?.parks[slug];
         const minutes = park ? shownWait(park) : null;
-        if (!date || minutes == null) return null;
+        if (!mark.picked && minutes == null) return null;
         return (
           <span
-            key={date}
+            key={mark.date}
             className={cn(
               HUB_WEEK_ITEM[w],
-              'text-foreground text-[11px] font-semibold whitespace-nowrap tabular-nums',
+              'text-foreground items-center text-[11px] font-semibold whitespace-nowrap tabular-nums',
               className
             )}
           >
-            <CalendarIcon
-              name="star"
-              role="img"
-              aria-label={t('quietest')}
-              className="mr-1 inline size-3 fill-current align-[-2px]"
-            />
-            {formatHubDate(date, locale, 'weekdayDay')} · {minutes} {tCommon('min')}
+            {mark.picked ? (
+              <span
+                role="img"
+                aria-label={t('picked')}
+                className="bg-primary text-primary-foreground mr-1 inline-flex size-3.5 items-center justify-center rounded-full align-[-3px]"
+              >
+                <CalendarIcon name="check" className="size-2.5" strokeWidth={3.5} />
+              </span>
+            ) : (
+              <CalendarIcon
+                name="star"
+                role="img"
+                aria-label={starWords[w]}
+                className="text-primary mr-1 inline size-3 fill-current align-[-2px]"
+              />
+            )}
+            {formatHubDate(mark.date, locale, 'weekdayDay')}
+            {minutes != null && (
+              <>
+                {' '}
+                · {minutes} {tCommon('min')}
+              </>
+            )}
           </span>
         );
       })}
@@ -653,12 +787,20 @@ interface PhoneGroupProps {
   tiles: HubTiles;
   stars: HubStars;
   quiet: HubQuiet;
+  /** The visitor's picks, date → park (`hubPicks`). */
+  picks: HubPicks;
+  /** Each park's short name by its slug, for the tile that says which park took its date. */
+  names: ReadonlyMap<string, string>;
+  /** What the star means, per week (`quietest` or `quietestFree`). */
+  starWords: readonly string[];
   lanes: readonly EventLane[];
   events: HubEvents;
   todayIso: string;
   locale: string;
   timezone: string;
   onOpen: (date: string) => void;
+  /** Plans the park on the date, or takes the pick back (`pickHubDay`). */
+  onPick: (slug: string, date: string) => void;
 }
 
 /** One resort's card of the phone's week; memoised, so a week press skips it. */
@@ -670,12 +812,16 @@ const PhoneGroup = memo(function PhoneGroup({
   tiles,
   stars,
   quiet,
+  picks,
+  names,
+  starWords,
   lanes,
   events,
   todayIso,
   locale,
   timezone,
   onOpen,
+  onPick,
 }: PhoneGroupProps) {
   const t = useTranslations('tripHub.calendar');
   const tClimate = useTranslations('tripPlanner.climate');
@@ -759,9 +905,10 @@ const PhoneGroup = memo(function PhoneGroup({
                 {!state && (
                   <QuietestNote
                     slug={park.slug}
-                    dates={quiet.get(park.slug) ?? []}
+                    marks={quiet.get(park.slug) ?? []}
                     days={days}
                     locale={locale}
+                    starWords={starWords}
                     className="shrink-0"
                   />
                 )}
@@ -778,21 +925,25 @@ const PhoneGroup = memo(function PhoneGroup({
                   <div className="mt-1 grid grid-cols-7 gap-1">
                     {days.map((day, index) => {
                       const star = stars.has(`${park.slug}:${day.date}`);
+                      const pick = pickStateOf(picks, names, park.slug, day.date);
+                      const tile = own[index];
                       return (
                         <div key={day.date} className={pageOf(index)}>
                           <CalendarDayTile
                             density="mini"
-                            {...own[index]}
-                            best={star ? t('quietest') : null}
-                            className={cn(star && HUB_CELL_BEST)}
-                            onSelect={() => onOpen(day.date)}
-                            aria-haspopup="dialog"
+                            {...tile}
+                            best={star ? starWords[Math.floor(index / HUB_WEEK_DAYS)] : null}
+                            picked={pick.picked ? t('picked') : null}
+                            className={cn(pick.takenBy && HUB_CELL_TAKEN)}
+                            onSelect={tile?.closed ? undefined : () => onPick(park.slug, day.date)}
+                            aria-pressed={tile?.closed ? undefined : pick.picked}
                             aria-label={label(
                               park.slug,
                               name,
                               day.date,
                               day.parks[park.slug],
-                              star
+                              star ? starWords[Math.floor(index / HUB_WEEK_DAYS)] : null,
+                              pick
                             )}
                           />
                         </div>
@@ -938,8 +1089,9 @@ interface Slot {
  * side and seven days across, each park's quietest day of the week ringed and starred and named
  * under the park (`QuietestNote`). Above the tiles each day's holidays; a park whose whole window
  * says one thing (closed for the season, no hours yet) is one line instead of tiles. One tab stop for the grid:
- * the arrows move between the week's tiles, Enter opens the day (`role="grid"` with a roving
- * `tabIndex`). Memoised, so the urgent render of a week press skips it.
+ * the arrows move between the week's tiles, Enter plans the park on the day (`role="grid"` with a
+ * roving `tabIndex`); the dates in the head open the day. Memoised, so the urgent render of a week
+ * press skips it.
  */
 const Matrix = memo(function Matrix({
   region,
@@ -951,12 +1103,16 @@ const Matrix = memo(function Matrix({
   tiles,
   stars,
   quiet,
+  picks,
+  names,
+  starWords,
   weeks,
   week,
   todayIso,
   locale,
   timezone,
   onOpen,
+  onPick,
 }: {
   /** The region's slug, whose ticked-off parks fade. */
   region: string;
@@ -968,12 +1124,19 @@ const Matrix = memo(function Matrix({
   tiles: HubTiles;
   stars: HubStars;
   quiet: HubQuiet;
+  /** The visitor's picks, date → park (`hubPicks`). */
+  picks: HubPicks;
+  /** Each park's short name by its slug. */
+  names: ReadonlyMap<string, string>;
+  /** What the star means, per week (`quietest` or `quietestFree`). */
+  starWords: readonly string[];
   weeks: readonly HubWeek[];
   week: number;
   todayIso: string;
   locale: string;
   timezone: string;
   onOpen: (date: string) => void;
+  onPick: (slug: string, date: string) => void;
 }) {
   const t = useTranslations('tripHub.calendar');
   const tRegion = useTranslations('tripRegion.hub.calendar');
@@ -1094,10 +1257,13 @@ const Matrix = memo(function Matrix({
                     tiles={tiles}
                     stars={stars}
                     quietest={quiet.get(park.slug) ?? []}
+                    picks={picks}
+                    names={names}
+                    starWords={starWords}
                     tabCol={tab.r === r ? tab.c : null}
                     label={label}
                     locale={locale}
-                    onOpen={onOpen}
+                    onPick={onPick}
                     onFocusCell={setFocus}
                   />
                   <ParkEventRows
@@ -1302,7 +1468,6 @@ const MatrixHead = memo(function MatrixHead({
             >
               <button
                 type="button"
-                tabIndex={-1}
                 onClick={() => onOpen(day.date)}
                 aria-label={[
                   t('openDay', { date: formatHubDate(day.date, locale, 'long') }),
@@ -1378,10 +1543,13 @@ const ParkRow = memo(function ParkRow({
   tiles,
   stars,
   quietest,
+  picks,
+  names,
+  starWords,
   tabCol,
   label,
   locale,
-  onOpen,
+  onPick,
   onFocusCell,
 }: {
   /** The region's slug, whose ticked-off parks fade. */
@@ -1394,13 +1562,16 @@ const ParkRow = memo(function ParkRow({
   slots: readonly Slot[];
   tiles: HubTiles;
   stars: HubStars;
-  /** The park's quietest day per week (`HubQuiet`). */
-  quietest: readonly (string | null)[];
+  /** The park's day per week (`HubQuiet`). */
+  quietest: readonly (HubWeekMark | null)[];
+  picks: HubPicks;
+  names: ReadonlyMap<string, string>;
+  starWords: readonly string[];
   /** The column holding the grid's tab stop, when it is in this row. */
   tabCol: number | null;
   label: ReturnType<typeof useCellLabel>;
   locale: string;
-  onOpen: (date: string) => void;
+  onPick: (slug: string, date: string) => void;
   onFocusCell: (cell: { r: number; c: number }) => void;
 }) {
   const t = useTranslations('tripHub.calendar');
@@ -1412,7 +1583,13 @@ const ParkRow = memo(function ParkRow({
           <VisitedToggle region={region} slug={slug} name={name} today={todayIso} />
           <span className="truncate">{name}</span>
         </span>
-        <QuietestNote slug={slug} dates={quietest} days={days} locale={locale} />
+        <QuietestNote
+          slug={slug}
+          marks={quietest}
+          days={days}
+          locale={locale}
+          starWords={starWords}
+        />
       </th>
       {slots.map((slot, i) => {
         if (slot.index === null) {
@@ -1421,19 +1598,29 @@ const ParkRow = memo(function ParkRow({
         const c = slot.index;
         const day = days[c];
         const star = stars.has(`${slug}:${day.date}`);
+        const pick = pickStateOf(picks, names, slug, day.date);
+        const tile = own[c];
         return (
           <td key={day.date} role="gridcell" className={cn('p-0', HUB_WEEK_CELL[slot.week])}>
             <CalendarDayTile
               density="compact"
-              {...own[c]}
-              best={star ? t('quietest') : null}
-              className={cn(star && HUB_CELL_BEST)}
-              onSelect={() => onOpen(day.date)}
+              {...tile}
+              best={star ? starWords[slot.week] : null}
+              picked={pick.picked ? t('picked') : null}
+              className={cn(pick.takenBy && HUB_CELL_TAKEN)}
+              onSelect={tile?.closed ? undefined : () => onPick(slug, day.date)}
               tabIndex={tabCol === c ? 0 : -1}
               data-cell={`${r}:${c}`}
               onFocus={() => onFocusCell({ r, c })}
-              aria-haspopup="dialog"
-              aria-label={label(slug, name, day.date, day.parks[slug], star)}
+              aria-pressed={tile?.closed ? undefined : pick.picked}
+              aria-label={label(
+                slug,
+                name,
+                day.date,
+                day.parks[slug],
+                star ? starWords[slot.week] : null,
+                pick
+              )}
             />
           </td>
         );
@@ -1555,8 +1742,8 @@ function TrackName({ lane, words }: { lane: EventLane; words: string }) {
 }
 
 /**
- * A park's events under its tiles on a phone: per week a bar on the days' columns for each party
- * and each festival of some days, its name under it, then one line for the festivals of every day.
+ * A park's events under its tiles on a phone: per week one line for the festivals of every day, then
+ * a bar on the days' columns for each party and each festival of some days, its name under it.
  * The weeks stack in one grid cell and only the shown one is visible, so the park is as tall in
  * every week and paging moves nothing below. A reader hears each event with its dates; the bars
  * only repeat them.
@@ -1581,19 +1768,6 @@ function ParkEvents({
     <div className="mt-1.5 grid grid-cols-1">
       {weeks.map((week, w) => (
         <div key={w} className={cn('col-start-1 row-start-1 space-y-1.5', HUB_WEEK_LAYER[w])}>
-          {week.tracks.map((track) => (
-            <div key={track.lane.id}>
-              <div aria-hidden className="grid h-1.5 grid-cols-7 gap-1">
-                {track.cells.map((_, i) => (
-                  <TrackCell key={i} track={track} index={i} />
-                ))}
-              </div>
-              <p className="mt-1 flex h-4 items-center gap-1 text-[11px] leading-4">
-                <TrackName lane={track.lane} words={words(track, slug)} />
-                <span className="sr-only">: {summarizeDates(track.dates, locale)}</span>
-              </p>
-            </div>
-          ))}
           {week.allWeek.length > 0 && (
             <p className="text-muted-foreground flex h-4 items-center gap-1 text-[11px] leading-4">
               {week.allWeek[0].seasonKind && (
@@ -1607,6 +1781,19 @@ function ParkEvents({
               </span>
             </p>
           )}
+          {week.tracks.map((track) => (
+            <div key={track.lane.id}>
+              <div aria-hidden className="grid h-1.5 grid-cols-7 gap-1">
+                {track.cells.map((_, i) => (
+                  <TrackCell key={i} track={track} index={i} />
+                ))}
+              </div>
+              <p className="mt-1 flex h-4 items-center gap-1 text-[11px] leading-4">
+                <TrackName lane={track.lane} words={words(track, slug)} />
+                <span className="sr-only">: {summarizeDates(track.dates, locale)}</span>
+              </p>
+            </div>
+          ))}
         </div>
       ))}
     </div>
@@ -1614,10 +1801,11 @@ function ParkEvents({
 }
 
 /**
- * A park's events in the desktop grid: under its row of tiles one row per bar of its busiest week,
- * the event's name and words in the first column and the bar on the days' columns, then one line
- * across the week for the festivals of every day. Every week has as many rows, empty where it has
- * fewer events, so turning a week moves no park. Hidden from a reader, whose tile already names
+ * A park's events in the desktop grid: under its row of tiles one line across the week for the
+ * festivals of every day, then one row per bar of its busiest week, the event's name and words in
+ * the first column and the bar on the days' columns. Every week has as many rows, empty where it has
+ * fewer events, so turning a week moves no park; the empty ones fall at the end of the park's block,
+ * not between its tiles and their line. Hidden from a reader, whose tile already names
  * the day's events: a row without grid cells would break the grid.
  */
 const ParkEventRows = memo(function ParkEventRows({
@@ -1649,6 +1837,32 @@ const ParkEventRows = memo(function ParkEventRows({
   const label = 'text-[11px] leading-tight';
   return (
     <>
+      {allWeek && (
+        <VisitedRow region={region} slug={slug} today={todayIso} aria-hidden>
+          <td />
+          {events.map((week, w) => (
+            <td
+              key={w}
+              colSpan={HUB_WEEK_DAYS}
+              className={cn('text-muted-foreground px-1 pb-1', label, HUB_WEEK_CELL[w])}
+            >
+              {week.allWeek.length > 0 && (
+                <span className="flex min-w-0 items-center gap-1">
+                  {week.allWeek[0].seasonKind && (
+                    <CalendarSeasonIcon
+                      kind={week.allWeek[0].seasonKind}
+                      className={cn('size-3 shrink-0', SEASON_ICON_QUIET_CLASS)}
+                    />
+                  )}
+                  <span className="truncate">
+                    {t('allWeek', { names: week.allWeek.map((l) => l.name).join(' · ') })}
+                  </span>
+                </span>
+              )}
+            </td>
+          ))}
+        </VisitedRow>
+      )}
       {Array.from({ length: rows }, (_, k) => (
         <VisitedRow key={k} region={region} slug={slug} today={todayIso} aria-hidden>
           <td className="px-2 pl-4 align-middle">
@@ -1680,32 +1894,6 @@ const ParkEventRows = memo(function ParkEventRows({
           })}
         </VisitedRow>
       ))}
-      {allWeek && (
-        <VisitedRow region={region} slug={slug} today={todayIso} aria-hidden>
-          <td />
-          {events.map((week, w) => (
-            <td
-              key={w}
-              colSpan={HUB_WEEK_DAYS}
-              className={cn('text-muted-foreground px-1 pb-1', label, HUB_WEEK_CELL[w])}
-            >
-              {week.allWeek.length > 0 && (
-                <span className="flex min-w-0 items-center gap-1">
-                  {week.allWeek[0].seasonKind && (
-                    <CalendarSeasonIcon
-                      kind={week.allWeek[0].seasonKind}
-                      className={cn('size-3 shrink-0', SEASON_ICON_QUIET_CLASS)}
-                    />
-                  )}
-                  <span className="truncate">
-                    {t('allWeek', { names: week.allWeek.map((l) => l.name).join(' · ') })}
-                  </span>
-                </span>
-              )}
-            </td>
-          ))}
-        </VisitedRow>
-      )}
     </>
   );
 });

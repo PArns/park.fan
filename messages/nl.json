@@ -439,7 +439,8 @@
       "quietest": "rustigste dag van de week in dat park",
       "early": "sluit eerder voor dagbezoekers",
       "howTo": "Zo lees je dit",
-      "colour": "Kleur: de dag vergeleken met een gewone dag in dat park"
+      "colour": "Kleur: de dag vergeleken met een gewone dag in dat park",
+      "picked": "door jou ingepland"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -470,7 +471,16 @@
       "stateOpen": "Open, geen voorspelling",
       "cellNoHours": "openingstijden nog niet gepubliceerd",
       "sourcesTravel": "Reistijden: {attribution}",
-      "titleMonth": "Dag voor dag in {month}"
+      "titleMonth": "Dag voor dag in {month}",
+      "picked": "door jou ingepland",
+      "quietestFree": "voorgestelde vrije dag",
+      "cellTaken": "al ingepland voor {park}",
+      "pickHint": "Kies bij een park een dag om die in te plannen. De andere parken krijgen dan elk een eigen vrije dag, zo rustig mogelijk.",
+      "picksCount": "{count, plural, one {# dag ingepland} other {# dagen ingepland}}",
+      "picksNote": "De sterren geven elk ander park een eigen vrije dag, zo rustig mogelijk.",
+      "picksReset": "Keuze wissen",
+      "pickedAnnounce": "{park} ingepland op {date}",
+      "unpickedAnnounce": "{park} niet meer ingepland op {date}"
     },
     "lanes": {
       "expected": "data verwacht",
@@ -877,6 +887,10 @@
     "specialDaysLabel": "Speciale dagen",
     "schoolVacation": "Schoolvakantie",
     "bestDay": "Aanbevolen",
+    "calendarMarks": {
+      "quietestOfWeek": "rustigste dag van de week",
+      "localTimes": "Tijden in de lokale tijd van het park"
+    },
     "bridgeDay": "Brugdag",
     "holiday": "Feestdag",
     "eventTypes": {

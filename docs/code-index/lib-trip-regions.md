@@ -95,6 +95,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `hoursUnpublished` _function_: Whether a day has a figure but no published hours yet: drawn with its mark, said in words.
 - `rankGroupParks` _function_: A group's parks on a day: the API's pick first where the group has one (its cost weighs the day guest's hours, so it can be a full day over a slightly shorter wait that closes early), then the open parks with a figure by `headlinerWait`, …
 - `quietestDay` _function_: A park's quietest day among some days, the star on its tile: the lowest figure the tile prints (`shownWait`), a tie to the lower `headlinerWait`, then to the longer day for the day guest, then to the earlier date.
+- `weekMarks` _function_: Each park's mark for each week around the visitor's picks (`picks`, date → park), by its slug. A week without a pick: every park's quietest day (`quietestDay`), the stars as they were.
 - `shortestLines` _function_: Each resort's shortest line on a day, from the API's `best` map. A resort without an entry (a last-year day, no figure) is left out rather than guessed, and so is a pick the region does not know.
 - `earlyCloseBehind` _function_: The park with the same or a shorter wait that a resort's pick beat because it closes early for day guests, when the API says that is why (`bestWhy: closes_early_elsewhere`). The phone list and the first answer name it with its closing time.
 - `glanceDay` _function_: The day the first answer is about: today in the region, or tomorrow once every resort's pick has closed to day guests, since nobody plans the rest of a day that is over. A day without picks counts as open.
@@ -130,7 +131,7 @@ by hand: change the comment in the code and re-run the script. -->
 - `yearLine` _function_: The year line of the hub's best-time teaser: each month of `range` and each trip window as a share of the range's days, so three trips can be drawn where they lie in the year.
 - `HUB_WINDOW_DAYS` _const_: How far the hub's calendar reaches past today: the API's default window.
 - `HUB_WEEK_DAYS` _const_: How many days a page of the hub's calendar shows.
-- Types: `HubWeek`, `RegionGroup`, `RankedPark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLaneRun`, `EventLane`, `WeekTrackCell`, `WeekTrack`, `ParkWeekEvents`, `ResortMonthSummary`, `YearLineSpan`
+- Types: `HubWeek`, `RegionGroup`, `RankedPark`, `HubWeekMark`, `ShortestLine`, `HubBasis`, `FactDays`, `EventLaneRun`, `EventLane`, `WeekTrackCell`, `WeekTrack`, `ParkWeekEvents`, `ResortMonthSummary`, `YearLineSpan`
 
 ### [`hub-facts.ts`](../../lib/trip-regions/hub-facts.ts)
 
@@ -149,6 +150,14 @@ by hand: change the comment in the code and re-run the script. -->
 - `hubPhoto` _function_: One media image by id for the hub (a resort's photo, the region's Parky picture), or null when the catalog no longer has it. SERVER ONLY: the catalog is too large for a Client Component.
 - `hubShot` _function_: A planner screenshot in the page's language: `<base>-<locale>`, else the English shot, else the German one (the shots are taken in German first). Framed from the top unless the sidecar names a focus.
 - Types: `HubPhoto`
+
+### [`hub-picks.ts`](../../lib/trip-regions/hub-picks.ts)
+
+- `hubPicksKey` _function_: Where a region's picks live.
+- `parseHubPicks` _function_: A stored value read leniently: a hand-edited or broken entry costs only itself.
+- `pickHubDay` _function_: The picks after a press on `slug`'s tile of `date`. A press on the park's picked day takes the pick back.
+- `hubPicks` _function_: The `HubPicksStore` of a region, one per region and page.
+- Types: `HubPicks`, `HubPicksStore`
 
 ### [`hub-trip.ts`](../../lib/trip-regions/hub-trip.ts)
 

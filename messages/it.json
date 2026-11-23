@@ -439,7 +439,8 @@
       "quietest": "giorno più tranquillo della settimana in quel parco",
       "early": "chiude prima per i visitatori giornalieri",
       "howTo": "Come leggerlo",
-      "colour": "Colore: il giorno rispetto a un giorno normale di quel parco"
+      "colour": "Colore: il giorno rispetto a un giorno normale di quel parco",
+      "picked": "pianificato da te"
     },
     "calendar": {
       "kicker": "{from} – {to}",
@@ -470,7 +471,16 @@
       "stateOpen": "Aperto, nessuna previsione",
       "cellNoHours": "orari non ancora pubblicati",
       "sourcesTravel": "Tempi di viaggio: {attribution}",
-      "titleMonth": "Giorno per giorno a {month}"
+      "titleMonth": "Giorno per giorno a {month}",
+      "picked": "pianificato da te",
+      "quietestFree": "giorno libero suggerito",
+      "cellTaken": "già pianificato per {park}",
+      "pickHint": "Scegli un giorno per un parco per pianificarlo. Gli altri parchi ricevono allora ciascuno un proprio giorno libero, il più tranquillo possibile.",
+      "picksCount": "{count, plural, one {# giorno pianificato} other {# giorni pianificati}}",
+      "picksNote": "Le stelle danno a ogni altro parco un proprio giorno libero, il più tranquillo possibile.",
+      "picksReset": "Cancella la scelta",
+      "pickedAnnounce": "{park} pianificato per {date}",
+      "unpickedAnnounce": "{park} non più pianificato per {date}"
     },
     "lanes": {
       "expected": "date previste",
@@ -877,6 +887,10 @@
     "specialDaysLabel": "Giorni speciali",
     "schoolVacation": "Vacanze scolastiche",
     "bestDay": "Consigliato",
+    "calendarMarks": {
+      "quietestOfWeek": "giorno più tranquillo della settimana",
+      "localTimes": "Orari nell’ora locale del parco"
+    },
     "bridgeDay": "Ponte",
     "holiday": "Festività",
     "eventTypes": {

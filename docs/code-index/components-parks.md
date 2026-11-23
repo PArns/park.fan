@@ -93,6 +93,11 @@ by hand: change the comment in the code and re-run the script. -->
 - `CalendarSeasonIcon` _component_: `CalendarIcon` for a season kind, in its colour: decoration beside a name the reader has.
 - Types: `CalendarIconName`
 
+### [`calendar-tile-marks.ts`](../../components/parks/calendar-tile-marks.ts)
+
+- `TILE_BEST_RING` _const_: The quietest day of a week, beside the star.
+- `TILE_PICKED_RING` _const_: A day the visitor picked (the hub's tick): the same ring, a pixel stronger.
+
 ### [`card-photo.tsx`](../../components/parks/card-photo.tsx)
 
 - `CardPhotoFrame` _component_: The card photo, cropped to the strip between the card's two glass panels and mirrored above and below it, so each panel blurs a continuation of exactly what is seen and the seam has nothing to show.
@@ -395,7 +400,7 @@ by hand: change the comment in the code and re-run the script. -->
 
 ### [`park-calendar-legend.tsx`](../../components/parks/park-calendar-legend.tsx)
 
-- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is one strip of butted chips because it is a ruler; the signal keys are independent facts and keep their gaps.
+- `ParkCalendarLegend` _component_: What the colours in the month grid mean: the crowd scale, then the signal bar. The scale is drawn as the tiles draw a tier (on a phone one ramp with its ends named); the signal keys are independent facts and keep their gaps.
 - Types: `CalendarLegendKey`
 
 ### [`park-calendar-month-index-chip.tsx`](../../components/parks/park-calendar-month-index-chip.tsx)

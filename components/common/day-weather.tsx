@@ -11,6 +11,11 @@ import {
 } from '@/lib/utils/day-weather';
 
 /**
+ * The ink of an average over past years: muted, but the foreground at 60 %, which keeps 4.5:1 on
+ * the light theme's tinted tiles, where the muted grey fell short at 11 px.
+ */
+const AVERAGE_INK = 'text-foreground/60';
+/**
  * Two temperatures as one range, „15–19°“, or one figure where both round alike in the reader's
  * unit; `null` when either is missing.
  */
@@ -48,10 +53,7 @@ export function DayWeather({
   if (isClimateNormal(weather)) {
     return (
       <span
-        className={cn(
-          'text-muted-foreground inline-block whitespace-nowrap tabular-nums',
-          className
-        )}
+        className={cn(AVERAGE_INK, 'inline-block whitespace-nowrap tabular-nums', className)}
         data-weather-basis="climate_normal"
         title={t('normal')}
       >
@@ -112,7 +114,7 @@ export function WeatherSpan({
       <span aria-hidden className={cn('h-2 w-px shrink-0', line)} />
       <span aria-hidden className={cn('h-px flex-1', line)} />
       <span
-        className="text-muted-foreground px-1.5 tabular-nums"
+        className={cn(AVERAGE_INK, 'px-1.5 tabular-nums')}
         title={t('normalSpan', { count: days })}
       >
         Ø{' '}
@@ -189,7 +191,7 @@ export function WeatherKey({ className }: { className?: string }) {
         <Sun className="size-3.5 shrink-0" aria-hidden="true" />
         {t('keyForecast')}
       </span>
-      <span className="text-muted-foreground whitespace-nowrap">{t('keyNoPeriod')}</span>
+      <span className={cn(AVERAGE_INK, 'whitespace-nowrap')}>{t('keyNoPeriod')}</span>
     </span>
   );
 }
