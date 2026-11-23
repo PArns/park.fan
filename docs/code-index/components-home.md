@@ -66,6 +66,7 @@ by hand: change the comment in the code and re-run the script. -->
 ### [`hero-rail.tsx`](../../components/home/hero-rail.tsx)
 
 - `HeroRail` _component_: The row under the hero's text, which answers its question: the rides near the visitor whose queue is well below its usual length right now (`shortWaits`, the nearby answer's).
+- `HeroRailParkActions` _component_: The park's block under the card rail, for a visitor in or next to a park (`HeroParkActions`), at the hero's foot: it arrives after load, and there it moves nothing above it.
 
 ### [`hero-stats.tsx`](../../components/home/hero-stats.tsx)
 

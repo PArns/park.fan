@@ -189,19 +189,20 @@ interface HeroBackgroundProps {
 }
 
 /**
- * The homepage hero background: the park photo, still, under the scrims the hero's text stands on.
- * When the visitor is inside a real park, that park's own photos crossfade in on top.
+ * The homepage hero background: the park photo, still, under the scrims the hero's text and card
+ * rail stand on. It fills its parent, which runs from under the header to the rail's foot. When the
+ * visitor is inside a real park, that park's own photos crossfade in on top.
  */
 export function HeroBackground({ imageSrc, blurDataURL, alt }: HeroBackgroundProps) {
   return (
     <div className="bg-background absolute inset-0 -z-10 overflow-hidden">
       <RandomHeroImage imageSrc={imageSrc} blurDataURL={blurDataURL} alt={alt} />
       {/* The scrims the hero's text stands on, in the page's own background so the photo runs
-          into the page in either theme: one under the header, one rising from the lower edge
-          behind the headline and the field, and from `md`, where the text stays left, one from
+          into the page in either theme: one under the header, one rising from the foot behind the
+          card rail, the field and the intro, and from `md`, where the text stays left, one from
           the left. */}
       <div className="from-background/70 absolute inset-x-0 top-0 h-32 bg-gradient-to-b to-transparent" />
-      <div className="from-background via-background/80 absolute inset-x-0 bottom-0 h-4/5 bg-gradient-to-t via-35% to-transparent" />
+      <div className="hero-foot-scrim absolute inset-0" />
       <div className="from-background/65 via-background/15 absolute inset-0 hidden bg-gradient-to-r via-50% to-transparent md:block" />
     </div>
   );
